@@ -1,75 +1,66 @@
 ---
-title: Dodawanie niestandardowych raportów o kondycji usługi Service Fabric | Dokumentacja firmy Microsoft
-description: W tym artykule opisano sposób wysyłania niestandardowych raportów o kondycji do jednostki kondycji usługi Azure Service Fabric. Oferuje rekomendacje dotyczące projektowania i implementowania jakości raportów o kondycji.
-services: service-fabric
-documentationcenter: .net
+title: Dodawanie niestandardowych raportów kondycji usługi Service Fabric
+description: Opisuje sposób wysyłania niestandardowych raportów o kondycji do jednostek usługi Azure Service Fabric Health. Zawiera zalecenia dotyczące projektowania i implementowania raportów dotyczących kondycji jakości.
 author: oanapl
-manager: chackdan
-editor: ''
-ms.assetid: 0a00a7d2-510e-47d0-8aa8-24c851ea847f
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 2/28/2018
 ms.author: oanapl
-ms.openlocfilehash: 49ebf4ab95816a3da2f74a464b12b46de6228456
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d00f740085b15bdb5fe698a069d97f168507f31f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60723452"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75451584"
 ---
 # <a name="add-custom-service-fabric-health-reports"></a>Dodawanie niestandardowych raportów kondycji usługi Service Fabric
-Usługa Azure Service Fabric wprowadza [modelu kondycji](service-fabric-health-introduction.md) przeznaczone do Flaga złej kondycji klastra i warunków określonych jednostek aplikacji. Używa modelu kondycji **Raporty kondycji** (składników systemu i watchdogs). Celem jest łatwe i szybkie diagnozowanie i naprawy. Moduły zapisujące usługi należy traktować ponoszonych z góry o kondycji. Należy podać dowolny warunek, który może mieć wpływ na kondycję, zwłaszcza, jeśli może pomóc problemów flagi blisko głównego. Informacje o kondycji można oszczędzić czas i wysiłek, debugowania i analizy. Użyteczność jest szczególnie oczywiste, gdy usługa jest uruchomiona na dużą skalę w chmurze (prywatnej lub na platformie Azure).
+Na platformie Azure Service Fabric wprowadzono [model kondycji](service-fabric-health-introduction.md) umożliwiający Flagowanie klastra w złej kondycji i warunków aplikacji na określonych jednostkach. Model kondycji używa **raportów kondycji** (składniki systemowe i alarmy). Celem jest łatwe i Szybkie diagnozowanie i naprawa. Moduły zapisujące usługi muszą myśleć o kondycji. Każdy warunek, który może mieć wpływ na kondycję, powinien być raportowany w szczególności, jeśli może pomóc w oflagowaniu problemów blisko poziomu głównego. Informacje o kondycji mogą zaoszczędzić czas i wysiłku związane z debugowaniem i badaniem. Użyteczność jest szczególnie oczywista, gdy usługa jest uruchomiona i działa w dużej skali w chmurze (prywatnej lub na platformie Azure).
 
-Monitor raporty usługi Service Fabric określone warunki zainteresowania. One raport na temat tych warunków, na podstawie ich widoku lokalnego. [Magazynu kondycji](service-fabric-health-introduction.md#health-store) agreguje dane kondycji wysyłane przez wszystkie raporty w celu ustalenia, czy jednostki są globalnie w dobrej kondycji. Model jest przeznaczony jako zaawansowane, elastyczne i łatwe w użyciu. Jakość raportów kondycji określa dokładność widoku kondycji klastra. Wyniki fałszywie dodatnie, które błędnie pokazują problemy w złej kondycji może niekorzystnie wpłynąć na uaktualnienia lub innych usług używających danych dotyczących kondycji. Przykłady takich usług to naprawy usługi i mechanizmy generowania alertów. W związku z tym rozwagą, konieczne są sporządzanie raportów, które przechwytują warunki publicznej w możliwie najlepszy sposób.
+Monitorowanie Service Fabric raporty określiło warunki zainteresowania. Składają raporty dotyczące tych warunków w zależności od ich widoku lokalnego. [Magazyn kondycji](service-fabric-health-introduction.md#health-store) agreguje dane o kondycji wysyłane przez wszystkich raportów, aby określić, czy jednostki są w dobrej kondycji. Model ma być bogaty, elastyczny i łatwy w użyciu. Jakość raportów o kondycji określa dokładność widoku kondycji klastra. Fałszywie dodatnie, które źle wyświetlają problemy w złej kondycji, mogą mieć negatywny wpływ na uaktualnienia lub inne usługi korzystające z danych o kondycji. Przykładami takich usług są naprawy usługi i mechanizmy powiadamiania o alertach. W związku z tym niektóre zagadnienia są potrzebne do dostarczania raportów, które przechwytują warunki zainteresowania w najlepszym możliwym przypadku.
 
-Aby zaprojektować i zaimplementować raportowania kondycji watchdogs i składników systemu musi:
+Aby zaprojektować i zaimplementować Raportowanie kondycji, licznik alarmów i składniki systemowe muszą:
 
-* Zdefiniuj warunek, z którymi są zainteresowani, sposób, który jest monitorowany i wpływ na funkcjonalności klastra lub aplikacji. Na podstawie tych informacji, wybrać właściwość raportów kondycji i stan kondycji.
-* Określić [jednostki](service-fabric-health-introduction.md#health-entities-and-hierarchy) , dotyczy raport.
-* Określić, gdzie raportowania gotowe, z poziomu usługi lub strażnika wewnętrzne lub zewnętrzne.
-* Zdefiniuj źródło używany do identyfikowania zgłaszającą.
-* Wybierz strategię raportowania, okresowo lub na przejścia. Zalecaną metodą jest okresowo, ponieważ wymaga uproszczenia kodu i jest mniej podatne na błędy.
-* Określ, ile raportów dla warunków w złej kondycji powinno pozostać w magazynie kondycji i jak powinno być wyczyszczone. Korzystając z tych informacji, zdecyduj, czas wygaśnięcia raportu i zachowanie remove na wygaśnięcia.
+* Zdefiniuj żądany warunek, sposób jego monitorowania oraz wpływ na funkcjonalność klastra lub aplikacji. Na podstawie tych informacji należy określić właściwość raportu kondycji i stan kondycji.
+* Określ [jednostkę](service-fabric-health-introduction.md#health-entities-and-hierarchy) , do której odnosi się raport.
+* Określ, w jaki sposób ma być wykonywane raportowanie, z poziomu usługi lub z wewnętrznego lub zewnętrznego licznika alarmowego.
+* Zdefiniuj źródło używane do identyfikowania raportu.
+* Wybierz strategię raportowania (okresowo lub przy przejściach). Zalecany sposób są okresowo, ponieważ wymaga prostszy kod i jest mniej podatny na błędy.
+* Określ, jak długo raport o złej kondycji powinien pozostać w magazynie kondycji i jak powinien zostać wyczyszczony. Korzystając z tych informacji, należy zdecydować o czasie trwania i usunięciu czasu wygaśnięcia raportu.
 
-Jak wspomniano wcześniej, raportowanie może odbywać się od:
+Jak wspomniano wcześniej, można wykonywać raportowanie z:
 
-* Monitorowane replika usługi Service Fabric.
-* Wewnętrzny watchdogs wdrożony jako Usługa Service Fabric (na przykład usługi bezstanowej usługi Service Fabric monitoruje warunków, która wysyła raporty). Watchdogs mogą być wdrażane wszystkie węzły lub być skoligaconym do monitorowanej usługi.
-* Wewnętrzny watchdogs, uruchomienia w węzłach usługi Service Fabric, które są *nie* zaimplementowane jako usługi Service Fabric.
-* Watchdogs zewnętrznych, które sondowania zasób z *poza* klastra usługi Service Fabric (na przykład Usługa monitorowania takich jak Gomez).
-
-> [!NOTE]
-> Natychmiast po klastra jest wypełniana przy użyciu raportów kondycji wysyłane przez składniki systemu. Dowiedz się więcej o [przy użyciu kondycji systemu raportów do rozwiązywania problemów](service-fabric-understand-and-troubleshoot-with-system-health-reports.md). Raporty użytkownika musi zostać wysłany [jednostki kondycji](service-fabric-health-introduction.md#health-entities-and-hierarchy) które już zostały utworzone przez system.
-> 
-> 
-
-Raz zdrowia, raportowanie, że projekt jest wyczyszczone, raportów o kondycji mogą być wysyłane łatwe. Możesz użyć [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) raportów kondycji, jeśli klaster nie jest [bezpiecznego](service-fabric-cluster-security.md) lub jeśli klient sieci szkieletowej ma uprawnienia administratora. Raportowanie może odbywać się za pośrednictwem interfejsu API, za pomocą [FabricClient.HealthManager.ReportHealth](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.reporthealth), za pomocą programu PowerShell lub za pośrednictwem interfejsu REST. Pokrętła konfiguracji partii raportów w celu zwiększenia wydajności.
+* Replika monitorowanej usługi Service Fabric.
+* Wewnętrzne alarmy wdrożone jako usługa Service Fabric (na przykład Service Fabric usługa bezstanowa, która monitoruje warunki i raporty problemów). Licznik Alarms można wdrożyć wszystkie węzły lub można ją koligacji z monitorowaną usługą.
+* Wewnętrzne alarmy, które działają w węzłach Service Fabric, ale *nie* są implementowane jako usługi Service Fabric.
+* Zewnętrzne liczniki alarmowe, które sonduje zasób *spoza* klastra Service Fabric (na przykład usługa monitorowania, taka jak Gomez).
 
 > [!NOTE]
-> Raport kondycji jest synchroniczne i reprezentuje pracę w weryfikacji po stronie klienta. Fakt, że raport jest akceptowany przez klienta usługi kondycji lub `Partition` lub `CodePackageActivationContext` obiektów nie oznacza, że jest ono stosowane w magazynie. Jest wysyłane asynchronicznie i prawdopodobnie wsad z innych raportów. Przetwarzanie na serwerze nadal może zakończyć się niepowodzeniem: numer sekwencji mogą być nieaktualne, jednostki, na którym musi zostać zastosowana raport został usunięty, itp.
+> Poza tym klaster jest wypełniany raportami kondycji wysyłanymi przez składniki systemowe. Więcej informacji można znaleźć w artykule dotyczącym [rozwiązywania problemów przy użyciu raportów kondycji systemu](service-fabric-understand-and-troubleshoot-with-system-health-reports.md). Raporty użytkownika muszą być wysyłane w [jednostkach kondycji](service-fabric-health-introduction.md#health-entities-and-hierarchy) , które zostały już utworzone przez system.
 > 
 > 
 
-## <a name="health-client"></a>Kondycja klienta
-Raporty o kondycji są wysyłane do Menedżera kondycji za pomocą klienta kondycji, które znajdują się wewnątrz klienta sieci szkieletowej. Menedżer kondycji raporty są zapisywane w magazynie kondycji. Kondycji klienta można skonfigurować następujące ustawienia:
-
-* **HealthReportSendInterval**: Opóźnienie między czas, który raport zostanie dodany do klienta i są wysyłane do Menedżera kondycji. Używany do raportów usługi batch w pojedynczym komunikacie, zamiast wysyłania jeden komunikat dla każdego raportu. Przetwarzanie wsadowe poprawia wydajność. Wartość domyślna: 30 sekund.
-* **HealthReportRetrySendInterval**: Interwał, jaką kondycji klienta umożliwia ponowne wysłanie kondycji zebranych raportów do Menedżera kondycji. Wartość domyślna: 30 sekund, minimalna: 1 sekunda.
-* **HealthOperationTimeout**: Limit czasu dla raportu komunikat wysyłany do Menedżera kondycji. Jeśli upłynie limit czasu wiadomości, kondycji klient ponawia próbę go do momentu Menedżera kondycji potwierdza, że raport został przetworzony. Wartość domyślna: dwie minuty.
+Po wyczyszczeniu projektu raportowania kondycji można łatwo wysyłać raporty kondycji. Programu [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) można użyć do raportowania kondycji, Jeśli klaster nie jest [zabezpieczony](service-fabric-cluster-security.md) lub jeśli klient sieci szkieletowej ma uprawnienia administratora. Raportowanie można przeprowadzić za pośrednictwem interfejsu API za pomocą [FabricClient. HealthManager. ReportHealth](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.reporthealth), za pośrednictwem programu PowerShell lub za pośrednictwem protokołu REST. Pokrętła konfiguracji przedstawia raporty wsadowe w celu zwiększenia wydajności.
 
 > [!NOTE]
-> Jeśli raporty są przetwarzane wsadowo, klient sieci szkieletowej muszą być przechowywane w aktywności dla co najmniej HealthReportSendInterval, aby upewnić się, że są wysyłane. Jeśli komunikat zostanie utracony lub Menedżera kondycji nie może zastosować je z powodu błędów przejściowych, klient sieci szkieletowej musi życiu już celu nadania mu szansę, aby spróbować ponownie.
+> Kondycja raportu jest synchroniczna i reprezentuje tylko sprawdzenie poprawności działania po stronie klienta. Fakt, że raport jest akceptowany przez klienta kondycji lub `Partition` lub `CodePackageActivationContext` obiekty nie oznacza, że jest on stosowany w sklepie. Jest on wysyłany asynchronicznie i prawdopodobnie przetwarzany z innymi raportami. Przetwarzanie na serwerze może nadal zakończyć się niepowodzeniem: numer sekwencyjny może być nieodświeżony, jednostka, na której należy zastosować raport, został usunięty itp.
 > 
 > 
 
-Buforowanie na kliencie zajmuje unikatowości raportów pod uwagę. Na przykład określonego reportera zły zgłoszenie 100 raportów na sekundę na tę samą właściwość tego samego obiektu, raporty są zastępowane najnowszej wersji. Istnieje co najwyżej jeden taki raport w kolejce klienta. Jeśli skonfigurowano dzielenia na partie, liczbę raportów wysyłanych do Menedżera kondycji jest tylko jeden na interwał wysyłania. Raport ten stanowi ostatni raport dodano najbardziej aktualny stan jednostki.
-Określ parametry konfiguracji podczas `FabricClient` jest tworzony przez przekazanie [FabricClientSettings](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclientsettings) z odpowiednie wartości dla wpisów z kondycją.
+## <a name="health-client"></a>Klient kondycji
+Raporty kondycji są wysyłane do Menedżera kondycji za pomocą klienta kondycji, który znajduje się wewnątrz klienta sieci szkieletowej. Menedżer kondycji zapisuje raporty w magazynie kondycji. Klienta kondycji można skonfigurować przy użyciu następujących ustawień:
 
-Poniższy przykład tworzy klienta sieci szkieletowej i określa, czy raporty mają być wysyłane, gdy zostaną one dodane. Przekroczeń limitu czasu i błędów, które mogą być ponawiane próby się zdarzyć, co 40 sekund.
+* **HealthReportSendInterval**: opóźnienie między momentem, gdy raport zostanie dodany do klienta programu i czas, który jest wysyłany do Menedżera kondycji. Służy do tworzenia wsadowych raportów w jednej wiadomości, zamiast wysyłania jednej wiadomości dla każdego raportu. Przetwarzanie wsadowe poprawia wydajność. Wartość domyślna: 30 sekund.
+* **HealthReportRetrySendInterval**: interwał, w którym klient kondycji ponownie wysyła skumulowane raporty kondycji do Menedżera kondycji. Wartość domyślna: 30 sekund, minimum: 1 sekunda.
+* **HealthOperationTimeout**: przekroczenie limitu czasu dla wiadomości raportu wysyłanej do Menedżera kondycji. W przypadku upływu limitu czasu klient kondycji ponowi próbę, dopóki raport nie zostanie przetworzony. Wartość domyślna: dwie minuty.
+
+> [!NOTE]
+> Gdy raporty są przetwarzane partiami, klient sieci szkieletowej musi być aktywny dla co najmniej HealthReportSendInterval, aby upewnić się, że są wysyłane. Jeśli komunikat zostanie utracony lub Menedżer kondycji nie będzie mógł zastosować ich ze względu na błędy przejściowe, klient sieci szkieletowej musi być w stanie dłużej działać, aby umożliwić mu ponowną próbę.
+> 
+> 
+
+Buforowanie na kliencie wymaga unikatowej wartości raportów. Na przykład jeśli konkretny nieprawidłowy raport zgłasza 100 raportów na sekundę na tej samej właściwości tej samej jednostki, raporty są zastępowane ostatnią wersją. W kolejce klienta istnieje co najwyżej jeden raport. W przypadku skonfigurowania przetwarzania wsadowego liczba raportów wysyłanych do Menedżera kondycji jest tylko jeden na interwał wysyłania. Ten raport jest ostatnim dodanym raportem, który odzwierciedla najbardziej aktualny stan jednostki.
+Określ parametry konfiguracji, gdy `FabricClient` jest tworzony przez przekazanie [FabricClientSettings](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclientsettings) z żądanymi wartościami dla wpisów związanych z kondycją.
+
+Poniższy przykład tworzy klienta sieci szkieletowej i określa, że raporty mają być wysyłane po ich dodaniu. W przypadku przekroczenia limitu czasu i błędów, które mogą być ponawiane, ponowne próby odbywają się co 40 sekund.
 
 ```csharp
 var clientSettings = new FabricClientSettings()
@@ -81,9 +72,9 @@ var clientSettings = new FabricClientSettings()
 var fabricClient = new FabricClient(clientSettings);
 ```
 
-Zaleca się pozostawienie ustawienia, które Ustaw domyślnego klienta sieci szkieletowej `HealthReportSendInterval` 30 sekund. To ustawienie zapewnia optymalną wydajność ze względu na partie. W przypadku krytycznych raportów, które muszą zostać przesłane tak szybko, jak to możliwe, użyj `HealthReportSendOptions` z bezpośrednim `true` w [FabricClient.HealthClient.ReportHealth](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.reporthealth) interfejsu API. Raporty bezpośredniego obejścia interwał przetwarzania wsadowego. Tej flagi należy używać ostrożnie; Chcemy móc korzystać z klienta kondycji, przetwarzanie wsadowe, jeśli to możliwe. Natychmiastowe wysyłania jest również przydatne, zamykając klienta sieci szkieletowej (na przykład proces wykrył nieprawidłowy stan i wymaga zamknięcia, aby zapobiec efekty uboczne). Zapewnia wysłanie optymalnych zebranych raportów. Po dodaniu jeden raport z flagą natychmiastowego kondycji klienta partii skumulowana raporty od ostatniego wysłania.
+Zalecamy pozostawienie domyślnych ustawień klienta sieci szkieletowej, które ustawiają `HealthReportSendInterval` na 30 sekund. To ustawienie zapewnia optymalną wydajność z powodu przetwarzania wsadowego. W przypadku raportów o kluczowym znaczeniu, które muszą być wysyłane najszybciej, jak to możliwe, należy użyć `HealthReportSendOptions` z natychmiastowym `true` w interfejsie API [FabricClient. HealthClient. ReportHealth](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.reporthealth) . Natychmiastowe raporty pomijają interwał przetwarzania wsadowego. Używaj tej flagi z opieką; Jeśli to możliwe, chcemy skorzystać z partii klientów kondycji. Natychmiastowe wysyłanie jest również przydatne w przypadku zamykania klienta sieci szkieletowej (na przykład proces ustalił nieprawidłowy stan i musi zostać zamknięty, aby zapobiec efektom ubocznym). Zapewnia to optymalny sposób wysyłania raportów skumulowanych. Po dodaniu jednego raportu do natychmiastowej flagi klient kondycji zlicza wszystkie skumulowane raporty od ostatniego wysłania.
 
-Te same parametry można określić po utworzeniu połączenia z klastrem przy użyciu programu PowerShell. Poniższy przykład tworzone jest połączenie z lokalnym klastrem:
+Te same parametry można określić podczas tworzenia połączenia z klastrem za pomocą programu PowerShell. Poniższy przykład uruchamia połączenie z klastrem lokalnym:
 
 ```powershell
 PS C:\> Connect-ServiceFabricCluster -HealthOperationTimeoutInSec 120 -HealthReportSendIntervalInSec 0 -HealthReportRetrySendIntervalInSec 40
@@ -111,80 +102,80 @@ GatewayInformation   : {
                        }
 ```
 
-Podobnie do interfejsu API, raporty można wysyłać przy użyciu `-Immediate` przełącznika wysłanych bezpośrednio, bez względu na to `HealthReportSendInterval` wartość.
+Podobnie jak w przypadku interfejsu API, można wysyłać raporty za pomocą przełącznika `-Immediate`, aby były wysyłane natychmiast, niezależnie od wartości `HealthReportSendInterval`.
 
-Resztę raporty są wysyłane do bramy usługi Service Fabric, która ma klienckie wewnętrznej sieci szkieletowej. Domyślnie ten klient jest skonfigurowany do wysyłania raportów wsadowej co 30 sekund. Można zmienić interwał usługi batch za pomocą ustawienia konfiguracji klastra `HttpGatewayHealthReportSendInterval` na `HttpGateway`. Jak wspomniano wcześniej, lepszym rozwiązaniem jest na wysyłanie raportów o `Immediate` wartość true. 
-
-> [!NOTE]
-> Aby upewnić się, że nieautoryzowane usługi nie można raportować kondycję, względem jednostek w klastrze, należy skonfigurować serwer do akceptowania żądań tylko z bezpiecznego klientów. `FabricClient` Używane na potrzeby raportowania musi mieć z włączonymi zabezpieczeniami mogli komunikować się z klastrem (na przykład przy użyciu protokołu Kerberos lub uwierzytelniania certyfikatu). Przeczytaj więcej na temat [klastra zabezpieczeń](service-fabric-cluster-security.md).
-> 
-> 
-
-## <a name="report-from-within-low-privilege-services"></a>Raport z w ramach usług z obniżonymi uprawnieniami
-Jeśli nie ma dostępu administratora do klastra usługi Service Fabric, można raportować kondycję na jednostkach z bieżącego kontekstu przy użyciu `Partition` lub `CodePackageActivationContext`.
-
-* W przypadku usług bezstanowych użyj [IStatelessServicePartition.ReportInstanceHealth](https://docs.microsoft.com/dotnet/api/system.fabric.istatelessservicepartition.reportinstancehealth) do raportu w bieżącym wystąpieniu usługi.
-* W przypadku usług stanowych, użyj [IStatefulServicePartition.ReportReplicaHealth](https://docs.microsoft.com/dotnet/api/system.fabric.istatefulservicepartition.reportreplicahealth) Aby sporządzić raport na temat bieżącej repliki.
-* Użyj [IServicePartition.ReportPartitionHealth](https://docs.microsoft.com/dotnet/api/system.fabric.iservicepartition.reportpartitionhealth) do raportu w bieżącej jednostce partycji.
-* Użyj [CodePackageActivationContext.ReportApplicationHealth](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext.reportapplicationhealth) Aby sporządzić raport na temat bieżącej aplikacji.
-* Użyj [CodePackageActivationContext.ReportDeployedApplicationHealth](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext.reportdeployedapplicationhealth) Aby sporządzić raport na temat bieżącej aplikacji wdrożonych w bieżącym węźle.
-* Użyj [CodePackageActivationContext.ReportDeployedServicePackageHealth](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext.reportdeployedservicepackagehealth) Aby sporządzić raport na temat pakietu usług dla aplikacji wdrożonej w bieżącym węźle.
+W przypadku protokołu REST raporty są wysyłane do bramy Service Fabric, która ma wewnętrznego klienta sieci szkieletowej. Domyślnie ten klient jest skonfigurowany do wysyłania raportów wsadowych co 30 sekund. Możesz zmienić interwał wsadowy przy użyciu ustawienia konfiguracji klastra `HttpGatewayHealthReportSendInterval` w `HttpGateway`. Jak wspomniano, lepszym rozwiązaniem jest wysyłanie raportów z `Immediate` true. 
 
 > [!NOTE]
-> Wewnętrznie `Partition` i `CodePackageActivationContext` przechowywania skonfigurowane przy użyciu ustawień domyślnych klienta kondycji. Zgodnie z objaśnieniem dla [kondycji klienta](service-fabric-report-health.md#health-client), raporty są partii i wysyłanych przez czasomierz. Obiekty powinny być przechowywane w aktywności mogły wysłać ten raport.
+> Aby upewnić się, że nieautoryzowane usługi nie mogą zgłosić kondycji dla jednostek w klastrze, skonfiguruj serwer tak, aby akceptował żądania tylko od zabezpieczonych klientów. `FabricClient` używany do raportowania musi mieć włączone zabezpieczenia, aby można było komunikować się z klastrem (na przykład z uwierzytelnianiem Kerberos lub certyfikatem). Dowiedz się więcej o [zabezpieczeniach klastra](service-fabric-cluster-security.md).
 > 
 > 
 
-Można określić `HealthReportSendOptions` podczas wysyłania raportów za pośrednictwem `Partition` i `CodePackageActivationContext` kondycji interfejsów API. Jeśli masz krytyczne raporty, które muszą zostać przesłane tak szybko, jak to możliwe, należy użyć `HealthReportSendOptions` z bezpośrednim `true`. Raporty bezpośredniego obejścia interwał przetwarzania wsadowego klienckie wewnętrznej kondycji. Jak wspomniano wcześniej, należy użyć tej flagi, ostrożnie; Chcemy móc korzystać z klienta kondycji, przetwarzanie wsadowe, jeśli to możliwe.
+## <a name="report-from-within-low-privilege-services"></a>Raportowanie z poziomu usług z niskimi uprawnieniami
+Jeśli usługi Service Fabric nie mają dostępu administratora do klastra, można raportować kondycję jednostek z bieżącego kontekstu za pośrednictwem `Partition` lub `CodePackageActivationContext`.
 
-## <a name="design-health-reporting"></a>Projektowanie, raportowanie stanu
-Pierwszym krokiem podczas generowania wysokiej jakości raporty identyfikuje warunki, które mogą mieć wpływ na kondycję usługi. Dowolny warunek, ułatwiający flagi problemów w usłudze lub klastra podczas jego uruchamiania — lub jeszcze lepiej, zanim problem występuje — może potencjalnie zapisać miliardy dolarów. Korzyści wynikające z mniej czas przestoju, mniej godzinach nocnych poświęcony na wykrywanie i naprawianie problemów i wyższych zadowolenie klientów.
-
-Po zidentyfikowaniu warunki autorzy strażnika trzeba ustalić najlepszy sposób Monitoruj je uzyskać równowagę między kosztów i użyteczność. Rozważmy na przykład usługi, który wykonuje złożone obliczenia, które używają niektóre pliki tymczasowe w udziale. Strażnika może monitorować udziału, aby upewnić się, że dostępna jest wystarczająca ilość miejsca. Może ona nasłuchiwanie powiadomienia o zmianach pliku lub katalogu. Można go raportować ostrzeżenie, jeśli próg ponoszonych z góry, a zgłosić błąd, jeśli udział jest pełny. W przypadku ostrzeżenia systemu naprawy można uruchomić, czyszczenie starszych plików w udziale. W przypadku błędu system naprawy przenieść repliki usługi do innego węzła. Należy zauważyć, jak Stany warunek jest opisywana w kategoriach kondycji: stan warunek, który jest uznawana za dobrej kondycji (ok) lub złej kondycji (ostrzeżenia lub błędu).
-
-Po ustawieniu szczegółów monitorowania Edytor strażnika musi ustalić sposób implementacji strażnika. Jeśli warunki można ustalić na podstawie poziomu usługi, strażnika może być częścią samej monitorowanej usługi. Na przykład kod usługi można sprawdzić użycie udziału, a następnie zgłaszanie za każdym razem, gdy próbuje zapisać plik. Zaletą tego podejścia jest raportowanie proste. Należy uważać, aby uniemożliwić błędy strażnika wywierania wpływu na funkcjonalność usługi.
-
-Raportowanie w programie monitorowanej usługi nie zawsze jest opcjonalnym. Strażnika w ramach usługi nie można wykryć warunków. Może nie mieć logiki lub dane, które umożliwiają określenie. Obciążenie monitorowania warunki mogą być wysokie. Warunki również może nie być właściwe dla usługi, ale zamiast tego wpływają na interakcje między usługami. Innym rozwiązaniem jest zapewnienie watchdogs w klastrze jako oddzielne procesy. Watchdogs monitorować warunki i raportów, bez wywierania wpływu na główne usług w jakikolwiek sposób. Na przykład te watchdogs można zaimplementować jako bezstanowej usługi w tej samej aplikacji, wdrożone we wszystkich węzłach lub na tym samym węzłów jako usługi.
-
-Czasami strażnika, uruchomione w klastrze nie jest opcją albo. Jeśli warunek monitorowanych jest dostępności lub funkcji usługi użytkownicy widzą ją, jest najlepszym rozwiązaniem jest watchdogs w tym samym miejscu, co klienci użytkownika. Ich testowania operacji w taki sam sposób, ich wywoływania przez użytkowników. Na przykład można mieć strażnika, który znajduje się poza klastrem, wysyła żądania do usługi i sprawdza, czy opóźnienia i poprawność wyniku. (Dla usługi Kalkulator, na przykład, czy 2 + 2 zwraca 4 w rozsądnym czasie?)
-
-Gdy sfinalizowany szczegóły strażnika, należy podjąć decyzję dotyczącą, na identyfikator źródła, który unikatowo identyfikuje go. Jeśli wiele watchdogs tego samego typu mieszkających w klastrze, należy raportować różnymi jednostkami lub, ich raport na temat tej samej jednostki, użyj Identyfikatora innego źródła lub właściwość. W ten sposób ich raporty mogą współistnieć. Właściwość raport o kondycji należy przechwytywać monitorowanych warunku. (Na przykład powyżej, właściwość może być **ShareSize**.) Jeśli wiele raportów dotyczy ten sam stan, właściwość powinna zawierać pewne informacje dynamicznych, które umożliwia raportów, które będą mogły nadal współistnieć. Na przykład, jeśli wiele udziałów muszą być monitorowane, nazwa właściwości może być **ShareSize sharename**.
+* W przypadku usług bezstanowych Użyj [IStatelessServicePartition. ReportInstanceHealth](https://docs.microsoft.com/dotnet/api/system.fabric.istatelessservicepartition.reportinstancehealth) , aby zgłosić bieżące wystąpienie usługi.
+* W przypadku usług stanowych Użyj [IStatefulServicePartition. ReportReplicaHealth](https://docs.microsoft.com/dotnet/api/system.fabric.istatefulservicepartition.reportreplicahealth) , aby zgłosić bieżącą replikę.
+* Użyj [IServicePartition. ReportPartitionHealth](https://docs.microsoft.com/dotnet/api/system.fabric.iservicepartition.reportpartitionhealth) , aby zgłosić bieżącą jednostkę partycji.
+* Użyj [CodePackageActivationContext. ReportApplicationHealth](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext.reportapplicationhealth) , aby zgłosić bieżącą aplikację.
+* Użyj [CodePackageActivationContext. ReportDeployedApplicationHealth](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext.reportdeployedapplicationhealth) , aby zgłosić bieżącą aplikację wdrożoną w bieżącym węźle.
+* Użyj [CodePackageActivationContext. ReportDeployedServicePackageHealth](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext.reportdeployedservicepackagehealth) , aby zgłosić pakiet usługi dla aplikacji wdrożonej w bieżącym węźle.
 
 > [!NOTE]
-> Czy *nie* Użyj magazynu kondycji, aby zachować informacje o stanie. Tylko informacje dotyczące kondycji powinny być raportowane jako kondycji, ponieważ te informacje ma wpływ na ocenę kondycji jednostki. Magazynu kondycji nie został zaprojektowany jako magazyn ogólnego przeznaczenia. Używa logiki oceny kondycji agregacji wszystkich danych do stanu kondycji. Wysyłanie informacji niezwiązanych ze sobą na kondycji (np. raportowanie stanu ze stanem kondycji OK) nie ma wpływu na stan kondycji zagregowane, ale może to negatywnie wpłynąć na wydajność magazynu kondycji.
+> Wewnętrznie `Partition` i `CodePackageActivationContext` mają klienta kondycji skonfigurowanego z ustawieniami domyślnymi. Zgodnie z wyjaśnieniem dla [klienta kondycji](service-fabric-report-health.md#health-client)raporty są wsadowe i wysyłane na czasomierzu. Aby można było wysłać raport, należy utrzymać możliwość utrzymania tego obiektu.
 > 
 > 
 
-Dalej podjęcie decyzji włączeniu jakiej encji do raportu. W większości przypadków, warunek jednoznacznie identyfikuje obiekt. Wybierz jednostkę z najlepszą dokładnością możliwe. Jeśli warunek ma wpływ na wszystkie repliki w partycji, zgłoś się na partycji, nie w usłudze. Istnieją przypadki brzegowe, gdzie potrzebna jest więcej myślenia, mimo że. Jeśli warunek ma wpływ na jednostki, takie jak repliki, ale jest używany przede wszystkim wtedy warunek oflagowani w związku z więcej niż czas trwania cyklu życia repliki, a następnie powinny być raportowane na partycji. W przeciwnym razie po usunięciu repliki magazynu kondycji czyści wszystkie jego raporty. Autorzy strażnika należy wziąć pod uwagę okresy istnienia jednostki i raport. Musi być jasne po raportu należy oczyścić ze Sklepu (na przykład, gdy ma już zastosowania błędu zgłoszonego na jednostkę).
+Możesz określić `HealthReportSendOptions` podczas wysyłania raportów za poorednictwem `Partition` i `CodePackageActivationContext` interfejsów API kondycji. Jeśli masz raporty krytyczne, które muszą być wysyłane najszybciej, jak to możliwe, użyj `HealthReportSendOptions` z natychmiastowym `true`. Natychmiastowe raporty pomijają interwał wsadowy wewnętrznego klienta kondycji. Jak wspomniano wcześniej, Użyj tej flagi z opieką; Jeśli to możliwe, chcemy skorzystać z partii klientów kondycji.
 
-Przyjrzyjmy się przykładowi, który umieszcza razem punktów I opisem. Należy wziąć pod uwagę, że aplikacja usługi Service Fabric składa się z głównej usługi stanowej trwałe i dodatkowych usług bezstanowych wdrożone we wszystkich węzłach (jeden typ usługi pomocnicze dla każdego typu zadania). Wzorzec ma kolejki przetwarzania, która zawiera polecenia, które ma być wykonane przez pomocnicze bazy danych. Pomocnicze bazy danych wykonaj żądań przychodzących i wysyłać sygnały wstecz potwierdzenia. Jeden warunek, który może być monitorowany jest długości kolejki przetwarzania wzorca. Jeśli długość kolejki głównej osiąga próg, ostrzeżenie jest zgłaszane. To ostrzeżenie wskazuje, że pomocnicze bazy danych nie może obsłużyć obciążenie. Jeśli kolejka osiągnie maksymalną długość, a polecenia są odrzucane, błąd zostanie zgłoszony jako usługi nie można odzyskać. Raporty mogą znajdować się na właściwość **QueueStatus**. Strażnika, który znajduje się w usłudze i jest okresowo przesyłane w replice podstawowej wzorca. Czas wygaśnięcia wynosi dwie minuty, a wysłaniem okresowo co 30 sekund. Jeśli podstawowy ulegnie awarii, raport jest automatycznie czyszczone z magazynu. Jeśli replika usługa działa, ale zakleszczenie wywoływanej lub inne problemy, raport wygasa w magazynie kondycji. W takim przypadku jednostki jest oceniany na błąd.
+## <a name="design-health-reporting"></a>Projektowanie raportowania kondycji
+Pierwszym krokiem w generowaniu raportów wysokiej jakości jest zidentyfikowanie warunków, które mogą mieć wpływ na kondycję usługi. Dowolny warunek, który może pomóc w oflagowaniu problemów z usługą lub klastrem, gdy zostanie on uruchomiony lub jeszcze lepszy, zanim wystąpi problem — może potencjalnie zaoszczędzić miliardy dolarów. Korzyści obejmują mniej czasu, krótsze godziny spędzone na badaniu i naprawianiu problemów oraz lepsze zadowolenie klientów.
 
-Inny warunek, który może być monitorowany jest czas wykonywania zadania. Wzorzec rozdziela zadania podrzędne do pomocniczych baz danych, w oparciu o typ zadania. W zależności od projektu główną można sondować pomocnicze bazy danych do stanu zadania. Można również poczekać, aż pomocnicze bazy danych wysyłać sygnały potwierdzenie Wstecz, gdy są one wykonywane. W drugim przypadku należy uważać, aby wykryć sytuacje, w którym struktury pomocnicze bazy danych lub wiadomości zostaną utracone. Jedną z opcji jest wzorca wysłać żądanie ping do tej samej pomocniczego, który wysyła z powrotem jego stan. Odebranie Brak stanu wzorca uzna to za błąd i zmienia harmonogram zadania. To zachowanie przyjęto założenie, że zadania są idempotentne.
+Po zidentyfikowaniu warunków moduły zapisujące alarmy muszą ustalić najlepszy sposób monitorowania ich pod kątem równowagi między obciążeniem i użytecznością. Rozważmy na przykład usługę, która wykonuje skomplikowane obliczenia, które używają niektórych plików tymczasowych w udziale. Licznik Alarm może monitorować udział w celu zapewnienia, że dostępna jest wystarczająca ilość miejsca. Może nasłuchiwać powiadomień o zmianach plików lub katalogów. Może zgłosić ostrzeżenie, gdy zostanie osiągnięty próg z góry, i zgłosić błąd, jeśli udział jest pełny. Na ostrzeżenie system naprawy może rozpocząć czyszczenie starszych plików w udziale. Po błędzie system naprawy może przenieść replikę usługi do innego węzła. Zwróć uwagę na to, jak Stany stanu są opisane w obszarze kondycji: stan warunku, który może być uznawany za zdrowy (ok) lub w złej kondycji (ostrzeżenie lub błąd).
 
-Stan monitorowanych mogą być tłumaczone jako ostrzeżenie, jeśli zadanie nie jest wykonywane w określonym czasie (**t1**, na przykład 10 minut). Jeśli zadanie nie zostało ukończone w czasie (**t2**, na przykład 20 minut), mogą być tłumaczone monitorowanych warunek jako błąd. Nagrodę może odbywać się na wiele sposobów:
+Po ustawieniu szczegółów monitorowania moduł zapisujący licznika alarmowego musi ustalić, jak zaimplementować licznik alarmowy. Jeśli warunki można ustalić z poziomu usługi, licznik Alarm może być częścią monitorowanej usługi. Na przykład kod usługi może sprawdzić użycie udziału, a następnie zgłosić raport za każdym razem, gdy próbuje zapisać plik. Zaletą tego podejścia jest to, że raportowanie jest proste. Należy zachować ostrożność, aby zapobiec wpływowi błędów licznika alarmowego na działanie usługi.
 
-* Główny repliki podstawowej okresowo raporty na siebie. Może mieć jedną właściwość dla wszystkich zadań oczekujących w kolejce. Jeśli co najmniej jedno zadanie trwa dłużej, stan tego raportu we właściwości **PendingTasks** jest ostrzeżenia lub błędu, zgodnie z potrzebami. Jeśli nie ma żadnych oczekujących zadań lub wszystkich zadań rozpoczął wykonywanie sekwencji, stan raportu jest OK. Zadania są trwałe. Jeśli podstawowy ulegnie awarii poprawnie zgłosić nadal nowo wypromowaną podstawową.
-* Inny proces strażnika (w chmurze lub zewnętrznego) sprawdza, czy zadania (z zewnątrz, na podstawie wyniku odpowiednie zadanie) aby zobaczyć, jeśli są one ukończone. Jeśli nie respektują progów, raport jest wysyłany na główną usługą. Raport wysyłany również dla każdego zadania, który zawiera identyfikator zadania, takie jak **PendingTask + taskId**. Raporty mają być wysyłane tylko w złej kondycji stanów. Ustaw czas na żywo na kilka minut i oznacz raporty, które ma zostać usunięty, gdy wygasają, aby upewnić się, czyszczenia.
-* Pomocniczy, który wykonuje zadania raportów, gdy trwa dłużej niż oczekiwano, aby go uruchomić. Wysyła raporty do wystąpienia usługi na właściwość **PendingTasks**. Raport określa wystąpienie usługi, który ma problemy, ale nie odzwierciedla sytuacji, w których pada wystąpienia. Raporty są następnie czyszczone. Można go raport na temat usługi dodatkowej. Jeśli zadanie zakończy się w pomocniczej, dodatkowej wystąpienia czyści raportu z magazynu. Raport nie przechwytuje sytuacji, w którym komunikat potwierdzenia zostanie utracony i zadanie nie zostało zakończone z punktu widzenia głównego.
+Raportowanie z poziomu monitorowanej usługi nie zawsze jest opcją. Licznik alarmowy w ramach usługi może nie być w stanie wykryć warunków. Może nie mieć logiki lub danych, aby dokonać ustalenia. Obciążenie związane z monitorowaniem warunków może być wysokie. Warunki te mogą również nie być specyficzne dla usługi, ale mają wpływ na interakcje między usługami. Kolejną opcją jest posiadanie liczników alarmów w klastrze jako oddzielnych procesów. Licznik alarmy monitoruje warunki i Raport bez wpływu na główne usługi. Na przykład te alarmy mogą być implementowane jako usługi bezstanowe w tej samej aplikacji, wdrożone we wszystkich węzłach lub w tych samych węzłach co usługa.
 
-Jednak raportowanie będzie odbywać się w przypadkach opisanych powyżej, raporty są przechwytywane kondycji aplikacji podczas szacowania kondycji.
+Czasami licznik alarm działający w klastrze nie jest opcją. Jeśli monitorowany warunek to dostępność lub funkcjonalność usługi, która jest widoczna dla użytkowników, najlepiej jest mieć te alarmy w tym samym miejscu co komputery klienckie. W tym miejscu mogą testować operacje w taki sam sposób, w jaki użytkownicy je wywołują. Na przykład można mieć licznik alarmowy, który znajduje się poza klastrem, wysyła żądania do usługi i sprawdza opóźnienia i poprawność wyniku. (Na przykład w przypadku usługi kalkulatora program wykonuje 2 + 2 zwrócenie 4 w rozsądnym czasie?)
 
-## <a name="report-periodically-vs-on-transition"></a>Raport okresowo a na przejście
-Przy użyciu modelu raportowania kondycji watchdogs raporty można wysyłać okresowe lub przejścia. Zalecaną metodą strażnika raportowania jest okresowo, ponieważ kod jest znacznie prostsza i mniej podatne na błędy. Watchdogs należy dążyć do być bardzo proste, jak to możliwe uniknąć błędów, które mogą powodować nieprawidłowe raporty. Niepoprawne *złej kondycji* wpływ na raporty oceny kondycji i scenariuszy, w oparciu o kondycji, w tym uaktualnienia. Niepoprawne *dobrej kondycji* raporty ukrycie problemów w klastrze, co nie jest wymagana.
+Po sfinalizowaniu szczegółów licznika alarmowego należy określić identyfikator źródła, który jednoznacznie identyfikuje go. Jeśli wiele licznika alarmów tego samego typu są żyjące w klastrze, muszą one zgłosić różne jednostki lub, jeśli są zgłaszane w tej samej jednostce, użyć innego identyfikatora źródła lub właściwości. W ten sposób ich raporty mogą współistnieć. Właściwość raportu kondycji powinna przechwytywać monitorowany warunek. (W powyższym przykładzie właściwość może być **ShareSize**). Jeśli wiele raportów ma zastosowanie do tego samego warunku, właściwość powinna zawierać pewne informacje dynamiczne, które umożliwiają współistnienie raportów. Na przykład jeśli trzeba monitorować wiele udziałów, nazwa właściwości może być **ShareSize-ShareName**.
 
-Okresowe raportowania strażnika może być zaimplementowany z licznikiem. Dla czasomierza wywołania zwrotnego strażnika można sprawdzić stan i wysłać raport na podstawie bieżącego stanu. Nie ma potrzeby zobaczyć, który raport został wysłany wcześniej lub wprowadzić wszelkie optymalizacji pod kątem obsługi komunikatów. Klient kondycji ma, przetwarzanie wsadowe logiki, aby poprawić wydajność. Gdy klient kondycji jest życiu, ponowną próbą wewnętrznie aż do raportu zostało potwierdzone przez sklep kondycji lub strażnika generuje raport nowszej za pomocą tego samego obiektu, właściwości i źródła.
+> [!NOTE]
+> *Nie* należy używać magazynu kondycji do przechowywania informacji o stanie. Tylko informacje dotyczące kondycji powinny być zgłaszane jako kondycja, ponieważ te informacje mają wpływ na ocenę kondycji jednostki. Magazyn kondycji nie został zaprojektowany jako magazyn ogólnego przeznaczenia. Używa logiki oceny kondycji do agregowania wszystkich danych do stanu kondycji. Wysyłanie informacji niezwiązanych z kondycją (na przykład stanu raportowania ze stanem kondycji OK) nie ma wpływu na zagregowany stan kondycji, ale może mieć negatywny wpływ na wydajność magazynu kondycji.
+> 
+> 
 
-Raporty dotyczące przejścia wymaga starannego obsługi stanu. Strażnika monitoruje niektóre warunki i raporty, zmienić tylko wtedy, gdy warunki. Wzrost tego podejścia jest, że są potrzebne mniejszą liczbę raportów. Minusem jest złożoną logikę strażnika. Strażnika posiadania warunków lub raportów, dzięki czemu mogą być kontrolowane na określanie zmian stanu. W trybie failover należy uważać za pomocą raportów dodane, ale jeszcze nie są wysyłane do magazynu kondycji. Numer sekwencyjny musi być coraz większe. Jeśli nie, raporty są odrzucane jako nieaktualne. W rzadkich przypadkach, gdzie jest naliczany utraty danych mogą być potrzebne synchronizacji, między stan zgłaszającą i stan magazynu kondycji.
+Następny punkt decyzyjny to jednostka do raportowania. W większości przypadków warunek jasno identyfikuje jednostkę. Wybierz jednostkę z najlepszymi możliwymi poziomami szczegółowości. Jeśli warunek ma wpływ na wszystkie repliki w partycji, raport na partycji, a nie w usłudze. Istnieją przypadki narożne, w przypadku których jest wymagana większa liczba myśli. Jeśli warunek ma wpływ na jednostkę, na przykład replikę, ale wolisz mieć warunek oflagowany przez więcej niż okres istnienia repliki, powinien on być raportowany na partycji. W przeciwnym razie po usunięciu repliki magazyn kondycji czyści wszystkie raporty. Moduły zapisujące alarmy muszą myśleć o okresach istnienia jednostki i raportu. Musi być jasne, gdy raport powinien zostać oczyszczony z magazynu (na przykład gdy błąd raportowany przez jednostkę nie ma już zastosowania).
 
-Raporty dotyczące przejścia ma sens dla usług raportowania na siebie, za pośrednictwem `Partition` lub `CodePackageActivationContext`. Gdy lokalnego obiektu (repliki lub wdrożony pakiet usługi / wdrożono aplikację) jest usunięty, jego raporty są także usuwane. To automatyczne oczyszczanie zwalnia potrzebę synchronizacji między reporter i magazynie danych kondycji. Jeśli raport jest partycji nadrzędnej lub aplikacji nadrzędnej, należy uważać w trybie failover w celu uniknięcia stare raportów w magazynie kondycji. Logika należy dodać do zarządzania stanem poprawne, a następnie wyczyść raport ze sklepu, gdy nie jest już potrzebne.
+Przyjrzyjmy się przykładowi łączącemu podane przeze mnie punkty. Rozważmy Service Fabric aplikację składającą się z głównej, stanowej usługi trwałej i dodatkowych usług bezstanowych wdrożonych na wszystkich węzłach (jeden typ usługi pomocniczej dla każdego typu zadania). Wzorzec zawiera kolejkę przetwarzania, która zawiera polecenia, które mają być wykonywane przez pomocnicze. Serwery pomocnicze wykonują żądania przychodzące i wysyłają sygnały potwierdzania zwrotnego. Jeden warunek, który może być monitorowany, to długość głównej kolejki przetwarzania. Jeśli długość kolejki głównej osiągnie wartość progową, zostanie zgłoszone ostrzeżenie. Ostrzeżenie wskazuje, że serwery pomocnicze nie mogą obsłużyć obciążenia. Jeśli kolejka osiągnie maksymalną długość i polecenia są porzucane, zgłaszany jest błąd, ponieważ nie można odzyskać usługi. Raporty mogą znajdować się we właściwości **QueueStatus**. Licznik alarm znajduje się w usłudze i jest okresowo wysyłany w głównej replice podstawowej. Czas wygaśnięcia wynosi dwie minuty, a okres próbny jest wysyłany co 30 sekund. Jeśli podstawowy przejdzie w dół, raport zostanie oczyszczony automatycznie ze sklepu. Jeśli replika usługi jest w stanie, ale jest zakleszczony lub występują inne problemy, raport wygasa w magazynie kondycji. W takim przypadku jednostką ocenia się przy błędzie.
 
-## <a name="implement-health-reporting"></a>Implementowanie raportowania stanu
-Po Wyczyść dane jednostki i raportów, wysyłanie raportów o kondycji może odbywać się za pośrednictwem interfejsu API, programu PowerShell lub REST.
+Innym warunkiem, który może być monitorowany, jest czas wykonywania zadania. Główny serwer dystrybuuje zadania do serwerów pomocniczych w oparciu o typ zadania. W zależności od projektu wzorzec może sondować serwery pomocnicze dla stanu zadania. Może to również poczekać, aż serwery pomocnicze będą wysyłać sygnały potwierdzania zwrotnego po ich zakończeniu. W drugim przypadku należy zwrócić uwagę, aby wykrywać sytuacje, w których serwery lub komunikaty są tracone. Jedną z opcji jest to, aby wzorzec wysłał żądanie ping do tego samego elementu pomocniczego, co spowoduje wysłanie jego stanu. Jeśli stan nie zostanie odebrany, wzorzec traktuje go jako błąd i ponownie planuje zadanie. To zachowanie zakłada, że zadania są idempotentne.
 
-### <a name="api"></a>Interfejs API
-Aby zgłosić za pomocą interfejsu API, musisz utworzyć raport o kondycji specyficzne dla typu jednostki, które mają być sporządzić raport na temat. Nadaj Raport kondycji klienta. Ewentualnie utworzyć dodatkowe informacje o kondycji i przekazać ją do Popraw metod raportowania na `Partition` lub `CodePackageActivationContext` Aby sporządzić raport na temat bieżącej jednostki.
+Monitorowany warunek można przetłumaczyć jako ostrzeżenie, jeśli zadanie nie zostało wykonane w określonym czasie (**T1**, na przykład 10 minut). Jeśli zadanie nie zostało ukończone w czasie (**T2**, na przykład 20 minut), monitorowany warunek może być przetłumaczony jako błąd. Takie Raportowanie można wykonać na wiele sposobów:
 
-Poniższy przykład pokazuje okresowych raportów z strażnika w klastrze. Strażnika sprawdza, czy zasób zewnętrzny jest możliwy z w obrębie węzła. Zasób jest wymagane przez manifestu usługi, w ramach aplikacji. Jeśli zasób jest niedostępny, innych usług w aplikacji, mogą nadal działać prawidłowo. W związku z tym raport jest wysyłany na jednostce pakietu wdrożonej usługi co 30 sekund.
+* Główna replika podstawowa raportuje się okresowo. Dla wszystkich oczekujących zadań w kolejce można mieć jedną właściwość. Jeśli co najmniej jedno zadanie trwa dłużej, stan raportu w właściwości **PendingTasks** jest odpowiednio ostrzeżeniem lub błędem. Jeśli nie ma oczekujących zadań lub wszystkie zadania rozpoczęły wykonywanie, raport ma stan OK. Zadania są trwałe. Jeśli podstawowy przestanie być określony, nowo podwyższona wartość podstawowa będzie mogła kontynuować raportowanie.
+* Inny proces licznika alarmowego (w chmurze lub zewnętrzny) sprawdza zadania (z zewnątrz, w oparciu o żądany wynik zadania), aby zobaczyć, czy zostały ukończone. Jeśli nie respektują progów, raport jest wysyłany w usłudze głównej. Raport jest również wysyłany do każdego zadania zawierającego identyfikator zadania, taki jak **PendingTask + taskId**. Raporty powinny być wysyłane tylko w Stanach złej kondycji. Skonfiguruj czas wygaśnięcia w ciągu kilku minut i Oznacz raporty do usunięcia po wygaśnięciu, aby upewnić się, że jest to możliwe.
+* Pomocnicza, która wykonuje zadanie raportu, gdy jego uruchomienie trwa dłużej niż oczekiwano. Raport jest raportowany w wystąpieniu usługi we właściwości **PendingTasks**. Raport wykrywa wystąpienie usługi, które ma problemy, ale nie przechwytuje sytuacji, w której wystąpienie jest. Raporty są czyszczone. Może on zgłosić usługę pomocniczą. Jeśli pomocnicze ukończy zadanie, wystąpienie pomocnicze czyści raport ze sklepu. W raporcie nie są przechwytywane sytuacje, w których komunikat potwierdzający zostaje utracony, a zadanie nie zostało zakończone z punktu widzenia głównego.
+
+Jednak raportowanie jest wykonywane w przypadkach opisanych powyżej, raporty są przechwytywane w usłudze Application Health w przypadku oceny kondycji.
+
+## <a name="report-periodically-vs-on-transition"></a>Okresowe raportowanie w porównaniu do przejścia
+Przy użyciu modelu raportowania kondycji alarmy mogą wysyłać raporty okresowo lub w przejściach. Zalecany sposób raportowania przy użyciu licznika alarmowego jest okresowo, ponieważ kod jest znacznie prostszy i mniej podatny na błędy. Alarmy muszą być tak proste, jak to możliwe, aby uniknąć błędów wyzwalających nieprawidłowe raporty. Niepoprawne raporty w *złej kondycji* wpływają na oceny kondycji i scenariusze na podstawie kondycji, w tym uaktualnień. Błędne raporty w *dobrej kondycji* ukrywają problemy w klastrze, co nie jest wymagane.
+
+W przypadku raportowania okresowego licznik alarm można zaimplementować przy użyciu czasomierza. W przypadku wywołania zwrotnego czasomierza licznik alarmowy może sprawdzić stan i wysłać raport w oparciu o bieżący stan. Nie ma potrzeby, aby zobaczyć, który raport został wcześniej wysłany, lub dokonać optymalizacji pod kątem komunikatów. Klient kondycji ma logikę wsadową w celu zapewnienia wydajności. Gdy klient kondycji jest aktywny, ponawia próbę wewnętrznie do momentu potwierdzenia raportu przez magazyn kondycji lub licznik alarm generuje nowszy Raport z tą samą jednostką, właściwością i źródłem.
+
+Raportowanie dotyczące przejść wymaga starannej obsługi stanu. Licznik alarm monitoruje pewne warunki i raporty tylko wtedy, gdy zmieniają się warunki. Do tego podejścia jest wymagana mniejsza liczba raportów. Minusem polega na tym, że logika licznika alarm jest złożona. Licznik alarm musi zachować warunki lub raporty, aby można je było sprawdzić, aby określić zmiany stanu. W przypadku przejścia w tryb failover należy zachować ostrożność w przypadku raportów, które zostały dodane, ale nie zostały jeszcze wysłane do magazynu kondycji. Numer sekwencyjny musi być coraz większy. W przeciwnym razie raporty są odrzucane jako przestarzałe. W rzadkich przypadkach, gdy nastąpi utrata danych, synchronizacja może być wymagana między stanem raportu a stanem magazynu kondycji.
+
+Raportowanie dotyczące przejść ma sens dla usług, które są na siebie raportowane za poorednictwem `Partition` lub `CodePackageActivationContext`. Po usunięciu obiektu lokalnego (repliki lub wdrożonego pakietu usługi/wdrożonej aplikacji) wszystkie jego raporty również zostaną usunięte. To automatyczne czyszczenie osłabi potrzebę synchronizacji między programem reporter a magazynem kondycji. Jeśli raport dotyczy partycji nadrzędnej lub aplikacji nadrzędnej, należy zachować ostrożność w przypadku przejścia w tryb failover, aby uniknąć starych raportów w magazynie kondycji. Należy dodać logikę, aby zachować poprawny stan, a następnie wyczyścić raport ze sklepu, gdy nie jest już wymagany.
+
+## <a name="implement-health-reporting"></a>Implementowanie raportowania kondycji
+Gdy szczegóły jednostki i raportu zostaną wyczyszczone, wysyłanie raportów kondycji można wykonać za pomocą interfejsu API, programu PowerShell lub REST.
+
+### <a name="api"></a>API
+Aby zgłosić za pomocą interfejsu API, należy utworzyć raport kondycji specyficzny dla typu jednostki, w którym mają być zgłaszane. Przekaż raport klientowi kondycji. Alternatywnie możesz utworzyć informacje o kondycji i przekazać je, aby skorygować metody raportowania w `Partition` lub `CodePackageActivationContext` do raportów dotyczących bieżących jednostek.
+
+Poniższy przykład przedstawia raportowanie okresowe z licznika alarmowego w klastrze. Licznik alarm sprawdza, czy można uzyskać dostęp do zasobu zewnętrznego z poziomu węzła. Zasób jest wymagany przez manifest usługi w aplikacji. Jeśli zasób jest niedostępny, inne usługi w aplikacji mogą nadal działać prawidłowo. W związku z tym raport jest wysyłany w ramach wdrożonego pakietu usługi co 30 sekund.
 
 ```csharp
 private static Uri ApplicationName = new Uri("fabric:/WordCount");
@@ -215,9 +206,9 @@ public static void SendReport(object obj)
 ```
 
 ### <a name="powershell"></a>PowerShell
-Wysyłanie raportów o kondycji z **ServiceFabric wysyłania*EntityType*HealthReport**.
+Wyślij raporty kondycji za pomocą elementu ***EntityType*-servicefabric HealthReport**.
 
-Poniższy przykład pokazuje okresowe zgłaszanie wartości procesora CPU w węźle. Raporty powinny być przesyłane co 30 sekund i mają czas wygaśnięcia wynosi dwie minuty. Jeśli wygasną, zgłaszającą ma problemy, więc węzeł jest oceniany na błąd. Gdy Procesora jest powyżej wartości progowej, raport ma stan kondycji ostrzeżenia. Jeśli Procesor pozostaje powyżej wartości progowej przekracza skonfigurowany czas, będzie zgłaszane jako błąd. W przeciwnym razie zgłaszającą wysyła kondycja OK.
+Poniższy przykład pokazuje okresowe raportowanie wartości procesora CPU w węźle. Raporty powinny być wysyłane co 30 sekund, a ich czas trwania wynosi dwie minuty. Jeśli wygasną, zgłaszany jest problem, więc węzeł zostanie oceniony z błędem. Gdy CPU przekracza wartość progową, raport ma stan kondycji ostrzeżenie. Gdy procesor CPU pozostanie powyżej progu przez czas dłuższy niż skonfigurowany, jest raportowany jako błąd. W przeciwnym razie program reporter wyśle stan kondycji OK.
 
 ```powershell
 PS C:\> Send-ServiceFabricNodeHealthReport -NodeName Node.1 -HealthState Warning -SourceId PowershellWatcher -HealthProperty CPU -Description "CPU is above 80% threshold" -TimeToLiveSec 120
@@ -254,7 +245,7 @@ HealthEvents          :
                         Transitions           : ->Warning = 4/21/2015 9:01:21 PM
 ```
 
-Poniższy przykład zgłosi ostrzeżenie przejściowe na replikę. Usługi, który jest zainteresowany danych otrzymuje najpierw Identyfikatora partycji, a następnie identyfikator repliki. Następnie wysyła raport z **PowershellWatcher** we właściwości **ResourceDependency**. Raport ma znaczenie tylko dwóch minut, a zostanie on automatycznie usunięty z magazynu.
+Poniższy przykład raportuje ostrzeżenie przejściowe na replice. Najpierw pobiera identyfikator partycji, a następnie identyfikator repliki dla interesującej Cię usługi. Następnie wysyła raport z **PowershellWatcher** na **ResourceDependency**właściwości. Raport jest interesujący tylko przez dwie minuty i jest automatycznie usuwany ze sklepu.
 
 ```powershell
 PS C:\> $partitionId = (Get-ServiceFabricPartition -ServiceName fabric:/WordCount/WordCount.Service).PartitionId
@@ -299,20 +290,20 @@ HealthEvents          :
 ```
 
 ### <a name="rest"></a>REST
-Wysyłanie raportów o kondycji przy użyciu usługi REST za pomocą żądania POST, przejdź do odpowiedniej jednostki, które mają w treści opis raportu kondycji. Na przykład, zobacz, jak wysyłać REST [klastra raportów o kondycji](https://docs.microsoft.com/rest/api/servicefabric/report-the-health-of-a-cluster) lub [usługi raportów o kondycji](https://docs.microsoft.com/rest/api/servicefabric/report-the-health-of-a-service). Obsługiwane są wszystkie jednostki.
+Wysyłać raporty kondycji przy użyciu protokołu REST z żądaniami POST, które przechodzą do żądanej jednostki i zawierają treść raportu kondycji. Na przykład Zobacz jak wysyłać [raporty kondycji klastra](https://docs.microsoft.com/rest/api/servicefabric/report-the-health-of-a-cluster) REST lub [raporty kondycji usług](https://docs.microsoft.com/rest/api/servicefabric/report-the-health-of-a-service). Wszystkie jednostki są obsługiwane.
 
-## <a name="next-steps"></a>Kolejne kroki
-Na podstawie danych kondycji modułów zapisujących usługi i administratorów aplikacji/klastra można traktować sposobów, aby skorzystać z informacji. Na przykład ich można skonfigurować alerty na podstawie stanu kondycji wychwycić poważnych problemów, zanim mogą powodować awarie. Administratorzy mogą również skonfigurować systemów naprawa automatycznie rozwiązać problemy.
+## <a name="next-steps"></a>Następne kroki
+W oparciu o dane dotyczące kondycji, moduły zapisujące usługi i Administratorzy klastrów/aplikacji mogą traktować metody korzystania z tych informacji. Można na przykład skonfigurować alerty na podstawie stanu kondycji, aby przechwytywać poważne problemy przed ich wystąpieniem. Administratorzy mogą również skonfigurować systemy naprawcze w celu automatycznego rozwiązywania problemów.
 
-[Wprowadzenie do kondycji usługi Service Fabric monitorowanie](service-fabric-health-introduction.md)
+[Wprowadzenie do monitorowania kondycji Service Fabric](service-fabric-health-introduction.md)
 
-[Wyświetlanie raportów o kondycji usługi Service Fabric](service-fabric-view-entities-aggregated-health.md)
+[Wyświetlanie raportów o kondycji Service Fabric](service-fabric-view-entities-aggregated-health.md)
 
 [Jak raportować i sprawdzać kondycję usługi](service-fabric-diagnostics-how-to-report-and-check-service-health.md)
 
-[Użytek rozwiązywania problemów z raportami kondycji systemu](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)
+[Używanie raportów kondycji systemu do rozwiązywania problemów](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)
 
-[Monitorować i diagnozować usługi lokalnie](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
+[Lokalne monitorowanie i diagnozowanie usług](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
 
-[Uaktualnianie aplikacji usługi Service Fabric](service-fabric-application-upgrade.md)
+[Service Fabric uaktualniania aplikacji](service-fabric-application-upgrade.md)
 

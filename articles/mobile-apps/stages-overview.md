@@ -1,40 +1,42 @@
 ---
 title: Różne etapy opracowywania aplikacji mobilnych dzięki usługom Visual Studio App Center i Azure
-description: Dowiedz się więcej na temat różnych etapów związanych z programowaniem aplikacji mobilnych oraz sposobu, w jaki usługi firmy Microsoft, takie jak App Center, mogą pomóc w tworzeniu aplikacji mobilnej o wysokiej klasy.
+description: Dowiedz się więcej na temat różnych etapów związanych z programowaniem aplikacji mobilnych oraz sposobu, w jaki usługi firmy Microsoft, takie jak Visual Studio App Center, mogą pomóc w tworzeniu aplikacji mobilnej o wysokiej klasy.
 author: elamalani
 ms.assetid: 12bbb070-9b3c-1234-5678-ccff02097224
 ms.service: vs-appcenter
 ms.topic: article
 ms.date: 10/22/2019
 ms.author: emalani
-ms.openlocfilehash: 6349f90eeacaedb03db4d6e91902fea69a8d0dae
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 2693155281c6ceb9cb737960df6d3201c0983c50
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818013"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454376"
 ---
 # <a name="different-stages-in-mobile-application-development"></a>Różne etapy opracowywania aplikacji mobilnych
-Tworzenie aplikacji mobilnej obejmuje wiele etapów, a deweloperzy mogą łatwo korzystać z usług, narzędzi i technologii firmy Microsoft, aby tworzyć aplikacje mobilne o wysokiej klasy.
+Tworzenie aplikacji mobilnej obejmuje wiele etapów. Możesz łatwo korzystać z usług, narzędzi i technologii firmy Microsoft, aby tworzyć aplikacje mobilne o wysokiej klasy.
 
 ## <a name="app-development"></a>Opracowywanie aplikacji
-Deweloperzy mogą tworzyć natywne aplikacje klienckie o pojedynczej platformie w różnych językach, takich jak obiektyw-C i Java, wieloplatformowe aplikacje korzystające z platformy Xamarin, reagują na natywny, Unity i hybrydowe przy użyciu oprogramowania Cordova. Mogą oni korzystać z środowisk IDE i edytorów kodu, takich jak Visual Studio, Visual Studio dla komputerów Mac lub Visual Studio Code na komputerach i komputerach Mac w celu skonstruowania aplikacji klienckich.
+Natywne aplikacje klienckie z jedną platformą można kompilować przy użyciu języków takich jak obiektyw-C i Java. Aplikacje dla wielu platform można tworzyć za pomocą platformy Xamarin, z możliwością reagowania natywnego i aparatu Unity. Można również tworzyć aplikacje hybrydowe przy użyciu oprogramowania Cordova. Aby skonstruować aplikacje klienckie, należy korzystać z środowisk IDE i edytorów kodu, takich jak Visual Studio, Visual Studio dla komputerów Mac lub Visual Studio Code na komputerach PC i Mac.
 
 ## <a name="plan-and-design-with-back-end-services"></a>Planowanie i projektowanie za pomocą usług zaplecza
- Firma Microsoft oferuje różne usługi umożliwiające konfigurowanie bezpiecznych, skalowalnych i niezawodnych zaplecza dla aplikacji mobilnej. Deweloperzy mogą tworzyć interfejsy API bezserwerowe i wyzwalacze bez konieczności utrzymania własnych serwerów. Mogą korzystać z usług, takich jak powiadomienia wypychane, synchronizacja danych w trybie offline, uwierzytelnianie i dane, które razem tworzą kompleksowe i rozległych zaplecza mobilnego jako usługę, która obsługuje różne scenariusze tworzenia aplikacji. Tworzenie usługi wewnętrznej bazy danych ma wiele wymagań:
-   - Ograniczenie przechowywania danych na urządzeniu.
+ Firma Microsoft oferuje różne usługi do konfigurowania bezpiecznego, skalowalnego i niezawodnego zaplecza dla aplikacji mobilnej. Można tworzyć bezserwerowe interfejsy API i wyzwalacze bez konieczności utrzymania własnych serwerów. Za pomocą powiadomień wypychanych, synchronizacji danych w trybie offline, uwierzytelniania i usług danych można tworzyć kompleksowe i rozległyche zaplecza mobilne, które obsługują różne scenariusze konstruowania aplikacji. 
+ 
+ Tworzenie usługi zaplecza ma wiele wymagań. Należy:
+   - Ogranicz magazyn danych na urządzeniu.
    - Synchronizowanie danych na wielu urządzeniach.
-   - Upewnienie się, że aplikacja działa bez łączności sieciowej.
+   - Upewnij się, że aplikacja działa bez połączenia sieciowego.
    - Wysyłaj powiadomienia do użytkowników.
    - Zmniejszenie zużycia baterii.
    - Twórz skalowalne, niezawodne i bezpieczne zaplecza.
-   - Automatyczna maintainence serwera.
+   - Automatyzacja konserwacji serwera.
 
 ## <a name="devops-and-continuous-monitoring"></a>DevOps i monitorowanie ciągłe
-Deweloperzy tworzący aplikacje mobilne i skoncentrowane na chmurze mogą korzystać z zalet ciągłej integracji (CI), ciągłego dostarczania (CD) i ciągłych usług monitorowania, aby generować natywne kompilacje dla wszystkich platform uruchamiają testy automatyzacji interfejsu użytkownika na tysiącach urządzenia fizyczne, automatyzują swoje wersje za poorednictwem kanałów testowania wersji beta lub wdrażać bezpośrednio w sklepach z aplikacjami. Ponadto mogą zbierać informacje dotyczące analizy użycia, awarii i wyjątków dla swoich aplikacji.
+Aby tworzyć aplikacje mobilne i skoncentrowane na chmurze, korzystaj z zalet ciągłej integracji (CI), ciągłego dostarczania (CD) i ciągłego monitorowania, aby generować natywne kompilacje dla wszystkich platform. Testy automatyzacji interfejsu użytkownika można uruchamiać na tysiącach urządzeń fizycznych, automatyzować ich wersje za poorednictwem kanałów testowania wersji beta lub wdrażać bezpośrednio w sklepach z aplikacjami. Można także zbierać informacje o analizie użycia, niepowodzeniach i wyjątkach dla swoich aplikacji.
 
 ## <a name="additional-services"></a>Usługi dodatkowe
-Istnieje wiele usług platformy Azure, które mogą być używane w zależności od typu i rodzaju kompilowanej aplikacji.
-  - Usługa Azure Wyszukiwanie poznawcze do wyszukiwania wszystkich typów danych wewnętrznych przy użyciu szybkiego wykonywania zapytań.
+Wiele usług platformy Azure może być używanych w zależności od typu i rodzaju kompilowanej aplikacji:
+  - Usługa Azure Wyszukiwanie poznawcze przeszukiwania wszystkich typów danych wewnętrznych przy użyciu szybkiego wykonywania zapytań.
   - Platforma Azure Cognitive Services do używania sztucznej analizy w aplikacji.
   - Usługa Azure sygnalizująca, aby umożliwić komunikację w czasie rzeczywistym w aplikacji.

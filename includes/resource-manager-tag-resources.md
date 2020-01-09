@@ -5,17 +5,17 @@ services: azure-resource-manager
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: include
-ms.date: 05/17/2018
+ms.date: 01/03/2020
 ms.author: tomfitz
 ms.custom: include file
-ms.openlocfilehash: b1252c455c2dfad2963f914ee746bcb932e59aa9
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 6d8f29e9272f3e05bb585c032240cce67c37d2bf
+ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74451456"
+ms.lasthandoff: 01/05/2020
+ms.locfileid: "75665141"
 ---
-1. Aby wyświetlić Tagi dla zasobu lub grupy zasobów, Wyszukaj istniejące Tagi w przeglądzie. Jeśli wcześniej nie zastosowano tagów, lista będzie pusta.
+1. Aby wyświetlić Tagi dla zasobu lub grupy zasobów, poszukaj istniejących tagów w przeglądzie. Jeśli wcześniej nie zastosowano tagów, lista będzie pusta.
    
      ![Wyświetl Tagi dla zasobu lub grupy zasobów](./media/resource-manager-tag-resources/view-tags.png)
 1. Aby dodać tag, wybierz **pozycję kliknij tutaj, aby dodać tagi**.
@@ -44,7 +44,7 @@ Aby zbiorczo przypisać Tagi do wielu zasobów:
 
 1. Wybierz pozycję **Przypisz Tagi**
 
-     ![Przypisywanie tagów](./media/resource-manager-tag-resources/assign-tags.png)
+     ![Przypisz tagi](./media/resource-manager-tag-resources/assign-tags.png)
 
 1. Po każdej nazwie i wartości wybierz pozycję **+** . Po zakończeniu wybierz pozycję **Przypisz**.
 
@@ -63,11 +63,3 @@ Aby wyświetlić wszystkie zasoby ze znacznikiem:
 1. Wyświetlane są wszystkie zasoby z tym tagiem.
 
      ![Wyświetl zasoby według tagu](./media/resource-manager-tag-resources/view-resources-by-tag.png)
-
-1. Aby uzyskać szybki dostęp, Przypnij widok do pulpitu nawigacyjnego.
-
-     ![Przypnij do pulpitu nawigacyjnego](./media/resource-manager-tag-resources/pin-to-dashboard.png)
-
-1. Widok jest dostępny z poziomu pulpitu nawigacyjnego.
-
-     ![Pulpit nawigacyjny](./media/resource-manager-tag-resources/dashboard-with-view.png)

@@ -1,29 +1,20 @@
 ---
-title: Usługa Azure Service Fabric zdarzeń | Dokumentacja firmy Microsoft
-description: Więcej informacji na temat zdarzenia usługi Service Fabric udostępniane poza pole, które ułatwiają monitorowanie klastra usługi Azure Service Fabric.
-services: service-fabric
-documentationcenter: .net
+title: Zdarzenia Service Fabric platformy Azure
+description: Dowiedz się więcej na temat Service Fabricych zdarzeń, które są dostępne w usłudze Box, aby ułatwić monitorowanie klastra Service Fabric platformy Azure.
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: b4270b9438a397ec09537c9d6343515ebc21af98
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 638b650e485ad3e83bd6021639a7e55b540d9cdc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60393031"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75451727"
 ---
 # <a name="service-fabric-events"></a>Zdarzenia usługi Service Fabric 
 
-Platformy usługi Service Fabric zapisuje kilka zdarzeń ze strukturą kluczowych działań operacyjnych dzieje się w klastrze. Te w zakresie od Uaktualnianie klastra na decyzje dotyczące umieszczenia repliki. Każde zdarzenie, czy usługi Service Fabric udostępnia mapuje do jednej z następujących jednostek w klastrze:
+Platforma Service Fabric zapisuje kilka zdarzeń strukturalnych dla najważniejszych działań operacyjnych, które są wykonywane w ramach klastra. Ten zakres od uaktualnień klastra do decyzji dotyczących umieszczania replik. Każde zdarzenie, które Service Fabric uwidacznia mapowanie do jednej z następujących jednostek w klastrze:
 * Klaster
 * Aplikacja
 * Usługa
@@ -31,23 +22,23 @@ Platformy usługi Service Fabric zapisuje kilka zdarzeń ze strukturą kluczowyc
 * Replika 
 * Kontener
 
-Aby wyświetlić pełną listę zdarzeń udostępnianych przez platformę - [zdarzenia listy usługi Service Fabric](service-fabric-diagnostics-event-generation-operational.md).
+Aby wyświetlić pełną listę zdarzeń uwidocznionych przez [listę zdarzeń Service Fabric](service-fabric-diagnostics-event-generation-operational.md).
 
-Poniżej przedstawiono niektóre przykładowe scenariusze, że powinny zostać wyświetlone zdarzenia dla klastra. 
-* Zdarzenia cyklu życia węzłów: węzły pojawiają się, przestaną działać, skalowanie w pionie i poziomie, uruchom ponownie i są aktywowane dezaktywowane, te zdarzenia zostaną ujawnione pokazujący, co się stało i pomóc w zidentyfikowaniu, jeśli coś się stało z samej maszyny lub wystąpił interfejsu API, który został wywoływane za pośrednictwem SF do modyfikowania stan węzła.
-* Uaktualnienie klastra: uaktualnienie klastra (SF wersji zmiany lub konfiguracji), zostanie wyświetlony uaktualnienia zainicjować, wdrażać przy użyciu każdej z domen uaktualnienia, a następnie ukończ (lub wycofywania). 
-* Uaktualnienia aplikacji: Podobnie jak Uaktualnianie klastra ma kompleksowy zestaw zdarzeń, jak uaktualnienie jest wprowadzane. Te zdarzenia mogą być przydatne do zrozumienia, jeśli uaktualnienie zostało zaplanowane, bieżący stan uaktualnienia oraz ogólną sekwencję zdarzeń. Jest to przydatne dla patrząc Wstecz, aby zobaczyć, co uaktualnienia zostały wycofane pomyślnie, lub czy został wyzwolony wycofywania.
-* Wdrażanie aplikacji/usługi / usuwania: dostępne są zdarzenia dla każdej aplikacji, usług i kontenerów, są utworzone lub usunięte i przydatne podczas skalowania do wewnątrz lub na zewnątrz np. zwiększenie liczby replik
-* Partycja przenosi (ponownej konfiguracji): zawsze, gdy stanowych partycji odbywa się przez rekonfiguracji (zmiany w zestawie), zdarzenie jest rejestrowane. Jest to przydatne, jeśli chcesz zrozumieć, jak często zmiany lub przejść w tryb failover zestawu replik partycji lub śledzenia, który węzeł była uruchomiona Twoja repliki podstawowej w dowolnym momencie w czasie.
-* Zdarzenia chaos: korzystając z usługi Service Fabric [Chaos](service-fabric-controlled-chaos.md) usługi, zobaczysz zdarzenia, za każdym razem, gdy usługa jest uruchomiona lub zatrzymana lub w przypadku, gdy jej wprowadza błędów w systemie.
-* Zdarzenia dotyczące kondycji: Usługa Service Fabric udostępnia zdarzenia dotyczące kondycji za każdym razem, gdy tworzony jest ostrzeżenie lub błąd raport o kondycji jednostki powraca do stanu kondycji OK lub raport o kondycji wygasa. Te zdarzenia są bardzo przydatne do śledzenia kondycji historyczne statystyki dla jednostki. 
+Poniżej przedstawiono kilka przykładów scenariuszy, w których powinny zostać wyświetlone zdarzenia w klastrze. 
+* Zdarzenia cyklu życia węzła: w miarę, jak węzły są dostępne, przejdź w dół, Skaluj w poziomie i w dół, uruchom ponownie i są aktywowane/dezaktywowane, te zdarzenia zostaną uwidocznione i pomagają w ustaleniu, czy wystąpił problem z maszyną, czy też interfejs API, który został wywołany przez SF w celu zmodyfikowania stanu węzła.
+* Uaktualnianie klastra: po uaktualnieniu klastra (wersja SF lub zmiana konfiguracji) zobaczysz, że zainicjowano uaktualnienie, przechodzenie przez wszystkie domeny uaktualnienia i zakończenie (lub wycofanie). 
+* Uaktualnianie aplikacji: podobnie jak w przypadku uaktualnień klastra, istnieje obszerny zestaw zdarzeń w ramach uaktualniania. Te zdarzenia mogą być przydatne w przypadku zaplanowania uaktualnienia, bieżącego stanu uaktualnienia i ogólnej sekwencji zdarzeń. Jest to przydatne w celu sprawdzenia, jakie uaktualnienia zostały pomyślnie wdrożone lub czy wycofanie zostało wyzwolone.
+* Wdrożenie/usuwanie aplikacji/usługi: istnieją zdarzenia dla każdej aplikacji, usługi i kontenera, które są tworzone lub usuwane i przydatne podczas skalowania lub wyróżnienia, na przykład zwiększając liczbę replik
+* Partycja przenoszona (ponowna konfiguracja): zawsze, gdy partycja stanowa przechodzi przez ponowną konfigurację (zmiany w zestawie replik), rejestrowane jest zdarzenie. Jest to przydatne, jeśli próbujesz zrozumieć, jak często zestaw replik partycji jest zmieniany lub przełączany w tryb failover, lub Śledź węzeł, w którym uruchomiono replikę podstawową w dowolnym momencie.
+* Zdarzenia chaos: w przypadku korzystania z usługi [Chaos](service-fabric-controlled-chaos.md) Service Fabric zdarzenia będą widoczne przy każdym uruchomieniu lub zatrzymaniu usługi lub po wprowadzeniu błędu w systemie.
+* Zdarzenia dotyczące kondycji: Service Fabric uwidacznia zdarzenia dotyczące kondycji za każdym razem, gdy zostanie utworzony raport lub Kondycja błędu, lub jednostka przechodzi z powrotem do stanu kondycji lub raport o kondycji wygaśnie. Te zdarzenia są bardzo przydatne do śledzenia historycznych statystyk kondycji dla jednostki. 
 
 ## <a name="how-to-access-events"></a>Jak uzyskać dostęp do zdarzeń
 
-Istnieje kilka różnych sposobów, za pomocą których zdarzenia usługi Service Fabric można uzyskać dostęp:
-* Zdarzenia są rejestrowane za pomocą standardowych kanałów, takich jak dzienniki zdarzeń ETW/Windows i mogą być wizualizowane przez dowolnego narzędzia do monitorowania, który obsługuje takie jak dzienniki usługi Azure Monitor. Domyślnie klastry utworzone w portalu ma włączoną diagnostyką i agenta diagnostyki Windows Azure, wysyłanie zdarzeń do usługi Azure table storage, ale nadal konieczne zintegrowanie to z zasobem usługi log analytics. Dowiedz się więcej o konfigurowaniu [agenta funkcji Diagnostyka Azure](service-fabric-diagnostics-event-aggregation-wad.md) do modyfikowania konfiguracji diagnostyki do klastra, aby wczytać więcej dzienników lub liczniki wydajności i [usługi Azure Monitor rejestruje integracji](service-fabric-diagnostics-event-analysis-oms.md)
-* Usługa bazy danych EventStore interfejsów API Rest, dzięki czemu możesz zbadać klastra bezpośrednio lub za pomocą biblioteki klienckiej usługi Service Fabric. Zobacz [interfejsów API bazy danych EventStore zapytań dla zdarzenia klastra](service-fabric-diagnostics-eventstore-query.md).
+Istnieje kilka różnych sposobów, w których można uzyskać dostęp do Service Fabric zdarzeń:
+* Zdarzenia są rejestrowane za pomocą standardowych kanałów, takich jak ETW/dzienniki zdarzeń systemu Windows i mogą być wizualizowane przez dowolne narzędzie monitorujące, które obsługuje takie jak dzienniki Azure Monitor. Domyślnie klastry utworzone w portalu mają włączoną diagnostykę i umożliwiają agentowi diagnostyki systemu Windows Azure wysyłanie zdarzeń do usługi Azure Table Storage, ale nadal trzeba zintegrować ją z zasobem analizy dzienników. Przeczytaj więcej na temat konfigurowania [agenta Diagnostyka Azure](service-fabric-diagnostics-event-aggregation-wad.md) , aby zmodyfikować konfigurację diagnostyki klastra w celu pobrania większej liczby dzienników lub liczników wydajności oraz [integracji dzienników Azure monitor](service-fabric-diagnostics-event-analysis-oms.md)
+* Interfejsy API REST usługi EventStore, które umożliwiają bezpośrednie wysyłanie zapytań do klastra, lub za pomocą biblioteki klienta Service Fabric. Zobacz [interfejsy API EventStore zapytań dla zdarzeń klastra](service-fabric-diagnostics-eventstore-query.md).
 
-## <a name="next-steps"></a>Kolejne kroki
-* Więcej informacji na monitorowanie klastra — [monitorowanie klastra i platformy](service-fabric-diagnostics-event-generation-infra.md).
-* Dowiedz się więcej o usłudze bazy danych EventStore — [Omówienie usługi bazy danych EventStore](service-fabric-diagnostics-eventstore.md)
+## <a name="next-steps"></a>Następne kroki
+* Więcej informacji na temat monitorowania klastra — [monitorowanie klastra i platformy](service-fabric-diagnostics-event-generation-infra.md).
+* Dowiedz się więcej na temat usługi EventStore Service — [Omówienie usługi EventStore](service-fabric-diagnostics-eventstore.md)

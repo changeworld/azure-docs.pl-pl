@@ -1,5 +1,5 @@
 ---
-title: Co to są przeglądy dostępu? — Usługa azure Active Directory | Dokumentacja firmy Microsoft
+title: Co to są przeglądy dostępu? — Azure Active Directory | Microsoft Docs
 description: Za pomocą Azure Active Directory przeglądy dostępu można kontrolować członkostwo w grupach i dostęp do aplikacji, aby zaspokoić inicjatywy dotyczące zarządzania, ryzyka i zgodności w organizacji.
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.date: 08/05/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 65def17622f026aa4869a4c60e7cb5146d56c5b0
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 4d9922f1c4cbb0afca74c911d9b2bc9f0eab0714
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72389524"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422770"
 ---
 # <a name="what-are-azure-ad-access-reviews"></a>Co to są przeglądy dostępu w usłudze Azure AD?
 
@@ -58,19 +58,21 @@ W zależności od tego, co chcesz przejrzeć, możesz utworzyć przegląd dostę
 | --- | --- | --- | --- |
 | Członkowie grupy zabezpieczeń</br>Członkowie grupy pakietu Office | Określeni recenzenci</br>Właściciele grupy</br>Samoobsługowe przeglądanie | Przeglądy dostępu w usłudze Azure AD</br>Grupy usługi Azure AD | Panel dostępu |
 | Przypisane do połączonej aplikacji | Określeni recenzenci</br>Samoobsługowe przeglądanie | Przeglądy dostępu w usłudze Azure AD</br>Aplikacje dla przedsiębiorstw usługi Azure AD (w wersji zapoznawczej) | Panel dostępu |
-| Rola usługi Azure AD | Określeni recenzenci</br>Samoobsługowe przeglądanie | [Usługa Azure AD PIM](../privileged-identity-management/pim-how-to-start-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) | Azure Portal |
-| Rola zasobów platformy Azure | Określeni recenzenci</br>Samoobsługowe przeglądanie | [Usługa Azure AD PIM](../privileged-identity-management/pim-resource-roles-start-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) | Azure Portal |
+| Rola usługi Azure AD | Określeni recenzenci</br>Samoobsługowe przeglądanie | [Usługa Azure AD PIM](../privileged-identity-management/pim-how-to-start-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) | Portal Azure |
+| Rola zasobów platformy Azure | Określeni recenzenci</br>Samoobsługowe przeglądanie | [Usługa Azure AD PIM](../privileged-identity-management/pim-resource-roles-start-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) | Portal Azure |
 
 
 ## <a name="onboard-access-reviews"></a>Dołączanie przeglądów dostępu
 
 Aby dołączać przeglądy dostępu, wykonaj następujące kroki.
 
-1. Jako Administrator globalny lub administrator użytkownika Zaloguj się do [Azure Portal](https://portal.azure.com) , w którym chcesz korzystać z przeglądów dostępu.
+1. Przejdź do [Azure Portal](https://portal.azure.com) , aby zarządzać recenzjami dostępu i zalogować się jako Administrator globalny lub administrator użytkowników.
 
-1. W lewym okienku nawigacji kliknij pozycję **Azure Active Directory**.
+1. Wyszukaj i wybierz **Azure Active Directory**.
 
-1. W menu po lewej stronie kliknij pozycję **Zarządzanie tożsamościami**.
+      ![Azure Portal Wyszukaj Azure Active Directory](media/access-reviews-overview/search-azure-active-directory.png)
+
+1. Wybierz pozycję **Zarządzanie tożsamościami**.
 
 1. Kliknij pozycję **przeglądy dostępu**.
  
@@ -97,7 +99,7 @@ Jeśli wszystko jest gotowe do wdrożenia przeglądów dostępu w organizacji, w
 
 ### <a name="which-users-must-have-licenses"></a>Którzy użytkownicy muszą mieć licencje?
 
-Każdy użytkownik, który współdziała z przeglądami dostępu, musi mieć płatną licencję Azure AD — wersja Premium P2. Przykłady obejmują:
+Każdy użytkownik, który współdziała z przeglądami dostępu, musi mieć płatną licencję Azure AD — wersja Premium P2. Przykłady:
 
 - Administratorzy, którzy tworzą przegląd dostępu
 - Właściciele grup, którzy wykonują przegląd dostępu

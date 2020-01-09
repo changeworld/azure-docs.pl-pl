@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 08/23/2019
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: 692b07c82c329a93d79ad3a87beec5dbe1c595d3
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: d58eb333c930d2ffac4eb57340ea776338325181
+ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74669979"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75680985"
 ---
 # <a name="continuous-deployment-to-azure-app-service"></a>Ciągłe wdrażanie do Azure App Service
 
@@ -27,7 +27,13 @@ Aby użyć Azure Repos, upewnij się, że organizacja usługi Azure DevOps jest 
 
 W przypadku usługi BitBucket lub GitHub Autoryzuj Azure App Service, aby nawiązać połączenie z repozytorium. Wystarczy tylko autoryzować z usługą kontroli źródła. 
 
-1. Wybierz pozycję **App Services** w lewym [Azure Portal](https://portal.azure.com) nawigacyjnym, a następnie wybierz aplikację sieci Web, którą chcesz wdrożyć. 
+1. W [Azure Portal](https://portal.azure.com)Wyszukaj i wybierz pozycję **App Services**. 
+
+   ![Wyszukaj usługi App Services.](media/app-service-continuous-deployment/search-for-app-services.png)
+
+1. Wybierz aplikację sieci Web, którą chcesz wdrożyć.
+
+   ![Wybierz aplikację.](media/app-service-continuous-deployment/select-your-app.png)
    
 1. Na stronie aplikacja wybierz pozycję **centrum wdrażania** w menu po lewej stronie.
    
@@ -45,7 +51,7 @@ Po zatwierdzeniu usługi kontroli źródła Skonfiguruj aplikację do ciągłego
 
 Wbudowanego kudu App Service Build Server można użyć do ciągłego wdrażania z usługi GitHub, BitBucket lub Azure Repos. 
 
-1. Wybierz pozycję **App Services** w lewym [Azure Portal](https://portal.azure.com) nawigacyjnym, a następnie wybierz aplikację sieci Web, którą chcesz wdrożyć. 
+1. W [Azure Portal](https://portal.azure.com)Wyszukaj i wybierz pozycję **App Services**, a następnie wybierz aplikację sieci Web, którą chcesz wdrożyć. 
    
 1. Na stronie aplikacja wybierz pozycję **centrum wdrażania** w menu po lewej stronie.
    
@@ -63,7 +69,7 @@ Wbudowanego kudu App Service Build Server można użyć do ciągłego wdrażania
    - W witrynie GitHub wybierz pozycję **organizacja**, **repozytorium**i **gałąź** , którą chcesz stale wdrożyć.
      
      > [!NOTE]
-     > Jeśli nie widzisz żadnych repozytoriów, może być konieczne autoryzowanie Azure App Service w serwisie GitHub. Przejdź do repozytorium GitHub i przejdź do pozycji **ustawienia** > **aplikacje** > **autoryzowane aplikacje uwierzytelniania OAuth**. Wybierz pozycję **Azure App Service**, a następnie wybierz pozycję **Udziel**.
+     > Jeśli nie widzisz żadnych repozytoriów, może być konieczne autoryzowanie Azure App Service w serwisie GitHub. Przejdź do repozytorium GitHub i przejdź do pozycji **ustawienia** > **aplikacje** > **autoryzowane aplikacje uwierzytelniania OAuth**. Wybierz pozycję **Azure App Service**, a następnie wybierz pozycję **Udziel**. W przypadku repozytoriów organizacji musisz być właścicielem organizacji, aby przyznać uprawnienia.
      
    - W przypadku BitBucket wybierz **zespół**BitBucket, **repozytorium**i **gałąź** , które chcesz wdrożyć w sposób ciągły.
      
@@ -96,7 +102,7 @@ Aby uzyskać Azure App Service do tworzenia Azure Pipelines ciągłego dostarcza
 
 Aby skonfigurować Azure Pipelines (wersja zapoznawcza):
 
-1. Wybierz pozycję **App Services** w lewym [Azure Portal](https://portal.azure.com) nawigacyjnym, a następnie wybierz aplikację sieci Web, którą chcesz wdrożyć. 
+1. W [Azure Portal](https://portal.azure.com)Wyszukaj i wybierz pozycję **App Services**, a następnie wybierz aplikację sieci Web, którą chcesz wdrożyć. 
    
 1. Na stronie aplikacja wybierz pozycję **centrum wdrażania** w menu po lewej stronie.
    
@@ -107,7 +113,7 @@ Aby skonfigurować Azure Pipelines (wersja zapoznawcza):
    - W witrynie GitHub wybierz pozycję **organizacja**, **repozytorium**i **gałąź** , którą chcesz stale wdrożyć.
      
      > [!NOTE]
-     > Jeśli nie widzisz żadnych repozytoriów, może być konieczne autoryzowanie Azure App Service w serwisie GitHub. Przejdź do repozytorium GitHub i przejdź do pozycji **ustawienia** > **aplikacje** > **autoryzowane aplikacje uwierzytelniania OAuth**. Wybierz pozycję **Azure App Service**, a następnie wybierz pozycję **Udziel**.
+     > Jeśli nie widzisz żadnych repozytoriów, może być konieczne autoryzowanie Azure App Service w serwisie GitHub. Przejdź do repozytorium GitHub i przejdź do pozycji **ustawienia** > **aplikacje** > **autoryzowane aplikacje uwierzytelniania OAuth**. Wybierz pozycję **Azure App Service**, a następnie wybierz pozycję **Udziel**. W przypadku repozytoriów organizacji musisz być właścicielem organizacji, aby przyznać uprawnienia.
      
    - W obszarze Azure Repos wybierz **organizację Azure DevOps**, **projekt**, **repozytorium**i **gałąź** , którą chcesz wdrożyć w sposób ciągły, lub skonfiguruj nową organizację usługi Azure DevOps.
      
@@ -141,7 +147,7 @@ Aby wyłączyć ciągłe wdrażanie, wybierz pozycję **Rozłącz** w górnej cz
 
 ## <a name="use-unsupported-repos"></a>Użyj nieobsługiwanych repozytoriów
 
-W przypadku aplikacji systemu Windows możesz ręcznie skonfigurować ciągłe wdrażanie z repozytorium Git lub Mecurial w chmurze, które nie jest bezpośrednio obsługiwane przez portal, na przykład [GitLab](https://gitlab.com/). Możesz to zrobić, wybierając pole zewnętrzne na stronie **centrum wdrażania** . Aby uzyskać więcej informacji, zobacz [Konfigurowanie ciągłego wdrażania przy użyciu kroków ręcznych](https://github.com/projectkudu/kudu/wiki/Continuous-deployment#setting-up-continuous-deployment-using-manual-steps).
+W przypadku aplikacji systemu Windows możesz ręcznie skonfigurować ciągłe wdrażanie z repozytorium Git lub Mercurial w chmurze, które nie jest bezpośrednio obsługiwane przez portal, na przykład [GitLab](https://gitlab.com/). Możesz to zrobić, wybierając pole zewnętrzne na stronie **centrum wdrażania** . Aby uzyskać więcej informacji, zobacz [Konfigurowanie ciągłego wdrażania przy użyciu kroków ręcznych](https://github.com/projectkudu/kudu/wiki/Continuous-deployment#setting-up-continuous-deployment-using-manual-steps).
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 

@@ -1,25 +1,16 @@
 ---
-title: Interfejs wiersza polecenia platformy Azure Service Fabric — sfctl sa — klaster | Microsoft Docs
-description: Opisuje polecenia autonomicznego klastra Service Fabric CLI sfctl.
-services: service-fabric
-documentationcenter: na
+title: Interfejs wiersza polecenia platformy Azure Service Fabric — sfctl sa — klaster
+description: Dowiedz się więcej na temat sfctl, interfejsu wiersza polecenia platformy Azure Service Fabric. Zawiera listę poleceń zarządzania klastrami autonomicznymi.
 author: jeffj6123
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: multiple
 ms.date: 9/17/2019
 ms.author: jejarry
-ms.openlocfilehash: ecdd288d7cb320b91ab4c69697d334f8d9459e62
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 765d7d76cb13758417bb3927ff9620026ca763b1
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901013"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646028"
 ---
 # <a name="sfctl-sa-cluster"></a>sfctl sa-cluster
 Zarządzaj autonomicznymi klastrami Service Fabric.
@@ -28,9 +19,9 @@ Zarządzaj autonomicznymi klastrami Service Fabric.
 
 |Polecenie|Opis|
 | --- | --- |
-| sygnatur | Pobierz konfigurację autonomicznego klastra Service Fabric. |
+| Konfiguracja | Pobierz konfigurację autonomicznego klastra Service Fabric. |
 | Konfiguracja — uaktualnianie | Rozpocznij uaktualnianie konfiguracji autonomicznego klastra Service Fabric. |
-| uaktualnienie — stan | Pobierz stan uaktualnienia konfiguracji klastra dla autonomicznego klastra Service Fabric. |
+| upgrade—status | Pobierz stan uaktualnienia konfiguracji klastra dla autonomicznego klastra Service Fabric. |
 
 ## <a name="sfctl-sa-cluster-config"></a>sfctl sa — Konfiguracja klastra
 Pobierz konfigurację autonomicznego klastra Service Fabric.
@@ -48,8 +39,8 @@ Konfiguracja klastra zawiera właściwości klastra obejmujące różne typy wę
 
 |Argument|Opis|
 | --- | --- |
-| --Debug | Zwiększ Szczegółowość rejestrowania, aby pokazać wszystkie dzienniki debugowania. |
-| --Help-h | Pokaż ten komunikat pomocy i Zakończ. |
+| --debug | Zwiększ Szczegółowość rejestrowania, aby pokazać wszystkie dzienniki debugowania. |
+| --help -h | Pokaż ten komunikat pomocy i Zakończ. |
 | --Wyjście-o | Format danych wyjściowych.  Dozwolone wartości\: JSON, jsonc, Table, TSV.  Domyślny\: JSON. |
 | --zapytanie | Ciąg zapytania JMESPath. Aby uzyskać więcej informacji i przykładów, zobacz http\://jmespath.org/. |
 | --verbose | Zwiększ Szczegółowość rejestrowania. Użyj--Debug dla pełnych dzienników debugowania. |
@@ -67,12 +58,12 @@ Sprawdź poprawność dostarczonych parametrów uaktualnienia konfiguracji i Roz
 | --Application-Health-policies | Zakodowany słownik JSON par nazw typu aplikacji i maksymalny procent w złej kondycji przed podnoszeniem błędu. |
 | --w złej kondycji — węzły | Maksymalny dozwolony procent obniżenia kondycji różnicowej podczas uaktualniania. Dozwolone wartości to liczby całkowite z przedziału od zera do 100. |
 | --Health-Check-retry | Czas między próbami sprawdzenia kondycji, jeśli aplikacja lub klaster nie są w dobrej kondycji.  Domyślne\: PT0H0M0S. |
-| --Kondycja-sprawdzanie stabilne | Ilość czasu, przez jaką aplikacja lub klaster muszą pozostawać w dobrej kondycji, zanim uaktualnienie przejdzie do następnej domeny uaktualnienia.  Domyślne\: PT0H0M0S. <br><br> Najpierw jest interpretowany jako ciąg reprezentujący czas trwania ISO 8601. Jeśli to się nie powiedzie, jest interpretowana jako liczba reprezentująca łączną liczbę milisekund. |
-| --Health-Check-wait | Czas oczekiwania po zakończeniu domeny uaktualnienia przed rozpoczęciem procesu kontroli kondycji.  Domyślne\: PT0H0M0S. |
+| --health-check-stable | Ilość czasu, przez jaką aplikacja lub klaster muszą pozostawać w dobrej kondycji, zanim uaktualnienie przejdzie do następnej domeny uaktualnienia.  Domyślne\: PT0H0M0S. <br><br> Najpierw jest interpretowany jako ciąg reprezentujący czas trwania ISO 8601. Jeśli to się nie powiedzie, jest interpretowana jako liczba reprezentująca łączną liczbę milisekund. |
+| --health-check-wait | Czas oczekiwania po zakończeniu domeny uaktualnienia przed rozpoczęciem procesu kontroli kondycji.  Domyślne\: PT0H0M0S. |
 | --timeout-t | Domyślne\: 60. |
-| --zła kondycja — aplikacje | Maksymalny dozwolony procent aplikacji w złej kondycji podczas uaktualniania. Dozwolone wartości to liczby całkowite z przedziału od zera do 100. |
+| --unhealthy-applications | Maksymalny dozwolony procent aplikacji w złej kondycji podczas uaktualniania. Dozwolone wartości to liczby całkowite z przedziału od zera do 100. |
 | --zła kondycja — węzły | Maksymalny dozwolony procent węzłów w złej kondycji podczas uaktualniania. Dozwolone wartości to liczby całkowite z przedziału od zera do 100. |
-| --Upgrade-Domain-Delta-zła kondycja — węzły | Maksymalny dozwolony procent obniżenia kondycji domeny uaktualnienia podczas uaktualniania. Dozwolone wartości to liczby całkowite z przedziału od zera do 100. |
+| --upgrade-domain-delta-unhealthy-nodes | Maksymalny dozwolony procent obniżenia kondycji domeny uaktualnienia podczas uaktualniania. Dozwolone wartości to liczby całkowite z przedziału od zera do 100. |
 | --Upgrade-Domain-timeout | Czas, przez jaki każda domena uaktualnienia musi zakończyć pracę przed wykonaniem FailureAction.  Domyślne\: PT0H0M0S. <br><br> Najpierw jest interpretowany jako ciąg reprezentujący czas trwania ISO 8601. Jeśli to się nie powiedzie, jest interpretowana jako liczba reprezentująca łączną liczbę milisekund. |
 | --Upgrade-timeout | Czas, przez jaki całkowite uaktualnienie musi zakończyć się przed wykonaniem FailureAction.  Domyślne\: PT0H0M0S. <br><br> Najpierw jest interpretowany jako ciąg reprezentujący czas trwania ISO 8601. Jeśli to się nie powiedzie, jest interpretowana jako liczba reprezentująca łączną liczbę milisekund. |
 
@@ -80,8 +71,8 @@ Sprawdź poprawność dostarczonych parametrów uaktualnienia konfiguracji i Roz
 
 |Argument|Opis|
 | --- | --- |
-| --Debug | Zwiększ Szczegółowość rejestrowania, aby pokazać wszystkie dzienniki debugowania. |
-| --Help-h | Pokaż ten komunikat pomocy i Zakończ. |
+| --debug | Zwiększ Szczegółowość rejestrowania, aby pokazać wszystkie dzienniki debugowania. |
+| --help -h | Pokaż ten komunikat pomocy i Zakończ. |
 | --Wyjście-o | Format danych wyjściowych.  Dozwolone wartości\: JSON, jsonc, Table, TSV.  Domyślny\: JSON. |
 | --zapytanie | Ciąg zapytania JMESPath. Aby uzyskać więcej informacji i przykładów, zobacz http\://jmespath.org/. |
 | --verbose | Zwiększ Szczegółowość rejestrowania. Użyj--Debug dla pełnych dzienników debugowania. |
@@ -109,8 +100,8 @@ Pobierz szczegóły stanu uaktualnienia konfiguracji klastra dla autonomicznego 
 
 |Argument|Opis|
 | --- | --- |
-| --Debug | Zwiększ Szczegółowość rejestrowania, aby pokazać wszystkie dzienniki debugowania. |
-| --Help-h | Pokaż ten komunikat pomocy i Zakończ. |
+| --debug | Zwiększ Szczegółowość rejestrowania, aby pokazać wszystkie dzienniki debugowania. |
+| --help -h | Pokaż ten komunikat pomocy i Zakończ. |
 | --Wyjście-o | Format danych wyjściowych.  Dozwolone wartości\: JSON, jsonc, Table, TSV.  Domyślny\: JSON. |
 | --zapytanie | Ciąg zapytania JMESPath. Aby uzyskać więcej informacji i przykładów, zobacz http\://jmespath.org/. |
 | --verbose | Zwiększ Szczegółowość rejestrowania. Użyj--Debug dla pełnych dzienników debugowania. |

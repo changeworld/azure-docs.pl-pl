@@ -10,19 +10,19 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: b37844ff93ed1cfb631c2d8da12d0729f61f44ed
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 2b9293e3c1ce280117ea40c43715f4dcd98de66d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837654"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427641"
 ---
 # <a name="how-to-evaluate-model-performance-in-azure-machine-learning-studio-classic"></a>Jak oszacować wydajność modelu w Azure Machine Learning Studio (klasyczny)
 
 W tym artykule przedstawiono sposób oceny wydajności modelu w Azure Machine Learning Studio (klasyczny) i przedstawiono krótkie objaśnienie metryk dostępnych dla tego zadania. Prezentowane są trzy popularne scenariusze uczenia nauki: 
 
 * ubytk
-* Klasyfikacja binarna 
+* klasyfikacja binarna 
 * Klasyfikacja wieloklasowa
 
 
@@ -41,10 +41,10 @@ Alternatywnie można użyć weryfikacji krzyżowej do wykonywania wielu różnyc
 W poniższych sekcjach utworzysz proste modele regresji i klasyfikacji oraz Oceń ich wydajność przy użyciu zarówno [modelu oceny][evaluate-model] , jak i modułowego [sprawdzania poprawności][cross-validate-model] .
 
 ## <a name="evaluating-a-regression-model"></a>Ocenianie modelu regresji
-Załóżmy, że chcemy przewidzieć cenę samochodu przy użyciu funkcji, takich jak wymiary, możliwości techniczne, specyfikacje silnika i tak dalej. Jest to typowy problem z regresją, gdzie zmienna docelowa (*Cena*) jest stałą wartością liczbową. Możemy dopasować model regresji liniowej, który zapewnia wartości funkcji określonego samochodu, można przewidzieć cenę tego samochodu. Ten model regresji może służyć do oceny tego samego zestawu danych, który został przeszkolony. Po przeprowadzeniu przewidywanych cen samochodu możemy oszacować wydajność modelu, sprawdzając, ile prognoz odchyleń od rzeczywistych cen. Aby to zilustrować, korzystamy z *zestawu danych cen dla samochodów (RAW)* dostępnego w sekcji **zapisywanych zestawów** danych w ml Studio (klasyczny).
+Załóżmy, że chcemy przewidzieć cenę samochodu przy użyciu funkcji, takich jak wymiary, możliwości techniczne, specyfikacje silnika i tak dalej. Jest to typowy problem z regresją, gdzie zmienna docelowa (*Cena*) jest stałą wartością liczbową. Możemy dopasować model regresji liniowej, który zapewnia wartości funkcji określonego samochodu, można przewidzieć cenę tego samochodu. Ten model regresji może służyć do oceny tego samego zestawu danych, który został przeszkolony. Po przeprowadzeniu przewidywanych cen samochodu możemy oszacować wydajność modelu, sprawdzając, ile prognoz odchyleń od rzeczywistych cen. Aby to zilustrować, korzystamy z *zestawu danych cen dla samochodów (RAW)* dostępnego w sekcji **zapisywanych zestawów** danych w Machine Learning Studio (klasyczny).
 
 ### <a name="creating-the-experiment"></a>Tworzenie eksperymentu
-Dodaj następujące moduły do obszaru roboczego w klasycznej wersji Azure Machine Learning Studio:
+Dodaj następujące moduły do obszaru roboczego w Azure Machine Learning Studio (klasyczny):
 
 * Dane cen samochodów (RAW)
 * [Regresja liniowa][linear-regression]
@@ -83,10 +83,10 @@ Po uruchomieniu eksperymentu możesz sprawdzić wyniki oceny, klikając odpowied
 Rysunek 4. Wyniki wzajemnego sprawdzania poprawności modelu regresji.
 
 ## <a name="evaluating-a-binary-classification-model"></a>Ocenianie binarnego modelu klasyfikacji
-W scenariuszu klasyfikacji binarnej zmienna docelowa ma tylko dwa możliwe wyniki, na przykład: {0, 1} lub {false, true}, {ujemna, pozytywna}. Załóżmy, że otrzymujesz zestaw danych dla dorosłych pracowników z niektórymi zmiennymi demograficznymi i pracowniczymi, i że zostanie wyświetlony monit o przewidywanie poziomu dochodów, zmiennej binarnej o wartościach {"< = 50 K", "> 50 K"}. Innymi słowy Klasa negatywna reprezentuje pracowników, którzy nie mają więcej niż 50 K rocznie, a Klasa dodatnia reprezentuje wszystkich innych pracowników. Podobnie jak w przypadku scenariusza regresji będziemy uczyć się modelu, oceny danych i oceny wyników. Główną różnicą jest wybór metryk dla klasycznej wersji Azure Machine Learning Studio obliczeń i danych wyjściowych. Aby zilustrować scenariusz przewidywania poziomu dochodów, użyjemy zestawu danych [dla dorosłych](https://archive.ics.uci.edu/ml/datasets/Adult) do utworzenia eksperymentu dla programu Studio (klasycznego) i oceny wydajności modelu regresji logistycznej z dwoma klasami, powszechnie używanego klasyfikatora binarnego.
+W scenariuszu klasyfikacji binarnej zmienna docelowa ma tylko dwa możliwe wyniki, na przykład: {0, 1} lub {false, true}, {ujemna, pozytywna}. Załóżmy, że otrzymujesz zestaw danych dla dorosłych pracowników z niektórymi zmiennymi demograficznymi i pracowniczymi, i że zostanie wyświetlony monit o przewidywanie poziomu dochodów, zmiennej binarnej o wartościach {"< = 50 K", "> 50 K"}. Innymi słowy Klasa negatywna reprezentuje pracowników, którzy nie mają więcej niż 50 K rocznie, a Klasa dodatnia reprezentuje wszystkich innych pracowników. Podobnie jak w przypadku scenariusza regresji będziemy uczyć się modelu, oceny danych i oceny wyników. Główną różnicą jest wybór metryk Azure Machine Learning Studio (klasycznych) obliczeń i danych wyjściowych. Aby zilustrować scenariusz przewidywania poziomu dochodów, użyjemy zestawu danych [dla dorosłych](https://archive.ics.uci.edu/ml/datasets/Adult) do utworzenia eksperymentu dla programu Studio (klasycznego) i oceny wydajności modelu regresji logistycznej z dwoma klasami, powszechnie używanego klasyfikatora binarnego.
 
 ### <a name="creating-the-experiment"></a>Tworzenie eksperymentu
-Dodaj następujące moduły do obszaru roboczego w klasycznej wersji Azure Machine Learning Studio:
+Dodaj następujące moduły do obszaru roboczego w Azure Machine Learning Studio (klasyczny):
 
 * Binarny zestaw danych klasyfikacji dochodów z spisu dla dorosłych
 * [Regresja logistyczna dla dwóch klas][two-class-logistic-regression]
@@ -105,7 +105,7 @@ Po uruchomieniu eksperymentu możesz kliknąć port wyjściowy modułu [oceny mo
 
 Dokładność jest po prostu proporcją poprawnie sklasyfikowanych wystąpień. Zwykle jest to pierwsza Metryka, która jest sprawdzana podczas oceny klasyfikatora. Jednak jeśli dane testowe są niezrównoważone (gdzie większość wystąpień należy do jednej z klas) lub użytkownik jest bardziej interesujący w wydajności jednej z klas, dokładność nie przechwytuje skuteczności klasyfikatora. W scenariuszu klasyfikacji poziomu dochodu przyjęto założenie, że testy są przeprowadzane na niektórych danych, gdzie 99% wystąpień reprezentuje osoby, które uzyskują mniej niż lub równą 50 000 na rok. Istnieje możliwość osiągnięcia dokładności 0,99, przewidywalność klasy "< = 50 000" dla wszystkich wystąpień. Klasyfikator w tym przypadku wygląda na to, że jest to dobre zadanie ogólne, ale w rzeczywistości nie jest klasyfikowane żadnej z dużych dochodów (1%) prawidłowego.
 
-Z tego powodu warto obliczyć dodatkowe metryki, które przechwytują bardziej charakterystyczne aspekty oceny. Przed przechodzeniem do szczegółów takich metryk ważne jest, aby zrozumieć matrycę nieporozumienej oceny klasyfikacji binarnej. Etykiety klas w zestawie szkoleniowym mogą przyjmować tylko dwie możliwe wartości, które zwykle odnoszą się do nich jako wartość dodatnia lub ujemna. Dodatnie i ujemne wystąpienia klasyfikatora, które są prawidłowo przewidywalne, są nazywane odpowiednio prawdziwymi wynikami dodatnimi (TP) i prawdziwymi negatywnymi (TN). Podobnie niewłaściwie sklasyfikowane wystąpienia są nazywane fałszywie dodatnimi (FP) i fałszywych negatywnych (FN). Jest to po prostu tabela przedstawiająca liczbę wystąpień przypadających na poszczególne cztery kategorie. Klasyczna wersja Azure Machine Learning Studio automatycznie decyduje, które z dwóch klas w zestawie danych jest klasą dodatnią. Jeśli etykiety klas są typu Boolean lub Integer, wówczas wystąpienia oznaczone jako "true" lub "1" są przypisywane do klasy dodatniej. Jeśli etykiety są ciągami, na przykład z zestawem danych dochodów, etykiety są sortowane alfabetycznie, a pierwszy poziom jest wybierany jako Klasa ujemna, podczas gdy drugi poziom jest klasą dodatnią.
+Z tego powodu warto obliczyć dodatkowe metryki, które przechwytują bardziej charakterystyczne aspekty oceny. Przed przechodzeniem do szczegółów takich metryk ważne jest, aby zrozumieć matrycę nieporozumienej oceny klasyfikacji binarnej. Etykiety klas w zestawie szkoleniowym mogą przyjmować tylko dwie możliwe wartości, które zwykle odnoszą się do nich jako wartość dodatnia lub ujemna. Dodatnie i ujemne wystąpienia klasyfikatora, które są prawidłowo przewidywalne, są nazywane odpowiednio prawdziwymi wynikami dodatnimi (TP) i prawdziwymi negatywnymi (TN). Podobnie niewłaściwie sklasyfikowane wystąpienia są nazywane fałszywie dodatnimi (FP) i fałszywych negatywnych (FN). Jest to po prostu tabela przedstawiająca liczbę wystąpień przypadających na poszczególne cztery kategorie. Azure Machine Learning Studio (klasyczny) automatycznie decyduje, które z dwóch klas w zestawie danych jest klasą dodatnią. Jeśli etykiety klas są typu Boolean lub Integer, wówczas wystąpienia oznaczone jako "true" lub "1" są przypisywane do klasy dodatniej. Jeśli etykiety są ciągami, na przykład z zestawem danych dochodów, etykiety są sortowane alfabetycznie, a pierwszy poziom jest wybierany jako Klasa ujemna, podczas gdy drugi poziom jest klasą dodatnią.
 
 ![Niemylenie macierzy binarnej](./media/evaluate-model-performance/6a.png)
 
@@ -136,7 +136,7 @@ Rysunek 9. Wyniki wzajemnej walidacji klasyfikatora binarnego.
 W tym doświadczeniu będziemy używać popularnego zestawu danych [Iris](https://archive.ics.uci.edu/ml/datasets/Iris "Tęczówki") , który zawiera wystąpienia trzech różnych typów (klasy) zakładu Iris. Istnieją cztery wartości funkcji (słupka długość/szerokość i długość/szerokość) dla każdego wystąpienia. W poprzednich eksperymentach przeszkolone i przetestowano modele przy użyciu tych samych zestawów danych. W tym miejscu będziemy używać modułu [Split Data (podział danych][split] ) do tworzenia dwóch podzestawów danych, uczenia się pierwszego i oceny w drugim. Zestaw danych Iris jest publicznie dostępny w [repozytorium Machine Learning](https://archive.ics.uci.edu/ml/index.html)i można go pobrać za pomocą modułu [Importuj dane][import-data] .
 
 ### <a name="creating-the-experiment"></a>Tworzenie eksperymentu
-Dodaj następujące moduły do obszaru roboczego w klasycznej wersji Azure Machine Learning Studio:
+Dodaj następujące moduły do obszaru roboczego w Azure Machine Learning Studio (klasyczny):
 
 * [Importuj dane][import-data]
 * [Las decyzyjny wieloklasowej][multiclass-decision-forest]

@@ -1,18 +1,18 @@
 ---
 title: Łączenie z usługą Dropbox
-description: Przekazywanie plików i zarządzanie nimi za pomocą interfejsów API REST usługi Dropbox i Azure Logic Apps
+description: Automatyzowanie zadań i przepływów pracy, które przesyłają pliki w usłudze Dropbox i zarządzają nimi przy użyciu Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 03/01/2019
 tags: connectors
-ms.openlocfilehash: b38f9b9626e5eec0272256aacc71f7503a006dd6
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 8f54f832884b172761f62b16db29d2f0abd0dd46
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789816"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75665755"
 ---
 # <a name="upload-and-manage-files-in-dropbox-by-using-azure-logic-apps"></a>Przekazywanie plików i zarządzanie nimi w usłudze Dropbox przy użyciu Azure Logic Apps
 
@@ -28,7 +28,7 @@ W tym artykule pokazano, jak nawiązać połączenie z usługą Dropbox z poziom
 
 * Podstawowa wiedza [na temat tworzenia aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md). Na potrzeby tego przykładu potrzebujesz pustej aplikacji logiki.
 
-## <a name="add-trigger"></a>Dodaj wyzwalacz
+## <a name="add-trigger"></a>Dodawanie wyzwalacza
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
@@ -64,7 +64,7 @@ Z listy Akcje wybierz tę akcję: **Pobierz zawartość pliku przy użyciu ście
 
 ## <a name="connector-reference"></a>Dokumentacja łączników
 
-Aby uzyskać szczegółowe informacje techniczne, takie jak wyzwalacze, akcje i limity, zgodnie z opisem w pliku OpenAPI łącznika (dawniej Swagger), zobacz [stronę odwołania łącznika](/connectors/dropbox/).
+Aby uzyskać szczegółowe informacje techniczne, takie jak wyzwalacze, akcje i limity, zgodnie z opisem w pliku Swagger łącznika, zobacz [stronę odwołania łącznika](/connectors/dropbox/).
 
 ## <a name="next-steps"></a>Następne kroki
 

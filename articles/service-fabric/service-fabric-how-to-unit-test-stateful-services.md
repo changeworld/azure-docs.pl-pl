@@ -1,54 +1,43 @@
 ---
-title: Tworzenie testów jednostkowych dla usług stanowych w usłudze Azure Service Fabric | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak tworzyć jednostki testowe dla usług stanowych w usłudze Service Fabric.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: vturecek
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
+title: Opracowywanie testów jednostkowych dla usług stanowych
+description: Dowiedz się więcej na temat testów jednostkowych w usłudze Azure Service Fabric dla usług stanowych i szczególnych zagadnień, które należy wziąć pod uwagę podczas opracowywania.
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 09/04/2018
-ms.author: atsenthi
-ms.openlocfilehash: b066296ca52d3067f8985245161eb4fa7b484a07
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9c657bd8295d01a4e0fa4e44e969b33946684bfa
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60720131"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75639840"
 ---
 # <a name="create-unit-tests-for-stateful-services"></a>Tworzenie testów jednostkowych dla usług stanowych
-Jednostki testowania usług stanowych usługi Service Fabric udostępnia typowych błędów, które będą nie musi być przechwycony przez konwencjonalne aplikacji lub testy jednostkowe specyficznego dla domeny. Podczas tworzenia testów jednostkowych dla usług stanowych, istnieją pewne specjalne zagadnienia, które powinny być przechowywane w uwadze.
+Testy jednostkowe Service Fabric usługi stanowe nie obejmują częstych pomyłek, które nie muszą być przechwytywane przez konwencjonalne aplikacje lub testy jednostkowe specyficzne dla domeny. Opracowując testy jednostkowe dla usług stanowych, należy pamiętać o pewnych szczególnych kwestiach.
 
-1. Każda replika wykonuje kod aplikacji, ale w innym kontekście. Jeśli usługa używa trzech replik, trzy węzły równolegle w ramach innego kontekstu/roli jest wykonywany kod usługi.
-2. Stan przechowywane w ramach usługi stanowej powinna być spójna wśród wszystkich replik. Zapewnia to spójność out-of--box state manager i elementów reliable collections. Jednak stan w pamięci, należy być zarządzane przez kod aplikacji.
-3. Każda replika ulegnie zmianie role w pewnym momencie podczas uruchamiania w klastrze. Replika pomocnicza stanie się podstawową, w przypadku, gdy węzeł, w którym podstawowy staje się niedostępna lub przeciążona. Jest to naturalny zachowanie dla usługi Service Fabric, w związku z tym usługi należy zaplanować po pewnym czasie wykonywania przy użyciu innej roli.
+1. Każda replika wykonuje kod aplikacji, ale w innym kontekście. Jeśli usługa używa trzech replik, kod usługi jest wykonywany na trzech węzłach równolegle pod innym kontekstem/rolą.
+2. Stan przechowywany w usłudze stanowej powinien być spójny między wszystkimi replikami. Menedżer stanu i niezawodne kolekcje zapewniają tę spójność. Jednak stan w pamięci będzie musiał być zarządzany przez kod aplikacji.
+3. Każda replika zmieni role w pewnym momencie podczas uruchamiania w klastrze. Replika pomocnicza stanie się podstawowym, w przypadku gdy węzeł hostujący podstawowy staje się niedostępny lub przeciążony. Jest to naturalne zachowanie dla Service Fabric dlatego usługi muszą zaplanować ostatecznie wykonywanie w ramach innej roli.
 
-W tym artykule założono, że [Unit testing usług stanowych w usłudze Service Fabric](service-fabric-concepts-unit-testing.md) został odczytany.
+W tym artykule przyjęto założenie, że [testy jednostkowe usług stanowych w Service Fabric](service-fabric-concepts-unit-testing.md) zostały odczytane.
 
-## <a name="the-servicefabricmocks-library"></a>Biblioteka ServiceFabric.Mocks
-Począwszy od wersji 3.3.0 [ServiceFabric.Mocks](https://www.nuget.org/packages/ServiceFabric.Mocks/) zapewnia interfejs API dla pozorowanie organizowania repliki i zarządzania stanem. To posłuży w przykładach.
+## <a name="the-servicefabricmocks-library"></a>Biblioteka servicefabric. imitacje
+W wersji 3.3.0, [servicefabric. makiety](https://www.nuget.org/packages/ServiceFabric.Mocks/) udostępniają interfejs API do tworzenia aranżacji replik i zarządzania stanem. Ta wartość zostanie użyta w przykładach.
 
-[Nuget](https://www.nuget.org/packages/ServiceFabric.Mocks/)
+Pakiet [Nuget](https://www.nuget.org/packages/ServiceFabric.Mocks/)
 [GitHub](https://github.com/loekd/ServiceFabric.Mocks)
 
-*ServiceFabric.Mocks nie jest właścicielem lub obsługiwane przez firmę Microsoft. Jednak ta funkcja jest obecnie zalecane biblioteki dla usług stanowych testów jednostkowych firmy Microsoft.*
+*Webfabric. imitacje nie należą do firmy Microsoft ani nie są przez nią obsługiwane. Jest to jednak obecnie zalecana Biblioteka firmy Microsoft do testowania jednostkowego usług stanowych.*
 
-## <a name="set-up-the-mock-orchestration-and-state"></a>Konfigurowanie makiety aranżacji i stanu
-W ramach części Rozmieść testu zestawu replik makiety i Menedżera stanu, który zostanie utworzony. Następnie zestawu replik będą właścicielami, tworzenia wystąpienia usługi przetestowane dla każdej repliki. On również właścicielem wykonywanie zdarzenia cyklu życia takich jak `OnChangeRole` i `RunAsync`. Menedżer stanów makiety zapewni dowolne operacje wykonywane względem przez menedżera stanu są uruchamiania i przechowywane, tak jak Menedżer rzeczywistego stanu.
+## <a name="set-up-the-mock-orchestration-and-state"></a>Konfigurowanie aranżacji i stanu makiety
+W ramach części porządkowanie testu zostanie utworzony zestaw replik i Menedżer stanu. Zestaw replik będzie tworzyć wystąpienie przetestowanej usługi dla każdej repliki. Będzie on również wykonywał wykonywanie zdarzeń cyklu życia, takich jak `OnChangeRole` i `RunAsync`. Menedżer stanu makiety zapewni, że wszystkie operacje wykonywane względem menedżera stanu zostaną uruchomione i zachowane jako rzeczywisty Menedżer stanu.
 
-1. Utwórz delegata fabryki usługi, który będzie wystąpienia usługi poddawana testom. Powinno to być ta sama lub podobne jak wywołania zwrotnego fabryki usługi zwykle znajdują się w `Program.cs` dla usługi Service Fabric lub aktora. Należy to wykonać następujący podpis:
+1. Utwórz delegata fabryki usługi, który będzie tworzyć wystąpienia testowanej usługi. Powinno to być podobne lub takie samo jak wywołanie zwrotne fabryki usługi zwykle dostępne w `Program.cs` dla usługi Service Fabric lub aktora. Powinno to być zgodne z następującym podpisem:
    ```csharp
    MyStatefulService CreateMyStatefulService(StatefulServiceContext context, IReliableStateManagerReplica2 stateManager)
    ```
-2. Utwórz wystąpienie obiektu `MockReliableStateManager` klasy. Spowoduje to testowanie wszystkie interakcje z przez menedżera stanu.
-3. Utwórz wystąpienie obiektu `MockStatefulServiceReplicaSet<TStatefulService>` gdzie `TStatefulService` jest typ usługi, testowany. Wymaga to delegata utworzonego w kroku #1 i Menedżer stanu wystąpienia w #2
-4. Dodawanie replik do zestawu replik. Określ rolę (na przykład podstawowego, ActiveSecondary, IdleSecondary) i identyfikator repliki
-   > Przytrzymaj repliki identyfikatorów! Te będą prawdopodobnie używane podczas czynność i asercja części testu jednostkowego.
+2. Utwórz wystąpienie klasy `MockReliableStateManager`. Spowoduje to zasymulować wszystkie interakcje z menedżerem stanu.
+3. Utwórz wystąpienie `MockStatefulServiceReplicaSet<TStatefulService>`, gdzie `TStatefulService` jest typem testowanej usługi. Spowoduje to wymaganie delegata utworzonego w kroku #1 i menedżera stanu uruchomionego w #2
+4. Dodaj repliki do zestawu replik. Określ rolę (na przykład Primary, ActiveSecondary, IdleSecondary) i identyfikator repliki
+   > Zaczekaj na identyfikatory replik! Te elementy będą prawdopodobnie używane podczas działania i potwierdzeń części testu jednostkowego.
 
 ```csharp
 //service factory to instruct how to create the service instance
@@ -65,8 +54,8 @@ await replicaSet.AddReplicaAsync(ReplicaRole.ActiveSecondary, 2);
 await replicaSet.AddReplicaAsync(ReplicaRole.ActiveSecondary, 3);
 ```
 
-## <a name="execute-service-requests"></a>Wykonywanie żądania obsługi
-Żądania obsługi mogą być wykonywane na replice określone przy użyciu właściwości jako udogodnienie i wyszukiwania.
+## <a name="execute-service-requests"></a>Żądania wykonania usługi
+Żądania obsługi mogą być wykonywane w określonej replice przy użyciu wygodnych właściwości i wyszukiwań.
 ```csharp
 const string stateName = "test";
 var payload = new Payload(StatePayload);
@@ -81,8 +70,8 @@ await replicaSet[2].ServiceInstance.InsertAsync(stateName, payload);
 await replicaSet.FirstActiveSecondary.InsertAsync(stateName, payload);
 ```
 
-## <a name="execute-a-service-move"></a>Wykonaj przejście usługi
-Zestawu replik makiety udostępnia kilka metod wygody do wyzwolenia różnego rodzaju przenosi usługi.
+## <a name="execute-a-service-move"></a>Wykonywanie przenoszenia usługi
+Zestaw replik makiety uwidacznia kilka wygodnych metod wyzwalania różnych typów przenoszonych usług.
 ```csharp
 //promote the first active secondary to primary
 replicaSet.PromoteNewReplicaToPrimaryAsync();
@@ -101,7 +90,7 @@ PromoteNewReplicaToPrimaryAsync(4)
 ```
 
 ## <a name="putting-it-all-together"></a>Zebranie wszystkich elementów
-Następującego testu pokazuje Konfigurowanie zestawu replik trzema węzłami i weryfikowanie, czy dane są dostępne z pomocniczego, po zmianie roli. Jest to typowy problem, to może wychwycić, jeśli dane są dodawane podczas `InsertAsync` została zapisana coś w pamięci lub reliable collection bez uruchamiania `CommitAsync`. W obu przypadkach pomocniczej będzie zsynchronizowany z podstawowego. Może to prowadzić do niezgodne odpowiedzi po przenosi usługa.
+Poniższy test pokazuje skonfigurowanie zestawu replik z trzema węzłami i sprawdzanie, czy dane są dostępne z poziomu pomocniczego po zmianie roli. Typowym problemem może być to, że dane dodane podczas `InsertAsync` zostały zapisane w pamięci lub w niezawodnej kolekcji bez uruchamiania `CommitAsync`. W obu przypadkach pomocnicza nie jest zsynchronizowana z serwerem podstawowym. Mogłoby to spowodować niespójne odpowiedzi po przeniesieniu usługi.
 
 ```csharp
 [TestMethod]
@@ -138,5 +127,5 @@ public async Task TestServiceState_InMemoryState_PromoteActiveSecondary()
 }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
-Dowiedz się, jak przetestować [komunikacji między usługami](service-fabric-testability-scenarios-service-communication.md) i [symulowanie błędów przy użyciu kontrolowanego chaosu](service-fabric-controlled-chaos.md).
+## <a name="next-steps"></a>Następne kroki
+Informacje na temat testowania [komunikacji między](service-fabric-testability-scenarios-service-communication.md) usługami i [symulowania błędów przy użyciu kontrolowanego chaos](service-fabric-controlled-chaos.md).

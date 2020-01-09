@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/19/2018
-ms.openlocfilehash: 84ac2b43c9ec2e46bcd2967cf411f1bb1f60f42a
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: c2700c8241905f6e219b566a10e3378dd6c7251d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839406"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427442"
 ---
 # <a name="use-the-sample-datasets-in-azure-machine-learning-studio-classic"></a>Korzystanie z przykładowych zestawów danych w Azure Machine Learning Studio (klasyczny)
 [top]: #machine-learning-sample-datasets
@@ -169,7 +169,7 @@ Kolekcja symulowanych profilów energii w oparciu o 12 różnych kształtów kon
   <td>
 Dane o wydajności w czasie lotu pasażera wykonywane z TranStats zbierania danych z działu transportu USA (<a href="https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time">w czasie</a>).
 <p></p>
-Ten zestaw danych obejmuje czas od kwietnia do 2013 października. Przed przekazaniem do klasycznej wersji Azure Machine Learning Studio, zestaw danych został przetworzony w następujący sposób:
+Ten zestaw danych obejmuje czas od kwietnia do 2013 października. Przed przekazaniem do Azure Machine Learning Studio (klasyczne) zestaw danych został przetworzony w następujący sposób:
 <ul>
   <li>Zestaw danych został przefiltrowany w celu pokrycia najgorętszym portów lotniczych o 70 w Stanach Zjednoczonych</li>
   <li>Anulowane loty zostały oznaczone jako opóźnione o więcej niż 15 minut</li>
@@ -259,7 +259,7 @@ Podzbiór danych z Narodowego Instytutu cukrzycą oraz baza danych z chorobami t
 </tr>
 
 <tr>
-  <td>Restauracje — dane klienta</td>
+  <td>Dane klienta restauracji</td>
   <td>
 Zestaw metadanych o klientach, w tym dane demograficzne i preferencje.
 <p></p>
@@ -270,7 +270,7 @@ Zestaw metadanych o klientach, w tym dane demograficzne i preferencje.
 </tr>
 
 <tr>
-  <td>Dane funkcji restauracji</td>
+  <td>Dane cech restauracji</td>
   <td>
 Zestaw metadanych dotyczących restauracji i ich funkcji, takich jak typ żywności, styl rekomendowanych lokali i lokalizacja.
 <p></p>
@@ -281,7 +281,7 @@ Zestaw metadanych dotyczących restauracji i ich funkcji, takich jak typ żywno�
 </tr>
 
 <tr>
-  <td>Klasyfikacje restauracji</td>
+  <td>Oceny restauracji</td>
   <td>
 Zawiera klasyfikacje nadawane przez użytkowników dla restauracji w skali od 0 do 2.
 <p></p>
@@ -329,7 +329,7 @@ Należy również zwrócić uwagę na to, że liczba zdarzeń w tle (h, dla hadr
   <td>
 Codzienne obserwacje pogodowe z NOAA (<a href="https://az754797.vo.msecnd.net/data/WeatherDataset.csv">scalone dane z 201304 do 201310</a>).
 <p></p>
-Dane pogodowe obejmują obserwacje z stacji pogodowych portów lotniczych, obejmujących okres od kwietnia do października 2013. Przed przekazaniem do klasycznej wersji Azure Machine Learning Studio, zestaw danych został przetworzony w następujący sposób:
+Dane pogodowe obejmują obserwacje z stacji pogodowych portów lotniczych, obejmujących okres od kwietnia do października 2013. Przed przekazaniem do Azure Machine Learning Studio (klasyczne) zestaw danych został przetworzony w następujący sposób:
 <ul>
   <li>Identyfikatory stacji pogody zostały zamapowane na odpowiednie identyfikatory portów lotniczych</li>
   <li>Stacje pogody nie są skojarzone z najgorętszym portów lotniczych 70 zostały odfiltrowane</li>
@@ -344,7 +344,7 @@ Dane pogodowe obejmują obserwacje z stacji pogodowych portów lotniczych, obejm
   <td>
 Dane są wyprowadzane z witryny Wikipedia (<a href="https://www.wikipedia.org/">https://www.wikipedia.org/</a>) na podstawie artykułów każdej usługi S & P 500 firmy, przechowywanej jako dane XML.
 <p></p>
-Przed przekazaniem do klasycznej wersji Azure Machine Learning Studio, zestaw danych został przetworzony w następujący sposób:
+Przed przekazaniem do Azure Machine Learning Studio (klasyczne) zestaw danych został przetworzony w następujący sposób:
 <ul>
   <li>Wyodrębnij zawartość tekstową dla każdej konkretnej firmy</li>
   <li>Usuwanie formatowania wiki</li>

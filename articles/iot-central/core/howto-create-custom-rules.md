@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 8c0328c1d82af5e96afca29f05a065450eab9ae4
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 98b5cc707ca8b5ebd1ee88f02082fd3f10fa73dc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72950745"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435000"
 ---
 # <a name="extend-azure-iot-central-with-custom-rules-using-stream-analytics-azure-functions-and-sendgrid"></a>Zwiększanie IoT Central platformy Azure za pomocą reguł niestandardowych przy użyciu Stream Analytics, Azure Functions i SendGrid
 
@@ -41,14 +41,14 @@ Utwórz aplikację IoT Central w witrynie programu [Azure IoT Central Applicatio
 | Ustawienie | Wartość |
 | ------- | ----- |
 | Plan płatności | Płatność zgodnie z rzeczywistym użyciem |
-| Szablon aplikacji | Przykład dotyczący firmy Contoso |
+| Szablon aplikacji | Starsza aplikacja |
 | Nazwa aplikacji | Zaakceptuj wartość domyślną lub wybierz własną nazwę |
 | Adres URL | Zaakceptuj domyślny lub wybierz własny unikatowy prefiks adresu URL |
 | Katalog | Dzierżawa Azure Active Directory |
 | Subskrypcja platformy Azure | Twoja subskrypcja platformy Azure |
-| Region | Wschodnie stany USA |
+| Region | Stany Zjednoczone |
 
-Przykłady i zrzuty ekranu w tym artykule korzystają z regionu **Wschodnie stany USA** . Wybierz lokalizację blisko siebie i upewnij się, że wszystkie zasoby zostały utworzone w tym samym regionie.
+Przykłady i zrzuty ekranu w tym artykule używają regionu **Stany Zjednoczone** . Wybierz lokalizację blisko siebie i upewnij się, że wszystkie zasoby zostały utworzone w tym samym regionie.
 
 ### <a name="resource-group"></a>Grupa zasobów
 
@@ -67,7 +67,7 @@ Użyj [Azure Portal, aby utworzyć przestrzeń nazw Event Hubs](https://portal.a
 | Lokalizacja | Wschodnie stany USA |
 | Jednostki przepływności | 1 |
 
-### <a name="stream-analytics-job"></a>Zadanie Stream Analytics
+### <a name="stream-analytics-job"></a>Zadanie usługi Stream Analytics
 
 Użyj [Azure Portal, aby utworzyć zadanie Stream Analytics](https://portal.azure.com/#create/Microsoft.StreamAnalyticsJob) z następującymi ustawieniami:
 
@@ -255,7 +255,7 @@ To rozwiązanie używa zapytania Stream Analytics w celu wykrycia, kiedy urządz
     | Alias danych wyjściowych | emailnotification |
     | Subskrypcja | Twoja subskrypcja |
     | Aplikacja funkcji | Aplikacja funkcji |
-    | Funkcja  | HttpTrigger1 |
+    | Funkcja  | Wyzwalacz_Http1 |
 
 1. W obszarze **topologia zadania**wybierz pozycję **zapytanie** i Zastąp istniejące zapytanie następującym SQL:
 
@@ -324,7 +324,7 @@ W witrynie sieci Web programu [Azure IoT Central Application Manager](https://ak
 
 Przed kontynuowaniem Zaczekaj, aż stan eksportu zostanie **uruchomiony** .
 
-## <a name="test"></a>Testowanie
+## <a name="test"></a>Test
 
 W celu przetestowania rozwiązania można wyłączyć funkcję ciągłego eksportowania danych z IoT Central, aby symulować zatrzymane urządzenia:
 

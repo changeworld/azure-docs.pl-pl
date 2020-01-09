@@ -1,24 +1,16 @@
 ---
-title: Pakietu autonomicznego sieci szkieletowej usługi platformy Azure dla systemu Windows Server | Dokumentacja firmy Microsoft
+title: Pakiet autonomiczny platformy Azure Service Fabric dla systemu Windows Server
 description: Opis i zawartość pakietu autonomicznego sieci szkieletowej usługi platformy Azure dla systemu Windows Server.
-services: service-fabric
-documentationcenter: .net
 author: maburlik
-manager: chackdan
-editor: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 8/10/2017
 ms.author: maburlik
-ms.openlocfilehash: facdcd162826e6f77ace098391459cba00061c4f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1bb73fa69717f067139067f127a0d50af4878d6c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60711088"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75451846"
 ---
 # <a name="contents-of-service-fabric-standalone-package-for-windows-server"></a>Zawartość pakietu autonomicznego sieci szkieletowej usługi dla systemu Windows Server
 W [pobrane](https://go.microsoft.com/fwlink/?LinkId=730690) pakietu usługi Service Fabric autonomicznego, znajdziesz następujące pliki:
@@ -52,7 +44,7 @@ W [pobrane](https://go.microsoft.com/fwlink/?LinkId=730690) pakietu usługi Serv
 | ClusterConfig.gMSA.Windows.MultiMachine.json |Klaster przykładowy plik konfiguracji zawierający wszystkie ustawienia dla klastra bezpiecznego, wielu maszyny (lub maszyny wirtualnej), w tym informacje dla każdego węzła w zabezpieczonym klastrem. Klaster jest zabezpieczony za pomocą [kont usługi zarządzanych przez grupę](https://technet.microsoft.com/library/jj128431(v=ws.11).aspx). |
 
 ## <a name="cluster-configuration-samples"></a>Przykłady konfiguracji klastra
-Najnowsze wersje Szablony konfiguracji klastra można znaleźć na stronie usługi GitHub: [Przykłady konfiguracji klastra autonomicznego](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples).
+Najnowsze wersje Szablony konfiguracji klastra można znaleźć na stronie usługi GitHub: [przykłady konfiguracji klastra autonomicznego](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples).
 
 ## <a name="independent-runtime-package"></a>Niezależnie od pakietu środowiska uruchomieniowego
 Najnowszy pakiet środowiska uruchomieniowego jest automatycznie pobierana podczas wdrażania klastra z [łącze Pobierz — środowisko uruchomieniowe usługi Service Fabric — system Windows Server](https://go.microsoft.com/fwlink/?linkid=839354).

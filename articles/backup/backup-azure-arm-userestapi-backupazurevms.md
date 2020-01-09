@@ -4,12 +4,12 @@ description: W tym artykule dowiesz się, jak konfigurować i inicjować operacj
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
-ms.openlocfilehash: 4f73958a46e408f85d1f23371552aad0d5540184
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: 4789ef1e0e09df521f8cab539d972e9e669e0a58
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74554905"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450163"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>Tworzenie kopii zapasowej maszyny wirtualnej platformy Azure przy użyciu Azure Backup za pośrednictwem interfejsu API REST
 
@@ -44,7 +44,7 @@ Zwraca dwie odpowiedzi: 202 (zaakceptowane), gdy tworzona jest inna operacja, a 
 |Nazwa  |Typ  |Opis  |
 |---------|---------|---------|
 |204 Brak zawartości     |         |  OK bez zwracanej zawartości      |
-|202 zaakceptowane     |         |     Przyjmować    |
+|202 zaakceptowane     |         |     Zaakceptowano    |
 
 ##### <a name="example-responses"></a>Przykładowe odpowiedzi
 
@@ -211,7 +211,7 @@ Zwraca dwie odpowiedzi: 202 (zaakceptowane), gdy tworzona jest inna operacja, a 
 |Nazwa  |Typ  |Opis  |
 |---------|---------|---------|
 |200 OK     |    [ProtectedItemResource](https://docs.microsoft.com/rest/api/backup/protecteditemoperationresults/get#protecteditemresource)     |  OK       |
-|202 zaakceptowane     |         |     Przyjmować    |
+|202 zaakceptowane     |         |     Zaakceptowano    |
 
 ##### <a name="example-responses"></a>Przykładowe odpowiedzi
 
@@ -321,7 +321,7 @@ Zwraca dwie odpowiedzi: 202 (zaakceptowane), gdy tworzona jest inna operacja, a 
 
 |Nazwa  |Typ  |Opis  |
 |---------|---------|---------|
-|202 zaakceptowane     |         |     Przyjmować    |
+|202 zaakceptowane     |         |     Zaakceptowano    |
 
 #### <a name="example-responses-3"></a>Przykładowe odpowiedzi
 
@@ -433,7 +433,7 @@ DELETE https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroup
 DELETE https://management.azure.com//Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;iaasvmcontainerv2;testRG;testVM?api-version=2019-05-13
 ```
 
-### <a name="responses-2"></a>Reagowani
+#### <a name="responses-2"></a>Reagowani
 
 *Usuwanie* ochrony jest [operacją asynchroniczną](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Oznacza to, że ta operacja tworzy kolejną operację, która musi być śledzona oddzielnie.
 
@@ -442,7 +442,29 @@ Zwraca dwie odpowiedzi: 202 (zaakceptowane), gdy tworzona jest inna operacja, a 
 |Nazwa  |Typ  |Opis  |
 |---------|---------|---------|
 |204 NoContent     |         |  NoContent       |
-|202 zaakceptowane     |         |     Przyjmować    |
+|202 zaakceptowane     |         |     Zaakceptowano    |
+
+> [!IMPORTANT]
+> Aby można było chronić przed przypadkowym usunięciem scenariuszy, [dostępna jest funkcja usuwania nietrwałego](use-restapi-update-vault-properties.md#soft-delete-state) dla magazynu usługi Recovery Services. Jeśli stan nietrwałego usuwania magazynu jest ustawiony na włączone, operacja usuwania nie spowoduje natychmiastowego usunięcia danych. Będzie ono przechowywane przez 14 dni, a następnie trwale przeczyszczane. W przypadku tego okresu 14 dni klient nie nalicza opłat za magazyn. Aby cofnąć operację usuwania, zapoznaj się z [sekcją cofanie usunięcia](#undo-the-stop-protection-and-delete-data).
+
+### <a name="undo-the-stop-protection-and-delete-data"></a>Cofnij ochronę i Usuń dane
+
+Cofnięcie przypadkowego usunięcia jest podobne do tworzenia elementu kopii zapasowej. Po cofnięciu usunięcia element jest zachowywany, ale nie są wyzwalane żadne przyszłe kopie zapasowe.
+
+Cofanie usunięcia jest operacją *Put* , która jest bardzo podobna do [zmiany zasad](#changing-the-policy-of-protection) i/lub [włączenia ochrony](#enabling-protection-for-the-azure-vm). Po prostu zażądaj, aby cofnąć usunięcie przy użyciu zmiennej *isRehydrate* w [treści żądania](#example-request-body) i przesłać żądanie. Na przykład: Aby cofnąć usunięcie elementu testVM, należy użyć następującej treści żądania.
+
+```http
+{
+  "properties": {
+    "protectedItemType": "Microsoft.Compute/virtualMachines",
+    "protectionState": "ProtectionStopped",
+    "sourceResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Compute/virtualMachines/testVM",
+    "isRehydrate": true
+  }
+}
+```
+
+Odpowiedź będzie zgodna z tym samym formatem, jak wspomniano w [przypadku wyzwalania kopii zapasowej na żądanie](#example-responses-3). Zadanie wynikowe powinno być śledzone zgodnie z opisem w [dokumencie monitorowanie zadań przy użyciu interfejsu API REST](backup-azure-arm-userestapi-managejobs.md#tracking-the-job).
 
 ## <a name="next-steps"></a>Następne kroki
 

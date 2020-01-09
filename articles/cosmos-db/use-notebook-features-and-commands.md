@@ -4,23 +4,23 @@ description: Dowiedz się, jak używać wbudowanych poleceń i funkcji, aby wyko
 author: deborahc
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/23/2019
+ms.date: 12/07/2019
 ms.author: dech
-ms.openlocfilehash: 4a9bd554e0858024d656dbf35d6fb00995e6f4bd
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: f5ab1491c8561c90b06374a0a58f160cbcdd1cad
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71672483"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444647"
 ---
 # <a name="use-built-in-notebook-commands-and-features-in-azure-cosmos-db"></a>Używanie wbudowanych poleceń i funkcji notesu w programie Azure Cosmos DB
 
-Wbudowane notesy Jupyter w Azure Cosmos DB umożliwiają analizowanie i wizualizowanie danych z Azure Portal. W tym artykule opisano, jak używać wbudowanych poleceń i funkcji notesu do wykonywania typowych operacji.
+Wbudowane notesy Jupyter w Azure Cosmos DB umożliwiają analizowanie i wizualizowanie danych z Azure Portal. W tym artykule opisano sposób wykonywania typowych operacji przy użyciu wbudowanych funkcji i poleceń notesu.
 
 ## <a name="install-a-new-package"></a>Zainstaluj nowy pakiet
 Po włączeniu obsługi notesu dla kont usługi Azure Cosmos można otworzyć nowy Notes i zainstalować pakiet.
 
-W nowej komórce kodu Wstaw i uruchom następujący kod, zastępując ``PackageToBeInstalled`` go żądanym pakietem języka Python.
+W nowej komórce kodu Wstaw i uruchom następujący kod, zastępując ``PackageToBeInstalled`` z żądanym pakietem języka Python.
 ```python
 import sys
 !{sys.executable} -m pip install PackageToBeInstalled –user
@@ -32,17 +32,17 @@ Ten pakiet będzie dostępny do użycia z dowolnego notesu w obszarze roboczym k
 
 ## <a name="run-a-sql-query"></a>Uruchamianie zapytania SQL
 
-Możesz użyć polecenia Magic ``%%sql`` , aby uruchomić [zapytanie SQL](sql-query-getting-started.md) względem dowolnego kontenera na Twoim koncie. Użyj składni:
+Możesz użyć ``%%sql`` Magic polecenia, aby uruchomić [zapytanie SQL](sql-query-getting-started.md) względem dowolnego kontenera na Twoim koncie. Użyj składni:
 
 ```bash
 %%sql --database {database_id} --container {container_id}
 {Query text}
 ```
 
-- Zamień ``{database_id}`` i``{container_id}`` na nazwę bazy danych i kontenera na koncie Cosmos. Jeśli argumenty ``--container``inie zostaną podane, zapytanie zostanie wykonane w [domyślnej bazie danych i kontenerze.](#set-default-database-for-queries) ``--database``
+- Zastąp ``{database_id}`` i ``{container_id}`` nazwą bazy danych i kontenerem na swoim koncie Cosmos. Jeśli argumenty ``--database`` i ``--container`` nie są podane, zapytanie zostanie wykonane w [domyślnej bazie danych i kontenerze](#set-default-database-for-queries).
 - Można uruchomić dowolne zapytanie SQL, które jest prawidłowe w Azure Cosmos DB. Tekst zapytania musi znajdować się w nowym wierszu.
 
-Na przykład: 
+Przykład: 
 ```bash
 %%sql --database RetailDemo --container WebsiteData
 SELECT c.Action, c.Price as ItemRevenue, c.Country, c.Item FROM c
@@ -51,17 +51,17 @@ Uruchom ```%%sql?``` w komórce, aby wyświetlić dokumentację pomocy dla polec
 
 ## <a name="run-a-sql-query-and-output-to-a-pandas-dataframe"></a>Uruchamianie zapytania SQL i danych wyjściowych do Pandas Frame
 
-Wyniki ``%%sql`` zapytania można wyprowadzać w [Pandas Dataframe](https://pandas.pydata.org/pandas-docs/stable/getting_started/dsintro.html#dataframe). Użyj składni: 
+Wyniki zapytania ``%%sql`` można wyprowadzać w [Pandas Dataframe](https://pandas.pydata.org/pandas-docs/stable/getting_started/dsintro.html#dataframe). Użyj składni: 
 
 ```bash
 %%sql --database {database_id} --container {container_id} --output {outputDataFrameVar}
 {Query text}
 ```
-- Zamień ``{database_id}`` i``{container_id}`` na nazwę bazy danych i kontenera na koncie Cosmos. Jeśli argumenty ``--container``inie zostaną podane, zapytanie zostanie wykonane w [domyślnej bazie danych i kontenerze.](#set-default-database-for-queries) ``--database``
-- Zamień ``{outputDataFrameVar}`` na nazwę zmiennej Dataframe, która będzie zawierać wyniki.
+- Zastąp ``{database_id}`` i ``{container_id}`` nazwą bazy danych i kontenerem na swoim koncie Cosmos. Jeśli argumenty ``--database`` i ``--container`` nie są podane, zapytanie zostanie wykonane w [domyślnej bazie danych i kontenerze](#set-default-database-for-queries).
+- Zastąp ``{outputDataFrameVar}`` nazwą zmiennej Dataframe, która będzie zawierać wyniki.
 - Można uruchomić dowolne zapytanie SQL, które jest prawidłowe w Azure Cosmos DB. Tekst zapytania musi znajdować się w nowym wierszu. 
 
-Na przykład:
+Przykład:
 
 ```bash
 %%sql --database RetailDemo --container WebsiteData --output df_cosmos
@@ -82,9 +82,32 @@ df_cosmos.head(10)
 8   Viewed  33.00   Tuvalu  Red Top
 9   Viewed  14.00   Cape Verde  Flip Flop Shoes
 ```
+## <a name="upload-json-items-to-a-container"></a>Przekazywanie elementów JSON do kontenera
+Możesz użyć ``%%upload`` Magic polecenia, aby przekazać dane z pliku JSON do określonego kontenera usługi Azure Cosmos. Aby przekazać elementy, użyj następującego polecenia:
+
+```bash
+%%upload --databaseName {database_id} --containerName {container_id} --url {url_location_of_file}
+```
+
+- Zastąp ``{database_id}`` i ``{container_id}`` nazwą bazy danych i kontenerem na swoim koncie usługi Azure Cosmos. Jeśli argumenty ``--database`` i ``--container`` nie są podane, zapytanie zostanie wykonane w [domyślnej bazie danych i kontenerze](#set-default-database-for-queries).
+- Zastąp ``{url_location_of_file}`` lokalizacją pliku JSON. Plik musi być tablicą prawidłowych obiektów JSON i powinien być dostępny za pośrednictwem publicznego Internetu.
+
+Przykład:
+
+```bash
+%%upload --database databaseName --container containerName --url 
+https://contoso.com/path/to/data.json
+```
+```bash
+Documents successfully uploaded to ContainerName
+Total number of documents imported : 2654
+Total time taken : 00:00:38.1228087 hours
+Total RUs consumed : 25022.58
+```
+Statystyki wyjściowe umożliwiają obliczenie obowiązujących jednostek RU/s używanych do przekazywania elementów. Na przykład jeśli 25 000 jednostek ru zostały zużyte ponad 38 sekund, obowiązująca wartość RU/s to 25 000 jednostek ru/38 s = 658 RU/s.
 
 ## <a name="set-default-database-for-queries"></a>Ustaw domyślną bazę danych dla zapytań
-Można ustawić domyślne polecenia bazy danych ```%%sql``` , które będą używane w notesie. Zamień ```{database_id}``` na nazwę bazy danych.
+Dla notesu można ustawić domyślne polecenia ```%%sql``` bazy danych. Zamień ```{database_id}``` na nazwę bazy danych.
 
 ```bash
 %database {database_id}
@@ -92,19 +115,31 @@ Można ustawić domyślne polecenia bazy danych ```%%sql``` , które będą uży
 Uruchom ```%database?``` w komórce, aby wyświetlić dokumentację w notesie.
 
 ## <a name="set-default-container-for-queries"></a>Ustaw domyślny kontener dla zapytań
-Można ustawić domyślne polecenia kontenera ```%%sql``` , które będą używane dla notesu. Zamień ```{container_id}``` na nazwę kontenera.
+Można ustawić domyślny kontener ```%%sql``` polecenia będą używane dla notesu. Zastąp ```{container_id}``` nazwą kontenera.
 
 ```bash
 %container {container_id}
 ```
 Uruchom ```%container?``` w komórce, aby wyświetlić dokumentację w notesie.
 
+## <a name="use-built-in-nteract-data-explorer"></a>Korzystanie z wbudowanego Eksploratora danych nteract
+Można użyć wbudowanego [Eksploratora danych nteract](https://blog.nteract.io/designing-the-nteract-data-explorer-f4476d53f897) do filtrowania i wizualizacji ramki Dataframe. Aby włączyć tę funkcję, należy ustawić opcję ``pd.options.display.html.table_schema`` na ``True`` i ``pd.options.display.max_rows`` na żądaną wartość (można ustawić ``pd.options.display.max_rows`` na ``None``, aby wyświetlić wszystkie wyniki).
+
+```python
+import pandas as pd
+pd.options.display.html.table_schema = True
+pd.options.display.max_rows = None
+
+df_cosmos.groupby("Item").size()
+```
+![Eksplorator danych nteract](media/use-notebook-features-and-commands/nteract-built-in-chart.png)
+
 ## <a name="use-the-built-in-python-sdk"></a>Korzystanie z wbudowanego zestawu SDK języka Python
-Wersja 4 [Azure Cosmos DB zestawu SDK języka Python dla interfejsu API SQL](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cosmos/azure-cosmos) jest zainstalowana i uwzględniona w środowisku notesu dla konta Cosmos.
+Wersja 4 [Azure Cosmos DB zestawu SDK języka Python dla interfejsu API SQL](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cosmos/azure-cosmos) jest zainstalowana i dołączona do środowiska notesu dla konta usługi Azure Cosmos.
 
-Użyj wbudowanego ``cosmos_client`` wystąpienia do uruchomienia dowolnej operacji zestawu SDK. 
+Użyj wbudowanego wystąpienia ``cosmos_client``, aby uruchomić dowolną operację zestawu SDK. 
 
-Na przykład:
+Przykład:
 
 ```python
 ## Import modules as needed
@@ -121,11 +156,11 @@ Zobacz [przykłady zestawu SDK języka Python](https://github.com/Azure/azure-sd
 > [!IMPORTANT]
 > Wbudowany zestaw SDK języka Python jest obsługiwany tylko w przypadku kont interfejsu API SQL (Core). W przypadku innych interfejsów API konieczne będzie [zainstalowanie odpowiedniego sterownika języka Python](#install-a-new-package) ODPOWIADAJĄCego interfejsowi API. 
 
-## <a name="create-a-custom-instance-of-cosmos_client"></a>Utwórz wystąpienie niestandardowe``cosmos_client``
-Aby uzyskać większą elastyczność, można utworzyć wystąpienie niestandardowe programu ``cosmos_client`` w celu:
+## <a name="create-a-custom-instance-of-cosmos_client"></a>Tworzenie niestandardowego wystąpienia ``cosmos_client``
+Aby uzyskać większą elastyczność, można utworzyć niestandardowe wystąpienie ``cosmos_client`` w celu:
 
 - Dostosowywanie [zasad połączenia](https://docs.microsoft.com/python/api/azure-cosmos/azure.cosmos.documents.connectionpolicy?view=azure-python-preview)
-- Wykonaj operacje na innym koncie Cosmos niż to, w którym się znajdują
+- Wykonywanie operacji na innym koncie usługi Azure Cosmos niż to, w którym znajduje się użytkownik
 
 Możesz uzyskać dostęp do parametrów połączenia i klucza podstawowego bieżącego konta za pomocą [zmiennych środowiskowych](#access-the-account-endpoint-and-primary-key-env-variables). 
 
@@ -134,7 +169,7 @@ import os
 import azure.cosmos.cosmos_client as cosmos
 import azure.cosmos.documents as documents
 
-# These should be set to a region you've added for Cosmos DB
+# These should be set to a region you've added for Azure Cosmos DB
 region_1 = "Central US" 
 region_2 = "East US 2"
 
@@ -142,7 +177,7 @@ custom_connection_policy = documents.ConnectionPolicy()
 custom_connection_policy.PreferredLocations = [region_1, region_2] # Set the order of regions the SDK will route requests to. The regions should be regions you've added for Cosmos, otherwise this will error.
 
 # Create a new instance of CosmosClient, getting the endpoint and key from the environment variables
-custom_client = cosmos.CosmosClient(os.environ["COSMOS_ENDPOINT"], {'masterKey': os.environ["COSMOS_KEY"]}, connection_policy=custom_connection_policy)
+custom_client = cosmos.CosmosClient(url=os.environ["COSMOS_ENDPOINT"], credential=os.environ["COSMOS_KEY"], connection_policy=custom_connection_policy)
 ```
 ## <a name="access-the-account-endpoint-and-primary-key-env-variables"></a>Dostęp do punktów końcowych konta i zmiennych klucza podstawowego
 ```python
@@ -152,10 +187,10 @@ endpoint = os.environ["COSMOS_ENDPOINT"]
 primary_key = os.environ["COSMOS_KEY"]
 ```
 > [!IMPORTANT]
-> Zmienne środowiskowe ``COSMOS_KEY``isą stosowane tylko w przypadku interfejsu API SQL. ``COSMOS_ENDPOINT`` W przypadku innych interfejsów API Znajdź punkt końcowy i klucz w bloku **Parametry połączenia** lub **klucze** na koncie usługi Cosmos.  
+> Zmienne środowiskowe ``COSMOS_ENDPOINT`` i ``COSMOS_KEY`` mają zastosowanie tylko do interfejsu API SQL. W przypadku innych interfejsów API Znajdź punkt końcowy i klucz w bloku **Parametry połączenia** lub **klucze** na koncie usługi Azure Cosmos.  
 
 ## <a name="reset-notebooks-workspace"></a>Resetuj obszar roboczy notesów
-Aby zresetować obszar roboczy notesy do ustawień domyślnych, wybierz pozycję **Zresetuj obszar roboczy** na pasku poleceń. Spowoduje to usunięcie wszystkich zainstalowanych pakietów niestandardowych i ponowne uruchomienie serwera Jupyter. Nie wpłynie to na Twoje notesy, pliki i zasoby Cosmos.  
+Aby zresetować obszar roboczy notesy do ustawień domyślnych, wybierz pozycję **Zresetuj obszar roboczy** na pasku poleceń. Spowoduje to usunięcie wszystkich zainstalowanych pakietów niestandardowych i ponowne uruchomienie serwera Jupyter. Nie wpłynie to na Twoje notesy, pliki i zasoby platformy Azure Cosmos.  
 
 ![Resetuj obszar roboczy notesów](media/use-notebook-features-and-commands/reset-workspace.png)
 

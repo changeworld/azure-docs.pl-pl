@@ -1,7 +1,7 @@
 ---
 title: Podsumowywanie danych
-titleSuffix: Azure Machine Learning service
-description: Dowiedz się, jak za pomocą modułu podsumowania danych w usłudze Azure Machine Learning wygenerować podstawowy raport statystyk opisowych dla kolumn w zestawie danych.
+titleSuffix: Azure Machine Learning
+description: Dowiedz się, jak za pomocą modułu podsumowywania danych w Azure Machine Learning wygenerować podstawowy raport statystyk opisowych dla kolumn w zestawie danych.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
-ms.openlocfilehash: 503eb533b83cbeedcc16b73a9c1dbe821a4d4d94
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 80e2acf08960796ccb2f3ad87c16674e477c9c00
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73492574"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428451"
 ---
 # <a name="summarize-data"></a>Podsumowywanie danych
 
@@ -52,14 +52,14 @@ Raport z modułu może zawierać następujące dane statystyczne.
 |**Liczbą**|Liczba wszystkich wierszy|
 |**Liczba unikatowych wartości**|Liczba unikatowych wartości w kolumnie|
 |**Brak liczby wartości**|Liczba unikatowych wartości w kolumnie|
-|**Długości**|Najniższa wartość w kolumnie|  
-|**Maksymalny**|Najwyższa wartość w kolumnie|
+|**Min**|Najniższa wartość w kolumnie|  
+|**Maksymalna**|Najwyższa wartość w kolumnie|
 |**Zależność**|Średnia dla wszystkich wartości kolumn|
 |**Odchylenie średnie**|Średnia odchylenia wartości kolumn|
 |**1. kwartyl**|Wartość przy pierwszym kwartyl|
-|**Symetri**|Wartość kolumny mediana|
+|**Mediana**|Wartość kolumny mediana|
 |**3. kwartyl**|Wartość przy trzecim kwartyl|
-|**Wyst**|Tryb wartości kolumn|
+|**Tryb**|Tryb wartości kolumn|
 |**Zakres**|Liczba całkowita reprezentująca liczbę wartości z zakresu wartości maksymalnej i minimalnej|
 |**WARIANCJA próbki**|WARIANCJA dla kolumny; Zobacz Uwaga|
 |**Przykładowe odchylenie standardowe**|Odchylenie standardowe dla kolumny; Zobacz Uwaga|
@@ -73,4 +73,4 @@ Raport z modułu może zawierać następujące dane statystyczne.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) do Azure Machine Learning usługi.  
+Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) do Azure Machine Learning.  

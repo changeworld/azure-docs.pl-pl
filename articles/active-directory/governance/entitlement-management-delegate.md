@@ -1,5 +1,5 @@
 ---
-title: Delegowanie i role w zarządzaniu prawami usługi Azure AD — Azure Active Directory
+title: Delegowanie i role w usłudze zarządzania uprawnieniami — Azure AD
 description: Dowiedz się, jak delegować nadzór dostępu od administratorów IT do kierowników działu i menedżerów projektów, aby mogli zarządzać dostępem do siebie.
 services: active-directory
 documentationCenter: ''
@@ -16,12 +16,12 @@ ms.date: 10/07/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d68728c4ca4f9fe511faedcf2ca177b7160f112
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 86d924860e97b15a0a4af46c5bc35b0e0050292b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73174260"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422584"
 ---
 # <a name="delegation-and-roles-in-azure-ad-entitlement-management"></a>Delegowanie i role w zarządzaniu prawami usługi Azure AD
 
@@ -69,7 +69,7 @@ Po przeprowadzeniu delegowania dział marketingu może mieć role podobne do pon
 | --- | --- | --- | --- |
 | Hana | Administrator IT | Administrator globalny lub administrator użytkowników |  |
 | Mamta | Menedżer marketingu | Użytkownik | Twórca katalogu i właściciel katalogu |
-| Wiadomość | Marketing — potencjalny klient | Użytkownik | Właściciel katalogu |
+| Bob | Marketing — potencjalny klient | Użytkownik | Właściciel katalogu |
 | Jessica | Menedżer projektu marketingowego | Użytkownik | Menedżer pakietów dostępu |
 
 ## <a name="entitlement-management-roles"></a>Role zarządzania uprawnieniami
@@ -84,14 +84,14 @@ Zarządzanie prawami obejmuje następujące role, które są specyficzne dla zar
 
 Ponadto Wyznaczeni osoby zatwierdzające i osoba żądająca pakietu dostępu mają również prawa, chociaż nie są rolami.
 
-| Kliknij | Opis |
+| Prawe | Opis |
 | --- | --- |
 | Osoby zatwierdzającej | Autoryzowany przez zasady do zatwierdzania lub odrzucania żądań dostępu do pakietów, chociaż nie mogą zmieniać definicji pakietów dostępu. |
-| Obiektu żądającego | Autoryzowane przez zasady pakietu dostępu, aby zażądać tego pakietu dostępu. |
+| Requestor | Autoryzowane przez zasady pakietu dostępu, aby zażądać tego pakietu dostępu. |
 
 Poniższa tabela zawiera listę zadań, które mogą być wykonywane przez role zarządzania uprawnieniem.
 
-| Zadanie | Administratora | Twórca katalogu | Właściciel katalogu | Menedżer pakietów dostępu |
+| Zadanie | Administrator | Twórca katalogu | Właściciel katalogu | Menedżer pakietów dostępu |
 | --- | :---: | :---: | :---: | :---: |
 | [Delegowanie do twórcy katalogu](entitlement-management-delegate-catalog.md) | :heavy_check_mark: |  |  |  |
 | [Dodawanie połączonej organizacji](entitlement-management-organization.md) | :heavy_check_mark: |  |  |  |

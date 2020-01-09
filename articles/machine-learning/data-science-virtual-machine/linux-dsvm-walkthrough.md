@@ -9,18 +9,18 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 07/16/2018
-ms.openlocfilehash: b073c4244d2a7abc7c2c066c3fad036f0caa5faa
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 529e188d1a4ee00cee7f3d023ab45a48dd0d3c5f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73929542"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428387"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-in-azure"></a>Nauka danych przy użyciu Data Science Virtual Machine systemu Linux na platformie Azure
 
 W tym instruktażu pokazano, jak wykonać kilka typowych zadań naukowych dotyczących danych przy użyciu Data Science Virtual Machine systemu Linux (DSVM). Linux DSVM to obraz maszyny wirtualnej dostępny na platformie Azure, który jest preinstalowany z kolekcją narzędzi często używanych do analizy danych i uczenia maszynowego. Najważniejsze składniki oprogramowania są objęte obsługą [administracyjną Data Science Virtual Machine systemu Linux](linux-dsvm-intro.md). Obraz DSVM ułatwia rozpoczęcie pracy z analizą danych w kilka minut, bez konieczności instalowania i konfigurowania poszczególnych narzędzi osobno. Można łatwo skalować w górę DSVM, jeśli jest to konieczne, i można go zatrzymać, gdy nie jest używany. Zasób DSVM jest elastyczny i ekonomiczny.
 
-Zadania analizy danych przedstawione w tym instruktażu są zgodne z krokami opisanymi w temacie [co to jest proces nauki o danych zespołowych?](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/overview) Proces nauki danych zespołu to systematyczne podejście do nauki dotyczącej danych, które ułatwiają zespołom analityków danych wydajną współpracę nad cyklem tworzenia inteligentnych aplikacji. Proces nauki o danych zawiera również iteracyjną strukturę dla nauki danych, którą może następować osoba.
+Zadania analizy danych przedstawione w tym instruktażu są zgodne z krokami opisanymi w temacie [co to jest proces nauki o danych zespołowych?](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/overview) Proces nauki danych zespołu to systematyczne podejście do nauki dotyczącej danych, które ułatwiają zespołom analityków danych wydajną współpracę nad cyklem tworzenia inteligentnych aplikacji. W procesie nauki o danych udostępnia także platforma iteracyjne do nauki o danych, który może występować przez osobę.
 
 W tym instruktażu analizujemy zestaw danych [spambase](https://archive.ics.uci.edu/ml/datasets/spambase) . Spambase to zbiór wiadomości e-mail oznaczonych jako spam lub Ham (bez spamu). Spambase zawiera również pewne dane statystyczne dotyczące zawartości wiadomości e-mail. Więcej informacji na temat statystyk znajduje się w dalszej części przewodnika.
 
@@ -47,7 +47,7 @@ Aby pobrać dane, Otwórz okno terminalu, a następnie uruchom następujące pol
 
     wget https://archive.ics.uci.edu/ml/machine-learning-databases/spambase/spambase.data
 
-Pobrany plik nie ma wiersza nagłówka. Utwórzmy kolejny plik, który ma nagłówek. Uruchom to polecenie, aby utworzyć plik z odpowiednimi nagłówkami:
+Pobrany plik nie ma wiersza nagłówka. Utwórzmy kolejny plik, który ma nagłówek. Uruchom następujące polecenie, aby utworzyć plik, odpowiednie nagłówki:
 
     echo 'word_freq_make, word_freq_address, word_freq_all, word_freq_3d,word_freq_our, word_freq_over, word_freq_remove, word_freq_internet,word_freq_order, word_freq_mail, word_freq_receive, word_freq_will,word_freq_people, word_freq_report, word_freq_addresses, word_freq_free,word_freq_business, word_freq_email, word_freq_you, word_freq_credit,word_freq_your, word_freq_font, word_freq_000, word_freq_money,word_freq_hp, word_freq_hpl, word_freq_george, word_freq_650, word_freq_lab,word_freq_labs, word_freq_telnet, word_freq_857, word_freq_data,word_freq_415, word_freq_85, word_freq_technology, word_freq_1999,word_freq_parts, word_freq_pm, word_freq_direct, word_freq_cs, word_freq_meeting,word_freq_original, word_freq_project, word_freq_re, word_freq_edu,word_freq_table, word_freq_conference, char_freq_semicolon, char_freq_leftParen,char_freq_leftBracket, char_freq_exclamation, char_freq_dollar, char_freq_pound, capital_run_length_average,capital_run_length_longest, capital_run_length_total, spam' > headers
 
@@ -60,10 +60,10 @@ Zestaw danych zawiera kilka typów statystyk dla każdej wiadomości e-mail:
 
 * Kolumny, takie jak **word\_freq\__Word_**  , wskazują procent słów w wiadomości E-mail pasującej do *wyrazu*. Na przykład jeśli **słowo\_freq\_** wartość **1**, to 1% wszystkich wyrazów w wiadomości *e-mail.*
 * Kolumny takie jak **char\_freq\__char_**  wskazują procent wszystkich znaków w wiadomości E-mail, która jest *znakiem*.
-* **wielka\_\_długość\_najdłuższej** jest najdłuższym długością sekwencji wielkich liter.
-* **wielka\_\_długość\_średnia** to średnia długość wszystkich sekwencji wielkich liter.
-* **wielka\_\_długość\_suma** to łączna długość wszystkich sekwencji wielkich liter.
-* **spam** wskazuje, czy wiadomość e-mail została uznana za spam, czy nie (1 = spam, 0 = nie spam).
+* **wielkie\_Uruchom\_długość\_najdłuższy** jest najdłuższy okres sekwencję wielkie litery.
+* **wielkie\_Uruchom\_długość\_średni** jest średnia długość wszystkie sekwencje wielkie litery.
+* **wielkie\_Uruchom\_długość\_całkowita** jest łączna długość wszystkich sekwencji wielkie litery.
+* **spam** wskazuje, czy wiadomość e-mail została uznana za spam, czy nie (1 = wiadomości-śmieci, 0 = nie spamu).
 
 ## <a name="explore-the-dataset-by-using-r-open"></a>Eksplorowanie zestawu danych przy użyciu języka R Open
 
@@ -80,7 +80,7 @@ Aby zaimportować dane i skonfigurować środowisko:
     data <- read.csv("spambaseHeaders.data")
     set.seed(123)
 
-Aby wyświetlić statystyki podsumowania poszczególnych kolumn:
+Aby wyświetlić podsumowanie statystyk dotyczących poszczególnych kolumn:
 
     summary(data)
 
@@ -90,7 +90,7 @@ Aby uzyskać inny widok danych:
 
 Ten widok przedstawia typ każdej zmiennej i kilka pierwszych wartości w zestawie danych.
 
-Kolumna **spamu** została odczytana jako liczba całkowita, ale w rzeczywistości jest to zmienna kategorii (lub współczynnik). Aby ustawić swój typ:
+**Spamu** kolumna została odczytana jako liczba całkowita, ale jest faktycznie kategorii zmiennej (lub Authentication). Aby ustawić jej typ:
 
     data$spam <- as.factor(data$spam)
 
@@ -139,25 +139,25 @@ Następnie utwórz drzewo decyzyjne służące do klasyfikowania wiadomości e-m
     plot(model.rpart)
     text(model.rpart)
 
-Oto wynik:
+Poniżej przedstawiono wyniki:
 
 ![Diagram tworzonego drzewa decyzyjnego](./media/linux-dsvm-walkthrough/decision-tree.png)
 
-Aby określić, jak dobrze działa w zestawie szkoleniowym, należy użyć następującego kodu:
+Aby określić, jak sprawdzi się na zestaw szkoleniowy, użyj następującego kodu:
 
     trainSetPred <- predict(model.rpart, newdata = trainSet, type = "class")
     t <- table(`Actual Class` = trainSet$spam, `Predicted Class` = trainSetPred)
     accuracy <- sum(diag(t))/sum(t)
     accuracy
 
-Aby określić, jak dobrze działa w zestawie testów:
+Aby określić, jak sprawdzi się w zestawie testów:
 
     testSetPred <- predict(model.rpart, newdata = testSet, type = "class")
     t <- table(`Actual Class` = testSet$spam, `Predicted Class` = testSetPred)
     accuracy <- sum(diag(t))/sum(t)
     accuracy
 
-Wypróbujmy również losowy model lasów. Lasy losowe przeszkolą wiele drzew decyzyjnych i wyprowadzają klasę, która jest trybem klasyfikacji ze wszystkich poszczególnych drzew decyzyjnych. Zapewniają one bardziej zaawansowane podejście do uczenia maszynowego, ponieważ są one poprawne dla tendencji modelu drzewa decyzyjnego, aby overfit zestaw danych szkoleniowych.
+Spróbujmy również model lasu losowych. Lasy losowe przeszkolą wiele drzew decyzyjnych i wyprowadzają klasę, która jest trybem klasyfikacji ze wszystkich poszczególnych drzew decyzyjnych. Zapewniają one bardziej zaawansowane podejście do uczenia maszynowego, ponieważ są one poprawne dla tendencji modelu drzewa decyzyjnego, aby overfit zestaw danych szkoleniowych.
 
     require(randomForest)
     trainVars <- setdiff(colnames(data), 'spam')
@@ -174,17 +174,17 @@ Wypróbujmy również losowy model lasów. Lasy losowe przeszkolą wiele drzew d
 
 ## <a name="deploy-a-model-to-azure-machine-learning-studio-classic"></a>Wdróż model do Azure Machine Learning Studio (klasyczny)
 
-[Azure Machine Learning Studio (klasyczny)](https://studio.azureml.net/) to usługa w chmurze, która ułatwia tworzenie i wdrażanie modeli analizy predykcyjnej. W przypadku klasycznej wersji programu Azure Machine Learning Studio można opublikować każdą funkcję języka R jako usługę sieci Web. Pakiet Azure Machine Learning Studio R sprawia, że wdrożenie jest łatwe, bezpośrednio z sesji języka R na DSVM.
+[Azure Machine Learning Studio (klasyczny)](https://studio.azureml.net/) to usługa w chmurze, która ułatwia tworzenie i wdrażanie modeli analizy predykcyjnej. Świetną funkcją Azure Machine Learning Studio (klasyczną) jest możliwość publikowania dowolnej funkcji języka R jako usługi sieci Web. Pakiet języka R Azure Machine Learning Studio (klasyczny) sprawia, że wdrożenie jest łatwe, bezpośrednio z sesji języka R na DSVM.
 
-Aby wdrożyć kod drzewa decyzyjnego z poprzedniej sekcji, zaloguj się do Azure Machine Learning Studio (klasyczne). Aby się zalogować, musisz mieć identyfikator obszaru roboczego i token autoryzacji. Aby znaleźć te wartości i zainicjować dla nich zmienne Azure Machine Learning, wykonaj następujące kroki:
+Aby wdrożyć kod drzewa decyzyjnego z poprzedniej sekcji, zaloguj się do Azure Machine Learning Studio (klasyczne). Potrzebujesz Identyfikatora obszaru roboczego i token autoryzacji, aby zalogować się. Aby znaleźć te wartości i zainicjować dla nich zmienne Azure Machine Learning, wykonaj następujące kroki:
 
 1. W menu po lewej stronie wybierz pozycję **Ustawienia**. Zwróć uwagę na wartość **identyfikatora obszaru roboczego**.
 
-   ![Identyfikator obszaru roboczego Azure Machine Learning Studio](./media/linux-dsvm-walkthrough/workspace-id.png)
+   ![Identyfikator obszaru roboczego Azure Machine Learning Studio (klasyczny)](./media/linux-dsvm-walkthrough/workspace-id.png)
 
 1. Wybierz kartę **tokeny autoryzacji** . Zanotuj wartość **podstawowego tokenu autoryzacji**.
 
-   ![Podstawowy Token autoryzacji Azure Machine Learning Studio](./media/linux-dsvm-walkthrough/workspace-token.png)
+   ![Podstawowy Token autoryzacji Azure Machine Learning Studio (klasyczny)](./media/linux-dsvm-walkthrough/workspace-token.png)
 1. Załaduj pakiet platformy **Azure** , a następnie ustaw wartości zmiennych przy użyciu tokenu i identyfikatora obszaru roboczego w sesji języka R na DSVM:
 
         if(!require("AzureML")) install.packages("AzureML")
@@ -192,14 +192,14 @@ Aby wdrożyć kod drzewa decyzyjnego z poprzedniej sekcji, zaloguj się do Azure
         wsAuth = "<authorization-token>"
         wsID = "<workspace-id>"
 
-1. Uprośmy model, aby ułatwić wdrożenie tej demonstracji. Wybierz trzy zmienne w drzewie decyzyjnym znajdującym się najbliżej katalogu głównego i skompiluj nowe drzewo przy użyciu tylko tych trzech zmiennych:
+1. Teraz można uproszczenie model Aby wykonywać ułatwia zaimplementowanie tej prezentacji. Wybierz trzy zmienne w drzewie decyzyjnym znajdującym się najbliżej katalogu głównego i skompiluj nowe drzewo przy użyciu tylko tych trzech zmiennych:
 
         colNames <- c("char_freq_dollar", "word_freq_remove", "word_freq_hp", "spam")
         smallTrainSet <- trainSet[, colNames]
         smallTestSet <- testSet[, colNames]
         model.rpart <- rpart(spam ~ ., method = "class", data = smallTrainSet)
 
-1. Potrzebujemy funkcji przewidywania, która przyjmuje funkcje jako dane wejściowe i zwraca przewidywane wartości:
+1. Potrzebujemy funkcji prognozowania, który przyjmuje funkcji jako dane wejściowe i zwraca przewidywane wartości:
 
         predictSpam <- function(newdata) {
         predictDF <- predict(model.rpart, newdata = newdata)
@@ -219,7 +219,7 @@ Aby wdrożyć kod drzewa decyzyjnego z poprzedniej sekcji, zaloguj się do Azure
         ep <- endpoints(ws,s)
         ep
 
-1. Aby wypróbować ją na pierwszych 10 wierszach zestawu testów:
+1. Aby wypróbować tę funkcję w pierwszym ustawić 10 wierszy testu:
 
         consume(ep, smallTestSet[1:10, ])
 
@@ -227,15 +227,15 @@ Aby wdrożyć kod drzewa decyzyjnego z poprzedniej sekcji, zaloguj się do Azure
 
 ## <a name="deep-learning-tutorials-and-walkthroughs"></a>Samouczki i przewodniki dotyczące uczenia głębokiego
 
-Oprócz przykładów opartych na architekturze udostępnia się również zestaw kompleksowych przewodników. Te instruktaże ułatwiają szybkie rozpoczęcie tworzenia aplikacji do uczenia głębokiego w domenach, takich jak zrozumienie obrazów i tekstu/języka.
+Oprócz przykładów opartych na architekturze udostępnia się również zestaw kompleksowych przewodników. Przewodniki te pomagają szybko Rozpocznij korzystanie z usługi opracowywania aplikacji uczenia głębokiego w domenach, takich jak obraz i tekst/language understanding.
 
 - [Uruchamianie sieci neuronowych w różnych strukturach](https://github.com/ilkarman/DeepLearningFrameworks): kompleksowy przewodnik, który pokazuje, jak migrować kod z jednej struktury do innej. Pokazano również, jak porównać model i wydajność środowiska uruchomieniowego w różnych strukturach. 
 
-- [Przewodnik dotyczący tworzenia kompleksowych rozwiązań w celu wykrywania produktów w obrazach](https://github.com/Azure/cortana-intelligence-product-detection-from-images): wykrywanie obrazów to technika, która umożliwia lokalizowanie i klasyfikowanie obiektów w obrazach. Technologia ta pozwala uzyskać ogromne korzyści w wielu domenach biznesowych w czasie rzeczywistym. Na przykład Detaliści mogą użyć tej techniki, aby określić, który produkt został pobrany przez klienta z półki. Te informacje z kolei ułatwiają przechowywanie spisu produktów. 
+- [Przewodnik dotyczący tworzenia kompleksowych rozwiązań w celu wykrywania produktów w obrazach](https://github.com/Azure/cortana-intelligence-product-detection-from-images): wykrywanie obrazów to technika, która umożliwia lokalizowanie i klasyfikowanie obiektów w obrazach. Technologia ta pozwala uzyskać ogromne korzyści w wielu domenach biznesowych w czasie rzeczywistym. Na przykład sprzedawcy detaliczni, można użyć tej techniki ustalenie produktu, który klientów została pobrana z półki. Informacje te pomagają z kolei magazyny Zarządzanie spis produktów. 
 
 - [Głębokie uczenie audio](https://blogs.technet.microsoft.com/machinelearning/2018/01/30/hearing-ai-getting-started-with-deep-learning-for-audio-on-azure/): w tym samouczku pokazano, jak szkolić model uczenia głębokiego na potrzeby wykrywania zdarzeń audio w [zestawie danych dotyczących dźwięków miejskich](https://urbansounddataset.weebly.com/). Samouczek zawiera omówienie sposobu pracy z danymi audio.
 
-- [Klasyfikacja dokumentów tekstowych](https://github.com/anargyri/lstm_han): w tym instruktażu przedstawiono sposób tworzenia i uczenia dwóch różnych architektur sieci neuronowych: hierarchicznej sieci i długiej ilości pamięci (LSTM). Te sieci neuronowych używają interfejsu API Keras do uczenia głębokiego do klasyfikowania dokumentów tekstowych. Keras to przód do trzech najpopularniejszych platform uczenia głębokiego: Microsoft Cognitive Toolkit, TensorFlow i Theano.
+- [Klasyfikacja dokumentów tekstowych](https://github.com/anargyri/lstm_han): w tym instruktażu przedstawiono sposób tworzenia i uczenia dwóch różnych architektur sieci neuronowych: hierarchicznej sieci i długiej ilości pamięci (LSTM). Te sieci neuronowych na użytek interfejsu API biblioteki Keras głębokie uczenie do klasyfikowania dokumentów tekstowych. Biblioteki Keras jest frontonu do trzech spośród najbardziej popularnych struktur do uczenia głębokiego: Microsoft Cognitive Toolkit, TensorFlow i Theano.
 
 ## <a name="other-tools"></a>Inne narzędzia
 
@@ -246,7 +246,7 @@ Pozostałe sekcje pokazują, jak używać niektórych narzędzi zainstalowanych 
 * JupyterHub
 * Rattle
 * PostgreSQL i SQuirreL SQL
-* Magazyn danych SQL Server
+* SQL Server Data Warehouse
 
 ### <a name="xgboost"></a>XGBoost
 
@@ -285,7 +285,7 @@ Przeczytajmy część zestawu danych spambase i Klasyfikowanie wiadomości e-mai
     clf = svm.SVC()
     clf.fit(X, y)
 
-Aby dokonać prognoz:
+Jak tworzyć prognozy:
 
     clf.predict(X.ix[0:20, :])
 
@@ -363,24 +363,24 @@ Zainstaluj i uruchom program Rattle, uruchamiając następujące polecenia:
 > [!NOTE]
 > Nie musisz instalować Rattle na DSVM. Jednak po otwarciu Rattle może zostać wyświetlony monit o zainstalowanie dodatkowych pakietów.
 
-Rattle używa interfejsu opartego na kartach. Większość kart odpowiada krokom w [zespołowym procesie nauki danych](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/), takim jak ładowanie danych lub Eksplorowanie danych. Proces analizy danych jest przepływem od lewej do prawej za pośrednictwem kart. Ostatnia karta zawiera dziennik poleceń języka R, które zostały uruchomione przez Rattle.
+Rattle korzysta z interfejsu opartego na karcie. Większość kart odpowiada krokom w [zespołowym procesie nauki danych](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/), takim jak ładowanie danych lub Eksplorowanie danych. Proces analizy danych jest pisany od lewej do prawej, za pośrednictwem karty. Ostatnia karta zawiera dziennik poleceń języka R, które zostały uruchomione przez Rattle.
 
 Aby załadować i skonfigurować zestaw danych:
 
 1. Aby załadować plik, wybierz kartę **dane** .
 1. Wybierz selektor obok **nazwy pliku**, a następnie wybierz pozycję **spambaseHeaders. Data**.
-1. Do załadowania pliku. Wybierz pozycję **Wykonaj**. Powinno zostać wyświetlone podsumowanie każdej kolumny, w tym określony typ danych. bez względu na to, czy jest to wejście, obiekt docelowy czy inny typ zmiennej; oraz liczbę unikatowych wartości.
-1. Rattle poprawnie zidentyfikowała kolumnę **spamu** jako element docelowy. Wybierz kolumnę **spam** , a następnie ustaw **docelowy typ danych** na **categoric**.
+1. Aby załadować plik. Wybierz pozycję **Wykonaj**. Powinno zostać wyświetlone podsumowanie każdej kolumny, w tym określony typ danych. bez względu na to, czy jest to wejście, obiekt docelowy czy inny typ zmiennej; oraz liczbę unikatowych wartości.
+1. Poprawnie zidentyfikował rattle **spamu** kolumny jako element docelowy. Wybierz kolumnę **spam** , a następnie ustaw **docelowy typ danych** na **categoric**.
 
 Aby eksplorować dane:
 
-1. Wybierz kartę **Eksploruj** .
+1. Wybierz **Eksploruj** kartę.
 1. Aby wyświetlić informacje o typach zmiennych i niektórych statystykach podsumowujących, wybierz pozycję **podsumowanie** > **Wykonaj**.
 1. Aby wyświetlić inne typy statystyk dla każdej zmiennej, wybierz inne opcje, takie jak **opisywanie** lub **podstawy**.
 
-Karta **Eksplorowanie** umożliwia również generowanie szczegółowych wykresów. Aby wykreślić histogram dotyczący danych:
+Karta **Eksplorowanie** umożliwia również generowanie szczegółowych wykresów. Do wykreślenia histogram danych:
 
-1. Wybierz opcję **dystrybucje**.
+1. Wybierz **dystrybucje**.
 1. W obszarze **word_freq_remove** i **Word_freq_you**wybierz pozycję **histogram**.
 1. Wybierz pozycję **Wykonaj**. W jednym oknie wykresu powinny być widoczne oba wykresy gęstości, w _których jest jasne, że słowo pojawia_ się częściej _niż w_wiadomościach e-mail.
 
@@ -388,15 +388,15 @@ Wykresy **korelacji** są również interesujące. Aby utworzyć wykres:
 
 1. W obszarze **Typ**wybierz pozycję **korelacja**.
 1. Wybierz pozycję **Wykonaj**.
-1. Rattle ostrzega o tym, że zaleca się użycie maksymalnie 40 zmiennych. Wybierz pozycję **tak** , aby wyświetlić wykres.
+1. Rattle wyświetli ostrzeżenie, że zalecane maksymalnie 40 zmiennych. Wybierz **tak** Aby wyświetlić wykres.
 
 Istnieje kilka interesujących korelacji: _technologia_ jest silnie skorelowana z _HP_ i _Labs_, na przykład. Jest również silnie skorelowane z _650_ , ponieważ kod obszaru dawców zestawu danych to 650.
 
 Wartości liczbowe korelacji między wyrazami są dostępne w oknie **Eksplorowanie** . Warto zwrócić uwagę na przykład, że _technologia_ jest niekorzystnie _skorelowane z i_ _pieniędzy_.
 
-Rattle może przekształcić zestaw danych, aby obsłużyć niektóre typowe problemy. Na przykład może zmieniać skalę funkcji, określać brakujące wartości, obsługiwać elementy odstające i usuwać zmienne lub obserwacje z brakującymi danymi. Rattle może również identyfikować reguły kojarzenia między obserwacjami a zmiennymi. Te karty nie zostały omówione w tym instruktażu wprowadzającym.
+Rattle można przekształcać zestawu danych do obsługi niektórych typowych problemów. Na przykład może zmieniać skalę funkcji, określać brakujące wartości, obsługiwać elementy odstające i usuwać zmienne lub obserwacje z brakującymi danymi. Rattle może również identyfikować reguły kojarzenia między obserwacjami a zmiennymi. Te karty nie zostały omówione w tym instruktażu wprowadzającym.
 
-Rattle może również uruchamiać analizę klastra. Wykluczmy niektóre funkcje, aby ułatwić odczytywanie danych wyjściowych. Na karcie **dane** wybierz opcję **Ignoruj** obok każdej ze zmiennych, z wyjątkiem tych 10 elementów:
+Rattle może również uruchamiać analizę klastra. Umożliwia wykluczenie niektórych funkcji, aby ułatwić dane wyjściowe. Na karcie **dane** wybierz opcję **Ignoruj** obok każdej ze zmiennych, z wyjątkiem tych 10 elementów:
 
 * word_freq_hp
 * word_freq_technology
@@ -407,16 +407,16 @@ Rattle może również uruchamiać analizę klastra. Wykluczmy niektóre funkcje
 * word_freq_money
 * capital_run_length_longest
 * word_freq_business
-* znaczenie
+* wiadomości-śmieci
 
-Wróć do karty **klaster** . Wybierz pozycję **KMeans**, a następnie ustaw **liczbę klastrów** na **4**. Wybierz pozycję **Wykonaj**. Wyniki są wyświetlane w oknie dane wyjściowe. Jeden klaster ma wysoką częstotliwość _George_ i _HP_i prawdopodobnie jest uzasadnioną służbową pocztą e-mail.
+Wróć do karty **klaster** . Wybierz pozycję **KMeans**, a następnie ustaw **liczbę klastrów** na **4**. Wybierz pozycję **Wykonaj**. Wyniki są wyświetlane w oknie danych wyjściowych. Jeden klaster ma wysoką częstotliwość _George_ i _HP_i prawdopodobnie jest uzasadnioną służbową pocztą e-mail.
 
 Aby utworzyć podstawowy model uczenia maszynowego w strukturze:
 
-1. Wybierz kartę **model** ,
+1. Wybierz **modelu** karty
 1. W polu **Typ**wybierz pozycję **drzewo**.
-1. Wybierz polecenie **Execute (wykonaj** ), aby wyświetlić drzewo w formularzu tekstowym w oknie danych wyjściowych.
-1. Wybierz przycisk **rysowania** , aby wyświetlić wersję graficzną. Drzewo decyzyjne wygląda podobnie do drzewa uzyskanego wcześniej przy użyciu rpart.
+1. Wybierz **Execute** do wyświetlenia w drzewie w postaci tekstu w oknie danych wyjściowych.
+1. Wybierz **Rysowanie** przycisk, aby wyświetlić graficzną wersję. Drzewo decyzyjne wygląda podobnie do drzewa uzyskanego wcześniej przy użyciu rpart.
 
 Przydatna funkcja Rattle może uruchamiać kilka metod uczenia maszynowego i szybko je oceniać. Oto kroki:
 
@@ -425,20 +425,20 @@ Przydatna funkcja Rattle może uruchamiać kilka metod uczenia maszynowego i szy
 1. Po zakończeniu działania Rattle można wybrać dowolną wartość **typu** , na przykład **SVM**, i wyświetlić wyniki.
 1. Możesz również porównać wydajność modeli w zestawie walidacji, korzystając z karty **szacowanie** . Na przykład wybór **macierzy błędów** pokazuje macierz pomyłek, ogólny błąd i średnią błąd klasy dla każdego modelu w zestawie walidacji. Można również wykreślić krzywe ROC, uruchamiać analizę czułości i wykonywać inne typy ocen modeli.
 
-Po zakończeniu tworzenia modeli wybierz kartę **Dziennik** , aby wyświetlić kod języka R, który został uruchomiony przez Rattle podczas sesji. Możesz wybrać przycisk **Eksportuj** , aby go zapisać.
+Po zakończeniu tworzenia modeli wybierz kartę **Dziennik** , aby wyświetlić kod języka R, który został uruchomiony przez Rattle podczas sesji. Możesz wybrać **wyeksportować** przycisk, aby go zapisać.
 
 > [!NOTE]
 > Bieżąca wersja programu Rattle zawiera usterkę. Aby zmodyfikować skrypt lub użyć go do późniejszego powtórzenia kroków, należy wstawić znak **#** przed poleceniem *Eksportuj ten dziennik...* w tekście dziennika.
 
 ### <a name="postgresql-and-squirrel-sql"></a>PostgreSQL i SQuirreL SQL
 
-DSVM jest dostarczany z zainstalowaną PostgreSQL. PostgreSQL to rozbudowana, relacyjna baza danych typu open source. W tej sekcji przedstawiono sposób ładowania zestawu danych spambase do PostgreSQL, a następnie wykonywania zapytania.
+Maszyny DSVM jest powiązana z zainstalowana baza danych PostgreSQL. PostgreSQL jest zaawansowane, typu open-source relacyjnej bazy danych. W tej sekcji przedstawiono sposób ładowania zestawu danych spambase do PostgreSQL, a następnie wykonywania zapytania.
 
 Przed załadowaniem danych należy zezwolić na uwierzytelnianie hasła z hosta lokalnego. W wierszu polecenia uruchom następujące polecenie:
 
     sudo gedit /var/lib/pgsql/data/pg_hba.conf
 
-W dolnej części pliku konfiguracji są kilka wierszy, które zawierają szczegółowe informacje o dozwolonych połączeniach:
+W dolnej części pliku konfiguracji są kilka wierszy, które szczegółowo dozwolone połączenia:
 
     # "local" is only for Unix domain socket connections:
     local   all             all                                     trust
@@ -481,7 +481,7 @@ Zaimportuj dane do nowej bazy danych:
 
 Teraz eksplorujmy dane i uruchamiasz niektóre zapytania za pomocą SQuirreL SQL, graficznego narzędzia, którego możesz użyć do współdziałania z bazami danych za pośrednictwem sterownika JDBC.
 
-Aby rozpocząć, w menu **aplikacje** Otwórz SQuirreL SQL. Aby skonfigurować sterownik:
+Aby rozpocząć, w menu **aplikacje** Otwórz SQuirreL SQL. Aby skonfigurować sterownika:
 
 1. Wybierz pozycję **Windows** > **Wyświetl sterowniki**.
 1. Kliknij prawym przyciskiem myszy pozycję **PostgreSQL** i wybierz pozycję **Modyfikuj sterownik**.
@@ -495,19 +495,19 @@ Aby skonfigurować połączenie z serwerem lokalnym:
 1. Wybierz pozycję **Windows** > **Wyświetl aliasy.**
 1. Wybierz przycisk **+** , aby utworzyć nowy alias. Dla nowej nazwy aliasu wprowadź **bazę danych spamu**. 
 1. W obszarze **Sterownik**wybierz pozycję **PostgreSQL**.
-1. Ustaw adres URL **JDBC: PostgreSQL://localhost/spam**.
+1. Ustaw adres URL **jdbc:postgresql://localhost/spam**.
 1. Wprowadź nazwę użytkownika i hasło.
 1. Kliknij przycisk **OK**.
-1. Aby otworzyć okno **połączenia** , kliknij dwukrotnie alias **bazy danych spamu** .
+1. Aby otworzyć **połączenia** okna, kliknij dwukrotnie **spamu bazy danych** aliasu.
 1. Wybierz przycisk **Połącz**.
 
-Aby uruchomić niektóre zapytania:
+Aby uruchomić kilka zapytań:
 
-1. Wybierz kartę **SQL** .
+1. Wybierz **SQL** kartę.
 1. W polu zapytania w górnej części karty **SQL** wprowadź zapytanie podstawowe, takie jak `SELECT * from data;`.
 1. Naciśnij klawisze CTRL + ENTER, aby uruchomić zapytanie. Domyślnie SQuirreL SQL zwraca pierwsze 100 wierszy z zapytania.
 
-Istnieje wiele zapytań, które można uruchomić, aby eksplorować te dane. Na przykład, w jaki sposób *częstotliwość wyrazów* różni się między spamem a Ham?
+Istnieje wiele zapytań, które można uruchomić, aby eksplorować te dane. Na przykład, jak działa częstotliwość wyraz *wprowadzić* różnią się w wiadomości-śmieci, które pichcisz?
 
     SELECT avg(word_freq_make), spam from data group by spam;
 
@@ -519,11 +519,11 @@ Większość wiadomości e-mail, które mają duże wystąpienie *3W* , jest pra
 
 Jeśli chcesz przeprowadzić Uczenie maszynowe przy użyciu danych przechowywanych w bazie danych PostgreSQL, rozważ użycie [MADlib](https://madlib.incubator.apache.org/).
 
-### <a name="sql-data-warehouse"></a>SQL Data Warehouse
+### <a name="sql-data-warehouse"></a>Hurtownia danych SQL
 
 Azure SQL Data Warehouse to oparta na chmurze baza danych skalowalna w poziomie, która może przetwarzać ogromne ilości danych, zarówno relacyjnych, jak i nierelacyjnych. Aby uzyskać więcej informacji, zobacz [co to jest Azure SQL Data Warehouse?](../../sql-data-warehouse/sql-data-warehouse-overview-what-is.md)
 
-Aby nawiązać połączenie z magazynem danych i utworzyć tabelę, uruchom następujące polecenie w wierszu polecenia:
+Aby połączyć się z magazynem danych i utworzenia tabeli, uruchom następujące polecenie w wierszu polecenia:
 
     sqlcmd -S <server-name>.database.windows.net -d <database-name> -U <username> -P <password> -I
 
@@ -550,4 +550,4 @@ Możesz również wysyłać zapytania przy użyciu języka SQL SQuirreL. Wykonaj
 
 Aby zapoznać się z omówieniem artykułów, które przeprowadzą Cię przez zadania wchodzące w skład procesu analizy danych na platformie Azure, zobacz [zespół ds. analizy danych](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/overview).
 
-Aby zapoznać się z opisem kompleksowych przewodników, które przedstawiają kroki procesu nauka danych zespołu dla konkretnych scenariuszy, zobacz [przewodniki dotyczące procesów naukowych](../team-data-science-process/walkthroughs.md)dotyczących analiz danych. Instruktaż ilustrują również sposób łączenia narzędzi i usług w chmurze i lokalnych z przepływem pracy lub potoku w celu utworzenia inteligentnej aplikacji.
+Aby zapoznać się z opisem kompleksowych przewodników, które przedstawiają kroki procesu nauka danych zespołu dla konkretnych scenariuszy, zobacz [przewodniki dotyczące procesów naukowych](../team-data-science-process/walkthroughs.md)dotyczących analiz danych. Przewodniki pokazują również sposób łączenia w chmurze i lokalnych narzędzi i usług w przepływie pracy lub potoku do tworzenia inteligentnych aplikacji.

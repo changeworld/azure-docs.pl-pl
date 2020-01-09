@@ -1,18 +1,14 @@
 ---
 title: Jak aktualizować Azure Monitor kontenerów dla metryk | Microsoft Docs
 description: W tym artykule opisano sposób aktualizowania Azure Monitor dla kontenerów w celu włączenia funkcji metryk niestandardowych, która obsługuje eksplorowanie i zgłaszanie alertów dotyczących zagregowanych metryk.
-ms.service: azure-monitor
-ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
 ms.date: 11/11/2019
-ms.openlocfilehash: 5a43d7e23c9d6550e8985599786ff968050f19c1
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 0a2674df4a05d856b35dd51dbb33af0f407db29f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707484"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75403235"
 ---
 # <a name="how-to-update-azure-monitor-for-containers-to-enable-metrics"></a>Jak zaktualizować Azure Monitor dla kontenerów w celu włączenia metryk
 
@@ -40,7 +36,7 @@ Przed rozpoczęciem Potwierdź następujące kwestie:
 * Metryki niestandardowe są dostępne tylko w ramach podzestawów regionów świadczenia usługi Azure. Lista obsługiwanych regionów jest udokumentowana [tutaj](../platform/metrics-custom-overview.md#supported-regions).
 * Musisz być członkiem roli **[właściciela](../../role-based-access-control/built-in-roles.md#owner)** w zasobie klastra AKS, aby włączyć kolekcję metryk wydajności niestandardowych węzła i pod. 
 
-Jeśli zdecydujesz się na korzystanie z interfejsu wiersza polecenia platformy Azure, musisz najpierw zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie. Wymagany jest interfejs wiersza polecenia platformy Azure w wersji 2.0.59 lub nowszej. Aby zidentyfikować swoją wersję, uruchom `az --version`. Jeśli konieczne jest zainstalowanie lub uaktualnienie interfejsu wiersza polecenia platformy Azure, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli). 
+Jeśli zdecydujesz się użyć wiersza polecenia platformy Azure, należy najpierw zainstalować i korzystać z interfejsu wiersza polecenia lokalnie. Wymagany jest interfejs wiersza polecenia platformy Azure w wersji 2.0.59 lub nowszej. Aby zidentyfikować wersję, uruchom `az --version`. Jeśli musisz zainstalować lub uaktualnić wiersza polecenia platformy Azure, zobacz [zainstalować interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli). 
 
 ## <a name="upgrade-a-cluster-from-the-azure-portal"></a>Uaktualnianie klastra z Azure Portal
 
@@ -62,7 +58,7 @@ Wykonaj następujące kroki, aby zaktualizować wszystkie klastry w ramach subsk
     curl -sL https://aka.ms/ci-md-onboard-atscale | bash -s subscriptionId   
     ```
 
-    Zmiana konfiguracji może potrwać kilka sekund. Po zakończeniu zostanie wyświetlony komunikat podobny do poniższego i zawiera wynik:
+    Zmiana konfiguracji może potrwać kilka sekund. Po jej zakończeniu zostanie wyświetlony komunikat podobny do poniższego, która zawiera wynik:
 
     ```azurecli
     completed role assignments for all AKS clusters in subscription: <subscriptionId>
@@ -331,7 +327,7 @@ Wykonaj następujące kroki, aby zaktualizować wszystkie klastry w subskrypcji 
     ```powershell
     .\onboard_metrics_atscale.ps1 subscriptionId
     ```
-    Zmiana konfiguracji może potrwać kilka sekund. Po zakończeniu zostanie wyświetlony komunikat podobny do poniższego i zawiera wynik:
+    Zmiana konfiguracji może potrwać kilka sekund. Po jej zakończeniu zostanie wyświetlony komunikat podobny do poniższego, która zawiera wynik:
 
     ```powershell
     Completed adding role assignment for the aks clusters in subscriptionId :<subscriptionId>
@@ -582,7 +578,7 @@ Wykonaj następujące kroki, aby zaktualizować konkretny klaster przy użyciu A
     .\onboard_metrics.ps1 subscriptionId <subscriptionId> resourceGroupName <resourceGroupName> clusterName <clusterName>
     ```
 
-    Zmiana konfiguracji może potrwać kilka sekund. Po zakończeniu zostanie wyświetlony komunikat podobny do poniższego i zawiera wynik:
+    Zmiana konfiguracji może potrwać kilka sekund. Po jej zakończeniu zostanie wyświetlony komunikat podobny do poniższego, która zawiera wynik:
 
     ```powershell
     Successfully added Monitoring Metrics Publisher role assignment to cluster : <clusterName>

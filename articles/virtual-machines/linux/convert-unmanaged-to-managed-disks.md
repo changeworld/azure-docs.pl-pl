@@ -1,5 +1,5 @@
 ---
-title: Konwertowanie maszyny wirtualnej z systemem Linux na platformie Azure z dysków niezarządzanych na dyski zarządzane — Managed Disks platformy Azure
+title: Konwertowanie maszyny wirtualnej z systemem Linux z dysków niezarządzanych na dyski zarządzane
 description: Jak skonwertować maszynę wirtualną z systemem Linux z dysków niezarządzanych do dysków zarządzanych przy użyciu interfejsu wiersza polecenia platformy Azure w modelu wdrażania Menedżer zasobów
 author: roygara
 ms.service: virtual-machines-linux
@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/15/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 5464dd2ab2ab7c783945cc068a1347d7ef9ad3ab
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 24024bc66e10937f1ae2fdc5130ffcd8c76c1763
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036605"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430987"
 ---
 # <a name="convert-a-linux-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>Konwertowanie maszyny wirtualnej z systemem Linux z dysków niezarządzanych na dyski zarządzane
 
@@ -94,7 +94,7 @@ Przed przekonwertowaniem zestawu dostępności wszystkie maszyny wirtualne w zes
 
 Możesz również skonwertować dyski niezarządzane na dyski zarządzane przy użyciu Azure Portal.
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
 2. Wybierz maszynę wirtualną z listy maszyn wirtualnych w portalu.
 3. W bloku maszyny wirtualnej wybierz pozycję **dyski** z menu.
 4. W górnej części bloku **dyski** wybierz pozycję **Migruj do dysków zarządzanych**.

@@ -14,12 +14,12 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4731a7265265c48bed02e836de91d61971b9be14
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 17f02d38c77fce6a256e3c42d887f2b7d560add9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74921901"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424243"
 ---
 # <a name="confidential-client-assertions"></a>Poufne potwierdzenia klienta
 
@@ -42,7 +42,7 @@ MSAL.NET ma cztery metody dostarczania poświadczeń lub potwierdzeń do poufnej
 
 Podpisane potwierdzenie klienta przyjmuje postać podpisanego tokenu JWT z ładunkiem zawierającym wymagane oświadczenia uwierzytelniania przydzielone przez usługę Azure AD, zakodowane w formacie base64. Aby go użyć:
 
-```CSharp
+```csharp
 string signedClientAssertion = ComputeAssertion();
 app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
                                           .WithClientAssertion(signedClientAssertion)
@@ -62,7 +62,7 @@ sub | ClientID | Wartość "Sub" (podmiot) służy do identyfikowania tematu tok
 
 Oto przykład sposobu przedstawiania tych oświadczeń:
 
-```CSharp
+```csharp
 private static IDictionary<string, string> GetClaims()
 {
       //aud = https://login.microsoftonline.com/ + Tenant ID + /v2.0
@@ -88,7 +88,7 @@ private static IDictionary<string, string> GetClaims()
 
 Poniżej przedstawiono sposób przedstawiania podpisanego potwierdzenia klienta:
 
-```CSharp
+```csharp
 string Encode(byte[] arg)
 {
     char Base64PadCharacter = '=';
@@ -138,7 +138,7 @@ string GetSignedClientAssertion()
 
 Istnieje również możliwość utworzenia potwierdzenia za pomocą [programu Microsoft. IdentityModel. JsonWebTokens](https://www.nuget.org/packages/Microsoft.IdentityModel.JsonWebTokens/) . Kod będzie bardziej elegancki, jak pokazano w poniższym przykładzie:
 
-```CSharp
+```csharp
         string GetSignedClientAssertion()
         {
             var cert = new X509Certificate2("Certificate.pfx", "Password", X509KeyStorageFlags.EphemeralKeySet);
@@ -171,7 +171,7 @@ Istnieje również możliwość utworzenia potwierdzenia za pomocą [programu Mi
 
 Po potwierdzeniu podpisanego klienta można użyć go z interfejsami API MSAL, jak pokazano poniżej.
 
-```CSharp
+```csharp
             string signedClientAssertion = GetSignedClientAssertion();
 
             var confidentialApp = ConfidentialClientApplicationBuilder
@@ -184,7 +184,7 @@ Po potwierdzeniu podpisanego klienta można użyć go z interfejsami API MSAL, j
 
 `WithClientClaims(X509Certificate2 certificate, IDictionary<string, string> claimsToSign, bool mergeWithDefaultClaims = true)` domyślnie spowoduje utworzenie podpisanego potwierdzenia zawierającego oświadczenia oczekiwane przez usługę Azure AD oraz dodatkowe oświadczenia klienta, które chcesz wysłać. Oto fragment kodu dotyczący tego, jak to zrobić.
 
-```CSharp
+```csharp
 string ipAddress = "192.168.1.2";
 X509Certificate2 certificate = ReadCertificate(config.CertificateName);
 app = ConfidentialClientApplicationBuilder.Create(config.ClientId)

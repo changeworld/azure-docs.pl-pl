@@ -1,5 +1,5 @@
 ---
-title: Dostosowywanie oświadczeń dla aplikacji dzierżawy usługi Azure AD
+title: Dostosowywanie oświadczeń aplikacji dzierżawy usługi Azure AD (PowerShell)
 titleSuffix: Microsoft identity platform
 description: Ta strona zawiera opis mapowania oświadczeń Azure Active Directory.
 services: active-directory
@@ -14,12 +14,12 @@ ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8d15631c30566d7588b562f1bb0d6ba5280e699
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 6ad2d6ec7a98a82917916bba2930149705ebfd87
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74918427"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75531075"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Instrukcje: Dostosowywanie oświadczeń emitowanych w tokenach dla określonej aplikacji w dzierżawie (wersja zapoznawcza)
 
@@ -98,7 +98,7 @@ Istnieją pewne zestawy oświadczeń, które określają, jak i kiedy są używa
 | domain_dns_name |
 | domain_netbios_name |
 | e_exp |
-| e-mail |
+| email |
 | endpoint |
 | enfpolids |
 | exp |
@@ -328,7 +328,7 @@ Element ID identyfikuje, która Właściwość źródła udostępnia wartość d
 | Użytkownik | facsimiletelephonenumber | Numer telefonu faksu |
 | aplikacja, zasób, odbiorcy | displayname | Nazwa wyświetlana |
 | aplikacja, zasób, odbiorcy | Obiekt | ObjectID |
-| aplikacja, zasób, odbiorcy | tags | Główny tag usługi |
+| aplikacja, zasób, odbiorcy | tagów | Główny tag usługi |
 | Firma | tenantcountry | Kraj dzierżawy |
 
 **TransformationID:** Element TransformationID musi być podany tylko wtedy, gdy element source ma wartość "Transformation".
@@ -416,7 +416,13 @@ W oparciu o wybraną metodę jest oczekiwany zestaw danych wejściowych i wyjśc
 
 ### <a name="custom-signing-key"></a>Niestandardowy klucz podpisywania
 
-Aby zasady mapowania oświadczeń zaczęły obowiązywać, należy przypisać niestandardowy klucz podpisywania do obiektu jednostki usługi. Zapewnia to potwierdzenie, że tokeny zostały zmodyfikowane przez twórcę zasad mapowania oświadczeń i chroni aplikacje przed zasadami mapowania oświadczeń utworzonymi przez złośliwe podmioty.  Aplikacje z włączonym mapowaniem oświadczeń muszą sprawdzać specjalny identyfikator URI dla swoich kluczy podpisywania tokenu przez dołączenie `appid={client_id}` do ich [żądań metadanych połączenia OpenID Connect](v2-protocols-oidc.md#fetch-the-openid-connect-metadata-document).  
+Aby zasady mapowania oświadczeń zaczęły obowiązywać, należy przypisać niestandardowy klucz podpisywania do obiektu jednostki usługi. Zapewnia to potwierdzenie, że tokeny zostały zmodyfikowane przez twórcę zasad mapowania oświadczeń i chroni aplikacje przed zasadami mapowania oświadczeń utworzonymi przez złośliwe podmioty. Aby dodać niestandardowy klucz podpisywania, możesz użyć polecenia cmdlet programu Azure PowerShell `new-azureadapplicationkeycredential`, aby utworzyć poświadczenia klucza symetrycznego dla obiektu aplikacji. Aby uzyskać więcej informacji na temat tego polecenia cmdlet programu Azure PowerShell, kliknij [tutaj](https://docs.microsoft.com/powershell/module/Azuread/New-AzureADApplicationKeyCredential?view=azureadps-2.0).
+
+Aplikacje z włączonym mapowaniem oświadczeń muszą sprawdzać poprawność swoich kluczy podpisywania tokenu, dołączając `appid={client_id}` do ich [żądań metadanych połączenia OpenID Connect](v2-protocols-oidc.md#fetch-the-openid-connect-metadata-document). Poniżej znajduje się format dokumentu metadanych OpenID Connect Connect, którego należy użyć: 
+
+```
+https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration?appid={client-id}
+```
 
 ### <a name="cross-tenant-scenarios"></a>Scenariusze dla wielu dzierżawców
 

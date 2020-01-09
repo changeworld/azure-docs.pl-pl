@@ -1,18 +1,18 @@
 ---
 title: Możliwości renderowania — Azure Batch
-description: Określone możliwości renderowania w Azure Batch
+description: Standardowe możliwości Azure Batch są używane do uruchamiania renderowania obciążeń i aplikacji. Partia zadań zawiera określone funkcje do obsługi obciążeń renderowania.
 services: batch
 ms.service: batch
 author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: conceptual
-ms.openlocfilehash: b5eaaa6d41b9dae97a2d6219ffa44fb75ed67e61
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 697e2640b7215e0bbb9202c672f936535831eb99
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350046"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449724"
 ---
 # <a name="azure-batch-rendering-capabilities"></a>Możliwości renderowania Azure Batch
 
@@ -30,10 +30,10 @@ Istnieje obraz systemu Windows 2016 i obraz CentOS.  W [portalu Azure Marketplac
 
 Aby zapoznać się z przykładową konfiguracją puli, zobacz [samouczek renderowania interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/azure/batch/tutorial-rendering-cli).  Azure Portal i Batch Explorer udostępniają narzędzia graficznego interfejsu użytkownika, które umożliwiają wybranie renderowania obrazu maszyny wirtualnej podczas tworzenia puli.  W przypadku korzystania z interfejsu API usługi Batch określ następujące wartości właściwości [elementu imagereference](https://docs.microsoft.com/rest/api/batchservice/pool/add#imagereference) podczas tworzenia puli:
 
-| Wydawca | Oferta | SKU | Version |
+| Publisher | Oferta | Jednostka SKU | Wersja |
 |---------|---------|---------|--------|
-| partia | rendering-centos73 | Dawania | najnowsza |
-| partia | rendering-windows2016 | Dawania | najnowsza |
+| batch | rendering-centos73 | renderowanie | najnowsza |
+| batch | rendering-windows2016 | renderowanie | najnowsza |
 
 Inne opcje są dostępne, jeśli na maszynach wirtualnych puli są wymagane dodatkowe aplikacje:
 

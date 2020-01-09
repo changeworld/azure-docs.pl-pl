@@ -13,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/05/2019
 ms.author: memildin
-ms.openlocfilehash: 5d13e944cbc083b314c71936d181101ec13037b4
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 98001ba01c5dd29375a9af3af43a06f760e4f55f
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74997143"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552920"
 ---
 # <a name="protect-your-network-resources"></a>Ochrona zasobów sieciowych
 Azure Security Center stale analizuje stan zabezpieczeń zasobów platformy Azure pod kątem najlepszych rozwiązań z zakresu zabezpieczeń sieci. Gdy Security Center identyfikuje potencjalne luki w zabezpieczeniach, tworzy zalecenia, które przeprowadzą Cię przez proces konfigurowania wymaganych kontrolek do zabezpieczania i zabezpieczania zasobów.
 
-W tym artykule objaśniono stronę **sieci** w sekcji zabezpieczenia zasobów Azure Security Center i niektóre zalecenia, które zobaczysz.
+W tym artykule opisano stronę **sieci** w sekcji zabezpieczenia zasobów Security Center.
 
-Aby zapoznać się z pełną listą zaleceń dotyczących sieci, zobacz [zalecenia dotyczące sieci](recommendations-network.md).
+Aby zapoznać się z pełną listą zaleceń dotyczących sieci, zobacz [zalecenia dotyczące sieci](recommendations-reference.md#recs-network).
 
 Ten artykuł dotyczy zaleceń, które dotyczą zasobów platformy Azure z punktu widzenia zabezpieczeń sieci. Centrum zaleceń dotyczących sieci wokół zapór nowej generacji, sieciowych grup zabezpieczeń, dostępu JIT do maszyny wirtualnej, nadmiernie ograniczających reguły ruchu przychodzącego i nie tylko. Aby zapoznać się z listą zaleceń dotyczących sieci i akcji korygowania, zobacz [Zarządzanie zaleceniami dotyczącymi zabezpieczeń w Azure Security Center](security-center-recommendations.md).
 
@@ -40,7 +40,7 @@ Strona **Sieć** zawiera przegląd sekcji, w których można szczegółowe, aby 
 - Zalecenia dotyczące zabezpieczeń sieci.
 - Blok starszej **sieci** (poprzedni blok sieci) 
  
-![Okienko sieć](./media/security-center-network-recommendations/networking-pane.png)
+[![okienko sieci](./media/security-center-network-recommendations/networking-pane.png)](./media/security-center-network-recommendations/networking-pane.png#lightbox)
 
 ## <a name="network-map"></a>Mapa sieci
 Interaktywna mapa sieci zapewnia widok graficzny z nakładkami zabezpieczeń, które zapewniają zalecenia i szczegółowe informacje na potrzeby zabezpieczania zasobów sieciowych. Za pomocą mapy można zobaczyć topologię sieci obciążeń platformy Azure, połączenia między maszynami wirtualnymi i podsieciami oraz możliwość przechodzenia do szczegółów z mapy do określonych zasobów i zaleceń dotyczących tych zasobów.
@@ -59,11 +59,11 @@ Zostanie wyświetlony domyślny widok mapy topologii:
 - Zasoby połączone z Internetem
 - Mapa jest zoptymalizowana pod kątem subskrypcji wybranych na platformie Azure. W przypadku zmodyfikowania zaznaczenia mapa zostanie ponownie obliczona i zoptymalizowana na podstawie nowych ustawień.  
 
-![Mapa topologii sieci](./media/security-center-network-recommendations/network-map-info.png)
+[Mapa topologii sieci ![](./media/security-center-network-recommendations/network-map-info.png)](./media/security-center-network-recommendations/network-map-info.png#lightbox)
 
 ## <a name="understanding-the-network-map"></a>Omówienie mapy sieci
 
-Mapa sieci może przedstawiać zasoby platformy Azure w widoku **topologii** i widoku **ruchu** .
+Mapa sieci może przedstawiać zasoby platformy Azure w widoku **topologii** i widoku **ruchu** . 
 
 ### <a name="the-topology-view"></a>Widok topologii
 
@@ -111,7 +111,8 @@ Aby przejść do szczegółów zasobu:
 
 **Dane te są oparte na analizie sieciowych grup zabezpieczeń, a także zaawansowanych algorytmów uczenia maszynowego, które analizują wiele reguł, aby zrozumieć ich skrzyżowania i interakcje.** 
 
-![Mapa ruchu sieciowego](./media/security-center-network-recommendations/network-map-traffic.png)
+[Mapa ruchu sieciowego ![](./media/security-center-network-recommendations/network-map-traffic.png)](./media/security-center-network-recommendations/network-map-traffic.png#lightbox)
+
 
 ## Starsze sieci<a name ="legacy-networking"></a>
 
@@ -119,7 +120,7 @@ Jeśli nie masz Security Center warstwy Standardowa, w tej sekcji wyjaśniono, j
 
 Aby uzyskać dostęp do tych informacji, w bloku sieć kliknij pozycję **Wyświetl starszą sieć**. 
 
-![Starsze sieci](./media/security-center-network-recommendations/legacy-networking.png)
+[![starszej sieci](./media/security-center-network-recommendations/legacy-networking.png)](./media/security-center-network-recommendations/legacy-networking.png#lightbox)
 
 ### <a name="internet-facing-endpoints-section"></a>Sekcja Internet facing endpoints (Punkty końcowe umożliwiające dostęp do Internetu)
 W sekcji **punkty końcowe** połączone z Internetem można zobaczyć maszyny wirtualne, które są aktualnie skonfigurowane z punktem końcowym mającym dostęp do Internetu i jego stan.
@@ -135,7 +136,8 @@ W tym widoku topologii pierwszy poziom wyświetla sieci wirtualnych. Drugi wyśw
 
 Trzeci poziom przedstawia maszyny wirtualne, które są podobne do opisanych wcześniej. Możesz kliknąć dowolny zasób, aby dowiedzieć się więcej lub zastosować wymaganą kontrolę zabezpieczeń lub konfigurację.
 
-## <a name="see-also"></a>Zobacz także
+## <a name="next-steps"></a>Następne kroki
+
 Aby dowiedzieć się więcej na temat zalecenia, które mają zastosowanie do innych typów zasobów platformy Azure, zobacz następujące tematy:
 
 * [Ochrona maszyn i aplikacji w usłudze Azure Security Center](security-center-virtual-machine-protection.md)

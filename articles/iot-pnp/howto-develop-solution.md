@@ -3,24 +3,24 @@ title: Korzystanie z urządzenia usługi IoT Plug and Play w wersji zapoznawczej
 description: Deweloperzy rozwiązań dowiesz się, jak używać zestawu SDK usługi do współpracy z urządzeniami Plug and Play IoT.
 author: Philmea
 ms.author: philmea
-ms.date: 07/24/2019
+ms.date: 12/26/2019
 ms.topic: tutorial
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: 543f332087aef4147c9274ca980cb56543a68112
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 485b17ff236de32eab5388629c1bb6044ba19197
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977594"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75531347"
 ---
 # <a name="connect-to-and-interact-with-an-iot-plug-and-play-preview-device"></a>Łączenie się z urządzeniem Plug and Play IoT w wersji zapoznawczej i korzystanie z niego
 
 W tym przewodniku opisano sposób korzystania z przykładów w zestawie SDK usługi Node Service, które pokazują, jak rozwiązanie IoT może współdziałać z urządzeniami w wersji zapoznawczej IoT Plug and Play.
 
-Jeśli nie zostało to jeszcze zrobione, [Połącz urządzenie IoT Plug and Play z rozwiązaniem](quickstart-connect-pnp-device-solution.md) przewodnika Szybki Start. Przewodnik Szybki Start przedstawia sposób pobierania i instalowania zestawu SDK oraz uruchamiania niektórych przykładów.
+Jeśli nie zostało to jeszcze zrobione, [Połącz urządzenie IoT Plug and Play z rozwiązaniem](quickstart-connect-pnp-device-solution-node.md) przewodnika Szybki Start. Przewodnik Szybki Start przedstawia sposób pobierania i instalowania zestawu SDK oraz uruchamiania niektórych przykładów.
 
 Przed uruchomieniem przykładów usługi Otwórz nowy terminal, przejdź do folderu głównego sklonowanego repozytorium, przejdź do folderu **digitaltwins/szybkiego startu/usługi** , a następnie uruchom następujące polecenie, aby zainstalować zależności:
 

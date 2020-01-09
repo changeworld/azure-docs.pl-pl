@@ -14,12 +14,12 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 11/27/2019
 ms.author: aschhab
-ms.openlocfilehash: c1f9c8a03a503444c7c45d5374b67e5b453a8931
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 49abd1b0542b1a658517561cf1ffead402fa93a5
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561614"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75563398"
 ---
 # <a name="get-started-with-service-bus-queues"></a>Wprowadzenie do kolejek usługi Service Bus
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
@@ -27,9 +27,9 @@ W tym samouczku utworzysz aplikacje konsolowe platformy .NET Core umożliwiając
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- [Program Visual Studio 2019](https://www.visualstudio.com/vs).
+- [Visual Studio 2019](https://www.visualstudio.com/vs).
 - [Zestaw NET Core SDK](https://www.microsoft.com/net/download/windows), wersja 2.0 lub nowsza.
-- Subskrypcja platformy Azure. Do ukończenia tego samouczka jest potrzebne konto platformy Azure. Możesz aktywować korzyści dla [subskrybentów MSDN](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) lub utworzyć [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
+- Subskrypcja platformy Azure. Do wykonania kroków tego samouczka potrzebne jest konto platformy Azure. Możesz aktywować korzyści dla [subskrybentów MSDN](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) lub utworzyć [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
 - Jeśli nie masz kolejki do współpracy z programem, postępuj zgodnie z instrukcjami w temacie [Use Azure Portal, aby utworzyć](service-bus-quickstart-portal.md) kolejkę Service Bus w celu utworzenia kolejki.
 
   - Zapoznaj się z krótkim omówieniem kolejek Service Bus.
@@ -74,7 +74,7 @@ Uruchom program Visual Studio i Utwórz nowy projekt **Aplikacja konsolowa (.NET
 
     Wprowadź parametry połączenia dla przestrzeni nazw jako zmienną `ServiceBusConnectionString`. Wprowadź nazwę kolejki.
 
-1. Zastąp metodę `Main()` następującą metodą `Main` **asynchronicznej** . Wywołuje metodę SendMessagesAsync, która zostanie dodana w następnym kroku, aby wysyłać komunikaty do kolejki. 
+1. Zastąp metodę `Main()` następującą metodą `Main` **asynchronicznej** . Wywołuje metodę `SendMessagesAsync()`, która zostanie dodana w następnym kroku, aby wysyłać komunikaty do kolejki. 
 
     ```csharp
     public static async Task Main(string[] args)

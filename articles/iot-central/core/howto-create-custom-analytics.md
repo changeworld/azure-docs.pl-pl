@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 618216208b61051d5446f96fb5b28a451b188c35
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 5c22e29e51d9f2fc58720c555b8ad3b03d791db6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72954112"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435030"
 ---
 # <a name="extend-azure-iot-central-with-custom-analytics-using-azure-databricks"></a>Rozszerzając IoT Central platformy Azure z analizą niestandardową przy użyciu Azure Databricks
 
@@ -40,14 +40,14 @@ Utwórz aplikację IoT Central w witrynie programu [Azure IoT Central Applicatio
 | Ustawienie | Wartość |
 | ------- | ----- |
 | Plan płatności | Płatność zgodnie z rzeczywistym użyciem |
-| Szablon aplikacji | Przykład dotyczący firmy Contoso |
+| Szablon aplikacji | Starsza aplikacja |
 | Nazwa aplikacji | Zaakceptuj wartość domyślną lub wybierz własną nazwę |
 | Adres URL | Zaakceptuj domyślny lub wybierz własny unikatowy prefiks adresu URL |
 | Katalog | Dzierżawa Azure Active Directory |
 | Subskrypcja platformy Azure | Twoja subskrypcja platformy Azure |
-| Region | Wschodnie stany USA |
+| Region | Stany Zjednoczone |
 
-Przykłady i zrzuty ekranu w tym artykule korzystają z regionu **Wschodnie stany USA** . Wybierz lokalizację blisko siebie i upewnij się, że wszystkie zasoby zostały utworzone w tym samym regionie.
+Przykłady i zrzuty ekranu w tym artykule używają regionu **Stany Zjednoczone** . Wybierz lokalizację blisko siebie i upewnij się, że wszystkie zasoby zostały utworzone w tym samym regionie.
 
 ### <a name="resource-group"></a>Grupa zasobów
 
@@ -76,7 +76,7 @@ Użyj [Azure Portal, aby utworzyć usługę Azure Databricks](https://portal.azu
 | Subskrypcja | Twoja subskrypcja |
 | Grupa zasobów | IoTCentralAnalysis |
 | Lokalizacja | Wschodnie stany USA |
-| Warstwa cenowa | Standardowa (Standard) |
+| Warstwa cenowa | Standardowa |
 
 Po utworzeniu wymaganych zasobów Grupa zasobów **IoTCentralAnalysis** wygląda podobnie do poniższego zrzutu ekranu:
 
@@ -131,8 +131,8 @@ Skorzystaj z informacji w poniższej tabeli, aby utworzyć klaster:
 | Ustawienie | Wartość |
 | ------- | ----- |
 | Nazwa klastra | centralanalysis |
-| Tryb klastra | Standardowa (Standard) |
-| Wersja Databricks Runtime | 5,3 (Scala 2,11, Spark 2.4.0) |
+| Tryb klastra | Standardowa |
+| Wersja usługi Databricks Runtime | 5,3 (Scala 2,11, Spark 2.4.0) |
 | Wersja języka Python | 3 |
 | Włączanie skalowania automatycznego | Nie |
 | Przerwij po minutach braku aktywności | 30 |

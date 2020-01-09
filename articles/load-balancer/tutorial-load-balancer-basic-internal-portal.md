@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: 1b9d943f540a0132abc6a70eba888aa5f8f46093
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: d167a157935c6d51c025d2fbb11586343a2ef3f2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74225221"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453517"
 ---
 # <a name="tutorial-balance-internal-traffic-load-with-a-basic-load-balancer-in-the-azure-portal"></a>Samouczek: równoważenie obciążenia ruchu wewnętrznego przy użyciu podstawowego modułu równoważenia obciążenia w witrynie Azure Portal
 
@@ -91,15 +91,15 @@ Utwórz podstawowy wewnętrzny moduł równoważenia obciążenia przy użyciu p
 
     | Ustawienie                 | Wartość                                              |
     | ---                     | ---                                                |
-    | Subscription               | Wybierz subskrypcję.    |    
+    | Subskrypcja               | Wybierz subskrypcję.    |    
     | Grupa zasobów         | Wybierz pozycję **Utwórz nową** i wpisz *MyResourceGroupLB* w polu tekstowym.|
     | Nazwa                   | *myLoadBalancer*                                   |
-    | Region         | Wybierz pozycję **Europa Zachodnia**.                                        |
-    | Typ          | wybierz pozycję **Wewnętrzny**.                                        |
-    | SKU           | Wybierz pozycję **Podstawowa**.                          |
+    | Region         | Wybierz pozycję **East US 2** (Wschodnie stany USA 2).                                        |
+    | Typ          | Wybierz pozycję **wewnętrzne**.                                        |
+    | JSZ           | Wybierz pozycję **Podstawowa**.                          |
     | Sieć wirtualna           | Wybierz wartość *MojaSiećWirtualna*.                          |    
     | Przypisanie adresu IP              | Wybierz wartość **Statyczny**.   |
-    | Prywatny adres IP|wpisz adres, który znajduje się w przestrzeni adresowej sieci wirtualnej i podsieci, na przykład *10.3.0.7*.  |
+    | Prywatny adres IP|Wpisz adres znajdujący się w przestrzeni adresowej sieci wirtualnej i podsieci, na przykład *10.3.0.7*.  |
 
 3. Na karcie **Przeglądanie + tworzenie** kliknij pozycję **Utwórz**. 
    

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 43e99c54249738436f24369ed3525e78ff971a12
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 452d18908406214bb7e1253363a42d8ba8287d96
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73930210"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454032"
 ---
 # <a name="connect-a-windows-iot-core-device-to-your-azure-iot-central-application"></a>Podłączanie urządzenia Windows IoT Core do aplikacji IoT Central platformy Azure
 
@@ -25,19 +25,24 @@ W tym artykule opisano sposób, w jaki deweloper urządzenia nawiązuje połącz
 
 Do wykonania kroków opisanych w tym artykule potrzebne są:
 
-- Aplikacja IoT Central platformy Azure utworzona na podstawie **przykładowego** szablonu aplikacji Devkits. Aby uzyskać więcej informacji, zapoznaj się z [przewodnikiem Szybki start dotyczącym tworzenia aplikacji](quick-deploy-iot-central.md).
+- Aplikacja IoT Central platformy Azure utworzona na podstawie szablonu aplikacji **starszej** aplikacji. Aby uzyskać więcej informacji, zapoznaj się z [przewodnikiem Szybki start dotyczącym tworzenia aplikacji](quick-deploy-iot-central.md).
 
 - Urządzenie z systemem operacyjnym Windows 10 IoT Core. Aby uzyskać więcej informacji, zobacz [Konfigurowanie urządzenia Windows 10 IoT Core](https://docs.microsoft.com/windows/iot-core/tutorials/quickstarter/devicesetup).
 
 - Komputer deweloperski z zainstalowanym środowiskiem [Node. js](https://nodejs.org/) w wersji 8.0.0 lub nowszej. Aby sprawdzić swoją wersję, możesz uruchomić `node --version` w wierszu polecenia. Oprogramowanie Node.js jest dostępne dla różnych systemów operacyjnych.
 
-## <a name="the-sample-devkits-application"></a>Przykładowa aplikacja Devkits
+## <a name="add-a-device-template"></a>Dodawanie szablonu urządzenia
 
-Aplikacja utworzona na podstawie **przykładowego** szablonu aplikacji Devkits zawiera szablon urządzenia **Windows IoT Core** o następujących cechach:
+W aplikacji IoT Central platformy Azure Dodaj nowy szablon urządzenia z **systemem Windows IoT Core** o następujących cechach:
 
 - Pomiary danych telemetrycznych dla urządzenia: **wilgotność**, **temperatura**i **ciśnienie**.
 - Ustawienie sterujące **szybkością wentylatora**.
 - **Numer** pozycji właściwości urządzenia i **Lokalizacja**właściwości chmury.
+
+1. Wybierz pozycję **+ Nowy** z szablonów urządzeń ![szablon urządzenia](media/howto-connect-windowsiotcore/adddevicetemplate.png)
+   
+
+2. Wybierz pozycję **Windows IoT Core** i Utwórz szablon urządzenia Windows iot Core ![Dodaj szablon urządzenia](media/howto-connect-windowsiotcore/newdevicetemplate.png)
 
 Aby uzyskać szczegółowe informacje na temat konfiguracji szablonu urządzenia, zobacz [szczegóły szablonu urządzenia Windows IoT Core](#device-template-details).
 
@@ -90,7 +95,7 @@ Po kilku minutach można wyświetlić dane telemetryczne z urządzenia w aplikac
 [Portal urządzeń z systemem Windows](https://docs.microsoft.com/windows/iot-core/manage-your-device/deviceportal) zawiera narzędzia, których można użyć do rozwiązywania problemów z urządzeniem:
 
 - Strona **Menedżer aplikacji** pozwala kontrolować aplikacje działające na urządzeniu.
-- Jeśli nie masz monitora połączonego z urządzeniem, możesz użyć strony **ustawień urządzenia** , aby przechwycić zrzuty ekranu z urządzenia. Na przykład:
+- Jeśli nie masz monitora połączonego z urządzeniem, możesz użyć strony **ustawień urządzenia** , aby przechwycić zrzuty ekranu z urządzenia. Przykład:
 
     ![Zrzut ekranu aplikacji](media/howto-connect-windowsiotcore/iot-hub-foreground-client.png)
 
@@ -107,14 +112,14 @@ Aplikacja utworzona na podstawie **przykładowego** szablonu aplikacji Devkits z
 | Nazwa pola     | Jednostki  | Minimalne | Maksimum | Miejsca dziesiętne |
 | -------------- | ------ | ------- | ------- | -------------- |
 | humidity       | %      | 0       | 100     | 0              |
-| temp           | OC     | -40     | 120     | 0              |
+| temp           | °C     | -40     | 120     | 0              |
 | pressure       | hPa    | 260     | 1260    | 0              |
 
 ### <a name="settings"></a>Ustawienia
 
 Ustawienia liczbowe
 
-| Nazwa wyświetlana | Nazwa pola | Jednostki | Miejsca dziesiętne | Minimalne | Maksimum | Początkowego |
+| Nazwa wyświetlana | Nazwa pola | Jednostki | Miejsca dziesiętne | Minimalne | Maksimum | Wartość początkowa |
 | ------------ | ---------- | ----- | -------------- | ------- | ------- | ------- |
 | Szybkość wentylatorów    | fanSpeed   | RPM   | 0              | 0       | 1000    | 0       |
 
@@ -123,7 +128,7 @@ Ustawienia liczbowe
 | Typ            | Nazwa wyświetlana | Nazwa pola | Typ danych |
 | --------------- | ------------ | ---------- | --------- |
 | Właściwość urządzenia | Numer struktury   | dieNumber  | numer    |
-| Tekst            | Lokalizacja     | location   | Nie dotyczy       |
+| Tekst            | Lokalizacja     | location   | ND       |
 
 ## <a name="next-steps"></a>Następne kroki
 

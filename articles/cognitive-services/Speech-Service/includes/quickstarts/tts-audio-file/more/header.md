@@ -7,14 +7,14 @@ author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: quickstart
+ms.topic: include
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: c271150cc95d725257d347890622b3d5322cfd1a
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: cd208dc9d8d9174830de18c2a8b2a38bb595342b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74817897"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75467790"
 ---
 Wyświetl lub Pobierz wszystkie <a href="https://aka.ms/speech/github">przykłady zestawu Speech SDK</a> w witrynie GitHub.

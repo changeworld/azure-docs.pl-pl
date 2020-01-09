@@ -1,70 +1,73 @@
 ---
 title: Używanie interaktywnej powłoki Spark w usłudze Azure HDInsight
 description: Interaktywna powłoka Spark udostępnia proces odczytu-Execute-Print służący do uruchamiania poleceń platformy Spark po jednym naraz i wyświetlania wyników.
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
-ms.custom: hdinsightactive
+ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 01/09/2018
-ms.openlocfilehash: 7aac2812787a7c14d99377754a4f85e699ef3f09
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.custom: hdinsightactive
+ms.date: 12/12/2019
+ms.openlocfilehash: f088b8210b8170d22e84d131f0a72f5f8caa3b92
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68441889"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435227"
 ---
 # <a name="run-apache-spark-from-the-spark-shell"></a>Uruchamianie Apache Spark z powłoki Spark
 
 Interaktywna powłoka [Apache Spark](https://spark.apache.org/) udostępnia środowisko REPL (Read-Execute-Print) do uruchamiania poleceń platformy Spark po jednym naraz i oglądania wyników. Ten proces jest przydatny do programowania i debugowania. Platforma Spark udostępnia jedną powłokę dla każdego z obsługiwanych języków: Scala, Python i R.
 
-## <a name="get-to-an-apache-spark-shell-with-ssh"></a>Uzyskiwanie do powłoki Apache Spark przy użyciu protokołu SSH
-
-Uzyskaj dostęp do powłoki Apache Spark w usłudze HDInsight, łącząc się z podstawowym węzłem głównym klastra przy użyciu protokołu SSH:
-
-     ssh <sshusername>@<clustername>-ssh.azurehdinsight.net
-
-Możesz uzyskać kompletne polecenie SSH dla klastra z Azure Portal:
-
-1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com).
-2. Przejdź do okienka dla klastra usługi HDInsight Spark.
-3. Wybierz pozycję Secure Shell (SSH).
-
-    ![Okienko usługi HDInsight w Azure Portal](./media/apache-spark-shell/hdinsight-spark-blade.png)
-
-4. Skopiuj wyświetlone polecenie SSH i uruchom je w terminalu.
-
-    ![Okienko usługi HDInsight SSH w Azure Portal](./media/apache-spark-shell/hdinsight-spark-ssh-blade.png)
-
-Aby uzyskać szczegółowe informacje na temat używania protokołu SSH do łączenia się z usługą HDInsight, zobacz [Używanie protokołu SSH z usługą HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
-
 ## <a name="run-an-apache-spark-shell"></a>Uruchamianie powłoki Apache Spark
 
-Platforma Spark udostępnia powłoki dla Scala (Spark-Shell), Python (pyspark) i R (Spark). W sesji SSH w węźle głównym klastra usługi HDInsight wprowadź jedno z następujących poleceń:
+1. Użyj [polecenia SSH](../hdinsight-hadoop-linux-use-ssh-unix.md) do nawiązania połączenia z klastrem. Edytuj poniższe polecenie, zastępując wartość CLUSTERname nazwą klastra, a następnie wprowadź polecenie:
 
-    ./bin/spark-shell
-    ./bin/pyspark
-    ./bin/sparkR
+    ```cmd
+    ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
+    ```
 
-Teraz można wprowadzać polecenia platformy Spark w odpowiednim języku.
+1. Platforma Spark udostępnia powłoki dla Scala (Spark-Shell) i Python (pyspark). W sesji SSH wprowadź jedno z następujących poleceń:
+
+    ```bash
+    spark-shell
+    pyspark
+    ```
+
+    Teraz można wprowadzać polecenia platformy Spark w odpowiednim języku.
+
+1. Kilka podstawowych przykładowych poleceń:
+
+    ```scala
+    // Load data
+    var data = spark.read.format("csv").option("header", "true").option("inferSchema", "true").load("/HdiSamples/HdiSamples/SensorSampleData/building/building.csv")
+
+    // Show data
+    data.show()
+
+    // Select certain columns
+    data.select($"BuildingID", $"Country").show(10)
+
+    // exit shell
+    :q
+    ```
 
 ## <a name="sparksession-and-sparkcontext-instances"></a>Wystąpienia SparkSession i SparkContext
 
 Domyślnie po uruchomieniu powłoki Spark wystąpienia SparkSession i SparkContext są automatycznie tworzone dla Ciebie.
 
-Aby uzyskać dostęp do wystąpienia SparkSession, `spark`wprowadź. Aby uzyskać dostęp do wystąpienia SparkContext, `sc`wprowadź.
+Aby uzyskać dostęp do wystąpienia SparkSession, wprowadź `spark`. Aby uzyskać dostęp do wystąpienia SparkContext, wprowadź `sc`.
 
 ## <a name="important-shell-parameters"></a>Ważne parametry powłoki
 
-Polecenie powłoki Spark (`spark-shell`, `pyspark`lub `sparkR`) obsługuje wiele parametrów wiersza polecenia. Aby wyświetlić pełną listę parametrów, Uruchom powłokę Spark za pomocą przełącznika `--help`. Należy zauważyć, że niektóre z tych parametrów mogą być `spark-submit`stosowane tylko do, które są zawijane przez powłokę Spark.
+Polecenie powłoki Spark (`spark-shell`lub `pyspark`) obsługuje wiele parametrów wiersza polecenia. Aby wyświetlić pełną listę parametrów, Uruchom powłokę Spark z przełącznikiem `--help`. Niektóre z tych parametrów mogą być stosowane tylko do `spark-submit`, które są zawijane przez powłokę Spark.
 
 | — przełącznik | description | Przykład |
 | --- | --- | --- |
-| --Master MASTER_URL | Określa główny adres URL. W usłudze HDInsight ta wartość jest zawsze `yarn`. | `--master yarn`|
-| --jars JAR_LIST | Rozdzielana przecinkami lista Jars lokalnego do uwzględnienia w sterownikach i ścieżkach klas wykonywania. W usłudze HDInsight ta lista zawiera ścieżki do domyślnego systemu plików w usłudze Azure Storage lub Data Lake Storage. | `--jars /path/to/examples.jar` |
-| --MAVEN_COORDS pakietów | Rozdzielana przecinkami lista współrzędnych Maven Jars do uwzględnienia w sterownikach i ścieżkach klas wykonywania. Przeszukuje lokalne repozytorium Maven, a następnie Maven Central, wszelkie dodatkowe repozytoria zdalne określone za `--repositories`pomocą. Format współrzędnych to *GroupID*:*artifactId*:*Version*. | `--packages "com.microsoft.azure:azure-eventhubs:0.14.0"`|
-| --Lista z LISTą plików | Tylko w przypadku języka Python, rozdzielana przecinkami lista plików zip, egg lub. PR do umieszczenia w PYTHONPATH. | `--pyfiles "samples.py"` |
+| --MASTER_URL wzorca | Określa główny adres URL. W usłudze HDInsight ta wartość jest zawsze `yarn`. | `--master yarn`|
+| --Jars JAR_LIST | Rozdzielana przecinkami lista Jars lokalnego do uwzględnienia w sterownikach i ścieżkach klas wykonywania. W usłudze HDInsight ta lista zawiera ścieżki do domyślnego systemu plików w usłudze Azure Storage lub Data Lake Storage. | `--jars /path/to/examples.jar` |
+| --MAVEN_COORDS pakietów | Rozdzielana przecinkami lista współrzędnych Maven Jars do uwzględnienia w sterownikach i ścieżkach klas wykonywania. Przeszukuje lokalne repozytorium Maven, a następnie Maven Central, wszystkie dodatkowe repozytoria zdalne określone za pomocą `--repositories`. Format współrzędnych to *GroupID*:*artifactId*:*Version*. | `--packages "com.microsoft.azure:azure-eventhubs:0.14.0"`|
+| --Lista z LISTą plików | Tylko w przypadku języka Python, rozdzielana przecinkami lista plików zip, jaja lub. PR do umieszczenia w PYTHONPATH. | `--pyfiles "samples.py"` |
 
 ## <a name="next-steps"></a>Następne kroki
 

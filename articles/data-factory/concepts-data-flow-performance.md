@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
-ms.date: 10/07/2019
-ms.openlocfilehash: fb2a11850370766ab174c67dd122f33879fb432a
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.date: 12/19/2019
+ms.openlocfilehash: 3036fb44cdd636c4a7b9e690ee19aa3d5ab2f5ac
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928528"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444524"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Przewodnik dotyczący wydajności i dostrajania przepływu danych
 
@@ -81,7 +81,7 @@ Nawet jeśli nie masz partycjonowanych danych w tabelach docelowych, zaleca się
 
 ### <a name="disable-indexes-on-write"></a>Wyłącz indeksy przy zapisie
 
-W potoku Dodaj [działanie procedury składowanej](transform-data-using-stored-procedure.md) przed działaniem przepływu danych, które powoduje wyłączenie indeksów w tabelach docelowych zapisanych w ujściach. Po działaniu przepływu danych Dodaj kolejne działanie procedury składowanej, które włącza te indeksy.
+W potoku Dodaj [działanie procedury składowanej](transform-data-using-stored-procedure.md) przed działaniem przepływu danych, które powoduje wyłączenie indeksów w tabelach docelowych zapisanych w ujściach. Po działaniu przepływu danych Dodaj kolejne działanie procedury składowanej, które włącza te indeksy. Lub użyj skryptów przed przetwarzaniem i po przetworzeniu w ujścia bazy danych.
 
 ### <a name="increase-the-size-of-your-azure-sql-db-and-dw"></a>Zwiększanie rozmiaru bazy danych Azure SQL i serwera DW
 
@@ -114,7 +114,7 @@ Aby uniknąć wyczerpania zasobów węzłów obliczeniowych, Zachowaj domyślny,
 
 ### <a name="looping-through-file-lists"></a>Zapętlenie za poorednictwem list plików
 
-Przepływ danych mapowania będzie wykonywany lepiej, gdy transformacja źródłowa wykonuje iterację wielu plików zamiast pętli za pośrednictwem dla każdego działania. Zalecamy używanie symboli wieloznacznych lub list plików w transformacji źródłowej. Proces przepływu danych będzie wykonywany szybciej, umożliwiając zapętlenie w klastrze Spark. Aby uzyskać więcej informacji, zobacz [symbol wieloznaczny w transformacji źródłowej](data-flow-source.md#file-based-source-options).
+Przepływ danych mapowania będzie wykonywany lepiej, gdy transformacja źródłowa wykonuje iterację wielu plików zamiast pętli za pośrednictwem dla każdego działania. Zalecamy używanie symboli wieloznacznych lub list plików w transformacji źródłowej. Proces przepływu danych będzie wykonywany szybciej, umożliwiając zapętlenie w klastrze Spark. Aby uzyskać więcej informacji, zobacz [symbol wieloznaczny w transformacji źródłowej](connector-azure-data-lake-storage.md#mapping-data-flow-properties).
 
 Na przykład jeśli masz listę plików danych z lipca 2019, które chcesz przetworzyć w folderze w Blob Storage, poniżej jest symbolem wieloznacznym, którego można użyć w transformacji źródłowej.
 
@@ -127,8 +127,8 @@ Używając symboli wieloznacznych, potok będzie zawierać tylko jedno działani
 Ustawianie przepływności i właściwości partii w ujściach CosmosDB zacznie obowiązywać tylko podczas wykonywania tego przepływu danych z działania przepływu danych potoku. Oryginalne ustawienia kolekcji zostaną uznane przez CosmosDB po wykonaniu przepływu danych.
 
 * Rozmiar wsadu: Oblicz przybliżony rozmiar wiersza danych i upewnij się, że rozmiar wsadu rowSize * jest mniejszy niż 2 000 000. Jeśli tak, Zwiększ rozmiar partii, aby uzyskać lepszą przepływność
-* Througput: w tym miejscu ustaw wyższą wartość ustawienia przepływności, aby umożliwić dokumentowanie szybszego zapisu do CosmosDB. Pamiętaj o wyższych kosztach RU na podstawie ustawień o wysokiej przepływności.
-*   Zapisz budżet przepływności: Użyj wartości, która jest mniejsza niż łączna liczba jednostek ru na minutę. Jeśli masz przepływ danych o dużej liczbie partitiongs platformy Spark, ustawienie przepływności budżetu spowoduje zwiększenie równowagi między tymi partycjami.
+* Przepływność: w tym miejscu ustaw wyższą wartość ustawienia przepływności, aby zezwolić na szybsze pisanie dokumentów w programie CosmosDB. Pamiętaj o wyższych kosztach RU na podstawie ustawień o wysokiej przepływności.
+*   Zapisz budżet przepływności: Użyj wartości, która jest mniejsza niż łączna liczba jednostek ru na minutę. Jeśli istnieje przepływ danych o dużej liczbie partycji platformy Spark, ustawienie przepływności budżetu pozwoli na zwiększenie równowagi między tymi partycjami.
 
 ## <a name="next-steps"></a>Następne kroki
 

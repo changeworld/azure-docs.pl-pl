@@ -3,12 +3,12 @@ title: Durable Functions publikowania do Azure Event Grid (wersja zapoznawcza)
 description: Dowiedz się, jak skonfigurować automatyczne publikowanie Azure Event Grid dla Durable Functions.
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.openlocfilehash: f0fbb46320b896008b6a1343357f016a9f57b0fe
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 5d1960f0e8d249ac77f3c64e18b332a3d55d5180
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231445"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75613129"
 ---
 # <a name="durable-functions-publishing-to-azure-event-grid-preview"></a>Durable Functions publikowania do Azure Event Grid (wersja zapoznawcza)
 
@@ -86,7 +86,7 @@ Dodaj `eventGridTopicEndpoint` i `eventGridKeySettingName` we właściwości `du
 
 Możliwe właściwości konfiguracji Azure Event Grid można znaleźć w [dokumentacji pliku host. JSON](../functions-host-json.md#durabletask). Po skonfigurowaniu pliku `host.json` aplikacja funkcji wysyła zdarzenia cyklu życia do tematu w usłudze Event Grid. Działa to w przypadku uruchamiania aplikacji funkcji zarówno lokalnie, jak i na platformie Azure. ""
 
-W aplikacja funkcji i `local.setting.json`Ustaw ustawienie aplikacji dla klucza tematu. Poniższy kod JSON jest przykładem `local.settings.json` na potrzeby debugowania lokalnego. Zastąp `<topic_key>` kluczem tematu.  
+W aplikacja funkcji i `local.settings.json`Ustaw ustawienie aplikacji dla klucza tematu. Poniższy kod JSON jest przykładem `local.settings.json` na potrzeby debugowania lokalnego. Zastąp `<topic_key>` kluczem tematu.  
 
 ```json
 {

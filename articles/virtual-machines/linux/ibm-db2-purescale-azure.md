@@ -14,22 +14,24 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 11/09/2018
 ms.author: edprice
-ms.openlocfilehash: c597bb47ba6d075523b2eb2ca4d146fa22a97a2e
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 4012048100bbed2229c45434ee4a27dfe9b952e7
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70083082"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75530083"
 ---
 # <a name="ibm-db2-purescale-on-azure"></a>IBM DB2 pureScale na platformie Azure
 
 Środowisko IBM DB2 pureScale zapewnia klaster bazy danych dla platformy Azure o wysokiej dostępności i skalowalności w systemach operacyjnych Linux. W tym artykule przedstawiono architekturę uruchamiania programu DB2 pureScale na platformie Azure.
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
-Przedsiębiorstwa mają długo używane platformy zarządzania relacyjnymi bazami danych (RDBMS) na potrzeby przetwarzania transakcji online (OLTP). W tych dniach wiele przeprowadzi migrację środowisk baz danych opartych na dyskach mainframe na platformę Azure w celu zwiększenia wydajności, obniżenia kosztów i utrzymania stałej struktury kosztów operacyjnych.
+Przedsiębiorstwa mają długie użycie tradycyjnych platform zarządzania relacyjnymi bazami danych (RDBMS) do zaspokajania potrzeb związanych z przetwarzaniem transakcji online (OLTP). W tych dniach wiele przeprowadzi migrację środowisk baz danych opartych na dyskach mainframe na platformę Azure w celu zwiększenia wydajności, obniżenia kosztów i utrzymania stałej struktury kosztów operacyjnych. Migracja jest często pierwszym krokiem w przypadku modernizacji starszej platformy. 
 
-Migracja jest często pierwszym krokiem w przypadku modernizacji starszej platformy. Na przykład jeden klient korporacyjny ostatnio przeszukał środowisko IBM DB2 działające w systemie z/OS do programu IBM DB2 pureScale na platformie Azure. Chociaż nie jest identyczny z oryginalnym środowiskiem, program IBM DB2 pureScale w systemie Linux oferuje podobne funkcje wysokiej dostępności i skalowalności, jak program IBM DB2 dla systemu z/OS działający w równoległej konfiguracji Sysplex na komputerze mainframe.
+Niedawno klient przedsiębiorstwa przeobsługiwał swoje środowisko firmy IBM DB2 działające w systemie z/OS do programu IBM DB2 pureScale na platformie Azure. Rozwiązanie klastrowe bazy danych DB2 pureScale zapewnia wysoką dostępność i skalowalność w systemach operacyjnych Linux. Klient programu DB2 pomyślnie uruchomił jako autonomiczne, skalowalne wystąpienie na jednej maszynie wirtualnej (VM) w dużym systemie skalowania na platformie Azure przed zainstalowaniem programu DB2 pureScale. 
+
+Chociaż nie jest identyczny z oryginalnym środowiskiem, program IBM DB2 pureScale w systemie Linux oferuje podobne funkcje wysokiej dostępności i skalowalności, jak program IBM DB2 dla systemu z/OS działający w równoległej konfiguracji Sysplex na komputerze mainframe. W tym scenariuszu klaster jest połączony za pośrednictwem protokołu iSCSI z udostępnionym klastrem magazynu. Korzystamy z systemu plików GlusterFS, bezpłatnego, skalowalnego, rozproszonego systemu plików typu open source, który jest zoptymalizowany pod kątem magazynu w chmurze. Jednak firma IBM nie obsługuje już tego rozwiązania. Aby zachować pomoc techniczną od firmy IBM, musisz użyć obsługiwanego systemu plików zgodnego z technologią iSCSI. Firma Microsoft oferuje Bezpośrednie miejsca do magazynowania (S2D) jako opcję
 
 W tym artykule opisano architekturę używaną podczas migracji platformy Azure. Aby przetestować konfigurację, klient Red Hat Linux 7,4. Ta wersja jest dostępna w portalu Azure Marketplace. Przed wybraniem dystrybucji systemu Linux upewnij się, że aktualnie obsługiwane wersje zostały zweryfikowane. Aby uzyskać szczegółowe informacje, zapoznaj się z dokumentacją dla programu [IBM DB2 pureScale](https://www.ibm.com/support/knowledgecenter/SSEPGG) i [GlusterFS](https://docs.gluster.org/en/latest/).
 
@@ -53,13 +55,13 @@ Na diagramie przedstawiono warstwy logiczne, które są zbędne dla klastra DB2 
 
 Oprócz węzłów aparatu bazy danych diagram zawiera dwa węzły używane do buforowania klastra (CFs). Dla samego aparatu bazy danych są używane co najmniej dwa węzły. Serwer DB2, który należy do klastra pureScale, jest nazywany członkiem. 
 
-Klaster jest połączony za pośrednictwem protokołu iSCSI z GlusterFS udostępnionym klastrem magazynu w celu zapewnienia skalowalnego w poziomie magazynu i wysokiej dostępności. Program DB2 pureScale jest instalowany na maszynach wirtualnych platformy Azure z systemem Linux.
+Klaster jest połączony za pośrednictwem protokołu iSCSI z trzema udostępnionym klastrem magazynu w celu zapewnienia skalowalnego w poziomie magazynu i wysokiej dostępności. Program DB2 pureScale jest instalowany na maszynach wirtualnych platformy Azure z systemem Linux.
 
 To podejście jest szablonem, który można zmodyfikować na potrzeby rozmiaru i skali organizacji. Jest on oparty na następujących kwestiach:
 
 -   Co najmniej dwa elementy członkowskie bazy danych są połączone z co najwyżej dwoma węzłami CF. Węzły zarządzają globalną pulą buforów (GBP) dla pamięci współdzielonej i usług globalnego zarządzania blokadą (GLM) w celu kontrolowania dostępu współdzielonego i blokowania zawartości z aktywnych członków. Jeden węzeł CF działa jako podstawowy, a drugi jako pomocniczy węzeł CF trybu failover. Aby uniknąć single point of failure w środowisku, klaster programu DB2 pureScale wymaga co najmniej czterech węzłów.
 
--   Magazyn udostępniony o wysokiej wydajności (pokazany w P30 rozmiarze na diagramie). Każdy z węzłów Gluster FS używa tego magazynu.
+-   Magazyn udostępniony o wysokiej wydajności (pokazany w P30 rozmiarze na diagramie). Każdy węzeł używa tego magazynu.
 
 -   Sieci o wysokiej wydajności dla członków danych i magazynu udostępnionego.
 
@@ -75,13 +77,13 @@ W tej architekturze są uruchamiane warstwy aplikacji, magazynu i danych w usłu
 
 -   W programie DB2 CF są używane maszyny wirtualne zoptymalizowane pod kątem pamięci, takie jak seria E lub seria L.
 
--   Magazyn GlusterFS korzysta z\_maszyn\_wirtualnych Standard DS4 v2 z systemem Linux.
+-   Udostępniony klaster magazynu używający standardowych\_DS4\_v2 maszyn wirtualnych z systemem Linux.
 
--   GlusterFS serwera przesiadkowego jest standardową\_maszyną wirtualną DS2\_v2 z systemem Linux.
+-   Serwera przesiadkowego zarządzania jest standardową maszyną wirtualną\_DS2\_v2 z systemem Linux.  Alternatywą jest usługa Azure bastionu, która zapewnia bezpieczne środowisko RDP/SSH dla wszystkich maszyn wirtualnych w sieci wirtualnej.
 
--   Klient jest standardową\_maszyną\_wirtualną DS3 v2 z systemem Windows (używany do testowania).
+-   Klient jest standardową maszyną wirtualną\_DS3\_v2 z systemem Windows (używany do testowania).
 
--   Serwer monitora jest standardową\_maszyną wirtualną DS3\_v2 z systemem Linux (używaną dla programu DB2 pureScale).
+-   *Opcjonalnie*. Serwer monitora. Jest to niezbędny tylko w przypadku niektórych wcześniejszych wersji programu DB2 pureScale. W tym przykładzie użyto standardowej maszyny wirtualnej\_DS3\_v2 z systemem Linux (używanym w programie DB2 pureScale).
 
 > [!NOTE]
 > Klaster DB2 pureScale wymaga co najmniej dwóch wystąpień bazy danych DB2. Wymaga również wystąpienia pamięci podręcznej i wystąpienia Menedżera blokad.
@@ -90,11 +92,9 @@ W tej architekturze są uruchamiane warstwy aplikacji, magazynu i danych w usłu
 
 Podobnie jak w przypadku oprogramowania Oracle, DB2 pureScale to blok o wysokiej wydajności, skalowalny w poziomie bazę danych. Zalecamy użycie największej opcji dysku [SSD platformy Azure Premium](disks-types.md) , która odpowiada Twoim potrzebom. Mniejsze opcje magazynu mogą być odpowiednie dla środowisk deweloperskich i testowych, natomiast w środowiskach produkcyjnych często potrzebna jest większa pojemność magazynu. Przykładowa architektura używa [P30](https://azure.microsoft.com/pricing/details/managed-disks/) ze względu na stosunek liczby operacji we/wy do rozmiaru i ceny. Bez względu na rozmiar, użyj Premium Storage w celu uzyskania najlepszej wydajności.
 
-W programie DB2 pureScale jest stosowana współdzielona architektura, w której wszystkie dane są dostępne we wszystkich węzłach klastra. Usługa Premium Storage musi być współdzielona między wystąpieniami, zarówno na żądanie, jak i na dedykowanych wystąpieniach.
+W programie DB2 pureScale jest stosowana współdzielona architektura, w której wszystkie dane są dostępne we wszystkich węzłach klastra. Usługa Premium Storage musi być współdzielona przez wiele wystąpień, zarówno na żądanie, jak i na dedykowanych wystąpieniach.
 
-Duży klaster programu DB2 pureScale może wymagać 200 terabajtów (TB) lub większej liczby udostępnionych magazynów w warstwie Premium z liczbą IOPS 100 000. Program DB2 pureScale obsługuje interfejs blokowy iSCSI, którego można używać na platformie Azure. Interfejs iSCSI wymaga udostępnionego klastra magazynów, który można zaimplementować za pomocą GlusterFS, S2D lub innego narzędzia. Ten typ rozwiązania tworzy urządzenie sieci SAN (sieci vSAN) na platformie Azure. Program DB2 pureScale używa sieci vSAN do zainstalowania klastrowanego systemu plików, który jest używany do udostępniania danych między maszynami wirtualnymi.
-
-W przykładowej architekturze jest używane GlusterFS, bezpłatny, skalowalny, rozproszony system plików typu open source zoptymalizowany pod kątem magazynu w chmurze.
+Duży klaster programu DB2 pureScale może wymagać 200 terabajtów (TB) lub większej liczby udostępnionych magazynów w warstwie Premium z liczbą IOPS 100 000. Program DB2 pureScale obsługuje interfejs blokowy iSCSI, którego można używać na platformie Azure. Interfejs iSCSI wymaga udostępnionego klastra magazynów, który można zaimplementować przy użyciu funkcji S2D lub innego narzędzia. Ten typ rozwiązania tworzy urządzenie sieci SAN (sieci vSAN) na platformie Azure. Program DB2 pureScale używa sieci vSAN do zainstalowania klastrowanego systemu plików, który jest używany do udostępniania danych między maszynami wirtualnymi.
 
 ### <a name="networking-considerations"></a>Zagadnienia dotyczące pracy w sieci
 

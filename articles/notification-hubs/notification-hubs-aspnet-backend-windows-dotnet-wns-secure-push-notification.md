@@ -1,5 +1,5 @@
 ---
-title: Azure Notification Hubs bezpieczne wypychanie
+title: Azure Notification Hubs bezpieczne wypychanie dla systemu Windows
 description: Dowiedz się, jak wysyłać bezpieczne powiadomienia wypychane na platformie Azure. Przykłady kodu napisane w języku C# z użyciem interfejsu API programu .NET.
 documentationcenter: windows
 author: sethmanheim
@@ -16,12 +16,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 5d1cf2a74d4fe85bb85eb244da3e3757f36fba0a
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: db42cf7f886855af77073963e6f04ac088ca5612
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212049"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75530735"
 ---
 # <a name="securely-push-notifications-from-azure-notification-hubs"></a>Bezpieczne wypychanie powiadomień z usługi Azure Notification Hubs
 
@@ -62,7 +62,7 @@ Ten samouczek bezpiecznego wypychania pokazuje, jak bezpiecznie wysyłać powiad
     ```csharp
     RegisterBackgroundTask();
     ```
-2. Nadal w App.XAML.cs, Dodaj następujący kod bezpośrednio po `OnLaunched()` metodzie:
+2. Nadal w App.xaml.cs, Dodaj następujący kod bezpośrednio po metodzie `OnLaunched()`:
 
     ```csharp
     private async void RegisterBackgroundTask()
@@ -79,7 +79,7 @@ Ten samouczek bezpiecznego wypychania pokazuje, jak bezpiecznie wysyłać powiad
         }
     }
     ```
-3. Dodaj następujące `using` instrukcje w górnej części pliku App.XAML.cs:
+3. Dodaj następujące instrukcje `using` w górnej części pliku App.xaml.cs:
 
     ```csharp
     using Windows.Networking.PushNotifications;
@@ -95,8 +95,8 @@ Następnym krokiem jest utworzenie składnika w tle.
 2. Rozwiń węzeł **aplikacje ze sklepu**, a następnie kliknij pozycję **Windows Phone aplikacje**, a następnie kliknij pozycję **składnik środowisko wykonawcze systemu Windows (Windows Phone)** . Nazwij projekt **PushBackgroundComponent**, a następnie kliknij przycisk **OK** , aby utworzyć projekt.
 
     ![][12]
-3. W Eksplorator rozwiązań kliknij prawym przyciskiem myszy projekt **PushBackgroundComponent (Windows Phone 8,1)** , a następnie kliknij pozycję **Dodaj**, a następnie kliknij pozycję **Klasa**. Nadaj nazwę nowej klasie `PushBackgroundTask.cs`. Kliknij przycisk **Dodaj** , aby wygenerować klasę.
-4. Zastąp całą zawartość `PushBackgroundComponent` definicji przestrzeni nazw następującym kodem, zastępując symbol zastępczy `{back-end endpoint}` punktem końcowym uzyskanym podczas wdrażania zaplecza:
+3. W Eksplorator rozwiązań kliknij prawym przyciskiem myszy projekt **PushBackgroundComponent (Windows Phone 8,1)** , a następnie kliknij pozycję **Dodaj**, a następnie kliknij pozycję **Klasa**. Nadaj nowej klasie nazwę `PushBackgroundTask.cs`. Kliknij przycisk **Dodaj** , aby wygenerować klasę.
+4. Zastąp całą zawartość definicji `PushBackgroundComponent` przestrzeni nazw następującym kodem, zastępując symbol zastępczy `{back-end endpoint}` z punktem końcowym zaplecza uzyskanym podczas wdrażania zaplecza:
 
     ```csharp
     public sealed class Notification
@@ -147,7 +147,7 @@ Następnym krokiem jest utworzenie składnika w tle.
 7. W polu **Wyszukaj** wpisz ciąg **Klient HTTP**.
 8. Na liście wyników kliknij pozycję **biblioteki klienta http firmy Microsoft**, a następnie kliknij przycisk **Instaluj**. Ukończ instalację.
 9. W polu **Wyszukaj** w menedżerze pakietów NuGet wpisz ciąg **Json.net**. Zainstaluj pakiet **JSON.NET** , a następnie zamknij okno Menedżera pakietów NuGet.
-10. Dodaj następujące `using` instrukcje w górnej `PushBackgroundTask.cs` części pliku:
+10. Dodaj następujące instrukcje `using` w górnej części pliku `PushBackgroundTask.cs`:
 
     ```csharp
     using Windows.ApplicationModel.Background;

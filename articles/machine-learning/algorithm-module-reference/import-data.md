@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: 5fa8d3984c758d0bf95372864f3bffeb6f302c83
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8d099d0b8f8e31bf77f5ddfad320ac792c5c01e5
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497791"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75529613"
 ---
 # <a name="import-data-module"></a>Importuj moduł danych
 
@@ -23,22 +23,22 @@ W tym artykule opisano moduł w programie Azure Machine Learning Designer (wersj
 Ten moduł służy do ładowania danych do potoku uczenia maszynowego z istniejących usług danych w chmurze. 
 
 > [!Note]
-> Wszystkie funkcje zapewniane przez ten moduł mogą być wykonywane przez **Magazyn** **danych i DataSets** na stronie docelowej obszaru roboczego. Zalecamy korzystanie z **magazynu** danych i **zestawu danych** , który zawiera dodatkowe funkcje, takie jak monitorowanie dane. Aby dowiedzieć się więcej, zobacz artykuł [jak uzyskać dostęp do danych](../service/how-to-access-data.md) i [jak rejestrować zestawy danych](../service/how-to-create-register-datasets.md) .
+> Wszystkie funkcje zapewniane przez ten moduł mogą być wykonywane przez **Magazyn** **danych i DataSets** na stronie docelowej obszaru roboczego. Zalecamy korzystanie z **magazynu** danych i **zestawu danych** , który zawiera dodatkowe funkcje, takie jak monitorowanie dane. Aby dowiedzieć się więcej, zobacz artykuł [jak uzyskać dostęp do danych](../how-to-access-data.md) i [jak rejestrować zestawy danych](../how-to-create-register-datasets.md) .
 > Po zarejestrowaniu zestawu danych można go znaleźć w obszarze **zestawy** danych -> **moje zbiory** w interfejsie projektanta. Ten moduł jest zarezerwowany dla użytkowników programu Studio (klasycznych) w celu uzyskania znanego środowiska. 
 >
 
 Najpierw wybierz źródło, z którego korzystasz, i Zakończ dodatkowe ustawienia. Moduł **Importuj dane** obsługuje odczyt danych z następujących źródeł:
 
 - Adres URL za pośrednictwem protokołu HTTP
-- Magazyny w chmurze platformy Azure za pomocą [**magazynów**](../service/how-to-access-data.md)danych)
+- Magazyny w chmurze platformy Azure za pomocą [**magazynów**](../how-to-access-data.md)danych)
     - Kontener obiektów blob platformy Azure
     - Udział plików platformy Azure
     - Azure Data Lake
     - Azure Data Lake Gen2
-    - Azure SQL Database
+    - Baza danych SQL Azure
     - Azure PostgreSQL    
 
-Przed rozpoczęciem korzystania z magazynu w chmurze musisz najpierw zarejestrować magazyn danych w obszarze roboczym Azure Machine Learning. Aby uzyskać więcej informacji, zobacz [jak uzyskać dostęp do danych](../service/how-to-access-data.md). 
+Przed rozpoczęciem korzystania z magazynu w chmurze musisz najpierw zarejestrować magazyn danych w obszarze roboczym Azure Machine Learning. Aby uzyskać więcej informacji, zobacz [jak uzyskać dostęp do danych](../how-to-access-data.md). 
 
 Po zdefiniowaniu danych, które chcesz połączyć ze źródłem, **[Importowanie danych](./import-data.md)** powoduje, że dane są uwzględniane w poszczególnych kolumnach na podstawie wartości, które zawiera, i ładowania danych do potoku projektanta. Dane wyjściowe **importu** są zestawem danych, który może być używany z dowolnym potokiem projektanta.
 

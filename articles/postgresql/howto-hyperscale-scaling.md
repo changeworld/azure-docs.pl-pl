@@ -5,17 +5,17 @@ author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 9/17/2019
-ms.openlocfilehash: 5d8bbe493887c5340f0943a585eb6ff250bd3728
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.date: 12/17/2019
+ms.openlocfilehash: bec2a40d8cf5fb178418ec6bb59a52a0bfe3eb8c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977560"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453051"
 ---
 # <a name="scale-a-hyperscale-citus-server-group"></a>Skalowanie grupy serwerów ze skalą (Citus)
 
-Azure Database for PostgreSQL-Citus) oferuje skalowanie samoobsługowe umożliwiające zwiększenie obciążenia. Azure Portal ułatwia dodawanie nowych węzłów procesu roboczego i zwiększanie pojemności istniejących węzłów.
+Azure Database for PostgreSQL-Citus) oferuje skalowanie samoobsługowe umożliwiające zwiększenie obciążenia. Azure Portal ułatwia dodawanie nowych węzłów procesu roboczego i zwiększanie rdzeni wirtualnych istniejących węzłów.
 
 ## <a name="add-worker-nodes"></a>Dodaj węzły procesu roboczego
 
@@ -38,9 +38,9 @@ SELECT rebalance_table_shards('distributed_table_name');
 
 Funkcja `rebalance_table_shards` ponownie równoważy wszystkie tabele w grupie wspólnej [lokalizacji](concepts-hyperscale-colocation.md) tabeli o nazwie w argumencie. W ten sposób nie trzeba wywoływać funkcji dla każdej tabeli rozproszonej, po prostu wywołaj ją na reprezentatywnej tabeli z każdej grupy wspólnej lokalizacji.
 
-## <a name="increase-vcores-or-storage-space"></a>Zwiększ rdzeni wirtualnych lub miejsce do magazynowania
+## <a name="increase-vcores"></a>Zwiększ rdzeni wirtualnych
 
-Oprócz dodawania nowych węzłów można zwiększyć możliwości istniejących węzłów. Przejdź do karty **Konfiguracja** w grupie serwerów moja skala (Citus), a następnie przeciągnij suwak dla pozycji **rdzeni wirtualnych** i **Storage** , aby zmienić te wartości dla wszystkich węzłów procesu roboczego. Kliknij przycisk **Zapisz** , aby zastosować zmiany.
+Oprócz dodawania nowych węzłów można zwiększyć możliwości istniejących węzłów. Ta funkcja jest obecnie dostępna w wersji zapoznawczej — aby zażądać zwiększonych rdzeni wirtualnych dla węzłów w grupie serwerów, [skontaktuj się z pomocą techniczną platformy Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
 ## <a name="next-steps"></a>Następne kroki
 

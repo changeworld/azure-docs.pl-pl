@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: tutorial
 ms.date: 11/11/2019
 ms.author: rohogue
-ms.openlocfilehash: 07aba1b1536635e414fc5fab4ece148683909188
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 793a80e7019e72c1cb3087da02d5642639cb8d5e
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74168567"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647160"
 ---
 # <a name="create-an-azure-hpc-cache"></a>Tworzenie pamięci podręcznej platformy Azure HPC
 
@@ -36,7 +36,7 @@ W obszarze **Szczegóły usługi**Ustaw nazwę pamięci podręcznej i inne atryb
 
 Na stronie **pamięć podręczna** należy ustawić pojemność pamięci podręcznej. Wartości ustawione w tym miejscu określają ilość danych, które mogą być przechowywane w pamięci podręcznej i jak szybko mogą obsłużyć żądania klientów.
 
-Po okresie publicznej wersji zapoznawczej pojemność wpłynie również na koszt pamięci podręcznej.
+Pojemność ma także wpływ na koszt pamięci podręcznej.
 
 Wybierz pojemność, ustawiając te dwie wartości:
 

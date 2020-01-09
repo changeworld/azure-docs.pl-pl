@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: spelluru
-ms.openlocfilehash: 8c9258f099587ba4dbdfe3a7e46f72cd7a825024
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 63cd7cea65515488649507cb7d3c52877211ca04
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73603836"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75531449"
 ---
 # <a name="event-sources-in-azure-event-grid"></a>Źródła zdarzeń w Azure Event Grid
 
@@ -61,7 +61,7 @@ Subskrybowanie tematów niestandardowych w celu reagowania na zdarzenia aplikacj
 | [Szablon Menedżer zasobów: temat niestandardowy i Event Hubs punkt końcowy](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-event-hubs-handler)| Szablon Menedżer zasobów, który tworzy subskrypcję tematu niestandardowego. Wysyła zdarzenia do Event Hubs platformy Azure. |
 | [Schemat zdarzenia](event-schema.md) | Pokazuje pola w zdarzeniach niestandardowych. |
 
-## <a name="event-hubs"></a>Usługa Event Hubs
+## <a name="event-hubs"></a>Centra zdarzeń
 
 Zasubskrybuj zdarzenia Event Hubs, aby odpowiedzieć na zdarzenia plików przechwytywania. Event Hubs może działać jako źródło zdarzenia lub procedura obsługi zdarzeń. W poniższych artykułach pokazano, jak używać Event Hubs jako źródła.
 
@@ -72,7 +72,7 @@ Zasubskrybuj zdarzenia Event Hubs, aby odpowiedzieć na zdarzenia plików przech
 
 Przykłady Event Hubs jako programu obsługi znajdują się w temacie [obsługa Event Hubs](event-handlers.md#event-hubs).
 
-## <a name="iot-hub"></a>Usługa IoT Hub
+## <a name="iot-hub"></a>IoT Hub
 
 Zasubskrybuj zdarzenia IoT Hub, aby odpowiedzieć na zdarzenia utworzone, usunięte, połączone, rozłączone i telemetrii.
 
@@ -129,7 +129,7 @@ Subskrybuj zdarzenia Service Bus, aby odpowiedzieć na komunikaty bez aktywnego 
 | [Przegląd: Azure Service Bus do integracji Event Grid](../service-bus-messaging/service-bus-to-event-grid-integration-concept.md) | Omówienie integrowania Service Bus z Event Grid. |
 | [Schemat zdarzenia](event-schema-service-bus.md) | Wyświetla pola w zdarzeniach Service Bus. |
 
-## <a name="storage"></a>Magazyn
+## <a name="storage"></a>Usługa Storage
 
 Zasubskrybuj zdarzenia Blob Storage, aby odpowiedzieć na zdarzenia utworzone i usunięte przez obiekt BLOB.
 
@@ -144,7 +144,7 @@ Zasubskrybuj zdarzenia Blob Storage, aby odpowiedzieć na zdarzenia utworzone i 
 | [Przegląd: reagowanie na zdarzenia usługi BLOB Storage](../storage/blobs/storage-blob-event-overview.md) | Omówienie integrowania usługi BLOB Storage z Event Grid. |
 | [Schemat zdarzenia](event-schema-blob-storage.md) | Wyświetla pola w zdarzeniach Blob Storage. |
 
-## <a name="maps"></a>Maps
+## <a name="maps"></a>Mapy
 Zasubskrybuj zdarzenia Azure Maps, aby odpowiedzieć na zdarzenia geofencingu. Aplikacja może na przykład dostarczyć powiadomienie e-mail za każdym razem, gdy urządzenie przejdzie lub wyjdzie z geoogrodzenia.
 
 |Tytuł  |Opis  |
@@ -177,10 +177,10 @@ Zasubskrybuj Azure Machine Learning zdarzenia obszaru roboczego, aby odpowiedzie
 
 | Tytuł | Opis |
 | ----- | ----- |
-| [Korzystanie z zdarzeń Azure Machine Learning](../machine-learning/service/concept-event-grid-integration.md) | Omówienie integrowania Azure Machine Learning z Event Grid. |
+| [Korzystanie z zdarzeń Azure Machine Learning](../machine-learning/concept-event-grid-integration.md) | Omówienie integrowania Azure Machine Learning z Event Grid. |
 | [Schemat zdarzeń Azure Event Grid dla Azure Machine Learning](event-schema-machine-learning.md) | Wyświetla pola w zdarzeniach Azure Machine Learning. |
 
 ## <a name="next-steps"></a>Następne kroki
 
 * Aby zapoznać się z wprowadzeniem do usługi Event Grid, zobacz [Wprowadzenie do usługi Azure Event Grid](overview.md).
-* Aby szybko rozpocząć korzystanie z Event Grid, zobacz [Tworzenie i kierowanie zdarzeń niestandardowych z Azure Event Grid](custom-event-quickstart.md).
+* Aby szybko rozpocząć pracę, przy użyciu usługi Event Grid, zobacz [Utwórz i wyznaczać trasy zdarzeń niestandardowych za pomocą usługi Azure Event Grid](custom-event-quickstart.md).

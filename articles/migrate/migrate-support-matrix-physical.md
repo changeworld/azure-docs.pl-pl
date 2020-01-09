@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: raynew
-ms.openlocfilehash: b5b5da6282b1df6c70fd58dcf8c417250de81b73
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: 9e749297d831aeae7d785a9a9a29bea1f8c6d5e3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196351"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454613"
 ---
 # <a name="support-matrix-for-physical-server-assessment-and-migration"></a>Macierz obsługi dotycząca oceny i migracji serwerów fizycznych
 
@@ -40,7 +40,7 @@ W tabeli zestawiono obsługiwane scenariusze dla serwerów fizycznych.
 
   **Lokalizacja geograficzna** | **Lokalizacja magazynu metadanych**
   --- | ---
-  Azure Government | Administracja USA — Wirginia
+  Platforma Azure dla instytucji rządowych | US Gov Wirginia
   Azja i Pacyfik | Azja Wschodnia lub Azja Południowo-Wschodnia
   Australia | Australia Wschodnia lub Australia Południowo-Wschodnia
   Brazylia | Brazylia Południowa
@@ -49,8 +49,8 @@ W tabeli zestawiono obsługiwane scenariusze dla serwerów fizycznych.
   Francja | Francja Środkowa
   Indie | Indie Środkowe lub Indie Południowe
   Japonia |  Japonia Wschodnia lub Japonia Zachodnia
-  Korea | Korea środkowa lub Korea Południowa
-  Wielka Brytania | Południowe Zjednoczone Królestwo lub Zachodnie Zjednoczone Królestwo
+  Korea Południowa | Korea środkowa lub Korea Południowa
+  Zjednoczone Królestwo | Południowe Zjednoczone Królestwo lub Zachodnie Zjednoczone Królestwo
   Stany Zjednoczone | Środkowe stany USA lub zachodnie stany USA 2
 
 
@@ -73,9 +73,9 @@ W celu oceny Azure Migrate uruchamia lekkie urządzenie w celu odnajdywania serw
 
 | **Pomoc techniczna**                | **Szczegóły**               
 | :-------------------       | :------------------- |
-| **Wdrażanie urządzenia**   |  Urządzenie jest wdrażane na serwerze fizycznym lub na maszynie wirtualnej.<br/>  Na maszynie hosta musi działać system Windows Server 2012 R2 lub nowszy.<br/> Host wymaga wystarczającej ilości miejsca, aby przydzielić 16 GB pamięci RAM, 8 procesorów wirtualnych vCPU, około 80 GB miejsca do magazynowania oraz przełącznik zewnętrzny dla maszyny wirtualnej urządzenia.<br/> Urządzenie musi mieć statyczny lub dynamiczny adres IP oraz dostęp do Internetu.
+| **Wdrażanie urządzenia**   |  Skrypt Instalatora urządzenia można pobrać z portalu (w folderze spakowanym). <br/> Można rozpakować folder i uruchomić skrypt programu PowerShell (AzureMigrateInstaller. ps1) na dedykowanym serwerze fizycznym lub maszynie wirtualnej w celu skonfigurowania urządzenia.<br/>  Na maszynie wybranej do zainstalowania urządzenia musi działać system Windows Server 2016.<br/> Maszyna wymaga wystarczającej ilości miejsca, aby przydzielić 16 GB pamięci RAM, 8 procesorów wirtualnych vCPU, około 80 GB miejsca do magazynowania oraz przełącznik zewnętrzny dla maszyny wirtualnej urządzenia.<br/> Urządzenie musi mieć statyczny lub dynamiczny adres IP oraz dostęp do Internetu.
 | **Projekt Azure Migrate**  |  Urządzenie może być skojarzone z pojedynczym projektem.<br/> Dowolna liczba urządzeń może być skojarzona z pojedynczym projektem.<br/> Można ocenić do 35 000 maszyn w projekcie.
-| **Odnajdowa**              | Pojedyncze urządzenie może wykryć do 250 serwerów.
+| **Discovery** (Odnajdywanie)              | Pojedyncze urządzenie może wykryć do 250 serwerów.
 | **Grupa oceny**       | Można dodać do 35 000 maszyn w jednej grupie.
 | **Ocena**             | W ramach jednej oceny można ocenić do 35 000 maszyn.
 
@@ -92,7 +92,7 @@ Do oceny maszyn wirtualnych urządzenie Azure Migrate musi mieć łączność z 
 **Adres URL** | **Szczegóły**  
 --- | ---
 *.portal.azure.com | Nawigacja do Azure Portal
-*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *. microsoft.com <br/> *. live.com  | Zaloguj się do Twojej subskrypcji platformy Azure.
+*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *.microsoft.com <br/> *.live.com  | Zaloguj się do Twojej subskrypcji platformy Azure.
 *.microsoftonline.com <br/> *.microsoftonline-p.com | Tworzenie aplikacji Azure Active Directory na potrzeby komunikacji urządzeń z usługą.
 management.azure.com | Tworzenie aplikacji Azure Active Directory na potrzeby komunikacji urządzeń z usługą.
 dc.services.visualstudio.com | Rejestrowanie i monitorowanie
@@ -106,10 +106,10 @@ https://download.microsoft.com/download/* | Zezwala na pobieranie z witryny pobi
 
 Poniższa tabela zawiera podsumowanie wymagań dotyczących portów dla oceny.
 
-**Pliku** | **Połączenie**
+**urządzenia** | **Połączenie**
 --- | ---
 **Wprowadzony** | Połączenia przychodzące na porcie TCP 3389, aby zezwolić na połączenia pulpitu zdalnego z urządzeniem.<br/> Połączenia przychodzące na porcie 44368 do zdalnego dostępu do aplikacji do zarządzania urządzeniami przy użyciu adresu URL: ``` https://<appliance-ip-or-name>:44368 ```<br/> Połączenia wychodzące na portach 443, 5671 i 5672 do wysyłania metadanych odnajdywania i wydajności do Azure Migrate.
-**Serwery fizyczne** | **System Windows:** Połączenia przychodzące na portach 443, 5989 do ściągania metadanych konfiguracji i wydajności z serwerów z systemem Windows. <br/> System **Linux:**  Połączenia przychodzące na porcie 22 (UDP) do ściągania metadanych konfiguracji i wydajności z serwerów z systemem Linux. |
+**Serwery fizyczne** | **System Windows:** Połączenia przychodzące na porcie 443, WinRM Ports 5985 (HTTP) i 5986 (HTTPS) do ściągania metadanych konfiguracji i wydajności z serwerów z systemem Windows. <br/> System **Linux:**  Połączenia przychodzące na porcie 22 (UDP) do ściągania metadanych konfiguracji i wydajności z serwerów z systemem Linux. |
 
 
 ## <a name="next-steps"></a>Następne kroki

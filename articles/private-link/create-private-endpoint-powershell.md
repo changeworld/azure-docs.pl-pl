@@ -2,17 +2,17 @@
 title: Tworzenie prywatnego punktu końcowego platformy Azure przy użyciu Azure PowerShell | Microsoft Docs
 description: Dowiedz się więcej o usłudze Azure Private link
 services: private-link
-author: asudbring
+author: malopMSFT
 ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 83f1cbc3f8da61370c90744be3f0a7b230e016c3
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 60032677594537f1e7791b7108eebd5d4cfad5b4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229400"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430342"
 ---
 # <a name="create-a-private-endpoint-using-azure-powershell"></a>Tworzenie prywatnego punktu końcowego przy użyciu Azure PowerShell
 Prywatny punkt końcowy to podstawowy blok konstrukcyjny dla prywatnego linku na platformie Azure. Umożliwia ona korzystanie z zasobów platformy Azure, takich jak Virtual Machines (VM), w celu komunikacji z prywatnymi zasobami łączy prywatnych. 
@@ -32,10 +32,10 @@ New-AzResourceGroup `
   -Location westcentralus
 ```
 
-## <a name="create-a-virtual-network"></a>Tworzenie Virtual Network
+## <a name="create-a-virtual-network"></a>Tworzenie sieci wirtualnej
 W tej sekcji utworzysz sieć wirtualną i podsieć. Następnie należy skojarzyć podsieć z Virtual Network.
 
-### <a name="create-a-virtual-network"></a>Tworzenie Virtual Network
+### <a name="create-a-virtual-network"></a>Tworzenie sieci wirtualnej
 
 Utwórz sieć wirtualną dla prywatnego punktu końcowego za pomocą elementu [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork). Poniższy przykład tworzy Virtual Network o nazwie *MyVirtualNetwork*:
  
@@ -60,6 +60,9 @@ $subnetConfig = Add-AzVirtualNetworkSubnetConfig `
   -VirtualNetwork $virtualNetwork
 ```
 
+> [!CAUTION]
+> Można łatwo pomylić parametr `PrivateEndpointNetworkPoliciesFlag` z inną dostępną flagą `PrivateLinkServiceNetworkPoliciesFlag`, ponieważ są one długimi wyrazami i mają podobny wygląd.  Upewnij się, że używasz jednej z nich, `PrivateEndpointNetworkPoliciesFlag`.
+
 ### <a name="associate-the-subnet-to-the-virtual-network"></a>Skojarz podsieć z Virtual Network
 
 Konfigurację podsieci można zapisać do Virtual Network przy użyciu [opcji Set-AzVirtualNetwork](/powershell/module/az.network/Set-azVirtualNetwork). To polecenie tworzy podsieć:
@@ -68,7 +71,7 @@ Konfigurację podsieci można zapisać do Virtual Network przy użyciu [opcji Se
 $virtualNetwork | Set-AzVirtualNetwork
 ```
 
-## <a name="create-a-virtual-machine"></a>Tworzenie maszyny wirtualnej
+## <a name="create-a-virtual-machine"></a>Utworzenie maszyny wirtualnej
 
 Utwórz maszynę wirtualną w Virtual Network przy użyciu elementu [New-AzVM](/powershell/module/az.compute/new-azvm). Po uruchomieniu następnego polecenia zostanie wyświetlony monit o poświadczenia. Wprowadź nazwę użytkownika i hasło dla maszyny wirtualnej:
 

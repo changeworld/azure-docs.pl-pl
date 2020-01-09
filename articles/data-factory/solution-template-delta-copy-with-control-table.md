@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/24/2018
-ms.openlocfilehash: 4c72bd37a636ec31c13737705c22aaa895b9ad72
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 3c077e2c04cae94d2e1a2a84ccd7d09c7a0829b4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928208"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439665"
 ---
 # <a name="delta-copy-from-a-database-with-a-control-table"></a>Kopiowanie przyrostowe z bazy danych z tabelą formantów
 
@@ -38,10 +38,13 @@ Szablon zawiera cztery działania:
 - **Kopiuj** kopiuje tylko zmiany ze źródłowej bazy danych do magazynu docelowego. Zapytanie, które identyfikuje zmiany w źródłowej bazie danych, jest podobne do "SELECT * FROM Data_Source_Table, gdzie TIMESTAMP_Column >" ostatni górny znak wodny "i TIMESTAMP_Column < =" bieżący górny limit "".
 - **SqlServerStoredProcedure** zapisuje bieżącą wartość górnego limitu do zewnętrznej tabeli formantów dla kopiowania przyrostowego.
 
-Szablon definiuje pięć parametrów:
+Szablon definiuje następujące parametry:
 - *Data_Source_Table_Name* to tabela w źródłowej bazie danych, z której mają zostać załadowane dane.
 - *Data_Source_WaterMarkColumn* to nazwa kolumny w tabeli źródłowej, która jest używana do identyfikowania nowych lub zaktualizowanych wierszy. Typem tej kolumny jest zwykle *DateTime*, *int*lub podobny.
-- *Data_Destination_Folder_Path* lub *Data_Destination_Table_Name* to miejsce, w którym dane są kopiowane do magazynu docelowego.
+- *Data_Destination_Container* jest ścieżką katalogu głównego miejsca, w którym dane są kopiowane do magazynu docelowego.
+- *Data_Destination_Directory* jest ścieżką katalogu w katalogu głównym miejsca, w którym dane są kopiowane do magazynu docelowego.
+- *Data_Destination_Table_Name* to miejsce, w którym dane są kopiowane do magazynu docelowego (ma zastosowanie w przypadku wybrania "usługa Azure Synapse Analytics (wcześniej SQL DW)" jako miejsca docelowego danych).
+- *Data_Destination_Folder_Path* to miejsce, w którym dane są kopiowane do magazynu docelowego (odpowiednie w przypadku wybrania "system plików" lub "Azure Data Lake Storage Gen1" jako miejsca docelowego danych).
 - *Control_Table_Table_Name* jest tabelą formantów zewnętrznych, która przechowuje wartość górnego limitu.
 - *Control_Table_Column_Name* jest kolumną w tabeli formantów zewnętrznych, która przechowuje wartość górnego limitu.
 
@@ -100,20 +103,18 @@ Szablon definiuje pięć parametrów:
     ![Utwórz nowe połączenie z magazynem danych tabeli formantów](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable6.png)
 
 7. Wybierz przycisk **Użyj tego szablonu**.
-
-     ![Użyj tego szablonu](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable7.png)
     
 8. Zobaczysz dostępny potok, jak pokazano w następującym przykładzie:
+  
+    ![Przeglądanie potoku](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable8.png)
 
-     ![Przeglądanie potoku](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable8.png)
+9. Wybierz **procedurę składowaną**. W obszarze **nazwa procedury składowanej**wybierz pozycję **[dbo]. [ update_watermark]** . Wybierz pozycję **Importuj parametr**, a następnie wybierz pozycję **Dodaj zawartość dynamiczną**.  
 
-9. Wybierz **procedurę składowaną**. W obszarze **nazwa procedury składowanej**wybierz pozycję **[update_watermark]** . Wybierz pozycję **Importuj parametr**, a następnie wybierz pozycję **Dodaj zawartość dynamiczną**.  
-
-     ![Ustaw działanie procedury składowanej](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable9.png) 
+    ![Ustaw działanie procedury składowanej](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable9.png)  
 
 10. Zapisz zawartość **\@{Activity ("LookupCurrentWaterMark"). Output. firstRow. NewWatermarkValue}** , a następnie wybierz pozycję **Zakończ**.  
 
-     ![Napisz zawartość dla parametrów procedury składowanej](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable10.png)      
+    ![Napisz zawartość dla parametrów procedury składowanej](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable10.png)       
      
 11. Wybierz pozycję **Debuguj**, wprowadź **Parametry**, a następnie wybierz pozycję **Zakończ**.
 
@@ -132,13 +133,12 @@ Szablon definiuje pięć parametrów:
             INSERT INTO data_source_table
             VALUES (11, 'newdata','9/11/2017 9:01:00 AM')
     ```
-14. Aby ponownie uruchomić potok, wybierz pozycję **Debuguj**, wprowadź **Parametry**, a następnie wybierz pozycję **Zakończ**.
 
-    ![SELECT * * Debug * *](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable11.png)
+14. Aby ponownie uruchomić potok, wybierz pozycję **Debuguj**, wprowadź **Parametry**, a następnie wybierz pozycję **Zakończ**.
 
     Zobaczysz, że tylko nowe wiersze zostały skopiowane do lokalizacji docelowej.
 
-15. Obowiązkowe W przypadku wybrania SQL Data Warehouse jako miejsca docelowego danych należy również udostępnić połączenie z usługą Azure Blob Storage na potrzeby przemieszczania, które jest wymagane przez SQL Data Warehouse Base. Upewnij się, że kontener został już utworzony w usłudze BLOB Storage.
+15. Obowiązkowe W przypadku wybrania usługi Azure Synapse Analytics (dawniej SQL DW) jako miejsca docelowego danych należy również udostępnić połączenie z magazynem obiektów blob platformy Azure na potrzeby przemieszczania, które jest wymagane przez SQL Data Warehouse bazy danych. Szablon spowoduje wygenerowanie ścieżki kontenera. Po uruchomieniu potoku Sprawdź, czy kontener został utworzony w usłudze BLOB Storage.
     
     ![Skonfiguruj bazę](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable15.png)
     

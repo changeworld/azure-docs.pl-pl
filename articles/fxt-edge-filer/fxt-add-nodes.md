@@ -1,19 +1,19 @@
 ---
-title: Konfiguracja klastra Microsoft Azure FXT Edge — Dodawanie węzłów
+title: 'Samouczek: Dodawanie węzłów do klastra plików usługi Azure FXT Edge'
 description: Jak dodać węzły do pamięci podręcznej magazynu usługi Azure FXT Edge
 author: ekpgh
+ms.author: rohogue
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
-ms.author: rohogue
-ms.openlocfilehash: 85ab9aaa3e184af7aa71a31eb3d8de1a20639c2a
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 6251fe8f88b7db25e3c09898540e07754d72fb0d
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72254925"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551951"
 ---
-# <a name="tutorial-add-cluster-nodes"></a>Samouczek: Dodawanie węzłów klastra 
+# <a name="tutorial-add-cluster-nodes-to-an-azure-fxt-edge-filer-cluster"></a>Samouczek: Dodawanie węzłów klastra do klastra plików usługi Azure FXT Edge
 
 Nowy klaster usługi Azure FXT Edge jest tworzony z tylko jednym węzłem. Przed wykonaniem innej konfiguracji należy dodać co najmniej dwa węzły i włączyć wysoką dostępność. 
 
@@ -68,7 +68,7 @@ Kolumna **Akcje** zawiera przyciski umożliwiające dodanie węzła do klastra l
 
 Wszystkie węzły w klastrze muszą korzystać z tej samej wersji systemu operacyjnego, ale nie trzeba aktualizować oprogramowania przed dodaniem węzła. Po kliknięciu przycisku **Zezwól na przyłączenie** proces dołączania do klastra automatycznie sprawdza i instaluje oprogramowanie systemu operacyjnego zgodne z wersją w klastrze.
 
-Aby dowiedzieć się więcej na temat opcji na tej stronie, przeczytaj artykuł [ **klaster** > **węzły FXT** ](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_fxt_nodes.html) w podręczniku konfiguracji klastra.
+Aby dowiedzieć się więcej na temat opcji na tej stronie, przeczytaj artykuł [ **cluster** > **FXT nodes** ](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_fxt_nodes.html) w podręczniku konfiguracji klastra.
 
 ## <a name="3-click-the-allow-to-join-button"></a>3. kliknij przycisk "Zezwól na przyłączenie" 
 

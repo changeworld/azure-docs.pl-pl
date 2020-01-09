@@ -1,20 +1,18 @@
 ---
-title: Odzyskiwanie po awarii i dystrybucja geograficzna w Durable Functions na platformie Azure
+title: Odzyskiwanie po awarii i dystrybucja geograficzna Durable Functions platformy Azure
 description: Informacje na temat odzyskiwania po awarii i dystrybucji geograficznej w Durable Functions.
 author: MS-Santi
 ms.topic: conceptual
 ms.date: 04/25/2018
 ms.author: azfuncdf
-ms.openlocfilehash: ba459d2d2f3aaf595c1d834e2b29a231e3b2bb12
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 7951f216143bef0d48a6b751beff3f8f4316b9bd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232937"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433333"
 ---
-# <a name="disaster-recovery-and-geo-distribution"></a>Odzyskiwanie po awarii i dystrybucja geograficzna
-
-## <a name="overview"></a>Omówienie
+# <a name="disaster-recovery-and-geo-distribution-in-azure-durable-functions"></a>Odzyskiwanie po awarii i dystrybucja geograficzna na platformie Azure Durable Functions
 
 W Durable Functions wszystkie stany są utrwalane w usłudze Azure Storage. [Centrum zadań](durable-functions-task-hubs.md) jest kontenerem logicznym dla zasobów usługi Azure Storage, które są używane dla aranżacji. Funkcje programu Orchestrator i Activity mogą współdziałać ze sobą tylko wtedy, gdy należą do tego samego centrum zadań.
 Opisane scenariusze umożliwiają zaproponowanie opcji wdrożenia w celu zwiększenia dostępności i zminimalizowania przestojów podczas działania odzyskiwania po awarii.

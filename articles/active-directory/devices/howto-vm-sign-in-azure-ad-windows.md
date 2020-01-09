@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba8f4f715856538b9555b1bcb8c8a812503fabd2
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 77e24fa41c5f716460d82e1079659e6aee5e9a9b
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74842411"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75561154"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Logowanie do maszyny wirtualnej z systemem Windows na platformie Azure przy użyciu uwierzytelniania Azure Active Directory (wersja zapoznawcza)
 
@@ -36,6 +36,9 @@ Istnieje wiele zalet używania uwierzytelniania usługi Azure AD do logowania si
    - Uwierzytelnianie wieloskładnikowe
    - Sprawdzanie ryzyka związanego z logowaniem
 - Automatyzuj i Skaluj przyłączanie usługi Azure AD do maszyn wirtualnych z systemem Windows Azure, które są częścią wdrożeń infrastruktury VDI.
+
+> [!NOTE]
+> Po włączeniu tej funkcji maszyny wirtualne z systemem Windows na platformie Azure będą przyłączone do usługi Azure AD. Nie można przyłączyć go do innej domeny, takiej jak Premium AD lub Azure AD DS. Jeśli chcesz to zrobić, musisz odłączyć maszynę wirtualną od dzierżawy usługi Azure AD przez odinstalowanie rozszerzenia.
 
 ## <a name="requirements"></a>Wymagania
 
@@ -200,7 +203,7 @@ Można wymusić zasady dostępu warunkowego, takie jak uwierzytelnianie wielosk�
 ## <a name="log-in-using-azure-ad-credentials-to-a-windows-vm"></a>Logowanie przy użyciu poświadczeń usługi Azure AD z maszyną wirtualną z systemem Windows
 
 > [!IMPORTANT]
-> Połączenie zdalne z maszynami wirtualnymi przyłączonymi do usługi Azure AD jest dozwolone tylko z komputerów z systemem Windows 10, które są przyłączone do usługi Azure AD lub hybrydowej usługi Azure AD przyłączone do tego **samego** katalogu co maszyna wirtualna Ponadto do protokołu RDP przy użyciu poświadczeń usługi Azure AD użytkownik musi należeć do jednej z dwóch ról RBAC, identyfikatora logowania administratora maszyny wirtualnej lub logowania użytkownika maszyny wirtualnej.
+> Połączenie zdalne z maszynami wirtualnymi przyłączonymi do usługi Azure AD jest dozwolone tylko z komputerów z systemem Windows 10, które są przyłączone do usługi Azure AD lub hybrydowej usługi Azure AD przyłączone do tego **samego** katalogu co maszyna wirtualna Ponadto do protokołu RDP przy użyciu poświadczeń usługi Azure AD użytkownik musi należeć do jednej z dwóch ról RBAC, identyfikatora logowania administratora maszyny wirtualnej lub logowania użytkownika maszyny wirtualnej. W tej chwili usługa Azure bastionu nie może być używana do logowania przy użyciu uwierzytelniania Azure Active Directory z rozszerzeniem AADLoginForWindows. Obsługiwany jest tylko bezpośredni protokół RDP.
 
 Aby zalogować się do maszyny wirtualnej z systemem Windows Server 2019 przy użyciu usługi Azure AD: 
 

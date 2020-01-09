@@ -1,5 +1,6 @@
 ---
-title: Autoryzuj konta dewelopera przy użyciu Azure Active Directory B2C API Management platformy Azure | Microsoft Docs
+title: Autoryzuj konta dewelopera przy użyciu Azure Active Directory B2C
+titleSuffix: Azure API Management
 description: Dowiedz się, jak autoryzować użytkowników przy użyciu Azure Active Directory B2C w API Management.
 services: api-management
 documentationcenter: API Management
@@ -12,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: d6e7c04cbd5a7f1ed509b27cf87ac3f692c28d9f
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 11dae2b6d771138503643c402ba4525df1f04a88
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74454473"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430747"
 ---
 # <a name="how-to-authorize-developer-accounts-by-using-azure-active-directory-b2c-in-azure-api-management"></a>Jak autoryzować konta dewelopera przy użyciu Azure Active Directory B2C na platformie Azure API Management
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 Usługa Azure Active Directory B2C to rozwiązanie zarządzania tożsamością w chmurze dla aplikacji przeznaczonych dla klientów internetowych i mobilnych. Służy do zarządzania dostępem do portalu dla deweloperów. W tym przewodniku przedstawiono konfigurację, która jest wymagana w ramach usługi API Management do integracji z Azure Active Directory B2C. Aby uzyskać informacje na temat włączania dostępu do portalu dla deweloperów przy użyciu klasycznej Azure Active Directory, zobacz [jak autoryzować konta dewelopera przy użyciu Azure Active Directory].
 
@@ -113,7 +114,7 @@ Mimo że nowe konto zostanie utworzone automatycznie za każdym razem, gdy nowy 
    > [!NOTE]
    > Jeśli Azure Active Directory B2C jest jedyną opcją włączoną na karcie **tożsamości** w portalu wydawcy, nastąpi przekierowanie do zasad rejestracji bezpośrednio.
 
-   ![Portal dla deweloperów][api-management-howto-aad-b2c-dev-portal-b2c-options]
+   ![Portal deweloperów][api-management-howto-aad-b2c-dev-portal-b2c-options]
 
    Po zakończeniu rejestracji nastąpi przekierowanie do portalu dla deweloperów. Zalogowano Cię do portalu dla deweloperów dla wystąpienia usługi API Management.
 

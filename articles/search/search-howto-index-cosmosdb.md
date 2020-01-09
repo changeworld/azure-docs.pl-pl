@@ -1,20 +1,20 @@
 ---
 title: Przeszukaj Azure Cosmos DB dane
 titleSuffix: Azure Cognitive Search
-description: Przeszukaj Azure Cosmos DB źródło danych i pozyskaj dane w indeksie z możliwością wyszukiwania pełnotekstowego w usłudze Azure Wyszukiwanie poznawcze. Indeksatory automatyzują pozyskiwanie danych dla wybranych źródeł danych, takich jak Azure Cosmos DB.
+description: Importuj dane z Azure Cosmos DB do indeksu z możliwością wyszukiwania w usłudze Azure Wyszukiwanie poznawcze. Indeksatory automatyzują pozyskiwanie danych dla wybranych źródeł danych, takich jak Azure Cosmos DB.
 author: mgottein
 manager: nitinme
 ms.author: magottei
 ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 616e5dc5ac6416d2efe1d9338b99c2b400fe572a
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.date: 01/02/2020
+ms.openlocfilehash: ef136345c7c41c720efd3c79923b6ce646de41e2
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977118"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75642169"
 ---
 # <a name="how-to-index-cosmos-db-data-using-an-indexer-in-azure-cognitive-search"></a>Jak indeksować Cosmos DB danych przy użyciu indeksatora na platformie Azure Wyszukiwanie poznawcze 
 
@@ -176,11 +176,11 @@ Treść żądania zawiera definicję źródła danych, która powinna zawierać 
 | Pole   | Opis |
 |---------|-------------|
 | **Nazwa** | Wymagany. Wybierz dowolną nazwę reprezentującą obiekt źródła danych. |
-|**type**| Wymagany. Musi mieć wartość `cosmosdb`. |
+|**type**| Wymagany. Musi być `cosmosdb`. |
 |**uwierzytelniające** | Wymagany. Musi być Cosmos DB parametrami połączenia.<br/>W przypadku kolekcji SQL parametry połączenia mają następujący format: `AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>`<br/><br/>W przypadku kolekcji MongoDB Dodaj **rodzaju interfejsu API = MongoDB** do parametrów połączenia:<br/>`AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>;ApiKind=MongoDb`<br/><br/>[Aby uzyskać](https://aka.ms/azure-cognitive-search/indexer-preview) dostęp do wersji zapoznawczej i zapoznać się z informacjami na temat sposobu formatowania poświadczeń, w przypadku wykresów Gremlin i tabel Cassandra.<br/><br/>Należy unikać numerów portów w adresie URL punktu końcowego. Jeśli dołączysz numer portu, usługa Azure Wyszukiwanie poznawcze nie będzie w stanie indeksować bazy danych Azure Cosmos DB.|
 | **wbudowane** | Zawiera następujące elementy: <br/>**Nazwa**: wymagane. Określ identyfikator kolekcji baz danych do indeksowania.<br/>**zapytanie**: opcjonalne. Możesz określić zapytanie, aby spłaszczyć dowolny dokument JSON do prostego schematu, który usługa Azure Wyszukiwanie poznawcze może indeksować.<br/>W przypadku interfejsu API MongoDB, interfejsu API Gremlin i interfejs API Cassandra zapytania nie są obsługiwane. |
 | **dataChangeDetectionPolicy** | Rekomendowane. Zobacz sekcję [indeksowanie zmienionych dokumentów](#DataChangeDetectionPolicy) .|
-|**dataDeletionDetectionPolicy** | Opcjonalny. Zobacz sekcję [indeksowanie usuniętych dokumentów](#DataDeletionDetectionPolicy) .|
+|**dataDeletionDetectionPolicy** | Element opcjonalny. Zobacz sekcję [indeksowanie usuniętych dokumentów](#DataDeletionDetectionPolicy) .|
 
 ### <a name="using-queries-to-shape-indexed-data"></a>Używanie zapytań w celu kształtowania indeksowanych danych
 Możesz określić zapytanie SQL do spłaszczania zagnieżdżonych właściwości lub tablic, właściwości JSON projektu i przefiltrować dane, które mają być indeksowane. 

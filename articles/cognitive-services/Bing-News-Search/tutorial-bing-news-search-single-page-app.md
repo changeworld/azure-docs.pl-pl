@@ -8,17 +8,17 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: tutorial
-ms.date: 07/12/2019
+ms.date: 12/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 424fdc9fa0f31b3de664945ff49b119939488fed
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: e128daa82eca8142a636df0958ddca574e398713
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68423610"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75383119"
 ---
-# <a name="tutorial-create-a-single-page-web-app"></a>Samouczek: Tworzenie jednostronicowej aplikacji internetowej
+# <a name="tutorial-create-a-single-page-web-app"></a>Samouczek: Tworzenie jednostronicowej aplikacji sieci Web
 
 Interfejs API wyszukiwania wiadomości Bing umożliwia wyszukiwanie w Internecie i uzyskiwanie wyników wiadomości odpowiadających zapytaniu wyszukiwania. W tym samouczku skompilujemy jednostronicową aplikację internetową, która wyświetla wyniki wyszukiwania na stronie przy użyciu interfejsu API wyszukiwania wiadomości Bing. Aplikacja zawiera składniki HTML, CSS i JavaScript. Kod źródłowy tego przykładu jest dostępny w usłudze [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/BingNewsSearchApp.html).
 
@@ -61,7 +61,7 @@ Kod HTML zawiera także podziały (tagi `<div>`) tam, gdzie są wyświetlane wyn
 
 Aby uniknąć konieczności umieszczania klucza subskrypcji interfejsu API wyszukiwania Bing w kodzie, korzystamy z magazynu trwałego przeglądarki w celu przechowywania klucza. Zanim klucz zostanie zachowany, wyświetlany jest monit o podanie klucza użytkownika. Jeśli klucz zostanie później odrzucony przez interfejs API, unieważniamy przechowywany klucz, aby użytkownikowi ponownie został wyświetlony monit.
 
-Definiujemy funkcje `storeValue` i `retrieveValue`, które używają obiektu `localStorage` (nie wszystkie przeglądarki go obsługują) lub pliku cookie. Funkcja `getSubscriptionKey()` używa tych funkcji do przechowywania i pobierania klucza użytkownika.
+Definiujemy funkcje `storeValue` i `retrieveValue`, które używają obiektu `localStorage` (nie wszystkie przeglądarki go obsługują) lub pliku cookie. Funkcja `getSubscriptionKey()` używa tych funkcji do przechowywania i pobierania klucza użytkownika. Możesz użyć poniższego globalnego punktu końcowego lub niestandardowego punktu końcowego [poddomeny](../../cognitive-services/cognitive-services-custom-subdomains.md) , który jest wyświetlany w Azure Portal dla zasobu.
 
 ``` javascript
 // Cookie names for data we store
@@ -88,7 +88,7 @@ function getSubscriptionKey() {
     return key;
 }
 ```
-Tag HTML `<form>` `onsubmit` wywołuje funkcję `bingWebSearch`, aby zwrócić wyniki wyszukiwania. Funkcja `bingWebSearch` używa funkcji `getSubscriptionKey()` w celu uwierzytelnienia każdego zapytania. Jak pokazano w poprzedniej definicji, funkcja `getSubscriptionKey` monituje użytkownika o klucz, jeśli klucz nie został wprowadzony. Klucz jest następnie przechowywany w celu ciągłego użycia przez aplikację.
+Tag HTML `<form>``onsubmit` wywołuje funkcję `bingWebSearch`, aby zwrócić wyniki wyszukiwania. Funkcja `bingWebSearch` używa funkcji `getSubscriptionKey()` w celu uwierzytelnienia każdego zapytania. Jak pokazano w poprzedniej definicji, funkcja `getSubscriptionKey` monituje użytkownika o klucz, jeśli klucz nie został wprowadzony. Klucz jest następnie przechowywany w celu ciągłego używania przez aplikację.
 
 ```html
 <form name="bing" onsubmit="this.offset.value = 0; return bingWebSearch(this.query.value, 
@@ -271,7 +271,7 @@ function handleBingResponse() {
 
 Większość kodu w obu poprzednich funkcjach jest przeznaczona do obsługi błędów. Błędy mogą wystąpić na następujących etapach:
 
-|Etap|Potencjalne błędy|Obsługiwane przez|
+|Stage|Potencjalne błędy|Obsługiwane przez|
 |-|-|-|
 |Tworzenie obiektu żądania języka JavaScript|Nieprawidłowy adres URL|Blok `try`/`catch`|
 |Wykonywanie żądania|Błędy sieci, przerwane połączenia|Obsługa zdarzeń `error` i `abort`|

@@ -9,12 +9,12 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 08/22/2019
-ms.openlocfilehash: f36906bfa6bbef43c0e3133bfa1e8a163810086f
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
-ms.translationtype: MT
+ms.openlocfilehash: 450f40c8ba49028d99143d7cf2b2995eb354f8fd
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928695"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551628"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Rozpoczynanie pracy z inspekcją bazy danych SQL
 
@@ -108,7 +108,7 @@ W poniższej sekcji opisano konfigurację inspekcji przy użyciu Azure Portal.
 
     ![Centrum zdarzeń](./media/sql-database-auditing-get-started/auditing_select_event_hub.png)
 
-9. Kliknij przycisk **Save** (Zapisz).
+9. Kliknij pozycję **Zapisz**.
 10. Jeśli chcesz dostosować zdarzenia poddane inspekcji, możesz to zrobić za pomocą [poleceń cmdlet programu PowerShell](#subheading-7) lub [interfejsu API REST](#subheading-9).
 11. Po skonfigurowaniu ustawień inspekcji można włączyć nową funkcję wykrywania zagrożeń i skonfigurować wiadomości e-mail w celu otrzymywania alertów zabezpieczeń. W przypadku korzystania z wykrywania zagrożeń otrzymywane są aktywne alerty dotyczące nietypowych działań bazy danych, które mogą wskazywać na potencjalne zagrożenia bezpieczeństwa. Aby uzyskać więcej informacji, zobacz [wprowadzenie do wykrywania zagrożeń](sql-database-threat-detection-get-started.md).
 
@@ -243,7 +243,7 @@ W środowisku produkcyjnym można okresowo odświeżać klucze magazynu. Podczas
 - W przypadku korzystania z uwierzytelniania usługi AAD rekordy nieudanych logowań *nie* będą widoczne w dzienniku inspekcji SQL. Aby wyświetlić nieudane rekordy inspekcji logowania, należy odwiedzić [portal Azure Active Directory]( ../active-directory/reports-monitoring/reference-sign-ins-error-codes.md), w którym znajdują się szczegóły dotyczące tych zdarzeń.
 
 
-## <a id="subheading-7"></a>Zarządzanie inspekcją usługi SQL Database przy użyciu Azure PowerShell
+## <a id="subheading-7"></a>Zarządzanie usługą Azure SQL Server i inspekcją bazy danych przy użyciu Azure PowerShell
 
 **Polecenia cmdlet programu PowerShell (w tym obsługa dodatkowych funkcji filtrowania)** :
 
@@ -256,7 +256,7 @@ W środowisku produkcyjnym można okresowo odświeżać klucze magazynu. Podczas
 
 Aby zapoznać się z przykładem skryptu, zobacz [Konfigurowanie inspekcji i wykrywania zagrożeń przy użyciu programu PowerShell](scripts/sql-database-auditing-and-threat-detection-powershell.md).
 
-## <a id="subheading-9"></a>Zarządzanie inspekcją usługi SQL Database przy użyciu interfejsu API REST
+## <a id="subheading-8"></a>Zarządzanie usługą Azure SQL Server i inspekcją bazy danych przy użyciu interfejsu API REST
 
 **REST API**:
 
@@ -272,7 +272,7 @@ Rozszerzone zasady z klauzulą WHERE obsługują dodatkowe filtrowanie:
 - [Pobierz zasady inspekcji *rozszerzonej* bazy danych](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/get)
 - [Pobieranie zasad inspekcji *rozszerzonej* serwera](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/get)
 
-## <a id="subheading-10"></a>Zarządzanie inspekcją usługi SQL Database przy użyciu szablonów Azure Resource Manager
+## <a id="subheading-9"></a>Zarządzanie usługą Azure SQL Server i inspekcją bazy danych przy użyciu szablonów Azure Resource Manager
 
 Inspekcją usługi Azure SQL Database można zarządzać przy użyciu szablonów [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) , jak pokazano w poniższych przykładach:
 
@@ -289,10 +289,9 @@ Inspekcją usługi Azure SQL Database można zarządzać przy użyciu szablonów
 [Analyze audit logs and reports]: #subheading-3
 [Practices for usage in production]: #subheading-5
 [Storage Key Regeneration]: #subheading-6
-[Manage SQL database auditing using Azure PowerShell]: #subheading-7
-[Blob/Table differences in Server auditing policy inheritance]: (#subheading-8)
-[Manage SQL database auditing using REST API]: #subheading-9
-[Manage SQL database auditing using ARM templates]: #subheading-10
+[Manage Azure SQL Server and Database auditing using Azure PowerShell]: #subheading-7
+[Manage SQL database auditing using REST API]: #subheading-8
+[Manage Azure SQL Server and Database auditing using ARM templates]: #subheading-9
 
 <!--Image references-->
 [1]: ./media/sql-database-auditing-get-started/1_auditing_get_started_settings.png

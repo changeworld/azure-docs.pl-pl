@@ -1,6 +1,6 @@
 ---
-title: Praca z obsługą kanału informacyjnego zmian w Azure Cosmos DB
-description: Użyj Azure Cosmos DB obsługi kanału informacyjnego zmiany, aby śledzić zmiany w dokumentach i przeprowadzać przetwarzanie oparte na zdarzeniach, takie jak wyzwalacze i utrzymywanie Aktualności pamięci podręcznych i systemów analitycznych.
+title: Praca ze zmianą Obsługa kanału informacyjnego w usłudze Azure Cosmos DB
+description: Korzystanie z obsługi kanału informacyjnego Azure Cosmos DB zmiany w celu śledzenia zmian w dokumentach, przetwarzania opartego na zdarzeniach, takich jak wyzwalacze i utrzymywania aktualności pamięci podręcznych i systemów analitycznych
 author: TheovanKraay
 ms.author: thvankra
 ms.service: cosmos-db
@@ -8,117 +8,117 @@ ms.topic: conceptual
 ms.date: 11/25/2019
 ms.reviewer: sngun
 ms.custom: seodec18
-ms.openlocfilehash: eef950c4e8c4a880d331022ed60477bebce65b5d
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: bf36c0697b5e30c77610d30475be20adc18810cd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74689085"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445590"
 ---
 # <a name="change-feed-in-azure-cosmos-db---overview"></a>Źródło zmian w Azure Cosmos DB — Omówienie
 
 Obsługa kanałów informacyjnych zmian w Azure Cosmos DB działa przez nasłuchiwanie kontenera usługi Azure Cosmos dla wszelkich zmian. Następnie tworzone są dane wyjściowe w postaci posortowanej listy zmienionych dokumentów w kolejności, w której zostały zmodyfikowane. Zmiany zostają utrwalone, mogą być przetwarzane asynchronicznie i przyrostowo, a dane wyjściowe mogą być rozpowszechniane wśród jednego lub większej liczby konsumentów w celu przetwarzania równoległego. 
 
-Azure Cosmos DB doskonale nadaje się w przypadku aplikacji IoT, gier, sprzedaży detalicznej i rejestrowania operacyjnego. Typowy Wzorzec projektowy w tych aplikacjach polega na użyciu zmian danych w celu wyzwolenia dodatkowych akcji. Przykłady dodatkowych akcji obejmują:
+Usługa Azure Cosmos DB jest odpowiednie dla IoT, gry detaliczna i operacyjne rejestrowania aplikacji. Typowy wzorzec projektowania w tych aplikacjach jest Wyzwól dodatkowe akcje za pomocą zmian danych. Przykłady dodatkowe akcje:
 
-* Wyzwalanie powiadomienia lub wywołania interfejsu API, gdy element zostanie wstawiony lub zaktualizowany.
-* Przetwarzanie strumienia w czasie rzeczywistym dla usługi IoT lub przetwarzania analiz w czasie rzeczywistym na danych operacyjnych.
-* Dodatkowe przenoszenie danych przez synchronizację z pamięcią podręczną lub aparatem wyszukiwania lub magazynem danych lub archiwizowanie danych w chłodnym magazynie.
+* Wyzwalania powiadomienie lub wywołanie interfejsu API po wstawieniu lub zaktualizowaniu elementu.
+* W czasie rzeczywistym strumień przetwarzania IoT lub analizy w czasie rzeczywistym, przetwarzanie danych operacyjnych.
+* Dodatkowego przenoszenia danych przez synchronizację z pamięci podręcznej lub aparatu wyszukiwania lub magazynu danych lub archiwizowania danych do zimnego magazynu.
 
-Źródło zmian w Azure Cosmos DB umożliwia tworzenie wydajnych i skalowalnych rozwiązań dla każdego z tych wzorców, jak pokazano na poniższej ilustracji:
+Zmiana źródła danych w usłudze Azure Cosmos DB umożliwia wydajne i skalowalne rozwiązania dla każdego z tych wzorców, jak pokazano na poniższej ilustracji:
 
-![Korzystanie z kanału informacyjnego zmiany Azure Cosmos DB do analiz w czasie rzeczywistym i scenariuszy obliczeniowych opartych na zdarzeniach](./media/change-feed/changefeedoverview.png)
+![Za pomocą usługi Azure Cosmos DB zmiany źródła danych do zasilania analizy w czasie rzeczywistym i scenariusze obliczeniowe sterowane zdarzeniami](./media/change-feed/changefeedoverview.png)
 
-## <a name="supported-apis-and-client-sdks"></a>Obsługiwane interfejsy API i zestawy SDK klienta
+## <a name="supported-apis-and-client-sdks"></a>Obsługiwane interfejsy API i zestawów SDK klienta
 
-Ta funkcja jest obecnie obsługiwana przez następujące Azure Cosmos DB interfejsów API i zestawów SDK klienta.
+Ta funkcja jest obecnie obsługiwana przez następujących interfejsów API usługi Azure Cosmos DB i zestawów SDK klienta.
 
-| **Sterowniki klienta** | **Interfejs wiersza polecenia platformy Azure** | **INTERFEJS API SQL** | **Interfejs API Azure Cosmos DB dla Cassandra** | **Interfejs API Azure Cosmos DB dla MongoDB** | **Interfejs API Gremlin**|**Interfejs API tabel** |
+| **Sterowniki klienta** | **Interfejs wiersza polecenia platformy Azure** | **INTERFEJS API SQL** | **Interfejs API Azure Cosmos DB dla Cassandra** | **Interfejs API Azure Cosmos DB dla MongoDB** | **Interfejs API języka gremlin**|**Interfejs API tabel** |
 | --- | --- | --- | --- | --- | --- | --- |
 | .NET | Nie dotyczy | Tak | Tak | Tak | Tak | Nie |
 |Java|Nie dotyczy|Tak|Tak|Tak|Tak|Nie|
 |Python|Nie dotyczy|Tak|Tak|Tak|Tak|Nie|
-|Node/JS|Nie dotyczy|Tak|Tak|Tak|Tak|Nie|
+|Węzeł/JS|Nie dotyczy|Tak|Tak|Tak|Tak|Nie|
 
-## <a name="change-feed-and-different-operations"></a>Zmień źródło danych i różne operacje
+## <a name="change-feed-and-different-operations"></a>Zestawienia zmian i różnych operacji
 
-Dzisiaj wszystkie operacje są wyświetlane w kanale zmian. Funkcja, w której można kontrolować źródła zmian, dla określonych operacji, takich jak tylko aktualizacje, a nie do wstawiania, jest jeszcze niedostępna. Można dodać "miękki znacznik" w elemencie dla aktualizacji i filtru na podstawie tego, czy podczas przetwarzania elementów ze źródła zmian. Obecnie Źródło zmian nie powoduje usunięcia dziennika. Podobnie jak w poprzednim przykładzie, można dodać znacznik elastyczny dla elementów, które są usuwane, na przykład można dodać atrybut w elemencie o nazwie "usunięty" i ustawić go na wartość "true" i ustawić dla elementu wartość TTL, tak aby można go było automatycznie usunąć. Możesz odczytać Źródło zmian dla elementów historycznych (Ostatnia zmiana odpowiadająca elementowi nie obejmuje zmian pośrednich), na przykład elementów, które zostały dodane pięć lat temu. Jeśli element nie został usunięty, można odczytać kanał informacyjny zmiany jako źródło kontenera.
+Już dziś zobaczysz wszystkie operacje w zestawienia zmian. Funkcje, których można kontrolować, Zmień źródło danych dla określonych operacji takich, jak tylko aktualizacje i nie wstawienia nie jest jeszcze dostępna. Można dodać "nietrwałego znacznik" w elemencie aktualizacji i filtr oparty na tym, podczas przetwarzania elementów zestawienia zmian. Obecnie Kanał informacyjny zmian nie dziennika usuwania. Podobnie jak w poprzednim przykładzie, można dodać znacznika nietrwale elementy, które są usuwane, na przykład można dodać atrybutu w elemencie o nazwie "usunięta" i ustaw ją na wartość "true" i ustaw czas wygaśnięcia elementu, dzięki czemu może zostać automatycznie usunięty. Możesz odczytać Źródło zmian dla elementów historycznych (Ostatnia zmiana odpowiadająca elementowi nie obejmuje zmian pośrednich), na przykład elementów, które zostały dodane pięć lat temu. Jeśli element nie zostanie usunięty. możesz przeczytać zmiany źródła danych, o ile jest to punkt początkowy kontenera.
 
-### <a name="sort-order-of-items-in-change-feed"></a>Porządek sortowania elementów w strumieniu zmian
+### <a name="sort-order-of-items-in-change-feed"></a>Kolejność elementów na liście zestawienia zmian do sortowania
 
-Zmiany elementów kanału informacyjnego są wprowadzane w kolejności ich modyfikacji. Ta kolejność sortowania jest gwarantowana na klucz partycji logicznej.
+Zmiany elementów kanału informacyjnego pochodzą zgodnie z kolejnością czas ich modyfikacji. Ta kolejność sortowania jest zachowywana na klucz partycji logicznej.
 
-### <a name="change-feed-in-multi-region-azure-cosmos-accounts"></a>Źródło zmian w wieloregionowych kontach usługi Azure Cosmos
+### <a name="change-feed-in-multi-region-azure-cosmos-accounts"></a>Zmiana źródła danych na kontach usługi Azure Cosmos w wielu regionach
 
-W wieloregionowym koncie usługi Azure Cosmos, jeśli region zapisu zostanie przełączona w tryb failover, kanał informacyjny zmiany będzie działać w ramach operacji ręcznego przełączania awaryjnego i będzie ciągły.
+Na koncie usługi Azure Cosmos wielu regionów, jeśli region zapisu w trybie Failover, kanał informacyjny zmian będzie działać w operacji ręcznej pracy awaryjnej i będą ciągłe.
 
 ### <a name="change-feed-and-time-to-live-ttl"></a>Zmień źródło danych i czas wygaśnięcia (TTL)
 
-Jeśli właściwość czasu wygaśnięcia (Time to Live) jest ustawiona dla elementu na wartość-1, kanał informacyjny zmiany będzie trwały w nieskończoność. Jeśli dane nie zostaną usunięte, pozostanie w strumieniu zmian.  
+Jeśli właściwość czas wygaśnięcia (czas wygaśnięcia) ustawiono element na -1, kanał informacyjny zmian zostanie utrzymany nieskończoność. Jeśli dane nie zostaną usunięte, pozostanie w zestawienia zmian.  
 
 ### <a name="change-feed-and-_etag-_lsn-or-_ts"></a>Zmień źródło danych i _etag, _lsn lub _ts
 
-Format _etag jest wewnętrzny i nie powinien być zależny od niego, ponieważ może ulec zmianie w dowolnym momencie. _ts jest modyfikacją lub sygnaturą czasową utworzenia. Można użyć _ts do chronologicznego porównania. _lsn to identyfikator wsadu, który jest dodawany wyłącznie dla źródła zmian. reprezentuje identyfikator transakcji. Wiele elementów może mieć ten sam _lsn. Element ETag w FeedResponse różni się od _etag widocznej dla elementu. _etag jest wewnętrznym identyfikatorem i jest używany na potrzeby kontroli współbieżności informującej o wersji elementu, natomiast element ETag jest używany do sekwencjonowania źródła danych.
+_Etag format wewnętrzny i użytkownik nie powinna przyjmować zależności, ponieważ go można zmienić w dowolnym momencie. _ts jest modyfikację lub tworzenia sygnatury czasowej. _Ts służy do porównywania chronologicznym. _lsn to identyfikator wsadu, który jest dodawany wyłącznie dla źródła zmian. reprezentuje identyfikator transakcji. Wiele elementów może być tym samym _lsn. Tag ETag na FeedResponse różni się od _etag, którą widzisz w elemencie. _etag jest wewnętrznym identyfikatorem i służy do współbieżności kontroli informuje o wersji elementu, natomiast element ETag jest używany do sekwencjonowania źródła danych.
 
-## <a name="change-feed-use-cases-and-scenarios"></a>Zmień przypadki użycia i scenariusze w kanale informacyjnym
+## <a name="change-feed-use-cases-and-scenarios"></a>Przypadki użycia i scenariuszy kanału informacyjnego zmian
 
-Kanał informacyjny zmiany umożliwia wydajne przetwarzanie dużych zestawów danych przy użyciu dużej ilości operacji zapisu. Kanał informacyjny zmiany oferuje również alternatywę do wykonywania zapytań dotyczących całego zestawu danych w celu zidentyfikowania zmian.
+Umożliwia wydajne przetwarzanie dużych zestawów danych z dużą liczbę zapisów kanału informacyjnego zmian. Kanał informacyjny zmian zapewnia również alternatywę do wykonywania zapytań w całym zestawie danych, aby zidentyfikować, co zmieniło się.
 
 ### <a name="use-cases"></a>Przypadki zastosowań
 
-Na przykład ze źródłem zmian można wydajnie wykonywać następujące zadania:
+Na przykład za pomocą zestawienia zmian można wykonać następujące zadania efektywnie:
 
-* Zaktualizuj pamięć podręczną, zaktualizuj indeks wyszukiwania lub zaktualizuj magazyn danych przy użyciu danych przechowywanych w Azure Cosmos DB.
+* Aktualizacja pamięci podręcznej, zaktualizować indeksu wyszukiwania lub magazynu danych z danymi przechowywanymi w usłudze Azure Cosmos DB.
 
-* Zaimplementuj warstwy i archiwizację danych na poziomie aplikacji, na przykład przechowuj "gorącą dane" w Azure Cosmos DB i o wieku "zimnych" danych do innych systemów magazynowania, na przykład [Azure Blob Storage](../storage/common/storage-introduction.md).
+* Implementowanie danych na poziomie aplikacji warstw i archiwizacji, na przykład przechowywania "gorących danych" w usłudze Azure Cosmos DB i przedawniają "zimnych danych" do innych systemów pamięci masowej, na przykład [usługi Azure Blob Storage](../storage/common/storage-introduction.md).
 
-* Wykonaj zero migracji w dół do innego konta usługi Azure Cosmos lub innego kontenera platformy Azure Cosmos z innym kluczem partycji logicznej.
+* Wykonaj zero migracje czas przestoju do innego konta usługi Azure Cosmos lub innego kontenera w usłudze Azure Cosmos kluczem różnych partycji logicznej.
 
-* Implementowanie [architektury lambda](https://blogs.technet.microsoft.com/msuspartner/2016/01/27/azure-partner-community-big-data-advanced-analytics-and-lambda-architecture/) przy użyciu Azure Cosmos DB, gdzie Azure Cosmos DB obsługuje zarówno w czasie rzeczywistym, jak i na potrzeby wykonywania zapytań dotyczących warstw, umożliwiając w ten sposób włączenie architektury lambda przy niskim koszcie.
+* Implementowanie [architektury lambda](https://blogs.technet.microsoft.com/msuspartner/2016/01/27/azure-partner-community-big-data-advanced-analytics-and-lambda-architecture/) przy użyciu usługi Azure Cosmos DB, w którym usługi Azure Cosmos DB obsługuje usługi batch w czasie rzeczywistym i zapytania obsługująca warstwy, umożliwiając w ten sposób architektury lambda przy użyciu niski całkowity koszt posiadania.
 
-* Odbieraj i przechowuj dane zdarzeń z urządzeń, czujników, infrastruktury i aplikacji, a następnie Przetwarzaj te zdarzenia w czasie rzeczywistym, na przykład przy użyciu [platformy Spark](../hdinsight/spark/apache-spark-overview.md).  Na poniższej ilustracji przedstawiono sposób implementacji architektury lambda przy użyciu Azure Cosmos DB za pośrednictwem źródła zmian:
+* Odbieranie i przechowywania danych o zdarzeniach z urządzeń, czujników, infrastruktury i aplikacji oraz przetwarzania tych zdarzeń w czasie rzeczywistym, na przykład za pomocą [Spark](../hdinsight/spark/apache-spark-overview.md).  Na poniższej ilustracji przedstawiono, jak można implementować architektury lambda przy użyciu usługi Azure Cosmos DB za pomocą kanału informacyjnego zmian:
 
-![Potok lambda oparty na Azure Cosmos DBach na potrzeby pozyskiwania i zapytania](./media/change-feed/lambda.png)
+![Potok usługi Azure Cosmos DB na podstawie lambda pozyskiwanie danych i zapytań](./media/change-feed/lambda.png)
 
 ### <a name="scenarios"></a>Scenariusze
 
-Poniżej przedstawiono niektóre scenariusze, które można łatwo zaimplementować ze źródłem zmian:
+Poniżej przedstawiono niektóre scenariusze, które można łatwo zaimplementować za pomocą kanału informacyjnego zmian:
 
-* W aplikacjach sieci Web [bezserwerowych](https://azure.microsoft.com/solutions/serverless/) lub mobilnych można śledzić zdarzenia, takie jak wszystkie zmiany w profilu lub preferencjach klienta, a także wyzwalać pewne działania, na przykład wysyłanie powiadomień wypychanych do urządzeń przy użyciu [Azure Functions](change-feed-functions.md).
+* W ramach Twojej [bezserwerowe](https://azure.microsoft.com/solutions/serverless/) aplikacje internetowe lub mobilne, można śledzić zdarzenia, takie jak wszystkie zmiany do profilu klienta, preferencje lub ich lokalizacji i wyzwalania określonych czynności, na przykład wysyłanie powiadomień wypychanych do urządzeń za pomocą [usługi Azure Functions](change-feed-functions.md).
 
-* Jeśli używasz Azure Cosmos DB do kompilowania gry, możesz na przykład użyć kanału informacyjnego zmiany w celu zaimplementowania rankingi w czasie rzeczywistym na podstawie wyników z ukończonych gier.
+* Jeśli używasz usługi Azure Cosmos DB do tworzenia gier, możesz, na przykład użyj Zmień źródło danych do zaimplementowania rankingi w czasie rzeczywistym, w oparciu o wyniki z gry ukończone.
 
 
-## <a name="working-with-change-feed"></a>Praca ze źródłem zmian
+## <a name="working-with-change-feed"></a>Praca z zestawienia zmian
 
-Możesz współpracować ze źródłem zmian, korzystając z następujących opcji:
+Możesz pracować z kanału informacyjnego zmian, korzystając z następujących opcji:
 
-* [Używanie kanału informacyjnego zmiany z Azure Functions](change-feed-functions.md)
+* [Za pomocą zmian źródła danych za pomocą usługi Azure Functions](change-feed-functions.md)
 * [Używanie kanału informacyjnego zmiany z procesorem źródła zmian](change-feed-processor.md) 
 
-Kanał informacyjny zmiany jest dostępny dla każdego klucza partycji logicznej w kontenerze i może być dystrybuowany przez jednego lub kilku odbiorców do przetwarzania równoległego, jak pokazano na poniższej ilustracji.
+Kanał informacyjny zmian jest dostępna dla każdego klucza partycji logicznej w ramach kontenera i jego mogą być rozproszone między jednego lub wielu użytkowników do przetwarzania równoległego, jak pokazano na poniższej ilustracji.
 
-![Rozproszone przetwarzanie Azure Cosmos DB źródła zmian](./media/change-feed/changefeedvisual.png)
+![Rozproszone przetwarzanie zestawienia zmian usługi Azure Cosmos DB](./media/change-feed/changefeedvisual.png)
 
-## <a name="features-of-change-feed"></a>Funkcje źródła zmian
+## <a name="features-of-change-feed"></a>Funkcje Kanał informacyjny zmian
 
-* Kanał informacyjny zmiany jest domyślnie włączony dla wszystkich kont usługi Azure Cosmos.
+* Kanał informacyjny zmian jest domyślnie włączone dla wszystkich kont usługi Azure Cosmos.
 
-* [Zainicjowanej przepływności](request-units.md) można użyć do odczytu ze źródła zmian, podobnie jak każda inna operacja Azure Cosmos DB, w dowolnym regionie skojarzonym z bazą danych Azure Cosmos.
+* Możesz użyć swojej [aprowizowanej przepływności](request-units.md) odczytywanie zestawienia zmian, podobnie jak dowolnej innej operacji usługi Azure Cosmos DB, we wszystkich regionach skojarzonych z bazą danych Azure Cosmos.
 
-* Kanał informacyjny zmiany zawiera operacje wstawiania i aktualizacji wykonywane do elementów w kontenerze. Można przechwytywać usunięcia, ustawiając flagę "unsoft-Delete" w obrębie elementów (na przykład dokumentów) zamiast usunięć. Alternatywnie można ustawić skończone okresy wygaśnięcia dla elementów z [możliwością czasu wygaśnięcia](time-to-live.md). Na przykład, 24 godziny i użyj wartości tej właściwości do przechwytywania usunięć. W tym rozwiązaniu należy przetwarzać zmiany w krótszym przedziale czasu niż okres ważności czasu wygaśnięcia. 
+* Kanał informacyjny zmian zawiera wstawienia i operacje aktualizacji, wprowadzone do elementów w kontenerze. Można przechwycić usuwa przez ustawienie flagi "opcji soft-delete" w obrębie elementów (na przykład dokumenty) zamiast usuwania. Alternatywnie, można ustawić okres ważności skończoną dla elementów z [możliwości TTL](time-to-live.md). Na przykład 24 godziny i użyj Usuwa wartość tej właściwości do przechwytywania. Za pomocą tego rozwiązania należy przetworzyć zmiany w przedziale czasu krótszy niż okres ważności czasu wygaśnięcia. 
 
-* Każda zmiana elementu pojawia się dokładnie jeden raz w źródle zmian, a klienci muszą zarządzać logiką tworzenia punktów kontrolnych. Jeśli chcesz uniknąć złożoności zarządzania punktami kontrolnymi, procesor źródła zmian zapewnia automatyczne tworzenie punktów kontrolnych i semantykę "co najmniej raz". Zobacz [Używanie kanału informacyjnego zmiany z procesorem źródła zmian](change-feed-processor.md).
+* Wszystkie zmiany do elementu dokładnie jeden raz w zestawienia zmian, a klienci muszą zarządzać logiki procesu tworzenia punktów kontrolnych. Jeśli chcesz uniknąć złożoności zarządzania punktami kontrolnymi, procesor źródła zmian zapewnia automatyczne tworzenie punktów kontrolnych i semantykę "co najmniej raz". Zobacz [Używanie kanału informacyjnego zmiany z procesorem źródła zmian](change-feed-processor.md).
 
-* Tylko Ostatnia zmiana dla danego elementu jest uwzględniona w dzienniku zmian. Zmiany pośrednie mogą być niedostępne.
+* Tylko najnowsze zmiany dla danego elementu znajduje się w dzienniku zmian. Pośrednie zmiany mogą nie być dostępne.
 
-* Kanał informacyjny zmiany jest sortowany według kolejności modyfikacji w ramach każdej wartości klucza partycji logicznej. Nie ma kolejności gwarantowanej w wartościach klucza partycji.
+* Kanał informacyjny zmian jest sortowana przez kolejność modyfikacji w każdej wartości klucza partycji logicznej. Nie jest zagwarantowana kolejność, w wartości klucza partycji.
 
-* Zmiany można synchronizować z dowolnego punktu w czasie, w którym nie ma stałego okresu przechowywania danych, dla którego zmiany są dostępne.
+* Zmiany mogą być synchronizowane z dowolnego punktu w czasie, który jest nie okres przechowywania danych, dla której zmiany są dostępne.
 
-* Zmiany są dostępne równolegle dla wszystkich kluczy partycji logicznych kontenera usługi Azure Cosmos. Dzięki tej możliwości zmiany z dużych kontenerów mogą być przetwarzane równolegle przez wielu użytkowników.
+* Zmiany są dostępne w sposób równoległy, dla wszystkich kluczy partycji logicznej kontenera usługi Azure Cosmos. Ta funkcja umożliwia zmiany w porównaniu z dużych kontenerów, które ma być przetwarzana równolegle przez wielu odbiorców.
 
-* Aplikacje mogą jednocześnie zażądać wielu źródeł zmian w tym samym kontenerze. ChangeFeedOptions. StartTime może służyć do zapewnienia początkowego punktu początkowego. Na przykład, aby znaleźć token kontynuacji odpowiadający podanemu czasowi zegara. ContinuationToken, jeśli jest określony, usługa WINS na wartości StartTime i StartFromBeginning. Precyzja ChangeFeedOptions. StartTime to ~ 5 s. 
+* Aplikacje mogą jednocześnie zażądać wielu źródeł zmian w tym samym kontenerze. ChangeFeedOptions.StartTime może służyć do zapewnienia pierwszego punktu początkowego. Na przykład, aby znaleźć token kontynuacji odpowiadający godziny zegarowej. Token kontynuacji, jeśli zostanie określony, wins przez wartości StartTime i StartFromBeginning. Dokładność ChangeFeedOptions.StartTime jest OK. 5 sekund. 
 
 ## <a name="change-feed-in-apis-for-cassandra-and-mongodb"></a>Źródło zmian w interfejsach API dla Cassandra i MongoDB
 
@@ -128,8 +128,8 @@ Natywny program Apache Cassandra udostępnia funkcję przechwytywania zmian dany
 
 ## <a name="next-steps"></a>Następne kroki
 
-Teraz możesz dowiedzieć się więcej na temat źródła zmian w następujących artykułach:
+Można teraz kontynuować, aby dowiedzieć się więcej na temat zmiany źródła danych w następujących artykułach:
 
-* [Opcje odczytu źródła zmian](read-change-feed.md)
-* [Używanie kanału informacyjnego zmiany z Azure Functions](change-feed-functions.md)
+* [Opcje na odczytywanie zestawienia zmian](read-change-feed.md)
+* [Za pomocą zmian źródła danych za pomocą usługi Azure Functions](change-feed-functions.md)
 * [Korzystanie z procesora danych zmiany](change-feed-processor.md)

@@ -1,19 +1,14 @@
 ---
 title: Co to są powiadomienia dotyczące usługi Azure Service Health?
 description: Powiadomienia o kondycji usługi umożliwiają wyświetlanie komunikatów kondycji usługi opublikowanych przez Microsoft Azure.
-author: stephbaron
-services: monitoring
-ms.service: azure-monitor
-ms.topic: conceptual
+ms.topic: article
 ms.date: 4/12/2018
-ms.author: stbaron
-ms.subservice: logs
-ms.openlocfilehash: b41c2cdc54ab5eecdc4503cbd98e69932c901a3d
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: f2d79dc920129241c801c75cc9009b3ba8f34b78
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74007092"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75451548"
 ---
 # <a name="view-service-health-notifications-by-using-the-azure-portal"></a>Wyświetlanie powiadomień dotyczących kondycji usługi za pomocą witryny Azure Portal
 
@@ -35,11 +30,11 @@ dyplomatyczn | Jedna z następujących wartości: **administrator** lub **operac
 correlationId | Zazwyczaj identyfikator GUID w formacie ciągu. Zdarzenia należące do tej samej akcji zwykle mają ten sam identyfikator korelacji.
 eventDataId | Unikatowy identyfikator zdarzenia.
 eventName | Tytuł zdarzenia.
-poziom | Poziom zdarzenia
+level | Poziom zdarzenia
 resourceProviderName | Nazwa dostawcy zasobów dla zasobu, którego dotyczy problem.
 resourceType| Typ zasobu zasobu, którego to dotyczy.
 subStatus | Zazwyczaj kod stanu HTTP odpowiadającego wywołania REST, ale może również zawierać inne ciągi opisujące podstan. Na przykład: OK (kod stanu HTTP: 200), utworzono (kod stanu HTTP: 201), zaakceptowane (kod stanu HTTP: 202), brak zawartości (kod stanu http: 204), nieprawidłowe żądanie (kod stanu http: 400), nie znaleziono (kod stanu http: 404), konflikt (kod stanu http: 409), serwer wewnętrzny Błąd (kod stanu HTTP: 500), Usługa niedostępna (kod stanu HTTP: 503) i limit czasu bramy (kod stanu HTTP: 504).
-EventTimestamp | Sygnatura czasowa, gdy zdarzenie zostało wygenerowane przez usługę platformy Azure przetwarzające żądanie odpowiadające zdarzeniu.
+eventTimestamp | Sygnatura czasowa, gdy zdarzenie zostało wygenerowane przez usługę platformy Azure przetwarzające żądanie odpowiadające zdarzeniu.
 submissionTimestamp | Sygnatura czasowa, gdy zdarzenie stało się dostępne na potrzeby wykonywania zapytań.
 subscriptionId | Subskrypcja platformy Azure, w której zostało zarejestrowane to zdarzenie.
 status | Ciąg opisujący stan operacji. Niektóre typowe wartości to: **rozpoczęte**, **w toku**, **zakończone**powodzeniem, **zakończone niepowodzeniem**, **aktywne**i **rozwiązane**.

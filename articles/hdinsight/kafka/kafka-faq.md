@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: 057c77d4ddb4a760e196c0dc8d508efe15e6699d
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: c8d2ef0330a32d5cab88355cc749322ec3a5ea30
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69520129"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75530939"
 ---
 # <a name="frequently-asked-questions-about-apache-kafka-in-azure-hdinsight"></a>Często zadawane pytania dotyczące Apache Kafka w usłudze Azure HDInsight
 
@@ -38,7 +38,7 @@ Aby uzyskać bardziej szczegółowy opis różnych typów węzłów, zobacz [Arc
 
 ## <a name="do-apache-kafka-apis-work-with-hdinsight"></a>Czy Apache Kafka interfejsy API działają z usługą HDInsight?
 
-Tak, Usługa HDInsight używa natywnych interfejsów API Kafka. Nie trzeba zmieniać kodu aplikacji klienckiej. Zobacz [samouczek: Użyj interfejsów API](./apache-kafka-producer-consumer-api.md) producenta i klienta Apache Kafka, aby zobaczyć, jak można używać interfejsów API producentów/klientów opartych na języku Java w klastrze.
+Tak, Usługa HDInsight używa natywnych interfejsów API Kafka. Nie trzeba zmieniać kodu aplikacji klienckiej. Zobacz [Samouczek: korzystanie z interfejsów API producenta i klienta Apache Kafka](./apache-kafka-producer-consumer-api.md) , aby zobaczyć, jak można używać interfejsów API producentów/klientów opartych na języku Java w klastrze.
 
 ## <a name="can-i-change-cluster-configurations"></a>Czy mogę zmienić konfiguracje klastrów?
 
@@ -46,7 +46,7 @@ Tak, za pomocą portalu Ambari. Każdy składnik w portalu zawiera sekcję **con
 
 ## <a name="what-type-of-authentication-does-hdinsight-support-for-apache-kafka"></a>Jakiego typu uwierzytelniania obsługuje Usługa HDInsight dla Apache Kafka?
 
-Za pomocą [pakiet Enterprise Security (ESP)](../domain-joined/apache-domain-joined-architecture.md)można uzyskać zabezpieczenia na poziomie tematu dla swoich klastrów Kafka. Zobacz [samouczek: Aby uzyskać więcej informacji, skonfiguruj zasady Apache Kafka w usłudze](../domain-joined/apache-domain-joined-run-kafka.md)HDInsight z pakiet Enterprise Security (wersja zapoznawcza).
+Za pomocą [pakiet Enterprise Security (ESP)](../domain-joined/apache-domain-joined-architecture.md)można uzyskać zabezpieczenia na poziomie tematu dla swoich klastrów Kafka. Aby uzyskać więcej informacji, zobacz [Samouczek: Konfigurowanie zasad Apache Kafka w usłudze HDInsight z pakiet Enterprise Security (wersja zapoznawcza)](../domain-joined/apache-domain-joined-run-kafka.md).
 
 ## <a name="is-my-data-encrypted-can-i-use-my-own-keys"></a>Czy moje dane są szyfrowane? Czy mogę użyć własnych kluczy?
 
@@ -65,6 +65,10 @@ Aby klienci Kafka mogli komunikować się z brokerami usługi Kafka, muszą być
 ## <a name="can-i-add-more-disk-space-on-an-existing-cluster"></a>Czy mogę dodać więcej miejsca na dysku w istniejącym klastrze?
 
 Aby zwiększyć ilość miejsca dostępnego dla komunikatów Kafka, można zwiększyć liczbę węzłów. Obecnie Dodawanie większej liczby dysków do istniejącego klastra nie jest obsługiwane.
+
+## <a name="can-a-kafka-cluster-work-with-databricks"></a>Czy klaster Kafka współpracuje z datakostki? 
+
+Tak, klastry Kafka mogą współpracować z kostkami, tak długo, jak znajdują się w tej samej sieci wirtualnej. Aby użyć klastra Kafka z kostkami danych, należy utworzyć sieć wirtualną z klastrem usługi HDInsight Kafka w tym obszarze, a następnie określić tę sieć wirtualną podczas tworzenia obszaru roboczego datakostki i użyć iniekcji sieci wirtualnej. Aby uzyskać więcej informacji, zobacz [wdrażanie Azure Databricks w Virtual Network platformy Azure (iniekcja sieci wirtualnej)](https://docs.microsoft.com/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject). Podczas tworzenia obszaru roboczego datakostki należy podać nazwy brokera Bootstrap klastra Kafka. Aby uzyskać informacje na temat pobierania nazw brokera Kafka, zobacz [pobieranie informacji o hoście Apache dozorcy i brokera](https://docs.microsoft.com/azure/hdinsight/kafka/apache-kafka-get-started#getkafkainfo).
 
 ## <a name="how-can-i-have-maximum-data-durability"></a>Jak mogę mieć maksymalną trwałość danych?
 

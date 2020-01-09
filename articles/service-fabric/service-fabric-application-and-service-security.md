@@ -1,25 +1,14 @@
 ---
-title: Dowiedz się więcej o usłudze Azure Service Fabric Application Security | Microsoft Docs
+title: Dowiedz się więcej o usłudze Azure Service Fabric Application Security
 description: Omówienie sposobu bezpiecznego uruchamiania aplikacji mikrousług na Service Fabric. Dowiedz się, jak uruchamiać usługi i skrypty uruchomieniowe w ramach różnych kont zabezpieczeń, uwierzytelniać i autoryzować użytkowników, zarządzać kluczami tajnymi aplikacji, zabezpieczać komunikację z usługą, korzystać z bramy interfejsu API i zabezpieczać dane aplikacji w stanie spoczynku.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: 4242a1eb-a237-459b-afbf-1e06cfa72732
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 03/16/2018
-ms.author: atsenthi
-ms.openlocfilehash: 75a82a0915414d24ab9c58ea15d3fdc9c1922c63
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 6c40bf66d1068310790d1440174eeb5b2a571154
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68600070"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452250"
 ---
 # <a name="service-fabric-application-and-service-security"></a>Service Fabric zabezpieczenia aplikacji i usługi
 Architektura mikrousług może przynieść [wiele korzyści](service-fabric-overview-microservices.md). Zarządzanie zabezpieczeniami mikrousług jest jednak wyzwaniem i innym niż zarządzanie tradycyjnymi aplikacjami litymi zabezpieczeń. 
@@ -32,13 +21,13 @@ Ten artykuł nie jest przewodnikiem w zakresie zabezpieczeń mikrousług, istnie
 Często konieczne jest, aby zasoby i interfejsy API udostępniane przez usługę były ograniczone do określonych zaufanych użytkowników lub klientów. Uwierzytelnianie to proces niezawodnego potwierdzania tożsamości użytkownika.  Autoryzacja to proces, w którym interfejsy API lub usługi są dostępne dla niektórych uwierzytelnionych użytkowników, ale nie do innych.
 
 ### <a name="authentication"></a>Authentication
-Pierwszym krokiem podejmowania decyzji zaufania na poziomie interfejsu API jest uwierzytelnianie. Uwierzytelnianie to proces niezawodnego potwierdzania tożsamości użytkownika.  W scenariuszach mikrousług uwierzytelnianie jest zazwyczaj obsługiwane centralnie. W przypadku korzystania z bramy interfejsu API można odciążyć [uwierzytelnianie](/azure/architecture/patterns/gateway-offloading) do bramy. W przypadku korzystania z tej metody upewnij się, że poszczególne usługi nie są dostępne bezpośrednio (bez bramy interfejsu API), chyba że dodatkowe zabezpieczenia są używane do uwierzytelniania komunikatów niezależnie od tego, czy pochodzą z bramy, czy nie.
+Pierwszym krokiem podejmowania decyzji zaufania na poziomie interfejsu API jest uwierzytelnianie. Uwierzytelnianie to proces niezawodnego potwierdzania tożsamości użytkownika.  W scenariuszach mikrousług uwierzytelnianie jest zazwyczaj obsługiwane centralnie. W przypadku korzystania z bramy interfejsu API można [odciążyć uwierzytelnianie](/azure/architecture/patterns/gateway-offloading) do bramy. W przypadku korzystania z tej metody upewnij się, że poszczególne usługi nie są dostępne bezpośrednio (bez bramy interfejsu API), chyba że dodatkowe zabezpieczenia są używane do uwierzytelniania komunikatów niezależnie od tego, czy pochodzą z bramy, czy nie.
 
 W przypadku uzyskiwania dostępu do usług można korzystać z usługi uwierzytelniania, takiej jak Azure Active Directory lub dedykowanej mikrousługi uwierzytelniania działającej jako usługa tokenu zabezpieczającego (STS) do uwierzytelniania użytkowników. Decyzje dotyczące zaufania są współużytkowane przez usługi z tokenami zabezpieczeń lub plikami cookie. 
 
 W przypadku ASP.NET Core podstawowy mechanizm [uwierzytelniania użytkowników](/dotnet/standard/microservices-architecture/secure-net-microservices-web-applications/) to ASP.NET Core system członkostwa tożsamości. ASP.NET Core Identity przechowuje informacje o użytkowniku (w tym informacje dotyczące logowania, role i oświadczenia) w magazynie danych skonfigurowanym przez dewelopera. Tożsamość ASP.NET Core obsługuje uwierzytelnianie dwuskładnikowe.  Dostawcy uwierzytelniania zewnętrznego są również obsługiwani, aby użytkownicy mogli logować się przy użyciu istniejących procesów uwierzytelniania od dostawców takich jak Microsoft, Google, Facebook lub Twitter.
 
-### <a name="authorization"></a>Authorization
+### <a name="authorization"></a>Autoryzacja
 Po uwierzytelnieniu usługi muszą autoryzować dostęp użytkowników lub określić, co użytkownik może zrobić. Ten proces umożliwia usłudze udostępnianie interfejsów API niektórym uwierzytelnionym użytkownikom, ale nie wszystkim. Autoryzacja jest prostopadła i niezależna od uwierzytelniania, która jest procesem upewniania się, kto jest użytkownikiem. Uwierzytelnianie może utworzyć jedną lub więcej tożsamości dla bieżącego użytkownika.
 
 [Autoryzację ASP.NET Core](/dotnet/standard/microservices-architecture/secure-net-microservices-web-applications/authorization-net-microservices-web-applications) można wykonać na podstawie ról użytkowników lub zasad niestandardowych, które mogą obejmować sprawdzanie oświadczeń lub innych algorytmów heurystycznych.

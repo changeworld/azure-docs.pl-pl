@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.topic: conceptual
 ms.date: 09/27/2019
-ms.openlocfilehash: 0b977cb9fe2df1627ad9a2e07b00ffb0e749ed39
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 39f22cc3cb026d4bed1dbe937e0e220b7bdceec7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498253"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435559"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>Konfigurowanie klastrów w usłudze HDInsight przy użyciu Apache Hadoop, Apache Spark, Apache Kafka i innych
 
@@ -57,7 +57,7 @@ Postępuj zgodnie z instrukcjami wyświetlanymi na ekranie. Poniżej przedstawio
 
 ## <a name="resource-group-name"></a>Nazwa grupy zasobów
 
-[Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) pomaga w pracy z zasobami w aplikacji jako grupą, nazywaną grupą zasobów platformy Azure. Można wdrożyć, zaktualizować, monitorować lub usunąć wszystkie zasoby aplikacji w ramach jednej skoordynowanej operacji.
+[Azure Resource Manager](../azure-resource-manager/management/overview.md) pomaga w pracy z zasobami w aplikacji jako grupą, nazywaną grupą zasobów platformy Azure. Można wdrożyć, zaktualizować, monitorować lub usunąć wszystkie zasoby aplikacji w ramach jednej skoordynowanej operacji.
 
 ## <a name="cluster-types"></a>Typy i konfiguracja klastra
 
@@ -108,7 +108,7 @@ Nazwa użytkownika SSH ma następujące ograniczenia:
 * Dozwolone znaki specjalne: _ i @
 * Znaki nie są dozwolone: #;. "',\/: '! *? $ (){}[] < > | &--= +% ~ ^ Space
 * Maksymalna długość: 64
-* Nazwy zastrzeżonych: Hadoop, users, Oozie, Hive, mapred, Ambari-pytań i odpowiedzi, dozorcy, tez, HDFS, Sqoop, przędzy, hcat, AMS, HBase, burza, administrator, administrator, użytkownik, Użytkownik1, test, TEST1, 123 user3 gość, Jan, właściciel, główny, serwer, SQL, pomoc techniczna, Support_388945a0, sys, TEST2, test3, user4, user5, Spark
+* Nazwy zastrzeżonych: Hadoop, users, Oozie, Hive, mapred, Ambari-pytań i odpowiedzi, dozorcy, tez, HDFS, Sqoop, przędzy, hcat, AMS, HBase, burza, administrator, administrator, użytkownik, Użytkownik1, test, TEST1, 123 user3 gość, Jan, właściciel, główny, serwer, SQL, pomoc techniczna, support_388945a0, sys, TEST2, test3, user4, user5, Spark
 
 Pakiet Enterprise Security Package umożliwia integrację usługi HDInsight z usługami Active Directory i Apache Ranger. Wielu użytkowników można utworzyć przy użyciu pakietu Enterprise Security.
 
@@ -123,7 +123,7 @@ Mimo że lokalna instalacja usługi Hadoop wykorzystuje rozproszony system plik�
 Klastry usługi HDInsight mogą korzystać z następujących opcji magazynu:
 
 * Usługa Azure Data Lake Storage 2. generacji
-* Usługa Azure Data Lake Storage 1. generacji
+* Azure Data Lake Storage 1. generacji
 * Usługa Azure Storage Ogólnego przeznaczenia v2
 * Usługa Azure Storage Ogólnego przeznaczenia wersja 1
 * Blokowy obiekt BLOB usługi Azure Storage (**obsługiwany tylko jako magazyn pomocniczy**)
@@ -187,10 +187,10 @@ Każdy typ klastra ma własną liczbę węzłów, terminologię dla węzłów i 
 
 | Typ | Węzły | Diagram |
 | --- | --- | --- |
-| Hadoop |Węzeł główny (2), węzeł procesu roboczego (1 +) |![Węzły klastra Hadoop usługi HDInsight](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-hadoop-cluster-type-nodes.png) |
+| Usługa Hadoop |Węzeł główny (2), węzeł procesu roboczego (1 +) |![Węzły klastra Hadoop usługi HDInsight](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-hadoop-cluster-type-nodes.png) |
 | HBase |Serwer głównych (2), serwer regionu (1 +), węzeł główny/dozorcy (3) |![Konfiguracja typu klastra HBase usługi HDInsight](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-hbase-cluster-type-setup.png) |
 | Storm |Węzeł Nimbus (2), serwer nadzorujący (1 +), węzeł dozorcy (3) |![Konfiguracja typu klastra burzy usługi HDInsight](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-storm-cluster-type-setup.png) |
-| platforma Spark |Węzeł główny (2), węzeł procesu roboczego (1 +), węzeł dozorcy (3) (bezpłatnie dla rozmiaru maszyny wirtualnej a1 dozorcy) |![Konfiguracja typu klastra Spark usługi HDInsight](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-spark-cluster-type-setup.png) |
+| Spark |Węzeł główny (2), węzeł procesu roboczego (1 +), węzeł dozorcy (3) (bezpłatnie dla rozmiaru maszyny wirtualnej a1 dozorcy) |![Konfiguracja typu klastra Spark usługi HDInsight](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-spark-cluster-type-setup.png) |
 
 Aby uzyskać więcej informacji, zobacz [domyślną konfigurację węzła i rozmiary maszyn wirtualnych dla klastrów](hdinsight-component-versioning.md#default-node-configuration-and-virtual-machine-sizes-for-clusters) w artykule "Jakie są składniki i wersje usługi Hadoop w usłudze HDInsight?".
 
@@ -254,21 +254,21 @@ Niektóre natywne składniki języka Java, takie jak Apache Mahout i kaskadowe, 
 
 Czasami podczas procesu tworzenia należy skonfigurować następujące pliki konfiguracji:
 
-* clusterIdentity. XML
-* pliku Core-site. XML
-* Gateway. XML
-* HBase-ENV. XML
-* HBase-site. XML
-* HDFS-site. XML
-* Hive-ENV. XML
-* Hive-site. XML
+* clusterIdentity.xml
+* core-site.xml
+* gateway.xml
+* hbase-env.xml
+* hbase-site.xml
+* hdfs-site.xml
+* hive-env.xml
+* hive-site.xml
 * mapred — lokacja
-* Oozie-site. XML
-* Oozie-ENV. XML
-* Storm-site. XML
-* tez-site. XML
-* webhcat-site. XML
-* Yarn-site. XML
+* oozie-site.xml
+* oozie-env.xml
+* storm-site.xml
+* tez-site.xml
+* webhcat-site.xml
+* yarn-site.xml
 
 Aby uzyskać więcej informacji, zobacz [Dostosowywanie klastrów usługi HDInsight przy użyciu narzędzia Bootstrap](hdinsight-hadoop-customize-cluster-bootstrap.md).
 

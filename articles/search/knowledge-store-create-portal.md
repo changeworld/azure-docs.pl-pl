@@ -7,13 +7,13 @@ ms.author: heidist
 manager: nitinme
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 11/04/2019
-ms.openlocfilehash: a8cc368b2949d9a65034ee4f989b8603dfa01027
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.date: 12/30/2019
+ms.openlocfilehash: cffd94459e3a18567f2ff2f6b8fca35598cb5eed
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533959"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75563471"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-knowledge-store-in-the-azure-portal"></a>Szybki Start: Tworzenie sklepu z bazami danych Azure Wyszukiwanie poznawcze w Azure Portal
 
@@ -22,9 +22,9 @@ ms.locfileid: "74533959"
 
 Sklep z bazami informacji to funkcja platformy Azure Wyszukiwanie poznawcze, która utrzymuje dane wyjściowe potoku umiejętności poznawcze dla kolejnych analiz lub przetwarzania podrzędnego. 
 
-Potok akceptuje obrazy i niestrukturalny tekst jako zawartość nieprzetworzona, stosuje AI do Cognitive Services (takich jak przetwarzanie obrazów i języka naturalnego) i tworzy wzbogaconą zawartość (nowe struktury i informacje) jako dane wyjściowe. Jednym z artefaktów fizycznych utworzonych w potoku jest [Magazyn wiedzy](knowledge-store-concept-intro.md), do którego można uzyskać dostęp za pomocą narzędzi, aby analizować i eksplorować zawartość.
+Potok akceptuje tekst bez struktury i obrazy jako nieprzetworzoną zawartość, stosuje AI do Cognitive Services (na przykład OCR, analiza obrazu i przetwarzanie języka naturalnego), wyodrębnia informacje i wyprowadza nowe struktury i informacje. Jednym z artefaktów fizycznych utworzonych w potoku jest [Magazyn wiedzy](knowledge-store-concept-intro.md), do którego można uzyskać dostęp za pomocą narzędzi, aby analizować i eksplorować zawartość.
 
-W tym przewodniku szybki start utworzysz usługi i dane w chmurze platformy Azure w celu utworzenia sklepu z bazami informacji. Gdy wszystko będzie na miejscu, uruchom kreatora **importowania danych** w portalu, aby ściągnąć wszystkie te elementy. Wynik końcowy jest oryginalny oraz zawartość wygenerowana przez AI, którą można wyświetlić w portalu ([Eksplorator magazynu](knowledge-store-view-storage-explorer.md)).
+W tym przewodniku szybki start utworzysz usługi i dane w chmurze platformy Azure w celu utworzenia sklepu z bazami informacji. Gdy wszystko będzie na miejscu, uruchom kreatora **importowania danych** w portalu, aby ściągnąć wszystkie te elementy. Wynik końcowy to oryginalna zawartość tekstowa oraz zawartość wygenerowana przez AI, którą można wyświetlić w portalu ([Eksplorator magazynu](knowledge-store-view-storage-explorer.md)).
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -38,13 +38,9 @@ Ze względu na to, że obciążenie jest małe, Cognitive Services jest wybieran
 
 1. [Utwórz konto usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal) lub [Znajdź istniejące konto](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/) w ramach bieżącej subskrypcji. Będziesz używać usługi Azure Storage do importowania nieprzetworzonej zawartości oraz magazynu wiedzy, który jest wynikiem końcowym.
 
-   Dla tego konta istnieją dwa wymagania:
+   Wybierz typ konta **StorageV2 (ogólnego przeznaczenia w wersji 2)** .
 
-   + Wybierz ten sam region co usługa Azure Wyszukiwanie poznawcze. 
-   
-   + Wybierz typ konta StorageV2 (ogólnego przeznaczenia w wersji 2). 
-
-1. Otwórz strony usługi BLOB Services i Utwórz kontener.  
+1. Otwórz strony usługi BLOB Services i Utwórz kontener o nazwie *"przeglądy hotelowe"* .
 
 1. Kliknij pozycję **Przekaż**.
 
@@ -54,9 +50,9 @@ Ze względu na to, że obciążenie jest małe, Cognitive Services jest wybieran
 
     ![Tworzenie kontenera obiektów blob platformy Azure](media/knowledge-store-create-portal/hotel-reviews-blob-container.png "Tworzenie kontenera obiektów blob platformy Azure")
 
-<!-- 1. You are almost done with this resource, but before you leave these pages, use a link on the left navigation pane to open the **Access Keys** page. Get a connection string to retrieve data from Blob storage. A connection string looks similar to the following example: `DefaultEndpointsProtocol=https;AccountName=<YOUR-ACCOUNT-NAME>;AccountKey=<YOUR-ACCOUNT-KEY>;EndpointSuffix=core.windows.net` -->
+1. Prawie zakończysz korzystanie z tego zasobu, ale zanim opuścisz te strony, Użyj linku w okienku nawigacji po lewej stronie, aby otworzyć stronę **klawisze dostępu** . Pobierz parametry połączenia, aby pobrać dane z magazynu obiektów BLOB. Parametry połączenia wyglądają podobnie jak w poniższym przykładzie: `DefaultEndpointsProtocol=https;AccountName=<YOUR-ACCOUNT-NAME>;AccountKey=<YOUR-ACCOUNT-KEY>;EndpointSuffix=core.windows.net`
 
-1. [Utwórz usługę Azure wyszukiwanie poznawcze](search-create-service-portal.md) lub [Znajdź istniejącą usługę](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices). Możesz użyć bezpłatnej usługi dla tego przewodnika Szybki Start.
+1. W portalu przejdź do usługi Azure Wyszukiwanie poznawcze. [Utwórz nową usługę](search-create-service-portal.md) lub [Znajdź istniejącą usługę](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices). Możesz użyć bezpłatnej usługi dla tego przewodnika Szybki Start.
 
 Teraz można przystąpić do przenoszenia Kreatora importu danych.
 
@@ -71,17 +67,18 @@ Na stronie Przegląd usługi wyszukiwania kliknij pozycję **Importuj dane** na 
 1. W obszarze **Nawiązywanie połączenia z danymi** wybierz opcję **Magazyn obiektów blob Azure**, a następnie wybierz konto i utworzony kontener. 
 1. W polu **Nazwa**wprowadź `hotel-reviews-ds`.
 1. W obszarze **tryb analizy**wybierz pozycję **Tekst rozdzielany**, a następnie zaznacz pole wyboru **pierwszy wiersz zawiera nagłówek** . Upewnij się, że **znak ogranicznika** jest przecinkiem (,).
-1. Wprowadź **Parametry połączenia** usługi magazynu zapisane w poprzednim kroku.
-1. W obszarze **nazwa kontenera**wprowadź `hotel-reviews`.
-1. Kliknij przycisk **Dalej: Dodaj wzbogacanie AI (opcjonalnie)** .
+1. W polu **Parametry połączenia**wklej parametry połączenia skopiowane ze strony **klucze dostępu** w usłudze Azure Storage.
+1. W polu **kontenery**wprowadź nazwę kontenera obiektów BLOB przechowującego dane.
 
-      ![Tworzenie obiektu źródła danych](media/knowledge-store-create-portal/hotel-reviews-ds.png "Tworzenie obiektu źródła danych")
+    Strona powinna wyglądać podobnie do poniższego zrzutu ekranu.
+
+    ![Tworzenie obiektu źródła danych](media/knowledge-store-create-portal/hotel-reviews-ds.png "Tworzenie obiektu źródła danych")
 
 1. Przejdź do następnej strony.
 
 ### <a name="step-2-add-cognitive-skills"></a>Krok 2. Dodawanie umiejętności poznawczych
 
-W tym kroku kreatora utworzysz zestawu umiejętności z wzbogacaniem umiejętności poznawczych. Umiejętności, których używamy w tym przykładzie, będą wyodrębniać kluczowe frazy i wykrywać język i tonacji. W późniejszym kroku te wzbogacania będą "zorganizowane" w sklepie z bazami danych jako tabele platformy Azure.
+W tym kroku kreatora utworzysz zestawu umiejętności z wzbogacaniem umiejętności poznawczych. Dane źródłowe składają się z przeglądów klienta w kilku językach. Umiejętności, które są istotne dla tego zestawu danych, obejmują wyodrębnianie kluczowych fraz i wykrywanie tonacji oraz tłumaczenie tekstu. W późniejszym kroku te wzbogacania będą "zorganizowane" w sklepie z bazami danych jako tabele platformy Azure.
 
 1. Rozwiń węzeł **Attach Cognitive Services**. Wartość **bezpłatna (ograniczone wzbogacania)** jest domyślnie zaznaczona. Możesz użyć tego zasobu, ponieważ liczba rekordów w HotelReviews-Free. CSV to 19, a ten bezpłatny zasób umożliwia maksymalnie 20 transakcji dziennie.
 1. Rozwiń węzeł **Dodawanie umiejętności poznawczych**.
@@ -90,7 +87,7 @@ W tym kroku kreatora utworzysz zestawu umiejętności z wzbogacaniem umiejętno�
 1. Aby uzyskać **poziom szczegółowości wzbogacenia**, wybierz pozycję **strony (fragmenty: 5000 znaków).**
 1. Wybierz następujące umiejętności poznawcze:
     + **Wyodrębnianie kluczowych fraz**
-    + **Wykryj język**
+    + **Tłumaczenie tekstu**
     + **Wykrywanie tonacji**
 
       ![Utwórz zestawu umiejętności](media/knowledge-store-create-portal/hotel-reviews-ss.png "Tworzenie zestawu umiejętności")
@@ -98,11 +95,13 @@ W tym kroku kreatora utworzysz zestawu umiejętności z wzbogacaniem umiejętno�
 1. Rozwiń pozycję **Zapisz wzbogacanie do sklepu merytorycznego**.
 1. Wprowadź **Parametry połączenia konta magazynu** zapisane w poprzednim kroku.
 1. Wybierz następujące **projekcje tabeli platformy Azure**:
-    + **Secret**
+    + **Dokumenty**
     + **Strony**
     + **Kluczowe frazy**
 
     ![Konfigurowanie sklepu merytorycznego](media/knowledge-store-create-portal/hotel-reviews-ks.png "Konfigurowanie sklepu merytorycznego")
+
+1. Opcjonalnie Pobierz szablon Power BI. Gdy uzyskujesz dostęp do szablonu za pomocą kreatora, plik Local. Pbit jest dostosowywany do odzwierciedlenia kształtu danych.
 
 1. Przejdź do następnej strony.
 
@@ -111,10 +110,7 @@ W tym kroku kreatora utworzysz zestawu umiejętności z wzbogacaniem umiejętno�
 W tym kroku kreatora skonfigurujesz indeks opcjonalnych zapytań wyszukiwania pełnotekstowego. Kreator posłuży do próbkowania źródła danych w celu wywnioskowania pól i typów danych. Musisz tylko wybrać atrybuty żądanego zachowania. Na przykład atrybut możliwy do **pobierania** zezwoli usłudze wyszukiwania na zwrócenie wartości pola, podczas gdy **przeszukiwanie** spowoduje włączenie wyszukiwania pełnotekstowego w polu.
 
 1. W obszarze **Nazwa indeksu**wprowadź `hotel-reviews-idx`.
-1. W przypadku atrybutów należy wybrać następujące opcje:
-    + Wybierz opcję **pobierania** dla wszystkich pól.
-    + Wybierz opcję z możliwością **filtrowania** i **kroju** dla tych pól: *tonacji*, *Język*, *frazy* kluczowe
-    + Wybierz opcję **wyszukiwania** dla tych pól: *miasto*, *Nazwa*, *reviews_text*, *Język*, *frazy* kluczowe
+1. W przypadku atrybutów Zaakceptuj wybór **domyślny: pobieranie** i **Wyszukiwanie** nowych pól tworzonych przez potok.
 
     Indeks powinien wyglądać podobnie do poniższej ilustracji. Ponieważ lista jest długa, nie wszystkie pola są widoczne na obrazie.
 

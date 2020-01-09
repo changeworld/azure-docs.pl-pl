@@ -1,47 +1,40 @@
 ---
-title: Zmienne środowiskowe w usłudze Azure Service Fabric | Dokumentacja firmy Microsoft
-description: Dokumentacja dotycząca usługi Service Fabric zmiennych środowiskowych
-documentationcenter: .net
+title: Zmienne środowiskowe Service Fabric platformy Azure
+description: Dowiedz się więcej na temat zmiennych środowiskowych w usłudze Azure Service Fabric. Zawiera odwołanie do pełnej listy zmiennych i ich użycia.
 author: mikkelhegn
-manager: msfussell
-editor: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: reference
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 12/07/2017
 ms.author: mikhegn
-ms.openlocfilehash: 1c8400898dba59f312ba9d994ee711a5e241973a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b13522b1d9f2acd2aa3f7923c1b623fab696056d
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60946726"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645688"
 ---
-# <a name="service-fabric-environment-variables"></a>Zmienne środowiskowe usługi Service Fabric
+# <a name="service-fabric-environment-variables"></a>Zmienne środowiskowe Service Fabric
 
-Usługa Service Fabric zawiera zmienne środowiskowe wbudowanych ustawione dla każdego wystąpienia usługi. Pełną listę zmiennych środowiskowych znajduje się poniżej:
+Service Fabric ma wbudowane zmienne środowiskowe ustawione dla każdego wystąpienia usługi. Pełna lista zmiennych środowiskowych jest poniżej:
 
 | Zmienna środowiskowa                         | Opis                                                            | Przykład                                                              |
 |----------------------------------------------|------------------------------------------------------------------------|----------------------------------------------------------------------|
-| Fabric_ApplicationName                       | Nazwa identyfikatora uri sieci szkieletowej aplikacji                                 | Service Fabric: / MyApplication                                                |
-| Fabric_CodePackageName                       | Nazwa pakietu kodu, do której należy ten proces              | Kod                                                                 |
-| Fabric_Endpoint\_IPOrFQDN\_*ServiceEndpointName*     | Adres ip lub nazwa FQDN punktu końcowego                                 | 10.0.0.1                                                     |
-| Fabric\_Endpoint\_*ServiceEndpointName*              | Numer portu dla punktu końcowego                                  | 8234                                                                 |
+| Fabric_ApplicationName                       | Nazwa identyfikatora URI sieci szkieletowej aplikacji                                 | Sieć szkieletowa:/moja aplikacja                                                |
+| Fabric_CodePackageName                       | Nazwa pakietu kodu, do którego należy proces              | Code                                                                 |
+| Fabric_Endpoint\_IPOrFQDN\_*ServiceEndpointName*     | Adres IP lub nazwa FQDN punktu końcowego                                 | 10.0.0.1                                                     |
+| Fabric\_Endpoint\_*ServiceEndpointName*              | Numer portu punktu końcowego                                  | 8234                                                                 |
 | Fabric_Folder_App_Log                        | Folder dziennika                                                             | C:\\\\Data\\\\_App\\\\_Node_0\\\\MyApplicationType_App12\\\\log      |
 | Fabric_Folder_App_Temp                       | Folder tymczasowy                                                            | C:\\\\Data\\\\_App\\\\_Node_0\\\\MyApplicationType_App12\\\\temp     |
 | Fabric_Folder_App_Work                       | Folder roboczy                                                            | C:\\\\Data\\\\_App\\\\_Node_0\\\\MyApplicationType_App12\\\\work     |
-| Fabric_Folder_Application                    | Folder główny aplikacji                                           | C:\\\\Data\\\\_App\\\\_Node_0\\\\MyApplicationType_App12             |
-| Fabric_IsContainerHost                       | Bool, określając, czy proces jest kontenerem                   | false                                                                |
-| Fabric_NodeId                                | Identyfikator węzła węzła, w którym jest uruchomiony proces                            | bf865279ba277deb864a976fbf4c200e                                     |
-| Fabric_NodeIPOrFQDN                          | Plik manifestu adresu IP lub nazwa FQDN węzła, jak określono w klastrze. | nazwy LocalHost ani 10.0.0.1                                                |
-| Fabric_NodeName                              | Nazwa węzła węzła, w którym jest uruchomiony proces                          | _Node_0                                                              |
-| Fabric_ServiceName                           | Nazwa identyfikatora uri sieci szkieletowej usługi, jeśli usługa jest hostowana w trybie ExclusiveProcess. Ta wartość zmiennej jest dostępna tylko w przypadku utworzenia usługi ServicePackageActivationMode ExclusiveProcess.  | Service Fabric: / MyApplication/Moja_usługa                                               |
+| Fabric_Folder_Application                    | Folder macierzysty aplikacji                                           | C:\\\\Data\\\\_App\\\\_Node_0\\\\MyApplicationType_App12             |
+| Fabric_IsContainerHost                       | Wartość logiczna określająca, czy proces jest kontenerem                   | false                                                                |
+| Fabric_NodeId                                | IDENTYFIKATOR węzła, w którym jest uruchomiony proces                            | bf865279ba277deb864a976fbf4c200e                                     |
+| Fabric_NodeIPOrFQDN                          | Adres IP lub nazwa FQDN węzła, jak określono w pliku manifestu klastra. | localhost lub 10.0.0.1                                                |
+| Fabric_NodeName                              | Nazwa węzła węzła, na którym jest uruchomiony proces.                          | _Node_0                                                              |
+| Fabric_ServiceName                           | Nazwa identyfikatora URI sieci szkieletowej usługi, jeśli usługa jest hostowana w trybie ExclusiveProcess. Ta wartość zmiennej jest dostępna tylko w przypadku tworzenia usługi za pomocą korzystanie ExclusiveProcess.  | Sieć szkieletowa:/aplikacje/moje usługi                                               |
 | Fabric_ServicePackageActivationId            | The ServicePackageActivationId                                         | IDENTYFIKATOR GUID                                                               |
-| Fabric_ServicePackageName                    | Nazwa pakietu z procesu jest częścią                     | Web1Pkg                                                              |
+| Fabric_ServicePackageName                    | Nazwa pakietu usługi, którego częścią jest proces                     | Web1Pkg                                                              |
 
-Zmienne środowiskowe wewnętrznego, używane przez środowisko uruchomieniowe usługi Service Fabric:
+Wewnętrzne zmienne środowiskowe używane przez Service Fabric środowiska uruchomieniowego:
 
 - Fabric_ApplicationHostId
 - Fabric_ApplicationHostType

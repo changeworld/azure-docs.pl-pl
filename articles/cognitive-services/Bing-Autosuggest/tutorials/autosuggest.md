@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
 ms.topic: tutorial
-ms.date: 09/13/2019
+ms.date: 12/17/2019
 ms.author: aahi
-ms.openlocfilehash: 1408faf09ef8950fb0d86f8a036269da2963e3d4
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: b6a8b0664cb205a7c3cbdb72f41433b145b02d00
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072836"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448766"
 ---
 # <a name="tutorial-get-search-suggestions-on-a-web-page"></a>Samouczek: uzyskiwanie sugestii wyszukiwania na stronie sieci Web
 
@@ -184,7 +184,7 @@ Przyjmuje dwa parametry: zawartość pola formularza HTML oraz klucz interfejsu 
 function bingAutosuggest(query, key) {
 ```
 
-Określ punkt końcowy interfejsu API automatycznego sugerowania Bing i zadeklaruj obiekt XMLHttpRequest, który będzie używany do wysyłania żądań do punktu końcowego.
+Określ punkt końcowy interfejs API automatycznego sugerowania Bing i Zadeklaruj obiekt XMLHttpRequest, który będzie używany do wysyłania żądań. Możesz użyć poniższego globalnego punktu końcowego lub niestandardowego punktu końcowego [poddomeny](../../../cognitive-services/cognitive-services-custom-subdomains.md) , który jest wyświetlany w Azure Portal dla zasobu.
 
 ```html
     var endpoint = "https://api.cognitive.microsoft.com/bing/v7.0/Suggestions";

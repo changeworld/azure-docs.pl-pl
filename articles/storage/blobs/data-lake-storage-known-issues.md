@@ -1,6 +1,6 @@
 ---
-title: Znane problemy dotyczące Azure Data Lake Storage Gen2 | Microsoft Docs
-description: Informacje o ograniczeniach i znanych problemach związanych z Azure Data Lake Storage Gen2
+title: Znane problemy związane z usługi Azure Data Lake Storage Gen2 | Dokumentacja firmy Microsoft
+description: Dowiedz się więcej o ograniczeniach i znanych problemach, za pomocą usługi Azure Data Lake Storage Gen2
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 7fac09ff236e4bb2c63691f9dc1ad41bb49edae4
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 099dc723db44ba71fc4672c382d24ac93ffe742f
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793350"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75689144"
 ---
-# <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Znane problemy z Azure Data Lake Storage Gen2
+# <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Znane problemy związane z usługi Azure Data Lake Storage Gen2
 
 W tym artykule wymieniono funkcje i narzędzia, które nie są jeszcze obsługiwane lub są obsługiwane tylko częściowo w przypadku kont magazynu, które mają hierarchiczną przestrzeń nazw (Azure Data Lake Storage Gen2).
 
@@ -50,12 +50,13 @@ Niezarządzane dyski maszyny wirtualnej nie są obsługiwane na kontach z hierar
 
 ## <a name="filesystem-support-in-sdks"></a>Obsługa systemu plików w zestawach SDK
 
-- Programy .NET, Java i Python są dostępne w publicznej wersji zapoznawczej. Inne zestawy SDK nie są obecnie obsługiwane.
-- Operacje get i Set list ACL nie są obecnie cykliczne.
+- Obsługa [platform .NET](data-lake-storage-directory-file-acl-dotnet.md), [Java](data-lake-storage-directory-file-acl-java.md) i [Python](data-lake-storage-directory-file-acl-python.md) znajduje się w publicznej wersji zapoznawczej. Inne zestawy SDK nie są obecnie obsługiwane.
+- Operacje pobierania i ustawiania listy ACL nie są obecnie cykliczne.
 
 ## <a name="filesystem-support-in-powershell-and-azure-cli"></a>Obsługa systemu plików w programie PowerShell i interfejsie wiersza polecenia platformy Azure
 
-Operacje get i Set list ACL nie są obecnie cykliczne.
+- Obsługa [programu PowerShell](data-lake-storage-directory-file-acl-powershell.md) i [interfejsu wiersza polecenia platformy Azure](data-lake-storage-directory-file-acl-cli.md) znajduje się w publicznej wersji zapoznawczej.
+- Operacje pobierania i ustawiania listy ACL nie są obecnie cykliczne.
 
 ## <a name="support-for-other-blob-storage-features"></a>Obsługa innych funkcji Blob Storage
 
@@ -63,6 +64,7 @@ W poniższej tabeli wymieniono wszystkie inne funkcje i narzędzia, które nie s
 
 | Funkcja/narzędzie    | Więcej informacji    |
 |--------|-----------|
+| **Tryb failover konta** |Jeszcze nieobsługiwane|
 | **Narzędzie AzCopy** | Obsługa specyficzna dla wersji <br><br>Użyj tylko najnowszej wersji AzCopy ([AzCopy v10](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2ftables%2ftoc.json)). Wcześniejsze wersje AzCopy, takie jak AzCopy v 8.1, nie są obsługiwane.|
 | **Zasady zarządzania cyklem życia Blob Storage platformy Azure** | Zasady zarządzania cyklem życia są obsługiwane (wersja zapoznawcza).  Obsługiwane są wszystkie warstwy dostępu. Warstwa dostępu archiwalnego jest obecnie w wersji zapoznawczej. Usuwanie migawek obiektów BLOB nie jest jeszcze obsługiwane. <br><br> Obecnie niektóre usterki mają wpływ na zasady zarządzania cyklem życia i warstwę dostępu archiwizowania.  Utwórz konto w wersji zapoznawczej zasad zarządzania cyklem życia i zarchiwizuj warstwę dostępu w [tym miejscu](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2EUNXd_ZNJCq_eDwZGaF5VURjFLTDRGS0Q4VVZCRFY5MUVaTVJDTkROMi4u).   |
 | **Azure Content Delivery Network (CDN)** | Jeszcze nieobsługiwane|
@@ -76,7 +78,7 @@ W poniższej tabeli wymieniono wszystkie inne funkcje i narzędzia, które nie s
 | **Niezmienny magazyn** |Jeszcze nieobsługiwane <br><br>Niezmienny magazyn umożliwia przechowywanie danych w [robaku (zapis jeden raz, odczyt wielu)](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutable-storage) .|
 | **Warstwy na poziomie obiektów** |Obsługiwane są warstwy chłodna i archiwalna. Warstwa archiwum jest w wersji zapoznawczej. Wszystkie inne warstwy dostępu nie są jeszcze obsługiwane. <br><br> Obecnie niektóre usterki mają wpływ na warstwę dostępu archiwizowania.  Utwórz konto w wersji zapoznawczej warstwy dostępu archiwalnego w [tym miejscu](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2EUNXd_ZNJCq_eDwZGaF5VURjFLTDRGS0Q4VVZCRFY5MUVaTVJDTkROMi4u).|
 | **Statyczne witryny sieci Web** |Jeszcze nieobsługiwane <br><br>W oddzielnym zakresie możliwość obsługiwania plików do [statycznych witryn sieci Web](https://docs.microsoft.com/azure/storage/blobs/storage-blob-static-website).|
-| **Aplikacje innych firm** | Ograniczona pomoc techniczna <br><br>Aplikacje innych firm, które używają interfejsów API REST do pracy, będą nadal działały, jeśli są używane z Data Lake Storage Gen2. <br>Aplikacje wywołujące interfejsy API obiektów BLOB prawdopodobnie będą działały.|
+| **Aplikacje innych firm** | Ograniczona obsługa <br><br>Aplikacje innych firm, które używają interfejsów API REST do pracy, będą nadal działały, jeśli są używane z Data Lake Storage Gen2. <br>Aplikacje wywołujące interfejsy API obiektów BLOB prawdopodobnie będą działały.|
 |**Usuwanie nietrwałe** |Jeszcze nieobsługiwane|
 | **Funkcje obsługi wersji** |Jeszcze nieobsługiwane <br><br>Dotyczy to również [usuwania nietrwałego](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete)oraz innych funkcji przechowywania wersji, takich jak [migawki](https://docs.microsoft.com/rest/api/storageservices/creating-a-snapshot-of-a-blob).|
 

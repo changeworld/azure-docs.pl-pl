@@ -4,16 +4,16 @@ description: W tym artykule dowiesz się, jak przywrócić dane przechowywane na
 ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 09/07/2018
-ms.openlocfilehash: 4d663739f25762723fc3a8f566c4b5ef3f957338
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: e12596b496483b872f76ccd610fd70710327b586
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172783"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450029"
 ---
 # <a name="restore-files-to-windows-by-using-the-azure-resource-manager-deployment-model"></a>Przywracanie plików do systemu Windows przy użyciu modelu wdrażania Azure Resource Manager
 
-W tym artykule wyjaśniono, jak przywrócić dane z magazynu kopii zapasowych. Aby przywrócić dane, użyj Kreatora odzyskiwania danych w agencie Microsoft Azure Recovery Services (MARS). Możesz:
+W tym artykule wyjaśniono, jak przywrócić dane z magazynu kopii zapasowych. Aby przywrócić dane, użyj Kreatora odzyskiwania danych w agencie Microsoft Azure Recovery Services (MARS). Przekonaj się:
 
 * Przywróć dane do tego samego komputera, z którego wykonano kopie zapasowe.
 * Przywracanie danych do alternatywnej maszyny.
@@ -21,7 +21,7 @@ W tym artykule wyjaśniono, jak przywrócić dane z magazynu kopii zapasowych. A
 Za pomocą funkcji natychmiastowego przywracania można zainstalować zapisywalną migawkę punktu odzyskiwania jako wolumin odzyskiwania. Następnie można eksplorować wolumin odzyskiwania i kopiować pliki na komputer lokalny, a tym samym wybiórczo przywracając pliki.
 
 > [!NOTE]
-> [Aktualizacja Azure Backup stycznia 2017](https://support.microsoft.com/help/3216528?preview) jest wymagana, jeśli chcesz użyć natychmiastowego przywracania do przywracania danych. Ponadto dane kopii zapasowej muszą być chronione w magazynach lokalnych wymienionych w artykule dotyczącym pomocy technicznej. Zapoznaj się z [aktualizacją Azure Backup stycznia 2017](https://support.microsoft.com/help/3216528?preview) , aby uzyskać najnowszą listę ustawień regionalnych, które obsługują natychmiastowe przywracanie.
+> [Aktualizacja Azure Backup stycznia 2017](https://support.microsoft.com/help/3216528/azure-backup-update-for-microsoft-azure-recovery-services-agent-januar) jest wymagana, jeśli chcesz użyć natychmiastowego przywracania do przywracania danych. Ponadto dane kopii zapasowej muszą być chronione w magazynach lokalnych wymienionych w artykule dotyczącym pomocy technicznej. Zapoznaj się z [aktualizacją Azure Backup stycznia 2017](https://support.microsoft.com/help/3216528/azure-backup-update-for-microsoft-azure-recovery-services-agent-januar) , aby uzyskać najnowszą listę ustawień regionalnych, które obsługują natychmiastowe przywracanie.
 >
 
 W Azure Portal należy używać natychmiastowego przywracania Recovery Services magazynów. Jeśli dane są przechowywane w magazynach kopii zapasowych, zostały one przekonwertowane do magazynów Recovery Services. Jeśli chcesz użyć natychmiastowego przywracania, Pobierz aktualizację MARS i postępuj zgodnie z procedurami, które wymieniają natychmiastowe przywracanie.

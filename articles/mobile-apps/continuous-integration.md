@@ -7,62 +7,62 @@ ms.service: vs-appcenter
 ms.topic: article
 ms.date: 10/22/2019
 ms.author: emalani
-ms.openlocfilehash: 07e8e0edc4638c6c0bf9acc205175aa731c0f8bc
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 9b0a9e10a88836ce83e636db20180c3692ab4429
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72795551"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453190"
 ---
 # <a name="automate-the-lifecycle-of-your-apps-with-continuous-build-and-integration"></a>Automatyzuj cykl życia aplikacji dzięki ciągłej kompilacji i integracji
 
-Deweloperzy mogą napisać kod i zaewidencjonować go do repozytorium kodu, ale zatwierdzenia, które zaewidencjonowano w repozytorium, nie zawsze są spójne. Dzięki wielu deweloperom pracującym nad tym samym projektem, problemy są rozwiązane z integracją, a zespół mógłby działać w sytuacjach, gdy nie działają, błędy piling się, a rozwój projektu jest opóźniony. Deweloperzy muszą czekać, aż cały kod oprogramowania zostanie skompilowany i przetestowany w celu sprawdzenia pod kątem błędów, co sprawia, że proces jest powolny i mniej iteracyjny. 
+Deweloperzy mogą napisać kod i sprawdzać go w repozytorium kodu, ale zatwierdzenia, które zaewidencjonowano, nie zawsze są spójne. Gdy wielu deweloperów pracuje nad tym samym projektem, problemy mogą być zintegrowane z integracją. Zespoły mogą działać w sytuacjach, w których nie działają, które są błędne, a rozwój projektu jest opóźniony. Deweloperzy muszą czekać, aż cały kod oprogramowania zostanie skompilowany i przetestowany w celu sprawdzenia pod kątem błędów, co sprawia, że proces jest powolny i mniej iteracyjny. 
 
-Dzięki **ciągłej kompilacji i integracji**deweloperzy mogą uprościć Kompilowanie i testowanie kodu przez nie tylko zatwierdzanie zmian w repozytorium kodu źródłowego, ale także umieszczanie testów i weryfikacji w środowisku kompilacji, aby były zawsze uruchamiane testuje kod. Wszystkie zmiany wprowadzone w kodzie źródłowym są ciągle kompilowane zawsze wtedy, gdy istnieje zatwierdzenie dokonane w repozytorium. Po każdym zaewidencjonowaniu serwer CI sprawdza poprawność i wykonuje każdy test utworzony przez dewelopera. Jeśli testy nie zachodzą, kod jest wysyłany ponownie w celu wprowadzenia dalszych zmian. Dzięki temu deweloper nie może rozbić utworzonych kompilacji, a także nie uruchamiać wszystkich testów lokalnie na komputerze, co z kolei zwiększa produktywność deweloperów. 
+Dzięki ciągłej kompilacji i integracji deweloperzy mogą uprościć kompilacje i przetestować swój kod przez zatwierdzenie zmian w repozytorium kodu źródłowego i umieszczenie testów i weryfikacji w środowisku kompilacji. W ten sposób są zawsze uruchamiane testy względem ich kodu. Wszystkie zmiany wprowadzone w kodzie źródłowym są tworzone w sposób ciągły zawsze, gdy istnieje zatwierdzenie dokonane w repozytorium. Po każdym zaewidencjonowaniu serwer ciągłej integracji sprawdza poprawność i wykonuje każdy test utworzony przez dewelopera. Jeśli testy nie zachodzą, kod jest wysyłany ponownie w celu wprowadzenia dalszych zmian. W ten sposób deweloperzy nie łamią utworzonych kompilacji. Nie muszą również uruchamiać wszystkich testów lokalnie na swoich komputerach, co zwiększa produktywność deweloperów. 
 
 ## <a name="key-benefits"></a>Najważniejsze korzyści
-- **Zautomatyzowany** potok kompilowania, testowania i wdrażania.
-- Szybko **wykrywaj usterki i naprawiaj problemy,** aby zapewnić szybsze kursy wydania.
-- **Zatwierdź kod** częściej i szybko Twórz aplikacje.
-- **Elastyczność** umożliwiająca szybkie zmienianie kodu bez jakichkolwiek problemów.
-- Skrócenie **czasu wprowadzenia na rynek** gwarantuje, że tylko kod dobrej jakości będzie cały czas.
-- **Niewielkie zmiany kodu** , ponieważ umożliwiają one integrację małych fragmentów kodu w tym samym czasie.
-- **Zwiększenie przejrzystości zespołu i odpowiedzialności** pozwala uzyskać **ciągłą opinię** nie tylko od klientów, ale również Twojego zespołu.
+- Automatyzuj kompilacje, testy i wdrożenia dla potoków.
+- Szybko wykrywaj usterki i naprawiaj problemy, aby zapewnić szybsze kursy wydania.
+- Zatwierdź kod częściej i szybko Twórz aplikacje.
+- Szybko zmieniaj kod bez jakichkolwiek problemów.
+- Krótszy czas wprowadzenia na rynek, dzięki czemu tylko kod dobry zapewnia, że jest to cały sposób.
+- Zwiększaj efektywność małych fragmentów kodu, ponieważ w tym samym czasie są zintegrowane małe fragmenty kodu.
+- Zwiększ przejrzystość zespołu i odpowiedzialność, aby uzyskać ciągłą opinię od klientów i Twojego zespołu.
 
 Użyj następujących usług, aby włączyć potok ciągłej integracji w aplikacjach mobilnych.
 
 ## <a name="visual-studio-app-center"></a>Centrum aplikacji programu Visual Studio
-Usługa [App Center Build](/appcenter/build/) pomaga tworzyć aplikacje natywne i Międzyplatformowe, nad którymi pracuje zespół, przy użyciu bezpiecznej infrastruktury chmurowej. Możesz łatwo połączyć swoje repozytorium w App Center i rozpocząć Kompilowanie aplikacji w chmurze na każdym zatwierdzeniu, bez konieczności zajmowania się konfiguracją serwerów kompilacji lokalnie, skomplikowane konfiguracje i kod, który kompiluje się na komputerze współpracownika, ale nie.
+[Kompilacja App Center](/appcenter/build/) pomaga tworzyć aplikacje natywne i Międzyplatformowe, nad którymi pracuje zespół przy użyciu bezpiecznej infrastruktury chmurowej. Repozytorium można łatwo połączyć w Visual Studio App Center i rozpocząć tworzenie aplikacji w chmurze na każdym zatwierdzeniu. Nie musisz martwić się o Konfigurowanie serwerów kompilacji lokalnie, skomplikowane konfiguracje i kod, który kompiluje na komputerze współpracownika, ale nie.
 
-Dzięki dodaniu mocy usług App Center można dodatkowo zautomatyzować przepływ pracy. Automatycznie wydawanie kompilacji dla testerów i publicznych sklepów z aplikacjami za pomocą App Center dystrybucji lub uruchamiania zautomatyzowanych testów interfejsu użytkownika na tysiącach rzeczywistych konfiguracji urządzeń i systemów operacyjnych w chmurze z testowaniem App Center.
+Dzięki dodaniu mocy usług Visual Studio App Center można dodatkowo zautomatyzować przepływ pracy. Możesz automatycznie wydać kompilacje dla testerów i publicznych sklepów z aplikacjami za pomocą dystrybucji App Center. Możesz również uruchamiać zautomatyzowane testy interfejsu użytkownika na tysiącach rzeczywistych konfiguracji urządzeń i systemów operacyjnych w chmurze za pomocą testu App Center.
 
 **Najważniejsze funkcje**
-- **Skonfiguruj ciągłą integrację** w kilka minut i szybciej Twórz aplikacje.
-- Integruj się z usługami **GitHub, BitBucket, Azure DevOps i GitLab**.
-- **Szybkie i bezpieczne kompilacje** na zarządzanych maszynach hostowanych w chmurze.
-- **Zezwól na kompilacje w celu "uruchomienia testu"** i sprawdź, czy aplikacja jest oparta na rzeczywistych urządzeniach z systemami iOS i Android.
-- **Obsługa natywnych i międzyplatformowych** — iOS, Android, MacOS, Windows, Xamarin, reagowanie na natywne.
-- **Dostosuj kompilacje** , dodając skrypty po kompilacji, które są wykonywane przed kompilacją i po kompilacji.
+- Skonfiguruj ciągłą integrację w kilka minut i szybciej Twórz aplikacje.
+- Integruj się z usługami GitHub, BitBucket, Azure DevOps i GitLab.
+- Twórz szybkie i bezpieczne kompilacje na zarządzanych maszynach hostowanych w chmurze.
+- Zezwól na uruchamianie testów i sprawdź, czy aplikacja jest oparta na rzeczywistych urządzeniach z systemami iOS i Android.
+- Korzystaj z natywnej i międzyplatformowej obsługi dla systemów iOS, Android, macOS, Windows, Xamarin i reaguj natywnie.
+- Dostosuj kompilacje, dodając skrypty po kompilacji, które są wykonywane przed kompilacją i po kompilacji.
 
-**Wołują**
-- [Zarejestruj się w usłudze App Center](https://appcenter.ms/signup?utm_source=Mobile%20Development%20Docs&utm_medium=Azure&utm_campaign=New%20azure%20docs)
+**Odwołania**
+- [Zarejestruj się w usłudze Visual Studio App Center](https://appcenter.ms/signup?utm_source=Mobile%20Development%20Docs&utm_medium=Azure&utm_campaign=New%20azure%20docs)
 - [Wprowadzenie do kompilacji App Center](/appcenter/build/)
 
 ## <a name="azure-pipelines"></a>Azure Pipelines
- [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/), usługa na platformie Azure DevOps, to w pełni funkcjonalne usługi ciągłej integracji (ci) i ciągłe dostarczanie (CD), które współdziałają z preferowanym dostawcą usługi git, i mogą wdrożyć w większości najważniejszych usług w chmurze, w tym na platformie Azure. Możesz zacząć od kodu w usłudze GitHub, w witrynie GitHub Enterprise Server, GitLab, BitBucket Cloud lub Azure Repos. Następnie można zautomatyzować kompilowanie, testowanie i wdrażanie kodu w celu Microsoft Azure, Google Cloud Platform lub Amazon Web Services.
+ [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/), usługa na platformie Azure DevOps, to w pełni oferowana usługa ciągłej integracji i ciągłego dostarczania, która współpracuje z preferowanym dostawcą usługi git. Można wdrożyć w większości najważniejszych usług w chmurze, w tym na platformie Azure. Możesz zacząć od kodu w usłudze GitHub, w witrynie GitHub Enterprise Server, GitLab, BitBucket Cloud lub Azure Repos. Następnie można zautomatyzować kompilowanie, testowanie i wdrażanie kodu w celu Microsoft Azure, Google Cloud Platform lub Amazon Web Services (AWS).
 
 **Najważniejsze funkcje**
-- Uproszczone środowisko oparte na zadaniach służące do konfigurowania serwera CI dla aplikacji mobilnych zarówno natywnych (Android, iOS i Windows), jak i dla wielu platform (platformy Xamarin, Cordova i reakcji natywnych), a także do serwera z systemem Microsoft i innym niż Microsoft (Node. js, Java) informacyjn.
-- **Wszystkie aplikacje języka, platformy i chmury, które są używane** do kompilowania, testowania i wdrażania aplikacji node. js, Python, Java, php, RubyC++, C#go, C/,, Android i iOS. Uruchamiaj zadania równolegle w systemach Linux, macOS i Windows. Wdrażaj do dostawców chmury, takich jak Azure, AWS i GCP. Dystrybuuj aplikacje mobilne za poorednictwem kanałów beta i sklepów z aplikacjami.
-- **Obsługa kontenerów natywnych** — tworzenie nowych kontenerów z łatwością i wypychanie ich do dowolnego rejestru. Wdróż kontenery na niezależnych hostach lub Kubernetes.
-- **Zaawansowane przepływy pracy** — proste tworzenie łańcucha i wieloetapowe kompilacje. Obsługa YAML, integracja z testowaniem, bramy wydań, raportowanie i inne informacje.
-- **Rozszerzalne** — korzystaj z wielu zadań kompilowania, testowania i wdrażania utworzonych przez społeczność — setki rozszerzeń od zapasu do SonarCloud. Możesz nawet wdrażać z innych systemów CI, takich jak Jenkins, i korzystać z elementów webhook i interfejsów API REST, aby ułatwić integrację
-- **Bezpłatne kompilacje hostowane w chmurze** dla repozytoriów publicznych i prywatnych.
-- **Obsługuje wdrażanie do innych dostawców chmury** , takich jak Amazon Web Services, Google Cloud Platform itp.
+- **Uproszczone środowisko oparte na zadaniach służące do konfigurowania serwera Ci:** Skonfiguruj serwer CI dla natywnych (Android, iOS i Windows) i międzyplatformowych aplikacji mobilnych (Xamarin, Cordova i reaguj natywnie), oprócz technologii serwerowych firmy Microsoft i innych firm (Node. js, Java).
+- **Dowolny język, platforma i chmura:** Kompiluj, Testuj i wdrażaj aplikacje Node. js, Python, Java, php, Ruby, go, CC++/ C#,, Android i iOS. Uruchamiaj zadania równolegle w systemach Linux, macOS i Windows. Wdrażaj do dostawców chmury, takich jak Azure, AWS i Google Cloud Platform. Dystrybuuj aplikacje mobilne za poorednictwem kanałów beta i sklepów z aplikacjami.
+- **Obsługa kontenera macierzystego:** Łatwo twórz nowe kontenery i wypchnij je do dowolnego rejestru. Wdróż kontenery na niezależnych hostach lub Kubernetes.
+- **Zaawansowane przepływy pracy:** Łatwo twórz łańcuchy kompilacji i kompilacje wieloetapowe. Uzyskaj pomoc techniczną dotyczącą YAML, integracji testów, bram wydań, raportowania i nie tylko.
+- **Rozszerzalne:** Korzystaj z wielu zadań kompilowania, testowania i wdrażania utworzonych przez społeczność, które obejmują setki rozszerzeń od zapasu do SonarCloud. Można nawet wdrożyć z innych systemów CI, takich jak Jenkins. Elementy webhook i interfejsy API REST mogą ułatwić integrację.
+- **Bezpłatne kompilacje hostowane w chmurze:** Te kompilacje są dostępne dla repozytoriów publicznych i prywatnych.
+- **Obsługa wdrożenia innym dostawcom chmury:** Dostawcy obejmują AWS i Google Cloud Platform.
 
-**Wołują**
+**Odwołania**
 - [Wprowadzenie do przewodnika Azure Pipelines](/azure/devops/pipelines/get-started/pipelines-get-started?view=azure-devops)
 - [Rozpoczynanie pracy z usługą Azure DevOps](https://app.vsaex.visualstudio.com/signup/) 
 - [Przewodniki Szybki start](/azure/devops/pipelines/create-first-pipeline?view=azure-devops&tabs=tfs-2018-2)
 
-W celu wybrania odpowiedniej usługi dla kompilacji aplikacji postępuj zgodnie z artykułem, który porównuje [App Center kompilacja a Azure Pipelines](/appcenter/build/choose-between-services).
+Aby ułatwić wybór odpowiedniej usługi dla kompilacji aplikacji, zapoznaj się z artykułem, który porównuje [App Center kompilacja a Azure Pipelines](/appcenter/build/choose-between-services).

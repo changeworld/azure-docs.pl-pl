@@ -1,24 +1,14 @@
 ---
 title: Wyświetl metryki w czasie rzeczywistym za pomocą Azure Monitor dla kontenerów | Microsoft Docs
 description: W tym artykule opisano widok metryk w czasie rzeczywistym bez używania polecenia kubectl z Azure Monitor for Containers.
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: azure-monitor
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 10/15/2019
-ms.author: magoedte
-ms.openlocfilehash: 4608058d347888ab77bd4303600f00b270d6fed5
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: fbb08a8ed3deeff061065916241ee2d724603be3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73514604"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75404931"
 ---
 # <a name="how-to-view-metrics-in-real-time"></a>Jak wyświetlać metryki w czasie rzeczywistym
 
@@ -34,7 +24,7 @@ Ten artykuł zawiera szczegółowe omówienie i pomaga zrozumieć, jak korzysta�
 
 Aby uzyskać pomoc dotyczącą konfigurowania lub rozwiązywania problemów dotyczących danych na żywo (wersja zapoznawcza), zapoznaj się z naszym [przewodnikiem Instalatora](container-insights-livedata-setup.md).
 
-## <a name="how-it-works"></a>Jak to działa 
+## <a name="how-it-works"></a>Zasada działania 
 
 Funkcja dane dynamiczne (wersja zapoznawcza) bezpośrednio uzyskuje dostęp do interfejsu API Kubernetes. dodatkowe informacje o modelu uwierzytelniania można znaleźć [tutaj](https://kubernetes.io/docs/concepts/overview/kubernetes-api/). 
 

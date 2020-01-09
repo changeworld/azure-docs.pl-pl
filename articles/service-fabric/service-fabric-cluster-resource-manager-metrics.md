@@ -1,95 +1,86 @@
 ---
-title: Zarządzanie obciążenia aplikacji usługi Azure Service Fabric przy użyciu metryk | Dokumentacja firmy Microsoft
-description: Więcej informacji na temat sposobu konfigurowania i używania metryki w usłudze Service Fabric do użycia zasobów usługi zarządzania.
-services: service-fabric
-documentationcenter: .net
+title: Zarządzanie ładowaniem aplikacji Azure Service Fabric przy użyciu metryk
+description: Informacje na temat konfigurowania i używania metryk w Service Fabric do zarządzania użyciem zasobów usługi.
 author: masnider
-manager: chackdan
-editor: ''
-ms.assetid: 0d622ea6-a7c7-4bef-886b-06e6b85a97fb
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 1a61de6b0b6f73e112dd69108272ded3a67497e8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ea21502cdab35b261e20af7f23b7b522f77c6667
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60516763"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75451994"
 ---
-# <a name="managing-resource-consumption-and-load-in-service-fabric-with-metrics"></a>Zarządzanie zużycia zasobów i obciążenia w usłudze Service Fabric za pomocą metryk
-*Metryki* są zasoby, które swoje najważniejsze usługi informacje, które są dostarczane przez węzły w klastrze. Metryka to wszystkich elementów, które mają być zarządzane, aby zwiększyć lub monitorowanie wydajności usługi. Na przykład może obserwować zużycie pamięci, aby dowiedzieć się, jeśli usługa jest przeciążony. Innym zastosowaniem jest ustalenie, czy usługa może przenieść innym miejscu, gdzie pamięci jest mniejsza ograniczonego w celu uzyskania lepszej wydajności.
+# <a name="managing-resource-consumption-and-load-in-service-fabric-with-metrics"></a>Zarządzanie zużyciem zasobów i obciążeniem Service Fabric przy użyciu metryk
+*Metryki* to zasoby, których dotyczą usługi i które są udostępniane przez węzły w klastrze. Metryka to wszystko, co chcesz zarządzać, aby zwiększyć lub monitorować wydajność usług. Na przykład możesz obserwować użycie pamięci, aby dowiedzieć się, czy usługa jest przeciążona. Innym rozwiązaniem jest określenie, czy usługa może zostać przeniesiona w innym miejscu, w którym ilość pamięci jest mniej ograniczona, aby uzyskać lepszą wydajność.
 
-Np. pamięci, dysku i procesora CPU są przykładami metryki. Te metryki są metryki fizycznych, zasoby, które odnoszą się do zasobów fizycznych na węzeł, który muszą być zarządzane. Metryki można też (i często są) miar logiczne. Metryki logiczne są elementów, takich jak "MyWorkQueueDepth" lub "MessagesToProcess" lub "TotalRecords". Metryki logiczne są zdefiniowane przez aplikację i pośrednio odpowiadają użycie niektórych zasobów fizycznych. Miar logiczne są powszechne, ponieważ może być trudne do miary i raport użycia zasobów fizycznych na podstawie za daną usługę. Złożoność pomiaru i raportowania metryk fizycznego jest też, dlaczego Usługa Service Fabric udostępnia kilka domyślnych metryk.
+Takie jak pamięć, dysk i użycie procesora są przykładowe metryki. Te metryki to metryki fizyczne, zasoby odpowiadające zasobom fizycznym w węźle, który musi być zarządzany. Metryki mogą być również (i często) metryki logiczne. Metryki logiczne są takie jak "MyWorkQueueDepth" lub "MessagesToProcess" lub "TotalRecords". Metryki logiczne są zdefiniowane przez aplikację i pośrednio odpowiadają pewnemu zużyciu zasobów fizycznych. Metryki logiczne są wspólne, ponieważ mogą być trudne do mierzenia i raportowania zużycia zasobów fizycznych na podstawie poszczególnych usług. Ze względu na złożoność mierzenia i raportowania własnych metryk fizycznych jest również Service Fabric udostępniają pewne metryki domyślne.
 
 ## <a name="default-metrics"></a>Domyślne metryki
-Załóżmy, że chcesz rozpocząć pisanie i wdrażanie usługi. Na tym etapie nie wiadomo, jakie zasoby fizyczne lub logiczne zużywa. To świetnie! Menedżer zasobów klastra usługi Service Fabric używa niektóre metryki domyślnej, jeśli określono nie innych metryk. Oto one:
+Załóżmy, że chcesz zacząć pisać i wdrażać usługę. W tym momencie nie wiesz, jakie zasoby fizyczne lub logiczne zużywają. To dobrze! Klaster Service Fabric Menedżer zasobów używa pewnych metryk domyślnych, gdy nie zostaną określone żadne inne metryki. Oto one:
 
-  - PrimaryCount — liczba replikami podstawowymi na węzeł 
-  - ReplicaCount - liczba całkowita stanowych replik w węźle
-  - Liczba — łącznej liczby wszystkich obiektów usługi (stanowe i bezstanowe) w węźle
+  - PrimaryCount — liczba replik podstawowych w węźle 
+  - ReplicaCount — liczba całkowitych replik stanowych w węźle
+  - Liczba — liczba wszystkich obiektów usługi (bezstanowe i stanowe) w węźle
 
-| Metryka | Obciążenia bezstanowe wystąpienia | Stanowe dodatkowej obciążenia | Stanowe podstawowego obciążenia | Waga |
+| Metryka | Obciążenie wystąpienia bezstanowego | Pomocnicze obciążenie stanowe | Stanowe obciążenie podstawowe | Waga |
 | --- | --- | --- | --- | --- |
 | PrimaryCount |0 |0 |1 |Wysoka |
-| ReplicaCount |0 |1 |1 |Średni |
-| Count |1 |1 |1 |Małe |
+| ReplicaCount |0 |1 |1 |Średnie |
+| Liczba |1 |1 |1 |Niska |
 
 
-W przypadku obciążeń podstawowych domyślnych metryk oferują znośnego rozłożenia pracy w klastrze. W poniższym przykładzie Zobaczmy, co się stanie, gdy firma Microsoft tworzy się dwie usługi i polegają na domyślnych metryk dla równoważenia. Pierwszej usługi jest stanowej usługi za pomocą trzech partycje i repliki docelowej Ustaw rozmiar trzy. Druga usługa jest usługę bezstanową, za pomocą jednej partycji i liczby wystąpień trzech.
+W przypadku obciążeń podstawowych metryki domyślne zapewniają dystrybucję znośnego pracy w klastrze. W poniższym przykładzie Zobaczmy, co się dzieje, gdy utworzymy dwie usługi i korzystasz z domyślnych metryk na potrzeby równoważenia. Pierwsza usługa jest usługą stanową z trzema partycjami i docelowym zestawem replik o rozmiarze trzech. Druga usługa to usługa bezstanowa z jedną partycją i liczbą wystąpień trzy.
 
-Oto co uzyskujesz:
+Oto, co otrzymujemy:
 
 <center>
 
-![Układ klastra przy użyciu domyślnych metryk][Image1]
+![układ klastra z domyślnymi metrykami][Image1]
 </center>
 
-Niektóre kwestie, należy zwrócić uwagę:
-  - Repliki podstawowej dla usługi stanowej są rozproszone na kilku węzłów.
-  - Repliki dla tej samej partycji znajdują się w różnych węzłach
-  - Całkowita liczba kolory podstawowe i pomocnicze bazy danych jest dystrybuowane w klastrze
-  - Całkowita liczba obiektów usługi równomiernie są przydzielane w każdym węźle
+Dodatkowe kwestie, na które należy zwrócić uwagę:
+  - Repliki podstawowe dla usługi stanowej są dystrybuowane między kilka węzłów
+  - Repliki dla tej samej partycji znajdują się w różnych węzłach.
+  - Łączna liczba Primaries i elementów pomocniczych jest dystrybuowana w klastrze.
+  - Całkowita liczba obiektów usługi jest równomiernie alokowana w każdym węźle
 
-Dobre!
+Aukcj!
 
-Metryki domyślnej świetnie działa jako rozpoczęcia. Jednak domyślnych metryk tylko przeprowadzi należy do tej pory. Na przykład: Jakie jest prawdopodobieństwo, że podział schemat możesz pobrać wyniki doskonale nawet wykorzystanie przez wszystkie partycje? Jakie jest prawdopodobieństwo, że obciążenie dla danej usługi jest stałe, wraz z upływem czasu, lub w taki sam nawet na wielu partycjach teraz?
+Metryki domyślne działają dobrze jako początek. Jednak metryki domyślne będą przenoszone tylko do tej pory. Na przykład: Jakie jest prawdopodobieństwo, że wybrany schemat partycjonowania będzie idealnie nawet wykorzystany przez wszystkie partycje? Jakie jest prawdopodobieństwo, że obciążenie danej usługi jest stałe z upływem czasu lub nawet jeden raz w wielu partycjach?
 
-Można uruchomić przy użyciu tylko domyślnych metryk. Jednak to zazwyczaj oznacza, że wykorzystaniu klastra dolnej i bardziej nierówne, niż chcesz. Jest to spowodowane domyślnych metryk nie są funkcje adaptacyjnego sterowania i zakładają, że wszystko jest równoważne. Na przykład podstawowy, który jest zajęty i taki, który nie jest zarówno przyczyniają się do metryki PrimaryCount "1". W najgorszym przypadku za pomocą domyślnych metryk może również spowodować overscheduled węzłów powodujące problemy z wydajnością. Jeśli interesuje Cię uzyskanie maksymalnie wykorzystać możliwości klastra i unikanie problemów z wydajnością, należy użyć niestandardowych metryk i dynamiczne raportowanie obciążenia.
+Można uruchomić z tylko metrykami domyślnymi. Jednak zazwyczaj oznacza to, że wykorzystanie klastra jest niższe i bardziej nierówne. Wynika to z faktu, że metryki domyślne nie są adaptacyjne i zakłada, że wszystko jest równoważne. Na przykład podstawowa, która jest zajęta i która nie jest współautorem "1" do metryki PrimaryCount. W najgorszym przypadku użycie tylko metryk domyślnych może spowodować, że w przypadku nieplanowanych węzłów występują problemy z wydajnością. Jeśli interesuje Cię maksymalne wykorzystanie klastra i uniknięcie problemów z wydajnością, musisz użyć niestandardowych metryk i dynamicznej sprawozdawczości.
 
 ## <a name="custom-metrics"></a>Metryki niestandardowe
-Metryki są skonfigurowane na podstawie poszczególnych o nazwie service wystąpień, podczas tworzenia usługi.
+Metryki są konfigurowane w zależności od nazwy wystąpienia usługi podczas tworzenia usługi.
 
-Dowolnej metryce ma kilka właściwości, które je: nazwę, waga i obciążenia domyślne.
+Każda Metryka ma pewne właściwości, które go opisują: nazwę, wagę i obciążenie domyślne.
 
-* Nazwa metryki: Nazwa metryki. Nazwa metryki jest unikatowy identyfikator dla metryki w ramach klastra z punktu widzenia menedżera zasobów.
-* Waga: Waga metryki definiuje, jak ważny jest ta metryka względem innych metryk dla tej usługi.
-* Załaduj domyślne: Obciążenia domyślne jest reprezentowany w różny sposób w zależności od tego, czy usługa jest bezstanowe lub stanowe.
-  * W przypadku usług bezstanowych wszystkie metryki ma jedną właściwość o nazwie DefaultLoad
-  * W przypadku usług stanowych, jaką zdefiniujesz:
-    * PrimaryDefaultLoad: Domyślna ilość ta metryka ta usługa pobiera w podstawowym
-    * SecondaryDefaultLoad: Domyślna ilość ta metryka ta usługa pobiera w pomocniczy
+* Nazwa metryki: Nazwa metryki. Nazwa metryki jest unikatowym identyfikatorem dla metryki w klastrze z perspektywy Menedżer zasobów.
+* Waga: Waga metryki definiuje, jak ważna jest Metryka względem innych metryk dla tej usługi.
+* Domyślne obciążenie: obciążenie domyślne jest reprezentowane w różny sposób w zależności od tego, czy usługa jest bezstanowa, czy stanowa.
+  * W przypadku usług bezstanowych każda Metryka ma jedną właściwość o nazwie DefaultLoad
+  * W przypadku definiowanych przez siebie usług stanowych:
+    * PrimaryDefaultLoad: domyślna liczba tej metryki, która używa tej usługi, gdy jest to podstawowa
+    * SecondaryDefaultLoad: Domyślna ilość tej metryki zużywanej przez tę usługę, gdy jest ona pomocnicza
 
 > [!NOTE]
-> Jeśli zdefiniujesz metryki niestandardowe, a użytkownik chce _również_ Użyj metryki domyślnej, musisz _jawnie_ dodawania domyślnych metryk kopii i definiowania dla nich wartości i wagi. Jest to spowodowane należy zdefiniować relację między domyślnych metryk i metryki niestandardowe. Na przykład może być interesujące Cię ConnectionCount lub WorkQueueDepth więcej niż podstawowy dystrybucji. Domyślnie waga metryki PrimaryCount jest wysoki, więc chcesz ograniczyć na nośnik, po dodaniu innych metryk, aby upewnić się, że ich wyższy priorytet.
+> Jeśli zdefiniowano metryki niestandardowe i chcesz _również_ użyć metryk domyślnych, należy _jawnie_ dodać metryki domyślne i zdefiniować wagi oraz ich wartości. Dzieje się tak, ponieważ należy zdefiniować relację między metrykami domyślnymi i metrykami niestandardowymi. Na przykład, może być ważne ConnectionCount lub WorkQueueDepth więcej niż podstawowa dystrybucja. Domyślnie waga metryki PrimaryCount jest wysoka, więc chcesz ją ograniczyć do średniej, gdy dodasz inne metryki w celu zapewnienia pierwszeństwa.
 >
 
-### <a name="defining-metrics-for-your-service---an-example"></a>Definiowanie metryki dla usługi — przykład
-Załóżmy, że chcesz użyć następującej konfiguracji:
+### <a name="defining-metrics-for-your-service---an-example"></a>Definiowanie metryk dla usługi — przykład
+Załóżmy, że chcesz wykonać następującą konfigurację:
 
-  - Usługa raporty Metryka o nazwie "ConnectionCount"
-  - Należy zawsze używać domyślnych metryk 
-  - Wykonałeś niektóre pomiarów i dowiedzieć się, że zwykle podstawową replikę tej usługi trwa maksymalnie 20 jednostek "ConnectionCount"
-  - Pomocnicze bazy danych użyj 5 jednostek "ConnectionCount"
-  - Wiesz, że "ConnectionCount" jest najważniejsze metryki pod względem wydajności tej konkretnej usługi zarządzania
-  - Nadal chcesz replikami podstawowymi zrównoważone. Równoważenie replik podstawowych ogólnie jest dobry pomysł, niezależnie od tego, co. Pozwala to zapobiec utratę niektórych domeny węzła lub błędów z wpływ na większość replikami podstawowymi zapotrzebowaniu. 
-  - W przeciwnym razie domyślnych metryk są w dobrym stanie
+  - Usługa zgłasza metrykę o nazwie "ConnectionCount"
+  - Warto również użyć metryk domyślnych 
+  - Zostały wykonane pewne pomiary i wiadomo, że zwykle replika podstawowa tej usługi przyjmuje 20 jednostek "ConnectionCount"
+  - Serwery pomocnicze używają 5 jednostek "ConnectionCount"
+  - Wiadomo, że "ConnectionCount" jest najważniejszym metryką w zakresie zarządzania wydajnością tej konkretnej usługi
+  - Nadal chcesz zrównoważyć repliki podstawowe. Podstawowe repliki są zwykle dobrym pomysłem, niezależnie od tego, co. Pomaga to zapobiec utracie niektórych węzłów lub domen błędów przed wpływem na większość replik podstawowych. 
+  - W przeciwnym razie metryki domyślne są ograniczone
 
-Poniżej przedstawiono kod, który należy napisać utworzyć usługę za pomocą tej konfiguracji metryki:
+Oto kod, który można napisać, aby utworzyć usługę z tą konfiguracją metryk:
 
 Kod:
 
@@ -127,54 +118,54 @@ serviceDescription.Metrics.Add(totalCountMetric);
 await fabricClient.ServiceManager.CreateServiceAsync(serviceDescription);
 ```
 
-Program PowerShell:
+PowerShell:
 
 ```posh
 New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceTypeName –Stateful -MinReplicaSetSize 3 -TargetReplicaSetSize 3 -PartitionSchemeSingleton –Metric @("ConnectionCount,High,20,5”,"PrimaryCount,Medium,1,0”,"ReplicaCount,Low,1,1”,"Count,Low,1,1”)
 ```
 
 > [!NOTE]
-> Powyższe przykłady i pozostałej części tego dokumentu opisano zarządzanie metryki na podstawie poszczególnych-o nazwie service. Istnieje również możliwość zdefiniowania metryki dla usługi w usłudze _typu_ poziom. Jest to osiągnąć, określając je w manifestach Twojej usługi. Definiowanie typu metryki poziomu nie jest zalecane z kilku powodów. Pierwszym powodem jest to, że nazwy metryki są często specyficznymi dla środowiska. Jeżeli nie istnieje ostateczne umowy w miejscu, nie może być pewności, że metryki "Rdzeni" w jednym środowisku nie w innych "MiliCores" lub "Rdzeni". Jeśli metryki są zdefiniowane w manifeście, musisz utworzyć nowe manifesty na środowisko. Prowadzi to zwykle rozprzestrzenianie różnych manifesty z niewielkimi modyfikacjami, co może prowadzić do zarządzania trudności.  
+> W powyższych przykładach i w pozostałej części niniejszego dokumentu opisano zarządzanie metrykami dla poszczególnych nazw usług. Istnieje również możliwość zdefiniowania metryk dla usług na poziomie _typu_ usługi. Jest to realizowane przez określenie ich w manifestach usługi. Definiowanie metryk na poziomie typu nie jest zalecane z kilku powodów. Pierwszym powodem jest to, że nazwy metryk są często specyficzne dla środowiska. O ile nie istnieje umowa przedsiębiorstwa, nie można się upewnić, że Metryka "rdzenie" w jednym środowisku nie ma wartości "MiliCores" lub "rdzenie" w innych miejscach. Jeśli metryki są zdefiniowane w manifeście, należy utworzyć nowe manifesty dla każdego środowiska. Zwykle prowadzi to do rozmnożenia różnych manifestów z drobnymi różnicami, co może prowadzić do problemów z zarządzaniem.  
 >
-> Metryki obciążenia często są przypisane na podstawie poszczególnych o nazwie service wystąpień. Załóżmy na przykład, że możesz utworzyć jedno wystąpienie usługi dla CustomerA, który zamierza rzadziej go używać. Ponadto Załóżmy, że możesz utworzyć inny dla CustomerB, który ma większe obciążenie. W takim przypadku prawdopodobnie chcesz dostosować domyślne obciążenia za te usługi. Jeśli masz metryki i obciążeń, zdefiniowanych za pomocą manifesty i mają być obsługiwane w tym scenariuszu, wymaga innej aplikacji i typów usług dla każdego klienta. Wartości definiowany w czasie tworzenia usługi przesłaniają akcje zdefiniowane w manifeście, dzięki czemu można użyć, aby skonfigurować określone ustawienia domyślne. Jednak tą operacją powoduje, że wartości zadeklarowane w manifestach nie zgadzać się usługa jest wykonywany z. Może to prowadzić do pomyłek. 
+> Obciążenia metryk są zwykle przypisane do wystąpienia poszczególnych wystąpień usługi. Załóżmy na przykład, że utworzysz jedno wystąpienie usługi dla klienta, który planuje używać go tylko w jasny sposób. Załóżmy również, że tworzysz kolejną dla CustomerB, którzy mają większe obciążenie. W takim przypadku prawdopodobnie chcesz dostosować domyślne obciążenia dla tych usług. Jeśli masz metryki i obciążenia zdefiniowane za pośrednictwem manifestów i chcesz obsługiwać ten scenariusz, wymagane są różne typy aplikacji i usług dla każdego klienta. Wartości zdefiniowane w czasie tworzenia usługi zastępują te zdefiniowane w manifeście, dlatego można użyć, aby ustawić określone ustawienia domyślne. Jednak wykonanie tej czynności powoduje, że wartości zadeklarowane w manifestach nie pasują do tych, w których faktycznie działa usługa. Może to prowadzić do pomyłek. 
 >
 
-Przypomnienie: Jeśli chcesz użyć domyślnych metryk, nie trzeba w ogóle zbierania metryk na wszystkich lub wykonywać żadnych specjalnych czynności podczas tworzenia usługi. Metryki domyślnej Pobierz używane automatycznie, gdy nie inne są zdefiniowane. 
+Jako przypomnienie: Jeśli chcesz, aby użyć domyślnych metryk, nie musisz dotykać kolekcji metryk w ogóle ani wykonywać żadnych specjalnych czynności podczas tworzenia usługi. Metryki domyślne są stosowane automatycznie, gdy nie są zdefiniowane żadne inne. 
 
-Teraz przejdźmy przez każde z tych ustawień, które bardziej szczegółowo i omówimy zachowanie, które ma to wpływ.
+Teraz przejdźmy do każdego z tych ustawień bardziej szczegółowo i zapoznaj się z zachowaniem, na które ma to wpływ.
 
 ## <a name="load"></a>Ładowanie
-Celem definiowania metryk jest do reprezentowania niektórych obciążenia. *Obciążenia* to, ile dana metryka jest używane przez niektóre wystąpienie usługi lub replikę z danego węzła. Obciążenia można skonfigurować w niemal dowolnym momencie. Na przykład:
+Cały punkt definiowania metryk ma reprezentować pewne obciążenie. *Obciążenie* polega na tym, ile danej metryki jest zużywane przez niektóre wystąpienie usługi lub replika w danym węźle. Obciążenie można skonfigurować w prawie każdym punkcie. Przykład:
 
-  - Obciążenia można zdefiniować podczas tworzenia usługi. Jest to nazywane _obciążenia domyślne_.
-  - Informacje dotyczące pomiaru obciążeniami domyślny, w tym dla usługi zaktualizowane po utworzeniu usługi. Jest to nazywane _uaktualnianie usługi_. 
-  - Obciążenia dla danej partycji można zresetować do wartości domyślnych dla danej usługi. Jest to nazywane _Resetowanie obciążenia partycji_.
-  - Obciążenia mogą być zgłaszane w poszczególnych obiektów usługi dynamicznie w czasie wykonywania. Jest to nazywane _raportowania obciążenia_. 
+  - Obciążenie można zdefiniować podczas tworzenia usługi. Jest to nazywane _obciążeniem domyślnym_.
+  - Informacje o metrykach, w tym domyślne obciążenia dla usługi, można zaktualizować po utworzeniu usługi. Jest to nazywane _aktualizacją usługi_. 
+  - Obciążenia dla danej partycji mogą zostać zresetowane do wartości domyślnych dla tej usługi. Jest to tzw. _Resetowanie obciążenia partycji_.
+  - Obciążenie może być zgłaszane osobno dla poszczególnych obiektów usługi podczas środowiska uruchomieniowego. Jest to tzw. _obciążenie raportowaniem_. 
   
-Wszystkie z następujących strategii może służyć w ramach tej samej usługi przez cały okres ich istnienia. 
+Wszystkie te strategie mogą być używane w ramach tej samej usługi w ramach swojego okresu istnienia. 
 
-## <a name="default-load"></a>Załaduj domyślne
-*Załaduj domyślne* jest dużo metryki zużywa każdego obiektu usługi (wystąpienia bezstanowe lub stanowe repliki) tej usługi. Menedżer zasobów klastra używa tego numeru obciążenia obiektu usługi, dopóki nie odbierze inne informacje, takie jak raportu dynamicznego obciążenia. Prostsze usług obciążenia domyślny jest statyczny definicji. Obciążenia domyślnego nigdy nie jest aktualizowany i jest używany przez okres istnienia usługi. Domyślne ładuje działa doskonale nadaje się do prostych dotyczący planowania pojemności na scenariuszach, gdzie niektóre ilości zasobów są przeznaczone dla różnych obciążeń i nie należy zmieniać.
+## <a name="default-load"></a>Domyślne obciążenie
+*Domyślne obciążenie* polega na tym, ile metryk każdy obiekt usługi (wystąpienie bezstanowe lub replika stanowa) tej usługi zużywa. Klaster Menedżer zasobów używa tego numeru do ładowania obiektu usługi do momentu odzyskania innych informacji, takich jak dynamiczny raport ładowania. W przypadku łatwiejszych usług domyślne obciążenie jest definicją statyczną. Domyślne obciążenie nigdy nie jest aktualizowane i jest używane w okresie istnienia usługi. Obciążenia domyślne działają doskonale w przypadku scenariuszy planowania pojemności w przypadku, gdy pewne ilości zasobów są przeznaczone dla różnych obciążeń i nie są zmieniane.
 
 > [!NOTE]
-> Aby uzyskać więcej informacji na temat zarządzania wydajnością i definiowanie pojemności dla węzłów w klastrze, zobacz [w tym artykule](service-fabric-cluster-resource-manager-cluster-description.md#capacity).
+> Aby uzyskać więcej informacji na temat zarządzania pojemnością i definiowania pojemności dla węzłów w klastrze, zobacz [ten artykuł](service-fabric-cluster-resource-manager-cluster-description.md#capacity).
 > 
 
-Menedżer zasobów klastra umożliwia usług stanowych do określenia obciążeniem różne domyślne kolory podstawowe i pomocnicze bazy danych. Bezstanowej usługi można określić tylko jedną wartość, która ma zastosowanie do wszystkich wystąpień. Dla usług stanowych, obciążenia domyślnej dla lokacji podstawowej i pomocniczej repliki są zazwyczaj inny, ponieważ repliki wykonaj różnego rodzaju pracy w każdej roli. Na przykład kolory podstawowe zazwyczaj obsługiwać operacje odczytu i zapisu, a obsługę większości obciążeń obliczeniowych, gdy pomocnicze bazy danych nie obsługują. Zazwyczaj obciążenia domyślny dla repliki podstawowej jest wyższa niż obciążenia domyślny dla replik pomocniczych. Liczby rzeczywiste powinna zależeć od własne miary.
+Menedżer zasobów klastra umożliwia usługom stanowym Określanie innego domyślnego obciążenia dla swoich Primaries i serwerów pomocniczych. Usługi bezstanowe mogą określać tylko jedną wartość, która ma zastosowanie do wszystkich wystąpień. W przypadku usług stanowych, domyślne obciążenie dla replik podstawowych i pomocniczych zazwyczaj różni się od tego, że repliki są różne rodzaje pracy w każdej roli. Na przykład Primaries obsługuje zarówno operacje odczytu i zapisu, jak i obsługujące większość obciążeń obliczeniowych, natomiast nie są to serwery pomocnicze. Zwykle domyślne obciążenie repliki podstawowej jest wyższe niż domyślne obciążenie dla replik pomocniczych. Liczby rzeczywiste powinny być zależne od własnych pomiarów.
 
-## <a name="dynamic-load"></a>Dynamicznego obciążenia
-Załóżmy, że działała usługi przez jakiś czas. Za pomocą pewne informacje monitorowania, Zauważyłeś, że:
+## <a name="dynamic-load"></a>Ładowanie dynamiczne
+Załóżmy, że uruchomiono usługę przez pewien czas. W przypadku niektórych monitorowania zauważono, że:
 
-1. Niektóre partycje lub wystąpień danego usługi zużywać więcej zasobów niż inne
-2. Niektóre usługi mają obciążenia, który zmienia się wraz z upływem czasu.
+1. Niektóre partycje lub wystąpienia danej usługi zużywają więcej zasobów niż inne
+2. Niektóre usługi mają obciążenie, które różnią się w zależności od czasu.
 
-Istnieje wiele rzeczy, które może spowodować, że tego rodzaju wahania obciążenia. Na przykład różne usługi lub partycje są skojarzone z różnych klientów z różnymi wymaganiami. Obciążenie może również ulec zmianie, ponieważ ilość pracy wykonywanej przez usługą różnych porach dnia. Niezależnie od przyczyny jest zwykle nie jeden numer używanego do domyślnego. Jest to szczególnie istotne, jeśli chcesz uzyskać większość wykorzystania poza klastrem. Dowolna wartość wybranego obciążenia domyślny jest błędne pewien czas. Nieprawidłowa domyślna ładuje wynik w Menedżer zasobów klastra za pośrednictwem lub w obszarze alokacji zasobów. Co w efekcie masz węzły, które są powyżej lub poniżej wykorzystywane mimo, że Menedżer zasobów klastra według klastra jest równoważone. Domyślne obciążenia są nadal dobre, ponieważ zapewniają one pewne informacje do umieszczenia początkowej, ale nie jest pełną wątku dla rzeczywistych obciążeń. Aby przechwycić dokładnie zmiany wymagań dotyczących zasobów, Menedżer zasobów klastra umożliwia każdego obiektu usługi zaktualizować swój własny obciążenia podczas wykonywania. Jest to nazywane dynamiczne raportowanie obciążenia.
+Istnieje wiele rzeczy, które mogą spowodować wahania obciążenia. Na przykład różne usługi lub partycje są skojarzone z różnymi klientami z różnymi wymaganiami. Można również zmienić obciążenie, ponieważ ilość pracy wykonywanej przez usługę różni się w ciągu dnia. Bez względu na to, że zwykle nie ma żadnej pojedynczej liczby, która może być używana domyślnie. Jest to szczególnie prawdziwe, jeśli chcesz uzyskać największe wykorzystanie z klastra. Dowolna wybrana wartość dla domyślnego obciążenia ma zły czas. Nieprawidłowe obciążenia domyślne powodują, że w klastrze Menedżer zasobów przez lub w obszarze przydzielanie zasobów. W związku z tym masz węzły, które są nadmiernie lub są używane, nawet jeśli klaster Menedżer zasobów być zrównoważony w klastrze. Obciążenia domyślne są nadal dobre, ponieważ udostępniają pewne informacje dotyczące początkowego umieszczania, ale nie są kompletną historią dla rzeczywistych obciążeń. W celu dokładnego przechwycenia zmienionych wymagań dotyczących zasobów, klaster Menedżer zasobów umożliwia każdemu obiektowi usługi zaktualizowanie własnego obciążenia w czasie wykonywania. Jest to nazywane raportowaniem obciążenia dynamicznego.
 
-Raporty dynamiczne obciążenia umożliwiają replik lub wystąpień, aby dostosować ich obciążenia zgłosił/alokacji metryk okresie ich istnienia. Repliki usługi lub wystąpienia, które zostało zimnego i bezczynny zazwyczaj będzie zgłaszać wykorzystywała niskiej ilości danej metryki. Czy używają więcej raport będzie zajęty replik lub wystąpień.
+Dynamiczne raporty obciążenia umożliwiają replikom lub wystąpieniu dostosowanie ich alokacji/zgłaszanego obciążenia w czasie ich istnienia. Replika usługi lub wystąpienie, które było zimne i nie wykonywało żadnej pracy, zwykle zgłasza, że używa niskich ilości danej metryki. W przypadku zajętej repliki lub wystąpienia zostałby zaraportowany, że używają one więcej.
 
-Raportowanie obciążenie poszczególnych replik lub wystąpień umożliwia Menedżer zasobów klastra reorganizacja obiektów poszczególnych usług w klastrze. Reorganizacja usług pomaga upewnić się, że staną się zasoby, których potrzebują. Zajęte usług skutecznie dotrzeć do "odzyskać" zasoby od innych replik lub wystąpień, które są aktualnie zimnego lub wykonujesz mniej pracy.
+Raportowanie obciążenia na replikę lub wystąpienie umożliwia klastrowi Menedżer zasobów Reorganizowanie poszczególnych obiektów usługi w klastrze. Reorganizacja usług pomaga zapewnić, że będą oni musieli uzyskać potrzebne zasoby. Usługi zajęte w praktyce umożliwiają "odzyskiwanie" zasobów z innych replik lub wystąpień, które są obecnie zimne lub mniej efektywne.
 
-W ramach usług Reliable Services kod w celu raportowania obciążenia dynamicznie wygląda następująco:
+W Reliable Services kod do raportowania ładowania dynamicznie wygląda następująco:
 
 Kod:
 
@@ -182,97 +173,97 @@ Kod:
 this.Partition.ReportLoad(new List<LoadMetric> { new LoadMetric("CurrentConnectionCount", 1234), new LoadMetric("metric1", 42) });
 ```
 
-Usługa może zgłaszać na żadnym z metryk dla niej zdefiniowane w czasie jego tworzenia. Jeśli obciążenie raporty usługi dla metryki, który nie jest skonfigurowany do używania, Usługa Service Fabric ignoruje tego raportu. Jeśli istnieją inne metryki zgłoszone w tym samym czasie, które są prawidłowe, te raporty są akceptowane. Kod obsługi można mierzyć i zgłosić wszystkie metryki wie, jak i operatorów można określić metryki konfigurację, aby używać bez konieczności zmieniania kodu usługi. 
+Usługa może raportować wszystkie metryki zdefiniowane dla niego podczas tworzenia. Jeśli usługa zgłasza obciążenie dla metryki, która nie jest skonfigurowana do użycia, Service Fabric ignoruje ten raport. Jeśli w tym samym czasie są zgłaszane inne metryki, te raporty są akceptowane. Kod usługi może mierzyć i raportować wszystkie metryki, które zna, i operatory mogą określać konfigurację metryki, która ma być używana bez konieczności zmiany kodu usługi. 
 
-### <a name="updating-a-services-metric-configuration"></a>Trwa aktualizowanie konfiguracji metryk usług
-Listy metryk związane z usługą i właściwości te metryki może być aktualizowany dynamicznie, podczas gdy usługa jest aktywna. Dzięki temu eksperymentowania i elastyczność. Niektóre przykłady gdy jest to przydatne są:
+### <a name="updating-a-services-metric-configuration"></a>Aktualizowanie konfiguracji metryk usługi
+Lista metryk skojarzonych z usługą i właściwości tych metryk można aktualizować dynamicznie, gdy usługa jest aktywna. Pozwala to na eksperymentowanie i elastyczność. Oto kilka przykładów, z których jest to przydatne:
 
-  - wyłączając metryki z raportem wymagał poprawek dla określonej usługi
-  - ponowne konfigurowanie wagi metryki w oparciu o żądane zachowanie
-  - Włączanie nowych metrykach tylko wtedy, gdy kod został już wdrożony i zweryfikować za pośrednictwem innych mechanizmów
-  - Zmiana obciążenia domyślnej usługi na podstawie obserwacji zachowanie i użycie
+  - Wyłączanie metryki z raportem debugowania dla określonej usługi
+  - ponowne konfigurowanie wag metryk na podstawie żądanego zachowania
+  - Włączanie nowej metryki tylko po jej wdrożeniu i sprawdzeniu poprawności za pośrednictwem innych mechanizmów
+  - zmiana domyślnego obciążenia dla usługi na podstawie zaobserwowanego zachowania i zużycia
 
-Główny interfejsy API dotyczące zmieniania konfiguracji metryki są `FabricClient.ServiceManagementClient.UpdateServiceAsync` w języku C# i `Update-ServiceFabricService` w programie PowerShell. Wszelkich informacji, określ za pomocą tych interfejsów API, które natychmiast zastępuje istniejące informacje metryki dla usługi. 
+Główne interfejsy API służące do zmiany konfiguracji metryk są C# `FabricClient.ServiceManagementClient.UpdateServiceAsync` w i `Update-ServiceFabricService` w programie PowerShell. Wszelkie informacje określone za pomocą tych interfejsów API zastępują natychmiast istniejące informacje o metrykach usługi. 
 
-## <a name="mixing-default-load-values-and-dynamic-load-reports"></a>Mieszanie domyślne wartości obciążenia i raporty dynamiczne obciążenia
-Domyślne obciążenia i obciążeniami dynamicznych może służyć do tej samej usługi. Gdy usługa korzysta z domyślnego obciążenia i raporty dynamiczne obciążenia, obciążenie domyślne służy jako oszacowanie, dopóki dynamiczne raporty widoczne. Załaduj domyślne jest dobra, ponieważ daje on Menedżer zasobów klastra coś, co chcesz pracować. Załaduj domyślne umożliwia Menedżer zasobów klastra, aby umieścić obiekty usługi w lokalizacjach dobre podczas ich tworzenia. Jeśli nie podano żadnych informacji obciążenia domyślne, umieszczania usług jest skutecznie losowa. Nadejściu raportów obciążenia później początkowe położenie losowe często jest nieprawidłowy, a Menedżer zasobów klastra musi przenieść usługi.
+## <a name="mixing-default-load-values-and-dynamic-load-reports"></a>Mieszanie domyślnych wartości ładowania i dynamicznych raportów ładowania
+Dla tej samej usługi można użyć domyślnych obciążeń ładowania i dynamicznego. Gdy usługa korzysta zarówno z domyślnych, jak i dynamicznych raportów ładowania, obciążenie domyślne służy jako oszacowanie do momentu wyświetlenia raportów dynamicznych. Domyślne obciążenie jest dobrym sposobem, ponieważ umożliwia klastrowi Menedżer zasobów działanie. Domyślne obciążenie umożliwia klastrowi Menedżer zasobów umieszczenie obiektów usługi w dobrych lokalizacjach podczas ich tworzenia. Jeśli nie zostaną podane żadne domyślne informacje o ładowaniu, rozmieszczenie usług jest skutecznie losowe. Gdy ładowanie raportów zostanie rozpoczęte później, początkowe losowe położenie jest często błędne i klaster Menedżer zasobów ma przenieść usługi.
 
-Teraz pobrać poprzedniego przykładu i zobacz, co się stanie po dodaniu niektóre metryki niestandardowe i dynamiczne raportowanie obciążenia. W tym przykładzie używamy "MemoryInMb" jako metrykę przykładu.
+Skorzystajmy z poprzedniego przykładu i Dowiedz się, co się dzieje, gdy dodamy niestandardowe metryki i dynamiczne raportowanie obciążeń. W tym przykładzie używamy "MemoryInMb" jako przykładowej metryki.
 
 > [!NOTE]
-> Pamięć jest jednej z metryk systemu, która może być usługi Service Fabric [określają zasobów](service-fabric-resource-governance.md), i raportowania samodzielnie jest zazwyczaj trudne. Nie faktycznie oczekujemy, że można sporządzić raport na temat użycia pamięci; Pamięć jest używany tutaj jako pomoc do nauki o możliwościach, Menedżer zasobów klastra.
+> Pamięć jest jedną z metryk systemu, które Service Fabric mogą [zarządzać zasobami](service-fabric-resource-governance.md), i raporty IT są zwykle trudne. W rzeczywistości nie oczekujemy na raport dotyczący użycia pamięci; Pamięć jest używana tutaj jako pomoc do uczenia się możliwości Menedżer zasobów klastra.
 >
 
-Teraz zakładają, że początkowo utworzyliśmy stanowej usługi za pomocą następującego polecenia:
+Załóżmy, że początkowo została utworzona usługa stanowa przy użyciu następującego polecenia:
 
-Program PowerShell:
+PowerShell:
 
 ```posh
 New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceTypeName –Stateful -MinReplicaSetSize 3 -TargetReplicaSetSize 3 -PartitionSchemeSingleton –Metric @("MemoryInMb,High,21,11”,"PrimaryCount,Medium,1,0”,"ReplicaCount,Low,1,1”,"Count,Low,1,1”)
 ```
 
-Przypominamy ta składnia jest ("MetricName MetricWeight, PrimaryDefaultLoad, SecondaryDefaultLoad").
+Jako przypomnienie Ta składnia jest następująca: ("Metricname, MetricWeight, PrimaryDefaultLoad, SecondaryDefaultLoad").
 
-Zobaczmy, jakie jeden układ klastra możliwe może wyglądać jak:
-
-<center>
-
-![Zrównoważony klastra za pomocą domyślnych i niestandardowych metryk][Image2]
-</center>
-
-Kilka rzeczy, które są warte odnotowania:
-
-* Każdej repliki pomocnicze w ramach partycji może mieć własnych obciążenia
-* Ogólne metryki wyszukiwania o zrównoważonym obciążeniu. Pamięć, stosunek maksymalne i minimalne obciążenia jest 1,75 (węzeł z najbardziej obciążenia jest N3, jest najmniej, N2 i 28/16 = 1,75).
-
-Istnieją pewne elementy, które wciąż potrzebujemy wyjaśnienie:
-
-* Co to ustalić, czy stosunek 1,75 zakończyła się uzasadnione? Jak Menedżer zasobów klastra sprawdzić czy jest wystarczająco dobre czy ma więcej pracy do wykonania?
-* Gdy równoważenia odbywa się?
-* Co oznacza że pamięć została ważona "Wysokiego"?
-
-## <a name="metric-weights"></a>Waga metryki
-Śledzenie te same metryki w różnych usługach jest ważne. Ten globalny widok polega na tym, co pozwala Menedżer zasobów klastra do śledzenia użycia w klastrze, równoważyć zużycia w węzłach i upewnij się, że węzły nie są kierowane przez pojemność. Jednak usługi mogą mieć różne widoki tego znaczenie tych samych metryk. Ponadto w klastrze przy użyciu wielu metryk i wiele usług, doskonale o zrównoważonym obciążeniu rozwiązań może nie istnieć dla wszystkich metryk. Jak Menedżer zasobów klastra powinien obsługiwać tych sytuacji?
-
-Waga metryki umożliwiają Menedżer zasobów klastra do określania sposobu równoważenia klastra po doskonałe odpowiedzi. Waga metryki również umożliwiać Menedżer zasobów klastra równoważenia usług określone inaczej. Metryki może mieć cztery poziomy różne wagi: Zero, niski, średni i wysoki. Metryka o wadze wynoszącej Zero przyczynia się nic, podczas wybierania, czy elementy są równoważone, czy nie. Jednakże jej obciążenia nadal przyczyniają się do zarządzania wydajnością. Metryki za pomocą wagi, zerowego przydają się nadal i są często używane jako część zachowanie usługi i monitorowania wydajności. [W tym artykule](service-fabric-diagnostics-event-generation-infra.md) zamieszczono więcej informacji dotyczących użytkowania metryk monitorowania i diagnostyki usługi. 
-
-Rzeczywistego wpływu różne metryki obciążenia w klastrze jest, że Menedżer zasobów klastra generuje różne rozwiązania. Metryki wagi Poinformuj Menedżer zasobów klastra, że niektóre metryki są ważniejsze niż inne. Gdy istnieje doskonałe rozwiązanie Menedżer zasobów klastra można preferują rozwiązania, które równoważyć wyższe metryki ważona lepiej. Jeśli usługa uzna za określonej metryki nie jest ważna, jego może się okazać ich użycie w przypadku tej metryki imbalanced. Dzięki temu inna usługa równomiernego rozłożenia niektóre metryki, ważne jest, aby go pobrać.
-
-Spójrzmy na przykład niektóre raporty obciążenia i jak różne metryki przeprowadzi wyniki w różnych alokacji w klastrze. W tym przykładzie widzimy, że przełączenie Względna waga metryk powoduje, że Menedżer zasobów klastra, aby tworzyć różne rozmieszczenia usług.
+Zobaczmy, jak może wyglądać jeden możliwy układ klastra:
 
 <center>
 
-![Przykład waga metryki i jej wpływ na rozwiązań do równoważenia][Image3]
+Klaster ![zrównoważony jako metryki domyślne i niestandardowe][Image2]
 </center>
 
-W tym przykładzie istnieją cztery różne usługi, wszystkie raportowania różne wartości dla dwóch różnych metryk MetricA i MetricB. W przypadku jednego wszystkich usług definiowania MetricA jest jednym z najważniejszych (waga = wysoki) i MetricB jako "nieważne" (waga = niski). Zobaczymy, co w efekcie umieszcza usług w Menedżer zasobów klastra, dzięki czemu MetricA lepiej jest równoważone niż MetricB. "Lepiej o zrównoważonym obciążeniu" oznacza, że MetricA ma mniejszy ma niższy odchylenie standardowe niż MetricB. W drugim przypadku firma Microsoft odwrócenie metryki wagi. W rezultacie Menedżer zasobów klastra zamienia usług A i B, co pozwoli uzyskać przydział gdzie MetricB lepiej jest o zrównoważonym obciążeniu niż MetricA.
+Niektóre elementy, które są notowane:
+
+* Każdy z replik pomocniczych w partycji może mieć własne obciążenie
+* Ogólne wskaźniki są bilansowane. W przypadku pamięci stosunek między maksymalnym i minimalnym obciążeniem to 1,75 (węzeł o największej obciążeniu wynosi N3, najmniej N2 i 28/16 = 1,75).
+
+Istnieje kilka rzeczy, które należy wyjaśnić:
+
+* Co ustaliło, czy współczynnik 1,75 był rozsądny czy nie? W jaki sposób klaster Menedżer zasobów wiedzieć, czy jest wystarczająco dobry lub czy więcej pracy można wykonać?
+* Kiedy odbywa się równoważenie?
+* Co oznacza, że pamięć była ważona "wysoka"?
+
+## <a name="metric-weights"></a>Wagi metryk
+Śledzenie tych samych metryk w różnych usługach jest ważne. Ten widok globalny umożliwia klastrowi Menedżer zasobów Śledzenie zużycia w klastrze, zrównoważenie zużycia między węzłami i upewnienie się, że węzły nie przechodzą na pojemność. Jednak usługi mogą mieć różne widoki w zakresie ważności tej samej metryki. Ponadto w klastrze zawierającym wiele metryk i wielu usług, w przypadku wszystkich metryk mogą nie istnieć rozwiązania o szerokim równoważeniu. Jak klaster Menedżer zasobów obsługiwać te sytuacje?
+
+Wagi metryk umożliwiają klastrowi Menedżer zasobów decydowanie, jak zrównoważyć klaster, gdy nie ma doskonałej odpowiedzi. Wagi metryk umożliwiają również klastrowi Menedżer zasobów równoważenia określonych usług. Metryki mogą mieć cztery różne poziomy wagi: zero, niski, średni i wysoki. Metryka o wadze zero przyczynia się nie tylko podczas rozważania, czy elementy są zrównoważone, czy nie. Jednak jego obciążenie ma nadal wpływ na zarządzanie pojemnością. Metryki o zerowej wadze są nadal przydatne i często są używane w ramach zachowania usługi i monitorowania wydajności. [Ten artykuł](service-fabric-diagnostics-event-generation-infra.md) zawiera więcej informacji na temat używania metryk do monitorowania i diagnostyki usług. 
+
+Rzeczywisty wpływ różnych wag metryk w klastrze polega na tym, że klaster Menedżer zasobów generuje różne rozwiązania. Wagi metryk informują klaster Menedżer zasobów, że niektóre metryki są ważniejsze niż inne. Gdy nie jest idealnym rozwiązaniem, klaster Menedżer zasobów może preferować rozwiązania, które równoważą wyższy poziom metryk bardziej ważonych. Jeśli usługa uzna, że określona Metryka jest nieważna, może to spowodować, że użycie tej metryki nie zostanie zrównoważone. Dzięki temu inna usługa może uzyskać parzystą dystrybucję pewnej metryki.
+
+Przyjrzyjmy się przykładowi niektórych raportów obciążenia oraz o sposobie, w jaki różne wagi metryki mają różne alokacje w klastrze. W tym przykładzie widzimy, że przełączenie względnej wagi metryk powoduje, że klaster Menedżer zasobów do tworzenia różnych rozwiązań usług.
+
+<center>
+
+Przykład ![wagi metryk i jej wpływ na rozwiązania do równoważenia][Image3]
+</center>
+
+W tym przykładzie są cztery różne usługi, a wszystkie raporty różne wartości dla dwóch różnych metryk, metryki i MetricB. W jednym przypadku wszystkie usługi definiują wartość najważniejsze dla jednej (waga = wysoka) i MetricB jako nieważne (waga = niska). W związku z tym widzimy, że klaster Menedżer zasobów umieści usługi, aby Metryka była lepsza od MetricB. "Lepsza zrównoważone" oznacza, że Metryka ma niższą odchylenie standardowe niż MetricB. W drugim przypadku odwracamy wagi metryczne. W związku z tym klaster Menedżer zasobów wymiany usług A i B do przydzielenia, gdzie MetricB jest lepiej zrównoważony niż Metryka.
 
 > [!NOTE]
-> Wagi metryki, określić, jak Menedżer zasobów klastra powinien równoważyć, ale nie po równoważenia ma się zdarzyć. Aby uzyskać więcej informacji na temat równoważenia, zapoznaj się z [w tym artykule](service-fabric-cluster-resource-manager-balancing.md)
+> Wagi metryk określają sposób, w jaki klaster Menedżer zasobów powinien zrównoważyć, ale nie powinien mieć czasu na zrównoważenie. Aby uzyskać więcej informacji na temat równoważenia, zapoznaj się z [tym artykułem](service-fabric-cluster-resource-manager-balancing.md)
 >
 
-### <a name="global-metric-weights"></a>Globalne wagi metryki
-Załóżmy, że ServiceA definiuje MetricA jako wysokiej wagi i ServiceB ustawia grubość MetricA niski lub Zero. Co to jest rzeczywiste wagi, która kończy przyzwyczaja?
+### <a name="global-metric-weights"></a>Globalne wagi metryk
+Załóżmy, że usługa definiuje metrykę jako wysoką wagi, a ServiceB ustawia wagę metryki na niski lub zero. Jaka jest rzeczywista waga, która jest używana do uzyskiwania informacji?
 
-Istnieje wiele wagi, które są śledzone dla każdego metryki. Pierwsza waga jest definiowane metryki, podczas tworzenia usługi. Inne waga jest globalne wagi, która jest obliczana automatycznie. Menedżer zasobów klastra używa oba te wagi podczas oceniania rozwiązania. Ważne jest uwzględnieniu obu wagi. Dzięki temu Menedżer zasobów klastra, aby równoważyć poszczególnych usług zgodnie z jego własnej priorytety i upewnij się również poprawną alokację klastra jako całości.
+Istnieje wiele wag, które są śledzone dla każdej metryki. Pierwsza waga jest taka, którą zdefiniowano dla metryki podczas tworzenia usługi. Druga waga to globalna waga, która jest obliczana automatycznie. Klaster Menedżer zasobów używa obu tych wag podczas oceniania rozwiązań. Uwzględnianie obu wag do konta jest ważne. Dzięki temu klaster Menedżer zasobów zrównoważyć każdą usługę zgodnie z własnymi priorytetami, a także upewnić się, że klaster jako całość jest przypisywany prawidłowo.
 
-Co się stanie, jeśli Menedżer zasobów klastra nie interesują saldo zarówno globalne i lokalne? Jest również łatwe do utworzenia rozwiązania, które są globalnie równoważone, ale który powoduje, że w równowadze zasobów niska dla poszczególnych usług. W poniższym przykładzie możemy przyjrzeć się skonfigurowano tylko domyślnych metryk usługi i zobacz, co się stanie, gdy tylko globalne saldo jest uważany za:
+Co się stanie, Jeśli klaster Menedżer zasobów nie zadziałała zarówno saldo globalne, jak i lokalne? Ponadto łatwo jest utworzyć rozwiązania, które są zrównoważone globalnie, ale co powoduje spadek równowagi zasobów dla poszczególnych usług. W poniższym przykładzie Przyjrzyjmy się usłudze z użyciem tylko metryk domyślnych i zobacz, co się dzieje, gdy zostanie uznane tylko saldo globalne:
 
 <center>
 
-![Wpływ to globalne rozwiązanie tylko][Image4]
+![wpływ tylko na rozwiązanie globalne][Image4]
 </center>
 
-W górnym przykładzie oparte tylko na globalne równoważenia rzeczywiście jest równoważone klastra jako całości. Wszystkie węzły mają ten sam liczba kolory podstawowe i te same repliki łączna liczba. Jednak jeśli przyjrzymy się rzeczywisty wpływ ten przydział nie jest tak dobre: utraty dowolny węzeł ma wpływ na określonego obciążenia nieproporcjonalnie, ponieważ zajmuje całe jego kolory podstawowe. Na przykład jeśli pierwszy węzeł nie powiedzie się trzy kolory podstawowe dla trzech różnych partycji usługi okrąg wszystkie zostałyby utracone. Z drugiej strony usług trójkąt i sześciokąt ma ich partycje utracić repliki. Spowoduje to nie przerw w działaniu, oprócz posiadania odzyskać dół repliki.
+W górnym przykładzie opartym tylko na globalnym saldzie klaster jako całość jest zrównoważony. Wszystkie węzły mają tę samą liczbę Primaries i tę samą łączną liczbę replik. Jeśli jednak przeszukiwany jest rzeczywisty wpływ tego przydziału, nie jest to dobre: utrata dowolnego węzła wpływa na określone obciążenie nieproporcjonalnie, ponieważ wychodzi wszystkie jego Primaries. Na przykład jeśli pierwszy węzeł ulegnie awarii trzy Primaries dla trzech różnych partycji usługi Circle, wszystkie zostałyby utracone. Z drugiej strony, Trójkąty i sześciokąty mają traconą replikę. Nie powoduje to zakłócenia, poza koniecznością odzyskiwania repliki w dół.
 
-W tym przykładzie dolnej Menedżer zasobów klastra ma rozproszonej repliki oparte na globalnym i dla usługi równoważenia. Podczas obliczania wyniku rozwiązanie zapewnia najbardziej wagi globalne rozwiązanie i części (z możliwością konfiguracji) do poszczególnych usług. Globalne równoważenia metryka jest obliczany na podstawie średniej metryki wagi od poszczególnych usług. Każda usługa jest równoważone zgodnie z własną zdefiniowanych wagi metryki. Daje to gwarancję, że usługi są równoważone między sobą zgodnie z ich własnych potrzeb. W rezultacie w przypadku awarii tego samego węzła pierwszego błędu jest rozłożona na wszystkie partycje wszystkich usług. Wpływ na każdy jest taka sama.
+W dolnym przykładzie klaster Menedżer zasobów rozłożyć repliki na podstawie zarówno globalnego, jak i za usługę. Podczas obliczania wyniku rozwiązania zapewnia większość wagi do rozwiązania globalnego i (konfigurowalne) część do poszczególnych usług. Saldo globalne dla metryki jest obliczane na podstawie średniej wagi metryk z każdej usługi. Każda usługa jest zrównoważona zgodnie ze zdefiniowanymi wagami metryk. Dzięki temu usługi są zrównoważone w zależności od potrzeb. W związku z tym, jeśli ten sam pierwszy węzeł ulegnie awarii, błąd jest dystrybuowany we wszystkich partycjach wszystkich usług. Wpływ na poszczególne są takie same.
 
-## <a name="next-steps"></a>Kolejne kroki
-- Aby uzyskać więcej informacji na temat konfigurowania usług [informacje na temat konfigurowania usługi](service-fabric-cluster-resource-manager-configure-services.md)(service-fabric-cluster-resource-manager-configure-services.md)
-- Definiowanie defragmentacji metryk jest jednym ze sposobów Konsolidacja obciążenia w węzłach zamiast rozkładanie go. Aby dowiedzieć się, jak skonfigurować defragmentacji, zapoznaj się [w tym artykule](service-fabric-cluster-resource-manager-defragmentation-metrics.md)
-- Aby dowiedzieć się o zarządza Menedżer zasobów klastra i równoważy obciążenie w klastrze, zapoznaj się z artykułem na [równoważenia obciążenia](service-fabric-cluster-resource-manager-balancing.md)
-- Zacznij od początku i [zapoznaj się z wprowadzeniem do usługi Service Fabric Menedżer zasobów klastra](service-fabric-cluster-resource-manager-introduction.md)
-- Koszt przeniesienia jest jednym ze sposobów sygnalizowanie Menedżer zasobów klastra, że niektóre usługi są bardziej kosztowne przenieść niż inne. Aby dowiedzieć się więcej na temat koszt przeniesienia się [w tym artykule](service-fabric-cluster-resource-manager-movement-cost.md)
+## <a name="next-steps"></a>Następne kroki
+- Aby uzyskać więcej informacji na temat konfigurowania usług, [Dowiedz się więcej o konfigurowaniu usług](service-fabric-cluster-resource-manager-configure-services.md)(Service-Fabric-Cluster-Resource-Manager-Configure-Services.MD)
+- Definiowanie metryk defragmentacji jest jednym ze sposobów konsolidacji obciążenia węzłów zamiast rozproszenia go. Aby dowiedzieć się, jak skonfigurować defragmentację, zapoznaj się z [tym artykułem](service-fabric-cluster-resource-manager-defragmentation-metrics.md) .
+- Aby dowiedzieć się, w jaki sposób klaster Menedżer zasobów zarządza i równoważenia obciążenia w klastrze, zapoznaj się z artykułem dotyczącym [równoważenia obciążenia](service-fabric-cluster-resource-manager-balancing.md)
+- Zacznij od początku i [zapoznaj się z wprowadzeniem do klastra Service Fabric Menedżer zasobów](service-fabric-cluster-resource-manager-introduction.md)
+- Koszt przenoszenia jest jednym ze sposobów sygnalizowania klastra Menedżer zasobów, że niektóre usługi są droższe do przeniesienia niż inne. Aby dowiedzieć się więcej o koszcie przenoszenia, zapoznaj się z [tym artykułem](service-fabric-cluster-resource-manager-movement-cost.md) .
 
 [Image1]:./media/service-fabric-cluster-resource-manager-metrics/cluster-resource-manager-cluster-layout-with-default-metrics.png
 [Image2]:./media/service-fabric-cluster-resource-manager-metrics/Service-Fabric-Resource-Manager-Dynamic-Load-Reports.png

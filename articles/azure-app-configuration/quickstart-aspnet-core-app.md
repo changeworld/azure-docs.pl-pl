@@ -1,40 +1,37 @@
 ---
 title: Przewodnik Szybki start dotyczący używania usługi Azure App Configuration z platformą ASP.NET Core | Microsoft Docs
-description: Przewodnik Szybki start dotyczący korzystania z usługi Azure App Configuration z aplikacjami platformy ASP.NET Core
+description: Przewodnik Szybki Start dotyczący korzystania z usługi Azure App Configuration z aplikacjami ASP.NET Core
 services: azure-app-configuration
-documentationcenter: ''
-author: yegu-ms
-manager: balans
-editor: ''
-ms.assetid: ''
+author: jpconnock
 ms.service: azure-app-configuration
 ms.devlang: csharp
 ms.topic: quickstart
-ms.tgt_pltfrm: ASP.NET Core
-ms.workload: tbd
-ms.date: 10/11/2019
-ms.author: yegu
-ms.openlocfilehash: 91712b3f730317e65cda7b48c8f5636b2fb9ab2c
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.date: 01/04/2020
+ms.author: jeconnoc
+ms.openlocfilehash: f625135f036ec8fc816bc3c3eb6c76c635c51fe9
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185088"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75690218"
 ---
 # <a name="quickstart-create-an-aspnet-core-app-with-azure-app-configuration"></a>Szybki Start: Tworzenie aplikacji ASP.NET Core przy użyciu konfiguracji aplikacji platformy Azure
 
-W tym przewodniku szybki start dołączysz konfigurację aplikacji platformy Azure do aplikacji ASP.NET Core w celu scentralizowanego przechowywania i zarządzania ustawieniami aplikacji oddzielonymi od kodu. ASP.NET Core kompiluje pojedynczy obiekt konfiguracji oparty na kluczu wartości przy użyciu ustawień z co najmniej jednego źródła danych, które są określone przez aplikację. Te źródła danych są nazywane *dostawcami konfiguracji*. Ponieważ klient .NET Core konfiguracji aplikacji jest zaimplementowany jako ten dostawca, usługa będzie wyświetlana jak inne źródło danych.
+W tym przewodniku szybki start będziesz używać konfiguracji aplikacji platformy Azure do scentralizowanego przechowywania i zarządzania ustawieniami aplikacji dla aplikacji ASP.NET Core. ASP.NET Core kompiluje pojedynczy obiekt konfiguracji oparty na kluczu wartości przy użyciu ustawień z co najmniej jednego źródła danych określonego przez aplikację. Te źródła danych są nazywane *dostawcami konfiguracji*. Ponieważ klient .NET Core konfiguracji aplikacji jest zaimplementowany jako dostawca konfiguracji, usługa będzie wyświetlana jak inne źródło danych.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - Subskrypcja platformy Azure — [Utwórz ją bezpłatnie](https://azure.microsoft.com/free/)
 - [Zestaw SDK dla platformy .NET Core](https://dotnet.microsoft.com/download)
 
+>[!TIP]
+> Azure Cloud Shell to bezpłatna interaktywna powłoka, której można użyć do uruchomienia instrukcji wiersza polecenia w tym artykule.  Ma ona popularne narzędzia platformy Azure preinstalowane, w tym zestaw .NET Core SDK. Jeśli logujesz się do subskrypcji platformy Azure, uruchom [Azure Cloud Shell](https://shell.azure.com) z Shell.Azure.com.  Więcej informacji na temat Azure Cloud Shell można znaleźć w [dokumentacji](../cloud-shell/overview.md) .
+
 ## <a name="create-an-app-configuration-store"></a>Tworzenie magazynu konfiguracji aplikacji
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Wybierz pozycję **Eksplorator konfiguracji** >  **+ Utwórz** , aby dodać następujące pary klucz-wartość:
+6. Wybierz pozycję **Eksplorator konfiguracji** > **Utwórz** , aby dodać następujące pary klucz-wartość:
 
     | Klucz | Wartość |
     |---|---|
@@ -47,24 +44,29 @@ W tym przewodniku szybki start dołączysz konfigurację aplikacji platformy Azu
 
 ## <a name="create-an-aspnet-core-web-app"></a>Tworzenie aplikacji internetowej ASP.NET Core
 
-Aby utworzyć nowy projekt aplikacji sieci Web MVC ASP.NET Core, należy użyć [interfejsu wiersza polecenia platformy .NET Core](https://docs.microsoft.com/dotnet/core/tools/) . Zaletą korzystania z interfejs wiersza polecenia platformy .NET Core przez program Visual Studio jest to, że jest on dostępny na platformach Windows, macOS i Linux.
+Użyj [interfejsu wiersza polecenia platformy .NET Core (CLI)](https://docs.microsoft.com/dotnet/core/tools/) , aby utworzyć nowy projekt aplikacji sieci Web ASP.NET Core MVC. [Azure Cloud Shell](https://shell.azure.com) udostępnia te narzędzia.  Są one również dostępne na platformach Windows, macOS i Linux.
 
 1. Utwórz nowy folder dla projektu. W tym przewodniku szybki start nadaj mu nazwę *TestAppConfig*.
 
-2. W nowym folderze Uruchom następujące polecenie, aby utworzyć nowy projekt aplikacji sieci Web ASP.NET Core MVC:
+1. W nowym folderze Uruchom następujące polecenie, aby utworzyć nowy projekt aplikacji sieci Web ASP.NET Core MVC:
 
-    ```CLI
-        dotnet new mvc --no-https
-    ```
+```dotnetcli
+dotnet new mvc --no-https
+```
 
 ## <a name="add-secret-manager"></a>Dodawanie narzędzia Secret Manager
 
 Aby użyć Menedżera wpisów tajnych, Dodaj element `UserSecretsId` do pliku *. csproj* .
 
-- Otwórz plik *. csproj* . Dodaj element `UserSecretsId`, jak pokazano poniżej. Możesz użyć tego samego identyfikatora GUID lub można zastąpić tę wartość własną. Zapisz plik.
+Otwórz plik *. csproj* . Dodaj element `UserSecretsId`, jak pokazano poniżej. Możesz użyć tego samego identyfikatora GUID lub można zastąpić tę wartość własną. Zapisz plik.
 
-    ```xml
-    <Project Sdk="Microsoft.NET.Sdk.Web">
+> [!IMPORTANT]
+> `CreateHostBuilder` zastępuje `CreateWebHostBuilder` na platformie .NET Core 3,0.  Wybierz poprawną składnię opartą na Twoim środowisku.
+
+#### <a name="net-core-2xtabcore2x"></a>[.NET Core 2.x](#tab/core2x)
+
+```xml
+<Project Sdk="Microsoft.NET.Sdk.Web">
 
     <PropertyGroup>
         <TargetFramework>netcoreapp2.1</TargetFramework>
@@ -76,8 +78,22 @@ Aby użyć Menedżera wpisów tajnych, Dodaj element `UserSecretsId` do pliku *.
         <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
     </ItemGroup>
 
-    </Project>
-    ```
+</Project>
+```
+
+#### <a name="net-core-3xtabcore3x"></a>[.NET Core 3. x](#tab/core3x)
+
+```xml
+<Project Sdk="Microsoft.NET.Sdk.Web">
+    
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <UserSecretsId>79a3edd0-2092-40a2-a04d-dcb46d5ca9ed</UserSecretsId>
+    </PropertyGroup>
+
+</Project>
+```
+---
 
 Narzędzie Secret manager przechowuje poufne dane potrzebne w pracy deweloperskiej poza Twoim drzewem projektu. Takie podejście zapobiega przypadkowemu ujawnieniu wpisów tajnych aplikacji w kodzie źródłowym. Aby uzyskać więcej informacji na temat Menedżera wpisów tajnych, zobacz [bezpieczne przechowywanie wpisów tajnych aplikacji w programie Development w ASP.NET Core](https://docs.microsoft.com/aspnet/core/security/app-secrets)
 
@@ -85,43 +101,43 @@ Narzędzie Secret manager przechowuje poufne dane potrzebne w pracy deweloperski
 
 1. Dodaj odwołanie do pakietu NuGet `Microsoft.Azure.AppConfiguration.AspNetCore`, uruchamiając następujące polecenie:
 
-    ```CLI
-        dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore --version 2.0.0-preview-010060003-1250
+    ```dotnetcli
+    dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore --version 3.0.0-preview-010560002-1165
     ```
-2. Uruchom następujące polecenie, aby przywrócić pakiety dla projektu:
+1. Uruchom następujące polecenie, aby przywrócić pakiety dla projektu:
 
-    ```CLI
-        dotnet restore
+    ```dotnetcli
+    dotnet restore
     ```
-3. Dodaj wpis tajny o nazwie *ConnectionStrings:AppConfig* do narzędzia Secret Manager.
+1. Dodaj wpis tajny o nazwie *ConnectionStrings:AppConfig* do narzędzia Secret Manager.
 
     Ten wpis tajny zawiera parametry połączenia w celu uzyskania dostępu do magazynu konfiguracji aplikacji. Zastąp wartość w poniższym poleceniu parametrami połączenia dla magazynu konfiguracji aplikacji.
 
     To polecenie należy wykonać w tym samym katalogu, w którym znajduje się plik *csproj*.
 
-    ```CLI
-        dotnet user-secrets set ConnectionStrings:AppConfig <your_connection_string>
+    ```dotnetcli
+    dotnet user-secrets set ConnectionStrings:AppConfig <your_connection_string>
     ```
 
     > [!IMPORTANT]
     > Niektóre powłoki poobcinają parametry połączenia, chyba że są ujęte w cudzysłów. Upewnij się, że dane wyjściowe polecenia `dotnet user-secrets` pokazują wszystkie parametry połączenia. Jeśli tak nie jest, należy ponownie uruchomić polecenie, umieszczając parametry połączenia w cudzysłowie.
 
-    Menedżer wpisów tajnych służy tylko do lokalnego testowania aplikacji sieci Web. Gdy aplikacja jest wdrażana w [Azure App Service](https://azure.microsoft.com/services/app-service/web), na przykład w celu przechowywania parametrów połączenia należy użyć **parametrów połączenia** w App Service, a nie za pomocą Menedżera Secret.
+    Menedżer wpisów tajnych służy tylko do lokalnego testowania aplikacji sieci Web. Po wdrożeniu aplikacji do [Azure App Service](https://azure.microsoft.com/services/app-service/web)można na przykład użyć ustawienia aplikacja **parametry połączenia** w App Service zamiast tajnego Menedżera w celu przechowywania parametrów połączenia.
 
-    Ten klucz tajny jest dostępny z interfejsem API konfiguracji. Dwukropek (:) działa w nazwie konfiguracji z interfejsem API konfiguracji na wszystkich obsługiwanych platformach. Zobacz [Konfiguracja według środowiska](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/index?tabs=basicconfiguration&view=aspnetcore-2.0).
+    Uzyskaj dostęp do tego wpisu tajnego za pomocą interfejsu API konfiguracji. Dwukropek (:) działa w nazwie konfiguracji z interfejsem API konfiguracji na wszystkich obsługiwanych platformach. Zobacz [Konfiguracja według środowiska](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/index?tabs=basicconfiguration&view=aspnetcore-2.0).
 
-4. Otwórz *program.cs*i Dodaj odwołanie do dostawcy konfiguracji aplikacji .NET Core.
+1. Otwórz *program.cs*i Dodaj odwołanie do dostawcy konfiguracji aplikacji .NET Core.
 
     ```csharp
     using Microsoft.Extensions.Configuration.AzureAppConfiguration;
     ```
 
-5. Zaktualizuj metodę `CreateWebHostBuilder`, aby użyć konfiguracji aplikacji przez wywołanie metody `config.AddAzureAppConfiguration()`.
+1. Zaktualizuj metodę `CreateWebHostBuilder`, aby użyć konfiguracji aplikacji przez wywołanie metody `config.AddAzureAppConfiguration()`.
     
     > [!IMPORTANT]
     > `CreateHostBuilder` zastępuje `CreateWebHostBuilder` na platformie .NET Core 3,0.  Wybierz poprawną składnię opartą na Twoim środowisku.
 
-    ### <a name="update-createwebhostbuilder-for-net-core-2x"></a>Aktualizacja `CreateWebHostBuilder` dla programu .NET Core 2. x
+    #### <a name="net-core-2xtabcore2x"></a>[.NET Core 2.x](#tab/core2x)
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -134,8 +150,8 @@ Narzędzie Secret manager przechowuje poufne dane potrzebne w pracy deweloperski
             .UseStartup<Startup>();
     ```
 
-    ### <a name="update-createhostbuilder-for-net-core-3x"></a>Aktualizacja `CreateHostBuilder` dla programu .NET Core 3. x
-
+    #### <a name="net-core-3xtabcore3x"></a>[.NET Core 3. x](#tab/core3x)
+    
     ```csharp
     public static IHostBuilder CreateHostBuilder(string[] args) =>
         Host.CreateDefaultBuilder(args)
@@ -147,8 +163,9 @@ Narzędzie Secret manager przechowuje poufne dane potrzebne w pracy deweloperski
         })
         .UseStartup<Startup>());
     ```
+    ---
 
-6. Otwórz *index. cshtml* w widokach > katalog macierzysty i Zastąp jego zawartość następującym kodem:
+1. Przejdź do *<app root>/views/Home* i Otwórz *index. cshtml*. Zastąp jego zawartość następującym kodem:
 
     ```HTML
     @using Microsoft.Extensions.Configuration
@@ -167,7 +184,7 @@ Narzędzie Secret manager przechowuje poufne dane potrzebne w pracy deweloperski
     <h1>@Configuration["TestApp:Settings:Message"]</h1>
     ```
 
-7. Otwórz *_Layout. cshtml* w widokach > udostępniony katalog i Zastąp jego zawartość następującym kodem:
+1. Przejdź do *<app root>/views/Shared* i Otwórz *_Layout. cshtml*. Zastąp jego zawartość następującym kodem:
 
     ```HTML
     <!DOCTYPE html>
@@ -196,19 +213,25 @@ Narzędzie Secret manager przechowuje poufne dane potrzebne w pracy deweloperski
 
 ## <a name="build-and-run-the-app-locally"></a>Lokalne kompilowanie i uruchamianie aplikacji
 
-1. Aby skompilować aplikację przy użyciu interfejs wiersza polecenia platformy .NET Core, uruchom następujące polecenie w powłoce poleceń:
+1. Aby skompilować aplikację przy użyciu interfejs wiersza polecenia platformy .NET Core, przejdź do katalogu głównego aplikacji, a następnie uruchom następujące polecenie w powłoce poleceń:
 
-    ```CLI
-       dotnet build
+    ```dotnetcli
+    dotnet build
     ```
 
-2. Po pomyślnym zakończeniu kompilacji Uruchom następujące polecenie, aby uruchomić aplikację sieci Web lokalnie:
+1. Po pomyślnym zakończeniu kompilacji Uruchom następujące polecenie, aby uruchomić aplikację sieci Web lokalnie:
 
-    ```CLI
-        dotnet run
+    ```dotnetcli
+    dotnet run
     ```
 
-3. Otwórz okno przeglądarki i przejdź do `http://localhost:5000`, który jest domyślnym adresem URL aplikacji sieci Web hostowanej lokalnie.
+1. Jeśli pracujesz na komputerze lokalnym, użyj przeglądarki, aby przejść do `http://localhost:5000`. Jest to domyślny adres URL aplikacji sieci Web hostowanej lokalnie.  
+
+Jeśli pracujesz w Azure Cloud Shell, wybierz przycisk *Podgląd sieci Web* , a następnie pozycję *Konfiguruj*.  
+
+![Znajdź przycisk Podgląd sieci Web](./media/quickstarts/cloud-shell-web-preview.png)
+
+Po wyświetleniu monitu o skonfigurowanie portu dla wersji zapoznawczej wprowadź wartość "5000", a następnie wybierz pozycję *Otwórz i Przeglądaj*.  Na stronie sieci Web zostanie odczytana wartość "dane z konfiguracji aplikacji platformy Azure".
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 

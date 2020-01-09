@@ -1,5 +1,5 @@
 ---
-title: Przechowywanie danych tożsamości na potrzeby klientów w Europie — usługi Azure Active Directory | Dokumentacja firmy Microsoft
+title: Magazyn danych tożsamości dla klientów europejskich — Azure AD
 description: Dowiedz się, o której przechowuje dane dotyczące tożsamości usługi Azure Active Directory dla swoich klientów w Europie.
 services: active-directory
 author: msaburnley
@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 03/04/2019
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 178f81cf42e5c57be4a0b69ada6560d46951a3a3
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 7360b11f41cc08c2beb3ffa227e1658881798502
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68942845"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422997"
 ---
 # <a name="identity-data-storage-for-european-customers-in-azure-active-directory"></a>Przechowywanie danych tożsamości na potrzeby klientów w Europie w usłudze Azure Active Directory
 Dane tożsamości są przechowywane w usłudze Azure AD w lokalizacji geograficznej na podstawie adresu dostarczonego przez organizację w przypadku subskrybowania usługi online firmy Microsoft, takiej jak Office 365 i Azure. Aby uzyskać informacje o tym, gdzie są przechowywane dane tożsamości, możesz użyć sekcji [gdzie znajdują się Twoje dane?](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located) Centrum zaufania Microsoft.
@@ -30,11 +30,11 @@ W przypadku klientów, którzy podały adres w Europie, usługa Azure AD przecho
 - Powiadomienia wypychane przy użyciu aplikacji Microsoft Authenticator pochodzą z centrów danych US. Ponadto usługi specyficzne dla dostawcy urządzeń mogą również być odtwarzane, a te usługi są dostępne poza Europą.
 - Kody OATH są zawsze weryfikowane w Stanach Zjednoczonych. 
 
-Aby uzyskać więcej informacji o tym, jakie informacje o użytkowniku są zbierane przez serwer usługi Azure MFA (serwer MFA) i opartą na chmurze chmurę Azure, zobacz [zbieranie danych użytkownika w usłudze Azure Authentication](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-reporting-datacollection).
+Aby uzyskać więcej informacji o tym, jakie informacje o użytkowniku są zbierane przez usługę Azure Serwer Multi-Factor Authentication (serwer MFA) i opartą na chmurze usługę Azure MFA, zobacz [zbieranie danych użytkownika w usłudze azure Multi-Factor Authentication](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-reporting-datacollection).
 
 ## <a name="microsoft-azure-active-directory-b2c-azure-ad-b2c"></a>Microsoft Azure Active Directory B2C (Azure AD B2C)
 
-Dane konfiguracji zasad Azure AD B2C i kontenery kluczy są przechowywane w stanowych centrach danych. Nie zawierają one żadnych danych osobowych użytkownika. Aby uzyskać więcej informacji na temat konfiguracji zasad, [Zobacz Azure Active Directory B2C: Artykuł zasady](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-policies) wbudowane.
+Dane konfiguracji zasad Azure AD B2C i kontenery kluczy są przechowywane w stanowych centrach danych. Nie zawierają one żadnych danych osobowych użytkownika. Aby uzyskać więcej informacji na temat konfiguracji zasad, zobacz artykuł [Azure Active Directory B2C: Built-in policies (Azure Active Directory B2C — wbudowane zasady)](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-policies).
 
 ## <a name="microsoft-azure-active-directory-b2b-azure-ad-b2b"></a>Microsoft Azure Active Directory B2B (Azure AD B2B) 
     
@@ -50,7 +50,7 @@ Usługa Azure AD DS przechowuje dane użytkowników w tej samej lokalizacji, co 
 - Lista zatwierdzonych domen federacyjnych dla aplikacji
 - Klucz publiczny podpisywania tokenu aplikacji 
 
-Aby uzyskać więcej informacji na temat Federacji w programie Microsoft Exchange Server [, zapoznaj się z Federacją: Artykuł pomocy](https://docs.microsoft.com/exchange/federation-exchange-2013-help) programu Exchange 2013.
+Aby uzyskać więcej informacji na temat Federacji w programie Microsoft Exchange Server, zobacz artykuł dotyczący [Federacji: Exchange 2013 help](https://docs.microsoft.com/exchange/federation-exchange-2013-help) .
 
 
 ## <a name="other-considerations"></a>Inne zagadnienia

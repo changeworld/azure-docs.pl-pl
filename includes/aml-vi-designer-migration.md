@@ -8,12 +8,12 @@ ms.topic: include
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/18/2019
-ms.openlocfilehash: 08833f869a7838fe893b8e941072078f89033c2b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e3cb977871af2e6cd7a59dd48505090dd29e8a76
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73517854"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75541805"
 ---
 1. Zaloguj się do [Azure Machine Learning Studio](https://ml.azure.com).
 
@@ -38,5 +38,5 @@ ms.locfileid: "73517854"
 
 - **Importowanie danych** lub **Eksportowanie modułów danych**
         
-    Jeśli w tym eksperymentie masz moduł **Importuj dane** lub **Eksportuj dane** , musisz zaktualizować źródło danych tak, aby korzystało z magazynów danych. Aby dowiedzieć się, jak utworzyć magazyn danych, zapoznaj się z tematem [jak korzystać z usługi Azure Storage](../articles/machine-learning/service/how-to-access-data.md). Informacje o koncie magazynu w chmurze zostały dodane w komentarzach modułu **Importuj dane** lub **Eksportuj dane** dla wygody użytkownika. 
+    Jeśli w tym eksperymentie masz moduł **Importuj dane** lub **Eksportuj dane** , musisz zaktualizować źródło danych tak, aby korzystało z magazynów danych. Aby dowiedzieć się, jak utworzyć magazyn danych, zapoznaj się z tematem [jak korzystać z usługi Azure Storage](../articles/machine-learning/how-to-access-data.md). Informacje o koncie magazynu w chmurze zostały dodane w komentarzach modułu **Importuj dane** lub **Eksportuj dane** dla wygody użytkownika. 
       

@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 08/23/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: d74bd67dedb70308061e54c05d23a4bb63adc8f8
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 0e49a5c8edd074c71d5972ee8d9c2e81f9c512ea
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851336"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453968"
 ---
 # <a name="create-and-manage-an-azure-iot-central-application-from-the-csp-portal"></a>Tworzenie aplikacji IoT Central platformy Azure i zarządzanie nią z poziomu portalu CSP
 
@@ -33,7 +33,7 @@ Na stronie Menedżer aplikacji IoT Central platformy Azure. Usługa Azure IoT Ce
 
 ![Tworzenie Menedżera dla dostawców CSP](media/howto-create-application-csp/image3.png)
 
-Aby utworzyć aplikację IoT Central platformy Azure, wybierz opcję **Kompiluj** w menu po lewej stronie. Wybierz jeden z szablonów branżowych lub wybierz pozycję **aplikacja niestandardowa** , aby utworzyć aplikację od podstaw. Spowoduje to załadowanie strony tworzenia aplikacji. Musisz ukończyć wszystkie pola na tej stronie, a następnie wybierz pozycję **Utwórz**. Znajdziesz więcej informacji na temat każdego z poniższych pól.
+Aby utworzyć aplikację IoT Central platformy Azure, wybierz opcję **Kompiluj** w menu po lewej stronie. Wybierz jeden z szablonów branżowych lub wybierz **starszą aplikację** , aby utworzyć aplikację od podstaw. Spowoduje to załadowanie strony tworzenia aplikacji. Musisz ukończyć wszystkie pola na tej stronie, a następnie wybierz pozycję **Utwórz**. Znajdziesz więcej informacji na temat każdego z poniższych pól.
 
 ![Tworzenie strony aplikacji dla dostawców CSP](media/howto-create-application-csp/image4.png)
 
@@ -85,13 +85,12 @@ Możesz zobaczyć regiony, w których usługa Azure IoT Central jest dostępna n
 
 ## <a name="application-template"></a>Szablon aplikacji
 
-Możesz wybrać jeden z dostępnych szablonów aplikacji dla nowej aplikacji IoT Central platformy Azure. Szablon aplikacji może zawierać wstępnie zdefiniowane elementy, takie jak pulpity nawigacyjne i szablony urządzeń, które pomogą Ci rozpocząć pracę.
+Możesz wybrać Poniższy szablon aplikacji dla nowej aplikacji usługi Azure IoT Central.
 
 | Szablon aplikacji | Opis |
 | -------------------- | ----------- |
-| Aplikacja niestandardowa   | Tworzy pustą aplikację, którą wypełnisz własnymi urządzeniami i szablonami urządzeń. |
-| Przykład dotyczący firmy Contoso       | Tworzy aplikację, która zawiera szablon urządzenia dla prostego podłączonego urządzenia. Użyj tego szablonu, aby rozpocząć eksplorowanie usługi Azure IoT Central. |
-| Przykład dotyczący zestawów deweloperskich       | Tworzy aplikację z gotowymi szablonami urządzeń, które umożliwiają łączenie z urządzeniem MXChip lub Raspberry Pi. Użyj tego szablonu, jeśli jesteś deweloperem urządzenia z kodem na jednym z tych urządzeń. |
+| Starsza aplikacja   | Tworzy pustą aplikację, którą wypełnisz własnymi urządzeniami i szablonami urządzeń. |
+
 
 ## <a name="next-steps"></a>Następne kroki
 

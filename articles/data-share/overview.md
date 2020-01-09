@@ -6,12 +6,12 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: overview
 ms.date: 07/10/2019
-ms.openlocfilehash: 43972bc8e64e0bf88aae00126735d3e0c8751254
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d1665ef3e845491f116174cf1914c38e7cf5c691
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499374"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75660804"
 ---
 # <a name="what-is-azure-data-share"></a>Co to jest usługa Azure Data Share?
 
@@ -35,7 +35,7 @@ Udział danych platformy Azure może być również używany do ustanawiania ryn
 
 Innym przypadkiem użycia usługi Azure Data Share jest ustanowienie konsorcjum danych. Na przykład niektóre różne instytucje badawcze mogą udostępniać dane za pomocą jednej zaufanej treści. Dane są analizowane, agregowane lub przetwarzane przy użyciu narzędzi analitycznych platformy Azure, a następnie udostępniane zainteresowanym stronom. 
 
-## <a name="how-it-works"></a>Jak to działa
+## <a name="how-it-works"></a>Zasady działania
 
 Udział danych platformy Azure oferuje obecnie udostępnianie oparte na migawce i udostępnianie w miejscu (w ograniczonej wersji zapoznawczej). 
 
@@ -47,7 +47,7 @@ Dostawcy danych mogą oferować klientom danych przyrostowe aktualizacje danych,
 
 Gdy odbiorca danych akceptuje udział danych, może odbierać dane w wybranym przez siebie magazynie danych. Na przykład jeśli dostawca danych udostępnia dane za pomocą usługi Azure Blob Storage, odbiorca danych może odbierać te dane w Azure Data Lake Store. Podobnie, jeśli dostawca danych udostępnia dane z Azure SQL Data Warehouse, odbiorca danych może zdecydować, czy chcą otrzymywać dane do Azure Data Lake Store, Azure SQL Database czy Azure SQL Data Warehouse. W przypadku udostępniania z poziomu źródeł opartych na języku SQL odbiorca danych może również wybrać, czy mają oni odbierać dane w Parquet czy CSV. 
 
-Udostępnianie w miejscu jest obecnie w ograniczonej wersji zapoznawczej dla Eksplorator danych platformy Azure. Dostawcy danych mogą udostępniać dane tam, gdzie się znajdują, bez przemieszczania danych za pośrednictwem linku symbolicznego. Utwórz konto w celu uzyskania ograniczonej wersji zapoznawczej udostępniania miejsca na platformie Azure Eksplorator danych [tym miejscu](https://aka.ms/azuredatasharepreviewsignup). 
+Udostępnianie w miejscu jest obecnie w ograniczonej wersji zapoznawczej dla Eksplorator danych platformy Azure. Dostawcy danych mogą udostępniać dane tam, gdzie się znajdują, bez przemieszczania danych za pośrednictwem linku symbolicznego. Utwórz konto w celu uzyskania ograniczonej wersji zapoznawczej usługi Azure Eksplorator danych [udostępnianie w miejscu.](https://aka.ms/azuredatasharepreviewsignup) 
 
 ## <a name="key-capabilities"></a>Najważniejsze możliwości
 
@@ -77,7 +77,7 @@ Udział danych platformy Azure umożliwia użytkownikom danych:
 
 Wszystkie najważniejsze możliwości wymienione powyżej są obsługiwane za pośrednictwem platformy Azure lub interfejsów API REST. Aby uzyskać więcej informacji na temat korzystania z usługi Azure Data Share za pośrednictwem interfejsów API REST, zapoznaj się z dokumentacją referencyjną. 
 
-## <a name="security"></a>Bezpieczeństwo
+## <a name="security"></a>Zabezpieczenia
 
 Udział danych platformy Azure wykorzystuje podstawowe zabezpieczenia oferowane przez platformę Azure w celu ochrony danych przechowywanych i przesyłanych. Dane są szyfrowane w spoczynku, gdzie są obsługiwane przez podstawowy magazyn danych. Dane są również szyfrowane podczas przesyłania. Metadane dotyczące udziału danych są również szyfrowane w czasie spoczynku i podczas przesyłania. 
 

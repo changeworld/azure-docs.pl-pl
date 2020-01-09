@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 33ae3f9f928a55f50f4ecd0c6c98790a384e880b
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 11df1557fdcad059910dd2a87e9056e19a90bf01
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74684181"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75640848"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Wprowadzenie do zestawu SDK Azure WebJobs na potrzeby przetwarzania w tle opartego na zdarzeniach
 
@@ -73,7 +73,7 @@ Host jest kontenerem środowiska uruchomieniowego dla funkcji, które nasłuchuj
     }
     ```
 
-W ASP.NET Core konfiguracje hosta są ustawiane przez wywoływanie metod w wystąpieniu [`HostBuilder`](/dotnet/api/microsoft.extensions.hosting.hostbuilder) . Aby uzyskać więcej informacji, zobacz [host ogólny programu .NET](/aspnet/core/fundamentals/host/generic-host). Metoda rozszerzenia `ConfigureWebJobs` Inicjuje hosta zadań WebJob. W `ConfigureWebJobs`należy zainicjować określone rozszerzenia zadań WebJob i ustawić właściwości tych rozszerzeń.  
+W ASP.NET Core konfiguracje hosta są ustawiane przez wywoływanie metod w wystąpieniu [`HostBuilder`](/dotnet/api/microsoft.extensions.hosting.hostbuilder) . Aby uzyskać więcej informacji, zobacz [Host ogólny .NET](/aspnet/core/fundamentals/host/generic-host). Metoda rozszerzenia `ConfigureWebJobs` Inicjuje hosta zadań WebJob. W `ConfigureWebJobs`należy zainicjować określone rozszerzenia zadań WebJob i ustawić właściwości tych rozszerzeń.  
 
 ## <a name="enable-console-logging"></a>Włącz rejestrowanie konsoli
 
@@ -257,17 +257,17 @@ W tej sekcji utworzysz i uruchamiasz projekt lokalnie i Wyzwalasz funkcję, twor
 
 1. Wprowadź *kolejkę* jako nazwę kolejki, a następnie wybierz przycisk **OK**.
 
-   ![Utwórz kolejkę](./media/webjobs-sdk-get-started/create-queue.png)
+   ![Tworzenie kolejki](./media/webjobs-sdk-get-started/create-queue.png)
 
 1. Kliknij prawym przyciskiem myszy węzeł nowej kolejki, a następnie wybierz pozycję **Wyświetl kolejkę**.
 
 1. Wybierz ikonę **Dodaj wiadomość** .
 
-   ![Utwórz kolejkę](./media/webjobs-sdk-get-started/create-queue-message.png)
+   ![Tworzenie kolejki](./media/webjobs-sdk-get-started/create-queue-message.png)
 
 1. W oknie dialogowym **Dodawanie wiadomości** wprowadź *Hello World!* jako **tekst komunikatu**, a następnie wybierz przycisk **OK**. W kolejce znajduje się teraz komunikat.
 
-   ![Utwórz kolejkę](./media/webjobs-sdk-get-started/hello-world-text.png)
+   ![Tworzenie kolejki](./media/webjobs-sdk-get-started/hello-world-text.png)
 
 1. Uruchom ponownie projekt.
 
@@ -399,7 +399,7 @@ Aby skorzystać z funkcji rejestrowania [Application Insights](../azure-monitor/
 
 W tej sekcji należy ponownie uruchomić lokalnie, aby sprawdzić, czy dane rejestrowania są teraz Application Insights jak również w konsoli programu.
 
-1. Użyj **Eksplorator serwera** w programie Visual Studio, aby utworzyć komunikat w kolejce, tak samo jak [wcześniej](#trigger-the-function-in-azure), z wyjątkiem wprowadzania danych *Hello App Insights!* jako tekst komunikatu.
+1. Użyj **Eksplorator serwera** w programie Visual Studio, aby utworzyć wiadomość w kolejce tak jak [wcześniej](#test-locally), z wyjątkiem wprowadzania danych *Hello App Insights!* jako tekst komunikatu.
 
 1. Uruchom projekt.
 
@@ -407,13 +407,15 @@ W tej sekcji należy ponownie uruchomić lokalnie, aby sprawdzić, czy dane reje
 
 1. Zamknij okno konsoli.
 
-1. Otwórz [Azure Portal](https://portal.azure.com/)i przejdź do zasobu Application Insights.
+1. Przejdź do [Azure Portal](https://portal.azure.com/) , aby wyświetlić zasób Application Insights. Wyszukaj i wybierz **Application Insights**.
+
+1. Wybierz wystąpienie Application Insights.
 
 1. Wybierz pozycję **Wyszukaj**.
 
    ![Wybierz pozycję Wyszukaj](./media/webjobs-sdk-get-started/select-search.png)
 
-1. Jeśli nie widzisz usługi *Hello App Insights!* Kliknij pozycję **Odśwież** okresowo przez kilka minut. (Dzienniki nie pojawiają się natychmiast, ponieważ trwa opróżnianie przez klienta Application Insights dzienników procesów IT).
+1. Jeśli nie widzisz usługi *Hello App Insights!* Kliknij pozycję **Odśwież** okresowo przez kilka minut. (Dzienniki nie pojawiają się natychmiast, ponieważ trwają przez klienta Application Insights opróżnianie dzienników przetwarzanych przez proces IT).
 
    ![Dzienniki w Application Insights](./media/webjobs-sdk-get-started/logs-in-ai.png)
 

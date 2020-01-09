@@ -4,17 +4,17 @@ description: Plik dyrektywy include
 services: digital-twins
 ms.service: digital-twins
 ms.topic: include
-ms.date: 12/06/2019
+ms.date: 12/31/2019
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
 ms.custom: include file
-ms.openlocfilehash: be46a0dda24dc990e895a3e983c730337f9cf31d
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 90e6e5c8d6d4f10e2d63f80b9c0840854424f5a7
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74981279"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75616218"
 ---
 ### <a name="general-availability-and-preview-comparison"></a>Ogólna dostępność i porównanie wersji zapoznawczej
 
@@ -49,6 +49,8 @@ Obsługiwane są maksymalnie dwa źródła zdarzeń na wystąpienie.
 
 * Dowiedz się, jak [dodać Źródło centrum zdarzeń](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-eventhub).
 * Skonfiguruj [Źródło Centrum IoT](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-iothub).
+
+Domyślnie środowiska w [wersji zapoznawczej obsługują stawki](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-storage-ingress) za transfer danych przychodzących do **1 MB na sekundę (MB/s) na środowisko**. W razie potrzeby klienci mogą skalować swoje środowiska w wersji zapoznawczej do **16 MB/s** . Istnieje również limit partycji wynoszący **0,5 MB/s**. 
 
 ### <a name="api-limits"></a>Limity interfejsu API
 

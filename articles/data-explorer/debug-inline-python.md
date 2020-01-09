@@ -7,16 +7,16 @@ ms.reviewer: adieldar
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 12/04/2019
-ms.openlocfilehash: f0bf81ce6392e1650d9986d81a55eac9c416c24d
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 96bd66f96b04bd7032d976ba9ebbbeb60c8415e7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74822905"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444469"
 ---
 # <a name="debug-kusto-query-language-inline-python-using-vs-code"></a>Debuguj język zapytań Kusto w języku Python przy użyciu VS Code
 
-Usługa Azure Eksplorator danych obsługuje uruchamianie kodu w języku Python osadzonym w programie Kusto Query Language przy użyciu [wtyczki Python ()](/azure/kusto/query/pythonplugin). Środowisko uruchomieniowe wtyczki jest hostowane w piaskownicy, izolowanym i bezpiecznym środowisku języka Python. Funkcja wtyczki Python () rozszerza natywne funkcje języka zapytań Kusto za pomocą dużego archiwum pakietów OSS Python. To rozszerzenie umożliwia uruchamianie zaawansowanych algorytmów, takich jak uczenie maszynowe, sztuczna inteligencja, statystyki i szeregi czasowe, w ramach zapytania.
+Usługa Azure Eksplorator danych obsługuje uruchamianie kodu w języku Python osadzonym w programie Kusto Query Language przy użyciu [wtyczki Python ()](/azure/kusto/query/pythonplugin). Środowisko uruchomieniowe wtyczki jest hostowane w piaskownicy, izolowanym i bezpiecznym środowisku języka Python. Funkcja wtyczki Python () rozszerza natywne funkcje języka zapytań Kusto za pomocą dużego archiwum pakietów OSS Python. To rozszerzenie umożliwia uruchamianie zaawansowanych algorytmów, takich jak uczenie maszynowe, sztuczna inteligencja, Statystyka i czasowa w ramach zapytania.
 
 Narzędzia języka zapytań Kusto nie są wygodne do tworzenia i debugowania algorytmów języka Python. W związku z tym opracowuj algorytm w ulubionym środowisku deweloperskim zintegrowanym z językiem Python, takim jak Jupyter, platformy PyCharm itd, VS lub VS Code. Po ukończeniu algorytmu skopiuj i wklej do KQL. Aby usprawnić i usprawnić ten przepływ pracy, platforma Azure Eksplorator danych obsługuje integrację między klientami Kusto Explorer lub interfejsem użytkownika sieci Web i VS Code do tworzenia i debugowania wbudowanego kodu języka Python KQL. 
 
@@ -26,7 +26,7 @@ Narzędzia języka zapytań Kusto nie są wygodne do tworzenia i debugowania alg
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 1. Zainstaluj [dystrybucję Anaconda](https://www.anaconda.com/distribution/#download-section)języka Python. W obszarze **Opcje zaawansowane**wybierz pozycję **Dodaj Anaconda do zmiennej środowiskowej my Path**.
-2. Instalacja programu [Visual Studio Code](https://code.visualstudio.com/Download)
+2. [Instalowanie narzędzia Visual Studio Code](https://code.visualstudio.com/Download)
 3. Zainstaluj [rozszerzenie Python dla Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-python.python).
 
 ## <a name="run-your-query-in-your-client-application"></a>Uruchamianie zapytania w aplikacji klienckiej

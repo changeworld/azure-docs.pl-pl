@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/22/2019
-ms.openlocfilehash: 7d9c0000964348b7c9c83ccbc2490677614c50cd
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 971871c28bd1b38b134c04b0334fbe99d1d655c1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931465"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440159"
 ---
 # <a name="copy-data-from-sap-business-warehouse-by-using-azure-data-factory"></a>Kopiowanie danych z programu SAP Business Warehouse przy użyciu Azure Data Factory
 
@@ -101,7 +101,7 @@ W witrynie Azure Portal przejdź do swojej fabryki danych. Wybierz pozycję **ut
 
     ![Konfiguruj ustawienia kopiowania](media/load-sap-bw-data/configure-copy-settings.png)
 
-12. Na stronie **Podsumowanie** przejrzyj wybrane ustawienia. Następnie wybierz przycisk **Dalej**.
+12. Na stronie **Podsumowanie** przejrzyj ustawienia. Następnie wybierz przycisk **Dalej**.
 
 13. Na stronie **wdrażanie** wybierz pozycję **Monitoruj** , aby monitorować potok.
 
@@ -156,11 +156,15 @@ Na **stronie Wprowadzenie do usługi Data Factory wybierz** pozycję **Utwórz p
 
    - **SAPOpenHubDestinationName**: Podaj nazwę otwartej tabeli centrum, z której mają zostać skopiowane dane.
 
-   - **ADLSGen2SinkPath**: określ ścieżkę Azure Data Lake Storage Gen2 lokalizacji docelowej, do której mają zostać skopiowane dane. Jeśli ścieżka nie istnieje, działanie kopiowania Data Factory tworzy ścieżkę podczas wykonywania.
+   - **Data_Destination_Container**: określ kontener Azure Data Lake Storage Gen2 docelowy, do którego mają zostać skopiowane dane. Jeśli kontener nie istnieje, działanie Data Factory Copy Tworzy je podczas wykonywania.
+  
+   - **Data_Destination_Directory**: Określ ścieżkę folderu w kontenerze Azure Data Lake Storage Gen2, do której mają zostać skopiowane dane. Jeśli ścieżka nie istnieje, działanie kopiowania Data Factory tworzy ścieżkę podczas wykonywania.
+  
+   - **HighWatermarkBlobContainer**: Określ kontener do przechowywania wartości górnego limitu.
 
-   - **HighWatermarkBlobPath**: Określ ścieżkę do przechowywania wartości górnego limitu, takiej jak `container/path`.
+   - **HighWatermarkBlobDirectory**: Określ ścieżkę folderu w kontenerze do przechowywania wartości górnego limitu.
 
-   - **HighWatermarkBlobName**: Określ nazwę obiektu BLOB do przechowywania wartości górnego limitu, takiej jak `requestIdCache.txt`. W usłudze BLOB Storage przejdź do odpowiedniej ścieżki HighWatermarkBlobPath + HighWatermarkBlobName, takich jak *Container/Path/requestIdCache. txt*. Utwórz obiekt BLOB z zawartością 0.
+   - **HighWatermarkBlobName**: Określ nazwę obiektu BLOB do przechowywania wartości górnego limitu, takiej jak `requestIdCache.txt`. W usłudze BLOB Storage przejdź do odpowiedniej ścieżki HighWatermarkBlobContainer + HighWatermarkBlobDirectory + HighWatermarkBlobName, takich jak *Container/Path/requestIdCache. txt*. Utwórz obiekt BLOB z zawartością 0.
 
       ![Zawartość obiektu BLOB](media/load-sap-bw-data/blob.png)
 
@@ -185,11 +189,11 @@ Na **stronie Wprowadzenie do usługi Data Factory wybierz** pozycję **Utwórz p
          }
          ```
 
-      3. Dodaj akcję **Utwórz obiekt BLOB** . W polu **ścieżka folderu** i **Nazwa obiektu BLOB**Użyj tych samych wartości, które zostały wcześniej skonfigurowane w **HighWatermarkBlobPath** i **HighWatermarkBlobName**.
+      3. Dodaj akcję **Utwórz obiekt BLOB** . W polu **ścieżka folderu** i **Nazwa obiektu BLOB**Użyj tych samych wartości, które zostały wcześniej skonfigurowane w *HighWatermarkBlobContainer + HighWatermarkBlobDirectory* i *HighWatermarkBlobName*.
 
       4. Wybierz pozycję **Zapisz**. Następnie skopiuj wartość **adresu URL post protokołu HTTP** do użycia w potoku Data Factory.
 
-4. Po podaniu parametrów potoku Data Factory wybierz pozycję **debuguj** > **Zakończ** , aby wywołać przebieg do sprawdzania poprawności konfiguracji. Lub wybierz pozycję **Opublikuj wszystkie** , aby opublikować zmiany, a następnie wybierz **wyzwalacz** , aby wykonać przebieg.
+4. Po podaniu parametrów potoku Data Factory wybierz pozycję **debuguj** > **Zakończ** , aby wywołać przebieg do sprawdzania poprawności konfiguracji. Lub wybierz pozycję **Opublikuj** , aby opublikować wszystkie zmiany, a następnie wybierz pozycję **Dodaj wyzwalacz** , aby wykonać przebieg.
 
 ## <a name="sap-bw-open-hub-destination-configurations"></a>SAP BW otwieranie konfiguracji miejsca docelowego centrum
 

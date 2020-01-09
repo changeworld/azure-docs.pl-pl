@@ -15,16 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: c3300338ab37d502646c55411d658ad30581019f
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 528684031404dbd907205e69f3565155fa1856b0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74531828"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454293"
 ---
 # <a name="diagnose-on-premises-connectivity-via-vpn-gateways"></a>Diagnozowanie połączeń lokalnych za pośrednictwem bram sieci VPN
 
-Usługa Azure VPN Gateway umożliwia tworzenie hybrydowego rozwiązania, które pozwala sprostać potrzebom bezpiecznego połączenia między siecią lokalną i siecią wirtualną platformy Azure. Ponieważ wymagania są unikatowe, jest to wybór lokalnego urządzenia sieci VPN. Platforma Azure obsługuje obecnie [kilka urządzeń sieci VPN](../vpn-gateway/vpn-gateway-about-vpn-devices.md#devicetable) , które są stale weryfikowane w ramach partnerstwa z dostawcami urządzeń. Przed skonfigurowaniem lokalnego urządzenia sieci VPN przejrzyj ustawienia konfiguracji specyficzne dla urządzenia. Podobnie usługa Azure VPN Gateway jest skonfigurowana z zestawem [obsługiwanych parametrów protokołu IPSec](../vpn-gateway/vpn-gateway-about-vpn-devices.md#ipsec) , które są używane do ustanawiania połączeń. Obecnie nie istnieje sposób na określenie lub wybranie określonej kombinacji parametrów protokołu IPsec z usługi Azure VPN Gateway. Aby można było nawiązać połączenie między środowiskiem lokalnym i platformą Azure, ustawienia lokalnego urządzenia sieci VPN muszą być zgodne z parametrami protokołu IPsec, które są wymagane przez usługę Azure VPN Gateway. Jeśli ustawienia są poprawne, nastąpi utrata łączności i do momentu rozwiązania tych problemów nie było to proste i zazwyczaj zajęło to godz.
+Usługa Azure VPN Gateway umożliwia tworzenie hybrydowego rozwiązania, które pozwala sprostać potrzebom bezpiecznego połączenia między siecią lokalną i siecią wirtualną platformy Azure. Ponieważ wymagania są unikatowe, jest to wybór lokalnego urządzenia sieci VPN. Platforma Azure obsługuje obecnie [kilka urządzeń sieci VPN](../vpn-gateway/vpn-gateway-about-vpn-devices.md#devicetable) , które są stale weryfikowane w ramach partnerstwa z dostawcami urządzeń. Przed skonfigurowaniem lokalnego urządzenia sieci VPN przejrzyj ustawienia konfiguracji specyficzne dla urządzenia. Podobnie usługa Azure VPN Gateway jest skonfigurowana z zestawem [obsługiwanych parametrów protokołu IPSec](../vpn-gateway/vpn-gateway-about-vpn-devices.md#ipsec) , które są używane do ustanawiania połączeń. Obecnie nie istnieje sposób na określenie lub wybranie określonej kombinacji parametrów protokołu IPsec z usługi Azure VPN Gateway. Aby można było nawiązać połączenie między środowiskiem lokalnym i platformą Azure, ustawienia lokalnego urządzenia sieci VPN muszą być zgodne z parametrami protokołu IPsec, które są wymagane przez usługę Azure VPN Gateway. Jeśli ustawienia są nieprawidłowe, nastąpi utrata łączności i do momentu rozwiązania tych problemów nie było to proste i zazwyczaj zajęło to godz.
 
 Dzięki funkcji rozwiązywania problemów z usługą Azure Network Watcher można zdiagnozować wszelkie problemy z bramą i połączeniami, a w ciągu kilku minut uzyskać świadomą decyzję o rozwiązaniu problemu.
 
@@ -84,7 +84,7 @@ Funkcja rozwiązywania problemów z usługą Azure Network Watcher umożliwia di
 
 | Typ błędu | Przyczyna | Dziennik|
 |---|---|---|
-| Nofault | Gdy błąd nie zostanie wykryty. |Tak|
+| NoFault | Nie wykryto żadnego błędu. |Tak|
 | GatewayNotFound | Nie można znaleźć bramy lub Brama nie jest obsługiwana. |Nie|
 | PlannedMaintenance |  Wystąpienie bramy jest w trakcie konserwacji.  |Nie|
 | UserDrivenUpdate | Gdy aktualizacja użytkownika jest w toku. Może to być operacja zmiany rozmiaru. | Nie |
@@ -99,7 +99,7 @@ Funkcja rozwiązywania problemów z usługą Azure Network Watcher umożliwia di
 
 | Typ błędu | Przyczyna | Dziennik|
 |---|---|---|
-| Nofault | Gdy błąd nie zostanie wykryty. |Tak|
+| NoFault | Nie wykryto żadnego błędu. |Tak|
 | GatewayNotFound | Nie można znaleźć bramy lub Brama nie jest obsługiwana. |Nie|
 | PlannedMaintenance | Wystąpienie bramy jest w trakcie konserwacji.  |Nie|
 | UserDrivenUpdate | Gdy aktualizacja użytkownika jest w toku. Może to być operacja zmiany rozmiaru.  | Nie |
@@ -108,7 +108,7 @@ Funkcja rozwiązywania problemów z usługą Azure Network Watcher umożliwia di
 | ConnectionIsMarkedDisconnected | Połączenie jest oznaczone jako "odłączone". |Nie|
 | ConnectionNotConfiguredOnGateway | Usługa bazowa nie ma skonfigurowanego połączenia. | Tak |
 | ConnectionMarkedStandby | Podstawowa usługa jest oznaczona jako w stanie wstrzymania.| Tak|
-| Uwierzytelnianie | Niezgodność klucza wstępnego. | Tak|
+| Authentication | Niezgodność klucza wstępnego. | Tak|
 | PeerReachability | Brama równorzędna jest nieosiągalna. | Tak|
 | IkePolicyMismatch | Brama równorzędna ma zasady IKE, które nie są obsługiwane przez platformę Azure. | Tak|
 | Błąd WfpParse | Wystąpił błąd podczas analizowania dziennika WFP. |Tak|

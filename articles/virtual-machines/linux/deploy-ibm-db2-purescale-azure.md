@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 11/09/2018
 ms.author: edprice
-ms.openlocfilehash: 8eb8075454dc3a49e9525d566c34c64bab8be5a0
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: fe6e581963753cac33092285fee0c8d16959bde8
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70083444"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75530106"
 ---
 # <a name="deploy-ibm-db2-purescale-on-azure"></a>Wdrażanie programu IBM DB2 pureScale na platformie Azure
 
@@ -27,7 +27,7 @@ W tym artykule opisano, jak wdrożyć [przykładową architekturę](ibm-db2-pure
 
 Aby wykonać kroki używane do migracji, zobacz Skrypty instalacji w repozytorium [DB2onAzure](https://aka.ms/db2onazure) w witrynie GitHub. Skrypty te są oparte na architekturze typowego, średniego obciążenia przetwarzania transakcji online (OLTP).
 
-## <a name="get-started"></a>Wprowadzenie
+## <a name="get-started"></a>Rozpocznij
 
 Aby wdrożyć tę architekturę, Pobierz i uruchom skrypt deploy.sh znaleziony w repozytorium [DB2onAzure](https://aka.ms/db2onazure) w witrynie GitHub.
 
@@ -40,35 +40,37 @@ Repozytorium ma także skrypty do konfigurowania pulpitu nawigacyjnego usługi G
 
 Skrypt deploy.sh tworzy i konfiguruje zasoby platformy Azure dla tej architektury. Skrypt poprosi o subskrypcję platformy Azure i maszyny wirtualne używane w środowisku docelowym, a następnie wykonuje następujące operacje:
 
--   Konfiguruje grupę zasobów, sieć wirtualną i podsieci na platformie Azure na potrzeby instalacji
+-   Konfiguruje grupę zasobów, sieć wirtualną i podsieci na platformie Azure na potrzeby instalacji.
 
--   Konfiguruje sieciowe grupy zabezpieczeń i SSH dla środowiska
+-   Konfiguruje sieciowe grupy zabezpieczeń i SSH dla środowiska.
 
--   Konfiguruje karty sieciowe na maszynach wirtualnych GlusterFS i DB2 pureScale
+-   Konfiguruje wiele kart sieciowych zarówno w magazynie udostępnionym, jak i na maszynach wirtualnych DB2 pureScale.
 
--   Tworzy maszyny wirtualne magazynu GlusterFS
+-   Tworzy maszyny wirtualne magazynu udostępnionego. Jeśli używasz Bezpośrednie miejsca do magazynowania lub innego rozwiązania do magazynowania, zobacz [bezpośrednie miejsca do magazynowania omówienie](/windows-server/storage/storage-spaces/storage-spaces-direct-overview).
 
--   Tworzy maszynę wirtualną serwera przesiadkowego
+-   Tworzy maszynę wirtualną serwera przesiadkowego.
 
--   Tworzy maszyny wirtualne DB2 pureScale
+-   Tworzy maszyny wirtualne DB2 pureScale.
 
--   Tworzy maszynę wirtualną z monitorem, która pureScale polecenie ping w programie DB2
+-   Tworzy maszynę wirtualną z monitorem, która pureScale polecenie ping. Pomiń tę część wdrożenia, jeśli Twoja wersja programu DB2 pureScale nie wymaga monitora.
 
--   Tworzy maszynę wirtualną z systemem Windows do użycia na potrzeby testowania, ale nie instaluje niczego
+-   Tworzy maszynę wirtualną z systemem Windows do użycia na potrzeby testowania, ale nie instaluje żadnych elementów.
 
-Następnie skrypty wdrażania konfigurują wirtualną sieć San (sieci vSAN) iSCSI dla magazynu udostępnionego na platformie Azure. W tym przykładzie iSCSI nawiązuje połączenie z usługą GlusterFS. To rozwiązanie udostępnia również opcję instalowania obiektów docelowych iSCSI jako pojedynczy węzeł systemu Windows. protokół iSCSI udostępnia udostępniony interfejs magazynu blokowego za pośrednictwem protokołu TCP/IP, który umożliwia procedury Instalatora programu DB2 pureScale używanie interfejsu urządzenia do nawiązywania połączenia z magazynem udostępnionym. Aby uzyskać podstawowe informacje na temat [GlusterFS, zobacz architekturę: Typy woluminów](https://docs.gluster.org/en/latest/Quick-Start-Guide/Architecture/) — temat w dokumentacji Gluster.
+Następnie skrypty wdrażania konfigurują wirtualną sieć San (sieci vSAN) iSCSI dla magazynu udostępnionego na platformie Azure. W tym przykładzie iSCSI nawiązuje połączenie z udostępnionym klastrem magazynu. W oryginalnym rozwiązaniu klienta użyto GlusterFS. Jednak firma IBM nie obsługuje już tego podejścia. Aby zachować pomoc techniczną od firmy IBM, musisz użyć obsługiwanego systemu plików zgodnego z technologią iSCSI. Firma Microsoft oferuje Bezpośrednie miejsca do magazynowania (S2D) jako opcję.
+
+To rozwiązanie udostępnia również opcję instalowania obiektów docelowych iSCSI jako pojedynczy węzeł systemu Windows. protokół iSCSI udostępnia udostępniony interfejs magazynu blokowego za pośrednictwem protokołu TCP/IP, który umożliwia procedury Instalatora programu DB2 pureScale używanie interfejsu urządzenia do nawiązywania połączenia z magazynem udostępnionym.
 
 Skrypty wdrażania uruchamiają następujące ogólne kroki:
 
-1.  Użyj GlusterFS, aby skonfigurować udostępniony klaster magazynu na platformie Azure. Ten krok obejmuje co najmniej dwa węzły systemu Linux. Aby uzyskać szczegółowe informacje dotyczące instalacji, zobacz [Konfigurowanie magazynu Red Hat Gluster w Microsoft Azure](https://access.redhat.com/documentation/en-us/red_hat_gluster_storage/3.1/html/deployment_guide_for_public_cloud/chap-documentation-deployment_guide_for_public_cloud-azure-setting_up_rhgs_azure) w dokumentacji Red Hat Gluster.
+1.  Skonfiguruj udostępniony klaster magazynu na platformie Azure. Ten krok obejmuje co najmniej dwa węzły systemu Linux.
 
-2.  Skonfiguruj interfejs iSCSI Direct na docelowych serwerach z systemem Linux dla GlusterFS. Aby uzyskać szczegółowe informacje dotyczące instalacji, zobacz [GlusterFS iSCSI](https://docs.gluster.org/en/latest/Administrator%20Guide/GlusterFS%20iSCSI/) w podręczniku administratora GlusterFS.
+2.  Skonfiguruj interfejs iSCSI Direct na docelowych serwerach z systemem Linux dla klastra magazynu udostępnionego.
 
-3.  Skonfiguruj inicjator iSCSI na maszynach wirtualnych z systemem Linux. Inicjator będzie uzyskiwać dostęp do klastra GlusterFS przy użyciu obiektu docelowego iSCSI. Aby uzyskać szczegółowe informacje dotyczące instalacji, zobacz [jak skonfigurować obiekt docelowy iSCSI i inicjator w systemie Linux](https://www.rootusers.com/how-to-configure-an-iscsi-target-and-initiator-in-linux/) w dokumentacji RootUsers.
+3.  Skonfiguruj inicjator iSCSI na maszynach wirtualnych z systemem Linux. Inicjator będzie uzyskiwać dostęp do udostępnionego klastra magazynu przy użyciu obiektu docelowego iSCSI. Aby uzyskać szczegółowe informacje dotyczące instalacji, zobacz [jak skonfigurować obiekt docelowy iSCSI i inicjator w systemie Linux](https://www.rootusers.com/how-to-configure-an-iscsi-target-and-initiator-in-linux/) w dokumentacji RootUsers.
 
-4.  Zainstaluj GlusterFS jako warstwę magazynu dla interfejsu iSCSI.
+4.  Zainstaluj udostępnioną warstwę magazynu dla interfejsu iSCSI.
 
-Po utworzeniu urządzenia iSCSI przez skrypty ostatnim krokiem jest zainstalowanie programu DB2 pureScale. W ramach instalacji bazy danych DB2 pureScale w klastrze GlusterFS jest kompilowane i instalowana [Skala spektrum firmy IBM](https://www.ibm.com/support/knowledgecenter/SSEPGG_11.1.0/com.ibm.db2.luw.qb.server.doc/doc/t0057167.html) (dawniej znana jako GPFS). Ten klastrowany system plików umożliwia programowi DB2 pureScale współdzielenie danych między maszynami wirtualnymi, na których działa aparat programu DB2 pureScale. Aby uzyskać więcej informacji, zobacz dokumentację dotyczącą skalowania usługi [IBM spektrum](https://www.ibm.com/support/knowledgecenter/en/STXKQY_4.2.0/ibmspectrumscale42_welcome.html) w witrynie sieci Web firmy IBM.
+Po utworzeniu urządzenia iSCSI przez skrypty ostatnim krokiem jest zainstalowanie programu DB2 pureScale. W ramach instalacji bazy danych DB2 pureScale w klastrze GlusterFS jest kompilowane i instalowana [Skala spektrum firmy IBM](https://www.ibm.com/support/knowledgecenter/SSEPGG_11.1.0/com.ibm.db2.luw.qb.server.doc/doc/t0057167.html) (dawniej znana jako GPFS). Ten klastrowany system plików umożliwia programowi DB2 pureScale współdzielenie danych między maszynami wirtualnymi, na których działa aparat programu DB2 pureScale. Aby uzyskać więcej informacji, zobacz dokumentację dotyczącą [skalowania usługi IBM spektrum](https://www.ibm.com/support/knowledgecenter/en/STXKQY_4.2.0/ibmspectrumscale42_welcome.html) w witrynie sieci Web firmy IBM.
 
 ## <a name="db2-purescale-response-file"></a>Plik odpowiedzi bazy danych DB2 pureScale
 
@@ -77,9 +79,9 @@ Repozytorium GitHub zawiera plik odpowiedzi DB2server. rsp, odpowiedź (. RSP), 
 > [!NOTE]
 > Przykładowy plik odpowiedzi DB2server. rsp znajduje się w repozytorium [DB2onAzure](https://aka.ms/db2onazure) w witrynie GitHub. Jeśli używasz tego pliku, musisz go zmodyfikować, zanim będzie można go użyć w Twoim środowisku.
 
-| Nazwa ekranu               | Pole                                        | Value                                                                                                 |
+| Nazwa ekranu               | Pole                                        | Wartość                                                                                                 |
 |---------------------------|----------------------------------------------|-------------------------------------------------------------------------------------------------------|
-| Witaj                   |                                              | Nowa instalacja                                                                                           |
+| Zapraszamy!                   |                                              | Nowa instalacja                                                                                           |
 | Wybierz produkt          |                                              | 11.1.3.3 wersja programu DB2. Wersje serwera z programem DB2 pureScale                                              |
 | Konfigurowanie             | Katalog                                    | /data1/opt/ibm/db2/V11.1                                                                              |
 |                           | Wybierz typ instalacji                 | Normalne                                                                                               |
@@ -117,7 +119,7 @@ Repozytorium GitHub zawiera plik odpowiedzi DB2server. rsp, odpowiedź (. RSP), 
 
 - Skrypty Instalatora używają aliasów dysków iSCSI, aby można było łatwo znaleźć rzeczywiste nazwy.
 
-- Gdy skrypt Instalatora jest uruchamiany w d0, wartości **/dev/DM-\***  mogą być różne w odniesieniu do D1, cf0 i CF1. Różnica w wartości nie ma wpływu na konfigurację programu DB2 pureScale.
+- Gdy skrypt instalacyjny jest uruchamiany w d0, wartości **/dev/dm-\*** mogą być różne w odniesieniu do D1, cf0 i CF1. Różnica w wartości nie ma wpływu na konfigurację programu DB2 pureScale.
 
 ## <a name="troubleshooting-and-known-issues"></a>Znane problemy i rozwiązywanie problemów
 
@@ -141,8 +143,6 @@ Aby uzyskać więcej informacji na temat tych i innych znanych problemów, zobac
 
 ## <a name="next-steps"></a>Następne kroki
 
--   [GlusterFS iSCSI](https://docs.gluster.org/en/latest/Administrator%20Guide/GlusterFS%20iSCSI/)
-
 -   [Tworzenie wymaganych użytkowników dla instalacji funkcji programu DB2 pureScale](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.qb.server.doc/doc/t0055374.html?pos=2)
 
 -   [DB2icrt — Utwórz wystąpienie polecenia](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.admin.cmd.doc/doc/r0002057.html)
@@ -151,6 +151,6 @@ Aby uzyskać więcej informacji na temat tych i innych znanych problemów, zobac
 
 -   [IBM Data Studio](https://www.ibm.com/developerworks/downloads/im/data/index.html/)
 
--   [Modernizacja platformy: IBM DB2 na platformie Azure](https://www.platformmodernization.org/pages/ibmdb2azure.aspx)
+-   [Platforma modernizowania na platformie Alliance: IBM DB2 na platformie Azure](https://www.platformmodernization.org/pages/ibmdb2azure.aspx)
 
 -   [Przewodnik po podnoszenia i przesunięć wirtualnego centrum danych platformy Azure](https://azure.microsoft.com/resources/azure-virtual-datacenter-lift-and-shift-guide/)

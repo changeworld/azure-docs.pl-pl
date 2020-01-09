@@ -1,25 +1,16 @@
 ---
-title: Interfejs wiersza polecenia platformy Azure Service Fabric sfctl chaos | Microsoft Docs
-description: Opisuje polecenia harmonogramu poleceń sfctl chaos w usłudze Service Fabric.
-services: service-fabric
-documentationcenter: na
+title: Interfejs wiersza polecenia platformy Azure Service Fabric sfctl chaos
+description: Dowiedz się więcej na temat sfctl, interfejsu wiersza polecenia platformy Azure Service Fabric. Zawiera listę poleceń dotyczących planowania chaos.
 author: jeffj6123
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: multiple
 ms.date: 9/17/2019
 ms.author: jejarry
-ms.openlocfilehash: 443a8186ac6e57360105e59e30f84db997cd2251
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: bff83e1d25d04f91611f5bea6c69dfcd299af04c
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72897539"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75639177"
 ---
 # <a name="sfctl-chaos-schedule"></a>sfctl chaos schedule
 Pobierz i Ustaw harmonogram chaos.
@@ -46,8 +37,8 @@ Pobiera wersję harmonogramu chaos w użyciu oraz harmonogram chaos, który okre
 
 |Argument|Opis|
 | --- | --- |
-| --Debug | Zwiększ Szczegółowość rejestrowania, aby pokazać wszystkie dzienniki debugowania. |
-| --Help-h | Pokaż ten komunikat pomocy i Zakończ. |
+| --debug | Zwiększ Szczegółowość rejestrowania, aby pokazać wszystkie dzienniki debugowania. |
+| --help -h | Pokaż ten komunikat pomocy i Zakończ. |
 | --Wyjście-o | Format danych wyjściowych.  Dozwolone wartości\: JSON, jsonc, Table, TSV.  Domyślny\: JSON. |
 | --zapytanie | Ciąg zapytania JMESPath. Aby uzyskać więcej informacji i przykładów, zobacz http\://jmespath.org/. |
 | --verbose | Zwiększ Szczegółowość rejestrowania. Użyj--Debug dla pełnych dzienników debugowania. |
@@ -62,9 +53,9 @@ Chaos automatycznie planuje przebiegi zgodnie z harmonogramem chaos. Harmonogram
 |Argument|Opis|
 | --- | --- |
 | --Chaos-Parameters-dictionary | Zakodowana lista JSON reprezentująca Mapowanie nazw ciągów do ChaosParameters do użycia przez zadania. |
-| --Data wygaśnięcia — czas UTC | Data i godzina zatrzymania korzystania z harmonogramu w celu zaplanowania chaos.  Domyślne\: 9999-12-31T23\:59\:59.999 Z. |
+| --expiry-date-utc | Data i godzina zatrzymania korzystania z harmonogramu w celu zaplanowania chaos.  Domyślne\: 9999-12-31T23\:59\:59.999 Z. |
 | --zadania | Zakodowana w notacji JSON lista ChaosScheduleJobs reprezentująca, kiedy ma być uruchomiona chaos, i z parametrami, które mają być uruchamiane chaos z. |
-| --Data rozpoczęcia — UTC | Data i godzina rozpoczęcia korzystania z harmonogramu w celu zaplanowania chaos.  Wartość domyślna\: 1601-01-01T00\:00\:00.000 Z. |
+| --start-date-utc | Data i godzina rozpoczęcia korzystania z harmonogramu w celu zaplanowania chaos.  Wartość domyślna\: 1601-01-01T00\:00\:00.000 Z. |
 | --timeout-t | Domyślne\: 60. |
 | --Version | Numer wersji harmonogramu. |
 
@@ -72,8 +63,8 @@ Chaos automatycznie planuje przebiegi zgodnie z harmonogramem chaos. Harmonogram
 
 |Argument|Opis|
 | --- | --- |
-| --Debug | Zwiększ Szczegółowość rejestrowania, aby pokazać wszystkie dzienniki debugowania. |
-| --Help-h | Pokaż ten komunikat pomocy i Zakończ. |
+| --debug | Zwiększ Szczegółowość rejestrowania, aby pokazać wszystkie dzienniki debugowania. |
+| --help -h | Pokaż ten komunikat pomocy i Zakończ. |
 | --Wyjście-o | Format danych wyjściowych.  Dozwolone wartości\: JSON, jsonc, Table, TSV.  Domyślny\: JSON. |
 | --zapytanie | Ciąg zapytania JMESPath. Aby uzyskać więcej informacji i przykładów, zobacz http\://jmespath.org/. |
 | --verbose | Zwiększ Szczegółowość rejestrowania. Użyj--Debug dla pełnych dzienników debugowania. |

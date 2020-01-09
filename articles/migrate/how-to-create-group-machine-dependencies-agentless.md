@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: hamusa
-ms.openlocfilehash: d0e002f0f1e620c108b23790dfc81574bee23795
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: b13ad375adf20a606b48755a6d57851abf89e549
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158437"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454652"
 ---
 # <a name="set-up-agentless-dependency-visualization-for-assessment"></a>Konfigurowanie wizualizacji zależności bez agenta na potrzeby oceny
 
@@ -19,7 +19,7 @@ W tym artykule opisano sposób konfigurowania mapowania zależności bez agenta 
 
 > [!IMPORTANT]
 > Wizualizacja zależności bez agenta jest obecnie dostępna w wersji zapoznawczej dla maszyn wirtualnych VMware platformy Azure odnalezionych za pomocą urządzenia Azure Migrate.
-> Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone.
+> Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Ta wersja zapoznawcza jest objęta wsparciem klienta i może być używana na potrzeby obciążeń produkcyjnych.
 > Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="about-dependency-mapping"></a>Mapowanie zależności — informacje

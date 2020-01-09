@@ -1,18 +1,17 @@
 ---
-title: Samouczek dotyczący instalowania urządzenia fizycznego usługi Azure FXT Edge | Microsoft Docs
+title: 'Samouczek: Instalowanie urządzenia fizycznego usługi Azure FXT Edge'
 description: Jak rozpakować, stojak i obmontować składnik urządzenia fizycznego w pamięci podręcznej magazynu hybrydowego Microsoft Azure FXT Edge
-services: ''
 author: ekpgh
+ms.author: rohogue
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 07/01/2019
-ms.author: rohogue
-ms.openlocfilehash: 0f3c7b01ee9d4a62ec0d563af55f2086894081be
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 7c77e25d0dcabc49f2e6672645c6bc41e8662ec8
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72256045"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551033"
 ---
 # <a name="tutorial-install-azure-fxt-edge-filer"></a>Samouczek: Instalowanie usługi Azure FXT Edge 
 
@@ -95,11 +94,11 @@ Znajdź składniki służące do instalowania zestawu szyny:
 
 W przypadku stojaków z przystawką kwadratowych lub okrągłych otworów postępuj zgodnie z tą procedurą, aby połączyć i zainstalować szyny. 
 
-1. Umieść piony po lewej i prawej stronie z etykietą od **przodu** do wewnątrz. Umieść każdy element końcowy tak, aby znajdował się w dziurach z lewej strony kołnierza stojaka pionowego. jedno
+1. Umieść piony po lewej i prawej stronie z etykietą od **przodu** do wewnątrz. Umieść każdy element końcowy tak, aby znajdował się w dziurach z lewej strony kołnierza stojaka pionowego. (1)
 
-2. Wyrównaj każdy element końcowy w dolnej i górnej części regału w miejscu, w którym chcesz go zainstalować. dwóch
+2. Wyrównaj każdy element końcowy w dolnej i górnej części regału w miejscu, w którym chcesz go zainstalować. (2)
 
-3. Zaangażuj wewnętrzną końcówkę szyny do momentu, w którym w pełni nastąpi montaż w pionie i zamknie. Powtórz te kroki, aby pomieścić i umieścić element frontonu na kołnierzu pionowym. r.3
+3. Zaangażuj wewnętrzną końcówkę szyny do momentu, w którym w pełni nastąpi montaż w pionie i zamknie. Powtórz te kroki, aby pomieścić i umieścić element frontonu na kołnierzu pionowym. (3)
 
 > [!TIP]
 > Aby usunąć szyny, należy ściągnąć przycisk Zwolnij do końca częściowego punktu środkowego (4) i odłączać każdą kolejkę.
@@ -110,10 +109,10 @@ W przypadku stojaków z przystawką kwadratowych lub okrągłych otworów postę
 
 W przypadku stojaków z otworami gwintowanych należy wykonać tę procedurę, aby połączyć i zainstalować szyny.
 
-1. Usuń numery PIN z nawiasów montażowych przednich i tylnych z płaskim śrubokrętem. jedno
-1. Pobierz i obróć podzestawy zamków szyny, aby usunąć je z nawiasów montażowych. dwóch
-1. Dołącz do lewej i prawej szynę montażową do czołowych pionowych kołnierzy stojaków przy użyciu dwóch par wkrętów. r.3
-1. Przesuń w lewo i w prawo nawiasy klamrowe w przód do tylnej krawędzi pionowej i Dołącz je przy użyciu dwóch par wkrętów. czwart
+1. Usuń numery PIN z nawiasów montażowych przednich i tylnych z płaskim śrubokrętem. (1)
+1. Pobierz i obróć podzestawy zamków szyny, aby usunąć je z nawiasów montażowych. (2)
+1. Dołącz do lewej i prawej szynę montażową do czołowych pionowych kołnierzy stojaków przy użyciu dwóch par wkrętów. (3)
+1. Przesuń w lewo i w prawo nawiasy klamrowe w przód do tylnej krawędzi pionowej i Dołącz je przy użyciu dwóch par wkrętów. (4)
 
 ![Diagram instalacji i usuwania szyn z narzędziami z numerami kroków](media/fxt-install/installing-removing-tooled-rails-400.png)
 
@@ -121,9 +120,9 @@ W przypadku stojaków z otworami gwintowanych należy wykonać tę procedurę, a
 
 Wykonaj następujące kroki, aby zainstalować urządzenie usługi Azure FXT Edge w stojaku.
 
-1. Ciągnij wewnętrzne slajdy z stojaka do momentu zablokowania ich na miejscu. jedno
-1. Znajdź Standoff szyny tylnej na każdej stronie urządzenia i Obniż je do tylnych gniazd J na zestawach slajdów. dwóch 
-1. Obróć urządzenie w dół do momentu, aż wszystkie standoffs szyny zostaną przyłączone do miejsca J-gnieździe. r.3
+1. Ciągnij wewnętrzne slajdy z stojaka do momentu zablokowania ich na miejscu. (1)
+1. Znajdź Standoff szyny tylnej na każdej stronie urządzenia i Obniż je do tylnych gniazd J na zestawach slajdów. (2) 
+1. Obróć urządzenie w dół do momentu, aż wszystkie standoffs szyny zostaną przyłączone do miejsca J-gnieździe. (3)
 1. Wypchnij urządzenie do wewnątrz do momentu kliknięcia dźwigni blokady.
 1. Naciśnij przyciski blokady przesuń w dół na szynach (4) i przesuń urządzenie do stojaka.
 
@@ -171,7 +170,7 @@ Opcjonalna ARM zarządzania kablem (CMA) jest udostępniana z programem FXT Edge
    Zasobnik CMA zapewnia pomoc techniczną i pełni rolę dla CMA. 
 
    1. Wyrównaj i Zaangażuj każdą stronę paska z nawiasami odbiorczymi na wewnętrznych krawędziach szyn. 
-   1. Wypchnij zasobnik do przodu do momentu kliknięcia na miejscu. jedno
+   1. Wypchnij zasobnik do przodu do momentu kliknięcia na miejscu. (1)
    1. Aby usunąć ten pasek, należy pozbyć się przycisków zatrzasków w kierunku centrum i wyciągnąć z nich zasobnik z nawiasami odbiorczymi (2).
 
    ![Ilustracja przedstawiająca instalację zasobnika CMA](media/fxt-install/cma-tray-install-400.png)

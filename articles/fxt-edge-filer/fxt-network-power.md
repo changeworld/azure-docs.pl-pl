@@ -1,17 +1,17 @@
 ---
-title: Microsoft Azure połączenia sieciowe FXT Edge i zasilacz
+title: 'Samouczek: łączenie kabli z usługą Azure FXT Edge'
 description: Jak podłączyć porty sieciowe i dołączyć energię dla sprzętu usługi Azure FXT Edge
 author: ekpgh
+ms.author: rohogue
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 07/01/2019
-ms.author: rohogue
-ms.openlocfilehash: 474172284383bc9ba0e5b5c11c66e1b990010184
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 1e3c60fd955bd899955c46b7670acd3f088d0f86
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72254862"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75550948"
 ---
 # <a name="tutorial-make-network-connections-and-supply-power-to-the-azure-fxt-edge-filer-node"></a>Samouczek: tworzenie połączeń sieciowych i dostarczanie mocy do węzła usługi Azure FXT Edge
 

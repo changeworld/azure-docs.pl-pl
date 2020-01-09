@@ -7,12 +7,12 @@ ms.service: app-service
 ms.topic: conceptual
 ms.date: 01/06/2017
 ms.author: yegu
-ms.openlocfilehash: 8e15d51062993bc6e9913d49d3fe67c1a8b9cd03
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 11c854491ab030394eb61964979cb04a5a4b489b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122634"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433393"
 ---
 # <a name="create-a-web-app-plus-azure-cache-for-redis-using-a-template"></a>Tworzenie aplikacji sieci Web i usługi Azure cache for Redis przy użyciu szablonu
 
@@ -20,7 +20,7 @@ ms.locfileid: "74122634"
 
 W tym temacie dowiesz się, jak utworzyć szablon Azure Resource Manager, który wdraża aplikację internetową platformy Azure w usłudze Azure cache for Redis. Dowiesz się, jak definiować wdrożone zasoby oraz jak definiować parametry, które są określone podczas wdrażania. Można użyć tego szablonu na potrzeby własnych wdrożeń lub dostosować go do konkretnych potrzeb.
 
-Aby uzyskać więcej informacji na temat tworzenia szablonów, zobacz [Tworzenie szablonów Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md). Aby dowiedzieć się więcej na temat składni i właściwości JSON dla typów zasobów pamięci podręcznej, zobacz [Microsoft. cache — typy zasobów](/azure/templates/microsoft.cache/allversions).
+Aby uzyskać więcej informacji na temat tworzenia szablonów, zobacz [Tworzenie szablonów Azure Resource Manager](../azure-resource-manager/templates/template-syntax.md). Aby dowiedzieć się więcej na temat składni i właściwości JSON dla typów zasobów pamięci podręcznej, zobacz [Microsoft. cache — typy zasobów](/azure/templates/microsoft.cache/allversions).
 
 Aby zapoznać się z pełnym szablonem, zobacz [Web App with Azure cache for Redis Template](https://github.com/Azure/azure-quickstart-templates/blob/master/201-web-app-with-redis-cache/azuredeploy.json).
 
@@ -40,7 +40,7 @@ Aby automatycznie uruchomić wdrożenie, kliknij poniższy przycisk:
 [!INCLUDE [cache-deploy-parameters](../../includes/cache-deploy-parameters.md)]
 
 ## <a name="variables-for-names"></a>Zmienne nazw
-Ten szablon używa zmiennych do konstruowania nazw zasobów. Używa funkcji [uniqueString](../azure-resource-manager/resource-group-template-functions-string.md#uniquestring) do konstruowania wartości na podstawie identyfikatora grupy zasobów.
+Ten szablon używa zmiennych do konstruowania nazw zasobów. Używa funkcji [uniqueString](../azure-resource-manager/templates/template-functions-string.md#uniquestring) do konstruowania wartości na podstawie identyfikatora grupy zasobów.
 
     "variables": {
       "hostingPlanName": "[concat('hostingplan', uniqueString(resourceGroup().id))]",

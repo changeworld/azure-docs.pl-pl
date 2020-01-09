@@ -1,20 +1,19 @@
 ---
 title: Program Excel & Apache Hadoop z sterownikiem ODBC — Azure HDInsight
 description: Dowiedz się, jak skonfigurować i używać sterownika Microsoft Hive ODBC dla programu Excel do wykonywania zapytań dotyczących danych w klastrach usługi HDInsight z programu Microsoft Excel.
-keywords: Program Hadoop Excel, Hive Excel, Hive ODBC
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 10/08/2019
-ms.openlocfilehash: 37cb05c4bf3822c9dc21b1fa9cd0ea4a2ba6d933
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.custom: hdinsightactive,hdiseo17may2017
+ms.date: 12/11/2019
+ms.openlocfilehash: 883192e1d041014c23445b7a2fa0ece45eb76f10
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73177332"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435813"
 ---
 # <a name="connect-excel-to-apache-hadoop-in-azure-hdinsight-with-the-microsoft-hive-odbc-driver"></a>Łączenie programu Excel z Apache Hadoop w usłudze Azure HDInsight za pomocą sterownika Microsoft Hive ODBC
 
@@ -52,9 +51,9 @@ Poniższe kroki pokazują, jak utworzyć źródło danych ODBC Hive.
    | Właściwość | Opis |
    | --- | --- |
    |  Data Source Name (Nazwa źródła danych) |Nadaj nazwę źródła danych. |
-   |  Hosty |Wprowadź polecenie `HDInsightClusterName.azurehdinsight.net`. Na przykład: `myHDICluster.azurehdinsight.net` |
+   |  Hosty |Wprowadź polecenie `HDInsightClusterName.azurehdinsight.net`. Na przykład `myHDICluster.azurehdinsight.net`. Uwaga: `HDInsightClusterName-int.azurehdinsight.net` jest obsługiwana, dopóki maszyna wirtualna klienta jest połączona z tą samą siecią wirtualną. |
    |  Port |Użyj portu **443**. (Ten port został zmieniony z 563 na 443). |
-   |  Database (Baza danych) |Użyj **domyślnego**. |
+   |  baza danych |Użyj **domyślnego**. |
    |  Mechanism (Mechanizm) |Wybieranie **usługi HDInsight systemu Windows Azure** |
    |  Nazwa użytkownika |Wprowadź nazwę użytkownika HTTP klastra usługi HDInsight. Domyślna nazwa użytkownika to **admin**. |
    |  Hasło |Wprowadź hasło użytkownika klastra usługi HDInsight. Zaznacz pole wyboru **Zapisz hasło (zaszyfrowane)** .|
@@ -83,7 +82,7 @@ Poniższe kroki opisują sposób importowania danych z tabeli Hive do skoroszytu
 
 1. Otwórz nowy lub istniejący skoroszyt w programie Excel.
 
-2. Na karcie **dane** przejdź do **pobierania danych** > **z innych źródeł** > **z ODBC** , aby uruchomić z okna **ODBC** .
+2. Na karcie **dane** przejdź do okna do **pobierania danych** > **z innych źródeł** > **z ODBC** , aby uruchomić okno **z ODBC** .
 
     ![Otwórz Kreatora połączenia danych programu Excel](./media/apache-hadoop-connect-excel-hive-odbc-driver/simbahiveodbc-excel-dataconnection1.png "Otwórz Kreatora połączenia danych programu Excel")
 

@@ -1,6 +1,6 @@
 ---
-title: Uwierzytelnianie i autoryzowanie za pomocą kolekcji obszarów roboczych usługi Power BI | Dokumentacja firmy Microsoft
-description: Uwierzytelnianie i autoryzowanie za pomocą kolekcji obszarów roboczych usługi Power BI.
+title: Uwierzytelnianie i Autoryzowanie Power BI kolekcji obszarów roboczych
+description: Uwierzytelnianie i Autoryzowanie za pomocą Power BI kolekcji obszarów roboczych.
 services: power-bi-workspace-collections
 author: rkarlin
 ms.author: rkarlin
@@ -8,56 +8,56 @@ ms.service: power-bi-embedded
 ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.openlocfilehash: 713c56904769c133272db4fb65f8b596ab66804b
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 8fcd7caffb041c57090d7256361421cb49a9a5fc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67672502"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427107"
 ---
-# <a name="authenticating-and-authorizing-with-power-bi-workspace-collections"></a>Uwierzytelnianie i autoryzowanie za pomocą kolekcji obszarów roboczych usługi Power BI
+# <a name="authenticating-and-authorizing-with-power-bi-workspace-collections"></a>Uwierzytelnianie i Autoryzowanie za pomocą kolekcji Power BI obszarów roboczych
 
-Power użycia kolekcji obszarów roboczych usługi Power BI **klucze** i **tokenów aplikacji** uwierzytelniania i autoryzacji, zamiast jawnego uwierzytelniania użytkowników końcowych. W tym modelu aplikacja zarządza uwierzytelniania i autoryzacji dla użytkowników końcowych. Gdy jest to konieczne, aplikacja tworzy i wysyła tokenów aplikacji, które informują naszej usługi w celu renderowania żądanego raportu. Ten projekt nie wymaga aplikację do używania usługi Azure Active Directory do uwierzytelniania i autoryzacji, użytkowników, chociaż można nadal.
+Power BI kolekcje obszarów roboczych używają **kluczy** i **tokenów aplikacji** do uwierzytelniania i autoryzacji, zamiast jawnego uwierzytelniania użytkowników końcowych. W tym modelu aplikacja zarządza uwierzytelnianiem i autoryzacją dla użytkowników końcowych. W razie potrzeby aplikacja tworzy i wysyła tokeny aplikacji, które informują naszą usługę, aby renderować żądany raport. Ten projekt nie wymaga, aby aplikacja używała Azure Active Directory do uwierzytelniania i autoryzacji użytkowników, chociaż nadal można.
 
 > [!IMPORTANT]
 > Kolekcje obszarów roboczych usługi Power BI są przestarzałe i będą dostępne do czerwca 2018 roku lub do daty podanej w kontrakcie. Zachęcamy do zaplanowania migracji do usługi Power BI Embedded, aby uniknąć przerw w działaniu aplikacji. Aby uzyskać informacje dotyczące sposobu przeprowadzenia migracji danych do usługi Power BI Embedded, zobacz [How to migrate Power BI Workspace Collections content to Power BI Embedded (Migrowanie zawartości kolekcji obszarów roboczych usługi Power BI do usługi Power BI Embedded)](https://powerbi.microsoft.com/documentation/powerbi-developer-migrate-from-powerbi-embedded/).
 
 ## <a name="two-ways-to-authenticate"></a>Dwa sposoby uwierzytelniania
 
-**Klucz** — można użyć kluczy dla wszystkich wywołań interfejsu API REST kolekcji usługi Power BI obszaru roboczego. Klucze można znaleźć w **portalu Microsoft Azure** , wybierając **wszystkie ustawienia** i następnie **klucze dostępu**. Klucz jest zawsze traktowany tak, jakby była hasła. Te klucze mają uprawnienia do wprowadzania żadnych wywołanie w kolekcji obszarów roboczych danego interfejsu API REST.
+**Klucz** — można użyć kluczy dla wszystkich wywołań interfejsu API REST kolekcji obszarów roboczych Power BI. Klucze można znaleźć w **Microsoft Azure Portal** , wybierając pozycję **wszystkie ustawienia** , a następnie pozycję **klucze dostępu**. Zawsze Traktuj swój klucz, tak jakby był to hasło. Te klucze mają uprawnienia do podejmowania wszelkich wywołań interfejsu API REST w określonej kolekcji obszarów roboczych.
 
-Aby użyć klucza na wywołanie interfejsu REST, należy dodać następujący nagłówek autoryzacji:
+Aby użyć klucza w wywołaniu REST, Dodaj następujący nagłówek autoryzacji:
 
     Authorization: AppKey {your key}
 
-**Tokenu aplikacji** -tokenów aplikacji są używane dla wszystkich żądań osadzania. Służą one do uruchomienia po stronie klienta. Token jest ograniczone do pojedynczego raportu i jego najlepszym rozwiązaniem jest ustawienie czasu wygaśnięcia.
+**Token aplikacji** — tokeny aplikacji są używane dla wszystkich żądań osadzania. Są one przeznaczone do uruchamiania po stronie klienta. Token jest ograniczony do pojedynczego raportu i najlepszym rozwiązaniem do ustawienia czasu wygaśnięcia.
 
-Tokenów aplikacji są JWT (JSON Web Token), który jest podpisany za pomocą jednej z Twoich kluczy.
+Tokeny aplikacji to JWT (token sieci Web JSON), który jest podpisywany przez jeden z kluczy.
 
-Twój token aplikacji może zawierać następujących oświadczeń:
+Token aplikacji może zawierać następujące oświadczenia:
 
 | Claim | Opis |    
 | --- | --- |
-| **VER** |Wersja tokenu aplikacji. 0.2.0 stanowi bieżącą wersję. |
-| **AUD** |Adresat tokenu. Aby użyć kolekcji obszarów roboczych usługi Power BI: *https:\//analysis.windows.net/powerbi/api*. |
-| **iss** |Ciąg wskazujący aplikacji, który wystawił token. |
-| **type** |Typ tokenu aplikacji, która jest tworzona. Bieżący jest jedynym obsługiwanym typem **osadzić**. |
-| **wcn** |Nazwa kolekcji obszarów roboczych token zostało wystawione. |
-| **bazy danych WID** |Identyfikator obszaru roboczego token zostało wystawione. |
-| **Identyfikator RID** |Identyfikator raportu token zostało wystawione. |
-| **Nazwa użytkownika** (opcjonalnie) |Używane z zabezpieczeń na poziomie wiersza, nazwa użytkownika jest ciąg, który może ułatwić identyfikację użytkownika podczas stosowania reguł zabezpieczeń na poziomie wiersza. |
-| **role** (opcjonalnie) |Ciąg zawierający role do wybrania podczas stosowania reguł zabezpieczeń na poziomie wiersza. W przypadku przekazywania więcej niż jednej roli, należy je przekazywać jako tablicę stingu. |
-| **punkt połączenia usługi** (opcjonalnie) |Ciąg zawierający zakresy uprawnień. W przypadku przekazywania więcej niż jednej roli, należy je przekazywać jako tablicę stingu. |
-| **EXP** (opcjonalnie) |Wskazuje czas, w którym token jest ważny. Wartość powinien być przekazywany w jako systemu Unix sygnatur czasowych. |
-| **NBF** (opcjonalnie) |Wskazuje czas, w której token rozpoczyna się ważny. Wartość powinien być przekazywany w jako systemu Unix sygnatur czasowych. |
+| **ver** |Wersja tokenu aplikacji. 0.2.0 jest bieżącą wersją. |
+| **AUD** |Zamierzony odbiorca tokenu. W przypadku Power BI Użyj kolekcji obszarów roboczych: *https:\//Analysis.Windows.NET/PowerBI/API*. |
+| **ISS** |Ciąg wskazujący aplikację, która wystawił token. |
+| **type** |Typ tworzonego tokenu aplikacji. Obecnie jedynym obsługiwanym typem jest **osadzanie**. |
+| **WCN** |Nazwa kolekcji obszarów roboczych, dla której jest wystawiony token. |
+| **magazynie** |Identyfikator obszaru roboczego, dla którego jest wystawiony token. |
+| **objęte** |Identyfikator raportu, dla którego jest wystawiony token. |
+| **Nazwa użytkownika** (opcjonalnie) |Nazwa użytkownika używana z zabezpieczeniami na poziomie wiersza jest ciągiem, który może pomóc identyfikować użytkownika podczas stosowania reguł zabezpieczeń na poziomie wiersza. |
+| **role** (opcjonalnie) |Ciąg zawierający role do wybrania podczas stosowania reguł zabezpieczeń na poziomie wiersza. W przypadku przekazywania więcej niż jednej roli powinna być przekazywana jako tablica Sting. |
+| **punkt połączenia** usługi (opcjonalnie) |Ciąg zawierający zakresy uprawnień. W przypadku przekazywania więcej niż jednej roli powinna być przekazywana jako tablica Sting. |
+| **EXP** (opcjonalnie) |Wskazuje czas wygaśnięcia tokenu. Wartość powinna zostać przeniesiona jako sygnatury czasowe systemu UNIX. |
+| **NBF** (opcjonalnie) |Wskazuje czas, w którym token zaczyna obowiązywać. Wartość powinna zostać przeniesiona jako sygnatury czasowe systemu UNIX. |
 
-Tokenu aplikacji przykładowej wygląda następująco:
+Przykładowy token aplikacji wygląda następująco:
 
 ```
 eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ2ZXIiOiIwLjIuMCIsInR5cGUiOiJlbWJlZCIsIndjbiI6Ikd1eUluQUN1YmUiLCJ3aWQiOiJkNGZlMWViMS0yNzEwLTRhNDctODQ3Yy0xNzZhOTU0NWRhZDgiLCJyaWQiOiIyNWMwZDQwYi1kZTY1LTQxZDItOTMyYy0wZjE2ODc2ZTNiOWQiLCJzY3AiOiJSZXBvcnQuUmVhZCIsImlzcyI6IlBvd2VyQklTREsiLCJhdWQiOiJodHRwczovL2FuYWx5c2lzLndpbmRvd3MubmV0L3Bvd2VyYmkvYXBpIiwiZXhwIjoxNDg4NTAyNDM2LCJuYmYiOjE0ODg0OTg4MzZ9.v1znUaXMrD1AdMz6YjywhJQGY7MWjdCR3SmUSwWwIiI
 ```
 
-Gdy dekodowana, wyglądają podobnie:
+Podczas dekodowania wygląda to następująco:
 
 ```
 Header
@@ -82,37 +82,37 @@ Body
 
 ```
 
-Metody są dostępne w ramach zestawów SDK, które ułatwiają tworzenie tokenów aplikacji. Na przykład dla platformy .NET można sprawdzić [Microsoft.PowerBI.Security.PowerBIToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken) klasy i [CreateReportEmbedToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken?redirectedfrom=MSDN) metody.
+Istnieją metody dostępne w zestawach SDK, które ułatwiają tworzenie tokenów aplikacji. Na przykład w przypadku platformy .NET można przyjrzeć się klasie [Microsoft. PowerBI. Security. PowerBIToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken) i [CreateReportEmbedToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken?redirectedfrom=MSDN) .
 
-Dla zestawu .NET SDK mogą odwoływać się do [zakresy](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.scopes).
+W przypadku zestawu .NET SDK można odwoływać się do [zakresów](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.scopes).
 
 ## <a name="scopes"></a>Zakresy
 
-Korzystając z tokenów osadzania, można ograniczyć użycie zasobów, które zapewniają dostęp do. Z tego powodu można wygenerować token z uprawnieniami o określonym zakresie.
+W przypadku korzystania z tokenów osadzania można ograniczyć użycie zasobów, do których uzyskuje się dostęp. Z tego powodu można wygenerować token z uprawnieniami o określonym zakresie.
 
-Poniżej przedstawiono dostępne zakresy dla kolekcji obszarów roboczych usługi Power BI.
+Poniżej przedstawiono dostępne zakresy dla Power BI kolekcje obszarów roboczych.
 
-|Scope|Opis|
+|Zakres|Opis|
 |---|---|
-|Dataset.Read|Udostępnia uprawnienie do odczytu określonego zestawu danych.|
-|Dataset.Write|Zapewnia uprawnienia do zapisu do określonego zestawu danych.|
-|Dataset.ReadWrite|Zapewnia uprawnienia do odczytu i zapisu do określonego zestawu danych.|
-|Report.Read|Zapewnia uprawnienia do wyświetlania określonego raportu.|
-|Report.ReadWrite|Udostępnia uprawnienie do wyświetlania i edytowania określonego raportu.|
-|Workspace.Report.Create|Udostępnia uprawnienie do tworzenia nowego raportu w ramach określonego obszaru roboczego.|
-|Workspace.Report.Copy|Udostępnia uprawnienie do Sklonowanie istniejącego raportu w ramach określonego obszaru roboczego.|
+|Zestaw danych. odczyt|Zapewnia uprawnienie do odczytu określonego zestawu danych.|
+|DataSet. Write|Zapewnia uprawnienie do zapisu w określonym zestawie danych.|
+|DataSet. ReadWrite|Zapewnia uprawnienie do odczytu i zapisu do określonego zestawu danych.|
+|Raport. odczyt|Zapewnia uprawnienia do wyświetlania określonego raportu.|
+|Report. ReadWrite|Zapewnia uprawnienie do wyświetlania i edytowania określonego raportu.|
+|Workspace. Report. Create|Umożliwia utworzenie nowego raportu w określonym obszarze roboczym.|
+|Workspace. Report. Copy|Zapewnia uprawnienie do klonowania istniejącego raportu w określonym obszarze roboczym.|
 
-Możesz podać wiele zakresów, za pomocą spacji między zakresami, jak pokazano poniżej.
+Można podać wiele zakresów przy użyciu spacji między zakresami, takimi jak poniższe.
 
 ```csharp
 string scopes = "Dataset.Read Workspace.Report.Create";
 ```
 
-**Wymagane oświadczenia - zakresami**
+**Wymagane oświadczenia — zakresy**
 
-punkt połączenia usługi: {scopesClaim} scopesClaim może być ciąg lub tablicę ciągów, biorąc pod uwagę dozwolone uprawnienia do zasobów obszaru roboczego (raportu, zestawu danych itp.)
+punkt SCP: {scopesClaim} scopesClaim może być ciągiem lub tablicą ciągów, zwracając listę dozwolonych uprawnień do zasobów obszaru roboczego (raport, zestaw danych itp.)
 
-Token zdekodowany przy użyciu zakresy definiowane, powinien wyglądać podobnie do:
+Zdekodowany token z zdefiniowanymi zakresami będzie wyglądać podobnie do:
 
 ```
 Header
@@ -142,42 +142,42 @@ Body
 
 |Operacja|Zasób docelowy|Uprawnienia tokenu|
 |---|---|---|
-|Tworzenie nowego raportu na podstawie zestawu danych na (w pamięci).|Zestaw danych|Dataset.Read|
-|Tworzenie nowego raportu, w oparciu o zestaw danych (w pamięci) i Zapisz raport.|Zestaw danych|* Dataset.Read<br>* Workspace.Report.Create|
-|Wyświetlanie i Poznaj/edytowanie (w pamięci) istniejącego raportu. Report.Read oznacza Dataset.Read. Report.Read nie zezwala na zapisywanie zmian.|Raport|Report.Read|
-|Edytuj i Zapisz istniejący raport.|Raport|Report.ReadWrite|
-|Zapisz kopię raportu (Zapisz jako).|Raport|* Report.Read<br>* Workspace.Report.Copy|
+|Utwórz (w pamięci) nowy raport oparty na zestawie danych.|Zestaw danych|Zestaw danych. odczyt|
+|Utwórz (w pamięci) nowy raport oparty na zestawie danych i Zapisz raport.|Zestaw danych|* Zestaw danych. odczyt<br>* Workspace. Report. Create|
+|Wyświetlaj i Eksploruj/Edytuj (w pamięci) istniejący raport. Raport. odczyt implikuje zestaw danych. Odczytaj. Raport. odczyt nie zezwala na zapisywanie zmian.|Raport|Raport. odczyt|
+|Edytuj i Zapisz istniejący raport.|Raport|Report. ReadWrite|
+|Zapisz kopię raportu (Zapisz jako).|Raport|* Raport. odczyt<br>* Workspace. Report. Copy|
 
-## <a name="heres-how-the-flow-works"></a>Poniżej przedstawiono, jak działa przepływ
-1. Kopiowanie kluczy interfejsu API do aplikacji. Możesz pobrać klucze w ramach **witryny Azure portal**.
+## <a name="heres-how-the-flow-works"></a>Oto jak działa przepływ
+1. Skopiuj klucze interfejsu API do aplikacji. Klucze można pobrać w **Azure Portal**.
    
-    ![Gdzie można znaleźć klucze interfejsu API w witrynie Azure portal](media/get-started-sample/azure-portal.png)
-1. Token potwierdzenia oświadczenia i ma czas wygaśnięcia.
+    ![Gdzie można znaleźć klucze interfejsu API w Azure Portal](media/get-started-sample/azure-portal.png)
+1. Token potwierdza wierzytelność i ma czas wygaśnięcia.
    
-    ![Przepływie tokenu aplikacji — token potwierdzenia oświadczeń](media/get-started-sample/token-2.png)
-1. Token jest podpisany przy użyciu kluczy dostępu interfejsu API.
+    ![Przepływ tokenów aplikacji — potwierdzenie tokenu](media/get-started-sample/token-2.png)
+1. Token jest podpisany za pomocą kluczy dostępu interfejsu API.
    
-    ![Pobiera podpisany token przepływu aplikacji - token](media/get-started-sample/token-3.png)
-1. Żądania użytkowników, aby wyświetlić raport.
+    ![Przepływ tokenów aplikacji — token zostanie podpisany](media/get-started-sample/token-3.png)
+1. Użytkownik żąda wyświetlania raportu.
    
-    ![Przepływie tokenu aplikacji — użytkownik zażąda Aby wyświetlić raport](media/get-started-sample/token-4.png)
-1. Token została zweryfikowana za pomocą kluczy dostępu interfejsu API.
+    ![Przepływ tokenu aplikacji — liczba żądań użytkownika do wyświetlenia raportu](media/get-started-sample/token-4.png)
+1. Token jest weryfikowany przy użyciu kluczy dostępu interfejsu API.
    
-   ![Token przepływu aplikacji — tokenu jest weryfikowana.](media/get-started-sample/token-5.png)
-1. Kolekcje obszarów roboczych usługi Power BI wysyła raport do użytkownika.
+   ![Przepływ tokenów aplikacji — sprawdzanie poprawności tokenu](media/get-started-sample/token-5.png)
+1. Power BI kolekcje obszarów roboczych wysyła raport do użytkownika.
    
-   ![Przepływie tokenu aplikacji — usługa wysłać raport do użytkownika](media/get-started-sample/token-6.png)
+   ![Przepływ tokenów aplikacji — Wyślij raport do użytkownika](media/get-started-sample/token-6.png)
 
-Po **kolekcji obszarów roboczych usługi Power BI** wysyła raport do użytkownika, użytkownik może wyświetlić raport w aplikacji niestandardowej. Na przykład, jeśli został zaimportowany [analizowanie pliku danych sprzedaży PBIX próbka](https://download.microsoft.com/download/1/4/E/14EDED28-6C58-4055-A65C-23B4DA81C4DE/Analyzing_Sales_Data.pbix), przykładową aplikację sieci web powinien wyglądać tak:
+Po **Power BI kolekcji obszarów roboczych** wysyła raport do użytkownika, użytkownik może wyświetlić raport w aplikacji niestandardowej. Jeśli na przykład zaimportowano przykład [Przeanalizuj dane Sales Data PBIX](https://download.microsoft.com/download/1/4/E/14EDED28-6C58-4055-A65C-23B4DA81C4DE/Analyzing_Sales_Data.pbix), przykładowa aplikacja internetowa będzie wyglądać następująco:
 
-![Przykładowy raport osadzone w aplikacji](media/get-started-sample/sample-web-app.png)
+![Przykładowy raport osadzony w aplikacji](media/get-started-sample/sample-web-app.png)
 
 ## <a name="see-also"></a>Zobacz też
 
 [CreateReportEmbedToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken?redirectedfrom=MSDN)  
-[Rozpoczęcie pracy z przykładem kolekcji obszarów roboczych pakietu Microsoft Power BI](get-started-sample.md)  
-[Typowe scenariusze kolekcji obszarów roboczych pakietu Microsoft Power BI](scenarios.md)  
-[Rozpoczynanie pracy z kolekcji obszarów roboczych pakietu Microsoft Power BI](get-started.md)  
-[Repozytorium Git języka CSharp usługi Power BI](https://github.com/Microsoft/PowerBI-CSharp)
+[Rozpocznij pracę z przykładem kolekcji obszarów roboczych Power BI firmy Microsoft](get-started-sample.md)  
+[Typowe scenariusze dotyczące kolekcji obszarów roboczych Power BI firmy Microsoft](scenarios.md)  
+[Wprowadzenie do kolekcji obszarów roboczych programu Microsoft Power BI](get-started.md)  
+[Power BI — CSharp repozytorium git](https://github.com/Microsoft/PowerBI-CSharp)
 
 Masz więcej pytań? [Dołącz do społeczności użytkowników usługi Power BI](https://community.powerbi.com/)

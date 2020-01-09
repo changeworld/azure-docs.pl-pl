@@ -8,33 +8,33 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 11/21/2019
+ms.date: 12/16/2019
 ms.author: diberry
-ms.openlocfilehash: 58e813d30273db4e011039aa43cd59c61507895e
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: f7d6e98205afad2ed2c4aea30e635254f79acaa1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74383699"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448086"
 ---
 # <a name="label-machine-learned-entity-in-an-example-utterance"></a>Etykieta jednostki doznanej przez maszynę w przykładzie wypowiedź
 
-Etykietowanie jednostki w przykładzie wypowiedź daje LUIS przykład obiektu i miejsce, w którym jednostka może być wyświetlana w wypowiedź. 
+Etykietowanie jednostki w przykładzie wypowiedź daje LUIS przykład obiektu i miejsce, w którym jednostka może być wyświetlana w wypowiedź.
 
 ## <a name="labeling-machine-learned-entity"></a>Etykieta jednostki uczenia maszynowego
 
-Rozważ wyrażenie `hi, please I want a cheese pizza in 20 minutes`. 
+Rozważ wyrażenie `hi, please I want a cheese pizza in 20 minutes`.
 
 1. Zaznacz tekst z lewej strony, a następnie wybierz prawym przyciskiem myszy tekst jednostki, a następnie zaznacz jednostkę, do której chcesz dodać etykietę, w tym przypadku kompletnej kolejności. _Pełna kolejność_ jest oznaczona na poniższej ilustracji.
 
     > [!div class="mx-imgBorder"]
     > Etykieta ![Pełna jednostka poznania maszynowego](media/label-utterances/example-1-label-machine-learned-entity-complete-order.png)
 
-1. Wybierz jednostkę z okna podręcznego. Jednostka etykiety pełna kolejność Pizza obejmuje wszystkie słowa (od lewej do prawej w języku angielskim), które są oznaczone etykietami. 
+1. Wybierz jednostkę z okna podręcznego. Jednostka etykiety pełna kolejność Pizza obejmuje wszystkie słowa (od lewej do prawej w języku angielskim), które są oznaczone etykietami.
 
 ## <a name="review-labeled-text"></a>Przejrzyj tekst z etykietą
 
-Po etykietowaniu Sprawdź przykład wypowiedź i upewnij się, że wybrany zakres tekstu został podkreślony z wybraną jednostką. Linia ciągła wskazuje, że tekst został oznaczony etykietą. 
+Po etykietowaniu Sprawdź przykład wypowiedź i upewnij się, że wybrany zakres tekstu został podkreślony z wybraną jednostką. Linia ciągła wskazuje, że tekst został oznaczony etykietą.
 
 > [!div class="mx-imgBorder"]
 > ![oznaczona jako pełna jednostka poznania maszynowego](media/label-utterances/example-1-label-machine-learned-entity-complete-order-labeled.png)
@@ -55,12 +55,12 @@ Alternatywnie można wybrać nazwę jednostki powyżej tekstu, a następnie wybr
 
 Paleta jednostek oferuje alternatywę dla poprzedniego środowiska etykietowania. Umożliwia malowanie tekstu, aby natychmiast oznaczyć go jednostką.
 
-1. Otwórz paletę Entity, wybierając ikonę wyróżnienia w prawym górnym rogu tabeli wypowiedź. 
+1. Otwórz paletę Entity, wybierając ikonę wyróżnienia w prawym górnym rogu tabeli wypowiedź.
 
     > [!div class="mx-imgBorder"]
     > ![paleta jednostek dla jednostki, która jest pouczenia maszynowego](media/label-utterances/example-1-label-machine-learned-entity-palette.png)
 
-2. Wybierz składnik jednostki. Ta akcja jest wskazywana wizualnie z nowym kursorem. Kursor jest podążany podczas przenoszenia w portalu. 
+2. Wybierz składnik jednostki. Ta akcja jest wskazywana wizualnie z nowym kursorem. Kursor jest podążany podczas przenoszenia w portalu.
 
     > [!div class="mx-imgBorder"]
     > ![paleta jednostek dla jednostki, która jest pouczenia maszynowego](media/label-utterances/example-1-label-machine-learned-entity-palette-menu.png)
@@ -77,17 +77,26 @@ Podskładniki w jednostkach są oznaczone etykietą dokładnie tak samo jak jedn
 > [!div class="mx-imgBorder"]
 > ![paleta jednostek dla jednostki, która jest pouczenia maszynowego](media/label-utterances/example-1-label-machine-learned-entity-subcomponent.png)
 
-Podskładniki można etykietować tylko wtedy, gdy element nadrzędny jest również oznaczony etykietą. 
+Podskładniki można etykietować tylko wtedy, gdy element nadrzędny jest również oznaczony etykietą.
+
+## <a name="labeling-entity-roles"></a>Etykietowanie ról jednostek
+
+Role jednostek są oznaczone etykietami przy użyciu palety Entity.
+
+1. Na stronie Szczegóły zamiaru wybierz **paletę jednostki** z poziomu paska narzędzi kontekstu.
+1. Po otwarciu palety jednostki wybierz jednostkę z listy jednostek.
+1. Przejdź do **inspektora jednostek**i wybierz istniejącą rolę lub Utwórz nową rolę.
+1. W przykładowym tekście wypowiedź etykieta tekst z rolą jednostki. 
 
 ## <a name="unlabel-entities"></a>Nie etykieta jednostek
 
-Aby usunąć etykietę jednostki, wybierz nazwę jednostki pod tekstem i wybierz pozycję Usuń **etykietę**. Jeśli jednostka, którą próbujesz wyrównać, ma etykietę podskładniki, wówczas podskładniki nie muszą mieć najpierw etykiety. 
+Aby usunąć etykietę jednostki, wybierz nazwę jednostki pod tekstem i wybierz pozycję Usuń **etykietę**. Jeśli jednostka, którą próbujesz wyrównać, ma etykietę podskładniki, wówczas podskładniki nie muszą mieć najpierw etykiety.
 
 ## <a name="editing-labels-using-the-entity-palette"></a>Edytowanie etykiet przy użyciu palety Entity
 
 Jeśli wystąpi błąd podczas etykietowania, paleta jednostek jest łatwym narzędziem umożliwiającym szybkie edycję. Na przykład, jeśli etykieta jednostki obejmuje dodatkowe słowo przez pomyłkę i ma już etykietę podskładniki, można użyć palety Entity do pędzla nad wymaganym krótszym zakresem wyrazów.
 
-Na przykład:
+Przykład:
 
 1. Podskładnik typu Pizza składa się z "sera Pizza with", co obejmuje bardzo niepoprawną literę wyrazu "z"
 
@@ -98,7 +107,6 @@ Na przykład:
 
     > [!div class="mx-imgBorder"]
     > ![paleta jednostek dla jednostki, która jest pouczenia maszynowego](media/label-utterances/edit-label-with-palette-2.png)
-
 
 ## <a name="labels-for-matching-text-entities"></a>Etykiety dla jednostek dopasowywania tekstu
 

@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 30fffa6264411238c3ff0a5e829e1567c00f4f97
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.date: 12/17/2019
+ms.openlocfilehash: d2b8b2fecbf85e6590294f1fbd7ff2a4453b9e87
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72794212"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460746"
 ---
 # <a name="create-a-basic-index-in-azure-cognitive-search"></a>Tworzenie podstawowego indeksu na platformie Azure Wyszukiwanie poznawcze
 
@@ -175,10 +175,9 @@ Interfejsy API używane do tworzenia indeksu mają różne ustawienia domyślne.
 | `facetable` |Umożliwia używanie pola w strukturze [nawigacji aspektowej](search-faceted-navigation.md) podczas samodzielnego filtrowania przez użytkownika. Zwykle jako aspekty najlepiej sprawdzają się pola zawierające powtarzające się wartości, które umożliwiają grupowanie wielu dokumentów (na przykład wiele dokumentów podlegających pod jedną markę lub kategorię usługi). |
 | `searchable` |Oznacza pole jako podlegające wyszukiwaniu pełnotekstowemu. |
 
+## <a name="index-size"></a>Rozmiar indeksu
 
-## <a name="storage-implications"></a>Konsekwencje dotyczące magazynu
-
-Wybrane atrybuty mają wpływ na magazyn. Poniższy zrzut ekranu ilustruje wzorce magazynu indeksów, które wynikają z różnych kombinacji atrybutów.
+Rozmiar indeksu zależy od rozmiaru przekazywanych dokumentów, a także konfiguracji indeksu, takich jak to, czy są uwzględniane sugestie i jak ustawić atrybuty dla poszczególnych pól. Poniższy zrzut ekranu ilustruje wzorce magazynu indeksów, które wynikają z różnych kombinacji atrybutów.
 
 Indeks jest oparty na [wbudowanym przykładowym](search-get-started-portal.md) źródle danych Nieruchomości, który można indeksować i wysyłać zapytania w portalu. Chociaż schematy indeksów nie są wyświetlane, można wywnioskować atrybuty na podstawie nazwy indeksu. Na przykład indeks z *możliwością wyszukiwania realestate* ma wybrany atrybut **możliwy do przeszukiwania** i nic nie jest, a *realestate —* indeks, który można pobrać, ma wybrany atrybut do **pobierania** i nic innego i tak dalej.
 
@@ -186,13 +185,13 @@ Indeks jest oparty na [wbudowanym przykładowym](search-get-started-portal.md) �
 
 Chociaż te warianty indeksów są sztuczne, możemy odnieść się do nich w celu uzyskania szerokiego porównania wpływu atrybutów na magazyn. Czy ustawienie **umożliwia** pobieranie rozmiaru indeksu wzrostu? Nie. Czy dodanie pól do **sugestii** zwiększa rozmiar indeksu? Tak.
 
-Indeksy obsługujące filtrowanie i sortowanie są proporcjonalnie większe niż indeksy obsługujące pełne wyszukiwanie tekstu. Przyczyną jest to, że zapytania filtru i sortowania dotyczące dokładnych dopasowań, aby dokumenty były przechowywane bez zmian. W przeciwieństwie do pól z możliwością wyszukiwania tekst obsługujący pełnotekstowe i rozmyte wyszukiwanie używaj odwróconych indeksów, które są wypełniane za pomocą tokenów, które zużywają mniej miejsca niż całe dokumenty.
+Indeksy obsługujące filtrowanie i sortowanie są proporcjonalnie większe niż te obsługujące tylko wyszukiwanie pełnotekstowe. Filtrowanie i sortowanie operacji skanowania pod kątem dokładnych dopasowań, które wymagają obecności nienaruszonych dokumentów. W przeciwieństwie do pól z możliwością wyszukiwania tekst obsługujący pełnotekstowe i rozmyte wyszukiwanie używaj odwróconych indeksów, które są wypełniane za pomocą tokenów, które zużywają mniej miejsca niż całe dokumenty. 
 
 > [!Note]
 > Architektura magazynu jest uważana za szczegóły implementacji platformy Azure Wyszukiwanie poznawcze i może ulec zmianie bez powiadomienia. Nie ma żadnej gwarancji, że bieżące zachowanie będzie nadal występowało w przyszłości.
 
 ## <a name="suggesters"></a>Funkcje sugestii
-Sugerował to sekcja schematu, która określa, które pola w indeksie są używane do obsługi autouzupełniania lub zapytań typu "w wyszukiwaniach". Zazwyczaj częściowe ciągi wyszukiwania są wysyłane do [sugestii (interfejs API REST)](https://docs.microsoft.com/rest/api/searchservice/suggestions) , podczas gdy użytkownik pisze zapytanie wyszukiwania, a interfejs API zwraca zestaw sugerowanych fraz. 
+Sugerował to sekcja schematu, która określa, które pola w indeksie są używane do obsługi autouzupełniania lub zapytań typu "w wyszukiwaniach". Zazwyczaj częściowe ciągi wyszukiwania są wysyłane do [sugestii (interfejs API REST)](https://docs.microsoft.com/rest/api/searchservice/suggestions) , podczas gdy użytkownik pisze zapytanie wyszukiwania, a interfejs API zwraca zestaw sugerowanych dokumentów lub fraz. 
 
 Pola dodane do sugestii są używane do kompilowania terminów wyszukiwania z wyprzedzeniem. Wszystkie terminy wyszukiwania są tworzone podczas indeksowania i zapisywane oddzielnie. Aby uzyskać więcej informacji na temat tworzenia struktury sugerującej, zobacz [Dodawanie sugestii](index-add-suggesters.md).
 

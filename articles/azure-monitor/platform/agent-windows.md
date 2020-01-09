@@ -4,15 +4,15 @@ description: W tym artykule opisano sposób łączenia komputerów z systemem Wi
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 10/07/2019
-ms.openlocfilehash: 42183ca7b02ba75b241ee1a83b5a0dc936a8c1c8
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 8918c18c9356c583b9ea23138f0d0a0fb4dcd845
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420416"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75689995"
 ---
 # <a name="connect-windows-computers-to-azure-monitor"></a>Podłącz komputery z systemem Windows do Azure Monitor
 
@@ -20,7 +20,7 @@ W celu monitorowania maszyn wirtualnych lub komputerów fizycznych w lokalnym ce
 
 Na monitorowanym komputerze z systemem Windows Agent jest wyświetlany jako usługa Microsoft Monitoring Agent. Usługa Microsoft Monitoring Agent zbiera zdarzenia z plików dziennika, dziennika zdarzeń systemu Windows, danych wydajności i innych danych telemetrycznych. Nawet jeśli Agent nie może komunikować się z Azure Monitorą raportów, Agent nadal uruchamia i kolejkuje zebrane dane na dysku monitorowanego komputera. Po przywróceniu połączenia usługa Microsoft Monitoring Agent wysyła zebrane dane do usługi.
 
-Agenta programu można zainstalować przy użyciu jednej z poniższych metod. Większość instalacji używa kombinacji tych metod w celu zainstalowania różnych zestawów komputerów, odpowiednio do potrzeb.  Szczegółowe informacje o używaniu każdej metody są podane w dalszej części artykułu.
+Agenta programu można zainstalować przy użyciu jednej z poniższych metod. W większości instalacji jest używana kombinacja tych metod w celu zainstalowania różnych zestawów komputerów, zgodnie z potrzebami danej konfiguracji.  Szczegółowe informacje o używaniu każdej metody są podane w dalszej części artykułu.
 
 * Instalacja ręczna. Instalator jest uruchamiany ręcznie na komputerze przy użyciu Kreatora instalacji, z wiersza polecenia lub wdrożony za pomocą istniejącego narzędzia do dystrybucji oprogramowania.
 * Azure Automation konfiguracji żądanego stanu (DSC). Korzystanie z usługi DSC w Azure Automation ze skryptem dla komputerów z systemem Windows, które zostały już wdrożone w danym środowisku.  
@@ -38,7 +38,7 @@ Aby poznać obsługiwaną konfigurację, przejrzyj tematy dotyczące [obsługiwa
 ## <a name="obtain-workspace-id-and-key"></a>Uzyskiwanie identyfikatora i klucza obszaru roboczego
 Przed zainstalowaniem agenta Log Analytics dla systemu Windows musisz mieć identyfikator i klucz obszaru roboczego dla obszaru roboczego Log Analytics.  Te informacje są wymagane podczas instalacji z każdej metody instalacji w celu poprawnego skonfigurowania agenta i upewnienia się, że może on pomyślnie komunikować się z Azure Monitor w chmurze dla instytucji rządowych na platformie Azure. 
 
-1. W witrynie Azure Portal kliknij pozycję **Wszystkie usługi**. Na liście zasobów wpisz **Log Analytics**. Po rozpoczęciu pisania zawartość listy jest filtrowana w oparciu o wpisywane dane. Wybierz pozycję **Log Analytics**.
+1. W Azure Portal Wyszukaj i wybierz pozycję **log Analytics obszary robocze**.
 2. Na liście obszarów roboczych Log Analytics wybierz obszar roboczy, w którym ma zostać skonfigurowany Agent do raportowania.
 3. Wybierz pozycję **Ustawienia zaawansowane**.<br><br> ![Ustawienia zaawansowane usługi Log Analytics](media/agent-windows/log-analytics-advanced-settings-01.png)<br><br>  
 4. Wybierz **Połączone źródła**, a następnie **Serwery Windows**.   
@@ -95,7 +95,7 @@ W poniższej tabeli przedstawiono określone parametry obsługiwane przez Instal
 
 |Opcje specyficzne dla MMA                   |Uwagi         |
 |---------------------------------------|--------------|
-| NOAPM=1                               | Opcjonalny parametr. Instaluje agenta programu bez programu .NET Application Performance Monitoring.|   
+| NOAPM=1                               | Parametr opcjonalny. Instaluje agenta programu bez programu .NET Application Performance Monitoring.|   
 |ADD_OPINSIGHTS_WORKSPACE               | 1 = Skonfiguruj agenta do raportowania do obszaru roboczego                |
 |OPINSIGHTS_WORKSPACE_ID                | Identyfikator obszaru roboczego (GUID) dla obszaru roboczego do dodania                    |
 |OPINSIGHTS_WORKSPACE_KEY               | Klucz obszaru roboczego używany do początkowego uwierzytelniania przy użyciu obszaru roboczego |
@@ -188,9 +188,9 @@ W **Panelu sterowania** na komputerze znajdź element **Microsoft Monitoring Age
 
 Możesz również wykonać prostą kwerendę dziennika w Azure Portal.  
 
-1. W witrynie Azure Portal kliknij pozycję **Wszystkie usługi**. Na liście zasobów wpisz **Azure monitor**. Po rozpoczęciu pisania zawartość listy jest filtrowana w oparciu o wpisywane dane. Wybierz **Azure monitor**.  
-2. Wybierz pozycję **dzienniki** w menu. 
-2. W okienku dzienniki w polu Typ zapytania wpisz:  
+1. W Azure Portal Wyszukaj i wybierz pozycję **monitor**.
+1. Wybierz pozycję **dzienniki** w menu.
+1. W okienku **dzienniki** w polu Typ zapytania wpisz:  
 
     ```
     Heartbeat 

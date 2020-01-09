@@ -3,16 +3,16 @@ title: Przewodnik dla deweloperów — IoT Plug and Play Preview | Microsoft Doc
 description: Opis modelowania urządzeń dla deweloperów Plug and Play IoT
 author: dominicbetts
 ms.author: dobett
-ms.date: 07/05/2019
+ms.date: 12/26/2019
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 6d8e0e9e675b88c69b74cdad261280f5dcaf7161
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 21001a22be6297595658ff347e9f8a7b04bb6faf
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73581624"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75531398"
 ---
 # <a name="iot-plug-and-play-preview-modeling-developer-guide"></a>Przewodnik dla deweloperów modelu IoT Plug and Play w wersji zapoznawczej
 
@@ -63,7 +63,7 @@ Każdy wpis na liście interfejsów w sekcji Implements ma:
 
 Istnieją dodatkowe pola opcjonalne, za pomocą których można dodać więcej szczegółów do modelu możliwości, takich jak wyświetlana nazwa i opis. Interfejsy, które są zadeklarowane w ramach modelu możliwości, można traktować jako składniki urządzenia. W publicznej wersji zapoznawczej lista interfejsów może zawierać tylko jeden wpis na schemat.
 
-## <a name="interface"></a>Interfejsu
+## <a name="interface"></a>Interface
 
 Dzięki DTDL można opisać możliwości urządzenia przy użyciu interfejsów. Interfejsy opisują _Właściwości_, dane _telemetryczne_i _polecenia_ , które są implementowane przez część urządzenia:
 
@@ -231,5 +231,5 @@ Bardziej ogólnie rzecz biorąc, polecenia można wywołać za poorednictwem sza
 Teraz, gdy wiesz już, jak modelowanie urządzeń, Oto kilka dodatkowych zasobów:
 
 - [Język definicji Digital bliźniaczy (DTDL)](https://aka.ms/DTDL)
-- [Zestaw SDK urządzeń dla języka C](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/)
+- [Zestaw SDK urządzenia dla języka C](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/)
 - [Interfejs API REST usługi IoT](https://docs.microsoft.com/rest/api/iothub/device)

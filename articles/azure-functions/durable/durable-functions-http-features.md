@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 3fcb777969f7d29b0e8698156dbdd0724f16f0b5
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 1c8f56810edb39db66cbb83750e5cff02e22662a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232867"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433285"
 ---
 # <a name="http-features"></a>Funkcje HTTP
 
@@ -32,7 +32,8 @@ Obsługiwane są następujące wbudowane interfejsy API protokołu HTTP.
 * [Wyślij zdarzenie zewnętrzne do aranżacji](durable-functions-http-api.md#raise-event)
 * [Przeczyść historię aranżacji](durable-functions-http-api.md#purge-single-instance-history)
 * [Wyślij zdarzenie operacji do jednostki](durable-functions-http-api.md#signal-entity)
-* [Zapytanie o stan jednostki](durable-functions-http-api.md#query-entity)
+* [Pobieranie stanu jednostki](durable-functions-http-api.md#get-entity)
+* [Zapytanie dotyczące listy jednostek](durable-functions-http-api.md#list-entities)
 
 Zobacz artykuł dotyczący [interfejsów API protokołu HTTP](durable-functions-http-api.md) , aby uzyskać pełny opis wszystkich wbudowanych interfejsów API protokołu HTTP uwidocznionych przez rozszerzenie Durable Functions.
 
@@ -149,7 +150,7 @@ Interfejs API "Call HTTP" może automatycznie implementować stronę klienta wzo
 > [!NOTE]
 > Program Orchestrator Functions również natywnie obsługuje wzorzec klienta sondowania po stronie serwera, zgodnie z opisem w temacie [śledzenie operacji asynchronicznych](#async-operation-tracking). Ta pomoc techniczna oznacza, że aranżacje w jednej aplikacji funkcji mogą łatwo koordynować funkcje programu Orchestrator w innych aplikacjach funkcji. Jest to podobne do koncepcji [aranżacji podrzędnej](durable-functions-sub-orchestrations.md) , ale z obsługą komunikacji między aplikacjami. Ta obsługa jest szczególnie przydatna w przypadku tworzenia aplikacji w stylu mikrousług.
 
-### <a name="managed-identities"></a>Zarządzane tożsamości
+### <a name="managed-identities"></a>Tożsamości zarządzane
 
 Durable Functions natywnie obsługuje wywołania interfejsów API, które akceptują tokeny Azure Active Directory (Azure AD) na potrzeby autoryzacji. Ta obsługa używa [tożsamości zarządzanych przez platformę Azure](../../active-directory/managed-identities-azure-resources/overview.md) do uzyskiwania tych tokenów.
 
@@ -178,7 +179,7 @@ public static async Task RunOrchestrator(
 }
 ```
 
-W poprzednim przykładzie `tokenSource` parametr jest skonfigurowany do uzyskiwania tokenów usługi Azure AD dla [Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md). Tokeny są identyfikowane przez identyfikator URI zasobu `https://management.core.windows.net`. W przykładzie przyjęto założenie, że bieżąca aplikacja funkcji działa lokalnie lub została wdrożona jako aplikacja funkcji z tożsamością zarządzaną. Przyjęto założenie, że lokalna tożsamość lub zarządzana tożsamość ma uprawnienia do zarządzania maszynami wirtualnymi w określonej grupie zasobów `myRG`.
+W poprzednim przykładzie `tokenSource` parametr jest skonfigurowany do uzyskiwania tokenów usługi Azure AD dla [Azure Resource Manager](../../azure-resource-manager/management/overview.md). Tokeny są identyfikowane przez identyfikator URI zasobu `https://management.core.windows.net`. W przykładzie przyjęto założenie, że bieżąca aplikacja funkcji działa lokalnie lub została wdrożona jako aplikacja funkcji z tożsamością zarządzaną. Przyjęto założenie, że lokalna tożsamość lub zarządzana tożsamość ma uprawnienia do zarządzania maszynami wirtualnymi w określonej grupie zasobów `myRG`.
 
 W czasie wykonywania skonfigurowane Źródło tokenu automatycznie zwraca token dostępu OAuth 2,0. Źródło dodaje token jako token okaziciela do nagłówka autoryzacji żądania wychodzącego. Ten model to poprawa ręcznego dodawania nagłówków autoryzacji do żądań HTTP z następujących powodów:
 

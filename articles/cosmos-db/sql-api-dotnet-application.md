@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek MVC ASP.NET Core dla Azure Cosmos DB: Tworzenie aplikacji sieci Web'
+title: Samouczek aplikacji sieci Web ASP.NET Core MVC przy użyciu Azure Cosmos DB
 description: Samouczek MVC ASP.NET Core do tworzenia aplikacji sieci Web MVC przy użyciu Azure Cosmos DB. Będziesz przechowywać dane JSON i uzyskiwać dostęp z aplikacji do zrobienia hostowanej na samouczku MVC Azure App Service-ASP NET Core.
 author: SnehaGunda
 ms.service: cosmos-db
@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: sngun
-ms.openlocfilehash: 1cfb7718c55920d817e1f87407fa1af590e9f006
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: b0da9f2f2d14c0487e61c1927b5456d09052cff3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720915"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444929"
 ---
 # <a name="tutorial-develop-an-aspnet-core-mvc-web-application-with-azure-cosmos-db-by-using-net-sdk"></a>Samouczek: opracowywanie aplikacji sieci Web ASP.NET Core MVC z Azure Cosmos DB przy użyciu zestawu SDK platformy .NET
 
@@ -133,7 +133,7 @@ Następnie Utwórzmy następujące trzy widoki.
    * W polu **Nazwa widoku**wpisz *index*.
    * W obszarze **szablon**wybierz pozycję **Lista**.
    * W obszarze **Klasa modelu**wybierz pozycję **element (do zrobienia. Modele)** .
-   * Wybierz pozycję **Użyj strony układu** i wprowadź wartość *~/views/Shared/_Layout.cshtml*.
+   * Wybierz pozycję **Użyj strony układu** i wprowadź wartość *~/views/Shared/_Layout. cshtml*.
 
    ![Zrzut ekranu przedstawiający okno dialogowe Dodawanie widoku MVC](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-add-mvc-view.png)
 
@@ -152,7 +152,7 @@ Podobnie jak w przypadku widoku umożliwiającego wyświetlanie elementów utwó
    * W polu **Nazwa widoku**wpisz polecenie *Utwórz*.
    * W obszarze **szablon**wybierz pozycję **Utwórz**.
    * W obszarze **Klasa modelu**wybierz pozycję **element (do zrobienia. Modele)** .
-   * Wybierz pozycję **Użyj strony układu** i wprowadź wartość *~/views/Shared/_Layout.cshtml*.
+   * Wybierz pozycję **Użyj strony układu** i wprowadź wartość *~/views/Shared/_Layout. cshtml*.
    * Wybierz pozycję **Dodaj**.
 
 #### <a name="AddEditIndexView"></a>Dodawanie widoku edycji elementu
@@ -166,7 +166,7 @@ Na koniec wykonaj następujące kroki, aby dodać widok umożliwiający edycję 
    * W polu **Nazwa widoku** wpisz *Edit* (Edycja).
    * W polu **Szablon** wybierz pozycję **Edycja**.
    * W polu **Klasa modelu** wybierz pozycję **Item (todo.Models)** .
-   * Wybierz pozycję **Użyj strony układu** i wprowadź wartość *~/views/Shared/_Layout.cshtml*.
+   * Wybierz pozycję **Użyj strony układu** i wprowadź wartość *~/views/Shared/_Layout. cshtml*.
    * Wybierz pozycję **Dodaj**.
 
 Po wykonaniu tych kroków zamknij wszystkie dokumenty *cshtml* w programie Visual Studio w celu późniejszego powrotu do tych widoków.

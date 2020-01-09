@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my local site to my VNets using Virtual WAN and I don't want to go through a Virtual WAN partner.
-ms.openlocfilehash: e17205af1ede845ea77b04f6f2b4c6babf3bc450
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 10b9dba2f54a2d20b0cb405285772f8c3d74b3a4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74482141"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450835"
 ---
 # <a name="tutorial-create-a-site-to-site-connection-using-azure-virtual-wan"></a>Samouczek: tworzenie połączenia lokacja-lokacja przy użyciu usługi Azure Virtual WAN
 
@@ -75,7 +75,7 @@ Centrum to sieć wirtualna, która może zawierać bramy do funkcji lokacja-loka
 
 ## <a name="site"></a>Tworzenie witryny
 
-Teraz można przystąpić do tworzenia lokacji odpowiadających Twoim lokalizacji fizycznej. Możesz utworzyć dowolną liczbę lokacji, tak aby odpowiadała liczbie lokalizacji fizycznych. Jeśli na przykład masz oddziały w Nowym Jorku, Londynie i Los Angeles, należy utworzyć trzy oddzielne lokacje. W tych lokacjach znajdują się punkty końcowe lokalnych urządzeń sieci VPN. W wirtualnej sieci WAN można utworzyć maksymalnie 1000 witryn na koncentratorze wirtualnym. Jeśli masz wiele centrów, możesz utworzyć 1000 dla każdego z tych centrów. Jeśli masz urządzenie z wirtualnym partnerem WAN (link INSERT), skontaktuj się z nimi, aby dowiedzieć się więcej o automatyzacji na platformie Azure. Zazwyczaj Automatyzacja to proste środowisko klikania, które umożliwia eksportowanie informacji o gałęziach o dużej skali na platformę Azure oraz Konfigurowanie łączności od CPE z bramą sieci VPN platformy Azure w wirtualnej sieci WAN (Oto link do wskazówek dotyczących automatyzacji od platformy Azure do partnerów CPE).
+Teraz można przystąpić do tworzenia lokacji odpowiadających Twoim lokalizacji fizycznej. Możesz utworzyć dowolną liczbę lokacji, tak aby odpowiadała liczbie lokalizacji fizycznych. Jeśli na przykład masz oddziały w Nowym Jorku, Londynie i Los Angeles, należy utworzyć trzy oddzielne lokacje. W tych lokacjach znajdują się punkty końcowe lokalnych urządzeń sieci VPN. W wirtualnej sieci WAN można utworzyć maksymalnie 1000 witryn na koncentratorze wirtualnym. Jeśli masz wiele centrów, możesz utworzyć 1000 dla każdego z tych centrów. Jeśli masz urządzenie z wirtualnym partnerem WAN (link INSERT), skontaktuj się z nimi, aby dowiedzieć się więcej o automatyzacji na platformie Azure. Zwykle Automatyzacja oznacza proste środowisko klikania, które umożliwia eksportowanie informacji o gałęziach o dużej skali na platformę Azure oraz Konfigurowanie łączności z CPE do bramy sieci VPN Azure Virtual WAN. Aby uzyskać więcej informacji, zobacz [wskazówki dotyczące automatyzacji od platformy Azure do partnerów CPE](virtual-wan-configure-automation-providers.md).
 
 [!INCLUDE [Create a site](../../includes/virtual-wan-tutorial-s2s-site-include.md)]
 

@@ -7,16 +7,16 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: helohr
-ms.openlocfilehash: 3577b459a1b6612d24346428512cfbc509515f52
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: e9410ce93d9e11d3023f4f461f3ba90a7bf74507
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607425"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75451313"
 ---
 # <a name="storage-options-for-fslogix-profile-containers-in-windows-virtual-desktop"></a>Opcje magazynu dla kontenerów profilów FSLogix w programie Virtual Desktop systemu Windows
 
-Platforma Azure oferuje wiele rozwiązań magazynu, których można użyć do przechowywania kontenera profilu FSLogix. W tym artykule porównano oferty magazynu Azure Storage dla profilów użytkowników kontenera profilu FSLogix systemu Windows.
+Platforma Azure oferuje wiele rozwiązań magazynu, których można użyć do przechowywania kontenera profilu FSLogix. W tym artykule porównano rozwiązania magazynu oferowane przez platformę Azure dla kontenerów profilów użytkowników FSLogix pulpitu wirtualnego systemu Windows.
 
 Pulpit wirtualny systemu Windows oferuje kontenery profilu FSLogix jako zalecane rozwiązanie profilu użytkownika. FSLogix zaprojektowano pod kątem roamingu profilów w zdalnych środowiskach obliczeniowych, takich jak pulpit wirtualny systemu Windows. Podczas logowania ten kontener jest dynamicznie dołączany do środowiska obliczeniowego przy użyciu natywnie obsługiwanego wirtualnego dysku twardego (VHD) oraz wirtualnego dysku twardego funkcji Hyper-V (VHDX). Profil użytkownika jest natychmiast dostępny i pojawia się w systemie tak samo jak natywny profil użytkownika.
 
@@ -24,7 +24,7 @@ W poniższych tabelach porównano oferty magazynów usługi Azure Storage dla sy
 
 ## <a name="azure-platform-details"></a>Szczegóły platformy Azure
 
-|Funkcje|Azure Files|Azure NetApp Files|Bezpośrednie miejsca do magazynowania|
+|Funkcje|Usługa Pliki systemu Azure|Azure NetApp Files|Bezpośrednie miejsca do magazynowania|
 |--------|-----------|------------------|---------------------|
 |Usługa platformy|Tak, rozwiązanie platformy Azure — natywne|Tak, rozwiązanie platformy Azure — natywne|Nie, samozarządzane|
 |Dostępność regionalna|Wszystkie regiony|[Wybierz regiony](https://azure.microsoft.com/global-infrastructure/services/?products=netapp&regions=all)|Wszystkie regiony|
@@ -36,7 +36,7 @@ W poniższych tabelach porównano oferty magazynów usługi Azure Storage dla sy
 
 ## <a name="azure-management-details"></a>Szczegóły zarządzania platformy Azure
 
-|Funkcje|Azure Files|Azure NetApp Files|Bezpośrednie miejsca do magazynowania|
+|Funkcje|Usługa Pliki systemu Azure|Azure NetApp Files|Bezpośrednie miejsca do magazynowania|
 |--------|-----------|------------------|---------------------|
 |Dostęp|Chmura, lokalne i hybrydowe (usługa Azure File Sync)|Chmura, lokalna (za pośrednictwem ExpressRoute)|Chmura, lokalna|
 |Tworzenie kopii zapasowych|Integracja z migawką usługi Azure Backup|Migawki Azure NetApp Files|Integracja z migawką usługi Azure Backup|

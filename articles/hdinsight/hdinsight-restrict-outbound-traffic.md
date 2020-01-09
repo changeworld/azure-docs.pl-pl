@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/23/2019
-ms.openlocfilehash: 8f6959eb6f9d17a368e7df7b95ecc511d0396f87
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: 6771cdb206920c8e3b746e28573de1742543b4c8
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73621449"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646697"
 ---
 # <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall"></a>Konfigurowanie wychodzącego ruchu sieciowego dla klastrów usługi Azure HDInsight przy użyciu zapory
 
@@ -35,7 +35,7 @@ Podsumowanie kroków służących do blokowania ruchu wychodzącego z istniejąc
 1. Utwórz zaporę.
 1. Dodawanie reguł aplikacji do zapory
 1. Dodaj reguły sieci do zapory.
-1. Utwórz tabelę routingu.
+1. Tworzenie tabeli routingu.
 
 ### <a name="create-new-subnet"></a>Utwórz nową podsieć
 
@@ -63,7 +63,7 @@ Utwórz kolekcję reguł aplikacji, która umożliwia klastrowi wysyłanie i odb
     |---|---|
     |Nazwa| FwAppRule|
     |Priorytet|200|
-    |Akcja|Zezwalaj|
+    |Działanie|Zezwól|
 
     **Sekcja tagów nazwy FQDN**
 
@@ -75,8 +75,8 @@ Utwórz kolekcję reguł aplikacji, która umożliwia klastrowi wysyłanie i odb
 
     | Nazwa | Adresy źródłowe | Protokół: Port | Docelowe nazwy FQDN | Uwagi |
     | --- | --- | --- | --- | --- |
-    | Rule_2 | * | https: 443 | login.windows.net | Zezwala na działanie logowania systemu Windows |
-    | Rule_3 | * | https: 443 | login.microsoftonline.com | Zezwala na działanie logowania systemu Windows |
+    | Rule_2 | * | https:443 | login.windows.net | Zezwala na działanie logowania systemu Windows |
+    | Rule_3 | * | https:443 | login.microsoftonline.com | Zezwala na działanie logowania systemu Windows |
     | Rule_4 | * | https: 443, http: 80 | storage_account_name. blob. Core. Windows. NET | Zastąp `storage_account_name` nazwą rzeczywistego konta magazynu. Jeśli klaster jest objęty WASB, Dodaj regułę do WASB. Aby korzystać tylko z połączeń HTTPS, upewnij się, że na koncie magazynu jest włączone polecenie ["wymagany bezpieczny transfer"](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) . |
 
    ![Title: Wprowadź szczegóły kolekcji reguł aplikacji](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection-details.png)
@@ -97,11 +97,11 @@ Utwórz reguły sieciowe w celu poprawnego skonfigurowania klastra usługi HDIns
     |---|---|
     |Nazwa| FwNetRule|
     |Priorytet|200|
-    |Akcja|Zezwalaj|
+    |Działanie|Zezwól|
 
     **Sekcja adresów IP**
 
-    | Nazwa | Protokół | Adresy źródłowe | Adresy docelowe | Porty docelowe | Uwagi |
+    | Nazwa | Protocol (Protokół) | Adresy źródłowe | Adresy docelowe | Porty docelowe | Uwagi |
     | --- | --- | --- | --- | --- | --- |
     | Rule_1 | UDP | * | * | 123 | Czas usługi |
     | Rule_2 | Dowolne | * | DC_IP_Address_1, DC_IP_Address_2 | * | Jeśli używasz pakiet Enterprise Security (ESP), a następnie Dodaj regułę sieciową w sekcji adresy IP, która umożliwia komunikację z usługą AAD-DS dla klastrów ESP. Adresy IP kontrolerów domeny można znaleźć w sekcji AAD-DS w portalu |
@@ -110,7 +110,7 @@ Utwórz reguły sieciowe w celu poprawnego skonfigurowania klastra usługi HDIns
 
     **Sekcja tagów usługi**
 
-    | Nazwa | Protokół | Adresy źródłowe | Tagi usług | Porty docelowe | Uwagi |
+    | Nazwa | Protocol (Protokół) | Adresy źródłowe | Tagi usługi | Porty docelowe | Uwagi |
     | --- | --- | --- | --- | --- | --- |
     | Rule_7 | TCP | * | SQL | 1433 | Konfigurowanie reguły sieci w sekcji Tagi usług dla programu SQL, która umożliwia rejestrowanie i inspekcję ruchu SQL, chyba że skonfigurowano punkty końcowe usługi dla SQL Server w podsieci HDInsight, co spowoduje ominięcie zapory. |
 
@@ -178,7 +178,7 @@ AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
 
 Integrowanie zapory platformy Azure z dziennikami Azure Monitor jest przydatne podczas pierwszego uruchamiania aplikacji, gdy nie są znane wszystkie zależności aplikacji. Więcej informacji na temat dzienników Azure Monitor można znaleźć [w temacie Analizowanie danych dzienników w Azure monitor](../azure-monitor/log-query/log-query-overview.md)
 
-Aby dowiedzieć się więcej o granicach skalowania zapory platformy Azure i zwiększania żądań, zobacz [ten](../azure-subscription-service-limits.md#azure-firewall-limits) dokument lub zapoznaj się z [często zadawanymi pytaniami](../firewall/firewall-faq.md).
+Aby dowiedzieć się więcej o granicach skalowania zapory platformy Azure i zwiększania żądań, zobacz [ten](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-firewall-limits) dokument lub zapoznaj się z [często zadawanymi pytaniami](../firewall/firewall-faq.md).
 
 ## <a name="access-to-the-cluster"></a>Dostęp do klastra
 
@@ -201,17 +201,17 @@ Poprzednie instrukcje ułatwiają skonfigurowanie zapory platformy Azure pod ką
 
 ### <a name="service-endpoint-capable-dependencies"></a>Zależności obsługujące punkt końcowy usługi
 
-| **Punktu końcowego** |
+| **Punkt końcowy** |
 |---|
 | Azure SQL |
 | Azure Storage |
-| Usługa Azure Active Directory |
+| Usługa Active Directory systemu Azure |
 
 #### <a name="ip-address-dependencies"></a>Zależności adresów IP
 
-| **Punktu końcowego** | **Szczegóły** |
+| **Punkt końcowy** | **Szczegóły** |
 |---|---|
-| \*: 123 | Sprawdzanie zegara NTP. Ruch jest sprawdzany w wielu punktach końcowych na porcie 123 |
+| \*:123 | Sprawdzanie zegara NTP. Ruch jest sprawdzany w wielu punktach końcowych na porcie 123 |
 | Adresy IP opublikowane w [tym miejscu](hdinsight-management-ip-addresses.md) | To są usługi HDInsight |
 | AAD — prywatne adresy IP DS dla klastrów ESP |
 | \*: 16800 dla aktywacji usługi KMS systemu Windows |
@@ -222,7 +222,7 @@ Poprzednie instrukcje ułatwiają skonfigurowanie zapory platformy Azure pod ką
 > [!Important]
 > Poniższa lista zawiera tylko kilka najważniejszych nazw FQDN. Aby skonfigurować urządzenie WUS [w tym pliku](https://github.com/Azure-Samples/hdinsight-fqdn-lists/blob/master/HDInsightFQDNTags.json), można uzyskać pełną listę nazw FQDN.
 
-| **Punktu końcowego**                                                          |
+| **Punkt końcowy**                                                          |
 |---|
 | azure.archive.ubuntu.com:80                                           |
 | security.ubuntu.com:80                                                |

@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/20/2019
-ms.openlocfilehash: 37b8ad0fc09644d746c3528c174d1bf95d546d0f
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: f688f0ddfb62e988ddebada1f612aa842afa5181
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706259"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644600"
 ---
 # <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight: często zadawane pytania
 
@@ -114,7 +114,7 @@ Nie, nie można uruchamiać Apache Kafka i Apache Spark w tym samym klastrze us�
 
 ### <a name="how-do-i-change-timezone-in-ambari"></a>Jak mogę zmienić strefę czasową w Ambari?
 
-1. Otwórz interfejs użytkownika sieci Web Ambari w https://CLUSTERNAME.azurehdinsight.net, gdzie CLUSTERname jest nazwą klastra.
+1. Otwórz interfejs użytkownika sieci Web Ambari w `https://CLUSTERNAME.azurehdinsight.net`, gdzie CLUSTERname jest nazwą klastra.
 2. W prawym górnym rogu wybierz pozycję Administrator | Ustawienia. 
 
    ![Ustawienia Ambari](media/hdinsight-faq/ambari-settings.png)
@@ -165,7 +165,7 @@ Tak, możesz udostępnić niestandardowy magazyn metadanych w wielu klastrach, o
 
 Jeśli zablokujesz porty 22 i 23, nie będziesz mieć dostępu do klastra za pośrednictwem protokołu SSH. Te porty nie są używane przez usługę HDInsight.
 
-Aby uzyskać więcej informacji, zobacz następujące dokumenty:
+Więcej informacji można znaleźć w następujących dokumentach:
 
 - [Kontrolowanie ruchu sieciowego](https://docs.microsoft.com/azure/hdinsight/hdinsight-plan-virtual-network-deployment#networktraffic)
 

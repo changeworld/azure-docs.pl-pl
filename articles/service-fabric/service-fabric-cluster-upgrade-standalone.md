@@ -1,25 +1,14 @@
 ---
-title: Uaktualnianie autonomicznego klastra platformy Azure Service Fabric | Microsoft Docs
-description: Dowiedz się więcej o uaktualnianiu wersji lub konfiguracji autonomicznego klastra platformy Azure Service Fabric.  T
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: 15190ace-31ed-491f-a54b-b5ff61e718db
-ms.service: service-fabric
-ms.devlang: dotnet
+title: Uaktualnianie autonomicznego klastra platformy Azure Service Fabric
+description: Dowiedz się więcej o uaktualnianiu wersji lub konfiguracji autonomicznego klastra platformy Azure Service Fabric.  trylionów
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 11/12/2018
-ms.author: atsenthi
-ms.openlocfilehash: bf99d5d59354745508d8ca88abfc4b42fe608025
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 6da9b4c6890895141ecc419382f05f667614fb31
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599800"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75451824"
 ---
 # <a name="upgrading-and-updating-a-service-fabric-standalone-cluster"></a>Uaktualnianie i aktualizowanie Service Fabric autonomicznego klastra
 
@@ -47,7 +36,7 @@ Dla każdego typu węzła można dodać niestandardowe metryki pojemności, któ
 Aplikacja aranżacji patch (POA) jest aplikacją Service Fabric, która automatyzuje stosowanie poprawek systemu operacyjnego w klastrze Service Fabric bez przestojów. [Aplikacja aranżacji poprawek dla systemu Windows](service-fabric-patch-orchestration-application.md) może zostać wdrożona w klastrze w celu zainstalowania poprawek w zorganizowany sposób, dzięki czemu usługi są dostępne przez cały czas. 
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 * Dowiedz się, jak dostosować niektóre [Ustawienia sieci szkieletowej klastra usługi Service Fabric](service-fabric-cluster-fabric-settings.md)
 * Dowiedz się [, jak skalować klaster w i na zewnątrz](service-fabric-cluster-scale-up-down.md)
 * Informacje o [uaktualnieniach aplikacji](service-fabric-application-upgrade.md)

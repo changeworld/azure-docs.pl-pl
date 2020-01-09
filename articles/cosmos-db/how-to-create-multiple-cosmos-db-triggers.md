@@ -1,21 +1,21 @@
 ---
-title: Jak utworzyć wiele niezależnych wyzwalaczy Azure Functions dla Cosmos DB
+title: Utwórz wiele niezależnych wyzwalaczy Azure Functions dla Cosmos DB
 description: Dowiedz się, jak skonfigurować wiele niezależnych wyzwalaczy Azure Functions dla Cosmos DB do tworzenia architektur opartych na zdarzeniach.
 author: ealsur
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: maquaran
-ms.openlocfilehash: 987136bf8aba1313e1bef21f58691bf9a860ea32
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: fbf1e11d7a283ca6c93356f055198c35350e0332
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70093375"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445349"
 ---
 # <a name="create-multiple-azure-functions-triggers-for-cosmos-db"></a>Utwórz wiele wyzwalaczy Azure Functions dla Cosmos DB
 
-W tym artykule opisano, jak można skonfigurować wiele wyzwalaczy Azure Functions, aby Cosmos DB działały równolegle i niezależnie reagować na zmiany.
+W tym artykule opisano sposób konfigurowania wielu wyzwalaczy usługi Azure Functions dla usługi Cosmos DB tak, aby działały równolegle i niezależnie reagowały na zmiany.
 
 ![Funkcje oparte na zdarzeniach bezserwerowych działające z wyzwalaczem Azure Functions na potrzeby Cosmos DB i udostępniania kontenera dzierżawy](./media/change-feed-functions/multi-trigger.png)
 
@@ -27,24 +27,24 @@ Podczas tworzenia przepływów bezserwerowych opartych na zdarzeniach przy użyc
 
 ## <a name="optimizing-containers-for-multiple-triggers"></a>Optymalizowanie kontenerów dla wielu wyzwalaczy
 
-Uwzględniając *wymagania* wyzwalacza Azure Functions dla Cosmos DB, potrzebujemy drugiego kontenera do przechowywania stanu, nazywanego również kontenerem dzierżawy. Czy oznacza to, że potrzebujesz oddzielnego kontenera dzierżaw dla każdej funkcji platformy Azure?
+Uwzględniając *wymagania* wyzwalacza Azure Functions dla Cosmos DB, potrzebujemy drugiego kontenera do przechowywania stanu, nazywanego również *kontenerem dzierżawy*. Czy oznacza to, że potrzebujesz oddzielnego kontenera dzierżaw dla każdej funkcji platformy Azure?
 
 Dostępne są dwie opcje:
 
-* Utwórz **jeden kontener dzierżawy na funkcję**: Takie podejście może przełożyć na dodatkowe koszty, chyba że jest używana [udostępniona baza danych przepływności](./set-throughput.md#set-throughput-on-a-database). Należy pamiętać, że minimalna przepływność na poziomie kontenera to 400 [jednostek żądań](./request-units.md), a w przypadku kontenera dzierżawy jest on używany tylko do tworzenia punktów kontrolnych postępu i utrzymania stanu.
-* Mieć **jeden kontener dzierżawy i udostępnić go** wszystkim funkcjom: Druga opcja zapewnia lepsze wykorzystanie jednostek żądań inicjowanych w kontenerze, ponieważ umożliwia wielu Azure Functions współużytkowanie i używanie tej samej zainicjowanej przepływności.
+* Utwórz **jeden kontener dzierżawy na funkcję**: takie podejście może przełożyć na dodatkowe koszty, chyba że jest używana [udostępniona baza danych przepływności](./set-throughput.md#set-throughput-on-a-database). Należy pamiętać, że minimalna przepływność na poziomie kontenera to 400 [jednostek żądań](./request-units.md), a w przypadku kontenera dzierżawy jest on używany tylko do tworzenia punktów kontrolnych postępu i utrzymania stanu.
+* Należy mieć **jeden kontener dzierżawy i udostępnić go** wszystkim funkcjom: druga opcja zapewnia lepsze wykorzystanie jednostek żądań inicjowanych w kontenerze, ponieważ umożliwia ona wielu Azure Functions udostępnianie i używanie tej samej zainicjowanej przepływności.
 
 Celem tego artykułu jest przeprowadzenie drugiej opcji.
 
 ## <a name="configuring-a-shared-leases-container"></a>Konfigurowanie kontenera udostępnione dzierżawy
 
-Aby skonfigurować kontener udostępnione dzierżawy, jedyną dodatkową konfiguracją, którą `LeaseCollectionPrefix` należy wykonać w wyzwalaczach, jest dodanie [atrybutu](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---c-attributes) , jeśli używasz języka JavaScript C# lub `leaseCollectionPrefix` [atrybutu](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---javascript-example) . Wartość atrybutu powinna być logicznym deskryptorem tego konkretnego wyzwalacza.
+Aby skonfigurować kontener udostępnione dzierżawy, jedyną dodatkową konfiguracją, którą należy wykonać w wyzwalaczach, jest dodanie [atrybutu](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---c-attributes) `LeaseCollectionPrefix`, jeśli używasz języka JavaScript C# lub [atrybut](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---javascript-example) `leaseCollectionPrefix`. Wartość atrybutu powinna być logicznym deskryptorem tego konkretnego wyzwalacza.
 
-Na przykład jeśli masz trzy wyzwalacze: jeden, który wysyła wiadomości e-mail, które wykonuje agregację, aby utworzyć widok z materiałami, a drugi, który wysyła zmiany do innego magazynu, na potrzeby późniejszej analizy można przypisać `LeaseCollectionPrefix` "wiadomości e-mail" do pierwszej, " z materiału "do drugiego i" Analytics "na trzecią.
+Na przykład jeśli masz trzy wyzwalacze: jeden, który wysyła wiadomości e-mail, które wykonuje agregację, aby utworzyć widok z materiałami, a drugi, który wysyła zmiany do innego magazynu, na potrzeby późniejszej analizy można przypisać `LeaseCollectionPrefix` "wiadomości e-mail" do pierwszej, "z materiałem" do drugiego, a "Analytics" na trzecią.
 
 Ważna część polega na tym, że wszystkie trzy wyzwalacze **mogą korzystać z tej samej konfiguracji kontenera dzierżaw** (konta, bazy danych i nazwy kontenera).
 
-Bardzo prosty przykład kodu, który `LeaseCollectionPrefix` używa atrybutu w C#, będzie wyglądać następująco:
+Bardzo proste przykłady kodu używające atrybutu `LeaseCollectionPrefix` w programie C#będą wyglądać następująco:
 
 ```cs
 using Microsoft.Azure.Documents;
@@ -78,7 +78,7 @@ public static void MaterializedViews([CosmosDBTrigger(
 }
 ```
 
-W przypadku języka JavaScript można zastosować konfigurację `function.json` do pliku `leaseCollectionPrefix` z atrybutem:
+W przypadku języka JavaScript można zastosować konfigurację w pliku `function.json` z atrybutem `leaseCollectionPrefix`:
 
 ```json
 {

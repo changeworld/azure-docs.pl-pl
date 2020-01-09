@@ -1,7 +1,7 @@
 ---
 title: 'Samouczek 2: uczenie modeli ryzyka kredytowego'
 titleSuffix: ML Studio (classic) - Azure
-description: Szczegółowy Samouczek przedstawiający sposób tworzenia rozwiązania do analizy predykcyjnej w celu oceny ryzyka kredytowego w klasycznej wersji Azure Machine Learning Studio. Ten samouczek jest drugą częścią trzyczęściowej serii samouczków. Przedstawia on trenowanie i ewaluację modeli.
+description: Szczegółowy Samouczek przedstawiający sposób tworzenia rozwiązania do analizy predykcyjnej w celu oceny ryzyka kredytowego w Azure Machine Learning Studio (klasyczny). Ten samouczek jest drugą częścią trzyczęściowej serii samouczków. Przedstawia on trenowanie i ewaluację modeli.
 keywords: ryzyko kredytowe, rozwiązanie analizy predykcyjnej, ocena ryzyka
 author: sdgilley
 ms.author: sgilley
@@ -10,20 +10,20 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: b3f0ebe2cad68759e7feeb7a7cc3dadbbd03ee7e
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 9aeaed6565e69409bc55a71985296b2393226ba4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838659"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427482"
 ---
 # <a name="tutorial-2-train-credit-risk-models---azure-machine-learning-studio-classic"></a>Samouczek 2: uczenie modeli ryzyka kredytowego — Azure Machine Learning Studio (klasyczny)
 
-W tym samouczku szczegółowo przedstawiono proces opracowywania rozwiązania analizy predykcyjnej. Tworzysz prosty model w klasycznej wersji Machine Learning Studio.  Następnie wdrożysz model jako usługę internetową w ramach usługi Azure Machine Learning.  Wdrożony model może tworzyć przewidywania przy użyciu nowych danych. Ten samouczek jest **drugą częścią trzyczęściowej serii samouczków**.
+W tym samouczku szczegółowo przedstawiono proces opracowywania rozwiązania analizy predykcyjnej. Tworzysz prosty model w Machine Learning Studio (klasyczny).  Następnie wdrożysz model jako usługę internetową w ramach usługi Azure Machine Learning.  Wdrożony model może tworzyć przewidywania przy użyciu nowych danych. Ten samouczek jest **drugą częścią trzyczęściowej serii samouczków**.
 
 Załóżmy, że chcesz przewidzieć ryzyko kredytowe osoby na podstawie informacji przekazanych we wniosku kredytowym.  
 
-Ocena ryzyka kredytowego to złożony problem, ale w tym samouczku zostanie on nieco uproszczony. Będziesz jej używać jako przykładu tworzenia rozwiązania do analizy predykcyjnej przy użyciu Microsoft Azure Machine Learning Studio (klasyczne). Będziesz używać klasycznej wersji Azure Machine Learning Studio i usługi sieci Web Machine Learning dla tego rozwiązania.  
+Ocena ryzyka kredytowego to złożony problem, ale w tym samouczku zostanie on nieco uproszczony. Będziesz jej używać jako przykładu tworzenia rozwiązania do analizy predykcyjnej przy użyciu Microsoft Azure Machine Learning Studio (klasyczne). Dla tego rozwiązania będziesz używać Azure Machine Learning Studio (klasyczny) i Machine Learning usługi sieci Web.  
 
 W tym trzyczęściowym samouczku zaczniesz od publicznie dostępnych danych ryzyka kredytowego.  Następnie wdrożysz i wytrenujesz model predykcyjny.  Na koniec wdrożysz model jako usługę internetową.
 
@@ -44,7 +44,7 @@ Wykonanie [pierwszej części samouczka](tutorial-part1-credit-risk.md).
 
 ## <a name="train"></a>Trenowanie wielu modeli
 
-Jedną z korzyści wynikających z używania klasycznej wersji Azure Machine Learning Studio do tworzenia modeli uczenia maszynowego jest możliwość wypróbowania więcej niż jednego typu modelu jednocześnie w jednym doświadczeniu i porównać wyniki. Taki eksperyment ułatwia znalezienie najlepszego rozwiązania problemu.
+Jedną z zalet używania Azure Machine Learning Studio (klasycznego) do tworzenia modeli uczenia maszynowego jest możliwość wypróbowania więcej niż jednego typu modelu jednocześnie w jednym doświadczeniu i porównać wyniki. Taki eksperyment ułatwia znalezienie najlepszego rozwiązania problemu.
 
 W ramach eksperymentu opracowywanego w tym samouczku utworzysz dwa różne typy modelu i porównasz wyniki ich oceny, aby określić, który algorytm ma zostać użyty w końcowym eksperymencie.  
 
@@ -88,7 +88,7 @@ Teraz musisz poinformować moduł [modelu uczenia][train-model] , że model ma p
 
 1. Kliknij znacznik wyboru **OK**.
 
-### <a name="two-class-support-vector-machine"></a>Two-Class Support Vector Machine (Dwuklasowa maszyna wektorów nośnych)
+### <a name="two-class-support-vector-machine"></a>Algorytm SVM dla problemu dwuklasowego
 
 Następnie skonfigurujesz model SVM.  
 

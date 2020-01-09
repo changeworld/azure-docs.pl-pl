@@ -1,29 +1,20 @@
 ---
-title: Usługa Azure Service Fabric diagnozowanie typowych scenariuszy | Microsoft Docs
-description: Dowiedz się, jak rozwiązywać typowe scenariusze za pomocą usługi Azure Service Fabric
-services: service-fabric
-documentationcenter: .net
+title: Usługa Azure Service Fabric diagnozowanie typowych scenariuszy
+description: Dowiedz się więcej na temat rozwiązywania typowych scenariuszy monitorowania i diagnostyki w aplikacjach Service Fabric platformy Azure.
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/25/2019
 ms.author: srrengar
-ms.openlocfilehash: 265aea1b8873d812859b39175c732c3e7118cbb5
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: b012e37bef7fe21e869fc3af415ca57b74c61dd8
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "60394205"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645790"
 ---
 # <a name="diagnose-common-scenarios-with-service-fabric"></a>Diagnozuj typowe scenariusze za pomocą Service Fabric
 
-W tym artykule przedstawiono typowe scenariusze napotykane przez użytkowników w obszarze monitorowania i diagnostyki przy użyciu Service Fabric. Przedstawione scenariusze obejmują wszystkie 3 warstwy usługi Service Fabric: Aplikacja, klaster i infrastruktura. Każde rozwiązanie używa dzienników Application Insights i Azure Monitor, narzędzi monitorowania platformy Azure, aby wykonać każdy scenariusz. Kroki opisane w poszczególnych rozwiązaniach umożliwiają użytkownikom wprowadzenie do korzystania z dzienników Application Insights i Azure Monitor w kontekście Service Fabric.
+W tym artykule przedstawiono typowe scenariusze napotykane przez użytkowników w obszarze monitorowania i diagnostyki przy użyciu Service Fabric. Przedstawione scenariusze obejmują wszystkie 3 warstwy usługi Service Fabric: aplikacje, klaster i infrastruktura. Każde rozwiązanie używa dzienników Application Insights i Azure Monitor, narzędzi monitorowania platformy Azure, aby wykonać każdy scenariusz. Kroki opisane w poszczególnych rozwiązaniach umożliwiają użytkownikom wprowadzenie do korzystania z dzienników Application Insights i Azure Monitor w kontekście Service Fabric.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -56,7 +47,7 @@ Rozwiązania w tym artykule będą korzystać z następujących narzędzi. Zalec
 1. W tym samym zasobie Application Insights można filtrować według "żądań" zamiast wyjątków i wyświetlać wszystkie żądania
 2. W przypadku korzystania z zestawu SDK Service Fabric Application Insights można zobaczyć wizualną reprezentację Twoich usług, a także liczbę żądań zakończonych powodzeniem i niepowodzeniem. Po lewej stronie kliknij pozycję "Mapa aplikacji".
 
-    ![Mapa aplikacji w bloku](media/service-fabric-diagnostics-common-scenarios/app-map-blade.png) ![mapy aplikacji AI](media/service-fabric-diagnostics-common-scenarios/app-map-new.png)
+    ![bloku mapy aplikacji AI](media/service-fabric-diagnostics-common-scenarios/app-map-blade.png) ![mapy aplikacji AI](media/service-fabric-diagnostics-common-scenarios/app-map-new.png)
 
     Aby uzyskać więcej informacji na temat mapy aplikacji, zapoznaj się z [dokumentacją mapy aplikacji](../azure-monitor/app/app-map.md)
 
@@ -139,7 +130,7 @@ Aby śledzić wydajność Reliable Services lub aktorów w aplikacjach, należy 
 * `Service Fabric Actor(*)\\Average milliseconds per request`
 * `Service Fabric Actor Method(*)\\Invocations/Sec`
 
-Sprawdź te linki, aby uzyskać pełną listę liczników wydajności dla niezawodnych [](service-fabric-reliable-actors-diagnostics.md) [usług](service-fabric-reliable-serviceremoting-diagnostics.md) i aktorów
+Sprawdź te linki, aby uzyskać pełną listę liczników wydajności dla niezawodnych [usług](service-fabric-reliable-serviceremoting-diagnostics.md) i [aktorów](service-fabric-reliable-actors-diagnostics.md)
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -6,14 +6,14 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-ms.date: 11/09/2019
+ms.date: 12/28/2019
 ms.author: v-qiwe
-ms.openlocfilehash: 79891f6a4036a21be8edc70044a29cfb9cca4755
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 4ff398c6e4208b7e55affe3fe8d6dd5efdce7bf7
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73891052"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75528236"
 ---
 # <a name="commercial-marketplace-policies-and-terms"></a>Komercyjne zasady i postanowienia dotyczące portalu Marketplace
 
@@ -26,13 +26,13 @@ Oferty w portalu Marketplace muszą być zgodne z naszymi zasadami i postanowien
 
 ## <a name="policies-and-terms"></a>Zasady i postanowienia
 
-* [Komercyjne zasady certyfikacji portalu Marketplace](https://docs.microsoft.com/legal/marketplace/certification-policies)
+* [Zasady certyfikacji komercyjnej platformy handlowej](https://docs.microsoft.com/legal/marketplace/certification-policies)
 
 * [Zasady uczestnictwa](https://docs.microsoft.com/legal/marketplace/participation-policy)
 
 * [Zasady klasyfikacji i przeglądu](https://docs.microsoft.com/legal/marketplace/rating-review-policies)
 
-* [Warunki witryny Azure Marketplace](https://docs.microsoft.com/legal/marketplace/terms)
+* [Warunki dotyczące witryny Azure Marketplace](https://docs.microsoft.com/legal/marketplace/terms)
 
 ## <a name="next-steps"></a>Następne kroki
 
