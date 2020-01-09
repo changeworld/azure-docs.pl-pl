@@ -1,25 +1,14 @@
 ---
-title: Bezpieczne nawiązywanie połączenia z klastrem usługi Azure Service Fabric | Microsoft Docs
+title: Bezpieczne nawiązywanie połączenia z klastrem usługi Azure Service Fabric
 description: Zawiera opis sposobu uwierzytelniania dostępu klienta do klastra Service Fabric i zabezpieczania komunikacji między klientami a klastrem.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: 759a539e-e5e6-4055-bff5-d38804656e10
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 01/29/2019
-ms.author: atsenthi
-ms.openlocfilehash: c350b53b2d0b235c5e34431386205f090f37b482
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 89d9f67ba1a202b3830df7a5b960c6ef01091bf2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599712"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458274"
 ---
 # <a name="connect-to-a-secure-cluster"></a>Nawiązywanie połączenia z zabezpieczonym klastrem
 
@@ -31,7 +20,7 @@ Gdy klient łączy się z węzłem klastra Service Fabric, można uwierzytelnia�
 
 Istnieje kilka różnych sposobów łączenia się z bezpiecznym klastrem przy użyciu interfejsu wiersza polecenia Service Fabric (sfctl). Podczas uwierzytelniania przy użyciu certyfikatu klienta szczegóły certyfikatu muszą być zgodne z certyfikatem wdrożonym w węzłach klastra. Jeśli certyfikat ma urzędy certyfikacji, należy dodatkowo określić zaufane urzędy certyfikacji.
 
-Możesz połączyć się z klastrem przy użyciu `sfctl cluster select` polecenia.
+Możesz połączyć się z klastrem za pomocą polecenia `sfctl cluster select`.
 
 Certyfikaty klienta można określić w dwóch różnych sposobów, jako certyfikat i parę kluczy lub jako pojedynczy plik PFX. W przypadku plików PEM chronionych hasłem zostanie wyświetlony monit o wprowadzenie hasła. Jeśli certyfikat klienta został uzyskany jako plik PFX, najpierw przekonwertuj plik PFX na plik PEM przy użyciu poniższego polecenia. 
 
@@ -41,7 +30,7 @@ openssl pkcs12 -in your-cert-file.pfx -out your-cert-file.pem -nodes -passin pas
 
 Jeśli plik PFX nie jest chroniony hasłem, użyj parametru Pass-Pass: dla ostatniego parametru.
 
-Aby określić certyfikat klienta jako plik PEM, określ ścieżkę pliku w `--pem` argumencie. Na przykład:
+Aby określić certyfikat klienta jako plik PEM, określ ścieżkę pliku w argumencie `--pem`. Przykład:
 
 ```azurecli
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem
@@ -49,22 +38,22 @@ sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./clie
 
 W przypadku plików PEM chronionych hasłem przed uruchomieniem dowolnego polecenia zostanie wyświetlony monit o podanie hasła.
 
-Aby określić certyfikat, para kluczy Użyj `--cert` argumentów i `--key` , aby określić ścieżki plików do każdego odpowiedniego pliku.
+Aby określić certyfikat, para kluczy Użyj argumentów `--cert` i `--key`, aby określić ścieżki do każdego odpowiedniego pliku.
 
 ```azurecli
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --cert ./client.crt --key ./keyfile.key
 ```
 
-Czasami certyfikaty używane do zabezpieczania klastrów testowych lub deweloperów nie przechodzą pomyślnie weryfikacji certyfikatu. Aby pominąć weryfikację certyfikatu, określ `--no-verify` opcję. Na przykład:
+Czasami certyfikaty używane do zabezpieczania klastrów testowych lub deweloperów nie przechodzą pomyślnie weryfikacji certyfikatu. Aby pominąć weryfikację certyfikatu, określ opcję `--no-verify`. Przykład:
 
 > [!WARNING]
-> Nie należy używać `no-verify` opcji podczas nawiązywania połączenia z klastrami Service Fabric produkcyjnych.
+> Nie należy używać opcji `no-verify` podczas nawiązywania połączenia z klastrami Service Fabric produkcyjnych.
 
 ```azurecli
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem --no-verify
 ```
 
-Ponadto można określić ścieżki do katalogów zaufanych certyfikatów urzędów certyfikacji lub pojedynczych certyfikatów. Aby określić te ścieżki, użyj `--ca` argumentu. Przykład:
+Ponadto można określić ścieżki do katalogów zaufanych certyfikatów urzędów certyfikacji lub pojedynczych certyfikatów. Aby określić te ścieżki, użyj argumentu `--ca`. Przykład:
 
 ```azurecli
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem --ca ./trusted_ca
@@ -387,7 +376,7 @@ Co najmniej dwa certyfikaty powinny być używane do zabezpieczania klastra, jed
     -Password (ConvertTo-SecureString -String test -AsPlainText -Force)
     ```
 
-* Na komputerze Mac: kliknij dwukrotnie plik PFX, a następnie postępuj zgodnie z monitami, aby zainstalować certyfikat w pęku kluczy.
+* Na komputerach Mac: kliknij dwukrotnie plik PFX, a następnie postępuj zgodnie z monitami, aby zainstalować certyfikat w pęku kluczy.
 
 ## <a name="next-steps"></a>Następne kroki
 

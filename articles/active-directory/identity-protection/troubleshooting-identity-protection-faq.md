@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: troubleshooting
-ms.date: 10/18/2019
+ms.date: 12/13/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d22973867782ddb64ced2ac95e84c0b27a3addd
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 140ad45d9c4f6b6f49a4ea4aefb9298e58a2cf10
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72887600"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443574"
 ---
 # <a name="frequently-asked-questions-identity-protection-in-azure-active-directory"></a>Często zadawane pytania dotyczące ochrony tożsamości w programie Azure Active Directory
 
@@ -42,6 +42,14 @@ Przełączenie **Pokaż daty jako** Ukrycie kolumny **Ostatnia aktualizacja ryzy
 
 ## <a name="frequently-asked-questions"></a>Często zadawane pytania
 
+### <a name="why-is-a-user-is-at-risk"></a>Dlaczego użytkownik jest narażony na ryzyko?
+
+Jeśli jesteś klientem Azure AD Identity Protection, przejdź do widoku [ryzykowne użytkownicy](howto-identity-protection-investigate-risk.md#risky-users) i kliknij użytkownika o podwyższonym ryzyku. W szufladzie na dole karta "Historia ryzyka" będzie zawierać wszystkie zdarzenia, które doprowadziły do zmiany ryzyka użytkownika. Aby wyświetlić wszystkie ryzykowne logowania dla użytkownika, kliknij pozycję ryzykowne logowania użytkownika. Aby wyświetlić wszystkie wykrycia ryzyka dla tego użytkownika, kliknij pozycję wykrycia ryzyka użytkownika.
+
+### <a name="how-can-i-get-a-report-of-detections-of-a-specific-type"></a>Jak mogę uzyskać raport wykrywania określonego typu?
+
+Przejdź do widoku wykrywania ryzyka i przefiltruj według typu wykrywania. Następnie można pobrać ten raport z programu. Wolumin CSV lub. Format JSON przy użyciu przycisku **Pobierz** znajdującego się u góry. Aby uzyskać więcej informacji, zobacz artykuł [How to: badanie ryzyka](howto-identity-protection-investigate-risk.md#risk-detections).
+
 ### <a name="why-cant-i-set-my-own-risk-levels-for-each-risk-detection"></a>Dlaczego nie mogę ustawić własnych poziomów ryzyka dla każdego wykrywania ryzyka?
 
 Poziomy ryzyka związane z ochroną tożsamości są oparte na dokładności wykrywania i obsługiwane przez naszą nadzorowany Uczenie maszynowe. Aby dostosować środowisko, które są prezentowane użytkownikom, administrator może uwzględnić/wykluczyć niektórych użytkowników/grupy z zasad ryzyka użytkownika i logowania.
@@ -49,6 +57,20 @@ Poziomy ryzyka związane z ochroną tożsamości są oparte na dokładności wyk
 ### <a name="why-does-the-location-of-a-sign-in-not-match-where-the-user-truly-signed-in-from"></a>Dlaczego lokalizacja logowania jest niezgodna z miejscem, w którym użytkownik rzeczywiście się zalogował?
 
 Mapowanie geolokalizacji IP jest wyzwaniem obejmującym cały branżę. Jeśli uważasz, że lokalizacja wymieniona w raporcie logowania nie jest zgodna z rzeczywistą lokalizacją, skontaktuj się z pomocą techniczną firmy Microsoft. 
+
+### <a name="how-can-i-close-specific-risk-detections-like-i-did-in-the-old-ui"></a>Jak mogę zamknąć określone wykrycia ryzyka, jak w starym interfejsie użytkownika?
+
+Aby przesłać opinię na temat wykrywania ryzyka, można potwierdzić, że zalogowanie zostało naruszone lub bezpieczne. Opinie nadawane na zalogowaniu Trickles się na wszystkie wykrycia związane z tym logowaniem. Jeśli chcesz zamknąć wykrywania, które nie są połączone z logowaniem, możesz podać tę opinię na poziomie użytkownika. Aby uzyskać więcej informacji, zobacz artykuł [jak: wyrażanie opinii o ryzyku w Azure AD Identity Protection](howto-identity-protection-risk-feedback.md).
+
+### <a name="how-far-can-i-go-back-in-time-to-understand-whats-going-on-with-my-user"></a>Jak daleko można wrócić w czasie, aby zrozumieć, co się dzieje z moim użytkownikiem?
+
+- Widok [ryzykownych użytkowników](howto-identity-protection-investigate-risk.md#risky-users) przedstawia ryzyko związane z ryzykiem użytkownika w oparciu o wszystkie przeszłe logowania. 
+- W widoku [ryzykownych](howto-identity-protection-investigate-risk.md#risky-sign-ins) logowań w ciągu ostatnich 30 dni są wyświetlane objawy ryzyka. 
+- W widoku [wykrycia ryzyka](howto-identity-protection-investigate-risk.md#risk-detections) są wyświetlane wykrycia ryzyka w ciągu ostatnich 90 dni.
+
+### <a name="how-can-i-learn-more-about-a-specific-detection"></a>Jak można dowiedzieć się więcej na temat konkretnego wykrywania?
+
+Wszystkie wykrycia ryzyka są udokumentowane w artykule [co to jest ryzykowne](concept-identity-protection-risks.md#risk-types-and-detection). Aby dowiedzieć się więcej o wykrywaniu, możesz umieścić wskaźnik myszy nad symbolem (i) obok wykrywania na Azure Portal.
 
 ### <a name="how-do-the-feedback-mechanisms-in-identity-protection-work"></a>Jak działają mechanizmy przesyłania opinii w ramach ochrony tożsamości?
 

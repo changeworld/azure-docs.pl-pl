@@ -1,17 +1,17 @@
 ---
-title: Dowiedz się, jak skonfigurować czas wygaśnięcia w usłudze Azure Cosmos DB i jak nim zarządzać
+title: Skonfiguruj czas wygaśnięcia w usłudze Azure Cosmos DB i Zarządzaj nim
 description: Informacje o konfigurowaniu czasu wygaśnięcia i zarządzaniu nim w kontenerze i elemencie w Azure Cosmos DB
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: mjbrown
-ms.openlocfilehash: 51022956ad32059771b8d56f0ae177fb5165b450
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 55f94257b604a87460caa279fc0995f1434ac92c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873611"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441778"
 ---
 # <a name="configure-time-to-live-in-azure-cosmos-db"></a>Konfigurowanie czasu wygaśnięcia w usłudze Azure Cosmos DB
 
@@ -21,7 +21,7 @@ W usłudze Azure Cosmos DB możesz skonfigurować czas wygaśnięcia (Time to Li
 
 Wykonaj następujące czynności, aby włączyć czas wygaśnięcia dla kontenera bez terminu wygaśnięcia. Włącz tę funkcję, aby umożliwić zastępowanie TTL na poziomie elementu. Możesz także ustawić TTL, wprowadzając niezerową liczbę sekund.
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
+1. Zaloguj się do [Portalu Azure](https://portal.azure.com/).
 
 2. Utwórz nowe konto usługi Azure Cosmos lub wybierz istniejące.
 
@@ -133,7 +133,7 @@ Oprócz skonfigurowania domyślnego czasu wygaśnięcia dla kontenera możesz us
 
 Wykonaj następujące kroki, aby włączyć czas wygaśnięcia dla elementu:
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
+1. Zaloguj się do [Portalu Azure](https://portal.azure.com/).
 
 2. Utwórz nowe konto usługi Azure Cosmos lub wybierz istniejące.
 

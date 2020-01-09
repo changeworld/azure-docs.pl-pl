@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: robreed
-ms.openlocfilehash: b631a370c64522c201f1208819b5a76895d83b09
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: d19b3d59c48cfc8fc91d4678c2f979b110575b1a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74457509"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75359157"
 ---
 # <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>Rozszerzenie DSC dla systemu Linux (Microsoft. OSTCExtensions. DSCForLinux)
 
@@ -281,7 +281,7 @@ Rozszerzenia maszyn wirtualnych platformy Azure można wdrażać przy użyciu sz
 
 Przykładowy szablon Menedżer zasobów to [201-DSC-Linux-Azure-Storage-on-Ubuntu](https://github.com/Azure/azure-quickstart-templates/tree/master/201-dsc-linux-azure-storage-on-ubuntu) i [201-DSC-Linux-Public-Storage-on-Ubuntu](https://github.com/Azure/azure-quickstart-templates/tree/master/201-dsc-linux-public-storage-on-ubuntu).
 
-Aby uzyskać więcej informacji na temat szablonu Azure Resource Manager, zobacz [tworzenie Azure Resource Manager szablonów](../../azure-resource-manager/resource-group-authoring-templates.md).
+Aby uzyskać więcej informacji na temat szablonu Azure Resource Manager, zobacz [tworzenie Azure Resource Manager szablonów](../../azure-resource-manager/templates/template-syntax.md).
 
 
 ## <a name="azure-cli-deployment"></a>Wdrażania interfejs wiersza polecenia platformy Azure
@@ -289,7 +289,7 @@ Aby uzyskać więcej informacji na temat szablonu Azure Resource Manager, zobacz
 ### <a name="use-azure-cliazure-cli"></a>Korzystanie z [interfejsu wiersza polecenia platformy Azure] [Azure-CLI]
 Przed wdrożeniem rozszerzenia DSCForLinux Skonfiguruj `public.json` i `protected.json` zgodnie z różnymi scenariuszami w sekcji 3.
 
-#### <a name="classic"></a>Wdrożenie klasyczne
+#### <a name="classic"></a>Klasyczny
 Klasyczny tryb wdrażania jest również nazywany trybem zarządzania usługami platformy Azure. Aby przełączyć się do niego, należy uruchomić:
 ```
 $ azure config mode asm
@@ -324,7 +324,7 @@ DSCForLinux Microsoft.OSTCExtensions <version> \
 
 ### <a name="use-azure-powershellazure-powershell"></a>Użycie [Azure PowerShell] [Azure-PowerShell]
 
-#### <a name="classic"></a>Wdrożenie klasyczne
+#### <a name="classic"></a>Klasyczny
 
 Możesz zalogować się do konta platformy Azure w trybie zarządzania usługami platformy Azure, uruchamiając następujące operacje:
 

@@ -1,25 +1,16 @@
 ---
-title: Tworzenie kopii zapasowych na żądanie na platformie Azure Service Fabric | Microsoft Docs
+title: Tworzenie kopii zapasowych na żądanie na platformie Azure Service Fabric
 description: Użyj funkcji tworzenia kopii zapasowych i przywracania w Service Fabric, aby utworzyć kopię zapasową danych aplikacji w zależności od potrzeb.
-services: service-fabric
-documentationcenter: .net
 author: aagup
-manager: chackdan
-editor: aagup
-ms.assetid: 02DA262A-EEF6-4F90-842E-FFC4A09003E5
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 10/30/2018
 ms.author: aagup
-ms.openlocfilehash: 88698a7a0f78987dc96bf7f39831ec1a7560a359
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: d5eada62bec49fe771373671e9438d2786d6b165
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73815852"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458425"
 ---
 # <a name="on-demand-backup-in-azure-service-fabric"></a>Tworzenie kopii zapasowych na żądanie na platformie Azure Service Fabric
 

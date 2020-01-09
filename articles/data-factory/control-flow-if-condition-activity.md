@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 562e84b4fe51603ae32884057578541f5536ebd4
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: ef63a159c132f5b565123eeb4824fb1ae5812ce1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73679844"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444147"
 ---
 # <a name="if-condition-activity-in-azure-data-factory"></a>Działanie if Condition w Azure Data Factory
 Działanie If Condition pełni taką samą rolę, co instrukcja if w językach programowania. Powoduje ono obliczenie zestawu działań, gdy warunek zostanie obliczony na wartość `true`, oraz innego zestawu działań, gdy warunek zostanie obliczony na wartość `false`. 
@@ -63,11 +63,11 @@ Działanie If Condition pełni taką samą rolę, co instrukcja if w językach p
 
 ## <a name="type-properties"></a>Właściwości typu
 
-Właściwość | Opis | Dozwolone wartości | Wymagany
+Właściwość | Opis | Dozwolone wartości | Wymagane
 -------- | ----------- | -------------- | --------
 name | Nazwa działania if-Condition. | Ciąg | Tak
 type | Musi być ustawiona na **IfCondition** | Ciąg | Tak
-wyrażenia | Wyrażenie, które musi oszacować do wartości true lub false. | Wyrażenie z typem wyniku Boolean | Tak
+expression | Wyrażenie, które musi oszacować do wartości true lub false. | Wyrażenie z typem wyniku Boolean | Tak
 ifTrueActivities | Zestaw działań, które są wykonywane, gdy wyrażenie zwróci wartość `true`. | Tablica | Tak
 ifFalseActivities | Zestaw działań, które są wykonywane, gdy wyrażenie zwróci wartość `false`. | Tablica | Tak
 
@@ -196,10 +196,7 @@ Innym przykładem dla wyrażenia jest:
     "properties": {
         "type": "AzureStorage",
         "typeProperties": {
-            "connectionString": {
-                "value": "DefaultEndpointsProtocol=https;AccountName=<Azure Storage account name>;AccountKey=<Azure Storage account key>",
-                "type": "SecureString"
-            }
+            "connectionString": "DefaultEndpointsProtocol=https;AccountName=<Azure Storage account name>;AccountKey=<Azure Storage account key>"
         }
     }
 }

@@ -1,25 +1,16 @@
 ---
-title: Konfigurowanie uaktualnienia aplikacji Service Fabric | Microsoft Docs
+title: Konfigurowanie uaktualniania aplikacji usługi Service Fabric
 description: Dowiedz się, jak skonfigurować ustawienia uaktualniania aplikacji Service Fabric przy użyciu Microsoft Visual Studio.
-services: service-fabric
-documentationcenter: na
 author: mikkelhegn
-manager: mfussell
-editor: tglee
-ms.assetid: 1757ba85-0b7b-4f16-8a23-2ddaa61c86c6
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: multiple
 ms.date: 06/29/2017
 ms.author: mikhegn
-ms.openlocfilehash: 5979541146b7cd7b854f35c5bf204e71208f066b
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: ef88a528dbb6d326e5cc742d14c27218eb7502f7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876756"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464078"
 ---
 # <a name="configure-the-upgrade-of-a-service-fabric-application-in-visual-studio"></a>Konfigurowanie uaktualnienia aplikacji Service Fabric w programie Visual Studio
 Narzędzia Visual Studio Tools for Azure Service Fabric zapewniają obsługę uaktualnienia w przypadku klastrów lokalnych lub zdalnych. Istnieją trzy scenariusze, w których aplikacja ma zostać uaktualniona do nowszej wersji zamiast zastępowania aplikacji podczas testowania i debugowania:
@@ -31,7 +22,7 @@ Narzędzia Visual Studio Tools for Azure Service Fabric zapewniają obsługę ua
 ## <a name="parameters-needed-to-upgrade"></a>Parametry wymagające uaktualnienia
 Można wybrać jedną z dwóch typów wdrożenia: Regular lub upgrade. Regularne wdrożenie powoduje wymazanie wcześniejszych informacji o wdrożeniu i danych w klastrze, podczas gdy wdrożenie uaktualnienia zachowuje się. W przypadku uaktualniania aplikacji Service Fabric w programie Visual Studio należy podać parametry uaktualnienia aplikacji i zasady sprawdzania kondycji. Parametry uaktualniania aplikacji ułatwiają kontrolę nad uaktualnieniem, podczas gdy zasady sprawdzania kondycji określają, czy uaktualnienie zakończyło się pomyślnie. Aby uzyskać więcej informacji, zobacz [Service Fabric uaktualniania aplikacji: parametry uaktualnienia](service-fabric-application-upgrade-parameters.md) .
 
-Istnieją trzy tryby uaktualniania: *Monitorowane*, *UnmonitoredAuto*i *UnmonitoredManual*.
+Istnieją trzy tryby uaktualniania: *monitorowane*, *UnmonitoredAuto*i *UnmonitoredManual*.
 
 * Monitorowane uaktualnienie automatyzuje Sprawdzanie kondycji uaktualnienia i aplikacji.
 * Uaktualnienie UnmonitoredAuto automatyzuje uaktualnienie, ale pomija kontrolę kondycji aplikacji.

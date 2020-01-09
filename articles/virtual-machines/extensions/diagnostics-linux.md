@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: gwallace
-ms.openlocfilehash: b8a5a344f2f1d8280ca60169786e72a0e1dd291e
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 046e61d82893bf1fcdb2d6697cfaaa9f5bde8c2c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073163"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75359366"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Monitorowanie metryk i dzienników przy użyciu rozszerzenia diagnostycznego systemu Linux
 
@@ -135,7 +135,7 @@ storageAccountSasToken | [Token sygnatury dostępu współdzielonego konta](http
 mdsdHttpProxy | obowiązkowe Informacje serwera proxy HTTP, które są konieczne, aby umożliwić rozszerzeniu łączenie się z określonym kontem magazynu i punktem końcowym.
 sinksConfig | obowiązkowe Szczegóły alternatywnych miejsc docelowych, w których można dostarczyć metryki i zdarzenia. Szczegółowe informacje dotyczące każdego ujścia danych obsługiwanego przez rozszerzenie znajdują się w poniższych sekcjach.
 
-Aby uzyskać token sygnatury dostępu współdzielonego w ramach szablonu Menedżer zasobów, użyj funkcji **listAccountSas** . Aby zapoznać się z przykładowym szablonem, zobacz [przykład funkcji list](../../azure-resource-manager/resource-group-template-functions-resource.md#list-example).
+Aby uzyskać token sygnatury dostępu współdzielonego w ramach szablonu Menedżer zasobów, użyj funkcji **listAccountSas** . Aby zapoznać się z przykładowym szablonem, zobacz [przykład funkcji list](../../azure-resource-manager/templates/template-functions-resource.md#list-example).
 
 Możesz łatwo skonstruować wymagany token sygnatury dostępu współdzielonego za pomocą Azure Portal.
 
@@ -274,7 +274,7 @@ scheduledTransferPeriod | Częstotliwość, z jaką zagregowane metryki mają by
 
 Próbki metryk określonych w sekcji liczniki wydajności są zbierane co 15 sekund lub według częstotliwości próbkowania jawnie zdefiniowanej dla licznika. Jeśli zostanie wyświetlona wiele częstotliwości scheduledTransferPeriod (jak w przykładzie), każda agregacja jest obliczana niezależnie.
 
-#### <a name="performancecounters"></a>Liczniki wydajności
+#### <a name="performancecounters"></a>performanceCounters
 
 ```json
 "performanceCounters": {
@@ -309,7 +309,7 @@ Ta opcjonalna sekcja steruje kolekcją metryk. Próbki pierwotne są agregowane 
 
 Element | Wartość
 ------- | -----
-Ujścia | obowiązkowe Rozdzielana przecinkami lista nazw zlewów, do których LAD wysyła zagregowane wyniki metryk. Wszystkie zagregowane metryki są publikowane w każdym z wymienionych zbiorników. Zobacz [sinksConfig](#sinksconfig). Przykład: `"EHsink1, myjsonsink"`.
+sink — Obiekty | obowiązkowe Rozdzielana przecinkami lista nazw zlewów, do których LAD wysyła zagregowane wyniki metryk. Wszystkie zagregowane metryki są publikowane w każdym z wymienionych zbiorników. Zobacz [sinksConfig](#sinksconfig). Przykład: `"EHsink1, myjsonsink"`.
 type | Identyfikuje rzeczywistego dostawcę metryki.
 class | Wraz z "licznik" identyfikuje konkretną metrykę w przestrzeni nazw dostawcy.
 counter | Wraz z "klasą" identyfikuje konkretną metrykę w przestrzeni nazw dostawcy.
@@ -355,7 +355,7 @@ Kolekcja syslogEventConfiguration ma jeden wpis dla każdego interesującego Ci�
 
 Element | Wartość
 ------- | -----
-Ujścia | Rozdzielana przecinkami lista nazw ujścia, do których są publikowane poszczególne zdarzenia dziennika. Wszystkie zdarzenia dzienników zgodne z ograniczeniami w syslogEventConfiguration są publikowane w każdym z wymienionych zbiorników. Przykład: "EHforsyslog"
+sink — Obiekty | Rozdzielana przecinkami lista nazw ujścia, do których są publikowane poszczególne zdarzenia dziennika. Wszystkie zdarzenia dzienników zgodne z ograniczeniami w syslogEventConfiguration są publikowane w każdym z wymienionych zbiorników. Przykład: "EHforsyslog"
 facilityName | Nazwa obiektu dziennika systemowego (na przykład "LOG\_USER" lub "LOG\_LOCAL0"). Pełną listę można znaleźć w sekcji "udogodnienie" [strony dziennik](http://man7.org/linux/man-pages/man3/syslog.3.html) systemu.
 minSeverity | Poziom ważności dziennika systemu (na przykład "LOG\_ERR" lub "LOG\_INFO"). Pełną listę można znaleźć w sekcji "Level" [strony dziennika](http://man7.org/linux/man-pages/man3/syslog.3.html) systemu. Rozszerzenie przechwytuje zdarzenia wysyłane do obiektu na poziomie lub powyżej określonego poziomu.
 
@@ -388,7 +388,7 @@ przestrzeń nazw | obowiązkowe Przestrzeń nazw OMI, w której należy wykonać
 query | Zapytanie OMI, które ma zostać wykonane.
 table | obowiązkowe Tabela usługi Azure Storage na wyznaczynym koncie magazynu (zobacz [Ustawienia chronione](#protected-settings)).
 frequency | obowiązkowe Liczba sekund między wykonaniem zapytania. Wartość domyślna to 300 (5 minut); wartość minimalna to 15 sekund.
-Ujścia | obowiązkowe Rozdzielana przecinkami lista nazw dodatkowych obiektów ujścia, do których należy opublikować nieprzetworzone przykładowe wyniki metryki. Żadne agregacje tych nieprzetworzonych próbek nie są obliczane przez rozszerzenie ani za pomocą metryk platformy Azure.
+sink — Obiekty | obowiązkowe Rozdzielana przecinkami lista nazw dodatkowych obiektów ujścia, do których należy opublikować nieprzetworzone przykładowe wyniki metryki. Żadne agregacje tych nieprzetworzonych próbek nie są obliczane przez rozszerzenie ani za pomocą metryk platformy Azure.
 
 Należy określić "Table" lub "ujścia" albo oba te elementy.
 
@@ -410,7 +410,7 @@ Element | Wartość
 ------- | -----
 plik | Pełna nazwa ścieżki pliku dziennika do obserwowania i przechwycenia. Nazwa ścieżki musi mieć nazwę pojedynczego pliku; nie może to być nazwa katalogu ani zawierać symboli wieloznacznych.
 table | obowiązkowe Tabela usługi Azure Storage w wyznaczonym koncie magazynu (zgodnie z konfiguracją chronioną), do której zapisywane są nowe wiersze z "ogona" pliku.
-Ujścia | obowiązkowe Rozdzielana przecinkami lista nazw dodatkowych obiektów ujścia, do których są wysyłane wiersze dziennika.
+sink — Obiekty | obowiązkowe Rozdzielana przecinkami lista nazw dodatkowych obiektów ujścia, do których są wysyłane wiersze dziennika.
 
 Należy określić "Table" lub "ujścia" albo oba te elementy.
 
@@ -419,8 +419,8 @@ Należy określić "Table" lub "ujścia" albo oba te elementy.
 Dostawca metryk wbudowanej jest źródłem metryk najbardziej interesujących dla szerokiego zbioru użytkowników. Te metryki należą do pięciu szerokich klas:
 
 * Procesor
-* Memory (Pamięć)
-* Sieć
+* Pamięć
+* Network (Sieć)
 * System plików
 * Dysk
 
@@ -539,7 +539,7 @@ W oparciu o powyższe definicje przedstawiono przykładową konfigurację rozsze
 
 Te ustawienia prywatne konfigurują:
 
-* konto magazynu
+* Konto magazynu
 * pasujący token SAS konta
 * kilka zlewów (JsonBlob lub EventHubs z tokenami SAS)
 
@@ -695,7 +695,7 @@ Dane wysyłane do ujścia JsonBlob są przechowywane w obiektach Blob na koncie 
 Ponadto można używać tych narzędzi interfejsu użytkownika do uzyskiwania dostępu do danych w usłudze Azure Storage:
 
 * Program Visual Studio Eksplorator serwera.
-* [Eksplorator usługi Microsoft Azure Storage](https://azurestorageexplorer.codeplex.com/ "Eksplorator magazynu Azure").
+* [Eksplorator usługi Microsoft Azure Storage](https://azurestorageexplorer.codeplex.com/ "Eksplorator usługi Azure Storage").
 
 Ta migawka sesji Eksplorator usługi Microsoft Azure Storage zawiera wygenerowane tabele i kontenery usługi Azure Storage ze prawidłowej konfiguracji rozszerzenia LAD 3,0 na testowej maszynie wirtualnej. Obraz nie jest dokładnie zgodny z [konfiguracją przykładu LAD 3,0](#an-example-lad-30-configuration).
 

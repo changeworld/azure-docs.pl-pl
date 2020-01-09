@@ -1,25 +1,16 @@
 ---
-title: Uruchom usługę Service Fabric platformy Azure w ramach konta usługi gMSA | Microsoft Docs
+title: Uruchamianie usługi Service Fabric platformy Azure przy użyciu konta gMSA
 description: Dowiedz się, jak uruchomić usługę jako gMSA Service Fabric w klastrze autonomicznym systemu Windows.
-services: service-fabric
-documentationcenter: .net
 author: dkkapur
-manager: chackdan
-editor: ''
-ms.assetid: 4242a1eb-a237-459b-afbf-1e06cfa72732
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 03/29/2018
 ms.author: dekapur
-ms.openlocfilehash: d00eceffebb222196191a389058c0feb496e169a
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 99d8089bd12d05e46f91e55c933d58d50baa92f5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70307639"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464262"
 ---
 # <a name="run-a-service-as-a-group-managed-service-account"></a>Uruchamianie usługi za pomocą zarządzanego konta usługi grupy
 W klastrze autonomicznym systemu Windows Server można uruchomić usługę jako konto usługi zarządzane przez grupę (gMSA) przy użyciu zasad RunAs.  Domyślnie aplikacje Service Fabric są uruchamiane w ramach konta, w ramach którego działa proces Fabric. exe. Uruchamianie aplikacji na różnych kontach, nawet w udostępnianym środowisku hostowanym, sprawia, że są one bezpieczniejsze od siebie nawzajem. Należy zauważyć, że ta funkcja używa Active Directory lokalnie w domenie, a nie Azure Active Directory (Azure AD). Korzystając z gMSA, nie ma hasła ani zaszyfrowanego hasła przechowywanego w manifeście aplikacji.  Możesz również uruchomić usługę jako [Active Directory użytkownika lub grupę](service-fabric-run-service-as-ad-user-or-group.md).
@@ -30,7 +21,7 @@ Wymagania wstępne:
 - Domena wymaga klucza głównego KDS.
 - W domenie musi być co najmniej jeden kontroler domeny systemu Windows Server 2012 (lub R2).
 
-1. Aby administrator domeny Active Directory utworzyć konto usługi zarządzane przez grupę przy użyciu `New-ADServiceAccount` polecenia cmdlet i upewnij się, że zawierawszystkiewęzłyklastrausługiServiceFabric.`PrincipalsAllowedToRetrieveManagedPassword` `AccountName`, `DnsHostName` i`ServicePrincipalName` muszą być unikatowe.
+1. Aby administrator domeny Active Directory utworzyć konto usługi zarządzane przez grupę przy użyciu `New-ADServiceAccount` polecenia cmdlet i upewnij się, że `PrincipalsAllowedToRetrieveManagedPassword` zawiera wszystkie węzły klastra usługi Service Fabric. `AccountName`, `DnsHostName`i `ServicePrincipalName` muszą być unikatowe.
 
     ```powershell
     New-ADServiceAccount -name svc-Test$ -DnsHostName svc-test.contoso.com  -ServicePrincipalNames http/svc-test.contoso.com -PrincipalsAllowedToRetrieveManagedPassword SfNode0$,SfNode1$,SfNode2$,SfNode3$,SfNode4$

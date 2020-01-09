@@ -12,14 +12,14 @@ ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
-ms.date: 03/12/2018
+ms.date: 12/10/2019
 ms.author: szark
-ms.openlocfilehash: 16f3bc9e70f8fac6ab28318e1654742a2c3b76a1
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
-ms.translationtype: MT
+ms.openlocfilehash: c1c70243748c1f8d3b93eac501bd50f8d80ecd75
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035370"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75463812"
 ---
 # <a name="prepare-an-oracle-linux-virtual-machine-for-azure"></a>Przygotowywanie maszyny wirtualnej systemu Linux w środowisku Oracle dla platformy Azure
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -29,16 +29,16 @@ W tym artykule założono, że zainstalowano już Oracle Linux system operacyjny
 
 ### <a name="oracle-linux-installation-notes"></a>Oracle Linux uwagi dotyczące instalacji
 * Aby uzyskać więcej porad dotyczących przygotowywania systemu Linux dla platformy Azure, zobacz również [Ogólne informacje o instalacji](create-upload-generic.md#general-linux-installation-notes) w systemie Linux.
-* W przypadku funkcji Hyper-V i platformy Azure obsługiwane są zarówno jądro zgodne z technologią Red Hat, jak i ich UEK3 (niemożliwe do rozdzielenia przedsiębiorstwa). Aby uzyskać najlepsze wyniki, pamiętaj o zaktualizowaniu do najnowszego jądra podczas przygotowywania Oracle Linux wirtualnego dysku twardego.
+* Obsługa funkcji Hyper-V i platformy Azure Oracle Linux z nieprzerwanym jądrem przedsiębiorstwa (UEK) lub jądrem zgodnym z systemem Red Hat.
 * UEK2 firmy Oracle nie jest obsługiwana w przypadku funkcji Hyper-V i platformy Azure, ponieważ nie obejmują one wymaganych sterowników.
 * Format VHDX nie jest obsługiwany na platformie Azure, tylko **stałego dysku VHD**.  Dysk można przekonwertować na format VHD przy użyciu Menedżera funkcji Hyper-V lub polecenia cmdlet Convert-VHD.
 * W przypadku instalowania systemu Linux zaleca się używanie partycji standardowych zamiast LVM (często jest to ustawienie domyślne dla wielu instalacji). Pozwoli to uniknąć konfliktów nazw LVM z klonowanymi maszynami wirtualnymi, szczególnie w przypadku, gdy kiedykolwiek konieczne jest dołączenie dysku systemu operacyjnego do innej maszyny wirtualnej w celu rozwiązywania problemów. Na dyskach danych można używać [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) lub [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) , jeśli są preferowane.
-* Architektura NUMA nie jest obsługiwana w przypadku większych rozmiarów maszyn wirtualnych ze względu na usterkę w wersjach jądra systemu Linux poniżej 2.6.37. Ten problem dotyczy głównie dystrybucji przy użyciu systemu Red Hat 2.6.32 jądro. Ręczna instalacja agenta systemu Linux (waagent) w systemie Azure spowoduje automatyczne wyłączenie architektury NUMA w konfiguracji GRUB jądra systemu Linux. Więcej informacji na ten temat można znaleźć w poniższych krokach.
+* Wersje jądra systemu Linux starsze niż 2.6.37 nie obsługują architektury NUMA w funkcji Hyper-V o większych rozmiarach maszyn wirtualnych. Ten problem ma głównie wpływ na starsze dystrybucje przy użyciu wbudowanego jądra Red Hat 2.6.32 i został ustalony w Oracle Linux 6,6 i nowszych
 * Nie należy konfigurować partycji wymiany na dysku systemu operacyjnego. Agenta systemu Linux można skonfigurować tak, aby utworzył plik wymiany na tymczasowym dysku zasobów.  Więcej informacji na ten temat można znaleźć w poniższych krokach.
 * Wszystkie wirtualne dyski twarde na platformie Azure muszą mieć rozmiar wirtualny wyrównany do 1 MB. Podczas konwertowania z dysku surowego na dysk VHD należy upewnić się, że rozmiar dysku surowego jest wielokrotnością 1 MB przed konwersją. Aby uzyskać więcej informacji, zobacz [uwagi dotyczące instalacji systemu Linux](create-upload-generic.md#general-linux-installation-notes) .
 * Upewnij się, że repozytorium `Addons` jest włączone. Edytuj plik `/etc/yum.repos.d/public-yum-ol6.repo`(Oracle Linux 6) lub `/etc/yum.repos.d/public-yum-ol7.repo`(Oracle Linux 7), a następnie zmień wiersz `enabled=0` na `enabled=1` w obszarze **[ol6_addons]** lub **[ol7_addons]** w tym pliku.
 
-## <a name="oracle-linux-64"></a>Oracle Linux 6.4 +
+## <a name="oracle-linux-64-and-later"></a>Oracle Linux 6,4 i nowsze
 Należy wykonać określone czynności konfiguracyjne w systemie operacyjnym, aby maszyna wirtualna mogła działać na platformie Azure.
 
 1. W środkowym okienku Menedżera funkcji Hyper-V wybierz maszynę wirtualną.
@@ -71,11 +71,11 @@ Należy wykonać określone czynności konfiguracyjne w systemie operacyjnym, ab
 8. Zainstaluj środowisko Python-pyasn1, uruchamiając następujące polecenie:
    
         # sudo yum install python-pyasn1
-9. Zmodyfikuj wiersz rozruchowy jądra w konfiguracji grub, aby uwzględnić dodatkowe parametry jądra platformy Azure. Aby to zrobić, Otwórz "/boot/grub/menu.lst" w edytorze tekstów i upewnij się, że domyślne jądro zawiera następujące parametry:
+9. Zmodyfikuj wiersz rozruchowy jądra w konfiguracji grub, aby uwzględnić dodatkowe parametry jądra platformy Azure. Aby to zrobić, Otwórz "/boot/grub/menu.lst" w edytorze tekstów i upewnij się, że jądro zawiera następujące parametry:
    
-        console=ttyS0 earlyprintk=ttyS0 rootdelay=300 numa=off
+        console=ttyS0 earlyprintk=ttyS0 rootdelay=300
    
-   Spowoduje to również, że wszystkie komunikaty konsoli są wysyłane do pierwszego portu szeregowego, który może pomóc w pomocy technicznej platformy Azure z problemami z debugowaniem. Spowoduje to wyłączenie architektury NUMA z powodu usterki w jądrze zgodnej z firmą Red Hat firmy Oracle.
+   Dzięki temu wszystkie komunikaty konsoli są wysyłane do pierwszego portu szeregowego, który może pomóc w pomocy technicznej platformy Azure z problemami z debugowaniem.
    
    Oprócz powyższych zaleca się *usunięcie* następujących parametrów:
    
@@ -107,12 +107,12 @@ Należy wykonać określone czynności konfiguracyjne w systemie operacyjnym, ab
 14. Kliknij **akcję-> wyłączyć** w Menedżerze funkcji Hyper-V. Wirtualny dysk twardy z systemem Linux jest teraz gotowy do przekazania na platformę Azure.
 
 ---
-## <a name="oracle-linux-70"></a>Oracle Linux 7.0+
+## <a name="oracle-linux-70-and-later"></a>Oracle Linux 7,0 i nowsze
 **Zmiany w Oracle Linux 7**
 
 Przygotowywanie maszyny wirtualnej Oracle Linux 7 na platformie Azure jest bardzo podobne do Oracle Linux 6, jednak istnieje kilka ważnych różnic:
 
-* Na platformie Azure są obsługiwane zarówno jądro zgodne z systemem Red Hat, jak i UEK3 firmy Oracle.  Zalecane jest jądro UEK3.
+* Platforma Azure obsługuje Oracle Linux z nieprzerwanym jądrem przedsiębiorstwa (UEK) lub jądrem zgodnym z systemem Red Hat. Zaleca się Oracle Linux z UEK.
 * Pakiet programu NetworkManager nie jest już w konflikcie z agentem systemu Linux platformy Azure. Ten pakiet jest instalowany domyślnie i zalecamy, aby nie został usunięty.
 * GRUB2 jest teraz używany jako domyślne program inicjujący, więc procedura edytowania parametrów jądra została zmieniona (patrz poniżej).
 * XFS jest teraz domyślnym systemem plików. W razie potrzeby można nadal używać systemu plików ext4.
@@ -151,7 +151,7 @@ Przygotowywanie maszyny wirtualnej Oracle Linux 7 na platformie Azure jest bardz
    
         GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
    
-   Spowoduje to również, że wszystkie komunikaty konsoli są wysyłane do pierwszego portu szeregowego, który może pomóc w pomocy technicznej platformy Azure z problemami z debugowaniem. Wyłącza również nowe konwencje nazewnictwa OEL 7 dla kart sieciowych. Oprócz powyższych zaleca się *usunięcie* następujących parametrów:
+   Spowoduje to również, że wszystkie komunikaty konsoli są wysyłane do pierwszego portu szeregowego, który może pomóc w pomocy technicznej platformy Azure z problemami z debugowaniem. Wyłącza również konwencje nazewnictwa dla kart sieciowych w Oracle Linux 7 z nieprzerwanym jądrem przedsiębiorstwa. Oprócz powyższych zaleca się *usunięcie* następujących parametrów:
    
        rhgb quiet crashkernel=auto
    

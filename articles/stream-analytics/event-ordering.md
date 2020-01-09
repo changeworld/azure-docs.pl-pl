@@ -1,63 +1,62 @@
 ---
-title: Konfigurowanie kolejności zasad usługi Azure Stream Analytics zdarzeń
-description: W tym artykule opisano sposób wykonywania o konfigurowaniu nawet porządkowanie ustawień w usłudze Stream Analytics
-services: stream-analytics
+title: Konfigurowanie zasad określania kolejności zdarzeń dla Azure Stream Analytics
+description: W tym artykule opisano sposób konfigurowania nawet określania kolejności ustawień w Stream Analytics
 author: sidram
 ms.author: sidram
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/12/2019
-ms.openlocfilehash: 47a8ee2c03e67d4fd9b34888430ed0cc702205f6
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: c0a108565a6a0f62c6252113f984e8b10967c5db
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67273176"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75461193"
 ---
-# <a name="configuring-event-ordering-policies-for-azure-stream-analytics"></a>Konfigurowanie kolejności zasad usługi Azure Stream Analytics zdarzeń
+# <a name="configuring-event-ordering-policies-for-azure-stream-analytics"></a>Konfigurowanie zasad określania kolejności zdarzeń dla Azure Stream Analytics
 
-W tym artykule opisano, jak skonfigurować i stosować późnego przybycia i zasad zdarzeń poza kolejnością w usłudze Azure Stream Analytics. Te zasady są stosowane tylko wtedy, gdy używasz [TIMESTAMP BY](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics) klauzuli w zapytaniu.
+W tym artykule opisano sposób konfigurowania i używania późnego przybycia i zasad dotyczących zdarzeń poza kolejnością w programie Azure Stream Analytics. Te zasady są stosowane tylko w przypadku używania klauzuli [timestamp by](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics) w zapytaniu.
 
-## <a name="event-time-and-arrival-time"></a>Czas trwania zdarzenia i czas nadejścia
+## <a name="event-time-and-arrival-time"></a>Godzina i czas przybycia zdarzenia
 
-Zadanie usługi Stream Analytics może przetwarzać zdarzenia na podstawie *czas trwania zdarzenia* lub *Godzina nadejścia*. **Czas zdarzenia/aplikacji** jest sygnatura czasowa w ładunku zdarzenia (podczas generowania zdarzenia). **Godzina nadejścia** jest to sygnatura czasowa, gdy otrzymano zdarzenia w źródle danych wejściowych (Event Hubs/IoT Hub/obiekt Blob storage). 
+Zadanie Stream Analytics może przetwarzać zdarzenia na podstawie *czasu zdarzenia* lub *czasu przybycia*. **Czas zdarzenia/aplikacji** to sygnatura czasowa występująca w ładunku zdarzenia (po wygenerowaniu zdarzenia). **Czas przybycia** to sygnatura czasowa odebrania zdarzenia w źródle danych wejściowych (Event Hubs/IoT Hub/BLOB Storage). 
 
-Domyślnie, Stream Analytics może przetwarzać zdarzenia według *Godzina nadejścia*, ale użytkownik może przetwarzać zdarzenia według *czas trwania zdarzenia* przy użyciu [TIMESTAMP BY](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics) klauzuli w zapytaniu. Późnego przybycia i poza kolejnością zasady są stosowane tylko wtedy, gdy przetwarzania zdarzeń przez czas trwania zdarzenia. Podczas konfigurowania tych ustawień, należy wziąć pod uwagę czas oczekiwania i poprawności wymagań dla danego scenariusza. 
+Domyślnie Stream Analytics przetwarza zdarzenia według *czasu przybycia*, ale można wybrać przetwarzanie zdarzeń według *czasu zdarzenia* , używając klauzuli [timestamp by](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics) w zapytaniu. Opóźnione przyjęcie i zasady poza kolejnością mają zastosowanie tylko w przypadku przetwarzania zdarzeń według czasu zdarzenia. Podczas konfigurowania tych ustawień należy wziąć pod uwagę wymagania dotyczące opóźnienia i poprawności dla danego scenariusza. 
 
-## <a name="what-is-late-arrival-policy"></a>Co to jest późnego przybycia zasady?
+## <a name="what-is-late-arrival-policy"></a>Co to jest zasada późnego przybycia?
 
-Czasami zdarzenia późne pojawiają się z różnych powodów. Na przykład zdarzenie przychodzący 40 sekund opóźnienia będzie mieć czas trwania zdarzenia = 00:10:00 i przybycia czas = 00:10:40. Jeśli zasady późnego przybycia jest ustawiona na 15 sekund, dowolne zdarzenie, dostarczane później niż 15 sekund zostanie albo usunięty (nie przetwarzane przez usługę Stream Analytics) lub dostosowanie ich czas trwania zdarzenia. W powyższym przykładzie zdarzenia dostarczeniu 40 sekund opóźnienia (więcej niż zestaw zasad), jego czas zdarzenia zostaną dostosowane do maksymalnej liczby późnego przybycia zasad 00:10:25 (przybycia - późnego przybycia zasad wartość godziny). Domyślne późnego przybycia zasady to 5 sekund.
+Czasami zdarzenia są odbierane z różnych powodów. Na przykład zdarzenie, które dociera do 40 sekund, będzie miało czas zdarzenia = 00:10:00 i czas przybycia = 00:10:40. W przypadku ustawienia zasad późnego przybycia na 15 sekund wszystkie zdarzenia, które docierają później niż 15 sekund, zostaną usunięte (nie przetworzone przez Stream Analytics) lub zostaną dostosowane do czasu zdarzenia. W powyższym przykładzie, gdy zdarzenie dotarło do 40 sekund (więcej niż zestaw zasad), jego czas zdarzenia zostanie dostosowany do maksymalnej liczby zasad najpóźnego przybycia 00:10:25 (wartość zasad najpóźnego przybycia). Domyślne zasady późnego przybycia to 5 sekund.
 
-## <a name="what-is-out-of-order-policy"></a>Co to są zasady poza kolejnością? 
+## <a name="what-is-out-of-order-policy"></a>Co to są zasady niezwiązane z kolejnością? 
 
-Zdarzenie może pojawić się poza kolejnością także. Po czas zdarzeń jest uwzględniany w oparciu o późnego przybycia zasad, można też automatycznie porzucić lub dostosować zdarzeń, które są poza kolejnością. Jeśli musisz ustawić te zasady do 8 sekund wszelkie zdarzenia, które pojawić się poza kolejnością, ale w obrębie okna 8-sekundowe zostaną ponownie uporządkowane według czasu zdarzeń. Zdarzenia odbierane później zostaną porzucone lub dostosowana do wartości maksymalnej zasady poza kolejnością. Zasada poza kolejnością domyślną jest 0 sekund. 
+Zdarzenie może się pojawić również poza kolejnością. Po dopasowaniu czasu zdarzenia na podstawie zasad późnego przybycia można również automatycznie porzucić lub dostosować zdarzenia, które są nieaktualne. Ustawienie tych zasad na 8 sekund spowoduje, że wszystkie zdarzenia, które dotarły poza kolejnością, ale w 8-sekundowym oknie są zmieniane według czasu zdarzenia. Zdarzenia, które docierają później, zostaną usunięte lub dopasowane do maksymalnej wartości zasad poza kolejnością. Domyślne zasady poza kolejnością to 0 sekund. 
 
-## <a name="adjust-or-drop-events"></a>Dopasuj lub upuszczania
+## <a name="adjust-or-drop-events"></a>Dostosuj lub upuść zdarzenia
 
-W przypadku odebrania zdarzeń późno lub poza kolejnością na podstawie zasad, które zostały skonfigurowane, możesz usunąć takie zdarzenia (nie przetwarzane przez usługę Stream Analytics) lub ustawić ich czas trwania zdarzenia dostosowane.
+Jeśli zdarzenia dotarły do siebie z opóźnieniem lub z kolejnością na podstawie skonfigurowanych zasad, można je usunąć (nie przetwarzane przez Stream Analytics) lub zmienić czas zdarzenia.
 
-Poinformuj nas zobaczyć przykład te zasady w akcji.
-<br> **Późnego przybycia zasady:** 15 sekund
-<br> **Poza kolejnością zasady:** 8 sekund
+Zapoznaj się z przykładem tych zasad w działaniu.
+<br> **Zasady późnego przybycia:** 15 sekund
+<br> **Zasady poza kolejnością:** 8 sekund
 
-| Nie zdarzenie. | Czas trwania zdarzenia | Godzina nadejścia | System.Timestamp | Wyjaśnienie |
+| Nr zdarzenia | Czas wydarzenia | Czas przybycia | System.Timestamp | Wyjaśnienie |
 | --- | --- | --- | --- | --- |
-| **1** | 00:10:00  | 00:10:40  | 00:10:25  | Zdarzenie dostarczone poziom tolerancji późnego i na zewnątrz. Dlatego maksymalna tolerancja spóźnionego przybycia uwzględnieniem pobiera czas trwania zdarzenia.  |
-| **2** | 00:10:30 | 00:10:41  | 00:10:30  | Zdarzenie już korzystać z opóźnieniem, ale w obrębie poziom tolerancji. Czas trwania zdarzenia nie uzyskać ustawiony w taki sposób.  |
-| **3** | 00:10:42 | 00:10:42 | 00:10:42 | Zdarzenie dotarła na czas. Nie potrzebnych dostosowań.  |
-| **4** | 00:10:38  | 00:10:43  | 00:10:38 | Zdarzenie dostarczone poza kolejnością, ale w granicach tolerancji 8 sekund. Tak czas trwania zdarzenia nie uzyskać dostosowane. Do celów analizy to zdarzenie jest traktowany jako numer zdarzenia 4 poprzedni.  |
-| **5** | 00:10:35 | 00:10:45  | 00:10:37 | Zdarzenie dostarczone poza kolejnością i na zewnątrz tolerancja 8 sekund. Tak czas trwania zdarzenia jest dostosowywany do maksymalnej tolerancji poza kolejnością. |
+| **1** | 00:10:00  | 00:10:40  | 00:10:25  | Zdarzenie dotarło do najpóźnego i zewnętrznego poziomu tolerancji. W związku z tym czas zdarzenia jest dostosowywany do maksymalnej tolerancji późnego przybycia.  |
+| **2** | 00:10:30 | 00:10:41  | 00:10:30  | Zdarzenie zostało odebrane z opóźnieniem, ale w ramach poziomu tolerancji. Czas zdarzenia nie zostanie dostosowany.  |
+| **3** | 00:10:42 | 00:10:42 | 00:10:42 | Zdarzenie odebrane na czas. Nie jest wymagana żadna korekta.  |
+| **4** | 00:10:38  | 00:10:43  | 00:10:38 | Zdarzenie zostało odebrane poza kolejnością, ale w ramach tolerancji wynoszącej 8 sekund. W związku z tym czas zdarzenia nie zostanie dostosowany. Na potrzeby analiz to zdarzenie będzie traktowane jako poprzednie zdarzenie nr 4.  |
+| **5** | 00:10:35 | 00:10:45  | 00:10:37 | Zdarzenie zostało odebrane poza kolejnością i tolerancja zewnętrzna wynosząca 8 sekund. W związku z tym czas zdarzenia jest dostosowywany do maksymalnej wartości z przekroczeniem kolejności. |
 
-## <a name="can-these-settings-delay-output-of-my-job"></a>Te ustawienia, można opóźnić danymi wyjściowymi Moje zadania? 
+## <a name="can-these-settings-delay-output-of-my-job"></a>Czy te ustawienia mogą opóźniać dane wyjściowe mojego zadania? 
 
-Tak. Domyślnie zasady poza kolejnością jest równa zero (00 minut i 00 sekund). Jeśli zmienisz domyślny, pierwsze dane wyjściowe zadania jest opóźnione przez tę wartość (lub nowszego). 
+Tak. Domyślnie zasady poza kolejnością mają ustawioną wartość zero (00 minut i 00 sekund). Jeśli zmienisz wartość domyślną, pierwsze wyjście zadania zostanie opóźnione o tę wartość (lub wyższą). 
 
-Jeśli jedna z partycji dane wejściowe nie odbiera zdarzenia, należy się spodziewać danych wyjściowych, aby zostać opóźnione przez wartość zasad późnego przybycia. Aby dowiedzieć się, dlaczego, zapoznaj się z sekcją błąd InputPartition poniżej. 
+Jeśli jedna z partycji danych wejściowych nie odbiera zdarzeń, należy oczekiwać, że dane wyjściowe zostaną opóźnione przez wartość zasad późnego przybycia. Aby dowiedzieć się, dlaczego zapoznaj się z sekcją błędu InputPartition poniżej. 
 
-## <a name="i-see-lateinputevents-messages-in-my-activity-log"></a>Wyświetlane są komunikaty LateInputEvents w mojej dziennika aktywności
+## <a name="i-see-lateinputevents-messages-in-my-activity-log"></a>Widzę komunikaty LateInputEvents w moim dzienniku aktywności
 
-Te komunikaty są wyświetlane z informacją, że zdarzenia mają już korzystać z opóźnieniem i są albo porzucone lub dopasowane zgodnie z konfiguracją. Te komunikaty można zignorować, jeśli późnego przybycia zasady zostały skonfigurowane prawidłowo. 
+Te komunikaty są wyświetlane, aby poinformować użytkownika o tym, że zdarzenia zostały odebrane z opóźnieniem i zostały usunięte lub dopasowane zgodnie z konfiguracją. Te komunikaty można zignorować, jeśli zasady późnego przybycia zostały odpowiednio skonfigurowane. 
 
 Przykładem tego komunikatu jest: <br>
 <code>
@@ -65,18 +64,18 @@ Przykładem tego komunikatu jest: <br>
 "message":"First Occurred: 02/04/2019 17:11:48 | Resource Name: ASAjob | Message: Source 'ASAjob' had 24 data errors of kind 'LateInputEvent' between processing times '2019-02-04T17:10:49.7250696Z' and '2019-02-04T17:11:48.7563961Z'. Input event with application timestamp '2019-02-04T17:05:51.6050000' and arrival time '2019-02-04T17:10:44.3090000' was sent later than configured tolerance.","type":"DiagnosticMessage","correlation ID":"49efa148-4asd-4fe0-869d-a40ba4d7ef3b"} 
 </code>
 
-## <a name="i-see-inputpartitionnotprogressing-in-my-activity-log"></a>Czy mogę zobaczyć InputPartitionNotProgressing w mojej dziennika aktywności
+## <a name="i-see-inputpartitionnotprogressing-in-my-activity-log"></a>Widzę InputPartitionNotProgressing w moim dzienniku aktywności
 
-Twoje źródło danych wejściowych (Event Hub/IoT Hub) prawdopodobnie jest podzielona na partycje. Usługa Azure Stream Analytics generuje dane wyjściowe dla t1 sygnatury czasu tylko wtedy, gdy wszystkie partycje, które są połączone mają co najmniej czasu t1. Na przykład załóżmy, że zapytanie odczytuje z partycji Centrum zdarzeń, który ma dwie partycje. Jedna z partycji, P1, ma zdarzenia aż do czasu t1. Druga partycja P2, ma zdarzenia aż do czasu t1 + x. Dane wyjściowe są następnie generowane aż do czasu t1. Jednak w przypadku partycji jawne przez klauzulę identyfikatora partycji, postęp partycje niezależnie. 
+Źródło danych wejściowych (centrum zdarzeń/IoT Hub) ma największej liczby partycji. Azure Stream Analytics generuje dane wyjściowe dla sygnatury czasowej T1 tylko wtedy, gdy wszystkie połączone partycje są co najmniej w czasie T1. Załóżmy na przykład, że zapytanie odczytuje z partycji centrum zdarzeń, która ma dwie partycje. Jedna z partycji, P1, ma zdarzenia do czasu T1. Druga partycja, P2, ma zdarzenia do czasu T1 + x. Dane wyjściowe są następnie generowane do czasu T1. Ale jeśli istnieje jawna partycja z klauzulą PartitionId, obie partycje postępują niezależnie. 
 
-Połączeniu wiele partycji z tego samego strumienia wejściowego tolerancja spóźnionego przybycia jest maksymalną ilość czasu oczekiwania każdej partycji w nowych danych. Jeśli wystąpi jednej partycji w Centrum zdarzeń, lub jeśli Centrum IoT Hub nie odbiera danych wejściowych, oś czasu dla tej partycji nie postępu aż do osiągnie koniec próg tolerancji przybycia. Spowoduje to opóźnienie danych wyjściowych w późnym progu na uszkodzenia przybyciu. W takich przypadkach może zostać wyświetlony następujący komunikat:
+Gdy wiele partycji z tego samego strumienia wejściowego jest połączonych, tolerancja późnego przybycia jest maksymalną ilością czasu, jaką każda partycja czeka na nowe dane. Jeśli w centrum zdarzeń istnieje jedna partycja lub jeśli IoT Hub nie odbiera danych wejściowych, oś czasu dla tej partycji nie postępuje, dopóki osiągnie próg tolerancji późnego przybycia. To opóźnia dane wyjściowe przez próg tolerancji późnego przybycia. W takich przypadkach może zostać wyświetlony następujący komunikat:
 <br><code>
 {"message Time":"2/3/2019 8:54:16 PM UTC","message":"Input Partition [2] does not have additional data for more than [5] minute(s). Partition will not progress until either events arrive or late arrival threshold is met.","type":"InputPartitionNotProgressing","correlation ID":"2328d411-52c7-4100-ba01-1e860c757fc2"} 
 </code><br><br>
-Ten komunikat z informacją, że co najmniej jedną partycję w danych wejściowych jest pusty i zostanie opóźnione, danych wyjściowych przez próg późnego przybycia. Aby tego uniknąć, zalecane jest przeprowadzenie albo:  
-1. Upewnij się, że wszystkie partycje usługi Event Hub/IoT Hub odbierania danych. 
-2. Użyj partycji przez klauzulę identyfikatora partycji w zapytaniu. 
+Ten komunikat informujący o tym, że co najmniej jedna partycja w danych wejściowych jest pusta i będzie opóźniać dane wyjściowe przez próg późnego przybycia. W celu przezwyciężenia zalecane jest:  
+1. Upewnij się, że wszystkie partycje centrum zdarzeń/IoT Hub odbierają dane wejściowe. 
+2. W zapytaniu Użyj klauzuli Partition by PartitionID. 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 * [Zagadnienia dotyczące obsługi czasu](stream-analytics-time-handling.md)
-* [Metryk dostępnych w usłudze Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-monitoring#metrics-available-for-stream-analytics)
+* [Metryki dostępne w Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-monitoring#metrics-available-for-stream-analytics)

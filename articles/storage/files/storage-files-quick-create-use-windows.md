@@ -1,5 +1,5 @@
 ---
-title: Przewodnik Szybki start platformy Azure — tworzenie i używanie udziału usługi Azure Files na maszynach wirtualnych z systemem Windows | Microsoft Docs
+title: Tworzenie i używanie udziału Azure Files na maszynach wirtualnych z systemem Windows
 description: W ramach tego przewodnika Szybki start skonfigurujesz udział usługi Azure Files w witrynie Azure Portal i połączysz go z maszyną wirtualną z systemem Windows. Nawiążesz połączenie z udziałem usługi Files i przekażesz plik do udziału usługi Files. Następnie utworzysz migawkę udziału usługi Files, zmodyfikujesz plik w udziale usługi Files oraz przywrócisz poprzednią migawkę udziału usługi Files.
 author: roygara
 ms.service: storage
@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 02/01/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 22c2f3b91b650bcdbf8eb7368023e068a397323f
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: 6bbab0ee2eefe6e86c150d5bddab4f8e91a7c92d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74305823"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75463908"
 ---
 # <a name="quickstart-create-and-manage-azure-files-share-with-windows-virtual-machines"></a>Szybki Start: Tworzenie udziału Azure Files i zarządzanie nim przy użyciu maszyn wirtualnych z systemem Windows
 
@@ -20,9 +20,9 @@ W tym artykule przedstawiono podstawowe kroki tworzenia i używania udziału us�
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
+## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
 
-Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+Zaloguj się do [Portalu Azure](https://portal.azure.com).
 
 ## <a name="prepare-your-environment"></a>Przygotowywanie środowiska
 
@@ -85,7 +85,7 @@ Na tym etapie utworzono nową maszynę wirtualną i dołączono dysk z danymi. T
 
    ![Nawiązywanie połączenia z maszyną wirtualną na platformie Azure z portalu](./media/storage-files-quick-create-use-windows/connect-vm.png)
 
-1. Na stronie **Nawiązywanie połączenia z maszyną wirtualną** zostaw opcje domyślne, aby połączyć się za pomocą **adresu IP** przez **numer portu** *3389* i wybierz pozycję **Pobierz plik RDP**.
+1. Na stronie **Połącz z maszyną wirtualną** zachowaj domyślne opcje połączenia przy użyciu **adresu IP** przez **numer portu** *3389* i wybierz pozycję **Pobierz plik RDP**.
 1. Otwórz pobrany plik RDP i wybierz polecenie **Połącz**, gdy wyświetli się odpowiedni monit.
 1. W oknie **Zabezpieczenia systemu Windows** wybierz pozycję **Więcej opcji**, a następnie pozycję **Użyj innego konta**. Wpisz nazwę użytkownika w formacie *localhost\nazwa_użytkownika*, gdzie &lt;nazwa_użytkownika&gt; jest nazwą użytkownika administratora maszyny wirtualnej utworzoną dla danej maszyny wirtualnej. Wprowadź hasło utworzone dla maszyny wirtualnej, a następnie wybierz pozycję **OK**.
 

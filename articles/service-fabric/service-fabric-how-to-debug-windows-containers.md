@@ -1,26 +1,17 @@
 ---
-title: Debuguj kontenery systemu Windows za pomocą Service Fabric i VS | Microsoft Docs
+title: Debugowanie kontenerów systemu Windows przy użyciu usługi Service Fabric i programu VS
 description: Dowiedz się, jak debugować kontenery systemu Windows na platformie Azure Service Fabric przy użyciu programu Visual Studio 2019.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: msfussell
-editor: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/14/2019
 ms.author: mikhegn
-ms.openlocfilehash: a5ccf527850e1c05c5d7e273ada905d65d64cee4
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 2a00a352d09562ffe46dc8e6e63a5d4963ac3a3f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073957"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464572"
 ---
-# <a name="how-to-debug-windows-containers-in-azure-service-fabric-using-visual-studio-2019"></a>Instrukcje: Debuguj kontenery systemu Windows na platformie Azure Service Fabric przy użyciu programu Visual Studio 2019
+# <a name="how-to-debug-windows-containers-in-azure-service-fabric-using-visual-studio-2019"></a>Instrukcje: debugowanie kontenerów systemu Windows na platformie Azure Service Fabric przy użyciu programu Visual Studio 2019
 
 Program Visual Studio 2019 umożliwia debugowanie aplikacji .NET w kontenerach jako usług Service Fabric. W tym artykule opisano sposób konfigurowania środowiska, a następnie debugowania aplikacji .NET w kontenerze działającym w lokalnym klastrze Service Fabric.
 
@@ -36,25 +27,25 @@ Program Visual Studio 2019 umożliwia debugowanie aplikacji .NET w kontenerach j
 
 1. Aby zapewnić obsługę rozpoznawania nazw DNS między kontenerami, należy skonfigurować lokalny klaster programistyczny przy użyciu nazwy maszyny. Te kroki są również niezbędne, jeśli chcesz adresować usługi za pomocą zwrotnego serwera proxy.
    1. Otwórz program PowerShell jako administrator
-   2. Przejdź do folderu konfiguracji klastra zestawu SDK, zazwyczaj `C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup`.
-   3. Uruchamianie skryptu`DevClusterSetup.ps1`
+   2. Przejdź do folderu Konfiguracja klastra zestawu SDK, zazwyczaj `C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup`.
+   3. Uruchom skrypt `DevClusterSetup.ps1`
 
       ``` PowerShell
         C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup\DevClusterSetup.ps1
       ```
 
       > [!NOTE]
-      > Aby skonfigurować klaster z `-CreateOneNodeCluster` jednym węzłem, można użyć programu. Domyślnie zostanie utworzony lokalny klaster z pięcioma węzłami.
+      > Aby skonfigurować klaster z jednym węzłem, można użyć `-CreateOneNodeCluster`. Domyślnie zostanie utworzony lokalny klaster z pięcioma węzłami.
       >
 
-      Aby dowiedzieć się więcej na temat usługi DNS w Service Fabric, zobacz [Usługa DNS na platformie Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-dnsservice). Aby dowiedzieć się więcej o używaniu Service Fabric zwrotnego serwera proxy z usług uruchomionych w kontenerze, zobacz odwracanie [specjalnej obsługi serwera proxy dla usług uruchomionych w](service-fabric-reverseproxy.md#special-handling-for-services-running-in-containers)kontenerach.
+      Aby dowiedzieć się więcej na temat usługi DNS w Service Fabric, zobacz [Usługa DNS na platformie Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-dnsservice). Aby dowiedzieć się więcej o używaniu Service Fabric zwrotnego serwera proxy z usług uruchomionych w kontenerze, zobacz [odwracanie specjalnej obsługi serwera proxy dla usług uruchomionych w](service-fabric-reverseproxy.md#special-handling-for-services-running-in-containers)kontenerach.
 
 ### <a name="known-limitations-when-debugging-containers-in-service-fabric"></a>Znane ograniczenia dotyczące debugowania kontenerów w Service Fabric
 
 Poniżej znajduje się lista znanych ograniczeń dotyczących kontenerów debugowania w Service Fabric i możliwych rozwiązaniach:
 
 * Korzystanie z hosta lokalnego dla ClusterFQDNorIP nie obsługuje rozpoznawania nazw DNS w kontenerach.
-    * Rozwiązanie: Skonfiguruj klaster lokalny przy użyciu nazwy komputera (patrz powyżej)
+    * Rozwiązanie: skonfiguruj klaster lokalny przy użyciu nazwy komputera (patrz powyżej)
 * Uruchomienie Windows10 na maszynie wirtualnej nie spowoduje pobrania odpowiedzi DNS z powrotem do kontenera.
     * Rozwiązanie: Wyłącz Odciążanie sumy kontrolnej UDP dla protokołu IPv4 na karcie sieciowej Virtual Machines
     * Uruchomienie programu Windows10 spowoduje spadek wydajności sieci na komputerze.

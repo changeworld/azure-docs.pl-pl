@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/26/2019
 ms.author: mlearned
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: b233c5dd639bb6652f201727748a081f6a8a4c64
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 382895c1b5a4cb2bc88ff2371cec59267ea4e176
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71950331"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442938"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Korzystanie z sieci korzystającą wtyczki kubenet z własnymi zakresami adresów IP w usłudze Azure Kubernetes Service (AKS)
 
@@ -22,6 +22,15 @@ Domyślnie klastry AKS korzystają z [korzystającą wtyczki kubenet][kubenet], 
 [Usługa Azure Container Network Interface (CNI)][cni-networking]w każdym przypadku Pobiera adres IP z podsieci i jest dostępny bezpośrednio. Te adresy IP muszą być unikatowe w przestrzeni sieci i muszą być planowane z wyprzedzeniem. Każdy węzeł ma parametr konfiguracji dla maksymalnej liczby obsługiwanych przez nią zasobników. Równoważna liczba adresów IP na węzeł jest następnie rezerwowana na początku dla tego węzła. Takie podejście wymaga większego planowania i często prowadzi do wyczerpania adresów IP lub trzeba ponownie skompilować klastry w większej podsieci, w miarę wzrostu wymagań aplikacji.
 
 W tym artykule pokazano, jak za pomocą sieci *korzystającą wtyczki kubenet* utworzyć i używać podsieci sieci wirtualnej dla klastra AKS. Aby uzyskać więcej informacji o opcjach sieciowych i zagadnieniach, zobacz [pojęcia sieci dotyczące Kubernetes i AKS][aks-network-concepts].
+
+## <a name="prerequisites"></a>Wymagania wstępne
+
+* Sieć wirtualna klastra AKS musi zezwalać na wychodzącą łączność z Internetem.
+* Nie należy tworzyć więcej niż jednego klastra AKS w tej samej podsieci.
+* Klastry AKS nie mogą używać `169.254.0.0/16`, `172.30.0.0/16`, `172.31.0.0/16`ani `192.0.2.0/24` dla zakresu adresów usługi Kubernetes.
+* Nazwa główna usługi używana przez klaster AKS musi mieć co najmniej uprawnienia [współautora sieci](../role-based-access-control/built-in-roles.md#network-contributor) w podsieci w sieci wirtualnej. Jeśli chcesz zdefiniować [rolę niestandardową](../role-based-access-control/custom-roles.md) , zamiast korzystać z wbudowanej roli współautor sieci, wymagane są następujące uprawnienia:
+  * `Microsoft.Network/virtualNetworks/subnets/join/action`
+  * `Microsoft.Network/virtualNetworks/subnets/read`
 
 > [!WARNING]
 > Aby korzystać z pul węzłów systemu Windows Server (obecnie w wersji zapoznawczej w AKS), musisz użyć usługi Azure CNI. Użycie korzystającą wtyczki kubenet jako modelu sieci nie jest dostępne w przypadku kontenerów systemu Windows Server.
@@ -139,7 +148,7 @@ az role assignment create --assignee <appId> --scope $VNET_ID --role Contributor
 
 ## <a name="create-an-aks-cluster-in-the-virtual-network"></a>Tworzenie klastra AKS w sieci wirtualnej
 
-Utworzono sieć wirtualną i podsieć, a następnie utworzono i przypisano uprawnienia do jednostki usługi w celu używania tych zasobów sieciowych. Teraz Utwórz klaster AKS w sieci wirtualnej i podsieci przy użyciu polecenia [AZ AKS Create][az-aks-create] . Zdefiniuj własną nazwę główną usługi *\<appId >* i *\<password >* , jak pokazano w danych wyjściowych poprzedniego polecenia, aby utworzyć nazwę główną usługi.
+Utworzono sieć wirtualną i podsieć, a następnie utworzono i przypisano uprawnienia do jednostki usługi w celu używania tych zasobów sieciowych. Teraz Utwórz klaster AKS w sieci wirtualnej i podsieci przy użyciu polecenia [AZ AKS Create][az-aks-create] . Zdefiniuj własną nazwę główną usługi *\<appId >* i *\<> hasła*, jak pokazano w danych wyjściowych poprzedniego polecenia, aby utworzyć nazwę główną usługi.
 
 Następujące zakresy adresów IP są również zdefiniowane jako część procesu tworzenia klastra:
 

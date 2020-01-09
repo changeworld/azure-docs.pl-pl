@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/25/2019
+ms.date: 12/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 1a58d2170ec1107222f0e37e432063af23743e42
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 12ecca5873ac7c2c3bfa30d4c73c7d8e268aabfb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74710440"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75355716"
 ---
 # <a name="list-role-assignments-using-azure-rbac-and-azure-cli"></a>Wyświetlanie listy przypisań ról przy użyciu RBAC i interfejsu wiersza polecenia platformy Azure
 
@@ -37,7 +37,7 @@ Aby wyświetlić listę przypisań ról dla określonego użytkownika, użyj [AZ
 az role assignment list --assignee <assignee>
 ```
 
-Domyślnie będą wyświetlane tylko przypisania bezpośrednie mające zakres do subskrypcji. Aby wyświetlić przydziały należące do zakresu zasobów lub grup, użyj `--all` i aby wyświetlić dziedziczone przydziały, użyj `--include-inherited`.
+Domyślnie zostanie wyświetlona tylko przydziały ról dla bieżącej subskrypcji. Aby wyświetlić przypisania ról dla bieżącej subskrypcji i poniżej, należy dodać parametr `--all`. Aby wyświetlić dziedziczone przypisania ról, należy dodać parametr `--include-inherited`.
 
 Poniższy przykład zawiera listę przypisań ról przypisanych bezpośrednio do *patlong\@contoso.com* użytkownika:
 
@@ -110,6 +110,30 @@ az role assignment list --scope /providers/Microsoft.Management/managementGroups
 ```Example
 az role assignment list --scope /providers/Microsoft.Management/managementGroups/marketing-group --output json | jq '.[] | {"principalName":.principalName, "roleDefinitionName":.roleDefinitionName, "scope":.scope}'
 ```
+
+## <a name="list-role-assignments-for-a-managed-identity"></a>Wyświetlanie listy przypisań ról dla tożsamości zarządzanej
+
+1. Pobierz identyfikator obiektu przypisanej do systemu lub tożsamości zarządzanej przypisanej przez użytkownika. 
+
+    Aby uzyskać identyfikator obiektu tożsamości zarządzanej przypisanej przez użytkownika, można użyć [AZ AD Sp list](/cli/azure/ad/sp#az-ad-sp-list) lub [AZ Identity list](/cli/azure/identity#az-identity-list).
+
+    ```azurecli
+    az ad sp list --display-name "<name>" --query [].objectId --output tsv
+    ```
+
+    Aby uzyskać identyfikator obiektu zarządzanej tożsamości przypisanej do systemu, można użyć [AZ AD Sp list](/cli/azure/ad/sp#az-ad-sp-list).
+
+    ```azurecli
+    az ad sp list --display-name "<vmname>" --query [].objectId --output tsv
+    ```
+
+1. Aby wyświetlić listę przypisań ról, użyj [AZ role przypisanie list](/cli/azure/role/assignment#az-role-assignment-list).
+
+    Domyślnie zostanie wyświetlona tylko przydziały ról dla bieżącej subskrypcji. Aby wyświetlić przypisania ról dla bieżącej subskrypcji i poniżej, należy dodać parametr `--all`. Aby wyświetlić dziedziczone przypisania ról, należy dodać parametr `--include-inherited`.
+
+    ```azurecli
+    az role assignment list --assignee <objectid>
+    ```
 
 ## <a name="next-steps"></a>Następne kroki
 

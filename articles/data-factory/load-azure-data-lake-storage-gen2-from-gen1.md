@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/13/2019
-ms.openlocfilehash: 19b1b345c72361ae1fcdad5221dcd0e877b32fe7
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 5809307ff8e047ebc6120cb5ebf36590f2a2a51a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926302"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444019"
 ---
 # <a name="copy-data-from-azure-data-lake-storage-gen1-to-gen2-with-azure-data-factory"></a>Skopiuj dane z Azure Data Lake Storage Gen1 do Gen2 z Azure Data Factory
 
@@ -49,7 +49,7 @@ W tym artykule pokazano, jak za pomocą narzędzia do kopiowania danych Data Fac
  
     * **Nazwa**: wprowadź globalnie unikatową nazwę usługi Azure Data Factory. Jeśli zostanie wyświetlony komunikat o błędzie "Nazwa fabryki danych \"LoadADLSDemo\" nie jest dostępna", wprowadź inną nazwę fabryki danych. Na przykład użyj nazwy _**twojanazwa**_ **ADFTutorialDataFactory**. Ponownie utwórz fabrykę danych. Artykuł [Data Factory naming rules (Zasady nazewnictwa fabryki danych)](naming-rules.md) zawiera zasady nazewnictwa artefaktów usługi Data Factory.
     * **Subskrypcja**: wybierz subskrypcję platformy Azure, w której chcesz utworzyć fabrykę danych. 
-    * **Grupa zasobów**: wybierz istniejącą grupę zasobów z listy rozwijanej. Możesz również wybrać opcję **Utwórz nową** , a następnie wprowadzić nazwę grupy zasobów. Informacje na temat grup zasobów znajdują się w artykule [Using resource groups to manage your Azure resources (Używanie grup zasobów do zarządzania zasobami platformy Azure)](../azure-resource-manager/resource-group-overview.md). 
+    * **Grupa zasobów**: wybierz istniejącą grupę zasobów z listy rozwijanej. Możesz również wybrać opcję **Utwórz nową** , a następnie wprowadzić nazwę grupy zasobów. Informacje na temat grup zasobów znajdują się w artykule [Using resource groups to manage your Azure resources (Używanie grup zasobów do zarządzania zasobami platformy Azure)](../azure-resource-manager/management/overview.md). 
     * **Wersja**: wybierz pozycję **v2**.
     * **Lokalizacja**: Wybierz lokalizację fabryki danych. Na liście rozwijanej są wyświetlane tylko obsługiwane lokalizacje. Magazyny danych, które są używane przez fabrykę danych, mogą znajdować się w innych lokalizacjach i regionach. 
 
@@ -135,7 +135,7 @@ W tym artykule pokazano, jak za pomocą narzędzia do kopiowania danych Data Fac
 
 17. Sprawdź, czy dane zostały skopiowane do konta Azure Data Lake Storage Gen2.
 
-## <a name="best-practices"></a>Najlepsze praktyki
+## <a name="best-practices"></a>Najlepsze rozwiązania
 
 Aby dowiedzieć się, jak ogólnie można ocenić uaktualnienie z Azure Data Lake Storage Gen1 do Azure Data Lake Storage Gen2, zobacz [Uaktualnianie rozwiązań do analizy danych Big Data z Azure Data Lake Storage Gen1 do Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-upgrade.md). W poniższych sekcjach opisano najlepsze rozwiązania dotyczące korzystania z Data Factory uaktualniania danych z Data Lake Storage Gen1 do Data Lake Storage Gen2.
 

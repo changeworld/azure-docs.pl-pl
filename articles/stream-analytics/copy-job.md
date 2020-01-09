@@ -1,19 +1,18 @@
 ---
 title: Kopiowanie lub tworzenie kopii zapasowych zadań Azure Stream Analytics
 description: W tym artykule opisano sposób kopiowania lub tworzenia kopii zapasowej zadania Azure Stream Analytics.
-services: stream-analytics
 author: su-jie
 ms.author: sujie
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 8ae97a3ef6e354bb07e257b4997341297e8abe51
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
-ms.translationtype: MT
+ms.openlocfilehash: d55f36a5b18eca2622216b6be9906a57a6f421c5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73588137"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457592"
 ---
 # <a name="copy-or-back-up-azure-stream-analytics-jobs"></a>Kopiowanie lub tworzenie kopii zapasowych zadań Azure Stream Analytics
 
@@ -22,19 +21,17 @@ Możesz kopiować i tworzyć kopie zapasowe wdrożonych zadań Azure Stream Anal
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 * Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/).
 
-* Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
+* Zaloguj się do [Portalu Azure](https://portal.azure.com/).
 
 * Zainstaluj [rozszerzenie Azure Stream Analytics dla narzędzi Visual Studio Code](https://docs.microsoft.com/azure/stream-analytics/quick-create-vs-code#install-the-azure-stream-analytics-extension) i [Azure Stream Analytics dla programu Visual Studio](https://docs.microsoft.com/azure/stream-analytics/quick-create-vs-code#install-the-azure-stream-analytics-extension).  
 
-
-
-## <a name="visual-studio-code"></a>Visual Studio Code 
+## <a name="visual-studio-code"></a>Visual Studio Code
 
 1. Kliknij ikonę **platformy Azure** na pasku działania Visual Studio Code a następnie rozwiń węzeł **Stream Analytics** . Zadania powinny być wyświetlane w ramach subskrypcji.
 
    ![Otwórz Eksploratora Stream Analytics](./media/vscode-explore-jobs/open-explorer.png)
 
-2. Aby wyeksportować zadanie do projektu lokalnego, zlokalizuj zadanie, które chcesz wyeksportować w **eksploratorze Stream Analytics** w Visual Studio Code. Następnie wybierz folder dla projektu. 
+2. Aby wyeksportować zadanie do projektu lokalnego, zlokalizuj zadanie, które chcesz wyeksportować w **eksploratorze Stream Analytics** w Visual Studio Code. Następnie wybierz folder dla projektu.
 
     ![Eksportowanie zadania ASA w Visual Studio Code](./media/vscode-explore-jobs/export-job.png)
 
@@ -42,17 +39,15 @@ Możesz kopiować i tworzyć kopie zapasowe wdrożonych zadań Azure Stream Anal
 
     ![Eksportowanie zadania ASA w Visual Studio Code](./media/stream-analytics-manage-job/copy-backup-stream-analytics-jobs.png)
 
-3. Aby opublikować zadanie w innym regionie lub kopii zapasowej przy użyciu innej nazwy, wybierz pozycję **Wybierz z subskrypcji do opublikowania** w edytorze zapytań (\*. asaql) i postępuj zgodnie z instrukcjami. 
+3. Aby opublikować zadanie w innym regionie lub kopii zapasowej przy użyciu innej nazwy, wybierz pozycję **Wybierz z subskrypcji do opublikowania** w edytorze zapytań (\*. asaql) i postępuj zgodnie z instrukcjami.
 
-    ![Publikowanie na platformie Azure w Visual Studio Code](./media/quick-create-vs-code/select-subscription.png)
+    ![Publikowanie na platformie Azure w Visual Studio Code](./media/quick-create-vs-code/submit-job.png)
 
+## <a name="visual-studio"></a>Visual Studio
 
-## <a name="visual-studio"></a>Visual Studio 
+1. Wykonaj [zadanie Eksportuj wdrożone Azure Stream Analytics do instrukcji projektu](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-vs-tools#export-jobs-to-a-project).
 
-1. Wykonaj [zadanie Eksportuj wdrożone Azure Stream Analytics do instrukcji projektu](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-vs-tools#export-jobs-to-a-project). 
-
-2. Otwórz plik \*. asaql w edytorze zapytań, wybierz pozycję **Prześlij do platformy Azure** w Edytorze skryptów i postępuj zgodnie z instrukcjami, aby opublikować zadanie w innym regionie lub kopii zapasowej przy użyciu nowej nazwy. 
-
+2. Otwórz plik \*. asaql w edytorze zapytań, wybierz pozycję **Prześlij do platformy Azure** w Edytorze skryptów i postępuj zgodnie z instrukcjami, aby opublikować zadanie w innym regionie lub kopii zapasowej przy użyciu nowej nazwy.
 
 ## <a name="next-steps"></a>Następne kroki
 

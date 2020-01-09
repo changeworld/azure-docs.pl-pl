@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 ms.date: 11/27/2019
-ms.openlocfilehash: 816cf7cc78d3dfcb783b09f039f468ef3b23a06b
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 90f39a5edd32225b7fed259ca48dcf4802d0ced3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74548366"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443826"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Przegląd Azure SQL Database limitów zasobów wystąpienia zarządzanego
 
@@ -47,7 +47,7 @@ Ilość miejsca OLTP w pamięci w [krytyczne dla działania firmy](sql-database-
 
 | Przestrzeń OLTP w pamięci  | **5 rdzeń** | **Obliczenia** |
 | --- | --- | --- |
-| 4 rdzeni wirtualnych  | 3,14 GB | |   
+| 4 rdzenie wirtualne  | 3,14 GB | |   
 | 8 rdzeni wirtualnych  | 6,28 GB | 8 GB |
 | 16 rdzeni wirtualnych | 15,77 GB | 20 GB |
 | 24 rdzeni wirtualnych | 25,25 GB | 36 GB |
@@ -78,7 +78,7 @@ Wystąpienie zarządzane ma dwie warstwy usług: [ogólnego przeznaczenia](sql-d
 | Limit przepływności zapisu dziennika (na wystąpienie) | 3 MB/s na rdzeń wirtualny<br/>Maks. 22 MB/s | 4 MB/s na rdzeń wirtualny<br/>Maks 48 MB/s |
 | Przepływność danych (przybliżona) | 100 – 250 MB/s na plik<br/>\*[zwiększyć rozmiar pliku, aby uzyskać lepszą wydajność operacji we/wy](#file-io-characteristics-in-general-purpose-tier) | Nieograniczone. |
 | Opóźnienie operacji we/wy magazynu (w przybliżeniu) | 5-10 ms | 1-2 MS |
-| Przetwarzanie OLTP w pamięci | Brak obsługi | Dostępne, [rozmiar zależy od liczby rdzeń wirtualny](#in-memory-oltp-available-space) |
+| Przetwarzanie OLTP danych w pamięci | Brak obsługi | Dostępne, [rozmiar zależy od liczby rdzeń wirtualny](#in-memory-oltp-available-space) |
 | Maksymalna liczba sesji | 30000 | 30000 |
 | [Repliki tylko do odczytu](sql-database-read-scale-out.md) | 0 | 1 (wliczone w cenę) |
 
@@ -87,7 +87,7 @@ Wystąpienie zarządzane ma dwie warstwy usług: [ogólnego przeznaczenia](sql-d
 > - Rozmiar pliku danych i dziennika w bazach danych użytkownika i systemu jest uwzględniany w rozmiarze magazynu wystąpienia, który jest porównywany z maksymalnym limitem rozmiaru magazynu. Użyj widoku <a href="https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-master-files-transact-sql">sys. master_files</a> system w celu określenia łącznej ilości miejsca używanego przez bazy danych. Dzienniki błędów nie są utrwalane i nie zostały uwzględnione w rozmiarze. Kopie zapasowe nie są uwzględniane w rozmiarze magazynu.
 > - Przepływność i operacje we/wy w warstwie Ogólnego przeznaczenia również zależą od [rozmiaru pliku](#file-io-characteristics-in-general-purpose-tier) , który nie jest jawnie ograniczony przez wystąpienie zarządzane.
 > - Można utworzyć kolejną replikę do odczytu w innym regionie świadczenia usługi Azure przy użyciu grup Autotryb failover.
-> - Maksymalna liczba operacji we/wy wystąpienia zależy od układu pliku i rozkładu obciążenia. Przykładowo, jeśli utworzysz 7 x 1 GB plików z maksymalną 5 K IOPS każdy i 7 małych plików (mniejszym niż 128 GB) z 500 IOPS każdy, możesz uzyskać 38500 liczby IOPS na wystąpienie (7x5000 + 7x500), jeśli obciążenie może korzystać ze wszystkich plików. Należy zauważyć, że niektóre liczby operacji we/wy są również używane do tworzenia kopii zapasowych.
+> - Maksymalna liczba operacji we/wy wystąpienia zależy od układu pliku i rozkładu obciążenia. Jeśli na przykład utworzysz 7 x 1 TB plików z maksymalną 5 K IOPS każdy i 7 małych plików (mniejszym niż 128 GB) z 500 IOPS każdy, możesz uzyskać 38500 operacji we/wy na wystąpienie (7x5000 + 7x500), jeśli obciążenie może korzystać ze wszystkich plików. Należy zauważyć, że niektóre liczby operacji we/wy są również używane do tworzenia kopii zapasowych.
 
 > [!NOTE]
 > Więcej informacji na temat [limitów zasobów w pulach wystąpień zarządzanych w tym artykule](sql-database-instance-pools.md#instance-pools-resource-limitations).

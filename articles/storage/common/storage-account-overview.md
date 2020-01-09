@@ -1,21 +1,22 @@
 ---
-title: Omówienie konta usługi Azure Storage | Microsoft Docs
+title: Omówienie kont magazynu
+titleSuffix: Azure Storage
 description: Opis opcji tworzenia konta usługi Azure Storage i korzystania z niego.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 11/20/2019
+ms.date: 12/20/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: dc5869acffe9a42d154bca61b9de7821121c85ec
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 30f39fc72d6a96b83f57d6553db3f348c8486ee5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851637"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460619"
 ---
-# <a name="azure-storage-account-overview"></a>Omówienie konta usługi Azure Storage
+# <a name="storage-account-overview"></a>Omówienie kont magazynu
 
 Konto usługi Azure Storage zawiera wszystkie obiekty danych usługi Azure Storage: obiektów blob, plików, kolejek, tabel i dysków. Konto magazynu zapewnia unikatową przestrzeń nazw dla danych usługi Azure Storage, która jest dostępna z dowolnego miejsca na świecie za pośrednictwem protokołu HTTP lub HTTPS. Dane na koncie usługi Azure Storage są trwałe i wysoce dostępne, bezpieczne i skalowalne.
 
@@ -55,11 +56,11 @@ Konta magazynu ogólnego przeznaczenia w wersji 1 zapewniają dostęp do wszystk
 
 W większości przypadków należy używać kont ogólnego przeznaczenia w wersji 2. W tych scenariuszach można używać kont ogólnego przeznaczenia w wersji 1:
 
-* Twoje aplikacje wymagają klasycznego modelu wdrażania platformy Azure. Konta ogólnego przeznaczenia w wersji 2 i konta magazynu obiektów BLOB obsługują tylko Azure Resource Manager model wdrażania.
+- Twoje aplikacje wymagają klasycznego modelu wdrażania platformy Azure. Konta ogólnego przeznaczenia w wersji 2 i konta magazynu obiektów BLOB obsługują tylko Azure Resource Manager model wdrażania.
 
-* Aplikacje zajmują wiele transakcji lub wykorzystują znaczną przepustowość replikacji geograficznej, ale nie wymagają dużej pojemności. W takim przypadku, ogólnego przeznaczenia w wersji 1 może być najbardziej ekonomiczny.
+- Aplikacje zajmują wiele transakcji lub wykorzystują znaczną przepustowość replikacji geograficznej, ale nie wymagają dużej pojemności. W takim przypadku, ogólnego przeznaczenia w wersji 1 może być najbardziej ekonomiczny.
 
-* Używana jest wersja [interfejsu API REST usług Storage](https://msdn.microsoft.com/library/azure/dd894041.aspx) , która jest wcześniejsza niż 2014-02-14 lub Biblioteka kliencka o wersji niższej niż 4. x. Nie można uaktualnić aplikacji.
+- Używana jest wersja [interfejsu API REST usług Storage](https://msdn.microsoft.com/library/azure/dd894041.aspx) , która jest wcześniejsza niż 2014-02-14 lub Biblioteka kliencka o wersji niższej niż 4. x. Nie można uaktualnić aplikacji.
 
 ### <a name="blockblobstorage-accounts"></a>Konta BlockBlobStorage
 
@@ -86,12 +87,12 @@ Podczas określania nazwy konta magazynu należy pamiętać o następujących re
 
 Konta magazynu ogólnego przeznaczenia można skonfigurować dla jednej z następujących warstw wydajności:
 
-* Standardowa warstwa wydajności do przechowywania obiektów blob, plików, tabel, kolejek i dysków maszyn wirtualnych platformy Azure.
-* Warstwa wydajności Premium do przechowywania tylko niezarządzanych dysków maszyny wirtualnej.
+- Standardowa warstwa wydajności do przechowywania obiektów blob, plików, tabel, kolejek i dysków maszyn wirtualnych platformy Azure. Aby uzyskać więcej informacji o skalowalności dla kont magazynu w warstwie Standardowa, zobacz [elementy docelowe skalowalności dla kont magazynu w warstwie Standardowa](scalability-targets-standard-account.md).
+- Warstwa wydajności Premium do przechowywania tylko niezarządzanych dysków maszyny wirtualnej. Firma Microsoft zaleca używanie dysków zarządzanych z maszynami wirtualnymi platformy Azure zamiast dysków niezarządzanych. Aby uzyskać więcej informacji o skalowalności dla warstwy wydajności Premium, zobacz [elementy docelowe skalowalności dla kont usługi BLOB Storage na stronie Premium](../blobs/scalability-targets-premium-page-blobs.md).
 
-Konta magazynu BlockBlobStorage zapewniają warstwę wydajności Premium do przechowywania blokowych obiektów blob i dołączania obiektów BLOB.
+Konta magazynu BlockBlobStorage zapewniają warstwę wydajności Premium do przechowywania blokowych obiektów blob i dołączania obiektów BLOB. Aby uzyskać więcej informacji, zobacz [cele skalowalności dla kont magazynu blokowych obiektów BLOB w warstwie Premium](../blobs/scalability-targets-premium-block-blobs.md).
 
-Konta magazynu FileStorage zapewniają warstwę wydajności Premium dla udziałów plików platformy Azure.
+Konta magazynu FileStorage zapewniają warstwę wydajności Premium dla udziałów plików platformy Azure. Aby uzyskać więcej informacji, zobacz [Azure Files celów skalowalności i wydajności](../files/storage-files-scale-targets.md).
 
 ## <a name="access-tiers-for-block-blob-data"></a>Warstwy dostępu dla danych blokowych obiektów BLOB
 
@@ -99,9 +100,9 @@ Usługa Azure Storage oferuje różne opcje uzyskiwania dostępu do danych bloko
 
 Dostępne są następujące warstwy dostępu:
 
-* Warstwa dostępu **gorąca** . Ta warstwa jest zoptymalizowana pod kątem częstego dostępu do obiektów na koncie magazynu. Uzyskiwanie dostępu do danych w warstwie gorąca jest najbardziej opłacalne, natomiast koszty magazynu są wyższe. Nowe konta magazynu są domyślnie tworzone w warstwie gorąca.
-* Warstwa dostępu **chłodna** . Ta warstwa jest zoptymalizowana pod kątem przechowywania dużych ilości danych, które są rzadko używane i są przechowywane przez co najmniej 30 dni. Przechowywanie danych w warstwie chłodna jest tańsze, ale dostęp do tych danych może być droższy niż dostęp do danych w warstwie gorąca.
-* Warstwa **archiwum** . Ta warstwa jest dostępna tylko dla pojedynczych blokowych obiektów BLOB. Warstwa archiwum jest zoptymalizowana pod kątem danych, które mogą tolerować kilka godzin opóźnienia pobierania i które pozostaną w warstwie archiwum przez co najmniej 180 dni. Warstwa archiwum jest najtańszą opcją do przechowywania danych. Jednak dostęp do tych danych jest droższy niż dostęp do danych w warstwach gorąca lub chłodna.
+- Warstwa dostępu **gorąca** . Ta warstwa jest zoptymalizowana pod kątem częstego dostępu do obiektów na koncie magazynu. Uzyskiwanie dostępu do danych w warstwie gorąca jest najbardziej opłacalne, natomiast koszty magazynu są wyższe. Nowe konta magazynu są domyślnie tworzone w warstwie gorąca.
+- Warstwa dostępu **chłodna** . Ta warstwa jest zoptymalizowana pod kątem przechowywania dużych ilości danych, które są rzadko używane i są przechowywane przez co najmniej 30 dni. Przechowywanie danych w warstwie chłodna jest tańsze, ale dostęp do tych danych może być droższy niż dostęp do danych w warstwie gorąca.
+- Warstwa **archiwum** . Ta warstwa jest dostępna tylko dla pojedynczych blokowych obiektów BLOB. Warstwa archiwum jest zoptymalizowana pod kątem danych, które mogą tolerować kilka godzin opóźnienia pobierania i które pozostaną w warstwie archiwum przez co najmniej 180 dni. Warstwa archiwum jest najtańszą opcją do przechowywania danych. Jednak dostęp do tych danych jest droższy niż dostęp do danych w warstwach gorąca lub chłodna.
 
 W przypadku zmiany wzorca użycia danych można w dowolnym momencie przełączyć się między tymi warstwami dostępu. Aby uzyskać więcej informacji o warstwach dostępu, zobacz [Azure Blob Storage: warstwy dostępu gorąca, chłodna i archiwalna](../blobs/storage-blob-storage-tiers.md).
 
@@ -124,13 +125,13 @@ Konto magazynu zapewnia unikatową przestrzeń nazw na platformie Azure dla dany
 
 Na przykład jeśli Twoje konto magazynu ogólnego przeznaczenia ma nazwę *mojekontomagazynu*, domyślne punkty końcowe dla tego konta są następujące:
 
-* BLOB Storage: http://*mojekontomagazynu*. blob.Core.Windows.NET
-* Table Storage: http://*mojekontomagazynu*. Table.Core.Windows.NET
-* Queue storage: http://*mojekontomagazynu*. Queue.Core.Windows.NET
-* Azure Files: http://*mojekontomagazynu*. File.Core.Windows.NET
+- BLOB Storage: `https://*mystorageaccount*.blob.core.windows.net`
+- Tabela magazynu: `https://*mystorageaccount*.table.core.windows.net`
+- Queue storage: `https://*mystorageaccount*.queue.core.windows.net`
+- Azure Files: `https://*mystorageaccount*.file.core.windows.net`
 
 > [!NOTE]
-> Blokowe obiekty blob i BLOB Storage uwidaczniają tylko punkt końcowy usługi BLOB Service.
+> Blokowe obiekty blob i BLOB Storage uwidaczniają tylko Blob service punkt końcowy.
 
 Utwórz adres URL do uzyskiwania dostępu do obiektu na koncie magazynu, dołączając lokalizację obiektu na koncie magazynu do punktu końcowego. Przykładowo adres obiektu Blob może mieć następujący format: http://*mojekontomagazynu*.blob.core.windows.net/*mojkontener*/*mojblob*.
 
@@ -171,7 +172,7 @@ Biblioteka przenoszenia danych usługi Azure Storage dla programu .NET jest opar
 
 Możesz utworzyć niestandardową aplikację w celu migrowania danych z konta usługi Storage ogólnego przeznaczenia do konta usługi BLOB Storage. Użyj jednej z bibliotek klienta platformy Azure lub interfejsu API REST usług Azure Storage. Usługa Azure Storage udostępnia rozbudowane biblioteki dla wielu języków programowania i platform, takich jak .NET, Java, C++, Node.JS, PHP, Ruby i Python. Biblioteki klienta oferują zaawansowane możliwości, takie jak logika ponowień, rejestrowanie i przekazywanie równoległe. Możliwe jest również programowanie bezpośrednio przy użyciu interfejsu API REST, który może być wywoływany przez dowolny język programowania mający możliwość wysyłania żądań HTTP lub HTTPS.
 
-Aby uzyskać więcej informacji na temat interfejsu API REST usługi Azure Storage, zobacz [Dokumentacja interfejsu API REST usług Azure Storage](https://docs.microsoft.com/rest/api/storageservices/). 
+Aby uzyskać więcej informacji na temat interfejsu API REST usługi Azure Storage, zobacz [Dokumentacja interfejsu API REST usług Azure Storage](https://docs.microsoft.com/rest/api/storageservices/).
 
 > [!IMPORTANT]
 > Obiekty blob zaszyfrowane za pomocą szyfrowania po stronie klienta przechowują metadane związane z szyfrowaniem w ramach obiektu blob. W przypadku kopiowania obiektu blob zaszyfrowanego przy użyciu szyfrowania po stronie klienta upewnij się, że podczas operacji kopiowania są zachowywane metadane obiektu blob, a w szczególności metadane związane z szyfrowaniem. W przypadku kopiowania obiektu blob bez metadanych szyfrowania nie można ponownie pobrać zawartości tego obiektu. Aby uzyskać więcej informacji na temat metadanych związanych z szyfrowaniem, zobacz [Azure Storage Client-Side Encryption (Szyfrowanie po stronie klienta usługi Azure Storage)](../common/storage-client-side-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
@@ -182,6 +183,5 @@ Aby uzyskać więcej informacji na temat interfejsu API REST usługi Azure Stora
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Tworzenie konta magazynu](storage-quickstart-create-account.md)
-* [Tworzenie konta magazynu blokowych obiektów blob](../blobs/storage-blob-create-account-block-blob.md)
-* [Zarządzanie kontami usługi Azure Storage](storage-account-manage.md)
+- [Tworzenie konta magazynu](storage-quickstart-create-account.md)
+- [Tworzenie konta magazynu blokowych obiektów blob](../blobs/storage-blob-create-account-block-blob.md)

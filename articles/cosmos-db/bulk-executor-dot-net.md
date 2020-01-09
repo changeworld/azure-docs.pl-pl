@@ -1,5 +1,5 @@
 ---
-title: Użycie zbiorczej biblioteki programu .NET do wykonywania operacji importu zbiorczego i aktualizacji w Azure Cosmos DB
+title: Użycie zbiorczego programu .NET Library w Azure Cosmos DB na potrzeby operacji importowania zbiorczego i aktualizacji
 description: Zbiorcze importowanie i aktualizowanie Azure Cosmos DB dokumentów przy użyciu zbiorczej biblioteki programu .NET.
 author: tknandu
 ms.service: cosmos-db
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/01/2019
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: d76426e738d78391b92b008e821672017520b7d2
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: d7600267dcd196a9a5c06c29774ea21d582cd7ce
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71218403"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442193"
 ---
 # <a name="use-the-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db"></a>Użycie zbiorczej biblioteki programu .NET do wykonywania operacji zbiorczych w Azure Cosmos DB
 
@@ -28,7 +28,7 @@ Obecnie Biblioteka wykonawców zbiorczych jest obsługiwana przez Azure Cosmos D
 
 * Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-* Możesz [bezpłatnie wypróbować usługę Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) bez subskrypcji platformy Azure — nie wymaga to opłat ani zobowiązań. Można też użyć [emulatora Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/local-emulator) z `https://localhost:8081` punktem końcowym. Klucz podstawowy został podany w sekcji [Uwierzytelnianie żądań](local-emulator.md#authenticating-requests).
+* Możesz [bezpłatnie wypróbować usługę Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) bez subskrypcji platformy Azure — nie wymaga to opłat ani zobowiązań. Można też użyć [emulatora Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/local-emulator) z punktem końcowym `https://localhost:8081`. Klucz podstawowy został podany w sekcji [Uwierzytelnianie żądań](local-emulator.md#authenticating-requests).
 
 * Utwórz konto Azure Cosmos DB interfejsu API SQL, korzystając z procedury opisanej w sekcji [Tworzenie konta bazy danych](create-sql-api-dotnet.md#create-account) artykułu przewodnika Szybki Start platformy .NET.
 
@@ -106,7 +106,7 @@ Aplikacja "BulkImportSample" generuje losowe dokumenty i zbiorczo importuje je d
    |disableAutomaticIdGeneration    |    Flagi, aby wyłączyć automatyczne generowanie identyfikatora. Domyślnie jest ustawiona na wartość true.     |
    |maxConcurrencyPerPartitionKeyRange    | Maksymalny stopień współbieżności dla zakresu kluczy partycji, ustawienie na wartość null spowoduje, że biblioteka użyje wartości domyślnej równej 20. |
    |maxInMemorySortingBatchSize     |  Maksymalna liczba dokumentów pobieranych z modułu wyliczającego dokumenty, które są przesyłane do wywołania interfejsu API na każdym etapie. W przypadku fazy sortowania w pamięci, która jest wykonywana przed importem zbiorczym, ustawienie tego parametru na wartość null spowoduje użycie przez bibliotekę domyślnej wartości minimalnej (Documents. Count, 1000000).       |
-   |cancellationToken    |    Token anulowania, aby bezpiecznie opuścić operację importu zbiorczego.     |
+   |CancellationToken    |    Token anulowania, aby bezpiecznie opuścić operację importu zbiorczego.     |
 
    **Definicja obiektu odpowiedzi importu zbiorczego** Wynik wywołania interfejsu API importu zbiorczego zawiera następujące atrybuty:
 
@@ -115,15 +115,15 @@ Aplikacja "BulkImportSample" generuje losowe dokumenty i zbiorczo importuje je d
    |NumberOfDocumentsImported (Long)   |  Całkowita liczba dokumentów, które zostały pomyślnie zaimportowane z całkowitej liczby dokumentów dostarczonych do wywołania interfejsu API importu zbiorczego.       |
    |TotalRequestUnitsConsumed (Double)   |   Łączna liczba jednostek żądania (RU) używane przez większość zaimportować wywołania interfejsu API.      |
    |TotalTimeTaken (TimeSpan)    |   Łączny czas trwania wywołania interfejsu API importu zbiorczego w celu ukończenia wykonywania.      |
-   |BadInputDocuments (lista\<> obiektów)   |     Lista dokumentów nieprawidłowego formatu, które nie zostały pomyślnie zaimportowane zbiorczo zaimportować wywołania interfejsu API. Popraw zwrócone dokumenty i ponów próbę importu. Sformatowana niewłaściwe dokumenty zawierają dokumentów, których wartość Identyfikatora jest ciąg (wartość null lub jakikolwiek inny typ danych jest uznawane za nieprawidłowe).    |
+   |BadInputDocuments (lista\<obiektów >)   |     Lista dokumentów nieprawidłowego formatu, które nie zostały pomyślnie zaimportowane zbiorczo zaimportować wywołania interfejsu API. Popraw zwrócone dokumenty i ponów próbę importu. Sformatowana niewłaściwe dokumenty zawierają dokumentów, których wartość Identyfikatora jest ciąg (wartość null lub jakikolwiek inny typ danych jest uznawane za nieprawidłowe).    |
 
 ## <a name="bulk-update-data-in-your-azure-cosmos-account"></a>Zbiorcze aktualizowanie danych na koncie usługi Azure Cosmos
 
-Należy zaktualizować istniejące dokumenty przy użyciu interfejsu API BulkUpdateAsync. W tym przykładzie ustawisz `Name` pole na nową wartość i `Description` usuniesz pole z istniejących dokumentów. Pełny zestaw obsługiwanych operacji aktualizacji można znaleźć w [dokumentacji interfejsu API](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkupdate?view=azure-dotnet).
+Należy zaktualizować istniejące dokumenty przy użyciu interfejsu API BulkUpdateAsync. W tym przykładzie ustawisz pole `Name` na nową wartość i usuniesz pole `Description` z istniejących dokumentów. Pełny zestaw obsługiwanych operacji aktualizacji można znaleźć w [dokumentacji interfejsu API](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkupdate?view=azure-dotnet).
 
 1. Przejdź do folderu "BulkUpdateSample" i Otwórz plik "BulkUpdateSample. sln".  
 
-2. Zdefiniuj elementy aktualizacji wraz z odpowiednimi operacjami aktualizacji pola. W tym przykładzie zostanie użyta `SetUpdateOperation` `Name` aktualizacja `Description` pola i `UnsetUpdateOperation` usunięcie pola ze wszystkich dokumentów. Możesz także wykonywać inne operacje, takie jak zwiększenie pole dokumentu o określoną wartość, wypychanie określone wartości do pola tablicy lub usunąć określoną wartość z pola tablicy. Aby dowiedzieć się więcej o różnych metodach dostarczonych przez interfejs API aktualizacji zbiorczej, zapoznaj się z [dokumentacją interfejsu API](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkupdate?view=azure-dotnet).
+2. Zdefiniuj elementy aktualizacji wraz z odpowiednimi operacjami aktualizacji pola. W tym przykładzie użyjesz `SetUpdateOperation`, aby zaktualizować pole `Name` i `UnsetUpdateOperation`, aby usunąć pole `Description` ze wszystkich dokumentów. Możesz także wykonywać inne operacje, takie jak zwiększenie pole dokumentu o określoną wartość, wypychanie określone wartości do pola tablicy lub usunąć określoną wartość z pola tablicy. Aby dowiedzieć się więcej o różnych metodach dostarczonych przez interfejs API aktualizacji zbiorczej, zapoznaj się z [dokumentacją interfejsu API](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkupdate?view=azure-dotnet).
 
    ```csharp
    SetUpdateOperation<string> nameUpdate = new SetUpdateOperation<string>("Name", "UpdatedDoc");
@@ -155,7 +155,7 @@ Należy zaktualizować istniejące dokumenty przy użyciu interfejsu API BulkUpd
    |---------|---------|
    |maxConcurrencyPerPartitionKeyRange    |   Maksymalny stopień współbieżności na zakres kluczy partycji, ustawienie dla tego parametru wartości null spowoduje, że biblioteka będzie używać wartości domyślnej (20).   |
    |maxInMemorySortingBatchSize    |    Maksymalna liczba elementów aktualizacji pobranych z numeratora elementów aktualizacji została przeniesiona do wywołania interfejsu API na każdym etapie. Dla fazy sortowania w pamięci, która jest wykonywana przed aktualizacją zbiorczą, ustawienie dla tego parametru wartości null spowoduje użycie domyślnej wartości minimalnej (updateItems. Count, 1000000).     |
-   | cancellationToken|Token anulowania, aby bezpiecznie opuścić operację aktualizacji zbiorczej. |
+   | CancellationToken|Token anulowania, aby bezpiecznie opuścić operację aktualizacji zbiorczej. |
 
    **Definicja obiektu odpowiedzi aktualizacji zbiorczej** Wynik wywołania interfejsu API aktualizacji zbiorczej zawiera następujące atrybuty:
 
@@ -171,11 +171,11 @@ W celu uzyskania lepszej wydajności podczas korzystania z biblioteki wykonawcze
 
 * Aby uzyskać najlepszą wydajność, uruchom aplikację z maszyny wirtualnej platformy Azure, która znajduje się w tym samym regionie, co region zapisu konta usługi Azure Cosmos.  
 
-* Zaleca się utworzenie wystąpienia pojedynczego `BulkExecutor` obiektu dla całej aplikacji w ramach jednej maszyny wirtualnej odpowiadającej określonemu kontenerowi usługi Azure Cosmos.  
+* Zaleca się utworzenie wystąpienia pojedynczego obiektu `BulkExecutor` dla całej aplikacji w ramach jednej maszyny wirtualnej, która odpowiada określonemu kontenerowi usługi Azure Cosmos.  
 
-* Ponieważ wykonywanie pojedynczego interfejsu API operacji zbiorczej zużywa duży fragment procesora CPU i sieci we/wy komputera klienckiego (dzieje się to przez duplikowanie wielu zadań wewnętrznie). Unikaj duplikowania wielu współbieżnych zadań w procesie aplikacji, które wykonują wywołania interfejsu API operacji zbiorczej. Jeśli jedno wywołanie interfejsu API operacji zbiorczej, które jest uruchomione na jednej maszynie wirtualnej, nie może wykorzystać przepływności całego kontenera (jeśli przepływność kontenera > 1 000 000 RU/s), preferowane jest utworzenie oddzielnych maszyn wirtualnych do współbieżnego wykonania wywołania interfejsu API operacji zbiorczej.  
+* Ponieważ wykonywanie pojedynczego interfejsu API operacji zbiorczej zużywa duży fragment procesora CPU i sieci we/wy komputera klienckiego (dzieje się to przez duplikowanie wielu zadań wewnętrznie). Unikaj duplikowania wielu współbieżnych zadań w procesie aplikacji, które wykonują wywołania interfejsu API operacji zbiorczej. Jeśli pojedyncze wywołanie interfejsu API operacji zbiorczej działające na jednej maszynie wirtualnej nie jest w stanie korzystać z przepływności całego kontenera (jeśli przepływność kontenera > 1 000 000 RU/s), preferowane jest utworzenie oddzielnych maszyn wirtualnych do współbieżnego wykonywania wywołań interfejsu API operacji zbiorczych.  
 
-* Upewnij się `InitializeAsync()` , że metoda jest wywoływana po utworzeniu wystąpienia obiektu BulkExecutor w celu pobrania mapy partycji docelowego kontenera Cosmos.  
+* Upewnij się, że metoda `InitializeAsync()` jest wywoływana po utworzeniu wystąpienia obiektu BulkExecutor w celu pobrania mapy partycji docelowego kontenera Cosmos.  
 
 * W pliku App. config aplikacji upewnij się, że **gcServer** jest włączona w celu uzyskania lepszej wydajności
   ```xml  

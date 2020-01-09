@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 11/04/2019
-ms.openlocfilehash: 5e891627b337a0a3a15d0ebfa2b9cc95f27feca4
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.date: 12/20/2019
+ms.openlocfilehash: 35b087cdf190585ae98de35bc3f920c2cb66204a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533118"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75461280"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-cognitive-skillset-in-the-azure-portal"></a>Szybki Start: Tworzenie usługi Azure Wyszukiwanie poznawcze poznawcze zestawu umiejętności w Azure Portal
 
@@ -25,15 +25,17 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="create-services-and-load-data"></a>Tworzenie usług i ładowanie danych
 
-Ten przewodnik Szybki Start używa platformy Azure Wyszukiwanie poznawcze, usługi Azure Blob Storage i [usługi azure Cognitive Services dla systemu](https://azure.microsoft.com/services/cognitive-services/) AI. 
+Ten przewodnik Szybki Start używa platformy Azure Wyszukiwanie poznawcze, [usługi Azure Blob Storage](https://docs.microsoft.com/azure/storage/blobs/)i [usługi Azure COGNITIVE Services dla systemu](https://azure.microsoft.com/services/cognitive-services/) AI. 
 
-Ze względu na to, że obciążenie jest małe, Cognitive Services jest wybierana w tle, aby zapewnić bezpłatne przetwarzanie do 20 transakcji codziennie w przypadku wywołania z usługi Azure Wyszukiwanie poznawcze. Jeśli używasz przykładowych danych, które udostępniamy, możesz pominąć tworzenie i dołączanie zasobów Cognitive Services.
+Ze względu na to, że obciążenie jest małe, Cognitive Services jest wybierane w tle, aby zapewnić bezpłatne przetwarzanie przez maksymalnie 20 transakcji na indeksator w przypadku wywołania z usługi Azure Wyszukiwanie poznawcze. Jeśli używasz przykładowych danych, które udostępniamy, możesz pominąć tworzenie i dołączanie zasobów Cognitive Services.
 
 1. [Pobierz przykładowe dane](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4) składające się z małego zestawu plików różnych typów. Rozpakuj pliki.
 
 1. [Utwórz konto usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal) lub [Znajdź istniejące konto](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/). 
 
-   Wybierz ten sam region co usługa Azure Wyszukiwanie poznawcze. Wybierz typ konta StorageV2 (ogólnego przeznaczenia w wersji 2), jeśli chcesz wypróbować funkcję magazynu wiedzy później, w innym instruktażu. W przeciwnym razie wybierz dowolny typ.
+   Wybierz ten sam region co usługa Azure Wyszukiwanie poznawcze, aby uniknąć naliczania opłat za przepustowość. 
+   
+   Wybierz typ konta StorageV2 (ogólnego przeznaczenia w wersji 2), jeśli chcesz wypróbować funkcję magazynu wiedzy później, w innym instruktażu. W przeciwnym razie wybierz dowolny typ.
 
 1. Otwórz strony usługi BLOB Services i Utwórz kontener. Można użyć domyślnego poziomu dostępu publicznego. 
 
@@ -43,8 +45,6 @@ Ze względu na to, że obciążenie jest małe, Cognitive Services jest wybieran
 
 1. [Utwórz usługę Azure wyszukiwanie poznawcze](search-create-service-portal.md) lub [Znajdź istniejącą usługę](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices). Możesz użyć bezpłatnej usługi dla tego przewodnika Szybki Start.
 
-<!-- 1. You are almost done with this resource, but before you leave these pages, use a link on the left navigation pane to open the **Access Keys** page. In many tutorials, especially those that use the REST API, you will need a connection string to retrieve data from Blob storage. A connection string looks similar to the following example: `DefaultEndpointsProtocol=https;AccountName=<YOUR-ACCOUNT-NAME>;AccountKey=<YOUR-ACCOUNT-KEY>;EndpointSuffix=core.windows.net` -->
-
 Teraz można przystąpić do przenoszenia Kreatora importu danych.
 
 ## <a name="run-the-import-data-wizard"></a>Uruchom Kreatora importowania danych
@@ -53,56 +53,57 @@ Na stronie Przegląd usługi wyszukiwania kliknij pozycję **Importuj dane** na 
 
   ![Polecenie importu danych](media/cognitive-search-quickstart-blob/import-data-cmd2.png)
 
-### <a name="step-1-create-a-data-source"></a>Krok 1. Tworzenie źródła danych
+### <a name="step-1---create-a-data-source"></a>Krok 1. Tworzenie źródła danych
 
 1. W obszarze **Połącz z danymi**wybierz pozycję **Azure Blob Storage**, wybierz utworzone konto magazynu i kontener. Podaj nazwę źródła danych i użyj wartości domyślnych dla pozostałych ustawień. 
 
    ![Konfiguracja obiektu blob platformy Azure](./media/cognitive-search-quickstart-blob/blob-datasource.png)
 
-1. Przejdź do następnej strony.
+    Przejdź do następnej strony.
 
-### <a name="step-2-add-cognitive-skills"></a>Krok 2. Dodawanie umiejętności poznawczych
+### <a name="step-2---add-cognitive-skills"></a>Krok 2. Dodawanie umiejętności poznawczych
 
-Następnie Dodaj umiejętności poznawcze, aby wywoływać przetwarzanie języka naturalnego. Przykładowe dane składają się z 12 plików, więc w tym przewodniku szybki start wystarcza bezpłatny przydział 20 transakcji na Cognitive Services. Ponieważ nie używamy OCR, są zliczane, pęknięte i używane w tym procesie tylko pliki niebędące obrazami.
+Następnie skonfiguruj wzbogacanie AI, aby wywoływać OCR, analizę obrazów i przetwarzanie języka naturalnego. 
 
-1. W tym przewodniku szybki start korzystamy z **bezpłatnego** zasobu Cognitive Services.
+1. W tym przewodniku szybki start korzystamy z **bezpłatnego** zasobu Cognitive Services. Przykładowe dane składają się z 14 plików, więc w tym przewodniku szybki start wystarcza bezpłatny przydział 20 transakcji na Cognitive Services. 
 
    ![Dołączanie usług Cognitive Services](media/cognitive-search-quickstart-blob/cog-search-attach.png)
 
-1. Rozwiń pozycję **Dodaj umiejętności** i wybierz umiejętności, które wykonują przetwarzanie w języku naturalnym. W ramach tego przewodnika Szybki start wybierz rozpoznawanie jednostek dla osób, organizacji i lokalizacji.
+1. Rozwiń pozycję **Dodaj wzbogacania** i dokonaj czterech zaznaczeń. 
+
+   Włącz OCR, aby dodać umiejętność analizy obrazu do strony kreatora.
+
+   Ustaw poziom szczegółowości na strony, aby podzielić tekst na mniejsze fragmenty. Kilka umiejętności związanych z tekstem jest ograniczonych do 5 KB danych wejściowych.
+
+   Wybierz pozycję Rozpoznawanie jednostek (ludzie, organizacje, lokalizacje) i analiza obrazu.
 
    ![Dołączanie usług Cognitive Services](media/cognitive-search-quickstart-blob/skillset.png)
 
-1. Zaakceptuj domyślne pole źródłowe: `content`. Może to wyglądać jak niewielki element docelowy, ale w przypadku obiektów blob platformy Azure pole `content` zawiera większość dokumentu obiektu BLOB (na przykład dokument programu Word lub talię programu PowerPoint), co sprawia, że jest to dobry kandydat.
+   Przejdź do następnej strony.
 
-1. Przejdź do następnej strony.
+### <a name="step-3---configure-the-index"></a>Krok 3 — Konfigurowanie indeksu
 
-> [!NOTE]
-> Umiejętności przetwarzania języka naturalnego pracują na zawartości tekstowej w przykładowym zestawie danych. Ponieważ nie wybrano żadnej opcji OCR, w tym przewodniku Szybki start pliki JPEG i PNG znalezione w przykładowym zestawie danych nie będą przetwarzane. 
+Indeks zawiera zawartość z możliwością wyszukiwania, a Kreator **importu danych** zazwyczaj może utworzyć schemat przez próbkowanie źródła danych. W tym kroku zapoznaj się z wygenerowanym schematem i ewentualnie Popraw wszystkie ustawienia. Poniżej znajduje się domyślny schemat utworzony dla demonstracyjnego zestawu danych obiektów BLOB.
 
-### <a name="step-3-configure-the-index"></a>Krok 3. Konfigurowanie indeksu
+W przypadku tego przewodnika Szybki start kreator wykonuje dobrą pracę, ustawiając rozsądne wartości domyślne:  
 
-Na platformie Azure Wyszukiwanie poznawcze indeks zawiera zawartość z możliwością wyszukiwania, a Kreator **importu danych** może zazwyczaj utworzyć schemat za pomocą próbkowania źródła danych. W tym kroku zapoznaj się z wygenerowanym schematem i ewentualnie Popraw wszystkie ustawienia. Poniżej znajduje się domyślny schemat utworzony dla demonstracyjnego zestawu danych obiektów BLOB.
-
-W przypadku tego przewodnika Szybki start kreator wykonuje dobrą pracę, ustawiając rozsądne wartości domyślne: 
-
-+ Nazwa domyślna to *azureblob-index* w przypadku tego źródła danych. 
-
-+ Pola domyślne są oparte na pierwotnym polu danych źródłowych (`content`) oraz polach wyjściowych (`people`, `organizations`i `locations`) utworzonych przez umiejętności poznawcze. Domyślne typy danych są wnioskowane na podstawie próbkowania metadanych i danych.
++ Pola domyślne są oparte na właściwościach istniejących obiektów blob, a nowe pola zawierają dane wyjściowe wzbogacania (na przykład `people`, `organizations`, `locations`). Typy danych są wywnioskowane na podstawie metadanych i próbkowania danych.
 
 + Domyślny klucz dokumentu jest *metadata_storage_path* (wybrany, ponieważ pole zawiera unikatowe wartości).
 
-+ Atrybuty domyślne tych pól to **Możliwość pobierania** i **Możliwość wyszukiwania**. Atrybut **Możliwość wyszukiwania** wskazuje, że pole może być przeszukiwane. Atrybut **Możliwość pobierania** oznacza, że może ono być zwracane w wynikach. W kreatorze przyjęto założenie, że chcesz, aby te pola oferowały możliwości pobierania i wyszukiwania, ponieważ zostały utworzone za pośrednictwem zestawu umiejętności.
++ Domyślne atrybuty są do **pobierania** i **wyszukiwania**. **Wyszukiwanie** umożliwia wyszukiwanie pełnotekstowe w polu. Pobieranie **oznacza,** że wartości pól mogą być zwracane w wynikach. W kreatorze przyjęto założenie, że chcesz, aby te pola oferowały możliwości pobierania i wyszukiwania, ponieważ zostały utworzone za pośrednictwem zestawu umiejętności.
 
   ![Pola indeksu](media/cognitive-search-quickstart-blob/index-fields.png)
 
-Zwróć uwagę na przekreślenie i znak zapytania w atrybucie **Możliwość pobierania** obok pola `content`. W przypadku dokumentów obiektów blob z dużą ilością tekstu pole `content` zawiera większą część pliku, która może potencjalnie składać się z tysięcy wierszy. Jeśli musisz przekazać zawartość pliku do kodu klienta, upewnij się, że opcja **Możliwość pobierania** pozostanie wybrana. W przeciwnym razie rozważ wyczyszczenie tego atrybutu w elemencie `content`, jeśli wyodrębnione elementy (`people`, `organizations` i `locations`) są wystarczające dla Twoich celów.
+Zwróć uwagę na przekreślenie i znak zapytania w atrybucie **Możliwość pobierania** obok pola `content`. W przypadku dokumentów obiektów blob z dużą ilością tekstu pole `content` zawiera większą część pliku, która może potencjalnie składać się z tysięcy wierszy. Takie pole jest nieporęczny w wynikach wyszukiwania i należy je wykluczyć dla tej wersji demonstracyjnej. 
+
+Jeśli jednak chcesz przekazać zawartość pliku do kodu klienta, upewnij się, że wybrano opcję **pobierania** . W przeciwnym razie należy rozważyć wyczyszczenie tego atrybutu na `content`, jeśli wyodrębnione elementy (takie jak `people`, `organizations`, `locations`itd.) są wystarczające.
 
 Oznaczenie pola jako **Możliwość pobierania** nie oznacza, że pole *musi* znajdować się w wynikach wyszukiwania. Można precyzyjnie kontrolować wyniki wyszukiwania za pomocą parametru zapytania **$select** w celu wybrania pól do uwzględnienia. W przypadku pól zawierających dużo tekstu, takich jak `content`, parametr **$select** to rozwiązanie, które oferuje użytkownikom aplikacji łatwe w zarządzaniu wyniki wyszukiwania, gwarantując jednocześnie, że kod klienta ma dostęp do wszystkich wymaganych informacji za pośrednictwem atrybutu **Możliwość pobierania**.
   
 Przejdź do następnej strony.
 
-### <a name="step-4-configure-the-indexer"></a>Krok 4. Konfigurowanie indeksatora
+### <a name="step-4---configure-the-indexer"></a>Krok 4 — Konfigurowanie indeksatora
 
 Indeksator jest procesem wysokiego poziomu sterującym procesem indeksowania. Określa on nazwę źródła danych, docelowy indeks oraz częstotliwość wykonywania. Kreator **importu danych** tworzy kilka obiektów, a z nich jest zawsze indeksator, który można wielokrotnie uruchamiać.
 
@@ -114,29 +115,38 @@ Indeksator jest procesem wysokiego poziomu sterującym procesem indeksowania. Ok
 
 ## <a name="monitor-status"></a>Monitorowanie stanu
 
-Indeksowanie umiejętności poznawcze trwa dłużej niż typowe indeksowanie tekstowe. Aby monitorować postęp, przejdź do strony przegląd i kliknij pozycję **indeksatory** na środku strony.
-
-Ostrzeżenie występuje, ponieważ pliki obrazów JPG i PNG znajdują się w źródle danych i pominięto umiejętność OCR z tego potoku. Zobaczysz również powiadomienia o obcięciu danych. Wyodrębnianie jest ograniczone do 32 000 znaków w warstwie Bezpłatna.
+Indeksowanie umiejętności poznawcze trwa dłużej niż typowe indeksowanie tekstowe, w szczególności OCR i analiza obrazu. Aby monitorować postęp, przejdź do strony przegląd i kliknij pozycję **indeksatory** na środku strony.
 
   ![Powiadomienie dotyczące usługi Azure Wyszukiwanie poznawcze](./media/cognitive-search-quickstart-blob/indexer-notification.png)
 
-Indeksowanie i wzbogacenie może potrwać, dlatego na potrzeby wcześniejszej eksploracji zaleca się użycie mniejszych zestawów danych. 
+Ostrzeżenia są zwykle nadawane szerokiemu zakresowi typów zawartości. Niektóre typy zawartości są nieprawidłowe dla pewnych umiejętności i niższych warstw, które często napotykają [limity indeksatora](search-limits-quotas-capacity.md#indexer-limits). Na przykład powiadomienia o obcięciu o 32 000 znaków są limitem indeksatora w warstwie Bezpłatna. Jeśli ten pokaz został uruchomiony w wyższej warstwie, wiele ostrzeżeń obcięcia wyjdzie.
 
-W Azure Portal można także monitorować dziennik aktywności powiadomień dla łącza stanu **powiadomień wyszukiwanie poznawcze platformy Azure** . Wykonanie może potrwać kilka minut.
+Aby sprawdzić ostrzeżenia lub błędy, kliknij stan ostrzeżenia na liście indeksatorów, aby otworzyć stronę Historia wykonywania.
+
+Na tej stronie kliknij ponownie pozycję stan ostrzeżenia, aby wyświetlić listę ostrzeżeń podobną do przedstawionego poniżej. 
+
+  ![Lista ostrzeżeń indeksatora](./media/cognitive-search-quickstart-blob/indexer-warnings.png)
+
+Szczegóły są wyświetlane po kliknięciu określonego wiersza stanu. To ostrzeżenie oznacza, że scalanie zostało zatrzymane po osiągnięciu maksymalnego progu (ten konkretny plik PDF jest duży).
+
+  ![Szczegóły ostrzeżenia](./media/cognitive-search-quickstart-blob/warning-detail.png)
 
 ## <a name="query-in-search-explorer"></a>Zapytanie w Eksploratorze wyszukiwania
 
-Po utworzeniu indeksu możesz przesyłać zapytania, aby zwrócić dokumenty z indeksu. W portalu użyj **Eksploratora wyszukiwania**, aby uruchomić zapytania i wyświetlić wyniki. 
+Po utworzeniu indeksu można uruchamiać zapytania, aby zwracać wyniki. W portalu Użyj **Eksploratora wyszukiwania** dla tego zadania. 
 
 1. Na stronie pulpitu nawigacyjnego usługi wyszukiwania kliknij pozycję **Eksplorator wyszukiwania** na pasku poleceń.
 
 1. Kliknij pozycję **Zmień indeks** u góry, aby wybrać utworzony indeks.
 
-1. Wprowadź ciąg wyszukiwania, aby wykonać zapytanie względem indeksu, np. `search=Microsoft&searchFields=Organizations`.
+1. Wprowadź ciąg wyszukiwania, aby wykonać zapytanie względem indeksu, np. `search=Microsoft&$select=people,organizations,locations,imageTags`.
 
-Wyniki są zwracane w formacie JSON, który może zawierać wiele danych i być trudny do odczytania, szczególnie w przypadku dużych dokumentów pochodzących z obiektów blob platformy Azure. Jeśli nie można łatwo skanować wyników, wyszukaj dane w dokumentach za pomocą klawiszy CTRL+F. Dla tego zapytania możesz wyszukać określone terminy w zawartości JSON. 
+Wyniki są zwracane w formacie JSON, który może być pełny i trudny do odczytania, szczególnie w dużych dokumentach pochodzących z obiektów blob platformy Azure. Niektóre porady dotyczące wyszukiwania w tym narzędziu obejmują następujące techniki:
 
-Użycie klawiszy CTRL+F może również ułatwić określenie liczby dokumentów znajdujących się w danym zestawie wyników. Dla obiektów blob platformy Azure portal wybiera klucz „metadata_storage_path”, ponieważ każda wartość jest unikatowa dla dokumentu. Przy użyciu klawiszy CTRL+F wyszukaj ciąg „metadata_storage_path”, aby uzyskać liczbę dokumentów. 
++ Dołącz `$select`, aby określić, które pola mają być uwzględniane w wynikach. 
++ Użyj kombinacji klawiszy CTRL-F, aby przeszukać w formacie JSON dla określonych właściwości lub warunków.
+
+Ciągi zapytania są rozróżniane wielkości liter, więc jeśli zostanie wyświetlony komunikat "nieznany pole", sprawdź **pola** lub **definicję indeksu (JSON)** , aby zweryfikować nazwę i wielkość liter. 
 
   ![Przykład Eksploratora wyszukiwania](./media/cognitive-search-quickstart-blob/search-explorer.png)
 
@@ -144,9 +154,9 @@ Użycie klawiszy CTRL+F może również ułatwić określenie liczby dokumentów
 
 Po utworzeniu pierwszej zestawu umiejętności i zapoznaniu się z ważnymi pojęciami przydatnymi przy tworzeniu prototypów rozwiązania do wyszukiwania przy użyciu własnych danych.
 
-Niektóre kluczowe założenia, które, mamy nadzieję, zostały wychwycone, obejmują zależności od źródeł danych platformy Azure. Zestawu umiejętności jest powiązany z indeksatorem, a Indeksatory są oparte na platformie Azure i dla źródła. Mimo że w tym przewodniku Szybki start jest używana usługa Azure Blob Storage, możliwe są inne źródła danych platformy Azure. Aby uzyskać więcej informacji, zobacz [indeksatory w usłudze Azure wyszukiwanie poznawcze](search-indexer-overview.md).
+Niektóre kluczowe założenia, które, mamy nadzieję, zostały wychwycone, obejmują zależności od źródeł danych platformy Azure. Zestawu umiejętności jest powiązany z indeksatorem, a Indeksatory są oparte na platformie Azure i dla źródła. Mimo że w tym przewodniku Szybki start jest używana usługa Azure Blob Storage, możliwe są inne źródła danych platformy Azure. Aby uzyskać więcej informacji, zobacz [indeksatory w usłudze Azure wyszukiwanie poznawcze](search-indexer-overview.md). 
 
-Innym ważnym pojęciem jest to, że umiejętności działają na polach danych wejściowych. W portalu należy wybrać pojedyncze pole źródłowe dla wszystkich umiejętności. W kodzie danymi wejściowymi mogą być inne pola lub dane wyjściowe nadrzędnej umiejętności.
+Innym ważnym pojęciem jest to, że umiejętności pracują nad typami zawartości, a podczas pracy z zawartością heterogenicznych niektóre dane wejściowe zostaną pominięte. Ponadto duże pliki lub pola mogą przekroczyć limity indeksatora warstwy usług. Jest to normalne, aby wyświetlić ostrzeżenia w przypadku wystąpienia tych zdarzeń. 
 
 Dane wyjściowe są kierowane do indeksu wyszukiwania i istnieje mapowanie między parami nazw-wartości utworzonymi podczas indeksowania i poszczególnych pól w indeksie. Wewnętrznie portal konfiguruje [adnotacje](cognitive-search-concept-annotations-syntax.md) i definiuje [zestaw umiejętności](cognitive-search-defining-skillset.md), ustanawiając kolejność operacji i ogólny przepływ. Te kroki są ukryte w portalu, ale po rozpoczęciu pisania kodu te koncepcje stają się istotne.
 
@@ -154,7 +164,7 @@ Na koniec nauczysz się, że można zweryfikować zawartość, badając indeks. 
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Gdy pracujesz nad własną subskrypcją, dobrym pomysłem jest zakończenie projektu w celu ustalenia, czy nadal potrzebujesz utworzonych zasobów. Zasoby po lewej stronie mogą być kosztowne. Możesz usunąć zasoby pojedynczo lub usunąć grupę zasobów, aby usunąć cały zestaw zasobów.
+W przypadku pracy w ramach własnej subskrypcji warto sprawdzić po zakończeniu projektu, czy dalej potrzebuje się utworzonych zasobów. Uruchomione zasoby mogą generować koszty. Możesz usunąć zasoby pojedynczo lub usunąć grupę zasobów w celu usunięcia całego zestawu zasobów.
 
 Zasoby można znaleźć w portalu i zarządzać nimi za pomocą linku **wszystkie zasoby** lub **grupy zasobów** w okienku nawigacji po lewej stronie.
 
@@ -168,4 +178,4 @@ Jeśli używasz bezpłatnej usługi, pamiętaj, że masz ograniczone do trzech i
 Umiejętności można utworzyć przy użyciu portalu, zestawu SDK platformy .NET lub interfejsu API REST. Aby dowiedzieć się więcej, wypróbuj interfejs API REST przy użyciu programu Poster i więcej przykładowych danych.
 
 > [!div class="nextstepaction"]
-> [Samouczek: Dodawanie struktury do "zawartości bez struktury" przy użyciu wzbogacania AI](cognitive-search-tutorial-blob.md)
+> [Samouczek: Wyodrębnianie tekstu i struktury z obiektów BLOB JSON przy użyciu interfejsów API REST](cognitive-search-tutorial-blob.md)

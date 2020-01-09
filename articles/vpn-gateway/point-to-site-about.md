@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 01/18/2019
+ms.date: 12/17/2019
 ms.author: cherylmc
-ms.openlocfilehash: 7305976060cb5df01f683b3310e59644d7e45b35
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 55433efabea516151cfb858bb61f504e180f5fb7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975095"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75353597"
 ---
 # <a name="about-point-to-site-vpn"></a>Informacje o sieci VPN typu punkt-lokacja
 
@@ -51,11 +51,11 @@ Przy użyciu natywnego uwierzytelniania usługi Azure AD można korzystać z dos
 
 Na wysokim poziomie należy wykonać następujące kroki, aby skonfigurować uwierzytelnianie usługi Azure AD:
 
-[1. Konfigurowanie dzierżawy usługi Azure AD](openvpn-azure-ad-tenant.md)
+1. [Konfigurowanie dzierżawy usługi Azure AD](openvpn-azure-ad-tenant.md)
 
-[2. Włącz uwierzytelnianie usługi Azure AD na bramie](https://docs.microsoft.com/azure/vpn-gateway/openvpn-azure-ad-tenant#enable-authentication)
+2. [Włączanie uwierzytelniania usługi Azure AD na bramie](https://docs.microsoft.com/azure/vpn-gateway/openvpn-azure-ad-tenant#enable-authentication)
 
-[3. Pobierz i Skonfiguruj klienta sieci VPN platformy Azure (wersja zapoznawcza)](https://www.microsoft.com/p/azure-vpn-client-preview/9np355qt2sqb?rtc=1&activetab=pivot:overviewtab)
+3. [Pobieranie i Konfigurowanie klienta sieci VPN platformy Azure (wersja zapoznawcza)](https://www.microsoft.com/p/azure-vpn-client-preview/9np355qt2sqb?rtc=1&activetab=pivot:overviewtab)
 
 
 ### <a name="authenticate-using-active-directory-ad-domain-server"></a>Uwierzytelnianie przy użyciu serwera domeny Active Directory (AD)
@@ -67,10 +67,6 @@ Serwer RADIUS można wdrożyć lokalnie lub w sieci wirtualnej platformy Azure. 
 Serwer RADIUS można także zintegrować z usługami certyfikatów usługi AD. Pozwala to na użycie serwera RADIUS i wdrożenia certyfikatu przedsiębiorstwa do uwierzytelniania certyfikatu P2S jako alternatywę dla uwierzytelniania certyfikatu platformy Azure. Zalety polegają na tym, że nie trzeba przekazywać certyfikatów głównych i odwołać certyfikatów na platformie Azure.
 
 Serwer RADIUS można także zintegrować z innymi zewnętrznymi systemami tożsamości. Spowoduje to otwarcie dużej liczby opcji uwierzytelniania dla sieci VPN P2S, w tym opcji wieloskładnikowych.
-
->[!NOTE]
->**Protokół® OpenVPN** nie jest obsługiwany w przypadku uwierzytelniania usługi RADIUS.
->
 
 ![punkt-lokacja](./media/point-to-site-about/p2s.png "punkt-lokacja")
 

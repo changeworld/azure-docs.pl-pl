@@ -14,22 +14,24 @@ ms.date: 04/08/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 6b2546226d31334592034cfe0455fc32644a3900
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 7c93538982b7fd7bb2f5ac25027ed92cc6ccbfa3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74132776"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75357853"
 ---
 # <a name="extend-support-for-sql-server-2008-and-sql-server-2008-r2-with-azure"></a>Rozszerzona pomoc techniczna dla SQL Server 2008 i SQL Server 2008 R2 z platformą Azure
 
-SQL Server 2008 i SQL Server 2008 R2 zbliżają się do [końca cyklu życia pomocy technicznej (EOS)](https://www.microsoft.com/sql-server/sql-server-2008). Ponieważ wielu klientów nadal używa obu wersji, udostępniamy kilka opcji, aby kontynuować pomoc techniczną. Lokalne wystąpienia SQL Server można migrować do usługi Azure Virtual Machines (VM), przeprowadzić migrację do Azure SQL Database lub zachować dostęp do lokalnych aktualizacji zabezpieczeń.
+SQL Server 2008 i SQL Server 2008 R2 osiągnęły [koniec cyklu życia (EOS)](https://www.microsoft.com/sql-server/sql-server-2008). Ponieważ wielu klientów nadal używa obu wersji, udostępniamy kilka opcji, aby kontynuować pomoc techniczną. Lokalne wystąpienia SQL Server można migrować do usługi Azure Virtual Machines (VM), przeprowadzić migrację do Azure SQL Database lub zachować dostęp do lokalnych aktualizacji zabezpieczeń.
 
 W przeciwieństwie do wystąpienia zarządzanego migracja do maszyny wirtualnej platformy Azure nie wymaga ponownej certyfikacji aplikacji. I w przeciwieństwie do lokalnego korzystania z usług lokalnych, migracja do maszyny wirtualnej platformy Azure spowoduje otrzymanie bezpłatnych rozszerzonych poprawek zabezpieczeń.
 
 Pozostała część tego artykułu zawiera zagadnienia dotyczące migrowania wystąpienia SQL Server na maszynę wirtualną platformy Azure.
 
-## <a name="provisioning"></a>Inicjowanie obsługi
+Aby uzyskać więcej informacji na temat końca opcji pomocy technicznej, zobacz [koniec obsługi](/sql/sql-server/end-of-support/sql-server-end-of-life-overview).
+
+## <a name="provisioning"></a>Inicjowanie obsługi administracyjnej
 
 Istnieje płatność zgodnie z rzeczywistym użyciem, **SQL Server 2008 R2 w obrazie systemu Windows Server 2008 R2** dostępnym w witrynie Azure Marketplace.
 
@@ -87,3 +89,7 @@ Rozpocznij pracę z usługą SQL Server na platformie Azure Virtual Machines:
 Uzyskaj odpowiedzi na często zadawane pytania dotyczące SQL Server maszyn wirtualnych:
 
 * [Często zadawane pytania dotyczące SQL Server na platformie Azure Virtual Machines](virtual-machines-windows-sql-server-iaas-faq.md)
+
+Dowiedz się więcej na temat opcji końca obsługi oraz rozszerzone aktualizacje zabezpieczeń:
+
+* [Koniec wsparcia](/sql/sql-server/end-of-support/sql-server-end-of-life-overview) & [rozszerzonych aktualizacji zabezpieczeń](/sql/sql-server/end-of-support/sql-server-extended-security-updates)

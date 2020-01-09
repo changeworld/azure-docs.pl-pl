@@ -1,17 +1,17 @@
 ---
-title: Jak pisać procedury składowane i wyzwalacze przy użyciu interfejsu API zapytań języka JavaScript w usłudze Azure Cosmos DB
+title: Zapisz procedury składowane i wyzwalacze przy użyciu interfejsu API zapytań języka JavaScript w Azure Cosmos DB
 description: Dowiedz się, jak pisać procedury składowane i wyzwalacze przy użyciu interfejsu API zapytań języka JavaScript w usłudze Azure Cosmos DB
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: mjbrown
-ms.openlocfilehash: 96ecd77cb955d5e63cdcae8657e3096bbbadba89
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 221a3118808a044ef1b1b822b9c95772bf792f34
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70092879"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441708"
 ---
 # <a name="how-to-write-stored-procedures-and-triggers-in-azure-cosmos-db-by-using-the-javascript-query-api"></a>Jak pisać procedury składowane i wyzwalacze przy użyciu interfejsu API zapytań języka JavaScript w usłudze Azure Cosmos DB
 
@@ -19,7 +19,7 @@ Usługa Azure Cosmos DB umożliwia wykonywanie zapytań zoptymalizowanych przy u
 
 ## <a id="stored-procedures"></a>Procedura składowana używająca interfejsu API zapytań języka JavaScript
 
-Poniższy przykładowy kod pokazuje użycie interfejsu API zapytań języka JavaScript w kontekście procedury składowanej. Procedura składowana wstawia element Cosmos platformy Azure, który jest określony przez parametr wejściowy, i aktualizuje dokument metadanych przy użyciu `__.filter()` metody z MinSize, parametrem i totalSize na podstawie właściwości rozmiaru elementu wejściowego.
+Poniższy przykładowy kod pokazuje użycie interfejsu API zapytań języka JavaScript w kontekście procedury składowanej. Procedura składowana wstawia element Cosmos platformy Azure, który jest określany przez parametr wejściowy, i aktualizuje dokument metadanych przy użyciu metody `__.filter()`, z minSize, parametrem totalSize oraz właściwością size elementu wejściowego.
 
 > [!NOTE]
 > `__` (podwójne podkreślenie) jest aliasem funkcji `getContext().getCollection()` podczas korzystania z interfejsu API zapytań języka JavaScript.

@@ -1,21 +1,21 @@
 ---
 title: Wdrażanie topologii Apache Storm w usłudze Azure HDInsight i zarządzanie nimi
 description: Dowiedz się, jak wdrażać i monitorować topologie Apache Storm i zarządzać nimi za pomocą pulpitu nawigacyjnego burzy w usłudze HDInsight opartej na systemie Linux. Użyj narzędzi Hadoop dla programu Visual Studio.
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
-ms.custom: hdinsightactive
+ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 11/07/2019
-ms.openlocfilehash: 82c5db4f75f131ebdc2434955108e7d50237d9ba
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.custom: hdinsightactive
+ms.date: 12/18/2019
+ms.openlocfilehash: e890289230b3215bd102d8c5a78dca4f1b7b90f8
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228932"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75494970"
 ---
-# <a name="deploy-and-manage-apache-storm-topologies-on-azure-hdinsight"></a>Wdrażanie topologii Apache Storm w usłudze Azure HDInsight i zarządzanie nimi 
+# <a name="deploy-and-manage-apache-storm-topologies-on-azure-hdinsight"></a>Wdrażanie topologii Apache Storm w usłudze Azure HDInsight i zarządzanie nimi
 
 W tym dokumencie przedstawiono podstawowe informacje dotyczące zarządzania i monitorowania topologii [Apache Storm](https://storm.apache.org/) działających w ramach burzy w klastrach usługi HDInsight.
 
@@ -34,42 +34,40 @@ Za pomocą narzędzi Data Lake Tools for Visual Studio można przesyłać C# lub
 1. Jeśli nie zainstalowano jeszcze najnowszej wersji narzędzi Data Lake Tools for Visual Studio, zobacz [Korzystanie z narzędzi Data Lake Tools for Visual Studio](../hadoop/apache-hadoop-visual-studio-tools-get-started.md).
 
     > [!NOTE]  
-    > Narzędzia Data Lake Tools for Visual Studio były wcześniej nazywane narzędziami HDInsight Tools for Visual Studio.
+    > Narzędzia Azure Data Lake i Stream Analytics były wcześniej nazywane narzędziami HDInsight Tools for Visual Studio.
     >
-    > Narzędzia Data Lake Tools for Visual Studio są zawarte w **obciążeniu platformy Azure** dla programu visual Studio 2019.
+    > Narzędzia Azure Data Lake i Stream Analytics Tools for Visual Studio są dołączone do obciążeń **programistycznych platformy Azure** dla programu visual Studio 2019.
 
-2. Otwórz program Visual Studio.
+1. Uruchom program Visual Studio.
 
-3. W oknie **uruchamiania** wybierz pozycję **Utwórz nowy projekt**.
+1. W oknie **uruchamiania** wybierz pozycję **Utwórz nowy projekt**.
 
-4. W oknie **Tworzenie nowego projektu** wybierz pole wyszukiwania, a następnie wprowadź wartość *burzy*. Następnie wybierz z listy wyników pozycję **przykład burzy** , a następnie wybierz pozycję **dalej**.
+1. W oknie **Tworzenie nowego projektu** wybierz pole wyszukiwania, a następnie wprowadź `Storm`. Następnie wybierz z listy wyników pozycję **przykład burzy** , a następnie wybierz pozycję **dalej**.
 
-5. W oknie **Konfigurowanie nowego projektu** wprowadź **nazwę projektu**, a następnie przejdź do lub Utwórz **lokalizację** , w której ma zostać zapisany nowy projekt. Następnie wybierz przycisk **Utwórz**.
+1. W oknie **Konfigurowanie nowego projektu** wprowadź **nazwę projektu**, a następnie przejdź do lub Utwórz **lokalizację** , w której ma zostać zapisany nowy projekt. Następnie wybierz przycisk **Utwórz**.
 
     ![Konfigurowanie okna nowego projektu, Visual Studio](./media/apache-storm-deploy-monitor-topology-linux/apache-storm-sample1.png)
 
-6. W **Eksplorator rozwiązań**kliknij prawym przyciskiem myszy projekt, a następnie wybierz polecenie **Prześlij do burzy w usłudze HDInsight**.
+1. W **Eksplorator serwera**kliknij prawym przyciskiem myszy pozycję **Azure** i wybierz pozycję **Połącz z Microsoft Azure subskrypcją...** i Ukończ proces logowania.
+
+1. W **Eksplorator rozwiązań**kliknij prawym przyciskiem myszy projekt, a następnie wybierz polecenie **Prześlij do burzy w usłudze HDInsight**.
 
     > [!NOTE]  
     > Jeśli zostanie wyświetlony monit, wprowadź poświadczenia logowania dla subskrypcji platformy Azure. Jeśli masz więcej niż jedną subskrypcję, zaloguj się do niej, która zawiera swoją burzę w klastrze usługi HDInsight.
 
-7. W oknie dialogowym **przesyłanie topologii** na liście rozwijanej **klaster burzy** wybierz swoją burzę w klastrze usługi HDInsight, a następnie wybierz pozycję **Prześlij**. Możesz monitorować, czy przesyłanie zakończy się pomyślnie, wyświetlając okienko **dane wyjściowe** .
+1. W oknie dialogowym **przesyłanie topologii** na liście rozwijanej **klaster burzy** wybierz swoją burzę w klastrze usługi HDInsight, a następnie wybierz pozycję **Prześlij**. Możesz monitorować, czy przesyłanie zakończy się pomyślnie, wyświetlając okienko **dane wyjściowe** .
 
 ## <a name="submit-a-topology-using-ssh-and-the-storm-command"></a>Przesyłanie topologii przy użyciu protokołu SSH i polecenia burzy
 
-Aby przesłać topologię do burzy przy użyciu protokołu SSH:
+1. Użyj [polecenia SSH](../hdinsight-hadoop-linux-use-ssh-unix.md) do nawiązania połączenia z klastrem. Edytuj poniższe polecenie, zastępując wartość CLUSTERname nazwą klastra, a następnie wprowadź polecenie:
 
-1. Połącz się z klastrem usługi HDInsight przy użyciu protokołu SSH. Zastąp `USERNAME` nazwą użytkownika SSH (na przykład *sshuser*). Zastąp `CLUSTERNAME` nazwą klastra usługi HDInsight.
-
-    ```shell
-    ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
+    ```cmd
+    ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-    Aby uzyskać więcej informacji na temat łączenia się z klastrem usługi HDInsight przy użyciu protokołu SSH, zobacz [nawiązywanie połączenia z usługą HDInsight (Apache Hadoop) przy użyciu protokołu SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
+1. Z poziomu sesji SSH Użyj następującego polecenia, aby uruchomić topologię przykładu **WORDCOUNT** :
 
-2. Użyj następującego polecenia, aby uruchomić topologię przykładu *WORDCOUNT* :
-
-    ```ssh
+    ```bash
     storm jar /usr/hdp/current/storm-client/contrib/storm-starter/storm-starter-topologies-*.jar org.apache.storm.starter.WordCountTopology WordCount
     ```
 
@@ -176,15 +174,15 @@ Na stronie głównej interfejsu użytkownika burzy są dostępne następujące i
 
 | Sekcja | Opis |
 | --- | --- |
-| **Podsumowanie klastra** | Podstawowe informacje o klastrze burzowym. |
-| **Podsumowanie Nimbus** | Lista podstawowych informacji Nimbus. |
-| **Podsumowanie topologii** | Lista uruchomionych topologii. Aby wyświetlić więcej informacji na temat określonej topologii, wybierz jej łącze w kolumnie **Nazwa** . |
-| **Podsumowanie opiekuna** | Informacje o Inspektorze burzy. Aby wyświetlić zasoby procesów roboczych skojarzonych z określonym nadzorem, wybierz jego łącze w kolumnie **host** lub **ID** . |
-| **Konfiguracja Nimbus** | Nimbus konfigurację klastra. |
+| Podsumowanie klastra| Podstawowe informacje o klastrze burzowym. |
+| Podsumowanie Nimbus | Lista podstawowych informacji Nimbus. |
+| Podsumowanie topologii | Lista uruchomionych topologii. Aby wyświetlić więcej informacji na temat określonej topologii, wybierz jej łącze w kolumnie **Nazwa** . |
+| Podsumowanie opiekuna | Informacje o Inspektorze burzy. Aby wyświetlić zasoby procesów roboczych skojarzonych z określonym nadzorem, wybierz jego łącze w kolumnie **host** lub **ID** . |
+| Konfiguracja Nimbus | Nimbus konfigurację klastra. |
 
 Strona główna interfejsu użytkownika burzy wygląda podobnie do tej strony sieci Web:
 
-![Strona główna, interfejs użytkownika burzy, topologie Apache Storm, usługa Azure Insight](./media/apache-storm-deploy-monitor-topology-linux/apache-storm-web-ui-main-page.png)
+![Strona główna, interfejs użytkownika burzy, topologie Apache Storm, platforma Azure](./media/apache-storm-deploy-monitor-topology-linux/apache-storm-web-ui-main-page.png)
 
 #### <a name="topology-summary"></a>Podsumowanie topologii
 
@@ -192,30 +190,30 @@ Wybranie linku z sekcji **Podsumowanie topologii** zawiera następujące informa
 
 | Sekcja | Opis |
 | --- | --- |
-| **Podsumowanie topologii** | Podstawowe informacje o topologii. |
-| **Akcje topologii** | Akcje zarządzania, które można wykonać dla topologii. Dostępne akcje zostały opisane w dalszej części tej sekcji. |
-| **Statystyka topologii** | Statystyka topologii. Aby ustawić przedział czasu dla wpisu w tej sekcji, wybierz jego łącze w kolumnie **okno** . |
-| **Elementy Spout** *(przedział czasu)* | Elementy Spout używany przez topologię. Aby wyświetlić więcej informacji na temat określonego elementu Spout, wybierz jego łącze w kolumnie **ID** . |
-| **Pioruny** *(ramy czasowe)* | Pioruny używane przez topologię. Aby wyświetlić więcej informacji na temat określonego pioruna, wybierz jego łącze w kolumnie **ID** . |
-| **Zasoby procesu roboczego** | Lista zasobów procesów roboczych. Aby wyświetlić więcej informacji na temat określonego zasobu procesu roboczego, wybierz jego łącze w kolumnie **hosta** . |
-| **Wizualizacja topologii** | Przycisk **Pokaż wizualizację** , który wyświetla wizualizację topologii. |
-| **Konfiguracja topologii** | Konfiguracja wybranej topologii. |
+| Podsumowanie topologii | Podstawowe informacje o topologii. |
+| Akcje topologii| Akcje zarządzania, które można wykonać dla topologii. Dostępne akcje zostały opisane w dalszej części tej sekcji. |
+| Statystyka topologii | Statystyka topologii. Aby ustawić przedział czasu dla wpisu w tej sekcji, wybierz jego łącze w kolumnie **okno** . |
+| Elementy Spout *(przedział czasu)* | Elementy Spout używany przez topologię. Aby wyświetlić więcej informacji na temat określonego elementu Spout, wybierz jego łącze w kolumnie **ID** . |
+| Pioruny *(ramy czasowe)* | Pioruny używane przez topologię. Aby wyświetlić więcej informacji na temat określonego pioruna, wybierz jego łącze w kolumnie **ID** . |
+| Zasoby procesu roboczego | Lista zasobów procesów roboczych. Aby wyświetlić więcej informacji na temat określonego zasobu procesu roboczego, wybierz jego łącze w kolumnie **hosta** . |
+| Wizualizacja topologii | Przycisk **Pokaż wizualizację** , który wyświetla wizualizację topologii. |
+| Konfiguracja topologii | Konfiguracja wybranej topologii. |
 
 Strona podsumowania topologii burzy wygląda podobnie do tej strony sieci Web:
 
-![Strona podsumowania topologii, interfejs użytkownika burzy, Apache Storm, usługa Azure Insight](./media/apache-storm-deploy-monitor-topology-linux/apache-storm-web-ui-topology-summary.png)
+![Strona podsumowania topologii, interfejs użytkownika burzy, Apache Storm, platforma Azure](./media/apache-storm-deploy-monitor-topology-linux/apache-storm-web-ui-topology-summary.png)
 
 W sekcji **Akcje topologii** można wybrać następujące przyciski, aby wykonać akcję:
 
 | Button | Opis |
 | --- | --- |
-| **Uaktywnij** | Wznawia przetwarzanie zdezaktywowanej topologii. |
-| **Szablony** | Wstrzymuje uruchomioną topologię. |
-| **Ponownego równoważenia** | Dostosowuje równoległość topologii. Należy ponownie zrównoważyć uruchomione topologie po zmianie liczby węzłów w klastrze. Ta operacja pozwala topologii dostosować równoległość, aby skompensować dodatkową lub ograniczoną liczbę węzłów w klastrze.<br/><br/>Aby uzyskać więcej informacji, zobacz <a href="https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html" target="_blank">Omówienie równoległości topologii Apache Storm</a>.
-| **Killbit** | Kończy topologię burzy po określonym limicie czasu. |
-| **Debugowanie** | Rozpoczyna sesję debugowania dla działającej topologii. |
-| **Zatrzymaj debugowanie** | Kończy sesję debugowania dla działającej topologii. |
-| **Zmień poziom dziennika** | Modyfikuje poziom dziennika debugowania. |
+| Aktywuj | Wznawia przetwarzanie zdezaktywowanej topologii. |
+| Dezaktywuj | Wstrzymuje uruchomioną topologię. |
+| Ponownego równoważenia | Dostosowuje równoległość topologii. Należy ponownie zrównoważyć uruchomione topologie po zmianie liczby węzłów w klastrze. Ta operacja pozwala topologii dostosować równoległość, aby skompensować dodatkową lub ograniczoną liczbę węzłów w klastrze.<br/><br/>Aby uzyskać więcej informacji, zobacz <a href="https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html" target="_blank">Omówienie równoległości topologii Apache Storm</a>.
+| Killbit | Kończy topologię burzy po określonym limicie czasu. |
+| Debugowanie | Rozpoczyna sesję debugowania dla działającej topologii. |
+| Zatrzymaj debugowanie | Kończy sesję debugowania dla działającej topologii. |
+| Zmień poziom dziennika | Modyfikuje poziom dziennika debugowania. |
 
 ##### <a name="spout-and-bolt-summary"></a>Elementu Spout i piorun — podsumowanie
 
@@ -223,18 +221,18 @@ Wybranie elementu Spout z sekcji **elementy Spout** lub **pioruns** wyświetla n
 
 | Sekcja | Opis |
 | --- | --- |
-| **Podsumowanie składników** | Podstawowe informacje na temat elementu Spout lub pioruna. |
-| **Akcje składnika** | **Debuguj** i **Zatrzymaj debugowanie** przycisków. |
-| **Elementu Spout Statystyka** lub **pioruna** | Statystyka elementu Spout lub pioruna. Aby ustawić przedział czasu dla wpisu w tej sekcji, wybierz jego łącze w kolumnie **okno** . |
-| (Tylko dla piorunów)<br/>**Statystyki wejściowe** *(ramy czasowe)* | Informacje o strumieniach wejściowych używanych przez pioruna. |
-| **Statystyki wyjściowe** *(przedział czasu)* | Informacje o strumieniach emitowanych przez elementu Spout lub piorun. |
-| **Profilowanie i debugowanie** | Kontroluje profilowanie i debugowanie składników na tej stronie. Można ustawić wartość **stan/limit czasu (minuty)** i można wybrać przyciski dla **JStack**, **Uruchom ponownie proces roboczy**i **stertę**. |
-| **Wykonawcy** *(ramy czasowe)* | Informacje o wystąpieniach elementu Spout lub piorunów. Aby wyświetlić dziennik informacji diagnostycznych generowanych dla tego wystąpienia, wybierz wpis **portu** dla określonego wykonawcy. Możesz również wyświetlić zasoby procesu roboczego skojarzone z określonym wykonawcą, wybierając jego łącze w kolumnie **hosta** . |
-| **Błędy** | Wszystkie informacje o błędzie dla elementu Spout lub pioruna. |
+| Podsumowanie składników | Podstawowe informacje na temat elementu Spout lub pioruna. |
+| Akcje składnika | **Debuguj** i **Zatrzymaj debugowanie** przycisków. |
+| Elementu Spout Statystyka lub pioruna | Statystyka elementu Spout lub pioruna. Aby ustawić przedział czasu dla wpisu w tej sekcji, wybierz jego łącze w kolumnie **okno** . |
+| (Tylko dla piorunów)<br/>Statystyki wejściowe *(ramy czasowe)* | Informacje o strumieniach wejściowych używanych przez pioruna. |
+| Statystyki wyjściowe *(przedział czasu)* | Informacje o strumieniach emitowanych przez elementu Spout lub piorun. |
+| Profilowanie i debugowanie | Kontroluje profilowanie i debugowanie składników na tej stronie. Można ustawić wartość **stan/limit czasu (minuty)** i można wybrać przyciski dla **JStack**, **Uruchom ponownie proces roboczy**i **stertę**. |
+| Wykonawcy *(ramy czasowe)* | Informacje o wystąpieniach elementu Spout lub piorunów. Aby wyświetlić dziennik informacji diagnostycznych generowanych dla tego wystąpienia, wybierz wpis **portu** dla określonego wykonawcy. Możesz również wyświetlić zasoby procesu roboczego skojarzone z określonym wykonawcą, wybierając jego łącze w kolumnie **hosta** . |
+| Errors | Wszystkie informacje o błędzie dla elementu Spout lub pioruna. |
 
 Strona Podsumowanie pioruna burzy wygląda podobnie do tej strony sieci Web:
 
-![Strona podsumowania błyskawicy, interfejs użytkownika burzy, Apache Storm, usługa Azure Insight](./media/apache-storm-deploy-monitor-topology-linux/apache-storm-web-ui-bolt-summary.png)
+![Strona podsumowania błyskawicy, interfejs użytkownika burzy, Apache Storm, Azure](./media/apache-storm-deploy-monitor-topology-linux/apache-storm-web-ui-bolt-summary.png)
 
 ## <a name="monitor-and-manage-the-topology-using-the-rest-api"></a>Monitorowanie topologii i zarządzanie nią przy użyciu interfejsu API REST
 

@@ -1,19 +1,14 @@
 ---
-title: Ulepszanie operacyjnego Excellency dla subskrypcji platformy Azure za pomocą Azure Advisor | Microsoft Docs
-description: Użyj usługi Advisor, aby zoptymalizować i uzyskać dojrzałość operacyjną dla subskrypcji platformy Azure.
-services: advisor
-documentationcenter: NA
-author: sagupt
-ms.service: advisor
+title: Ulepszanie operacyjnego Excellency dla subskrypcji platformy Azure za pomocą Azure Advisor
+description: Użyj usługi Advisor, aby zoptymalizować i uzyskać dojrzałość operacyjną dla subskrypcji platformy Azure
 ms.topic: article
 ms.date: 10/24/2019
-ms.author: sagupt
-ms.openlocfilehash: 7cf3d3b34d0921cd111f8111bc2008ef0eced962
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: f34284ba62bd5dea98345ebe73365b332d38ee78
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73033292"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443068"
 ---
 # <a name="achieve-operational-excellence-with-azure-advisor"></a>Osiągaj doskonałości operacyjnej dzięki Azure Advisor
 
@@ -37,7 +32,7 @@ Azure Advisor wykryje reguły alertów, które mają nieprawidłowe zapytania ok
 
 ## <a name="follow-best-practices-using-azure-policy"></a>Postępuj zgodnie z najlepszymi rozwiązaniami przy użyciu Azure Policy
 
-Azure Policy to usługa platformy Azure, która umożliwia tworzenie i przypisywanie zasad oraz zarządzanie nimi. Te zasady wymuszają różne reguły i efekty dotyczące zasobów. Poniżej przedstawiono zalecenia dotyczące zasad platformy Azure, które ułatwiają osiągnięcie Excellency operacyjnego: 
+Azure Policy to usługa platformy Azure, która umożliwia tworzenie i przypisywanie zasad oraz zarządzanie nimi. Te zasady wymuszają różne reguły i efekty względem zasobów. Poniżej przedstawiono zalecenia dotyczące zasad platformy Azure, które ułatwiają osiągnięcie Excellency operacyjnego: 
 1. Zarządzaj tagami przy użyciu Azure Policy: te zasady dodają lub zastępują określony tag i wartość podczas tworzenia lub aktualizowania dowolnego zasobu. Istniejące zasoby można skorygować, wyzwalając zadanie korygowania. Nie powoduje to również modyfikacji tagów w grupach zasobów.
 2. Wymuś wymagania dotyczące zgodności geograficznej przy użyciu Azure Policy: zasady umożliwiają ograniczenie lokalizacji, które organizacja może określić podczas wdrażania zasobów. 
 3. Określ dozwolone jednostki SKU maszyny wirtualnej dla wdrożeń: te zasady umożliwiają określenie zestawu jednostek SKU maszyn wirtualnych, które organizacja może wdrażać.

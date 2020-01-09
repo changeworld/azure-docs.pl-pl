@@ -7,7 +7,7 @@ author: Yahnoosh
 ms.author: jlembicz
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 12/10/2019
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: ebdbcdda4efd7fdf9eb0e3e04cfa4d1987e03716
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: ea7a62210f48b216d3f98f6359447eacf15cf821
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111808"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460802"
 ---
 # <a name="add-language-analyzers-to-string-fields-in-an-azure-cognitive-search-index"></a>Dodawanie analizatorów języka do pól ciągów w indeksie Wyszukiwanie poznawcze platformy Azure
 
@@ -48,7 +48,10 @@ Domyślną analizatorem jest standardowa Lucene, które dobrze sprawdzają się 
 
 ## <a name="configuring-analyzers"></a>Konfigurowanie analizatorów
 
-Analizatory języka są używane jako-is. Dla każdego pola w definicji indeksu można ustawić właściwość **analizatora** na nazwę analizatora, która określa język i stosy (Microsoft lub Lucene). Ten sam analizator zostanie zastosowany podczas indeksowania i wyszukiwania tego pola. Można na przykład mieć osobne pola w języku angielskim, francuskim i hiszpańskim, które znajdują się obok siebie w tym samym indeksie. Zamiast **analizatora**, można użyć **indexAnalyzer** i **searchAnalyzer** , aby mieć różne reguły analizy w czasie indeksowania i czasie wykonywania zapytania. 
+Analizatory języka są używane jako-is. Dla każdego pola w definicji indeksu można ustawić właściwość **analizatora** na nazwę analizatora, która określa język i stosy (Microsoft lub Lucene). Ten sam analizator zostanie zastosowany podczas indeksowania i wyszukiwania tego pola. Można na przykład mieć osobne pola w języku angielskim, francuskim i hiszpańskim, które znajdują się obok siebie w tym samym indeksie.
+
+> [!NOTE]
+> Nie można użyć innego analizatora języka w czasie indeksowania niż w czasie zapytania dla pola. Ta możliwość jest zarezerwowana dla [analizatorów niestandardowych](index-add-custom-analyzers.md). Z tego powodu, jeśli spróbujesz ustawić właściwości **searchAnalyzer** lub **indexAnalyzer** jako nazwę analizatora języka, interfejs API REST zwróci odpowiedź na błąd. Zamiast tego należy użyć właściwości **Analizator** .
 
 Użyj parametru zapytania **searchFields** , aby określić, które pole specyficzne dla języka ma być wyszukiwane w zapytaniach. Przykłady zapytań, które obejmują Właściwość analizatora, można przejrzeć w [dokumentach wyszukiwania](https://docs.microsoft.com/rest/api/searchservice/search-documents). 
 
@@ -80,10 +83,10 @@ Aby uzyskać więcej informacji na temat właściwości indeksu, zobacz [Tworzen
 |Galicyjski||GL. Lucene|  
 |Niemiecki|de.microsoft|de. Lucene|  
 |Grecki|el.microsoft|El. Lucene|  
-|Gudżarati|gu.microsoft||  
+|Gujarati|gu.microsoft||  
 |Hebrajski|he.microsoft||  
 |Hindi|hi.microsoft|Witaj. Lucene|  
-|Węgierski|hu.microsoft|HU. Lucene|  
+|węgierski|hu.microsoft|HU. Lucene|  
 |Islandzki|is.microsoft||  
 |Indonezyjski (Bahasa)|id.microsoft|Identyfikator. Lucene|  
 |Irlandzki||ga. Lucene|  
@@ -101,7 +104,7 @@ Aby uzyskać więcej informacji na temat właściwości indeksu, zobacz [Tworzen
 |Polski|pl.microsoft|pl. Lucene|  
 |Portugalski (Brazylia)|pt-Br.microsoft|pt-br. Lucene|  
 |Portugalski (Portugalia)|pt-Pt.microsoft|pt-Pt.lucene|  
-|Pendżabski|pa.microsoft||  
+|Punjabi|pa.microsoft||  
 |Rumuński|ro.microsoft|ro. Lucene|  
 |Rosyjski|ru.microsoft|ru. Lucene|  
 |Serbski (Cyrylica)|SR-cyrylica. Microsoft||  

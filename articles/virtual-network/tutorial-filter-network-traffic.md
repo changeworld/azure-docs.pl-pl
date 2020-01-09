@@ -14,16 +14,16 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 12/13/2018
 ms.author: kumud
-ms.openlocfilehash: a700cc83c6bd34f5f726b9cc1c97bd7e1476963b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b5a136ae05b3cd410ca252b6d5a1df443aff6f7a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73519293"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75350137"
 ---
 # <a name="tutorial-filter-network-traffic-with-a-network-security-group-using-the-azure-portal"></a>Samouczek: filtrowanie ruchu sieciowego za pomocą sieciowej grupy zabezpieczeń przy użyciu Azure Portal
 
-Ruch sieciowy przychodzący do podsieci sieci wirtualnej i wychodzący z niej możesz filtrować za pomocą sieciowej grupy zabezpieczeń. Sieciowe grupy zabezpieczeń zawierają reguły zabezpieczeń, które filtrują ruch sieciowy według adresów IP, portów i protokołów. Reguły zabezpieczeń są stosowane do zasobów wdrożonych w podsieci. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Ruch sieciowy przychodzący do podsieci sieci wirtualnej i wychodzący z niej możesz filtrować za pomocą sieciowej grupy zabezpieczeń. Sieciowe grupy zabezpieczeń zawierają reguły zabezpieczeń, które filtrują ruch sieciowy według adresów IP, portów i protokołów. Reguły zabezpieczeń są stosowane do zasobów wdrożonych w podsieci. Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Tworzenie sieciowej grupy zabezpieczeń i reguł zabezpieczeń
@@ -41,7 +41,7 @@ Zaloguj się do witryny Azure Portal pod adresem https://portal.azure.com.
 
 ## <a name="create-a-virtual-network"></a>Tworzenie sieci wirtualnej
 
-1. W menu Azure Portal lub na stronie **głównej** wybierz pozycję **Utwórz zasób**. 
+1. W menu witryny Azure Portal lub na **stronie głównej** wybierz pozycję **Utwórz zasób**. 
 2. Wybierz pozycję **Sieć**, a następnie wybierz pozycję **Sieć wirtualna**.
 3. Wprowadź lub wybierz poniższe informacje, zaakceptuj wartości domyślne pozostałych ustawień, a następnie wybierz pozycję **Utwórz**:
 
@@ -59,7 +59,7 @@ Zaloguj się do witryny Azure Portal pod adresem https://portal.azure.com.
 
 Grupa zabezpieczeń aplikacji umożliwia grupowanie serwerów o podobnych funkcjach, np. serwerów internetowych.
 
-1. W menu Azure Portal lub na stronie **głównej** wybierz pozycję **Utwórz zasób**. 
+1. W menu witryny Azure Portal lub na **stronie głównej** wybierz pozycję **Utwórz zasób**. 
 2. W polu **Wyszukaj w witrynie Marketplace** wpisz *Grupa zabezpieczeń aplikacji*. Gdy **Grupa zabezpieczeń aplikacji** pojawi się w wynikach wyszukiwania, wybierz ją, wybierz opcję **Grupa zabezpieczeń aplikacji** ponownie w pozycji **Wszystko**, a następnie wybierz opcję **Utwórz**.
 3. Wprowadź lub wybierz następujące informacje, a następnie wybierz pozycję **Utwórz**:
 
@@ -81,7 +81,7 @@ Grupa zabezpieczeń aplikacji umożliwia grupowanie serwerów o podobnych funkcj
 
 ## <a name="create-a-network-security-group"></a>Tworzenie sieciowej grupy zabezpieczeń
 
-1. W menu Azure Portal lub na stronie **głównej** wybierz pozycję **Utwórz zasób**. 
+1. W menu witryny Azure Portal lub na **stronie głównej** wybierz pozycję **Utwórz zasób**. 
 2. Wybierz pozycję **Sieć**, a następnie wybierz pozycję **Sieciowa grupa zabezpieczeń**.
 3. Wprowadź lub wybierz następujące informacje, a następnie wybierz pozycję **Utwórz**:
 
@@ -113,7 +113,7 @@ Grupa zabezpieczeń aplikacji umożliwia grupowanie serwerów o podobnych funkcj
     | ---------               | ---------                                                                                                       |
     | Cel             | Wybierz opcję **Grupa zabezpieczeń aplikacji**, a następnie wybierz opcję **myAsgWebServers** w pozycji **Grupa zabezpieczeń aplikacji**.  |
     | Zakresy portów docelowych | Wprowadź wartości 80,443                                                                                                    |
-    | Protokół                | Wybierz pozycję TCP                                                                                                      |
+    | Protocol (Protokół)                | Wybierz pozycję TCP                                                                                                      |
     | Nazwa                    | Allow-Web-All                                                                                                   |
 
 3. Ponownie wykonaj krok 2, używając następujących wartości:
@@ -122,7 +122,7 @@ Grupa zabezpieczeń aplikacji umożliwia grupowanie serwerów o podobnych funkcj
     | ---------               | ---------                                                                                                       |
     | Cel             | Wybierz opcję **Grupa zabezpieczeń aplikacji**, a następnie wybierz opcję **myAsgMgmtServers** w pozycji **Grupa zabezpieczeń aplikacji**. |
     | Zakresy portów docelowych | Wprowadź 3389                                                                                                      |
-    | Protokół                | Wybierz pozycję TCP                                                                                                      |
+    | Protocol (Protokół)                | Wybierz pozycję TCP                                                                                                      |
     | Priorytet                | Wprowadź wartość 110                                                                                                       |
     | Nazwa                    | Allow-RDP-All                                                                                                   |
 
@@ -138,7 +138,7 @@ W sieci wirtualnej utwórz dwie maszyny wirtualne.
 
 ### <a name="create-the-first-vm"></a>Tworzenie pierwszej maszyny wirtualnej
 
-1. W menu Azure Portal lub na stronie **głównej** wybierz pozycję **Utwórz zasób**. 
+1. W menu witryny Azure Portal lub na **stronie głównej** wybierz pozycję **Utwórz zasób**. 
 2. Wybierz pozycję **Wystąpienia obliczeniowe**, a następnie wybierz pozycję **Windows Server 2016 Datacenter**.
 3. Wprowadź lub wybierz poniższe informacje, a następnie zaakceptuj wartości domyślne dla pozostałych ustawień:
 
@@ -159,8 +159,8 @@ W sieci wirtualnej utwórz dwie maszyny wirtualne.
     |Ustawienie|Wartość|
     |---|---|
     |Sieć wirtualna |Wybierz pozycję **myVirtualNetwork**.|
-    |Grupa zabezpieczeń sieci karty sieciowej |Wybierz pozycję **Zaawansowane**.|
-    |Publiczne porty przychodzące|Wybierz pozycję **Brak**. |
+    |Grupa zabezpieczeń sieci karty sieciowej |Wybierz pozycję **Brak**.|
+  
 
 6. Wybierz pozycję **Recenzja + Utwórz** w lewym górnym rogu, a następnie wybierz pozycję **Utwórz** , aby rozpocząć wdrażanie maszyny wirtualnej.
 
@@ -217,7 +217,7 @@ Gdy grupa zasobów i wszystkie znajdujące się w niej zasoby nie będą już po
 
 1. Wprowadź ciąg *myResourceGroup* w polu **Szukaj** w górnej części portalu. Gdy pozycja **myResourceGroup** pojawi się w wynikach wyszukiwania, wybierz ją.
 2. Wybierz pozycję **Usuń grupę zasobów**.
-3. W polu *WPISZ NAZWĘ GRUPY ZASOBÓW:* wprowadź nazwę **myResourceGroup**, a następnie wybierz pozycję **Usuń**.
+3. W polu **WPISZ NAZWĘ GRUPY ZASOBÓW:** wprowadź nazwę *myResourceGroup*, a następnie wybierz pozycję **Usuń**.
 
 ## <a name="next-steps"></a>Następne kroki
 

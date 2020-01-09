@@ -1,17 +1,17 @@
 ---
-title: Utwórz kontenery usługi Azure Cosmos z dużym kluczem partycji przy użyciu Azure Portal i różnych zestawów SDK.
+title: Tworzenie kontenerów usługi Azure Cosmos z dużym kluczem partycji
 description: Dowiedz się, jak utworzyć kontener w Azure Cosmos DB z dużym kluczem partycji przy użyciu Azure Portal i różnych zestawów SDK.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/28/2019
 ms.author: mjbrown
-ms.openlocfilehash: e2ea934140322a13f07a90f4246bacd3f9dbe6c9
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 42e92fa2b088fc04d4aa670e6586fcfe26ff3a70
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721095"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441699"
 ---
 # <a name="create-containers-with-large-partition-key"></a>Tworzenie kontenerów z dużym kluczem partycji
 
@@ -66,7 +66,7 @@ database,
 
 Klucze dużych partycji są obsługiwane z następującymi minimalnymi wersjami zestawów SDK:
 
-|Typ zestawu SDK  | Wersja minimalna   |
+|Typ zestawu SDK  | Minimalna wersja   |
 |---------|---------|
 |.NET     |    1,18     |
 |Synchronizacja Java     |   2.4.0      |
@@ -80,5 +80,5 @@ Obecnie nie można używać kontenerów z dużym kluczem partycji w ramach Power
 
 * [Partitioning in Azure Cosmos DB (Partycjonowanie w usłudze Azure Cosmos DB)](partitioning-overview.md)
 * [Jednostki żądania w usłudze Azure Cosmos DB](request-units.md)
-* [Obsługa przepływności na kontenerach i bazach danych](set-throughput.md)
+* [Aprowizacja przepływności kontenerów i baz danych](set-throughput.md)
 * [Współpraca z kontem usługi Azure Cosmos](account-overview.md)

@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 11/21/2019
+ms.date: 12/14/2019
 ms.author: helohr
-ms.openlocfilehash: fde3ddf052e47e7550d15aba4ff26d32c91e34b9
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
-ms.translationtype: MT
+ms.openlocfilehash: 8d9a6664caa7d0d84de54de232d6f8d0eab0a793
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74972392"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75356248"
 ---
 # <a name="set-up-msix-app-attach"></a>Konfigurowanie dołączania aplikacji MSIX
 
@@ -172,8 +172,8 @@ W środowisku pulpitu wirtualnego systemu Windows Utwórz udział sieciowy i Prz
 Jeśli aplikacja używa certyfikatu, który nie jest zaufany lub został podpisany z podpisem własnym, poniżej przedstawiono sposób jego instalacji:
 
 1. Kliknij prawym przyciskiem myszy pakiet i wybierz polecenie **Właściwości**.
-2. W wyświetlonym oknie Wybierz kartę **podpisy cyfrowe** . Na karcie powinna znajdować się tylko jeden element, jak pokazano na poniższej ilustracji. Wybierz ten element, aby wyróżnić element, a następnie wybierz pozycję * * de
-3. Po wyświetleniu okna Szczegóły sygnału cyfrowego wybierz kartę **Ogólne** , a następnie wybierz pozycję **Zainstaluj certyfikat**.
+2. W wyświetlonym oknie Wybierz kartę **podpisy cyfrowe** . Na karcie powinna znajdować się tylko jeden element, jak pokazano na poniższej ilustracji. Wybierz ten element, aby wyróżnić element, a następnie wybierz pozycję **szczegóły**.
+3. Po wyświetleniu okna Szczegóły podpisu cyfrowego wybierz kartę **Ogólne** , a następnie wybierz pozycję **Zainstaluj certyfikat**.
 4. Po otwarciu Instalatora wybierz pozycję **komputer lokalny** jako lokalizację magazynu, a następnie wybierz pozycję **dalej**.
 5. Jeśli Instalator wyświetli monit z pytaniem, czy chcesz zezwolić aplikacji na wprowadzanie zmian na urządzeniu, wybierz opcję **tak**.
 6. Wybierz pozycję **Umieść wszystkie certyfikaty w następującym magazynie**, a następnie wybierz pozycję **Przeglądaj**.
@@ -199,12 +199,12 @@ Przed aktualizacją skryptów programu PowerShell upewnij się, że masz identyf
 
 2.  Kliknij prawym przyciskiem myszy dysk VHD i wybierz polecenie **Zainstaluj**. Spowoduje to zainstalowanie wirtualnego dysku twardego na literę dysku.
 
-3.  Po zainstalowaniu dysku VHD zostanie otwarte okno **Eksplorator plików** . Przechwyć folder nadrzędny i zaktualizuj zmienną **\$parentFolder**
+3.  Po zainstalowaniu dysku VHD zostanie otwarte okno **Eksplorator plików** . Przechwyć folder nadrzędny i zaktualizuj zmienną **$parentFolder**
 
     >[!NOTE]
     >Jeśli nie widzisz folderu nadrzędnego, oznacza to, że MSIX nie został prawidłowo rozwinięty. Powtórz poprzednią sekcję i spróbuj ponownie.
 
-4.  Otwórz folder nadrzędny. Jeśli jest prawidłowo rozwinięty, zobaczysz folder o tej samej nazwie co pakiet. Zaktualizuj zmienną **\$PackageName** , aby odpowiadała nazwie tego folderu.
+4.  Otwórz folder nadrzędny. Jeśli jest prawidłowo rozwinięty, zobaczysz folder o tej samej nazwie co pakiet. Zaktualizuj zmienną **$PackageName** , aby odpowiadała nazwie tego folderu.
 
     Na przykład `VSCodeUserSetup-x64-1.38.1_1.38.1.0_x64__8wekyb3d8bbwe`.
 
@@ -227,7 +227,7 @@ Przed aktualizacją skryptów programu PowerShell upewnij się, że masz identyf
     ```
 
 
-6.  Zaktualizuj zmienną **\$volumeGuid** za pomocą właśnie SKOPIOWANEGO identyfikatora GUID woluminu.
+6.  Zaktualizuj zmienną **$volumeGuid** przy użyciu właśnie SKOPIOWANEGO identyfikatora GUID woluminu.
 
 7. Otwórz wiersz administracyjny programu PowerShell i zaktualizuj następujący skrypt programu PowerShell przy użyciu zmiennych, które są stosowane do danego środowiska.
 
@@ -256,9 +256,9 @@ Przed aktualizacją skryptów programu PowerShell upewnij się, że masz identyf
 
     {
 
-    Mount-Diskimage -ImagePath \$vhdSrc -NoDriveLetter -Access ReadOnly
+    Mount-Diskimage -ImagePath $vhdSrc -NoDriveLetter -Access ReadOnly
 
-    Write-Host ("Mounting of " + \$vhdSrc + " was completed!") -BackgroundColor Green
+    Write-Host ("Mounting of " + $vhdSrc + " was completed!") -BackgroundColor Green
 
     }
 
@@ -266,7 +266,7 @@ Przed aktualizacją skryptów programu PowerShell upewnij się, że masz identyf
 
     {
 
-    Write-Host ("Mounting of " + \$vhdSrc + " has failed!") -BackgroundColor Red
+    Write-Host ("Mounting of " + $vhdSrc + " has failed!") -BackgroundColor Red
 
     }
 
@@ -298,8 +298,8 @@ Przed aktualizacją skryptów programu PowerShell upewnij się, że masz identyf
     Add-Type -AssemblyName System.Runtime.WindowsRuntime
 
     $asTask = ([System.WindowsRuntimeSystemExtensions].GetMethods() | Where {
-    $_.ToString() -eq 'System.Threading.Tasks.Task\`1[TResult]
-    AsTask[TResult,TProgress](Windows.Foundation.IAsyncOperationWithProgress\`2[TResult,TProgress])'})[0]
+    $_.ToString() -eq 'System.Threading.Tasks.Task`1[TResult]
+    AsTask[TResult,TProgress](Windows.Foundation.IAsyncOperationWithProgress`2[TResult,TProgress])'})[0]
 
     $asTaskAsyncOperation =
     $asTask.MakeGenericMethod([Windows.Management.Deployment.DeploymentResult],
@@ -344,7 +344,7 @@ Add-AppxPackage -Path $path -DisableDevelopmentMode -Register
 
 ### <a name="deregister-powershell-script"></a>Wyrejestrowywanie skryptu programu PowerShell
 
-Dla tego skryptu Zastąp symbol zastępczy elementu **\$PackageName** nazwą testowanego pakietu.
+Dla tego skryptu Zastąp symbol zastępczy **$PackageName** nazwą testowanego pakietu.
 
 ```powershell
 #MSIX app attach deregistration sample
@@ -364,7 +364,7 @@ Remove-AppxPackage -PreserveRoamableApplicationData $packageName
 
 ### <a name="destage-powershell-script"></a>Skrypt zrzutów programu PowerShell
 
-Dla tego skryptu Zastąp symbol zastępczy elementu **\$PackageName** nazwą testowanego pakietu.
+Dla tego skryptu Zastąp symbol zastępczy **$PackageName** nazwą testowanego pakietu.
 
 ```powershell
 #MSIX app attach de staging sample

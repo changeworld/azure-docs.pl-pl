@@ -1,25 +1,16 @@
 ---
-title: Konfigurowanie autonomicznego klastra platformy Azure Service Fabric | Microsoft Docs
+title: Konfigurowanie autonomicznego klastra platformy Azure Service Fabric
 description: Dowiedz się, jak skonfigurować autonomiczny lub lokalny klaster usługi Azure Service Fabric.
-services: service-fabric
-documentationcenter: .net
 author: dkkapur
-manager: chackdan
-editor: ''
-ms.assetid: 0c5ec720-8f70-40bd-9f86-cd07b84a219d
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 11/12/2018
 ms.author: dekapur
-ms.openlocfilehash: ca04539049766e1f053d74b3a8536f154c3fd830
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 0f9b625dfbe9c39bea7771dcc5fd58805ce19811
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72383582"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458375"
 ---
 # <a name="configuration-settings-for-a-standalone-windows-cluster"></a>Ustawienia konfiguracji dla autonomicznego klastra systemu Windows
 W tym artykule opisano ustawienia konfiguracji autonomicznego klastra Service Fabric platformy Azure, które można ustawić w pliku *ClusterConfig. JSON* . Ten plik będzie używany do określania informacji o węzłach klastra, konfiguracjach zabezpieczeń, a także topologii sieci pod względem błędów i domen uaktualniania.  Po zmianie lub dodaniu ustawień konfiguracji można [utworzyć autonomiczny klaster](service-fabric-cluster-creation-for-windows-server.md) lub [uaktualnić konfigurację klastra autonomicznego](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -74,10 +65,10 @@ Klaster Service Fabric musi zawierać co najmniej trzy węzły. Do tej sekcji mo
 | **Konfiguracja węzła** | **Opis** |
 | --- | --- |
 | nodeName |Do węzła można nadać dowolną przyjazną nazwę. |
-| Adresu |Sprawdź adres IP węzła, otwierając okno wiersza polecenia i wpisując `ipconfig`. Zanotuj adres IPV4 i przypisz go do zmiennej iPAddress. |
+| iPAddress |Sprawdź adres IP węzła, otwierając okno wiersza polecenia i wpisując `ipconfig`. Zanotuj adres IPV4 i przypisz go do zmiennej iPAddress. |
 | nodeTypeRef |Do każdego węzła można przypisać inny typ węzła. [Typy węzłów](#node-types) są zdefiniowane w poniższej sekcji. |
 | faultDomain |Domeny błędów umożliwiają administratorom klastrów Definiowanie węzłów fizycznych, które mogą się kończyć niepowodzeniem w tym samym czasie, ze względu na współużytkowane zależności fizyczne. |
-| upgradeDomain |Domeny uaktualnień opisują zestawy węzłów, które są zamykane do Service Fabric uaktualnień w tym samym czasie. Można wybrać węzły, które mają zostać przypisane do których domen uaktualnienia, ponieważ nie są ograniczone przez wymagania fizyczne. |
+| UpgradeDomain |Domeny uaktualnień opisują zestawy węzłów, które są zamykane do Service Fabric uaktualnień w tym samym czasie. Można wybrać węzły, które mają zostać przypisane do których domen uaktualnienia, ponieważ nie są ograniczone przez wymagania fizyczne. |
 
 ## <a name="cluster-properties"></a>Właściwości klastra
 Sekcja Properties w ClusterConfig. JSON służy do konfigurowania klastra, jak pokazano poniżej:
@@ -156,7 +147,7 @@ Nazwa jest przyjazną nazwą dla tego konkretnego typu węzła. Aby utworzyć w�
 * leaseDriverEndpointPort jest portem używanym przez sterownik dzierżawy klastra do sprawdzenia, czy węzły są nadal aktywne. 
 * serviceConnectionEndpointPort to port używany przez aplikacje i usługi wdrożone w węźle do komunikowania się z klientem Service Fabric w tym konkretnym węźle.
 * httpGatewayEndpointPort to port używany przez Service Fabric Explorer do nawiązywania połączenia z klastrem.
-* ephemeralPorts Zastąp [porty dynamiczne używane przez system operacyjny](https://support.microsoft.com/kb/929851). Service Fabric używa tych portów jako portów aplikacji, a pozostałe są dostępne dla systemu operacyjnego. Ponadto mapuje ten zakres na istniejący zakres obecny w systemie operacyjnym, dlatego można użyć zakresów podanej w przykładowych plikach JSON. Upewnij się, że różnica między portem początkowym i końcowym wynosi co najmniej 255. Mogą wystąpić konflikty, jeśli różnica jest zbyt niska, ponieważ ten zakres jest współużytkowany z systemem operacyjnym. Aby zobaczyć skonfigurowany zakres portów dynamicznych, uruchom `netsh int ipv4 show dynamicport tcp`.
+* ephemeralPorts Zastąp [porty dynamiczne używane przez system operacyjny](https://support.microsoft.com/kb/929851). Service Fabric używa tych portów jako portów aplikacji, a pozostałe są dostępne dla systemu operacyjnego. Ponadto mapuje ten zakres na istniejący zakres obecny w systemie operacyjnym, dlatego można użyć zakresów podanej w przykładowych plikach JSON. Upewnij się, że różnica między portem początkowym i końcowym wynosi co najmniej 255. Mogą wystąpić konflikty, jeśli różnica jest zbyt niska, ponieważ ten zakres jest współużytkowany z systemem operacyjnym. Aby wyświetlić skonfigurowany zakres portów dynamicznych, uruchom `netsh int ipv4 show dynamicport tcp`.
 * applicationPorts są portami używanymi przez aplikacje Service Fabric. Zakres portów aplikacji powinien być wystarczająco duży, aby pokryć wymagania dotyczące punktu końcowego aplikacji. Ten zakres powinien być poza zakresem portów dynamicznych na komputerze, czyli zakresem ephemeralPorts ustawionym w konfiguracji. Service Fabric używa tych portów, gdy wymagane są nowe porty i należy zachować ostrożność otwierania zapory dla tych portów. 
 * reverseProxyEndpointPort jest opcjonalnym punktem końcowym zwrotnego serwera proxy. Aby uzyskać więcej informacji, zobacz [Service Fabric zwrotny serwer proxy](service-fabric-reverseproxy.md). 
 

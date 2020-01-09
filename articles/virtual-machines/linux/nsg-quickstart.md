@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: cynthn
-ms.openlocfilehash: 424dfc1dac21f227869f23e7401a083b06cef1d9
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: cfcea8c775b2d6a9bee3c078cf67f0a942af5984
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035553"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75354047"
 ---
 # <a name="open-ports-and-endpoints-to-a-linux-vm-with-the-azure-cli"></a>Otwieranie portów i punktów końcowych na maszynie wirtualnej z systemem Linux przy użyciu interfejsu wiersza polecenia platformy Azure
 
@@ -92,5 +92,5 @@ W przypadku aplikacji sieci Web o wysokiej dostępności należy umieścić masz
 ## <a name="next-steps"></a>Następne kroki
 W tym przykładzie utworzono prostą regułę zezwalającą na ruch HTTP. Informacje na temat tworzenia bardziej szczegółowych środowisk można znaleźć w następujących artykułach:
 
-* [Omówienie usługi Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md)
+* [Omówienie usługi Azure Resource Manager](../../azure-resource-manager/management/overview.md)
 * [Co to jest sieciowa grupa zabezpieczeń?](../../virtual-network/security-overview.md)

@@ -2,21 +2,21 @@
 title: Prywatne linki na platformie Azure — często zadawane pytania
 description: Dowiedz się więcej o usłudze Azure Private link.
 services: private-link
-author: asudbring
+author: malopMSFT
 ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 53cb9b91d62c65cefb33451c716e677599306e9c
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 7870b68ca931123d50e88e846aa066ce53972dbc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229335"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75349937"
 ---
 # <a name="azure-private-link-frequently-asked-questions-faq"></a>Prywatne linki na platformie Azure — często zadawane pytania
 
-## <a name="private-link"></a>Link prywatny
+## <a name="private-link"></a>Łącze prywatne
 
 ### <a name="what-is-azure-private-endpoint-and-azure-private-link-service"></a>Co to jest prywatny punkt końcowy platformy Azure i usługa łącza prywatnego platformy Azure?
 
@@ -28,6 +28,7 @@ Ruch jest wysyłany prywatnie przy użyciu sieci szkieletowej firmy Microsoft. N
  
 ### <a name="what-is-the-difference-between-a-service-endpoints-and-a-private-endpoints"></a>Jaka jest różnica między punktami końcowymi usługi i prywatnymi punktami końcowymi?
 - W przypadku korzystania z prywatnych punktów końcowych dostęp do sieci jest przydzielany do określonych zasobów za daną usługę, co zapewnia szczegółowe segmentacji, również ruch może dotrzeć do zasobu usługi ze źródła lokalnego bez używania publicznych punktów końcowych.
+- Punkt końcowy usługi pozostaje publicznie w adresie IP.  Prywatny punkt końcowy to prywatny adres IP w przestrzeni adresowej sieci wirtualnej, w której jest skonfigurowany prywatny punkt końcowy.
 
 ### <a name="what-is-the-relationship-between-private-link-service-and-private-endpoint"></a>Jaka jest relacja między usługą link prywatny i prywatnym punktem końcowym?
 Prywatny punkt końcowy zapewnia dostęp do wielu typów zasobów łączy prywatnych, w tym usług Azure PaaS Services i własnej usługi linku prywatnego. Jest to relacja jeden do wielu. Jedna usługa linku prywatnego może odbierać połączenia z wielu prywatnych punktów końcowych. Z drugiej strony jeden prywatny punkt końcowy może łączyć się tylko z jedną usługą linku prywatnego.    
@@ -46,7 +47,7 @@ Tak. Prywatne punkty końcowe mogą łączyć się z usługami linków prywatnyc
 ### <a name="can-private-endpoint-connect-to-azure-paas-resources-across-azure-regions"></a>Czy prywatny punkt końcowy nawiązuje połączenie z zasobami usługi Azure PaaS w różnych regionach platformy Azure?
 Tak. Prywatne punkty końcowe mogą łączyć się z zasobami usługi Azure PaaS w różnych regionach platformy Azure.
 
-## <a name="private-link-service"></a>Usługa łącza prywatnego
+## <a name="private-link-service"></a>Usługa Łącze prywatne
  
 ### <a name="what-are-the-pre-requisites-for-creating-a-private-link-service"></a>Jakie są wymagania wstępne dotyczące tworzenia usługi linku prywatnego? 
 Frontony usługi powinny znajdować się w sieci wirtualnej i za usługa Load Balancer w warstwie Standardowa.

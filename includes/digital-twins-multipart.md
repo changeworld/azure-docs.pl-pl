@@ -1,20 +1,20 @@
 ---
-title: plik dołączany
-description: plik dołączany
+title: Plik dyrektywy include
+description: Plik dyrektywy include
 services: digital-twins
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 ms.topic: include
-ms.date: 10/02/2019
+ms.date: 12/12/2019
 ms.custom: include file
-ms.openlocfilehash: f67f271ee02e38e168ddfaa84ed1309321cf8702
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 6fa21d78d766ee8e541d6d60f64628b55a84fe41
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949146"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75466784"
 ---
 > [!NOTE]
 > Żądania wieloczęściowe wymagają zwykle trzech kawałków:

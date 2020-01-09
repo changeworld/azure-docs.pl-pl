@@ -1,6 +1,6 @@
 ---
-title: Połączenia hybrydowe usługi Azure Relay protokołu przewodnik | Dokumentacja firmy Microsoft
-description: Przewodnik dotyczący protokołu Azure połączeń hybrydowych usługi Relay.
+title: Przewodnik po protokole Połączenia hybrydowe Azure Relay | Microsoft Docs
+description: Przewodnik po protokole Połączenia hybrydowe Azure Relay.
 services: service-bus-relay
 documentationcenter: na
 author: clemensv
@@ -14,169 +14,169 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/02/2018
 ms.author: clemensv
-ms.openlocfilehash: e96d0103a03e841f39e8adb88215f6d6e24a305a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 45ba78645f754072c7f75b5b4f457c76bb9895b6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64706078"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75355021"
 ---
-# <a name="azure-relay-hybrid-connections-protocol"></a>Usługa Azure protokół połączeń hybrydowych usługi Relay
+# <a name="azure-relay-hybrid-connections-protocol"></a>Protokół Połączenia hybrydowe Azure Relay
 
-Usługa Azure Relay jest jednym z filarów kluczowy czynnik wpływający platformy Azure Service Bus. Nowy _połączeń hybrydowych_ możliwość przekazywania jest bezpieczne, otwartym protokole ewolucji, na podstawie protokołu HTTP i Websocket. Zastępuje ona pierwsze, o nazwie _usługi BizTalk Services_ funkcji, który został zbudowany na fundamencie własności protokołu. Integracja połączeń hybrydowych w usłudze Azure App Services będą w dalszym ciągu działać jako-to.
+Azure Relay to jeden z najważniejszych filarów funkcji Azure Service Bus platform. Nowe _połączenia hybrydowe_ możliwości przekazywania to bezpieczna, dwukierunkowa ewolucja, oparta na protokołach http i WebSockets. Zastępuje ona dawną funkcję o nazwie _BizTalk Services_ , która została zbudowana na mocy własnościowego protokołu. Integracja Połączenia hybrydowe z platformą Azure App Services będzie nadal działać zgodnie z oczekiwaniami.
 
-Połączenia hybrydowe umożliwia komunikację dwukierunkową strumienia danych binarnych i datagram prosty przepływ między dwiema aplikacjami sieciowymi. Lub obydwie strony mogą znajdować się poza translatorami adresów sieciowych lub zaporami.
+Połączenia hybrydowe umożliwia dwukierunkowe, dwukierunkową komunikację w strumieniu i prosty przepływ datagramów między dwiema aplikacjami sieciowymi. Obie strony mogą znajdować się za translatorem adresów sieciowych lub zaporami.
 
-W tym artykule opisano interakcje po stronie klienta za pomocą połączeń hybrydowych usługi relay klientów w ramach ról odbiornik i nadawcy nawiązujących połączenie. Opisano również, jak odbiorników akceptować nowych połączeń i żądania.
+W tym artykule opisano interakcje po stronie klienta z usługą Połączenia hybrydowe Relay do łączenia klientów w rolach odbiornika i nadawcy. Opisano w nim również, jak odbiorniki akceptują nowe połączenia i żądania.
 
 ## <a name="interaction-model"></a>Model interakcji
 
-Połączeń hybrydowych usługi relay łączy dwie strony, podając punkt spotkania w chmurze platformy Azure, które strony może odnajdywać i nawiązać połączenie z punktu widzenia własną sieć. Punkt spotkania jest nazywany "Połączenie hybrydowe" w tym i innych dokumentach, interfejsy API, a także w witrynie Azure portal. Punkt końcowy usługi połączeń hybrydowych, jest nazywana "Usługa" dla pozostałej części tego artykułu.
+Przekaźnik Połączenia hybrydowe łączy dwie strony, dostarczając termin w chmurze platformy Azure, który strony mogą odnajdywać i łączyć się z perspektywą sieci. Termin "połączenie hybrydowe" jest określany w tej i innej dokumentacji, w interfejsach API, a także w Azure Portal. Punkt końcowy usługi Połączenia hybrydowe jest określany jako "usługa" w dalszej części tego artykułu.
 
-Usługa umożliwia przekazywanie połączeń gniazda sieci Web i żądań HTTP (S) i odpowiedzi.
+Usługa umożliwia przekazywanie połączeń gniazd sieci Web oraz żądań i odpowiedzi HTTP (S).
 
-Model interakcji leans na nomenklatury ustanowione przez wiele innych sieci interfejsów API. Brak odbiornik, który najpierw wskazuje gotowości do obsługi połączeń przychodzących, a następnie akceptuje, zgodnie z ich odbierania. Na tej stronie klient nawiąże połączenie do odbiornika, oczekiwano tego połączenia byli akceptowani ustanawiania ścieżki komunikacji dwukierunkowej. "Połącz", "Nasłuchiwania" i "Zaakceptuj" są te same warunki, w większości gniazda interfejsów API.
+Model interakcji jest oszczędny dla nomenklatury ustalonej przez wiele innych interfejsów API sieci. Istnieje odbiornik, który najpierw wskazuje gotowość do obsługi połączeń przychodzących, a następnie akceptuje je po nadejściu. Po drugiej stronie klient nawiązuje połączenie z odbiornikiem, co oczekuje na zaakceptowanie tego połączenia do ustanowienia dwukierunkowej ścieżki komunikacji. "Connect", "nasłuchuj" i "Akceptuj" są te same warunki, które znajdują się w większości interfejsów API gniazda.
 
-Każdy model komunikacji z przekazywaniem została każda ze stron wykonywania połączeń wychodzących do punktu końcowego usługi. To sprawia, że "odbiornik" również "client" w użyciu kolokwialne i może również spowodować, że inne przeciążenia terminologii. Dokładne terminologii, dlatego są używane dla połączeń hybrydowych jest następująca:
+Każdy przekazany model komunikacji obejmuje każdą ze stron nawiązywania połączeń wychodzących do punktu końcowego usługi. Dzięki temu "odbiornik" jest również "klientem" w Colloquial, a także może spowodować inne przeciążenia terminologii. W związku z tym do Połączenia hybrydowe jest używana dokładna terminologia:
 
-Programy po obu stronach połączenia są nazywane "klientów", ponieważ są to klienci z usługą. Klient, który czeka i akceptuje połączenia jest "odbiornik" lub jest określany jako "rolę odbiornika." Klient, który inicjuje nowe połączenie do odbiornika za pośrednictwem usługi nosi nazwę "nadawca" lub jest w "rolę nadawca."
+Programy po obu stronach połączenia są nazywane "klientami", ponieważ są klientami usługi. Klient, który czeka na i akceptuje połączenia, jest "odbiornikiem" lub mówi, że należy do "roli odbiornika". Klient inicjujący nowe połączenie w kierunku odbiornika za pośrednictwem usługi nosi nazwę "nadawca" lub znajduje się w "roli nadawcy".
 
 ### <a name="listener-interactions"></a>Interakcje odbiornika
 
-Odbiornik ma pięć interakcji z usługą; wszystkie szczegółowe informacje o komunikacji sieciowej są opisane w dalszej części tego artykułu zamieszczone w tej sekcji.
+Odbiornik ma pięć interakcji z usługą; wszystkie szczegóły dotyczące sieci są opisane w dalszej części tego artykułu w sekcji Dokumentacja.
 
-Komunikaty nasłuchiwania, Zaakceptuj i żądania są odbierane z usługi. Odnów, oraz operacji Ping są wysyłane przez odbiornik.
+Komunikaty Listen, Accept i Request są odbierane z usługi. Operacje odnawiania i ping są wysyłane przez odbiornik.
 
-#### <a name="listen-message"></a>Nasłuchiwać komunikatów
+#### <a name="listen-message"></a>Komunikat o nasłuchiwaniu
 
-Aby wskazać gotowość do usługi, która jest odbiornik do akceptowania połączeń, tworzy wychodzące połączenie WebSocket. Uzgadnianie połączenia niesie ze sobą nazwa połączenia hybrydowego skonfigurowane na przestrzeń nazw usługi Relay, a token zabezpieczający, który przyznaje "Nasłuchiwania" bezpośrednio na nazwą.
+Aby wskazać gotowość usługi do akceptowania połączeń przez odbiornik, tworzy połączenie wychodzące protokołu WebSocket. Uzgadnianie połączenia przenosi nazwę połączenia hybrydowego skonfigurowanego w przestrzeni nazw usługi Relay oraz token zabezpieczający, który przydaje "nasłuchiwanie" w tej nazwie.
 
-Po zaakceptowaniu WebSocket przez usługę rejestracji zostało ukończone i ustanowionych WebSocket jest życiu jako "kanał kontrolny" umożliwiające wszystkie kolejne interakcje. Usługa umożliwia maksymalnie 25 współbieżnych odbiorników jedno połączenie hybrydowe. Limit przydziału AppHooks zostanie określony.
+Gdy protokół WebSocket zostanie zaakceptowany przez usługę, rejestracja zostanie zakończona, a ustanowiony protokół WebSocket jest aktywny jako "Kanał kontrolny" służący do włączania wszystkich kolejnych interakcji. Usługa umożliwia maksymalnie 25 współbieżnych odbiorników dla jednego połączenia hybrydowego. Należy określić przydział dla AppHooks.
 
-Dla połączeń hybrydowych Jeśli istnieją dwa lub więcej aktywne odbiorniki połączeń przychodzących są równoważone w je w kolejności losowej. uczciwe dystrybucji zostanie podjęta przy użyciu najlepszy nakład pracy.
+W przypadku Połączenia hybrydowe, jeśli istnieją co najmniej dwa aktywne detektory, połączenia przychodzące są równoważony między nimi w kolejności losowej; w celu uzyskania najlepszego wysiłku podjęto próbę uczciwej dystrybucji.
 
-#### <a name="accept-message"></a>Zaakceptować komunikat
+#### <a name="accept-message"></a>Akceptuj komunikat
 
-Po otwarciu nowego połączenia w usłudze nadawcy usługa wybierze i powiadamia o jeden aktywne odbiorniki połączenie hybrydowe. To powiadomienie jest wysyłane do odbiornika za pośrednictwem kanału open kontroli, jak jeden komunikat w formacie JSON. Komunikat zawiera adres URL punktu końcowego protokołu WebSocket, który odbiornika należy nawiązać połączenie do akceptowania połączeń.
+Gdy nadawca otworzy nowe połączenie z usługą, usługa wybiera i powiadamia jeden z aktywnych odbiorników w połączeniu hybrydowym. To powiadomienie jest wysyłane do odbiornika przez otwarty kanał kontrolny jako komunikat JSON. Komunikat zawiera adres URL punktu końcowego protokołu WebSocket, z którym odbiornik musi nawiązać połączenie w celu zaakceptowania połączenia.
 
-Adres URL można i musi zostać wykorzystana bezpośrednio przez odbiornik bez konieczności wykonywania dodatkowych działań.
-Dane zakodowane jest prawidłowy tylko przez krótki okres czasu, zasadniczo tak długo, jak nadawca chce czekać na połączenie za ustanowionych end-to-end. Maksymalna, aby założył, to 30 sekund. Adres URL należy używać tylko dla jednego pomyślnym nawiązaniu połączenia. Jak najszybciej po nawiązaniu połączenia protokołu WebSocket przy użyciu adresu URL spotkania wszelkie dalsze działania w ramach tego protokołu WebSocket jest przekazywane z i do nadawcy. Dzieje się bez interwencji lub interpretacji przez usługę.
+Adres URL może i musi być używany bezpośrednio przez odbiornik bez żadnej dodatkowej pracy.
+Zakodowane informacje są prawidłowe tylko przez krótki czas, głównie w przypadku, gdy nadawca chce czekać na zakończenie ustanawiania połączenia. Maksymalna wartość jest równa 30 sekund. Adresu URL można użyć tylko dla jednej próby nawiązania połączenia. Gdy tylko zostanie nawiązane połączenie protokołu WebSocket z terminem URL, wszystkie dalsze działania dotyczące tego obiektu WebSocket są przekazywane od i do nadawcy. Dzieje się tak bez interwencji lub interpretacji przez usługę.
 
 ### <a name="request-message"></a>Komunikat żądania
 
-Oprócz połączeń protokołu WebSocket odbiornik może również odbierać ramek żądania HTTP od nadawcy, jeśli ta funkcja jest jawnie włączone dla połączenia hybrydowego.
+Oprócz połączeń protokołu WebSocket odbiornik może również odbierać ramki żądań HTTP od nadawcy, jeśli ta funkcja jest jawnie włączona w połączeniu hybrydowym.
 
-Odbiorników, dołączanie do połączeń hybrydowych z obsługą protokołu HTTP, które musi obsłużyć `request` gestu. Odbiornik, który nie obsługuje `request` i w związku z tym powoduje, że błędy powtarzanych przekroczenia limitu czasu podczas połączenia może być na czarnej liście przez usługę w przyszłości.
+Odbiorniki, które dołączają do Połączenia hybrydowe z obsługą protokołu HTTP, muszą obsługiwać gest `request`. Odbiornik, który nie obsługuje `request` i w związku z tym powoduje, że powtarzające się błędy przekroczenia limitu czasu podczas połączenia mogą zostać zabronione przez usługę w przyszłości.
 
-HTTP ramki nagłówka metadanych jest tłumaczona na JSON obsługi prostsze przez platformę odbiornika również ponieważ rzadkich niż analizatory składni JSON biblioteki analizy nagłówka HTTP. Metadane HTTP, które ma zastosowanie tylko dla relacji między nadawcą i bramy HTTP przekazywania, w tym informacji o autoryzacji, nie są przekazywane. Treści żądania HTTP przezroczyste są przekazywane jako binarne ramki protokołu WebSocket.
+Metadane nagłówka ramki HTTP są tłumaczone na format JSON w celu uproszczenia obsługi przez platformę odbiornika, również ponieważ biblioteki analizy nagłówków HTTP są rzadkie niż analizatory JSON. Metadane HTTP, które mają zastosowanie tylko do relacji między nadawcą i bramą protokołu HTTP przekaźnika, w tym informacje o autoryzacji, nie są przekazywane. Treść żądania HTTP jest w niewidoczny sposób transferowana jako binarne ramki protokołu WebSocket.
 
-Odbiornik może odpowiadać na żądania HTTP za pomocą gestu równoważne odpowiedzi.
+Odbiornik może odpowiadać na żądania HTTP przy użyciu równoważnego gestu odpowiedzi.
 
-Przepływ żądań/odpowiedzi domyślnie używa kanału kontroli, ale mogą być "uaktualniane" do różnych spotkania WebSocket zawsze wtedy, gdy wymagane. DISTINCT połączeń protokołu WebSocket zwiększyć przepływność dla każdego klienta konwersacji, ale ich obciążać odbiornik mający więcej połączeń, które muszą być obsługiwani, może nie być wymaganą stanie uproszczone klientów.
+Przepływ żądania/odpowiedzi domyślnie używa kanału kontroli, ale może być "uaktualniony" do odrębnego terminu protokołu WebSocket w razie potrzeby. Różne połączenia protokołu WebSocket zwiększają przepływność dla każdej konwersacji klienta, ale ciężarją odbiornik z większą liczbą połączeń, które muszą być obsługiwane, co może nie być możliwe w przypadku lekkich klientów.
 
-W kanale kontroli treści żądania i odpowiedzi są ograniczone do co najwyżej 64 kB. Metadane nagłówka HTTP jest ograniczona do łącznie 32 kB. Jeśli żądania lub odpowiedzi przekracza progu, odbiornika należy uaktualnić do spotkania WebSocket przy użyciu odpowiednikiem obsługi gestu [Akceptuj](#accept-message).
+W przypadku kanału kontroli jednostki żądań i odpowiedzi są ograniczone do maksymalnie 64 kB. Metadane nagłówka HTTP są ograniczone do całkowitej 32 kB. Jeśli żądanie lub odpowiedź przekracza ten próg, odbiornik musi uaktualnić do terminowego protokołu WebSocket przy użyciu gestu równoważnego do obsługi [akceptacji](#accept-message).
 
-W przypadku żądań usługi określa, czy należy kierować żądania za pośrednictwem kanału kontroli. To obejmuje, ale nie może być ograniczone do przypadków, w przypadku, gdy żądanie przekracza 64 kB (nagłówki i treść) od razu wykupić lub jeśli żądanie jest wysyłane za pomocą ["fragmentaryczne" transfer-encoding](https://tools.ietf.org/html/rfc7230#section-4.1) i usługa ma Przyczyna, których można spodziewać się żądanie przekracza 64 kB lub Odczytywanie żądania nie jest natychmiastowa. Jeśli usługa dostarczyć żądania za pośrednictwem spotkania, przekazuje on tylko kierującej komunikaty do adresu do odbiornika.
-Następnie odbiornika należy ustanowić spotkania WebSocket, a usługa niezwłocznie zapewnia pełną żądania, w tym organów za pośrednictwem protokołu WebSocket spotkania. Odpowiedzi, należy również użyć spotkania protokołu WebSocket.
+W przypadku żądań usługa decyduje o kierowaniu żądań do kanału kontroli. Obejmuje to, ale mogą nie być ograniczone do przypadków, gdy żądanie przekracza 64 kB (nagłówki Plus treść) z prawej strony, lub jeśli żądanie jest wysyłane z użyciem ["fragmentarycznego" kodowania transferu](https://tools.ietf.org/html/rfc7230#section-4.1) , a usługa ma powód oczekiwania na przekroczenie 64 KB lub odczytanie żądania nie jest chwilowo. Jeśli usługa zdecyduje się na dostarczenie żądania na życzenie, przekazuje on tylko ten adres.
+Odbiornik musi ustalić termin protokołu WebSocket, a usługa bezzwłocznie dostarcza pełne żądanie, w tym treści w terminach protokołu WebSocket. W odpowiedzi musi również być używany termin WebSocket.
 
-Dla żądania przychodzące za pośrednictwem kanału kontroli odbiornik Określa, czy należy odpowiedzieć za pośrednictwem kanału sterowania lub za pośrednictwem spotkania. Usługa musi zawierać adresem spotkania z każdym żądaniem kierowane za pośrednictwem kanału kontroli. Ten adres jest prawidłowy tylko dla uaktualnienie z bieżącego żądania.
+W przypadku żądań, które docierają do kanału kontroli, odbiornik decyduje o tym, czy odpowiedzieć na kanał kontrolny, czy przez termin. Usługa musi zawierać adres dla każdego żądania kierowanego w kanale kontroli. Ten adres jest prawidłowy tylko w przypadku uaktualniania z bieżącego żądania.
 
-Jeśli odbiornik zdecyduje się na uaktualnienie, łączy i natychmiast dostarcza odpowiedzi za pośrednictwem gniazd ustanowionych spotkania.
+Jeśli odbiornik zdecyduje się na uaktualnienie, nawiązuje połączenie i natychmiast dostarcza odpowiedź w gnieździe utworzone termin.
 
-Raz spotkania, na których została ustanowiona WebSocket, odbiornik powinna obsługiwać za więcej obsługę żądań i odpowiedzi z tego samego klienta. Usługa będzie utrzymywać WebSocket dla tak długo, jak HTTPS gniazda połączenia z nadawcą się powtarza, a będzie przekierowywać wszystkie kolejne żądania z tego nadawcy przez WebSocket utrzymywane w dobrym stanie. Jeśli odbiornik porzucić spotkania WebSocket w bok, usługi spowoduje również porzucenie połączenie nadawcy, niezależnie od tego, czy kolejne żądanie może być już w toku.
+Po ustanowieniu dla tego celu obiektu WebSocket odbiornik powinien go zachować do dalszej obsługi żądań i odpowiedzi z tego samego klienta. Usługa będzie obsługiwać protokół WebSocket, tak długo, jak połączenie gniazda HTTPS z nadawcą utrzymuje się i będzie kierować wszystkie kolejne żądania od tego nadawcy przez obsługiwany protokół WebSocket. Jeśli odbiornik wybierze opcję porzucenia obiektu WebSocket z jego strony, usługa spowoduje również porzucenie połączenia z nadawcą niezależnie od tego, czy kolejne żądanie może już być w toku.
 
-#### <a name="renew-operation"></a>Operacja odnowienia
+#### <a name="renew-operation"></a>Odnów operację
 
-Token zabezpieczający, który musi być używany do rejestrowania odbiornik i obsługa kanał kontrolny mogą wygasnąć, gdy odbiornika jest aktywny. Wygaśnięcie tokenu nie ma wpływu na trwającą połączenia, ale spowodować, że kanał kontrolny, który ma zostać przerwane przez usługę w lub wkrótce po chwili wygaśnięcia. Operacja "odnowić" jest komunikat JSON, który odbiornik wysłać, aby zastąpić tokenu skojarzone z kanału kontroli, tak, aby kanał kontrolny mogą być obsługiwane przez dłuższy czas.
+Token zabezpieczający, który musi zostać użyty do zarejestrowania odbiornika i utrzymania kanału kontroli, może wygasnąć, gdy odbiornik jest aktywny. Wygaśnięcie tokenu nie ma wpływu na bieżące połączenia, ale powoduje, że kanał kontrolny zostanie porzucony przez usługę na lub wkrótce po chwili wygaśnięcia. Operacja "Odnów" jest komunikatem JSON, który odbiornik może wysłać, aby zastąpić token skojarzony z kanałem kontroli, dzięki czemu Kanał kontrolny może być utrzymywany przez dłuższy okres.
 
 #### <a name="ping-operation"></a>Operacja ping
 
-Jeśli kanał kontrolny pozostanie bezczynny przez długi czas pośredników w ten sposób, takich jak obciążenia równoważenia lub translatorami adresów sieciowych może porzucić połączenia TCP. Operacja "ping" pozwala uniknąć, wysyłając niewielką ilość danych w kanale, który przypomina o tym, wszyscy członkowie trasę sieciową, która ma być aktywne połączenia i służy również jako "na żywo" test dla odbiornika. Jeśli polecenie ping nie powiedzie się, kanał kontrolny powinna być uznana za niezdatną do, a odbiornik powinni ponownie nawiązać połączenie.
+Jeśli kanał kontrolny pozostaje bezczynny przez długi czas, pośredników w taki sposób, jak moduły równoważenia obciążenia lub translatory adresów sieciowych, mogą porzucić połączenie TCP. Operacja "ping" pozwala uniknąć tego, wysyłając niewielką ilość danych w kanale, który przypomina każdą z tras sieciowych, że połączenie ma być aktywne, a także służy jako test "na żywo" dla odbiornika. Jeśli polecenie ping nie powiedzie się, Kanał kontrolny powinien być traktowany jako niezdatny do użytku, a odbiornik powinien ponownie nawiązać połączenie.
 
-### <a name="sender-interaction"></a>Nadawca interakcji
+### <a name="sender-interaction"></a>Interakcja nadawcy
 
-Nadawca ma dwa interakcji z usługą: nawiąże połączenie gniazda sieci Web lub wysyła żądania za pośrednictwem protokołu HTTPS. Za pośrednictwem gniazda sieci Web nie można wysłać żądania, z roli nadawcy.
+Nadawca ma dwa interakcje z usługą: łączy gniazdo internetowe lub wysyła żądania za pośrednictwem protokołu HTTPS. Nie można wysyłać żądań za pośrednictwem gniazda internetowego z roli nadawcy.
 
 #### <a name="connect-operation"></a>Operacja połączenia
 
-Operacja "Połącz" otwiera WebSocket w usłudze podanie nazwy połączenia hybrydowego i (opcjonalnie, ale wymagane domyślnie) token zabezpieczeń przyznania uprawnienia "Wyślij" w ciągu zapytania. Usługa użyje odbiornika w sposób opisany wcześniej, a odbiornik tworzy połączenie spotkania, która jest połączona z tego protokołu WebSocket. Po zaakceptowaniu WebSocket, wszystkie dalsze interakcje w tym protokołu WebSocket są połączonego odbiornika.
+Operacja "Połącz" otwiera obiekt WebSocket w usłudze, podając nazwę połączenia hybrydowego i (opcjonalnie, ale wymagane domyślnie) token zabezpieczający przywołujący uprawnienie "Send" w ciągu zapytania. Usługa następnie współdziała z odbiornikiem w sposób opisany wcześniej, a odbiornik tworzy termin połączenia, który jest przyłączony do tego obiektu WebSocket. Po zaakceptowaniu protokołu WebSocket wszystkie dalsze interakcje z tym obiektem WebSocket są połączone z odbiornikiem.
 
 #### <a name="request-operation"></a>Operacja żądania
 
-Dla połączeń hybrydowych, dla którego włączono funkcję nadawca może wysyłać stopniu nieograniczony żądania HTTP do odbiorników.
+W przypadku Połączenia hybrydowe, dla którego funkcja została włączona, nadawca może wysyłać wiele nieograniczonych żądań HTTP do odbiorników.
 
-Z wyjątkiem przekazywania tokenu dostępu, który jest albo osadzony w ciągu zapytania lub nagłówka żądania HTTP usługi Relay jest w pełni przezroczyste wszystkie operacje HTTP na adres usługi Relay i wszystkie sufiksy ścieżki adresu usługi Relay, pozostawiając odbiornik pełni kontrolę nad en d-to-end autoryzacji i nawet funkcji rozszerzenia protokołu HTTP, takich jak [CORS](https://www.w3.org/TR/cors/).
+Z wyjątkiem tokenu dostępu przekazującego, który jest osadzony w ciągu zapytania lub w nagłówku HTTP żądania, przekaźnik jest w pełni przezroczysty dla wszystkich operacji HTTP na adresie przekaźnika i wszystkich sufiksów ścieżki adresu przekaźnika, pozostawiając odbiornik w pełni kontrolujące autoryzację na całej trasie, a nawet funkcje rozszerzenia HTTP, takie jak [CORS](https://www.w3.org/TR/cors/).
 
-Nadawca autoryzacji z punktem końcowym przekaźnika jest domyślnie włączona, ale jest OPCJONALNY. Właściciel połączenia hybrydowego można wybrać umożliwiał anonimowym nadawcom. Usługa przechwycić, zbadaj i paska informacji o autoryzacji w następujący sposób:
+Autoryzacja nadawcy za pomocą punktu końcowego przekazywania jest domyślnie włączona, ale jest OPCJONALNa. Właściciel połączenia hybrydowego może zezwalać nadawcom anonimowym. Usługa przechwytuje, sprawdza i dzieli informacje o autoryzacji w następujący sposób:
 
-1. Jeśli ciąg zapytania zawiera `sb-hc-token` wyrażenia, wyrażenie zawsze zostanie pozbawiony ciągu zapytania. Zostanie ocenione, jeśli włączono autoryzacji usługi Relay.
-2. Jeśli zawierają nagłówki żądania `ServiceBusAuthorization` nagłówek, nagłówek wyrażenie zawsze zostanie pozbawiony kolekcję nagłówków.
-   Zostanie ocenione, jeśli włączono autoryzacji usługi Relay.
-3. Tylko wtedy, gdy autoryzacja usługi Relay jest włączona i musi zawierać nagłówki żądania `Authorization` nagłówek i żadna z poprzednich wyrażeń nie jest obecny, nagłówek zostanie ocenione i usunięte. W przeciwnym razie `Authorization`jest zawsze przekazywana jako-to.
+1. Jeśli ciąg zapytania zawiera wyrażenie `sb-hc-token`, wyrażenie będzie zawsze usuwane z ciągu zapytania. Zostanie ona oceniona, jeśli autoryzacja przekazywania jest włączona.
+2. Jeśli nagłówki żądania zawierają nagłówek `ServiceBusAuthorization`, wyrażenie nagłówka będzie zawsze usuwane z kolekcji nagłówków.
+   Zostanie ona oceniona, jeśli autoryzacja przekazywania jest włączona.
+3. Tylko wtedy, gdy autoryzacja przekazywania jest włączona, a nagłówki żądania zawierają nagłówek `Authorization` i żadne z poprzednich wyrażeń nie są obecne, nagłówek zostanie obliczony i usunięty. W przeciwnym razie `Authorization`jest zawsze przenoszona w niezmienionej postaci.
 
-Jeśli nie ma żadnych aktywny odbiornik, usługa zwraca 502 kod błędu "Nieprawidłowa brama". Jeśli usługa nie zostanie wyświetlony obsłużyć żądania, usługa zwraca 504 "Gateway Timeout" po 60 sekundach.
+Jeśli nie ma aktywnego odbiornika, usługa zwróci kod błędu 502 "Zła brama". Jeśli usługa nie wydaje się obsłużyć żądania, usługa zwróci 504 "limit czasu bramy" po 60 sekundach.
 
 ### <a name="interaction-summary"></a>Podsumowanie interakcji
 
-Ten model interakcji powstaje, czy klient nadawcy pochodzą poza uzgadnianie za pomocą "czysta" WebSocket, która jest połączona z odbiornik i wymagający żadne dalsze preambles ani przygotowania. Ten model umożliwia praktycznie dowolnym istniejącą implementacją klienta protokołu WebSocket, można łatwo korzystać z zalet usługi połączeń hybrydowych poprzez dostarczenie poprawnie skonstruowany adres URL do ich warstwy klienta protokołu WebSocket.
+Ten model interakcji polega na tym, że klient nadawcy wyjdzie z uzgadniania za pomocą protokołu WebSocket "Clean", który jest połączony z odbiornikiem i nie wymaga dalszych preambuły ani przygotowania. Ten model pozwala praktycznie dowolnej istniejącej implementacji klienta protokołu WebSocket korzystać z usługi Połączenia hybrydowe, dostarczając poprawnie skonstruowany adres URL do warstwy klienta WebSocket.
 
-Spotkania połączeń protokołu WebSocket, który odbiornik uzyskuje się za pośrednictwem interakcji Akceptuj również jest czysty i można go przekazać żadnych istniejących implementacji serwera protokołu WebSocket przy użyciu niektóre minimalne abstrakcji dodatkowych, który rozróżnia "Akceptuj" operacje na sieć lokalną listeners ich framework i połączenia hybrydowe usługi zdalnej "Zaakceptuj" operacji.
+Termin "Identyfikator protokołu" połączenia, który uzyskuje odbiornik przez interakcję akceptującą, jest również czysty i może być dołączany do dowolnej istniejącej implementacji serwera WebSocket z niewielkim minimalnym abstrakcją, która rozróżnia operacje "Akceptuj" na odbiorniki sieci lokalnej w ramach platformy i Połączenia hybrydowe zdalne operacje "Akceptuj".
 
-Model żądań/odpowiedzi HTTP zapewnia nadawcy stopniu nieograniczony HTTP protokołu powierzchni z warstwą opcjonalne autoryzacji. Odbiornik pobiera wstępnie przeanalizowany sekcji do nagłówka żądania HTTP, która mogą zostać przekształcone podrzędnego żądania HTTP lub obsługiwane zgodnie z ramkami binarne wykonywania treści HTTP. Odpowiedzi używać tego samego formatu. Interakcje z mniej niż 64 KB w treści żądania i odpowiedzi mogą być obsługiwane za pośrednictwem jednego gniazda sieci Web, który jest udostępniany dla wszystkich nadawców. Większe żądania i odpowiedzi można obsługiwać przy użyciu modelu spotkania.
+Model żądanie/odpowiedź HTTP daje nadawcy w dużym stopniu nieograniczoną powierzchnię protokołu HTTP z OPCJONALNą warstwą autoryzacji. Odbiornik pobiera wstępnie przeanalizowane sekcje nagłówka żądania HTTP, które mogą zostać przywrócone do podrzędnego żądania HTTP lub obsługiwane w postaci, w której ramki binarne obsługujące treści HTTP. Odpowiedzi używają tego samego formatu. Interakcje z mniej niż 64 KB treści żądania i odpowiedzi mogą być obsługiwane przez pojedyncze gniazdo sieci Web udostępniane wszystkim nadawcom. Większe żądania i odpowiedzi można obsługiwać przy użyciu modelu termin.
 
 ## <a name="protocol-reference"></a>Odwołanie do protokołu
 
-W tej sekcji opisano interakcji protokołu opisanych powyżej.
+W tej sekcji opisano szczegółowe informacje o interakcjach protokołu opisanych wcześniej.
 
-Wszystkich połączeń protokołu WebSocket są dokonywane na porcie 443 jako uaktualnienie z 1.1 protokołu HTTPS, który jest powszechnie wyodrębnione przez niektóre framework WebSocket lub interfejsu API. Opis, w tym miejscu jest przechowywana implementacji neutralne, bez sugerowanie określonym środowiskiem.
+Wszystkie połączenia protokołu WebSocket są nawiązywane na porcie 443 w ramach uaktualnienia z protokołu HTTPS 1,1, który jest powszechnie abstrakcyjny przez niektóre interfejsy lub interfejsy API protokołu WebSocket. Opis jest zachowywany jako neutralny od implementacji, bez sugerowania określonej struktury.
 
-### <a name="listener-protocol"></a>Odbiornik protokołu
+### <a name="listener-protocol"></a>Protokół odbiornika
 
-Protokół odbiornika składa się z dwóch gesty połączenia i trzy operacje dotyczące wiadomości.
+Protokół odbiornika składa się z dwóch gestów połączenia i trzech operacji komunikatów.
 
-#### <a name="listener-control-channel-connection"></a>Połączenia kanału kontrolnego odbiornika
+#### <a name="listener-control-channel-connection"></a>Połączenie kanału kontroli odbiornika
 
-Kanał kontrolny jest otwierany przy użyciu tworzenia połączenia protokołu WebSocket:
+Kanał kontrolny jest otwierany przy tworzeniu połączenia WebSocket z:
 
 `wss://{namespace-address}/$hc/{path}?sb-hc-action=...[&sb-hc-id=...]&sb-hc-token=...`
 
-`namespace-address` Jest w pełni kwalifikowana nazwa domeny usługi Azure Relay przestrzeni nazw, który jest hostem połączenie hybrydowe, zwykle w formie `{myname}.servicebus.windows.net`.
+`namespace-address` to w pełni kwalifikowana nazwa domeny Azure Relay przestrzeni nazw, która hostuje połączenie hybrydowe, zazwyczaj w `{myname}.servicebus.windows.net`.
 
-Dostępne są następujące opcje parametru ciągu zapytania.
+Opcje parametrów ciągu zapytania są następujące.
 
 | Parametr        | Wymagane | Opis
 | ---------------- | -------- | -------------------------------------------
-| `sb-hc-action`   | Tak      | Dla roli odbiornika parametr musi być **akcji w przypadku połączenia hybrydowego sb = nasłuchiwania**
-| `{path}`         | Tak      | Ścieżka zakodowane jako adres URL przestrzeni nazw wstępnie skonfigurowane połączenie hybrydowe, aby zarejestrować tego odbiornika na. To wyrażenie jest dołączany do stałej `$hc/` część ścieżki.
-| `sb-hc-token`    | Tak\*    | Odbiornik, musisz podać prawidłową, zakodowane w adresie URL udostępnione dostęp do tokenu usługi Service Bus dla przestrzeni nazw lub połączenie hybrydowe, która przyznaje **nasłuchiwania** prawo.
-| `sb-hc-id`       | Nie       | Ten identyfikator opcjonalnie dostarczonych przez klienta umożliwia śledzenia diagnostycznego end-to-end.
+| `sb-hc-action`   | Tak      | Dla roli odbiornika parametr musi mieć wartość **SB-HC-Action = Listen**
+| `{path}`         | Tak      | Ścieżka przestrzeni nazw zakodowana w adresie URL wstępnie skonfigurowanego połączenia hybrydowego do zarejestrowania tego odbiornika. To wyrażenie jest dołączane do części stałej ścieżki `$hc/`.
+| `sb-hc-token`    | Tak\*    | Odbiornik musi podać prawidłowy, zakodowany w adresie URL Service Bus token dostępu współdzielonego dla przestrzeni nazw lub połączenia hybrydowego, które przyznaje prawo **nasłuchiwanie** .
+| `sb-hc-id`       | Nie       | Ten opcjonalny identyfikator dostarczony przez klienta umożliwia kompleksowe śledzenie diagnostyczne.
 
-Jeśli połączenie WebSocket zakończy się niepowodzeniem ze względu na ścieżce połączenia hybrydowego nie jest zarejestrowany lub tokenu nieprawidłowych lub brakujących lub inny błąd, informacji zwrotnych o błędach są udostępniane za pomocą regularnego modelu opinii stanu protokołu HTTP 1.1. Opis stanu zawiera błąd — identyfikator śledzenia mogą być przekazywane do personelu pomocy technicznej platformy Azure:
+Jeśli połączenie z protokołem WebSocket nie powiedzie się z powodu braku rejestracji ścieżki połączenia hybrydowego lub nieprawidłowego lub brakującego tokenu lub innego błędu, opinia o błędzie jest podawana przy użyciu zwykłego modelu opinii o stanie HTTP 1,1. Opis stanu zawiera identyfikator śledzenia błędów, który może być przekazywany do działu pomocy technicznej platformy Azure:
 
-| Kod | Błąd          | Opis
+| Code | Błąd          | Opis
 | ---- | -------------- | -------------------------------------------------------------------
-| 404  | Nie można odnaleźć      | Ścieżka połączenia hybrydowego jest nieprawidłowa lub podstawowego adresu URL jest nieprawidłowo sformułowany.
-| 401  | Brak autoryzacji   | Token zabezpieczający jest brak lub źle sformułowany lub nieprawidłowy.
-| 403  | Zabroniony      | Token zabezpieczeń jest nieprawidłowy dla tej ścieżki dla tej akcji.
-| 500  | Błąd wewnętrzny | Wystąpił błąd w usłudze.
+| 404  | Nie znaleziono      | Ścieżka połączenia hybrydowego jest nieprawidłowa lub podstawowy adres URL jest nieprawidłowo sformułowany.
+| 401  | Brak autoryzacji   | Brak tokenu zabezpieczeń lub jest on nieprawidłowo sformułowany lub nieprawidłowy.
+| 403  | Forbidden      | Token zabezpieczający jest nieprawidłowy dla tej ścieżki dla tej akcji.
+| 500  | Błąd wewnętrzny | Wystąpił problem w usłudze.
 
-Jeśli połączenie WebSocket jest celowo zamknięta przez usługę po pierwotnie został ustawiony się Przyczyna w ten sposób są przekazywane przy użyciu odpowiedniego kodu błędu protokołu WebSocket wraz z opisowy komunikat o błędzie zawierający identyfikator śledzenia Usługa nie wyłączy kanał kontrolny nie powodując warunek błędu. Wszelkie czystego zamknięcia jest kontrolowany klienta.
+Jeśli połączenie z protokołem WebSocket jest celowo zamykane przez usługę po jej początkowym skonfigurowaniu, powód tego problemu jest przekazywany przy użyciu odpowiedniego kodu błędu protokołu WebSocket wraz z opisowym komunikatem o błędzie, który zawiera również identyfikator śledzenia. Usługa nie będzie zamykać kanału kontroli bez napotkania warunku błędu. Każde czyste zamknięcie jest kontrolowane przez klienta.
 
 | Stan usługi WS | Opis
 | --------- | -------------------------------------------------------------------------------
-| 1001      | Ścieżka połączenie hybrydowe zostało usunięte lub wyłączone.
-| 1008      | Wygasł token zabezpieczający, w związku z tym naruszenia zasad autoryzacji.
-| 1011      | Wystąpił błąd w usłudze.
+| 1001      | Ścieżka połączenia hybrydowego została usunięta lub wyłączona.
+| 1008      | Token zabezpieczający wygasł, dlatego zasady autoryzacji zostały naruszone.
+| 1011      | Wystąpił problem w usłudze.
 
-#### <a name="accept-handshake"></a>Zaakceptuj uzgadniania
+#### <a name="accept-handshake"></a>Akceptuj uzgadnianie
 
-"Zaakceptuj" powiadomienie jest wysyłane przez usługę odbiornik za pośrednictwem kanału kontrolnego ustanowiony wcześniej sposób w jako wiadomość JSON do ramki protokołu WebSocket. Brak jest odpowiedzi na tę wiadomość.
+Powiadomienie "Accept" jest wysyłane przez usługę do odbiornika przez wcześniej ustanowiony kanał kontroli jako komunikat JSON w ramce tekstowej protokołu WebSocket. Brak odpowiedzi na tę wiadomość.
 
-Komunikat zawiera obiekt JSON o nazwie "Zaakceptuj", który definiuje następujące właściwości w tej chwili:
+Komunikat zawiera obiekt JSON o nazwie "Accept", który w tym momencie definiuje następujące właściwości:
 
-* **adres** — ciągu adresu URL do użytku z ustanowienie protokołu WebSocket z usługą można przyjmować połączenia przychodzące.
-* **Identyfikator** — Unikatowy identyfikator dla tego połączenia. Jeśli identyfikator został dostarczony przez klienta nadawcy, jest to wartość nadawcy dostarczony, w przeciwnym razie wartość wygenerowanej przez system.
-* **connectHeaders** — wszystkie nagłówki HTTP, które zostały dostarczone z punktem końcowym przekaźnika przez nadawcę, która obejmuje też protokół WebSocket s i nagłówków protokołu WebSocket-s-rozszerzenia.
+* **Address** — ciąg adresu URL, który ma być używany do ustanawiania protokołu WebSocket do usługi w celu zaakceptowania połączenia przychodzącego.
+* **ID** — unikatowy identyfikator dla tego połączenia. Jeśli identyfikator został dostarczony przez klienta nadawcy, jest to wartość dostarczona przez nadawcę, w przeciwnym razie jest wartością wygenerowaną przez system.
+* **connectHeaders** — wszystkie nagłówki HTTP, które zostały dostarczone do punktu końcowego przekazywania przez nadawcę, które obejmują również sek-WebSocket-Protocol i sek--Extensions.
 
 ```json
 {
@@ -192,77 +192,77 @@ Komunikat zawiera obiekt JSON o nazwie "Zaakceptuj", który definiuje następuj�
 }
 ```
 
-Adres URL podany w formacie JSON wiadomości jest używany przez odbiornik ustanowienie protokołu WebSocket, aby zaakceptować lub odrzucić gniazda nadawcy.
+Adres URL adresu podany w komunikacie JSON jest używany przez odbiornik do ustanowienia protokołu WebSocket do akceptowania lub odrzucania gniazda nadawcy.
 
 ##### <a name="accepting-the-socket"></a>Akceptowanie gniazda
 
-Aby zaakceptować, odbiornik nawiązuje połączenie WebSocket na podany adres.
+W celu zaakceptowania odbiornik nawiązuje połączenie z użyciem protokołu WebSocket z podanym adresem.
 
-Jeśli komunikat "Zaakceptuj" niesie ze sobą `Sec-WebSocket-Protocol` nagłówka, oczekuje się, że odbiornik akceptuje tylko protokołu WebSocket, gdy obsługuje taki protokół. Ponadto ustawia nagłówek ustalonej pomocą protokołu WebSocket.
+Jeśli komunikat "Accept" ma `Sec-WebSocket-Protocol` nagłówku, oczekuje się, że odbiornik akceptuje tylko protokół WebSocket, jeśli obsługuje ten protokołu. Ponadto ustawia nagłówek jako protokół WebSocket.
 
-To samo dotyczy `Sec-WebSocket-Extensions` nagłówka. Jeśli struktura obsługuje rozszerzenie, należy ustawić nagłówek odpowiedź po stronie serwera wymaganego `Sec-WebSocket-Extensions` uzgadniania dla rozszerzenia.
+To samo dotyczy nagłówka `Sec-WebSocket-Extensions`. Jeśli struktura obsługuje rozszerzenie, należy ustawić nagłówek na odpowiedź po stronie serwera dla wymaganego uzgadniania `Sec-WebSocket-Extensions` dla rozszerzenia.
 
-Adres URL musi być używany jako — jest możliwość ustanowienia gniazda accept, ale zawiera następujące parametry:
+Adres URL musi być używany jako — służy do ustanawiania gniazda akceptującego, ale zawiera następujące parametry:
 
 | Parametr      | Wymagane | Opis
 | -------------- | -------- | -------------------------------------------------------------------
-| `sb-hc-action` | Tak      | Do akceptowania gniazda, parametr musi być `sb-hc-action=accept`
-| `{path}`       | Tak      | (zobacz następujący akapit)
-| `sb-hc-id`     | Nie       | Zobacz opis poprzedniego **identyfikator**.
+| `sb-hc-action` | Tak      | Aby można było zaakceptować gniazdo, parametr musi być `sb-hc-action=accept`
+| `{path}`       | Tak      | (zobacz poniższy akapit)
+| `sb-hc-id`     | Nie       | Zobacz poprzedni opis **identyfikatora**.
 
-`{path}` jest to ścieżka zakodowane jako adres URL przestrzeni nazw, wstępnie skonfigurowane połączenia hybrydowego, w którym można zarejestrować tego odbiornika. To wyrażenie jest dołączany do stałej `$hc/` część ścieżki.
+`{path}` jest ścieżką przestrzeni nazw zakodowaną w adresie URL wstępnie skonfigurowanego połączenia hybrydowego, na którym ma zostać zarejestrowany ten odbiornik. To wyrażenie jest dołączane do części stałej ścieżki `$hc/`.
 
-`path` Wyrażenie może zostać rozszerzona przy użyciu sufiksu i wyrażenie ciągu zapytania, które następuje zarejestrowanej nazwy po oddzielający ukośnikiem.
-Dzięki temu klient nadawcy przekazać argumenty wysyłania akceptują połączenia z odbiornikiem, gdy nie jest możliwe nagłówków HTTP. Oczekuje się, że framework odbiornika analizuje część ścieżki stały i zarejestrowanej nazwy ze ścieżki i sprawia, że resztę, prawdopodobnie bez żadnych argumentów ciągów zapytania, poprzedzony `sb-`, która jest dostępna do aplikacji w celu podejmowania decyzji Określa, czy akceptować połączenia.
+Wyrażenie `path` można rozszerzyć przy użyciu sufiksu i wyrażenia ciągu zapytania, które następuje po nazwie zarejestrowanej po oddzieleniu kreski ułamkowej.
+Umożliwia to klientowi wysyłającemu przekazywanie argumentów wysyłki do odbiornika akceptującego, gdy nie można uwzględnić nagłówków HTTP. Oczekuje się, że struktura odbiornika analizuje część stałej ścieżki i zarejestrowaną nazwę ze ścieżki i powoduje, że pozostała część, prawdopodobnie bez argumentów ciągu zapytania poprzedzona przez `sb-`, dostępna dla aplikacji w celu decydowania, czy należy zaakceptować połączenie.
 
-Aby uzyskać więcej informacji zobacz następującą sekcję "Protocol nadawca".
+Więcej informacji można znaleźć w sekcji "Protokół nadawcy".
 
-Jeśli wystąpi błąd, usługa potrzebują pomocy eksperta w następujący sposób:
+Jeśli wystąpi błąd, usługa może odpowiedzieć w następujący sposób:
 
-| Kod | Błąd          | Opis
+| Code | Błąd          | Opis
 | ---- | -------------- | -----------------------------------
-| 403  | Zabroniony      | Adres URL jest nieprawidłowy.
+| 403  | Forbidden      | Adres URL jest nieprawidłowy.
 | 500  | Błąd wewnętrzny | Wystąpił problem w usłudze
 
- Po ustanowieniu połączenia serwera zamknięty, WebSocket kiedy nadawcy WebSocket przebiega w dół lub z następujących stanów:
+ Po nawiązaniu połączenia serwer zamyka protokół WebSocket, gdy obiekt WebSocket nadawcy zostanie zamknięty lub z następującym stanem:
 
 | Stan usługi WS | Opis                                                                     |
 | --------- | ------------------------------------------------------------------------------- |
-| 1001      | Klient nadawcy zamknięcie połączenia.                                    |
-| 1001      | Ścieżka połączenie hybrydowe zostało usunięte lub wyłączone.                        |
-| 1008      | Wygasł token zabezpieczający, w związku z tym naruszenia zasad autoryzacji. |
-| 1011      | Wystąpił błąd w usłudze.                                            |
+| 1001      | Klient nadawcy zamknie połączenie.                                    |
+| 1001      | Ścieżka połączenia hybrydowego została usunięta lub wyłączona.                        |
+| 1008      | Token zabezpieczający wygasł, dlatego zasady autoryzacji zostały naruszone. |
+| 1011      | Wystąpił problem w usłudze.                                            |
 
-##### <a name="rejecting-the-socket"></a>Odrzuca gniazda
+##### <a name="rejecting-the-socket"></a>Odrzucanie gniazda
 
- Odrzuca gniazda po sprawdzeniu `accept` komunikat wymaga uzgadniania podobny kod stanu i opis stanu podczas komunikowania się z powodu, dla odrzucenia może przepływać z powrotem do nadawcy.
+ Odrzucanie gniazda po sprawdzeniu, `accept` komunikat wymaga podobnego uzgodnienia, aby kod stanu i opis stanu, który komunikują przyczynę odrzucenia może przepływać do nadawcy.
 
- Protokół uzasadnienie wyboru tych elementów w tym miejscu jest użycie uzgadniania protokołu WebSocket (który jest przeznaczony do końca w stanie błędu zdefiniowany), aby odbiornika implementacjach klienta mogą w dalszym ciągu opierają się na kliencie protokołu WebSocket i nie trzeba stosować dodatkowy, bez klienta HTTP.
+ Wybór projektu protokołu to tutaj, aby użyć uzgadniania protokołu WebSocket (który jest przeznaczony do końca w określonym stanie błędu), dzięki czemu implementacje klienta odbiornika mogą nadal polegać na kliencie protokołu WebSocket i nie muszą korzystać z dodatkowego klienta systemu operacyjnego.
 
- Aby odrzucić gniazda, klient pobiera adres URI z `accept` komunikatu i dołącza dwa parametry ciągu zapytania, w następujący sposób:
+ Aby odrzucić gniazdo, Klient przyjmuje identyfikator URI adresu z komunikatu `accept` i dołącza dwa parametry ciągu zapytania do niego w następujący sposób:
 
 | Param                   | Wymagane | Opis                              |
 | ----------------------- | -------- | ---------------------------------------- |
-| sb-hc-statusCode        | Tak      | Kod stanu HTTP.                |
-| sb-hc-statusDescription | Tak      | Ludzi czytelny Przyczyna odrzucenia. |
+| SB-HC-statusCode        | Tak      | Liczbowy kod stanu HTTP.                |
+| SB-HC-statusDescription | Tak      | Powód odczytania przez człowieka. |
 
-Wynikowy identyfikatora URI jest następnie używany do ustanawiania połączenia protokołu WebSocket.
+Otrzymany identyfikator URI jest następnie używany do nawiązywania połączenia z użyciem protokołu WebSocket.
 
-Podczas wykonywania poprawnie, ta uzgadnianie celowo kończy się niepowodzeniem z kodem błędu HTTP 410, ponieważ WebSocket nie została ustanowiona. Jeśli coś pójdzie nie tak, następujące kody opisać błąd:
+Po poprawnym ukończeniu tego uzgadniania celowe nie powiedzie się z kodem błędu HTTP 410, ponieważ nie ustanowiono protokołu WebSocket. Jeśli coś się nie stało, następujące kody opisują błąd:
 
-| Kod | Błąd          | Opis                          |
+| Code | Błąd          | Opis                          |
 | ---- | -------------- | ------------------------------------ |
-| 403  | Zabroniony      | Adres URL jest nieprawidłowy.                |
-| 500  | Błąd wewnętrzny | Wystąpił błąd w usłudze. |
+| 403  | Forbidden      | Adres URL jest nieprawidłowy.                |
+| 500  | Błąd wewnętrzny | Wystąpił problem w usłudze. |
 
 #### <a name="request-message"></a>Komunikat żądania
 
-`request` Komunikat jest wysyłany przez usługę do odbiornika za pośrednictwem kanału kontroli. Ten sam komunikat jest również przesyłany przez spotkania WebSocket po.
+Komunikat `request` jest wysyłany przez usługę do odbiornika w kanale kontroli. Ten sam komunikat jest również wysyłany w momencie ustanowienia protokołu WebSocket.
 
-`request` Składa się z dwóch części: Nagłówek i danych binarnych ramki treści.
-W przypadku bez treści ramek treści są pomijane. Wskaźnik do tego, czy treść jest obecny jest atrybut typu wartość logiczna `body` właściwości w komunikacie żądania.
+`request` składa się z dwóch części: nagłówka i binarnych ramek treści.
+W przypadku braku treści ramki treści są pomijane. Wskaźnik określający, czy treść jest obecna, jest wartością logiczną `body` w komunikacie żądania.
 
-Dla żądania o treści żądania struktura może wyglądać następująco:
+W przypadku żądania z treścią żądania struktura może wyglądać następująco:
 
 ``` text
 ----- Web Socket text frame ----
@@ -282,10 +282,10 @@ FEFEFEFEFEFEFEFEFEFEF...
 ----------------------------------
 ```
 
-Odbiornik musi obsługiwać odbieranie treści żądania, podzielone między wiele ramek binarny (zobacz [fragmenty WebSocket](https://tools.ietf.org/html/rfc6455#section-5.4)).
-Żądanie kończy się, gdy binarne ramkę z ustawioną flagą Finanse zostały odebrane.
+Odbiornik musi obsługiwać otrzymywanie treści żądania rozdzielonej między wiele ramek binarnych (zobacz [fragmenty protokołu WebSocket](https://tools.ietf.org/html/rfc6455#section-5.4)).
+Żądanie kończy się po odebraniu ramki binarnej z zestawem flag FIN.
 
-Żądania bez treści jest tylko jednej ramce.
+Dla żądania bez treści istnieje tylko jedna ramka tekstowa.
 
 ``` text
 ----- Web Socket text frame ----
@@ -299,24 +299,24 @@ Odbiornik musi obsługiwać odbieranie treści żądania, podzielone między wie
 ----------------------------------
 ```
 
-Zawartość JSON `request` jest następująca:
+Zawartość JSON dla `request` jest następująca:
 
-* **adres** — ciągu identyfikatora URI. Jest to kierującej komunikaty do adresu do użycia dla tego żądania. Jeśli żądanie przychodzące ma rozmiar większy niż 64 kB, pozostała część tego komunikatu jest puste i klient musi inicjować uzgadniania spotkania odpowiednikiem `accept` operacji opisanych poniżej. Usługa następnie składane w pełne `request` w ustalonych gniazda sieci Web. Jeśli można oczekiwać odpowiedzi przekracza 64 kB, odbiornik musi również Zainicjuj uzgadniania spotkania i następnie przenieść odpowiedzi za pośrednictwem ustalonych gniazda sieci Web.
-* **Identyfikator** — ciąg. Unikatowy identyfikator dla tego żądania.
-* **requestHeaders** — ten obiekt zawiera wszystkie nagłówki HTTP, które zostały przekazane do punktu końcowego przez nadawcę, z wyjątkiem informacji o autoryzacji zgodnie z objaśnieniem [powyżej](#request-operation), nagłówki, które dotyczą wyłącznie i połączenie z bramą. W szczególności wszystkie nagłówki zdefiniowany lub zastrzeżone w [RFC7230](https://tools.ietf.org/html/rfc7230), z wyjątkiem `Via`, są usunięte i nie dalej:
+* ciąg **adresu** URI. Jest to termin używany w przypadku tego żądania. Jeśli żądanie przychodzące jest większe niż 64 kB, pozostała część tego komunikatu pozostaje pusta, a klient musi zainicjować uzgadnianie "termin" odpowiadający operacji `accept` opisanej poniżej. Następnie usługa umieści kompletną `request` w ustanowionym gnieździe sieci Web. Jeśli oczekiwana ilość odpowiedzi może przekroczyć 64 kB, odbiornik musi również inicjować uzgadnianie terminów, a następnie przenieść odpowiedź przez ustanowione gniazdo sieci Web.
+* **ID** — ciąg. Unikatowy identyfikator dla tego żądania.
+* **requestHeaders** — ten obiekt zawiera wszystkie nagłówki HTTP, które zostały dostarczone do punktu końcowego przez nadawcę, z wyjątkiem informacji o autoryzacji, jak wyjaśniono [powyżej](#request-operation), oraz nagłówków, które ściśle odnoszą się do połączenia z bramą. W konkretnym przypadku wszystkie nagłówki zdefiniowane lub zarezerwowane w [RFC7230](https://tools.ietf.org/html/rfc7230), z wyjątkiem `Via`, są usuwane i nie są przekazywane:
 
-  * `Connection` (RFC7230 sekcji 6.1)
-  * `Content-Length`  (RFC7230 sekcji 3.3.2)
-  * `Host`  (RFC7230, ppkt 5.4)
-  * `TE`  (RFC7230 4.3 sekcji)
-  * `Trailer`  (RFC7230 sekcji 4.4)
-  * `Transfer-Encoding`  (RFC7230 sekcji 3.3.1)
-  * `Upgrade` (RFC7230 sekcji 6.7)
-  * `Close`  (RFC7230 sekcji 8.1)
+  * `Connection` (RFC7230, sekcja 6,1)
+  * `Content-Length` (RFC7230, sekcja 3.3.2)
+  * `Host` (RFC7230, sekcja 5,4)
+  * `TE` (RFC7230, sekcja 4,3)
+  * `Trailer` (RFC7230, sekcja 4,4)
+  * `Transfer-Encoding` (RFC7230, sekcja 3.3.1)
+  * `Upgrade` (RFC7230, sekcja 6,7)
+  * `Close` (RFC7230, sekcja 8,1)
 
-* **requestTarget** — ciąg. Tej właściwości jest przechowywana ["Żądanie Target" (RFC7230, sekcja 5.3)](https://tools.ietf.org/html/rfc7230#section-5.3) żądania. Obejmuje to część ciągu zapytania, które będą wszystkie `sb-hc-` prefiks parametrów.
-* **Metoda** -ciąg. Jest to metoda żądania na [RFC7231, sekcja 4](https://tools.ietf.org/html/rfc7231#section-4). `CONNECT` Metoda nie może być używany.
-* **treść** — jest to wartość logiczna. Wskazuje, czy następuje jeden lub więcej ramek dane binarne ciała.
+* **requestTarget** — ciąg. Ta właściwość zawiera ["cel żądania" (RFC7230, sekcja 5,3)](https://tools.ietf.org/html/rfc7230#section-5.3) żądania. Obejmuje to część ciągu zapytania, która jest usuwana ze wszystkich `sb-hc-`ych parametrów z prefiksem.
+* **Metoda** -ciąg. Jest to metoda żądania, na [RFC7231, sekcja 4](https://tools.ietf.org/html/rfc7231#section-4). Metoda `CONNECT` nie może być używana.
+* **Body** — wartość logiczna. Wskazuje, czy jedna lub więcej binarnych ramek treści jest następująca.
 
 ``` JSON
 {
@@ -337,20 +337,20 @@ Zawartość JSON `request` jest następująca:
 
 ##### <a name="responding-to-requests"></a>Odpowiadanie na żądania
 
-Odbiorca musi odpowiedzieć. Powtarzane na odpowiadanie na żądania przy zachowaniu połączenia może spowodować odbiornika wprowadzenie na czarnej liście.
+Odbiorca musi odpowiedzieć. Powtarzający się błąd odpowiedzi na żądania podczas utrzymywania połączenia może spowodować, że odbiornik zostanie zabroniony.
 
-Odpowiedzi mogą być przesyłane w dowolnej kolejności, ale każde żądanie musi być wypełniona w ciągu 60 sekund lub dostarczania będą raportowane jako posiadające nie powiodło się. Termin 60 sekund jest naliczana do momentu `response` ramki zostały odebrane przez usługę. Trwającą odpowiedzi z wieloma ramkami binarny nie przejdzie w stan bezczynności przez więcej niż 60 sekund lub zostanie zakończony.
+Odpowiedzi mogą być wysyłane w dowolnej kolejności, ale każde żądanie musi być odpowiedziane w ciągu 60 sekund, a dostarczenie zostanie zgłoszone jako zakończone niepowodzeniem. Termin 60 sekund jest liczony do momentu otrzymania przez usługę ramki `response`. Ciągła odpowiedź z wieloma ramkami binarnymi nie może stać się bezczynna przez ponad 60 sekund lub została przerwana.
 
-Jeśli żądanie zostanie odebrana w kanale kontroli, odpowiedzi albo musi zostać wysłany w kanale kontroli, z której zostało odebrane żądanie lub musi zostać wysłany za pośrednictwem kanału spotkania.
+Jeśli żądanie jest odbierane za pośrednictwem kanału kontroli, odpowiedź musi być wysłana w kanale kontroli, z którego żądanie zostało odebrane, lub musi zostać wysłane przez kanał terminowy.
 
-Odpowiedzią jest obiekt JSON o nazwie "response". Do obsługi zawartości w treści dostępne są następujące reguły dokładnie, jak za pomocą `request` wiadomości i na podstawie `body` właściwości.
+Odpowiedź jest obiektem JSON o nazwie "Response". Reguły obsługi zawartości treści są dokładnie takie same jak w przypadku komunikatu `request` i oparte na właściwości `body`.
 
-* **Identyfikator żądania** — ciąg. WYMAGANE. `id` Wartość właściwości `request` wiadomości jest wypełniona.
-* **statusCode** — jest to liczba. WYMAGANE. wartości liczbowych HTTP kod stanu wskazujący wynik powiadomienia. Wszystkie kody stanu [RFC7231, sekcja 6](https://tools.ietf.org/html/rfc7231#section-6) są dozwolone, z wyjątkiem [502 ": Nieprawidłowa brama"](https://tools.ietf.org/html/rfc7231#section-6.6.3) i [504 "Gateway Timeout"](https://tools.ietf.org/html/rfc7231#section-6.6.5).
-* **Opisstanu** -ciąg. OPCJONALNIE. Fraza przyczyny kod stanu HTTP na [RFC7230, sekcja 3.1.2](https://tools.ietf.org/html/rfc7230#section-3.1.2)
-* **responseHeaders** — nagłówki HTTP w zewnętrznych odpowiedzi HTTP.
-  Podobnie jak w przypadku `request`, RFC7230 zdefiniowanych nagłówków nie mogą być używane.
-* **treść** — jest to wartość logiczna. Wskazuje, czy dane binarne ciała ramki follow(s).
+* Identyfikator **żądania** — ciąg. Wymagane. Wartość właściwości `id` komunikatu `request`, do którego ma reagować odpowiedź.
+* **StatusCode** — numer. Wymagane. liczbowy kod stanu HTTP, który wskazuje wynik powiadomienia. Wszystkie kody stanu [RFC7231, sekcja 6](https://tools.ietf.org/html/rfc7231#section-6) jest dozwolony, z wyjątkiem [502 "Zła brama"](https://tools.ietf.org/html/rfc7231#section-6.6.3) i [504 "limit czasu bramy"](https://tools.ietf.org/html/rfc7231#section-6.6.5).
+* **statusDescription** — ciąg. Obowiązkowe. Stan HTTP — fraza przyczyny kodu na [RFC7230, sekcja 3.1.2](https://tools.ietf.org/html/rfc7230#section-3.1.2)
+* **ResponseHeaders** — nagłówki HTTP, które mają być ustawiane w zewnętrznej odpowiedzi HTTP.
+  Tak jak w przypadku `request`nie można używać nagłówków zdefiniowanych RFC7230.
+* **Body** — wartość logiczna. Wskazuje, czy elementy binarne ramek treści są następujące:
 
 ``` text
 ----- Web Socket text frame ----
@@ -370,39 +370,39 @@ Odpowiedzią jest obiekt JSON o nazwie "response". Do obsługi zawartości w tre
 ----------------------------------
 ```
 
-##### <a name="responding-via-rendezvous"></a>Odpowiada za pośrednictwem spotkania
+##### <a name="responding-via-rendezvous"></a>Reagowanie przez termin
 
-Odpowiedzi, które przekracza 64 kB, aby uzyskać odpowiedzi muszą być dostarczone przez gniazdo spotkania. Również, jeśli żądanie przekracza 64 kB, a `request` zawiera tylko pola Adres gniazda spotkania, należy ustanowić uzyskać `request`. Po ustanowieniu gniazda spotkania, odpowiedzi na odpowiednim kliencie i kolejne żądania z tego odpowiedniego klienta musi być dostarczana za pośrednictwem gniazd spotkania, będzie się utrzymywał go.
+W przypadku odpowiedzi o wartości przekraczającej 64 kB odpowiedź musi zostać dostarczona przez gniazdo. Ponadto, jeśli żądanie przekroczy 64 kB, a `request` zawiera tylko pole adresu, do uzyskania `request`należy nawiązać gniazdo. Po nawiązaniu tego celu należy dostarczyć odpowiedzi do odpowiedniego klienta i kolejnych żądań od tego odpowiedniego klienta w trakcie jego działania.
 
-`address` Adresu URL w `request` muszą być używane jako — jest możliwość ustanowienia gniazda spotkania, ale zawiera następujące parametry:
+Adres URL `address` w `request` musi być używany jako-jest przeznaczony do tworzenia gniazda termin, ale zawiera następujące parametry:
 
 | Parametr      | Wymagane | Opis
 | -------------- | -------- | -------------------------------------------------------------------
-| `sb-hc-action` | Tak      | Do akceptowania gniazda, parametr musi być `sb-hc-action=request`
+| `sb-hc-action` | Tak      | Aby można było zaakceptować gniazdo, parametr musi być `sb-hc-action=request`
 
-Jeśli wystąpi błąd, usługa potrzebują pomocy eksperta w następujący sposób:
+Jeśli wystąpi błąd, usługa może odpowiedzieć w następujący sposób:
 
-| Kod | Błąd           | Opis
+| Code | Błąd           | Opis
 | ---- | --------------- | -----------------------------------
-| 400  | Nieprawidłowe żądanie | Akcja nierozpoznany lub nieprawidłowy adres URL.
-| 403  | Zabroniony       | Adres URL wygasł.
+| 400  | Nieprawidłowe żądanie | Nierozpoznana akcja lub nieprawidłowy adres URL.
+| 403  | Forbidden       | Adres URL wygasł.
 | 500  | Błąd wewnętrzny  | Wystąpił problem w usłudze
 
- Po ustanowieniu połączenia serwera kończy pracę WebSocket, wyłączaniu gniazda HTTP klienta lub z następujących stanów:
+ Po nawiązaniu połączenia serwer zamknie protokół WebSocket, gdy gniazdo HTTP klienta zostanie zamknięte lub z następującym stanem:
 
 | Stan usługi WS | Opis                                                                     |
 | --------- | ------------------------------------------------------------------------------- |
-| 1001      | Klient nadawcy zamknięcie połączenia.                                    |
-| 1001      | Ścieżka połączenie hybrydowe zostało usunięte lub wyłączone.                        |
-| 1008      | Wygasł token zabezpieczający, w związku z tym naruszenia zasad autoryzacji. |
-| 1011      | Wystąpił błąd w usłudze.                                            |
+| 1001      | Klient nadawcy zamknie połączenie.                                    |
+| 1001      | Ścieżka połączenia hybrydowego została usunięta lub wyłączona.                        |
+| 1008      | Token zabezpieczający wygasł, dlatego zasady autoryzacji zostały naruszone. |
+| 1011      | Wystąpił problem w usłudze.                                            |
 
 
-#### <a name="listener-token-renewal"></a>Odbiornik odnowienia tokenu
+#### <a name="listener-token-renewal"></a>Odnowienie tokenu odbiornika
 
-Po token odbiornik o zbliżającym się go można zastąpić, wysyłając wiadomość SMS ramki za pośrednictwem kanału kontroli ustanowionych w usłudze. Komunikat zawiera obiekt JSON o nazwie `renewToken`, która definiuje następującą właściwość w tej chwili:
+Gdy token odbiornika wkrótce wygaśnie, może go zastąpić, wysyłając wiadomość z ramką tekstową do usługi za pośrednictwem ustalonego kanału kontroli. Komunikat zawiera obiekt JSON o nazwie `renewToken`, który w tym momencie definiuje następującą właściwość:
 
-* **Token** — prawidłowy, zakodowane w adresie URL tokenu dostępu do usługi Service Bus udostępniony dla przestrzeni nazw lub połączenie hybrydowe, która przyznaje **nasłuchiwania** prawo.
+* **token** — prawidłowy, zakodowany w adresie URL Service Bus token dostępu współdzielonego dla przestrzeni nazw lub połączenia hybrydowego, które przyznaje prawo do **nasłuchiwania** .
 
 ```json
 {
@@ -413,103 +413,103 @@ Po token odbiornik o zbliżającym się go można zastąpić, wysyłając wiadom
 }
 ```
 
-W przypadku niepowodzenia weryfikacji tokenu odmowa dostępu i usługi w chmurze zamyka kanał kontrolny protokołu WebSocket z powodu błędu. W przeciwnym razie jest brak odpowiedzi.
+W przypadku niepowodzenia walidacji tokenu następuje odmowa dostępu, a usługa w chmurze zamyka protokół WebSocket kanału kontroli z błędem. W przeciwnym razie nie ma odpowiedzi.
 
 | Stan usługi WS | Opis                                                                     |
 | --------- | ------------------------------------------------------------------------------- |
-| 1008      | Wygasł token zabezpieczający, w związku z tym naruszenia zasad autoryzacji. |
+| 1008      | Token zabezpieczający wygasł, dlatego zasady autoryzacji zostały naruszone. |
 
-### <a name="web-socket-connect-protocol"></a>Protokół połączenia gniazda sieci Web
+### <a name="web-socket-connect-protocol"></a>Protokół połączenia z gniazdem internetowym
 
-Protokół nadawcy jest identyczne jak odbiornik zostanie nawiązane.
-Celem jest przezroczystości maksymalne protokołu WebSocket end-to-end. Adres, aby nawiązać połączenie jest taka sama, jak w przypadku odbiornika, ale "action" różni się i token wymaga różne uprawnienia:
+Protokół nadawcy jest efektywnie identyczny z sposobem ustanowienia odbiornika.
+Celem jest maksymalny stopień przejrzystości dla kompleksowego protokołu WebSocket. Adres, z którym jest nawiązywane połączenie, jest taki sam jak dla odbiornika, ale "Akcja" różni się, a token wymaga innego uprawnienia:
 
 ```
 wss://{namespace-address}/$hc/{path}?sb-hc-action=...&sb-hc-id=...&sbc-hc-token=...
 ```
 
-_Przestrzeń nazw adresów_ jest w pełni kwalifikowana nazwa domeny usługi Azure Relay przestrzeni nazw, który jest hostem połączenie hybrydowe, zwykle w formie `{myname}.servicebus.windows.net`.
+_Przestrzeń nazw_ jest w pełni kwalifikowaną nazwą domeny Azure Relay przestrzeni nazw, która hostuje połączenie hybrydowe, zazwyczaj `{myname}.servicebus.windows.net`formularzy.
 
-Żądanie może zawierać dowolne dodatkowe nagłówki HTTP, w tym zdefiniowanych przez aplikację. Wszystkie podane nagłówki przepływu połączenia z odbiornikiem i znajduje się na `connectHeader` obiektu **zaakceptować** komunikatu kontroli.
+Żądanie może zawierać dowolne dodatkowe nagłówki HTTP, w tym zdefiniowane przez aplikację. Wszystkie przekazane nagłówki są przesyłane do odbiornika i można je znaleźć w obiekcie `connectHeader` komunikatu o **zaakceptowaniu** kontroli.
 
-Dostępne są następujące opcje parametru ciągu zapytania:
+Opcje parametrów ciągu zapytania są następujące:
 
 | Param          | Wymagana? | Opis
 | -------------- | --------- | -------------------------- |
-| `sb-hc-action` | Yes       | Dla roli nadawcy, parametr musi być `sb-hc-action=connect`.
-| `{path}`       | Yes       | (zobacz następujący akapit)
-| `sb-hc-token`  | Tak\*     | Odbiornik, musisz podać prawidłową, zakodowane w adresie URL udostępnione dostęp do tokenu usługi Service Bus dla przestrzeni nazw lub połączenie hybrydowe, która przyznaje **wysyłania** prawo.
-| `sb-hc-id`     | Nie        | Opcjonalny identyfikator umożliwia śledzenia diagnostycznego end-to-end, która ma zostać udostępnione do odbiornika podczas uzgadniania accept.
+| `sb-hc-action` | Tak       | Dla roli nadawcy parametr musi być `sb-hc-action=connect`.
+| `{path}`       | Tak       | (zobacz poniższy akapit)
+| `sb-hc-token`  | Tak\*     | Odbiornik musi podać prawidłowy, zakodowany w adresie URL Service Bus token dostępu współdzielonego dla przestrzeni nazw lub połączenia hybrydowego, które przyznaje prawo do **wysyłania** .
+| `sb-hc-id`     | Nie        | Opcjonalny identyfikator, który umożliwia kompleksowe śledzenie diagnostyczne i jest udostępniany odbiornikowi podczas uzgadniania akceptacji.
 
- `{path}` Jest ścieżką zakodowane jako adres URL przestrzeni nazw wstępnie skonfigurowane połączenie hybrydowe, w którym można zarejestrować tego odbiornika. `path` Wyrażenia można rozszerzyć za pomocą sufiksu i wyrażenia ciągu zapytania do dalszej komunikacji. Jeśli połączenie hybrydowe jest zarejestrowany w ścieżce `hyco`, `path` wyrażenie może być `hyco/suffix?param=value&...` następuje parametry ciągu zapytania, które są zdefiniowane w tym miejscu. Dokończ wyrażenie może być następująca:
+ `{path}` jest ścieżką przestrzeni nazw zakodowaną w adresie URL wstępnie skonfigurowanego połączenia hybrydowego, na którym ma zostać zarejestrowany ten odbiornik. Wyrażenie `path` można rozszerzyć za pomocą sufiksu i wyrażenia ciągu zapytania w celu dalszej komunikacji. Jeśli połączenie hybrydowe jest zarejestrowane pod ścieżką `hyco`, można `hyco/suffix?param=value&...` wyrażenie `path`, a następnie parametry ciągu zapytania zdefiniowane w tym miejscu. Kompletne wyrażenie może następnie być następujące:
 
 ```
 wss://{namespace-address}/$hc/hyco/suffix?param=value&sb-hc-action=...[&sb-hc-id=...&]sbc-hc-token=...
 ```
 
-`path` Wyrażenie jest przekazywana do odbiornika adres URI znajdujących się w oknie komunikatu kontrola "Zaakceptuj".
+Wyrażenie `path` jest przenoszone do odbiornika w identyfikatorze URI adresu zawartym w komunikacie kontroli "Accept".
 
-Jeśli połączenie WebSocket zakończy się niepowodzeniem z powodu ścieżki połączenia hybrydowego nie jest zarejestrowany, token nieprawidłowych lub brakujących lub inny błąd, informacji zwrotnych o błędach są udostępniane za pomocą regularnego modelu opinii stanu protokołu HTTP 1.1. Opis stanu zawiera błąd śledzenia identyfikator, który może być przekazywane do personelu pomocy technicznej platformy Azure:
+Jeśli połączenie z protokołem WebSocket nie powiedzie się z powodu braku rejestracji ścieżki połączenia hybrydowego, nieprawidłowego lub brakującego tokenu lub innego błędu, opinia o błędzie jest podawana przy użyciu zwykłego modelu opinii o stanie HTTP 1,1. Opis stanu zawiera identyfikator śledzenia błędów, który może być przekazywany do działu pomocy technicznej platformy Azure:
 
-| Kod | Błąd          | Opis
+| Code | Błąd          | Opis
 | ---- | -------------- | -------------------------------------------------------------------
-| 404  | Nie można odnaleźć      | Ścieżka połączenia hybrydowego jest nieprawidłowa lub podstawowego adresu URL jest nieprawidłowo sformułowany.
-| 401  | Brak autoryzacji   | Token zabezpieczający jest brak lub źle sformułowany lub nieprawidłowy.
-| 403  | Zabroniony      | Token zabezpieczający nie jest prawidłowy dla tej ścieżki, a dla tej akcji.
-| 500  | Błąd wewnętrzny | Wystąpił błąd w usłudze.
+| 404  | Nie znaleziono      | Ścieżka połączenia hybrydowego jest nieprawidłowa lub podstawowy adres URL jest nieprawidłowo sformułowany.
+| 401  | Brak autoryzacji   | Brak tokenu zabezpieczeń lub jest on nieprawidłowo sformułowany lub nieprawidłowy.
+| 403  | Forbidden      | Token zabezpieczający jest nieprawidłowy dla tej ścieżki i dla tej akcji.
+| 500  | Błąd wewnętrzny | Wystąpił problem w usłudze.
 
-Jeśli połączenie WebSocket jest celowo zamknięta przez usługę po jego wstępnie skonfigurowano, przyczyna w ten sposób są przekazywane przy użyciu odpowiedni kod błędu protokołu WebSocket wraz z opisowy komunikat o błędzie zawierający identyfikator śledzenia: .
+Jeśli połączenie z protokołem WebSocket jest celowo zamykane przez usługę po jej początkowym skonfigurowaniu, powód tego problemu jest przekazywany przy użyciu odpowiedniego kodu błędu protokołu WebSocket wraz z opisowym komunikatem o błędzie, który zawiera także identyfikator śledzenia .
 
 | Stan usługi WS | Opis
 | --------- | ------------------------------------------------------------------------------- 
-| 1000      | Odbiornik Zamknij gniazda.
-| 1001      | Ścieżka połączenie hybrydowe zostało usunięte lub wyłączone.
-| 1008      | Wygasł token zabezpieczający, w związku z tym naruszenia zasad autoryzacji.
-| 1011      | Wystąpił błąd w usłudze.
+| 1000      | Odbiornik zamknie gniazdo.
+| 1001      | Ścieżka połączenia hybrydowego została usunięta lub wyłączona.
+| 1008      | Token zabezpieczający wygasł, dlatego zasady autoryzacji zostały naruszone.
+| 1011      | Wystąpił problem w usłudze.
 
-### <a name="http-request-protocol"></a>Protokół żądania HTTP
+### <a name="http-request-protocol"></a>Protokół żądań HTTP
 
-Żądanie protokołu HTTP umożliwia podpisywanie dowolnych żądań HTTP, z wyjątkiem uaktualnień protokołu.
-Żądania HTTP są wskazany pod adresem regularnych środowiska uruchomieniowego jednostki, bez wrostkowe $hc, używany dla połączeń hybrydowych klientów protokołu WebSocket.
+Protokół żądania HTTP zezwala na dowolne żądania HTTP, z wyjątkiem uaktualnień protokołu.
+Żądania HTTP są wskazywane przez zwykły adres środowiska uruchomieniowego jednostki, bez $hc wrostkowe, które są używane przez klientów protokołu WebSocket dla połączeń hybrydowych.
 
 ```
 https://{namespace-address}/{path}?sbc-hc-token=...
 ```
 
-_Przestrzeń nazw adresów_ jest w pełni kwalifikowana nazwa domeny usługi Azure Relay przestrzeni nazw, który jest hostem połączenie hybrydowe, zwykle w formie `{myname}.servicebus.windows.net`.
+_Przestrzeń nazw_ jest w pełni kwalifikowaną nazwą domeny Azure Relay przestrzeni nazw, która hostuje połączenie hybrydowe, zazwyczaj `{myname}.servicebus.windows.net`formularzy.
 
-Żądanie może zawierać dowolne dodatkowe nagłówki HTTP, w tym zdefiniowanych przez aplikację. Wszystkie podane nagłówki, z wyjątkiem tych bezpośrednio jest zdefiniowana w RFC7230 (zobacz [komunikatu żądania](#Request message)) przepływu połączenia z odbiornikiem i znajduje się na `requestHeader` obiektu **żądania** wiadomości.
+Żądanie może zawierać dowolne dodatkowe nagłówki HTTP, w tym zdefiniowane przez aplikację. Wszystkie podane nagłówki, z wyjątkiem tych, które są bezpośrednio zdefiniowane w RFC7230 (zobacz [komunikat żądania](#Request message)) przepływ do odbiornika i można je znaleźć w obiekcie `requestHeader` komunikatu **żądania** .
 
-Dostępne są następujące opcje parametru ciągu zapytania:
+Opcje parametrów ciągu zapytania są następujące:
 
 | Param          | Wymagana? | Opis
 | -------------- | --------- | ---------------- |
-| `sb-hc-token`  | Tak\*     | Odbiornik, musisz podać prawidłową, zakodowane w adresie URL udostępnione dostęp do tokenu usługi Service Bus dla przestrzeni nazw lub połączenie hybrydowe, która przyznaje **wysyłania** prawo.
+| `sb-hc-token`  | Tak\*     | Odbiornik musi podać prawidłowy, zakodowany w adresie URL Service Bus token dostępu współdzielonego dla przestrzeni nazw lub połączenia hybrydowego, które przyznaje prawo do **wysyłania** .
 
-Tokenu można wykonać w obu `ServiceBusAuthorization` lub `Authorization` nagłówka HTTP. Tokenu można pominąć, jeśli połączenie hybrydowe jest skonfigurowany, aby zezwolić na żądania anonimowe.
+Token może być również przenoszony w `ServiceBusAuthorization` lub `Authorization` nagłówku HTTP. Token może zostać pominięty, jeśli połączenie hybrydowe jest skonfigurowane do zezwalania na żądania anonimowe.
 
-Ponieważ usługa skutecznie działa jako serwer proxy, nawet wtedy, gdy nie jako wartość true, serwer proxy HTTP albo dodaje `Via` nagłówek lub oznacza stosowanym istniejące `Via` nagłówka zgodne z [RFC7230, sekcja 5.7.1](https://tools.ietf.org/html/rfc7230#section-5.7.1).
-Usługa dodaje nazwę hosta przestrzeni nazw usługi Relay do `Via`.
+Ponieważ usługa efektywnie działa jako serwer proxy, nawet jeśli nie jest to prawdziwy serwer proxy HTTP, dodaje nagłówek `Via` lub Adnotuj istniejący nagłówek `Via` zgodny z [RFC7230, sekcja 5.7.1](https://tools.ietf.org/html/rfc7230#section-5.7.1).
+Usługa dodaje nazwę hosta przestrzeni nazw przekaźnika do `Via`.
 
-| Kod | Message  | Opis                    |
+| Code | Wiadomość  | Opis                    |
 | ---- | -------- | ------------------------------ |
-| 200  | OK       | Żądanie jest przetwarzane przez co najmniej jeden odbiornik.  |
-| 202  | Zaakceptowane | Żądanie zostało zaakceptowane przez co najmniej jednego odbiornika. |
+| 200  | OK       | Żądanie zostało obsłużone przez co najmniej jeden odbiornik.  |
+| 202  | Zaakceptowano | Żądanie zostało zaakceptowane przez co najmniej jeden odbiornik. |
 
-Jeśli wystąpi błąd, usługa potrzebują pomocy eksperta w następujący sposób. Czy odpowiedź pochodzi z usługi lub odbiornik mogą być identyfikowane przez obecność `Via` nagłówka. Jeśli występuje nagłówek odpowiedzi jest z odbiornika.
+Jeśli wystąpi błąd, usługa może odpowiedzieć w następujący sposób. Określa, czy odpowiedź pochodzi z usługi, czy z odbiornika można zidentyfikować za pośrednictwem obecności nagłówka `Via`. Jeśli nagłówek jest obecny, odpowiedź pochodzi z odbiornika.
 
-| Kod | Błąd           | Opis
+| Code | Błąd           | Opis
 | ---- | --------------- |--------- |
-| 404  | Nie można odnaleźć       | Ścieżka połączenia hybrydowego jest nieprawidłowa lub podstawowego adresu URL jest nieprawidłowo sformułowany.
-| 401  | Brak autoryzacji    | Token zabezpieczający jest brak lub źle sformułowany lub nieprawidłowy.
-| 403  | Zabroniony       | Token zabezpieczający nie jest prawidłowy dla tej ścieżki, a dla tej akcji.
-| 500  | Błąd wewnętrzny  | Wystąpił błąd w usłudze.
-| 503  | Zła brama     | Żądanie nie może być kierowany do dowolnego odbiornika.
-| 504  | Limit czasu bramy | Żądanie zostało kierowane do odbiornika, ale odbiornik nie potwierdził przyjęcia w wymaganym czasie.
+| 404  | Nie znaleziono       | Ścieżka połączenia hybrydowego jest nieprawidłowa lub podstawowy adres URL jest nieprawidłowo sformułowany.
+| 401  | Brak autoryzacji    | Brak tokenu zabezpieczeń lub jest on nieprawidłowo sformułowany lub nieprawidłowy.
+| 403  | Forbidden       | Token zabezpieczający jest nieprawidłowy dla tej ścieżki i dla tej akcji.
+| 500  | Błąd wewnętrzny  | Wystąpił problem w usłudze.
+| 503  | Zła brama     | Nie można skierować żądania do żadnego odbiornika.
+| 504  | Limit czasu bramy | Żądanie zostało skierowane do odbiornika, ale odbiornik nie potwierdził potwierdzenia w wymaganym czasie.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Często zadawane pytania dotyczące usługi Relay](relay-faq.md)
 * [Tworzenie przestrzeni nazw](relay-create-namespace-portal.md)
-* [Wprowadzenie do programu .NET](relay-hybrid-connections-dotnet-get-started.md)
+* [Rozpoczęcie pracy z programem .NET](relay-hybrid-connections-dotnet-get-started.md)
 * [Wprowadzenie do programu Node](relay-hybrid-connections-node-get-started.md)

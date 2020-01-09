@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 7c884d3c7102fc47f6efad86d9fe3704afd0edcf
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: edaa3f7c17ff5fb6bc79f67b7028a7ba72347367
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73591155"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75467378"
 ---
 ## <a name="understand-vm-reboots---maintenance-vs-downtime"></a>Omówienie ponownych rozruchów maszyn wirtualnych — konserwacja a przestój
 Istnieją trzy scenariusze, które mogą spowodować wpływ na maszynę wirtualną na platformie Azure: nieplanowana konserwacja sprzętu, nieoczekiwany przestój i planowana konserwacja.
@@ -83,8 +83,8 @@ Jeśli obecnie korzystasz z maszyn wirtualnych z dyskami niezarządzanymi, zdecy
 Jeśli planujesz używanie maszyn wirtualnych z dyskami niezarządzanymi, postępuj zgodnie z najlepszymi rozwiązaniami dotyczącymi kont magazynu, w których wirtualne dyski twarde (VHD) maszyn wirtualnych są przechowywane jako [stronicowe obiekty blob](https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs#about-page-blobs).
 
 1. **Obsługuj wszystkie dyski (systemu operacyjnego i danych) skojarzone z maszyną wirtualną na tym samym koncie magazynu.**
-2. Przed dodaniem kolejnych wirtualnych dysków twardych do konta magazynu **przejrzyj [limity](../articles/storage/common/storage-scalability-targets.md) dotyczące liczby niezarządzanych dysków na koncie magazynu**.
-3. **Używaj oddzielnego konta magazynu dla każdej maszyny wirtualnej w zestawie dostępności.** Nie stosuj współużytkowania kont magazynu przez wiele maszyn wirtualnych w tym samym zestawie dostępności. Jest ona akceptowalna dla maszyn wirtualnych w różnych zestawach dostępności, aby współużytkować konta magazynu, jeśli powyższe najlepsze rozwiązania są obserwowane ![dysków niezarządzanych domenami błędów](./media/virtual-machines-common-manage-availability/umd-updated.png)
+2. Przed dodaniem kolejnych dysków VHD do konta magazynu **Przejrzyj [limity](../articles/storage/blobs/scalability-targets-premium-page-blobs.md) liczby dysków niezarządzanych na koncie usługi Azure Storage** .
+3. **Użyj oddzielnego konta magazynu dla każdej maszyny wirtualnej w zestawie dostępności.** Nie stosuj współużytkowania kont magazynu przez wiele maszyn wirtualnych w tym samym zestawie dostępności. Jest ona akceptowalna dla maszyn wirtualnych w różnych zestawach dostępności, aby współużytkować konta magazynu, jeśli powyższe najlepsze rozwiązania są obserwowane ![dysków niezarządzanych domenami błędów](./media/virtual-machines-common-manage-availability/umd-updated.png)
 
 ## <a name="use-scheduled-events-to-proactively-respond-to-vm-impacting-events"></a>Używanie zaplanowanych zdarzeń do aktywnego reagowania na zdarzenia wpływające na maszynę wirtualną
 

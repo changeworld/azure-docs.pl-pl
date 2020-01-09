@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: how-to
 ms.date: 12/04/2019
 ms.author: tamram
-ms.openlocfilehash: 7c7b0a0bb79f3f00d7a8dff64ec1b7143241a1f8
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: e7228556659a7a4a9f01ea31f61e75b5e870d50c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892230"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457418"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>Uaktualnianie do konta magazynu ogólnego przeznaczenia w wersji 2
 
@@ -26,7 +26,7 @@ Uaktualnianie do konta magazynu ogólnego przeznaczenia w wersji 2 z poziomu kon
 
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się do [Portalu Azure](https://portal.azure.com).
 2. Przejdź do swojego konta magazynu.
 3. W sekcji **Ustawienia** kliknij pozycję **Konfiguracja**.
 4. W obszarze **Rodzaj konta** kliknij pozycję **Uaktualnij**.
@@ -168,4 +168,3 @@ Koszt transferu danych replikacji geograficznej dla kont usługi Blob Storage mo
 ## <a name="next-steps"></a>Następne kroki
 
 * [Tworzenie konta magazynu](storage-quickstart-create-account.md)
-* [Zarządzanie kontami usługi Azure Storage](storage-account-manage.md)

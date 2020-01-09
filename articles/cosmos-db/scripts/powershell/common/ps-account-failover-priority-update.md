@@ -1,17 +1,17 @@
 ---
-title: Azure PowerShell skryptu — Zmień priorytet trybu failover lub Wyzwól tryb failover dla konta usługi Azure Cosmos
+title: Skrypt programu PowerShell umożliwiający zmianę priorytetu trybu failover dla konta usługi Azure Cosmos
 description: Przykładowy skrypt Azure PowerShell — zmiana priorytetu trybu failover lub wyzwolenie trybu failover dla konta usługi Azure Cosmos
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
 ms.date: 09/20/2019
 ms.author: mjbrown
-ms.openlocfilehash: e4406124a7ea4eac213d830d0e5960e76fb6d364
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: 6a742486918e5134a73256ef6c7490a823f14335
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155402"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441507"
 ---
 # <a name="change-failover-priority-or-trigger-failover-for-an-azure-cosmos-account-using-powershell"></a>Zmiana priorytetu trybu failover lub wyzwolenie trybu failover dla konta usługi Azure Cosmos przy użyciu programu PowerShell
 

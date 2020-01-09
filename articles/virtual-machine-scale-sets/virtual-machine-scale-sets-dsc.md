@@ -1,6 +1,6 @@
 ---
-title: Używanie konfiguracji żądanego stanu z Virtual Machine Scale Sets | Microsoft Docs
-description: Używanie Virtual Machine Scale Sets z rozszerzeniem DSC platformy Azure
+title: Używanie konfiguracji żądanego stanu z Virtual Machine Scale Sets
+description: Konfigurowanie maszyn wirtualnych przy użyciu Virtual Machine Scale Sets z rozszerzeniem konfiguracji żądanego stanu platformy Azure.
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: zjalexander
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 04/05/2017
 ms.author: zachal
-ms.openlocfilehash: f3da1ed5eabd3a35fe382471314084258b20213b
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: d3d064bc1d9c0a72b10ca27515d8325e7ca7fef9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72166155"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75359302"
 ---
 # <a name="using-virtual-machine-scale-sets-with-the-azure-dsc-extension"></a>Używanie Virtual Machine Scale Sets z rozszerzeniem DSC platformy Azure
 [Virtual Machine Scale Sets](virtual-machine-scale-sets-overview.md) może być używana z obsługą rozszerzenia [konfiguracji żądanego stanu (DSC) platformy Azure](../virtual-machines/windows/extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) . Zestawy skalowania maszyn wirtualnych zapewniają sposób wdrażania dużej liczby maszyn wirtualnych i zarządzania nimi, a także umożliwiają elastyczne skalowanie i wychodzące w odpowiedzi na obciążenie. Konfiguracja DSC służy do konfigurowania maszyn wirtualnych, gdy są one dostępne w trybie online, tak aby działały oprogramowanie produkcyjne.

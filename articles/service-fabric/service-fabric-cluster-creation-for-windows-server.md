@@ -1,25 +1,16 @@
 ---
-title: Tworzenie autonomicznego klastra Service Fabric platformy Azure | Microsoft Docs
+title: Tworzenie autonomicznego klastra usługi Azure Service Fabric
 description: Utwórz klaster Service Fabric platformy Azure na dowolnym komputerze (fizycznym lub wirtualnym) z systemem Windows Server, niezależnie od tego, czy jest on lokalny, czy w dowolnej chmurze.
-services: service-fabric
-documentationcenter: .net
 author: dkkapur
-manager: chackdan
-editor: ''
-ms.assetid: 31349169-de19-4be6-8742-ca20ac41eb9e
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 2/21/2019
 ms.author: dekapur
-ms.openlocfilehash: 6fce1957101050c6ff3a2c3aba2b4b87d4f66f1d
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: fbaea9324d82e22a1ab3c6c03a9ebec045bea64b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72554652"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75463232"
 ---
 # <a name="create-a-standalone-cluster-running-on-windows-server"></a>Tworzenie klastra autonomicznego działającego w systemie Windows Server
 Za pomocą usługi Azure Service Fabric można tworzyć klastry Service Fabric na wszystkich maszynach wirtualnych lub komputerach z systemem Windows Server. Oznacza to, że można wdrażać i uruchamiać aplikacje Service Fabric w dowolnym środowisku zawierającym zestaw połączonych komputerów z systemem Windows Server, być lokalnym lub dowolnym dostawcą chmury. Service Fabric udostępnia pakiet instalacyjny do tworzenia klastrów Service Fabric o nazwie autonomiczny pakiet systemu Windows Server. Tradycyjne Service Fabric klastrów na platformie Azure są dostępne jako usługa zarządzana, natomiast autonomiczne klastry Service Fabric są samoobsługowe.
@@ -27,7 +18,7 @@ Za pomocą usługi Azure Service Fabric można tworzyć klastry Service Fabric n
 W tym artykule omówiono procedurę tworzenia klastra autonomicznego Service Fabric.
 
 > [!NOTE]
-> Ten autonomiczny pakiet systemu Windows Server jest dostępny komercyjnie bez opłat i może być używany do wdrożeń produkcyjnych. Ten pakiet może zawierać nowe funkcje Service Fabric, które znajdują się w wersji zapoznawczej. Przewiń w dół do "[funkcji wersji zapoznawczej zawartej w tym pakiecie](#previewfeatures_anchor)". Lista funkcji w wersji zapoznawczej. [Kopię umowy EULA można pobrać](https://go.microsoft.com/fwlink/?LinkID=733084) teraz.
+> Ten autonomiczny pakiet systemu Windows Server jest dostępny komercyjnie bez opłat i może być używany do wdrożeń produkcyjnych. Ten pakiet może zawierać nowe funkcje Service Fabric, które znajdują się w wersji zapoznawczej. Przewiń w dół do "[funkcji wersji zapoznawczej zawartej w tym pakiecie](#previewfeatures_anchor)". Lista funkcji w wersji zapoznawczej. Możesz [pobrać kopię tej umowy licencyjnej](https://go.microsoft.com/fwlink/?LinkID=733084) teraz.
 > 
 > 
 
@@ -135,7 +126,7 @@ Aby nawiązać połączenie z niezabezpieczonym klastrem, uruchom następujące 
 Connect-ServiceFabricCluster -ConnectionEndpoint <*IPAddressofaMachine*>:<Client connection end point port>
 ```
 
-Na przykład:
+Przykład:
 ```powershell
 Connect-ServiceFabricCluster -ConnectionEndpoint 192.13.123.2345:19000
 ```
@@ -166,7 +157,7 @@ Możesz dodawać i usuwać węzły w klastrze autonomicznym usługi Service Fabr
 ## <a name="remove-a-cluster"></a>Usuwanie klastra
 Aby usunąć klaster, uruchom skrypt *RemoveServiceFabricCluster.ps1* programu PowerShell z folderu pakietu i przekaż ścieżkę do pliku konfiguracji JSON. Możesz opcjonalne określić lokalizację dziennika usuwania.
 
-Ten skrypt można uruchomić na dowolnym komputerze, który ma dostęp administratora do wszystkich maszyn wymienionych jako węzły w pliku konfiguracji klastra. Maszyna, na której jest uruchomiony ten skrypt, nie musi być częścią klastra.
+Ten skrypt można uruchomić na dowolnym komputerze, który ma dostęp administratora do wszystkich maszyn, które są wymienione jako węzły w pliku konfiguracji klastra. Komputer, na którym uruchamiany jest skrypt nie musi być częścią klastra.
 
 ```powershell
 # Removes Service Fabric from each machine in the configuration

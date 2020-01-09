@@ -1,28 +1,19 @@
 ---
-title: Samouczek — wdrażanie aplikacji w usłudze Azure Service Fabric Mesh | Microsoft Docs
+title: Samouczek — wdrażanie aplikacji na platformie Azure Service Fabric siatką
 description: Z tego samouczka dowiesz się, jak wdrożyć aplikację w usłudze Service Fabric Mesh przy użyciu szablonu.
-services: service-fabric-mesh
-documentationcenter: .net
 author: dkkapur
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric-mesh
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 01/11/2019
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: ce063d8a256cbf2507e19d459aafe13150eccce7
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 1ff1407400843fdb0f0ff997e2e0a3c1b7e67c7d
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66306947"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75494941"
 ---
-# <a name="tutorial-deploy-an-application-to-service-fabric-mesh-using-a-template"></a>Samouczek: Wdrażanie aplikacji w usłudze Service Fabric Mesh przy użyciu szablonu
+# <a name="tutorial-deploy-an-application-to-service-fabric-mesh-using-a-template"></a>Samouczek: wdrażanie aplikacji w usłudze Service Fabric Mesh przy użyciu szablonu
 
 Niniejszy samouczek jest pierwszą częścią serii. Dowiesz się, jak wdrożyć aplikację usługi Azure Service Fabric Mesh przy użyciu szablonu.  Aplikacja składa się z usługi internetowej frontonu platformy ASP.NET i usługi zaplecza internetowego interfejsu API platformy ASP.NET Core, które znajdują się w usłudze Docker Hub.  Ściągniesz te dwa obrazy kontenerów z usługi Docker Hub, a następnie wypchniesz je do swojego własnego, prywatnego rejestru. Następnie utworzysz szablon usługi Azure RM dla aplikacji i wdrożysz aplikację ze swojego rejestru kontenerów do usługi Service Fabric Mesh. Gdy skończysz, będziesz mieć prostą aplikację listy zadań do wykonania działającą w usłudze Service Fabric Mesh.
 
@@ -47,7 +38,7 @@ Ta seria samouczków zawiera informacje na temat wykonywania następujących czy
 
 Przed rozpoczęciem tego samouczka:
 
-* Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem możesz [utworzyć bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem możesz utworzyć [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 * [Zainstaluj platformę Docker](service-fabric-mesh-howto-setup-developer-environment-sdk.md#install-docker)
 
@@ -59,7 +50,7 @@ Obrazy kontenera skojarzone z usługami w aplikacji usługi Service Fabric Mesh 
 
 Utwórz wystąpienie usługi ACR przy użyciu poniższej procedury.  Jeśli masz już skonfigurowane wystąpienia usługi ACR, możesz pominąć ten krok i przejść dalej.
 
-### <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
+### <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
 
 Zaloguj się do platformy Azure i ustaw aktywną subskrypcję.
 
@@ -139,7 +130,7 @@ docker tag seabreeze/azure-mesh-todo-webfrontend:1.0-nanoserver-1709 mycontainer
 docker tag seabreeze/azure-mesh-todo-service:1.0-nanoserver-1709 mycontainerregistry.azurecr.io/seabreeze/azure-mesh-todo-service:1.0-nanoserver-1709
 ```
 
-Zaloguj się do usługi Azure Container Registry.
+Zaloguj się do Azure Container Registry.
 
 ```azurecli
 az acr login -n myContainerRegistry
@@ -264,7 +255,7 @@ Usługi są określone w szablonie jako właściwości zasobu aplikacji.  Aplika
                   "endpoints": [
                     {
                       "name": "ServiceAListener",
-                      "port": 20001
+                      "port": 80
                     }
                   ],
                   "resources": {

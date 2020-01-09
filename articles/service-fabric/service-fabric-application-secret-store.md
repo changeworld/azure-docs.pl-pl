@@ -1,18 +1,14 @@
 ---
-title: Magazyn Service Fabric Secret | Microsoft Docs
+title: Magazyn danych tajnych Service Fabric
 description: W tym artykule opisano sposób korzystania z magazynu wpisów tajnych Service Fabric.
-services: service-fabric
-author: athinanthny
-ms.service: service-fabric
 ms.topic: conceptual
 ms.date: 07/25/2019
-ms.author: atsenthi
-ms.openlocfilehash: 5315a8806f45e40204e8500e97c3440bfa9ab8b2
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 16608d9eaf12fc9abc535ef316d7b5e8b74a8b37
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74077351"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457506"
 ---
 #  <a name="service-fabric-secrets-store"></a>Magazyn danych tajnych Service Fabric
 W tym artykule opisano sposób tworzenia i używania wpisów tajnych w aplikacjach Service Fabric przy użyciu magazynu Service Fabric Secret (CSS). CSS to lokalna pamięć podręczna magazynu lokalnych wpisów tajnych, używana do przechowywania poufnych danych, takich jak hasło, tokeny i klucze szyfrowane w pamięci.
@@ -24,8 +20,8 @@ W tym artykule opisano sposób tworzenia i używania wpisów tajnych w aplikacja
     [
         ...
     {
+        "name":  "CentralSecretService",
         "parameters":  [
-            "name":  "CentralSecretService"
                 {
                     "name":  "IsEnabled",
                     "value":  "true"
@@ -46,6 +42,9 @@ W tym artykule opisano sposób tworzenia i używania wpisów tajnych w aplikacja
                 ],
             },
             ]
+     }
+        ...
+     ]
 ```
 ## <a name="declare-secret-resource"></a>Zadeklaruj zasób tajny
 Zasób tajny można utworzyć przy użyciu szablonu Menedżer zasobów lub interfejsu API REST.

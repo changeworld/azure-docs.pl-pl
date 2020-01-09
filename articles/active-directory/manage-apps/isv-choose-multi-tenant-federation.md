@@ -12,12 +12,12 @@ ms.date: 05/22/2019
 ms.author: baselden
 ms.reviewer: jeeds
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c05ad3eace1219e19e0bfb117d3ec8de68a756f9
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 3b3edbbe037c3874d639476e516b3732b7573d9b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232295"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443371"
 ---
 # <a name="choose-the-right-federation-protocol-for-your-multi-tenant-application"></a>Wybieranie odpowiedniego protokołu federacyjnego dla aplikacji wielodostępnej
 
@@ -30,7 +30,7 @@ Poniższa tabela zawiera porównanie
 * SAML (SAML)
 * Federacja usług sieci Web (WSFed)
 
-| Możliwości| OAuth/OIDC| SAML/WSFed |
+| Możliwość| OAuth/OIDC| SAML/WSFed |
 | - |-|-|
 | Logowanie jednokrotne oparte na sieci Web| √| √ |
 | Logowanie jednokrotne oparte na sieci Web| √| √ |
@@ -44,7 +44,7 @@ Poniższa tabela zawiera porównanie
 
 ## <a name="oauth-20-and-open-id-connect"></a>Uwierzytelnianie OAuth 2,0 i łączenie z otwartym IDENTYFIKATORem
 
-Uwierzytelnianie OAuth 2,0 jest [standardowym](https://oauth.net/2/) protokołem do autoryzacji. OIDC (OpenID Connect Connect) to [standardowa](https://openid.net/connect/) warstwa uwierzytelniania tożsamości oparta na protokole Oath 2,0.
+Uwierzytelnianie OAuth 2,0 jest [standardowym](https://oauth.net/2/) protokołem do autoryzacji. OIDC (OpenID Connect Connect) to [standardowa](https://openid.net/connect/) warstwa uwierzytelniania tożsamości oparta na protokole OAuth 2,0.
 
 ### <a name="benefits"></a>Korzyści
 

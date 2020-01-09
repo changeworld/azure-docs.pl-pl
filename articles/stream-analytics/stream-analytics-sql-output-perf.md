@@ -1,20 +1,18 @@
 ---
 title: Azure Stream Analytics dane wyjściowe do Azure SQL Database
 description: Dowiedz się więcej na temat wyprowadzania danych do platformy SQL Azure z Azure Stream Analytics i osiągnięcia wyższych stawek przepływności zapisu.
-services: stream-analytics
 author: chetanmsft
 ms.author: chetang
-manager: katiiceva
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/18/2019
-ms.openlocfilehash: 7845833a0269514c8fdbd093e18d4516ff9567d9
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: f68f973882af28d80b3a27bc4591c5ee932404a1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70173000"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443602"
 ---
 # <a name="azure-stream-analytics-output-to-azure-sql-database"></a>Azure Stream Analytics dane wyjściowe do Azure SQL Database
 
@@ -24,9 +22,9 @@ Dane wyjściowe SQL w Azure Stream Analytics obsługują pisanie równoległe ja
 
 Poniżej przedstawiono konfiguracje w ramach każdej usługi, która może pomóc w zwiększeniu ogólnej przepływności rozwiązania.
 
-## <a name="azure-stream-analytics"></a>Usługa Azure Stream Analytics
+## <a name="azure-stream-analytics"></a>Azure Stream Analytics
 
-- **Dziedzicz partycjonowanie** — ta opcja konfiguracji danych wyjściowych SQL umożliwia dziedziczenie schematu partycjonowania poprzedniego kroku zapytania lub danych wejściowych. Dzięki temu można zapisywać dane w tabeli opartej na dyskach i mieć w [pełni równoległą](stream-analytics-parallelization.md#embarrassingly-parallel-jobs) topologię dla danego zadania, co pozwala na wyświetlanie większej przepływności. Takie partycjonowanie jest już automatycznie wykonywane dla [](stream-analytics-parallelization.md#partitions-in-sources-and-sinks)wielu innych danych wyjściowych. Blokowanie tabeli (TABLOCK) jest również wyłączone dla operacji wstawiania zbiorczego z tą opcją.
+- **Dziedzicz partycjonowanie** — ta opcja konfiguracji danych wyjściowych SQL umożliwia dziedziczenie schematu partycjonowania poprzedniego kroku zapytania lub danych wejściowych. Dzięki temu można zapisywać dane w tabeli opartej na dyskach i mieć w [pełni równoległą](stream-analytics-parallelization.md#embarrassingly-parallel-jobs) topologię dla danego zadania, co pozwala na wyświetlanie większej przepływności. Takie partycjonowanie jest już automatycznie wykonywane dla wielu innych danych [wyjściowych](stream-analytics-parallelization.md#partitions-in-sources-and-sinks). Blokowanie tabeli (TABLOCK) jest również wyłączone dla operacji wstawiania zbiorczego z tą opcją.
 
 > [!NOTE] 
 > Jeśli istnieje więcej niż 8 partycji wejściowych, dziedziczenie schematu partycjonowania danych wejściowych może nie być odpowiednią opcją. Ten górny limit został zaobserwowany w tabeli z kolumną o pojedynczej tożsamości i indeksem klastrowanym. W takim przypadku Rozważ użycie [do](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics#into-shard-count) 8 w zapytaniu, aby jawnie określić liczbę składników zapisywania danych wyjściowych. W oparciu o schemat i wybór indeksów Twoje uwagi mogą się różnić.
@@ -39,11 +37,11 @@ Poniżej przedstawiono konfiguracje w ramach każdej usługi, która może pomó
 
 - **Partycjonowane tabele i indeksy** — za pomocą [partycjonowanej](https://docs.microsoft.com/sql/relational-databases/partitions/partitioned-tables-and-indexes?view=sql-server-2017) tabeli SQL i indeksów partycjonowanych w tabeli z tą samą kolumną, co klucz partycji (na przykład PartitionID), może znacznie zmniejszyć rywalizację między partycjami podczas operacji zapisu. W przypadku partycjonowanej tabeli należy utworzyć [funkcję partycji](https://docs.microsoft.com/sql/t-sql/statements/create-partition-function-transact-sql?view=sql-server-2017) i [schemat partycji](https://docs.microsoft.com/sql/t-sql/statements/create-partition-scheme-transact-sql?view=sql-server-2017) w podstawowej grupie plików. Spowoduje to również zwiększenie dostępności istniejących danych podczas ładowania nowych danych. Limit operacji we/wy dziennika można uzyskać na podstawie liczby partycji, które można zwiększyć, uaktualniając jednostkę SKU.
 
-- **Unikaj unikatowych naruszeń klucza** — Jeśli w dzienniku aktywności Azure Stream Analytics występuje [wiele komunikatów ostrzegawczych naruszenia klucza](stream-analytics-troubleshoot-output.md#key-violation-warning-with-azure-sql-database-output) , upewnij się, że na zadaniu nie ma wpływu unikatowe naruszenia ograniczenia, które prawdopodobnie wystąpią w przypadku przypadków odzyskiwania. Można to uniknąć przez ustawienie opcji [\_Ignoruj DUP\_klucza](stream-analytics-troubleshoot-output.md#key-violation-warning-with-azure-sql-database-output) w indeksach.
+- **Unikaj unikatowych naruszeń klucza** — Jeśli w dzienniku aktywności Azure Stream Analytics występuje [wiele komunikatów ostrzegawczych naruszenia klucza](stream-analytics-troubleshoot-output.md#key-violation-warning-with-azure-sql-database-output) , upewnij się, że na zadaniu nie ma wpływu unikatowe naruszenia ograniczenia, które prawdopodobnie wystąpią w przypadku przypadków odzyskiwania. Można to uniknąć, ustawiając opcję [ignoruj\_DUP\_Key](stream-analytics-troubleshoot-output.md#key-violation-warning-with-azure-sql-database-output) w indeksach.
 
 ## <a name="azure-data-factory-and-in-memory-tables"></a>Azure Data Factory i tabele w pamięci
 
-- **Tabela w pamięci jako** tabela tymczasowa — [tabele w pamięci](/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization) umożliwiają korzystanie z bardzo dużych ilości danych, ale dane muszą być dopasowane do pamięci. Testy porównawcze pokazują zbiorcze ładowanie z tabeli w pamięci do tabeli opartej na dyskach — około 10 razy szybciej niż bezpośrednio, wstawiając przy użyciu jednego składnika zapisywania do tabeli opartej na dyskach z kolumną tożsamości i indeksem klastrowanym. Aby skorzystać z tej zbiorczej wydajności wstawiania, skonfiguruj [zadanie kopiowania przy użyciu Azure Data Factory](../data-factory/connector-azure-sql-database.md) , które kopiuje dane z tabeli w pamięci do tabeli opartej na dyskach.
+- **Tabela w pamięci jako tabela tymczasowa** — [tabele w pamięci](/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization) umożliwiają korzystanie z bardzo dużych ilości danych, ale dane muszą być dopasowane do pamięci. Testy porównawcze pokazują zbiorcze ładowanie z tabeli w pamięci do tabeli opartej na dyskach — około 10 razy szybciej niż bezpośrednio, wstawiając przy użyciu jednego składnika zapisywania do tabeli opartej na dyskach z kolumną tożsamości i indeksem klastrowanym. Aby skorzystać z tej zbiorczej wydajności wstawiania, skonfiguruj [zadanie kopiowania przy użyciu Azure Data Factory](../data-factory/connector-azure-sql-database.md) , które kopiuje dane z tabeli w pamięci do tabeli opartej na dyskach.
 
 ## <a name="avoiding-performance-pitfalls"></a>Uniknięcie pułapek wydajności
 Zbiorcze Wstawianie danych jest znacznie szybsze niż ładowanie danych przy użyciu pojedynczych operacji wstawiania, ponieważ wielokrotne obciążenie związane z transferem danych, analizowaniem instrukcji INSERT, wykonywaniem instrukcji i wydawanie rekordu transakcji jest możliwe. Zamiast tego do aparatu magazynu jest używana bardziej wydajna ścieżka do przesyłania strumieniowego danych. Koszt instalacji tej ścieżki jest jednak znacznie wyższy niż w przypadku pojedynczej instrukcji INSERT w tabeli opartej na dyskach. Punkt parzystości jest zwykle wokół 100 wierszy, po których ładowanie zbiorcze jest prawie zawsze wydajniejsze. 

@@ -11,17 +11,17 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 manager: craigg
-ms.date: 09/26/2019
-ms.openlocfilehash: 1754168478caf3ca029e003ad0187fc29e85fa8a
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.date: 12/13/2019
+ms.openlocfilehash: 6b880696b4922c68c73ce4ff59f72a62ce5a5a30
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74997296"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75348972"
 ---
 # <a name="automated-backups"></a>Zautomatyzowane kopie zapasowe
 
-SQL Database automatycznie tworzy kopie zapasowe bazy danych, które są przechowywane od 7 do 35 dni, i używa [magazynu geograficznie nadmiarowego platformy Azure do odczytu (RA-GRS)](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage) , aby upewnić się, że są one zachowywane, nawet jeśli centrum danych jest niedostępne. Te kopie zapasowe są tworzone automatycznie. Kopie zapasowe bazy danych są istotną częścią strategii ciągłości działania i odzyskiwania po awarii, ponieważ chronią dane przed przypadkowym uszkodzeniem lub usunięciem. Jeśli reguły zabezpieczeń wymagają, aby kopie zapasowe były dostępne przez dłuższy czas (do 10 lat), można skonfigurować [długoterminowe przechowywanie](sql-database-long-term-retention.md) pojedynczych baz danych i pul elastycznych.
+SQL Database automatycznie tworzy kopie zapasowe bazy danych przechowywane przez czas trwania skonfigurowanego okresu przechowywania i korzysta z [magazynu geograficznie nadmiarowego platformy Azure do odczytu (RA-GRS)](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage) , aby upewnić się, że są one zachowywane, nawet jeśli centrum danych jest niedostępne. Te kopie zapasowe są tworzone automatycznie. Kopie zapasowe bazy danych są istotną częścią strategii ciągłości działania i odzyskiwania po awarii, ponieważ chronią dane przed przypadkowym uszkodzeniem lub usunięciem. Jeśli reguły zabezpieczeń wymagają, aby kopie zapasowe były dostępne przez dłuższy czas (do 10 lat), można skonfigurować [długoterminowe przechowywanie](sql-database-long-term-retention.md) pojedynczych baz danych i pul elastycznych.
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
@@ -32,8 +32,6 @@ SQL Database używa technologii SQL Server do tworzenia [pełnych kopii zapasowy
 Tych kopii zapasowych można użyć w następujących celach:
 
 - **Przywróć istniejącą bazę danych do punktu w czasie w ciągu ostatnich** w okresie przechowywania przy użyciu Azure Portal, Azure PowerShell, interfejsu wiersza polecenia platformy Azure lub API REST. W przypadku pojedynczej bazy danych i pul elastycznych ta operacja spowoduje utworzenie nowej bazy danych na tym samym serwerze, na którym znajduje się oryginalna baza danych. W wystąpieniu zarządzanym ta operacja umożliwia utworzenie kopii bazy danych lub tego samego lub innego wystąpienia zarządzanego w ramach tej samej subskrypcji.
-  - Aby skonfigurować zasady tworzenia kopii zapasowych, należy **[zmienić okres przechowywania kopii zapasowych](#how-to-change-the-pitr-backup-retention-period)** od 7 do 35 dni.
-  - **Zmień długoterminowe zasady przechowywania do 10 lat** na pojedyncza baza danych i elastycznych pul przy użyciu [Azure Portal](sql-database-long-term-backup-retention-configure.md#configure-long-term-retention-policies) lub [Azure PowerShell](sql-database-long-term-backup-retention-configure.md#using-powershell).
 - **Przywracanie usuniętej bazy danych do czasu jej usunięcia** lub w dowolnym momencie w okresie przechowywania. Usunięta baza danych może zostać przywrócona tylko na tym samym serwerze logicznym lub wystąpieniu zarządzanym, w którym została utworzona oryginalna baza danych.
 - **Przywracanie bazy danych do innego regionu geograficznego**. Funkcja przywracania geograficznego umożliwia odzyskanie danych po awarii geograficznej, gdy nie można uzyskać dostępu do serwera i bazy danych. Tworzy nową bazę danych na dowolnym istniejącym serwerze w dowolnym miejscu na świecie.
 - **Przywracanie bazy danych z określonej długoterminowej kopii zapasowej** na pojedyncza baza danych lub Pula elastyczna, jeśli baza danych została skonfigurowana z użyciem długoterminowych zasad przechowywania. LTR umożliwia przywrócenie starej wersji bazy danych przy użyciu [Azure Portal](sql-database-long-term-backup-retention-configure.md#using-azure-portal) lub [Azure PowerShell](sql-database-long-term-backup-retention-configure.md#using-powershell) w celu spełnienia żądania zgodności lub w celu uruchomienia starej wersji aplikacji. Aby uzyskać więcej informacji, zobacz [Długoterminowe przechowywanie](sql-database-long-term-retention.md).
@@ -52,9 +50,85 @@ Niektóre z tych operacji można wypróbować, korzystając z następujących pr
 | Przywracanie usuniętej bazy danych | [Pojedyncza baza danych](sql-database-recovery-using-backups.md) | [Pojedyncza baza danych](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeleteddatabasebackup) <br/> [Wystąpienie zarządzane](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeletedinstancedatabasebackup)|
 | Przywracanie bazy danych z usługi Azure Blob Storage | Pojedyncza baza danych — nie dotyczy <br/>Wystąpienie zarządzane — nie dotyczy  | Pojedyncza baza danych — nie dotyczy <br/>[Wystąpienie zarządzane](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started-restore) |
 
-## <a name="how-long-are-backups-kept"></a>Jak długo są przechowywane kopie zapasowe
 
-Wszystkie bazy danych Azure SQL Database (pojedyncze, w puli i zarządzane wystąpienia bazy danych) mają domyślny okres przechowywania kopii zapasowych wynoszący **siedem** dni. [Okres przechowywania kopii zapasowej można zmienić do 35 dni](#how-to-change-the-pitr-backup-retention-period).
+## <a name="backup-frequency"></a>Częstotliwość wykonywania kopii zapasowych
+
+### <a name="point-in-time-restore"></a>Przywracanie do określonego momentu
+
+SQL Database obsługuje samoobsługowe przywracanie do punktu w czasie (kopie) przez automatyczne tworzenie pełnych kopii zapasowych, różnicowych kopii zapasowych i kopii zapasowych dziennika transakcji. Tworzenie pełnych kopii zapasowych bazy danych jest tworzone co tydzień, różnicowe kopie zapasowe bazy danych są zwykle tworzone co 12 godzin, a kopie zapasowe dziennika transakcji są zwykle tworzone co 5-10 minut, z częstotliwością opartą na wielkości i liczbie działań związanych z bazą danych. Pierwsza pełna kopia zapasowa jest zaplanowana natychmiast po utworzeniu bazy danych. Zwykle kończy się to w ciągu 30 minut, ale może trwać dłużej, gdy baza danych ma znaczący rozmiar. Na przykład początkowa kopia zapasowa może trwać dłużej w przywróconej bazie danych lub kopii bazy danych. Po utworzeniu pierwszej pełnej kopii zapasowej wszystkie kolejne kopie zapasowe są zaplanowane automatycznie i zarządzane w trybie dyskretnym w tle. Dokładne terminy wykonywania wszystkich kopii zapasowych bazy danych są określane przez usługę SQL Database, ponieważ równoważy ona całkowite obciążenie systemu. Nie można zmienić ani wyłączyć zadań tworzenia kopii zapasowej. 
+
+Kopie zapasowe kopie są dublowane geograficznie i chronione przez [międzyregionalną replikację usługi Azure Storage](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage)
+
+Aby uzyskać więcej informacji, zobacz [przywracanie do punktu w czasie](sql-database-recovery-using-backups.md#point-in-time-restore)
+
+### <a name="long-term-retention"></a>Długoterminowe przechowywanie
+
+Pojedyncze i w puli bazy danych oferują możliwość skonfigurowania długoterminowego przechowywania (LTR) dla pełnych kopii zapasowych w okresie do 10 lat w usłudze Azure Blob Storage. Jeśli zasada LTR jest włączona, cotygodniowe pełne kopie zapasowe są automatycznie kopiowane do innego kontenera magazynu RA-GRS. Aby spełnić inne wymagania dotyczące zgodności, można wybrać różne okresy przechowywania dla cotygodniowych, comiesięcznych i/lub corocznych kopii zapasowych. Użycie magazynu zależy od wybranej częstotliwości wykonywania kopii zapasowych i okresów przechowywania. Możesz użyć [kalkulatora cen ltr](https://azure.microsoft.com/pricing/calculator/?service=sql-database) , aby oszacować koszt magazynu ltr.
+
+Podobnie jak w przypadku kopie, kopie zapasowe oddzielone są geograficznie nadmiarowe i chronione przez [replikację międzyregionalną usługi Azure Storage](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage).
+
+Aby uzyskać więcej informacji, zobacz [długoterminowe przechowywanie kopii zapasowych](sql-database-long-term-retention.md).
+
+## <a name="backup-storage-consumption"></a>Użycie magazynu kopii zapasowych 
+
+W przypadku pojedynczych baz danych całkowite użycie magazynu kopii zapasowych jest obliczane w następujący sposób:   
+`Total backup storage size = (size of full backups + size of differential backups + size of log backups) – database size`.
+
+W przypadku pul elastycznych łączny rozmiar magazynu kopii zapasowych jest agregowany na poziomie puli i obliczany w następujący sposób:   
+`Total backup storage size = (total size of all full backups + total size of all differential backups + total size of all log backups) - allocated pool data storage`. 
+
+Kopie zapasowe, które są starsze niż okres przechowywania, są automatycznie przeczyszczane na podstawie ich sygnatur czasowych. Ze względu na to, że różnicowe kopie zapasowe i kopie zapasowe dzienników wymagają użycia wcześniejszej pełnej kopii zapasowej, są one usuwane razem w tygodniowych fragmentach. 
+
+Azure SQL Database oblicza łączny magazyn kopii zapasowych w magazynie jako wartość zbiorczą. Co godzinę ta wartość jest raportowana w potoku rozliczania na platformie Azure, który jest odpowiedzialny za agregowanie tego użycia godzinowego w celu obliczenia zużycia na koniec każdego miesiąca. Po porzucenia bazy danych zużycie zmniejsza się w miarę starzenia się kopii zapasowych. Gdy kopie zapasowe staną się starsze niż okres przechowywania, rozliczenia zostaną zatrzymane. 
+
+
+### <a name="monitoring-consumption"></a>Monitorowanie użycia
+
+Każdy typ kopii zapasowej (pełny, różnicowa i log) jest raportowany w bloku monitorowania bazy danych jako oddzielna Metryka. Na poniższym diagramie przedstawiono sposób monitorowania użycia magazynu kopii zapasowych.  
+
+![Monitoruj użycie kopii zapasowej bazy danych w bloku monitorowanie bazy danych Azure Portal](media/sql-database-automated-backup/backup-metrics.png)
+
+### <a name="fine-tune-the-backup-storage-consumption"></a>Dostosuj użycie magazynu kopii zapasowych
+
+Nadmierne użycie magazynu kopii zapasowych będzie zależeć od obciążenia i rozmiaru poszczególnych baz danych. Można rozważyć wdrożenie niektórych spośród następujących technik dostrajania, aby bardziej ograniczyć użycie magazynu kopii zapasowych:
+
+* Skrócenie [okresu przechowywania kopii zapasowej](#change-pitr-backup-retention-period-using-azure-portal) do minimum możliwego dla Twoich potrzeb.
+* Unikaj wykonywania dużych operacji zapisu częściej niż to trzeba, takich jak ponowne kompilacje indeksów.
+* W przypadku dużych operacji ładowania danych Rozważ użycie [klastrowanych indeksów magazynu kolumn](https://docs.microsoft.com/sql/database-engine/using-clustered-columnstore-indexes), zmniejszenie liczby indeksów nieklastrowanych, a także uwzględnienie operacji ładowania zbiorczego z liczbą wierszy około 1 000 000.
+* W Ogólnego przeznaczenia warstwie usług zainicjowany magazyn danych jest tańszy niż cena nadmiarowego magazynu kopii zapasowych, dzięki czemu klienci, którzy mają ciągle wysokie koszty magazynowania kopii zapasowych, mogą rozważyć zwiększenie magazynu danych w celu zaoszczędzenia na Magazyn kopii zapasowych.
+* Użyj bazy danych TempDB w logice ETL do przechowywania tymczasowych wyników zamiast tabel trwałych (dotyczy tylko wystąpienia zarządzanego).
+* Należy rozważyć wyłączenie szyfrowania TDE dla baz danych, które nie zawierają poufnych danych (np. programistycznych lub testowych baz danych, na przykład). Kopie zapasowe nieszyfrowanych baz danych są zazwyczaj kompresowane z wyższym współczynnikiem kompresji.
+
+> [!IMPORTANT]
+> W przypadku analiz, składnicy danych \ obciążenia magazynu danych zdecydowanie zaleca się użycie [klastrowanych indeksów magazynu kolumn](https://docs.microsoft.com/sql/database-engine/using-clustered-columnstore-indexes), zmniejszenie liczby indeksów nieklastrowanych, a także uwzględnienie operacji ładowania zbiorczego z liczbą wierszy około 1 000 000 w celu zmniejszenia nadmiernego zużycia magazynu kopii zapasowych.
+
+
+## <a name="storage-costs"></a>Koszty magazynu
+
+
+### <a name="dtu-model"></a>Model DTU
+
+Nie ma dodatkowej opłaty za magazyn kopii zapasowych baz danych i pul elastycznych przy użyciu modelu DTU. 
+
+### <a name="vcore-model"></a>Model rdzenia wirtualnego
+
+W przypadku pojedynczych baz danych jest dostępna minimalna ilość miejsca w magazynie kopii zapasowych równa 100% rozmiaru bazy danych. W przypadku pul elastycznych i wystąpień zarządzanych minimalna ilość miejsca w magazynie kopii zapasowej równa 100% przydzielony magazyn danych dla puli lub rozmiaru wystąpienia jest zapewniana bez dodatkowych opłat. Dodatkowe użycie magazynu kopii zapasowych wiąże się z comiesięczną opłatą za ilość używanych GB. To dodatkowe zużycie będzie zależeć od obciążenia i rozmiaru poszczególnych baz danych.
+
+Usługa Azure SQL DB obliczy całkowity magazyn kopii zapasowych w magazynie jako wartość zbiorczą. Co godzinę ta wartość jest raportowana w potoku rozliczeń platformy Azure, który jest odpowiedzialny za agregowanie tego użycia godzinowego w celu uzyskania zużycia na koniec każdego miesiąca. Po porzucenia bazy danych zmniejszamy użycie jako wiek kopii zapasowych. Rozliczenia zostaną zatrzymane, gdy staną się starsze niż okres przechowywania. Ponieważ wszystkie kopie zapasowe dzienników i różnicowe kopie zapasowe są zachowywane przez pełny okres przechowywania, bazy danych, które są wielokrotnie modyfikowane, będą mieć wyższe opłaty za kopie zapasowe. 
+
+Załóżmy, że baza danych ma 744 GB miejsca w magazynie kopii zapasowych, a ta kwota pozostaje stała przez cały miesiąc. Aby przekonwertować zbiorcze użycie magazynu na godzinę, należy podzielić ją na 744,0 (31 dni miesięcznie * 24 godziny dziennie). W takim przypadku baza danych SQL Database wykorzystano 1 GB kopie kopii zapasowej co godzinę. Rozliczenia na platformie Azure zostaną zagregowane i zostanie wyświetlone użycie 744 GB przez cały miesiąc i koszt w oparciu o stawkę $/GB/mo w Twoim regionie. 
+
+Teraz bardziej skomplikowany przykład. Załóżmy, że czas przechowywania bazy danych wzrósł do 14 dni w środku miesiąca, a to (teoretycznie) skutkuje łącznym magazynem kopii zapasowych Podwajanie do 1488 GB. Baza danych SQL może zgłosić 1 GB użycia w godzinach 1-372, a następnie zgłosić użycie jako 2 GB dla godzin 373-744. Ta wartość zostanie zagregowana jako końcowy rachunek 1116 GB/miesiąc. 
+
+Możesz użyć analizy kosztów subskrypcji platformy Azure, aby określić bieżące wydatki na magazyn kopii zapasowych.
+
+![Analiza kosztów magazynu kopii zapasowych](./media/sql-database-automated-backup/check-backup-storage-cost-sql-mi.png)
+
+Aby na przykład poznać koszty magazynu kopii zapasowych dla wystąpienia zarządzanego, przejdź do subskrypcji w Azure Portal i Otwórz blok analiza kosztów. Wybierz podkategorię miernika **kopie Backup Storage** , aby wyświetlić bieżące koszty tworzenia kopii zapasowych i prognozę opłat. Możesz również uwzględnić inne podkategorie mierników, takie jak **wystąpienia zarządzane ogólnego przeznaczenia — magazyn** lub **wystąpienie zarządzane — 5 rdzeń obliczeniowe** , aby porównać koszty magazynu kopii zapasowych z innymi kategoriami kosztów.
+
+## <a name="backup-retention"></a>Przechowywanie kopii zapasowych
+
+Wszystkie bazy danych Azure SQL Database (pojedyncze, w puli i zarządzane wystąpienia bazy danych) mają domyślny okres przechowywania kopii zapasowych wynoszący **siedem** dni. [Okres przechowywania kopii zapasowej można zmienić do 35 dni](#change-pitr-backup-retention-period).
 
 Jeśli usuniesz bazę danych, SQL Database będą zachować kopie zapasowe w taki sam sposób, jak w przypadku bazy danych w trybie online. Na przykład po usunięciu podstawowej bazy danych, która ma okres przechowywania wynoszący siedem dni, kopia zapasowa, która jest starsza niż cztery dni, jest zapisywana przez trzy więcej dni.
 
@@ -63,43 +137,11 @@ Jeśli chcesz zachować kopie zapasowe dłużej niż maksymalny okres przechowyw
 > [!IMPORTANT]
 > Usunięcie programu Azure SQL Server, który hostuje bazy danych SQL, spowoduje również usunięcie wszystkich pul elastycznych i baz danych, które należą do serwera, i nie będzie można ich odzyskać. Nie można przywrócić usuniętego serwera. Jeśli jednak skonfigurowano długoterminowe przechowywanie, kopie zapasowe baz danych z tą literą nie zostaną usunięte i można przywrócić te bazy danych.
 
-## <a name="how-often-do-backups-happen"></a>Jak często wykonywane są kopie zapasowe
-
-### <a name="backups-for-point-in-time-restore"></a>Kopie zapasowe do przywracania do punktu w czasie
-
-SQL Database obsługuje samoobsługowe przywracanie do punktu w czasie (kopie) przez automatyczne tworzenie pełnych kopii zapasowych, różnicowych kopii zapasowych i kopii zapasowych dziennika transakcji. Tworzenie pełnych kopii zapasowych bazy danych jest tworzone co tydzień, różnicowe kopie zapasowe bazy danych są zwykle tworzone co 12 godzin, a kopie zapasowe dziennika transakcji są zwykle tworzone co 5-10 minut, z częstotliwością opartą na wielkości i liczbie działań związanych z bazą danych. Pierwsza pełna kopia zapasowa jest zaplanowana natychmiast po utworzeniu bazy danych. Zwykle kończy się to w ciągu 30 minut, ale może trwać dłużej, gdy baza danych ma znaczący rozmiar. Na przykład początkowa kopia zapasowa może trwać dłużej w przywróconej bazie danych lub kopii bazy danych. Po utworzeniu pierwszej pełnej kopii zapasowej wszystkie kolejne kopie zapasowe są zaplanowane automatycznie i zarządzane w trybie dyskretnym w tle. Dokładne terminy wykonywania wszystkich kopii zapasowych bazy danych są określane przez usługę SQL Database, ponieważ równoważy ona całkowite obciążenie systemu. Nie można zmienić ani wyłączyć zadań tworzenia kopii zapasowej. 
-
-Kopie zapasowe kopie są dublowane geograficznie i chronione przez [międzyregionalną replikację usługi Azure Storage](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage)
-
-Aby uzyskać więcej informacji, zobacz [przywracanie do punktu w czasie](sql-database-recovery-using-backups.md#point-in-time-restore)
-
-### <a name="backups-for-long-term-retention"></a>Tworzenie kopii zapasowych na potrzeby długoterminowego przechowywania
-
-Pojedyncze i w puli bazy danych oferują możliwość skonfigurowania długoterminowego przechowywania (LTR) dla pełnych kopii zapasowych w okresie do 10 lat w usłudze Azure Blob Storage. Jeśli zasada LTR jest włączona, cotygodniowe pełne kopie zapasowe są automatycznie kopiowane do innego kontenera magazynu RA-GRS. Aby spełnić inne wymagania dotyczące zgodności, można wybrać różne okresy przechowywania dla cotygodniowych, comiesięcznych i/lub corocznych kopii zapasowych. Użycie magazynu zależy od wybranej częstotliwości wykonywania kopii zapasowych i okresów przechowywania. Możesz użyć [kalkulatora cen ltr](https://azure.microsoft.com/pricing/calculator/?service=sql-database) , aby oszacować koszt magazynu ltr.
-
-Podobnie jak w przypadku kopie, kopie zapasowe oddzielone są geograficznie nadmiarowe i chronione przez [replikację międzyregionalną usługi Azure Storage](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage).
-
-Aby uzyskać więcej informacji, zobacz [długoterminowe przechowywanie kopii zapasowych](sql-database-long-term-retention.md).
-
-## <a name="storage-costs"></a>Koszty magazynu
-W przypadku pojedynczych baz danych i wystąpień zarządzanych minimalna ilość miejsca w magazynie kopii zapasowej równa 100% rozmiaru bazy danych jest zapewniana bez dodatkowych opłat. W przypadku pul elastycznych minimalna ilość miejsca w magazynie kopii zapasowych równa 100% przydzielony magazyn danych dla puli jest udostępniana bez dodatkowych opłat. Dodatkowe użycie magazynu kopii zapasowych wiąże się z comiesięczną opłatą za ilość używanych GB. To dodatkowe zużycie będzie zależeć od obciążenia i rozmiaru poszczególnych baz danych.
-
-Możesz użyć analizy kosztów subskrypcji platformy Azure, aby określić bieżące wydatki na magazyn kopii zapasowych.
-
-![Analiza kosztów magazynu kopii zapasowych](./media/sql-database-automated-backup/check-backup-storage-cost-sql-mi.png)
-
-Jeśli przejdziesz do subskrypcji i zostanie otwarty blok analiza kosztów, możesz wybrać podkategorię miernika **mi kopie Backup Storage** , aby wyświetlić bieżące koszty tworzenia kopii zapasowych i prognozę opłat. Możesz również uwzględnić inne podkategorie mierników, takie jak **wystąpienia zarządzane ogólnego przeznaczenia — magazyn** lub **wystąpienie zarządzane — 5 rdzeń obliczeniowe** , aby porównać koszty magazynu kopii zapasowych z innymi kategoriami kosztów.
-
-> [!Note]
-> [Okres przechowywania można zmienić na 7 dni](#change-pitr-backup-retention-period-using-azure-portal) , aby zmniejszyć koszty magazynu kopii zapasowych.
-
-Aby uzyskać więcej informacji o cenach magazynu, zobacz stronę z [cennikiem](https://azure.microsoft.com/pricing/details/sql-database/single/) . 
-
-## <a name="are-backups-encrypted"></a>Czy kopie zapasowe są szyfrowane
+## <a name="encrypted-backups"></a>Szyfrowane kopie zapasowe
 
 Jeśli baza danych jest zaszyfrowana przy użyciu TDE, kopie zapasowe są automatycznie szyfrowane w stanie spoczynku, łącznie z kopiami zapasowymi LTR. Gdy TDE jest włączona dla bazy danych Azure SQL, kopie zapasowe również są szyfrowane. Wszystkie nowe bazy danych SQL Azure są domyślnie skonfigurowane z włączoną funkcją TDE. Aby uzyskać więcej informacji na temat TDE, zobacz [transparent Data Encryption z Azure SQL Database](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql).
 
-## <a name="how-does-microsoft-ensure-backup-integrity"></a>Jak firma Microsoft zapewnia integralność kopii zapasowych
+## <a name="backup-integrity"></a>Integralność kopii zapasowych
 
 W związku z tym zespół inżynierów Azure SQL Database automatycznie testuje przywracanie zautomatyzowanych kopii zapasowych baz danych znajdujących się na serwerach logicznych i w pulach elastycznych (nie jest to dostępne w wystąpieniu zarządzanym). Po przywróceniu do momentu bazy danych otrzymują również kontrolę integralności przy użyciu polecenia DBCC CHECKDB.
 
@@ -107,13 +149,13 @@ Wystąpienie zarządzane pobiera automatycznie początkową kopię zapasową z `
 
 Wszelkie problemy znalezione podczas kontroli integralności spowodują powstanie alertu dla zespołu inżynieryjnego. Aby uzyskać więcej informacji na temat integralności danych w Azure SQL Database, zobacz [integralność danych w Azure SQL Database](https://azure.microsoft.com/blog/data-integrity-in-azure-sql-database/).
 
-## <a name="how-do-automated-backups-impact-compliance"></a>Jak automatyczne kopie zapasowe wpływają na zgodność
+## <a name="compliance"></a>Zgodność
 
-W przypadku migrowania bazy danych z warstwy usług opartych na protokole DTU o wartości domyślnej kopie retencji 35 dni do warstwy usługi opartej na rdzeń wirtualny, przechowywanie kopie jest zachowywane w celu zapewnienia, że zasady odzyskiwania danych aplikacji nie zostały naruszone. Jeśli domyślne przechowywanie nie spełnia wymagań dotyczących zgodności, można zmienić okres przechowywania kopie przy użyciu programu PowerShell lub interfejsu API REST. Aby uzyskać więcej informacji, zobacz [Zmienianie okresu przechowywania kopii zapasowych](#how-to-change-the-pitr-backup-retention-period).
+W przypadku migrowania bazy danych z warstwy usług opartych na jednostkach DTU do warstwy usług opartych na rdzeń wirtualny, przechowywanie kopie jest zachowywane w celu zapewnienia, że zasady odzyskiwania danych aplikacji nie zostały naruszone. Jeśli domyślne przechowywanie nie spełnia wymagań dotyczących zgodności, można zmienić okres przechowywania kopie przy użyciu programu PowerShell lub interfejsu API REST. Aby uzyskać więcej informacji, zobacz [Zmienianie okresu przechowywania kopii zapasowych](#change-pitr-backup-retention-period).
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
-## <a name="how-to-change-the-pitr-backup-retention-period"></a>Jak zmienić okres przechowywania kopii zapasowej kopie
+## <a name="change-pitr-backup-retention-period"></a>Zmień okres przechowywania kopii zapasowej kopie
 
 Domyślny okres przechowywania kopii zapasowej kopie można zmienić przy użyciu Azure Portal, programu PowerShell lub interfejsu API REST. W poniższych przykładach pokazano, jak zmienić przechowywanie kopie na 28 dni.
 

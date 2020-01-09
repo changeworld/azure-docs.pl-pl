@@ -7,13 +7,13 @@ manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 32ac91df042eb29c39cc54b738dbb96aff3104f3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 12/10/2019
+ms.openlocfilehash: 2e4a6ab8825982969ffa4654c2418f7a9d168d2e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496508"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460718"
 ---
 # <a name="analyzers-for-text-processing-in-azure-cognitive-search"></a>Analizatory do przetwarzania tekstu na platformie Azure Wyszukiwanie poznawcze
 
@@ -55,11 +55,14 @@ Kilka wstępnie zdefiniowanych analizatorów, takich jak **wzorzec** lub **Zatrz
 
 3. Opcjonalnie, zamiast jednej właściwości **analizatora** , można ustawić różne analizy do indeksowania i wykonywania zapytań przy użyciu parametrów pola **indexAnalyzer** i **searchAnalyzer** . Przy przygotowywaniu i pobieraniu danych należy używać różnych analizatorów, jeśli jedno z tych działań wymagało konkretnego przekształcenia, które nie jest potrzebne.
 
+> [!NOTE]
+> Nie można użyć innego [analizatora języka](index-add-language-analyzers.md) w czasie indeksowania niż w czasie zapytania dla pola. Ta możliwość jest zarezerwowana dla [analizatorów niestandardowych](index-add-custom-analyzers.md). Z tego powodu, jeśli spróbujesz ustawić właściwości **searchAnalyzer** lub **indexAnalyzer** jako nazwę analizatora języka, interfejs API REST zwróci odpowiedź na błąd. Zamiast tego należy użyć właściwości **Analizator** .
+
 Przypisanie **analizatora** lub **indexAnalyzer** do pola, które zostało już utworzone fizycznie jest niedozwolone. Jeśli którykolwiek z tych elementów jest niejasny, zapoznaj się z poniższą tabelą, aby zapoznać się z tym, które akcje wymagają odbudowania i dlaczego.
  
  | Scenariusz | Wpływ | Kroki |
  |----------|--------|-------|
- | Dodaj nowe pole | Mniejsze | Jeśli pole nie istnieje jeszcze w schemacie, nie istnieje żadna poprawka pola, ponieważ pole nie ma jeszcze fizycznej obecności w indeksie. Możesz użyć [indeksu aktualizacji](https://docs.microsoft.com/rest/api/searchservice/update-index) , aby dodać nowe pole do istniejącego indeksu i [mergeOrUpload](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) je wypełnić.|
+ | Dodawanie nowego pola | mniejsze | Jeśli pole nie istnieje jeszcze w schemacie, nie istnieje żadna poprawka pola, ponieważ pole nie ma jeszcze fizycznej obecności w indeksie. Możesz użyć [indeksu aktualizacji](https://docs.microsoft.com/rest/api/searchservice/update-index) , aby dodać nowe pole do istniejącego indeksu i [mergeOrUpload](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) je wypełnić.|
  | Dodaj **Analizator** lub **indexAnalyzer** do istniejącego pola indeksowanego. | [odtworzyć](search-howto-reindex.md) | Odwrócony indeks dla tego pola musi zostać odtworzony od podstaw, a zawartość tych pól musi być ponownie indeksowana. <br/> <br/>W przypadku indeksów pod aktywnym programowaniem [Usuń](https://docs.microsoft.com/rest/api/searchservice/delete-index) i [Utwórz](https://docs.microsoft.com/rest/api/searchservice/create-index) indeks, aby pobrać nową definicję pola. <br/> <br/>W przypadku indeksów w środowisku produkcyjnym można odroczyć ponowną kompilację, tworząc nowe pole w celu określenia poprawionej definicji i rozpoczęcia korzystania z niej zamiast Starego. Użyj [indeksu aktualizacji](https://docs.microsoft.com/rest/api/searchservice/update-index) , aby uwzględnić nowe pole i [mergeOrUpload](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) w celu wypełnienia. Później w ramach planowanej obsługi indeksów można wyczyścić indeks w celu usunięcia przestarzałych pól. |
 
 ## <a name="when-to-add-analyzers"></a>Kiedy należy dodawać analizatory
@@ -113,7 +116,7 @@ Przechodzenie przez ten przykład:
 
 * Analizatory są właściwością klasy Field dla pola z możliwością wyszukiwania.
 * Analizator niestandardowy jest częścią definicji indeksu. Może być odpowiednio dostosowany (na przykład dostosowanie pojedynczej opcji w jednym filtrze) lub dostosowany w wielu miejscach.
-* W takim przypadku Analizator niestandardowy to "my_analyzer", który z kolei używa niestandardowego standardowego tokenizatora "my_standard_tokenizer" i dwóch filtrów tokenów: małe litery i dostosowany filtr asciifolding "my_asciifolding".
+* W takim przypadku Analizator niestandardowy jest "my_analyzer", który z kolei używa niestandardowego standardowego tokenizatora "my_standard_tokenizer" i dwóch filtrów tokenów: małe i dostosowane filtry asciifolding "my_asciifolding".
 * Definiuje również 2 niestandardowe filtry znaków "map_dash" i "remove_whitespace". Pierwszy z nich zastępuje wszystkie kreski znakami podkreślenia, podczas gdy druga z nich usuwa wszystkie spacje. Spacje muszą być zakodowane w formacie UTF-8 w regułach mapowania. Filtry znaków są stosowane przed tokenizacji i będą miały wpływ na wynikowe tokeny (standardowy tokenizatora jest podzielony na kreski i spacje, ale nie w podkreśleniu).
 
 ~~~~
@@ -344,9 +347,9 @@ Utwórz obiekt [CustomAnalyzer](https://docs.microsoft.com/dotnet/api/microsoft.
 
 + [Skonfiguruj Niestandardowe analizatory](index-add-custom-analyzers.md) dla minimalnego przetwarzania lub wyspecjalizowanego przetwarzania dla poszczególnych pól.
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 
- [Interfejs API REST dokumentów wyszukiwania](https://docs.microsoft.com/rest/api/searchservice/search-documents) 
+ [Interfejs API REST wyszukiwania dokumentów](https://docs.microsoft.com/rest/api/searchservice/search-documents) 
 
  [Prosta składnia zapytań](query-simple-syntax.md) 
 

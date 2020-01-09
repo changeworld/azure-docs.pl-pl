@@ -1,23 +1,17 @@
 ---
-title: Magazyn klucz-wartość usługi Azure App Configuration | Microsoft Docs
-description: Przegląd sposobu przechowywania danych konfiguracji w usłudze Azure App Configuration
-services: azure-app-configuration
-documentationcenter: ''
+title: Klucz konfiguracji aplikacji platformy Azure — magazyn wartości
+description: Przegląd sposobu przechowywania danych konfiguracji w usłudze Azure App Configuration.
 author: yegu-ms
-manager: maiye
-editor: ''
-ms.service: azure-app-configuration
-ms.devlang: na
-ms.topic: overview
-ms.workload: tbd
-ms.date: 04/19/2019
 ms.author: yegu
-ms.openlocfilehash: 054de294c9edb0fe5b75da4ac7fd54ce987123de
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.service: azure-app-configuration
+ms.topic: conceptual
+ms.date: 04/19/2019
+ms.openlocfilehash: 11e019e276944e0c3f50d604420046979b5f3fbb
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185220"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75495272"
 ---
 # <a name="keys-and-values"></a>Klucze i wartości
 
@@ -86,7 +80,7 @@ Każda wartość klucza jest unikatowo identyfikowana przez jego klucz oraz etyk
 
 Można też uwzględnić następujące wzorce etykiet:
 
-| Label | |
+| Etykieta | |
 |---|---|
 | Element `label` jest pomijany lub `label=*` | Dopasowuje dowolną etykietę, która zawiera `null` |
 | `label=%00` | Dopasowuje etykietę `null` |

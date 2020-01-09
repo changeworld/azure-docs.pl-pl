@@ -1,70 +1,61 @@
 ---
-title: Debugowanie usługi Azure Service Fabric aplikacje w Windows | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak monitorować i diagnozować usługi napisane przy użyciu usługi Microsoft Azure Service Fabric na lokalnej maszynie do programowania.
-services: service-fabric
-documentationcenter: .net
+title: Debugowanie aplikacji Service Fabric platformy Azure w systemie Windows
+description: Dowiedz się, jak monitorować i diagnozować swoje usługi przy użyciu Microsoft Azure Service Fabric na lokalnym komputerze deweloperskim.
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: edcc0631-ed2d-45a3-851d-2c4fa0f4a326
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/25/2019
 ms.author: srrengar
-ms.openlocfilehash: 31c559c1ab314b7e1f29bd96f74d6d82cfcc0420
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8435bb82afddd0070679768bb8d22ad9290f2279
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60392849"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464626"
 ---
-# <a name="monitor-and-diagnose-services-in-a-local-machine-development-setup"></a>Monitorowanie i diagnozowanie usług w lokalnym komputerze deweloperskim
+# <a name="monitor-and-diagnose-services-in-a-local-machine-development-setup"></a>Monitorowanie i diagnozowanie usług w konfiguracji lokalnego tworzenia maszyn
 > [!div class="op_single_selector"]
 > * [Windows](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
 > * [Linux](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally-linux.md)
 > 
 > 
 
-Monitorowanie, wykrywanie, diagnozowanie i rozwiązywanie problemów z umożliwiają usług kontynuować przy minimalnym zakłóceniu środowisko użytkownika. Podczas monitorowania i diagnostyki są szczególnie ważne w środowisku rzeczywistej produkcji wdrożone, wydajność będzie zależeć od przyjęcia podobne modelu podczas tworzenia usługi, aby upewnić się, że działają one w przypadku przenoszenia do instalacji rzeczywistych. Usługa Service Fabric można łatwo dla deweloperów usługi do zaimplementowania diagnostyki, która bezproblemowo mogą korzystać z różnych ustawień rozwoju lokalnego pojedynczego komputera i konfiguracji klastra produkcyjnego w rzeczywistych warunkach.
+Monitorowanie, wykrywanie, diagnozowanie i rozwiązywanie problemów, dzięki czemu usługi mogą kontynuować minimalne zakłócenia środowiska użytkownika. Chociaż monitorowanie i Diagnostyka mają kluczowe znaczenie w rzeczywistym wdrożonym środowisku produkcyjnym, wydajność będzie zależeć od zastosowania podobnego modelu podczas tworzenia usług, aby zapewnić, że będą one działały po przejściu do rzeczywistego Instalatora. Service Fabric ułatwia deweloperom usług implementację diagnostyki, która może bezproblemowo współpracować zarówno z lokalnymi konfiguracjami programistycznymi na jednym komputerze, jak i rzeczywistymi konfiguracjami klastrów produkcyjnych.
 
 ## <a name="event-tracing-for-windows"></a>Śledzenie zdarzeń systemu Windows
-[Śledzenie zdarzeń dla Windows](https://msdn.microsoft.com/library/windows/desktop/bb968803.aspx) (ETW) to technologia zalecane komunikaty dotyczące śledzenia w usłudze Service Fabric. Niektóre korzyści z używania funkcji ETW są:
+[Śledzenie zdarzeń systemu Windows](https://msdn.microsoft.com/library/windows/desktop/bb968803.aspx) (ETW) jest zalecaną technologią śledzenia komunikatów w Service Fabric. Niektóre zalety korzystania z funkcji ETW to:
 
-* **ETW jest szybkie.** Została skompilowana jako technologia śledzenia, która ma minimalny wpływ na czas realizacji kodu.
-* **Śledzenie bezproblemowo współpracuje w środowiskach programowania lokalnego i również konfiguracje klastra w rzeczywistych warunkach.** Oznacza to, że nie trzeba ponownie pisać kodu śledzenia, gdy wszystko jest gotowe do wdrożenia kodu rzeczywistym klastrem.
-* **Usługa Service Fabric systemu kod używa również ETW śledzenia wewnętrznego.** Dzięki temu można wyświetlić za pomocą usługi Service Fabric systemu ślady z przeplotem śladów aplikacji. W tym obszarze pomaga też łatwiej zrozumieć sekwencji i współzależności między kodem aplikacji i zdarzeń w systemie podstawowym.
-* **Brak wbudowanej obsługi w narzędziach usługi Service Fabric programu Visual Studio, aby wyświetlić zdarzenia ETW.** Zdarzenia ETW są wyświetlane w widoku zdarzeń diagnostycznych programu Visual Studio, gdy program Visual Studio jest poprawnie skonfigurowana przy użyciu usługi Service Fabric. 
+* **Funkcja ETW jest szybka.** Została skompilowana jako technologia śledzenia, która ma minimalny wpływ na czasy wykonywania kodu.
+* **Śledzenie ETW działa bezproblemowo w lokalnych środowiskach programistycznych, a także w rzeczywistych konfiguracjach klastra.** Oznacza to, że nie trzeba ponownie pisać kodu śledzenia, gdy wszystko jest gotowe do wdrożenia kodu w rzeczywistym klastrze.
+* **Kod systemu Service Fabric używa również funkcji ETW do śledzenia wewnętrznego.** Pozwala to na wyświetlanie śladów aplikacji z przeplotem Service Fabric śledzenia systemu. Pomaga również łatwiej zrozumieć sekwencje i relacje między kodem aplikacji a zdarzeniami w systemie bazowym.
+* **W programie Service Fabric Visual Studio Tools jest wbudowana obsługa wyświetlania zdarzeń ETW.** Zdarzenia ETW są wyświetlane w widoku zdarzeń diagnostycznych programu Visual Studio, gdy program Visual Studio jest poprawnie skonfigurowany przy użyciu Service Fabric. 
 
-## <a name="view-service-fabric-system-events-in-visual-studio"></a>Wyświetlać zdarzenia systemowe Service Fabric w programie Visual Studio
-Usługa Service Fabric emituje zdarzenia ETW, aby ułatwić deweloperom aplikacji zrozumieć, co dzieje się na platformie. Jeśli nie zostało to jeszcze zrobione, przejdź dalej i postępuj zgodnie z instrukcjami w [Utwórz swoją pierwszą aplikację w programie Visual Studio](service-fabric-tutorial-create-dotnet-app.md). Ta informacja pomoże Ci rozpocząć pracę aplikacji za pomocą Podglądu zdarzeń diagnostycznych, które są wyświetlane komunikaty śledzenia.
+## <a name="view-service-fabric-system-events-in-visual-studio"></a>Wyświetlanie zdarzeń systemu Service Fabric w programie Visual Studio
+Service Fabric emituje zdarzenia ETW, aby pomóc deweloperom aplikacji zrozumieć, co się dzieje na platformie. Jeśli jeszcze tego nie zrobiono, wykonaj kroki opisane w temacie [Tworzenie pierwszej aplikacji w programie Visual Studio](service-fabric-tutorial-create-dotnet-app.md). Te informacje pomogą Ci w rozpoczęciu pracy aplikacji z podglądem zdarzeń diagnostycznych wyświetlającym komunikaty śledzenia.
 
-1. Jeśli Diagnostyka okno zdarzenia automatycznie nie uwzględnia, przejdź do **widoku** karcie w programie Visual Studio, wybierz polecenie **Windows inne** i następnie **podglądu zdarzeń diagnostycznych**.
-2. Każde zdarzenie ma standardowy metadane, informujące o węzła, aplikacji i usług, których pochodzi zdarzenie. Można również filtrować listę zdarzeń za pomocą **Filtruj zdarzenia** polu w górnej części okna zdarzenia. Na przykład można filtrować na **nazwa węzła** lub **nazwy usługi.** A jeśli patrzysz szczegóły zdarzenia można również wstrzymać przy użyciu **wstrzymać** znajdujący się w górnej części okna zdarzenia i wznowić później bez utraty zdarzeń.
+1. Jeśli okno zdarzenia diagnostyki nie zostanie automatycznie wyświetlone, przejdź do karty **Widok** w programie Visual Studio, wybierz **inne okna** , a następnie **Podgląd zdarzeń diagnostycznych**.
+2. Każde zdarzenie ma standardowe informacje metadanych, które informują węzeł, aplikację i usługę, z której pochodzi zdarzenie. Możesz również filtrować listę zdarzeń przy użyciu pola **Filtruj zdarzenia** w górnej części okna zdarzenia. Na przykład można filtrować według **nazwy węzła** lub **nazwy usługi.** Gdy przeglądasz szczegóły zdarzeń, możesz również wstrzymywać, korzystając z przycisku **Wstrzymaj** w górnej części okna zdarzenia i wznawiać później bez utraty zdarzeń.
    
-   ![Visual Studio Diagnostics Events Viewer](./media/service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally/DiagEventsExamples2.png)
+   ![Podgląd zdarzeń diagnostycznych programu Visual Studio](./media/service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally/DiagEventsExamples2.png)
 
-## <a name="add-your-own-custom-traces-to-the-application-code"></a>Dodawanie własnych niestandardowych danych śledzenia do kodu aplikacji
-Szablony projektu usługi Service Fabric Visual Studio zawiera przykładowy kod. Kod przedstawia sposób dodawania aplikacji niestandardowej śladów funkcji ETW kodu, które pojawiają się w podglądzie ETW. program Visual Studio obok ślady systemu z usługi Service Fabric. Zaletą tej metody jest, że metadanych jest automatycznie dodawany do śledzenia i Visual Studio podglądu zdarzeń diagnostycznych jest już skonfigurowany, aby je wyświetlić.
+## <a name="add-your-own-custom-traces-to-the-application-code"></a>Dodawanie własnych niestandardowych śladów do kodu aplikacji
+Szablony projektów programu Service Fabric Visual Studio zawierają przykładowy kod. Kod przedstawia sposób dodawania niestandardowych śladów ETW kodu aplikacji, które są wyświetlane w podglądzie ETW programu Visual Studio, obok śladów systemu z Service Fabric. Zaletą tej metody jest to, że metadane są automatycznie dodawane do śladów, a Podgląd zdarzeń diagnostycznych programu Visual Studio jest już skonfigurowany do ich wyświetlania.
 
-W przypadku projektów utworzone na podstawie **szablonów usług** (bezstanowe lub stanowe) po prostu wyszukać `RunAsync` implementacji:
+W przypadku projektów utworzonych na podstawie **szablonów usług** (bezstanowe lub stanowe) można wyszukać implementację `RunAsync`:
 
-1. Wywołanie `ServiceEventSource.Current.ServiceMessage` w `RunAsync` metoda pokazano przykład niestandardowe śledzenia zdarzeń systemu Windows w kodzie aplikacji.
-2. W **ServiceEventSource.cs** pliku, można znaleźć przeciążenia `ServiceEventSource.ServiceMessage` metody, które mają być używane dla zdarzeń o wysokiej częstotliwości z powodu ze względu na wydajność.
+1. Wywołanie `ServiceEventSource.Current.ServiceMessage` w metodzie `RunAsync` pokazuje przykład niestandardowego śledzenia ETW z kodu aplikacji.
+2. W pliku **ServiceEventSource.cs** znajduje się przeciążenie metody `ServiceEventSource.ServiceMessage`, która powinna być używana dla zdarzeń o wysokiej częstotliwości ze względu na wydajność.
 
-W przypadku projektów utworzone na podstawie **szablony aktora** (bezstanowe lub stanowe):
+W przypadku projektów utworzonych na podstawie **szablonów aktora** (bezstanowe lub stanowe):
 
-1. Otwórz **.cs "ProjectName"** pliku gdzie *ProjectName* to nazwa, został wybrany dla projektu programu Visual Studio.  
-2. Znajdź kod `ActorEventSource.Current.ActorMessage(this, "Doing Work");` w *DoWorkAsync* metody.  Jest to przykład niestandardowe śledzenia zdarzeń systemu Windows zapisywane w kodzie aplikacji.  
-3. W pliku **ActorEventSource.cs**, można znaleźć przeciążenia `ActorEventSource.ActorMessage` metody, które mają być używane dla zdarzeń o wysokiej częstotliwości z powodu ze względu na wydajność.
+1. Otwórz plik **"ProjectName". cs "** , gdzie *ProjectName* jest nazwą wybraną dla projektu programu Visual Studio.  
+2. Znajdź `ActorEventSource.Current.ActorMessage(this, "Doing Work");` kodu w metodzie *DoWorkAsync* .  Jest to przykład niestandardowego śledzenia ETW zarejestrowanego z kodu aplikacji.  
+3. W pliku **ActorEventSource.cs**można znaleźć przeciążenie metody `ActorEventSource.ActorMessage`, która powinna być używana dla zdarzeń o wysokiej częstotliwości ze względu na wydajność.
 
-Po dodaniu niestandardowych funkcji ETW śledzenia do kodu usługi, tworzenie, wdrażanie i uruchom aplikację ponownie, aby zobaczyć swoje zdarzeń w Podglądzie zdarzeń diagnostycznych. Jeśli debugujesz aplikację za pomocą **F5**, zostanie automatycznie otwarta podglądu zdarzeń diagnostycznych.
+Po dodaniu niestandardowego śledzenia funkcji ETW do kodu usługi możesz ponownie skompilować, wdrożyć i uruchomić aplikację, aby zobaczyć swoje zdarzenia w Podglądzie zdarzeń diagnostycznych. Jeśli debugujesz aplikację przy użyciu klawisza **F5**, Podgląd zdarzeń diagnostycznych zostanie otwarty automatycznie.
 
-## <a name="next-steps"></a>Kolejne kroki
-Ten sam kod śledzenia, który został dodany do aplikacji powyżej dla lokalnych danych diagnostycznych będzie działać z narzędziami, które można użyć, aby wyświetlić te zdarzenia, podczas uruchamiania aplikacji w klastrze platformy Azure. Zapoznaj się z następującymi artykułami, omówiono różne opcje narzędzi, które opisują, jak możesz skonfigurować je.
+## <a name="next-steps"></a>Następne kroki
+Ten sam kod śledzenia, który został dodany do aplikacji powyżej dla lokalnej diagnostyki, będzie działać z narzędziami, których można użyć do wyświetlania tych zdarzeń podczas uruchamiania aplikacji w klastrze platformy Azure. Zapoznaj się z tymi artykułami, które omawiają różne opcje narzędzi i opisują, jak można je skonfigurować.
 
-* [Jak gromadzić dzienniki za pomocą diagnostyki Azure](service-fabric-diagnostics-how-to-setup-wad.md)
-* [Zdarzenie agregacji i zbieranie przy użyciu struktury EventFlow](service-fabric-diagnostics-event-aggregation-eventflow.md)
+* [Jak zbierać dzienniki przy użyciu Diagnostyka Azure](service-fabric-diagnostics-how-to-setup-wad.md)
+* [Agregacja i zbieranie zdarzeń przy użyciu użyciu struktury eventflow](service-fabric-diagnostics-event-aggregation-eventflow.md)
 

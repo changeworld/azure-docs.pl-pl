@@ -1,36 +1,27 @@
 ---
-title: Polimorfizm w strukturze elementów Reliable Actors | Dokumentacja firmy Microsoft
-description: Tworzenie hierarchii .NET interfejsów i typów w ramach elementów Reliable Actors do ponownego użycia funkcji i definicji interfejsu API.
-services: service-fabric
-documentationcenter: .net
+title: Polimorfizm w Reliable Actors Framework
+description: Kompiluj hierarchie interfejsów i typów .NET w Reliable Actors Framework, aby ponownie użyć funkcji i definicji interfejsu API.
 author: vturecek
-manager: chackdan
-editor: vturecek
-ms.assetid: ef0eeff6-32b7-410d-ac69-87cba8b8fd46
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: c14b3006184f7bd6dcd1eb67be11bd0214957d72
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4e485463f41cdfbadeb166ecbb3a86d4a32c1589
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60725498"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75348939"
 ---
-# <a name="polymorphism-in-the-reliable-actors-framework"></a>Polimorfizm w strukturze elementów Reliable Actors
-Struktura elementów Reliable Actors umożliwia tworzenie złośliwych użytkowników używających wiele z tych samych technik, które są używane w projekcie zorientowane obiektowo. Jedną z tych technik jest polimorfizm, która zezwala na typy i interfejsy odziedziczone z więcej uogólniony elementów nadrzędnych. Dziedziczenie w ramach elementów Reliable Actors zwykle następuje modelu .NET z kilku dodatkowe ograniczenia. W przypadku języka Java/Linux jest zgodna z modelu języka Java.
+# <a name="polymorphism-in-the-reliable-actors-framework"></a>Polimorfizm w Reliable Actors Framework
+Struktura Reliable Actors umożliwia kompilowanie aktorów przy użyciu wielu z tych samych technik, których można użyć w projekcie zorientowanym obiektowo. Jedną z tych technik jest polimorfizm, który umożliwia typom i interfejsom dziedziczenie z bardziej uogólnionych obiektów nadrzędnych. Dziedziczenie w strukturze Reliable Actors jest ogólnie zgodne z modelem platformy .NET z kilkoma dodatkowymi ograniczeniami. W przypadku środowiska Java/Linux następuje po modelu Java.
 
 ## <a name="interfaces"></a>Interfejsy
-Struktura elementów Reliable Actors wymaga można zdefiniować co najmniej jeden interfejs implementowany przez użytkownika typ aktora. Ten interfejs jest używany do generowania klasy serwera proxy, które mogą być używane przez klientów do komunikowania się z Twojego aktorów. Interfejsy może dziedziczyć z innych interfejsów, tak długo, jak długo każdy interfejs, który jest implementowany przez typ aktora i wszystkie jego elementy nadrzędne ostatecznie dziedziczyć IActor (C#) lub Actor(Java). IActor (C#) i Actor(Java) są odpowiednio zdefiniowanej platformy interfejsy podstawowe dla uczestników platform .NET i Java. W związku z tym w przykładzie polimorfizm klasycznej za pomocą kształtów może wyglądać mniej więcej tak:
+Struktura Reliable Actors wymaga zdefiniowania co najmniej jednego interfejsu, który ma być zaimplementowany przez typ aktora. Ten interfejs jest używany do generowania klasy proxy, która może być używana przez klientów do komunikowania się z aktorami. Interfejsy mogą dziedziczyć z innych interfejsów, o ile każdy interfejs, który jest implementowany przez typ aktora i wszystkie jego obiekty nadrzędne,C#ostatecznie pochodzi od IActor () lub aktora (Java). IActor (C#) i aktor (Java) są interfejsami podstawowymi zdefiniowanymi na platformie dla aktorów odpowiednio w strukturach .NET i Java. W ten sposób klasyczny przykład polimorfizmu używający kształtów może wyglądać następująco:
 
-![Hierarchia interfejsu dla kształtu aktorów][shapes-interface-hierarchy]
+![Hierarchia interfejsów dla aktorów kształtów][shapes-interface-hierarchy]
 
 ## <a name="types"></a>Typy
-Można również utworzyć hierarchię typów aktora, które pochodzą z klasy bazowej aktora, który jest dostarczany przez platformę. W przypadku kształtów, Niewykluczone, że podstawowej `Shape`(C#) lub `ShapeImpl`(Java), wpisz:
+Można również utworzyć hierarchię typów aktorów, które pochodzą z podstawowej klasy aktora dostarczonej przez platformę. W przypadku kształtów może istnieć podstawowy `Shape`(C#) lub `ShapeImpl`(Java):
 
 ```csharp
 public abstract class Shape : Actor, IShape
@@ -49,7 +40,7 @@ public abstract class ShapeImpl extends FabricActor implements Shape
 }
 ```
 
-Subtypes z `Shape`(C#) lub `ShapeImpl`(Java), można zastąpić metody od podstawy.
+Podtypy `Shape`(C#) lub `ShapeImpl`(Java) mogą przesłonić metody z bazy.
 
 ```csharp
 [ActorService(Name = "Circle")]
@@ -92,10 +83,10 @@ public class Circle extends ShapeImpl implements Circle
 }
 ```
 
-Uwaga `ActorService` atrybut typ aktora. Ten atrybut informuje szablon Reliable Actors, że usługa do hostowania aktorów tego typu należy utworzyć automatycznie. W niektórych przypadkach warto utworzyć typu podstawowego, który jest wyłącznie przeznaczony do udostępniania funkcji podtypy i nigdy nie będzie używany do utworzenia wystąpienia konkretnych aktorów. W takich przypadkach należy użyć `abstract` — słowo kluczowe, aby wskazać, że nigdy nie spowoduje utworzenie aktora, na podstawie tego typu.
+Zwróć uwagę na atrybut `ActorService` typu aktora. Ten atrybut informuje niezawodną strukturę aktora, że powinna automatycznie utworzyć usługę do hostingu aktorów tego typu. W niektórych przypadkach można utworzyć typ podstawowy, który jest przeznaczony wyłącznie do udostępniania funkcjonalności z podtypem i nigdy nie będzie używany do wystąpienia konkretnych aktorów. W takich przypadkach należy użyć słowa kluczowego `abstract`, aby wskazać, że nigdy nie utworzysz aktora na podstawie tego typu.
 
-## <a name="next-steps"></a>Kolejne kroki
-* Zobacz [jak korzysta z platformy usługi Service Fabric Reliable Actors w ramach](service-fabric-reliable-actors-platform.md) zapewnienie niezawodności, skalowalności i spójne.
+## <a name="next-steps"></a>Następne kroki
+* Zobacz, [jak struktura Reliable Actors wykorzystuje platformę Service Fabric](service-fabric-reliable-actors-platform.md) , aby zapewnić niezawodność, skalowalność i spójny stan.
 * Dowiedz się więcej o [cyklu życia aktora](service-fabric-reliable-actors-lifecycle.md).
 
 <!-- Image references -->

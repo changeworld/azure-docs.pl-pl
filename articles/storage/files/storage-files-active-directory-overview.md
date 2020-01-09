@@ -1,17 +1,17 @@
 ---
-title: Omówienie uwierzytelniania Azure Active Directory za pośrednictwem protokołu SMB dla Azure Files — Azure Storage
+title: Przegląd — Azure AD Domain Services autoryzacja — Azure Files
 description: Azure Files obsługuje uwierzytelnianie oparte na tożsamościach za pośrednictwem protokołu SMB (Server Message Block) za pośrednictwem usług domenowych Azure Active Directory (Azure AD). Przyłączone do domeny maszyny wirtualne z systemem Windows mogą następnie uzyskiwać dostęp do udziałów plików platformy Azure przy użyciu poświadczeń usługi Azure AD.
 author: roygara
 ms.service: storage
 ms.topic: article
 ms.date: 08/07/2019
 ms.author: rogarana
-ms.openlocfilehash: 6cdee8f1ad59962822e9e0394547c395c13e4bd8
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 93db726a2cac14109e542972ce851943b290962f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69611779"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460284"
 ---
 # <a name="overview-of-azure-files-azure-active-directory-domain-service-azure-ad-ds-authentication-support-for-smb-access"></a>Omówienie obsługi uwierzytelniania protokołu SMB w AD DS usłudze Azure Files Azure Active Directory
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -49,7 +49,7 @@ Uwierzytelnianie w usłudze Azure AD Domain Service dla Azure Files oferuje kilk
 -   **Twórz kopie zapasowe list ACL wraz z danymi**  
     Za pomocą Azure Files można tworzyć kopie zapasowe istniejących lokalnych udziałów plików. Azure Files zachowuje listy ACL wraz z danymi podczas tworzenia kopii zapasowej udziału plików do Azure Files za pośrednictwem protokołu SMB.
 
-## <a name="how-it-works"></a>Jak to działa
+## <a name="how-it-works"></a>Zasady działania
 Azure Files używa Azure AD Domain Services do obsługi uwierzytelniania Kerberos przy użyciu poświadczeń usługi Azure AD z maszyn wirtualnych przyłączonych do domeny. Aby można było używać usługi Azure AD z Azure Files, należy najpierw włączyć Azure AD Domain Services i dołączyć do domeny z maszyn wirtualnych, z których planujesz uzyskać dostęp do danych plików. Przyłączona do domeny maszyna wirtualna musi znajdować się w tej samej sieci wirtualnej co Azure AD Domain Services. 
 
 Gdy tożsamość skojarzona z aplikacją działającą na maszynie wirtualnej próbuje uzyskać dostęp do danych w Azure Files, żądanie jest wysyłane do Azure AD Domain Services w celu uwierzytelnienia tożsamości. W przypadku pomyślnego uwierzytelnienia Azure AD Domain Services zwraca token Kerberos. Aplikacja wysyła żądanie zawierające token Kerberos, a Azure Files używa tego tokenu do autoryzowania żądania. Azure Files odbiera tylko token i nie utrwala poświadczeń usługi Azure AD.
@@ -78,7 +78,7 @@ Użytkownik posiadający klucz konta magazynu może uzyskać dostęp do Azure Fi
 > W ramach najlepszych rozwiązań dotyczących zabezpieczeń należy unikać udostępniania kluczy konta magazynu i korzystać z uprawnień usługi Azure AD wszędzie tam, gdzie to możliwe.
 
 ### <a name="preserve-directory-and-file-acls-for-data-import-to-azure-file-shares"></a>Zachowaj listy ACL katalogów i plików na potrzeby importowania danych do udziałów plików platformy Azure
-Azure Files teraz obsługuje zachowanie list ACL katalogów lub plików podczas kopiowania danych do udziałów plików platformy Azure. Listy ACL można skopiować do katalogu lub pliku, aby Azure Files. Na przykład można użyć [Robocopy](https://docs.microsoft.com/windows-server/administration/windows-commands/robocopy) with flag `/copy:s` , aby skopiować dane i listy kontroli dostępu do udziału plików platformy Azure. Zachowywanie listy ACL jest domyślnie włączone i nie trzeba jawnie włączać funkcji uwierzytelniania usługi Azure AD Domain Service na koncie magazynu. 
+Azure Files teraz obsługuje zachowanie list ACL katalogów lub plików podczas kopiowania danych do udziałów plików platformy Azure. Listy ACL można skopiować do katalogu lub pliku, aby Azure Files. Na przykład można użyć [Robocopy](https://docs.microsoft.com/windows-server/administration/windows-commands/robocopy) z flagą `/copy:s`, aby skopiować dane i listy kontroli dostępu do udziału plików platformy Azure. Zachowywanie listy ACL jest domyślnie włączone i nie trzeba jawnie włączać funkcji uwierzytelniania usługi Azure AD Domain Service na koncie magazynu. 
 
 ## <a name="pricing"></a>Cennik
 Nie ma dodatkowej opłaty za usługę w celu włączenia uwierzytelniania usługi Azure AD za pośrednictwem protokołu SMB na koncie magazynu. Aby uzyskać więcej informacji na temat cen, zobacz [Azure Files ceny](https://azure.microsoft.com/pricing/details/storage/files/) i [Azure AD Domain Services cennika](https://azure.microsoft.com/pricing/details/active-directory-ds/) .

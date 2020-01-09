@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 05/06/2019
-ms.openlocfilehash: ba49944011546db45d25cc87c2c4b93c8b99502a
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 12/09/2019
+ms.openlocfilehash: b4a6ef4a8559276ea1f74e133055a613ddcbcab4
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "71122679"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75495139"
 ---
 # <a name="bring-your-own-key-for-apache-kafka-on-azure-hdinsight"></a>Przenoszenie własnego klucza do Apache Kafka w usłudze Azure HDInsight
 
@@ -27,7 +27,9 @@ Wszystkie komunikaty do klastra Kafka (w tym repliki obsługiwane przez Kafka) s
 Możesz użyć Azure Portal lub interfejsu wiersza polecenia platformy Azure, aby bezpiecznie obrócić klucze w magazynie kluczy. Gdy klucz zostanie obrócony, klaster usługi HDInsight Kafka rozpocznie korzystanie z nowego klucza w ciągu kilku minut. Włącz funkcje ochrony kluczy "nietrwałego usuwania", aby chronić je przed scenariuszami oprogramowania wymuszającego okup i przypadkowym usunięciem. Magazyny kluczy bez tej funkcji ochrony nie są obsługiwane.
 
 ## <a name="get-started-with-byok"></a>Wprowadzenie do BYOK
-Aby utworzyć klaster Kafka z obsługą BYOK, wykonaj następujące czynności:
+
+Aby utworzyć BYOK włączony klaster Kafka, przejdziemy przez następujące kroki:
+
 1. Tworzenie tożsamości zarządzanych dla zasobów platformy Azure
 2. Azure Key Vault i klucze Instalatora
 3. Tworzenie klastra Kafka usługi HDInsight z włączonym BYOK
@@ -35,116 +37,117 @@ Aby utworzyć klaster Kafka z obsługą BYOK, wykonaj następujące czynności:
 
 ## <a name="create-managed-identities-for-azure-resources"></a>Tworzenie tożsamości zarządzanych dla zasobów platformy Azure
 
-   Aby przeprowadzić uwierzytelnianie w Key Vault, Utwórz tożsamość zarządzaną przez użytkownika za pomocą [Azure Portal](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md), [Azure PowerShell](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md), [Azure Resource Manager](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-arm.md)lub [interfejsu wiersza polecenia platformy Azure](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md). Aby uzyskać więcej informacji na temat działania tożsamości zarządzanych w usłudze Azure HDInsight, zobacz [zarządzane tożsamości w usłudze Azure HDInsight](../hdinsight-managed-identities.md). Gdy usługa Azure Active Directory jest wymagana do zarządzania tożsamościami i BYOK do Kafka, pakiet Enterprise Security (ESP) nie jest wymagana. Należy pamiętać o zapisaniu identyfikatora zasobu tożsamości zarządzanej dla programu podczas dodawania go do zasad dostępu Key Vault.
+Aby przeprowadzić uwierzytelnianie w Key Vault, Utwórz tożsamość zarządzaną przez użytkownika za pomocą [Azure Portal](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md), [Azure PowerShell](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md), [Azure Resource Manager](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-arm.md)lub [interfejsu wiersza polecenia platformy Azure](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md). Aby uzyskać więcej informacji na temat działania tożsamości zarządzanych w usłudze Azure HDInsight, zobacz [zarządzane tożsamości w usłudze Azure HDInsight](../hdinsight-managed-identities.md). Gdy usługa Azure Active Directory jest wymagana do zarządzania tożsamościami i BYOK do Kafka, pakiet Enterprise Security (ESP) nie jest wymagana. Należy pamiętać o zapisaniu identyfikatora zasobu tożsamości zarządzanej dla programu podczas dodawania go do zasad dostępu Key Vault.
 
-   ![Tworzenie tożsamości zarządzanej przypisanej przez użytkownika w Azure Portal](./media/apache-kafka-byok/user-managed-identity-portal.png)
+![Tworzenie tożsamości zarządzanej przypisanej przez użytkownika w Azure Portal](./media/apache-kafka-byok/user-managed-identity-portal.png)
 
-## <a name="setup-the-key-vault-and-keys"></a>Skonfiguruj Key Vault i klucze
+## <a name="set-up-the-key-vault-and-keys"></a>Konfigurowanie Key Vault i kluczy
 
-   Usługa HDInsight obsługuje tylko Azure Key Vault. Jeśli masz własny magazyn kluczy, możesz zaimportować klucze do Azure Key Vault. Należy pamiętać, że klucze muszą mieć wartość "usuwanie nietrwałe". Funkcja usuwania nietrwałego jest dostępna za pomocą interfejsów REST, .NET/C#, PowerShell i interfejsu wiersza polecenia platformy Azure.
+Usługa HDInsight obsługuje tylko Azure Key Vault. Jeśli masz własny magazyn kluczy, możesz zaimportować klucze do Azure Key Vault. Należy pamiętać, że klucze muszą mieć wartość "usuwanie nietrwałe". Funkcja usuwania nietrwałego jest dostępna za pomocą interfejsów REST, .NET/C#, PowerShell i interfejsu wiersza polecenia platformy Azure.
 
-   1. Aby utworzyć nowy magazyn kluczy, postępuj zgodnie z [Azure Key Vault](../../key-vault/key-vault-overview.md) przewodnika Szybki Start. Aby uzyskać więcej informacji o importowaniu istniejących kluczy, odwiedź stronę [dotyczącą kluczy, wpisów tajnych i certyfikatów](../../key-vault/about-keys-secrets-and-certificates.md).
+1. Aby utworzyć nowy magazyn kluczy, postępuj zgodnie z [Azure Key Vault](../../key-vault/key-vault-overview.md) przewodnika Szybki Start. Aby uzyskać więcej informacji o importowaniu istniejących kluczy, odwiedź stronę [dotyczącą kluczy, wpisów tajnych i certyfikatów](../../key-vault/about-keys-secrets-and-certificates.md).
 
-   2. Włącz opcję "nietrwałe usuwanie" w magazynie kluczy za pomocą polecenia [AZ Key magazynu Update](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-update) CLI.
+1. Włącz opcję "nietrwałe usuwanie" w magazynie kluczy za pomocą polecenia [AZ Key magazynu Update](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-update) CLI.
 
-        ```Azure CLI
-        az keyvault update --name <Key Vault Name> --enable-soft-delete
-        ```
+    ```azurecli
+    az keyvault update --name <Key Vault Name> --enable-soft-delete
+    ```
 
-   3. Tworzenie kluczy
+1. Utwórz klucze.
 
-        a. Aby utworzyć nowy klucz, wybierz pozycję **Generuj/Importuj** z menu **klucze** w obszarze **Ustawienia**.
+    a. Aby utworzyć nowy klucz, wybierz pozycję **Generuj/Importuj** z menu **klucze** w obszarze **Ustawienia**.
 
-        ![Generuj nowy klucz w Azure Key Vault](./media/apache-kafka-byok/kafka-create-new-key.png "Generuj nowy klucz w Azure Key Vault")
+    ![Generuj nowy klucz w Azure Key Vault](./media/apache-kafka-byok/kafka-create-new-key.png "Generuj nowy klucz w Azure Key Vault")
 
-        b. Ustaw **Opcje** w celu **wygenerowania** klucza i nadaj mu nazwę.
+    b. Ustaw **Opcje** w celu **wygenerowania** klucza i nadaj mu nazwę.
 
-        ![Apache Kafka — generowanie nazwy klucza](./media/apache-kafka-byok/apache-kafka-create-key.png "Generuj nazwę klucza")
+    ![Apache Kafka generuje nazwę klucza](./media/apache-kafka-byok/apache-kafka-create-key.png "Generuj nazwę klucza")
 
-        d. Wybierz utworzony klucz z listy kluczy.
+    d. Wybierz utworzony klucz z listy kluczy.
 
-        ![Lista kluczy magazynu kluczy Apache Kafka](./media/apache-kafka-byok/kafka-key-vault-key-list.png)
+    ![Lista kluczy magazynu kluczy Apache Kafka](./media/apache-kafka-byok/kafka-key-vault-key-list.png)
 
-        d. W przypadku używania własnego klucza do szyfrowania klastra Kafka należy podać identyfikator URI klucza. Skopiuj **Identyfikator klucza** i Zapisz go w dowolnym miejscu do momentu, aż wszystko będzie gotowe do utworzenia klastra.
+    d. W przypadku używania własnego klucza do szyfrowania klastra Kafka należy podać identyfikator URI klucza. Skopiuj **Identyfikator klucza** i Zapisz go w dowolnym miejscu do momentu, aż wszystko będzie gotowe do utworzenia klastra.
 
-        ![Apache Kafka — uzyskiwanie identyfikatora klucza](./media/apache-kafka-byok/kafka-get-key-identifier.png)
+    ![Apache Kafka — uzyskiwanie identyfikatora klucza](./media/apache-kafka-byok/kafka-get-key-identifier.png)
 
-    4. Dodaj zarządzaną tożsamość do zasad dostępu magazynu kluczy.
+1. Dodaj zarządzaną tożsamość do zasad dostępu magazynu kluczy.
 
-        a. Utwórz nowe zasady dostępu Azure Key Vault.
+    a. Utwórz nowe zasady dostępu Azure Key Vault.
 
-        ![Utwórz nowe zasady dostępu Azure Key Vault](./media/apache-kafka-byok/add-key-vault-access-policy.png)
+    ![Utwórz nowe zasady dostępu Azure Key Vault](./media/apache-kafka-byok/add-key-vault-access-policy.png)
 
-        b. W obszarze **Wybierz podmiot zabezpieczeń**Wybierz utworzoną tożsamość zarządzaną przez użytkownika.
+    b. W obszarze **Wybierz podmiot zabezpieczeń**Wybierz utworzoną tożsamość zarządzaną przez użytkownika.
 
-        ![Ustaw pozycję Wybierz podmiot zabezpieczeń dla zasad dostępu Azure Key Vault](./media/apache-kafka-byok/add-key-vault-access-policy-select-principal.png)
+    ![Ustaw pozycję Wybierz podmiot zabezpieczeń dla zasad dostępu Azure Key Vault](./media/apache-kafka-byok/add-key-vault-access-policy-select-principal.png)
 
-        d. Ustawianie **uprawnień klucza** do **pobierania**, **odwinięcia klucza**i **zawijania klucza**.
+    d. Ustawianie **uprawnień klucza** do **pobierania**, **odwinięcia klucza**i **zawijania klucza**.
 
-        ![Ustawianie uprawnień klucza dla Azure Key Vault dostępu policy1](./media/apache-kafka-byok/add-key-vault-access-policy-keys.png "Ustawianie uprawnień klucza dla Azure Key Vault dostępu policy1")
+    ![Ustawianie uprawnień klucza dla Azure Key Vault dostępu policy1](./media/apache-kafka-byok/add-key-vault-access-policy-keys.png "Ustawianie uprawnień klucza dla Azure Key Vault dostępu policy1")
 
-        d. Ustaw **uprawnienia klucza tajnego** na **pobieranie**, **Ustawianie**i **usuwanie**.
+    d. Ustaw **uprawnienia klucza tajnego** na **pobieranie**, **Ustawianie**i **usuwanie**.
 
-        ![Ustawianie uprawnień klucza dla Azure Key Vault dostępu policy2](./media/apache-kafka-byok/add-key-vault-access-policy-secrets.png "Ustawianie uprawnień klucza dla Azure Key Vault dostępu policy2")
+    ![Ustawianie uprawnień klucza dla Azure Key Vault dostępu policy2](./media/apache-kafka-byok/add-key-vault-access-policy-secrets.png "Ustawianie uprawnień klucza dla Azure Key Vault dostępu policy2")
 
-        e. Kliknij przycisk **Zapisz**. 
+    e. Wybierz pozycję **Zapisz**.
 
-        ![Zapisz zasady dostępu Azure Key Vault](./media/apache-kafka-byok/add-key-vault-access-policy-save.png)
+    ![Zapisz zasady dostępu Azure Key Vault](./media/apache-kafka-byok/add-key-vault-access-policy-save.png)
 
 ## <a name="create-hdinsight-cluster"></a>Tworzenie klastra usługi HDInsight
 
-   Teraz możesz utworzyć nowy klaster usługi HDInsight. BYOK można stosować tylko do nowych klastrów podczas tworzenia klastra. Nie można usunąć szyfrowania z klastrów BYOK i nie można dodać BYOK do istniejących klastrów.
+Teraz możesz utworzyć nowy klaster usługi HDInsight. BYOK można stosować tylko do nowych klastrów podczas tworzenia klastra. Nie można usunąć szyfrowania z klastrów BYOK i nie można dodać BYOK do istniejących klastrów.
 
-   ![Kafka szyfrowanie dysków w Azure Portal](./media/apache-kafka-byok/apache-kafka-byok-portal.png)
+![Kafka szyfrowanie dysków w Azure Portal](./media/apache-kafka-byok/azure-portal-cluster-security-networking-kafka-byok.png)
 
-   Podczas tworzenia klastra Podaj pełny adres URL klucza, w tym wersję klucza. Na przykład `https://contoso-kv.vault.azure.net/keys/kafkaClusterKey/46ab702136bc4b229f8b10e8c2997fa4`. Należy również przypisać zarządzaną tożsamość do klastra i podać identyfikator URI klucza.
+Podczas tworzenia klastra Podaj pełny adres URL klucza, w tym wersję klucza. Na przykład `https://contoso-kv.vault.azure.net/keys/kafkaClusterKey/46ab702136bc4b229f8b10e8c2997fa4`. Należy również przypisać zarządzaną tożsamość do klastra i podać identyfikator URI klucza.
 
 ## <a name="rotating-the-encryption-key"></a>Obracanie klucza szyfrowania
 
-   Mogą wystąpić sytuacje, w których warto zmienić klucze szyfrowania używane przez klaster Kafka po jego utworzeniu. Można to łatwo zrobić za pośrednictwem portalu. W przypadku tej operacji klaster musi mieć dostęp zarówno do bieżącego klucza, jak i do zamierzonego nowego klucza. w przeciwnym razie operacja zamiany klucza zakończy się niepowodzeniem.
+Mogą wystąpić sytuacje, w których warto zmienić klucze szyfrowania używane przez klaster Kafka po jego utworzeniu. Można to łatwo zrobić za pośrednictwem portalu. W przypadku tej operacji klaster musi mieć dostęp zarówno do bieżącego klucza, jak i do zamierzonego nowego klucza. w przeciwnym razie operacja zamiany klucza zakończy się niepowodzeniem.
 
-   Aby obrócić klucz, musisz mieć pełny adres URL nowego klucza (zobacz krok 3 [instalacji Key Vault i kluczy](#setup-the-key-vault-and-keys)). Po wykonaniu tej opcji przejdź do sekcji Właściwości klastra Kafka w portalu, a następnie kliknij pozycję **Zmień klucz** w obszarze **adres URL klucza szyfrowania dysku**. Wprowadź adres URL nowego klucza i prześlij go, aby obrócić klucz.
+Aby obrócić klucz, musisz mieć pełny adres URL nowego klucza (zobacz krok 3 [instalacji Key Vault i kluczy](#set-up-the-key-vault-and-keys)). Po wykonaniu tej opcji przejdź do sekcji Właściwości klastra Kafka w portalu, a następnie kliknij pozycję **Zmień klucz** w obszarze **adres URL klucza szyfrowania dysku**. Wprowadź adres URL nowego klucza i prześlij go, aby obrócić klucz.
 
-   ![Kafka Obróć klucz szyfrowania dysku](./media/apache-kafka-byok/apache-kafka-change-key.png)
+![Kafka Obróć klucz szyfrowania dysku](./media/apache-kafka-byok/apache-kafka-change-key.png)
 
 ## <a name="faq-for-byok-to-apache-kafka"></a>Często zadawane pytania dotyczące BYOK do Apache Kafka
 
 **Jak klaster Kafka uzyskuje dostęp do mojego magazynu kluczy?**
 
-   Skojarz zarządzaną tożsamość z klastrem usługi HDInsight Kafka podczas tworzenia klastra. Tę tożsamość zarządzaną można utworzyć przed lub podczas tworzenia klastra. Musisz również udzielić zarządzanej tożsamości dostępu do magazynu kluczy, w którym jest przechowywany klucz.
+Skojarz zarządzaną tożsamość z klastrem usługi HDInsight Kafka podczas tworzenia klastra. Tę tożsamość zarządzaną można utworzyć przed lub podczas tworzenia klastra. Musisz również udzielić zarządzanej tożsamości dostępu do magazynu kluczy, w którym jest przechowywany klucz.
 
 **Czy ta funkcja jest dostępna dla wszystkich klastrów Kafka w usłudze HDInsight?**
 
-   Szyfrowanie BYOK jest możliwe tylko dla klastrów Kafka 1,1 i nowszych.
+Szyfrowanie BYOK jest możliwe tylko dla klastrów Kafka 1,1 i nowszych.
 
 **Czy mogę mieć różne klucze dla różnych tematów/partycji?**
 
-   Nie, wszystkie dyski zarządzane w klastrze są szyfrowane przy użyciu tego samego klucza.
+Nie, wszystkie dyski zarządzane w klastrze są szyfrowane przy użyciu tego samego klucza.
 
 **Co się stanie, Jeśli klaster utraci dostęp do magazynu kluczy lub klucza?**
+
 Jeśli klaster utraci dostęp do klucza, ostrzeżenia będą wyświetlane w portalu Apache Ambari. W tym stanie operacja **zmiany klucza** zakończy się niepowodzeniem. Po przywróceniu dostępu do klucza Ambari ostrzeżenia i operacje, takie jak rotacja kluczy, mogą zostać wykonane pomyślnie.
 
-   ![Apache Kafka alert Ambari dostępu do klucza](./media/apache-kafka-byok/kafka-byok-ambari-alert.png)
+![Apache Kafka alert Ambari dostępu do klucza](./media/apache-kafka-byok/kafka-byok-ambari-alert.png)
 
 **Jak odzyskać klaster, jeśli klucze są usuwane?**
 
-   Ponieważ obsługiwane są tylko klucze z włączonym usuwaniem nietrwałego, jeśli klucze zostaną odzyskane w magazynie kluczy, klaster powinien odzyskać dostęp do kluczy. Aby odzyskać klucz Azure Key Vault, zobacz [Undo-AzKeyVaultKeyRemoval](/powershell/module/az.keyvault/Undo-AzKeyVaultKeyRemoval) lub [AZ-Key magazyn-klucz-Recover](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-recover).
+Ponieważ obsługiwane są tylko klucze z włączonym usuwaniem nietrwałego, jeśli klucze zostaną odzyskane w magazynie kluczy, klaster powinien odzyskać dostęp do kluczy. Aby odzyskać klucz Azure Key Vault, zobacz [Undo-AzKeyVaultKeyRemoval](/powershell/module/az.keyvault/Undo-AzKeyVaultKeyRemoval) lub [AZ-Key magazyn-klucz-Recover](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-recover).
 
 **Czy aplikacje producentów i konsumentów mogą pracować z klastrem BYOK i klastrem innym niż BYOK jednocześnie?**
 
-   Tak. Korzystanie z BYOK jest niewidoczne dla aplikacji producent/konsument. Szyfrowanie odbywa się w warstwie systemu operacyjnego. Nie trzeba wprowadzać żadnych zmian w istniejących aplikacjach producent/konsument Kafka.
+Tak. Korzystanie z BYOK jest niewidoczne dla aplikacji producent/konsument. Szyfrowanie odbywa się w warstwie systemu operacyjnego. Nie trzeba wprowadzać żadnych zmian w istniejących aplikacjach producent/konsument Kafka.
 
 **Czy dyski systemu operacyjnego/dyski zasobów są również szyfrowane?**
 
-   Nie. Dyski systemu operacyjnego i dyski zasobów nie są zaszyfrowane.
+Nie. Dyski systemu operacyjnego i dyski zasobów nie są szyfrowane.
 
 **Jeśli klaster jest skalowany w górę, czy nowi brokerzy będą wspierać BYOK bezproblemowo?**
 
-   Tak. Klaster wymaga dostępu do klucza w magazynie kluczy podczas skalowania w górę. Ten sam klucz służy do szyfrowania wszystkich dysków zarządzanych w klastrze.
+Tak. Klaster wymaga dostępu do klucza w magazynie kluczy podczas skalowania w górę. Ten sam klucz służy do szyfrowania wszystkich dysków zarządzanych w klastrze.
 
 **Czy BYOK jest dostępny w mojej lokalizacji?**
 
-   Kafka BYOK jest dostępny we wszystkich chmurach publicznych.
+Kafka BYOK jest dostępny we wszystkich chmurach publicznych.
 
 ## <a name="next-steps"></a>Następne kroki
 

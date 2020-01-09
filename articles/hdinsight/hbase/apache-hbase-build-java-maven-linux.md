@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,seodec18
 ms.topic: conceptual
-ms.date: 04/16/2019
-ms.openlocfilehash: c948d07bed99f1286e27d645fde7b96fdc699c02
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.custom: hdinsightactive,seodec18
+ms.date: 12/24/2019
+ms.openlocfilehash: 3e9b23ce450e45dfedcee8b20e09b1c2b52b6e68
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72311691"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75495783"
 ---
 # <a name="build-java-applications-for-apache-hbase"></a>Tworzenie aplikacji Java dla platformy Apache HBase
 
@@ -31,11 +31,12 @@ Kroki opisane w tym dokumencie wykorzystują [Apache Maven](https://maven.apache
 
 * Klient SSH. Aby uzyskać więcej informacji, zobacz [Łączenie się z usługą HDInsight (Apache Hadoop) przy użyciu protokołu SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-* W przypadku korzystania z programu PowerShell konieczne jest polecenie [AZ module](https://docs.microsoft.com/powershell/azure/overview).
+* W przypadku korzystania z programu PowerShell należy użyć polecenia [AZ module](https://docs.microsoft.com/powershell/azure/overview).
 
 * Edytor tekstów. W tym artykule jest wykorzystywany program Microsoft Notepad.
 
 ## <a name="test-environment"></a>Środowisko testowe
+
 Środowisko używane na potrzeby tego artykułu było komputerem z systemem Windows 10.  Polecenia zostały wykonane w wierszu polecenia, a różne pliki były edytowane w Notatniku. Zmodyfikuj odpowiednio dla danego środowiska.
 
 W wierszu polecenia wprowadź poniższe polecenia, aby utworzyć środowisko robocze:
@@ -56,13 +57,13 @@ cd C:\HDI
     mkdir conf
     ```
 
-    To polecenie tworzy katalog o nazwie `hbaseapp` w bieżącej lokalizacji, która zawiera podstawowy projekt Maven. Drugie polecenie zmienia katalog roboczy na `hbaseapp`. Trzecie polecenie tworzy nowy katalog `conf`, który będzie używany później. Katalog `hbaseapp` zawiera następujące elementy:
+    To polecenie tworzy katalog o nazwie `hbaseapp` w bieżącej lokalizacji, który zawiera podstawowy projekt Maven. Drugie polecenie zmienia katalog roboczy na `hbaseapp`. Trzecie polecenie tworzy nowy katalog `conf`, który będzie używany później. Katalog `hbaseapp` zawiera następujące elementy:
 
     * `pom.xml`: model obiektów projektu ([pliku pom](https://maven.apache.org/guides/introduction/introduction-to-the-pom.html)) zawiera informacje i szczegóły konfiguracji używane do kompilowania projektu.
     * `src\main\java\com\microsoft\examples`: zawiera kod aplikacji.
     * `src\test\java\com\microsoft\examples`: zawiera testy dla aplikacji.
 
-2. Usuń wygenerowany przykładowy kod. Usuń wygenerowane pliki testowe i aplikacje `AppTest.java` i `App.java`, wprowadzając następujące polecenia:
+2. Usuń wygenerowany przykładowy kod. Usuń wygenerowane pliki testowe i aplikacje `AppTest.java`i `App.java`, wprowadzając następujące polecenia:
 
     ```cmd
     DEL src\main\java\com\microsoft\examples\App.java
@@ -79,12 +80,12 @@ notepad pom.xml
 
 ### <a name="add-dependencies"></a>Dodaj zależności
 
-W `pom.xml` Dodaj następujący tekst w sekcji `<dependencies>`:
+W `pom.xml`Dodaj następujący tekst w sekcji `<dependencies>`:
 
 ```xml
 <dependency>
     <groupId>org.apache.hbase</groupId>
-    <artifactId>hbase-client</artifactId>
+    <artifactId>hbase-shaded-client</artifactId>
     <version>1.1.2</version>
 </dependency>
 <dependency>
@@ -101,8 +102,8 @@ Ta sekcja wskazuje, że projekt wymaga składników **HBase-Client** i **Phoenix
 
 | Wersja klastra usługi HDInsight | Wersja Apache HBase do użycia |
 | --- | --- |
-| 3,6 | 1.1.2 |
-| 4,0 | 2.0.0 |
+| 3.6 | 1.1.2 |
+| 4.0 | 2.0.0 |
 
 Aby uzyskać więcej informacji na temat wersji i składników usługi HDInsight, zobacz [co to są różne składniki Apache Hadoop dostępne w usłudze HDInsight](../hdinsight-component-versioning.md).
 
@@ -128,7 +129,7 @@ Dodaj następujący kod do pliku `pom.xml`, a następnie Zapisz i zamknij plik. 
     <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.0</version>
+                <version>3.8.1</version>
         <configuration>
             <source>1.8</source>
             <target>1.8</target>
@@ -160,9 +161,9 @@ Dodaj następujący kod do pliku `pom.xml`, a następnie Zapisz i zamknij plik. 
 Ta sekcja służy do konfigurowania zasobu (`conf/hbase-site.xml`) zawierającego informacje o konfiguracji dla HBase.
 
 > [!NOTE]  
-> Możesz również ustawić wartości konfiguracyjne za pośrednictwem kodu. Zobacz komentarze w przykładzie `CreateTable`.
+> Możesz również ustawić wartości konfiguracyjne za pośrednictwem kodu. Zobacz komentarze w `CreateTable` przykładzie.
 
-Ta sekcja służy również do konfigurowania [wtyczki kompilatora Apache Maven](https://maven.apache.org/plugins/maven-compiler-plugin/) i [wtyczki programu Apache Maven](https://maven.apache.org/plugins/maven-shade-plugin/). Wtyczka kompilatora służy do kompilowania topologii. Wtyczka do cieniowania służy do zapobiegania duplikowaniu licencji w pakiecie JAR utworzonym przez Maven. Ta wtyczka służy do zapobiegania błędowi "zduplikowane pliki licencji" w czasie wykonywania w klastrze usługi HDInsight. Korzystanie z Maven-odcieni-wtyczki z implementacją `ApacheLicenseResourceTransformer` uniemożliwia błąd.
+Ta sekcja służy również do konfigurowania [wtyczki kompilatora Apache Maven](https://maven.apache.org/plugins/maven-compiler-plugin/) i [wtyczki programu Apache Maven](https://maven.apache.org/plugins/maven-shade-plugin/). Wtyczka kompilatora służy do kompilowania topologii. Wtyczka do cieniowania służy do zapobiegania duplikowaniu licencji w pakiecie JAR utworzonym przez Maven. Ta wtyczka służy do zapobiegania błędowi "zduplikowane pliki licencji" w czasie wykonywania w klastrze usługi HDInsight. Użycie funkcji Maven-odcieni-plugin z implementacją `ApacheLicenseResourceTransformer` uniemożliwia błąd.
 
 Maven-odcieni-Wtyczka tworzy również plik JAR Uber, który zawiera wszystkie zależności wymagane przez aplikację.
 
@@ -341,7 +342,7 @@ public class SearchByEmail {
 }
 ```
 
-Klasy `SearchByEmail` można używać do wykonywania zapytań dotyczących wierszy według adresu e-mail. Ze względu na to, że używa filtru wyrażenia regularnego, podczas korzystania z klasy można podać ciąg lub wyrażenie regularne.
+Klasa `SearchByEmail` może służyć do wykonywania zapytań dotyczących wierszy według adresu e-mail. Ze względu na to, że używa filtru wyrażenia regularnego, podczas korzystania z klasy można podać ciąg lub wyrażenie regularne.
 
 ### <a name="implement-a-deletetable-class"></a>Implementowanie klasy Delete
 
@@ -379,7 +380,7 @@ Klasa `DeleteTable` czyści tabele HBase utworzone w tym przykładzie, wyłącza
 
 ## <a name="build-and-package-the-application"></a>Kompilowanie i pakowanie aplikacji
 
-1. W katalogu `hbaseapp` użyj następującego polecenia, aby skompilować plik JAR zawierający aplikację:
+1. W katalogu `hbaseapp` Użyj następującego polecenia, aby skompilować plik JAR zawierający aplikację:
 
     ```cmd
     mvn clean package
@@ -394,7 +395,7 @@ Klasa `DeleteTable` czyści tabele HBase utworzone w tym przykładzie, wyłącza
 
 ## <a name="upload-the-jar-and-run-jobs-ssh"></a>Przekaż zadania JAR i Run (SSH)
 
-Poniższe kroki używają `scp` w celu skopiowania JAR do podstawowego węzła głównego platformy Apache HBase w klastrze usługi HDInsight. Polecenie `ssh` służy następnie do nawiązywania połączenia z klastrem i uruchamiania tego przykładu bezpośrednio w węźle głównym.
+Poniższe kroki używają `scp`, aby skopiować plik JAR do podstawowego węzła głównego platformy Apache HBase w klastrze usługi HDInsight. Polecenie `ssh` jest następnie używane do nawiązywania połączenia z klastrem i uruchamiania przykładu bezpośrednio w węźle głównym.
 
 1. Przekaż plik jar do klastra. Zastąp `CLUSTERNAME` nazwą klastra usługi HDInsight, a następnie wprowadź następujące polecenie:
 
@@ -408,7 +409,7 @@ Poniższe kroki używają `scp` w celu skopiowania JAR do podstawowego węzła g
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
- 3. Aby utworzyć tabelę HBase przy użyciu aplikacji Java, użyj następującego polecenia w otwartym połączeniu SSH:
+3. Aby utworzyć tabelę HBase przy użyciu aplikacji Java, użyj następującego polecenia w otwartym połączeniu SSH:
 
     ```bash
     yarn jar hbaseapp-1.0-SNAPSHOT.jar com.microsoft.examples.CreateTable
@@ -681,7 +682,7 @@ Poniższe kroki używają Azure PowerShell [AZ module](https://docs.microsoft.co
 
     Po wyświetleniu monitu wprowadź nazwę logowania klastra (administratora) i hasło.
 
-    To polecenie używa klasy `SearchByEmail` w celu wyszukania wierszy, w których rodzina kolumn `contactinformation` i kolumna `email` zawierają ciąg `contoso.com`. Powinny zostać wyświetlone następujące wyniki:
+    To polecenie używa klasy `SearchByEmail` do wyszukania wierszy, w których rodzina kolumn `contactinformation` i kolumna `email` zawiera `contoso.com`ciągu. Powinny zostać wyświetlone następujące wyniki:
 
           Franklin Holtz - ID: 2
           Franklin Holtz - franklin@contoso.com - ID: 2

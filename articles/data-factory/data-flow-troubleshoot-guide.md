@@ -8,13 +8,13 @@ manager: anandsub
 ms.service: data-factory
 ms.topic: troubleshooting
 ms.custom: seo-lt-2019
-ms.date: 12/06/2019
-ms.openlocfilehash: b972bbeac419d88afdd257a7fd19587dbaedf0d9
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.date: 12/19/2019
+ms.openlocfilehash: 06746cfc3b39a242c16a6b4f4c95b3c212a9abd5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74930175"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443944"
 ---
 # <a name="troubleshoot-azure-data-factory-data-flows"></a>Rozwiązywanie problemów z przepływami danych Azure Data Factory
 
@@ -92,8 +92,18 @@ W tym artykule przedstawiono typowe metody rozwiązywania problemów z przepływ
 
 - **Przyczyna**: sprzężone strumienie mają wspólne nazwy kolumn
 
-- **Rozwiązanie**: Dodaj transforamtion wyboru po przyłączeniu i wybierz pozycję "Usuń zduplikowane kolumny" dla danych wejściowych i wyjściowych.
+- **Rozwiązanie**: Dodaj przekształcenie SELECT po przyłączeniu i wybierz pozycję "Usuń zduplikowane kolumny" dla danych wejściowych i wyjściowych.
 
+### <a name="error-message-possible-cartesian-product"></a>Komunikat o błędzie: możliwy produkt kartezjańskiego
+
+- **Objawy**: w wyniku przełączenia lub przeszukiwania wykryto możliwy kartezjańskiego produkt podczas wykonywania przepływu danych
+
+- **Przyczyna**: Jeśli nie został jawnie skierowany do ADF, aby można było użyć sprzężenia krzyżowego, przepływ danych może się nie powieść
+
+- **Rozwiązanie**: Zmień przeszukiwanie lub dołączanie transformacji do sprzężenia przy użyciu niestandardowego sprzężenia krzyżowego i wprowadź warunek wyszukiwania lub sprzężenia w edytorze wyrażeń. Jeśli chcesz jawnie utworzyć pełny produkt kartezjańskiego, użyj przekształcenia kolumn pochodnych w każdym z dwóch niezależnych strumieni przed przyłączeniem, aby utworzyć klucz syntetyczny do dopasowania. Na przykład utwórz nową kolumnę w kolumnie pochodnej w każdym strumieniu o nazwie ```SyntheticKey``` i ustaw ją na wartość ```1```. Następnie użyj ```a.SyntheticKey == b.SyntheticKey``` jako niestandardowego wyrażenia sprzężenia.
+
+> [!NOTE]
+> Pamiętaj o uwzględnieniu co najmniej jednej kolumny z każdej strony lewej i prawej relacji w przypadku niestandardowego sprzężenia krzyżowego. Wykonywanie sprzężenia krzyżowego z wartościami statycznymi zamiast kolumn ze wszystkich stron spowoduje pełne skanowanie całego zestawu danych, co spowoduje niewłaściwe wykonanie przepływu danych.
 
 ## <a name="general-troubleshooting-guidance"></a>Ogólne wskazówki dotyczące rozwiązywania problemów
 

@@ -1,25 +1,16 @@
 ---
-title: Odzyskiwanie po awarii na platformie Azure Service Fabric | Microsoft Docs
+title: Odzyskiwanie po awarii Service Fabric platformy Azure
 description: Usługa Azure Service Fabric oferuje funkcje niezbędne do obsługi wszystkich typów awarii. W tym artykule opisano typy awarii, które mogą wystąpić, oraz sposób postępowania z nimi.
-services: service-fabric
-documentationcenter: .net
 author: masnider
-manager: chackdan
-editor: ''
-ms.assetid: ab49c4b9-74a8-4907-b75b-8d2ee84c6d90
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 1be891d38eb918d65cd8efda86e9a81fa629cf38
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: f23624dd0be1e700731e3f5a63c8cd7a00ec4e16
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73883988"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458063"
 ---
 # <a name="disaster-recovery-in-azure-service-fabric"></a>Odzyskiwanie po awarii na platformie Azure Service Fabric
 Krytyczna część dostarczania wysokiej dostępności zapewnia, że usługi mogą przetrwać wszystkie różne typy awarii. Jest to szczególnie ważne w przypadku nieplanowanych awarii i poza formantem. W tym artykule opisano niektóre typowe tryby awarii, które mogą być awariami, jeśli nie są poprawnie modelowane i zarządzane. Omawia również środki zaradcze i akcje, które należy podjąć w przypadku wystąpienia awarii. Celem jest ograniczenie lub wyeliminowanie ryzyka przestoju lub utraty danych, gdy występują błędy, planowane lub w inny sposób.

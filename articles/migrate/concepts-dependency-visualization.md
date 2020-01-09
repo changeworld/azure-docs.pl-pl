@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: hamusa
-ms.openlocfilehash: 17ba06d6ac09f220b4343092292275a1cc315377
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: MT
+ms.openlocfilehash: 828f3078c992bed4fa556a374468e69dd58ebc04
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489205"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75494510"
 ---
 # <a name="dependency-visualization"></a>Wizualizacja zależności
 
@@ -32,11 +32,11 @@ Wizualizacja zależności ułatwia zrozumienie zależności między maszynami, k
 
 Dostępne są dwie opcje wdrażania wizualizacji zależności:
 
-- **Wizualizacja zależności bez agenta**: Ta opcja jest obecnie dostępna w wersji zapoznawczej. Nie wymaga to instalowania żadnych agentów na komputerach. 
+- **Wizualizacja zależności bez agenta**: Ta opcja jest obecnie dostępna w wersji zapoznawczej, a jej dostępność dotyczy tylko maszyn wirtualnych VMware. Nie wymaga to instalowania żadnych agentów na komputerach. 
     - Działa przez przechwytywanie danych połączenia TCP z maszyn, dla których jest włączona. [Dowiedz się więcej](how-to-create-group-machine-dependencies-agentless.md).
 Po rozpoczęciu odnajdywania zależności urządzenie zbiera dane z maszyn z interwałem sondowania równym pięć minut.
     - Zbierane są następujące dane:
-        - Połączenia TCP
+        - Połączenia protokołu TCP
         - Nazwy procesów, które mają aktywne połączenia
         - Nazwy zainstalowanych aplikacji, które uruchamiają powyższe procesy
         - Nie. wykrytych połączeń podczas każdego interwału sondowania

@@ -8,20 +8,20 @@ ms.author: bobuc
 ms.date: 09/18/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 3477bac051346e4b334ff3437085c402090b2c98
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 6143f50b9f1f6738daf3e69d4cc0e00742e1e35a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74765465"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75356353"
 ---
 # <a name="coarse-relocalization"></a>Zgrubna ponowna lokalizacja
 
-Bardzo duże relokalizacja to funkcja, która zapewnia wstępną odpowiedź na pytanie: *gdzie jest teraz moje urządzenie/jakie treści należy zaobserwować?* Odpowiedź nie jest precyzyjna, ale zamiast tego jest w formie: Jesteś *blisko tych kotwic, spróbuj zlokalizować jeden z nich*.
+Bardzo duże relokalizacja to funkcja, która zapewnia wstępną odpowiedź na pytanie: *gdzie jest teraz moje urządzenie/jakie treści należy zaobserwować?* Odpowiedź nie jest precyzyjna, ale zamiast tego jest w postaci: znajdują się w *pobliżu tych kotwic; Spróbuj zlokalizować jeden z nich*.
 
-Bardzo duże przeszukiwanie działa przez skojarzenie różnych odczytów czujnika na urządzeniu z tworzeniem i wykonywaniem zapytań o kotwice. W przypadku scenariuszy z zewnątrz dane czujnika są zwykle pozycjami GPS (GPS) urządzenia. Gdy GPS nie jest dostępny ani niezawodny (na przykład w przypadku braku drzwi), dane czujnika obejmują punkty dostępu Wi-Fi i sygnały nawigacyjne Bluetooth w zakresie. Wszystkie zebrane dane czujnika przyczyniają się do obsługi indeksu przestrzennego. Indeks przestrzenny jest używany przez usługę zakotwiczenia, aby szybko określić kotwice, które znajdują się w około 100 metrów na urządzeniu.
+Bardzo duże przeszukiwanie działa przez skojarzenie różnych odczytów czujnika na urządzeniu z tworzeniem i wykonywaniem zapytań o kotwice. W przypadku scenariuszy z zewnątrz dane czujnika są zwykle pozycjami GPS (GPS) urządzenia. Gdy GPS jest niedostępny lub niezawodny (na przykład w przypadku braku drzwi), dane czujnika składają się z punktów dostępu Wi-Fi i sygnałów nawigacyjnych Bluetooth w zakresie. Wszystkie zebrane dane czujnika przyczyniają się do utrzymania indeksu przestrzennego, który jest używany przez kotwice przestrzenne platformy Azure, aby szybko określić kotwice mieszczące się w około 100 metrów na urządzeniu.
 
-Szybkie wyszukiwanie kotwic z obsługą ogromnej relokalizacji upraszcza tworzenie aplikacji, które są obsługiwane przez światowe kolekcje z zakotwiczeniami w skali geograficznej. Złożoność zarządzania zakotwiczeniam jest ukryta, co pozwala skupić się na większej ostrości w logice aplikacji. Wszystkie duże zakotwiczenie są wykonywane w tle przez usługę!
+Szybkie wyszukiwanie kotwic z obsługą ogromnej relokalizacji upraszcza tworzenie aplikacji, które są obsługiwane przez światowe kolekcje z założeniami (np. milionów elementów rozproszonych geograficznie). Złożoność zarządzania zakotwiczeniam jest ukryta, co pozwala skupić się na większej ostrości w logice aplikacji. Wszystkie duże zakotwiczenie są wykonywane w tle przez kotwice przestrzenne platformy Azure.
 
 ## <a name="collected-sensor-data"></a>Zebrane dane czujnika
 
@@ -105,7 +105,7 @@ cloudSpatialAnchorSession = std::make_shared<CloudSpatialAnchorSession>();
 cloudSpatialAnchorSession->LocationProvider(sensorProvider);
 ```
 
-# <a name="c-winrttabcppwinrt"></a>[C++Środowiska](#tab/cppwinrt)
+# <a name="c-winrttabcppwinrt"></a>[C++ WinRT](#tab/cppwinrt)
 ```cpp
 // Create the sensor fingerprint provider
 PlatformLocationProvider sensorProvider = PlatformLocationProvider();
@@ -118,13 +118,13 @@ cloudSpatialAnchorSession.LocationProvider(sensorProvider);
 ```
 ---
 
-Następnie należy zdecydować, które czujniki mają być używane w przypadku niedużej lokalizacji. Niniejsza decyzja jest ogólnie określona dla aplikacji, którą tworzysz, ale zalecenia w poniższej tabeli powinny zapewnić dobry punkt początkowy:
+Następnie należy zdecydować, które czujniki mają być używane w przypadku niedużej lokalizacji. Ta decyzja jest specyficzna dla opracowywanej aplikacji, ale zalecenia w poniższej tabeli powinny zapewnić dobry punkt początkowy:
 
 
 |             | Brak drzwi | Na zewnątrz |
 |-------------|---------|----------|
 | GPS         | Wyłączone | Włączone |
-| Karta        | Włączone | On (opcjonalnie) |
+| Sieć Wi-Fi        | Włączone | On (opcjonalnie) |
 | Sygnały nawigacyjne dotyczące beli | On (opcjonalnie z zastrzeżeniami, zobacz poniżej) | Wyłączone |
 
 
@@ -166,7 +166,7 @@ const std::shared_ptr<SensorCapabilities>& sensors = sensorProvider->Sensors();
 sensors->GeoLocationEnabled(true);
 ```
 
-# <a name="c-winrttabcppwinrt"></a>[C++Środowiska](#tab/cppwinrt)
+# <a name="c-winrttabcppwinrt"></a>[C++ WinRT](#tab/cppwinrt)
 
 ```cpp
 SensorCapabilities sensors = sensorProvider.Sensors()
@@ -182,8 +182,9 @@ W przypadku korzystania z GPS w aplikacji należy pamiętać, że odczyty udost�
 
 Ogólnie rzecz biorąc, zarówno system operacyjny, jak i kotwice przestrzenne platformy Azure będą wykonywać pewne filtrowanie i ekstrapolację na nieprzetworzonym sygnale GPS, próbując wyeliminować te problemy. To dodatkowe przetwarzanie wymaga dodatkowego czasu na zbieżność, dlatego w celu uzyskania najlepszych wyników należy spróbować:
 
-* Utwórz dostawcę odcisku palca czujnika jak najszybciej, jak to możliwe w aplikacji
-* utrzymywanie i udostępnianie dostawcy odcisków palca czujnika między wieloma sesjami
+* Utwórz dostawcę odcisku palca czujnika jako wczesny, jak to możliwe w aplikacji
+* utrzymywanie dostawcy odcisków palca czujnika między wieloma sesjami
+* Udostępnianie dostawcy odcisków palca czujnika między wieloma sesjami
 
 Jeśli zamierzasz używać dostawcy odcisków palca czujnika poza sesją zakotwiczenia, przed zażądaniem oszacowania czujnika upewnij się, że został on uruchomiony. Na przykład poniższy kod zajmie się aktualizacją położenia urządzenia na mapie w czasie rzeczywistym:
 
@@ -291,7 +292,7 @@ while (m_isRunning)
 sensorProvider->Stop();
 ```
 
-# <a name="c-winrttabcppwinrt"></a>[C++Środowiska](#tab/cppwinrt)
+# <a name="c-winrttabcppwinrt"></a>[C++ WinRT](#tab/cppwinrt)
 
 ```cpp
 // Game about to start, start tracking the sensors
@@ -351,7 +352,7 @@ const std::shared_ptr<SensorCapabilities>& sensors = sensorProvider->Sensors();
 sensors->WifiEnabled(true);
 ```
 
-# <a name="c-winrttabcppwinrt"></a>[C++Środowiska](#tab/cppwinrt)
+# <a name="c-winrttabcppwinrt"></a>[C++ WinRT](#tab/cppwinrt)
 
 ```cpp
 SensorCapabilities sensors = sensorProvider.Sensors()
@@ -409,7 +410,7 @@ const std::shared_ptr<SensorCapabilities>& sensors = sensorProvider->Sensors();
 sensors->BluetoothEnabled(true);
 ```
 
-# <a name="c-winrttabcppwinrt"></a>[C++Środowiska](#tab/cppwinrt)
+# <a name="c-winrttabcppwinrt"></a>[C++ WinRT](#tab/cppwinrt)
 
 ```cpp
 SensorCapabilities sensors = sensorProvider.Sensors();
@@ -418,7 +419,7 @@ sensors.BluetoothEnabled(true);
 
 ---
 
-Sygnały nawigacyjne są zazwyczaj uniwersalnymi urządzeniami, gdzie wszystko — w tym Identyfikatory UUID i adresy MAC — można skonfigurować. Ta elastyczność może być przyczyną problemów z kotwicami przestrzennymi platformy Azure, które uważają, że sygnały są jednoznacznie identyfikowane przez ich identyfikatory UUID. Niepowodzenie, aby upewnić się, że unikatowość będzie najprawdopodobniej przetłumaczyć na Wormholes przestrzenne. Aby uzyskać najlepsze wyniki, należy:
+Sygnały nawigacyjne są zazwyczaj uniwersalnymi urządzeniami, gdzie wszystko — w tym Identyfikatory UUID i adresy MAC — można skonfigurować. Ta elastyczność może być przyczyną problemów z zakotwiczeniami przestrzennymi platformy Azure, ponieważ uważają sygnały, które są jednoznacznie identyfikowane przez ich identyfikatory UUID. Niepowodzenie, aby upewnić się, że unikatowość będzie prawdopodobnie powodowało Wormholes przestrzenne. Aby uzyskać najlepsze wyniki, należy:
 
 * Przypisywanie unikatowych identyfikatorów UUID do sygnałów nawigacyjnych.
 * Wdrażaj je — zwykle w zwykłych wzorcach, takich jak siatka.
@@ -477,7 +478,7 @@ const std::shared_ptr<SensorCapabilities>& sensors = sensorProvider->Sensors();
 sensors->KnownBeaconProximityUuids(uuids);
 ```
 
-# <a name="c-winrttabcppwinrt"></a>[C++Środowiska](#tab/cppwinrt)
+# <a name="c-winrttabcppwinrt"></a>[C++ WinRT](#tab/cppwinrt)
 
 ```cpp
 std::vector<winrt::hstring> uuids;
@@ -490,13 +491,13 @@ sensors.KnownBeaconProximityUuids(uuids);
 
 ---
 
-Kotwice przestrzenne platformy Azure śledzą sygnały nawigacyjne Bluetooth, które znajdują się na liście. Złośliwe sygnały są programowane w taki sposób, aby na liście identyfikatorów UUID mogły mieć negatywny wpływ na jakość usługi. Z tego powodu należy używać sygnałów nawigacyjnych tylko w nadzorowanych miejscach, w których można kontrolować ich wdrażanie.
+Kotwice przestrzenne platformy Azure śledzą sygnały nawigacyjne Bluetooth, które znajdują się w znanej liście identyfikatorów UUID sąsiedztwa. Złośliwe sygnały są programowane w taki sposób, aby na liście identyfikatorów UUID mogły mieć negatywny wpływ na jakość usługi. Z tego powodu należy używać sygnałów nawigacyjnych tylko w nadzorowanych miejscach, w których można kontrolować ich wdrażanie.
 
 ## <a name="querying-with-sensor-data"></a>Wykonywanie zapytań przy użyciu danych czujników
 
-Po utworzeniu kotwic ze skojarzonymi danymi czujnika można rozpocząć pobieranie ich przy użyciu odczytów czujnika zgłoszonych przez urządzenie. Nie musisz już podawać usługi za pomocą listy znanych kotwic, które zamierzasz znaleźć — zamiast tego wystarczy, aby usługa wiedzieli lokalizację urządzenia jako zgłoszoną przez czujniki dołączania. Usługa kotwice przestrzenne następnie wystawia zestaw kotwic blisko urządzenia i spróbuje je wizualnie dopasować.
+Po utworzeniu kotwic ze skojarzonymi danymi czujnika można rozpocząć pobieranie ich przy użyciu odczytów czujnika zgłoszonych przez urządzenie. Nie musisz już podawać usługi za pomocą listy znanych kotwic, które zamierzasz znaleźć — zamiast tego wystarczy, aby usługa wiedzieli lokalizację urządzenia jako zgłoszoną przez czujniki dołączania. Dzięki zakotwiczeniem przestrzennym platformy Azure zostanie przedstawiony zestaw kotwic blisko urządzenia i podjęto próbę wizualnego dopasowania go.
 
-Aby zapytania używały danych czujników, Zacznij od utworzenia kryteriów lokalizowania:
+Aby zapytania używały danych z czujnika, Zacznij od utworzenia kryterium "blisko urządzenia":
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -573,7 +574,7 @@ auto anchorLocateCriteria = std::make_shared<AnchorLocateCriteria>();
 anchorLocateCriteria->NearDevice(nearDeviceCriteria);
 ```
 
-# <a name="c-winrttabcppwinrt"></a>[C++Środowiska](#tab/cppwinrt)
+# <a name="c-winrttabcppwinrt"></a>[C++ WinRT](#tab/cppwinrt)
 
 ```cpp
 NearDeviceCriteria nearDeviceCriteria = NearDeviceCriteria();
@@ -593,7 +594,7 @@ anchorLocateCriteria.NearDevice(nearDeviceCriteria);
 
 `DistanceInMeters` parametr określa, jak daleko analizujemy Graf zakotwiczony do pobierania zawartości. Przyjęto założenie, że na przykład wypełniono miejsce z kotwicami o stałej gęstości wynoszącej 2 każdy licznik. Dodatkowo aparat na urządzeniu obsłużył jedną kotwicę, a usługa została pomyślnie umieszczona w usłudze. Najprawdopodobniej interesuje Cię pobieranie wszystkich kotwic, które zostały umieszczone w pobliżu, a nie z pojedynczej kotwicy, która jest aktualnie zaobserwowania. Przy założeniu, że kotwice zostały połączone w grafie, usługa może pobrać wszystkie kotwice w pobliżu, postępując zgodnie z krawędziami na wykresie. Ilość wykonywanego przechodzenia wykresu jest kontrolowana przez `DistanceInMeters`; otrzymasz wszystkie kotwice połączone z tym, które znajdują się na tym samym miejscu niż `DistanceInMeters`.
 
-Należy pamiętać, że duże wartości `MaxResultCount` mogą negatywnie wpłynąć na wydajność. Spróbuj ustawić ją na rozsądną wartość, która ma sens dla aplikacji.
+Należy pamiętać, że duże wartości `MaxResultCount` mogą negatywnie wpłynąć na wydajność. Ustaw ją na wartość rozsądną dla aplikacji.
 
 Na koniec należy poinformować sesję, aby używała wyszukiwania opartego na czujnikach:
 
@@ -627,7 +628,7 @@ cloudSpatialAnchorSession.createWatcher(anchorLocateCriteria);
 cloudSpatialAnchorSession->CreateWatcher(anchorLocateCriteria);
 ```
 
-# <a name="c-winrttabcppwinrt"></a>[C++Środowiska](#tab/cppwinrt)
+# <a name="c-winrttabcppwinrt"></a>[C++ WinRT](#tab/cppwinrt)
 
 ```cpp
 cloudSpatialAnchorSession.CreateWatcher(anchorLocateCriteria);
@@ -650,7 +651,7 @@ W poniższej tabeli szacuje oczekiwany obszar wyszukiwania dla każdego typu czu
 | Czujnik      | Promień obszaru wyszukiwania (w przybliżeniu) | Szczegóły |
 |-------------|:-------:|---------|
 | GPS         | 20 m-30 m | Określana na podstawie niepewności GPS między innymi czynnikami. Raportowane liczby są szacowane dla średniej dokładności GPS telefonów komórkowych z-GPS, czyli 7 metrów. |
-| Karta        | 50 m – 100 m | Określany przez zakres punktów dostępu bezprzewodowego. Zależy od częstotliwości, siły nadajnika, przeszkód fizycznych, zakłóceń i tak dalej. |
+| Sieć Wi-Fi        | 50 m – 100 m | Określany przez zakres punktów dostępu bezprzewodowego. Zależy od częstotliwości, siły nadajnika, przeszkód fizycznych, zakłóceń i tak dalej. |
 | Sygnały nawigacyjne dotyczące beli |  70 m | Określany przez zakres sygnałów nawigacyjnych. Zależy od częstotliwości, siły transmisji, przeszkód fizycznych, zakłóceń i tak dalej. |
 
 ## <a name="per-platform-support"></a>Obsługa poszczególnych platform
@@ -661,7 +662,7 @@ Poniższa tabela zawiera podsumowanie danych czujników zbieranych na każdej z 
 |             | HoloLens | Android | iOS |
 |-------------|----------|---------|-----|
 | GPS         | ND | Obsługiwane za poorednictwem interfejsów API [lokalizacji][3] (GPS i Network) | Obsługiwane za poorednictwem interfejsów API [CLLocationManager][4] |
-| Karta        | Obsługiwane z szybkością około jednego skanowania co 3 sekundy | Obsługiwane. Począwszy od poziomu interfejsu API 28, skanowania w sieci Wi-Fi są ograniczone do 4 wywołań co 2 minuty. W przypadku systemu Android 10 ograniczenie przepustowości można wyłączyć w menu Ustawienia dewelopera. Aby uzyskać więcej informacji, zobacz [dokumentację systemu Android][5]. | N/A — brak publicznego interfejsu API |
+| Sieć Wi-Fi        | Obsługiwane z szybkością około jednego skanowania co 3 sekundy | Obsługiwane. Począwszy od poziomu interfejsu API 28, skanowania w sieci Wi-Fi są ograniczone do 4 wywołań co 2 minuty. W przypadku systemu Android 10 ograniczenie przepustowości można wyłączyć w menu Ustawienia dewelopera. Aby uzyskać więcej informacji, zobacz [dokumentację systemu Android][5]. | N/A — brak publicznego interfejsu API |
 | Sygnały nawigacyjne dotyczące beli | Ograniczone do [Eddystone][1] i [iBeacon][2] | Ograniczone do [Eddystone][1] i [iBeacon][2] | Ograniczone do [Eddystone][1] i [iBeacon][2] |
 
 ## <a name="next-steps"></a>Następne kroki

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: mlearned
-ms.openlocfilehash: 3feadaca361950df2a09f8da33fe380fc3763763
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: cd859a4009782ca39732ec004a3d3e05edd377b0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67614828"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442895"
 ---
 # <a name="best-practices-for-container-image-management-and-security-in-azure-kubernetes-service-aks"></a>Najlepsze rozwiązania dotyczące zarządzania obrazami kontenera i zabezpieczeń w usłudze Azure Kubernetes Service (AKS)
 
@@ -25,6 +25,8 @@ Ten artykuł koncentruje się na sposób zabezpieczania kontenerów w usłudze A
 > * Automatyczne wyzwalanie i ponowne wdrażanie obrazów kontenerów, po zaktualizowaniu obrazu podstawowego
 
 Można także zapoznać się z najlepszymi rozwiązaniami dotyczącymi [zabezpieczeń klastra][best-practices-cluster-security] i [zabezpieczenia pod][best-practices-pod-security].
+
+Możesz również użyć [zabezpieczeń kontenera w Security Center][security-center-containers] , aby pomóc w skanowaniu kontenerów pod kątem luk w zabezpieczeniach.  Ponadto [Azure Container Registry integrację][security-center-acr] z usługą Security Center, która pomaga chronić obrazy i rejestr przed lukami w zabezpieczeniach.
 
 ## <a name="secure-the-images-and-run-time"></a>Zabezpieczanie obrazów i w czasie wykonywania
 
@@ -61,3 +63,5 @@ Ten artykuł koncentruje się na sposób zabezpieczania kontenerów. Aby zaimple
 [best-practices-cluster-security]: operator-best-practices-cluster-security.md
 [best-practices-pod-security]: developer-best-practices-pod-security.md
 [acr-base-image-update]: ../container-registry/container-registry-tutorial-base-image-update.md
+[security-center-containers]: /azure/security-center/container-security
+[security-center-acr]: /azure/security-center/azure-container-registry-integration

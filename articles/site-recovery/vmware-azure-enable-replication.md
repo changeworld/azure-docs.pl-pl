@@ -6,16 +6,22 @@ ms.service: site-recovery
 ms.date: 06/28/2019
 ms.topic: conceptual
 ms.author: ramamill
-ms.openlocfilehash: 1cc1ee82b45ecab17e4bcfb3a909fc90b33a1545
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 10b3e572ec61d1eff342f24a6a5a7bcba6276983
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954436"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75495376"
 ---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>Włącz replikację do platformy Azure dla maszyn wirtualnych VMware
 
 W tym artykule opisano sposób włączania replikacji lokalnych maszyn wirtualnych programu VMware na platformę Azure.
+
+## <a name="resolve-common-issues"></a>Rozwiązywanie typowych problemów
+
+* Każdy dysk powinien być mniejszy niż 4 TB.
+* Dysk systemu operacyjnego powinien być dyskiem podstawowym, a nie dyskiem dynamicznym.
+* W przypadku maszyn wirtualnych generacji 2/UEFI, Rodzina systemów operacyjnych powinna być systemem Windows, a dysk rozruchowy powinien być mniejszy niż 300 GB.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -23,6 +29,11 @@ W tym artykule założono, że masz:
 
 - [Skonfiguruj lokalne środowisko źródłowe](vmware-azure-set-up-source.md).
 - [Skonfiguruj środowisko docelowe na platformie Azure](vmware-azure-set-up-target.md).
+- Przed rozpoczęciem [Sprawdź, czy zostały spełnione wymagania i wymagania wstępne](vmware-physical-azure-support-matrix.md) . Ważne rzeczy do zanotowania:
+    - [Obsługiwane systemy operacyjne](vmware-physical-azure-support-matrix.md#replicated-machines) dla replikowanych maszyn.
+    - Obsługa [magazynu i dysku](vmware-physical-azure-support-matrix.md#storage) .
+    - [Wymagania dotyczące platformy Azure](vmware-physical-azure-support-matrix.md#azure-vm-requirements) , które powinny być zgodne z maszynami lokalnymi.
+
 
 ## <a name="before-you-start"></a>Przed rozpoczęciem
 Podczas replikowania maszyn wirtualnych VMware należy pamiętać o następujących kwestiach:
@@ -123,11 +134,7 @@ Klienci programu Microsoft Software Assurance mogą korzystać z Korzyść użyc
 
 Dowiedz się więcej o [korzyść użycia hybrydowego platformy Azure](https://aka.ms/azure-hybrid-benefit-pricing).
 
-## <a name="resolve-common-issues"></a>Rozwiązywanie typowych problemów
 
-* Każdy dysk powinien być mniejszy niż 4 TB.
-* Dysk systemu operacyjnego powinien być dyskiem podstawowym, a nie dyskiem dynamicznym.
-* W przypadku maszyn wirtualnych generacji 2/UEFI, Rodzina systemów operacyjnych powinna być systemem Windows, a dysk rozruchowy powinien być mniejszy niż 300 GB.
 
 ## <a name="next-steps"></a>Następne kroki
 

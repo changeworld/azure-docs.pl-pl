@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 10/29/2019
-ms.openlocfilehash: 3ef2def6329dc31eb1b175133b4525f87de9181c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 12/23/2019
+ms.openlocfilehash: 43875b87d26f144b85454077fd3c044c820132bf
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494644"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75494987"
 ---
 # <a name="improve-performance-of-apache-spark-workloads-using-azure-hdinsight-io-cache"></a>Poprawianie wydajności Apache Spark obciążeń przy użyciu pamięci podręcznej we/wy usługi Azure HDInsight
 
@@ -22,7 +22,7 @@ Większość dysków SSD zapewnia więcej niż 1 GByte na sekundę przepustowoś
 
 > [!Note]  
 > Pamięć podręczna we/wy używa obecnie RubiX jako składnika buforowania, ale może się to zmienić w przyszłych wersjach usługi. Użyj interfejsów pamięci podręcznej we/wy i nie podejmuj żadnych zależności bezpośrednio w implementacji RubiX.
->Pamięć podręczna we/wy jest teraz obsługiwana w usłudze Azure BLOB Storage. 
+>Pamięć podręczna we/wy jest teraz obsługiwana w usłudze Azure BLOB Storage.
 
 ## <a name="benefits-of-azure-hdinsight-io-cache"></a>Zalety pamięci podręcznej we/wy usługi Azure HDInsight
 
@@ -32,21 +32,19 @@ Nie musisz wprowadzać żadnych zmian w zadaniach platformy Spark, aby zobaczyć
 
 ## <a name="getting-started"></a>Wprowadzenie
 
-Pamięć podręczna we/wy usługi HDInsight Azure jest domyślnie zdezaktywowana w wersji zapoznawczej. Pamięć podręczna we/wy jest dostępna w klastrach usługi Azure HDInsight 3.6 i Spark, w których działa Apache Spark 2,3.  Aby aktywować pamięć podręczną we/wy, wykonaj następujące czynności:
+Pamięć podręczna we/wy usługi HDInsight Azure jest domyślnie zdezaktywowana w wersji zapoznawczej. Pamięć podręczna we/wy jest dostępna w klastrach usługi Azure HDInsight 3.6 i Spark, w których działa Apache Spark 2,3.  Aby aktywować pamięć podręczną we/wy w usłudze HDInsight 4,0, wykonaj następujące czynności:
 
-1. Wybierz klaster usługi HDInsight w [Azure Portal](https://portal.azure.com).
-
-1. Na stronie **Przegląd** (domyślnie otwieranej po wybraniu klastra) wybierz pozycję **Ambari Home** w obszarze **pulpity nawigacyjne klastra**.
+1. W przeglądarce sieci Web przejdź do `https://CLUSTERNAME.azurehdinsight.net`, gdzie `CLUSTERNAME` jest nazwą klastra.
 
 1. Wybierz usługę **pamięci podręcznej we/wy** po lewej stronie.
 
-1. Wybierz pozycję **Akcje** i **Aktywuj**.
+1. Wybierz **Akcje** (**Akcje usługi** w HDI 3,6) i **Aktywuj**.
 
     ![Włączanie usługi pamięci podręcznej we/wy w Ambari](./media/apache-spark-improve-performance-iocache/ambariui-enable-iocache.png "Włączanie usługi pamięci podręcznej we/wy w Ambari")
 
 1. Potwierdź ponowne uruchomienie wszystkich usług, których dotyczy ten klaster.
 
->[!NOTE]  
+> [!NOTE]  
 > Mimo że pasek postępu pokazuje aktywowany, pamięć podręczna we/wy nie jest faktycznie włączona do momentu ponownego uruchomienia innych usług, których to dotyczy.
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
@@ -71,12 +69,12 @@ Po włączeniu pamięci podręcznej we/wy może wystąpić błąd miejsca na dys
 
 1. Wybierz pozycję **Uruchom ponownie** > **ponownie uruchom wszystkie**.
 
-    ![System Apache Ambari](./media/apache-spark-improve-performance-iocache/ambariui-restart-all-affected.png "Uruchom ponownie wszystkie uwzględnione")
+    ![Wszystkie uwzględnione ponowne uruchomienia Apache Ambari](./media/apache-spark-improve-performance-iocache/ambariui-restart-all-affected.png "Uruchom ponownie wszystkie uwzględnione")
 
 1. Wybierz pozycję **Potwierdź ponowne uruchomienie wszystkich**.
 
-Jeśli to nie zadziała, Wyłącz pamięć podręczną we/wy.
+Jeśli to nie zadziała, Wyłącz pamięć podręczną operacji we/wy.
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Przeczytaj więcej na temat pamięci podręcznej we/wy, włącznie z wynikami testów wydajności w tym wpisie w blogu: [Apache Spark zadania mogą uzyskać do 9X szybkość dzięki pamięci podręcznej usługi HDInsight](https://azure.microsoft.com/blog/apache-spark-speedup-with-hdinsight-io-cache/)
+Przeczytaj więcej na temat pamięci podręcznej we/wy, włącznie z wynikami testów wydajności w tym wpisie w blogu: [Apache Spark zadania mogą uzyskać do 9X szybkość dzięki pamięci podręcznej usługi HDInsight](https://azure.microsoft.com/blog/apache-spark-speedup-with-hdinsight-io-cache/)

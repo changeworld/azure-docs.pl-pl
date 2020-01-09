@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/18/2019
 ms.author: normesta
 ms.reviewer: bensack
-ms.openlocfilehash: d76ea317271ae0e8eb0d54fcfee5dc005d836fc1
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 156999c6b6d8451516ac1c0f095e1a864420d0b2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984959"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75354828"
 ---
 # <a name="analyze-data-in-azure-data-lake-storage-gen2-by-using-power-bi"></a>Analizowanie danych w Azure Data Lake Storage Gen2 przy użyciu Power BI
 
@@ -26,8 +26,9 @@ Przed przystąpieniem do wykonania kroków opisanych w tym samouczku należy dys
 > [!div class="checklist"]
 > * Subskrypcja platformy Azure. Zobacz temat [Uzyskiwanie bezpłatnej wersji próbnej platformy Azure](https://azure.microsoft.com/pricing/free-trial/).
 > * Konto magazynu, które ma hierarchiczną przestrzeń nazw. Postępuj zgodnie z [tymi](data-lake-storage-quickstart-create-account.md) instrukcjami, aby je utworzyć.
-> W tym artykule przyjęto założenie, że utworzono `myadlsg2`konto o nazwie.
-> * Przykładowy plik danych o nazwie `Drivers.txt` znajdujący się na koncie magazynu.
+> W tym artykule przyjęto założenie, że utworzono konto o nazwie `myadlsg2`.
+> * Otrzymujesz jedną z następujących ról dla konta magazynu: **czytnik danych obiektów BLOB**, **współautor danych obiektów BLOB**lub **właściciel danych obiektów BLOB**.
+> * Przykładowy plik danych o nazwie `Drivers.txt` znajduje się na koncie magazynu.
 > Możesz pobrać ten przykład z [repozytorium Azure Data Lake git](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/Drivers.txt), a następnie przekazać ten plik na konto magazynu.
 > * **Power BI Desktop**. Możesz pobrać ten program z [Centrum pobierania Microsoft](https://www.microsoft.com/download/details.aspx?id=45331). 
 
@@ -39,9 +40,9 @@ Przed przystąpieniem do wykonania kroków opisanych w tym samouczku należy dys
 
     ![Pobierz stronę danych](media/data-lake-storage-use-power-bi/get-data-page.png)
 
-4. W oknie dialogowym **Azure Data Lake Storage Gen2** możesz podać adres URL konta Azure Data Lake Storage Gen2, systemu plików lub podfolderu przy użyciu formatu punktu końcowego kontenera. Adresy URL dla Data Lake Storage Gen2 mają następujący wzorzec `https://<accountname>.dfs.core.windows.net/<filesystemname>/<subfolder>` , a następnie kliknij przycisk **OK**.
+4. W oknie dialogowym **Azure Data Lake Storage Gen2** możesz podać adres URL konta Azure Data Lake Storage Gen2, systemu plików lub podfolderu przy użyciu formatu punktu końcowego kontenera. Adresy URL Data Lake Storage Gen2 mają następujący wzorzec `https://<accountname>.dfs.core.windows.net/<filesystemname>/<subfolder>` a następnie kliknij przycisk **OK**.
 
-    ![URL](media/data-lake-storage-use-power-bi/adls-url.png)
+    ![Adres URL](media/data-lake-storage-use-power-bi/adls-url.png)
 
 5. W następnym oknie dialogowym kliknij przycisk **Zaloguj** się, aby zalogować się do konta magazynu. Nastąpi przekierowanie do strony logowania w organizacji. Postępuj zgodnie z monitami, aby zalogować się do konta.
 
@@ -71,7 +72,7 @@ Przed przystąpieniem do wykonania kroków opisanych w tym samouczku należy dys
 
 10. W **Edytorze zapytań**w kolumnie **zawartość** kliknij pozycję dane **binarne**. Plik zostanie automatycznie wykryty jako wolumin CSV i powinny zostać wyświetlone dane wyjściowe, jak pokazano poniżej. Twoje dane są teraz dostępne w formacie, którego można użyć do tworzenia wizualizacji.
 
-    ![Output](media/data-lake-storage-use-power-bi/binary.png)
+    ![Dane wyjściowe](media/data-lake-storage-use-power-bi/binary.png)
 
 11. Na karcie **Narzędzia główne** na wstążce kliknij przycisk **Zamknij** i **Zastosuj**, a następnie kliknij przycisk **Zamknij** i **Zastosuj**.
 

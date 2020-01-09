@@ -7,14 +7,14 @@ ms.service: site-recovery
 ms.date: 11/14/2019
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: 508fa7e33cd8572d70b7ebf261edba67fd40dd93
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 16892ec729f56f8c8e1713379285e07fbc0dd4d1
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084163"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75495429"
 ---
-# <a name="common-questions-about-vmware-to-azure-replication"></a>Często zadawane pytania dotyczące replikacji oprogramowania VMware do platformy Azure
+# <a name="common-questions-about-vmware-to-azure-replication"></a>Typowe pytania dotyczące replikacji z programu VMware do platformy Azure
 
 W tym artykule znajdują się odpowiedzi na często zadawane pytania dotyczące wdrażania odzyskiwania po awarii lokalnych maszyn wirtualnych VMware na platformie Azure.
 
@@ -176,7 +176,7 @@ Tak. nowe maszyny wirtualne można dodać do istniejącej grupy replikacji po w�
 
 ### <a name="can-i-modify-vms-that-are-replicating-by-adding-or-resizing-disks"></a>Czy mogę zmodyfikować maszyny wirtualne, które są replikowane przez dodanie lub zmianę rozmiarów dysków?
 
-W przypadku replikacji oprogramowania VMware na platformę Azure można modyfikować rozmiar dysku. Aby dodać nowe dyski, należy dodać dysk i ponownie włączyć ochronę maszyny wirtualnej.
+W przypadku replikacji oprogramowania VMware na platformę Azure można modyfikować rozmiar dysku źródłowych maszyn wirtualnych. Aby dodać nowe dyski, należy dodać dysk i ponownie włączyć ochronę maszyny wirtualnej.
 
 ### <a name="can-i-migrate-on-premises-machines-to-a-new-vcenter-server-without-impacting-ongoing-replication"></a>Czy można przeprowadzić migrację maszyn lokalnych do nowego vCenter Server bez wpływu na trwającą replikację?
 
@@ -344,9 +344,6 @@ Tak. W przypadku przełączenia w tryb failover na platformę Azure można wróc
 
 Po powrocie po awarii z platformy Azure dane z platformy Azure są kopiowane z powrotem do lokalnej maszyny wirtualnej, a dostęp prywatny jest wymagany.
 
-### <a name="can-i-resize-the-azure-vm-after-failover"></a>Czy mogę zmienić rozmiar maszyny wirtualnej platformy Azure po przejściu w tryb failover?
-
-Nie, nie można zmienić rozmiaru ani typu docelowej maszyny wirtualnej po przejściu do trybu failover.
 
 ## <a name="automation-and-scripting"></a>Automatyzacja i obsługa skryptów
 

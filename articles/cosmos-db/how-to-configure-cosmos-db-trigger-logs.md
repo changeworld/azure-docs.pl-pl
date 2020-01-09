@@ -1,17 +1,17 @@
 ---
-title: Konfigurowanie i odczytywanie dzienników przy użyciu wyzwalacza Azure Functions dla Cosmos DB
+title: Konfigurowanie i odczytywanie dzienników z wyzwalaczem Azure Functions dla Cosmos DB
 description: Dowiedz się, jak uwidocznić dzienniki w potoku rejestrowania Azure Functions podczas korzystania z wyzwalacza Azure Functions dla Cosmos DB
 author: ealsur
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: maquaran
-ms.openlocfilehash: 17b2d4854e3222e5bdb607c6c80b0ec5ed6177d3
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 5ff747b225f8984bcaafd80015e85a9f014bdb50
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70093594"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441824"
 ---
 # <a name="how-to-configure-and-read-the-logs-when-using-azure-functions-trigger-for-cosmos-db"></a>Sposób konfigurowania i odczytywania dzienników przy użyciu wyzwalacza Azure Functions dla Cosmos DB
 
@@ -25,7 +25,7 @@ Dzienniki kondycji opisują sposób, w jaki wyzwalacz Azure Functions dla Cosmos
 
 ## <a name="enabling-logging"></a>Włączanie rejestrowania
 
-Aby włączyć rejestrowanie w przypadku korzystania z wyzwalacza Azure Functions dla Cosmos DB `host.json` , Znajdź plik w Azure Functions projekcie lub aplikacji Azure Functions i [Skonfiguruj poziom wymaganych rejestracji](../azure-functions/functions-monitoring.md#log-configuration-in-hostjson). Musisz włączyć ślady `Host.Triggers.CosmosDB` , tak jak pokazano w następującym przykładzie:
+Aby włączyć rejestrowanie przy użyciu wyzwalacza Azure Functions dla Cosmos DB, Znajdź plik `host.json` w projekcie Azure Functions lub aplikacji Azure Functions i [Skonfiguruj poziom wymaganych rejestrowania](../azure-functions/functions-monitoring.md#log-configuration-in-hostjson). Musisz włączyć ślady dla `Host.Triggers.CosmosDB`, jak pokazano w następującym przykładzie:
 
 ```js
 {

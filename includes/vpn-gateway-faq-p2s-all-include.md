@@ -5,15 +5,15 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 05/23/2019
+ms.date: 12/17/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 3cffd2de0763ea6984b64b965ce1214951d3d569
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
-ms.translationtype: MT
+ms.openlocfilehash: 7dfa3df078ffe8aac3e63f14624a65a47b11a56a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "67056486"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75353572"
 ---
 ### <a name="how-many-vpn-client-endpoints-can-i-have-in-my-point-to-site-configuration"></a>Ile punktów końcowych klienta sieci VPN może obejmować konfiguracja punkt-lokacja?
 
@@ -35,6 +35,12 @@ Obsługiwane są następujące systemy operacyjne klientów:
 * iOS
 
 [!INCLUDE [TLS](vpn-gateway-tls-updates.md)]
+
+### <a name="what-should-i-do-if-i-am-getting-a-certificate-mismatch-when-connecting"></a>Co należy zrobić, jeśli podczas nawiązywania połączenia występuje niezgodność certyfikatu?
+
+Usuń zaznaczenie pola wyboru **"Weryfikuj tożsamość serwera, sprawdzając certyfikat"** lub **Dodaj nazwę FQDN serwera wraz z certyfikatem** podczas ręcznego tworzenia profilu. Można to zrobić, uruchamiając polecenie **Rasphone** z wiersza polecenia i wybierając profil z listy rozwijanej.
+
+![punkt-lokacja](./media/vpn-gateway-faq-p2s-all-include/servercert.png "Certyfikat serwera")
 
 ### <a name="can-i-traverse-proxies-and-firewalls-using-point-to-site-capability"></a>Czy można pominąć serwery proxy i zapory, korzystając z funkcji punkt-lokacja?
 
@@ -82,7 +88,7 @@ Aby przygotowywać system Windows 10 lub Server 2016 pod kątem protokołu IKEv2
    |---|---|---|
    | Windows Server 2016<br>Windows 10 w wersji 1607 | 17 stycznia 2018 r. | [KB4057142](https://support.microsoft.com/help/4057142/windows-10-update-kb4057142) |
    | Windows 10 w wersji 1703 | 17 stycznia 2018 r. | [KB4057144](https://support.microsoft.com/help/4057144/windows-10-update-kb4057144) |
-   | Windows 10 w wersji 1709 | 22 marca, 2018 | [KB4089848](https://www.catalog.update.microsoft.com/search.aspx?q=kb4089848) |
+   | Windows 10 w wersji 1709 | 22 marca 2018 r. | [KB4089848](https://www.catalog.update.microsoft.com/search.aspx?q=kb4089848) |
    |  |  |  |
 
 2. Ustaw wartość klucza rejestru. Utwórz lub ustaw klucz rejestru REG_DWORD „HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\RasMan\ IKEv2\DisableCertReqPayload”na wartość 1.

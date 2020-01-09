@@ -1,25 +1,14 @@
 ---
-title: Tworzenie aplikacji kontenera usługi Azure Service Fabric w systemie Linux | Dokumentacja firmy Microsoft
+title: Tworzenie aplikacji kontenera Service Fabric platformy Azure w systemie Linux
 description: Utwórz swoją pierwszą aplikację kontenera systemu Linux w usłudze Azure Service Fabric. Zbuduj obraz Docker za pomocą własnej aplikacji, wypchnij obraz do rejestru kontenerów, skompiluj i wdróż aplikację kontenera usługi Service Fabric.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 1/4/2019
-ms.author: atsenthi
-ms.openlocfilehash: 2bb9a5e8e42901f22d9f68d691684614c7161620
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: f2f8c7884323667f843382b02c73a570e58617f1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69650668"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457960"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-linux"></a>Tworzenie pierwszej aplikacji kontenera usługi Service Fabric w systemie Linux
 > [!div class="op_single_selector"]
@@ -143,7 +132,7 @@ docker rm my-web-site
 ## <a name="push-the-image-to-the-container-registry"></a>Wypychanie obrazu do rejestru kontenerów
 Po sprawdzeniu, że aplikacja działa na platformie Docker, wypchnij obraz do rejestru w usłudze Azure Container Registry.
 
-Uruchom `docker login` , aby zalogować się do rejestru kontenerów przy użyciu [poświadczeń rejestru](../container-registry/container-registry-authentication.md).
+Uruchom `docker login`, aby zalogować się do rejestru kontenerów przy użyciu [poświadczeń rejestru](../container-registry/container-registry-authentication.md).
 
 Poniższy przykład przekazuje identyfikator i hasło [nazwy głównej usługi](../active-directory/develop/app-objects-and-service-principals.md) Azure Active Directory. Na przykład nazwę główną usługi można było przypisać do rejestru dla scenariusza automatyzacji. Możesz też zalogować się przy użyciu nazwy użytkownika i hasła do rejestru.
 
@@ -185,7 +174,7 @@ Określ mapowanie portu w odpowiednim formacie. W tym artykule należy podać ``
 Zobacz [uwierzytelnianie repozytorium kontenerów](configure-container-repository-credentials.md), aby dowiedzieć się, jak skonfigurować różne typy uwierzytelniania na potrzeby pobierania obrazów kontenerów.
 
 ## <a name="configure-isolation-mode"></a>Konfigurowanie trybu izolacji
-W przypadku wersji 6,3 środowiska uruchomieniowego izolacja maszyny wirtualnej jest obsługiwana w przypadku kontenerów systemu Linux, w związku z czym obsługa dwóch trybów izolacji dla kontenerów: proces i funkcja Hyper-V. W trybie izolacji funkcji Hyper-V jądra są izolowane między poszczególnymi kontenerami i hostami kontenerów. Izolacja funkcji Hyper-V jest implementowana przy użyciu [czystych kontenerów](https://software.intel.com/en-us/articles/intel-clear-containers-2-using-clear-containers-with-docker). Tryb izolacji jest określony dla klastrów systemu Linux w `ServicePackageContainerPolicy` elemencie w pliku manifestu aplikacji. Tryby izolacji, które można określić, to `process`, `hyperv` i `default`. Wartość domyślna to tryb izolacji procesu. Poniższy fragment kodu przedstawia sposób określania trybu izolacji w pliku manifestu aplikacji.
+W przypadku wersji 6,3 środowiska uruchomieniowego izolacja maszyny wirtualnej jest obsługiwana w przypadku kontenerów systemu Linux, w związku z czym obsługa dwóch trybów izolacji dla kontenerów: proces i funkcja Hyper-V. W trybie izolacji funkcji Hyper-V jądra są izolowane między poszczególnymi kontenerami i hostami kontenerów. Izolacja funkcji Hyper-V jest implementowana przy użyciu [czystych kontenerów](https://software.intel.com/en-us/articles/intel-clear-containers-2-using-clear-containers-with-docker). Tryb izolacji jest określony dla klastrów systemu Linux w elemencie `ServicePackageContainerPolicy` w pliku manifestu aplikacji. Tryby izolacji, które można określić, to `process`, `hyperv` i `default`. Wartość domyślna to tryb izolacji procesu. Poniższy fragment kodu przedstawia sposób określania trybu izolacji w pliku manifestu aplikacji.
 
 ```xml
 <ServiceManifestImport>
@@ -200,7 +189,7 @@ W przypadku wersji 6,3 środowiska uruchomieniowego izolacja maszyny wirtualnej 
 
 
 ## <a name="configure-resource-governance"></a>Konfigurowanie zarządzania zasobami
-[Zarządzanie zasobami](service-fabric-resource-governance.md) ogranicza zasoby, z których kontener może korzystać na hoście. Element `ResourceGovernancePolicy` określany w manifeście aplikacji służy do deklarowania limitów zasobów pakietu kodu usługi. Limity zasobów można ustawić dla następujących zasobów: Pamięć, MemorySwap, CpuShares (waga względna procesora CPU), MemoryReservationInMB, BlkioWeight (waga względna: BlockIO). W tym przykładzie pakiet usług Guest1Pkg otrzymuje dostęp do jednego rdzenia w węzłach klastra, w których jest umieszczony. Limity pamięci są bezwzględne, więc pakiet kodu jest ograniczony do 1024 MB pamięci (i ma rezerwację tej samej ilości ze wstępną gwarancją). Pakiety kodu (kontenery lub procesy) nie mogą przydzielać pamięci ponad ten limit. Podjęcie próby takiego przydzielenia spowoduje wyjątek braku pamięci. Aby wymuszanie limitu zasobów działało, wszystkie pakiety kodu w ramach pakietu usług powinny mieć określone limity pamięci.
+[Zarządzanie zasobami](service-fabric-resource-governance.md) ogranicza zasoby, z których kontener może korzystać na hoście. Element `ResourceGovernancePolicy` określany w manifeście aplikacji służy do deklarowania limitów zasobów pakietu kodu usługi. Limity można ustawić dla następujących zasobów: Memory, MemorySwap, CpuShares (CPU — względna waga), MemoryReservationInMB, BlkioWeight (BlockIO — względna waga). W tym przykładzie pakiet usług Guest1Pkg otrzymuje dostęp do jednego rdzenia w węzłach klastra, w których jest umieszczony. Limity pamięci są bezwzględne, więc pakiet kodu jest ograniczony do 1024 MB pamięci (i ma rezerwację tej samej ilości ze wstępną gwarancją). Pakiety kodu (kontenery lub procesy) nie mogą przydzielać pamięci ponad ten limit. Podjęcie próby takiego przydzielenia spowoduje wyjątek braku pamięci. Aby wymuszanie limitu zasobów działało, wszystkie pakiety kodu w ramach pakietu usług powinny mieć określone limity pamięci.
 
 ```xml
 <ServiceManifestImport>
@@ -219,7 +208,7 @@ W przypadku wersji 6,3 środowiska uruchomieniowego izolacja maszyny wirtualnej 
 
 Począwszy od wersji 6.1, usługa Service Fabric automatycznie integruje zdarzenia [funkcji HEALTHCHECK platformy Docker](https://docs.docker.com/engine/reference/builder/#healthcheck) z raportem o kondycji systemu. Oznacza to, że jeśli w kontenerze włączono funkcję **HEALTHCHECK**, usługa Service Fabric będzie raportować kondycję przy każdej zmianie stanu kondycji kontenera zgłoszonej przez platformę Docker. Raport kondycji **OK** pojawi się w narzędziu [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md), gdy wartość *health_status* będzie równa *healthy*, a raport **OSTRZEŻENIE** pojawi się, gdy wartość *health_status* będzie równa *unhealthy*. 
 
-Począwszy od najnowszej wersji odświeżania programu v 6.4, można określić, że oceny Docker HEALTHCHECK powinny być zgłaszane jako błąd. Jeśli ta opcja jest włączona, raport o kondycji **OK** pojawi się, gdy *health_status* jest w *dobrej* kondycji i pojawi się **komunikat o błędzie** , gdy *health_status* jest w *złej kondycji*.
+Począwszy od najnowszej wersji odświeżania programu v 6.4, można określić, że oceny Docker HEALTHCHECK powinny być zgłaszane jako błąd. Jeśli ta opcja jest włączona, zostanie wyświetlony **Raport kondycji prawidłowy,** gdy *health_status* jest w *dobrej* kondycji i pojawi się **komunikat o błędzie** , gdy *health_status* jest w złej *kondycji*.
 
 Instrukcja **HEALTHCHECK** wskazująca rzeczywisty test wykonywany w celu monitorowania kondycji kontenera musi występować w pliku Dockerfile używanym podczas generowania obrazu kontenera.
 
@@ -243,7 +232,7 @@ Możesz skonfigurować zachowanie funkcji **HEALTHCHECK** dla każdego kontenera
     </Policies>
 </ServiceManifestImport>
 ```
-Domyślnie *IncludeDockerHealthStatusInSystemHealthReport* ma wartość **true**, *wartość restartcontaineronunhealthydockerhealthstatus* ma wartość **false**, a *TreatContainerUnhealthyStatusAsError* jest ustawiona na **wartość false.** . 
+Domyślnie *IncludeDockerHealthStatusInSystemHealthReport* ma wartość **true**, *wartość restartcontaineronunhealthydockerhealthstatus* ma wartość **false**, a *TreatContainerUnhealthyStatusAsError* jest ustawiona na **wartość false**. 
 
 Jeśli wartość *RestartContainerOnUnhealthyDockerHealthStatus* jest ustawiona na **true**, kontener wielokrotnie raportujący złą kondycję jest uruchamiany ponownie (potencjalnie w innych węzłach).
 
@@ -260,14 +249,14 @@ Połącz się z lokalnym klastrem usługi Service Fabric.
 sfctl cluster select --endpoint http://localhost:19080
 ```
 
-Użyj skryptu instalacji podanego w szablonach https://github.com/Azure-Samples/service-fabric-containers/ w programie, aby skopiować pakiet aplikacji do magazynu obrazów klastra, zarejestrować typ aplikacji i utworzyć wystąpienie aplikacji.
+Użyj skryptu instalacji podanego w szablonach w https://github.com/Azure-Samples/service-fabric-containers/, aby skopiować pakiet aplikacji do magazynu obrazów klastra, zarejestrować typ aplikacji i utworzyć wystąpienie aplikacji.
 
 
 ```bash
 ./install.sh
 ```
 
-Otwórz przeglądarkę i przejdź do Service Fabric Explorer przy użyciu protokołu HTTP\/:/localhost: 19080/Explorer (Zastąp localhost jako prywatny adres IP maszyny wirtualnej, jeśli używany jest program Vagrant on Mac OS X). Rozwiń węzeł Aplikacje i zwróć uwagę, że istnieje teraz wpis dla danego typu aplikacji i inny wpis dla pierwszego wystąpienia tego typu.
+Otwórz przeglądarkę i przejdź do Service Fabric Explorer przy użyciu protokołu http:\//localhost: 19080/Explorer (Zastąp localhost, używając prywatnego adresu IP maszyny wirtualnej w przypadku używania Vagrant na Mac OS X). Rozwiń węzeł Aplikacje i zwróć uwagę, że istnieje teraz wpis dla danego typu aplikacji i inny wpis dla pierwszego wystąpienia tego typu.
 
 Nawiąż połączenie z działającym kontenerem. Otwórz przeglądarkę internetową, wskazując adres IP zwrócony na porcie 4000, na przykład "http:\//localhost: 4000". W przeglądarce powinien zostać wyświetlony nagłówek „Hello World!”.
 
@@ -381,7 +370,7 @@ W tym miejscu przedstawiono kompletne manifesty usługi i aplikacji używane w t
 Aby dodać kolejną usługę kontenera do aplikacji utworzonej już przy użyciu narzędzia Yeoman, wykonaj następujące czynności:
 
 1. Zmień katalog na katalog główny istniejącej aplikacji. Na przykład wpisz polecenie `cd ~/YeomanSamples/MyApplication`, jeśli aplikacja `MyApplication` to aplikacja utworzona przez narzędzie Yeoman.
-2. Uruchom `yo azuresfcontainer:AddService`
+2. Uruchom polecenie `yo azuresfcontainer:AddService`
 
 <a id="manually"></a>
 

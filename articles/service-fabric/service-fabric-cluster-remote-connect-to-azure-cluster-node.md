@@ -1,36 +1,25 @@
 ---
-title: Łączenie zdalne z węzłem klastra usługi Azure Service Fabric | Microsoft Docs
+title: Łączenie zdalne z węzłem klastra usługi Azure Service Fabric
 description: Dowiedz się, jak zdalnie połączyć się z wystąpieniem zestawu skalowania (Service Fabric węźle klastra).
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: 5441e7e0-d842-4398-b060-8c9d34b07c48
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 03/23/2018
-ms.author: atsenthi
-ms.openlocfilehash: 12508fd5297691f06bce46e056527672083c3a91
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: c7ca4f0d5dce1b19837a44d5c9749f3e1293c6b8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599927"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458321"
 ---
 # <a name="remote-connect-to-a-virtual-machine-scale-set-instance-or-a-cluster-node"></a>Połączenie zdalne z wystąpieniem zestawu skalowania maszyn wirtualnych lub węzłem klastra
-W klastrze Service Fabric działającym na platformie Azure każdy zdefiniowany typ węzła klastra konfiguruje [maszynę wirtualną w osobnym skalowaniu](service-fabric-cluster-nodetypes.md).  Można połączyć się zdalnie z określonymi wystąpieniami zestawu skalowania (węzły klastra).  W przeciwieństwie do maszyn wirtualnych z pojedynczym wystąpieniem, wystąpienia zestawu skalowania nie mają własnych wirtualnych adresów IP. Może to być trudne, gdy szukasz adresu IP i portu, których można użyć do zdalnego łączenia się z konkretnym wystąpieniem.
+W klastrze Service Fabric działającym na platformie Azure każdy zdefiniowany typ węzła klastra [konfiguruje maszynę wirtualną w osobnym skalowaniu](service-fabric-cluster-nodetypes.md).  Można połączyć się zdalnie z określonymi wystąpieniami zestawu skalowania (węzły klastra).  W przeciwieństwie do maszyn wirtualnych z pojedynczym wystąpieniem, wystąpienia zestawu skalowania nie mają własnych wirtualnych adresów IP. Może to być trudne, gdy szukasz adresu IP i portu, których można użyć do zdalnego łączenia się z konkretnym wystąpieniem.
 
 Aby znaleźć adres IP i port, których można użyć do zdalnego łączenia się z konkretnym wystąpieniem, wykonaj następujące czynności.
 
 1. Pobierz reguły NAT dla ruchu przychodzącego dla Remote Desktop Protocol (RDP).
 
-    Zazwyczaj każdy typ węzła zdefiniowany w klastrze ma swój własny wirtualny adres IP i dedykowany moduł równoważenia obciążenia. Domyślnie moduł równoważenia obciążenia dla typu węzła ma nazwę o następującym formacie: *Lb-{Nazwa klastra}-{Node-Type}* ; na przykład *lb-moja klaster-fronton*. 
+    Zazwyczaj każdy typ węzła zdefiniowany w klastrze ma swój własny wirtualny adres IP i dedykowany moduł równoważenia obciążenia. Domyślnie moduł równoważenia obciążenia dla typu węzła ma nazwę o następującym formacie: *lb-{Cluster-Name}-{Node-Type}* ; na przykład *lb-moja klaster-fronton*. 
     
-    Na stronie modułu równoważenia obciążenia w Azure Portal wybierz pozycję **Ustawienia** > **reguły NAT dla ruchu przychodzącego**: 
+    Na stronie modułu równoważenia obciążenia w Azure Portal wybierz pozycję **ustawienia** > **reguły NAT dla ruchu przychodzącego**: 
 
     ![Reguły NAT dla ruchu przychodzącego modułu równoważenia obciążenia](./media/service-fabric-cluster-remote-connect-to-azure-cluster-node/lb-window.png)
 
@@ -38,9 +27,9 @@ Aby znaleźć adres IP i port, których można użyć do zdalnego łączenia si�
 
     ![Reguły NAT dla ruchu przychodzącego modułu równoważenia obciążenia](./media/service-fabric-cluster-remote-connect-to-azure-cluster-node/nat-rules.png)
 
-    Dla każdego węzła adres IP jest wyświetlany **w kolumnie** Target, kolumna docelowa zawiera wystąpienie zestawu skalowania, a kolumna **usługi** zawiera numer portu. W przypadku połączenia zdalnego porty są przypisywane do każdego węzła w kolejności rosnącej, począwszy od portu 3389.
+    Dla każdego węzła adres IP jest wyświetlany w kolumnie Target **, kolumna** **docelowa** zawiera wystąpienie zestawu skalowania, a kolumna **usługi** zawiera numer portu. W przypadku połączenia zdalnego porty są przypisywane do każdego węzła w kolejności rosnącej, począwszy od portu 3389.
 
-    Reguły NAT dla ruchu przychodzącego można również znaleźć w `Microsoft.Network/loadBalancers` sekcji szablonu Menedżer zasobów klastra.
+    Reguły NAT dla ruchu przychodzącego można również znaleźć w sekcji `Microsoft.Network/loadBalancers` szablonu Menedżer zasobów dla klastra.
     
 2. Aby potwierdzić mapowanie portów przychodzących do docelowego dla węzła, możesz kliknąć jego regułę i przyjrzeć się wartości **portu docelowego** . Poniższy zrzut ekranu przedstawia regułę ruchu przychodzącego NAT dla węzła **frontonu (wystąpienie 1)** w poprzednim kroku. Należy zauważyć, że mimo że numer portu (przychodzący) to 3390, port docelowy jest mapowany na port 3389, port dla usługi RDP na serwerze docelowym.  
 

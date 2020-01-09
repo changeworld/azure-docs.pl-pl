@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell listę Azure Cosmos DB skryptu i Pobierz operacje dla interfejsu API MongoDB
+title: Skrypt programu PowerShell do wyświetlania i pobierania operacji w interfejsie API Azure Cosmos DB dla MongoDB
 description: Azure PowerShell listę Azure Cosmos DB skryptu i Pobierz operacje dla interfejsu API MongoDB
 author: markjbrown
 ms.service: cosmos-db
@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-mongo
 ms.topic: sample
 ms.date: 05/18/2019
 ms.author: mjbrown
-ms.openlocfilehash: 47d2f6a14fadfa75e5db28eb44b7ca3410e6503c
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: 4b5934e82c14f50ef1884a6c5618f4f98d663e1f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71178885"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441432"
 ---
 # <a name="list-and-get-databases-and-graphs-for-azure-cosmos-db---mongodb-api"></a>Wyświetl i Pobierz bazy danych i wykresy dla interfejsu API Azure Cosmos DB MongoDB
 

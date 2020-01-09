@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/29/2019
+ms.date: 12/19/2019
 ms.author: mimart
 ms.reviewer: kasimpso
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a986c2032fc41bbd34230c5b0ead745f88b000f
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: e8e1fd51e0190e0f8889112b17b58680ed9329e3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73199830"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443448"
 ---
 # <a name="create-workspaces-on-the-my-apps-preview-portal"></a>Tworzenie obszarów roboczych w portalu My Apps (wersja zapoznawcza)
 
@@ -45,7 +45,7 @@ Użytkownicy mogą korzystać z portalu My Apps (wersja zapoznawcza) w celu wyś
    ![Funkcje w wersji zapoznawczej użytkownika](media/access-panel-workspaces/user-preview-features.png)
 
 > [!NOTE]
-> Aby otworzyć Portal moje aplikacje, użytkownicy mogą korzystać z linku `https://myapps.microsoft.com` lub niestandardowego linku dla organizacji, takiego jak `https://myapps.microsoft.com/contoso.com`. Jeśli użytkownicy nie zostaną przekierowani do wersji zapoznawczej moje aplikacje, użytkownicy powinni próbować `https://myapplications.microsoft.com` lub `https://myapplications.microsoft.com/contoso.com`.
+> Aby otworzyć Portal moje aplikacje, użytkownicy mogą korzystać z linku `https://myapps.microsoft.com` lub niestandardowego linku dla organizacji, takiego jak `https://myapps.microsoft.com/contoso.com`. Po włączeniu środowiska moje aplikacje zostanie wyświetlony transparent " **zaktualizowane środowisko moje aplikacje** " w górnej części strony Moje aplikacje, a użytkownicy mogą wybrać opcję **Wypróbuj** , aby wyświetlić nowe środowisko. Aby zrezygnować z korzystania z nowego środowiska, użytkownicy mogą wybrać opcję **tak** z transparentu **Opuść nowe środowisko** w górnej części strony.
 
 ## <a name="create-a-workspace"></a>Tworzenie obszaru roboczego
 
@@ -89,7 +89,7 @@ Dzienniki inspekcji rejestrują operacje obszarów roboczych aplikacji, w tym tw
 
 * Tworzenie obszaru roboczego
 * Edytowanie obszaru roboczego
-* Usuwanie obszaru roboczego
+* Usuń obszar roboczy
 * Uruchom aplikację (użytkownik końcowy)
 * Dodawanie aplikacji samoobsługowej (użytkownik końcowy)
 * Usuwanie aplikacji samoobsługowej (użytkownik końcowy)
@@ -98,6 +98,15 @@ Możesz uzyskać dostęp do dzienników inspekcji w [Azure Portal](https://porta
 
    ![Przypisywanie ról do użytkowników i grup](media/access-panel-workspaces/audit-log-myapps.png)
 
+## <a name="get-support-for-my-account-pages"></a>Uzyskaj pomoc techniczną dotyczącą stron My Account
+
+Na stronie Moje aplikacje użytkownik może wybrać pozycję **Moje konto** > **Wyświetl moje konto** , aby otworzyć ustawienia konta. Na stronie **Moje konto** usługi Azure AD użytkownicy mogą zarządzać swoimi informacjami zabezpieczeń, urządzeniami, hasłami i nie tylko. Mogą również uzyskiwać dostęp do ustawień konta pakietu Office.
+
+Jeśli musisz przesłać żądanie pomocy technicznej w celu uzyskania problemu na stronie konta usługi Azure AD lub stronie konta pakietu Office, wykonaj następujące kroki, aby Twoje żądanie zostało prawidłowo przekierowane: 
+
+* W przypadku problemów z stroną **Moje konto usługi Azure AD** Otwórz żądanie pomocy technicznej z poziomu Azure Portal. Przejdź do **Azure Portal** > **Azure Active Directory** > **nowe żądanie obsługi**.
+
+* W przypadku problemów z stroną **"Moje konto" pakietu Office** Otwórz żądanie pomocy technicznej w centrum administracyjnym Microsoft 365. Przejdź do **Centrum administracyjnego Microsoft 365** > **support**. 
 
 ## <a name="next-steps"></a>Następne kroki
 [Środowisko użytkownika końcowego dla aplikacji w Azure Active Directory](end-user-experiences.md)

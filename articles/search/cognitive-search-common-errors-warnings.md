@@ -8,12 +8,12 @@ ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: fb8aec10d58ed4f2eca462774aeaf61f2ea21dd0
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
-ms.translationtype: MT
+ms.openlocfilehash: 1e11c5a570f899a5ac18673a71fe79db95de0f80
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74973972"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75461082"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>Rozwiązywanie problemów z typowymi błędami indeksatora i ostrzeżeniami w usłudze Azure Wyszukiwanie poznawcze
 
@@ -54,15 +54,15 @@ Indeksator nie mógł odczytać dokumentu ze źródła danych. Przyczyną może 
 
 <a name="could-not-extract-document-content"/>
 
-## <a name="error-could-not-extract-document-content"></a>Błąd: nie można wyodrębnić zawartości dokumentu
-Indeksator ze źródłem danych obiektu BLOB nie mógł wyodrębnić zawartości z dokumentu (na przykład pliku PDF). Przyczyną może być:
+## <a name="error-could-not-extract-content-or-metadata-from-your-document"></a>Błąd: nie można wyodrębnić zawartości lub metadanych z dokumentu
+Indeksator ze źródłem danych obiektu BLOB nie mógł wyodrębnić zawartości lub metadanych z dokumentu (na przykład pliku PDF). Przyczyną może być:
 
 | Przyczyna | Szczegóły/przykład | Rozdzielczość |
 | --- | --- | --- |
 | rozmiar obiektu BLOB przekracza limit. | Dokument ma `'150441598'` bajtów, który przekracza maksymalny rozmiar `'134217728'` bajtów na potrzeby wyodrębniania dokumentu dla bieżącej warstwy usług. | [Błędy indeksowania obiektów BLOB](search-howto-indexing-azure-blob-storage.md#dealing-with-errors) |
 | Obiekt BLOB ma nieobsługiwany typ zawartości | Dokument zawiera nieobsługiwany typ zawartości `'image/png'` | [Błędy indeksowania obiektów BLOB](search-howto-indexing-azure-blob-storage.md#dealing-with-errors) |
 | Obiekt BLOB jest zaszyfrowany | Nie można przetworzyć dokumentu — może on być zaszyfrowany lub chroniony hasłem. | Możesz pominąć obiekt BLOB za pomocą [ustawień obiektu BLOB](search-howto-indexing-azure-blob-storage.md#controlling-which-parts-of-the-blob-are-indexed). |
-| problemy przejściowe | Wystąpił błąd podczas przetwarzania obiektu BLOB: żądanie zostało przerwane: żądanie zostało anulowane. | Sporadycznie występują nieoczekiwane problemy z łącznością. Spróbuj ponownie uruchomić dokument za pomocą indeksatora później. |
+| problemy przejściowe | "Błąd przetwarzania obiektu BLOB: żądanie zostało przerwane: żądanie zostało anulowane." "Dokument przekroczył limit czasu podczas przetwarzania". | Sporadycznie występują nieoczekiwane problemy z łącznością. Spróbuj ponownie uruchomić dokument za pomocą indeksatora później. |
 
 <a name="could-not-parse-document"/>
 
@@ -158,7 +158,7 @@ Dokument został odczytany i przetworzony, ale z powodu niezgodności konfigurac
 
 | Przyczyna | Szczegóły/przykład
 | --- | ---
-| Typ danych pól wyodrębnionych przez indeksator jest niezgodny z modelem danych odpowiedniego docelowego pola indeksu. | Pole danych "_Data_" w dokumencie z kluczem "_Data_" ma nieprawidłową wartość "typu EDM. String" ". Oczekiwany typ to "Kolekcja (EDM. String)". |
+| Typ danych pól wyodrębnionych przez indeksator jest niezgodny z modelem danych odpowiedniego docelowego pola indeksu. | Pole danych "_Data_" w dokumencie z kluczem "888" ma nieprawidłową wartość "typu EDM. String" ". Oczekiwany typ to "Kolekcja (EDM. String)". |
 | Nie można wyodrębnić żadnej jednostki JSON z wartości ciągu. | Nie można przeanalizować wartości "typu" EDM. String "" dla pola "_Data_" jako obiektu JSON. Błąd: "po przeanalizowaniu wartości napotkano nieoczekiwany znak:" ". Ścieżka "_Path_", wiersz 1, pozycja 3162. " |
 | Nie można wyodrębnić kolekcji jednostek JSON z wartości ciągu.  | Nie można przeanalizować wartości "typu" EDM. String "" dla pola "_Data_" jako tablicy JSON. Błąd: "po przeanalizowaniu wartości napotkano nieoczekiwany znak:" ". Ścieżka ' [0] ', wiersz 1, pozycja 27. ' |
 | W dokumencie źródłowym odnaleziono nieznany typ. | Nieznany typ "_nieznany_" nie może być indeksowany |
@@ -174,10 +174,18 @@ Ten błąd występuje, gdy indeksator nie może zakończyć przetwarzania pojedy
 
 <a name="could-not-execute-skill-because-a-skill-input-was-invalid"/>
 
-## <a name="warning-could-not-execute-skill-because-a-skill-input-was-invalid"></a>Ostrzeżenie: nie można wykonać umiejętności, ponieważ dane wejściowe dotyczące kwalifikacji były nieprawidłowe
-Indeksator nie mógł uruchomić umiejętności w zestawu umiejętności, ponieważ brakuje w nim danych wejściowych, niewłaściwego typu lub w inny sposób.
+## <a name="warning-skill-input-was-invalid"></a>Ostrzeżenie: dane wejściowe dotyczące umiejętności były nieprawidłowe
+Brak danych wejściowych dla umiejętności, nieprawidłowy typ lub w inny sposób nieprawidłowy. Komunikat ostrzegawczy będzie wskazywał wpływ:
+1) Nie można wykonać umiejętności
+2) Umiejętność została wykonana, ale może mieć nieoczekiwane wyniki
 
-Umiejętności poznawcze mają wymagane dane wejściowe i opcjonalne dane wejściowe. Na przykład [umiejętność wyodrębniania frazy klucza](cognitive-search-skill-keyphrases.md) ma dwa wymagane dane wejściowe `text`, `languageCode`i brak opcjonalnych danych wejściowych. Jeśli jakiekolwiek wymagane dane wejściowe są nieprawidłowe, umiejętność zostanie pominięta i wygeneruje ostrzeżenie. Pominięte umiejętności nie generują żadnych danych wyjściowych, więc jeśli inne umiejętności korzystają z wyników pominiętych umiejętności, mogą generować dodatkowe ostrzeżenia.
+Umiejętności poznawcze mają wymagane dane wejściowe i opcjonalne dane wejściowe. Na przykład [umiejętność wyodrębniania frazy klucza](cognitive-search-skill-keyphrases.md) ma dwa wymagane dane wejściowe `text`, `languageCode`i brak opcjonalnych danych wejściowych. Niestandardowe dane wejściowe umiejętności są uznawane za opcjonalne dane wejściowe.
+
+Jeśli brakuje wymaganych danych wejściowych lub jeśli jakiekolwiek dane wejściowe nie są odpowiednim typem, umiejętność zostanie pominięta i wygeneruje ostrzeżenie. Pominięte umiejętności nie generują żadnych danych wyjściowych, więc jeśli inne umiejętności korzystają z wyników pominiętych umiejętności, mogą generować dodatkowe ostrzeżenia.
+
+Jeśli brakuje opcjonalnego danych wejściowych, umiejętność nadal będzie działać, ale może generować nieoczekiwane dane wyjściowe ze względu na Brak danych wejściowych.
+
+W obu przypadkach to ostrzeżenie może być oczekiwane ze względu na kształt danych. Na przykład jeśli masz dokument zawierający informacje o osobach, które zawierają pola `firstName`, `middleName`i `lastName`, możesz mieć pewne dokumenty, które nie mają wpisu dla `middleName`. Jeśli chcesz przekazać `middleName` jako dane wejściowe do umiejętności w potoku, oczekujesz, że dane wejściowe dotyczące umiejętności mogą nie mieć pewnego czasu. Należy oszacować dane i scenariusz, aby określić, czy w wyniku tego ostrzeżenia wymagane jest wykonanie jakiejkolwiek akcji.
 
 Jeśli chcesz podać wartość domyślną w przypadku braku danych wejściowych, możesz użyć [umiejętności warunkowej](cognitive-search-skill-conditional.md) do wygenerowania wartości domyślnej, a następnie użyć danych wyjściowych z [umiejętności warunkowej](cognitive-search-skill-conditional.md) jako danych wejściowych umiejętności.
 
@@ -197,8 +205,8 @@ Jeśli chcesz podać wartość domyślną w przypadku braku danych wejściowych,
 
 | Przyczyna | Szczegóły/przykład | Rozdzielczość |
 | --- | --- | --- |
-| Dane wejściowe umiejętności są niewłaściwego typu | Wymagane `X` danych wejściowych kwalifikacji nie ma oczekiwanego typu `String`. Wymagane `X` danych wejściowych kwalifikacji nie ma oczekiwanego formatu. | Pewne umiejętności oczekują danych wejściowych określonych typów, na przykład [umiejętność tonacji](cognitive-search-skill-sentiment.md) oczekuje, że `text` być ciągiem. Jeśli dane wejściowe określają wartość różną od ciągu, wówczas umiejętność nie zostanie wykonana i nie wygeneruje żadnych danych wyjściowych. Upewnij się, że zestaw danych zawiera wartości wejściowe, które są jednorodne w typie, lub Użyj [niestandardowej umiejętności interfejsu API sieci Web](cognitive-search-custom-skill-web-api.md) , aby wstępnie przetworzyć dane wejściowe. Jeśli Iteracja jest przeprowadzana przez tablicę, sprawdź kontekst umiejętności i wprowadź `*` w poprawnych pozycjach. Zwykle zarówno kontekst, jak i źródło danych wejściowych powinny kończyć się `*` dla tablic. |
-| Brak danych wejściowych kwalifikacji | Brak wymaganego `X` wejściowego umiejętności. | Jeśli wszystkie dokumenty otrzymają to ostrzeżenie, prawdopodobnie występuje literówka w ścieżkach wejściowych i należy dokładnie sprawdzić wielkość liter nazwy właściwości, dodatkowe lub brakujące `*` w ścieżce, a dokumenty ze źródła danych definiują wymagane dane wejściowe. |
+| Dane wejściowe umiejętności są niewłaściwego typu | "Wymagane dane wejściowe kwalifikacji nie mają oczekiwanego typu `String`. Nazwa: `text`, Źródło: `/document/merged_content`".  "Wymagane dane wejściowe kwalifikacji mają nieoczekiwany format. Nazwa: `text`, Źródło: `/document/merged_content`".  "Nie można wykonać iteracji dla niearray `/document/normalized_images/0/imageCelebrities/0/detail/celebrities`".  "Nie można wybrać `0` w niearray `/document/normalized_images/0/imageCelebrities/0/detail/celebrities`" | Pewne umiejętności oczekują danych wejściowych określonych typów, na przykład [umiejętność tonacji](cognitive-search-skill-sentiment.md) oczekuje, że `text` być ciągiem. Jeśli dane wejściowe określają wartość różną od ciągu, wówczas umiejętność nie zostanie wykonana i nie wygeneruje żadnych danych wyjściowych. Upewnij się, że zestaw danych zawiera wartości wejściowe, które są jednorodne w typie, lub Użyj [niestandardowej umiejętności interfejsu API sieci Web](cognitive-search-custom-skill-web-api.md) , aby wstępnie przetworzyć dane wejściowe. Jeśli Iteracja jest przeprowadzana przez tablicę, sprawdź kontekst umiejętności i wprowadź `*` w poprawnych pozycjach. Zwykle zarówno kontekst, jak i źródło danych wejściowych powinny kończyć się `*` dla tablic. |
+| Brak danych wejściowych kwalifikacji | Brak "wymaganych danych wejściowych umiejętności. Nazwa: `text`, Źródło: `/document/merged_content`"" brak wartości `/document/normalized_images/0/imageTags`. "  "Nie można wybrać `0` w tablicy `/document/pages` długości `0`." | Jeśli wszystkie dokumenty otrzymają to ostrzeżenie, najprawdopodobniej występuje literówka w ścieżkach wejściowych i należy dokładnie sprawdzić wielkość liter nazwy właściwości, dodatkowe lub brakujące `*` w ścieżce, i upewnić się, że dokumenty ze źródła danych zawierają wymagane dane wejściowe. |
 | Dane wejściowe kodu języka umiejętności są nieprawidłowe | `languageCode` danych wejściowych umiejętności zawiera następujące kody języka `X,Y,Z`, co najmniej jeden z nich jest nieprawidłowy. | Zobacz więcej szczegółów [poniżej](cognitive-search-common-errors-warnings.md#skill-input-languagecode-has-the-following-language-codes-xyz-at-least-one-of-which-is-invalid) |
 
 <a name="skill-input-languagecode-has-the-following-language-codes-xyz-at-least-one-of-which-is-invalid"/>
