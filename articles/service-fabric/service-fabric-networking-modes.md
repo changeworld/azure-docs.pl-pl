@@ -1,25 +1,16 @@
 ---
-title: Konfigurowanie trybów sieciowych dla usług Azure Service Fabric Container Services | Microsoft Docs
+title: Konfigurowanie trybów sieciowych dla usługi Container Services
 description: Dowiedz się, jak skonfigurować różne tryby sieci obsługiwane przez usługę Azure Service Fabric.
-services: service-fabric
-documentationcenter: .net
 author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: d552c8cd-67d1-45e8-91dc-871853f44fc6
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 2/23/2018
 ms.author: atsenthi
-ms.openlocfilehash: aa7b63453a5147742e27b9bb32ad05221e745f8c
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: ba1fa92559d39a481008d1dd18036e4232be1bfa
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72168805"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75639806"
 ---
 # <a name="service-fabric-container-networking-modes"></a>Service Fabric tryby sieci kontenera
 
@@ -30,7 +21,7 @@ Jeśli masz jedną usługę kontenera ze statycznym punktem końcowym w manifeś
 Po ponownym uruchomieniu lub przeniesieniu usługi kontenera do innego węzła w klastrze adres IP ulega zmianie. Z tego powodu nie zaleca się używania dynamicznie przypisanego adresu IP do odnajdowania usług kontenerów. Do odnajdowania usług należy używać tylko Usługa nazewnictwa Service Fabric lub usługi DNS. 
 
 >[!WARNING]
->System Azure umożliwia łączną liczbę adresów IP 65 356 dla każdej sieci wirtualnej. Suma liczby węzłów i liczby wystąpień usługi kontenera (używających trybu otwierania) nie może przekraczać 65 356 adresów IP w ramach sieci wirtualnej. W przypadku scenariuszy o dużej gęstości zalecamy użycie trybu sieci NAT. Ponadto inne zależności, takie jak moduł równoważenia obciążenia, będą miały inne [ograniczenia](https://docs.microsoft.com/azure/azure-subscription-service-limits) , które należy wziąć pod uwagę. Obecnie testy do 50 adresów IP na węzeł zostały przetestowane i sprawdzone jako stabilne. 
+>System Azure umożliwia łączną liczbę adresów IP 65 356 dla każdej sieci wirtualnej. Suma liczby węzłów i liczby wystąpień usługi kontenera (używających trybu otwierania) nie może przekraczać 65 356 adresów IP w ramach sieci wirtualnej. W przypadku scenariuszy o dużej gęstości zalecamy użycie trybu sieci NAT. Ponadto inne zależności, takie jak moduł równoważenia obciążenia, będą miały inne [ograniczenia](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits) , które należy wziąć pod uwagę. Obecnie testy do 50 adresów IP na węzeł zostały przetestowane i sprawdzone jako stabilne. 
 >
 
 ## <a name="set-up-open-networking-mode"></a>Konfigurowanie trybu otwierania sieci
@@ -210,7 +201,7 @@ Po ponownym uruchomieniu lub przeniesieniu usługi kontenera do innego węzła w
    |Działanie | Zezwól  | |
    | | |
 
-4. Określ tryb sieci w manifeście aplikacji dla każdej usługi: `<NetworkConfig NetworkType="Open">`. **Otwórz** tryb sieci wyniki w usłudze przy użyciu dedykowanego adresu IP. Jeśli tryb nie jest określony, domyślnie jest używany tryb **translatora adresów sieciowych** . W poniższym przykładzie manifestu usługi `NodeContainerServicePackage1` i `NodeContainerServicePackage2` mogą nasłuchiwać każdego nasłuchiwania na tym samym porcie (obie usługi nasłuchują na `Endpoint1`). W przypadku określenia trybu otwartej sieci nie można określić konfiguracji `PortBinding`.
+4. Określ tryb sieci w manifeście aplikacji dla każdej usługi: `<NetworkConfig NetworkType="Open">`. **Otwórz** tryb sieci wyniki w usłudze przy użyciu dedykowanego adresu IP. Jeśli tryb nie jest określony, domyślnie jest używany tryb **translatora adresów sieciowych** . W poniższym przykładzie manifestu usługi `NodeContainerServicePackage1` i `NodeContainerServicePackage2` mogą nasłuchiwać każdego nasłuchiwania na tym samym porcie (obie usługi nasłuchują na `Endpoint1`). W przypadku wybrania opcji Otwórz tryb sieci nie można określić konfiguracji `PortBinding`.
 
     ```xml
     <?xml version="1.0" encoding="UTF-8"?>

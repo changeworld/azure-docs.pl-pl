@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 09/12/2019
 ms.author: cshoe
-ms.openlocfilehash: 019c44cedba166dc1ac06a0244fa2b2e7930e673
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: e4f35495d8a01146068cffb9159c29c46c3c0d29
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230369"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75561871"
 ---
 # <a name="azure-functions-reliable-event-processing"></a>Azure Functions przetwarzanie niezawodnego zdarzenia
 
@@ -82,7 +82,7 @@ Gwarancja, że każdy komunikat jest przetwarzany co najmniej jeden raz, oznacza
 
 ## <a name="stop-and-restart-execution"></a>Zatrzymaj i uruchom ponownie wykonywanie
 
-Co najmniej kilka błędów może być akceptowalnych, co w przypadku, gdy w aplikacji występują znaczne błędy? Możesz chcieć przerwać Wyzwalanie zdarzeń do momentu, aż system osiągnie stan prawidłowy. Przetwarzanie szansy sprzedaży jest często osiągane przy użyciu wzorca wyłącznika. Wzorzec wyłącznika pozwala aplikacji na "przerywanie obwodu" procesu zdarzeń i wznawianie w późniejszym czasie.
+Co najmniej kilka błędów może być akceptowalnych, co w przypadku, gdy w aplikacji występują znaczne błędy? Możesz chcieć przerwać Wyzwalanie zdarzeń do momentu, aż system osiągnie stan prawidłowy. Możliwość wstrzymania przetwarzania jest często osiągana z wzorcem wyłącznika. Wzorzec wyłącznika pozwala aplikacji na "przerywanie obwodu" procesu zdarzeń i wznawianie w późniejszym czasie.
 
 Istnieją dwa sztuki wymagane do zaimplementowania wyłącznika w procesie zdarzeń:
 
@@ -129,6 +129,6 @@ Korzystając z tego podejścia, żadne komunikaty nie są tracone, wszystkie kom
 
 Więcej informacji zawierają następujące zasoby:
 
-- [Obsługa błędów Azure Functions](./functions-bindings-error-pages.md)
+- [Obsługa błędów w usłudze Azure Functions](./functions-bindings-error-pages.md)
 - [Automatyzowanie zmiany rozmiaru obrazów przekazanych obrazów za pomocą usługi Event Grid](../event-grid/resize-images-on-storage-blob-upload-event.md?toc=%2Fazure%2Fazure-functions%2Ftoc.json&tabs=dotnet)
 - [Tworzenie funkcji integrującej się z usługą Azure Logic Apps](./functions-twitter-email.md)

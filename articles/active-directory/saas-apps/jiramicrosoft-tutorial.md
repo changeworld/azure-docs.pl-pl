@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 09/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6deeb224f8c70dabcf8c5a29e80e87414ea32657
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 7cd922d0e65da627f11e6aab3827cb848c3dd635
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561424"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75560528"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-jira-saml-sso-by-microsoft"></a>Samouczek: Azure Active Directory integrację logowania jednokrotnego (SSO) z usługą JIRA SAML SSO przez firmę Microsoft
 
@@ -42,7 +42,7 @@ Użyj konta usługi Microsoft Azure Active Directory w połączeniu z serwerem A
 Do skonfigurowania integracji usługi Azure AD z programem JIRA SAML SSO by Microsoft są potrzebne następujące elementy:
 
 - Subskrypcja usługi Azure AD. Jeśli nie masz subskrypcji, możesz uzyskać [bezpłatne konto](https://azure.microsoft.com/free/).
-- JIRA Core i oprogramowanie 6,4 do 8,0 lub JIRA Service Desk 3,0 do 3,5 należy zainstalować i skonfigurować w wersji Windows 64-bitowej
+- JIRA rdzeń i oprogramowanie 6,4 do 8.5.1 lub JIRA Service Desk 3,0 do 4.6.0 powinno być zainstalowane i skonfigurowane w wersji systemu Windows 64-bit
 - Dla serwera JIRA włączono obsługę protokołu HTTPS
 - Zwróć uwagę na obsługiwane wersje wtyczki usługi JIRA podane w poniżej sekcji.
 - Serwer JIRA jest dostępny w Internecie, w szczególności dla strony logowania usługi AD Azure na potrzeby uwierzytelniania, i ma możliwość odebrania tokenu z usługi Azure AD
@@ -61,7 +61,7 @@ Aby rozpocząć, potrzebne są następujące elementy:
 ## <a name="supported-versions-of-jira"></a>Obsługiwane wersje usługi JIRA
 
 * JIRA rdzeń i oprogramowanie: 6,4 do 8.5.1
-* JIRA Service Desk 3.0.0 do 4.5.1
+* JIRA Service Desk 3.0.0 do 4.6.0
 * Usługa JIRA obsługuje także wersję 5.2. Aby uzyskać więcej szczegółowych informacji, kliknij następujący link: [logowanie jednokrotne usługi Microsoft Azure Active Directory dla usługi JIRA 5.2](jira52microsoft-tutorial.md)
 
 > [!NOTE]
