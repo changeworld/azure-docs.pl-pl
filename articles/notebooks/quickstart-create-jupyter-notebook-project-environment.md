@@ -1,70 +1,72 @@
 ---
-title: Tworzenie projektu notesy platformy Azure w środowisku niestandardowym
-description: Utwórz nowy projekt w notesach platformy Azure, który jest skonfigurowany przy użyciu określonych pakietów zainstalowanych i uruchamiania skryptów.
+title: Tworzenie projektu Azure Notebooks w wersji zapoznawczej przy użyciu środowiska niestandardowego
+description: Utwórz nowy projekt w Azure Notebooks wersji zapoznawczej, który jest skonfigurowany z określonym zestawem zainstalowanych pakietów i skryptów uruchamiania.
 ms.topic: quickstart
 ms.date: 12/04/2018
-ms.openlocfilehash: f167d1bf6064cde535d17fa4a336ee13424baba7
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 999133dd7d9d792956f9a2c93ec218e458c921e8
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277493"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647071"
 ---
-# <a name="quickstart-create-a-project-with-a-custom-environment"></a>Szybki Start: Tworzenie projektu w środowisku niestandardowym
+# <a name="quickstart-create-a-project-with-a-custom-environment-in-azure-notebooks-preview"></a>Szybki Start: Tworzenie projektu za pomocą środowiska niestandardowego w programie Azure Notebooks Preview
 
 Projektu w notesach Azure to zbiór plików, takich jak notesów, pliki danych, dokumentacji, obrazy i tak dalej, oraz środowisko, które można skonfigurować za pomocą poleceń określonej konfiguracji. Definiując środowiska z projektem, każdy, kto klony projektu do własnego konta Azure, notesy zawiera wszystkie informacje, które są im potrzebne do odtworzenia wymagane operacje konfigurowania środowiska.
 
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
+
 ## <a name="create-a-project"></a>Tworzenie projektu
 
-1. Przejdź do [Azure Notebooks](https://notebooks.azure.com) i zaloguj się. (Aby uzyskać szczegółowe informacje, zobacz [Szybki Start — logowanie do Azure Notebooks](quickstart-sign-in-azure-notebooks.md)).
+1. Przejdź do [notesów usługi Azure](https://notebooks.azure.com) i zaloguj się. (Aby uzyskać więcej informacji, zobacz [Szybki Start — Zaloguj się do platformy Azure, notesy](quickstart-sign-in-azure-notebooks.md)).
 
-1. Na stronie Twój profil publiczny wybierz pozycję **Moje projekty** w górnej części strony:
+1. Na stronie profilu publicznego, wybierz **Moje projekty** w górnej części strony:
 
     ![Moje łącza projektów u góry okna przeglądarki](media/quickstarts/my-projects-link.png)
 
-1. Na stronie **Moje projekty** wybierz pozycję **+ Nowy projekt** (skrót klawiaturowy: n). przycisk może być wyświetlany tylko jako **+** , jeśli okno przeglądarki jest wąskie:
+1. Na **Moje projekty** wybierz opcję **+ nowy projekt** (skrót klawiaturowy: n); przycisku może występować tylko jako **+** Jeśli okno przeglądarki jest wąskie:
 
     ![Nowe polecenie projektu na stronie Moje projekty](media/quickstarts/new-project-command.png)
 
-1. W wyświetlonym oknie podręcznym **Utwórz nowy projekt** wprowadź lub ustaw następujące szczegóły, a następnie wybierz pozycję **Utwórz**:
+1. W **Utwórz nowy projekt** okna podręcznego, który pojawia się, wprowadź lub ustaw następujące szczegóły, a następnie wybierz **Utwórz**:
 
-    - **Nazwa projektu**: projekt ze środowiskiem niestandardowym
-    - **Identyfikator projektu**: projekt — środowisko niestandardowe
-    - **Projekt publiczny**: (wyczyszczone)
-    - **Utwórz element Readme.MD**: (wyczyszczony)
+    - **Nazwa projektu**: Projekt w środowisku niestandardowym
+    - **Identyfikator projektu**: projekt niestandardowe środowiska
+    - **Projekt publicznych**: (usunięty)
+    - **Utwórz plik README.md**: (usunięty)
 
-1. Po kilku chwilach notesy platformy Azure przechodzi należy do nowego projektu. Dodaj Notes do projektu, wybierając listę rozwijaną **+ Nowy** (która może być wyświetlana tylko jako **+** ), a następnie wybierając pozycję **Notes**.
+1. Po kilku chwilach notesy platformy Azure przechodzi należy do nowego projektu. Dodaj Notes do projektu, wybierając **+ nowy** listy rozwijanej (może wystąpić tylko jako **+** ), a następnie wybierając pozycję **notesu**.
 
-1. Nadaj notesowi nazwę, np *. Custom Environment. ipynb*, wybierz opcję **Python 3,6** dla języka i wybierz pozycję **New (nowy**).
+1. Nazwij Notes takich jak *environment.ipynb niestandardowe*, wybierz opcję **środowiska Python 3.6** dla języka, a następnie wybierz **New**.
 
 ## <a name="add-a-custom-setup-step"></a>Dodawanie kroku instalacji niestandardowej
 
-1. Na stronie projekt wybierz pozycję **Ustawienia projektu**.
+1. Na stronie projektu wybierz **ustawienia projektu**.
 
     ![Polecenie Ustawienia projektu](media/quickstarts/project-settings-command.png)
 
-1. W oknie podręcznym **Ustawienia projektu** wybierz kartę **środowisko** , a następnie w obszarze **kroki konfiguracji środowiska**wybierz pozycję **+ Dodaj**:
+1. W **ustawienia projektu** podręcznym wybierz **środowiska** kartę, a następnie w obszarze **kroków konfiguracji środowiska**, wybierz opcję **+ Dodaj**:
 
     ![Polecenie, aby dodać nowy krok konfiguracji środowiska](media/quickstarts/environment-add-command.png)
 
-1. Polecenie **+ Add** tworzy krok zdefiniowany przez operację i plik docelowy, który jest wybierany z plików w projekcie. Obsługiwane są następujące operacje:
+1. **+ Dodaj** polecenie tworzy krok, który jest definiowany przez operację i pliku docelowego, który jest wybrana w zaufanym pliki w projekcie. Obsługiwane są następujące operacje:
 
     | Operacja | Opis |
     | --- | --- |
-    | Plik Requirements.txt | Projekty Python definiowanie ich zależności w pliku requirements.txt. Po wybraniu tej opcji wybierz odpowiedni plik z listy plików projektu, a także wybierz wersję języka Python w dodatkowej listy rozwijanej wyświetlonej. W razie potrzeby wybierz pozycję **Anuluj** , aby powrócić do projektu, Przekaż lub Utwórz plik, a następnie wróć do karty **Ustawienia projektu** > **środowisko** i Utwórz nowy krok. W tym kroku uruchomienie notesu w projekcie powoduje automatyczne uruchomienie `pip install -r <file>` |
-    | Skrypt powłoki | Użyj, aby wskazać skrypt powłoki bash (zazwyczaj plik z rozszerzeniem *. sh* ) zawierający wszystkie polecenia, które chcesz uruchomić w celu zainicjowania środowiska. |
-    | Environment.yml | Projekt języka Python, który używa Conda do zarządzania środowiskiem, używa pliku Environments *. yml* do opisywania zależności. Po wybraniu tej opcji wybierz odpowiedni plik z listy plików projektu. |
+    | Plik Requirements.txt | Projekty Python definiowanie ich zależności w pliku requirements.txt. Po wybraniu tej opcji wybierz odpowiedni plik z listy plików projektu, a także wybierz wersję języka Python w dodatkowej listy rozwijanej wyświetlonej. W razie potrzeby zaznacz **anulować** aby powrócić do projektu, przekazywania lub utworzyć plik, a następnie wróć do **ustawienia projektu** > **środowiska** kartę i Utwórz nowy krok. Ten krok w miejscu automatycznemu uruchamianiu Notes w projekcie działa `pip install -r <file>` |
+    | Skrypt powłoki | Służy do wskazywania skrypt powłoki bash (zazwyczaj plik z *SH* rozszerzenia) zawierający wszystkie polecenia, które chcesz uruchomić, aby zainicjować środowisko. |
+    | Environment.yml | Projekt języka Python, który używa conda dla zarządzania środowiskiem używa *environments.yml* pliku, aby opisać zależności. Po wybraniu tej opcji wybierz odpowiedni plik z listy plików projektu. |
 
-1. Aby usunąć dowolny krok instalacji, wybierz **znak X** z prawej strony kroku.
+1. Aby usunąć dowolny krok konfiguracji, wybierz **X** po prawej stronie kroku.
 
-1. Po zakończeniu wszystkich kroków instalacji wybierz pozycję **Zapisz**. (Wybierz pozycję **Anuluj** , aby odrzucić zmiany).
+1. Gdy wszystkie kroki instalacji znajdują się w miejscu, wybierz pozycję **Zapisz**. (Wybierz **anulować** aby odrzucić zmiany).
 
-1. Aby przetestować środowisko, Utwórz i uruchom nowy Notes, a następnie utwórz komórkę kodu z instrukcjami, które są zależne od pakietu w środowisku, na przykład przy użyciu instrukcji `import` języka Python. Jeśli instrukcja zakończy się powodzeniem, potrzebny pakiet został pomyślnie zainstalowany w środowisku.
+1. Do Twojego środowiska testowego, Utwórz i uruchom nowy notes, a następnie tworzenie komórkę kodu za pomocą instrukcji, które są zależne od pakietu w środowisku, na przykład przy użyciu języka Python `import` instrukcji. Jeśli instrukcja zakończy się powodzeniem, potrzebny pakiet został pomyślnie zainstalowany w środowisku.
 
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Zarządzanie projektami i konfigurowanie ich w Azure Notebooks](configure-manage-azure-notebooks-projects.md)
+> [Zarządzanie i konfigurowanie projektów w notesach platformy Azure](configure-manage-azure-notebooks-projects.md)
 
 > [!div class="nextstepaction"]
-> [Samouczek: Tworzenie notesu Jupyter w celu wykonania regresji liniowej](tutorial-create-run-jupyter-notebook.md)
+> [Samouczek: tworzenie uruchomienia notesu programu Jupyter w celu regresji liniowej](tutorial-create-run-jupyter-notebook.md)

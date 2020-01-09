@@ -2,18 +2,18 @@
 title: Używanie Apache Hadoop Hive z zwinięciem w usłudze HDInsight — Azure
 description: Dowiedz się, jak zdalnie przesyłać zadania Apache wieprz do usługi Azure HDInsight przy użyciu zawieszania.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 06/28/2019
-ms.author: hrasheed
-ms.openlocfilehash: e1fbeb48acdfd9d09cad2616aed9793e2ff513ad
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.custom: hdinsightactive
+ms.date: 01/06/2020
+ms.openlocfilehash: 3bb09f1958685a3474b49d2d194e89fe81a80076
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70736084"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75690493"
 ---
 # <a name="run-apache-hive-queries-with-apache-hadoop-in-hdinsight-using-rest"></a>Uruchamianie zapytań Apache Hive z Apache Hadoop w usłudze HDInsight przy użyciu usługi REST
 
@@ -27,36 +27,38 @@ Dowiedz się, jak używać interfejsu API REST WebHCat do uruchamiania zapytań 
 
 * Klient REST. W tym dokumencie jest stosowane [wywołanie Invoke-WebRequest](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-webrequest) w programie Windows PowerShell i [zwinięcie](https://curl.haxx.se/) w witrynie [bash](https://docs.microsoft.com/windows/wsl/install-win10).
 
-* Jeśli używasz bash, konieczne będzie również JQ, procesor JSON w wierszu polecenia.  Zobacz [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/).
+* Jeśli używasz bash, potrzebujesz również JQ, procesora JSON wiersza polecenia.  Zobacz [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/).
 
 ## <a name="base-uri-for-rest-api"></a>Podstawowy identyfikator URI interfejsu API REST
 
-Podstawowy Uniform Resource Identifier (URI) dla interfejsu API REST w usłudze HDInsight to `https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME`, gdzie `CLUSTERNAME` jest nazwą klastra.  Nazwy klastra w identyfikatorach URI są **rozróżniane wielkości**liter.  W czasie, gdy nazwa klastra w w pełni kwalifikowana nazwa domeny (FQDN) w ramach identyfikatora`CLUSTERNAME.azurehdinsight.net`URI () nie uwzględnia wielkości liter, inne wystąpienia w identyfikatorze URI uwzględniają wielkość liter.
+Podstawowy Uniform Resource Identifier (URI) dla interfejsu API REST w usłudze HDInsight jest `https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME`, gdzie `CLUSTERNAME` jest nazwą klastra.  Nazwy klastra w identyfikatorach URI są **rozróżniane wielkości**liter.  Podczas gdy nazwa klastra w pełni kwalifikowana nazwa domeny (FQDN) w ramach identyfikatora URI (`CLUSTERNAME.azurehdinsight.net`) nie uwzględnia wielkości liter, inne wystąpienia w identyfikatorze URI uwzględniają wielkość liter.
 
 ## <a name="authentication"></a>Authentication
 
 W przypadku korzystania z zawieszeń lub innej komunikacji REST z WebHCat należy uwierzytelnić żądania, podając nazwę użytkownika i hasło administratora klastra usługi HDInsight. Interfejs API REST jest zabezpieczony za pomocą [uwierzytelniania podstawowego](https://en.wikipedia.org/wiki/Basic_access_authentication). Aby upewnić się, że poświadczenia są bezpiecznie wysyłane do serwera, należy zawsze wysyłać żądania przy użyciu bezpiecznego protokołu HTTP (HTTPS).
 
 ### <a name="setup-preserve-credentials"></a>Instalacja (zachowywanie poświadczeń)
+
 Zachowaj poświadczenia, aby uniknąć ich przetworzenia w każdym przykładzie.  Nazwa klastra zostanie zachowana w osobnym kroku.
 
-**Z. Bash**  
-Edytuj Poniższy skrypt, zastępując `PASSWORD` go rzeczywistym hasłem.  Następnie wprowadź polecenie.
+**A. bash**  
+Edytuj Poniższy skrypt, zastępując `PASSWORD` hasłem rzeczywistym.  Następnie wprowadź polecenie.
 
 ```bash
 export password='PASSWORD'
 ```  
 
-**B. Program** PowerShell wykonuje Poniższy kod, a następnie wprowadź swoje poświadczenia w oknie podręcznym:
+**B. program PowerShell** wykonuje Poniższy kod, a następnie wprowadź swoje poświadczenia w oknie podręcznym:
 
 ```powershell
 $creds = Get-Credential -UserName "admin" -Message "Enter the HDInsight login"
 ```
 
 ### <a name="identify-correctly-cased-cluster-name"></a>Zidentyfikuj poprawną nazwę klastra z wielkością liter
-Rzeczywista wielkość liter nazwy klastra może być inna niż oczekiwano, w zależności od sposobu utworzenia klastra.  Kroki opisane w tym miejscu spowodują wyświetlenie rzeczywistej wielkości liter, a następnie zapisanie jej w zmiennej dla wszystkich kolejnych przykładów.
 
-Edytuj poniższe skrypty, aby zastąpić `CLUSTERNAME` je nazwą klastra. Następnie wprowadź polecenie. (Nazwa klastra nazwy FQDN nie jest rozróżniana wielkość liter).
+Rzeczywista wielkość liter nazwy klastra może być inna niż oczekiwano, w zależności od sposobu utworzenia klastra.  Kroki opisane w tym miejscu spowodują wyświetlenie rzeczywistej wielkości liter, a następnie zapisanie jej w zmiennej dla wszystkich późniejszych przykładów.
+
+Edytuj poniższe skrypty, aby zastąpić `CLUSTERNAME` nazwą klastra. Następnie wprowadź polecenie. (Nazwa klastra nazwy FQDN nie jest rozróżniana wielkość liter).
 
 ```bash
 export clusterName=$(curl -u admin:$password -sS -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters" | jq -r '.items[].Clusters.cluster_name')
@@ -73,7 +75,7 @@ $clusterName = (ConvertFrom-Json $resp.Content).items.Clusters.cluster_name;
 $clusterName
 ```
 
-## <a id="curl"></a>Uruchamianie zapytania programu Hive
+## <a name="run-a-hive-query"></a>Uruchomienie zapytania programu Hive
 
 1. Aby sprawdzić, czy można nawiązać połączenie z klastrem usługi HDInsight, użyj jednego z następujących poleceń:
 
@@ -96,10 +98,10 @@ $clusterName
 
     W tym poleceniu są używane następujące parametry:
 
-    * `-u`— Nazwa użytkownika i hasło używane do uwierzytelniania żądania.
-    * `-G`-Wskazuje, że to żądanie jest operacją pobierania.
+    * `-u` — nazwa użytkownika i hasło używane do uwierzytelniania żądania.
+    * `-G` — wskazuje, że to żądanie jest operacją pobierania.
 
-1. Początek adresu URL, `https://$CLUSTERNAME.azurehdinsight.net/templeton/v1`, jest taki sam dla wszystkich żądań. Ścieżka `/status`wskazuje, że żądanie ma zwrócić stan WebHCat (znany również jako Templeton) dla serwera. Możesz również zażądać wersji programu Hive przy użyciu następującego polecenia:
+1. Początkowy adres URL, `https://$CLUSTERNAME.azurehdinsight.net/templeton/v1`, jest taki sam dla wszystkich żądań. Ścieżka `/status`, wskazuje, że żądanie ma zwrócić stan WebHCat (znany również jako Templeton) dla serwera. Możesz również zażądać wersji programu Hive przy użyciu następującego polecenia:
 
     ```bash
     curl -u admin:$password -G https://$clusterName.azurehdinsight.net/templeton/v1/version/hive
@@ -138,26 +140,26 @@ $clusterName
 
     To żądanie używa metody POST, która wysyła dane w ramach żądania do interfejsu API REST. Następujące wartości danych są wysyłane z żądaniem:
 
-     * `user.name`— Użytkownik, który uruchamia polecenie.
-     * `execute`-Instrukcje HiveQL do wykonania.
-     * `statusdir`-Katalog, w którym jest zapisywana wartość stanu tego zadania.
+     * `user.name` — użytkownik, który uruchamia polecenie.
+     * `execute` — instrukcje HiveQL do wykonania.
+     * `statusdir` — katalog, w którym jest zapisywana wartość stanu tego zadania.
 
    Te instrukcje wykonują następujące czynności:
 
-   * `DROP TABLE`-Jeśli tabela już istnieje, zostanie usunięta.
-   * `CREATE EXTERNAL TABLE`-Tworzy nową tabelę "External" w gałęzi. Tabele zewnętrzne przechowują tylko definicję tabeli w programie Hive. Dane pozostaną w oryginalnej lokalizacji.
+   * `DROP TABLE` — Jeśli tabela już istnieje, zostanie usunięta.
+   * `CREATE EXTERNAL TABLE` — tworzy nową tabelę "External" w gałęzi. Tabele zewnętrzne przechowują tylko definicję tabeli w programie Hive. Dane pozostaną w oryginalnej lokalizacji.
 
      > [!NOTE]  
      > Tabele zewnętrzne powinny być używane, gdy oczekuje się, że dane podstawowe mają być aktualizowane przez zewnętrzne źródło. Na przykład proces automatycznego przekazywania danych lub inna operacja MapReduce.
      >
      > Porzucenie tabeli **zewnętrznej nie powoduje usunięcia danych** , tylko definicji tabeli.
 
-   * `ROW FORMAT`— Jak są formatowane dane. Pola w każdym dzienniku są oddzielone spacjami.
-   * `STORED AS TEXTFILE LOCATION`— Miejsce, w którym dane są przechowywane (przykład/katalog danych) i są przechowywane jako tekst.
-   * `SELECT`-Wybiera liczbę wszystkich wierszy, w których kolumna **T4** zawiera wartość **[Error]** . Ta instrukcja zwraca wartość **3** , ponieważ istnieją trzy wiersze, które zawierają tę wartość.
+   * `ROW FORMAT` — jak są formatowane dane. Pola w każdym dzienniku są oddzielone spacjami.
+   * `STORED AS TEXTFILE LOCATION` — miejsce przechowywania danych (przykład/katalog danych) i jest ono przechowywane jako tekst.
+   * `SELECT` — wybiera liczbę wszystkich wierszy, w których kolumna **T4** zawiera wartość **[Error]** . Ta instrukcja zwraca wartość **3** , ponieważ istnieją trzy wiersze, które zawierają tę wartość.
 
      > [!NOTE]  
-     > Należy zauważyć, że odstępy między instrukcjami HiveQL są zastępowane `+` znakiem, gdy jest używany z zwinięciem. Ujęte w cudzysłów wartości zawierające spację, takie jak ogranicznik, nie powinny być zastępowane przez `+`.
+     > Należy zauważyć, że odstępy między instrukcjami HiveQL są zastępowane przez znak `+`, gdy jest używany z zwinięciem. Ujęte w cudzysłów wartości zawierające spację, takie jak ogranicznik, nie powinny być zastępowane przez `+`.
 
       To polecenie zwraca identyfikator zadania, którego można użyć do sprawdzenia stanu zadania.
 
@@ -181,19 +183,15 @@ $clusterName
 
     Jeśli zadanie zostało zakończone, stan zostanie **zakończony pomyślnie**.
 
-1. Po zmianie stanu zadania na **powodzenie**można pobrać wyniki zadania z usługi Azure Blob Storage. Parametr przesłany z zapytaniem zawiera lokalizację pliku wyjściowego; w tym `/example/rest`przypadku. `statusdir` Ten adres przechowuje dane wyjściowe w `example/curl` katalogu w domyślnym magazynie klastrów.
+1. Po zmianie stanu zadania na **powodzenie**można pobrać wyniki zadania z usługi Azure Blob Storage. Parametr `statusdir` przeprowadzony z zapytaniem zawiera lokalizację pliku wyjściowego. w tym przypadku `/example/rest`. Ten adres przechowuje dane wyjściowe w katalogu `example/curl` w domyślnym magazynie klastrów.
 
     Możesz wyświetlić i pobrać te pliki przy użyciu [interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli). Aby uzyskać więcej informacji na temat korzystania z interfejsu wiersza polecenia platformy Azure z usługą Azure Storage, zobacz dokument [Używanie interfejsu wiersza polecenia platformy Azure z usługą Azure Storage](https://docs.microsoft.com/azure/storage/storage-azure-cli#create-and-manage-blobs) .
 
-## <a id="nextsteps"></a>Następne kroki
-
-Aby uzyskać ogólne informacje na temat platformy Hive z usługą HDInsight:
-
-* [Używanie Apache Hive z Apache Hadoop w usłudze HDInsight](hdinsight-use-hive.md)
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać informacje na temat innych sposobów pracy z usługą Hadoop w usłudze HDInsight:
 
-* [Korzystanie z usługi Apache świni z usługą Apache Hadoop w usłudze HDInsight](hdinsight-use-pig.md)
+* [Używanie Apache Hive z Apache Hadoop w usłudze HDInsight](hdinsight-use-hive.md)
 * [Używanie MapReduce z usługą Apache Hadoop w usłudze HDInsight](hdinsight-use-mapreduce.md)
 
 Aby uzyskać więcej informacji na temat interfejsu API REST używanego w tym dokumencie, zobacz dokument [referencyjny WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference) .

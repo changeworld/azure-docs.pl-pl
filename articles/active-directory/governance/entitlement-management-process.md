@@ -1,5 +1,5 @@
 ---
-title: Zażądaj procesu i powiadomień e-mail w usłudze Azure AD uprawnień zarządzania — Azure Active Directory
+title: Żądanie & powiadomień o procesie — Zarządzanie prawami w usłudze Azure AD
 description: Dowiedz się więcej o procesie żądania dla pakietu dostępu i powiadomieniach e-mail, które są wysyłane w Azure Active Directory zarządzania prawami.
 services: active-directory
 documentationCenter: ''
@@ -16,12 +16,12 @@ ms.date: 11/11/2019
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f336e9f2bdf1553a72bdc35fecc1b0b735fad274
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: b86e4019b26eebb8b805a4846e583c68acb53ad6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74206892"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422605"
 ---
 # <a name="request-process-and-email-notifications-in-azure-ad-entitlement-management"></a>Zażądaj procesu i powiadomień e-mail w usłudze Azure AD uprawnienia do zarządzania
 
@@ -35,10 +35,10 @@ Użytkownik wymagający dostępu do pakietu dostępu może przesłać żądanie 
 
 | Stan | Opis |
 | --- | --- |
-| Złożona | Użytkownik przesyła żądanie. |
+| Przesłany | Użytkownik przesyła żądanie. |
 | Oczekuje na zatwierdzenie | Jeśli zasady dla pakietu dostępu wymagają zatwierdzenia, żądanie przechodzi do oczekującego zatwierdzenia. |
 | Wygasłe | Jeśli żadne osoby zatwierdzające nie zatwierdzą żądania w ramach limitu czasu żądania zatwierdzenia, żądanie wygasa. Aby ponowić próbę, użytkownik będzie musiał ponownie przesłać żądanie. |
-| Dozwolone | Osoba zatwierdzająca odrzuca żądanie. |
+| Odmówiono | Osoba zatwierdzająca odrzuca żądanie. |
 | Approved (Zatwierdzono) | Osoba zatwierdzająca zatwierdza żądanie. |
 | Wykonania | Użytkownikowi **nie** przypisano dostępu do wszystkich zasobów w pakiecie dostępu. Jeśli jest to użytkownik zewnętrzny, użytkownik może nie mieć jeszcze dostępu do katalogu zasobów. Ponadto nie zaakceptowali monitu o zgodę. |
 | Dostarczono | Użytkownikowi przypisano dostęp do wszystkich zasobów w pakiecie dostępu. |
@@ -69,7 +69,7 @@ Na poniższym diagramie przedstawiono środowisko osób zatwierdzających etap-1
 ### <a name="email-notifications-table"></a>Tabela powiadomień e-mail
 Poniższa tabela zawiera więcej szczegółów na temat każdej z tych powiadomień e-mail. Aby zarządzać tymi wiadomościami e-mail, możesz użyć reguł. Na przykład w programie Outlook można utworzyć reguły przenoszenia wiadomości e-mail do folderu, jeśli temat zawiera wyrazy z tej tabeli:
 
-| # | Temat wiadomości e-mail | Po wysłaniu | Wysłane do |
+| # | Temat wiadomości e-mail | Po wysłaniu | Wysłany do |
 | --- | --- | --- | --- |
 | 1 | Wymagana akcja: Zatwierdź lub Odrzuć przekazane żądanie przez *[Date]* | Ta wiadomość e-mail będzie wysyłana do osoby zatwierdzającej alternatywny etap 1 (po eskalacji żądania) w celu podjęcia odpowiednich działań. | Etap-1 alternatywne osoby zatwierdzające |
 | 2 | Wymagana akcja: Zatwierdź lub Odmów żądania przez *[Date]* | Ta wiadomość e-mail zostanie wysłana do pierwszej osoby zatwierdzającej, jeśli eskalacja jest wyłączona, aby podjąć odpowiednie działania. | Pierwsza osoba zatwierdzająca |
@@ -79,8 +79,8 @@ Poniższa tabela zawiera więcej szczegółów na temat każdej z tych powiadomi
 | 6 | Żądanie wygasło dla *[access_package]* | Ta wiadomość e-mail zostanie wysłana do pierwszej osoby zatwierdzającej i od 1 alternatywnej osoby zatwierdzające od momentu wygaśnięcia żądania. | Pierwsze osoby zatwierdzającej, etap 1. alternatywne osoby zatwierdzające |
 | 7 | Żądanie zatwierdzone dla *[żądającej]* do *[access_package]* | Ta wiadomość e-mail zostanie wysłana do pierwszej osoby zatwierdzającej i od 1 alternatywnej osoby zatwierdzające do momentu ukończenia żądania. | Pierwsze osoby zatwierdzającej, etap 1. alternatywne osoby zatwierdzające |
 | 8 | Żądanie zatwierdzone dla *[żądającej]* do *[access_package]* | Ta wiadomość e-mail zostanie wysłana do pierwszej osoby zatwierdzającej i od 1 do zaakceptowania alternatywne osoby zatwierdzające 2-etapowe żądania po zatwierdzeniu żądania etapu 1. | Pierwsze osoby zatwierdzającej, etap 1. alternatywne osoby zatwierdzające |
-| 9 | Żądanie odrzucone do *[access_package]* | Ta wiadomość e-mail zostanie wysłana do osoby żądającej, gdy żądanie zostanie odrzucone | Obiektu żądającego |
-| 10 | Twoje żądanie wygasło dla *[access_package]* | Ta wiadomość e-mail zostanie wysłana do osoby żądającej na końcu pojedynczego lub dwuetapowego żądania. Wiadomość e-mail powiadamia żądającego o wygaśnięciu żądania. | Obiektu żądającego |
+| 9 | Żądanie odrzucone do *[access_package]* | Ta wiadomość e-mail zostanie wysłana do osoby żądającej, gdy żądanie zostanie odrzucone | Requestor |
+| 10 | Twoje żądanie wygasło dla *[access_package]* | Ta wiadomość e-mail zostanie wysłana do osoby żądającej na końcu pojedynczego lub dwuetapowego żądania. Wiadomość e-mail powiadamia żądającego o wygaśnięciu żądania. | Requestor |
 | 11 | Wymagana akcja: Zatwierdź lub Odmów żądania przez *[Date]* | Ta wiadomość e-mail zostanie wysłana do drugiej osoby zatwierdzającej, jeśli eskalacja jest wyłączona, aby podjąć odpowiednie działania. | Druga osoba zatwierdzająca |
 | 12 | Przypomnienie o wymaganym akcji: Zatwierdź lub Odrzuć żądanie przez *[Date]* | Ta wiadomość e-mail z przypomnieniem zostanie wysłana do drugiej osoby zatwierdzającej, jeśli eskalacja jest wyłączona. Powiadomienie poprosi o podjęcie działania, jeśli jeszcze nie zostało to zrobione. | Druga osoba zatwierdzająca |
 | 13 | Wymagana akcja: Zatwierdź lub Odrzuć żądanie przez *[Date]* dla *[żądającego]* | Ta wiadomość e-mail zostanie wysłana do drugiej osoby zatwierdzającej, jeśli eskalacja jest włączona, aby podjąć działanie. | Druga osoba zatwierdzająca |
@@ -88,9 +88,9 @@ Poniższa tabela zawiera więcej szczegółów na temat każdej z tych powiadomi
 | 15 | Wymagana akcja: Zatwierdź lub Odrzuć przekazane żądanie przez *[Date]* | Ta wiadomość e-mail zostanie wysłana do osoby zatwierdzającej alternatywnego etapu 2, jeśli eskalacja jest włączona, aby podjąć działania. | Etapy — 2 alternatywne osoby zatwierdzające |
 | 16 | Żądanie zatwierdzone dla *[żądającej]* do *[access_package]* | Ta wiadomość e-mail zostanie wysłana do drugiej osoby zatwierdzającej i przełożonej na 2 zastępców osoby zatwierdzające po zatwierdzeniu żądania. | Druga osoba zatwierdzająca, etap-2 alternatywne osoby zatwierdzające |
 | 17 | Żądanie wygasło dla *[access_package]* | Ta wiadomość e-mail zostanie wysłana do drugiej osoby zatwierdzającej lub alternatywnej osoby zatwierdzającej po wygaśnięciu żądania. | Druga osoba zatwierdzająca, etap-2 alternatywne osoby zatwierdzające |
-| 18 | Masz teraz dostęp do programu *[access_package]* | Ta wiadomość e-mail zostanie wysłana do użytkowników końcowych, aby rozpocząć korzystanie z nich. | Obiektu żądającego |
-| 19 | Rozszerzona dostęp dla *[access_package]* przez *[Date]* | Ta wiadomość e-mail zostanie wysłana do użytkowników końcowych przed wygaśnięciem dostępu. | Obiektu żądającego |
-| 20 | Zakończono dostęp dla *[access_package]* | Ta wiadomość e-mail zostanie wysłana do użytkowników końcowych po wygaśnięciu dostępu. | Obiektu żądającego |
+| 18 | Masz teraz dostęp do programu *[access_package]* | Ta wiadomość e-mail zostanie wysłana do użytkowników końcowych, aby rozpocząć korzystanie z nich. | Requestor |
+| 19 | Rozszerzona dostęp dla *[access_package]* przez *[Date]* | Ta wiadomość e-mail zostanie wysłana do użytkowników końcowych przed wygaśnięciem dostępu. | Requestor |
+| 20 | Zakończono dostęp dla *[access_package]* | Ta wiadomość e-mail zostanie wysłana do użytkowników końcowych po wygaśnięciu dostępu. | Requestor |
 
 ### <a name="access-request-emails"></a>Adresy e-mail żądania dostępu
 

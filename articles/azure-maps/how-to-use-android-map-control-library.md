@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 934fe2219ccca917999cf49cb9c9826276545e73
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: cb79b24a37758307657c1245622fa980123cc5c9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70915658"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432935"
 ---
 # <a name="getting-started-with-azure-maps-android-sdk"></a>Wprowadzenie do Azure Maps Android SDK
 
@@ -24,7 +24,9 @@ Android SDK Azure Maps jest biblioteką mapy wektorowej dla systemu Android. Ten
 
 ### <a name="create-an-azure-maps-account"></a>Tworzenie konta usługi Azure Maps
 
-Aby wykonać procedury opisane w tym artykule, musisz najpierw [utworzyć konto Azure Maps](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account) w warstwie cenowej S1.
+Aby wykonać procedury opisane w tym artykule, musisz najpierw [utworzyć konto Azure Maps](quick-demo-map-app.md#create-an-account-with-azure-maps) w warstwie cenowej S1 i [uzyskać klucz podstawowy](quick-demo-map-app.md#get-the-primary-key-for-your-account) dla Twojego konta.
+
+Aby uzyskać więcej informacji na temat uwierzytelniania w Azure Maps, zobacz [Zarządzanie uwierzytelnianiem w programie Azure Maps](./how-to-manage-authentication.md).
 
 ### <a name="download-android-studio"></a>Pobierz program Android Studio
 
@@ -37,7 +39,7 @@ Najpierw utwórz nowy projekt z pustym działaniem. Wykonaj następujące kroki,
 1. W obszarze **Wybierz projekt**wybierz pozycję **telefon i tablet**. Aplikacja będzie działać na tym formularzu.
 2. Na karcie **telefon i tablet** wybierz pozycję **puste działanie**, a następnie wybierz przycisk **dalej**.
 3. W obszarze **Konfigurowanie projektu**wybierz `API 21: Android 5.0.0 (Lollipop)` jako minimalny zestaw SDK. Jest to Najwcześniejsza wersja obsługiwana przez Android SDK Azure Maps.
-4. Zaakceptuj wartość domyślną `Activity Name` i `Layout Name` wybierz pozycję **Zakończ**.
+4. Zaakceptuj domyślne `Activity Name` i `Layout Name` i wybierz pozycję **Zakończ**.
 
 Zapoznaj się z [dokumentacją Android Studio](https://developer.android.com/studio/intro/) , aby uzyskać pomoc dotyczącą instalowania Android Studio i tworzenia nowego projektu.
 
@@ -45,7 +47,7 @@ Zapoznaj się z [dokumentacją Android Studio](https://developer.android.com/stu
 
 ## <a name="set-up-a-virtual-device"></a>Konfigurowanie urządzenia wirtualnego
 
-Android Studio umożliwia skonfigurowanie wirtualnego urządzenia z systemem Android na komputerze. Wykonanie tej czynności może pomóc w testowaniu aplikacji podczas jej tworzenia. Aby skonfigurować urządzenie wirtualne, wybierz ikonę Menedżera urządzeń wirtualnych systemu Android (AVD) w prawym górnym rogu ekranu projektu, a następnie wybierz pozycję **Utwórz urządzenie wirtualne**. Możesz również uzyskać dostęp do Menedżera AVD, wybierając pozycję **Narzędzia** > **Android** > **AVD Manager** na pasku narzędzi. W kategorii **telefony** wybierz pozycję **Nexus pięciokrotną**, a następnie wybierz pozycję **Next (dalej**).
+Android Studio umożliwia skonfigurowanie wirtualnego urządzenia z systemem Android na komputerze. Wykonanie tej czynności może pomóc w testowaniu aplikacji podczas jej tworzenia. Aby skonfigurować urządzenie wirtualne, wybierz ikonę Menedżera urządzeń wirtualnych systemu Android (AVD) w prawym górnym rogu ekranu projektu, a następnie wybierz pozycję **Utwórz urządzenie wirtualne**. Możesz również uzyskać dostęp do Menedżera AVD, wybierając pozycję **narzędzia** > **Android** > **AVD Manager** z poziomu paska narzędzi. W kategorii **telefony** wybierz pozycję **Nexus pięciokrotną**, a następnie wybierz pozycję **Next (dalej**).
 
 Więcej informacji na temat konfigurowania AVD można znaleźć w [dokumentacji Android Studio](https://developer.android.com/studio/run/managing-avds).
 
@@ -80,11 +82,9 @@ Następnym krokiem tworzenia aplikacji jest zainstalowanie Android SDK Azure Map
         ```
         implementation "com.microsoft.azure.maps:mapcontrol:0.2"
         ```
-
-    > [!Note]
-    > Android SDK Azure Maps są regularnie uaktualniane i rozszerzane. Aby uzyskać najnowszy numer wersji implementacji Azure Maps, można zapoznać się z dokumentacją dotyczącą rozpoczynania [pracy z kontrolką mapy systemu Android](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library) . Ponadto można ustawić numer wersji z "0,2" na "0 +", aby zawsze wskazywał najnowszą wersję.
-
-3. Edytuj > układres > **activity_main. XML** i zastąp go kodem:
+    
+    4. Przejdź do **pliku** na pasku narzędzi, a następnie kliknij pozycję **Synchronizuj projekt z plikami Gradle**.
+3. Dodaj fragment mapy do działania głównego (\> układu zasobów \> działania\_Main. xml):
     
     ```XML
     <?xml version="1.0" encoding="utf-8"?>
@@ -109,7 +109,7 @@ Następnym krokiem tworzenia aplikacji jest zainstalowanie Android SDK Azure Map
     * Ustawianie informacji o uwierzytelnianiu Azure Maps
     * Pobieranie wystąpienia kontrolki mapy w metodzie **OnCreate**
 
-    Ustawienie informacji o uwierzytelnianiu w `AzureMaps` klasie globalnie `setSubscriptionKey` przy użyciu metod `setAadProperties` lub powoduje, że nie trzeba dodawać informacji o uwierzytelnianiu w każdym widoku. 
+    Ustawienie informacji o uwierzytelnianiu w klasie `AzureMaps` globalnie przy użyciu metod `setSubscriptionKey` lub `setAadProperties` sprawia, że nie będzie trzeba dodawać informacji o uwierzytelnianiu w każdym widoku. 
 
     Kontrolka mapy zawiera własne metody cyklu życia do zarządzania cyklem życia OpenGL dla systemu Android, które muszą być wywoływane bezpośrednio z działania zawierającego. Aby aplikacja mogła prawidłowo, wywołaj metody cyklu życia kontrolki mapy, należy zastąpić następujące metody cyklu życia w działaniu zawierającym formant mapy i wywołać odpowiednią metodę kontroli mapy. 
 
@@ -201,30 +201,29 @@ Następnym krokiem tworzenia aplikacji jest zainstalowanie Android SDK Azure Map
             mapControl.onSaveInstanceState(outState);
         }
     }
-
     ```
 
 ## <a name="import-classes"></a>Importuj klasy
 
-Po wykonaniu powyższych kroków prawdopodobnie otrzymasz ostrzeżenia z Android Studio o niektórym kodzie. Aby rozwiązać te ostrzeżenia, zaimportuj klasy, `MainActivity.java`do których odwołuje się.
+Po wykonaniu powyższych kroków prawdopodobnie otrzymasz ostrzeżenia z Android Studio o niektórym kodzie. Aby rozwiązać te ostrzeżenia, zaimportuj klasy, do których odwołuje się `MainActivity.java`.
 
 Można automatycznie importować te klasy, wybierając klawisze Alt + Enter (opcja + Return na komputerze Mac).
 
 Wybierz przycisk Run (Uruchom), jak pokazano na poniższej ilustracji (lub naciśnij klawisze Control + R na komputerze Mac), aby skompilować aplikację.
 
-![Kliknij przycisk Uruchom](./media/how-to-use-android-map-control-library/run-app.png)
+![Kliknij pozycję Uruchom.](./media/how-to-use-android-map-control-library/run-app.png)
 
 Kompilowanie aplikacji Android Studio potrwa kilka sekund. Po zakończeniu kompilacji można przetestować aplikację na emulowanym urządzeniu z systemem Android. Powinna zostać wyświetlona mapa przypominająca:
 
 <center>
 
-![Mapa systemu Android](./media/how-to-use-android-map-control-library/android-map.png)</center>
+![](./media/how-to-use-android-map-control-library/android-map.png)</center> mapy systemu Android
 
 ## <a name="localizing-the-map"></a>Lokalizowanie mapy
 
 Azure Maps Android SDK oferuje trzy różne sposoby ustawiania języka i widoku regionalnego mapy. Poniższy kod pokazuje, jak ustawić język na francuski ("fr-FR") i widok regionalny na "Auto". 
 
-Pierwsza opcja polega na przejściu języka i wyświetleniu informacji regionalnych do `AzureMaps` klasy przy użyciu metod statycznych `setLanguage` i `setView` globalnie. Spowoduje to ustawienie języka domyślnego i widoku regionalnego dla wszystkich kontrolek Azure Maps załadowanych w aplikacji.
+Pierwsza opcja polega na przejściu języka i wyświetleniu informacji regionalnych do klasy `AzureMaps` przy użyciu statycznych `setLanguage` i `setView` Metoda globalnie. Spowoduje to ustawienie języka domyślnego i widoku regionalnego dla wszystkich kontrolek Azure Maps załadowanych w aplikacji.
 
 ```Java
 static {
@@ -251,7 +250,7 @@ Druga opcja polega na przejściu języka i wyświetleniu informacji w kodzie XML
     />
 ```
 
-Trzecia opcja polega na programowo ustawić język i widok regionalny mapy przy użyciu metody Maps `setStyle` . Można to zrobić w dowolnym momencie, aby zmienić język i widok regionalny mapy.
+Trzecia opcja polega na programowo ustawić język i widok regionalny mapy przy użyciu metody Maps `setStyle`. Można to zrobić w dowolnym momencie, aby zmienić język i widok regionalny mapy.
 
 ```Java
 mapControl.onReady(map -> {
@@ -264,8 +263,8 @@ Oto przykład Azure Maps z językiem ustawionym na "fr-FR" i widoku regionalnym 
 
 <center>
 
-![Obraz mapy przedstawiający etykiety w języku francuskim](./media/how-to-use-android-map-control-library/android-localization.png)
-</center>
+obraz mapy ![pokazujący etykiety w](./media/how-to-use-android-map-control-library/android-localization.png)
+francuskiej </center>
 
 Pełna lista obsługiwanych języków i widoków regionalnych została udokumentowana [tutaj](supported-languages.md).
 

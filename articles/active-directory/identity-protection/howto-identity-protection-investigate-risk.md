@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: conceptual
-ms.date: 10/18/2019
+ms.date: 12/13/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 27753d965949d3e677606111139a5d86ccf26dbf
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: c5191f05752c177aa29d121abe9d1aa29fde265a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74382122"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430966"
 ---
 # <a name="how-to-investigate-risk"></a>Instrukcje: badanie ryzyka
 
@@ -30,7 +30,7 @@ Trzy raporty znajdują się w **Azure Portal** > **Azure Active Directory** > **
 
 ## <a name="navigating-the-reports"></a>Nawigowanie po raportach
 
-Każdy raport zostanie uruchomiony z listą wszystkich wykrytych wykryć dla okresu wyświetlanego w górnej części raportu. Każdy raport umożliwia dodanie lub usunięcie kolumn na podstawie preferencji administratora. Administratorzy mogą wybrać pobranie danych z programu. Format CSV. Raporty można filtrować przy użyciu filtrów w górnej części raportu.
+Każdy raport zostanie uruchomiony z listą wszystkich wykrytych wykryć dla okresu wyświetlanego w górnej części raportu. Każdy raport umożliwia dodanie lub usunięcie kolumn na podstawie preferencji administratora. Administratorzy mogą wybrać pobranie danych z programu. Wolumin CSV lub. Format JSON. Raporty można filtrować przy użyciu filtrów w górnej części raportu.
 
 Wybranie poszczególnych wpisów może spowodować włączenie dodatkowych wpisów w górnej części raportu, takich jak możliwość potwierdzenia, że logowanie zostało naruszone lub bezpieczne, potwierdzenie użytkownika jako złamane lub odrzucanie ryzyka związanego z użytkownikiem.
 
@@ -44,7 +44,7 @@ Z informacjami udostępnianymi przez raport ryzykownych użytkowników Administr
 
 - Którzy użytkownicy podlegają zagrożeniom, mają ryzyko skorygowane lub ryzyko odrzucone?
 - Szczegóły dotyczące wykrywania
-- Historia ryzykownych logowań
+- Historia wszystkich ryzykownych logowań
 - Historia ryzyka
  
 Administratorzy mogą następnie podjąć odpowiednie działania dotyczące tych zdarzeń. Administratorzy mogą wybrać następujące opcje:

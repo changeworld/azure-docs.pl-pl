@@ -10,16 +10,16 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 12/09/2019
 ms.author: juliako
-ms.openlocfilehash: c978fed1675ea80ae9b2f6fb7fbe9a4c84472638
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: ab48787edcdd8c28891ca49d0f8b64305ce0e747
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978308"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454639"
 ---
 # <a name="examine-the-video-indexer-output-produced-by-api"></a>Sprawdzanie Video Indexer danych wyjściowych generowanych przez interfejs API
 
-Gdy wywołasz interfejs API **pobierania indeksu wideo** , a stan odpowiedzi to OK, uzyskasz szczegółowe dane wyjściowe JSON jako zawartość odpowiedzi. Zawartość JSON zawiera szczegółowe informacje o określonych szczegółowych danych wideo. Szczegółowe dane obejmują takie wymiary, jak: transkrypcje, OCRs, twarzy, tematy, bloki itd. Wymiary mają wystąpienia zakresów czasu, które są wyświetlane, gdy każdy wymiar pojawił się w filmie wideo.  
+Gdy wywołasz interfejs API **pobierania indeksu wideo** , a stan odpowiedzi to OK, uzyskasz szczegółowe dane wyjściowe JSON jako zawartość odpowiedzi. Zawartość JSON zawiera szczegółowe informacje o określonych szczegółowych danych wideo. Szczegółowe informacje obejmują: transkrypcje, OCRs, twarze, tematy, bloki itp. Każdy typ usługi Insights obejmuje wystąpienia zakresów czasu, które są wyświetlane, gdy szczegółowe informacje pojawiają się w filmie wideo. 
 
 1. Aby pobrać plik JSON, wywołaj [interfejs API indeksu pobierania wideo](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Index?)
 1. Jeśli interesuje Cię również określone artefakty, wywołaj [interfejs API pobierania artefaktów wideo](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Artifact-Download-Url?)
@@ -28,7 +28,7 @@ Gdy wywołasz interfejs API **pobierania indeksu wideo** , a stan odpowiedzi to 
 
 Możesz również wizualnie zapoznać się ze szczegółowymi informacjami na temat wideo, naciskając przycisk **odtwarzania** na filmie wideo w witrynie [Video Indexer](https://www.videoindexer.ai/) . Aby uzyskać więcej informacji, zobacz [Wyświetlanie i edytowanie wglądu w dane wideo](video-indexer-view-edit.md).
 
-![Szczegółowe informacje](./media/video-indexer-output-json/video-indexer-summarized-insights.png)
+![Analizy](./media/video-indexer-output-json/video-indexer-summarized-insights.png)
 
 Ten artykuł bada zawartość JSON zwróconą przez interfejs API **pobierania indeksu wideo** . 
 
@@ -53,7 +53,7 @@ Ten artykuł bada zawartość JSON zwróconą przez interfejs API **pobierania i
 |isBase|Wskazuje, czy lista odtwarzania jest podstawową listą odtwarzania (wideo) czy listą odtwarzania z innych filmów wideo (pochodnych).|
 |durationInSeconds|Łączny czas trwania listy odtwarzania.|
 |summarizedInsights|Zawiera jeden [summarizedInsights](#summarizedinsights).
-|wideo|Lista [filmów wideo](#videos) tworzących listę odtwarzania.<br/>Jeśli ta lista odtwarzania skonstruowanych zakresów czasu innych filmów wideo (pochodnych), wideo na tej liście będzie zawierać tylko dane z dołączonych zakresów czasu.|
+|filmy wideo|Lista [filmów wideo](#videos) tworzących listę odtwarzania.<br/>Jeśli ta lista odtwarzania skonstruowanych zakresów czasu innych filmów wideo (pochodnych), wideo na tej liście będzie zawierać tylko dane z dołączonych zakresów czasu.|
 
 ```json
 {
@@ -94,9 +94,9 @@ W tej sekcji przedstawiono podsumowanie szczegółowych informacji.
 |Marek| Może zawierać zero lub więcej marek. Aby uzyskać szczegółowe informacje, zobacz [marki](#brands).|
 |statystyki | Aby uzyskać szczegółowe informacje, zobacz [Statystyka](#statistics).|
 |emocji| Może zawierać zero lub więcej emocji. Aby uzyskać szczegółowe informacje, zobacz [emocji](#emotions).|
-|— tematy|Może zawierać zero lub więcej tematów. Wymiar [Tematy](#topics) .|
+|— tematy|Może zawierać zero lub więcej tematów. Szczegółowe informacje dotyczące [tematów](#topics) .|
 
-## <a name="videos"></a>wideo
+## <a name="videos"></a>filmy wideo
 
 |Nazwa|Opis|
 |---|---|
@@ -150,7 +150,7 @@ W tej sekcji przedstawiono podsumowanie szczegółowych informacji.
 ```
 ### <a name="insights"></a>Insights
 
-Szczegółowe dane to zbiór wymiarów (na przykład wiersze transkrypcji, twarzy, marki itp.), gdzie każdy wymiar jest listą unikatowych elementów (na przykład face1, face2, face3), a każdy element ma własne metadane i listę jego wystąpień (czyli zakresy czasu z dodatkowe opcjonalne metadane).
+Każdy wgląd (na przykład wiersze transkrypcji, twarzy, marki itp.) zawiera listę unikatowych elementów (na przykład face1, face2, face3), a każdy element ma własne metadane i listę jego wystąpień (czyli zakresy czasowe z dodatkowymi opcjonalnymi metadanymi).
 
 Obiekt może mieć identyfikator, nazwę, miniaturę, inne metadane i listę wystąpień czasowych (na przykład: 00:00:05 – 00:00:10, 00:01:00-00:02:30 i 00:41:21 – 00:41:49). Każde wystąpienie czasowe może mieć dodatkowe metadane. Na przykład współrzędne prostokąta powierzchni (20230, 60, 60).
 
@@ -158,20 +158,20 @@ Obiekt może mieć identyfikator, nazwę, miniaturę, inne metadane i listę wys
 |---|---|
 |sourceLanguage|Język źródłowy wideo (przy założeniu, że jeden język główny). W postaci ciągu [BCP-47](https://tools.ietf.org/html/bcp47) .|
 |language|Język informacji szczegółowych (przetłumaczony od języka źródłowego). W postaci ciągu [BCP-47](https://tools.ietf.org/html/bcp47) .|
-|zapisy|Wymiar [transkrypcji](#transcript) .|
-|aparat|Wymiar [OCR](#ocr) .|
-|słowa kluczowe|Wymiar [słów kluczowych](#keywords) .|
+|zapisy|Wgląd w dane [transkrypcji](#transcript) .|
+|aparat|Szczegółowe informacje [OCR](#ocr) .|
+|słowa kluczowe|Informacje o [słowach kluczowych](#keywords) .|
 |bloki|Może zawierać co najmniej jeden [blok](#blocks)|
-|ściank|Wymiar [twarzy](#faces) .|
-|etykiety|Wymiar [etykiet](#labels) .|
-|zrzutów|Wymiar [zrzutów](#shots) .|
-|Marek|Wymiar [marki](#brands) .|
-|audioEffects|Wymiar [audioEffects](#audioEffects) .|
-|mową|Wymiar [mową](#sentiments) .|
-|visualContentModeration|Wymiar [visualContentModeration](#visualcontentmoderation) .|
-|textualContentModeration|Wymiar [textualContentModeration](#textualcontentmoderation) .|
-|emocji| Wymiar [emocji](#emotions) .|
-|— tematy|Wymiar [Tematy](#topics) .|
+|ściank|Szczegółowe [informacje na temat](#faces) twarzy.|
+|etykiety|Szczegółowe informacje o [etykietach](#labels) .|
+|zrzutów|Informacje na temat [zrzutów](#shots) .|
+|Marek|Informacje o [marek](#brands) .|
+|audioEffects|[AudioEffects](#audioEffects) wgląd w szczegółowe dane.|
+|mową|[Mową](#sentiments) wgląd w szczegółowe dane.|
+|visualContentModeration|[VisualContentModeration](#visualcontentmoderation) wgląd w szczegółowe dane.|
+|textualContentModeration|[TextualContentModeration](#textualcontentmoderation) wgląd w szczegółowe dane.|
+|emocji| [Emocji](#emotions) wgląd w szczegółowe dane.|
+|— tematy|Szczegółowe informacje dotyczące [tematów](#topics) .|
 
 Przykład:
 
@@ -501,7 +501,7 @@ Nazwy firmowe i towarowe wykryte w zamiany mowy na tekst transkrypcji i/lub OCR 
 |referenceId | Sufiks adresu URL witryny Wikipedia. Na przykład "Target_Corporation" jest sufiksem [https://en.wikipedia.org/wiki/Target_Corporation](https://en.wikipedia.org/wiki/Target_Corporation).
 |referenceUrl | Adres URL witryny Wikipedia marki, jeśli istnieje. Na przykład [https://en.wikipedia.org/wiki/Target_Corporation](https://en.wikipedia.org/wiki/Target_Corporation).
 |description|Opis marek.|
-|tags|Lista wstępnie zdefiniowanych tagów, które zostały skojarzone z tą marką.|
+|tagów|Lista wstępnie zdefiniowanych tagów, które zostały skojarzone z tą marką.|
 |ufność|Wartość ufności detektora Video Indexer marką (0-1).|
 |wystąpienia|Lista zakresów czasu tej marki. Każde wystąpienie ma element marktype, który wskazuje, czy ta marka pojawiła się w transkrypcji, czy w OCR.|
 

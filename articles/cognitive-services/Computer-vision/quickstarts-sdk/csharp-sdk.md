@@ -1,6 +1,6 @@
 ---
-title: 'Szybki Start: przetwarzanie obrazówa Biblioteka kliencka dla platformy .NET | Microsoft Docs'
-description: Wprowadzenie do biblioteki klienta przetwarzanie obrazów dla platformy .NET.
+title: 'Szybki Start: przetwarzanie obrazówa Biblioteka kliencka dla platformy .NET'
+description: W tym przewodniku Szybki Start zacznij korzystać z biblioteki klienta przetwarzanie obrazów dla platformy .NET.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -9,12 +9,12 @@ ms.subservice: computer-vision
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 72c66241965db1264cb508ed1f8f4c76a07883be
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: aa162fb47eab84ff26af2256f8fe0ba9896b7cf0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974993"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448284"
 ---
 # <a name="quickstart-computer-vision-client-library-for-net"></a>Szybki Start: przetwarzanie obrazówa Biblioteka kliencka dla platformy .NET
 

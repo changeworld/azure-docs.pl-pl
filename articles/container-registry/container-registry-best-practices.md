@@ -3,16 +3,18 @@ title: Najlepsze praktyki w zakresie rejestru
 description: Dowiedz się, jak efektywnie korzystać z usługi Azure Container Registry dzięki zastosowaniu tych najlepszych rozwiązań.
 ms.topic: article
 ms.date: 09/27/2018
-ms.openlocfilehash: 4b0512674358d4db2e29596408ebbf44af4ea2a9
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 7efea468a6c5c042f709d8a5bb493516458ce52b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74455318"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445787"
 ---
 # <a name="best-practices-for-azure-container-registry"></a>Najlepsze rozwiązania dla usługi Azure Container Registry
 
 Stosując te najlepsze rozwiązania, można osiągnąć maksymalną wydajność i oszczędność kosztów podczas korzystania z rejestru prywatnego platformy Docker na platformie Azure.
+
+Zapoznaj się również z [zaleceniami dotyczącymi tagowania i przechowywania wersji obrazów kontenerów](container-registry-image-tag-version.md) w celu uzyskania strategii tagów i wersji obrazów w rejestrze. 
 
 ## <a name="network-close-deployment"></a>Wdrażanie w pobliskiej sieci
 
@@ -31,7 +33,7 @@ Aby dowiedzieć się, jak korzystać z replikacji geograficznej, zobacz trzyczę
 
 Dzięki wykorzystaniu przestrzeni nazw repozytoriów można zezwolić na udostępnianie jednego rejestru w wielu grupach w organizacji. Rejestry mogą być współużytkowane przez wdrożenia i zespoły. Usługa Azure Container Registry obsługuje zagnieżdżone przestrzenie nazw, umożliwiając izolację grup.
 
-Rozważmy na przykład poniższe znaczniki obrazów kontenera. Obrazy, które są używane w całej firmie, na przykład `aspnetcore`, są umieszczane w głównej przestrzeni nazw, natomiast obrazy kontenerów należące do grup Produkcja i Marketing używają własnych przestrzeni nazw.
+Rozważmy na przykład poniższe znaczniki obrazów kontenera. Obrazy używane w całej firmie, takie jak `aspnetcore`, są umieszczane w głównej przestrzeni nazw, natomiast obrazy kontenerów należące do poszczególnych produktów i grup marketingowych używają własnych przestrzeni nazw.
 
 ```
 contoso.azurecr.io/aspnetcore:2.0

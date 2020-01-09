@@ -10,12 +10,12 @@ keywords: Azure Automation, DSC, PowerShell, Konfiguracja żądanego stanu, zarz
 ms.date: 11/04/2019
 ms.custom: mvc
 ms.topic: overview
-ms.openlocfilehash: d091b89342570b73ccde5fe496a3432102617918
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 06e3b490f4f9cef64ae8bca5aed4d0518f10ba0e
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951432"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75659625"
 ---
 # <a name="what-is-azure-arc-for-servers"></a>Co to jest usługa Azure ARC dla serwerów
 
@@ -41,7 +41,7 @@ Publiczna wersja zapoznawcza jest przeznaczona do celów ewaluacyjnych i nie nal
 
 ## <a name="azure-subscription-and-service-limits"></a>Limity subskrypcji i usług platformy Azure
 
-Upewnij się, że zostały odczytane limity Azure Resource Manager i Zaplanuj liczbę maszyn, które mają być połączone zgodnie z wytycznymi wymienionymi dla [subskrypcji](../../azure-subscription-service-limits.md#subscription-limits---azure-resource-manager), a dla [grup zasobów](../../azure-subscription-service-limits.md#resource-group-limits). W szczególności domyślnie istnieje limit 800 serwerów na grupę zasobów.
+Upewnij się, że zostały odczytane limity Azure Resource Manager i Zaplanuj liczbę maszyn, które mają być połączone zgodnie z wytycznymi wymienionymi dla [subskrypcji](../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits---azure-resource-manager), a dla [grup zasobów](../../azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits). W szczególności domyślnie istnieje limit 800 serwerów na grupę zasobów.
 
 ## <a name="networking-configuration"></a>Konfiguracja sieci
 
@@ -107,7 +107,7 @@ az provider register --namespace 'Microsoft.HybridCompute'
 az provider register --namespace 'Microsoft.GuestConfiguration'
 ```
 
-Dostawców zasobów można rejestrować również przy użyciu portalu, wykonując czynności opisane w sekcji [Azure Portal](../../azure-resource-manager/resource-manager-supported-services.md#azure-portal).
+Dostawców zasobów można rejestrować również przy użyciu portalu, wykonując czynności opisane w sekcji [Azure Portal](../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal).
 
 ## <a name="machine-changes-after-installing-the-agent"></a>Zmiany maszyny po zainstalowaniu agenta
 

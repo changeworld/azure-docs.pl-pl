@@ -1,5 +1,5 @@
 ---
-title: Rozpoczynanie pracy z usługą Azure Table Storage oraz interfejsem API tabel usługi Azure Cosmos DB przy użyciu języka Python
+title: Korzystanie z Azure Cosmos DB interfejs API tabel i usługi Azure Table Storage przy użyciu języka Python
 description: Przechowywanie danych strukturalnych w chmurze za pomocą usługi Azure Table Storage lub interfejsu Table API usługi Azure Cosmos DB.
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
@@ -9,12 +9,12 @@ ms.date: 04/05/2018
 author: wmengmsft
 ms.author: wmeng
 ms.reviewer: sngun
-ms.openlocfilehash: 883965d1d59e5523527a6aab1e83521d7491bf82
-ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
+ms.openlocfilehash: 6c01b9581795f4ac74bd74757b9116c0d5df586d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/20/2019
-ms.locfileid: "72675711"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444758"
 ---
 # <a name="get-started-with-azure-table-storage-and-the-azure-cosmos-db-table-api-using-python"></a>Rozpoczynanie pracy z usługą Azure Table Storage oraz interfejsem API tabel usługi Azure Cosmos DB przy użyciu języka Python
 
@@ -141,11 +141,11 @@ table_service.insert_or_replace_entity('tasktable', task)
 ```
 
 > [!TIP]
-> Metoda [update_entity][py_update_entity] zastępuje wszystkie właściwości i wartości istniejącej jednostki, której można również użyć do usunięcia właściwości z istniejącej jednostki. Można użyć metody [merge_entity][py_merge_entity] , aby zaktualizować istniejącą jednostkę o nowe lub zmodyfikowane wartości właściwości bez całkowitego zastąpienia jednostki.
+> Metoda [update_entity][py_update_entity] zastępuje wszystkie właściwości i wartości istniejącej jednostki, której można również użyć do usunięcia właściwości z istniejącej jednostki. Za pomocą metody [merge_entity][py_merge_entity] można zaktualizować istniejącą jednostkę o nowe lub zmodyfikowane wartości właściwości bez całkowitego zastąpienia jednostki.
 
 ## <a name="modify-multiple-entities"></a>Modyfikowanie wielu jednostek
 
-Aby zapewnić niepodzielne przetwarzanie żądania przez usługę Table Storage, warto przesłać jednocześnie wiele operacji w partii. Najpierw należy użyć klasy [TableBatch][py_TableBatch] , aby dodać wiele operacji do pojedynczej partii. Następnie Wywołaj [TableService][py_TableService]. [commit_batch][py_commit_batch] do przesłania operacji w operacji niepodzielnej. Wszystkie jednostki, które mają być zmodyfikowane w ramach partii, muszą należeć do tej samej partycji.
+Aby zapewnić niepodzielne przetwarzanie żądania przez usługę Table Storage, warto przesłać jednocześnie wiele operacji w partii. Najpierw należy użyć klasy [TableBatch][py_TableBatch] , aby dodać wiele operacji do pojedynczej partii. Następnie Wywołaj [TableService][py_TableService]. [commit_batch][py_commit_batch] przesłać operacji w operacji niepodzielnej. Wszystkie jednostki, które mają być zmodyfikowane w ramach partii, muszą należeć do tej samej partycji.
 
 W tym przykładzie dodano dwie jednostki do partii:
 
@@ -176,7 +176,7 @@ with table_service.batch('tasktable') as batch:
 
 ## <a name="query-for-an-entity"></a>Wykonywanie zapytania względem jednostki
 
-Aby wykonać zapytanie dotyczące jednostki w tabeli, przekaż jej PartitionKey i RowKey do [TableService][py_TableService]. [get_entity][py_get_entity] .
+Aby wykonać zapytanie dotyczące jednostki w tabeli, przekaż jej PartitionKey i RowKey do [TableService][py_TableService]. Metoda [get_entity][py_get_entity] .
 
 ```python
 task = table_service.get_entity('tasktable', 'tasksSeattle', '001')

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
 ROBOTS: NOINDEX
-ms.openlocfilehash: 3b87e04c2d6380a0ee4157e73db0cd4057fadee1
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: 4056ecba7ac80436952228da9e1b74dc7382448c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68704923"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448949"
 ---
 # <a name="query-expression-syntax"></a>Składnia wyrażenia zapytania
 
@@ -24,27 +24,28 @@ Zaobserwowano, że odpowiedź na żądanie **interpretera** zawiera wyrażenie z
 
 Możesz również skonstruować własne wyrażenia zapytania i używać ich w żądaniu **szacowania** . Może to być przydatne, jeśli tworzysz własny interfejs użytkownika, który tworzy wyrażenie zapytania w odpowiedzi na akcje użytkownika. W tym celu należy znać składnię wyrażeń zapytań.  
 
-Każdy atrybut jednostki, który może zostać uwzględniony w wyrażeniu zapytania, ma określony typ danych i zestaw możliwych operatorów zapytań. Zestaw atrybutów jednostki i obsługiwane operatory dla każdego atrybutu jest określony w atrybutach [jednostki](EntityAttributes.md). Zapytanie o pojedynczej wartości wymaga, aby atrybut obsługiwał operację *Equals* . Zapytanie prefiksu wymaga, aby atrybut obsługiwał operację *StartsWith* . Zapytania zakresu liczbowego wymagają atrybutu do obsługi operacji *isBetween* .
+Każdy atrybut jednostki, który może zostać uwzględniony w wyrażeniu zapytania, ma określony typ danych i zestaw możliwych operatorów zapytań. Zestaw atrybutów jednostki i obsługiwane operatory dla każdego atrybutu jest określony w [atrybutach jednostki](EntityAttributes.md). Zapytanie o pojedynczej wartości wymaga, aby atrybut obsługiwał operację *Equals* . Zapytanie prefiksu wymaga, aby atrybut obsługiwał operację *StartsWith* . Zapytania zakresu liczbowego wymagają atrybutu do obsługi operacji *isBetween* .
 
 Niektóre dane jednostki są przechowywane jako atrybuty złożone, jak wskazano kropka "." w nazwie atrybutu. Na przykład informacje o autorze/przynależności są reprezentowane jako atrybut złożony. Zawiera 4 składniki: AuN, AuId, AfN, AfId. Te składniki to oddzielne fragmenty danych, które tworzą wartość atrybutu pojedynczej jednostki.
 
+Uwaga: wszystkie wyrażenia zapytania muszą zawierać małe litery i bez znaków specjalnych.
 
-**Atrybut String: Pojedyncza** wartość (w tym dopasowania względem synonimów)  
+**Atrybut String: Single Value** (zawiera dopasowania do synonimów)  
 TI = "indeksowanie przez nieindeksowaną analizę semantyki"  
 Złożona (AA. AuN = "pozwu Dumais")
 
-**Atrybut String: Dokładna pojedyncza wartość** (dopasowuje tylko wartości kanoniczne)  
+**Atrybut String: dokładna pojedyncza wartość** (dopasowuje tylko wartości kanoniczne)  
 TI = = "indeksowanie przez nieindeksowaną analizę semantyki"  
 Złożona (AA. AuN = = "Susan t Dumais")
      
-**Atrybut String: Wartość prefiksu**   
+**Atrybut String: wartość prefiksu**   
 TI = "indeksowanie przez ukryte SEMAN"...  
 Złożona (AA. AuN = "pozwu du"...)
 
-**Atrybut liczbowy: Pojedyncza wartość**  
+**Atrybut liczbowy: pojedyncza wartość**  
 Y=2010
  
-**Atrybut liczbowy: Wartość zakresu**  
+**Atrybut liczbowy: wartość zakresu**  
 Y>2005  
 Y>=2005  
 Y<2010  
@@ -52,13 +53,13 @@ Y<=2010
 Y =\[2010, 2012\) (obejmuje tylko lewą wartość granicy: 2010, 2011)  
 Y =\[2010, 2012\] (zawiera obie wartości graniczne: 2010, 2011, 2012)
  
-**Atrybut liczbowy: Wartość prefiksu**  
+**Atrybut liczbowy: wartość prefiksu**  
 T = "19"... (wartość liczbowa rozpoczynająca się od 19) 
  
-**Atrybut daty: Pojedyncza wartość**  
+**Date — atrybut: Single Value**  
 D='2010-02-04'
 
-**Atrybut daty: Wartość zakresu**  
+**Atrybut daty: wartość zakresu**  
 D > "2010-02"  
 D = ["2010-02-03", "2010-02-05"]
 
@@ -86,7 +87,7 @@ And(Composite(AA.AuN='mike smith'),Composite(AA.AfN='harvard university'))
 ```
 <br>W tej wersji, ponieważ złożony () jest stosowany do autora i przynależności indywidualnie przed i (), otrzymamy wszystkie dokumenty, w których jeden z autorów ma wartość "Jan Kowalski" i jeden z przynależności autorów jest "Harvard". Ten dźwięk jest podobny do poprzedniego przykładu zapytania, ale nie jest to samo.
 
-Ogólnie rzecz biorąc, rozważmy poniższy przykład: Mamy atrybut złożony C, który ma dwa składniki A i B. Jednostka może mieć wiele wartości dla języka C. Oto nasze jednostki:
+Ogólnie rzecz biorąc, rozważmy poniższy przykład: mamy atrybut złożony C, który ma dwa składniki A i B. Jednostka może mieć wiele wartości dla języka C. Oto nasze jednostki:
 ```
 E1: C={A=1, B=1}  C={A=1,B=2}  C={A=2,B=3}
 E2: C={A=1, B=3}  C={A=3,B=2}

@@ -8,12 +8,12 @@ ms.topic: include
 author: sgilley
 ms.author: sgilley
 ms.date: 11/06/2019
-ms.openlocfilehash: 96ede63b097999247675364217cf458a268e54d9
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 754c9799ed4c2fd90cbcf1e9717b0be21edd54cb
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73929680"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75659880"
 ---
 >[!IMPORTANT]
 >Możesz użyć zasobów utworzonych jako wymagania wstępne dla innych samouczków Azure Machine Learning i artykułów z przewodnikiem.
@@ -42,7 +42,7 @@ Obiekt docelowy obliczeń, który został utworzony w tym miejscu, *automatyczni
 
 Zestawy danych można wyrejestrować z obszaru roboczego, zaznaczając każdy z nich i wybierając pozycję **Wyrejestruj**.
 
-![Wyrejestruj zestaw danych](./media/aml-ui-cleanup/unregister-dataset.png)
+![Wyrejestruj zestaw danych](./media/aml-ui-cleanup/unregister-dataset1225.png)
 
 Aby usunąć zestaw danych, przejdź do konta magazynu przy użyciu Azure Portal lub Eksplorator usługi Azure Storage i ręcznie usuń te zasoby.
 

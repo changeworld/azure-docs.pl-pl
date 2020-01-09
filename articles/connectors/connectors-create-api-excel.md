@@ -1,22 +1,22 @@
 ---
-title: Łączenie z usługą Excel Online
-description: Zarządzanie danymi za pomocą interfejsów API REST usługi Excel Online i Azure Logic Apps
+title: Zarządzanie danymi, arkuszami i tabelami w usłudze Excel Online
+description: Zarządzanie danymi w arkuszach i tabelach w usłudze Excel Online dla firm lub Excel Online dla usługi OneDrive przy użyciu Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 08/23/2018
 tags: connectors
-ms.openlocfilehash: a4356b4f88df3fc457917be563a79e9054a1638e
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: b1df1219590aa94331a4404b1315eb7231c59699
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789805"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445886"
 ---
 # <a name="manage-excel-online-data-with-azure-logic-apps"></a>Zarządzanie danymi w usłudze Excel Online za pomocą Azure Logic Apps
 
-Korzystając z Azure Logic Apps i łącznika usługi Excel Online, możesz tworzyć automatyczne zadania i przepływy pracy oparte na danych w usłudze Excel Online dla firm lub OneDrive. Ten łącznik zawiera akcje pomagające w pracy z danymi i zarządzaniu arkuszami kalkulacyjnymi, na przykład:
+Za pomocą usługi [Azure Logic Apps](../logic-apps/logic-apps-overview.md) i łącznika usługi [Excel Online dla firm](/connectors/excelonlinebusiness/) lub [programu Excel Online for OneDrive](/connectors/excelonline/) można tworzyć automatyczne zadania i przepływy pracy oparte na danych w usłudze Excel Online dla firm lub w usłudze OneDrive. Ten łącznik zawiera akcje pomagające w pracy z danymi i zarządzaniu arkuszami kalkulacyjnymi, na przykład:
 
 * Utwórz nowe arkusze i tabele.
 * Pobierz arkusze, tabele i wiersze oraz zarządzaj nimi.

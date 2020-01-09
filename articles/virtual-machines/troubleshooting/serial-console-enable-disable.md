@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 8/20/2019
 ms.author: alsin
-ms.openlocfilehash: fa400d875a8f39d54d10820c603e12e97f0cd854
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: e09e08f8ba36cf576bc27551254225adee3bb0fd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74452231"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75451303"
 ---
 # <a name="enable-and-disable-the-azure-serial-console"></a>Włączanie i wyłączanie konsoli szeregowej platformy Azure
 
@@ -32,6 +32,9 @@ Konsolę szeregową można wyłączyć dla określonej maszyny wirtualnej lub ze
 
 
 ## <a name="subscription-level-enabledisable"></a>Włączanie/wyłączanie poziomu subskrypcji
+
+> [!NOTE]
+> Przed uruchomieniem tego polecenia upewnij się, że jesteś w odpowiedniej chmurze (chmura publiczna Azure, chmura dla instytucji rządowych Stanów Zjednoczonych). Możesz zaewidencjonować `az cloud list` i ustawić chmurę, korzystając z `az cloud set -n <Name of cloud>`.
 
 ### <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
 
@@ -57,9 +60,6 @@ subscriptionId=$(az account show --output=json | jq -r .id)
 
 az resource show --ids "/subscriptions/$subscriptionId/providers/Microsoft.SerialConsole/consoleServices/default" --output=json --api-version="2018-05-01" | jq .properties
 ```
-
-> [!NOTE]
-> Przed uruchomieniem tego polecenia upewnij się, że jesteś w odpowiedniej chmurze (chmura publiczna Azure, chmura dla instytucji rządowych Stanów Zjednoczonych). Możesz zaewidencjonować `az cloud list` i ustawić chmurę, korzystając z `az cloud set -n <Name of cloud>`.
 
 ### <a name="powershell"></a>PowerShell
 

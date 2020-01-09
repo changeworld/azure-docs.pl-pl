@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: swmachan
-ms.openlocfilehash: b4eb083b0f98112274a5d00631af8662ff5c063a
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: c8ef1d4dacf500c459ae1ab9a534ed118ca9e05a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73835888"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446693"
 ---
 # <a name="translator-text-api-30-breaksentence"></a>Interfejs API tłumaczenia tekstu w usłudze Translator 3,0: BreakSentence
 
@@ -37,7 +37,7 @@ Parametry żądania przesłane na ciągu zapytania są następujące:
   <th width="20%">Parametr zapytania</th>
   <th>Opis</th>
   <tr>
-    <td>wersja interfejsu API</td>
+    <td>api-version</td>
     <td>*Wymagany parametr zapytania*.<br/>Wersja interfejsu API żądana przez klienta. Wartość musi być `3.0`.</td>
   </tr>
   <tr>
@@ -45,7 +45,7 @@ Parametry żądania przesłane na ciągu zapytania są następujące:
     <td>*Opcjonalny parametr zapytania*.<br/>Tag języka identyfikujący język tekstu wejściowego. Jeśli kod nie zostanie określony, zostanie zastosowane automatyczne wykrywanie języka.</td>
   </tr>
   <tr>
-    <td>napisy</td>
+    <td>script</td>
     <td>*Opcjonalny parametr zapytania*.<br/>Tag skryptu identyfikujący skrypt używany przez tekst wejściowy. Jeśli skrypt nie jest określony, zostanie przyjęty domyślny skrypt języka.</td>
   </tr>
 </table> 
@@ -83,7 +83,7 @@ Treść żądania jest tablicą JSON. Każdy element tablicy jest obiektem JSON 
 ]
 ```
 
-Obowiązują następujące ograniczenia:
+Mają zastosowanie następujące ograniczenia:
 
 * Tablica może zawierać maksymalnie 100 elementów.
 * Wartość tekstowa elementu tablicy nie może być dłuższa niż 10 000 znaków, w tym spacje.
@@ -109,7 +109,7 @@ Przykładowa odpowiedź JSON to:
 ```json
 [
   {
-    "sentenceLengths": [ 13, 11, 22 ]
+    "sentLen": [ 13, 11, 22 ]
     "detectedLanguage": {
       "language": "en",
       "score": 401
@@ -124,7 +124,7 @@ Przykładowa odpowiedź JSON to:
   <th width="20%">Nagłówki</th>
   <th>Opis</th>
   <tr>
-    <td>X-IdentyfikatorŻądania</td>
+    <td>X-RequestId</td>
     <td>Wartość wygenerowana przez usługę w celu zidentyfikowania żądania. Służy do rozwiązywania problemów.</td>
   </tr>
 </table> 
@@ -150,7 +150,7 @@ Oto możliwe kody stanu HTTP zwracane przez żądanie.
   </tr>
   <tr>
     <td>403</td>
-    <td>Żądanie nie ma autoryzacji. Sprawdź komunikat o błędzie szczegóły. Często oznacza to, że używane są wszystkie bezpłatne tłumaczenia udostępnione w ramach wersji próbnej.</td>
+    <td>Żądanie nie jest autoryzowany. Sprawdź komunikat o błędzie szczegóły. Często oznacza to, że używane są wszystkie bezpłatne tłumaczenia udostępnione w ramach wersji próbnej.</td>
   </tr>
   <tr>
     <td>429</td>

@@ -1,5 +1,6 @@
 ---
-title: Kluczowe pojęcia związane z administrowaniem rozwiązaniem VMware platformy Azure przez CloudSimple
+title: Kluczowe pojęcia związane z administrowaniem rozwiązaniem VMware przez CloudSimple
+titleSuffix: Azure VMware Solution by CloudSimple
 description: Opisuje kluczowe pojęcia związane z administrowaniem rozwiązaniem VMware platformy Azure przez CloudSimple
 author: sharaths-cs
 ms.author: b-shsury
@@ -8,12 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 120ab94ce62010acf4e742bd5220405961dad6db
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: d4de25f281f9164d5cfe3de64d2ca644593a8dd3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972722"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450783"
 ---
 # <a name="key-concepts-for-administration-of-azure-vmware-solution-by-cloudsimple"></a>Kluczowe pojęcia dotyczące administrowania rozwiązaniem VMware platformy Azure przez CloudSimple
 

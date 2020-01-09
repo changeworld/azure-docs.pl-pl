@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 09/20/2019
-ms.openlocfilehash: f98daf301e8e17ad3f0bfb850ded1a8ed8bce417
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: baa6e5732221d120ff71217a3a86a942794c53f4
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793120"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666741"
 ---
 # <a name="perform-data-operations-in-azure-logic-apps"></a>Wykonywanie operacji na danych w Azure Logic Apps
 
@@ -200,7 +200,7 @@ W akcji Zachowaj pustą kolumnę **nagłówka** . W każdym wierszu w kolumnie *
 
    `item()?['<array-property-name>']`
 
-   Na przykład:
+   Przykład:
 
    * `item()?['Description']`
    * `item()?['Product_ID']`
@@ -232,7 +232,7 @@ W definicji JSON akcji w tablicy `columns` ustaw właściwość `header` na pust
    }
    ```
 
-   Na przykład:
+   Przykład:
 
    ```json
    "Create_CSV_table": {
@@ -351,7 +351,7 @@ W akcji Zachowaj pustą kolumnę **nagłówka** . W każdym wierszu w kolumnie *
 
    `item()?['<array-property-name>']`
 
-   Na przykład:
+   Przykład:
 
    * `item()?['Description']`
    * `item()?['Product_ID']`
@@ -383,7 +383,7 @@ W definicji JSON akcji w tablicy `columns` ustaw właściwość `header` na pust
    }
    ```
 
-   Na przykład:
+   Przykład:
 
    ```json
    "Create_HTML_table": {
@@ -443,6 +443,9 @@ Aby utworzyć mniejszą tablicę zawierającą elementy, które spełniają okre
 > W każdym tekście filtru używanym w warunku jest uwzględniana wielkość liter. Ponadto ta akcja nie może zmienić formatu ani składników elementów w tablicy. 
 > 
 > Aby akcje używały danych wyjściowych macierzy z akcji **filtrowania tablicy** , te akcje muszą akceptować tablice jako dane wejściowe lub trzeba przekształcić tablicę wyjściową w inny zgodny format.
+> 
+> Jeśli wywołasz punkt końcowy HTTP i otrzymasz odpowiedź JSON, użyj akcji **Analizuj dane JSON** , aby przetworzyć odpowiedź JSON. 
+> W przeciwnym razie Akcja **Filtruj tablicę** może odczytać tylko treść odpowiedzi, a nie strukturę ładunku JSON.
 
 Jeśli wolisz pracować w edytorze widoku kodu, możesz skopiować przykładową **tablicę filtrów** i **zainicjuj zmienne** definicje akcji z tego artykułu do podstawowej definicji przepływu pracy aplikacji logiki: [przykłady kodu operacji danych — tablica filtrów](../logic-apps/logic-apps-data-operations-code-samples.md#filter-array-action-example)
 

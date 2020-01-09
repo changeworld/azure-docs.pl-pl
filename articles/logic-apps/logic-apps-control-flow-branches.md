@@ -1,17 +1,17 @@
 ---
-title: Utwórz lub Dołącz gałęzie równoległe
-description: Jak utworzyć lub dołączyć gałęzie równoległe dla przepływów pracy w Azure Logic Apps
+title: Tworzenie i dołączanie równoległych gałęzi dla akcji w przepływach pracy
+description: Dowiedz się, jak tworzyć lub scalać równoległe gałęzie działające dla niezależnych działań przepływu pracy w Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/10/2018
-ms.openlocfilehash: bb1c615852fb2bf810abec97e3faeb5775c4a57a
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: c0b1519992ba930382a1987aed185ef3c92eded4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74791458"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453433"
 ---
 # <a name="create-or-join-parallel-branches-for-workflow-actions-in-azure-logic-apps"></a>Utwórz lub Przyłącz gałęzie równoległe dla akcji przepływu pracy w Azure Logic Apps
 

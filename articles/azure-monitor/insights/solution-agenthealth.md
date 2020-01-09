@@ -4,15 +4,15 @@ description: Ten artykuł ma na celu ułatwienie zrozumienia sposobu korzystania
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 03/19/2017
-ms.openlocfilehash: 5a48bbff89f0d6a0be9adf2ad242dbca41eec6db
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: cbeaa3e148d6fbe20d7ddb4d04cd00d6300f9818
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555324"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75402441"
 ---
 #  <a name="agent-health-solution-in-azure-monitor"></a>Agent Health rozwiązanie w Azure Monitor
 Agent Health rozwiązanie na platformie Azure pomaga zrozumieć, w przypadku wszystkich agentów raportowanych bezpośrednio do Log Analytics obszaru roboczego w Azure Monitor lub System Center Operations Manager grupie zarządzania połączonej z Azure Monitor, które nie odpowiadają i przesyłanie danych operacyjnych.  Można także śledzić liczbę wdrożonych agentów i ich geograficzne rozmieszczenie oraz wykonywać inne zapytania dające informacje na temat rozmieszczenia agentów wdrożonych na platformie Azure, w innych środowiskach w chmurze i lokalnie.    
@@ -86,7 +86,7 @@ Tworzony jest rekord o typie **Heartbeat**.  Te rekordy mają właściwości pod
 | `RemoteIPLongitude` | Długość geograficzna lokalizacji geograficznej komputera.|
 | `RemoteIPLatitude` | Szerokość geograficzna lokalizacji geograficznej komputera.|
 
-Każdy agent zgłaszający serwer zarządzania Operations Manager wyśle dwa pulsy, a wartość właściwości SCAgentChannel będzie zawierać zarówno **bezpośrednie** , jak i **SCManagementServer** , w zależności od tego, jakie źródła danych i rozwiązania do monitorowania są dostępne włączone w ramach subskrypcji. W przypadku odwołania dane z rozwiązań są wysyłane bezpośrednio z Operations Manager serwera zarządzania do Azure Monitor lub z powodu ilości danych zbieranych w agencie są wysyłane bezpośrednio z agenta do Azure Monitor. W przypadku zdarzeń pulsu, które mają wartość **SCManagementServer**, wartość ComputerIP jest adresem IP serwera zarządzania, ponieważ dane są faktycznie przekazywane przez niego.  W przypadku pulsów z parametrem SCAgentChannel ustawionym na wartość **Direct** jest to publiczny adres IP agenta.  
+Każdy agent raportowany do Operations Managerego serwera zarządzania wyśle dwa pulsy, a wartość właściwości SCAgentChannel będzie zawierać zarówno **bezpośrednie** , jak i **SCManagementServer** , w zależności od tego, jakie źródła danych i rozwiązania monitorowania zostały włączone w ramach subskrypcji. W przypadku odwołania dane z rozwiązań są wysyłane bezpośrednio z Operations Manager serwera zarządzania do Azure Monitor lub z powodu ilości danych zbieranych w agencie są wysyłane bezpośrednio z agenta do Azure Monitor. W przypadku zdarzeń pulsu, które mają wartość **SCManagementServer**, wartość ComputerIP jest adresem IP serwera zarządzania, ponieważ dane są faktycznie przekazywane przez niego.  W przypadku pulsów z parametrem SCAgentChannel ustawionym na wartość **Direct** jest to publiczny adres IP agenta.  
 
 ## <a name="sample-log-searches"></a>Przykładowe wyszukiwania dzienników
 Poniższa tabela zawiera przykładowe wyszukiwania dzienników dla rekordów zbieranych przez to rozwiązanie.

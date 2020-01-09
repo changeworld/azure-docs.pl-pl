@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: donkim
-ms.openlocfilehash: 056dd4331d30335078ea68350f711e37a7b42070
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: d8e28b88757fa7557b04ee471ede17012094bb9e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74976625"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446873"
 ---
 # <a name="quickstart-create-a-custom-command-preview"></a>Szybki Start: Tworzenie polecenia niestandardowego (wersja zapoznawcza)
 
@@ -24,10 +24,15 @@ Aplikacja rozpozna wypowiedź, na przykład "Włącz telewizor" i odpowie przy u
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Subskrypcja mowy. [Wypróbuj bezpłatnie usługę mowy](~/articles/cognitive-services/speech-service/get-started.md).
+- Subskrypcja mowy. 
+
+Jeśli nie masz subskrypcji mowy, możesz ją utworzyć, przechodząc do programu [Speech Studio](https://speech.microsoft.com/) i wybierając pozycję **Utwórz zasób mowy**.
+
+  > [!div class="mx-imgBorder"]
+  > [![utworzyć projekt](media/custom-speech-commands/create-new-subscription.png)](media/custom-speech-commands/create-new-subscription.png#lightbox)
 
   > [!NOTE]
-  > W trakcie okresu zapoznawczego dla kluczy subskrypcji jest obsługiwany tylko region westus2.
+  > W trakcie okresu zapoznawczego obsługiwana jest tylko region westus2.
 
 ## <a name="go-to-the-speech-studio-for-custom-commands"></a>Przejdź do programu Speech Studio dla poleceń niestandardowych
 
@@ -65,6 +70,20 @@ Widok domyślny to lista utworzonych przez siebie aplikacji poleceń niestandard
 1. Po utworzeniu wybierz projekt.
 
 Widok powinien teraz być przeglądem aplikacji poleceń niestandardowych.
+
+## <a name="update-luis-resources-optional"></a>Aktualizowanie zasobów LUIS (opcjonalnie)
+
+Można zaktualizować zestaw zasobów tworzenie w oknie Nowy projekt i ustawić zasób predykcyjny używany do rozpoznawania danych wejściowych w czasie wykonywania. 
+
+> [!NOTE]
+> Należy ustawić zasób predykcyjny, zanim aplikacja zażąda prognoz wykraczających poza żądania 1 000 dostarczone przez zasób tworzenia.
+
+> [!div class="mx-imgBorder"]
+> ![ustawić zasoby LUIS](media/custom-speech-commands/set-luis-resources.png)
+
+1. Przejdź do okienka zasoby LUIS, wybierając pozycję **Ustawienia** w okienku po lewej stronie, a następnie pozycję **Luis zasoby** w środkowym okienku.
+1. Wybierz zasób predykcyjny lub utwórz go, wybierając pozycję **Utwórz nowy zasób** .
+1. Wybierz pozycję **Zapisz**.
 
 ## <a name="create-a-new-command"></a>Utwórz nowe polecenie
 
@@ -116,11 +135,10 @@ Teraz Dodaj regułę ukończenia, aby odpowiedzieć użytkownikowi, który wskaz
 > [!div class="mx-imgBorder"]
 > ![utworzyć reguły uzupełniania](media/custom-speech-commands/create-basic-completion-response-rule.png)
 
-
-| Ustawienie    | Sugerowana wartość                        | Opis                                        |
-| ---------- | -------------------------------------- | -------------------------------------------------- |
-| Nazwa reguły  | "ConfirmationResponse"                 | Nazwa opisująca przeznaczenie reguły          |
-| Warunki | Brak                                   | Warunki określające, kiedy można uruchomić regułę    |
+| Ustawienie    | Sugerowana wartość                          | Opis                                        |
+| ---------- | ---------------------------------------- | -------------------------------------------------- |
+| Nazwa reguły  | "ConfirmationResponse"                   | Nazwa opisująca przeznaczenie reguły          |
+| Warunki | Brak                                     | Warunki określające, kiedy można uruchomić regułę    |
 | Akcje    | SpeechResponse "— OK, Włączanie TELEWIZORa" | Akcja, która ma zostać podjęta po spełnieniu warunku reguły |
 
 ## <a name="try-it-out"></a>Wypróbuj

@@ -3,19 +3,19 @@ title: Co to jest aparat rozpoznawania atramentu? -Interfejs API rozpoznawania a
 titleSuffix: Azure Cognitive Services
 description: Zintegruj aparat rozpoznawania farb z aplikacjami, witrynami sieci Web, narzędziami i innymi rozwiązaniami, aby umożliwić identyfikowanie i używanie danych pociągnięć odręcznych jako danych wejściowych.
 services: cognitive-services
-author: erhopf
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ink-recognizer
 ms.topic: overview
-ms.date: 07/24/2019
-ms.author: erhopf
-ms.openlocfilehash: c90d656539a2ed64b416dc9b8e7e11e205b98ee6
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.date: 12/17/2019
+ms.author: aahi
+ms.openlocfilehash: 2d00a489af35f5960aaeb1dda7add5337d48d57d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68478376"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448151"
 ---
 # <a name="what-is-the-ink-recognizer-api"></a>Co to jest interfejs API rozpoznawania pisma odręcznego?
 
@@ -28,7 +28,7 @@ Usługa poznawczego rozpoznawania pisma odręcznego zapewnia oparty na chmurze i
 
 Za pomocą interfejsu API rozpoznawania pisma odręcznego można łatwo rozpoznać zawartość odręczną w aplikacjach. 
 
-|Cecha  |Opis  |
+|Funkcja  |Opis  |
 |---------|---------|
 | Rozpoznawanie pisma odręcznego | Rozpoznawanie zawartości napisanej ręcznie w [językach 63 i lokalnych](language-support.md). | 
 | Rozpoznawanie układu | Uzyskaj informacje strukturalne na temat zawartości cyfrowego atramentu. Podziel zawartość na pisanie regionów, akapitów, linii, wyrazów, list punktowanych. Aplikacje mogą następnie używać informacji o układzie do tworzenia dodatkowych funkcji, takich jak automatyczne formatowanie listy i wyrównania kształtu. |
@@ -52,7 +52,7 @@ Po zarejestrowaniu:
 Wypróbuj szybki start w następujących językach, aby rozpocząć wywoływanie interfejsu API rozpoznawania pisma odręcznego.
 * [C#](quickstarts/csharp.md)
 * [Java](quickstarts/java.md)
-* [JavaScript](quickstarts/csharp.md)
+* [JavaScript](quickstarts/javascript.md)
 
 Aby zobaczyć, jak działa interfejs API rozpoznawania pisma odręcznego w aplikacji do cyfrowego odkróla, zapoznaj się z następującymi przykładowymi aplikacjami w witrynie GitHub:
 * [C# i platforma uniwersalna systemu Windows (UWP)](https://go.microsoft.com/fwlink/?linkid=2089803)  

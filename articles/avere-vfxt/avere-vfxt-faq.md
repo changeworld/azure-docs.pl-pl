@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 11/06/2019
 ms.author: rohogue
-ms.openlocfilehash: 7839530463ea834ed5f8ae2ae06854985a77c673
-ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
+ms.openlocfilehash: 5340952d6d30ae80d53234530a7e2ca6c067cf1f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73847366"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75415352"
 ---
 # <a name="avere-vfxt-for-azure-faq"></a>Avere vFXT for Azure — często zadawane pytania
 
@@ -77,7 +77,7 @@ Tak, avere vFXT działa wyłącznie jako rozwiązanie o wysokiej dostępności.
 
 Tak, klienci mogą używać więcej niż jednego dostawcy chmury z klastrem avere vFXT. Obsługuje ona zasobniki standardowe AWS S3, zasobniki w warstwie Standardowa Google Cloud Services i kontenery obiektów blob platformy Azure.
 
-> [!NOTE] 
+> [!NOTE]
 > Opłata za oprogramowanie ma zastosowanie do korzystania z avere vFXT w AWS lub Google Cloud, ale nie na platformie Azure.
 
 ## <a name="technical-compute"></a>Techniczne: obliczenia
@@ -97,7 +97,6 @@ No, you must choose one virtual machine type or the other.
 ### Can I move between virtual machine types?
 
 Yes, there is a migration path to move from one VM type to the other. [Open a support ticket](avere-vfxt-open-ticket.md#open-a-support-ticket-for-your-avere-vfxt) to learn how.
-
 -->
 
 ### <a name="does-the-avere-vfxt-environment-scale"></a>Czy skalowanie środowiska avere vFXT?
@@ -130,7 +129,7 @@ Nie. Model wysokiej dostępności w programie avere vFXT obecnie nie obsługuje 
 
 ### <a name="can-i-clone-avere-vfxt-virtual-machines"></a>Czy można klonować maszyny wirtualne avere vFXT?
 
-Nie, musisz użyć obsługiwanego skryptu języka Python, aby dodać lub usunąć węzły w klastrze avere vFXT. Aby uzyskać więcej informacji, zapoznaj się z artykułem [Zarządzanie klastrem avere vFXT](avere-vfxt-manage-cluster.md).  
+Nie, musisz użyć obsługiwanego skryptu języka Python, aby dodać lub usunąć węzły w klastrze avere vFXT. Aby uzyskać więcej informacji, zapoznaj się z artykułem [Zarządzanie klastrem avere vFXT](avere-vfxt-manage-cluster.md).
 
 ### <a name="is-there-a-vm-version-of-the-software-i-can-run-in-my-own-local-environment"></a>Czy istnieje wersja "VM" oprogramowania, którą można uruchomić w środowisku lokalnym?
 

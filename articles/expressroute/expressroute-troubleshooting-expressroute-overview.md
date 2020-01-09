@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/31/2019
 ms.author: rambala
 ms.custom: seodec18
-ms.openlocfilehash: 833e7788a5b17b12ad883f705d56f660c2f1d832
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 69c32370b1f7f7cabb642ab140d69dcec57fb4aa
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033788"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551985"
 ---
 # <a name="verifying-expressroute-connectivity"></a>Weryfikowanie połączenia usługi ExpressRoute
 Ten artykuł ułatwia sprawdzanie i rozwiązywanie problemów z łącznością ExpressRoute. ExpressRoute rozszerza sieć lokalną do chmury firmy Microsoft przez połączenie prywatne, które jest powszechnie obsługiwane przez dostawcę połączenia. ExpressRoute łączności tradycyjnie obejmuje trzy oddzielne strefy sieciowe w następujący sposób:
@@ -23,7 +23,7 @@ Ten artykuł ułatwia sprawdzanie i rozwiązywanie problemów z łącznością E
 -   Microsoft Datacenter
 
 > [!NOTE]
-> W modelu łączności bezpośredniej ExpressRoute (oferowany z przepustowością 10/100 GB/s) cusomters może bezpośrednio łączyć się z portem routerów Microsoft Enterprise Edge (MSEE). W związku z tym w modelu łączności bezpośredniej istnieją tylko strefy klienta i sieci firmy Microsoft.
+> W modelu łączności bezpośredniej ExpressRoute (oferowany przy przepustowości 10/100 GB/s) klienci mogą bezpośrednio łączyć się z portem routerów Microsoft Enterprise Edge (MSEE). W związku z tym w modelu łączności bezpośredniej istnieją tylko strefy klienta i sieci firmy Microsoft.
 >
 
 
@@ -34,7 +34,7 @@ Celem tego dokumentu jest ułatwienie użytkownikowi zidentyfikowania, czy wyst�
 >
 >
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 Na poniższym diagramie przedstawiono logiczne połączenie sieci klienta z siecią firmy Microsoft przy użyciu ExpressRoute.
 [![1]][1]
 

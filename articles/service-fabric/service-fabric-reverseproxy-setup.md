@@ -1,24 +1,15 @@
 ---
-title: Usługa Azure Service Fabric Konfigurowanie zwrotnego serwera proxy | Microsoft Docs
-description: Informacje na temat konfigurowania i konfigurowania zwrotnego serwera proxy Service Fabric.
-services: service-fabric
-documentationcenter: na
-author: jimacoMS2
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
+title: Usługa Azure Service Fabric Konfigurowanie zwrotnego serwera proxy
+description: Dowiedz się, jak skonfigurować i skonfigurować usługę zwrotnego serwera proxy dla aplikacji Service Fabric platformy Azure.
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
 ms.date: 11/13/2018
 ms.author: pepogors
-ms.openlocfilehash: a80eb1ba341a1b15da7ad59203a1d25284d03fd0
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 131440036896d323cbf821d7a220328456e1db36
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933894"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645450"
 ---
 # <a name="set-up-and-configure-reverse-proxy-in-azure-service-fabric"></a>Konfigurowanie i Konfigurowanie zwrotnego serwera proxy na platformie Azure Service Fabric
 Zwrotny serwer proxy to opcjonalna usługa Service Fabric platformy Azure, która pomaga mikrousługom działającym w klastrze Service Fabric odnajdywania i komunikowania się z innymi usługami, które mają punkty końcowe http. Aby dowiedzieć się więcej, zobacz [zwrotny serwer proxy na platformie Azure Service Fabric](service-fabric-reverseproxy.md). W tym artykule opisano sposób konfigurowania i konfigurowania zwrotnego serwera proxy w klastrze. 
@@ -50,7 +41,7 @@ W przypadku istniejącego klastra można wyeksportować szablon Menedżer zasob�
 
 Po utworzeniu szablonu Menedżer zasobów można włączyć zwrotny serwer proxy, wykonując następujące czynności:
 
-1. Zdefiniuj port dla zwrotnego serwera proxy w [sekcji Parametry](../azure-resource-manager/resource-group-authoring-templates.md) szablonu.
+1. Zdefiniuj port dla zwrotnego serwera proxy w [sekcji Parametry](../azure-resource-manager/templates/template-syntax.md) szablonu.
 
     ```json
     "SFReverseProxyPort": {
@@ -61,7 +52,7 @@ Po utworzeniu szablonu Menedżer zasobów można włączyć zwrotny serwer proxy
         }
     },
     ```
-2. Określ port dla każdego z obiektów NodeType w [sekcji Typ zasobu](../azure-resource-manager/resource-group-authoring-templates.md) [**Microsoft. servicefabric/klastrów**](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/clusters) .
+2. Określ port dla każdego z obiektów NodeType w [sekcji Typ zasobu](../azure-resource-manager/templates/template-syntax.md) [**Microsoft. servicefabric/klastrów**](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/clusters) .
 
     Port jest identyfikowany przez nazwę parametru, reverseProxyEndpointPort.
 

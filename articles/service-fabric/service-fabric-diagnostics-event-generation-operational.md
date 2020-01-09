@@ -1,261 +1,252 @@
 ---
-title: Lista zdarzeń w sieci szkieletowej usługi platformy Azure | Dokumentacja firmy Microsoft
-description: Pełną listę zdarzeń udostępnianych przez usługi Azure Service Fabric, aby ułatwić monitorowanie klastrów.
-services: service-fabric
-documentationcenter: .net
+title: Lista zdarzeń Service Fabric platformy Azure
+description: Kompleksowa lista zdarzeń zapewnianych przez usługę Azure Service Fabric w celu ułatwienia monitorowania klastrów.
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: reference
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 2/25/2019
 ms.author: srrengar
-ms.openlocfilehash: cde0464985f756132c60453c4e79ffefd4a1dd2c
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: e69b407bc7d58a83616daa44272ec008ccff9fad
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "65788594"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75451759"
 ---
-# <a name="list-of-service-fabric-events"></a>Lista zdarzeń usługi Service Fabric 
+# <a name="list-of-service-fabric-events"></a>Lista zdarzeń Service Fabric 
 
-Usługa Service Fabric udostępnia zestaw podstawowy zdarzenia klastra informujące o stanie klastra jako [usługi Service Fabric zdarzenia](service-fabric-diagnostics-events.md). Te są oparte na akcje wykonane przez usługę Service Fabric na węzły klastra lub przez klaster właściciela / — operator decyzji związanych z zarządzaniem. Te zdarzenia są dostępne przez skonfigurowanie na wiele sposobów, w tym konfigurowanie [usługi Azure Monitor dzienników na potrzeby klastra](service-fabric-diagnostics-oms-setup.md), lub przeszukując [bazy danych EventStore](service-fabric-diagnostics-eventstore.md). Na maszynach Windows te zdarzenia są podawane w dzienniku zdarzeń — tak aby było widać usługi Service Fabric zdarzeniach w Podglądzie zdarzeń. 
+Service Fabric uwidacznia podstawowy zestaw zdarzeń klastra w celu poinformowania o stanie klastra jako [zdarzenia Service Fabric](service-fabric-diagnostics-events.md). Są one oparte na akcjach wykonywanych przez Service Fabric w węzłach i w klastrze lub decyzje dotyczące zarządzania wykonywane przez właściciela/operatora klastra. Dostęp do tych zdarzeń można uzyskać przez skonfigurowanie na wiele sposobów, w tym Konfigurowanie [dzienników Azure monitor z klastrem](service-fabric-diagnostics-oms-setup.md)lub wykonywanie zapytań dotyczących [EventStore](service-fabric-diagnostics-eventstore.md). Na maszynach z systemem Windows te zdarzenia są przekazywane do dziennika zdarzeń, co umożliwia wyświetlanie Service Fabric zdarzeń w Podgląd zdarzeń. 
 
-Poniżej przedstawiono niektóre cechy te zdarzenia
-* Każde zdarzenie jest powiązany z określonej jednostki w klastrze np. aplikacji, usługi, Node, repliki.
-* Każde zdarzenie zawiera zestaw typowych pól: EventInstanceId EventName i kategorii.
-* Każde zdarzenie zawiera pola, które powiązać zdarzenia do jednostki, który jest skojarzony. Na przykład zdarzenie ApplicationCreated musi pola, które określają nazwę aplikacji, utworzonej.
-* Zdarzenia są skonstruowane w taki sposób, że mogą być używane w wielu różnych narzędzi w celu dalszej analizy. Ponadto istotne szczegóły dotyczące zdarzenia są definiowane jako osobne właściwości, w przeciwieństwie do długi ciąg. 
-* Zdarzenia są zapisywane przez różne podsystemy w usłudze Service Fabric są identyfikowane za pomocą Source(Task) poniżej. Więcej informacji znajduje się w tych podsystemów w [Architektura usługi Service Fabric](service-fabric-architecture.md) i [omówienie techniczne usługi Service Fabric](service-fabric-technical-overview.md).
+Poniżej przedstawiono niektóre cechy tych zdarzeń
+* Każde zdarzenie jest powiązane z konkretną jednostką w klastrze, na przykład aplikacja, usługa, węzeł, replika.
+* Każde zdarzenie zawiera zestaw wspólnych pól: EventInstanceId, EventName i Category.
+* Każde zdarzenie zawiera pola, które wiążą zdarzenie z powrotem z jednostką, z którą jest skojarzona. Na przykład zdarzenie ApplicationCreated będzie zawierało pola, które identyfikują nazwę utworzonej aplikacji.
+* Zdarzenia są uporządkowane w taki sposób, że mogą być używane w różnych narzędziach w celu przeprowadzenia dalszej analizy. Ponadto odpowiednie szczegóły dotyczące zdarzenia są definiowane jako osobne właściwości, a nie jako długie ciągi. 
+* Zdarzenia są zapisywane przez różne podsystemy w Service Fabric są identyfikowane przez źródło (zadanie) poniżej. Więcej informacji jest dostępnych w tych podsystemach w [architekturze Service Fabric](service-fabric-architecture.md) i [Service Fabric omówienie techniczne](service-fabric-technical-overview.md).
 
-Oto lista tych zdarzeń usługi Service Fabric, uporządkowane według jednostki.
+Poniżej znajduje się lista tych zdarzeń Service Fabric zorganizowanych według jednostek.
 
 ## <a name="cluster-events"></a>Zdarzenia klastra
 
 **Zdarzenia uaktualniania klastra**
 
-Szczegółowe informacje na temat uaktualniania klastra można znaleźć [tutaj](service-fabric-cluster-upgrade-windows-server.md).
+Więcej szczegółów na temat uaktualniania klastra można znaleźć [tutaj](service-fabric-cluster-upgrade-windows-server.md).
 
-| Identyfikator zdarzenia | Name (Nazwa) | Category | Opis |Źródło (zadanie) | Poziom | 
+| Identyfikator zdarzenia | Nazwa | Kategoria | Opis |Źródło (zadanie) | Poziom | 
 | --- | --- | --- | --- | --- | --- | 
 | 29627 | ClusterUpgradeStarted | Uaktualnienie | Rozpoczęto Uaktualnianie klastra | CM | Informacyjne |
-| 29628 | ClusterUpgradeCompleted | Uaktualnienie | Ukończono uaktualnianie klastra | CM | Informacyjne | 
-| 29629 | ClusterUpgradeRollbackStarted | Uaktualnienie | Rozpoczęto Uaktualnianie klastra można wycofać  | CM | Ostrzeżenie | 
-| 29630 | ClusterUpgradeRollbackCompleted | Uaktualnienie | Uaktualnianie klastra została ukończona, wycofywanie | CM | Ostrzeżenie | 
-| 29631 | ClusterUpgradeDomainCompleted | Uaktualnienie | Domeny uaktualnienia zakończył uaktualnianie podczas uaktualniania klastra | CM | Informacyjne | 
+| 29628 | ClusterUpgradeCompleted | Uaktualnienie | Ukończono Uaktualnianie klastra | CM | Informacyjne | 
+| 29629 | ClusterUpgradeRollbackStarted | Uaktualnienie | Rozpoczęto wycofywanie uaktualnienia klastra  | CM | Ostrzeżenie | 
+| 29630 | ClusterUpgradeRollbackCompleted | Uaktualnienie | Uaktualnianie klastra zostało zakończone. | CM | Ostrzeżenie | 
+| 29631 | ClusterUpgradeDomainCompleted | Uaktualnienie | Uaktualnianie domeny uaktualnienia podczas uaktualniania klastra zakończyło się | CM | Informacyjne | 
 
-## <a name="node-events"></a>Węzeł zdarzenia
+## <a name="node-events"></a>Zdarzenia węzła
 
 **Zdarzenia cyklu życia węzła** 
 
-| Identyfikator zdarzenia | Name (Nazwa) | Category | Opis |Źródło (zadanie) | Poziom |
+| Identyfikator zdarzenia | Nazwa | Kategoria | Opis |Źródło (zadanie) | Poziom |
 | --- | --- | ---| --- | --- | --- | 
-| 18602 | NodeDeactivateCompleted | Przejścia stanu | Dezaktywacja węzła zostało zakończone. | FM | Informacyjne | 
-| 18603 | NodeUp | Przejścia stanu | Klastra wykrył, że uruchomieniu węzła | FM | Informacyjne | 
-| 18604 | NodeDown | Przejścia stanu | Klastra wykrył, że węzeł został zamknięty. Podczas ponownego uruchomienia węzła zobaczysz zdarzenia NodeDown, następuje zdarzeń NodeUp |  FM | Błąd | 
-| 18605 | NodeAddedToCluster | Przejścia stanu |  Nowy węzeł został dodany do klastra i usługi Service Fabric można wdrażać aplikacje dla tego węzła | FM | Informacyjne | 
-| 18606 | NodeRemovedFromCluster | Przejścia stanu |  Węzeł został usunięty z klastra. Usługa Service Fabric wdroży już aplikacje do tego węzła | FM | Informacyjne | 
-| 18607 | NodeDeactivateStarted | Przejścia stanu |  Dezaktywacja węzła została uruchomiona. | FM | Informacyjne | 
-| 25621 | NodeOpenSucceeded | Przejścia stanu |  Węzeł został uruchomiony pomyślnie | FabricNode | Informacyjne | 
-| 25622 | NodeOpenFailed | Przejścia stanu |  Węzeł nie udało się przyłączeniu pierścienia | FabricNode | Błąd | 
-| 25624 | NodeClosed | Przejścia stanu |  Węzeł pomyślnie wyłączone | FabricNode | Informacyjne | 
-| 25626 | NodeAborted | Przejścia stanu |  Węzeł ungracefully został zamknięty | FabricNode | Błąd | 
+| 18602 | NodeDeactivateCompleted | Przejścia stanu | Dezaktywacja węzła zakończyła się | FM | Informacyjne | 
+| 18603 | NodeUp | Przejścia stanu | Klaster wykrył, że uruchomiono węzeł | FM | Informacyjne | 
+| 18604 | NodeDown | Przejścia stanu | Klaster wykrył, że węzeł został zamknięty. Podczas ponownego uruchamiania węzła zobaczysz zdarzenie NodeDown, po którym następuje zdarzenie NodeUp |  FM | Błąd | 
+| 18605 | NodeAddedToCluster | Przejścia stanu |  Do klastra został dodany nowy węzeł i Service Fabric można wdrożyć aplikacje w tym węźle | FM | Informacyjne | 
+| 18606 | NodeRemovedFromCluster | Przejścia stanu |  Węzeł został usunięty z klastra. Service Fabric nie będzie już wdrażać aplikacji w tym węźle | FM | Informacyjne | 
+| 18607 | NodeDeactivateStarted | Przejścia stanu |  Rozpoczęto dezaktywowanie węzła | FM | Informacyjne | 
+| 25621 | NodeOpenSucceeded | Przejścia stanu |  Węzeł został pomyślnie uruchomiony | FabricNode | Informacyjne | 
+| 25622 | NodeOpenFailed | Przejścia stanu |  Nie można uruchomić węzła i połączyć się z pierścieniem | FabricNode | Błąd | 
+| 25624 | NodeClosed | Przejścia stanu |  Węzeł zostanie zamknięty pomyślnie | FabricNode | Informacyjne | 
+| 25626 | NodeAborted | Przejścia stanu |  Węzeł jest niebezpiecznie zamknięty | FabricNode | Błąd | 
 
 ## <a name="application-events"></a>Zdarzenia aplikacji
 
 **Zdarzenia cyklu życia aplikacji**
 
-| Identyfikator zdarzenia | Name (Nazwa) | Category | Opis |Źródło (zadanie) | Poziom | 
+| Identyfikator zdarzenia | Nazwa | Kategoria | Opis |Źródło (zadanie) | Poziom | 
 | --- | --- | --- | --- | --- | --- | 
-| 29620 | ApplicationCreated | Cykl życia | Utworzono nową aplikację | CM | Informacyjne | 
-| 29625 | ApplicationDeleted | Cykl życia | Istniejąca aplikacja została usunięta. | CM | Informacyjne | 
-| 23083 | ApplicationProcessExited | Cykl życia | Proces w ramach aplikacji został zakończony | Hosting | Informacyjne | 
+| 29620 | ApplicationCreated | Witrynę | Utworzono nową aplikację | CM | Informacyjne | 
+| 29625 | ApplicationDeleted | Witrynę | Istniejąca aplikacja została usunięta | CM | Informacyjne | 
+| 23083 | ApplicationProcessExited | Witrynę | Proces w aplikacji zakończył działanie | Hosting | Informacyjne | 
 
-**Zdarzenia uaktualnienia aplikacji**
+**Zdarzenia uaktualniania aplikacji**
 
-Szczegółowe informacje na temat uaktualniania aplikacji można znaleźć [tutaj](service-fabric-application-upgrade.md).
+Więcej informacji o uaktualnieniach aplikacji można znaleźć [tutaj](service-fabric-application-upgrade.md).
 
-| Identyfikator zdarzenia | Name (Nazwa) | Category | Opis |Źródło (zadanie) | Poziom | 
+| Identyfikator zdarzenia | Nazwa | Kategoria | Opis |Źródło (zadanie) | Poziom | 
 | --- | --- | ---| --- | --- | --- | 
-| 29621 | ApplicationUpgradeStarted | Uaktualnienie | Uaktualnienie aplikacji została uruchomiona. | CM | Informacyjne | 
-| 29622 | ApplicationUpgradeCompleted | Uaktualnienie | Ukończono uaktualnianie aplikacji | CM | Informacyjne | 
-| 29623 | ApplicationUpgradeRollbackStarted | Uaktualnienie | Uaktualnienie aplikacji rozpoczął wycofywania |CM | Ostrzeżenie | 
-| 29624 | ApplicationUpgradeRollbackCompleted | Uaktualnienie | Uaktualnienie aplikacji została zakończona, wycofywanie | CM | Ostrzeżenie | 
-| 29626 | ApplicationUpgradeDomainCompleted | Uaktualnienie | Domeny uaktualnienia zakończył uaktualnianie podczas uaktualniania aplikacji | CM | Informacyjne | 
+| 29621 | ApplicationUpgradeStarted | Uaktualnienie | Rozpoczęto Uaktualnianie aplikacji | CM | Informacyjne | 
+| 29622 | ApplicationUpgradeCompleted | Uaktualnienie | Ukończono Uaktualnianie aplikacji | CM | Informacyjne | 
+| 29623 | ApplicationUpgradeRollbackStarted | Uaktualnienie | Rozpoczęto Przywracanie aplikacji |CM | Ostrzeżenie | 
+| 29624 | ApplicationUpgradeRollbackCompleted | Uaktualnienie | Uaktualnianie aplikacji zakończyło się wycofywaniem | CM | Ostrzeżenie | 
+| 29626 | ApplicationUpgradeDomainCompleted | Uaktualnienie | Uaktualnianie domeny uaktualnienia podczas uaktualniania aplikacji zakończyło się | CM | Informacyjne | 
 
 ## <a name="service-events"></a>Zdarzenia usługi
 
 **Zdarzenia cyklu życia usługi**
 
-| Identyfikator zdarzenia | Name (Nazwa) | Category | Opis |Źródło (zadanie) | Poziom | 
+| Identyfikator zdarzenia | Nazwa | Kategoria | Opis |Źródło (zadanie) | Poziom | 
 | --- | --- | ---| --- | --- | --- |
-| 18657 | ServiceCreated | Cykl życia | Utworzono nową usługę | FM | Informacyjne | 
-| 18658 | ServiceDeleted | Cykl życia | Istniejąca usługa została usunięta. | FM | Informacyjne | 
+| 18657 | Servicecreated | Witrynę | Utworzono nową usługę | FM | Informacyjne | 
+| 18658 | Nie usunięto | Witrynę | Istniejąca usługa została usunięta | FM | Informacyjne | 
 
-## <a name="partition-events"></a>Zdarzenia w partycji
+## <a name="partition-events"></a>Zdarzenia partycji
 
 **Zdarzenia przenoszenia partycji**
 
-| Identyfikator zdarzenia | Name (Nazwa) | Category | Opis |Źródło (zadanie) | Poziom | 
+| Identyfikator zdarzenia | Nazwa | Kategoria | Opis |Źródło (zadanie) | Poziom | 
 | --- | --- | ---| --- | --- | --- |
-| 18940 | PartitionReconfigured | Cykl życia | Ponowna konfiguracja partycji zostało zakończone. | RA | Informacyjne | 
+| 18940 | PartitionReconfigured | Witrynę | Ukończono ponowną konfigurację partycji | RA | Informacyjne | 
 
 ## <a name="replica-events"></a>Zdarzenia repliki
 
 **Zdarzenia cyklu życia repliki**
 
-| Identyfikator zdarzenia | Name (Nazwa) | Category | Opis |Źródło (zadanie) | Poziom |
+| Identyfikator zdarzenia | Nazwa | Kategoria | Opis |Źródło (zadanie) | Poziom |
 | --- | --- | ---| --- | --- | --- |
-| 61701 | ReliableDictionaryOpened | Cykl życia | Otworzył niezawodnego słownika | DistributedDictionary | Informacyjne |
-| 61702 | ReliableDictionaryClosed | Cykl życia | Niezawodnego słownika został zamknięty. | DistributedDictionary | Informacyjne |
-| 61703 | ReliableDictionaryCheckpointRecovered | Cykl życia | Niezawodnego słownika odzyskał jego punktu kontrolnego | DistributedDictionary | Informacyjne |
-| 61704 | ReliableDictionaryCheckpointFilesSent | Cykl życia | Replika wysłał plików punktu kontrolnego niezawodnego słownika. | DistributedDictionary | Informacyjne |
-| 61705 | ReliableDictionaryCheckpointFilesReceived | Cykl życia | Replika otrzymał plików punktu kontrolnego niezawodnego słownika. | DistributedDictionary | Informacyjne |
-| 61963 | ReliableQueueOpened | Cykl życia | Niezawodna kolejka został otwarty. | DistributedQueue | Informacyjne |
-| 61964 | ReliableQueueClosed | Cykl życia | Niezawodna kolejka została zamknięta. | DistributedQueue | Informacyjne |
-| 61965 | ReliableQueueCheckpointRecovered | Cykl życia | Niezawodna kolejka została odzyskana jego punktu kontrolnego | DistributedQueue | Informacyjne |
-| 61966 | ReliableQueueCheckpointFilesSent | Cykl życia | Replika została wysłana niezawodna kolejka plików punktu kontrolnego | DistributedQueue | Informacyjne |
-| 63647 | ReliableQueueCheckpointFilesReceived | Cykl życia | Replika otrzymał niezawodna kolejka plików punktu kontrolnego | DistributedQueue | Informacyjne |
-| 63648 | ReliableConcurrentQueueOpened | Cykl życia | Niezawodna kolejka współbieżna został otwarty. | ReliableConcurrentQueue | Informacyjne |
-| 63649 | ReliableConcurrentQueueClosed | Cykl życia | Niezawodna kolejka współbieżna zostało zamknięte. | ReliableConcurrentQueue | Informacyjne |
-| 63650 | ReliableConcurrentQueueCheckpointRecovered | Cykl życia | Niezawodna kolejka współbieżna odzyskał jego punktu kontrolnego | ReliableConcurrentQueue | Informacyjne |
-| 61687 | TStoreError | Niepowodzenie | Niezawodne kolekcji odebrał nieoczekiwany błąd | TStore | Błąd |
-| 63831 | PrimaryFullCopyInitiated | Cykl życia | Replika podstawowa została zainicjowana pełnego kopiowania | TReplicator | Informacyjne |
-| 63832 | PrimaryPartialCopyInitiated | Cykl życia | Replika podstawowa została zainicjowana częściowej kopii | TReplicator | Informacyjne |
-| 16831 | BuildIdleReplicaStarted | Cykl życia | Replika podstawowa została uruchomiona, tworzenia replik w stanie bezczynności | Replikacja | Informacyjne |
-| 16832 | BuildIdleReplicaCompleted | Cykl życia | Replika podstawowa została ukończona, tworzenia replik w stanie bezczynności | Replikacja | Informacyjne |
-| 16833 | BuildIdleReplicaFailed | Cykl życia | Replika podstawowa nie powiodło się tworzenie replik w stanie bezczynności | Replikacja | Ostrzeżenie |
-| 16834 | PrimaryReplicationQueueFull | Health | Kolejka replikacji replika podstawowa jest pełna | Replikacja | Ostrzeżenie |
-| 16835 | PrimaryReplicationQueueWarning | Health | Kolejki replikacji replika podstawowa jest w pełni | Replikacja | Ostrzeżenie |
-| 16836 | PrimaryReplicationQueueWarningMitigated | Health | Kolejka replikacji replika podstawowa jest OK | Replikacja | Informacyjne |
-| 16837 | SecondaryReplicationQueueFull | Health | Kolejka replikacji replika pomocnicza jest pełna | Replikacja | Ostrzeżenie |
-| 16838 | SecondaryReplicationQueueWarning | Health | Kolejki replikacji replika pomocnicza zbliża się pełne | Replikacja | Ostrzeżenie |
-| 16839 | SecondaryReplicationQueueWarningMitigated | Health | Kolejka replikacji replika pomocnicza jest OK | Replikacja | Informacyjne |
-| 16840 | PrimaryFaultedSlowSecondary | Health | Wystąpił błąd powolne repliki pomocniczej replice podstawowej | Replikacja | Ostrzeżenie |
-| 16841 | ReplicatorFaulted | Health | Wystąpił błąd repliki | Replikacja | Ostrzeżenie |
+| 61701 | ReliableDictionaryOpened | Witrynę | Otwarto niezawodny słownik | DistributedDictionary | Informacyjne |
+| 61702 | ReliableDictionaryClosed | Witrynę | Niezawodny słownik został zamknięty | DistributedDictionary | Informacyjne |
+| 61703 | ReliableDictionaryCheckpointRecovered | Witrynę | Niezawodny słownik odzyskał swój punkt kontrolny | DistributedDictionary | Informacyjne |
+| 61704 | ReliableDictionaryCheckpointFilesSent | Witrynę | Replika wysłała pliki punktów kontrolnych niezawodnych słowników | DistributedDictionary | Informacyjne |
+| 61705 | ReliableDictionaryCheckpointFilesReceived | Witrynę | Replika otrzymała niezawodne pliki punktów kontrolnych słownika | DistributedDictionary | Informacyjne |
+| 61963 | ReliableQueueOpened | Witrynę | Otwarto niezawodną kolejkę | DistributedQueue | Informacyjne |
+| 61964 | ReliableQueueClosed | Witrynę | Niezawodna kolejka została ZAMKNIĘTA | DistributedQueue | Informacyjne |
+| 61965 | ReliableQueueCheckpointRecovered | Witrynę | Niezawodna Kolejka odzyska swój punkt kontrolny | DistributedQueue | Informacyjne |
+| 61966 | ReliableQueueCheckpointFilesSent | Witrynę | Replika wysłała pliki punktów kontrolnych niezawodnej kolejki | DistributedQueue | Informacyjne |
+| 63647 | ReliableQueueCheckpointFilesReceived | Witrynę | Replika otrzymała niezawodne pliki punktów kontrolnych kolejki | DistributedQueue | Informacyjne |
+| 63648 | ReliableConcurrentQueueOpened | Witrynę | Otwarto niezawodną kolejkę współbieżną | ReliableConcurrentQueue | Informacyjne |
+| 63649 | ReliableConcurrentQueueClosed | Witrynę | Zamknięto niezawodną kolejkę współbieżną | ReliableConcurrentQueue | Informacyjne |
+| 63650 | ReliableConcurrentQueueCheckpointRecovered | Witrynę | Niezawodna Kolejka współbieżna odzyska swój punkt kontrolny | ReliableConcurrentQueue | Informacyjne |
+| 61687 | TStoreError | Niepowodzenie | Niezawodna kolekcja odebrała nieoczekiwany błąd | TStore | Błąd |
+| 63831 | PrimaryFullCopyInitiated | Witrynę | Replika podstawowa zainicjowała pełną kopię | TReplicator | Informacyjne |
+| 63832 | PrimaryPartialCopyInitiated | Witrynę | Replika podstawowa zainicjowała kopię częściową | TReplicator | Informacyjne |
+| 16831 | BuildIdleReplicaStarted | Witrynę | Replika podstawowa rozpoczęła tworzenie repliki bezczynnej | Replikacja | Informacyjne |
+| 16832 | BuildIdleReplicaCompleted | Witrynę | Replika podstawowa ukończyła tworzenie repliki bezczynnej | Replikacja | Informacyjne |
+| 16833 | BuildIdleReplicaFailed | Witrynę | Replika podstawowa nie powiodła się podczas tworzenia repliki bezczynnej | Replikacja | Ostrzeżenie |
+| 16834 | PrimaryReplicationQueueFull | Zdrowie | Kolejka replikacji repliki podstawowej jest pełna | Replikacja | Ostrzeżenie |
+| 16835 | PrimaryReplicationQueueWarning | Zdrowie | Kolejka replikacji repliki podstawowej jest blisko pełna | Replikacja | Ostrzeżenie |
+| 16836 | PrimaryReplicationQueueWarningMitigated | Zdrowie | Kolejka replikacji repliki podstawowej jest niedobrana | Replikacja | Informacyjne |
+| 16837 | SecondaryReplicationQueueFull | Zdrowie | Kolejka replikacji pomocniczej repliki jest pełna | Replikacja | Ostrzeżenie |
+| 16838 | SecondaryReplicationQueueWarning | Zdrowie | Kolejka replikacji pomocniczej repliki jest blisko pełna | Replikacja | Ostrzeżenie |
+| 16839 | SecondaryReplicationQueueWarningMitigated | Zdrowie | Kolejka replikacji pomocniczej repliki jest niedobrana | Replikacja | Informacyjne |
+| 16840 | PrimaryFaultedSlowSecondary | Zdrowie | Replika podstawowa spowodowała awarię wolnej repliki pomocniczej | Replikacja | Ostrzeżenie |
+| 16841 | ReplicatorFaulted | Zdrowie | Replika została uszkodzona | Replikacja | Ostrzeżenie |
 
 ## <a name="container-events"></a>Zdarzenia kontenera
 
 **Zdarzenia cyklu życia kontenera** 
 
-| Identyfikator zdarzenia | Name (Nazwa) | Opis |Źródło (zadanie) | Poziom | Version |
+| Identyfikator zdarzenia | Nazwa | Opis |Źródło (zadanie) | Poziom | Wersja |
 | --- | --- | ---| --- | --- | --- |
-| 23074 | ContainerActivated | Kontener został uruchomiony. | Hosting | Informacyjne | 1 |
-| 23075 | ContainerDeactivated | Kontener został zatrzymany. | Hosting | Informacyjne | 1 |
-| 23082 | ContainerExited | Kontener został zakończony — Sprawdź plik flagi UnexpectedTermination | Hosting | Informacyjne | 1 |
+| 23074 | ContainerActivated | Kontener został uruchomiony | Hosting | Informacyjne | 1 |
+| 23075 | ContainerDeactivated | Kontener został zatrzymany | Hosting | Informacyjne | 1 |
+| 23082 | ContainerExited | Kontener został zakończony — Sprawdź flagę UnexpectedTermination | Hosting | Informacyjne | 1 |
 
-## <a name="health-reports"></a>Raportów o kondycji
+## <a name="health-reports"></a>Raporty dotyczące kondycji
 
-[Model kondycji sieci szkieletowej usług](service-fabric-health-introduction.md) umożliwia ocenę kondycji funkcjonalnej, elastyczny i rozszerzalny i raportowania. Począwszy od usługi Service Fabric w wersji 6.2, dane dotyczące kondycji są zapisywane jako zdarzenia platformy do dostarczają historycznych informacji na temat kondycji. Aby niskich woluminu zdarzenia dotyczące kondycji, napiszemy są tylko następujące zdarzenia usługi Service Fabric:
+[Model kondycji Service Fabric](service-fabric-health-introduction.md) zapewnia rozbudowane, elastyczne i rozszerzalne oceny kondycji oraz raportowanie. Począwszy od Service Fabric w wersji 6,2, dane dotyczące kondycji są zapisywane jako zdarzenia platformy, aby zapewnić historyczne rekordy kondycji. Aby zachować ilość zdarzeń dotyczących kondycji, należy napisać tylko następujące zdarzenia Service Fabric:
 
-* Wszystkie `Error` lub `Warning` raportów o kondycji
-* `Ok` Raporty dotyczące kondycji podczas przejścia
-* Gdy `Error` lub `Warning` zdarzenie kondycji wygasa. To umożliwia określenie, ile jednostki złej kondycji
+* Wszystkie raporty dotyczące kondycji `Error` lub `Warning`
+* `Ok` raporty kondycji podczas przejść
+* Po wygaśnięciu `Error` lub `Warning` zdarzenia dotyczącego kondycji. Pozwala to określić czas złej kondycji jednostki
 
 **Zdarzenia raportów kondycji klastra**
 
-| Identyfikator zdarzenia | Name (Nazwa) | Opis |Źródło (zadanie) | Poziom | Version |
+| Identyfikator zdarzenia | Nazwa | Opis |Źródło (zadanie) | Poziom | Wersja |
 | --- | --- | --- | --- | --- | --- |
 | 54428 | ClusterNewHealthReport | Dostępny jest nowy raport kondycji klastra | HM | Informacyjne | 1 |
-| 54437 | ClusterHealthReportExpired | Istniejący raport kondycji klastra utracił ważność. | HM | Informacyjne | 1 |
+| 54437 | ClusterHealthReportExpired | Istniejący raport kondycji klastra wygasł | HM | Informacyjne | 1 |
 
-**Zdarzenia raportów kondycji węzła**
+**Zdarzenia raportów kondycji węzłów**
 
-| Identyfikator zdarzenia | Name (Nazwa) | Opis |Źródło (zadanie) | Poziom | Version |
+| Identyfikator zdarzenia | Nazwa | Opis |Źródło (zadanie) | Poziom | Wersja |
 | --- | --- | ---| --- | --- | --- |
-| 54423 | NodeNewHealthReport | Nowy raport kondycji węzeł jest dostępny | HM | Informacyjne | 1 |
-| 54432 | NodeHealthReportExpired | Istniejący raport kondycji węzła utracił ważność. | HM | Informacyjne | 1 |
+| 54423 | NodeNewHealthReport | Dostępny jest nowy raport kondycji węzła | HM | Informacyjne | 1 |
+| 54432 | NodeHealthReportExpired | Istniejący raport kondycji węzła wygasł | HM | Informacyjne | 1 |
 
-**Zdarzenia raportu kondycji aplikacji**
+**Zdarzenia raportów kondycji aplikacji**
 
-| Identyfikator zdarzenia | Name (Nazwa) | Opis |Źródło (zadanie) | Poziom | Version |
+| Identyfikator zdarzenia | Nazwa | Opis |Źródło (zadanie) | Poziom | Wersja |
 | --- | --- | ---| --- | --- | --- |
-| 54425 | ApplicationNewHealthReport | Utworzono nowy raport kondycji aplikacji. To wdrożenie aplikacji. | HM | Informacyjne | 1 |
-| 54426 | DeployedApplicationNewHealthReport | Utworzono nowy raport kondycji wdrożonej aplikacji | HM | Informacyjne | 1 |
-| 54427 | DeployedServicePackageNewHealthReport | Utworzono nowy raport kondycji wdrożonej usługi | HM | Informacyjne | 1 |
-| 54434 | ApplicationHealthReportExpired | Istniejący raport kondycji aplikacji utracił ważność. | HM | Informacyjne | 1 |
-| 54435 | DeployedApplicationHealthReportExpired | Istniejący raport kondycji wdrożoną aplikację utracił ważność. | HM | Informacyjne | 1 |
-| 54436 | DeployedServicePackageHealthReportExpired | Istniejący raport kondycji wdrożonej usługi utracił ważność. | HM | Informacyjne | 1 |
+| 54425 | ApplicationNewHealthReport | Utworzono nowy raport kondycji aplikacji. Dotyczy to niewdrożonych aplikacji. | HM | Informacyjne | 1 |
+| 54426 | DeployedApplicationNewHealthReport | Utworzono nowy wdrożony Raport kondycji aplikacji | HM | Informacyjne | 1 |
+| 54427 | DeployedServicePackageNewHealthReport | Utworzono nowy wdrożony Raport kondycji usługi | HM | Informacyjne | 1 |
+| 54434 | ApplicationHealthReportExpired | Istniejący raport kondycji aplikacji wygasł | HM | Informacyjne | 1 |
+| 54435 | DeployedApplicationHealthReportExpired | Istniejący wdrożony Raport kondycji aplikacji wygasł | HM | Informacyjne | 1 |
+| 54436 | DeployedServicePackageHealthReportExpired | Istniejący wdrożony Raport kondycji usługi wygasł | HM | Informacyjne | 1 |
 
 **Zdarzenia raportów kondycji usługi**
 
-| Identyfikator zdarzenia | Name (Nazwa) | Opis |Źródło (zadanie) | Poziom | Version |
+| Identyfikator zdarzenia | Nazwa | Opis |Źródło (zadanie) | Poziom | Wersja |
 | --- | --- | ---| --- | --- | --- |
 | 54424 | ServiceNewHealthReport | Utworzono nowy raport kondycji usługi | HM | Informacyjne | 1 |
-| 54433 | ServiceHealthReportExpired | Wygasła istniejącego raportu kondycji usługi | HM | Informacyjne | 1 |
+| 54433 | ServiceHealthReportExpired | Istniejący raport kondycji usługi wygasł | HM | Informacyjne | 1 |
 
 **Zdarzenia raportów kondycji partycji**
 
-| Identyfikator zdarzenia | Name (Nazwa) | Opis |Źródło (zadanie) | Poziom | Version |
+| Identyfikator zdarzenia | Nazwa | Opis |Źródło (zadanie) | Poziom | Wersja |
 | --- | --- | ---| --- | --- | --- |
 | 54422 | PartitionNewHealthReport | Utworzono nowy raport kondycji partycji | HM | Informacyjne | 1 |
-| 54431 | PartitionHealthReportExpired | Istniejący raport kondycji partycji utracił ważność. | HM | Informacyjne | 1 |
+| 54431 | PartitionHealthReportExpired | Istniejący raport kondycji partycji wygasł | HM | Informacyjne | 1 |
 
-**Zdarzenia raportów kondycji repliki**
+**Zdarzenia raportu kondycji repliki**
 
-| Identyfikator zdarzenia | Name (Nazwa) | Opis |Źródło (zadanie) | Poziom | Version |
+| Identyfikator zdarzenia | Nazwa | Opis |Źródło (zadanie) | Poziom | Wersja |
 | --- | --- | ---| --- | --- | --- |
-| 54429 | StatefulReplicaNewHealthReport | Został utworzony raport o kondycji stanowych replik | HM | Informacyjne | 1 |
-| 54430 | StatelessInstanceNewHealthReport | Utworzono nowy raport kondycji bezstanowe wystąpienia | HM | Informacyjne | 1 |
-| 54438 | StatefulReplicaHealthReportExpired | Istniejący raport kondycji stanowych replik utracił ważność. | HM | Informacyjne | 1 |
-| 54439 | StatelessInstanceHealthReportExpired | Istniejący raport kondycji wystąpienia o bezstanowa utracił ważność. | HM | Informacyjne | 1 |
+| 54429 | StatefulReplicaNewHealthReport | Raport kondycji replice stanowej został utworzony | HM | Informacyjne | 1 |
+| 54430 | StatelessInstanceNewHealthReport | Utworzono nowy raport kondycji wystąpienia bezstanowego | HM | Informacyjne | 1 |
+| 54438 | StatefulReplicaHealthReportExpired | Istniejący raport kondycji repliki stanowej wygasł | HM | Informacyjne | 1 |
+| 54439 | StatelessInstanceHealthReportExpired | Istniejący raport kondycji wystąpienia bezstanowego wygasł | HM | Informacyjne | 1 |
 
-## <a name="chaos-testing-events"></a>Zdarzenia testowania chaosu 
+## <a name="chaos-testing-events"></a>Zdarzenia testowania chaos 
 
-**Zdarzenia sesji chaosu**
+**Zdarzenia sesji chaos**
 
-| Identyfikator zdarzenia | Name (Nazwa) | Opis |Źródło (zadanie) | Poziom | Version |
+| Identyfikator zdarzenia | Nazwa | Opis |Źródło (zadanie) | Poziom | Wersja |
 | --- | --- | ---| --- | --- | --- |
-| 50021 | ChaosStarted | Rozpoczęto Chaos z sesji testowania | Testowalności | Informacyjne | 1 |
-| 50023 | ChaosStopped | Chaos z sesji testowania została zatrzymana. | Testowalności | Informacyjne | 1 |
+| 50021 | ChaosStarted | Rozpoczęto sesję testową chaos | Testowalności | Informacyjne | 1 |
+| 50023 | ChaosStopped | Sesja testowania chaos została zatrzymana | Testowalności | Informacyjne | 1 |
 
-**Zdarzenia węzła chaosu**
+**Zdarzenia węzła chaos**
 
-| Identyfikator zdarzenia | Name (Nazwa) | Opis |Źródło (zadanie) | Poziom | Version |
+| Identyfikator zdarzenia | Nazwa | Opis |Źródło (zadanie) | Poziom | Wersja |
 | --- | --- | ---| --- | --- | --- |
-| 50033 | ChaosNodeRestartScheduled | Węzeł ma zaplanowane ponowne uruchomienie jako część Chaos z sesji testowania | Testowalności | Informacyjne | 1 |
-| 50087 | ChaosNodeRestartCompleted | Węzeł zostało zakończone, ponowne uruchomienie jako część Chaos z sesji testowania | Testowalności | Informacyjne | 1 |
+| 50033 | ChaosNodeRestartScheduled | Zaplanowano ponowne uruchomienie węzła w ramach sesji testowania chaos | Testowalności | Informacyjne | 1 |
+| 50087 | ChaosNodeRestartCompleted | Węzeł zakończył ponowne uruchamianie w ramach sesji testowania chaos | Testowalności | Informacyjne | 1 |
 
-**Zdarzenia aplikacji chaosu**
+**Zdarzenia aplikacji chaos**
 
-| Identyfikator zdarzenia | Name (Nazwa) | Opis |Źródło (zadanie) | Poziom | Version |
+| Identyfikator zdarzenia | Nazwa | Opis |Źródło (zadanie) | Poziom | Wersja |
 | --- | --- | ---| --- | --- | --- |
-| 50053 | ChaosCodePackageRestartScheduled | Podczas Chaos z sesji testowania zostało zaplanowane ponowne uruchomienie pakietu kodu | Testowalności | Informacyjne | 1 |
-| 50101 | ChaosCodePackageRestartCompleted | Ponowne uruchomienie pakietu kodu zostało zakończone podczas Chaos z sesji testowania | Testowalności | Informacyjne | 1 |
+| 50053 | ChaosCodePackageRestartScheduled | Zaplanowano ponowne uruchomienie pakietu kodu w trakcie sesji testowania chaos | Testowalności | Informacyjne | 1 |
+| 50101 | ChaosCodePackageRestartCompleted | Zakończono ponowne uruchamianie pakietu kodu podczas sesji testowania chaos | Testowalności | Informacyjne | 1 |
 
-**Zdarzenia partycji chaosu**
+**Zdarzenia partycji chaos**
 
-| Identyfikator zdarzenia | Name (Nazwa) | Opis |Źródło (zadanie) | Poziom | Version |
+| Identyfikator zdarzenia | Nazwa | Opis |Źródło (zadanie) | Poziom | Wersja |
 | --- | --- | ---| --- | --- | --- |
-| 50069 | ChaosPartitionPrimaryMoveScheduled | Partycja podstawowa zaplanowano przenieść w ramach elementu Chaos z sesji testowania | Testowalności | Informacyjne | 1 |
-| 50077 | ChaosPartitionSecondaryMoveScheduled | Partycji dodatkowych zaplanowano przenieść w ramach elementu Chaos z sesji testowania | Testowalności | Informacyjne | 1 |
-| 65003 | PartitionPrimaryMoveAnalysis | Dogłębną analizę przenoszenia partycja podstawowa jest dostępna | Testowalności | Informacyjne | 1 |
+| 50069 | ChaosPartitionPrimaryMoveScheduled | Zaplanowano przechodzenie na partycję podstawową w ramach sesji testowania chaos | Testowalności | Informacyjne | 1 |
+| 50077 | ChaosPartitionSecondaryMoveScheduled | Zaplanowano przechodzenie na partycję pomocniczą w ramach sesji testowania chaos | Testowalności | Informacyjne | 1 |
+| 65003 | PartitionPrimaryMoveAnalysis | Dostępna jest dokładniejsza analiza przenoszenia partycji podstawowej. | Testowalności | Informacyjne | 1 |
 
-**Zdarzenia repliki chaosu**
+**Zdarzenia repliki chaos**
 
-| Identyfikator zdarzenia | Name (Nazwa) | Opis |Źródło (zadanie) | Poziom | Version |
+| Identyfikator zdarzenia | Nazwa | Opis |Źródło (zadanie) | Poziom | Wersja |
 | --- | --- | ---| --- | --- | --- |
-| 50047 | ChaosReplicaRestartScheduled | Ponowne uruchomienie repliki zostało zaplanowane jako część Chaos z sesji testowania | Testowalności | Informacyjne | 1 |
-| 50051 | ChaosReplicaRemovalScheduled | Usuwanie repliki zostało zaplanowane jako część Chaos z sesji testowania | Testowalności | Informacyjne | 1 |
-| 50093 | ChaosReplicaRemovalCompleted | Usuwanie repliki została zakończona w ramach elementu Chaos z sesji testowania | Testowalności | Informacyjne | 1 |
+| 50047 | ChaosReplicaRestartScheduled | Zaplanowano ponowne uruchomienie repliki w ramach sesji testowania chaos | Testowalności | Informacyjne | 1 |
+| 50051 | ChaosReplicaRemovalScheduled | Zaplanowano usunięcie repliki w ramach sesji testowania chaos | Testowalności | Informacyjne | 1 |
+| 50093 | ChaosReplicaRemovalCompleted | Usuwanie repliki zostało zakończone w ramach sesji testowania chaos | Testowalności | Informacyjne | 1 |
 
 ## <a name="other-events"></a>Inne zdarzenia
 
 **Zdarzenia korelacji**
 
-| Identyfikator zdarzenia | Name (Nazwa) | Opis |Źródło (zadanie) | Poziom | Version |
+| Identyfikator zdarzenia | Nazwa | Opis |Źródło (zadanie) | Poziom | Wersja |
 | --- | --- | ---| --- | --- | --- |
-| 65011 | CorrelationOperational | Wykryto korelacji | Testowalności | Informacyjne | 1 |
+| 65011 | CorrelationOperational | Wykryto korelację | Testowalności | Informacyjne | 1 |
 
-## <a name="events-prior-to-version-62"></a>Zdarzenia przed wersję 6.2
+## <a name="events-prior-to-version-62"></a>Zdarzenia przed wersjami 6,2
 
-Poniżej przedstawiono pełną listę zdarzeń udostępnianych przez usługę Service Fabric poprzedzające wersję 6.2.
+Poniżej przedstawiono kompleksową listę zdarzeń dostarczonych przez Service Fabric przed wersjami 6,2.
 
-| Identyfikator zdarzenia | Name (Nazwa) | Źródło (zadanie) | Poziom |
+| Identyfikator zdarzenia | Nazwa | Źródło (zadanie) | Poziom |
 | --- | --- | --- | --- |
 | 25620 | NodeOpening | FabricNode | Informacyjne |
 | 25621 | NodeOpenedSuccess | FabricNode | Informacyjne |
@@ -278,12 +269,12 @@ Poniżej przedstawiono pełną listę zdarzeń udostępnianych przez usługę Se
 | 29624 | ApplicationUpgradeRollbackComplete | CM | Informacyjne |
 | 29625 | ApplicationDeleted | CM | Informacyjne |
 | 29626 | ApplicationUpgradeDomainComplete | CM | Informacyjne |
-| 18566 | ServiceCreated | FM | Informacyjne |
-| 18567 | ServiceDeleted | FM | Informacyjne |
+| 18566 | Servicecreated | FM | Informacyjne |
+| 18567 | Nie usunięto | FM | Informacyjne |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* Zapoznaj się z omówieniem programu [diagnostyki w usłudze Service Fabric](service-fabric-diagnostics-overview.md)
-* Dowiedz się więcej o bazie danych EventStore w [omówienie bazy danych Eventstore usługi Service Fabric](service-fabric-diagnostics-eventstore.md)
-* Modyfikowanie swoje [diagnostyki Azure](service-fabric-diagnostics-event-aggregation-wad.md) konfigurację, aby zebrać więcej dzienniki
-* [Konfigurowanie usługi Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md) się z Operational channel dzienników
+* Zapoznaj się z omówieniem [diagnostyki w Service Fabric](service-fabric-diagnostics-overview.md)
+* Dowiedz się więcej na temat EventStore w [Service Fabric EventStore — Omówienie](service-fabric-diagnostics-eventstore.md)
+* Modyfikowanie konfiguracji [Diagnostyka Azure](service-fabric-diagnostics-event-aggregation-wad.md) w celu zbierania dodatkowych dzienników
+* [Konfigurowanie Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md) do wyświetlania dzienników kanałów operacyjnych

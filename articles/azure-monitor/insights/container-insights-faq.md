@@ -1,26 +1,63 @@
 ---
 title: Azure Monitor for Containers — często zadawane pytania | Microsoft Docs
 description: Azure Monitor for Containers to rozwiązanie monitorujące kondycję klastrów AKS i Container Instances na platformie Azure. Ten artykuł zawiera odpowiedzi na często zadawane pytania.
-ms.service: azure-monitor
-ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
 ms.date: 10/15/2019
-ms.openlocfilehash: d3779a2d48db82bfccdc0f047119a36ef56c3bdf
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0984de51221c506bb1824e4dcfd93eef56453a4d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73477422"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75405079"
 ---
 # <a name="azure-monitor-for-containers-frequently-asked-questions"></a>Azure Monitor for Containers — często zadawane pytania
 
-Ta firma Microsoft — często zadawane pytania dotyczące Azure Monitor kontenerów. Jeśli masz dodatkowe pytania dotyczące rozwiązania, przejdź do [forum dyskusyjnego](https://feedback.azure.com/forums/34192--general-feedback) i Opublikuj swoje pytania. Gdy pytanie jest często zadawane, dodamy je do tego artykułu, aby można je było szybko i łatwo znaleźć.
+Ta firma Microsoft — często zadawane pytania dotyczące Azure Monitor kontenerów. Jeśli masz dodatkowe pytania dotyczące rozwiązania, przejdź do [forum dyskusyjnego](https://feedback.azure.com/forums/34192--general-feedback) i Opublikuj swoje pytania. Gdy zadawane pytanie dodajemy go do tego artykułu tak, aby możliwe było szybkie i łatwe.
+
+## <a name="i-dont-see-image-and-name-property-values-populated-when-i-query-the-containerlog-table"></a>Nie widzę wartości właściwości obraz i nazwa wypełniane podczas wykonywania zapytania względem tabeli ContainerLog.
+
+W przypadku agenta w wersji ciprod12042019 i nowszych domyślnie te dwie właściwości nie są wypełniane dla każdego wiersza dziennika, aby zminimalizować koszty związane z zbieranymi danymi dzienników. Istnieją dwie opcje zapytania do tabeli zawierającej te właściwości z ich wartościami:
+
+### <a name="option-1"></a>Opcja 1 
+
+Dołącz inne tabele, aby uwzględnić te wartości właściwości w wynikach.
+
+Zmodyfikuj zapytania, aby uwzględnić właściwości obrazu i ImageTag z tabeli ```ContainerInventory``` przez dołączenie do właściwości ContainerID. Możesz dołączyć Właściwość Name (jak wcześniej pojawiła się w tabeli ```ContainerLog```) z pola ContaineName tabeli KubepodInventory, dołączając Właściwość ContainerID. Jest to zalecana opcja.
+
+Poniższy przykład to przykładowe zapytanie szczegółowe objaśniające, jak uzyskać te wartości pól za pomocą sprzężeń.
+
+```
+//lets say we are querying an hour worth of logs
+let startTime = ago(1h);
+let endTime = now();
+//below gets the latest Image & ImageTag for every containerID, during the time window
+let ContainerInv = ContainerInventory | where TimeGenerated >= startTime and TimeGenerated < endTime | summarize arg_max(TimeGenerated, *)  by ContainerID, Image, ImageTag | project-away TimeGenerated | project ContainerID1=ContainerID, Image1=Image ,ImageTag1=ImageTag;
+//below gets the latest Name for every containerID, during the time window
+let KubePodInv  = KubePodInventory | where ContainerID != "" | where TimeGenerated >= startTime | where TimeGenerated < endTime | summarize arg_max(TimeGenerated, *)  by ContainerID2 = ContainerID, Name1=ContainerName | project ContainerID2 , Name1;
+//now join the above 2 to get a 'jointed table' that has name, image & imagetag. Outer left is safer in-case there are no kubepod records are if they are latent
+let ContainerData = ContainerInv | join kind=leftouter (KubePodInv) on $left.ContainerID1 == $right.ContainerID2;
+//now join ContainerLog table with the 'jointed table' above and project-away redundant fields/columns and rename columns that were re-written
+//Outer left is safer so you dont lose logs even if we cannot find container metadata for loglines (due to latency, time skew between data types etc...)
+ContainerLog
+| where TimeGenerated >= startTime and TimeGenerated < endTime 
+| join kind= leftouter (
+   ContainerData
+) on $left.ContainerID == $right.ContainerID2 | project-away ContainerID1, ContainerID2, Name, Image, ImageTag | project-rename Name = Name1, Image=Image1, ImageTag=ImageTag1 
+
+```
+
+### <a name="option-2"></a>Opcja 2
+
+Ponownie włącz kolekcję dla tych właściwości dla każdego wiersza dziennika kontenera.
+
+Jeśli pierwsza opcja jest niewygodna ze względu na zmiany zapytania, można ponownie włączyć zbieranie tych pól, włączając ustawienie ```log_collection_settings.enrich_container_logs``` na mapie konfiguracji agenta zgodnie z opisem w [ustawieniach konfiguracji zbierania danych](./container-insights-agent-config.md).
+
+> [!NOTE]
+> Druga opcja nie jest zalecana w przypadku dużych klastrów, które mają więcej niż 50 węzłów, ponieważ generuje ona wywołania serwera interfejsu API z każdego węzła > w klastrze w celu przeprowadzenia tego wzbogacania. Ta opcja umożliwia również zwiększenie rozmiaru danych dla każdej zebranej linii dziennika.
 
 ## <a name="can-i-view-metrics-collected-in-grafana"></a>Czy można wyświetlić metryki zebrane w Grafana?
 
-Azure Monitor dla kontenerów obsługuje wyświetlanie metryk przechowywanych w obszarze roboczym Log Analytics na pulpitach nawigacyjnych Grafana. Podano szablon, który można pobrać z [repozytorium pulpitu nawigacyjnego](https://grafana.com/grafana/dashboards?dataSource=grafana-azure-monitor-datasource&category=docker) Grafana, aby rozpocząć pracę i zapoznać się z pomocą techniczną, aby dowiedzieć się, jak wykonywać zapytania dotyczące dodatkowych danych z monitorowanych klastrów w celu wizualizacji w niestandardowych Grafana pulpitów nawigacyjnych. 
+Azure Monitor dla kontenerów obsługuje wyświetlanie metryk przechowywanych w obszarze roboczym Log Analytics na pulpitach nawigacyjnych Grafana. Podano szablon, który można pobrać z [repozytorium pulpitu nawigacyjnego](https://grafana.com/grafana/dashboards?dataSource=grafana-azure-monitor-datasource&category=docker) Grafana, aby rozpocząć pracę i zapoznać się z pomocą techniczną, aby dowiedzieć się, jak wykonywać zapytania dotyczące dodatkowych danych z monitorowanych klastrów w celu wizualizowania niestandardowych pulpitów nawigacyjnych Grafana. 
 
 ## <a name="can-i-monitor-my-aks-engine-cluster-with-azure-monitor-for-containers"></a>Czy mogę monitorować klaster AKS-Engine z Azure Monitor dla kontenerów?
 
@@ -88,4 +125,4 @@ Zapoznaj się z [wymaganiami dotyczącymi zapory sieciowej](container-insights-o
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby rozpocząć monitorowanie klastra AKS, zapoznaj się z [tematem jak dołączyć Azure monitor dla kontenerów](container-insights-onboard.md) , aby zrozumieć wymagania i dostępne metody umożliwiające monitorowanie. 
+Aby rozpocząć monitorowanie klastra usługi AKS, zapoznaj się z [sposób dołączania Azure Monitor wykrywający sytuacje, kontenery](container-insights-onboard.md) , aby zrozumieć wymagania i dostępnych metod, aby włączyć monitorowanie. 

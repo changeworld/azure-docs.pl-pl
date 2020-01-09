@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: wizualizacja anomalii danych w zdarzeniach w czasie rzeczywistym — Event Hubs platformy Azure'
+title: Azure Event Hubs — Wizualizuj anomalie danych w zdarzeniach w czasie rzeczywistym
 description: 'Samouczek: Wizualizuj anomalie danych w zdarzeniach w czasie rzeczywistym wysyłanych do Microsoft Azure Event Hubs'
 services: event-hubs
 author: ShubhaVijayasarathy
@@ -8,13 +8,13 @@ ms.author: shvija
 ms.topic: tutorial
 ms.service: event-hubs
 ms.custom: seodec18
-ms.date: 11/05/2019
-ms.openlocfilehash: 3e228fb9d4223ad1d6d906b44ab63c35600faa56
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.date: 12/20/2019
+ms.openlocfilehash: 1fc791519fd32b35bdbe3a69caec3c64e3ce3178
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74307343"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437146"
 ---
 # <a name="tutorial-visualize-data-anomalies-in-real-time-events-sent-to-azure-event-hubs"></a>Samouczek: wizualizowanie anomalii dotyczących danych w zdarzeniach w czasie rzeczywistym wysyłanych do usługi Azure Event Hubs
 
@@ -22,7 +22,7 @@ Dzięki usłudze Azure Event Hubs można za pomocą usługi Azure Stream Analyti
 
 W tym samouczku przeprowadzamy symulację takiej sytuacji. Możesz uruchomić aplikację, która tworzy i wysyła transakcje kart kredytowych do centrum zdarzeń. Później odczytać strumień danych w czasie rzeczywistym za pomocą usługi Azure Stream Analytics, która oddzieli prawidłowe transakcje od transakcji nieprawidłowych, a następnie użyć usługi Power BI, aby wizualnie zidentyfikować transakcje, które zostaną oznaczone jako nieprawidłowe.
 
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 > [!div class="checklist"]
 > * Tworzenie przestrzeni nazw usługi Event Hubs
 > * Tworzenie centrum zdarzeń
@@ -38,7 +38,7 @@ Do wykonania kroków tego samouczka potrzebna jest subskrypcja platformy Azure. 
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-- Zainstalować program [Visual Studio](https://www.visualstudio.com/). 
+- Instalacja programu [Visual Studio](https://www.visualstudio.com/). 
 - Aby analizować dane wyjściowe z zadania usługi Stream Analytics, potrzebne jest konto usługi Power BI. Możesz [wypróbować bezpłatnie usługę Power BI](https://app.powerbi.com/signupredirect?pbi_source=web).
 
 ## <a name="set-up-resources"></a>Konfigurowanie zasobów
@@ -47,7 +47,7 @@ W tym samouczku potrzebujesz przestrzeni nazw usługi Event Hubs i centrum zdarz
 
 W poniższych sekcjach opisano sposób wykonywania tych wymaganych czynności. Postępuj zgodnie z instrukcjami dotyczącymi interfejsu wiersza polecenia *lub* programu PowerShell, aby wykonać następujące czynności:
 
-1. Utwórz [grupę zasobów](../azure-resource-manager/resource-group-overview.md). 
+1. Utwórz [grupę zasobów](../azure-resource-manager/management/overview.md). 
 
 2. Utwórz przestrzeń nazw usługi Event Hubs. 
 
@@ -186,7 +186,7 @@ Teraz możesz przesyłać strumieniowo dane do centrum zdarzeń. Aby użyć tych
 
    ![Zrzut ekranu pokazujący sposób tworzenia nowego zadania usługi Azure Stream Analytics.](./media/event-hubs-tutorial-visualize-anomalies/stream-analytics-add-job.png)
 
-    Zaakceptuj wartości domyślne w pozostałych polach. Kliknij pozycję **Utwórz**. 
+    Zaakceptuj wartości domyślne w pozostałych polach. Kliknij przycisk **Utwórz**. 
 
 ### <a name="add-an-input-to-the-stream-analytics-job"></a>Dodawanie danych wejściowych do zadania usługi Stream Analytics
 

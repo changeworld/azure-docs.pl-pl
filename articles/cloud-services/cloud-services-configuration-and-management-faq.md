@@ -1,5 +1,6 @@
 ---
-title: Problemy związane z konfiguracją i zarządzaniem Microsoft Azure Cloud Services często zadawane pytania | Microsoft Docs
+title: Problemy z konfiguracją i zarządzaniem — często zadawane pytania
+titleSuffix: Azure Cloud Services
 description: Ten artykuł zawiera listę często zadawanych pytań dotyczących konfiguracji i zarządzania dla Microsoft Azure Cloud Services.
 services: cloud-services
 documentationcenter: ''
@@ -14,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
-ms.openlocfilehash: 704d6d4a12550507a8e38be4777e5abc7b57fe74
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 47a75d10f6016eb49061f9e7158b00899a387f2f
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73161768"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75660617"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Problemy związane z konfiguracją i zarządzaniem w usłudze Azure Cloud Services: często zadawane pytania
 
@@ -135,7 +136,7 @@ Przekroczono limit przydziału magazynu lokalnego do zapisu w katalogu dziennik�
 * Ręcznie usuń pliki dziennika z katalogu rejestrowania.
 * Zwiększ limit przydziału dla zasobów lokalnych.
 
-Aby uzyskać więcej informacji, zobacz następujące dokumenty:
+Więcej informacji można znaleźć w następujących dokumentach:
 * [Przechowywanie i przeglądanie danych diagnostycznych w usłudze Azure Storage](cloud-services-dotnet-diagnostics-storage.md)
 * [Dzienniki usług IIS zatrzymują zapisywanie w usłudze w chmurze](https://blogs.msdn.microsoft.com/cie/2013/12/21/iis-logs-stops-writing-in-cloud-service/)
 
@@ -189,7 +190,7 @@ Firma Microsoft stale monitoruje serwery, sieci i aplikacje w celu wykrywania za
 Systemy Windows 10 i Windows Server 2016 są dostarczane z obsługą protokołu HTTP/2 zarówno po stronie klienta, jak i serwera. Jeśli klient (przeglądarka) nawiązuje połączenie z serwerem IIS za pośrednictwem protokołu TLS, który negocjuje protokół HTTP/2 za pośrednictwem rozszerzeń TLS, nie trzeba wprowadzać żadnych zmian po stronie serwera. Wynika to z faktu, że za pośrednictwem protokołu TLS jest domyślnie wysyłany nagłówek H2-14 określający użycie protokołu HTTP/2. Jeśli z drugiej strony klient wysyła nagłówek uaktualnienia w celu uaktualnienia do protokołu HTTP/2, należy wprowadzić zmianę poniżej na stronie serwera, aby upewnić się, że uaktualnienie działa i zostanie zakończone połączenie HTTP/2. 
 
 1. Uruchom regedit. exe.
-2. Przejdź do klucza rejestru: HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HTTP\Parameters.
+2. Przejdź do klucza rejestru: HKEY_LOCAL_MACHINE \SYSTEM\CurrentControlSet\Services\HTTP\Parameters.
 3. Utwórz nową wartość DWORD o nazwie **DuoEnabled**.
 4. Ustaw jej wartość na 1.
 5. Uruchom ponownie serwer.
@@ -197,7 +198,7 @@ Systemy Windows 10 i Windows Server 2016 są dostarczane z obsługą protokołu 
 
 Aby uzyskać więcej informacji, zobacz:
 
-- [Protokół HTTP/2 w usługach IIS](https://blogs.iis.net/davidso/http2)
+- [Protokołu HTTP/2 w programie IIS](https://blogs.iis.net/davidso/http2)
 - [Wideo: HTTP/2 w systemie Windows 10: przeglądarka, aplikacje i serwer sieci Web](https://channel9.msdn.com/Events/Build/2015/3-88)
          
 
@@ -249,7 +250,7 @@ Aby uzyskać więcej informacji na temat włączania Application Insights dla Cl
 
 Aby uzyskać więcej informacji na temat włączania rejestrowania Diagnostyka Azure dla Cloud Services, zobacz [Konfigurowanie diagnostyki dla Cloud Services platformy Azure i maszyn wirtualnych](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines#turn-on-diagnostics-in-cloud-service-projects-before-you-deploy-them)
 
-## <a name="generic"></a>Ogólnego
+## <a name="generic"></a>Ogólny
 
 ### <a name="how-do-i-add-nosniff-to-my-website"></a>Jak mogę dodać "nowykrywanie" do mojej witryny sieci Web?
 Aby uniemożliwić klientom wykrywanie typów MIME, Dodaj ustawienie w pliku *Web. config* .
@@ -276,7 +277,7 @@ Można go również dodać jako ustawienia w usługach IIS. Użyj następująceg
 Użyj skryptu uruchamiania usług IIS z artykułu [typowe zadania uruchamiania](cloud-services-startup-tasks-common.md#configure-iis-startup-with-appcmdexe) .
 
 ### <a name="what-is-the-quota-limit-for-my-cloud-service"></a>Jaki jest limit przydziału dla usługi w chmurze?
-Zobacz [limity dotyczące usługi](../azure-subscription-service-limits.md#subscription-limits).
+Zobacz [limity dotyczące usługi](../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits).
 
 ### <a name="why-does-the-drive-on-my-cloud-service-vm-show-very-little-free-disk-space"></a>Dlaczego dysk na maszynie wirtualnej usługi w chmurze pokazuje bardzo mało wolnego miejsca na dysku?
 Jest to oczekiwane zachowanie i nie powinno spowodować jakiegokolwiek problemu dla aplikacji. Funkcja rejestrowania jest włączona dla dysku% głównego aplikacji% na maszynach wirtualnych usługi Azure PaaS, które zasadniczo zużywają dwukrotnie ilość miejsca, w którym zwykle zajmują się pliki. Należy jednak pamiętać o kilku kwestiach, które zasadniczo przenoszą tę funkcję na nieemisyjną.

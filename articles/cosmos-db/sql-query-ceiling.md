@@ -1,18 +1,18 @@
 ---
 title: PUŁAP w Azure Cosmos DB języku zapytań
-description: Dowiedz się, w jaki sposób Funkcja systemowa SQL sufit w Azure Cosmos DB zwraca wartość główną styczną ARC dla osi y/x, wyrażoną w radianach
+description: Dowiedz się, jak Funkcja systemowa SQL sufit w Azure Cosmos DB zwraca najmniejszą liczbę całkowitą większą lub równą określonemu wyrażeniu liczbowym.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 18462b152b698e7c6bc4c6c1e59511b4bacaa611
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 2da7820a6c9f1f90585b4deb605bb99c7580b0e5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873441"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444802"
 ---
 # <a name="ceiling-azure-cosmos-db"></a>GÓRNy limit (Azure Cosmos DB)
  Zwraca najmniejszą wartość całkowitą równą określonemu wyrażeniu liczbowemu lub większą.  
@@ -40,7 +40,7 @@ CEILING (<numeric_expr>)
 SELECT CEILING(123.45) AS c1, CEILING(-123.45) AS c2, CEILING(0.0) AS c3  
 ```  
   
- W tym miejscu znajduje się zestaw wyników.  
+ Tutaj znajduje się zestaw wyników.  
   
 ```json
 [{c1: 124, c2: -123, c3: 0}]  

@@ -1,7 +1,7 @@
 ---
-title: 'Szybki Start: Content Moderatora Biblioteka kliencka dla języka Python | Microsoft Docs'
+title: 'Szybki Start: Content Moderatora Biblioteka kliencka dla języka Python'
 titleSuffix: Azure Cognitive Services
-description: Dowiedz się, jak rozpocząć pracę z biblioteką kliencką Content Moderator Cognitive Services platformy Azure dla języka Python.
+description: W tym przewodniku szybki start dowiesz się, jak rozpocząć pracę z biblioteką kliencką Content Moderator Cognitive Services platformy Azure dla języka Python.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: quickstart
 ms.date: 10/25/2019
 ms.author: pafarley
-ms.openlocfilehash: ee3f59bc9e9f8c7950d005b16433cde9267fea9a
-ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.openlocfilehash: 931e6e35df520f4a0ab35dfb6067654f9d08ed9d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74538999"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448273"
 ---
 # <a name="quickstart-content-moderator-client-library-for-python"></a>Szybki Start: Content Moderatora Biblioteka kliencka dla języka Python
 

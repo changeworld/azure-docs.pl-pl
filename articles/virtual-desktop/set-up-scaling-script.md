@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 10/02/2019
+ms.date: 12/10/2019
 ms.author: helohr
-ms.openlocfilehash: 744f7d5c191180757620e87d926422c9f1e0baba
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: a991a41466d216b9f245c20dbd8054f3ae5ef3d0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607454"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75451338"
 ---
 # <a name="scale-session-hosts-dynamically"></a>Dynamiczne skalowanie hostów sesji
 
@@ -50,7 +50,7 @@ Najpierw Przygotuj środowisko do skalowania skryptu:
 
 1. Zaloguj się do maszyny wirtualnej (maszyny wirtualnej skalowania), która uruchomi zaplanowane zadanie przy użyciu konta administratora domeny.
 2. Utwórz folder na maszynie wirtualnej skalowania, aby przechowywać skrypt skalowania i jego konfigurację (na przykład **C:\\skalowanie-HostPool1**).
-3. Pobierz pliki **basicScale. ps1**, **config. XML**i **Functions-PSStoredCredentials. ps1** oraz folder **PowershellModules** z [repozytorium skryptów skalowania](https://github.com/Azure/RDS-Templates/tree/master/wvd-sh/WVD%20scaling%20script) i skopiuj je do folderu utworzonego w kroku 2. Istnieją dwa podstawowe sposoby uzyskiwania plików przed skopiowaniem ich do maszyny wirtualnej skalowania:
+3. Pobierz pliki **basicScale. ps1**, **config. JSON**i **Functions-PSStoredCredentials. ps1** oraz folder **PowershellModules** z [repozytorium skryptów skalowania](https://github.com/Azure/RDS-Templates/tree/master/wvd-sh/WVD%20scaling%20script) i skopiuj je do folderu utworzonego w kroku 2. Istnieją dwa podstawowe sposoby uzyskiwania plików przed skopiowaniem ich do maszyny wirtualnej skalowania:
     - Sklonuj repozytorium Git na komputerze lokalnym.
     - Wyświetl **nieprzetworzoną** wersję każdego pliku, skopiuj i wklej zawartość każdego pliku do edytora tekstów, a następnie Zapisz pliki z odpowiadającą jej nazwą i typem pliku. 
 
@@ -73,13 +73,13 @@ Następnie musisz utworzyć bezpieczne przechowywane poświadczenia:
     ```
     
     Na przykład **\\: Set-Variable-Name Path-Scope Global-Value**
-5. Uruchom polecenie **New-StoredCredential-path \$** polecenia cmdlet. Po wyświetleniu monitu wprowadź poświadczenia pulpitu wirtualnego systemu Windows z uprawnieniami do wysyłania zapytań do puli hostów (Pula hostów jest określona w **pliku config. XML**).
+5. Uruchom polecenie **New-StoredCredential-path \$** polecenia cmdlet. Po wyświetleniu monitu wprowadź poświadczenia pulpitu wirtualnego systemu Windows z uprawnieniami do wysyłania zapytań do puli hostów (Pula hostów jest określona w **pliku config. JSON**).
     - Jeśli używasz różnych nazw głównych usług lub kont standardowych, uruchom polecenie cmdlet **New-StoredCredential-path \$** raz dla każdego konta, aby utworzyć lokalne, przechowywane poświadczenia.
 6. Uruchom **Get-StoredCredential-list** , aby potwierdzić, że poświadczenia zostały pomyślnie utworzone.
 
-### <a name="configure-the-configxml-file"></a>Konfiguruj plik config. XML
+### <a name="configure-the-configjson-file"></a>Konfiguruj plik config. JSON
 
-Wprowadź odpowiednie wartości w poniższych polach, aby zaktualizować ustawienia skalowania skryptu w pliku config. XML:
+Wprowadź odpowiednie wartości w poniższych polach, aby zaktualizować ustawienia skalowania skryptu w pliku config. JSON:
 
 | Pole                     | Opis                    |
 |-------------------------------|------------------------------------|
@@ -103,7 +103,7 @@ Wprowadź odpowiednie wartości w poniższych polach, aby zaktualizować ustawie
 
 ### <a name="configure-the-task-scheduler"></a>Skonfiguruj Harmonogram zadań
 
-Po skonfigurowaniu pliku Configuration. XML należy skonfigurować Harmonogram zadań do uruchamiania pliku basicScaler. ps1 w regularnych odstępach czasu.
+Po skonfigurowaniu pliku JSON konfiguracji należy skonfigurować Harmonogram zadań do uruchamiania pliku basicScaler. ps1 w regularnych odstępach czasu.
 
 1. Rozpocznij **harmonogram zadań**.
 2. W oknie **harmonogram zadań** wybierz pozycję **Utwórz zadanie...**
@@ -117,13 +117,13 @@ Po skonfigurowaniu pliku Configuration. XML należy skonfigurować Harmonogram z
 
 ## <a name="how-the-scaling-script-works"></a>Jak działa skrypt skalowania
 
-Ten skrypt skalowania odczytuje ustawienia z pliku config. XML, włącznie z początkiem i końcem okresu szczytowego użycia w ciągu dnia.
+Ten skrypt skalowania odczytuje ustawienia z pliku config. JSON, w tym początek i koniec okresu szczytowego użycia w ciągu dnia.
 
-W czasie szczytowego użycia skrypt sprawdza bieżącą liczbę sesji i bieżącą uruchomioną wydajność hosta usług pulpitu zdalnego dla każdej puli hostów. Obliczana jest, czy uruchomione maszyny wirtualne hosta sesji mają wystarczającą pojemność do obsługi istniejących sesji na podstawie parametru SessionThresholdPerCPU zdefiniowanego w pliku config. XML. W przeciwnym razie skrypt uruchamia dodatkowe maszyny wirtualne hosta sesji w puli hostów.
+W czasie szczytowego użycia skrypt sprawdza bieżącą liczbę sesji i bieżącą uruchomioną wydajność hosta usług pulpitu zdalnego dla każdej puli hostów. Obliczana jest, czy uruchomione maszyny wirtualne hosta sesji mają wystarczającą pojemność do obsługi istniejących sesji na podstawie parametru SessionThresholdPerCPU zdefiniowanego w pliku config. JSON. W przeciwnym razie skrypt uruchamia dodatkowe maszyny wirtualne hosta sesji w puli hostów.
 
-W czasie użycia poza szczytem skrypt określa, które maszyny wirtualne hosta sesji powinny zostać zamknięte na podstawie parametru MinimumNumberOfRDSH w pliku config. XML. Skrypt skonfiguruje maszyny wirtualne hosta sesji do trybu opróżniania, aby zapobiec nawiązywaniu połączeń z hostami przez nowe sesje. Jeśli ustawisz parametr **LimitSecondsToForceLogOffUser** w pliku config. XML na wartość różną od zera, skrypt wyśle wszystkie aktualnie zalogowanych użytkowników w celu zapisania pracy, zaczekaj na skonfigurowanie czasu, a następnie wymusić wylogowanie się użytkowników. Po wylogowaniu wszystkich sesji użytkownika na maszynie wirtualnej hosta sesji skrypt zostanie zamknięty.
+W czasie użycia poza szczytem skrypt określa, które maszyny wirtualne hosta sesji powinny zostać zamknięte na podstawie parametru MinimumNumberOfRDSH w pliku config. JSON. Skrypt skonfiguruje maszyny wirtualne hosta sesji do trybu opróżniania, aby zapobiec nawiązywaniu połączeń z hostami przez nowe sesje. Jeśli parametr **LimitSecondsToForceLogOffUser** w pliku config. JSON zostanie ustawiony na wartość różną od zera, skrypt powiadomi wszystkie aktualnie zalogowanych użytkowników o konieczności zapisania pracy, zaczekaj na skonfigurowanie czasu, a następnie wymusić wylogowanie się użytkowników. Po wylogowaniu wszystkich sesji użytkownika na maszynie wirtualnej hosta sesji skrypt zostanie zamknięty.
 
-Jeśli parametr **LimitSecondsToForceLogOffUser** w pliku config. XML zostanie ustawiony na wartość zero, skrypt zezwoli na ustawienie konfiguracja sesji we właściwościach puli hostów do obsługi wylogowywania sesji użytkowników. Jeśli na maszynie wirtualnej hosta sesji znajdują się jakieś sesje, spowoduje to pozostawienie uruchomionej maszyny wirtualnej hosta sesji. Jeśli nie ma żadnych sesji, skrypt wyłączy maszynę wirtualną hosta sesji.
+Jeśli parametr **LimitSecondsToForceLogOffUser** w pliku config. JSON zostanie ustawiony na wartość zero, skrypt zezwoli na ustawienie konfiguracja sesji we właściwościach puli hostów do obsługi wylogowywania sesji użytkowników. Jeśli na maszynie wirtualnej hosta sesji znajdują się jakieś sesje, spowoduje to pozostawienie uruchomionej maszyny wirtualnej hosta sesji. Jeśli nie ma żadnych sesji, skrypt wyłączy maszynę wirtualną hosta sesji.
 
 Skrypt jest przeznaczony do okresowego uruchamiania na serwerze maszyn wirtualnych skalowania przy użyciu Harmonogram zadań. Wybierz odpowiedni przedział czasu na podstawie rozmiaru środowiska Usługi pulpitu zdalnego i pamiętaj, że uruchamianie i zamykanie maszyn wirtualnych może zająć trochę czasu. Zalecamy uruchamianie skryptu skalowania co 15 minut.
 

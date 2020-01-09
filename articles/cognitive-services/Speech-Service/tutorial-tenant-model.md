@@ -1,7 +1,7 @@
 ---
 title: Tworzenie modelu dzierżawy (wersja zapoznawcza) — usługa mowy
 titleSuffix: Azure Cognitive Services
-description: Automatycznie Generuj model dzierżawców (Custom Speech z danymi pakietu Office 365), które wykorzystują dane z pakietu Office 365 w celu zapewnienia optymalnego rozpoznawania mowy w przypadku warunków, które są bezpieczne i zgodne.
+description: Automatyczne generowanie bezpiecznego, zgodnego modelu dzierżawców (Custom Speech z danymi pakietu Office 365) korzystającego z danych pakietu Office 365 w celu zapewnienia optymalnego rozpoznawania mowy dla warunków specyficznych dla organizacji.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,95 +10,101 @@ ms.subservice: speech-service
 ms.topic: tutorial
 ms.date: 10/26/2019
 ms.author: erhopf
-ms.openlocfilehash: 8ca31dcadebf2dc47d5a4b4db715f26fb38e204e
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 4fec6b93ad206ae3052df5f7763f3c146b7aa680
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74816385"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446798"
 ---
-# <a name="create-a-tenant-model-preview"></a>Tworzenie modelu dzierżawy (wersja zapoznawcza)
+# <a name="tutorial-create-a-tenant-model-preview"></a>Samouczek: Tworzenie modelu dzierżawy (wersja zapoznawcza)
 
-Model dzierżawy (Custom Speech z danymi pakietu Office 365) to usługa w przypadku klientów z pakietem Office 365 Enterprise, która automatycznie generuje niestandardowy model rozpoznawania mowy na podstawie danych w organizacji. Tworzony model jest zoptymalizowany pod kątem warunków technicznych, żargon i nazwisk osób, a wszystko to w bezpieczny i zgodny sposób.
+Model dzierżawy (Custom Speech z danymi pakietu Office 365) to usługa w przypadku klientów z pakietem Office 365 Enterprise, która automatycznie generuje niestandardowy model rozpoznawania mowy na podstawie danych z pakietu Office 365 w organizacji. Model jest zoptymalizowany pod kątem warunków technicznych, żargon i nazwisk osób, a wszystko to w bezpieczny i zgodny sposób.
 
 > [!IMPORTANT]
-> Jeśli Twoja organizacja rejestruje się w modelu dzierżawy, usługa mowy może uzyskać dostęp do modelu języka w organizacji, który jest generowany 365 na podstawie publicznych grup poczty e-mail i dokumentów, które mogą być widoczne dla wszystkich użytkowników w organizacji. Administrator programu Office 365 w organizacji może włączyć/wyłączyć użycie modelu języka w całej organizacji przy użyciu portalu administracyjnego pakietu Office 365.
+> Jeśli Twoja organizacja rejestruje się za pomocą usługi modelu dzierżawy, usługa mowy może uzyskać dostęp do modelu języka w organizacji. Model jest generowany na podstawie wiadomości e-mail i dokumentów grup publicznych pakietu Office 365, które mogą być widoczne dla wszystkich użytkowników w organizacji. Administrator usługi Office 365 w organizacji może włączyć lub wyłączyć korzystanie z modelu języka w całej organizacji z poziomu portalu administracyjnego pakietu Office 365.
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
-> * Zarejestruj się, aby korzystać z modelu dzierżawy w centrum administracyjnym Microsoft 365
+> * Rejestrowanie w modelu dzierżawy za pomocą Centrum administracyjnego Microsoft 365
 > * Pobierz klucz subskrypcji mowy
 > * Tworzenie modelu dzierżawy
 > * Wdrażanie modelu dzierżawy
-> * Korzystanie z modelu dzierżawy z zestawem SDK mowy
+> * Korzystanie z modelu dzierżawy za pomocą zestawu Speech SDK
 
-## <a name="enroll-using-the-microsoft-365-admin-center"></a>Rejestrowanie przy użyciu Centrum administracyjnego Microsoft 365
+## <a name="enroll-in-the-tenant-model-service"></a>Rejestrowanie w usłudze modelu dzierżawy
 
-Przed wdrożeniem modelu dzierżawy należy najpierw zarejestrować się przy użyciu Centrum administracyjnego Microsoft 365. To zadanie można wykonać tylko przez administratora Microsoft 365.
+Aby można było wdrożyć model dzierżawy, należy zarejestrować się w usłudze modelu dzierżawy. Rejestracja została zakończona w centrum administracyjnym Microsoft 365 i może być wykonana tylko przez administratora Microsoft 365.
 
-1. Zaloguj się do [Centrum administracyjnego Microsoft 365](https://admin.microsoft.com ).
-2. W lewym panelu wybierz kolejno pozycje **Ustawienia** i **aplikacje**.
+1. Zaloguj się do [centrum administracyjnego usługi Microsoft 365](https://admin.microsoft.com).
 
-   ![Rejestracja modelu dzierżawy](media/tenant-language-model/tenant-language-model-enrollment.png)
+1. W lewym okienku wybierz pozycję **Ustawienia**, wybierz pozycję **aplikacje**, a następnie wybierz pozycję **Azure Speech Services**.
 
-3. Znajdź i wybierz pozycję **Azure Speech Services**.
+   ![Okienko "usługi & Dodatki"](media/tenant-language-model/tenant-language-model-enrollment.png)
 
-   ![Rejestracja modelu dzierżawy 2](media/tenant-language-model/tenant-language-model-enrollment-2.png)
+1. Zaznacz pole wyboru **Zezwalaj na model języka w całej organizacji** , a następnie wybierz pozycję **Zapisz zmiany**. 
 
-4. Kliknij pole wyboru i Zapisz.
+   ![Okienko usługi Azure Speech Services](media/tenant-language-model/tenant-language-model-enrollment-2.png)
 
-Jeśli musisz wyłączyć model dzierżawców, przejdź z powrotem do tego ekranu, usuń zaznaczenie pola wyboru i Zapisz.
+Aby wyłączyć wystąpienie modelu dzierżawy:
+1. Powtórz powyższe kroki 1 i 2.
+1. Wyczyść pole wyboru **Zezwalaj na model języka w całej organizacji** , a następnie wybierz pozycję **Zapisz zmiany**.
 
 ## <a name="get-a-speech-subscription-key"></a>Pobierz klucz subskrypcji mowy
 
-Aby można było używać modelu dzierżawy z zestawem SDK mowy, potrzebny będzie zasób mowy i skojarzony z nim klucz subskrypcji.
+Aby korzystać z modelu dzierżawy z zestawem SDK mowy, potrzebujesz zasobu mowy i skojarzonego z nim klucza subskrypcji.
 
-1. Zaloguj się do [Azure Portal](https://aka.ms/azureportal).
-2. Wybierz pozycję **Utwórz zasób**.
-3. Na pasku wyszukiwania wpisz: **Speech**.
-4. Wybierz pozycję **Speech**, a następnie kliknij pozycję **Utwórz**.
-5. Postępuj zgodnie z instrukcjami wyświetlanymi na ekranie, aby utworzyć zasób. Upewnij się:
+1. Zaloguj się do [portalu Azure](https://aka.ms/azureportal).
+1. Wybierz pozycję **Utwórz zasób**.
+1. W polu **wyszukiwania** wpisz **Speech**.
+1. Na liście wyników wybierz pozycję **Speech**, a następnie wybierz pozycję **Utwórz**.
+1. Postępuj zgodnie z instrukcjami wyświetlanymi na ekranie, aby utworzyć zasób. Upewnij się, że:
    * **Lokalizacja** jest ustawiona na **Wschodnie** lub **zachodnie**.
    * **Warstwa cenowa** jest ustawiona na **S0**.
-6. Kliknij przycisk **Utwórz**.
-7. Po kilku minutach zasób zostanie utworzony. Klucz subskrypcji jest dostępny w sekcji **Przegląd** dla zasobu.
+1. Wybierz pozycję **Utwórz**.
 
-## <a name="create-a-model"></a>Tworzenie modelu
+   Po kilku minutach zasób zostanie utworzony. Klucz subskrypcji jest dostępny w sekcji **Przegląd** dla zasobu.
 
-Gdy administrator włączył model dzierżawy dla Twojej organizacji, możesz utworzyć model języka oparty na danych usługi Office 365.
+## <a name="create-a-language-model"></a>Tworzenie modelu języka
+
+Gdy administrator włączył model dzierżawy dla Twojej organizacji, możesz utworzyć model języka oparty na danych pakietu Office 365.
 
 1. Zaloguj się do programu [Speech Studio](https://speech.microsoft.com/).
-2. W prawym górnym rogu Znajdź i kliknij ikonę koła zębatego (Ustawienia), a następnie wybierz pozycję **Ustawienia modelu dzierżawy**.
+1. W prawym górnym rogu wybierz pozycję **Ustawienia** (ikona koła zębatego), a następnie wybierz pozycję **Ustawienia modelu dzierżawy**.
 
-   ![Menu ustawień](media/tenant-language-model/tenant-language-settings.png)
+   ![Łącze "ustawienia modelu dzierżawy"](media/tenant-language-model/tenant-language-settings.png)
 
-3. W tym momencie zobaczysz komunikat informujący o tym, że masz kwalifikacje do utworzenia modelu dzierżawy.
+   Speech Studio wyświetla komunikat informujący o tym, czy masz kwalifikacje do utworzenia modelu dzierżawy.
+
    > [!NOTE]
-   > Klienci korzystający z pakietu Office 365 Enterprise w Ameryka Północna mogą tworzyć model dzierżawy (angielski). Jeśli jesteś Skrytka klienta (CLB), Customer Key (SOCZEWK) lub Office 365 dla instytucji rządowych, ta funkcja jest niedostępna. Aby określić, czy jesteś klientem z kluczem Skrytka klienta lub klientem, wykonaj następujące instrukcje:
+   > Klienci korzystający z pakietu Office 365 Enterprise w Ameryka Północna mogą tworzyć model dzierżawy (angielski). Jeśli jesteś Skrytka klientam, kluczem klienta lub klientem programu Office 365 dla instytucji rządowych, ta funkcja jest niedostępna. Aby określić, czy jesteś klientem z kluczem Skrytka klienta lub klientem, zobacz:
    > * [Skrytka klienta](https://docs.microsoft.com/office365/securitycompliance/controlling-your-data-using-customer-key#FastTrack)
    > * [Klucz klienta](https://docs.microsoft.com/microsoft-365/compliance/customer-lockbox-requests)
    > * [Pakiet Office 365 dla instytucji rządowych](https://www.microsoft.com/microsoft-365/government)
 
-4. Następnie wybierz pozycję zgadzam **się**. Gdy model dzierżawy jest gotowy, otrzymasz wiadomość e-mail z instrukcjami.
+1. Wybierz pozycję **Wyraź zgodę**. 
 
-## <a name="deploy-your-model"></a>Wdrażanie modelu
+   Gdy model dzierżawy jest gotowy, otrzymasz wiadomość e-mail z potwierdzeniem z dodatkowymi instrukcjami.
 
-Gdy model dzierżawy jest gotowy, wykonaj następujące kroki, aby wdrożyć model:
+## <a name="deploy-your-tenant-model"></a>Wdróż model dzierżawy
 
-1. Kliknij przycisk **Wyświetl model** w otrzymanej wiadomości e-mail z potwierdzeniem lub Zaloguj się do programu [Speech Studio](https://speech.microsoft.com/).
-2. W prawym górnym rogu Znajdź i kliknij ikonę koła zębatego (Ustawienia), a następnie wybierz pozycję **Ustawienia modelu dzierżawy**.
+Gdy wystąpienie modelu dzierżawy jest gotowe, wdróż je, wykonując następujące czynności:
 
-   ![Menu ustawień](media/tenant-language-model/tenant-language-settings.png)
+1. W wiadomości e-mail z potwierdzeniem wybierz przycisk **Wyświetl model** . Lub Zaloguj się do programu [Speech Studio](https://speech.microsoft.com/).
+1. W prawym górnym rogu wybierz pozycję **Ustawienia** (ikona koła zębatego), a następnie wybierz pozycję **Ustawienia modelu dzierżawy**.
 
-3. Kliknij przycisk **Deploy (Wdróż)** .
-4. Po wdrożeniu modelu stan zmieni się na **wdrożone**.
+   ![Łącze "ustawienia modelu dzierżawy"](media/tenant-language-model/tenant-language-settings.png)
 
-## <a name="use-your-model-with-the-speech-sdk"></a>Korzystanie z modelu za pomocą zestawu Speech SDK
+1. Wybierz pozycję **Wdróż**.
 
-Teraz, gdy już wdrożono model, możesz go używać z zestawem Speech SDK. W tej sekcji użyjesz przykładowego kodu do wywołania usługi mowy przy użyciu uwierzytelniania usługi Azure AD.
+   Po wdrożeniu modelu stan zmieni się na *wdrożone*.
 
-Przyjrzyjmy się kodowi, który będzie używany do wywoływania zestawu Speech SDK C#w programie. W tym przykładzie wykonasz rozpoznawanie mowy przy użyciu modelu dzierżawy. W tym przewodniku zakłada się, że platforma została już skonfigurowana. Jeśli potrzebujesz pomocy przy konfigurowaniu, zobacz [Szybki Start: Rozpoznawanie mowy, C# (.NET Core)](quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnetcore).
+## <a name="use-your-tenant-model-with-the-speech-sdk"></a>Korzystanie z modelu dzierżawy za pomocą zestawu Speech SDK
+
+Teraz, gdy już wdrożono model, możesz go używać z zestawem Speech SDK. W tej sekcji użyto przykładowego kodu do wywołania usługi mowy przy użyciu uwierzytelniania Azure Active Directory (Azure AD).
+
+Przyjrzyjmy się kodowi, który będzie używany do wywoływania zestawu Speech SDK C#w programie. W tym przykładzie wykonujesz rozpoznawanie mowy przy użyciu modelu dzierżawy. W tym przewodniku zakłada się, że platforma została już skonfigurowana. Jeśli potrzebujesz pomocy dotyczącej konfiguracji, zobacz [Szybki Start: Rozpoznawanie C# mowy, (.NET Core)](quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnetcore).
 
 Skopiuj ten kod do projektu:
 
@@ -117,7 +123,7 @@ namespace PrincetonSROnly.FrontEnd.Samples
     using Microsoft.IdentityModel.Clients.ActiveDirectory;
     using Newtonsoft.Json.Linq;
 
-    // Note: ServiceApplicationId is a fixed value.  No need to change.
+    // ServiceApplicationId is a fixed value. No need to change it.
 
     public class TenantLMSample
     {
@@ -281,18 +287,21 @@ namespace PrincetonSROnly.FrontEnd.Samples
 }
 ```
 
-Następnie należy ponownie skompilować i uruchomić projekt z wiersza polecenia. Istnieje kilka parametrów, które należy zaktualizować przed uruchomieniem polecenia.
+Następnie należy ponownie skompilować i uruchomić projekt z wiersza polecenia. Przed uruchomieniem polecenia zaktualizuj kilka parametrów, wykonując następujące czynności:
 
 1. Zastąp `<Username>` i `<Password>` wartościami dla prawidłowego użytkownika dzierżawy.
-2. Zastąp `<Subscription-Key>` kluczem subskrypcji dla zasobu mowy. Ta wartość jest dostępna w sekcji **Przegląd** dla zasobu mowy w [Azure Portal](https://aka.ms/azureportal).
-3. Zastąp `<Endpoint-Uri>` następującym punktem końcowym. Upewnij się, że zastąpisz `{your-region}` w regionie, w którym został utworzony zasób mowy. Obsługiwane są następujące regiony: `westus`, `westus2`i `eastus`. Informacje o regionie są dostępne w sekcji **Przegląd** dla zasobu mowy w [Azure Portal](https://aka.ms/azureportal).
+1. Zastąp `<Subscription-Key>` kluczem subskrypcji dla zasobu mowy. Ta wartość jest dostępna w sekcji **Przegląd** dla zasobu mowy w [Azure Portal](https://aka.ms/azureportal).
+1. Zamień `<Endpoint-Uri>` na następujący punkt końcowy. Upewnij się, że zastąpisz `{your region}` w regionie, w którym został utworzony zasób mowy. Obsługiwane są następujące regiony: `westus`, `westus2`i `eastus`. Informacje o regionie są dostępne w sekcji **Przegląd** Twojego zasobu mowy w [Azure Portal](https://aka.ms/azureportal).
    ```
    "wss://{your region}.online.princeton.customspeech.ai/msgraphcustomspeech/conversation/v1".
    ```
-4. Uruchom polecenie:
+1. Uruchom następujące polecenie:
+
    ```bash
    dotnet TenantLMSample.dll --Username=<Username> --Password=<Password> --SubscriptionKey=<Subscription-Key> --EndpointUri=<Endpoint-Uri>
    ```
+
+W tym samouczku przedstawiono sposób użycia danych pakietu Office 365 do tworzenia niestandardowego modelu rozpoznawania mowy, wdrażania go i używania z zestawem Speech SDK.
 
 ## <a name="next-steps"></a>Następne kroki
 

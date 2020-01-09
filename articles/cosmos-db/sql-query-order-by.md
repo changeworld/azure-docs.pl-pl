@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: mjbrown
-ms.openlocfilehash: 14f61d14b59dca4bcf2e0f4b93e918f101a61833
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 5cae2bdd7d1f2f26e626c81ea95d2cee3cc8ae13
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72326849"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444789"
 ---
 # <a name="order-by-clause-in-azure-cosmos-db"></a>Klauzula ORDER BY w Azure Cosmos DB
 
@@ -29,9 +29,9 @@ ORDER BY <sort_specification>
   
 - `<sort_specification>`  
   
-   Określa właściwość lub wyrażenie, dla którego ma zostać posortowany zestaw wyników zapytania. Kolumnę sortowania można określić jako nazwę lub alias właściwości.  
+   Określa właściwość lub wyrażenie do sortowania zestawu wyników zapytania. Kolumnę sortowania można określić jako nazwę lub alias właściwości.  
   
-   Można określić wiele właściwości. Nazwy właściwości muszą być unikatowe. Sekwencja właściwości sortowania w klauzuli ORDER BY definiuje organizację zestawu wyników sortowania. Oznacza to, że zestaw wyników jest sortowany według pierwszej właściwości, a następnie że uporządkowana lista jest posortowana według drugiej właściwości i tak dalej.  
+   Można określić wiele właściwości. Nazwy właściwości muszą być unikatowe. Sekwencja właściwości sortowania w klauzuli ORDER BY definiuje organizację zestawu wyników sortowania. Oznacza to zestaw wyników jest posortowana według pierwszą właściwością, a następnie tego uporządkowana lista jest posortowana według właściwości drugiej i tak dalej.  
   
    Nazwy właściwości, do których odwołuje się klauzula ORDER BY, muszą odpowiadać właściwości na liście wyboru lub do właściwości zdefiniowanej w kolekcji określonej w klauzuli FROM bez żadnych niejasności.  
   
@@ -41,15 +41,18 @@ ORDER BY <sort_specification>
   
 - `<scalar_expression>`  
   
-   Aby uzyskać szczegółowe informacje, zobacz sekcję [wyrażenia skalarne](sql-query-scalar-expressions.md) .  
+   Zobacz [wyrażenia skalarne](sql-query-scalar-expressions.md) sekcji, aby uzyskać szczegółowe informacje.  
   
 - `ASC | DESC`  
   
-   Określa, że wartości w określonej kolumnie powinny być sortowane w kolejności rosnącej lub malejącej. Wartość ASC sortuje od najniższej wartości do najwyższej wartości. Wartość DESC sortuje od największej do najmniejszej wartości. ASC jest domyślną kolejnością sortowania. Wartości null są traktowane jako najniższe możliwe wartości.  
+   Określa, że wartości w określonej kolumnie powinny być sortowane w kolejności rosnącej lub malejącej. ASC sortuje od najniższej do najwyższej wartości. DESC sortuje od najwyższej do najniższej wartości. ASC jest domyślny porządek sortowania. Wartości null są traktowane jako najniższe możliwe wartości.  
   
 ## <a name="remarks"></a>Uwagi  
   
    Klauzula ORDER BY wymaga, aby zasady indeksowania zawierały indeks dla sortowanych pól. Środowisko uruchomieniowe zapytań Azure Cosmos DB obsługuje sortowanie względem nazwy właściwości, a nie do właściwości obliczanych. Azure Cosmos DB obsługuje wiele właściwości ORDER BY. Aby uruchomić zapytanie z wieloma właściwościami ORDER BY, należy zdefiniować [indeks złożony](index-policy.md#composite-indexes) dla sortowanych pól.
+   
+> [!Note] 
+> W przypadku korzystania z zestawu .NET SDK 3.4.0 lub nowszego, jeśli sortowane właściwości dla niektórych dokumentów mogą być niezdefiniowane, należy jawnie utworzyć indeks dla tych właściwości. Domyślne zasady indeksowania nie będą zezwalać na pobieranie dokumentów, w których nie jest zdefiniowana właściwość Sort.
 
 ## <a name="examples"></a>Przykłady
 
@@ -76,7 +79,7 @@ Wyniki są następujące:
     ]
 ```
 
-Poniższe zapytanie pobiera rodzinę `id`s w kolejności ich tworzenia elementów. Element `creationDate` to liczba reprezentująca *czas epoki*lub czas, który upłynął od sty. 1, 1970 w sekundach.
+Poniższe zapytanie pobiera rodzinę `id`s w kolejności ich tworzenia elementów. Element `creationDate` to liczba reprezentująca *czas epoki*lub czas, który upłynął od 1 stycznia 1970 w sekundach.
 
 ```sql
     SELECT f.id, f.creationDate
@@ -99,7 +102,7 @@ Wyniki są następujące:
     ]
 ```
 
-Ponadto możesz zamówić według wielu właściwości. Zapytanie, które porządkuje według wielu właściwości, wymaga [indeksu złożonego](index-policy.md#composite-indexes). Rozważ następujące zapytanie:
+Ponadto możesz zamówić według wielu właściwości. Zapytanie, które porządkuje według wielu właściwości, wymaga [indeksu złożonego](index-policy.md#composite-indexes). Rozpatrzmy następujące zapytanie:
 
 ```sql
     SELECT f.id, f.creationDate
@@ -112,5 +115,5 @@ To zapytanie pobiera rodzinę `id` w kolejności rosnącej według nazwy miasta.
 ## <a name="next-steps"></a>Następne kroki
 
 - [Rozpoczęcie pracy](sql-query-getting-started.md)
-- [SELECT — klauzula](sql-query-select.md)
+- [Klauzula SELECT](sql-query-select.md)
 - [Klauzula limitu przesunięcia](sql-query-offset-limit.md)

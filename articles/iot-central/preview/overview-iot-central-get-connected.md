@@ -3,17 +3,17 @@ title: Łączność urządzeń w usłudze Azure IoT Central | Microsoft Docs
 description: W tym artykule przedstawiono kluczowe pojęcia związane z łącznością urządzeń w usłudze Azure IoT Central
 author: dominicbetts
 ms.author: dobett
-ms.date: 04/09/2019
+ms.date: 12/09/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: ef0e4c9070733266349a37e863c48901eae90c16
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 412a678465589da87c713a55a7b67193b254bf96
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73894593"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434926"
 ---
 # <a name="get-connected-to-azure-iot-central-preview-features"></a>Połączono z usługą Azure IoT Central (funkcje w wersji zapoznawczej)
 
@@ -217,7 +217,7 @@ Poniższa tabela zawiera podsumowanie sposobu mapowania funkcji usługi Azure Io
 
 | Azure IoT Central | Azure IoT Hub |
 | ----------- | ------- |
-| Pomiar: Telemetria | Obsługa komunikatów przesyłanych z urządzeń do chmury |
+| Pomiar: Telemetria | Obsługa komunikatów z urządzenia do chmury |
 | Właściwości urządzenia | Właściwości zgłoszone przez urządzenie |
 | Ustawienia | Wymagane i zgłoszone właściwości dotyczące sznurka urządzenia |
 
@@ -235,7 +235,7 @@ Aby uzyskać informacje o tych protokołach różnicowych i wskazówkach dotycz�
 
 Jeśli urządzenie nie może użyć żadnego z obsługiwanych protokołów, można użyć Azure IoT Edge do konwersji protokołu. IoT Edge obsługuje inne scenariusze analizy w celu odciążenia przetwarzania do krawędzi z aplikacji IoT Central platformy Azure.
 
-## <a name="security"></a>Bezpieczeństwo
+## <a name="security"></a>Zabezpieczenia
 
 Wszystkie dane wymieniane między urządzeniami a IoT Central platformy Azure są szyfrowane. IoT Hub uwierzytelnia każde żądanie z urządzenia, które nawiązuje połączenie z dowolnymi punktami końcowymi IoT Hub z urządzeniem. Aby uniknąć wymiany poświadczeń za pośrednictwem sieci, urządzenie używa podpisanych tokenów do uwierzytelnienia. Aby uzyskać więcej informacji, zobacz [kontrolowanie dostępu do IoT Hub](../../iot-hub/iot-hub-devguide-security.md).
 

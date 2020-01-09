@@ -7,12 +7,12 @@ ms.date: 04/10/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 5703db90307f679ff4728386dc24647437f9f9ba
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: e0dec0a67ed33186797ccec8066aaad89ceb8dcb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974976"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434751"
 ---
 # <a name="how-to-provision-for-multitenancy"></a>Jak zapewnić obsługę wielodostępności 
 
@@ -191,7 +191,6 @@ Aby ułatwić czyszczenie, te maszyny wirtualne zostaną dodane do tej samej gru
 
 W tej sekcji utworzysz zestaw SDK usługi Azure IoT C na każdej maszynie wirtualnej. Zestaw SDK zawiera przykład, który symuluje Inicjowanie obsługi administracyjnej urządzenia z każdego regionu.
 
-
 1. Dla każdej maszyny wirtualnej zainstaluj **CMAKE**, **g + +** , w **zatoce**i [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) przy użyciu następujących poleceń:
 
     ```bash
@@ -199,12 +198,14 @@ W tej sekcji utworzysz zestaw SDK usługi Azure IoT C na każdej maszynie wirtua
     sudo apt-get install cmake build-essential libssl-dev libcurl4-openssl-dev uuid-dev git-all
     ```
 
+1. Znajdź nazwę tagu dla [najnowszej wersji](https://github.com/Azure/azure-iot-sdk-c/releases/latest) zestawu SDK.
 
-1. Sklonuj [zestaw SDK usługi Azure IoT C](https://github.com/Azure/azure-iot-sdk-c) na obu maszynach wirtualnych.
+1. Sklonuj [zestaw SDK usługi Azure IoT C](https://github.com/Azure/azure-iot-sdk-c) na obu maszynach wirtualnych.  Użyj znacznika znalezionego w poprzednim kroku jako wartości parametru `-b`:
 
     ```bash
-    cd ~/
-    git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive
+    git clone -b <release-tag> https://github.com/Azure/azure-iot-sdk-c.git
+    cd azure-iot-sdk-c
+    git submodule update --init
     ```
 
     Należy się spodziewać, że ukończenie operacji potrwa kilka minut.

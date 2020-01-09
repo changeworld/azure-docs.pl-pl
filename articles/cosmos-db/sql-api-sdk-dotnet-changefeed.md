@@ -1,5 +1,5 @@
 ---
-title: 'Azure Cosmos DB: interfejs API procesora kanału zmian platformy .NET, zasoby & zestawu SDK'
+title: Azure Cosmos DB interfejs API procesora źródła zmian platformy .NET, informacje o wersji zestawu SDK
 description: Dowiedz się więcej na temat interfejsu API procesora i zestawu SDK, w tym daty wydania, daty wycofania i zmian wprowadzonych między poszczególnymi wersjami zestawu SDK procesora kanału zmian platformy .NET.
 author: ealsur
 ms.service: cosmos-db
@@ -8,19 +8,19 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 01/30/2019
 ms.author: maquaran
-ms.openlocfilehash: bd727e9c68a34c8e182a6726b257a6bf37178837
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: 9252e3e41d0c639231a2abe20202499c6b3ee32a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74306772"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444856"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>Zestaw SDK procesora kanału informacyjnego platformy .NET: pobieranie i informacje o wersji
 
 > [!div class="op_single_selector"]
 >
 > * [.NET](sql-api-sdk-dotnet.md)
-> * [Źródło zmian platformy .NET](sql-api-sdk-dotnet-changefeed.md)
+> * [Kanał informacyjny zmian .NET](sql-api-sdk-dotnet-changefeed.md)
 > * [.NET Core](sql-api-sdk-dotnet-core.md)
 > * [Node.js](sql-api-sdk-node.md)
 > * [Java (asynchroniczny)](sql-api-sdk-async-java.md)
@@ -34,10 +34,10 @@ ms.locfileid: "74306772"
 
 |   |   |
 |---|---|
-|**Pobieranie zestawu SDK**|[NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.ChangeFeedProcessor/)|
+|**Zestaw SDK do pobrania**|[NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.ChangeFeedProcessor/)|
 |**Dokumentacja interfejsu API**|[Dokumentacja referencyjna interfejsu API biblioteki procesora zmian](/dotnet/api/microsoft.azure.documents.changefeedprocessor?view=azure-dotnet)|
-|**Rozpoczęcie pracy**|[Wprowadzenie do zestawu .NET SDK procesora źródła zmian](change-feed.md)|
-|**Bieżąca obsługiwana platforma**| [Microsoft .NET Framework 4.5](https://www.microsoft.com/download/details.aspx?id=30653)</br> [Microsoft .NET rdzeń](https://www.microsoft.com/net/download/core) |
+|**Wprowadzenie**|[Wprowadzenie do zestawu .NET SDK procesora źródła zmian](change-feed.md)|
+|**Bieżącej struktury obsługiwanej**| [Microsoft .NET Framework 4.5](https://www.microsoft.com/download/details.aspx?id=30653)</br> [Microsoft .NET Core](https://www.microsoft.com/net/download/core) |
 
 > [!NOTE]
 > Jeśli używasz procesora z zestawem danych zmian, zapoznaj się z najnowszą wersją 3. x [zestawu SDK platformy .NET](change-feed-processor.md), który zawiera zestaw SDK ze źródłem zmian. 
@@ -172,7 +172,7 @@ ms.locfileid: "74306772"
 
 ## <a name="release--retirement-dates"></a>Data wycofania &
 
-Firma Microsoft zapewni powiadomienie co najmniej **12 miesięcy** przed WYCOFANIEM zestawu SDK w celu zapewnienia sprawnego przejścia do nowszej/obsługiwanej wersji.
+Firma Microsoft zapewnia powiadomienie co najmniej **12 miesięcy** ewentualnej wycofanie zestawu SDK w celu złagodzenia przejścia do nowszych/obsługiwanych wersji.
 
 Nowe funkcje i funkcje i optymalizacje są dodawane tylko do bieżącego zestawu SDK, dlatego zaleca się, aby zawsze uaktualnić do najnowszej wersji zestawu SDK tak szybko, jak to możliwe. 
 
@@ -187,14 +187,14 @@ Wszelkie żądania do usługi Cosmos DB przy użyciu wycofane zestawu SDK zostan
 | [2.2.6](#2.2.6) |29 stycznia 2019 |--- |
 | [2.2.5](#2.2.5) |13 grudnia 2018 |--- |
 | [2.2.4](#2.2.4) |29 listopada 2018 |--- |
-| [Regulamin](#2.2.3) |19 listopada 2018 r. |--- |
-| [ppkt](#2.2.2) |31 października 2018 |--- |
+| [2.2.3](#2.2.3) |19 listopada 2018 r. |--- |
+| [2.2.2](#2.2.2) |31 października 2018 r. |--- |
 | [2.2.1](#2.2.1) |24 października 2018 r. |--- |
 | [1.3.3](#1.3.3) |Maja 08, 2018 |--- |
-| [1.3.2](#1.3.2) |18 kwietnia 2018 r. |--- |
-| [1.3.1](#1.3.1) |13 marca 2018 r. |--- |
-| [1.2.0](#1.2.0) |Do 31 października 2017 r. |--- |
-| [ppkt](#1.1.1) |29 sierpnia 2017 r. |--- |
+| [1.3.2](#1.3.2) |18 kwietnia 2018 r. |--- |
+| [1.3.1](#1.3.1) |13 marca 2018 r. |--- |
+| [1.2.0](#1.2.0) |31 października 2017 r. |--- |
+| [1.1.1](#1.1.1) |29 sierpnia 2017 r. |--- |
 | [1.1.0](#1.1.0) |13 sierpnia 2017 |--- |
 | [1.0.0](#1.0.0) |07 lipca 2017 |--- |
 
@@ -202,6 +202,6 @@ Wszelkie żądania do usługi Cosmos DB przy użyciu wycofane zestawu SDK zostan
 
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 
-Aby dowiedzieć się więcej na temat Cosmos DB, zobacz stronę usługi [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) .
+Aby dowiedzieć się więcej na temat usługi Cosmos DB, zobacz [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) stronę usługi.

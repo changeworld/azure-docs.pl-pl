@@ -1,17 +1,17 @@
 ---
 title: Obsługa typów zawartości
-description: Dowiedz się, jak Logic Apps obsługuje typy zawartości w czasie projektowania i czasie wykonywania
+description: Dowiedz się, jak obsługiwać różne typy zawartości w przepływach pracy w czasie projektowania i czasie wykonywania w Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 07/20/2018
-ms.openlocfilehash: 75d9285c4a838c2057c0f23841c3a2f465789c7c
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: ae0abe288edda2ce01311d8533b1f104409efce0
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74791522"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666877"
 ---
 # <a name="handle-content-types-in-azure-logic-apps"></a>Obsługa typów zawartości w Azure Logic Apps
 
@@ -59,7 +59,7 @@ Logic Apps oferuje możliwość generowania tokenów przyjaznych dla użytkownik
   
   1. W wyzwalaczu żądania wybierz pozycję **Użyj przykładowego ładunku do wygenerowania schematu**.  
   
-  2. W obszarze **wprowadzanie lub wklejanie przykładowego ładunku JSON**Podaj przykładowy ładunek, a następnie wybierz pozycję **gotowe**. Na przykład: 
+  2. W obszarze **wprowadzanie lub wklejanie przykładowego ładunku JSON**Podaj przykładowy ładunek, a następnie wybierz pozycję **gotowe**. Przykład: 
 
      ![Podaj przykładowy ładunek JSON](./media/logic-apps-content-type/request-trigger.png)
 
@@ -107,11 +107,11 @@ Logic Apps oferuje możliwość generowania tokenów przyjaznych dla użytkownik
   Następnie możesz łatwo odwoływać się do tych właściwości i używać ich w ramach przepływu pracy aplikacji logiki. Podobnie jak w przypadku wyzwalacza żądania, można dostarczyć lub wygenerować schemat JSON, który opisuje zawartość JSON, która ma zostać przeanalizowana. 
   Dzięki temu można łatwiej korzystać z danych z Azure Service Bus, Azure Cosmos DB i tak dalej.
 
-  ![Analiza JSON](./media/logic-apps-content-type/parse-json.png)
+  ![Przeanalizuj dane JSON](./media/logic-apps-content-type/parse-json.png)
 
 <a name="text-plain"></a>
 
-## <a name="textplain"></a>tekst/zwykły
+## <a name="textplain"></a>text/plain
 
 Gdy aplikacja logiki otrzymuje komunikaty HTTP z nagłówkiem `Content-Type` ustawionym na `text/plain`, aplikacja logiki przechowuje te komunikaty w postaci nieprzetworzonej. Jeśli te komunikaty są uwzględniane w kolejnych akcjach bez rzutowania, żądania są przekazywane z nagłówkiem `Content-Type` ustawionym na `text/plain`. 
 

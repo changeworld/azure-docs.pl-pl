@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/05/2016
 ms.author: matd
-ms.openlocfilehash: 85c04b6ea3e40f1f1dcd12eb5d6f4a8f53836867
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 4dcda65384190050e11f1bf9b15c706b0e38c6b3
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "67876785"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75561647"
 ---
 # <a name="storsimple-as-a-backup-target-with-backup-exec"></a>StorSimple jako miejsce docelowe kopii zapasowej przy użyciu programu Backup Exec
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 Azure StorSimple to hybrydowe rozwiązanie do magazynowania w chmurze firmy Microsoft. StorSimpleą w zakresie złożoności wykładniczego wzrostu danych przy użyciu konta usługi Azure Storage jako rozszerzenia rozwiązania lokalnego i automatycznego tworzenia warstw danych w magazynie lokalnym i w magazynie w chmurze.
 
@@ -37,7 +37,7 @@ Informacje przedstawione w tym artykule są najbardziej przydatne dla administra
 
 ## <a name="supported-versions"></a>Obsługiwane wersje
 
--   [Backup Exec 16 i nowsze wersje](http://backupexec.com/compatibility)
+-   [Backup Exec 16 i nowsze wersje](https://www.veritas.com/content/support/en_US/article.100040087)
 -   [StorSimple Update 3 i nowsze wersje](storsimple-overview.md#storsimple-workload-summary)
 
 
@@ -55,8 +55,8 @@ Podobnie jak w przypadku dowolnego rozwiązania magazynu, staranna ocena wydajno
 
 StorSimple zaprojektowano w celu zapewnienia magazynu dla aplikacji, które działają na dobrze zdefiniowanym zestawie roboczym danych (gorącą dane). W tym modelu zestaw roboczy danych jest przechowywany w warstwach lokalnych, a pozostała część danych niepracujących/zimnych/zarchiwizowanych jest warstwą w chmurze. Ten model jest reprezentowany na poniższej ilustracji. Prawie płaski zielony wiersz reprezentuje dane przechowywane w warstwach lokalnych urządzenia StorSimple. Czerwona linia reprezentuje łączną ilość danych przechowywanych w rozwiązaniu StorSimple we wszystkich warstwach. Odstęp między płaską zieloną linią a wykładniczą czerwoną krzywą reprezentuje łączną ilość danych przechowywanych w chmurze.
 
-**Diagram warstwowy**
-![StorSimple warstw StorSimple](./media/storsimple-configure-backup-target-using-backup-exec/image1.jpg)
+**warstw StorSimple**
+![Diagram warstwowy StorSimple](./media/storsimple-configure-backup-target-using-backup-exec/image1.jpg)
 
 W tej architekturze należy zauważyć, że StorSimple idealnie nadaje się do działania jako miejsce docelowe kopii zapasowej. Możesz użyć StorSimple, aby:
 -   Wykonaj najczęstsze przywracanie z lokalnego zestawu roboczego danych.
@@ -73,13 +73,13 @@ StorSimple oferuje następujące korzyści:
 -   Unikatowe algorytmy deduplikacji i kompresji korzystające z chmury w celu osiągnięcia niespotykaną poziomów deduplikacji
 -   Wysoka dostępność
 -   Replikacja geograficzna przy użyciu replikacji geograficznej platformy Azure
--   Integracja z platformą Azure
+-   Integracja z Azure
 -   Szyfrowanie danych w chmurze
 -   Udoskonalone odzyskiwanie po awarii i zgodność
 
 Mimo że StorSimple przedstawia dwa główne scenariusze wdrażania (podstawowa kopia zapasowa i pomocnicza lokalizacja docelowa kopii zapasowej), zasadniczo jest to proste, blokowe urządzenie magazynujące. StorSimple wykonuje całą kompresję i deduplikację. Bezproblemowo wysyła i pobiera dane między chmurą i systemem plików.
 
-Aby uzyskać więcej informacji na temat StorSimple [, zobacz StorSimple 8000 Series: Rozwiązanie](storsimple-overview.md)hybrydowego magazynu w chmurze. Można również przejrzeć [specyfikacje serii StorSimple 8000](storsimple-technical-specifications-and-compliance.md).
+Aby uzyskać więcej informacji na temat StorSimple, zobacz [StorSimple 8000 Series: rozwiązanie hybrydowego magazynu w chmurze](storsimple-overview.md). Można również przejrzeć [specyfikacje serii StorSimple 8000](storsimple-technical-specifications-and-compliance.md).
 
 > [!IMPORTANT]
 > Używanie urządzenia StorSimple jako miejsca docelowego kopii zapasowej jest obsługiwane tylko dla wersji StorSimple 8000 Update 3 i nowszych.
@@ -95,7 +95,7 @@ W poniższych tabelach przedstawiono wskazówki wstępne dotyczące modelu urzą
 | Pojemność magazynu lokalnego | &lt; 10 TiB\*  | &lt; 20 TiB\*  |
 | Pojemność magazynu w chmurze | &gt; 200 TiB\* | &gt; 500 TiB\* |
 
-\*Rozmiar magazynu nie zakłada deduplikacji ani kompresji.
+\* rozmiar magazynu nie zakłada deduplikacji ani kompresji.
 
 **StorSimple pojemności dla podstawowych i pomocniczych kopii zapasowych**
 
@@ -185,7 +185,7 @@ W tej sekcji przedstawiono przykłady konfiguracji. Poniższe przykłady i zalec
 | StorSimple zadania wdrażania  | Dodatkowe komentarze |
 |---|---|
 | Wdróż lokalne urządzenie StorSimple. | Obsługiwane wersje: Update 3 i nowsze wersje. |
-| Włącz miejsce docelowe kopii zapasowej. | Te polecenia służą do włączania lub wyłączania trybu docelowego kopii zapasowej oraz pobierania stanu. Aby uzyskać więcej informacji, zobacz [zdalne nawiązywanie połączenia z urządzeniem StorSimple](storsimple-remote-connect.md).</br> Aby włączyć tryb tworzenia kopii zapasowej: `Set-HCSBackupApplianceMode -enable`. </br> Aby wyłączyć tryb tworzenia kopii zapasowej: `Set-HCSBackupApplianceMode -disable`. </br> Aby uzyskać bieżący stan ustawień trybu tworzenia kopii zapasowej `Get-HCSBackupApplianceMode`:. |
+| Włącz miejsce docelowe kopii zapasowej. | Te polecenia służą do włączania lub wyłączania trybu docelowego kopii zapasowej oraz pobierania stanu. Aby uzyskać więcej informacji, zobacz [zdalne nawiązywanie połączenia z urządzeniem StorSimple](storsimple-remote-connect.md).</br> Aby włączyć tryb tworzenia kopii zapasowej: `Set-HCSBackupApplianceMode -enable`. </br> Aby wyłączyć tryb tworzenia kopii zapasowej: `Set-HCSBackupApplianceMode -disable`. </br> Aby uzyskać bieżący stan ustawień trybu tworzenia kopii zapasowej: `Get-HCSBackupApplianceMode`. |
 | Utwórz wspólny kontener woluminów dla woluminu, który przechowuje dane kopii zapasowej. Wszystkie dane w kontenerze woluminów są deduplikowane. | Kontenery woluminów StorSimple definiują domeny deduplikacji.  |
 | Utwórz woluminy StorSimple. | Utwórz woluminy o rozmiarach jak najbliżej przewidywanego użycia, ponieważ rozmiar woluminu wpływa na czas trwania migawki w chmurze. Aby uzyskać informacje o sposobie rozmiaru woluminu, Przeczytaj o [zasadach przechowywania](#retention-policies).</br> </br> Użyj StorSimple woluminów warstwowych i zaznacz pole wyboru **Użyj tego woluminu dla rzadziej używanych danych archiwalnych** . </br> Używanie tylko woluminów przypiętych lokalnie nie jest obsługiwane. |
 | Utwórz unikatowe zasady tworzenia kopii zapasowych StorSimple dla wszystkich woluminów docelowych kopii zapasowych. | Zasady tworzenia kopii zapasowych StorSimple definiują grupę spójności woluminu. |
@@ -211,7 +211,7 @@ Skonfiguruj swoje rozwiązanie zgodnie z wytycznymi w poniższych sekcjach.
 - Wyłącz funkcję defragmentacji systemu Windows Server na woluminach StorSimple.
 - Wyłącz indeksowanie systemu Windows Server na woluminach StorSimple.
 - Uruchom skanowanie antywirusowe na hoście źródłowym (nie na woluminach StorSimple).
-- Wyłącz domyślną konserwację [systemu Windows Server](https://msdn.microsoft.com/library/windows/desktop/hh848037.aspx) w Menedżerze zadań. Wykonaj tę czynność w jeden z następujących sposobów:
+- Wyłącz domyślną [konserwację systemu Windows Server](https://msdn.microsoft.com/library/windows/desktop/hh848037.aspx) w Menedżerze zadań. Wykonaj tę czynność w jeden z następujących sposobów:
   - Wyłącz konfiguratora konserwacji w systemie Windows Harmonogram zadań.
   - Pobierz [PsExec](https://technet.microsoft.com/sysinternals/bb897553.aspx) z programu Windows Sysinternals. Po pobraniu PsExec Uruchom Azure PowerShell jako administrator, a następnie wpisz:
     ```powershell
@@ -233,7 +233,7 @@ Skonfiguruj swoje rozwiązanie zgodnie z wytycznymi w poniższych sekcjach.
 -   StorSimple obsługuje pełne i przyrostowe kopie zapasowe. Zalecamy, aby nie używać syntetycznych i różnicowych kopii zapasowych.
 -   Pliki danych kopii zapasowej powinny zawierać tylko dane dla określonego zadania. Na przykład nie można dołączać nośników między różnymi zadaniami.
 -   Wyłącz weryfikację zadania. W razie potrzeby weryfikacja powinna zostać zaplanowana po zakończeniu ostatniego zadania tworzenia kopii zapasowej. Ważne jest, aby zrozumieć, że to zadanie ma wpływ na okno kopii zapasowej.
--   Wybierz pozycję **Magazyn** > **Właściwości** **szczegóły** > dysku. >  Wyłącz **wstępnie przydzielone miejsce na dysku**.
+-   Wybierz pozycję **magazyn** > **dysk** > **szczegóły** > **Właściwości**. Wyłącz **wstępnie przydzielone miejsce na dysku**.
 
 Aby zapoznać się z najnowszymi ustawieniami tworzenia kopii zapasowych i najlepszymi rozwiązaniami dotyczącymi wdrażania tych wymagań, zobacz [witrynę sieci Web firmy Veritas](https://www.veritas.com).
 
@@ -252,7 +252,7 @@ W poniższym przykładzie używamy obrotu GFS. W przykładzie założono następ
 
 W oparciu o powyższe założenia Utwórz wolumin warstwowy z 26 TiB StorSimple dla miesięcznych i rocznych kopii zapasowych. Utwórz wolumin warstwowy 5 TiB StorSimple dla każdego przyrostowego codziennego tworzenia kopii zapasowych.
 
-| Przechowywanie typu kopii zapasowej | Rozmiar (TiB) | Mnożnik GFS\* | Całkowita pojemność (TiB)  |
+| Przechowywanie typu kopii zapasowej | Rozmiar (TiB) | \* mnożnik GFS | Całkowita pojemność (TiB)  |
 |---|---|---|---|
 | Tydzień pełny | 1 | 4  | 4 |
 | Dzienne przyrosty | 0,5 | 20 (cykle równej liczbie tygodni miesięcznie) | 12 (2 dla dodatkowego przydziału) |
@@ -261,13 +261,13 @@ W oparciu o powyższe założenia Utwórz wolumin warstwowy z 26 TiB StorSimple 
 | GFS wymaganie |   | 38 |   |
 | Dodatkowy przydział  | 4  |   | 42 łączny wymóg GFS  |
 
-\*Mnożnik GFS to liczba kopii, które należy chronić i zachować, aby spełnić wymagania dotyczące zasad tworzenia kopii zapasowych.
+\* mnożnik GFS to liczba kopii, które należy chronić i zachować, aby spełnić wymagania dotyczące zasad tworzenia kopii zapasowych.
 
 ## <a name="set-up-backup-exec-storage"></a>Konfigurowanie magazynu tworzenia kopii zapasowych
 
 ### <a name="to-set-up-backup-exec-storage"></a>Aby skonfigurować magazyn tworzenia kopii zapasowych
 
-1.  W konsoli zarządzania Backup Exec wybierz pozycję **Magazyn** > **Skonfiguruj** > magazyn**na** > dysku magazynu**dalej**.
+1.  W konsoli zarządzania Backup Exec wybierz pozycję **storage** > **Skonfiguruj** magazyn **oparty na dyskach** >  > **dalej**.
 
     ![Konsola zarządzania Backup Exec, Konfigurowanie strony magazynu](./media/storsimple-configure-backup-target-using-backup-exec/image4.png)
 
@@ -275,7 +275,7 @@ W oparciu o powyższe założenia Utwórz wolumin warstwowy z 26 TiB StorSimple 
 
     ![Konsola zarządzania Backup Exec, Wybieranie strony magazynu](./media/storsimple-configure-backup-target-using-backup-exec/image5.png)
 
-3.  Wprowadź nazwę reprezentatywną, na przykład zapełnienie i opis. Wybierz opcję **Dalej**.
+3.  Wprowadź nazwę reprezentatywną, na przykład **zapełnienie**i opis. Wybierz opcję **Dalej**.
 
     ![Strona zarządzania, nazwa i opis programu Backup Exec](./media/storsimple-configure-backup-target-using-backup-exec/image7.png)
 
@@ -314,7 +314,7 @@ Oto przykład harmonogramu rotacji GFS przez cztery tygodnie, co miesiąc i rok:
 |---|---|---|
 | Co tydzień (tygodnie 1-4) | Sobota | Poniedziałek — piątek |
 | Miesięczne  | Sobota  |   |
-| Rocznie | Sobota  |   |
+| Co rok | Sobota  |   |
 
 
 ### <a name="assign-storsimple-volumes-to-a-backup-exec-backup-job"></a>Przypisywanie woluminów StorSimple do zadania tworzenia kopii zapasowej wykonywania kopii zapasowej
@@ -323,7 +323,7 @@ W następującej kolejności przyjęto założenie, że program Backup Exec i ho
 
 #### <a name="to-assign-storsimple-volumes-to-a-backup-exec-backup-job"></a>Aby przypisać woluminy StorSimple do zadania tworzenia kopii zapasowej wykonywania kopii zapasowej
 
-1.   > W konsoli zarządzania Backup **exec wybierz pozycję** > Utwórz kopię zapasową**na dysku**.
+1.  W konsoli zarządzania Backup Exec wybierz pozycję **Host** > **kopia zapasowa** > **kopia zapasowa na dysku**.
 
     ![Tworzenie kopii zapasowej konsoli zarządzania programu, wybieranie hosta, kopii zapasowej i tworzenie kopii zapasowej na dysku](./media/storsimple-configure-backup-target-using-backup-exec/image14.png)
 
@@ -368,7 +368,7 @@ W poniższej tabeli przedstawiono sposób konfigurowania kopii zapasowych do uru
 
 ### <a name="backup-configuration-and-capacity-requirements"></a>Wymagania dotyczące konfiguracji i pojemności kopii zapasowych
 
-| Typ i przechowywanie kopii zapasowych | Skonfigurowany magazyn | Rozmiar (TiB) | Mnożnik GFS | Całkowita pojemność\* (TIB) |
+| Typ i przechowywanie kopii zapasowych | Skonfigurowany magazyn | Rozmiar (TiB) | Mnożnik GFS | Łączna pojemność\* (TiB) |
 |---|---|---|---|---|
 | Tydzień 1 (pełny i przyrostowy) |Dysk lokalny (krótkoterminowy)| 1 | 1 | 1 |
 | StorSimple tygodni 2-4 |Dysk StorSimple (długoterminowy) | 1 | 4 | 4 |
@@ -376,30 +376,30 @@ W poniższej tabeli przedstawiono sposób konfigurowania kopii zapasowych do uru
 | Roczna pełna |Dysk StorSimple (długoterminowy) | 1 | 1 | 1 |
 |Wymaganie rozmiaru woluminów GFS |  |  |  | 18*|
 
-\*Całkowita pojemność obejmuje 17 TiB z dysków StorSimple i 1 TiB lokalnego woluminu RAID.
+Całkowita pojemność \* obejmuje 17 TiB z dysków StorSimple i 1 TiB lokalnego woluminu RAID.
 
 
 ### <a name="gfs-example-schedule-gfs-rotation-weekly-monthly-and-yearly-schedule"></a>Przykładowy harmonogram GFS: GFS rotacja co tydzień, co miesiąc i co rok
 
 | Tydzień | Pełne | Przyrostowy dzień 1 | Przyrostowy dzień 2 | Przyrostowy dzień 3 | Przyrostowy dzień 4 | Przyrostowy dzień 5 |
 |---|---|---|---|---|---|---|
-| Tydzień 1 | Lokalny wolumin RAID  | Lokalny wolumin RAID | Lokalny wolumin RAID | Lokalny wolumin RAID | Lokalny wolumin RAID | Lokalny wolumin RAID |
+| 1\. tydzień | Lokalny wolumin RAID  | Lokalny wolumin RAID | Lokalny wolumin RAID | Lokalny wolumin RAID | Lokalny wolumin RAID | Lokalny wolumin RAID |
 | Tydzień 2 | StorSimple tygodni 2-4 |   |   |   |   |   |
 | Tydzień 3 | StorSimple tygodni 2-4 |   |   |   |   |   |
 | Tydzień 4 | StorSimple tygodni 2-4 |   |   |   |   |   |
 | Miesięczne | StorSimple miesięcznie |   |   |   |   |   |
-| Rocznie | StorSimple rocznie  |   |   |   |   |   |
+| Co rok | StorSimple rocznie  |   |   |   |   |   |
 
 
 ### <a name="assign-storsimple-volumes-to-a-backup-exec-archive-and-deduplication-job"></a>Przypisywanie woluminów StorSimple do archiwum tworzenia kopii zapasowych i zadania deduplikacji
 
 #### <a name="to-assign-storsimple-volumes-to-a-backup-exec-archive-and-duplication-job"></a>Aby przypisać woluminy StorSimple do archiwum tworzenia kopii zapasowych i zadania duplikowania
 
-1.  W konsoli zarządzania Backup Exec kliknij prawym przyciskiem myszy zadanie, które chcesz zarchiwizować na woluminie StorSimple, a następnie wybierz pozycję >  **właściwości definicji kopii zapasowej** **Edytuj**.
+1.  W konsoli zarządzania Backup Exec kliknij prawym przyciskiem myszy zadanie, które chcesz zarchiwizować na woluminie StorSimple, a następnie wybierz polecenie **właściwości definicji kopii zapasowej** > **Edytuj**.
 
     ![Konsola zarządzania programu Backup Exec, karta właściwości definicji kopii zapasowej](./media/storsimple-configure-backup-target-using-backup-exec/image19.png)
 
-2.  Wybierz pozycję Dodaj powielony **etap** > **do** > **edycji**dysku.
+2.  Wybierz pozycję **Dodaj etap** > **zduplikować do dysku** > **Edytuj**.
 
     ![Konsola zarządzania Backup Exec, Dodawanie etapu](./media/storsimple-configure-backup-target-using-backup-exec/image20.png)
 
@@ -419,7 +419,7 @@ W poniższej tabeli przedstawiono sposób konfigurowania kopii zapasowych do uru
 
     ![Konsola zarządzania programu Backup Exec, właściwości definicji kopii zapasowych i opcje duplikowania](./media/storsimple-configure-backup-target-using-backup-exec/image24.png)
 
-7.  W kolumnie **kopia zapasowa** Dodaj nowy etap. Dla źródła użyj przyrostowej. Dla elementu docelowego wybierz wolumin StorSimple, w którym jest archiwizowane zadanie tworzenia kopii zapasowej. Powtórz kroki 1-6.
+7.  W kolumnie **kopia zapasowa** Dodaj nowy etap. Dla źródła użyj **przyrostowej**. Dla elementu docelowego wybierz wolumin StorSimple, w którym jest archiwizowane zadanie tworzenia kopii zapasowej. Powtórz kroki 1-6.
 
 ## <a name="storsimple-cloud-snapshots"></a>Migawki w chmurze StorSimple
 
@@ -450,7 +450,7 @@ W poniższej sekcji opisano, jak utworzyć krótki skrypt do uruchamiania i usuw
 
 1. [Zainstalowanie programu Azure PowerShell](/powershell/azure/overview).
 2. Pobierz i zainstaluj skrypt programu PowerShell [Manage-CloudSnapshots. ps1](https://github.com/anoobbacker/storsimpledevicemgmttools/blob/master/Manage-CloudSnapshots.ps1) .
-3. Na serwerze, na którym działa skrypt, uruchom program PowerShell jako administrator. Upewnij się, że skrypt został uruchomiony `-WhatIf $true` za pomocą programu, aby zobaczyć, jakie zmiany wprowadzi skrypt. Po zakończeniu walidacji zakończono pomyślnie `-WhatIf $false`. Uruchom następujące polecenie:
+3. Na serwerze, na którym działa skrypt, uruchom program PowerShell jako administrator. Upewnij się, że skrypt jest uruchamiany z `-WhatIf $true`, aby zobaczyć, jakie zmiany wprowadzi skrypt. Po zakończeniu walidacji, Przekaż `-WhatIf $false`. Uruchom następujące polecenie:
    ```powershell
    .\Manage-CloudSnapshots.ps1 -SubscriptionId [Subscription Id] -TenantId [Tenant ID] -ResourceGroupName [Resource Group Name] -ManagerName [StorSimple Device Manager Name] -DeviceName [device name] -BackupPolicyName [backup policyname] -RetentionInDays [Retention days] -WhatIf [$true or $false]
    ```
@@ -478,12 +478,12 @@ Awaria może być spowodowana przez różne czynniki. W poniższej tabeli wymien
 | Błąd serwera programu Backup Exec | Operacje tworzenia kopii zapasowej i przywracania są przerywane. | Skompiluj ponownie serwer kopii zapasowej i wykonaj przywracanie bazy danych zgodnie z opisem w temacie [jak wykonać ręczną kopię zapasową i przywrócić bazę danych Backup Exec (BEDB)](http://www.veritas.com/docs/000041083). | Należy ponownie skompilować lub przywrócić serwer Backup Exec w lokacji odzyskiwania po awarii. Przywróć bazę danych do najnowszego punktu. Jeśli przywrócona baza danych Backup Exec nie jest zsynchronizowana z najnowszymi zadaniami tworzenia kopii zapasowych, wymagane jest indeksowanie i wykazanie. Ten proces ponownego skanowania indeksu i wykazu może spowodować, że wszystkie zestawy kopii zapasowych będą skanowane i pobrane z warstwy chmury do warstwy urządzenia lokalnego. Zwiększa to intensywnie czasochłonne. |
 | Awaria lokacji, która powoduje utratę zarówno serwera kopii zapasowej, jak i StorSimple | Operacje tworzenia kopii zapasowej i przywracania są przerywane. | Najpierw Przywróć StorSimple, a następnie Przywróć kopię zapasową exec. | Najpierw Przywróć StorSimple, a następnie Przywróć kopię zapasową exec. Jeśli trzeba wykonać przywracanie po odzyskiwaniu urządzenia, do nowego urządzenia zostaną pobrane wszystkie zestawy robocze z danymi z chmury. Wszystkie operacje są z szybkością chmury. |
 
-## <a name="references"></a>Odwołania
+## <a name="references"></a>Informacje
 
 Następujące dokumenty odwołują się do tego artykułu:
 
 - [Konfiguracja wielościeżkowego we/wy StorSimple](storsimple-configure-mpio-windows-server.md)
-- [Scenariusze magazynu: Alokowanie elastyczne](https://msdn.microsoft.com/library/windows/hardware/dn265487.aspx)
+- [Scenariusze magazynu: alokowanie elastyczne](https://msdn.microsoft.com/library/windows/hardware/dn265487.aspx)
 - [Korzystanie z dysków GPT](https://msdn.microsoft.com/windows/hardware/gg463524.aspx#EHD)
 - [Skonfiguruj kopie w tle dla folderów udostępnionych](https://technet.microsoft.com/library/cc771893.aspx)
 

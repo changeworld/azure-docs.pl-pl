@@ -1,18 +1,14 @@
 ---
-title: Service Fabric Omówienie tożsamości zarządzanej | Microsoft Docs
-description: Ten artykuł zawiera omówienie tożsamości zarządzanej.
-services: service-fabric
-author: athinanthny
-ms.service: service-fabric
+title: Service Fabric Omówienie tożsamości zarządzanej
+description: Ten artykuł zawiera omówienie tożsamości zarządzanej i jej aplikacji na platformie Azure Service Fabric.
 ms.topic: conceptual
-ms.date: 07/25/2019
-ms.author: atsenthi
-ms.openlocfilehash: e2f05ba28109a9b3c88d80eb218bf94014f0f082
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.date: 12/09/2019
+ms.openlocfilehash: dc7dafa59596537456accde66e878c06f9e5ca23
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73243029"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75528151"
 ---
 # <a name="managed-identity-for-service-fabric-application-preview"></a>Tożsamość zarządzana dla aplikacji Service Fabric (wersja zapoznawcza)
 

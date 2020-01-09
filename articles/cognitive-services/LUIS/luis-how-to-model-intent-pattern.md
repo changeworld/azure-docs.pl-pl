@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: diberry
-ms.openlocfilehash: 4432aecee882ff2e312587baa543dd66c0372a78
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: eb3e473535c394818772ac949808023254087555
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74968922"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448049"
 ---
 # <a name="how-to-add-patterns-to-improve-prediction-accuracy"></a>Jak dodać wzorce, aby poprawić dokładność przewidywania
 Gdy aplikacja LUIS otrzymuje punkt końcowy wyrażenia długości, użyj [wzorca](luis-concept-patterns.md) , aby poprawić dokładność przewidywania dla wyrażenia długości, które ujawnia wzorzec w kolejności słów i wyborze wyrazu. Wzorce używają określonej [składni](luis-concept-patterns.md#pattern-syntax) , aby wskazać lokalizację: [jednostki](luis-concept-entity-types.md), [role](luis-concept-roles.md)jednostek i tekst opcjonalny.
@@ -26,7 +26,27 @@ Gdy aplikacja LUIS otrzymuje punkt końcowy wyrażenia długości, użyj [wzorca
 > [!CAUTION]
 > Wzorce zawierają tylko obiekty nadrzędne, które są obsługiwane przez maszynę, a nie podskładniki.
 
-## <a name="add-template-utterance-to-create-pattern"></a>Dodaj wypowiedź szablonu, aby utworzyć wzorzec
+## <a name="adding-example-utterances-as-pattern"></a>Dodawanie przykładu wyrażenia długości jako wzorca
+
+Jeśli chcesz dodać wzorzec dla jednostki, _najprostszym_ sposobem jest utworzenie wzorca na stronie szczegółów obiektu. Dzięki temu składnia pasuje do przykładu wypowiedź.
+
+1. W [portalu Luis w wersji zapoznawczej](https://preview.luis.ai)wybierz aplikację ze strony **Moje aplikacje** .
+1. Na stronie listy **intencje** wybierz nazwę zamiaru przykładu wypowiedź, z którego chcesz utworzyć szablon wypowiedź.
+1. Na stronie Szczegóły zamiaru wybierz wiersz dla przykładowej wypowiedź, który ma być używany jako szablon wypowiedź, a następnie wybierz pozycję **+ Dodaj jako wzorzec** na pasku narzędzi kontekstu.
+
+    > [!div class="mx-imgBorder"]
+    > ![zrzut ekranu przedstawiający wybór przykładowej wypowiedź jako wzorzec szablonu na stronie Szczegóły intencji.](./media/luis-how-to-model-intent-pattern/add-example-utterances-as-pattern-template-utterance-from-intent-detail-page.png)
+
+1. W oknie podręcznym wybierz pozycję **gotowe** na stronie **Potwierdzanie wzorców** . Nie musisz definiować podskładników, ograniczeń ani deskryptorów jednostek. Wystarczy tylko wyświetlić listę jednostek, których dotyczy dana maszyna.
+
+    > [!div class="mx-imgBorder"]
+    > ![zrzut ekranu przedstawiający przykładowy przykład wypowiedź jako wzorzec szablonu na stronie Szczegóły intencji.](./media/luis-how-to-model-intent-pattern/confirm-patterns-from-example-utterance-intent-detail-page.png)
+
+1. Jeśli musisz edytować szablon, na przykład wybierając opcję tekst jako opcjonalny, z nawiasami `[]` (kwadratowymi), musisz wprowadzić tę edycję na stronie **wzorce** .
+
+1. Na pasku nawigacyjnym wybierz pozycję **szkolenie** , aby nauczyć aplikację z nowym wzorcem.
+
+## <a name="add-template-utterance-using-correct-syntax"></a>Dodaj wypowiedź szablonu przy użyciu poprawnej składni
 
 1. Otwórz aplikację, wybierając jego nazwę na **Moje aplikacje** strony, a następnie wybierz pozycję **wzorców** w lewym panelu w obszarze **lepsza wydajność aplikacji**.
 

@@ -6,14 +6,14 @@ ms.author: stevenry
 ms.date: 12/17/2018
 ms.topic: conceptual
 manager: gwallace
-description: Szybkie tworzenie w środowisku Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
+description: Dowiedz się, jak skonfigurować ciągłą integrację/ciągłe wdrażanie przy użyciu usługi Azure DevOps z Azure Dev Spaces
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, containers
-ms.openlocfilehash: 525e18cba48756e725cbc7d837c2352b0fec74fe
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 66ff2080ad44098757a5d9360fd3307e65f7431a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74280018"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438441"
 ---
 # <a name="use-cicd-with-azure-dev-spaces"></a>Użyj ciągłej integracji/ciągłego wdrażania Azure Dev Spaces
 
@@ -99,7 +99,7 @@ Masz teraz rozwiązanie CI, które automatycznie kompiluje *mywebapi* i *webfron
 1. W przypadku **wersji domyślnej**wybierz pozycję **Najnowsza z gałęzi domyślnej potok kompilacji z tagami**.
 1. Pozostaw **Tagi** puste.
 1. Ustaw **alias źródłowy** na `drop`. Wartość **aliasu Source** jest używana przez wstępnie zdefiniowane zadania wydania, aby musiała zostać ustawiona.
-1. Kliknij pozycję **Add** (Dodaj).
+1. Kliknij pozycję **Dodaj**.
 1. Teraz kliknij ikonę błyskawicy w nowo utworzonym źródle artefaktu `drop`, jak pokazano poniżej:
 
     ![Konfiguracja ciągłego wdrażania artefaktu wydania](../media/common/release-artifact-cd-setup.png)
@@ -119,7 +119,7 @@ Masz teraz rozwiązanie CI, które automatycznie kompiluje *mywebapi* i *webfron
 1. Kliknij przycisk **Zapisz** w prawym górnym rogu i **OK**.
 1. Kliknij pozycję **+ wersja** (obok przycisku Zapisz) i **Utwórz wydanie**.
 1. W obszarze **artefakty**Sprawdź, czy jest wybrana Najnowsza kompilacja z potoku kompilacji.
-1. Kliknij pozycję **Utwórz**.
+1. Kliknij przycisk **Utwórz**.
 
 Proces zautomatyzowanej wersji rozpocznie się teraz, wdrażając wykresy *mywebapi* i *webfrontonu* w klastrze Kubernetes w _obszarze najwyższego_ poziomu. Postęp wydania można monitorować w portalu sieci Web usługi Azure DevOps:
 

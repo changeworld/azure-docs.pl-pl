@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 09/18/2019
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: bccf4fa0b17f261d41c0a80d9f75fe391f591bfb
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 7bc637b5719da3c5f5e5607436aa7da0721f5a9e
+ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671720"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75680930"
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>Wdrażanie aplikacji do Azure App Service przy użyciu protokołu FTP/S
 
@@ -21,15 +21,21 @@ Punkt końcowy FTP/S aplikacji jest już aktywny. W celu włączenia wdrożenia 
 
 ## <a name="open-ftp-dashboard"></a>Otwórz pulpit nawigacyjny FTP
 
-W [Azure Portal](https://portal.azure.com)Otwórz [stronę zasobów](../azure-resource-manager/manage-resources-portal.md#manage-resources)aplikacji.
+1. W [Azure Portal](https://portal.azure.com)Wyszukaj i wybierz pozycję **App Services**.
 
-Aby otworzyć pulpit nawigacyjny FTP, kliknij pozycję **centrum wdrażania** > **FTP** > **pulpit nawigacyjny**.
+    ![Wyszukaj usługi App Services.](media/app-service-continuous-deployment/search-for-app-services.png)
 
-![Otwórz pulpit nawigacyjny FTP](./media/app-service-deploy-ftp/open-dashboard.png)
+2. Wybierz aplikację sieci Web, którą chcesz wdrożyć.
+
+    ![Wybierz aplikację.](media/app-service-continuous-deployment/select-your-app.png)
+
+3. Wybierz pozycję **centrum wdrażania** > **pulpit nawigacyjny** > **FTP** .
+
+    ![Otwórz pulpit nawigacyjny FTP](./media/app-service-deploy-ftp/open-dashboard.png)
 
 ## <a name="get-ftp-connection-information"></a>Pobierz informacje o połączeniu FTP
 
-Na pulpicie nawigacyjnym FTP kliknij przycisk **Kopiuj** , aby skopiować FTPS punkt końcowy i poświadczenia aplikacji.
+Na pulpicie nawigacyjnym FTP wybierz pozycję **Kopiuj** , aby skopiować FTPS punkt końcowy i poświadczenia aplikacji.
 
 ![Kopiuj informacje FTP](./media/app-service-deploy-ftp/ftp-dashboard.png)
 

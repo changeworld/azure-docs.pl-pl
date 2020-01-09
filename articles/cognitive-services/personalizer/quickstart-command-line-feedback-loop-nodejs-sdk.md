@@ -1,7 +1,7 @@
 ---
-title: 'Szybki Start: Biblioteka kliencka programu Personalizacja dla środowiska Node. js | Microsoft Docs'
+title: 'Szybki Start: Biblioteka kliencka programu Personalizacja dla środowiska Node. js'
 titleSuffix: Azure Cognitive Services
-description: Rozpocznij pracę z biblioteką kliencką narzędzia Personalizacja dla środowiska Node. js przy użyciu pętli szkoleniowej.
+description: W tym przewodniku szybki start pokazano, jak rozpocząć pracę z biblioteką klienta narzędzia Personalizacja dla środowiska Node. js przy użyciu pętli szkoleniowej.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: quickstart
 ms.date: 10/23/2019
 ms.author: diberry
-ms.openlocfilehash: f7667ce99ceaa713332ad9419ffab9d57aa0f075
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 91aee7f4a110490495a3cf840e6b3ef3282c91c5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494451"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446368"
 ---
 # <a name="quickstart-personalizer-client-library-for-nodejs"></a>Szybki Start: Biblioteka kliencka programu Personalizacja dla środowiska Node. js
 

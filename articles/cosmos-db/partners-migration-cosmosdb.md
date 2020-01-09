@@ -1,17 +1,17 @@
 ---
-title: Partnerzy platformy Azure Cosmos DB NoSQL migracji i application development
+title: Migracja i partnerzy tworzenia aplikacji dla Azure Cosmos DB
 description: Wyświetla listę partnerów firmy Microsoft przy użyciu rozwiązania migracji, które obsługują usługę Azure Cosmos DB.
 author: SnehaGunda
 ms.author: sngun
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
-ms.openlocfilehash: 2ba6b04efbce5b7911037fbc5f14373cc962035d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 30083b4f2f5f9b69368a47ecaf5505c04ccd6df9
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66257362"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75530701"
 ---
 # <a name="azure-cosmos-db-nosql-migration-and-application-development-partners"></a>Partnerzy platformy Azure Cosmos DB NoSQL migracji i application development
 
@@ -21,8 +21,8 @@ Od migracji NoSQL do tworzenia aplikacji można wybierać spośród różnych na
 
 |**Partner**  |**Funkcje i środowisko**  |**Obsługiwane kraje/regiony**  |**Skontaktuj się z**  |
 |---------|---------|---------|---------|
-|![ImanisData][1]   | [Migracja danych](https://www.imanisdata.com/wp-content/uploads/2018/02/Imanis_DS_MongoDB_Azure_FINAL.pdf) z bazy danych MongoDB do usługi Azure Cosmos DB. <br/> Imanis danych umożliwia globalny przedsiębiorstwom szybko i łatwo migrować lokalnych lub w chmurze bazy danych MongoDB do usługi Azure Cosmos DB. Dane Imanis zapewnia podejście do migracji bez wykorzystania agentów przyrostowe nieustannego w chmurze dla magazynów danych bazy danych MongoDB, które upraszcza migrację i znacznie skraca czas przestoju.|  Stany Zjednoczone  |   [Witryny sieci Web](http://www.imanisdata.com/)      |
-|![Striim][2]    |  [Przenoszenie danych w czasie rzeczywistym do usługi Azure Cosmos DB](https://www.striim.com/striim-for-azure-cosmos-db/) z wielu różnych źródeł danych. <br/> Striim upraszcza kolekcji w czasie rzeczywistym i przenoszenia danych z wielu źródeł lokalnych, w tym dokumencie przedsiębiorstwa i relacyjnych baz danych, czujniki i plików dziennika do usługi Azure Cosmos DB. |   Stany Zjednoczone   |  [Witryny sieci Web](https://www.striim.com/)       |
+|![ImanisData][1]   | Migracja danych z MongoDB do Azure Cosmos DB. <br/> Imanis danych umożliwia globalny przedsiębiorstwom szybko i łatwo migrować lokalnych lub w chmurze bazy danych MongoDB do usługi Azure Cosmos DB. Dane Imanis zapewnia podejście do migracji bez wykorzystania agentów przyrostowe nieustannego w chmurze dla magazynów danych bazy danych MongoDB, które upraszcza migrację i znacznie skraca czas przestoju.|  Stany Zjednoczone  |   [Witryny sieci Web](https://www.cohesity.com/products/imanis-data/)      |
+|![Striim][2]    |  [Przenoszenie danych w czasie rzeczywistym do usługi Azure Cosmos DB](https://www.striim.com/striim-for-azure-cosmos-db/) z wielu różnych źródeł danych. <br/> Striim upraszcza gromadzenie i przenoszenie danych w czasie rzeczywistym z różnych źródeł lokalnych, takich jak dokument przedsiębiorstwa i relacyjne bazy danych, czujniki i pliki dzienników w Azure Cosmos DB. |   Stany Zjednoczone   |  [Witryny sieci Web](https://www.striim.com/)       |
 
 ## <a name="systems-integrator-partners"></a>Partnerzy będący Integratorami systemów
 
@@ -37,13 +37,13 @@ Od migracji NoSQL do tworzenia aplikacji można wybierać spośród różnych na
 | ![Capgemini][14] | Migracja NoSQL; Wprowadzanie innowacji aplikacji (aplikacje do istniejącej); Tworzenie nowej aplikacji | USA, Francja, Zjednoczone Królestwo, Holandia, Finlandia  | [Witryny sieci Web](https://www.capgemini.com/) | 
 |![Coeo][7]     |   Wprowadzanie innowacji aplikacji (istniejących aplikacji) <br/> Tworzenie nowej aplikacji |    Zjednoczone Królestwo     |  [Witryny sieci Web](https://www.coeo.com/)       |
 | ![Cognizant][15] | Migracja NoSQL |USA, Kanada, Zjednoczone Królestwo, Dania, Holandia, Szwajcaria, Australia, Japonia | [Witryny sieci Web](https://www.cognizant.com/)|
-|![Infosys][8]     |  Migracja NoSQL       |    Globalny     |  [Witryny sieci Web](https://www.infosys.com/)       |
+|![Infosys][8]     |  Migracja NoSQL       |    Cały świat     |  [Witryny sieci Web](https://www.infosys.com/)       |
 | ![Lagash][16] | Migracja NoSQL <br/> Tworzenie nowej aplikacji | Argentyna, Chile, Kolumbia, Meksyk| [Witryny sieci Web](https://www.lagash.com/)|
 | ![Lambda3 informatyką][17] | Migracja NoSQL <br/> Tworzenie nowej aplikacji | Brazylia| [Witryny sieci Web](https://www.lambda3.com.br/)|
 |![Neal Analytics][9]     |     Tworzenie aplikacji (nowe aplikacje)    |    Stany Zjednoczone     |  [Witryny sieci Web](https://www.nealanalytics.com/)       |
 |![Pragmatic działa oprogramowanie Włączne][10]    |   Migracja NoSQL      |   Stany Zjednoczone      |  [Witryny sieci Web](https://www.pragmaticworks.com/)       |
 | ![Ricoh globalne][18] | Migracja NoSQL <br/> Wprowadzanie innowacji aplikacji (istniejących aplikacji)| Zjednoczone Królestwo  | [Witryny sieci Web](https://www.ricoh.com/)|
-| ![Technologie SNP][19] | Migracja NoSQL| USA | [Witryny sieci Web](https://www.snp.com/)|
+| ![Technologie SNP][19] | Migracja NoSQL| Stany Zjednoczone | [Witryny sieci Web](https://www.snp.com/)|
 | ![Solidsoft odpowiedzi][20] | Migracja NoSQL | Chorwacja, Szwecja, Dania, Irlandia, Bułgaria, Słowenia, Cypr, Malta, Litwa, Czechy, Islandii i Szwajcarii i Liechtensteinu| [Witryny sieci Web](https://www.reply.com/solidsoft-reply/)|
 | ![Hiszpański punktu technologii][21] | Migracja NoSQL| Irlandia| [Witryny sieci Web](https://www.spanishpoint.ie/)|
 | ![Syone][22] | Migracja NoSQL| Portugalia| [Witryny sieci Web](https://www.syone.com/)|
@@ -54,7 +54,7 @@ Od migracji NoSQL do tworzenia aplikacji można wybierać spośród różnych na
 | ![Rozwiń IT][25] | Tworzenie nowej aplikacji | Portugalia, Zjednoczone Królestwo| [Witryny sieci Web](https://www.xpand-it.com/)|
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby dowiedzieć się więcej o niektórych z innymi partnerami firmy Microsoft, zobacz [witryny partnera firmy Microsoft](https://partner.microsoft.com/en-US/).
 

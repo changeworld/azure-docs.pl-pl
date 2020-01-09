@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 06/25/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5d78ddaaae886a33b4d22e8724ade04ab63508f1
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 9f975595e935a5c0254450168aa295e6e7366a94
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74547334"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430001"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-rest-api-calls"></a>Konfigurowanie zarządzanych tożsamości dla zasobów platformy Azure na maszynie wirtualnej platformy Azure przy użyciu wywołań interfejsu API REST
 
@@ -35,7 +35,7 @@ W tym artykule, za pomocą zapełniania w celu wykonywania wywołań do punktu k
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Jeśli nie znasz tożsamości zarządzanych dla zasobów platformy Azure, zapoznaj się z [sekcją przegląd](overview.md). **Pamiętaj, aby zapoznać się z [różnicą między przypisaną przez system i tożsamością zarządzaną przez użytkownika](overview.md#how-does-the-managed-identities-for-azure-resources-work)** .
+- Jeśli jesteś zaznajomiony z zarządzanych tożsamości dla zasobów platformy Azure, zapoznaj się z [sekcji Przegląd](overview.md). **Należy przejrzeć [różnicę między przypisana przez system i przypisanych przez użytkownika tożsamości zarządzanej](overview.md#how-does-the-managed-identities-for-azure-resources-work)** .
 - Jeśli nie masz jeszcze konta platformy Azure, [utwórz bezpłatne konto](https://azure.microsoft.com/free/) przed kontynuowaniem.
 - Jeśli używasz systemu Windows, zainstaluj [podsystem Windows dla systemu Linux](https://msdn.microsoft.com/commandline/wsl/about) lub Użyj [Azure Cloud Shell](../../cloud-shell/overview.md) w Azure Portal.
 - [Zainstaluj konsolę lokalną interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli), jeśli używasz [podsystemu Windows dla systemu Linux](https://msdn.microsoft.com/commandline/wsl/about) lub [systemu operacyjnego dystrybucji Linux](/cli/azure/install-azure-cli-apt?view=azure-cli-latest).
@@ -51,7 +51,7 @@ W tej sekcji dowiesz się, jak włączyć i wyłączyć tożsamość zarządzan�
 
 Aby można było utworzyć maszynę wirtualną platformy Azure z włączoną tożsamością zarządzaną przypisaną przez system, Twoje konto wymaga przypisania roli [współautor maszyny wirtualnej](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) .  Nie są wymagane żadne dodatkowe przypisania ról w katalogu usługi Azure AD.
 
-1. Utwórz [grupę zasobów](../../azure-resource-manager/resource-group-overview.md#terminology) w celu uwzględnienia i wdrożenia maszyny wirtualnej i jej powiązanych zasobów przy użyciu polecenia [az group create](/cli/azure/group/#az-group-create). Ten krok możesz pominąć, jeśli masz już grupę zasobów, której chcesz użyć w zamian:
+1. Utwórz [grupę zasobów](../../azure-resource-manager/management/overview.md#terminology) w celu uwzględnienia i wdrożenia maszyny wirtualnej i jej powiązanych zasobów przy użyciu polecenia [az group create](/cli/azure/group/#az-group-create). Ten krok możesz pominąć, jeśli masz już grupę zasobów, której chcesz użyć w zamian:
 
    ```azurecli-interactive 
    az group create --name myResourceGroup --location westus
@@ -83,7 +83,7 @@ Aby można było utworzyć maszynę wirtualną platformy Azure z włączoną to�
    
    |Nagłówek żądania  |Opis  |
    |---------|---------|
-   |*Typ zawartości*     | Wymagany. Ustaw wartość `application/json`.        |
+   |*Content-Type*     | Wymagany. Ustaw wartość `application/json`.        |
    |*Autoryzacja*     | Wymagany. Ustaw prawidłowy token dostępu `Bearer`.        | 
    
    **Treść żądania**
@@ -172,7 +172,7 @@ Aby włączyć tożsamość zarządzaną przypisaną przez system na maszynie wi
 
    |Nagłówek żądania  |Opis  |
    |---------|---------|
-   |*Typ zawartości*     | Wymagany. Ustaw wartość `application/json`.        |
+   |*Content-Type*     | Wymagany. Ustaw wartość `application/json`.        |
    |*Autoryzacja*     | Wymagany. Ustaw prawidłowy token dostępu `Bearer`.        | 
    
    **Treść żądania**
@@ -204,7 +204,7 @@ Aby włączyć tożsamość zarządzaną przypisaną przez system na maszynie wi
 
    |Nagłówek żądania  |Opis  |
    |---------|---------|
-   |*Typ zawartości*     | Wymagany. Ustaw wartość `application/json`.        |
+   |*Content-Type*     | Wymagany. Ustaw wartość `application/json`.        |
    |*Autoryzacja*     | Wymagany. Ustaw prawidłowy token dostępu `Bearer`.        | 
 
    **Treść żądania**
@@ -239,7 +239,7 @@ Aby włączyć tożsamość zarządzaną przypisaną przez system na maszynie wi
 
    |Nagłówek żądania  |Opis  |
    |---------|---------|
-   |*Typ zawartości*     | Wymagany. Ustaw wartość `application/json`.        |
+   |*Content-Type*     | Wymagany. Ustaw wartość `application/json`.        |
    |*Autoryzacja*     | Wymagany. Ustaw prawidłowy token dostępu `Bearer`.        | 
 
    **Treść żądania**
@@ -282,7 +282,7 @@ Aby wyłączyć tożsamość zarządzaną przypisaną przez system na maszynie w
 
    |Nagłówek żądania  |Opis  |
    |---------|---------|
-   |*Typ zawartości*     | Wymagany. Ustaw wartość `application/json`.        |
+   |*Content-Type*     | Wymagany. Ustaw wartość `application/json`.        |
    |*Autoryzacja*     | Wymagany. Ustaw prawidłowy token dostępu `Bearer`.        | 
 
    **Treść żądania**
@@ -341,7 +341,7 @@ Do przypisywania tożsamości przypisanej przez użytkownika do maszyny wirtualn
 
    |Nagłówek żądania  |Opis  |
    |---------|---------|
-   |*Typ zawartości*     | Wymagany. Ustaw wartość `application/json`.        |
+   |*Content-Type*     | Wymagany. Ustaw wartość `application/json`.        |
    |*Autoryzacja*     | Wymagany. Ustaw prawidłowy token dostępu `Bearer`.        | 
 
    **Treść żądania**
@@ -422,7 +422,7 @@ Do przypisywania tożsamości przypisanej przez użytkownika do maszyny wirtualn
 
    |Nagłówek żądania  |Opis  |
    |---------|---------|
-   |*Typ zawartości*     | Wymagany. Ustaw wartość `application/json`.        |
+   |*Content-Type*     | Wymagany. Ustaw wartość `application/json`.        |
    |*Autoryzacja*     | Wymagany. Ustaw prawidłowy token dostępu `Bearer`.        | 
 
    **Treść żądania**
@@ -534,7 +534,7 @@ Do przypisywania tożsamości przypisanej przez użytkownika do maszyny wirtualn
 
    |Nagłówek żądania  |Opis  |
    |---------|---------|
-   |*Typ zawartości*     | Wymagany. Ustaw wartość `application/json`.        |
+   |*Content-Type*     | Wymagany. Ustaw wartość `application/json`.        |
    |*Autoryzacja*     | Wymagany. Ustaw prawidłowy token dostępu `Bearer`.        |
  
    **Treść żądania**
@@ -566,7 +566,7 @@ Do przypisywania tożsamości przypisanej przez użytkownika do maszyny wirtualn
 
    |Nagłówek żądania  |Opis  |
    |---------|---------|
-   |*Typ zawartości*     | Wymagany. Ustaw wartość `application/json`.        |
+   |*Content-Type*     | Wymagany. Ustaw wartość `application/json`.        |
    |*Autoryzacja*     | Wymagany. Ustaw prawidłowy token dostępu `Bearer`.        | 
 
    **Treść żądania**
@@ -602,7 +602,7 @@ Do przypisywania tożsamości przypisanej przez użytkownika do maszyny wirtualn
 
    |Nagłówek żądania  |Opis  |
    |---------|---------|
-   |*Typ zawartości*     | Wymagany. Ustaw wartość `application/json`.        |
+   |*Content-Type*     | Wymagany. Ustaw wartość `application/json`.        |
    |*Autoryzacja*     | Wymagany. Ustaw prawidłowy token dostępu `Bearer`.        | 
 
    **Treść żądania**
@@ -641,7 +641,7 @@ Do przypisywania tożsamości przypisanej przez użytkownika do maszyny wirtualn
 
    |Nagłówek żądania  |Opis  |
    |---------|---------|
-   |*Typ zawartości*     | Wymagany. Ustaw wartość `application/json`.        |
+   |*Content-Type*     | Wymagany. Ustaw wartość `application/json`.        |
    |*Autoryzacja*     | Wymagany. Ustaw prawidłowy token dostępu `Bearer`.        | 
 
    **Treść żądania**
@@ -682,7 +682,7 @@ Aby usunąć tożsamość przypisaną przez użytkownika do maszyny wirtualnej, 
 
    |Nagłówek żądania  |Opis  |
    |---------|---------|
-   |*Typ zawartości*     | Wymagany. Ustaw wartość `application/json`.        |
+   |*Content-Type*     | Wymagany. Ustaw wartość `application/json`.        |
    |*Autoryzacja*     | Wymagany. Ustaw prawidłowy token dostępu `Bearer`.
  
    Jeśli masz zarządzane tożsamości przypisane do maszyny wirtualnej, są one wyświetlane w odpowiedzi w wartości `identity`.
@@ -705,7 +705,7 @@ Aby usunąć tożsamość przypisaną przez użytkownika do maszyny wirtualnej, 
 
    |Nagłówek żądania  |Opis  |
    |---------|---------|
-   |*Typ zawartości*     | Wymagany. Ustaw wartość `application/json`.        |
+   |*Content-Type*     | Wymagany. Ustaw wartość `application/json`.        |
    |*Autoryzacja*     | Wymagany. Ustaw prawidłowy token dostępu `Bearer`.        | 
 
    **Treść żądania**
@@ -737,7 +737,7 @@ Aby usunąć tożsamość przypisaną przez użytkownika do maszyny wirtualnej, 
 
    |Nagłówek żądania  |Opis  |
    |---------|---------|
-   |*Typ zawartości*     | Wymagany. Ustaw wartość `application/json`.        |
+   |*Content-Type*     | Wymagany. Ustaw wartość `application/json`.        |
    |*Autoryzacja*     | Wymagany. Ustaw prawidłowy token dostępu `Bearer`.        | 
 
    **Treść żądania**
@@ -767,7 +767,7 @@ PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup
 
 |Nagłówek żądania  |Opis  |
 |---------|---------|
-|*Typ zawartości*     | Wymagany. Ustaw wartość `application/json`.        |
+|*Content-Type*     | Wymagany. Ustaw wartość `application/json`.        |
 |*Autoryzacja*     | Wymagany. Ustaw prawidłowy token dostępu `Bearer`. | 
 
 **Treść żądania**
@@ -794,7 +794,7 @@ PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup
 
 |Nagłówek żądania  |Opis  |
 |---------|---------|
-|*Typ zawartości*     | Wymagany. Ustaw wartość `application/json`.        |
+|*Content-Type*     | Wymagany. Ustaw wartość `application/json`.        |
 |*Autoryzacja*     | Wymagany. Ustaw prawidłowy token dostępu `Bearer`.| 
 
 **Treść żądania**

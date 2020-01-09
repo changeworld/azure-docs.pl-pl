@@ -3,19 +3,19 @@ title: Zarządzane rejestry kontenerów
 description: Wprowadzenie do usługi Azure Container Registry dostarczającej oparte na chmurze, zarządzane rejestry prywatne platformy Docker.
 author: stevelas
 ms.topic: overview
-ms.date: 06/28/2019
+ms.date: 12/03/2019
 ms.author: stevelas
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 2ceae0a6d6eb4dc989a53b35dc4a2f64472a5f54
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 863b93497505443b79f41f580150a4dbf790a6f2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892978"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445726"
 ---
 # <a name="introduction-to-private-docker-container-registries-in-azure"></a>Wprowadzenie do prywatnych rejestrów kontenerów platformy Docker na platformie Azure
 
-Azure Container Registry to zarządzana, prywatna usługa rejestru platformy Docker oparta na rejestrze platformy Docker typu open source 2,0. Twórz i obsługuj rejestry kontenerów platformy Azure w celu przechowywania prywatnych obrazów kontenerów Docker i zarządzania nimi.
+Azure Container Registry to zarządzana, prywatna usługa rejestru platformy Docker oparta na rejestrze platformy Docker typu open source 2,0. Twórz i obsługuj rejestry kontenerów platformy Azure w celu przechowywania prywatnych obrazów kontenerów Docker i powiązanych artefaktów oraz zarządzania nimi.
 
 Korzystaj z rejestrów kontenerów platformy Azure z istniejącymi potokami tworzenia i wdrażania kontenerów, a także korzystaj z Azure Container Registry zadań, aby tworzyć obrazy kontenerów na platformie Azure. Kompiluj na żądanie lub w pełni Automatyzuj kompilacje z wyzwalaczami, takimi jak zatwierdzenia kodu źródłowego i aktualizacje obrazu podstawowego.
 
@@ -38,11 +38,18 @@ Platforma Azure udostępnia narzędzia, w tym interfejs wiersza polecenia platfo
 
 * **Jednostki SKU rejestru** — Utwórz co najmniej jeden rejestr kontenerów w ramach subskrypcji platformy Azure. Rejestry są dostępne w trzech jednostkach SKU: [Basic, standard i Premium](container-registry-skus.md), z których każdy obsługuje integrację elementów webhook, uwierzytelnianie rejestru przy użyciu Azure Active Directory i usuwanie funkcji. Utwórz rejestr w tej samej lokalizacji platformy Azure, w której znajdują się wdrożenia, aby korzystać z lokalnego, bliskiego sieciowo magazynu obrazów kontenerów. Użyj funkcji [replikacji geograficznej](container-registry-geo-replication.md) dostępnej w rejestrach w warstwie Premium dla scenariuszy zaawansowanej replikacji i dystrybucji obrazu kontenera. 
 
-  Możesz [kontrolować dostęp](container-registry-authentication.md) do rejestru kontenerów za pomocą tożsamości platformy Azure, [jednostki usługi](../active-directory/develop/app-objects-and-service-principals.md) wspieranej przez usługę Azure Active Directory lub podanego konta administratora. Zaloguj się do rejestru przy użyciu interfejsu wiersza polecenia platformy Azure lub standardowego `docker login`.
+* **Zabezpieczenia i dostęp** — Zaloguj się do rejestru przy użyciu interfejsu wiersza polecenia platformy Azure lub standardowego `docker login`. Azure Container Registry transferuje obrazy kontenerów za pośrednictwem protokołu HTTPS i obsługuje protokół TLS w celu zabezpieczania połączeń klientów. 
+
+  > [!IMPORTANT]
+  > Od 13 stycznia 2020, Azure Container Registry będą wymagały wszystkich bezpiecznych połączeń z serwerów i aplikacji do korzystania z protokołu TLS 1,2. Obsługa protokołu TLS 1,0 i 1,1 zostanie wycofana.
+
+  Możesz [kontrolować dostęp](container-registry-authentication.md) do rejestru kontenerów za pomocą tożsamości platformy Azure, [jednostki usługi](../active-directory/develop/app-objects-and-service-principals.md) wspieranej przez usługę Azure Active Directory lub podanego konta administratora. Za pomocą kontroli dostępu opartej na rolach (RBAC) można przypisywać użytkownikom lub systemom szczegółowe uprawnienia do rejestru.
+
+  Funkcje zabezpieczeń jednostki SKU Premium obejmują [zaufanie zawartości](container-registry-content-trust.md) dla podpisywania tagów obrazu oraz [zapory i sieci wirtualne (wersja zapoznawcza)](container-registry-vnet.md) w celu ograniczenia dostępu do rejestru. Azure Security Center opcjonalnie integrują się z Azure Container Registry, aby [skanować obrazy](../security-center/azure-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json) przy każdym wypchnięciu obrazu do rejestru.
 
 * **Obsługiwane obrazy i artefakty** — pogrupowane w repozytorium, każdy obraz jest migawką tylko do odczytu kontenera zgodnego z platformą Docker. Rejestry kontenerów platformy Azure mogą obejmować zarówno obrazy systemu Windows, jak i Linux. Możesz kontrolować nazwy obrazów wszystkich wdrożeń kontenera. Użyj standardowych [poleceń platformy Docker](https://docs.docker.com/engine/reference/commandline/), aby wypchnąć obrazy do repozytorium lub aby ściągnąć je z repozytorium. Oprócz obrazów kontenerów platformy Docker Azure Container Registry przechowuje [powiązane formaty zawartości](container-registry-image-formats.md) , takie jak [wykresy Helm](container-registry-helm-repos.md) i obrazy skompilowane zgodnie ze [specyfikacją formatu obrazu typu Open Container Initiative (OCI)](https://github.com/opencontainers/image-spec/blob/master/spec.md).
 
-* **Azure Container Registry zadania** — Użyj [Azure Container Registry zadań](container-registry-tasks-overview.md) (ACR zadania), aby usprawnić kompilowanie, testowanie, wypychanie i wdrażanie obrazów na platformie Azure. Na przykład można użyć zadań ACR, aby zwiększyć chmurę wewnętrzną tworzenia do chmury przez odciążenie operacji `docker build` na platformie Azure. Konfiguruj zadania kompilacji w celu automatyzowania potoku poprawiania platformy i systemu operacyjnego kontenera, gdy zespół zatwierdza kod w ramach kontroli źródła.
+* **Zautomatyzowane kompilacje obrazów** — służą [Azure Container Registry zadania](container-registry-tasks-overview.md) (zadania ACR), aby usprawnić kompilowanie, testowanie, wypychanie i wdrażanie obrazów na platformie Azure. Na przykład można użyć zadań ACR, aby zwiększyć chmurę wewnętrzną tworzenia do chmury przez odciążenie operacji `docker build` na platformie Azure. Konfiguruj zadania kompilacji w celu automatyzowania potoku poprawiania platformy i systemu operacyjnego kontenera, gdy zespół zatwierdza kod w ramach kontroli źródła.
 
   [Wieloetapowe zadania](container-registry-tasks-overview.md#multi-step-tasks) zapewniają definicje zadań oparte na krokach i wykonywanie w celu tworzenia, testowania i poprawiania obrazów kontenerów w chmurze. Kroki zadań definiują pojedyncze operacje tworzenia i wypychania obrazu kontenera. Mogą one również definiować wykonanie jednego lub kilku kontenerów, z każdym krokiem używającym kontenera jako jego środowiska wykonawczego.
 

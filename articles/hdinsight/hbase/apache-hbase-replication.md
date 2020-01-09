@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/06/2019
-ms.openlocfilehash: 803deb9a4d9eaf02129bd16dd6465362b87b7e84
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 1e6465584dd4e67f736b94d2939678c1a69163bf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74995919"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435662"
 ---
 # <a name="set-up-apache-hbase-cluster-replication-in-azure-virtual-networks"></a>Konfigurowanie replikacji klastra Apache HBase w usłudze Azure Virtual Networks
 
@@ -51,7 +51,7 @@ Istnieją trzy opcje konfiguracji:
 
 W tym artykule opisano scenariusz replikacji geograficznej.
 
-Aby ułatwić Konfigurowanie środowisk, utworzono kilka [Azure Resource Manager szablonów](../../azure-resource-manager/resource-group-overview.md). Jeśli wolisz skonfigurować środowiska przy użyciu innych metod, zobacz:
+Aby ułatwić Konfigurowanie środowisk, utworzono kilka [Azure Resource Manager szablonów](../../azure-resource-manager/management/overview.md). Jeśli wolisz skonfigurować środowiska przy użyciu innych metod, zobacz:
 
 - [Tworzenie klastrów Apache Hadoop w usłudze HDInsight](../hdinsight-hadoop-provision-linux-clusters.md)
 - [Tworzenie klastrów Apache HBase na platformie Azure Virtual Network](apache-hbase-provision-vnet.md)
@@ -104,7 +104,7 @@ W ostatniej sekcji szablon tworzy maszynę wirtualną Ubuntu w każdej z dwóch 
 
 Aby zainstalować powiązanie, Yon musi znaleźć publiczny adres IP dwóch maszyn wirtualnych DNS.
 
-1. Otwórz [portal Azure](https://portal.azure.com).
+1. Otwórz [Portalu Azure](https://portal.azure.com).
 2. Otwórz maszynę wirtualną DNS, wybierając pozycję **grupy zasobów > [nazwa grupy zasobów] > [vnet1DNS]** .  Nazwa grupy zasobów jest tworzona w ostatniej procedurze. Domyślne nazwy maszyn wirtualnych DNS to *vnet1DNS* i *vnet2NDS*.
 3. Wybierz pozycję **Właściwości** , aby otworzyć stronę właściwości sieci wirtualnej.
 4. Zapisz **publiczny adres IP**, a także Zweryfikuj **prywatny adres IP**.  Prywatny adres IP powinien być **10.1.0.4** dla vnet1DNS i **10.2.0.4** dla vnet2DNS.  

@@ -15,21 +15,21 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/27/2019
 ms.author: mlottner
-ms.openlocfilehash: 0d77a1be2a3469282dabb646b02c43e350313ce5
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: b675198756ff7bc0791d49fee3649717e3e4da7f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68596303"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75367420"
 ---
-# <a name="deploy-azure-security-center-for-iot-c-based-security-agent-for-linux"></a>Wdrażanie Azure Security Center dla agenta C# zabezpieczeń usługi IoT based dla systemu Linux
+# <a name="deploy-azure-security-center-for-iot-c-based-security-agent-for-linux"></a>Wdrażanie agenta zabezpieczeń usługi Azure Security Center dla IoT opartego na języku C# dla systemu Linux
 
 
 W tym przewodniku wyjaśniono, jak zainstalować i wdrożyć Azure Security Center C#dla agenta zabezpieczeń opartego na usłudze IoT w systemie Linux.
 
 Niniejszy przewodnik zawiera informacje na temat wykonywania następujących czynności: 
 > [!div class="checklist"]
-> * Instalowanie
+> * Instalacja
 > * Weryfikowanie wdrożenia
 > * Odinstalowywanie agenta
 > * Rozwiązywanie problemów 
@@ -50,9 +50,9 @@ Aby wdrożyć agenta zabezpieczeń, wykonaj następujące czynności:
 
 1. Wyodrębnij zawartość pakietu i przejdź do folderu _/Install_ .
 
-1. Dodaj uruchomione uprawnienia do **skryptu InstallSecurityAgent** , uruchamiając`chmod +x InstallSecurityAgent.sh` 
+1. Dodaj uruchomione uprawnienia do **skryptu InstallSecurityAgent** , uruchamiając `chmod +x InstallSecurityAgent.sh` 
 
-1. Następnie uruchom polecenie: 
+1. Następnie uruchom następujące polecenie z **uprawnieniami głównymi**: 
 
    ```
    ./InstallSecurityAgent.sh -i -aui <authentication identity>  -aum <authentication method> -f <file path> -hn <host name>  -di <device id> -cl <certificate location kind>
@@ -73,7 +73,7 @@ Ten skrypt wykonuje następujące czynności:
 - Konfiguruje agenta przy użyciu podanych parametrów uwierzytelniania.
 
 
-Aby uzyskać dodatkową pomoc, uruchom skrypt za pomocą parametru – help:`./InstallSecurityAgent.sh --help`
+Aby uzyskać dodatkową pomoc, uruchom skrypt za pomocą parametru – help: `./InstallSecurityAgent.sh --help`
 
 ### <a name="uninstall-the-agent"></a>Odinstalowywanie agenta
 
@@ -108,7 +108,7 @@ Aby odinstalować agenta, uruchom skrypt za pomocą parametru – u: `./InstallS
        Wartość **LogFilePath** można skonfigurować. 
 
        > [!NOTE]
-       > Zalecamy wyłączenie wylogowywania **po zakończeniu** rozwiązywania problemów. Pozostawienie **logowania powoduje zwiększenie** rozmiaru pliku dziennika i użycie danych.
+       > Zalecamy **wyłączenie wylogowywania po zakończeniu** rozwiązywania problemów. Pozostawienie **logowania powoduje zwiększenie** rozmiaru pliku dziennika i użycie danych.
 
    1. Uruchom ponownie agenta, uruchamiając:
 
@@ -116,14 +116,14 @@ Aby odinstalować agenta, uruchom skrypt za pomocą parametru – u: `./InstallS
 
    1. Przejrzyj plik dziennika, aby uzyskać więcej informacji o błędzie.  
 
-       Lokalizacja pliku dziennika:`/var/ASCIoTAgent/IotAgentLog.log`
+       Lokalizacja pliku dziennika: `/var/ASCIoTAgent/IotAgentLog.log`
 
        Zmień ścieżkę lokalizacji pliku zgodnie z nazwą wybraną dla **LogFilePath** w kroku 2. 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Przeczytaj Azure Security Center dla usługi IoT [— Omówienie](overview.md)
 - Dowiedz się więcej o [architekturze](architecture.md) Azure Security Center dla usługi IoT
 - Włącz [usługę](quickstart-onboard-iot-hub.md)
 - Przeczytaj [często zadawane pytania](resources-frequently-asked-questions.md)
-- Informacje [](concept-security-alerts.md) o alertach
+- Informacje o [alertach](concept-security-alerts.md)

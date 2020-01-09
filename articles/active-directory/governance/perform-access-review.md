@@ -1,5 +1,5 @@
 ---
-title: Przeglądanie dostępu do grup lub aplikacji w przeglądach dostępu — Azure Active Directory | Microsoft Docs
+title: Przeglądanie dostępu do grup & aplikacji w ramach przeglądów dostępu — Azure AD
 description: Dowiedz się, jak przeglądać dostęp do członków grupy lub dostępu do aplikacji w Azure Active Directory przeglądy dostępu.
 services: active-directory
 author: msaburnley
@@ -15,14 +15,14 @@ ms.date: 05/21/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e51ad8faecd935ea999b1287e542e4b14d55290a
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 8393a1e4719137aa09233d0a87dabdf81d8ccb59
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71948238"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422451"
 ---
-# <a name="review-access-to-groups-or-applications-in-azure-ad-access-reviews"></a>Przeglądanie dostępu do grup lub aplikacji w przeglądach dostępu do usługi Azure AD
+# <a name="review-access-to-groups-and-applications-in-azure-ad-access-reviews"></a>Przeglądanie dostępu do grup i aplikacji w przeglądach dostępu do usługi Azure AD
 
 Azure Active Directory (Azure AD) upraszczają, w jaki sposób przedsiębiorstwa zarządzają dostępem do grup i aplikacji w usłudze Azure AD i innych usługach online firmy Microsoft przy użyciu funkcji o nazwie przeglądy dostępu usługi Azure AD.
 

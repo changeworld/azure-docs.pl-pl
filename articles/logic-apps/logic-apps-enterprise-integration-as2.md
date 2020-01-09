@@ -1,6 +1,6 @@
 ---
 title: Wysyłanie i odbieranie komunikatów AS2 dla B2B
-description: Komunikaty programu Exchange AS2 dotyczące scenariuszy integracji B2B przedsiębiorstwa przy użyciu Azure Logic Apps
+description: Komunikaty programu Exchange AS2 dotyczące scenariuszy integracji B2B przedsiębiorstwa przy użyciu Azure Logic Apps z Pakiet integracyjny dla przedsiębiorstw
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 08/22/2019
-ms.openlocfilehash: b2d7c8840da3bb44f9e220f2963dc4fee63176e2
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 9f72edecc07c34a0f176e52f6b70644f9ceb16e0
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790719"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666707"
 ---
 # <a name="exchange-as2-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Komunikaty programu Exchange AS2 dla integracji z usługą B2B Enterprise w Azure Logic Apps z Pakiet integracyjny dla przedsiębiorstw
 
@@ -88,7 +88,7 @@ W tym artykule pokazano, jak dodać akcje kodowania i dekodowania AS2 do istniej
    | **AS2 do** | Identyfikator odbiorcy wiadomości określony przez umowę AS2 |
    |||
 
-   Na przykład:
+   Przykład:
 
    ![Właściwości kodowania komunikatów](./media/logic-apps-enterprise-integration-as2/as2-message-encoding-details.png)
 

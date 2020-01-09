@@ -7,13 +7,13 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/7/2019
-ms.openlocfilehash: 397ecdb805f0be9f374c53ae7128f806bfb789d3
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.date: 12/19/2019
+ms.openlocfilehash: 210c1814325e689dd70af9caa7fad08deed933e1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928291"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444505"
 ---
 # <a name="what-are-mapping-data-flows"></a>Czym są przepływy danych mapowania?
 
@@ -35,7 +35,7 @@ Kanwa przepływu danych jest podzielony na trzy części: górny pasek, wykres i
 
 ![Kanwa](media/data-flow/canvas1.png "Kanwa")
 
-### <a name="graph"></a>Graf
+### <a name="graph"></a>Grafowa
 
 Wykres przedstawia strumień transformacji. Pokazuje on dane źródłowe w miarę ich przepływu w jednym lub większej liczbie zlewów. Aby dodać nowe źródło, wybierz pozycję **Dodaj źródło**. Aby dodać nową transformację, wybierz znak plus w prawym dolnym rogu istniejącej transformacji.
 
@@ -60,6 +60,8 @@ Można wydać polecenie ADF, aby zachować pulę zasobów klastra (maszyn wirtua
 Jeśli przepływy danych są uruchamiane w potoku równolegle, ADF będzie oddzielić oddzielne klastry Azure Databricks dla każdego wykonywania działań na podstawie ustawień w Azure Integration Runtime dołączone do poszczególnych działań. Aby zaprojektować wykonywanie równoległe w potokach ADF, należy dodać działania przepływu danych bez ograniczeń pierwszeństwa w interfejsie użytkownika.
 
 Z tych trzech opcji, ta opcja prawdopodobnie zostanie wykonana w najkrótszym czasie. Jednak każdy przepływ danych równoległych będzie wykonywany w tym samym czasie w osobnych klastrach, więc porządkowanie zdarzeń jest niedeterministyczne.
+
+Jeśli wykonujesz działania przepływu danych równolegle wewnątrz potoków, zaleca się, aby nie używać czasu wygaśnięcia. Wynika to z faktu, że równoległe wykonywanie przepływów danych jednocześnie przy użyciu tego samego Azure Integration Runtime spowoduje wystąpienie wielu wystąpień puli dla fabryki danych.
 
 ##### <a name="overload-single-data-flow"></a>Przeciążanie pojedynczego przepływu danych
 

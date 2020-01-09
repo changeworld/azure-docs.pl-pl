@@ -1,6 +1,6 @@
 ---
-title: Wiele adresów IP dla maszyn wirtualnych platformy Azure — Portal | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak przypisać wiele adresów IP do maszyny wirtualnej przy użyciu witryny Azure portal | Menedżer zasobów.
+title: Wiele adresów IP dla usługi Azure Virtual Machines — Portal | Microsoft Docs
+description: Dowiedz się, jak przypisać wiele adresów IP do maszyny wirtualnej przy użyciu Azure Portal | Menedżer zasobów.
 services: virtual-network
 documentationcenter: na
 author: anavinahar
@@ -15,95 +15,95 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/30/2016
 ms.author: anavin
-ms.openlocfilehash: fcb9cc817128bce9498312d3fb016761b6382634
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 66cbb843369dee103f102c9c743da544a833ccf1
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67612751"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646397"
 ---
-# <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-portal"></a>Przypisywanie wielu adresów IP do maszyn wirtualnych przy użyciu witryny Azure portal
+# <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-portal"></a>Przypisywanie wielu adresów IP do maszyn wirtualnych przy użyciu Azure Portal
 
 > [!INCLUDE [virtual-network-multiple-ip-addresses-intro.md](../../includes/virtual-network-multiple-ip-addresses-intro.md)]
 > 
-> W tym artykule wyjaśniono, jak utworzyć maszynę wirtualną (VM) za pomocą modelu wdrażania usługi Azure Resource Manager przy użyciu witryny Azure portal. Wiele adresów IP nie można przypisać do zasobów utworzonych za pomocą klasycznego modelu wdrażania. Aby dowiedzieć się więcej na temat modeli wdrażania platformy Azure, przeczytaj [omówienie modeli wdrażania](../resource-manager-deployment-model.md) artykułu.
+> W tym artykule wyjaśniono, jak utworzyć maszynę wirtualną za pomocą modelu wdrażania Azure Resource Manager przy użyciu Azure Portal. Nie można przypisać wielu adresów IP do zasobów utworzonych za pomocą klasycznego modelu wdrażania. Aby dowiedzieć się więcej na temat modeli wdrażania platformy Azure, zapoznaj się z artykułem [Omówienie modeli wdrażania](../resource-manager-deployment-model.md) .
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-scenario.md](../../includes/virtual-network-multiple-ip-addresses-scenario.md)]
 
-## <a name = "create"></a>Tworzenie maszyny Wirtualnej z wieloma adresami IP
+## <a name = "create"></a>Tworzenie maszyny wirtualnej z wieloma adresami IP
 
-Jeśli chcesz utworzyć maszynę Wirtualną z wieloma adresami IP lub statyczny prywatny adres IP, należy utworzyć je przy użyciu programu PowerShell lub interfejsu wiersza polecenia platformy Azure. Aby dowiedzieć się, jak to zrobić, kliknij przycisk Opcje programu PowerShell lub interfejsu wiersza polecenia, w górnej części tego artykułu. Możesz utworzyć Maszynę wirtualną za pomocą pojedynczego dynamiczny prywatny adres IP oraz (opcjonalnie) jeden publiczny adres IP. Korzystanie z portalu, wykonując kroki opisane w [tworzenie maszyny Wirtualnej z systemem Windows](../virtual-machines/virtual-machines-windows-hero-tutorial.md) lub [tworzenie maszyny Wirtualnej z systemem Linux](../virtual-machines/linux/quick-create-portal.md) artykułów. Po utworzeniu maszyny Wirtualnej, można zmienić typ adresu IP z dynamicznej na statyczną i dodać kolejne adresy IP przy użyciu portalu, wykonując kroki w [adresów Dodaj adres IP maszyny Wirtualnej](#add) dalszej części tego artykułu.
+Jeśli chcesz utworzyć maszynę wirtualną z wieloma adresami IP lub statycznym prywatnym adresem IP, musisz ją utworzyć przy użyciu programu PowerShell lub interfejsu wiersza polecenia platformy Azure. Aby dowiedzieć się, jak to zrobić, kliknij pozycję Opcje programu PowerShell lub interfejsu wiersza polecenia w górnej części tego artykułu. Można utworzyć maszynę wirtualną z jednym dynamicznym prywatnym adresem IP i (opcjonalnie) pojedynczym publicznym adresem IP. Skorzystaj z portalu, wykonując czynności opisane w artykule [Tworzenie maszyny wirtualnej z systemem Windows](../virtual-machines/virtual-machines-windows-hero-tutorial.md) lub [Tworzenie maszyny wirtualnej z systemem Linux](../virtual-machines/linux/quick-create-portal.md) . Po utworzeniu maszyny wirtualnej można zmienić typ adresu IP z dynamicznego na statyczny i dodać dodatkowe adresy IP przy użyciu portalu, wykonując czynności opisane w sekcji [Dodawanie adresów IP do maszyny wirtualnej](#add) w tym artykule.
 
-## <a name="add"></a>Dodaj adresy IP do maszyny Wirtualnej
+## <a name="add"></a>Dodawanie adresów IP do maszyny wirtualnej
 
-Możesz dodać prywatnych i publicznych adresów IP do interfejsu sieci platformy Azure, wykonując poniższe kroki. Przykłady podane w poniższych sekcjach przyjęto założenie, że masz już Maszynę wirtualną przy użyciu trzech konfiguracji adresów IP, opisane w [scenariusza](#scenario), ale nie jest to wymagane.
+Możesz dodać prywatne i publiczne adresy IP do interfejsu sieciowego platformy Azure, wykonując poniższe kroki. W przykładach w poniższych sekcjach założono, że masz już maszynę wirtualną z trzema konfiguracjami protokołu IP opisanymi w tym [scenariuszu](#scenario), ale nie jest to wymagane.
 
 ### <a name="coreadd"></a>Podstawowe kroki
 
-1. Przejdź do witryny Azure portal pod https://portal.azure.com i zaloguj się do niej, jeśli to konieczne.
-2. W portalu, kliknij przycisk **więcej usług** > typ *maszyn wirtualnych* w polu filtru, a następnie kliknij przycisk **maszyn wirtualnych**.
-3. W **maszyn wirtualnych** okienku, kliknij maszynę Wirtualną, aby dodać adres IP adresów. Kliknij przycisk **interfejsy sieciowe** na maszynie wirtualnej okienko, w którym pojawia się, a następnie wybierz interfejs sieciowy, aby dodać adres IP adresów. W przykładzie pokazano na poniższej ilustracji, karta sieciowa o nazwie *myNIC* z maszyny Wirtualnej o nazwie *myVM* wybrano:
+1. Przejdź do Azure Portal w https://portal.azure.com i zaloguj się do niego, jeśli to konieczne.
+2. W portalu kliknij pozycję **więcej usług** > wpisz *maszyny wirtualne* w polu Filtr, a następnie kliknij pozycję **maszyny wirtualne**.
+3. W okienku **maszyny wirtualne** kliknij maszynę wirtualną, do której chcesz dodać adresy IP. Kliknij pozycję **interfejsy sieciowe** w wyświetlonym okienku maszyna wirtualna, a następnie wybierz interfejs sieciowy, do którego chcesz dodać adresy IP. W przykładzie pokazanym na poniższej ilustracji wybrano kartę sieciową o nazwie *myNIC* z maszyny wirtualnej o nazwie *myVM* :
 
     ![Interfejs sieciowy](./media/virtual-network-multiple-ip-addresses-portal/figure1.png)
 
-4. W okienku są wyświetlane dla wybranego interfejsu Sieciowego, kliknij przycisk **konfiguracje adresów IP**.
+4. W okienku, które pojawia się dla wybranej karty interfejsu sieciowego, kliknij pozycję **konfiguracje adresów IP**.
 
-Wykonaj kroki opisane w sekcji, które należy wykonać, na podstawie typu adresu IP, który chcesz dodać.
+Wykonaj czynności opisane w jednej z poniższych sekcji, na podstawie typu adresu IP, który chcesz dodać.
 
-### <a name="add-a-private-ip-address"></a>**Dodaj prywatny adres IP**
+### <a name="add-a-private-ip-address"></a>**Dodawanie prywatnego adresu IP**
 
-Wykonaj poniższe kroki, aby dodać nowego prywatnego adresu IP:
+Aby dodać nowy prywatny adres IP, wykonaj następujące kroki:
 
-1. Wykonaj kroki [podstawowe kroki](#coreadd) dalszej części tego artykułu.
-2. Kliknij przycisk **Dodaj**. W **konfiguracji Dodaj adres IP** okienko zostanie wyświetlone, Utwórz konfigurację adresu IP o nazwie *IPConfig 4* z *10.0.0.7* jako *statyczne* prywatny adres IP adres, a następnie kliknij przycisk **OK**.
+1. Wykonaj kroki opisane w sekcji [podstawowe kroki](#coreadd) tego artykułu.
+2. Kliknij pozycję **Dodaj**. W wyświetlonym okienku **Dodawanie konfiguracji protokołu IP** Utwórz konfigurację adresu IP o nazwie *ipconfig-4* z *10.0.0.7* jako *statyczny* prywatny adres IP, a następnie kliknij przycisk **OK**.
 
     > [!NOTE]
-    > Podczas dodawania statyczny adres IP, musisz określić adres nieużywany, prawidłowy w podsieci, z którą jest połączona karta sieciowa. Jeśli wybrany adres nie jest dostępna, portalu jest wyświetlany znak X dla adresu IP i musisz wybrać inne konto.
+    > Podczas dodawania statycznego adresu IP należy określić nieużywany, prawidłowy adres w podsieci, z którą jest połączona karta sieciowa. Jeśli wybrany adres nie jest dostępny, w portalu zostanie wyświetlony symbol X dla adresu IP i należy wybrać inny.
 
-3. Po kliknięciu przycisku OK okienko zostanie zamknięte, a zobaczysz nową konfigurację adresu IP na liście. Kliknij przycisk **OK** zamknąć **konfiguracji Dodaj adres IP** okienka.
-4. Możesz kliknąć pozycję **Dodaj** Aby dodać dodatkowe konfiguracje adresów IP lub zamknąć wszystkie otwarte bloki, aby zakończyć dodawanie adresów IP.
-5. Dodawanie prywatnych adresów IP do systemu operacyjnego maszyny Wirtualnej, wykonując kroki opisane w [adresy IP Dodaj do systemu operacyjnego maszyny Wirtualnej](#os-config) dalszej części tego artykułu.
+3. Po kliknięciu przycisku OK okienko zostanie zamknięte i zostanie wyświetlona nowa konfiguracja protokołu IP. Kliknij przycisk **OK** , aby zamknąć okienko **Dodawanie konfiguracji protokołu IP** .
+4. Możesz kliknąć przycisk **Dodaj** , aby dodać dodatkowe konfiguracje IP lub zamknąć wszystkie otwarte bloki, aby zakończyć dodawanie adresów IP.
+5. Aby dodać prywatne adresy IP do systemu operacyjnego maszyny wirtualnej, wykonaj kroki opisane w sekcji [Dodawanie adresów IP do systemu operacyjnego maszyny wirtualnej](#os-config) w tym artykule.
 
 ### <a name="add-a-public-ip-address"></a>Dodawanie publicznego adresu IP
 
-Publiczny adres IP jest dodawany przez skojarzenie publicznego zasobu adresu IP na konfigurację adresu IP nowej lub istniejącej konfiguracji adresu IP.
+Publiczny adres IP jest dodawany przez skojarzenie zasobu publicznego adresu IP z nową konfiguracją IP lub istniejącą konfiguracją IP.
 
 > [!NOTE]
-> Publiczne adresy IP mają nominalnej. Aby dowiedzieć się więcej o cenach adresów IP, przeczytaj [cennik adresów IP](https://azure.microsoft.com/pricing/details/ip-addresses) strony. Istnieje limit liczby publicznych adresów IP, które mogą być używane w ramach subskrypcji. Aby uzyskać więcej informacji o limitach, przeczytaj artykuł dotyczący [limitów platformy Azure](../azure-subscription-service-limits.md#networking-limits).
+> Publiczne adresy IP mają opłata nominalną. Aby dowiedzieć się więcej o cenach adresów IP, zapoznaj się z informacjami na stronie [cennika adresów IP](https://azure.microsoft.com/pricing/details/ip-addresses) . Istnieje limit liczby publicznych adresów IP, które mogą być używane w ramach subskrypcji. Aby uzyskać więcej informacji o limitach, przeczytaj artykuł dotyczący [limitów platformy Azure](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits).
 > 
 
 ### <a name="create-public-ip"></a>Utwórz zasób publicznego adresu IP
 
-Publiczny adres IP to jedno z ustawień zasobu publicznego adresu IP. Jeśli masz zasób publicznego adresu IP, który nie jest obecnie skojarzone z konfiguracji adresu IP, który chcesz skojarzyć z konfiguracji adresu IP, pominęli następujące kroki, a następnie wykonaj kroki opisane w sekcji, które należy wykonać, ile potrzebujesz. Jeśli nie masz dostępnych zasób publicznego adresu IP, wykonaj następujące kroki, aby utworzyć:
+Publiczny adres IP jest jednym ustawieniem dla zasobu publicznego adresu IP. Jeśli masz zasób publicznego adresu IP, który nie jest aktualnie skojarzony z konfiguracją adresu IP, która ma zostać skojarzona z konfiguracją adresu IP, Pomiń poniższe kroki i wykonaj czynności opisane w jednej z poniższych sekcji, zgodnie z potrzebami. Jeśli nie masz dostępnego zasobu publicznego adresu IP, wykonaj następujące kroki, aby go utworzyć:
 
-1. Przejdź do witryny Azure portal pod https://portal.azure.com i zaloguj się do niej, jeśli to konieczne.
-3. W portalu, kliknij przycisk **Utwórz zasób** > **sieć** > **publiczny adres IP**.
-4. W **tworzenie publicznego adresu IP** okienko zostanie wyświetlone, wprowadź **nazwa**, wybierz opcję **przypisywania adresów IP** typu **subskrypcji**, **Grupy zasobów**, a **lokalizacji**, następnie kliknij przycisk **Utwórz**, jak pokazano na poniższej ilustracji:
+1. Przejdź do Azure Portal w https://portal.azure.com i zaloguj się do niego, jeśli to konieczne.
+3. W portalu kliknij pozycję **Utwórz zasób** > **sieci** > **publiczny adres IP**.
+4. W wyświetlonym okienku **Utwórz publiczny adres IP** wprowadź **nazwę**, wybierz typ **przypisania adresu IP** , **subskrypcję**, **grupę zasobów**i **lokalizację**, a następnie kliknij przycisk **Utwórz**, jak pokazano na poniższej ilustracji:
 
     ![Utwórz zasób publicznego adresu IP](./media/virtual-network-multiple-ip-addresses-portal/figure5.png)
 
-5. Wykonaj kroki w sekcji, które należy wykonać, aby skojarzyć zasób publicznego adresu IP do konfiguracji adresu IP.
+5. Wykonaj kroki opisane w jednej z poniższych sekcji, aby skojarzyć zasób publicznego adresu IP z konfiguracją adresów IP.
 
-#### <a name="associate-the-public-ip-address-resource-to-a-new-ip-configuration"></a>Skojarz zasób publicznego adresu IP do nowej konfiguracji adresu IP
+#### <a name="associate-the-public-ip-address-resource-to-a-new-ip-configuration"></a>Skojarz zasób publicznego adresu IP z nową konfiguracją adresu IP
 
-1. Wykonaj kroki [podstawowe kroki](#coreadd) dalszej części tego artykułu.
-2. Kliknij przycisk **Dodaj**. W **konfiguracji Dodaj adres IP** okienko zostanie wyświetlone, Utwórz konfigurację adresu IP o nazwie *IPConfig 4*. Włącz **publiczny adres IP** i wybierz istniejący, dostępne zasób publicznego adresu IP z **wybierz publiczny adres IP** wyświetlonym okienku.
+1. Wykonaj kroki opisane w sekcji [podstawowe kroki](#coreadd) tego artykułu.
+2. Kliknij pozycję **Dodaj**. W wyświetlonym okienku **Dodawanie konfiguracji protokołu IP** Utwórz konfigurację adresu IP o nazwie *ipconfig-4*. W wyświetlonym okienku **Wybierz publiczny** adres IP Włącz **publiczny adres IP** i wybierz istniejący, dostępny zasób publicznego adresu IP.
 
-    Po wybraniu zasobu publicznego adresu IP, kliknij przycisk **OK** i zamyka okienka. Jeśli nie masz istniejącego publicznego adresu IP, możesz utworzyć jeden, wykonując kroki opisane w [Utwórz zasób publicznego adresu IP](#create-public-ip) dalszej części tego artykułu. 
+    Po wybraniu zasobu publiczny adres IP kliknij przycisk **OK** , a okienko zostanie zamknięte. Jeśli nie masz istniejącego publicznego adresu IP, możesz go utworzyć, wykonując kroki opisane w sekcji [Tworzenie zasobu publicznego adresu IP](#create-public-ip) w tym artykule. 
 
-3. Przejrzyj nową konfigurację adresu IP. Nawet jeśli jawnie nie został przypisany prywatny adres IP, jedną automatycznie przypisano z konfiguracją adresów IP, ponieważ wszystkie konfiguracje adresów IP musi mieć prywatny adres IP.
-4. Możesz kliknąć pozycję **Dodaj** Aby dodać dodatkowe konfiguracje adresów IP lub zamknąć wszystkie otwarte bloki, aby zakończyć dodawanie adresów IP.
-5. Dodaj jako prywatny adres IP do systemu operacyjnego maszyny Wirtualnej, wykonując kroki dla systemu operacyjnego w [adresy IP Dodaj do systemu operacyjnego maszyny Wirtualnej](#os-config) dalszej części tego artykułu. Nie należy dodawać publicznego adresu IP do systemu operacyjnego.
+3. Przejrzyj nową konfigurację adresów IP. Mimo że prywatny adres IP nie został jawnie przypisany, jeden został automatycznie przypisany do konfiguracji adresu IP, ponieważ wszystkie konfiguracje IP muszą mieć prywatny adres IP.
+4. Możesz kliknąć przycisk **Dodaj** , aby dodać dodatkowe konfiguracje IP lub zamknąć wszystkie otwarte bloki, aby zakończyć dodawanie adresów IP.
+5. Dodaj prywatny adres IP do systemu operacyjnego maszyny wirtualnej, wykonując kroki dla systemu operacyjnego w sekcji [Dodawanie adresów IP do systemu operacyjnego maszyny wirtualnej](#os-config) w tym artykule. Nie dodawaj publicznego adresu IP do systemu operacyjnego.
 
-#### <a name="associate-the-public-ip-address-resource-to-an-existing-ip-configuration"></a>Skojarz zasób publicznego adresu IP do istniejącej konfiguracji adresu IP
+#### <a name="associate-the-public-ip-address-resource-to-an-existing-ip-configuration"></a>Skojarz zasób publicznego adresu IP z istniejącą konfiguracją adresu IP
 
-1. Wykonaj kroki [podstawowe kroki](#coreadd) dalszej części tego artykułu.
-2. Kliknij pozycję Konfiguracja protokołu IP, które chcesz dodać zasób publicznego adresu IP do.
-3. W wyświetlonym okienku IPConfig kliknij **adresu IP**.
-4. W **wybierz publiczny adres IP** okienko zostanie wyświetlone, wybierz publiczny adres IP.
-5. Kliknij przycisk **Zapisz** i zamknij okienka. Jeśli nie masz istniejącego publicznego adresu IP, możesz utworzyć jeden, wykonując kroki opisane w [Utwórz zasób publicznego adresu IP](#create-public-ip) dalszej części tego artykułu.
-3. Przejrzyj nową konfigurację adresu IP.
-4. Możesz kliknąć pozycję **Dodaj** Aby dodać dodatkowe konfiguracje adresów IP lub zamknąć wszystkie otwarte bloki, aby zakończyć dodawanie adresów IP. Nie należy dodawać publicznego adresu IP do systemu operacyjnego.
+1. Wykonaj kroki opisane w sekcji [podstawowe kroki](#coreadd) tego artykułu.
+2. Kliknij konfigurację adresu IP, do której chcesz dodać zasób publicznego adresu IP.
+3. W wyświetlonym okienku IPConfig kliknij pozycję **adres IP**.
+4. W wyświetlonym okienku **Wybierz publiczny adres IP** wybierz publiczny adres IP.
+5. Kliknij przycisk **Zapisz** i Zamknij okienka. Jeśli nie masz istniejącego publicznego adresu IP, możesz go utworzyć, wykonując kroki opisane w sekcji [Tworzenie zasobu publicznego adresu IP](#create-public-ip) w tym artykule.
+3. Przejrzyj nową konfigurację adresów IP.
+4. Możesz kliknąć przycisk **Dodaj** , aby dodać dodatkowe konfiguracje IP lub zamknąć wszystkie otwarte bloki, aby zakończyć dodawanie adresów IP. Nie dodawaj publicznego adresu IP do systemu operacyjnego.
 
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-os-config.md](../../includes/virtual-network-multiple-ip-addresses-os-config.md)]

@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: Uwidacznianie lokalnej usługi WCF REST na zewnętrznym kliencie przy użyciu usługi Azure WCF Relay'
+title: Uwidocznij Premium usługę WCF REST klientom przy użyciu Azure Relay
 description: 'Samouczek: Tworzenie aplikacji klienta i usługi przy użyciu WCF Relay.'
 services: service-bus-relay
 documentationcenter: na
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/05/2019
 ms.author: spelluru
-ms.openlocfilehash: e2dd0448dfed55450a6319936f49831e5d6d77f3
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: ee090ca0d7bbdad70147b85644952143c086d336
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73718843"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452288"
 ---
 # <a name="tutorial-expose-an-on-premises-wcf-rest-service-to-external-client-by-using-azure-wcf-relay"></a>Samouczek: Uwidacznianie lokalnej usługi WCF REST na zewnętrznym kliencie przy użyciu usługi Azure WCF Relay
 
@@ -104,7 +104,7 @@ Kontrakt usługi określa operacje obsługiwane przez usługę. Operacje to meto
    > Zazwyczaj przestrzeń nazw kontraktu usługi zawiera schemat nazewnictwa uwzględniający informacje o wersji. Uwzględnienie informacji o wersji w przestrzeni nazw kontraktu usługi umożliwia usługom izolowanie istotnych zmian przez zdefiniowanie nowego kontraktu usługi z nową przestrzenią nazw i ujawnienie go w nowym punkcie końcowym. W ten sposób klienci mogą nadal używać starego kontraktu usługi bez konieczności jego aktualizowania. Informacje o wersji mogą zawierać datę lub numer kompilacji. Aby uzyskać więcej informacji, zobacz [Service Versioning](/dotnet/framework/wcf/service-versioning) (Obsługa wersji usług). W tym samouczku schemat nazewnictwa przestrzeni nazw kontraktu usługi nie zawiera informacji o wersji.
    >
 
-1. W interfejsie `IEchoContract` Zadeklaruj metodę dla pojedynczej operacji, którą `IEchoContract` kontrakt ujawnia w interfejsie i zastosuj atrybut `OperationContractAttribute` do metody, którą chcesz uwidocznić w ramach kontraktu Public WCF Relay, w następujący sposób: :
+1. W interfejsie `IEchoContract` Zadeklaruj metodę dla pojedynczej operacji, którą `IEchoContract` kontrakt ujawnia w interfejsie i zastosuj atrybut `OperationContractAttribute` do metody, którą chcesz uwidocznić w ramach kontraktu Public WCF Relay, w następujący sposób:
 
     ```csharp
     [OperationContract]

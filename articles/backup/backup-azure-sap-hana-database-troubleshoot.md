@@ -1,14 +1,14 @@
 ---
 title: Rozwiązywanie problemów z kopiami zapasowymi baz danych SAP HANA
 description: Opisuje sposób rozwiązywania typowych błędów, które mogą wystąpić podczas tworzenia kopii zapasowej SAP HANA baz danych przy użyciu Azure Backup.
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 11/7/2019
-ms.openlocfilehash: 9958b241c44d619efea2f9ad516a2bd6d4f33d6e
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 04f9bafba0ca490b33a0daf3c3725e57d81bcc7e
+ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892604"
+ms.lasthandoff: 01/05/2020
+ms.locfileid: "75664602"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>Rozwiązywanie problemów z tworzeniem kopii zapasowych baz danych SAP HANA na platformie Azure
 
@@ -84,27 +84,27 @@ Weź pod uwagę dane wejściowe podczas przywracania pojedynczej bazy danych kon
 
 Załóżmy, że utworzono kopię zapasową wystąpienia SDC HANA "H21". Na stronie elementy kopii zapasowej będzie wyświetlana nazwa elementu kopii zapasowej jako **"H21 (SDC)"** . Jeśli próbujesz przywrócić tę bazę danych do innego obiektu docelowego SDC, powiedz H11, a następnie należy podać następujące dane wejściowe.
 
-![SDC przywracania danych wejściowych](media/backup-azure-sap-hana-database/hana-sdc-restore.png)
+![Nazwa przywróconej bazy danych SDC](media/backup-azure-sap-hana-database/hana-sdc-restore.png)
 
 Pamiętaj o następujących kwestiach:
 
-- Domyślnie przywrócona Nazwa bazy danych zostanie uzupełniona nazwą elementu kopii zapasowej, np., H21 (SDC)
+- Domyślnie przywrócona Nazwa bazy danych zostanie wypełniona nazwą elementu kopii zapasowej. W tym przypadku H21 (SDC).
 - Wybranie elementu docelowego jako H11 nie spowoduje automatycznej zmiany przywróconej nazwy bazy danych. **Powinien być edytowany w H11 (SDC)** . W odniesieniu do SDC nazwa przywróconej bazy danych będzie IDENTYFIKATORem wystąpienia docelowego z małymi literami i "SDC" dołączonym w nawiasach.
 - Ponieważ SDC może mieć tylko jedną bazę danych, należy również kliknąć pole wyboru, aby umożliwić przesłonięcie istniejących danych bazy danych z użyciem danych punktu odzyskiwania.
-- W systemie Linux jest rozróżniana wielkość liter. W związku z tym należy zachować ostrożność.
+- W systemie Linux jest rozróżniana wielkość liter. Należy zachować ostrożność.
 
 ### <a name="multiple-container-database-mdc-restore"></a>Przywracanie wielu baz danych (MDC)
 
-W przypadku wielu baz danych kontenerów dla platformy HANA Standardowa konfiguracja to SYSTEMDB + 1 lub więcej baz danych dzierżawców. Przywrócenie całego wystąpienia SAP HANA oznacza przywrócenie zarówno SYSTEMDB, jak i baz danych dzierżawcy. Najpierw przywraca SYSTEMDB, a następnie przechodzi do bazy danych dzierżawcy. Zasadniczo systemowa baza danych zastępuje informacje o systemie w wybranym miejscu docelowym. To przywracanie przesłania również informacje dotyczące BackInt w wystąpieniu docelowym. W związku z tym po przywróceniu bazy danych systemu do wystąpienia docelowego należy ponownie uruchomić skrypt przed rejestracją. Kolejne Przywracanie bazy danych dzierżawy zakończy się powodzeniem.
+W przypadku wielu baz danych kontenerów dla platformy HANA Standardowa konfiguracja to SYSTEMDB + 1 lub więcej baz danych dzierżawców. Przywrócenie całego wystąpienia SAP HANA oznacza przywrócenie zarówno SYSTEMDB, jak i baz danych dzierżawcy. Najpierw przywraca SYSTEMDB, a następnie przechodzi do bazy danych dzierżawcy. Zasadniczo systemowa baza danych zastępuje informacje o systemie w wybranym miejscu docelowym. To przywracanie przesłania również informacje dotyczące BackInt w wystąpieniu docelowym. Dlatego po przywróceniu bazy danych systemowych do wystąpienia docelowego Uruchom ponownie skrypt przed rejestracją. Kolejne Przywracanie bazy danych dzierżawy zakończy się powodzeniem.
 
 ## <a name="upgrading-from-sap-hana-10-to-20"></a>Uaktualnianie z SAP HANA 1,0 do 2,0
 
-Jeśli chronisz bazy danych SAP HANA 1,0 i chcesz uaktualnić do wersji 2,0, wykonaj czynności opisane poniżej:
+Jeśli chronisz bazy danych SAP HANA 1,0 i chcesz przeprowadzić uaktualnienie do wersji 2,0, wykonaj następujące czynności:
 
 - [Zatrzymaj ochronę](sap-hana-db-manage.md#stop-protection-for-an-sap-hana-database) z zachowaniem zachowania danych dla starej bazy danych SDC.
 - Wykonaj uaktualnienie. Po zakończeniu program HANA jest teraz MDC z systemową bazą danych i bazami danych dzierżaw
 - Uruchom ponownie [skrypt poprzedzający rejestrację](https://aka.ms/scriptforpermsonhana) z prawidłowymi szczegółami (SID i MDC).
-- Zarejestruj ponownie rozszerzenie dla tego samego komputera w witrynie Azure Portal (szczegóły widoku kopii zapasowej > — > wybierz odpowiednią pozycję Azure VM-> reregister).
+- Ponownie zarejestruj rozszerzenie dla tego samego komputera w Azure Portal (szczegóły wyświetlania > kopii zapasowej-> wybierz odpowiednią maszynę wirtualną platformy Azure — > ponownie register).
 - Kliknij przycisk ponownie odkryj baz danych dla tej samej maszyny wirtualnej. Ta akcja powinna spowodować wyświetlenie nowego baz danych w kroku 2 z prawidłowymi szczegółami (SYSTEMDB i dzierżawcą bazy danych, a nie SDC).
 - Skonfiguruj kopię zapasową tych nowych baz danych.
 

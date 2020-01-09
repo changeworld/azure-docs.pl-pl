@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: python
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: d7b4755bb2e69c4a852901b71d917c6baa5d63ae
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: c7c4da97101ae1277474e62466d78ffbc66b1ce0
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406428"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75563279"
 ---
 # <a name="tutorial-create-an-ai-enrichment-pipeline-using-rest-and-python"></a>Samouczek: Tworzenie potoku wzbogacania AI przy użyciu języka REST i języka Python
 
@@ -87,7 +87,7 @@ Istnieją inne sposoby określania parametrów połączenia, takie jak podanie s
 ## <a name="create-a-jupyter-notebook"></a>Tworzenie notesu Jupyter
 
 > [!Note]
-> W tym artykule przedstawiono sposób tworzenia źródła danych, indeksu, indeksatora i zestawu umiejętności przy użyciu szeregu skryptów języka Python. Aby pobrać pełny przykład notesu, przejdź do [repozytorium Azure-Search-Python-Samples](https://github.com/Azure-Samples/azure-search-python-samples/tree/master/Tutorial-AI-Enrichment-Jupyter-Notebook).
+> W tym artykule przedstawiono sposób tworzenia źródła danych, indeksu, indeksatora i zestawu umiejętności przy użyciu szeregu skryptów języka Python. Aby pobrać pełny przykład notesu, przejdź do [repozytorium Azure-Search-Python-Samples](https://github.com/Azure-Samples/azure-search-python-samples/tree/master/Tutorial-AI-Enrichment).
 
 Użyj nawigatora Anaconda, aby uruchomić Jupyter Notebook i utworzyć nowy Notes Python 3.
 

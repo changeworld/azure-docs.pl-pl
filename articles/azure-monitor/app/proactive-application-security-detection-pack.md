@@ -1,18 +1,18 @@
 ---
-title: Wykrywanie inteligentne — pakiet wykrywania zabezpieczeń w usłudze Azure Application Insights | Microsoft Docs
-description: Monitoruj aplikacje za pomocą usługi Azure Application Insights, aby uzyskać potencjalne problemy z zabezpieczeniami.
+title: Pakiet wykrywania zabezpieczeń z usługą Azure Application Insights
+description: Monitoruj aplikacje za pomocą usługi Azure Application Insights i inteligentnego wykrywania pod kątem potencjalnych problemów z zabezpieczeniami.
 ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 12/12/2017
-ms.openlocfilehash: 10c8a38af9e4f04b874bfa75e9e78d241b093117
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: ba35b3a3e1985f49ade468c4d2e82ca579fdac2a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820651"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432474"
 ---
 # <a name="application-security-detection-pack-preview"></a>Pakiet wykrywania zabezpieczeń aplikacji (wersja zapoznawcza)
 

@@ -3,12 +3,12 @@ title: Tworzenie kopii zapasowej maszyny wirtualnej platformy Azure z ustawień 
 description: W tym artykule dowiesz się, jak utworzyć kopię zapasową pojedynczej maszyny wirtualnej platformy Azure lub wielu maszyn wirtualnych platformy Azure z usługą Azure Backup.
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: 02cdab727adc29be99f52b262cb94de4fc4fe8f8
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 1895f27370e6f928ce2183798dd892a2ff7225c3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172510"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75391434"
 ---
 # <a name="back-up-an-azure-vm-from-the-vm-settings"></a>Tworzenie kopii zapasowej maszyny wirtualnej platformy Azure z ustawień maszyny wirtualnej
 
@@ -31,7 +31,7 @@ Aby utworzyć kopię zapasową maszyn wirtualnych platformy Azure, Azure Backup 
 
 ## <a name="back-up-from-azure-vm-settings"></a>Tworzenie kopii zapasowej z ustawień maszyny wirtualnej platformy Azure
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
 2. Kliknij pozycję **wszystkie usługi** i w obszarze filtr wpisz polecenie **maszyny wirtualne**, a następnie kliknij pozycję **maszyny wirtualne**.
 3. Z listy maszyn wirtualnych wybierz maszynę wirtualną, dla której chcesz utworzyć kopię zapasową.
 4. W menu maszyny wirtualnej kliknij pozycję **kopia zapasowa**.
@@ -56,15 +56,11 @@ Aby utworzyć kopię zapasową maszyn wirtualnych platformy Azure, Azure Backup 
 8. Postęp konfiguracji można śledzić w powiadomieniach portalu.
 9. Po zakończeniu zadania w menu maszyny wirtualnej kliknij pozycję **kopia zapasowa**. Na stronie jest wyświetlany stan kopii zapasowej maszyny wirtualnej, informacje o punktach odzyskiwania, uruchomionych zadaniach i alertach.
 
-   ![Stan kopii zapasowej](./media/backup-azure-vms-first-look-arm/backup-item-view-update.png)
+   ![Stan usługi Backup](./media/backup-azure-vms-first-look-arm/backup-item-view-update.png)
 
 10. Po włączeniu kopii zapasowej zostanie uruchomione początkowe kopie zapasowe. Początkową kopię zapasową można rozpocząć od razu lub zaczekać, aż zacznie się zgodnie z harmonogramem tworzenia kopii zapasowych.
     - Do momentu ukończenia początkowej kopii zapasowej **stan ostatniej kopii zapasowej** zostanie wyświetlony jako **ostrzeżenie (początkowa kopia zapasowa oczekuje)** .
     - Aby sprawdzić, kiedy zostanie uruchomiona Następna zaplanowana kopia zapasowa, kliknij nazwę zasad kopii zapasowych.
-
-> [!NOTE]
-> Usługa Azure Backup tworzy oddzielną grupę zasobów (inną niż grupa zasobów maszyny wirtualnej) do przechowywania migawki przy użyciu formatu nazewnictwa **AzureBackupRG_geography_number** (przykład: AzureBackupRG_northeurope_1). Dane w tej grupie zasobów będą przechowywane przez czas trwania w dniach, jak określono w sekcji "zachowywanie migawki natychmiastowego odzyskiwania" zasad tworzenia kopii zapasowej maszyny wirtualnej platformy Azure. Zastosowanie blokady do tej grupy zasobów może spowodować błędy kopii zapasowych.<br>
-Ta grupa zasobów powinna być również wykluczona z dowolnych ograniczeń nazw/tagów, ponieważ zasady ograniczeń blokują tworzenie kolekcji punktów zasobów w tym momencie, powodując błędy kopii zapasowych.
 
 ## <a name="run-a-backup-immediately"></a>Natychmiastowe uruchamianie kopii zapasowej
 

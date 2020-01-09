@@ -14,16 +14,16 @@ ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 8/6/2019
 ms.author: alsin
-ms.openlocfilehash: f17b96ad880742cf1232b074e4398f3b1d15e5ba
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 11c2549d7282bae5654ede1ac34d63a43cd0f059
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70129577"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75451199"
 ---
 # <a name="power-options-available-from-the-azure-serial-console"></a>Opcje napięcia dostępne w konsoli szeregowej platformy Azure
 
-Konsola szeregowa Azure oferuje kilka zaawansowanych narzędzi do zarządzania zużyciem mocy na maszynie wirtualnej lub w zestawie skalowania maszyn wirtualnych. Te opcje zarządzania zużyciem mocy mogą być mylące dla niektórych, więc ten dokument zawiera przegląd każdego narzędzia i jego zamierzonego użycia.
+Konsola szeregowa Azure oferuje kilka zaawansowanych narzędzi do zarządzania zużyciem mocy na maszynie wirtualnej lub w zestawie skalowania maszyn wirtualnych. Te opcje zarządzania mocą mogą być mylące dla niektórych, więc jest to przegląd każdego narzędzia i jego zamierzonego użycia.
 
 Funkcja konsoli szeregowej | Opis | Przypadek użycia
 :----------------------|:------------|:---------

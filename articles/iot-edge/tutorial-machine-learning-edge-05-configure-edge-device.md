@@ -8,12 +8,12 @@ ms.date: 11/11/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 5be7b66a51113121ed755d8ad9cea3518577f2e7
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 16920a46e64306daa331957df24babba8ac4b731
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706956"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75612874"
 ---
 # <a name="tutorial-configure-an-iot-edge-device"></a>Samouczek: Konfigurowanie urządzenia IoT Edge
 
@@ -26,9 +26,9 @@ Kroki opisane w tym artykule są zwykle wykonywane przez dewelopera chmury.
 
 ## <a name="generate-certificates"></a>Generowanie certyfikatów klienta
 
-Aby urządzenie działało jako brama, musi być w stanie bezpiecznie połączyć się z urządzeniami podrzędnymi. Azure IoT Edge umożliwia konfigurowanie bezpiecznych połączeń między urządzeniami przy użyciu infrastruktury kluczy publicznych (PKI). W takim przypadku zezwalamy urządzeniu podrzędnemu na łączenie się z urządzeniem IoT Edge działającym jako niejawna brama. Aby zachować uzasadnione zabezpieczenia, urządzenie podrzędne powinno potwierdzić tożsamość urządzenia IoT Edge. Aby uzyskać więcej informacji na temat sposobu używania certyfikatów przez urządzenia IoT Edge, zobacz [Azure IoT Edge szczegóły użycia certyfikatu](iot-edge-certs.md).
+Aby urządzenie działało jako brama, musi być w stanie bezpiecznie połączyć się z urządzeniami podrzędnymi. Usługa Azure IoT Edge umożliwia użycie infrastruktury kluczy publicznych (PKI) do skonfigurowania bezpiecznych połączeń między urządzeniami. W tym przypadku możemy zezwolenie podrzędnym urządzenia połączyć się z urządzenia usługi IoT Edge, działając jako przezroczystej bramy. Aby zachować uzasadnione zabezpieczenia, urządzenie podrzędne powinno potwierdzić tożsamość urządzenia IoT Edge. Aby uzyskać więcej informacji na temat sposobu używania certyfikatów przez urządzenia IoT Edge, zobacz [Azure IoT Edge szczegóły użycia certyfikatu](iot-edge-certs.md).
 
-W tej sekcji tworzymy certyfikaty z podpisem własnym przy użyciu obrazu platformy Docker, który następnie kompilujemy i uruchamiamy. Wybrano użycie obrazu platformy Docker w celu wykonania tego kroku, ponieważ znacznie zmniejszyło liczbę kroków niezbędnych do utworzenia certyfikatów na komputerze deweloperskim systemu Windows. Zobacz [generowanie certyfikatów w systemie Windows](how-to-create-transparent-gateway.md#generate-certificates-with-windows) , aby uzyskać szczegółowe informacje na temat tworzenia certyfikatów bez używania kontenera. [Generowanie certyfikatów przy użyciu systemu Linux](how-to-create-transparent-gateway.md#generate-certificates-with-linux) zawiera zestaw instrukcji zautomatyzowanych za pomocą obrazu platformy Docker.
+W tej sekcji tworzymy certyfikaty z podpisem własnym przy użyciu obrazu platformy Docker, który następnie kompilujemy i uruchamiamy. Wybrano użycie obrazu platformy Docker w celu wykonania tego kroku, ponieważ znacznie zmniejszyło liczbę kroków niezbędnych do utworzenia certyfikatów na komputerze deweloperskim systemu Windows. Zobacz [Tworzenie certyfikatów demonstracyjnych, aby testować IoT Edge funkcje urządzenia](how-to-create-test-certificates.md) , aby zrozumieć, co możemy zautomatyzować za pomocą obrazu platformy Docker.
 
 1. Zaloguj się do maszyny wirtualnej deweloperskiej.
 
@@ -65,11 +65,11 @@ W tej sekcji tworzymy certyfikaty z podpisem własnym przy użyciu obrazu platfo
 
 12. Po zakończeniu działania kontenera sprawdź następujące pliki w **c:\\edgeCertificates**:
 
-    * c:\\edgeCertificates\\certyfikatów\\Azure-IoT-test-Only. root. ca. CERT. pem
-    * c:\\edgeCertificates\\certyfikatów\\New-Edge-Device-Full-Chain. CERT. pem
-    * c:\\edgeCertificates\\certyfikatów\\New-Edge-Device. CERT. pem
-    * c:\\edgeCertificates\\certyfikatów\\New-Edge-Device. CERT. pfx
-    * c:\\edgeCertificates\\prywatny\\New-Edge-Device. Key. pem
+    * c:\\edgeCertificates\\certs\\azure-iot-test-only.root.ca.cert.pem
+    * c:\\edgeCertificates\\certs\\new-edge-device-full-chain.cert.pem
+    * c:\\edgeCertificates\\certs\\new-edge-device.cert.pem
+    * c:\\edgeCertificates\\certs\\new-edge-device.cert.pfx
+    * c:\\edgeCertificates\\private\\new-edge-device.key.pem
 
 ## <a name="upload-certificates-to-azure-key-vault"></a>Przekaż certyfikaty do Azure Key Vault
 
@@ -204,7 +204,7 @@ Wcześniej w tym artykule zostały przekazane certyfikaty do Key Vault, aby udos
 
 1. Po pomyślnym uwierzytelnieniu maszyna wirtualna z systemem Linux zaloguje się i wyświetli subskrypcje platformy Azure.
 
-1. ASet subskrypcję platformy Azure, która ma być używana dla poleceń interfejsu wiersza polecenia platformy Azure.
+1. Ustaw subskrypcję platformy Azure, która ma być używana dla poleceń interfejsu wiersza polecenia platformy Azure.
 
     ```bash
     az account set --subscription <subscriptionId>

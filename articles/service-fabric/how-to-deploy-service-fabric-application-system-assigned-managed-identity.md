@@ -1,18 +1,14 @@
 ---
-title: Azure Service Fabric — wdrażanie aplikacji Service Fabric platformy Azure przy użyciu tożsamości zarządzanej przypisanej do systemu | Microsoft Docs
+title: Wdrażanie aplikacji Service Fabric z przypisanym przez system
 description: W tym artykule opisano sposób przypisywania tożsamości zarządzanej przypisanej przez system do aplikacji Service Fabric platformy Azure
-services: service-fabric
-author: athinanthny
-ms.service: service-fabric
 ms.topic: article
 ms.date: 07/25/2019
-ms.author: atsenthi
-ms.openlocfilehash: cf971d71c2566d91bc5a2490d47521725c62b17d
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: d5a14722363d642957904f9c7c699d3cf1d66c0f
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973425"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614829"
 ---
 # <a name="deploy-service-fabric-application-with-system-assigned-managed-identity-preview"></a>Wdrażanie aplikacji Service Fabric przy użyciu tożsamości zarządzanej przypisanej do systemu (wersja zapoznawcza)
 
@@ -78,7 +74,7 @@ Ta właściwość deklaruje (do Azure Resource Manager i dostawcy zasobów zarz�
 
     Ten element przypisuje tożsamość aplikacji do usługi; bez tego przypisania usługa nie będzie mogła uzyskać dostępu do tożsamości aplikacji. W powyższym fragmencie kodu tożsamość `SystemAssigned` (która jest zastrzeżonym słowem kluczowym) jest zamapowana na definicję usługi pod przyjazną nazwą `WebAdmin`.
 
-3. Zaktualizuj manifest usługi, aby dodać element **ManagedIdentity** w sekcji **resources** o nazwie zgodnej z wartością ustawienia `ServiceIdentityRef` z definicji `IdentityBindingPolicy` w manifeście aplikacji:
+3. Zaktualizuj manifest usługi, aby dodać element **ManagedIdentity** w sekcji **resources** o nazwie odpowiadającej wartości ustawienia `ServiceIdentityRef` z definicji `IdentityBindingPolicy` w manifeście aplikacji:
 
     **Servicemanifest. XML**
 
@@ -90,7 +86,7 @@ Ta właściwość deklaruje (do Azure Resource Manager i dostawcy zasobów zarz�
         </ManagedIdentities>
       </Resources>
     ```
-    Jest to równoważne mapowanie tożsamości do usługi zgodnie z powyższym opisem, ale z perspektywy definicji usługi. Tożsamość jest przywoływana tutaj według przyjaznej nazwy (`WebAdmin`), zgodnie z deklaracją w manifeście aplikacji.
+    Jest to równoważne mapowanie tożsamości do usługi zgodnie z powyższym opisem, ale z perspektywy definicji usługi. Tożsamość jest przywoływana tutaj przez przyjazną nazwę (`WebAdmin`), zgodnie z deklaracją w manifeście aplikacji.
 
 ## <a name="next-steps"></a>Następne kroki
 * Przejrzyj [obsługę tożsamości zarządzanych](./concepts-managed-identity.md) w usłudze Azure Service Fabric

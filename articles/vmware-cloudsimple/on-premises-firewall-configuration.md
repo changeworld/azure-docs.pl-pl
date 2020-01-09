@@ -1,5 +1,6 @@
 ---
-title: Uzyskiwanie dostępu do rozwiązania Azure VMware przez CloudSimple z zasobów lokalnych
+title: Dostęp do rozwiązań VMware platformy Azure przez CloudSimple z zasobów lokalnych
+titleSuffix: Azure VMware Solution by CloudSimple
 description: Uzyskiwanie dostępu do rozwiązania VMware platformy Azure przez CloudSimple z sieci lokalnej przez zaporę
 author: sharaths-cs
 ms.author: dikamath
@@ -8,12 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: c0f575417819f0e2d46565ad15aaa23a04fd7cf1
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: df4c51953c6f50e30ba61b993cdb35856fcb8e25
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972637"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452406"
 ---
 # <a name="accessing-your-cloudsimple-private-cloud-environment-and-applications-from-on-premises"></a>Uzyskiwanie dostępu do środowiska chmury prywatnej CloudSimple i aplikacji z poziomu lokalnego
 
@@ -23,7 +24,7 @@ Połączenie można skonfigurować z sieci lokalnej do CloudSimple przy użyciu 
 
 Aby można było uzyskać dostęp do Menedżera usługi vCenter i NSX-T chmury prywatnej, porty zdefiniowane w poniższej tabeli muszą być otwarte na zaporze lokalnej.  
 
-| Port       | Source                           | Miejsce docelowe                      | Cel                                                                                                                |
+| Port       | Źródło                           | Cel                      | Przeznaczenie                                                                                                                |
 |------------|----------------------------------|----------------------------------|------------------------------------------------------------------------------------------------------------------------|
 | 53 (UDP)   | Lokalne serwery DNS          | Serwery DNS w chmurze prywatnej        | Wymagany do przekazywania wyszukiwania DNS *AZ.cloudsimple.IO* do serwerów DNS w chmurze prywatnej z sieci lokalnej.       |
 | 53 (UDP)   | Serwery DNS w chmurze prywatnej        | Lokalne serwery DNS          | Wymagane w celu przeprowadzenia przeszukiwania nazw domen lokalnych z usługi vCenter w chmurze prywatnej do lokalnych serwerów DNS. |
@@ -36,7 +37,7 @@ Aby można było uzyskać dostęp do Menedżera usługi vCenter i NSX-T chmury p
 
 Aby skonfigurować lokalną usługi Active Directory jako źródło tożsamości w programie vCenter w chmurze prywatnej, należy otworzyć porty zdefiniowane w tabeli.  Zobacz [Używanie usługi Azure AD jako dostawcy tożsamości dla programu vCenter w chmurze prywatnej CloudSimple](https://docs.azure.cloudsimple.com/azure-ad/) na potrzeby czynności konfiguracyjnych.
 
-| Port         | Source                           | Miejsce docelowe                                         | Cel                                                                                                                                          |
+| Port         | Źródło                           | Cel                                         | Przeznaczenie                                                                                                                                          |
 |--------------|----------------------------------|-----------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------|
 | 53 (UDP)      | Serwery DNS w chmurze prywatnej        | Lokalne serwery DNS                             | Wymagane w celu przeprowadzenia przekazywania DNS nazwy lokalnych domen usługi Active Directory z chmury prywatnej vCenter do lokalnych serwerów DNS.          |
 | 389 (TCP/UDP) | Sieć zarządzania chmurą prywatną | Lokalne kontrolery domeny usługi Active Directory     | Wymagany do komunikacji z usługą LDAP z prywatnego serwera vCenter Cloud do kontrolerów domeny usługi Active Directory na potrzeby uwierzytelniania użytkowników.                |
@@ -48,7 +49,7 @@ Aby skonfigurować lokalną usługi Active Directory jako źródło tożsamości
 
 Dostęp do obciążeń maszyny wirtualne uruchomione w chmurze prywatnej wymagają otwarcia portów na zaporze lokalnej.  W poniższej tabeli przedstawiono niektóre typowe porty wymagane i ich przeznaczenia.  Wymagania dotyczące portów specyficzne dla aplikacji można znaleźć w dokumentacji aplikacji.
 
-| Port         | Source                         | Miejsce docelowe                          | Cel                                                                              |
+| Port         | Źródło                         | Cel                          | Przeznaczenie                                                                              |
 |--------------|--------------------------------|--------------------------------------|--------------------------------------------------------------------------------------|
 | 22 (TCP)      | Sieć lokalna            | Sieć obciążenia chmury prywatnej       | Bezpieczny dostęp powłoki do maszyn wirtualnych z systemem Linux działających w chmurze prywatnej.              |
 | 3389 (TCP)    | Sieć lokalna            | Sieć obciążenia chmury prywatnej       | Pulpit zdalny do maszyn wirtualnych z systemem Windows uruchomionych w chmurze prywatnej.                 |
