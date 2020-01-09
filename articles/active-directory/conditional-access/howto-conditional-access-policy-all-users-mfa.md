@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 12/03/2019
+ms.date: 12/12/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cc0d22e2e6478c265ba9219ae4df5d5ddb34d481
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 52faa2b6167606a46bf189d514a1eb314b443783
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74803890"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424941"
 ---
 # <a name="conditional-access-require-mfa-for-all-users"></a>Dostęp warunkowy: Wymagaj uwierzytelniania wieloskładnikowego dla wszystkich użytkowników
 
@@ -57,8 +57,24 @@ Poniższe kroki pomogą utworzyć zasady dostępu warunkowego, aby wymagać przy
 1. Potwierdź ustawienia i ustaw opcję **Włącz zasady** na **włączone**.
 1. Wybierz pozycję **Utwórz** , aby utworzyć zasady.
 
+### <a name="named-locations"></a>Nazwane lokalizacje
+
+Organizacje mogą dołączać znane lokalizacje sieciowe znane jako **nazwane lokalizacje** do zasad dostępu warunkowego. Te nazwane lokalizacje mogą obejmować zaufane sieci IPv4, takie jak te dla głównej lokalizacji biurowej. Aby uzyskać więcej informacji o konfigurowaniu nazwanych lokalizacji, zobacz artykuł [jaki jest warunek lokalizacji w Azure Active Directory dostęp warunkowy?](location-condition.md)
+
+W przykładowych zasadach powyżej organizacja może zrezygnować z używania uwierzytelniania wieloskładnikowego w przypadku uzyskiwania dostępu do aplikacji w chmurze z sieci firmowej. W takim przypadku można dodać do zasad następującą konfigurację:
+
+1. W obszarze **przypisania**wybierz pozycję **warunki** > **lokalizacje**.
+   1. Skonfiguruj **tak**.
+   1. Uwzględnij **dowolną lokalizację**.
+   1. Wyklucz **wszystkie Zaufane lokalizacje**.
+   1. Wybierz pozycję **Done** (Gotowe).
+1. Wybierz pozycję **Done** (Gotowe).
+1. **Zapisz** zmiany zasad.
+
 ## <a name="next-steps"></a>Następne kroki
 
 [Wspólne zasady dostępu warunkowego](concept-conditional-access-policy-common.md)
+
+[Określanie wpływu przy użyciu trybu tylko Raport z dostępem warunkowym](howto-conditional-access-report-only.md)
 
 [Symulowanie zachowania logowania za pomocą narzędzia What If dostępu warunkowego](troubleshoot-conditional-access-what-if.md)

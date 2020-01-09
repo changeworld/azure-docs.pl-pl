@@ -1,17 +1,17 @@
 ---
 title: Jak skalować pamięć podręczną platformy Azure dla Redis
-description: Dowiedz się, jak skalować pamięć podręczną platformy Azure pod kątem wystąpień Redis
+description: Dowiedz się, jak skalować usługę Azure cache for Redis Instances przy użyciu Azure Portal i narzędzi, takich jak Azure PowerShell, i interfejsu wiersza polecenia platformy Azure.
 author: yegu-ms
+ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 04/11/2017
-ms.author: yegu
-ms.openlocfilehash: 0fe4092a93e34d6e6b4bb4c4441609f696518b86
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: e8a1cf0e197841b6af8c65fe00c25aa42dbd0e7a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122125"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433501"
 ---
 # <a name="how-to-scale-azure-cache-for-redis"></a>Jak skalować pamięć podręczną platformy Azure dla Redis
 Usługa Azure cache for Redis ma różne oferty pamięci podręcznej, które zapewniają elastyczność w wyborze rozmiaru i funkcji pamięci podręcznej. Po utworzeniu pamięci podręcznej można skalować rozmiar i warstwę cenową pamięci podręcznej w przypadku zmiany wymagań aplikacji. W tym artykule przedstawiono sposób skalowania pamięci podręcznej przy użyciu Azure Portal i narzędzi, takich jak Azure PowerShell i interfejs wiersza polecenia platformy Azure.
@@ -22,9 +22,9 @@ Można użyć funkcji [monitorowania](cache-how-to-monitor.md) usługi Azure cac
 Można monitorować następujące metryki, aby pomóc w ustaleniu, czy konieczne jest skalowanie.
 
 * Ładowanie serwera Redis
-* Użycie pamięci
+* Memory Usage (Użycie pamięci)
 * Przepustowość sieci
-* Użycie procesora CPU
+* Wykorzystanie procesora
 
 Jeśli okaże się, że pamięć podręczna nie spełnia już wymagań aplikacji, można skalować ją do większej lub mniejszej warstwy cenowej pamięci podręcznej, która jest odpowiednia dla danej aplikacji. Aby uzyskać więcej informacji na temat określania warstwy cenowej pamięci podręcznej, która ma być używana, zobacz [zawartość pamięci podręcznej platformy Azure dla oferty Redis i rozmiar należy używać](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use).
 

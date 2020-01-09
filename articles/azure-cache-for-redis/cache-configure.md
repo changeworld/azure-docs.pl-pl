@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: yegu
-ms.openlocfilehash: 7c0642377e75e621e1774936262ffddd166ff06d
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 62e0c9bbf8b1c7cef9b1cc239810cb554b5ffa45
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122875"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433531"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Jak skonfigurować usługę Azure cache for Redis
 W tym temacie opisano konfiguracje dostępne dla usługi Azure cache dla wystąpień Redis. W tym temacie opisano również domyślną konfigurację serwera Redis dla usługi Azure cache dla wystąpień Redis.
@@ -46,7 +46,7 @@ Poniższe ustawienia można wyświetlać i konfigurować za pomocą **menu zasó
     * [Geo-replication](#geo-replication) (Replikacja geograficzna)
     * [Virtual Network](#virtual-network)
     * [Zapora](#firewall)
-    * [Aœciwoœci](#properties)
+    * [Właściwości](#properties)
     * [Zamki](#locks)
     * [Skrypt automatyzacji](#automation-script)
 * Administracja
@@ -62,7 +62,7 @@ Poniższe ustawienia można wyświetlać i konfigurować za pomocą **menu zasó
     * [Nowe żądanie obsługi](#new-support-request)
 
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 **Przegląd** zawiera podstawowe informacje o pamięci podręcznej, takie jak nazwa, porty, warstwa cenowa i wybrane metryki pamięci podręcznej.
 
@@ -70,7 +70,7 @@ Poniższe ustawienia można wyświetlać i konfigurować za pomocą **menu zasó
 
 Kliknij pozycję **Dziennik aktywności** , aby wyświetlić akcje wykonywane w pamięci podręcznej. Możesz również użyć filtru, aby rozwinąć ten widok, aby uwzględnić inne zasoby. Aby uzyskać więcej informacji na temat pracy z dziennikami inspekcji, zobacz [operacje inspekcji przy użyciu Menedżer zasobów](../azure-resource-manager/resource-group-audit.md). Aby uzyskać więcej informacji o monitorowaniu pamięci podręcznej platformy Azure dla zdarzeń Redis, zobacz [operacje i alerty](cache-how-to-monitor.md#operations-and-alerts).
 
-### <a name="access-control-iam"></a>Kontrola dostępu (IAM)
+### <a name="access-control-iam"></a>Kontrola dostępu (zarządzanie dostępem i tożsamościami)
 
 Sekcja **Kontrola dostępu (IAM)** zapewnia obsługę kontroli dostępu opartej na ROLACH (RBAC) w Azure Portal. Ta konfiguracja ułatwia organizacjom spełnienie wymagań związanych z zarządzaniem dostępem po prostu i precyzyjnie. Aby uzyskać więcej informacji, zobacz [Kontrola dostępu oparta na rolach w Azure Portal](../role-based-access-control/role-assignments-portal.md).
 
@@ -98,13 +98,13 @@ Sekcja **Ustawienia** umożliwia dostęp do i konfigurowanie następujących ust
 * [Geo-replication](#geo-replication) (Replikacja geograficzna)
 * [Virtual Network](#virtual-network)
 * [Zapora](#firewall)
-* [Aœciwoœci](#properties)
+* [Właściwości](#properties)
 * [Zamki](#locks)
 * [Skrypt automatyzacji](#automation-script)
 
 
 
-### <a name="access-keys"></a>Klucze dostępu
+### <a name="access-keys"></a>Klawisze dostępu
 Kliknij pozycję **klucze dostępu** , aby wyświetlić lub ponownie wygenerować klucze dostępu do pamięci podręcznej. Te klucze są używane przez klientów nawiązujących połączenie z pamięcią podręczną.
 
 ![Pamięć podręczna platformy Azure dla kluczy dostępu Redis](./media/cache-configure/redis-cache-manage-keys.png)
@@ -120,7 +120,7 @@ Następujące ustawienia są konfigurowane w bloku **Ustawienia zaawansowane** .
 Domyślnie dostęp inny niż za pomocą protokołu SSL jest zablokowany dla nowych pamięci podręcznych. Aby włączyć port inny niż SSL, kliknij przycisk **nie** , aby **zezwolić na dostęp tylko za pośrednictwem protokołu SSL** w bloku **Ustawienia zaawansowane** , a następnie kliknij przycisk **Zapisz**.
 
 > [!NOTE]
-> Dostęp SSL do usługi Azure cache for Redis domyślnie obsługuje protokół TLS 1,0. Minimalną obsługiwaną wersję protokołu TLS można zwiększyć do protokołu TLS 1,2 w razie potrzeby przy użyciu listy rozwijanej **minimalna wersja protokołu TLS** w bloku **Ustawienia zaawansowane** , a następnie kliknąć przycisk **Zapisz**.
+> Dostęp SSL do usługi Azure cache for Redis obsługuje obecnie protokoły TLS 1,0, 1,1 i 1,2, ale wersje 1,0 i 1,1 są wycofywane wkrótce.  Aby uzyskać więcej informacji, Przeczytaj stronę dotyczącą [usuwania protokołu TLS 1,0 i 1,1](cache-remove-tls-10-11.md) .
 
 ![Pamięć podręczna platformy Azure dla portów dostępu Redis](./media/cache-configure/redis-cache-access-ports.png)
 
@@ -255,7 +255,7 @@ Blok **replikacji geograficznej** zawiera mechanizm łączenia dwóch pamięci p
 > 
 > 
 
-### <a name="virtual-network"></a>Virtual Network
+### <a name="virtual-network"></a>Sieć wirtualna
 Sekcja **Virtual Network** umożliwia skonfigurowanie ustawień sieci wirtualnej dla pamięci podręcznej. Aby uzyskać informacje na temat tworzenia pamięci podręcznej Premium z obsługą sieci wirtualnej i aktualizowania jej ustawień, zobacz [jak skonfigurować obsługę usługi Virtual Network w przypadku pamięci podręcznej systemu Azure w warstwie Premium dla Redis](cache-how-to-premium-vnet.md).
 
 > [!IMPORTANT]
@@ -363,7 +363,7 @@ Ustawienia w sekcji **Pomoc techniczna i rozwiązywanie problemów** zawierają 
 * [Kondycja zasobów](#resource-health)
 * [Nowe żądanie obsługi](#new-support-request)
 
-### <a name="resource-health"></a>Kondycja zasobów
+### <a name="resource-health"></a>Resource Health
 **Kondycja zasobu** obserwuje zasób i informuje o tym, że działa zgodnie z oczekiwaniami. Aby uzyskać więcej informacji o usłudze Azure Resource Health, zobacz [Omówienie usługi Azure Resource Health](../resource-health/resource-health-overview.md).
 
 > [!NOTE]
@@ -458,7 +458,7 @@ Aby uzyskać więcej informacji na temat baz danych, zobacz [co to są bazy dany
 > * SYGNATUR
 > * DEBUG
 > * DOKONAĆ
-> * PISAŁ
+> * ZAPISZ
 > * WYŁĄCZONY
 > * SLAVEOF
 > * Polecenia zapisu klastra klastrów są wyłączone, ale dozwolone są polecenia klastra tylko do odczytu.

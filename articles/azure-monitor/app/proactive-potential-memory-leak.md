@@ -1,5 +1,5 @@
 ---
-title: Inteligentne wykrywanie — Potencjalny przeciek pamięci wykrywany przez platformę Azure Application Insights | Microsoft Docs
+title: Wykrywanie przecieku pamięci — Inteligentne wykrywanie Application Insights platformy Azure
 description: Monitoruj aplikacje za pomocą usługi Azure Application Insights dla potencjalnych przecieków pamięci.
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 12/12/2017
-ms.openlocfilehash: f07da754c6c9e0ad0541db12740c1d80f7f884fd
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: cc6074732a86be02a8d8c596c46e154db4e8ad7f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72818793"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75406464"
 ---
 # <a name="memory-leak-detection-preview"></a>Wykrywanie przecieków pamięci (wersja zapoznawcza)
 
@@ -26,7 +26,7 @@ Typowym powiadomieniem będzie postępować ze zwiększonym wzrostem zużycia pa
 ## <a name="does-my-app-really-have-a-problem"></a>Czy moja aplikacja naprawdę ma problem?
 Nie, powiadomienie nie oznacza, że w aplikacji występuje problem. Chociaż wzorce przecieków pamięci zwykle wskazują na problem z aplikacją, wzorce te mogą być typowe dla danego procesu lub mogą mieć naturalne uzasadnienie biznesowe i można je zignorować.
 
-## <a name="how-do-i-fix-it"></a>Jak mogę rozwiązać ten problem?
+## <a name="how-do-i-fix-it"></a>Jak go naprawić?
 Powiadomienia obejmują informacje diagnostyczne do obsługi procesu analizy diagnostycznej:
 1. **Klasyfikacja.** Powiadomienie przedstawia ilość zwiększenia pamięci (w GB) i zakres czasu, w którym pamięć została zwiększona. Może to pomóc w przypisaniu priorytetu do problemu.
 2. **Scope.** Ile maszyn wykazuje wzorzec przecieku pamięci? Ile wyjątków zostało wyzwolonych podczas potencjalnego przecieku pamięci? Te informacje można uzyskać na podstawie powiadomienia.
