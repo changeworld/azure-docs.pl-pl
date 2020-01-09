@@ -1,5 +1,5 @@
 ---
-title: Wykonywanie zadań umowy Enterprise Agreement w umowie klienta firmy Microsoft — Azure
+title: Zadania umowy EA w umowie klienta firmy Microsoft — Azure
 description: Dowiedz się, jak wykonywać zadania umowy Enterprise Agreement na nowym koncie rozliczeniowym.
 author: amberbhargava
 manager: amberb
@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/04/2019
+ms.date: 01/02/2020
 ms.author: banders
-ms.openlocfilehash: 87fe00066989a0b037fc093c8ddf181b8453d5d9
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 38639c43d796774571fd25a865bc042bd73e8c01
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849874"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644379"
 ---
 # <a name="complete-enterprise-agreement-tasks-in-your-billing-account-for-a-microsoft-customer-agreement"></a>Wykonywanie zadań umowy Enterprise Agreement na koncie rozliczeniowym dla umowy klienta firmy Microsoft
 

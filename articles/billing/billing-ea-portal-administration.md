@@ -4,16 +4,16 @@ description: W tym artykule opisano typowe zadania wykonywane przez administrato
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/04/2019
+ms.date: 01/02/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 manager: boalcsva
-ms.openlocfilehash: c53a051df0a0100d9209530490d910612be2f30d
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 4db710dc93b0a1fc3c85d24e9d79fb2e2d552cd1
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849925"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644549"
 ---
 # <a name="azure-ea-portal-administration"></a>Administracja przy użyciu witryny Azure EA Portal
 
@@ -117,6 +117,8 @@ Obecnie oferta Tworzenie i testowanie nie ma zastosowania do klientów platformy
 
 ## <a name="transfer-an-enterprise-account-to-a-new-enrollment"></a>Przenoszenie konta przedsiębiorstwa do nowej rejestracji
 
+Przeniesienie konta powoduje przeniesienie właściciela konta z jednej rejestracji do innej. Wszystkie powiązane subskrypcje należące do właściciela konta zostaną przeniesione do rejestracji docelowej. Tę procedurę wykonuje się, gdy masz wiele aktywnych rejestracji i chcesz przenieść tylko wybranych właścicieli kont.
+
 Podczas przenoszenia konta przedsiębiorstwa do nowej rejestracji pamiętaj o następujących kwestiach:
 
 - Przenoszone są tylko konta określone w żądaniu. Jeśli wybierzesz wszystkie konta, wszystkie zostaną przeniesione.
@@ -124,44 +126,37 @@ Podczas przenoszenia konta przedsiębiorstwa do nowej rejestracji pamiętaj o na
 
 ### <a name="effective-transfer-date"></a>Data obowiązywania przeniesienia
 
-Data obowiązywania przeniesienia może być datą początkową rejestracji, do której chcesz dokonać przeniesienia, lub późniejszą. Przenoszona rejestracja to _rejestracja docelowa_. Po przeniesieniu konta wszystkie informacje dotyczące użycia na koncie przed datą obowiązywania przeniesienia pozostają w obrębie rejestracji, z której następuje przeniesienie. Rejestracja, z której przenosisz, to _rejestracja źródłowa_.  Użycie rejestracji źródłowej jest obciążane opłatą w odniesieniu do zobowiązania pieniężnego lub jako nadwyżka. Użycie, które następuje po dacie obowiązywania przeniesienia, jest transferowane do nowej rejestracji i są naliczane odpowiednie opłaty.
-
-Datę przeniesienia rejestracji można cofnąć nawet do daty początkowej rejestracji docelowej. Albo do daty rozpoczęcia obowiązywania rejestracji źródłowej.
-
-### <a name="monetary-commitment"></a>Zobowiązanie pieniężne
-
-Zobowiązania pieniężnego nie można przenosić między rejestracjami. Salda zobowiązania pieniężnego są powiązane z umową w ramach rejestracji, w której zostały zamówione. Zobowiązanie pieniężne nie jest przenoszone jako część procesu przenoszenia konta lub rejestracji.
-
-### <a name="services-affected"></a>Uwzględnione usługi
-
-Podczas przenoszenia konta nie występują przestoje. Można je wykonać w tym samym dniu żądania, jeśli zostaną podane wszystkie wymagane informacje.
+Datę przeniesienia konta można cofnąć nawet do daty początkowej rejestracji docelowej lub daty uruchomienia konta, w zależności od tego, która z nich jest późniejsza. Po przeniesieniu konta wszystkie informacje dotyczące użycia na koncie przed datą obowiązywania przeniesienia pozostają w obrębie rejestracji, z której następuje przeniesienie. Informacje o użyciu po dacie przeniesienia zostaną przeniesione do rejestracji docelowej.
 
 ### <a name="prerequisites"></a>Wymagania wstępne
 
 Po zażądaniu przeniesienia konta podaj następujące informacje:
 
-
-- Nazwa konta i identyfikator właściciela konta do przeniesienia
+- Numer rejestracji docelowej, nazwa konta i adres e-mail właściciela konta do przeniesienia
 - W przypadku rejestracji źródłowej numer rejestracji i konto do przeniesienia
-- W przypadku rejestracji docelowej numer rejestracji, do której nastąpi przeniesienie
-- W przypadku daty obowiązywania przeniesienia konta może to być data początkowa rejestracji docelowej lub późniejsza
+- Datę wejścia w życie przeniesienia konta można cofnąć nawet do daty początkowej rejestracji docelowej lub daty uruchomienia konta, w zależności od tego, która z nich jest późniejsza
 
 Inne zagadnienia, które należy wziąć pod uwagę przed przeniesieniem konta:
 
 - Zatwierdzenie od administratora umowy EA jest wymagane w przypadku rejestracji docelowej i źródłowej
 - Jeśli przeniesienie konta nie spełnia Twoich wymagań, rozważ przeniesienie rejestracji.
 - Przenoszenie kont powoduje przeniesienie wszystkich usług i subskrypcji powiązanych z określonymi kontami.
-- Po zakończeniu przenoszenia przeniesione konto będzie widoczne jako nieaktywne w ramach rejestracji źródłowej.
-- Przeniesienie konta może być antydatowane do dowolnej daty od dnia rozpoczęcia rejestracji docelowej.
+- Po zakończeniu przenoszenia przeniesione konto będzie widoczne jako nieaktywne w ramach rejestracji źródłowej i jako aktywne w ramach rejestracji docelowej.
 - Data zakończenia widoczna na koncie będzie odpowiadać efektywnej dacie przeniesienia w rejestracji źródłowej oraz dacie rozpoczęcia w rejestracji docelowej.
 - Wszelkie użycie konta przed efektywną datą przeniesienia pozostanie w ramach rejestracji źródłowej.
 
 
 ## <a name="transfer-enterprise-enrollment-to-a-new-one"></a>Przenoszenie rejestracji przedsiębiorstwa do nowej rejestracji
 
+Przeniesienie rejestracji rozważa się, gdy:
+
+- Został osiągnięty termin zobowiązania bieżącej rejestracji.
+- Rejestracja ma stan wygasła/rozszerzona i jest negocjowana nowa umowa.
+- Jeśli masz wiele rejestracji i chcesz skonsolidować wszystkie konta oraz rozliczenia w ramach jednej rejestracji.
+
 Po utworzeniu żądania dotyczącego przeniesienia całej rejestracji w przedsiębiorstwie do rejestracji zostaną wykonane następujące akcje:
 
-- Wszystkie usługi, subskrypcje, konta, działy i cała struktura rejestracji, w tym wszyscy administratorzy działu umów EA, zostaną przeniesione.
+- Wszystkie usługi, subskrypcje, konta, działy i cała struktura rejestracji, w tym wszyscy administratorzy działu umów EA, zostaną przeniesione do nowej rejestracji docelowej.
 - Stan rejestracji zostanie ustawiono na _Przeniesione_. Przeniesiona rejestracja jest dostępna wyłącznie dla celów raportowania użycia historycznego.
 - Do przeniesionej rejestracji nie można dodawać ról ani subskrypcji. Stan Przeniesione uniemożliwia dodatkowe użycie w odniesieniu do rejestracji.
 - Pozostałe saldo zobowiązania pieniężnego w umowie zostanie utracone, łącznie z przyszłymi okresami.
@@ -171,36 +166,33 @@ Po utworzeniu żądania dotyczącego przeniesienia całej rejestracji w przedsi�
 
 ### <a name="effective-transfer-date"></a>Data obowiązywania przeniesienia
 
-Data obowiązywania przeniesienia może być datą początkową rejestracji, którą chcesz przenieść do rejestracji docelowej, lub późniejszą.
+Data obowiązywania przeniesienia może być datą początkową rejestracji docelowej lub późniejszą.
 
 Użycie rejestracji źródłowej jest obciążane opłatą w odniesieniu do zobowiązania pieniężnego lub jako nadwyżka. Użycie, które następuje po dacie obowiązywania przeniesienia, jest transferowane do nowej rejestracji i są naliczane odpowiednie opłaty.
 
-### <a name="effective-transfer-date-in-the-past"></a>Data obowiązywania przeniesienia w przeszłości
-
-Datę przeniesienia konta można cofnąć nawet do daty początkowej rejestracji docelowej. Albo do daty rozpoczęcia obowiązywania rejestracji źródłowej.
-
-### <a name="monetary-commitment"></a>Zobowiązanie pieniężne
-
-Zobowiązania pieniężnego nie można przenosić między rejestracjami. Salda zobowiązania pieniężnego są powiązane z umową w ramach rejestracji, w której zostały zamówione. Zobowiązanie pieniężne nie jest przenoszone jako część procesu przenoszenia konta lub rejestracji.
-
-### <a name="services-affected"></a>Uwzględnione usługi
-
-Podczas przenoszenia konta nie występują przestoje. Można je wykonać w tym samym dniu żądania, jeśli zostaną podane wszystkie wymagane informacje.
+Cofnięcie daty przeniesienia konta jest obsługiwane nawet do daty początkowej rejestracji docelowej. Podanie wybranej daty przeniesienia nie wpływa na użycie w przypadku faktury nadwyżkowej, która została już wystawiona.
 
 ### <a name="prerequisites"></a>Wymagania wstępne
 
 Po zażądaniu przeniesienia rejestracji podaj następujące informacje:
 
-- W przypadku rejestracji źródłowej numer rejestracji i konto do przeniesienia.
+- W przypadku rejestracji źródłowej numer rejestracji.
 - W przypadku rejestracji docelowej numer rejestracji, do której nastąpi przeniesienie.
 - W przypadku daty obowiązywania przeniesienia rejestracji może to być data początkowa rejestracji docelowej lub późniejsza. Wybrana data nie może wpływać na użycie dla żadnej wystawionej już faktury nadwyżkowej.
 
 Inne zagadnienia, które należy wziąć pod uwagę przed przeniesieniem rejestracji:
 
-- Zatwierdzenie od administratora umowy EA jest wymagane w przypadku rejestracji docelowej i źródłowej.
+- Wymagane jest zatwierdzenie od administratorów umowy EA rejestracji docelowej i źródłowej.
 - Jeśli przeniesienie rezerwacji nie spełnia Twoich wymagań, rozważ przeniesienie konta.
-- Tylko wybrane przez Ciebie konta są przenoszone. Możesz poprosić o przeniesienie wszystkich kont.
-- Rejestracja źródłowa zachowuje stan jako aktywny/rozszerzony. Z rejestracji można korzystać do momentu jej wygaśnięcia.
+- Stan rejestracji źródłowej zostanie zaktualizowany na „przeniesiona” i będzie dostępny tylko dla celów raportowania użycia historycznego.
+
+### <a name="monetary-commitment"></a>Zobowiązanie pieniężne
+
+Zobowiązania pieniężnego nie można przenosić między rejestracjami. Salda zobowiązania pieniężnego są powiązane z umową w ramach rejestracji, w której zostały zamówione. Zobowiązanie pieniężne nie jest przenoszone jako część procesu przenoszenia konta lub rejestracji.
+
+### <a name="no-services-affected-for-account-and-enrollment-transfers"></a>Brak usług, których dotyczą przeniesienia kont i rejestracji
+
+Podczas przenoszenia konta lub rejestracji nie występują przestoje. Można je wykonać w tym samym dniu żądania, jeśli zostaną podane wszystkie wymagane informacje.
 
 ## <a name="change-account-owner"></a>Zmienianie właściciela konta
 

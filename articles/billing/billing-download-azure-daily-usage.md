@@ -3,21 +3,17 @@ title: Wyświetlanie i pobieranie informacji o użyciu i opłatach platformy Azu
 description: Opisuje sposób pobierania lub wyświetlania danych dziennego użycia i opłat platformy Azure.
 keywords: rozliczanie użycia, opłaty za użycie, pobieranie danych użycia, wyświetlanie użycia, faktura platformy azure, użycie platformy azure
 author: bandersmsft
-manager: jureid
+ms.author: banders
 tags: billing
 ms.service: cost-management-billing
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/01/2019
-ms.author: banders
-ms.openlocfilehash: dcf4e3b9d85909c8f1d149c9d1940a6755b431a1
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.date: 01/03/2020
+ms.openlocfilehash: dbb7956bf58d6b997f782d8f88e1eeaf19d6ade8
+ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74224010"
+ms.lasthandoff: 01/05/2020
+ms.locfileid: "75665096"
 ---
 # <a name="view-and-download-your-azure-usage-and-charges"></a>Wyświetlanie i pobieranie danych na temat użycia i opłat na platformie Azure
 
@@ -35,8 +31,8 @@ Jeśli masz umowę klienta firmy Microsoft, musisz być właścicielem, współa
 1. W zależności od praw dostępu może być konieczne wybranie konta rozliczeniowego lub profilu rozliczeniowego.
 1. W menu po lewej stronie wybierz pozycję **Faktury** w obszarze **Rozliczenia**.
 1. W siatce faktur znajdź wiersz okresu rozliczeniowego odpowiadający danym użycia, które chcesz pobrać.
-1. Kliknij ikonę pobierania lub symbol wielokropka (`...`) po prawej stronie.
-1. Wybierz pozycję **Pobierz informacje o użyciu platformy Azure i opłatach** z menu pobierania.
+1. Wybierz **ikonę pobierania** lub symbol wielokropka (`...`) po prawej stronie.
+1. Po prawej stronie zostanie otwarte okienko pobierania. Wybierz pozycję **Pobierz** z sekcji **Szczegóły użycia**.
 
 ## <a name="download-usage-for-ea-customers"></a>Pobieranie zestawienia użycia dla klientów z umową EA
 

@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/01/2019
+ms.date: 06/30/2019
 ms.author: banders
-ms.openlocfilehash: 07f8d897d55868923ecca03797cf18a5346d667c
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 20eacdb1ab8f7ebdf118646cd548d7b60b2d2ebc
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74225790"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644349"
 ---
 # <a name="get-enterprise-agreement-reservation-costs-and-usage"></a>Pobieranie kosztów i użycia rezerwacji w ramach umowy Enterprise Agreement
 
@@ -65,9 +65,9 @@ Można pobrać dane przy użyciu interfejsu API lub pobrać je z witryny Azure P
 
 Można wywołać [interfejs API szczegółów użycia](/rest/api/consumption/usagedetails/list), aby pobrać nowe dane. Aby uzyskać szczegółowe informacje na temat terminologii, zobacz [warunki użytkowania](billing-understand-your-usage.md). Wywołujący powinien być administratorem Enterprise w ramach umowy Enterprise Agreement korzystającym z witryny [EA Portal](https://ea.azure.com). Administratorzy Enterprise z uprawnieniami tylko do odczytu mogą również pobierać dane.
 
-Dane nie są dostępne w [interfejsach API raportowania dla klientów Enterprise — szczegóły użycia](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail).
+Pamiętaj, że te dane nie są dostępne w [interfejsach API raportowania dla klientów Enterprise — szczegóły użycia](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail).
 
-Oto przykład wywołania interfejsu API:
+Oto przykład wywołania interfejsu API szczegółów użycia:
 
 ```
 https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{enrollmentId}/providers/Microsoft.Billing/billingPeriods/{billingPeriodId}/providers/Microsoft.Consumption/usagedetails?metric={metric}&amp;api-version=2019-05-01&amp;$filter={filter}
@@ -89,7 +89,7 @@ Informacje przedstawione w poniższej tabeli dotyczące metryki i filtru mogą p
 
 ## <a name="download-the-usage-csv-file-with-new-data"></a>Pobierz plik CSV użycia z nowymi danymi
 
-Jeśli jesteś administratorem EA, możesz pobrać plik CSV zawierający nowe dane użycia z witryny Azure Portal. Te dane nie są dostępne w witrynie [EA Portal](https://ea.azure.com).
+Jeśli jesteś administratorem EA, możesz pobrać plik CSV zawierający nowe dane użycia z witryny Azure Portal. Te dane nie są dostępne w portalu EA (ea.azure.com) — aby wyświetlić nowe dane, musisz pobrać plik użycia z witryny Azure Portal (portal.azure.com).
 
 W witrynie Azure Portal przejdź do obszaru [Zarządzanie kosztami i rozliczenia](https://portal.azure.com/#blade/Microsoft_Azure_Billing/ModernBillingMenuBlade/BillingAccounts).
 

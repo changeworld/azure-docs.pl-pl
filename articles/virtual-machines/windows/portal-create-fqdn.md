@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 08/15/2018
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 727636b4b59bf4b31fd7592b1a0f2d52d5dbbfd3
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: fa4e4bd7561a7a745e6eb0b70016144b9fb57998
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74032984"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75371279"
 ---
 # <a name="create-a-fully-qualified-domain-name-in-the-azure-portal-for-a-windows-vm"></a>Tworzenie w pełni kwalifikowanej nazwy domeny w Azure Portal dla maszyny wirtualnej z systemem Windows
 
@@ -36,5 +36,5 @@ Teraz można połączyć się zdalnie z maszyną wirtualną przy użyciu tej naz
 ## <a name="next-steps"></a>Następne kroki
 Teraz, gdy maszyna wirtualna ma publiczny adres IP i nazwę DNS, można wdrażać typowe struktury aplikacji lub usługi, takie jak IIS, SQL lub SharePoint.
 
-Więcej informacji na temat korzystania z [Menedżer zasobów](../../azure-resource-manager/resource-group-overview.md) można znaleźć w tematach dotyczących tworzenia wdrożeń platformy Azure.
+Więcej informacji na temat korzystania z [Menedżer zasobów](../../azure-resource-manager/management/overview.md) można znaleźć w tematach dotyczących tworzenia wdrożeń platformy Azure.
 

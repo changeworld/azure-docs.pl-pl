@@ -8,12 +8,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: 0165da8adbb28b97d524f1a07c725716b69277d4
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 8f3b38b3455b171701ff78345a3ee667c2c45071
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74223635"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449326"
 ---
 # <a name="optimize-azure-databricks-costs-with-a-pre-purchase"></a>Optymalizowanie kosztów usługi Azure Databricks dzięki wcześniejszemu zakupowi
 
@@ -41,8 +41,8 @@ Przed zakupem oblicz łączną ilość jednostek DBU używanych w różnych wars
 
 Plany usługi Databricks można kupić w witrynie [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22Databricks%22%7D). Do zakupu wydajności rezerwowej potrzebna jest rola właściciela co najmniej w jednej subskrypcji Enterprise.
 
-- Aktualnie wcześniejszy zakup jest dostępny tylko dla klientów z umową Enterprise Agreement.
-- Wymagana jest rola właściciela co najmniej w jednej subskrypcji Enterprise.
+- Wymagana jest rola właściciela co najmniej w jednej umowie Enterprise (numery ofert: MS-AZR-0017P i MS-AZR-0148P), umowie klienta firmy Microsoft lub indywidualnej subskrypcji ze stawkami płatności zgodnie z rzeczywistym użyciem (numery ofert: MS-AZR-0003P lub MS-AZR-0023P).
+- W przypadku subskrypcji EA w witrynie EA portal musi być włączona opcja Dodaj wystąpienia zarezerwowane. Jeśli to ustawienie jest wyłączone, wymagane są uprawnienia administratora EA dla subskrypcji.
 - W przypadku subskrypcji Enterprise w witrynie [EA Portal](https://ea.azure.com/) musi być włączona opcja **Dodaj wystąpienia zarezerwowane**. Jeśli to ustawienie jest wyłączone, wymagane są uprawnienia administratora EA subskrypcji.
 
 **Aby dokonać zakupu:**

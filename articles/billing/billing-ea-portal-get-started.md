@@ -4,16 +4,16 @@ description: W tym artykule wyjaśniono, jak klienci platformy Azure z umową EA
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/04/2019
+ms.date: 01/03/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 manager: boalcsva
-ms.openlocfilehash: 2f7c4f0d4d8bd7e5209f666dbfca34eaffc8ebc7
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 92581cfcace6ec566428c9cb54d205f108399b1f
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74841374"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75660668"
 ---
 # <a name="get-started-with-the-azure-ea-portal"></a>Wprowadzenie do witryny Azure EA Portal
 
@@ -48,12 +48,13 @@ Na poniższym diagramie przedstawiono proste hierarchie witryny Azure EA Portal.
 
 ## <a name="enterprise-user-roles"></a>Role użytkownika przedsiębiorstwa
 
-Aby administrować usługami platformy Azure w ramach rejestracji, istnieją cztery odrębne role użytkowników administracyjnych przedsiębiorstwa:
+Aby administrować usługami platformy Azure w ramach rejestracji, istnieje pięć odrębnych ról użytkowników administracyjnych przedsiębiorstwa:
 
 - Administrator przedsiębiorstwa
 - Administrator działu
 - Właściciel konta
 - Administrator usługi
+- Kontakt dla powiadomień
 
 Role są używane do wykonywania zadań w dwóch różnych witrynach Microsoft Azure Portal. Witryna Azure EA Portal (https://ea.azure.com) jest używana do zarządzania rozliczeniami i kosztami. Witryna Azure Portal (https://portal.azure.com) służy do zarządzania usługami platformy Azure.
 
@@ -101,9 +102,15 @@ Każde konto wymaga unikatowego konta służbowego lub konta Microsoft. Aby uzys
 
 Administrator usługi ma uprawnienia do zarządzania usługami w witrynie Azure Portal i przypisywania użytkowników do roli współadministratora.
 
+### <a name="notification-contact"></a>Kontakt dla powiadomień
+
+Kontakt dla powiadomień odbiera powiadomienia o użyciu dotyczące rejestracji.
+
 ## <a name="activate-your-enrollment"></a>Aktywowanie rejestracji
 
 W celu aktywowania usługi początkowy administrator przedsiębiorstwa otwiera witrynę Azure EA Portal pod adresem [https://ea.azure.com](https://ea.azure.com) i loguje się przy użyciu adresu e-mail z wiadomości e-mail z zaproszeniem.
+
+Jeśli skonfigurowano Cię jako administratora EA, nie musisz otrzymać wiadomości e-mail dotyczącej aktywacji w celu zalogowania się do portalu EA platformy Azure. Możesz przejść do witryny [https://ea.azure.com](https://ea.azure.com) i zalogować się przy użyciu swojego adresu e-mail (służbowego lub identyfikatora Live) i hasła.
 
 Jeśli masz więcej niż jedną rejestrację, wybierz tę, którą chcesz aktywować. Domyślnie są wyświetlane tylko aktywne rejestracje. Aby wyświetlić historię rejestracji, wyczyść opcję **Aktywne** w prawym górnym rogu witryny Azure EA Portal.
 

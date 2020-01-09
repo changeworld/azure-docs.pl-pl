@@ -11,50 +11,65 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: bbd456f82e333ab8e096e5695a55be43c2084c6d
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 48f7e0b3d1289d8e9c620f931f9bc85570b90042
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74223789"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449541"
 ---
 # <a name="track-microsoft-customer-agreement-azure-credit-balance"></a>Śledzenie salda środków na korzystanie z platformy Azure dla umowy klienta firmy Microsoft
 
-Saldo środków na korzystanie z platformy Azure dla Twojego konta rozliczeniowego związanego z umową klienta firmy Microsoft możesz sprawdzić w witrynie Azure Portal. 
+Saldo środków na korzystanie z platformy Azure dla Twojego konta rozliczeniowego związanego z umową klienta firmy Microsoft możesz sprawdzić w witrynie Azure Portal lub za pomocą interfejsów API REST.
 
-Niektóre opłaty można regulować za pomocą tych środków. Opłaty są naliczane w przypadku korzystania z produktów, do których nie stosuje się środków, lub jeśli użycie przekroczy saldo środków. Aby uzyskać więcej informacji, zobacz [Produkty nieobjęte środkami na korzystanie z platformy Azure](#products-that-arent-covered-by-azure-credits).
-
-Na koncie rozliczeniowym dla umowy klienta firmy Microsoft środki są przypisywane do profilu rozliczeniowego. Każdy profil rozliczeniowy ma swoje własne środki. Aby wyświetlić saldo środków na korzystanie z platformy Azure dla profilu rozliczeniowego, musisz mieć rolę właściciela, współautora, czytelnika lub menedżera faktur dla profilu rozliczeniowego albo właściciela, współautora lub czytelnika dla konta rozliczeniowego. Aby dowiedzieć się więcej na temat ról, zobacz [Omówienie ról administracyjnych dla umowy klienta firmy Microsoft na platformie Azure](billing-understand-mca-roles.md).
+Na koncie rozliczeniowym dla umowy klienta firmy Microsoft środki są przypisywane do profilu rozliczeniowego. Każdy profil rozliczeniowy ma własne środki, które są automatycznie stosowane do opłat na jego fakturze. Aby wyświetlić saldo środków na korzystanie z platformy Azure dla profilu rozliczeniowego, musisz mieć rolę właściciela, współautora, czytelnika lub menedżera faktur dla profilu rozliczeniowego albo właściciela, współautora lub czytelnika dla konta rozliczeniowego. Aby dowiedzieć się więcej na temat ról, zobacz [Omówienie ról administracyjnych dla umowy klienta firmy Microsoft na platformie Azure](billing-understand-mca-roles.md).
 
 Ten artykuł dotyczy konta rozliczeniowego związanego z umową klienta firmy Microsoft. [Sprawdź, czy masz dostęp do umowy klienta firmy Microsoft](#check-access-to-a-microsoft-customer-agreement).
 
-## <a name="check-your-credit-balance-in-the-azure-portal"></a>Sprawdzanie salda środków w witrynie Azure Portal
+## <a name="check-your-credit-balance"></a>Sprawdzanie salda środków
 
-1. Zaloguj się w witrynie [Azure Portal]( https://portal.azure.com).
+### <a name="azure-portaltabportal"></a>[Azure Portal](#tab/portal)
+
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
 2. Wyszukaj pozycję **Zarządzanie kosztami i rozliczenia**.
 
     ![Zrzut ekranu przedstawiający wyszukiwanie zarządzania kosztami i rozliczeń w portalu](./media/billing-mca-check-azure-credits-balance/billing-search-cost-management-billing.png)
 
-3.  Wybierz pozycję **Środki na korzystanie z platformy Azure** wyświetlaną po lewej stronie. W zależności od praw dostępu może być konieczne wybranie profilu rozliczeniowego lub konta rozliczeniowego, a następnie wybranie pozycji **Środki na korzystanie z platformy Azure**.
+3. Na stronie zakresów rozliczeniowych wybierz konto rozliczeniowe, dla którego chcesz śledzić saldo środków. Typ konta rozliczeniowego to **umowa klienta firmy Microsoft**.
 
-4. Strona środków na korzystanie z platformy Azure zawiera następujące informacje:
+    ![Zrzut ekranu przedstawiający wyszukiwanie zarządzania kosztami i rozliczeń w portalu](./media/billing-mca-check-azure-credits-balance/list-of-scopes.png)
 
-   ![Zrzut ekranu przedstawiający saldo środków i transakcje w profilu rozliczeniowym](./media/billing-mca-check-azure-credits-balance/billing-mca-credits-overview.png)
+    > [!NOTE]
+    >
+    > Witryna Azure Portal zapamiętuje ostatni zakres rozliczeniowy, do którego uzyskujesz dostęp, i wyświetla go przy następnym wejściu na stronę Zarządzanie kosztami i rozliczenia. Strona zakresów rozliczeniowych nie zostanie wyświetlona, jeśli wcześniej była odwiedzana strona Zarządzanie kosztami i rozliczenia. W takim przypadku sprawdź, czy jesteś we [właściwym zakresie](#check-access-to-a-microsoft-customer-agreement). W przeciwnym razie [przełącz zakres](billing-view-all-accounts.md#switch-billing-scope-in-the-azure-portal), aby wybrać konto rozliczeniowe dla umowy klienta firmy Microsoft.
 
-   | Termin               | Definicja                           |
+3. Po lewej stronie wybierz pozycję **Formy płatności**, a następnie wybierz pozycję **Środki na korzystanie z systemu Azure**.
+
+   ![Zrzut ekranu przedstawiający saldo środków dla profilu rozliczeniowego](./media/billing-mca-check-azure-credits-balance/mca-payment-methods.png)
+
+4. Na stronie środków na korzystanie z platformy Azure znajdują się następujące sekcje:
+    
+   #### <a name="balance"></a>Saldo
+   
+   Sekcja salda zawiera podsumowanie salda środków na korzystanie z platformy Azure.
+
+   ![Zrzut ekranu przedstawiający saldo środków dla profilu rozliczeniowego](./media/billing-mca-check-azure-credits-balance/mca-credit-balance.png)
+
+   | Okres               | Definicja                           |
    |--------------------|--------------------------------------------------------|
    | Szacowane saldo  | Szacowana kwota środków po uwzględnieniu wszystkich rozliczonych i oczekujących transakcji |
    | Bieżące saldo    | Kwota środków od ostatniej faktury. Nie obejmuje ona oczekujących transakcji |
-   | Transakcje       | Transakcje rozliczeniowe, które miały wpływ na saldo środków na korzystanie z platformy Azure |
 
    Gdy szacowane saldo spadnie do 0, rozpocznie się naliczanie opłat za używanie wszystkich produktów, również tych, których użycie jest rozliczane za pomocą środków.
 
-6. Wybierz pozycję **Lista środków**, aby wyświetlić listę środków dla profilu rozliczeniowego. Lista środków zawiera następujące informacje:
+   #### <a name="credits-list"></a>Lista środków
+   
+   Sekcja listy środków zawiera listę środków na korzystanie z platformy Azure.
 
-   ![Zrzut ekranu przedstawiający listę środków dla profilu rozliczeniowego](./media/billing-mca-check-azure-credits-balance/billing-mca-credits-list.png)
+   ![Zrzut ekranu przedstawiający listę środków dla profilu rozliczeniowego](./media/billing-mca-check-azure-credits-balance/mca-credits-list.png)
 
-   | Termin | Definicja |
+   | Okres | Definicja |
    |---|---|
    | Element źródłowy | Źródło pozyskiwania środków |
    | Data rozpoczęcia | Data nabycia środków |
@@ -63,7 +78,28 @@ Ten artykuł dotyczy konta rozliczeniowego związanego z umową klienta firmy Mi
    | Pierwotna kwota | Pierwotna kwota środków |
    | Stan | Bieżący stan środków. Stan może mieć wartość: aktywne, użyte, wygasłe lub wygasające |
 
-## <a name="check-your-credit-balance-programmatically"></a>Programowe sprawdzanie salda środków
+   #### <a name="transactions"></a>Transakcje
+
+   W sekcji transakcji są wyświetlane wszystkie transakcje, które wpłynęły na saldo środków.
+
+   ![Zrzut ekranu przedstawiający transakcje środków w profilu rozliczeniowym](./media/billing-mca-check-azure-credits-balance/mca-credits-transactions.png)
+    
+   | Okres | Definicja |
+   |---|---|
+   | Data transakcji | Data przeprowadzona transakcji |
+   | Opis | Opis transakcji |
+   | Kwota| Kwota transakcji |
+   | Saldo | Saldo po transakcji |
+
+    > [!NOTE]
+    >
+    > Jeśli na stronie form płatności nie widzisz środków na korzystanie z platformy Azure, nie masz środków lub nie został wybrany odpowiedni zakres. Wybierz konto rozliczeniowe zawierające środki lub jeden z jego profilów rozliczeniowych. Aby dowiedzieć się, jak zmieniać zakresy, zobacz [Przełączanie zakresów rozliczeniowych w witrynie Azure Portal](billing-view-all-accounts.md#switch-billing-scope-in-the-azure-portal).
+
+5. Jeśli wyświetlasz środki na korzystanie z platformy Azure w zakresie konta rozliczeniowego, a konto rozliczeniowe ma więcej niż jeden profil rozliczeniowy, na stronie środków na korzystanie z platformy Azure zostanie wyświetlona tabela zawierająca zestawienie środków na korzystanie z platformy Azure dla każdego profilu rozliczeniowego. Wybierz profil rozliczeniowy z listy, wybierz formy płatności, a następnie środki na korzystanie z platformy Azure, aby wyświetlić szczegóły dotyczące profilu rozliczeniowego.
+
+    ![Zrzut ekranu przedstawiający listę środków dla konta rozliczeniowego](./media/billing-mca-check-azure-credits-balance/mca-account-credit-list.png)
+
+### <a name="rest-apitabrest"></a>[Interfejs API REST](#tab/rest)
 
 Aby programowo uzyskać saldo środków na koncie rozliczeniowym, możesz użyć interfejsów API [rozliczeń](https://docs.microsoft.com/rest/api/billing/) i [użycia](https://docs.microsoft.com/rest/api/consumption/) platformy Azure.
 
@@ -122,7 +158,7 @@ Właściwość `displayName` profilu rozliczeniowego służy do identyfikowania 
 
 ### <a name="get-azure-credit-balance"></a>Pobieranie salda środków na korzystanie z platformy Azure 
 
-Wykonaj następujące żądanie, zastępując wartość `<billingProfileId>` wartością `id` skopiowaną z pierwszego kroku (```/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx_xxxx-xx-xx/billingProfiles/PBFV-xxxx-xxx-xxx```). 
+Wykonaj poniższe żądanie, zastępując wartość `<billingProfileId>` wartością `id` skopiowaną w pierwszym kroku (```/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx_xxxx-xx-xx/billingProfiles/PBFV-xxxx-xxx-xxx```). 
 
 ```json
 GET https://management.azure.com<billingProfileId>/providers/Microsoft.Consumption/credits/balanceSummary?api-version=2019-10-01
@@ -173,7 +209,7 @@ Odpowiedź interfejsu API zwraca szacowane i bieżące saldo dla profilu rozlicz
 
 ### <a name="get-list-of-credits"></a>Pobieranie listy środków
 
-Wykonaj następujące żądanie, zastępując wartość `<billingProfileId>` wartością `id` skopiowaną z pierwszego kroku (```/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx_xxxx-xx-xx/billingProfiles/PBFV-xxxx-xxx-xxx```). 
+Wykonaj poniższe żądanie, zastępując wartość `<billingProfileId>` wartością `id` skopiowaną w pierwszym kroku (```/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx_xxxx-xx-xx/billingProfiles/PBFV-xxxx-xxx-xxx```). 
 
 ```json
 GET https://management.azure.com<billingProfileId>/providers/Microsoft.Consumption/lots?api-version=2019-10-01
@@ -237,7 +273,7 @@ Odpowiedź interfejsu API zwraca listy środków na korzystanie z platformy Azur
 
 ### <a name="get-transactions-that-affected-credit-balance"></a>Pobieranie transakcji, które wpłynęły na saldo środków
 
-Wykonaj następujące żądanie, zastępując wartość `<billingProfileId>` wartością `id` skopiowaną z pierwszego kroku (```providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx_xxxx-xx-xx/billingProfiles/PBFV-xxxx-xxx-xxx```). Aby pobrać transakcje dla określonego przedziału czasu, trzeba będzie przekazać wartości **startDate**  i **endDate**.
+Wykonaj poniższe żądanie, zastępując wartość `<billingProfileId>` wartością `id` skopiowaną w pierwszym kroku (```providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx_xxxx-xx-xx/billingProfiles/PBFV-xxxx-xxx-xxx```). Aby pobrać transakcje dla określonego przedziału czasu, trzeba będzie przekazać wartości **startDate**  i **endDate**.
 
 ```json
 GET https://management.azure.com<billingProfileId>/providers/Microsoft.Consumption/events?api-version=2019-10-01&startDate=2018-10-01T00:00:00.000Z&endDate=2019-10-11T12:00:00.000Z?api-version=2019-10-01
@@ -324,6 +360,8 @@ Odpowiedź interfejsu API zwraca wszystkie transakcje, które wpłynęły na sal
 | `closedBalance`  | Saldo po transakcji.   |
 | `eventType`  | Typ transakcji.   |
 | `invoiceNumber`  | Numer faktury, na której rozliczono transakcję. Dla oczekującej transakcji będzie on pusty.   |
+
+---
 
 ## <a name="how-credits-are-used"></a>Sposób używania środków
 

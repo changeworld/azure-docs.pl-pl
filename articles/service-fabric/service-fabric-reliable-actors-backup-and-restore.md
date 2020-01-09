@@ -1,33 +1,24 @@
 ---
-title: Kopia zapasowa i przywracanie aktorów usługi Azure Service Fabric | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak zaimplementować kopii zapasowej i przywracania w aktorów usługi Azure Service Fabric.
-services: service-fabric
-documentationcenter: .net
+title: Tworzenie kopii zapasowych i przywracanie uczestników Service Fabric platformy Azure
+description: Dowiedz się, jak zaimplementować tworzenie kopii zapasowych i przywracanie w aktorach Service Fabric platformy Azure.
 author: vturecek
-manager: chackdan
-editor: amanbha
-ms.assetid: 45839a7f-0536-46f1-ae2b-8ba3556407fb
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 10/29/2018
 ms.author: vturecek
-ms.openlocfilehash: cb397141c86f40f02d8046838865106e0fb8992c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 41ba3f9c7d362756b800005d0c140c23dd96caa6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60726625"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75370463"
 ---
-# <a name="implement-reliable-actors-backup-and-restore"></a>Implementowanie Reliable Actors kopia zapasowa i przywracanie
+# <a name="implement-reliable-actors-backup-and-restore"></a>Implementowanie Reliable Actors kopii zapasowej i przywracania
 
 > [!NOTE]
-> Firma Microsoft zaleca, aby użyć [okresowych kopii zapasowych i przywracania](service-fabric-backuprestoreservice-quickstart-azurecluster.md) konfigurowania kopii zapasowej danych Reliable Stateful services i Reliable Actors. 
+> Firma Microsoft zaleca używanie [okresowych kopii zapasowych i przywracania](service-fabric-backuprestoreservice-quickstart-azurecluster.md) w celu konfigurowania kopii zapasowych danych o niezawodnych usługach stanowych i Reliable Actors. 
 > 
 
-W poniższym przykładzie Usługa aktora niestandardowy uwidacznia metodę, aby utworzyć kopię zapasową danych aktora, wykorzystując już istnieje na odbiornik komunikacji zdalnej `ActorService`:
+W poniższym przykładzie usługa aktora niestandardowego uwidacznia metodę tworzenia kopii zapasowych danych aktora, wykorzystując odbiornik komunikacji zdalnej już obecny w `ActorService`:
 
 ```csharp
 public interface IMyActorService : IService
@@ -103,7 +94,7 @@ class MyActorServiceImpl extends ActorService implements MyActorService
 }
 ```
 
-W tym przykładzie `IMyActorService` jest umowa komunikacji zdalnej, która implementuje `IService` (C#) i `Service` (Java), a następnie jest implementowany przez `MyActorService`. Dodając ten kontrakt komunikacji zdalnej metody na `IMyActorService` są teraz również dostępne dla klienta, tworząc serwer proxy usług zdalnych za pośrednictwem `ActorServiceProxy`:
+W tym przykładzie `IMyActorService` jest kontraktem komunikacji zdalnej, który implementuje `IService` (C#) i `Service` (Java), a następnie jest implementowany przez `MyActorService`. Po dodaniu tego kontraktu usług zdalnych metody na `IMyActorService` są teraz również dostępne dla klienta przez utworzenie zdalnego serwera proxy za pośrednictwem `ActorServiceProxy`:
 
 ```csharp
 IMyActorService myActorServiceProxy = ActorServiceProxy.Create<IMyActorService>(
@@ -118,12 +109,12 @@ MyActorService myActorServiceProxy = ActorServiceProxy.create(MyActorService.cla
 myActorServiceProxy.backupActorsAsync();
 ```
 
-Aby uzyskać więcej informacji na temat elementów Reliable Actors przeczytaj następujące artykuły:
+Aby uzyskać więcej informacji na temat Reliable Actors, przeczytaj następujące artykuły:
 * [Zarządzanie stanem aktora](service-fabric-reliable-actors-state-management.md)
-* [Kolekcja aktora cykl życia i odzyskiwanie](service-fabric-reliable-actors-lifecycle.md)
+* [Cykl życia aktora i odzyskiwanie pamięci](service-fabric-reliable-actors-lifecycle.md)
 * [Dokumentacja referencyjna interfejsu API aktorów](https://msdn.microsoft.com/library/azure/dn971626.aspx)
-* [Przykładowy kod .NET](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
-* [Przykładowego kodu Java](https://github.com/Azure-Samples/service-fabric-java-getting-started)
+* [Przykładowy kod platformy .NET](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
+* [Przykładowy kod w języku Java](https://github.com/Azure-Samples/service-fabric-java-getting-started)
 
 <!--Image references-->
 [1]: ./media/service-fabric-reliable-actors-platform/actor-service.png

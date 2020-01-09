@@ -4,16 +4,16 @@ description: W tym artykule wyjaśniono, jak zarządzać fakturami za usługę A
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/04/2019
+ms.date: 01/02/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 manager: boalcsva
-ms.openlocfilehash: 15c2e84742ff0f552c688ccf1ba795f742e288ca
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: d6faf56554d666ce29b68ba90bb920b4e6c56c30
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849891"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644566"
 ---
 # <a name="azure-enterprise-enrollment-invoices"></a>Faktury za rejestracje w usłudze Azure Enterprise
 
@@ -22,8 +22,6 @@ W tym artykule wyjaśniono, jak zarządzać fakturami za usługę Azure Enterpri
 ## <a name="change-a-po-number-for-an-overage-invoice"></a>Zmiana numeru zamówienia zakupu na fakturze nadwyżkowej
 
 W witrynie Azure EA Portal automatycznie generowany jest domyślny numer zamówienia zakupu, o ile administrator umowy EA nie ustawił tego numeru przed datą wystawienia faktury. Administrator umowy EA może zaktualizować numer zamówienia zakupu w ciągu siedmiu dni od otrzymania automatycznej wiadomości e-mail z powiadomieniem o fakturze.
-
-Numer zamówienia zakupu można także podać dla określonego konta lub subskrypcji. Raporty będą domyślnie miały ustawiony numer zamówienia zakupu najniższego poziomu w hierarchii, co oznacza, że jeśli nie zostanie podany numer zamówienia zakupu subskrypcji, to zostanie użyty numer zamówienia zakupu konta, a jeśli nie zostanie podany numer zamówienia zakupu konta, zostanie użyty numer zamówienia zakupu działu.
 
 ### <a name="to-update-the-azure-services-purchase-order-number"></a>Aby zaktualizować numer zamówienia zakupu usług platformy Azure:
 
