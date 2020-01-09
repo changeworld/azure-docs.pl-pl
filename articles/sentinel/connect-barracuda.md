@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/13/2019
+ms.date: 12/30/2019
 ms.author: rkarlin
-ms.openlocfilehash: 5142204db86158937c16d19bf52fb677099598a5
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: 97f10058038e3bf4fbcca2cf86d074869ffefed4
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72284662"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610696"
 ---
 # <a name="connect-your-barracuda-appliance"></a>Łączenie urządzenia z programem Barracuda 
 
@@ -37,7 +37,7 @@ Zapora aplikacji sieci Web Barracuda umożliwia integrację i eksportowanie dzie
 1. Przejdź do [przepływu konfiguracji usługi Barracuda WAF](https://campus.barracuda.com/product/webapplicationfirewall/doc/73696965/configure-the-barracuda-web-application-firewall-to-integrate-with-the-oms-server-and-export-logs/)i postępuj zgodnie z instrukcjami, aby skonfigurować połączenie przy użyciu następujących parametrów:
     - **Identyfikator obszaru roboczego**: Skopiuj wartość identyfikatora obszaru roboczego ze strony łącznika usługi Azure nazwa_obszaru_roboczego Barracuda.
     - **Klucz podstawowy**: Skopiuj wartość klucza podstawowego ze strony łącznika usługi Azure wskaźnik Barracuda.
-1. Aby użyć odpowiedniego schematu w Log Analytics dla zdarzeń Barracuda, wyszukaj ciąg **CommonSecurityLog** i **barracuda_CL**.
+1. Aby użyć odpowiedniego schematu w Log Analytics dla zdarzeń Barracuda, Wyszukaj **CommonSecurityLog** i **barracuda_CL**.
 
 
 ## <a name="validate-connectivity"></a>Sprawdź poprawność łączności
@@ -50,4 +50,6 @@ Rozpoczęcie wyświetlania dzienników w Log Analytics może zająć więcej ni�
 W tym dokumencie przedstawiono sposób łączenia urządzeń Barracuda z platformą Azure — wskaźnikiem. Aby dowiedzieć się więcej na temat platformy Azure, zobacz następujące artykuły:
 - Dowiedz się [, jak uzyskać wgląd w dane oraz potencjalne zagrożenia](quickstart-get-visibility.md).
 - Rozpocznij [wykrywanie zagrożeń za pomocą platformy Azure — wskaźnik](tutorial-detect-threats-built-in.md).
+- [Używaj skoroszytów](tutorial-monitor-your-data.md) do monitorowania danych.
+
 

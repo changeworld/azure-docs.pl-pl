@@ -1,25 +1,15 @@
 ---
-title: Typy węzłów Service Fabric platformy Azure i zestawy skalowania maszyn wirtualnych | Microsoft Docs
+title: Typy węzłów i zestawy skalowania maszyn wirtualnych
 description: Dowiedz się, jak typy węzłów usługi Azure Service Fabric są powiązane z zestawami skalowania maszyn wirtualnych oraz jak zdalnie łączyć się z wystąpieniem zestawu skalowania lub węzłem klastra.
-services: service-fabric
-documentationcenter: .net
-author: ChackDan
-manager: chackdan
-editor: ''
-ms.assetid: 5441e7e0-d842-4398-b060-8c9d34b07c48
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 03/23/2018
 ms.author: pepogors
-ms.openlocfilehash: cec134f9e71f86cd0ed17912f1a3c76adc9a4164
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: d67a99be7b55cfa75980688ee30edc4fce7c0946
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72167318"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610169"
 ---
 # <a name="azure-service-fabric-node-types-and-virtual-machine-scale-sets"></a>Typy węzłów usługi Azure Service Fabric i zestawy skalowania maszyn wirtualnych
 [Zestawy skalowania maszyn wirtualnych](/azure/virtual-machine-scale-sets) to zasób obliczeniowy platformy Azure. Zestawy skalowania umożliwiają wdrażanie kolekcji maszyn wirtualnych jako zestawu i zarządzanie nimi. Każdy typ węzła zdefiniowany w klastrze Service Fabric platformy Azure konfiguruje oddzielną skalę.  Środowisko uruchomieniowe Service Fabric zainstalowane na każdej maszynie wirtualnej w zestawie skalowania za pomocą rozszerzenia maszyny wirtualnej Microsoft. Azure. servicefabric. Można niezależnie skalować każdy typ węzła w górę lub w dół, zmieniać jednostkę SKU systemu operacyjnego działającą w każdym węźle klastra, mieć otwarte różne zestawy portów i korzystać z różnych metryk pojemności.
@@ -77,19 +67,19 @@ Poniżej przedstawiono opisy właściwości:
 
 | **Nazwa** | **Dozwolone wartości** | ** --- ** | **Wskazówki lub Krótki opis** |
 | --- | --- | --- | --- |
-| name | ciąg | --- | Unikatowa nazwa rozszerzenia |
+| name | string | --- | Unikatowa nazwa rozszerzenia |
 | type | "ServiceFabricLinuxNode" lub "ServiceFabricWindowsNode" | --- | Identyfikuje Service Fabric systemu operacyjnego |
 | autoUpgradeMinorVersion | true lub false | --- | Włącz autouaktualnienie wersji pomocniczych w środowisku uruchomieniowym SF |
 | publisher | Microsoft.Azure.ServiceFabric | --- | Nazwa wydawcy Service Fabricego w zakresie |
-| clusterEndpont | ciąg | --- | URI: PORT do punktu końcowego zarządzania |
-| nodeTypeRef | ciąg | --- | Nazwa nodeType |
+| clusterEndpont | string | --- | URI: PORT do punktu końcowego zarządzania |
+| nodeTypeRef | string | --- | Nazwa nodeType |
 | durabilityLevel | bronze, silver, gold, platinum | --- | czas, w którym można wstrzymać niezmienne infrastruktury platformy Azure |
 | enableParallelJobs | true lub false | --- | Włącz funkcję COMPUTE ParallelJobs, na przykład Usuń maszynę wirtualną i ponownie uruchom maszynę wirtualną w zestawie skalowania równoległego |
-| nicPrefixOverride | ciąg | --- | Prefiks podsieci, taki jak "10.0.0.0/24" |
+| nicPrefixOverride | string | --- | Prefiks podsieci, taki jak "10.0.0.0/24" |
 | commonNames | string[] | --- | Typowe nazwy zainstalowanych certyfikatów klastra |
-| x509StoreName | ciąg | --- | Nazwa magazynu, w którym znajduje się zainstalowany certyfikat klastra |
+| x509StoreName | string | --- | Nazwa magazynu, w którym znajduje się zainstalowany certyfikat klastra |
 | typeHandlerVersion | 1.1 | --- | Wersja rozszerzenia. 1,0 klasycznej wersji rozszerzenia zaleca się uaktualnienie do 1,1 |
-| dataPath | ciąg | --- | Ścieżka do dysku używanego do zapisywania stanu Service Fabric usług systemowych i danych aplikacji. 
+| dataPath | string | --- | Ścieżka do dysku używanego do zapisywania stanu Service Fabric usług systemowych i danych aplikacji. 
 
 ## <a name="next-steps"></a>Następne kroki
 * Zobacz [Omówienie funkcji "wdróż gdziekolwiek" i porównanie z klastrami zarządzanymi przez platformę Azure](service-fabric-deploy-anywhere.md).

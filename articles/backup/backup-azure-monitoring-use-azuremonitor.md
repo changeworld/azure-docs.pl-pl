@@ -4,12 +4,12 @@ description: Monitoruj Azure Backup obciążenia i twórz niestandardowe alerty 
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: 1fb739c8d517654c7258fd3a58c93ab29602f228
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 983939a905c6c096f2e8e3007bd40cbbe9088395
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894066"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75611700"
 ---
 # <a name="monitor-at-scale-by-using-azure-monitor"></a>Monitorowanie na dużą skalę przy użyciu Azure Monitor
 
@@ -35,9 +35,9 @@ Azure Resource Manager zasoby, takie jak magazyn Recovery Services, rejestruje i
 
 W sekcji monitorowanie wybierz pozycję **Ustawienia diagnostyczne** i określ cel dla danych diagnostycznych magazynu Recovery Services.
 
-![Ustawienie diagnostyczne Recovery Services magazynu, określanie wartości docelowej Log Analytics](media/backup-azure-monitoring-laworkspace/diagnostic-setting-new.png)
+![Ustawienie diagnostyczne Recovery Services magazynu, określanie wartości docelowej Log Analytics](media/backup-azure-monitoring-laworkspace/rs-vault-diagnostic-setting.png)
 
-Możesz wskazać obszar roboczy Log Analytics z innej subskrypcji. Aby monitorować magazyny między subskrypcjami w jednym miejscu, wybierz ten sam obszar roboczy Log Analytics dla wielu magazynów Recovery Services. Aby obkanałować wszystkie informacje dotyczące Azure Backup do obszaru roboczego Log Analytics, wybierz pozycję **zasób specyficzny** w wyświetlonym przełączniku i wybierz następujące zdarzenia — **CoreAzureBackup**, **AddonAzureBackupJobs**, **AddonAzureBackupAlerts**, **AddonAzureBackupPolicy**, **AddonAzureBackupStorage**, **AddonAzureBackupProtectedInstance**. Zapoznaj się z [tym artykułem](backup-azure-diagnostic-events.md) , aby uzyskać więcej informacji na temat konfigurowania ustawień diagnostyki La.
+Możesz wskazać obszar roboczy Log Analytics z innej subskrypcji. Aby monitorować magazyny między subskrypcjami w jednym miejscu, wybierz ten sam obszar roboczy Log Analytics dla wielu magazynów Recovery Services. Aby obkanałować wszystkie informacje dotyczące Azure Backup do obszaru roboczego Log Analytics, wybierz pozycję **AzureDiagnostics** w wyświetlonym przełączniku i wybierz zdarzenie **AzureBackupReport** .
 
 > [!IMPORTANT]
 > Po zakończeniu konfiguracji należy odczekać 24 godziny na zakończenie wypychania danych. Po pomyślnym wypchnięciu danych wszystkie zdarzenia są wypychane zgodnie z opisem w dalszej części tego artykułu, w [sekcji częstotliwość](#diagnostic-data-update-frequency).
@@ -50,9 +50,6 @@ Możesz wskazać obszar roboczy Log Analytics z innej subskrypcji. Aby monitorow
 Gdy dane są w obszarze roboczym Log Analytics, [Wdróż szablon GitHub](https://azure.microsoft.com/resources/templates/101-backup-la-reporting/) , aby log Analytics do wizualizacji danych. Aby prawidłowo zidentyfikować obszar roboczy, upewnij się, że nadajesz mu tę samą grupę zasobów, nazwę obszaru roboczego i lokalizację obszaru roboczego. Następnie zainstaluj ten szablon w obszarze roboczym.
 
 ### <a name="view-azure-backup-data-by-using-log-analytics"></a>Wyświetlanie danych Azure Backup przy użyciu Log Analytics
-
-> [!IMPORTANT]
-> Szablon usługi LA Reporting obsługuje obecnie dane ze starszej wersji usługi Event AzureBackupReport w trybie AzureDiagnostics. Aby użyć tego szablonu, należy [skonfigurować ustawienia diagnostyczne magazynu w trybie Diagnostyka Azure](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events#legacy-event). 
 
 - **Azure monitor**: w sekcji **Insights** wybierz pozycję **więcej** , a następnie wybierz odpowiedni obszar roboczy.
 - **Log Analytics obszary robocze**: wybierz odpowiedni obszar roboczy, a następnie w obszarze **Ogólne**wybierz pozycję **Podsumowanie obszaru roboczego**.
@@ -113,65 +110,90 @@ Wykresy domyślne dają Kusto zapytania dotyczące podstawowych scenariuszy, w k
 - Wszystkie zadania tworzenia kopii zapasowej zakończone powodzeniem
 
     ````Kusto
-    AddonAzureBackupJobs
-    | where JobOperation=="Backup"
-    | where JobStatus=="Completed"
+    AzureDiagnostics
+    | where Category == "AzureBackupReport"
+    | where SchemaVersion_s == "V2"
+    | where OperationName == "Job" and JobOperation_s == "Backup"
+    | where JobStatus_s == "Completed"
     ````
 
 - Wszystkie zadania tworzenia kopii zapasowej zakończone niepowodzeniem
 
     ````Kusto
-    AddonAzureBackupJobs
-    | where JobOperation=="Backup"
-    | where JobStatus=="Failed"
+    AzureDiagnostics
+    | where Category == "AzureBackupReport"
+    | where SchemaVersion_s == "V2"
+    | where OperationName == "Job" and JobOperation_s == "Backup"
+    | where JobStatus_s == "Failed"
     ````
 
 - Wszystkie pomyślne zadania tworzenia kopii zapasowej maszyny wirtualnej platformy Azure
 
     ````Kusto
-    AddonAzureBackupJobs
-    | where JobOperation=="Backup"
-    | where JobStatus=="Completed"
+    AzureDiagnostics
+    | where Category == "AzureBackupReport"
+    | where SchemaVersion_s == "V2"
+    | extend JobOperationSubType_s = columnifexists("JobOperationSubType_s", "")
+    | where OperationName == "Job" and JobOperation_s == "Backup" and JobStatus_s == "Completed" and JobOperationSubType_s != "Log" and JobOperationSubType_s != "Recovery point_Log"
     | join kind=inner
     (
-        CoreAzureBackup
+        AzureDiagnostics
+        | where Category == "AzureBackupReport"
         | where OperationName == "BackupItem"
-        | where BackupItemType=="VM" and BackupManagementType=="IaaSVM"
-        | distinct BackupItemUniqueId, BackupItemFriendlyName
+        | where SchemaVersion_s == "V2"
+        | where BackupItemType_s == "VM" and BackupManagementType_s == "IaaSVM"
+        | distinct BackupItemUniqueId_s, BackupItemFriendlyName_s
+        | project BackupItemUniqueId_s , BackupItemFriendlyName_s
     )
-    on BackupItemUniqueId
+    on BackupItemUniqueId_s
+    | extend Vault= Resource
+    | project-away Resource
     ````
 
 - Wszystkie pomyślne zadania tworzenia kopii zapasowej dziennika SQL
 
     ````Kusto
-    AddonAzureBackupJobs
-    | where JobOperation=="Backup" and JobOperationSubType=="Log"
-    | where JobStatus=="Completed"
+    AzureDiagnostics
+    | where Category == "AzureBackupReport"
+    | where SchemaVersion_s == "V2"
+    | extend JobOperationSubType_s = columnifexists("JobOperationSubType_s", "")
+    | where OperationName == "Job" and JobOperation_s == "Backup" and JobStatus_s == "Completed" and JobOperationSubType_s == "Log"
     | join kind=inner
     (
-        CoreAzureBackup
+        AzureDiagnostics
+        | where Category == "AzureBackupReport"
         | where OperationName == "BackupItem"
-        | where BackupItemType=="SQLDataBase" and BackupManagementType=="AzureWorkload"
-        | distinct BackupItemUniqueId, BackupItemFriendlyName
+        | where SchemaVersion_s == "V2"
+        | where BackupItemType_s == "SQLDataBase" and BackupManagementType_s == "AzureWorkload"
+        | distinct BackupItemUniqueId_s, BackupItemFriendlyName_s
+        | project BackupItemUniqueId_s , BackupItemFriendlyName_s
     )
-    on BackupItemUniqueId
+    on BackupItemUniqueId_s
+    | extend Vault= Resource
+    | project-away Resource
     ````
 
 - Wszystkie pomyślne zadania agenta Azure Backup
 
     ````Kusto
-    AddonAzureBackupJobs
-    | where JobOperation=="Backup"
-    | where JobStatus=="Completed"
+    AzureDiagnostics
+    | where Category == "AzureBackupReport"
+    | where SchemaVersion_s == "V2"
+    | extend JobOperationSubType_s = columnifexists("JobOperationSubType_s", "")
+    | where OperationName == "Job" and JobOperation_s == "Backup" and JobStatus_s == "Completed" and JobOperationSubType_s != "Log" and JobOperationSubType_s != "Recovery point_Log"
     | join kind=inner
     (
-        CoreAzureBackup
+        AzureDiagnostics
+        | where Category == "AzureBackupReport"
         | where OperationName == "BackupItem"
-        | where BackupItemType=="FileFolder" and BackupManagementType=="MAB"
-        | distinct BackupItemUniqueId, BackupItemFriendlyName
+        | where SchemaVersion_s == "V2"
+        | where BackupItemType_s == "FileFolder" and BackupManagementType_s == "MAB"
+        | distinct BackupItemUniqueId_s, BackupItemFriendlyName_s
+        | project BackupItemUniqueId_s , BackupItemFriendlyName_s
     )
-    on BackupItemUniqueId
+    on BackupItemUniqueId_s
+    | extend Vault= Resource
+    | project-away Resource
     ````
 
 ### <a name="diagnostic-data-update-frequency"></a>Częstotliwość aktualizacji danych diagnostycznych
@@ -217,7 +239,7 @@ Można wyświetlić wszystkie alerty utworzone na podstawie dzienników aktywno�
 Mimo że można otrzymywać powiadomienia za pośrednictwem dzienników aktywności, zdecydowanie zalecamy używanie Log Analytics, a nie dzienników aktywności do monitorowania w odpowiedniej skali. Poniżej przedstawiono przyczyny:
 
 - **Ograniczone scenariusze**: powiadomienia za pomocą dzienników aktywności dotyczą tylko kopii zapasowych maszyn wirtualnych platformy Azure. Powiadomienia muszą zostać skonfigurowane dla każdego magazynu Recovery Services.
-- **Dopasowanie definicji**: działanie zaplanowanej kopii zapasowej nie jest zgodne z najnowszą definicją dzienników aktywności. Zamiast tego są wyrównane z [dziennikami zasobów](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-workspace#what-you-can-do-with-resource-logs-in-a-workspace). To wyrównanie powoduje nieoczekiwane skutki, gdy dane przepływają przez kanał dziennika aktywności są zmieniane.
+- **Dopasowanie definicji**: działanie zaplanowanej kopii zapasowej nie jest zgodne z najnowszą definicją dzienników aktywności. Zamiast tego są wyrównane z [dziennikami zasobów](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-workspace#what-you-can-do-with-platform-logs-in-a-workspace). To wyrównanie powoduje nieoczekiwane skutki, gdy dane przepływają przez kanał dziennika aktywności są zmieniane.
 - **Problemy z kanałem dziennika aktywności**: w magazynach Recovery Services, dzienniki aktywności, które są pompy Azure Backup podążają za nowym modelem. Niestety ta zmiana ma wpływ na generowanie dzienników aktywności w Azure Government, na platformie Azure (Niemcy) i na platformie Azure (Chiny). Jeśli użytkownicy tych usług w chmurze tworzą lub konfigurują alerty z dzienników aktywności w Azure Monitor, alerty nie zostaną wyzwolone. Ponadto w przypadku wszystkich regionów publicznych platformy Azure, jeśli użytkownik [zbiera Recovery Services dzienników aktywności w obszarze roboczym log Analytics](https://docs.microsoft.com/azure/azure-monitor/platform/collect-activity-logs), te dzienniki nie będą wyświetlane.
 
 Użyj Log Analytics obszaru roboczego do monitorowania i generowania alertów na dużą skalę dla wszystkich obciążeń chronionych przez Azure Backup.

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/24/2019
+ms.date: 12/30/2019
 ms.author: rkarlin
-ms.openlocfilehash: b2be563efa3c09cffaf14dec2b871f3881af1a7a
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: d5f3d24d10262f28023523668c22f4571799cff9
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240047"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610475"
 ---
 # <a name="connect-your-external-solution-using-syslog"></a>Łączenie rozwiązania zewnętrznego przy użyciu dziennika systemowego
 
@@ -28,14 +28,18 @@ Można podłączyć urządzenie lokalne obsługujące dziennik systemowy do plat
 > [!NOTE]
 > Jeśli urządzenie obsługuje dziennik systemowy CEF, połączenie jest bardziej kompletne i należy wybrać tę opcję i postępować zgodnie z instrukcjami w temacie [łączenie danych z CEF](connect-common-event-format.md).
 
-## <a name="how-it-works"></a>Jak to działa
+## <a name="how-it-works"></a>Zasady działania
 
 SYSLOG jest protokołem rejestrowania zdarzeń, który jest wspólny dla systemu Linux. Aplikacje będzie wysyłać komunikaty, które mogą być przechowywane na komputerze lokalnym lub dostarczane do modułu zbierającego Syslog. Po zainstalowaniu agenta Log Analytics dla systemu Linux program skonfiguruje lokalny demon dziennika systemowego, aby przekazywać komunikaty do agenta. Następnie Agent wysyła komunikat do Azure Monitor, w którym zostanie utworzony odpowiedni rekord.
 
 Aby uzyskać więcej informacji, zobacz [źródła danych dziennika systemowego w Azure monitor](../azure-monitor/platform/data-sources-syslog.md).
 
 > [!NOTE]
-> Agent może zbierać dzienniki z wielu źródeł, ale muszą być zainstalowane na dedykowanym komputerze proxy.
+> - Agent może zbierać dzienniki z wielu źródeł, ale muszą być zainstalowane na dedykowanym komputerze proxy.
+> - Aby umożliwić obsługę łączników dla CEF i dziennika systemowego na tej samej maszynie wirtualnej, wykonaj następujące kroki, aby uniknąć duplikowania danych:
+>    1. Postępuj zgodnie z instrukcjami, aby [nawiązać połączenie z usługą CEF](connect-common-event-format.md).
+>    2. Aby połączyć dane dziennika systemowego, przejdź do pozycji **ustawienia** > **ustawienia obszaru roboczego** > **Ustawienia zaawansowane** > **dane** > **dziennika** systemowego i ustaw obiekty i ich priorytety, tak aby nie były to te same funkcje i właściwości, które były używane w konfiguracji CEF. <br></br>W przypadku wybrania opcji **Zastosuj poniższą konfigurację do moich maszyn**te ustawienia są stosowane do wszystkich maszyn wirtualnych połączonych z tym obszarem roboczym.
+
 
 ## <a name="connect-your-syslog-appliance"></a>Połącz urządzenie dziennika systemu
 
@@ -53,9 +57,9 @@ Aby uzyskać więcej informacji, zobacz [źródła danych dziennika systemowego 
 
 4. Wybierz pozycję **Otwórz konfigurację ustawień zaawansowanych obszaru roboczego**.
 
-5. W bloku **Ustawienia zaawansowane** wybierz pozycję**Dziennik**systemowy **danych** > . Następnie Dodaj obiekty do zebrania dla łącznika.
+5. W bloku **Ustawienia zaawansowane** wybierz pozycję **dane** > **Dziennik**systemowy. Następnie Dodaj obiekty do zebrania dla łącznika.
     
-    Dodaj obiekty, które urządzenie dziennika systemu zawiera w jego nagłówkach dziennika. Tę konfigurację można wyświetlić w urządzeniu dziennika systemowego w `/etc/rsyslog.d/security-config-omsagent.conf` folderze dziennika systemowego, a w obszarze **r-dziennik** `/etc/syslog-ng/security-config-omsagent.conf`systemu.
+    Dodaj obiekty, które urządzenie dziennika systemu zawiera w jego nagłówkach dziennika. Tę konfigurację można zobaczyć w urządzeniu dziennika systemowego w folderze **dziennika systemu** w `/etc/rsyslog.d/security-config-omsagent.conf`, a w obszarze **r-dziennika** systemu `/etc/syslog-ng/security-config-omsagent.conf`.
     
     Jeśli chcesz użyć nietypowego wykrywania logowania SSH za pomocą zbieranych danych, Dodaj **uwierzytelnianie** i **authpriv**. Aby uzyskać dodatkowe informacje, zobacz [następującą sekcję](#configure-the-syslog-connector-for-anomalous-ssh-login-detection) .
 
@@ -83,10 +87,10 @@ Wskaźnik "Azure" może stosować Uczenie maszynowe (ML) do danych dziennika sys
  
 To wykrywanie wymaga określonej konfiguracji łącznika danych dziennika systemowego: 
 
-1. W przypadku kroku 5 w poprzedniej procedurze upewnij się, że zarówno **uwierzytelnianie** , jak i **authpriv** są wybrane jako urządzenia do monitorowania. Zachowaj ustawienia domyślne opcji ważności, aby były zaznaczone. Na przykład:
+1. W przypadku kroku 5 w poprzedniej procedurze upewnij się, że zarówno **uwierzytelnianie** , jak i **authpriv** są wybrane jako urządzenia do monitorowania. Zachowaj ustawienia domyślne opcji ważności, aby były zaznaczone. Przykład:
     
     > [!div class="mx-imgBorder"]
-    > ![Urządzenia wymagane do wykrycia nietypowego logowania SSH](./media/connect-syslog/facilities-ssh-detection.png)
+    > ![funkcje wymagane dla nietypowego wykrywania logowania SSH](./media/connect-syslog/facilities-ssh-detection.png)
 
 2. Zezwalaj na zbieranie informacji dziennika systemu wystarczająco długo. Następnie przejdź do okna badanie **wskaźnikowe platformy Azure**i skopiuj i wklej następujące zapytanie:
     
@@ -96,9 +100,11 @@ To wykrywanie wymaga określonej konfiguracji łącznika danych dziennika system
     
     Jeśli wynikowa liczba jest równa zero, Potwierdź konfigurację łącznika i że monitorowane komputery mają działanie pomyślnego logowania dla okresu określonego dla zapytania.
     
-    Jeśli wynikowa liczba jest większa od zera, dane dziennika systemowego są odpowiednie dla nietypowego wykrywania logowania SSH. To wykrywanie można włączyć z**szablonów** > reguł **analizy** >   **(wersja zapoznawcza) wykrywanie nietypowego logowania SSH**.
+    Jeśli wynikowa liczba jest większa od zera, dane dziennika systemowego są odpowiednie dla nietypowego wykrywania logowania SSH. To wykrywanie można włączyć z **szablonów reguł** >  **analitycznych** >  **(wersja zapoznawcza) wykrywanie nietypowego logowania SSH**.
 
 ## <a name="next-steps"></a>Następne kroki
 W tym dokumencie przedstawiono sposób łączenia lokalnych urządzeń dziennika systemu z platformą Azure. Aby dowiedzieć się więcej na temat platformy Azure, zobacz następujące artykuły:
 - Dowiedz się [, jak uzyskać wgląd w dane oraz potencjalne zagrożenia](quickstart-get-visibility.md).
 - Rozpocznij [wykrywanie zagrożeń za pomocą platformy Azure — wskaźnik](tutorial-detect-threats-built-in.md).
+- [Używaj skoroszytów](tutorial-monitor-your-data.md) do monitorowania danych.
+

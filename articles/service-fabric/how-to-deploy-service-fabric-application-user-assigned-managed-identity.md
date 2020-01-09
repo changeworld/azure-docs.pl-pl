@@ -1,18 +1,14 @@
 ---
-title: Azure Service Fabric — wdrażanie aplikacji przy użyciu tożsamości zarządzanej przypisanej przez użytkownika | Microsoft Docs
+title: Wdrażanie aplikacji przy użyciu tożsamości zarządzanej przypisanej przez użytkownika
 description: W tym artykule opisano sposób wdrażania aplikacji Service Fabric przy użyciu tożsamości zarządzanej przypisanej przez użytkownika
-services: service-fabric
-author: athinanthny
-ms.service: service-fabric
 ms.topic: article
-ms.date: 08/09/2019
-ms.author: atsenthi
-ms.openlocfilehash: 0cc1e51a4d5f9ad54866066a4247e1588da381a6
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.date: 12/09/2019
+ms.openlocfilehash: a5eeaf0d6420fa36c0a78f7553ddfd82197d8ec4
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71037483"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610339"
 ---
 # <a name="deploy-service-fabric-application-with-a-user-assigned-managed-identity-preview"></a>Wdróż aplikację Service Fabric przy użyciu tożsamości zarządzanej przypisanej przez użytkownika (wersja zapoznawcza)
 
@@ -22,7 +18,7 @@ Aby wdrożyć aplikację Service Fabric z tożsamością zarządzaną, aplikacja
 > 
 > Aplikacje, które nie są wdrożone jako zasób platformy Azure, **nie mogą** mieć tożsamości zarządzanych. 
 >
-> Wdrożenie aplikacji Service Fabric z tożsamością zarządzaną jest obsługiwane w `"2019-06-01-preview"`wersji interfejsu API. Możesz także użyć tej samej wersji interfejsu API dla typu aplikacji, wersji typu aplikacji i zasobów usługi.
+> Wdrożenie aplikacji Service Fabric z tożsamością zarządzaną jest obsługiwane przez interfejs API w wersji `"2019-06-01-preview"`. Możesz także użyć tej samej wersji interfejsu API dla typu aplikacji, wersji typu aplikacji i zasobów usługi.
 >
 
 ## <a name="user-assigned-identity"></a>Tożsamość przypisana przez użytkownika
@@ -31,7 +27,7 @@ Aby włączyć aplikację z tożsamością przypisaną przez użytkownika, nale�
 
 ### <a name="application-template"></a>Szablon aplikacji
 
-Aby włączyć aplikację z tożsamością przypisaną przez użytkownika, najpierw Dodaj właściwość **Identity** do zasobu aplikacji z typem **userAssigned** i przywoływaną tożsamością użytkownika, a następnie Dodaj obiekt **managedIdentities** wewnątrz **elementu Sekcja właściwości** , która zawiera listę przyjaznych nazw mapowania principalId dla każdej tożsamości przypisanej do użytkownika.
+Aby włączyć aplikację z tożsamością przypisaną przez użytkownika, najpierw Dodaj właściwość **Identity** do zasobu aplikacji z typem **userAssigned** i przywoływaną tożsamością użytkownika, a następnie Dodaj do niej obiekt **managedIdentities** , który zawiera listę przyjaznych nazw mapowania principalId dla każdej tożsamości przypisanej do użytkownika.
 
     {
       "apiVersion": "2019-06-01-preview",
@@ -66,7 +62,7 @@ W powyższym przykładzie nazwa zasobu tożsamości przypisanej do użytkownika 
 
 ### <a name="application-package"></a>Pakiet aplikacji
 
-1. Dla każdej tożsamości zdefiniowanej w `managedIdentities` sekcji w szablonie Azure Resource Manager `<ManagedIdentity>` Dodaj tag w manifeście aplikacji w sekcji **podmioty zabezpieczeń** . Atrybut musi pasować do właściwości zdefiniowanej w `managedIdentities`sekcji. `name` `Name`
+1. Dla każdej tożsamości zdefiniowanej w `managedIdentities` sekcji szablonu Azure Resource Manager Dodaj tag `<ManagedIdentity>` w manifeście aplikacji w sekcji **podmioty zabezpieczeń** . Atrybut `Name` musi pasować do właściwości `name` zdefiniowanej w sekcji `managedIdentities`.
 
     **ApplicationManifest. XML**
 
@@ -90,7 +86,7 @@ W powyższym przykładzie nazwa zasobu tożsamości przypisanej do użytkownika 
       </ServiceManifestImport>
     ```
 
-3. Zaktualizuj manifest usługi, aby dodać **ManagedIdentity** w sekcji **resources** o `ServiceIdentityRef` nazwie zgodnej z elementem w `IdentityBindingPolicy` manifeście aplikacji:
+3. Zaktualizuj manifest usługi, aby dodać **ManagedIdentity** w sekcji **resources** o nazwie odpowiadającej `ServiceIdentityRef` w `IdentityBindingPolicy` manifestu aplikacji:
 
     **Servicemanifest. XML**
 

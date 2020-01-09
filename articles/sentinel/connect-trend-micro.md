@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/04/2019
+ms.date: 12/30/2019
 ms.author: cabailey
-ms.openlocfilehash: af4095b41da4d7f5fca5d1f7ed72a0c0dbc5b1d1
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: ba5b560f068d453f07e2dbbfdf5140ca1f4ac2b8
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73521037"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610441"
 ---
 # <a name="connect-trend-micro-deep-security"></a>Łącz zabezpieczenia Trend Micro głęboki
 
@@ -42,4 +42,6 @@ ms.locfileid: "73521037"
 W tym dokumencie przedstawiono sposób nawiązywania połączenia z usługą Trend Micro głębokiej ochrony z platformą Azure. Aby dowiedzieć się więcej na temat platformy Azure, zobacz następujące artykuły:
 - Dowiedz się [, jak uzyskać wgląd w dane oraz potencjalne zagrożenia](quickstart-get-visibility.md).
 - Rozpocznij [wykrywanie zagrożeń za pomocą platformy Azure — wskaźnik](tutorial-detect-threats-built-in.md).
+- [Używaj skoroszytów](tutorial-monitor-your-data.md) do monitorowania danych.
+
 

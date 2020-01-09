@@ -1,5 +1,5 @@
 ---
-title: Przykładowy skrypt Azure PowerShell — usuwanie aplikacji z klastra | Microsoft Docs
+title: Usuwanie aplikacji z klastra w programie PowerShell
 description: Przykładowy skrypt Azure PowerShell — usuwanie aplikacji z klastra Service Fabric.
 services: service-fabric
 documentationcenter: ''
@@ -14,14 +14,14 @@ ms.topic: sample
 ms.date: 01/18/2018
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: f572996b4e460480335dbe32c4599bde206251d4
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 9ac4c23468c74b5a2c6874de2cb6b8d0e6b9e7dd
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035513"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610288"
 ---
-# <a name="remove-an-application-from-a-service-fabric-cluster"></a>Usuwanie aplikacji z klastra Service Fabric
+# <a name="remove-an-application-from-a-service-fabric-cluster-using-powershell"></a>Usuwanie aplikacji z klastra Service Fabric przy użyciu programu PowerShell
 
 Ten przykładowy skrypt usuwa uruchomione wystąpienie aplikacji Service Fabric i wyrejestrowuje typ aplikacji i wersję z klastra.  Usuwanie wystąpienia aplikacji spowoduje usunięcie wszystkich uruchomionych wystąpień usługi skojarzonych z aplikacją. Dostosuj parametry zgodnie z potrzebami. 
 
