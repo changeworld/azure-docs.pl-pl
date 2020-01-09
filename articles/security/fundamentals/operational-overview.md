@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/31/2019
 ms.author: tomsh
-ms.openlocfilehash: c5ab994ce7b4e3d195ec3a4c83094974c5767e66
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: bcaf45af4c02dad22e2cc611fa7ea5a32ad3a853
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73643782"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443877"
 ---
 # <a name="azure-operational-security-overview"></a>Omówienie zabezpieczeń operacyjnych platformy Azure
 
@@ -38,7 +38,7 @@ Zespół ds. operacyjnych jest odpowiedzialny za zarządzanie infrastrukturą, a
 
 Dane można skonsolidować z różnych źródeł i połączyć dane z usług platformy Azure z istniejącym środowiskiem lokalnym. Dzienniki Azure Monitor również wyraźnie oddzielają kolekcję danych od akcji podjętej na tych danych, dzięki czemu wszystkie akcje są dostępne dla wszystkich rodzajów danych.
 
-### <a name="automation"></a>Automatyzacja
+### <a name="automation"></a>Automation
 
 [Azure Automation](/azure/automation/automation-intro) zapewnia sposób automatyzacji ręcznych, długotrwałych, podatnych na błędy i często powtarzanych zadań, które są często wykonywane w chmurze i środowisku przedsiębiorstwa. Oszczędza czas i zwiększa niezawodność zadań administracyjnych. Program planuje również automatyczne wykonywanie tych zadań w regularnych odstępach czasu. Procesy można zautomatyzować za pomocą elementów Runbook lub automatyzując zarządzanie konfiguracją przy użyciu konfiguracji żądanego stanu.
 
@@ -48,13 +48,13 @@ Dane można skonsolidować z różnych źródeł i połączyć dane z usług pla
 
 Azure Backup oferuje składniki pobierane i wdrażane na odpowiednim komputerze lub serwerze albo w chmurze. Wdrażany składnik lub agent zależy od tego, co ma być chronione. Wszystkie składniki Azure Backup (niezależnie od tego, czy dane są chronione lokalnie, czy w chmurze) mogą służyć do tworzenia kopii zapasowych danych w magazynie usługi Azure Recovery Services na platformie Azure.
 
-Aby uzyskać więcej informacji, zobacz [tabelę składników Azure Backup](/azure/backup/backup-introduction-to-azure-backup#which-backup-agent-should-i-use).
+Aby uzyskać więcej informacji, zobacz [tabelę składników Azure Backup](/azure/backup/backup-overview#what-can-i-back-up).
 
-### <a name="site-recovery"></a>Site Recovery
+### <a name="site-recovery"></a>Odzyskiwanie witryn
 
 [Azure Site Recovery](https://azure.microsoft.com/documentation/services/site-recovery) zapewnia ciągłość działania przez organizowanie replikacji lokalnych maszyn wirtualnych i fizycznych na platformę Azure lub do lokacji dodatkowej. Jeśli lokacja główna jest niedostępna, przełączenie w tryb failover do lokalizacji dodatkowej spowoduje, że użytkownicy będą mogli kontynuować pracę. Powrót po awarii, gdy system wróci do kolejności roboczej. Użyj Azure Security Center, aby wykonywać bardziej inteligentne i efektywne wykrywanie zagrożeń.
 
-## <a name="azure-active-directory"></a>Usługa Azure Active Directory
+## <a name="azure-active-directory"></a>Usługa Active Directory systemu Azure
 
 [Azure Active Directory (Azure AD)](/azure/active-directory/active-directory-enable-sso-scenario) to kompleksowa usługa tożsamości:
 
@@ -89,7 +89,7 @@ Dzięki Azure Active Directory wszystkie aplikacje publikowane dla partnerów i 
 
 Security Center używa [Access Control opartego na rolach (RBAC)](/azure/role-based-access-control/role-assignments-portal). RBAC zawiera [wbudowane role](../../role-based-access-control/built-in-roles.md) , które można przypisać do użytkowników, grup i usług na platformie Azure.
 
-Security Center ocenia konfigurację zasobów w celu zidentyfikowania problemów i luk w zabezpieczeniach. W Security Center informacje dotyczące zasobu są wyświetlane tylko wtedy, gdy przypiszesz rolę właściciela, współautora lub czytelnika dla subskrypcji lub grupy zasobów, do której należy zasób.
+Usługa Security Center ocenia konfigurację zasobów, aby zidentyfikować problemy dotyczące zabezpieczeń i luki w zabezpieczeniach. W Security Center informacje dotyczące zasobu są wyświetlane tylko wtedy, gdy przypiszesz rolę właściciela, współautora lub czytelnika dla subskrypcji lub grupy zasobów, do której należy zasób.
 
 >[!Note]
 >Aby dowiedzieć się więcej o rolach i dozwolonych akcjach w Security Center, zobacz [uprawnienia w Azure Security Center](/azure/security-center/security-center-permissions).
@@ -112,7 +112,7 @@ Azure Monitor obejmuje następujące składniki.
 
 ### <a name="azure-diagnostic-logs"></a>Dzienniki diagnostyczne platformy Azure
 
-[Dzienniki diagnostyczne platformy Azure](/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) są emitowane przez zasób i zapewniają rozbudowane, częste dane dotyczące operacji tego zasobu. Zawartość tych dzienników różni się w zależności od typu zasobu.
+[Dzienniki diagnostyczne platformy Azure](/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) są emitowane przez zasób i zapewniają rozbudowane, częste dane dotyczące operacji tego zasobu. Zawartość tych dzienników jest zależna od typu zasobu.
 
 Dzienniki systemu zdarzeń systemu Windows to jedna kategoria dzienników diagnostycznych dla maszyn wirtualnych. Dzienniki obiektów blob, tabel i kolejek są kategoriami dzienników diagnostycznych dla kont magazynu.
 
@@ -173,11 +173,11 @@ Plany zapewniają deklaratywny sposób organizowania wdrożenia różnych szablo
 
 Przed rozpoczęciem tworzenia aplikacji dla [deweloperów (DevOps)](https://www.visualstudio.com/learn/what-is-devops/) zespoły były odpowiedzialne za gromadzenie wymagań firmy dla programu i pisanie kodu. Następnie oddzielny zespół kontroli jakości przetestował program w izolowanym środowisku programistycznym. Jeśli zostały spełnione wymagania, zespół usługi pytań i odpowiedzi wydał kod dla operacji do wdrożenia. Zespoły wdrożeniowe zostały przedzielone na grupy, takie jak sieć i baza danych. Za każdym razem, gdy program został zgłoszony przez ściany do niezależnego zespołu, dodaliśmy wąskie gardła.
 
-DevOps umożliwia zespołom szybsze i wydajniejsze dostarczanie bardziej bezpiecznych rozwiązań o wyższej jakości. Klienci oczekują dynamicznego i niezawodnego środowiska podczas korzystania z oprogramowania i usług. Zespoły muszą szybko wykonać iterację aktualizacji oprogramowania i zmierzyć wpływ aktualizacji. Muszą szybko reagować na nowe iteracje programistyczne w celu rozwiązania problemów lub zapewnienia większej wartości.  
+DevOps umożliwia zespołom szybsze i wydajniejsze dostarczanie bardziej bezpiecznych rozwiązań o wyższej jakości. Klienci korzystający z oprogramowania i usług oczekują dynamicznego i niezawodnego działania. Zespoły muszą szybko wykonać iterację aktualizacji oprogramowania i zmierzyć wpływ aktualizacji. Muszą szybko reagować na nowe iteracje programistyczne w celu rozwiązania problemów lub zapewnienia większej wartości.  
 
-Platformy w chmurze, takie jak Microsoft Azure, zostały usunięte tradycyjne wąskie gardła i pomogły postrzeganie infrastrukturę. Oprogramowanie Reigns w każdej firmie jako odróżniający klucz i współczynnik w wyników działalności biznesowej. Żadna organizacja, deweloper lub pracownik IT nie może ani nie powinien unikać przesunięć DevOps.
+Dzięki platformom chmurowym, takim jak Microsoft Azure, udało się wyeliminować tradycyjne wąskie gardła i ujednolicić postrzeganie infrastruktury. Oprogramowanie stało się głównym wyróżnikiem i czynnikiem wpływającym na wyniki każdej firmy. Żadna organizacja, deweloper lub pracownik IT nie może ani nie powinien unikać przesunięć DevOps.
 
-Praktykujący lekarze DevOps przyjmuje kilka z poniższych praktyk. Te praktyki [obejmują](https://www.visualstudio.com/learn/what-is-devops-culture/) metody tworzenia strategii na podstawie scenariuszy firmy. Narzędzia mogą pomóc zautomatyzować różne praktyki.
+Znawcy metodyki DevOps stosują zwykle kilka z wymienionych poniżej praktyk. Praktyki te zakładają [udział ludzi](https://www.visualstudio.com/learn/what-is-devops-culture/) w tworzeniu strategii na podstawie scenariuszy biznesowych. Poszczególne praktyki można zautomatyzować przy użyciu narzędzi.
 
 - [Planowanie Agile i techniki zarządzania projektami](https://www.visualstudio.com/learn/what-is-agile/) są używane do planowania i izolowania pracy w przebiegach, zarządzania pojemnością zespołu i ułatwienia zespołom szybkiej adaptacji do zmieniających się potrzeb firmy.
 - [Kontrola wersji, zwykle z usługą git](https://www.visualstudio.com/learn/what-is-git/), umożliwia zespołom znajdującym się w dowolnym miejscu na świecie udostępnianie źródła i integrację z narzędziami do tworzenia oprogramowania w celu zautomatyzowania potoku wydania.

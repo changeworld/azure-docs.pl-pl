@@ -1,25 +1,16 @@
 ---
-title: Informacje o konfiguracji okresowej kopii zapasowej na platformie Azure Service Fabric | Microsoft Docs
+title: Opis konfiguracji okresowej kopii zapasowej
 description: Użyj funkcji okresowej kopii zapasowej i przywracania Service Fabric, aby umożliwić okresowe wykonywanie kopii zapasowych danych aplikacji.
-services: service-fabric
-documentationcenter: .net
 author: hrushib
-manager: chackdan
-editor: hrushib
-ms.assetid: FAA45B4A-0258-4CB3-A825-7E8F70F28401
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 2/01/2019
 ms.author: hrushib
-ms.openlocfilehash: e0c40c005c27130d422e0dacaae29461b65b7df7
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 34c6495e094a1160f6ac75b9f098934d5cbce967
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232494"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610152"
 ---
 # <a name="understanding-periodic-backup-configuration-in-azure-service-fabric"></a>Informacje o konfiguracji okresowej kopii zapasowej na platformie Azure Service Fabric
 
@@ -142,7 +133,7 @@ Zasady tworzenia kopii zapasowych składają się z następujących konfiguracji
 Po zdefiniowaniu zasad tworzenia kopii zapasowych w celu spełnienia wymagań dotyczących tworzenia kopii zapasowych należy odpowiednio powiązać zasady kopii zapasowej z _aplikacją_lub _usługą_albo _partycją_.
 
 ### <a name="hierarchical-propagation-of-backup-policy"></a>Hierarchiczna Propagacja zasad kopii zapasowych
-W Service Fabric relacja między aplikacją, usługą i partycjami jest hierarchiczna, jak wyjaśniono w [modelu aplikacji](./service-fabric-application-model.md). Zasady tworzenia kopii zapasowych można kojarzyć z _aplikacją_, _usługą_lub _partycją_ w hierarchii. Zasady tworzenia kopii zapasowej propagują hierarchicznie do następnego poziomu. Zakładając, że istnieje tylko jedna zasada tworzenia kopii zapasowych i skojarzona z _aplikacją_, wszystkie partycje stanowe należące do wszystkich _niezawodnych usług stanowych_ i _Reliable Actors_ _aplikacji_ zostaną wykonane przy użyciu zasady tworzenia kopii zapasowych. Lub jeśli zasady tworzenia kopii zapasowej są skojarzone z _niezawodną usługą stanową_, zostanie utworzona kopia zapasowa wszystkich jej partycji przy użyciu zasad tworzenia kopii zapasowych.
+W Service Fabric relacja między aplikacją, usługą i partycjami jest hierarchiczna, jak wyjaśniono w [modelu aplikacji](./service-fabric-application-model.md). Zasady tworzenia kopii zapasowych można kojarzyć z _aplikacją_, _usługą_lub _partycją_ w hierarchii. Zasady tworzenia kopii zapasowej propagują hierarchicznie do następnego poziomu. Zakładając, że istnieje tylko jedna zasada tworzenia kopii zapasowych i skojarzona z _aplikacją_, wszystkie partycje stanowe należące do wszystkich _niezawodnych usług stanowych_ i _Reliable Actors_ _aplikacji_ zostaną wykonane przy użyciu zasad tworzenia kopii zapasowych. Lub jeśli zasady tworzenia kopii zapasowej są skojarzone z _niezawodną usługą stanową_, zostanie utworzona kopia zapasowa wszystkich jej partycji przy użyciu zasad tworzenia kopii zapasowych.
 
 ### <a name="overriding-backup-policy"></a>Zastępowanie zasad kopii zapasowych
 Może istnieć scenariusz, w którym dla wszystkich usług aplikacji jest wymagana kopia zapasowa danych z tym samym harmonogramem tworzenia kopii zapasowych, z wyjątkiem określonych usług, które wymagają tworzenia kopii zapasowych danych przy użyciu harmonogramu wyższej częstotliwości lub tworzenia kopii zapasowej na innym koncie magazynu lub udziału. Aby rozwiązać takie scenariusze, usługa przywracania kopii zapasowych udostępnia funkcję przesłonięcia propagowanych zasad w zakresie usług i partycji. Gdy zasady tworzenia kopii zapasowej są skojarzone z _usługą_ lub _partycją_, zastępuje ona propagowane zasady tworzenia kopii zapasowych (jeśli istnieją).
@@ -183,7 +174,7 @@ Na poniższym diagramie przedstawiono jawnie włączone zasady tworzenia kopii z
 ![Service Fabric hierarchia aplikacji][0]
 
 ## <a name="disable-backup"></a>Wyłącz kopię zapasową
-Zasady tworzenia kopii zapasowych można wyłączyć, jeśli nie ma potrzeby tworzenia kopii zapasowych danych. Zasady tworzenia kopii zapasowych włączone w _aplikacji_ można wyłączyć tylko w tej samej _aplikacji_ przy użyciu opcji Wyłącz interfejs API [tworzenia kopii zapasowej aplikacji](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-disableapplicationbackup) , a zasady tworzenia kopii zapasowych włączone w _usłudze_ można wyłączyć w tej samej _usłudze_ przy użyciu opcji [Wyłącz Interfejs API tworzenia kopii](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-disableservicebackup) zapasowych usługi i zasady tworzenia kopii zapasowych włączone w _partycji_ można wyłączyć w tej samej _partycji_ , używając interfejsu API [Wyłącz tworzenie kopii zapasowej partycji](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-disablepartitionbackup) .
+Zasady tworzenia kopii zapasowych można wyłączyć, jeśli nie ma potrzeby tworzenia kopii zapasowych danych. Zasady tworzenia kopii zapasowych włączone w _aplikacji_ można wyłączyć tylko w tej samej _aplikacji_ przy użyciu opcji Wyłącz interfejs API [tworzenia kopii](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-disableapplicationbackup) zapasowej aplikacji, a zasady tworzenia kopii zapasowych włączone w _usłudze_ _mogą być_ wyłączone _w tej samej_ _usłudze_ przy [użyciu interfejsu API](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-disablepartitionbackup) [usługi Disable Backup](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-disableservicebackup) .
 
 * Wyłączenie zasad tworzenia kopii zapasowych dla _aplikacji_ powoduje zatrzymanie wszystkich okresowych kopii zapasowych danych w wyniku propagacji zasad tworzenia kopii zapasowych na niezawodne partycje usługi stanowej lub niezawodne partycje aktora.
 

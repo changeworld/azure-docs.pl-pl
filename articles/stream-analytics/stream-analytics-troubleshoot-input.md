@@ -1,7 +1,6 @@
 ---
 title: Rozwiązywanie problemów z danych wejściowych dla usługi Azure Stream Analytics
 description: W tym artykule opisano techniki rozwiązywania problemów z połączeniami danych wejściowych w zadań usługi Azure Stream Analytics.
-services: stream-analytics
 author: sidram
 ms.author: sidram
 ms.reviewer: mamccrea
@@ -9,14 +8,14 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 8357a53ee065812922b5df53fbdef7c14e5f0ff7
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 20a161ffc82cb8f74cfcac838856434f83c4e258
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621024"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75354280"
 ---
-# <a name="troubleshoot-input-connections"></a>Rozwiązywanie problemów z połączeniami danych wejściowych
+# <a name="troubleshoot-input-connections"></a>Rozwiązywanie problemów z połączeniami wejściowymi
 
 Ta strona zawiera opis typowych problemów z połączeniami danych wejściowych i sposób rozwiązać ten problem.
 
@@ -31,7 +30,7 @@ Ta strona zawiera opis typowych problemów z połączeniami danych wejściowych 
         
     Sprawdź przykładowe dane, aby zrozumieć układ danych: schemat i [typy danych](https://docs.microsoft.com/stream-analytics-query/data-types-azure-stream-analytics).
 
-## <a name="malformed-input-events-causes-deserialization-errors"></a>Błędy deserializacji powoduje, że źle sformułowane zdarzenia wejściowe 
+## <a name="malformed-input-events-causes-deserialization-errors"></a>Źle sformułowane zdarzenia wejściowe powodują błędy deserializacji 
 Deserializacji problemy są spowodowane, gdy strumień wejściowy zadania usługi Stream Analytics zawiera źle sformułowane komunikaty. Na przykład nieprawidłowo sformułowany komunikat może być spowodowane przez brak nawiasu lub nawiasów w obiekcie JSON lub format sygnatury czasowej niepoprawne, w polu czas. 
  
 Gdy zadanie usługi Stream Analytics otrzymuje nieprawidłowo sformułowany komunikat z danych wejściowych, porzuca wiadomość i powiadamia użytkownika z ostrzeżeniem. Symbol ostrzeżenia jest wyświetlany na **dane wejściowe** Kafelek zadania usługi Stream Analytics. Znak to ostrzeżenie występuje, tak długo, jak długo zadanie jest w stanie uruchomienia:
@@ -61,7 +60,7 @@ Można wykonać poniższe kroki, aby analizować zdarzenia wejściowe szczegół
 ## <a name="job-exceeds-maximum-event-hub-receivers"></a>Zadania przekracza maksymalny odbiorcy usługi Event Hubs
 Najlepszym rozwiązaniem jest dotyczące korzystania z usługi Event Hubs jest na potrzeby zapewnienia skalowalności zadania przez wiele grup odbiorców. Liczbę czytników w zadaniu Stream Analytics określone dane wejściowe wpływa na liczbę czytników w grupie jednego konsumenta. Dokładną liczbę odbiorników opiera się na szczegóły wewnętrznej implementacji logiki topologii skalowalnego w poziomie i nie jest widoczna zewnętrznie. Po uruchomieniu zadania lub podczas uaktualniania zadania, można zmienić liczbę czytników.
 
-Błąd pokazany, gdy przekracza wartość maksymalną liczbę odbiorników to: `The streaming job failed: Stream Analytics job has validation errors: Job will exceed the maximum amount of Event Hub Receivers.`
+Błąd wyświetlany w przypadku przekroczenia maksymalnej liczby odbiorników to: `The streaming job failed: Stream Analytics job has validation errors: Job will exceed the maximum amount of Event Hub Receivers.`
 
 > [!NOTE]
 > Po zmianie podczas uaktualniania zadania liczbę czytników przejściowy ostrzeżenia są zapisywane do dzienników inspekcji. Zadania usługi Stream Analytics automatycznie odzyskać te problemy przejściowe.
@@ -92,9 +91,9 @@ Jeśli przesyłania strumieniowego składnia zapytania odwołuje się do tego sa
 
 Następujące scenariusze, w których liczbę czytników w jednej partycji przekracza limit usługi Event Hubs do 5:
 
-* Wiele instrukcji SELECT: Jeśli użyjesz wielu instrukcji SELECT, które odwołują się do **tego samego** Centrum zdarzeń do wprowadzania, każda instrukcja SELECT powoduje, że nowy odbiornik ma zostać utworzony.
-* UNII: Gdy używasz Unii, istnieje możliwość mają wielu danych wejściowych, które odwołują się do **tego samego** grupy Centrum i odbiorcę zdarzeń.
-* SELF JOIN: Korzystając z operacją DOŁĄCZYĆ SAMODZIELNIE, jest możliwe do odwoływania się do **tego samego** Centrum zdarzeń wiele razy.
+* Wiele instrukcji "SELECT": Jeśli używasz wielu instrukcji SELECT, które odwołują się do **tego samego** Centrum zdarzeń do wprowadzania, każda instrukcja SELECT powoduje, że nowy odbiornik ma zostać utworzony.
+* UNION: Gdy używasz Unii, istnieje możliwość mają wielu danych wejściowych, które odwołują się do **tego samego** grupy Centrum i odbiorcę zdarzeń.
+* SAMOSPRZĘŻENIE: Korzystając z operacją DOŁĄCZYĆ SAMODZIELNIE, jest możliwe do odwoływania się do **tego samego** Centrum zdarzeń wiele razy.
 
 Poniższe najlepsze rozwiązania może pomóc zmniejszyć scenariusze, w których liczbę czytników w jednej partycji przekracza limit usługi Event Hubs do 5.
 
@@ -140,7 +139,7 @@ Dla zapytań, w których co najmniej trzech danych wejściowych są podłączone
 
 Aby uzyskać dalszą pomoc, Wypróbuj nasz [forum usługi Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Wprowadzenie do usługi Azure Stream Analytics](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics (Rozpoczynanie pracy z usługą Azure Stream Analytics)](stream-analytics-real-time-fraud-detection.md)

@@ -2,18 +2,18 @@
 title: Tworzenie klastrów Apache Hadoop przy użyciu interfejsu wiersza polecenia platformy Azure — Azure HDInsight
 description: Dowiedz się, jak tworzyć klastry usługi Azure HDInsight przy użyciu międzyplatformowego interfejsu wiersza polecenia platformy Azure.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/10/2019
-ms.author: hrasheed
-ms.openlocfilehash: 09696f5a3df7cc4170c57b862a11bbd5a82e2bc9
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.custom: hdinsightactive
+ms.date: 12/24/2019
+ms.openlocfilehash: 80a13e504b7cb075692256d5c813a95c51002ab6
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494805"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75495125"
 ---
 # <a name="create-hdinsight-clusters-using-the-azure-cli"></a>Tworzenie klastrów usługi HDInsight przy użyciu interfejsu wiersza polecenia platformy Azure
 
@@ -33,7 +33,7 @@ Interfejs wiersza polecenia platformy Azure. Jeśli nie zainstalowano interfejsu
 
 ## <a name="create-a-cluster"></a>Tworzenie klastra
 
-1. Zaloguj się do subskrypcji platformy Azure. Jeśli planujesz używać Azure Cloud Shell, po prostu wybierz pozycję **Wypróbuj** w prawym górnym rogu bloku kodu. W przeciwnym razie wprowadź poniższe polecenie:
+1. Zaloguj się do subskrypcji platformy Azure. Jeśli planujesz używać Azure Cloud Shell, wybierz opcję **Wypróbuj** w prawym górnym rogu bloku kodu. W przeciwnym razie wprowadź poniższe polecenie:
 
     ```azurecli-interactive
     az login
@@ -60,7 +60,7 @@ Interfejs wiersza polecenia platformy Azure. Jeśli nie zainstalowano interfejsu
     export AZURE_STORAGE_ACCOUNT=STORAGEACCOUNTNAME
     export httpCredential='PASSWORD'
     export sshCredentials='PASSWORD'
-    
+
     export AZURE_STORAGE_CONTAINER=$clusterName
     export clusterSizeInNodes=1
     export clusterVersion=3.6
@@ -136,7 +136,7 @@ Interfejs wiersza polecenia platformy Azure. Jeśli nie zainstalowano interfejsu
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Po ukończeniu korzystania z artykułu warto usunąć klaster. Dzięki usłudze HDInsight dane są przechowywane w usłudze Azure Storage, więc można bezpiecznie usunąć klaster, gdy nie jest używany. Opłaty za klaster usługi HDInsight są naliczane nawet wtedy, gdy nie jest używany. Ponieważ opłaty za klaster są wielokrotnie większe niż opłaty za magazyn, ze względów ekonomicznych warto usuwać klastry, gdy nie są używane.
+Po ukończeniu korzystania z artykułu warto usunąć klaster. Dzięki usłudze HDInsight dane są przechowywane w usłudze Azure Storage, dzięki czemu można bezpiecznie usunąć klaster, gdy nie jest używany. Opłaty są naliczone również za klaster usługi HDInsight, nawet wtedy, gdy nie jest używany. Ze względu na to, że opłaty za klaster są dużo razy większe niż opłaty za magazyn, sprawia to, że należy usunąć klastry, gdy nie są używane.
 
 Wprowadź wszystkie lub niektóre z następujących poleceń, aby usunąć zasoby:
 

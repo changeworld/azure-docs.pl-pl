@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 0572a18e530eaff2b5a2d8aa8ced5af26f762aa8
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: c4e2681121a15e0b84a11c7cf35119c3f1b69f11
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873934"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443719"
 ---
 # <a name="get-started-with-azcopy"></a>Wprowadzenie do narzędzia AzCopy
 
@@ -34,14 +34,7 @@ Najpierw Pobierz plik wykonywalny AzCopy v10 do dowolnego katalogu na komputerze
 - [Linux](https://aka.ms/downloadazcopy-v10-linux) (tar)
 - [MacOS](https://aka.ms/downloadazcopy-v10-mac) (zip)
 
-Te pliki są kompresowane jako plik zip (Windows i Mac) lub plik tar (Linux).
-
-Za pomocą tych poleceń można pobrać i zdekompresować plik tar w systemie Linux.
-
-```bash
-wget -O azcopy.tar.gz https://aka.ms/downloadazcopy-v10-linux
-tar -xf azcopy.tar.gz
-```
+Te pliki są kompresowane jako plik zip (Windows i Mac) lub plik tar (Linux). Aby pobrać i zdekompresować plik tar w systemie Linux, zapoznaj się z dokumentacją dystrybucji systemu Linux.
 
 > [!NOTE]
 > Jeśli chcesz skopiować dane do i z usługi [Azure Table Storage](https://docs.microsoft.com/azure/storage/tables/table-storage-overview) , zainstaluj program [AzCopy w wersji 7,3](https://aka.ms/downloadazcopynet).

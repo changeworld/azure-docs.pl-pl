@@ -1,6 +1,6 @@
 ---
-title: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — tworzenie dwóch maszyn wirtualnych przy użyciu wewnętrznych i zewnętrznych sieciowej grupy zabezpieczeń
-description: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — tworzenie dwóch maszyn wirtualnych przy użyciu wewnętrznej i zewnętrznej sieciowej grupy zabezpieczeń
+title: 'Przykład interfejsu wiersza polecenia: tworzenie dwóch maszyn wirtualnych przy użyciu wewnętrznych i zewnętrznych sieciowej grupy zabezpieczeń'
+description: Utwórz dwie maszyny wirtualne z wewnętrznymi i zewnętrznymi sieciowej grupy zabezpieczeń, aby zabezpieczyć ruch sieciowy przy użyciu interfejsu wiersza polecenia platformy Azure.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
@@ -16,14 +16,14 @@ ms.workload: infrastructure
 ms.date: 02/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 857a2862a7ddf515567f96b2e688e54a957cd3d9
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 3e3d1fe3bf464892934198d06b602a5b8bcafb67
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74039577"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458390"
 ---
-# <a name="secure-network-traffic-between-virtual-machines"></a>Bezpieczny ruch sieciowy między maszynami wirtualnymi
+# <a name="secure-network-traffic-between-virtual-machines-using-an-nsg"></a>Zabezpieczanie ruchu sieciowego między maszynami wirtualnymi za pomocą sieciowej grupy zabezpieczeń
 
 Ten skrypt tworzy dwie maszyny wirtualne i zabezpiecza ruch przychodzący do obydwu. Pierwsza maszyna wirtualna jest dostępna w Internecie i ma sieciową grupę zabezpieczeń skonfigurowaną tak, aby zezwolić na ruch w portach 22 i 80. Pierwsza maszyna wirtualna nie jest dostępna w Internecie i ma sieciową grupę zabezpieczeń skonfigurowaną tak, aby zezwolić tylko na ruch z pierwszej maszyny wirtualnej.
 

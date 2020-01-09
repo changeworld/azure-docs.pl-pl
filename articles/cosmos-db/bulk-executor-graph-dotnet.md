@@ -1,5 +1,5 @@
 ---
-title: Korzystanie z biblioteki programu .NET Bulk wykonującej wykresy w celu wykonywania operacji zbiorczych w Azure Cosmos DB interfejsie API Gremlin
+title: Korzystanie z biblioteki programu .NET do przetwarzania zbiorczego wykresu przy użyciu interfejsu API Azure Cosmos DB Gremlin
 description: Dowiedz się, jak używać biblioteki wykonawców zbiorczych do masowego importowania danych grafu do Azure Cosmos DB kontenera interfejsu API Gremlin.
 author: luisbosquez
 ms.service: cosmos-db
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: lbosq
 ms.reviewer: sngun
-ms.openlocfilehash: 35f42f3e222767d9d201d9948581151ae3cb5127
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: cf51d418a008d332bfcea01a7a9dc1a265116e29
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72327179"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442166"
 ---
 # <a name="using-the-graph-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db-gremlin-api"></a>Korzystanie z biblioteki programu .NET Bulk wykonującej wykresy w celu wykonywania operacji zbiorczych w Azure Cosmos DB interfejsie API Gremlin
 
@@ -23,7 +23,7 @@ W przeciwieństwie do wysyłania zapytań Gremlin do bazy danych, gdzie poleceni
 
 ## <a name="bulk-operations-with-graph-data"></a>Wykonywanie operacji zbiorczych z użyciem danych grafów
 
-[Biblioteka programu wykonującego zbiorczo](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.graph?view=azure-dotnet) zawiera przestrzeń nazw `Microsoft.Azure.CosmosDB.BulkExecutor.Graph`, aby zapewnić funkcjonalność tworzenia i importowania obiektów grafu. 
+Biblioteka wykonawcza [zbiorczego](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.graph?view=azure-dotnet) zawiera przestrzeń nazw `Microsoft.Azure.CosmosDB.BulkExecutor.Graph`, która zapewnia funkcje tworzenia i importowania obiektów grafu. 
 
 Następująca procedura przedstawia proces migracji danych w przypadku kontenera interfejsu API języka Gremlin:
 1. Pobierz rekordy ze źródła danych.
@@ -131,7 +131,7 @@ To repozytorium zawiera przykładową aplikację GraphBulkExecutor z następują
 Plik|Opis
 ---|---
 `App.config`|Tutaj są określane parametry aplikacji i bazy danych. Ten plik powinien być zmodyfikowany w pierwszej kolejności, aby nawiązać połączenie z docelową bazą danych i kolekcjami.
-`Program.cs`| Ten plik zawiera logikę w tle tworzenia kolekcji `DocumentClient`, obsługi oczyszczania i wysyłania zbiorczych żądań modułu wykonawczego.
+`Program.cs`| Ten plik zawiera logikę do tworzenia kolekcji `DocumentClient`, obsługi oczyszczania i wysyłania zbiorczych żądań modułu wykonawczego.
 `Util.cs`| Ten plik zawiera klasę pomocnika, która z kolei zawiera logikę generowania danych testowych i sprawdzania, czy baza danych i kolekcje istnieją.
 
 W pliku `App.config` następujące elementy to wartości konfiguracji, które można określić:

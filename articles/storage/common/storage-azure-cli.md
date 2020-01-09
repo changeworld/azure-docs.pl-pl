@@ -1,5 +1,5 @@
 ---
-title: Korzystanie z interfejsu wiersza polecenia platformy Azure z usługą Azure Storage | Microsoft Docs
+title: Używanie interfejsu wiersza polecenia platformy Azure z usługą Azure Storage
 description: Dowiedz się, jak używać interfejsu wiersza polecenia platformy Azure (Azure CLI) z usługą Azure Storage, aby tworzyć i zarządzać kontami magazynu oraz korzystać z obiektów blob i plików platformy Azure.
 services: storage
 author: tamram
@@ -10,12 +10,12 @@ ms.date: 06/02/2017
 ms.author: tamram
 ms.reviewer: seguler
 ms.subservice: common
-ms.openlocfilehash: 46ae70bf4f1c2fe0276a3327ff37650dd57341d0
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: f8e745b214ced865ac41d72bdfd5e44ca36b803a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70259385"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460459"
 ---
 # <a name="using-the-azure-cli-with-azure-storage"></a>Używanie interfejsu wiersza polecenia platformy Azure z usługą Azure Storage
 
@@ -34,7 +34,7 @@ W tym przewodniku założono, że rozumiesz podstawowe pojęcia związane z usł
 
 ### <a name="accounts"></a>Konta
 * **Konto platformy Azure**: Jeśli nie masz jeszcze subskrypcji platformy Azure, [Utwórz bezpłatne konto platformy Azure](https://azure.microsoft.com/free/).
-* **Konto magazynu**: Zobacz [Tworzenie konta magazynu](storage-quickstart-create-account.md) w temacie [Informacje o kontach usługi Azure Storage](storage-create-storage-account.md).
+* **Konto magazynu**: zobacz sekcję [Tworzenie konta magazynu](storage-quickstart-create-account.md) w temacie [Informacje o kontach magazynu Azure](storage-create-storage-account.md).
 
 ### <a name="install-the-azure-cli"></a>Zainstaluj interfejs wiersza polecenia platformy Azure
 
@@ -46,7 +46,7 @@ Pobierz i zainstaluj interfejs wiersza polecenia platformy Azure, postępując z
 
 ## <a name="working-with-the-cli"></a>Praca z interfejsem wiersza polecenia
 
-Po zainstalowaniu interfejsu wiersza polecenia można użyć `az` w tym celu poleceń w interfejsie użytkownika (bash, Terminal, wiersz polecenia), aby uzyskać dostęp do poleceń interfejsu wiersza polecenia platformy Azure. `az` Wpisz polecenie, aby wyświetlić pełną listę podstawowych poleceń (następujące przykładowe dane wyjściowe zostały obcięte):
+Po zainstalowaniu interfejsu wiersza polecenia można użyć `az` polecenie w interfejsie użytkownika (bash, Terminal, wiersz polecenia), aby uzyskać dostęp do polecenia interfejsu wiersza polecenia platformy Azure. Wpisz `az` polecenie, aby wyświetlić pełną listę podstawowych poleceń (następujące przykładowe dane wyjściowe zostały obcięte):
 
 ```
      /\
@@ -68,7 +68,7 @@ Here are the base commands:
     ...
 ```
 
-W interfejsie wiersza polecenia wykonaj polecenie `az storage --help` , aby `storage` wyświetlić listę podgrup poleceń. Opisy podgrup zawierają przegląd funkcji dostępnych w interfejsie wiersza polecenia platformy Azure do pracy z zasobami magazynu.
+W interfejsie wiersza polecenia wykonaj polecenie `az storage --help`, aby wyświetlić podgrupy poleceń `storage`. Opisy podgrup zawierają przegląd funkcji dostępnych w interfejsie wiersza polecenia platformy Azure do pracy z zasobami magazynu.
 
 ```
 Group
@@ -92,12 +92,12 @@ Subgroups:
 
 ## <a name="connect-the-cli-to-your-azure-subscription"></a>Łączenie interfejsu wiersza polecenia z subskrypcją platformy Azure
 
-Aby móc korzystać z zasobów w ramach subskrypcji platformy Azure, musisz najpierw zalogować się do konta platformy Azure `az login`za pomocą usługi. Istnieje kilka sposobów logowania:
+Aby móc korzystać z zasobów w ramach subskrypcji platformy Azure, musisz najpierw zalogować się do konta platformy Azure przy użyciu `az login`. Istnieje kilka sposobów logowania:
 
-* **Logowanie interakcyjne**:`az login`
-* **Zaloguj się przy użyciu nazwy użytkownika i hasła**:`az login -u johndoe@contoso.com -p VerySecret`
+* **Logowanie interakcyjne**: `az login`
+* **Zaloguj się przy użyciu nazwy użytkownika i hasła**: `az login -u johndoe@contoso.com -p VerySecret`
   * To nie działa z kontami Microsoft i kontami korzystającymi z uwierzytelniania wieloskładnikowego.
-* **Zaloguj się przy użyciu nazwy głównej usługi**:`az login --service-principal -u http://azure-cli-2016-08-05-14-31-15 -p VerySecret --tenant contoso.onmicrosoft.com`
+* **Zaloguj się przy użyciu nazwy głównej usługi**: `az login --service-principal -u http://azure-cli-2016-08-05-14-31-15 -p VerySecret --tenant contoso.onmicrosoft.com`
 
 ## <a name="azure-cli-sample-script"></a>Przykładowy skrypt interfejsu wiersza polecenia platformy Azure
 
@@ -136,18 +136,18 @@ echo "Done"
 
 2. Następnie zaktualizuj zmienne skryptu, aby odzwierciedlały ustawienia konfiguracji. Zastąp następujące wartości jako określone:
 
-   * storage_account_name nazwę konta magazynu. **\<\>**
-   * storage_account_key podstawowy lub pomocniczy klucz dostępu dla konta magazynu. **\<\>**
-   * container_name nazwę nowego kontenera do utworzenia, na przykład "Azure-CLI-Sample-Container". **\<\>**
-   * blob_name nazwę docelowego obiektu BLOB w kontenerze. **\<\>**
-   * file_to_upload ścieżkę do małego pliku na komputerze lokalnym, na przykład "~/images/HelloWorld.png". **\<\>**
-   * destination_file ścieżkę pliku docelowego, na przykład "~/downloadedImage.png". **\<\>**
+   * **\<storage_account_name\>** Nazwa konta magazynu.
+   * **\<storage_account_key\>** Podstawowy lub pomocniczy klucz dostępu dla konta magazynu.
+   * **\<container_name\>** Nazwa nowego kontenera do utworzenia, na przykład "Azure-CLI-Sample-Container".
+   * **\<blob_name\>** Nazwa docelowego obiektu BLOB w kontenerze.
+   * **\<file_to_upload\>** Ścieżka do małego pliku na komputerze lokalnym, na przykład "~/images/HelloWorld.png".
+   * **\<destination_file\>** Ścieżka pliku docelowego, na przykład "~/downloadedImage.png".
 
 3. Po zaktualizowaniu wymaganych zmiennych Zapisz skrypt i wyjdź z edytora. W następnych krokach przyjęto założenie, że nazwa skryptu **my_storage_sample. sh**.
 
-4. Oznacz skrypt jako plik wykonywalny, jeśli to konieczne:`chmod +x my_storage_sample.sh`
+4. Oznacz skrypt jako plik wykonywalny, w razie potrzeby: `chmod +x my_storage_sample.sh`
 
-5. Wykonaj skrypt. Na przykład w bash:`./my_storage_sample.sh`
+5. Uruchom skrypt. Na przykład w bash: `./my_storage_sample.sh`
 
 Powinny zostać wyświetlone dane wyjściowe podobne do następujących, a **\<destination_file\>** określony w skrypcie powinien pojawić się na komputerze lokalnym.
 
@@ -170,12 +170,12 @@ Done
 ```
 
 > [!TIP]
-> Poprzednie dane wyjściowe są w formacie **tabeli** . Można określić, który format danych wyjściowych ma być używany `--output` przez określenie argumentu w poleceniach interfejsu CLI lub ustawić go globalnie przy użyciu. `az configure`
+> Poprzednie dane wyjściowe są w formacie **tabeli** . Można określić, który format danych wyjściowych ma być używany przez określenie argumentu `--output` w poleceń interfejsu wiersza polecenia lub skonfigurować go globalnie przy użyciu `az configure`.
 >
 
 ## <a name="manage-storage-accounts"></a>Zarządzanie kontami magazynu
 
-### <a name="create-a-new-storage-account"></a>Utwórz nowe konto magazynu
+### <a name="create-a-new-storage-account"></a>Tworzenie nowego konta magazynu
 Aby móc użyć usługi Azure Storage, musisz mieć konto magazynu. Nowe konto usługi Azure Storage można utworzyć po skonfigurowaniu komputera do nawiązania połączenia z subskrypcją.
 
 ```azurecli
@@ -186,17 +186,17 @@ az storage account create \
     --sku <account_sku>
 ```
 
-* `--location`[Wymagane]: Przeniesienie. Na przykład "zachodnie stany USA".
-* `--name`[Wymagane]: Nazwa konta magazynu. Nazwa musi mieć długość od 3 do 24 znaków i używać tylko małych znaków alfanumerycznych.
-* `--resource-group`[Wymagane]: Nazwa grupy zasobów.
-* `--sku`[Wymagane]: Jednostka SKU konta magazynu. Dozwolone wartości:
+* `--location` [wymagane]: lokalizacja. Na przykład "zachodnie stany USA".
+* `--name` [wymagane]: nazwa konta magazynu. Nazwa musi mieć długość od 3 do 24 znaków i używać tylko małych znaków alfanumerycznych.
+* `--resource-group` [wymagane]: Nazwa grupy zasobów.
+* `--sku` [wymagane]: jednostka SKU konta magazynu. Dozwolone wartości:
   * `Premium_LRS`
   * `Standard_GRS`
   * `Standard_LRS`
   * `Standard_RAGRS`
   * `Standard_ZRS`
-  * `Standard_GZRS`przeglądania
-  * `Standard_RAGZRS`przeglądania
+  * `Standard_GZRS` (wersja zapoznawcza)
+  * `Standard_RAGZRS` (wersja zapoznawcza)
 
 ### <a name="set-default-azure-storage-account-environment-variables"></a>Ustaw domyślne zmienne środowiskowe konta usługi Azure Storage
 
@@ -218,7 +218,7 @@ export AZURE_STORAGE_ACCOUNT=<account_name>
 export AZURE_STORAGE_KEY=<key>
 ```
 
-Innym sposobem ustawienia domyślnego konta magazynu jest użycie parametrów połączenia. Najpierw Pobierz parametry połączenia za pomocą `show-connection-string` polecenia:
+Innym sposobem ustawienia domyślnego konta magazynu jest użycie parametrów połączenia. Najpierw Pobierz parametry połączenia za pomocą polecenia `show-connection-string`:
 
 ```azurecli
 az storage account show-connection-string \
@@ -226,35 +226,35 @@ az storage account show-connection-string \
     --resource-group <resource_group>
 ```
 
-Następnie skopiuj parametry połączenia danych wyjściowych i ustaw `AZURE_STORAGE_CONNECTION_STRING` zmienną środowiskową (może być konieczne ujęcie parametrów połączenia w cudzysłowie):
+Następnie skopiuj parametry połączenia danych wyjściowych i Ustaw zmienną środowiskową `AZURE_STORAGE_CONNECTION_STRING` (może być konieczne ujęcie parametrów połączenia w cudzysłowach):
 
 ```azurecli
 export AZURE_STORAGE_CONNECTION_STRING="<connection_string>"
 ```
 
 > [!NOTE]
-> We wszystkich przykładach w poniższych sekcjach tego artykułu założono, że ustawiono `AZURE_STORAGE_ACCOUNT` zmienne `AZURE_STORAGE_KEY` środowiskowe i.
+> We wszystkich przykładach w poniższych sekcjach tego artykułu założono, że ustawisz zmienne środowiskowe `AZURE_STORAGE_ACCOUNT` i `AZURE_STORAGE_KEY`.
 
 ## <a name="create-and-manage-blobs"></a>Tworzenie obiektów blob i zarządzanie nimi
 Azure Blob Storage to usługa służąca do przechowywania dużych ilości danych bez struktury, takich jak dane tekstowe lub binarne, do których można uzyskiwać dostęp z dowolnego miejsca na świecie za pośrednictwem protokołu HTTP lub HTTPS. W tej sekcji założono, że znasz już pojęcia związane z usługą Azure Blob Storage. Aby uzyskać szczegółowe informacje, zobacz [Rozpoczynanie pracy z usługą Azure Blob Storage za pomocą platformy .NET](../blobs/storage-dotnet-how-to-use-blobs.md) i [obiektów BLOB](/rest/api/storageservices/blob-service-concepts).
 
 ### <a name="create-a-container"></a>Tworzenie kontenera
-Każdy obiekt BLOB w usłudze Azure Storage musi znajdować się w kontenerze. Kontener można utworzyć przy użyciu `az storage container create` polecenia:
+Każdy obiekt BLOB w usłudze Azure Storage musi znajdować się w kontenerze. Kontener można utworzyć przy użyciu polecenia `az storage container create`:
 
 ```azurecli
 az storage container create --name <container_name>
 ```
 
-Można ustawić jeden z trzech poziomów dostępu do odczytu dla nowego kontenera poprzez określenie opcjonalnego `--public-access` argumentu:
+Można ustawić jeden z trzech poziomów dostępu do odczytu dla nowego kontenera poprzez określenie opcjonalnego argumentu `--public-access`:
 
-* `off`(ustawienie domyślne): Dane kontenera są prywatne dla właściciela konta.
-* `blob`: Publiczny dostęp do odczytu dla obiektów BLOB.
-* `container`: Publiczny dostęp do odczytu i listy do całego kontenera.
+* `off` (wartość domyślna): dane kontenera są prywatne dla właściciela konta.
+* `blob`: publiczny dostęp do odczytu dla obiektów BLOB.
+* `container`: publiczny dostęp do odczytu i listy do całego kontenera.
 
 Aby uzyskać więcej informacji, zobacz [Zarządzanie dostępem anonimowym w trybie odczytu do kontenerów i obiektów blob](../blobs/storage-manage-access-to-resources.md).
 
 ### <a name="upload-a-blob-to-a-container"></a>Przekazywanie obiektu blob do kontenera
-Usługa Azure Blob Storage obsługuje blokowe, dołączanie i stronicowe obiekty blob. Przekaż obiekty blob do kontenera za pomocą `blob upload` polecenia:
+Usługa Azure Blob Storage obsługuje blokowe, dołączanie i stronicowe obiekty blob. Przekaż obiekty blob do kontenera za pomocą polecenia `blob upload`:
 
 ```azurecli
 az storage blob upload \
@@ -263,9 +263,9 @@ az storage blob upload \
     --name <blob_name>
 ```
 
-Jeśli chcesz przekazać bezpośrednio do folderu wewnątrz kontenera na koncie magazynu, Zastąp `--name <blob_name>` `--name <folder/blob_name>`ciąg.
+Jeśli chcesz przekazać bezpośrednio do folderu znajdującego się w kontenerze na koncie magazynu, Zastąp `--name <blob_name>` z `--name <folder/blob_name>`.
 
- Domyślnie `blob upload` polecenie przekazuje pliki. VHD do stronicowych obiektów blob lub blokuje obiekty blob w przeciwnym razie. Aby określić inny typ podczas przekazywania obiektu BLOB `--type` , można użyć argumentu — dozwolone wartości to `append`, `block`, i `page`.
+ Domyślnie polecenie `blob upload` przekazuje pliki *. VHD do stronicowych obiektów blob lub blokowe obiekty blob w przeciwnym razie. Aby określić inny typ podczas przekazywania obiektu BLOB, można użyć argumentu `--type` — dozwolone wartości to `append`, `block`i `page`.
 
  Aby uzyskać więcej informacji na temat różnych typów obiektów blob, zobacz temat [Omówienie blokowych obiektów blob, dołączania obiektów blob i stronicowych obiektów BLOB](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs).
 
@@ -331,7 +331,7 @@ az storage blob delete --container-name <container_name> --name <blob_name>
 
 ### <a name="set-the-content-type"></a>Ustawianie typu zawartości
 
-Typ zawartości, określany też jako typ MIME, identyfikuje format danych w obiekcie blob. Przeglądarki i inne oprogramowanie umożliwia określenie sposobu przetwarzania danych na podstawie typu zawartości. Na przykład typ zawartości dla obrazów PNG to `image/png`. Aby ustawić typ zawartości, użyj `blob update` polecenia:
+Typ zawartości, określany też jako typ MIME, identyfikuje format danych w obiekcie blob. Przeglądarki i inne oprogramowanie umożliwia określenie sposobu przetwarzania danych na podstawie typu zawartości. Na przykład typ zawartości dla obrazów PNG jest `image/png`. Aby ustawić typ zawartości, użyj `blob update` polecenia:
 
 ```azurecli
 az storage blob update
@@ -360,7 +360,7 @@ az storage directory create --name myDir --share-name myshare
 Ścieżka katalogu może zawierać wiele poziomów, na przykład **katalog1/dir2**. Należy jednak upewnić się, że wszystkie katalogi nadrzędne istnieją przed utworzeniem podkatalogu. Na przykład w przypadku ścieżki **katalog1/dir2**należy najpierw utworzyć katalog **katalog1**, a następnie utworzyć katalog **dir2**.
 
 ### <a name="upload-a-local-file-to-a-share"></a>Przekaż plik lokalny do udziału
-Poniższy przykład przekazuje plik z **~/temp/SampleFile.txt** do katalogu głównego udziału plików **udziału** . `--source` Argument określa istniejący plik lokalny do przekazania.
+Poniższy przykład przekazuje plik z **~/temp/SampleFile.txt** do katalogu głównego udziału plików **udziału** . `--source` argument określa istniejący plik lokalny do przekazania.
 
 ```azurecli
 az storage file upload --share-name myshare --source ~/temp/samplefile.txt
@@ -375,7 +375,7 @@ az storage file upload --share-name myshare/myDir --source ~/temp/samplefile.txt
 Plik w udziale może mieć rozmiar do 1 TB.
 
 ### <a name="list-the-files-in-a-share"></a>Wyświetlanie listy plików w udziale
-Możesz wyświetlić listę plików i katalogów w udziale za pomocą `az storage file list` polecenia:
+Możesz wyświetlić listę plików i katalogów w udziale za pomocą polecenia `az storage file list`:
 
 ```azurecli
 # List the files in the root of a share
@@ -398,7 +398,7 @@ az storage file copy start \
 ```
 
 ## <a name="create-share-snapshot"></a>Utwórz migawkę udziału
-Migawkę udziału można utworzyć przy użyciu `az storage share snapshot` polecenia:
+Migawkę udziału można utworzyć przy użyciu polecenia `az storage share snapshot`:
 
 ```cli
 az storage share snapshot -n <share name>
@@ -420,7 +420,7 @@ Przykładowe dane wyjściowe
 
 ### <a name="list-share-snapshots"></a>Wyświetlanie listy migawek udziałów
 
-Możliwe jest wyświetlenie migawek udziału określonego udziału przy użyciu polecenia`az storage share list --include-snapshots`
+Możesz wyświetlić migawki udziału określonego udziału przy użyciu `az storage share list --include-snapshots`
 
 ```cli
 az storage share list --include-snapshots
@@ -463,7 +463,7 @@ az storage share list --include-snapshots
 ```
 
 ### <a name="browse-share-snapshots"></a>Przeglądanie migawek udziałów
-Możesz również przejść do konkretnej migawki udziału, aby wyświetlić jej zawartość przy `az storage file list`użyciu. Jeden musi określać nazwę `--share-name <snare name>` udziału i sygnaturę czasową`--snapshot '2017-10-04T19:45:18.0000000Z'`
+Możesz również przejść do konkretnej migawki udziału, aby wyświetlić jej zawartość przy użyciu `az storage file list`. Jeden musi określać nazwę udziału `--share-name <snare name>` i sygnaturę czasową `--snapshot '2017-10-04T19:45:18.0000000Z'`
 
 ```azurecli-interactive
 az storage file list --share-name sharesnapshotdefs --snapshot '2017-10-04T19:45:18.0000000Z' -otable
@@ -485,7 +485,7 @@ IMG_1635.JPG    974058            file
 ```
 ### <a name="restore-from-share-snapshots"></a>Przywracanie z migawek udziałów
 
-Można przywrócić plik, kopiując lub pobierając plik z migawki udziału za pomocą `az storage file download` polecenia
+Można przywrócić plik, kopiując lub pobierając plik z migawki udziału przy użyciu polecenia `az storage file download`
 
 ```azurecli-interactive
 az storage file download --path IMG_0966.JPG --share-name sharesnapshotdefs --snapshot '2017-10-04T19:45:18.0000000Z'
@@ -521,7 +521,7 @@ az storage file download --path IMG_0966.JPG --share-name sharesnapshotdefs --sn
 }
 ```
 ## <a name="delete-share-snapshot"></a>Usuń migawkę udziału
-Migawkę udziału można usunąć za pomocą `az storage share delete` polecenia, dostarczając `--snapshot` parametr z sygnaturą czasową udziału migawek:
+Migawkę udziału można usunąć za pomocą polecenia `az storage share delete`, dostarczając parametr `--snapshot` z sygnaturą czasową migawki udziału:
 
 ```cli
 az storage share delete -n <share name> --snapshot '2017-10-04T23:28:35.0000000Z' 

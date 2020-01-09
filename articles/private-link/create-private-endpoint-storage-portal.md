@@ -2,23 +2,25 @@
 title: Połącz się prywatnie z kontem magazynu przy użyciu prywatnego punktu końcowego platformy Azure
 description: Dowiedz się, jak połączyć się prywatnie z kontem magazynu na platformie Azure przy użyciu prywatnego punktu końcowego.
 services: private-link
-author: asudbring
+author: malopMSFT
 ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 2a2a96a823867ea7700933c8253a0ba500b0e1cf
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.openlocfilehash: 96edbd62dcb95fa8f24ea5a8a6f0716c1fefdcd8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74899802"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75357570"
 ---
 # <a name="connect-privately-to-a-storage-account-using-azure-private-endpoint"></a>Połącz się prywatnie z kontem magazynu przy użyciu prywatnego punktu końcowego platformy Azure
 Prywatny punkt końcowy platformy Azure to podstawowy blok konstrukcyjny dla prywatnego linku na platformie Azure. Dzięki temu zasoby platformy Azure, takie jak maszyny wirtualne, mogą komunikować się prywatnie z zasobami łączy prywatnych.
 
 W tym przewodniku szybki start dowiesz się, jak utworzyć maszynę wirtualną w sieci wirtualnej platformy Azure, konto magazynu z prywatnym punktem końcowym przy użyciu Azure Portal. Następnie możesz bezpiecznie uzyskać dostęp do konta magazynu z maszyny wirtualnej.
 
+> [!NOTE]
+> Prywatne punkty końcowe są niedozwolone w połączeniu z punktami końcowymi usługi w tej samej podsieci.
 
 ## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
 
@@ -149,7 +151,7 @@ Połącz się z maszyną wirtualną *myVm* z Internetu w następujący sposób:
 
 1. Wybierz przycisk **Połącz**. Po wybraniu przycisku **Połącz** zostanie otwarta strona **Łączenie z maszyną wirtualną**.
 
-1. Wybierz opcję **Pobierz plik RDP**. Plik Remote Desktop Protocol ( *.rdp*) zostanie utworzony na platformie Azure, a następnie pobrany na komputer.
+1. Wybierz opcję **Pobierz plik RDP**. Na platformie Azure zostanie utworzony plik Remote Desktop Protocol (*rdp*), który zostanie pobrany na komputer.
 
 1. Otwórz *pobrany plik RDP* .
 

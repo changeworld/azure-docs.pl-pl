@@ -1,20 +1,14 @@
 ---
-title: Utwórz alerty Azure Advisor dla nowych zaleceń | Microsoft Docs
+title: Tworzenie alertów Azure Advisor dla nowych zaleceń
 description: Utwórz alerty Azure Advisor dla nowego zalecenia
-services: advisor
-author: sagupt
-ms.service: advisor
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 09/09/2019
-ms.author: sagupt
-ms.openlocfilehash: d641008a7caf4a006344d886aec945a6e8da2568
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 07cbc57ef718b6cac104d2b5238ff4e3196f197a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326618"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443153"
 ---
 # <a name="create-azure-advisor-alerts-on-new-recommendations"></a>Tworzenie alertów Azure Advisor na temat nowych zaleceń 
 
@@ -24,7 +18,7 @@ Za każdym razem, gdy Azure Advisor wykryje nowe zalecenie dla jednego z zasobó
 
 Możesz również określić typy zaleceń, korzystając z następujących właściwości:
 
-* Category
+* Kategoria
 * Poziom wpływu
 * Typ zalecenia
 
@@ -274,7 +268,7 @@ Jeśli nie używasz wspólnego schematu, ładunek będzie wyglądać następują
 }
 ```
 
-W obu schematach można zidentyfikować zdarzenia rekomendacji klasyfikatora, szukając elementu **EventSource** `Recommendation` , a **OperationName** jest `Microsoft.Advisor/recommendations/available/action`.
+W obu schematach można zidentyfikować zdarzenia rekomendacji klasyfikatora, szukając elementu **EventSource** jest `Recommendation`, a **operationname** jest `Microsoft.Advisor/recommendations/available/action`.
 
 Oto niektóre z innych ważnych pól, których warto użyć: 
 

@@ -1,6 +1,6 @@
 ---
-title: DPDK w maszynie Wirtualnej systemu Linux platformy Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak skonfigurować DPDK na maszynie wirtualnej systemu Linux.
+title: DPDK na maszynie wirtualnej z systemem Linux na platformie Azure | Microsoft Docs
+description: Dowiedz się, jak skonfigurować DPDK na maszynie wirtualnej z systemem Linux.
 services: virtual-network
 documentationcenter: na
 author: laxmanrb
@@ -14,53 +14,53 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/27/2018
 ms.author: labattul
-ms.openlocfilehash: c5cb840035c5d0d5694982324c7237c58001e689
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 876e64cd29aabe1fd4274872800a29cf1a83a0d6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60731604"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75350489"
 ---
-# <a name="set-up-dpdk-in-a-linux-virtual-machine"></a>Konfigurowanie DPDK na maszynie wirtualnej systemu Linux
+# <a name="set-up-dpdk-in-a-linux-virtual-machine"></a>Konfigurowanie DPDK na maszynie wirtualnej z systemem Linux
 
-Danych płaszczyzna Development Kit (DPDK) na platformie Azure oferuje szybsze framework przetwarzania pakietów przestrzeń użytkownika dla aplikacji intensywnie korzystających z wydajnością. Ta struktura pomija stos sieciowy jądra maszyny wirtualnej.
+Zestaw Data Development Kit (DPDK) na platformie Azure oferuje szybszą platformę przetwarzania pakietów przez użytkownika dla aplikacji intensywnie korzystających z wydajności. Ta struktura pomija stos sieciowy jądra maszyny wirtualnej.
 
-W przetwarzania typowych pakietów, które używa stosu sieciowego jądra, proces jest oparte na przerwania. Gdy interfejs sieciowy odbiera pakiety przychodzące, ma przerwania jądra, do procesu, który pakiet i kontekst przełączyć obszaru jądra na przestrzeni użytkownika. DPDK eliminuje przełączania kontekstu i metody opartej na przerwania na rzecz implementacji przestrzeń użytkownika, że używa sondowania sterowniki trybu przetwarzania szybkie pakietów.
+W typowym przetwarzaniu pakietów, który używa stosu sieci jądra, proces jest sterowany przerwaniem. Gdy interfejs sieciowy odbiera przychodzące pakiety, istnieje przerwa jądra do przetworzenia pakietu i przełączenia kontekstu z obszaru jądra do obszaru użytkownika. DPDK eliminuje przełączanie kontekstu i metodę opartą na przerwaniu na korzyść implementacji miejsca użytkownika, która używa sterowników trybu sondowania do szybkiego przetwarzania pakietów.
 
-DPDK składa się z zestawów bibliotek przestrzeń użytkownika, które umożliwiają dostęp do zasobów niższego poziomu. Te zasoby mogą obejmować sprzętu, rdzenie logiczne, zarządzanie pamięcią i sterowniki trybu sondowania dla kart interfejsu sieciowego.
+DPDK składa się z zestawów bibliotek miejsca użytkownika, które zapewniają dostęp do zasobów niższego poziomu. Te zasoby mogą obejmować sprzęt, rdzenie logiczne, zarządzanie pamięcią i sterowniki trybu sondowania kart sieciowych.
 
-DPDK można uruchamiać na maszynach wirtualnych platformy Azure, które obsługują wielu dystrybucji systemu operacyjnego. DPDK zawiera rozróżnienie wydajności w kształtowaniu implementacje Wirtualizacja funkcji sieci. Tych implementacji może mieć postać wirtualnych urządzeń sieciowych (urządzeń WUS), takie jak wirtualne routery, zapory, sieci VPN, usługi równoważenia obciążenia, rdzeni wydzielonego pakietów i aplikacji denial of service (DDoS).
+DPDK można uruchamiać na maszynach wirtualnych platformy Azure, które obsługują wiele dystrybucji systemu operacyjnego. DPDK zapewnia kluczowe zróżnicowanie wydajności podczas prowadzenia implementacji wirtualizacji funkcji sieci. Te implementacje mogą mieć postać wirtualnych urządzeń sieciowych (urządzeń WUS), takich jak routery wirtualne, zapory, sieci VPN, moduły równoważenia obciążenia, rozwijające się rdzenie pakietów i aplikacje typu "odmowa usługi" (DDoS).
 
-## <a name="benefit"></a>Korzyść
+## <a name="benefit"></a>Dostęp do korzyści
 
-**Wyższe pakietów na sekundę (PPS)** : Pomijanie jądra i kontroli pobieranie pakietów w obszarze użytkownika zmniejsza liczbę cyklu przez wyeliminowanie przełączeń kontekstu. Zwiększa to liczba pakietów, które są przetwarzane na sekundę na maszynach wirtualnych z systemem Linux platformy Azure.
+**Wyższe pakiety na sekundę (PPS)** : pominięcie jądra i przejęcie kontroli nad pakietami w przestrzeni użytkownika zmniejsza liczbę cykli, eliminując przełączenia kontekstu. Zwiększa również szybkość pakietów przetwarzanych na sekundę na maszynach wirtualnych platformy Azure z systemem Linux.
 
 
 ## <a name="supported-operating-systems"></a>Obsługiwane systemy operacyjne
 
-Obsługiwane są poniższe dystrybucje w galerii platformy Azure:
+Obsługiwane są następujące dystrybucje z galerii platformy Azure:
 
 | System operacyjny Linux     | Wersja jądra        |
 |--------------|----------------       |
-| Ubuntu 16.04 | 4.15.0-1015-azure     |
-| Ubuntu 18.04 | 4.15.0-1015-azure     |
-| SLES 15      | 4.12.14-5.5-azure     |
-| RHEL W WERSJI 7.5     | 3.10.0-862.9.1.el7    |
-| CentOS w wersji 7.5   | 3.10.0-862.3.3.el7    |
+| Ubuntu 16.04 | 4.15.0 — 1015 — Azure     |
+| Ubuntu 18.04 | 4.15.0 — 1015 — Azure     |
+| SLES 15      | 4.12.14 — 5.5 — Azure     |
+| RHEL 7.5     | 3.10.0-862.9.1.el7    |
+| CentOS 7.5   | 3.10.0-862.3.3.el7    |
 
 **Obsługa niestandardowych jądra**
 
-Dla dowolnej wersji jądra systemu Linux, który nie ma na liście, zobacz [poprawki do tworzenia dostosowanych Azure jądra systemu Linux](https://github.com/microsoft/azure-linux-kernel). Aby uzyskać więcej informacji, możesz również skontaktować się ze [ azuredpdk@microsoft.com ](mailto:azuredpdk@microsoft.com). 
+W przypadku wszystkich wersji jądra systemu Linux, których nie ma na liście, zobacz [poprawki dotyczące kompilowania jądra z systemem Linux](https://github.com/microsoft/azure-linux-kernel)z systemem Azure. Aby uzyskać więcej informacji, możesz również skontaktować się z [azuredpdk@microsoft.com](mailto:azuredpdk@microsoft.com). 
 
-## <a name="region-support"></a>Obsługa regionu
+## <a name="region-support"></a>Obsługa regionów
 
-Wszystkie regiony platformy Azure obsługują DPDK.
+Wszystkie regiony platformy Azure obsługują usługę DPDK.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Przyspieszona sieć musi być włączona na maszynie wirtualnej systemu Linux. Maszyna wirtualna powinna mieć co najmniej dwa interfejsy sieciowe, za pomocą jednego interfejsu do zarządzania. Dowiedz się, jak [Utwórz maszynę wirtualną systemu Linux z włączoną obsługą przyspieszonej sieci](create-vm-accelerated-networking-cli.md).
+Na maszynie wirtualnej z systemem Linux musi być włączona szybsza sieć. Maszyna wirtualna powinna mieć co najmniej dwa interfejsy sieciowe z jednym interfejsem do zarządzania. Dowiedz się, jak [utworzyć maszynę wirtualną z systemem Linux z włączoną obsługą przyspieszonej sieci](create-vm-accelerated-networking-cli.md).
 
-## <a name="install-dpdk-dependencies"></a>Zainstaluj DPDK zależności
+## <a name="install-dpdk-dependencies"></a>Instalowanie zależności DPDK
 
 ### <a name="ubuntu-1604"></a>Ubuntu 16.04
 
@@ -73,11 +73,12 @@ sudo apt-get install -y librdmacm-dev librdmacm1 build-essential libnuma-dev lib
 ### <a name="ubuntu-1804"></a>Ubuntu 18.04
 
 ```bash
+sudo add-apt-repository ppa:canonical-server/dpdk-azure -y
 sudo apt-get update
 sudo apt-get install -y librdmacm-dev librdmacm1 build-essential libnuma-dev libmnl-dev
 ```
 
-### <a name="rhel75centos-75"></a>RHEL7.5/CentOS 7.5
+### <a name="rhel75centos-75"></a>RHEL 7.5/CentOS 7,5
 
 ```bash
 yum -y groupinstall "Infiniband Support"
@@ -87,7 +88,7 @@ yum install -y gcc kernel-devel-`uname -r` numactl-devel.x86_64 librdmacm-devel 
 
 ### <a name="sles-15"></a>SLES 15
 
-**Jądra systemu Azure**
+**Jądro platformy Azure**
 
 ```bash
 zypper  \
@@ -96,7 +97,7 @@ zypper  \
   --gpg-auto-import-keys install kernel-azure kernel-devel-azure gcc make libnuma-devel numactl librdmacm1 rdma-core-devel
 ```
 
-**Domyślne jądra**
+**Domyślne jądro**
 
 ```bash
 zypper \
@@ -105,56 +106,56 @@ zypper \
   --gpg-auto-import-keys install kernel-default-devel gcc make libnuma-devel numactl librdmacm1 rdma-core-devel
 ```
 
-## <a name="set-up-the-virtual-machine-environment-once"></a>Konfigurowanie środowiska maszyny wirtualnej (raz)
+## <a name="set-up-the-virtual-machine-environment-once"></a>Skonfiguruj środowisko maszyny wirtualnej (raz)
 
-1. [Pobierz najnowsze DPDK](https://core.dpdk.org/download). Wersja 18.02 lub nowszy jest wymagany dla platformy Azure.
-2. Tworzenie konfiguracji domyślnej z `make config T=x86_64-native-linuxapp-gcc`.
-3. Włącz Mellanox PMDs w wygenerowanym pliku config przy użyciu `sed -ri 's,(MLX._PMD=)n,\1y,' build/.config`.
-4. Kompiluj przy użyciu `make`.
-5. Instalowanie przy użyciu `make install DESTDIR=<output folder>`.
+1. [Pobierz najnowszą DPDK](https://core.dpdk.org/download). Na platformie Azure jest wymagana wersja 18,02 lub nowsza.
+2. Utwórz konfigurację domyślną przy użyciu `make config T=x86_64-native-linuxapp-gcc`.
+3. Włącz opcję Mellanox PMDs w wygenerowanej konfiguracji przy użyciu `sed -ri 's,(MLX._PMD=)n,\1y,' build/.config`.
+4. Kompiluj z `make`.
+5. Zainstaluj program przy użyciu `make install DESTDIR=<output folder>`.
 
-## <a name="configure-the-runtime-environment"></a>Konfigurowanie środowiska wykonawczego
+## <a name="configure-the-runtime-environment"></a>Konfigurowanie środowiska uruchomieniowego
 
-Po ponownym uruchomieniu komputera, uruchom następujące polecenia jeden raz:
+Po ponownym uruchomieniu Uruchom następujące polecenia jeden raz:
 
 1. Hugepages
 
-   * Skonfiguruj hugepage, uruchamiając następujące polecenie, jeden raz dla wszystkich numanodes:
+   * Skonfiguruj hugepage, uruchamiając następujące polecenie, raz dla wszystkich numanodes:
 
      ```bash
      echo 1024 | sudo tee
      /sys/devices/system/node/node*/hugepages/hugepages-2048kB/nr_hugepages
      ```
 
-   * Utwórz katalog dla instalowania za pomocą `mkdir /mnt/huge`.
-   * Hugepages instalacji za pomocą `mount -t hugetlbfs nodev /mnt/huge`.
-   * Sprawdź, czy hugepages są zarezerwowane przez `grep Huge /proc/meminfo`.
+   * Utwórz katalog do montowania przy użyciu `mkdir /mnt/huge`.
+   * Zainstaluj hugepages z `mount -t hugetlbfs nodev /mnt/huge`.
+   * Sprawdź, czy hugepages są zastrzeżone dla `grep Huge /proc/meminfo`.
 
      > [!NOTE]
-     > Istnieje sposób do modyfikowania pliku chodników, tak aby hugepages są zarezerwowane podczas rozruchu, postępując zgodnie z [instrukcje](https://dpdk.org/doc/guides/linux_gsg/sys_reqs.html#use-of-hugepages-in-the-linux-environment) dla DPDK. Instrukcje są w dolnej części strony. Podczas korzystania z maszyny wirtualnej systemu Linux platformy Azure, należy zmodyfikować plików w obszarze **/etc/config/grub.d** zamiast tego należy zarezerwować hugepages między ponownymi uruchomieniami.
+     > Istnieje możliwość zmodyfikowania pliku GRUB w taki sposób, aby hugepages zostały zarezerwowane przy rozruchu, postępując zgodnie z [instrukcjami](https://dpdk.org/doc/guides/linux_gsg/sys_reqs.html#use-of-hugepages-in-the-linux-environment) dla DPDK. Instrukcje znajdują się w dolnej części strony. W przypadku korzystania z maszyny wirtualnej platformy Azure z systemem Linux zamiast tego należy zmodyfikować pliki w obszarze **/etc/config/grub.d** , aby zarezerwować hugepages w ramach ponownych uruchomień.
 
-2. Adresy MAC i IP: Użyj `ifconfig –a` Aby wyświetlić adres IP i MAC interfejsów sieciowych. *VF* interfejsu sieciowego i *NETVSC* interfejsu sieciowego mają ten sam adres MAC, ale tylko wtedy, *NETVSC* interfejs sieciowy ma adres IP. Interfejsy funkcji Wirtualnej są uruchomione jako nadrzędne interfejsy NETVSC interfejsów.
+2. Adresy IP & MAC: Użyj `ifconfig –a` do wyświetlenia adresów MAC i IP interfejsów sieciowych. Interfejs sieciowy *VF* i interfejs sieciowy *NETVSC* mają taki sam adres MAC, ale tylko interfejs sieciowy *NETVSC* ma adres IP. Interfejsy funkcji VF działają jako interfejsy podrzędne interfejsów NETVSC.
 
 3. Adresy PCI
 
-   * Użyj `ethtool -i <vf interface name>` Aby dowiedzieć się, który adres PCI na potrzeby *VF*.
-   * Jeśli *eth0* ma accelerated networking włączona, upewnij się, że testpmd przypadkowo nie przejąć urządzeń ze standardami pci VF dla *eth0*. Jeśli aplikacja DPDK przypadkowo przejmuje interfejs sieci zarządzania i spowoduje utratę połączenia SSH, użyj konsoli szeregowej, aby zatrzymać aplikację DPDK. Można również użyć konsoli szeregowej zatrzymywania lub uruchamiania maszyny wirtualnej.
+   * Użyj `ethtool -i <vf interface name>`, aby dowiedzieć się, który adres PCI ma być używany na potrzeby funkcji *wirtualnej*.
+   * Jeśli funkcja *eth0* ma przyspieszoną obsługę sieci, upewnij się, że testpmd nie przejmowanie przypadkowo urządzenia z urządzeniem VF PCI dla *eth0*. Jeśli aplikacja DPDK przypadkowo przełączy się za pośrednictwem interfejsu sieciowego zarządzania i spowoduje utratę połączenia SSH, należy użyć konsoli szeregowej do zatrzymania aplikacji DPDK. Można również użyć konsoli szeregowej, aby zatrzymać lub uruchomić maszynę wirtualną.
 
-4. Obciążenia *ibuverbs* podczas każdego ponownego uruchamiania komputera za pomocą `modprobe -a ib_uverbs`. Tylko 15 SLES także załadować *mlx4_ib* z `modprobe -a mlx4_ib`.
+4. Ładuj *ibuverbs* przy każdym ponownym uruchomieniu przy użyciu `modprobe -a ib_uverbs`. Tylko w przypadku SLES 15 Załaduj również *mlx4_ib* z `modprobe -a mlx4_ib`.
 
-## <a name="failsafe-pmd"></a>Przed uszkodzeniami PMD
+## <a name="failsafe-pmd"></a>Failsafe PMD
 
-Aplikacje DPDK należy uruchomić przed uszkodzeniami PMD, która jest widoczna na platformie Azure. Jeśli aplikacja zostanie uruchomiona bezpośrednio nad VF PMD, nie odbiera **wszystkich** pakiety przeznaczone do maszyny Wirtualnej, ponieważ niektóre pakiety wyświetlane nad syntetycznego interfejsu. 
+Aplikacje DPDK muszą być uruchamiane przez PMD failsafe, które są dostępne na platformie Azure. Jeśli aplikacja działa bezpośrednio za pośrednictwem funkcji PMD, nie odbiera **wszystkich** pakietów, które są przeznaczone dla maszyny wirtualnej, ponieważ niektóre pakiety są widoczne w interfejsie syntetycznym. 
 
-Po uruchomieniu aplikacji DPDK za pośrednictwem przed uszkodzeniami PMD gwarantuje to, że aplikacja odbiera wszystkie pakiety, które są przeznaczone do niego. Zapewnia także się upewnić, że aplikacja będzie kontynuować działanie w trybie DPDK nawet wtedy, gdy VF jest odwoływane, gdy host jest obsługiwany. Aby uzyskać więcej informacji na temat przed uszkodzeniami PMD zobacz [biblioteki sterownika trybu awaryjnego sondowania](https://doc.dpdk.org/guides/nics/fail_safe.html).
+Jeśli uruchamiasz aplikację DPDK za pośrednictwem failsafe PMD, gwarantuje to, że aplikacja odbiera wszystkie pakiety, do których są przeznaczone. Gwarantuje również, że aplikacja działa w trybie DPDK, nawet jeśli klient jest odwołany, gdy host jest w trakcie obsługi. Aby uzyskać więcej informacji na temat failsafe PMD, zobacz [Biblioteka sterowników trybu sondowania z niepowodzeniem](https://doc.dpdk.org/guides/nics/fail_safe.html).
 
 ## <a name="run-testpmd"></a>Uruchom testpmd
 
-Aby uruchomić testpmd w trybie głównym, użyj `sudo` przed *testpmd* polecenia.
+Aby uruchomić testpmd w trybie głównym, użyj `sudo` przed poleceniem *testpmd* .
 
-### <a name="basic-sanity-check-failsafe-adapter-initialization"></a>Tryb podstawowy: Inicjalizacja adaptera przed uszkodzeniami poprawnością kontroli
+### <a name="basic-sanity-check-failsafe-adapter-initialization"></a>Podstawowa: sprawdzanie Sanity, inicjowanie karty failsafe
 
-1. Uruchom następujące polecenia, aby uruchomić aplikację testpmd jednego portu:
+1. Uruchom następujące polecenia, aby uruchomić pojedynczą aplikację testpmd port:
 
    ```bash
    testpmd -w <pci address from previous step> \
@@ -163,7 +164,7 @@ Aby uruchomić testpmd w trybie głównym, użyj `sudo` przed *testpmd* poleceni
      --port-topology=chained
     ```
 
-2. Uruchom następujące polecenia, aby uruchomić aplikację testpmd podwójny port:
+2. Uruchom następujące polecenia, aby uruchomić aplikację Dual port testpmd:
 
    ```bash
    testpmd -w <pci address nic1> \
@@ -173,18 +174,18 @@ Aby uruchomić testpmd w trybie głównym, użyj `sudo` przed *testpmd* poleceni
    -- -i
    ```
 
-   W przypadku korzystania z więcej niż dwie karty sieciowe, testpmd `--vdev` argumentu następuje tego wzorca: `net_vdev_netvsc<id>,iface=<vf’s pairing eth>`.
+   Jeśli używasz programu testpmd z więcej niż dwiema kartami sieciowymi, argument `--vdev` jest następujący: `net_vdev_netvsc<id>,iface=<vf’s pairing eth>`.
 
-3.  Po jej ponownym uruchomieniu, uruchom `show port info all` Aby sprawdzić informacje o porcie. Powinien zostać wyświetlony co najmniej dwóch DPDK porty net_failsafe (nie *net_mlx4*).
-4.  Użyj `start <port> /stop <port>` można uruchomić ruchu.
+3.  Po uruchomieniu Uruchom `show port info all`, aby sprawdzić informacje o porcie. Powinien zostać wyświetlony jeden lub dwa porty DPDK, które są net_failsafe (nie *net_mlx4*).
+4.  Użyj `start <port> /stop <port>` do uruchomienia ruchu.
 
-Poprzednie polecenia start *testpmd* w trybie interaktywnym, który jest zalecane w przypadku wypróbowanie testpmd poleceń.
+Poprzednie polecenia zaczynają *testpmd* w trybie interaktywnym, co jest zalecane do wypróbowania poleceń testpmd.
 
-### <a name="basic-single-sendersingle-receiver"></a>Tryb podstawowy: Jednego nadawcy/jednego odbiornika
+### <a name="basic-single-sendersingle-receiver"></a>Podstawowa: pojedynczy nadawca/pojedynczy odbiornik
 
-Następujące polecenia drukowania okresowo pakietów Statystyka na sekundę:
+Następujące polecenia okresowo drukują statystyki pakietów na sekundę:
 
-1. Na stronie TX uruchom następujące polecenie:
+1. Na stronie TX Uruchom następujące polecenie:
 
    ```bash
    testpmd \
@@ -199,7 +200,7 @@ Następujące polecenia drukowania okresowo pakietów Statystyka na sekundę:
      --stats-period <display interval in seconds>
    ```
 
-2. Po stronie ODBIERANIA uruchom następujące polecenie:
+2. Na stronie odbierania Uruchom następujące polecenie:
 
    ```bash
    testpmd \
@@ -214,12 +215,12 @@ Następujące polecenia drukowania okresowo pakietów Statystyka na sekundę:
      --stats-period <display interval in seconds>
    ```
 
-Po uruchomieniu powyższych poleceń na maszynie wirtualnej, należy zmienić *IP_SRC_ADDR* i *IP_DST_ADDR* w `app/test-pmd/txonly.c` dopasować rzeczywistego adresu IP maszyn wirtualnych, zanim kompilacja. W przeciwnym razie pakiety są porzucane przed osiągnięciem odbiornika.
+Podczas uruchamiania poprzednich poleceń na maszynie wirtualnej, należy zmienić *IP_SRC_ADDR* i *IP_DST_ADDR* w `app/test-pmd/txonly.c`, aby odpowiadały rzeczywistemu adresowi IP maszynom wirtualnym przed kompilacją. W przeciwnym razie pakiety są porzucane przed osiągnięciem odbiornika.
 
-### <a name="advanced-single-sendersingle-forwarder"></a>Zaawansowane: Jednego nadawcy/pojedynczej usługi przesyłania dalej
-Następujące polecenia drukowania okresowo pakietów Statystyka na sekundę:
+### <a name="advanced-single-sendersingle-forwarder"></a>Zaawansowane: pojedynczy nadawca/pojedyncza usługa przesyłania dalej
+Następujące polecenia okresowo drukują statystyki pakietów na sekundę:
 
-1. Na stronie TX uruchom następujące polecenie:
+1. Na stronie TX Uruchom następujące polecenie:
 
    ```bash
    testpmd \
@@ -234,7 +235,7 @@ Następujące polecenia drukowania okresowo pakietów Statystyka na sekundę:
      --stats-period <display interval in seconds>
     ```
 
-2. Na stronie FWD uruchom następujące polecenie:
+2. Na stronie FWD Uruchom następujące polecenie:
 
    ```bash
    testpmd \
@@ -250,9 +251,9 @@ Następujące polecenia drukowania okresowo pakietów Statystyka na sekundę:
      --stats-period <display interval in seconds>
     ```
 
-Po uruchomieniu powyższych poleceń na maszynie wirtualnej, należy zmienić *IP_SRC_ADDR* i *IP_DST_ADDR* w `app/test-pmd/txonly.c` dopasować rzeczywistego adresu IP maszyn wirtualnych, zanim kompilacja. W przeciwnym razie pakiety są porzucane przed osiągnięciem usługi przesyłania dalej. Nie można mieć trzecim komputerze odbierać ruch przesłany dalej, ponieważ *testpmd* usługi przesyłania dalej nie modyfikuje adresów warstwy 3, chyba że wprowadzasz pewne zmiany kodu.
+Podczas uruchamiania poprzednich poleceń na maszynie wirtualnej, należy zmienić *IP_SRC_ADDR* i *IP_DST_ADDR* w `app/test-pmd/txonly.c`, aby odpowiadały rzeczywistemu adresowi IP maszynom wirtualnym przed kompilacją. W przeciwnym razie pakiety są usuwane przed osiągnięciem usługi przesyłania dalej. Nie będzie możliwe odbieranie przez trzeci komputer ruchu przesyłanego dalej, ponieważ usługa przesyłania dalej *testpmd* nie modyfikuje adresów warstwy 3, chyba że wprowadzisz pewne zmiany w kodzie.
 
-## <a name="references"></a>Dokumentacja
+## <a name="references"></a>Informacje
 
 * [Opcje EAL](https://dpdk.org/doc/guides/testpmd_app_ug/run_app.html#eal-command-line-options)
 * [Polecenia Testpmd](https://dpdk.org/doc/guides/testpmd_app_ug/run_app.html#testpmd-command-line-options)

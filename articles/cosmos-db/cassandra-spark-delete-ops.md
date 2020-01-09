@@ -1,6 +1,6 @@
 ---
-title: Usuń operacje interfejsu API usługi Azure Cosmos DB Cassandra z platformy Spark
-description: Ten artykuł szczegółowo opisuje sposób usuwania danych w tabelach w interfejsu API usługi Azure Cosmos DB Cassandra z platformy Spark
+title: Operacje usuwania na Azure Cosmos DB interfejs API Cassandra z platformy Spark
+description: W tym artykule szczegółowo opisano sposób usuwania danych w tabelach w Azure Cosmos DB interfejs API Cassandra z platformy Spark
 author: kanshiG
 ms.author: govindk
 ms.reviewer: sngun
@@ -8,16 +8,16 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: fc9e0dabd226952bea3bd14da0747c5b6292c2e2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0317fab158b2ea73b365bedc272721816da22c4e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60893969"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442087"
 ---
-# <a name="delete-data-in-azure-cosmos-db-cassandra-api-tables-from-spark"></a>Usunięcie danych z interfejsu API usługi Azure Cosmos DB Cassandra tabel z platformy Spark
+# <a name="delete-data-in-azure-cosmos-db-cassandra-api-tables-from-spark"></a>Usuwanie danych w Azure Cosmos DB interfejs API Cassandra tabelach z platformy Spark
 
-W tym artykule opisano sposób usuwania danych w tabelach interfejsu API usługi Azure Cosmos DB Cassandra z platformy Spark.
+W tym artykule opisano sposób usuwania danych w Azure Cosmos DB interfejs API Cassandra tabelach z platformy Spark.
 
 ## <a name="cassandra-api-configuration"></a>Konfiguracja interfejsu API rozwiązania Cassandra
 
@@ -46,8 +46,8 @@ spark.conf.set("spark.cassandra.output.batch.grouping.buffer.size", "1000")
 spark.conf.set("spark.cassandra.connection.keep_alive_ms", "600000000")
 ```
 
-## <a name="sample-data-generator"></a>Generator danych przykładowych
-Użyjemy fragmentu kodu można wygenerować przykładowe dane:
+## <a name="sample-data-generator"></a>Generator przykładowych danych
+Ten fragment kodu zostanie użyty do wygenerowania przykładowych danych:
 
 ```scala
 //Create dataframe
@@ -69,7 +69,7 @@ booksDF.write
 
 ## <a name="dataframe-api"></a>Ramka danych interfejsu API
 
-### <a name="delete-rows-that-match-a-condition"></a>Usuń wiersze spełniające warunek
+### <a name="delete-rows-that-match-a-condition"></a>Usuń wiersze, które pasują do warunku
 
 ```scala
 //1) Create dataframe
@@ -153,7 +153,7 @@ deleteBooksDF: org.apache.spark.sql.Dataset[org.apache.spark.sql.Row] = [book_id
 cdbConnector: com.datastax.spark.connector.cql.CassandraConnector = com.datastax.spark.connector.cql.CassandraConnector@187deb43
 ```
 
-### <a name="delete-all-the-rows-in-the-table"></a>Usuń wszystkie wiersze w tabeli
+### <a name="delete-all-the-rows-in-the-table"></a>Usuń wszystkie wiersze z tabeli
 
 ```scala
 //1) Create dataframe
@@ -233,7 +233,7 @@ ReadSchema: struct<book_id:string,book_author:string,book_name:string,book_price
 
 ## <a name="rdd-api"></a>INTERFEJS API RDD
 
-### <a name="delete-all-the-rows-in-the-table"></a>Usuń wszystkie wiersze w tabeli
+### <a name="delete-all-the-rows-in-the-table"></a>Usuń wszystkie wiersze z tabeli
 ```scala
 //1) Create RDD with all rows
 val deleteBooksRDD = 
@@ -356,9 +356,9 @@ CassandraRow{book_id: b00501, book_author: Arthur Conan Doyle, book_name: The me
 deleteBooksRDD: com.datastax.spark.connector.rdd.CassandraTableScanRDD[com.datastax.spark.connector.CassandraRow] = CassandraTableScanRDD[145] at RDD at CassandraRDD.scala:19
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Aby wykonać operacje kopiowania danych i agregacji, należy znaleźć —
+Aby wykonać operacje agregacji i kopiowania danych, zobacz
  
 * [Operacje agregacji](cassandra-spark-aggregation-ops.md)
 * [Operacje kopiowania tabeli](cassandra-spark-table-copy-ops.md)

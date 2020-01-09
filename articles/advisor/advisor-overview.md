@@ -1,21 +1,14 @@
 ---
-title: Wprowadzenie do Azure Advisor | Microsoft Docs
+title: Wprowadzenie do Azure Advisor
 description: Użyj Azure Advisor, aby zoptymalizować wdrożenia platformy Azure.
-services: advisor
-documentationcenter: NA
-author: sagupt
-ms.service: advisor
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/01/2019
-ms.author: sagupt
-ms.openlocfilehash: 1a1ed13697d838041d1ac98b966695e24c06edbe
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 600bda282d46f86979d0366719826c3a6c1323e0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74145377"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443096"
 ---
 # <a name="introduction-to-azure-advisor"></a>Wprowadzenie do Azure Advisor
 
@@ -25,9 +18,9 @@ Poznaj kluczowe możliwości Azure Advisor i uzyskaj odpowiedzi na często zadaw
 Usługa Advisor to spersonalizowany konsultant ds. rozwiązań w chmurze, który pomaga stosować najlepsze rozwiązania w celu optymalizacji wdrożeń platformy Azure. Analizuje konfigurację zasobów i dane telemetryczne dotyczące użycia, a następnie zaleca rozwiązania, które mogą pomóc w zapewnieniu wysokiej dostępności, bezpieczeństwa, wydajności i efektywności kosztowej zasobów platformy Azure.
 
 Za pomocą usługi Advisor można:
-* Zapoznaj się z zaleceniami dotyczącymi najlepszych rozwiązań z najlepszymi rozwiązaniami. 
+* uzyskiwanie proaktywnych, spersonalizowanych zaleceń dotyczących najlepszych rozwiązań umożliwiających podjęcie działań; 
 * Zwiększ wydajność, bezpieczeństwo i wysoką dostępność zasobów, ponieważ możesz identyfikować możliwości zmniejszania ogólnych wydatków związanych z platformą Azure.
-* Pobierz zalecenia z zaplanowanymi akcjami w tekście.
+* uzyskiwanie zaleceń dotyczących proponowanych wbudowanych akcji.
 
 Dostęp do usługi Advisor można uzyskać za pomocą [Azure Portal](https://aka.ms/azureadvisordashboard). Zaloguj się do [portalu](https://portal.azure.com), Znajdź polecenie **Advisor** w menu nawigacji lub wyszukaj je w menu **wszystkie usługi** .
 

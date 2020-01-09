@@ -1,18 +1,18 @@
 ---
 title: Opis obsługi czasu w Azure Stream Analytics
 description: Dowiedz się, w jaki sposób obsługa czasu działa w Azure Stream Analytics, jak w jaki sposób wybrać najlepszy czas rozpoczęcia, jak obsługiwać zdarzenia opóźnione i wczesne oraz metryki obsługi czasu.
-author: jasonwhowell
-ms.author: zhongc
+author: mamccrea
+ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/05/2018
-ms.openlocfilehash: ae53663f78b684d41c36607760e30db9e48a6434
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 367b7c2e1ce1c8b3c0dbc02003218b76096b409d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901418"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75354643"
 ---
 # <a name="understand-time-handling-in-azure-stream-analytics"></a>Opis obsługi czasu w Azure Stream Analytics
 
@@ -171,7 +171,7 @@ Na poniższych ilustracjach przedstawiono, jak ma postępować w różnych sytua
 
 W tej tabeli przedstawiono przykładowe dane przedstawione poniżej. Należy zauważyć, że czas zdarzenia i czas przybycia różnią się, czasami dopasowuje i czasami nie.
 
-| Czas zdarzenia | Czas przybycia | Identyfikator |
+| Czas zdarzenia | Czas przybycia | DeviceId |
 | --- | --- | --- |
 | 12:07 | 12:07 | device1
 | 12:08 | 12:08 | device2

@@ -3,8 +3,8 @@ title: Jak korzystać z usługi poczty e-mail SendGrid (.NET) | Microsoft Docs
 description: Dowiedz się, jak wysyłać wiadomości e-mail za pomocą usługi poczty e-mail SendGrid na platformie Azure. Przykłady kodu zapisywane C# i używają interfejsu API platformy .NET.
 services: ''
 documentationcenter: .net
-author: thinkingserious
-manager: erikre
+author: georgewallace
+ms.author: erikre
 editor: ''
 ms.assetid: 21bf4028-9046-476b-9799-3d3082a0f84c
 ms.service: multiple
@@ -13,18 +13,17 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/15/2017
-ms.author: erikre
 ms.reviewer: dx@sendgrid.com
-ms.openlocfilehash: c3211ba9f8a8b16ad4372c82d8e50c46f3ad6897
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: be1644fe6b6a44edf7fad5cbbd8e3b8971ad02e3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876380"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75463593"
 ---
 # <a name="how-to-send-email-using-sendgrid-with-azure"></a>Jak wysyłać wiadomości E-mail przy użyciu programu SendGrid z platformą Azure
-## <a name="overview"></a>Omówienie
-W tym przewodniku pokazano, jak wykonywać typowe zadania programistyczne przy użyciu usługi poczty e-mail SendGrid na platformie Azure. Przykłady są zapisywane w języku C\# i obsługują .NET standard 1,3. Omówione scenariusze obejmują konstruowanie poczty e-mail, wysyłanie wiadomości e-mail, Dodawanie załączników i włączanie różnych ustawień poczty i śledzenia. Aby uzyskać więcej informacji na temat SendGrid i wysyłania wiadomości e-mail, zobacz sekcję [następne kroki][Next steps] .
+## <a name="overview"></a>Przegląd
+W tym przewodniku pokazano, jak wykonywać typowe zadania programistyczne przy użyciu usługi poczty e-mail SendGrid na platformie Azure. Przykłady są zapisywane w języku C\# i obsługują .NET Standard 1,3. Omówione scenariusze obejmują konstruowanie poczty e-mail, wysyłanie wiadomości e-mail, Dodawanie załączników i włączanie różnych ustawień poczty i śledzenia. Aby uzyskać więcej informacji na temat SendGrid i wysyłania wiadomości e-mail, zobacz sekcję [następne kroki][Next steps] .
 
 ## <a name="what-is-the-sendgrid-email-service"></a>Co to jest usługa poczty E-mail SendGrid?
 SendGrid to [oparta na chmurze usługa poczty e-mail] , która zapewnia niezawodne [dostarczanie transakcyjnych wiadomości e-mail], skalowalność i analizę w czasie rzeczywistym oraz elastyczne interfejsy API, które ułatwiają integrację niestandardową. Typowe przypadki użycia SendGrid obejmują:
@@ -35,7 +34,7 @@ SendGrid to [oparta na chmurze usługa poczty e-mail] , która zapewnia niezawod
 * Przekazywanie zapytań klientów.
 * Przetwarzanie przychodzących wiadomości e-mail.
 
-Aby uzyskać więcej informacji, [https://sendgrid.com](https://sendgrid.com) odwiedź stronę repozytorium [ C# GitHub i][sendgrid-csharp] SendGrid.
+Aby uzyskać więcej informacji, odwiedź witrynę [https://sendgrid.com](https://sendgrid.com) lub repozytorium GitHub [ C# Library][sendgrid-csharp] SendGrid.
 
 ## <a name="create-a-sendgrid-account"></a>Utwórz konto SendGrid
 [!INCLUDE [sendgrid-sign-up](../includes/sendgrid-sign-up.md)]
@@ -44,7 +43,7 @@ Aby uzyskać więcej informacji, [https://sendgrid.com](https://sendgrid.com) od
 [Pakiet NuGet SendGrid](https://www.nuget.org/packages/Sendgrid) jest najprostszym sposobem uzyskania interfejsu API SendGrid i skonfigurowania aplikacji ze wszystkimi zależnościami. NuGet to rozszerzenie programu Visual Studio dołączone do Microsoft Visual Studio 2015 i nowszych, które ułatwia Instalowanie i aktualizowanie bibliotek i narzędzi.
 
 > [!NOTE]
-> Aby zainstalować pakiet NuGet, jeśli używasz wersji programu Visual Studio starszej niż Visual Studio 2015, odwiedź [https://www.nuget.org](https://www.nuget.org)stronę i kliknij przycisk **Zainstaluj pakiet NuGet** .
+> Aby zainstalować pakiet NuGet, jeśli używasz wersji programu Visual Studio starszej niż Visual Studio 2015, odwiedź stronę [https://www.nuget.org](https://www.nuget.org)i kliknij przycisk **Zainstaluj pakiet NuGet** .
 >
 >
 
@@ -72,7 +71,7 @@ Dodaj następujące deklaracje przestrzeni nazw kodu na początku każdego C# pl
     using SendGrid;
     using SendGrid.Helpers.Mail;
 
-## <a name="how-to-create-an-email"></a>Instrukcje: Utwórz wiadomość E-mail
+## <a name="how-to-create-an-email"></a>Instrukcje: tworzenie wiadomości E-mail
 Użyj obiektu **SendGridMessage** , aby utworzyć wiadomość e-mail. Po utworzeniu obiektu wiadomości można ustawić właściwości i metody, w tym nadawcę wiadomości e-mail, adresata wiadomości e-mail oraz temat i treść wiadomości e-mail.
 
 Poniższy przykład ilustruje sposób tworzenia w pełni wypełnionego obiektu poczty e-mail:
@@ -96,12 +95,12 @@ Poniższy przykład ilustruje sposób tworzenia w pełni wypełnionego obiektu p
 
 Aby uzyskać więcej informacji na temat wszystkich właściwości i metod obsługiwanych przez typ **SendGrid** , zobacz [SendGrid-CSharp][sendgrid-csharp] w witrynie GitHub.
 
-## <a name="how-to-send-an-email"></a>Instrukcje: Wyślij wiadomość E-mail
+## <a name="how-to-send-an-email"></a>Instrukcje: wysyłanie wiadomości E-mail
 Po utworzeniu wiadomości e-mail można wysłać ją przy użyciu interfejsu API SendGrid. Alternatywnie, możesz użyć [. Wbudowana Biblioteka sieci][NET-library].
 
 Wysłanie wiadomości e-mail wymaga podania klucza interfejsu API usługi SendGrid. Jeśli potrzebujesz szczegółowych informacji o sposobie konfigurowania kluczy interfejsu API, odwiedź stronę z [dokumentacją dotyczącą][documentation]kluczy interfejsu API SendGrid.
 
-Te poświadczenia można przechowywać za pośrednictwem witryny Azure Portal, klikając pozycję Ustawienia aplikacji i dodając pary klucz/wartość w obszarze Ustawienia aplikacji.
+Te poświadczenia mogą być przechowywane za pośrednictwem Azure Portal przez kliknięcie pozycji Ustawienia aplikacji i dodanie par klucz/wartość w obszarze Ustawienia aplikacji.
 
  ![Ustawienia aplikacji platformy Azure][azure_app_settings]
 
@@ -143,13 +142,13 @@ W poniższych przykładach pokazano, jak wysłać wiadomość e-mail przy użyci
         }
     }
     
-## <a name="how-to-send-email-from-asp-net-core-api-using-mailhelper-class"></a>Instrukcje: Wyślij wiadomość e-mail z interfejsu API środowiska ASP .NET Core przy użyciu klasy MailHelper
+## <a name="how-to-send-email-from-asp-net-core-api-using-mailhelper-class"></a>Instrukcje: wysyłanie wiadomości e-mail z interfejsu API środowiska ASP .NET Core przy użyciu klasy MailHelper
 
-Poniższy przykład może służyć do wysyłania pojedynczej wiadomości e-mail do wielu osób z interfejsu API platformy ASP .NET Core przy użyciu `MailHelper` `SendGrid.Helpers.Mail` klasy przestrzeni nazw. W tym przykładzie używamy środowiska ASP .NET Core 1,0. 
+Poniższy przykład może służyć do wysyłania pojedynczej wiadomości e-mail do wielu osób z interfejsu API platformy ASP .NET Core przy użyciu klasy `MailHelper` `SendGrid.Helpers.Mail` przestrzeni nazw. W tym przykładzie używamy środowiska ASP .NET Core 1,0. 
 
-W tym przykładzie klucz interfejsu API został zapisany w `appsettings.json` pliku, który można przesłonić z Azure Portal, jak pokazano w powyższym przykładzie.
+W tym przykładzie klucz interfejsu API został zapisany w pliku `appsettings.json`, który można przesłonić z Azure Portal, jak pokazano w powyższym przykładzie.
 
-Zawartość `appsettings.json` pliku powinna wyglądać podobnie do:
+Zawartość pliku `appsettings.json` powinna wyglądać podobnie do:
 
     {
        "Logging": {
@@ -163,7 +162,7 @@ Zawartość `appsettings.json` pliku powinna wyglądać podobnie do:
      "SENDGRID_API_KEY": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
     }
 
-Najpierw należy dodać poniższy kod w `Startup.cs` pliku projektu interfejsu API .NET Core. Jest to wymagane, aby można było uzyskać dostęp `SENDGRID_API_KEY` do `appsettings.json` pliku przy użyciu iniekcji zależności w kontrolerze interfejsu API. Interfejs można wstrzyknąć do konstruktora kontrolera po dodaniu go `ConfigureServices` w poniższej metodzie. `IConfiguration` Zawartość `Startup.cs` pliku wygląda następująco po dodaniu wymaganego kodu:
+Najpierw należy dodać poniższy kod do pliku `Startup.cs` projektu interfejsu API platformy .NET Core. Jest to wymagane, aby można było uzyskać dostęp do `SENDGRID_API_KEY` z pliku `appsettings.json` przy użyciu iniekcji zależności w kontrolerze interfejsu API. Interfejs `IConfiguration` można wstrzyknąć do konstruktora kontrolera po dodaniu go w poniższej `ConfigureServices` metodzie. Zawartość pliku `Startup.cs` wygląda następująco po dodaniu wymaganego kodu:
 
         public IConfigurationRoot Configuration { get; }
 
@@ -174,7 +173,7 @@ Najpierw należy dodać poniższy kod w `Startup.cs` pliku projektu interfejsu A
             services.AddSingleton<IConfiguration>(Configuration);
         }
 
-Po wprowadzeniu `IConfiguration` interfejsu przez kontroler, można `CreateSingleEmailToMultipleRecipients` użyć metody `MailHelper` klasy do wysłania pojedynczej wiadomości e-mail do wielu adresatów. Metoda akceptuje jeden dodatkowy parametr logiczny o nazwie `showAllRecipients`. Ten parametr może służyć do kontrolowania, czy odbiorcy poczty e-mail będą mogli zobaczyć każdy inny adres e-mail w sekcji do nagłówka wiadomości e-mail. Przykładowy kod dla kontrolera powinien wyglądać jak poniżej 
+Po wprowadzeniu interfejsu `IConfiguration` na kontrolerze można użyć metody `CreateSingleEmailToMultipleRecipients` klasy `MailHelper` do wysłania pojedynczej wiadomości e-mail do wielu adresatów. Metoda akceptuje jeden dodatkowy parametr logiczny o nazwie `showAllRecipients`. Ten parametr może służyć do kontrolowania, czy odbiorcy poczty e-mail będą mogli zobaczyć każdy inny adres e-mail w sekcji do nagłówka wiadomości e-mail. Przykładowy kod dla kontrolera powinien wyglądać jak poniżej 
 
     using System;
     using System.Collections.Generic;
@@ -220,7 +219,7 @@ Po wprowadzeniu `IConfiguration` interfejsu przez kontroler, można `CreateSingl
     }
     
 ## <a name="how-to-add-an-attachment"></a>Instrukcje: Dodawanie załącznika
-Załączniki można dodać do wiadomości, wywołując metodę addattach  i minimalnie określając nazwę pliku oraz zawartość zakodowaną w formacie Base64, która ma zostać dołączona. Możesz dołączyć wiele załączników, wywołując tę metodę jednokrotnie dla każdego pliku, który ma zostać dołączony lub przy  użyciu metody addattachs. Poniższy przykład ilustruje Dodawanie załącznika do wiadomości:
+Załączniki można dodać do wiadomości, wywołując metodę **addattach** i minimalnie określając nazwę pliku oraz zawartość zakodowaną w formacie Base64, która ma zostać dołączona. Możesz dołączyć wiele załączników, wywołując tę metodę jednokrotnie dla każdego pliku, który ma zostać dołączony lub przy użyciu metody **Addattachs** . Poniższy przykład ilustruje Dodawanie załącznika do wiadomości:
 
     var banner2 = new Attachment()
     {
@@ -248,14 +247,14 @@ W poniższych przykładach zademonstrowano stopkę i klikasz filtry śledzenia:
 ### <a name="click-tracking"></a>Kliknij pozycję Śledzenie
     msg.SetClickTracking(true);
 
-## <a name="how-to-use-additional-sendgrid-services"></a>Instrukcje: Korzystanie z dodatkowych usług SendGrid
+## <a name="how-to-use-additional-sendgrid-services"></a>Instrukcje: korzystanie z dodatkowych usług SendGrid Services
 SendGrid oferuje kilka interfejsów API i elementów webhook, których można użyć do korzystania z dodatkowych funkcji w aplikacji platformy Azure. Aby uzyskać więcej informacji, zobacz [Dokumentacja interfejsu API SendGrid][SendGrid API documentation].
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Teraz, gdy znasz już podstawy usługi poczty E-mail SendGrid, Skorzystaj z poniższych linków, aby dowiedzieć się więcej.
 
-* Repozytorium biblioteki\# SendGrid C: [SendGrid-CSharp][sendgrid-csharp]
-* Dokumentacja interfejsu API SendGrid:<https://sendgrid.com/docs>
+* Repozytorium biblioteki SendGrid C\#: [SendGrid-CSharp][sendgrid-csharp]
+* Dokumentacja interfejsu API SendGrid: <https://sendgrid.com/docs>
 
 [Next steps]: #next-steps
 [What is the SendGrid Email Service?]: #whatis

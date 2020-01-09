@@ -1,25 +1,16 @@
 ---
 title: Przykłady manifestu aplikacji kontenera Service Fabric platformy Azure
 description: Dowiedz się, jak skonfigurować ustawienia manifestu aplikacji i usługi dla wielokontenerowej aplikacji Service Fabric.
-services: service-fabric
-documentationcenter: na
 author: peterpogorski
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: xml
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: multiple
 ms.date: 06/08/2018
 ms.author: pepogors
-ms.openlocfilehash: 2d79f7dbf492b9473bcff147891df308674a8cf0
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: e4050dedeb48b19b6848a95fc904f7f37fb5b04a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74013244"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75349393"
 ---
 # <a name="multi-container-application-and-service-manifest-examples"></a>Przykłady manifestu wielokontenerowej aplikacji i usługi
 Poniżej przedstawiono przykłady manifestów aplikacji i usług dla wielokontenerowej aplikacji Service Fabric. Te przykłady przedstawiają, jakie ustawienia są dostępne i jak z nich korzystać. Te manifesty aplikacji i usług są oparte na [przykładowych manifestach kontenera systemu Windows Server 2016](https://github.com/Azure-Samples/service-fabric-containers/tree/master/Windows) .
@@ -271,7 +262,7 @@ W sposób deklaratywny opisano typ i wersję aplikacji. Co najmniej jeden manife
 ### <a name="parameters-element"></a>Element parameters
 Deklaruje parametry, które są używane w manifeście aplikacji. Wartość tych parametrów można podać podczas tworzenia wystąpienia aplikacji i może służyć do przesłaniania ustawień konfiguracji aplikacji lub usługi. Aby uzyskać więcej informacji, zobacz [element parameters](service-fabric-service-model-schema-elements.md#ParametersElementanonymouscomplexTypeComplexTypeDefinedInApplicationManifestTypecomplexType)
 
-### <a name="parameter-element"></a>Element parametru
+### <a name="parameter-element"></a>Element Parameter
 Parametr aplikacji, który ma być używany w tym manifeście. Wartość parametru można zmienić podczas tworzenia wystąpienia aplikacji lub, jeśli nie zostanie podana wartość, zostanie użyta wartość domyślna. Aby uzyskać więcej informacji, zobacz [element parametru](service-fabric-service-model-schema-elements.md#ParameterElementanonymouscomplexTypeComplexTypeDefinedInParameterselement)
 
 ### <a name="servicemanifestimport-element"></a>ServiceManifestImport, element

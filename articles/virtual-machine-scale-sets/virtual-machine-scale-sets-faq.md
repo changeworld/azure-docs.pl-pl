@@ -1,6 +1,6 @@
 ---
-title: Zestawy skalowania maszyn wirtualnych platformy Azure — często zadawane pytania | Dokumentacja firmy Microsoft
-description: Uzyskaj odpowiedzi na często zadawane pytania dotyczące zestawów skalowania maszyn wirtualnych.
+title: Często zadawane pytania dotyczące zestawów skalowania maszyn wirtualnych platformy Azure
+description: Uzyskaj odpowiedzi na najczęściej zadawane pytania dotyczące zestawów skalowania maszyn wirtualnych na platformie Azure.
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: mayanknayar
@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/24/2019
 ms.author: manayar
 ms.custom: na
-ms.openlocfilehash: 429e201ba1d15103ae130ee2fb767cd1b4fa909a
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 47ea23f3018e9d28c0ccfd6640b3d365103ab9ca
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779425"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75356213"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Często zadawane pytania dotyczące zestawów skalowania maszyn wirtualnych platformy Azure
 
@@ -69,7 +69,7 @@ Używa zestawu regionalnych skalowania (innych niż strefowej) *grup umieszczani
 
 ### <a name="do-scale-sets-work-with-azure-availability-zones"></a>Czy zestawy skalowania współdziałają ze strefami dostępności platformy Azure?
 
-Tak! Aby uzyskać więcej informacji, zobacz [strefy dokumentacji zestawu skalowania](./virtual-machine-scale-sets-use-availability-zones.md).
+Tak. Aby uzyskać więcej informacji, zobacz [strefy dokumentacji zestawu skalowania](./virtual-machine-scale-sets-use-availability-zones.md).
 
 
 ## <a name="autoscale"></a>Automatyczne skalowanie
@@ -174,7 +174,7 @@ Aby zapoznać się z najnowszym przykładem, użyj następującej instrukcji int
 az sf cluster create -h
 ```
 
-Certyfikatów z podpisem własnym nie można używać w przypadku dystrybuowanej relacji zaufania udostępnianej przez urząd certyfikacji i nie należy jej używać w żadnym klastrze Service Fabric przeznaczonym do hostowania rozwiązań produkcyjnych przedsiębiorstwa. Aby uzyskać dodatkowe Service Fabric wskazówki dotyczące zabezpieczeń, zapoznaj się z najlepszymi rozwiązaniami dotyczącymi zabezpieczeń [Azure Service Fabric](https://docs.microsoft.com/azure/security/fundamentals/service-fabric-best-practices) i [Service Fabric scenariuszami zabezpieczeń klastra](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/).
+Certyfikatów z podpisem własnym nie można używać w przypadku dystrybuowanej relacji zaufania udostępnianej przez urząd certyfikacji i nie należy jej używać w żadnym klastrze Service Fabric przeznaczonym do hostowania rozwiązań produkcyjnych przedsiębiorstwa. Aby uzyskać dodatkowe Service Fabric wskazówki dotyczące zabezpieczeń, zapoznaj się z [najlepszymi rozwiązaniami](https://docs.microsoft.com/azure/security/fundamentals/service-fabric-best-practices) dotyczącymi zabezpieczeń Azure Service Fabric i [Service Fabric scenariuszami zabezpieczeń klastra](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/).
 
 ### <a name="can-i-specify-an-ssh-key-pair-to-use-for-ssh-authentication-with-a-linux-virtual-machine-scale-set-from-a-resource-manager-template"></a>Można określić pary kluczy SSH do uwierzytelniania SSH przy użyciu systemu Linux maszyny wirtualnej zestawu skalowania na podstawie szablonu usługi Resource Manager?
 
@@ -232,14 +232,14 @@ Można podać publicznymi kluczami SSH w postaci zwykłego tekstu, podczas tworz
 Nazwa elementu linuxConfiguration | Wymagane | Typ | Opis
 --- | --- | --- | ---
 SSH | Nie | Collection | Określa konfigurację kluczy SSH w systemie operacyjnym Linux
-ścieżka | Yes | Ciąg | Określa ścieżkę pliku systemu Linux, gdzie klucze SSH lub certyfikatu powinien być zlokalizowany
-Kontenerem | Yes | Ciąg | Określa klucz publiczny SSH algorytmem Base64
+Ścieżka | Tak | Ciąg | Określa ścieżkę pliku systemu Linux, gdzie klucze SSH lub certyfikatu powinien być zlokalizowany
+Kontenerem | Tak | Ciąg | Określa klucz publiczny SSH algorytmem Base64
 
 Aby uzyskać przykład, zobacz [szablon szybkiego startu usługi GitHub 101-vm-sshkey](https://github.com/Azure/azure-quickstart-templates/blob/master/101-vm-sshkey/azuredeploy.json).
 
 ### <a name="when-i-run-update-azvmss-after-adding-more-than-one-certificate-from-the-same-key-vault-i-see-the-following-message"></a>Po uruchomieniu `Update-AzVmss` po dodaniu więcej niż jeden certyfikat z magazynu kluczy, w tym samym, I zostanie wyświetlony następujący komunikat:
 
->Update-AzVmss: Wpis tajny listy zawiera powtórzone\<wystąpienia elementu/subscriptions/my-Subscription-ID >/resourceGroups/Internal-RG-dev/Providers/Microsoft.KeyVault/Vaults/Internal-keyvault-dev, który jest niedozwolony.
+>Polecenie Update-AzVmss: list Secret zawiera powtórzone wystąpienia/subscriptions/\<my-Subscription-ID >/resourceGroups/internal-rg-dev/providers/Microsoft.KeyVault/vaults/internal-keyvault-dev, która jest niedozwolona.
 
 Może to nastąpić, jeśli zostanie podjęta próba ponownego dodania w tym samym magazynie, a nie przy użyciu nowego certyfikatu w magazynie dla istniejącego magazynu źródłowego. `Add-AzVmssSecret` Polecenie nie działa poprawnie, w przypadku dodawania dodatkowych wpisów tajnych.
 
@@ -343,6 +343,13 @@ Aby uzyskać więcej informacji, zobacz [Centrum zaufania firmy Microsoft](https
 
 Tak. Możesz zobaczyć przykładowe szablony MSI w szablonach szybkiego startu platformy Azure dla [systemów](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi) [Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi) i Windows.
 
+## <a name="deleting"></a>Usuwanie 
+
+### <a name="will-the-locks-i-set-in-place-on-virtual-machine-scale-set-instances-be-respected-when-deleting-instances"></a>Czy po usunięciu wystąpień będą przestrzegane blokady ustawione w miejscu dla wystąpień zestawu skalowania maszyn wirtualnych?
+
+W witrynie Azure Portal można usunąć pojedyncze wystąpienie lub usuwanie zbiorcze, zaznaczając wiele wystąpień. Jeśli podjęto próbę usunięcia pojedynczego wystąpienia, które ma zablokowaną blokadę, blokada jest przestrzegana i nie będzie można usunąć wystąpienia. Jeśli jednak zbiorczo wybierzesz wiele wystąpień, a dowolne z tych wystąpień ma blokadę, blokady nie będą przestrzegane, a wszystkie wybrane wystąpienia zostaną usunięte. 
+ 
+W interfejsie wiersza polecenia platformy Azure można tylko usunąć pojedyncze wystąpienie. Jeśli podjęto próbę usunięcia pojedynczego wystąpienia, które ma zablokowaną blokadę, blokada jest przestrzegana i nie będzie można usunąć tego wystąpienia. 
 
 ## <a name="extensions"></a>Rozszerzenia
 
@@ -507,7 +514,7 @@ Tak. Bezpośrednio do odwoływania się do niego w sekcji Dnssettings profil sie
 
 ### <a name="how-do-i-do-a-vip-swap-for-virtual-machine-scale-sets-in-the-same-subscription-and-same-region"></a>Jak? wymiany wirtualnych adresów IP dla zestawów skalowania maszyn wirtualnych w tym samym regionie i tej samej subskrypcji
 
-Jeśli masz dwa zestawy skalowania maszyn wirtualnych za pomocą usługi Azure Load Balancer Frontony i znajdują się w tej samej subskrypcji i regionu, może deallocate publiczne adresy IP z każdej z nich i przypisać do innego. Zobacz [wymiana adresów VIP: Na przykład wdrożenie niebieski-zielony](https://msftstack.wordpress.com/2017/02/24/vip-swap-blue-green-deployment-in-azure-resource-manager/) w Azure Resource Manager. Pociąga to opóźnienia na poziomie jednak zasoby są z cofniętą alokacją/przydzielany w sieci. Opcja szybsza jest używać usługi Azure Application Gateway z dwóch pul zaplecza i reguły routingu. Alternatywnie można hostować swoją aplikację, za pomocą [usługi Azure App service](https://azure.microsoft.com/services/app-service/) który zapewnia obsługę szybkie przełączanie się między środowiskiem przejściowym i produkcyjnym miejscami.
+Jeśli masz dwa zestawy skalowania maszyn wirtualnych za pomocą usługi Azure Load Balancer Frontony i znajdują się w tej samej subskrypcji i regionu, może deallocate publiczne adresy IP z każdej z nich i przypisać do innego. Zobacz [wymiany wirtualnych adresów IP: wdrożenie niebieski zielony w usłudze Azure Resource Manager](https://msftstack.wordpress.com/2017/02/24/vip-swap-blue-green-deployment-in-azure-resource-manager/) na przykład. Pociąga to opóźnienia na poziomie jednak zasoby są z cofniętą alokacją/przydzielany w sieci. Opcja szybsza jest używać usługi Azure Application Gateway z dwóch pul zaplecza i reguły routingu. Alternatywnie można hostować swoją aplikację, za pomocą [usługi Azure App service](https://azure.microsoft.com/services/app-service/) który zapewnia obsługę szybkie przełączanie się między środowiskiem przejściowym i produkcyjnym miejscami.
 
 ### <a name="how-do-i-specify-a-range-of-private-ip-addresses-to-use-for-static-private-ip-address-allocation"></a>Jak określić zakres prywatnych adresów IP do używania statycznych alokacji prywatnego adresu IP?
 

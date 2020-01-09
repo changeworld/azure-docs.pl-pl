@@ -1,5 +1,5 @@
 ---
-title: Samouczek — instalowanie aplikacji w zestawie skalowania za pomocą szablonów platformy Azure | Microsoft Docs
+title: Samouczek — Instalowanie aplikacji w zestawie skalowania za pomocą szablonów platformy Azure
 description: Dowiedz się, jak za pomocą szablonów usługi Azure Resource Manager instalować aplikacje w zestawach skalowania maszyn wirtualnych, korzystając z rozszerzenia niestandardowego skryptu
 services: virtual-machine-scale-sets
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 176cf31d7a87b08755ee2acb94aea23684647213
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1bb6345ee05c5dcb8d88cc7f756a096bfe5d2c4c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66170464"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460148"
 ---
 # <a name="tutorial-install-applications-in-virtual-machine-scale-sets-with-an-azure-template"></a>Samouczek: instalowanie aplikacji w zestawach skalowania maszyn wirtualnych za pomocą szablonu platformy Azure
 Aby uruchamiać aplikacje na wystąpieniach maszyn wirtualnych w zestawie skalowania, musisz najpierw zainstalować składniki aplikacji i wymagane pliki. W poprzednim samouczku omówiono tworzenie niestandardowego obrazu maszyny wirtualnej i wdrażanie własnych wystąpień maszyn wirtualnych. Niestandardowy obraz zawierał ręczne instalacje i konfiguracje aplikacji. Można również zautomatyzować instalację aplikacji w zestawie skalowania po wdrożeniu poszczególnych wystąpień maszyn wirtualnych lub zaktualizować już uruchomioną aplikację. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
@@ -115,7 +115,7 @@ Nie zamykaj przeglądarki internetowej, aby w następnym kroku można było zoba
 
 
 ## <a name="update-app-deployment"></a>Aktualizowanie wdrożenia aplikacji
-W całym cyklu życia zestawu skalowania konieczne może być wdrożenie zaktualizowanej wersji aplikacji. Rozszerzenie niestandardowego skryptu umożliwia odwołanie się do zaktualizowanego skryptu wdrażania i ponowne zastosowanie rozszerzenia do zestawu skalowania. Podczas tworzenia zestawu skalowania w poprzednim kroku *upgradePolicy* została ustawiona na *automatyczne*. To ustawienie pozwala wystąpieniom maszyn wirtualnych w zestawie skalowania automatycznie aktualizować aplikację i stosować jej najnowszą wersję.
+W całym cyklu życia zestawu skalowania konieczne może być wdrożenie zaktualizowanej wersji aplikacji. Rozszerzenie niestandardowego skryptu umożliwia odwołanie się do zaktualizowanego skryptu wdrażania i ponowne zastosowanie rozszerzenia do zestawu skalowania. Gdy zestaw skalowania został utworzony w poprzednim kroku, *upgradePolicy* został ustawiony na *automatyczny*. To ustawienie pozwala wystąpieniom maszyn wirtualnych w zestawie skalowania automatycznie aktualizować aplikację i stosować jej najnowszą wersję.
 
 Aby zaktualizować definicję rozszerzenia niestandardowego skryptu, zmodyfikuj szablon, podając odwołanie do nowego skryptu instalacji. Dla rozszerzenia niestandardowego skryptu należy podać nową nazwę pliku w celu umożliwienia rozpoznania zmiany. Rozszerzenie niestandardowego skryptu nie analizuje zawartości skryptu pod kątem zmian. Następująca definicja używa zaktualizowanego skryptu instalacji, do którego nazwy dołączono element *_v2*:
 
@@ -162,7 +162,7 @@ az group delete --name myResourceGroup --no-wait --yes
 ```
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 W tym samouczku przedstawiono automatyczne instalowanie i aktualizowanie aplikacji w zestawie skalowania za pomocą szablonów platformy Azure:
 
 > [!div class="checklist"]

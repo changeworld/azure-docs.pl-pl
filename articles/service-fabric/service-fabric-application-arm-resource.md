@@ -1,25 +1,14 @@
 ---
-title: Wdrażanie i Uaktualnianie aplikacji i usług za pomocą Azure Resource Manager | Microsoft Docs
+title: Wdrażanie i uaktualnianie przy użyciu Azure Resource Manager
 description: Dowiedz się, jak wdrażać aplikacje i usługi w klastrze Service Fabric przy użyciu szablonu Azure Resource Manager.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 12/06/2017
-ms.author: atsenthi
-ms.openlocfilehash: 0bec430cbb98452f8c852c96053f3f699ce5098e
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: a2dfe54bf2c6b4fa8814f10c10576a73727a7417
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71153590"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610254"
 ---
 # <a name="manage-applications-and-services-as-azure-resource-manager-resources"></a>Zarządzanie aplikacjami i usługami jako zasobami Azure Resource Manager
 
@@ -29,7 +18,7 @@ Jest to zalecany sposób wdrożenia wszelkich aplikacji do zarządzania konfigur
 
 W razie potrzeby Zarządzaj aplikacjami jako zasobami Menedżer zasobów, aby zwiększyć:
 * Dziennik inspekcji: Menedżer zasobów przeprowadza inspekcję każdej operacji i utrzymuje szczegółowy *Dziennik aktywności* , który może pomóc w śledzeniu wszelkich zmian wprowadzonych w tych aplikacjach i w klastrze.
-* Kontrola dostępu oparta na rolach (RBAC): Zarządzanie dostępem do klastrów, a także aplikacji wdrożonych w klastrze, można wykonać za pomocą tego samego szablonu Menedżer zasobów.
+* Kontrola dostępu oparta na rolach (RBAC): zarządzanie dostępem do klastrów oraz aplikacji wdrożonych w klastrze można wykonać za pomocą tego samego szablonu Menedżer zasobów.
 * Azure Resource Manager (za pośrednictwem Azure Portal) stanie się jednym zatrzymywaniem do zarządzania klastrem i krytycznymi wdrożeniami aplikacji.
 
 Poniższy fragment kodu przedstawia różne rodzaje zasobów, którymi można zarządzać za pomocą szablonu:
@@ -255,7 +244,7 @@ Poniższy fragment kodu przedstawia różne rodzaje zasobów, którymi można za
    ```
 
    > [!NOTE] 
-   > Wartość *apiVersion* musi być ustawiona na `"2019-03-01"`wartość. Ten szablon można również wdrożyć niezależnie od klastra, o ile klaster został już wdrożony.
+   > Wartość *apiVersion* musi być ustawiona na `"2019-03-01"`. Ten szablon można również wdrożyć niezależnie od klastra, o ile klaster został już wdrożony.
 
 5. Wdrażanie! 
 
@@ -275,7 +264,7 @@ Po prostu usunięcie usługi Microsoft. servicefabric/klastrów/aplikacji z szab
 Jeśli klaster jest już używany i niektóre aplikacje, które mają być zarządzane, jako Menedżer zasobów zasoby są już wdrożone na nim, zamiast usuwać aplikacje i wdrażać je ponownie, można użyć wywołania PUT przy użyciu tych samych interfejsów API, aby uzyskiwać aplikacje potwierdzone jako zasoby Menedżer zasobów. Aby uzyskać dodatkowe informacje, zobacz [temat co to jest model zasobów aplikacji Service Fabric?](https://docs.microsoft.com/azure/service-fabric/service-fabric-concept-resource-model)
 
 > [!NOTE]
-> Aby umożliwić uaktualnienie klastra do ignorowania aplikacji w złej kondycji, klient może określić "maxPercentUnhealthyApplications: 100 "w sekcji" upgradeDescription/healthPolicy "; szczegółowe opisy wszystkich ustawień znajdują się w [dokumentacji zasad uaktualniania klastra interfejsu API REST usługi Service Fabric](https://docs.microsoft.com/rest/api/servicefabric/sfrp-model-clusterupgradepolicy).
+> Aby umożliwić uaktualnienie klastra do ignorowania aplikacji w złej kondycji, klient może określić "maxPercentUnhealthyApplications: 100" w sekcji "upgradeDescription/healthPolicy"; szczegółowe opisy wszystkich ustawień znajdują się w [dokumentacji zasad uaktualniania klastra interfejsu API REST usługi Service Fabric](https://docs.microsoft.com/rest/api/servicefabric/sfrp-model-clusterupgradepolicy).
 
 ## <a name="next-steps"></a>Następne kroki
 

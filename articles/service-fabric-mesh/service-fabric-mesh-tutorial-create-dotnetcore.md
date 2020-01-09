@@ -1,26 +1,17 @@
 ---
-title: 'Samouczek: tworzenie, debugowanie, wdrażanie i monitorowanie aplikacji usługi Service Fabric Mesh dla wielu usług'
+title: Tworzenie i wdrażanie aplikacji wielousługowej w celu Service Fabric siatki
 description: W tym samouczku utworzysz wielousługową aplikację usługi Azure Service Fabric Mesh składającą się z witryny internetowej ASP.NET Core, która komunikuje się z usługą internetową zaplecza, a następnie zdebugujesz ją lokalnie i opublikujesz na platformie Azure.
-services: service-fabric-mesh
-documentationcenter: .net
 author: dkkapur
-manager: chakdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric-mesh
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 09/18/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 2053706aac2e6136e35e8574dcd19150fe3d3b6a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e3a6ee382208119e46a816790c15ae47f16be57e
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60810855"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75495189"
 ---
 # <a name="tutorial-create-debug-deploy-and-upgrade-a-multi-service-service-fabric-mesh-app"></a>Samouczek: tworzenie, debugowanie, wdrażanie i aktualizowanie aplikacji usługi Service Fabric Mesh dla wielu usług
 
@@ -54,7 +45,7 @@ Ta seria samouczków zawiera informacje na temat wykonywania następujących czy
 
 Przed rozpoczęciem tego samouczka:
 
-* Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem możesz [utworzyć bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem możesz utworzyć [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 * Upewnij się, że masz [skonfigurowane środowisko projektowe](service-fabric-mesh-howto-setup-developer-environment-sdk.md) z zainstalowanym środowiskiem uruchomieniowym usługi Service Fabric, zestawem SDK, platformą Docker i programem Visual Studio 2017.
 
@@ -90,7 +81,7 @@ Masz już aplikację usługi Service Fabric Mesh. Kolejnym krokiem jest utworzen
 
 Dla uproszczenia elementy do wykonania są przechowywane na liście w pamięci. Utwórz bibliotekę klas do obsługi elementów do wykonania oraz listę służącą do ich przechowywania. W programie Visual Studio przy załadowanym rozwiązaniu **todolistapp** wybierz pozycję **Plik** > **Dodaj** > **Nowy projekt**.
 
-W oknie dialogowym **Dodawanie nowego projektu** w polu **Wyszukaj** u góry wpisz `C# .net core class`. Wybierz szablon **Biblioteka klas (.NET Core)**.
+W oknie dialogowym **Dodawanie nowego projektu** w polu **Wyszukaj** u góry wpisz `C# .net core class`. Wybierz szablon **Biblioteka klas (.NET Core)** .
 
 W polu **Nazwa** wpisz `Model`. Kliknij przycisk **OK**, aby utworzyć bibliotekę klas.
 
@@ -126,7 +117,7 @@ public class ToDoItem
 
 Ta klasa reprezentuje elementy do wykonania.
 
-W programie Visual Studio kliknij prawym przyciskiem myszy bibliotekę klas **Model**, a następnie wybierz polecenie **Dodaj** > **Klasa...**, aby utworzyć listę do przechowywania elementów do wykonania. Zostanie wyświetlone okno dialogowe **Dodawanie nowego elementu**. Opcję **Nazwa** ustaw na wartość `ToDoList.cs` i kliknij przycisk **Dodaj**.
+W programie Visual Studio kliknij prawym przyciskiem myszy bibliotekę klas **Model**, a następnie wybierz polecenie **Dodaj** > **Klasa...** , aby utworzyć listę do przechowywania elementów do wykonania. Zostanie wyświetlone okno dialogowe **Dodawanie nowego elementu**. Opcję **Nazwa** ustaw na wartość `ToDoList.cs` i kliknij przycisk **Dodaj**.
 
 W pliku **ToDoList.cs** do pustego elementu `class ToDoList` skopiuj następującą zawartość:
 
@@ -194,7 +185,7 @@ Pojawi się okno dialogowe **Nowa aplikacja internetowa platformy ASP.NET Core**
 
 Ponieważ usługa zaplecza nie udostępnia żadnego interfejsu użytkownika, wyłącz opcję uruchamiania przeglądarki po uruchomieniu usługi. W **Eksploratorze rozwiązań** kliknij prawym przyciskiem myszy pozycję **ToDoService**, a następnie wybierz polecenie **Właściwości**. W wyświetlonym oknie właściwości wybierz kartę **Debugowanie** po lewej stronie, a następnie usuń zaznaczenie pola wyboru **Uruchom przeglądarkę**. Naciśnij klawisze **Ctrl+S**, aby zapisać zmiany.
 
-Ponieważ ta usługa przechowuje informacje o elementach do wykonania, dodaj odwołanie do biblioteki klas modelu. W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy pozycję **ToDoService**, a następnie wybierz polecenie **Dodaj** > **Odwołanie...**. Pojawi się okno dialogowe **Menadżer odwołań**.
+Ponieważ ta usługa przechowuje informacje o elementach do wykonania, dodaj odwołanie do biblioteki klas modelu. W Eksplorator rozwiązań kliknij prawym przyciskiem myszy pozycję **ToDoService** , a następnie wybierz pozycję **Dodaj** **odwołanie > ..** .. Zostanie wyświetlone okno dialogowe **Menedżer odwołań** .
 
 W oknie dialogowym **Menadżer odwołań** zaznacz pole wyboru obok pozycji **Model** i kliknij przycisk **OK**.
 
@@ -277,7 +268,7 @@ W tym samouczku skupiono się na komunikacji z inną usługą — operacje dodaw
 Po zaimplementowaniu usługi zaplecza należy opracować kod witryny internetowej, w której będą wyświetlane udostępnione elementy do wykonania. Projekt **WebFrontEnd** obejmuje następujące kroki.
 
 Strona internetowa służąca do wyświetlania elementów do wykonania wymaga dostępu do klasy **ToDoItem** i listy.
-W **Eksploratorze rozwiązań** dodaj odwołanie do projektu modelu, klikając prawym przyciskiem myszy pozycję **WebFrontEnd** i wybierając polecenie **Dodaj** > **Odwołanie...** Pojawi się okno dialogowe **Menadżer odwołań**.
+W **Eksplorator rozwiązań**Dodaj odwołanie do projektu modelu przez kliknięcie prawym przyciskiem myszy elementu **webfronton** i wybranie pozycji **Dodaj** **odwołanie > ...** Zostanie wyświetlone okno dialogowe **Menedżer odwołań** .
 
 W oknie dialogowym **Menadżer odwołań** kliknij pole wyboru obok pozycji **Model** i kliknij przycisk **OK**.
 
@@ -362,7 +353,8 @@ W **Eksploratorze rozwiązań** przejdź do projektu **ToDoService**, a następn
 
 ![Rysunek 1. Plik service.yaml projektu ToDoService](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-serviceyaml-port.png)
 
-* Nazwa usługi, `ToDoService`, znajduje się w sekcji `services:` — patrz (1) na powyższej ilustracji.
+ Nazwa usługi, `ToDoService`, znajduje się w sekcji `services:` — patrz (1) na powyższej ilustracji.
+
 * Port, `80`, znajduje się w sekcji `endpoints:` — patrz (2) na powyższej ilustracji. Numer portu w Twoim projekcie będzie prawdopodobnie inny.
 
 Następnie należy zdefiniować zmienne środowiskowe reprezentujące nazwę usługi i numer portu w projekcie usługi WebFrontEnd, aby umożliwić wywoływanie usługi zaplecza.

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 840e8b3bc86281a8c42689b1cb68917741ef2bd9
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: feb7fa0b3f820c3f918fc8a5c817e7fe5fb15fc9
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240629"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610407"
 ---
 # <a name="connect-windows-firewall"></a>Łączenie z zaporą systemu Windows
 
@@ -30,7 +30,8 @@ ms.locfileid: "71240629"
 
 
 > [!NOTE]
-> Dane będą przechowywane w lokalizacji geograficznej obszaru roboczego, w którym jest uruchamiany wskaźnik platformy Azure.
+> - Dane będą przechowywane w lokalizacji geograficznej obszaru roboczego, w którym jest uruchamiany wskaźnik platformy Azure.
+> - Jeśli dane dotyczące platformy Azure i Azure Security Center są zbierane w tym samym obszarze roboczym, nie ma potrzeby włączania rozwiązania Zapora systemu Windows za pomocą tego łącznika. Jeśli ta funkcja została włączona, nie spowoduje to zduplikowanych danych. 
 
 ## <a name="enable-the-connector"></a>Włącz łącznik 
 

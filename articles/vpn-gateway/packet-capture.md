@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 10/15/2019
 ms.author: radwiv
-ms.openlocfilehash: 41c36d302605bb619899131a8ace649b0f1439b2
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 2429a8d08baa34aed120cffa069abae1fb9a3df9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74151844"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75353521"
 ---
 # <a name="configure-packet-captures-for-vpn-gateways"></a>Konfigurowanie przechwytywania pakietów dla bram sieci VPN
 
@@ -24,11 +24,13 @@ Dostępne są kilka powszechnie dostępnych narzędzi do przechwytywania pakiet�
 
 Przechwytywanie pakietów usługi VPN Gateway można uruchamiać na bramie lub w określonym połączeniu w zależności od potrzeb klientów. Możesz również uruchomić przechwycenia pakietów na wielu tunelach w tym samym czasie. Można przechwytywać ruch pojedynczy lub dwukierunkowy, ruch IKE i ESP oraz wewnętrzne pakiety wraz z filtrowaniem na bramie sieci VPN.
 
-Korzystanie z 5 filtrów krotek (podsieć źródłowa, podsieć docelowa, port źródłowy, port docelowy, protokół) i flagi TCP (SYN, ACK, FIN, URG, PSH —, RST) jest przydatne w przypadku izolowania problemów dotyczących dużej ilości ruchu sieciowego.
+Użycie filtru 5 krotek (podsieć źródłowa, podsieć docelowa, port źródłowy, port docelowy, protokół) i flagi TCP (SYN, ACK, FIN, URG, PSH —, RST) jest pomocne podczas izolowania problemów dotyczących dużej ilości ruchu sieciowego.
+
+Podczas przechwytywania pakietów można używać tylko jednej opcji na właściwość.
 
 ## <a name="setup-packet-capture-using-powershell"></a>Konfigurowanie przechwytywania pakietów przy użyciu programu PowerShell
 
-Zapoznaj się z poniższymi przykładami poleceń programu PowerShell, aby uruchomić i zatrzymać przechwytywanie pakietów. Aby uzyskać więcej informacji na temat opcji parametrów (takich jak tworzenie filtrów), zobacz ten [dokument](https://docs.microsoft.com/powershell/module/az.network/start-azvirtualnetworkgatewaypacketcapture)programu PowerShell.
+Zapoznaj się z poniższymi przykładami poleceń programu PowerShell, aby uruchomić i zatrzymać przechwytywanie pakietów. Aby uzyskać więcej informacji na temat opcji parametrów (takich jak tworzenie filtru), zobacz ten [dokument](https://docs.microsoft.com/powershell/module/az.network/start-azvirtualnetworkgatewaypacketcapture)programu PowerShell.
 
 ### <a name="start-packet-capture-for-a-vpn-gateway"></a>Rozpocznij przechwytywanie pakietów dla bramy sieci VPN
 
@@ -36,7 +38,7 @@ Zapoznaj się z poniższymi przykładami poleceń programu PowerShell, aby uruch
 Start-AzVirtualnetworkGatewayPacketCapture -ResourceGroupName "YourResourceGroupName" -Name "YourVPNGatewayName"
 ```
 
-Opcjonalny parametr **-danych filtru** może służyć do zastosowania filtrów.
+Opcjonalny parametr **-danych filtru** może służyć do zastosowania filtru.
 
 ### <a name="stop-packet-capture-for-a-vpn-gateway"></a>Zatrzymywanie przechwytywania pakietu dla bramy sieci VPN
 
@@ -50,7 +52,7 @@ Stop-AzVirtualNetworkGatewayPacketCapture -ResourceGroupName "YourResourceGroupN
 Start-AzVirtualNetworkGatewayConnectionPacketCapture -ResourceGroupName "YourResourceGroupName" -Name "YourVPNGatewayConnectionName"
 ```
 
-Opcjonalny parametr **-danych filtru** może służyć do zastosowania filtrów.
+Opcjonalny parametr **-danych filtru** może służyć do zastosowania filtru.
 
 ### <a name="stop-packet-capture-on-a-vpn-gateway-connection"></a>Zatrzymywanie przechwytywania pakietu na połączeniu z bramą sieci VPN
 
@@ -62,7 +64,7 @@ Stop-AzVirtualNetworkGatewayConnectionPacketCapture -ResourceGroupName "YourReso
 
 - Przechwytywanie pakietów może mieć wpływ na wydajność. Pamiętaj, aby zatrzymać przechwytywanie pakietów, gdy nie jest to konieczne.
 - Sugerowany minimalny czas trwania przechwytywania pakietów to 600 sekund. Krótszy czas trwania przechwytywania pakietów może nie zapewniać kompletnych danych ze względu na zsynchronizowanie problemów między wieloma składnikami ścieżki.
-- Pliki danych przechwytywania pakietów są generowane w formatach PCAP lub ETL. Aby zrozumieć dane, może być potrzebny parser netmon.
+- Pliki danych przechwytywania pakietów są generowane w formacie PCAP. Otwórz pliki PCAP za pomocą programu Wireshark lub innych powszechnie dostępnych aplikacji.
 
 ## <a name="next-steps"></a>Następne kroki
 

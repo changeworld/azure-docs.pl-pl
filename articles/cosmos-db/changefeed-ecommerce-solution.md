@@ -1,22 +1,22 @@
 ---
 title: Użyj usługi Azure Cosmos DB Zmień źródło danych do analizy danych w czasie rzeczywistym wizualizować
-description: W tym artykule opisano, jak zmiany Kanał informacyjny może służyć przez firmę handlu detalicznego zrozumieć wzorce użytkownika, wykonywania analiz danych w czasie rzeczywistym i wizualizacji.
+description: W tym artykule opisano, jak źródło danych zmian może być używane przez firmę handlową do zrozumienia wzorców użytkowników, wykonywania analiz i wizualizacji w czasie rzeczywistym
 author: SnehaGunda
 ms.service: cosmos-db
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: sngun
-ms.openlocfilehash: 86d4dd706b097891db155214e4edb7e85e054858
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 50517db6a5bb1fc458ab2f563e905fca34f70cf4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69616947"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442067"
 ---
 # <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>Użyj usługi Azure Cosmos DB Zmień źródło danych do analizy danych w czasie rzeczywistym wizualizować
 
-Kanał informacyjny zmiany Azure Cosmos DB jest mechanizmem do uzyskiwania ciągłego i przyrostowego źródła rekordów z kontenera usługi Azure Cosmos, ponieważ te rekordy są tworzone lub modyfikowane. Kanału informacyjnego zmian działania pomocy technicznej przez nasłuchiwanie w kontenerze żadnych zmian. Następnie wyświetla posortowaną listę dokumentów, które zostały zmienione w kolejności, w której zostały zmodyfikowane. Aby dowiedzieć się więcej na temat zmian, zobacz [pracy za pomocą zestawienia zmian](change-feed.md) artykułu. 
+Kanał informacyjny zmiany Azure Cosmos DB jest mechanizmem do uzyskiwania ciągłego i przyrostowego źródła rekordów z kontenera usługi Azure Cosmos, ponieważ te rekordy są tworzone lub modyfikowane. Kanału informacyjnego zmian działania pomocy technicznej przez nasłuchiwanie w kontenerze żadnych zmian. Następnie tworzone są dane wyjściowe w postaci posortowanej listy zmienionych dokumentów w kolejności, w której zostały zmodyfikowane. Aby dowiedzieć się więcej na temat zmian, zobacz [pracy za pomocą zestawienia zmian](change-feed.md) artykułu. 
 
 W tym artykule opisano, jak zmiany Kanał informacyjny może służyć przez firmę handlu elektronicznego, aby zrozumieć wzorce użytkownika, wykonywania analiz danych w czasie rzeczywistym i wizualizacji. Będzie analizować zdarzenia, takie jak wyświetlenie elementu, dodanie elementu do koszyka ich lub zakupu elementu użytkownika. Gdy wystąpi jedno z tych zdarzeń, zostanie utworzony nowy rekord, a zmiany źródła danych dzienników, służące do rejestrowania. Kanału informacyjnego zmian następnie wyzwalaczy szereg kroków skutkuje wizualizacji metryk, które Analizuj wydajność firmy i działania. Przykładowe metryki, które można wizualizować obejmują przychodu, unikatowych odwiedzających witrynę, najpopularniejszych elementów i średnia cena elementów, które są wyświetlane w porównaniu z dodana do koszyka i zakupu. Te przykładowe metryki może pomóc firmie handlu elektronicznego, oceniać swoją popularność lokacji, tworzyć jego reklamy i strategii cenowych i podjęcia decyzji dotyczących spisu, jakie o wartości inwestycji w.
 
@@ -30,7 +30,7 @@ Poniższy diagram przedstawia przepływ danych i składniki zaangażowane w rozw
 
 ![Projekt wizualizacji](./media/changefeed-ecommerce-solution/project-visual.png)
  
-1. **Generowanie danych:** Symulator danych służy do generowania danych detalicznych, które reprezentują zdarzenia, takie jak Użytkownik przeglądający element, Dodawanie elementu do swojego koszyka i kupowanie elementu. Duży zestaw przykładowych danych można wygenerować za pomocą generatora danych. Wygenerowanych przykładowych danych zawiera dokumenty w następującym formacie:
+1. **Generowanie danych:** symulator danych służy do generowania danych sprzedaży detalicznej, które reprezentuje zdarzenia, takie jak użytkownikowi wyświetlenie elementu, dodanie elementu do koszyka ich i zakup elementu. Duży zestaw przykładowych danych można wygenerować za pomocą generatora danych. Wygenerowanych przykładowych danych zawiera dokumenty w następującym formacie:
    
    ```json
    {      
@@ -45,13 +45,13 @@ Poniższy diagram przedstawia przepływ danych i składniki zaangażowane w rozw
 
 3. **Źródło zmian:** Źródło zmian będzie nasłuchiwać zmian w kontenerze usługi Azure Cosmos. Każdorazowo nowy dokument zostanie dodany do kolekcji (to znaczy po wystąpieniu zdarzenia, od takich użytkowników, wyświetlanie elementu Dodawanie elementu do koszyka ich lub zakupu element), zmiana źródła danych będą wyzwalać [funkcji platformy Azure](../azure-functions/functions-overview.md).  
 
-4. **Funkcja platformy Azure:** Funkcja platformy Azure przetwarza nowe dane i wysyła je do [centrum zdarzeń platformy Azure](../event-hubs/event-hubs-about.md).  
+4. **Funkcja platformy Azure:** funkcji platformy Azure przetwarza nowe dane i wysyła je do [usługi Azure Event Hub](../event-hubs/event-hubs-about.md).  
 
-5. **Centrum zdarzeń:** Usługa Azure Event Hub przechowuje te zdarzenia i wysyła je do [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) w celu przeprowadzenia dalszej analizy.  
+5. **Centrum zdarzeń:** usługi Azure Event Hub przechowuje te zdarzenia i wysyła je do [usługi Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) podczas dalszej analizy.  
 
-6. **Azure Stream Analytics:** Azure Stream Analytics definiuje zapytania do przetwarzania zdarzeń i wykonywania analizy danych w czasie rzeczywistym. Te dane są następnie wysyłane do [Microsoft Power BI](https://docs.microsoft.com/power-bi/desktop-what-is-desktop).  
+6. **Usługa Azure Stream Analytics:** usługa Azure Stream Analytics definiuje zapytania, aby przetwarzać zdarzenia i przeprowadzać analizy danych w czasie rzeczywistym. Te dane są następnie wysyłane do [Microsoft Power BI](https://docs.microsoft.com/power-bi/desktop-what-is-desktop).  
 
-7. **Power BI:** Power BI służy do wizualizacji danych wysyłanych przez Azure Stream Analytics. Możesz utworzyć pulpit nawigacyjny, aby zobaczyć, jak zmienić metryki w czasie rzeczywistym.  
+7. **Usługa Power BI:** usługi Power BI umożliwia wizualizowanie danych wysłanych przez usługę Azure Stream Analytics. Możesz utworzyć pulpit nawigacyjny, aby zobaczyć, jak zmienić metryki w czasie rzeczywistym.  
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -165,7 +165,7 @@ Aby wyświetlić kanał informacyjny zmian przetwarzaniu nowe akcje w witrynie h
 
 1. Przejdź z powrotem do repozytorium w Eksploratorze plików, a następnie kliknij prawym przyciskiem myszy **ChangeFeedFunction.sln** ponownie otworzyć nowe okno programu Visual Studio.  
 
-2. Przejdź do pliku **App. config** . W bloku Dodaj punkt końcowy i unikatowy **klucz podstawowy** , który został wcześniej pobrany z konta Azure Cosmos DB. `<appSettings>`  
+2. Przejdź do pliku **App. config** . W bloku `<appSettings>` Dodaj punkt końcowy i unikatowy **klucz podstawowy** , który został wcześniej pobrany z konta Azure Cosmos DB.  
 
 3. Dodaj w **kolekcji** i **bazy danych** nazwy. (Te nazwy powinny być **changefeedlabcollection** i **changefeedlabdatabase** dopóki nie zdecydujesz się nazwę należy do Ciebie inaczej.)
 
@@ -236,7 +236,7 @@ Usługa Azure Stream Analytics jest w pełni zarządzana usługa w chmurze do pr
 
 11. Teraz wróć do **streamjob1** i wybierz **Start** znajdujący się u góry strony. Usługa Azure Stream Analytics może potrwać kilka minut, aby uruchomić, ale ostatecznie zobaczysz go zmienić z "Uruchamianie" na "Uruchomiona".
 
-## <a name="connect-to-power-bi"></a>Połączenia z usługą Power BI
+## <a name="connect-to-power-bi"></a>Łączenie z usługą Power BI
 
 Usługa Power BI to pakiet narzędzi do analizy biznesowej do analizowania danych i udostępniania szczegółowych informacji. To doskonałe przykładem sposobu strategicznie wizualizować analizowanych danych.
 
@@ -250,13 +250,13 @@ Usługa Power BI to pakiet narzędzi do analizy biznesowej do analizowania danyc
  
 5. Wybierz **averagePrice** z **YOUR zestawów danych**, a następnie wybierz **dalej**.  
 
-6. W **typ wizualizacji** wybierz opcję **wykres słupkowy grupowany** z menu rozwijanego. W obszarze **osi**, Dodaj akcję. Pomiń **legendy** bez dodawania niczego. Następnie, w następnej sekcji o nazwie **wartość**, Dodaj **avg**. Wybierz **dalej**, a następnie tytułu wykresu i wybierz **Zastosuj**. Powinien zostać wyświetlony nowy wykres na pulpicie nawigacyjnym!  
+6. W **typ wizualizacji** wybierz opcję **wykres słupkowy grupowany** z menu rozwijanego. W obszarze **osi**, Dodaj akcję. Pomiń **legendy** bez dodawania niczego. Następnie w następnej sekcji o nazwie **wartość**Dodaj **średnią**. Wybierz pozycję **dalej**, a następnie tytuł wykresu i wybierz pozycję **Zastosuj**. Powinien zostać wyświetlony nowy wykres na pulpicie nawigacyjnym!  
 
 7. Teraz, jeśli chcesz zwizualizować więcej metryk, możesz przejść wstecz do **streamjob1** i Utwórz trzy więcej danych wyjściowych z następującymi polami.
 
    a. **Alias wyjściowy:** incomingRevenueOutput, nazwa zestawu danych: incomingRevenue, nazwa tabeli: incomingRevenue  
    b. **Alias wyjściowy:** top5Output, nazwa zestawu danych: top5, nazwa tabeli: top5  
-   c. **Alias wyjściowy:** uniqueVisitorCountOutput, nazwa zestawu danych: uniqueVisitorCount, nazwa tabeli: uniqueVisitorCount
+   d. **Alias wyjściowy:** uniqueVisitorCountOutput, nazwa zestawu danych: uniqueVisitorCount, nazwa tabeli: uniqueVisitorCount
 
    Następnie wybierz pozycję **Edytuj zapytanie** i wklej następujące zapytania **powyżej** ten, który już powstała z jednego.
 
@@ -316,7 +316,7 @@ Usługa Power BI to pakiet narzędzi do analizy biznesowej do analizowania danyc
 
    ![wizualizacje](./media/changefeed-ecommerce-solution/visualizations.png)
 
-## <a name="optional-visualize-with-an-e-commerce-site"></a>Opcjonalnie: Wizualizowanie w witrynie handlu elektronicznego
+## <a name="optional-visualize-with-an-e-commerce-site"></a>Opcjonalnie: Wizualizowanie przy użyciu witryny handlu elektronicznego
 
 Teraz odbywa się w sposób korzystania z nowego narzędzia analizy danych nawiązać połączenia z lokacją rzeczywistych handlu elektronicznego. Aby zbudować witrynę handlu elektronicznego, należy użyć bazy danych usługi Azure Cosmos do przechowywania listy kategorii produktów (kobiety, mężczyźni, Unisex), katalogu produktów i listy najpopularniejszych elementów.
 
@@ -392,7 +392,7 @@ Teraz odbywa się w sposób korzystania z nowego narzędzia analizy danych nawi�
 
 Aby usunąć zasoby utworzone w ramach tego laboratorium, przejdź do grupy zasobów na [witryny Azure Portal](https://portal.azure.com/), a następnie wybierz **Usuń grupę zasobów** menu w górnej części strony i postępuj zgodnie z instrukcjami podana.
 
-## <a name="next-steps"></a>Kolejne kroki 
+## <a name="next-steps"></a>Następne kroki 
   
 * Aby dowiedzieć się więcej na temat zmian, zobacz [pracy ze zmianą Obsługa kanału informacyjnego w usłudze Azure Cosmos DB](change-feed.md) 
 * [Rozwiązanie powiadomień kanału informacyjnego zmian](change-feed-hl7-fhir-logic-apps.md) dla organizacji opieki zdrowotnej przy użyciu usługi Azure Cosmos DB.

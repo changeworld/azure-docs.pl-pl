@@ -6,24 +6,30 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/04/2019
+ms.date: 12/12/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 445d98ab07a91b056d4cf747f7c0f4cf1cdf9d53
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 0678d437a5c24b8193e7440a62445fb30ec97759
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74891817"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460501"
 ---
 # <a name="authorize-access-to-blobs-and-queues-using-azure-active-directory"></a>Autoryzuj dostęp do obiektów blob i kolejek przy użyciu Azure Active Directory
 
-Usługa Azure Storage obsługuje używanie Azure Active Directory (AD) do autoryzacji żądań do magazynu obiektów blob i kolejek. Za pomocą usługi Azure AD można używać kontroli dostępu opartej na rolach (RBAC) do udzielania uprawnień podmiotowi zabezpieczeń, który może być użytkownikiem, grupą lub jednostką usługi aplikacji. Podmiot zabezpieczeń jest uwierzytelniany przez usługę Azure AD w celu zwrócenia tokenu OAuth 2,0. Token może służyć do autoryzowania żądania dostępu do zasobu w magazynie obiektów blob lub Queue.
+Usługa Azure Storage obsługuje używanie Azure Active Directory (Azure AD) do autoryzacji żądań do magazynu obiektów blob i kolejek. Za pomocą usługi Azure AD można używać kontroli dostępu opartej na rolach (RBAC) do udzielania uprawnień podmiotowi zabezpieczeń, który może być użytkownikiem, grupą lub jednostką usługi aplikacji. Podmiot zabezpieczeń jest uwierzytelniany przez usługę Azure AD w celu zwrócenia tokenu OAuth 2,0. Tokenu można następnie użyć do autoryzowania żądania do magazynu obiektów blob lub Queue.
 
-Autoryzowanie użytkowników lub aplikacji przy użyciu tokenu OAuth 2,0 zwróconego przez usługę Azure AD zapewnia najważniejsze zabezpieczenia i łatwość użycia w porównaniu z autoryzacją klucza współużytkowanego i sygnatury dostępu współdzielonego (SAS). W przypadku usługi Azure AD nie ma potrzeby przechowywania klucza dostępu do konta z kodem i ryzyka potencjalnej luki w zabezpieczeniach. Mimo że można nadal korzystać z autoryzacji klucza współużytkowanego w aplikacjach, korzystanie z usługi Azure AD powoduje obejście konieczności przechowywania klucza dostępu do konta w kodzie. Możesz również nadal używać sygnatur dostępu współdzielonego, aby udzielać szczegółowego dostępu do zasobów na koncie magazynu, ale usługa Azure AD oferuje podobne możliwości bez konieczności zarządzania tokenami SAS ani martwić się o odwoływanie złamanych SAS. Jeśli to możliwe, firma Microsoft zaleca używanie autoryzacji usługi Azure AD z aplikacjami usługi Azure Storage.
+Autoryzacja żądań do usługi Azure Storage za pomocą usługi Azure AD zapewnia doskonałe zabezpieczenia i łatwość użycia w porównaniu z autoryzacją klucza współużytkowanego. Firma Microsoft zaleca używanie autoryzacji usługi Azure AD z obiektami BLOB i kolejkowanie aplikacji, o ile jest to możliwe, aby zminimalizować potencjalne luki w zabezpieczeniach związane z kluczem udostępnionym.
 
-Autoryzacja za pomocą usługi Azure AD jest dostępna dla wszystkich kont ogólnego przeznaczenia i magazynu obiektów BLOB we wszystkich regionach publicznych i w chmurach narodowych. Tylko konta magazynu utworzone za pomocą modelu wdrażania Azure Resource Manager obsługują autoryzację usługi Azure AD. Autoryzacja za pomocą usługi Azure AD nie jest obsługiwana w przypadku usługi Azure Table Storage.
+Autoryzacja za pomocą usługi Azure AD jest dostępna dla wszystkich kont ogólnego przeznaczenia i magazynu obiektów BLOB we wszystkich regionach publicznych i w chmurach narodowych. Tylko konta magazynu utworzone za pomocą modelu wdrażania Azure Resource Manager obsługują autoryzację usługi Azure AD.
+
+Usługa BLOB Storage obsługuje dodatkowo tworzenie sygnatur dostępu współdzielonego (SAS), które są podpisane przy użyciu poświadczeń usługi Azure AD. Aby uzyskać więcej informacji, zobacz [udzielanie ograniczonego dostępu do danych za pomocą sygnatur dostępu współdzielonego](storage-sas-overview.md).
+
+Azure Files obsługuje autoryzację w usłudze Azure AD za pośrednictwem protokołu SMB tylko dla maszyn wirtualnych przyłączonych do domeny. Aby dowiedzieć się więcej o korzystaniu z usługi Azure AD za pośrednictwem protokołu SMB dla Azure Files, zobacz [omówienie Azure Active Directory autoryzacji za pośrednictwem protokołu SMB dla Azure Files](../files/storage-files-active-directory-overview.md).
+
+Autoryzacja za pomocą usługi Azure AD nie jest obsługiwana w przypadku usługi Azure Table Storage. Użyj klucza współużytkowanego, aby autoryzować żądania do magazynu tabel.
 
 ## <a name="overview-of-azure-ad-for-blobs-and-queues"></a>Omówienie usługi Azure AD dla obiektów blob i kolejek
 
@@ -78,10 +84,6 @@ Azure Portal wskazuje, który schemat autoryzacji jest używany podczas przechod
 ### <a name="data-access-from-powershell-or-azure-cli"></a>Dostęp do danych z programu PowerShell lub interfejsu wiersza polecenia platformy Azure
 
 Interfejs wiersza polecenia platformy Azure i program PowerShell obsługują Logowanie przy użyciu poświadczeń usługi Azure AD. Po zalogowaniu się sesja zostanie uruchomiona w ramach tych poświadczeń. Aby dowiedzieć się więcej, zobacz [Uruchamianie interfejsu wiersza polecenia platformy Azure lub poleceń programu PowerShell przy użyciu poświadczeń usługi Azure AD w celu uzyskania dostępu do danych obiektu BLOB lub kolejki](storage-auth-aad-script.md)
-
-## <a name="azure-ad-authorization-over-smb-for-azure-files"></a>Autoryzacja usługi Azure AD za pośrednictwem protokołu SMB dla Azure Files
-
-Azure Files obsługuje autoryzację w usłudze Azure AD za pośrednictwem protokołu SMB na potrzeby maszyn wirtualnych przyłączonych do domeny (wersja zapoznawcza) Aby dowiedzieć się więcej o korzystaniu z usługi Azure AD za pośrednictwem protokołu SMB dla Azure Files, zobacz [omówienie Azure Active Directory autoryzacji za pośrednictwem protokołu SMB dla Azure Files (wersja zapoznawcz](../files/storage-files-active-directory-overview.md)
 
 ## <a name="next-steps"></a>Następne kroki
 

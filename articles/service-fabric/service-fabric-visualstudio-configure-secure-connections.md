@@ -1,58 +1,49 @@
 ---
-title: Konfigurowanie bezpiecznych połączeń z klastrem usługi Azure Service Fabric | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak Konfigurowanie bezpiecznych połączeń, które są obsługiwane przez klaster usługi Azure Service Fabric przy użyciu programu Visual Studio.
-services: service-fabric
-documentationcenter: na
+title: Konfigurowanie bezpiecznych połączeń klastra Service Fabric platformy Azure
+description: Dowiedz się, jak skonfigurować bezpieczne połączenia obsługiwane przez klaster Service Fabric platformy Azure przy użyciu programu Visual Studio.
 author: cawaMS
-manager: paulyuk
-editor: tglee
-ms.assetid: 80501867-dd7a-4648-8bd6-d4f26b68402d
-ms.service: multiple
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: multiple
 ms.date: 8/04/2017
 ms.author: cawa
-ms.openlocfilehash: 8d76a2144234591792359ed8dd4a0779e6a2fc5c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 11f76153726d3fc92118fb46cc61b4627ab6a1b2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60628300"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464096"
 ---
-# <a name="configure-secure-connections-to-a-service-fabric-cluster-from-visual-studio"></a>Konfigurowanie bezpiecznych połączeń z klastrem usługi Service Fabric z poziomu programu Visual Studio
-Dowiedz się, jak używać programu Visual Studio bezpiecznego dostępu do klastra usługi Azure Service Fabric przy użyciu zasad kontroli dostępu skonfigurowana.
+# <a name="configure-secure-connections-to-a-service-fabric-cluster-from-visual-studio"></a>Konfigurowanie bezpiecznych połączeń z klastrem Service Fabric z programu Visual Studio
+Dowiedz się, jak za pomocą programu Visual Studio bezpiecznie uzyskać dostęp do klastra usługi Azure Service Fabric przy użyciu skonfigurowanych zasad kontroli dostępu.
 
 ## <a name="cluster-connection-types"></a>Typy połączeń klastra
-Dwa typy połączeń obsługiwanych przez klaster usługi Azure Service Fabric: **— Zabezpieczanie** połączeń i **x509 opartego na certyfikatach** bezpieczne połączenia. (Dla klastrów usługi Service Fabric hostowane lokalnie, **Windows** i **dSTS** uwierzytelnienia są również obsługiwane.) Należy skonfigurować typ połączenia klastra, po utworzeniu klastra. Po jego utworzeniu nie można zmienić typu połączenia.
+Klaster Service Fabric platformy Azure obsługuje dwa typy połączeń: połączenia **niezabezpieczone** i bezpieczne połączenia **oparte na certyfikatach x509** . (W przypadku klastrów Service Fabric hostowanych lokalnie obsługiwane są również uwierzytelniania **systemu Windows** i **dSTS** ). Należy skonfigurować typ połączenia klastra podczas tworzenia klastra. Po jego utworzeniu nie można zmienić typu połączenia.
 
-Narzędzia Visual Studio Service Fabric obsługuje wszystkie typy uwierzytelniania do łączenia się z klastrem publikowania. Zobacz [Konfigurowanie klastra usługi Service Fabric w witrynie Azure portal](service-fabric-cluster-creation-via-portal.md) instrukcje dotyczące sposobu konfigurowania bezpiecznego klastra usługi Service Fabric.
+Narzędzia Service Fabric programu Visual Studio obsługują wszystkie typy uwierzytelniania do nawiązywania połączenia z klastrem w celu opublikowania. Zapoznaj się z tematem [Konfigurowanie klastra Service Fabric z poziomu Azure Portal,](service-fabric-cluster-creation-via-portal.md) Aby uzyskać instrukcje dotyczące konfigurowania bezpiecznego klastra Service Fabric.
 
-## <a name="configure-cluster-connections-in-publish-profiles"></a>Konfigurowanie połączeń z klastrem w Profile publikowania
-Jeśli opublikujesz projekt usługi Service Fabric z poziomu programu Visual Studio, użyj **publikowanie aplikacji usługi Service Fabric** okno dialogowe, wybierz klaster usługi Azure Service Fabric. W obszarze **punkt końcowy połączenia**, wybierz istniejący klaster w ramach Twojej subskrypcji.
+## <a name="configure-cluster-connections-in-publish-profiles"></a>Konfigurowanie połączeń klastra w profilach publikowania
+Jeśli publikujesz projekt Service Fabric w programie Visual Studio, użyj okna dialogowego **publikowanie Service Fabric aplikacji** , aby wybrać klaster Service Fabric platformy Azure. W obszarze **punkt końcowy połączenia**wybierz istniejący klaster w ramach subskrypcji.
 
-![** Okno dialogowe publikowania usługi Service Fabric aplikacji ** służy do konfigurowania połączeń usługi Service Fabric.][publishdialog]
+![W celu skonfigurowania połączenia Service Fabric służy okno dialogowe * * publikowanie Service Fabric aplikacji * *.][publishdialog]
 
-**Publikowanie aplikacji usługi Service Fabric** okno dialogowe automatycznie sprawdza poprawność połączenia klastra. Jeśli zostanie wyświetlony monit, zaloguj się do konta platformy Azure. Jeśli weryfikacja zakończy się pomyślnie, oznacza to, że system ma prawidłowe certyfikaty zainstalowane do bezpiecznego łączenia się z klastrem lub klaster jest niebezpieczne. Błędy sprawdzania poprawności może być spowodowany przez problemy z siecią lub nie ma systemu poprawnie skonfigurowanej do połączenia z zabezpieczonym klastrem.
+Okno dialogowe **publikowanie Service Fabric aplikacji** automatycznie weryfikuje poprawność połączenia z klastrem. Jeśli zostanie wyświetlony monit, zaloguj się do konta platformy Azure. Jeśli walidacja kończy się powodzeniem, oznacza to, że system ma zainstalowane poprawne certyfikaty do bezpiecznego połączenia z klastrem lub klaster nie jest zabezpieczony. Błędy sprawdzania poprawności mogą być spowodowane problemami z siecią lub bez poprawnego skonfigurowania systemu do łączenia się z bezpiecznym klastrem.
 
-![** Publikowania usługi Service Fabric aplikacji ** okno dialogowe weryfikuje istniejącej poprawnie skonfigurowane połączenie klastra usługi Service Fabric.][selectsfcluster]
+![Okno dialogowe * * publikowanie Service Fabric aplikacji * * weryfikuje istniejące, prawidłowo skonfigurowane Service Fabric połączenie klastra.][selectsfcluster]
 
-### <a name="to-connect-to-a-secure-cluster"></a>Aby nawiązać połączenie z zabezpieczonym klastrem
-1. Upewnij się, że dostęp do jednego z certyfikatów klienta, które zaufania w klastrze docelowym. Certyfikat jest zazwyczaj udostępniany jako plik wymiany informacji osobistych (pfx). Zobacz [Konfigurowanie klastra usługi Service Fabric w witrynie Azure portal](service-fabric-cluster-creation-via-portal.md) dotyczące sposobu konfigurowania serwera, aby udzielić dostępu do klienta.
-2. Zainstaluj zaufanego certyfikatu. Aby to zrobić, kliknij dwukrotnie plik PFX, lub użyj skryptu programu PowerShell Import PfxCertificate do importowania certyfikatów. Zainstaluj certyfikat na **Cert: \LocalMachine\My**. Jest OK, aby zaakceptować wszystkie ustawienia domyślne podczas importowania certyfikatu.
-3. Wybierz **publikowania...**  polecenia menu skrótów projektu, aby otworzyć **publikowanie aplikacji platformy Azure** okno dialogowe, a następnie wybierz klaster docelowy. Narzędzie jest rozpoznawana jako połączenie i automatycznie zapisuje parametry bezpiecznego połączenia w profilu publikowania.
-4. Opcjonalnie: Można edytować profilu publikowania do określania połączenia z zabezpieczonym klastrem.
+### <a name="to-connect-to-a-secure-cluster"></a>Aby nawiązać połączenie z bezpiecznym klastrem
+1. Upewnij się, że masz dostęp do jednego z certyfikatów klienta, z którymi ufa klaster docelowy. Certyfikat jest zazwyczaj udostępniany jako plik wymiany informacji osobistych (pfx). Zobacz [Konfigurowanie klastra Service Fabric z Azure Portal,](service-fabric-cluster-creation-via-portal.md) aby skonfigurować serwer w taki sposób, aby zezwalał na dostęp do klienta.
+2. Zainstaluj zaufany certyfikat. Aby to zrobić, kliknij dwukrotnie plik PFX lub Użyj skryptu programu PowerShell import-PfxCertificate w celu zaimportowania certyfikatów. Zainstaluj certyfikat do **certyfikatu: \ LocalMachine\My**. Po zaimportowaniu certyfikatu można zaakceptować wszystkie ustawienia domyślne.
+3. Wybierz polecenie **Publikuj...** w menu skrótów projektu, aby otworzyć okno dialogowe **publikowanie aplikacji platformy Azure** , a następnie wybierz klaster docelowy. Narzędzie automatycznie rozwiązuje połączenie i zapisuje parametry bezpiecznego połączenia w profilu publikowania.
+4. Opcjonalne: można edytować profil publikowania, aby określić bezpieczne połączenie z klastrem.
    
-   Ponieważ ręcznie edytowany plik XML profilu publikowania, aby określić informacje o certyfikacie, koniecznie Zanotuj nazwę magazynu certyfikatów, przechowywać, lokalizacji i odcisk palca certyfikatu. Należy podać te wartości do magazynu certyfikatów nazwy i lokalizacji magazynu. Zobacz [Instrukcje: Pobieranie odcisku palca certyfikatu](https://msdn.microsoft.com/library/ms734695\(v=vs.110\).aspx) Aby uzyskać więcej informacji.
+   Ponieważ ręcznie edytujesz plik XML profilu publikowania, aby określić informacje o certyfikacie, pamiętaj, aby zanotować nazwę magazynu certyfikatów, lokalizację magazynu i odcisk palca certyfikatu. Należy podać te wartości dla nazwy magazynu i lokalizacji magazynu certyfikatu. Aby uzyskać więcej informacji [, zobacz How to: Pobieranie odcisku palca certyfikatu](https://msdn.microsoft.com/library/ms734695\(v=vs.110\).aspx) .
    
-   Możesz użyć *ClusterConnectionParameters* parametry, aby określić parametry programu PowerShell do użycia podczas łączenia się z klastrem usługi Service Fabric. Prawidłowe parametry to wszystkie, które są akceptowane przez polecenia cmdlet Connect-ServiceFabricCluster. Zobacz [Connect-ServiceFabricCluster](https://docs.microsoft.com/powershell/module/servicefabric/connect-servicefabriccluster) listę dostępnych parametrów.
+   Za pomocą parametrów *ClusterConnectionParameters* można określić parametry programu PowerShell, które mają być używane podczas nawiązywania połączenia z klastrem Service Fabric. Prawidłowe parametry są akceptowane przez polecenie cmdlet Connect-ServiceFabricCluster. Zobacz [Connect-ServiceFabricCluster](https://docs.microsoft.com/powershell/module/servicefabric/connect-servicefabriccluster) , aby uzyskać listę dostępnych parametrów.
    
-   Jeśli publikujesz do zdalnego klastra, należy określić odpowiednie parametry dla tego określonego klastra. Oto przykład łączenia się z niezabezpieczonym klastrem:
+   W przypadku publikowania w klastrze zdalnym należy określić odpowiednie parametry dla danego klastra. Poniżej znajduje się przykład łączenia się z niezabezpieczonym klastrem:
    
    `<ClusterConnectionParameters ConnectionEndpoint="mycluster.westus.cloudapp.azure.com:19000" />`
    
-   Oto przykład dotyczący nawiązywania połączenia z x509 opartego na certyfikatach zabezpieczonego klastra:
+   Oto przykład łączenia się z bezpiecznym klastrem opartym na certyfikatach x509:
    
    ```xml
    <ClusterConnectionParameters
@@ -64,10 +55,10 @@ Jeśli opublikujesz projekt usługi Service Fabric z poziomu programu Visual Stu
    StoreLocation="CurrentUser"
    StoreName="My" />
    ```
-5. Edytować inne wymagane ustawienia, takie jak parametry uaktualniania i lokalizacja pliku parametrów aplikacji, a następnie opublikować aplikacji z **publikowanie aplikacji usługi Service Fabric** okno dialogowe w programie Visual Studio.
+5. Edytuj wszystkie inne niezbędne ustawienia, takie jak parametry uaktualnienia i lokalizacja pliku parametrów aplikacji, a następnie Opublikuj aplikację w oknie dialogowym **publikowanie Service Fabric aplikacji** w programie Visual Studio.
 
-## <a name="next-steps"></a>Kolejne kroki
-Aby uzyskać więcej informacji na temat uzyskiwania dostępu do klastrów usługi Service Fabric, zobacz [wizualizowanie klastra przy użyciu narzędzia Service Fabric Explorer](service-fabric-visualizing-your-cluster.md).
+## <a name="next-steps"></a>Następne kroki
+Aby uzyskać więcej informacji na temat uzyskiwania dostępu do klastrów Service Fabric, zobacz [wizualizowanie klastra przy użyciu Service Fabric Explorer](service-fabric-visualizing-your-cluster.md).
 
 <!--Image references-->
 [publishdialog]:./media/service-fabric-visualstudio-configure-secure-connections/publishdialog.png

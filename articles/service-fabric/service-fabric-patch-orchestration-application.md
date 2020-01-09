@@ -1,9 +1,9 @@
 ---
-title: Poprawianie systemu operacyjnego Windows w klastrze Service Fabric | Microsoft Docs
+title: Poprawianie systemu operacyjnego Windows w klastrze Service Fabric
 description: W tym artykule omówiono sposób automatyzowania stosowania poprawek systemu operacyjnego w klastrze Service Fabric przy użyciu aplikacji aranżacji patch.
 services: service-fabric
 documentationcenter: .net
-author: khandelwalbrijeshiitr
+author: athinanthny
 manager: chackdan
 editor: ''
 ms.assetid: de7dacf5-4038-434a-a265-5d0de80a9b1d
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/01/2019
-ms.author: brkhande
-ms.openlocfilehash: a02228593a9d8efc9fb363232da1cede3c80a8b3
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.author: atsenthi
+ms.openlocfilehash: 3115c65c7027f5624b7b60b9be702ee4192d8cb6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72592530"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464454"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Poprawianie systemu operacyjnego Windows w klastrze Service Fabric
 
@@ -157,15 +157,15 @@ Zachowanie POA można skonfigurować w celu spełnienia Twoich potrzeb. Zastąp 
 
 | Parametr        | Typ                          | Szczegóły |
 |:-|-|-|
-|MaxResultsToCache    |Długie                              | Maksymalna liczba Windows Updateych wyników, które powinny być buforowane. <br><br>Wartość domyślna to 3000, przy założeniu, że: <br> &nbsp; &nbsp; — liczba węzłów wynosi 20. <br> &nbsp; &nbsp; — liczba aktualizacji węzła miesięcznie wynosi 5. <br> &nbsp; &nbsp; — liczba wyników na operację może wynosić 10. <br> &nbsp; &nbsp; — należy przechowywać wyniki z ostatnich trzech miesięcy. |
+|MaxResultsToCache    |Długie                              | Maksymalna liczba Windows Updateych wyników, które powinny być buforowane. <br><br>Wartość domyślna to 3000, przy założeniu, że: <br> &nbsp;&nbsp;— liczba węzłów wynosi 20. <br> &nbsp;&nbsp;— liczba aktualizacji węzła miesięcznie wynosi 5. <br> &nbsp;&nbsp;— liczba wyników na operację może wynosić 10. <br> &nbsp;&nbsp;— należy przechowywać wyniki z ostatnich trzech miesięcy. |
 |TaskApprovalPolicy   |Wyliczenie <br> { NodeWise, UpgradeDomainWise }                          |TaskApprovalPolicy wskazuje zasady, które mają być używane przez usługę koordynatora do instalowania aktualizacji systemu Windows na Service Fabric węzłach klastra.<br><br>Dozwolone wartości to: <br>*NodeWise*: aktualizacje systemu Windows są instalowane po jednym węźle w danym momencie. <br> *UpgradeDomainWise*: aktualizacje systemu Windows są instalowane w jednej domenie aktualizacji jednocześnie. (W większości, wszystkie węzły należące do domeny aktualizacji mogą przejść do usługi Windows Update).<br><br> Aby ułatwić podjęcie decyzji, które zasady najlepiej nadają się dla klastra, zobacz sekcję [często zadawanych pytań](#frequently-asked-questions) .
 |LogsDiskQuotaInMB   |Długie  <br> (Domyślnie: *1024*)               | Maksymalny rozmiar dzienników aplikacji aranżacji w MB, które mogą być utrwalane lokalnie w węzłach.
 | WUQuery               | string<br>(Domyślnie: *IsInstalled = 0*)                | Zapytanie w celu pobrania aktualizacji systemu Windows. Aby uzyskać więcej informacji, zobacz [WuQuery.](https://msdn.microsoft.com/library/windows/desktop/aa386526(v=vs.85).aspx)
 | InstallWindowsOSOnlyUpdates | *Wartość logiczna* <br> (wartość domyślna: false)                 | Użyj tej flagi, aby określić, które aktualizacje mają zostać pobrane i zainstalowane. Następujące wartości są dozwolone <br>true — instaluje tylko aktualizacje systemu operacyjnego Windows.<br>false — instaluje wszystkie dostępne aktualizacje na komputerze.          |
-| WUOperationTimeOutInMinutes | ZAOKR <br>(Domyślnie: *90*)                   | Określa limit czasu dla każdej operacji Windows Update (Wyszukaj lub Pobierz lub zainstaluj). Jeśli operacja nie zostanie zakończona w określonym limicie czasu, zostanie przerwana.       |
-| WURescheduleCount     | ZAOKR <br> (Domyślnie: *5*)                  | Maksymalna liczba przypadków, w których usługa ponownie planuje aktualizację systemu Windows, jeśli operacja nie powiedzie się.          |
-| WURescheduleTimeInMinutes | ZAOKR <br>(Wartość domyślna: *30*) | Interwał, w którym usługa ponownie planuje aktualizacje systemu Windows, jeśli błąd będzie nadal występował. |
-| WUFrequency           | Ciąg rozdzielony przecinkami (wartość domyślna: *Weekly, środa, 7:00:00*)     | Częstotliwość instalowania aktualizacji systemu Windows. Format i możliwe wartości to: <br>&nbsp; &nbsp; — miesięcznie: DD, gg: MM: SS (na przykład *miesięcznie, 5, 12:22:32*)<br>Dozwolone wartości pola DD (Day) to liczby od 1 do 28 i "Last". <br> &nbsp; &nbsp; — tydzień, dzień, HH: MM: SS (na przykład *Weekly, wtorek, 12:22:32*)  <br> &nbsp; &nbsp; — codziennie, HH: MM: SS (na przykład *dziennie, 12:22:32*)  <br> &nbsp; &nbsp; -  *Brak* wskazuje, że nie można wykonać aktualizacji systemu Windows.  <br><br> Czasy są w formacie UTC.|
+| WUOperationTimeOutInMinutes | Int <br>(Domyślnie: *90*)                   | Określa limit czasu dla każdej operacji Windows Update (Wyszukaj lub Pobierz lub zainstaluj). Jeśli operacja nie zostanie zakończona w określonym limicie czasu, zostanie przerwana.       |
+| WURescheduleCount     | Int <br> (Domyślnie: *5*)                  | Maksymalna liczba przypadków, w których usługa ponownie planuje aktualizację systemu Windows, jeśli operacja nie powiedzie się.          |
+| WURescheduleTimeInMinutes | Int <br>(Wartość domyślna: *30*) | Interwał, w którym usługa ponownie planuje aktualizacje systemu Windows, jeśli błąd będzie nadal występował. |
+| WUFrequency           | Ciąg rozdzielony przecinkami (wartość domyślna: *Weekly, środa, 7:00:00*)     | Częstotliwość instalowania aktualizacji systemu Windows. Format i możliwe wartości to: <br>&nbsp;&nbsp;— miesięcznie: DD, gg: MM: SS (na przykład *miesięcznie, 5, 12:22:32*)<br>Dozwolone wartości pola DD (Day) to liczby od 1 do 28 i "Last". <br> &nbsp;&nbsp;— tydzień, dzień, HH: MM: SS (na przykład *Weekly, wtorek, 12:22:32*)  <br> &nbsp;&nbsp;— codziennie, HH: MM: SS (na przykład *dziennie, 12:22:32*)  <br> &nbsp;&nbsp;-  *Brak* wskazuje, że nie można wykonać aktualizacji systemu Windows.  <br><br> Czasy są w formacie UTC.|
 | AcceptWindowsUpdateEula | Wartość logiczna <br>(Wartość domyślna: *true*) | Ustawiając tę flagę, aplikacja akceptuje umowę licencyjną użytkownika końcowego dla Windows Update w imieniu właściciela maszyny.              |
 
 > [!TIP]
@@ -237,7 +237,7 @@ Pola JSON są opisane w poniższej tabeli:
 
 Pole | Wartości | Szczegóły
 -- | -- | --
-Klasy OperationResult | 0 — powodzenie<br> 1 — powodzenie z błędami<br> 2 — Niepowodzenie<br> 3 — przerwana<br> 4 — przerwano z limitem czasu | Wskazuje wynik operacji ogólnej, która zwykle obejmuje instalację jednej lub kilku aktualizacji.
+OperationResult | 0 — powodzenie<br> 1 — powodzenie z błędami<br> 2 — Niepowodzenie<br> 3 — przerwana<br> 4 — przerwano z limitem czasu | Wskazuje wynik operacji ogólnej, która zwykle obejmuje instalację jednej lub kilku aktualizacji.
 ResultCode | Analogicznie jak klasy OperationResult | To pole wskazuje wynik operacji instalacji dla pojedynczej aktualizacji.
 OperationType | 1 — Instalacja<br> 0 — wyszukiwanie i pobieranie| Domyślnie instalacja jest jedyną operacją, która jest wyświetlana w wynikach.
 WindowsUpdateQuery | Wartość domyślna to "IsInstalled = 0" | Zapytanie Windows Update używane do wyszukiwania aktualizacji. Aby uzyskać więcej informacji, zobacz [WuQuery](https://msdn.microsoft.com/library/windows/desktop/aa386526(v=vs.85).aspx).
@@ -248,7 +248,7 @@ Wynik | 0 — powodzenie<br> inne — niepowodzenie| Wskazuje przyczynę niepowo
 
 Jeśli nie zaplanowano jeszcze żadnej aktualizacji, wynikowy kod JSON jest pusty.
 
-Zaloguj się do klastra w celu zbadania Windows Update wyników. Sprawdź adres IP repliki dla podstawowego adresu usługi koordynatora i Otwórz następujący adres URL w przeglądarce: http://&lt;REPLICA-IP &gt;: &lt;ApplicationPort &gt;/PatchOrchestrationApplication/v1/ GetWindowsUpdateResults.
+Zaloguj się do klastra w celu zbadania Windows Update wyników. Sprawdź adres IP repliki dla podstawowego adresu usługi koordynatora i Otwórz następujący adres URL w przeglądarce: http://&lt;REPLICA-IP&gt;:&lt;ApplicationPort&gt;/PatchOrchestrationApplication/v1/GetWindowsUpdateResults.
 
 Punkt końcowy REST usługi koordynatora ma port dynamiczny. Aby sprawdzić dokładny adres URL, zapoznaj się z tematem Service Fabric Explorer. Na przykład wyniki są dostępne na *http://10.0.0.7:20000/PatchOrchestrationApplication/v1/GetWindowsUpdateResults* .
 
@@ -256,7 +256,7 @@ Punkt końcowy REST usługi koordynatora ma port dynamiczny. Aby sprawdzić dok�
 
 Jeśli zwrotny serwer proxy jest włączony w klastrze, można uzyskać dostęp do adresu URL spoza klastra.
 
-Wymagany punkt końcowy to *http://&lt;SERVERURL &gt;: &lt;REVERSEPROXYPORT &gt;/patchorchestrationapplication/coordinatorservice/V1/getwindowsupdateresults*.
+Wymagany punkt końcowy to *http://&lt;SERVERURL&gt;:&lt;REVERSEPROXYPORT&gt;/PatchOrchestrationApplication/CoordinatorService/V1/GetWindowsUpdateResults*.
 
 Aby włączyć zwrotny serwer proxy w klastrze, postępuj zgodnie z instrukcjami w [odwrotnym serwerze proxy na platformie Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-reverseproxy). 
 
@@ -277,7 +277,7 @@ Aby ułatwić zrozumienie, jak aktualizacje są realizowane w węźle, przejdźm
 
 1. NodeAgentNTService, uruchomione w każdym węźle, wyszukuje dostępne aktualizacje systemu Windows w zaplanowanym czasie. Jeśli aktualizacje są dostępne, pobiera je w węźle.
 
-1. Po pobraniu aktualizacji Agent węzła NTService tworzy odpowiednie zadanie naprawy dla węzła o nazwie *POS___ \<unique_id >* . Te zadania naprawy można wyświetlić za pomocą polecenia cmdlet [Get-ServiceFabricRepairTask](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricrepairtask?view=azureservicefabricps) lub za pomocą SFX w sekcji Szczegóły węzła. Po utworzeniu zadania naprawy szybko przechodzi do [stanu *zatwierdzono* ](https://docs.microsoft.com/dotnet/api/system.fabric.repair.repairtaskstate?view=azure-dotnet).
+1. Po pobraniu aktualizacji Agent węzła NTService tworzy odpowiednie zadanie naprawy dla węzła o nazwie *POS___\<unique_id >* . Te zadania naprawy można wyświetlić za pomocą polecenia cmdlet [Get-ServiceFabricRepairTask](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricrepairtask?view=azureservicefabricps) lub za pomocą SFX w sekcji Szczegóły węzła. Po utworzeniu zadania naprawy szybko przechodzi do [stanu *zatwierdzono* ](https://docs.microsoft.com/dotnet/api/system.fabric.repair.repairtaskstate?view=azure-dotnet).
 
 1. Usługa koordynatora okresowo szuka zadań naprawy w stanie *zatwierdzono* , a następnie aktualizuje je w celu *przygotowania* stanu na podstawie TaskApprovalPolicy. Jeśli TaskApprovalPolicy jest skonfigurowany jako NodeWise, zadanie naprawy odnoszące się do węzła jest przygotowywane tylko wtedy, gdy żadne inne zadanie naprawy nie jest obecnie *przygotowywane*, *zatwierdzane*, *wykonywane*lub *przywracane* . 
 
@@ -285,7 +285,7 @@ Aby ułatwić zrozumienie, jak aktualizacje są realizowane w węźle, przejdźm
 
    Wersje POA 1.4.0 i nowsze zdarzenia wpisu z właściwością ClusterPatchingStatus na CoordinatorService w celu wyświetlenia poprawek, które są używane. Aktualizacje są instalowane na _poanode_0, jak pokazano na poniższej ilustracji:
 
-    [![Image stanu poprawek klastra](media/service-fabric-patch-orchestration-application/clusterpatchingstatus.png)](media/service-fabric-patch-orchestration-application/clusterpatchingstatus.png#lightbox)
+    [![obrazu stanu poprawek klastra](media/service-fabric-patch-orchestration-application/clusterpatchingstatus.png)](media/service-fabric-patch-orchestration-application/clusterpatchingstatus.png#lightbox)
 
 1. Po wyłączeniu węzła zadanie naprawy jest przenoszone do stanu *wykonywania* . 
    
@@ -294,11 +294,11 @@ Aby ułatwić zrozumienie, jak aktualizacje są realizowane w węźle, przejdźm
 
 1. Gdy zadanie naprawy jest w stanie *wykonywania* , rozpocznie się instalacja poprawek w tym węźle. Po zainstalowaniu poprawki węzeł może lub nie może zostać ponownie uruchomiony, w zależności od poprawki. Następnie zadanie naprawy jest przenoszone do stanu *przywracania* , co powoduje ponowną obsługę węzła. Zadanie naprawy jest następnie oznaczane jako ukończone.
 
-   W programie POA w wersji 1.4.0 i nowszych można znaleźć stan aktualizacji, wyświetlając zdarzenia kondycji na NodeAgentService z właściwością WUOperationStatus-\<NodeName >. Wyróżnione sekcje na poniższych ilustracjach pokazują stan aktualizacji systemu Windows w węzłach *poanode_0* i *poanode_2*:
+   W programie POA w wersji 1.4.0 i nowszych można znaleźć stan aktualizacji, wyświetlając zdarzenia kondycji na NodeAgentService z właściwością WUOperationStatus-\<nodename >. Wyróżnione sekcje na poniższych ilustracjach pokazują stan aktualizacji systemu Windows w węzłach *poanode_0* i *poanode_2*:
 
-   [![Image stanu operacji Windows Update](media/service-fabric-patch-orchestration-application/wuoperationstatusa.png)](media/service-fabric-patch-orchestration-application/wuoperationstatusa.png#lightbox)
+   [![obraz stanu operacji Windows Update](media/service-fabric-patch-orchestration-application/wuoperationstatusa.png)](media/service-fabric-patch-orchestration-application/wuoperationstatusa.png#lightbox)
 
-   [![Image stanu operacji Windows Update](media/service-fabric-patch-orchestration-application/wuoperationstatusb.png)](media/service-fabric-patch-orchestration-application/wuoperationstatusb.png#lightbox)
+   [![obraz stanu operacji Windows Update](media/service-fabric-patch-orchestration-application/wuoperationstatusb.png)](media/service-fabric-patch-orchestration-application/wuoperationstatusb.png#lightbox)
 
    Możesz również uzyskać szczegółowe informacje za pomocą programu PowerShell. W tym celu należy połączyć się z klastrem i pobrać stan zadania naprawy przy użyciu polecenia [Get-ServiceFabricRepairTask](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricrepairtask?view=azureservicefabricps). 
    
@@ -316,19 +316,19 @@ Aby ułatwić zrozumienie, jak aktualizacje są realizowane w węźle, przejdźm
       ExecutorSubState | Opis
     -- | -- 
       Brak = 1 |  Oznacza, że nie było trwającą operacją w węźle. Stan może być w fazie przejścia.
-      DownloadCompleted = 2 | Oznacza, że operacja pobierania została ukończona z sukcesem, częściowym uszkodzeniem lub błędem.
-      InstallationApproved = 3 | Oznacza, że operacja pobierania została zakończona wcześniej, a Menedżer naprawy zatwierdziła instalację.
-      InstallationInProgress = 4 | Odnosi się do stanu wykonania zadania naprawy.
-      InstallationCompleted = 5 | Oznacza, że instalacja została ukończona z sukcesem, częściowym sukcesem lub niepowodzeniem.
+      DownloadCompleted=2 | Oznacza, że operacja pobierania została ukończona z sukcesem, częściowym uszkodzeniem lub błędem.
+      InstallationApproved=3 | Oznacza, że operacja pobierania została zakończona wcześniej, a Menedżer naprawy zatwierdziła instalację.
+      InstallationInProgress=4 | Odnosi się do stanu wykonania zadania naprawy.
+      InstallationCompleted=5 | Oznacza, że instalacja została ukończona z sukcesem, częściowym sukcesem lub niepowodzeniem.
       RestartRequested = 6 | Oznacza, że instalacja poprawki została ukończona i istnieje oczekująca akcja ponownego uruchomienia w węźle.
-      RestartNotNeeded = 7 |  Oznacza, że ponowne uruchomienie nie było wymagane po zakończeniu instalacji poprawki.
-      RestartCompleted = 8 | Oznacza, że ponowne uruchomienie zostało zakończone pomyślnie.
-      OperationCompleted = 9 | Operacja Windows Update została ukończona pomyślnie.
-      OperationAborted = 10 | Oznacza, że operacja Windows Update została przerwana.
+      RestartNotNeeded=7 |  Oznacza, że ponowne uruchomienie nie było wymagane po zakończeniu instalacji poprawki.
+      RestartCompleted=8 | Oznacza, że ponowne uruchomienie zostało zakończone pomyślnie.
+      OperationCompleted=9 | Operacja Windows Update została ukończona pomyślnie.
+      OperationAborted=10 | Oznacza, że operacja Windows Update została przerwana.
 
 1. W programie POA w wersji 1.4.0 i nowszych po zakończeniu próby aktualizacji węzła zdarzenie z właściwością "WUOperationStatus-[nodename]" jest ogłaszane w usłudze NodeAgentService, aby powiadomić użytkownika, gdy zostanie rozpoczęta następna próba pobrania i zainstalowania aktualizacji systemu Windows. Ta wartość jest wyświetlana na poniższym obrazie:
 
-     [![Image stanu operacji Windows Update](media/service-fabric-patch-orchestration-application/wuoperationstatusc.png)](media/service-fabric-patch-orchestration-application/wuoperationstatusc.png#lightbox)
+     [![obraz stanu operacji Windows Update](media/service-fabric-patch-orchestration-application/wuoperationstatusc.png)](media/service-fabric-patch-orchestration-application/wuoperationstatusc.png#lightbox)
 
 ### <a name="diagnostics-logs"></a>Dzienniki diagnostyczne
 
@@ -478,13 +478,13 @@ Administrator musi interweniować i określić przyczynę złej kondycji aplikac
 >[!NOTE]
 > W przypadku wersji POA 1.4.0 i nowszych można znaleźć informacje o wersji i wydania na [stronie wersji aplikacji aranżacji poprawek](https://github.com/microsoft/Service-Fabric-POA/releases/) w witrynie GitHub.
 
-### <a name="version-110"></a>1\.1.0 wersja
+### <a name="version-110"></a>Wersji 1.1.0
 - Wydanie publiczne
 
 ### <a name="version-111"></a>Wersja 1.1.1
 - Naprawiono usterkę w SetupEntryPoint NodeAgentService, która uniemożliwiła instalację NodeAgentNTService.
 
-### <a name="version-120"></a>1\.2.0 wersja
+### <a name="version-120"></a>Wersji 1.2.0 lub nowszej
 
 - Poprawki błędów wokół przepływu pracy ponownego uruchomienia systemu.
 - Poprawka błędu podczas tworzenia zadań Menedżera zasobów, z powodu tego, że sprawdzanie kondycji podczas przygotowywania zadań naprawy nie było wykonywane zgodnie z oczekiwaniami.
@@ -500,7 +500,7 @@ Administrator musi interweniować i określić przyczynę złej kondycji aplikac
 - Pliki binarne są teraz podpisane.
 - Dodano link sfpkg dla aplikacji.
 
-### <a name="version-130"></a>1\.3.0 wersja
+### <a name="version-130"></a>Wersja 1.3.0
 
 - Ustawienie InstallWindowsOSOnlyUpdates na false spowoduje zainstalowanie wszystkich dostępnych aktualizacji.
 - Zmieniono logikę wyłączania aktualizacji automatycznych. Eliminuje to usterkę, w której aktualizacje automatyczne nie zostały wyłączone na serwerze 2016 i nowszych.

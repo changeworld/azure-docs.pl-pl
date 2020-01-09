@@ -1,5 +1,5 @@
 ---
-title: Wprowadzenie do żądań HTTP połączeń hybrydowych usługi Azure Relay na platformie .NET | Microsoft Docs
+title: Azure Relay Połączenia hybrydowe — żądania HTTP w programie .NET
 description: Napisz aplikację konsolową w języku C# do obsługi żądań HTTP połączeń hybrydowych usługi Azure Relay na platformie .NET.
 services: service-bus-relay
 documentationcenter: .net
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 11/01/2018
 ms.author: spelluru
-ms.openlocfilehash: 37227b7d0ea1b3630a3c2ce991a61543e6a1503d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7c984876c4338b4f6802ba55752c8f612c390e94
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66428248"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75355161"
 ---
 # <a name="get-started-with-relay-hybrid-connections-http-requests-in-net"></a>Wprowadzenie do żądań HTTP połączeń hybrydowych usługi Relay na platformie .NET
 [!INCLUDE [relay-selector-hybrid-connections](../../includes/relay-selector-hybrid-connections.md)]
@@ -67,9 +67,9 @@ W programie Visual Studio napisz aplikację konsoli w języku C#, aby wysyłać 
 1. Uruchom aplikację kliencką. W oknie klienta zobaczysz ciąg `hello!`. Klient wysłał żądanie HTTP do serwera, a serwer zwrócił ciąg `hello!`. 
 3. Teraz, aby zamknąć okna konsoli, naciśnij klawisz **ENTER** w obu oknach konsoli. 
 
-Gratulacje, utworzono kompletna aplikacja połączeń hybrydowych.
+Gratulacje, utworzono kompletną aplikację Połączenia hybrydowe.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym przewodniku Szybki start utworzono aplikacje klienta i serwera w środowisku .NET służące do wysyłania i odbierania komunikatów za pomocą protokołu HTTP. Funkcja połączeń hybrydowych usługi Azure Relay obsługuje również wysyłanie i odbieranie komunikatów przy użyciu obiektów WebSocket. Aby dowiedzieć się, jak używać obiektów WebSocket z funkcją połączeń hybrydowych usługi Azure Relay, zobacz [Przewodnik Szybki start dotyczący obiektów WebSocket](relay-hybrid-connections-dotnet-get-started.md).
 

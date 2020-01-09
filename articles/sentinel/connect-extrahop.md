@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/04/2019
+ms.date: 12/30/2019
 ms.author: cabailey
-ms.openlocfilehash: ac9de44603eb80ca526e358013d2148240f85258
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 90d2a5a985e904217a461b509fb171822d266f60
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73514162"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610581"
 ---
-# <a name="connect-extrahop-revealx"></a>Pokaż ExtraHop (x)
+# <a name="connect-extrahop-revealx"></a>Łączenie z rozwiązaniem ExtraHop Reveal(x)
 
 Łącznik danych ExtraHop odsłon (x) pozwala łatwo połączyć system odkrywania (x) z wskaźnikiem kontroli platformy Azure, aby wyświetlić pulpity nawigacyjne, utworzyć niestandardowe alerty i poprawić badanie. Dzięki tej integracji można uzyskać wgląd w sieć organizacji i zwiększyć możliwości operacji zabezpieczeń.
 
@@ -44,4 +44,6 @@ ms.locfileid: "73514162"
 W tym dokumencie przedstawiono sposób łączenia ExtraHop odsłony (x) z platformą Azure. Aby dowiedzieć się więcej na temat platformy Azure, zobacz następujące artykuły:
 - Dowiedz się [, jak uzyskać wgląd w dane oraz potencjalne zagrożenia](quickstart-get-visibility.md).
 - Rozpocznij [wykrywanie zagrożeń za pomocą platformy Azure — wskaźnik](tutorial-detect-threats-built-in.md).
+- [Używaj skoroszytów](tutorial-monitor-your-data.md) do monitorowania danych.
+
 

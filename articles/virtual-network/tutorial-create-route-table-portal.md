@@ -18,16 +18,16 @@ ms.workload: infrastructure
 ms.date: 12/12/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 7e7a01b7fdc1a508fa19397900f8fd4f52d49c53
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: be4a47d26bcfc407734956a3d9bf8778c5afcfb4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73164005"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75350291"
 ---
 # <a name="tutorial-route-network-traffic-with-a-route-table-using-the-azure-portal"></a>Samouczek: kierowanie ruchem sieciowym za pomocą tabeli tras z użyciem witryny Azure Portal
 
-Platforma Azure domyślnie kieruje ruchem między wszystkimi podsieciami w sieci wirtualnej. Możesz tworzyć własne trasy zastępujące domyślne trasy platformy Azure. Możliwość tworzenia niestandardowych tras jest przydatna, jeśli na przykład chcesz kierować ruchem między podsieciami za pomocą wirtualnego urządzenia sieciowego (NVA). Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Platforma Azure domyślnie kieruje ruchem między wszystkimi podsieciami w sieci wirtualnej. Możesz tworzyć własne trasy zastępujące domyślne trasy platformy Azure. Możliwość tworzenia niestandardowych tras jest przydatna, jeśli na przykład chcesz kierować ruchem między podsieciami za pomocą wirtualnego urządzenia sieciowego (NVA). Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Tworzenie tabeli tras
@@ -44,7 +44,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
 
-Zaloguj się do [portalu Azure](https://portal.azure.com).
+Zaloguj się do [Portalu Azure](https://portal.azure.com).
 
 ## <a name="create-a-route-table"></a>Tworzenie tabeli tras
 
@@ -58,7 +58,7 @@ Zaloguj się do [portalu Azure](https://portal.azure.com).
     | Subskrypcja | Wybierz subskrypcję. |
     | Grupa zasobów | Wybierz pozycję **Utwórz nową**, wprowadź nazwę *myResourceGroup*, a następnie wybierz przycisk *OK*. |
     | Lokalizacja | Pozostaw wartość domyślną **Wschodnie stany USA**.
-    | Propagowanie tras BGP | Pozostaw wartość domyślną **Włączone**. |
+    | Propagacja trasy bramy Virtual Network | Pozostaw wartość domyślną **Włączone**. |
 
 1. Wybierz pozycję **Utwórz**.
 
@@ -265,7 +265,7 @@ Maszynę wirtualną *myVmPrivate* możesz utworzyć w czasie, gdy platforma Azur
 
 1. Wybierz pozycję **Połącz**, aby utworzyć połączenie pulpitu zdalnego z maszyną wirtualną *myVmPrivate*.
 
-1. W polu **Połącz z maszyną wirtualną** wybierz opcję **Pobierz plik RDP**. Plik Remote Desktop Protocol ( *.rdp*) zostanie utworzony na platformie Azure, a następnie pobrany na komputer.
+1. W polu **Połącz z maszyną wirtualną** wybierz opcję **Pobierz plik RDP**. Na platformie Azure zostanie utworzony plik Remote Desktop Protocol (*rdp*), który zostanie pobrany na komputer.
 
 1. Otwórz pobrany plik *rdp*.
 

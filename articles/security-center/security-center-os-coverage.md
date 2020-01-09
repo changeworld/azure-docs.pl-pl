@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2019
 ms.author: memildin
-ms.openlocfilehash: 47e66bfc4550372b571b7263ef5b7f2f149712dc
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: 42bd6037bcc94a83e649433e9ea0425fbdf11cd2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74307308"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75353319"
 ---
 # <a name="supported-platforms"></a>Obsługiwane platformy 
 
@@ -52,17 +52,17 @@ Aby dowiedzieć się więcej o obsługiwanych funkcjach systemów operacyjnych W
 
 ### Systemy operacyjne Linux<a name="os-linux"></a>
 
-64 — bit
+64-bitowa
 
 * CentOS 6 i 7
 * Amazon Linux 2017,09
-* Oracle Linux 6 i 7
+* Oracle Linux 6 i Oracle Linux 7
 * Red Hat Enterprise Linux Server 6 i 7
 * Debian GNU/Linux 8 i 9
 * Ubuntu Linux 14,04 LTS, 16,04 LTS i 18,04 LTS
 * SUSE Linux Enterprise Server 12
 
-32 — bit
+32-bitowa
 * CentOS 6
 * Oracle Linux 6
 * Red Hat Enterprise Linux Server 6
@@ -102,7 +102,7 @@ Następujące zasoby usługi Azure PaaS są obsługiwane przez Azure Security Ce
 * Konto usługi Service Fabric
 * Konto usługi Automation
 * Moduł równoważenia obciążenia
-* Wyszukiwanie
+* Search
 * Przestrzeń nazw magistrala usług
 * Stream Analytics
 * Przestrzeń nazw centrum zdarzeń
@@ -110,7 +110,7 @@ Następujące zasoby usługi Azure PaaS są obsługiwane przez Azure Security Ce
 * Redis
 * Data Lake Analytics
 * Data Lake Store
-* Magazyn kluczy
+* Key Vault
 
 Aby dowiedzieć się więcej na temat obsługiwanych funkcji dla powyższej listy zasobów PaaS, zobacz [obsługiwane funkcje usług PaaS Services](security-center-services.md#paas-services).
 

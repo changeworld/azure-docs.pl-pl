@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/07/2018
 ms.author: cynthn
-ms.openlocfilehash: b4ab46a59bd83bf2d1c08e3a238df3c59797f3e7
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 3fed0d14908dff346fa6134a91096c757c6d9fab
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035605"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75463827"
 ---
 # <a name="how-to-create-a-linux-virtual-machine-in-azure-with-multiple-network-interface-cards"></a>Jak utworzyć maszynę wirtualną z systemem Linux na platformie Azure przy użyciu wielu kart interfejsu sieciowego
 
@@ -164,7 +164,7 @@ az vm start --resource-group myResourceGroup --name myVM
 
 
 ## <a name="create-multiple-nics-using-resource-manager-templates"></a>Tworzenie wielu kart sieciowych przy użyciu szablonów Menedżer zasobów
-Szablony Azure Resource Manager używają deklaratywnych plików JSON do definiowania środowiska. Możesz zapoznać się [z omówieniem Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md). Szablony Menedżer zasobów umożliwiają tworzenie wielu wystąpień zasobu podczas wdrażania, takich jak tworzenie wielu kart sieciowych. Użyj *Kopiuj* , aby określić liczbę wystąpień do utworzenia:
+Szablony Azure Resource Manager używają deklaratywnych plików JSON do definiowania środowiska. Możesz zapoznać się [z omówieniem Azure Resource Manager](../../azure-resource-manager/management/overview.md). Szablony Menedżer zasobów umożliwiają tworzenie wielu wystąpień zasobu podczas wdrażania, takich jak tworzenie wielu kart sieciowych. Użyj *Kopiuj* , aby określić liczbę wystąpień do utworzenia:
 
 ```json
 "copy": {

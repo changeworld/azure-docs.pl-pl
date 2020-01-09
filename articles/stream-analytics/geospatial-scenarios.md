@@ -1,18 +1,17 @@
 ---
 title: Geoogrodzenie i agregacja geoprzestrzenna z Azure Stream Analytics
 description: W tym artykule opisano, jak używać Azure Stream Analytics do geoogrodzenia i agregacji geoprzestrzennej.
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/02/2019
-ms.openlocfilehash: d44b2fae677554594f0cc280c1129bbd6effddf2
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 5a3aa3786469c3df37b53cb82bdd396871689297
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72935070"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443639"
 ---
 # <a name="geofencing-and-geospatial-aggregation-scenarios-with-azure-stream-analytics"></a>Scenariusze wieloogrodzeniowe i agregacji geoprzestrzennej z Azure Stream Analytics
 
@@ -46,7 +45,7 @@ Poniższa tabela zawiera przykładowe dane referencyjne geoogrodzenia, które mo
 
 Urządzenia mogą emitować ich identyfikatory i lokalizacje co minutę za pomocą strumienia o nazwie `DeviceStreamInput`. Poniższa tabela zawiera strumień danych wejściowych.
 
-|Identyfikator|Położenie geopozycji|
+|ID urządzenia|Położenie geopozycji|
 |--------|-----------|
 |Z|"POINT (-122.13292341559497 47.636318374032726)"|
 |B|"POINT (-122.13338475554553 47.63743531308874)"|
@@ -99,12 +98,12 @@ Te wielokąty są przeznaczone tylko do celów informacyjnych i nie reprezentuj�
 
 Poniższa tabela zawiera dane przesyłane strumieniowo "kolarstwu".
 
-|Nazwa|FromLocation|ToLocation|TripRequestedTime|
+|Identyfikator użytkownika|FromLocation|ToLocation|TripRequestedTime|
 |------|------------|----------|-----------------|
 |Z|"POINT (-74.00726861389182 40.71610611981975)"|"POINT (-73.98615095917779 40.703107386025835)"|"2019-03-12T07:00:00Z"|
 |B|"POINT (-74.00249841021645 40.723827238895666)"|"POINT (-74.01160699942085 40.71378884930115)"|"2019-03-12T07:01:00Z"|
 |S|"POINT (-73.99680120565864 40.716439898624024)"|"POINT (-73.98289663412544 40.72582343969828)"|"2019-03-12T07:02:00Z"|
-|Wykres|"POINT (-74.00741090068288 40.71615626755086)"|"POINT (-73.97999843120539 40.73477895807408)"|"2019-03-12T07:03:00Z"|
+|„D”|"POINT (-74.00741090068288 40.71615626755086)"|"POINT (-73.97999843120539 40.73477895807408)"|"2019-03-12T07:03:00Z"|
 
 Następujące zapytanie sprzęga strumień urządzenia z danymi referencyjnymi geoogrodzenia i oblicza liczbę żądań na region w przedziale czasu 15 minut co minutę.
 

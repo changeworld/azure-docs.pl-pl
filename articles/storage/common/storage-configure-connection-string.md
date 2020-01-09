@@ -1,20 +1,21 @@
 ---
-title: Konfigurowanie parametrów połączenia dla usługi Azure Storage
+title: Konfigurowanie parametrów połączenia
+titleSuffix: Azure Storage
 description: Skonfiguruj parametry połączenia dla konta usługi Azure Storage. Parametry połączenia zawierają informacje potrzebne do autoryzacji dostępu do konta magazynu z aplikacji w czasie wykonywania przy użyciu autoryzacji klucza współużytkowanego.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 06/20/2019
+ms.date: 12/20/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: d1106865b3a2ea3164090896c5b90ab08f996f3d
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: f617beec8a53570ede7755040cfbb92a7d1712b7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640505"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460555"
 ---
 # <a name="configure-azure-storage-connection-strings"></a>Konfiguracja parametrów połączenia usługi Azure Storage
 
@@ -23,8 +24,6 @@ Parametry połączenia zawierają informacje o autoryzacji wymagane przez aplika
 * Nawiązywanie połączenia z emulatorem usługi Azure Storage.
 * Uzyskaj dostęp do konta magazynu na platformie Azure.
 * Dostęp do określonych zasobów na platformie Azure za pośrednictwem sygnatury dostępu współdzielonego (SAS).
-
-[!INCLUDE [storage-recommend-azure-ad-include](../../../includes/storage-recommend-azure-ad-include.md)]
 
 [!INCLUDE [storage-account-key-note-include](../../../includes/storage-account-key-note-include.md)]
 
@@ -52,7 +51,7 @@ Aby uzyskać więcej informacji na temat emulatora magazynu, zobacz [Używanie e
 
 ## <a name="configure-a-connection-string-for-an-azure-storage-account"></a>Konfigurowanie parametrów połączenia dla konta usługi Azure Storage
 
-Aby utworzyć parametry połączenia dla konta usługi Azure Storage, użyj następującego formatu. Wskaż, czy chcesz nawiązać połączenie z kontem magazynu za pośrednictwem protokołu HTTPS (zalecane) lub `myAccountName` http, Zastąp ciąg nazwą konta magazynu i Zastąp `myAccountKey` ciąg kluczem dostępu do konta:
+Aby utworzyć parametry połączenia dla konta usługi Azure Storage, użyj następującego formatu. Wskaż, czy chcesz nawiązać połączenie z kontem magazynu za pośrednictwem protokołu HTTPS (zalecane) lub HTTP, Zastąp `myAccountName` nazwą konta magazynu i Zastąp `myAccountKey` kluczem dostępu do konta:
 
 `DefaultEndpointsProtocol=[http|https];AccountName=myAccountName;AccountKey=myAccountKey`
 
@@ -84,7 +83,7 @@ AccountName=myAccountName;
 AccountKey=myAccountKey
 ```
 
-Jednym z scenariuszy, w którym można określić jawny punkt końcowy, jest zamapowanie punktu końcowego magazynu obiektów BLOB na [domenę](../blobs/storage-custom-domain-name.md)niestandardową. W takim przypadku można określić niestandardowy punkt końcowy dla magazynu obiektów BLOB w parametrach połączenia. Opcjonalnie można określić domyślne punkty końcowe dla innych usług, jeśli są one używane przez aplikację.
+Jednym z scenariuszy, w którym można określić jawny punkt końcowy, jest zamapowanie punktu końcowego magazynu obiektów BLOB na [domenę niestandardową](../blobs/storage-custom-domain-name.md). W takim przypadku można określić niestandardowy punkt końcowy dla magazynu obiektów BLOB w parametrach połączenia. Opcjonalnie można określić domyślne punkty końcowe dla innych usług, jeśli są one używane przez aplikację.
 
 Oto przykład parametrów połączenia, które określają jawny punkt końcowy dla Blob service:
 
@@ -114,12 +113,12 @@ Wartości punktów końcowych w parametrach połączenia są używane do konstru
 Jeśli punkt końcowy magazynu został zamapowany na domenę niestandardową i pominięto ten punkt końcowy z parametrów połączenia, nie będzie można używać tych parametrów połączenia do uzyskiwania dostępu do danych w tej usłudze z kodu.
 
 > [!IMPORTANT]
-> Wartości punktu końcowego usługi w parametrach połączenia muszą mieć poprawnie sformułowane identyfikatory URI `https://` , w tym ( `http://`zalecane) lub. Ponieważ usługa Azure Storage nie obsługuje jeszcze protokołu HTTPS dla domen niestandardowych, *należy* określić `http://` dla dowolnego identyfikatora URI punktu końcowego, który wskazuje na domenę niestandardową.
+> Wartości punktu końcowego usługi w parametrach połączenia muszą mieć poprawnie sformułowane identyfikatory URI, w tym `https://` (zalecane) lub `http://`. Ponieważ usługa Azure Storage nie obsługuje jeszcze protokołu HTTPS dla domen niestandardowych, *należy* określić `http://` dla dowolnego identyfikatora URI punktu końcowego, który wskazuje na domenę niestandardową.
 >
 
 ### <a name="create-a-connection-string-with-an-endpoint-suffix"></a>Tworzenie parametrów połączenia przy użyciu sufiksu punktu końcowego
 
-Aby utworzyć parametry połączenia dla usługi magazynu w regionach lub wystąpieniach z różnymi sufiksami punktów końcowych, takimi jak Azure Chiny 21Vianet lub Azure Government, użyj następującego formatu parametrów połączenia. Wskaż, czy chcesz nawiązać połączenie z kontem magazynu za pośrednictwem protokołu HTTPS (zalecane) lub `myAccountName` protokołu HTTP, Zastąp ciąg nazwą konta magazynu `myAccountKey` , Zastąp ciąg kluczem dostępu do konta `mySuffix` i Zastąp ciąg identyfikatorem URI:
+Aby utworzyć parametry połączenia dla usługi magazynu w regionach lub wystąpieniach z różnymi sufiksami punktów końcowych, takimi jak Azure Chiny 21Vianet lub Azure Government, użyj następującego formatu parametrów połączenia. Wskaż, czy chcesz nawiązać połączenie z kontem magazynu za pośrednictwem protokołu HTTPS (zalecane) lub HTTP, Zastąp `myAccountName` nazwą konta magazynu, Zastąp `myAccountKey` kluczem dostępu do konta, a następnie zastąp `mySuffix` sufiksem URI:
 
 ```
 DefaultEndpointsProtocol=[http|https];

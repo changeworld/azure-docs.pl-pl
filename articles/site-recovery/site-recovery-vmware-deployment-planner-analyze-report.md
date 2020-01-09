@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/4/2019
 ms.author: mayg
-ms.openlocfilehash: b6ac10b47a8bbc987eb1e338991100ee17eacd61
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 4dad11e8331064a9df1b1aed561e00b9a9b24017
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961375"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75495877"
 ---
 # <a name="analyze-the-deployment-planner-report-for-vmware-disaster-recovery-to-azure"></a>Analizowanie raportu Planista wdrażania na potrzeby odzyskiwania po awarii oprogramowania VMware na platformę Azure
 
@@ -178,7 +178,7 @@ Może wystąpić sytuacja, w której nie można ustawić przepustowości większ
 
 **Nazwa maszyny wirtualnej**: nazwa lub adres IP maszyny wirtualnej używany w pliku VMListFile podczas generowania raportu. Ta kolumna obejmuje też dyski (VMDK) dołączone do maszyn wirtualnych. Aby wyróżnić maszyny wirtualne vCenter o zduplikowanych nazwach lub adresach IP, nazwy zawierają nazwę hosta ESXi. Wymieniony host ESXi to host, na którym umieszczono maszynę wirtualną odnaleziono w trakcie okresu profilowania.
 
-**Zgodność maszyny wirtualnej**: wartości to **Tak** i **Tak**\*. **Tak**\* jest dla wystąpień, w których maszyna wirtualna jest zgodna z [dysków ssdem w warstwie Premium](../virtual-machines/windows/disks-types.md). Tutaj profilowany dysk o dużym współczynniku zmian lub dużej liczbie operacji we/wy należy do kategorii P20 lub P30, ale z powodu swojego rozmiaru jest mapowany w dół do kategorii P10 lub P20. Decyzja o tym, do którego typu dysku magazynu Premium będzie mapowany dysk, jest podejmowana na podstawie jego rozmiaru na poziomie konta magazynu. Na przykład:
+**Zgodność maszyny wirtualnej**: wartości to **Tak** i **Tak\*** . **Tak**\* jest dla wystąpień, w których maszyna wirtualna jest zgodna z [dysków ssdem w warstwie Premium](../virtual-machines/windows/disks-types.md). Tutaj profilowany dysk o dużym współczynniku zmian lub dużej liczbie operacji we/wy należy do kategorii P20 lub P30, ale z powodu swojego rozmiaru jest mapowany w dół do kategorii P10 lub P20. Decyzja o tym, do którego typu dysku magazynu Premium będzie mapowany dysk, jest podejmowana na podstawie jego rozmiaru na poziomie konta magazynu. Przykład:
 * Mniej niż 128 GB — P10.
 * 128 GB do 256 GB — P15.
 * 256 GB do 512 GB — P20.
@@ -221,10 +221,7 @@ Na przykład jeśli charakterystyki obciążenia dysku powodują umieszczenie go
 
 **Zgodność maszyny wirtualnej**: wskazuje, dlaczego dana maszyna wirtualna nie jest zgodna na potrzeby użycia z usługą Site Recovery. Niezgodność każdego dysku na podstawie opublikowanych [limitów magazynów](https://aka.ms/azure-storage-scalbility-performance) może wynikać z dowolnej spośród następujących przyczyn:
 
-* Rozmiar dysku jest większy niż 4095 GB. Usługa Azure Storage obecnie nie obsługuje dysków danych większych niż 4095 GB.
-
-* Rozmiar dysku systemu operacyjnego jest większy niż 2048 GB. Usługa Azure Storage obecnie nie obsługuje dysków systemów operacyjnych większych niż 2048 GB.
-
+* Nieprawidłowy rozmiar dysku danych lub nieprawidłowy rozmiar dysku systemu operacyjnego. [Zapoznaj](vmware-physical-azure-support-matrix.md#azure-vm-requirements) się z limitami pomocy technicznej. 
 * Łączny rozmiar maszyny wirtualnej (suma replikacji i testu pracy w trybie failover) przekracza obsługiwany limit rozmiaru konta magazynu (35 TB). Ta niezgodność występuje przeważnie, jeśli wartość charakterystyki wydajności pojedynczego dysku maszyny wirtualnej przekracza maksymalny obsługiwany limit standardowego magazynu platformy Azure lub usługi Site Recovery. Takie wystąpienie powoduje przeniesienie do strefy magazynów Premium Storage. Jednak maksymalny obsługiwany rozmiar konta magazynu Premium Storage jest równy 35 TB i jedna chroniona maszyna wirtualna nie może być chroniona na wielu kontach magazynu. Zauważ również, że przeprowadzenie testu pracy w trybie failover na chronionej maszynie wirtualnej powoduje również uruchomienie go na koncie magazynu z trwającą replikacją. W takiej sytuacji skonfiguruj podwojony rozmiar dysku na potrzeby równoległej kontynuacji replikacji i pomyślnie przeprowadzonego testu pracy w trybie failover.
 
 * Źródłowe operacje we/wy na sekundę przekraczają obsługiwany limit operacji we/wy na sekundę magazynu wynoszący 7500 operacji na dysk.

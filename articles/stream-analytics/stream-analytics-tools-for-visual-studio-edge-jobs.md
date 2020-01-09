@@ -1,20 +1,19 @@
 ---
 title: Azure Stream Analytics zadań brzegowych w programie Visual Studio
 description: W tym artykule opisano sposób tworzenia, debugowania i tworzenia Stream Analytics na zadaniach IoT Edge przy użyciu narzędzi Stream Analytics Tools for Visual Studio.
-services: stream-analytics
 author: su-jie
 ms.author: sujie
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: ec4a4041378ce94ae70ba7a88b3fef80f7dcd193
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 07f109b3d5539f7cd87a12fb42a36803573c2bdf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72925023"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75354568"
 ---
 # <a name="develop-stream-analytics-edge-jobs-using-visual-studio-tools"></a>Opracowywanie zadań Stream Analytics Edge przy użyciu narzędzi Visual Studio Tools
 
@@ -45,7 +44,7 @@ Po utworzeniu projektu przejdź do **Eksplorator rozwiązań** , aby wyświetli�
 
 2. Kliknij prawym przyciskiem myszy pozycję **Azure** > wybierz pozycję **Połącz z subskrypcją Microsoft Azure** > a następnie zaloguj się przy użyciu konta platformy Azure.
 
-## <a name="define-inputs"></a>Definiuj dane wejściowe
+## <a name="define-inputs"></a>Definiowanie danych wejściowych
 
 1. Na **Eksplorator rozwiązań**rozwiń węzeł **wejśćs** , który powinien zobaczyć dane wejściowe o nazwie **EdgeInput. JSON**. Kliknij dwukrotnie, aby wyświetlić jego ustawienia.  
 
@@ -68,7 +67,7 @@ Stream Analytics zadania wdrożone w środowiskach Stream Analytics IoT Edge obs
 
 |**Kategoria**  | **Polecenie**  |
 |---------|---------|
-|Inne operatory | <ul><li>PODZIEL NA PARTYCJE</li><li>SYGNATURA CZASOWA PRZEZ</li><li>JavaScript UDF</li><li>Agregacje zdefiniowane przez użytkownika (UDA)</li><li>GetMetadataPropertyValue</li><li>Używanie więcej niż 14 wartości zagregowanych w jednym kroku</li></ul>   |
+|Inne operatory | <ul><li>PARTITION BY</li><li>SYGNATURA CZASOWA PRZEZ</li><li>JavaScript UDF</li><li>Agregacje zdefiniowane przez użytkownika (UDA)</li><li>GetMetadataPropertyValue</li><li>Używanie więcej niż 14 wartości zagregowanych w jednym kroku</li></ul>   |
 
 Po utworzeniu zadania Stream Analytics Edge w portalu kompilator automatycznie wyświetli ostrzeżenie, jeśli nie używasz obsługiwanego operatora.
 
@@ -123,5 +122,5 @@ Okno widok zadania udostępnia operacje, takie jak odświeżanie zadania, usuwan
 ## <a name="next-steps"></a>Następne kroki
 
 * [Więcej informacji na temat Azure IoT Edge](../iot-edge/about-iot-edge.md)
-* [IoT Edge — samouczek](../iot-edge/tutorial-deploy-stream-analytics.md)
-* [Wyślij opinię do zespołu przy użyciu tej ankiety](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2czagZ-i_9Cg6NhAZlH9ypUMjNEM0RDVU9CVTBQWDdYTlk0UDNTTFdUTC4u) 
+* [Usługa ASA na samouczek dotyczący usługi IoT Edge](../iot-edge/tutorial-deploy-stream-analytics.md)
+* [Wyślij opinię do zespołu za pomocą tej ankiety](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2czagZ-i_9Cg6NhAZlH9ypUMjNEM0RDVU9CVTBQWDdYTlk0UDNTTFdUTC4u) 

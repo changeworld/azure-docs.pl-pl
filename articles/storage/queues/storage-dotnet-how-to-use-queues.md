@@ -8,28 +8,28 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: conceptual
 ms.reviewer: cbrooks
-ms.openlocfilehash: aa92b72b09ed28b41d85ac7c7605077761657d40
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 5ffee146bdbd666d4175af2f49f6b447743b2bc0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68721557"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457688"
 ---
-# <a name="get-started-with-azure-queue-storage-using-net"></a>Rozpoczynanie pracy z usługą Azure Queue Storage przy użyciu platformy .NET
+# <a name="get-started-with-azure-queue-storage-using-net"></a>Wprowadzenie do usługi Azure Queue Storage przy użyciu platformy .NET
 
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
 
 [!INCLUDE [storage-check-out-samples-dotnet](../../../includes/storage-check-out-samples-dotnet.md)]
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
-Usługa Azure Queue Storage umożliwia przesyłanie komunikatów za pomocą chmury między składnikami aplikacji. W przypadku projektowania aplikacji pod kątem skalowania składniki aplikacji są często rozłączane, dzięki czemu mogą być skalowane niezależnie. Usługa Queue Storage zapewnia asynchroniczne przesyłanie komunikatów na potrzeby komunikacji między składnikami aplikacji niezależnie od tego, czy działają w chmurze, na komputerze, serwerze lokalnym czy urządzeniu przenośnym. Usługa Queue Storage obsługuje również zarządzanie asynchronicznymi zadaniami oraz przepływy pracy procesu kompilacji.
+Usługa Azure Queue Storage umożliwia przesyłanie komunikatów za pomocą chmury między składnikami aplikacji. W przypadku projektowania aplikacji pod kątem skalowania składniki aplikacji są często rozłączane, dzięki czemu mogą być skalowane niezależnie. Usługa Queue Storage zapewnia asynchroniczne przesyłanie komunikatów na potrzeby komunikacji między składnikami aplikacji niezależnie od tego, czy działają w chmurze, na komputerze, serwerze lokalnym czy urządzeniu przenośnym. Magazyn kolejek obsługuje również zarządzanie asynchronicznymi zadaniami oraz przepływy pracy procesu kompilacji.
 
 ### <a name="about-this-tutorial"></a>Informacje o tym samouczku
 
 W tym samouczku pokazano, jak napisać kod .NET dla niektórych typowych scenariuszy przy użyciu usługi Azure Queue Storage. Omówione scenariusze obejmują tworzenie i usuwanie kolejek oraz dodawanie, odczytywanie i usuwanie komunikatów kolejek.
 
-**Szacowany czas trwania:** 45 min
+**Szacowany czas trwania:** 45 minut
 
 ### <a name="prerequisites"></a>Wymagania wstępne
 
@@ -37,22 +37,22 @@ W tym samouczku pokazano, jak napisać kod .NET dla niektórych typowych scenari
 * [Wspólna Biblioteka klienta usługi Azure Storage dla platformy .NET](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/)
 * [Biblioteka kliencka kolejki usługi Azure Storage dla platformy .NET](https://www.nuget.org/packages/Microsoft.Azure.Storage.Queue/)
 * [Menedżer konfiguracji Azure dla programu .NET](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/)
-* [konto usługi Azure Storage](../common/storage-quickstart-create-account.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)
+* [Konto usługi Azure Storage](../common/storage-quickstart-create-account.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)
 
 [!INCLUDE [storage-queue-concepts-include](../../../includes/storage-queue-concepts-include.md)]
 
 [!INCLUDE [storage-create-account-include](../../../includes/storage-create-account-include.md)]
 
-## <a name="set-up-your-development-environment"></a>Konfigurowanie środowiska projektowego
+## <a name="set-up-your-development-environment"></a>Konfigurowanie środowiska programistycznego
 
 Następnie skonfiguruj środowisko projektowe w programie Visual Studio, aby przygotować się do wypróbowania przykładów kodu zawartych w tym przewodniku.
 
-### <a name="create-a-windows-console-application-project"></a>Utwórz projekt aplikacji konsoli dla systemu Windows
+### <a name="create-a-windows-console-application-project"></a>Utwórz projekt aplikacji konsolowej dla systemu Windows
 
 W programie Visual Studio utwórz nową aplikację konsoli dla systemu Windows. Poniższe kroki pokazują, jak utworzyć aplikację konsolową w programie Visual Studio 2019. Procedura jest podobna w innych wersjach programu Visual Studio.
 
 1. Wybierz kolejno pozycje **Plik** > **Nowy** > **Projekt**
-2. Wybierz**okna** **platformy** > 
+2. Wybierz > platformy **Windows**
 3. Wybierz pozycję **Aplikacja konsoli (.NET Framework)**
 4. Wybierz pozycję **Dalej**
 5. W polu **Nazwa projektu** wprowadź nazwę aplikacji
@@ -66,8 +66,8 @@ Możesz użyć bibliotek klienckich usługi Azure Storage w dowolnym typie aplik
 
 Aby ukończyć ten samouczek, należy odwołać się do następujących trzech pakietów w projekcie:
 
-* [Microsoft Azure Storage wspólną bibliotekę kliencką dla platformy .NET](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/): ten pakiet zapewnia dostęp programowy do zasobów danych na koncie magazynu.
-* [Microsoft Azure Storage biblioteki kolejki dla platformy .NET](https://www.nuget.org/packages/Microsoft.Azure.Storage.Queue/): Ta Biblioteka kliencka umożliwia pracę z Microsoft Azure Storage usługa kolejki do przechowywania komunikatów, do których może uzyskać dostęp klient.
+* [Microsoft Azure Storage wspólną bibliotekę kliencką dla platformy .NET](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/): Ten pakiet zapewnia programistyczny dostęp do zasobów danych na koncie magazynu.
+* [Microsoft Azure Storage biblioteki kolejki dla platformy .NET](https://www.nuget.org/packages/Microsoft.Azure.Storage.Queue/): Ta biblioteka klienta umożliwia pracę z Microsoft Azure Storage usługa kolejki do przechowywania komunikatów, do których dostęp jest możliwy dla klienta.
 * [Biblioteka programu Microsoft Azure Configuration Manager dla środowiska .NET](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/): ten pakiet zawiera klasę do analizowania parametrów połączenia w pliku konfiguracji, niezależnie od tego, gdzie została uruchomiona aplikacja.
 
 Aby uzyskać te pakiety, można użyć narzędzia NuGet. Wykonaj następujące kroki:
@@ -80,7 +80,7 @@ Aby uzyskać te pakiety, można użyć narzędzia NuGet. Wykonaj następujące k
 > [!NOTE]
 > Pakiety bibliotek klienta magazynu są również dołączone do [zestawu Azure SDK dla platformy .NET](https://azure.microsoft.com/downloads/). Zaleca się jednak również zainstalowanie bibliotek klienta usługi Storage z programu NuGet, aby upewnić się, że zawsze masz najnowsze wersje.
 >
-> Zależności ODataLib w bibliotekach klienta usługi Storage dla platformy .NET są rozwiązywane przez pakiety ODataLib dostępne w pakiecie NuGet, a nie z Usługi danych programu WCF. Biblioteki ODataLib można pobrać bezpośrednio lub użyć odwołań w projekcie kodu za pośrednictwem pakietu NuGet. Określone pakiety ODataLib używane przez biblioteki klienta magazynu to [OData](https://nuget.org/packages/Microsoft.Data.OData/), [EDM](https://nuget.org/packages/Microsoft.Data.Edm/)i przestrzenne. [](https://nuget.org/packages/System.Spatial/) Chociaż te biblioteki są używane przez klasy magazynu tabel platformy Azure, są one wymagane do programowania w bibliotekach klienta magazynu.
+> Zależności ODataLib w bibliotekach klienta usługi Storage dla platformy .NET są rozwiązywane przez pakiety ODataLib dostępne w pakiecie NuGet, a nie z Usługi danych programu WCF. Biblioteki ODataLib można pobrać bezpośrednio lub użyć odwołań w projekcie kodu za pośrednictwem pakietu NuGet. Określone pakiety ODataLib używane przez biblioteki klienta magazynu to [OData](https://nuget.org/packages/Microsoft.Data.OData/), [EDM](https://nuget.org/packages/Microsoft.Data.Edm/)i [przestrzenne](https://nuget.org/packages/System.Spatial/). Chociaż te biblioteki są używane przez klasy magazynu tabel platformy Azure, są one wymagane do programowania w bibliotekach klienta magazynu.
 
 ### <a name="determine-your-target-environment"></a>Określanie środowiska docelowego
 
@@ -89,7 +89,7 @@ W przypadku uruchamiania przykładów w tym przewodniku istnieją dwie opcje śr
 * Można uruchomić kod dla konta usługi Azure Storage w chmurze.
 * Można uruchomić kod dla emulatora usługi Azure Storage. Emulator magazynu jest lokalnym środowiskiem, które emuluje konto usługi Azure Storage w chmurze. Emulator jest bezpłatną opcją do testowania i debugowania kodu, gdy aplikacja jest w fazie projektowania. Emulator używa dobrze znanego konta i klucza. Aby uzyskać więcej informacji, zobacz [Używanie emulatora usługi Azure Storage do programowania i testowania](../common/storage-use-emulator.md).
 
-Jeśli obiektem docelowym jest konto magazynu w chmurze, skopiuj podstawowy klucz dostępu dla konta magazynu z witryny Azure Portal. Aby uzyskać więcej informacji, zobacz temat [Klucze dostępu](../common/storage-account-manage.md#access-keys).
+Jeśli obiektem docelowym jest konto magazynu w chmurze, skopiuj podstawowy klucz dostępu dla konta magazynu z witryny Azure Portal. Aby uzyskać więcej informacji, zobacz [Zarządzanie kluczami dostępu do konta magazynu](../common/storage-account-keys-manage.md).
 
 > [!NOTE]
 > Na obiekt docelowy można wybrać emulator magazynu, aby uniknąć ponoszenia kosztów związanych z usługą Azure Storage. Jednak jeśli wybranym obiektem docelowym będzie konto usługi Azure Storage w chmurze, koszty związane z wykonaniem instrukcji w tym samouczku będą niewielkie.
@@ -103,7 +103,7 @@ Aby uzyskać więcej informacji dotyczących parametrów połączenia, zobacz [K
 > [!NOTE]
 > Klucz konta magazynu jest podobny do hasła głównego konta magazynu. Zawsze chroń klucz konta magazynu. Nie udostępniaj go innym użytkownikom, nie koduj go trwale ani nie zapisuj w zwykłym pliku tekstowym, do którego mają dostęp inne osoby. Wygeneruj ponownie klucz za pośrednictwem witryny Azure Portal, jeśli uważasz, że jego zabezpieczenia mogły zostać naruszone.
 
-Aby skonfigurować parametry połączenia, Otwórz plik **App. config** z Eksplorator rozwiązań w programie Visual Studio. Dodaj zawartość **\<elementu AppSettings\>** pokazanego poniżej. Zastąp wartość *nazwa konta* nazwą konta magazynu i *klucz konta* kluczem dostępu do konta:
+Aby skonfigurować parametry połączenia, Otwórz plik **App. config** z Eksplorator rozwiązań w programie Visual Studio. Dodaj zawartość **\<appSettings\>** pokazane poniżej. Zastąp wartość *nazwa konta* nazwą konta magazynu i *klucz konta* kluczem dostępu do konta:
 
 ```xml
 <configuration>

@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/04/2019
+ms.date: 12/30/2019
 ms.author: cabailey
-ms.openlocfilehash: 3d467026022a7bc90babd94827d64828f59ea714
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: f7d5531c8aba3e2e7abb56d82342bfda79dbc71b
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73518127"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610730"
 ---
-# <a name="connect-barracuda-cloudgen-firewall"></a>Podłączanie zapory Barracuda CloudGen
+# <a name="connect-barracuda-cloudgen-firewall"></a>Łączenie z rozwiązaniem Barracuda CloudGen Firewall
 
 Łącznik Barracuda CloudGen Firewall (CGFW) umożliwia łatwe łączenie dzienników Barracuda CGFW z platformą Azure, aby wyświetlać pulpity nawigacyjne, tworzyć niestandardowe alerty i usprawnić badanie. Zapewnia to dokładniejszy wgląd w sieć organizacji i zwiększa możliwości operacji zabezpieczeń.
 
@@ -47,4 +47,6 @@ ms.locfileid: "73518127"
 W tym dokumencie przedstawiono sposób łączenia zapory Barracuda CloudGen z usługą Azure wskaźnikiem. Aby dowiedzieć się więcej na temat platformy Azure, zobacz następujące artykuły:
 - Dowiedz się [, jak uzyskać wgląd w dane oraz potencjalne zagrożenia](quickstart-get-visibility.md).
 - Rozpocznij [wykrywanie zagrożeń za pomocą platformy Azure — wskaźnik](tutorial-detect-threats-built-in.md).
+- [Używaj skoroszytów](tutorial-monitor-your-data.md) do monitorowania danych.
+
 

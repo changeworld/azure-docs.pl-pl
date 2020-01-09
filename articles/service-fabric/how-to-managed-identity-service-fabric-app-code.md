@@ -1,19 +1,14 @@
 ---
-title: Azure Service Fabric — używanie tożsamości zarządzanej z aplikacjami Service Fabric | Microsoft Docs
-description: Jak używać tożsamości zarządzanych na podstawie kodu aplikacji Service Fabric
-services: service-fabric
-author: athinanthny
-ms.service: service-fabric
-ms.devlang: dotnet
+title: Używanie tożsamości zarządzanej z aplikacją
+description: Jak uzyskać dostęp do usług platformy Azure za pomocą zarządzanych tożsamości w usłudze Azure Service Fabric kodzie aplikacji. Ta funkcja jest dostępna w publicznej wersji zapoznawczej.
 ms.topic: article
-ms.date: 7/25/2019
-ms.author: atsenthi
-ms.openlocfilehash: 6a3d33954bda0605e752555922914a9fd432d8c1
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.date: 10/09/2019
+ms.openlocfilehash: 59680ec7911f55c3dc49d8834b410a039aa435dc
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70968225"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610322"
 ---
 # <a name="how-to-leverage-a-service-fabric-applications-managed-identity-to-access-azure-services-preview"></a>Jak korzystać z zarządzanej tożsamości aplikacji Service Fabric w celu uzyskiwania dostępu do usług platformy Azure (wersja zapoznawcza)
 
@@ -36,12 +31,12 @@ W odniesieniu do środowiska usługi Service Fabric z włączoną obsługą toż
 > Nazwy "MSI_ENDPOINT" i "MSI_SECRET" odnoszą się do poprzedniego wyznaczania tożsamości zarządzanych ("tożsamość usługi zarządzanej"), które są obecnie przestarzałe. Nazwy są również spójne z równoważnymi nazwami zmiennych środowiskowych używanymi przez inne usługi platformy Azure, które obsługują tożsamości zarządzane.
 
 > [!IMPORTANT]
-> Kod aplikacji powinien uwzględniać wartość zmiennej środowiskowej "MSI_SECRET" jako dane poufne — nie należy jej rejestrować ani rozpowszechniać w inny sposób. Kod uwierzytelniania nie ma wartości poza węzłem lokalnym lub po zakończeniu procesu obsługującego usługę, ale reprezentuje tożsamość usługi Service Fabric i dlatego powinien być traktowany z tymi samymi środkami ostrożności co sam token dostępu.
+> Kod aplikacji powinien uwzględniać wartość zmiennej środowiskowej "MSI_SECRET" jako poufne dane — nie należy jej rejestrować ani rozpowszechniać w inny sposób. Kod uwierzytelniania nie ma wartości poza węzłem lokalnym lub po zakończeniu procesu obsługującego usługę, ale reprezentuje tożsamość usługi Service Fabric i dlatego powinien być traktowany z tymi samymi środkami ostrożności co sam token dostępu.
 
 Aby uzyskać token, Klient wykonuje następujące czynności:
-- tworzy identyfikator URI przez połączenie punktu końcowego tożsamości zarządzanej (wartość MSI_ENDPOINT) z wersją interfejsu API i zasobem (odbiorcy) wymaganym dla tokenu
+- tworzy identyfikator URI przez połączenie punktu końcowego tożsamości zarządzanej (MSI_ENDPOINT wartość) z wersją interfejsu API i zasobem (odbiorcy) wymaganym dla tokenu
 - tworzy żądanie GET http dla określonego identyfikatora URI
-- dodaje kod uwierzytelniania (wartość MSI_SECRET) jako nagłówek do żądania
+- dodaje kod uwierzytelniania (MSI_SECRET wartość) jako nagłówek żądania
 - przesyła żądanie
 
 Pomyślna odpowiedź będzie zawierać ładunek JSON reprezentujący otrzymany token dostępu, a także metadane opisujące go. Odpowiedź zakończona niepowodzeniem również zawiera wyjaśnienie błędu. Dodatkowe szczegóły dotyczące obsługi błędów znajdują się poniżej.
@@ -59,8 +54,8 @@ gdzie:
 | ------- | ----------- |
 | `GET` | Czasownik HTTP wskazujący, że chcesz pobrać dane z punktu końcowego. W tym przypadku token dostępu OAuth. | 
 | `http://localhost:2377/metadata/identity/oauth2/token` | Zarządzany punkt końcowy tożsamości dla aplikacji Service Fabric udostępniany za pośrednictwem zmiennej środowiskowej MSI_ENDPOINT. |
-| `api-version` | Parametr ciągu zapytania, określający wersję interfejsu API usługi zarządzanego tokenu tożsamości; obecnie jedyną akceptowaną wartością jest `2019-07-01-preview`i może ulec zmiana. |
-| `resource` | Parametr ciągu zapytania, wskazujący identyfikator URI aplikacji dla zasobu docelowego. Zostanie to odzwierciedlone jako `aud` zbiór odbiorców dla wystawionego tokenu. Ten przykład żąda tokenu, aby uzyskać dostęp do Azure Key Vault, którego identyfikator URI aplikacji to https\/:/keyvault.Azure.com/. |
+| `api-version` | Parametr ciągu zapytania, określający wersję interfejsu API usługi zarządzanego tokenu tożsamości; obecnie jedyną akceptowaną wartością jest `2019-07-01-preview`i może ulec zmianie. |
+| `resource` | Parametr ciągu zapytania, wskazujący identyfikator URI aplikacji dla zasobu docelowego. Zostanie to odzwierciedlone jako `aud` (grupy odbiorców) wystawionego tokenu. Ten przykład żąda tokenu, aby uzyskać dostęp do Azure Key Vault, którego identyfikator URI aplikacji to https:\//keyvault.azure.com/. |
 | `Secret` | Pole nagłówka żądania HTTP wymagane przez usługę Service Fabric zarządzanym tokenem tożsamości dla usług Service Fabric do uwierzytelniania obiektu wywołującego. Ta wartość jest dostarczana przez środowisko uruchomieniowe SF za pośrednictwem zmiennej środowiskowej MSI_SECRET. |
 
 
@@ -80,9 +75,9 @@ gdzie:
 | Element | Opis |
 | ------- | ----------- |
 | `token_type` | Typ tokenu; w tym przypadku token dostępu "Bearer", który oznacza, że prezenter ("Bearer") tego tokenu jest zamierzonym tematem tokenu. |
-| `access_token` | Żądany token dostępu. Podczas wywoływania bezpiecznego interfejsu API REST token jest osadzony w `Authorization` polu nagłówka żądania jako token "Bearer", dzięki czemu interfejs API może uwierzytelniać obiekt wywołujący. | 
-| `expires_on` | Sygnatura czasowa wygaśnięcia tokenu dostępu; reprezentowane jako liczba sekund od "1970-01-01T0:0: 0Z UTC" i odpowiada na `exp` żądania tokenu. W tym przypadku token wygasa w dniu 2019-08-08T06:10:11 + 00:00 (w dokumencie RFC 3339)|
-| `resource` | Zasób, dla którego został wystawiony token dostępu, określony za `resource` pomocą parametru ciągu zapytania żądania; odnosi się do roszczeń "AUD" tokenu. |
+| `access_token` | Żądany token dostępu. Podczas wywoływania bezpiecznego interfejsu API REST token jest osadzony w polu nagłówka żądania `Authorization` jako token "Bearer", co umożliwia interfejsowi API uwierzytelnianie obiektu wywołującego. | 
+| `expires_on` | Sygnatura czasowa wygaśnięcia tokenu dostępu; reprezentowane jako liczba sekund od "1970-01-01T0:0: 0Z UTC" i odpowiada `exp`m tokenu. W tym przypadku token wygasa w dniu 2019-08-08T06:10:11 + 00:00 (w dokumencie RFC 3339)|
+| `resource` | Zasób, dla którego został wystawiony token dostępu, określony za pośrednictwem parametru ciągu zapytania `resource` żądania; odnosi się do roszczeń "AUD" tokenu. |
 
 
 ## <a name="acquiring-an-access-token-using-c"></a>Uzyskiwanie tokenu dostępu przy użyciuC#
@@ -328,7 +323,7 @@ Jeśli wystąpi błąd, odpowiadająca treść odpowiedzi HTTP zawiera obiekt JS
 
 | Element | Opis |
 | ------- | ----------- |
-| code | Kod błędu. |
+| kod | Kod błędu. |
 | correlationId | Identyfikator korelacji, który może być używany do debugowania. |
 | message | Pełny opis błędu. **Opis błędów można zmienić w dowolnym momencie. Nie zależą od samego komunikatu o błędzie.**|
 
@@ -339,7 +334,7 @@ Błąd próbki:
 
 Poniżej znajduje się lista typowych błędów Service Fabric związanych z tożsamościami zarządzanymi:
 
-| Kod | Message | Opis | 
+| Code | Wiadomość | Opis | 
 | ----------- | ----- | ----------------- |
 | SecretHeaderNotFound | Nie znaleziono wpisu tajnego w nagłówkach żądania. | Kod uwierzytelniania nie został dostarczony wraz z żądaniem. | 
 | ManagedIdentityNotFound | Nie znaleziono tożsamości zarządzanej dla określonego hosta aplikacji. | Aplikacja nie ma tożsamości lub kod uwierzytelniania jest nieznany. |
@@ -351,7 +346,7 @@ Poniżej znajduje się lista typowych błędów Service Fabric związanych z to�
 
 Zazwyczaj jedynym powtarzanym kodem błędu jest 429 (zbyt wiele żądań); wewnętrzne błędy serwera/5xx kody błędów mogą być ponawiane, chociaż Przyczyna może być trwała. 
 
-Limity ograniczania mają zastosowanie do liczby wywołań w podsystemie tożsamości zarządzanej — w odniesieniu do zależności "nadrzędnych" (usługi tożsamości zarządzanej platformy Azure lub usługi bezpiecznego tokenu). Service Fabric buforuje tokeny na różnych poziomach w potoku, ale z uwzględnieniem rozproszonego charakteru powiązanych składników, wywołujący może napotkać niespójne odpowiedzi dotyczące ograniczania przepustowości (tj. uzyskać ograniczenia dotyczące jednego węzła/wystąpienia aplikacji, ale nie na inny węzeł podczas żądania tokenu dla tej samej tożsamości). Po ustawieniu warunku ograniczania kolejne żądania z tej samej aplikacji mogą kończyć się niepowodzeniem z kodem stanu HTTP 429 (zbyt wiele żądań) do momentu wyczyszczenia warunku.  
+Limity ograniczania mają zastosowanie do liczby wywołań w podsystemie tożsamości zarządzanej — w odniesieniu do zależności "nadrzędnych" (usługi tożsamości zarządzanej platformy Azure lub usługi bezpiecznego tokenu). Service Fabric buforuje tokeny na różnych poziomach potoku, ale z uwzględnieniem rozproszonego charakteru powiązanych składników, wywołujący może wystąpić niespójne odpowiedzi dotyczące ograniczania przepustowości (tj. uzyskać ograniczenia dotyczące jednego węzła/wystąpienia aplikacji, ale nie w innym węźle podczas żądania tokenu dla tej samej tożsamości). Po ustawieniu warunku ograniczania kolejne żądania z tej samej aplikacji mogą kończyć się niepowodzeniem z kodem stanu HTTP 429 (zbyt wiele żądań) do momentu wyczyszczenia warunku.  
 
 Zaleca się, aby żądania nie powiodły się, ponieważ trwa ponawianie próby ograniczenia przy użyciu wykładniczej wycofywania w następujący sposób: 
 

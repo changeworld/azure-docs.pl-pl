@@ -1,31 +1,22 @@
 ---
-title: Serializacja typów Reliable Actors dodatkowej aktora | Dokumentacja firmy Microsoft
-description: W tym artykule omówiono podstawowe wymagania dotyczące definiowania klas możliwych do serializacji, które mogą służyć do zdefiniowania stanów elementów Reliable Actors usługi Service Fabric i interfejsy
-services: service-fabric
-documentationcenter: .net
+title: Reliable Actors uwagi dotyczące serializacji typu aktora
+description: Omawia podstawowe wymagania dotyczące definiowania klas możliwych do serializacji, których można użyć do zdefiniowania Service Fabric Reliable Actors stanów i interfejsów
 author: vturecek
-manager: chackdan
-editor: ''
-ms.assetid: 6e50e4dc-969a-4a1c-b36c-b292d964c7e3
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: c8eeeb0ade6ca002adf3211cbf49127be9b76edb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 876c4f5f45ff6c81a53274cf32e8bebecc1acfce
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60725656"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75349310"
 ---
-# <a name="notes-on-service-fabric-reliable-actors-type-serialization"></a>Uwagi dotyczące usługi Service Fabric Reliable Actors — serializacja typów
-Argumenty wszystkie metody, typy wyników zadania zwracane przez poszczególnych metod interfejsu aktora i obiekty przechowywane w Menedżer stanu aktora należy [kontraktu danych serializacji](/dotnet/framework/wcf/feature-details/types-supported-by-the-data-contract-serializer). Dotyczy to również argumenty metody zdefiniowane w [interfejsów zdarzeń aktora](service-fabric-reliable-actors-events.md). (Metod interfejsu zdarzenia aktora zawsze zwracać typ void.)
+# <a name="notes-on-service-fabric-reliable-actors-type-serialization"></a>Uwagi dotyczące serializacji typu Service Fabric Reliable Actors
+Argumenty wszystkich metod, typy wyników zadań zwracanych przez każdą metodę w interfejsie aktora, a obiekty przechowywane w Menedżerze stanu aktora muszą być [serializowane kontraktu danych](/dotnet/framework/wcf/feature-details/types-supported-by-the-data-contract-serializer). Dotyczy to również argumentów metod zdefiniowanych w [interfejsie zdarzeń aktora](service-fabric-reliable-actors-events.md). (Aktora metody interfejsu zawsze zwracają wartość void.)
 
 ## <a name="custom-data-types"></a>Niestandardowe typy danych
-W tym przykładzie następujący interfejs aktora definiuje metodę, która zwraca niestandardowego typu danych o nazwie `VoicemailBox`:
+W tym przykładzie następujący interfejs aktora definiuje metodę, która zwraca niestandardowy typ danych o nazwie `VoicemailBox`:
 
 ```csharp
 public interface IVoiceMailBoxActor : IActor
@@ -41,7 +32,7 @@ public interface VoiceMailBoxActor extends Actor
 }
 ```
 
-Interfejs jest implementowany przez aktora, który używa Menedżera stanu do przechowywania `VoicemailBox` obiektu:
+Interfejs jest implementowany przez aktora, który używa menedżera stanu do przechowywania obiektu `VoicemailBox`:
 
 ```csharp
 [StatePersistence(StatePersistence.Persisted)]
@@ -77,12 +68,12 @@ public class VoiceMailBoxActorImpl extends FabricActor implements VoicemailBoxAc
 
 ```
 
-W tym przykładzie `VoicemailBox` serializowany jest obiekt po:
+W tym przykładzie obiekt `VoicemailBox` jest serializowany w następujących przypadkach:
 
-* Obiekt są przesyłane między wystąpienia aktora, a obiekt wywołujący.
-* Obiekt zostanie zapisany w przez menedżera stanu, w którym jest utrwalony na dysku i replikowane do innych węzłów.
+* Obiekt jest przesyłany między wystąpieniem aktora a obiektem wywołującym.
+* Obiekt jest zapisywany w Menedżerze stanu, w którym jest utrwalany na dysku i replikowany do innych węzłów.
 
-Framework Reliable Actor używa schematu DataContract serializacji. W związku z tym, obiektów danych niestandardowych i ich elementów członkowskich musi być oznaczona przy użyciu **DataContract** i **DataMember** , odpowiednio, atrybutów.
+Niezawodna struktura aktora używa serializacji DataContract. W związku z tym obiekty danych niestandardowych i ich elementy członkowskie muszą mieć adnotację odpowiednio z atrybutami **DataContract** i **DataMember** .
 
 ```csharp
 [DataContract]
@@ -145,10 +136,10 @@ public class VoicemailBox implements Serializable
 ```
 
 
-## <a name="next-steps"></a>Kolejne kroki
-* [Kolekcja aktora cykl życia i odzyskiwanie](service-fabric-reliable-actors-lifecycle.md)
-* [Aktor czasomierze i przypomnienia](service-fabric-reliable-actors-timers-reminders.md)
+## <a name="next-steps"></a>Następne kroki
+* [Cykl życia aktora i odzyskiwanie pamięci](service-fabric-reliable-actors-lifecycle.md)
+* [Czasomierze aktora i przypomnienia](service-fabric-reliable-actors-timers-reminders.md)
 * [Zdarzenia aktora](service-fabric-reliable-actors-events.md)
-* [Wielobieżność aktora](service-fabric-reliable-actors-reentrancy.md)
-* [Polimorfizm aktora i wzorce programowania obiektowego](service-fabric-reliable-actors-polymorphism.md)
-* [Aktor Diagnostyka i monitorowanie wydajności](service-fabric-reliable-actors-diagnostics.md)
+* [Współużytkowania wątkowości aktora](service-fabric-reliable-actors-reentrancy.md)
+* [Polimorfizm aktora i wzorce projektowe zorientowane obiektowo](service-fabric-reliable-actors-polymorphism.md)
+* [Diagnostyka aktora i monitorowanie wydajności](service-fabric-reliable-actors-diagnostics.md)

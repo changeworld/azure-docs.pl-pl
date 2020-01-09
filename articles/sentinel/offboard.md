@@ -1,5 +1,5 @@
 ---
-title: Odłączania wskaźnik platformy Azure | Microsoft Docs
+title: Usuń wskaźnik na platformie Azure | Microsoft Docs
 description: Jak usunąć wystąpienie usługi Azure.
 services: sentinel
 documentationcenter: na
@@ -12,39 +12,34 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/02/2019
+ms.date: 12/29/2019
 ms.author: rkarlin
-ms.openlocfilehash: 4c0c415235fd290bc47ac402a6b81a1afa7af903
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: d71a9fc21cca75312696a1bc17c4896c2e5bce2d
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74777438"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610367"
 ---
 # <a name="remove-azure-sentinel-from-your-workspace"></a>Usuń wskaźnik platformy Azure z obszaru roboczego
 
 Jeśli nie chcesz już korzystać z funkcji wskaźnikowej platformy Azure, w tym artykule wyjaśniono, jak usunąć go z obszaru roboczego.
 
-## <a name="how-to-delete-azure-sentinel"></a>Jak usunąć wskaźnik na platformie Azure
+## <a name="how-to-remove-azure-sentinel"></a>Jak usunąć wskaźnik na platformie Azure
 
-W tle podczas instalowania platformy Azure — rozwiązanie **SecurityInsights** jest instalowane w wybranym obszarze roboczym. W pierwszej kolejności należy usunąć rozwiązanie **SecurityInsights** .
+Postępuj zgodnie z tym procesem, aby usunąć wskaźnik platformy Azure z obszaru roboczego:
 
-1.  Przejdź do obszaru **wskaźnikowego platformy Azure**, a następnie wybierz pozycję **Konfiguracja**, a następnie pozycję **Ustawienia obszarów roboczych**, a następnie **rozwiązania**.
+1. Przejdź do obszaru **wskaźnikowego platformy Azure**, a następnie kliknij pozycję **Ustawienia**, a następnie wybierz kartę **Usuń wskaźnik na platformie Azure**.
 
-2.  Wybierz `SecurityInsights` i kliknij go.
+1. Przed usunięciem usługi Azure wskaźnikiem, Użyj pól wyboru, aby poinformować nas o tym, dlaczego są usuwane.
 
-    ![Znajdź rozwiązanie SecurityInsights](media/offboard/find-solution.png)
-
-3.  W górnej części strony wybierz pozycję **Usuń**.
-
-    > [!IMPORTANT]
-    > Usunięcie obszaru roboczego może mieć wpływ na inne rozwiązania i źródła danych, które korzystają z tego obszaru roboczego, w tym Azure Monitor. Aby sprawdzić, które rozwiązania korzystają z tego obszaru roboczego, zobacz [listę zainstalowanych rozwiązań monitorowania](../azure-monitor/insights/solutions.md#list-installed-monitoring-solutions). Aby sprawdzić, które rozwiązania zostały pozyskane w obszarze roboczym, zobacz temat informacje o pozyskiwanym [woluminie danych](../azure-monitor/platform/manage-cost-storage.md#understanding-ingested-data-volume).
-
+1. Wybierz pozycję **Usuń wskaźnik platformy Azure z obszaru roboczego**.
+    
     ![Usuń rozwiązanie SecurityInsights](media/offboard/delete-solution.png)
 
 ## <a name="what-happens-behind-the-scenes"></a>Co się stanie w tle?
 
-Po usunięciu rozwiązania wskaźnik na platformie Azure zajmie do 48 godzin, aby zakończyć pierwszą fazę procesu usuwania.
+Po usunięciu rozwiązania wskaźnik platformy Azure zajmie do 48 godzin, aby zakończyć pierwszą fazę procesu usuwania.
 
 Po zidentyfikowaniu rozłączenia rozpocznie się proces odłączania.
 
@@ -61,19 +56,19 @@ Po zidentyfikowaniu rozłączenia rozpocznie się proces odłączania.
 
 -   Zdarzenia zabezpieczeń systemu Windows (Jeśli masz Azure Security Center, dzienniki będą nadal zbierane).
 
-W ciągu pierwszych 48 godzin reguły danych i alertów (w tym konfiguracja automatyzacji w czasie rzeczywistym) nie będą już dostępne ani Queryable na platformie Azure.
+W ciągu pierwszych 48 godzin reguły danych i analityczne (w tym konfiguracja automatyzacji w czasie rzeczywistym) nie będą już dostępne ani Queryable na platformie Azure.
 
-**Po upływie 30 dni te zasoby są usuwane:**
+**Po 30 dniach następujące zasoby zostaną usunięte:**
 
 -   Zdarzenia (w tym metadane badania)
 
--   Reguły alertów
+-   Reguły analityczne
 
--   zakładki
+-   Zakładki
 
 Elementy PlayBook, zapisane skoroszyty, zapisane zapytania dotyczące polowań i notesy nie są usuwane. **Niektóre mogą zostać przerwane ze względu na usunięte dane. Można je usunąć ręcznie.**
 
-Po usunięciu usługi istnieje 30-dniowy okres prolongaty, w którym można ponownie włączyć rozwiązanie, a Twoje reguły dotyczące danych i alertów zostaną przywrócone, ale skonfigurowane łączniki, które zostały odłączone, muszą zostać ponownie połączone.
+Po usunięciu usługi istnieje 30-dniowy okres prolongaty, w którym można ponownie włączyć rozwiązanie, a Twoje dane i reguły analityczne zostaną przywrócone, ale skonfigurowane łączniki, które zostały odłączone, muszą być ponownie połączone.
 
 > [!NOTE]
 > Jeśli usuniesz rozwiązanie, subskrypcja będzie nadal rejestrowana w dostawcy zasobów platformy Azure. **Można je usunąć ręcznie.**
@@ -84,4 +79,3 @@ Po usunięciu usługi istnieje 30-dniowy okres prolongaty, w którym można pono
 ## <a name="next-steps"></a>Następne kroki
 W tym dokumencie przedstawiono sposób usuwania usługi Azure wskaźnikowej. Jeśli zmienisz zdanie i chcesz je zainstalować ponownie:
 - Rozpocznij pracę [na płycie wskaźnikowej platformy Azure](quickstart-onboard.md).
-

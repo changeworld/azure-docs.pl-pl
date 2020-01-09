@@ -1,21 +1,17 @@
 ---
 title: Odbieraj alerty dziennika aktywności w powiadomieniach usługi platformy Azure
 description: Otrzymuj powiadomienia za pośrednictwem wiadomości SMS, poczty e-mail lub elementu webhook w przypadku wystąpienia usługi platformy Azure.
-author: stephbaron
-ms.author: stbaron
-services: monitoring
-ms.service: service-health
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: 40ffe0b377a5cbb21f07c479097958d7c15a2879
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
-ms.translationtype: MT
+ms.openlocfilehash: bc8e935b9d44cb5236c7a1ef38da24e12b877e14
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70383162"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464027"
 ---
 # <a name="create-activity-log-alerts-on-service-notifications"></a>Tworzenie alertów dziennika aktywności dla powiadomień dotyczących usług
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 W tym artykule opisano sposób konfigurowania alertów dziennika aktywności dla powiadomień o kondycji usługi przy użyciu Azure Portal.  
 
@@ -64,7 +60,7 @@ Aby uzyskać informacje dotyczące sposobu konfigurowania alertów powiadomień 
     > [!NOTE]
     > Ta subskrypcja służy do zapisywania alertu dziennika aktywności. Zasób alertu jest wdrażany w tej subskrypcji i monitoruje zdarzenia w dzienniku aktywności.
 
-1. Wybierz **typy zdarzeń** , dla których chcesz otrzymywać alerty: *Problem z usługą*, *Planowana konserwacja*i *klasyfikatory kondycji* 
+1. Wybierz **typy zdarzeń** , dla których chcesz otrzymywać alerty: problem z *usługą*, *Planowana konserwacja*i *klasyfikatory kondycji* 
 
 1. Zdefiniuj szczegóły alertu, wprowadzając nazwę i **Opis** **reguły alertu** .
 
@@ -78,9 +74,9 @@ Aby uzyskać informacje dotyczące sposobu konfigurowania alertów powiadomień 
 
     a. **Nazwa**: Wprowadź nazwę, alias lub identyfikator odbiorcy.
 
-    b. **Typ akcji**: Wybierz pozycję SMS, wiadomość e-mail, element webhook, aplikację platformy Azure i nie tylko.
+    b. **Typ akcji**: wybierz pozycję SMS, wiadomość e-mail, element webhook, aplikację platformy Azure i nie tylko.
 
-    c. **Szczegóły**: Na podstawie wybranego typu akcji wprowadź numer telefonu, adres e-mail, identyfikator URI elementu webhook itd.
+    d. **Szczegóły**: w zależności od wybranego typu akcji wprowadź numer telefonu, adres e-mail, identyfikator URI elementu webhook itd.
 
 1. Wybierz **przycisk OK** , aby utworzyć grupę akcji, a następnie **Utwórz regułę alertu** w celu ukończenia alertu.
 

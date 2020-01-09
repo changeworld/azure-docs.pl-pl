@@ -1,24 +1,15 @@
 ---
-title: Skalowanie klastra Service Fabric platformy Azure | Microsoft Docs
-description: Dowiedz się więcej na temat skalowania klastrów usługi Azure Service Fabric w programie lub w górę i w dół.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-ms.assetid: 5441e7e0-d842-4398-b060-8c9d34b07c48
-ms.service: service-fabric
-ms.devlang: dotnet
+title: Skalowanie klastra Service Fabric platformy Azure
+description: Dowiedz się więcej na temat skalowania klastrów usługi Azure Service Fabric w programie lub w górę i w dół. Gdy aplikacja wymaga zmiany, może Service Fabric klastrów.
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/13/2018
 ms.author: atsenthi
-ms.openlocfilehash: c4d7027438f19cd16fd87d629364cdf725e91607
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 9dd60a5898b648215fc8b26e49a706a7b19dfeeb
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599844"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610084"
 ---
 # <a name="scaling-azure-service-fabric-clusters"></a>Skalowanie klastrów Service Fabric platformy Azure
 Klaster Service Fabric jest połączonym z siecią zestawem maszyn wirtualnych lub fizycznych, w którym są wdrażane i zarządzane mikrousługi. Maszyna lub maszyna wirtualna będąca częścią klastra nazywa się węzłem. Klastry mogą zawierać potencjalnie tysiące węzłów. Po utworzeniu klastra Service Fabric można skalować klaster w poziomie (zmienić liczbę węzłów) lub w pionie (zmienić zasoby węzłów).  Klaster można skalować w dowolnym momencie, nawet w przypadku uruchamiania obciążeń w klastrze.  W miarę skalowania klastra aplikacje są automatycznie skalowane.
@@ -28,8 +19,8 @@ Dlaczego warto skalować klaster? Wymagania aplikacji zmieniają się w miarę u
 ## <a name="scaling-in-and-out-or-horizontal-scaling"></a>Skalowanie do wewnątrz i na zewnątrz lub skalowanie w poziomie
 Zmienia liczbę węzłów w klastrze.  Po dołączeniu nowych węzłów do klastra [Menedżer zasobów](service-fabric-cluster-resource-manager-introduction.md) przenosi do nich usługi, co zmniejsza obciążenie istniejących węzłów.  Możesz również zmniejszyć liczbę węzłów, jeśli zasoby klastra nie są używane efektywnie.  Gdy węzły opuszczają klaster, usługi przechodzą z tych węzłów i obciążenia są zwiększane w pozostałych węzłach.  Zmniejszenie liczby węzłów w klastrze działającym na platformie Azure może zaoszczędzić pieniądze, ponieważ płacisz za liczbę używanych maszyn wirtualnych, a nie obciążenia na tych maszynach wirtualnych.  
 
-- Udogodnienia Nieskończona skala w teorii.  Jeśli aplikacja jest przeznaczona do skalowalności, możesz włączyć nieograniczony wzrost, dodając więcej węzłów.  Narzędzia w środowiskach w chmurze ułatwiają dodawanie i usuwanie węzłów, dzięki czemu można łatwo dostosowywać pojemność i płacisz tylko za zasoby, których używasz.  
-- Wada Aplikacje muszą być [zaprojektowane w celu](service-fabric-concepts-scalability.md)zapewnienia skalowalności.  Bazy danych i trwałość aplikacji mogą wymagać dodatkowej pracy w architekturze.  [Niezawodne kolekcje](service-fabric-reliable-services-reliable-collections.md) w Service Fabricych usługach stanowych, jednak znacznie ułatwiają skalowanie danych aplikacji.
+- Zalety: nieskończone skalowanie, teoretycznie.  Jeśli aplikacja jest przeznaczona do skalowalności, możesz włączyć nieograniczony wzrost, dodając więcej węzłów.  Narzędzia w środowiskach w chmurze ułatwiają dodawanie i usuwanie węzłów, dzięki czemu można łatwo dostosowywać pojemność i płacisz tylko za zasoby, których używasz.  
+- Wady: aplikacje muszą być [zaprojektowane w celu zapewnienia skalowalności](service-fabric-concepts-scalability.md).  Bazy danych i trwałość aplikacji mogą wymagać dodatkowej pracy w architekturze.  [Niezawodne kolekcje](service-fabric-reliable-services-reliable-collections.md) w Service Fabricych usługach stanowych, jednak znacznie ułatwiają skalowanie danych aplikacji.
 
 Zestawy skalowania maszyn wirtualnych to zasób obliczeniowy systemu Azure, która umożliwia wdrażanie i zarządzanie kolekcją maszyn wirtualnych jako zestawu. Każdy typ węzła, który jest zdefiniowany w klastrze platformy Azure [, jest ustawiany jako oddzielny zestaw skalowania](service-fabric-cluster-nodetypes.md). Każdy typ węzła może następnie być skalowana w lub się niezależnie od siebie, mają różne zestawy otwartych portów i może mieć różne metryki pojemności. 
 
@@ -44,7 +35,7 @@ Podczas skalowania klastra platformy Azure należy pamiętać o następujących 
 Ponieważ typy węzłów Service Fabric w klastrze składają się z zestawów skalowania maszyn wirtualnych w zapleczu, można [skonfigurować reguły skalowania automatycznego lub ręcznie skalować](service-fabric-cluster-scale-up-down.md) każdy typ węzła/zestaw skalowania maszyn wirtualnych.
 
 ### <a name="programmatic-scaling"></a>Skalowanie programistyczne
-W wielu scenariuszach skalowanie klastra odbywa się [ręcznie lub przy użyciu reguł skalowania automatycznego](service-fabric-cluster-scale-up-down.md) . W przypadku bardziej zaawansowanych scenariuszy może to nie być odpowiednie dopasowanie. Potencjalne wady do tych podejścia obejmują:
+W wielu scenariuszach [skalowanie klastra odbywa się ręcznie lub przy użyciu reguł skalowania automatycznego](service-fabric-cluster-scale-up-down.md) . W przypadku bardziej zaawansowanych scenariuszy może to nie być odpowiednie dopasowanie. Potencjalne wady do tych podejścia obejmują:
 
 - Ręczne skalowanie wymaga, aby zalogować się i jawnie zażądać operacji skalowania. Jeśli operacje skalowania są wymagane często lub w nieprzewidywalnym czasie, to podejście może nie być dobrym rozwiązaniem.
 - Gdy reguły automatycznego skalowania usuwają wystąpienie z zestawu skalowania maszyn wirtualnych, nie usuwają automatycznie informacji o tym węźle z skojarzonego klastra Service Fabric, chyba że typ węzła ma poziom trwałości Silver lub Gold. Ponieważ reguły automatycznego skalowania działają na poziomie zestawu skalowania (a nie na poziomie Service Fabric), reguły skalowania automatycznego mogą usuwać węzły Service Fabric bez ich bezpiecznego zamykania. Usunięcie węzła prosta spowoduje pozostawienie "Ghost" Service Fabric stanu węzła po operacji skalowania w poziomie. Osoba (lub usługa) musi okresowo czyścić stan usuniętych węzłów w klastrze Service Fabric.
@@ -55,18 +46,18 @@ Sposób podejścia Service Fabric skalowania zależy od Twojego scenariusza. Je�
 
 Istnieją interfejsy API platformy Azure, które umożliwiają aplikacjom programistyczne współpracują z zestawami skalowania maszyn wirtualnych i klastrami Service Fabric. Jeśli istniejące opcje automatycznego skalowania nie działają w danym scenariuszu, te interfejsy API umożliwiają implementację niestandardowej logiki skalowania. 
 
-Jednym z metod implementowania tej funkcji automatycznego skalowania w domu jest dodanie nowej usługi bezstanowej do aplikacji Service Fabric w celu zarządzania operacjami skalowania. Tworzenie własnej usługi skalowania zapewnia najwyższy stopień kontroli i szerszym w porównaniu z zachowaniem skalowania aplikacji. Może to być przydatne w scenariuszach wymagających precyzyjnej kontroli nad tym, kiedy i w jaki sposób aplikacja skaluje się lub wypada. Jednak ta kontrolka zapewnia kompromis z wadą złożoności kodu. Użycie tej metody oznacza, że musisz mieć własny kod skalowania, który nie jest prosty. W ramach `RunAsync` metody usługi zestaw wyzwalaczy może określić, czy wymagane jest skalowanie (w tym sprawdzanie parametrów, takich jak maksymalny rozmiar klastra i skalowanie cooldowns).   
+Jednym z metod implementowania tej funkcji automatycznego skalowania w domu jest dodanie nowej usługi bezstanowej do aplikacji Service Fabric w celu zarządzania operacjami skalowania. Tworzenie własnej usługi skalowania zapewnia najwyższy stopień kontroli i szerszym w porównaniu z zachowaniem skalowania aplikacji. Może to być przydatne w scenariuszach wymagających precyzyjnej kontroli nad tym, kiedy i w jaki sposób aplikacja skaluje się lub wypada. Jednak ta kontrolka zapewnia kompromis z wadą złożoności kodu. Użycie tej metody oznacza, że musisz mieć własny kod skalowania, który nie jest prosty. W ramach metody `RunAsync`ej usługi zestaw wyzwalaczy może określić, czy wymagane jest skalowanie (w tym sprawdzanie parametrów, takich jak maksymalny rozmiar klastra i skalowanie cooldowns).   
 
 Interfejs API służący do interakcji z zestawem skalowania maszyn wirtualnych (zarówno w celu sprawdzenia bieżącej liczby wystąpień maszyn wirtualnych i zmodyfikowania jej) jest [usługą Fluent platformy Azure do zarządzania](https://www.nuget.org/packages/Microsoft.Azure.Management.Compute.Fluent/). Biblioteka obliczeń Fluent oferuje łatwy w użyciu interfejs API do współpracy z zestawami skalowania maszyn wirtualnych.  Aby korzystać z klastra Service Fabric, użyj programu [System. Fabric. FabricClient](/dotnet/api/system.fabric.fabricclient).
 
-Kod skalowania nie musi być uruchamiany jako usługa w klastrze, aby można było go skalować, chociaż. Zarówno `IAzure` , `FabricClient` jak i mogą łączyć się ze skojarzonymi zasobami platformy Azure, dzięki czemu usługa skalowania może łatwo być aplikacją konsolową lub usługą systemu Windows działającą spoza aplikacji Service Fabric.
+Kod skalowania nie musi być uruchamiany jako usługa w klastrze, aby można było go skalować, chociaż. Zarówno `IAzure` i `FabricClient` mogą łączyć się ze skojarzonymi zasobami platformy Azure, dzięki czemu usługa skalowania może łatwo być aplikacją konsolową lub usługą systemu Windows działającą spoza aplikacji Service Fabric.
 
 Na podstawie tych ograniczeń warto [zaimplementować bardziej dostosowane modele skalowania automatycznego](service-fabric-cluster-programmatic-scaling.md).
 
 ## <a name="scaling-up-and-down-or-vertical-scaling"></a>Skalowanie w górę i w dół lub skalowanie w pionie 
 Zmienia zasoby (procesor CPU, pamięć lub magazyn) węzłów w klastrze.
-- Udogodnienia Architektura oprogramowania i aplikacji pozostaje taka sama.
-- Wada Skończone skalowanie, ponieważ istnieje limit ilości zasobów, które można zwiększyć w poszczególnych węzłach. Przestój, ponieważ należy przełączyć maszyny fizyczne lub wirtualne w tryb offline, aby można było dodawać lub usuwać zasoby.
+- Zalety: architektura oprogramowania i aplikacji pozostaje taka sama.
+- Wady: skończone skalowanie, ponieważ istnieje limit ilości zasobów w poszczególnych węzłach, które można zwiększyć. Przestój, ponieważ należy przełączyć maszyny fizyczne lub wirtualne w tryb offline, aby można było dodawać lub usuwać zasoby.
 
 Zestawy skalowania maszyn wirtualnych to zasób obliczeniowy systemu Azure, która umożliwia wdrażanie i zarządzanie kolekcją maszyn wirtualnych jako zestawu. Każdy typ węzła, który jest zdefiniowany w klastrze platformy Azure [, jest ustawiany jako oddzielny zestaw skalowania](service-fabric-cluster-nodetypes.md). Każdy typ węzła może być następnie zarządzany osobno.  Skalowanie typu węzła w górę lub w dół obejmuje zmianę jednostki SKU wystąpień maszyn wirtualnych w zestawie skalowania. 
 
@@ -85,7 +76,7 @@ Utwórz nowy typ węzła z zasobami, które są potrzebne.  Zaktualizuj ogranicz
 ### <a name="scaling-the-primary-node-type"></a>Skalowanie typu węzła podstawowego
 Zalecamy, aby nie zmieniać jednostki SKU maszyny wirtualnej typu węzła podstawowego. Jeśli potrzebujesz większej pojemności klastra, zalecamy dodanie większej liczby wystąpień. 
 
-Jeśli to nie jest możliwe, można utworzyć nowy klaster i [przywrócić stan aplikacji](service-fabric-reliable-services-backup-restore.md) (jeśli dotyczy) ze starego klastra. Nie trzeba przywracać żadnego stanu usługi systemowej, zostaną one odtworzone po wdrożeniu aplikacji do nowego klastra. Jeśli w klastrze uruchomiono tylko bezstanowe aplikacje, wszystkie te aplikacje są wdrażane w nowym klastrze, nie ma niczego do przywrócenia. Jeśli zdecydujesz się na przechodzenie do nieobsługiwanej trasy i chcesz zmienić jednostkę SKU maszyny wirtualnej, wprowadź modyfikacje w definicji modelu zestawu skalowania maszyn wirtualnych w celu odzwierciedlenia nowej jednostki SKU. Jeśli klaster ma tylko jeden typ węzła, upewnij się, że wszystkie aplikacje stanowe odpowiadają na wszystkie [zdarzenia cyklu życia repliki usługi](service-fabric-reliable-services-lifecycle.md) (takie jak replika w kompilacji jest zablokowana) w odpowiednim czasie i że czas trwania odbudowy repliki usługi jest mniejszy niż pięć minuty (dla poziomu trwałości Silver). 
+Jeśli to nie jest możliwe, można utworzyć nowy klaster i [przywrócić stan aplikacji](service-fabric-reliable-services-backup-restore.md) (jeśli dotyczy) ze starego klastra. Nie trzeba przywracać żadnego stanu usługi systemowej, zostaną one odtworzone po wdrożeniu aplikacji do nowego klastra. Jeśli w klastrze uruchomiono tylko bezstanowe aplikacje, wszystkie te aplikacje są wdrażane w nowym klastrze, nie ma niczego do przywrócenia. Jeśli zdecydujesz się na przechodzenie do nieobsługiwanej trasy i chcesz zmienić jednostkę SKU maszyny wirtualnej, wprowadź modyfikacje w definicji modelu zestawu skalowania maszyn wirtualnych w celu odzwierciedlenia nowej jednostki SKU. Jeśli klaster ma tylko jeden typ węzła, upewnij się, że wszystkie aplikacje stanowe odpowiadają na wszystkie [zdarzenia cyklu życia repliki usługi](service-fabric-reliable-services-lifecycle.md) (takie jak replika w kompilacji jest zablokowana) w odpowiednim czasie, a czas trwania odbudowy repliki usługi wynosi mniej niż pięć minut (poziom trwałości srebra). 
 
 ## <a name="next-steps"></a>Następne kroki
 * Dowiedz się więcej o [skalowalności aplikacji](service-fabric-concepts-scalability.md).

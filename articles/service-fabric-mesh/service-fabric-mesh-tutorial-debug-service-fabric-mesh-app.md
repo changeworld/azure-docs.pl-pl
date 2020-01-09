@@ -1,28 +1,19 @@
 ---
-title: Samouczek — debugowanie aplikacji internetowej usługi Azure Service Fabric Mesh uruchomionej w lokalnym klastrze projektowym | Microsoft Docs
+title: Debuguj aplikację sieci Web usługi Azure Service Fabric siatkę działającą lokalnie
 description: W tym samouczku zdebugujemy aplikację usługi Azure Service Fabric Mesh uruchomioną w klastrze lokalnym.
-services: service-fabric-mesh
-documentationcenter: .net
 author: dkkapur
-manager: chakdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric-mesh
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 10/31/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: bef86b189064a82b6605e8b99a374b1ee92682e2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c36d45919ae8a17026fc91f8e9040f3bb11d3eb0
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60810415"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75494945"
 ---
-# <a name="tutorial-debug-a-service-fabric-mesh-application-running-in-your-local-development-cluster"></a>Samouczek: Debugowanie aplikacji usługi Service Fabric Mesh w lokalnym klastrze projektowym
+# <a name="tutorial-debug-a-service-fabric-mesh-application-running-in-your-local-development-cluster"></a>Samouczek: debugowanie aplikacji usługi Service Fabric Mesh w lokalnym klastrze projektowym
 
 Ten samouczek to druga część serii. Przedstawiono w nim sposób tworzenia i debugowania aplikacji usługi Azure Service Fabric Mesh w lokalnym klastrze projektowym.
 
@@ -46,7 +37,7 @@ Ta seria samouczków zawiera informacje na temat wykonywania następujących czy
 
 Przed rozpoczęciem tego samouczka:
 
-* Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem możesz [utworzyć bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem możesz utworzyć [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 * Upewnij się, że masz [skonfigurowane środowisko projektowe](service-fabric-mesh-howto-setup-developer-environment-sdk.md) z zainstalowanym środowiskiem uruchomieniowym usługi Service Fabric, zestawem SDK, platformą Docker i programem Visual Studio 2017.
 
@@ -62,7 +53,7 @@ Aplikacja znajduje się w katalogu `src\todolistapp`.
 
 ## <a name="build-and-debug-on-your-local-cluster"></a>Kompilowanie i debugowanie w klastrze lokalnym
 
-Zaraz po załadowaniu projektu obraz platformy Docker jest automatycznie kompilowany i wdrażany w klastrze lokalnym. Ten proces może chwilę potrwać. Aby monitorować postęp w okienku **Dane wyjściowe** programu Visual Studio, wybierz opcję **Service Fabric Tools** na liście rozwijanej **Pokaż dane wyjściowe z:**.
+Zaraz po załadowaniu projektu obraz platformy Docker jest automatycznie kompilowany i wdrażany w klastrze lokalnym. Ten proces może chwilę potrwać. Aby monitorować postęp w okienku **Dane wyjściowe** programu Visual Studio, wybierz opcję **Service Fabric Tools** na liście rozwijanej **Pokaż dane wyjściowe z:** .
 
 Naciśnij klawisz **F5**, aby skompilować usługę i uruchomić ją lokalnie. W przypadku lokalnego uruchamiania i debugowania projektu w programie Visual Studio są wykonywane następujące działania:
 

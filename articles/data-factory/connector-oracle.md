@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: jingwang
-ms.openlocfilehash: b43ec36f6f3a9111656892c65af2592fce6eaed2
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 5fd13531e438b8bcda8e3720758e338c964f77af
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931755"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444250"
 ---
 # <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>Kopiowanie danych z i do programu Oracle przy użyciu Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
@@ -69,7 +69,7 @@ Połączona usługa Oracle obsługuje następujące właściwości:
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Właściwość Type musi mieć wartość **Oracle**. | Tak |
-| connectionString | Określa informacje, które są konieczne do nawiązania połączenia z wystąpieniem Oracle Database. <br/>Oznacz to pole jako `SecureString`, aby bezpiecznie je przechowywać w Data Factory. Możesz również wprowadzić hasło w Azure Key Vault i ściągnąć konfigurację `password` z parametrów połączenia. Zapoznaj się z poniższymi przykładami i [Zapisz poświadczenia w Azure Key Vault](store-credentials-in-key-vault.md) , aby uzyskać więcej szczegółów. <br><br>**Obsługiwany typ połączenia**: możesz użyć **identyfikatora SID Oracle** lub **nazwy usługi Oracle** , aby zidentyfikować swoją bazę danych:<br>— Jeśli używasz identyfikatora SID: `Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;`<br>— Jeśli używasz nazwy usługi: `Host=<host>;Port=<port>;ServiceName=<servicename>;User Id=<username>;Password=<password>;` | Tak |
+| connectionString | Określa informacje, które są konieczne do nawiązania połączenia z wystąpieniem Oracle Database. <br/>Możesz również wprowadzić hasło w Azure Key Vault i ściągnąć konfigurację `password` z parametrów połączenia. Zapoznaj się z poniższymi przykładami i [Zapisz poświadczenia w Azure Key Vault](store-credentials-in-key-vault.md) , aby uzyskać więcej szczegółów. <br><br>**Obsługiwany typ połączenia**: możesz użyć **identyfikatora SID Oracle** lub **nazwy usługi Oracle** , aby zidentyfikować swoją bazę danych:<br>— Jeśli używasz identyfikatora SID: `Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;`<br>— Jeśli używasz nazwy usługi: `Host=<host>;Port=<port>;ServiceName=<servicename>;User Id=<username>;Password=<password>;` | Tak |
 | connectVia | [Środowiska integration runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. Dowiedz się więcej z sekcji [wymagania wstępne](#prerequisites) . Jeśli nie zostanie określona, używana jest domyślna Azure Integration Runtime. |Nie |
 
 >[!TIP]
@@ -130,10 +130,7 @@ Aby włączyć szyfrowanie na połączeniu z programem Oracle, dostępne są dwi
     "properties": {
         "type": "Oracle",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;"
-            }
+            "connectionString": "Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;"
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",
@@ -151,10 +148,7 @@ Aby włączyć szyfrowanie na połączeniu z programem Oracle, dostępne są dwi
     "properties": {
         "type": "Oracle",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;"
-            },
+            "connectionString": "Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;",
             "password": { 
                 "type": "AzureKeyVaultSecret", 
                 "store": { 
@@ -357,10 +351,10 @@ Podczas kopiowania danych z programu i do programu Oracle są stosowane następu
 |:--- |:--- |
 | BFILE |Byte[] |
 | BLOB |Byte[]<br/>(obsługiwane tylko w systemach Oracle 10g i nowszych) |
-| CHAR |Ciąg |
+| DELIKATN |Ciąg |
 | CLOB |Ciąg |
 | DATE |Data i godzina |
-| ZWOLNIJ |Decimal, String (jeśli dokładności > 28) |
+| FLOAT |Decimal, String (jeśli dokładności > 28) |
 | INTEGER |Decimal, String (jeśli dokładności > 28) |
 | LONG |Ciąg |
 | LONG RAW |Byte[] |

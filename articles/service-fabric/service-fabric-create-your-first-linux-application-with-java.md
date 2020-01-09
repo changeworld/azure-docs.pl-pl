@@ -1,25 +1,14 @@
 ---
-title: Tworzenie aplikacji Java z interfejsem Reliable Actors usługi Azure Service Fabric w systemie Linux | Microsoft Docs
+title: Tworzenie aplikacji Java dla niezawodnych aktorów platformy Azure Service Fabric w systemie Linux
 description: Dowiedz się, jak utworzyć i wdrożyć aplikację Java z elementami Reliable Actors usługi Service Fabric w ciągu pięciu minut.
-services: service-fabric
-documentationcenter: java
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: 02b51f11-5d78-4c54-bb68-8e128677783e
-ms.service: service-fabric
-ms.devlang: java
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 06/18/2018
-ms.author: atsenthi
-ms.openlocfilehash: 4b008c001e1c4749b6ab6f9f21eff479f007c05c
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 82d4446d76254657adfe64ed41386c06a0a873eb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68599684"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458165"
 ---
 # <a name="create-your-first-java-service-fabric-reliable-actors-application-on-linux"></a>Tworzenie pierwszej aplikacji Java z interfejsem Reliable Actors usługi Service Fabric w systemie Linux
 > [!div class="op_single_selector"]
@@ -50,8 +39,8 @@ Aby rozpocząć pracę z elementami Reliable Actors, musisz tylko poznać kilka 
 * **Interfejs aktora**. Interfejs aktora służy do definiowania jednoznacznie określonego interfejsu publicznego aktora. W terminologii modelu usługi Reliable Actor interfejs aktora definiuje typy komunikatów, które może zrozumieć i przetworzyć aktor. Interfejs aktora jest używany przez innych aktorów i aplikacje klienckie do „wysyłania” (asynchronicznie) komunikatów do aktora. W usługi Reliable Actors można zaimplementować wiele interfejsów.
 * **Klasa ActorProxy**. Klasa ActorProxy jest używana przez aplikacje klienckie do wywołania metod ujawnianych za pośrednictwem interfejsu aktora. Klasa ActorProxy udostępnia dwie ważne funkcje:
   
-  * Rozpoznawanie nazw: Można zlokalizować aktora w klastrze (znaleźć węzeł klastra, w którym jest hostowany).
-  * Obsługa niepowodzeń: Można ponowić próbę wywołania metody i ponownie rozwiązać lokalizację aktora po, na przykład, błąd, który wymaga, aby aktor został przeniesiony do innego węzła w klastrze.
+  * Rozpoznawanie nazw: jest w stanie zlokalizować aktora w klastrze (znaleźć węzeł klastra, w którym jest on hostowany).
+  * Obsługa błędów: może ponawiać próby wywołania metody i ponownie rozpoznawać lokalizację aktora, na przykład po wystąpieniu błędu, który wymaga przeniesienia aktora do innego węzła w klastrze.
 
 Warto wspomnieć o następujących regułach odnoszących się do interfejsów aktora:
 

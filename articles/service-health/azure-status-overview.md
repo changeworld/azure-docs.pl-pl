@@ -1,18 +1,14 @@
 ---
 title: Przegląd stanu platformy Azure | Microsoft Docs
 description: Globalny widok kondycji usług platformy Azure
-services: Azure status
 ms.topic: article
-author: stephbaron
-ms.author: stbaron
-ms.service: service-health
 ms.date: 06/11/2019
-ms.openlocfilehash: 8a902fab7cfea574c9eb2a3e9411d3cca0920f56
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: 1257476234709380de3452015313e3a3bf71e04d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709906"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75463992"
 ---
 # <a name="azure-status-overview"></a>Przegląd stanu platformy Azure
 
@@ -32,7 +28,7 @@ Mimo że na stronie stanu platformy Azure są zawsze wyświetlane najnowsze info
 
 W przeszłości można zobaczyć zdarzenia do 90 dni, w tym wstępną przyczynę główną, środki zaradcze i następne kroki dla systemu Azure.
 
-## <a name="rss-feed"></a>Źródło danych RSS
+## <a name="rss-feed"></a>Kanał informacyjny RSS
 
 Stan platformy Azure udostępnia również [Źródło danych RSS](https://status.azure.com/status/feed/) o zmianach kondycji usług platformy Azure, które można subskrybować.
 

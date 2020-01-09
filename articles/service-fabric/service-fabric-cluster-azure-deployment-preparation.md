@@ -1,24 +1,14 @@
 ---
-title: Planowanie wdrożenia klastra Service Fabric platformy Azure | Microsoft Docs
+title: Planowanie wdrożenia klastra Service Fabric platformy Azure
 description: Dowiedz się więcej o planowaniu i przygotowaniu dla środowiska produkcyjnego wdrożenia klastra Service Fabric na platformie Azure.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 03/20/2019
-ms.author: atsenthi
-ms.openlocfilehash: a130e9bc8859360704c9be1c0a7fe066d2ed4567
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 69fb97e4e679b3ce5817a51d619799a3384fd753
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68600003"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75463324"
 ---
 # <a name="plan-and-prepare-for-a-cluster-deployment"></a>Planowanie i przygotowywanie wdrożenia klastra
 
@@ -28,7 +18,7 @@ Planowanie i przygotowywanie wdrożenia klastra produkcyjnego jest bardzo ważne
 Aby pomyślnie zarządzać aplikacjami i klastrami platformy Azure Service Fabric, istnieją operacje, dla których zdecydowanie zalecamy przeprowadzenie optymalizacji niezawodności środowiska produkcyjnego.  Aby uzyskać więcej informacji, Przeczytaj [Service Fabric najlepszych rozwiązań dotyczących aplikacji i klastrów](service-fabric-best-practices-overview.md).
 
 ## <a name="select-the-os-for-the-cluster"></a>Wybierz system operacyjny dla klastra
-Service Fabric umożliwia tworzenie klastrów Service Fabric na wszystkich maszynach wirtualnych lub komputerach z systemem Windows Server lub Linux.  Przed wdrożeniem klastra należy wybrać system operacyjny:  System Windows lub Linux.  W każdym węźle (maszynie wirtualnej) w klastrze działa ten sam system operacyjny, nie można mieszać maszyn wirtualnych z systemami Windows i Linux w tym samym klastrze.
+Service Fabric umożliwia tworzenie klastrów Service Fabric na wszystkich maszynach wirtualnych lub komputerach z systemem Windows Server lub Linux.  Przed wdrożeniem klastra należy wybrać system operacyjny: Windows lub Linux.  W każdym węźle (maszynie wirtualnej) w klastrze działa ten sam system operacyjny, nie można mieszać maszyn wirtualnych z systemami Windows i Linux w tym samym klastrze.
 
 ## <a name="capacity-planning"></a>Planowanie pojemności
 W przypadku każdego wdrożenia produkcyjnego planowanie wydajności jest ważnym krokiem. Poniżej przedstawiono niektóre zagadnienia, które należy uwzględnić w ramach tego procesu.
@@ -47,7 +37,7 @@ Minimalny rozmiar maszyn wirtualnych dla każdego typu węzła jest określany n
 
 Minimalna liczba maszyn wirtualnych dla typu węzła podstawowego jest określana na podstawie wybranej [warstwy niezawodności][reliability] .
 
-Zapoznaj się z minimalnymi zaleceniami dotyczącymi [typów węzłów podstawowych](service-fabric-cluster-capacity.md#primary-node-type---capacity-guidance), [obciążeń stanowych dla typów węzłów innych niż podstawowe](service-fabric-cluster-capacity.md#non-primary-node-type---capacity-guidance-for-stateful-workloads)i bezstanowych [obciążeń dla typów węzłów innych niż podstawowe](service-fabric-cluster-capacity.md#non-primary-node-type---capacity-guidance-for-stateless-workloads). 
+Zapoznaj się z minimalnymi zaleceniami dotyczącymi [typów węzłów podstawowych](service-fabric-cluster-capacity.md#primary-node-type---capacity-guidance), [obciążeń stanowych dla typów węzłów innych niż podstawowe](service-fabric-cluster-capacity.md#non-primary-node-type---capacity-guidance-for-stateful-workloads)i [bezstanowych obciążeń dla typów węzłów innych niż podstawowe](service-fabric-cluster-capacity.md#non-primary-node-type---capacity-guidance-for-stateless-workloads). 
 
 Każda większa niż minimalna liczba węzłów powinna być oparta na liczbie replik aplikacji/usług, które mają być uruchamiane w tym typie węzła.  [Planowanie wydajności aplikacji Service Fabric](service-fabric-capacity-planning.md) ułatwia oszacowanie zasobów potrzebnych do uruchamiania aplikacji. Klaster można zawsze skalować w górę lub w dół w celu dostosowania się do zmieniających się obciążeń aplikacji. 
 
@@ -57,13 +47,13 @@ Warstwa trwałości służy do wskazywania, że system ma uprawnienia do program
 Warstwa niezawodności służy do ustawiania liczby replik usług systemowych, które mają być uruchamiane w tym klastrze w typie węzła podstawowego. Im większa liczba replik, tym bardziej niezawodna usługa systemowa znajduje się w klastrze.  Aby uzyskać zalety różnych poziomów i zaleceń dotyczących poziomu użycia i, zobacz [Charakterystyka niezawodności klastra][reliability]. 
 
 ## <a name="enable-reverse-proxy-andor-dns"></a>Włączanie zwrotnego serwera proxy i/lub systemu DNS
-Usługi łączące się ze sobą w klastrze zwykle mogą bezpośrednio uzyskiwać dostęp do punktów końcowych innych usług, ponieważ węzły w klastrze znajdują się w tej samej sieci lokalnej. Aby ułatwić łączenie się między usługami, Service Fabric zapewnia dodatkowe usługi: Usługa [DNS](service-fabric-dnsservice.md) i zwrotna [Usługa serwera proxy](service-fabric-reverseproxy.md).  Obie usługi mogą być włączane podczas wdrażania klastra.
+Usługi łączące się ze sobą w klastrze zwykle mogą bezpośrednio uzyskiwać dostęp do punktów końcowych innych usług, ponieważ węzły w klastrze znajdują się w tej samej sieci lokalnej. Aby ułatwić łączenie się między usługami, Service Fabric zapewnia dodatkowe usługi: [usługi DNS](service-fabric-dnsservice.md) i [odwrotnej usługi serwera proxy](service-fabric-reverseproxy.md).  Obie usługi mogą być włączane podczas wdrażania klastra.
 
 Ponieważ wiele usług, szczególnie usługi kontenerowe, może mieć istniejącą nazwę adresu URL, można je rozwiązać przy użyciu standardowego protokołu DNS (zamiast protokołu Usługa nazewnictwa) jest wygodne, szczególnie w scenariuszach aplikacji "Unieś i Shift". Jest to dokładnie działanie usługi DNS. Umożliwia mapowanie nazw DNS na nazwę usługi, a tym samym rozwiązanie adresów IP punktów końcowych.
 
 Zwrotny serwer proxy odnosi się do usług w klastrze, które uwidaczniają punkty końcowe HTTP (w tym HTTPS). Zwrotny serwer proxy znacznie upraszcza wywoływanie innych usług przez podanie określonego formatu identyfikatora URI.  Zwrotny serwer proxy obsługuje również kroki rozwiązywania, nawiązywania połączenia i ponawiania próby wymagane dla jednej usługi do komunikacji z inną.
 
-## <a name="prepare-for-disaster-recovery"></a>Przygotowywanie do odzyskiwania po awarii
+## <a name="prepare-for-disaster-recovery"></a>Przygotowywanie do odzyskiwania awaryjnego
 Krytyczna część dostarczania wysokiej dostępności zapewnia, że usługi mogą przetrwać wszystkie różne typy awarii. Jest to szczególnie ważne w przypadku nieplanowanych awarii i poza formantem. [Przygotowanie do odzyskiwania po awarii](service-fabric-disaster-recovery.md) zawiera opis niektórych typowych trybów awarii, które mogą być awariami, jeśli nie są poprawnie modelowane i zarządzane. Omówiono w nim również środki zaradcze i działania podejmowane w przypadku wystąpienia awarii.
 
 ## <a name="production-readiness-checklist"></a>Lista kontrolna gotowości do produkcji

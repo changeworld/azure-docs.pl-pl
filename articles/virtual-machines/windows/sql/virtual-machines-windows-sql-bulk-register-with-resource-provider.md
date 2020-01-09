@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 10/21/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 4ee9d651e1ec7807d191bc3393c0c280ce1e52f9
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 015aa4c209a99921a930a51b15c3d0230722519a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790553"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75353883"
 ---
 # <a name="bulk-register-sql-virtual-machines-in-azure-with-the-sql-vm-resource-provider"></a>Zbiorcze rejestrowanie maszyn wirtualnych SQL na platformie Azure przy użyciu dostawcy zasobów maszyny wirtualnej SQL
 
@@ -232,8 +232,6 @@ Pełny skrypt w serwisie GitHub można znaleźć w temacie Bulk Register VM VMS 
 Skopiuj pełny skrypt i Zapisz go jako `RegisterSqLVMs.psm1`.
 
 [!code-powershell-interactive[main](../../../../powershell_scripts/sql-virtual-machine/register-sql-vms/RegisterSqlVMs.psm1 "Bulk register SQL Server virtual machines")]
-
-
 
 ## <a name="next-steps"></a>Następne kroki
 

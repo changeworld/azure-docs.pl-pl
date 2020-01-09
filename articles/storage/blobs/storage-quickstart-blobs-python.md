@@ -7,12 +7,12 @@ ms.date: 11/05/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: d589215cf79154bcc8aead1d6695bd4cf870fc0a
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: faa73874d7e662eb23e85d46ecaf21a11d10ce73
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74423976"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443734"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-for-python"></a>Szybki Start: Biblioteka kliencka usługi Azure Blob Storage V12 dla języka Python
 
@@ -99,7 +99,7 @@ Z katalogu projektu:
 
 1. Zapisz nowy plik jako *BLOB-QuickStart-V12.py* w katalogu *BLOB-Start-V12* .
 
-[!INCLUDE [storage-quickstart-connection-string-include](../../../includes/storage-quickstart-credentials-include.md)]
+[!INCLUDE [storage-quickstart-credentials-include](../../../includes/storage-quickstart-credentials-include.md)]
 
 ## <a name="object-model"></a>Model obiektów
 
@@ -139,11 +139,11 @@ Dodaj ten kod wewnątrz bloku `try`:
 ```python
 # Retrieve the connection string for use with the application. The storage
 # connection string is stored in an environment variable on the machine
-# running the application called CONNECT_STR. If the environment variable is
+# running the application called AZURE_STORAGE_CONNECTION_STRING. If the environment variable is
 # created after the application is launched in a console or with Visual Studio,
 # the shell or application needs to be closed and reloaded to take the
 # environment variable into account.
-connect_str = os.getenv('CONNECT_STR')
+connect_str = os.getenv('AZURE_STORAGE_CONNECTION_STRING')
 ```
 
 ### <a name="create-a-container"></a>Tworzenie kontenera

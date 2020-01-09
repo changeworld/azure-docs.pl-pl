@@ -1,6 +1,6 @@
 ---
-title: Przykłady dla programu Azure PowerShell — podłączanie i używanie dysków danych | Microsoft Docs
-description: Przykłady dla programu Azure PowerShell
+title: Przykłady Azure PowerShell — dołączanie i używanie dysków danych
+description: Ten skrypt tworzy zestaw skalowania maszyn wirtualnych platformy Azure i dołącza i przygotowuje dyski danych przy użyciu programu PowerShell.
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: cynthn
@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: bf7f86deb71aabfb8e06ce30abac92fc1777aae9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f7098808837b9fd0206323fca03da4c98096d3c5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60391382"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75350952"
 ---
 # <a name="attach-and-use-data-disks-with-a-virtual-machine-scale-set-with-powershell"></a>Dołączanie dysków danych z zestawem skalowania maszyn wirtualnych za pomocą programu PowerShell i ich używanie
 Ten skrypt tworzy zestaw skalowania maszyn wirtualnych oraz dołącza dyski danych i je przygotowuje.
@@ -52,7 +52,7 @@ Ten skrypt używa następujących poleceń w celu utworzenia wdrożenia. Każda 
 | [Update-AzVmss](/powershell/module/az.compute/update-azvmss) | Aktualizuje model zestawu skalowania maszyn wirtualnych w celu zastosowania rozszerzenia maszyny wirtualnej. |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Usuwa grupę zasobów i wszystkie zasoby w niej zawarte. |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Aby uzyskać więcej informacji na temat modułu Azure PowerShell, zobacz [dokumentację programu Azure PowerShell](/powershell/azure/overview).
 
 Dodatkowe przykłady skryptów programu PowerShell zestawu skalowania maszyn wirtualnych można znaleźć w [dokumentacji zestawu skalowania maszyn wirtualnych platformy Azure](../powershell-samples.md).

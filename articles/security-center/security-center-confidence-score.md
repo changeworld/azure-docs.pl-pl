@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/23/2018
 ms.author: memildin
-ms.openlocfilehash: 5b7e53291e10db17f848553b17dae2f84bdb08b7
-ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
+ms.openlocfilehash: ca2afaa9f4e01ac56657681ce71e32e3c5375fdf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74558977"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75355641"
 ---
-# <a name="alert-confidence-score"></a>Współczynnik ufności alertu 
+# <a name="alert-confidence-score-preview"></a>Wynik pewności alertu (wersja zapoznawcza)
 
 Azure Security Center zapewnia wgląd w zasoby działające na platformie Azure i ostrzega o wykryciu potencjalnych problemów. Liczba alertów może być wyzwaniem dla zespołu operacji zabezpieczeń na indywidualnym adresie i konieczne jest określenie priorytetów, które alerty należy zbadać. Badanie alertów może być złożone i czasochłonne, a w związku z tym niektóre alerty są ignorowane.
 
-Wynik zaufania w Security Center może pomóc zespołowi Klasyfikacja i wyznaczyć priorytety alertów. Security Center automatycznie stosuje najlepsze rozwiązania branżowe, inteligentne algorytmy i procesy używane przez analityków, aby określić, czy zagrożenie jest wiarygodne i zapewnia wgląd w informacje w formie oceny zaufania.
+Wyniki pewności (obecnie dostępne w wersji zapoznawczej) w Security Center mogą pomóc zespołowi Klasyfikacja i wyznaczyć priorytety alertów. Security Center automatycznie stosuje najlepsze rozwiązania branżowe, inteligentne algorytmy i procesy używane przez analityków, aby określić, czy zagrożenie jest wiarygodne i zapewnia wgląd w informacje w formie oceny zaufania.
 
 ## <a name="how-the-confidence-score-is-triggered"></a>Jak jest wyzwalany wynik zaufania
 

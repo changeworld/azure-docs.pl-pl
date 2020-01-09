@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/20/2019
+ms.date: 11/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9fe63ba810724216b1b356896b621f1e5b021bbf
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: d2bf769169b579cb0a06a48b3a5998efb89eb8fb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "69891980"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443330"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workday"></a>Samouczek: Azure Active Directory Integracja z logowaniem jednokrotnym (SSO) przy użyciu produktu Workday
 
@@ -167,7 +167,7 @@ W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotn
 
    > [!NOTE]
    > Wartość atrybutu Environment jest powiązana z wartością adresu URL dzierżawcy:  
-   > — Jeśli nazwa domeny adresu URL dzierżawy produktu Workday zaczyna się od Impl na przykład: *https: \//impl.workday.com/\<tenant \>/login-SAML2.Flex*), atrybut **Environment** musi być ustawiony na implementację.  
+   > — Jeśli nazwa domeny adresu URL dzierżawy produktu Workday zaczyna się od Impl na przykład: *https://www.myworkday.com/"dzierżawca"/login-SAML2.htmld*), atrybut **Environment** musi być ustawiony na implementację.  
    > — Jeśli nazwa domeny zaczyna się od czegoś innego, należy skontaktować się z [zespołem obsługi klienta](https://www.workday.com/en-us/partners-services/services/support.html) w programie Workday w celu uzyskania pasującej wartości **środowiska** .
 
 4. W sekcji **Instalator języka SAML** wykonaj następujące czynności:
@@ -180,13 +180,13 @@ W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotn
 
 5. W sekcji **dostawcy tożsamości SAML** wykonaj następujące czynności:
 
-    ![Dostawcy tożsamości SAML](./media/workday-tutorial/IC7829271.png "Dostawcy tożsamości SAML")
+    ![Dostawcy tożsamości SAML](./media/workday-tutorial/IC7829271.png "Dostawcy tożsamości języka SAML")
 
     a. W polu tekstowym **Nazwa dostawcy tożsamości** wpisz nazwę dostawcy (na przykład: *SPInitiatedSSO*).
 
     b. W Azure Portal w sekcji **Konfigurowanie produktu Workday** skopiuj wartość **Identyfikator usługi Azure AD** , a następnie wklej ją do pola tekstowego **wystawcy** .
 
-    ![Dostawcy tożsamości SAML](./media/workday-tutorial/IC7829272.png "Dostawcy tożsamości SAML")
+    ![Dostawcy tożsamości SAML](./media/workday-tutorial/IC7829272.png "Dostawcy tożsamości języka SAML")
 
     d. W Azure Portal w sekcji **Konfigurowanie produktu Workday** skopiuj wartość **adres URL wylogowania** , a następnie wklej ją do pola tekstowego **adres URL odpowiedzi na wylogowanie** .
 
@@ -206,7 +206,7 @@ W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotn
 
     ![Wyświetl klucz publiczny x509](./media/workday-tutorial/IC782930.png "Wyświetl klucz publiczny x509")
 
-    a. W polu tekstowym **Nazwa** wpisz nazwę certyfikatu (na przykład: *\_SP ŚOI*).
+    a. W polu tekstowym **Nazwa** wpisz nazwę certyfikatu (na przykład: *ŚOI\_Sp*).
 
     b. W polu tekstowym **prawidłowy** typ wpisz prawidłową wartość z atrybutu certyfikatu.
 
@@ -233,11 +233,11 @@ W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotn
 
     d. Jako **metodę podpisu żądania uwierzytelniania**wybierz pozycję **SHA256**.
 
-    ![Metoda podpisu żądania uwierzytelniania](./media/workday-tutorial/WorkdaySSOConfiguration.png "Metoda podpisu żądania uwierzytelniania") 
+    ![Metoda podpisu żądania uwierzytelniania](./media/workday-tutorial/WorkdaySSOConfiguration.png "Metoda podpisu żądania uwierzytelniania")
 
     d. Kliknij przycisk **OK**.
 
-    ![Ok](./media/workday-tutorial/IC782933.png "OK")
+    ![OK](./media/workday-tutorial/IC782933.png "OK")
 
     > [!NOTE]
     > Upewnij się, że poprawnie skonfigurowano Logowanie jednokrotne. Jeśli włączysz logowanie jednokrotne przy użyciu nieprawidłowej konfiguracji, możesz nie być w stanie wprowadzić aplikacji z poświadczeniami i zablokować. W tej sytuacji dzień Workday zawiera adres URL logowania do kopii zapasowej, w którym użytkownicy mogą logować się przy użyciu swojej zwykłej nazwy użytkownika i hasła w następującym formacie: [adres URL w dniach roboczych]/login.Flex? redirect = n
@@ -256,6 +256,6 @@ Po wybraniu kafelka Workday w panelu dostępu należy automatycznie zalogować s
 
 - [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co to jest dostęp warunkowy w Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Wypróbuj usługę Workday z usługą Azure AD](https://aad.portal.azure.com)

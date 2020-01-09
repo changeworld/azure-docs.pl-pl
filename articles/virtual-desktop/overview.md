@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: overview
-ms.date: 11/19/2019
+ms.date: 12/17/2019
 ms.author: helohr
-ms.openlocfilehash: 5ae6c30c595c2e3c4c7ce90d6ab208e50722bfc2
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: dd5167af5f45ebae0529e16f224065627085e9b0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227698"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75348805"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Co to jest Windows Virtual Desktop? 
 
@@ -110,8 +110,11 @@ W celu uzyskania optymalnej wydajności upewnij się, że sieć spełnia następ
 
 Następujący klienci Pulpit zdalny obsługują pulpit wirtualny systemu Windows:
 
-* [Windows](https://docs.microsoft.com/azure/virtual-desktop/connect-windows-7-and-10)
-* [HTML5](https://docs.microsoft.com/azure/virtual-desktop/connect-web)
+* [Windows](connect-windows-7-and-10.md)
+* [Sieć Web](connect-web.md)
+* [Mac](connect-macos.md)
+* [iOS](connect-ios.md)
+* [Android (wersja zapoznawcza)](connect-android.md)
 
 ## <a name="supported-virtual-machine-os-images"></a>Obsługiwane obrazy systemu operacyjnego maszyny wirtualnej
 
@@ -130,14 +133,14 @@ Dostępne opcje automatyzacji i wdrażania zależą od wybranego systemu operacy
 
 |System operacyjny|Galeria obrazów platformy Azure|Ręczne wdrożenie maszyny wirtualnej|Integracja z szablonem Azure Resource Manager|Inicjowanie obsługi pul hostów w witrynie Azure Marketplace|Aktualizacje agenta pulpitu wirtualnego systemu Windows|
 |--------------------------------------|:------:|:------:|:------:|:------:|:------:|
-|Wiele sesji systemu Windows 10, wersja 1903|Yes|Yes|Yes|Yes|Automatyczny|
-|Wiele sesji systemu Windows 10, wersja 1809|Yes|Yes|Nie|Nie|Automatyczny|
-|Windows 10 Enterprise, wersja 1903|Yes|Yes|Yes|Yes|Automatyczny|
-|Windows 10 Enterprise, wersja 1809|Yes|Yes|Nie|Nie|Automatyczny|
-|Windows 7 Enterprise|Yes|Yes|Nie|Nie|Ręcznie|
-|Windows Server 2019|Yes|Yes|Nie|Nie|Automatyczny|
-|Windows Server 2016|Yes|Yes|Yes|Yes|Automatyczny|
-|Windows Server 2012 R2|Yes|Yes|Nie|Nie|Automatyczny|
+|Wiele sesji systemu Windows 10, wersja 1903|Tak|Tak|Tak|Tak|Automatyczny|
+|Wiele sesji systemu Windows 10, wersja 1809|Tak|Tak|Nie|Nie|Automatyczny|
+|Windows 10 Enterprise, wersja 1903|Tak|Tak|Tak|Tak|Automatyczny|
+|Windows 10 Enterprise, wersja 1809|Tak|Tak|Nie|Nie|Automatyczny|
+|Windows 7 Enterprise|Tak|Tak|Nie|Nie|Ręczna|
+|Windows Server 2019|Tak|Tak|Nie|Nie|Automatyczny|
+|Windows Server 2016|Tak|Tak|Tak|Tak|Automatyczny|
+|Windows Server 2012 R2|Tak|Tak|Nie|Nie|Automatyczny|
 
 ## <a name="next-steps"></a>Następne kroki
 

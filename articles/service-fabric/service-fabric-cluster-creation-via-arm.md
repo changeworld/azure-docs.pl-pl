@@ -1,25 +1,14 @@
 ---
-title: Tworzenie klastra usługi Azure Service Fabric | Microsoft Docs
+title: Tworzenie klastra usługi Azure Service Fabric
 description: Dowiedz się, jak skonfigurować bezpieczny klaster Service Fabric na platformie Azure przy użyciu Azure Resource Manager.  Klaster można utworzyć przy użyciu szablonu domyślnego lub przy użyciu własnego szablonu klastra.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: chackdan
-ms.assetid: 15d0ab67-fc66-4108-8038-3584eeebabaa
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 08/16/2018
-ms.author: atsenthi
-ms.openlocfilehash: 241349724929845afa2fd2a4bacabf9b5017cc7c
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 935f67c25f4a2aee7d06be7591dbe7576c87806e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901565"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75349865"
 ---
 # <a name="create-a-service-fabric-cluster-using-azure-resource-manager"></a>Tworzenie klastra Service Fabric przy użyciu Azure Resource Manager 
 > [!div class="op_single_selector"]
@@ -44,7 +33,7 @@ W tym artykule należy wdrożyć klaster przy użyciu modułów Service Fabric M
 * [Interfejs wiersza polecenia platformy Azure w wersji 2,0 i nowszej][azure-CLI]
 
 Dokumentację referencyjną Service Fabric modułów można znaleźć tutaj:
-* [AZ. servicefabric](https://docs.microsoft.com/powershell/module/az.servicefabric)
+* [Az.ServiceFabric](https://docs.microsoft.com/powershell/module/az.servicefabric)
 * [AZ SF CLI module](https://docs.microsoft.com/cli/azure/sf?view=azure-cli-latest)
 
 ### <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure

@@ -1,5 +1,5 @@
 ---
-title: Optymalizowanie kosztów Azure Cosmos DB zasobów przy użyciu zarezerwowanej pojemności
+title: Zarezerwowana pojemność w Azure Cosmos DB do optymalizowania kosztów
 description: Dowiedz się, jak kupić Azure Cosmos DB zarezerwowaną pojemność, aby zaoszczędzić na kosztach obliczeniowych.
 author: bandersmsft
 ms.service: cosmos-db
@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: banders
 ms.reviewer: sngun
-ms.openlocfilehash: 0ee43fe0996c05f4e59f6107ba52fac19b83cdef
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 0a956a1372ba1535b9d918333bd7411a4ca6abe4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756954"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441930"
 ---
 # <a name="optimize-cost-with-reserved-capacity-in-azure-cosmos-db"></a>Optymalizacja kosztów z zarezerwowaną pojemnością w Azure Cosmos DB
 
 Azure Cosmos DB zarezerwowana pojemność pomaga zaoszczędzić pieniądze poprzez zatwierdzenie rezerwacji dla Azure Cosmos DB zasobów przez jeden rok lub trzy lata. W przypadku Azure Cosmos DB zarezerwowanej pojemności można uzyskać rabat dla zainicjowanej przepustowości dla Cosmos DB zasobów. Przykładami zasobów są bazy danych i kontenery (tabele, kolekcje i wykresy).
 
-Azure Cosmos DB zarezerwowana pojemność może znacząco obniżyć koszty Cosmos DB &mdash;up na 65% w regularnych cenach z rocznym lub trzecim zobowiązaniem z góry. Zarezerwowana pojemność zapewnia rabat na rozliczenia i nie wpływa na stan czasu wykonywania zasobów Azure Cosmos DB.
+Azure Cosmos DB zarezerwowana pojemność może znacząco obniżyć koszty Cosmos DB&mdash;do 65% w regularnych cenach z rocznym lub trzecim zobowiązaniem z góry. Zarezerwowana pojemność zapewnia rabat na rozliczenia i nie wpływa na stan czasu wykonywania zasobów Azure Cosmos DB.
 
 Azure Cosmos DB zarezerwowana pojemność obejmuje przepływność zainicjowaną dla zasobów. Nie dotyczy opłat za magazyn i sieć. Po zakupieniu rezerwacji opłaty za przepływność, które pasują do atrybutów rezerwacji, nie są już naliczane według stawek płatności zgodnie z rzeczywistym użyciem. Aby uzyskać więcej informacji na temat rezerwacji, zobacz artykuł dotyczący [zastrzeżeń na platformie Azure](../billing/billing-save-compute-costs-reservations.md) .
 
@@ -40,9 +40,9 @@ Rozmiar rezerwacji powinien opierać się na całkowitej ilości przepływności
 
 ## <a name="buy-azure-cosmos-db-reserved-capacity"></a>Kupowanie Azure Cosmos DB zarezerwowanej pojemności
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).  
+1. Zaloguj się do [Portalu Azure](https://portal.azure.com).  
 
-2. Wybierz pozycję **wszystkie usługi**  > **rezerwacje**  > **Dodaj**.  
+2. Wybierz pozycję **wszystkie usługi** > **rezerwacje** > **Dodaj**.  
 
 3. W okienku **rezerwacje zakupu** wybierz **Azure Cosmos DB** , aby kupić nową rezerwację.  
 
@@ -76,7 +76,7 @@ Po wygaśnięciu rezerwacji Azure Cosmos DB wystąpienia będą nadal działać 
 
 Aby uzyskać pomoc dotyczącą identyfikacji odpowiedniej pojemności zarezerwowanej, zobacz [Opis sposobu stosowania rabatu rezerwacji do Azure Cosmos DB](../billing/billing-understand-cosmosdb-reservation-charges.md).
 
-Rezerwacje można anulować, wymieniać lub zwracać, jednak obowiązują przy tym pewne ograniczenia. Aby uzyskać więcej informacji, zobacz temat [Samoobsługowe wymiany i zwroty kosztów dla rezerwacji platformy Azure](../billing/billing-azure-reservations-self-service-exchange-and-refund.md).
+Rezerwacje można anulować, wymieniać lub zwracać, jednak obowiązują przy tym pewne ograniczenia. Aby uzyskać więcej informacji, zobacz temat [Self-service exchanges and refunds for Azure Reservations](../billing/billing-azure-reservations-self-service-exchange-and-refund.md) (Samoobsługowe wymiany i zwroty kosztów dla rezerwacji platformy Azure).
 
 ## <a name="next-steps"></a>Następne kroki
 

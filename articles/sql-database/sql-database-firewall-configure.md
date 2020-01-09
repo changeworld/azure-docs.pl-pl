@@ -12,12 +12,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: 5c1a146a12fd8881982826e0a87868a6eaf05cb1
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 9db6b5ff517a1b0d67e59591ee634dfad685527b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851834"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75461469"
 ---
 # <a name="azure-sql-database-and-azure-sql-data-warehouse-ip-firewall-rules"></a>Reguły zapory Azure SQL Database i Azure SQL Data Warehouse IP
 
@@ -101,7 +101,7 @@ Gdy komputer próbuje nawiązać połączenie z serwerem bazy danych za pośredn
 
 ### <a name="connections-from-inside-azure"></a>Połączenia z platformy Azure
 
-Aby umożliwić aplikacjom hostowanym na platformie Azure Łączenie się z programem SQL Server, należy włączyć połączenia platformy Azure. Gdy aplikacja z platformy Azure próbuje nawiązać połączenie z serwerem bazy danych, Zapora sprawdza, czy połączenia platformy Azure są dozwolone. Ustawienie zapory, które ma początkowe i końcowe adresy IP równe *0.0.0.0* wskazuje, że połączenia platformy Azure są dozwolone. Jeśli połączenie nie jest dozwolone, żądanie nie dociera do serwera SQL Database.
+Aby umożliwić aplikacjom hostowanym na platformie Azure Łączenie się z programem SQL Server, należy włączyć połączenia platformy Azure. Gdy aplikacja z platformy Azure próbuje nawiązać połączenie z serwerem bazy danych, Zapora sprawdza, czy połączenia platformy Azure są dozwolone. Ustawienie zapory, które ma początkowe i końcowe adresy IP równe *0.0.0.0* wskazuje, że połączenia platformy Azure są dozwolone. Tę funkcję można włączyć bezpośrednio w bloku witryny Azure Portal, ustawiając reguły zapory, a także przełączając ustawienia **Zezwalaj usługom i zasobom platformy Azure na dostęp do tego serwera** **w ustawieniach** **zapory i sieci wirtualne** . Jeśli połączenie nie jest dozwolone, żądanie nie dociera do serwera SQL Database.
 
 > [!IMPORTANT]
 > Ta opcja umożliwia skonfigurowanie zapory w taki sposób, aby zezwalała na wszystkie połączenia z platformy Azure, w tym połączenia z subskrypcji innych klientów. W przypadku wybrania tej opcji upewnij się, że uprawnienia logowania i użytkownika ograniczają dostęp tylko do autoryzowanych użytkowników.
@@ -152,8 +152,8 @@ Zostanie otwarta strona przegląd dla Twojego serwera. Pokazuje w pełni kwalifi
 | [sys.firewall_rules](https://msdn.microsoft.com/library/dn269980.aspx) |Serwer |Wyświetla bieżące reguły zapory adresów IP na poziomie serwera |
 | [sp_set_firewall_rule](https://msdn.microsoft.com/library/dn270017.aspx) |Serwer |Tworzy lub aktualizuje reguły zapory adresów IP na poziomie serwera |
 | [sp_delete_firewall_rule](https://msdn.microsoft.com/library/dn270024.aspx) |Serwer |Usuwa reguły zapory adresów IP na poziomie serwera |
-| [sys.database_firewall_rules](https://msdn.microsoft.com/library/dn269982.aspx) |Database (Baza danych) |Wyświetla bieżące reguły zapory adresów IP na poziomie bazy danych |
-| [sp_set_database_firewall_rule](https://msdn.microsoft.com/library/dn270010.aspx) |Database (Baza danych) |Tworzy lub aktualizuje reguły zapory adresów IP na poziomie bazy danych |
+| [sys.database_firewall_rules](https://msdn.microsoft.com/library/dn269982.aspx) |baza danych |Wyświetla bieżące reguły zapory adresów IP na poziomie bazy danych |
+| [sp_set_database_firewall_rule](https://msdn.microsoft.com/library/dn270010.aspx) |baza danych |Tworzy lub aktualizuje reguły zapory adresów IP na poziomie bazy danych |
 | [sp_delete_database_firewall_rule](https://msdn.microsoft.com/library/dn270030.aspx) |Bazy danych |Usuwa reguły zapory adresów IP na poziomie bazy danych |
 
 Poniższy przykład przegląda istniejące reguły, włącza zakres adresów IP na serwerze *contoso*i usuwa regułę zapory IP:

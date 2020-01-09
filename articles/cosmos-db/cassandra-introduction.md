@@ -1,6 +1,6 @@
 ---
 title: Wprowadzenie do interfejsu API Cassandra usługi Azure Cosmos DB
-description: Dowiedz się, jak używać usługi Azure Cosmos DB do migrowania istniejących aplikacji metodą „lift-and-shift" i kompilować nowe aplikacje w ramach interfejsu API Cassandra za pomocą znanych już sterowników Cassandra i języka CQL.
+description: Dowiedz się, jak można użyć Azure Cosmos DB do istniejących aplikacji "Unieś-and-Shift" i utworzyć nowe aplikacje za pomocą sterowników Cassandra i CQL
 author: kanshiG
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 05/21/2019
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 82ca7814f756a12005ee5802c3e8a7fd28f6d398
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 63a85e86b1882bdaf4e5b85601a7deabe5b3bbef
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65968974"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442131"
 ---
 # <a name="introduction-to-the-azure-cosmos-db-cassandra-api"></a>Wprowadzenie do interfejsu API Cassandra usługi Azure Cosmos DB
 
@@ -37,7 +37,7 @@ Interfejs API Cassandra pozwala na interakcję z danymi przechowywanymi w usłud
 
 **Klasa korporacyjna**: usługa Azure Cosmos DB udostępnia [certyfikaty zgodności](https://www.microsoft.com/trustcenter), aby zapewnić użytkownikom możliwość bezpiecznego korzystania z platformy. Usługa Azure Cosmos DB oferuje również szyfrowanie danych magazynowanych i w ruchu, zaporę adresów IP oraz dzienniki inspekcji na potrzeby działań płaszczyzny sterowania.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Możesz szybko rozpocząć od kompilowania następujących aplikacji specyficznych dla języka do tworzenia i zarządzania danymi interfejsu API Cassandra:
   - [Aplikacja platformy Node.js](create-cassandra-nodejs.md)

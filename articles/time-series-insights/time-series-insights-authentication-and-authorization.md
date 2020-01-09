@@ -10,20 +10,25 @@ ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 11/14/2019
+ms.date: 12/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: d47f846f77d3552288dfea43b417d8c60856f41a
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: b54034dc8828fb8a96f488197e517ef07ed55ab5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74327888"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460432"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Uwierzytelnianie i autoryzacja interfejsu API Azure Time Series Insights
 
 W tym dokumencie opisano sposób rejestrowania aplikacji w Azure Active Directory przy użyciu bloku nowy Azure Active Directory. Aplikacje zarejestrowane w Azure Active Directory umożliwiają użytkownikom uwierzytelnianie w usłudze i Zezwalanie na korzystanie z interfejsu API usługi Azure Time Series Insights skojarzonego ze środowiskiem Time Series Insights.
 
-## <a name="service-principal"></a>Nazwa główna usługi
+> [!IMPORTANT]
+> Azure Time Series Insights obsługuje obie następujące biblioteki uwierzytelniania:
+> * Najnowsza [Biblioteka uwierzytelniania firmy Microsoft (MSAL)](https://docs.microsoft.com/azure/active-directory/develop/msal-overview)
+> * [Biblioteka Azure Active Directory Authentication Library (ADAL)](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries)
+
+## <a name="service-principal"></a>Jednostka usługi
 
 W poniższych sekcjach opisano sposób konfigurowania aplikacji w celu uzyskiwania dostępu do interfejsu API Time Series Insights w imieniu aplikacji. Aplikacja może następnie badać lub publikować dane referencyjne w środowisku Time Series Insights przy użyciu własnych poświadczeń aplikacji za pośrednictwem Azure Active Directory.
 
@@ -76,74 +81,83 @@ Na **krok 3**oddzielenie poświadczeń aplikacji i użytkownika pozwala:
 
 ### <a name="client-app-initialization"></a>Inicjowanie aplikacji klienta
 
-1. Użyj **identyfikatora aplikacji** i klucza **tajnego klienta** (klucza aplikacji) z sekcji Azure Active Directory rejestracji aplikacji, aby uzyskać token w imieniu aplikacji.
+* Deweloperzy mogą używać [biblioteki Microsoft Authentication Library (MSAL)](https://docs.microsoft.com/azure/active-directory/develop/msal-overview) lub [Azure Active Directory Authentication Library (ADAL)](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries) do uwierzytelniania przy użyciu Azure Time Series Insights.
 
-    W C#programie Poniższy kod może uzyskać token w imieniu aplikacji. Aby uzyskać pełny przykład, zobacz [dane zapytania przy C#użyciu ](time-series-insights-query-data-csharp.md).
+* Na przykład w celu uwierzytelnienia przy użyciu biblioteki ADAL:
 
-    ```csharp
-    // Enter your Active Directory tenant domain name
-    var tenant = "YOUR_AD_TENANT.onmicrosoft.com";
-    var authenticationContext = new AuthenticationContext(
-        $"https://login.microsoftonline.com/{tenant}",
-        TokenCache.DefaultShared);
+   1. Użyj **identyfikatora aplikacji** i klucza **tajnego klienta** (klucza aplikacji) z sekcji Azure Active Directory rejestracji aplikacji, aby uzyskać token w imieniu aplikacji.
 
-    AuthenticationResult token = await authenticationContext.AcquireTokenAsync(
-        // Set the resource URI to the Azure Time Series Insights API
-        resource: "https://api.timeseries.azure.com/",
-        clientCredential: new ClientCredential(
-            // Application ID of application registered in Azure Active Directory
-            clientId: "YOUR_APPLICATION_ID",
-            // Application key of the application that's registered in Azure Active Directory
-            clientSecret: "YOUR_CLIENT_APPLICATION_KEY"));
+   1. W C#programie Poniższy kod może uzyskać token w imieniu aplikacji. Aby uzyskać pełny przykład, zobacz [dane zapytania przy C#użyciu ](time-series-insights-query-data-csharp.md).
 
-    string accessToken = token.AccessToken;
-    ```
+        [!code-csharp[csharpquery-example](~/samples-tsi/csharp-tsi-ga-sample/Program.cs?range=170-199)]
 
-1. Token można następnie przesłać do nagłówka `Authorization`, gdy aplikacja wywołuje interfejs API Time Series Insights.
+   1. Token można następnie przesłać do nagłówka `Authorization`, gdy aplikacja wywołuje interfejs API Time Series Insights.
+
+* Alternatywnie deweloperzy mogą zdecydować się na uwierzytelnianie za pomocą MSAL. Przeczytaj o [migracji do MSAL](https://docs.microsoft.com/azure/active-directory/develop/msal-net-migration) , aby dowiedzieć się więcej. 
 
 ## <a name="common-headers-and-parameters"></a>Wspólne nagłówki i parametry
 
 W tej sekcji opisano typowe nagłówki i parametry żądań HTTP służące do wykonywania zapytań dotyczących Time Series Insights GA i Podgląd interfejsów API. Wymagania dotyczące interfejsu API są szczegółowo opisane w [dokumentacji dotyczącej interfejsu API REST Time Series Insights](https://docs.microsoft.com/rest/api/time-series-insights/).
 
+> [!TIP]
+> Przeczytaj informacje o [interfejsie API REST platformy Azure](https://docs.microsoft.com/rest/api/azure/) , aby dowiedzieć się więcej na temat korzystania z interfejsów API REST, wykonywania żądań HTTP i obsługi odpowiedzi HTTP.
+
 ### <a name="authentication"></a>Authentication
 
 Aby wykonać uwierzytelnione zapytania dotyczące [Time Series Insights interfejsów API REST](https://docs.microsoft.com/rest/api/time-series-insights/), należy przesłać prawidłowy token okaziciela OAuth 2,0 w [nagłówku autoryzacji](/rest/api/apimanagement/2019-01-01/authorizationserver/createorupdate) za pomocą wybranego przez siebie klienta REST (Poster, JavaScript, C#). 
-
-> [!IMPORTANT]
-> Token musi być wystawiony dokładnie dla `https://api.timeseries.azure.com/` zasobu (znany również jako "odbiorcy" tokenu).
-> * Z tego względu Twój **AuthURLcy** Twojego [ogłaszania](https://www.getpostman.com/) jest zgodny z: `https://login.microsoftonline.com/microsoft.onmicrosoft.com/oauth2/authorize?resource=https://api.timeseries.azure.com/`
 
 > [!TIP]
 > Zapoznaj się z [przykładową wizualizacją zestawu SDK klienta](https://tsiclientsample.azurewebsites.net/) hostowanego Azure Time Series Insights, aby dowiedzieć się, jak uwierzytelniać się za pomocą interfejsu API Time Series Insights programowo przy użyciu [zestawu SDK klienta języka JavaScript](https://github.com/microsoft/tsiclient/blob/master/docs/API.md) , a także wykresów
 
 ### <a name="http-headers"></a>Nagłówki HTTP
 
-Wymagane nagłówki żądania:
+Wymagane nagłówki żądań są opisane poniżej.
 
-- `Authorization` uwierzytelniania i autoryzacji, należy przesłać prawidłowy token okaziciela OAuth 2,0 w nagłówku autoryzacji. Token musi być wystawiony dokładnie dla `https://api.timeseries.azure.com/` zasobu (znany również jako "odbiorcy" tokenu).
+| Wymagany nagłówek żądania | Opis |
+| --- | --- |
+| Autoryzacja | Aby uwierzytelnić się za pomocą Time Series Insights, należy przesłać prawidłowy token okaziciela OAuth 2,0 w nagłówku **autoryzacji** . | 
 
-Opcjonalne nagłówki żądań:
+> [!IMPORTANT]
+> Token musi być wystawiony dokładnie dla `https://api.timeseries.azure.com/` zasobu (znany również jako "odbiorcy" tokenu).
+> * W związku z tym **AuthURL** Twojego [ogłaszania](https://www.getpostman.com/) będzie: `https://login.microsoftonline.com/microsoft.onmicrosoft.com/oauth2/authorize?resource=https://api.timeseries.azure.com/`
+> * `https://api.timeseries.azure.com/` jest prawidłowy, ale `https://api.timeseries.azure.com` nie jest.
 
-- Obsługiwane są `application/json` tylko `Content-type`.
-- `x-ms-client-request-id` — identyfikator żądania klienta. Usługa rejestruje tę wartość. Umożliwia usłudze śledzenie operacji między usługami.
-- `x-ms-client-session-id` — identyfikator sesji klienta. Usługa rejestruje tę wartość. Umożliwia usłudze Śledzenie grupy powiązanych operacji między usługami.
-- `x-ms-client-application-name` — nazwa aplikacji, która wygenerowała to żądanie. Usługa rejestruje tę wartość.
+Opcjonalne nagłówki żądań są opisane poniżej.
 
-Nagłówki odpowiedzi:
+| Opcjonalny nagłówek żądania | Opis |
+| --- | --- |
+| Typ zawartości | Obsługiwane są tylko `application/json`. |
+| x-ms-client-request-id | Identyfikator żądania klienta. Usługa rejestruje tę wartość. Umożliwia usłudze śledzenie operacji między usługami. |
+| x-MS-Client-Session-ID | Identyfikator sesji klienta. Usługa rejestruje tę wartość. Umożliwia usłudze Śledzenie grupy powiązanych operacji między usługami. |
+| x-MS-Client-Application-Name | Nazwa aplikacji, która wygenerowała to żądanie. Usługa rejestruje tę wartość. |
 
-- Obsługiwane są `application/json` tylko `Content-type`.
-- Identyfikator żądania wygenerowany przez serwer `x-ms-request-id`. Można go użyć do skontaktowania się z firmą Microsoft w celu zbadania żądania.
+Opcjonalne, ale zalecane nagłówki odpowiedzi są opisane poniżej.
+
+| Nagłówek odpowiedzi | Opis |
+| --- | --- |
+| Typ zawartości | Obsługiwane są tylko `application/json`. |
+| x-MS-Request-ID | Identyfikator żądania wygenerowany przez serwer. Można go użyć do skontaktowania się z firmą Microsoft w celu zbadania żądania. |
+| zachowanie x-MS-Property-not----------- | Opcjonalny nagłówek odpowiedzi interfejsu API usługi GA. Możliwe wartości to `ThrowError` (wartość domyślna) lub `UseNull`. |
 
 ### <a name="http-parameters"></a>Parametry HTTP
 
-Parametry ciągu zapytania wymaganego adresu URL:
+> [!TIP]
+> Więcej informacji na temat wymaganych i opcjonalnych informacji o zapytaniach znajduje się w [dokumentacji referencyjnej](https://docs.microsoft.com/rest/api/time-series-insights/).
 
-- `api-version=2016-12-12`
-- `api-version=2018-11-01-preview`
+Parametry ciągu zapytania wymaganego adresu URL są zależne od wersji interfejsu API.
 
-Opcjonalne parametry ciągu zapytania URL:
+| Wydawanie | Możliwe wartości wersji interfejsu API |
+| --- |  --- |
+| Ogólna dostępność | `api-version=2016-12-12`|
+| Wersja zapoznawcza | `api-version=2018-11-01-preview` |
+| Wersja zapoznawcza | `api-version=2018-08-15-preview` |
 
-- `timeout=<timeout>` — limit czasu po stronie serwera dla wykonywania żądania. Dotyczy tylko [zdarzeń Get Environment](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-events-api) i [Get Environment](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-aggregates-api) API. Wartość limitu czasu powinna mieć format czasu trwania ISO 8601, na przykład `"PT20S"` i powinna znajdować się w zakresie `1-30 s`. Wartość domyślna to `30 s`.
+Opcjonalne parametry ciągu zapytania URL obejmują ustawianie limitu czasu dla czasów wykonywania żądań HTTP.
+
+| Opcjonalny parametr zapytania | Opis | Wersja |
+| --- |  --- | --- |
+| `timeout=<timeout>` | Limit czasu po stronie serwera dla wykonywania żądania HTTP. Dotyczy tylko [zdarzeń Get Environment](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-events-api) i [Get Environment](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-aggregates-api) API. Wartość limitu czasu powinna mieć format czasu trwania ISO 8601, na przykład `"PT20S"` i powinna znajdować się w zakresie `1-30 s`. Wartość domyślna to `30 s`. | Ogólna dostępność |
+| `storeType=<storeType>` | W przypadku środowisk w wersji zapoznawczej z włączonym magazynem ciepłym zapytanie można wykonać w `WarmStore` lub `ColdStore`. Ten parametr w zapytaniu definiuje magazyn, dla którego ma zostać wykonane zapytanie. Jeśli nie zostanie zdefiniowana, zapytanie zostanie wykonane w chłodnym magazynie. Aby zbadać magazyn ciepły, należy ustawić wartość **magazynutype** na `WarmStore`. Jeśli nie zostanie zdefiniowana, zapytanie zostanie wykonane względem zimnego magazynu. | Wersja zapoznawcza |
 
 ## <a name="next-steps"></a>Następne kroki
 
@@ -151,6 +165,6 @@ Opcjonalne parametry ciągu zapytania URL:
 
 - Przykłady kodu interfejsu API Time Series Insights w wersji zapoznawczej znajdują się w temacie [Query Preview Data using C# ](./time-series-insights-update-query-data-csharp.md).
 
-- Informacje referencyjne dotyczące interfejsu API znajdują się w temacie [Dokumentacja interfejsu API zapytań](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api).
+- Informacje referencyjne dotyczące interfejsu API znajdują się w dokumentacji dotyczącej [interfejsu API zapytań](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api) .
 
 - Dowiedz się, jak [utworzyć jednostkę usługi](../active-directory/develop/howto-create-service-principal-portal.md).

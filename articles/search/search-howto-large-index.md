@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: bd158eaf22025a64d7464c632d3f0fa510a4b5a3
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.date: 12/17/2019
+ms.openlocfilehash: b4b6c57b08de07cae431f015c8d8f53cdf3a50a4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793759"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460730"
 ---
 # <a name="how-to-index-large-data-sets-in-azure-cognitive-search"></a>Jak indeksować duże zestawy danych w usłudze Azure Wyszukiwanie poznawcze
 
@@ -34,7 +34,7 @@ Indeksowanie wsadowe jest implementowane dla indywidualnych żądań przy użyci
 
 ## <a name="option-2-add-resources"></a>Opcja 2: Dodawanie zasobów
 
-Usługi, które są udostępniane w jednej ze [standardowych warstw cenowych](search-sku-tier.md) , często mają bezproblemową wydajność zarówno dla magazynu, jak i obciążeń (zapytania lub indeksowanie), co sprawia, że [zwiększenie partycji i repliki](search-capacity-planning.md) to oczywiste rozwiązanie dla Obsługa większych zestawów danych. Aby uzyskać najlepsze wyniki, potrzebne są oba zasoby: partycje magazynu i repliki dla pracy pozyskiwania danych.
+Usługi, które są udostępniane w jednej ze [standardowych warstw cenowych](search-sku-tier.md) , często mają nieznacznie wykorzystywaną wydajność zarówno dla magazynu, jak i obciążeń (zapytania lub indeksowanie), co sprawia, że [zwiększenie partycji i repliki](search-capacity-planning.md) to oczywiste rozwiązanie do obsługi większych zestawów danych. Aby uzyskać najlepsze wyniki, potrzebne są oba zasoby: partycje magazynu i repliki dla pracy pozyskiwania danych.
 
 Rosnące repliki i partycje są płatnymi zdarzeniami, które zwiększają koszt, ale o ile nie są ciągle indeksowane w ramach maksymalnego obciążenia, można dodać skalę na czas trwania procesu indeksowania, a następnie ponownie dopasować poziomy zasobów po indeksie zakończeniu.
 
@@ -74,7 +74,7 @@ Przetwarzanie równoległe obejmuje następujące elementy:
 + Zaplanuj, aby wszystkie indeksatory były uruchamiane w tym samym czasie.
 
 > [!NOTE]
-> Usługa Azure Wyszukiwanie poznawcze nie obsługuje dedykowanych replik ani partycji do określonych obciążeń. Ryzyko dużego współbieżnego indeksowania polega na przeniesieniu nadmiernego obciążenia systemu do poziomu szkody związanej z wydajnością zapytań. Jeśli masz środowisko testowe, najpierw Zaimplementuj indeksowanie równoległe, aby zrozumieć kompromisy.
+> W usłudze Azure Wyszukiwanie poznawcze nie można przypisywać pojedynczych replik ani partycji do przetwarzania indeksowania lub zapytań. System określa sposób użycia zasobów. Aby zrozumieć wpływ na wydajność zapytań, możesz spróbować wykonać indeksowanie równoległe w środowisku testowym przed przeprowadzeniem go do produkcji.  
 
 ### <a name="how-to-configure-parallel-indexing"></a>Jak skonfigurować indeksowanie równoległe
 

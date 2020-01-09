@@ -1,34 +1,25 @@
 ---
-title: Uruchom usługę Azure Service Fabric jako użytkownik usługi AD lub grupy | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak uruchomić usługi jako użytkownika usługi Active Directory lub grupie na klastra autonomicznego usługi Service Fabric Windows.
-services: service-fabric
-documentationcenter: .net
+title: Uruchamianie usługi Service Fabric platformy Azure jako użytkownika lub grupy usługi AD
+description: Dowiedz się, jak uruchomić usługę jako użytkownika lub grupę Active Directory w Service Fabric autonomicznym klastrze systemu Windows.
 author: dkkapur
-manager: chackdan
-editor: ''
-ms.assetid: 4242a1eb-a237-459b-afbf-1e06cfa72732
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 03/29/2018
 ms.author: dekapur
-ms.openlocfilehash: 3e0bb62609f13430bd2beab2332a31983874eb8e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d440aadb66562e32331c9725a9367c12440a315d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60837729"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464246"
 ---
-# <a name="run-a-service-as-an-active-directory-user-or-group"></a>Uruchamianie usługi za użytkownika usługi Active Directory lub grupy
-W klastrze autonomicznego systemu Windows Server można uruchomić usługi jako użytkownika usługi Active Directory lub grupie za pomocą zasad RunAs.  Domyślnie aplikacje usługi Service Fabric uruchamiana na koncie, zgodną z procesu Fabric.exe. Uruchamianie aplikacji w ramach różnych kont, nawet w środowisku współdzielonym hostowanej sprawia, że jest ich bardziej bezpieczne od siebie nawzajem. Należy pamiętać, że używane są usługi Active Directory w środowisku lokalnym w ramach domeny i nie usługi Azure Active Directory (Azure AD).  Można również uruchomić usługę jako [konta grupy usługi zarządzanej (gMSA)](service-fabric-run-service-as-gmsa.md).
+# <a name="run-a-service-as-an-active-directory-user-or-group"></a>Uruchamianie usługi jako użytkownika lub grupy Active Directory
+W klastrze autonomicznym systemu Windows Server można uruchomić usługę jako użytkownika lub grupę Active Directory przy użyciu zasad RunAs.  Domyślnie aplikacje Service Fabric są uruchamiane w ramach konta, w ramach którego działa proces Fabric. exe. Uruchamianie aplikacji na różnych kontach, nawet w udostępnianym środowisku hostowanym, sprawia, że są one bezpieczniejsze od siebie nawzajem. Należy zauważyć, że ta funkcja używa Active Directory lokalnie w domenie, a nie Azure Active Directory (Azure AD).  Możesz również uruchomić usługę jako [konto usługi zarządzanej przez grupę (gMSA)](service-fabric-run-service-as-gmsa.md).
 
-Za pomocą użytkownika domeny lub grupy, można następnie dostęp do innych zasobów w domenie (np. udziały plików), które ma odpowiednie uprawnienia.
+Przy użyciu użytkownika domeny lub grupy można następnie uzyskać dostęp do innych zasobów w domenie (na przykład udziałów plików), którym udzielono uprawnień.
 
-W poniższym przykładzie pokazano użytkownika usługi Active Directory o nazwie *TestUser* z ich domeny o nazwie hasła szyfrowane przy użyciu certyfikatu *MyCert*. Możesz użyć `Invoke-ServiceFabricEncryptText` polecenie programu PowerShell w celu utworzenia wpisu tajnego zaszyfrowanego tekstu. Zobacz [zarządzać kluczami tajnymi w aplikacji usługi Service Fabric](service-fabric-application-secret-management.md) Aby uzyskać szczegółowe informacje.
+W poniższym przykładzie przedstawiono Active Directory użytkownika o nazwie *Użytkownik testowy* z hasłem domeny szyfrowanym przy użyciu certyfikatu o nazwie mój *certyfikat*. Za pomocą polecenia `Invoke-ServiceFabricEncryptText` PowerShell można utworzyć tekst szyfrowania klucza tajnego. Aby uzyskać szczegółowe informacje, zobacz Zarządzanie wpisami [tajnymi w aplikacjach Service Fabric](service-fabric-application-secret-management.md) .
 
-Należy wdrożyć klucza prywatnego certyfikatu można odszyfrować haseł na komputerze lokalnym przy użyciu metody out-of-band (na platformie Azure, jest to za pomocą usługi Azure Resource Manager). Następnie gdy Usługa Service Fabric wdroży pakiet usługi do maszyny, będzie mógł odszyfrować klucz tajny i (wraz z nazwą użytkownika) uwierzytelniania w usłudze Active Directory, aby działać w ramach tych poświadczeń.
+Należy wdrożyć klucz prywatny certyfikatu w celu odszyfrowania hasła do komputera lokalnego przy użyciu metody poza pasmem (na platformie Azure — za pośrednictwem Azure Resource Manager). Następnie, gdy Service Fabric wdraża pakiet usługi na komputerze, może odszyfrować klucz tajny i (wraz z nazwą użytkownika) uwierzytelniać się za pomocą Active Directory do uruchamiania w ramach tych poświadczeń.
 
 ```xml
 <Principals>
@@ -46,12 +37,12 @@ Należy wdrożyć klucza prywatnego certyfikatu można odszyfrować haseł na ko
 ```
 
 > [!NOTE] 
-> Jeśli zastosujesz zasady RunAs do usługi i manifestu usługi deklaruje zasobów punktu końcowego przy użyciu protokołu HTTP, należy także określić **SecurityAccessPolicy**.  Aby uzyskać więcej informacji, zobacz [przypisywanie zasad dostępu zabezpieczeń dla punktów końcowych HTTP i HTTPS](service-fabric-assign-policy-to-endpoint.md). 
+> Jeśli zastosujesz zasady RunAs do usługi, a manifest usługi deklaruje zasoby punktów końcowych przy użyciu protokołu HTTP, należy również określić **SecurityAccessPolicy**.  Aby uzyskać więcej informacji, zobacz [przypisywanie zasad dostępu zabezpieczeń dla punktów końcowych http i https](service-fabric-assign-policy-to-endpoint.md). 
 >
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
-Kolejnym krokiem przeczytaj następujące artykuły:
-* [Informacje o modelu aplikacji](service-fabric-application-model.md)
+Następnym krokiem jest zapoznanie się z następującymi artykułami:
+* [Omówienie modelu aplikacji](service-fabric-application-model.md)
 * [Określanie zasobów w manifeście usługi](service-fabric-service-manifest-resources.md)
 * [Wdrażanie aplikacji](service-fabric-deploy-remove-applications.md)
 

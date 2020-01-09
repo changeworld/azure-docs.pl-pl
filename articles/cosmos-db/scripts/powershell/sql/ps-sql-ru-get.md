@@ -1,5 +1,5 @@
 ---
-title: Skrypt Azure PowerShell — Azure Cosmos DB Uzyskaj przepływność aprowizacji (RU/s) dla interfejsu API SQL (rdzeń)
+title: Skrypt programu PowerShell umożliwiający uzyskanie zainicjowanej przepływności (RU/s) dla interfejsu API Azure Cosmos DB SQL (rdzeń)
 description: Skrypt Azure PowerShell — Azure Cosmos DB Uzyskaj przepływność aprowizacji (RU/s) dla interfejsu API SQL (rdzeń)
 author: markjbrown
 ms.service: cosmos-db
@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 07/03/2019
 ms.author: mjbrown
-ms.openlocfilehash: c7d7f295589d4e3b152016c2b55cfe07355d1cb0
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: 9b4450e18aa2666806faf2c0baed8af2285e69dc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71178765"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441343"
 ---
 # <a name="get-the-provisioned-throughput-rus-for-a-database-or-container-for-azure-cosmos-db---sql-core-api"></a>Uzyskaj przepływność aprowizacji (RU/s) dla bazy danych lub kontenera dla interfejsu API Azure Cosmos DB-SQL (rdzeń)
 

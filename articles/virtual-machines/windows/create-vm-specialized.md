@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 10/10/2019
 ms.author: cynthn
-ms.openlocfilehash: ac18056f9bfdf22c55b5effac810b8c24ab4d81d
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: fc157c2253a718860e028fa493574cb9aa2ccdf2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033854"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460191"
 ---
 # <a name="create-a-windows-vm-from-a-specialized-disk-by-using-powershell"></a>Tworzenie maszyny wirtualnej z systemem Windows na podstawie wyspecjalizowanego dysku przy użyciu programu PowerShell
 
@@ -26,7 +26,7 @@ Utwórz nową maszynę wirtualną przez dołączenie wyspecjalizowanego dysku za
 
 W przypadku tworzenia nowej maszyny wirtualnej przy użyciu wyspecjalizowanego wirtualnego dysku twardego Nowa maszyna wirtualna zachowuje nazwę komputera oryginalnej maszyny wirtualnej. Inne informacje specyficzne dla komputera również są przechowywane i w niektórych przypadkach te duplikaty mogą powodować problemy. Podczas kopiowania maszyny wirtualnej należy wiedzieć o typach informacji specyficznych dla komputera, na których zależą Twoje aplikacje.
 
-Istnieje kilka opcji:
+Istnieje kilka rozwiązań:
 * [Użyj istniejącego dysku zarządzanego](#option-1-use-an-existing-disk). Ta opcja jest przydatna, jeśli masz maszynę wirtualną, która nie działa prawidłowo. Możesz usunąć maszynę wirtualną, a następnie ponownie użyć dysku zarządzanego, aby utworzyć nową maszynę wirtualną. 
 * [Przekazywanie wirtualnego dysku twardego](#option-2-upload-a-specialized-vhd) 
 * [Kopiowanie istniejącej maszyny wirtualnej platformy Azure przy użyciu migawek](#option-3-copy-an-existing-azure-vm)
@@ -70,7 +70,7 @@ Możesz teraz przekazać dysk VHD bezpośrednio do dysku zarządzanego. Aby uzys
 
 Można utworzyć kopię maszyny wirtualnej korzystającej z dysków zarządzanych, pobierając migawkę maszyny wirtualnej, a następnie używając tej migawki do utworzenia nowego dysku zarządzanego i nowej maszyny wirtualnej.
 
-Jeśli chcesz skopiować istniejącą maszynę wirtualną do innego regionu, możesz użyć AzCopy, aby utworzyć [kopię dysku w innym regionie](disks-upload-vhd-to-managed-disk-powershell.md#copy-a-managed-disk). 
+Jeśli chcesz skopiować istniejącą maszynę wirtualną do innego regionu, możesz użyć AzCopy, aby [utworzyć kopię dysku w innym regionie](disks-upload-vhd-to-managed-disk-powershell.md#copy-a-managed-disk). 
 
 ### <a name="take-a-snapshot-of-the-os-disk"></a>Utwórz migawkę dysku systemu operacyjnego
 

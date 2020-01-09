@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
-ms.date: 11/15/2019
-ms.openlocfilehash: 95953b4f052531c9804024410e225bb0b5c62aef
-ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
-ms.translationtype: MT
+ms.date: 11/16/2019
+ms.openlocfilehash: de1366b1bf45301d3d26a4f721ef2828f79be98d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74539189"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460645"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL Database metryki i rejestrowania diagnostyki
 
@@ -41,7 +41,7 @@ Ten artykuł zawiera wskazówki ułatwiające włączenie telemetrii diagnostyki
 
 Można włączyć i zarządzać metrykami oraz diagnostycznym rejestrowaniem danych telemetrycznych za pomocą jednej z następujących metod:
 
-- Azure Portal
+- Portal Azure
 - PowerShell
 - Interfejs wiersza polecenia platformy Azure
 - Interfejs API REST Azure Monitor
@@ -79,9 +79,10 @@ Można skonfigurować bazy danych Azure SQL Database i wystąpienia baz danych, 
 > Pule elastyczne i wystąpienia zarządzane mają osobne dane telemetryczne diagnostyki z baz danych, które zawierają. Jest to ważne, aby pamiętać, że dane telemetryczne diagnostyki są konfigurowane osobno dla każdego z tych zasobów, jak opisano poniżej.
 
 > [!NOTE]
-> Aby włączyć przesyłanie strumieniowe dzienników inspekcji, zobacz [Konfigurowanie inspekcji dla bazy danych](sql-database-auditing.md#subheading-2)i [Inspekcja dzienników w Azure monitor dziennikach i Event Hubs platformy Azure](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/SQL-Audit-logs-in-Azure-Log-Analytics-and-Azure-Event-Hubs/ba-p/386242).
+> - Aby włączyć przesyłanie strumieniowe dzienników inspekcji, zobacz [Konfigurowanie inspekcji dla bazy danych](sql-database-auditing.md#subheading-2)i [Inspekcja dzienników w Azure monitor dziennikach i Event Hubs platformy Azure](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/SQL-Audit-logs-in-Azure-Log-Analytics-and-Azure-Event-Hubs/ba-p/386242).
+> - Nie można skonfigurować ustawień diagnostycznych dla **systemowych baz danych**, takich jak bazy danych Master, msdb, model, reresources i tempdb.
 
-## <a name="azure-portal"></a>Azure Portal
+## <a name="azure-portal"></a>Portal Azure
 
 Aby skonfigurować przesyłanie strumieniowe danych telemetrycznych diagnostyki, można użyć menu **Ustawienia diagnostyczne** dla każdej pojedynczej, w puli lub w Azure Portal. Ponadto dane telemetryczne diagnostyki można również skonfigurować osobno dla kontenerów bazy danych: pule elastyczne i wystąpienia zarządzane. Można ustawić następujące miejsca docelowe, aby przesyłać strumieniowo dane telemetryczne diagnostyki: Azure Storage, Azure Event Hubs i Azure Monitor logs.
 
@@ -221,7 +222,7 @@ Aby włączyć strumieniowe dane telemetryczne diagnostyki dla baz danych wystą
 
 Można włączyć funkcję rejestrowania metryk i diagnostyki przy użyciu programu PowerShell.
 
-- Aby włączyć magazyn dzienników diagnostycznych na koncie magazynu, użyj tego polecenia:
+- Aby włączyć magazyn dzienniki diagnostyczne na koncie magazynu, użyj tego polecenia:
 
    ```powershell
    Set-AzDiagnosticSetting -ResourceId [your resource id] -StorageAccountId [your storage account id] -Enabled $true
@@ -229,31 +230,31 @@ Można włączyć funkcję rejestrowania metryk i diagnostyki przy użyciu progr
 
    Identyfikator konta magazynu jest IDENTYFIKATORem zasobu dla docelowego konta magazynu.
 
-- Aby włączyć przesyłanie strumieniowe dzienników diagnostycznych do centrum zdarzeń, użyj tego polecenia:
+- Aby włączyć strumieniowe przesyłanie dzienników diagnostycznych do Centrum zdarzeń, użyj tego polecenia:
 
    ```powershell
    Set-AzDiagnosticSetting -ResourceId [your resource id] -ServiceBusRuleId [your service bus rule id] -Enabled $true
    ```
 
-   Identyfikator reguły Azure Service Bus jest ciągiem o tym formacie:
+   Identyfikator reguły usługi Azure Service Bus jest ciągiem o następującym formacie:
 
    ```powershell
    {service bus resource ID}/authorizationrules/{key name}
    ```
 
-- Aby włączyć wysyłanie dzienników diagnostycznych do obszaru roboczego Log Analytics, użyj tego polecenia:
+- Aby włączyć wysyłanie dzienników diagnostycznych do obszaru roboczego usługi Log Analytics, użyj tego polecenia:
 
    ```powershell
    Set-AzDiagnosticSetting -ResourceId [your resource id] -WorkspaceId [resource id of the log analytics workspace] -Enabled $true
    ```
 
-- Identyfikator zasobu obszaru roboczego Log Analytics można uzyskać za pomocą następującego polecenia:
+- Identyfikator zasobu obszaru roboczego usługi Log Analytics można uzyskać za pomocą następującego polecenia:
 
    ```powershell
    (Get-AzOperationalInsightsWorkspace).ResourceId
    ```
 
-Te parametry można połączyć, aby włączyć wiele opcji danych wyjściowych.
+Można połączyć te parametry, aby włączyć wiele opcji danych wyjściowych.
 
 ### <a name="to-configure-multiple-azure-resources"></a>Aby skonfigurować wiele zasobów platformy Azure
 
@@ -303,7 +304,7 @@ Możesz włączyć funkcję rejestrowania metryk i diagnostyki przy użyciu inte
    azure insights diagnostic set --resourceId <resourceId> --workspaceId <resource id of the log analytics workspace> --enabled true
    ```
 
-Te parametry można połączyć, aby włączyć wiele opcji danych wyjściowych.
+Można połączyć te parametry, aby włączyć wiele opcji danych wyjściowych.
 
 ### <a name="rest-api"></a>Interfejs API REST
 
@@ -317,7 +318,7 @@ Przeczytaj informacje o sposobie [włączania ustawień diagnostycznych podczas 
 
 Azure SQL Analytics to rozwiązanie w chmurze, które służy do monitorowania wydajności baz danych SQL Azure, pul elastycznych i wystąpień zarządzanych na dużą skalę i w wielu subskrypcjach. Może pomóc zbierać i wizualizować Azure SQL Database metryki wydajności i ma wbudowaną analizę na potrzeby rozwiązywania problemów z wydajnością.
 
-![Przegląd Azure SQL Analytics](../azure-monitor/insights/media/azure-sql/azure-sql-sol-overview.png)
+![Usługi Azure SQL Analytics — Przegląd](../azure-monitor/insights/media/azure-sql/azure-sql-sol-overview.png)
 
 SQL Database metryki i dzienniki diagnostyczne mogą być przesyłane strumieniowo do Azure SQL Analytics przy użyciu wbudowanej opcji **Wyślij do log Analytics** na karcie Ustawienia diagnostyki w portalu. Usługę log Analytics można również włączyć przy użyciu ustawień diagnostycznych za pośrednictwem poleceń cmdlet programu PowerShell, interfejsu wiersza polecenia platformy Azure lub protokołu API REST Azure Monitor.
 
@@ -460,7 +461,7 @@ Szczegółowe informacje o telemetrii dostępne dla wszystkich dzienników zosta
 
 |Właściwość|Opis|
 |---|---|
-|tenantId|Identyfikator dzierżawy |
+|TenantId|Identyfikator dzierżawy |
 |SourceSystem|Zawsze: Azure|
 |TimeGenerated [UTC]|Sygnatura czasowa rejestrowania dziennika |
 |Typ|Zawsze: AzureDiagnostics |
@@ -485,7 +486,7 @@ Szczegółowe informacje o telemetrii dostępne dla wszystkich dzienników zosta
 
 |Właściwość|Opis|
 |---|---|
-|tenantId|Identyfikator dzierżawy |
+|TenantId|Identyfikator dzierżawy |
 |SourceSystem|Zawsze: Azure |
 |TimeGenerated [UTC]|Sygnatura czasowa rejestrowania dziennika |
 |Typ|Zawsze: AzureDiagnostics |
@@ -536,7 +537,7 @@ Dowiedz się więcej o [danych statystyk środowiska uruchomieniowego magazynu z
 
 |Właściwość|Opis|
 |---|---|
-|tenantId|Identyfikator dzierżawy |
+|TenantId|Identyfikator dzierżawy |
 |SourceSystem|Zawsze: Azure |
 |TimeGenerated [UTC]|Sygnatura czasowa rejestrowania dziennika |
 |Typ|Zawsze: AzureDiagnostics |
@@ -574,7 +575,7 @@ Dowiedz się więcej na temat [danych statystycznych oczekiwania magazynu zapyta
 
 |Właściwość|Opis|
 |---|---|
-|tenantId|Identyfikator dzierżawy |
+|TenantId|Identyfikator dzierżawy |
 |SourceSystem|Zawsze: Azure |
 |TimeGenerated [UTC]|Sygnatura czasowa rejestrowania dziennika |
 |Typ|Zawsze: AzureDiagnostics |
@@ -603,7 +604,7 @@ Dowiedz się więcej o [SQL Server komunikatach o błędach](https://docs.micros
 
 |Właściwość|Opis|
 |---|---|
-|tenantId|Identyfikator dzierżawy |
+|TenantId|Identyfikator dzierżawy |
 |SourceSystem|Zawsze: Azure |
 |TimeGenerated [UTC]|Sygnatura czasowa rejestrowania dziennika |
 |Typ|Zawsze: AzureDiagnostics |
@@ -632,7 +633,7 @@ Dowiedz się więcej na temat [statystyk oczekiwania bazy danych](https://docs.m
 
 |Właściwość|Opis|
 |---|---|
-|tenantId|Identyfikator dzierżawy |
+|TenantId|Identyfikator dzierżawy |
 |SourceSystem|Zawsze: Azure |
 |TimeGenerated [UTC]|Sygnatura czasowa rejestrowania dziennika |
 |Typ|Zawsze: AzureDiagnostics |
@@ -655,7 +656,7 @@ Dowiedz się więcej na temat [statystyk oczekiwania bazy danych](https://docs.m
 
 |Właściwość|Opis|
 |---|---|
-|tenantId|Identyfikator dzierżawy |
+|TenantId|Identyfikator dzierżawy |
 |SourceSystem|Zawsze: Azure |
 |TimeGenerated [UTC]|Sygnatura czasowa rejestrowania dziennika |
 |Typ|Zawsze: AzureDiagnostics |
@@ -679,7 +680,7 @@ Dowiedz się więcej na temat [statystyk oczekiwania bazy danych](https://docs.m
 
 |Właściwość|Opis|
 |---|---|
-|tenantId|Identyfikator dzierżawy |
+|TenantId|Identyfikator dzierżawy |
 |SourceSystem|Zawsze: Azure |
 |TimeGenerated [UTC] |Sygnatura czasowa rejestrowania dziennika |
 |Typ|Zawsze: AzureDiagnostics |
@@ -700,7 +701,7 @@ Dowiedz się więcej na temat [statystyk oczekiwania bazy danych](https://docs.m
 
 |Właściwość|Opis|
 |---|---|
-|tenantId|Identyfikator dzierżawy |
+|TenantId|Identyfikator dzierżawy |
 |SourceSystem|Zawsze: Azure |
 |TimeGenerated [UTC]|Sygnatura czasowa rejestrowania dziennika |
 |Typ|Zawsze: AzureDiagnostics |
@@ -739,7 +740,7 @@ Aby dowiedzieć się, jak włączyć rejestrowanie i zrozumieć metryki i katego
 
 Aby dowiedzieć się więcej na temat Event Hubs, Przeczytaj:
 
-- [Co to jest platforma Azure Event Hubs?](../event-hubs/event-hubs-what-is-event-hubs.md)
+- [Co to jest usługa Azure Event Hubs?](../event-hubs/event-hubs-what-is-event-hubs.md)
 - [Rozpoczynanie pracy z usługą Event Hubs](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)
 
 Aby dowiedzieć się, jak skonfigurować alerty na podstawie danych telemetrycznych z usługi log Analytics, zobacz:

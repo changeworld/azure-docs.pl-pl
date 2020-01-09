@@ -1,24 +1,14 @@
 ---
-title: Zaktualizuj klaster usługi Azure Service Fabric, aby używał nazwy pospolitej certyfikatu | Microsoft Docs
+title: Zaktualizuj klaster, aby używał nazwy pospolitej certyfikatu
 description: Dowiedz się, jak przełączyć klaster Service Fabric z używania odcisków palców certyfikatów do korzystania z nazwy pospolitej certyfikatu.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 09/06/2019
-ms.author: atsenthi
-ms.openlocfilehash: a9e2a2c20a8de4bed3876f431566b293cbfa4ef5
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 66c49ccb7b7633d0eff392b676bb381118eb64a2
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74109662"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610203"
 ---
 # <a name="change-cluster-from-certificate-thumbprint-to-common-name"></a>Zmień klaster z odcisku palca certyfikatu na nazwę pospolitą
 Dwa certyfikaty nie mogą mieć tego samego odcisku palca, co utrudnia zarzucanie certyfikatów klastra lub zarządzanie nimi. Jednak wiele certyfikatów może mieć taką samą nazwę pospolitą lub podmiot.  Przełączenie wdrożonego klastra z używania odcisków palca certyfikatu na używanie nazw pospolitych certyfikatów sprawia, że zarządzanie certyfikatami jest znacznie prostsze. W tym artykule opisano, jak zaktualizować uruchomiony klaster Service Fabric, aby używał nazwy pospolitej certyfikatu zamiast odcisku palca certyfikatu.

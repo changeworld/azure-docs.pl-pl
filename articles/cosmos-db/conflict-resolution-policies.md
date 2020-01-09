@@ -1,5 +1,5 @@
 ---
-title: Typy rozwiązywania konfliktów i zasady rozpoznawania z wieloma regionami zapisu w Azure Cosmos DB
+title: Typy rozwiązywania konfliktów i zasady rozwiązywania w Azure Cosmos DB
 description: W tym artykule opisano kategorie konfliktów i zasady rozwiązywania konfliktów w Azure Cosmos DB.
 author: markjbrown
 ms.service: cosmos-db
@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/05/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: f69a70ef3bfc8830ed12173fddee41095937a1c0
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: a8ee72f46e1789088e779c10a0824262469ffde8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68815093"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441986"
 ---
 # <a name="conflict-types-and-resolution-policies"></a>Typy konfliktów i zasady ich rozwiązywania
 
@@ -20,11 +20,11 @@ Konflikty i zasady rozwiązywania konfliktów są stosowane, jeśli konto Azure 
 
 W przypadku kont usługi Azure Cosmos skonfigurowanych z wieloma regionami zapisu mogą wystąpić konflikty aktualizacji, gdy moduły zapisujące jednocześnie aktualizują ten sam element w wielu regionach. Konflikty aktualizacji mogą być następujące trzy typy:
 
-* **Wstawianie konfliktów**: Te konflikty mogą wystąpić, gdy aplikacja jednocześnie wstawia dwa lub więcej elementów z tym samym unikatowym indeksem w co najmniej dwóch regionach. Na przykład ten konflikt może wystąpić z właściwością ID.
+* **Konflikty wstawiania**: te konflikty mogą wystąpić, gdy aplikacja jednocześnie wstawia dwa lub więcej elementów z tym samym unikatowym indeksem w co najmniej dwóch regionach. Na przykład ten konflikt może wystąpić z właściwością ID.
 
-* **Zastąp konflikty**: Te konflikty mogą wystąpić, gdy aplikacja aktualizuje ten sam element jednocześnie w co najmniej dwóch regionach.
+* **Zastąp konflikty**: te konflikty mogą wystąpić, gdy aplikacja aktualizuje ten sam element jednocześnie w co najmniej dwóch regionach.
 
-* **Konflikty usuwania**: Te konflikty mogą wystąpić, gdy aplikacja jednocześnie usuwa element w jednym regionie i aktualizuje go w innym regionie.
+* **Konflikty usuwania**: te konflikty mogą wystąpić, gdy aplikacja jednocześnie usuwa element w jednym regionie i aktualizuje go w innym regionie.
 
 ## <a name="conflict-resolution-policies"></a>Zasady rozwiązywania konfliktów
 
@@ -35,18 +35,18 @@ Azure Cosmos DB oferuje elastyczny mechanizm oparty na zasadach do rozwiązywani
   Jeśli co najmniej dwa elementy powodują konflikt podczas operacji wstawiania lub zamiany, element o najwyższej wartości ścieżki rozwiązywania konfliktów zostanie zwycięzcą. System określa zwycięzcę, jeśli wiele elementów ma taką samą wartość liczbową dla ścieżki rozwiązywania konfliktów. Wszystkie regiony są gwarantowane, aby przeprowadzić zbieżność z pojedynczym zwycięzcą i zakończyć z tą samą wersją zatwierdzonego elementu. W przypadku konfliktów usuwania w usuniętej wersji zawsze jest używana usługa WINS w przypadku konfliktów INSERT lub Replace. Ten wynik występuje niezależnie od wartości ścieżki rozwiązywania konfliktów.
 
   > [!NOTE]
-  > Ostatni zapis w usłudze WINS to domyślne zasady rozwiązywania konfliktów, `_ts` które używają sygnatur czasowych dla następujących interfejsów API: SQL, MongoDB, Cassandra, Gremlin i Table. Niestandardowa właściwość numeryczna jest dostępna tylko dla interfejsu API SQL.
+  > Ostatni zapis w usłudze WINS to domyślne zasady rozwiązywania konfliktów i używa `_ts` sygnatur czasowych dla następujących interfejsów API: SQL, MongoDB, Cassandra, Gremlin i Table. Niestandardowa właściwość numeryczna jest dostępna tylko dla interfejsu API SQL.
 
   Aby dowiedzieć się więcej, zobacz [przykłady, które używają zasad rozwiązywania konfliktów LWW](how-to-manage-conflicts.md).
 
-* **Niestandardowy**: Te zasady rozwiązywania są przeznaczone dla semantyki zdefiniowanej przez aplikację w celu uzgodnienia konfliktów. Po ustawieniu tych zasad w kontenerze usługi Azure Cosmos należy również zarejestrować *procedurę składowaną scalania*. Ta procedura jest wywoływana automatycznie w przypadku wykrycia konfliktów w ramach transakcji bazy danych na serwerze. System zawiera dokładnie raz gwarantuje do wykonania procedury scalania w ramach protokołu zobowiązania.  
+* **Niestandardowo**: te zasady rozwiązywania są przeznaczone dla semantyki zdefiniowanej przez aplikację w celu uzgodnienia konfliktów. Po ustawieniu tych zasad w kontenerze usługi Azure Cosmos należy również zarejestrować *procedurę składowaną scalania*. Ta procedura jest wywoływana automatycznie w przypadku wykrycia konfliktów w ramach transakcji bazy danych na serwerze. System zawiera dokładnie raz gwarantuje do wykonania procedury scalania w ramach protokołu zobowiązania.  
 
   W przypadku skonfigurowania kontenera przy użyciu opcji rozwiązywania niestandardowego i zarejestrowanie procedury scalania w kontenerze lub procedury scalania zgłasza wyjątek w czasie wykonywania, konflikty są zapisywane w *źródle konfliktów*. Aplikacja musi ręcznie rozwiązać konflikty w strumieniowym źródle konfliktów. Aby dowiedzieć się więcej, zobacz [przykłady użycia niestandardowych zasad rozpoznawania i sposób używania źródła konfliktów](how-to-manage-conflicts.md).
 
   > [!NOTE]
   > Niestandardowe zasady rozwiązywania konfliktów są dostępne tylko dla kont interfejsu API SQL.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Dowiedz się, jak skonfigurować zasady rozwiązywania konfliktów:
 

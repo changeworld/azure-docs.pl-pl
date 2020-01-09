@@ -7,24 +7,33 @@ author: LuisCabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: d65b9b60ce93656c9acdc76c77291114468d345a
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.date: 12/17/2019
+ms.openlocfilehash: 7ec18cab74d683e4547843f965d22026e7ba22aa
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113930"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75461143"
 ---
 # <a name="attach-a-cognitive-services-resource-to-a-skillset-in-azure-cognitive-search"></a>Dołącz zasób Cognitive Services do zestawu umiejętności na platformie Azure Wyszukiwanie poznawcze 
 
-Algorytmy AI umożliwiają tworzenie [potoków wzbogacania](cognitive-search-concept-intro.md) używanych na potrzeby przekształcania zawartości w usłudze Azure wyszukiwanie poznawcze. Algorytmy te są oparte na zasobach Cognitive Services platformy Azure, w tym [Przetwarzanie obrazów](https://azure.microsoft.com/services/cognitive-services/computer-vision/) do analizy obrazów i optycznego rozpoznawania znaków (OCR) oraz [Analiza tekstu](https://azure.microsoft.com/services/cognitive-services/text-analytics/) do rozpoznawania jednostek, wyodrębniania kluczowych fraz i innych wzbogaceń. Używane przez Wyszukiwanie poznawcze platformy Azure do wzbogacania dokumentów, algorytmy są opakowane w ramach *umiejętności*, umieszczane w *zestawu umiejętności*i odwołujące się do *indeksatora* podczas indeksowania.
+Podczas konfigurowania potoku wzbogacania w usłudze Azure Wyszukiwanie poznawcze można wzbogacić ograniczoną liczbę dokumentów bezpłatnie. W przypadku większych i bardziej częstych obciążeń należy dołączyć zasób Cognitive Services rozliczany.
 
-Możesz wzbogacić ograniczoną liczbę dokumentów bezpłatnie. Można też dołączyć zasób Cognitive Services rozliczany do *zestawu umiejętności* w celu uzyskania większych i bardziej częstych obciążeń. W tym artykule dowiesz się, jak dołączyć zasób Cognitive Services rozliczany do wzbogacania dokumentów podczas [indeksowania](search-what-is-an-index.md)wyszukiwanie poznawcze Azure.
+W tym artykule dowiesz się, jak dołączyć zasób, przypisując klucz do zestawu umiejętności, który definiuje potok wzbogacania.
 
-> [!NOTE]
-> Zdarzenia rozliczane obejmują wywołania interfejsy API usług Cognitive Services i wyodrębniania obrazów w ramach etapu łamania dokumentu w usłudze Azure Wyszukiwanie poznawcze. Nie jest naliczana opłata za Wyodrębnianie tekstu z dokumentów lub umiejętności, które nie wywołują Cognitive Services.
->
-> Do realizacji umiejętności rozliczanych jest [Cognitive Services cena płatności zgodnie z rzeczywistym](https://azure.microsoft.com/pricing/details/cognitive-services/)użyciem. Aby zapoznać się z cennikiem wyodrębniania obrazów, zobacz [stronę z cennikiem usługi Azure wyszukiwanie poznawcze](https://go.microsoft.com/fwlink/?linkid=2042400).
+## <a name="resources-used-during-enrichment"></a>Zasoby używane podczas wzbogacania
+
+Usługa Azure Wyszukiwanie poznawcze ma zależność od Cognitive Services, w tym [Przetwarzanie obrazów](https://azure.microsoft.com/services/cognitive-services/computer-vision/) do analizy obrazów i optycznego rozpoznawania znaków (OCR), [Analiza tekstu](https://azure.microsoft.com/services/cognitive-services/text-analytics/) do przetwarzania w języku naturalnym oraz inne wzbogacania, takie jak [tłumaczenie tekstu](https://azure.microsoft.com/services/cognitive-services/translator-text-api/). W kontekście wzbogacania na platformie Azure Wyszukiwanie poznawcze te algorytmy AI są opakowane w ramach *umiejętności*, umieszczane w *zestawu umiejętności*i odwołujące się do *indeksatora* podczas indeksowania.
+
+## <a name="how-billing-works"></a>Sposób działania rozliczeń
+
++ Usługa Azure Wyszukiwanie poznawcze korzysta z klucza zasobu Cognitive Services podanym w zestawu umiejętności do rozliczania obrazów i wzbogacania tekstu. Do realizacji umiejętności rozliczanych jest [Cognitive Services cena płatności zgodnie z rzeczywistym](https://azure.microsoft.com/pricing/details/cognitive-services/)użyciem.
+
++ Wyodrębnianie obrazów to operacja Wyszukiwanie poznawcze platformy Azure, która występuje, gdy dokumenty są pęknięte przed wzbogacaniem. Wyodrębnianie obrazów jest rozliczane. Aby zapoznać się z cennikiem wyodrębniania obrazów, zobacz [stronę z cennikiem usługi Azure wyszukiwanie poznawcze](https://go.microsoft.com/fwlink/?linkid=2042400).
+
++ Wyodrębnianie tekstu występuje również podczas frazy do łamania dokumentu. Nie jest rozliczany.
+
++ Nie są naliczane opłaty za umiejętności, które nie wywołują Cognitive Services, w tym warunkowego, kształtowania, scalania tekstu ani umiejętności dzielenia tekstu.
 
 ## <a name="same-region-requirement"></a>Wymóg tego samego regionu
 
@@ -33,7 +42,7 @@ Firma Microsoft wymaga, aby usługa Azure Wyszukiwanie poznawcze i usługa Azure
 Nie ma możliwości przenoszenia usługi między regionami. Jeśli zostanie wyświetlony ten błąd, należy utworzyć nowy zasób Cognitive Services w tym samym regionie co usługa Azure Wyszukiwanie poznawcze.
 
 > [!NOTE]
-> Niektóre wbudowane umiejętności są oparte na Cognitive Services nieregionalnych (na przykład [umiejętność tłumaczenia tekstu](cognitive-search-skill-text-translation.md)). Należy pamiętać, że jeśli dodasz dowolne z tych umiejętności do zestawu umiejętności, że dane nie będą zagwarantowane w tym samym regionie, w którym znajduje się Wyszukiwanie poznawcze lub Cognitive Services zasobów platformy Azure. Aby uzyskać więcej informacji, zobacz [stronę stanu usługi](https://aka.ms/allinoneregioninfo) .
+> Niektóre wbudowane umiejętności są oparte na Cognitive Services nieregionalnych (na przykład [umiejętność tłumaczenia tekstu](cognitive-search-skill-text-translation.md)). Użycie umiejętności nieregionalnej oznacza, że Twoje żądanie może być serwisowane w regionie innym niż region Wyszukiwanie poznawcze platformy Azure. Aby uzyskać więcej informacji na temat usług nieregionalnych, zobacz stronę [Cognitive Services produkt według regionów](https://aka.ms/allinoneregioninfo) .
 
 ## <a name="use-free-resources"></a>Korzystanie z bezpłatnych zasobów
 

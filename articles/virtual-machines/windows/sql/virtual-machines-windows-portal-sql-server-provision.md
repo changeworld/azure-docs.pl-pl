@@ -15,12 +15,12 @@ ms.date: 11/07/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 28f00db3b604534be5ff9cee79c0aacc41f066b5
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: 1fdf776570b6f10a363fb98dfe343387d86219d6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74464153"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75350919"
 ---
 # <a name="how-to-provision-a-windows-sql-server-virtual-machine-in-the-azure-portal"></a>Jak zainicjować obsługę administracyjną maszyny wirtualnej z systemem Windows SQL Server w Azure Portal
 
@@ -67,7 +67,7 @@ Na karcie **podstawowe** podaj następujące informacje:
     ![Subskrypcja](media/quickstart-sql-vm-create-portal/basics-project-details.png)
 
   > [!NOTE]
-  > Nowa grupa zasobów jest przydatna, jeśli tylko testujesz lub poznajesz wdrożenia programu SQL Server na platformie Azure. Po zakończeniu testu usuń grupę zasobów, aby automatycznie usunąć maszynę wirtualną i wszystkie skojarzone z nią zasoby. Aby uzyskać więcej informacji na temat grup zasobów, zobacz [Omówienie usługi Azure Resource Manager](../../../azure-resource-manager/resource-group-overview.md).
+  > Nowa grupa zasobów jest przydatna, jeśli tylko testujesz lub poznajesz wdrożenia programu SQL Server na platformie Azure. Po zakończeniu testu usuń grupę zasobów, aby automatycznie usunąć maszynę wirtualną i wszystkie skojarzone z nią zasoby. Aby uzyskać więcej informacji na temat grup zasobów, zobacz [Omówienie usługi Azure Resource Manager](../../../azure-resource-manager/management/overview.md).
 
 
 * W obszarze **szczegóły wystąpienia**:
@@ -242,7 +242,7 @@ Aby szyfrować kopie zapasowe, kliknij pozycję **Włącz**. Następnie określ 
 Aby uzyskać więcej informacji, zobacz [Automated Backup for SQL Server in Azure Virtual Machines](virtual-machines-windows-sql-automated-backup.md) (Automatyczne tworzenie kopii zapasowych dla programu SQL Server w usłudze Azure Virtual Machines).
 
 
-### <a name="machine-learning-services"></a>Machine Learning Services
+### <a name="machine-learning-services"></a>Usługi Machine Learning
 
 Możesz włączyć [Machine Learning Services](/sql/advanced-analytics/). Ta opcja umożliwia korzystanie z uczenia maszynowego w języku Python i języka R w SQL Server 2017. Wybierz pozycję **Włącz** w oknie **Ustawienia SQL Server** .
 

@@ -11,12 +11,12 @@ author: sachinpMSFT
 ms.author: ninarn
 ms.reviewer: carlrab, sstein
 ms.date: 09/09/2019
-ms.openlocfilehash: 482fc3f08fb986908efcab83a82338ced36ee689
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 5cfccd6e79b7289b6fd59abcabba05abab6ab09b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821003"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443841"
 ---
 # <a name="quickstart-create-a-single-database-in-azure-sql-database-using-the-azure-portal-powershell-and-azure-cli"></a>Szybki Start: Tworzenie pojedynczej bazy danych w Azure SQL Database przy użyciu Azure Portal, programu PowerShell i interfejsu wiersza polecenia platformy Azure
 
@@ -33,7 +33,7 @@ Pojedynczą bazę danych można utworzyć w warstwie obliczeniowej zainicjowanej
 - Pojedyncza baza danych w warstwie obliczeniowej zainicjowanej ma wstępnie przydzieloną stałą ilość zasobów obliczeniowych, w tym użycie procesora i pamięci przy użyciu jednego z dwóch [modeli zakupu](sql-database-purchase-models.md).
 - Pojedyncza baza danych w warstwie obliczeń bezserwerowej ma zakres zasobów obliczeniowych, w tym procesor i pamięć, które są automatycznie skalowane i są dostępne tylko w [modelach zakupów opartych na rdzeń wirtualny](sql-database-service-tiers-vcore.md).
 
-Podczas tworzenia pojedynczej bazy danych definiowany jest również [serwer usługi SQL Database](sql-database-servers.md) służący do zarządzania tą bazą danych i umieszczania jej w ramach [grupy zasobów platformy Azure](../azure-resource-manager/resource-group-overview.md) w określonym regionie.
+Podczas tworzenia pojedynczej bazy danych definiowany jest również [serwer usługi SQL Database](sql-database-servers.md) służący do zarządzania tą bazą danych i umieszczania jej w ramach [grupy zasobów platformy Azure](../azure-resource-manager/management/overview.md) w określonym regionie.
 
 > [!NOTE]
 > Ten przewodnik Szybki Start korzysta z [modelu zakupu opartego na rdzeń wirtualny](sql-database-service-tiers-vcore.md), ale jest również dostępny [model zakupu oparty](sql-database-service-tiers-DTU.md) na jednostkach DTU.

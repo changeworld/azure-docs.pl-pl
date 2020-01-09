@@ -1,17 +1,17 @@
 ---
-title: Dowiedz się, jak zarządzać konfliktami między regionami w usłudze Azure Cosmos DB
+title: Zarządzanie konfliktami między regionami w Azure Cosmos DB
 description: Dowiedz się, jak zarządzać konfliktami w Azure Cosmos DB przez tworzenie zasad ostatniego rozwiązywania konfliktów — WINS lub niestandardowych
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: mjbrown
-ms.openlocfilehash: 9aab8f9bd202728f8882377f8249f6ebb99f3362
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 6d364f1a9974d6d638bb0f824e88ed3866644c15
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873696"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441791"
 ---
 # <a name="manage-conflict-resolution-policies-in-azure-cosmos-db"></a>Zarządzanie zasadami rozwiązywania konfliktów w usłudze Azure Cosmos DB
 

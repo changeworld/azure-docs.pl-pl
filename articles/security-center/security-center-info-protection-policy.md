@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/29/2019
 ms.author: memildin
-ms.openlocfilehash: d37333c0ca3f8acab7a35c23bbab67beef056b72
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 9c776a32b4a35c72fc40a16afb87db9896a763cf
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73664388"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75611070"
 ---
 # <a name="customize-the-sql-information-protection-policy-in-azure-security-center-preview"></a>Dostosowywanie zasad ochrony informacji SQL w Azure Security Center (wersja zapoznawcza)
  
 W Azure Security Center można definiować i dostosowywać zasady usługi SQL Information Protection dla całej dzierżawy platformy Azure.
 
-Information Protection to zaawansowana funkcja zabezpieczeń do odnajdywania, klasyfikowania, etykietowania i ochrony poufnych danych w zasobach danych platformy Azure. Odkrywanie i klasyfikowanie najbardziej poufnych danych (biznes, finanse, opieka, dane osobowe itp.) może odgrywać rolę przestawną w usłudze Information Protection schemacie. Może to być infrastruktura dla:
+Information Protection to zaawansowana funkcja zabezpieczeń do odnajdywania, klasyfikowania, etykietowania i raportowania poufnych danych w zasobach danych platformy Azure. Odkrywanie i klasyfikowanie najbardziej poufnych danych (biznes, finanse, opieka, dane osobowe itp.) może odgrywać rolę przestawną w usłudze Information Protection schemacie. Może to stanowić infrastrukturę dla następujących działań:
 - Pomaganie spełnić standardy prywatności danych i wymagania dotyczące zgodności z przepisami
 - Scenariusze zabezpieczeń, takie jak monitorowanie (inspekcja) i alerty dotyczące nietypowego dostępu do poufnych danych
 - Kontrolowanie dostępu do i ograniczanie bezpieczeństwa magazynów danych zawierających wysoce poufne dane

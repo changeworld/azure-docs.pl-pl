@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 09/10/2019
 ms.author: lizross
 ms.custom: include file
-ms.openlocfilehash: 70b886286980c065379678ba21ab21e02d0e2bbb
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: f2e76229673033ab001c5499739090a7c435ef8a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73178088"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75467052"
 ---
 | |
 |--|
-|Jeśli widzisz ekran na ekranie nie jest zgodny z informacjami w tym artykule, oznacza to, że administrator nie włączył nowych funkcji **Moje aplikacje** (wersja zapoznawcza). Aby użyć starego środowiska, należy postępować zgodnie z instrukcjami i informacjami w sekcji [Portal moje aplikacje](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-overview) .|
-| |
+|Jeśli administrator włączył nowe środowisko wersji zapoznawczej **Moje aplikacje** dla Twojej organizacji, zobaczysz w górnej części strony **Moje aplikacje** **dostęp do zaktualizowanego środowiska moje aplikacje**. Jeśli wybierzesz opcję **Wypróbuj**, natychmiast przejdziesz do nowego adresu URL (myapplications.Microsoft.com) i zaktualizowanego środowiska. Po wykonaniu tej czynności za każdym razem, gdy wrócisz do strony **Moje aplikacje** , nastąpi automatyczne przejście do nowego środowiska.<br><br>Aby zrezygnować z korzystania z nowego środowiska, możesz wybrać opcję **tak** z transparentu **Opuść nowe środowisko** w górnej części strony **Moje aplikacje** . Natychmiast powrócisz do starego adresu URL (myapps.microsoft.com) i środowiska. Po wykonaniu tej czynności za każdym razem, gdy wrócisz do strony **Moje aplikacje** , nastąpi automatyczne przejście do starego środowiska.|
+|

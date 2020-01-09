@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 09/26/2017
 ms.author: cynthn
-ms.openlocfilehash: 0e826442c816f83c875b907bbf3054793ebb382a
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 20a595e1386a8d33c919ad4ff151d65e30b31eda
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033148"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75358279"
 ---
 # <a name="create-and-manage-a-windows-virtual-machine-that-has-multiple-nics"></a>Tworzenie maszyny wirtualnej z systemem Windows i zarządzanie nią z wieloma kartami sieciowymi
 Maszyny wirtualne na platformie Azure mogą mieć dołączone do nich wiele kart interfejsów sieci wirtualnej (nic). Typowym scenariuszem jest posiadanie różnych podsieci na potrzeby łączności frontonu i zaplecza. Można skojarzyć wiele kart sieciowych na maszynie wirtualnej z wieloma podsieciami, ale te podsieci muszą znajdować się w tej samej sieci wirtualnej (vNet). W tym artykule szczegółowo opisano sposób tworzenia maszyny wirtualnej, do której dołączono wiele kart sieciowych. Dowiesz się również, jak dodawać i usuwać karty sieciowe z istniejącej maszyny wirtualnej. Różne [rozmiary maszyn wirtualnych](sizes.md) obsługują różną liczbę kart sieciowych, dlatego należy odpowiednio zmienić rozmiar maszyny wirtualnej.
@@ -218,7 +218,7 @@ Aby usunąć wirtualną kartę sieciową z istniejącej maszyny wirtualnej, Cofn
     ```   
 
 ## <a name="create-multiple-nics-with-templates"></a>Tworzenie wielu kart sieciowych z szablonami
-Szablony Azure Resource Manager umożliwiają tworzenie wielu wystąpień zasobu podczas wdrażania, takich jak tworzenie wielu kart sieciowych. Szablony Menedżer zasobów używają deklaratywnych plików JSON do definiowania środowiska. Aby uzyskać więcej informacji, zobacz [omówienie Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md). Możesz użyć *kopii* , aby określić liczbę wystąpień do utworzenia:
+Szablony Azure Resource Manager umożliwiają tworzenie wielu wystąpień zasobu podczas wdrażania, takich jak tworzenie wielu kart sieciowych. Szablony Menedżer zasobów używają deklaratywnych plików JSON do definiowania środowiska. Aby uzyskać więcej informacji, zobacz [omówienie Azure Resource Manager](../../azure-resource-manager/management/overview.md). Możesz użyć *kopii* , aby określić liczbę wystąpień do utworzenia:
 
 ```json
 "copy": {

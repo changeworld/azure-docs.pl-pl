@@ -1,17 +1,14 @@
 ---
-title: Przegląd Azure Resource Health | Microsoft Docs
+title: Przegląd Azure Resource Health
 description: Omówienie Azure Resource Health
-author: stephbaron
-ms.author: stbaron
 ms.topic: conceptual
-ms.service: service-health
 ms.date: 05/10/2019
-ms.openlocfilehash: 9c2096f94f38d13288c6ce3742252bc6d576835a
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: 5609c7f09dc81a54a941dea391c0d717ad4bb06a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67854225"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75356796"
 ---
 # <a name="resource-health-overview"></a>Przegląd Resource Health
  
@@ -29,7 +26,7 @@ Aby uzyskać więcej informacji na temat oceny kondycji, zobacz listę typów za
 
 Kondycja zasobu jest wyświetlana jako jeden z następujących stanów.
 
-### <a name="available"></a>Dostępne
+### <a name="available"></a>Dostępna
 
 *Dostępne* oznacza, że nie wykryto zdarzeń, które mają wpływ na kondycję zasobu. W przypadku, gdy zasób odzyskał sprawność z nieplanowanego przestoju w ciągu ostatnich 24 godzin, zobaczysz powiadomienie "ostatnio rozwiązane".
 
@@ -63,7 +60,7 @@ W przypadku wystąpienia problemów z zasobem *nieznany* stan kondycji może ozn
 
 ![Stan * nieznane * dla maszyny wirtualnej](./media/resource-health-overview/Unknown.png)
 
-### <a name="degraded"></a>Obniżono poziom
+### <a name="degraded"></a>Obniżona wydajność
 
 *Zdegradowane* oznacza, że zasób wykrył utratę wydajności, chociaż nadal jest dostępny do użycia.
 
@@ -83,7 +80,7 @@ Możesz uzyskać dostęp do 14 dni historii w sekcji **historia kondycji** Resou
 
 ![Lista zdarzeń Resource Health w ciągu ostatnich dwóch tygodni](./media/resource-health-overview/history-blade.png)
 
-## <a name="get-started"></a>Wprowadzenie
+## <a name="get-started"></a>Rozpocznij
 
 Aby otworzyć Resource Health dla jednego zasobu:
 

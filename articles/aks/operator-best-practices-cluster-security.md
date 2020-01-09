@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: mlearned
-ms.openlocfilehash: 46e44804ddbabd8bf5620ad9516f1ca2d5017bfa
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: 4629e4e9cfd5c8f9861b692b2aec89057f83587c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69019305"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442918"
 ---
 # <a name="best-practices-for-cluster-security-and-upgrades-in-azure-kubernetes-service-aks"></a>Najlepsze rozwiązania dotyczące zabezpieczeń klastra i uaktualnień w usłudze Azure Kubernetes Service (AKS)
 
@@ -27,6 +27,8 @@ Ten artykuł koncentruje się na sposób zabezpieczania klastra usługi AKS. Oma
 > * Zachowaj aktualizacji węzłów do daty i automatyczne stosowanie poprawek zabezpieczeń
 
 Można także zapoznać się z najlepszymi rozwiązaniami dotyczącymi [zarządzania obrazami kontenerów][best-practices-container-image-management] i [zabezpieczenia pod][best-practices-pod-security].
+
+Możesz również użyć [integracji usług Azure Kubernetes Services z usługą Security Center][security-center-aks] , aby pomóc wykrywać zagrożenia i wyświetlać zalecenia dotyczące zabezpieczania klastrów AKS.
 
 ## <a name="secure-access-to-the-api-server-and-cluster-nodes"></a>Bezpieczny dostęp do interfejsu API serwera i węzłami klastra
 
@@ -160,7 +162,7 @@ Wdróż przykład przy użyciu polecenia [polecenia kubectl Apply][kubectl-apply
 kubectl apply -f ./aks-seccomp.yaml
 ```
 
-Wyświetl stan [polecenia kubectl][kubectl-get] , korzystając z polecenia GetBinding. Zasobnik zgłasza błąd. `chmod` Polecenia jest mogły być uruchamiane przez filtr funkcję seccomp, jak pokazano w następujących przykładowych danych wyjściowych:
+Wyświetl stan polecenia kubectl, korzystając z polecenia [GetBinding][kubectl-get] . Zasobnik zgłasza błąd. `chmod` Polecenia jest mogły być uruchamiane przez filtr funkcję seccomp, jak pokazano w następujących przykładowych danych wyjściowych:
 
 ```
 $ kubectl get pods
@@ -235,3 +237,4 @@ Ten artykuł koncentruje się na sposób zabezpieczania klastra usługi AKS. Aby
 [best-practices-pod-security]: developer-best-practices-pod-security.md
 [pod-security-contexts]: developer-best-practices-pod-security.md#secure-pod-access-to-resources
 [aks-ssh]: ssh.md
+[security-center-aks]: /azure/security-center/azure-kubernetes-service-integration

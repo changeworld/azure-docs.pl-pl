@@ -4,12 +4,12 @@ description: Szybka nauka tworzenia rejestru prywatnego platformy Docker w Azure
 ms.topic: quickstart
 ms.date: 01/22/2019
 ms.custom: seodec18, mvc
-ms.openlocfilehash: c5e6de0fdb7d0e46fa9be28483fd894289baf1a3
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 319fd670c8e82120ef63e94395f4d6809eeb2601
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74455224"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75611240"
 ---
 # <a name="quickstart-create-a-private-container-registry-using-the-azure-portal"></a>Szybki Start: Tworzenie prywatnego rejestru kontenerów przy użyciu Azure Portal
 
@@ -19,7 +19,7 @@ Aby zalogować się do rejestru i pracować z obrazami kontenerów w tym przewod
 
 Musisz mieć również zainstalowane lokalnie środowisko Docker. Środowisko Docker zawiera pakiety, które umożliwiają łatwe konfigurowanie platformy Docker w systemie [Mac][docker-mac], [Windows][docker-windows] lub [Linux][docker-linux].
 
-## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
+## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
 
 Zaloguj się do witryny Azure Portal pod adresem https://portal.azure.com.
 
@@ -43,7 +43,7 @@ Zanotuj wartość **Serwer logowania**. Ta wartość będzie używana w poniższ
 
 ## <a name="log-in-to-registry"></a>Logowanie do rejestru
 
-Przed wypychaniem i ściąganiem obrazów kontenerów musisz zalogować się do wystąpienia usługi ACR. Otwórz powłokę poleceń w systemie operacyjnym, a następnie użyj polecenia [AZ ACR login][az-acr-login] .
+Przed wypychaniem i ściąganiem obrazów kontenerów musisz zalogować się do wystąpienia usługi ACR. Otwórz powłokę poleceń w systemie operacyjnym, a następnie użyj polecenia [AZ ACR login][az-acr-login] . (Określ tylko nazwę kontenera. Nie dodawaj "azurecr.io")
 
 ```azurecli
 az acr login --name <acrName>

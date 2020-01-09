@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/7/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 6f2159ddf3e3039dc0c38fc8f942c508ac177f06
-ms.sourcegitcommit: d773b5743cb54b8cbcfa5c5e4d21d5b45a58b081
+ms.openlocfilehash: dfb1d71a02ae3bf06a5f2d8a93bcb3ac83433a86
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72038182"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460366"
 ---
 # <a name="develop-for-azure-files-with-net"></a>Tworzenie oprogramowania dla usługi Azure Files przy użyciu platformy .NET
 
@@ -23,7 +23,7 @@ W tym samouczku przedstawiono podstawy korzystania z platformy .NET do tworzenia
 
 * Pobierz zawartość pliku.
 * Ustaw maksymalny rozmiar lub *przydział* udziału plików.
-* Utworzenie sygnatury dostępu współdzielonego (klucza SAS) dla pliku, która używa zasad dostępu współdzielonego zdefiniowanych w udziale.
+* Utwórz sygnaturę dostępu współdzielonego (klucz SAS) dla pliku, który korzysta z przechowywanych zasad dostępu zdefiniowanych w udziale.
 * Skopiowanie pliku do innego pliku w tym samym koncie magazynu.
 * Skopiowanie pliku do obiektu blob w tym samym koncie magazynu.
 * Skorzystaj z metryk usługi Azure Storage w celu rozwiązywania problemów.
@@ -39,7 +39,7 @@ Usługa Azure Files oferuje dwa obszerne podejścia do aplikacji klienckich: blo
 API | Kiedy stosować | Uwagi
 ----|-------------|------
 [System.IO](https://docs.microsoft.com/dotnet/api/system.io) | Twoja aplikacja: <ul><li>Wymaga odczytu/zapisu plików przy użyciu protokołu SMB</li><li>Działa na urządzeniu, które ma dostęp do konta usługi Azure Files za pośrednictwem portu 445</li><li>Nie musi zarządzać żadnymi ustawieniami administracyjnymi udziału plików</li></ul> | We/wy plików wdrożonych przy użyciu Azure Files za pośrednictwem protokołu SMB zwykle jest taka sama jak we/wy z dowolnym sieciowym udziałem plików lub lokalnym urządzeniem magazynującym. Aby zapoznać się z wprowadzeniem do wielu funkcji platformy .NET, w tym plików we/wy, zobacz Samouczek dotyczący [aplikacji konsolowej](https://docs.microsoft.com/dotnet/csharp/tutorials/console-teleprompter) .
-[Microsoft. Azure. Storage. File](https://docs.microsoft.com/dotnet/api/overview/azure/storage#client-library) | Twoja aplikacja: <ul><li>Nie można uzyskać dostępu do Azure Files przy użyciu protokołu SMB na porcie 445 z powodu ograniczeń zapory lub usługodawcy internetowego</li><li>Wymaga funkcji administracyjnych, takich jak możliwość ustawiania przydziału udziału plików lub tworzenia sygnatury dostępu współdzielonego</li></ul> | W tym artykule przedstawiono sposób użycia `Microsoft.Azure.Storage.File` dla plików we/wy przy użyciu protokołu REST zamiast SMB i zarządzania udziałem plików.
+[Microsoft.Azure.Storage.File](https://docs.microsoft.com/dotnet/api/overview/azure/storage#client-library) | Twoja aplikacja: <ul><li>Nie można uzyskać dostępu do Azure Files przy użyciu protokołu SMB na porcie 445 z powodu ograniczeń zapory lub usługodawcy internetowego</li><li>Wymaga funkcji administracyjnych, takich jak możliwość ustawiania przydziału udziału plików lub tworzenia sygnatury dostępu współdzielonego</li></ul> | W tym artykule przedstawiono sposób użycia `Microsoft.Azure.Storage.File` operacji we/wy na plikach przy użyciu protokołu REST zamiast SMB i zarządzania udziałem plików.
 
 ## <a name="create-the-console-application-and-obtain-the-assembly"></a>Tworzenie aplikacji konsolowej i uzyskiwanie zestawu
 
@@ -79,7 +79,7 @@ Pakiet NuGet służy do pobrania obu pakietów. Wykonaj następujące kroki:
 1. Wyszukaj i Zainstaluj następujące pakiety:
 
    * **Microsoft. Azure. Storage. Common**
-   * **Microsoft. Azure. Storage. File**
+   * **Microsoft.Azure.Storage.File**
    * **Microsoft. Azure. ConfigurationManager**
 
 ## <a name="save-your-storage-account-credentials-to-the-appconfig-file"></a>Zapisz poświadczenia konta magazynu w pliku App. config
@@ -116,7 +116,7 @@ using Microsoft.Azure.Storage.File; // Namespace for Azure Files
 
 ## <a name="access-the-file-share-programmatically"></a>Programowy dostęp do udziału plików
 
-Następnie Dodaj następującą zawartość do metody `Main()`, po kodzie pokazanym powyżej, aby pobrać parametry połączenia. Ten kod pobiera odwołanie do utworzonego wcześniej pliku i wyświetla jego zawartość.
+Następnie Dodaj poniższą zawartość do metody `Main()`, po kodzie pokazanym powyżej, aby pobrać parametry połączenia. Ten kod pobiera odwołanie do utworzonego wcześniej pliku i wyświetla jego zawartość.
 
 ```csharp
 // Create a CloudFileClient object for credentialed access to Azure Files.
@@ -192,9 +192,9 @@ if (share.Exists())
 
 ### <a name="generate-a-shared-access-signature-for-a-file-or-file-share"></a>Generowanie sygnatury dostępu współdzielonego dla pliku lub udziału plików
 
-Począwszy od wersji 5.x biblioteki klienta usługi Azure Storage, można wygenerować sygnaturę dostępu współdzielonego dla udziału plików lub dla pojedynczego pliku. Można też utworzyć zasady dostępu współdzielonego w udziale plików na potrzeby zarządzania sygnaturami dostępu współdzielonego. Zalecamy utworzenie zasad dostępu współdzielonego, ponieważ pozwala ona na odwoływanie skojarzeń zabezpieczeń, jeśli zostanie naruszona.
+Począwszy od wersji 5.x biblioteki klienta usługi Azure Storage, można wygenerować sygnaturę dostępu współdzielonego dla udziału plików lub dla pojedynczego pliku. Możesz również utworzyć przechowywane zasady dostępu w udziale plików, aby zarządzać sygnaturami dostępu współdzielonego. Zaleca się utworzenie zasad dostępu przechowywanego, ponieważ umożliwia odwoływanie skojarzeń zabezpieczeń w przypadku naruszenia zabezpieczeń.
 
-Poniższy przykład tworzy zasady dostępu współdzielonego w udziale. W przykładzie zastosowano te zasady, aby zapewnić ograniczenia dla sygnatury dostępu współdzielonego dla pliku w udziale.
+Poniższy przykład tworzy zasady dostępu przechowywanego w udziale. W przykładzie zastosowano te zasady, aby zapewnić ograniczenia dla sygnatury dostępu współdzielonego dla pliku w udziale.
 
 ```csharp
 // Parse the connection string for the storage account.
@@ -212,7 +212,7 @@ if (share.Exists())
 {
     string policyName = "sampleSharePolicy" + DateTime.UtcNow.Ticks;
 
-    // Create a new shared access policy and define its constraints.
+    // Create a new stored access policy and define its constraints.
     SharedAccessFilePolicy sharedPolicy = new SharedAccessFilePolicy()
         {
             SharedAccessExpiryTime = DateTime.UtcNow.AddHours(24),
@@ -222,7 +222,7 @@ if (share.Exists())
     // Get existing permissions for the share.
     FileSharePermissions permissions = share.GetPermissions();
 
-    // Add the shared access policy to the share's policies. Note that each policy must have a unique name.
+    // Add the stored access policy to the share's policies. Note that each policy must have a unique name.
     permissions.SharedAccessPolicies.Add(policyName, sharedPolicy);
     share.SetPermissions(permissions);
 
@@ -428,14 +428,14 @@ Można włączyć metryki dla Azure Files z [Azure Portal](https://portal.azure.
 
 Poniższy przykładowy kod pokazuje, jak włączyć metryki dla usługi Azure Files za pomocą biblioteki klienta usługi Storage programu .NET.
 
-Najpierw Dodaj następujące dyrektywy `using` do pliku `Program.cs` wraz z dodanymi powyżej:
+Najpierw Dodaj następujące dyrektywy `using` do pliku `Program.cs`, a także te, które zostały dodane powyżej:
 
 ```csharp
 using Microsoft.Azure.Storage.File.Protocol;
 using Microsoft.Azure.Storage.Shared.Protocol;
 ```
 
-Chociaż obiekty blob platformy Azure, tabele platformy Azure i kolejki platformy Azure używają współużytkowanego typu `ServiceProperties` w przestrzeni nazw `Microsoft.Azure.Storage.Shared.Protocol`, Azure Files korzysta z własnego typu, `FileServiceProperties` w przestrzeni nazw `Microsoft.Azure.Storage.File.Protocol`. Należy jednak odwoływać się do obu przestrzeni nazw w kodzie, aby można było skompilować Poniższy kod.
+Mimo że obiekty blob platformy Azure, tabele platformy Azure i kolejki platformy Azure używają współużytkowanego typu `ServiceProperties` w przestrzeni nazw `Microsoft.Azure.Storage.Shared.Protocol`, Azure Files używa własnego typu `FileServiceProperties` typu w `Microsoft.Azure.Storage.File.Protocol` przestrzeni nazw. Należy jednak odwoływać się do obu przestrzeni nazw w kodzie, aby można było skompilować Poniższy kod.
 
 ```csharp
 // Parse your storage connection string from your application's configuration file.
@@ -491,14 +491,14 @@ Aby uzyskać więcej informacji na temat Azure Files, zobacz następujące zasob
 
 ### <a name="tooling-support-for-file-storage"></a>Narzędzia dostępne dla usługi Magazyn plików
 
-* [Wprowadzenie do AzCopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)
+* [Wprowadzenie do narzędzia AzCopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)
 * [Używanie interfejsu wiersza polecenia platformy Azure z usługą Azure Storage](../common/storage-azure-cli.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#create-and-manage-file-shares)
 * [Rozwiązywanie problemów z usługą Azure Files w systemie Windows](https://docs.microsoft.com/azure/storage/storage-troubleshoot-file-connection-problems)
 
 ### <a name="reference"></a>Informacje ogólne
 
 * [Interfejsy API usługi Azure Storage dla platformy .NET](/dotnet/api/overview/azure/storage)
-* [Interfejs API REST usługi plików](/rest/api/storageservices/File-Service-REST-API)
+* [Interfejs API REST usługi File (Plik)](/rest/api/storageservices/File-Service-REST-API)
 
 ### <a name="blog-posts"></a>Wpisy na blogach
 

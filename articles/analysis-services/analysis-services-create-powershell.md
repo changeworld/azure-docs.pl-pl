@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 07/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 073193329950e1d7e6a812da4555ec8ba76f65e3
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 071c44136d917874843bdf080de775ec6739937a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73573177"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442866"
 ---
 # <a name="quickstart-create-a-server---powershell"></a>Szybki start: tworzenie serwera — PowerShell
 
@@ -34,7 +34,7 @@ Aby utworzyć serwer w ramach subskrypcji, należy użyć modułu [Az.AnalysisSe
 Import-Module Az.AnalysisServices
 ```
 
-## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
+## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
 
 Zaloguj się do subskrypcji platformy Azure przy użyciu polecenia [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount). Postępuj zgodnie z instrukcjami wyświetlanymi na ekranie.
 
@@ -44,7 +44,7 @@ Connect-AzAccount
 
 ## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
-[Grupa zasobów platformy Azure](../azure-resource-manager/resource-group-overview.md) to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi w formie grupy. Podczas tworzenia serwera musisz podać grupę zasobów w ramach subskrypcji. Jeśli nie masz jeszcze grupy zasobów, możesz ją utworzyć teraz przy użyciu polecenia [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). Poniższy przykład obejmuje tworzenie grupy zasobów o nazwie `myResourceGroup` w regionie Zachodnie stany USA.
+[Grupa zasobów platformy Azure](../azure-resource-manager/management/overview.md) to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi w formie grupy. Podczas tworzenia serwera musisz podać grupę zasobów w ramach subskrypcji. Jeśli nie masz jeszcze grupy zasobów, możesz ją utworzyć teraz przy użyciu polecenia [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). Poniższy przykład obejmuje tworzenie grupy zasobów o nazwie `myResourceGroup` w regionie Zachodnie stany USA.
 
 ```powershell
 New-AzResourceGroup -Name "myResourceGroup" -Location "WestUS"
