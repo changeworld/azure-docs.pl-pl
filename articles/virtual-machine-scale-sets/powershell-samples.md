@@ -1,6 +1,6 @@
 ---
-title: Przykłady dla programu Azure PowerShell | Microsoft Docs
-description: Przykłady dla programu Azure PowerShell
+title: Przykłady dla programu Azure PowerShell
+description: Tabela zawierająca linki do przykładowych skryptów bash utworzonych przy użyciu Azure PowerShell, takich jak tworzenie zestawu skalowania i zarządzanie nim.
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: cynthn
@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 23110fb3fc395c3a3a1107ef9ab0d5a93ec8e3f4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a0a5939d1b64d93d4dbcc40b2639e3f3ac1a33be
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60420261"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75369137"
 ---
 # <a name="azure-powershell-samples-for-virtual-machine-scale-sets"></a>Przykłady dla programu Azure PowerShell dla zestawów skalowania maszyn wirtualnych.
 

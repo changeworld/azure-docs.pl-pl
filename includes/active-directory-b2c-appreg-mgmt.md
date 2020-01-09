@@ -5,20 +5,20 @@ ms.subservice: B2C
 ms.topic: include
 ms.date: 10/16/2019
 ms.author: marsma
-ms.openlocfilehash: 77c3aee4fdb5f8b2ee7ed83f92917573ad6ad529
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 0ab9302909f86ff4559ece217f8d702710733691
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73643613"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75368009"
 ---
 Aby zarejestrować aplikację w dzierżawie Azure AD B2C, możesz użyć bieżącego środowiska **aplikacji** lub naszego nowego interfejsu Unified **rejestracje aplikacji (wersja zapoznawcza)** . [Dowiedz się więcej na temat nowego środowiska](https://aka.ms/b2cappregintro).
 
 #### <a name="applicationstabapplications"></a>[Aplikacje](#tab/applications/)
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-1. Wybierz filtr **katalogów i subskrypcji** w górnym menu, a następnie wybierz katalog zawierający dzierżawę Azure AD B2C.
-1. W menu po lewej stronie wybierz pozycję **Azure Active Directory** (*nie* Azure AD B2C). Lub wybierz pozycję **wszystkie usługi** , a następnie wyszukaj i wybierz **Azure Active Directory**.
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Na pasku narzędzi portalu wybierz ikonę **katalog i subskrypcję** , a następnie wybierz katalog zawierający dzierżawę Azure AD B2C.
+1. W Azure Portal Wyszukaj i wybierz pozycję **Azure Active Directory**.
 1. W obszarze **Zarządzaj**wybierz pozycję **rejestracje aplikacji (starsza wersja)** .
 1. Wybierz pozycję **Rejestrowanie nowej aplikacji**.
 1. Wprowadź nazwę aplikacji. Na przykład *managementapp1*.
@@ -29,9 +29,9 @@ Aby zarejestrować aplikację w dzierżawie Azure AD B2C, możesz użyć bieżą
 
 #### <a name="app-registrations-previewtabapp-reg-preview"></a>[Rejestracje aplikacji (wersja zapoznawcza)](#tab/app-reg-preview/)
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-1. Wybierz filtr **katalogów i subskrypcji** w górnym menu, a następnie wybierz katalog zawierający dzierżawę Azure AD B2C.
-1. W menu po lewej stronie wybierz pozycję **Azure AD B2C**. Lub wybierz pozycję **wszystkie usługi** i Wyszukaj i wybierz pozycję **Azure AD B2C**.
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Na pasku narzędzi portalu wybierz ikonę **katalog i subskrypcję** , a następnie wybierz katalog zawierający dzierżawę Azure AD B2C.
+1. W Azure Portal Wyszukaj i wybierz pozycję **Azure AD B2C**.
 1. Wybierz pozycję **rejestracje aplikacji (wersja zapoznawcza)** , a następnie wybierz pozycję **Nowa rejestracja**.
 1. Wprowadź **nazwę** aplikacji. Na przykład *managementapp1*.
 1. Wybierz **konta tylko w tym katalogu organizacji**.

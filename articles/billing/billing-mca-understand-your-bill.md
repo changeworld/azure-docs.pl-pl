@@ -1,5 +1,5 @@
 ---
-title: Omówienie opłat na fakturze za umowę klienta firmy Microsoft — Azure
+title: Opłaty na fakturze dla umowy klienta firmy Microsoft — Azure
 description: Dowiedz się, jak czytać fakturę i co oznaczają poszczególne opłaty.
 author: jureid
 manager: jureid
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: e9c74fd18bf80dfb8fa406912795fb53e655bd88
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: b5dfffecbd2908e987b76f29b14937f0e50ce64f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226149"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75388996"
 ---
 # <a name="understand-charges-on-your-microsoft-customer-agreement-invoice"></a>Omówienie opłat na fakturze za umowę klienta firmy Microsoft
 
@@ -40,7 +40,7 @@ Ten artykuł dotyczy konta rozliczeniowego związanego z umową klienta firmy Mi
 
     |Kolumna  |Definicja  |
     |---------|---------|
-    |Date     | Data transakcji  |
+    |Data     | Data transakcji  |
     |Identyfikator faktury     | Identyfikator faktury, na której jest uwzględniona transakcja. Jeśli przesyłasz wniosek o pomoc techniczną, podaj ten identyfikator, aby przyspieszyć obsługę wniosku przez zespół pomocy technicznej platformy Azure |
     |Typ transakcji     |  Typ transakcji, na przykład zakup, anulowanie, opłaty za użycie  |
     |Rodzina produktów     | Kategoria produktu, na przykład obliczenia w przypadku maszyn wirtualnych lub baza danych w przypadku usługi Azure SQL Database|

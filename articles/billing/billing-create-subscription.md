@@ -1,5 +1,5 @@
 ---
-title: Tworzenie dodatkowej subskrypcji platformy Azure | Microsoft Docs
+title: Tworzenie dodatkowej subskrypcji platformy Azure
 description: Dowiedz się, jak dodać nową subskrypcję platformy Azure w witrynie Azure Portal.
 services: billing
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: banders
-ms.openlocfilehash: bd561f616c9e120a38f1c6b125e349684f82942e
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 0f4df548313e02a9e8eb857bf2c1d798d5ccdcc3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74665614"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449609"
 ---
 # <a name="create-an-additional-azure-subscription"></a>Tworzenie dodatkowej subskrypcji platformy Azure
 
@@ -57,7 +57,7 @@ Do tworzenia subskrypcji wymagane są następujące uprawnienia:
 
 |Pole  |Definicja  |
 |---------|---------|
-|Name (Nazwa)     | Nazwa wyświetlana ułatwia znajdowanie subskrypcji w witrynie Azure Portal.  |
+|Nazwa     | Nazwa wyświetlana ułatwia znajdowanie subskrypcji w witrynie Azure Portal.  |
 |Oferta     | Wybierz ofertę EA Tworzenie i testowanie, jeśli zamierzasz używać tej subskrypcji do obciążeń programistycznych lub testowych. W przeciwnym razie wybierz ofertę Microsoft Azure Enterprise. Oferta Tworzenie i testowanie musi być włączona dla konta rejestracji, aby można było tworzyć subskrypcje w ramach umowy EA Tworzenie i testowanie.|
 
 **Umowa klienta firmy Microsoft**
@@ -67,7 +67,7 @@ Do tworzenia subskrypcji wymagane są następujące uprawnienia:
 |Profil rozliczeniowy     | Opłaty za subskrypcję będą naliczane w wybranym profilu rozliczeniowym. Jeśli masz dostęp tylko do jednego profilu rozliczeniowego, opcje wyboru będą wyszarzone.     |
 |Sekcja faktury     | Opłaty za subskrypcję będą wyświetlane w tej sekcji faktury w profilu rozliczeniowym. Jeśli masz dostęp tylko do jednej sekcji faktury, opcje wyboru będą wyszarzone.  |
 |Planowanie     | Wybierz plan platformy Microsoft Azure na potrzeby tworzenia i testowania, jeśli zamierzasz używać tej subskrypcji do obciążeń programistycznych lub testowych. W przeciwnym razie wybierz plan platformy Microsoft Azure. Jeśli dla profilu rozliczeniowego włączono tylko jeden plan, opcje wyboru będą wyszarzone.  |
-|Name (Nazwa)     | Nazwa wyświetlana ułatwia znajdowanie subskrypcji w witrynie Azure Portal.  |
+|Nazwa     | Nazwa wyświetlana ułatwia znajdowanie subskrypcji w witrynie Azure Portal.  |
 
 **Umowa partnerska firmy Microsoft**
 
@@ -75,7 +75,7 @@ Do tworzenia subskrypcji wymagane są następujące uprawnienia:
 |---------|---------|
 |Klient    | Subskrypcja zostanie utworzona dla wybranego klienta. Jeśli masz tylko jednego klienta, opcje do wyboru będą wyszarzone.  |
 |Odsprzedawca    | Odsprzedawca, który będzie świadczyć usługi klientom. To jest pole opcjonalne, które ma zastosowanie tylko do dostawców pośrednich w dwuwarstwowym modelu usług CSP. |
-|Name (Nazwa)     | Nazwa wyświetlana ułatwia znajdowanie subskrypcji w witrynie Azure Portal.  |
+|Nazwa     | Nazwa wyświetlana ułatwia znajdowanie subskrypcji w witrynie Azure Portal.  |
 
 ## <a name="create-an-additional-azure-subscription-programmatically"></a>Programowe tworzenie dodatkowej subskrypcji platformy Azure
 

@@ -1,25 +1,24 @@
 ---
 title: Typowe wzorce zapytań w Azure Stream Analytics
 description: W tym artykule opisano kilka typowych wzorców zapytań i projektów, które są przydatne w Azure Stream Analytics zadaniach.
-services: stream-analytics
 author: jseb225
 ms.author: jeanb
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/16/2019
-ms.openlocfilehash: 729385a2ce9feb6e69f9be29c2175b403093be3f
-ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+ms.openlocfilehash: 61f9e128fa9299a743012e18882fe32591fdd3f0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68413370"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75369953"
 ---
 # <a name="query-examples-for-common-stream-analytics-usage-patterns"></a>Przykłady zapytań dla typowych wzorców użycia Stream Analytics
 
 Zapytania w Azure Stream Analytics są wyrażane w języku zapytań przypominającym język SQL. Konstrukcje językowe są udokumentowane w podręczniku [Skorowidz języka zapytań Stream Analytics](/stream-analytics-query/stream-analytics-query-language-reference) . 
 
-Projekt zapytania może zawierać prostą logikę przekazującą, która umożliwia przenoszenie danych zdarzeń z jednego strumienia wejściowego do wyjściowego magazynu danych lub umożliwia rozbudowane dopasowanie wzorców i analizy czasowej w celu obliczenia agregacji w różnych oknach czasu, jak w przypadku [kompilowania rozwiązania IoT przez Korzystanie z](stream-analytics-build-an-iot-solution-using-stream-analytics.md) przewodnika Stream Analytics. Można przyłączyć dane z wielu wejść do łączenia zdarzeń przesyłania strumieniowego, a także odszukać statyczne dane referencyjne w celu wzbogacania wartości zdarzeń. Możesz również zapisywać dane w wielu danych wyjściowych.
+W projekcie zapytania można jasno utworzyć prostą logikę przekazującą, aby przenieść dane zdarzenia z jednego strumienia wejściowego do wyjściowego magazynu danych. może to spowodować rozbudowane dopasowanie wzorców i analizy czasowej w celu obliczenia agregacji w różnych oknach czasu, jak w przypadku [tworzenia rozwiązania IoT za pomocą](stream-analytics-build-an-iot-solution-using-stream-analytics.md) przewodnika Stream Analytics. Można przyłączyć dane z wielu wejść do łączenia zdarzeń przesyłania strumieniowego, a także odszukać statyczne dane referencyjne w celu wzbogacania wartości zdarzeń. Możesz również zapisywać dane w wielu danych wyjściowych.
 
 W tym artykule przedstawiono rozwiązania kilku typowych wzorców zapytań w oparciu o rzeczywiste scenariusze.
 
@@ -29,16 +28,16 @@ Azure Stream Analytics obsługuje przetwarzanie zdarzeń w formatach danych CSV,
 
 Zarówno kod JSON, jak i Avro mogą zawierać złożone typy, takie jak obiekty zagnieżdżone (rekordy) lub tablice. Aby uzyskać więcej informacji na temat pracy z tymi złożonymi typami danych, zapoznaj się z artykułem [Analizowanie danych JSON i Avro](stream-analytics-parsing-json.md) .
 
-## <a name="query-example-convert-data-types"></a>Przykład zapytania: Konwertowanie typów danych
+## <a name="query-example-convert-data-types"></a>Przykład zapytania: konwertowanie typów danych
 
-**Opis**: Zdefiniuj typy właściwości strumienia wejściowego. Na przykład waga samochodu odbywa się w strumieniu wejściowym jako ciągi i musi być konwertowana na **typ int** , aby wykonać **sumę**.
+**Opis**: Zdefiniuj typy właściwości w strumieniu wejściowym. Na przykład waga samochodu odbywa się w strumieniu wejściowym jako ciągi i musi być konwertowana na **typ int** , aby wykonać **sumę**.
 
 **Dane wejściowe**:
 
-| Tworzenie | Time | Waga |
+| Tworzenie | Czas | Waga |
 | --- | --- | --- |
-| Honda |2015-01-01T00:00:01.0000000Z |"1000" |
-| Honda |2015-01-01T00:00:02.0000000Z |"2000" |
+| Honda |2015-01-01T00:00:01.0000000 Z |"1000" |
+| Honda |2015-01-01T00:00:02.0000000 Z |"2000" |
 
 **Dane wyjściowe**:
 
@@ -68,18 +67,18 @@ Na przykład sprawdź, czy wynik zwraca tablice licencji, które zaczynają się
 
 **Dane wejściowe**:
 
-| Tworzenie | LicensePlate | Time |
+| Tworzenie | LicensePlate | Czas |
 | --- | --- | --- |
-| Honda |ABC-123 |2015-01-01T00:00:01.0000000Z |
-| Toyota |AAA-999 |2015-01-01T00:00:02.0000000Z |
-| Umożliwił |ABC-369 |2015-01-01T00:00:03.0000000Z |
+| Honda |ABC-123 |2015-01-01T00:00:01.0000000 Z |
+| Toyota |AAA-999 |2015-01-01T00:00:02.0000000 Z |
+| Nissan |ABC-369 |2015-01-01T00:00:03.0000000 Z |
 
 **Dane wyjściowe**:
 
-| Tworzenie | LicensePlate | Time |
+| Tworzenie | LicensePlate | Czas |
 | --- | --- | --- |
-| Toyota |AAA-999 |2015-01-01T00:00:02.0000000Z |
-| Umożliwił |ABC-369 |2015-01-01T00:00:03.0000000Z |
+| Toyota |AAA-999 |2015-01-01T00:00:02.0000000 Z |
+| Nissan |ABC-369 |2015-01-01T00:00:03.0000000 Z |
 
 **Rozwiązanie**:
 
@@ -96,22 +95,22 @@ Na przykład sprawdź, czy wynik zwraca tablice licencji, które zaczynają się
 
 ## <a name="query-example-specify-logic-for-different-casesvalues-case-statements"></a>Przykład zapytania: Określanie logiki dla różnych przypadków/wartości (instrukcje CASE)
 
-**Opis**: Podaj inne obliczenie dla pola w oparciu o określone kryterium. Na przykład Podaj opis ciągu, ile samochodów tego samego zakończono, z specjalnym przypadkiem 1.
+**Opis**: podaj inne obliczenie dla pola w oparciu o określone kryterium. Na przykład Podaj opis ciągu, ile samochodów tego samego zakończono, z specjalnym przypadkiem 1.
 
 **Dane wejściowe**:
 
-| Tworzenie | Time |
+| Tworzenie | Czas |
 | --- | --- |
-| Honda |2015-01-01T00:00:01.0000000Z |
-| Toyota |2015-01-01T00:00:02.0000000Z |
-| Toyota |2015-01-01T00:00:03.0000000Z |
+| Honda |2015-01-01T00:00:01.0000000 Z |
+| Toyota |2015-01-01T00:00:02.0000000 Z |
+| Toyota |2015-01-01T00:00:03.0000000 Z |
 
 **Dane wyjściowe**:
 
-| CarsPassed | Time |
+| CarsPassed | Czas |
 | --- | --- |
-| 1 Honda |2015-01-01T00:00:10.0000000Z |
-| 2 Toyotas |2015-01-01T00:00:10.0000000Z |
+| 1 Honda |2015-01-01T00:00:10.0000000 Z |
+| 2 Toyotas |2015-01-01T00:00:10.0000000 Z |
 
 **Rozwiązanie**:
 
@@ -129,37 +128,37 @@ Na przykład sprawdź, czy wynik zwraca tablice licencji, które zaczynają się
         TumblingWindow(second, 10)
 ```
 
-**Wyjaśnienie**: Wyrażenie **Case** porównuje wyrażenie z zestawem prostych wyrażeń, aby określić wynik. W tym przykładzie nastąpi przekroczenie przez pojazd liczby 1 zwróconej przez inną liczbę znaków niż 1.
+**Wyjaśnienie**: wyrażenie **Case** porównuje wyrażenie z zestawem prostych wyrażeń, aby określić wynik. W tym przykładzie nastąpi przekroczenie przez pojazd liczby 1 zwróconej przez inną liczbę znaków niż 1.
 
-## <a name="query-example-send-data-to-multiple-outputs"></a>Przykład zapytania: Wysyłanie danych do wielu wyjść
+## <a name="query-example-send-data-to-multiple-outputs"></a>Przykład zapytania: wysyłanie danych do wielu wyjść
 
-**Opis**: Wysyłanie danych do wielu elementów docelowych danych wyjściowych z jednego zadania. Na przykład Analizuj dane dla alertu opartego na progach i Archiwizuj wszystkie zdarzenia w usłudze BLOB Storage.
+**Opis**: wysyłanie danych do wielu elementów docelowych danych wyjściowych z jednego zadania. Na przykład Analizuj dane dla alertu opartego na progach i Archiwizuj wszystkie zdarzenia w usłudze BLOB Storage.
 
 **Dane wejściowe**:
 
-| Tworzenie | Time |
+| Tworzenie | Czas |
 | --- | --- |
-| Honda |2015-01-01T00:00:01.0000000Z |
-| Honda |2015-01-01T00:00:02.0000000Z |
-| Toyota |2015-01-01T00:00:01.0000000Z |
-| Toyota |2015-01-01T00:00:02.0000000Z |
-| Toyota |2015-01-01T00:00:03.0000000Z |
+| Honda |2015-01-01T00:00:01.0000000 Z |
+| Honda |2015-01-01T00:00:02.0000000 Z |
+| Toyota |2015-01-01T00:00:01.0000000 Z |
+| Toyota |2015-01-01T00:00:02.0000000 Z |
+| Toyota |2015-01-01T00:00:03.0000000 Z |
 
 **Output1**:
 
-| Tworzenie | Time |
+| Tworzenie | Czas |
 | --- | --- |
-| Honda |2015-01-01T00:00:01.0000000Z |
-| Honda |2015-01-01T00:00:02.0000000Z |
-| Toyota |2015-01-01T00:00:01.0000000Z |
-| Toyota |2015-01-01T00:00:02.0000000Z |
-| Toyota |2015-01-01T00:00:03.0000000Z |
+| Honda |2015-01-01T00:00:01.0000000 Z |
+| Honda |2015-01-01T00:00:02.0000000 Z |
+| Toyota |2015-01-01T00:00:01.0000000 Z |
+| Toyota |2015-01-01T00:00:02.0000000 Z |
+| Toyota |2015-01-01T00:00:03.0000000 Z |
 
 **Output2**:
 
-| Tworzenie | Time | Count |
+| Tworzenie | Czas | Liczba |
 | --- | --- | --- |
-| Toyota |2015-01-01T00:00:10.0000000Z |3 |
+| Toyota |2015-01-01T00:00:10.0000000 Z |3 |
 
 **Rozwiązanie**:
 
@@ -186,11 +185,11 @@ Na przykład sprawdź, czy wynik zwraca tablice licencji, które zaczynają się
         [Count] >= 3
 ```
 
-**Wyjaśnienie**: Klauzula **into** informuje Stream Analytics, do których danych wyjściowych należy zapisać dane z tej instrukcji. Pierwsze zapytanie jest przekazywane do danych wyjściowych o nazwie **ArchiveOutput**. Drugie zapytanie wykonuje prostą agregację i filtrowanie, a następnie wysyła wyniki do systemu alertów podrzędnych, **AlertOutput**.
+**Wyjaśnienie**: klauzula **into** informuje Stream Analytics, do których danych wyjściowych chcesz zapisać dane z tej instrukcji. Pierwsze zapytanie jest przekazywane do danych wyjściowych o nazwie **ArchiveOutput**. Drugie zapytanie wykonuje prostą agregację i filtrowanie, a następnie wysyła wyniki do systemu alertów podrzędnych, **AlertOutput**.
 
 Należy zauważyć, że można również ponownie wykorzystać wyniki wspólnych wyrażeń tabel (cyklicznych) (takich **jak instrukcje)** w wielu instrukcjach wyjściowych. Ta opcja umożliwia dodanie mniejszej liczby czytelników do źródła danych wejściowych.
 
-Na przykład: 
+Przykład: 
 
 ```SQL
     WITH AllRedCars AS (
@@ -207,26 +206,26 @@ Na przykład:
 
 ## <a name="query-example-count-unique-values"></a>Przykład zapytania: Zlicz unikatowe wartości
 
-**Opis**: Zlicz liczbę unikatowych wartości pól, które pojawiają się w strumieniu w przedziale czasu. Na przykład ile unikatowych ilości samochodów jest przenoszona przez połączenie płatne w 2-sekundowym oknie?
+**Opis**: określa liczbę unikatowych wartości pól, które pojawiają się w strumieniu w przedziale czasu. Na przykład ile unikatowych ilości samochodów jest przenoszona przez połączenie płatne w 2-sekundowym oknie?
 
 **Dane wejściowe**:
 
-| Tworzenie | Time |
+| Tworzenie | Czas |
 | --- | --- |
-| Honda |2015-01-01T00:00:01.0000000Z |
-| Honda |2015-01-01T00:00:02.0000000Z |
-| Toyota |2015-01-01T00:00:01.0000000Z |
-| Toyota |2015-01-01T00:00:02.0000000Z |
-| Toyota |2015-01-01T00:00:03.0000000Z |
+| Honda |2015-01-01T00:00:01.0000000 Z |
+| Honda |2015-01-01T00:00:02.0000000 Z |
+| Toyota |2015-01-01T00:00:01.0000000 Z |
+| Toyota |2015-01-01T00:00:02.0000000 Z |
+| Toyota |2015-01-01T00:00:03.0000000 Z |
 
 **Dane wyjściowe:**
 
-| CountMake | Time |
+| CountMake | Czas |
 | --- | --- |
-| 2 |2015-01-01T00:00:02.000Z |
-| 1 |2015-01-01T00:00:04.000Z |
+| 2 |2015-01-01T00:00:02.000 Z |
+| 1 |2015-01-01T00:00:04.000 Z |
 
-**Narzędzie**
+**Rozwiązanie:**
 
 ```SQL
 SELECT
@@ -238,25 +237,25 @@ GROUP BY
 ```
 
 
-**Wyjaśnienie:** 
-**liczba (różne marki)** zwraca liczbę unikatowych wartości w kolumnie **Utwórz** w przedziale czasu.
+**Wyjaśnienie:** **Liczba
+(różne marki)** zwraca liczbę unikatowych wartości w kolumnie **Utwórz** w przedziale czasu.
 
-## <a name="query-example-determine-if-a-value-has-changed"></a>Przykład zapytania: Ustalanie, czy zmieniono wartość
+## <a name="query-example-determine-if-a-value-has-changed"></a>Przykład zapytania: Określanie, czy zmieniono wartość
 
 **Opis**: Sprawdź poprzednią wartość, aby określić, czy jest różna od bieżącej wartości. Czy na przykład jest to poprzedni samochód na trasie, tak samo jak w przypadku bieżącego samochodu?
 
 **Dane wejściowe**:
 
-| Tworzenie | Time |
+| Tworzenie | Czas |
 | --- | --- |
-| Honda |2015-01-01T00:00:01.0000000Z |
-| Toyota |2015-01-01T00:00:02.0000000Z |
+| Honda |2015-01-01T00:00:01.0000000 Z |
+| Toyota |2015-01-01T00:00:02.0000000 Z |
 
 **Dane wyjściowe**:
 
-| Tworzenie | Time |
+| Tworzenie | Czas |
 | --- | --- |
-| Toyota |2015-01-01T00:00:02.0000000Z |
+| Toyota |2015-01-01T00:00:02.0000000 Z |
 
 **Rozwiązanie**:
 
@@ -272,28 +271,28 @@ GROUP BY
 
 **Wyjaśnienie**: Użyj **opóźnienia** , aby przejść do strumienia wejściowego po jednym zdarzeniu i pobrać wartość **Utwórz** . Następnie porównaj ją z wartością **Utwórz** w bieżącym zdarzeniu i Wyprowadź zdarzenie, jeśli są różne.
 
-## <a name="query-example-find-the-first-event-in-a-window"></a>Przykład zapytania: Znajdź pierwsze zdarzenie w oknie
+## <a name="query-example-find-the-first-event-in-a-window"></a>Przykład zapytania: Znajdowanie pierwszego zdarzenia w oknie
 
-**Opis**: Znajdź pierwszy samochód w co 10 minut.
+**Opis**: Znajdź pierwszy samochód w każdym 10-minutowym przedziale czasu.
 
 **Dane wejściowe**:
 
-| LicensePlate | Tworzenie | Time |
+| LicensePlate | Tworzenie | Czas |
 | --- | --- | --- |
-| DXE 5291 |Honda |2015-07-27T00:00:05.0000000Z |
-| YZK 5704 |Ford |2015-07-27T00:02:17.0000000Z |
-| RMV 8282 |Honda |2015-07-27T00:05:01.0000000Z |
-| YHN 6970 |Toyota |2015-07-27T00:06:00.0000000Z |
-| VFE 1616 |Toyota |2015-07-27T00:09:31.0000000Z |
-| QYF 9358 |Honda |2015-07-27T00:12:02.0000000Z |
-| MDR 6128 |BMW |2015-07-27T00:13:45.0000000Z |
+| DXE 5291 |Honda |2015-07-27T00:00:05.0000000 Z |
+| YZK 5704 |Ford |2015-07-27T00:02:17.0000000 Z |
+| RMV 8282 |Honda |2015-07-27T00:05:01.0000000 Z |
+| YHN 6970 |Toyota |2015-07-27T00:06:00.0000000 Z |
+| VFE 1616 |Toyota |2015-07-27T00:09:31.0000000 Z |
+| QYF 9358 |Honda |2015 — 07-27T00:12:02.0000000 Z |
+| MDR 6128 |BMW |2015-07-27T00:13:45.0000000 Z |
 
 **Dane wyjściowe**:
 
-| LicensePlate | Tworzenie | Time |
+| LicensePlate | Tworzenie | Czas |
 | --- | --- | --- |
-| DXE 5291 |Honda |2015-07-27T00:00:05.0000000Z |
-| QYF 9358 |Honda |2015-07-27T00:12:02.0000000Z |
+| DXE 5291 |Honda |2015-07-27T00:00:05.0000000 Z |
+| QYF 9358 |Honda |2015 — 07-27T00:12:02.0000000 Z |
 
 **Rozwiązanie**:
 
@@ -310,13 +309,13 @@ GROUP BY
 
 Teraz Zmieńmy ten problem i znajdziesz pierwszy samochód z określonej marki w każdym 10-minutowym przedziale czasu.
 
-| LicensePlate | Tworzenie | Time |
+| LicensePlate | Tworzenie | Czas |
 | --- | --- | --- |
-| DXE 5291 |Honda |2015-07-27T00:00:05.0000000Z |
-| YZK 5704 |Ford |2015-07-27T00:02:17.0000000Z |
-| YHN 6970 |Toyota |2015-07-27T00:06:00.0000000Z |
-| QYF 9358 |Honda |2015-07-27T00:12:02.0000000Z |
-| MDR 6128 |BMW |2015-07-27T00:13:45.0000000Z |
+| DXE 5291 |Honda |2015-07-27T00:00:05.0000000 Z |
+| YZK 5704 |Ford |2015-07-27T00:02:17.0000000 Z |
+| YHN 6970 |Toyota |2015-07-27T00:06:00.0000000 Z |
+| QYF 9358 |Honda |2015 — 07-27T00:12:02.0000000 Z |
+| MDR 6128 |BMW |2015-07-27T00:13:45.0000000 Z |
 
 **Rozwiązanie**:
 
@@ -331,28 +330,28 @@ Teraz Zmieńmy ten problem i znajdziesz pierwszy samochód z określonej marki w
         IsFirst(minute, 10) OVER (PARTITION BY Make) = 1
 ```
 
-## <a name="query-example-find-the-last-event-in-a-window"></a>Przykład zapytania: Znajdź ostatnie zdarzenie w oknie
+## <a name="query-example-find-the-last-event-in-a-window"></a>Przykład zapytania: Znajdowanie ostatniego zdarzenia w oknie
 
-**Opis**: Znajdź ostatni samochód w co 10 minut.
+**Opis**: Znajdź ostatni samochód w każdym 10-minutowym przedziale czasu.
 
 **Dane wejściowe**:
 
-| LicensePlate | Tworzenie | Time |
+| LicensePlate | Tworzenie | Czas |
 | --- | --- | --- |
-| DXE 5291 |Honda |2015-07-27T00:00:05.0000000Z |
-| YZK 5704 |Ford |2015-07-27T00:02:17.0000000Z |
-| RMV 8282 |Honda |2015-07-27T00:05:01.0000000Z |
-| YHN 6970 |Toyota |2015-07-27T00:06:00.0000000Z |
-| VFE 1616 |Toyota |2015-07-27T00:09:31.0000000Z |
-| QYF 9358 |Honda |2015-07-27T00:12:02.0000000Z |
-| MDR 6128 |BMW |2015-07-27T00:13:45.0000000Z |
+| DXE 5291 |Honda |2015-07-27T00:00:05.0000000 Z |
+| YZK 5704 |Ford |2015-07-27T00:02:17.0000000 Z |
+| RMV 8282 |Honda |2015-07-27T00:05:01.0000000 Z |
+| YHN 6970 |Toyota |2015-07-27T00:06:00.0000000 Z |
+| VFE 1616 |Toyota |2015-07-27T00:09:31.0000000 Z |
+| QYF 9358 |Honda |2015 — 07-27T00:12:02.0000000 Z |
+| MDR 6128 |BMW |2015-07-27T00:13:45.0000000 Z |
 
 **Dane wyjściowe**:
 
-| LicensePlate | Tworzenie | Time |
+| LicensePlate | Tworzenie | Czas |
 | --- | --- | --- |
-| VFE 1616 |Toyota |2015-07-27T00:09:31.0000000Z |
-| MDR 6128 |BMW |2015-07-27T00:13:45.0000000Z |
+| VFE 1616 |Toyota |2015-07-27T00:09:31.0000000 Z |
+| MDR 6128 |BMW |2015-07-27T00:13:45.0000000 Z |
 
 **Rozwiązanie**:
 
@@ -377,7 +376,7 @@ Teraz Zmieńmy ten problem i znajdziesz pierwszy samochód z określonej marki w
         AND Input.Time = LastInWindow.LastEventTime
 ```
 
-**Wyjaśnienie**: Zapytanie zawiera dwa etapy. Pierwsza z nich znajduje najnowszą sygnaturę czasową w 10-minutowych oknach. Drugi krok sprzęga wyniki pierwszego zapytania z oryginalnym strumieniem, aby znaleźć zdarzenia zgodne z ostatnimi sygnaturami czasowymi w poszczególnych oknach. 
+**Wyjaśnienie**: w zapytaniu istnieją dwa etapy. Pierwsza z nich znajduje najnowszą sygnaturę czasową w 10-minutowych oknach. Drugi krok sprzęga wyniki pierwszego zapytania z oryginalnym strumieniem, aby znaleźć zdarzenia zgodne z ostatnimi sygnaturami czasowymi w poszczególnych oknach. 
 
 ## <a name="query-example-locate-correlated-events-in-a-stream"></a>Przykład zapytania: Lokalizowanie skorelowanych zdarzeń w strumieniu
 
@@ -385,18 +384,18 @@ Teraz Zmieńmy ten problem i znajdziesz pierwszy samochód z określonej marki w
 
 **Dane wejściowe**:
 
-| Tworzenie | LicensePlate | Time |
+| Tworzenie | LicensePlate | Czas |
 | --- | --- | --- |
-| Honda |ABC-123 |2015-01-01T00:00:01.0000000Z |
-| Honda |AAA-999 |2015-01-01T00:00:02.0000000Z |
-| Toyota |DEF-987 |2015-01-01T00:00:03.0000000Z |
-| Honda |GHI-345 |2015-01-01T00:00:04.0000000Z |
+| Honda |ABC-123 |2015-01-01T00:00:01.0000000 Z |
+| Honda |AAA-999 |2015-01-01T00:00:02.0000000 Z |
+| Toyota |DEF-987 |2015-01-01T00:00:03.0000000 Z |
+| Honda |GHI-345 |2015-01-01T00:00:04.0000000 Z |
 
 **Dane wyjściowe**:
 
-| Tworzenie | Time | CurrentCarLicensePlate | FirstCarLicensePlate | FirstCarTime |
+| Tworzenie | Czas | CurrentCarLicensePlate | FirstCarLicensePlate | FirstCarTime |
 | --- | --- | --- | --- | --- |
-| Honda |2015-01-01T00:00:02.0000000Z |AAA-999 |ABC-123 |2015-01-01T00:00:01.0000000Z |
+| Honda |2015-01-01T00:00:02.0000000 Z |AAA-999 |ABC-123 |2015-01-01T00:00:01.0000000 Z |
 
 **Rozwiązanie**:
 
@@ -415,20 +414,20 @@ Teraz Zmieńmy ten problem i znajdziesz pierwszy samochód z określonej marki w
 
 **Wyjaśnienie**: Użyj **opóźnienia** , aby przejść do strumienia wejściowego po jednym zdarzeniu i pobrać wartość **Utwórz** . Porównaj ją z wartością **Make** w bieżącym zdarzeniu, a następnie Wyprowadź zdarzenie, jeśli są takie same. Możesz również użyć **zwłoki** , aby pobrać dane dotyczące poprzedniego samochodu.
 
-## <a name="query-example-detect-the-duration-between-events"></a>Przykład zapytania: Wykrywanie czasu trwania między zdarzeniami
+## <a name="query-example-detect-the-duration-between-events"></a>Przykład zapytania: wykrywanie czasu trwania między zdarzeniami
 
 **Opis**: Znajdź czas trwania danego zdarzenia. Na przykład, uwzględniając strumienia kliknięć sieci Web, określ czas spędzony na funkcji.
 
 **Dane wejściowe**:  
 
-| Użytkownik | Cecha | Wydarzenie | Time |
+| Użytkownik | Funkcja | Wydarzenie | Czas |
 | --- | --- | --- | --- |
-| user@location.com |RightMenu |Start |2015-01-01T00:00:01.0000000Z |
-| user@location.com |RightMenu |End |2015-01-01T00:00:08.0000000Z |
+| user@location.com |RightMenu |Rozpocznij |2015-01-01T00:00:01.0000000 Z |
+| user@location.com |RightMenu |Koniec |2015-01-01T00:00:08.0000000 Z |
 
 **Dane wyjściowe**:  
 
-| Użytkownik | Cecha | Duration |
+| Użytkownik | Funkcja | Czas trwania |
 | --- | --- | --- |
 | user@location.com |RightMenu |7 |
 
@@ -447,30 +446,30 @@ Teraz Zmieńmy ten problem i znajdziesz pierwszy samochód z określonej marki w
         Event = 'end'
 ```
 
-**Wyjaśnienie**: Użyj **ostatniej** funkcji, aby pobrać ostatnią wartość **czasu** , gdy typ zdarzenia został **uruchomiony**. **Ostatnia** funkcja używa **partycji przez [użytkownika]** , aby wskazać, że wynik jest obliczany dla unikatowego użytkownika. W zapytaniu obowiązuje maksymalny próg czasu między zdarzeniami **uruchamiania** i zatrzymywania, ale  można go skonfigurować zgodnie z wymaganiami **(czas trwania (godzina, 1)** .
+**Wyjaśnienie**: Użyj **ostatniej** funkcji, aby pobrać ostatnią wartość **czasu** , gdy typ zdarzenia został **uruchomiony**. **Ostatnia** funkcja używa **partycji przez [użytkownika]** , aby wskazać, że wynik jest obliczany dla unikatowego użytkownika. W zapytaniu obowiązuje maksymalny próg czasu między zdarzeniami **uruchamiania** i **zatrzymywania** , ale można go skonfigurować zgodnie z wymaganiami **(czas trwania (godzina, 1)** .
 
-## <a name="query-example-detect-the-duration-of-a-condition"></a>Przykład zapytania: Wykrywanie czasu trwania warunku
+## <a name="query-example-detect-the-duration-of-a-condition"></a>Przykład zapytania: wykrywanie czasu trwania warunku
 **Opis**: Dowiedz się, jak długo wystąpił warunek.
 Załóżmy na przykład, że usterka spowodowała, że wszystkie samochody mają niepoprawną wagę (powyżej 20 000 funtów), a czas trwania tego błędu musi być obliczany.
 
 **Dane wejściowe**:
 
-| Tworzenie | Time | Waga |
+| Tworzenie | Czas | Waga |
 | --- | --- | --- |
-| Honda |2015-01-01T00:00:01.0000000Z |2000 |
-| Toyota |2015-01-01T00:00:02.0000000Z |25000 |
-| Honda |2015-01-01T00:00:03.0000000Z |26000 |
-| Toyota |2015-01-01T00:00:04.0000000Z |25000 |
-| Honda |2015-01-01T00:00:05.0000000Z |26000 |
-| Toyota |2015-01-01T00:00:06.0000000Z |25000 |
-| Honda |2015-01-01T00:00:07.0000000Z |26000 |
-| Toyota |2015-01-01T00:00:08.0000000Z |2000 |
+| Honda |2015-01-01T00:00:01.0000000 Z |2000 |
+| Toyota |2015-01-01T00:00:02.0000000 Z |25000 |
+| Honda |2015-01-01T00:00:03.0000000 Z |26000 |
+| Toyota |2015-01-01T00:00:04.0000000 Z |25000 |
+| Honda |2015-01-01T00:00:05.0000000 Z |26000 |
+| Toyota |2015-01-01T00:00:06.0000000 Z |25000 |
+| Honda |2015-01-01T00:00:07.0000000 Z |26000 |
+| Toyota |2015-01-01T00:00:08.0000000 Z |2000 |
 
 **Dane wyjściowe**:
 
 | StartFault | EndFault |
 | --- | --- |
-| 2015-01-01T00:00:02.000Z |2015-01-01T00:00:07.000Z |
+| 2015-01-01T00:00:02.000 Z |2015-01-01T00:00:07.000 Z |
 
 **Rozwiązanie**:
 
@@ -495,13 +494,13 @@ Załóżmy na przykład, że usterka spowodowała, że wszystkie samochody mają
 
 **Wyjaśnienie**: Użyj **opóźnienia** , aby wyświetlić strumień wejściowy przez 24 godziny i wyszukać wystąpienia, w których **StartFault** i **StopFault** są objęte wagami < 20000.
 
-## <a name="query-example-fill-missing-values"></a>Przykład zapytania: Wypełnij brakujące wartości
+## <a name="query-example-fill-missing-values"></a>Przykład zapytania: wypełnienie brakujące wartości
 
-**Opis**: W przypadku strumienia zdarzeń, które mają brakujące wartości, program tworzy strumień zdarzeń ze regularnymi interwałami. Na przykład Wygeneruj zdarzenie co 5 sekund, które raportuje ostatnio widziany punkt danych.
+**Opis**: w przypadku strumienia zdarzeń, które mają brakujące wartości, program tworzy strumień zdarzeń z regularnymi interwałami. Na przykład Wygeneruj zdarzenie co 5 sekund, które raportuje ostatnio widziany punkt danych.
 
 **Dane wejściowe**:
 
-| t | value |
+| t | wartość |
 | --- | --- |
 | "2014-01-01T06:01:00" |1 |
 | "2014-01-01T06:01:05" |2 |
@@ -514,16 +513,16 @@ Załóżmy na przykład, że usterka spowodowała, że wszystkie samochody mają
 
 | windowend | lastevent.t | lastevent.value |
 | --- | --- | --- |
-| 2014-01-01T14:01:00.000Z |2014-01-01T14:01:00.000Z |1 |
-| 2014-01-01T14:01:05.000Z |2014-01-01T14:01:05.000Z |2 |
-| 2014-01-01T14:01:10.000Z |2014-01-01T14:01:10.000Z |3 |
-| 2014-01-01T14:01:15.000Z |2014-01-01T14:01:15.000Z |4 |
-| 2014-01-01T14:01:20.000Z |2014-01-01T14:01:15.000Z |4 |
-| 2014-01-01T14:01:25.000Z |2014-01-01T14:01:15.000Z |4 |
-| 2014-01-01T14:01:30.000Z |2014-01-01T14:01:30.000Z |5 |
-| 2014-01-01T14:01:35.000Z |2014-01-01T14:01:35.000Z |6 |
-| 2014-01-01T14:01:40.000Z |2014-01-01T14:01:35.000Z |6 |
-| 2014-01-01T14:01:45.000Z |2014-01-01T14:01:35.000Z |6 |
+| 2014-01-01T14:01:00.000 Z |2014-01-01T14:01:00.000 Z |1 |
+| 2014-01-01T14:01:05.000 Z |2014-01-01T14:01:05.000 Z |2 |
+| 2014-01-01T14:01:10.000 Z |2014-01-01T14:01:10.000 Z |3 |
+| 2014-01-01T14:01:15.000 Z |2014-01-01T14:01:15.000 Z |4 |
+| 2014-01-01T14:01:20.000 Z |2014-01-01T14:01:15.000 Z |4 |
+| 2014-01-01T14:01:25.000 Z |2014-01-01T14:01:15.000 Z |4 |
+| 2014-01-01T14:01:30.000 Z |2014-01-01T14:01:30.000 Z |5 |
+| 2014-01-01T14:01:35.000 Z |2014-01-01T14:01:35.000 Z |6 |
+| 2014-01-01T14:01:40.000 Z |2014-01-01T14:01:35.000 Z |6 |
+| 2014-01-01T14:01:45.000 Z |2014-01-01T14:01:35.000 Z |6 |
 
 **Rozwiązanie**:
 
@@ -536,16 +535,16 @@ Załóżmy na przykład, że usterka spowodowała, że wszystkie samochody mają
     GROUP BY HOPPINGWINDOW(second, 300, 5)
 ```
 
-**Wyjaśnienie**: To zapytanie generuje zdarzenia co 5 sekund i wyświetla ostatnie zdarzenie, które zostało odebrane wcześniej. Czas trwania [okna przeskoku](/stream-analytics-query/hopping-window-azure-stream-analytics) określa, jak daleko z tyłu zapytanie szuka najnowszego zdarzenia (300 sekund w tym przykładzie).
+**Wyjaśnienie**: to zapytanie generuje zdarzenia co 5 sekund i wyświetla ostatnie zdarzenie, które zostało wcześniej odebrane. Czas trwania [okna przeskoku](/stream-analytics-query/hopping-window-azure-stream-analytics) określa, jak daleko z tyłu zapytanie szuka najnowszego zdarzenia (300 sekund w tym przykładzie).
 
 
-## <a name="query-example-correlate-two-event-types-within-the-same-stream"></a>Przykład zapytania: Skorelowanie dwóch typów zdarzeń w ramach tego samego strumienia
+## <a name="query-example-correlate-two-event-types-within-the-same-stream"></a>Przykład zapytania: skorelowanie dwóch typów zdarzeń w ramach tego samego strumienia
 
-**Opis**: Czasami alerty muszą być generowane na podstawie wielu typów zdarzeń, które wystąpiły w określonym przedziale czasu. Na przykład w scenariuszu IoT dla piekarników domowych należy wygenerować alert, gdy temperatura wentylatora jest mniejsza niż 40, a maksymalna moc w ciągu ostatnich 3 minut jest mniejsza niż 10.
+**Opis**: czasami alerty muszą być generowane na podstawie wielu typów zdarzeń, które wystąpiły w określonym przedziale czasu. Na przykład w scenariuszu IoT dla piekarników domowych należy wygenerować alert, gdy temperatura wentylatora jest mniejsza niż 40, a maksymalna moc w ciągu ostatnich 3 minut jest mniejsza niż 10.
 
 **Dane wejściowe**:
 
-| time | deviceId | sensorName | value |
+| time | deviceId | sensorName | wartość |
 | --- | --- | --- | --- |
 | "2018-01-01T16:01:00" | "Oven1" | temp |120 |
 | "2018-01-01T16:01:00" | "Oven1" | awansowan |15 |
@@ -610,28 +609,28 @@ WHERE
     AND t2.maxPower > 10
 ```
 
-**Wyjaśnienie**: Pierwsze zapytanie `max_power_during_last_3_mins`używa [przesuwanego okna](/stream-analytics-query/sliding-window-azure-stream-analytics) , aby znaleźć maksymalną wartość czujnika napięcia dla każdego urządzenia, w ciągu ostatnich 3 minut. Drugie zapytanie jest przyłączone do pierwszego zapytania, aby znaleźć wartość mocy w najnowszym oknie odpowiednim dla bieżącego zdarzenia. A następnie, pod warunkiem, że są spełnione, generowany jest alert dla urządzenia.
+**Wyjaśnienie**: pierwsze zapytanie `max_power_during_last_3_mins`, używa [przesuwanego okna](/stream-analytics-query/sliding-window-azure-stream-analytics) , aby znaleźć maksymalną wartość czujnika napięcia dla każdego urządzenia, w ciągu ostatnich 3 minut. Drugie zapytanie jest przyłączone do pierwszego zapytania, aby znaleźć wartość mocy w najnowszym oknie odpowiednim dla bieżącego zdarzenia. A następnie, pod warunkiem, że są spełnione, generowany jest alert dla urządzenia.
 
-## <a name="query-example-process-events-independent-of-device-clock-skew-substreams"></a>Przykład zapytania: Przetwarzaj zdarzenia niezależnie od przesunięcia zegara urządzenia (podstrumieńy)
+## <a name="query-example-process-events-independent-of-device-clock-skew-substreams"></a>Przykład zapytania: przetwarzanie zdarzeń niezależnie od przesunięcia zegara urządzenia (podstrumienia)
 
-**Opis**: Zdarzenia mogą być opóźnione lub nieaktualne z powodu pochylenia zegara między producentami zdarzeń, nachylenia zegara między partycjami lub opóźnienia sieci. W poniższym przykładzie zegar urządzenia dla TollID 2 ma pięć sekund w tle TollID 1, a zegar urządzenia dla TollID 3 to dziesięć sekund za TollID 1. 
+**Opis**: zdarzenia mogą być opóźnione lub nieaktualne z powodu pochylenia zegara między producentami zdarzeń, nachylenia zegara między partycjami lub opóźnienia sieci. W poniższym przykładzie zegar urządzenia dla TollID 2 ma pięć sekund w tle TollID 1, a zegar urządzenia dla TollID 3 to dziesięć sekund za TollID 1. 
 
 **Dane wejściowe**:
 
-| LicensePlate | Tworzenie | Time | TollID |
+| LicensePlate | Tworzenie | Czas | TollID |
 | --- | --- | --- | --- |
-| DXE 5291 |Honda |2015-07-27T00:00:01.0000000Z | 1 |
-| YHN 6970 |Toyota |2015-07-27T00:00:05.0000000Z | 1 |
-| QYF 9358 |Honda |2015-07-27T00:00:01.0000000Z | 2 |
-| GXF 9462 |BMW |2015-07-27T00:00:04.0000000Z | 2 |
-| VFE 1616 |Toyota |2015-07-27T00:00:10.0000000Z | 1 |
-| RMV 8282 |Honda |2015-07-27T00:00:03.0000000Z | 3 |
-| MDR 6128 |BMW |2015-07-27T00:00:11.0000000Z | 2 |
-| YZK 5704 |Ford |2015-07-27T00:00:07.0000000Z | 3 |
+| DXE 5291 |Honda |2015-07-27T00:00:01.0000000 Z | 1 |
+| YHN 6970 |Toyota |2015-07-27T00:00:05.0000000 Z | 1 |
+| QYF 9358 |Honda |2015-07-27T00:00:01.0000000 Z | 2 |
+| GXF 9462 |BMW |2015-07-27T00:00:04.0000000 Z | 2 |
+| VFE 1616 |Toyota |2015-07-27T00:00:10.0000000 Z | 1 |
+| RMV 8282 |Honda |2015-07-27T00:00:03.0000000 Z | 3 |
+| MDR 6128 |BMW |2015-07-27T00:00:11.0000000 Z | 2 |
+| YZK 5704 |Ford |2015-07-27T00:00:07.0000000 Z | 3 |
 
 **Dane wyjściowe**:
 
-| TollID | Count |
+| TollID | Liczba |
 | --- | --- |
 | 1 | 2 |
 | 2 | 2 |
@@ -651,22 +650,22 @@ FROM input
 GROUP BY TUMBLINGWINDOW(second, 5), TollId
 ```
 
-**Wyjaśnienie**: Klauzula [timestamp by over](/stream-analytics-query/timestamp-by-azure-stream-analytics#over-clause-interacts-with-event-ordering) wyszukuje osobno każdy oś czasu za pomocą podstrumienia. Zdarzenia wyjściowe dla każdego TollID są generowane w miarę ich obliczania, co oznacza, że zdarzenia są wykonywane w kolejności w odniesieniu do każdego TollIDu, a nie w kolejności, w jakiej wszystkie urządzenia były w tym samym zegarze.
+**Wyjaśnienie**: klauzula [timestamp by over](/stream-analytics-query/timestamp-by-azure-stream-analytics#over-clause-interacts-with-event-ordering) wyszukuje osobno każdy oś czasu za pomocą podstrumienia. Zdarzenia wyjściowe dla każdego TollID są generowane w miarę ich obliczania, co oznacza, że zdarzenia są wykonywane w kolejności w odniesieniu do każdego TollIDu, a nie w kolejności, w jakiej wszystkie urządzenia były w tym samym zegarze.
 
-## <a name="query-example-remove-duplicate-events-in-a-window"></a>Przykład zapytania: Usuń zduplikowane zdarzenia w oknie
+## <a name="query-example-remove-duplicate-events-in-a-window"></a>Przykład zapytania: usuwanie zduplikowanych zdarzeń w oknie
 
-**Opis**: Podczas wykonywania operacji, takich jak Obliczanie średniej wartości dla zdarzeń w danym przedziale czasu, należy filtrować powtarzające się zdarzenia. W poniższym przykładzie drugie zdarzenie jest duplikatem pierwszego.
+**Opis**: podczas wykonywania operacji, takich jak Obliczanie średniej wartości dla zdarzeń w danym przedziale czasu, należy filtrować zduplikowane zdarzenia. W poniższym przykładzie drugie zdarzenie jest duplikatem pierwszego.
 
 **Dane wejściowe**:  
 
-| DeviceId | Time | Atrybut | Value |
+| DeviceId | Czas | Atrybut | Wartość |
 | --- | --- | --- | --- |
-| 1 |2018-07-27T00:00:01.0000000Z |Temperatura |50 |
-| 1 |2018-07-27T00:00:01.0000000Z |Temperatura |50 |
-| 2 |2018-07-27T00:00:01.0000000Z |Temperatura |40 |
-| 1 |2018-07-27T00:00:05.0000000Z |Temperatura |60 |
-| 2 |2018-07-27T00:00:05.0000000Z |Temperatura |50 |
-| 1 |2018-07-27T00:00:10.0000000Z |Temperatura |100 |
+| 1 |2018 R-07-27T00:00:01.0000000 Z |Temperatura |50 |
+| 1 |2018 R-07-27T00:00:01.0000000 Z |Temperatura |50 |
+| 2 |2018 R-07-27T00:00:01.0000000 Z |Temperatura |40 |
+| 1 |2018 R-07-27T00:00:05.0000000 Z |Temperatura |60 |
+| 2 |2018 R-07-27T00:00:05.0000000 Z |Temperatura |50 |
+| 1 |2018 R-07-27T00:00:10.0000000 Z |Temperatura |100 |
 
 **Dane wyjściowe**:  
 
@@ -698,10 +697,10 @@ FROM Temp
 GROUP BY DeviceId,TumblingWindow(minute, 5)
 ```
 
-**Wyjaśnienie**: [Licznik (DISTINCT Time)](/stream-analytics-query/count-azure-stream-analytics) zwraca liczbę unikatowych wartości w kolumnie Time w przedziale czasu. Następnie możesz użyć danych wyjściowych tego kroku, aby obliczyć średnią dla każdego urządzenia przez odrzucenie duplikatów.
+**Wyjaśnienie**: [licznik (DISTINCT Time)](/stream-analytics-query/count-azure-stream-analytics) zwraca liczbę unikatowych wartości w kolumnie Time w przedziale czasu. Następnie możesz użyć danych wyjściowych tego kroku, aby obliczyć średnią dla każdego urządzenia przez odrzucenie duplikatów.
 
 ## <a name="geofencing-and-geospatial-queries"></a>Geoogrodzenie i zapytania geograficzne
-Azure Stream Analytics udostępnia wbudowane funkcje geoprzestrzenne, które mogą służyć do implementowania scenariuszy takich jak zarządzanie flotą, udostępnianie samochodu, samochody połączone i śledzenie zasobów. Dane geograficzne można pozyskać w formatach GeoJSON lub WKT w ramach strumienia zdarzeń lub danych referencyjnych. Aby uzyskać więcej informacji, zapoznaj się z scenariuszami geoprzestrzennymi [i agregacjami geograficznymi przy użyciu Azure Stream Analytics](geospatial-scenarios.md) artykułu.
+Azure Stream Analytics udostępnia wbudowane funkcje geoprzestrzenne, które mogą służyć do implementowania scenariuszy takich jak zarządzanie flotą, udostępnianie samochodu, samochody połączone i śledzenie zasobów. Dane geograficzne można pozyskać w formatach GeoJSON lub WKT w ramach strumienia zdarzeń lub danych referencyjnych. Aby uzyskać więcej informacji, zapoznaj się z [scenariuszami geoprzestrzennymi i agregacjami geograficznymi przy użyciu Azure Stream Analytics](geospatial-scenarios.md) artykułu.
 
 ## <a name="language-extensibility-through-javascript-and-c"></a>Rozszerzalność języka za poorednictwem języka JavaScript iC#
 Usługę Azure Stream Ananlytics Query langugae można rozszerzyć za pomocą funkcji niestandardowych zapisanych w C# języku JavaScript lub językach. Aby uzyskać więcej informacji, zobacz artykuły z foolowing:
@@ -713,7 +712,7 @@ Usługę Azure Stream Ananlytics Query langugae można rozszerzyć za pomocą fu
 
 Aby uzyskać dalszą pomoc, Wypróbuj nasz [forum usługi Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 * [Wprowadzenie do usługi Azure Stream Analytics](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics (Rozpoczynanie pracy z usługą Azure Stream Analytics)](stream-analytics-real-time-fraud-detection.md)
 * [Scale Azure Stream Analytics jobs (Skalowanie zadań usługi Azure Stream Analytics)](stream-analytics-scale-jobs.md)

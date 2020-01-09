@@ -1,5 +1,5 @@
 ---
-title: Terminy w pliku użycia i opłat platformy Azure dla umowy klienta firmy Microsoft
+title: Terminy w pliku użycia i opłat dla umowy klienta firmy Microsoft
 description: Dowiedz się, jak interpretować sekcje pliku CSV dotyczącego użycia i opłat platformy Azure dla Twojego profilu rozliczeniowego.
 author: bandersmsft
 manager: jureid
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: b46c635b28d693cb0d6ab9e643a8a1ee9e55fc64
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: f619d11c3df29a629b8b4da7b440376d6e9aedbd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226086"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75388894"
 ---
 # <a name="terms-in-the-azure-usage-and-charges-file-for-a-microsoft-customer-agreement"></a>Terminy w pliku użycia i opłat platformy Azure dla umowy klienta firmy Microsoft
 
@@ -34,12 +34,12 @@ Jeśli jesteś klientem z umową EA, możesz zauważyć, że terminy w pliku CSV
 
 | Plik CSV użycia dla umowy EA platformy Azure | Plik CSV użycia i opłat dla umowy klienta firmy Microsoft |
 | --- | --- |
-| Date | date |
+| Data | date |
 | Month| date |
 | Day | date |
 | Year | date |
 | Product (Produkt) | product |
-| MeterId | meterID |
+| Identyfikator miernika | meterID |
 | MeterCategory | meterCategory |
 | MeterSubCategory | meterSubCategory |
 | MeterRegion | meterRegion |
@@ -65,7 +65,7 @@ Jeśli jesteś klientem z umową EA, możesz zauważyć, że terminy w pliku CSV
 
 Poniższe terminy są wyświetlane w pliku użycia i opłat platformy Azure.
 
-Termin | Opis
+Okres | Opis
 --- | ---
 invoiceId | Unikatowy identyfikator dokumentu w pliku PDF faktury
 previousInvoiceId | Odwołanie do oryginalnej faktury, jeśli ten element wiersza to zwrot kosztów

@@ -8,16 +8,18 @@
     - name: Co nowego w usłudze Azure Active Directory
       href: whats-new.md
 - name: Przewodniki Szybki start
+  expanded: true
   items:
     - name: Uzyskiwanie dostępu do portalu i tworzenie dzierżawy
       href: active-directory-access-create-new-tenant.md
     - name: Wyświetlanie grup z przypisanymi członkami
       href: active-directory-groups-view-azure-portal.md
 - name: Pojęcia
+  expanded: true
   items:
     - name: Wskaźnik bezpieczeństwa tożsamości
       href: identity-secure-score.md
-    - name: Bezpieczeństwo
+    - name: Zabezpieczenia
       items:
         - name: Włączanie usługi MFA
           href: concept-fundamentals-mfa-get-started.md
@@ -37,6 +39,8 @@
       href: active-directory-deployment-checklist-p2.md
     - name: Przechowywanie danych tożsamości na potrzeby UE
       href: active-directory-data-storage-eu.md
+    - name: Przechowywanie danych tożsamości na potrzeby Australii
+      href: active-directory-data-storage-australia.md
     - name: Co nowego na platformie Microsoft 365 Government
       href: whats-new-microsoft-365-government.md
     - name: Dokumentacja operacji usługi Azure AD
@@ -97,6 +101,7 @@
         - name: Przywrócić usuniętego użytkownika
           href: active-directory-users-restore.md
 - name: Zasoby
+  expanded: true
   items:
     - name: Uzyskiwanie pomocy technicznej dla usługi Azure Active Directory
       href: active-directory-troubleshooting-support-howto.md

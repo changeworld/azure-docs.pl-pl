@@ -1,5 +1,5 @@
 ---
-title: Przeniesienie własności rozliczeń subskrypcji platformy Azure na inne konto | Microsoft Docs
+title: Przeniesienie własności rozliczeń subskrypcji platformy Azure
 description: Opisuje sposób przeniesienia własności rozliczeń subskrypcji platformy Azure na inne konto. Zawiera odpowiedzi na często zadawane pytania dotyczące tego procesu
 keywords: przeniesienie subskrypcji platformy Azure, przeniesienie subskrypcji platformy Azure na inne konto, zmiana właściciela subskrypcji platformy Azure, transfer subskrypcji platformy Azure na inne konto, transfer rozliczeń na platformie Azure
 author: bandersmsft
@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a858ef9918135bfb660c059d80f4c7c49e1e3364
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 721c8a1381ad90a68cfeb628ad00e39aadbb1db7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74223566"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75388945"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>Przeniesienie własności rozliczeń subskrypcji platformy Azure na inne konto
 

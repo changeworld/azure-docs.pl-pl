@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 3/25/2019
 ms.author: rohink
-ms.openlocfilehash: 69e9e09b3f2c488f62732e0a74d212126826e8bf
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 246af99cfec5ca41347da70e80bfc6dfff448eb3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707570"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75368039"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Rozpoznawanie nazw zasobów w sieciach wirtualnych platformy Azure
 
@@ -34,7 +34,7 @@ Używany typ rozpoznawania nazw zależy od tego, w jaki sposób zasoby muszą ko
 > W zależności od danego scenariusza warto użyć funkcji Azure DNS Private Zones, która jest obecnie dostępna w publicznej wersji zapoznawczej. Aby uzyskać więcej informacji, zobacz [Using Azure DNS for private domains (Korzystanie z usługi Azure DNS na potrzeby domen prywatnych)](../dns/private-dns-overview.md).
 >
 
-| **Scenariusz** | **Rozwiązanie** | **Przedrostk** |
+| **Scenariusz** | **Rozwiązanie** | **Suffix** |
 | --- | --- | --- |
 | Rozpoznawanie nazw między maszynami wirtualnymi znajdującymi się w tej samej sieci wirtualnej lub wystąpieniami roli Cloud Services platformy Azure w tej samej usłudze w chmurze. | [Azure DNS Private Zones](../dns/private-dns-overview.md) lub [rozpoznawanie nazw udostępniane przez platformę Azure](#azure-provided-name-resolution) |Nazwa hosta lub nazwa FQDN |
 | Rozpoznawanie nazw między maszynami wirtualnymi w różnych sieciach wirtualnych lub wystąpieniach ról w różnych usługach w chmurze. |[Azure DNS Private Zones](../dns/private-dns-overview.md) lub serwery DNS zarządzane przez klienta przesyłają dalej zapytania między sieciami wirtualnymi w celu rozpoznania ich przez platformę Azure (DNS proxy). Zobacz [rozpoznawanie nazw przy użyciu własnego serwera DNS](#name-resolution-that-uses-your-own-dns-server). |Tylko nazwa FQDN |
@@ -193,22 +193,16 @@ Jeśli używasz własnych serwerów DNS, platforma Azure umożliwia określenie 
 
 > [!NOTE]
 > Właściwości połączenia sieciowego, takie jak adresy IP serwera DNS, nie powinny być edytowane bezpośrednio w maszynach wirtualnych. Dzieje się tak, ponieważ mogą one zostać wymazane podczas stosowania poprawek do usługi, gdy karta sieci wirtualnej zostanie zastąpiona. Dotyczy to zarówno maszyn wirtualnych z systemem Windows, jak i Linux.
->
->
 
 W przypadku korzystania z modelu wdrażania Azure Resource Manager można określić serwery DNS dla sieci wirtualnej i interfejsu sieciowego. Aby uzyskać szczegółowe informacje, zobacz [Zarządzanie siecią wirtualną](manage-virtual-network.md) i [Zarządzanie interfejsem sieciowym](virtual-network-network-interface.md).
 
 > [!NOTE]
 > Jeśli wybierzesz niestandardowy serwer DNS dla sieci wirtualnej, musisz określić co najmniej jeden adres IP serwera DNS. w przeciwnym razie Sieć wirtualna zignoruje konfigurację i użyje usługi DNS udostępnionej przez platformę Azure.
->
->
 
 W przypadku korzystania z klasycznego modelu wdrażania można określić serwery DNS dla sieci wirtualnej w Azure Portal lub w [pliku konfiguracji sieci](https://msdn.microsoft.com/library/azure/jj157100). W przypadku usług Cloud Services serwery DNS można określić za pomocą [pliku konfiguracji usługi](https://msdn.microsoft.com/library/azure/ee758710) lub programu PowerShell z poleceniem [New-AzureVM](/powershell/module/servicemanagement/azure/new-azurevm).
 
 > [!NOTE]
-> W przypadku zmiany ustawień DNS dla sieci wirtualnej lub maszyny wirtualnej, która została już wdrożona, aby nowe ustawienia DNS zaczęły obowiązywać, należy przeprowadzić odnowienie dzierżawy DHCP na wszystkich maszynach wirtualnych, których dotyczy ta sieć wirtualna. W przypadku maszyn wirtualnych z systemem operacyjnym Windows można to zrobić, wpisując `ipconfig /renew` bezpośrednio na maszynie wirtualnej. Kroki różnią się w zależności od systemu operacyjnego. Zapoznaj się z odpowiednią dokumentacją dla danego typu systemu operacyjnego. 
->
->
+> W przypadku zmiany ustawień DNS dla sieci wirtualnej lub maszyny wirtualnej, która została już wdrożona, aby nowe ustawienia DNS zaczęły obowiązywać, należy przeprowadzić odnowienie dzierżawy DHCP na wszystkich maszynach wirtualnych, których dotyczy ta sieć wirtualna. W przypadku maszyn wirtualnych z systemem operacyjnym Windows można to zrobić, wpisując `ipconfig /renew` bezpośrednio na maszynie wirtualnej. Kroki różnią się w zależności od systemu operacyjnego. Zapoznaj się z odpowiednią dokumentacją dla danego typu systemu operacyjnego.
 
 ## <a name="next-steps"></a>Następne kroki
 

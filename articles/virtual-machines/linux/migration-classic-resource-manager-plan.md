@@ -1,5 +1,5 @@
 ---
-title: Planowanie migracji zasobów IaaS z klasycznej do Azure Resource Manager
+title: Planowanie migracji z wersji klasycznej do Azure Resource Manager
 description: Planowanie migracji zasobów IaaS z klasycznej do Azure Resource Manager
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 04/01/2017
 ms.author: kasing
-ms.openlocfilehash: 8dc1ee85b9d17824898de80562ea5bfb251a2c41
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: d4c7bdf33ed1a35e7b27eed8baa3b96066d25dd4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035715"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75369029"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>Planowanie migracji zasobów IaaS z klasycznej do Azure Resource Manager
 Chociaż Azure Resource Manager oferuje wiele niezwykłych funkcji, ważne jest zaplanowanie podróży migracji, aby upewnić się, że elementy są bezproblemowo. Czas wydatków na planowanie zapewnia niespotykanie problemów podczas wykonywania działań migracji. 
@@ -31,7 +31,7 @@ Istnieją cztery ogólne etapy podróży migracji:
 
 ![Etapy migracji](../media/virtual-machines-windows-migration-classic-resource-manager/plan-labtest-migrate-beyond.png)
 
-## <a name="plan"></a>Planowanie
+## <a name="plan"></a>Plan
 
 ### <a name="technical-considerations-and-tradeoffs"></a>Zagadnienia techniczne i kompromisy
 
@@ -105,7 +105,7 @@ W wielu większych migracjach wykryto następujące problemy. Nie jest to pełna
 
 - **Zestawy dostępności** — dla sieci wirtualnej (vNet), które mają zostać zmigrowane do Azure Resource Manager, wdrożenie klasyczne (tj. usługa w chmurze) zawiera wszystkie maszyny wirtualne muszą znajdować się w jednym zestawie dostępności lub wszystkie maszyny wirtualne nie muszą znajdować się w żadnym zestawie dostępności. Posiadanie więcej niż jednego zestawu dostępności w usłudze w chmurze jest niezgodne z usługą Azure Resource Manager i wstrzymanie migracji.  Ponadto nie może istnieć kilka maszyn wirtualnych w zestawie dostępności i niektóre maszyny wirtualne, które nie znajdują się w zestawie dostępności. Aby rozwiązać ten problem, należy skorygować lub ponownie rozprowadzić usługę w chmurze.  Zaplanuj odpowiednio, ponieważ może to być czasochłonne. 
 
-- **Wdrożenia roli sieci Web/procesu roboczego** — Cloud Services zawierające role sieci Web i procesu roboczego nie mogą migrować do Azure Resource Manager. Przed rozpoczęciem migracji należy najpierw usunąć role sieci Web/proces roboczy z sieci wirtualnej.  Typowym rozwiązaniem jest przeniesienie wystąpień roli sieci Web/proces roboczy do oddzielnej klasycznej sieci wirtualnej, która jest również połączona z obwodem ExpressRoute lub Migrowanie kodu do nowszej PaaS App Services (ta dyskusja jest poza zakresem tego dokumentu). W poprzednim przypadku ponownego wdrożenia Utwórz nową klasyczną sieć wirtualną, Przenieś/Wdróż ponownie role sieci Web/procesu roboczego do nowej sieci wirtualnej, a następnie usuń wdrożenia z przenoszonej sieci wirtualnej. Nie są wymagane żadne zmiany w kodzie. Nowe [Virtual Network możliwości komunikacji równorzędnej](../../virtual-network/virtual-network-peering-overview.md) mogą być używane do komunikacji równorzędnej z klasyczną siecią wirtualną zawierającą role sieci Web/procesu roboczego i inne sieci wirtualne w tym samym regionie świadczenia usługi Azure, np. w przypadku migracji sieci wirtualnej (**po sieci wirtualnej Migracja została ukończona, ponieważ nie można migrować równorzędnych sieci wirtualnych, co**zapewnia te same możliwości bez utraty wydajności i bez opóźnień/kar za przepustowość. Po dodaniu [komunikacji równorzędnej Virtual Network](../../virtual-network/virtual-network-peering-overview.md)wdrożenia roli sieć Web/proces roboczy można teraz łatwo ograniczyć i nie zablokować migracji do Azure Resource Manager.
+- **Wdrożenia roli sieci Web/procesu roboczego** — Cloud Services zawierające role sieci Web i procesu roboczego nie mogą migrować do Azure Resource Manager. Przed rozpoczęciem migracji należy najpierw usunąć role sieci Web/proces roboczy z sieci wirtualnej.  Typowym rozwiązaniem jest przeniesienie wystąpień roli sieci Web/proces roboczy do oddzielnej klasycznej sieci wirtualnej, która jest również połączona z obwodem ExpressRoute lub Migrowanie kodu do nowszej PaaS App Services (ta dyskusja jest poza zakresem tego dokumentu). W poprzednim przypadku ponownego wdrożenia Utwórz nową klasyczną sieć wirtualną, Przenieś/Wdróż ponownie role sieci Web/procesu roboczego do nowej sieci wirtualnej, a następnie usuń wdrożenia z przenoszonej sieci wirtualnej. Nie są wymagane żadne zmiany w kodzie. Nowe [Virtual Network możliwości komunikacji równorzędnej](../../virtual-network/virtual-network-peering-overview.md) mogą być używane do komunikacji równorzędnej z klasyczną siecią wirtualną zawierającą role sieci Web/procesu roboczego i inne sieci wirtualne w tym samym regionie świadczenia usługi Azure, na przykład w przypadku migrowania sieci wirtualnej (**po zakończeniu migracji sieci wirtualnej, gdy nie można migrować równorzędnych sieci wirtualnych**), co zapewnia te same możliwości bez utraty wydajności i bez opóźnień i przepustowości. Po dodaniu [komunikacji równorzędnej Virtual Network](../../virtual-network/virtual-network-peering-overview.md)wdrożenia roli sieć Web/proces roboczy można teraz łatwo ograniczyć i nie zablokować migracji do Azure Resource Manager.
 
 - **Przydziały Azure Resource Manager** — regiony platformy Azure mają oddzielne limity przydziału/ograniczenia zarówno dla klasycznych, jak i Azure Resource Manager. Mimo że w scenariuszu migracji nowy sprzęt nie jest używany *(zamieniamy istniejące maszyny wirtualne z klasycznej do Azure Resource Manager)* , przydziały Azure Resource Manager nadal muszą mieć wystarczającą ilość miejsca, zanim będzie można rozpocząć migrację. Poniżej wymieniono główne limity, które wystąpiły problemy.  Otwórz bilet pomocy technicznej dotyczącej limitu przydziału, aby zgłosić limity. 
 
@@ -118,7 +118,7 @@ W wielu większych migracjach wykryto następujące problemy. Nie jest to pełna
   - Publiczne adresy IP
   - Statyczne publiczne adresy IP
   - Rdzenie
-  - Grupy zabezpieczeń sieci
+  - Sieciowe grupy zabezpieczeń
   - Tabele tras
 
     Bieżące przydziały Azure Resource Manager można sprawdzić przy użyciu następujących poleceń z najnowszą wersją interfejsu wiersza polecenia platformy Azure.
@@ -179,7 +179,7 @@ Nie w pełni testowanie może powodować problemy i opóźnienia migracji.
 
 ### <a name="technical-considerations-and-tradeoffs"></a>Zagadnienia techniczne i kompromisy
 
-Teraz, gdy jesteś w Azure Resource Manager, zmaksymalizuj platformę.  Zapoznaj się z [omówieniem Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md) , aby dowiedzieć się więcej o dodatkowych korzyściach.
+Teraz, gdy jesteś w Azure Resource Manager, zmaksymalizuj platformę.  Zapoznaj się z [omówieniem Azure Resource Manager](../../azure-resource-manager/management/overview.md) , aby dowiedzieć się więcej o dodatkowych korzyściach.
 
 Zagadnienia, które należy wziąć pod uwagę:
 

@@ -1,24 +1,23 @@
 ---
 title: Testowanie zadania Azure Stream Analytics przy użyciu przykładowych danych
 description: W tym artykule opisano sposób użycia Azure Portal do testowania Azure Stream Analytics zadania, przykładowe dane wejściowe i przekazywanie przykładowych danych.
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: d68c1ee084efc146d69d8404aadb8acbb4cc33d1
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 85d32e96335a9fffa874f1f370f72883ff420df0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73891754"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75369868"
 ---
 # <a name="test-an-azure-stream-analytics-job-with-sample-data"></a>Testowanie zadania Azure Stream Analytics przy użyciu przykładowych danych
 
-W Azure Stream Analytics można testować zapytanie bez uruchamiania lub zatrzymywania zadania. Można testować zapytania dotyczące danych przychodzących z Twojego ujścia danych wejściowych lub przekazać przykładowe dane z pliku lokalnego w witrynie Azure Portal. Możesz również testować zapytania lokalnie z lokalnych danych przykładowych lub danych na żywo w programie [Visual Studio](stream-analytics-live-data-local-testing.md) i [Visual Studio Code](vscode-local-run.md). 
+W Azure Stream Analytics można testować zapytanie bez uruchamiania lub zatrzymywania zadania. Można testować zapytania dotyczące danych przychodzących z Twojego ujścia danych wejściowych lub przekazać przykładowe dane z pliku lokalnego w witrynie Azure Portal. Możesz również testować zapytania lokalnie z lokalnych danych przykładowych lub danych na żywo w programie [Visual Studio](stream-analytics-live-data-local-testing.md) i [Visual Studio Code](visual-studio-code-local-run-live-input.md).
 
 ## <a name="sample-incoming-data-from-input"></a>Przykładowe przychodzące dane z danych wejściowych
 
@@ -30,7 +29,7 @@ Azure Stream Analytics automatycznie pobiera zdarzenia z danych wejściowych prz
 
 3. Na stronie Stream Analytics zadania w obszarze nagłówek **topologii zadania** wybierz pozycję **zapytanie** , aby otworzyć okno edytora zapytań. 
 
-4. Aby wyświetlić przykładową listę zdarzeń przychodzących, wybierz pozycję dane wejściowe z ikoną pliku, a Przykładowe zdarzenia będą automatycznie wyświetlane w **podglądzie danych wejściowych**. 
+4. Aby wyświetlić przykładową listę zdarzeń przychodzących, wybierz pozycję dane wejściowe z ikoną pliku, a Przykładowe zdarzenia będą automatycznie wyświetlane w **podglądzie danych wejściowych**.
 
    a. Typ serializacji dla danych jest wykrywany automatycznie, jeśli jego kod JSON lub CSV. Możesz również ręcznie zmienić ten plik w formacie JSON, CSV, AVRO, zmieniając opcję z menu rozwijanego.
     
@@ -74,7 +73,7 @@ Zamiast korzystać z danych na żywo, można użyć przykładowych danych z plik
 
 1. Zaloguj się do Portalu Azure.
    
-2. Znajdź istniejące zadanie Stream Analytics i wybierz je.
+2. Znajdź istniejące zadanie usługi Stream Analytics i zaznacz je.
 
 3. Na stronie Stream Analytics zadania w obszarze nagłówek **topologii zadania** wybierz pozycję **zapytanie** , aby otworzyć okno edytora zapytań.
 
@@ -106,4 +105,4 @@ Zamiast korzystać z danych na żywo, można użyć przykładowych danych z plik
 
 * [Informacje o danych wejściowych dla Azure Stream Analytics](stream-analytics-add-inputs.md)
 
-* [Poznanie danych wyjściowych z Azure Stream Analytics](stream-analytics-define-outputs.md)
+* [Zrozumieć dane wyjściowe z usługi Azure Stream Analytics](stream-analytics-define-outputs.md)

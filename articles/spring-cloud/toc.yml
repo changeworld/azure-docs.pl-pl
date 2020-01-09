@@ -34,6 +34,8 @@
       href: spring-cloud-tutorial-bind-redis.md
     - name: Wiązanie aplikacji z usługą Azure MySQL
       href: spring-cloud-tutorial-bind-mysql.md
+    - name: Wdrażanie aplikacji w usłudze Azure Spring Cloud przy użyciu narzędzia Jenkins i interfejsu wiersza polecenia platformy Azure
+      href: /azure/jenkins/tutorial-jenkins-deploy-cli-spring-cloud-service
 - name: Pojęcia
   items:
     - name: Informacje o przydziałach i limitach usługi Azure Spring Cloud

@@ -84,6 +84,8 @@
       items:
         - name: Przekształcanie danych przy użyciu przepływu danych mapowania
           href: tutorial-data-flow.md
+        - name: Samouczki wideo dotyczące przepływów mapowania danych
+          href: data-flow-tutorials.md
         - name: Przygotowywanie danych za pomocą przepływu danych uzdatniania
           href: wrangling-data-flow-tutorial.md
     - name: Przekształcenia zewnętrzne

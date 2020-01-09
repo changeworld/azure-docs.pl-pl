@@ -21,18 +21,27 @@
       items:
         - name: Korzystanie z narzędzia Draft
           href: kubernetes-draft.md
-        - name: Używanie programu Visual Studio Code i usługi Azure Dev Spaces
-          href: ../dev-spaces/quickstart-netcore.md
-          maintainContext: true
-        - name: Używanie programu Visual Studio i usługi Azure Dev Spaces
-          href: ../dev-spaces/quickstart-netcore-visualstudio.md
-          maintainContext: true
-        - name: Używanie interfejsu wiersza polecenia i usługi Azure Dev Spaces
-          href: ../dev-spaces/quickstart-cli.md
-          maintainContext: true
-        - name: Programowanie zespołowe za pomocą usługi Azure Dev Spaces
-          href: ../dev-spaces/quickstart-team-development.md
-          maintainContext: true
+        - name: Azure Dev Spaces
+          expanded: true
+          items:
+            - name: Programowanie zespołowe za pomocą usługi Azure Dev Spaces
+              href: ../dev-spaces/quickstart-team-development.md
+              maintainContext: true
+            - name: Korzystanie z programu Visual Studio Code
+              href: ../dev-spaces/quickstart-netcore.md
+              maintainContext: true
+            - name: Korzystanie z programu Visual Studio
+              href: ../dev-spaces/quickstart-netcore-visualstudio.md
+              maintainContext: true
+            - name: Korzystanie z interfejsu wiersza polecenia
+              href: ../dev-spaces/quickstart-cli.md
+              maintainContext: true
+            - name: Korzystanie z usługi Azure Dev Spaces przy użyciu języka Java
+              href: ../dev-spaces/quickstart-java.md
+              maintainContext: true
+            - name: Korzystanie z usługi Azure Dev Spaces przy użyciu środowiska Node.js
+              href: ../dev-spaces/quickstart-nodejs.md
+              maintainContext: true
 - name: Samouczki
   items:
     - name: 1 — Przygotowywanie aplikacji dla usługi AKS

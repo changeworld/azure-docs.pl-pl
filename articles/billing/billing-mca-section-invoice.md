@@ -1,5 +1,5 @@
 ---
-title: Tworzenie sekcji na fakturze w celu organizacji kosztów — Azure
+title: Tworzenie sekcji faktur w celu organizowania kosztów — Azure
 description: Dowiedz się, jak organizować koszty za pomocą sekcji faktur.
 author: amberbhargava
 manager: amberb
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: d70460f5a492c9699a6110d5ba164283934c584b
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: ff8b2da353d623cd9f05c8d0b0317587d7093ce3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226134"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75389285"
 ---
 # <a name="create-sections-on-your-invoice-to-organize-your-costs"></a>Tworzenie sekcji na fakturze w celu organizacji kosztów
 
@@ -39,7 +39,7 @@ Aby utworzyć sekcję faktury, musisz być **właścicielem profilu rozliczeniow
 
 4. W górnej części strony wybierz pozycję **Dodaj**.
 
-5. Wprowadź nazwę sekcji faktury i wybierz profil rozliczeniowy. Na fakturze tego profilu rozliczeniowego zostanie wyświetlona sekcja odzwierciedlająca użycie poszczególnych subskrypcji i zakupów przypisanych do sekcji. 
+5. Wprowadź nazwę sekcji faktury i wybierz profil rozliczeniowy. Na fakturze tego profilu rozliczeniowego zostanie wyświetlona sekcja odzwierciedlająca użycie poszczególnych subskrypcji i zakupów przypisanych do sekcji.
 
    ![Zrzut ekranu przedstawiający stronę tworzenia sekcji faktury](./media/billing-mca-section-invoice/mca-create-invoice-section.png)
 

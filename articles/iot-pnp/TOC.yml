@@ -71,8 +71,12 @@
       href: howto-develop-solution.md
 - name: Dokumentacja
   items:
-    - name: REST
-      href: 'https://docs.microsoft.com/rest/api/iothub/digitaltwinmodel/createorupdatemodel'
+    - name: Cyfrowa bliźniacza reprezentacja
+      href: 'https://docs.microsoft.com/rest/api/iothub/digitaltwinmodel/digitaltwin'
+    - name: Usługa cyfrowych bliźniaczych reprezentacji
+      href: 'https://docs.microsoft.com/rest/api/iothub/digitaltwinmodel/service'
+    - name: Repozytorium modeli cyfrowych bliźniaczych reprezentacji
+      href: 'https://docs.microsoft.com/rest/api/iothub/digitaltwinmodelrepositoryservice/createorupdatemodel'
     - name: Generowanie tokenu zabezpieczającego REST
       href: howto-generate-sas-token.md
 - name: Powiązane

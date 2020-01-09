@@ -1,5 +1,5 @@
 ---
-title: Jak są stosowane rabaty za wystąpienia zarezerwowane w przypadku sygnatur izolowanej usługi Azure App Service
+title: Rabaty za wystąpienia zarezerwowane w przypadku usługi Azure App Service
 description: Dowiedz się, jak są stosowane rabaty za wystąpienia zarezerwowane w przypadku sygnatur izolowanej usługi Azure App Service.
 services: billing
 author: yashesvi
@@ -8,12 +8,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: 2e9f2fd4541621e98bc1d46f23559993eeabe311
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: e31c7b0932684b75b9934dbb4a2bcbc56370d98e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226000"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75388571"
 ---
 # <a name="how-reservation-discounts-apply-to-azure-app-service-isolated-stamps"></a>Jak są stosowane rabaty za wystąpienia zarezerwowane w przypadku sygnatur izolowanej usługi Azure App Service
 
@@ -46,7 +46,7 @@ W poniższych przykładach pokazano, jak w zależności od wdrożenia jest stoso
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Aby dowiedzieć się, jak zarządzać wystąpieniem zarezerwowanym, zobacz temat [Manage Azure Reservations](billing-manage-reserved-vm-instance.md) (Zarządzanie wystąpieniami zarezerwowanymi na platformie Azure).
+- Aby dowiedzieć się, jak zarządzać wystąpieniem zarezerwowanym, zobacz [Zarządzanie rejestracjami platformy Azure](billing-manage-reserved-vm-instance.md).
 - Aby dowiedzieć się więcej na temat wcześniejszego zakupu wydajności rezerwowej w ramach opłaty jednostkowej za korzystanie z usługi App Service w środowisku izolowanym, zobacz temat [Prepay for Azure App Service Isolated Stamp Fee with reserved capacity](billing-prepay-app-service-isolated-stamp.md) (Uiszczanie z góry opłaty jednostkowej za korzystanie z usługi Azure App Service w środowisku izolowanym z wydajnością rezerwową).
 - Aby dowiedzieć się więcej na temat usługi Azure Reservations, zobacz następujące artykuły:
   - [Co to są rezerwacje platformy Azure?](billing-save-compute-costs-reservations.md)

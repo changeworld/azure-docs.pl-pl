@@ -14,7 +14,7 @@
       href: tutorial-create-custom-lab.md
     - name: 2. Dostęp do laboratorium
       href: tutorial-use-custom-lab.md
-- name: Przykłady
+- name: Samples
   items:
     - name: Szablony usługi Resource Manager
       href: 'https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates'
@@ -72,6 +72,8 @@
           href: devtest-lab-auto-startup-vm.md
         - name: Skalowanie laboratorium
           href: devtest-lab-scale-lab.md
+        - name: Włączanie tożsamości zarządzanych dla maszyn wirtualnych laboratorium
+          href: enable-managed-identities-lab-vms.md
         - name: Zarządzanie bazami maszyn wirtualnych
           items:
             - name: Konfigurowanie obrazów z witryny Azure Marketplace

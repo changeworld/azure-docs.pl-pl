@@ -1,21 +1,19 @@
 ---
 title: Samouczek — uruchamianie Azure Functions w zadaniach Azure Stream Analytics
 description: W tym samouczku przedstawiono konfigurowanie usługi Azure Functions jako ujścia danych wyjściowych dla zadań usługi Stream Analytics.
-services: stream-analytics
 author: mamccrea
 ms.service: stream-analytics
 ms.topic: tutorial
 ms.custom: mvc
-ms.workload: data-services
 ms.date: 06/05/2019
 ms.author: mamccrea
-ms.reviewer: jasonh
-ms.openlocfilehash: 189f38c075c5faa91295633d1e4cbde1f7e573a2
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.reviewer: mamccrea
+ms.openlocfilehash: 84df3edcebb1ca9f14a68125ae9793f004e56c4d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707307"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75369324"
 ---
 # <a name="tutorial-run-azure-functions-from-azure-stream-analytics-jobs"></a>Samouczek: uruchamianie Azure Functions z Azure Stream Analytics zadań 
 
@@ -23,7 +21,7 @@ Usługę Azure Functions można uruchomić z usługi Azure Stream Analytics, kon
 
 Usługa Stream Analytics wywołuje usługę Functions za pomocą wyzwalaczy protokołu HTTP. Adapter wyjścia usługi Functions umożliwia użytkownikom połączenie usługi Functions z usługą Stream Analytics, tak aby można było wyzwalać zdarzenia na podstawie zapytań usługi Stream Analytics. 
 
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Tworzenie i uruchamianie zadania Stream Analytics

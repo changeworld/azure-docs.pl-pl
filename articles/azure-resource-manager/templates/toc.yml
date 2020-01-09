@@ -10,10 +10,6 @@
       href: quickstart-create-templates-use-the-portal.md
     - name: Tworzenie szablonów — program VS Code
       href: quickstart-create-templates-use-visual-studio-code.md
-    - name: Tworzenie szablonów — program Visual Studio
-      href: create-visual-studio-deployment-project.md
-    - name: Tworzenie szablonów — IntelliJ IDEA
-      href: create-templates-use-intellij.md
 - name: Samouczki
   items:
     - name: Początkujący
@@ -101,8 +97,9 @@
   items:
     - name: Tworzenie szablonów
       items:
-        - name: Korzystanie z programu VS Code
-          href: use-vs-code-to-create-template.md
+        - name: Struktura pliku szablonu
+          displayName: 'parameters,variables,resources,outputs,condition'
+          href: template-syntax.md
         - name: Pisanie wyrażeń szablonu
           href: template-expressions.md
         - name: Parametry
@@ -134,6 +131,14 @@
           href: deploy-to-subscription.md
         - name: Zasoby na poziomie grupy zarządzania
           href: deploy-to-management-group.md
+    - name: Używanie narzędzi do tworzenia
+      items:
+        - name: VS Code
+          href: use-vs-code-to-create-template.md
+        - name: Visual Studio
+          href: create-visual-studio-deployment-project.md
+        - name: IntelliJ IDEA
+          href: create-templates-use-intellij.md
     - name: Wdrażanie szablonów
       items:
         - name: Wdrażanie — portal
@@ -206,9 +211,6 @@
           href: ../../virtual-machines/windows/troubleshoot-deploy-vm.md
 - name: Dokumentacja
   items:
-    - name: Struktura pliku szablonu
-      displayName: 'parameters,variables,resources,outputs,condition'
-      href: template-syntax.md
     - name: Dokumentacja dotycząca szablonów
       href: /azure/templates/
     - name: Funkcje szablonów

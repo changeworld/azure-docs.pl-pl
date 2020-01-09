@@ -60,7 +60,7 @@
       href: ../azure-resource-manager/resource-manager-keyvault-parameter.md
     - name: Konfigurowanie rotacji i inspekcji kluczy
       href: key-vault-key-rotation-log-monitoring.md
-- name: Przykłady
+- name: Samples
   items:
     - name: Przykłady kodu
       href: 'https://azure.microsoft.com/resources/samples/?service=key-vault'
@@ -68,7 +68,7 @@
   items:
     - name: Podstawowe pojęcia
       href: basic-concepts.md
-    - name: Bezpieczeństwo
+    - name: Zabezpieczenia
       items:
         - name: Omówienie zabezpieczeń
           href: overview-security.md
@@ -102,11 +102,11 @@
           href: create-certificate-scenarios.md
 - name: Przewodniki z instrukcjami
   items:
-    - name: Bezpieczeństwo
+    - name: Zabezpieczenia
       items:
         - name: Zalecenia
           href: security-recommendations.md
-    - name: Authentication
+    - name: Uwierzytelnianie
       items:
         - name: Używanie tożsamości zarządzanej usługi App Service
           href: managed-identity.md
@@ -140,6 +140,8 @@
           href: /java/azure/spring-framework/configure-spring-boot-starter-java-app-with-azure-key-vault
 - name: Dokumentacja
   items:
+    - name: Kody błędów REST usługi Key Vault
+      href: rest-error-codes.md
     - name: Azure PowerShell
       href: '/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault'
     - name: Interfejs wiersza polecenia platformy Azure

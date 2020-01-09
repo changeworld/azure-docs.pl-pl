@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 42378c4377057902937b718555489636bc5dcbaa
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.openlocfilehash: 74375fdb5bf8d571cbdbc778c3c6e7b7b93f59ca
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74900012"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75368010"
 ---
 # <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Azure AD B2C: korzystanie z usługi Azure AD interfejs API programu Graph
 
@@ -29,9 +29,6 @@ W przypadku dzierżawców B2C istnieją dwa podstawowe tryby komunikacji z inter
 * W przypadku **zautomatyzowanych**, ciągłych zadań należy używać określonego typu konta usługi z uprawnieniami do wykonywania zadań zarządzania. W usłudze Azure AD można to zrobić przez zarejestrowanie aplikacji i uwierzytelnienie w usłudze Azure AD. Jest to realizowane przy użyciu *identyfikatora aplikacji* , który używa [przyznania poświadczeń klienta OAuth 2,0](../active-directory/develop/service-to-service.md). W takim przypadku aplikacja działa jako sama, a nie jako użytkownik, aby wywołać interfejs API programu Graph.
 
 W tym artykule dowiesz się, jak wykonać zautomatyzowany przypadek użycia. Utworzysz `B2CGraphClient` .NET 4,5, który wykonuje operacje tworzenia, odczytu, aktualizacji i usuwania (CRUD) użytkownika. Klient będzie miał interfejs wiersza polecenia (CLI) systemu Windows, który umożliwia wywoływanie różnych metod. Jednak kod jest zapisywana, aby zachować zachowanie w nieinteraktywny, zautomatyzowany sposób.
-
->[!IMPORTANT]
-> Aby zarządzać użytkownikami w katalogu Azure AD B2C, **należy** użyć [interfejs API programu Graph usługi Azure AD](../active-directory/develop/active-directory-graph-api-quickstart.md) . Interfejs API programu Graph usługi Azure AD różni się od interfejsu API Microsoft Graph. Dowiedz się więcej w tym wpisie na blogu MSDN: [Microsoft Graph lub Graf usługi Azure AD](https://blogs.msdn.microsoft.com/aadgraphteam/2016/07/08/microsoft-graph-or-azure-ad-graph/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -63,8 +60,9 @@ Przyznane wcześniej uprawnienie *Odczyt i zapis danych katalogu* **nie obejmuje
 
 Jeśli chcesz, aby aplikacja mogła usuwać użytkowników lub aktualizować hasła, musisz przyznać mu rolę *administratora* .
 
-1. Zaloguj się do [Azure Portal](https://portal.azure.com) i przejdź do katalogu, który zawiera dzierżawę Azure AD B2C.
-1. W menu po lewej stronie wybierz pozycję **Azure AD B2C** . Lub wybierz pozycję **wszystkie usługi** , a następnie wyszukaj i wybierz **Azure AD B2C**.
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Na pasku narzędzi portalu wybierz ikonę **katalog i subskrypcję** , a następnie wybierz katalog zawierający dzierżawę Azure AD B2C.
+1. W Azure Portal Wyszukaj i wybierz pozycję **Azure AD B2C**.
 1. W obszarze **Zarządzanie**wybierz pozycję **role i Administratorzy**.
 1. Wybierz rolę **administratora użytkowników** .
 1. Wybierz pozycję **Dodaj przypisanie**.
@@ -290,7 +288,7 @@ B2C Get-User <user-object-id>
 B2C Get-User <filter-query-expression>
 ```
 
-Na przykład:
+Przykład:
 
 ```cmd
 B2C Get-User 2bcf1067-90b6-4253-9991-7f16449c2d91
@@ -332,7 +330,7 @@ B2C Get-B2C-Application
 B2C Get-Extension-Attribute <object-id-in-the-output-of-the-above-command>
 ```
 
-Dane wyjściowe ujawniają szczegóły każdego z atrybutów niestandardowych. Na przykład:
+Dane wyjściowe ujawniają szczegóły każdego z atrybutów niestandardowych. Przykład:
 
 ```json
 {

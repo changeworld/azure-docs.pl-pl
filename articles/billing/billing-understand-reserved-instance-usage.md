@@ -1,5 +1,5 @@
 ---
-title: Użycie rezerwacji platformy Azure dla pojedynczej subskrypcji z płatnością zgodnie z rzeczywistym użyciem
+title: Użycie rezerwacji platformy Azure dla pojedynczej subskrypcji
 description: Dowiedz się, jak odczytywać dane dotyczące użycia, aby zrozumieć, w jaki sposób zastosowana została rezerwacja platformy Azure dla indywidualnej subskrypcji z płatnością zgodnie z rzeczywistym użyciem.
 author: bandersmsft
 manager: yashr
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: 0b578436a118539517d2d515717f2bdd97612d6e
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 991afd5a91ef5f5586acd624c03babc38b5c1960
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74225787"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449142"
 ---
 # <a name="understand-azure-reservation-usage-for-your-individual-subscription-with-pay-as-you-go-rates-subscription"></a>Informacje na temat użycia rezerwacji platformy Azure dla indywidualnej subskrypcji z płatnością zgodnie z rzeczywistym użyciem
 
@@ -102,6 +102,6 @@ Aby dowiedzieć się więcej na temat rezerwacji platformy Azure, zobacz następ
 - [Prepay for Virtual Machines with Azure Reserved VM Instances (Opłacanie maszyn wirtualnych z góry przy użyciu usługi Azure Reserved VM Instances)](../virtual-machines/windows/prepay-reserved-vm-instances.md)
 - [Prepay for SQL Database compute resources with Azure SQL Database reserved capacity (Opłacanie zasobów obliczeniowych usługi SQL Database z góry przy użyciu zarezerwowanej pojemności usługi Azure SQL Database)](../sql-database/sql-database-reserved-capacity.md)
 - [Zarządzanie usługą Azure Reservations](billing-manage-reserved-vm-instance.md)
-- [Omówienie stosowania rabatu na rezerwacje](billing-understand-vm-reservation-charges.md)
+- [Jak jest stosowany rabat na rezerwacje](billing-understand-vm-reservation-charges.md)
 - [Understand reservation usage for your Enterprise enrollment (Informacje na temat użycia wystąpień zarezerwowanych w przypadku rejestracji Enterprise)](billing-understand-reserved-instance-usage-ea.md)
 - [Windows software costs not included with Reservations (Koszty oprogramowania systemu Windows nieuwzględniane w przypadku rezerwacji)](billing-reserved-instance-windows-software-costs.md)

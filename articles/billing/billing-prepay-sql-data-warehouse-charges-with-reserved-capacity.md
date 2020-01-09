@@ -1,5 +1,5 @@
 ---
-title: Zmniejszenie opłat za usługę SQL Data Warehouse dzięki zarezerwowanej pojemności platformy Azure
+title: Oszczędzanie na opłatach za usługę SQL Data Warehouse dzięki zarezerwowanej pojemności platformy Azure
 description: Dowiedz się, w jaki sposób zaoszczędzić na opłatach za usługę SQL Data Warehouse w ramach pojemności zarezerwowanej.
 services: billing
 author: yashesvi
@@ -8,12 +8,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: banders
-ms.openlocfilehash: 75e008a6a19baacec40a809530e3a1f624a33f2b
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: f6a6b37a8250fd794e7810f7da5a567e14c8bc20
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74223620"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75388724"
 ---
 # <a name="save-costs-for-sql-data-warehouse-charges-with-reserved-capacity"></a>Zmniejszenie opłat za usługę SQL Data Warehouse dzięki zarezerwowanej pojemności
 
@@ -61,7 +61,7 @@ Załóżmy na przykład, że całkowite zużycie usługi SQL Data Warehouse jest
 8. Wybierz pozycję **Kup**.
 9. Wybierz pozycję **Wyświetl tę rezerwację**, aby wyświetlić stan zakupu.
 
-## <a name="cancel-exchange-or-refund-reservations"></a>Anulowanie, wymiana lub zwrot kosztów rezerwacji
+## <a name="cancel-exchange-or-refund-reservations"></a>Anulowanie, wymiana lub zwrot rezerwacji
 
 Rezerwacje można anulować, wymieniać lub zwracać, jednak obowiązują przy tym pewne ograniczenia. Aby uzyskać więcej informacji, zobacz temat [Self-service exchanges and refunds for Azure Reservations](billing-azure-reservations-self-service-exchange-and-refund.md) (Samoobsługowe wymiany i zwroty kosztów dla rezerwacji platformy Azure).
 

@@ -47,6 +47,8 @@
       href: manage-feature-flags.md
     - name: Używanie odwołań do magazynu Key Vault na platformie ASP.NET Core
       href: use-key-vault-references-dotnet-core.md
+    - name: Używanie odwołań do magazynu Key Vault w środowisku Spring Boot
+      href: use-key-vault-references-spring-boot.md
     - name: Integracja z potokiem ciągłej integracji/ciągłego wdrażania
       href: integrate-ci-cd-pipeline.md
 - name: Samples

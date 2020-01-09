@@ -32,6 +32,8 @@
       href: ingest-data-overview.md
     - name: Omówienie wizualizacji danych
       href: viz-overview.md
+    - name: Omówienie zabezpieczeń
+      href: security.md
 - name: Przewodniki z instrukcjami
   items:
     - name: Tworzenie klastra i bazy danych
@@ -50,32 +52,32 @@
       items:
         - name: Centrum zdarzeń
           items:
-            - name: Portal Azure
+            - name: Azure Portal
               href: ingest-data-event-hub.md
-            - name: Python
-              href: data-connection-event-hub-python.md
             - name: 'C#'
               href: data-connection-event-hub-csharp.md
+            - name: Python
+              href: data-connection-event-hub-python.md
             - name: Szablon usługi Azure Resource Manager
               href: data-connection-event-hub-resource-manager.md
         - name: Event Grid
           items:
-            - name: Portal Azure
+            - name: Azure Portal
               href: ingest-data-event-grid.md
-            - name: Python
-              href: data-connection-event-grid-python.md
             - name: 'C#'
               href: data-connection-event-grid-csharp.md
+            - name: Python
+              href: data-connection-event-grid-python.md
             - name: Szablon usługi Azure Resource Manager
               href: data-connection-event-grid-resource-manager.md
         - name: Usługa IoT Hub
           items:
-            - name: Portal Azure
+            - name: Azure Portal
               href: ingest-data-iot-hub.md
-            - name: Python
-              href: data-connection-iot-hub-python.md
             - name: 'C#'
               href: data-connection-iot-hub-csharp.md
+            - name: Python
+              href: data-connection-iot-hub-python.md
             - name: Szablon usługi Azure Resource Manager
               href: data-connection-iot-hub-resource-manager.md
         - name: Pozyskiwanie jednym kliknięciem
@@ -120,7 +122,7 @@
       items:
         - name: Power BI
           items:
-            - name: Najlepsze praktyki
+            - name: Najlepsze rozwiązania
               href: power-bi-best-practices.md
             - name: łącznik
               href: power-bi-connector.md
@@ -144,6 +146,18 @@
           href: sisense.md
         - name: Redash
           href: redash.md
+    - name: Bezpieczeństwo
+      items:
+        - name: Zarządzanie zabezpieczeniami klastra
+          href: manage-cluster-security.md
+        - name: Konfigurowanie tożsamości zarządzanych
+          href: managed-identities.md
+        - name: Konfigurowanie kluczy zarządzanych przez klienta
+          items:
+            - name: 'C#'
+              href: customer-managed-keys-csharp.md
+            - name: Szablon usługi Azure Resource Manager
+              href: customer-managed-keys-resource-manager.md
     - name: Zarządzanie
       items:
         - name: Klaster
@@ -154,11 +168,9 @@
               href: manage-cluster-horizontal-scaling.md
             - name: Zarządzanie skalowaniem klastra w pionie
               href: manage-cluster-vertical-scaling.md
-            - name: Zarządzanie zabezpieczeniami klastra
-              href: manage-cluster-security.md
             - name: Sprawdzanie kondycji klastra
               href: check-cluster-health.md
-        - name: Database (Baza danych)
+        - name: baza danych
           items:
             - name: Bazy danych obserwujących
               href: follower.md
@@ -220,7 +232,7 @@
       href: /azure/kusto/management/
     - name: Interfejsy API
       href: /azure/kusto/api/
-    - name: Narzędzia
+    - name: narzędzia
       href: /azure/kusto/tools/
     - name: Pojęcia
       href: /azure/kusto/concepts/

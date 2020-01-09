@@ -1,19 +1,18 @@
 ---
 title: Używanie danych referencyjnych do wyszukiwania w Azure Stream Analytics
 description: W tym artykule opisano sposób używania danych referencyjnych do wyszukiwania lub skorelowania danych w projekcie zapytania Azure Stream Analytics zadania.
-services: stream-analytics
 author: jseb225
 ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/8/2019
-ms.openlocfilehash: d058fdd48b8a271c8a2db7d327267de053c02c44
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: b3808524706b13761dd8eccffa301c602d08f481
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244860"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75369568"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>Używanie danych referencyjnych do wyszukiwania w Stream Analytics
 
@@ -34,12 +33,12 @@ Aby skonfigurować dane referencyjne, musisz najpierw utworzyć dane wejściowe 
 |Alias danych wejściowych   | Przyjazna nazwa, która zostanie użyta w zapytaniu zadania, aby odwołać się do tego danych wejściowych.   |
 |Konto magazynu   | Nazwa konta magazynu, w którym znajdują się obiekty blob. Jeśli znajduje się w tej samej subskrypcji co zadanie Stream Analytics, możesz wybrać ją z listy rozwijanej.   |
 |Klucz konta magazynu   | Klucz tajny skojarzony z kontem magazynu. Ta wartość zostanie wypełniona automatycznie, jeśli konto magazynu znajduje się w tej samej subskrypcji co zadanie Stream Analytics.   |
-|Kontener magazynu   | Kontenery zapewniają logiczne grupowanie obiektów BLOB przechowywanych w Blob service Microsoft Azure. Po przekazaniu obiektu BLOB do Blob service należy określić kontener dla tego obiektu BLOB.   |
-|Wzorzec ścieżki   | Ścieżka używana do lokalizowania obiektów BLOB w określonym kontenerze. W ścieżce możesz określić jedno lub więcej wystąpień następujących dwóch zmiennych:<BR>{Date}, {Time}<BR>Przykład 1: produkty/{Date}/{Time}/Product-List. csv<BR>Przykład 2: produkty/{Date}/Product-List. csv<BR>Przykład 3: Product-List. csv<BR><br> Jeśli obiekt BLOB nie istnieje w określonej ścieżce, zadanie Stream Analytics będzie oczekiwać, że obiekt BLOB stanie się nieokreślony.   |
+|Kontener magazynu   | Kontenery umożliwiają logiczne grupowanie obiektów blob przechowywanych w usłudze Microsoft Azure Blob. Podczas przekazywania obiektu blob do usługi obiektów Blob, należy określić kontener dla tego obiektu blob.   |
+|Wzorzec ścieżki   | Ścieżka używana do lokalizowania obiektów BLOB w określonym kontenerze. W ścieżce możesz określić jedno lub więcej wystąpień następujących dwóch zmiennych:<BR>{date}, {time}<BR>Przykład 1: produkty/{Date}/{Time}/Product-List. csv<BR>Przykład 2: produkty/{Date}/Product-List. csv<BR>Przykład 3: Product-List. csv<BR><br> Jeśli obiekt BLOB nie istnieje w określonej ścieżce, zadanie Stream Analytics będzie oczekiwać, że obiekt BLOB stanie się nieokreślony.   |
 |Format daty [opcjonalnie]   | Jeśli używasz {Date} w określonym wzorcu ścieżki, możesz wybrać format daty, w którym obiekty blob są zorganizowane z listy rozwijanej obsługiwanych formatów.<BR>Przykład: RRRR/MM/DD, MM/DD/RRRR itd.   |
 |Format czasu [opcjonalnie]   | Jeśli użyto {Time} w określonym wzorcu ścieżki, można wybrać format czasu, w którym obiekty blob są zorganizowane z listy rozwijanej obsługiwanych formatów.<BR>Przykład: gg, HH/mm lub HH-mm.  |
 |Format serializacji zdarzeń   | Aby upewnić się, że zapytania działają w oczekiwany sposób, Stream Analytics należy wiedzieć, który format serializacji jest używany w przypadku przychodzących strumieni danych. W przypadku danych referencyjnych obsługiwane formaty to CSV i JSON.  |
-|Encoding   | W tym momencie jedynym obsługiwanym formatem kodowania jest UTF-8.  |
+|Encoding   | UTF-8 to jedyny obsługiwany obecnie format kodowania.  |
 
 ### <a name="static-reference-data"></a>Statyczne dane referencyjne
 
@@ -47,16 +46,16 @@ Jeśli dane referencyjne nie powinny być zmieniane, obsługa statycznych danych
 
 ### <a name="generate-reference-data-on-a-schedule"></a>Generuj dane referencyjne według harmonogramu
 
-Jeśli dane referencyjne są wolnie zmienianym zestawem danych, to obsługa odświeżania danych referencyjnych jest włączana przez określenie wzorca ścieżki w konfiguracji wejściowej przy użyciu tokenów podstawiania {date} i {Time}. Stream Analytics pobiera zaktualizowane definicje danych referencyjnych na podstawie tego wzorca ścieżki. Na przykład wzorzec `sample/{date}/{time}/products.csv` z formatem daty **"rrrr-mm-dd"** i formatem czasu **"gg-mm"** powoduje, że Stream Analytics do pobrania zaktualizowanego obiektu BLOB `sample/2015-04-16/17-30/products.csv` o godzinie 5:30 PM w 16 kwietnia 2015 strefie czasowej UTC.
+Jeśli dane referencyjne są wolnie zmienianym zestawem danych, to obsługa odświeżania danych referencyjnych jest włączana przez określenie wzorca ścieżki w konfiguracji wejściowej przy użyciu tokenów podstawiania {date} i {Time}. Stream Analytics pobiera zaktualizowane definicje danych referencyjnych na podstawie tego wzorca ścieżki. Na przykład wzorzec `sample/{date}/{time}/products.csv` z formatem daty **"rrrr-mm-dd"** i formatem czasu **"gg-mm"** instruuje Stream Analytics o pobranie zaktualizowanego obiektu BLOB `sample/2015-04-16/17-30/products.csv` o godzinie 5:30 PM w 16 kwietnia 2015 strefie czasowej UTC.
 
 Azure Stream Analytics automatycznie skanuje w poszukiwaniu odświeżonych obiektów BLOB danych referencyjnych w ciągu jednej minuty. Jeśli obiekt BLOB z sygnaturą czasową 10:30:00 jest przekazywany z niewielkim opóźnieniem (na przykład 10:30:30), zobaczysz małe opóźnienie w Stream Analytics zadania odwołującego się do tego obiektu BLOB. Aby uniknąć takich scenariuszy, zaleca się przekazanie obiektu BLOB wcześniej niż docelowy czas obowiązywania (10:30:00 w tym przykładzie), aby umożliwić Stream Analytics zadanie wystarczającą ilość czasu na odnalezienie i załadowanie go w pamięci oraz wykonanie operacji. 
 
 > [!NOTE]
-> Obecnie Stream Analytics zadania wyszukują odświeżanie obiektów BLOB tylko wtedy, gdy komputer przekroczy czas zakodowany w nazwie obiektu BLOB. Na przykład zadanie będzie wyglądać `sample/2015-04-16/17-30/products.csv` najszybciej, jak to możliwe, ale nie wcześniej niż 5:30 PM, 16 kwietnia 2015, strefa czasowa czasu UTC. *Nigdy nie* będzie szukać obiektu BLOB z zakodowanym czasem wcześniejszym niż ostatni wykryty.
+> Obecnie Stream Analytics zadania wyszukują odświeżanie obiektów BLOB tylko wtedy, gdy komputer przekroczy czas zakodowany w nazwie obiektu BLOB. Na przykład zadanie będzie wyglądało `sample/2015-04-16/17-30/products.csv` najszybciej, jak to możliwe, ale nie wcześniej niż 5:30 PM 2015, 16 kwietnia, strefa czasowa czasu UTC. *Nigdy nie* będzie szukać obiektu BLOB z zakodowanym czasem wcześniejszym niż ostatni wykryty.
 > 
-> Na przykład, gdy zadanie odnajdzie obiekt BLOB `sample/2015-04-16/17-30/products.csv` zignoruje wszystkie pliki z zakodowaną datą wcześniejszą niż 5:30 PM kwietnia, 2015, więc jeśli zostanie utworzony obiekt BLOB o późnej nabycie `sample/2015-04-16/17-25/products.csv` w tym samym kontenerze, zadanie nie będzie go używać.
+> Na przykład po znalezieniu obiektu BLOB przez zadanie `sample/2015-04-16/17-30/products.csv` zignoruje wszystkie pliki z zakodowaną datą wcześniejszą niż 5:30 PM kwietnia, 2015, tak aby w przypadku osiągnięcia opóźnionego `sample/2015-04-16/17-25/products.csv` obiektu BLOB utworzonego w tym samym kontenerze zadanie nie będzie używane.
 > 
-> Podobnie, jeśli wartość `sample/2015-04-16/17-30/products.csv` jest generowana tylko o godzinie 10:03 2015, 16 kwietnia, ale w kontenerze nie występuje obiekt BLOB z wcześniejszą datą, zadanie użyje tego pliku, rozpoczynając od 10:03 od 1 kwietnia 2015 16.
+> Podobnie, jeśli `sample/2015-04-16/17-30/products.csv` jest tworzony tylko o godzinie 10:03 2015, 16 kwietnia, ale w kontenerze nie występuje obiekt BLOB z wcześniejszą datą, zadanie użyje tego pliku, rozpoczynając od 10:03 od dnia 2015 16.
 > 
 > Wyjątkiem jest to, kiedy zadanie musi ponownie przetworzyć dane w czasie lub podczas pierwszego uruchomienia zadania. W czasie uruchamiania zadanie szuka najnowszego obiektu BLOB wygenerowanego przed określonym czasem rozpoczęcia zadania. W tym celu upewnij się, że podczas uruchamiania zadania istnieje zestaw danych referencyjnych, które **nie są puste** . Jeśli nie można go znaleźć, zadanie Wyświetla następującą diagnostykę: `Initializing input without a valid reference data blob for UTC time <start time>`.
 
@@ -72,7 +71,7 @@ Azure Stream Analytics automatycznie skanuje w poszukiwaniu odświeżonych obiek
 3. Obiekty BLOB danych referencyjnych **nie** są uporządkowane według czasu "Ostatnia modyfikacja" obiektu BLOB, ale tylko według czasu i daty określonej w nazwie obiektu BLOB przy użyciu podstawiania {date} i {Time}.
 3. Aby uniknąć konieczności wyświetlania listy dużej liczby obiektów blob, należy rozważyć usunięcie bardzo starych obiektów blob, dla których przetwarzanie nie zostanie już wykonane. Należy pamiętać, że w przypadku programu ASA może wystąpić konieczność ponownego przetworzenia niewielkiej ilości w niektórych scenariuszach, takich jak ponowne uruchomienie.
 
-## <a name="azure-sql-database"></a>Azure SQL Database
+## <a name="azure-sql-database"></a>Baza danych SQL Azure
 
 Dane referencyjne Azure SQL Database są pobierane przez zadanie Stream Analytics i są przechowywane jako migawka w pamięci do przetwarzania. Migawka danych referencyjnych jest również przechowywana w kontenerze na koncie magazynu określonym w ustawieniach konfiguracji. Kontener jest tworzony przy użyciu autostartu, gdy zadanie zostanie uruchomione. Jeśli zadanie zostanie zatrzymane lub przejdzie do stanu niepowodzenia, tworzone przez siebie kontenery zostaną usunięte po ponownym uruchomieniu zadania.  
 
@@ -92,7 +91,7 @@ Można użyć [Azure SQL Database wystąpienia zarządzanego](https://docs.micro
 |---------|---------|
 |Alias danych wejściowych|Przyjazna nazwa, która zostanie użyta w zapytaniu zadania, aby odwołać się do tego danych wejściowych.|
 |Subskrypcja|Wybierz subskrypcję|
-|Database (Baza danych)|Azure SQL Database, który zawiera dane referencyjne. Dla Azure SQL Database wystąpienia zarządzanego wymagane jest określenie portu 3342. Na przykład *sampleserver. Public. Database. Windows. NET, 3342*|
+|baza danych|Azure SQL Database, który zawiera dane referencyjne. Dla Azure SQL Database wystąpienia zarządzanego wymagane jest określenie portu 3342. Na przykład *sampleserver. Public. Database. Windows. NET, 3342*|
 |Nazwa użytkownika|Nazwa użytkownika skojarzona z Azure SQL Database.|
 |Hasło|Hasło skojarzone z Twoim Azure SQL Database.|
 |Odświeżaj okresowo|Ta opcja pozwala wybrać częstotliwość odświeżania. Wybranie opcji "włączone" pozwoli określić częstotliwość odświeżania w DD: HH: MM.|
@@ -115,7 +114,7 @@ Obsługa kompresji nie jest dostępna dla danych referencyjnych.
 
 ## <a name="next-steps"></a>Następne kroki
 > [!div class="nextstepaction"]
-> [Szybki Start: Tworzenie zadania Stream Analytics przy użyciu Azure Portal](stream-analytics-quick-create-portal.md)
+> [Szybki Start: Tworzenie zadania usługi Stream Analytics przy użyciu witryny Azure portal](stream-analytics-quick-create-portal.md)
 
 <!--Link references-->
 [stream.analytics.developer.guide]: ../stream-analytics-developer-guide.md
