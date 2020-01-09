@@ -1,5 +1,5 @@
 ---
-title: Protokoły autoryzacji obsługiwane przez platformę tożsamości firmy Microsoft | Azure
+title: Protokoły OAuth 2,0 i OpenID Connect Connect — platforma tożsamości firmy Microsoft | Azure
 description: Przewodnik dotyczący protokołów uwierzytelniania OAuth 2,0 i OpenID Connect, które są obsługiwane przez punkt końcowy platformy tożsamości firmy Microsoft.
 services: active-directory
 author: rwike77
@@ -14,14 +14,14 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f04ba26f592c02814412493cf4811e30aefa6ee3
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 7b25f1753e6dcb415927ee6278c36b3b179dd353
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74918292"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424733"
 ---
-# <a name="microsoft-identity-platform-protocols"></a>Protokoły Microsoft Identity platform
+# <a name="oauth-20-and-openid-connect-protocols-on-the-microsoft-identity-platform"></a>Protokoły uwierzytelniania OAuth 2,0 i OpenID Connect na platformie tożsamości firmy Microsoft
 
 Punkt końcowy platformy tożsamości firmy Microsoft dla tożsamości jako usługi z użyciem standardowych protokołów branżowych, OpenID Connect Connect i OAuth 2,0. Mimo że usługa jest zgodna ze standardami, mogą istnieć drobne różnice między dwoma implementacjami tych protokołów. Informacje w tym miejscu będą przydatne w przypadku wybrania pisania kodu przez bezpośrednie wysłanie i obsługę żądań HTTP lub użycie biblioteki typu open-source innej firmy zamiast korzystania z jednej z naszych [bibliotek typu open source](reference-v2-libraries.md).
 

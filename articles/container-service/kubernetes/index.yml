@@ -2,7 +2,6 @@
 documentType: LandingData
 title: Dokumentacja usługi Azure Container Service z rozwiązaniem Kubernetes
 metadata:
-  document_id: null
   title: Dokumentacja usługi Azure Container Service z rozwiązaniem Kubernetes — samouczki i dokumentacja interfejsu API | Microsoft Docs
   meta.description: 'Azure Container Service allows you to quickly deploy a production ready Kubernetes cluster. Learn how to use Azure Container Service in concert with Kubernetes with these quickstarts, tutorials, and samples.'
   services: container-service
@@ -40,7 +39,7 @@ sections:
           - html: <a href="/azure/container-service/kubernetes/container-service-tutorial-kubernetes-scale">Skalowanie aplikacji i infrastruktury rozwiązania Kubernetes</a>
           - html: <a href="/azure/container-service/kubernetes/container-service-tutorial-kubernetes-app-update">Aktualizowanie aplikacji uruchomionej w rozwiązaniu Kubernetes</a>
           - html: <a href="/azure/container-service/kubernetes/container-service-tutorial-kubernetes-monitor">Monitorowanie rozwiązania Kubernetes za pomocą usługi Log Analytics</a>
-  - title: Przykłady
+  - title: Samples
     items:
       - type: list
         style: unordered

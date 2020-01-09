@@ -1,21 +1,21 @@
 ---
-title: Wizualizowanie anomalii przy użyciu wykrywania wsadowego i usługi Power BI
+title: 'Samouczek: wizualizacja anomalii przy użyciu wykrywania partii i Power BI'
 titleSuffix: Azure Cognitive Services
-description: Użyj interfejsu API wykrywania anomalii i Power BI, aby wizualizować anomalie w danych szeregów czasowych.
+description: Dowiedz się, jak używać interfejsu API wykrywania anomalii i Power BI, aby wizualizować anomalie w danych szeregów czasowych.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: tutorial
-ms.date: 10/01/2019
+ms.date: 12/19/2019
 ms.author: aahi
-ms.openlocfilehash: fa78e737cd863d19e294c5001dfd27b07760521f
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: 1d1f71ed56138f2c799c7410508c0bc4899e7887
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71840864"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448847"
 ---
 # <a name="tutorial-visualize-anomalies-using-batch-detection-and-power-bi"></a>Samouczek: wizualizacja anomalii przy użyciu wykrywania partii i Power BI
 
@@ -68,7 +68,7 @@ Upewnij się, że nowe zapytanie jest zaznaczone, a następnie kliknij przycisk 
 
 ![Obraz przycisku "Edytor zaawansowany" w Power BI](../media/tutorials/advanced-editor-screen.png)
 
-W Edytor zaawansowany Użyj poniższego fragmentu Power Query M, aby wyodrębnić kolumny z tabeli i wysłać je do interfejsu API. Następnie zapytanie utworzy tabelę z odpowiedzi JSON i zwróci ją. Zastąp zmienną `apiKey` prawidłowym kluczem interfejsu API wykrywania anomalii i `endpoint` z punktem końcowym. Po wprowadzeniu zapytania do Edytor zaawansowany kliknij przycisk **gotowe**.
+W Edytor zaawansowany Użyj poniższego fragmentu Power Query M, aby wyodrębnić kolumny z tabeli i wysłać je do interfejsu API. Następnie zapytanie utworzy tabelę z odpowiedzi JSON i zwróci ją. Zastąp zmienną `apiKey` prawidłowym kluczem interfejsu API wykrywania anomalii, a `endpoint` z punktem końcowym. Po wprowadzeniu zapytania do Edytor zaawansowany kliknij przycisk **gotowe**.
 
 ```M
 (table as table) => let
@@ -160,7 +160,7 @@ Po prawej stronie okna Power BI, poniżej okienka **pola** , kliknij prawym przy
 
 ![Obraz nowego ekranu szybkiej miary](../media/tutorials/new-quick-measure.png)
 
-Na wyświetlonym ekranie wybierz pozycję **przefiltrowana wartość** jako obliczenie. Ustaw **wartość podstawową** na `Sum of Value`. Następnie przeciągnij `IsAnomaly` z **wywoływanych pól funkcji** , aby **przefiltrować**. Wybierz `True` z menu rozwijanego **Filtr** .
+Na wyświetlonym ekranie wybierz pozycję **przefiltrowana wartość** jako obliczenie. Ustaw **wartość podstawową** na `Sum of Value`. Następnie przeciągnij `IsAnomaly` z pól **wywołanych funkcji** , aby **przefiltrować**. Wybierz `True` z menu rozwijanego **Filtr** .
 
 ![Obraz nowego ekranu szybkiej miary](../media/tutorials/new-quick-measure-2.png)
 

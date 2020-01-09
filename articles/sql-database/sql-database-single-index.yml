@@ -2,7 +2,6 @@
 documentType: LandingData
 title: 'Usługa Azure SQL Database: Pojedyncza baza danych'
 metadata:
-  document_id: 36d89c48-3646-380e-34a0-ae3ac62e2641
   title: Dokumentacja — pojedyncza baza danych
   meta.description: Learn how to use Azure SQL databases.
   services: sql-database
@@ -72,7 +71,7 @@ sections:
         columns:
           - image:
               src: media/index/portal.svg
-            title: Portal Azure
+            title: Azure Portal
           - image:
               src: media/index/cli.svg
             title: Interfejs wiersza polecenia platformy Azure
@@ -118,7 +117,7 @@ sections:
           - html: <a href="/azure/sql-database/sql-database-security-tutorial">Zabezpieczanie bazy danych SQL</a>.
           - html: Globalne dystrybuowanie danych przy użyciu <a href="/azure/sql-database/sql-database-implement-geo-distributed-database">rozproszonej geograficznie bazy danych</a>.
           - html: 'Znajdź więcej <a href="sql-database-howto-single-database.md">przewodników z instrukcjami</a>, które ułatwią skonfigurowanie bazy danych.'
-  - title: Przykłady
+  - title: Samples
     items:
       - type: paragraph
         text: Znajdowanie skryptów umożliwiających zarządzanie typowymi zadaniami.

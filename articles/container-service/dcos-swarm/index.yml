@@ -2,7 +2,6 @@
 documentType: LandingData
 title: Dokumentacja usługi Azure Container Service z systemem DC/OS i narzędziem Swarm
 metadata:
-  document_id: null
   title: Dokumentacja usługi Azure Container Service z systemem DC/OS i narzędziem Swarm — samouczki i dokumentacja interfejsu API | Microsoft Docs
   meta.description: 'Azure Container Service allows you to quickly deploy a production ready DC/OS or Docker Swarm cluster. Learn how to use Azure Container Service with these quickstarts, tutorials, and samples.'
   services: container-service
@@ -41,7 +40,7 @@ sections:
           - html: <a href="/azure/container-service/container-service-load-balancing">Load balance containers in an Azure Container Service DC/OS cluster (Równoważenie obciążenia kontenerów w klastrze DC/OS usługi Azure Container Service)</a>
           - html: <a href="/azure/container-service/container-service-dcos-fileshare">Create and mount a file share to a DC/OS cluster (Tworzenie udziału plików i instalowanie go w klastrze DC/OS)</a>
           - html: <a href="/azure/container-service/container-service-dcos-acr">Use Azure Container Registry with a DC/OS cluster to deploy your application (Wdrażanie aplikacji przy użyciu usługi Azure Container Registry z klastrem DC/OS)</a>
-  - title: Przykłady
+  - title: Samples
     items:
       - type: list
         style: unordered

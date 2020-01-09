@@ -6,15 +6,15 @@ description: Azure Monitor może zbierać różne źródła jako dane dziennika 
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: hub-page
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 01/29/2019
-ms.openlocfilehash: 407e18008c947f95204ea073db31b5f2279a5a4c
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 903644b9e2f23e7bab4af2dbda0a07039ca3399a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597322"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75406167"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -103,8 +103,8 @@ ms.locfileid: "72597322"
                                                         </p>
                                                         <br>
                                                         <h3>Źródła danych</h3>
-                                                        <p>
-                                                            <a href="/azure/azure-monitor/platform/data-sources">Overview<br/>
+                                                        <p>Przegląd 
+                                                            <a href="/azure/azure-monitor/platform/data-sources"><br/>
                                                             <a href="/azure/azure-monitor/platform/data-sources-windows-events">Zdarzenia systemu Windows</a><br/>
                                                             <a href="/azure/azure-monitor/platform/data-sources-performance-counters">Liczniki wydajności systemów Windows i Linux</a><br/>
                                                             <a href="/azure/azure-monitor/platform/data-sources-linux-applications">Wydajność aplikacji dla systemu Linux</a><br/>
@@ -145,8 +145,8 @@ ms.locfileid: "72597322"
                                                         <p>
                                                             <a href="/azure/azure-monitor/platform/alerts-overview">Przegląd alertów</a><br/>
                                                             <a href="/azure/azure-monitor/platform/autoscale-overview">Skalowanie automatyczne</a><br/>
-                                                            <a href="/azure/azure-monitor/platform/alerts-unified-log">Alerty dziennika</a><br/>
-                                                            <a href="/azure/azure-monitor/platform/alerts-activity-log">Alerty dziennika aktywności</a><br/>
+                                                            <a href="/azure/azure-monitor/platform/alerts-unified-log">Alerty dotyczące dzienników</a><br/>
+                                                            <a href="/azure/azure-monitor/platform/alerts-activity-log">Alerty dotyczące dzienników aktywności</a><br/>
                                                             <a href="/azure/azure-monitor/platform/action-groups">Grupy akcji</a><br/>
                                                         </p>
                                                     </div>

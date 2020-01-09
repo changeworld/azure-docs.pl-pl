@@ -161,6 +161,8 @@
           href: how-to-deploy-monitor.md
         - name: Interfejs wiersza polecenia platformy Azure
           href: how-to-deploy-monitor-cli.md
+        - name: Visual Studio Code
+          href: how-to-deploy-monitor-vscode.md
     - name: Używanie urządzeń IoT Edge jako bram
       items:
         - name: Konfigurowanie przezroczystej bramy

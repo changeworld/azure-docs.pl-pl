@@ -1,7 +1,7 @@
 ---
-title: 'Szybki Start: Biblioteka klienta personalizacji dla platformy .NET | Microsoft Docs'
+title: 'Szybki Start: Biblioteka klienta personalizacji dla platformy .NET'
 titleSuffix: Azure Cognitive Services
-description: Rozpocznij pracę z biblioteką klienta narzędzia Personalizacja dla platformy .NET za pomocą pętli szkoleniowej.
+description: Ten przewodnik Szybki Start przedstawia sposób rozpoczynania pracy z biblioteką kliencką narzędzia Personalizacja dla platformy .NET przy użyciu pętli szkoleniowej.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: quickstart
 ms.date: 10/24/2019
 ms.author: diberry
-ms.openlocfilehash: 411bd82ade2ca7b904b36a3a4408c1a00852fc2c
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: c17bf54d89e3a98ca667eeba40f2d2b166550833
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927838"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446386"
 ---
 # <a name="quickstart-personalizer-client-library-for-net"></a>Szybki Start: Biblioteka klienta personalizacji dla platformy .NET
 
@@ -213,4 +213,3 @@ Jeśli chcesz wyczyścić i usunąć subskrypcję Cognitive Services, możesz us
 * [Co to jest Personalizacja?](what-is-personalizer.md)
 * [Gdzie można używać personalizacji?](where-can-you-use-personalizer.md)
 * [Rozwiązywanie problemów](troubleshooting.md)
-

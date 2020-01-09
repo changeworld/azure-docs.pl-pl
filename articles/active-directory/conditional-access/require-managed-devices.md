@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0caf8e8d5e18efc0a7332f97acccc394051ed360
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 6cd3a0341d9cf041155b09d41d8ff84d0b0cc3dc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74452401"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424816"
 ---
 # <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>Instrukcje: wymaganie zarządzanych urządzeń dla dostępu do aplikacji w chmurze przy użyciu dostępu warunkowego
 
@@ -41,7 +41,7 @@ Za pomocą dostępu warunkowego usługi Azure AD można rozwiązać ten wymóg p
 - Dla wybranych użytkowników i grup
 - Wymaganie urządzenia zarządzanego
 
-## <a name="managed-devices"></a>Zarządzane urządzenia  
+## <a name="managed-devices"></a>Urządzenia zarządzane  
 
 W przypadku prostych warunków zarządzanymi urządzeniami są urządzenia, które podlegają *pewnemu sortowaniu* kontroli organizacyjnej. W usłudze Azure AD wymaganie wstępne dla zarządzanego urządzenia polega na tym, że zostało ono zarejestrowane w usłudze Azure AD. Zarejestrowanie urządzenia tworzy tożsamość urządzenia w postaci obiektu urządzenia. Ten obiekt jest używany przez platformę Azure do śledzenia informacji o stanie urządzenia. Jako administrator usługi Azure AD można już używać tego obiektu do przełączania (włączania/wyłączania) stanu urządzenia.
   
@@ -91,8 +91,9 @@ W przypadku urządzenia oznaczonego jako zgodnego można założyć, że:
 - Informacje o firmie są chronione przez pomoc w kontroli sposobu, w jaki pracownicy uzyskują do nich dostęp i udostępniają ją
 - Urządzenie i jego aplikacje są zgodne z wymaganiami firmy dotyczącymi zabezpieczeń
 
-> [!NOTE]
-> Jeśli skonfigurujesz zasady wymagające, aby użytkownicy urządzeń zgodnych z systemami Mac, iOS i Android mogli wybrać certyfikat urządzenia podczas oceny zasad. Jest to znane zachowanie.
+### <a name="known-behavior"></a>Znane zachowanie
+
+W systemach Windows 7, iOS, Android, macOS i niektórych przeglądarkach sieci Web innych firm usługa Azure AD identyfikuje urządzenie przy użyciu certyfikatu klienta, który jest inicjowany, gdy urządzenie jest zarejestrowane w usłudze Azure AD. Gdy użytkownik po raz pierwszy zaloguje się za pomocą przeglądarki, użytkownik jest monitowany o wybranie certyfikatu. Użytkownik końcowy musi wybrać ten certyfikat, zanim będzie mógł kontynuować korzystanie z przeglądarki.
 
 ## <a name="next-steps"></a>Następne kroki
 

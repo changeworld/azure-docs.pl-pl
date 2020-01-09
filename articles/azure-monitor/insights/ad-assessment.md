@@ -4,15 +4,15 @@ description: Możesz użyć rozwiązania do sprawdzania kondycji Active Director
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 09/10/2019
-ms.openlocfilehash: bdc84a9213bd98981040775d3fec90f45edac54f
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: f0de484d58085f598988589d18495c9a6fe1b374
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899201"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75406134"
 ---
 # <a name="optimize-your-active-directory-environment-with-the-active-directory-health-check-solution-in-azure-monitor"></a>Zoptymalizuj Środowisko Active Directory przy użyciu rozwiązania do sprawdzania kondycji Active Directory w Azure Monitor
 
@@ -36,7 +36,7 @@ Po dodaniu rozwiązania i zakończeniu sprawdzania informacje podsumowujące dot
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Na każdym komputerze, na którym jest zainstalowany agent programu Log Analytics dla systemu Windows (określane również jako Microsoft Monitoring Agent (MMA)), rozwiązanie do sprawdzania kondycji Active Directory wymaga zainstalowanej wersji programu .NET Framework 4.5.2 lub nowszej.  Agent jest używany przez program System Center 2016 — Operations Manager, Operations Manager 2012 R2 i Azure Monitor.
+* Na każdym komputerze, na którym jest zainstalowany agent programu Log Analytics dla systemu Windows (określane również jako Microsoft Monitoring Agent (MMA), Active Directory .NET Framework rozwiązanie do sprawdzania kondycji.  Agent jest używany przez program System Center 2016 — Operations Manager, Operations Manager 2012 R2 i Azure Monitor.
 * Rozwiązanie obsługuje kontrolery domeny z systemami Windows Server 2008 i 2008 R2, Windows Server 2012 i 2012 R2 oraz Windows Server 2016.
 * Log Analytics obszar roboczy, aby dodać rozwiązanie Active Directory Sprawdzanie kondycji z witryny Azure Marketplace w Azure Portal. Nie jest wymagana żadna dodatkowa konfiguracja.
 
@@ -49,7 +49,7 @@ Aby przeprowadzić kontrolę kondycji na kontrolerach domeny należących do dom
 
 1. Zainstaluj [agenta log Analytics dla systemu Windows](../../azure-monitor/platform/agent-windows.md) , Jeśli kontroler domeny nie jest jeszcze monitorowany przez program System Center 2016 — Operations Manager lub Operations Manager 2012 R2.
 2. Jeśli jest monitorowana z programem System Center 2016-Operations Manager lub Operations Manager 2012 R2, a grupa zarządzania nie jest zintegrowana z Azure Monitor, kontroler domeny może być wieloadresowy z Azure Monitor do zbierania danych i przekazywania ich do usługi i nadal monitorowane przez Operations Manager.  
-3. W przeciwnym razie, jeśli grupa zarządzania Operations Manager jest zintegrowana z usługą, należy dodać kontrolery domeny dla zbierania danych przez usługę zgodnie z instrukcjami w obszarze [Dodawanie komputerów zarządzanych przez agentów](../../azure-monitor/platform/om-agents.md#connecting-operations-manager-to-azure-monitor) po włączeniu rozwiązania w obszary.  
+3. W przeciwnym razie, jeśli grupa zarządzania Operations Manager jest zintegrowana z usługą, należy dodać kontrolery domeny dla zbierania danych przez usługę zgodnie z instrukcjami w obszarze [Dodawanie komputerów zarządzanych przez agentów](../../azure-monitor/platform/om-agents.md#connecting-operations-manager-to-azure-monitor) po włączeniu rozwiązania w obszarze roboczym.  
 
 Agent na kontrolerze domeny, który raportuje do Operations Manager grupy zarządzania, zbiera dane, przekazuje do przypisanego do niego serwera zarządzania, a następnie jest wysyłany bezpośrednio z serwera zarządzania do Azure Monitor.  Dane nie są zapisywane w Operations Manager bazach danych.  
 
@@ -64,7 +64,7 @@ Active Directory Sprawdzanie kondycji zbiera dane z następujących źródeł pr
 - Interfejsy usługi Active Directory (ADSI)
 - Windows PowerShell
 - Dane pliku
-- Instrumentacja zarządzania Windows (WMI)
+- Windows Management Instrumentation (WMI)
 - Interfejs API narzędzia DCDIAG
 - Interfejs API usługi replikacji plików (NTFRS)
 - Kod C# niestandardowy
@@ -185,7 +185,7 @@ Po następnym zaplanowanym zaplanowaniu kondycji domyślnie co siedem dni okreś
 
 *Jaka jest nazwa procesu, który wykonuje zbieranie danych?*
 
-* AdvisorAssessment. exe
+* AdvisorAssessment.exe
 
 *Jak długo trwa zbieranie danych?*
 

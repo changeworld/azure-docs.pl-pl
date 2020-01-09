@@ -2,7 +2,6 @@
 documentType: LandingData
 title: Dokumentacja usługi Azure SignalR Service
 metadata:
-  document_id: 44409b3f-ab8c-053d-cdf4-5d7e823a275f
   title: Dokumentacja — Azure SignalR Service
   description: Łatwo twórz i skaluj aplikacje internetowe w czasie rzeczywistym w trybie bezserwerowym lub z użyciem serwera. Oparta na protokole WebSocket; obsługuje szeroką gamę języków i struktur.
   services: azure-signalr
@@ -60,7 +59,7 @@ sections:
         items:
           - html: <a href="/azure/azure-signalr/signalr-authenticate-oauth">Integrowanie usługi Azure SignalR Service za pomocą tożsamości platformy ASP.NET Core</a>
           - html: <a href="/azure/azure-signalr/signalr-tutorial-authenticate-azure-functions">Kompilowanie bezserwerowej aplikacji w czasie rzeczywistym przy użyciu uwierzytelniania</a>
-  - title: Przykłady
+  - title: Samples
     items:
       - type: list
         style: unordered

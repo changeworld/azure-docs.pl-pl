@@ -82,22 +82,14 @@
               abstract: null
               achievement: null
               iconUrl: null
-              levels:
-                - null
-              roles:
-                - null
-              products:
-                - null
-              units:
-                - null
-                - name: Korzystanie z magazynu klastra
-                  items:
-                    - name: Korzystanie z usługi Azure Storage
-                      href: hdinsight-hadoop-use-blob-storage.md
-                    - name: Korzystanie z usługi Azure Data Lake Storage Gen2
-                      href: hdinsight-hadoop-use-data-lake-storage-gen2.md
-                    - name: Korzystanie z usługi Azure Data Lake Storage Gen1
-                      href: hdinsight-hadoop-use-data-lake-store.md
+        - name: Korzystanie z magazynu klastra
+          items:
+            - name: Korzystanie z usługi Azure Storage
+              href: hdinsight-hadoop-use-blob-storage.md
+            - name: Korzystanie z usługi Azure Data Lake Storage Gen2
+              href: hdinsight-hadoop-use-data-lake-storage-gen2.md
+            - name: Korzystanie z usługi Azure Data Lake Storage Gen1
+              href: hdinsight-hadoop-use-data-lake-store.md
         - name: Rozszerzanie klastrów
           items:
             - name: Instalowanie aplikacji usługi HDInsight

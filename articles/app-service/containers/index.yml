@@ -2,7 +2,6 @@
 documentType: LandingData
 title: Dokumentacja usługi App Service w systemie Linux
 metadata:
-  document_id: 2239df92-8506-4ee4-b5b0-9ab512c487b2
   title: 'Kontenery systemu Linux — samouczki, dokumentacja'
   meta.description: Learn how to build Linux websites and web applications in App Service. Run your code in a default Docker container or run a custom container.
   ms.topic: landing-page
@@ -89,7 +88,7 @@ sections:
           - html: <a href="/azure/app-service/app-service-web-tutorial-custom-domain">Mapowanie istniejącej domeny niestandardowej na aplikację</a>
           - html: <a href="/azure/app-service/configure-ssl-bindings">Zabezpieczanie niestandardowej nazwy DNS przy użyciu powiązania SSL w usłudze Azure App Service</a>
           - html: <a href="/azure/cdn/cdn-add-to-web-app">Dodawanie usługi CDN do aplikacji</a>
-  - title: Przykłady
+  - title: Samples
     items:
       - type: paragraph
         text: Znajdowanie skryptów umożliwiających zarządzanie typowymi zadaniami.
