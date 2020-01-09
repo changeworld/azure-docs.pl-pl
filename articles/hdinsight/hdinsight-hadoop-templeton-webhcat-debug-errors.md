@@ -2,18 +2,18 @@
 title: Zrozumienie i rozwiązywanie błędów WebHCat w usłudze HDInsight — Azure
 description: Dowiedz się, jak informacje o typowych błędach zwracanych przez WebHCat w usłudze HDInsight i sposobach ich rozwiązywania.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/16/2018
-ms.author: hrasheed
-ms.openlocfilehash: 5c103482771b829730d009d65283a54ec1d8eb8a
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.custom: hdinsightactive
+ms.date: 01/01/2020
+ms.openlocfilehash: 011ef4f192bbae12be7d2464d5b0526f584821a6
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555011"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75638854"
 ---
 # <a name="understand-and-resolve-errors-received-from-webhcat-on-hdinsight"></a>Zrozumienie i rozwiązywanie błędów odebranych z WebHCat w usłudze HDInsight
 
@@ -21,17 +21,11 @@ Dowiedz się więcej o błędach odebranych podczas korzystania z usługi HDInsi
 
 ## <a name="what-is-webhcat"></a>Co to jest WebHCat
 
-[WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat) to interfejs API REST dla warstwy zarządzania [HCatalog](https://cwiki.apache.org/confluence/display/Hive/HCatalog), tabeli i magazynu dla Apache Hadoop. Usługa WebHCat jest domyślnie włączona w klastrach usługi HDInsight i jest używana przez różne narzędzia do przesyłania zadań, uzyskiwania stanu zadania itp. bez logowania do klastra.
+[WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat) to interfejs API REST dla warstwy zarządzania [HCatalog](https://cwiki.apache.org/confluence/display/Hive/HCatalog), tabeli i magazynu dla Apache Hadoop. Usługa WebHCat jest domyślnie włączona w klastrach usługi HDInsight i jest używana przez różne narzędzia do przesyłania zadań, uzyskiwania stanu zadania i tak dalej, bez konieczności logowania się do klastra.
 
 ## <a name="modifying-configuration"></a>Modyfikowanie konfiguracji
 
-> [!IMPORTANT]  
-> Niektóre błędy wymienione w tym dokumencie występują z powodu przekroczenia skonfigurowanego maksymalnego limitu. Gdy krok rozwiązania wskaże, że możesz zmienić wartość, musisz użyć jednej z następujących czynności, aby dokonać zmiany:
-
-* W przypadku klastrów **systemu Windows** : Użyj akcji skryptu, aby skonfigurować wartość podczas tworzenia klastra. Aby uzyskać więcej informacji, zobacz [opracowywanie akcji skryptu](hdinsight-hadoop-script-actions-linux.md).
-
-* W przypadku klastrów systemu **Linux** : w celu zmodyfikowania wartości należy użyć Apache Ambari (interfejs API sieci Web lub REST). Aby uzyskać więcej informacji, zobacz [Zarządzanie usługą HDInsight przy użyciu platformy Apache Ambari](hdinsight-hadoop-manage-ambari.md)
-
+Niektóre błędy wymienione w tym dokumencie występują z powodu przekroczenia skonfigurowanego maksymalnego limitu. Gdy w kroku rozwiązanie wskażesz, że możesz zmienić wartość, Użyj usługi Apache Ambari (interfejs API sieci Web lub REST), aby zmodyfikować tę wartość. Aby uzyskać więcej informacji, zobacz [Zarządzanie usługą HDInsight przy użyciu platformy Apache Ambari](hdinsight-hadoop-manage-ambari.md)
 
 ### <a name="default-configuration"></a>Konfiguracja domyślna
 

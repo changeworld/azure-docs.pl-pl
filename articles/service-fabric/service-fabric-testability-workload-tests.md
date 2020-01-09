@@ -1,25 +1,16 @@
 ---
-title: Symulowanie błędów w aplikacjach Service Fabric platformy Azure | Microsoft Docs
-description: Jak zabezpieczyć usługi przed błędami i niepowodzeniem.
-services: service-fabric
-documentationcenter: .net
+title: Symulowanie błędów w aplikacjach Service Fabric platformy Azure
+description: Dowiedz się więcej na temat zabezpieczania usług Service Fabric platformy Azure przed błędami i niepowodzeniem.
 author: anmolah
-manager: chackdan
-editor: ''
-ms.assetid: 44af01f0-ed73-4c31-8ac0-d9d65b4ad2d6
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 06/15/2017
 ms.author: anmola
-ms.openlocfilehash: bbb89b66231c949627c7ffbf99ebe9b5dd379ca2
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: d3d9f6478336c59adb875bf21438d5ffa457b1d4
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68348718"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645994"
 ---
 # <a name="simulate-failures-during-service-workloads"></a>Symulowanie błędów w trakcie obciążenia usługi
 Scenariusze testowania na platformie Azure Service Fabric umożliwiają deweloperom nie martwić się o poszczególnymi usterkami. Istnieją jednak scenariusze, w których może być konieczne jawne odchodzenie między obciążeniem klienta i niepowodzeń. Odłączanie obciążenia i błędów klienta zapewnia, że usługa rzeczywiście wykonuje pewne działania w przypadku wystąpienia awarii. Uwzględniając poziom kontroli, który zapewnia możliwości testowania, mogą one być precyzyjnymi punktami wykonywania obciążenia. Takie zapełnienie błędów w różnych stanach aplikacji może znaleźć błędy i poprawić jakość.
@@ -29,10 +20,10 @@ Ten test przedstawia scenariusz, który przeplotuje obciążenie biznesowe z uż
 
 Zapoznaj się z przykładem usługi, która udostępnia cztery obciążenia: A, B, C i D. Każdy odnosi się do zestawu przepływów pracy i może być obliczeniowy, magazynem lub mieszanym. Ze względu na prostotę rozwiążemy obciążenia w naszym przykładzie. Różne błędy wykonywane w tym przykładzie są następujące:
 
-* RestartNode: Nieprolongaty błąd w celu symulowania ponownego uruchomienia komputera.
-* RestartDeployedCodePackage: Nieprolongaty błąd w celu symulowania awarii procesu hosta usługi.
-* RemoveReplica: Łagodna awaria symulowania usuwania repliki.
-* Operację moveprimary Łagodna awaria symulowania przenoszenia replik wyzwalana przez Service Fabric moduł równoważenia obciążenia.
+* RestartNode: błąd nieprolongaty dotyczący symulowania ponownego uruchomienia komputera.
+* RestartDeployedCodePackage: błąd nieprolongaty dotyczący symulowania awarii procesu hosta usługi.
+* RemoveReplica: łagodny błąd w celu symulowania usuwania repliki.
+* Operację moveprimary: łagodne błędy symulowania przenoszenia replik wyzwalane przez Service Fabric moduł równoważenia obciążenia.
 
 ```csharp
 // Add a reference to System.Fabric.Testability.dll and System.Fabric.dll.

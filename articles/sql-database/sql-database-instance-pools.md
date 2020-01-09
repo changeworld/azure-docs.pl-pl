@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab
 ms.date: 09/05/2019
-ms.openlocfilehash: 8738d1ad54d3ab63d8d2efc939aa9daacbe91c13
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 98757677eae6d21b02d6b0b2a3abade453b5dfed
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73810405"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552784"
 ---
 # <a name="what-are-sql-database-instance-pools-preview"></a>Co to są pule wystąpień SQL Database (wersja zapoznawcza)?
 
@@ -61,7 +61,7 @@ Poniższa lista zawiera główne przypadki użycia, w których należy uwzględn
 
 Pule wystąpień mają podobną architekturę do zwykłych wystąpień zarządzanych (*pojedyncze wystąpienia*). Aby obsługiwać [wdrożenia w ramach usługi Azure Virtual Networks (sieci wirtualnych)](../virtual-network/virtual-network-for-azure-services.md#deploy-azure-services-into-virtual-networks) i zapewnić izolację i bezpieczeństwo klientów, pule wystąpień również polegają na [klastrach wirtualnych](sql-database-managed-instance-connectivity-architecture.md#high-level-connectivity-architecture). Klastry wirtualne reprezentują dedykowany zestaw izolowanych maszyn wirtualnych wdrożonych w podsieci sieci wirtualnej klienta.
 
-Główną różnicą między dwoma modelami wdrażania jest to, że pule wystąpień umożliwiają wiele wdrożeń procesów SQL Server w tym samym węźle maszyny wirtualnej, które są zasobami zarządzanymi przy użyciu [obiektów zadań systemu Windows](https://docs.microsoft.com/windows/desktop/ProcThread/job-objects), podczas gdy pojedyncze wystąpienia są zawsze włączone węzeł maszyny wirtualnej.
+Główna różnica między dwoma modelami wdrażania polega na tym, że pule wystąpień zezwalają na wiele wdrożeń procesów SQL Server w tym samym węźle maszyny wirtualnej, które są zasobami zarządzanymi przy użyciu [obiektów zadań systemu Windows](https://docs.microsoft.com/windows/desktop/ProcThread/job-objects), natomiast pojedyncze wystąpienia są zawsze same w węźle maszyny wirtualnej.
 
 Na poniższym diagramie przedstawiono pulę wystąpień i dwa poszczególne wystąpienia wdrożone w tej samej podsieci i przedstawiono główne szczegóły architektury dla obu modeli wdrażania:
 
@@ -108,7 +108,7 @@ Każde wystąpienie zarządzane wdrożone w puli ma oddzielne wystąpienie progr
 
 Opcjonalne funkcje lub funkcje, które wymagają wybrania określonych wartości (takich jak sortowanie na poziomie wystąpienia, strefa czasowa, publiczny punkt końcowy dla ruchu danych, grupy trybu failover), są konfigurowane na poziomie wystąpienia i mogą być różne dla każdego wystąpienia w puli.
 
-## <a name="performance-considerations"></a>Zagadnienia dotyczące wydajności
+## <a name="performance-considerations"></a>Zagadnienia związane z wydajnością
 
 Chociaż wystąpienia zarządzane w ramach pul mają dedykowany rdzeń wirtualny i pamięć RAM, współużytkują dysk lokalny (na potrzeby użycia bazy danych tempdb) i zasoby sieciowe. Prawdopodobnie nie jest to możliwe, ale można napotkać efekt *sąsiedniego szumu* , jeśli wiele wystąpień w puli ma duże zużycie zasobów w tym samym czasie. W przypadku zaobserwowania tego zachowania należy rozważyć wdrożenie tych wystąpień do większej puli lub jako pojedyncze wystąpienia.
 
@@ -126,7 +126,7 @@ Jeśli występują problemy związane z wdrożeniem puli wystąpień (Tworzenie 
 
 Jeśli występują problemy związane z pojedynczymi wystąpieniami lub bazami danych w ramach puli, należy utworzyć zwykły bilet pomocy technicznej dla Azure SQL Database wystąpieniami zarządzanymi.
 
-Aby utworzyć większe wdrożenia wystąpienia zarządzanego (z pulami wystąpień lub bez nich), może być konieczne uzyskanie większego limitu przydziału regionalnego. Użyj [standardowej procedury wystąpienia zarządzanego do żądania większego przydziału](sql-database-managed-instance-resource-limits.md#obtaining-a-larger-quota-for-sql-managed-instance), ale pamiętaj, że jeśli używasz pul wystąpień, logika wdrażania porównuje całkowite użycie rdzeń wirtualny *na poziomie puli* z limitem przydziału, aby określić, czy jesteś możliwość tworzenia nowych zasobów bez zwiększania limitu przydziału.
+Aby utworzyć większe wdrożenia wystąpienia zarządzanego (z pulami wystąpień lub bez nich), może być konieczne uzyskanie większego limitu przydziału regionalnego. Użyj [standardowej procedury wystąpienia zarządzanego do żądania większego przydziału](sql-database-managed-instance-resource-limits.md#obtaining-a-larger-quota-for-sql-managed-instance), ale pamiętaj, że jeśli używasz pul wystąpień, logika wdrażania porównuje całkowite użycie rdzeń wirtualny *na poziomie puli* z limitem przydziału, aby określić, czy można tworzyć nowe zasoby bez zwiększania limitu przydziału.
 
 ## <a name="instance-pool-billing"></a>Rozliczenia puli wystąpień
 
@@ -136,7 +136,7 @@ Cena rdzeń wirtualny puli jest naliczana niezależnie od liczby wystąpień wdr
 
 W przypadku cen obliczeniowych (mierzonych w rdzeni wirtualnych) dostępne są dwie opcje cenowe:
 
-  1. *Uwzględniona licencja*: Zastosuj istniejące licencje SQL Server z programem Software Assurance.
+  1. *Uwzględniona licencja*: cena licencji SQL jest uwzględniona. Dotyczy to klientów, którzy nie zdecydują się na stosowanie istniejących licencji SQL Server z programem Software Assurance.
   2. *Korzyść użycia hybrydowego platformy Azure*: obniżona cena obejmująca Korzyść użycia hybrydowego platformy Azure do SQL Server. Klienci mogą zrezygnować z tej ceny przy użyciu istniejących licencji SQL Server z programem Software Assurance. Aby uzyskać uprawnienia i inne szczegóły, zobacz [korzyść użycia hybrydowego platformy Azure](https://azure.microsoft.com/pricing/hybrid-benefit/).
 
 Dla poszczególnych wystąpień w puli nie można ustawić różnych opcji cenowych. Wszystkie wystąpienia w puli nadrzędnej muszą mieć licencję uwzględnioną w cenie lub Korzyść użycia hybrydowego platformy Azure cenę. Model licencji dla puli można zmienić po utworzeniu puli.

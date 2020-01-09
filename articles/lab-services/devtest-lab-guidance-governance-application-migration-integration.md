@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 11/26/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: 25342cfbb8ac7ad5538b1f009c75f1d101bfc047
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 14641e9096fa9366334e9f7460ae55cda0e6c2e8
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74560653"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644890"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---application-migration-and-integration"></a>Zarządzanie infrastrukturą Azure DevTest Labs — migracja i integracja aplikacji
 Po ustanowieniu środowiska tworzenia i testowania laboratorium należy wziąć pod uwagę następujące pytania:
@@ -93,7 +93,7 @@ Kiedy należy utworzyć nową sieć wirtualną dla środowiska DevTest Labs a pr
 ### <a name="answer"></a>Odpowiedź
 Jeśli maszyny wirtualne muszą współdziałać z istniejącą infrastrukturą, należy rozważyć użycie istniejącej sieci wirtualnej w środowisku DevTest Labs. Ponadto, jeśli używasz ExpressRoute, możesz zminimalizować ilość sieci wirtualnych/podsieci, aby nie dzielić przestrzeni adresowej IP, która jest przypisana do użycia w subskrypcjach. Należy również rozważyć użycie wzorca wirtualnej sieci równorzędnej (model gwiazdy). Takie podejście umożliwia komunikację między sieciami wirtualnymi i między subskrypcjami w danym regionie, ale Komunikacja równorzędna między regionami to wbudowana funkcja sieci platformy Azure.
 
-W przeciwnym razie każde środowisko DevTest Labs może mieć własną sieć wirtualną. Należy jednak pamiętać, że liczba sieci wirtualnych na subskrypcję jest [ograniczona](../azure-subscription-service-limits.md) . Wartość domyślna to 50, chociaż ten limit można podwyższyć do 100.
+W przeciwnym razie każde środowisko DevTest Labs może mieć własną sieć wirtualną. Należy jednak pamiętać, że liczba sieci wirtualnych na subskrypcję jest [ograniczona](../azure-resource-manager/management/azure-subscription-service-limits.md) . Wartość domyślna to 50, chociaż ten limit można podwyższyć do 100.
 
 ## <a name="shared-public-or-private-ip"></a>Udostępniony, publiczny lub prywatny adres IP
 
@@ -117,7 +117,7 @@ Czy istnieje reguła pod względem liczby maszyn wirtualnych, które należy ust
 Biorąc pod uwagę liczbę maszyn wirtualnych na użytkownika lub na laboratorium, istnieją trzy główne zagadnienia:
 
 - **Całkowity koszt** , jaki zespół może spędzać na zasobach w laboratorium. Można łatwo przydziałać wiele maszyn. Aby kontrolować koszty, jeden mechanizm polega na ograniczeniu liczby maszyn wirtualnych na użytkownika i/lub na laboratorium
-- Łączna liczba maszyn wirtualnych w laboratorium ma wpływ na dostępne [przydziały poziomu subskrypcji](../azure-subscription-service-limits.md) . Jeden z górnych limitów to 800 grup zasobów na subskrypcję. DevTest Labs obecnie tworzy nową grupę zasobów dla każdej maszyny wirtualnej (o ile nie są używane udostępnione publiczne adresy IP). Jeśli w ramach subskrypcji jest 10 laboratoriów, laboratoria mogą dopasować około 79 maszyn wirtualnych w każdym laboratorium (800 górny limit — 10 grup zasobów dla samych 10 laboratoriów) = 79 maszyny wirtualne na laboratorium.
+- Łączna liczba maszyn wirtualnych w laboratorium ma wpływ na dostępne [przydziały poziomu subskrypcji](../azure-resource-manager/management/azure-subscription-service-limits.md) . Jeden z górnych limitów to 800 grup zasobów na subskrypcję. DevTest Labs obecnie tworzy nową grupę zasobów dla każdej maszyny wirtualnej (o ile nie są używane udostępnione publiczne adresy IP). Jeśli w ramach subskrypcji jest 10 laboratoriów, laboratoria mogą dopasować około 79 maszyn wirtualnych w każdym laboratorium (800 górny limit — 10 grup zasobów dla samych 10 laboratoriów) = 79 maszyny wirtualne na laboratorium.
 - Jeśli laboratorium jest połączone z siecią lokalną za pośrednictwem usługi Express Route (na przykład), **dostępne są zdefiniowane przestrzenie adresów IP** dla sieci wirtualnej/podsieci. Aby upewnić się, że maszyny wirtualne w laboratorium nie mogą zostać utworzone (błąd: nie można pobrać adresu IP), właściciele laboratorium mogą określić maksymalną liczbę maszyn wirtualnych na laboratorium z opcją dostępna przestrzeń adresów IP.
 
 ## <a name="use-resource-manager-templates"></a>Używanie szablonów Menedżera zasobów

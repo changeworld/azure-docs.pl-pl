@@ -1,25 +1,25 @@
 ---
-title: Dostosuj ustawienia sieci dla klastra plików Microsoft Azure FXT Edge
+title: 'Samouczek: Konfigurowanie sieci w klastrze usługi Azure FXT Edge'
 description: Jak dostosować ustawienia sieci po utworzeniu klastra usługi Azure FXT Edge
 author: ekpgh
+ms.author: rohogue
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
-ms.author: rohogue
-ms.openlocfilehash: d250e566d884760244ee25e4c43d30fbe5323a7c
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: a40ff50dcb0934cbf1ea5222675bd75948ac1d03
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72254899"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551067"
 ---
-# <a name="tutorial-configure-the-clusters-network-settings"></a>Samouczek: Konfigurowanie ustawień sieciowych klastra 
+# <a name="tutorial-configure-the-clusters-network-settings"></a>Samouczek: Konfigurowanie ustawień sieciowych klastra
 
 Przed użyciem nowo utworzonego klastra usługi Azure FXT Edge, należy sprawdzić i dostosować kilka ustawień sieciowych dla przepływu pracy. 
 
 W tym samouczku wyjaśniono ustawienia sieci, które mogą być konieczne do dostosowania nowego klastra. 
 
-Dowiesz się: 
+Dowiesz się więcej na temat następujących zagadnień: 
 
 > [!div class="checklist"]
 > * Jakie ustawienia sieciowe mogą wymagać aktualizacji po utworzeniu klastra

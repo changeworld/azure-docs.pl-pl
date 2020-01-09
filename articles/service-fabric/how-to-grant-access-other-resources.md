@@ -1,19 +1,14 @@
 ---
-title: Service Fabric platformy Azure — Udziel Service Fabric aplikacji dostępu do innych zasobów platformy Azure | Microsoft Docs
+title: Udzielanie aplikacji dostępu do innych zasobów platformy Azure
 description: W tym artykule wyjaśniono, jak udzielić zarządzanej tożsamości Service Fabric dostępu do innych zasobów platformy Azure obsługujących uwierzytelnianie oparte na Azure Active Directory.
-services: service-fabric
-author: athinanthny
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: article
-ms.date: 08/08/2019
-ms.author: atsenthi
-ms.openlocfilehash: 467b202cf6b981969316a2646aac99f788f7a2f4
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.date: 12/09/2019
+ms.openlocfilehash: 3b1feab1e67e993df771564a1a7c1aba4236b2c0
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091198"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614797"
 ---
 # <a name="granting-a-service-fabric-applications-managed-identity-access-to-azure-resources-preview"></a>Udzielanie zarządzanej tożsamości aplikacji Service Fabric do zasobów platformy Azure (wersja zapoznawcza)
 
@@ -29,18 +24,18 @@ Możesz użyć zarządzanej tożsamości aplikacji Service Fabric (w tym przypad
 3. obowiązkowe Sprawdź istniejący dostęp: Wybierz zarządzaną tożsamość systemową lub przypisaną przez użytkownika w kontrolce "Znajdź"; Wybierz odpowiednią tożsamość z listy wyników wynikowych
 4. Kliknij pozycję + Dodaj przypisanie roli w górnej części strony, aby dodać nowe przypisanie roli dla tożsamości aplikacji.
 W obszarze Rola, z listy rozwijanej wybierz pozycję czytnik danych magazynu obiektów BLOB.
-5. Na następnej liście rozwijanej w obszarze Przypisz dostęp do wybierz `User assigned managed identity`opcję.
+5. Na następnej liście rozwijanej, w obszarze Przypisz dostęp do, wybierz `User assigned managed identity`.
 6. Następnie upewnij się, że na liście rozwijanej subskrypcja znajduje się odpowiednia subskrypcja, a następnie ustaw grupę zasobów na wszystkie grupy zasobów.
 7. W obszarze Wybierz Wybierz UAI odpowiadający aplikacji Service Fabric a następnie kliknij przycisk Zapisz.
 
-Obsługa zarządzanych tożsamości przypisanych przez system Service Fabric nie obejmuje integracji w Azure Portal; Jeśli aplikacja używa tożsamości przypisanej do systemu, należy najpierw znaleźć identyfikator klienta tożsamości aplikacji, a następnie powtórz powyższe kroki, ale wybierając `Azure AD user, group, or service principal` opcję w kontrolce Znajdź.
+Obsługa zarządzanych tożsamości przypisanych przez system Service Fabric nie obejmuje integracji w Azure Portal; Jeśli aplikacja używa tożsamości przypisanej do systemu, należy najpierw znaleźć identyfikator klienta tożsamości aplikacji, a następnie powtórz powyższe kroki, ale wybierając opcję `Azure AD user, group, or service principal` w kontrolce Znajdowanie.
 
 ## <a name="granting-access-to-azure-key-vault"></a>Udzielanie dostępu Azure Key Vault
 Podobnie jak w przypadku uzyskiwania dostępu do magazynu, można wykorzystać zarządzaną tożsamość aplikacji Service Fabric, aby uzyskać dostęp do magazynu kluczy platformy Azure. Procedury udzielania dostępu w Azure Portal są podobne do wymienionych powyżej i nie będą powtarzane w tym miejscu. Różnice można znaleźć na poniższej ilustracji.
 
 ![Zasady dostępu Key Vault](../key-vault/media/vs-secure-secret-appsettings/add-keyvault-access-policy.png)
 
-Poniższy przykład ilustruje udzielanie dostępu do magazynu za pośrednictwem wdrożenia szablonu; Dodaj fragmenty kodu poniżej jako inny wpis pod `resources` elementem szablonu. W przykładzie pokazano, jak uzyskać dostęp do zarówno typów tożsamości przypisanych przez użytkownika, jak i przypisanych do systemu, a także wybrać odpowiednie.
+Poniższy przykład ilustruje udzielanie dostępu do magazynu za pośrednictwem wdrożenia szablonu; Dodaj fragmenty kodu poniżej jako inny wpis pod elementem `resources` szablonu. W przykładzie pokazano, jak uzyskać dostęp do zarówno typów tożsamości przypisanych przez użytkownika, jak i przypisanych do systemu, a także wybrać odpowiednie.
 
 ```json
     # under 'variables':

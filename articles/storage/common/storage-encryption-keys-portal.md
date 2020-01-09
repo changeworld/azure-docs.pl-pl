@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/04/2019
+ms.date: 01/02/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: b1006fead92763c5c2e670527b5e232618b633e5
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: f592872e67ff8559060706ddb3b1e45839b6acaf
+ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895304"
+ms.lasthandoff: 01/05/2020
+ms.locfileid: "75665466"
 ---
 # <a name="configure-customer-managed-keys-with-azure-key-vault-by-using-the-azure-portal"></a>Skonfiguruj klucze zarządzane przez klienta za pomocą Azure Key Vault przy użyciu Azure Portal
 
@@ -23,9 +23,16 @@ ms.locfileid: "74895304"
 
 W tym artykule przedstawiono sposób konfigurowania Azure Key Vault za pomocą kluczy zarządzanych przez klienta przy użyciu [Azure Portal](https://portal.azure.com/). Aby dowiedzieć się, jak utworzyć magazyn kluczy przy użyciu Azure Portal, zobacz [Szybki Start: Ustawianie i pobieranie klucza tajnego z Azure Key Vault przy użyciu Azure Portal](../../key-vault/quick-create-portal.md).
 
-> [!IMPORTANT]
-> Przy użyciu kluczy zarządzanych przez klienta z szyfrowaniem usługi Azure Storage wymagane są dwie właściwości w magazynie kluczy, **usuwanie nietrwałe** i **nie przeczyszczanie**. Te właściwości nie są domyślnie włączone. Aby włączyć te właściwości, użyj programu PowerShell lub interfejsu wiersza polecenia platformy Azure.
-> Obsługiwane są tylko klucze RSA i rozmiar klucza 2048.
+## <a name="configure-azure-key-vault"></a>Konfigurowanie usługi Azure Key Vault
+
+Przy użyciu kluczy zarządzanych przez klienta z szyfrowaniem usługi Azure Storage wymagane są dwie właściwości w magazynie kluczy, **usuwanie nietrwałe** i **nie przeczyszczanie**. Te właściwości nie są domyślnie włączone, ale można je włączyć przy użyciu programu PowerShell lub interfejsu wiersza polecenia platformy Azure dla nowego lub istniejącego magazynu kluczy.
+
+Aby dowiedzieć się, jak włączyć te właściwości w istniejącym magazynie kluczy, zobacz sekcję zatytułowaną **Włączanie usuwania nietrwałego** i **Włączanie ochrony przed przeczyszczeniem** w jednym z następujących artykułów:
+
+- [Jak używać nietrwałego usuwania przy użyciu programu PowerShell](../../key-vault/key-vault-soft-delete-powershell.md).
+- [Jak używać nietrwałego usuwania przy użyciu interfejsu wiersza polecenia](../../key-vault/key-vault-soft-delete-cli.md).
+
+Tylko klucze RSA o rozmiarze 2048 są obsługiwane przez szyfrowanie usługi Azure Storage. Aby uzyskać więcej informacji na temat kluczy, zobacz **Key Vault klucze** w temacie [informacje Azure Key Vault klucze, wpisy tajne i certyfikaty](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys).
 
 ## <a name="enable-customer-managed-keys"></a>Włącz klucze zarządzane przez klienta
 
@@ -44,14 +51,18 @@ Po włączeniu kluczy zarządzanych przez klienta będziesz mieć możliwość o
 
 Aby określić klucz jako identyfikator URI, wykonaj następujące kroki:
 
-1. Aby zlokalizować identyfikator URI klucza w Azure Portal, przejdź do magazynu kluczy, a następnie wybierz ustawienie **klucze** . Wybierz odpowiedni klucz, a następnie kliknij klucz, aby wyświetlić jego ustawienia. Skopiuj wartość pola **Identyfikator klucza** , która zapewnia identyfikator URI.
+1. Aby zlokalizować identyfikator URI klucza w Azure Portal, przejdź do magazynu kluczy, a następnie wybierz ustawienie **klucze** . Wybierz odpowiedni klucz, a następnie kliknij klucz, aby wyświetlić jego wersje. Wybierz wersję klucza, aby wyświetlić ustawienia dla tej wersji.
+1. Skopiuj wartość pola **Identyfikator klucza** , która zapewnia identyfikator URI.
 
     ![Zrzut ekranu przedstawiający identyfikator URI klucza magazynu kluczy](media/storage-encryption-keys-portal/key-uri-portal.png)
 
 1. W ustawieniach **szyfrowania** dla konta magazynu wybierz opcję **Wprowadź identyfikator URI klucza** .
-1. W polu **Identyfikator URI klucza** Określ identyfikator URI.
+1. Wklej identyfikator URI, który został skopiowany do pola **klucza URI** .
 
    ![Zrzut ekranu przedstawiający sposób wprowadzania identyfikatora URI klucza](./media/storage-encryption-keys-portal/ssecmk2.png)
+
+1. Określ subskrypcję zawierającą magazyn kluczy.
+1. Zapisz zmiany.
 
 ### <a name="specify-a-key-from-a-key-vault"></a>Określ klucz z magazynu kluczy
 
@@ -63,12 +74,30 @@ Aby określić klucz z magazynu kluczy, najpierw upewnij się, że masz Magazyn 
 
    ![Zrzut ekranu przedstawiający opcję klucz zarządzany przez klienta](./media/storage-encryption-keys-portal/ssecmk3.png)
 
+1. Zapisz zmiany.
+
 ## <a name="update-the-key-version"></a>Zaktualizuj wersję klucza
 
 Podczas tworzenia nowej wersji klucza należy zaktualizować konto magazynu, aby używało nowej wersji. Wykonaj następujące kroki:
 
 1. Przejdź do konta magazynu i Wyświetl ustawienia **szyfrowania** .
-1. Określ identyfikator URI dla nowej wersji klucza. Alternatywnie można wybrać Magazyn kluczy i ponownie klucz, aby zaktualizować wersję.
+1. Wprowadź identyfikator URI dla nowej wersji klucza. Alternatywnie można wybrać Magazyn kluczy i ponownie klucz, aby zaktualizować wersję.
+1. Zapisz zmiany.
+
+## <a name="use-a-different-key"></a>Użyj innego klucza
+
+Aby zmienić klucz używany do szyfrowania usługi Azure Storage, wykonaj następujące kroki:
+
+1. Przejdź do konta magazynu i Wyświetl ustawienia **szyfrowania** .
+1. Wprowadź identyfikator URI dla nowego klucza. Alternatywnie można wybrać Magazyn kluczy i wybrać nowy klucz.
+1. Zapisz zmiany.
+
+## <a name="disable-customer-managed-keys"></a>Wyłącz klucze zarządzane przez klienta
+
+Po wyłączeniu kluczy zarządzanych przez klienta konto magazynu zostanie następnie zaszyfrowane przy użyciu kluczy zarządzanych przez firmę Microsoft. Aby wyłączyć klucze zarządzane przez klienta, wykonaj następujące kroki:
+
+1. Przejdź do konta magazynu i Wyświetl ustawienia **szyfrowania** .
+1. Usuń zaznaczenie pola wyboru obok ustawienia **Użyj własnego klucza** .
 
 ## <a name="next-steps"></a>Następne kroki
 

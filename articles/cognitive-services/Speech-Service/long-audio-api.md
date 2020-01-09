@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/26/2019
 ms.author: erhopf
-ms.openlocfilehash: ed00a9df46660cc6bfb4ec5fd9a93c80f5d6653e
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: ff8cdf78d923394caf36610534eb5dcc7de571a4
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74815333"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75562548"
 ---
 # <a name="long-audio-api-preview"></a>Long audio API (wersja zapoznawcza)
 
@@ -42,15 +42,24 @@ Ten diagram zawiera ogólne omówienie przepływu pracy.
 Podczas przygotowywania pliku tekstowego upewnij się, że:
 
 * Jest to zwykły tekst (. txt) lub tekst SSML (. txt)
-  * W przypadku zwykłego tekstu każdy akapit jest oddzielony przez naciśnięcie **klawisza ENTER/Return** -View — [przykład wprowadzania tekstu](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/en-US.txt)
-  * W przypadku tekstu SSML każdy element SSML jest traktowany jako akapit. Elementy SSML są oddzielane różnymi akapitami — widok [SSML wprowadzanie tekstu](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/SSMLTextInputSample.txt). Aby uzyskać kod języka, zobacz [Speech synteza Markup Language (SSML)](speech-synthesis-markup.md)
 * Jest zakodowany jako [UTF-8 z oznaczeniem kolejności bajtów (BOM)](https://www.w3.org/International/questions/qa-utf8-bom.en#bom)
-* Zawiera więcej niż 10 000 znaków lub więcej niż 50 akapitów
 * Jest pojedynczym plikiem, a nie plikiem ZIP
+* Zawiera więcej niż 400 znaków dla zwykłego tekstu lub 400 [znaków do rozliczenia](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech#pricing-note) dla tekstu SSML i mniej niż 10 000 akapitów
+  * W przypadku zwykłego tekstu każdy akapit jest oddzielony przez naciśnięcie **klawisza ENTER/Return** -View — [przykład wprowadzania tekstu](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/en-US.txt)
+  * W przypadku tekstu SSML każdy element SSML jest traktowany jako akapit. Elementy SSML są oddzielane różnymi akapitami — [przykładem wyświetlania tekstu SSML](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/SSMLTextInputSample.txt)
+> [!NOTE]
+> W języku chińskim (kontynent), chińskim (Hongkong), chińskim (Tajwan), japońskim i koreańskim, jeden wyraz będzie liczony jako dwa znaki. 
+
+## <a name="submit-synthesis-requests"></a>Prześlij żądania syntezy
+
+Po przygotowaniu zawartości wejściowej postępuj zgodnie z [długim formularzem szybki start syntezy audio](https://aka.ms/long-audio-python) , aby przesłać żądanie. Jeśli masz więcej niż jeden plik wejściowy, musisz przesłać wiele żądań. Istnieją pewne ograniczenia, które należy wziąć pod uwagę: 
+* Klient może przesłać do 5 żądań na serwer na sekundę dla każdego konta subskrypcji platformy Azure. W przypadku przekroczenia ograniczenia klient otrzyma kod błędu 429 (zbyt wiele żądań). Zmniejsz liczbę żądań na sekundę
+* Serwer może działać i kolejkować do 120 żądań dla każdego konta subskrypcji platformy Azure. W przypadku przekroczenia ograniczenia serwer zwróci kod błędu 429 (zbyt wiele żądań). Zaczekaj i unikaj przesyłania nowego żądania do momentu ukończenia niektórych żądań
+* Serwer będzie przechowywać do 20 000 żądań dla każdego konta subskrypcji platformy Azure. W przypadku przekroczenia ograniczenia Usuń niektóre żądania przed przesłaniem nowych
 
 ## <a name="audio-output-formats"></a>Formaty wyjściowe audio
 
-Następujące formaty wyjściowe audio są obsługiwane przez długi interfejs API audio:
+Obsługujemy elastyczne formaty danych wyjściowych audio. Można generować dane wyjściowe audio na akapit lub łączyć je w jedno wyjście, ustawiając parametr "concatenateResult". Następujące formaty wyjściowe audio są obsługiwane przez długi interfejs API audio:
 
 > [!NOTE]
 > Domyślny format dźwięku to RIFF-16khz-16bit-mono-PCM.

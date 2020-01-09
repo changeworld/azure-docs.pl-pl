@@ -1,25 +1,16 @@
 ---
-title: Agregacja zdarzeń Service Fabric platformy Azure z Diagnostyka Azure systemu Windows | Microsoft Docs
+title: Agregacja zdarzeń za pomocą Diagnostyka Azure systemu Windows
 description: Dowiedz się więcej na temat agregowania i zbierania zdarzeń przy użyciu funkcji wad do monitorowania i diagnostyki klastrów Service Fabric platformy Azure.
-services: service-fabric
-documentationcenter: .net
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 04/03/2018
 ms.author: srrengar
-ms.openlocfilehash: 555a8a823526a51b045b4a0314ef7610bf728e5b
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: 104fc212dc590c1366b8dd2cd276f70bdadee5db
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73242978"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614540"
 ---
 # <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>Agregacja i zbieranie zdarzeń przy użyciu Diagnostyka Azure systemu Windows
 > [!div class="op_single_selector"]
@@ -38,7 +29,7 @@ Jednym ze sposobów przekazywania i zbierania dzienników jest użycie rozszerze
 ## <a name="prerequisites"></a>Wymagania wstępne
 W tym artykule są używane następujące narzędzia:
 
-* [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md)
+* [Azure Resource Manager](../azure-resource-manager/management/overview.md)
 * [Azure PowerShell](/powershell/azure/overview)
 * [Szablon usługi Azure Resource Manager](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 

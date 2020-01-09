@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2019
-ms.openlocfilehash: 1fd59bd18947d2c7aaba787ff7ce286e76f4f890
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 21acbde147d5c1751480332e5cd9c89cdb43f8e8
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74150051"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644957"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Informacje dotyczące korzystania z usługi HDInsight w systemie Linux
 
@@ -52,7 +52,7 @@ To polecenie zwraca dokument JSON opisujący usługę, a następnie [JQ](https:/
 
 ## <a name="remote-access-to-services"></a>Dostęp zdalny do usług
 
-* **Ambari (sieć Web)** https://CLUSTERNAME.azurehdinsight.net - 
+* **Ambari (sieć Web)** `https://CLUSTERNAME.azurehdinsight.net` - 
 
     Uwierzytelnij się przy użyciu użytkownika i hasła administratora klastra, a następnie zaloguj się do usługi Ambari.
 
@@ -63,14 +63,14 @@ To polecenie zwraca dokument JSON opisujący usługę, a następnie [JQ](https:/
     >
     > Aby użyć pełnej funkcjonalności interfejsu użytkownika sieci Web Ambari, użyj tunelu SSH do ruchu internetowego serwera proxy do węzła głównego klastra. Zobacz [Używanie tunelowania SSH do uzyskiwania dostępu do interfejsu użytkownika sieci Web Apache Ambari, ResourceManager, JobHistory, NameNode, Oozie i innych witryn sieci Web interfejsów użytkownika](hdinsight-linux-ambari-ssh-tunnel.md)
 
-* **Ambari (REST)** https://CLUSTERNAME.azurehdinsight.net/ambari - 
+* **Ambari (REST)** `https://CLUSTERNAME.azurehdinsight.net/ambari` - 
 
     > [!NOTE]  
     > Uwierzytelnianie przy użyciu użytkownika i hasła administratora klastra.
     >
     > Uwierzytelnianie jest zwykłym tekstem — zawsze używaj protokołu HTTPS, aby upewnić się, że połączenie jest bezpieczne.
 
-* **WebHCat (Templeton)**  - https://CLUSTERNAME.azurehdinsight.net/templeton
+* **WebHCat (Templeton)**  - `https://CLUSTERNAME.azurehdinsight.net/templeton`
 
     > [!NOTE]  
     > Uwierzytelnianie przy użyciu użytkownika i hasła administratora klastra.
@@ -199,7 +199,7 @@ W przypadku korzystania z __usługi Azure Storage__zobacz następujące linki, a
 
 Jeśli używasz __Azure Data Lake Storage__, zobacz następujące linki, aby poznać sposoby dostępu do danych:
 
-* [Przeglądarka sieci Web](../data-lake-store/data-lake-store-get-started-portal.md)
+* [Przeglądarka internetowa](../data-lake-store/data-lake-store-get-started-portal.md)
 * [Program PowerShell](../data-lake-store/data-lake-store-get-started-powershell.md)
 * [Interfejs wiersza polecenia platformy Azure](../data-lake-store/data-lake-store-get-started-cli-2.0.md)
 * [Interfejs API REST usługi WebHDFS](../data-lake-store/data-lake-store-get-started-rest-api.md)

@@ -1,6 +1,6 @@
 ---
-title: Błędy i rozwiązania dla scenariuszy B2B
-description: Znajdź błędy i rozwiązania dla scenariuszy B2B w Azure Logic Apps
+title: Rozwiązania typowych błędów i problemów w scenariuszach B2B
+description: Poznaj rozwiązania typowych błędów i problemów podczas rozwiązywania problemów z scenariuszami B2B w Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 06/02/2017
-ms.openlocfilehash: 176bc3642f7c923b50cbf2f7a97096f88dc02817
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 38e281ce3d8117bff719b1bb572f09acbbb89669
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790694"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666690"
 ---
 # <a name="b2b-errors-and-solutions-for-azure-logic-apps"></a>Błędy i rozwiązania B2B dla Azure Logic Apps
 
@@ -63,7 +63,7 @@ Ten artykuł pomaga w rozwiązywaniu problemów, które mogą wystąpić w scena
 | Akcja użytkownika | Dodaj @base64ToBinary do AS2Message przed wysłaniem do partnera. |
 |||
 
-Na przykład:
+Przykład:
 
 ```json
 "HTTP": {
@@ -83,7 +83,7 @@ Na przykład:
 | Akcja użytkownika | Dodaj @base64ToBinary do powiadomienia MDN przed wysłaniem do partnera. | 
 |||
 
-Na przykład:
+Przykład:
 
 ```json
 "Response": {

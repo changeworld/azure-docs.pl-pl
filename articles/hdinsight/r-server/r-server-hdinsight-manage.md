@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/19/2019
-ms.openlocfilehash: e0ce8b97df6f2d6e95255d3f4dfc9f76fa08a594
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: b2c16c27c0dfc0c30a99c52544cc4d2278eadfc7
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123555"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647734"
 ---
 # <a name="manage-ml-services-cluster-on-azure-hdinsight"></a>Zarządzanie klastrem usług ML w usłudze Azure HDInsight
 
@@ -23,7 +23,7 @@ W tym artykule dowiesz się, jak zarządzać istniejącym klastrem usług w usł
 
 * Klaster usługi ML w usłudze HDInsight. Zobacz [Tworzenie klastrów Apache Hadoop przy użyciu Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md) i wybierz pozycję **usługi ml** dla **typu klastra**.
 
-* Klient Secure Shell (SSH): Klient SSH jest używany do zdalnego łączenia się z klastrem usługi HDInsight i uruchamiania poleceń bezpośrednio w klastrze. Aby uzyskać więcej informacji, zobacz [Używanie protokołu SSH z usługą HDInsight.](../hdinsight-hadoop-linux-use-ssh-unix.md)
+* Klient Secure Shell (SSH): klient SSH jest używany do zdalnego łączenia się z klastrem usługi HDInsight i uruchamiania poleceń bezpośrednio w klastrze. Aby uzyskać więcej informacji, zobacz [Używanie protokołu SSH z usługą HDInsight.](../hdinsight-hadoop-linux-use-ssh-unix.md)
 
 ## <a name="enable-multiple-concurrent-users"></a>Włączanie obsługi równoczesnych użytkowników
 
@@ -48,11 +48,11 @@ Ponieważ RStudio działa w węźle brzegowym klastra, należy wykonać kilka kr
 2. Dodaj użytkowników systemu Linux w węźle krawędzi
 3. Przy pomocy utworzonego użytkownika możesz korzystać z programu RStudio Community
 
-### <a name="step-1-use-the-created-ssh-user-to-sign-in-to-the-edge-node"></a>Krok 1: Logowanie się do węzła brzegowego za pomocą utworzonego użytkownika SSH
+### <a name="step-1-use-the-created-ssh-user-to-sign-in-to-the-edge-node"></a>Krok 1. użycie utworzonego użytkownika SSH do logowania się do węzła brzegowego
 
-Postępuj zgodnie z instrukcjami w obszarze [Connect to HDInsight (Apache Hadoop) przy użyciu protokołu SSH](../hdinsight-hadoop-linux-use-ssh-unix.md) , aby uzyskać dostęp do węzła brzegowego. Adres węzła brzegowego klastra usług ML w usłudze HDInsight to `CLUSTERNAME-ed-ssh.azurehdinsight.net`.
+Postępuj zgodnie z instrukcjami w obszarze [Connect to HDInsight (Apache Hadoop) przy użyciu protokołu SSH](../hdinsight-hadoop-linux-use-ssh-unix.md) , aby uzyskać dostęp do węzła brzegowego. Adres węzła brzegowego klastra usług ML w usłudze HDInsight jest `CLUSTERNAME-ed-ssh.azurehdinsight.net`.
 
-### <a name="step-2-add-more-linux-users-in-edge-node"></a>Krok 2: Dodaj użytkowników systemu Linux w węźle krawędzi
+### <a name="step-2-add-more-linux-users-in-edge-node"></a>Krok 2. Dodawanie użytkowników systemu Linux w węźle krawędzi
 
 Aby dodać użytkownika do węzła krawędzi, uruchom te polecenia:
 
@@ -68,9 +68,9 @@ Poniższy zrzut ekranu przedstawia dane wyjściowe.
 
 Po wyświetleniu monitu o podanie "bieżące hasło protokołu Kerberos:" naciśnij klawisz **Enter** , aby go zignorować. Podanie opcji `-m` w poleceniu `useradd` powoduje, że system utworzy folder macierzysty użytkownika, wymagany przez program RStudio Community.
 
-### <a name="step-3-use-rstudio-community-version-with-the-user-created"></a>Krok 3: Przy pomocy utworzonego użytkownika możesz korzystać z programu RStudio Community
+### <a name="step-3-use-rstudio-community-version-with-the-user-created"></a>Krok 3. Korzystanie z programu RStudio Community przy pomocy utworzonego użytkownika
 
-Dostęp do RStudio https://CLUSTERNAME.azurehdinsight.net/rstudio/ z. Jeśli logujesz się po raz pierwszy po utworzeniu klastra, wprowadź poświadczenia administratora klastra, a następnie poświadczenia użytkownika SSH utworzone przez Ciebie. Jeśli nie jest to Twoje pierwsze logowanie, wprowadź tylko poświadczenia dla utworzonego użytkownika SSH.
+Dostęp do RStudio z `https://CLUSTERNAME.azurehdinsight.net/rstudio/`. Jeśli logujesz się po raz pierwszy po utworzeniu klastra, wprowadź poświadczenia administratora klastra, a następnie poświadczenia użytkownika SSH utworzone przez Ciebie. Jeśli nie jest to Twoje pierwsze logowanie, wprowadź tylko poświadczenia dla utworzonego użytkownika SSH.
 
 Możesz również zalogować się przy użyciu oryginalnych poświadczeń (domyślnie jest to *sshuser*) współbieżnie z innego okna przeglądarki.
 
@@ -78,7 +78,7 @@ Pamiętaj, że nowo dodani użytkownicy nie mają uprawnień użytkownika root w
 
 ## <a name="connect-remotely-to-microsoft-ml-services"></a>Zdalne nawiązywanie połączenia z usługami Microsoft ML
 
-Dostęp do kontekstu obliczeniowego usługi HDInsight Spark można skonfigurować ze zdalnego wystąpienia klienta ML uruchomionego na pulpicie. W tym celu należy określić opcje (hdfsShareDir, shareDir, sshUsername, sshHostname, sshSwitches i sshProfileScript) podczas definiowania kontekstu obliczeniowego obliczeniowego rxspark na pulpicie: Na przykład:
+Dostęp do kontekstu obliczeniowego usługi HDInsight Spark można skonfigurować ze zdalnego wystąpienia klienta ML uruchomionego na pulpicie. W tym celu należy określić opcje (hdfsShareDir, shareDir, sshUsername, sshHostname, sshSwitches i sshProfileScript) podczas definiowania kontekstu obliczeniowego obliczeniowego rxspark na pulpicie: na przykład:
 
     myNameNode <- "default"
     myPort <- 0
@@ -110,11 +110,11 @@ Kontekst obliczeniowy pozwala określić, czy obliczenia są wykonywane lokalnie
 
 ## <a name="distribute-r-code-to-multiple-nodes"></a>Dystrybucja kodu R do wielu węzłów
 
-Za pomocą usługi ML w usłudze HDInsight można korzystać z istniejącego kodu R i uruchamiać go w wielu węzłach klastra za pomocą `rxExec`programu. Funkcja ta jest przydatna podczas czyszczenia parametrów lub przeprowadzania symulacji. Poniższy kod przedstawia przykładowe użycie programu `rxExec`:
+Za pomocą usługi ML w usłudze HDInsight można korzystać z istniejącego kodu R i uruchamiać go w wielu węzłach w klastrze przy użyciu `rxExec`. Funkcja ta jest przydatna podczas czyszczenia parametrów lub przeprowadzania symulacji. Poniższy kod przedstawia przykładowe użycie programu `rxExec`:
 
     rxExec( function() {Sys.info()["nodename"]}, timesToRun = 4 )
 
-Jeśli nadal używasz kontekstu Spark, to polecenie zwraca wartość nodename dla węzłów procesu roboczego, w których uruchomiono kod `(Sys.info()["nodename"])` . Na przykład w klastrze z czterema węzłami oczekuje się, że dane wyjściowe są podobne do następującego fragmentu kodu:
+Jeśli nadal używasz kontekstu Spark, to polecenie zwraca wartość nodename dla węzłów procesu roboczego, w których uruchomiono kod `(Sys.info()["nodename"])`. Na przykład w klastrze z czterema węzłami oczekuje się, że dane wyjściowe są podobne do następującego fragmentu kodu:
 
     $rxElem1
         nodename
@@ -169,13 +169,13 @@ Poniżej przedstawiono przykładowy kod korzystający z nowych funkcji:
     rxSparkDisconnect(myHadoopCluster)
 
 
-Aby uzyskać dodatkowe informacje na temat korzystania z tych nowych funkcji, zobacz Pomoc online w usłudze ml za `?RxHivedata` pomocą poleceń i. `?RxParquetData`  
+Aby uzyskać dodatkowe informacje dotyczące korzystania z tych nowych funkcji, zobacz Pomoc online w usłudze ML za pomocą poleceń `?RxHivedata` i `?RxParquetData`.  
 
 ## <a name="install-additional-r-packages-on-the-cluster"></a>Instalowanie dodatkowych pakietów języka R w klastrze
 
 ### <a name="to-install-r-packages-on-the-edge-node"></a>Aby zainstalować pakiety języka R w węźle brzegowym
 
-Jeśli chcesz zainstalować dodatkowe pakiety R w węźle brzegowym, możesz użyć `install.packages()` bezpośrednio z poziomu konsoli języka r, po połączeniu z węzłem brzegowym za pośrednictwem protokołu SSH. 
+Jeśli chcesz zainstalować dodatkowe pakiety R w węźle brzegowym, możesz użyć `install.packages()` bezpośrednio z poziomu konsoli języka R, po połączeniu z węzłem brzegowym za pośrednictwem protokołu SSH. 
 
 ### <a name="to-install-r-packages-on-the-worker-node"></a>Aby zainstalować pakiety języka R w węźle procesu roboczego
 
@@ -196,7 +196,7 @@ Aby zainstalować pakiety języka R na węzłach procesu roboczego klastra, musi
 
    * Zaznacz pole wyboru tylko dla **procesu roboczego**.
 
-   * **Parametry**: Pakiety języka R do zainstalowania. Na przykład: `bitops stringr arules`
+   * **Parametry**: pakiety R do zainstalowania. Na przykład: `bitops stringr arules`
 
    * Zaznacz to pole wyboru, aby **zachować tę akcję skryptu**.  
 

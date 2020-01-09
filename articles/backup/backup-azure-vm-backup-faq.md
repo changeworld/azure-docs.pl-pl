@@ -4,18 +4,18 @@ description: W tym artykule znajdują się odpowiedzi na często zadawane pytani
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: 30036d6cf241e1ac840b2be67ca78fbda6c60061
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: b8e259c6212e9a1e81b6b0c8825287f3025f9068
+ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172558"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75680532"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Często zadawane pytania — tworzenie kopii zapasowych maszyn wirtualnych platformy Azure
 
 Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące tworzenia kopii zapasowych maszyn wirtualnych platformy Azure przy użyciu usługi [Azure Backup](backup-introduction-to-azure-backup.md) .
 
-## <a name="backup"></a>Backup
+## <a name="backup"></a>Tworzenie kopii zapasowych
 
 ### <a name="which-vm-images-can-be-enabled-for-backup-when-i-create-them"></a>Które obrazy maszyn wirtualnych można włączyć do tworzenia kopii zapasowych podczas ich tworzenia?
 
@@ -111,16 +111,9 @@ Jeśli chcesz, możesz użyć opcji Przywróć dysk:
 
 Tak, można użyć kopii zapasowych wykonanych przed migracją dysków z niezarządzanych do zarządzanych.
 
-- Domyślnie zadanie Przywróć maszynę wirtualną tworzy niezarządzaną maszynę wirtualną.
-- Można jednak przywrócić dyski i używać ich do tworzenia zarządzanej maszyny wirtualnej.
-
 ### <a name="how-do-i-restore-a-vm-to-a-restore-point-before-the-vm-was-migrated-to-managed-disks"></a>Jak mogę przywrócić maszynę wirtualną do punktu przywracania, zanim maszyna wirtualna została zmigrowana do dysków zarządzanych?
 
-Domyślnie zadanie Przywróć maszynę wirtualną tworzy maszynę wirtualną z dyskami niezarządzanymi. Aby utworzyć maszynę wirtualną z dyskami zarządzanymi:
-
-1. [Przywróć do dysków niezarządzanych](tutorial-restore-disk.md#restore-a-vm-disk).
-2. [Przekonwertuj przywrócone dyski na dyski zarządzane](tutorial-restore-disk.md#convert-the-restored-disk-to-a-managed-disk).
-3. [Utwórz maszynę wirtualną z dyskami zarządzanymi](tutorial-restore-disk.md#create-a-vm-from-the-restored-disk).
+Proces przywracania pozostaje taki sam. Jeśli punkt odzyskiwania znajduje się w danym punkcie w czasie, gdy maszyna wirtualna ma dyski niezarządzane, można [przywrócić dyski jako niezarządzane](tutorial-restore-disk.md#unmanaged-disks-restore). Jeśli maszyna wirtualna ma dyski zarządzane, możesz [przywrócić dyski jako dyski zarządzane](tutorial-restore-disk.md#managed-disk-restore). Następnie można [utworzyć maszynę wirtualną na podstawie tych dysków](tutorial-restore-disk.md#create-a-vm-from-the-restored-disk).
 
 [Dowiedz się więcej](backup-azure-vms-automation.md#restore-an-azure-vm) o tym, jak to zrobić w programie PowerShell.
 

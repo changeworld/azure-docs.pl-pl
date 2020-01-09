@@ -3,18 +3,18 @@ title: Szacowanie kosztów planu zużycia w Azure Functions
 description: Dowiedz się, jak lepiej oszacować koszty, które mogą zostać naliczone podczas uruchamiania aplikacji funkcji w planie zużycia na platformie Azure.
 ms.date: 9/20/2019
 ms.topic: conceptual
-ms.openlocfilehash: 9d81c99f3602e3d7ed5508884b0b313ef2f2fcaf
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 38a3435ddbc6e7cce5d18c99e227d405fdc2e7dd
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230857"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75613062"
 ---
 # <a name="estimating-consumption-plan-costs"></a>Szacowanie kosztów planu zużycia
 
 Obecnie istnieją trzy typy planów hostingu dla aplikacji, która działa w Azure Functions, przy czym każdy plan ma własny model cen: 
 
-| Planowanie | Opis |
+| Plan | Opis |
 | ---- | ----------- |
 | [**Wyrażon**](functions-scale.md#consumption-plan) | Opłata jest naliczana tylko za czas, w którym działa aplikacja funkcji. Ten plan obejmuje [bezpłatną][strona cennika] dotacji dla każdej subskrypcji.|
 | [**Tytułu**](functions-scale.md#premium-plan) | Zapewnia te same funkcje i mechanizm skalowania co plan zużycia, ale z ulepszoną wydajnością i dostępem do sieci wirtualnej. Koszt jest określany na podstawie wybranej warstwy cenowej. Aby dowiedzieć się więcej, zobacz [Azure Functions plan Premium](functions-premium-plan.md). |
@@ -188,7 +188,7 @@ To polecenie zwraca ładunek JSON, który wygląda podobnie do następującego p
   ]
 }
 ```
-Ta konkretna odpowiedź pokazuje, że od `2019-09-11T21:46` do `2019-09-11T23:18`, w których aplikacja zużywa 1110000000 MB-milisekundy (1083,98 GB-s).
+Ta konkretna odpowiedź pokazuje, że od `2019-09-11T21:46` do `2019-09-11T23:18`, aplikacja zużywa 1110000000 MB-milisekundy (1083,98 GB-s).
 
 ## <a name="determine-memory-usage"></a>Określanie użycia pamięci
 
@@ -208,12 +208,12 @@ Wyniki wyglądają podobnie jak w poniższym przykładzie:
 
 | Sygnatura czasowa \[czasu UTC\]          | name          | wartość       |
 |----------------------------|---------------|-------------|
-| 9/12/2019, 1:05:14\.947 AM | Bajty prywatne | 209 932 288 |
-| 9/12/2019, 1:06:14\.994 AM | Bajty prywatne | 212 189 184 |
-| 9/12/2019, 1:06:30\.010 AM | Bajty prywatne | 231 714 816 |
-| 9/12/2019, 1:07:15\.040 AM | Bajty prywatne | 210 591 744 |
-| 9/12/2019, 1:12:16\.285 AM | Bajty prywatne | 216 285 184 |
-| 9/12/2019, 1:12:31\.376 AM | Bajty prywatne | 235 806 720 |
+| 9/12/2019, 1:05:14\.947 AM | Prywatne bajty | 209 932 288 |
+| 9/12/2019, 1:06:14\.994 AM | Prywatne bajty | 212 189 184 |
+| 9/12/2019, 1:06:30\.010 AM | Prywatne bajty | 231 714 816 |
+| 9/12/2019, 1:07:15\.040 AM | Prywatne bajty | 210 591 744 |
+| 9/12/2019, 1:12:16\.285 AM | Prywatne bajty | 216 285 184 |
+| 9/12/2019, 1:12:31\.376 AM | Prywatne bajty | 235 806 720 |
 
 ## <a name="function-level-metrics"></a>Metryki na poziomie funkcji
 

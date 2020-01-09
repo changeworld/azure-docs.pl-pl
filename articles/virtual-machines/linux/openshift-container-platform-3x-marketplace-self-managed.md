@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
-ms.openlocfilehash: 20a17e52064c5beb09ce4db5815ddd6faf7cbcba
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 235efd746562ea4bd52b9cb57da0d8165d60de02
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035523"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75561324"
 ---
 # <a name="configure-prerequisites"></a>Konfigurowanie wymagań wstępnych
 
@@ -28,7 +28,7 @@ Przed rozpoczęciem korzystania z oferty portalu Marketplace w celu wdrożenia n
  
 ## <a name="deploy-using-the-marketplace-offer"></a>Wdrażanie przy użyciu oferty Marketplace
 
-Najprostszym sposobem wdrożenia klastra OpenShift platformy Container platform 3,11 na platformie Azure jest korzystanie z [oferty portalu Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/redhat.openshift-container-platform?tab=Overview).
+Najprostszym sposobem wdrożenia klastra OpenShift platformy Container platform 3,11 na platformie Azure jest korzystanie z [oferty portalu Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/osatesting.open-shift-azure-proxy).
 
 Ta opcja jest najprostsza, ale również ma ograniczoną możliwość dostosowywania. Oferta Marketplace służy do wdrażania OpenShift kontenera platform 3.11.82 i zawiera następujące opcje konfiguracji:
 
@@ -189,7 +189,7 @@ Potwierdź informacje kontaktowe na stronie Kupowanie, a następnie kliknij przy
 
 ## <a name="connect-to-the-openshift-cluster"></a>Nawiązywanie połączenia z klastrem OpenShift
 
-Po zakończeniu wdrażania Pobierz połączenie z sekcji Wyjście wdrożenia. Nawiąż połączenie z konsolą OpenShift z przeglądarką przy użyciu **adresu URL konsoli OpenShift**. można również przeprowadzić protokół SSH do hosta bastionu. Poniżej znajduje się przykład, w którym nazwa użytkownika administratora to clusteradmin, a bastionu publiczny adres IP DNS FQDN to bastiondns4hawllzaavu6g.eastus.cloudapp.azure.com:
+Po zakończeniu wdrażania Pobierz połączenie z sekcji Wyjście wdrożenia. Nawiąż połączenie z konsolą OpenShift z przeglądarką przy użyciu **adresu URL konsoli OpenShift**. Można również przeprowadzić protokół SSH do hosta bastionu. Poniżej znajduje się przykład, w którym nazwa użytkownika administratora to clusteradmin, a bastionu publiczny adres IP DNS FQDN to bastiondns4hawllzaavu6g.eastus.cloudapp.azure.com:
 
 ```bash
 $ ssh clusteradmin@bastiondns4hawllzaavu6g.eastus.cloudapp.azure.com

@@ -1,25 +1,18 @@
 ---
-title: Szybki Start — Konfigurowanie Azure NetApp Files i Tworzenie woluminu NFS | Microsoft Docs
+title: 'Szybki Start: Konfigurowanie Azure NetApp Files i woluminu NFS'
 description: Przewodnik Szybki start — opis sposobu szybkiego konfigurowania Azure NetApp Files i tworzenia woluminu.
-services: azure-netapp-files
-documentationcenter: ''
 author: b-juche
-manager: ''
-editor: ''
-ms.assetid: ''
+ms.author: b-juche
 ms.service: azure-netapp-files
 ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
 ms.date: 12/01/2019
-ms.author: b-juche
-ms.openlocfilehash: 912fd6bde4d00cca304a1506465a524cda947a07
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: fc7f13fb7ffe1667aaeaa4a3cc1916c6049a98c1
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74769850"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551662"
 ---
 # <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume"></a>Szybki Start: Konfigurowanie Azure NetApp Files i Tworzenie woluminu NFS 
 
@@ -228,7 +221,7 @@ Ten artykuł instruktażowy wymaga modułu Azure PowerShell AZ Version 2.6.0 lub
 
 1. W bloku zarządzanie Azure NetApp Files konta NetApp kliknij pozycję **woluminy**.
 
-    ![Kliknij pozycję woluminy](../media/azure-netapp-files/azure-netapp-files-click-volumes.png)  
+    ![Klikanie pozycji Woluminy](../media/azure-netapp-files/azure-netapp-files-click-volumes.png)  
 
 2. Kliknij pozycję **+ Dodaj wolumin**.
 

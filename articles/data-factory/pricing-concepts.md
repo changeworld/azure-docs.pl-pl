@@ -9,13 +9,13 @@ ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/25/2018
-ms.openlocfilehash: c42946733ee49ed6acf2c8deadf850208e003339
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.date: 12/27/2019
+ms.openlocfilehash: 247e41faa39520089dc5c95a34b4fb4b6b618761
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684540"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552138"
 ---
 # <a name="understanding-data-factory-pricing-through-examples"></a>Informacje o cenach Data Factory w ramach przykładów
 
@@ -126,13 +126,13 @@ Aby zrealizować ten scenariusz, należy utworzyć potok z następującymi eleme
   - Działanie potoku = $0,00003 (proporcjonalnie do 1 minuty czasu wykonywania. $0.002/godzinę w Azure Integration Runtime)
   - Działanie zewnętrznego potoku = $0,000041 (proporcjonalnie do 10 minut czasu wykonywania. $0.00025/godzinę w Azure Integration Runtime)
 
-## <a name="using-mapping-data-flow-debug-for-a-normal-workday-preview-pricing"></a>Używanie debugowania przepływu danych mapowania dla normalnego produktu Workday (Cennik wersji zapoznawczej)
+## <a name="using-mapping-data-flow-debug-for-a-normal-workday"></a>Używanie debugowania przepływu danych mapowania dla normalnego dnia roboczego
 
-Jako inżynier danych jest odpowiedzialny za projektowanie, kompilowanie i testowanie danych mapowania w każdym dniu. Zaloguj się do interfejsu użytkownika usługi ADF w rano i Włącz tryb debugowania dla przepływów danych. Domyślny czas wygaśnięcia sesji debugowania to 60 minut. Pracujesz przez cały dzień przez 10 godzin, więc sesja debugowania nigdy nie wygasa. W związku z tym opłata za dzień będzie:
+Jako inżynier danych jest odpowiedzialny za projektowanie, kompilowanie i testowanie danych mapowania w każdym dniu. Zaloguj się do interfejsu użytkownika usługi ADF w rano i Włącz tryb debugowania dla przepływów danych. Domyślny czas wygaśnięcia sesji debugowania to 60 minut. Pracujesz w ciągu dnia przez 8 godzin, więc sesja debugowania nigdy nie wygasa. W związku z tym opłata za dzień będzie:
 
-**10 (godz.) x 8 (rdzenie) x $0,112 = $8,96**
+**8 (godz.) x 8 (rdzenie zoptymalizowane pod kątem obliczeń) x $0,193 = $12,35**
 
-## <a name="transform-data-in-blob-store-with-mapping-data-flows-preview-pricing"></a>Przekształcanie danych w magazynie obiektów BLOB przy użyciu mapowania przepływów danych (Cennik wersji zapoznawczej)
+## <a name="transform-data-in-blob-store-with-mapping-data-flows"></a>Przekształcanie danych w magazynie obiektów BLOB przy użyciu mapowania przepływów danych
 
 W tym scenariuszu chcesz przekształcać dane w magazynie obiektów BLOB wizualnie w przepływie danych w usłudze ADF na potrzeby mapowania godzinowego.
 
@@ -153,7 +153,7 @@ Aby zrealizować ten scenariusz, należy utworzyć potok z następującymi eleme
 | Utwórz potok | 3 jednostki odczytu/zapisu (1 dla tworzenia potoku, 2 dla odwołań do zestawu danych) |
 | Pobierz potok | 1 jednostka odczytu/zapisu |
 | Uruchom potok | 2 uruchomienia działania (1 dla uruchomienia wyzwalacza, 1 dla uruchomień działania) |
-| Założenia przepływu danych: czas wykonywania = 10 min + 10 min. TTL | 10 \* 8 rdzeni obliczeń ogólnych z wartością TTL 10 |
+| Założenia przepływu danych: czas wykonywania = 10 min + 10 min. TTL | 10 \* 16 rdzeni ogólnych obliczeń z wartością TTL 10 |
 | Monitorowanie założeń potoku: wystąpił tylko 1 przebieg | 2 ponowione rekordy uruchomienia monitorowania (1 dla uruchomienia potoku, 1 dla uruchomienia działania) |
 
 **Łączny Cennik scenariusza: $0,3011**
@@ -161,9 +161,9 @@ Aby zrealizować ten scenariusz, należy utworzyć potok z następującymi eleme
 - Operacje Data Factory = **$0,0001**
   - Odczyt/zapis = 10\*00001 = $0,0001 [1 R/W = $0,50/50000 = 0,00001]
   - Monitorowanie = 2\*000005 = $0,00001 [1 Monitorowanie = $0,25/50000 = 0,000005]
-- Organizowanie potoku &amp; wykonywania = **$0,301**
+- Organizowanie potoku &amp; wykonywania = **$1,463**
   - Uruchomienia działania = 001\*2 = 0,002 [1 Run = $1/1000 = 0,001]
-  - Działania związane z przepływem danych = $0,299 proporcjonalnie do 20 minut (czas wykonywania w 10 minutach + 10 minut TTL). $0.112/godzinę w Azure Integration Runtime z 8 rdzeniami ogólnymi obliczeniowymi
+  - Działania związane z przepływem danych = $1,461 proporcjonalnie do 20 minut (czas wykonywania w 10 minutach + 10 minut TTL). $0.274/godzinę w Azure Integration Runtime z 16 rdzeniami ogólnymi obliczeniowymi
 
 ## <a name="next-steps"></a>Następne kroki
 

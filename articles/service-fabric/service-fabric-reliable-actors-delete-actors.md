@@ -1,30 +1,21 @@
 ---
-title: Usuwanie aktorów usługi Azure Service Fabric | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak ręczne usunięcie elementów Reliable Actors usługi Service Fabric i ich stan.
-services: service-fabric
-documentationcenter: .net
+title: Usuwanie uczestników Service Fabric platformy Azure
+description: Dowiedz się, jak ręcznie i w pełni usuwać Reliable Actors i ich stan w aplikacji Service Fabric platformy Azure.
 author: amanbha
-manager: chackdan
-editor: vturecek
-ms.assetid: b91384cc-804c-49d6-a6cb-f3f3d7d65a8e
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 03/19/2018
 ms.author: amanbha
-ms.openlocfilehash: e297a6f42774f29e2eca4a410b695d5bbb636300
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b90c5a10c64e273f1c8f48c7bf5713859796db65
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60726608"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645620"
 ---
-# <a name="delete-reliable-actors-and-their-state"></a>Usuwanie elementów Reliable Actors i ich stan
-Wyrzucanie elementów bezużytecznych dezaktywowane aktorów tylko Czyści obiekt aktora, ale nie powoduje usunięcia danych, która jest przechowywana w Menedżer stanu aktora. Podczas ponownego uaktywniania Aktor jego dane ponownie stają się dostępne za pośrednictwem Menedżera stanu. W przypadku gdy aktorów przechowywanie danych w State Manager i są dezaktywowane, ale nigdy nie ponownie aktywować może być niezbędne do wyczyszczenia ich danych.
+# <a name="delete-reliable-actors-and-their-state"></a>Usuń Reliable Actors i ich stan
+Wyrzucanie elementów bezużytecznych nieaktywowanych aktorów jedynie czyści obiekt aktora, ale nie usuwa danych przechowywanych w Menedżerze stanu aktora. Po ponownym uaktywnieniu aktora jego dane zostaną ponownie udostępnione za pomocą menedżera stanu. W przypadkach, gdy aktory przechowują dane w Menedżerze stanu i są dezaktywowane, ale nigdy nie są ponownie uaktywniane, może być konieczne wyczyszczenie danych.
 
-[Usługa aktora](service-fabric-reliable-actors-platform.md) udostępnia funkcję usuwania aktorów z zdalnego obiektu wywołującego:
+[Usługa aktora](service-fabric-reliable-actors-platform.md) udostępnia funkcję usuwania aktorów ze zdalnego obiektu wywołującego:
 
 ```csharp
 ActorId actorToDelete = new ActorId(id);
@@ -43,24 +34,24 @@ ActorService myActorServiceProxy = ActorServiceProxy.create(
 myActorServiceProxy.deleteActorAsync(actorToDelete);
 ```
 
-Usuwanie Aktor ma następujące skutki w zależności od tego, czy jest obecnie aktywny aktora:
+Usunięcie aktora ma następujące skutki, w zależności od tego, czy aktor jest obecnie aktywny:
 
-* **Aktywne aktora**
-  * Aktor zostanie usunięty z listy aktywnych aktorów i dezaktywacji.
-  * Jego stan jest trwale usunięte.
-* **Nieaktywne aktora**
-  * Jego stan jest trwale usunięte.
+* **Aktywny aktor**
+  * Aktor został usunięty z listy aktywnych aktorów i zdezaktywowany.
+  * Jego stan jest trwale usunięty.
+* **Aktor nieaktywny**
+  * Jego stan jest trwale usunięty.
 
-Nie można wywołać Aktor usunąć na siebie z jednego z jego metod aktora, ponieważ aktora nie można usunąć podczas wykonywania w kontekście wywołań aktora, w której środowisko uruchomieniowe uzyskał blokady wokół wywołania aktora i wymuszanie jednowątkowe dostępu.
+Aktor nie może wywoływać operacji Delete dla samego siebie z jednej z metod aktora, ponieważ aktor nie może zostać usunięty podczas wykonywania w kontekście wywołania aktora, w którym środowisko uruchomieniowe uzyskało blokadę wywołania aktora w celu wymuszenia dostępu jednowątkowego.
 
-Aby uzyskać więcej informacji na temat elementów Reliable Actors przeczytaj następujące:
-* [Aktor czasomierze i przypomnienia](service-fabric-reliable-actors-timers-reminders.md)
+Więcej informacji o Reliable Actors można znaleźć w następujących tematach:
+* [Czasomierze aktora i przypomnienia](service-fabric-reliable-actors-timers-reminders.md)
 * [Zdarzenia aktora](service-fabric-reliable-actors-events.md)
-* [Wielobieżność aktora](service-fabric-reliable-actors-reentrancy.md)
-* [Aktor Diagnostyka i monitorowanie wydajności](service-fabric-reliable-actors-diagnostics.md)
+* [Współużytkowania wątkowości aktora](service-fabric-reliable-actors-reentrancy.md)
+* [Diagnostyka aktora i monitorowanie wydajności](service-fabric-reliable-actors-diagnostics.md)
 * [Dokumentacja interfejsu API aktora](https://msdn.microsoft.com/library/azure/dn971626.aspx)
-* [Kod przykładowy w języku C#](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
-* [Kod przykładowy w języku Java](https://github.com/Azure-Samples/service-fabric-java-getting-started)
+* [C#Przykładowy kod](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
+* [Przykładowy kod w języku Java](https://github.com/Azure-Samples/service-fabric-java-getting-started)
 
 <!--Image references-->
 [1]: ./media/service-fabric-reliable-actors-lifecycle/garbage-collection.png

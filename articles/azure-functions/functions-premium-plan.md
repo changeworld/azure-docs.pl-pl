@@ -5,16 +5,16 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: jehollan
-ms.openlocfilehash: 9c1a9a9e3b9e1c12c3960a8586c25436c8d937e0
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 5f6825243b7e410b49b54d04a028b5d71610ea68
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74532897"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75561958"
 ---
 # <a name="azure-functions-premium-plan"></a>Plan Premium usługi Azure Functions
 
-Plan Azure Functions Premium to opcja hostingu dla aplikacji funkcji. Plan Premium oferuje funkcje, takie jak łączność sieci wirtualnej, sprzęt zimnego startu i Premium.  Wiele aplikacji funkcji można wdrożyć w tym samym planie Premium, a plan umożliwia skonfigurowanie rozmiaru wystąpienia obliczeniowego, rozmiaru planu bazowego i maksymalnego rozmiaru planu.  Aby zapoznać się z porównaniem planu Premium i innych typów planów i hostingu, zobacz [Funkcja skalowanie i opcje hostingu](functions-scale.md).
+Plan Azure Functions Premium (nazywany czasem elastycznym planem Premium) jest opcją hostingu dla aplikacji funkcji. Plan Premium oferuje funkcje, takie jak łączność sieci wirtualnej, sprzęt zimnego startu i Premium.  Wiele aplikacji funkcji można wdrożyć w tym samym planie Premium, a plan umożliwia skonfigurowanie rozmiaru wystąpienia obliczeniowego, rozmiaru planu bazowego i maksymalnego rozmiaru planu.  Aby zapoznać się z porównaniem planu Premium i innych typów planów i hostingu, zobacz [Funkcja skalowanie i opcje hostingu](functions-scale.md).
 
 ## <a name="create-a-premium-plan"></a>Tworzenie planu Premium
 
@@ -45,7 +45,7 @@ Liczbę wstępnie rozgrzanych wystąpień można skonfigurować w Azure Portal p
 
 ![Ustawienia skalowania elastycznego](./media/functions-premium-plan/scale-out.png)
 
-Możesz również skonfigurować wystąpienia wstępnie zagrzane dla aplikacji za pomocą interfejsu wiersza polecenia platformy Azure
+Możesz również skonfigurować wstępnie rozgrzane wystąpienia dla aplikacji za pomocą interfejsu wiersza polecenia platformy Azure.
 
 ```azurecli-interactive
 az resource update -g <resource_group> -n <function_app_name>/config/web --set properties.preWarmedInstanceCount=<desired_prewarmed_count> --resource-type Microsoft.Web/sites
@@ -76,7 +76,7 @@ Podczas tworzenia planu można skonfigurować dwa ustawienia: minimalną liczbę
 
 Jeśli aplikacja wymaga wystąpień poza rozmiarem planu, można nadal skalować w poziomie, dopóki liczba wystąpień osiągnie maksymalny limit.  Opłaty są naliczane za wystąpienia poza rozmiarem planu, gdy są one uruchomione i dzierżawione.  W celu skalowania aplikacji do zdefiniowanego maksymalnego limitu zostanie osiągnięty najlepszy nakład pracy, podczas gdy minimalne wystąpienia planu są gwarantowane dla aplikacji.
 
-Rozmiar planu i maksymalne wartości można skonfigurować w Azure Portal przez wybranie opcji **skalowania w poziomie** w ramach planu lub aplikacji funkcji wdrożonej w ramach tego planu (w obszarze **funkcje platformy**).
+Rozmiar planu i maksymalne wartości można skonfigurować w Azure Portal, wybierając opcje **skalowania w poziomie** w ramach planu lub aplikacji funkcji wdrożonej w ramach tego planu (w obszarze **funkcje platformy**).
 
 Możesz również zwiększyć maksymalny limit obciążeń z poziomu interfejsu wiersza polecenia platformy Azure:
 
@@ -103,27 +103,28 @@ Poniżej znajdują się obecnie obsługiwane regiony dla każdego systemu operac
 |Australia Środkowa| ✔<sup>1</sup> | |
 |Australia Środkowa 2| ✔<sup>1</sup> | |
 |Australia Wschodnia| ✔ | |
-|Australia Południowo-Wschodnia | ✔ | ✔ |
+|Australia Południowo-Wschodnia | ✔ | ✔<sup>1</sup> |
 |Brazylia Południowa| ✔<sup>2</sup> |  |
 |Kanada Środkowa| ✔ |  |
 |Środkowe stany USA| ✔ |  |
 |Azja Wschodnia| ✔ |  |
-|Wschodnie stany USA | ✔ | ✔ |
+|Wschodnie stany USA | ✔ | ✔<sup>1</sup> |
 |Wschodnie stany USA 2| ✔ |  |
 |Francja Środkowa| ✔ |  |
-|Japonia Wschodnia| ✔ | ✔ |
+|Niemcy Środkowo-Zachodnie| ✔ | |
+|Japonia Wschodnia| ✔ | ✔<sup>1</sup> |
 |Japonia Zachodnia| ✔ | |
 |Korea Środkowa| ✔ |  |
 |Północno-środkowe stany USA| ✔ |  |
-|Europa Północna| ✔ | ✔ |
-|Południowo-środkowe stany USA| ✔ |  |
+|Europa Północna| ✔ | ✔<sup>1</sup> |
+|Południowo-środkowe stany USA| ✔ | ✔<sup>1</sup> |
 |Indie Południowe | ✔ | |
-|Azja Południowo-Wschodnia| ✔ | ✔ |
+|Azja Południowo-Wschodnia| ✔ | ✔<sup>1</sup> |
 |Południowe Zjednoczone Królestwo| ✔ | |
 |Zachodnie Zjednoczone Królestwo| ✔ |  |
-|Europa Zachodnia| ✔ | ✔ |
+|Europa Zachodnia| ✔ | ✔<sup>1</sup> |
 |Indie Zachodnie| ✔ |  |
-|Zachodnie stany USA| ✔ | ✔ |
+|Zachodnie stany USA| ✔ | ✔<sup>1</sup> |
 |Zachodnie stany USA 2| ✔ |  |
 
 <sup>1</sup> Maksymalna skalowanie w poziomie jest ograniczone do 20 wystąpień.  

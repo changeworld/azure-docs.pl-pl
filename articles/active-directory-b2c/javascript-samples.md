@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 92ac1e6a85023d49ceb8242b93651a60da3d2166
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 996893f95b11d716feb4253688d3ab1d62d140ee
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71064181"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75659529"
 ---
 # <a name="javascript-samples-for-use-in-azure-active-directory-b2c"></a>Przykładowe skrypty JavaScript do użycia w usłudze Azure Active Directory B2C
 
@@ -28,7 +28,11 @@ Możesz dodać własny kod po stronie klienta JavaScript do aplikacji Azure Acti
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Wybierz układ strony dla elementów interfejsu użytkownika aplikacji. Jeśli zamierzasz używać języka JavaScript, musisz zdefiniować wersję układu strony dla wszystkich definicji zawartości w niestandardowych zasadach.
+### <a name="select-a-page-layout"></a>Wybierz układ strony
+
+* [Wybierz układ strony](page-layout.md) dla elementów interfejsu użytkownika aplikacji.
+
+    Jeśli zamierzasz używać języka JavaScript, musisz [zdefiniować wersję układu strony](page-layout.md#replace-datauri-values) dla *wszystkich* definicji zawartości w niestandardowych zasadach.
 
 ## <a name="add-the-scriptexecution-element"></a>Dodaj ScriptExecution element
 
@@ -68,7 +72,7 @@ Podczas dostosowywania interfejsu aplikacji przy użyciu języka JavaScript, nal
 - Aby dostosować komunikat o błędzie usługi Azure AD B2C, należy użyć lokalizacji w zasadach.
 - Jeśli wszystko można osiągnąć za pomocą zasad, zazwyczaj jest to zalecany sposób.
 
-## <a name="javascript-samples"></a>Przykładowe skrypty JavaScript
+## <a name="javascript-samples"></a>Przykłady skryptów w języku JavaScript
 
 ### <a name="show-or-hide-a-password"></a>Pokaż lub Ukryj hasło
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/25/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: a050ce62f745591608249b41ba56992d8fd35204
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 94cac0932da5880e5e7b8a8fac3870b5bc464af9
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74935942"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75564702"
 ---
 ## <a name="register-extensions"></a>Rejestrowanie rozszerzeń
 
@@ -25,7 +25,7 @@ Można wybrać opcję instalacji rozszerzeń powiązań pojedynczo lub dodać od
 
 [!INCLUDE [Register extensions](functions-extension-bundles.md)]
 
-Aby dowiedzieć się więcej, zobacz [Rejestrowanie rozszerzeń powiązań Azure Functions](../articles/azure-functions/functions-bindings-register.md#extension-bundles). Przed dodaniem powiązań do pliku Functions. JSON należy dodać do niego zbiory rozszerzeń.
+Aby dowiedzieć się więcej, zobacz [Rejestrowanie rozszerzeń powiązań Azure Functions](../articles/azure-functions/functions-bindings-register.md#extension-bundles). Przed dodaniem powiązań do pliku Function. JSON należy dodać do niego pakiety rozszerzeń.
 
 ### <a name="register-individual-extensions"></a>Rejestrowanie pojedynczych rozszerzeń
 

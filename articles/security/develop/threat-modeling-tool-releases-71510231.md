@@ -1,30 +1,22 @@
 ---
-title: Threat Modeling Tool releases — Microsoft Threat Modeling Tool na platformie Azure | Microsoft Docs
+title: Microsoft Threat Modeling Tool wersja 11/1/2018 — Azure
 description: Dokumentowanie informacji o wersji dla narzędzia do modelowania zagrożeń
-services: security
-documentationcenter: na
 author: jegeib
-manager: jegeib
-editor: jegeib
-ms.assetid: na
+ms.author: jegeib
 ms.service: security
 ms.subservice: security-develop
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2019
-ms.author: jegeib
-ms.openlocfilehash: 2fb3756e153a52515e598bb31fea1e999144bb28
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: a84d31df491a9cf455a21b9640df36ed29c83cbb
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934754"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552087"
 ---
 # <a name="threat-modeling-tool-update-release-71510231---1112018"></a>Threat Modeling Tool, wersja aktualizacyjna 7.1.51023.1 — 2018-11-01
 
-Jak wspomniano wcześniej w [informacjach o wersji](threat-modeling-tool-releases-71509112.md), firma Microsoft udostępniła aktualizację (7.1.51023.1) do Microsoft Threat Modeling Tool, która będzie wymagała od użytkowników wersji zapoznawczej (wersja zapoznawcza klientów z wersją < 7.1.50911.2) w celu uaktualnienia do obsługiwanej platformy. Usuwanie. Ta wersja nie zawiera żadnych nowych funkcji ani poprawek.
+Jak wspomniano wcześniej w [informacjach o wersji](threat-modeling-tool-releases-71509112.md), firma Microsoft udostępniła aktualizację (7.1.51023.1) do Microsoft Threat Modeling Tool, która będzie wymagała od użytkowników wersji zapoznawczej (wersja zapoznawcza klientów z wersją < 7.1.50911.2) w celu uaktualnienia do obsługiwanej wersji. Ta wersja nie zawiera żadnych nowych funkcji ani poprawek.
 
 - Użytkownicy wersji zapoznawczej będą automatycznie pobierać uaktualnienie, gdy klient zostanie otwarty. Jeśli zdecydujesz się nie instalować nowej aktualizacji, wersja zapoznawcza narzędzia zostanie zamknięta.
 - Użytkownicy wersji systemu, w której znajduje się wersja GA narzędzia, zostaną poproszeni o wybranie, czy mają być uaktualniane.

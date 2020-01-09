@@ -1,24 +1,15 @@
 ---
-title: Konfigurowanie certyfikatów dla aplikacji Service Fabric platformy Azure w systemie Linux | Microsoft Docs
+title: Konfigurowanie certyfikatów dla aplikacji w systemie Linux
 description: Konfigurowanie certyfikatów dla aplikacji za pomocą środowiska uruchomieniowego Service Fabric w klastrze z systemem Linux
-services: service-fabric
-documentationcenter: NA
-author: JimacoMS2
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 09/06/2019
 ms.author: pepogors
-ms.openlocfilehash: 8ae25a02e6170972972c5b2b7e159ef39d1a3673
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 802e76614f51e1f6479a311e61a49d83b8125546
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72167332"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614591"
 ---
 # <a name="certificates-and-security-on-linux-clusters"></a>Certyfikaty i zabezpieczenia w klastrach systemu Linux
 

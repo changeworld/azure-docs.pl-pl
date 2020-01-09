@@ -11,23 +11,23 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.openlocfilehash: 9dd81484d8afab66fcb76f8fccdea348ef6a34c4
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 90e51e8b56bd3fb63d56c630d47770e97f439796
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681499"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75563546"
 ---
 # <a name="linked-services-in-azure-data-factory"></a>Połączone usługi w Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
 > * [Wersja 1](v1/data-factory-create-datasets.md)
-> * [Bieżąca wersja](concepts-datasets-linked-services.md)
+> * [Bieżąca wersja](concepts-linked-services.md)
 
 W tym artykule opisano, jakie są połączone usługi, jak są zdefiniowane w formacie JSON i jak są używane w potokach Azure Data Factory.
 
 Jeśli dopiero zaczynasz Data Factory, zobacz [wprowadzenie do Azure Data Factory](introduction.md) przegląd.
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 Fabryka danych może obejmować jeden lub wiele potoków. **Potok** jest logicznym grupą **działań** , które wspólnie wykonują zadanie. Działania w potoku definiują akcje do wykonania na danych. Można na przykład użyć działania kopiowania w celu skopiowania danych z SQL Server lokalnego do usługi Azure Blob Storage. Następnie możesz użyć działania programu Hive, które uruchamia skrypt programu Hive w klastrze usługi Azure HDInsight, aby przetwarzać dane z magazynu obiektów BLOB w celu utworzenia danych wyjściowych. Na koniec możesz użyć drugiego działania kopiowania, aby skopiować dane wyjściowe do Azure SQL Data Warehouse, na podstawie których są tworzone rozwiązania do raportowania analizy biznesowej (BI). Aby uzyskać więcej informacji na temat potoków i działań, zobacz [potoki i działania](concepts-pipelines-activities.md) w Azure Data Factory.
 
 Teraz **zestaw** danych to nazwany widok zawierający dane, które po prostu wskazuje lub odwołuje się do danych, które mają być używane w **działaniach** jako dane wejściowe i wyjściowe.
@@ -61,12 +61,12 @@ Połączona usługa w Data Factory jest definiowana w formacie JSON w następuj�
 
 W poniższej tabeli opisano właściwości w powyższym kodzie JSON:
 
-Właściwość | Opis | Wymagany |
+Właściwość | Opis | Wymagane |
 -------- | ----------- | -------- |
 name | Nazwa połączonej usługi. Zobacz [reguły nazewnictwa Azure Data Factory](naming-rules.md). |  Tak |
 type | Typ połączonej usługi. Na przykład: AzureStorage (magazyn danych) lub AzureBatch (COMPUTE). Zobacz opis typeProperties. | Tak |
 typeProperties | Właściwości typu są różne dla poszczególnych magazynów danych lub obliczeń. <br/><br/> W przypadku obsługiwanych typów magazynów danych i ich właściwości typów zobacz tabelę [typów zestawu danych](concepts-datasets-linked-services.md#dataset-type) w tym artykule. Przejdź do artykułu łącznika magazynu danych, aby dowiedzieć się więcej o właściwościach typu specyficznych dla magazynu danych. <br/><br/> W przypadku obsługiwanych typów obliczeniowych i ich właściwości typu zobacz [połączone usługi obliczeniowe](compute-linked-services.md). | Tak |
-Właściwością connectvia | [Integration Runtime](concepts-integration-runtime.md) używany do nawiązywania połączenia z magazynem danych. Możesz użyć Azure Integration Runtime lub samodzielnego Integration Runtime (Jeśli magazyn danych znajduje się w sieci prywatnej). Jeśli nie zostanie określony, zostanie użyta domyślna Azure Integration Runtime. | Nie
+connectVia | [Środowiska Integration Runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. Możesz użyć Azure Integration Runtime lub samodzielnego Integration Runtime (Jeśli magazyn danych znajduje się w sieci prywatnej). Jeśli nie zostanie określony, używa domyślnego środowiska Azure Integration Runtime. | Nie
 
 ## <a name="linked-service-example"></a>Przykład połączonej usługi
 Następująca połączona usługa to połączona usługa Azure Storage. Należy zauważyć, że typ jest ustawiony na AzureStorage. Właściwości typu połączonej usługi Azure Storage obejmują parametry połączenia. Usługa Data Factory używa tych parametrów połączenia do nawiązywania połączenia z magazynem danych w czasie wykonywania.
@@ -77,10 +77,7 @@ Następująca połączona usługa to połączona usługa Azure Storage. Należy 
     "properties": {
         "type": "AzureStorage",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
-            }
+            "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",
@@ -95,7 +92,7 @@ Następująca połączona usługa to połączona usługa Azure Storage. Należy 
 Połączone usługi można tworzyć przy użyciu jednego z tych narzędzi lub zestawów SDK: [interfejsów API platformy .NET](quickstart-create-data-factory-dot-net.md), [programu PowerShell](quickstart-create-data-factory-powershell.md), [interfejsu API REST](quickstart-create-data-factory-rest-api.md), Azure Resource Manager szablonu i Azure Portal
 
 ## <a name="data-store-linked-services"></a>Połączone usługi magazynu danych
-Listę przechowywanych danych obsługiwanych przez Data Factory można znaleźć w artykule [Omówienie łączników](copy-activity-overview.md#supported-data-stores-and-formats) . Kliknij magazyn danych, aby poznać obsługiwane właściwości połączenia.
+Listę magazynów danych obsługiwanych przez Data Factory można znaleźć w artykule [Omówienie łączników](copy-activity-overview.md#supported-data-stores-and-formats) . Kliknij magazyn danych, aby poznać obsługiwane właściwości połączenia.
 
 ## <a name="compute-linked-services"></a>Usługi połączone usługi Compute
 [Środowiska obliczeniowe](compute-linked-services.md) referencyjne obsługują szczegółowe informacje o różnych środowiskach obliczeniowych, z którymi można nawiązać połączenie z fabryki danych oraz w różnych konfiguracjach.

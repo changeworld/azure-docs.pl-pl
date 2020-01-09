@@ -8,12 +8,12 @@ ms.service: azure-databricks
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 03/13/2019
-ms.openlocfilehash: b9a5dbd8e24659493bbbefd50c3e234dca3dbdd9
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 800b51c8f900d2ea99900ea147b33010452348f5
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74129341"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75639875"
 ---
 # <a name="regional-disaster-recovery-for-azure-databricks-clusters"></a>Regionalne odzyskiwanie po awarii dla klastrów Azure Databricks
 
@@ -21,7 +21,7 @@ W tym artykule opisano architekturę odzyskiwania po awarii, przydatną dla klas
 
 ## <a name="azure-databricks-architecture"></a>Architektura Azure Databricks
 
-Na wysokim poziomie, podczas tworzenia obszaru roboczego Azure Databricks z Azure Portal, [urządzenie zarządzane](../managed-applications/overview.md) zostanie wdrożone jako zasób platformy Azure w ramach subskrypcji w wybranym regionie świadczenia usługi Azure (na przykład zachodnie stany USA). To urządzenie jest wdrażane w usłudze [azure Virtual Network](../virtual-network/virtual-networks-overview.md) z [grupą zabezpieczeń sieci](../virtual-network/manage-network-security-group.md) i kontem usługi Azure Storage, które są dostępne w ramach Twojej subskrypcji. Sieć wirtualna zapewnia zabezpieczenia na poziomie obwodu obszaru roboczego datakostki i jest chroniona za pośrednictwem sieciowej grupy zabezpieczeń. W obszarze roboczym można tworzyć klastry datarangi, dostarczając typ maszyny wirtualnej i w wersji środowiska uruchomieniowego. Utrwalone dane są dostępne na koncie magazynu, które może być Blob Storage platformy Azure lub Azure Data Lake Storage. Po utworzeniu klastra można uruchamiać zadania za pośrednictwem notesów, interfejsów API REST, punktów końcowych ODBC/JDBC, dołączając je do określonego klastra.
+Na wysokim poziomie, podczas tworzenia obszaru roboczego Azure Databricks z Azure Portal, [urządzenie zarządzane](../azure-resource-manager/managed-applications/overview.md) zostanie wdrożone jako zasób platformy Azure w ramach subskrypcji w wybranym regionie świadczenia usługi Azure (na przykład zachodnie stany USA). To urządzenie jest wdrażane w usłudze [azure Virtual Network](../virtual-network/virtual-networks-overview.md) z [grupą zabezpieczeń sieci](../virtual-network/manage-network-security-group.md) i kontem usługi Azure Storage, które są dostępne w ramach Twojej subskrypcji. Sieć wirtualna zapewnia zabezpieczenia na poziomie obwodu obszaru roboczego datakostki i jest chroniona za pośrednictwem sieciowej grupy zabezpieczeń. W obszarze roboczym można tworzyć klastry datarangi, dostarczając typ maszyny wirtualnej i w wersji środowiska uruchomieniowego. Utrwalone dane są dostępne na koncie magazynu, które może być Blob Storage platformy Azure lub Azure Data Lake Storage. Po utworzeniu klastra można uruchamiać zadania za pośrednictwem notesów, interfejsów API REST, punktów końcowych ODBC/JDBC, dołączając je do określonego klastra.
 
 Płaszczyzna kontroli datakostki zarządza i monitoruje środowisko obszaru roboczego datakostki. Każda operacja zarządzania, taka jak tworzenie klastra, zostanie zainicjowana z poziomu płaszczyzny kontroli. Wszystkie metadane, takie jak zaplanowane zadania, są przechowywane w bazie danych platformy Azure z replikacją geograficzną na potrzeby odporności na uszkodzenia.
 

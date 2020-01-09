@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: 37ff89f6b837aaf0de5c195a89bb827464534d11
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: a8028cf4ece79fc31969532a358cca993c7ab948
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74703712"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75549452"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>Samouczek: Konfigurowanie bezpiecznego protokołu LDAP dla domeny zarządzanej Azure Active Directory Domain Services
 
@@ -22,7 +22,7 @@ Aby komunikować się z domeną zarządzaną Azure Active Directory Domain Servi
 
 W tym samouczku pokazano, jak skonfigurować LDAPs dla domeny zarządzanej AD DS platformy Azure.
 
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Tworzenie certyfikatu cyfrowego do użycia z platformą Azure AD DS
@@ -63,7 +63,7 @@ Certyfikat, którego żądanie lub utworzenie, musi spełniać poniższe wymagan
 
 * **Zaufany wystawca** — certyfikat musi być wystawiony przez Urząd zaufany przez komputery łączące się z domeną zarządzaną przy użyciu protokołu Secure LDAP. Ten Urząd może być publicznym urzędem certyfikacji lub urzędem certyfikacji przedsiębiorstwa zaufanym przez te komputery.
 * **Okres istnienia** — certyfikat musi być ważny przez co najmniej 3-6 miesięcy. Secure LDAP dostęp do domeny zarządzanej zostanie zakłócony po wygaśnięciu certyfikatu.
-* **Nazwa podmiotu** — nazwa podmiotu w certyfikacie musi być domeną zarządzaną. Na przykład jeśli domena ma nazwę *aadds.contoso.com*, nazwa podmiotu certyfikatu musi być **aadds.contoso.com*.
+* **Nazwa podmiotu** — nazwa podmiotu w certyfikacie musi być domeną zarządzaną. Na przykład jeśli domena ma nazwę *aadds.contoso.com*, nazwa podmiotu certyfikatu musi być * *. aadds.contoso.com*.
     * Nazwa DNS lub alternatywna nazwa podmiotu certyfikatu musi być certyfikatem z symbolem wieloznacznym, aby zapewnić prawidłowe działanie bezpiecznego protokołu LDAP z Azure AD Domain Services. Kontrolery domeny używają losowo nazw i można je usunąć lub dodać, aby zapewnić, że usługa pozostanie dostępna.
 * **Użycie klucza** — certyfikat musi być skonfigurowany pod kątem *podpisów cyfrowych* i *szyfrowania kluczy*.
 * **Cel certyfikatu** — certyfikat musi być prawidłowy na potrzeby uwierzytelniania serwera SSL.

@@ -7,13 +7,13 @@ ms.author: heidist
 manager: nitinme
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 11/04/2019
-ms.openlocfilehash: d1e836e0f463d1d2ce2b71d689ed590239cfb607
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.date: 11/26/2019
+ms.openlocfilehash: dec792dfd3a2640fa08ebccd9077c081ba9737bb
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406588"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75563296"
 ---
 # <a name="connect-a-knowledge-store-with-power-bi"></a>Łączenie ze sklepem wiedzy Power BI
 
@@ -24,17 +24,18 @@ W tym artykule dowiesz się, jak nawiązać połączenie z magazynem wiedzy i po
 
 + Wykonaj kroki opisane w temacie [Tworzenie sklepu z bazami danych w Azure Portal](knowledge-store-create-portal.md) lub [Utwórz magazyn wiedzy Azure wyszukiwanie poznawcze przy użyciu opcji REST](knowledge-store-create-rest.md) , aby utworzyć przykładowy magazyn wiedzy użyty w tym instruktażu. Potrzebna będzie również nazwa konta usługi Azure Storage, które zostało użyte do utworzenia magazynu wiedzy, wraz z jego kluczem dostępu z poziomu Azure Portal.
 
-+ [Zainstaluj Power BI Desktop](https://powerbi.microsoft.com/downloads/)
++ [Zainstalowanie programu Power BI Desktop](https://powerbi.microsoft.com/downloads/)
 
 ## <a name="sample-power-bi-template---azure-portal-only"></a>Przykładowy szablon Power BI Azure Portal tylko
 
-Jeśli [Twój sklep merytoryczny został utworzony przy użyciu Azure Portal](knowledge-store-create-portal.md), możesz użyć [przykładowego szablonu Power BI platformy Azure wyszukiwanie poznawcze](https://github.com/Azure-Samples/cognitive-search-templates) , aby wyświetlić wizualizacje Power BI i eksperymentować z nich. Ten szablon jest również dostępny do pobrania po przekroczeniu kreatora **importu danych** .
+Podczas tworzenia [sklepu z bazami danych przy użyciu Azure Portal](knowledge-store-create-portal.md)można pobrać [szablon Power BI](https://github.com/Azure-Samples/cognitive-search-templates) na drugiej stronie kreatora **importu danych** . Ten szablon udostępnia kilka wizualizacji, takich jak WordCloud i Nawigator sieci, dla zawartości tekstowej. 
 
-Przykładowy szablon automatycznie wykona czynności konfiguracyjne opisane w dalszej części tego artykułu. Jeśli jednak korzystasz z interfejsu API REST w celu utworzenia sklepu z bazami danych, Pomiń szablon i Skorzystaj z pozostałych sekcji w tym artykule, aby połączyć sklep z usługą Power BI. Zacznij od [połączenia z Power BI](#connect-with-power-bi).
-
-Przykładowy szablon zawiera kilka wizualizacji, takich jak WordCloud i Nawigator sieci. W przypadku niektórych wizualizacji w szablonie, takich jak Mapa lokalizacji i Podgląd grafu obiektów, nie będą wyświetlane dane dla przykładowego magazynu wiedzy utworzonego w [artykule Tworzenie magazynu wiedzy w Azure Portal](knowledge-store-create-portal.md). Wynika to z faktu, że zostały użyte tylko podzbiór wzbogaceń AI dostępnych w kreatorze **importu danych** .
+Kliknij pozycję **Pobierz szablon Power BI** na stronie **Dodaj umiejętności poznawcze** , aby pobrać i pobrać szablon z publicznej lokalizacji w serwisie GitHub. Kreator modyfikuje szablon w celu dopasowania go do kształtu danych, tak jak to zostało przechwycone w projekcjach magazynu wiedzy określonych w kreatorze. Z tego powodu pobrany szablon będzie się różnić przy każdym uruchomieniu kreatora, przy założeniu, że dane wejściowe są różne i wybrane umiejętności.
 
 ![Przykładowy szablon Power BI Wyszukiwanie poznawcze platformy Azure](media/knowledge-store-connect-power-bi/powerbi-sample-template-portal-only.png "Przykładowy szablon Power BI")
+
+> [!NOTE]
+> Mimo że szablon jest pobierany, gdy Kreator jest w połowie lotu, musisz poczekać, aż magazyn wiedzy zostanie utworzony w usłudze Azure Table Storage, zanim będzie można go używać.
 
 ## <a name="connect-with-power-bi"></a>Łączenie z usługą Power BI
 
@@ -48,7 +49,11 @@ Przykładowy szablon zawiera kilka wizualizacji, takich jak WordCloud i Nawigato
 
 1. Jeśli zostanie wyświetlony monit, wprowadź klucz konta magazynu.
 
-1. Wybierz tabele *hotelReviewsSsDocument*, *hotelReviewsSsKeyPhrases*i *hotelReviewsSsPages* . Te tabele to projekcje tabeli platformy Azure dotyczące przykładowych danych w hotelu i zawierają wzbogacenia AI, które zostały wybrane podczas tworzenia magazynu wiedzy.
+1. Wybierz tabele zawierające dane dotyczące przeglądów hotelu utworzone przez poprzednie przewodniki. 
+
+   + Dla przewodnika po portalu nazwy tabel to *hotelReviewsSsDocument*, *hotelReviewsSsEntities*, *hotelReviewsSsKeyPhrases*i *hotelReviewsSsPages*. 
+   
+   + W przypadku przewodnika REST nazwy tabel to *hotelReviewsDocument*, *hotelReviewsPages*, *hotelReviewsKeyPhrases*i *hotelReviewsSentiment*.
 
 1. Kliknij przycisk **Załaduj**.
 
@@ -57,7 +62,6 @@ Przykładowy szablon zawiera kilka wizualizacji, takich jak WordCloud i Nawigato
    ![Otwórz Power Query](media/knowledge-store-connect-power-bi/powerbi-edit-queries.png "Otwórz Power Query")
 
 1. Wybierz pozycję *hotelReviewsSsDocument*, a następnie usuń kolumny *PartitionKey*, *RowKey*i *timestamp* . 
-
    ![Edytuj tabele](media/knowledge-store-connect-power-bi/powerbi-edit-table.png "Edytuj tabele")
 
 1. Kliknij ikonę z przeciwległymi strzałkami w prawym górnym rogu tabeli, aby rozwinąć *zawartość*. Gdy zostanie wyświetlona lista kolumn, zaznacz opcję wszystkie kolumny, a następnie usuń zaznaczenie kolumn, które zaczynają się od "Metadata". Kliknij przycisk **OK** , aby wyświetlić wybrane kolumny.
@@ -83,6 +87,8 @@ Przykładowy szablon zawiera kilka wizualizacji, takich jak WordCloud i Nawigato
 
 1. Kliknij dwukrotnie każdą relację i upewnij się, że ustawiono **kierunek filtrowania krzyżowego** **.**  Umożliwia to odświeżanie wizualizacji w przypadku zastosowania filtru.
 
+1. Kliknij kafelek raport w okienku nawigacji po lewej stronie, aby eksplorować dane za pomocą wizualizacji. W przypadku pól tekstowych tabele i karty są przydatnymi wizualizacjami. Możesz wybrać pola z każdej z trzech tabel, aby wypełnić tabelę lub kartę. 
+
 <!-- ## Try with larger data sets
 
 We purposely kept the data set small to avoid charges for a demo walkthrough. For a more realistic experience, you can create and then attach a billable Cognitive Services resource to enable a larger number of transactions against the sentiment analyzer, keyphrase extraction, and language detector skills.
@@ -102,7 +108,7 @@ In the enrichment step of the wizard, attach a billable [Cognitive Services](htt
 
 ## <a name="clean-up"></a>Czyszczenie
 
-Gdy pracujesz nad własną subskrypcją, dobrym pomysłem jest zakończenie projektu w celu ustalenia, czy nadal potrzebujesz utworzonych zasobów. Zasoby po lewej stronie mogą być kosztowne. Możesz usunąć zasoby pojedynczo lub usunąć grupę zasobów, aby usunąć cały zestaw zasobów.
+W przypadku pracy w ramach własnej subskrypcji warto sprawdzić po zakończeniu projektu, czy dalej potrzebuje się utworzonych zasobów. Uruchomione zasoby mogą generować koszty. Możesz usunąć zasoby pojedynczo lub usunąć grupę zasobów w celu usunięcia całego zestawu zasobów.
 
 Zasoby można znaleźć w portalu i zarządzać nimi za pomocą linku **wszystkie zasoby** lub **grupy zasobów** w okienku nawigacji po lewej stronie.
 
@@ -114,8 +120,3 @@ Aby dowiedzieć się, jak eksplorować ten magazyn wiedzy przy użyciu Eksplorat
 
 > [!div class="nextstepaction"]
 > [Wyświetl z Eksplorator usługi Storage](knowledge-store-view-storage-explorer.md)
-
-Aby dowiedzieć się, jak utworzyć magazyn wiedzy przy użyciu interfejsów API REST i programu Poster, zobacz następujący artykuł.  
-
-> [!div class="nextstepaction"]
-> [Tworzenie sklepu merytorycznego w usłudze REST](knowledge-store-howto.md)

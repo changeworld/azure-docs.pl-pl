@@ -1,26 +1,15 @@
 ---
-title: Tworzenie klastra Service Fabric z systemem Windows na platformie Azure | Microsoft Docs
+title: Tworzenie klastra Service Fabric z systemem Windows na platformie Azure
 description: W tym samouczku dowiesz się, jak wdrożyć klaster Service Fabric systemu Windows w sieci wirtualnej platformy Azure i sieciowej grupie zabezpieczeń za pomocą programu PowerShell.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/22/2019
-ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 28571584fbd82b245e85e2ebe5b1d282ab5ae979
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 086379e788966b300f988e06ec42c94b880b8281
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73177988"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551730"
 ---
 # <a name="tutorial-deploy-a-service-fabric-cluster-running-windows-into-an-azure-virtual-network"></a>Samouczek: Wdrażanie klastra Service Fabric z systemem Windows w sieci wirtualnej platformy Azure
 
@@ -28,7 +17,7 @@ Niniejszy samouczek jest pierwszą częścią serii. Dowiesz się, jak wdrożyć
 
 W tym samouczku opisano scenariusz produkcyjny. Jeśli chcesz utworzyć mniejszy klaster na potrzeby testowania, zobacz [Tworzenie klastra testowego](./scripts/service-fabric-powershell-create-secure-cluster-cert.md).
 
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Tworzenie sieci wirtualnej na platformie Azure przy użyciu programu PowerShell
@@ -112,6 +101,7 @@ Poniższe reguły ruchu przychodzącego są włączone w zasobie **Microsoft.Net
 
 * ClientConnectionEndpoint (TCP): 19000
 * HttpGatewayEndpoint (HTTP/TCP): 19080
+* SMB: 445
 * Internodecommunication: 1025, 1026, 1027
 * Zakres portów tymczasowych: 49152 do 65534 (wymaga co najmniej 256 portów).
 * Porty do użytku aplikacji: 80 i 443
@@ -153,7 +143,7 @@ Domyślnie [program antywirusowy Windows Defender](/windows/security/threat-prot
 
 Plik parametrów [azuredeploy. Parameters. JSON][parameters] deklaruje wiele wartości używanych do wdrożenia klastra i skojarzonych zasobów. Poniżej przedstawiono parametry, które należy zmodyfikować dla danego wdrożenia:
 
-**Konstruktora** | **Przykładowa wartość** | **Uwagi** 
+**Parametr** | **Przykład wartości** | **Uwagi** 
 |---|---|---|
 |adminUserName|vmadmin| Nazwa użytkownika będącego administratorem maszyn wirtualnych klastra. [Wymagania dotyczące nazwy użytkownika dla maszyny wirtualnej](https://docs.microsoft.com/azure/virtual-machines/windows/faq#what-are-the-username-requirements-when-creating-a-vm). |
 |adminPassword|Haslo#1234| Hasło administratora maszyn wirtualnych klastra. [Wymagania dotyczące hasła dla maszyny wirtualnej](https://docs.microsoft.com/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm).|
@@ -177,12 +167,12 @@ Klaster usługi Service Fabric udostępnia kilka punktów wejścia dla swoich fu
 
 W tym artykule przyjęto założenie, że dzierżawa została już utworzona. Jeśli jeszcze tego nie zrobiono, [Przeczytaj artykuł jak uzyskać dzierżawę Azure Active Directory](../active-directory/develop/quickstart-create-new-tenant.md).
 
-Aby uprościć czynności związane z konfigurowaniem usługi Azure AD przy użyciu klastra Service Fabric, został utworzony zestaw skryptów programu Windows PowerShell. [Pobierz skrypty](https://github.com/robotechredmond/Azure-PowerShell-Snippets/tree/master/MicrosoftAzureServiceFabric-AADHelpers/AADTool) na komputer.
+Aby uprościć czynności związane z konfigurowaniem usługi Azure AD przy użyciu klastra Service Fabric, został utworzony zestaw skryptów programu Windows PowerShell. [Pobierz skrypty](https://github.com/Azure-Samples/service-fabric-aad-helpers) na komputer.
 
 ### <a name="create-azure-ad-applications-and-assign-users-to-roles"></a>Tworzenie aplikacji usługi Azure AD i przypisywanie ról do użytkowników
 Utworzysz dwie aplikacje usługi Azure AD, aby kontrolować dostęp do klastra: jedną aplikację internetową i jedną aplikację natywną. Po utworzeniu aplikacji do reprezentowania klastra Przypisz użytkowników do [ról obsługiwanych przez Service Fabric](service-fabric-cluster-security-roles.md): tylko do odczytu i administrator.
 
-Uruchom skrypt `SetupApplications.ps1` i podaj jako parametry identyfikator dzierżawy, nazwę klastra i adres URL odpowiedzi aplikacji internetowej. Określ nazwy użytkownika i hasła dla użytkowników. Na przykład:
+Uruchom skrypt `SetupApplications.ps1` i podaj jako parametry identyfikator dzierżawy, nazwę klastra i adres URL odpowiedzi aplikacji internetowej. Określ nazwy użytkownika i hasła dla użytkowników. Przykład:
 
 ```powershell
 $Configobj = .\SetupApplications.ps1 -TenantId '<MyTenantID>' -ClusterName 'mysfcluster123' -WebApplicationReplyUrl 'https://mysfcluster123.eastus.cloudapp.azure.com:19080/Explorer/index.html' -AddResourceAccess
@@ -259,7 +249,7 @@ W pliku [azuredeploy. JSON][template]Skonfiguruj usługę Azure AD w sekcji **Mi
 }
 ```
 
-Dodaj wartości parametrów w pliku parametrów [azuredeploy. Parameters. JSON][parameters] . Na przykład:
+Dodaj wartości parametrów w pliku parametrów [azuredeploy. Parameters. JSON][parameters] . Przykład:
 
 ```json
 "aadTenantId": {
@@ -443,7 +433,7 @@ Aby włączyć usługę EventStore w klastrze, Dodaj następujące polecenie do 
 
 Dzienniki Azure Monitor to nasze zalecenie do monitorowania zdarzeń na poziomie klastra. Aby skonfigurować Azure Monitor dzienników do monitorowania klastra, musisz mieć [włączoną diagnostykę, aby wyświetlić zdarzenia poziomu klastra](#configure-diagnostics-collection-on-the-cluster).  
 
-Obszar roboczy musi być połączony z danymi diagnostycznymi pochodzącymi z klastra.  Te dane dziennika są przechowywane na koncie magazynu *applicationDiagnosticsStorageAccountName* w tabelach WADServiceFabric * Eventing, WADWindowsEventLogsTable i WADETWEventTable.
+Obszaru roboczego musi być podłączony do danych diagnostycznych z klastra.  Te dane dziennika są przechowywane na koncie magazynu *applicationDiagnosticsStorageAccountName* w tabelach WADServiceFabric * Eventing, WADWindowsEventLogsTable i WADETWEventTable.
 
 Dodaj obszar roboczy usługi Azure Log Analytics i Dodaj rozwiązanie do obszaru roboczego:
 

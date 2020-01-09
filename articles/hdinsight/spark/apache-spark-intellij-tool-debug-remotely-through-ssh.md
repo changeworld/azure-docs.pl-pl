@@ -1,81 +1,75 @@
 ---
 title: 'Azure Toolkit for IntelliJ: debugowanie aplikacji Spark przy użyciu protokołu SSH-HDInsight'
 description: Wskazówki krok po kroku dotyczące korzystania z narzędzi usługi HDInsight w Azure Toolkit for IntelliJ do zdalnego debugowania aplikacji w klastrach usługi HDInsight za pośrednictwem protokołu SSH
-keywords: debugowanie zdalne IntelliJ, debugowanie zdalne IntelliJ, SSH, IntelliJ, HDInsight, debugowanie IntelliJ, debugowanie
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 11/25/2017
-ms.openlocfilehash: 82aaead87fad0ed9fc7b715baf3dc5ebbd4941be
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.custom: hdinsightactive,hdiseo17may2017
+ms.date: 12/23/2019
+ms.openlocfilehash: 36e665f889ece48661a859e1a9a44f23aec08c37
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494612"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75548885"
 ---
 # <a name="debug-apache-spark-applications-on-an-hdinsight-cluster-with-azure-toolkit-for-intellij-through-ssh"></a>Debugowanie Apache Spark aplikacji w klastrze usługi HDInsight z Azure Toolkit for IntelliJ za pośrednictwem protokołu SSH
 
 Ten artykuł zawiera wskazówki krok po kroku dotyczące korzystania z narzędzi usługi HDInsight w [Azure Toolkit for IntelliJ](https://docs.microsoft.com/java/azure/intellij/azure-toolkit-for-intellij?view=azure-java-stable) do zdalnego debugowania aplikacji w klastrze usługi HDInsight. Aby debugować projekt, możesz również wyświetlić [aplikacje do debugowania usługi HDInsight Spark za pomocą Azure Toolkit for IntelliJ](https://channel9.msdn.com/Series/AzureDataLake/Debug-HDInsight-Spark-Applications-with-Azure-Toolkit-for-IntelliJ) wideo.
 
-**Wymagania wstępne**
-* **Narzędzia usługi HDInsight w Azure Toolkit for IntelliJ**. To narzędzie jest częścią Azure Toolkit for IntelliJ. Aby uzyskać więcej informacji, zobacz [Install Azure Toolkit for IntelliJ](https://docs.microsoft.com/azure/azure-toolkit-for-intellij-installation). I **Azure Toolkit for IntelliJ**. Użyj tego zestawu narzędzi do tworzenia aplikacji Apache Spark dla klastra usługi HDInsight. Aby uzyskać więcej informacji, postępuj zgodnie z instrukcjami w temacie [Use Azure Toolkit for IntelliJ, aby utworzyć aplikacje Apache Spark dla klastra usługi HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-intellij-tool-plugin).
+## <a name="prerequisites"></a>Wymagania wstępne
 
-* **Usługa protokołu SSH w usłudze HDInsight z zarządzaniem nazwami użytkowników i hasłami**. Aby uzyskać więcej informacji, zobacz [nawiązywanie połączenia z usługą HDInsight (Apache Hadoop) przy użyciu protokołu SSH](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix) i [Używanie tunelowania SSH do uzyskiwania dostępu do Ambari internetowego interfejsu użytkownika, JobHistory, NameNode, Apache Oozie i innych witryn sieci Web interfejsów użytkownika](https://docs.microsoft.com/azure/hdinsight/hdinsight-linux-ambari-ssh-tunnel). 
- 
-## <a name="learn-how-to-perform-local-run-and-debugging"></a>Dowiedz się, jak przeprowadzić lokalne uruchamianie i debugowanie
-### <a name="scenario-1-create-a-spark-scala-application"></a>Scenariusz 1. Tworzenie aplikacji platformy Spark Scala 
+* Klaster Apache Spark w usłudze HDInsight. Zobacz [Tworzenie klastra Apache Spark](../spark/apache-spark-jupyter-spark-sql-use-portal.md).
 
-1. Uruchom środowisko IntelliJ IDEA, a następnie utwórz projekt. W oknie dialogowym **Nowy projekt** wykonaj następujące czynności:
+* Użytkownicy systemu Windows: podczas korzystania z lokalnej aplikacji platformy Spark Scala na komputerze z systemem Windows może wystąpić wyjątek, zgodnie z opisem w [Spark-2356](https://issues.apache.org/jira/browse/SPARK-2356). Wyjątek występuje, ponieważ w systemie Windows brakuje pliku WinUtils. exe.
 
-   a. Wybierz pozycję **Azure Spark/HDInsight**. 
+    Aby rozwiązać ten problem, [Pobierz plik wykonywalny](https://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe) do lokalizacji takiej jak **C:\WinUtils\bin**. Następnie Dodaj zmienną środowiskową **HADOOP_HOME**i ustaw wartość zmiennej na **C:\WinUtils**.
 
-   b. Wybierz szablon Java lub Scala w oparciu o Twoje preferencje. Wybierz jedną z następujących opcji:
+* [Pomysł IntelliJ](https://www.jetbrains.com/idea/download/#section=windows) (wersja Community jest bezpłatna).
 
-   - **Projekt platformy Spark (Java)**
+* [Azure Toolkit for IntelliJ](https://docs.microsoft.com/azure/java/intellij/azure-toolkit-for-intellij-installation).
 
-   - **Projekt platformy Spark (Scala)**
+* [Wtyczka Scala dla IntelliJ](../spark/apache-spark-intellij-tool-plugin.md#install-scala-plugin-for-intellij-idea).
 
-   - **Projekt Spark z przykładami (Scala)**
+* Klient SSH. Aby uzyskać więcej informacji, zobacz [Łączenie się z usługą HDInsight (Apache Hadoop) przy użyciu protokołu SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-   - **Projekt platformy Spark z przykładami debugowania zadania błędu (wersja zapoznawcza) (Scala)**
+## <a name="create-a-spark-scala-application"></a>Tworzenie aplikacji platformy Spark Scala
 
-     W tym przykładzie zastosowano **projekt Spark z szablonem Samples (Scala)** .
+1. Uruchom środowisko IntelliJ IDEA i wybierz pozycję **Create New Project** (Utwórz nowy projekt), aby otworzyć okno **New Project** (Nowy projekt).
 
-   d. Z listy **Narzędzie kompilacji** wybierz jedną z następujących pozycji odpowiednio do potrzeb:
+1. W lewym okienku wybierz pozycję **Apache Spark/HDInsight** .
 
-   - **Maven**do obsługi Kreatora tworzenia projektów Scala.
+1. Wybierz **projekt Spark z przykładami (Scala)** z okna głównego.
 
-   - **SBT**, do zarządzania zależnościami i kompilowania dla projektu Scala.
+1. Z listy rozwijanej **Build tool** (Narzędzie kompilacji), wybierz jedną z następujących pozycji:
+
+    * **Maven** — w celu obsługi kreatora tworzenia projektu Scala.
+    * **SBT** — na potrzeby zarządzania zależnościami i kompilacji projektu Scala.
 
      ![IntelliJ Utwórz nowy projekt Spark](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-create-projectfor-debug-remotely.png)
 
-   d. Wybierz opcję **Dalej**.
+1. Wybierz opcję **Dalej**.
 
-1. W następnym oknie **Nowy projekt** wykonaj następujące czynności:
+1. W następnym oknie **Nowy projekt** podaj następujące informacje:
+
+    |Właściwość |Opis |
+    |---|---|
+    |Project name (Nazwa projektu)|Wprowadź nazwę. W tym instruktażu `myApp`.|
+    |Lokalizacja projektu|Wprowadź żądaną lokalizację do zapisania projektu.|
+    |Zestaw SDK projektu|Jeśli to pole jest puste, wybierz pozycję **Nowy...** i przejdź do JDK.|
+    |Wersja platformy Spark|Kreator tworzenia integruje poprawną wersję dla zestawów Spark SDK i Scala SDK. Jeśli wersja klastra Spark jest starsza niż 2.0, wybierz wartość **Spark 1.x**. W przeciwnym razie wybierz pozycję **Spark 2. x.** . W tym przykładzie używana jest wersja **Spark 2.3.0 (Scala 2.11.8)** .|
 
    ![IntelliJ nowy projekt wybierz wersję platformy Spark](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-new-project.png)
 
-   a. Wprowadź nazwę projektu i lokalizację projektu.
+1. Wybierz pozycję **Finish** (Zakończ). Udostępnienie projektu może potrwać kilka minut. Obejrzyj w prawym dolnym rogu, aby postępować.
 
-   b. Z listy rozwijanej **zestaw SDK projektu** wybierz pozycję **Java 1,8** dla klastra **Spark 2. x** lub wybierz pozycję **Java 1,7** dla klastra **Spark 1. x** .
+1. Rozwiń projekt i przejdź do **przykładu** **src** > **Main** > **Scala** > . Kliknij dwukrotnie **SparkCore_WasbIOTest**.
 
-   d. Z listy rozwijanej **wersja platformy Spark** Kreator tworzenia projektu Scala integruje poprawną wersję zestawu Spark SDK i scala SDK. Jeśli wersja klastra Spark jest wcześniejsza niż 2,0, wybierz pozycję **Spark 1. x**. W przeciwnym razie wybierz pozycję **Spark 2. x.** W tym przykładzie używana jest wersja **Spark 2.0.2 (Scala 2.11.8)** .
+## <a name="perform-local-run"></a>Wykonaj przebieg lokalny
 
-   d. Wybierz pozycję **Finish** (Zakończ).
-
-1. Wybierz pozycję **src** > **głównym** > **Scala** , aby otworzyć swój kod w projekcie. Ten przykład używa skryptu **SparkCore_wasbloTest** .
-
-### <a name="prerequisite-for-windows"></a>Wymagania wstępne dla systemu Windows
-Podczas uruchamiania lokalnej aplikacji platformy Spark Scala na komputerze z systemem Windows może wystąpić wyjątek, zgodnie z opisem w platformie [Spark-2356](https://issues.apache.org/jira/browse/SPARK-2356). Wyjątek występuje, ponieważ w systemie Windows brakuje pliku WinUtils. exe.
-
-Aby rozwiązać ten problem, [Pobierz plik wykonywalny](https://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe) do lokalizacji takiej jak **C:\WinUtils\bin**. Następnie Dodaj zmienną środowiskową **HADOOP_HOME**i ustaw wartość zmiennej na **C:\WinUtils**.
-
-### <a name="scenario-2-perform-local-run"></a>Scenariusz 2: wykonywanie przebiegu lokalnego
-
-1. Otwórz skrypt **SparkCore_wasbloTest** , kliknij prawym przyciskiem myszy Edytor skryptów, a następnie wybierz opcję **Uruchom "[zadanie Spark] XXX"** , aby wykonać przebieg lokalny.
+1. W skrypcie **SparkCore_WasbIOTest** kliknij prawym przyciskiem myszy Edytor skryptów, a następnie wybierz opcję **Uruchom "SparkCore_WasbIOTest"** , aby wykonać przebieg lokalny.
 
 1. Po zakończeniu lokalnego uruchomienia można zobaczyć plik wyjściowy Zapisz w bieżącym programie Project Explorer **dane** >  **__domyślne__** .
 
@@ -85,22 +79,21 @@ Aby rozwiązać ten problem, [Pobierz plik wykonywalny](https://public-repo-1.ho
 
     ![IntelliJ uruchamianie konfiguracji debugowania — uruchomienie lokalne](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/local-run-configuration.png)
 
-    - [Zmienne środowiskowe](#prerequisite-for-windows): Jeśli ustawisz już zmienną środowiskową system **HADOOP_HOME** na **C:\WinUtils**, może ona automatycznie wykryć, że nie trzeba ręcznie dodawać.
-    - [WinUtils. exe — lokalizacja](#prerequisite-for-windows): Jeśli nie została ustawiona zmienna środowiskowa systemowa, można znaleźć lokalizację, klikając jej przycisk.
+    - [Zmienne środowiskowe](#prerequisites): Jeśli ustawisz już zmienną środowiskową system **HADOOP_HOME** na **C:\WinUtils**, może ona automatycznie wykryć, że nie trzeba ręcznie dodawać.
+    - [WinUtils. exe — lokalizacja](#prerequisites): Jeśli nie została ustawiona zmienna środowiskowa systemowa, można znaleźć lokalizację, klikając jej przycisk.
     - Po prostu wybierz jedną z dwóch opcji i nie są one potrzebne w systemach MacOS i Linux.
 
 1. Konfigurację można również ustawić ręcznie przed wykonaniem operacji lokalnego uruchamiania i debugowania lokalnego. Na poprzednim zrzucie ekranu wybierz znak plus ( **+** ). Następnie wybierz opcję **Apache Spark w usłudze HDInsight** . Wprowadź informacje w polu **Nazwa**, **Nazwa klasy głównej** do zapisania, a następnie kliknij przycisk Uruchom lokalnie.
 
-### <a name="scenario-3-perform-local-debugging"></a>Scenariusz 3: wykonywanie debugowania lokalnego
+## <a name="perform-local-debugging"></a>Wykonaj debugowanie lokalne
+
 1. Otwórz skrypt **SparkCore_wasbloTest** , ustaw punkty przerwania.
+
 1. Kliknij prawym przyciskiem myszy Edytor skryptów, a następnie wybierz opcję **Debuguj "[Spark w usłudze HDInsight] XXX"** , aby przeprowadzić debugowanie lokalne.
 
-## <a name="learn-how-to-perform-remote-run-and-debugging"></a>Dowiedz się, jak wykonać zdalne uruchamianie i debugowanie
-### <a name="scenario-1-perform-remote-run"></a>Scenariusz 1: wykonywanie przebiegu zdalnego
+## <a name="perform-remote-run"></a>Wykonaj przebieg zdalny
 
-1. Aby uzyskać dostęp do menu **Edytuj konfiguracje** , wybierz ikonę w prawym górnym rogu. Z tego menu można utworzyć lub edytować konfiguracje zdalnego debugowania.
-
-   ![HDI IntelliJ Edytuj konfiguracje](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-edit-configurations.png)
+1. Przejdź do **uruchamiania** > **Edytuj konfiguracje...** . Z tego menu można utworzyć lub edytować konfiguracje zdalnego debugowania.
 
 1. W oknie dialogowym **konfiguracje uruchamiania/debugowania** wybierz znak plusa ( **+** ). Następnie wybierz opcję **Apache Spark w usłudze HDInsight** .
 
@@ -124,7 +117,8 @@ Aby rozwiązać ten problem, [Pobierz plik wykonywalny](https://public-repo-1.ho
 
    ![Wynik zdalnego uruchomienia zdalnego zadania Spark debugowania IntelliJ](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/spark-remote-run-result.png)
 
-### <a name="scenario-2-perform-remote-debugging"></a>Scenariusz 2: przeprowadzenie debugowania zdalnego
+## <a name="perform-remote-debugging"></a>Wykonaj debugowanie zdalne
+
 1. Skonfiguruj punkty przerwania, a następnie kliknij ikonę **debugowania zdalnego** . Różnica polega na tym, że należy skonfigurować nazwę użytkownika/hasło SSH.
 
    ![Ikona debugowania zdalnego zadania platformy Spark debugowania IntelliJ](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-debug-icon.png)
@@ -133,7 +127,7 @@ Aby rozwiązać ten problem, [Pobierz plik wykonywalny](https://public-repo-1.ho
 
    ![Karta debugowania zdalnego zadania platformy Spark debugowania IntelliJ](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-debugger-tab.png)
 
-### <a name="scenario-3-perform-remote-debugging-and-bug-fixing"></a>Scenariusz 3: przeprowadzenie debugowania zdalnego i naprawianie błędów
+### <a name="perform-remote-debugging-and-bug-fixing"></a>Wykonaj debugowanie zdalne i naprawianie błędów
 
 1. Skonfiguruj dwa punkty przerwania, a następnie wybierz ikonę **debugowania** , aby rozpocząć proces zdalnego debugowania.
 
@@ -157,25 +151,29 @@ Aby rozwiązać ten problem, [Pobierz plik wykonywalny](https://public-repo-1.ho
 
    ![Debuguj zdalne zadanie Spark IntelliJ debugowania bez wyjątku](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-debug-without-exception.png)
 
-## <a name="seealso"></a>Następne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Przegląd: platforma Apache Spark w usłudze Azure HDInsight](apache-spark-overview.md)
 
-### <a name="demo"></a>Demonstracja
+### <a name="demo"></a>Pokaz
+
 * Tworzenie projektu Scala (wideo): [tworzenie Apache Spark Scala aplikacji](https://channel9.msdn.com/Series/AzureDataLake/Create-Spark-Applications-with-the-Azure-Toolkit-for-IntelliJ)
 * Debugowanie zdalne (wideo): [użyj Azure Toolkit for IntelliJ do zdalnego debugowania aplikacji Apache Spark w klastrze usługi HDInsight](https://channel9.msdn.com/Series/AzureDataLake/Debug-HDInsight-Spark-Applications-with-Azure-Toolkit-for-IntelliJ)
 
 ### <a name="scenarios"></a>Scenariusze
+
 * [Apache Spark z usługą BI: wykonywanie interakcyjnej analizy danych przy użyciu platformy Spark w usłudze HDInsight przy użyciu narzędzi analizy biznesowej](apache-spark-use-bi-tools.md)
 * [Apache Spark z Machine Learning: korzystanie z platformy Spark w usłudze HDInsight do analizy temperatury kompilacji przy użyciu danych HVAC](apache-spark-ipython-notebook-machine-learning.md)
 * [Apache Spark z Machine Learning: korzystanie z platformy Spark w usłudze HDInsight do przewidywania wyników inspekcji żywności](apache-spark-machine-learning-mllib-ipython.md)
 * [Analiza dzienników witryny sieci Web przy użyciu Apache Spark w usłudze HDInsight](../hdinsight-apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="create-and-run-applications"></a>Tworzenie i uruchamianie aplikacji
+
 * [Tworzenie autonomicznych aplikacji przy użyciu języka Scala](../hdinsight-apache-spark-create-standalone-application.md)
 * [Zdalne uruchamianie zadań w klastrze Apache Spark przy użyciu programu Apache Livy](apache-spark-livy-rest-interface.md)
 
 ### <a name="tools-and-extensions"></a>Narzędzia i rozszerzenia
+
 * [Tworzenie aplikacji Apache Spark dla klastra usługi HDInsight za pomocą Azure Toolkit for IntelliJ](apache-spark-intellij-tool-plugin.md)
 * [Używanie Azure Toolkit for IntelliJ do zdalnego debugowania aplikacji Apache Spark za pośrednictwem sieci VPN](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
 * [Tworzenie aplikacji Apache Spark przy użyciu narzędzi usługi HDInsight w Azure Toolkit for Eclipse](../hdinsight-apache-spark-eclipse-tool-plugin.md)
@@ -185,5 +183,6 @@ Aby rozwiązać ten problem, [Pobierz plik wykonywalny](https://public-repo-1.ho
 * [Instalacja oprogramowania Jupyter na komputerze i nawiązywanie połączenia z klastrem Spark w usłudze HDInsight](apache-spark-jupyter-notebook-install-locally.md)
 
 ### <a name="manage-resources"></a>Zarządzanie zasobami
+
 * [Zarządzanie zasobami klastra Apache Spark w usłudze Azure HDInsight](apache-spark-resource-manager.md)
 * [Śledzenie i debugowanie zadań uruchamianych w klastrze Apache Spark w usłudze HDInsight](apache-spark-job-debugging.md)

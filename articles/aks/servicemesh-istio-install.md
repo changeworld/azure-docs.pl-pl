@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/15/2019
 ms.author: pabouwer
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: 2768c2d4cef68dcf25e25c047aaa69653af5e0b6
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 85ef34f8644d95f6cfd2c7262bfe4bbc0683547f
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74170894"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75561742"
 ---
 # <a name="install-and-use-istio-in-azure-kubernetes-service-aks"></a>Instalowanie i używanie Istio w usłudze Azure Kubernetes Service (AKS)
 
@@ -136,7 +136,7 @@ spec:
 Zainstaluj istio przy użyciu polecenia `istioctl apply` i powyższej `istio.aks.yaml` Istio kontroli warstwy w następujący sposób:
 
 ```console
-istioctl manifest apply -f istio.aks.yaml
+istioctl manifest apply -f istio.aks.yaml --logtostderr --set installPackagePath=./install/kubernetes/operator/charts
 ```
 
 Instalator wdroży wiele [CRDs][kubernetes-crd] , a następnie zarządza zależnościami w celu zainstalowania wszystkich odpowiednich obiektów zdefiniowanych dla tej konfiguracji programu Istio. Powinien wyglądać podobnie do poniższego fragmentu kodu.
@@ -361,7 +361,9 @@ istioctl dashboard envoy <pod-name>.<namespace>
 Aby usunąć Istio z klastra AKS, użyj polecenia `istioctl manifest generate` z plikiem specyfikacji `istio.aks.yaml` Istio Control. Spowoduje to wygenerowanie wdrożonego manifestu, który zostanie potoku `kubectl delete` w celu usunięcia wszystkich zainstalowanych składników i przestrzeni nazw `istio-system`.
 
 ```console
-istioctl manifest generate -f istio.aks.yaml | kubectl delete -f -
+istioctl manifest generate -f istio.aks.yaml -o istio-components-aks --logtostderr --set installPackagePath=./install/kubernetes/operator/charts 
+
+kubectl delete -f istio-components-aks -R
 ```
 
 ### <a name="remove-istio-crds-and-secrets"></a>Usuń Istio CRDs i wpisy tajne

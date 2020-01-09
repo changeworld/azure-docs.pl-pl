@@ -1,173 +1,181 @@
 ---
-title: Rozwiązania magazynu platformy Azure dla usług HDInsight — usługi Azure ML
-description: Dowiedz się więcej o różnych opcji magazynowania dostępnych za pomocą usługi ML w HDInsight
+title: Rozwiązania Azure Storage dla usług ML w usłudze HDInsight — Azure
+description: Dowiedz się więcej o różnych opcjach magazynu dostępnych w usłudze ML w usłudze HDInsight
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 06/27/2018
-ms.openlocfilehash: 8c1624ba6780fc45e3e663cadc032e253ce9545f
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.date: 01/02/2020
+ms.openlocfilehash: 1c79d0390a80a1358ddb09707fbabf6a5a2affdc
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67448872"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75660243"
 ---
-# <a name="azure-storage-solutions-for-ml-services-on-azure-hdinsight"></a>Rozwiązania magazynu platformy Azure dla usługi ML w usłudze Azure HDInsight
+# <a name="azure-storage-solutions-for-ml-services-on-azure-hdinsight"></a>Rozwiązania usługi Azure Storage dla usług ML w usłudze Azure HDInsight
 
-Usługi uczenie Maszynowe na HDInsight można użyć różnych systemów pamięci masowej można utrwalić dane, kod lub obiektów, które zawierają wyniki analizy. Obejmują one następujące opcje:
+Usługi ML w usłudze HDInsight mogą używać różnych rozwiązań do przechowywania danych, kodu lub obiektów, które zawierają wyniki analizy. Te rozwiązania obejmują następujące opcje:
 
 - [Azure Blob](https://azure.microsoft.com/services/storage/blobs/)
 - [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)
-- [Usługa Azure File storage](https://azure.microsoft.com/services/storage/files/)
+- [Usługa Azure File Storage](https://azure.microsoft.com/services/storage/files/)
 
-Istnieje również możliwość uzyskiwania dostępu do wielu kont usługi Azure storage lub kontenerów przy użyciu klastra usługi HDInsight. Usługa Azure File storage to opcja magazynowania danych wygodne do użytku w węźle krawędzi umożliwiające instalowanie udziału plików usługi Azure Storage, na przykład system plików w systemie Linux. Ale udziałów plików platformy Azure może być zainstalowany i używane przez system z obsługiwanym systemem operacyjnym, takich jak Windows lub Linux. 
+Istnieje również możliwość uzyskiwania dostępu do wielu kontenerów lub kont magazynu platformy Azure z klastrem usługi HDInsight. Usługa Azure File Storage to wygodna opcja magazynu danych do użycia w węźle brzegowym, który umożliwia zainstalowanie udziału plików usługi Azure Storage w systemie, na przykład systemu plików Linux. Jednak udziały plików platformy Azure mogą być instalowane i używane przez dowolny system, który ma obsługiwany system operacyjny, taki jak Windows lub Linux.
 
-Podczas tworzenia klastra Apache Hadoop w HDInsight, możesz określić **usługi Azure storage** konta lub **usługi Data Lake Storage**. Z tego konta kontener określonego magazynu przechowuje systemu plików dla klastra, którą tworzysz (na przykład, rozproszony System plików Hadoop). Aby uzyskać więcej informacji i wskazówek zobacz:
+Podczas tworzenia klastra Apache Hadoop w usłudze HDInsight należy określić konto **usługi Azure Storage** lub **Data Lake Storage**. Określony kontener magazynu z tego konta zawiera system plików dla tworzonego klastra (na przykład rozproszony system plików Hadoop). Aby uzyskać więcej informacji i wskazówki, zobacz:
 
-- [Usługa Azure storage za pomocą HDInsight](../hdinsight-hadoop-use-blob-storage.md)
-- [Użyj usługi Data Lake Storage z klastrami usługi Azure HDInsight](../hdinsight-hadoop-use-data-lake-store.md)
+- [Korzystanie z usługi Azure Storage z usługą HDInsight](../hdinsight-hadoop-use-blob-storage.md)
+- [Używanie Data Lake Storage z klastrami usługi Azure HDInsight](../hdinsight-hadoop-use-data-lake-store.md)
 
-## <a name="use-azure-blob-storage-accounts-with-ml-services-cluster"></a>Korzystanie z kont magazynu obiektów Blob platformy Azure z klastrem usługi ML
+## <a name="use-azure-blob-storage-accounts-with-ml-services-cluster"></a>Korzystanie z kont usługi Azure Blob Storage z klastrem usług ML
 
-Jeśli określono więcej niż jedno konto magazynu podczas tworzenia klastra usługi uczenie Maszynowe, zgodnie z poniższymi instrukcjami wyjaśniono, jak używać pomocniczego konta dla dostępu do danych i operacje w klastrze usługi ML. Przyjęto założenie, że następujących kont magazynu i kontener: **storage1** oraz powoduje używanie domyślnego kontenera o nazwie **container1**, i **storage2** z **container2**.
+Jeśli podczas tworzenia klastra usług ML określono więcej niż jedno konto magazynu, poniższe instrukcje wyjaśniają, jak używać konta pomocniczego do uzyskiwania dostępu do danych i operacji w klastrze usługi ML. Przyjęto założenie następujących kont magazynu i kontenera: **storage1** i domyślnego kontenera o nazwie **container1**, a **storage2** z **container2**.
 
 > [!WARNING]  
-> Ze względów wydajnościowych klaster HDInsight jest tworzony w tym samym centrum danych, co konto magazynu podstawowego, który określisz. Za pomocą konta magazynu w innej lokalizacji niż klaster HDInsight nie jest obsługiwana.
+> Ze względu na wydajność klaster usługi HDInsight jest tworzony w tym samym centrum danych co określone przez Ciebie podstawowe konto magazynu. Użycie konta magazynu w innej lokalizacji niż klaster usługi HDInsight nie jest obsługiwane.
 
-### <a name="use-the-default-storage-with-ml-services-on-hdinsight"></a>Użyj domyślnej pamięci masowej z usługami uczenia Maszynowego na HDInsight
+### <a name="use-the-default-storage-with-ml-services-on-hdinsight"></a>Korzystanie z domyślnego magazynu za pomocą usługi ML w usłudze HDInsight
 
-1. Przy użyciu klienta SSH, łączenie z węzłem krawędzi klastra. Aby uzyskać informacje na temat korzystania z protokołu SSH z klastrami HDInsight, zobacz [użycia protokołu SSH w usłudze HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
+1. Za pomocą klienta SSH Połącz się z węzłem brzegowym klastra. Aby uzyskać informacje na temat używania protokołu SSH z klastrami usługi HDInsight, zobacz [Używanie protokołu SSH z usługą HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
   
-2. Skopiuj plik przykładowy mysamplefile.csv, do katalogu/Share. 
+2. Skopiuj przykładowy plik mysamplefile. CSV do katalogu/Share.
 
-        hadoop fs –mkdir /share
-        hadoop fs –copyFromLocal mycsv.scv /share  
+    ```bash
+    hadoop fs –mkdir /share
+    hadoop fs –copyFromLocal mycsv.scv /share
+    ```
 
-3. Przełącz się do programu R Studio lub innej konsoli R, a następnie napisać kod R, aby ustawić nazwę węzła **domyślne** i lokalizację pliku, którego chcesz uzyskać dostęp.  
+3. Przejdź do programu R Studio lub innej konsoli języka R i napisz kod R, aby ustawić **domyślny** węzeł nazwy i lokalizację pliku, do którego chcesz uzyskać dostęp.  
 
-        myNameNode <- "default"
-        myPort <- 0
-
-        #Location of the data:  
-        bigDataDirRoot <- "/share"  
-
-        #Define Spark compute context:
-        mySparkCluster <- RxSpark(nameNode=myNameNode, consoleOutput=TRUE)
-
-        #Set compute context:
-        rxSetComputeContext(mySparkCluster)
-
-        #Define the Hadoop Distributed File System (HDFS) file system:
-        hdfsFS <- RxHdfsFileSystem(hostName=myNameNode, port=myPort)
-
-        #Specify the input file to analyze in HDFS:
-        inputFile <-file.path(bigDataDirRoot,"mysamplefile.csv")
-
-Wszystkie odwołania katalogów i plików, wskaż na koncie magazynu `wasb://container1@storage1.blob.core.windows.net`. Jest to **domyślne konto magazynu** skojarzony z klastrem HDInsight.
-
-### <a name="use-the-additional-storage-with-ml-services-on-hdinsight"></a>Dodatkowego magazynu za pomocą usługi uczenie Maszynowe na HDInsight
-
-Załóżmy, że do przetworzenia pliku o nazwie mysamplefile1.csv, który znajduje się w /private katalogu **container2** w **storage2**.
-
-W kodzie R punkt nazwa węzła odwołania do **storage2** konta magazynu.
-
-    myNameNode <- "wasb://container2@storage2.blob.core.windows.net"
+    ```R
+    myNameNode <- "default"
     myPort <- 0
 
-    #Location of the data:
-    bigDataDirRoot <- "/private"
+    #Location of the data:  
+    bigDataDirRoot <- "/share"  
 
     #Define Spark compute context:
-    mySparkCluster <- RxSpark(consoleOutput=TRUE, nameNode=myNameNode, port=myPort)
+    mySparkCluster <- RxSpark(nameNode=myNameNode, consoleOutput=TRUE)
 
     #Set compute context:
     rxSetComputeContext(mySparkCluster)
 
-    #Define HDFS file system:
+    #Define the Hadoop Distributed File System (HDFS) file system:
     hdfsFS <- RxHdfsFileSystem(hostName=myNameNode, port=myPort)
 
     #Specify the input file to analyze in HDFS:
-    inputFile <-file.path(bigDataDirRoot,"mysamplefile1.csv")
-
-Wszystkie odwołania do plików i katalogów wskazywać na koncie magazynu `wasb://container2@storage2.blob.core.windows.net`. Jest to **nazwy węzła** określony.
-
-Należy skonfigurować `/user/RevoShare/<SSH username>` katalogu **storage2** w następujący sposób:
-
-
-    hadoop fs -mkdir wasb://container2@storage2.blob.core.windows.net/user
-    hadoop fs -mkdir wasb://container2@storage2.blob.core.windows.net/user/RevoShare
-    hadoop fs -mkdir wasb://container2@storage2.blob.core.windows.net/user/RevoShare/<RDP username>
-
-## <a name="use-azure-data-lake-storage-with-ml-services-cluster"></a>Użyj usługi Azure Data Lake Storage z klastrem usługi ML 
-
-Aby użyć usługi Data Lake Storage z klastrem usługi HDInsight, należy nadać klastrowi dostęp do każdej usługi Azure usługi Data Lake Storage, którego chcesz użyć. Aby uzyskać instrukcje dotyczące sposobu używania witryny Azure portal do utworzenia klastra HDInsight przy użyciu konta usługi Azure Data Lake Storage jako magazynu domyślnego lub dodatkowego miejsca do magazynowania, zobacz [Tworzenie klastra usługi HDInsight przy użyciu usługi Data Lake Storage przy użyciu witryny Azure portal](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md).
-
-Następnie należy użyć magazynu w skrypcie języka R podobnie jak konto magazynu pomocniczego platformy Azure zgodnie z opisem w poprzedniej procedurze.
-
-### <a name="add-cluster-access-to-your-azure-data-lake-storage"></a>Dodaj klastrowi dostęp do usługi Azure Data Lake Storage
-Możesz uzyskać dostęp usługi Data Lake Storage, korzystania z jednostki usługi Azure Active Directory (Azure AD), który jest skojarzony z klastrem usługi HDInsight.
-
-1. Podczas tworzenia klastra usługi HDInsight, wybrać **tożsamości usługi AAD klastra** z **źródła danych** kartę.
-
-2. W **tożsamości usługi AAD klastra** dialogowego **wybierz jednostkę usługi AD**, wybierz opcję **Utwórz nową**.
-
-Po nadaj nazwę jednostki usługi i Utwórz hasło dla niego, kliknij przycisk **zarządzanie dostępem do usługi ADLS** skojarzyć nazwę główną usługi za pomocą usługi Data Lake Storage.
-
-Istnieje również możliwość dodawania klastrowi dostęp do co najmniej jedno konto usługi Data Lake Storage, po utworzeniu klastra. Otwórz pozycji Azure portal dla usługi Data Lake Storage, przejdź do **Eksplorator danych > dostępu > Dodaj**. 
-
-### <a name="how-to-access-data-lake-storage-gen1-from-ml-services-on-hdinsight"></a>Jak uzyskać dostęp do programu Data Lake Storage Gen1 z usługi uczenie Maszynowe na HDInsight
-
-Po został przez Ciebie udzielony dostęp do programu Data Lake Storage Gen1, używając magazynu w klastrze usługi ML w HDInsight sposób, w jaki na koncie magazynu pomocniczego platformy Azure. Jedyną różnicą jest to, że prefiks **wasb: / /** zmieni się na **adl: / /** w następujący sposób:
-
-
-    # Point to the ADL Storage (e.g. ADLtest)
-    myNameNode <- "adl://rkadl1.azuredatalakestore.net"
-    myPort <- 0
-
-    # Location of the data (assumes a /share directory on the ADL account)
-    bigDataDirRoot <- "/share"  
-
-    # Define Spark compute context
-    mySparkCluster <- RxSpark(consoleOutput=TRUE, nameNode=myNameNode, port=myPort)
-
-    # Set compute context
-    rxSetComputeContext(mySparkCluster)
-
-    # Define HDFS file system
-    hdfsFS <- RxHdfsFileSystem(hostName=myNameNode, port=myPort)
-
-    # Specify the input file in HDFS to analyze
     inputFile <-file.path(bigDataDirRoot,"mysamplefile.csv")
+    ```
 
-Następujące polecenia służą do konfigurowania konta Data Lake Storage Gen1 z katalogiem RevoShare i Dodaj przykładowy plik CSV z poprzedniego przykładu:
+Wszystkie odwołania do katalogu i pliku wskazują konto magazynu `wasbs://container1@storage1.blob.core.windows.net`. Jest to **domyślne konto magazynu** skojarzone z klastrem usługi HDInsight.
 
+### <a name="use-the-additional-storage-with-ml-services-on-hdinsight"></a>Korzystanie z dodatkowego magazynu za pomocą usługi ML w usłudze HDInsight
 
-    hadoop fs -mkdir adl://rkadl1.azuredatalakestore.net/user
-    hadoop fs -mkdir adl://rkadl1.azuredatalakestore.net/user/RevoShare
-    hadoop fs -mkdir adl://rkadl1.azuredatalakestore.net/user/RevoShare/<user>
+Teraz Załóżmy, że chcesz przetworzyć plik o nazwie mysamplefile1. csv, który znajduje się w katalogu/Private **container2** w **storage2**.
 
-    hadoop fs -mkdir adl://rkadl1.azuredatalakestore.net/share
+W kodzie R wskaż węzeł nazwa odwołanie do konta magazynu **storage2** .
 
-    hadoop fs -copyFromLocal /usr/lib64/R Server-7.4.1/library/RevoScaleR/SampleData/mysamplefile.csv adl://rkadl1.azuredatalakestore.net/share
+```R
+myNameNode <- "wasbs://container2@storage2.blob.core.windows.net"
+myPort <- 0
 
-    hadoop fs –ls adl://rkadl1.azuredatalakestore.net/share
+#Location of the data:
+bigDataDirRoot <- "/private"
 
+#Define Spark compute context:
+mySparkCluster <- RxSpark(consoleOutput=TRUE, nameNode=myNameNode, port=myPort)
 
-## <a name="use-azure-file-storage-with-ml-services-on-hdinsight"></a>Usługa Azure File storage za pomocą usługi uczenie Maszynowe na HDInsight
+#Set compute context:
+rxSetComputeContext(mySparkCluster)
 
-Jest również wygodne danych opcji magazynu do użycia w węźle krawędzi, o nazwie [usługi Azure Files](https://azure.microsoft.com/services/storage/files/). Umożliwia ona zainstalować udział plików usługi Azure Storage w systemie plików systemu Linux. Ta opcja może być przydatne do przechowywania plików danych, skryptów języka R i obiektów wynikowych, które mogą być potrzebne później, szczególnie w przypadku dobrym rozwiązaniem w systemie plików natywnych na węźle krawędzi, a nie systemu plików HDFS. 
+#Define HDFS file system:
+hdfsFS <- RxHdfsFileSystem(hostName=myNameNode, port=myPort)
 
-Główną zaletą usługi Azure Files jest udziałów plików mogą być instalowane i używane przez system z obsługiwanych systemów operacyjnych, takich jak Windows lub Linux. Na przykład może służyć przez inny klaster HDInsight, który użytkownik lub ktoś z zespołu ma przez Maszynę wirtualną platformy Azure lub nawet przez system w środowisku lokalnym. Aby uzyskać więcej informacji, zobacz:
+#Specify the input file to analyze in HDFS:
+inputFile <-file.path(bigDataDirRoot,"mysamplefile1.csv")
+```
+
+Wszystkie odwołania do katalogów i plików są teraz wskazywane na koncie magazynu `wasbs://container2@storage2.blob.core.windows.net`. Jest to określony **węzeł nazwy** .
+
+Skonfiguruj katalog `/user/RevoShare/<SSH username>` w **storage2** w następujący sposób:
+
+```bash
+hadoop fs -mkdir wasbs://container2@storage2.blob.core.windows.net/user
+hadoop fs -mkdir wasbs://container2@storage2.blob.core.windows.net/user/RevoShare
+hadoop fs -mkdir wasbs://container2@storage2.blob.core.windows.net/user/RevoShare/<RDP username>
+```
+
+## <a name="use-azure-data-lake-storage-with-ml-services-cluster"></a>Używanie Azure Data Lake Storage z klastrem usługi ML
+
+Aby można było używać Data Lake Storage z klastrem usługi HDInsight, należy nadać klastrowi dostęp do każdego Azure Data Lake Storage, którego chcesz użyć. Aby uzyskać instrukcje dotyczące sposobu używania Azure Portal do tworzenia klastra usługi HDInsight przy użyciu konta Azure Data Lake Storage jako magazynu domyślnego lub jako dodatkowego magazynu, zobacz [Tworzenie klastra usługi HDInsight za pomocą Data Lake Storage przy użyciu Azure Portal](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md).
+
+Następnie należy użyć magazynu w skrypcie języka R, podobnie jak w przypadku konta pomocniczego usługi Azure Storage, zgodnie z opisem w poprzedniej procedurze.
+
+### <a name="add-cluster-access-to-your-azure-data-lake-storage"></a>Dodawanie dostępu do klastra do Azure Data Lake Storage
+
+Dostęp do Data Lake Storage przy użyciu jednostki usługi Azure Active Directory (Azure AD) skojarzonej z klastrem HDInsight.
+
+1. Podczas tworzenia klastra usługi HDInsight wybierz opcję **tożsamość usługi AAD klastra** na karcie **Źródło danych** .
+
+2. W oknie dialogowym **tożsamość usługi AAD klastra** , w obszarze **Wybierz główną usługę AD**wybierz pozycję **Utwórz nową**.
+
+Po podaniu nazwy głównej usługi i utworzeniu dla niej hasła kliknij pozycję **Zarządzaj dostępem ADLS** , aby skojarzyć jednostkę usługi z Data Lake Storage.
+
+Możliwe jest również dodanie dostępu do klastra do co najmniej jednego Data Lake kont magazynu po utworzeniu klastra. Otwórz wpis Azure Portal dla Data Lake Storage i przejdź do **Eksplorator danych > Access > Dodaj**.
+
+### <a name="how-to-access-data-lake-storage-gen1-from-ml-services-on-hdinsight"></a>Jak uzyskać dostęp do Data Lake Storage Gen1 z usług ML w usłudze HDInsight
+
+Po uzyskaniu dostępu do Data Lake Storage Gen1 można korzystać z magazynu w klastrze usługi ML w usłudze HDInsight w taki sposób, jak w przypadku dodatkowego konta magazynu platformy Azure. Jedyną różnicą jest to, że prefiks **wasbs://** zmienia się na **ADL://** w następujący sposób:
+
+```R
+# Point to the ADL Storage (e.g. ADLtest)
+myNameNode <- "adl://rkadl1.azuredatalakestore.net"
+myPort <- 0
+
+# Location of the data (assumes a /share directory on the ADL account)
+bigDataDirRoot <- "/share"  
+
+# Define Spark compute context
+mySparkCluster <- RxSpark(consoleOutput=TRUE, nameNode=myNameNode, port=myPort)
+
+# Set compute context
+rxSetComputeContext(mySparkCluster)
+
+# Define HDFS file system
+hdfsFS <- RxHdfsFileSystem(hostName=myNameNode, port=myPort)
+
+# Specify the input file in HDFS to analyze
+inputFile <-file.path(bigDataDirRoot,"mysamplefile.csv")
+```
+
+Następujące polecenia służą do konfigurowania konta Data Lake Storage Gen1 przy użyciu katalogu RevoShare i dodawania pliku Sample. CSV z poprzedniego przykładu:
+
+```bash
+hadoop fs -mkdir adl://rkadl1.azuredatalakestore.net/user
+hadoop fs -mkdir adl://rkadl1.azuredatalakestore.net/user/RevoShare
+hadoop fs -mkdir adl://rkadl1.azuredatalakestore.net/user/RevoShare/<user>
+
+hadoop fs -mkdir adl://rkadl1.azuredatalakestore.net/share
+
+hadoop fs -copyFromLocal /usr/lib64/R Server-7.4.1/library/RevoScaleR/SampleData/mysamplefile.csv adl://rkadl1.azuredatalakestore.net/share
+
+hadoop fs –ls adl://rkadl1.azuredatalakestore.net/share
+```
+
+## <a name="use-azure-file-storage-with-ml-services-on-hdinsight"></a>Korzystanie z usługi Azure File Storage z usługą ML w usłudze HDInsight
+
+Dostępna jest również wygodna opcja przechowywania danych do użycia w węźle brzegowym o nazwie [Azure Files](https://azure.microsoft.com/services/storage/files/). Umożliwia ona zainstalowanie udziału plików usługi Azure Storage w systemie plików Linux. Ta opcja może być przydatna do przechowywania plików danych, skryptów języka R i obiektów wynikowych, które mogą być potrzebne później, szczególnie w przypadku, gdy warto używać natywnego systemu plików w węźle brzegowym, a nie w systemie HDFS.
+
+Główną zaletą Azure Files jest to, że udziały plików można instalować i używać w dowolnym systemie, który ma obsługiwane systemy operacyjne, takie jak Windows lub Linux. Na przykład może być używany przez inny klaster usługi HDInsight, który jest lub ktoś w Twoim zespole, przez maszynę wirtualną platformy Azure, a nawet przez system lokalny. Aby uzyskać więcej informacji, zobacz:
 
 - [Jak używać usługi Azure File Storage z systemem Linux](../../storage/files/storage-how-to-use-files-linux.md)
-- [Jak używać usługi Azure File storage na Windows](../../storage/files/storage-dotnet-how-to-use-files.md)
+- [Jak korzystać z usługi Azure File Storage w systemie Windows](../../storage/files/storage-dotnet-how-to-use-files.md)
 
+## <a name="next-steps"></a>Następne kroki
 
-## <a name="next-steps"></a>Kolejne kroki
-
-* [Omówienie usługi ML klastra w systemie HDInsight](r-server-overview.md)
-* [Compute context options for ML Services cluster on HDInsight (Opcje kontekstu obliczeniowego dla klastra usług ML w usłudze HDInsight)](r-server-compute-contexts.md)
-* [Korzystanie z usługi Azure Data Lake Storage Gen2 w połączeniu z klastrami usługi Azure HDInsight](../hdinsight-hadoop-use-data-lake-storage-gen2.md)
+- [Omówienie klastra usług ML w usłudze HDInsight](r-server-overview.md)
+- [Compute context options for ML Services cluster on HDInsight (Opcje kontekstu obliczeniowego dla klastra usług ML w usłudze HDInsight)](r-server-compute-contexts.md)
+- [Korzystanie z usługi Azure Data Lake Storage Gen2 w połączeniu z klastrami usługi Azure HDInsight](../hdinsight-hadoop-use-data-lake-storage-gen2.md)

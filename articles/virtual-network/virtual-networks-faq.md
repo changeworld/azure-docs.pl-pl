@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/12/2019
 ms.author: kumud
-ms.openlocfilehash: 5fae340ae933b8165a2ea9bb9f6337189fd576d6
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: ef7e29351717daf91981f844f1d911a404cf9402
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74457043"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646884"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure Virtual Network często zadawane pytania
 
@@ -35,7 +35,7 @@ Użyj sieci wirtualnych, aby:
 
 * Włącz scenariusze chmury hybrydowej. Sieci wirtualnych zapewniają elastyczność umożliwiającą obsługę szeregu scenariuszy chmury hybrydowej. Aplikacje oparte na chmurze można bezpiecznie połączyć z dowolnym typem systemu lokalnego, takim jak Komputery mainframe i systemy UNIX.
 
-### <a name="how-do-i-get-started"></a>Jak rozpocząć?
+### <a name="how-do-i-get-started"></a>Jak rozpocząć pracę?
 Przejdź do [dokumentacji sieci wirtualnej](https://docs.microsoft.com/azure/virtual-network/) , aby rozpocząć pracę. Ta zawartość zawiera przegląd i informacje dotyczące wdrażania dla wszystkich funkcji sieci wirtualnej.
 
 ### <a name="can-i-use-vnets-without-cross-premises-connectivity"></a>Czy mogę używać sieci wirtualnych bez połączenia między różnymi lokalizacjami?
@@ -49,7 +49,7 @@ Tak. [Wirtualne urządzenie sieciowe optymalizacji sieci WAN](https://azuremarke
 ### <a name="what-tools-do-i-use-to-create-a-vnet"></a>Jakie narzędzia są używane do tworzenia sieci wirtualnej?
 Aby utworzyć lub skonfigurować sieć wirtualną, można użyć następujących narzędzi:
 
-* Azure Portal
+* Portal Azure
 * PowerShell
 * Interfejs wiersza polecenia platformy Azure
 * Plik konfiguracji sieci (netcfg-tylko klasyczny sieci wirtualnych). Zapoznaj się z artykułem [Konfigurowanie sieci wirtualnej przy użyciu pliku konfiguracji sieciowej](virtual-networks-using-network-configuration-file.md) .
@@ -66,7 +66,7 @@ Dowolny zakres adresów IP zdefiniowany w [dokumencie RFC 1918](https://tools.ie
 Tak. Aby uzyskać więcej informacji na temat zakresów publicznych adresów IP, zobacz [Tworzenie sieci wirtualnej](manage-virtual-network.md#create-a-virtual-network). Publiczne adresy IP nie są bezpośrednio dostępne z Internetu.
 
 ### <a name="is-there-a-limit-to-the-number-of-subnets-in-my-vnet"></a>Czy istnieje ograniczenie liczby podsieci w sieci wirtualnej?
-Tak. Aby uzyskać szczegółowe informacje, zobacz [limity platformy Azure](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits) . Przestrzenie adresowe podsieci nie mogą nakładać się na siebie nawzajem.
+Tak. Aby uzyskać szczegółowe informacje, zobacz [limity platformy Azure](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits) . Przestrzenie adresowe podsieci nie mogą nakładać się na siebie nawzajem.
 
 ### <a name="are-there-any-restrictions-on-using-ip-addresses-within-these-subnets"></a>Czy istnieją jakieś ograniczenia dotyczące używania adresów IP w tych podsieciach?
 Tak. Platforma Azure rezerwuje 5 adresów IP dla każdej podsieci. Są to x. x. x. 0-x. x. x. 3 i ostatni adres podsieci. x. x. x. 1-x. x. x. 3 jest zarezerwowane w każdej podsieci dla usług platformy Azure.   
@@ -100,7 +100,7 @@ Nie.
 Tak. Podsieci można dodać do sieci wirtualnych w dowolnym momencie, o ile zakres adresów podsieci nie jest częścią innej podsieci i dostępne miejsce pozostawiono w zakresie adresów sieci wirtualnej.
 
 ### <a name="can-i-modify-the-size-of-my-subnet-after-i-create-it"></a>Czy mogę zmienić rozmiar podsieci po utworzeniu?
-Tak. Możesz dodać, usunąć, rozwinąć lub zmniejszyć podsieć, jeśli nie ma w niej wdrożonych maszyn wirtualnych ani usług.
+Tak. Możesz dodawać, usuwać, rozszerzać lub zmniejszać podsieć, jeśli nie wdrożono w niej żadnych maszyn wirtualnych ani usług.
 
 ### <a name="can-i-modify-subnets-after-i-created-them"></a>Czy mogę modyfikować podsieci po ich utworzeniu?
 Tak. Bloki CIDR używane przez sieć wirtualną można dodawać, usuwać i modyfikować.
@@ -128,7 +128,7 @@ Za pomocą tabeli decyzji na stronie [rozpoznawanie nazw dla maszyn wirtualnych 
 Tak. W ustawieniach sieci wirtualnej można określić adresy IP serwerów DNS. To ustawienie jest stosowane jako domyślne serwery DNS dla wszystkich maszyn wirtualnych w sieci wirtualnej.
 
 ### <a name="how-many-dns-servers-can-i-specify"></a>Ile serwerów DNS można określić?
-Odwołania do [limitów platformy Azure](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits).
+Odwołania do [limitów platformy Azure](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits).
 
 ### <a name="can-i-modify-my-dns-servers-after-i-have-created-the-network"></a>Czy mogę zmodyfikować moje serwery DNS po utworzeniu sieci?
 Tak. W dowolnym momencie możesz zmienić listę serwerów DNS dla sieci wirtualnej. W przypadku zmiany listy serwerów DNS należy wykonać odnowienie dzierżawy DHCP na wszystkich maszynach wirtualnych, których dotyczy ta sieć wirtualna, aby nowe ustawienia DNS zaczęły obowiązywać. W przypadku maszyn wirtualnych z systemem operacyjnym Windows można to zrobić, wpisując `ipconfig /renew` bezpośrednio na maszynie wirtualnej. W przypadku innych typów systemów operacyjnych zapoznaj się z dokumentacją dotyczącą odnawiania dzierżawy DHCP dla określonego typu systemu operacyjnego. 
@@ -167,7 +167,7 @@ To zależy. Jeśli maszyna wirtualna została wdrożona za pomocą Menedżer zas
 Tak, ale nie jest to zalecane, o ile nie jest to konieczne, na przykład podczas przypisywania wielu adresów IP do maszyny wirtualnej. Aby uzyskać szczegółowe informacje, zobacz [Dodawanie wielu adresów IP do maszyny wirtualnej](virtual-network-multiple-ip-addresses-portal.md#os-config). Jeśli adres IP przypisany do karty sieciowej platformy Azure dołączony do maszyny wirtualnej ulegnie zmianie, a adres IP w systemie operacyjnym maszyny wirtualnej jest inny, nastąpi utrata łączności z maszyną wirtualną.
 
 ### <a name="if-i-stop-a-cloud-service-deployment-slot-or-shutdown-a-vm-from-within-the-operating-system-what-happens-to-my-ip-addresses"></a>Jeśli zatrzymasz miejsce wdrożenia usługi w chmurze lub wyzamykasz maszynę wirtualną z poziomu systemu operacyjnego, co się stanie z moimi adresami IP?
-Wartość. Adresy IP (Public VIP, Public i Private) pozostają przypisane do miejsca wdrożenia usługi w chmurze lub maszyny wirtualnej.
+Nic. Adresy IP (Public VIP, Public i Private) pozostają przypisane do miejsca wdrożenia usługi w chmurze lub maszyny wirtualnej.
 
 ### <a name="can-i-move-vms-from-one-subnet-to-another-subnet-in-a-vnet-without-redeploying"></a>Czy mogę przenieść maszyny wirtualne z jednej podsieci do innej podsieci w sieci wirtualnej bez ponownego wdrażania?
 Tak. Więcej informacji można znaleźć w artykule [jak przenieść wystąpienie maszyny wirtualnej lub roli do innego artykułu podsieci](virtual-networks-move-vm-role-to-subnet.md) .
@@ -207,7 +207,7 @@ Zasoby wdrożone za pomocą niektórych usług PaaS platformy Azure (takich jak 
 ### <a name="can-i-move-my-services-in-and-out-of-vnets"></a>Czy mogę przenieść usługi do i z sieci wirtualnych?
 Nie. Nie można przenieść usług do i z sieci wirtualnych. Aby przenieść zasób do innej sieci wirtualnej, należy usunąć i ponownie wdrożyć zasób.
 
-## <a name="security"></a>Bezpieczeństwo
+## <a name="security"></a>Zabezpieczenia
 
 ### <a name="what-is-the-security-model-for-vnets"></a>Jaki jest model zabezpieczeń sieci wirtualnych?
 Sieci wirtualnych są odizolowane od siebie nawzajem i inne usługi hostowane w infrastrukturze platformy Azure. Sieć wirtualna jest granicą zaufania.
@@ -232,7 +232,7 @@ Tak. Dowiedz się więcej o korzystaniu z programu:
 - Program PowerShell do zarządzania usługą sieci wirtualnych wdrożoną za pomocą [Menedżer zasobów](/powershell/module/az.network) i [klasycznych](/powershell/module/servicemanagement/azure/?view=azuresmps-3.7.0) modeli wdrażania.
 - Interfejs wiersza polecenia (CLI) platformy Azure do wdrażania sieci wirtualnych wdrożonych w ramach [Menedżer zasobów](/cli/azure/network/vnet) i [klasycznych](../virtual-machines/azure-cli-arm-commands.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-network-commands-to-manage-network-resources) modeli wdrażania oraz zarządzania nimi.  
 
-## <a name="vnet-peering"></a>Komunikacja równorzędna sieci wirtualnych
+## <a name="vnet-peering"></a>Wirtualne sieci równorzędne
 
 ### <a name="what-is-vnet-peering"></a>Co to jest Komunikacja równorzędna sieci wirtualnych?
 Wirtualne sieci równorzędne (lub Komunikacja równorzędna sieci wirtualnych) umożliwiają łączenie z siecią wirtualną. Połączenie komunikacji równorzędnej wirtualnej między sieciami wirtualnymi pozwala na kierowanie ruchu między nimi prywatnie przy użyciu adresów IPv4. Maszyny wirtualne w sieci wirtualnych równorzędnym mogą komunikować się ze sobą, tak jakby znajdowały się w tej samej sieci. Te sieci wirtualne mogą znajdować się w tym samym regionie lub w różnych regionach (nazywanych również globalnymi sieciami równorzędnymi). Połączenia komunikacji równorzędnej sieci wirtualnej można również tworzyć w ramach subskrypcji platformy Azure.
@@ -245,13 +245,13 @@ Jeśli dwie sieci wirtualne w dwóch różnych regionach są połączone za pomo
 Poniższe zasoby mogą korzystać z podstawowych modułów równoważenia obciążenia, co oznacza, że nie można uzyskać dostępu do nich za pośrednictwem adresu IP frontonu Load Balancer w ramach globalnej komunikacji równorzędnej sieci wirtualnej. Można jednak użyć globalnej komunikacji równorzędnej sieci wirtualnej, aby uzyskać dostęp do zasobów bezpośrednio za pomocą prywatnych adresów IP, jeśli jest to dozwolone. 
 - Maszyny wirtualne za podstawowymi usługami równoważenia obciążenia
 - Zestawy skalowania maszyn wirtualnych z podstawowymi usługami równoważenia obciążenia 
-- Pamięć podręczna Redis 
+- Redis Cache 
 - Jednostka SKU Application Gateway (v1)
-- Service Fabric
+- Sieć szkieletowa usługi
 - SQL — MI
 - API Management
 - Usługa domena usługi Active Directory (dodaje)
-- Logic Apps
+- Aplikacje logiki
 - HDInsight
 -   Azure Batch
 - Środowisko usługi App Service
@@ -405,7 +405,7 @@ Nie ma limitu całkowitej liczby punktów końcowych usługi wirtualnej w sieci 
 |Azure Storage| 100|
 |Azure SQL| 128|
 |Azure SQL Data Warehouse|  128|
-|Magazyn kluczy platformy Azure|    127|
+|Azure KeyVault|    127|
 |Azure Cosmos DB|   64|
 |Azure Event Hub|   128|
 |Azure Service Bus| 128|

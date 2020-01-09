@@ -1,17 +1,17 @@
 ---
 title: Korzystanie z usługi Azure Data Science Virtual Machines
-description: Połącz się z usługą Azure Data Science Virtual Machine (DSVM), aby zwiększyć moc obliczeniową dostępną do Azure Notebooks.
+description: Dowiedz się, jak nawiązać połączenie z usługą Azure Data Science Virtual Machine (DSVM), aby zwiększyć moc obliczeniową dostępną dla Azure Notebooks wersji zapoznawczej.
 author: getroyer
 manager: andneil
 ms.author: getroyer
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/13/2019
-ms.openlocfilehash: 0559442cb3f6c3937e6930082940e9354c43bc30
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 7a47be46818c633c016c791d0c52eb9393029973
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277406"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646998"
 ---
 # <a name="use-azure-data-science-virtual-machines"></a>Korzystanie z usługi Azure Data Science Virtual Machines
 
@@ -19,6 +19,8 @@ Domyślnie projekty są uruchamiane w **bezpłatnej warstwie obliczeniowej** , c
 
 > [!Note]
 > Azure Notebooks jest obsługiwana tylko na DSVMs utworzonych przy użyciu obrazu Ubuntu w systemie Linux. Notesy nie są obsługiwane w obrazach CentOS systemu Windows 2012, Windows 2016 lub Linux.
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 ## <a name="create-a-dsvm-instance"></a>Tworzenie wystąpienia DSVM
 
@@ -56,7 +58,7 @@ Gdy projekt jest uruchamiany na maszynie wirtualnej, pliki są instalowane w kat
 
 Jeśli wielu użytkowników współużytkuje DSVM, można uniknąć zablokowania siebie przez utworzenie i użycie użytkownika DSVM dla każdego użytkownika notesu:
 
-1. W witrynie [Azure Portal](https://portal.azure.com)przejdź do swojej maszyny wirtualnej.
+1. Na [Azure Portal](https://portal.azure.com)przejdź do maszyny wirtualnej.
 1. W obszarze **Pomoc techniczna i rozwiązywanie problemów** na lewym marginesie wybierz pozycję **Resetuj hasło**.
 1. Wprowadź nową nazwę użytkownika i hasło, a następnie wybierz pozycję **Aktualizuj**. (Nie dotyczy to istniejących nazw użytkowników).
 1. Powtórz poprzedni krok dla każdego dodatkowego użytkownika.

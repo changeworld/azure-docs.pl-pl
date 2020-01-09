@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 8/29/2019
 ms.author: absha
-ms.openlocfilehash: f0937ee53e66cb1bf0c5d6b55a8dde045570e924
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
-ms.translationtype: MT
+ms.openlocfilehash: 12ecacf1266c0d8211f5928a933cfd4acf8c49f0
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70309845"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551390"
 ---
 # <a name="metrics-for-application-gateway"></a>Metryki dla Application Gateway
 
@@ -22,19 +22,21 @@ Application Gateway publikuje punkty danych o nazwie Metrics, aby [Azure monitor
 
 ### <a name="timing-metrics"></a>Metryki chronometrażu
 
-Dostępne są następujące metryki związane z chronometrażem żądania i odpowiedzi. Analizując te metryki, można określić, czy spowolnienie w aplikacji, w związku z siecią WAN, Application Gateway, sieci między Application Gatewayem i zapleczem, czy wydajność aplikacji.
+Dostępne są następujące metryki związane z chronometrażem żądania i odpowiedzi. Analizując te metryki dla określonego odbiornika, można określić, czy spowolnienie w aplikacji w związku z siecią WAN, Application Gateway, sieci między Application Gatewayem a aplikacją zaplecza, czy też wydajnością aplikacji zaplecza.
+
+> [!NOTE]
+>
+> Jeśli w Application Gateway znajduje się więcej niż jeden odbiornik, zawsze Przefiltruj według wymiaru *odbiornika* , porównując różne metryki opóźnienia w celu uzyskania zrozumiałego wnioskowania.
 
 - **Czas RTT klienta**
 
-  Średni czas błądzenia między klientami a Application Gateway. Ta Metryka wskazuje, jak długo zajmuje się nawiązaniem połączeń i zwróceniem potwierdzeń.
+  Średni czas błądzenia między klientami a Application Gateway. Ta Metryka wskazuje, jak długo zajmuje się nawiązaniem połączeń i zwróceniem potwierdzeń. 
 
 - **Łączny czas bramy aplikacji**
 
   Średni czas przetwarzania żądania i jego odpowiedź do wysłania. Ta wartość jest obliczana jako średnia interwału od momentu, kiedy Application Gateway otrzymuje pierwszy bajt żądania HTTP do momentu zakończenia operacji wysyłania odpowiedzi. Należy pamiętać, że zwykle obejmuje to czas przetwarzania Application Gateway, czas, przez który pakiety żądań i odpowiedzi są przesyłane przez sieć i czas odpowiedzi serwera wewnętrznej bazy danych.
-
-- **Czas połączenia z zapleczem**
-
-  Czas nawiązywania połączenia z serwerem zaplecza. 
+  
+Jeśli wartość *RTT klienta* jest znacznie większa niż *Całkowity czas trwania bramy aplikacji*, można określić, że opóźnienie zaobserwowane przez klienta jest spowodowane łącznością sieciową między klientem a Application Gateway. Jeśli oba opóźnienia są porównywalne, to duże opóźnienie może być spowodowane jedną z następujących czynności: Application Gateway, sieci między Application Gatewayą a aplikacją zaplecza lub wydajnością aplikacji zaplecza.
 
 - **Czas odpowiedzi na pierwszy bajt zaplecza**
 
@@ -43,6 +45,13 @@ Dostępne są następujące metryki związane z chronometrażem żądania i odpo
 - **Czas odpowiedzi ostatniego bajtu wewnętrznej bazy danych**
 
   Interwał czasu między rozpoczęciem ustanawiania połączenia z serwerem zaplecza i otrzymywania ostatniego bajtu treści odpowiedzi
+  
+Jeśli *łączny czas usługi Application Gateway* jest znacznie większy niż *czas odpowiedzi ostatniego bajtu zaplecze* dla określonego odbiornika, można określić, że duże opóźnienie może być spowodowane Application Gateway. Z drugiej strony, jeśli dwie metryki są porównywalne, problem może być spowodowany przez sieć między Application Gateway i aplikacją zaplecza lub wydajnością aplikacji zaplecza.
+
+- **Czas połączenia z zapleczem**
+
+  Czas nawiązywania połączenia z aplikacją zaplecza. W przypadku protokołu SSL obejmuje czas spędzony na uzgadnianiu. Należy zauważyć, że ta Metryka różni się od innych metryk opóźnienia, ponieważ tylko mierzy czas połączenia i w związku z tym nie należy porównywać ich bezpośrednio z innymi opóźnieniami. Jednak porównanie wzorca *czasu połączenia z zapleczem* z wzorcem innych opóźnień może wskazywać, czy można wywnioskować wzrost innych opóźnień z powodu zmiany w sieci między GATWAY aplikacji a aplikacją zaplecza. 
+  
 
 ### <a name="application-gateway-metrics"></a>Metryki Application Gateway
 
@@ -62,7 +71,7 @@ W przypadku Application Gateway dostępne są następujące metryki:
 
 - **Bieżące jednostki wydajności**
 
-   Liczba zużytych jednostek pojemności. Jednostki wydajności mierzą koszt oparty na zużyciu, który jest naliczany wraz ze stałym kosztem. Istnieją trzy uwarunkowania jednostek wydajności — jednostka obliczeniowa, trwałe połączenia i przepływność. Każda jednostka wydajności składa się z maksymalnie: 1 jednostka obliczeniowa lub 2500 połączeń trwałych lub przepływność 2,22-MB/s.
+   Liczba zużytych jednostek pojemności. Jednostki wydajności mierzą koszt oparty na zużyciu, który jest naliczany wraz ze stałym kosztem. Istnieją trzy uwarunkowania jednostek wydajności — jednostka obliczeniowa, trwałe połączenia i przepływność. Każda jednostka pojemności składa się z maksymalnie: 1 jednostki obliczeniowej lub 2500 połączeń trwałych lub przepływności 2,22 MB/s.
 
 - **Bieżące jednostki obliczeniowe**
 
@@ -115,6 +124,10 @@ W przypadku Application Gateway dostępne są następujące metryki:
 
 W przypadku Application Gateway dostępne są następujące metryki:
 
+- **Użycie procesora CPU**
+
+  Wyświetla wykorzystanie procesorów CPU przydzieloną do Application Gateway.  W normalnych warunkach użycie procesora CPU nie powinno regularnie przekraczać 90%, ponieważ może to spowodować opóźnienie w witrynach sieci Web hostowanych za Application Gateway i zakłócenia środowiska klienta. Można pośrednio kontrolować lub zwiększać wykorzystanie procesora przez modyfikację konfiguracji Application Gateway przez zwiększenie liczby wystąpień lub przechodzenie do większego rozmiaru jednostki SKU lub wykonanie obu tych czynności.
+
 - **Bieżące połączenia**
 
   Liczba bieżących połączeń ustanowionych z Application Gateway
@@ -157,7 +170,7 @@ Przejdź do bramy aplikacji, w obszarze **monitorowanie** wybierz pozycję **met
 
 Na poniższej ilustracji przedstawiono przykład z trzema metrykami wyświetlonymi w ciągu ostatnich 30 minut:
 
-[![](media/application-gateway-diagnostics/figure5.png "Widok metryki")](media/application-gateway-diagnostics/figure5-lb.png#lightbox)
+[![](media/application-gateway-diagnostics/figure5.png "Metric view")](media/application-gateway-diagnostics/figure5-lb.png#lightbox)
 
 Aby wyświetlić bieżącą listę metryk, zobacz temat [obsługiwane metryki z Azure monitor](../azure-monitor/platform/metrics-supported.md).
 
@@ -173,7 +186,7 @@ Poniższy przykład przeprowadzi Cię przez proces tworzenia reguły alertu, kt�
 
 2. Na stronie **Dodawanie reguły** Wypełnij sekcje nazwa, warunek i powiadomienie, a następnie wybierz **przycisk OK**.
 
-   * W selektorze **warunku** wybierz jedną z czterech wartości: **Większe**niż, **większe niż lub równe**, **mniejsze**niż lub **mniejsze niż lub równe**.
+   * W selektorze **warunku** wybierz jedną z czterech wartości: **większe**niż, **większe niż lub równe**, **mniejsze niż**lub **mniejsze niż lub równe**.
 
    * W selektorze **okresu** Wybierz okres z pięciu minut do 6 godzin.
 

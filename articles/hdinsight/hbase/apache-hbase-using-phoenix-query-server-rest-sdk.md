@@ -1,19 +1,19 @@
 ---
 title: Phoenix Query Server zestaw SDK REST — Azure HDInsight
 description: Zainstaluj i użyj zestawu SDK REST dla Phoenix Query Server w usłudze Azure HDInsight.
-ms.service: hdinsight
 author: ashishthaps
 ms.author: ashishth
 ms.reviewer: jasonh
-ms.custom: hdinsightactive
+ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 12/04/2017
-ms.openlocfilehash: c9e9258fb7ace93d0866463563d328456cbd1daa
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.custom: hdinsightactive
+ms.date: 01/01/2020
+ms.openlocfilehash: 84c2bad1004029fe61dcfc19321957a170284587
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72311680"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75612261"
 ---
 # <a name="apache-phoenix-query-server-rest-sdk"></a>Zestaw SDK REST serwera Apache Phoenix Query
 
@@ -31,7 +31,7 @@ Sterownik Microsoft .NET dla programu Apache Phoenix Query Server jest dostarcza
 
 ## <a name="instantiate-new-phoenixclient-object"></a>Tworzenie wystąpienia nowego obiektu PhoenixClient
 
-Aby rozpocząć korzystanie z biblioteki, Utwórz wystąpienie nowego obiektu `PhoenixClient`, przechodząc do `ClusterCredentials` zawierającego `Uri` do klastra oraz nazwę użytkownika i hasło klastra Apache Hadoop.
+Aby rozpocząć korzystanie z biblioteki, Utwórz wystąpienie nowego obiektu `PhoenixClient`, przekazując `ClusterCredentials` zawierający `Uri` do klastra i nazwę użytkownika i hasło klastra Apache Hadoop.
 
 ```csharp
 var credentials = new ClusterCredentials(new Uri("https://CLUSTERNAME.azurehdinsight.net/"), "USERNAME", "PASSWORD");
@@ -48,7 +48,7 @@ Aby wysłać co najmniej jedno żądanie do PQS, należy dołączyć unikatowy i
 string connId = Guid.NewGuid().ToString();
 ```
 
-Każdy przykład najpierw wywołuje metodę `OpenConnectionRequestAsync`, przekazując unikatowy identyfikator połączenia. Następnie zdefiniuj `ConnectionProperties` i `RequestOptions`, przekazując te obiekty i wygenerowanego identyfikatora połączenia do metody `ConnectionSyncRequestAsync`. Obiekt `ConnectionSyncRequest` PQS gwarantuje, że zarówno klient, jak i serwer mają spójny widok Właściwości bazy danych.
+Każdy przykład najpierw wywołuje metodę `OpenConnectionRequestAsync`, przekazując unikatowy identyfikator połączenia. Następnie zdefiniuj `ConnectionProperties` i `RequestOptions`, przekazując te obiekty i wygenerowanego identyfikatora połączenia do metody `ConnectionSyncRequestAsync`. PQS obiekt `ConnectionSyncRequest` pomaga upewnić się, że zarówno klient, jak i serwer mają spójny widok Właściwości bazy danych.
 
 ## <a name="connectionsyncrequest-and-its-connectionproperties"></a>ConnectionSyncRequest i jego ConnectionProperties
 
@@ -94,7 +94,7 @@ Poniżej przedstawiono wartości `TransactionIsolation`:
 
 HBase, podobnie jak wszystkie inne RDBMS, przechowuje dane w tabelach. Phoenix używa standardowych zapytań SQL do tworzenia nowych tabel podczas definiowania typów klucza podstawowego i kolumny.
 
-W tym przykładzie i we wszystkich kolejnych przykładach Użyj obiektu `PhoenixClient`, zgodnie z definicją w tworzeniu [wystąpienia nowego obiektu PhoenixClient](#instantiate-new-phoenixclient-object).
+W tym przykładzie i we wszystkich kolejnych przykładach Użyj obiektu `PhoenixClient` wystąpienia, tak jak zdefiniowano [wystąpienie nowego obiektu PhoenixClient](#instantiate-new-phoenixclient-object).
 
 ```csharp
 string connId = Guid.NewGuid().ToString();
@@ -164,13 +164,13 @@ Poprzedni przykład tworzy nową tabelę o nazwie `Customers` przy użyciu opcji
 
 ## <a name="insert-data-individually"></a>Wstaw dane pojedynczo
 
-W tym przykładzie przedstawiono pojedyncze Wstawianie danych, odwołujące się do kolekcji `List<string>` w postaci skrótów stanów i regionów:
+W tym przykładzie przedstawiono pojedyncze Wstawianie danych, odwołujące się do `List<string>` kolekcji skrótów stanu i regionu:
 
 ```csharp
 var states = new List<string> { "AL", "AK", "AS", "AZ", "AR", "CA", "CO", "CT", "DE", "DC", "FM", "FL", "GA", "GU", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MH", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "MP", "OH", "OK", "OR", "PW", "PA", "PR", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VI", "VA", "WA", "WV", "WI", "WY" };
 ```
 
-Wartość kolumny `StateProvince` tabeli zostanie użyta w kolejnej operacji SELECT.
+Wartość kolumny `StateProvince` tabeli zostanie użyta w późniejszej operacji SELECT.
 
 ```csharp
 string connId = Guid.NewGuid().ToString();
@@ -277,11 +277,11 @@ finally
 }
 ```
 
-Struktura wykonywania instrukcji INSERT jest podobna do tworzenia nowej tabeli. Należy pamiętać, że na końcu bloku `try` transakcja zostanie jawnie zatwierdzona. W tym przykładzie powtarzamy operację wstawiania 300 razy. Poniższy przykład przedstawia bardziej wydajny proces wstawiania wsadowego.
+Struktura wykonywania instrukcji INSERT jest podobna do tworzenia nowej tabeli. Na końcu bloku `try` transakcja zostanie jawnie zatwierdzona. W tym przykładzie powtarzamy operację wstawiania 300 razy. Poniższy przykład przedstawia bardziej wydajny proces wstawiania wsadowego.
 
 ## <a name="batch-insert-data"></a>Wstaw dane wsadowe
 
-Poniższy kod jest niemal identyczny z kodem do wstawiania pojedynczych danych. W tym przykładzie używa obiektu `UpdateBatch` w wywołaniu do `ExecuteBatchRequestAsync`, zamiast wielokrotnie wywoływanie `ExecuteRequestAsync` z przygotowaną instrukcją.
+Poniższy kod jest niemal identyczny z kodem do wstawiania pojedynczych danych. W tym przykładzie używa obiektu `UpdateBatch` w wywołaniu `ExecuteBatchRequestAsync`, zamiast wielokrotnie wywoływanie `ExecuteRequestAsync` z przygotowaną instrukcją.
 
 ```csharp
 string connId = Guid.NewGuid().ToString();
@@ -537,7 +537,7 @@ MH: 6
 FM: 5
 ```
 
-## <a name="next-steps"></a>Następne kroki 
+## <a name="next-steps"></a>Następne kroki
 
 * [Apache Phoenix w usłudze HDInsight](../hdinsight-phoenix-in-hdinsight.md)
 * [Korzystanie z zestawu Apache HBase REST SDK](apache-hbase-rest-sdk.md)

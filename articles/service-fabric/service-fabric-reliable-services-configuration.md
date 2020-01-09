@@ -1,25 +1,16 @@
 ---
-title: Konfigurowanie usługi Azure Service Fabric Reliable Services | Microsoft Docs
-description: Dowiedz się więcej na temat konfigurowania Reliable Services stanowych w usłudze Azure Service Fabric.
-services: Service-Fabric
-documentationcenter: .net
+title: Konfigurowanie usługi Azure Service Fabric Reliable Services
+description: Dowiedz się więcej o konfigurowaniu stanowych Reliable Services w aplikacji Service Fabric platformy Azure globalnie i dla jednej usługi.
 author: sumukhs
-manager: chackdan
-editor: vturecek
-ms.assetid: 9f72373d-31dd-41e3-8504-6e0320a11f0e
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 10/02/2017
 ms.author: sumukhs
-ms.openlocfilehash: 60a4669e20aa8aaf80ae174c88631f3dc572656d
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: 9743213394b59af701b25b8be9dd48cf4310b499
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73242887"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645518"
 ---
 # <a name="configure-stateful-reliable-services"></a>Konfigurowanie niezawodnych usług stanowych
 Istnieją dwa zestawy ustawień konfiguracji dla niezawodnych usług. Jeden zestaw jest globalny dla wszystkich niezawodnych usług w klastrze, podczas gdy drugi zestaw jest specyficzny dla konkretnej niezawodnej usługi.
@@ -32,7 +23,7 @@ Globalna konfiguracja niezawodnej usługi jest określona w manifeście klastra 
 | --- | --- | --- | --- |
 | WriteBufferMemoryPoolMinimumInKB |Kilobajtach |8388608 |Minimalna liczba KB do przydzielenia w trybie jądra dla puli pamięci buforu zapisu rejestratora. Ta Pula pamięci jest używana do buforowania informacji o stanie przed zapisaniem na dysku. |
 | WriteBufferMemoryPoolMaximumInKB |Kilobajtach |Bez ograniczeń |Maksymalny rozmiar, do którego można zwiększyć pulę pamięci buforu zapisu rejestratora. |
-| SharedLogId |IDENT |"" |Określa unikatowy identyfikator GUID, który będzie używany do identyfikowania domyślnego udostępnionego pliku dziennika używanego przez wszystkie niezawodne usługi we wszystkich węzłach w klastrze, które nie określają SharedLogId w konfiguracji specyficznej dla usługi. Jeśli SharedLogId jest określony, należy również określić SharedLogPath. |
+| SharedLogId |GUID |"" |Określa unikatowy identyfikator GUID, który będzie używany do identyfikowania domyślnego udostępnionego pliku dziennika używanego przez wszystkie niezawodne usługi we wszystkich węzłach w klastrze, które nie określają SharedLogId w konfiguracji specyficznej dla usługi. Jeśli SharedLogId jest określony, należy również określić SharedLogPath. |
 | SharedLogPath |W pełni kwalifikowana nazwa ścieżki |"" |Określa w pełni kwalifikowaną ścieżkę, w której udostępniony plik dziennika używany przez wszystkie niezawodne usługi we wszystkich węzłach w klastrze, który nie określa SharedLogPath w swojej konfiguracji specyficznej dla usługi. Jeśli jednak SharedLogPath jest określony, należy również określić SharedLogId. |
 | SharedLogSizeInMB |Megabajtach |8192 |Określa liczbę MB miejsca na dysku do alokacji statycznej dla dziennika udostępnionego. Wartość musi być równa 2048 lub większa. |
 
@@ -111,17 +102,17 @@ ReplicatorConfig
 ### <a name="configuration-names"></a>Nazwy konfiguracji
 | Nazwa | Jednostka | Wartość domyślna | Uwagi |
 | --- | --- | --- | --- |
-| BatchAcknowledgementInterval |Sekundy |0,015 |Okres, przez który Replikator w dodatkowej chwili czeka po odebraniu operacji przed wysłaniem potwierdzenia do elementu podstawowego. Wszystkie inne potwierdzenia do wysłania dla operacji przetworzonych w ramach tego interwału są wysyłane jako jedna odpowiedź. |
+| BatchAcknowledgementInterval |Sekundy |0.015 |Okres, przez który Replikator w dodatkowej chwili czeka po odebraniu operacji przed wysłaniem potwierdzenia do elementu podstawowego. Wszystkie inne potwierdzenia do wysłania dla operacji przetworzonych w ramach tego interwału są wysyłane jako jedna odpowiedź. |
 | ReplicatorEndpoint |ND |Brak domyślnego parametru--Required |Adres IP i port, które będą używane przez Replikator podstawowy/pomocniczy do komunikowania się z innymi replikatorami w zestawie replik. Powinno to odwoływać się do punktu końcowego zasobu TCP w manifeście usługi. Zapoznaj się z informacjami o [zasobach manifestu usługi](service-fabric-service-manifest-resources.md) , aby dowiedzieć się więcej na temat definiowania zasobów punktu końcowego w manifeście usługi. |
 | MaxPrimaryReplicationQueueSize |Liczba operacji |8192 |Maksymalna liczba operacji w kolejce głównej. Operacja jest zwalniana, gdy podstawowy Replikator otrzyma potwierdzenie ze wszystkich dodatkowych replik. Ta wartość musi być większa niż 64 i potęgą 2. |
 | MaxSecondaryReplicationQueueSize |Liczba operacji |16384 |Maksymalna liczba operacji w kolejce pomocniczej. Operacja zostanie zwolniona po przeprowadzeniu wysokiej dostępności stanu przez trwałość. Ta wartość musi być większa niż 64 i potęgą 2. |
 | CheckpointThresholdInMB |MB |50 |Ilość miejsca w pliku dziennika, po którym stan jest tworzony w punkcie kontrolnym. |
 | MaxRecordSizeInKB |KB |1024 |Największy rozmiar rekordu, który Replikator może zapisać w dzienniku. Ta wartość musi być wielokrotnością 4 i większa niż 16. |
 | MinLogSizeInMB |MB |0 (określony przez system) |Minimalny rozmiar dziennika transakcyjnego. Nie będzie można obciąć dziennika do rozmiaru poniżej tego ustawienia. wartość 0 oznacza, że Replikator określi minimalny rozmiar dziennika. Zwiększenie tej wartości zwiększa możliwość wykonywania kopii częściowych i przyrostowych kopii zapasowych, ponieważ znaczenie odpowiednich rekordów dziennika jest mniejsze. |
-| TruncationThresholdFactor |1U |2 |Określa rozmiar dziennika, który zostanie wyzwolony. Próg obcinania jest określany przez MinLogSizeInMB pomnożony przez TruncationThresholdFactor. Wartość TruncationThresholdFactor musi być większa niż 1. MinLogSizeInMB * TruncationThresholdFactor musi być mniejsze niż MaxStreamSizeInMB. |
-| ThrottlingThresholdFactor |1U |4 |Określa, jaki rozmiar dziennika rozpocznie się dla repliki. Próg ograniczania przepustowości (w MB) jest określany przez funkcję Max ((MinLogSizeInMB * ThrottlingThresholdFactor), (CheckpointThresholdInMB * ThrottlingThresholdFactor)). Próg ograniczania (w MB) musi być większy niż próg obcinania (w MB). Próg obcinania (w MB) musi być mniejszy niż MaxStreamSizeInMB. |
+| TruncationThresholdFactor |współczynnik |2 |Określa rozmiar dziennika, który zostanie wyzwolony. Próg obcinania jest określany przez MinLogSizeInMB pomnożony przez TruncationThresholdFactor. Wartość TruncationThresholdFactor musi być większa niż 1. MinLogSizeInMB * TruncationThresholdFactor musi być mniejsze niż MaxStreamSizeInMB. |
+| ThrottlingThresholdFactor |współczynnik |4 |Określa, jaki rozmiar dziennika rozpocznie się dla repliki. Próg ograniczania przepustowości (w MB) jest określany przez funkcję Max ((MinLogSizeInMB * ThrottlingThresholdFactor), (CheckpointThresholdInMB * ThrottlingThresholdFactor)). Próg ograniczania (w MB) musi być większy niż próg obcinania (w MB). Próg obcinania (w MB) musi być mniejszy niż MaxStreamSizeInMB. |
 | MaxAccumulatedBackupLogSizeInMB |MB |800 |Maksymalny rozmiar skumulowany (w MB) dzienników kopii zapasowej w danym łańcuchu dzienników kopii zapasowych. Przyrostowe żądania kopii zapasowej zakończą się niepowodzeniem, jeśli przyrostowa kopia zapasowa wygeneruje dziennik kopii zapasowej, który mógłby spowodować zebrane dzienniki kopii zapasowej, ponieważ odpowiednia pełna kopia zapasowa będzie większa niż ten rozmiar. W takich przypadkach użytkownik musi wykonać pełną kopię zapasową. |
-| SharedLogId |IDENT |"" |Określa unikatowy identyfikator GUID, który będzie używany do identyfikowania udostępnionego pliku dziennika używanego z tą repliką. Zazwyczaj usługi nie powinny używać tego ustawienia. Jeśli jednak SharedLogId jest określony, należy również określić SharedLogPath. |
+| SharedLogId |GUID |"" |Określa unikatowy identyfikator GUID, który będzie używany do identyfikowania udostępnionego pliku dziennika używanego z tą repliką. Zazwyczaj usługi nie powinny używać tego ustawienia. Jeśli jednak SharedLogId jest określony, należy również określić SharedLogPath. |
 | SharedLogPath |W pełni kwalifikowana nazwa ścieżki |"" |Określa w pełni kwalifikowaną ścieżkę, w której zostanie utworzony udostępniony plik dziennika dla tej repliki. Zazwyczaj usługi nie powinny używać tego ustawienia. Jeśli jednak SharedLogPath jest określony, należy również określić SharedLogId. |
 | SlowApiMonitoringDuration |Sekundy |300 |Ustawia interwał monitorowania dla wywołań zarządzanych interfejsów API. Przykład: użytkownik podał funkcję wywołania zwrotnego kopii zapasowej. Po upływie interwału Raport kondycji ostrzeżeń zostanie wysłany do Menedżera kondycji. |
 | LogTruncationIntervalSeconds |Sekundy |0 |Konfigurowalny interwał, w którym zostanie zainicjowane obcinanie dziennika dla każdej repliki. Jest on używany do zapewnienia, że dziennik jest również obcinany w oparciu o czas, a nie tylko rozmiar dziennika. To ustawienie wymusza także przeczyszczanie usuniętych wpisów w niezawodnym słowniku. W związku z tym można go użyć w celu zapewnienia, że usunięte elementy są czyszczone w odpowiednim czasie. |

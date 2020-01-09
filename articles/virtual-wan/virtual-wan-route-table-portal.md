@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to create a route table using the portal.
-ms.openlocfilehash: 6b78b97004498fdacccdf9408d59158424ff6c07
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: c0681024b60827cf589906041c264d912ab209bb
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74534134"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75612364"
 ---
 # <a name="create-a-virtual-wan-hub-route-table-for-nvas-azure-portal"></a>Tworzenie tabeli tras wirtualnego centrum sieci WAN dla urządzeń WUS: Azure Portal
 
@@ -67,7 +67,7 @@ Utwórz centrum. Na potrzeby tego ćwiczenia można użyć następujących warto
 
 Zaktualizuj centrum za pomocą tabeli tras centrum. Na potrzeby tego ćwiczenia można użyć następujących wartości:
 
-* **Bezpośrednie przestrzenie adresowe sieci wirtualnej szprych:** (VNet1 i VNet2) 10.0.2.0/24 i 10.0.3.0/24
+* **Przestrzenie adresowe sieci wirtualnej szprych:** (VNet1 i VNet2) 10.0.2.0/24 i 10.0.3.0/24
 * **Prywatny adres IP interfejsu sieciowego urządzenie WUS DMZ:** 10.0.4.5
 
 1. Przejdź do wirtualnej sieci WAN.
@@ -85,8 +85,8 @@ Utwórz połączenie sieci wirtualnej z każdej pośredniej sieci wirtualnej szp
 
 | Nazwa sieci wirtualnej| Nazwa połączenia|
 | --- | --- |
-| VNet1 | testconnection1 |
-| VNet2 | testconnection2 |
+| Sieć wirtualna 1 | testconnection1 |
+| Sieć wirtualna 2 | testconnection2 |
 | NVAVNet | testconnection3 |
 
 Powtórz poniższą procedurę dla każdej sieci wirtualnej, która ma zostać nawiązane połączenie.

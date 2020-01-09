@@ -1,22 +1,22 @@
 ---
 title: Omówienie witryny Azure Portal | Microsoft Docs
-description: Dowiedz się, jak nawigować w Azure Portal i używać jej do zarządzania usługami
+description: Azure Portal jest graficznym interfejsem użytkownika, który służy do zarządzania usługami platformy Azure. Dowiedz się, jak nawigować w Azure Portal i znajdować zasoby.
 services: azure-portal
 keywords: portal
-author: kfollis
-ms.author: kfollis
-ms.date: 11/01/2019
+author: mblythe
+ms.author: mblythe
+ms.date: 12/20/2019
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 90bbea1068bb237501daf5e0dfac865ca6b9a12a
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 478b090cfe0bfd63bde37dc944cd9fad6e88f179
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73579444"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75637613"
 ---
-# <a name="azure-portal-overview"></a>Azure Portal — omówienie
+# <a name="azure-portal-overview"></a>Azure Portal — przegląd
 
 W tym artykule wprowadzono Azure Portal, identyfikują elementy strony portalu i ułatwiają zapoznanie się z możliwościami zarządzania Azure Portal.
 

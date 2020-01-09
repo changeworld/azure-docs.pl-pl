@@ -7,28 +7,28 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 9635798720667e38a767f26fc2e5f5374e420059
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 838145f8573e11deff8566c932a9c73c6f59f03b
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73795548"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75561664"
 ---
 # <a name="what-is-application-gateway-ingress-controller"></a>Co to jest Application Gateway kontroler transferu danych przychodzących?
-Application Gateway transfer danych przychodzących (AGIC) to aplikacja Kubernetes, która umożliwia klientom korzystającym z [usługi Azure Kubernetes Service (AKS)](https://azure.microsoft.com/services/kubernetes-service/) korzystanie z natywnego [Application Gateway](https://azure.microsoft.com/services/application-gateway/) P7 modułu równoważenia obciążenia platformy Azure w celu udostępnienia oprogramowania w chmurze Internet. AGIC monitoruje klaster Kubernetes, na którym jest on hostowany, i ciągle aktualizuje Application Gateway, dzięki czemu wybrane usługi są dostępne w Internecie.
+Application Gateway AGIC (transfer danych przychodzących) to aplikacja Kubernetes, która umożliwia klientom korzystającym z [usługi Azure Kubernetes Service (AKS)](https://azure.microsoft.com/services/kubernetes-service/) korzystanie z natywnego [Application Gateway](https://azure.microsoft.com/services/application-gateway/) P7 modułu równoważenia obciążenia platformy Azure w celu udostępnienia oprogramowania chmury do Internetu. AGIC monitoruje klaster Kubernetes, na którym jest on hostowany, i ciągle aktualizuje Application Gateway, dzięki czemu wybrane usługi są dostępne w Internecie.
 
 Kontroler transferu danych przychodzących działa we własnym zakresie na AKS klienta. AGIC monitoruje podzestaw zasobów Kubernetes dla zmian. Stan klastra AKS jest tłumaczony na Application Gateway konkretną konfigurację i stosowany do [Azure Resource Manager (ARM)](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).
 
 ## <a name="benefits-of-application-gateway-ingress-controller"></a>Zalety kontrolera Application Gateway transferu danych przychodzących
 AGIC umożliwia wdrożenie w celu kontrolowania wielu klastrów AKS z pojedynczym Application Gateway kontrolerem danych przychodzących. AGIC pomaga również wyeliminować konieczność posiadania innego modułu równoważenia obciążenia/publicznego adresu IP przed klastrem AKS i unika wielu przeskoków w ścieżce danych, zanim żądania docierają do klastra AKS. Application Gateway rozmowy do zasobników przy użyciu prywatnego adresu IP bezpośrednio i nie wymagają usług NodePort i KubeProxy. Zapewnia to również lepszą wydajność wdrożeń.
 
-Kontroler transferu danych przychodzących jest obsługiwany wyłącznie przez jednostki SKU Standard_v2 i WAF_v2, które również zapewniają korzyści skalowania automatycznego. Application Gateway mogą reagować na zwiększenie lub zmniejszenie obciążenia ruchu i odpowiednio skalować, bez zużywania żadnych zasobów z klastra AKS.
+Kontroler transferu danych przychodzących jest obsługiwany wyłącznie przez Standard_v2 i WAF_v2 jednostki SKU, które również zapewniają korzyści skalowania automatycznego. Application Gateway mogą reagować na zwiększenie lub zmniejszenie obciążenia ruchu i odpowiednio skalować, bez zużywania żadnych zasobów z klastra AKS.
 
 Użycie Application Gateway oprócz usługi AGIC ułatwia również ochronę klastra AKS przez zapewnienie funkcjonalności TLS i zapory aplikacji sieci Web (WAF).
 
 ![Azure Application Gateway i AKS](./media/application-gateway-ingress-controller-overview/architecture.png)
 
-AGIC konfiguruje się za pośrednictwem [zasobu](http://kubernetes.io/docs/user-guide/ingress/)transferu Kubernetes, a także usług i wdrożeń/zasobników. Udostępnia wiele funkcji, korzystając z natywnego modułu równoważenia obciążenia usługi Azure Application Gateway P7. Aby nazwać kilka:
+AGIC konfiguruje się za pośrednictwem [zasobu](https://kubernetes.io/docs/user-guide/ingress/)transferu Kubernetes, a także usług i wdrożeń/zasobników. Udostępnia wiele funkcji, korzystając z natywnego modułu równoważenia obciążenia usługi Azure Application Gateway P7. Aby nazwać kilka:
   - Routing adresów URL
   - Koligacja na podstawie pliku cookie
   - Kończenie żądań protokołu SSL

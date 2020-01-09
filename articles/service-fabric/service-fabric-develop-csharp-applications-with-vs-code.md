@@ -1,128 +1,119 @@
 ---
-title: Twórz aplikacje platformy .NET Core usługi Azure Service Fabric za pomocą programu Visual Studio Code | Dokumentacja firmy Microsoft
-description: W tym artykule pokazano, jak tworzenie, wdrażanie i debugowanie aplikacji .NET Core usługi Service Fabric przy użyciu programu Visual Studio Code.
-services: service-fabric
-documentationcenter: .net
+title: Tworzenie aplikacji .NET Core za pomocą Visual Studio Code
+description: W tym artykule przedstawiono sposób kompilowania, wdrażania i debugowania aplikacji .NET Core Service Fabric przy użyciu Visual Studio Code.
 author: peterpogorski
-manager: chackdan
-editor: ''
-ms.assetid: 96176149-69bb-4b06-a72e-ebbfea84454b
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 06/29/2018
 ms.author: pepogors
-ms.openlocfilehash: 60b634b0b927804249148737ee7a99c0e86dd7d6
-ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
+ms.openlocfilehash: 1d7478e6b81ef2c53ca6194197336e91d3ff250b
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67537784"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614527"
 ---
-# <a name="develop-c-service-fabric-applications-with-visual-studio-code"></a>Twórz C# aplikacji usługi Service Fabric za pomocą programu Visual Studio Code
+# <a name="develop-c-service-fabric-applications-with-visual-studio-code"></a>Opracowywanie C# aplikacji Service Fabric przy użyciu Visual Studio Code
 
-[Rozszerzenie usług Reliable Services usługi Service Fabric dla programu VS Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-service-fabric-reliable-services) ułatwia tworzenie aplikacji .NET Core usługi Service Fabric w systemach operacyjnych Windows, Linux i macOS.
+[Rozszerzenie Service Fabric Reliable Services dla vs Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-service-fabric-reliable-services) ułatwia tworzenie aplikacji platformy .NET Service Fabric Core w systemach operacyjnych Windows, Linux i macOS.
 
-Ten artykuł pokazuje, jak tworzenie, wdrażanie i debugowanie aplikacji .NET Core usługi Service Fabric przy użyciu programu Visual Studio Code.
+W tym artykule opisano sposób kompilowania, wdrażania i debugowania aplikacji Service Fabric .NET Core przy użyciu Visual Studio Code.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-W tym artykule założono, że już zainstalowano program VS Code, rozszerzenie usług Reliable Services usługi Service Fabric dla programu VS Code i wszelkie zależności wymagane dla swojego środowiska projektowego. Aby dowiedzieć się więcej, zobacz [wprowadzenie](./service-fabric-get-started-vs-code.md#prerequisites).
+W tym artykule przyjęto założenie, że zainstalowano już VS Code, Service Fabric Reliable Services rozszerzenia dla VS Code oraz wszystkie zależności wymagane dla środowiska deweloperskiego. Aby dowiedzieć się więcej, zobacz [wprowadzenie](./service-fabric-get-started-vs-code.md#prerequisites).
 
 ## <a name="download-the-sample"></a>Pobierz przykład
-W tym artykule wykorzystano CounterService aplikacji w [usługi Service Fabric platformy .NET Core wprowadzenie przykłady repozytorium GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-core-getting-started). 
+W tym artykule jest stosowana aplikacja CounterService w [repozytorium usługi Service Fabric .NET Core](https://github.com/Azure-Samples/service-fabric-dotnet-core-getting-started). 
 
-Aby sklonować repozytorium na komputerze deweloperskim, uruchom następujące polecenie w oknie terminalu (okno polecenia na Windows):
+Aby sklonować repozytorium do komputera deweloperskiego, uruchom następujące polecenie w oknie terminalu (okno polecenia w systemie Windows):
 
 ```
 git clone https://github.com/Azure-Samples/service-fabric-dotnet-core-getting-started.git
 ```
 
-## <a name="open-the-application-in-vs-code"></a>Otwórz aplikację w programie VS Code
+## <a name="open-the-application-in-vs-code"></a>Otwórz aplikację w VS Code
 
 ### <a name="windows"></a>Windows
-Kliknij prawym przyciskiem myszy ikonę programu VS Code w Start Menu i wybierz polecenie **Uruchom jako administrator**. Aby dołączyć debuger do usług, musisz uruchomić program VS Code jako administrator.
+Kliknij prawym przyciskiem myszy ikonę VS Code w menu Start i wybierz polecenie **Uruchom jako administrator**. Aby dołączyć debuger do usług, musisz uruchomić VS Code jako administrator.
 
 ### <a name="linux"></a>Linux
-Za pomocą terminalu, przejdź do ścieżki /service-fabric-dotnet-core-getting-started/Services/CounterService z katalogu aplikacji sklonowanym się do lokalnie.
+Za pomocą terminalu przejdź do ścieżki/service-fabric-dotnet-core-getting-started/Services/CounterService z katalogu, do którego aplikacja została sklonowana lokalnie.
 
-Uruchom następujące polecenie, aby otworzyć program VS Code jako użytkownik główny, tak, aby dołączyć debuger do usług.
+Uruchom następujące polecenie, aby otworzyć VS Code jako użytkownik główny, aby debuger mógł dołączyć do Twoich usług.
 ```
 sudo code . --user-data-dir='.'
 ```
 
-Aplikacja powinna pojawiają się w obszarze roboczym programu VS Code.
+Aplikacja powinna teraz pojawić się w obszarze roboczym VS Code.
 
-![Licznik aplikacji usługi w obszarze roboczym](./media/service-fabric-develop-csharp-applications-with-vs-code/counter-service-application-in-workspace.png)
+![Aplikacja usługi Counter w obszarze roboczym](./media/service-fabric-develop-csharp-applications-with-vs-code/counter-service-application-in-workspace.png)
 
 ## <a name="build-the-application"></a>Kompilowanie aplikacji
-1. Naciśnij klawisz (Ctrl + Shift + p) aby otworzyć **paletę poleceń** w programie VS Code.
-2. Wyszukaj i wybierz pozycję **usługi Service Fabric: Tworzenie aplikacji** polecenia. Skompilowane dane wyjściowe są wysyłane do zintegrowany terminal programu.
+1. Naciśnij klawisz (Ctrl + Shift + p), aby otworzyć **paletę poleceń** w vs Code.
+2. Wyszukaj i wybierz polecenie **Service Fabric: build Application** . Dane wyjściowe kompilacji są wysyłane do zintegrowanego terminalu.
 
-   ![Tworzenie polecenia aplikacji w programie VS Code](./media/service-fabric-develop-csharp-applications-with-vs-code/sf-build-application.png)
+   ![Polecenie kompilowania aplikacji w VS Code](./media/service-fabric-develop-csharp-applications-with-vs-code/sf-build-application.png)
 
 ## <a name="deploy-the-application-to-the-local-cluster"></a>Wdrażanie aplikacji w klastrze lokalnym
-Po skonstruowaniu aplikacji można wdrożyć w klastrze lokalnym. 
+Po skompilowaniu aplikacji można wdrożyć ją w klastrze lokalnym. 
 
-1. Z **paletę poleceń**, wybierz opcję **usługi Service Fabric: Wdrażanie aplikacji (Localhost) polecenia**. Dane wyjściowe z procesu instalacji są wysyłane do zintegrowany terminal programu.
+1. W **palecie poleceń**wybierz **polecenie Service Fabric: Deploy Application (localhost)** . Dane wyjściowe procesu instalacji są wysyłane do terminalu zintegrowanego.
 
-   ![Wdrażanie polecenia aplikacji w programie VS Code](./media/service-fabric-develop-csharp-applications-with-vs-code/sf-deploy-application.png)
+   ![Polecenie wdrażania aplikacji w VS Code](./media/service-fabric-develop-csharp-applications-with-vs-code/sf-deploy-application.png)
 
-4. Po zakończeniu wdrażania Uruchom przeglądarkę i Otwórz narzędzie Service Fabric Explorer: http:\//localhost:19080 / Explorer. Powinieneś zobaczyć, że aplikacja jest uruchomiona. To może trochę potrwać, więc o cierpliwość. 
+4. Po zakończeniu wdrażania Uruchom przeglądarkę i Otwórz Service Fabric Explorer: http:\//localhost: 19080/Explorer. Powinna zostać wyświetlona aplikacja. Może to potrwać pewien czas. 
 
-   ![Licznik aplikacji usługi Service Fabric Explorer](./media/service-fabric-develop-csharp-applications-with-vs-code/sfx-verify-deploy.png)
+   ![Aplikacja usługi Counter w Service Fabric Explorer](./media/service-fabric-develop-csharp-applications-with-vs-code/sfx-verify-deploy.png)
 
-4. Po upewnieniu się, aplikacja jest uruchomiona, uruchom przeglądarkę i otwórz tę stronę: http:\//localhost:31002. Jest to frontonu w aplikacji sieci web. Odśwież stronę Aby wyświetlić bieżącą wartość licznika, ponieważ zwiększa.
+4. Po sprawdzeniu, czy aplikacja jest uruchomiona, uruchom przeglądarkę i Otwórz Tę stronę: http:\//localhost: 31002. Jest to fronton sieci Web aplikacji. Odśwież stronę, aby zobaczyć bieżącą wartość licznika w miarę jego przyrostu.
 
-   ![Licznik aplikacji usługi w przeglądarce](./media/service-fabric-develop-csharp-applications-with-vs-code/counter-service-running.png)
+   ![Aplikacja usługi Counter w przeglądarce](./media/service-fabric-develop-csharp-applications-with-vs-code/counter-service-running.png)
 
 ## <a name="publish-the-application-to-an-azure-service-fabric-cluster"></a>Publikowanie aplikacji w klastrze usługi Azure Service Fabric
-Wraz z wdrożeniem aplikacji w klastrze lokalnym, możesz również opublikować aplikację do zdalnego klastra usługi Azure Service Fabric. 
+Wraz z wdrażaniem aplikacji w klastrze lokalnym można również opublikować ją w klastrze zdalnego Service Fabric platformy Azure. 
 
-1. Upewnij się, czy został wcześniej utworzony swoją aplikację przy użyciu powyższych instrukcji. Zaktualizuj plik konfiguracji wygenerowanego `Cloud.json` ze szczegółami zdalny klaster, który chcesz opublikować.
+1. Upewnij się, że aplikacja została skompilowana przy użyciu powyższych instrukcji. Zaktualizuj wygenerowany plik konfiguracji `Cloud.json` zawierający szczegóły zdalnego klastra, na którym chcesz publikować.
 
-2. Z **paletę poleceń**, wybierz opcję **usługi Service Fabric: Publikowanie aplikacji polecenie**. Dane wyjściowe z procesu instalacji są wysyłane do zintegrowany terminal programu.
+2. W **palecie poleceń**wybierz **polecenie Service Fabric: Publish Application**. Dane wyjściowe procesu instalacji są wysyłane do terminalu zintegrowanego.
 
-   ![Publikowanie aplikacji polecenie w programie VS Code](./media/service-fabric-develop-csharp-applications-with-vs-code/sf-publish-application.png)
+   ![Polecenie publikowania aplikacji w VS Code](./media/service-fabric-develop-csharp-applications-with-vs-code/sf-publish-application.png)
 
-3. Po zakończeniu wdrażania Uruchom przeglądarkę i Otwórz narzędzie Service Fabric Explorer: `https:<clusterurl>:19080/Explorer`. Powinieneś zobaczyć, że aplikacja jest uruchomiona. To może trochę potrwać, więc o cierpliwość. 
+3. Po zakończeniu wdrażania Uruchom przeglądarkę i Otwórz Service Fabric Explorer: `https:<clusterurl>:19080/Explorer`. Powinna zostać wyświetlona aplikacja. Może to potrwać pewien czas. 
 
 ## <a name="debug-the-application"></a>Debugowanie aplikacji
-Podczas debugowania aplikacji w programie VS Code, aplikacja musi działać w klastrze lokalnym. Następnie można dodać punkty przerwania w kodzie.
+Podczas debugowania aplikacji w VS Code, aplikacja musi działać w klastrze lokalnym. Punkty przerwania można następnie dodać do kodu.
 
-Aby ustawić punkt przerwania i debugowania, wykonaj następujące czynności:
-1. Otwórz w Eksploratorze */src/CounterServiceApplication/CounterService/CounterService.cs* plik i ustaw punkt przerwania w wierszu 62 wewnątrz `RunAsync` metody.
-3. Kliknij ikonę debugowania **pasku działań** otwarcie widoku debugera w programie VS Code. Kliknij ikonę koła zębatego w górnej części Widok debugera i wybierz **platformy .NET Core** z menu rozwijanego w środowisku. Plik launch.json zostanie otwarty. Możesz zamknąć ten plik. Teraz powinien być widoczny opcje konfiguracji dostępne w menu konfiguracji debugowania, znajdujący się obok przycisku uruchomienia (zielonej strzałki).
+Aby ustawić punkt przerwania i debugowanie, wykonaj następujące czynności:
+1. W Eksploratorze Otwórz plik */src/CounterServiceApplication/CounterService/CounterService.cs* i ustaw punkt przerwania w wierszu 62 wewnątrz metody `RunAsync`.
+3. Kliknij ikonę debugowania na **pasku działania** , aby otworzyć widok debugera w vs Code. Kliknij ikonę koła zębatego w górnej części widoku debuger i wybierz pozycję **.NET Core** z menu środowisko listy rozwijanej. Zostanie otwarty plik Launch. JSON. Możesz zamknąć ten plik. Po wybraniu opcji konfiguracji w menu Debugowanie konfiguracji obok przycisku Uruchom (zielona strzałka) powinna zostać wyświetlona opcja konfiguracja.
 
-   ![Debugowanie ikonę w obszarze roboczym programu VS Code](./media/service-fabric-develop-csharp-applications-with-vs-code/debug-icon-workspace.png)
+   ![Ikona debugowania w obszarze roboczym VS Code](./media/service-fabric-develop-csharp-applications-with-vs-code/debug-icon-workspace.png)
 
-2. Wybierz **Dołączanie programu .NET Core** menu konfiguracji debugowania.
+2. Wybierz z menu Debuguj konfigurację opcję **Dołącz do programu .NET Core** .
 
-   ![Debugowanie ikonę w obszarze roboczym programu VS Code](./media/service-fabric-develop-csharp-applications-with-vs-code/debug-start.png)
+   ![Ikona debugowania w obszarze roboczym VS Code](./media/service-fabric-develop-csharp-applications-with-vs-code/debug-start.png)
 
-3. Otwórz narzędzie Service Fabric Explorer w przeglądarce: http:\//localhost:19080 / Explorer. Kliknij przycisk **aplikacje** i testowania odzyskiwania po awarii w dół, aby określić węzła podstawowego, który CounterService działa na. Na ilustracji poniżej węzła podstawowego dla CounterService jest węzłem 0.
+3. Otwórz Service Fabric Explorer w przeglądarce: http:\//localhost: 19080/Explorer. Kliknij pozycję **aplikacje** i przejdź do szczegółów, aby określić węzeł podstawowy, na którym działa CounterService. Na obrazie poniżej węzła podstawowego dla CounterService jest węzeł 0.
 
-   ![Podstawowy węzeł CounterService](./media/service-fabric-develop-csharp-applications-with-vs-code/counter-service-primary-node.png)
+   ![Węzeł podstawowy dla CounterService](./media/service-fabric-develop-csharp-applications-with-vs-code/counter-service-primary-node.png)
 
-4. W programie VS Code kliknij ikonę uruchomienia (zielonej strzałki) obok **Dołączanie programu .NET Core** konfiguracji debugowania. W oknie dialogowym wyboru procesu wybierz CounterService procesu, który działa w węźle podstawowym, który został zidentyfikowany w kroku 4.
+4. W VS Code kliknij ikonę Run (zielona strzałka) obok konfiguracji debugowania **dołączania do programu .NET Core** . W oknie dialogowym Wybieranie procesu wybierz proces CounterService uruchomiony w węźle podstawowym, który został zidentyfikowany w kroku 4.
 
-   ![Podstawowy proces](./media/service-fabric-develop-csharp-applications-with-vs-code/select-process.png)
+   ![Proces podstawowy](./media/service-fabric-develop-csharp-applications-with-vs-code/select-process.png)
 
-5. Punkt przerwania w *CounterService.cs* plik osiągnie się bardzo szybko. Następnie można zbadać wartości zmiennych lokalnych. Użyj narzędzi debugowania w górnej części programu VS Code kontynuowanie wykonywania, Przekrocz wiersze, krok po kroku do metody, lub wychodzenia z bieżącej metody. 
+5. Punkt przerwania w pliku *CounterService.cs* zostanie szybko trafiony. Następnie można eksplorować wartości zmiennych lokalnych. Użyj paska narzędzi debugowania w górnej części VS Code, aby kontynuować wykonywanie, przekroczyć wiersze, wkroczyć metody lub krok poza bieżącą metodę. 
 
-   ![Debugowanie wartości](./media/service-fabric-develop-csharp-applications-with-vs-code/breakpoint-hit.png)
+   ![Wartości debugowania](./media/service-fabric-develop-csharp-applications-with-vs-code/breakpoint-hit.png)
 
-6. Aby zakończyć sesję debugowania, kliknij ikonę wtyczki na pasku narzędzi debugowania, w górnej części programu VS Code...
+6. Aby zakończyć sesję debugowania, kliknij ikonę wtyczki na pasku narzędzi debugowania w górnej części VS Code.
    
-   ![Odłącz od debugera](./media/service-fabric-develop-csharp-applications-with-vs-code/debug-bar-disconnect.png)
+   ![Rozłącz z debugerem](./media/service-fabric-develop-csharp-applications-with-vs-code/debug-bar-disconnect.png)
        
-7. Po zakończeniu debugowania, możesz użyć **usługi Service Fabric: Usuń aplikację** polecenie, aby usunąć CounterService aplikacji w klastrze lokalnym. 
+7. Po zakończeniu debugowania można użyć polecenia **Service Fabric: Remove aplikacji** , aby usunąć aplikację CounterService z klastra lokalnego. 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* Dowiedz się, jak [programowanie i debugowanie aplikacji Java usługi Service Fabric za pomocą programu VS Code](./service-fabric-develop-java-applications-with-vs-code.md).
+* Dowiedz się [, jak opracowywać i debugować aplikacje Service Fabric Java przy użyciu vs Code](./service-fabric-develop-java-applications-with-vs-code.md).
 
 
 

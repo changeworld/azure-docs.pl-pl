@@ -7,13 +7,13 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 11/05/2019
-ms.openlocfilehash: 85fb67248a69a2726fef99ebe4749d61807631e4
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.date: 12/30/2019
+ms.openlocfilehash: cafec321e7c40e27d8de731feda1103451271507
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74010084"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75562599"
 ---
 # <a name="understand-digital-twins-object-models-and-spatial-intelligence-graph"></a>Zrozumienie modeli obiektów Digital bliźniaczych reprezentacji i grafu analizy przestrzennej
 
@@ -58,7 +58,7 @@ Inne kategorie obiektów to:
 
 Wykres przestrzenny to hierarchiczny wykres obszarów, urządzeń i osób zdefiniowanych w modelu obiektów Digital bliźniaczych reprezentacji. Wykres przestrzenny obsługuje dziedziczenie, filtrowanie, przechodzenie, skalowalność i rozszerzalność. Możesz zarządzać wykresem przestrzennym i korzystać z niego przy użyciu kolekcji interfejsów API REST.
 
-Jeśli w subskrypcji zostanie wdrożona usługa Digital bliźniaczych reprezentacji, staje się ona administratorem globalnym węzła głównego. Następnie zostanie automatycznie udzielony pełny dostęp do całej struktury. Udostępnianie spacji na grafie przy użyciu interfejsu API Space. Udostępnianie usług przy użyciu interfejsu API i czujników urządzenia przy użyciu interfejsu API czujnika. [Narzędzia Open Source](https://github.com/Azure-Samples/digital-twins-samples-csharp) również są dostępne do zbiorczego udostępniania wykresu.
+Jeśli w subskrypcji zostanie wdrożona usługa Digital bliźniaczych reprezentacji, staje się ona administratorem globalnym węzła głównego. Następnie zostanie automatycznie udzielony pełny dostęp do całej struktury. Udostępnianie spacji na grafie przy użyciu interfejsu API Space. Udostępnianie usług przy użyciu interfejsu API i czujników urządzenia przy użyciu interfejsu API czujnika. [Narzędzia Open Source](https://github.com/Azure-Samples/digital-twins-samples-csharp) są również dostępne do zbiorczego udostępniania wykresu.
 
 **Dziedziczenie grafu**. Dziedziczenie ma zastosowanie do uprawnień i właściwości, które są podrzędne od węzła nadrzędnego do wszystkich węzłów znajdujących się poniżej. Na przykład po przypisaniu roli do użytkownika w danym węźle użytkownik ma uprawnienia tej roli do danego węzła i każdego węzła poniżej. Każdy klucz właściwości i rozszerzony typ zdefiniowany dla danego węzła jest dziedziczony przez wszystkie węzły znajdujące się pod tym węzłem.
 

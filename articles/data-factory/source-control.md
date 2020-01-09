@@ -11,12 +11,12 @@ ms.reviewer: ''
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/09/2019
-ms.openlocfilehash: 1f31bb78fced6db2a26559cbd098407823161dfc
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: fc38dce3deaa601c9ed36f60439a08bb89cc7630
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928769"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646901"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Kontrola źródła w Azure Data Factory
 
@@ -157,6 +157,8 @@ W okienku Konfiguracja są wyświetlane następujące ustawienia repozytorium Gi
 
 - Integracja usługi GitHub z Data Factory narzędziami autorskimi programu działa tylko w ogólnie dostępnej wersji programu Data Factory.
 
+- Z pojedynczej gałęzi GitHub można pobrać maksymalnie 1 000 jednostek dla każdego typu zasobu (na przykład potoków i zestawów danych). Jeśli ten limit zostanie osiągnięty, sugerowane jest podzielenie zasobów na osobne fabryki.
+
 ## <a name="switch-to-a-different-git-repo"></a>Przełącz na inne repozytorium git
 
 Aby przełączyć się na inne repozytorium git, kliknij ikonę **Ustawienia repozytorium git** w prawym górnym rogu strony Przegląd Data Factory. Jeśli nie widzisz ikony, wyczyść pamięć podręczną przeglądarki lokalnej. Wybierz ikonę, aby usunąć skojarzenie z bieżącym repozytorium.
@@ -185,7 +187,7 @@ Gdy wszystko będzie gotowe do scalenia zmian z gałęzi funkcji z gałęzią ws
 
 ### <a name="configure-publishing-settings"></a>Konfigurowanie ustawień publikowania
 
-Aby skonfigurować gałąź Publikuj, czyli gałąź, w której zapisano Menedżer zasobów szablony — Dodaj plik `publish_config.json` do folderu głównego w gałęzi współpracy. Data Factory odczytuje ten plik, szuka pola `publishBranch`i tworzy nową gałąź (jeśli jeszcze nie istnieje) z podaną wartością. Następnie zapisuje wszystkie szablony Menedżer zasobów w określonej lokalizacji. Na przykład:
+Aby skonfigurować gałąź Publikuj, czyli gałąź, w której zapisano Menedżer zasobów szablony — Dodaj plik `publish_config.json` do folderu głównego w gałęzi współpracy. Data Factory odczytuje ten plik, szuka pola `publishBranch`i tworzy nową gałąź (jeśli jeszcze nie istnieje) z podaną wartością. Następnie zapisuje wszystkie szablony Menedżer zasobów w określonej lokalizacji. Przykład:
 
 ```json
 {

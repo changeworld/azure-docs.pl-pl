@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/08/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 289100afe825c14ce9964f39e3f583078f51da1d
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 32c1ca95c01edec74f22fc051e453f2ac0dbd03f
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73182261"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75564784"
 ---
 ## <a name="application-performance-indicators"></a>Wskaźniki wydajności aplikacji
 
@@ -25,7 +25,7 @@ W tej sekcji omówiono typowe wskaźniki wydajności w kontekście Premium Stora
 
 Operacje we/wy lub wejścia/wyjścia na sekundę to liczba żądań wysyłanych przez aplikację do dysków magazynu w jednej sekundzie. Operacja wejścia/wyjścia może mieć Odczyt lub zapis, sekwencyjne lub losowe. Aplikacje przetwarzania transakcji online (OLTP), takie jak witryna sieci Web w trybie online, muszą natychmiast przetwarzać wiele równoczesnych żądań użytkowników. Żądania użytkownika są wstawiane i aktualizowane z dużą ilością transakcji bazy danych, które aplikacja musi szybko przetwarzać. W związku z tym aplikacje OLTP wymagają bardzo dużej liczby operacji we/wy. Takie aplikacje obsługują miliony małych i losowych żądań we/wy. Jeśli masz taką aplikację, musisz zaprojektować infrastrukturę aplikacji, aby zoptymalizować ją pod kątem operacji we/wy na sekundę. W dalszej części, *Optymalizacja wydajności aplikacji*pozwala szczegółowo omówić wszystkie czynniki, które należy wziąć pod uwagę w celu uzyskania dużej liczby operacji we/wy na sekundę.
 
-Po dołączeniu dysku magazynu w warstwie Premium do maszyny wirtualnej o dużej skali platforma Azure zapewnia gwarancję liczby operacji wejścia/wyjścia na sekundę zgodnie ze specyfikacją dysku. Na przykład dysk P50 ma postanowienia 7500 operacji we/wy na sekundę. Każdy rozmiar maszyny wirtualnej o dużej skali ma również określony limit operacji we/wy, który może być trwały. Na przykład Standardowa maszyna wirtualna GS5 ma limit liczby operacji we/wy 80 000.
+Po dołączeniu dysku magazynu premium do maszyny wirtualnej o dużej skali platforma Azure aprowizuje dla Ciebie gwarantowaną liczbę operacji we/wy zgodnie ze specyfikacją dysku. Na przykład dysk P50 ma postanowienia 7500 operacji we/wy na sekundę. Każdy rozmiar maszyny wirtualnej o dużej skali ma również określony limit IOPS, jaki może utrzymać. Na przykład Standardowa maszyna wirtualna GS5 ma limit liczby operacji we/wy 80 000.
 
 ## <a name="throughput"></a>Przepływność
 
@@ -53,7 +53,7 @@ Następujące operacje płaszczyzny kontroli na Managed Disks mogą polegać na 
 - Utwórz dysk zarządzany na podstawie migawki.
 - Konwertowanie dysków niezarządzanych na dyski zarządzane.
 
-# <a name="performance-application-checklist-for-disks"></a>Lista kontrolna aplikacji wydajności dla dysków
+## <a name="performance-application-checklist-for-disks"></a>Lista kontrolna aplikacji wydajności dla dysków
 
 Pierwszym krokiem projektowania aplikacji o wysokiej wydajności działającej na platformie Azure Premium Storage jest zrozumienie wymagań dotyczących wydajności aplikacji. Po zebraniu wymagań dotyczących wydajności można zoptymalizować aplikację, aby osiągnąć optymalną wydajność.
 
@@ -92,15 +92,15 @@ Najlepszym sposobem mierzenia wymagań dotyczących wydajności aplikacji jest u
 
 Liczniki Monitora wydajności są dostępne dla procesora, pamięci i każdego dysku logicznego i dysku fizycznego serwera programu. W przypadku korzystania z dysków magazynu Premium Storage z maszyną wirtualną liczniki dysku fizycznego są dla każdego dysku magazynu w warstwie Premium, a liczniki dysku logicznego są dla każdego woluminu utworzonego na dyskach magazynu w warstwie Premium. Należy przechwycić wartości dysków, które obsługują obciążenie aplikacji. Jeśli istnieje jedno do jednego mapowanie między dyskami logicznymi i fizycznymi, można odwoływać się do liczników dysków fizycznych. w przeciwnym razie odwołaj się do liczników dysku logicznego. W systemie Linux polecenie iostat generuje raport użycia procesora CPU i dysku. Raport o wykorzystaniu dysku zawiera statystyki na fizyczne urządzenie lub partycję. Jeśli masz serwer bazy danych z danymi i dzienniki na oddzielnych dyskach, Zbierz te dane dla obu dysków. W poniższej tabeli opisano liczniki dotyczące dysków, procesorów i pamięci:
 
-| Przeciw | Opis | Monitora wydajności | Iostat |
+| Licznik | Opis | Monitora wydajności | Iostat |
 | --- | --- | --- | --- |
 | **Liczba operacji we/wy na sekundę** |Liczba żądań we/wy wystawionych na dysk magazynujący na sekundę. |Odczyty dysku/s <br> Zapisy dysku/s |TPS <br> r/s <br> w/s |
 | **Odczyty i zapisy z dysku** |% operacji odczytu i zapisu wykonanych na dysku. |Czas odczytu dysku (%) <br> Czas zapisu na dysku (%) |r/s <br> w/s |
-| **Przepływność** |Ilość danych odczytywanych lub zapisywana na dysku na sekundę. |Bajty odczytu dysku/s <br> Bajty zapisu dysku/s |kB_read/s <br> kB_wrtn/s |
-| **Opóźnienie** |Łączny czas wykonywania żądania we/wy dysku. |Średni czas dysku w s/odczyt <br> Średni czas dysku w s/zapis |Kart <br> svctm |
+| **Przepływność** |Ilość danych odczytywanych lub zapisywana na dysku na sekundę. |Bajty odczytu z dysku/s <br> Bajty zapisu na dysku/s |kB_read/s <br> kB_wrtn/s |
+| **Opóźnienie** |Łączny czas wykonywania żądania we/wy dysku. |Średni czas dysku w s/odczyt <br> Średni czas dysku w s/zapis |await <br> svctm |
 | **Rozmiar we/wy** |Rozmiar żądań we/wy dotyczy dysków magazynu. |Średnia liczba bajtów dysku/odczyt <br> Średnia liczba bajtów dysku/zapis |avgrq — sz |
 | **Głębokość kolejki** |Liczba oczekujących żądań we/wy oczekujących na odczytanie lub zapis na dysku magazynu. |Bieżąca długość kolejki dysku |avgqu — sz |
-| **Maksymalny. Rozmiar** |Ilość pamięci wymaganej do bezproblemowego uruchamiania aplikacji |% Zadeklarowanych bajtów w użyciu |Użyj vmstat |
+| **Maksymalny. Rozmiar** |Ilość pamięci wymaganej do bezproblemowego uruchamiania aplikacji |Zadeklarowane bajty w użyciu (%) |Użyj vmstat |
 | **Maksymalny. TESTY** |Ilość czasu wymagana do bezproblemowego uruchamiania aplikacji |Czas procesora (%) |% util |
 
 Dowiedz się więcej na temat [iostat](https://linux.die.net/man/1/iostat) i [monitora wydajności](https://msdn.microsoft.com/library/aa645516.aspx).
@@ -119,7 +119,7 @@ W poniższej tabeli zestawiono czynniki wydajności i kroki niezbędne do optyma
 
 Aby uzyskać więcej informacji o rozmiarach maszyn wirtualnych oraz o liczbie operacji we/wy, przepływności i opóźnieniu dla każdego typu maszyny wirtualnej, zobacz [rozmiary maszyn wirtualnych](../articles/virtual-machines/linux/sizes.md) z systemem Linux lub [rozmiary maszyn wirtualnych z systemem Windows](../articles/virtual-machines/windows/sizes.md).
 
-| &nbsp; | **Wejścia** | **Przepływność** | **Opóźnienie** |
+| &nbsp; | **IOPS** | **Przepływność** | **Opóźnienie** |
 | --- | --- | --- | --- |
 | **Przykładowy scenariusz** |Aplikacja OLTP przedsiębiorstwa wymagająca bardzo dużej liczby transakcji na sekundę. |Przetwarzanie dużych ilości danych przez aplikację do magazynowania danych przedsiębiorstwa. |Aplikacje niemal w czasie rzeczywistym wymagające natychmiastowych odpowiedzi na żądania użytkowników, takie jak gry online. |
 | Czynniki wydajności | &nbsp; | &nbsp; | &nbsp; |
@@ -156,9 +156,9 @@ Oto przykład sposobu obliczania liczby operacji we/wy i przepływności/przepus
 
 | Wymaganie aplikacji | Rozmiar we/wy | Operacje wejścia/wyjścia | Przepływność/przepustowość |
 | --- | --- | --- | --- |
-| Maksymalna liczba IOPS |8 KB |5000 |40 MB na sekundę |
+| Maks. liczba operacji we/wy na sekundę |8 KB |5000 |40 MB na sekundę |
 | Maksymalna przepływność |1024 KB |200 |200 MB na sekundę |
-| Maksymalna przepływność i duże liczby operacji we/wy |64 KB |3 200 |200 MB na sekundę |
+| Maksymalna przepływność i duże liczby operacji we/wy |64 KB |3,200 |200 MB na sekundę |
 | Maksymalna liczba IOPS i Wysoka przepływność |32 KB |5000 |160 MB na sekundę |
 
 Aby uzyskać liczbę operacji we/wy i przepustowość wyższą niż maksymalna wartość jednego dysku magazynu Premium Storage, należy użyć wielu dysków w warstwie Premium. Na przykład można rozdzielić dwa dyski P30, aby uzyskać łączną liczbę operacji we/wy 10 000 IOPS lub łączną przepływność równą 400 MB na sekundę. Zgodnie z opisem w następnej sekcji należy użyć rozmiaru maszyny wirtualnej, który obsługuje łączenie operacji we/wy na dysku.
@@ -170,14 +170,14 @@ Aby posłużyć do monitorowania wpływu rozmiaru operacji we/wy na wydajność 
 
 ## <a name="high-scale-vm-sizes"></a>Rozmiary maszyn wirtualnych o dużej skali
 
-Po rozpoczęciu projektowania aplikacji należy wybrać maszynę wirtualną do hostowania aplikacji. Premium Storage obejmuje rozmiary maszyn wirtualnych o dużej skali, które mogą uruchamiać aplikacje wymagające większej mocy obliczeniowej i wysoką wydajność we/wy dysku lokalnego. Te maszyny wirtualne zapewniają szybszy procesor, wyższy stosunek pamięci do rdzenia oraz dysk SSD (SSD) dla dysku lokalnego. Przykładowe maszyny wirtualne o dużej skali obsługujące Premium Storage to maszyny wirtualne z serii DS, DSv2 i GS.
+Po rozpoczęciu projektowania aplikacji należy wybrać maszynę wirtualną do hostowania aplikacji. Premium Storage obejmuje rozmiary maszyn wirtualnych o dużej skali, które mogą uruchamiać aplikacje wymagające większej mocy obliczeniowej i wysoką wydajność we/wy dysku lokalnego. Te maszyny wirtualne zapewniają szybszy procesor, wyższy stosunek pamięci do rdzenia oraz dysk SSD (SSD) dla dysku lokalnego. Przykładami maszyn wirtualnych o dużej skali obsługujących Premium Storage są maszyny wirtualne z serii DS i GS.
 
-Maszyny wirtualne o wysokiej skali są dostępne w różnych rozmiarach przy użyciu innej liczby rdzeni procesora CPU, pamięci, systemu operacyjnego i tymczasowego rozmiaru dysku. Każdy rozmiar maszyny wirtualnej ma również maksymalną liczbę dysków z danymi, które można dołączyć do maszyny wirtualnej. W związku z tym wybrany rozmiar maszyny wirtualnej będzie miał wpływ na to, jak dużo pamięci masowej i pojemności magazynu są dostępne dla aplikacji. Ma to również wpływ na koszt obliczeń i magazynu. Na przykład poniżej przedstawiono specyfikacje największego rozmiaru maszyny wirtualnej w serii DS, serii DSv2 i serii GS:
+Maszyny wirtualne o wysokiej skali są dostępne w różnych rozmiarach przy użyciu innej liczby rdzeni procesora CPU, pamięci, systemu operacyjnego i tymczasowego rozmiaru dysku. Każdy rozmiar maszyny wirtualnej ma również maksymalną liczbę dysków z danymi, które można dołączyć do maszyny wirtualnej. W związku z tym wybrany rozmiar maszyny wirtualnej będzie miał wpływ na to, jak dużo pamięci masowej i pojemności magazynu są dostępne dla aplikacji. Ma to również wpływ na koszt obliczeń i magazynu. Na przykład poniżej przedstawiono specyfikacje największego rozmiaru maszyny wirtualnej w serii DS i serii GS:
 
 | Rozmiar maszyny wirtualnej | Rdzenie procesora CPU | Pamięć | Rozmiary dysków maszyny wirtualnej | Maksymalnie z dyski danych | Rozmiar pamięci podręcznej | Operacje wejścia/wyjścia | Limity operacji we/wy pamięci podręcznej przepustowości |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standardowa_DS14 |16 |112 GB |SYSTEM OPERACYJNY = 1023 GB <br> Lokalny dysk SSD = 224 GB |32 |576 GB |LICZBA OPERACJI WE/WY 50 000 <br> 512 MB na sekundę |4 000 operacji we/wy i 33 MB na sekundę |
-| Standard_GS5 |32 |448 GB |SYSTEM OPERACYJNY = 1023 GB <br> Lokalny dysk SSD = 896 GB |64 |4224 GB |LICZBA OPERACJI WE/WY 80 000 <br> 2 000 MB na sekundę |5 000 operacji we/wy i 50 MB na sekundę |
+| Standardowa_GS5 |32 |448 GB |SYSTEM OPERACYJNY = 1023 GB <br> Lokalny dysk SSD = 896 GB |64 |4224 GB |LICZBA OPERACJI WE/WY 80 000 <br> 2 000 MB na sekundę |5 000 operacji we/wy i 50 MB na sekundę |
 
 Aby wyświetlić pełną listę wszystkich dostępnych rozmiarów maszyn wirtualnych platformy Azure, zobacz [rozmiary maszyn wirtualnych systemu Windows](../articles/virtual-machines/windows/sizes.md) lub [rozmiary maszyn wirtualnych](../articles/virtual-machines/linux/sizes.md)z systemem Linux. Wybierz rozmiar maszyny wirtualnej, który można spełnić i skalować do żądanych wymagań dotyczących wydajności aplikacji. Oprócz tego należy wziąć pod uwagę następujące ważne zagadnienia podczas wybierania rozmiarów maszyn wirtualnych.
 
@@ -195,11 +195,11 @@ Jeśli jednak ta sama aplikacja jest hostowana na Premium Storage, potrzebny bę
 
 W poniższej tabeli zestawiono podział kosztów tego scenariusza dla standardów i Premium Storage.
 
-| &nbsp; | **Standard** | **Premium** |
+| &nbsp; | **Standardowa** | **Premium** |
 | --- | --- | --- |
 | **Koszt maszyny wirtualnej miesięcznie** |$1 570,58 (standardowa\_D14) |$1 003,66 (standardowa\_DS13) |
 | **Koszt dysków miesięcznie** |$1 638,40 (32 x 1 TB dysków) |$544,34 (4 x P30 dysków) |
-| **Łączny koszt miesięcznie** |$3 208,98 |$1 544,34 |
+| **Łączny koszt miesięcznie** |$3,208.98 |$1,544.34 |
 
 *Dystrybucje systemu Linux*  
 
@@ -237,7 +237,7 @@ Maszyny wirtualne o wysokiej skali wykorzystujące platformę Azure Premium Stor
 > [!WARNING]
 > Buforowanie dysków nie jest obsługiwane w przypadku dysków 4 TiB i większych. Jeśli do maszyny wirtualnej są dołączone wiele dysków, każdy dysk o rozmiarze mniejszym niż 4 TiB będzie obsługiwał buforowanie.
 >
-> Zmiana ustawienia pamięci podręcznej dysku platformy Azure powoduje odłączenie i ponowne dołączenie dysku docelowego. Jeśli jest to dysk systemu operacyjnego, maszyna wirtualna zostanie ponownie uruchomiona. Zatrzymaj wszystkie aplikacje/usługi, na które może mieć wpływ ten zakłócenie przed zmianą ustawienia pamięci podręcznej.
+> Zmienianie ustawień pamięci podręcznej dysku platformy Azure powoduje odłączenie i ponowne dołączenie dysku docelowego. Jeśli jest to dysk systemu operacyjnego, maszyna wirtualna zostanie ponownie uruchomiona. Zatrzymaj wszystkie aplikacje/usługi, na które może mieć wpływ to zakłócenie, przed zmianą ustawień pamięci podręcznej dysku.
 
 Aby dowiedzieć się więcej o tym, jak działa BlobCache, zapoznaj się z wpisem w blogu na [platformie Azure Premium Storage](https://azure.microsoft.com/blog/azure-premium-storage-now-generally-available-2/) .
 
@@ -245,7 +245,7 @@ Ważne jest włączenie pamięci podręcznej w odpowiednim zestawie dysków. Okr
 
 | **Typ dysku** | **Domyślne ustawienie pamięci podręcznej** |
 | --- | --- |
-| Dysk systemu operacyjnego |ReadWrite |
+| Dysk systemu operacyjnego |Odczyt/zapis |
 | Dysk z danymi |ReadOnly |
 
 Poniżej przedstawiono zalecane ustawienia pamięci podręcznej dysków dla dysków z danymi,
@@ -254,9 +254,9 @@ Poniżej przedstawiono zalecane ustawienia pamięci podręcznej dysków dla dysk
 | --- | --- |
 | Brak |Skonfiguruj pamięć podręczną hosta jako brak dla dysków tylko do zapisu i zapisu z dużym obciążeniem. |
 | ReadOnly |Skonfiguruj pamięć podręczną hosta jako ReadOnly dla dysków tylko do odczytu i zapisu. |
-| ReadWrite |Skonfiguruj pamięć podręczną hosta jako ReadWrite tylko wtedy, gdy aplikacja prawidłowo obsługuje zapisywanie danych w pamięci podręcznej na dyskach trwałych w razie potrzeby. |
+| Odczyt/zapis |Skonfiguruj pamięć podręczną hosta jako ReadWrite tylko wtedy, gdy aplikacja prawidłowo obsługuje zapisywanie danych w pamięci podręcznej na dyskach trwałych w razie potrzeby. |
 
-*Trybie*  
+*ReadOnly*  
 Konfigurując buforowanie w trybie tylko do odczytu na Premium Storage dyskach danych, można osiągnąć niskie opóźnienie i uzyskać bardzo wysokie operacje we/wy odczytu i przepływność aplikacji. Dzieje się tak z dwóch powodów,
 
 1. Operacje odczytu z pamięci podręcznej, która znajduje się na pamięci maszyn wirtualnych i lokalnym dysku SSD, są znacznie szybsze niż odczyt z dysku danych, który znajduje się w usłudze Azure Blob Storage.  
@@ -265,7 +265,7 @@ Konfigurując buforowanie w trybie tylko do odczytu na Premium Storage dyskach d
 *ReadWrite*  
 Domyślnie dyski systemu operacyjnego mają włączone buforowanie ReadWrite. Niedawno dodaliśmy obsługę buforowania ReadWrite na dyskach danych. Jeśli używasz buforowania ReadWrite, musisz mieć właściwy sposób zapisu danych z pamięci podręcznej na dyskach trwałych. Na przykład SQL Server obsługuje zapisywanie w pamięci podręcznej danych na trwałych dyskach magazynu. Używanie pamięci podręcznej ReadWrite z aplikacją, która nie obsługuje utrwalania wymaganych danych może spowodować utratę danych, jeśli maszyna wirtualna ulegnie awarii.
 
-*Dawaj*  
+*Brak*  
 Obecnie **żadna wartość nie** jest obsługiwana tylko na dyskach danych. Nie jest on obsługiwany na dyskach z systemem operacyjnym. Jeśli na dysku systemu operacyjnego nie zostanie ustawiona **żadna wartość Brak** , spowoduje to zastąpienie wewnętrznie i ustawienie wartości **tylko do odczytu**.
 
 Na przykład można zastosować te wytyczne do SQL Server uruchamiania na Premium Storage, wykonując następujące czynności:
@@ -280,9 +280,9 @@ Na przykład można zastosować te wytyczne do SQL Server uruchamiania na Premiu
 
 Dla wszystkich dysków SSD Premium lub Ultra dysków z pamięcią podręczną ustawioną na wartość **ReadOnly** lub **none**należy wyłączyć "bariery" podczas instalowania systemu plików. W tym scenariuszu nie są potrzebne przeszkody, ponieważ zapisy w usłudze Premium Storage są trwałe dla tych ustawień pamięci podręcznej. Po pomyślnym zakończeniu żądania zapisu dane zostały zapisane w magazynie trwałym. Aby wyłączyć "bariery", użyj jednej z poniższych metod. Wybierz jeden z nich dla systemu plików:
   
-* Aby wyłączyć bariery w programie **reiserFS**, użyj opcji instalacji `barrier=none`. (Aby włączyć bariery, użyj `barrier=flush`).
-* Aby wyłączyć bariery dla **ext3/ext4**, użyj opcji instalacji `barrier=0`. (Aby włączyć bariery, użyj `barrier=1`).
-* Aby wyłączyć bariery w programie **XFS**, użyj opcji instalacji `nobarrier`. (Aby włączyć bariery, użyj `barrier`).
+* Aby wyłączyć bariery w programie **reiserFS**, użyj opcji instalacji `barrier=none`. (Aby włączyć bariery, użyj `barrier=flush`.)
+* Aby wyłączyć bariery dla **ext3/ext4**, użyj opcji instalacji `barrier=0`. (Aby włączyć bariery, użyj `barrier=1`.)
+* Aby wyłączyć bariery w programie **XFS**, użyj opcji instalacji `nobarrier`. (Aby włączyć bariery, użyj `barrier`.)
 * W przypadku dysków usługi Premium Storage z pamięcią podręczną ustawioną na **ReadWrite**Włącz bariery dla trwałości zapisu.
 * Aby etykiety woluminów były utrwalane po ponownym uruchomieniu maszyny wirtualnej, należy zaktualizować/etc/fstab przy użyciu unikatowych identyfikatorów uniwersalnych (UUID) do dysków. Aby uzyskać więcej informacji, zobacz [Dodawanie dysku zarządzanego do maszyny wirtualnej z systemem Linux](../articles/virtual-machines/linux/add-disk.md).
 
@@ -292,29 +292,31 @@ Niektóre wersje wymagają najnowszych usług integracji z systemem Linux (LIS),
 
 | Dystrybucja | Wersja | Obsługiwane jądro | Szczegóły |
 | --- | --- | --- | --- |
-| Ubuntu | 12,04 lub nowszy| 3.2.0 — 75.110 + | Ubuntu-12_04_5-LTS-amd64-Server-20150119-en-US-30 GB |
-| Ubuntu | 14,04 lub nowszy| 3.13.0 — 44.73 +  | Ubuntu-14_04_1-LTS-amd64-Server-20150123-en-US-30 GB |
-| Debian | 7. x, 8. x lub nowszy| 3.16.7-ckt4-1 + | &nbsp; |
-| SUSE | SLES 12 lub nowszy| 3.12.36 — 38.1 + | SUSE-SLES-12-Priority-v20150213 <br> SUSE-SLES-12-v20150213 |
-| SUSE | SLES 11 z dodatkiem SP4 lub nowszym| 3.0.101 — 0.63.1 + | &nbsp; |
-| CoreOS | 584.0.0 + lub nowszy| 3.18.4 + | CoreOS 584.0.0 |
-| CentOS | 6,5, 6,6, 6,7, 7,0 lub nowsze| &nbsp; | [LIS4 wymagane](https://www.microsoft.com/download/details.aspx?id=51612) <br> *Zobacz uwagi w następnej sekcji* |
-| CentOS | 7.1 + lub nowszy| 3.10.0-229.1.2. el7 + | [LIS4 zalecane](https://www.microsoft.com/download/details.aspx?id=51612) <br> *Zobacz uwagi w następnej sekcji* |
+| Ubuntu | 12,04 lub nowszy| 3.2.0-75.110+ | &nbsp; |
+| Ubuntu | 14,04 lub nowszy| 3.13.0-44.73+  | &nbsp; |
+| Debian | 7. x, 8. x lub nowszy| 3.16.7-ckt4-1+ | &nbsp; |
+| SUSE | SLES 12 lub nowszy| 3.12.36-38.1+ | &nbsp; |
+| SUSE | SLES 11 z dodatkiem SP4 lub nowszym| 3.0.101-0.63.1+ | &nbsp; |
+| CoreOS | 584.0.0 + lub nowszy| 3.18.4+ | &nbsp; |
+| CentOS | 6,5, 6,6, 6,7, 7,0 lub nowsze| &nbsp; | [LIS4 wymagane](https://www.microsoft.com/download/details.aspx?id=55106) <br> *Zobacz uwagi w następnej sekcji* |
+| CentOS | 7.1 + lub nowszy| 3.10.0-229.1.2.el7+ | [LIS4 zalecane](https://www.microsoft.com/download/details.aspx?id=55106) <br> *Zobacz uwagi w następnej sekcji* |
 | Red Hat Enterprise Linux (RHEL) | 6,8 +, 7.2 + lub nowszy | &nbsp; | &nbsp; |
 | Oracle | 6.0 +, 7.2 + lub nowszy | &nbsp; | UEK4 lub RHCK |
-| Oracle | 7.0 — 7.1 lub nowszy | &nbsp; | UEK4 lub RHCK w/[lis 4.1 +](https://www.microsoft.com/download/details.aspx?id=51612) |
-| Oracle | 6.4 — 6.7 lub nowszy | &nbsp; | UEK4 lub RHCK w/[lis 4.1 +](https://www.microsoft.com/download/details.aspx?id=51612) |
+| Oracle | 7.0 — 7.1 lub nowszy | &nbsp; | UEK4 lub RHCK w/[LIS4](https://www.microsoft.com/download/details.aspx?id=55106) |
+| Oracle | 6.4 — 6.7 lub nowszy | &nbsp; | UEK4 lub RHCK w/[LIS4](https://www.microsoft.com/download/details.aspx?id=55106) |
 
 ### <a name="lis-drivers-for-openlogic-centos"></a>Sterowniki LIS dla OpenLogic CentOS
 
 Jeśli korzystasz z maszyn wirtualnych OpenLogic CentOS, uruchom następujące polecenie, aby zainstalować najnowsze sterowniki:
 
 ```
-sudo rpm -e hypervkvpd  ## (Might return an error if not installed. That's OK.)
+sudo yum remove hypervkvpd  ## (Might return an error if not installed. That's OK.)
 sudo yum install microsoft-hyper-v
+sudo reboot
 ```
 
-Aby aktywować nowe sterowniki, uruchom ponownie maszynę wirtualną.
+W niektórych przypadkach powyższe polecenie uaktualni również jądro. Jeśli wymagana jest aktualizacja jądra, może być konieczne ponowne uruchomienie powyższych poleceń po ponownym uruchomieniu, aby w pełni zainstalować pakiet Microsoft-Hyper-v.
+
 
 ## <a name="disk-striping"></a>Rozkładanie dysku
 
@@ -382,4 +384,3 @@ W przypadku woluminu rozłożonego należy zachować górną głębokość kolej
 Usługa Azure Premium Storage postanowił określoną liczbę operacji we/wy na sekundę i przepływności w zależności od wybranego rozmiaru maszyny wirtualnej i wybranego rozmiaru dysku. Gdy aplikacja próbuje zwiększyć liczbę operacji we/wy lub przepływności powyżej tych limitów, co może obsłużyć maszyna wirtualna lub dysk, Premium Storage będzie ograniczać ją. Te manifesty mają postać obniżonej wydajności aplikacji. Może to oznaczać większe opóźnienia, niższą przepływność lub mniejsze liczby operacji we/wy na sekundę. Jeśli Premium Storage nie jest ograniczana, aplikacja może zakończyć się niepowodzeniem, przekroczenie możliwości osiągania zasobów. Aby uniknąć problemów z wydajnością ze względu na ograniczenie przepustowości, zawsze Zapewnij odpowiednią ilość zasobów dla aplikacji. Weź pod uwagę to, co omówiono w sekcjach rozmiary maszyn wirtualnych i rozmiary dysków powyżej. Testy porównawcze to najlepszy sposób ustalania zasobów potrzebnych do hostowania aplikacji.
 
 ## <a name="next-steps"></a>Następne kroki
-

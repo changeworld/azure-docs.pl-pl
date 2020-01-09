@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8ccd98553b06ef3fcd2241c8223889c0a86e331
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: fa25a1b1d24c034a92a94ac9378bc4bff3947348
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74024652"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75639925"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>Role administratorów według zadania administratora w Azure Active Directory
 
@@ -53,13 +53,13 @@ Tworzenie, odczytywanie, aktualizowanie i usuwanie przepływów użytkowników l
 Tworzenie, odczytywanie, aktualizowanie i usuwanie przepływu użytkownika przy rejestrowaniu |Administrator globalny | 
 Tworzenie, odczytywanie, aktualizowanie i usuwanie atrybutów użytkownika | Administrator globalny | 
 Tworzenie, odczytywanie, aktualizowanie i usuwanie użytkowników | Administrator globalny ([Zobacz dokumentację](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-faqs))
-Odczytaj całą konfigurację | Administrator globalny | 
-Odczytaj dzienniki inspekcji B2C | Administrator globalny ([Zobacz dokumentację](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-faqs)) | 
+Odczytaj całą konfigurację | Czytnik globalny | 
+Odczytaj dzienniki inspekcji B2C | Czytnik globalny ([Zobacz dokumentację](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-faqs)) | 
 
 > [!NOTE]
-> Administratorzy globalni Azure AD B2C nie mają tych samych uprawnień co Administratorzy globalni usługi Azure AD. Jeśli masz Azure AD B2C uprawnienia administratora globalnego, upewnij się, że jesteś w katalogu Azure AD B2C, a nie w katalogu usługi Azure AD.
+> Azure AD B2C czytelnicy globalni nie mają tych samych uprawnień co Administratorzy globalni usługi Azure AD. Jeśli masz Azure AD B2C uprawnienia administratora globalnego, upewnij się, że jesteś w katalogu Azure AD B2C, a nie w katalogu usługi Azure AD.
 
-## <a name="company-branding"></a>Znakowanie firmowe
+## <a name="company-branding"></a>Oznaczenie marką firmy
 
 Zadanie | Najmniejsza rola uprzywilejowana | Dodatkowe role
 ---- | --------------------- | ----------------
@@ -72,12 +72,12 @@ Zadanie | Najmniejsza rola uprzywilejowana | Dodatkowe role
 ---- | --------------------- | ----------------
 Konfigurowanie właściwości firmy | Administrator globalny | 
 
-## <a name="connect"></a>Połączenie
+## <a name="connect"></a>Łączenie
 
 Zadanie | Najmniejsza rola uprzywilejowana | Dodatkowe role
 ---- | --------------------- | ----------------
 Przekazywanie uwierzytelniania | Administrator globalny | 
-Odczytaj całą konfigurację | Administrator globalny | 
+Odczytaj całą konfigurację | Czytnik globalny | 
 Bezproblemowe logowanie jednokrotne | Administrator globalny | 
 
 ## <a name="connect-health"></a>Connect Health
@@ -97,7 +97,6 @@ Wyświetlanie metryk i alertów | Reader ([Zobacz dokumentację](https://docs.mi
 Wyświetlanie metryk i alertów | Reader ([Zobacz dokumentację](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context)) | Współautor, właściciel
 Wyświetl metryki i alerty usługi synchronizacji | Reader ([Zobacz dokumentację](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context)) | Współautor, właściciel
 
-
 ## <a name="custom-domain-names"></a>Niestandardowe nazwy domen
 
 Zadanie | Najmniejsza rola uprzywilejowana | Dodatkowe role
@@ -105,7 +104,7 @@ Zadanie | Najmniejsza rola uprzywilejowana | Dodatkowe role
 Zarządzanie domenami | Administrator globalny | 
 Odczytaj całą konfigurację | Czytelnicy katalogów | Domyślna rola użytkownika ([Zobacz dokumentację](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions))
 
-## <a name="domain-services"></a>Domain Services
+## <a name="domain-services"></a>Usługi domenowe
 
 Zadanie | Najmniejsza rola uprzywilejowana | Dodatkowe role
 ---- | --------------------- | ----------------
@@ -132,7 +131,7 @@ Wyrażanie zgody na uprawnienia aplikacji do Microsoft Graph lub grafu usługi A
 Wyrażanie zgody na aplikacje uzyskujące dostęp do danych | Domyślna rola użytkownika ([Zobacz dokumentację](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | 
 Tworzenie aplikacji dla przedsiębiorstw | Administrator aplikacji w chmurze | Administrator aplikacji
 Zarządzanie serwerem proxy aplikacji | Administrator aplikacji | 
-Zarządzanie ustawieniami użytkownika | Administrator globalny | 
+Zarządzaj ustawieniami użytkownika | Administrator globalny | 
 Przegląd dostępu do odczytu grupy lub aplikacji | Czytelnik zabezpieczeń | Administrator zabezpieczeń, administrator użytkowników
 Odczytaj całą konfigurację | Domyślna rola użytkownika ([Zobacz dokumentację](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | 
 Aktualizowanie przypisań aplikacji dla przedsiębiorstw | Właściciel aplikacji przedsiębiorstwa ([Zobacz dokumentację](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | Administrator aplikacji w chmurze, administrator aplikacji
@@ -154,7 +153,7 @@ Dodawanie witryn usługi SharePoint Online do wykazu | Administrator globalny
 Zadanie | Najmniejsza rola uprzywilejowana | Dodatkowe role
 ---- | --------------------- | ----------------
 Przypisywanie licencji | Administrator użytkowników | 
-Utwórz grupę | Administrator użytkowników | 
+Tworzenie grupy: | Administrator użytkowników | 
 Tworzenie, aktualizowanie i usuwanie przeglądu dostępu do grupy lub aplikacji | Administrator użytkowników | 
 Zarządzanie wygaśnięciem grupy | Administrator użytkowników | 
 Zarządzenie ustawieniami grup | Administrator globalny | 
@@ -166,7 +165,7 @@ Aktualizowanie członkostwa w grupie | Właściciel grupy ([Zobacz dokumentację
 Aktualizowanie właścicieli grup | Właściciel grupy ([Zobacz dokumentację](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | Administrator użytkowników
 Aktualizuj właściwości grupy | Właściciel grupy ([Zobacz dokumentację](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | Administrator użytkowników
 
-## <a name="identity-protection"></a>Identity Protection
+## <a name="identity-protection"></a>Ochrona tożsamości
 
 Zadanie | Najmniejsza rola uprzywilejowana | Dodatkowe role
 ---- | --------------------- | ----------------
@@ -181,7 +180,7 @@ Odczytaj całą konfigurację | Czytelnik zabezpieczeń |
 Odczytuj wszystkie wykrycia ryzyka | Czytelnik zabezpieczeń | 
 Przeczytaj luki | Czytelnik zabezpieczeń | 
 
-## <a name="licenses"></a>Liczba
+## <a name="licenses"></a>Licencje
 
 Zadanie | Najmniejsza rola uprzywilejowana | Dodatkowe role
 ---- | --------------------- | ----------------
@@ -212,13 +211,13 @@ Wyłącz usługę MFA | Administrator globalny |
 Włączanie usługi MFA | Administrator globalny | 
 Zarządzanie ustawieniami usługi MFA | Administrator globalny | 
 Wymagaj od wybranych użytkowników ponownego podania metod kontaktu | Administrator uwierzytelniania | 
-Przywracanie uwierzytelniania wieloskładnikowego na wszystkich zapamiętanych urządzeniach  | Administrator uwierzytelniania | 
+Przywróć uwierzytelnianie wieloskładnikowe na wszystkich zapamiętanych urządzeniach  | Administrator uwierzytelniania | 
 
 ## <a name="mfa-server"></a>Serwer MFA
 
 Zadanie | Najmniejsza rola uprzywilejowana | Dodatkowe role
 ---- | --------------------- | ----------------
-Blokuj/Odblokuj użytkowników | Administrator globalny | 
+Zablokuj/odblokuj użytkowników | Administrator globalny | 
 Konfigurowanie blokady konta | Administrator globalny | 
 Konfigurowanie reguł buforowania | Administrator globalny | 
 Konfigurowanie alertu oszustwa | Administrator globalny
@@ -227,18 +226,18 @@ Skonfiguruj jednorazowe obejście | Administrator globalny |
 Konfigurowanie ustawień połączenia telefonicznego | Administrator globalny | 
 Konfiguruj dostawców | Administrator globalny | 
 Konfigurowanie ustawień serwera | Administrator globalny | 
-Odczytaj raport działania | Administrator globalny | 
-Odczytaj całą konfigurację | Administrator globalny | 
-Odczytaj stan serwera | Administrator globalny |  
+Odczytaj raport działania | Czytnik globalny | 
+Odczytaj całą konfigurację | Czytnik globalny | 
+Odczytaj stan serwera | Czytnik globalny |  
 
-## <a name="organizational-relationships"></a>Relacje organizacyjne
+## <a name="organizational-relationships"></a>Relacje w organizacji
 
 Zadanie | Najmniejsza rola uprzywilejowana | Dodatkowe role
 ---- | --------------------- | ----------------
 Zarządzaj dostawcami tożsamości | Administrator globalny | 
 Zarządzanie ustawieniami | Administrator globalny | 
 Zarządzanie warunkami użytkowania | Administrator globalny | 
-Odczytaj całą konfigurację | Administrator globalny | 
+Odczytaj całą konfigurację | Czytnik globalny | 
 
 ## <a name="password-reset"></a>Resetowanie hasła
 
@@ -261,7 +260,7 @@ Konfigurowanie ustawień roli | Administrator ról uprzywilejowanych |
 Wyświetl działanie inspekcji | Czytelnik zabezpieczeń | 
 Wyświetlanie członkostw ról | Czytelnik zabezpieczeń | 
 
-## <a name="roles-and-administrators"></a>Role i Administratorzy
+## <a name="roles-and-administrators"></a>Role i administratorzy
 
 Zadanie | Najmniejsza rola uprzywilejowana | Dodatkowe role
 ---- | --------------------- | ----------------
@@ -274,7 +273,7 @@ Odczytaj całą konfigurację | Domyślna rola użytkownika ([Zobacz dokumentacj
 Zadanie | Najmniejsza rola uprzywilejowana | Dodatkowe role
 ---- | --------------------- | ----------------
 Konfigurowanie metod uwierzytelniania | Administrator globalny | 
-Odczytaj całą konfigurację | Administrator globalny | 
+Odczytaj całą konfigurację | Czytnik globalny | 
 
 ## <a name="security---conditional-access"></a>Zabezpieczenia — dostęp warunkowy
 

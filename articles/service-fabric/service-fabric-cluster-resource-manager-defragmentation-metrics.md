@@ -1,73 +1,64 @@
 ---
-title: Defragmentacji metryk w usłudze Azure Service Fabric | Dokumentacja firmy Microsoft
-description: Omówienie przy użyciu defragmentacji lub pakowania jako strategii metryk w usłudze Service Fabric
-services: service-fabric
-documentationcenter: .net
+title: Defragmentacja metryk w usłudze Azure Service Fabric
+description: Dowiedz się więcej o korzystaniu z defragmentacji lub pakowania jako strategii dla metryk w Service Fabric. Ta technika jest przydatna w przypadku bardzo dużych usług.
 author: masnider
-manager: chackdan
-editor: ''
-ms.assetid: e5ebfae5-c8f7-4d6c-9173-3e22a9730552
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 6e041e41372c72c6792c1fb4a1fbdc3bbe475b21
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bba459be4408f4a4bc438bb33b0570a91e84f2cd
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60844413"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75563364"
 ---
-# <a name="defragmentation-of-metrics-and-load-in-service-fabric"></a>Defragmentacji metryk i obciążenia w usłudze Service Fabric
-Menedżer zasobów klastra Service Fabric Service domyślną strategię zarządzania metryk obciążenia w klastrze jest rozdzielenie obciążenia. Zapewnienie, że węzły są równomiernie wykorzystywane pozwala uniknąć gorące i zimne punkty, które mogą prowadzić do rywalizacji o zasoby i ograniczenia marnowania zasobów. Dystrybucja obciążeń w klastrze jest również najbezpieczniejszy pod względem pozostałych błędy, ponieważ gwarantuje to, że błąd nie przyjmuje się znaczną część danego obciążenia. 
+# <a name="defragmentation-of-metrics-and-load-in-service-fabric"></a>Defragmentacja metryk i obciążenia w Service Fabric
+Domyślna strategia zarządzania metrykami obciążenia w klastrze Service Fabric Menedżer zasobów klastra polega na rozproszeniu obciążenia. Upewnienie się, że węzły są z bezwzględnie wykorzystane, pozwala uniknąć gorąca i zimnych punktów, które prowadzą do rywalizacji o zawartość i zasoby. Rozkładanie obciążeń w klastrze jest również najbezpieczniejszą wartością w przypadku awarii, ponieważ gwarantuje to, że błąd nie zajmie znaczną częścią danego obciążenia. 
 
-Menedżer zasobów klastra usługi Service Fabric obsługuje innych strategii zarządzania obciążeniem, który jest defragmentacji. Defragmentacja oznacza, że zamiast próbować rozdystrybuować wykorzystanie metryki klastra, jego konsolidacji. Konsolidacja jest po prostu odwrócenie domyślne równoważenie strategii — zamiast minimalizując średni odchylenie standardowe metryki obciążenia, Menedżer zasobów klastra próbuje zwiększyć go.
+Menedżer zasobów klastra Service Fabric obsługuje inną strategię zarządzania ładowaniem, która jest defragmentacją. Defragmentacja oznacza, że zamiast próbować rozpowszechnić wykorzystanie metryki w klastrze, jest on skonsolidowany. Konsolidacja jest tylko niewersją domyślnej strategii równoważenia obciążenia — zamiast minimalizowania średniego odchylenia standardowego w obciążeniu metryk, klaster Menedżer zasobów próbuje go zwiększyć.
 
-## <a name="when-to-use-defragmentation"></a>Kiedy należy używać defragmentacji
-Dystrybucja obciążenia w klastrze zużywa niektórych zasobów w każdym węźle. Niektórych obciążeń tworzenie usług, które są wyjątkowo dużą i używać większości lub wszystkich węzła. W takich przypadkach istnieje możliwość, że w przypadku dużych obciążeń, które tworzonych nie ma wystarczającej ilości miejsca na dowolnym węźle, aby uruchomić je. Dużych obciążeń nie są problemem w usłudze Service Fabric; w takich przypadkach Menedżer zasobów klastra ustala, że potrzebuje reorganizacja klastra, aby zwolnić miejsce dla to duże obciążenie. Jednak w tym samym czasie tego obciążenia ma oczekiwać na zaplanowane w klastrze.
+## <a name="when-to-use-defragmentation"></a>Kiedy używać defragmentacji
+Dystrybucja obciążenia w klastrze zużywa część zasobów w każdym węźle. Niektóre obciążenia tworzą usługi, które są wyjątkowo duże i zużywają większość lub wszystkie węzły. W takich przypadkach istnieje możliwość, że w przypadku tworzenia dużych obciążeń nie ma wystarczającej ilości miejsca na każdym węźle, aby je uruchomić. Duże obciążenia nie są problemem w Service Fabric; w takich przypadkach klaster Menedżer zasobów określa, że należy zreorganizować klaster, aby zwolnić miejsce na duże obciążenie. Jednak w międzyczasie czas oczekiwania na zaplanowanie obciążenia w klastrze.
 
-W przypadku wielu usług i stanie, aby poruszać się, jego może potrwać dłuższy czas, w przypadku dużych obciążeń do umieszczenia w klastrze. Jest to bardziej prawdopodobne w przypadku innych obciążeń w klastrze są również dużych, a więc trwać dłużej reorganizacja. Zespół usługi Service Fabric mierzy czasy tworzenia w symulacji tego scenariusza. Stwierdziliśmy, że tworzenie dużych usług trwało znacznie zaraz po wykorzystaniu klastra stało się powyżej od 30% do 50%. Aby obsługiwać ten scenariusz, wprowadziliśmy defragmentacji jako równoważenia strategii. Stwierdziliśmy, że w przypadku dużych obciążeń, szczególnie te, których czas utworzenia było ważne defragmentacji naprawdę brały udział w tych nowych obciążeń pobieranie zaplanowane w klastrze.
+Jeśli istnieje wiele usług i stan, które należy przenieść, może to zająć dużo czasu, aby duże obciążenie było umieszczane w klastrze. Jest to bardziej podobne, jeśli inne obciążenia w klastrze są również duże i nie trzeba ich reorganizować. Zespół Service Fabric przecenił czasy tworzenia w symulacjich tego scenariusza. Znaleźliśmy, że tworzenie dużych usług trwało znacznie dłużej, gdy wykorzystanie klastra pozostało powyżej 30% i 50%. Aby obsłużyć ten scenariusz, wprowadziliśmy defragmentację jako strategię równoważenia. Znaleźliśmy, że w przypadku dużych obciążeń, szczególnie w przypadku, gdy czas utworzenia był istotny, defragmentacja naprawdę pomogła w zaplanowaniu obsługi nowych obciążeń w klastrze.
 
-Można skonfigurować defragmentacji metryk, aby Menedżer zasobów klastra do aktywnego próbuje zmniejszyć obciążenie usługi do mniejszej liczby węzłów. Pozwala to zagwarantować, że jest prawie zawsze miejsca dla dużych usług bez reorganizacja klastra. Brak konieczności reorganizować klastra umożliwia szybkie tworzenie dużych obciążeń.
+Metryki defragmentacji można skonfigurować tak, aby klaster Menedżer zasobów aktywnie próbować zaciążać obciążenie usług do mniejszej liczby węzłów. Pozwala to zagwarantować, że prawie zawsze jest pomieszczenie dla dużych usług bez konieczności restrukturyzacji klastra. Niekonieczność ponownego organizowania klastra pozwala szybko tworzyć duże obciążenia.
 
-Większość osób nie ma potrzeby defragmentacji. Usługi są zwykle jest małe, więc nie jest trudno znaleźć miejsca dla je w klastrze. Gdy reorganizacja jest możliwe, jej przebiega szybko, ponownie, ponieważ większość usług są małe i mogą zostać przeniesione, szybko i równolegle. Jeśli jednak masz duży usług i potrzebujesz je szybko tworzone następnie strategii defragmentacji jest dla Ciebie. Wady przy użyciu defragmentacji, następnie omówimy w dalszej części. 
+Większość osób nie potrzebuje defragmentacji. Usługi są zwykle małe, dlatego nie trudno znaleźć pokoju dla nich w klastrze. Gdy jest możliwe przeprowadzenie reorganizacji, będzie ona szybko dostępna, ponieważ większość usług jest niewielka i można ją przenieść szybko i równolegle. Jeśli jednak masz duże usługi i chcesz je szybko utworzyć, strategia defragmentacji jest dla Ciebie. Omawiamy wady dotyczące korzystania z defragmentacji dalej. 
 
-## <a name="defragmentation-tradeoffs"></a>Defragmentacja wady i zalety
-Defragmentacja zwiększyć impactfulness błędów, ponieważ więcej usługi są uruchomione w węzłach, które nie spełniają. Defragmentacja wydłuża się też kosztów, ponieważ zasoby w klastrze musi być przechowywany w rezerwie, oczekiwanie na tworzenie dużych obciążeń.
+## <a name="defragmentation-tradeoffs"></a>Wady defragmentacji
+Defragmentacja może zwiększyć impactfulness błędów, ponieważ więcej usług jest uruchomionych w węzłach, które nie powiodły się. Defragmentacja może również zwiększyć koszty, ponieważ zasoby w klastrze muszą być przechowywane w rezerwie, czekając na tworzenie dużych obciążeń.
 
-Poniższy diagram oferuje wizualną reprezentację dwa klastry, taki, który jest defragmentacji i taki, który nie jest. 
+Na poniższym diagramie przedstawiono wizualną reprezentację dwóch klastrów, które są pofragmentowane i jeden z nich nie jest. 
 
 <center>
 
-![Porównywanie równoważenia i defragmentacji klastrów][Image1]
+![porównać zrównoważone i pofragmentowane klastry][Image1]
 </center>
 
-W przypadku o zrównoważonym obciążeniu należy wziąć pod uwagę liczbę przepływów, które byłyby niezbędna do umieszczenia w jednym z największych obiektów usługi. Zdefragmentowanej klastra duże obciążenie może umieszczane w węzłach, cztery lub pięć bez konieczności oczekiwania na inne usługi przenieść.
+W zrównoważonym przypadku należy wziąć pod uwagę liczbę przesunięć, które byłyby konieczne do umieszczenia jednego z największych obiektów usługi. W przypadku klastra z defragmentacją duże obciążenie może być umieszczane na węzłach w czterech lub pięciu, bez konieczności oczekiwania na przeniesienie innych usług.
 
-## <a name="defragmentation-pros-and-cons"></a>Defragmentacja zalety i wady
-Dlatego co to są tych pojęciach kompromisów? Poniżej przedstawiono szybki spis warto przemyśleć:
+## <a name="defragmentation-pros-and-cons"></a>Zalety i wady defragmentacji
+Co to są te inne kompromisy związane z koncepcją? Poniżej przedstawiono szybką tabelę rzeczy, które należy wziąć pod uwagę:
 
-| Specjaliści defragmentacji | Defragmentacja wad |
+| Zalety defragmentacji | Wady defragmentacji |
 | --- | --- |
-| Umożliwia szybsze tworzenie dużych usług |Koncentraty obciążenia na mniejszą liczbę węzłów, zwiększając rywalizacji o zasoby |
-| Pozwala zmniejszyć przenoszenia danych podczas tworzenia |Awarii może mieć wpływ na inne usługi i częściej |
-| Pozwala na zaawansowane opis wymagań i odzyskiwanie miejsca |Bardziej złożone ogólnej konfiguracji zarządzania zasobami |
+| Umożliwia szybsze tworzenie dużych usług |Koncentruje się na obciążeniu mniejszą liczbą węzłów, zwiększając rywalizację |
+| Włącza niższy ruch danych podczas tworzenia |Awarie mogą mieć wpływ na więcej usług i spowodować zwiększenie liczby operacji |
+| Umożliwia rozbudowany opis wymagań i odzyskiwanie miejsca |Bardziej złożona ogólna Konfiguracja zarządzania zasobami |
 
-Możesz mieszać zdefragmentowanej i normalnym metryki w tym samym klastrze. Menedżer zasobów klastra próbuje skonsolidować możliwie jak najbardziej przy rozkładanie innych metryk defragmentacji. Wyniki mieszanie defragmentacji i równoważenie strategii zależy od kilku czynników, takich jak:
-  - Liczba równoważenia metryki, a liczba defragmentacji metryk
-  - Czy dowolna usługa używa oba rodzaje metryk 
-  - Waga metryki
-  - ładuje bieżącego metryki
+Można mieszać pofragmentowane i normalne metryki w tym samym klastrze. Klaster Menedżer zasobów próbuje skonsolidować metryki defragmentacji tak, jak to możliwe, podczas rozpraszania innych. Wyniki mieszania i strategie dotyczące rozróżniania są zależne od kilku czynników, w tym:
+  - Liczba metryk równoważenia obciążenia a liczba metryk defragmentacji
+  - Czy jakakolwiek usługa używa obu typów metryk 
+  - wagi metryk
+  - bieżące obciążenia metryk
   
-Eksperymentowanie w usłudze jest wymagane do określenia dokładnej konfiguracji niezbędne. Zalecamy dokładne pomiary obciążeń, przed włączeniem defragmentacji metryk w środowisku produkcyjnym. Jest to szczególnie istotne w przypadku, gdy łączenie defragmentacji i metryki o zrównoważonym obciążeniu w ramach tej samej usługi. 
+Eksperymentowanie jest wymagane do określenia dokładnej konfiguracji. Zalecamy dokładne pomiary obciążeń przed włączeniem metryk defragmentacji w środowisku produkcyjnym. Jest to szczególnie prawdziwe w przypadku mieszania defragmentacji i zrównoważonych metryk w ramach tej samej usługi. 
 
-## <a name="configuring-defragmentation-metrics"></a>Konfigurowanie defragmentacji metryk
-Konfigurowanie defragmentacji metryk jest globalne decyzji w klastrze, a do defragmentacji można wybrać poszczególne metryki. Poniższe fragmenty kodu konfiguracji pokazują, jak skonfigurować defragmentacji metryk. W tym przypadku "Metric1" jest skonfigurowane jako metrykę defragmentacji, podczas gdy "Metric2" będą w dalszym ciągu być równoważony normalnie. 
+## <a name="configuring-defragmentation-metrics"></a>Konfigurowanie metryk defragmentacji
+Konfigurowanie metryk defragmentacji jest globalną decyzją w klastrze, a poszczególne metryki można wybrać do defragmentacji. Poniższe fragmenty konfiguracji pokazują, jak skonfigurować metryki na potrzeby defragmentacji. W tym przypadku "Metric1" jest skonfigurowany jako Metryka defragmentacji, podczas gdy "Metric2" będzie nadal zrównoważony. 
 
-ClusterManifest.xml:
+ClusterManifest. XML:
 
 ```xml
 <Section Name="DefragmentationMetrics">
@@ -76,7 +67,7 @@ ClusterManifest.xml:
 </Section>
 ```
 
-za pomocą ClusterConfig.json dla autonomicznych wdrożeniach lub Template.json na platformie Azure hostowane klastrów:
+za pośrednictwem ClusterConfig. JSON dla wdrożeń autonomicznych lub Template. JSON dla klastrów hostowanych przez platformę Azure:
 
 ```json
 "fabricSettings": [
@@ -97,8 +88,8 @@ za pomocą ClusterConfig.json dla autonomicznych wdrożeniach lub Template.json 
 ```
 
 
-## <a name="next-steps"></a>Kolejne kroki
-- Menedżer zasobów klastra ma opcji man zawierająca opis klastra. Aby dowiedzieć się więcej na ich temat, zapoznaj się z tego artykułu na [opisujące klaster usługi Service Fabric](service-fabric-cluster-resource-manager-cluster-description.md)
-- Metryki są, jak Menedżer zasobów usługi Service Fabric klaster zarządza użycia i pojemności w klastrze. Aby dowiedzieć się więcej na temat metryk i sposobach ich konfigurowania, zapoznaj się z [w tym artykule](service-fabric-cluster-resource-manager-metrics.md)
+## <a name="next-steps"></a>Następne kroki
+- Klaster Menedżer zasobów ma opcje Man dotyczące opisywania klastra. Aby dowiedzieć się więcej na ten temat, zapoznaj się z tym artykułem na temat [opisywania Service Fabric klastra](service-fabric-cluster-resource-manager-cluster-description.md)
+- Metryki to sposób, w jaki Menedżer zasobów klastra Service Fabric zarządza zużyciem i pojemnością w klastrze. Aby dowiedzieć się więcej o metrykach i sposobach ich konfigurowania, zapoznaj się z [tym artykułem](service-fabric-cluster-resource-manager-metrics.md)
 
 [Image1]:./media/service-fabric-cluster-resource-manager-defragmentation-metrics/balancing-defrag-compared.png

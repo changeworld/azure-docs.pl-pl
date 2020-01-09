@@ -1,69 +1,60 @@
 ---
-title: Azure Service Fabric zdarzeń Store | Dokumentacja firmy Microsoft
-description: Dowiedz się więcej o bazie danych EventStore usługi Azure Service Fabric
-services: service-fabric
-documentationcenter: .net
+title: Magazyn zdarzeń Service Fabric platformy Azure
+description: Dowiedz się więcej o usłudze Azure Service Fabric EventStore, sposobie zrozumienia i monitorowania stanu klastra lub obciążeń w dowolnym momencie.
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 6/6/2019
 ms.author: srrengar
-ms.openlocfilehash: e7ae4c77f958bacabea50b7193817cd41ea54aa9
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: d23c8114bf10ef3225775accef6910c0ba539e15
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67449781"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645739"
 ---
-# <a name="eventstore-overview"></a>Omówienie bazy danych EventStore
+# <a name="eventstore-overview"></a>EventStore — Omówienie
 
 >[!NOTE]
->Począwszy od usługi Service Fabric w wersji 6.4. interfejsy API bazy danych EventStore są dostępne tylko w przypadku klastrów Windows działających na platformie Azure, tylko. Pracujemy nad przenoszenie tej funkcji do systemu Linux, a także naszych autonomicznych klastrów.
+>Od Service Fabric wersja 6,4. Interfejsy API EventStore są dostępne tylko dla klastrów systemu Windows działających tylko na platformie Azure. Pracujemy nad przenoszeniem tej funkcji do systemu Linux oraz z naszych klastrów autonomicznych.
 
 ## <a name="overview"></a>Przegląd
 
-Wprowadzona w wersji 6.2, usługa bazy danych EventStore jest opcji monitorowania w usłudze Service Fabric. Bazy danych EventStore zapewnia sposób, aby sprawdzić stan klastra lub obciążeń w danym punkcie w czasie.
-Bazy danych EventStore jest stanowej usługi Service Fabric, która utrzymuje zdarzenia z klastra. Zdarzenia są udostępniane za pośrednictwem narzędzia Service Fabric Explorer, REST i interfejsów API. Bazy danych EventStore zapytań klastra bezpośrednio po to, aby uzyskać dane diagnostyczne w dowolnej jednostce w klastrze i powinny być używane do pomocy:
+Wprowadzona w wersji 6,2, usługa EventStore jest opcją monitorowania w Service Fabric. EventStore zapewnia sposób zrozumienia stanu klastra lub obciążeń w danym momencie.
+EventStore jest usługą stanową Service Fabric, która przechowuje zdarzenia z klastra. Zdarzenie jest dostępne za pomocą Service Fabric Explorer, REST i interfejsów API. EventStore wysyła zapytanie bezpośrednio do klastra w celu uzyskania danych diagnostycznych w dowolnej jednostce w klastrze i powinno być używane do pomocy:
 
-* Diagnozuj problemy z tworzenia i testowania lub gdy być może używasz potoku monitorowania
-* Upewnij się, że akcje zarządzania, które są tworzone w klastrze są przetwarzane prawidłowo
-* Pobierz "migawkę" jak usługi Service Fabric prowadzi interakcję z określonego obiektu
+* Diagnozowanie problemów w programowaniu lub testowaniu lub w przypadku korzystania z potoku monitorowania
+* Upewnij się, że akcje zarządzania wykonywane w klastrze są przetwarzane prawidłowo
+* Uzyskiwanie "migawki" sposobu, w jaki Service Fabric współdziała z konkretną jednostką
 
-![Bazy danych EventStore](media/service-fabric-diagnostics-eventstore/eventstore.png)
+![EventStore](media/service-fabric-diagnostics-eventstore/eventstore.png)
 
-Aby wyświetlić pełną listę zdarzeń, które są dostępne w bazie danych EventStore, zobacz [zdarzenia usługi Service Fabric](service-fabric-diagnostics-event-generation-operational.md).
+Aby wyświetlić pełną listę zdarzeń dostępnych w EventStore, zobacz [zdarzenia Service Fabric](service-fabric-diagnostics-event-generation-operational.md).
 
 >[!NOTE]
->Począwszy od usługi Service Fabric w wersji 6.4. interfejsy API bazy danych EventStore i środowiska użytkownika są ogólnie dostępne w przypadku klastrów Windows Azure. Pracujemy nad przenoszenie tej funkcji do systemu Linux, a także naszych autonomicznych klastrów.
+>Od Service Fabric wersja 6,4. Interfejsy API EventStore i środowisko użytkownika są ogólnie dostępne dla klastrów systemu Windows Azure. Pracujemy nad przenoszeniem tej funkcji do systemu Linux oraz z naszych klastrów autonomicznych.
 
-Usługa bazy danych EventStore można wykonywać zapytania, zdarzenia, które są dostępne dla każdej jednostki i typu jednostki w klastrze. Oznacza to, że można wyszukiwać zdarzenia na następujących poziomach:
-* Klastra: zdarzenia specyficzne dla klastra, sama (np. uaktualnienie klastra)
-* Węzły: wszystkie zdarzenia poziomu węzeł
-* Węzeł: zdarzenia specyficzne dla jednego węzła, identyfikowany przez `nodeName`
-* Aplikacje: wszystkich zdarzeń na poziomie aplikacji
-* Aplikacji: specyficzne dla aplikacji jednej identyfikowane przez zdarzenia `applicationId`
-* Usługi: zdarzenia z wszystkich usług w klastrach
+Usługa EventStore może być kwerendą dla zdarzeń, które są dostępne dla każdego typu jednostki i jednostki w klastrze. Oznacza to, że można wykonywać zapytania o zdarzenia na następujących poziomach:
+* Klaster: zdarzenia specyficzne dla samego klastra (np. uaktualnienie klastra)
+* Węzły: wszystkie zdarzenia na poziomie węzła
+* Węzeł: zdarzenia specyficzne dla jednego węzła identyfikowane przez `nodeName`
+* Aplikacje: wszystkie zdarzenia na poziomie aplikacji
+* Aplikacja: zdarzenia specyficzne dla jednej aplikacji identyfikowanej przez `applicationId`
+* Usługi: zdarzenia ze wszystkich usług w klastrach
 * Usługa: zdarzenia z określonej usługi identyfikowane przez `serviceId`
 * Partycje: zdarzenia ze wszystkich partycji
-* Partycja: zdarzenia z określonej partycji identyfikowane przez `partitionId`
-* Replik partycji: zdarzenia ze wszystkich replik / wystąpień określonej partycji identyfikowane przez `partitionId`
-* Repliki partycji: zdarzenia z określonym repliki / identyfikowane przez wystąpienie `replicaId` i `partitionId`
+* Partycja: zdarzenia z określonej partycji identyfikowanej przez `partitionId`
+* Repliki partycji: zdarzenia ze wszystkich replik/wystąpień w ramach określonej partycji identyfikowanej przez `partitionId`
+* Replika partycji: zdarzenia z określonej repliki/wystąpienia identyfikowane przez `replicaId` i `partitionId`
 
-Aby dowiedzieć się więcej o interfejsie API, sprawdź [dokumentacja interfejsu API bazy danych EventStore](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-eventsstore).
+Aby dowiedzieć się więcej na temat interfejsu API, zobacz [Dokumentacja interfejsu API EventStore](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-eventsstore).
 
-Usługa bazy danych EventStore ma również możliwość korelowanie zdarzeń w klastrze. Patrząc na zdarzenia, które zostały napisane w tym samym czasie z różnymi jednostkami, które mogą mieć wpływ na siebie, usługa bazy danych EventStore jest można połączyć te zdarzenia, aby ułatwić zidentyfikowanie przyczyny działań w klastrze. Na przykład, jeśli jedna z aplikacji stają się zła, bez konieczności wprowadzania zmian wywołane, bazy danych EventStore również przyjrzeć się inne zdarzenia udostępnianych przez platformę i będą można skorelować za pomocą `Error` lub `Warning` zdarzeń. To ułatwia szybsze wykrywanie awarii i głównych przyczyn analizy.
+Usługa EventStore ma także możliwość skorelowania zdarzeń w klastrze. Przeglądając zdarzenia, które zostały zapisaną w tym samym czasie od różnych jednostek, które mogły mieć wpływ na siebie, usługa EventStore może połączyć te zdarzenia, aby pomóc w identyfikowaniu przyczyn działań w klastrze. Na przykład jeśli jedna z aplikacji stanie się zła w złej kondycji bez żadnych niewywołanych zmian, EventStore będzie również przeglądać inne zdarzenia uwidocznione przez platformę i można je skorelować ze zdarzeniem `Error` lub `Warning`. Dzięki temu szybciej wykrywaj awarie i główne przyczyny analizy.
 
-## <a name="enable-eventstore-on-your-cluster"></a>Włączanie bazy danych EventStore w klastrze
+## <a name="enable-eventstore-on-your-cluster"></a>Włączanie EventStore w klastrze
 
 ### <a name="local-cluster"></a>Klaster lokalny
 
-W [fabricSettings.json w klastrze](service-fabric-cluster-fabric-settings.md)Dodaj EventStoreService jako funkcja dodatku i przeprowadzić uaktualnienie klastra.
+W pliku [fabricSettings. JSON w klastrze](service-fabric-cluster-fabric-settings.md)Dodaj EventStoreService jako funkcję dodatku i wykonaj uaktualnienie klastra.
 
 ```json
     "addOnFeatures": [
@@ -71,8 +62,8 @@ W [fabricSettings.json w klastrze](service-fabric-cluster-fabric-settings.md)Dod
     ],
 ```
 
-### <a name="azure-cluster-version-65"></a>Klaster usługi Azure w wersji 6.5 +
-Jeśli klastrem platformy Azure pobiera uaktualniony do wersji 6.5 lub nowszej, bazy danych EventStore zostaną automatycznie włączone w klastrze. Aby zrezygnować, należy zaktualizować szablonu klastra z następujących czynności:
+### <a name="azure-cluster-version-65"></a>Klaster platformy Azure w wersji 6.5 +
+Jeśli klaster platformy Azure zostanie uaktualniony do wersji 6,5 lub nowszej, EventStore zostanie automatycznie włączony w klastrze. Aby zrezygnować z programu, należy zaktualizować szablon klastra przy użyciu następujących opcji:
 
 * Użyj wersji interfejsu API `2019-03-01` lub nowszej 
 * Dodaj następujący kod do sekcji właściwości w klastrze
@@ -83,9 +74,9 @@ Jeśli klastrem platformy Azure pobiera uaktualniony do wersji 6.5 lub nowszej, 
     "eventStoreServiceEnabled": false
   ```
 
-### <a name="azure-cluster-version-64"></a>Wersja klastra Azure 6.4
+### <a name="azure-cluster-version-64"></a>Klaster platformy Azure w wersji 6,4
 
-Jeśli używasz wersji 6.4, możesz edytować szablon usługi Azure Resource Manager, aby włączyć usługę bazy danych EventStore. Jest to realizowane przez wykonanie [uaktualnienie konfiguracji klastra](service-fabric-cluster-config-upgrade-azure.md) i dodając następujący kod, umożliwia PlacementConstraints umieścić repliki bazy danych EventStore usługi na określonym NodeType np. NodeType dedykowany dla usług systemu . `upgradeDescription` Sekcji konfiguruje uaktualnienia config wyzwalanie ponownego uruchomienia w węzłach. Usuń z sekcji, w innym update.
+Jeśli używasz wersji 6,4, możesz edytować szablon Azure Resource Manager, aby włączyć usługę EventStore. W tym celu należy wykonać [uaktualnienie konfiguracji klastra](service-fabric-cluster-config-upgrade-azure.md) i dodać następujący kod, można użyć PlacementConstraints, aby umieścić repliki usługi EventStore na określonym NodeType, np. NodeType dedykowanym dla usług systemowych. Sekcja `upgradeDescription` konfiguruje uaktualnienie konfiguracji, aby wyzwolić ponowne uruchomienie w węzłach. Sekcję w innej aktualizacji można usunąć.
 
 ```json
     "fabricSettings": [
@@ -131,9 +122,9 @@ Jeśli używasz wersji 6.4, możesz edytować szablon usługi Azure Resource Man
 ```
 
 
-## <a name="next-steps"></a>Kolejne kroki
-* Rozpoczynanie pracy z interfejsem API bazy danych EventStore - [w klastrach usługi Azure Service Fabric przy użyciu interfejsów API bazy danych EventStore](service-fabric-diagnostics-eventstore-query.md)
-* Dowiedz się więcej o listę zdarzeń oferowany przez bazy danych EventStore - [zdarzenia usługi Service Fabric](service-fabric-diagnostics-event-generation-operational.md)
-* Omówienie monitorowania i diagnostyki w usłudze Service Fabric - [monitorowania i diagnostyki dla usługi Service Fabric](service-fabric-diagnostics-overview.md)
-* Wyświetl pełną listę wywołania interfejsu API — [dokumentacja interfejsu API REST w bazie danych EventStore](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-eventsstore)
-* Dowiedz się więcej o monitorowaniu klastra- [monitorowanie klastra i platformy](service-fabric-diagnostics-event-generation-infra.md).
+## <a name="next-steps"></a>Następne kroki
+* Wprowadzenie do interfejsu API EventStore — [Korzystanie z interfejsów API EventStore w klastrach usługi Azure Service Fabric](service-fabric-diagnostics-eventstore-query.md)
+* Dowiedz się więcej na temat listy zdarzeń oferowanych przez zdarzenia EventStore- [Service Fabric](service-fabric-diagnostics-event-generation-operational.md)
+* Przegląd monitorowania i diagnostyki w Service Fabric — [monitorowanie i diagnostyka Service Fabric](service-fabric-diagnostics-overview.md)
+* Wyświetl pełną listę wywołań interfejsu API — [Dokumentacja interfejsu API REST EventStore](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-eventsstore)
+* Dowiedz się więcej o monitorowaniu klastra — [monitorowanie klastra i platformy](service-fabric-diagnostics-event-generation-infra.md).

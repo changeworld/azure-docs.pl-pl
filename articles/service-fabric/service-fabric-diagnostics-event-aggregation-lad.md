@@ -1,56 +1,47 @@
 ---
-title: Usługa Azure Service Fabric zdarzenie agregacji przy użyciu diagnostyki Azure dla systemu Linux | Dokumentacja firmy Microsoft
-description: Więcej informacji na temat agregowania i zbieranie zdarzeń za pomocą LAD do monitorowania i diagnostyki klastrów usługi Azure Service Fabric.
-services: service-fabric
-documentationcenter: .net
+title: Agregacja zdarzeń za pomocą Diagnostyka Azure systemu Linux
+description: Dowiedz się więcej na temat agregowania i zbierania zdarzeń przy użyciu LAD do monitorowania i diagnostyki klastrów Service Fabric platformy Azure.
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 2/25/2019
 ms.author: srrengar
-ms.openlocfilehash: 212158d9a76fa2e49c60be0b5c52f281497c155b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: fdb78498d33416ef21b2e2b0f498e7afa6a58d99
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60393133"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75609965"
 ---
-# <a name="event-aggregation-and-collection-using-linux-azure-diagnostics"></a>Zdarzenie agregacji i kolekcji przy użyciu diagnostyki Azure Linux
+# <a name="event-aggregation-and-collection-using-linux-azure-diagnostics"></a>Agregacja i zbieranie zdarzeń przy użyciu Diagnostyka Azure systemu Linux
 > [!div class="op_single_selector"]
 > * [Windows](service-fabric-diagnostics-event-aggregation-wad.md)
 > * [Linux](service-fabric-diagnostics-event-aggregation-lad.md)
 >
 >
 
-Po uruchomieniu klastra usługi Azure Service Fabric to dobry pomysł, aby zbierać dzienniki z wszystkimi węzłami w centralnej lokalizacji. Posiadanie dzienniki w centralnej lokalizacji, ułatwiają analizowanie i rozwiązywanie problemów w klastrze lub problemy w aplikacji i usług działających w klastrze.
+Gdy uruchamiasz klaster usługi Azure Service Fabric, dobrym pomysłem jest zebranie dzienników ze wszystkich węzłów w centralnej lokalizacji. Przechowywanie dzienników w centralnej lokalizacji ułatwia analizowanie i rozwiązywanie problemów z klastrem lub problemów z aplikacjami i usługami uruchomionymi w tym klastrze.
 
-Jednym ze sposobów przekazywania i zbierania dzienników jest użycie rozszerzenia diagnostyki Azure Linux (LAD), przekazuje dzienniki do usługi Azure Storage, która ma również możliwość przesyłania dzienników do usługi Azure Application Insights lub centrów zdarzeń. Umożliwia także procesu zewnętrznego do odczytywania zdarzeń z magazynu i umieszczenie ich w produkcie platformy analizy, takie jak [dzienniki usługi Azure Monitor](../log-analytics/log-analytics-service-fabric.md) lub innego rozwiązania do analizowania dziennika.
+Jednym ze sposobów przekazywania i zbierania dzienników jest użycie rozszerzenia systemu Linux Diagnostyka Azure (LAD), które przekazuje dzienniki do usługi Azure Storage, a także oferuje opcję wysyłania dzienników do usługi Azure Application Insights lub Event Hubs. Możesz również użyć procesu zewnętrznego, aby odczytać zdarzenia z magazynu i umieścić je w produkcie platformy analizy, takim jak [dzienniki Azure monitor](../log-analytics/log-analytics-service-fabric.md) lub inne rozwiązanie do analizy dzienników.
 
-## <a name="log-and-event-sources"></a>Źródła dzienników i zdarzeń
+## <a name="log-and-event-sources"></a>Dzienniki i źródła zdarzeń
 
-### <a name="service-fabric-platform-events"></a>Zdarzenia platformy usługi Service Fabric
-Usługa Service Fabric emituje kilka dzienników out-of--box za pomocą [LTTng](https://lttng.org), w tym zdarzenia operacyjne lub zdarzeniach środowiska uruchomieniowego. Te dzienniki są przechowywane w lokalizacji, która określa szablon usługi Resource Manager klastra. Do pobierania lub ustawiania szczegółów konta magazynu, wyszukaj tagu **AzureTableWinFabETWQueryable** i poszukaj **StoreConnectionString**.
+### <a name="service-fabric-platform-events"></a>Zdarzenia platformy Service Fabric
+Service Fabric emituje kilka gotowych do użycia dzienników za pośrednictwem [LTTng](https://lttng.org), w tym zdarzeń operacyjnych lub zdarzeń środowiska uruchomieniowego. Te dzienniki są przechowywane w lokalizacji, którą określa szablon Menedżer zasobów klastra. Aby uzyskać lub ustawić szczegóły konta magazynu, Wyszukaj tag **AzureTableWinFabETWQueryable** i Wyszukaj pozycję **StoreConnectionString**.
 
 ### <a name="application-events"></a>Zdarzenia aplikacji
- Zdarzenia emitowane w kodzie twojej aplikacji i usług określonych przez Ciebie podczas Instrumentacji oprogramowania. Możesz użyć dowolnego rozwiązania rejestrowania, który zapisuje pliki dzienników tekstowych — na przykład LTTng. Aby uzyskać więcej informacji zobacz dokumentację LTTng na śledzenie aplikacji.
+ Zdarzenia emitowane z kodu aplikacji i usług określone przez użytkownika podczas Instrumentacji oprogramowania. Można użyć dowolnego rozwiązania do rejestrowania, które zapisuje pliki dzienników na podstawie tekstu — na przykład LTTng. Aby uzyskać więcej informacji, zapoznaj się z dokumentacją LTTng dotyczącą śledzenia aplikacji.
 
-[Monitorowanie i diagnozowanie usług w lokalnym komputerze deweloperskim](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally-linux.md).
+[Monitorowanie i diagnozowanie usług w konfiguracji tworzenia maszyn lokalnych](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally-linux.md).
 
-## <a name="deploy-the-diagnostics-extension"></a>Wdrażanie rozszerzenia diagnostyki
-Pierwszym krokiem podczas zbierania dzienników jest wdrażanie rozszerzenia diagnostyki na wszystkich maszynach wirtualnych w klastrze usługi Service Fabric. Rozszerzenie diagnostyki zbiera dzienniki na każdej maszynie Wirtualnej i przekazuje je do konta magazynu, który określisz. 
+## <a name="deploy-the-diagnostics-extension"></a>Wdróż rozszerzenie diagnostyki
+Pierwszym krokiem zbierania dzienników jest wdrożenie rozszerzenia diagnostyki na każdej z maszyn wirtualnych w klastrze Service Fabric. Rozszerzenie diagnostyki zbiera dzienniki na poszczególnych maszynach wirtualnych i przekazuje je do określonego konta magazynu. 
 
-Aby wdrożyć rozszerzenie diagnostyki maszyn wirtualnych w klastrze jako część tworzenia klastra, należy ustawić **diagnostyki** do **na**. Po utworzeniu klastra, nie możesz zmienić to ustawienie przy użyciu portalu, dzięki czemu będzie trzeba wprowadzić odpowiednie zmiany w szablonie usługi Resource Manager.
+Aby wdrożyć rozszerzenie diagnostyki na maszynach wirtualnych w klastrze w ramach tworzenia klastra, ustaw opcję **Diagnostyka** na **włączone**. Po utworzeniu klastra nie można zmienić tego ustawienia przy użyciu portalu, więc konieczne będzie wprowadzenie odpowiednich zmian w szablonie Menedżer zasobów.
 
-Pozwoli to na skonfigurowanie agenta LAD, aby monitorować określone pliki dziennika. Zawsze, gdy nowy wiersz jest dołączany do pliku, tworzy wpis dziennika systemu, które są wysyłane do magazynu (tabela), który określiłeś.
+Spowoduje to skonfigurowanie agenta LAD do monitorowania określonych plików dziennika. Za każdym razem, gdy do pliku dołączany jest nowy wiersz, tworzy on wpis dziennika systemowego, który jest wysyłany do określonego magazynu (tabeli).
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-1. Aby zrozumieć, w bardziej szczegółowo, jakie zdarzenia należy sprawdzić podczas rozwiązywania problemów, zobacz [dokumentacji LTTng](https://lttng.org/docs) i [przy użyciu LAD](https://docs.microsoft.com/azure/virtual-machines/extensions/diagnostics-linux).
-2. [Konfigurowanie agenta usługi Log Analytics](service-fabric-diagnostics-event-analysis-oms.md) ułatwiające zbieranie metryk monitorowanie kontenerów wdrożonych w klastrze i wizualizacji dzienników 
+1. Aby bardziej szczegółowo zrozumieć, jakie zdarzenia należy sprawdzić podczas rozwiązywania problemów, zobacz [dokumentację LTTng](https://lttng.org/docs) i [Korzystanie z lad](https://docs.microsoft.com/azure/virtual-machines/extensions/diagnostics-linux).
+2. [Skonfiguruj agenta log Analytics](service-fabric-diagnostics-event-analysis-oms.md) , aby pomóc zbierać metryki, monitorować kontenery wdrożone w klastrze i wizualizować dzienniki 

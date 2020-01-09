@@ -2,18 +2,18 @@
 title: Wydajność Phoenix w usłudze Azure HDInsight
 description: Najlepsze rozwiązania w celu zoptymalizowania wydajności Apache Phoenix klastrów usługi Azure HDInsight
 author: ashishthaps
+ms.author: ashishth
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 01/22/2018
-ms.author: ashishth
-ms.openlocfilehash: b2a40802070510939332c3f5e876293445cf2df1
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.custom: hdinsightactive
+ms.date: 12/27/2019
+ms.openlocfilehash: 7f8f20be81e815414c283f7ec48aa6503e3b60ed
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70810427"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552648"
 ---
 # <a name="apache-phoenix-performance-best-practices"></a>Najlepsze rozwiązania w zakresie wydajności dla rozwiązania Apache Phoenix
 
@@ -27,38 +27,38 @@ Projekt schematu tabeli Phoenix obejmuje projekt klucza podstawowego, projekt ro
 
 ### <a name="primary-key-design"></a>Projekt klucza podstawowego
 
-Klucz podstawowy zdefiniowany w tabeli w Phoenix określa, jak dane są przechowywane w rowkey źródłowej tabeli HBase. W programie HBase jedynym sposobem uzyskania dostępu do określonego wiersza jest rowkey. Ponadto dane przechowywane w tabeli HBase są sortowane według rowkey. Phoenix kompiluje wartość rowkey przez połączenie wartości każdej kolumny w wierszu, w kolejności zdefiniowanej w kluczu podstawowym.
+Klucz podstawowy zdefiniowany w tabeli w Phoenix określa, jak dane są przechowywane w rowkey źródłowej tabeli HBase. W programie HBase jedynym sposobem uzyskania dostępu do określonego wiersza jest rowkey. Ponadto dane przechowywane w tabeli HBase są sortowane według rowkey. Phoenix kompiluje wartość rowkey, łącząc wartości każdej kolumny w wierszu w kolejności, w jakiej są zdefiniowane w kluczu podstawowym.
 
 Na przykład tabela kontaktów ma imię i nazwisko, nazwisko, numer telefonu i adres, wszystkie w tej samej rodzinie kolumn. Można zdefiniować klucz podstawowy w oparciu o rosnący numer sekwencyjny:
 
-|rowkey|       adres|   telefon| firstName| lastName|
+|rowkey|       adres|   phone| firstName| lastName|
 |------|--------------------|--------------|-------------|--------------|
-|  1000|1111 San Gabriel Dr.|1-425-000-0002|    Zawierają|Dole|
+|  1000|1111 San Gabriel Dr.|1-425-000-0002|    Michał|Dole|
 |  8396|5415 San Gabriel Dr.|1-230-555-0191|  Calvin|Raji|
 
 Jeśli jednak często wykonujesz zapytania według nazwiska, ten klucz podstawowy może nie działać prawidłowo, ponieważ każde zapytanie wymaga pełnego skanowania tabeli, aby odczytać wartość każdego lastName. Zamiast tego można zdefiniować klucz podstawowy w kolumnach lastName, firstName i numer ubezpieczenia społecznego. W tej ostatniej kolumnie można odróżnić dwa rezydentów pod tym samym adresem o tej samej nazwie, na przykład ojciec i syn.
 
-|rowkey|       adres|   telefon| firstName| lastName| socialSecurityNum |
+|rowkey|       adres|   phone| firstName| lastName| socialSecurityNum |
 |------|--------------------|--------------|-------------|--------------| ---|
-|  1000|1111 San Gabriel Dr.|1-425-000-0002|    Zawierają|Dole| 111 |
+|  1000|1111 San Gabriel Dr.|1-425-000-0002|    Michał|Dole| 111 |
 |  8396|5415 San Gabriel Dr.|1-230-555-0191|  Calvin|Raji| 222 |
 
 Przy użyciu nowego klucza podstawowego klucze wierszy generowane przez Phoenix byłyby następujące:
 
-|rowkey|       adres|   telefon| firstName| lastName| socialSecurityNum |
+|rowkey|       adres|   phone| firstName| lastName| socialSecurityNum |
 |------|--------------------|--------------|-------------|--------------| ---|
-|  Dole-John-111|1111 San Gabriel Dr.|1-425-000-0002|    Zawierają|Dole| 111 |
+|  Dole-John-111|1111 San Gabriel Dr.|1-425-000-0002|    Michał|Dole| 111 |
 |  Raji-Calvin-222|5415 San Gabriel Dr.|1-230-555-0191|  Calvin|Raji| 222 |
 
 W pierwszym wierszu powyżej dane dla rowkey są reprezentowane w sposób pokazany:
 
-|rowkey|       key|   value| 
+|rowkey|       key|   wartość|
 |------|--------------------|---|
 |  Dole-John-111|adres |1111 San Gabriel Dr.|  
-|  Dole-John-111|telefon |1-425-000-0002|  
-|  Dole-John-111|firstName |Zawierają|  
+|  Dole-John-111|phone |1-425-000-0002|  
+|  Dole-John-111|firstName |Michał|  
 |  Dole-John-111|lastName |Dole|  
-|  Dole-John-111|socialSecurityNum |111| 
+|  Dole-John-111|socialSecurityNum |111|
 
 Ta rowkey teraz przechowuje zduplikowaną kopię danych. Należy wziąć pod uwagę rozmiar i liczbę kolumn uwzględnionych w kluczu podstawowym, ponieważ ta wartość jest uwzględniana w każdej komórce w źródłowej tabeli HBase.
 
@@ -72,7 +72,7 @@ Ponadto, jeśli pewne kolumny mają być dostępne razem, należy umieścić te 
 
 ### <a name="column-design"></a>Projektowanie kolumn
 
-* Zachowaj kolumny VARCHAR w obszarze około 1 MB ze względu na koszty operacji we/wy dużych kolumn. Podczas przetwarzania zapytań HBase materializuje komórki w całości przed wysłaniem ich do klienta, a klient otrzymuje je w pełni przed przekazaniem ich do kodu aplikacji.
+* Przechowuj kolumny VARCHAR w obszarze około 1 MB z powodu kosztów we/wy dużych kolumn. Podczas przetwarzania zapytań HBase materializuje komórki w całości przed wysłaniem ich do klienta, a klient otrzymuje je w pełni przed przekazaniem ich do kodu aplikacji.
 * Przechowuj wartości kolumn przy użyciu formatu kompaktowego, takiego jak protobuf, Avro, msgpack lub BSON. KOD JSON nie jest zalecany, ponieważ jest większy.
 * Rozważ kompresję danych przed magazynem, aby zmniejszyć opóźnienia i koszty operacji we/wy.
 
@@ -113,9 +113,9 @@ Indeksy objęte usługą są indeksami, które zawierają dane z wiersza oprócz
 
 Przykładowo w przykładowej tabeli kontaktów można utworzyć indeks pomocniczy tylko dla kolumny socialSecurityNum. Ten indeks pomocniczy przyspieszy zapytania, które są filtrowane według wartości socialSecurityNum, ale pobieranie innych wartości pól wymaga innego odczytania względem głównej tabeli.
 
-|rowkey|       adres|   telefon| firstName| lastName| socialSecurityNum |
+|rowkey|       adres|   phone| firstName| lastName| socialSecurityNum |
 |------|--------------------|--------------|-------------|--------------| ---|
-|  Dole-John-111|1111 San Gabriel Dr.|1-425-000-0002|    Zawierają|Dole| 111 |
+|  Dole-John-111|1111 San Gabriel Dr.|1-425-000-0002|    Michał|Dole| 111 |
 |  Raji-Calvin-222|5415 San Gabriel Dr.|1-230-555-0191|  Calvin|Raji| 222 |
 
 Jeśli jednak zazwyczaj chcesz wyszukać imię i nazwisko socialSecurityNum, możesz utworzyć indeks pokryty, który zawiera imię i nazwisko, jako rzeczywiste dane w tabeli indeksów:
@@ -168,7 +168,7 @@ Plan zapytania wygląda następująco:
 
 W tym planie należy zwrócić uwagę na pełne skanowanie fraz za pośrednictwem lotów. Ta fraza wskazuje, że wykonanie przeskanuje tabelę nad wszystkimi wierszami w tabeli, zamiast korzystać z bardziej wydajnego skanowania zakresu lub opcji skanowania.
 
-Teraz Załóżmy, że chcesz wykonać zapytanie dotyczące lotów 2 stycznia 2014 dla przewoźnika `AA` , gdzie jego flightnum była większa niż 1. Załóżmy, że kolumny Year, month, dayOfMonth, Key i flightnum istnieją w przykładowej tabeli i są częścią złożonego klucza podstawowego. Zapytanie będzie wyglądać następująco:
+Teraz Załóżmy, że chcesz wykonać zapytanie dotyczące lotów 2 stycznia 2014 dla `AA` nośnej, gdzie jej flightnum była większa niż 1. Załóżmy, że kolumny Year, month, dayOfMonth, Key i flightnum istnieją w przykładowej tabeli i są częścią złożonego klucza podstawowego. Zapytanie będzie wyglądać następująco:
 
     select * from "FLIGHTS" where year = 2014 and month = 1 and dayofmonth = 2 and carrier = 'AA' and flightnum > 1;
 
@@ -182,7 +182,7 @@ Plan wynikający z tego:
 
 Wartości w nawiasach kwadratowych są zakresem wartości kluczy podstawowych. W takim przypadku wartości zakresu są stałe z rokiem 2014, month 1 i dayOfMonth 2, ale zezwalają na wartości flightnum, zaczynając od 2 i w górę (`*`). Ten plan zapytania potwierdza, że klucz podstawowy jest używany zgodnie z oczekiwaniami.
 
-Następnie utwórz indeks w tabeli loty o nazwie `carrier2_idx` , która znajduje się tylko w polu przewoźnik. Ten indeks zawiera także flightdate, tailnum, Origin i flightnum jako kolumny omówione, których dane są również przechowywane w indeksie.
+Następnie utwórz indeks w tabeli loty o nazwie `carrier2_idx`, która znajduje się tylko w polu przewoźnik. Ten indeks zawiera także flightdate, tailnum, Origin i flightnum jako kolumny omówione, których dane są również przechowywane w indeksie.
 
     CREATE INDEX carrier2_idx ON FLIGHTS (carrier) INCLUDE(FLIGHTDATE,TAILNUM,ORIGIN,FLIGHTNUM);
 
@@ -200,7 +200,7 @@ Aby zapoznać się z pełną listą elementów, które mogą pojawić się w wyn
 
 Ogólnie rzecz biorąc, chcesz uniknąć sprzężeń, chyba że jedna strona jest mała, szczególnie w przypadku częstych zapytań.
 
-W razie potrzeby można wykonywać duże sprzężenia ze `/*+ USE_SORT_MERGE_JOIN */` wskazówką, ale duże sprzężenie jest kosztowną operacją w porównaniu z ogromną liczbą wierszy. Jeśli całkowity rozmiar wszystkich tabel po prawej stronie przekroczy dostępną pamięć, użyj `/*+ NO_STAR_JOIN */` wskazówki.
+W razie potrzeby można wykonywać duże sprzężenia ze wskazówką `/*+ USE_SORT_MERGE_JOIN */`, ale duże sprzężenie jest kosztowną operacją w porównaniu z ogromną liczbą wierszy. Jeśli całkowity rozmiar wszystkich tabel po prawej stronie przekroczy dostępną pamięć, użyj wskazówki `/*+ NO_STAR_JOIN */`.
 
 ## <a name="scenarios"></a>Scenariusze
 

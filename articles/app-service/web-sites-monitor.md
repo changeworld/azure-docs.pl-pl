@@ -7,17 +7,17 @@ ms.topic: article
 ms.date: 01/11/2019
 ms.author: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: 4c0d3822b5000611d1b5229924cb44d055795468
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 2bca4521184fa42002e6649a90bb9101fded595c
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688275"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75658444"
 ---
 # <a name="monitor-apps-in-azure-app-service"></a>Monitorowanie aplikacji w Azure App Service
-[Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) zapewnia wbudowaną funkcję monitorowania dla aplikacji sieci Web, zaplecza mobilnego i aplikacji interfejsu API w [Azure Portal](https://portal.azure.com).
+[Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) zapewnia wbudowaną funkcję monitorowania dla aplikacji sieci Web, urządzeń przenośnych i aplikacji interfejsu API w [Azure Portal](https://portal.azure.com).
 
-W Azure Portal można sprawdzić *przydziały* i *metryki* dla aplikacji oraz plan App Service i skonfigurować *alerty* oraz *Automatyczne skalowanie* oparte na metrykach.
+W Azure Portal można sprawdzić *przydziały* i *metryki* dla aplikacji oraz plan App Service i skonfigurować *alerty* i *skalowanie* automatyczne, które są oparte na metrykach.
 
 ## <a name="understand-quotas"></a>Informacje o przydziałach
 
@@ -35,13 +35,13 @@ Przydziały dla aplikacji bezpłatnych lub udostępnionych:
 | --- | --- |
 | **PROCESOR (krótki)** | Ilość procesora CPU dozwolona dla tej aplikacji w interwale 5-minutowym. Ten przydział resetuje co pięć minut. |
 | **PROCESOR (dzień)** | Całkowita ilość procesora CPU dozwolona dla tej aplikacji w ciągu dnia. Ten przydział resetuje co 24 godziny o północy czasu UTC. |
-| **Rozmiar** | Całkowita ilość pamięci dozwolonej dla tej aplikacji. |
-| **Zużywa** | Całkowita ilość wychodzącej przepustowości dozwolonej dla tej aplikacji w ciągu dnia. Ten przydział resetuje co 24 godziny o północy czasu UTC. |
-| **Wymagany** | Łączna ilość dozwolonego miejsca w magazynie. |
+| **Pamięć** | Całkowita ilość pamięci dozwolonej dla tej aplikacji. |
+| **Bandwidth** | Całkowita ilość wychodzącej przepustowości dozwolonej dla tej aplikacji w ciągu dnia. Ten przydział resetuje co 24 godziny o północy czasu UTC. |
+| **Filesystem** | Łączna ilość dozwolonego miejsca w magazynie. |
 
 Jedynym przydziałem stosowanym dla aplikacji hostowanych w warstwach *podstawowa*, *standardowa*i *Premium* jest system plików.
 
-Aby uzyskać więcej informacji o określonych limitach przydziału, limitach i funkcjach dostępnych dla różnych jednostek SKU App Service, zobacz [limity usługi subskrypcji platformy Azure](../azure-subscription-service-limits.md#app-service-limits).
+Aby uzyskać więcej informacji o określonych limitach przydziału, limitach i funkcjach dostępnych dla różnych jednostek SKU App Service, zobacz [limity usługi subskrypcji platformy Azure](../azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits).
 
 ### <a name="quota-enforcement"></a>Wymuszanie przydziałów
 
@@ -88,7 +88,7 @@ W przypadku aplikacji dostępne są następujące metryki:
 | **Http 4xx** | Liczba żądań, które wynikają z kodu stanu HTTP ≥ 400, ale < 500. |
 | **Błędy serwera http** | Liczba żądań, które wynikają z kodu stanu HTTP ≥ 500, ale < 600. |
 | **Inne bajty we/wy na sekundę** | Szybkość, z jaką proces aplikacji wysyła bajty do operacji we/wy, które nie obejmują danych, takich jak operacje sterowania.|
-| **Inne operacje we/wy na sekundę** | Szybkość, z jaką proces aplikacji wysyła operacje we/wy, które nie odczytują ani nie zapisują operacji.|
+| **Inne operacje we/wy na sekundę** | Szybkość, z jaką proces aplikacji wysyła operacje we/wy, które nie są operacjami odczytu lub zapisu.|
 | **Bajty odczytu we/wy na sekundę** | Szybkość, z jaką proces aplikacji odczytuje bajty z operacji we/wy.|
 | **Operacje odczytu we/wy na sekundę** | Szybkość, z jaką proces aplikacji wystawia operacje we/wy odczytu.|
 | **Bajty zapisu we/wy na sekundę** | Szybkość, z jaką proces aplikacji zapisuje bajty w operacjach we/wy.|
@@ -129,7 +129,7 @@ Istnieją dwie metryki odzwierciedlające użycie procesora CPU:
 ## <a name="metrics-granularity-and-retention-policy"></a>Zasady szczegółowości i przechowywania metryk
 Metryki dla aplikacji i planu usługi App Service są rejestrowane i agregowane przez usługę z użyciem następujących zasad szczegółowości i przechowywania:
 
-* Metryki stopnia szczegółowości **minut** są zachowywane przez 30 godzin.
+* Metryki stopnia szczegółowości **minut** są przechowywane przez 30 godzin.
 * Metryki szczegółowości **godzinowej** są przechowywane przez 30 dni.
 * **Metryki stopnia szczegółowości** są przechowywane przez 30 dni.
 
@@ -144,19 +144,16 @@ Aby znaleźć przydziały, wybierz pozycję **ustawienia** > **limity przydział
 1. Bieżący limit.
 1. Jego bieżąca wartość.
 
-![wykres metryki w Azure Portal][metrics] możesz uzyskać dostęp do metryk bezpośrednio ze strony **zasobów** . Aby dostosować wykres: 
-1. Wybierz wykres.
-1. Wybierz pozycję **Edytuj wykres**.
-1. Edytuj **zakres czasu**.
-1. Edytuj **Typ wykresu**.
-1. Edytuj metryki, które chcesz wyświetlić.  
+![wykres metryki w Azure Portal][metrics] możesz uzyskać dostęp do metryk bezpośrednio z poziomu strony **Przegląd** zasobów. Tutaj zobaczysz wykresy przedstawiające niektóre metryki aplikacji.
+
+Kliknięcie dowolnego z tych wykresów spowoduje przejście do widoku metryk, w którym można tworzyć niestandardowe wykresy, wysyłać zapytania o różne metryki i wiele innych. 
 
 Aby dowiedzieć się więcej o metrykach, zobacz [monitorowanie metryk usług](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md).
 
 ## <a name="alerts-and-autoscale"></a>Alerty i automatyczne skalowanie
 Metryki dla aplikacji lub planu App Service mogą być podłączane do alertów. Aby uzyskać więcej informacji, zobacz [Receive alert notifications](../monitoring-and-diagnostics/insights-alerts-portal.md) (Otrzymywanie powiadomień o alertach).
 
-App Service aplikacje hostowane w planach App Service w warstwach Podstawowa, standardowa lub Premium obsługują automatyczne skalowanie. Funkcja automatycznego skalowania umożliwia skonfigurowanie reguł, które monitorują metryki planu App Service. Reguły mogą zwiększyć lub zmniejszyć liczbę wystąpień, co może zapewnić dodatkowe zasoby w razie konieczności. Reguły mogą również ułatwić oszczędność pieniędzy, gdy aplikacja jest nadmiernie obsługiwana.
+App Service aplikacje hostowane w planach App Service w warstwie Podstawowa lub wyższa obsługują automatyczne skalowanie. Funkcja automatycznego skalowania umożliwia skonfigurowanie reguł, które monitorują metryki planu App Service. Reguły mogą zwiększyć lub zmniejszyć liczbę wystąpień, co może zapewnić dodatkowe zasoby w razie konieczności. Reguły mogą również ułatwić oszczędność pieniędzy, gdy aplikacja jest nadmiernie obsługiwana.
 
 Aby uzyskać więcej informacji na temat automatycznego skalowania, zobacz [Jak skalować](../monitoring-and-diagnostics/insights-how-to-scale.md) i [najlepsze rozwiązania dotyczące Azure monitor skalowanie](../azure-monitor/platform/autoscale-best-practices.md)automatyczne.
 

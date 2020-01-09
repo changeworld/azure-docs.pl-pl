@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: d67270896792ea506d2df04dcc3745a43d3d8251
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: dcbc20f768ae80404979d47f23e7e08098757b41
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012879"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75613333"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-portal"></a>Tworzenie bramy aplikacji za pośrednictwem protokołu HTTP do przekierowania protokołu HTTPS przy użyciu witryny Azure portal
 
@@ -63,7 +63,7 @@ Export-PfxCertificate `
   -Password $pwd
 ```
 
-## <a name="create-an-application-gateway"></a>Tworzenie bramy aplikacji
+## <a name="create-an-application-gateway"></a>Tworzenie bramy Application Gateway
 
 Sieć wirtualna jest potrzebna do komunikacji między utworzonymi zasobami. W tym przykładzie są tworzone dwie podsieci: jedna dla bramy aplikacji i druga dla serwerów zaplecza. Sieć wirtualną można utworzyć podczas tworzenia bramy aplikacji.
 
@@ -118,15 +118,15 @@ Najpierw dodaj odbiornik o nazwie *myListener* dla portu 80.
 
 ### <a name="add-a-routing-rule-with-a-redirection-configuration"></a>Dodaj regułę routingu za pomocą konfiguracji przekierowania
 
-1. Na **myAppGateway**, wybierz opcję **reguły** , a następnie wybierz **+ podstawowa**.
-2. Aby uzyskać **nazwa**, typ *reguły Rule2*.
+1. W obszarze **myAppGateway**wybierz pozycję **reguły** , a następnie wybierz pozycję **+ reguła routingu żądania**.
+2. W polu **Nazwa reguły**wpisz *ograniczeniem zakresu wystąpień*.
 3. Upewnij się, **MyListener** został wybrany do odbiornika.
-4. Wybierz **Konfigurowanie przekierowania** pole wyboru.
+4. Kliknij kartę **cele zaplecza** i wybierz **Typ docelowy** jako *przekierowania*.
 5. Aby uzyskać **typ przekierowania**, wybierz opcję **stałe**.
 6. Aby uzyskać **miejsce docelowe przekierowania**, wybierz opcję **odbiornika**.
 7. Upewnij się, **odbiornik docelowy** ustawiono **appGatewayHttpListener**.
-8. Wybierz **ciąg zapytania dołączania** i **ścieżki dołączania** pola wyboru.
-9. Kliknij przycisk **OK**.
+8. W polu **Uwzględnij ciąg zapytania** i **Dołącz ścieżkę** wybierz opcję *tak*.
+9. Wybierz pozycję **Dodaj**.
 
 ## <a name="create-a-virtual-machine-scale-set"></a>Tworzenie zestawu skalowania maszyn wirtualnych
 
@@ -159,7 +159,7 @@ Interfejs użytkownika portalu zestaw skali maszyny wirtualnej jest tworzona now
 5. Wybierz **Usuń wszystkie elementy docelowe z puli zaplecza**.
 6. Wybierz pozycję **Zapisz**.
 7. Po zakończeniu tego procesu, wybierz **myAppGatewaymyvmss** puli zaplecza, wybierz opcję **Usuń** i następnie **OK** o potwierdzenie.
-8. Wybierz **appGatewayBackendPool**.
+8. Wybierz pozycję **appGatewayBackendPool**.
 9. W obszarze **cele**, wybierz opcję **VMSS**.
 10. W obszarze **VMSS**, wybierz opcję **myvmss**.
 11. W obszarze **konfiguracji interfejsu sieciowego**, wybierz opcję **myvmssNic**.

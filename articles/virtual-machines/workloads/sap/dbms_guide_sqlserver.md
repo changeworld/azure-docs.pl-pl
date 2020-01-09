@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/26/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 803b1e397efd4a6f9ddaa3bae1d101c8f204e728
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: a0fbed1f4dd62b2d75d39f475d2fe124c55a2b97
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74328293"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645807"
 ---
 # <a name="sql-server-azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>SQL Server wdrożenie systemu Azure Virtual Machines DBMS dla oprogramowania SAP NetWeaver
 
@@ -77,8 +77,8 @@ ms.locfileid: "74328293"
 [azure-ps]:/powershell/azureps-cmdlets-docs
 [azure-quickstart-templates-github]:https://github.com/Azure/azure-quickstart-templates
 [azure-script-ps]:https://go.microsoft.com/fwlink/p/?LinkID=395017
-[azure-subscription-service-limits]:../../../azure-subscription-service-limits.md
-[azure-subscription-service-limits-subscription]:../../../azure-subscription-service-limits.md#subscription-limits
+[azure-resource-manager/management/azure-subscription-service-limits]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits-subscription]:../../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits
 
 [dbms-guide]:dbms-guide_general.md 
 [dbms-guide-2.1]:dbms-guide.md#c7abf1f0-c927-4a7c-9c1d-c7b5b3b7212f 
@@ -235,7 +235,7 @@ ms.locfileid: "74328293"
 [planning-guide-storage-microsoft-azure-storage-and-data-disks]:planning-guide.md#a72afa26-4bf4-4a25-8cf7-855d6032157f 
 
 [resource-group-authoring-templates]:../../../resource-group-authoring-templates.md
-[resource-group-overview]:../../../azure-resource-manager/resource-group-overview.md
+[resource-group-overview]:../../../azure-resource-manager/management/overview.md
 [resource-groups-networking]:../../../networking/networking-overview.md
 [sap-pam]:https://support.sap.com/pam 
 [sap-templates-2-tier-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-marketplace-image%2Fazuredeploy.json
@@ -249,7 +249,7 @@ ms.locfileid: "74328293"
 [storage-powershell-guide-full-copy-vhd]:../../../storage/common/storage-powershell-guide-full.md#how-to-copy-blobs-from-one-storage-container-to-another
 [storage-premium-storage-preview-portal]:../../windows/disks-types.md
 [storage-redundancy]:../../../storage/common/storage-redundancy.md
-[storage-scalability-targets]:../../../storage/common/storage-scalability-targets.md
+[storage-scalability-targets]:../../../storage/common/scalability-targets-standard-accounts.md
 [storage-use-azcopy]:../../../storage/common/storage-use-azcopy.md
 [template-201-vm-from-specialized-vhd]:https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-from-specialized-vhd
 [templates-101-simple-windows-vm]:https://github.com/Azure/azure-quickstart-templates/tree/master/101-simple-windows-vm
@@ -489,7 +489,7 @@ Jeśli domena nie jest możliwa, można także użyć certyfikatów dla punktów
 
 Samouczek służący do konfigurowania funkcji dublowania baz danych na platformie Azure można znaleźć tutaj: <https://docs.microsoft.com/sql/database-engine/database-mirroring/database-mirroring-sql-server> 
 
-### <a name="sql-server-always-on"></a>SQL Server zawsze włączone
+### <a name="sql-server-always-on"></a>Opcja Zawsze włączone programu SQL Server
 Usługa as Always On jest obsługiwana w przypadku lokalnego rozwiązania SAP (patrz Uwaga dla oprogramowania SAP [1772688]), ale jest obsługiwana w połączeniu z oprogramowaniem SAP na platformie Azure. Istnieją pewne specjalne zagadnienia dotyczące wdrażania odbiornika grupy dostępności SQL Server (nie należy mylić z zestawem dostępności platformy Azure), ponieważ platforma Azure w tym momencie nie zezwala na tworzenie obiektu usługi AD/DNS, ponieważ jest to możliwe lokalnie. W związku z tym niektóre różne kroki instalacji są niezbędne do pokonania konkretnego zachowania platformy Azure.
 
 Niektóre zagadnienia dotyczące korzystania z odbiornika grupy dostępności są następujące:
@@ -552,7 +552,7 @@ Ten przewodnik zawiera wiele zaleceń i zalecamy przeczytanie go więcej niż ra
 1. Użyj najnowszej wersji systemu DBMS, takiej jak SQL Server 2017, która ma największe zalety na platformie Azure. 
 2. Starannie Zaplanuj poziom systemu SAP na platformie Azure, aby zrównoważyć układ plików danych i ograniczenia platformy Azure:
    * Nie masz zbyt dużej liczby dysków, ale wystarczająco że masz pewność, że możesz uzyskać dostęp do wymaganych IOPS.
-   * Jeśli nie używasz Managed Disks, pamiętaj, że liczby IOPS są również ograniczone dla konta usługi Azure Storage, a konta magazynu są ograniczone w ramach każdej subskrypcji platformy Azure ([więcej informacji][azure-subscription-service-limits]). 
+   * Jeśli nie używasz Managed Disks, pamiętaj, że liczby IOPS są również ograniczone dla konta usługi Azure Storage, a konta magazynu są ograniczone w ramach każdej subskrypcji platformy Azure ([więcej informacji][azure-resource-manager/management/azure-subscription-service-limits]). 
    * W przypadku konieczności osiągnięcia wyższej przepływności w różnych dyskach.
 3. Nigdy nie instaluj oprogramowania ani nie umieszczaj plików, które wymagają trwałości w D:\ dysk jest nietrwały i wszystkie elementy na tym dysku zostaną utracone przy ponownym uruchomieniu systemu Windows.
 4. Nie używaj buforowania dysków dla usługi Azure Standard Storage.

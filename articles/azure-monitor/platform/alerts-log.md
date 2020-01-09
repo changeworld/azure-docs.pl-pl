@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: d540912d280302d2ae2166b75fb2d163458d7a61
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: c8d9128e6956c460094be76eccce8d350ed41547
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71677826"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75658138"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Tworzenie i wyświetlanie alertów dzienników oraz zarządzanie nimi za pomocą Azure Monitor
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 W tym artykule opisano sposób konfigurowania alertów dziennika przy użyciu interfejsu alertów w programie Azure Portal. Definicja reguły alertu składa się z trzech części:
 - Cel: określony zasób platformy Azure, który ma być monitorowany
 - Kryteria: określony warunek lub logika, która pojawia się w sygnale, powinna wyzwalać akcję
@@ -90,7 +90,7 @@ Szczegółowe instrukcje zawiera przewodnik krok po kroku dotyczący używania a
 1. Jako trzeci i ostatni krok Określ, czy w przypadku spełnienia warunku alertu ma być wyzwalana jakakolwiek **Grupa akcji** dla reguły alertu. Możesz wybrać dowolną istniejącą grupę akcji z alertem lub utworzyć nową grupę akcji. Zgodnie z wybraną grupą akcji, gdy wyzwalany jest alert Azure: Wysyłaj wiadomości e-mail, wysyłaj wiadomości SMS, wywołaj elementy webhook, Koryguj przy użyciu elementów Runbook platformy Azure, wypchnij do narzędzia Narzędzia ITSM itp. Dowiedz się więcej na temat [grup akcji](action-groups.md).
 
     > [!NOTE]
-    > Zapoznaj się z [limitami usługi subskrypcji platformy Azure](../../azure-subscription-service-limits.md) , aby uzyskać limity dla ładunków elementów Runbook wyzwalanych dla alertów dziennika za pośrednictwem grup akcji platformy Azure
+    > Zapoznaj się z [limitami usługi subskrypcji platformy Azure](../../azure-resource-manager/management/azure-subscription-service-limits.md) , aby uzyskać limity dla ładunków elementów Runbook wyzwalanych dla alertów dziennika za pośrednictwem grup akcji platformy Azure
 
     W przypadku **alertów dotyczących dziennika** niektóre dodatkowe funkcje są dostępne w celu zastąpienia domyślnych akcji:
 
@@ -106,7 +106,7 @@ Szczegółowe instrukcje zawiera przewodnik krok po kroku dotyczący używania a
 
      W ciągu kilku minut alert jest aktywny i wyzwalacze opisane wcześniej.
 
-Użytkownicy mogą również sfinalizować swoje zapytanie analityczne w usłudze [log Analytics](../log-query/portals.md) , a następnie wypchnąć je, aby utworzyć alert za pośrednictwem przycisku "Ustaw Alert", a następnie wykonać instrukcje opisane w kroku 6 lub nowszym w powyższym samouczku.
+Użytkownicy mogą również sfinalizować swoje zapytanie analityczne w usłudze [log Analytics](../log-query/portals.md) , a następnie wypchnąć je w celu utworzenia alertu za pomocą przycisku "Ustaw Alert", a następnie wykonać instrukcje opisane w kroku 6 lub nowszym w powyższym samouczku.
 
  ![Alert Log Analytics — Ustawianie](media/alerts-log/AlertsAnalyticsCreate.png)
 
@@ -202,7 +202,7 @@ Poniżej znajduje się Struktura szablonu zasobów opartego na [tworzeniu reguł
 
 ```
 
-Przykładowy plik JSON powyżej można zapisać jako plik (powiedzieć) sampleScheduledQueryRule. JSON na potrzeby tego przewodnika i można go wdrożyć przy użyciu [Azure Resource Manager w Azure Portal](../../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template).
+Przykładowy plik JSON powyżej można zapisać jako plik (powiedzieć) sampleScheduledQueryRule. JSON na potrzeby tego przewodnika i można go wdrożyć przy użyciu [Azure Resource Manager w Azure Portal](../../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template).
 
 
 ### <a name="log-alert-with-cross-resource-query-using-azure-resource-template"></a>Rejestruj alert za pomocą zapytania między zasobami przy użyciu szablonu zasobów platformy Azure
@@ -299,7 +299,7 @@ Poniżej znajduje się struktura szablonów zasobów opartych na [tworzeniu zapl
 > [!IMPORTANT]
 > W przypadku korzystania z zapytania między zasobami w alercie dziennika użycie [authorizedResources](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/createorupdate#source) jest obowiązkowe, a użytkownik musi mieć dostęp do listy podanych zasobów
 
-Przykładowy plik JSON powyżej można zapisać jako plik (powiedzieć) sampleScheduledQueryRule. JSON na potrzeby tego przewodnika i można go wdrożyć przy użyciu [Azure Resource Manager w Azure Portal](../../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template).
+Przykładowy plik JSON powyżej można zapisać jako plik (powiedzieć) sampleScheduledQueryRule. JSON na potrzeby tego przewodnika i można go wdrożyć przy użyciu [Azure Resource Manager w Azure Portal](../../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template).
 
 ## <a name="managing-log-alerts-using-powershell"></a>Zarządzanie alertami dzienników przy użyciu programu PowerShell
 

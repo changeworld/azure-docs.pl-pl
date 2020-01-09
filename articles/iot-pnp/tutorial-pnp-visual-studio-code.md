@@ -3,18 +3,18 @@ title: Tworzenie i testowanie urządzenia IoT Plug and Play w wersji zapoznawcze
 description: Jako deweloper urządzenia zapoznaj się z tematem jak używać VS Code do tworzenia i testowania nowego modelu możliwości urządzenia dla urządzenia IoT Plug and Play Preview.
 author: dominicbetts
 ms.author: dobett
-ms.date: 07/10/2019
+ms.date: 12/30/2019
 ms.topic: tutorial
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: b7b9cd1040accda4d39af4d0a18940b56a45f929
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 209c63207653e98967a5a66e36c0cae53b7e044f
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73569899"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75550336"
 ---
 # <a name="tutorial-create-and-test-a-device-capability-model-using-visual-studio-code"></a>Samouczek: Tworzenie i testowanie modelu możliwości urządzenia przy użyciu Visual Studio Code
 
@@ -22,7 +22,7 @@ W tym samouczku pokazano, jak deweloper urządzenia używa Visual Studio Code do
 
 Sekcja w tym samouczku opisująca sposób tworzenia generowanego kodu szkieletowego przyjęto założenie, że używasz systemu Windows.
 
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Tworzenie modelu możliwości urządzenia
@@ -255,7 +255,7 @@ Aby pobrać Interfejs **DeviceInformation** z repozytorium modelu publicznego pr
 
 Masz teraz trzy pliki wchodzące w skład modelu możliwości urządzenia:
 
-* urn_azureiot_DeviceManagement_DeviceInformation_1. Interface. JSON
+* plik urn_azureiot_DeviceManagement_DeviceInformation_1. Interface. JSON
 * EnvironmentalSensor. Interface. JSON
 * SensorboxModel. capabilitymodel. JSON
 
@@ -335,7 +335,7 @@ Postępuj zgodnie z instrukcjami w pliku **README.MD** w folderze **sensorbox_ap
 
 Po uruchomieniu kodu program nawiązuje połączenie z IoT Hub i uruchamia wysyłanie przykładowych danych telemetrycznych i wartości właściwości. Urządzenie odpowiada również na polecenia wysyłane z IoT Hub. Aby sprawdzić to zachowanie:
 
-1. Aby utworzyć Centrum IoT:
+1. Aby utworzyć centrum IoT:
 
     ```azurecli-interactive
     az group create --name environmentalsensorresources --location centralus

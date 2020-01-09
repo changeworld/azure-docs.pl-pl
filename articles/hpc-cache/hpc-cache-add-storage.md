@@ -4,14 +4,14 @@ description: Jak zdefiniować cele magazynu, aby pamięć podręczna platformy A
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 11/18/2019
+ms.date: 12/30/2019
 ms.author: rohogue
-ms.openlocfilehash: 396ed84856604c297551c4593e0d7b82b92ac924
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 75d657fd9f3ee13c331450b324fd3b99e9cb6ca5
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74166614"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647230"
 ---
 # <a name="add-storage-targets"></a>Dodawanie lokalizacji docelowych magazynu
 
@@ -33,6 +33,8 @@ W Azure Portal Otwórz wystąpienie pamięci podręcznej, a następnie kliknij p
 
 Nowy obiekt docelowy magazynu obiektów BLOB wymaga pustego kontenera obiektów blob lub kontenera, który został wypełniony danymi w formacie systemu plików w chmurze usługi Azure HPC. Przeczytaj więcej na temat wstępnego ładowania kontenera obiektów BLOB w temacie [przenoszenie danych do usługi Azure Blob Storage](hpc-cache-ingest.md).
 
+Nowy kontener można utworzyć na podstawie tej strony tuż przed dodaniem go.
+
 Aby zdefiniować kontener obiektów blob platformy Azure, wprowadź te informacje.
 
 ![zrzut ekranu przedstawiający stronę Dodawanie miejsca docelowego magazynu, wypełniony informacjami o nowym obiekcie docelowym usługi Azure Blob Storage](media/hpc-cache-add-blob.png)
@@ -41,13 +43,15 @@ Aby zdefiniować kontener obiektów blob platformy Azure, wprowadź te informacj
 
 * **Nazwa docelowego magazynu** — Ustaw nazwę identyfikującą ten element docelowy magazynu w pamięci podręcznej platformy Azure HPC.
 * **Typ docelowy** — wybierz **obiekt BLOB**.
-* **Konto magazynu** — wybierz konto z kontenerem, który ma być używany.
+* **Konto magazynu** — wybierz konto, którego chcesz użyć.
 
   Musisz autoryzować wystąpienie pamięci podręcznej, aby uzyskać dostęp do konta magazynu, zgodnie z opisem w temacie [Dodawanie ról dostępu](#add-the-access-control-roles-to-your-account).
 
   Aby uzyskać informacje o rodzaju konta magazynu, którego można użyć, przeczytaj temat [wymagania dotyczące usługi BLOB Storage](hpc-cache-prereqs.md#blob-storage-requirements).
 
-* **Kontener magazynu** — wybierz kontener obiektów BLOB dla tego obiektu docelowego.
+* **Kontener magazynu** — wybierz kontener obiektów BLOB dla tego obiektu docelowego lub kliknij pozycję **Utwórz nowy**.
+
+  ![zrzut ekranu przedstawiający okno dialogowe, w którym można określić poziom nazw i dostępu (prywatny) dla nowego kontenera](media/add-blob-new-container.png)
 
 * **Ścieżka do wirtualnej przestrzeni nazw** — Ustaw ścieżkę pliku dla klienta dla tego miejsca docelowego magazynu. Przeczytaj temat [Konfigurowanie zagregowanej przestrzeni nazw](hpc-cache-namespace.md) , aby dowiedzieć się więcej o funkcji wirtualnej przestrzeni nazw.
 

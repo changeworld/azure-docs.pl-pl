@@ -5,12 +5,12 @@ author: alexkarcher-msft
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: alkarche
-ms.openlocfilehash: a3df48115dde27478446614c0446d64709adbc6f
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 1a9c058e590e5df9ab9ec82d900e22f7154d00a0
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226795"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75561936"
 ---
 # <a name="azure-functions-networking-options"></a>Opcje sieci Azure Functions
 
@@ -32,8 +32,8 @@ Aplikacje funkcji można hostować na kilka sposobów:
 |----------------|-----------|----------------|---------|-----------------------|  
 |[Ograniczenia przychodzącego adresu IP & dostęp do lokacji prywatnej](#inbound-ip-restrictions)|✅tak|✅tak|✅tak|✅tak|
 |[Integracja sieci wirtualnej](#virtual-network-integration)|❌nie|✅tak (regionalne)|✅tak (regionalne i brama)|✅tak|
-|[Wyzwalacze sieci wirtualnej (bez protokołu HTTP)](#virtual-network-triggers-non-http)|❌nie| ❌nie|✅tak|✅tak|
-|[Połączenia hybrydowe](#hybrid-connections)|❌nie|✅tak|✅tak|✅tak|
+|[Wyzwalacze sieci wirtualnej (bez protokołu HTTP)](#virtual-network-triggers-non-http)|❌nie| ✅tak |✅tak|✅tak|
+|[Połączenia hybrydowe](#hybrid-connections) (tylko system Windows)|❌nie|✅tak|✅tak|✅tak|
 |[Ograniczenia wychodzącego adresu IP](#outbound-ip-restrictions)|❌nie| ❌nie|❌nie|✅tak|
 
 ## <a name="inbound-ip-restrictions"></a>Ograniczenia przychodzącego adresu IP
@@ -123,19 +123,51 @@ Obecnie [Key Vault odwołania](../app-service/app-service-key-vault-references.m
 
 ## <a name="virtual-network-triggers-non-http"></a>Wyzwalacze sieci wirtualnej (bez protokołu HTTP)
 
-Obecnie aby używać wyzwalaczy funkcji innych niż HTTP z sieci wirtualnej, należy uruchomić aplikację funkcji w planie App Service lub w App Service Environment.
+Obecnie można używać funkcji wyzwalacza innego niż HTTP z poziomu sieci wirtualnej na jeden z dwóch sposobów: 
++ Uruchom aplikację funkcji w planie Premium i Włącz obsługę wyzwalacza sieci wirtualnej.
++ Uruchom aplikację funkcji w planie App Service lub App Service Environment.
 
-Załóżmy na przykład, że chcesz skonfigurować Azure Cosmos DB, aby akceptować tylko ruch z sieci wirtualnej. Należy wdrożyć aplikację funkcji w planie usługi App Service, która zapewnia integrację sieci wirtualnej z tą siecią wirtualną w celu skonfigurowania wyzwalaczy Azure Cosmos DB z tego zasobu. W trakcie okresu zapoznawczego Konfigurowanie integracji sieci wirtualnej nie zezwala na wyzwolenie planu Premium na wyłączenie tego zasobu Azure Cosmos DB.
+### <a name="premium-plan-with-virtual-network-triggers"></a>Plan Premium z wyzwalaczami sieci wirtualnej
 
-Zapoznaj się z [tą listą dla wszystkich wyzwalaczy innych niż http](./functions-triggers-bindings.md#supported-bindings) , aby sprawdzić, co jest obsługiwane.
+W przypadku korzystania z planu Premium można połączyć funkcje wyzwalacza inne niż HTTP z usługami uruchomionymi w sieci wirtualnej. W tym celu należy włączyć obsługę wyzwalacza sieci wirtualnej dla aplikacji funkcji. Ustawienie **obsługi wyzwalacza sieci wirtualnej** znajduje się w [Azure Portal](https://portal.azure.com) w obszarze **Ustawienia aplikacji funkcji**.
 
-## <a name="hybrid-connections"></a>Połączenia hybrydowe
+![VNETToggle](media/functions-networking-options/virtual-network-trigger-toggle.png)
 
-[Połączenia hybrydowe](../service-bus-relay/relay-hybrid-connections-protocol.md) to funkcja Azure Relay, z której można korzystać w celu uzyskania dostępu do zasobów aplikacji w innych sieciach. Zapewnia dostęp z aplikacji do punktu końcowego aplikacji. Nie można używać go do uzyskiwania dostępu do aplikacji. Połączenia hybrydowe jest dostępny dla funkcji uruchomionych we wszystkich, ale w planie zużycia.
+Możesz również włączyć wyzwalacze sieci wirtualnej, korzystając z następującego polecenia interfejsu CLI platformy Azure:
+
+```azurecli-interactive
+az resource update -g <resource_group> -n <premium_plan_name> --set properties.functionsRuntimeScaleMonitoringEnabled=1
+```
+
+Wyzwalacze sieci wirtualnej są obsługiwane w wersji 2. x i powyżej środowiska uruchomieniowego funkcji. Obsługiwane są następujące typy wyzwalaczy inne niż HTTP.
+
+| Rozszerzenie | Minimalna wersja |
+|-----------|---------| 
+|[Microsoft. Azure. WebJobs. Extensions. Storage](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage/) | 3.0.10 lub nowszy |
+|[Microsoft. Azure. WebJobs. Extensions. EventHubs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventHubs)| 4.1.0 lub nowszy|
+|[Microsoft. Azure. WebJobs. Extensions. ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.ServiceBus)| 3.2.0 lub nowszy|
+|[Microsoft. Azure. WebJobs. Extensions. CosmosDB](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.CosmosDB)| 3.0.5 lub nowszy|
+|[Microsoft. Azure. WebJobs. Extensions. DurableTask](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask)| 2.0.0 lub nowszy|
+
+> [!IMPORTANT]
+> Podczas włączania obsługi wyzwalacza sieci wirtualnej tylko typy wyzwalaczy powyżej są skalowane dynamicznie z aplikacją. Nadal można korzystać z wyzwalaczy, których nie wymieniono powyżej, ale nie są one skalowane poza liczbą wystąpień sprzed obgrzanych. Zobacz [wyzwalacze i powiązania](./functions-triggers-bindings.md#supported-bindings) , aby uzyskać pełną listę wyzwalaczy.
+
+### <a name="app-service-plan-and-app-service-environment-with-virtual-network-triggers"></a>App Service planowanie i App Service Environment przy użyciu wyzwalaczy sieci wirtualnej
+
+Gdy aplikacja funkcji działa w planie App Service lub App Service Environment, można użyć funkcji wyzwalacza innego niż HTTP. Aby funkcje zostały wyzwolone prawidłowo, musisz mieć połączenie z siecią wirtualną z dostępem do zasobu zdefiniowanego w połączeniu wyzwalacza. 
+
+Załóżmy na przykład, że chcesz skonfigurować Azure Cosmos DB, aby akceptować tylko ruch z sieci wirtualnej. W takim przypadku należy wdrożyć aplikację funkcji w planie App Service, która zapewnia integrację sieci wirtualnej z tą siecią wirtualną. Umożliwia to wyzwolenie funkcji przez ten zasób Azure Cosmos DB. 
+
+## <a name="hybrid-connections"></a>Hybrydowe
+
+[Połączenia hybrydowe](../service-bus-relay/relay-hybrid-connections-protocol.md) to funkcja Azure Relay, z której można korzystać w celu uzyskania dostępu do zasobów aplikacji w innych sieciach. Zapewnia dostęp z aplikacji do punktu końcowego aplikacji. Nie można używać go do uzyskiwania dostępu do aplikacji. Połączenia hybrydowe jest dostępny dla funkcji działających w systemie Windows we wszystkich, ale w planie zużycia.
 
 Jak w Azure Functions każde połączenie hybrydowe jest skorelowane z pojedynczym hostem TCP i kombinacją portów. Oznacza to, że punkt końcowy połączenia hybrydowego może znajdować się w dowolnym systemie operacyjnym i dowolnej aplikacji, o ile jest uzyskiwany dostęp do portu nasłuchiwania protokołu TCP. Funkcja Połączenia hybrydowe nie wie ani nie ma informacji o tym, czym jest lub do czego masz dostęp. Zapewnia dostęp do sieci.
 
 Aby dowiedzieć się więcej, zapoznaj się z dokumentacją dotyczącą [App Service połączenia hybrydowe](../app-service/app-service-hybrid-connections.md). Te same kroki konfiguracji obsługują Azure Functions.
+
+>[!IMPORTANT]
+> Połączenia hybrydowe jest obsługiwana tylko w planach systemu Windows. System Linux nie jest obsługiwany
 
 ## <a name="outbound-ip-restrictions"></a>Ograniczenia wychodzącego adresu IP
 

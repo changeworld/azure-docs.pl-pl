@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 05/16/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd8e46ecf7e65d768d16c8680fb7ab6796c74ea6
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 94fc50bf238a74b7d8b45625d88b2d23d7dd1a13
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849342"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75613770"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie produktu Workday do automatycznego aprowizacji użytkowników
 
@@ -120,7 +120,7 @@ Aby ułatwić inicjowanie przepływów pracy między firmami Workday i Active Di
 > Zwykła aplikacja "Workday" służy do konfigurowania logowania jednokrotnego między dniem roboczym i Azure Active Directory.
 
 Użyj poniższego wykresu przepływu decyzji, aby określić, które aplikacje dla aprowizacji w programie Workday są odpowiednie dla Twojego scenariusza.
-    ![Schemat blokowy decyzji](./media/workday-inbound-tutorial/wday_app_flowchart.png "DecisSchemat blokowy jonu ")
+    ![Schemat blokowy decyzji](./media/workday-inbound-tutorial/wday_app_flowchart.png "Schemat blokowy decyzji")
 
 Użyj spisu treści, aby przejść do odpowiedniej sekcji tego samouczka.
 
@@ -366,9 +366,9 @@ Ta sekcja zawiera kroki dla aprowizacji konta użytkownika z produktu Workday do
 
 **Aby skonfigurować dzień roboczy do Active Directory aprowizacji:**
 
-1. Przejdź do usługi <https://portal.azure.com>
+1. Przejdź do pozycji <https://portal.azure.com> (Plik > Nowy > Inny).
 
-2. Na lewym pasku nawigacyjnym wybierz pozycję **Azure Active Directory**
+2. W Azure Portal Wyszukaj i wybierz pozycję **Azure Active Directory**.
 
 3. Wybierz **aplikacje przedsiębiorstwa**, a następnie **wszystkie aplikacje**.
 
@@ -376,9 +376,9 @@ Ta sekcja zawiera kroki dla aprowizacji konta użytkownika z produktu Workday do
 
 5. Wyszukaj **Provisioning platformy Workday w Active Directory**i Dodaj tę aplikację z galerii.
 
-6. Po dodaniu aplikacji i wyświetleniu ekranu Szczegóły aplikacji wybierz opcję **aprowizacji**
+6. Po dodaniu aplikacji i wyświetleniu ekranu Szczegóły aplikacji wybierz opcję **Inicjowanie obsługi**.
 
-7. Zmień tryb **aprowizacji** na **automatyczny**
+7. Zmień tryb **aprowizacji** na **automatyczny**.
 
 8. Kliknij transparent informacji wyświetlany, aby pobrać agenta aprowizacji. 
 
@@ -468,11 +468,11 @@ W tym kroku ustanawiamy łączność z produktem Workday i Active Directory w Az
    * **Wiadomość e-mail z powiadomieniem —** Wprowadź adres e-mail, a następnie zaznacz pole wyboru "Wyślij wiadomość e-mail, jeśli wystąpi błąd".
 
      > [!NOTE]
-     > Usługa Azure AD Provisioning wysyła powiadomienie e-mail, jeśli zadanie aprowizacji przejdzie do stanu [kwarantanny](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning#quarantine) .
+     > Usługa Azure AD Provisioning wysyła powiadomienie e-mail, jeśli zadanie aprowizacji przejdzie do stanu [kwarantanny](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status) .
 
    * Kliknij przycisk **Testuj połączenie** . Jeśli test połączenia zakończy się pomyślnie, kliknij przycisk **Zapisz** u góry. Jeśli to się nie powiedzie, sprawdź, czy poświadczenia dla produktu Workday i poświadczenia usługi AD skonfigurowane w instalatorze agenta są prawidłowe.
 
-     ![Azure Portal](./media/workday-inbound-tutorial/wd_1.png)
+     ![Portal Azure](./media/workday-inbound-tutorial/wd_1.png)
 
    * Po pomyślnym zapisaniu poświadczeń w sekcji **mapowania** zostanie wyświetlone mapowanie domyślne **Synchronizacja procesów roboczych programu Workday do lokalnego Active Directory**
 
@@ -537,7 +537,7 @@ W tej sekcji skonfigurujesz sposób przepływu danych przez użytkownika z produ
 
 1. Aby zapisać mapowania, kliknij pozycję **Zapisz** w górnej części sekcji Mapowanie atrybutów.
 
-   ![Azure Portal](./media/workday-inbound-tutorial/wd_2.png)
+   ![Portal Azure](./media/workday-inbound-tutorial/wd_2.png)
 
 #### <a name="below-are-some-example-attribute-mappings-between-workday-and-active-directory-with-some-common-expressions"></a>Poniżej przedstawiono przykładowe mapowania atrybutów między dniem Workday i Active Directory przy użyciu niektórych typowych wyrażeń
 
@@ -593,7 +593,7 @@ W poniższych sekcjach opisano kroki konfigurowania aprowizacji użytkowników z
 
 1. Przejdź do pozycji <https://portal.azure.com> (Plik > Nowy > Inny).
 
-2. Na lewym pasku nawigacyjnym wybierz pozycję **Azure Active Directory**
+2. W Azure Portal Wyszukaj i wybierz pozycję **Azure Active Directory**.
 
 3. Wybierz **aplikacje przedsiębiorstwa**, a następnie **wszystkie aplikacje**.
 
@@ -601,9 +601,9 @@ W poniższych sekcjach opisano kroki konfigurowania aprowizacji użytkowników z
 
 5. Wyszukaj pozycję **Workday w usłudze Azure AD**, a następnie Dodaj tę aplikację z galerii.
 
-6. Po dodaniu aplikacji i wyświetleniu ekranu Szczegóły aplikacji wybierz opcję **aprowizacji**
+6. Po dodaniu aplikacji i wyświetleniu ekranu Szczegóły aplikacji wybierz opcję **Inicjowanie obsługi**.
 
-7. Zmień tryb **aprowizacji** na **automatyczny**
+7. Zmień tryb **aprowizacji** na **automatyczny**.
 
 8. Wypełnij sekcję **poświadczenia administratora** w następujący sposób:
 
@@ -688,9 +688,9 @@ Postępuj zgodnie z tymi instrukcjami, aby skonfigurować Stornowanie adresów e
 
 **Aby skonfigurować łącznik zapisywania zwrotnego dla produktu Workday:**
 
-1. Przejdź do usługi <https://portal.azure.com>
+1. Przejdź do pozycji <https://portal.azure.com> (Plik > Nowy > Inny).
 
-2. Na lewym pasku nawigacyjnym wybierz pozycję **Azure Active Directory**
+2. W Azure Portal Wyszukaj i wybierz pozycję **Azure Active Directory**.
 
 3. Wybierz **aplikacje przedsiębiorstwa**, a następnie **wszystkie aplikacje**.
 
@@ -698,9 +698,9 @@ Postępuj zgodnie z tymi instrukcjami, aby skonfigurować Stornowanie adresów e
 
 5. Wyszukaj funkcję **zapisywania zwrotnego dla produktu Workday**i Dodaj tę aplikację z galerii.
 
-6. Po dodaniu aplikacji i wyświetleniu ekranu Szczegóły aplikacji wybierz opcję **aprowizacji**
+6. Po dodaniu aplikacji i wyświetleniu ekranu Szczegóły aplikacji wybierz opcję **Inicjowanie obsługi**.
 
-7. Zmień tryb **aprowizacji** na **automatyczny**
+7. Zmień tryb **aprowizacji** na **automatyczny**.
 
 8. Wypełnij sekcję **poświadczenia administratora** w następujący sposób:
 
@@ -737,7 +737,7 @@ Po zakończeniu konfiguracji aplikacji inicjowania obsługi dla programu Workday
 
 1. Na karcie **aprowizacji** Ustaw **stan aprowizacji** na **włączone**.
 
-2. Kliknij przycisk **Save** (Zapisz).
+2. Kliknij pozycję **Zapisz**.
 
 3. Ta operacja rozpocznie synchronizację początkową, która może potrwać zmienną liczbę godzin w zależności od liczby użytkowników w dzierżawie produktu Workday. 
 
@@ -745,7 +745,7 @@ Po zakończeniu konfiguracji aplikacji inicjowania obsługi dla programu Workday
 
 5. Po zakończeniu synchronizacji początkowej zostanie zapisany raport z podsumowaniem inspekcji na karcie **aprowizacji** , jak pokazano poniżej.
 
-   ![Azure Portal](./media/workday-inbound-tutorial/wd_3.png)
+   ![Portal Azure](./media/workday-inbound-tutorial/wd_3.png)
 
 ## <a name="frequently-asked-questions-faq"></a>Często zadawane pytania
 
@@ -848,7 +848,7 @@ Podczas sugerowania nowego pomysłu Sprawdź, czy ktoś inny już sugerował pod
 * Przejdź do **Panelu sterowania** -> **Odinstaluj lub Zmień menu programu**
 * Wyszukaj wersję odpowiadającą wpisowi **Microsoft Azure AD Połącz agenta aprowizacji**
 
-  ![Azure Portal](./media/workday-inbound-tutorial/pa_version.png)
+  ![Portal Azure](./media/workday-inbound-tutorial/pa_version.png)
 
 #### <a name="does-microsoft-automatically-push-provisioning-agent-updates"></a>Czy firma Microsoft automatycznie wypychanie aktualizacji agenta aprowizacji?
 
@@ -905,7 +905,7 @@ Tak, jeden Agent aprowizacji można skonfigurować do obsługi wielu domen usłu
   Get-PublishedResources -TenantId "[tenant ID]"
   ```
 
-* Z wyświetlonej listy agentów — skopiuj wartość pola "ID" z tego zasobu, którego *resourceName* jest równa nazwie domeny usługi AD.
+* Z wyświetlonej listy agentów — skopiuj wartość pola `id` z tego zasobu, którego *resourceName* równa się nazwie domeny usługi AD.
 * Wklej wartość identyfikatora do tego polecenia i wykonaj polecenie w programie PowerShell.
 
   ```powershell
@@ -1191,7 +1191,7 @@ W tej sekcji opisano często występujące błędy podczas aprowizacji użytkown
 |#|Scenariusz błędu |Prawdopodobne przyczyny|Zalecane rozwiązanie|
 |--|---|---|---|
 |1.| Wystąpił błąd podczas instalowania agenta aprowizacji z komunikatem o błędzie: *nie można uruchomić usługi "Microsoft Azure AD połączyć się z agentem aprowizacji" (AADConnectProvisioningAgent). Sprawdź, czy masz wystarczające uprawnienia do uruchamiania systemu.* | Ten błąd jest zwykle wyświetlany, jeśli próbujesz zainstalować agenta aprowizacji na kontrolerze domeny, a zasady grupy uniemożliwiają uruchomienie usługi.  Jest również widoczna, jeśli masz Poprzednia wersja agenta z uruchomioną usługą i nie został on odinstalowany przed rozpoczęciem nowej instalacji.| Zainstaluj agenta aprowizacji na serwerze niebędącym kontrolerem domeny. Przed zainstalowaniem nowego agenta upewnij się, że poprzednie wersje agenta zostały odinstalowane.|
-|2.| Agent aprowizacji usługi systemu Windows "Microsoft Azure AD Connect" jest w stanie *początkowym* i nie przechodzi do stanu *uruchomienia* . | W ramach instalacji Kreator agenta tworzy konto lokalne (**usługa NT\\AADConnectProvisioningAgent**) na serwerze i jest to konto **logowania** używane do uruchamiania usługi. Jeśli zasady zabezpieczeń na serwerze z systemem Windows uniemożliwiają uruchamianie usług na kontach lokalnych, ten błąd zostanie wyświetlony. | Otwórz *konsolę usługi*. Kliknij prawym przyciskiem myszy usługę systemu Windows "Microsoft Azure AD Połącz agenta aprowizacji" i na karcie Logowanie Podaj konto administratora domeny, aby uruchomić usługę. Należy ponownie uruchomić usługę. |
+|2.| Agent aprowizacji usługi systemu Windows "Microsoft Azure AD Connect" jest w stanie *początkowym* i nie przechodzi do stanu *uruchomienia* . | W ramach instalacji Kreator agenta tworzy konto lokalne (**usługa NT\\AADConnectProvisioningAgent**) na serwerze i jest to konto logowania używane do uruchamiania usługi. Jeśli zasady zabezpieczeń na serwerze z systemem Windows uniemożliwiają uruchamianie usług na kontach lokalnych, ten błąd zostanie wyświetlony. | Otwórz *konsolę usługi*. Kliknij prawym przyciskiem myszy usługę systemu Windows "Microsoft Azure AD Połącz agenta aprowizacji" i na karcie Logowanie Podaj konto administratora domeny, aby uruchomić usługę. Należy ponownie uruchomić usługę. |
 |3.| Podczas konfigurowania agenta aprowizacji przy użyciu domeny usługi AD w kroku *łączenie Active Directory*Kreator zajmuje dużo czasu, próbując załadować schemat usługi AD i ostatecznie przekroczyć limit czasu. | Ten błąd jest zazwyczaj wyświetlany, jeśli kreator nie może skontaktować się z serwerem kontrolera domeny usługi AD ze względu na problemy z zaporą. | Na ekranie Kreator *łączenia Active Directory* , podczas podawania poświadczeń dla domeny usługi AD istnieje opcja o nazwie *Wybierz priorytet kontrolera domeny*. Użyj tej opcji, aby wybrać kontroler domeny znajdujący się w tej samej lokacji co serwer agenta i upewnić się, że nie ma żadnych reguł zapory blokujących komunikację. |
 
 #### <a name="connectivity-errors"></a>Błędy łączności

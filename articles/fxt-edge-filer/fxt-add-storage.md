@@ -1,17 +1,17 @@
 ---
-title: Dodawanie magazynu zaplecza do klastra plików Microsoft Azure FXT Edge
+title: 'Samouczek: Dodawanie magazynu do klastra usługi Azure FXT Edge'
 description: Jak skonfigurować magazyn zaplecza i pseudonamespace na klientach dla usługi Azure FXT Edge
 author: ekpgh
+ms.author: rohogue
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
-ms.author: rohogue
-ms.openlocfilehash: ecc246368cae74440ada782940931b3588193975
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 3f736942627d088e3a639f89bef5438714c2608b
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72256069"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551968"
 ---
 # <a name="tutorial-add-back-end-storage-and-configure-the-virtual-namespace"></a>Samouczek: Dodawanie magazynu zaplecza i konfigurowanie wirtualnej przestrzeni nazw 
 
@@ -55,7 +55,7 @@ Po dodaniu podstawowego pliku programu można zaktualizować jego ustawienia na 
 
 ## <a name="add-a-core-filer"></a>Dodawanie podstawowego pliku
 
-Zdefiniuj podstawowy plik programu, klikając przycisk **Utwórz** na stronie **podstawowe pliki**programu fileer  > **Zarządzanie podstawowymi ustawieniami plików** .
+Zdefiniuj podstawowy plik programu, klikając przycisk **Utwórz** na stronie **podstawowe pliki** > Zarządzanie podstawowymi ustawieniami **plików** .
 
 ![Kliknięcie przycisku Utwórz powyżej listy plików podstawowych na stronie Zarządzanie podstawowymi plikami plików](media/fxt-cluster-config/create-core-filer-button.png)
 
@@ -79,7 +79,7 @@ Podzadania obejmują:
 
   ![Informacje o podstawowym pliku w chmurze w nowym Kreatorze podstawowego pliku](media/fxt-cluster-config/new-core-filer-cloud3.png) 
   
-  Jeśli dodano już poświadczenia dostępu do chmury dla tego klastra, zostaną one wyświetlone na liście. Zaktualizuj i Dodaj poświadczenia w **klastrze** >  Strona ustawień**poświadczeń w chmurze** . 
+  Jeśli dodano już poświadczenia dostępu do chmury dla tego klastra, zostaną one wyświetlone na liście. Zaktualizuj i Dodaj poświadczenia w > stronie ustawień **poświadczeń chmury** w **klastrze** . 
 
 Po wypełnieniu wszystkich wymaganych ustawień w Kreatorze kliknij przycisk **Dodaj plik** , aby przesłać zmianę.
 
@@ -129,7 +129,7 @@ Aby utworzyć nowy vserver, potrzebne są następujące informacje:
 
 * Jeśli sieć ma sieci VLAN, których sieci VLAN użyć dla tego vserver
 
-Użyj strony **VServer** > **Zarządzaj ustawieniami VServers** , aby utworzyć nowy vserver. Aby uzyskać szczegółowe informacje [, zobacz Tworzenie vserver](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_vserver_manage.html#creating-a-vserver) w podręczniku konfiguracji klastra. 
+Użyj strony **VServer** > **Zarządzanie ustawieniami VServers** , aby utworzyć nowy vserver. Aby uzyskać szczegółowe informacje [, zobacz Tworzenie vserver](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_vserver_manage.html#creating-a-vserver) w podręczniku konfiguracji klastra. 
 
 ![okno podręczne tworzenia nowego vserver](media/fxt-cluster-config/new-vserver.png)
 
@@ -141,7 +141,7 @@ Tego systemu można użyć do uproszczenia ścieżki używanej w punktach instal
 
 ![Strona Kreatora dodawania nowej gałęzi z ustawieniami wypełnionymi](media/fxt-cluster-config/add-junction-full.png)
 
-Aby uzyskać szczegółowe informacje na temat tworzenia rozgałęzienia przestrzeni nazw, zapoznaj się z [**przestrzenią nazw** **vserver** > ](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_namespace.html) w podręczniku konfiguracji klastra.
+Aby uzyskać szczegółowe informacje na temat tworzenia rozgałęzienia przestrzeni nazw, zapoznaj się z [ **przestrzenią nazw** **vserver** > ](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_namespace.html) w podręczniku konfiguracji klastra.
 
 ![Strona ustawienia przestrzeni nazw VServer > przedstawiające szczegóły rozgałęzienia](media/fxt-cluster-config/namespace-populated.png)
 
@@ -149,9 +149,9 @@ Aby uzyskać szczegółowe informacje na temat tworzenia rozgałęzienia przestr
 
 Po utworzeniu zarówno vserver, jak i podstawowego pliku, należy dostosować reguły eksportu i wyeksportować zasady kontrolujące sposób, w jaki klienci mogą uzyskiwać dostęp do plików w ramach eksportu plików podstawowych.
 
-Najpierw użyj strony**reguł eksportu** **vserver** > , aby dodać nowe reguły, zmodyfikować zasady domyślne lub utworzyć własne niestandardowe zasady eksportowania.
+Najpierw użyj strony **VServer** > **Export Rules** , aby dodać nowe reguły, zmodyfikować zasady domyślne lub utworzyć własne niestandardowe zasady eksportowania.
 
-Następnie użyj strony **VServer** > **Export** Policy, aby zastosować dostosowane zasady do eksportu podstawowego pliku w przypadku dostępu za pośrednictwem tego vserver.
+Następnie użyj strony **VServer** > Export Policy ( **zasady** ), aby zastosować dostosowane zasady do eksportu podstawowego pliku w przypadku dostępu za pośrednictwem tego vserver.
 
 Przeczytaj artykuł Przewodnik po konfiguracji klastra [kontrolujący dostęp do podstawowych eksportu plików,](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/export_rules_overview.html) Aby uzyskać szczegółowe informacje.
 

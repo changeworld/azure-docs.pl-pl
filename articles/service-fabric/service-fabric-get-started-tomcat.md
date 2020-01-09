@@ -1,24 +1,15 @@
 ---
-title: Tworzenie kontenera Service Fabric platformy Azure dla serwera Apache Tomcat w systemie Linux | Microsoft Docs
+title: Tworzenie kontenera dla platformy Apache Tomcat w systemie Linux
 description: Utwórz kontener systemu Linux, aby udostępnić aplikację działającą na serwerze Apache Tomcat na platformie Azure Service Fabric. Utwórz obraz platformy Docker za pomocą aplikacji i serwera Apache Tomcat, wypchnij obraz do rejestru kontenerów, skompiluj i Wdróż Service Fabric aplikację kontenera.
-services: service-fabric
-documentationcenter: .net
-author: JimacoMS2
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 6/08/2018
 ms.author: pepogors
-ms.openlocfilehash: 7e14a027f17c15c83a4ce25a211ef6106f2d2eaa
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 1a699f3b35970270a9800162a6d8717682a168ae
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72170601"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614421"
 ---
 # <a name="create-service-fabric-container-running-apache-tomcat-server-on-linux"></a>Tworzenie kontenera Service Fabric z systemem Apache Tomcat Server w systemie Linux
 Apache Tomcat to popularne wdrożenie typu "open source" technologii Java serwletu i Java Server. W tym artykule opisano sposób tworzenia kontenera za pomocą platformy Apache Tomcat i prostej aplikacji sieci Web, wdrażania kontenera w klastrze Service Fabric z systemem Linux i nawiązywania połączenia z aplikacją sieci Web.  
@@ -61,7 +52,7 @@ Postępuj zgodnie z instrukcjami w tej sekcji, aby utworzyć obraz platformy Doc
    Zobacz [odwołanie pliku dockerfile](https://docs.docker.com/engine/reference/builder/) , aby uzyskać więcej informacji.
 
 
-4. Uruchom polecenie `docker build`, aby utworzyć obraz uruchamiający aplikację sieci Web:
+4. Uruchom `docker build` polecenie, aby utworzyć obraz uruchamiający aplikację sieci Web:
 
    ```bash
    docker build . -t tomcattest
@@ -84,7 +75,7 @@ Postępuj zgodnie z instrukcjami w tej sekcji, aby utworzyć obraz platformy Doc
    docker run -itd --name tomcat-site -p 8080:8080 tomcattest.
    ```
    
-   * `--name` nazywa kontener, dlatego można odwoływać się do niego przy użyciu przyjaznej nazwy, a nie jej identyfikatora.
+   * `--name` nazwę kontenera, więc możesz odwoływać się do niego przy użyciu przyjaznej nazwy, a nie jej identyfikatora.
    * `-p` Określa mapowanie portów między kontenerem i systemem operacyjnym hosta. 
 
    > [!Note]
@@ -211,7 +202,7 @@ Teraz, gdy obraz Tomcat został wypchnięci do rejestru kontenerów, można skom
    Po uruchomieniu skryptu instalacji Otwórz przeglądarkę i przejdź do Service Fabric Explorer:
     
    * W klastrze lokalnym Użyj `http://localhost:19080/Explorer` (Zastąp *localhost* jako prywatny adres IP maszyny wirtualnej, jeśli używany jest program Vagrant on Mac OS X).
-   * W zabezpieczonym klastrze platformy Azure Użyj `https://PublicIPorFQDN:19080/Explorer`. 
+   * W bezpiecznym klastrze platformy Azure Użyj `https://PublicIPorFQDN:19080/Explorer`. 
     
    Rozwiń węzeł **aplikacje** i zwróć uwagę, że istnieje teraz wpis dla typu aplikacji, **ServiceFabricTomcatType**i drugiego dla pierwszego wystąpienia tego typu. Aby aplikacja mogła zostać całkowicie wdrożona, może upłynąć kilka minut.
 

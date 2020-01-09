@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 08/13/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 8b089a1b32ee70479072522372c060713108957c
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: b63032baa60d18f3d9d98fc403bdc1087c6c9b6b
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350098"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75660685"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Limity przydziału i limity usługi Batch
 
@@ -27,7 +27,7 @@ Podobnie jak w przypadku innych usług platformy Azure, istnieją ograniczenia d
 
 Te przydziały należy uwzględnić podczas projektowania i skalowania obciążeń związanych z przetwarzaniem wsadowym. Na przykład jeśli Pula nie osiągnie docelowej liczby węzłów obliczeniowych, być może osiągnięto limit przydziału rdzeni dla konta usługi Batch.
 
-Można uruchomić wiele obciążeń usługi Batch na jednym koncie usługi Batch lub rozdzielić obciążenia między konta tej usługi znajdujące się w jednej subskrypcji, ale w różnych regionach usługi Azure.
+Można uruchomić wiele obciążeń usługi Batch na jednym koncie usługi Batch lub rozdzielić obciążenia pomiędzy konta tej usługi znajdujące się w jednej subskrypcji, ale różnych regionach świadczenia usługi Azure.
 
 Jeśli planujesz uruchamianie obciążeń produkcyjnych w usłudze Batch, może być konieczne zwiększenie co najmniej jednego przydziału powyżej wartości domyślnej. Jeśli chcesz podnieść limit przydziału, możesz bezpłatnie otworzyć [żądanie obsługi klienta](#increase-a-quota) w trybie online.
 
@@ -41,11 +41,11 @@ Należy również pamiętać, że limity przydziału nie są gwarantowane warto�
 
 ### <a name="cores-quotas-in-user-subscription-mode"></a>Liczba rdzeni w trybie subskrypcji użytkownika
 
-Jeśli utworzono konto usługi Batch z trybem alokacji puli ustawionym na **subskrypcję użytkownika**, przydziały są stosowane inaczej. W tym trybie maszyny wirtualne i inne zasoby usługi Batch są tworzone bezpośrednio w Twojej subskrypcji po utworzeniu puli. Przydziały rdzeni Azure Batch nie mają zastosowania do konta utworzonego w tym trybie. Zamiast tego przydziały w ramach subskrypcji dla regionalnych rdzeni obliczeniowych i innych zasobów są stosowane. Dowiedz się więcej na temat tych przydziałów w [ramach subskrypcji platformy Azure i ograniczeń usługi, przydziałów i ograniczeń](../azure-subscription-service-limits.md).
+Jeśli utworzono konto usługi Batch z trybem alokacji puli ustawionym na **subskrypcję użytkownika**, przydziały są stosowane inaczej. W tym trybie maszyny wirtualne i inne zasoby usługi Batch są tworzone bezpośrednio w Twojej subskrypcji po utworzeniu puli. Przydziały rdzeni Azure Batch nie mają zastosowania do konta utworzonego w tym trybie. Zamiast tego przydziały w ramach subskrypcji dla regionalnych rdzeni obliczeniowych i innych zasobów są stosowane. Dowiedz się więcej na temat tych przydziałów w [ramach subskrypcji platformy Azure i ograniczeń usługi, przydziałów i ograniczeń](../azure-resource-manager/management/azure-subscription-service-limits.md).
 
 ## <a name="pool-size-limits"></a>Limity rozmiaru puli
 
-Limity rozmiaru puli są ustawiane przez usługę Batch. W przeciwieństwie do przydziałów [zasobów](#resource-quotas)te wartości nie mogą być zmieniane. Tylko pule z komunikacją między węzłami i obrazami niestandardowymi mają ograniczenia inne niż w przypadku standardowego limitu przydziału.
+Limity rozmiaru puli są ustawiane przez usługę Batch. W przeciwieństwie do [przydziałów zasobów](#resource-quotas)te wartości nie mogą być zmieniane. Tylko pule z komunikacją między węzłami i obrazami niestandardowymi mają ograniczenia inne niż w przypadku standardowego limitu przydziału.
 
 | **Zasób** | **Limit maksymalny** |
 | --- | --- |
@@ -60,7 +60,7 @@ Limity rozmiaru puli są ustawiane przez usługę Batch. W przeciwieństwie do p
 
 ## <a name="other-limits"></a>Inne limity
 
-Dodatkowe limity ustawiane przez usługę Batch. W przeciwieństwie do przydziałów [zasobów](#resource-quotas)te wartości nie mogą być zmieniane.
+Dodatkowe limity ustawiane przez usługę Batch. W przeciwieństwie do [przydziałów zasobów](#resource-quotas)te wartości nie mogą być zmieniane.
 
 | **Zasób** | **Limit maksymalny** |
 | --- | --- |
@@ -78,7 +78,7 @@ Dodatkowe limity ustawiane przez usługę Batch. W przeciwieństwie do przydzia�
 Wyświetl przydziały kont wsadowych w [Azure Portal][portal].
 
 1. Wybierz pozycję konta w usłudze **Batch** w portalu, a następnie wybierz odpowiednie konto w usłudze Batch.
-1. Wybierz pozycję przydziały w menu konta zadania wsadowego.
+1. Wybierz pozycję **przydziały** w menu konta zadania wsadowego.
 1. Wyświetl przydziały aktualnie stosowane do konta w usłudze Batch
 
     ![Przydziały kont wsadowych][account_quotas]
@@ -90,14 +90,14 @@ Wykonaj następujące kroki, aby zażądać zwiększenia przydziału dla konta u
 ### <a name="increase-cores-quota-in-batch"></a>Zwiększ limit przydziału rdzeni w partii 
 
 1. Wybierz kafelek **Pomoc i obsługa techniczna** na pulpicie nawigacyjnym portalu lub znak zapytania ( **?** ) w prawym górnym rogu portalu.
-1. Wybierz pozycję nowe**Informacje podstawowe** **żądania** > obsługi.
+1. Wybierz pozycję **nowe żądanie obsługi** > **podstawy**.
 1. **Podstawowe informacje**:
    
-    a.  > **Limity liczby usług i subskrypcji** typu problemu (przydziały)
+    a. **Typ problemu** > **limity usługi i subskrypcji (przydziały)**
    
     b. Wybierz subskrypcję.
    
-    c. **Partia typów przydziału** > 
+    d. **Typ przydziału** > **Partia zadań**
       
     Wybierz opcję **Dalej**.
     
@@ -115,9 +115,9 @@ Wykonaj następujące kroki, aby zażądać zwiększenia przydziału dla konta u
     * **Na region**  
         Wartości, które mają zastosowanie do wszystkich kont usługi Batch w regionie i obejmują liczbę kont usługi Batch na region na subskrypcję.
 
-    Przydział o niskim priorytecie to pojedyncza wartość dla wszystkich serii maszyn wirtualnych. Jeśli potrzebujesz ograniczonych jednostek SKU, musisz wybrać rdzenie **o niskim priorytecie** i dołączyć rodziny maszyn wirtualnych do żądania.
+    Przydział o niskim priorytecie to pojedyncza wartość dla wszystkich serii maszyn wirtualnych. Jeśli potrzebujesz ograniczonych jednostek SKU, musisz wybrać **rdzenie o niskim priorytecie** i dołączyć rodziny maszyn wirtualnych do żądania.
 
-    b. Wybierz **wagę** zgodną z Twoim wpływem na [firmę][support_sev].
+    b. Wybierz **wagę** zgodną z Twoim [wpływem na firmę][support_sev].
 
     Wybierz opcję **Dalej**.
 
@@ -139,13 +139,13 @@ Pule usługi Batch w konfiguracji maszyny wirtualnej wdrożonej w sieci wirtualn
 * Jeden [publiczny adres IP](../virtual-network/virtual-network-ip-addresses-overview-arm.md)
 * Jeden [moduł równoważenia obciążenia](../load-balancer/load-balancer-overview.md)
 
-Te zasoby są przydzieleni do subskrypcji zawierającej sieć wirtualną podaną podczas tworzenia puli usługi Batch. Te zasoby są ograniczone przez [limity zasobów](../azure-subscription-service-limits.md) subskrypcji. Jeśli planujesz wdrożenia dużych pul w sieci wirtualnej, sprawdź przydziały dla tych zasobów. W razie konieczności Poproś o zwiększenie Azure Portal, wybierając pozycję **Pomoc i obsługa techniczna**.
+Te zasoby są przydzieleni do subskrypcji zawierającej sieć wirtualną podaną podczas tworzenia puli usługi Batch. Te zasoby są ograniczone przez [limity zasobów](../azure-resource-manager/management/azure-subscription-service-limits.md) subskrypcji. Jeśli planujesz wdrożenia dużych pul w sieci wirtualnej, sprawdź przydziały dla tych zasobów. W razie konieczności Poproś o zwiększenie Azure Portal, wybierając pozycję **Pomoc i obsługa techniczna**.
 
 
-## <a name="related-topics"></a>Tematy pokrewne
+## <a name="related-topics"></a>Powiązane tematy
 * [Utwórz konto Azure Batch przy użyciu Azure Portal](batch-account-create-portal.md)
 * [Omówienie funkcji Azure Batch](batch-api-basics.md)
-* [Azure subscription and service limits, quotas, and constraints (Limity subskrypcji i usług, limity przydziału oraz ograniczenia platformy Azure)](../azure-subscription-service-limits.md)
+* [Azure subscription and service limits, quotas, and constraints (Limity subskrypcji i usług, limity przydziału oraz ograniczenia platformy Azure)](../azure-resource-manager/management/azure-subscription-service-limits.md)
 
 [portal]: https://portal.azure.com
 [portal_classic_increase]: https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/

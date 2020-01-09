@@ -6,12 +6,12 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: 52a43dff5d2e740633675b71d5177d0df876d3cd
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: f8e431124155fe23853fe61e985fe4db522c3f77
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71092211"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644277"
 ---
 # <a name="move-azure-internal-load-balancer-to-another-region-using-powershell"></a>Przenoszenie wewnętrznej Load Balancer platformy Azure do innego regionu przy użyciu programu PowerShell
 
@@ -32,7 +32,7 @@ Wewnętrznych modułów równoważenia obciążenia platformy Azure nie można p
 
 - Sprawdź, czy subskrypcja platformy Azure umożliwia tworzenie wewnętrznych modułów równoważenia obciążenia w używanym regionie docelowym. Skontaktuj się z pomocą techniczną, aby włączyć wymagany limit przydziału.
 
-- Upewnij się, że Twoja subskrypcja ma wystarczającą ilość zasobów, aby obsłużyć Dodawanie modułów równoważenia obciążenia dla tego procesu.  Zobacz [limity subskrypcji i usług platformy Azure, limity przydziału i ograniczenia](https://docs.microsoft.com/azure/azure-subscription-service-limits#networking-limits)
+- Upewnij się, że Twoja subskrypcja ma wystarczającą ilość zasobów, aby obsłużyć Dodawanie modułów równoważenia obciążenia dla tego procesu.  Zobacz [limity subskrypcji i usług platformy Azure, limity przydziału i ograniczenia](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits)
 
 
 ## <a name="prepare-and-move"></a>Przygotowywanie i przenoszenie
@@ -60,7 +60,7 @@ Poniższe kroki pokazują, jak przygotować wewnętrzny moduł równoważenia ob
    Export-AzResourceGroup -ResourceGroupName <source-resource-group-name> -Resource $sourceVNETID -IncludeParameterDefaultValue
    ```
 
-4. Pobrany plik zostanie nazwany po grupie zasobów, z której został wyeksportowany zasób.  Znajdź plik, który został wyeksportowany z polecenia o nazwie  **\<Resource-Group-Name >. JSON** i otwórz go w wybranym edytorze:
+4. Pobrany plik zostanie nazwany po grupie zasobów, z której został wyeksportowany zasób.  Znajdź plik, który został wyeksportowany z polecenia o nazwie **\<Resource-Group-name >. JSON** i otwórz go w wybranym edytorze:
    
    ```azurepowershell
    notepad.exe <source-resource-group-name>.json
@@ -105,9 +105,9 @@ Poniższe kroki pokazują, jak przygotować wewnętrzny moduł równoważenia ob
     Get-AzLocation | format-table
     
     ```
-8.  W przypadku wybrania opcji i opcjonalnych w zależności od wymagań można także zmienić inne parametry w  **\<pliku Resource-Group-Name >. JSON** :
+8.  W przypadku wybrania opcji i opcjonalnych w zależności od wymagań można także zmienić inne parametry w pliku **\<Resource-Group-name >. JSON** :
 
-    * **Przestrzeń adresowa** — przed zapisaniem można zmienić przestrzeń adresową sieci wirtualnej, modyfikując >   **\< sekcję addressSpace zasobów i zmieniając właściwość addressPrefixes w Nazwa grupy zasobów >. JSON** :
+    * **Przestrzeń adresowa** — przed zapisaniem można zmienić przestrzeń adresową sieci wirtualnej, modyfikując **zasoby** > **addressSpace** i zmieniając właściwość **addressPrefixes** w pliku **\<Resource-Group-Name >. JSON** :
 
         ```json
                 "resources": [
@@ -127,7 +127,7 @@ Poniższe kroki pokazują, jak przygotować wewnętrzny moduł równoważenia ob
 
         ```
 
-    * **Podsieć** — nazwę podsieci i przestrzeń adresową podsieci można zmienić lub dodać do niej, modyfikując sekcję **podsieci** w  **\<pliku Resource-Group-Name >. JSON** . Nazwę podsieci można zmienić, zmieniając właściwość **name** . Przestrzeń adresową podsieci można zmienić, zmieniając właściwość **addressPrefix** w  **\<pliku Resource-Group-Name >. JSON** :
+    * **Podsieć** — nazwę podsieci i przestrzeń adresową podsieci można zmienić lub dodać do niej, modyfikując sekcję **podsieci** w pliku **\<resource-Group-Name >. JSON** . Nazwę podsieci można zmienić, zmieniając właściwość **name** . Przestrzeń adresową podsieci można zmienić, zmieniając właściwość **addressPrefix** w pliku **\<resource-group-Name >. JSON** :
 
         ```json
                 "subnets": [
@@ -158,7 +158,7 @@ Poniższe kroki pokazują, jak przygotować wewnętrzny moduł równoważenia ob
                 ]
         ```
 
-         W pliku Resource- **Group-Name >. JSON zmiana prefiksu adresu musi być edytowana w dwóch miejscach, w sekcji wymienionej powyżej i w sekcji Type wymienionej poniżej. \<**  Zmień właściwość **addressPrefix** tak, aby pasowała do powyższego poziomu:
+         W pliku **\<Resource-Group-name >. JSON** zmiana prefiksu adresu musi być edytowana w dwóch miejscach, w sekcji wymienionej powyżej i w sekcji **Type** wymienionej poniżej.  Zmień właściwość **addressPrefix** tak, aby pasowała do powyższego poziomu:
 
         ```json
          "type": "Microsoft.Network/virtualNetworks/subnets",
@@ -194,7 +194,7 @@ Poniższe kroki pokazują, jak przygotować wewnętrzny moduł równoważenia ob
          ]
         ```
 
-9.  Zapisz plik Resource- **Group-Name >. JSON. \<**
+9.  Zapisz plik **\<Resource-Group-name >. JSON** .
 
 10. Utwórz grupę zasobów w regionie docelowym dla docelowej sieci wirtualnej, która ma zostać wdrożona przy użyciu polecenia [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup?view=azps-2.6.0)
     
@@ -202,7 +202,7 @@ Poniższe kroki pokazują, jak przygotować wewnętrzny moduł równoważenia ob
     New-AzResourceGroup -Name <target-resource-group-name> -location <target-region>
     ```
     
-11. Wdróż edytowany  **\<plik Resource-Group-Name >. JSON** w grupie zasobów utworzonej w poprzednim kroku przy użyciu polecenia [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0):
+11. Wdróż edytowaną plik **\<Resource-Group-name >. JSON** w grupie zasobów utworzonej w poprzednim kroku przy użyciu polecenia [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0):
 
     ```azurepowershell-interactive
 
@@ -241,7 +241,7 @@ Poniższe kroki pokazują, jak przygotować wewnętrzny moduł równoważenia ob
    ```azurepowershell-interactive
    Export-AzResourceGroup -ResourceGroupName <source-resource-group-name> -Resource $sourceIntLBID -IncludeParameterDefaultValue
    ```
-4. Pobrany plik zostanie nazwany po grupie zasobów, z której został wyeksportowany zasób.  Znajdź plik, który został wyeksportowany z polecenia o nazwie  **\<Resource-Group-Name >. JSON** i otwórz go w wybranym edytorze:
+4. Pobrany plik zostanie nazwany po grupie zasobów, z której został wyeksportowany zasób.  Znajdź plik, który został wyeksportowany z polecenia o nazwie **\<Resource-Group-name >. JSON** i otwórz go w wybranym edytorze:
    
    ```azurepowershell
    notepad.exe <source-resource-group-name>.json
@@ -263,7 +263,7 @@ Poniższe kroki pokazują, jak przygotować wewnętrzny moduł równoważenia ob
              }
     ```
  
-6. Aby edytować wartość docelowej sieci wirtualnej, która została przeniesiona powyżej, należy najpierw uzyskać identyfikator zasobu, a następnie skopiować i wkleić go do  **\<pliku Resource-Group-Name >. JSON** .  Aby uzyskać identyfikator, użyj polecenie [Get-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetwork?view=azps-2.6.0):
+6. Aby edytować wartość docelowej sieci wirtualnej, która została przeniesiona powyżej, należy najpierw uzyskać identyfikator zasobu, a następnie skopiować i wkleić go do pliku **\<Resource-Group-name >. JSON** .  Aby uzyskać identyfikator, użyj polecenie [Get-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetwork?view=azps-2.6.0):
    
    ```azurepowershell-interactive
     $targetVNETID = (Get-AzVirtualNetwork -Name <target-vnet-name> -ResourceGroupName <target-resource-group-name>).Id
@@ -275,7 +275,7 @@ Poniższe kroki pokazują, jak przygotować wewnętrzny moduł równoważenia ob
     /subscriptions/7668d659-17fc-4ffd-85ba-9de61fe977e8/resourceGroups/myResourceGroupVNET-Move/providers/Microsoft.Network/virtualNetworks/myVNET2-Move
     ```
 
-7.  W pliku  **Resource-Group-Name>.JSONwklejidentyfikatorzasobuzezmiennejzamiastelementuDefaultValuewdrugimparametrzedladocelowegoidentyfikatorasieciwirtualnej,upewnijsię,żeścieżkazostałaumieszczona\<** w cudzysłowie:
+7.  W pliku **\<Resource-Group-name >. JSON** wklej **Identyfikator zasobu** ze zmiennej zamiast elementu **DefaultValue** w drugim parametrze dla docelowego identyfikatora sieci wirtualnej, upewnij się, że ścieżka została umieszczona w cudzysłowie:
    
     ```json
          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -291,7 +291,7 @@ Poniższe kroki pokazują, jak przygotować wewnętrzny moduł równoważenia ob
              }
     ```
 
-8. Aby edytować region docelowy, w którym zostanie przeniesiona konfiguracja wewnętrznego modułu równoważenia obciążenia, Zmień właściwość **Location** w obszarze **zasoby** w  **\<pliku Resource-Group-Name >. JSON** :
+8. Aby edytować region docelowy, w którym zostanie przeniesiona konfiguracja wewnętrznego modułu równoważenia obciążenia, Zmień właściwość **Location** w obszarze **zasoby** w pliku **\<resource-Group-Name >. JSON** :
 
     ```json
         "resources": [
@@ -315,7 +315,7 @@ Poniższe kroki pokazują, jak przygotować wewnętrzny moduł równoważenia ob
     ```
 12. W przypadku wybrania opcji i opcjonalnych w zależności od wymagań można także zmienić inne parametry szablonu:
     
-    * **Jednostka SKU** — można zmienić jednostkę SKU wewnętrznego modułu równoważenia obciążenia w konfiguracji z warstwy Standardowa na podstawowa lub podstawowa na standardowa, zmieniając właściwość**Nazwa** **jednostki SKU** > w polu **\<Resource-Group-Name >. JSON.** plik:
+    * **Jednostka SKU** — można zmienić jednostkę SKU wewnętrznego modułu równoważenia obciążenia w konfiguracji z warstwy Standardowa na podstawowa lub podstawowa na standardowa przez zmianę właściwości **Nazwa** > **jednostki SKU** w pliku **\<Resource-Group-Name >. JSON** :
 
         ```json
         "resources": [
@@ -331,7 +331,7 @@ Poniższe kroki pokazują, jak przygotować wewnętrzny moduł równoważenia ob
         ```
       Aby uzyskać więcej informacji na temat różnic między usługą równoważenia obciążenia Basic i standardowymi jednostkami SKU, zobacz [Omówienie usługi Azure usługa Load Balancer w warstwie Standardowa](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview)
 
-    * **Reguły równoważenia obciążenia** — można dodawać lub usuwać reguły równoważenia obciążenia w konfiguracji przez dodanie lub usunięcie wpisów do sekcji **loadBalancingRules** w  **\<pliku Resource-Group-Name >. JSON** :
+    * **Reguły równoważenia obciążenia** — w konfiguracji można dodawać lub usuwać reguły równoważenia obciążenia, dodając lub usuwając wpisy do sekcji **loadBalancingRules**\<w pliku **>. JSON** :
 
         ```json
         "loadBalancingRules": [
@@ -363,7 +363,7 @@ Poniższe kroki pokazują, jak przygotować wewnętrzny moduł równoważenia ob
         ```
        Aby uzyskać więcej informacji o regułach równoważenia obciążenia, zobacz [co to jest Azure Load Balancer?](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)
 
-    * **Sondy** — można dodać lub usunąć sondę modułu równoważenia obciążenia w konfiguracji przez dodanie lub usunięcie wpisów do  **\<sekcji sondy w pliku Resource-Group-Name >. JSON** :
+    * **Sondy** — można dodać lub usunąć sondę modułu równoważenia obciążenia w konfiguracji przez dodanie lub usunięcie wpisów do sekcji **sondy** w pliku **\<resource-Group-Name >. JSON** :
 
         ```json
         "probes": [
@@ -383,7 +383,7 @@ Poniższe kroki pokazują, jak przygotować wewnętrzny moduł równoważenia ob
         ```
        Aby uzyskać więcej informacji na Azure Load Balancer sond kondycji, zobacz [sondy kondycji Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)
 
-    * **Reguły NAT dla ruchu przychodzącego** — można dodać lub usunąć reguły NAT dla ruchu przychodzącego dla modułu równoważenia obciążenia przez dodanie lub usunięcie wpisów do sekcji **inboundNatRules** w  **\<pliku Resource-Group-Name >. JSON** :
+    * **Reguły NAT dla ruchu przychodzącego** — można dodać lub usunąć reguły NAT dla ruchu przychodzącego dla modułu równoważenia obciążenia, dodając lub usuwając wpisy do sekcji **inboundNatRules**\<w pliku **>. JSON** :
 
         ```json
         "inboundNatRules": [
@@ -405,7 +405,7 @@ Poniższe kroki pokazują, jak przygotować wewnętrzny moduł równoważenia ob
                     }
                 ]
         ```
-        Aby ukończyć Dodawanie lub usuwanie reguły NAT dla ruchu przychodzącego, reguła musi być obecna lub usunięta jako właściwość **typu** na końcu  **\<pliku Resource-Group-Name >. JSON** :
+        Aby dokończyć Dodawanie lub usuwanie reguły NAT dla ruchu przychodzącego, reguła musi być obecna lub usunięta jako właściwość **typu** na końcu pliku **\<resource-group-Name >. JSON** :
 
         ```json
         {
@@ -431,14 +431,14 @@ Poniższe kroki pokazują, jak przygotować wewnętrzny moduł równoważenia ob
         ```
         Aby uzyskać więcej informacji na temat reguł NAT dla ruchu przychodzącego, zobacz [co to jest Azure Load Balancer?](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)
     
-13. Zapisz plik Resource- **Group-Name >. JSON. \<**
+13. Zapisz plik **\<Resource-Group-name >. JSON** .
     
 10. Utwórz lub grupę zasobów w regionie docelowym dla docelowego wewnętrznego modułu równoważenia obciążenia, który ma zostać wdrożony przy użyciu polecenia [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup?view=azps-2.6.0). W ramach tego procesu można także ponownie użyć istniejącej grupy zasobów z powyższych elementów:
     
     ```azurepowershell-interactive
     New-AzResourceGroup -Name <target-resource-group-name> -location <target-region>
     ```
-11. Wdróż edytowany  **\<plik Resource-Group-Name >. JSON** w grupie zasobów utworzonej w poprzednim kroku przy użyciu polecenia [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0):
+11. Wdróż edytowaną plik **\<Resource-Group-name >. JSON** w grupie zasobów utworzonej w poprzednim kroku przy użyciu polecenia [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0):
 
     ```azurepowershell-interactive
 

@@ -1,5 +1,5 @@
 ---
-title: Przegląd przedziału
+title: Omówienie funkcji preskalowanie Azure SQL Database | Microsoft Docs
 description: W tym artykule opisano warstwę usługi w modelu zakupów rdzeń wirtualny w Azure SQL Database i wyjaśniono, jak różni się ona od Ogólnego przeznaczenia i Krytyczne dla działania firmy warstw usług.
 services: sql-database
 ms.service: sql-database
@@ -7,16 +7,16 @@ ms.subservice: service
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: dimitri-furman
-ms.author: dfurman
+author: stevestein
+ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/01/2019
-ms.openlocfilehash: b2a8ad40092a2c02f00803e699de9d6dd8feebd0
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 8c694cbd8d9386401b8ad26cf5ce6ce31e6b9bd9
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978632"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614929"
 ---
 # <a name="hyperscale-service-tier"></a>Warstwa usługi Hiperskala
 
@@ -38,7 +38,7 @@ Warstwa usługi w ramach skalowania w Azure SQL Database zapewnia następujące 
 
 - Obsługa nawet 100 TB rozmiaru bazy danych
 - Niemal natychmiastowe kopie zapasowe bazy danych (oparte na migawkach plików przechowywanych w usłudze Azure Blob Storage) bez względu na rozmiar bez wpływu we/wy na zasoby obliczeniowe  
-- Szybkie przywracanie do punktu w czasie (w oparciu o migawki plików) w ciągu kilku minut, a nie godzin lub dni (nie jest to rozmiar operacji na danych)
+- Szybka baza danych przywraca (w oparciu o migawki plików) w ciągu kilku minut, a nie godzin lub dni (nie jest to rozmiar operacji na danych)
 - Wyższa ogólna wydajność z powodu większej przepływności dzienników i krótszych czasów zatwierdzania transakcji niezależnie od woluminów danych
 - Szybkie skalowanie w poziomie — można udostępnić co najmniej jeden węzeł tylko do odczytu w celu odciążenia obciążenia odczytu i użycia jako rezerwy gorącą.
 - Szybkie skalowanie w górę — możesz w stałym czasie skalować zasoby obliczeniowe tak, aby pomieściły duże obciążenia, jak i w razie potrzeby, a następnie skalować zasoby obliczeniowe w razie potrzeby.
@@ -82,7 +82,7 @@ W przeciwieństwie do tradycyjnych aparatów baz danych, które mają scentraliz
 
 Na poniższym diagramie przedstawiono różne typy węzłów w bazie danych w skali:
 
-![architektura](./media/sql-database-hyperscale/hyperscale-architecture2.png)
+![architektura](./media/sql-database-hyperscale/hyperscale-architecture.png)
 
 Baza danych wieloskali zawiera następujące różne typy składników:
 
@@ -104,7 +104,7 @@ Usługa Azure Storage zawiera wszystkie pliki danych w bazie danych. Serwery str
 
 ## <a name="backup-and-restore"></a>Tworzenie i przywracanie kopii zapasowych
 
-Kopie zapasowe są tworzone na podstawie migawek plików, a tym samym prawie chwilowo. Rozdzielenie magazynu i obliczeń umożliwia wypychanie operacji tworzenia kopii zapasowej/przywracania do warstwy magazynowania w celu zmniejszenia obciążenia związanego z przetwarzaniem w podstawowej replice obliczeniowej. W związku z tym kopia zapasowa bazy danych nie ma wpływu na wydajność podstawowego węzła obliczeniowego; Analogicznie, przywracanie odbywa się przez przywrócenie migawek plików, co nie jest rozmiarem operacji danych. Przywracanie jest operacją o stałym czasie, a nawet kilka baz danych można przywrócić w ciągu kilku minut, a nie godzin lub dni. Tworzenie nowych baz danych przez przywrócenie istniejącej kopii zapasowej obejmuje również korzystanie z tej funkcji: Tworzenie kopii bazy danych na tym samym serwerze logicznym do celów deweloperskich i testowych, nawet w przypadku baz danych o rozmiarze terabajtów, jest doable w ciągu kilku minut.
+Kopie zapasowe są tworzone na podstawie migawek plików, a tym samym prawie chwilowo. Rozdzielenie magazynu i obliczeń umożliwia wypychanie operacji tworzenia kopii zapasowej/przywracania do warstwy magazynowania w celu zmniejszenia obciążenia związanego z przetwarzaniem w podstawowej replice obliczeniowej. W związku z tym kopia zapasowa bazy danych nie ma wpływu na wydajność podstawowego węzła obliczeniowego; Analogicznie, przywracanie odbywa się przez przywrócenie migawek plików, co nie jest rozmiarem operacji danych. Przywracanie jest operacją o stałym czasie, a nawet kilka baz danych można przywrócić w ciągu kilku minut, a nie godzin lub dni. Tworzenie nowych baz danych przez przywrócenie istniejącej kopii zapasowej obejmuje również korzystanie z tej funkcji: Tworzenie kopii bazy danych do celów deweloperskich i testowych, nawet w przypadku baz danych o rozmiarze terabajtów, jest doable w ciągu kilku minut.
 
 ## <a name="scale-and-performance-advantages"></a>Zalety skalowania i wydajności
 
@@ -114,7 +114,7 @@ Dzięki możliwości szybkiej zmiany w górę i w dół dodatkowych węzłów ob
 
 Bazę danych ze skalą można utworzyć przy użyciu [Azure Portal](https://portal.azure.com), [T-SQL](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current), [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqldatabase) lub [interfejsu wiersza polecenia](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-create). Bazy danych ze skalowaniem są dostępne tylko przy użyciu [modelu zakupu opartego na rdzeń wirtualny](sql-database-service-tiers-vcore.md).
 
-Następujące polecenie T-SQL tworzy bazę danych w skali. W instrukcji `CREATE DATABASE` należy określić zarówno cel wersji, jak i usługi. Zapoznaj się z [limitami zasobów](https://docs.microsoft.com/azure/sql-database/sql-database-vcore-resource-limits-single-databases#hyperscale---provisioned-compute---gen5) , aby uzyskać listę prawidłowych celów usługi.
+Następujące polecenie T-SQL tworzy bazę danych w skali. W instrukcji `CREATE DATABASE` należy określić zarówno cel wersji, jak i usługi. Zapoznaj się z [limitami zasobów](https://docs.microsoft.com/azure/sql-database/sql-database-vcore-resource-limits-single-databases#hyperscale---provisioned-compute---gen4) , aby uzyskać listę prawidłowych celów usługi.
 
 ```sql
 -- Create a HyperScale Database
@@ -196,25 +196,25 @@ Jeśli chcesz utworzyć bazę danych w formie wieloskali w regionie, który nie 
 
 Aby poprosić o możliwość tworzenia baz danych w regionach, których nie ma na liście:
 
-1. Z menu Azure Portal wybierz pozycję **Pomoc i obsługa techniczna**lub Wyszukaj i wybierz pozycję **Pomoc i obsługa techniczna** z dowolnej strony.
+1. Przejdź do [bloku pomoc i obsługa techniczna platformy Azure](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
 
-2. W [oknie Pomoc i obsługa techniczna platformy Azure](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)wybierz pozycję [**nowe żądanie obsługi**](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+2. Kliknij [ **nowe żądanie obsługi**](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)
 
-3. W obszarze **typ problemu**wybierz pozycję **usługi i limity subskrypcji (przydziały)** .
+    ![Blok pomocy i obsługi technicznej platformy Azure](media/sql-database-service-tier-hyperscale/request-screen-1.png)
 
-4. Wybierz subskrypcję, której chcesz użyć do utworzenia baz danych.
+3. W obszarze **typ problemu**wybierz pozycję **usługi i limity subskrypcji (przydziały)**
 
-5. W obszarze **Typ limitu przydziału**wybierz pozycję **baza danych SQL**.
+4. Wybierz subskrypcję, której chcesz użyć do utworzenia baz danych
 
-    ![Blok pomocy i obsługi technicznej platformy Azure](media/sql-database-service-tier-hyperscale/new-support-request-screen.png)
+5. W obszarze **Typ limitu przydziału**wybierz pozycję **baza danych SQL**
 
-6. Kliknij przycisk **Dalej: rozwiązania**.
+6. Kliknij przycisk **Dalej: rozwiązania**
 
-7. Kliknij pozycję **Podaj szczegóły**.
+1. Kliknij pozycję **Podaj szczegóły**
 
     ![Szczegóły problemu](media/sql-database-service-tier-hyperscale/request-screen-2.png)
 
-8. Wybierz **SQL Database typ przydziału**: **inne żądanie limitu przydziału**.
+8. Wybierz **SQL Database typ przydziału**: **inne żądanie limitu przydziału**
 
 9. Wypełnij następujący szablon:
 
@@ -231,7 +231,7 @@ Aby poprosić o możliwość tworzenia baz danych w regionach, których nie ma n
 
 11. Wybierz odpowiednią metodę kontaktu i wypełnij szczegóły.
 
-12. Kliknij przycisk **Zapisz** i **Kontynuuj**.
+12. Kliknij przycisk **Zapisz** i **Kontynuuj** .
 
 ## <a name="known-limitations"></a>Znane ograniczenia
 Są to bieżące ograniczenia dotyczące warstwy usług w ramach skalowania na poziomie.  Aktywnie pracujemy nad usunięciem możliwie największej liczby ograniczeń.
@@ -245,7 +245,7 @@ Są to bieżące ograniczenia dotyczące warstwy usług w ramach skalowania na p
 | Wystąpienie zarządzane | Azure SQL Database wystąpienie zarządzane nie jest obecnie obsługiwane w bazach danych. |
 | Pule elastyczne |  Pule elastyczne nie są obecnie obsługiwane z użyciem funkcji wieloskalowania SQL Database.|
 | Migracja do funkcji Moje skalowanie jest obecnie operacją jednokierunkową | Po przeprowadzeniu migracji bazy danych do warstwy usługi nie można migrować jej bezpośrednio na warstwę usług, która nie jest w skali. W obecnym czasie jedynym sposobem migrowania bazy danych z Azure Databricks Azure Data Factory funkcji ze skalowaniem do poziomu non-------------------------------------------|
-| Migracja baz danych z obiektami OLTP w pamięci | Funkcja preskalowanie obsługuje tylko podzestaw typów obiektów OLTP w pamięci, w tym typów tabel zoptymalizowanych pod kątem pamięci, procedur składowanych skompilowanych w sposób macierzysty i funkcji. Jeśli jednak w bazie danych znajdują się jakiekolwiek obiekty OLTP w pamięci, bezpośrednie Migrowanie z warstw usług premium i Krytyczne dla działania firmy nie jest obsługiwane. Migrowanie takiej bazy danych do skalowania wymaga wykonania trzech kroków: (1) upuść wszystkie obiekty OLTP w pamięci i ich zależności. Aby zachować dane w trwałych tabelach zoptymalizowanych pod kątem pamięci, przekonwertuj je na tabele dysków. (2) Zmień warstwę usługi bazy danych na skalowanie. (3) ponownie Twórz wcześniej opuszczone obiekty. Trwałe i nietrwałe tabele zoptymalizowane pod kątem pamięci nie są obecnie obsługiwane w ramach skalowania i muszą pozostać w tabelach dysków. Zmienne tabel zoptymalizowane pod kątem pamięci są obsługiwane. |
+| Migracja baz danych z trwałymi obiektami w pamięci | Funkcja przeskalowania obsługuje tylko nietrwałe obiekty w pamięci (typy tabel, natywne SPs i funkcje).  Trwałe tabele w pamięci i inne obiekty muszą zostać porzucone i odtworzone jako obiekty nieznajdujące się w pamięci przed migracją bazy danych do warstwy usługi.|
 | Śledzenie zmian | Change Tracking jest obecnie w publicznej wersji zapoznawczej i można ją włączyć w nowych lub istniejących bazach danych w skali. |
 | Replikacja geograficzna  | Nie można jeszcze skonfigurować replikacji geograficznej na potrzeby Azure SQL Database skalowania. |
 | Kopia bazy danych | Nie można jeszcze użyć kopii bazy danych w celu utworzenia nowej bazy danych w funkcji wieloskalowania SQL platformy Azure. |

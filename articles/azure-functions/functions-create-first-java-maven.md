@@ -5,12 +5,12 @@ author: rloutlaw
 ms.topic: quickstart
 ms.date: 08/10/2018
 ms.custom: mvc, devcenter, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: cb43f558a5c983a8a4cc3823b278b75cb8cde78d
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: ef81ff1d3d42e3c9e2ba5d4187f5b5805d35d900
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230741"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75562038"
 ---
 # <a name="quickstart-use-java-and-maven-to-create-and-publish-a-function-to-azure"></a>Szybki Start: używanie języka Java i Maven do tworzenia i publikowania funkcji na platformie Azure
 
@@ -72,17 +72,20 @@ Maven prosi o podanie wartości, które są potrzebne, aby zakończyć Generowan
 | ----- | ----------- |
 | **groupId** | Wartość, która jednoznacznie identyfikuje projekt we wszystkich projektach, zgodnie z [regułami nazewnictwa pakietów](https://docs.oracle.com/javase/specs/jls/se6/html/packages.html#7.7) dla języka Java. Przykłady w tym przewodniku szybki start używają `com.fabrikam.functions`. |
 | **artifactId** | Wartość, która jest nazwą jar, bez numeru wersji. Przykłady w tym przewodniku szybki start używają `fabrikam-functions`. |
-| **Wersja** | Wybierz wartość domyślną `1.0-SNAPSHOT`. |
+| **version** | Wybierz wartość domyślną `1.0-SNAPSHOT`. |
 | **Package** | Wartość, która jest pakiet języka Java dla wygenerowanego kodu funkcji. Użyj wartości domyślnej. Przykłady w tym przewodniku szybki start używają `com.fabrikam.functions`. |
 | **Argumentu** | Globalnie unikatowa nazwa identyfikująca nową aplikację funkcji na platformie Azure. Użyj wartości domyślnej, która jest _artifactId_ dołączona z liczbą losową. Zanotuj tę wartość, która będzie potrzebna później. |
 | **appRegion** | Wybierz [region](https://azure.microsoft.com/regions/) w swojej okolicy lub w pobliżu innych usług, do których Twoje funkcje uzyskują dostęp. Wartość domyślna to `westus`. Uruchom to polecenie [Interfejs wiersza polecenia platformy Azure] , aby uzyskać listę wszystkich regionów:<br/>`az account list-locations --query '[].{Name:name}' -o tsv` |
-| **resourceGroup** | Nazwa nowej [grupy zasobów](../azure-resource-manager/resource-group-overview.md) , w której ma zostać utworzona aplikacja funkcji. Użyj `myResourceGroup`, który jest używany w przykładach w tym przewodniku Szybki Start. Grupa zasobów musi być unikatowa dla Twojej subskrypcji platformy Azure.|
+| **resourceGroup** | Nazwa nowej [grupy zasobów](../azure-resource-manager/management/overview.md) , w której ma zostać utworzona aplikacja funkcji. Użyj `myResourceGroup`, który jest używany w przykładach w tym przewodniku Szybki Start. Grupa zasobów musi być unikatowa dla Twojej subskrypcji platformy Azure.|
 
 Wpisz `Y` lub naciśnij klawisz ENTER, aby potwierdzić.
 
 Maven tworzy pliki projektu w nowym folderze o nazwie _artifactId_, w tym przykładzie `fabrikam-functions`. 
 
 Otwórz plik New Function. Java ze ścieżki *src/Main/Java* w edytorze tekstów i przejrzyj wygenerowany kod. Ten kod jest funkcją [wyzwalaną przez protokół http](functions-bindings-http-webhook.md) , która umożliwia echo treści żądania. 
+
+> [!div class="nextstepaction"]
+> [Wystąpił problem](https://www.research.net/r/javae2e?tutorial=functions-maven-quickstart&step=generate-project)
 
 ## <a name="run-the-function-locally"></a>Lokalne uruchamianie funkcji
 
@@ -119,6 +122,9 @@ Hello AzureFunctions!
 ```
 [Klucz funkcji](functions-bindings-http-webhook.md#authorization-keys) nie jest wymagany w przypadku uruchamiania lokalnego. Aby zatrzymać wykonywanie kodu funkcji, użyj polecenia `Ctrl+C` w oknie terminala.
 
+> [!div class="nextstepaction"]
+> [Wystąpił problem](https://www.research.net/r/javae2e?tutorial=functions-maven-quickstart&step=local-run)
+
 ## <a name="deploy-the-function-to-azure"></a>Wdrażanie funkcji na platformie Azure
 
 Aplikacja funkcji i powiązane zasoby są tworzone na platformie Azure podczas pierwszego wdrożenia aplikacji funkcji. Przed wdrożeniem programu Użyj polecenia [AZ login](/cli/azure/authenticate-azure-cli) Azure CLI, aby zalogować się do subskrypcji platformy Azure. 
@@ -139,13 +145,16 @@ mvn azure-functions:deploy
 Ten `azure-functions:deploy` element docelowy Maven tworzy następujące zasoby na platformie Azure:
 
 + Grupa zasobów. Nazwana z _podaną w podanej_ nazwie.
-+ konto magazynu. Wymagane przez funkcje. Nazwa jest generowana losowo na podstawie wymagań dotyczących nazw kont magazynu.
++ Konto magazynu. Wymagane przez funkcje. Nazwa jest generowana losowo na podstawie wymagań dotyczących nazw kont magazynu.
 + Plan usługi App Service. Hosting bezserwerowy dla aplikacji funkcji w określonym _appRegion_. Nazwa jest generowana losowo.
 + Aplikacja funkcji. Aplikacja funkcji jest jednostką wdrażania i wykonywania dla funkcji. Nazwa jest _nazwą użytkownika,_ dołączona przy użyciu losowo wygenerowanego numeru. 
 
 Wdrożenie obejmuje również pakiety plików projektu i wdraża je w nowej aplikacji funkcji przy użyciu [wdrożenia zip](functions-deployment-technologies.md#zip-deploy)z włączonym trybem uruchamiania z pakietu.
 
 Po zakończeniu wdrażania zobaczysz adres URL, za pomocą którego możesz uzyskiwać dostęp do punktów końcowych aplikacji funkcji. Ponieważ wyzwalany przez siebie wyzwalacz protokołu HTTP używa `authLevel = AuthorizationLevel.FUNCTION`, należy uzyskać klucz funkcji, aby wywołać punkt końcowy funkcji za pośrednictwem protokołu HTTP. Najprostszym sposobem uzyskania klucza funkcji jest z [Azure Portal].
+
+> [!div class="nextstepaction"]
+> [Wystąpił problem](https://www.research.net/r/javae2e?tutorial=functions-maven-quickstart&step=deploy)
 
 ## <a name="get-the-http-trigger-url"></a>Pobierz adres URL wyzwalacza HTTP
 
@@ -176,6 +185,9 @@ Spowoduje to wysłanie żądania POST do punktu końcowego funkcji z `AzureFunct
 ```Output
 Hello AzureFunctions!
 ```
+
+> [!div class="nextstepaction"]
+> [Wystąpił problem](https://www.research.net/r/javae2e?tutorial=functions-maven-quickstart&step=verify-deployment)
 
 ## <a name="next-steps"></a>Następne kroki
 

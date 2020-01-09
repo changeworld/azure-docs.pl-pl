@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan,moslake,josack
 ms.date: 11/19/2019
-ms.openlocfilehash: 40b277f0b1bfb3501bb246e555d46db5e1ee9f95
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: da8c194b7911d2eeda8e0c903cb7412186aacfcb
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279301"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75638259"
 ---
 # <a name="sql-database-resource-limits-and-resource-governance"></a>Limity zasobów SQL Database i zarządzanie zasobami
 
@@ -60,7 +60,7 @@ W przypadku wystąpienia dużej mocy obliczeniowej opcje ograniczenia obejmują:
 - Zwiększenie rozmiaru obliczeniowego bazy danych lub puli elastycznej w celu zapewnienia bazy danych większej ilości zasobów obliczeniowych. Zobacz [skalowanie zasobów pojedynczych baz danych](sql-database-single-database-scale.md) i [skalowanie zasobów puli elastycznej](sql-database-elastic-pool-scale.md).
 - Optymalizowanie zapytań w celu zmniejszenia wykorzystania zasobów dla każdego zapytania. Aby uzyskać więcej informacji, zobacz [dostrajanie/podpowiedzi zapytań](sql-database-performance-guidance.md#query-tuning-and-hinting).
 
-### <a name="storage"></a>Magazyn
+### <a name="storage"></a>Usługa Storage
 
 Gdy używane miejsce na bazę danych osiągnie limit rozmiaru, wstawia i aktualizuje bazę danych, która zwiększa niepowodzenie rozmiaru danych, a klienci odbierają [komunikat o błędzie](troubleshoot-connectivity-issues-microsoft-azure-sql-database.md). Instrukcje SELECT i DELETE kontynuują się pomyślnie.
 
@@ -99,7 +99,9 @@ Liczba operacji we/wy na sekundę i przepływności zwracanych przez [sys. dm_us
 
 W przypadku baz danych w warstwach Podstawowa, standardowa i Ogólnego przeznaczenia, które korzystają z plików danych w usłudze Azure Storage, `primary_group_max_io` wartość może nie być osiągalna, jeśli baza danych nie ma wystarczającej ilości plików danych do skumulowanego dostarczania tej liczby operacji we/wy, lub jeśli dane nie są dystrybuowane równomiernie między plikami, lub jeśli warstwa wydajności bazowych obiektów BLOB ogranicza liczbę IOPS/przepływność poniżej limitu Podobnie w przypadku małego systemu IOs wygenerowanego przez częste zatwierdzanie transakcji wartość `primary_max_log_rate` może być nieosiągalna przez obciążenie wynikające z limitu liczby IOPS w źródłowym obiekcie blob usługi Azure Storage.
 
-Wartości wykorzystania zasobów, takie jak `avg_data_io_percent` i `avg_log_write_percent`, raportowane w widokach [sys. dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database), [sys. resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)i [sys. elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) , są obliczane jako wartości procentowe maksymalnego limitu zarządzania zasobami. W związku z tym, gdy czynniki inne niż zarządzanie zasobami ograniczają liczbę operacji we/wy, można zobaczyć, że operacje we/wy na sekundę i opóźnienia zwiększają się wraz ze wzrostem obciążenia, nawet jeśli zgłoszone użycie zasobów pozostanie poniżej 100%. Aby zobaczyć operacje we/wy odczytu i zapisu w pliku bazy danych, użyj funkcji [sys. dm_io_virtual_file_stats ()](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql) . Ta funkcja wyświetla wszystkie operacje we/wy względem bazy danych, w tym w tle we/wy, która nie jest uwzględniona w `avg_data_io_percent`, ale używa IOPS i przepływności magazynu bazowego, a także może mieć wpływ na zaobserwowane opóźnienie magazynu.
+Wartości wykorzystania zasobów, takie jak `avg_data_io_percent` i `avg_log_write_percent`, raportowane w widokach [sys. dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database), [sys. resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)i [sys. elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) , są obliczane jako wartości procentowe maksymalnego limitu zarządzania zasobami. W związku z tym, gdy czynniki inne niż zarządzanie zasobami ograniczają liczbę operacji we/wy, można zobaczyć, że operacje we/wy na sekundę i opóźnienia zwiększają się wraz ze wzrostem obciążenia, nawet jeśli zgłoszone użycie zasobów pozostanie poniżej 100%. 
+
+Aby zobaczyć operacje we/wy odczytu i zapisu w pliku bazy danych, użyj funkcji [sys. dm_io_virtual_file_stats ()](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql) . Ta funkcja wyświetla wszystkie operacje we/wy względem bazy danych, w tym w tle we/wy, która nie jest uwzględniona w `avg_data_io_percent`, ale używa IOPS i przepływności magazynu bazowego, a także może mieć wpływ na zaobserwowane opóźnienie magazynu. Funkcja także umieszcza dodatkowe opóźnienia, które mogą zostać wprowadzone przez ładu zasobów we/wy dla operacji odczytu i zapisu w kolumnach `io_stall_queued_read_ms` i `io_stall_queued_write_ms`.
 
 ### <a name="transaction-log-rate-governance"></a>Ocena szybkości dziennika transakcji
 
@@ -132,6 +134,6 @@ W przypadku napotkania limitu szybkości rejestrowania, który hamuje pożądan�
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Aby uzyskać informacje na temat ogólnych limitów platformy Azure, zobacz [limity subskrypcji i usług platformy Azure, przydziały i ograniczenia](../azure-subscription-service-limits.md).
+- Aby uzyskać informacje na temat ogólnych limitów platformy Azure, zobacz [limity subskrypcji i usług platformy Azure, przydziały i ograniczenia](../azure-resource-manager/management/azure-subscription-service-limits.md).
 - Aby uzyskać informacje na temat DTU i jednostek eDTU, zobacz [DTU i jednostek eDTU](sql-database-purchase-models.md#dtu-based-purchasing-model).
 - Aby uzyskać informacje na temat limitów rozmiaru bazy danych tempdb, zobacz [tempdb w Azure SQL Database](https://docs.microsoft.com/sql/relational-databases/databases/tempdb-database#tempdb-database-in-sql-database).

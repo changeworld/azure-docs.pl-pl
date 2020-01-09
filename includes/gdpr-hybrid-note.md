@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/01/2018
 ms.author: lizross
 ms.custom: include file
-ms.openlocfilehash: 236ba117fd324a75ecc20ea7f94e110d75e3ee63
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 968ebe89de65de5fa49e56a90a1bc92109a16861
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67183047"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75613769"
 ---
 >[!Note]
->Jeśli interesuje Cię wyświetlania lub usuwania danych osobowych, zapoznaj się ze wskazówkami firmy Microsoft, w [żądania podmiotów danych Windows do wprowadzenia RODO](https://docs.microsoft.com/microsoft-365/compliance/gdpr-dsr-windows) lokacji. Jeśli szukasz, aby uzyskać ogólne informacje na temat rozporządzenia RODO, zobacz [RODO części portal zaufania usługi](https://servicetrust.microsoft.com/ViewPage/GDPRGetStarted).
+>Jeśli interesuje Cię przeglądanie lub usuwanie danych osobowych, przejrzyj wskazówki firmy Microsoft w witrynie [żądania podmiotu udostępniającego dane systemu Windows dotyczące rozporządzenia GDPR](https://docs.microsoft.com/microsoft-365/compliance/gdpr-data-subject-requests). Jeśli szukasz ogólnych informacji na temat rozporządzenia RODO, zobacz [sekcję RODO w Portalu zaufania usług](https://servicetrust.microsoft.com/ViewPage/GDPRGetStarted).

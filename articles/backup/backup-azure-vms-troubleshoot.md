@@ -2,20 +2,20 @@
 title: Rozwiązywanie problemów z błędami kopii zapasowych przy użyciu maszyn wirtualnych
 description: W tym artykule dowiesz się, jak rozwiązywać problemy z tworzeniem kopii zapasowych i przywracaniem maszyn wirtualnych platformy Azure.
 ms.reviewer: srinathv
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: e5ee0e06d444db809ce3e168f8883048eaf45e27
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 1e71f6f711bcee78538c573a8869b8fdfa2a10b0
+ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172460"
+ms.lasthandoff: 01/05/2020
+ms.locfileid: "75664637"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Rozwiązywanie problemów dotyczących błędów kopii zapasowych w usłudze Azure Virtual Machines
 
 Możesz rozwiązywać problemy występujące podczas korzystania z Azure Backup z informacjami wymienionymi poniżej:
 
-## <a name="backup"></a>Backup
+## <a name="backup"></a>Tworzenie kopii zapasowych
 
 W tej sekcji omówiono niepowodzenie operacji tworzenia kopii zapasowej maszyny wirtualnej platformy Azure.
 
@@ -61,7 +61,6 @@ Operacja tworzenia kopii zapasowej nie powiodła się, ponieważ maszyna wirtual
 Kod błędu: UserErrorFsFreezeFailed <br/>
 Komunikat o błędzie: nie można zablokować co najmniej jednego punktu instalacji maszyny wirtualnej, aby można było wykonać migawkę spójną na poziomie systemu plików.
 
-* Sprawdź stan systemu plików wszystkich zainstalowanych urządzeń za pomocą polecenia **tune2fs** , na przykład **tune2fs-l/dev/sdb1 \\** .\| **stanu systemu plików**grep.
 * Odinstaluj urządzenia, dla których stan systemu plików nie został oczyszczony, przy użyciu polecenia **umount** .
 * Uruchom sprawdzanie spójności systemu plików na tych urządzeniach przy użyciu polecenia **fsck** .
 * Ponownie zainstaluj urządzenia i spróbuj ponownie wykonać operację tworzenia kopii zapasowej.</ol>
@@ -184,7 +183,6 @@ Dzięki temu migawki będą wykonywane za pośrednictwem hosta, a nie konta goś
 | Szczegóły błędu | Obejście |
 | ------ | --- |
 | **Kod błędu**: 320001, ResourceNotFound <br/> **Komunikat o błędzie**: nie można wykonać operacji, ponieważ maszyna wirtualna już nie istnieje. <br/> <br/> **Kod błędu**: 400094, BCMV2VMNotFound <br/> **Komunikat o błędzie**: maszyna wirtualna nie istnieje <br/> <br/>  Nie znaleziono maszyny wirtualnej platformy Azure.  |Ten błąd występuje, gdy podstawowa maszyna wirtualna jest usuwana, ale zasady tworzenia kopii zapasowych nadal wyszukują maszynę wirtualną w celu utworzenia kopii zapasowej. Aby naprawić ten błąd, wykonaj następujące czynności: <ol><li> Utwórz ponownie maszynę wirtualną o tej samej nazwie i nazwie grupy zasobów, **nazwie usługi w chmurze**,<br>**lub**</li><li> Zatrzymaj ochronę maszyny wirtualnej z użyciem lub bez usuwania danych kopii zapasowej. Aby uzyskać więcej informacji, zobacz [Zatrzymywanie ochrony maszyn wirtualnych](backup-azure-manage-vms.md#stop-protecting-a-vm).</li></ol>|
-| **Kod błędu**: UserErrorVmProvisioningStateFailed<br/> **Komunikat o błędzie**: stan aprowizacji maszyny wirtualnej to niepowodzenie: <br>Uruchom ponownie maszynę wirtualną i upewnij się, że maszyna wirtualna jest uruchomiona lub wyłączona. | Ten błąd występuje, gdy jeden z błędów rozszerzenia przełączy maszynę wirtualną w stan niepowodzenia aprowizacji. Przejdź do listy rozszerzeń, sprawdź, czy nie ma rozszerzenia, usuń je i spróbuj ponownie uruchomić maszynę wirtualną. Jeśli wszystkie rozszerzenia są uruchomione, sprawdź, czy usługa agenta maszyny wirtualnej jest uruchomiona. Jeśli nie, uruchom ponownie usługę agenta maszyny wirtualnej. |
 |**Kod błędu**: UserErrorBCMPremiumStorageQuotaError<br/> **Komunikat o błędzie**: nie można skopiować migawki maszyny wirtualnej z powodu niewystarczającej ilości wolnego miejsca na koncie magazynu | W przypadku maszyn wirtualnych w warstwie Premium w stosie kopii zapasowych maszyny wirtualnej w wersji 1 migawka jest kopiowana do konta magazynu. Ten krok zapewnia, że ruch związany z zarządzaniem kopiami zapasowymi, który działa na migawce, nie ogranicza liczby operacji we/wy dostępnych dla aplikacji korzystających z dysków w warstwie Premium. <br><br>Zalecamy przydzielenie tylko 50%, 17,5 TB, całkowitej przestrzeni kont magazynu. Następnie usługa Azure Backup może skopiować migawkę do konta magazynu i przenieść dane z tej lokalizacji do magazynu w ramach konta magazynu. |
 | **Kod błędu**: 380008, AzureVmOffline <br/> **Komunikat o błędzie**: nie można zainstalować rozszerzenia Recovery Services Microsoft, ponieważ maszyna wirtualna nie jest uruchomiona | Agent maszyny wirtualnej jest wymaganiem wstępnym dla rozszerzenia Recovery Services platformy Azure. Zainstaluj agenta maszyny wirtualnej platformy Azure i ponownie uruchom operację rejestracji. <br> <ol> <li>Sprawdź, czy Agent maszyny wirtualnej został zainstalowany poprawnie. <li>Upewnij się, że flaga konfiguracji maszyny wirtualnej jest ustawiona poprawnie.</ol> Przeczytaj więcej na temat instalowania agenta maszyny wirtualnej i sprawdzanie poprawności instalacji agenta maszyny wirtualnej. |
 | **Kod błędu**: ExtensionSnapshotBitlockerError <br/> **Komunikat o błędzie**: operacja migawki nie powiodła się z powodu błędu operacji usługa kopiowania woluminów W tle (VSS) **ten dysk jest zablokowany przez szyfrowanie dysków funkcją BitLocker. Ten dysk należy odblokować w panelu sterowania.** |Wyłącz funkcję BitLocker dla wszystkich dysków na maszynie wirtualnej i sprawdź, czy problem z usługą VSS został rozwiązany. |

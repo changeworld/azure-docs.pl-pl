@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 2da12bbc760ff06ad0737ed9d48e12ea81260655
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 8238f2ea8395fc53044703db619d768918cb1834
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73674730"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644702"
 ---
 # <a name="azure-data-factory-faq"></a>Azure Data Factory często zadawane pytania
 Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące Azure Data Factory.  
@@ -81,8 +81,8 @@ Począwszy od początkowej publicznej wersji zapoznawczej w 2017, Data Factory d
 -   Obsługa trzech więcej konfiguracji/wariantów Azure SQL Database do hostowania bazy danych SSIS (SSISDB) projektów/pakietów:
 -   SQL Database z punktami końcowymi usługi sieci wirtualnej
 -   Wystąpienie zarządzane
--   Elastyczna pula
--   Obsługa Azure Resource Manager sieci wirtualnej na podstawie klasycznej sieci wirtualnej, która ma zostać przestarzała w przyszłości, która pozwala na wstrzyknięcie lub dołączenie środowiska Azure-SSIS Integration Runtime do sieci wirtualnej skonfigurowanej dla SQL Database za pomocą usługi sieci wirtualnej punkty końcowe/dostęp do danych lokalnych. Aby uzyskać więcej informacji, zobacz również [dołączanie środowiska Azure-SSIS Integration Runtime do sieci wirtualnej](join-azure-ssis-integration-runtime-virtual-network.md).
+-   Pula elastyczna
+-   Obsługa Azure Resource Manager sieci wirtualnej na podstawie klasycznej sieci wirtualnej, która ma zostać wycofana w przyszłości, dzięki czemu można wstrzyknąć lub dołączyć do środowiska Azure-SSIS Integration Runtime do sieci wirtualnej skonfigurowanej do SQL Database za pomocą punktów końcowych usługi sieci wirtualnej/dostępu do danych lokalnych. Aby uzyskać więcej informacji, zobacz również [dołączanie środowiska Azure-SSIS Integration Runtime do sieci wirtualnej](join-azure-ssis-integration-runtime-virtual-network.md).
 -   Obsługa uwierzytelniania Azure Active Directory (Azure AD) i uwierzytelniania SQL w celu łączenia się z SSISDB, co pozwala na uwierzytelnianie usługi Azure AD za pomocą tożsamości zarządzanej Data Factory dla zasobów platformy Azure
 -   Obsługa tworzenia własnej lokalnej licencji SQL Server w celu zdobycia znacznego oszczędności kosztów z poziomu opcji Korzyść użycia hybrydowego platformy Azure
 -   Obsługa wersji Enterprise środowiska Azure-SSIS Integration Runtime, która umożliwia korzystanie z funkcji Advanced/Premium, niestandardowego interfejsu instalacji służącego do instalowania dodatkowych składników/rozszerzeń i ekosystemu partnerów. Aby uzyskać więcej informacji, zobacz również [Enterprise Edition, Konfiguracja niestandardowa i rozszerzalność innych firm dla usług SSIS w podajniku ADF](https://blogs.msdn.microsoft.com/ssis/2018/04/27/enterprise-edition-custom-setup-and-3rd-party-extensibility-for-ssis-in-adf/). 
@@ -101,7 +101,7 @@ Do przenoszenia i przekształcania danych można wdrożyć jedno lub wiele wyst�
 Aby uzyskać więcej informacji, zobacz [Infrastruktura Integration Runtime w usłudze Azure Data Factory](concepts-integration-runtime.md).
 
 ## <a name="what-is-the-limit-on-the-number-of-integration-runtimes"></a>Jaki jest limit liczby środowisk Integration Runtime?
-Brak sztywnego limitu liczby wystąpień środowiska Integration Runtime, które mogą znajdować się w fabryce danych. Istnieje jednak limit liczby rdzeni maszyn wirtualnych, które mogą być używane przez środowisko Integration Runtime na subskrypcję na potrzeby wykonywania pakietów SSIS. Aby uzyskać więcej informacji, zobacz [limity Data Factory](../azure-subscription-service-limits.md#data-factory-limits).
+Brak sztywnego limitu liczby wystąpień środowiska Integration Runtime, które mogą znajdować się w fabryce danych. Istnieje jednak limit liczby rdzeni maszyn wirtualnych, które mogą być używane przez środowisko Integration Runtime na subskrypcję na potrzeby wykonywania pakietów SSIS. Aby uzyskać więcej informacji, zobacz [limity Data Factory](../azure-resource-manager/management/azure-subscription-service-limits.md#data-factory-limits).
 
 ## <a name="what-are-the-top-level-concepts-of-azure-data-factory"></a>Jakie są koncepcje najwyższego poziomu Azure Data Factory?
 Subskrypcja platformy Azure może zawierać jedno lub więcej wystąpień usługi Azure Data Factory (lub fabryk danych). Azure Data Factory zawiera cztery kluczowe składniki, które współpracują ze sobą jako platforma, na której można tworzyć przepływy pracy oparte na danych z etapami przenoszenia i przekształcania danych.
@@ -210,9 +210,9 @@ Przepływ danych przetwarzanie jest obecnie obsługiwany w fabrykach danych utwo
 * Japonia Wschodnia
 * Europa Północna
 * Azja Południowo-Wschodnia
-* Środkowo-południowe stany USA
+* Południowo-środkowe stany USA
 * Południowe Zjednoczone Królestwo
-* Środkowo-zachodnie stany USA
+* Zachodnio-środkowe stany USA
 * Europa Zachodnia
 * Zachodnie stany USA
 * Zachodnie stany USA 2
@@ -244,11 +244,11 @@ Azure Data Factory (ADF) to zarządzana usługa integracji danych, która umożl
 
 Przepływ danych przetwarzanie obsługuje następujące typy danych w programie SQL Server. Zostanie wyświetlony błąd sprawdzania poprawności przy użyciu nieobsługiwanego typu danych.
 
-* Wybierak
+* short
 * double
-* czasie rzeczywistym
+* real
 * float
-* delikatn
+* char
 * nchar
 * varchar
 * nvarchar
@@ -259,7 +259,7 @@ Przepływ danych przetwarzanie obsługuje następujące typy danych w programie 
 * smallint
 * tinyint
 * bigint
-* Długo
+* długi
 * tekst
 * date
 * datetime

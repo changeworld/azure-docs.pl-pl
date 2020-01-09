@@ -1,37 +1,30 @@
 ---
-title: Zalecenia testu porównawczego wydajności dla Azure NetApp Files | Microsoft Docs
-description: Zawiera zalecenia dotyczące testowania testów porównawczych wydajności woluminu i metryk przy użyciu Azure NetApp Files.
-services: azure-netapp-files
-documentationcenter: ''
+title: Zalecane testy porównawcze wydajności — Azure NetApp Files
+description: Zapoznaj się z zaleceniami dotyczącymi testowania testów porównawczych dotyczących wydajności woluminu i metryk przy użyciu Azure NetApp Files.
 author: b-juche
-manager: ''
-editor: ''
-ms.assetid: ''
+ms.author: b-juche
 ms.service: azure-netapp-files
 ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/07/2019
-ms.author: b-juche
-ms.openlocfilehash: 1969b3c237a4133df6f53bd6426ca4d50581cbcb
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 8f354152c23dd7ad0413f27585d724f8070ca003
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881728"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551526"
 ---
-# <a name="performance-benchmark-test-recommendations-for-azure-netapp-files"></a>Zalecenia dotyczące testu porównawczego wydajności dla Azure NetApp Files
+# <a name="performance-benchmark-test-recommendations-for-azure-netapp-files"></a>Zalecenia dotyczące testu wydajności dla usługi Azure NetApp Files
 
 Ten artykuł zawiera zalecenia dotyczące testowania testów porównawczych dotyczących wydajności woluminu i metryk przy użyciu Azure NetApp Files.
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 Aby poznać charakterystykę wydajności woluminu Azure NetApp Files, można użyć narzędzia typu "open source" [FIO](https://github.com/axboe/fio) , aby uruchomić serię testów porównawczych w celu symulowania różnorodnych obciążeń. FIO można zainstalować zarówno w systemach operacyjnych Linux, jak i Windows.  Jest to doskonałe narzędzie do uzyskania szybkiej migawki zarówno operacji we/wy, jak i przepływności dla woluminu.
 
 ### <a name="vm-instance-sizing"></a>Rozmiar wystąpienia maszyny wirtualnej
 
-Aby uzyskać najlepsze wyniki, należy się upewnić, że używane jest wystąpienie maszyny wirtualnej o odpowiednim rozmiarze do przeprowadzenia testów. W poniższych przykładach użyto wystąpienia Standard_D32s_v3. Aby uzyskać więcej informacji o rozmiarach wystąpień maszyn wirtualnych, zobacz [rozmiary maszyn wirtualnych z systemem Windows na platformie Azure](https://docs.microsoft.com/azure/virtual-machines/windows/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json) dla maszyn wirtualnych z systemem Windows oraz [rozmiary maszyn wirtualnych z systemem Linux na platformie Azure](https://docs.microsoft.com/azure/virtual-machines/linux/sizes?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) dla maszyn wirtualnych opartych na systemie Linux.
+Aby uzyskać najlepsze wyniki, należy się upewnić, że używane jest wystąpienie maszyny wirtualnej o odpowiednim rozmiarze do przeprowadzenia testów. W poniższych przykładach użyto Standard_D32s_v3 wystąpienia. Aby uzyskać więcej informacji o rozmiarach wystąpień maszyn wirtualnych, zobacz [rozmiary maszyn wirtualnych z systemem Windows na platformie Azure](https://docs.microsoft.com/azure/virtual-machines/windows/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json) dla maszyn wirtualnych z systemem Windows oraz [rozmiary maszyn wirtualnych z systemem Linux na platformie Azure](https://docs.microsoft.com/azure/virtual-machines/linux/sizes?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) dla maszyn wirtualnych opartych na systemie Linux.
 
 ### <a name="azure-netapp-files-volume-sizing"></a>Azure NetApp Files rozmiar woluminu
 
@@ -56,16 +49,16 @@ Przykłady FIO w tej sekcji korzystają z następującej konfiguracji:
 
 W poniższych przykładach pokazano losowe operacje odczytu i zapisu FIO.
 
-### <a name="fio-8k-block-size-100-random-reads"></a>FIO: rozmiar bloku 8k 100% odczytów losowych
+### <a name="fio-8k-block-size-100-random-reads"></a>FIO: 8k blokowy rozmiar 100% odczytów losowych
 
 `fio --name=8krandomreads --rw=randread --direct=1 --ioengine=libaio --bs=8k --numjobs=4 --iodepth=128 --size=4G --runtime=600 --group_reporting`
 
-### <a name="output-68k-read-iops-displayed"></a>Dane wyjściowe: Liczba wyświetlanych IOPS operacji odczytu 68k
+### <a name="output-68k-read-iops-displayed"></a>Dane wyjściowe: wyświetlona liczba IOPS odczytu 68k
 
 `Starting 4 processes`  
 `Jobs: 4 (f=4): [r(4)][84.4%][r=537MiB/s,w=0KiB/s][r=68.8k,w=0 IOPS][eta 00m:05s]`
 
-### <a name="fio-8k-block-size-100-random-writes"></a>FIO: rozmiar bloku 8k 100% losowych zapisów
+### <a name="fio-8k-block-size-100-random-writes"></a>FIO: 8k blokowy rozmiar 100% losowe zapisy
 
 `fio --name=8krandomwrites --rw=randwrite --direct=1 --ioengine=libaio --bs=8k --numjobs=4 --iodepth=128  --size=4G --runtime=600 --group_reporting`
 
@@ -78,20 +71,20 @@ W poniższych przykładach pokazano losowe operacje odczytu i zapisu FIO.
 
 W przykładach w tej sekcji przedstawiono FIO sekwencyjne operacje odczytu i zapisu.
 
-### <a name="fio-64k-block-size-100-sequential-reads"></a>FIO: rozmiar bloku 64 KB 100% odczyty sekwencyjne
+### <a name="fio-64k-block-size-100-sequential-reads"></a>FIO: 64 KB rozmiar bloku 100% sekwencyjne odczyty
 
 `fio --name=64kseqreads --rw=read --direct=1 --ioengine=libaio --bs=64k --numjobs=4 --iodepth=128  --size=4G --runtime=600 --group_reporting`
 
-### <a name="output-118-gbits-throughput-displayed"></a>Dane wyjściowe: wyświetlona przepływność GB/s 11,8
+### <a name="output-118-gbits-throughput-displayed"></a>Wynik: wyświetlona przepływność GB/s 11,8
 
 `Starting 4 processes`  
 `Jobs: 4 (f=4): [R(4)][40.0%][r=1313MiB/s,w=0KiB/s][r=21.0k,w=0 IOPS][eta 00m:09s]`
 
-### <a name="fio-64k-block-size-100-sequential-writes"></a>FIO: rozmiar bloku 64 KB 100% sekwencyjne zapisy
+### <a name="fio-64k-block-size-100-sequential-writes"></a>FIO: 64 KB rozmiar bloku 100% sekwencyjne zapisy
 
 `fio --name=64kseqwrites --rw=write --direct=1 --ioengine=libaio --bs=64k --numjobs=4 --iodepth=128  --size=4G --runtime=600 --group_reporting`
 
-### <a name="output-122-gbits-throughput-displayed"></a>Dane wyjściowe: wyświetlona przepływność GB/s 12,2
+### <a name="output-122-gbits-throughput-displayed"></a>Wynik: wyświetlona przepływność GB/s 12,2
 
 `Starting 4 processes`  
 `Jobs: 4 (f=4): [W(4)][85.7%][r=0KiB/s,w=1356MiB/s][r=0,w=21.7k IOPS][eta 00m:02s]`
@@ -120,7 +113,7 @@ Możesz również utworzyć pulpit nawigacyjny w Azure Monitor dla Azure NetApp 
 
 ### <a name="azure-monitor-api-access"></a>Azure Monitor dostęp do interfejsu API
 
-Dostęp do liczników Azure NetApp Files można uzyskać przy użyciu wywołań interfejsu API REST. Zobacz [obsługiwane metryki w Azure Monitor: Microsoft. NetApp/netAppAccounts/capacityPools/woluminy](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftnetappnetappaccountscapacitypoolsvolumes) dla liczników dla pul pojemności i woluminów.
+Dostęp do liczników Azure NetApp Files można uzyskać przy użyciu wywołań interfejsu API REST. Zobacz [obsługiwane metryki z Azure Monitor: Microsoft. NetApp/netAppAccounts/capacityPools/Volumes](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftnetappnetappaccountscapacitypoolsvolumes) for Counters i Volumes.
 
 W poniższym przykładzie przedstawiono adres URL pobierania na potrzeby wyświetlania rozmiaru woluminu logicznego:
 
@@ -128,7 +121,7 @@ W poniższym przykładzie przedstawiono adres URL pobierania na potrzeby wyświe
 `curl -X GET -H "Authorization: Bearer TOKENGOESHERE" -H "Content-Type: application/json" https://management.azure.com/subscriptions/SUBIDGOESHERE/resourceGroups/RESOURCEGROUPGOESHERE/providers/Microsoft.NetApp/netAppAccounts/ANFACCOUNTGOESHERE/capacityPools/ANFPOOLGOESHERE/Volumes/ANFVOLUMEGOESHERE/providers/microsoft.insights/metrics?api-version=2018-01-01&metricnames=VolumeLogicalSize`
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Poziomy usług dla usługi Azure NetApp Files](azure-netapp-files-service-levels.md)
 - [Wyniki testów wydajności dla Azure NetApp Files](azure-netapp-files-performance-benchmarks.md)

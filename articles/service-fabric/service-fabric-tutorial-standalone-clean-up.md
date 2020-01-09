@@ -1,28 +1,19 @@
 ---
-title: 'Samouczek: czyszczenie klastra autonomicznego usługi Service Fabric — Azure Service Fabric | Microsoft Docs'
-description: W tym samouczku dowiesz się, jak oczyścić klaster autonomiczny
-services: service-fabric
-documentationcenter: .net
+title: Oczyszczanie klastra autonomicznego
+description: W tym samouczku dowiesz się, jak oczyścić AWS lub zasoby platformy Azure w autonomicznym klastrze Service Fabric.
 author: dkkapur
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/22/2019
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: bebe3a2dc83b651e713ee80d7b11068b13096e04
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: bfb23ca5f5eb9540491fbd05efdfd6997db15e6b
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385160"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75639024"
 ---
-# <a name="tutorial-clean-up-your-standalone-cluster"></a>Samouczek: Czyszczenie klastra autonomicznego
+# <a name="tutorial-clean-up-your-standalone-cluster"></a>Samouczek: czyszczenie klastra autonomicznego
 
 Klastry autonomiczne usługi Service Fabric umożliwiają wybór własnego środowiska i utworzenie klastra zgodnie z obowiązującą w usłudze Service Fabric zasadą „dowolnego systemu operacyjnego i dowolnej chmury”. W tej serii samouczków utworzysz klaster autonomiczny hostowany na AWS lub na platformie Azure i zainstaluje do niego aplikację.
 
@@ -63,7 +54,7 @@ Część czwarta serii zawiera informacje na temat wykonywania następujących c
 1. Zaloguj się do konta AWS.
 2. Przejdź do konsoli EC2.
 3. Wybierz trzy węzły utworzone w pierwszej części samouczka.
-4. Kliknij pozycję **Akcje** > **stan** > wystąpienia**Przerwij**.
+4. Kliknij **akcję** > **stanie wystąpienia** > **przerwać**.
 
 ## <a name="clean-up-azure-resources"></a>Czyszczenie zasobów platformy Azure
 
@@ -72,7 +63,7 @@ Część czwarta serii zawiera informacje na temat wykonywania następujących c
 3. Zaznacz pola wyboru dla trzech węzłów utworzonych w pierwszej części samouczka.
 4. Kliknij pozycję **Usuń**.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W czwartej części samouczka przedstawiono proces czyszczenia zasobów utworzonych w poprzednich częściach.
 

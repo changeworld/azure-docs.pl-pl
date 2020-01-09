@@ -1,39 +1,30 @@
 ---
-title: Generowanie dziennika zdarzeń z aplikacji .NET usługi Service Fabric na platformie Azure lub klastra autonomicznego
-description: Dowiedz się więcej o tym, jak dodać logowanie do aplikacji .NET usługi Service Fabric hostowany na klastrze platformy Azure lub klastra autonomicznego.
-services: service-fabric
-documentationcenter: .net
+title: Generowanie zdarzeń dzienników z poziomu aplikacji .NET
+description: Dowiedz się więcej na temat sposobu dodawania rejestrowania do aplikacji .NET Service Fabric hostowanej w klastrze platformy Azure lub w klastrze autonomicznym.
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 03/27/2018
 ms.author: srrengar
-ms.openlocfilehash: d1b3dc25dd9bda9d7f9d9152c2a94cea8321f5cf
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8c4721584e74bd7f7111c516f2d16bd190392bb5
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60482611"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614370"
 ---
-# <a name="add-logging-to-your-service-fabric-application"></a>Dodawanie rejestrowania aplikacji usługi Service Fabric
+# <a name="add-logging-to-your-service-fabric-application"></a>Dodawanie rejestrowania do aplikacji Service Fabric
 
-Aplikacja musi zawierać informacje wystarczające do całkowitego debugowania, gdy wystąpią problemy. Rejestrowanie jest jednym z najważniejszych czynników, które można dodać do aplikacji usługi Service Fabric. Gdy wystąpi błąd, dobrym rejestrowania umożliwiają sposób zbadaj błędy. Analizując wzorców dziennika, może się okazać sposobów na zwiększenie wydajności lub projektu danej aplikacji. W tym dokumencie przedstawiono kilka rejestrowania różnych opcji.
+Aplikacja musi zapewnić wystarczającą ilość informacji, aby forensically debugowanie w przypadku wystąpienia problemów. Rejestrowanie jest jednym z najważniejszych rzeczy, które możesz dodać do aplikacji Service Fabric. Jeśli wystąpi awaria, dobre rejestrowanie może umożliwić zbadanie niepowodzeń. Analizując wzorce dzienników, można dowiedzieć się, jak zwiększyć wydajność lub projekt aplikacji. W tym dokumencie przedstawiono kilka różnych opcji rejestrowania.
 
-## <a name="eventflow"></a>Użyciu struktury EventFlow
+## <a name="eventflow"></a>Użyciu struktury eventflow
 
-[Biblioteki użyciu struktury EventFlow](https://github.com/Azure/diagnostics-eventflow) pakiet umożliwia aplikacji określenie, jakie dane diagnostyczne do zbierania i której powinny zostać zwrócone do. Dane diagnostyczne mogą być cokolwiek — od liczników wydajności do śladów aplikacji. Działa w tym samym procesie co aplikacja, dzięki czemu jest zminimalizowany obciążenie komunikatu. Aby uzyskać więcej informacji o użyciu struktury EventFlow i Service Fabric, zobacz [Azure usługi Service Fabric zdarzenie agregacji, przy użyciu struktury EventFlow](service-fabric-diagnostics-event-aggregation-eventflow.md).
+Pakiet [biblioteki użyciu struktury eventflow](https://github.com/Azure/diagnostics-eventflow) umożliwia aplikacjom Definiowanie, które dane diagnostyczne mają być zbierane, oraz miejsce, do którego powinny zostać wyszukane. Dane diagnostyczne mogą być dowolne od liczników wydajności do śladów aplikacji. Działa w tym samym procesie co aplikacja, więc obciążanie komunikacji jest zminimalizowane. Aby uzyskać więcej informacji na temat użyciu struktury eventflow i Service Fabric, zobacz [Azure Service Fabric Event agregacji z użyciu struktury eventflow](service-fabric-diagnostics-event-aggregation-eventflow.md).
 
-### <a name="using-structured-eventsource-events"></a>Przy użyciu structured zdarzeń EventSource
+### <a name="using-structured-eventsource-events"></a>Używanie zdarzeń zdarzenia EventSource ze strukturą
 
-Definiowanie wiadomości zdarzenia według przypadków użycia umożliwia pakiet danych dotyczących zdarzeń, w kontekście zdarzenia. Możesz łatwiej wyszukiwać i filtrowania na podstawie nazwy lub wartości właściwości określonego zdarzenia. Tworzenie struktury sprawia, że dane wyjściowe Instrumentacji łatwiejsza do odczytania, ale wymaga więcej myślenia i czasu, aby określić zdarzenia dla każdego przypadku użycia. 
+Definiowanie zdarzeń komunikatów według przypadków użycia umożliwia spakowanie danych dotyczących zdarzenia w kontekście zdarzenia. Można łatwiej przeszukiwać i filtrować na podstawie nazw lub wartości określonych właściwości zdarzenia. Tworzenie struktury danych wyjściowych Instrumentacji ułatwia ich odczytywanie, ale wymaga większej liczby myśli i czasu, aby zdefiniować zdarzenie dla każdego przypadku użycia. 
 
-Definicje zdarzeń mogą być udostępniane w całej aplikacji. Na przykład metoda uruchamiania lub zatrzymania zdarzeń będzie można użyć ponownie w wielu usługach w ramach aplikacji. Usługi specyficzne dla domeny, takich jak system zamówień, może być **CreateOrder** zdarzenie, które ma swój własny unikatowy zdarzeń. To podejście może wygenerować wiele zdarzeń i mogą wymagać koordynacji identyfikatorów w projektach zespołowych. 
+Niektóre definicje zdarzeń mogą być współużytkowane przez całą aplikację. Na przykład zdarzenie uruchomienia lub zatrzymania metody będzie ponownie używane w wielu usługach w ramach aplikacji. Usługa specyficzna dla domeny, taka jak system zamówienia, może mieć zdarzenie w **porządku** , które ma własne wydarzenie unikatowe. Takie podejście może generować wiele zdarzeń i może wymagać koordynacji identyfikatorów w zespołach projektów. 
 
 ```csharp
 [EventSource(Name = "MyCompany-VotingState-VotingStateService")]
@@ -66,9 +57,9 @@ internal sealed class ServiceEventSource : EventSource
 
 ```
 
-### <a name="using-eventsource-generically"></a>Ogólnie przy użyciu źródła zdarzeń
+### <a name="using-eventsource-generically"></a>Korzystanie z usługi EventSource ogólnie
 
-Definiowanie określone zdarzenia mogą być trudne, wiele osób zdefiniować kilka zdarzeń za pomocą wspólnego zestawu parametrów, które zazwyczaj udostępniają swoich informacji jako ciąg. Większość ze strukturą aspekt zostaną utracone i jest trudniejsze do wyszukiwania i filtrowania wyników. W tym podejściu zdefiniowano kilka zdarzeń, które zwykle odpowiadają poziomów rejestrowania. Poniższy fragment kodu definiuje debugowania i komunikatu o błędzie:
+Ponieważ Definiowanie określonych zdarzeń może być trudne, wiele osób definiuje kilka zdarzeń ze wspólnym zestawem parametrów, które zwykle wyprowadzają informacje jako ciąg. Większość strukturalnego aspektu jest tracona i trudniejsze jest wyszukiwanie i filtrowanie wyników. W tym podejściu definiowane są kilka zdarzeń, które zwykle odpowiadają poziomów rejestrowania. Poniższy fragment kodu definiuje debugowanie i komunikat o błędzie:
 
 ```csharp
 [EventSource(Name = "MyCompany-VotingState-VotingStateService")]
@@ -99,15 +90,15 @@ internal sealed class ServiceEventSource : EventSource
 
 ```
 
-Za pomocą hybrydowego rozwiązania łączącego program instrumentacji ze strukturą i ogólny również będzie działać prawidłowo. Strukturalne Instrumentacji jest używana do raportowania błędów oraz metryki. Zdarzenia ogólne może służyć do szczegółowe rejestrowanie, który jest używany przez inżynierów do rozwiązywania problemów.
+Użycie hybrydowej Instrumentacji strukturalnej i ogólnej może również współpracować. Instrumentacja strukturalna jest używana do raportowania błędów i metryk. Zdarzenia ogólne mogą służyć do szczegółowego rejestrowania używanego przez inżynierów w celu rozwiązywania problemów.
 
 ## <a name="microsoftextensionslogging"></a>Microsoft.Extensions.Logging
 
-Rejestrowanie w programie ASP.NET Core ([pakietu Microsoft.Extensions.Logging NuGet](https://www.nuget.org/packages/Microsoft.Extensions.Logging)) to struktura rejestrowania, która udostępnia interfejs API standardowa rejestrowania dla swojej aplikacji. Obsługa innych zaplecza rejestrowania można podłączyć do platformy ASP.NET Core rejestrowania. Dzięki temu jest przetwarzana szerokiej gamy obsługę rejestrowania w aplikacji, bez konieczności zmiany większej ilości kodu.
+Rejestrowanie ASP.NET Core ([pakiet NuGet Microsoft. Extensions. rejestrowania](https://www.nuget.org/packages/Microsoft.Extensions.Logging)) to struktura rejestrowania, która udostępnia interfejs API rejestrowania standardowego dla aplikacji. Aby obsłużyć inne rejestracje, można podłączyć się do ASP.NET Core rejestrowania. Zapewnia to szeroką gamę obsługi rejestrowania w aplikacji, bez konieczności zmiany kodu.
 
-1. Dodaj **Microsoft.Extensions.Logging** pakietu NuGet do projektu zostanie chcesz dokumentu. Ponadto należy dodać wszystkie pakiety dostawcy. Aby uzyskać więcej informacji, zobacz [rejestrowania w programie ASP.NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/logging).
-2. Dodaj **przy użyciu** dyrektywy dla **Microsoft.Extensions.Logging** do pliku usługi.
-3. Zdefiniuj zmienną prywatną w klasie usługi.
+1. Dodaj pakiet NuGet **Microsoft. Extensions. Logging** do projektu, który chcesz instrumentować. Ponadto Dodaj wszystkie pakiety dostawcy. Aby uzyskać więcej informacji, zobacz [Rejestrowanie w ASP.NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/logging).
+2. Dodaj dyrektywę **using** dla **Microsoft. Extensions. Logging** do pliku usługi.
+3. Zdefiniuj prywatną zmienną w klasie usługi.
 
    ```csharp
    private ILogger _logger = null;
@@ -119,7 +110,7 @@ Rejestrowanie w programie ASP.NET Core ([pakietu Microsoft.Extensions.Logging Nu
    _logger = new LoggerFactory().CreateLogger<Stateless>();
    ```
 
-5. Uruchom kod w metody instrumentacji. Poniżej przedstawiono kilka przykładów:
+5. Rozpocznij instrumentację kodu w metodach. Oto kilka przykładów:
 
    ```csharp
    _logger.LogDebug("Debug-level event from Microsoft.Logging");
@@ -130,24 +121,24 @@ Rejestrowanie w programie ASP.NET Core ([pakietu Microsoft.Extensions.Logging Nu
    _logger.LogInformation("{RequestName} {Duration}", "MyRequest", requestDuration);
    ```
 
-### <a name="using-other-logging-providers"></a>Przy użyciu innych dostawców logowania
+### <a name="using-other-logging-providers"></a>Korzystanie z innych dostawców rejestrowania
 
-Niektórych dostawców innych firm, użyj podejścia opisanego w poprzedniej sekcji, w tym [Serilog](https://serilog.net/), [NLog](https://nlog-project.org/), i [Loggr](https://github.com/imobile3/Loggr.Extensions.Logging). Możesz podłączyć każdy z nich do platformy ASP.NET Core rejestrowania lub korzystania z nich osobno. Serilog ma funkcję, która uzupełnia wszystkie wiadomości wysyłane z rejestratora. Ta funkcja może być przydatne w danych wyjściowych, nazwę usługi, typ i informacje o partycji. Aby używać tej funkcji w ramach infrastruktury platformy ASP.NET Core, wykonaj następujące kroki:
+Niektórzy dostawcy innych firm używają podejścia opisanego w poprzedniej sekcji, w tym [Serilog](https://serilog.net/), [nLOG](https://nlog-project.org/)i [Loggr](https://github.com/imobile3/Loggr.Extensions.Logging). Każdy z nich można podłączyć do ASP.NET Core rejestrowania lub użyć ich osobno. Serilog zawiera funkcję, która wzbogaca wszystkie komunikaty wysyłane z rejestratora. Ta funkcja może być przydatna do wyprowadzania nazwy usługi, typu i informacji o partycji. Aby skorzystać z tej możliwości w infrastrukturze ASP.NET Core, wykonaj następujące czynności:
 
-1. Dodaj **Serilog**, **Serilog.Extensions.Logging**, **Serilog.Sinks.Literate**, i **Serilog.Sinks.Observable** pakietów NuGet do projektu. 
-2. Utwórz `LoggerConfiguration` i wystąpienia rejestratora.
+1. Dodaj **Serilog**, **Serilog. Extensions. Logging**, **Serilog. ujścias. Literate**i **Serilog. ujścia. zauważalne** pakiety NuGet do projektu. 
+2. Utwórz `LoggerConfiguration` i wystąpienie rejestratora.
 
    ```csharp
    Log.Logger = new LoggerConfiguration().WriteTo.LiterateConsole().CreateLogger();
    ```
 
-3. Dodaj `Serilog.ILogger` argument konstruktora usługi i Przekaż nowo utworzony rejestratora.
+3. Dodaj `Serilog.ILogger` argument do konstruktora usługi i przekaż nowo utworzony rejestrator.
 
    ```csharp
    ServiceRuntime.RegisterServiceAsync("StatelessType", context => new Stateless(context, Log.Logger)).GetAwaiter().GetResult();
    ```
 
-4. W Konstruktorze service tworzy enrichers właściwości dla **ServiceTypeName**, **ServiceName**, **PartitionId**, i **InstanceId** .
+4. W konstruktorze usług tworzy wzbogacania właściwości dla **ServiceTypeName**, **ServiceName**, **PartitionID**i **InstanceId**.
 
    ```csharp
    public Stateless(StatelessServiceContext context, Serilog.ILogger serilog)
@@ -167,15 +158,15 @@ Niektórych dostawców innych firm, użyj podejścia opisanego w poprzedniej sek
    }
    ```
 
-5. Przygotuj Instrumentację kod taki sam, jakby były używane platformy ASP.NET Core bez Serilog.
+5. Instrumentacja kodu jest taka sama jak w przypadku używania ASP.NET Core bez Serilog.
 
    >[!NOTE]
-   >Zaleca się, że możesz *nie* używa się statycznej `Log.Logger` w poprzednim przykładzie. Usługa Service Fabric umożliwia hostowanie wielu wystąpień typu usługi w ramach jednego procesu. Jeśli używasz statycznych `Log.Logger`, ostatni składnik zapisywania programu enrichers właściwość wyświetli wartości dla wszystkich wystąpień, które są uruchomione. To jest jednym z powodów dlaczego zmienna _logger jest zmienną prywatnego elementu członkowskiego klasy usługi. Ponadto należy `_logger` dostępne dla wspólnego kodu, który może być używane w usługach.
+   >Zalecamy, aby *nie* używać `Log.Logger` statycznej w powyższym przykładzie. Service Fabric może hostować wiele wystąpień tego samego typu usługi w ramach jednego procesu. Jeśli używasz statycznej `Log.Logger`, ostatni moduł zapisujący wzbogacający właściwość będzie wyświetlał wartości dla wszystkich wystąpień, które są uruchomione. Jest to jeden powód, dla którego zmienna _logger jest prywatną zmienną członkowską klasy usługi. Ponadto należy udostępnić `_logger` dostęp do wspólnego kodu, który może być używany przez usługi.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Przeczytaj więcej informacji na temat [aplikacji, monitorowanie w usłudze Service Fabric](service-fabric-diagnostics-event-generation-app.md).
-- Przeczytaj o rejestrowanie za pomocą [użyciu struktury EventFlow](service-fabric-diagnostics-event-aggregation-eventflow.md) i [Windows Azure Diagnostics](service-fabric-diagnostics-event-aggregation-wad.md).
+- Przeczytaj więcej informacji [na temat monitorowania aplikacji w Service Fabric](service-fabric-diagnostics-event-generation-app.md).
+- Przeczytaj o rejestrowaniu za pomocą [użyciu struktury eventflow](service-fabric-diagnostics-event-aggregation-eventflow.md) i [Windows Diagnostyka Azure](service-fabric-diagnostics-event-aggregation-wad.md).
 
 
 

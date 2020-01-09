@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 08/06/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f7fbc18d8141c44c2b0863547c33b5c5193e928b
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 7e557ca1bfc7587b6a65957177440041bf4e902f
+ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231924"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75681331"
 ---
 # <a name="change-your-two-factor-verification-method-and-settings"></a>Zmiana metody i ustawień weryfikacji dwuskładnikowej
 
@@ -32,16 +32,16 @@ Po skonfigurowaniu metod weryfikacji zabezpieczeń dla konta służbowego możes
 
 ## <a name="using-the-additional-security-verification-page"></a>Korzystanie ze strony dodatkowej weryfikacji zabezpieczeń
 
-Jeśli Twoja organizacja dostarczyła konkretne kroki dotyczące włączania weryfikacji dwuskładnikowej i zarządzania nią, należy wykonać te instrukcje. W przeciwnym razie możesz przejść do ustawień metody weryfikacji zabezpieczeń na stronie [dodatkowej weryfikacji zabezpieczeń](https://aka.ms/mfasetup) .
+Jeśli Twoja organizacja dostarczyła konkretne kroki dotyczące włączania weryfikacji dwuskładnikowej i zarządzania nią, należy wykonać te instrukcje. W przeciwnym razie możesz przejść do ustawień metody weryfikacji zabezpieczeń na stronie [dodatkowej weryfikacji zabezpieczeń](https://account.activedirectory.windowsazure.com/proofup.aspx?proofup=1) .
 
 >[!Note]
 >Jeśli dane wyświetlane na ekranie nie są zgodne z tym, co zostało omówione w tym artykule, oznacza to, że administrator włączył środowisko informacje zabezpieczające (wersja zapoznawcza) lub że organizacja ma własny portal niestandardowy. Aby uzyskać więcej informacji na temat środowiska informacje zabezpieczające, zobacz [informacje zabezpieczające (wersja zapoznawcza) — Omówienie](user-help-security-info-overview.md). Aby uzyskać więcej informacji na temat portalu niestandardowego organizacji, należy skontaktować się z działem pomocy technicznej.
 
 ### <a name="to-get-to-the-additional-security-verification-page"></a>Aby przejść do strony dodatkowej weryfikacji zabezpieczeń
 
-- Przejdź do pozycji https://aka.ms/mfasetup (Plik > Nowy > Inny).
+- Przejdź do strony [dodatkowa Weryfikacja zabezpieczeń](https://account.activedirectory.windowsazure.com/proofup.aspx?proofup=1) .
 
-    ![Ekran dodatkowej weryfikacji zabezpieczeń z informacjami o dostępnej metodzie weryfikacji zabezpieczeń](./media/multi-factor-authentication-end-user-manage-settings/mfa-security-verification-page.png)
+    ![Dodatkowa strona weryfikacji zabezpieczeń z informacjami o dostępnej metodzie weryfikacji zabezpieczeń](./media/multi-factor-authentication-end-user-manage-settings/mfa-security-verification-page.png)
 
     Jeśli kliknięcie tego linku nie zadziała, możesz również przejść do strony **dodatkowej weryfikacji zabezpieczeń** , wykonując następujące czynności:
 

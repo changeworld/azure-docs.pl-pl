@@ -6,12 +6,12 @@ ms.service: virtual-network
 ms.topic: article
 ms.date: 08/26/2019
 ms.author: allensu
-ms.openlocfilehash: d6f417e53e7d7a1a242a0c0dc56c2356f78f5344
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: c54725d9a947b0c912a822686d7b2cffe1a7b5c9
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828948"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75640792"
 ---
 # <a name="move-an-azure-virtual-network-to-another-region-by-using-the-azure-portal"></a>Przenoszenie sieci wirtualnej platformy Azure do innego regionu przy użyciu Azure Portal
 
@@ -32,7 +32,7 @@ Możesz użyć szablonu Azure Resource Manager, aby zakończyć przenoszenie sie
 
 - Sprawdź, czy subskrypcja platformy Azure umożliwia tworzenie sieci wirtualnych w regionie docelowym. Aby włączyć wymagany limit przydziału, skontaktuj się z pomocą techniczną.
 
-- Upewnij się, że Twoja subskrypcja ma wystarczającą ilość zasobów, aby obsłużyć Dodawanie sieci wirtualnych dla tego procesu. Aby uzyskać więcej informacji, zobacz [Limity, przydziały i ograniczenia usług i subskrypcji platformy Azure](https://docs.microsoft.com/azure/azure-subscription-service-limits#networking-limits).
+- Upewnij się, że Twoja subskrypcja ma wystarczającą ilość zasobów, aby obsłużyć Dodawanie sieci wirtualnych dla tego procesu. Aby uzyskać więcej informacji, zobacz [Limity, przydziały i ograniczenia usług i subskrypcji platformy Azure](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits).
 
 
 ## <a name="prepare-for-the-move"></a>Przygotuj do przeniesienia
@@ -194,13 +194,13 @@ Aby wyeksportować sieć wirtualną i wdrożyć docelową sieć wirtualną przy 
 
 ## <a name="delete-the-target-virtual-network"></a>Usuń docelową sieć wirtualną
 
-Aby odrzucić docelową sieć wirtualną, należy usunąć grupę zasobów zawierającą docelową sieć wirtualną. Aby to zrobić:
+Aby odrzucić docelową sieć wirtualną, należy usunąć grupę zasobów zawierającą docelową sieć wirtualną. W tym celu:
 1. Na pulpicie nawigacyjnym Azure Portal wybierz grupę zasobów.
 1. W górnej części okienka **Przegląd** wybierz pozycję **Usuń**.
 
 ## <a name="clean-up"></a>Czyszczenie
 
-Aby zatwierdzić zmiany i zakończyć przenoszenie sieci wirtualnej, należy usunąć źródłową sieć wirtualną lub grupę zasobów. Aby to zrobić:
+Aby zatwierdzić zmiany i zakończyć przenoszenie sieci wirtualnej, należy usunąć źródłową sieć wirtualną lub grupę zasobów. W tym celu:
 1. Na pulpicie nawigacyjnym Azure Portal wybierz sieć wirtualną lub grupę zasobów.
 1. W górnej części każdego okienka wybierz pozycję **Usuń**.
 

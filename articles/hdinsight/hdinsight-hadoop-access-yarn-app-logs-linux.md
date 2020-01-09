@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/15/2019
-ms.openlocfilehash: 883e1007b35991c1f5d8f0c6e949efcb48c27a1d
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 437a0c95ea4b48baa74bf6a577dc06429833bc31
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74327219"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644583"
 ---
 # <a name="access-apache-hadoop-yarn-application-logs-on-linux-based-hdinsight"></a>Dostęp do Apache Hadoop dzienników aplikacji PRZĘDZy w usłudze HDInsight opartej na systemie Linux
 
@@ -67,7 +67,7 @@ Określ > &lt;identyfikatora aplikacji, &lt;użytkowników, którzy uruchomili >
 
 Interfejs użytkownika programu ResourceManager jest uruchamiany w klastrze węzła głównego. Dostęp do niego odbywa się za pomocą interfejsu użytkownika sieci Web Ambari. Aby wyświetlić dzienniki PRZĘDZy, wykonaj następujące kroki:
 
-1. W przeglądarce sieci Web przejdź do https://CLUSTERNAME.azurehdinsight.net. Zastąp wartość CLUSTERname nazwą klastra usługi HDInsight.
+1. W przeglądarce sieci Web przejdź do `https://CLUSTERNAME.azurehdinsight.net`. Zastąp wartość CLUSTERname nazwą klastra usługi HDInsight.
 2. Z listy usług po lewej stronie wybierz pozycję **przędza**.
 
     ![Wybrano usługę Apache Ambari przędzę](./media/hdinsight-hadoop-access-yarn-app-logs-linux/yarn-service-selected.png)

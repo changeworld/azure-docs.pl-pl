@@ -2,18 +2,16 @@
 title: Tworzenie grup akcji i zarządzanie nimi w Azure Portal
 description: Dowiedz się, jak tworzyć grupy akcji i zarządzać nimi w Azure Portal.
 author: dkamstra
-services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 8/19/2019
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 6b3d1ff76d4f7611da8e08dd4ce42293c805978e
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: a954898a334ead15d8ffdf6dab6e6a309bd57089
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74423847"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75659835"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Tworzenie grup akcji i zarządzanie nimi w Azure Portal
 Grupa akcji to zbiór preferencji powiadomień definiowanych przez właściciela subskrypcji platformy Azure. Alerty Azure Monitor i Service Health umożliwiają Powiadamianie użytkowników o wyzwoleniu alertu. Różne alerty mogą korzystać z tej samej grupy akcji lub różnych grup akcji w zależności od wymagań użytkownika. W ramach subskrypcji można skonfigurować maksymalnie 2 000 grup akcji.
@@ -72,17 +70,17 @@ Po utworzeniu grupy akcji jest ona widoczna w sekcji **grupy akcji** okienka **m
 ## <a name="action-specific-information"></a>Informacje dotyczące akcji
 
 > [!NOTE]
-> Zobacz [limity usługi subskrypcji, aby monitorować](https://docs.microsoft.com/azure/azure-subscription-service-limits#azure-monitor-limits) limity liczbowe dla każdego z poniższych elementów.  
+> Zobacz [limity usługi subskrypcji, aby monitorować](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-monitor-limits) limity liczbowe dla każdego z poniższych elementów.  
 
-### <a name="automation-runbook"></a>Element Runbook usługi Automation
-Limity dotyczące ładunków elementów Runbook można znaleźć w [limitach usługi subskrypcji platformy Azure](../../azure-subscription-service-limits.md) .
+### <a name="automation-runbook"></a>Element runbook automatyzacji
+Limity dotyczące ładunków elementów Runbook można znaleźć w [limitach usługi subskrypcji platformy Azure](../../azure-resource-manager/management/azure-subscription-service-limits.md) .
 
 W grupie akcji może istnieć ograniczona liczba akcji elementu Runbook. 
 
 ### <a name="azure-app-push-notifications"></a>Powiadomienia push aplikacji platformy Azure
 W grupie akcji może istnieć ograniczona liczba akcji aplikacji platformy Azure.
 
-### <a name="email"></a>Email
+### <a name="email"></a>Adres e-mail
 Wiadomości e-mail będą wysyłane z następujących adresów e-mail. Upewnij się, że filtrowanie poczty e-mail jest skonfigurowane odpowiednio
 - azure-noreply@microsoft.com
 - azureemail-noreply@microsoft.com
@@ -90,7 +88,7 @@ Wiadomości e-mail będą wysyłane z następujących adresów e-mail. Upewnij s
 
 W grupie akcji może istnieć ograniczona liczba akcji poczty e-mail. Zobacz artykuł [Informacje o ograniczeniu szybkości](./../../azure-monitor/platform/alerts-rate-limiting.md) .
 
-### <a name="email-azure-resource-manager-role"></a>Rola Azure Resource Manager e-mail
+### <a name="email-azure-resource-manager-role"></a>Wyślij wiadomość e-mail do roli usługi Azure Resource Manager
 Wyślij wiadomość e-mail do członków roli subskrypcji.
 
 W grupie akcji może istnieć ograniczona liczba akcji poczty e-mail. Zobacz artykuł [Informacje o ograniczeniu szybkości](./../../azure-monitor/platform/alerts-rate-limiting.md) .
@@ -204,7 +202,7 @@ Aby uzyskać dodatkowe informacje, zobacz [informacje dotyczące ograniczania sz
 
 W grupie akcji może istnieć ograniczona liczba akcji programu SMS.  
 
-### <a name="voice"></a>Połączenia głosowe
+### <a name="voice"></a>Głos
 Zobacz artykuł [Informacje o ograniczeniu szybkości](./../../azure-monitor/platform/alerts-rate-limiting.md) .
 
 W grupie akcji może istnieć ograniczona liczba akcji głosowych.

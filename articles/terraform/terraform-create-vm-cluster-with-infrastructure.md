@@ -3,12 +3,12 @@ title: Samouczek — Tworzenie klastra maszyn wirtualnych platformy Azure z Terr
 description: Tworzenie klastra maszyn wirtualnych z systemem Linux przy użyciu modułu równoważenia obciążenia na platformie Azure przy użyciu Terraform i HCL
 ms.topic: tutorial
 ms.date: 10/26/2019
-ms.openlocfilehash: f28cbbf13015d07c9d789ed258a9e2b0582ba1da
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 1ff13f05a5be463ed7477b4bbbc3e1f977a04a75
+ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74159270"
+ms.lasthandoff: 01/05/2020
+ms.locfileid: "75665371"
 ---
 # <a name="tutorial-create-an-azure-vm-cluster-with-terraform-and-hcl"></a>Samouczek: Tworzenie klastra maszyn wirtualnych platformy Azure z Terraform i HCL
 
@@ -208,7 +208,7 @@ W tej sekcji utworzysz plik zawierający definicje zasobów dla infrastruktury.
       disable_password_authentication = false
     }
 
-    tags {
+    tags = {
       environment = "staging"
     }
    }
@@ -260,10 +260,10 @@ Domyślnie Terraform próbuje znaleźć plik zmiennych w następujący sposób:
 - Plik o nazwie `terraform.tfvars`
 - Plik o nazwie przy użyciu następującego wzorca: `*.auto.tfvars`
 
-Jednak plik zmiennych nie musi być zgodny z jedną z powyższych Konwencji. W takim przypadku należy określić nazwę pliku zmiennych przy użyciu parametru `-var-file`. Poniższy przykład ilustruje ten punkt:
+Jednak plik zmiennych nie musi być zgodny z jedną z powyższych Konwencji. W takim przypadku należy określić nazwę pliku zmiennych przy użyciu parametru `-var-file`, w którym nazwa pliku zmiennej nie ma rozszerzenia. Poniższy przykład ilustruje ten punkt:
 
 ```hcl
-terraform plan -var-file <my-variables-file.tf>
+terraform plan -var-file <my-variables-file>
 ```
 
 Terraform Określa akcje niezbędne do osiągnięcia stanu określonego w pliku konfiguracji.

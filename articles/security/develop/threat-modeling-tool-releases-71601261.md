@@ -1,33 +1,25 @@
 ---
-title: Threat Modeling Tool releases — Microsoft Threat Modeling Tool na platformie Azure | Microsoft Docs
+title: Microsoft Threat Modeling Tool wersja 1/29/2019 — Azure
 description: Dokumentowanie informacji o wersji dla narzędzia do modelowania zagrożeń
-services: security
-documentationcenter: na
 author: jegeib
-manager: jegeib
-editor: jegeib
-ms.assetid: na
+ms.author: jegeib
 ms.service: security
 ms.subservice: security-develop
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/25/2019
-ms.author: jegeib
-ms.openlocfilehash: d9c91752a599debcd8fda6c8396141e6a92e0f06
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: cec5abe358189184648c5a40a809b570f243fbf4
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68928097"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75548780"
 ---
 # <a name="threat-modeling-tool-update-release-71601261---1292019"></a>Threat Modeling Tool, wersja aktualizacyjna 7.1.60126.1 — 2019-01-29
 
 Wersja 7.1.60126.1 Microsoft Threat Modeling Tool została wydana w styczniu 29 2019 i zawiera następujące zmiany:
 
 - Minimalna wymagana wersja platformy .NET została zwiększona do [programu .NET 4.7.1](https://go.microsoft.com/fwlink/?LinkId=863262).
-- Minimalna wymagana wersja systemu Windows została zwiększona do rocznicowej [aktualizacji systemu Windows 10](https://blogs.windows.com/windowsexperience/2016/08/02/how-to-get-the-windows-10-anniversary-update/#HTkoK5Zdv0g2F2Zq.97) ze względu na zależność programu .NET.
+- Minimalna wymagana wersja systemu Windows została zwiększona do [rocznicowej aktualizacji systemu Windows 10](https://blogs.windows.com/windowsexperience/2016/08/02/how-to-get-the-windows-10-anniversary-update/#HTkoK5Zdv0g2F2Zq.97) ze względu na zależność programu .NET.
 - Funkcja przełączania walidacji modelu została dodana do menu Opcje narzędzia.
 - Zaktualizowano kilka linków we właściwościach zagrożeń.
 - Drobne zmiany środowiska użytkownika na ekranie głównym narzędzia.
@@ -37,7 +29,7 @@ Wersja 7.1.60126.1 Microsoft Threat Modeling Tool została wydana w styczniu 29 
 
 ### <a name="model-validation-option"></a>Opcja walidacji modelu
 
-Na podstawie opinii klientów dodano opcję do narzędzia w celu włączenia lub wyłączenia walidacji modelu. Wcześniej, jeśli szablon używał pojedynczego przepływu danych jednokierunkowe między dwoma obiektami, w ramce komunikatów może zostać wyświetlony komunikat o błędzie z informacją: Obiektname wymaga co najmniej jednego "any". Wyłączenie walidacji modelu uniemożliwi wyświetlanie tych ostrzeżeń w widoku.
+Na podstawie opinii klientów dodano opcję do narzędzia w celu włączenia lub wyłączenia walidacji modelu. Wcześniej, jeśli szablon używał pojedynczego przepływu danych jednokierunkowe między dwoma obiektami, w ramce komunikatów może zostać wyświetlony komunikat o błędzie z informacją: obiekty Objectsname wymagają co najmniej jednego elementu "any". Wyłączenie walidacji modelu uniemożliwi wyświetlanie tych ostrzeżeń w widoku.
 
 Opcja przełączania i wyłączania walidacji modelu znajduje się w menu > Ustawienia > Opcje. Wartość domyślna tego ustawienia jest wyłączona.
 

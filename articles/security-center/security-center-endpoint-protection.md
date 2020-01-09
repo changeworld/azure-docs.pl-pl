@@ -11,18 +11,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/08/2019
+ms.date: 12/29/2019
 ms.author: memildin
-ms.openlocfilehash: 140361b7ba3a6a618d4c416447525f8a73690b81
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 899f4cba31afed812fa1643b925a38812308042e
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748428"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552937"
 ---
 # <a name="endpoint-protection-assessment-and-recommendations-in-azure-security-center"></a>Ocena i zalecenia dotyczące programu Endpoint Protection w Azure Security Center
 
-Azure Security Center zapewnia oceny kondycji [obsługiwanych](https://docs.microsoft.com/azure/security-center/security-center-os-coverage) wersji rozwiązań programu Endpoint Protection. W tym artykule opisano scenariusze, które powodują Security Center w celu wygenerowania następujących dwóch zaleceń:
+Azure Security Center zapewnia oceny kondycji [obsługiwanych](security-center-services.md#supported-endpoint-protection-solutions-) wersji rozwiązań programu Endpoint Protection. W tym artykule opisano scenariusze, które powodują Security Center w celu wygenerowania następujących dwóch zaleceń:
 
 * **Zainstaluj rozwiązania programu Endpoint Protection na maszynie wirtualnej**
 * **Rozwiązywanie problemów z kondycją programu Endpoint Protection na maszynach**
@@ -55,7 +55,7 @@ Azure Security Center zapewnia oceny kondycji [obsługiwanych](https://docs.micr
 
 ## <a name="microsoft-system-center-endpoint-protection"></a>Program Microsoft System Center Endpoint Protection
 
-* Security Center zalecane jest **"Instalowanie rozwiązań programu Endpoint Protection na maszynie wirtualnej"** podczas importowania **SCEPMpModule ("$env:P rogramfiles\microsoft Security Client\MpProvider\MpProvider.psd1")** i uruchamiania  **Wyniki Get-MProtComputerStatus** z **AMServiceEnabled = false**
+* Security Center zaleca **"zainstalowanie rozwiązań programu Endpoint Protection na maszynie wirtualnej"** podczas importowania **SCEPMpModule ("$env:P rogramfiles\microsoft Security Client\MpProvider\MpProvider.psd1")** i uruchamiania wyników **Get-MProtComputerStatus** z **AMServiceEnabled = false**
 
 * Security Center zaleca **"Rozwiązywanie problemów z kondycją programu Endpoint Protection na maszynach" w** przypadku uruchamiania **Get-MprotComputerStatus** i dowolnego z następujących wystąpień:
 
@@ -84,8 +84,8 @@ Azure Security Center zapewnia oceny kondycji [obsługiwanych](https://docs.micr
 * Security Center zaleca się **"Zainstaluj rozwiązania programu Endpoint Protection na maszynie wirtualnej"** , gdy którykolwiek z następujących kontroli nie zostanie spełniony:
     * **HKLM: \ SOFTWARE\TrendMicro\Deep Security Agent** istnieje
     * **HKLM: \ SOFTWARE\TrendMicro\Deep Security Agent\InstallationFolder** istnieje
-    * Plik **dsa_query. cmd** znajduje się w folderze instalacyjnym
-    * Uruchamianie **dsa_query. cmd** wyniki z **składnikiem. am. Mode: wykryto agenta zabezpieczeń w usłudze Trend Micro głęboki**
+    * Plik **dsa_query. cmd** zostanie znaleziony w folderze instalacyjnym
+    * Uruchamianie **polecenia dsa_query. cmd** z użyciem **składnika. am. Mode: wykryto agenta zabezpieczeń w usłudze Trend Micro głęboki**
 
 ## <a name="symantec-endpoint-protection"></a>Symantec Endpoint Protection
 Security Center zaleca się **"Zainstaluj rozwiązania programu Endpoint Protection na maszynie wirtualnej"** , gdy którykolwiek z następujących kontroli nie zostanie spełniony:
@@ -173,7 +173,7 @@ Security Center zaleca **"Rozwiązywanie problemów z kondycją programu Endpoin
 
 - **"/opt/Sophos-AV/bin/savconfig Get LiveProtection"** zwraca włączone
 
-## <a name="troubleshoot-and-support"></a>Rozwiązywanie problemów i pomoc techniczna
+## <a name="troubleshoot-and-support"></a>Rozwiązywanie problemów i pomocy technicznej
 
 ### <a name="troubleshoot"></a>Rozwiązywanie problemów
 
@@ -181,4 +181,4 @@ Dzienniki rozszerzeń programu Microsoft chroniące przed złośliwym kodem są 
 
 ### <a name="support"></a>Pomoc techniczna
 
-Aby uzyskać pomoc, skontaktuj się z ekspertami platformy Azure na [forach MSDN i Stack Overflow](https://azure.microsoft.com/support/forums/). Lub plik zdarzenia pomocy technicznej platformy Azure. Przejdź do [witryny pomocy technicznej systemu Azure](https://azure.microsoft.com/support/options/) i wybierz pozycję Uzyskaj pomoc techniczną. Aby uzyskać informacje o korzystaniu z pomocy technicznej platformy Azure, przeczytaj temat [Microsoft Azure support — często zadawane pytania](https://azure.microsoft.com/support/faq/).
+Aby uzyskać pomoc, skontaktuj się z ekspertami platformy Azure na [forach MSDN i Stack Overflow](https://azure.microsoft.com/support/forums/). Lub plik zdarzenia pomocy technicznej platformy Azure. Przejdź do [witryny pomocy technicznej platformy Azure](https://azure.microsoft.com/support/options/) i wybierz Uzyskaj pomoc techniczną. Aby uzyskać informacje o korzystaniu z pomocy technicznej platformy Azure, przeczytaj [pomocy technicznej Microsoft Azure — często zadawane pytania](https://azure.microsoft.com/support/faq/).

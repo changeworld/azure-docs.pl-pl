@@ -1,6 +1,6 @@
 ---
 title: Azure AD Connect nową konfigurację agenta aprowizacji w chmurze
-description: W tym temacie opisano sposób instalowania aprowizacji w chmurze.
+description: W tym artykule opisano sposób instalowania aprowizacji w chmurze.
 services: active-directory
 author: billmath
 manager: daveba
@@ -11,74 +11,83 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f08a1359cfd8a2793d92315a6b03567b0b3f847d
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 853950cf441007eac0170f32f28f2d9c16a71292
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74997126"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75549435"
 ---
-# <a name="azure-ad-connect-cloud-provisioning-new-configuration"></a>Azure AD Connect nową konfigurację aprowizacji w chmurze
+# <a name="azure-ad-connect-cloud-provisioning-new-agent-configuration"></a>Azure AD Connect nową konfigurację agenta aprowizacji w chmurze
 
-Po zainstalowaniu agenta należy zalogować się do Azure Portal i skonfigurować aprowizacji.  Aby włączyć agenta, wykonaj następujące czynności.
+Po zainstalowaniu agenta należy zalogować się do Azure Portal i skonfigurować usługę Azure Active Directory (Azure AD) łączenie się z obsługą chmury. Wykonaj następujące kroki, aby włączyć agenta.
 
 ## <a name="configure-provisioning"></a>Konfigurowanie aprowizacji
-Aby skonfigurować Inicjowanie obsługi, wykonaj następujące czynności:
+Aby skonfigurować Inicjowanie obsługi, wykonaj następujące kroki.
 
-1.  W portalu usługi Azure AD kliknij pozycję **Azure Active Directory**
-2.  Kliknij **Azure AD Connect**
-3.  Wybierz pozycję **Zarządzaj Provisioning (wersja zapoznawcza)** 
-![](media/how-to-configure/manage1.png)
+1.  W witrynie Azure Portal wybierz pozycję **Azure Active Directory**.
+1.  Wybierz **Azure AD Connect**.
+1.  Wybierz pozycję **Zarządzaj Provisioning (wersja zapoznawcza)** .
 
-4.  Kliknij pozycję **Nowa konfiguracja**.
-5.  Na ekranie Konfiguracja domena lokalna jest wstępnie wypełniona
-6. Wprowadź **wiadomość e-mail z powiadomieniem**. Ta wiadomość e-mail zostanie powiadomiona, gdy obsługa administracyjna nie jest w dobrej kondycji.  
-8. Przenieś selektor, aby go **włączyć** , a następnie kliknij przycisk **Zapisz**.
-![](media/tutorial-single-forest/configure2.png)
+    ![Zarządzanie obsługą administracyjną (wersja zapoznawcza)](media/how-to-configure/manage1.png)
 
-## <a name="scoping-provisioning-to-specific-users-and-groups"></a>Określanie zakresu aprowizacji dla określonych użytkowników i grup
-Jeśli chcesz, aby Agent mógł tylko synchronizować określonych użytkowników i grupy, możesz to zrobić. Zakres można określać przy użyciu lokalnych grup usługi AD lub jednostek organizacyjnych. W ramach konfiguracji nie można konfigurować grup i jednostek organizacyjnych. 
+1.  Wybierz pozycję **Nowa konfiguracja**.
+1.  Na ekranie Konfiguracja jest wstępnie wypełniona domena lokalna.
+1.  Wprowadź **wiadomość e-mail z powiadomieniem**. Ta wiadomość e-mail zostanie powiadomiona, gdy obsługa administracyjna nie jest w dobrej kondycji.
+1.  Przenieś selektor, aby go **włączyć**, a następnie wybierz pozycję **Zapisz**.
 
-1.  W portalu usługi Azure AD kliknij pozycję **Azure Active Directory**
-2.  Kliknij **Azure AD Connect**
-3.  Wybierz pozycję **Zarządzaj aprowizacjim (wersja zapoznawcza)**
-4.  W obszarze **Konfiguracja** kliknij konfigurację.  
-![](media/how-to-configure/scope1.png)
+    ![Inicjowanie obsługi usługi Azure AD (wersja zapoznawcza)](media/tutorial-single-forest/configure2.png)
 
-5.  W obszarze **Konfiguracja**wybierz pozycję **Wszyscy użytkownicy** , aby zmienić zakres reguły konfiguracji.
-![](media/how-to-configure/scope2.png)
+## <a name="scope-provisioning-to-specific-users-and-groups"></a>Inicjowanie obsługi zakresu dla określonych użytkowników i grup
+Można ograniczyć agenta do synchronizowania określonych użytkowników i grup za pomocą lokalnych grup Active Directory lub jednostek organizacyjnych. W ramach konfiguracji nie można konfigurować grup i jednostek organizacyjnych. 
 
-6. Po prawej stronie można zmienić zakres, aby uwzględnić tylko grupy zabezpieczeń, wprowadzając nazwę wyróżniającą grupy, a następnie klikając przycisk **Dodaj**.
-![](media/how-to-configure/scope3.png)
+1.  W witrynie Azure Portal wybierz pozycję **Azure Active Directory**.
+1.  Wybierz **Azure AD Connect**.
+1.  Wybierz pozycję **Zarządzaj Provisioning (wersja zapoznawcza)** .
+1.  W obszarze **Konfiguracja**wybierz konfigurację.
 
-7. Lub Zmień ją tak, aby obejmowała tylko określone jednostki organizacyjne. Kliknij przycisk **gotowe** i **Zapisz**.
-![](media/how-to-configure/scope4.png)
+    ![Sekcja konfiguracji](media/how-to-configure/scope1.png)
+
+1.  W obszarze **Konfiguracja**wybierz pozycję **Wszyscy użytkownicy** , aby zmienić zakres reguły konfiguracji.
+
+    ![Opcja wszyscy użytkownicy](media/how-to-configure/scope2.png)
+
+1. Po prawej stronie można zmienić zakres, aby uwzględnić tylko grupy zabezpieczeń. Wprowadź nazwę wyróżniającą grupy, a następnie wybierz pozycję **Dodaj**.
+
+    ![Wybrane opcje grup zabezpieczeń](media/how-to-configure/scope3.png)
+
+1.  Lub można zmienić zakres, aby uwzględnić tylko określone jednostki organizacyjne. Wybierz pozycję **gotowe** i **Zapisz**.
+
+    ![Opcja wybranej jednostki organizacyjnej](media/how-to-configure/scope4.png)
 
 
 ## <a name="restart-provisioning"></a>Ponowne uruchamianie aprowizacji 
-Jeśli nie chcesz czekać na następne zaplanowane uruchomienie, możesz wyzwolić uruchomienie usługi przy użyciu przycisku Uruchom ponownie Inicjowanie obsługi administracyjnej. 
-1.  W portalu usługi Azure AD kliknij pozycję **Azure Active Directory**
-2.  Kliknij **Azure AD Connect**
-3.  Wybierz pozycję **Zarządzaj aprowizacjim (wersja zapoznawcza)**
-4.  W obszarze **Konfiguracja** kliknij konfigurację.  
-![](media/how-to-configure/scope1.png)
+Jeśli nie chcesz czekać na następne zaplanowane uruchomienie, wyzwól uruchomienie aprowizacji za pomocą przycisku **ponowne Inicjowanie obsługi administracyjnej** . 
+1.  W witrynie Azure Portal wybierz pozycję **Azure Active Directory**.
+1.  Wybierz **Azure AD Connect**.
+1.  Wybierz pozycję **Zarządzaj Provisioning (wersja zapoznawcza)** .
+1.  W obszarze **Konfiguracja**wybierz konfigurację.
 
-5.  W górnej części kliknij pozycję **Uruchom ponownie Inicjowanie obsługi administracyjnej**.
+    ![Wybór konfiguracji w celu ponownego uruchomienia aprowizacji](media/how-to-configure/scope1.png)
 
-## <a name="removing-a-configuration"></a>Usuwanie konfiguracji
-Jeśli chcesz usunąć konfigurację, możesz to zrobić, wykonując następujące kroki.
+1.  W górnej części wybierz pozycję **Uruchom ponownie Inicjowanie obsługi**.
 
-1.  W portalu usługi Azure AD kliknij pozycję **Azure Active Directory**
-2.  Kliknij **Azure AD Connect**
-3.  Wybierz pozycję **Zarządzaj aprowizacjim (wersja zapoznawcza)**
-4.  W obszarze **Konfiguracja** kliknij konfigurację.  
-![](media/how-to-configure/scope1.png)
+## <a name="remove-a-configuration"></a>Usuń konfigurację
+Aby usunąć konfigurację, wykonaj następujące kroki.
 
-5.  Kliknij przycisk **Usuń**w górnej części strony.
-![](media/how-to-configure/remove1.png)
+1.  W witrynie Azure Portal wybierz pozycję **Azure Active Directory**.
+1.  Wybierz **Azure AD Connect**.
+1.  Wybierz pozycję **Zarządzaj Provisioning (wersja zapoznawcza)** .
+1.  W obszarze **Konfiguracja**wybierz konfigurację.
+
+    ![Wybór konfiguracji w celu usunięcia konfiguracji](media/how-to-configure/scope1.png)
+
+1.  W górnej części ekranu konfiguracja wybierz pozycję **Usuń**.
+
+    ![Przycisk Usuń](media/how-to-configure/remove1.png)
 
 >[!IMPORTANT]
->Nie ma potwierdzenia przed usunięciem konfiguracji, dlatego należy się upewnić, że jest to akcja, którą chcesz wykonać przed kliknięciem przycisku **Usuń**.
+>Nie ma potwierdzenia przed usunięciem konfiguracji. Upewnij się, że jest to akcja, którą chcesz wykonać przed wybraniem opcji **Usuń**.
 
 
 ## <a name="next-steps"></a>Następne kroki 

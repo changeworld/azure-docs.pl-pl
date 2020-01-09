@@ -1,25 +1,14 @@
 ---
-title: Praca z niezawodnymi kolekcjami | Microsoft Docs
-description: Poznaj najlepsze rozwiązania dotyczące pracy z niezawodnymi kolekcjami.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: 39e0cd6b-32c4-4b97-bbcf-33dad93dcad1
-ms.service: service-fabric
-ms.devlang: dotnet
+title: Praca z elementami Reliable Collections
+description: Poznaj najlepsze rozwiązania dotyczące pracy z niezawodnymi kolekcjami w aplikacji Service Fabric platformy Azure.
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/22/2019
-ms.author: atsenthi
-ms.openlocfilehash: 2d1284115a35881087e0ced0ee735ea38ce3f5ce
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 4a1f48d9523e5d753c222f0526e210a30e1927e2
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68598702"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645977"
 ---
 # <a name="working-with-reliable-collections"></a>Praca z elementami Reliable Collections
 Service Fabric oferuje model programowania stanowego dostępny dla deweloperów platformy .NET za pośrednictwem niezawodnych kolekcji. W Service Fabric udostępnia niezawodne słowniki i niezawodne klasy kolejek. W przypadku korzystania z tych klas stan jest partycjonowany (na potrzeby skalowalności), replikowany (na potrzeby dostępności) i transakcyjny w ramach partycji (dla semantyki KWASowej). Przyjrzyjmy się typowi użycia niezawodnego obiektu słownika i zobacz, co faktycznie robi.
@@ -57,7 +46,7 @@ Zwykle napiszesz kod w celu reagowania na licznik limit czasu przez przechwyceni
 
 Po pobraniu blokady addasync dodaje odwołania do obiektu klucza i wartości do wewnętrznego słownika tymczasowego skojarzonego z obiektem ITransaction. Jest to gotowe do udostępnienia semantyki do odczytu i zapisu. Oznacza to, że po wywołaniu addasync, późniejsze wywołanie do TryGetValueAsync (przy użyciu tego samego metody ITransaction) zwróci wartość, nawet jeśli transakcja nie została jeszcze zatwierdzona. Następnie funkcja addasync serializować obiekty klucza i wartości do tablic bajtowych i dołącza te tablice bajtowe do pliku dziennika w węźle lokalnym. Na koniec Metoda addasync wysyła tablice bajtów do wszystkich replik pomocniczych, dzięki czemu mają one te same informacje o kluczu/wartości. Mimo że informacje o kluczu/wartości są zapisywane w pliku dziennika, informacje nie są uważane za część słownika, dopóki transakcja, z którą są skojarzone, została zatwierdzona.
 
-W powyższym kodzie, wywołanie do CommitAsync zatwierdza wszystkie operacje transakcji. W celu dołączenia informacji o zatwierdzeniu do pliku dziennika w węźle lokalnym, a także do wszystkich replik pomocniczych. Po odinstalowaniu kworum (większości) replik wszystkie zmiany danych są uznawane za trwałe i wszystkie blokady skojarzone z kluczami, które były manipulowane za pośrednictwem obiektu ITransaction, są uwalniane, więc inne wątki/transakcje mogą manipulować tymi samymi kluczami i ich wartością.
+W powyższym kodzie, wywołanie do CommitAsync zatwierdza wszystkie operacje transakcji. W celu dołączenia informacji o zatwierdzeniu do pliku dziennika w węźle lokalnym, a także do wszystkich replik pomocniczych. Po odinstalowaniu kworum (większości) replik wszystkie zmiany danych są uznawane za trwałe i wszystkie blokady skojarzone z kluczami, które były manipulowane za pośrednictwem obiektu ITransaction, są uwalniane, więc inne wątki/transakcje mogą manipulować tymi samymi kluczami i ich wartościami.
 
 Jeśli CommitAsync nie jest wywoływana (zazwyczaj z powodu zgłaszanego wyjątku), obiekt ITransaction zostanie usunięty. Podczas likwidowania niezatwierdzonego obiektu ITransaction Service Fabric dołącza informacje o przerwaniu do pliku dziennika węzła lokalnego i nic nie należy wysyłać do żadnej z replik pomocniczych. Następnie zostaną wydane wszystkie blokady skojarzone z kluczami, które były manipulowane za pośrednictwem transakcji.
 
@@ -143,7 +132,7 @@ using (ITransaction tx = StateManager.CreateTransaction())
 ```
 
 ## <a name="define-immutable-data-types-to-prevent-programmer-error"></a>Zdefiniuj niezmienne typy danych, aby zapobiec błędom programisty
-Najlepiej, gdy chcemy, aby kompilator zgłaszał błędy w przypadku przypadkowego utworzenia kodu, który jest niezmiennym stanem obiektu. Jednak C# kompilator nie ma możliwości wykonania tej czynności. Aby uniknąć potencjalnych błędów programisty, zdecydowanie zalecamy zdefiniowanie typów używanych z niezawodnymi kolekcjami, które mają być niezmienne. W związku z tym oznacza to, że można nawiązać podstawowe typy wartości (takie jak liczby [Int32, UInt64, itp.], DateTime, GUID, TimeSpan i like). Można również użyć ciągu. Najlepszym rozwiązaniem jest uniknięcie właściwości kolekcji jako serializacji i deserializacji ich, co może często pogarszać wydajność. Jeśli jednak chcesz użyć właściwości kolekcji, zdecydowanie zalecamy korzystanie z programu. Biblioteka niemodyfikowalnych kolekcji w sieci ([System. Collections.](https://www.nuget.org/packages/System.Collections.Immutable/)). Ta biblioteka jest dostępna do pobrania z https://nuget.org programu. Zalecamy również opieczętowanie klas i udostępnianie pól tylko do odczytu, gdy tylko jest to możliwe.
+Najlepiej, gdy chcemy, aby kompilator zgłaszał błędy w przypadku przypadkowego utworzenia kodu, który jest niezmiennym stanem obiektu. Jednak C# kompilator nie ma możliwości wykonania tej czynności. Aby uniknąć potencjalnych błędów programisty, zdecydowanie zalecamy zdefiniowanie typów używanych z niezawodnymi kolekcjami, które mają być niezmienne. W związku z tym oznacza to, że można nawiązać podstawowe typy wartości (takie jak liczby [Int32, UInt64, itp.], DateTime, GUID, TimeSpan i like). Można również użyć ciągu. Najlepszym rozwiązaniem jest uniknięcie właściwości kolekcji jako serializacji i deserializacji ich, co może często pogarszać wydajność. Jeśli jednak chcesz użyć właściwości kolekcji, zdecydowanie zalecamy korzystanie z programu. Biblioteka niemodyfikowalnych kolekcji w sieci ([System. Collections.](https://www.nuget.org/packages/System.Collections.Immutable/)). Ta biblioteka jest dostępna do pobrania z https://nuget.org. Zalecamy również opieczętowanie klas i udostępnianie pól tylko do odczytu, gdy tylko jest to możliwe.
 
 Poniższy typ UserInfo przedstawia sposób definiowania niezmiennego typu wykorzystującego wymienione wcześniej zalecenia.
 
@@ -201,7 +190,7 @@ public struct ItemId
 ```
 
 ## <a name="schema-versioning-upgrades"></a>Przechowywanie wersji schematu (uaktualnienia)
-Wewnętrznie, niezawodne kolekcje serializacji obiektów przy użyciu. Obiekt DataContractSerializer sieci. Serializowane obiekty są utrwalane na lokalnym dysku repliki podstawowej i są również przesyłane do replik pomocniczych. W miarę dojrzewania usługi prawdopodobnie chcesz zmienić rodzaj danych (schematu) wymaganego przez usługę. Zadbaj o przechowywanie wersji swoich danych. Przede wszystkim należy zawsze mieć możliwość deserializacji starych danych. W związku z tym, kod deserializacji musi być w nieskończonie zgodny z poprzednimi wersjami: Wersja 333 kodu usługi musi być w stanie pracować nad danymi umieszczonymi w niezawodnej kolekcji w wersji 1 (kod usługi) 5 lat temu.
+Wewnętrznie, niezawodne kolekcje serializacji obiektów przy użyciu. Obiekt DataContractSerializer sieci. Serializowane obiekty są utrwalane na lokalnym dysku repliki podstawowej i są również przesyłane do replik pomocniczych. W miarę dojrzewania usługi prawdopodobnie chcesz zmienić rodzaj danych (schematu) wymaganego przez usługę. Zadbaj o przechowywanie wersji swoich danych. Przede wszystkim należy zawsze mieć możliwość deserializacji starych danych. W związku z tym oznacza to, że kod deserializacji musi być niezgodny z poprzednimi wersjami: wersja 333 kodu usługi musi być w stanie pracować nad danymi umieszczonymi w niezawodnej kolekcji, w wersji 1 roku temu.
 
 Ponadto kod usługi jest uaktualniany po jednej domenie uaktualnienia w danym momencie. W trakcie uaktualniania dostępne są dwie różne wersje kodu usługi jednocześnie. Należy unikać, aby nowa wersja kodu usługi korzystała z nowego schematu, ponieważ stare wersje kodu usługi mogą nie być w stanie obsłużyć nowego schematu. Jeśli to możliwe, należy zaprojektować każdą wersję usługi, aby była dalej zgodna z jedną wersją. W związku z tym oznacza to, że w wersji 1 kodu usługi powinna być możliwa ignorowanie wszelkich elementów schematu, które nie są jawnie obsługiwane. Jednak musi mieć możliwość zapisywania wszelkich danych, które nie są wyraźnie znane, i zapisywać je z powrotem podczas aktualizowania klucza lub wartości słownika.
 
@@ -209,13 +198,13 @@ Ponadto kod usługi jest uaktualniany po jednej domenie uaktualnienia w danym mo
 > Chociaż można modyfikować schemat klucza, należy upewnić się, że jego kod skrótu i algorytm Equals są stabilne. Jeśli zmienisz sposób działania jednego z tych algorytmów, nie będzie można ponownie wyszukiwać klucza w niezawodnym słowniku.
 > Ciągi .NET mogą służyć jako klucz, ale jako klucz używają samego ciągu, ale jako klucza nie należy używać wyniku String. GetHashCode.
 
-Alternatywnie można wykonać czynności, które zwykle są określane jako dwa uaktualnienia. W przypadku uaktualniania dwuetapowego należy uaktualnić usługę z wersji od 1 do v2: V2 zawiera kod, który wie, jak radzić sobie z nową zmianą schematu, ale ten kod nie jest wykonywany. Gdy kod v2 odczytuje dane V1, działa na nim i zapisuje dane v1. Następnie po zakończeniu uaktualniania we wszystkich domenach uaktualnienia można w jakiś sposób sygnalizować sygnały z uruchomionym wystąpieniem v2, że uaktualnienie zostało ukończone. (Jeden ze sposobów na sygnalizowanie polega na przewróceniu uaktualnienia konfiguracji; jest to co sprawia, że jest to dwufazowe uaktualnienie). Teraz wystąpienia v2 mogą odczytywać dane w wersji 1, konwertować je na dane w wersji 2, wykonywać na nich operacje i zapisywać je jako dane w wersji 2. Gdy inne wystąpienia odczytują dane w wersji 2, nie wymagają ich konwersji, działają na nich i zapisują dane w wersji 2.
+Alternatywnie można wykonać czynności, które zwykle są określane jako dwa uaktualnienia. W przypadku uaktualniania dwufazowego należy uaktualnić usługę z wersji od 1 do v2: V2 zawiera kod, który zna sposób postępowania z nową zmianą schematu, ale ten kod nie jest wykonywany. Gdy kod v2 odczytuje dane V1, działa na nim i zapisuje dane v1. Następnie po zakończeniu uaktualniania we wszystkich domenach uaktualnienia można w jakiś sposób sygnalizować sygnały z uruchomionym wystąpieniem v2, że uaktualnienie zostało ukończone. (Jeden ze sposobów na sygnalizowanie polega na przewróceniu uaktualnienia konfiguracji; jest to co sprawia, że jest to dwufazowe uaktualnienie). Teraz wystąpienia v2 mogą odczytywać dane w wersji 1, konwertować je na dane w wersji 2, wykonywać na nich operacje i zapisywać je jako dane w wersji 2. Gdy inne wystąpienia odczytują dane w wersji 2, nie wymagają ich konwersji, działają na nich i zapisują dane w wersji 2.
 
 ## <a name="next-steps"></a>Następne kroki
 Aby dowiedzieć się więcej o tworzeniu kontraktowych zgodnych danych, zobacz [Kontrakty danych zgodne z przekazywaniem dalej](https://msdn.microsoft.com/library/ms731083.aspx)
 
 Aby poznać najlepsze rozwiązania dotyczące wersji umów dotyczących danych, zobacz [przechowywanie wersji kontraktu danych](https://msdn.microsoft.com/library/ms731138.aspx)
 
-Aby dowiedzieć się, jak zaimplementować Kontrakty danych odporne na wersje, zobacz [wywołania zwrotne serializacji z](https://msdn.microsoft.com/library/ms733734.aspx) odpornością na wersje
+Aby dowiedzieć się, jak zaimplementować Kontrakty danych odporne na wersje, zobacz [wywołania zwrotne serializacji z odpornością na wersje](https://msdn.microsoft.com/library/ms733734.aspx)
 
 Aby dowiedzieć się, jak zapewnić strukturę danych, która może współdziałać z wieloma wersjami, zobacz [IExtensibleDataObject](https://msdn.microsoft.com/library/system.runtime.serialization.iextensibledataobject.aspx)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/16/2018
 ms.author: kumud
-ms.openlocfilehash: 47da2524f719e53edcbd89686a1a0b76fa6e79cd
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 3624c8fd8b15f6d35917f4ead676221d93a26ddc
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73802709"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646493"
 ---
 # <a name="plan-virtual-networks"></a>Planowanie sieci wirtualnych
 
@@ -39,9 +39,9 @@ Wszystkie zasoby platformy Azure są tworzone w regionie i w ramach subskrypcji 
 
 ## <a name="subscriptions"></a>Subskrypcje
 
-W ramach każdej subskrypcji można wdrożyć dowolną liczbę sieci wirtualnych, która jest wymagana do [limitu](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits). Niektóre organizacje mają różne subskrypcje dla różnych działów, na przykład. Aby uzyskać więcej informacji i zagadnień dotyczących subskrypcji, zobacz temat [Zarządzanie subskrypcjami](/azure/architecture/cloud-adoption-guide/subscription-governance#define-your-hierarchy).
+W ramach każdej subskrypcji można wdrożyć dowolną liczbę sieci wirtualnych, która jest wymagana do [limitu](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits). Niektóre organizacje mają różne subskrypcje dla różnych działów, na przykład. Aby uzyskać więcej informacji i zagadnień dotyczących subskrypcji, zobacz temat [Zarządzanie subskrypcjami](/azure/architecture/cloud-adoption-guide/subscription-governance#define-your-hierarchy).
 
-## <a name="segmentation"></a>Segmentacji
+## <a name="segmentation"></a>Segmentacja
 
 Można utworzyć wiele sieci wirtualnych na subskrypcję i na region. W każdej sieci wirtualnej można utworzyć wiele podsieci. Poniższe zagadnienia ułatwiają określenie, ile sieci wirtualnych i podsieci są wymagane:
 
@@ -51,14 +51,14 @@ Sieć wirtualna to wirtualna, izolowana część sieci publicznej platformy Azur
 
 - Czy istnieją jakieś wymagania dotyczące zabezpieczeń organizacyjnych na potrzeby izolowania ruchu w oddzielnych sieciach wirtualnych? Można nawiązać połączenie z sieciami wirtualnymi. W przypadku łączenia sieci wirtualnych można zaimplementować sieciowe urządzenie wirtualne, takie jak zapora, aby sterować przepływem ruchu między sieciami wirtualnymi. Aby uzyskać więcej informacji, zobacz [zabezpieczenia](#security) i [łączność](#connectivity).
 - Czy istnieją jakieś wymagania organizacyjne na potrzeby izolowania sieci wirtualnych w osobnych [subskrypcjach](#subscriptions) lub [regionach](#regions)?
-- [Interfejs sieciowy](virtual-network-network-interface.md) umożliwia maszynie wirtualnej komunikowanie się z innymi zasobami. Każdy interfejs sieciowy ma przypisane co najmniej jeden prywatny adres IP. Ile interfejsów sieciowych i [prywatnych adresów IP](virtual-network-ip-addresses-overview-arm.md#private-ip-addresses) jest wymaganych w sieci wirtualnej? Istnieją [limity](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits) liczby interfejsów sieciowych i prywatnych adresów IP, które mogą znajdować się w sieci wirtualnej.
+- [Interfejs sieciowy](virtual-network-network-interface.md) umożliwia maszynie wirtualnej komunikowanie się z innymi zasobami. Każdy interfejs sieciowy ma przypisane co najmniej jeden prywatny adres IP. Ile interfejsów sieciowych i [prywatnych adresów IP](virtual-network-ip-addresses-overview-arm.md#private-ip-addresses) jest wymaganych w sieci wirtualnej? Istnieją [limity](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits) liczby interfejsów sieciowych i prywatnych adresów IP, które mogą znajdować się w sieci wirtualnej.
 - Czy chcesz połączyć sieć wirtualną z inną siecią wirtualną lub siecią lokalną? Niektóre sieci wirtualne można połączyć z każdą inną lub siecią lokalną, ale nie z innych. Aby uzyskać więcej informacji, zobacz [łączność](#connectivity). Każda sieć wirtualna, która jest podłączona do innej sieci wirtualnej lub sieci lokalnej, musi mieć unikatową przestrzeń adresową. Każda sieć wirtualna ma jeden lub więcej zakresów adresów publicznych lub prywatnych przypisanych do przestrzeni adresowej. Zakres adresów jest określony w formacie Classless Internet Domain Routing (CIDR), takim jak 10.0.0.0/16. Dowiedz się więcej o [zakresach adresów](manage-virtual-network.md#add-or-remove-an-address-range) dla sieci wirtualnych.
 - Czy istnieją jakieś wymagania administracyjne organizacji dotyczące zasobów w różnych sieciach wirtualnych? Jeśli tak, możesz oddzielić zasoby do oddzielnej sieci wirtualnej, aby uprościć [przypisanie uprawnień](#permissions) do osób w organizacji lub przypisać różne zasady do różnych sieci wirtualnych.
 - W przypadku wdrażania niektórych zasobów usługi platformy Azure w sieci wirtualnej tworzy własną sieć wirtualną. Aby ustalić, czy usługa platformy Azure tworzy własną sieć wirtualną, zobacz informacje dla każdej [usługi platformy Azure, którą można wdrożyć w sieci wirtualnej](virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network).
 
 ### <a name="subnets"></a>Podsieci
 
-Sieć wirtualna może zostać ujęta w jedną lub więcej podsieci do [limitów](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits). Kwestie, które należy wziąć pod uwagę podczas decydowania, czy należy utworzyć jedną podsieć lub wiele sieci wirtualnych w ramach subskrypcji:
+Sieć wirtualna może zostać ujęta w jedną lub więcej podsieci do [limitów](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits). Kwestie, które należy wziąć pod uwagę podczas decydowania, czy należy utworzyć jedną podsieć lub wiele sieci wirtualnych w ramach subskrypcji:
 
 - Każda podsieć musi mieć unikatowy zakres adresów określony w formacie CIDR w przestrzeni adresowej sieci wirtualnej. Zakres adresów nie może pokrywać się z innymi podsieciami w sieci wirtualnej.
 - Jeśli planujesz wdrożenie niektórych zasobów usługi platformy Azure w sieci wirtualnej, mogą oni potrzebować lub utworzyć własną podsieć, więc musi być wystarczająca ilość wolnego miejsca do wykonania. Aby ustalić, czy usługa platformy Azure tworzy własną podsieć, zobacz informacje dotyczące poszczególnych [usług platformy Azure, które można wdrożyć w sieci wirtualnej](virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network). Jeśli na przykład Sieć wirtualna jest podłączona do sieci lokalnej przy użyciu VPN Gateway platformy Azure, Sieć wirtualna musi mieć dedykowaną podsieć dla bramy. Dowiedz się więcej o [podsieciach bramy](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub).
@@ -66,7 +66,7 @@ Sieć wirtualna może zostać ujęta w jedną lub więcej podsieci do [limitów]
 - Możesz ograniczyć dostęp do zasobów platformy Azure, takich jak konto usługi Azure Storage lub usługa Azure SQL Database, do określonych podsieci za pomocą punktu końcowego usługi sieci wirtualnej. Ponadto możesz odmówić dostępu do zasobów z Internetu. Można utworzyć wiele podsieci i włączyć punkt końcowy usługi dla niektórych podsieci, ale nie do innych. Dowiedz się więcej o [punktach końcowych usługi](virtual-network-service-endpoints-overview.md)i zasobach platformy Azure, na których można je włączyć.
 - Można skojarzyć zero lub jedną sieciową grupę zabezpieczeń z każdą podsiecią w sieci wirtualnej. Do każdej podsieci można skojarzyć tę samą lub inną sieciową grupę zabezpieczeń. Każda sieciowa Grupa zabezpieczeń zawiera reguły, które zezwalają na ruch do i ze źródeł i miejsc docelowych lub odmawiają go. Dowiedz się więcej na temat [sieciowych grup zabezpieczeń](#traffic-filtering).
 
-## <a name="security"></a>Bezpieczeństwo
+## <a name="security"></a>Zabezpieczenia
 
 Ruch sieciowy do i z zasobów w sieci wirtualnej można filtrować przy użyciu sieciowych grup zabezpieczeń i sieciowych urządzeń wirtualnych. Można kontrolować sposób, w jaki platforma Azure kieruje ruchem z podsieci. Można także ograniczyć, kto w organizacji może współpracować z zasobami w sieciach wirtualnych.
 
@@ -107,7 +107,7 @@ Zasoby w jednej sieci wirtualnej nie mogą rozpoznać nazw zasobów w równorzę
 
 ## <a name="permissions"></a>Uprawnienia
 
-Platforma Azure używa [kontroli dostępu opartej na rolach](../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (RBAC) do zasobów. Uprawnienia są przypisywane do [zakresu](../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#scope) w następującej hierarchii: grupy zarządzania, subskrypcji, grupy zasobów i poszczególnych zasobów. Aby dowiedzieć się więcej o hierarchii, zobacz [organizowanie zasobów](../azure-resource-manager/management-groups-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Aby współpracować z sieciami wirtualnymi platformy Azure i wszystkimi związanymi z nimi funkcjami, takimi jak Komunikacja równorzędna, sieciowe grupy zabezpieczeń, punkty końcowe usługi i tabele tras, można przypisać członków organizacji do wbudowanego [właściciela](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#owner), [współautora](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#contributor)lub [ Role współautor sieci](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) , a następnie przypisz rolę do odpowiedniego zakresu. Jeśli chcesz przypisać określone uprawnienia dla podzestawu możliwości sieci wirtualnej, Utwórz [rolę niestandardową](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) i przypisz określone uprawnienia wymagane dla [sieci wirtualnych](manage-virtual-network.md#permissions), [podsieci i punktów końcowych usługi](virtual-network-manage-subnet.md#permissions), [interfejsów sieciowych ](virtual-network-network-interface.md#permissions), [Komunikacja równorzędna](virtual-network-manage-peering.md#permissions), [Sieć i grupy zabezpieczeń aplikacji](manage-network-security-group.md#permissions)lub [tabele tras](manage-route-table.md#permissions) do roli.
+Platforma Azure używa [kontroli dostępu opartej na rolach](../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (RBAC) do zasobów. Uprawnienia są przypisywane do [zakresu](../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#scope) w następującej hierarchii: grupy zarządzania, subskrypcji, grupy zasobów i poszczególnych zasobów. Aby dowiedzieć się więcej o hierarchii, zobacz [organizowanie zasobów](../azure-resource-manager/management-groups-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Aby współpracować z sieciami wirtualnymi platformy Azure i wszystkimi związanymi z nimi funkcjami, takimi jak Komunikacja równorzędna, sieciowe grupy zabezpieczeń, punkty końcowe usługi i tabele tras, można przypisać członków organizacji do wbudowanych ról [właściciela](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#owner), [współautora](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#contributor)lub [współautorów sieci](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) , a następnie przypisać rolę do odpowiedniego zakresu. Jeśli chcesz przypisać określone uprawnienia dla podzestawu możliwości sieci wirtualnej, Utwórz [rolę niestandardową](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) i przypisz określone uprawnienia wymagane dla [sieci wirtualnych](manage-virtual-network.md#permissions), [podsieci i punktów końcowych usług](virtual-network-manage-subnet.md#permissions), [interfejsów sieciowych](virtual-network-network-interface.md#permissions), [komunikacji równorzędnej](virtual-network-manage-peering.md#permissions), [sieci i grup zabezpieczeń aplikacji](manage-network-security-group.md#permissions)lub [tabel tras](manage-route-table.md#permissions) do roli.
 
 ## <a name="policy"></a>Zasady
 

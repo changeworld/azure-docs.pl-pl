@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 11/26/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: 9ba9be7b4761e6633ffe3063b6bdba53c56b93bd
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 0be2efd3783d9a0a7992819c984c993c64000ecd
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561650"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644872"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---resources"></a>Zarządzanie infrastrukturą Azure DevTest Labs — zasoby
 Ten artykuł dotyczy wyrównania i zarządzania zasobami dla DevTest Labs w organizacji. 
@@ -44,7 +44,7 @@ Zanim organizacja zacznie używać platformy Azure do ogólnego opracowywania ap
 
 Ten model zapewnia organizacjom elastyczność umożliwiającą wdrażanie Azure DevTest Labs w odpowiedniej skali. Organizacja może obsługiwać setki laboratoriów dla różnych jednostek gospodarczych z 100 do 1000 maszyn wirtualnych działających równolegle. Promuje pojęcie scentralizowanego rozwiązania Enterprise Lab, które może korzystać z tych samych zasad zarządzania konfiguracją i kontroli zabezpieczeń.
 
-Ten model gwarantuje również, że organizacja nie wyczerpuje limitów zasobów skojarzonych z ich subskrypcją platformy Azure. Aby uzyskać szczegółowe informacje o limitach subskrypcji i usług, zobacz [limity subskrypcji i usług platformy Azure, przydziały i ograniczenia](../azure-subscription-service-limits.md). Proces aprowizacji DevTest Labs może zużywać dużą liczbę grup zasobów. Możesz poprosić o zwiększenie limitów przez żądanie pomocy technicznej w ramach subskrypcji usługi Azure DevTest. Nie ma to żadnego oddziaływania na zasoby w ramach subskrypcji produkcyjnej, ponieważ zwiększa się użycie subskrypcji deweloperskiej. Aby uzyskać więcej informacji na temat skalowania DevTest Labs, zobacz [skalowanie przydziałów i limitów w laboratoriach DevTest](devtest-lab-scale-lab.md).
+Ten model gwarantuje również, że organizacja nie wyczerpuje limitów zasobów skojarzonych z ich subskrypcją platformy Azure. Aby uzyskać szczegółowe informacje o limitach subskrypcji i usług, zobacz [limity subskrypcji i usług platformy Azure, przydziały i ograniczenia](../azure-resource-manager/management/azure-subscription-service-limits.md). Proces aprowizacji DevTest Labs może zużywać dużą liczbę grup zasobów. Możesz poprosić o zwiększenie limitów przez żądanie pomocy technicznej w ramach subskrypcji usługi Azure DevTest. Nie ma to żadnego oddziaływania na zasoby w ramach subskrypcji produkcyjnej, ponieważ zwiększa się użycie subskrypcji deweloperskiej. Aby uzyskać więcej informacji na temat skalowania DevTest Labs, zobacz [skalowanie przydziałów i limitów w laboratoriach DevTest](devtest-lab-scale-lab.md).
 
 Wspólny limit na poziomie subskrypcji, dla którego należy uwzględnić, to sposób przydzielania przypisań zakresu adresów IP sieci do obsługi zarówno subskrypcji produkcyjnych, jak i deweloperskich. Te przydziały powinny uwzględniać wzrost czasu (przy założeniu, że lokalna lub inna topologia sieci wymaga od przedsiębiorstwa zarządzania stosem sieciowym zamiast domyślnego wdrożenia platformy Azure). Zalecanym sposobem jest posiadanie kilku sieci wirtualnych, które mają duże prefiksy adresów IP i są dzielone z wieloma dużymi podsieciami, a nie z wieloma sieciami wirtualnymi z małymi podsieciami. Na przykład w przypadku 10 subskrypcji można zdefiniować 10 sieci wirtualnych (jednej dla każdej subskrypcji). Wszystkie laboratoria, które nie wymagają izolacji, mogą współużytkować tę samą podsieć w sieci wirtualnej subskrypcji.
 

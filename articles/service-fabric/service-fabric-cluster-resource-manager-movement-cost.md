@@ -1,28 +1,19 @@
 ---
-title: 'Service Fabric klastra Menedżer zasobów: koszt przenoszenia | Microsoft Docs'
-description: Przegląd kosztów przenoszenia dla usług Service Fabric Services
-services: service-fabric
-documentationcenter: .net
+title: 'Service Fabric klastra Menedżer zasobów: koszt przenoszenia'
+description: Dowiedz się więcej o kosztach przenoszenia usług Service Fabric i sposobach ich określenia do dopasowania do potrzeb związanych z architekturą, w tym konfiguracji dynamicznej.
 author: masnider
-manager: chackdan
-editor: ''
-ms.assetid: f022f258-7bc0-4db4-aa85-8c6c8344da32
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 80845fca8d163a4ebe9257f19825624acef3a815
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: af3e01d0d5a605c052be24eed8e14ee3449e2c79
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73243014"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75563347"
 ---
 # <a name="service-movement-cost"></a>Koszt przeniesienia usługi
-Jest to czynnik, który Menedżer zasobów klastrze Service Fabric podczas próby ustalenia, które zmiany należy wprowadzić w klastrze, jest kosztem tych zmian. Pojęcie "koszt" jest wymieniane z informacjami o tym, jak dużo można ulepszyć klaster. Koszt jest przynoszony podczas przechodzenia usług na potrzeby równoważenia, defragmentacji i innych wymagań. Celem jest spełnienie wymagań dotyczących najmniej niezakłóconych lub kosztownych sposobów. 
+Jest to czynnik, który Menedżer zasobów klastrze Service Fabric podczas próby ustalenia, które zmiany należy wprowadzić w klastrze, jest kosztem tych zmian. Pojęcie "koszt" jest wymieniane z informacjami o tym, jak dużo można ulepszyć klaster. Koszt jest przynoszony podczas przechodzenia usług na potrzeby równoważenia, defragmentacji i innych wymagań. Celem jest spełnienie wymagań dotyczących najmniej niezakłóconych lub kosztownych sposobów.
 
 Przeniesienie usług na minimalny koszt czasu procesora i przepustowości sieci. W przypadku usług stanowych wymagane jest skopiowanie stanu tych usług, zużywających dodatkową pamięć i dysk. Minimalizacja kosztu rozwiązań, które Menedżer zasobów z klastrem platformy Azure Service Fabric, pomaga zapewnić, że zasoby klastra nie są niepotrzebne. Jednak nie ma potrzeby ignorowania rozwiązań, które znacząco zwiększą przydział zasobów w klastrze.
 
@@ -76,7 +67,7 @@ this.Partition.ReportMoveCost(MoveCost.Medium);
 ```
 
 ## <a name="impact-of-move-cost"></a>Wpływ kosztu przenoszenia
-MoveCost ma pięć poziomów: zero, niski, średni, wysoki i VeryHigh. Mają zastosowanie następujące reguły:
+MoveCost ma pięć poziomów: zero, niski, średni, wysoki i VeryHigh. Mają zastosowanie następujące zasady:
 
 * MoveCosts są względem siebie, z wyjątkiem wartości zero i VeryHigh. 
 * Zero kosztu przeniesienia oznacza, że przenoszenie jest bezpłatne i nie powinno być wliczane do wyniku rozwiązania.

@@ -2,18 +2,18 @@
 title: Głębokie szczegółowe — analiza zaawansowana — Azure HDInsight
 description: Dowiedz się, w jaki sposób usługa Advanced Analytics używa algorytmów do przetwarzania danych Big Data w usłudze Azure HDInsight.
 author: ashishthaps
+ms.author: ashishth
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/14/2017
-ms.author: ashishth
-ms.openlocfilehash: 436825c6e5df2be524dc06ccdaf82f0156714679
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.custom: hdinsightactive
+ms.date: 01/01/2020
+ms.openlocfilehash: 6fc6ea9ca0ce3bf82f027b964db94df50f07f2bd
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73241655"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646527"
 ---
 # <a name="deep-dive---advanced-analytics"></a>Głębokie szczegółowe — analiza zaawansowana
 
@@ -38,17 +38,16 @@ Zaawansowane rozwiązania analityczne zapewniają zestaw algorytmów uczenia mas
 Wraz z wybraniem algorytmów najlepszego dopasowania należy wziąć pod uwagę, czy należy podać dane do szkoleń. Algorytmy uczenia maszynowego są podzielone w następujący sposób:
 
 * Algorytm nadzorowany musi być szkolony na zestawie danych z etykietą, zanim będzie mógł dostarczyć wyniki
-* Algorytm częściowo nadzorowany można rozszerzyć o dodatkowe elementy docelowe za pomocą zapytania interaktywnego przez Trainer, które nie były dostępne podczas początkowego etapu szkolenia
-* Nienadzorowany algorytm nie wymaga danych szkoleniowych 
+* Algorytm częściowo nadzorowany można rozszerzyć o dodatkowe elementy docelowe za pomocą interakcyjnych zapytań przez Trainer, które nie były dostępne podczas początkowego etapu szkolenia
+* Nienadzorowany algorytm nie wymaga danych szkoleniowych
 * Algorytm wzmacniania używa agentów oprogramowania do określenia idealnego zachowania w określonym kontekście (często używanym w programie Robotic)
-
 
 | Kategoria algorytmu| Eksploatacja | Typ uczenia | Algorytmy |
 | --- | --- | --- | -- |
 | Klasyfikacja | Klasyfikowanie osób lub rzeczy do grup | Nadzorowane | Drzewa decyzyjne, regresja logistyczna, sieci neuronowyche |
-| Usługę | Dzielenie zestawu przykładów do jednorodnych grup | Nienadzorowanych | K-oznacza klastrowanie |
+| Klastrowanie | Dzielenie zestawu przykładów do jednorodnych grup | Nienadzorowanych | K-oznacza klastrowanie |
 | Wykrywanie wzorca | Zidentyfikuj częste skojarzenia danych | Nienadzorowanych | Reguły kojarzenia |
-| Ubytk | Przewidywanie wyników liczbowych | Nadzorowane | Regresja liniowa, sieci neuronowych |
+| Regresja | Przewidywanie wyników liczbowych | Nadzorowane | Regresja liniowa, sieci neuronowych |
 | Wzmacnianie | Określanie optymalnego zachowania dla robotów | Wzmacnianie | Symulacje Carlo Monte, DeepMind |
 
 ## <a name="machine-learning-on-hdinsight"></a>Uczenie maszynowe w usłudze HDInsight
@@ -62,15 +61,13 @@ Usługa HDInsight ma kilka opcji uczenia maszynowego dla przepływu pracy zaawan
 
 ### <a name="machine-learning-and-apache-spark"></a>Machine Learning i Apache Spark
 
-
-[HDInsight Spark](../spark/apache-spark-overview.md) to oparta na platformie Azure oferta [Apache Spark](https://spark.apache.org/), ujednolicona platforma przetwarzania danych typu open source, która korzysta z przetwarzania w pamięci, aby zwiększyć analizę danych Big Data. Aparat przetwarzania Spark jest zbudowany z myślą o szybkości, łatwości użycia i zaawansowanej analizie. Możliwości obliczeniowe rozproszone w pamięci platformy Spark sprawiają, że jest dobrym rozwiązaniem dla algorytmów iteracyjnych używanych w obliczeniach uczenia maszynowego i grafu. 
-
+[HDInsight Spark](../spark/apache-spark-overview.md) to oparta na platformie Azure oferta [Apache Spark](https://spark.apache.org/), ujednolicona platforma przetwarzania danych typu open source, która korzysta z przetwarzania w pamięci, aby zwiększyć analizę danych Big Data. Aparat przetwarzania Spark zaprojektowano pod kątem szybkości, łatwości użycia i zaawansowanych możliwości analitycznych. Możliwości obliczeń rozproszonych w pamięci platforma Spark, że dobry wybór w przypadku algorytmów iteracyjnych używanych używane w machine learning i obliczeniach na grafach.
 
 Istnieją trzy skalowalne biblioteki uczenia maszynowego, które doprowadzają możliwości modelowania algorytmów do tego środowiska rozproszonego:
 
 * [**MLlib**](https://spark.apache.org/docs/latest/ml-guide.html) -MLlib zawiera oryginalny interfejs API zbudowany w oparciu o platformę Spark odporne.
 * [**SparkML**](https://spark.apache.org/docs/1.2.2/ml-guide.html) -SparkML to nowszy pakiet, który udostępnia interfejs API wyższego poziomu, który jest oparty na platformie Spark dataframes do konstruowania potoków ml.
-* [**MMLSpark**](https://github.com/Azure/mmlspark) — Biblioteka Machine Learning firmy Microsoft dla Apache Spark (MMLSpark) została zaprojektowana w celu zwiększenia produktywności analityków danych na platformie Spark, zwiększania liczby eksperymentów i korzystania z najnowocześniejszych technik uczenia maszynowego, w tym uczenie głębokie na bardzo dużych zestawach danych. Biblioteka MMLSpark upraszcza typowe zadania modelowania do kompilowania modeli w PySpark. 
+* [**MMLSpark**](https://github.com/Azure/mmlspark) — Biblioteka Machine Learning firmy Microsoft dla Apache Spark (MMLSpark) została zaprojektowana w celu zwiększenia produktywności analityków danych na platformie Spark, zwiększania liczby eksperymentów i korzystania z najnowocześniejszych technik uczenia maszynowego, w tym głębokiego uczenia się na bardzo dużych zestawach danych. Biblioteka MMLSpark upraszcza typowe zadania modelowania do kompilowania modeli w PySpark.
 
 ### <a name="r-and-ml-services"></a>Usługi R i ML
 
@@ -78,11 +75,11 @@ W ramach programu HDInsight można utworzyć klaster usługi HDInsight z [usług
 
 ### <a name="azure-machine-learning-and-apache-hive"></a>Azure Machine Learning i Apache Hive
 
-[Azure Machine Learning Studio (klasyczny)](https://studio.azureml.net/) oferuje narzędzia do modelowania analizy predykcyjnej, a także w pełni zarządzaną usługę, z której można korzystać w celu wdrażania modeli predykcyjnych jako gotowych do użycia usług sieci Web. Azure Machine Learning udostępnia narzędzia do tworzenia kompletnych rozwiązań analizy predykcyjnej w chmurze, które umożliwiają szybkie tworzenie, testowanie i operacjonalizować modeli predykcyjnych oraz zarządzanie nimi. Wybierz jedną z wielu bibliotek algorytmów, użyj programu Studio opartego na sieci Web do tworzenia modeli i łatwo Wdrażaj model jako usługę sieci Web.
+[Azure Machine Learning Studio (klasyczny)](https://studio.azureml.net/) oferuje narzędzia do modelowania analizy predykcyjnej i w pełni zarządzanej usługi, których można użyć do wdrożenia modeli predykcyjnych jako gotowych do użycia usług sieci Web. Azure Machine Learning udostępnia narzędzia do tworzenia kompletnych rozwiązań analizy predykcyjnej w chmurze, które umożliwiają szybkie tworzenie, testowanie i operacjonalizować modeli predykcyjnych oraz zarządzanie nimi. Wybierz jedną z wielu bibliotek algorytmów, użyj programu Studio opartego na sieci Web do tworzenia modeli i łatwo Wdrażaj model jako usługę sieci Web.
 
 ### <a name="apache-spark-and-deep-learning"></a>Apache Spark i uczenie głębokie
 
-[Uczenie głębokie](https://www.microsoft.com/research/group/dltc/) to rozgałęzienie uczenia maszynowego, które korzysta z *głębokiej sieci neuronowych Networks* (DNNs), inspirowane procesami biologicznymi mózgów ludzkich. Wielu badaczy widzą uczenie głębokie jako obietnice dla sztucznej analizy. Przykłady uczenia głębokiego to wypowiadane translatory języka, systemy rozpoznawania obrazów i przyczyny maszyn. Aby pomóc w zapoznaniu się z swoją działalnością w ramach uczenia głębokiego, firma Microsoft opracowała bezpłatną, łatwą w użyciu, [Microsoft Cognitive Toolkitę](https://www.microsoft.com/en-us/cognitive-toolkit/)Open Source. Zestaw narzędzi jest szeroko używany przez różne produkty firmy Microsoft, przedsiębiorstwa na całym świecie, dzięki czemu należy wdrożyć głębokie uczenie na dużą skalę i według uczniów zainteresowanych najnowszymi algorytmami i technikami. 
+[Uczenie głębokie](https://www.microsoft.com/research/group/dltc/) to rozgałęzienie uczenia maszynowego, które korzysta z *głębokiej sieci neuronowych Networks* (DNNs), inspirowane procesami biologicznymi mózgów ludzkich. Wielu badaczy widzą uczenie głębokie jako obietnice dla sztucznej analizy. Przykłady uczenia głębokiego to wypowiadane translatory języka, systemy rozpoznawania obrazów i przyczyny maszyn. Aby pomóc w zapoznaniu się z swoją działalnością w ramach uczenia głębokiego, firma Microsoft opracowała bezpłatną, łatwą w użyciu, [Microsoft Cognitive Toolkitę](https://www.microsoft.com/en-us/cognitive-toolkit/)Open Source. Zestaw narzędzi jest szeroko używany przez różne produkty firmy Microsoft, przedsiębiorstwa na całym świecie, dzięki czemu należy wdrożyć głębokie uczenie na dużą skalę i według uczniów zainteresowanych najnowszymi algorytmami i technikami.
 
 ## <a name="scenario---score-images-to-identify-patterns-in-urban-development"></a>Scenariusz — obrazy oceny służące do identyfikowania wzorców w rozwoju miast
 
@@ -92,15 +89,15 @@ W tym scenariuszu zobaczysz, jak DNNs produkowany w ramach platformy uczenia gł
 
 W tym scenariuszu w ramach zaawansowanej analizy istnieją trzy kluczowe zadania:
 
-1. Utwórz klaster Azure HDInsight Hadoop przy użyciu dystrybucji Apache Spark 2.1.0. 
-2. Uruchom skrypt niestandardowy, aby zainstalować Microsoft Cognitive Toolkit na wszystkich węzłach klastra Azure HDInsight Spark. 
-3. Przekaż wstępnie utworzony Notes Jupyter do klastra usługi HDInsight Spark, aby zastosować szkolony Microsoft Cognitive Toolkit model uczenia głębokiego do plików na koncie usługi Azure Blob Storage przy użyciu interfejsu API Spark Python (PySpark). 
+1. Utwórz klaster Azure HDInsight Hadoop przy użyciu dystrybucji Apache Spark 2.1.0.
+2. Uruchom skrypt niestandardowy, aby zainstalować Microsoft Cognitive Toolkit na wszystkich węzłach klastra Azure HDInsight Spark.
+3. Przekaż wstępnie utworzony Notes Jupyter do klastra usługi HDInsight Spark, aby zastosować szkolony Microsoft Cognitive Toolkit model uczenia głębokiego do plików na koncie usługi Azure Blob Storage przy użyciu interfejsu API Spark Python (PySpark).
 
 W tym przykładzie zastosowano zestaw obrazu CIFAR-10 skompilowany i rozdystrybuowany przez polecenie Alex Krizhevsky, Vinod Nair i Geoffrey Hinton. Zestaw danych CIFAR-10 zawiera 60 000 32 x 32 kolorowych obrazów należących do 10 wzajemnie wyłącznych klas:
 
 ![Przykładowe obrazy Machine Learning](./media/apache-hadoop-deep-dive-advanced-analytics/machine-learning-images.png)
 
-Aby uzyskać więcej szczegółowych informacji na temat zestawu danych, zobacz Alex Krizhevsky — [uczenie wielu warstw funkcji z niewielkich obrazów](https://www.cs.toronto.edu/~kriz/learning-features-2009-TR.pdf).
+Aby uzyskać więcej informacji na temat zestawu danych, zobacz Alex Krizhevsky — [uczenie wielu warstw funkcji z niewielkich obrazów](https://www.cs.toronto.edu/~kriz/learning-features-2009-TR.pdf).
 
 Zestaw danych został podzielony na partycje do zestawu szkoleniowego 50 000 obrazów i zestawu testowego z 10 000 obrazów. Pierwszy zestaw został użyty do uczenia modelu sieci splotowych (ResNet) o 20 warstwach z systemem za pomocą Microsoft Cognitive Toolkit, wykonując czynności opisane w [tym samouczku](https://github.com/Microsoft/CNTK/tree/master/Examples/Image/Classification/ResNet) w repozytorium Cognitive Toolkit GitHub. Pozostałe obrazy 10 000 zostały użyte do testowania dokładności modelu. Jest to miejsce, w którym nastąpi odtworzenie rozproszonego przetwarzania: zadanie wstępnego przetwarzania i oceniania obrazów jest wysoce działania równoległego. Dzięki zapisanemu przeszkolonemu modelowi używamy:
 
@@ -115,14 +112,14 @@ Całe przetwarzanie i ocenianie obrazów 10 000 trwa krócej niż jedna minuta w
 
 ### <a name="try-it-out"></a>Wypróbuj!
 
-Postępuj zgodnie z [tym samouczkiem](../spark/apache-spark-microsoft-cognitive-toolkit.md) , aby zaimplementować kompleksowe rozwiązanie: skonfiguruj klaster usługi HDInsight Spark, zainstaluj Cognitive Toolkit i uruchom Jupyter Notebook, które oceniają 10 000 obrazów CIFAR.
+Postępuj zgodnie z [tym samouczkiem](../spark/apache-spark-microsoft-cognitive-toolkit.md) , aby zaimplementować wdrożenie tego rozwiązania: skonfiguruj klaster usługi HDInsight Spark, zainstaluj Cognitive Toolkit i uruchom Jupyter Notebook, które oceniają 10 000 obrazów CIFAR.
 
 ## <a name="next-steps"></a>Następne kroki
 
 Apache Hive i Azure Machine Learning
 
 * [Apache Hive i Azure Machine Learning kompleksowe](../../machine-learning/team-data-science-process/hive-walkthrough.md)
-* [Używanie klastra Azure HDInsight Hadoop na 1 TB zestawu danych](../../machine-learning/team-data-science-process/hive-criteo-walkthrough.md)
+* [Używanie klastra Azure HDInsight Hadoop w zestawie danych o pojemności 1 TB](../../machine-learning/team-data-science-process/hive-criteo-walkthrough.md)
 
 Apache Spark i MLLib
 

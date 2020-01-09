@@ -1,25 +1,14 @@
 ---
-title: Szybkie wdrażanie istniejącej aplikacji do klastra usługi Azure Service Fabric
+title: Szybkie wdrażanie istniejącej aplikacji w klastrze
 description: Użyj klastra usługi Azure Service Fabric do hostowania istniejącej aplikacji w technologii Node.js za pomocą programu Visual Studio.
-services: service-fabric
-documentationcenter: nodejs
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 12/06/2017
-ms.author: atsenthi
-ms.openlocfilehash: 6cf9594e6e1db3e163d25843b1fec0c0ff98c250
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 9153fc4cd60cb892532db49bf4339b517320b1a6
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68592451"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614846"
 ---
 # <a name="host-a-nodejs-application-on-azure-service-fabric"></a>Hostowanie aplikacji w technologii Node.js w usłudze Azure Service Fabric
 
@@ -52,7 +41,7 @@ W następnym oknie dialogowym można utworzyć usługę Service Fabric dowolnego
 
 Nazwij usługę **MyGuestService** i ustaw opcje po prawej stronie na następujące wartości:
 
-| Ustawienie                   | Value |
+| Ustawienie                   | Wartość |
 | ------------------------- | ------ |
 | Folder pakietu kodu       | _&lt;folder z aplikacją w technologii Node.js&gt;_ |
 | Zachowanie pakietu kodu     | Skopiuj zawartość folderu do projektu |
@@ -83,7 +72,7 @@ Aby zapoznać się z omówieniem zawartości projektu usługi, zobacz [Pierwsze 
 
 Wdrażana przykładowa aplikacja w technologii Node.js korzysta z portu **80** i dlatego trzeba poinformować usługę Service Fabric, że ten port musi być widoczny.
 
-Otwórz plik **ServiceManifest.xml** w projekcie. W dolnej części manifestu istnieje `<Resources> \ <Endpoints>` już zdefiniowany wpis. Zmodyfikuj ten wpis, aby dodać parametry `Port`, `Protocol`, i `Type`. 
+Otwórz plik **ServiceManifest.xml** w projekcie. Na końcu manifestu istnieje `<Resources> \ <Endpoints>` z już zdefiniowanym wpisem. Zmodyfikuj ten wpis, aby dodać parametry `Port`, `Protocol`, i `Type`. 
 
 ```xml
   <Resources>
@@ -108,7 +97,7 @@ Wybierz docelowy profil **PublishProfiles\Cloud.xml**.
 
 Jeśli nie zostało to wykonane wcześniej, wybierz konto platformy Azure, na którym ma się odbyć wdrożenie. Jeśli jeszcze tego nie masz, [Utwórz konto][create-account].
 
-W obszarze **Punkt końcowy połączenia** wybierz klaster usługi Service Fabric do wdrożenia. Jeśli go nie masz, wybierz pozycję **&lt;Utwórz nowy klaster... otwiera&gt;** okno przeglądarki sieci Web do Azure Portal. Aby uzyskać więcej informacji, zobacz artykuł dotyczący [tworzenia klastra w portalu](service-fabric-cluster-creation-via-portal.md#create-cluster-in-the-azure-portal). 
+W obszarze **Punkt końcowy połączenia** wybierz klaster usługi Service Fabric do wdrożenia. Jeśli go nie masz, wybierz pozycję **&lt;Utwórz nowy klaster...&gt;** , który otwiera okno przeglądarki sieci web w Azure Portal. Aby uzyskać więcej informacji, zobacz artykuł dotyczący [tworzenia klastra w portalu](service-fabric-cluster-creation-via-portal.md#create-cluster-in-the-azure-portal). 
 
 Podczas tworzenia klastra usługi Service Fabric upewnij się, że ustawienie **Niestandardowe punkty końcowe** ma wartość **80**.
 
@@ -130,7 +119,7 @@ Sprawdź adres bloku omówienia usługi. Użyj nazwy domeny z właściwości _Pu
 
 ![Blok omówienia usługi sieci szkieletowej w witrynie Azure Portal][overview]
 
-Przejdź do tego adresu, gdzie `HELLO WORLD` zobaczysz odpowiedź.
+Przejdź do tego adresu, gdzie zobaczysz odpowiedź `HELLO WORLD`.
 
 ## <a name="delete-the-cluster"></a>Usuwanie klastra
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/27/2019
 ms.author: memildin
-ms.openlocfilehash: c3134988452efe16044ab7b7740cafd02e8cf27a
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 46ed2af51f34a25c1cdc1abb6152169feedd989e
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71201922"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666299"
 ---
 # <a name="manage-and-respond-to-security-alerts-in-azure-security-center"></a>Zarządzanie alertami zabezpieczeń i reagowanie na nie w Azure Security Center
 
@@ -65,7 +65,7 @@ Usługa Security Center automatycznie gromadzi, analizuje i integruje dane dzien
     > [!NOTE]
     >W niektórych przypadkach źródłowy adres IP nie jest dostępny, a niektóre dzienniki zdarzeń zabezpieczeń systemu Windows nie zawierają adresu IP.
 
-1. Kroki korygowania sugerowane przez Security Center różnią się w zależności od alertu zabezpieczeń. Obserwuj je dla każdego alertu. W niektórych przypadkach w celu ograniczenia alertu dotyczącego wykrywania zagrożeń może być konieczne użycie innych kontrolek lub usług platformy Azure w celu zaimplementowania zalecanej korekty. 
+1. Czynności naprawcze sugerowane w usłudze Security Center różnią się w zależności od alertu zabezpieczeń. Obserwuj je dla każdego alertu. W niektórych przypadkach w celu ograniczenia alertu dotyczącego wykrywania zagrożeń może być konieczne użycie innych kontrolek lub usług platformy Azure w celu zaimplementowania zalecanej korekty. 
 
     Poniższe tematy przeprowadzą Cię przez różne alerty, zgodnie z typami zasobów:
     
@@ -76,7 +76,7 @@ Usługa Security Center automatycznie gromadzi, analizuje i integruje dane dzien
     W poniższych tematach opisano, jak Security Center używa różnych danych telemetrycznych zbieranych z integracji z infrastrukturą platformy Azure w celu zastosowania dodatkowych warstw ochrony dla zasobów wdrożonych na platformie Azure:
     
     * [Alerty warstwy usług](security-center-alerts-service-layer.md)
-    * [Integracja z produktami zabezpieczeń platformy Azure](security-center-alerts-integration.md)
+    * [Wykrywanie zagrożeń dla usług Azure WAF i Azure DDoS Protection](security-center-alerts-integration.md)
     
 ## <a name="see-also"></a>Zobacz także
 

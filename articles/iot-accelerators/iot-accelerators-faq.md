@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 02/15/2018
 ms.author: dobett
-ms.openlocfilehash: b448099dab0e79dca38310396896be46cf2e0ff6
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 7a2b167f90b4ec79f5fa515ded1c676ca7085e72
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826256"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647717"
 ---
 # <a name="frequently-asked-questions-for-iot-solution-accelerators"></a>Często zadawane pytania dotyczące akceleratorów rozwiązań IoT
 
@@ -23,10 +23,10 @@ Zobacz również często zadawane [pytania powiązane z konkretną fabryką](iot
 
 Kod źródłowy jest przechowywany w następujących repozytoriach usługi GitHub:
 
-* [Akcelerator rozwiązania do zdalnego monitorowania (.NET)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet)
-* [Akcelerator rozwiązania do zdalnego monitorowania (Java)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java)
+* [Akcelerator rozwiązań do zdalnego monitorowania (.NET)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet)
+* [Akcelerator rozwiązań zdalnego monitorowania (Java)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java)
 * [Akcelerator rozwiązania do konserwacji predykcyjnej](https://github.com/Azure/azure-iot-predictive-maintenance)
-* [Akceleratora rozwiązania połączonej fabryki](https://github.com/Azure/azure-iot-connected-factory)
+* [Akcelerator rozwiązania połączonej fabryki](https://github.com/Azure/azure-iot-connected-factory)
 
 ### <a name="what-sdks-can-i-use-to-develop-device-clients-for-the-solution-accelerators"></a>Jakich zestawów SDK mogę używać do programowania klientów na urządzenia dla akceleratorów rozwiązań?
 
@@ -82,7 +82,7 @@ Tak. Każde rozwiązanie, które już istnieje, nadal działa w ramach subskrypc
 
 ### <a name="how-many-iot-hub-instances-can-i-provision-in-a-subscription"></a>Ile wystąpień IoT Hub można zainicjować w ramach subskrypcji?
 
-Domyślnie można udostępnić [10 centrów IoT na subskrypcję](../azure-subscription-service-limits.md#iot-hub-limits). Aby zgłosić ten limit, możesz utworzyć [bilet pomocy technicznej systemu Azure](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade) . W związku z tym, ponieważ każdy akcelerator rozwiązania Inicjuje nowe IoT Hub, można udostępnić maksymalnie 10 akceleratorów rozwiązań w danej subskrypcji.
+Domyślnie można udostępnić [10 centrów IoT na subskrypcję](../azure-resource-manager/management/azure-subscription-service-limits.md#iot-hub-limits). Aby zgłosić ten limit, możesz utworzyć [bilet pomocy technicznej systemu Azure](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade) . W związku z tym, ponieważ każdy akcelerator rozwiązania Inicjuje nowe IoT Hub, można udostępnić maksymalnie 10 akceleratorów rozwiązań w danej subskrypcji.
 
 ### <a name="how-many-azure-cosmos-db-instances-can-i-provision-in-a-subscription"></a>Ile wystąpień Azure Cosmos DB można zainicjować w ramach subskrypcji?
 

@@ -2,23 +2,22 @@
 title: Tworzenie klastrów Apache Hadoop przy użyciu platformy .NET — Azure HDInsight
 description: Dowiedz się, jak tworzyć klastry Apache Hadoop, Apache HBase, Apache Storm lub Apache Spark w systemie Linux dla usługi HDInsight przy użyciu zestawu .NET SDK usługi HDInsight.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 08/16/2018
-ms.author: hrasheed
-ms.openlocfilehash: fccb29167dc04bf75a85935eeb57b0420b151f64
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.custom: hdinsightactive
+ms.date: 01/01/2020
+ms.openlocfilehash: 928955adbc5ced7c693407d6c8d3643f9f094d82
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70916485"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75612278"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-using-the-net-sdk"></a>Tworzenie klastrów opartych na systemie Linux w usłudze HDInsight przy użyciu zestawu .NET SDK
 
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
-
 
 Dowiedz się, jak utworzyć klaster [Apache Hadoop](https://hadoop.apache.org/) w klastrze usługi Azure HDInsight przy użyciu zestawu .NET SDK.
 
@@ -27,20 +26,22 @@ Dowiedz się, jak utworzyć klaster [Apache Hadoop](https://hadoop.apache.org/) 
 >
 > Aby uzyskać więcej informacji o rozmiarach węzła i powiązanych kosztach, zobacz [Cennik usługi HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/).
 
-## <a name="prerequisites"></a>Wymagania wstępne
-
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
-* **Subskrypcja platformy Azure**. Zobacz temat [Uzyskiwanie bezpłatnej wersji próbnej platformy Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
-* **Konto usługi Azure Storage**. Zobacz [Tworzenie konta magazynu](../storage/common/storage-quickstart-create-account.md).
-* Program **Visual Studio**.
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+
+## <a name="prerequisites"></a>Wymagania wstępne
+
+* Konto usługi Azure Storage. Zobacz [Tworzenie konta magazynu](../storage/common/storage-quickstart-create-account.md).
+
+* Program [Visual Studio](https://visualstudio.microsoft.com/vs/community/).
 
 ## <a name="create-clusters"></a>Tworzenie klastrów
 
 1. Otwórz program Visual Studio.
-2. Utwórz nową aplikację konsolową wizualną C# .
-3. W menu **Narzędzia** kliknij pozycję **Menedżer pakietów NuGet**, a następnie kliknij pozycję **konsola Menedżera pakietów**.
-4. Uruchom następujące polecenie w konsoli programu, aby zainstalować pakiety:
+1. Utwórz nową C# aplikację konsolową.
+1. Wybierz pozycję **Narzędzia** > **Menedżer pakietów NuGet** > **Konsola menedżera pakietów**.
+1. Uruchom następujące polecenie w konsoli programu, aby zainstalować pakiety:
 
     ```powershell
     Install-Package Microsoft.Rest.ClientRuntime.Azure.Authentication -Pre
@@ -49,7 +50,7 @@ Dowiedz się, jak utworzyć klaster [Apache Hadoop](https://hadoop.apache.org/) 
     ```
 
     Te polecenia powodują dodanie bibliotek .NET i odwołań do nich w bieżącym projekcie programu Visual Studio.
-5. W Eksplorator rozwiązań kliknij dwukrotnie pozycję **program.cs** , aby ją otworzyć, wklej poniższy kod i podaj wartości dla zmiennych:
+1. W Eksplorator rozwiązań kliknij dwukrotnie pozycję **program.cs** , aby ją otworzyć, wklej poniższy kod i podaj wartości dla zmiennych:
 
     ```csharp
     using System;
@@ -184,8 +185,9 @@ Dowiedz się, jak utworzyć klaster [Apache Hadoop](https://hadoop.apache.org/) 
     }
     ```
 
-6. Zastąp wartości elementów członkowskich klasy.
-7. Naciśnij klawisz **F5**, aby uruchomić aplikację. Należy otworzyć okno konsoli i wyświetlić stan aplikacji. Zostanie wyświetlony monit o wprowadzenie poświadczeń konta platformy Azure. Utworzenie klastra usługi HDInsight może potrwać kilka minut, zwykle około 15.
+1. Zastąp wartości elementów członkowskich klasy.
+
+1. Naciśnij klawisz **F5**, aby uruchomić aplikację. Należy otworzyć okno konsoli i wyświetlić stan aplikacji. Zostanie wyświetlony monit o wprowadzenie poświadczeń konta platformy Azure. Utworzenie klastra usługi HDInsight może potrwać kilka minut, zwykle około 15.
 
 ## <a name="use-bootstrap"></a>Użyj ładowania początkowego
 
@@ -366,14 +368,13 @@ static void Main(string[] args)
 
 ## <a name="troubleshoot"></a>Rozwiązywanie problemów
 
-W razie problemów podczas tworzenia klastrów usługi HDInsight zapoznaj się z [wymaganiami dotyczącymi kontroli dostępu](hdinsight-hadoop-create-linux-clusters-portal.md).
+W razie problemów podczas tworzenia klastrów usługi HDInsight zapoznaj się z [wymaganiami dotyczącymi kontroli dostępu](./hdinsight-hadoop-customize-cluster-linux.md#access-control).
 
 ## <a name="next-steps"></a>Następne kroki
-Teraz, gdy klaster usługi HDInsight został pomyślnie utworzony, Skorzystaj z poniższych informacji, aby dowiedzieć się, jak korzystać z klastra. 
+Teraz, gdy klaster usługi HDInsight został pomyślnie utworzony, Skorzystaj z poniższych informacji, aby dowiedzieć się, jak korzystać z klastra.
 
 ### <a name="apache-hadoop-clusters"></a>Klastry Apache Hadoop
 * [Korzystanie z Apache Hive z usługą HDInsight](hadoop/hdinsight-use-hive.md)
-* [Korzystanie z Apache świni z usługą HDInsight](hadoop/hdinsight-use-pig.md)
 * [Korzystanie z MapReduce z usługą HDInsight](hadoop/hdinsight-use-mapreduce.md)
 
 ### <a name="apache-hbase-clusters"></a>Klastry Apache HBase
@@ -388,11 +389,10 @@ Teraz, gdy klaster usługi HDInsight został pomyślnie utworzony, Skorzystaj z 
 ### <a name="apache-spark-clusters"></a>Klastry Apache Spark
 * [Tworzenie autonomicznych aplikacji przy użyciu języka Scala](spark/apache-spark-create-standalone-application.md)
 * [Zdalne uruchamianie zadań w klastrze Apache Spark przy użyciu programu Apache Livy](spark/apache-spark-livy-rest-interface.md)
-* [Apache Spark z usługą BI: Przeprowadzanie interaktywnej analizy danych przy użyciu platformy Spark w usłudze HDInsight przy użyciu narzędzi analizy biznesowej](spark/apache-spark-use-bi-tools.md)
-* [Apache Spark z Machine Learning: Korzystanie z platformy Spark w usłudze HDInsight do przewidywania wyników inspekcji żywności](spark/apache-spark-machine-learning-mllib-ipython.md)
+* [Apache Spark z usługą BI: wykonywanie interaktywnej analizy danych przy użyciu platformy Spark w usłudze HDInsight przy użyciu narzędzi analizy biznesowej](spark/apache-spark-use-bi-tools.md)
+* [Apache Spark z Machine Learning: korzystanie z platformy Spark w usłudze HDInsight do przewidywania wyników inspekcji żywności](spark/apache-spark-machine-learning-mllib-ipython.md)
 
 ### <a name="run-jobs"></a>Uruchamianie zadań
 * [Uruchamianie Apache Hive zadań w usłudze HDInsight przy użyciu zestawu .NET SDK](hadoop/apache-hadoop-use-hive-dotnet-sdk.md)
 * [Uruchamianie zadań Apache Sqoop w usłudze HDInsight przy użyciu zestawu .NET SDK](hadoop/apache-hadoop-use-sqoop-dotnet-sdk.md)
 * [Uruchamianie zadań Apache Oozie w usłudze HDInsight](hdinsight-use-oozie-linux-mac.md)
-

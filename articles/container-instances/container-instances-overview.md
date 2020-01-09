@@ -4,12 +4,12 @@ description: Usługa Azure Container Instances to najszybszy i najprostszy spos�
 ms.topic: overview
 ms.date: 04/25/2019
 ms.custom: seodec18, mvc
-ms.openlocfilehash: c8f243bc2bda83a467688ac5828219cd015c8326
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 040f246fa687dfe3ca56877c11c140ddb40247a4
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533543"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552325"
 ---
 # <a name="what-is-azure-container-instances"></a>Co to jest usługa Azure Container Instances?
 
@@ -21,13 +21,19 @@ Usługa Azure Container Instances to doskonałe rozwiązanie dla wszystkich scen
 
 Kontenery oferują znaczące korzyści związane z uruchamianiem w porównaniu do maszyn wirtualnych. Usługa Azure Container Instances umożliwia uruchamianie kontenera na platformie Azure w ciągu kilku sekund bez konieczności aprowizowania maszyn wirtualnych i zarządzania nimi.
 
-## <a name="public-ip-connectivity-and-dns-name"></a>Łączność przy użyciu publicznych adresów IP i nazwa DNS
+## <a name="container-access"></a>Dostęp do kontenera
 
-Usługa Azure Container Instances umożliwia uwidacznianie kontenerów bezpośrednio w Internecie za pomocą adresu IP i w pełni kwalifikowanej nazwy domeny (FQDN, fully qualified domain name). Podczas tworzenia wystąpienia kontenera możesz określić niestandardową etykietę nazwy DNS, dzięki czemu aplikacja będzie dostępna pod adresem *etykieta_niestandardowa*.*region_świadczenia_usługi_Azure*.azurecontainer.io.
+Azure Container Instances umożliwia Uwidacznianie grup kontenerów bezpośrednio w Internecie przy użyciu adresu IP i w pełni kwalifikowanej nazwy domeny (FQDN). Podczas tworzenia wystąpienia kontenera możesz określić niestandardową etykietę nazwy DNS, dzięki czemu aplikacja będzie dostępna pod adresem *etykieta_niestandardowa*.*region_świadczenia_usługi_Azure*.azurecontainer.io.
+
+Azure Container Instances obsługuje również wykonywanie polecenia w działającym kontenerze, zapewniając interaktywną powłokę ułatwiającą Tworzenie aplikacji i rozwiązywanie problemów. Dostęp odbywa się za pośrednictwem protokołu HTTPS przy użyciu protokołu TLS do zabezpieczania połączeń klientów.
+
+> [!IMPORTANT]
+> Od 13 stycznia 2020, Azure Container Instances będą wymagały wszystkich bezpiecznych połączeń z serwerów i aplikacji do korzystania z protokołu TLS 1,2. Obsługa protokołu TLS 1,0 i 1,1 zostanie wycofana.
 
 ## <a name="hypervisor-level-security"></a>Zabezpieczenia na poziomie funkcji hypervisor
 
 W przeszłości kontenery oferowały zarządzanie zasobami i izolację zależności aplikacji, ale nie były wystarczająco odporne na użycie wielu obcych dzierżaw. Usługa Azure Container Instances gwarantuje, że aplikacja jest izolowana w kontenerze w takim samym stopniu, w jakim byłaby na maszynie wirtualnej.
+
 
 ## <a name="custom-sizes"></a>Rozmiary niestandardowe
 
@@ -37,7 +43,7 @@ W przypadku zadań wykorzystujących znaczną moc obliczeniową, takich jak ucze
 
 ## <a name="persistent-storage"></a>Magazyn trwały
 
-Aby umożliwić pobieranie i utrwalanie stanu przy użyciu usługi Azure Container Instances, firma Microsoft oferuje bezpośrednie [instalowanie udziałów usługi Azure Files](container-instances-mounting-azure-files-volume.md).
+Aby można było pobrać i zachować stan z Azure Container Instances, oferujemy bezpośrednie [Instalowanie udziałów Azure Files udostępnionych](container-instances-mounting-azure-files-volume.md) przez usługę Azure Storage.
 
 ## <a name="linux-and-windows-containers"></a>Kontenery systemów Linux i Windows
 

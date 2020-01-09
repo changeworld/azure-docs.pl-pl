@@ -3,12 +3,12 @@ title: Rozwiązywanie problemów z kopiami zapasowymi SQL Server Database
 description: Informacje dotyczące rozwiązywania problemów dotyczących tworzenia kopii zapasowych SQL Server baz danych działających na maszynach wirtualnych platformy Azure z Azure Backup.
 ms.topic: troubleshooting
 ms.date: 06/18/2019
-ms.openlocfilehash: 95f7966fa59f0a1f6f6a3c9c6832cc573f89e05c
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: d49843e8fd96df29a7359ec639e42d312ad584e2
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172124"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75659257"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>Rozwiązywanie problemów z kopiami zapasowymi SQL Server Database przy użyciu Azure Backup
 
@@ -19,6 +19,25 @@ Aby uzyskać więcej informacji na temat procesu i ograniczeń tworzenia kopii z
 ## <a name="sql-server-permissions"></a>Uprawnienia SQL Server
 
 Aby skonfigurować ochronę bazy danych SQL Server na maszynie wirtualnej, należy zainstalować rozszerzenie **AzureBackupWindowsWorkload** na tej maszynie wirtualnej. Jeśli zostanie wyświetlony błąd **UserErrorSQLNoSysadminMembership**, oznacza to, że wystąpienie SQL Server nie ma wymaganych uprawnień do tworzenia kopii zapasowych. Aby naprawić ten błąd, wykonaj kroki opisane w sekcji [Ustawianie uprawnień maszyny wirtualnej](backup-azure-sql-database.md#set-vm-permissions).
+
+## <a name="troubleshoot-discover-and-configure-issues"></a>Rozwiązywanie problemów z odnajdywaniem i konfigurowaniem
+Po utworzeniu i skonfigurowaniu magazynu Recovery Services odnajdywania baz danych i konfigurowania kopii zapasowej jest procesem dwuetapowym.<br>
+
+![sql](./media/backup-azure-sql-database/sql.png)
+
+Podczas konfigurowania kopii zapasowej, jeśli maszyna wirtualna SQL i jej wystąpienia nie są widoczne na liście **odnajdowania baz danych na maszynach wirtualnych** i **konfiguruje kopię zapasową** (Zobacz powyżej obrazu), upewnij się, że:
+
+### <a name="step-1-discovery-dbs-in-vms"></a>Krok 1. odnajdywanie baz danych na maszynach wirtualnych
+
+- Jeśli maszyna wirtualna nie znajduje się na liście odnalezionych maszyn wirtualnych i nie zarejestrowano jej do tworzenia kopii zapasowych SQL w innym magazynie, postępuj zgodnie z procedurami [odnajdywania SQL Server tworzenia kopii zapasowej](https://docs.microsoft.com/azure/backup/backup-sql-server-database-azure-vms#discover-sql-server-databases) .
+
+### <a name="step-2-configure-backup"></a>Krok 2. Konfigurowanie kopii zapasowej
+
+- Jeśli magazyn, w którym maszyna wirtualna SQL jest zarejestrowana w tym samym magazynie używanym do ochrony baz danych, wykonaj kroki [konfigurowania kopii zapasowej](https://docs.microsoft.com/azure/backup/backup-sql-server-database-azure-vms#configure-backup) .
+
+Jeśli maszyna wirtualna SQL musi być zarejestrowana w nowym magazynie, należy wyrejestrować ją ze starego magazynu.  Wyrejestrowanie maszyny wirtualnej SQL z magazynu wymaga, aby wszystkie chronione źródła danych zostały zatrzymane, a następnie można usunąć kopię zapasową danych. Usuwanie kopii zapasowej danych jest operacją niszczącą.  Po przejrzeniu i wykonaniu wszystkich środków zaradczych, aby wyrejestrować maszynę wirtualną SQL, Zarejestruj tę samą maszynę wirtualną w nowym magazynie i spróbuj ponownie wykonać operację tworzenia kopii zapasowej.
+
+
 
 ## <a name="error-messages"></a>Komunikaty o błędach
 
@@ -125,18 +144,27 @@ Operacja została zablokowana, ponieważ osiągnięto limit liczby operacji dozw
 |---|---|---|
 Operacja została zablokowana, ponieważ magazyn osiągnął limit maksymalny dla takich operacji dozwolony w okresie 24 godzin. | Po osiągnięciu maksymalnego dopuszczalnego limitu operacji w okresie 24-godzinnym ten błąd jest dostępny. Ten błąd zazwyczaj występuje, gdy istnieją operacje na skalę, takie jak modyfikacja zasad lub ochrona automatyczne. W przeciwieństwie do przypadków CloudDosAbsoluteLimitReached, nie istnieje wiele możliwości rozwiązania tego stanu, w rzeczywistości usługa Azure Backup ponowi próbę wykonania operacji wewnętrznie dla wszystkich elementów, których to dotyczy.<br> Na przykład: Jeśli masz dużą liczbę źródeł danych chronionych przy użyciu zasad i podjęto próbę zmodyfikowania tych zasad, zostanie wyzwolone skonfigurowanie zadań ochrony dla każdego z chronionych elementów i czasami może wystąpić maksymalny limit dozwolony dla takich operacji dziennie.| Usługa Azure Backup automatycznie ponowi próbę wykonania tej operacji po 24 godzinach.
 
+### <a name="usererrorvminternetconnectivityissue"></a>UserErrorVMInternetConnectivityIssue
+
+| Komunikat o błędzie | Możliwe przyczyny | Zalecana akcja |
+|---|---|---|
+Maszyna wirtualna nie może nawiązać kontaktu z usługą Azure Backup ze względu na problemy z łącznością z Internetem. | Maszyna wirtualna musi mieć łączność wychodzącą z usługą Azure Backup, Azure Storage lub Azure Active Directory Services.| — Jeśli używasz sieciowej grupy zabezpieczeń, aby ograniczyć łączność, należy użyć znacznika usługi AzureBackup w celu zezwalania na dostęp wychodzący do Azure Backup usługi Azure Backup Service, Azure Storage lub Azure Active Directory Services. Wykonaj następujące [kroki](https://docs.microsoft.com/azure/backup/backup-sql-server-database-azure-vms#allow-access-using-nsg-tags) , aby udzielić dostępu.<br>-Upewnij się, że usługa DNS rozwiązuje punkty końcowe platformy Azure.<br>-Sprawdź, czy maszyna wirtualna znajduje się za modułem równoważenia obciążenia blokującym dostęp do Internetu. Przypisując publiczny adres IP do maszyn wirtualnych, odnajdywanie będzie działało.<br>-Sprawdź, czy nie istnieje Zapora/program antywirusowy/serwer proxy, który blokuje wywołania powyższych trzech usług docelowych.
+
+
 ## <a name="re-registration-failures"></a>Błędy ponownej rejestracji
 
 Przed wyzwoleniem operacji ponownego rejestrowania Sprawdź co najmniej jeden z następujących objawów:
 
-* Wszystkie operacje (takie jak wykonywanie kopii zapasowej, przywracanie i konfigurowanie kopii zapasowej) kończą się niepowodzeniem na maszynie wirtualnej z jednym z następujących kodów błędów: **WorkloadExtensionNotReachable**, **UserErrorWorkloadExtensionNotInstalled**, **WorkloadExtensionNotPresent** , **WorkloadExtensionDidntDequeueMsg**.
-* Obszar **stanu kopii** zapasowej dla elementu kopii zapasowej jest **nieosiągalny**. Wykorzystaj wszystkie inne przyczyny, które mogą spowodować wystąpienie tego samego stanu:
+* Wszystkie operacje (takie jak tworzenie kopii zapasowej, przywracanie i konfigurowanie kopii zapasowej) kończą się niepowodzeniem na maszynie wirtualnej z jednym z następujących kodów błędów: **WorkloadExtensionNotReachable**, **UserErrorWorkloadExtensionNotInstalled**, **WorkloadExtensionNotPresent**, **WorkloadExtensionDidntDequeueMsg**.
+* Jeśli obszar **stanu kopii** zapasowej dla elementu kopii zapasowej jest wyświetlany jako **nieosiągalny**, należy wykluczyć wszystkie inne przyczyny, które mogą spowodować wystąpienie tego samego stanu:
 
-  * Brak uprawnień do wykonywania operacji związanych z kopiami zapasowymi na maszynie wirtualnej  
-  * Zamykanie maszyny wirtualnej, dlatego nie można wykonać kopii zapasowych
-  * Problemy z siecią  
+  * Brak uprawnień do wykonywania operacji związanych z kopiami zapasowymi na maszynie wirtualnej.
+  * Zamykanie maszyny wirtualnej, dlatego nie można wykonać kopii zapasowych.
+  * Problemy z siecią.
 
-  ![Stan "nieosiągalny" w ponownym rejestrowaniu maszyny wirtualnej](./media/backup-azure-sql-database/re-register-vm.png)
+   ![Ponowne rejestrowanie maszyny wirtualnej](./media/backup-azure-sql-database/re-register-vm.png)
+
+
 
 * W przypadku zawsze włączonych grup dostępności kopie zapasowe kończą się niepowodzeniem po zmianie preferencji tworzenia kopii zapasowej lub po przejściu w tryb failover.
 

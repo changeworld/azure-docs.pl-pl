@@ -1,20 +1,20 @@
 ---
 title: Połącz z usługą Box
-description: Tworzenie plików i zarządzanie nimi za pomocą interfejsów API REST w usłudze Box i Azure Logic Apps
+description: Automatyzowanie zadań i przepływów pracy, które tworzą pliki i zarządzają nimi w usłudze Box przy użyciu Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 11/07/2016
 tags: connectors
-ms.openlocfilehash: 38e061e918d445de07961af1789891f44c59090a
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: c7f97ff33742eb545cbfbd7521ba135584851e5e
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789868"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666775"
 ---
-# <a name="create-and-manage-files-in-box-with-azure-logic-apps"></a>Utwórz pliki i zarządzaj nimi w usłudze Box przy użyciu Azure Logic Apps
+# <a name="create-and-manage-files-in-box-by-using-azure-logic-apps"></a>Tworzenie plików i zarządzanie nimi w usłudze Box przy użyciu Azure Logic Apps
 
 W tym artykule pokazano, jak można tworzyć pliki i zarządzać nimi w usłudze Box z poziomu aplikacji logiki za pomocą łącznika Box. Dzięki temu można tworzyć aplikacje logiki, które automatyzują zadania i przepływy pracy związane z zarządzaniem plikami i innymi akcjami, na przykład:
 

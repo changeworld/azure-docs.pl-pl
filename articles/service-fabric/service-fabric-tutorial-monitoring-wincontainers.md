@@ -1,32 +1,22 @@
 ---
-title: Monitorowanie i diagnostyka kontenerów systemu Windows w usłudze Service Fabric na platformie Azure | Microsoft Docs
+title: Monitorowanie i diagnozowanie kontenerów systemu Windows
 description: W tym samouczku przedstawiono Konfigurowanie dzienników Azure Monitor na potrzeby monitorowania i diagnostyki kontenerów systemu Windows w usłudze Azure Service Fabric.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/22/2019
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: b98917e6f3c0ff6570251751a9958b202908ee3e
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: eeb279892f987ed1f26ced97ab267e8140ccb20e
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933911"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614064"
 ---
 # <a name="tutorial-monitor-windows-containers-on-service-fabric-using-azure-monitor-logs"></a>Samouczek: monitorowanie kontenerów systemu Windows na Service Fabric przy użyciu dzienników Azure Monitor
 
 Jest to trzecia część samouczka i przeprowadzi Cię przez proces konfigurowania Azure Monitor dzienników do monitorowania kontenerów systemu Windows zorganizowanych w Service Fabric.
 
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Konfigurowanie dzienników Azure Monitor dla klastra Service Fabric

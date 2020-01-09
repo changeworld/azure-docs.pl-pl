@@ -1,25 +1,21 @@
 ---
-title: Łączenie Azure Information Protection danych z platformą Azure — wskaźnikiem Microsoft Docs
+title: Łączenie Azure Information Protection z platformą Azure — wskaźnikiem
 description: Dowiedz się, jak połączyć Azure Information Protection dane na platformie Azure — wskaźnik.
 services: sentinel
-documentationcenter: na
 author: cabailey
 manager: rkarlin
 ms.assetid: bfa2eca4-abdc-49ce-b11a-0ee229770cdd
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 09/24/2019
 ms.author: cabailey
-ms.openlocfilehash: a2760b53dbb9776501cb5e58c681045743471166
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: ef97ad601436faf44b0f49bd48d78c4c9420c7c8
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71261817"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75563687"
 ---
 # <a name="connect-data-from-azure-information-protection"></a>Łączenie danych z Azure Information Protection
 
@@ -29,7 +25,7 @@ ms.locfileid: "71261817"
 
 Informacje o rejestrowaniu można przesyłać z [Azure Information Protection](https://azure.microsoft.com/services/information-protection/) do kontrolki Azure wskaźnikowej przez skonfigurowanie łącznika danych Azure Information Protection. Azure Information Protection pomaga kontrolować i zabezpieczać poufne dane, niezależnie od tego, czy są przechowywane w chmurze, czy lokalnie.
 
-Jeśli [centralne raportowanie dla Azure Information Protection](https://docs.microsoft.com/azure/information-protection/reports-aip) jest już skonfigurowane, tak aby informacje o rejestrowaniu z tej usługi były przechowywane w tym samym log Analytics obszarze roboczym, co obecnie wybrane dla platformy Azure, możesz pominąć konfigurację programu ten łącznik danych. Informacje o rejestrowaniu z Azure Information Protection są już dostępne dla usługi Azure wskaźnikowej.
+Jeśli [centralne raportowanie dla Azure Information Protection](https://docs.microsoft.com/azure/information-protection/reports-aip) jest już skonfigurowane, tak aby informacje o rejestrowaniu z tej usługi były przechowywane w tym samym log Analytics obszarze roboczym, co obecnie wybrane dla platformy Azure, możesz pominąć konfigurację tego łącznika danych. Informacje o rejestrowaniu z Azure Information Protection są już dostępne dla usługi Azure wskaźnikowej.
 
 Jeśli jednak rejestrowanie informacji z Azure Information Protection przechodzi do innego obszaru roboczego Log Analytics niż ten, który jest aktualnie wybrany dla platformy Azure, wykonaj jedną z następujących czynności:
 
@@ -42,7 +38,7 @@ Jeśli jednak rejestrowanie informacji z Azure Information Protection przechodzi
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - Jedna z następujących ról administratora usługi Azure AD dla dzierżawy: 
-    - Administrator usługi Azure Information Protection
+    - Azure Information Protection administrator
     - Administrator zabezpieczeń
     - Administrator zgodności
     - Administrator danych zgodności

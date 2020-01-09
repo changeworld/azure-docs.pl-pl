@@ -1,23 +1,16 @@
 ---
-title: Pliki konfiguracji Sparametryzuj na platformie Azure Service Fabric | Microsoft Docs
-description: Dowiedz się, jak Sparametryzuj pliki konfiguracji w Service Fabric.
-documentationcenter: .net
+title: Pliki konfiguracji Sparametryzuj na platformie Azure Service Fabric
+description: Dowiedz się, jak Sparametryzuj pliki konfiguracyjne w Service Fabric, przydatną techniką w zarządzaniu wieloma środowiskami.
 author: mikkelhegn
-manager: msfussell
-editor: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 10/09/2018
 ms.author: mikhegn
-ms.openlocfilehash: dad497978de7187177998524db3b2f2ee448c717
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 4e96a732cffd70b0a5c24e7ebafe214297a72720
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68464782"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644634"
 ---
 # <a name="how-to-parameterize-configuration-files-in-service-fabric"></a>Jak Sparametryzuj pliki konfiguracji w Service Fabric
 
@@ -27,7 +20,7 @@ W tym artykule opisano sposób Sparametryzuj pliku konfiguracji w Service Fabric
 
 W tym przykładzie zastąpisz wartość konfiguracji przy użyciu parametrów we wdrożeniu aplikacji.
 
-1. Otwórz plik *\PackageRoot\Config\Settings.XML usługi > w projekcie usługi. \<*
+1. Otwórz plik *\<WebService > \PackageRoot\Config\Settings.XML* w projekcie usługi.
 1. Ustaw nazwę i wartość parametru konfiguracji, na przykład rozmiar pamięci podręcznej równej 25, dodając następujący kod XML:
 
    ```xml
@@ -37,15 +30,15 @@ W tym przykładzie zastąpisz wartość konfiguracji przy użyciu parametrów we
    ```
 
 1. Zapisz i zamknij plik.
-1. Otwórz plik *\ApplicationPackageRoot\ApplicationManifest.XML aplikacji >. \<*
-1. W pliku ApplicationManifest. XML Zadeklaruj parametr i wartość domyślną w `Parameters` elemencie.  Zaleca się, aby nazwa parametru zawierała nazwę usługi (na przykład "Moja usługa").
+1. Otwórz plik *\<aplikacji > \ApplicationPackageRoot\ApplicationManifest.XML* .
+1. W pliku ApplicationManifest. XML Zadeklaruj parametr i wartość domyślną w elemencie `Parameters`.  Zaleca się, aby nazwa parametru zawierała nazwę usługi (na przykład "Moja usługa").
 
    ```xml
     <Parameters>
       <Parameter Name="MyService_CacheSize" DefaultValue="80" />
     </Parameters>
    ```
-1. W sekcji pliku ApplicationManifest. XML `ConfigOverrides` Dodaj element i `ConfigOverride` , odwołując się do pakietu konfiguracyjnego, sekcji i parametru. `ServiceManifestImport`
+1. W `ServiceManifestImport` sekcji pliku ApplicationManifest. XML Dodaj element `ConfigOverrides` i `ConfigOverride`, odwołujący się do pakietu konfiguracyjnego, sekcji i parametru.
 
    ```xml
     <ConfigOverrides>

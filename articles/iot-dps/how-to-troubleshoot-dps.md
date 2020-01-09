@@ -8,12 +8,12 @@ services: iot-dps
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: xujing
-ms.openlocfilehash: ffe20ff80e26bc5564b9379ea21ca99e2890b519
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 3cbab09c6b50abb590cfe9f2720713a8fa547aa7
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974823"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646476"
 ---
 # <a name="troubleshooting-with-azure-iot-hub-device-provisioning-service"></a>Rozwiązywanie problemów z usługą Azure IoT Hub Device Provisioning Service
 
@@ -81,5 +81,5 @@ Skorzystaj z tej tabeli, aby zrozumieć i rozwiązać typowe błędy.
 | 401 | Nie można zweryfikować tokenu autoryzacji; na przykład wygasła lub nie dotyczy identyfikatora URI żądania. Ten kod błędu jest również zwracany do urządzeń w ramach przepływu zaświadczania modułu TPM. | 401 — nieautoryzowane|
 | 404 | Wystąpienie usługi Device Provisioning lub zasób (np. Rejestracja) nie istnieje. |404 — Nie odnaleziono |
 | 412 | Element ETag w żądaniu jest niezgodny z elementem ETag istniejącego zasobu, zgodnie z RFC7232. | 412 warunek wstępny nie powiódł się |
-| 429 | Operacje są ograniczane przez usługę. Aby uzyskać szczegółowe limity usługi, zobacz [limity IoT Hub Device Provisioning Service](https://docs.microsoft.com/azure/azure-subscription-service-limits#iot-hub-device-provisioning-service-limits). | 429 zbyt wiele żądań |
+| 429 | Operacje są ograniczane przez usługę. Aby uzyskać szczegółowe limity usługi, zobacz [limity IoT Hub Device Provisioning Service](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#iot-hub-device-provisioning-service-limits). | 429 zbyt wiele żądań |
 | 500 | Wystąpił błąd wewnętrzny. | 500 — wewnętrzny błąd serwera|

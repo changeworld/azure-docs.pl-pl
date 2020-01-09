@@ -1,26 +1,18 @@
 ---
-title: Najlepsze rozwiązania dotyczące usługi Azure Service Fabric Security | Microsoft Docs
+title: Najlepsze rozwiązania dotyczące usługi Azure Service Fabric Security
 description: Ten artykuł zawiera zestaw najlepszych rozwiązań dotyczących usługi Azure Service Fabric Security.
-services: security
-documentationcenter: na
 author: unifycloud
-manager: barbkess
-editor: tomsh
-ms.assetid: ''
+ms.author: tomsh
 ms.service: security
 ms.subservice: security-fundamentals
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 01/16/2019
-ms.author: tomsh
-ms.openlocfilehash: dc063621e6b3e1d0d3e1a51d744ca9d9a6ef8c8d
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 458a1d474e9a722a98ca068e1827cf0e1abf4b47
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934627"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75548823"
 ---
 # <a name="azure-service-fabric-security-best-practices"></a>Najlepsze rozwiązania dotyczące zabezpieczeń usługi Azure Service Fabric
 Wdrażanie aplikacji na platformie Azure jest szybkie, łatwe i ekonomiczne. Przed wdrożeniem aplikacji w chmurze w środowisku produkcyjnym zapoznaj się z naszą listą najważniejszych i zalecanych najlepszych rozwiązań dotyczących implementowania bezpiecznych klastrów w aplikacji.
@@ -65,10 +57,10 @@ Klastry muszą być zabezpieczone, aby uniemożliwić nawiązywanie połączeń 
 
 Istnieją trzy [scenariusze](../../service-fabric/service-fabric-cluster-security.md) implementowania zabezpieczeń klastra przy użyciu różnych technologii:
 
--   Zabezpieczenia między węzłami: Ten scenariusz zabezpiecza komunikację między maszynami wirtualnymi i komputerami w klastrze. Ta forma zabezpieczeń zapewnia, że tylko komputery autoryzowane do przyłączenia do klastra mogą hostować aplikacje i usługi w klastrze.
-W tym scenariuszu klastry działające na platformie Azure lub autonomiczne klastry działające w systemie Windows mogą korzystać z [zabezpieczeń certyfikatów](../../service-fabric/service-fabric-windows-cluster-x509-security.md) lub dla maszyn z systemem Windows Server. [](../../service-fabric/service-fabric-windows-cluster-windows-security.md)
--   Zabezpieczenia klient-węzeł: Ten scenariusz zabezpiecza komunikację między klientem Service Fabric i poszczególnymi węzłami w klastrze.
--   Access Control oparte na rolach (RBAC): W tym scenariuszu są używane oddzielne tożsamości (certyfikaty, usługa Azure AD itd.) dla każdej roli klienta i administratora, która uzyskuje dostęp do klastra. Tożsamości ról są określane podczas tworzenia klastra.
+-   Zabezpieczenia między węzłami: ten scenariusz zabezpiecza komunikację między maszynami wirtualnymi i komputerami w klastrze. Ta forma zabezpieczeń zapewnia, że tylko komputery autoryzowane do przyłączenia do klastra mogą hostować aplikacje i usługi w klastrze.
+W tym scenariuszu klastry działające na platformie Azure lub autonomiczne klastry działające w systemie Windows mogą korzystać z [zabezpieczeń certyfikatów](../../service-fabric/service-fabric-windows-cluster-x509-security.md) lub dla maszyn z [systemem Windows Server](../../service-fabric/service-fabric-windows-cluster-windows-security.md) .
+-   Zabezpieczenia klient-węzeł: ten scenariusz zabezpiecza komunikację między klientem Service Fabric i poszczególnymi węzłami w klastrze.
+-   Access Control oparte na rolach (RBAC): w tym scenariuszu są używane oddzielne tożsamości (certyfikaty, Azure AD i tak dalej) dla każdej roli klienta i administratora, która uzyskuje dostęp do klastra. Tożsamości ról są określane podczas tworzenia klastra.
 
 >[!NOTE]
 >**Zalecenia dotyczące zabezpieczeń klastrów platformy Azure:** Użyj zabezpieczeń usługi Azure AD do uwierzytelniania klientów i certyfikatów na potrzeby zabezpieczeń między węzłami.
@@ -102,10 +94,10 @@ Jeśli klaster jest niezabezpieczony, każdy może połączyć się z klastrem a
 
 Aby dowiedzieć się więcej o używaniu certyfikatów X. 509, zobacz [Dodawanie lub usuwanie certyfikatów klastra Service Fabric](../../service-fabric/service-fabric-cluster-security-update-certs-azure.md).
 
-## <a name="configure-security-policies"></a>Konfiguruj zasady zabezpieczeń
+## <a name="configure-security-policies"></a>Konfigurowanie zasad zabezpieczeń
 Service Fabric również zabezpiecza zasoby używane przez aplikacje. Zasoby, takie jak pliki, katalogi i certyfikaty, są przechowywane na kontach użytkowników podczas wdrażania aplikacji. Ta funkcja sprawia, że uruchomione aplikacje są bezpieczniejsze od siebie, nawet w udostępnianym środowisku hostowanym.
 
--   Użyj Active Directory grupy domeny lub użytkownika: Uruchom usługę w ramach poświadczeń dla konta użytkownika lub grupy Active Directory. Upewnij się, że Active Directory lokalnie w domenie, a nie Azure Active Directory. Uzyskaj dostęp do innych zasobów w domenie, którym udzielono uprawnień przy użyciu użytkownika domeny lub grupy. Na przykład zasoby, takie jak udziały plików.
+-   Użyj Active Directory grupy lub użytkownika domeny: Uruchom usługę w ramach poświadczeń dla konta użytkownika lub grupy Active Directory. Upewnij się, że Active Directory lokalnie w domenie, a nie Azure Active Directory. Uzyskaj dostęp do innych zasobów w domenie, którym udzielono uprawnień przy użyciu użytkownika domeny lub grupy. Na przykład zasoby, takie jak udziały plików.
 
 -   Przypisz zasady dostępu zabezpieczeń dla punktów końcowych HTTP i HTTPS: Określ właściwość **SecurityAccessPolicy** , aby zastosować zasady **runas** do usługi, gdy manifest usługi deklaruje zasoby punktów końcowych przy użyciu protokołu HTTP. Porty przyłączone do punktów końcowych HTTP są prawidłowo dostępne dla konta użytkownika RunAs, w ramach którego działa usługa. Gdy zasady nie są ustawione, http. sys nie ma dostępu do usługi i można uzyskać błędy z wywołaniami z klienta.
 
@@ -152,7 +144,7 @@ Protokół HTTP jest niezabezpieczony i podlega atakom podsłuchu. Dane przesył
 Aby dowiedzieć się więcej o korzystaniu z certyfikatów SSL, zobacz [Konfigurowanie protokołu SSL dla aplikacji platformy Azure](../../cloud-services/cloud-services-configure-ssl-certificate-portal.md).
 
 ## <a name="use-network-isolation-and-security-with-azure-service-fabric"></a>Korzystanie z izolacji sieci i zabezpieczeń za pomocą usługi Azure Service Fabric
-Skonfiguruj NodeType bezpieczny klaster przy użyciu [szablonu Azure Resource Manager](../../azure-resource-manager/resource-group-authoring-templates.md) jako przykładu. Kontrolowanie ruchu przychodzącego i wychodzącego w sieci przy użyciu szablonów i sieciowych grup zabezpieczeń.
+Skonfiguruj NodeType bezpieczny klaster przy użyciu [szablonu Azure Resource Manager](../../azure-resource-manager/templates/template-syntax.md) jako przykładu. Kontrolowanie ruchu przychodzącego i wychodzącego w sieci przy użyciu szablonów i sieciowych grup zabezpieczeń.
 
 Szablon zawiera sieciowej grupy zabezpieczeń dla każdego z zestawów skalowania maszyn wirtualnych i służy do sterowania ruchem do i z zestawu. Reguły są domyślnie skonfigurowane tak, aby zezwalały na cały ruch potrzebny dla usług systemowych i portów aplikacji określonych w szablonie. Przejrzyj te reguły i wprowadź wszelkie zmiany, aby dostosować je do Twoich potrzeb, w tym dodawanie nowych reguł dla aplikacji.
 

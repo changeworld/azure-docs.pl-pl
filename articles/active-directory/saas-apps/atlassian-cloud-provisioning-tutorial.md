@@ -11,16 +11,15 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 03/27/2019
+ms.date: 12/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 0c3173841de25a30b84870332c7334a81773e84d
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 604dca2861b7a7126d2e37b5a01bcb85c530546e
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "68561594"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75561465"
 ---
 # <a name="tutorial-configure-atlassian-cloud-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie chmury Atlassian na potrzeby automatycznego aprowizacji użytkowników
 
@@ -28,7 +27,6 @@ Celem tego samouczka jest przedstawienie czynności, które należy wykonać w c
 
 > [!NOTE]
 > Ten samouczek zawiera opis łącznika utworzonego na podstawie usługi Azure AD User Provisioning. Aby uzyskać ważne informacje o tym, jak działa ta usługa, jak ona dotyczy, i często zadawanych pytań, zobacz [Automatyzowanie aprowizacji użytkowników i Anulowanie udostępniania aplikacji SaaS przy użyciu programu Azure Active Directory](../manage-apps/user-provisioning.md).
-
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -102,61 +100,63 @@ Ta sekcja przeprowadzi Cię przez kroki konfigurowania usługi Azure AD Provisio
 
     ![Inicjowanie obsługi administracyjnej w chmurze Atlassian](./media/atlassian-cloud-provisioning-tutorial/credentials.png)
 
-5. W sekcji **poświadczenia administratora** wprowadź **adres URL dzierżawy** i **token wpisu tajnego** konta w chmurze Atlassian. Przykłady tych wartości:
+5. Przejdź do programu [Atlassian Organization Manager](https://admin.atlassian.com) **, > Wybierz katalog > organizacji**.
+
+    ![Inicjowanie obsługi administracyjnej w chmurze Atlassian](./media/atlassian-cloud-provisioning-tutorial/select-directory.png)
+
+6. Kliknij pozycję **Inicjowanie obsługi użytkowników** i kliknij pozycję **Utwórz katalog**. Skopiuj odpowiednio **podstawowy adres URL katalogu** i **token okaziciela** do pól **adresu URL dzierżawy** i **tokenu tajnego** .
+
+    ![Atlassian aprowizacji w chmurze](./media/atlassian-cloud-provisioning-tutorial/secret-token-1.png) ![Atlassian Cloud Provisioning](./media/atlassian-cloud-provisioning-tutorial/secret-token-2.png) ![Atlassian Cloud Provisioning](./media/atlassian-cloud-provisioning-tutorial/secret-token-3.png)
+
+7. W sekcji **poświadczenia administratora** wprowadź **adres URL dzierżawy** i **token wpisu tajnego** konta w chmurze Atlassian. Przykłady tych wartości:
 
    * W polu **adres URL dzierżawy** Wypełnij określony punkt końcowy dzierżawy otrzymany z Atlassian, zgodnie z opisem w kroku 6. Na przykład: `https://api.atlassian.com/scim/directory/{directoryId}`.
 
    * W polu **token tajny** Wypełnij token tajny zgodnie z opisem w kroku 6.
 
-6. Przejdź do programu [Atlassian Organization Manager](https://admin.atlassian.com) **> aprowizacji użytkowników** i kliknij pozycję **Utwórz token**. Skopiuj odpowiednio **podstawowy adres URL katalogu** i **token okaziciela** do pól **adresu URL dzierżawy** i **tokenu tajnego** .
-
-    ![Atlassian aprowizacji w chmurze ](./media/atlassian-cloud-provisioning-tutorial/secret-token-1.png) ![Atlassian aprowizacji w chmurze ](./media/atlassian-cloud-provisioning-tutorial/secret-token-2.png)
-
-    ![Inicjowanie obsługi administracyjnej w chmurze Atlassian](./media/atlassian-cloud-provisioning-tutorial/secret-token-3.png)
-
-7. Po wypełnieniu pól przedstawionych w kroku 5 kliknij pozycję **Testuj połączenie** , aby upewnić się, że usługa Azure AD może nawiązać połączenie z chmurą Atlassian. Jeśli połączenie nie powiedzie się, upewnij się, że konto w chmurze Atlassian ma uprawnienia administratora, a następnie spróbuj ponownie.
+8. Po wypełnieniu pól przedstawionych w kroku 7 kliknij pozycję **Testuj połączenie** , aby upewnić się, że usługa Azure AD może nawiązać połączenie z chmurą Atlassian. Jeśli połączenie nie powiedzie się, upewnij się, że konto w chmurze Atlassian ma uprawnienia administratora, a następnie spróbuj ponownie.
 
     ![Inicjowanie obsługi administracyjnej w chmurze Atlassian](./media/atlassian-cloud-provisioning-tutorial/test-connection.png)
 
-8. W polu **adres E-mail powiadomienia** wprowadź adres e-mail osoby lub grupy, które powinny otrzymywać powiadomienia o błędach aprowizacji, i zaznacz pole wyboru — **Wyślij powiadomienie e-mail, gdy wystąpi awaria**.
+9. W polu **adres E-mail powiadomienia** wprowadź adres e-mail osoby lub grupy, które powinny otrzymywać powiadomienia o błędach aprowizacji, i zaznacz pole wyboru — **Wyślij powiadomienie e-mail, gdy wystąpi awaria**.
 
     ![Inicjowanie obsługi administracyjnej w chmurze Atlassian](./media/atlassian-cloud-provisioning-tutorial/notification.png)
 
-9. Kliknij przycisk **Save** (Zapisz).
+10. Kliknij pozycję **Zapisz**.
 
-10. W sekcji **mapowania** wybierz kolejno pozycje **Synchronizuj Azure Active Directory użytkownicy z chmurą Atlassian**.
+11. W sekcji **mapowania** wybierz kolejno pozycje **Synchronizuj Azure Active Directory użytkownicy z chmurą Atlassian**.
 
     ![Inicjowanie obsługi administracyjnej w chmurze Atlassian](./media/atlassian-cloud-provisioning-tutorial/provision-users.png)
 
-11. Przejrzyj atrybuty użytkownika, które są synchronizowane z usługi Azure AD do Atlassian Cloud w sekcji **Mapowanie atrybutów** . Atrybuty wybrane jako **pasujące** właściwości są używane w celu dopasowania do kont użytkowników w chmurze Atlassian dla operacji aktualizacji. Wybierz przycisk **Zapisz** , aby zatwierdzić zmiany.
+12. Przejrzyj atrybuty użytkownika, które są synchronizowane z usługi Azure AD do Atlassian Cloud w sekcji **Mapowanie atrybutów** . Atrybuty wybrane jako **pasujące** właściwości są używane w celu dopasowania do kont użytkowników w chmurze Atlassian dla operacji aktualizacji. Wybierz przycisk **Zapisz** , aby zatwierdzić zmiany.
 
     ![Inicjowanie obsługi administracyjnej w chmurze Atlassian](./media/atlassian-cloud-provisioning-tutorial/user-mapping.png)
 
-12. W sekcji **mapowania** wybierz pozycję **Synchronizuj grupy Azure Active Directory z chmurą Atlassian**.
+13. W sekcji **mapowania** wybierz pozycję **Synchronizuj grupy Azure Active Directory z chmurą Atlassian**.
 
     ![Inicjowanie obsługi administracyjnej w chmurze Atlassian](./media/atlassian-cloud-provisioning-tutorial/provision-groups.png)
 
-13. Przejrzyj atrybuty grupy, które są synchronizowane z usługi Azure AD do Atlassian Cloud w sekcji **Mapowanie atrybutów** . Atrybuty wybrane jako **pasujące** właściwości są używane do dopasowania do grup w chmurze Atlassian dla operacji aktualizacji. Wybierz przycisk **Zapisz** , aby zatwierdzić zmiany.
+14. Przejrzyj atrybuty grupy, które są synchronizowane z usługi Azure AD do Atlassian Cloud w sekcji **Mapowanie atrybutów** . Atrybuty wybrane jako **pasujące** właściwości są używane do dopasowania do grup w chmurze Atlassian dla operacji aktualizacji. Wybierz przycisk **Zapisz** , aby zatwierdzić zmiany.
 
     ![Inicjowanie obsługi administracyjnej w chmurze Atlassian](./media/atlassian-cloud-provisioning-tutorial/group-mapping.png)
 
-14. Aby skonfigurować filtry określania zakresu, zapoznaj się z poniższymi instrukcjami w [samouczku dotyczącym filtru określania zakresu](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
+15. Aby skonfigurować filtry określania zakresu, zapoznaj się z poniższymi instrukcjami w [samouczku dotyczącym filtru określania zakresu](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
 
-15. Aby włączyć usługę Azure AD Provisioning dla chmury Atlassian, Zmień **stan aprowizacji** na **włączone** w sekcji **Ustawienia** .
+16. Aby włączyć usługę Azure AD Provisioning dla chmury Atlassian, Zmień **stan aprowizacji** na **włączone** w sekcji **Ustawienia** .
 
     ![Inicjowanie obsługi administracyjnej w chmurze Atlassian](./media/atlassian-cloud-provisioning-tutorial/provisioning-on.png)
 
-16. Zdefiniuj użytkowników i/lub grupy, które chcesz udostępnić w chmurze Atlassian, wybierając odpowiednie wartości w **zakresie** w sekcji **Ustawienia** .
+17. Zdefiniuj użytkowników i/lub grupy, które chcesz udostępnić w chmurze Atlassian, wybierając odpowiednie wartości w **zakresie** w sekcji **Ustawienia** .
 
     ![Inicjowanie obsługi administracyjnej w chmurze Atlassian](./media/atlassian-cloud-provisioning-tutorial/provisioning-options.png)
 
-17. Gdy wszystko będzie gotowe do udostępnienia, kliknij przycisk **Zapisz**.
+18. Gdy wszystko będzie gotowe do udostępnienia, kliknij przycisk **Zapisz**.
 
     ![Inicjowanie obsługi administracyjnej w chmurze Atlassian](./media/atlassian-cloud-provisioning-tutorial/save.png)
 
 Ta operacja uruchamia początkową synchronizację wszystkich użytkowników i/lub grup zdefiniowanych w **zakresie** w sekcji **Ustawienia** . Synchronizacja początkowa trwa dłużej niż kolejne synchronizacje, które wystąpiły co około 40 minut, o ile usługa Azure AD Provisioning jest uruchomiona. Możesz użyć sekcji **szczegóły synchronizacji** do monitorowania postępu i postępuj zgodnie z raportem aktywności aprowizacji, który opisuje wszystkie akcje wykonywane przez usługę Azure AD Provisioning w chmurze Atlassian.
 
-Aby uzyskać więcej informacji na temat sposobu odczytywania dzienników aprowizacji usługi Azure AD, zobacz [Raportowanie dotyczące automatycznego inicjowania obsługi konta użytkownika](../manage-apps/check-status-user-account-provisioning.md).
+Aby uzyskać więcej informacji na temat sposobu odczytywania aprowizacji dzienniki usługi Azure AD, zobacz [raportowanie na inicjowanie obsługi administracyjnej konta użytkownika automatyczne](../manage-apps/check-status-user-account-provisioning.md).
 
 ## <a name="connector-limitations"></a>Ograniczenia łącznika
 

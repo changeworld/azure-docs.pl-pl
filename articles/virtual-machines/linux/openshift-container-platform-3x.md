@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
-ms.openlocfilehash: 56607de57939be769b1951f0eee9078c46d610c0
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 615d9a3c5c359174ef15028e82044a85da0dd733
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035461"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75561290"
 ---
 # <a name="deploy-openshift-container-platform-311-in-azure"></a>Wdrażanie OpenShift kontenera platform 3,11 na platformie Azure
 
@@ -27,7 +27,7 @@ Do wdrożenia OpenShift kontenerów platformy 3,11 na platformie Azure można u�
 
 - Niezbędne składniki infrastruktury platformy Azure można wdrożyć ręcznie, a następnie skorzystać z [dokumentacji platformy kontenera OpenShift](https://docs.openshift.com/container-platform).
 - Można również użyć istniejącego [szablonu Menedżer zasobów](https://github.com/Microsoft/openshift-container-platform/) , który upraszcza wdrażanie klastra platformy kontenerów OpenShift.
-- Innym rozwiązaniem jest użycie [oferty portalu Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/redhat.openshift-container-platform?tab=Overview).
+- Innym rozwiązaniem jest użycie [oferty portalu Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/osatesting.open-shift-azure-proxy).
 
 W przypadku wszystkich opcji wymagana jest subskrypcja Red Hat. Podczas wdrażania wystąpienie Red Hat Enterprise Linux jest zarejestrowane w ramach subskrypcji Red Hat i dołączone do identyfikatora puli zawierającego uprawnienia dla platformy kontenera OpenShift.
 Upewnij się, że masz prawidłową nazwę użytkownika, hasło i Identyfikator puli usługi Red Hat Subscription Manager (RHSM). Możesz użyć klucza aktywacji, identyfikatora organizacji i identyfikatora puli. Możesz sprawdzić te informacje, logując się do https://access.redhat.com.
@@ -248,7 +248,7 @@ Różne wersje mogą mieć inne parametry, aby zweryfikować wymagane parametry 
 
 ### <a name="azuredeployparametersjson-file-explained"></a>azuredeploy. Wyjaśniono plik Parameters. JSON
 
-| Właściwość | Opis | Prawidłowe opcje | Wartość domyślna |
+| Właściwość | Opis | Prawidłowe opcje | Default Value |
 |----------|-------------|---------------|---------------|
 | `_artifactsLocation`  | Adres URL artefaktów (JSON, skrypty itp.) |  |  https:\//raw.githubusercontent.com/Microsoft/openshift-container-platform/master  |
 | `location` | Region platformy Azure, do którego mają zostać wdrożone zasoby |  |  |
@@ -258,7 +258,7 @@ Różne wersje mogą mieć inne parametry, aby zweryfikować wymagane parametry 
 | `cnsVmSize` | Rozmiar maszyny wirtualnej węzła magazynu natywnego (CN) kontenera. Wybierz jeden z dozwolonych rozmiarów maszyn wirtualnych wymienionych w pliku azuredeploy. JSON |  | Standardowa_E4s_v3 |
 | `osImageType` | Obraz RHEL do użycia. defaultgallery: na żądanie; Marketplace: obraz innej firmy | defaultgallery <br> Marketplace | defaultgallery |
 | `marketplaceOsImage` | Jeśli `osImageType` to Marketplace, wprowadź odpowiednie wartości dla "Wydawca", "Oferta", "SKU", "wersja" oferty portalu Marketplace. Ten parametr jest typem obiektu |  |  |
-| `storageKind` | Typ magazynu do użycia  | zarządzanych<br> niepodlegającą | zarządzanych |
+| `storageKind` | Typ magazynu do użycia  | zarządzany<br> niezarządzana | zarządzany |
 | `openshiftClusterPrefix` | Prefiks klastra używany do konfigurowania nazw hostów dla wszystkich węzłów.  Od 1 do 20 znaków |  | mycluster |
 | `minoVersion` | Pomocnicza wersja OpenShift kontenera platform 3,11 do wdrożenia |  | 69 |
 | `masterInstanceCount` | Liczba węzłów głównych do wdrożenia | 1, 3, 5 | 3 |
@@ -282,9 +282,9 @@ Różne wersje mogą mieć inne parametry, aby zweryfikować wymagane parametry 
 | `enableAzure` | Włącz dostawcę chmury platformy Azure | true <br> false | true |
 | `aadClientId` | Identyfikator klienta Azure Active Directory znany również jako identyfikator aplikacji dla jednostki usługi |  |  |
 | `domainName` | Nazwa niestandardowej nazwy domeny do użycia (jeśli dotyczy). Ustaw na wartość "none", jeśli nie jest wdrażany w pełni prywatny klaster |  | brak |
-| `masterClusterDnsType` | Typ domeny dla konsoli sieci Web OpenShift. wartość "default" spowoduje użycie etykiety DNS publicznego adresu IP infrastruktury Master. element "Custom" umożliwia zdefiniowanie własnej nazwy | default <br> Celnej | default |
+| `masterClusterDnsType` | Typ domeny dla konsoli sieci Web OpenShift. wartość "default" spowoduje użycie etykiety DNS publicznego adresu IP infrastruktury Master. element "Custom" umożliwia zdefiniowanie własnej nazwy | default <br> niestandardowy | default |
 | `masterClusterDns` | Niestandardowa nazwa DNS, która ma być używana do uzyskiwania dostępu do konsoli sieci Web OpenShift w przypadku wybrania elementu "Custom" dla `masterClusterDnsType` |  | console.contoso.com |
-| `routingSubDomainType` | Jeśli ustawiono wartość "nipio", `routingSubDomain` będzie używać nip.io.  Użyj elementu "Custom", jeśli masz własną domenę, która ma być używana do routingu | nipio <br> Celnej | nipio |
+| `routingSubDomainType` | Jeśli ustawiono wartość "nipio", `routingSubDomain` będzie używać nip.io.  Użyj elementu "Custom", jeśli masz własną domenę, która ma być używana do routingu | nipio <br> niestandardowy | nipio |
 | `routingSubDomain` | Symbol wieloznaczny DNS, który ma być używany do routingu w przypadku wybrania dla `routingSubDomainType` elementu "Custom" |  | apps.contoso.com |
 | `virtualNetworkNewOrExisting` | Wybierz, czy chcesz użyć istniejącego Virtual Network, czy utworzyć nowy Virtual Network | istniejącego <br> nowe | nowe |
 | `virtualNetworkResourceGroupName` | Nazwa grupy zasobów dla nowego Virtual Network w przypadku wybrania elementu "New" dla `virtualNetworkNewOrExisting` |  | resourceGroup().name |
@@ -300,12 +300,12 @@ Różne wersje mogą mieć inne parametry, aby zweryfikować wymagane parametry 
 | `existingInfraSubnetReference` | Pełne odwołanie do istniejącej podsieci dla węzłów infrastruktury. Niewymagane w przypadku tworzenia nowej sieci wirtualnej/podsieci |  |  |
 | `existingCnsSubnetReference` | Pełne odwołanie do istniejącej podsieci dla węzłów CNS. Niewymagane w przypadku tworzenia nowej sieci wirtualnej/podsieci |  |  |
 | `existingNodeSubnetReference` | Pełne odwołanie do istniejącej podsieci dla węzłów obliczeniowych. Niewymagane w przypadku tworzenia nowej sieci wirtualnej/podsieci |  |  |
-| `masterClusterType` | Określ, czy klaster ma używać prywatnych, jak i publicznych węzłów głównych. W przypadku wybrania opcji prywatne węzły główne nie będą uwidaczniane w Internecie za pośrednictwem publicznego adresu IP. Zamiast tego będzie używany prywatny adres IP określony w `masterPrivateClusterIp` | społeczeństwo <br> prywatna | społeczeństwo |
+| `masterClusterType` | Określ, czy klaster ma używać prywatnych, jak i publicznych węzłów głównych. W przypadku wybrania opcji prywatne węzły główne nie będą uwidaczniane w Internecie za pośrednictwem publicznego adresu IP. Zamiast tego będzie używany prywatny adres IP określony w `masterPrivateClusterIp` | public <br> prywatna | public |
 | `masterPrivateClusterIp` | W przypadku wybrania prywatnych węzłów głównych należy określić prywatny adres IP do użycia przez wewnętrzny moduł równoważenia obciążenia dla węzłów głównych. Ten statyczny adres IP musi znajdować się w bloku CIDR dla podsieci głównej i nie jest już używany. Jeśli wybrane są publiczne węzły główne, ta wartość nie zostanie użyta, ale nadal musi być określona |  | 10.1.0.200 |
-| `routerClusterType` | Określ, czy klaster ma używać prywatnych, czy publicznych węzłów infrastruktury. W przypadku wybrania opcji prywatne węzły infrastruktury nie będą ujawniane w Internecie za pośrednictwem publicznego adresu IP. Zamiast tego będzie używany prywatny adres IP określony w `routerPrivateClusterIp` | społeczeństwo <br> prywatna | społeczeństwo |
+| `routerClusterType` | Określ, czy klaster ma używać prywatnych, czy publicznych węzłów infrastruktury. W przypadku wybrania opcji prywatne węzły infrastruktury nie będą ujawniane w Internecie za pośrednictwem publicznego adresu IP. Zamiast tego będzie używany prywatny adres IP określony w `routerPrivateClusterIp` | public <br> prywatna | public |
 | `routerPrivateClusterIp` | W przypadku wybrania prywatnych węzłów infrastruktury należy określić prywatny adres IP do użycia przez wewnętrzny moduł równoważenia obciążenia dla węzłów infrastruktury. Ten statyczny adres IP musi znajdować się w bloku CIDR dla podsieci głównej i nie jest już używany. Jeśli są wybrane węzły infrastruktury publicznej, ta wartość nie zostanie użyta, ale nadal musi być określona |  | 10.2.0.200 |
-| `routingCertType` | Użyj certyfikatu niestandardowego dla domeny routingu lub domyślnego certyfikatu z podpisem własnym — postępuj zgodnie z instrukcjami w sekcji **certyfikaty niestandardowe** | selfsigned <br> Celnej | selfsigned |
-| `masterCertType` | Użyj certyfikatu niestandardowego dla domeny głównej lub domyślnego certyfikatu z podpisem własnym — wykonaj instrukcje w sekcji **certyfikaty niestandardowe** | selfsigned <br> Celnej | selfsigned |
+| `routingCertType` | Użyj certyfikatu niestandardowego dla domeny routingu lub domyślnego certyfikatu z podpisem własnym — postępuj zgodnie z instrukcjami w sekcji **certyfikaty niestandardowe** | selfsigned <br> niestandardowy | selfsigned |
+| `masterCertType` | Użyj certyfikatu niestandardowego dla domeny głównej lub domyślnego certyfikatu z podpisem własnym — wykonaj instrukcje w sekcji **certyfikaty niestandardowe** | selfsigned <br> niestandardowy | selfsigned |
 
 <br>
 
@@ -335,7 +335,7 @@ Jeśli nie chcesz powiązać wiersza polecenia podczas oczekiwania na zakończen
 
 ## <a name="connect-to-the-openshift-cluster"></a>Nawiązywanie połączenia z klastrem OpenShift
 
-Po zakończeniu wdrażania Pobierz połączenie z sekcji Wyjście wdrożenia. Nawiąż połączenie z konsolą OpenShift z przeglądarką przy użyciu **adresu URL konsoli OpenShift**. można również przeprowadzić protokół SSH do hosta bastionu. Poniżej znajduje się przykład, w którym nazwa użytkownika administratora to clusteradmin, a bastionu publiczny adres IP DNS FQDN to bastiondns4hawllzaavu6g.eastus.cloudapp.azure.com:
+Po zakończeniu wdrażania Pobierz połączenie z sekcji Wyjście wdrożenia. Nawiąż połączenie z konsolą OpenShift z przeglądarką przy użyciu **adresu URL konsoli OpenShift**. Można również przeprowadzić protokół SSH do hosta bastionu. Poniżej znajduje się przykład, w którym nazwa użytkownika administratora to clusteradmin, a bastionu publiczny adres IP DNS FQDN to bastiondns4hawllzaavu6g.eastus.cloudapp.azure.com:
 
 ```bash
 $ ssh clusteradmin@bastiondns4hawllzaavu6g.eastus.cloudapp.azure.com

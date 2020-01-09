@@ -11,18 +11,18 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: a3ad3314b8a18ec6a63b5d51bc7d8b3f9d7a6260
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 7557ed43d9ecb8fc7a584e7e8239bc7ccb972e99
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818283"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647173"
 ---
 # <a name="azure-sql-database-servers-and-their-management"></a>Serwery Azure SQL Database i ich zarządzanie
 
 ## <a name="what-is-an-azure-sql-database-server"></a>Co to jest serwer Azure SQL Database
 
-Serwer SQL Database to logiczna konstrukcja, która działa jako centralny punkt administracyjny dla wielu pojedynczych lub w [puli](sql-database-elastic-pool.md) baz danych, [logowań](sql-database-manage-logins.md), [reguł zapory](sql-database-firewall-configure.md), [reguł inspekcji](sql-database-auditing.md), [zasad wykrywania zagrożeń](sql-database-threat-detection.md)i [ grupy trybu failover](sql-database-auto-failover-group.md) serwer SQL Database może znajdować się w innym regionie niż jego grupa zasobów. Aby można było utworzyć bazę danych Azure SQL, musi istnieć serwer SQL Database. Wszystkie bazy danych zarządzane przez serwer SQL Database są tworzone w tym samym regionie, w którym znajduje się serwer SQL Database.
+Serwer SQL Database to logiczna konstrukcja, która działa jako centralny punkt administracyjny dla wielu pojedynczych lub w [puli](sql-database-elastic-pool.md) baz danych, [logowań](sql-database-manage-logins.md), [reguł zapory](sql-database-firewall-configure.md), [reguł inspekcji](sql-database-auditing.md), [zasad wykrywania zagrożeń](sql-database-threat-detection.md)i [grup trybu failover](sql-database-auto-failover-group.md) serwer programu SQL Database może znajdować się w innym regionie niż jego grupa zasobów. Aby można było utworzyć bazę danych Azure SQL, musi istnieć serwer SQL Database. Wszystkie bazy danych zarządzane przez serwer SQL Database są tworzone w tym samym regionie, w którym znajduje się serwer SQL Database.
 
 Serwer SQL Database różni się od wystąpienia SQL Server, które może być znane w lokalnym świecie. W związku z tym usługa SQL Database nie udziela żadnych gwarancji dotyczących lokalizacji baz danych w odniesieniu do serwera SQL Database, który zarządza nimi, i nie ujawnia dostępu na poziomie wystąpienia ani funkcji. W przeciwieństwie do bazy danych wystąpień w wystąpieniu zarządzanym wszystkie te obiekty są w taki sam sposób, jak w przypadku SQL Server na świecie lokalnym.
 
@@ -40,7 +40,7 @@ Serwer SQL Database:
 - Udostępnia punkt końcowy połączenia dla dostępu do baz danych (`<serverName>`.database.windows.net)
 - Zapewnia dostęp do metadanych dotyczących zawartych zasobów przy użyciu dynamicznych widoków zarządzania, łącząc się z główną bazą danych
 - Zapewnia zakres zasad zarządzania, które mają zastosowanie do swoich baz danych — logowania, zapory, inspekcji, wykrywania zagrożeń i takich
-- Jest ograniczony przez przydział w ramach subskrypcji nadrzędnej (domyślnie sześć serwerów na subskrypcję — [Zobacz limity dotyczące subskrypcji tutaj](../azure-subscription-service-limits.md))
+- Jest ograniczony przez przydział w ramach subskrypcji nadrzędnej (domyślnie sześć serwerów na subskrypcję — [Zobacz limity dotyczące subskrypcji tutaj](../azure-resource-manager/management/azure-subscription-service-limits.md))
 - Zapewnia zakres przydziału bazy danych i limit przydziału jednostek DTU lub rdzeń wirtualny dla zasobów, które zawiera (na przykład 45 000 jednostek DTU)
 - Jest zakresem przechowywania wersji dla funkcji włączonych w zawartych zasobach
 - Logowania główne na poziomie serwera mogą zarządzać wszystkimi bazami danych na serwerze
@@ -152,10 +152,10 @@ Aby utworzyć i zarządzać programem Azure SQL Server, bazami danych i zaporami
 | [ALTER DATABASE (Azure SQL Database)](/sql/t-sql/statements/alter-database-azure-sql-database) |Modyfikuje bazę danych SQL Azure. |
 |[ALTER DATABASE (Azure SQL Data Warehouse)](/sql/t-sql/statements/alter-database-azure-sql-data-warehouse)|Modyfikuje Azure SQL Data Warehouse.|
 |[DROP DATABASE (Transact-SQL)](/sql/t-sql/statements/drop-database-transact-sql)|Usuwa bazę danych.|
-|[sys. database_service_objectives (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|Zwraca wersję (warstwę usług), cel usługi (warstwę cenową) i nazwę puli elastycznej (jeśli istnieje) dla usługi Azure SQL Database lub Azure SQL Data Warehouse. Jeśli użytkownik jest zalogowany do bazy danych Master na serwerze Azure SQL Database, zwraca informacje o wszystkich bazach danych. W przypadku Azure SQL Data Warehouse należy nawiązać połączenie z bazą danych Master.|
-|[sys. dm_db_resource_stats (Azure SQL Database)](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| Zwraca użycie procesora CPU, operacji we/wy i pamięci dla bazy danych Azure SQL Database. Jeden wiersz istnieje przez co 15 sekund, nawet jeśli w bazie danych nie ma żadnych działań.|
-|[sys. resource_stats (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)|Zwraca dane użycia procesora CPU i magazynu dla Azure SQL Database. Dane są zbierane i agregowane w ciągu pięciu minut.|
-|[sys. database_connection_stats (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-connection-stats-azure-sql-database)|Zawiera dane statystyczne dotyczące zdarzeń łączności z bazą danych SQL Database, które zawierają omówienie sukcesów i niepowodzeń połączeń z bazą danych. |
+|[sys.database_service_objectives (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|Zwraca wersję (warstwę usług), cel usługi (warstwę cenową) i nazwę puli elastycznej (jeśli istnieje) dla usługi Azure SQL Database lub Azure SQL Data Warehouse. Jeśli użytkownik jest zalogowany do bazy danych Master na serwerze Azure SQL Database, zwraca informacje o wszystkich bazach danych. W przypadku Azure SQL Data Warehouse należy nawiązać połączenie z bazą danych Master.|
+|[sys.dm_db_resource_stats (Azure SQL Database)](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| Zwraca użycie procesora CPU, operacji we/wy i pamięci dla bazy danych Azure SQL Database. Jeden wiersz istnieje przez co 15 sekund, nawet jeśli w bazie danych nie ma żadnych działań.|
+|[sys.resource_stats (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)|Zwraca dane użycia procesora CPU i magazynu dla Azure SQL Database. Dane są zbierane i agregowane w ciągu pięciu minut.|
+|[sys.database_connection_stats (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-connection-stats-azure-sql-database)|Zawiera dane statystyczne dotyczące zdarzeń łączności z bazą danych SQL Database, które zawierają omówienie sukcesów i niepowodzeń połączeń z bazą danych. |
 |[sys. event_log (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-event-log-azure-sql-database)|Zwraca pomyślne Azure SQL Database połączenia z bazą danych, błędy połączeń i zakleszczenie. Te informacje służą do śledzenia i rozwiązywania problemów z działaniem bazy danych za pomocą SQL Database.|
 |[sp_set_firewall_rule (Azure SQL Database)](/sql/relational-databases/system-stored-procedures/sp-set-firewall-rule-azure-sql-database)|Tworzy lub aktualizuje ustawienia zapory na poziomie serwera dla serwera SQL Database. Ta procedura składowana jest dostępna tylko w bazie danych Master do nazwy logowania podmiotu zabezpieczeń na poziomie serwera. Regułę zapory na poziomie serwera można utworzyć tylko przy użyciu języka Transact-SQL po utworzeniu pierwszej reguły zapory na poziomie serwera przez użytkownika z uprawnieniami na poziomie platformy Azure.|
 |[sys. firewall_rules (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-firewall-rules-azure-sql-database)|Zwraca informacje o ustawieniach zapory na poziomie serwera skojarzonych z Microsoft Azure SQL Database.|

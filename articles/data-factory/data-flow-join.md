@@ -7,13 +7,13 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/17/2019
-ms.openlocfilehash: 09d2c1d063c542583dc11fab0805a9392661426f
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.date: 01/02/2020
+ms.openlocfilehash: 10149c6eb06e6d2994233aa365f237e6d9330c48
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74930340"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644764"
 ---
 # <a name="join-transformation-in-mapping-data-flow"></a>Przekształcenie łączenia w przepływie danych mapowania
 
@@ -25,11 +25,14 @@ Mapowanie przepływów danych obsługuje obecnie pięć różnych typów sprzę�
 
 ### <a name="inner-join"></a>Sprzężenie wewnętrzne
 
-Sprzężenie wewnętrzne wyświetla tylko wiersze, które mają pasujące wartości obu tabel.
+Sprzężenie wewnętrzne wyświetla tylko wiersze, które mają pasujące wartości w obu tabelach.
 
 ### <a name="left-outer"></a>Lewe zewnętrzne
 
 Lewe sprzężenie zewnętrzne zwraca wszystkie wiersze z lewego strumienia i dopasowane rekordy z odpowiedniego strumienia. Jeśli wiersz z lewego strumienia nie ma dopasowania, kolumny danych wyjściowych z odpowiedniego strumienia są ustawione na wartość NULL. Dane wyjściowe będą wierszami zwracanymi przez sprzężenie wewnętrzne oraz niedopasowane wiersze z lewego strumienia.
+
+> [!NOTE]
+> Aparat platformy Spark używany przez przepływy danych będzie czasami możliwe kartezjańskiego produktów w warunkach sprzężenia. W takim przypadku można przełączyć się do niestandardowego sprzężenia krzyżowego i ręcznie wprowadzić warunek sprzężenia. Może to spowodować wolniejszą wydajność przepływów danych, ponieważ aparat wykonywania może potrzebować obliczyć wszystkie wiersze z obu stron relacji, a następnie filtrować wiersze.
 
 ### <a name="right-outer"></a>Prawe zewnętrzne
 
@@ -39,9 +42,16 @@ Prawe sprzężenie zewnętrzne zwraca wszystkie wiersze z odpowiedniego strumien
 
 Pełne sprzężenie zewnętrzne wyprowadza wszystkie kolumny i wiersze z obu stron z wartościami NULL dla kolumn, które nie pasują.
 
-### <a name="cross-join"></a>Sprzężenie krzyżowe
+### <a name="custom-cross-join"></a>Niestandardowe sprzężenie krzyżowe
 
-Sprzężenie krzyżowe wyprowadza iloczyn między dwoma strumieniami w oparciu o warunek. Jeśli używasz warunku, który nie jest równy, Określ wyrażenie niestandardowe jako warunek sprzężenia krzyżowego. Strumień wyjściowy będzie zawierać wszystkie wiersze, które spełniają warunek sprzężenia. Aby utworzyć produkt kartezjańskiego, który wyprowadza każdą kombinację wierszy, określ `true()` jako warunek sprzężenia.
+Sprzężenie krzyżowe wyprowadza iloczyn między dwoma strumieniami w oparciu o warunek. Jeśli używasz warunku, który nie jest równy, Określ wyrażenie niestandardowe jako warunek sprzężenia krzyżowego. Strumień wyjściowy będzie zawierać wszystkie wiersze, które spełniają warunek sprzężenia.
+
+Tego typu sprzężenia można użyć dla sprzężeń innych niż Equi i warunków ```OR```.
+
+Jeśli chcesz jawnie utworzyć pełny produkt kartezjańskiego, użyj przekształcenia kolumn pochodnych w każdym z dwóch niezależnych strumieni przed przyłączeniem, aby utworzyć klucz syntetyczny do dopasowania. Na przykład utwórz nową kolumnę w kolumnie pochodnej w każdym strumieniu o nazwie ```SyntheticKey``` i ustaw ją na wartość ```1```. Następnie użyj ```a.SyntheticKey == b.SyntheticKey``` jako niestandardowego wyrażenia sprzężenia.
+
+> [!NOTE]
+> Pamiętaj o uwzględnieniu co najmniej jednej kolumny z każdej strony lewej i prawej relacji w przypadku niestandardowego sprzężenia krzyżowego. Wykonywanie sprzężenia krzyżowego z wartościami statycznymi zamiast kolumn z każdego z nich skutkuje pełnymi skanami całego zestawu danych, co sprawia, że przepływ danych jest niewłaściwie wykonywany.
 
 ## <a name="configuration"></a>Konfigurowanie
 
@@ -104,9 +114,9 @@ TripData, TripFare
     )~> JoinMatchedData
 ```
 
-### <a name="cross-join-example"></a>Przykład sprzężenia krzyżowego
+### <a name="custom-cross-join-example"></a>Przykład niestandardowego sprzężenia krzyżowego
 
-Poniższy przykład to transformacja sprzężenia o nazwie `CartesianProduct`, która pobiera lewe `TripData` strumienia i właściwe `TripFare`przesyłania strumieniowego. Ta transformacja zajmuje dwa strumienie i zwraca kartezjańskiegoy produkt ich wierszy. Warunek sprzężenia jest `true()`, ponieważ wyprowadza pełny produkt kartezjańskiego. `joinType` jest `cross`. Włączamy emisję tylko w lewym strumieniu, więc `broadcast` ma `'left'`wartości.
+Poniższy przykład to transformacja sprzężenia o nazwie `JoiningColumns`, która pobiera lewe `LeftStream` strumienia i właściwe `RightStream`przesyłania strumieniowego. Ta transformacja przyjmuje dwa strumienie i łączy ze sobą wszystkie wiersze, w których kolumna `leftstreamcolumn` jest większa niż `rightstreamcolumn`kolumn. `joinType` jest `cross`. Rozgłaszanie nie jest włączone `broadcast` ma `'none'`wartości.
 
 W Data Factory środowisku użytkownika Ta transformacja wygląda jak na poniższym obrazie:
 
@@ -115,12 +125,12 @@ W Data Factory środowisku użytkownika Ta transformacja wygląda jak na poniżs
 Skrypt przepływu danych dla tego przekształcenia znajduje się w poniższym fragmencie kodu:
 
 ```
-TripData, TripFare
+LeftStream, RightStream
     join(
-        true(),
+        leftstreamcolumn > rightstreamcolumn,
         joinType:'cross',
-        broadcast: 'left'
-    )~> CartesianProduct
+        broadcast: 'none'
+    )~> JoiningColumns
 ```
 
 ## <a name="next-steps"></a>Następne kroki
