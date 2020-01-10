@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 07/31/2018
 ms.author: tarcher
 ms.custom: jenkins
-ms.openlocfilehash: 734b0a516d4a9fe882545dd5cde5a57d8af719cb
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 1265861a872b01d558646ea2adb6cba27fa3ebd4
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034563"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75778417"
 ---
 # <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-with-using-jenkins-and-azure-devops-services"></a>Samouczek: wdrażanie aplikacji na maszynach wirtualnych systemu Linux na platformie Azure przy użyciu usług Jenkins i Azure DevOps Services
 
@@ -82,7 +82,7 @@ Najpierw musisz skonfigurować dwie wtyczki usługi Jenkins: **NodeJS** i **VS T
 ## <a name="configure-a-jenkins-freestyle-project-for-nodejs"></a>Konfigurowanie projektu Jenkins Freestyle dla środowiska Node.js
 
 1. Wybierz pozycję **New Item** (Nowy element). Wprowadź nazwę elementu.
-2. Wybierz pozycję **Freestyle project** (Projekt Freestyle). Wybierz **OK**.
+2. Wybierz pozycję **Freestyle project** (Projekt Freestyle). Kliknij przycisk **OK**.
 3. Na karcie **Source Code Management** (Zarządzanie kodem źródłowym) wybierz pozycję **Git**, a następnie wprowadź szczegóły repozytorium i gałęzi zawierającej kod aplikacji.    
     ![Dodawanie repozytorium do kompilacji](media/tutorial-build-deploy-jenkins/jenkins-git.png)
 4. Na karcie **Build Triggers** (Wyzwalacze kompilacji) wybierz pozycję **Poll SCM** (Sondowanie SCM), a następnie wprowadź harmonogram `H/03 * * * *`, aby przeprowadzać sondowanie repozytorium Git pod kątem zmian co trzy minuty. 
@@ -146,7 +146,7 @@ Potok wydania określa proces, którego usługa Azure Pipelines używa do wdraż
 
 W celu utworzenia potoku wydania w usłudze Azure Pipelines:
 
-1. Otwórz kartę **Wydania** centrum **Kompilacja i wydanie&amp;, a następnie wybierz pozycję** Utwórz potok wydania **. 
+1. Otwórz kartę **Wydania** centrum **Kompilacja i wydanie**, a następnie wybierz pozycję **Utwórz potok wydania**. 
 2. Wybierz szablon **Pusty**, wybierając rozpoczęcie od pozycji **Pusty proces**.
 3. W sekcji **Artefakty** wybierz pozycję **+ Dodaj artefakt**, a następnie wybierz wartość **Jenkins** dla pozycji **Typ źródła**. Wybierz połączenie punktu końcowego usługi Jenkins. Następnie wybierz zadanie źródłowe usługi Jenkins, po czym wybierz pozycję **Dodaj**.
 4. Wybierz symbol wielokropka obok pozycji **Środowisko 1**. Wybierz pozycję **Dodaj fazę grupy wdrożenia**.
@@ -182,9 +182,11 @@ W tym samouczku zautomatyzowano wdrażanie aplikacji na platformie Azure przy u�
 > * Kompilowanie aplikacji w usłudze Jenkins.
 > * Konfigurowanie usługi Jenkins do integracji z usługami Azure DevOps Services.
 > * Tworzenie grupy wdrożenia dla maszyn wirtualnych platformy Azure.
-> * Tworzenie potoku wydania, który konfiguruje maszyny wirtualne, a następnie wdraża aplikację.
+> * Utwórz potok platformy Azure, który skonfiguruje maszyny wirtualne i wdroży aplikację.
 
-Aby dowiedzieć się więcej o sposobie wdrażania stosu LAMP (Linux, Apache MySQL i PHP), przejdź do następnego samouczka.
+Aby dowiedzieć się, jak używać Azure Pipelines w przypadku etapów kompilowania i wydawania, zapoznaj się z [tym](https://docs.microsoft.com/azure/devops/pipelines/apps/cd/deploy-linuxvm-deploygroups)tematem.
+
+Aby dowiedzieć się więcej na temat tworzenia potoku ciągłej integracji/ciągłego wdrażania na maszynach wirtualnych, przejdź do następnego samouczka.
 
 > [!div class="nextstepaction"]
-> [Wdrażanie stosu LAMP](tutorial-lamp-stack.md)
+> [Ciągłej integracji/ciągłego wdrażania za pomocą Azure Pipelines](tutorial-build-deploy-azure-pipelines.md)

@@ -1,26 +1,19 @@
 ---
-title: 'Łączenie sieci wirtualnej z inną siecią wirtualną za pomocą połączenia sieć wirtualna-sieć wirtualna: interfejs wiersza polecenia platformy Azure | Microsoft Docs'
+title: 'Łączenie sieci wirtualnej z siecią wirtualną przy użyciu połączenia Sieć wirtualna-sieć wirtualna: interfejs wiersza polecenia platformy Azure'
 description: Łączenie sieci wirtualnych przy użyciu połączenia sieć wirtualna-sieć wirtualna oraz interfejsu wiersza polecenia platformy Azure.
 services: vpn-gateway
-documentationcenter: na
+titleSuffix: Azure VPN Gateway
 author: cherylmc
-manager: jpconnock
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 0683c664-9c03-40a4-b198-a6529bf1ce8b
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: cherylmc
-ms.openlocfilehash: e18f37b31b7f0a49717e174d8a20d56388ad4808
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a354f8031c26ca86876dc6f3a2092610226cc84b
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60411835"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834573"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-azure-cli"></a>Konfigurowanie połączenia bramy sieci VPN między sieciami wirtualnymi przy użyciu interfejsu wiersza polecenia platformy Azure
 
@@ -50,7 +43,7 @@ Skonfigurowanie połączenia sieci wirtualnej z siecią wirtualną jest dobrym s
 
 W przypadku pracy ze złożoną konfiguracją sieci lepszym rozwiązaniem może być połączenie sieci wirtualnych za pomocą procedury tworzenia połączenia [lokacja-lokacja](vpn-gateway-howto-site-to-site-resource-manager-cli.md) zamiast sieć wirtualna-sieć wirtualna. W przypadku korzystania z procedury tworzenia połączenia lokacja-lokacja bramy sieci lokalnej są tworzone i konfigurowane ręcznie. Każda z bram sieci lokalnej sieci wirtualnej traktuje drugą sieć wirtualną jako lokację lokalną. Dzięki temu można określić dodatkową przestrzeń adresową dla bramy sieci lokalnej w celu kierowania ruchu. W przypadku zmiany przestrzeni adresowej sieci wirtualnej należy ręcznie zaktualizować odpowiednią bramę sieci lokalnej w celu odzwierciedlenia zmiany. Nie jest to aktualizowane automatycznie.
 
-### <a name="vnet-peering"></a>Komunikacja równorzędna sieci wirtualnych
+### <a name="vnet-peering"></a>Wirtualne sieci równorzędne
 
 Warto rozważyć połączenie sieci wirtualnych za pomocą komunikacji równorzędnej sieci wirtualnych. W przypadku komunikacji równorzędnej sieci wirtualnych nie jest używana brama sieci VPN i są z nią związane inne ograniczenia. Ponadto [ceny dotyczące komunikacji równorzędnej sieci wirtualnych](https://azure.microsoft.com/pricing/details/virtual-network) są obliczane inaczej niż [ceny dotyczące usługi VPN Gateway połączenia sieć wirtualna-sieć wirtualna](https://azure.microsoft.com/pricing/details/vpn-gateway). Aby uzyskać więcej informacji, zobacz temat [Komunikacja równorzędna sieci wirtualnych](../virtual-network/virtual-network-peering-overview.md).
 
@@ -74,11 +67,11 @@ W tym artykule przedstawiono dwie różne procedury tworzenia połączenia sieć
 
 W tym ćwiczeniu możesz łączyć konfiguracje lub po prostu wybrać tę, której chcesz używać. Wszystkie konfiguracje używają typu połączenia sieć wirtualna-sieć wirtualna. Ruch sieciowy przepływa między bezpośrednio połączonymi sieciami wirtualnymi. W tym ćwiczeniu ruch z sieci TestVNet4 nie jest kierowany do sieci TestVNet5.
 
-* [Sieci wirtualne w tej samej subskrypcji:](#samesub) W krokach dla tej konfiguracji używane są sieci TestVNet1 i TestVNet4.
+* [Sieci wirtualne znajdujące się w tej samej subskrypcji:](#samesub) w ramach tej konfiguracji są używane sieci TestVNet1 i TestVNet4.
 
   ![Diagram połączenia między sieciami wirtualnymi (v2v)](./media/vpn-gateway-howto-vnet-vnet-cli/v2vrmps.png)
 
-* [Sieci wirtualne w różnych subskrypcjach:](#difsub) W krokach dla tej konfiguracji są używane sieci TestVNet1 i TestVNet5.
+* [Sieci wirtualne znajdujące się w różnych subskrypcjach:](#difsub) w ramach tej konfiguracji są używane sieci TestVNet1 i TestVNet5.
 
   ![Diagram połączenia między sieciami wirtualnymi (v2v)](./media/vpn-gateway-howto-vnet-vnet-cli/v2vdiffsub.png)
 
@@ -100,7 +93,7 @@ W przykładach stosujemy następujące wartości:
 * Nazwa sieci wirtualnej: TestVNet1
 * Grupa zasobów: TestRG1
 * Lokalizacja: Wschodnie stany USA
-* TestVNet1: 10.11.0.0/16 i 10.12.0.0/16
+* TestVNet1: 10.11.0.0/16 & 10.12.0.0/16
 * FrontEnd: 10.11.0.0/24
 * BackEnd: 10.12.0.0/24
 * GatewaySubnet: 10.12.255.0/27
@@ -113,12 +106,12 @@ W przykładach stosujemy następujące wartości:
 **Wartości dla sieci TestVNet4:**
 
 * Nazwa sieci wirtualnej: TestVNet4
-* TestVNet2: 10.41.0.0/16 i 10.42.0.0/16
+* TestVNet2: 10.41.0.0/16 & 10.42.0.0/16
 * FrontEnd: 10.41.0.0/24
 * BackEnd: 10.42.0.0/24
 * GatewaySubnet: 10.42.255.0/27
 * Grupa zasobów: TestRG4
-* Lokalizacja: Zachodnie stany USA
+* Lokalizacja: West US
 * GatewayName: VNet4GW
 * Publiczny adres IP: VNet4GWIP
 * VPNType: RouteBased
@@ -128,7 +121,7 @@ W przykładach stosujemy następujące wartości:
 
 [!INCLUDE [CLI login](../../includes/vpn-gateway-cli-login-numbers-include.md)]
 
-### <a name="TestVNet1"></a>Krok 2 — Tworzenie i konfigurowanie sieci TestVNet1
+### <a name="TestVNet1"></a>Krok 2 — tworzenie i konfigurowanie sieci TestVNet1
 
 1. Utwórz grupę zasobów.
 
@@ -150,7 +143,7 @@ W przykładach stosujemy następujące wartości:
    ```azurecli
    az network vnet subnet create --vnet-name TestVNet1 -n BackEnd -g TestRG1 --address-prefix 10.12.0.0/24 
    ```
-5. Utwórz podsieć bramy. Zwróć uwagę, że podsieć bramy ma nazwę „GatewaySubnet”. Nazwa jest wymagana. W tym przykładzie użyto podsieci bramy /27. Chociaż możliwe jest utworzenie małej podsieci bramy /29, zaleca się utworzenie większej podsieci zawierającej więcej adresów, wybierając podsieć przynajmniej /28 lub /27. Zapewni to wystarczająco dużo adresów, aby możliwe były dodatkowe konfiguracje, które mogą być potrzebne w przyszłości.
+5. Utwórz podsieć bramy. Zwróć uwagę, że podsieć bramy ma nazwę „GatewaySubnet”. Nazwa jest wymagana. W tym przykładzie użyto podsieci bramy /27. Chociaż możliwe jest utworzenie małej podsieci bramy /29, zaleca się wybranie podsieci przynajmniej /28 lub /27, aby zawierała więcej adresów. Zapewni to wystarczająco dużo adresów, aby możliwe były dodatkowe konfiguracje, które mogą być potrzebne w przyszłości.
 
    ```azurecli 
    az network vnet subnet create --vnet-name TestVNet1 -n GatewaySubnet -g TestRG1 --address-prefix 10.12.255.0/27
@@ -286,8 +279,8 @@ Podczas tworzenia dodatkowych połączeń, ważne jest, by sprawdzić, czy przes
 
 * Nazwa sieci wirtualnej: TestVNet5
 * Grupa zasobów: TestRG5
-* Lokalizacja: Japonia Wschodnia
-* TestVNet5: 10.51.0.0/16 i 10.52.0.0/16
+* Lokalizacja: Japan East
+* TestVNet5: 10.51.0.0/16 & 10.52.0.0/16
 * FrontEnd: 10.51.0.0/24
 * BackEnd: 10.52.0.0/24
 * GatewaySubnet: 10.52.255.0.0/27
@@ -299,7 +292,7 @@ Podczas tworzenia dodatkowych połączeń, ważne jest, by sprawdzić, czy przes
 
 ### <a name="TestVNet5"></a>Krok 7 — Tworzenie i konfigurowanie sieci TestVNet5
 
-Ten krok należy wykonać w kontekście nowej subskrypcji (Subskrypcja 5). Tę część procedury może wykonać administrator w innej organizacji, która jest właścicielem subskrypcji. Aby przełączać się między subskrypcjami użyj `az account list --all` Aby wyświetlić listę subskrypcji dostępnych dla Twojego konta, a następnie użyj `az account set --subscription <subscriptionID>` Aby przełączyć się do subskrypcji, do którego chcesz używać.
+Ten krok należy wykonać w kontekście nowej subskrypcji (Subskrypcja 5). Tę część procedury może wykonać administrator w innej organizacji, która jest właścicielem subskrypcji. Aby przełączać się między subskrypcjami, użyj `az account list --all`, aby wyświetlić listę subskrypcji dostępnych dla Twojego konta, a następnie użyj `az account set --subscription <subscriptionID>`, aby przełączyć się na subskrypcję, której chcesz użyć.
 
 1. Upewnij się, czy nastąpiło połączenie z Subskrypcją 5, a następnie utwórz grupę zasobów.
 
@@ -338,7 +331,7 @@ Ten krok należy wykonać w kontekście nowej subskrypcji (Subskrypcja 5). Tę c
 
 ### <a name="connections5"></a>Krok 8 — Tworzenie połączeń
 
-Ze względu na to, że bramy należą do różnych subskrypcji, zastosowano rozbicie na dwie sesje interfejsu wiersza polecenia oznaczone jako **[Subskrypcja 1]** i **[Subskrypcja 5]** . Aby przełączać się między subskrypcjami użyj `az account list --all` Aby wyświetlić listę subskrypcji dostępnych dla Twojego konta, a następnie użyj `az account set --subscription <subscriptionID>` Aby przełączyć się do subskrypcji, do którego chcesz używać.
+Ze względu na to, że bramy należą do różnych subskrypcji, zastosowano rozbicie na dwie sesje interfejsu wiersza polecenia oznaczone jako **[Subskrypcja 1]** i **[Subskrypcja 5]** . Aby przełączać się między subskrypcjami, użyj `az account list --all`, aby wyświetlić listę subskrypcji dostępnych dla Twojego konta, a następnie użyj `az account set --subscription <subscriptionID>`, aby przełączyć się na subskrypcję, której chcesz użyć.
 
 1. **[Subskrypcja 1]** Zaloguj się i połącz z Subskrypcją 1. Uruchom następujące polecenie, aby uzyskać nazwę i identyfikator bramy z danych wyjściowych:
 
@@ -362,7 +355,7 @@ Ze względu na to, że bramy należą do różnych subskrypcji, zastosowano rozb
 
    Skopiuj dane wyjściowe z wiersza "id:". Wyślij identyfikator i nazwę bramy sieci wirtualnej (VNet5GW) do administratora Subskrypcji 1 za pomocą poczty e-mail lub innej metody.
 
-3. **[Subskrypcja 1]** W tym kroku zostanie utworzone połączenie z sieci wirtualnej TestVNet1 do sieci wirtualnej TestVNet5. Dla klucza współużytkowanego można użyć własnych wartości, ale klucz ten musi być zgodny w przypadku obu połączeń. Tworzenie połączenia może nieco potrwać. Połącz się z Subskrypcją 1.
+3. **[Subskrypcja 1]** W tym kroku zostanie utworzone połączenie z sieci wirtualnej TestVNet1 do sieci wirtualnej TestVNet5. Dla klucza współużytkowanego można użyć własnych wartości, ale klucz ten musi być zgodny w przypadku obu połączeń. Tworzenie połączenia może nieco potrwać. Upewnij się, że masz połączenie z subskrypcją 1.
 
    ```azurecli
    az network vpn-connection create -n VNet1ToVNet5 -g TestRG1 --vnet-gateway1 /subscriptions/d6ff83d6-713d-41f6-a025-5eb76334fda9/resourceGroups/TestRG1/providers/Microsoft.Network/virtualNetworkGateways/VNet1GW -l eastus --shared-key "eeffgg" --vnet-gateway2 /subscriptions/e7e33b39-fe28-4822-b65c-a4db8bbff7cb/resourceGroups/TestRG5/providers/Microsoft.Network/virtualNetworkGateways/VNet5GW
@@ -382,7 +375,7 @@ Ze względu na to, że bramy należą do różnych subskrypcji, zastosowano rozb
 ## <a name="faq"></a>Często zadawane pytania dotyczące połączeń między sieciami wirtualnymi
 [!INCLUDE [vpn-gateway-vnet-vnet-faq](../../includes/vpn-gateway-faq-vnet-vnet-include.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Po zakończeniu procesu nawiązywania połączenia można dodać do sieci wirtualnych maszyny wirtualne. Aby uzyskać więcej informacji, zobacz [dokumentację dotyczącą maszyn wirtualnych](https://docs.microsoft.com/azure/).
 * Informacje na temat protokołu BGP można znaleźć w artykułach [BGP Overview](vpn-gateway-bgp-overview.md) (Omówienie protokołu BGP) i [How to configure BGP](vpn-gateway-bgp-resource-manager-ps.md) (Konfigurowanie protokołu BGP).

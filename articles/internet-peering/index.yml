@@ -1,0 +1,74 @@
+### YamlMime:Landing
+title: Dokumentacja internetowej komunikacji równorzędnej
+summary: Dowiedz się więcej o internetowej komunikacji równorzędnej z firmą Microsoft.
+metadata:
+  title: Dokumentacja internetowej komunikacji równorzędnej
+  titleSuffix: Azure
+  description: Dowiedz się więcej o komunikacji równorzędnej z firmą Microsoft.
+  services: internet-peering
+  ms.service: internet-peering
+  ms.topic: landing-page
+  author: prmitiki
+  ms.author: prmitiki
+  ms.date: 11/27/2019
+  ms.openlocfilehash: 83549a56b3fb81c66827d1e9f87718467fb1098a
+  ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+  ms.translationtype: HT
+  ms.contentlocale: pl-PL
+  ms.lasthandoff: 01/09/2020
+  ms.locfileid: "75773523"
+landingContent:
+- title: Informacje o internetowej komunikacji równorzędnej
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Informacje o internetowej komunikacji równorzędnej
+      url: overview.md
+    - text: Internetowa komunikacja równorzędna a Peering Service
+      url: overview-peering-service.md
+  - linkListType: concept
+    links:
+    - text: Zasady komunikacji równorzędnej
+      url: policy.md
+    - text: Wymagania wstępne dotyczące konfigurowania komunikacji równorzędnej z firmą Microsoft
+      url: prerequisites.md
+    - text: Często zadawane pytania na temat internetowej komunikacji równorzędnej
+      url: faqs.md
+- title: Rozpoczęcie pracy
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Kojarzenie równorzędnego numeru ASN z subskrypcją platformy Azure przy użyciu portalu
+      url: howto-subscription-association-portal.md
+- title: Komunikacja równorzędna z punktem wymiany
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Przewodnik po komunikacji równorzędnej z punktem wymiany
+      url: walkthrough-exchange-all.md
+    - text: Tworzenie lub modyfikowanie komunikacji równorzędnej z punktem wymiany przy użyciu portalu
+      url: howto-exchange-portal.md
+    - text: Konwertowanie starszej komunikacji równorzędnej z punktem wymiany na zasób platformy Azure przy użyciu portalu
+      url: howto-legacy-exchange-portal.md
+- title: Bezpośrednia komunikacja równorzędna
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Przewodnik po bezpośredniej komunikacji równorzędnej
+      url: walkthrough-direct-all.md
+    - text: Tworzenie lub modyfikowanie bezpośredniej komunikacji równorzędnej przy użyciu portalu
+      url: howto-direct-portal.md
+    - text: Konwertowanie starszej bezpośredniej komunikacji równorzędnej na zasób platformy Azure przy użyciu portalu
+      url: howto-legacy-direct-portal.md
+- title: Peering Service
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Często zadawane pytania na temat usługi Peering Service
+      url: service-faqs.md
+  - linkListType: how-to-guide
+    links:
+    - text: Przewodnik partnera usługi Peering Service
+      url: walkthrough-peering-service-all.md
+    - text: Włączanie usługi Peering Service w bezpośredniej komunikacji równorzędnej przy użyciu portalu
+      url: howto-peering-service-portal.md

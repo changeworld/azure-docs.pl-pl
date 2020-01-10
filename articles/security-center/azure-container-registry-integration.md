@@ -12,21 +12,23 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/19/2019
 ms.author: memildin
-ms.openlocfilehash: 4cc88e7c04d10907a9a6386b1266eb8031d60926
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
-ms.translationtype: HT
+ms.openlocfilehash: 2d588d2707c267097e25176997e58f9573017582
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552682"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75780049"
 ---
 # <a name="azure-container-registry-integration-with-security-center-preview"></a>Integracja Azure Container Registry z Security Center (wersja zapoznawcza)
 
 Azure Container Registry (ACR) to zarządzana usługa rejestru prywatnego platformy Docker, która przechowuje obrazy kontenerów dla wdrożeń platformy Azure i zarządza nimi w rejestrze centralnym. Jest ona oparta na rejestrze platformy Docker open source 2,0.
 
-Aby uzyskać dokładniejszy wgląd w luki w zabezpieczeniach rejestru i obrazów, użytkownicy warstwy Standardowa Azure Security Center mogą włączyć opcjonalny pakiet rejestrów kontenerów. Koszt korzystania z tej funkcji jest naliczany na obrazie, a nie na skanowaniu. Aby uzyskać więcej informacji, zobacz [cennik](security-center-pricing.md). Po włączeniu pakietu Security Center automatycznie skanuje obrazy w rejestrze za każdym razem, gdy obraz jest wypychany do rejestru.
+Jeśli jesteś w warstwie Standardowa Azure Security Center, możesz dodać pakiet rejestrów kontenerów. Ta opcjonalna funkcja zapewnia dokładniejszy wgląd w luki w zabezpieczeniach obrazów w rejestrach. Włącz lub Wyłącz pakiet na poziomie subskrypcji, aby uwzględnić wszystkie rejestry w subskrypcji. Ta funkcja jest naliczana za obraz, a nie na skanowanie, jak pokazano na [stronie cennika](security-center-pricing.md). 
 
-> [!NOTE]
-> Security Center pierwsze skanowanie rejestru nastąpi tylko po włączeniu pakietu rejestrów kontenerów, a obraz zostanie wypychany do rejestru.
+Włączenie pakietu rejestrów kontenerów zapewnia, że Security Center jest gotowy do skanowania obrazów, które są przekazywane do rejestru. Skanowanie jest na poziomie obrazu: Security Center nie skanuje rejestru, skanuje obrazy przechowywane w rejestrze. 
+
+Za każdym razem, gdy obraz jest wypychany do rejestru, Security Center automatycznie skanuje ten obraz. Aby wyzwolić skanowanie obrazu, wypchnij go do repozytorium.
+
 
 Po zakończeniu skanowania (zwykle po około 10 minutach) wyniki są dostępne w Security Center zalecenia w następujący sposób:
 

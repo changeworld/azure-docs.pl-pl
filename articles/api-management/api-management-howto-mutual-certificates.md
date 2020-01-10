@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 06/20/2018
+ms.date: 01/08/2020
 ms.author: apimpm
-ms.openlocfilehash: 70c1e22fc7f1fb1cda3fd4af1c2d3aa2cd257201
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 39a1e224173dc021cf49b535957eb4b49f4c91ee
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442656"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834332"
 ---
 # <a name="how-to-secure-back-end-services-using-client-certificate-authentication-in-azure-api-management"></a>Jak zabezpieczyć usługi zaplecza przy użyciu uwierzytelniania certyfikatów klientów na platformie Azure API Management
 
@@ -30,9 +30,12 @@ Informacje o zarządzaniu certyfikatami za pomocą interfejsu API REST API Manag
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-W tym przewodniku pokazano, jak skonfigurować wystąpienie usługi API Management do korzystania z uwierzytelniania przy użyciu certyfikatu klienta w celu uzyskania dostępu do usługi zaplecza dla interfejsu API. Przed wykonaniem kroków opisanych w tym artykule należy mieć skonfigurowaną usługę zaplecza do uwierzytelniania certyfikatów klientów ([Aby skonfigurować uwierzytelnianie certyfikatu w usłudze Azure Websites, zobacz ten artykuł][to configure certificate authentication in Azure WebSites refer to this article]). Wymagany jest dostęp do certyfikatu oraz hasła do przekazywania go do usługi API Management.
+W tym przewodniku pokazano, jak skonfigurować wystąpienie usługi API Management do korzystania z uwierzytelniania przy użyciu certyfikatu klienta w celu uzyskania dostępu do usługi zaplecza dla interfejsu API. Przed wykonaniem kroków opisanych w tym artykule należy mieć skonfigurowaną usługę zaplecza do uwierzytelniania certyfikatu klienta ([Aby skonfigurować uwierzytelnianie certyfikatu w Azure App Service zapoznaj się z tym artykułem][to configure certificate authentication in Azure WebSites refer to this article]). Wymagany jest dostęp do certyfikatu oraz hasła do przekazywania go do usługi API Management.
 
 ## <a name="step1"> </a>Przekaż certyfikat
+
+> [!NOTE]
+> Zamiast przekazanego certyfikatu można użyć certyfikatu przechowywanego w usłudze [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) , jak pokazano w tym [przykładzie](https://github.com/galiniliev/api-management-policy-snippets/blob/galin/AkvCert/examples/Look%20up%20Key%20Vault%20certificate%20using%20Managed%20Service%20Identity%20and%20call%20backend.policy.xml).
 
 ![Dodawanie certyfikatów klienta](media/api-management-howto-mutual-certificates/apim-client-cert-new.png)
 
@@ -40,9 +43,9 @@ Postępuj zgodnie z poniższymi instrukcjami, aby przekazać nowy certyfikat kli
 
 1. Przejdź do wystąpienia usługi Azure API Management w Azure Portal.
 2. Z menu wybierz pozycję **Certyfikaty** .
-3. Kliknij przycisk **+ Dodaj**.  
-    ![dodać certyfikaty klienta](media/api-management-howto-mutual-certificates/apim-client-cert-add.png)  
-4. Przeglądaj w poszukiwaniu certyfikatu, podaj jego identyfikator i hasło.  
+3. Kliknij przycisk **+ Dodaj**.
+    ![dodać certyfikaty klienta](media/api-management-howto-mutual-certificates/apim-client-cert-add.png)
+4. Przeglądaj w poszukiwaniu certyfikatu, podaj jego identyfikator i hasło.
 5. Kliknij przycisk **Utwórz**.
 
 > [!NOTE]
@@ -65,14 +68,14 @@ Jeśli certyfikat jest używany przez interfejs API, zostanie wyświetlony ekran
 
 ## <a name="step2"> </a>Konfigurowanie interfejsu API do korzystania z certyfikatu klienta na potrzeby uwierzytelniania bramy
 
-1. Kliknij pozycję **interfejsy API** w menu **API Management** po lewej stronie i przejdź do interfejsu API.  
+1. Kliknij pozycję **interfejsy API** w menu **API Management** po lewej stronie i przejdź do interfejsu API.
     ![włączyć certyfikaty klienta](media/api-management-howto-mutual-certificates/apim-client-cert-enable.png)
 
-2. Na karcie **projektowanie** kliknij ikonę ołówka sekcji **zaplecza** . 
-3. Zmień **poświadczenia bramy** na **certyfikat klienta** i wybierz certyfikat z listy rozwijanej.  
+2. Na karcie **projektowanie** kliknij ikonę ołówka sekcji **zaplecza** .
+3. Zmień **poświadczenia bramy** na **certyfikat klienta** i wybierz certyfikat z listy rozwijanej.
     ![włączyć certyfikaty klienta](media/api-management-howto-mutual-certificates/apim-client-cert-enable-select.png)
 
-4. Kliknij pozycję **Zapisz**. 
+4. Kliknij pozycję **Zapisz**.
 
 > [!WARNING]
 > Ta zmiana obowiązuje natychmiast, a wywołania operacji tego interfejsu API będą używać certyfikatu do uwierzytelniania na serwerze zaplecza.

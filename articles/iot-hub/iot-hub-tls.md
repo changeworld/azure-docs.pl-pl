@@ -1,0 +1,84 @@
+---
+title: Obsługa protokołu TLS w usłudze Azure IoT Hub
+description: Najlepsze rozwiązania w zakresie używania bezpiecznych połączeń TLS dla urządzeń i usług komunikujących się z IoT Hub
+services: iot-hub
+author: rezasherafat
+ms.service: iot-fundamentals
+ms.topic: conceptual
+ms.date: 01/10/2020
+ms.author: rezas
+ms.custom: Azure IoT Hub TLS
+ms.openlocfilehash: 62fdfc4277b44a502206eb37466e6409521186a5
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75839532"
+---
+# <a name="tls-support-in-iot-hub"></a>Obsługa protokołu TLS w IoT Hub
+
+IoT Hub używa Transport Layer Security (TLS) do zabezpieczania połączeń z urządzeń i usług IoT. Obecnie są obsługiwane trzy wersje protokołu TLS, czyli wersje 1,0, 1,1 i 1,2.
+
+Protokoły TLS 1,0 i 1,1 są uznawane za starsze i są [planowane jako przestarzałe](./tls-1.2-everywhere.md). Dlatego zdecydowanie zaleca się użycie protokołu TLS 1,2 jako preferowanej wersji protokołu TLS podczas nawiązywania połączenia z IoT Hub.
+
+
+## <a name="restrict-connections-to-tls-12-in-your-iot-hub-resource"></a>Ogranicz połączenia do protokołu TLS 1,2 w zasobie IoT Hub
+
+W celu zwiększenia bezpieczeństwa zaleca się skonfigurowanie centrów IoT w _taki sposób,_ aby zezwalały na połączenia klienckie korzystające z protokołu TLS w wersji 1,2 i wymuszanie użycia [zalecanych szyfrów](#recommended-ciphers).
+
+W tym celu należy udostępnić nowe IoT Hub w którymkolwiek z [obsługiwanych regionów](#supported-regions) i ustawić właściwość `minTlsVersion` na `1.2` w specyfikacji zasobów usługi IoT Hub szablonu Azure Resource Manager:
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "resources": [
+        {
+            "type": "Microsoft.Devices/IotHubs",
+            "apiVersion": "2020-01-01",
+            "name": "<provide-a-valid-resource-name>",
+            "location": "<any-of-supported-regions-below>",
+            "properties": {
+                "minTlsVersion": "1.2"
+            },
+            "sku": {
+                "name": "<your-hubs-SKU-name>",
+                "tier": "<your-hubs-SKU-tier>",
+                "capacity": 1
+            }
+        }
+    ]
+}
+```
+
+Utworzony zasób IoT Hub przy użyciu tej konfiguracji będzie odrzucać klientów urządzeń i usług próbujących nawiązać połączenie przy użyciu protokołu TLS w wersji 1,0 i 1,1. Podobnie uzgadnianie protokołu TLS zostanie odrzucone, jeśli wiadomość POWITALNa klienta nie zawiera listy [zalecanych szyfrów](#recommended-ciphers).
+
+Należy pamiętać, że właściwość `minTlsVersion` jest tylko do odczytu i nie można jej zmienić po utworzeniu zasobu IoT Hub. W związku z tym należy prawidłowo testować i sprawdzać, czy _wszystkie_ urządzenia i usługi IoT są zgodne z protokołem TLS 1,2 i [zalecanymi szyframi](#recommended-ciphers) z wyprzedzeniem.
+
+
+### <a name="supported-regions"></a>Obsługiwane regiony
+
+Centra IoT, które wymagają użycia protokołu TLS 1,2, można tworzyć w następujących regionach:
+
+* Wschodnie stany USA
+* Południowo-środkowe stany USA
+* Zachodnie stany USA 2
+
+> [!NOTE]
+> Po przełączeniu w tryb failover Właściwość `minTlsVersion` IoT Huba będzie obowiązywać w regionie z parą geograficzną po przejściu w tryb failover.
+
+
+
+### <a name="recommended-ciphers"></a>Zalecane szyfry
+
+Centra IoT, które są skonfigurowane do akceptowania tylko protokołu TLS 1,2, będą również wymuszać użycie następujących zalecanych szyfrów:
+
+* `TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256`
+* `TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384`
+* `TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256`
+* `TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384`
+
+
+### <a name="use-tls-12-in-your-iot-edge-setup"></a>Korzystanie z protokołu TLS 1,2 w konfiguracji IoT Edge
+
+Urządzenia IoT Edge można skonfigurować do korzystania z protokołu TLS 1,2 podczas komunikowania się z IoT Hub. W tym celu Skorzystaj ze [strony dokumentacji IoT Edge](https://github.com/Azure/iotedge/blob/master/edge-modules/edgehub-proxy/README.md).

@@ -504,6 +504,8 @@
           href: sql-database-security-tutorial.md
         - name: Strumieniowe przesyłanie danych za pomocą usługi Stream Analytics
           href: sql-database-stream-analytics.md
+        - name: Migrowanie bazy danych programu SQLite do bezserwerowej usługi Azure SQL Database
+          href: tutorial-sqlite-db-to-azure-sql-serverless-offline.md
     - name: Pojęcia
       items:
         - name: Zasoby pojedynczej bazy danych
