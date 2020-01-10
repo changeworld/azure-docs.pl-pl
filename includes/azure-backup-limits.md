@@ -8,20 +8,11 @@ ms.topic: include
 ms.date: 12/07/2018
 ms.author: dacurwin
 ms.custom: include file
-ms.openlocfilehash: ca6c57b139b195b94dc7171336cfcc34d18b1872
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 2fd03c70cffa4efcb30518ebe6c54ca899869e16
+ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74829014"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75752356"
 ---
-Poniższe limity mają zastosowanie do usługi Azure Backup.
-
-| **Limit** | **Domyślne** |
-| --- | --- |
-| Serwery lub maszyny, które mogą być zarejestrowane w magazynie. | System Windows Server/Klient systemu Windows/Data Protection Manager System Center: 50. <br/><br/> Maszyny wirtualne IaaS: 1 000.  |
-| Rozmiar źródła danych w magazynie magazynu. |54 400 GB maksymalne. Limit nie dotyczy kopii zapasowej maszyny wirtualnej IaaS. |
-| Magazyny kopii zapasowych w ramach subskrypcji platformy Azure. |500 magazynów na region. |
-| Zaplanuj codzienne kopie zapasowe. |System Windows Server/Klient: trzy dni.<br/> System Center DPM: dwa dni. <br/> Maszyny wirtualne IaaS: raz dziennie.  |
-| Dyski danych dołączone do maszyny wirtualnej platformy Azure na potrzeby tworzenia kopii zapasowych. | 16 |
-| Indywidualny dysk danych dołączony do maszyny wirtualnej platformy Azure na potrzeby tworzenia kopii zapasowych.| 32 TB|
+Aby uzyskać podsumowanie dotyczące ustawień i ograniczeń Azure Backup pomocy technicznej, zobacz [Azure Backup macierzy obsługi](https://docs.microsoft.com/azure/backup/backup-support-matrix).

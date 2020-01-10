@@ -1,5 +1,6 @@
 ---
-title: 'Samouczek: Użyj Azure Database Migration Service do migrowania MongoDB do interfejsu API Azure Cosmos DB MongoDB w trybie offline | Microsoft Docs'
+title: 'Samouczek: Migruj MongoDB offline do Azure Cosmos DB API for MongoDB'
+titleSuffix: Azure Database Migration Service
 description: Dowiedz się, jak przeprowadzić migrację z MongoDB lokalnego Azure Cosmos DB do interfejsu API usługi MongoDB w trybie offline przy użyciu Azure Database Migration Service.
 services: dms
 author: HJToland3
@@ -8,24 +9,24 @@ manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc, tutorial
+ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 09/25/2019
-ms.openlocfilehash: 96540a8ea40efcc3a2d115980999c8d470b85180
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.date: 01/08/2020
+ms.openlocfilehash: f90ece0f6aa95dd643cca65b42e284faba8e5be8
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265943"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75747000"
 ---
-# <a name="tutorial-migrate-mongodb-to-azure-cosmos-dbs-api-for-mongodb-offline-using-dms"></a>Samouczek: migrowanie bazy danych MongoDB do interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB w trybie offline za pomocą usługi DMS
+# <a name="tutorial-migrate-mongodb-to-azure-cosmos-dbs-api-for-mongodb-offline-using-dms"></a>Samouczek: Migrowanie MongoDB Azure Cosmos DB do interfejsu API usługi MongoDB w trybie offline za pomocą usługi DMS
 
 Za pomocą Azure Database Migration Service można przeprowadzić migrację baz danych w trybie offline (jednorazowym) z wystąpienia lokalnego lub w chmurze MongoDB do Azure Cosmos DB interfejsu API MongoDB.
 
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 > [!div class="checklist"]
 >
-> * Utwórz wystąpienie Azure Database Migration Service.
+> * Utwórz wystąpienie usługi Azure Database Migration Service.
 > * Utwórz projekt migracji przy użyciu Azure Database Migration Service.
 > * Uruchamianie migracji.
 > * Monitorowanie migracji.
@@ -38,10 +39,10 @@ Do ukończenia tego samouczka niezbędne są następujące elementy:
 
 * [Wykonaj kroki sprzed migracji](../cosmos-db/mongodb-pre-migration.md) , takie jak szacowanie przepływności, wybór klucza partycji i zasad indeksowania.
 * [Utworzenie konta interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB](https://ms.portal.azure.com/#create/Microsoft.DocumentDB).
-* Utwórz Virtual Network platformy Azure dla Azure Database Migration Service przy użyciu modelu wdrażania Azure Resource Manager, który zapewnia łączność między lokacjami z lokalnymi serwerami źródłowymi przy użyciu usługi [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) lub [sieci VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways). Aby uzyskać więcej informacji na temat tworzenia sieci wirtualnej, zapoznaj się z [dokumentacją Virtual Network](https://docs.microsoft.com/azure/virtual-network/), a w szczególności artykuły szybkiego startu z szczegółowymi szczegółami.
+* Utwórz Microsoft Azure Virtual Network dla Azure Database Migration Service przy użyciu Azure Resource Manager model wdrażania, który zapewnia łączność między lokacjami z lokalnymi serwerami źródłowymi przy użyciu usługi [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) lub [sieci VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways). Aby uzyskać więcej informacji na temat tworzenia sieci wirtualnej, zapoznaj się z [dokumentacją Virtual Network](https://docs.microsoft.com/azure/virtual-network/), a w szczególności artykuły szybkiego startu z szczegółowymi szczegółami.
 
     > [!NOTE]
-    > W przypadku korzystania z usługi ExpressRoute z usługą Komunikacja równorzędna z firmą Microsoft podczas instalacji sieci wirtualnej należy dodać następujące [punkty końcowe](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) usługi do podsieci, w której zostanie zainicjowana usługa:
+    > Jeśli podczas konfigurowania sieci wirtualnej używasz usługi ExpressRoute z usługą Komunikacja równorzędna z firmą Microsoft, Dodaj następujące [punkty końcowe](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) do podsieci, w której zostanie zainicjowana usługa:
     >
     > * Docelowy punkt końcowy bazy danych (na przykład punkt końcowy SQL, Cosmos DB punkt końcowy itd.)
     > * Punkt końcowy magazynu
@@ -49,7 +50,7 @@ Do ukończenia tego samouczka niezbędne są następujące elementy:
     >
     > Ta konfiguracja jest konieczna, ponieważ Azure Database Migration Service brak łączności z Internetem.
 
-* Upewnij się, że reguły grupy zabezpieczeń sieci wirtualnej (sieciowej grupy zabezpieczeń) nie blokują następujących portów komunikacyjnych: 53, 443, 445, 9354 i 10000-20000. Aby uzyskać więcej szczegółów na temat filtrowania ruchu w sieci wirtualnej platformy Azure, zobacz artykuł [Filtrowanie ruchu sieciowego przy użyciu sieciowych grup zabezpieczeń](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg).
+* Upewnij się, że reguły grupy zabezpieczeń sieci wirtualnej (sieciowej grupy zabezpieczeń) nie blokują następujących portów komunikacji: 53, 443, 445, 9354 i 10000-20000. Aby uzyskać więcej szczegółów na temat filtrowania ruchu sieciowej grupy zabezpieczeń w sieci wirtualnej, zobacz artykuł [Filtrowanie ruchu sieciowego przy użyciu sieciowych grup zabezpieczeń](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg).
 * Otwórz Zaporę systemu Windows, aby umożliwić Azure Database Migration Service dostęp do źródłowego serwera MongoDB, który domyślnie jest portem TCP 27017.
 * W przypadku korzystania z urządzenia zapory przed źródłowymi bazami danych może zajść potrzeba dodania reguł zapory, aby umożliwić Azure Database Migration Service dostęp do źródłowych baz danych na potrzeby migracji.
 
@@ -85,7 +86,7 @@ Do ukończenia tego samouczka niezbędne są następujące elementy:
 
     Sieć wirtualna zapewnia Azure Database Migration Service z dostępem do źródłowego wystąpienia MongoDB i docelowego konta Azure Cosmos DB.
 
-    Aby uzyskać więcej informacji dotyczących sposobu tworzenia sieci wirtualnej w Azure Portal, zobacz artykuł [Tworzenie sieci wirtualnych przy użyciu Azure Portal](https://aka.ms/DMSVnet).
+    Aby uzyskać więcej informacji na temat sposobu tworzenia sieci wirtualnej w Azure Portal, zobacz artykuł [Tworzenie sieci wirtualnej przy użyciu Azure Portal](https://aka.ms/DMSVnet).
 
 6. Wybierz warstwę cenową.
 
@@ -133,7 +134,7 @@ Po utworzeniu usługi znajdź ją w witrynie Azure Portal, otwórz ją, a nastę
 
      Te parametry połączenia SAS kontenera obiektów BLOB można znaleźć w Eksploratorze usługi Azure Storage. Utworzenie sygnatury dostępu współdzielonego dla danego kontenera spowoduje udostępnienie adresu URL w powyższym żądanym formacie.
      
-     Ponadto, zależnie od typu informacji zrzutu w usłudze Azure Storage, pamiętaj o następujących kwestiach.
+     Na podstawie informacji zrzutu typu w usłudze Azure Storage należy również pamiętać o następujących kwestiach.
 
      * W przypadku zrzutów BSON dane w kontenerze obiektów blob muszą mieć format bsondump, tak aby pliki danych były umieszczone w folderach o nazwach zgodnych z odpowiednimi bazami danych w formacie kolekcja.bson. Pliki metadanych (jeśli istnieją) powinny mieć nazwy w formacie *kolekcja*.metadata.json.
 
@@ -160,7 +161,7 @@ Po utworzeniu usługi znajdź ją w witrynie Azure Portal, otwórz ją, a nastę
 
 2. Wybierz pozycję **Zapisz**.
 
-## <a name="map-to-target-databases"></a>Mapuj do docelowych baz danych
+## <a name="map-to-target-databases"></a>Mapowanie do docelowych baz danych
 
 1. Na ekranie **Mapowanie do docelowych baz danych** określ mapowanie źródłowej i docelowej bazy danych na potrzeby migracji.
 
@@ -170,7 +171,7 @@ Po utworzeniu usługi znajdź ją w witrynie Azure Portal, otwórz ją, a nastę
 
     Na tym etapie migracji możesz [zaaprowizować przepływność](https://docs.microsoft.com/azure/cosmos-db/set-throughput). W usłudze Cosmos DB można aprowizować przepływność na poziomie bazy danych lub na poziomie poszczególnych kolekcji. Przepływność jest mierzona w [jednostkach żądań](https://docs.microsoft.com/azure/cosmos-db/request-units) (RU). Dowiedz się więcej o [cenniku usługi Azure Cosmos DB](https://azure.microsoft.com/pricing/details/cosmos-db/).
 
-    ![Mapuj do docelowych baz danych](media/tutorial-mongodb-to-cosmosdb/dms-map-target-databases.png)
+    ![Mapowanie do docelowych baz danych](media/tutorial-mongodb-to-cosmosdb/dms-map-target-databases.png)
 
 2. Wybierz pozycję **Zapisz**.
 3. Na ekranie **Ustawienia kolekcji** rozwiń listę kolekcji, a następnie przejrzyj listę kolekcji, które będą migrowane.
@@ -219,7 +220,7 @@ Po utworzeniu usługi znajdź ją w witrynie Azure Portal, otwórz ją, a nastę
 
 Po przeprowadzeniu migracji danych przechowywanych w bazie danych MongoDB Azure Cosmos DB do interfejsu API programu MongoDB, można nawiązać połączenie z Azure Cosmos DB i zarządzać danymi. Można również wykonać inne czynności optymalizacji po migracji, takie jak optymalizacja zasad indeksowania, aktualizowanie domyślnego poziomu spójności lub Konfigurowanie dystrybucji globalnej dla konta Azure Cosmos DB. Aby uzyskać więcej informacji, zobacz artykuł [Optymalizacja po migracji](../cosmos-db/mongodb-post-migration.md) .
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Informacje o usłudze Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)
 

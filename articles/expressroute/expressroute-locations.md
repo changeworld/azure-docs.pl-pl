@@ -6,14 +6,14 @@ author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 12/09/2019
+ms.date: 01/07/2020
 ms.author: cherylmc
-ms.openlocfilehash: 0fc5b1b4fcc0f5c09b06ad5d3681fcf3aed2962c
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 2df22b059cbc9a388a3a3d106bb0c1af1082ebec
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74967732"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749110"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>Partnerzy i lokalizacje komunikacji równorzędnej usługi ExpressRoute
 
@@ -43,7 +43,7 @@ Poniższa tabela zawiera mapę regionów świadczenia usługi Azure dla lokaliza
 | **Region geopolityczny** | **Regiony platformy Azure** | **Lokalizacje usługi ExpressRoute** |
 | --- | --- | --- |
 | **Australia — instytucje rządowe** |Australia Środkowa, Australia Środkowa 2 |Canberra, Canberra2 |
-| **Europa** | Europa Północna, Europa Zachodnia, Francja Południowa, Francja Środkowa, Południowe Zjednoczone Królestwo, Zachodnie Zjednoczone Królestwo |Amsterdam, Amsterdam2, Kopenhaga, Dublin, Frankfurt, Genewa, Londyn, London2, Marsylii, Mediolan, Monachium, Newport (Walia), Oslo, Paryż, Stavanger, Sztokholm, Zurych |
+| **Europa** | Francja środkowa, Francja Południowa, Niemcy Północne, Niemcy Środkowo-Zachodnie, Europa Północna, Norwegia Wschodnia, Norwegia Zachodnia, Szwajcaria Północna, Szwajcaria Zachodnia, Zachodnie Zjednoczone Królestwo, Południowe Zjednoczone Królestwo, Europa Zachodnia |Amsterdam, Amsterdam2, Kopenhaga, Dublin, Frankfurt, Genewa, Londyn, London2, Marsylii, Mediolan, Monachium, Newport (Walia), Oslo, Paryż, Stavanger, Sztokholm, Zurych |
 | **Ameryka Północna** |Wschodnie stany USA, Zachodnie stany USA, Wschodnie stany USA 2, Zachodnie stany USA 2, Środkowe stany USA, Południowo-środkowe stany USA, Północno-środkowe stany USA, Środkowo-zachodnie stany USA, Kanada Środkowa, Kanada Wschodnia |Atlanta, Chicago, Dallas, Denver, Las Vegas, Los Angeles, Miami, Nowy Jork, San Antonio, Seattle, Dolina Krzemowa, krzem Valley2, Waszyngton DC, Waszyngton DC2, Montrealu, Quebec City, Toronto |
 | **Azja** | Azja Wschodnia, Azja Południowo-Wschodnia |Hongkong SAR, Dżakarta, Kuala Lumpur, Singapur, Singapur2, Tajpej |
 | **Indie** | Indie Zachodnie, Indie Środkowe, Indie Południowe |Chennai, Chennai2, Mumbaj, Mumbaj2 |
@@ -89,7 +89,7 @@ W poniższej tabeli przedstawiono lokalizacje według dostawcy usług. Jeśli ch
 | **[Dyrektor naczelny](https://www.chief.com.tw/dispPageBox/ct.aspx?ddsPageID=ENCLOUDSERVICE&dbid=4852937342)** |Obsługiwane |Obsługiwane |Hongkong, Tajpej |
 | **China Telecom Global** |Obsługiwane |Obsługiwane |SRA Hongkong |
 | **[Cologix](https://www.cologix.com/hyperscale/microsoft-azure/)** |Obsługiwane |Obsługiwane |Chicago, Dallas, Montreal, Toronto, Waszyngton |
-| **[Colt](https://www.colt.net/uk/en/news/colt-announces-dedicated-cloud-access-for-microsoft-azure-services-en.htm)** |Obsługiwane |Obsługiwane |Amsterdam, Amsterdam2, Chicago, Dublin, Frankfurt, Londyn, London2, Newport, Nowy Jork, Osaka, Paryż, Dolina Krzemowa, krzem Valley2, Singapur2, Tokio |
+| **[Colt](https://www.colt.net/uk/en/news/colt-announces-dedicated-cloud-access-for-microsoft-azure-services-en.htm)** |Obsługiwane |Obsługiwane |Amsterdam, Amsterdam2, Chicago, Dublin, Frankfurt, Londyn, London2, Newport, Nowy Jork, Osaka, Paryż, Dolina Krzemowa, krzem Valley2, Singapur2, Tokio, Waszyngton |
 | **[Comcast](https://business.comcast.com/landingpage/microsoft-azure)** |Obsługiwane |Obsługiwane |Chicago, Dolina Krzemowa, Waszyngton |
 | **[CoreSite](https://www.coresite.com/solutions/cloud-services/public-cloud-providers/microsoft-azure-expressroute)** |Obsługiwane |Obsługiwane |Chicago, Denver, Los Angeles, Nowy Jork, Dolina Krzemowa, krzem Valley2, Waszyngton, Waszyngton DC2 |
 | **[DE-CIX](https://www.de-cix.net/en/de-cix-service-world/directcloud/find-a-cloud-service/detail/microsoft-azure)** | Obsługiwane |Obsługiwane |Amsterdam2, Frankfurt, Marsylii|
@@ -97,18 +97,19 @@ W poniższej tabeli przedstawiono lokalizacje według dostawcy usług. Jeśli ch
 | **du datamena** |Obsługiwane |Obsługiwane | Dubai2 |
 | **eir** |Obsługiwane |Obsługiwane |Dublin|
 | **[Epsilon — komunikacja globalna](https://www.epsilontel.com/solutions/direct-cloud-connect)** |Obsługiwane |Obsługiwane |Singapur, Singapur2 |
-| **[Equinix](https://www.equinix.com/partners/microsoft-azure/)** |Obsługiwane |Obsługiwane |Amsterdam, Atlanta, Chicago, Dallas, Dublin, Hongkong SAR, Londyn, London2, Los Angeles, Melbourne, Miami, Nowy Jork, Osaka, Paryż, Wyspy świętegoł Paulo, Seattle, Dolina Krzemowa, Singapur, Sztokholm, Sydney, Tokio, Toronto, Waszyngton |
+| **[Equinix](https://www.equinix.com/partners/microsoft-azure/)** |Obsługiwane |Obsługiwane |Amsterdam, Atlanta, Chicago, Dallas, Dublin, Genewa, Hong Kong SAR, Londyn, London2, Los Angeles, Melbourne, Miami, Nowy Jork, Osaka, Paryż, Wyspy świętegoe |
 | **Etisalat Zjednoczone Emiraty Arabskie** |Obsługiwane |Obsługiwane |Dubaj|
 | **[euNetworks](https://eunetworks.com/services/solutions/cloud-connect/microsoft-azure-expressroute/)** |Obsługiwane |Obsługiwane |Amsterdam, Amsterdam2, Dublin, Londyn |
 | **FarEasTone** |Obsługiwane |Obsługiwane |Tajpej|
 | **GÉANT** |Obsługiwane |Obsługiwane |Amsterdam, Frankfurt, Marsylii |
-| **[Global Cloud Xchange (GCX)](https://globalcloudxchange.com/cloud-platform/cloud-x-fusion/)** | Obsługiwane| Obsługiwane | Chennai (Madras), Mumbaj (Bombaj) |
+| **[Global Cloud Xchange (GCX)](https://globalcloudxchange.com/cloud-platform/cloud-x-fusion/)** | Obsługiwane| Obsługiwane | Madras, Bombaj |
+| **Intelsat** | Obsługiwane | Obsługiwane | Waszyngton2 |
 | **[InterCloud](https://www.intercloud.com/)** |Obsługiwane |Obsługiwane |Amsterdam, Chicago, Hongkong, Londyn, Nowy Jork, Paryż, Dolina Krzemowa, Singapur, Waszyngton DC, Zurych |
 | **[Internet2](https://www.internet2.edu/products-services/cloud-services-applications/microsoft-azure/#service-cloud-connect)** |Obsługiwane |Obsługiwane |Chicago, Dallas, Dolina Krzemowa, Waszyngton |
 | **[Internet Initiative Japan Inc. — IIJ](https://www.iij.ad.jp/en/news/pressrelease/2015/1216-2.html)** |Obsługiwane |Obsługiwane |Osaka, Tokio |
 | **[Internet Solutions — Cloud Connect](https://www.is.co.za/solution/cloud-connect/)** |Obsługiwane |Obsługiwane |Kapsztad, Johannesburg, Londyn |
 | **[Interxion](https://www.interxion.com/why-interxion/colocate-with-the-clouds/Microsoft-Azure/)** |Obsługiwane |Obsługiwane |Amsterdam, Amsterdam2, Kopenhaga, Dublin, Frankfurt, Londyn, Marsylii, Paryż, Zurych |
-| **[IX Reach](https://www.ixreach.com/partners/cloud-partners/microsoft-azure/)**|Obsługiwane |Obsługiwane | Amsterdam, London2, Dolina Krzemowa, Toronto |
+| **[IX Reach](https://www.ixreach.com/partners/cloud-partners/microsoft-azure/)**|Obsługiwane |Obsługiwane | Amsterdam, London2, Dolina Krzemowa, Toronto, Waszyngton |
 | **Sieć Jaguar** |Obsługiwane |Obsługiwane |Marsylia|
 | **[Jisc](https://www.jisc.ac.uk/microsoft-azure-expressroute)** |Obsługiwane |Obsługiwane |Londyn |
 | **[KINX](https://www.kinx.net/service/network/cloudhub/ms-expressroute/?lang=en)** |Obsługiwane |Obsługiwane |Seul |
@@ -118,7 +119,7 @@ W poniższej tabeli przedstawiono lokalizacje według dostawcy usług. Jeśli ch
 | **[Level 3 Communications](http://your.level3.com/LP=882?WT.tsrc=02192014LP882AzureVanityAzureText)** |Obsługiwane |Obsługiwane |Amsterdam, Chicago, Dallas, Londyn, Newport (Walia), Sao Paulo, Seattle, Dolina Krzemowa, Singapur, Waszyngton |
 | **LG CNS** |Obsługiwane |Obsługiwane |Busan, Seul |
 | **[Liquid Telecom](https://www.liquidtelecom.com/products-and-services/cloud.html)** |Obsługiwane |Obsługiwane |Kapsztad, Johannesburg |
-| **[Megaport](https://www.megaport.com/services/microsoft-expressroute/)** |Obsługiwane |Obsługiwane |Amsterdam, Atlanta, Auckland, Chicago, Dallas, Denver, Dubai2, Dublin, Hongkong, Las Vegas, Londyn, London2, Los Angeles, Melbourne, Miami, Montrealu, Nowy Jork, Perth, Quebec City, San Antonio, Seattle, Dolina Krzemowa, Singapur, Singapur2, Sydney, Tokio, Toronto, Waszyngton DC, Zurych |
+| **[Megaport](https://www.megaport.com/services/microsoft-expressroute/)** |Obsługiwane |Obsługiwane |Amsterdam, Atlanta, Auckland, Chicago, Dallas, Denver, Dubai2, Dublin, Frankfurt, Hongkong SAR, Las Vegas, Londyn, London2, Los Angeles, Melbourne, Miami, Montrealu, Nowy Jork, Oslo, Perth, Quebec City, San Antonio, Seattle, Dolina Krzemowa, Singapur, Singapur2, Sydney, Tokio, Toronto, Waszyngton DC, Zurych |
 | **[MTN](https://www.mtnbusiness.com/en/enterprise/Pages/microsoft-express-route.aspx)** |Obsługiwane |Obsługiwane |Londyn |
 | **[Neutrona Networks](https://www.neutrona.com/index.php/azure-expressroute/)** |Obsługiwane |Obsługiwane |Dallas, Los Angeles, Miami, Wyspy świętegoł Paulo, Waszyngton |
 | **[Dane nowej generacji](https://www.nextgenerationdata.co.uk/ngd-cloud-gateway/)** |Obsługiwane |Obsługiwane |Newport (Walia) |
@@ -129,7 +130,7 @@ W poniższej tabeli przedstawiono lokalizacje według dostawcy usług. Jeśli ch
 | **[Optus](https://www.optus.com.au/enterprise/)** |Obsługiwane |Obsługiwane |Melbourne, Sydney |
 | **[Orange](https://www.orange-business.com/en/products/business-vpn-galerie)** |Obsługiwane |Obsługiwane |Amsterdam, Amsterdam2, Frankfurt, Hongkong SAR, Johannesburg, Londyn, Paryż, Wyspy świętegoł Paulo, Dolina Krzemowa, Singapur, Sydney, Tokio, Waszyngton |
 | **[Orixcom](https://www.orixcom.com/cloud-solutions/)** | Obsługiwane | Obsługiwane | Dubai2 |
-| **[PacketFabric](https://www.packetfabric.com/packetcor/microsoft-azure/)** |Obsługiwane |Obsługiwane |Chicago, Dolina Krzemowa, Waszyngton |
+| **[PacketFabric](https://www.packetfabric.com/cloud-connectivity/microsoft-azure)** |Obsługiwane |Obsługiwane |Chicago, Dolina Krzemowa, Waszyngton |
 | **[PCCW Global Limited](https://consoleconnect.com/clouds/#azureRegions)** |Obsługiwane |Obsługiwane |Chicago, Hongkong SAR, Londyn |
 | **[Sejong Telecom](https://www.sejongtelecom.net/en/pages/service/cloud_ms)** |Obsługiwane |Obsługiwane |Seul |
 | **[SES](https://www.ses.com/networks/signature-solutions/signature-cloud/ses-and-azure-expressroute)** | Obsługiwane |Obsługiwane | Waszyngton |
@@ -143,7 +144,7 @@ W poniższej tabeli przedstawiono lokalizacje według dostawcy usług. Jeśli ch
 | **[Telefonica](https://www.business-solutions.telefonica.com/es/enterprise/solutions/efficient-infrastructure/managed-voice-data-connectivity/)** |Obsługiwane |Obsługiwane |Amsterdam, Sao Paulo |
 | **[Telehouse — KDDI](https://www.telehouse.net/solutions/cloud-services/cloud-link)** |Obsługiwane |Obsługiwane |Londyn, London2 |
 | **Telenor** |Obsługiwane |Obsługiwane |Amsterdam, Londyn, Oslo |
-| **[Telia Carrier](https://teliacarrier.com/our-services/connectivity/cloud-connect.html?title=Cloud%20Connect)** | Obsługiwane | Obsługiwane |Amsterdam, Chicago, Dallas, Frankfurt, Hongkong, Londyn, Paryż, Dolina Krzemowa, Sztokholm, Waszyngton |
+| **[Telia Carrier](https://www.teliacarrier.com/)** | Obsługiwane | Obsługiwane |Amsterdam, Chicago, Dallas, Frankfurt, Hongkong, Londyn, Oslo, Paryż, Dolina Krzemowa, Sztokholm, Waszyngton |
 | **Telmex Uninet**| Obsługiwane | Obsługiwane | Dallas |
 | **[Telstra Corporation](https://www.telstra.com.au/business-enterprise/network-services/networks/cloud-direct-connect/)** |Obsługiwane |Obsługiwane |Melbourne, Singapur, Sydney |
 | **[Telus](https://www.telus.com)** |Obsługiwane |Obsługiwane |Montrealu, Seattle, Toronto |
@@ -168,7 +169,7 @@ Chmury krajowe platformy Azure są odizolowane od siebie i z globalnego Commeric
 
 | **Dostawca usług** | **Microsoft Azure** | **Office 365** | **Lokalizacje** |
 | --- | --- | --- | --- |
-| **[AT&T NetBond](https://www.synaptic.att.com/clouduser/html/productdetail/ATT_NetBond.htm)** |Obsługiwane |Obsługiwane |Chicago, Phoenix, Waszyngton |
+| **[AT&T NetBond](https://www.synaptic.att.com/clouduser/html/productdetail/ATT_NetBond.htm)** |Obsługiwane |Obsługiwane |Chicago, Phoenix, Dolina Krzemowa, Waszyngton |
 | **[CenturyLink Cloud Connect](https://www.centurylink.com/cloudconnect)** |Obsługiwane |Obsługiwane |Nowy Jork, Phoenix, San Antonio, Waszyngton |
 | **[Equinix](https://www.equinix.com/partners/microsoft-azure/)** |Obsługiwane |Obsługiwane |Chicago, Dallas, Nowy Jork, Seattle, Dolina Krzemowa, Waszyngton |
 | **[Level 3 Communications](http://your.level3.com/LP=882?WT.tsrc=02192014LP882AzureVanityAzureText)** |Obsługiwane |Obsługiwane |Chicago, Dolina Krzemowa, Waszyngton |
@@ -207,7 +208,7 @@ Jeśli dostawca połączenia nie został wymieniony w poprzednich sekcjach, moż
   * [IX Reach](https://www.ixreach.com/partners/cloud-partners/microsoft-azure/)
   * [Megaport](https://www.megaport.com/services/microsoft-expressroute/)
   * [NextDC](https://www.nextdc.com/)
-  * [PacketFabric](https://www.packetfabric.com/packetcor/microsoft-azure/) 
+  * [PacketFabric](https://www.packetfabric.com/cloud-connectivity/microsoft-azure) 
 * Poproś dostawcę połączenia o rozszerzenie sieci o wybraną lokalizację komunikacji równorzędnej.
   * Dopilnuj, by dostawca połączenia rozszerzył łączność w sposób wysoko dostępny, aby nie wystąpiły żadne punkty awarii.
 * Zamów obwód usługi ExpressRoute z wymianą jako dostawcą połączenia, aby połączyć się z firmą Microsoft.

@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 09/23/2019
+ms.date: 12/06/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: a0325a7fd3aca3d27b24c193a9f131546a70d80b
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: c5b9c1d294cd984ca3cf062d3b657239995e5908
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74566320"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75751485"
 ---
 Migawki przyrostowe (wersja zapoznawcza) są kopiami zapasowymi w czasie dla dysków zarządzanych, które w razie potrzeby składają się tylko ze wszystkich zmian od ostatniej migawki. Podczas próby pobrania lub użycia migawki przyrostowej jest używany pełny dysk VHD. Ta nowa możliwość tworzenia migawek dysków zarządzanych może potencjalnie spowodować, że nie są już wymagane do przechowywania całego dysku przy każdej pojedynczej migawce, chyba że zostanie wybrana opcja. Podobnie jak regularne migawki, migawki przyrostowe mogą służyć do tworzenia pełnego dysku zarządzanego lub do regularnej migawki.
 
@@ -21,11 +21,9 @@ Istnieje kilka różnic między migawką przyrostową i regularną migawką. Mig
 
 Migawki przyrostowe oferują również funkcję różnicową, która jest unikatowo dostępna dla dysków zarządzanych. Umożliwiają one uzyskanie zmian między dwiema przyrostowymi migawkami tych samych dysków zarządzanych, w dół do poziomu bloku. Można użyć tej funkcji, aby zmniejszyć rozmiary danych podczas kopiowania migawek między regionami.
 
-Jeśli jeszcze nie zarejestrowano się w wersji zapoznawczej i chcesz zacząć korzystać z migawek przyrostowych, Wyślij wiadomość e-mail na adres AzureDisks@microsoft.com, aby uzyskać dostęp do publicznej wersji zapoznawczej.
-
 ## <a name="restrictions"></a>Ograniczenia
 
-- Migawki przyrostowe są obecnie dostępne tylko w regionach Wschodnie stany USA, środkowe stany USA, Kanada środkowa, zachodnio-środkowe stany USA i Europa Północna.
+- Migawki przyrostowe są obecnie dostępne tylko w regionach Wschodnie stany USA, Wschodnie stany USA 2, środkowe stany USA, zachodnio-środkowe stany USA, Kanada Wschodnia, Kanada Środkowa i Europa Północna.
 - Nie można obecnie utworzyć migawek przyrostowych po zmianie rozmiaru dysku.
 - Obecnie nie można przenosić migawek przyrostowych między subskrypcjami.
 - Obecnie można generować identyfikatory URI SAS maksymalnie pięć migawek określonej rodziny migawek w danym momencie.
@@ -156,8 +154,4 @@ Za pomocą szablonów Azure Resource Manager można także utworzyć przyrostow�
 
 ## <a name="next-steps"></a>Następne kroki
 
-1. Jeśli jeszcze nie zarejestrowano się w wersji zapoznawczej i chcesz zacząć korzystać z migawek przyrostowych, Wyślij wiadomość e-mail na adres AzureDisks@microsoft.com, aby uzyskać dostęp do publicznej wersji zapoznawczej. 
-
-2. Zapoznaj się z poniższymi przykładami dotyczącymi kopiowania między różnymi regionami migawek przyrostowych przy użyciu funkcji różnicowa   
-
-    - [Korzystanie z zestawów SDK platformy Azure .NET](https://github.com/Azure-Samples/managed-disks-dotnet-backup-with-incremental-snapshots)
+Jeśli chcesz zobaczyć przykładowy kod pokazujący różnicowe możliwości migawek przyrostowych, korzystając z platformy .NET, zobacz [Kopiuj kopie zapasowe platformy Azure Managed disks do innego regionu z różnicową możliwością migawek przyrostowych](https://github.com/Azure-Samples/managed-disks-dotnet-backup-with-incremental-snapshots).

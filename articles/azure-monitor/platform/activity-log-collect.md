@@ -7,19 +7,19 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/30/2019
-ms.openlocfilehash: 40025e2347fa80d2717ba292f6e3d74f5dda8e5c
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: f4612232acfe6099c56d365e482cbc82c8436dee
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931409"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75745632"
 ---
 # <a name="collect-and-analyze-azure-activity-logs-in-log-analytics-workspace-in-azure-monitor"></a>Zbieranie i analizowanie dzienników aktywności platformy Azure w obszarze roboczym Log Analytics w Azure Monitor
 
 > [!WARNING]
 > Teraz można zbierać dane dziennika aktywności w obszarze roboczym Log Analytics przy użyciu ustawienia diagnostycznego podobnego do sposobu zbierania dzienników zasobów. Zobacz [zbieranie i analizowanie dzienników aktywności platformy Azure w obszarze roboczym log Analytics w Azure monitor](diagnostic-settings-subscription.md).
 
-[Dziennik aktywności platformy Azure](activity-logs-overview.md) zapewnia wgląd w zdarzenia na poziomie subskrypcji, które wystąpiły w ramach subskrypcji platformy Azure. W tym artykule opisano, jak zebrać dziennik aktywności do obszaru roboczego Log Analytics i jak korzystać z rozwiązania do [monitorowania](../insights/solutions.md)Activity Log Analytics, które udostępnia zapytania dziennika i widoki służące do analizowania tych danych. 
+[Dziennik aktywności platformy Azure](platform-logs-overview.md) zapewnia wgląd w zdarzenia na poziomie subskrypcji, które wystąpiły w ramach subskrypcji platformy Azure. W tym artykule opisano, jak zebrać dziennik aktywności do obszaru roboczego Log Analytics i jak korzystać z rozwiązania do [monitorowania](../insights/solutions.md)Activity Log Analytics, które udostępnia zapytania dziennika i widoki służące do analizowania tych danych. 
 
 Połączenie dziennika aktywności z obszarem roboczym Log Analytics zapewnia następujące korzyści:
 
@@ -47,7 +47,7 @@ Aby połączyć dziennik aktywności z obszarem roboczym Log Analytics, wykonaj 
     ![Połącz obszary robocze](media/activity-log-export/connect-workspace.png)
 
 ## <a name="analyze-in-log-analytics-workspace"></a>Analizowanie w obszarze roboczym Log Analytics
-Po połączeniu dziennika aktywności z obszarem roboczym Log Analytics w obszarze roboczym wpisy zostaną zapisaniu do tabeli o nazwie **Azure** , którą można pobrać przy użyciu [zapytania dziennika](../log-query/log-query-overview.md). Struktura tej tabeli różni się w zależności od [kategorii wpisu dziennika](activity-logs-overview.md#categories-in-the-activity-log). Zobacz [schemat zdarzeń dziennika aktywności platformy Azure](activity-log-schema.md) , aby uzyskać opis każdej kategorii.
+Po połączeniu dziennika aktywności z obszarem roboczym Log Analytics w obszarze roboczym wpisy zostaną zapisaniu do tabeli o nazwie **Azure** , którą można pobrać przy użyciu [zapytania dziennika](../log-query/log-query-overview.md). Struktura tej tabeli różni się w zależności od [kategorii wpisu dziennika](activity-log-view.md#categories-in-the-activity-log). Zobacz [schemat zdarzeń dziennika aktywności platformy Azure](activity-log-schema.md) , aby uzyskać opis każdej kategorii.
 
 ## <a name="activity-logs-analytics-monitoring-solution"></a>Rozwiązanie do monitorowania dzienników aktywności
 Rozwiązanie do monitorowania Log Analytics platformy Azure obejmuje wiele zapytań dzienników i widoków służących do analizowania rekordów dziennika aktywności w obszarze roboczym Log Analytics.
@@ -74,6 +74,6 @@ Kliknij kafelek **dzienniki aktywności platformy Azure** , aby otworzyć widok 
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Dowiedz się więcej o [dzienniku aktywności](activity-logs-overview.md).
+- Dowiedz się więcej o [dzienniku aktywności](platform-logs-overview.md).
 - Dowiedz się więcej o [platformie danych Azure monitor](data-platform.md).
 - Użyj [zapytań dzienników](../log-query/log-query-overview.md) , aby wyświetlić szczegółowe informacje z dziennika aktywności.

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: 4a6796c0a9a64bc40255de64b39ce881e1b8855c
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 9298b802417f5a7162ef74bb0f7906144aae4e35
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934726"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75745710"
 ---
 # <a name="azure-database-security-checklist"></a>Lista kontrolna zabezpieczeń usługi Azure Database
 
@@ -35,7 +35,7 @@ Należą do nich:
 -   Korzystanie z zarządzania dostępem
 -   Szyfrowanie danych
 -   Inspekcja usługi SQL Database
--   Wykrywanie zagrożeń usługi SQL Database
+-   SQL Database wykrywanie zagrożeń
 
 ## <a name="introduction"></a>Wprowadzenie
 Chmura obliczeniowa wymaga nowych odmian zabezpieczeń, które nie są znane dla wielu użytkowników aplikacji, administratorów bazy danych i programistów. W związku z tym niektóre organizacje są wątpliwości do wdrożenia infrastruktury chmurowej na potrzeby zarządzania danymi ze względu na postrzegane zagrożenia bezpieczeństwa. Wiele z tych problemów można jednak poprawić, aby lepiej zrozumieć funkcje zabezpieczeń wbudowane w Microsoft Azure i Microsoft Azure SQL Database.
@@ -50,13 +50,13 @@ Zalecamy zapoznanie się z artykułem [najlepsze rozwiązania w zakresie zabezpi
 | <br> Szyfrowanie w ruchu/tranzycie| <ul><li>[Transport Layer Security](https://docs.microsoft.com/windows-server/security/tls/transport-layer-security-protocol)do szyfrowania danych, gdy dane są przenoszone do sieci.</li><li>Baza danych wymaga bezpiecznej komunikacji od klientów opartych na protokole [TDS (strumienia danych tabelarycznych)](https://msdn.microsoft.com/library/dd357628.aspx) za pośrednictwem protokołu TLS (Transport Layer Security).</li></ul> |
 |<br>Szyfrowanie w spoczynku| <ul><li>[Transparent Data Encryption](https://go.microsoft.com/fwlink/?LinkId=526242), gdy nieaktywne dane są przechowywane fizycznie w dowolnym formularzu cyfrowym.</li></ul>|
 |**Kontrola dostępu**||  
-|<br> Dostęp do bazy danych | <ul><li>[Uwierzytelnianie](../../sql-database/sql-database-control-access.md) (Azure Active Directory uwierzytelniania) Uwierzytelnianie usługi AD używa tożsamości zarządzanych przez Azure Active Directory.</li><li>[Autoryzacja](../../sql-database/sql-database-control-access.md) użytkowników przyznająca im najmniejsze uprawnienia.</li></ul> |
-|<br>Dostęp do aplikacji| <ul><li>[Zabezpieczenia na poziomie wiersza](https://msdn.microsoft.com/library/dn765131) (Przy użyciu zasad zabezpieczeń, jednocześnie ograniczając dostęp na poziomie wierszy na podstawie tożsamości użytkownika, roli lub kontekstu wykonania).</li><li>[Dynamiczne maskowanie danych](../../sql-database/sql-database-dynamic-data-masking-get-started.md) (Przy użyciu zasad & uprawnień, ograniczanie narażenia na dane poufne przez zamaskowanie go dla użytkowników bez uprawnień)</li></ul>|
+|<br> Dostęp do bazy danych | <ul><li>[Uwierzytelnianie usługi Active Directory (Azure Active Directory](../../sql-database/sql-database-control-access.md) Authentication) używa tożsamości zarządzanych przez Azure Active Directory.</li><li>[Autoryzacja](../../sql-database/sql-database-control-access.md) użytkowników przyznająca im najmniejsze uprawnienia.</li></ul> |
+|<br>Dostęp do aplikacji| <ul><li>[Zabezpieczenia na poziomie wiersza](https://msdn.microsoft.com/library/dn765131) (przy użyciu zasad zabezpieczeń, jednocześnie ograniczając dostęp na poziomie wierszy na podstawie tożsamości użytkownika, roli lub kontekstu wykonania).</li><li>[Dynamiczne maskowanie danych](../../sql-database/sql-database-dynamic-data-masking-get-started.md) (przy użyciu uprawnień & zasad, ograniczanie ekspozycji danych poufnych przez zamaskowanie ich dla użytkowników bez uprawnień)</li></ul>|
 |**Proaktywne monitorowanie**||  
-| <br>Śledzenie wykrywania &| <ul><li>[Inspekcja](../../sql-database/sql-database-auditing.md) śledzi zdarzenia bazy danych i zapisuje je w dzienniku inspekcji/dzienniku aktywności na [koncie usługi Azure Storage](../../storage/common/storage-create-storage-account.md).</li><li>Śledź usługę Azure Database Health przy użyciu [dzienników aktywności Azure monitor](../../azure-monitor/platform/activity-logs-overview.md).</li><li>[Wykrywanie zagrożeń](../../sql-database/sql-database-threat-detection.md) wykrywa nietypowe działania bazy danych wskazujące na potencjalne zagrożenia bezpieczeństwa bazy danych. </li></ul> |
+| <br>Śledzenie wykrywania &| <ul><li>[Inspekcja](../../sql-database/sql-database-auditing.md) śledzi zdarzenia bazy danych i zapisuje je w dzienniku inspekcji/dzienniku aktywności na [koncie usługi Azure Storage](../../storage/common/storage-create-storage-account.md).</li><li>Śledź usługę Azure Database Health przy użyciu [dzienników aktywności Azure monitor](../../azure-monitor/platform/platform-logs-overview.md).</li><li>[Wykrywanie zagrożeń](../../sql-database/sql-database-threat-detection.md) wykrywa nietypowe działania bazy danych wskazujące na potencjalne zagrożenia bezpieczeństwa bazy danych. </li></ul> |
 |<br>Azure Security Center| <ul><li>[Monitorowanie danych](../../security-center/security-center-enable-auditing-on-sql-databases.md) Użyj Azure Security Center jako scentralizowanego rozwiązania do monitorowania zabezpieczeń dla SQL i innych usług platformy Azure.</li></ul>|       
 
-## <a name="conclusion"></a>Wniosek
+## <a name="conclusion"></a>Podsumowanie
 Azure Database to niezawodna platforma baz danych z pełnymi funkcjami zabezpieczeń, które spełniają wiele wymagań w zakresie organizacji i zgodności. Możesz łatwo chronić dane, kontrolując fizyczny dostęp do danych i korzystając z różnych opcji zabezpieczeń danych na poziomie plików, kolumn lub wierszy z Transparent Data Encryption, szyfrowanie na poziomie komórki lub zabezpieczenia na poziomie wiersza. Always Encrypted włącza również operacje związane z zaszyfrowanymi danymi, upraszczając proces aktualizacji aplikacji. Z kolei dostęp do dzienników inspekcji SQL Database działania zawiera informacje, które są potrzebne, co pozwala dowiedzieć się, jak i kiedy dane są dostępne.
 
 ## <a name="next-steps"></a>Następne kroki

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/04/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: e4ebde6295c3f3467dd615b58d2140302aa86a61
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: db222515dae51fa5e0334430a3578816b1e8813d
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74949987"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75367658"
 ---
 # <a name="set-redirect-urls-to-b2clogincom-for-azure-active-directory-b2c"></a>Ustaw adresy URL przekierowania na b2clogin.com dla Azure Active Directory B2C
 
@@ -58,7 +58,7 @@ Istnieją dwa formaty, których można użyć w odniesieniu do adresów URL prze
 https://{your-tenant-name}.b2clogin.com/{your-tenant-id}/oauth2/authresp
 ```
 
-Druga opcja używa nazwy domeny dzierżawy w postaci `your-tenant-name.onmicrosoft.com`. Na przykład:
+Druga opcja używa nazwy domeny dzierżawy w postaci `your-tenant-name.onmicrosoft.com`. Przykład:
 
 ```
 https://{your-tenant-name}.b2clogin.com/{your-tenant-name}.onmicrosoft.com/oauth2/authresp
@@ -93,7 +93,7 @@ Aby przeprowadzić migrację interfejsów API usługi Azure API Management chron
 
 Jeśli używasz programu [MSAL.NET][msal-dotnet] w wersji 2 lub starszej, ustaw właściwość **ValidateAuthority** na `false` przy tworzeniu wystąpienia klienta, aby zezwolić na przekierowania do *b2clogin.com*. To ustawienie nie jest wymagane w przypadku wersji MSAL.NET v3 i nowszych.
 
-```CSharp
+```csharp
 ConfidentialClientApplication client = new ConfidentialClientApplication(...); // Can also be PublicClientApplication
 client.ValidateAuthority = false; // MSAL.NET v2 and earlier **ONLY**
 ```

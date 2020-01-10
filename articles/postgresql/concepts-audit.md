@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/14/2019
-ms.openlocfilehash: 4a41e5eda3ca2bd92d78a81d73c1ad4c859e25a3
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: c0ce1648d7b5f7c25044ed8f66eafcca7b0009f4
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74764563"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75747345"
 ---
 # <a name="audit-logging-in-azure-database-for-postgresql---single-server"></a>Rejestrowanie inspekcji w Azure Database for PostgreSQL — pojedynczy serwer
 
@@ -21,7 +21,7 @@ Rejestrowanie inspekcji działań bazy danych w ramach Azure Database for Postgr
 > pgAudit jest w wersji zapoznawczej na Azure Database for PostgreSQL.
 > Rozszerzenie można włączyć tylko na serwerach Ogólnego przeznaczenia i zoptymalizowanych pod kątem pamięci.
 
-Jeśli chcesz, aby w dziennikach na poziomie zasobów platformy Azure były wykonywane operacje, takie jak skalowanie obliczeniowe i magazynowe, zobacz [Dziennik aktywności platformy Azure](../azure-monitor/platform/activity-logs-overview.md).
+Jeśli chcesz, aby w dziennikach na poziomie zasobów platformy Azure były wykonywane operacje, takie jak skalowanie obliczeniowe i magazynowe, zobacz [Dziennik aktywności platformy Azure](../azure-monitor/platform/platform-logs-overview.md).
 
 ## <a name="usage-considerations"></a>Zagadnienia dotyczące użycia
 Domyślnie instrukcje rejestrowania rozszerzenia pgAudit są emitowane wraz z normalnymi instrukcjami rejestrowania przy użyciu standardowej funkcji rejestrowania bazy danych Postgres. W usłudze Azure Database for PostgreSQL pliki LOG można pobrać z poziomu witryny Azure Portal lub interfejsu wiersza polecenia. Maksymalny rozmiar magazynu dla kolekcji plików to 1 GB, a każdy plik jest dostępny przez maksymalnie siedem dni (wartość domyślna to trzy dni). Ta usługa jest krótkoterminową opcją magazynu.

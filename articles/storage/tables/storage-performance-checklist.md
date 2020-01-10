@@ -8,27 +8,28 @@ ms.topic: overview
 ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: tables
-ms.openlocfilehash: b36ed2cac7e5009a0581091252b36dcd5af81bd7
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 89581c8ae2fbdbb55a2abfbd527c8fdcf4b65761
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72389993"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749550"
 ---
 # <a name="performance-and-scalability-checklist-for-table-storage"></a>Lista kontrolna wydajności i skalowalności dla usługi Table Storage
 
 Firma Microsoft opracowała wiele sprawdzonych rozwiązań związanych z tworzeniem aplikacji o wysokiej wydajności za pomocą usługi Table Storage. Ta lista kontrolna zawiera najważniejsze rozwiązania, które deweloperzy mogą wykonać w celu zoptymalizowania wydajności. Należy pamiętać o tych praktykach podczas projektowania aplikacji i w trakcie całego procesu.
 
-Usługa Azure Storage oferuje cele skalowalności i wydajności dla pojemności, szybkości transakcji i przepustowości. Aby uzyskać więcej informacji o celach skalowalności usługi Azure Storage, zobacz [cele dotyczące skalowalności i wydajności usługi Azure Storage dla kont magazynu](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json).
+Usługa Azure Storage oferuje cele skalowalności i wydajności dla pojemności, szybkości transakcji i przepustowości. Aby uzyskać więcej informacji na temat celów skalowalności usługi Azure Storage, zobacz [cele skalowalności i wydajności dla standardowych kont magazynu](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json) i [skalowalności i wydajności docelowych dla magazynu tabel](scalability-targets.md).
 
 ## <a name="checklist"></a>Lista kontrolna
 
 Ten artykuł organizuje sprawdzone rozwiązania dotyczące wydajności w ramach listy kontrolnej, którą można wykonać podczas tworzenia aplikacji magazynu tabel.
 
-| Gotowe | Kategoria | Zagadnienie dotyczące projektowania |
+| Gotowe | Kategoria | Zagadnienia związane z projektem |
 | --- | --- | --- |
 | &nbsp; |Tarcze skalowalności |[Czy można zaprojektować aplikację tak, aby korzystała z nie więcej niż maksymalna liczba kont magazynu?](#maximum-number-of-storage-accounts) |
 | &nbsp; |Tarcze skalowalności |[Czy unikasz zbliżania się limitów pojemności i transakcji?](#capacity-and-transaction-targets) |
+| &nbsp; |Tarcze skalowalności |[Czy zbliżasz się do elementów docelowych skalowalności dla jednostek na sekundę?](#targets-for-data-operations) |
 | &nbsp; |Networking |[Czy urządzenia po stronie klienta mają dostatecznie wysoką przepustowość i małe opóźnienia w celu osiągnięcia wymaganej wydajności?](#throughput) |
 | &nbsp; |Networking |[Czy urządzenia po stronie klienta mają link do sieci o wysokiej jakości?](#link-quality) |
 | &nbsp; |Networking |[Czy aplikacja kliencka znajduje się w tym samym regionie co konto magazynu?](#location) |
@@ -38,10 +39,9 @@ Ten artykuł organizuje sprawdzone rozwiązania dotyczące wydajności w ramach 
 | &nbsp; |Konfiguracja platformy .NET |[Czy skonfigurowano klienta tak, aby używał wystarczającej liczby jednoczesnych połączeń?](#increase-default-connection-limit) |
 | &nbsp; |Konfiguracja platformy .NET |[Czy w przypadku aplikacji .NET skonfigurowano platformę .NET do używania wystarczającej liczby wątków?](#increase-minimum-number-of-threads) |
 | &nbsp; |Równoległości |[Czy istnieje pewność, że równoległość jest odpowiednio ograniczona, aby nie można było przeciążać możliwości klienta ani podejścia do celów skalowalności?](#unbounded-parallelism) |
-| &nbsp; |Narzędzia |[Czy używasz najnowszych wersji bibliotek i narzędzi klienta dostarczonych przez firmę Microsoft?](#client-libraries-and-tools) |
+| &nbsp; |narzędzia |[Czy używasz najnowszych wersji bibliotek i narzędzi klienta dostarczonych przez firmę Microsoft?](#client-libraries-and-tools) |
 | &nbsp; |Ponowne próby |[Czy zasady ponawiania są używane z wykładniczą wycofywaniaą do ograniczania błędów i przekroczeń limitu czasu?](#timeout-and-server-busy-errors) |
 | &nbsp; |Ponowne próby |[Czy aplikacja unika ponawiania prób w przypadku błędów, które nie są ponawiane?](#non-retryable-errors) |
-| &nbsp; |Tarcze skalowalności |[Czy zbliżasz się do elementów docelowych skalowalności dla jednostek na sekundę?](#table-specific-scalability-targets) |
 | &nbsp; |Konfigurowanie |[Czy używasz formatu JSON dla żądań tabeli?](#use-json) |
 | &nbsp; |Konfigurowanie |[Czy wyłączono algorytm nagle, aby zwiększyć wydajność małych żądań?](#disable-nagle) |
 | &nbsp; |Tabele i partycje |[Czy masz poprawnie partycjonowane dane?](#schema) |
@@ -61,7 +61,7 @@ Ten artykuł organizuje sprawdzone rozwiązania dotyczące wydajności w ramach 
 
 Jeśli aplikacja zbliża się lub przekroczy elementy docelowe skalowalności, może wystąpić zwiększenie opóźnień transakcji lub ograniczenie przepustowości. Gdy usługa Azure Storage ogranicza swoją aplikację, rozpocznie się zwracanie kodów błędów 503 (serwer zajęty) lub 500 (limit czasu operacji). Unikanie tych błędów przez Przekroczenie limitów celów skalowalności jest ważną częścią zwiększania wydajności aplikacji.
 
-Aby uzyskać więcej informacji na temat elementów docelowych skalowalności Table service, zobacz [cele dotyczące skalowalności i wydajności usługi Azure Storage dla kont magazynu](/azure/storage/common/storage-scalability-targets?toc=%2fazure%2fstorage%2ftables%2ftoc.json#azure-table-storage-scale-targets).
+Aby uzyskać więcej informacji dotyczących skalowalności Table service, zobacz [cele skalowalności i wydajności dla usługi Table Storage](scalability-targets.md).
 
 ### <a name="maximum-number-of-storage-accounts"></a>Maksymalna liczba kont magazynu
 
@@ -77,9 +77,17 @@ Jeśli aplikacja zbliża się do celów skalowalności dla jednego konta magazyn
     Chociaż kompresowanie danych może zaoszczędzić przepustowość i zwiększyć wydajność sieci, może mieć także negatywny wpływ na wydajność. Oceń wpływ dodatkowych wymagań związanych z przetwarzaniem na kompresję danych i dekompresję po stronie klienta. Należy pamiętać, że przechowywanie skompresowanych danych może utrudnić rozwiązywanie problemów, ponieważ może być trudniejsze do wyświetlania danych przy użyciu standardowych narzędzi.
 - Jeśli aplikacja zbliża się do elementów docelowych skalowalności, upewnij się, że używasz wykładniczej wycofywania do ponawiania prób. Najlepszym rozwiązaniem jest uniknięcie osiągnięcia celów skalowalności przez implementację zaleceń opisanych w tym artykule. Jednak użycie wykładniczej wycofywania na potrzeby ponownych prób uniemożliwi szybkiej próby aplikacji, co może spowodować, że ograniczanie wydajności będzie gorsze. Aby uzyskać więcej informacji, zobacz sekcję zatytułowaną [limity czasu i błędy zajęte serwera](#timeout-and-server-busy-errors).
 
-## <a name="table-specific-scalability-targets"></a>Cele skalowalności specyficzne dla tabeli
+### <a name="targets-for-data-operations"></a>Elementy docelowe dla operacji na danych
 
-Oprócz ograniczeń przepustowości całego konta magazynu tabele mają następujący określony limit skalowalności. System będzie równoważyć obciążenie w miarę wzrostu ruchu, ale jeśli ruch ma nagłe rozerwania, nie można natychmiast uzyskać tej ilości przepływności. Jeśli Twój wzorzec zawiera szeregi, należy oczekiwać, że ograniczanie i/lub przekroczenie limitu czasu podczas serii, ponieważ usługa magazynu automatycznie równoważy obciążenie tabeli. Spowolnienie zwiększają się, ponieważ zapewnia czas systemowy odpowiednio do równoważenia obciążenia.
+Równoważenie obciążenia usługi Azure Storage w miarę wzrostu ruchu na koncie magazynu zwiększa się, ale jeśli ruch wykazuje nagłe rozerwania, nie można natychmiast uzyskać tej ilości przepływności. W miarę jak usługa Azure Storage automatycznie równoważy obciążenie z tabelą, należy się spodziewać, że są wyświetlane ograniczenia przepustowości i/lub przekroczenia limitu czasu. Powolne spowolnienie zapewnia lepsze wyniki, ponieważ system ma czas odpowiednio do równoważenia obciążenia.
+
+#### <a name="entities-per-second-storage-account"></a>Jednostki na sekundę (konto magazynu)
+
+Limit skalowalności dla dostępu do tabel to 20 000 jednostek (1 KB każdej) na sekundę dla konta. Ogólnie rzecz biorąc, każda jednostka, która jest wstawiana, aktualizowana, usuwana lub skanowana, jest uwzględniana w tym miejscu docelowym. Dzięki temu wstawka wsadowa zawierająca jednostki 100 będzie liczyć jako jednostki 100. Zapytanie, które skanuje jednostki 1000 i zwraca wartość 5, będzie liczyć jako jednostki 1000.
+
+#### <a name="entities-per-second-partition"></a>Jednostki na sekundę (partycja)
+
+W ramach jednej partycji obiekt docelowy skalowalności do uzyskiwania dostępu do tabel to 2 000 jednostek (1 KB każdej) na sekundę przy użyciu tego samego zliczania, jak opisano w poprzedniej sekcji.
 
 ## <a name="networking"></a>Networking
 
@@ -281,5 +289,6 @@ Jeśli wykonujesz operacje wstawiania wsadowego, a następnie pobierasz zakresy 
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Cele dotyczące skalowalności i wydajności usługi Azure Storage dla kont magazynu](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json)
+- [Cele skalowalności i wydajności dla usługi Table Storage](scalability-targets.md)
+- [Cele skalowalności i wydajności dla kont magazynu w warstwie Standardowa](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json)
 - [Kody stanu i błędów](/rest/api/storageservices/Status-and-Error-Codes2)

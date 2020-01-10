@@ -1,5 +1,5 @@
 ---
-title: Praca z projekcjami w sklepie merytorycznym (wersja zapoznawcza)
+title: Projekcje w sklepie z bazami wiedzy (wersja zapoznawcza)
 titleSuffix: Azure Cognitive Search
 description: Zapisz i umieść wzbogacone dane z potoku indeksowania wzbogacenia AI do magazynu wiedzy, który ma być używany w scenariuszach innych niż wyszukiwanie pełnotekstowe. Magazyn wiedzy jest obecnie w publicznej wersji zapoznawczej.
 manager: nitinme
@@ -7,20 +7,20 @@ author: vkurpad
 ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 47c63118888bc0eaf7a025cd95e2a4c43d6a6cfb
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.date: 01/08/2020
+ms.openlocfilehash: d8302b69f1e868536eb954a650a62f41e4006b82
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790006"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754528"
 ---
-# <a name="working-with-projections-in-a-knowledge-store-in-azure-cognitive-search"></a>Praca z projekcjami w sklepie z bazami danych na platformie Azure Wyszukiwanie poznawcze
+# <a name="projections-in-a-knowledge-store-in-azure-cognitive-search"></a>Projekcje w sklepie z bazami danych na platformie Azure Wyszukiwanie poznawcze
 
 > [!IMPORTANT] 
 > Magazyn wiedzy jest obecnie w publicznej wersji zapoznawczej. Funkcje wersji zapoznawczej są dostępne bez umowy dotyczącej poziomu usług i nie są zalecane w przypadku obciążeń produkcyjnych. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). [Interfejs API REST w wersji 2019-05-06 — wersja zapoznawcza](search-api-preview.md) zapewnia funkcje w wersji zapoznawczej. Dostępna jest obecnie ograniczona obsługa portalu i nie ma obsługi zestawu SDK platformy .NET.
 
-Usługa Azure Wyszukiwanie poznawcze umożliwia wzbogacanie zawartości dzięki wbudowanym umiejętnościom poznawczym i umiejętnościom niestandardowym w ramach indeksowania. Wzbogacania dodają strukturę do dokumentów i ułatwiają wyszukiwanie. W wielu przypadkach wzbogacone dokumenty są przydatne w scenariuszach innych niż wyszukiwanie, na przykład w przypadku wyszukiwania w bazie wiedzy.
+Usługa Azure Wyszukiwanie poznawcze umożliwia wzbogacanie zawartości dzięki wbudowanym umiejętnościom poznawczym i umiejętnościom niestandardowym w ramach indeksowania. Wzbogacania tworzą nowe informacje, w przypadku których nie istniały wcześniej: wyodrębnianie informacji z obrazów, wykrywanie tonacji, fraz kluczowych i jednostek z tekstu, aby utworzyć kilka nazw. Wzbogacania również dodają strukturę do tekstu nierozróżnianego. Wszystkie te procesy powodują, że wyniki wyszukiwania pełnotekstowego są bardziej efektywne. W wielu przypadkach wzbogacone dokumenty są przydatne w scenariuszach innych niż wyszukiwanie, na przykład w przypadku wyszukiwania w bazie wiedzy.
 
 Projekcje, składnik [magazynu wiedzy](knowledge-store-concept-intro.md), są widokami wzbogaconych dokumentów, które można zapisać w magazynie fizycznym na potrzeby wyszukiwania w bazie wiedzy. Projekcja pozwala na "projekt" dane do kształtu, który jest zgodny z potrzebami, dzięki czemu można zachować relacje, tak aby narzędzia takie jak Power BI mogły odczytywać dane bez dodatkowych nakładów pracy.
 
@@ -34,7 +34,7 @@ Magazyn wiedzy obsługuje trzy typy projekcji:
 
 + **Pliki**: Jeśli zachodzi potrzeba zapisania obrazów wyodrębnionych z dokumentów, projekcje plików umożliwia zapisanie znormalizowanych obrazów w usłudze BLOB Storage.
 
-Aby wyświetlić projekcje zdefiniowane w kontekście, krok po kroku, [jak rozpocząć pracę z magazynem wiedzy](knowledge-store-howto.md).
+Aby wyświetlić projekcje zdefiniowane w kontekście, krok po kroku [Tworzenie sklepu z bazami danych w spoczynku](knowledge-store-create-rest.md).
 
 ## <a name="projection-groups"></a>Grupy projekcji
 
@@ -114,12 +114,6 @@ Oto przykład projekcji tabeli.
 
 Jak pokazano w tym przykładzie, kluczowe frazy i jednostki są modelowane w różnych tabelach i zawierają odwołanie z powrotem do elementu nadrzędnego (Mainname) dla każdego wiersza.
 
-<!---
-The following illustration is a reference to the Case-law exercise in [How to get started with knowledge store](knowledge-store-howto.md). In a scenario where a case has multiple opinions, and each opinion is enriched by identifying entities contained within it, you could model the projections as shown here.
-
-![Entities and relationships in tables](media/knowledge-store-projection-overview/TableRelationships.png "Modeling relationships in table projections")
---->
-
 ## <a name="object-projections"></a>Projekcje obiektów
 
 Projekcje obiektów to reprezentacje JSON drzewa wzbogacania, które mogą być źródłem z dowolnego węzła. W wielu przypadkach ta sama umiejętność **kształtu** , która tworzy projekcję tabeli, może służyć do generowania projekcji obiektu. 
@@ -143,10 +137,8 @@ Projekcje obiektów to reprezentacje JSON drzewa wzbogacania, które mogą być 
         {
           "objects": [
             {
-              "storageContainer": "Reviews", 
-              "format": "json", 
-              "source": "/document/Review", 
-              "key": "/document/Review/Id" 
+              "storageContainer": "hotelreviews", 
+              "source": "/document/hotel"
             }
           ]
         },
@@ -160,9 +152,8 @@ Projekcje obiektów to reprezentacje JSON drzewa wzbogacania, które mogą być 
 
 Generowanie projekcji obiektu wymaga kilku atrybutów specyficznych dla obiektu:
 
-+ storageContainer: kontener, w którym zostaną zapisane obiekty
++ storageContainer: kontener obiektów blob, w którym zostaną zapisane obiekty
 + Źródło: ścieżka do węzła drzewa wzbogacania, który jest elementem głównym projekcji
-+ klucz: ścieżka reprezentująca unikatowy klucz dla obiektu, który ma być przechowywany. Zostanie ona użyta do utworzenia nazwy obiektu BLOB w kontenerze.
 
 ## <a name="file-projection"></a>Projekcja pliku
 
@@ -219,4 +210,4 @@ Na koniec Jeśli trzeba wyeksportować dane ze sklepu z bazami danych, Azure Dat
 Następnym krokiem jest utworzenie pierwszego sklepu z wiedzą przy użyciu przykładowych danych i instrukcji.
 
 > [!div class="nextstepaction"]
-> [Tworzenie sklepu z bazami](knowledge-store-howto.md)danych.
+> [Utwórz magazyn wiedzy w usłudze REST](knowledge-store-create-rest.md).

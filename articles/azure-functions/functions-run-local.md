@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 5f260ab1df5341a981a388533b06cbcda400e4da
-ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
+ms.openlocfilehash: feaecbf3b9a39d77f6a60593c8e5f57f14c24ad7
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74941835"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768983"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Pracuj z Azure Functions Core Tools
 
@@ -26,8 +26,8 @@ Tworzenie funkcji na komputerze lokalnym i publikowanie ich na platformie Azure 
 > * [Zarejestruj wyzwalacz i rozszerzenia powiązań.](#register-extensions)
 > * [Zdefiniuj magazyn i inne połączenia.](#local-settings-file)
 > * [Utwórz funkcję z wyzwalacza i szablonu specyficznego dla języka.](#create-func)
-> * [Uruchom funkcję lokalnie](#start)
-> * [Publikowanie projektu na platformie Azure](#publish)
+> * [Uruchom funkcję lokalnie.](#start)
+> * [Opublikuj projekt na platformie Azure.](#publish)
 
 ## <a name="core-tools-versions"></a>Wersje narzędzi Core Tools
 
@@ -56,7 +56,7 @@ Poniższe kroki służą do instalowania podstawowych narzędzi w systemie Windo
 
 1. Zainstaluj program [Node.js], który obejmuje npm.
     - W przypadku wersji 2. x narzędzi obsługiwane są tylko wersje Node. js 8,5 i nowsze.
-    - W przypadku wersji 3. x narzędzi obsługiwane są tylko wersje Node 10 i nowsze.
+    - W przypadku wersji 3. x narzędzi obsługiwane są tylko wersje Node. js 10 i nowsze.
 
 1. Zainstaluj pakiet podstawowych narzędzi:
 
@@ -129,7 +129,6 @@ Poniższe kroki używają [apt](https://wiki.debian.org/Apt) do instalowania pod
 
     | Dystrybucja systemu Linux | Wersja |
     | --------------- | ----------- |
-    | Debian 10 | `buster` |
     | Debian 9 | `stretch` |
     | Debian 8 | `jessie` |
     | Ubuntu 18,10    | `cosmic`    |
@@ -155,7 +154,7 @@ Poniższe kroki używają [apt](https://wiki.debian.org/Apt) do instalowania pod
 
 Katalog projektu usługi Functions zawiera pliki pliku [host. JSON](functions-host-json.md) oraz [Local. Settings. JSON](#local-settings-file), a także podfoldery zawierające kod dla poszczególnych funkcji. Ten katalog jest odpowiednikiem aplikacji funkcji na platformie Azure. Aby dowiedzieć się więcej na temat struktury folderu Functions, zobacz [Przewodnik po programie Azure Functions Developers](functions-reference.md#folder-structure).
 
-Wersja 2. x wymaga wybrania domyślnego języka dla projektu, gdy zostanie on zainicjowany, a wszystkie funkcje zostały dodane Użyj domyślnych szablonów języka. W wersji 1. x należy określić język za każdym razem, gdy tworzysz funkcję.
+Wersja 2. x wymaga wybrania języka domyślnego dla projektu, gdy jest on zainicjowany. W wersji 2. x wszystkie funkcje dodane przy użyciu szablonów języka domyślnego. W wersji 1. x należy określić język za każdym razem, gdy tworzysz funkcję.
 
 W oknie terminalu lub w wierszu polecenia Uruchom następujące polecenie, aby utworzyć projekt i lokalne repozytorium git:
 
@@ -227,7 +226,7 @@ Gdy nie ustawiono prawidłowych parametrów połączenia magazynu dla [`AzureWeb
 
 ### <a name="get-your-storage-connection-strings"></a>Pobieranie parametrów połączenia magazynu
 
-Nawet w przypadku korzystania z emulatora magazynu na potrzeby programowania można testować przy użyciu rzeczywistego połączenia magazynu. Przy założeniu, że [konto magazynu](../storage/common/storage-create-storage-account.md)zostało już utworzone, można uzyskać prawidłowe parametry połączenia magazynu w jeden z następujących sposobów:
+Nawet w przypadku używania emulator magazynu Microsoft Azure do programowania można testować przy użyciu rzeczywistego połączenia magazynu. Przy założeniu, że [konto magazynu](../storage/common/storage-create-storage-account.md)zostało już utworzone, można uzyskać prawidłowe parametry połączenia magazynu w jeden z następujących sposobów:
 
 - W [Azure Portal]Wyszukaj i wybierz pozycję **konta magazynu**. 
   ![wybrać konta magazynu z Azure Portal](./media/functions-run-local/select-storage-accounts.png)
@@ -235,7 +234,7 @@ Nawet w przypadku korzystania z emulatora magazynu na potrzeby programowania mo�
   Wybierz konto magazynu, wybierz pozycję **klucze dostępu** w obszarze **Ustawienia**, a następnie skopiuj jedną z wartości **parametrów połączenia** .
   ![skopiować parametrów połączenia z Azure Portal](./media/functions-run-local/copy-storage-connection-portal.png)
 
-- Użyj [Eksplorator usługi Azure Storage](https://storageexplorer.com/) , aby nawiązać połączenie z kontem platformy Azure. W **Eksploratorze**Rozwiń swoją subskrypcję, wybierz konto magazynu i skopiuj podstawowe lub pomocnicze parametry połączenia.
+- Użyj [Eksplorator usługi Azure Storage](https://storageexplorer.com/) , aby nawiązać połączenie z kontem platformy Azure. W **Eksploratorze**Rozwiń swoją subskrypcję, rozwiń węzeł **konta magazynu**, wybierz konto magazynu i skopiuj podstawowe lub pomocnicze parametry połączenia.
 
   ![Kopiuj parametry połączenia z Eksplorator usługi Storage](./media/functions-run-local/storage-explorer.png)
 
@@ -252,7 +251,7 @@ Nawet w przypadku korzystania z emulatora magazynu na potrzeby programowania mo�
     func azure storage fetch-connection-string <StorageAccountName>
     ```
 
-    Jeśli jeszcze nie zalogowano się na platformie Azure, zostanie wyświetlony monit.
+    Gdy użytkownik nie jest jeszcze zalogowany do platformy Azure, zostanie wyświetlony monit.
 
 ## <a name="create-func"></a>Tworzenie funkcji
 
@@ -352,8 +351,8 @@ func host start
 | **`--cert`** | Ścieżka do pliku PFX, który zawiera klucz prywatny. Używane tylko z `--useHttps`. Tylko wersja 2. x. |
 | **`--cors-credentials`** | Zezwalaj na żądania uwierzytelniane między źródłami (np. pliki cookie i nagłówek uwierzytelniania) tylko w wersji 2. x. |
 | **`--cors`** | Rozdzielana przecinkami lista źródeł CORS bez spacji. |
-| **`--language-worker`** | Argumenty umożliwiające skonfigurowanie procesu roboczego języka. Tylko wersja 2. x. |
-| **`--nodeDebugPort -n`** | Port do użycia przez debuger węzła. Domyślnie: wartość z pliku Launch. JSON lub 5858. Tylko wersja 1. x. |
+| **`--language-worker`** | Argument, aby skonfigurować proces roboczy języka. Na przykład można włączyć debugowanie dla procesu roboczego, dostarczając [port debugowania i inne wymagane argumenty](https://github.com/Azure/azure-functions-core-tools/wiki/Enable-Debugging-for-language-workers). Tylko wersja 2. x. |
+| **`--nodeDebugPort -n`** | Port dla debugera środowiska Node. js do użycia. Domyślnie: wartość z pliku Launch. JSON lub 5858. Tylko wersja 1. x. |
 | **`--password`** | Hasło lub plik zawierający hasło dla pliku PFX. Używane tylko z `--cert`. Tylko wersja 2. x. |
 | **`--port -p`** | Port lokalny, na którym nasłuchuje. Wartość domyślna: 7071. |
 | **`--pause-on-error`** | Wstrzymaj, aby uzyskać dodatkowe dane wejściowe przed wyjściem z procesu. Używane tylko w przypadku uruchamiania podstawowych narzędzi z zintegrowanego środowiska programistycznego (IDE).|
@@ -372,7 +371,7 @@ Http Function MyHttpTrigger: http://localhost:7071/api/MyHttpTrigger
 ```
 
 >[!IMPORTANT]
->W przypadku uruchamiania lokalnego uwierzytelnianie nie jest wymuszane dla punktów końcowych HTTP. Oznacza to, że wszystkie lokalne żądania HTTP są obsługiwane jako `authLevel = "anonymous"`. Aby uzyskać więcej informacji, zobacz [artykuł dotyczący powiązań http](functions-bindings-http-webhook.md#authorization-keys).
+>W przypadku uruchamiania lokalnego autoryzacja nie jest wymuszana dla punktów końcowych HTTP. Oznacza to, że wszystkie lokalne żądania HTTP są obsługiwane jako `authLevel = "anonymous"`. Aby uzyskać więcej informacji, zobacz [artykuł dotyczący powiązań http](functions-bindings-http-webhook.md#authorization-keys).
 
 ### <a name="passing-test-data-to-a-function"></a>Przekazywanie danych testowych do funkcji
 
@@ -474,7 +473,7 @@ Poniższe opcje publikowania dotyczą obu wersji, 1. x i 2. x:
 
 | Opcja     | Opis                            |
 | ------------ | -------------------------------------- |
-| **`--publish-local-settings -i`** |  Publikuj ustawienia w pliku Local. Settings. JSON na platformie Azure, monitując o zastąpienie, jeśli to ustawienie już istnieje. Jeśli używasz emulatora magazynu, najpierw Zmień ustawienie aplikacji na [rzeczywiste połączenie magazynu](#get-your-storage-connection-strings). |
+| **`--publish-local-settings -i`** |  Publikuj ustawienia w pliku Local. Settings. JSON na platformie Azure, monitując o zastąpienie, jeśli to ustawienie już istnieje. Jeśli używasz emulator magazynu Microsoft Azure, najpierw Zmień ustawienie aplikacji na [rzeczywiste połączenie magazynu](#get-your-storage-connection-strings). |
 | **`--overwrite-settings -y`** | Pomiń monit o zastąpienie ustawień aplikacji, gdy zostanie użyta `--publish-local-settings -i`.|
 
 Następujące opcje publikowania są obsługiwane tylko w wersji 2. x:
@@ -516,9 +515,9 @@ Dostępne są następujące opcje wdrożenia kontenera niestandardowego:
 
 Zalecanym sposobem monitorowania wykonywania funkcji jest integracja z usługą Azure Application Insights. Dzienniki wykonywania można przesyłać strumieniowo na komputer lokalny. Aby dowiedzieć się więcej, zobacz [Monitor Azure Functions](functions-monitoring.md).
 
-### <a name="enable-application-insights-integration"></a>Włącz integrację Application Insights
+### <a name="application-insights-integration"></a>Integracja z usługą Application Insights
 
-Po utworzeniu aplikacji funkcji w Azure Portal integracja Application Insights jest wykonywana domyślnie. Jednak podczas tworzenia aplikacji funkcji przy użyciu interfejsu wiersza polecenia platformy Azure integracja w aplikacji funkcji na platformie Azure nie jest wykonywana.
+Integracja Application Insights powinna być włączona podczas tworzenia aplikacji funkcji na platformie Azure. Jeśli z jakiegoś powodu aplikacja funkcji nie jest połączona z wystąpieniem Application Insights, można ją łatwo wykonać w Azure Portal. 
 
 [!INCLUDE [functions-connect-new-app-insights.md](../../includes/functions-connect-new-app-insights.md)]
 
@@ -530,7 +529,7 @@ Można wyświetlić strumień plików dziennika generowanych przez funkcje w ses
 
 [!INCLUDE [functions-streaming-logs-core-tools](../../includes/functions-streaming-logs-core-tools.md)]
 
-Ten typ dzienników przesyłania strumieniowego wymaga [włączenia Application Insights integracji](#enable-application-insights-integration) dla aplikacji funkcji.   
+Ten typ dzienników przesyłania strumieniowego wymaga włączenia integracji Application Insightsj dla aplikacji funkcji.   
 
 
 ## <a name="next-steps"></a>Następne kroki

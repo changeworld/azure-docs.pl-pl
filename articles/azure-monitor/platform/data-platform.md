@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: 4e9779f612bc4a2521459bf76a6e2b399fc89e07
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: b5d35fc14d69da2246c0ef5d4ef6d19a9e0c8462
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894134"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75751001"
 ---
 # <a name="azure-monitor-data-platform"></a>Platforma danych Azure Monitor
 
@@ -48,7 +48,7 @@ Przeczytaj więcej na temat Azure Monitor metryk, w tym ich źródeł danych, w 
 Dzienniki w Azure Monitor są przechowywane w Log Analytics obszarze roboczym, który jest oparty na [Eksplorator danych platformy Azure](/azure/data-explorer/) , który oferuje zaawansowany aparat analityczny i [bogaty język zapytań](/azure/kusto/query/). Dzienniki zapewniają zazwyczaj wystarczającą ilość informacji, aby zapewnić pełen kontekst identyfikowanego problemu i są przydatne do identyfikowania głównych przypadków problemów.
 
 > [!NOTE]
-> Ważne jest rozróżnienie między dziennikami Azure Monitor i źródłami danych dzienników na platformie Azure. Na przykład zdarzenia na poziomie subskrypcji na platformie Azure są zapisywane w [dzienniku aktywności](activity-logs-overview.md) , który można wyświetlić z menu Azure monitor. Większość zasobów będzie zapisywać informacje operacyjne w [dzienniku zasobów](resource-logs-overview.md) , które można przesłać dalej do różnych lokalizacji. Dzienniki Azure Monitor to platforma danych dziennika, która zbiera dzienniki aktywności i dzienniki zasobów wraz z innymi danymi monitorowania w celu zapewnienia głębokiej analizy w całym zestawie zasobów.
+> Ważne jest rozróżnienie między dziennikami Azure Monitor i źródłami danych dzienników na platformie Azure. Na przykład zdarzenia na poziomie subskrypcji na platformie Azure są zapisywane w [dzienniku aktywności](platform-logs-overview.md) , który można wyświetlić z menu Azure monitor. Większość zasobów będzie zapisywać informacje operacyjne w [dzienniku zasobów](platform-logs-overview.md) , które można przesłać dalej do różnych lokalizacji. Dzienniki Azure Monitor to platforma danych dziennika, która zbiera dzienniki aktywności i dzienniki zasobów wraz z innymi danymi monitorowania w celu zapewnienia głębokiej analizy w całym zestawie zasobów.
 
 
  Możesz interakcyjnie korzystać z [zapytań dzienników](../log-query/log-query-overview.md) w [log Analytics](../log-query/portals.md) w Azure Portal lub dodać wyniki do [pulpitu nawigacyjnego platformy Azure](../learn/tutorial-app-dashboards.md) w celu wizualizacji w połączeniu z innymi danymi. Możesz również utworzyć [alerty dziennika](alerts-log.md) , które będą wyzwalać alert w oparciu o wyniki zapytania dotyczącego harmonogramu.

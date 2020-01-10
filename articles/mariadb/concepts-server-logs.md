@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/09/2019
-ms.openlocfilehash: 9b9babc9db9dd7fa225b9649d4ac96b15debec2b
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.date: 12/17/2019
+ms.openlocfilehash: 651094f043162cdc5f6d522c90c7567ae94a4274
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74976319"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75746662"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mariadb"></a>Wolne dzienniki zapytań w Azure Database for MariaDB
 W Azure Database for MariaDB dziennik wolnych zapytań jest dostępny dla użytkowników. Dostęp do dziennika transakcji nie jest obsługiwany. Dziennik wolnych zapytań może służyć do identyfikowania wąskich gardeł wydajności w celu rozwiązywania problemów.
@@ -41,12 +41,12 @@ Inne parametry, które można dostosować, obejmują:
 - **log_slow_admin_statements**: Jeśli on zawiera instrukcje administracyjne, takie jak ALTER_TABLE i ANALYZE_TABLE w instrukcjach zapisanych do slow_query_log.
 - **log_queries_not_using_indexes**: określa, czy zapytania, które nie używają indeksów są rejestrowane w slow_query_log
 - **log_throttle_queries_not_using_indexes**: ten parametr ogranicza liczbę zapytań, które nie są indeksami, które można zapisać w dzienniku wolnych zapytań. Ten parametr zacznie obowiązywać, gdy log_queries_not_using_indexes jest ustawiona na wartość włączone.
-- **log_output**: Jeśli "plik" umożliwia zapisanie dziennika wolnych zapytań do lokalnego magazynu serwera i Azure monitor dzienników diagnostycznych. Jeśli "Brak", dziennik wolnych zapytań zostanie zapisany tylko w magazynie serwera lokalnego. 
+- **log_output**: Jeśli "plik" umożliwia zapisanie dziennika wolnych zapytań do lokalnego magazynu serwera i Azure monitor dzienników diagnostycznych. W przypadku braku "Dziennik wolnych zapytań zostanie zapisany tylko w przypadku dzienników diagnostyki Azure Monitor. 
 
 Zapoznaj się z [dokumentacją dziennika wolnych zapytań](https://mariadb.com/kb/en/library/slow-query-log-overview/) MariaDB w celu uzyskania pełnych opisów parametrów dziennika wolnych zapytań.
 
 ## <a name="diagnostic-logs"></a>Dzienniki diagnostyczne
-Azure Database for MariaDB jest zintegrowana z Azure Monitor dzienników diagnostycznych. Po włączeniu wolnych dzienników zapytań na serwerze MariaDB można je wyemitować do dzienników Azure Monitor, Event Hubs lub Azure Storage. Aby dowiedzieć się więcej na temat włączania dzienników diagnostycznych, zobacz sekcję jak [znaleźć w dokumentacji dzienników diagnostycznych](../azure-monitor/platform/resource-logs-overview.md).
+Azure Database for MariaDB jest zintegrowana z Azure Monitor dzienników diagnostycznych. Po włączeniu wolnych dzienników zapytań na serwerze MariaDB można je wyemitować do dzienników Azure Monitor, Event Hubs lub Azure Storage. Aby dowiedzieć się więcej na temat włączania dzienników diagnostycznych, zobacz sekcję jak [znaleźć w dokumentacji dzienników diagnostycznych](../azure-monitor/platform/platform-logs-overview.md).
 
 > [!IMPORTANT]
 > Ta funkcja diagnostyczna dla dzienników serwera jest dostępna tylko w [warstwach cenowych](concepts-pricing-tiers.md)ogólnego przeznaczenia i zoptymalizowanych pod kątem pamięci.

@@ -14,20 +14,18 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: 6d43fa2621aa95bdcf18d5c033d1347e13dc3f67
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 53ffc6dd36dbf8588b5e1eb26b461e22c7445092
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101488"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75747684"
 ---
 # <a name="create-an-oracle-database-in-an-azure-vm"></a>Tworzenie Oracle Database na maszynie wirtualnej platformy Azure
 
 W tym przewodniku szczegółowo przedstawiono użycie interfejsu wiersza polecenia platformy Azure w celu wdrożenia maszyny wirtualnej platformy Azure z [obrazu galerii Marketplace firmy Oracle](https://azuremarketplace.microsoft.com/marketplace/apps/Oracle.OracleDatabase12102EnterpriseEdition?tab=Overview) w celu utworzenia bazy danych Oracle 12c. Po wdrożeniu serwera nastąpi połączenie za pośrednictwem protokołu SSH w celu skonfigurowania bazy danych Oracle. 
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-
-[!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
 Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten przewodnik szybkiego startu będzie wymagał interfejsu wiersza polecenia platformy Azure w wersji 2.0.4 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure]( /cli/azure/install-azure-cli).
 
@@ -56,7 +54,7 @@ az vm create \
     --generate-ssh-keys
 ```
 
-Po utworzeniu maszyny wirtualnej w interfejsie wiersza polecenia platformy Azure zostaną wyświetlone informacje podobne do poniższego przykładu. Zwróć uwagę na wartość `publicIpAddress`parametru. Ten adres jest używany do uzyskiwania dostępu do maszyny wirtualnej.
+Po utworzeniu maszyny wirtualnej w interfejsie wiersza polecenia platformy Azure zostaną wyświetlone informacje podobne do poniższego przykładu. Zwróć uwagę na wartość `publicIpAddress`. Ten adres jest używany do uzyskiwania dostępu do maszyny wirtualnej.
 
 ```azurecli
 {
@@ -73,7 +71,7 @@ Po utworzeniu maszyny wirtualnej w interfejsie wiersza polecenia platformy Azure
 
 ## <a name="connect-to-the-vm"></a>Łączenie z maszyną wirtualną
 
-Aby utworzyć sesję SSH z maszyną wirtualną, użyj następującego polecenia. Zastąp adres `publicIpAddress` IP wartością dla maszyny wirtualnej.
+Aby utworzyć sesję SSH z maszyną wirtualną, użyj następującego polecenia. Zastąp adres IP wartością `publicIpAddress` dla maszyny wirtualnej.
 
 ```bash 
 ssh azureuser@<publicIpAddress>
@@ -150,7 +148,7 @@ Przed nawiązaniem połączenia należy ustawić dwie zmienne środowiskowe: *OR
 ORACLE_HOME=/u01/app/oracle/product/12.1.0/dbhome_1; export ORACLE_HOME
 ORACLE_SID=cdb1; export ORACLE_SID
 ```
-Można również dodać zmienne ORACLE_HOME i ORACLE_SID do pliku. bashrc. Spowoduje to zapisanie zmiennych środowiskowych dla przyszłych logowań. Upewnij się, że dodano następujące instrukcje do `~/.bashrc` pliku za pomocą edytora.
+Można również dodać zmienne ORACLE_HOME i ORACLE_SID do pliku bashrc. Spowoduje to zapisanie zmiennych środowiskowych dla przyszłych logowań. Upewnij się, że dodano następujące instrukcje do pliku `~/.bashrc`, używając edytora.
 
 ```bash
 # Add ORACLE_HOME. 
@@ -197,7 +195,7 @@ Aby skorzystać z narzędzia do zarządzania graficznym interfejsem użytkownika
     alter database open;
    ```
 
-Musisz wpisać `quit` , aby zakończyć sesję sqlplus i wpisz `exit` , aby wylogować użytkownika Oracle.
+Musisz wpisać `quit`, aby zakończyć sesję sqlplus i wpisać `exit` do wylogowania użytkownika Oracle.
 
 ## <a name="automate-database-startup-and-shutdown"></a>Automatyzowanie uruchamiania i zamykania bazy danych
 
@@ -208,7 +206,7 @@ Domyślnie baza danych Oracle nie jest uruchamiana automatycznie po ponownym uru
     sudo su -
     ```
 
-2.  Za pomocą ulubionego edytora Edytuj plik `/etc/oratab` i zmień wartość domyślną `N` na `Y`:
+2.  Korzystając z ulubionego edytora, edytuj plik `/etc/oratab` i Zmień `N` domyślne na `Y`:
 
     ```bash
     cdb1:/u01/app/oracle/product/12.1.0/dbhome_1:Y

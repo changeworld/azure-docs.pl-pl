@@ -7,12 +7,12 @@ ms.assetid: bb51e565-e462-4c60-929a-2ff90121f41d
 ms.topic: article
 ms.date: 07/31/2019
 ms.author: jafreebe
-ms.openlocfilehash: d3959b9a86ccc2d42cbf7bd188ce86bf4b7a2e63
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 14946a05f021a9b155fd9a9621f73bde980970fa
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74670090"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750468"
 ---
 # <a name="deployment-best-practices"></a>Najlepsze rozwiązania dotyczące wdrażania
 
@@ -66,3 +66,12 @@ Zawsze używaj lokalnej pamięci podręcznej w połączeniu z miejscami [wdroże
 ### <a name="high-cpu-or-memory"></a>Wysoki procesor lub pamięć
 
 Jeśli plan App Service jest używany przez ponad 90% dostępnego procesora lub pamięci, źródłowa maszyna wirtualna może mieć problemy z przetwarzaniem wdrożenia. W takim przypadku należy tymczasowo skalować liczbę wystąpień w celu przeprowadzenia wdrożenia. Po zakończeniu wdrożenia można zwrócić liczbę wystąpień do poprzedniej wartości.
+
+Aby uzyskać więcej informacji na temat najlepszych rozwiązań, odwiedź stronę [App Service Diagnostics](https://docs.microsoft.com/azure/app-service/overview-diagnostics) , aby dowiedzieć się, jakie są najlepsze rozwiązania, które są odpowiednie dla danego zasobu.
+
+- Przejdź do aplikacji sieci Web w [Azure Portal](https://portal.azure.com).
+- Kliknij przycisk **diagnozowanie i rozwiązywanie problemów** w lewym okienku nawigacji, co spowoduje otwarcie App Service diagnostyki.
+- Wybierz kafelek strony głównej **najlepszych** rozwiązań.
+- Kliknij pozycję **najlepsze rozwiązania dotyczące dostępności & wydajność** lub **najlepsze rozwiązania w zakresie optymalnej konfiguracji** , aby wyświetlić bieżący stan aplikacji w odniesieniu do tych najlepszych rozwiązań.
+
+Za pomocą tego linku można również bezpośrednio otworzyć App Service Diagnostics dla zasobu: `https://ms.portal.azure.com/?websitesextension_ext=asd.featurePath%3Ddetectors%2FParentAvailabilityAndPerformance#@microsoft.onmicrosoft.com/resource/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/troubleshoot`.

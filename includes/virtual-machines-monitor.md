@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 09/30/2019
 ms.author: cynthn
-ms.openlocfilehash: 93a2554b5d3cc24e1b5fc1e3d0f18ed1bfe0579c
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: fbc6889507e58c4721597a1108337fcb1f8756a2
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71692043"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75752453"
 ---
 Mając znaczny wzrost liczby maszyn wirtualnych hostowanych na platformie Azure, ważne jest, aby zidentyfikować problemy dotyczące wydajności i kondycji, które mają wpływ na aplikacje i obsługiwane przez nich usługi infrastruktury. Podstawowe monitorowanie jest domyślnie dostarczane z platformą Azure przez typy metryk użycie procesora, wykorzystanie dysku, wykorzystanie pamięci i ruch sieciowy zebrany przez funkcję hypervisor hosta. Dodatkowe dane dotyczące metryk i dzienników można zbierać przy użyciu [rozszerzeń](../articles/virtual-machines/windows/extensions-features.md) do konfigurowania diagnostyki na maszynach wirtualnych z systemu operacyjnego gościa.
 
@@ -45,18 +45,18 @@ Możesz tworzyć [alerty](../articles/azure-monitor/platform/alerts-overview.md)
 
 ## <a name="azure-activity-log"></a>Dziennik aktywności platformy Azure
 
-[Dziennik aktywności platformy Azure](../articles/azure-monitor/platform/activity-logs-overview.md) to dziennik subskrypcji, który zapewnia wgląd w zdarzenia na poziomie subskrypcji, które wystąpiły na platformie Azure. Dziennik zawiera szereg danych, z Azure Resource Manager dane operacyjne do aktualizacji Service Health zdarzeń. Możesz kliknąć pozycję Dziennik aktywności w Azure Portal, aby wyświetlić dziennik dla maszyny wirtualnej.
+[Dziennik aktywności platformy Azure](../articles/azure-monitor/platform/platform-logs-overview.md) to dziennik subskrypcji, który zapewnia wgląd w zdarzenia na poziomie subskrypcji, które wystąpiły na platformie Azure. Dziennik zawiera szereg danych, z Azure Resource Manager dane operacyjne do aktualizacji Service Health zdarzeń. Możesz kliknąć pozycję Dziennik aktywności w Azure Portal, aby wyświetlić dziennik dla maszyny wirtualnej.
 
 W przypadku dziennika aktywności można wykonać następujące czynności:
 
-- Utwórz alert dotyczący [zdarzenia dziennika aktywności](../articles/azure-monitor/platform/activity-logs-overview.md).
+- Utwórz alert dotyczący [zdarzenia dziennika aktywności](../articles/azure-monitor/platform/platform-logs-overview.md).
 - [Przesyłaj strumieniowo do centrum zdarzeń](../articles/azure-monitor/platform/activity-logs-stream-event-hubs.md) w celu pozyskiwania przez usługę innej firmy lub rozwiązanie do analizy niestandardowej, takie jak Power BI.
 - Analizuj ją w Power BI przy użyciu [pakietu zawartości Power BI](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-audit-logs/).
 - [Zapisz go na koncie magazynu](../articles/azure-monitor/platform/archive-activity-log.md) , aby przeprowadzić archiwizację lub inspekcję ręczną. Możesz określić czas przechowywania (w dniach) przy użyciu profilu dziennika.
 
 Możesz również uzyskać dostęp do danych dziennika aktywności przy użyciu [Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.insights/), [interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/monitor)lub [monitorować interfejsy API REST](https://docs.microsoft.com/rest/api/monitor/).
 
-[Dzienniki zasobów platformy Azure](../articles/azure-monitor/platform/resource-logs-overview.md) to dzienniki emitowane przez MASZYNę wirtualną, które zapewniają rozbudowane, częste dane dotyczące operacji. Dzienniki zasobów różnią się od dziennika aktywności, zapewniając wgląd w operacje wykonywane w ramach maszyny wirtualnej.
+[Dzienniki zasobów platformy Azure](../articles/azure-monitor/platform/platform-logs-overview.md) to dzienniki emitowane przez MASZYNę wirtualną, które zapewniają rozbudowane, częste dane dotyczące operacji. Dzienniki zasobów różnią się od dziennika aktywności, zapewniając wgląd w operacje wykonywane w ramach maszyny wirtualnej.
 
 Poniżej przedstawiono niektóre czynności, które można wykonać za pomocą dzienników diagnostycznych:
 
@@ -66,7 +66,7 @@ Poniżej przedstawiono niektóre czynności, które można wykonać za pomocą d
 
 ## <a name="advanced-monitoring"></a>Monitorowanie zaawansowane
 
-Aby poznać widoczność aplikacji lub usług obsługiwanych przez MASZYNę wirtualną platformy Azure i zestawy skalowania maszyn wirtualnych, można zidentyfikować problemy z systemem operacyjnym gościa lub obciążeniem działającym na maszynie wirtualnej, aby zrozumieć, czy ma to wpływ na dostępność lub wydajność aplikacji. problem z aplikacją, Włącz zarówno [Azure monitor dla maszyn wirtualnych](../articles/azure-monitor/insights/vminsights-overview.md) , jak i [Application Insights](../articles/azure-monitor/app/app-insights-overview.md).
+Aby uzyskać wgląd w aplikacje lub usługę obsługiwaną przez MASZYNę wirtualną platformy Azure i zestawy skalowania maszyn wirtualnych, można zidentyfikować problemy z systemem operacyjnym gościa lub obciążeniem działającym na maszynie wirtualnej, aby zrozumieć, czy ma to wpływ na dostępność lub wydajność aplikacji, czy też problem z aplikacją, Włącz zarówno [Azure monitor dla maszyn wirtualnych](../articles/azure-monitor/insights/vminsights-overview.md) , jak i [Application Insights](../articles/azure-monitor/app/app-insights-overview.md).
 
 Azure Monitor dla maszyn wirtualnych monitoruje maszyny wirtualne platformy Azure na dużą skalę, analizując wydajność i kondycję maszyn wirtualnych z systemami Windows i Linux, w tym różne procesy i połączone zależności od innych zasobów i procesów zewnętrznych umożliwia odnalezienie. Zawiera kilka wykresów wydajności trendów, które ułatwiają badanie problemów i ocenianie pojemności maszyn wirtualnych. Mapa zależności zawiera monitorowane i niemonitorowane maszyny, Niepowodzenie i aktywne połączenia sieciowe między procesami i tymi maszynami oraz pokazuje wykresy trendów ze standardowymi metrykami połączenia sieciowego. W połączeniu z Application Insights można monitorować aplikację i przechwytywać dane telemetryczne, takie jak żądania HTTP, wyjątki itp., aby można było skorelować problemy między maszynami wirtualnymi i aplikacją. Skonfiguruj [alerty Azure monitor](../articles/azure-monitor/platform/alerts-overview.md) , aby otrzymywać alerty dotyczące ważnych warunków wykrytych w ramach monitorowania danych zebranych przez Azure monitor dla maszyn wirtualnych.
 

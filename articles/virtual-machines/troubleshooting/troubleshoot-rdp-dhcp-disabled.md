@@ -12,30 +12,29 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/13/2018
 ms.author: genli
-ms.openlocfilehash: ef44931cc3b36bcab64a2de840d9264c1b8fdedb
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 2c5b0556554d280e57b2df51875e1b057b5fb4a8
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058026"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749896"
 ---
 #  <a name="cannot-rdp-to-azure-virtual-machines-because-the-dhcp-client-service-is-disabled"></a>Nie można wykonać protokołu RDP na maszynach wirtualnych platformy Azure, ponieważ usługa klienta DHCP jest wyłączona
 
 W tym artykule opisano problem, w którym nie jest możliwe pulpitu zdalnego do platformy Azure Windows Virtual Machines (VMs) po Usługa klienta DHCP jest wyłączona na maszynie wirtualnej.
 
-[!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
 ## <a name="symptoms"></a>Objawy
 Nie można wprowadzać z połączeniem RDP maszyny Wirtualnej na platformie Azure, ponieważ usługa klienta DHCP jest wyłączona na maszynie wirtualnej. Podczas ewidencjonowania zrzucie ekranu [diagnostykę rozruchu](../troubleshooting/boot-diagnostics.md) w witrynie Azure portal, zostanie wyświetlony wykonać normalnego rozruchu maszyny Wirtualnej i czeka na poświadczenia na ekranie logowania. Zdalne wyświetlanie dzienników zdarzeń maszyny wirtualnej za pomocą Podglądu zdarzeń. Zobaczysz, że usługa klienta DHCP nie jest uruchomiona lub nie została uruchomiona. Następujące przykładowe dziennika:
 
-**Nazwa dziennika**: System </br>
-**Źródło**: Menedżer kontroli usług </br>
-**Data**: 12/16/2015 11:19:36 AM </br>
+**Rejestrowanie nazwy**: System </br>
+**Źródło**: Menedżer sterowania usługami </br>
+**Data**: 2015-12-16 11:19:36: 00 </br>
 **Identyfikator zdarzenia**: 7022 </br>
-**Kategoria zadania**: Brak </br>
-**Poziom**: Błąd </br>
-**Keywords**: Klasyczny</br>
-**Użytkownik**: ND </br>
+**Zadanie kategorii**: Brak </br>
+**Poziom**: błąd </br>
+**Słowa kluczowe**: klasyczny</br>
+**Użytkownik**: n/d </br>
 **Komputer**: myvm.cosotos.com</br>
 **Opis**: Usługa klienta DHCP zawiesiła się podczas uruchamiania.</br>
 
@@ -183,7 +182,7 @@ Aby rozwiązać ten problem, należy użyć Serial kontroli, Włącz protokół 
 
 1. [Dołącz dysk systemu operacyjnego do maszyny Wirtualnej odzyskiwania](../windows/troubleshoot-recovery-disks-portal.md).
 2. Rozpocznij połączenie pulpitu zdalnego do maszyny Wirtualnej odzyskiwania. Upewnij się, że dysk dołączony jest oznaczone jako **Online** w konsoli Zarządzanie dyskami. Zanotuj literę dysku, która jest przypisana do dołączonym dysku systemu operacyjnego.
-3.  Otwórz wiersz polecenia z podwyższonym wystąpienie (**Uruchom jako administrator**). Następnie uruchom następujący skrypt. Ten skrypt zakłada, że litery dysku, która jest przypisana do dołączonym dysku systemu operacyjnego jest **F**. Zastąp literę z wartością z maszyną Wirtualną.
+3.  Otwórz wiersz polecenia z podwyższonym wystąpienie (**Uruchom jako administrator**). Następnie uruchom następujący skrypt. Ten skrypt zakłada, że litera dysku przypisana do dołączonego dysku systemu operacyjnego to **F**. Zamień literę odpowiednio do wartości w maszynie wirtualnej.
 
     ```
     reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM
@@ -201,6 +200,6 @@ Aby rozwiązać ten problem, należy użyć Serial kontroli, Włącz protokół 
 
 4. [Odłącz dysk systemu operacyjnego i ponowne utworzenie maszyny Wirtualnej](../windows/troubleshoot-recovery-disks-portal.md). Sprawdź, czy problem został rozwiązany.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Jeśli nadal potrzebujesz pomocy, [się z pomocą techniczną](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) uzyskać problem rozwiązany.

@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/04/2019
-ms.openlocfilehash: 4708f2e0d6d4aadba228b82cf07e0a7f58b8f68a
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 0318f851f547aed7c7682c9e6841f71d56c98be1
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825603"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750936"
 ---
 # <a name="create-a-new-dynamics-365-for-operations-offer"></a>Utwórz nową ofertę Dynamics 365 dla operacji
 
@@ -99,11 +99,11 @@ Strona **Właściwości** umożliwia definiowanie kategorii i branż używanych 
 
 ### <a name="category"></a>Kategoria
 
-Wybierz co najmniej jedną i maksymalnie trzy kategorie. Zostaną one użyte do złożenia oferty w odpowiednich obszarach wyszukiwania w portalu Marketplace. Pamiętaj, aby dowiedzieć się, jak Twoja oferta obsługuje te kategorie w opisie oferty. 
+Wybierz maksymalnie dwie kategorie (2), w tym podstawową i pomocniczą kategorię (opcjonalnie). Wybierz do dwóch (2) podkategorii dla każdej kategorii podstawowej i/lub pomocniczej. Jeśli nie wybrano żadnej podkategorii, oferta nadal będzie wykrywalna w wybranej kategorii.
 
 ### <a name="industry"></a>Branża
 
-[!INCLUDE [Industry Taxonomy](./includes/industry-taxonomy.md)]
+Opcjonalnie możesz wybrać maksymalnie dwie branże i dwie pionowe w poszczególnych branżach. Kategorie te są używane do wyświetlania oferty, gdy branżowe i pionowe są używane w filtrach wyszukiwania i stosowane w sklepie.  Jeśli oferta jest ukierunkowana na konkretną branżę i/lub w pionie, pamiętaj, aby opisać, w jaki sposób oferta obsługuje wybrane branże lub pionowe w opisie oferty.  W przeciwnym razie, jeśli oferta nie jest specyficzna dla branży, nie należy zaznaczać i pozostawić tej sekcji pustą.
 
 ### <a name="app-version"></a>Wersja aplikacji
 
@@ -201,7 +201,7 @@ Obraz Hero jest opcjonalny. Jeśli postanowisz jeden, musi on mierzyć 815 x 290
 
 Dodaj zrzuty ekranu pokazujące, jak działa Twoja oferta. Wymagany jest co najmniej jeden zrzut ekranu i można dodać maksymalnie pięć. Wszystkie zrzuty ekranu muszą mieć 1280 x 720 pikseli.
 
-#### <a name="videos"></a>Filmy wideo
+#### <a name="videos"></a>Filmy
 
 Opcjonalnie możesz dodać do czterech filmów wideo, które demonstrują Twoją ofertę. Te filmy wideo powinny być hostowane w usłudze YouTube i/lub Vimeo. Dla każdej z nich wprowadź nazwę filmu wideo, jego adres URL i obraz miniatury filmu wideo (1280 x 720 pikseli)
 
@@ -244,7 +244,7 @@ Aby znaleźć identyfikator rozwiązania:
 1. W obszarze usługi Microsoft Dynamics — cykl życia (LCS) wybierz pozycję **zarządzanie rozwiązaniami**.
 2. Wybierz rozwiązanie, a następnie wyszukaj **Identyfikator rozwiązania** w temacie **Omówienie pakietu**. Jeśli identyfikator jest pusty, wybierz pozycję **Edytuj** i ponownie Opublikuj pakiet, a następnie spróbuj ponownie.
 
-### <a name="release-version"></a>Wersja wydania
+### <a name="release-version"></a>Wersja
 
 Wybierz wersję systemu Dynamics 365 dla finansów i operacji, z którymi współpracuje to rozwiązanie.
 
@@ -269,13 +269,13 @@ Szablon wdrożenia zawierający wszystkie zasoby platformy Azure, które składa
 
 - **Wystąpienia**: Wybierz typ (gorąca lub zimna) oraz liczbę dostępnych wystąpień, które zostaną pomnożone przez liczbę regionów, w których oferta jest dostępna.
 
-**Gorąca**: ten typ wystąpienia jest wdrożony i oczekuje na dostęp w wybranym regionie. Klienci mogą natychmiast uzyskać dostęp do *gorącego* wystąpienia dysku testowego, a nie muszą czekać na wdrożenie. Jest to, że te wystąpienia są zawsze uruchamiane w ramach subskrypcji platformy Azure, dzięki czemu będą one miały większy koszt przestoju. Zdecydowanie zaleca się, aby miało co najmniej jedno *aktywne* wystąpienie, ponieważ większość *klientów nie chce* czekać na pełne wdrożenia, co powoduje odrzucanie w przypadku użycia klienta w przypadku braku dostępnego wystąpienia.
+**Gorąca**: ten typ wystąpienia jest wdrożony i oczekuje na dostęp w wybranym regionie. Klienci mogą natychmiast uzyskać dostęp do *gorącego* wystąpienia dysku testowego, a nie muszą czekać na wdrożenie. Jego wadą jest to, że te wystąpienia są zawsze uruchamiane na Twojej subskrypcji platformy Azure, spowoduje naliczenie opłaty za większych przestojów, koszt. Zdecydowanie zaleca się, aby miało co najmniej jedno *aktywne* wystąpienie, ponieważ większość *klientów nie chce* czekać na pełne wdrożenia, co powoduje odrzucanie w przypadku użycia klienta w przypadku braku dostępnego wystąpienia.
 
 **Zimne**: ten typ wystąpienia reprezentuje łączną liczbę wystąpień, które mogą być wdrożone w poszczególnych regionach. Zimne wystąpienia wymagają, aby cały dysk testowy Menedżer zasobów szablon do wdrożenia, gdy klient zażąda dysku testowego, więc *zimne* wystąpienia są znacznie wolniejsze, aby można było ładować je od *aktywnych* wystąpień. Wadą jest to, że musisz tylko uregulować czas trwania testu, ale *nie* zawsze działa w ramach subskrypcji platformy Azure, tak jak w przypadku wystąpienia *aktywnego* .
 
 - **Test Azure Resource Manager szablonu**: Przekaż plik zip zawierający szablon Azure Resource Manager.  Dowiedz się więcej o tworzeniu szablonu Azure Resource Manager w artykule Szybki Start [Tworzenie i wdrażanie szablonów Azure Resource Manager przy użyciu Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal).
 
-- **Czas trwania dysku testowego** (wymagane): Wprowadź czas aktywności dysku testowego w ciągu kilku godzin. Po upływie tego czasu test kończy się automatycznie. Ten czas trwania może być ustawiony tylko przez całą liczbę godzin (np. "2" godzin, "1,5" jest nieprawidłowy).
+- **Czas trwania dysku testowego** (wymagane): Wprowadź czas aktywności dysku testowego w ciągu kilku godzin. Wersji testowej kończy się automatycznie po zakończeniu tego okresu. Ten czas trwania może być ustawiony tylko przez całą liczbę godzin (np. "2" godzin, "1,5" jest nieprawidłowy).
 
 ### <a name="technical-configuration-for-dynamics-365-test-drive"></a>Konfiguracja techniczna dla systemu Dynamics 365 Test Drive
 
@@ -337,7 +337,7 @@ Opcja **wystaw w witrynie Marketplace** znajdująca się na karcie **dysk testow
 
 - **Podręcznik użytkownika** (wymagane): szczegółowy przewodnik dotyczący środowiska testowego. Podręcznik użytkownika powinien obejmować dokładnie te informacje, które klient ma uzyskać, z dysku testowego i służy jako odwołanie do wszelkich pytań, które mogą mieć. Plik musi być w formacie PDF i mieć nazwę (maksymalnie 255 znaków) po przekazaniu.
 
-- **Wideo: Dodaj wideo** (opcjonalnie): klipy wideo można przekazać do usługi YouTube lub Vimeo i przywoływane w tym miejscu za pomocą linku i obrazu miniatury (533 x 324 pikseli), aby klient mógł wyświetlić szczegółowe informacje ułatwiające lepsze zrozumienie dysku testowego, w tym jak pomyślnie korzystać z funkcji oferty i zrozumieć scenariusze, które wyróżnią swoje korzyści.
+- **Wideo: Dodaj wideo** (opcjonalnie): klipy wideo można przekazać do usługi YouTube lub Vimeo i przywoływane w tym miejscu za pomocą linku i miniatury (533 x 324 pikseli), aby klient mógł wyświetlić szczegółowe informacje ułatwiające lepsze zrozumienie dysku testowego, w tym sposób pomyślnego użycia funkcji oferty i zrozumienie scenariuszy, które wyróżnią korzyści.
   - **Nazwa** (wymagana)
   - **Adres URL (tylko w usłudze YouTube lub Vimeo)** (wymagany)
   - **Miniatura (533 x 324px)** : plik obrazu musi być w formacie PNG.
@@ -354,13 +354,13 @@ Ten plik musi być w formacie xls lub xlsx. Jeśli masz więcej niż jeden rapor
 
 ### <a name="does-solution-include-localizations"></a>Czy rozwiązanie obejmuje lokalizacje?
 
-Wybierz opcję **tak** , jeśli rozwiązanie umożliwia korzystanie z lokalnych standardów i zasad (na przykład w przypadku uwzględnienia różnych reguł listy płac wymaganych przez różne kraje/regiony). W przeciwnym razie wybierz pozycję **nie**.
+Wybierz opcję **tak** , jeśli rozwiązanie umożliwia korzystanie z lokalnych standardów i zasad (na przykład w przypadku uwzględnienia różnych reguł listy płac wymaganych przez różne kraje/regiony). W przeciwnym razie wybierz **nie**.
 
 ### <a name="does-solution-enable-translations"></a>Czy rozwiązanie włącza tłumaczenia?
 
-Odpowiedź **tak** , jeśli tekst w rozwiązaniu można przetłumaczyć na inne języki. W przeciwnym razie wybierz pozycję **nie**.
+Odpowiedź **tak** , jeśli tekst w rozwiązaniu można przetłumaczyć na inne języki. W przeciwnym razie wybierz **nie**.
 
-## <a name="publish"></a>Publikowanie
+## <a name="publish"></a>Publikuj
 
 ### <a name="submit-offer-to-preview"></a>Prześlij ofertę do wersji zapoznawczej
 
@@ -377,4 +377,4 @@ Jeśli ta oferta jest publikowana po raz pierwszy, możesz:
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Aktualizowanie istniejącej oferty w komercyjnej witrynie Marketplace](./update-existing-offer.md)
+- [Aktualizowanie istniejącej oferty w witrynie Marketplace dla zastosowań komercyjnych](./update-existing-offer.md)

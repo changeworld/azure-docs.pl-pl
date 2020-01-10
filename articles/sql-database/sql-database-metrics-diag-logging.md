@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 11/16/2019
-ms.openlocfilehash: de1366b1bf45301d3d26a4f721ef2828f79be98d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: HT
+ms.openlocfilehash: 6a84dee783240f7f662dab2f04275ead3a3dfe09
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75460645"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750768"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL Database metryki i rejestrowania diagnostyki
 
@@ -33,7 +33,7 @@ Pojedyncze bazy danych, pule baz danych w puli elastycznej, a bazy danych wystą
 Aby uzyskać więcej informacji na temat metryk i kategorii dzienników obsługiwanych przez różne usługi platformy Azure, zobacz:
 
 - [Przegląd metryk w Microsoft Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md)
-- [Omówienie dzienników diagnostyki platformy Azure](../azure-monitor/platform/resource-logs-overview.md)
+- [Omówienie dzienników diagnostyki platformy Azure](../azure-monitor/platform/platform-logs-overview.md)
 
 Ten artykuł zawiera wskazówki ułatwiające włączenie telemetrii diagnostyki dla baz danych SQL Azure, pul elastycznych i wystąpień zarządzanych. Może również pomóc zrozumieć, jak skonfigurować Azure SQL Analytics jako narzędzie monitorowania do wyświetlania telemetrii diagnostyki bazy danych.
 
@@ -736,7 +736,7 @@ Dowiedz się więcej o [formacie dziennika Intelligent Insights](sql-database-in
 Aby dowiedzieć się, jak włączyć rejestrowanie i zrozumieć metryki i kategorie dzienników obsługiwane przez różne usługi platformy Azure, zobacz:
 
 - [Przegląd metryk w Microsoft Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md)
-- [Omówienie dzienników diagnostyki platformy Azure](../azure-monitor/platform/resource-logs-overview.md)
+- [Omówienie dzienników diagnostyki platformy Azure](../azure-monitor/platform/platform-logs-overview.md)
 
 Aby dowiedzieć się więcej na temat Event Hubs, Przeczytaj:
 

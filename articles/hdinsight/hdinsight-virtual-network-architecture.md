@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/31/2019
-ms.openlocfilehash: 0a1139f7bf1711a5f6d980e67a8a9027bfd3af52
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: b3f622b360f565ef5b16d5376cb1aa2498655017
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73665319"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75744732"
 ---
 # <a name="azure-hdinsight-virtual-network-architecture"></a>Architektura sieci wirtualnej usługi Azure HDInsight
 
@@ -31,6 +31,16 @@ Klastry usługi Azure HDInsight mają różne typy maszyn wirtualnych lub węzł
 | Węzeł regionu | W przypadku typu klastra HBase węzeł regionu (nazywany także węzłem danych) uruchamia serwer regionu. Serwery regionów oferują i zarządzają częścią danych zarządzanych przez HBase. Węzły regionów można dodawać i usuwać z klastra w celu skalowania możliwości obliczeniowych i zarządzania kosztami.|
 | Węzeł Nimbus | W przypadku typu klastra burzy węzeł Nimbus zapewnia funkcjonalność podobną do węzła głównego. Węzeł Nimbus przypisuje zadania do innych węzłów w klastrze za pomocą dozorcy, który koordynuje uruchamianie topologii burzy. |
 | Węzeł nadzoru | W przypadku typu klastra burzy węzeł nadzoru wykonuje instrukcje dostarczone przez węzeł Nimbus w celu wykonania żądanego przetwarzania. |
+
+## <a name="resource-naming-conventions"></a>Konwencje nazewnictwa zasobów
+
+Użyj w pełni kwalifikowanych nazw domen (FQDN) podczas adresowania węzłów w klastrze. Możesz uzyskać nazwy FQDN dla różnych typów węzłów w klastrze przy użyciu [interfejsu API Ambari](hdinsight-hadoop-manage-ambari-rest-api.md). 
+
+Te nazwy FQDN będą miały postać `<node-type-prefix><instance-number>-<abbreviated-clustername>.<unique-identifier>.cx.internal.cloudapp.net`.
+
+`<node-type-prefix>` będzie *HN* dla węzłów głównych, *WN* dla węzłów procesu roboczego i *Zn* dla węzłów dozorcy.
+
+Jeśli potrzebujesz tylko nazwy hosta, użyj tylko pierwszej części nazwy FQDN: `<node-type-prefix><instance-number>-<abbreviated-clustername>`
 
 ## <a name="basic-virtual-network-resources"></a>Podstawowe zasoby sieci wirtualnej
 

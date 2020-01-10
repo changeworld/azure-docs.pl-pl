@@ -1,37 +1,35 @@
 ---
-title: Plik dyrektywy include
-description: Plik dyrektywy include
-services: azure-app-configuration
 author: yegu
+ms.author: yegu
 ms.service: azure-app-configuration
 ms.topic: include
-ms.date: 01/22/2019
-ms.author: yegu
-ms.custom: include file
-ms.openlocfilehash: c98a17be394887ef4e008b079467c85d4ded7e09
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.date: 12/03/2019
+ms.openlocfilehash: ceeeb5ee155624e050f36e733a464c2cb21db88c
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66393298"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750285"
 ---
-1. Aby utworzyć nowy magazyn konfiguracji aplikacji, zaloguj się do [witryny Azure portal](https://portal.azure.com). W lewym górnym rogu okienka wybierz **+ Utwórz zasób**. W **Przeszukaj witrynę Marketplace** wprowadź **konfiguracji aplikacji** i naciśnij klawisz Enter.
+1. Aby utworzyć nowy magazyn konfiguracji aplikacji, zaloguj się do [Azure Portal](https://portal.azure.com). W lewym górnym rogu strony głównej wybierz pozycję **Utwórz zasób**. W polu **Wyszukaj w witrynie Marketplace** wprowadź wartość **Konfiguracja aplikacji** , a następnie wybierz pozycję Wprowadź.
 
-    ![Wyszukiwanie usługi App Configuration](../articles/azure-app-configuration/media/quickstarts/azure-app-configuration-new.png)
+    ![Wyszukiwanie usługi App Configuration](media/azure-app-configuration-create/azure-portal-search.png)
 
-1. Wybierz **konfiguracji aplikacji** z wyników wyszukiwania, a następnie wybierz **Utwórz**.
+1. Wybierz pozycję **Konfiguracja aplikacji** z wyników wyszukiwania, a następnie wybierz pozycję **Utwórz**.
 
-1. Na **konfiguracji aplikacji** > **Utwórz** okienku, wprowadź następujące ustawienia:
+    ![Wybierz pozycję Utwórz](media/azure-app-configuration-create/azure-portal-app-configuration-create.png)
+
+1. W okienku **Konfiguracja aplikacji** > **Utwórz** wprowadź następujące ustawienia:
 
     | Ustawienie | Sugerowana wartość | Opis |
     |---|---|---|
-    | **Nazwa zasobu** | Nazwa unikatowa w skali globalnej | Wprowadź nazwę unikatowy zasób do użycia dla zasobu magazynu konfiguracji aplikacji. Nazwa musi być ciągiem od 1 do 63 znaków i może zawierać tylko cyfry, litery i znak `-`. Nazwa nie może zaczynać ani kończyć `-` znak i następujących po sobie `-` znaki są nieprawidłowe.  |
-    | **Subskrypcja** | Twoja subskrypcja | Wybierz subskrypcję platformy Azure, której chcesz użyć do testowania usługi App Configuration. Jeśli Twoje konto ma tylko jedną subskrypcję, automatycznie jest zaznaczone i **subskrypcji** lista nie jest wyświetlana. |
-    | **Grupa zasobów** | *AppConfigTestResources* | Wybierz lub Utwórz grupę zasobów dla zasobu magazynu konfiguracji aplikacji. Ta grupa jest przydatne do organizowania wielu zasobów, które można usunąć w tym samym czasie przez usunięcie grupy zasobów. Więcej informacji można znaleźć w temacie [Używanie grup zasobów do zarządzania zasobami platformy Azure](/azure/azure-resource-manager/resource-group-overview). |
-    | **Lokalizacja** | *Środkowe stany USA* | Użyj opcji **Lokalizacja**, aby określić lokalizację geograficzną, w której będzie hostowany magazyn konfiguracji aplikacji. Aby uzyskać najlepszą wydajność Utwórz zasób w tym samym regionie, co inne składniki aplikacji. |
+    | **Nazwa zasobu** | Nazwa unikatowa w skali globalnej | Wprowadź unikatową nazwę zasobu, która ma być używana dla zasobu magazynu konfiguracji aplikacji. Nazwa musi być ciągiem od 1 do 63 znaków i może zawierać tylko cyfry, litery i znak `-`. Nazwa nie może rozpoczynać się ani kończyć znakiem `-`, a kolejne znaki `-` są nieprawidłowe.  |
+    | **Subskrypcja** | Twoja subskrypcja | Wybierz subskrypcję platformy Azure, której chcesz użyć do testowania usługi App Configuration. Jeśli konto ma tylko jedną subskrypcję, zostanie automatycznie zaznaczone, a lista **subskrypcji** nie jest wyświetlana. |
+    | **Grupa zasobów** | *AppConfigTestResources* | Wybierz lub Utwórz grupę zasobów dla zasobu magazynu konfiguracji aplikacji. Ta grupa jest przydatna do organizowania wielu zasobów, które mogą zostać usunięte w tym samym czasie przez usunięcie grupy zasobów. Więcej informacji można znaleźć w temacie [Używanie grup zasobów do zarządzania zasobami platformy Azure](/azure/azure-resource-manager/resource-group-overview). |
+    | **Lokalizacja** | *Środkowe stany USA* | Użyj opcji **Lokalizacja**, aby określić lokalizację geograficzną, w której będzie hostowany magazyn konfiguracji aplikacji. Aby uzyskać najlepszą wydajność, należy utworzyć zasób w tym samym regionie, w którym są inne składniki aplikacji. |
 
-    ![Utwórz zasób magazynu konfiguracji aplikacji](../articles/azure-app-configuration/media/quickstarts/azure-app-configuration-create.png)
+    ![Tworzenie zasobu magazynu konfiguracji aplikacji](media/azure-app-configuration-create/azure-portal-app-configuration-create-settings.png)
 
 1. Wybierz pozycję **Utwórz**. Wdrożenie może potrwać kilka minut.
 
-1. Po zakończeniu wdrożenia wybierz **ustawienia** > **klucze dostępu**. Zanotuj albo tylko do odczytu lub podstawowy odczytu i zapisu parametry połączenia klucza podstawowego. Te parametry połączenia będą używane do konfigurowania aplikacji do komunikowania się z magazynu konfiguracji aplikacji utworzone później.
+1. Po zakończeniu wdrażania wybierz pozycję **ustawienia** > **klucze dostępu**. Zanotuj podstawowe parametry połączenia klucza tylko do odczytu. Te parametry połączenia będą używane później, aby skonfigurować aplikację do komunikacji z utworzonym magazynem konfiguracji aplikacji.

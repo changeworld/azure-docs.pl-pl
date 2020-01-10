@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2019
 ms.author: TomSh
-ms.openlocfilehash: ed345fdf564c62e2d323b33013da784344c7a461
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 8301dc779799ff67a348403e661fc7e66b9e721f
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595384"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750132"
 ---
 # <a name="introduction-to-azure-security"></a>Wprowadzenie do zabezpieczeń platformy Azure
 ## <a name="overview"></a>Przegląd
@@ -47,7 +47,7 @@ Ponadto platforma Azure oferuje szeroką gamę konfigurowalnych opcji zabezpiecz
 ### <a name="features-to-secure-the-azure-platform"></a>Funkcje zabezpieczające platformę Azure
 Poniższe funkcje są możliwościami, które można sprawdzić, aby zapewnić gwarancję, że platforma Azure jest zarządzana w bezpieczny sposób. Udostępniono linki umożliwiające dalsze przechodzenie do szczegółowych informacji na temat sposobu, w jaki firma Microsoft rozwiązuje pytania zaufania klientów w czterech obszarach: bezpieczna platforma, kontrola & prywatności, zgodność i przejrzystość.
 
-| [Bezpieczna platforma](https://www.microsoft.com/trustcenter/Security/default.aspx)  | [Kontrola & prywatności](https://www.microsoft.com/trustcenter/Privacy/default.aspx)  |[Zgodność](https://www.microsoft.com/trustcenter/Compliance/default.aspx)   | [Przeźroczyst](https://www.microsoft.com/trustcenter/Transparency/default.aspx) |
+| [Bezpieczna platforma](https://www.microsoft.com/trustcenter/Security/default.aspx)  | [Kontrola & prywatności](https://www.microsoft.com/trustcenter/Privacy/default.aspx)  |[Zgodność](https://www.microsoft.com/trustcenter/Compliance/default.aspx)   | [Przezroczystości](https://www.microsoft.com/trustcenter/Transparency/default.aspx) |
 | :-- | :-- | :-- | :-- |
 | [Cykl rozwoju zabezpieczeń](https://www.microsoft.com/sdl/), audyty wewnętrzne | [Zarządzaj danymi przez cały czas](https://www.microsoft.com/trustcenter/Privacy/You-own-your-data) | [Centrum zaufania](https://www.microsoft.com/trustcenter/default.aspx) |[Jak firma Microsoft zabezpiecza dane klientów w usługach platformy Azure](https://www.microsoft.com/trustcenter/Transparency/default.aspx) |
 | [Obowiązkowe szkolenia w zakresie zabezpieczeń, kontrole w tle](https://downloads.cloudsecurityalliance.org/star/self-assessment/StandardResponsetoRequestforInformationWindowsAzureSecurityPrivacy.docx) |  [Kontrola lokalizacji danych](https://www.microsoft.com/trustcenter/Privacy/Where-your-data-is-located) |  [Centrum formantów wspólnych](https://www.microsoft.com/trustcenter/Common-Controls-Hub) |[Jak firma Microsoft zarządza lokalizacją danych w usługach platformy Azure](https://azuredatacentermap.azurewebsites.net/)|
@@ -69,7 +69,7 @@ Ta sekcja zawiera dodatkowe informacje dotyczące najważniejszych funkcji zabez
 Ponadto można skonfigurować Security & Compliance, aby [automatycznie wykonywały określone działania](https://blogs.technet.microsoft.com/robdavies/2016/04/20/simple-look-at-oms-alert-remediation-with-runbooks-part-1/) w przypadku wykrycia określonego zdarzenia.
 
 ### <a name="azure-resource-manager"></a>Azure Resource Manager
-[Azure Resource Manager](../../azure-resource-manager/resource-manager-deployment-model.md) umożliwia współpracę z zasobami w rozwiązaniu jako Grupa. Wszystkie zasoby danego rozwiązania można wdrożyć, zaktualizować lub usunąć w ramach jednej skoordynowanej operacji. Do wdrożenia należy używać [szablonu Azure Resource Manager](https://blogs.technet.microsoft.com/canitpro/2015/06/29/devops-basics-infrastructure-as-code-arm-templates/) i ten szablon może współpracować z różnymi środowiskami, takimi jak testowanie, przemieszczanie i produkcja. Usługa Resource Manager zapewnia funkcje zabezpieczeń, inspekcji i znakowania ułatwiające zarządzanie zasobami po wdrożeniu.
+[Azure Resource Manager](../../azure-resource-manager/resource-manager-deployment-model.md) umożliwia współpracę z zasobami w rozwiązaniu jako Grupa. Wszystkie zasoby danego rozwiązania można wdrożyć, zaktualizować lub usunąć w ramach jednej skoordynowanej operacji. Do wdrożenia należy używać [szablonu Azure Resource Manager](https://blogs.technet.microsoft.com/canitpro/2015/06/29/devops-basics-infrastructure-as-code-arm-templates/) i ten szablon może współpracować z różnymi środowiskami, takimi jak testowanie, przemieszczanie i produkcja. Usługa Resource Manager zapewnia funkcje zabezpieczeń, inspekcji i tagowania ułatwiające zarządzanie zasobami po wdrożeniu.
 
 Azure Resource Manager wdrożenia oparte na szablonach pomagają ulepszyć zabezpieczenia rozwiązań wdrożonych na platformie Azure ze względu na standardowe ustawienia kontroli zabezpieczeń i można je zintegrować w ustandaryzowanych wdrożeniach opartych na szablonach. Zmniejsza to ryzyko błędów konfiguracji zabezpieczeń, które mogą wystąpić podczas wdrożeń ręcznych.
 
@@ -81,7 +81,7 @@ Application Insights tworzy wykresy i tabele, które pokazują Ci, na przykład 
 W przypadku awarii, błędów lub problemów z wydajnością można wyszukać szczegółowe dane telemetryczne, aby zdiagnozować przyczynę. A usługa wysyła wiadomości e-mail, jeśli istnieją jakiekolwiek zmiany w zakresie dostępności i wydajności aplikacji. Usługa Application Insights w ten sposób będzie cennym narzędziem zabezpieczeń, ponieważ ułatwia dostęp do Triad zabezpieczeń, integralności i dostępności.
 
 ### <a name="azure-monitor"></a>Azure Monitor
-[Azure monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) oferuje wizualizacje, zapytania, routing, alerty, automatyczne skalowanie i automatyzację danych zarówno z infrastruktury platformy Azure ([Dziennik aktywności](../../azure-monitor/platform/activity-logs-overview.md)), jak i poszczególnych zasobów platformy Azure ([dzienników diagnostycznych](../../azure-monitor/platform/resource-logs-overview.md)). Za pomocą Azure Monitor można ostrzec o zdarzeniach związanych z zabezpieczeniami, które są generowane w dziennikach platformy Azure.
+[Azure monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) oferuje wizualizacje, zapytania, routing, alerty, automatyczne skalowanie i automatyzację danych zarówno z infrastruktury platformy Azure ([Dziennik aktywności](../../azure-monitor/platform/platform-logs-overview.md)), jak i poszczególnych zasobów platformy Azure ([dzienników diagnostycznych](../../azure-monitor/platform/platform-logs-overview.md)). Za pomocą Azure Monitor można ostrzec o zdarzeniach związanych z zabezpieczeniami, które są generowane w dziennikach platformy Azure.
 
 ### <a name="azure-monitor-logs"></a>Dzienniki usługi Azure Monitor
 [Dzienniki Azure monitor](https://azure.microsoft.com/documentation/services/log-analytics/) — udostępnia rozwiązanie do zarządzania IT dla infrastruktury lokalnej i opartej na chmurze innej firmy (na przykład AWS) oprócz zasobów platformy Azure. Dane z Azure Monitor mogą być kierowane bezpośrednio do dzienników Azure Monitor, dzięki czemu można zobaczyć metryki i dzienniki dla całego środowiska w jednym miejscu.
@@ -130,13 +130,13 @@ Można włączać lub wyłączać następujące rodzaje dzienników:
 -   Rejestrowanie serwera sieci Web — informacje o transakcjach HTTP przy użyciu rozszerzonego formatu W3C plików dziennika. Jest to przydatne podczas ustalania ogólnych metryk lokacji, takich jak Liczba obsłużonych żądań lub ile żądań pochodzi z określonego adresu IP.
 
 #### <a name="application-diagnostics"></a>Diagnostyka aplikacji
-[Diagnostyka aplikacji](../../app-service/troubleshoot-diagnostic-logs.md) umożliwia przechwytywanie informacji generowanych przez aplikację sieci Web. Aplikacje ASP.NET mogą używać klasy [System. Diagnostics. Trace](https://msdn.microsoft.com/library/system.diagnostics.trace) do rejestrowania informacji w dzienniku diagnostyki aplikacji. W Diagnostyka aplikacji istnieją dwa główne typy zdarzeń, które dotyczą wydajności aplikacji i związane z awariami i błędami aplikacji. Błędy i błędy można podzielić dalej na problemy z łącznością, zabezpieczeniami i błędami. Problemy z błędami są zwykle związane z problemem w kodzie aplikacji.
+[Diagnostyka aplikacji](../../app-service/troubleshoot-diagnostic-logs.md) umożliwia przechwytywanie informacji generowanych przez aplikację sieci Web. Aplikacje ASP.NET mogą używać klasy [System. Diagnostics. Trace](https://msdn.microsoft.com/library/system.diagnostics.trace) do rejestrowania informacji w dzienniku diagnostyki aplikacji. W diagnostyce aplikacji istnieją dwa główne typy zdarzeń — powiązane z wydajnością aplikacja oraz powiązane z awariami i błędami aplikacji. Awarie i błędy można rozdzielić na łączność, zabezpieczenia i problemy dotyczące awarii. Problemy dotyczące awarii zazwyczaj obejmują kod aplikacji.
 
-W Diagnostyka aplikacji można wyświetlać zdarzenia pogrupowane w następujący sposób:
+W diagnostyce aplikacji można wyświetlać zdarzenia pogrupowane w następujący sposób:
 
 -   Wszystkie (wyświetla wszystkie zdarzenia)
 -   Błędy aplikacji (wyświetla zdarzenia wyjątków)
--   Wydajność (wyświetla zdarzenia dotyczące wydajności)
+-   Wydajność (zdarzenia dotyczące wydajności)
 
 ## <a name="storage"></a>Usługa Storage
 Sekcja zawiera dodatkowe informacje dotyczące najważniejszych funkcji zabezpieczeń usługi Azure Storage oraz informacje podsumowujące dotyczące tych możliwości.
@@ -165,7 +165,7 @@ W przypadku wielu organizacji szyfrowanie danych w spoczynku stanowi obowiązkow
 -   [Azure Disk Encryption](../azure-security-disk-encryption-overview.md) umożliwia szyfrowanie dysków systemu operacyjnego i dysków danych używanych przez maszynę wirtualną IaaS.
 
 ### <a name="storage-analytics"></a>Analityka magazynu
-[Analityka magazynu platformy Azure](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics) wykonuje rejestrowanie i udostępnia dane metryk dla konta magazynu. Dane te mogą posłużyć do śledzenia żądań, analizy tendencji użycia oraz diagnozowania problemów z kontem magazynu. Analityka magazynu rejestruje szczegółowe informacje o żądaniach zakończonych powodzeniem i zakończonych niepowodzeniem do usługi magazynu. Te informacje mogą służyć do monitorowania indywidualnych żądań i diagnozowania problemów z usługą magazynu. Żądania są rejestrowane na podstawie najlepszego wysiłku. Rejestrowane są następujące typy żądań uwierzytelnionych:
+[Analityka magazynu platformy Azure](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics) wykonuje rejestrowanie i udostępnia dane metryk dla konta magazynu. Dane te mogą posłużyć do śledzenia żądań, analizy tendencji użycia oraz diagnozowania problemów z kontem magazynu. Usługa Storage Analytics rejestruje szczegółowe informacje dotyczące żądań do usługi magazynu zakończonych powodzeniem i niepowodzeniem. Tych informacji można używać na potrzeby monitorowania poszczególnych żądań i diagnozowania problemów z usługą magazynu. Żądania są rejestrowane na podstawie najlepszego wysiłku. Rejestrowane są następujące typy żądań uwierzytelnionych:
 -   Pomyślne żądania.
 
 -   Żądania zakończone niepowodzeniem, takie jak limit czasu, ograniczanie przepustowości, Sieć, autoryzacja i inne błędy.
@@ -205,7 +205,7 @@ Sieć wirtualna Azure odzwierciedla w chmurze Twoją sieć. Jest to logiczna izo
 
 Dodatkowo można połączyć sieć wirtualną z siecią lokalną przy użyciu jednej z [opcji łączności](../../vpn-gateway/index.yml) dostępnej na platformie Azure. W zasadzie można rozbudować swoją sieć do sieci Azure, zachowując pełną kontrolę nad blokami adresów IP i wykorzystując zapewnianą przez platformę Azure skalowalność klasy korporacyjnej.
 
-Sieć platformy Azure obsługuje różne scenariusze bezpiecznego dostępu zdalnego. Niektóre z nich obejmują:
+Sieć platformy Azure obsługuje różne scenariusze bezpiecznego dostępu zdalnego. Oto niektóre poprawki:
 
 -   [Łączenie poszczególnych stacji roboczych z usługą Azure Virtual Network](../../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md)
 
@@ -233,7 +233,7 @@ Połączenia ExpressRoute nie przechodzą do publicznej sieci Internet i w ten s
 
 ![Application Gateway](./media/overview/azure-security-fig2.png)
 
-Pozwala to zoptymalizować wydajność kolektywu serwerów sieci Web przez odciążenie zakończenia użycia procesora CPU przez procesor w Application Gateway (znany również jako "odciążanie protokołu SSL" lub "mostkowanie SSL"). Zapewnia także inne możliwości routingu warstwy 7, w tym rozkład działania ruchu przychodzącego, koligację sesji na podstawie plików cookie, routing oparty na ścieżkach URL i możliwość hostowania wielu witryn sieci Web za pojedynczym Application Gateway. Azure Application Gateway to moduł równoważenia obciążenia warstwy 7.
+Pozwala to zoptymalizować wydajność kolektywu serwerów sieci Web przez odciążenie zakończenia użycia procesora CPU przez procesor w Application Gateway (znany również jako "odciążanie protokołu SSL" lub "mostkowanie SSL"). Zapewnia także inne możliwości routingu warstwy 7, w tym rozkład działania ruchu przychodzącego, koligację sesji na podstawie plików cookie, routing oparty na ścieżkach URL i możliwość hostowania wielu witryn sieci Web za pojedynczym Application Gateway. Usługa Azure Application Gateway to moduł równoważenia obciążenia warstwy 7.
 
 Udostępnia tryb failover, oparty na wydajności routing żądań HTTP między różnymi serwerami — w chmurze i lokalnymi.
 
@@ -345,18 +345,18 @@ Firma Microsoft używa wielu rozwiązań w zakresie zabezpieczeń i usług w cel
 
 | Funkcje bezpłatne/wspólne     | Podstawowe funkcje    |Funkcje w warstwie Premium P1 |Funkcje Premium P2 | Azure Active Directory Join — powiązane funkcje systemu Windows 10|
 | :------------- | :------------- |:------------- |:------------- |:------------- |
-|   [Obiekty katalogu](../../active-directory/active-directory-whatis.md), [Zarządzanie użytkownikami/grupami (Dodawanie/aktualizowanie/usuwanie)/oparta na użytkownikach Inicjowanie obsługi, rejestracja urządzeń](../../active-directory/active-directory-whatis.md), logowanie jednokrotne [(SSO)](../../active-directory/active-directory-whatis.md), samoobsługowe [Zmienianie haseł dla użytkowników w chmurze](../../active-directory/active-directory-whatis.md), [łączenie (aparat synchronizacji rozszerza katalogi lokalne do Azure Active Directory)](../../active-directory/active-directory-whatis.md), [raporty dotyczące zabezpieczeń/użycia](../../active-directory/active-directory-whatis.md)       |   [Zarządzanie dostępem oparte na grupach/Inicjowanie obsługi administracyjnej](../../active-directory/active-directory-whatis.md), samoobsługowe [resetowanie haseł dla użytkowników w chmurze](../../active-directory/active-directory-whatis.md), [znakowanie firmowe (strona logowania/dostosowywanie panelu dostępu)](../../active-directory/active-directory-whatis.md), [serwer proxy aplikacji](../../active-directory/active-directory-whatis.md), [Umowa SLA 99,9%](../../active-directory/active-directory-whatis.md) |  [Samoobsługowe zarządzanie grupami i aplikacjami/samoobsługowe Dodawanie aplikacji/grupy dynamiczne](../../active-directory/active-directory-whatis.md), [Samoobsługowe resetowanie haseł/zmiana/Odblokowywanie przy użyciu lokalnych zapisów](../../active-directory/active-directory-whatis.md), [Multi-Factor Authentication (serwer usługi MFA) )](../../active-directory/active-directory-whatis.md), Program [MIM cal + serwer mim](../../active-directory/active-directory-whatis.md), [Cloud App Discovery](../../active-directory/active-directory-whatis.md), [Connect Health](../../active-directory/active-directory-whatis.md), [Automatyczne Przerzucanie haseł dla kont grup](../../active-directory/active-directory-whatis.md)|    [Ochrona tożsamości](../../active-directory/identity-protection/overview.md), [Privileged Identity Management](../../active-directory/privileged-identity-management/pim-configure.md)|   [Przyłączanie urządzenia do usługi Azure AD, logowanie JEDNOkrotne na komputerze stacjonarnym, Microsoft Passport usługi Azure AD, odzyskiwanie funkcji BitLocker przez administratora](../../active-directory/active-directory-whatis.md), [Automatyczne rejestrowanie w usłudze MDM, samoobsługowe odzyskiwanie funkcji BitLocker, dodatkowi Administratorzy lokalni na urządzeniach z systemem Windows 10 za pośrednictwem](../../active-directory/active-directory-whatis.md)|
+|   [Obiekty katalogu](../../active-directory/active-directory-whatis.md), [Zarządzanie użytkownikami/grupami (Dodawanie/aktualizowanie/usuwanie)/oparta na użytkownikach Inicjowanie obsługi, rejestracja urządzeń](../../active-directory/active-directory-whatis.md), logowanie jednokrotne [(SSO)](../../active-directory/active-directory-whatis.md), samoobsługowe [Zmienianie haseł dla użytkowników w chmurze](../../active-directory/active-directory-whatis.md), [łączenie (aparat synchronizacji rozszerzający katalogi lokalne na Azure Active Directory)](../../active-directory/active-directory-whatis.md), [raporty dotyczące zabezpieczeń/użycia](../../active-directory/active-directory-whatis.md)       |   [Zarządzanie dostępem oparte na grupach/Inicjowanie obsługi administracyjnej](../../active-directory/active-directory-whatis.md), samoobsługowe [resetowanie haseł dla użytkowników w chmurze](../../active-directory/active-directory-whatis.md), [znakowanie firmowe (strona logowania/dostosowywanie panelu dostępu)](../../active-directory/active-directory-whatis.md), [serwer proxy aplikacji](../../active-directory/active-directory-whatis.md), [Umowa SLA 99,9%](../../active-directory/active-directory-whatis.md) |  [Samoobsługowe zarządzanie grupami i aplikacjami/samoobsługowe Dodawanie aplikacji/grupy dynamiczne](../../active-directory/active-directory-whatis.md), samoobsługowe [resetowanie haseł/zmiana/Odblokowywanie przy użyciu lokalnych funkcji zapisywania zwrotnego](../../active-directory/active-directory-whatis.md), [Multi-Factor Authentication (w chmurze i lokalnych (serwer MFA))](../../active-directory/active-directory-whatis.md), program [MIM cal + serwer MIM](../../active-directory/active-directory-whatis.md), [Cloud App Discovery](../../active-directory/active-directory-whatis.md), [Connect Health](../../active-directory/active-directory-whatis.md), [Automatyczne Przerzucanie haseł dla kont grup](../../active-directory/active-directory-whatis.md)|    [Ochrona tożsamości](../../active-directory/identity-protection/overview.md), [Privileged Identity Management](../../active-directory/privileged-identity-management/pim-configure.md)|   [Przyłączanie urządzenia do usługi Azure AD, logowanie JEDNOkrotne na komputerze stacjonarnym, Microsoft Passport usługi Azure AD, odzyskiwanie funkcji BitLocker przez administratora](../../active-directory/active-directory-whatis.md), [Automatyczne rejestrowanie w usłudze MDM, samoobsługowe odzyskiwanie funkcji BitLocker, dodatkowi Administratorzy lokalni na urządzeniach z systemem Windows 10 za pośrednictwem](../../active-directory/active-directory-whatis.md)|
 
 
 - [Cloud App Discovery](../../active-directory/cloudappdiscovery-get-started.md) to funkcja Premium Azure Active Directory, która pozwala identyfikować aplikacje w chmurze, które są używane przez pracowników w organizacji.
 
-- [Azure Active Directory Identity Protection](https://azure.microsoft.com/documentation/articles/active-directory-identityprotection/) to usługa zabezpieczeń, która używa Azure Active Directory funkcji wykrywania anomalii w celu zapewnienia skonsolidowanego widoku na potrzeby wykrywania ryzyka i potencjalnych luk w zabezpieczeniach, które mogą mieć wpływ na organizację osob.
+- [Azure Active Directory Identity Protection](https://azure.microsoft.com/documentation/articles/active-directory-identityprotection/) to usługa zabezpieczeń, która używa Azure Active Directory funkcji wykrywania anomalii w celu zapewnienia skonsolidowanego widoku na potrzeby wykrywania ryzyka i potencjalnych luk w zabezpieczeniach, które mogą mieć wpływ na tożsamości w organizacji.
 
 - [Azure Active Directory Domain Services](https://azure.microsoft.com/services/active-directory-ds/) umożliwia dołączanie maszyn wirtualnych platformy Azure do domeny bez konieczności wdrażania kontrolerów domeny. Użytkownicy logują się do tych maszyn wirtualnych przy użyciu poświadczeń firmowych Active Directory i mogą bezproblemowo uzyskiwać dostęp do zasobów.
 
 - [Azure Active Directory B2C](https://azure.microsoft.com/services/active-directory-b2c/) to usługa zarządzania tożsamościami o wysokiej dostępności dla aplikacji przeznaczonych dla klientów, która może być skalowana do setek milionów tożsamości i integruje się między platformami mobilnymi i sieci Web. Klienci mogą zalogować się do wszystkich aplikacji za pomocą dostosowywalnych środowisk, które korzystają z istniejących kont mediów społecznościowych, lub można utworzyć nowe poświadczenia autonomiczne.
 
-- [Azure Active Directory współpracy B2B](https://aka.ms/aad-b2b-collaboration) to bezpieczne rozwiązanie do integracji z partnerami, które obsługuje relacje między firmami, umożliwiając partnerom dostęp do aplikacji i danych firmowych w sposób selektywny przy użyciu ich tożsamości, które są zarządzane automatycznie .
+- [Azure Active Directory współpracy B2B](https://aka.ms/aad-b2b-collaboration) to rozwiązanie bezpiecznego partnera, które obsługuje relacje między firmami przez umożliwienie partnerom dostępu do aplikacji i danych firmowych w sposób selektywny przy użyciu własnych tożsamości.
 
 - [Azure Active Directory Join](https://azure.microsoft.com/documentation/articles/active-directory-azureadjoin-overview/) umożliwia rozszerzonie możliwości chmury na urządzenia z systemem Windows 10 w celu scentralizowanego zarządzania. Umożliwia użytkownikom łączenie się z chmurą firmową lub organizacyjną przez Azure Active Directory i upraszcza dostęp do aplikacji i zasobów.
 

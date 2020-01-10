@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: e9ba540ee0eda2be50c88a89a139032d8d99752d
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 384b79037bb30656934c5e4b596dac2b776593b0
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791876"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754121"
 ---
 # <a name="shaper-cognitive-skill"></a>Umiejętności poznawcze kształtu
 
@@ -27,7 +27,7 @@ Nazwa wyjściowa jest zawsze "output". Wewnętrznie potok może mapować inną n
 > Umiejętność **kształtu** nie jest powiązana z interfejsem API Cognitive Services i nie jest naliczana opłata za korzystanie z niego. Mimo to należy [dołączyć zasób Cognitive Services](cognitive-search-attach-cognitive-services.md), aby zastąpić opcję **bezpłatnych** zasobów, która ogranicza liczbę codziennych wzbogacań dziennie.
 
 ## <a name="odatatype"></a>@odata.type  
-Microsoft. umiejętności. util. ShaperSkill
+Microsoft.Skills.Util.ShaperSkill
 
 ## <a name="scenario-1-complex-types"></a>Scenariusz 1: typy złożone
 
@@ -252,4 +252,4 @@ W takim przypadku **kształt** tworzy typ złożony. Ta struktura istnieje w pam
 + [Jak zdefiniować zestawu umiejętności](cognitive-search-defining-skillset.md)
 + [Jak używać typów złożonych](search-howto-complex-data-types.md)
 + [Sklep merytoryczny (wersja zapoznawcza)](knowledge-store-concept-intro.md)
-+ [Jak rozpocząć pracę ze sklepem merytorycznym](knowledge-store-howto.md)
++ [Tworzenie sklepu merytorycznego w usłudze REST](knowledge-store-create-rest.md)

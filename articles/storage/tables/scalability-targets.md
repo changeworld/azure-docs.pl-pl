@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: tamram
 ms.subservice: tables
-ms.openlocfilehash: 2e5b8647bb65659b97dc8afe78bddfa45ea8c019
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: HT
+ms.openlocfilehash: 484596b4eb4908ca84d018267d605acc41a8ccea
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75477137"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749478"
 ---
 # <a name="scalability-and-performance-targets-for-table-storage"></a>Cele skalowalności i wydajności dla usługi Table Storage
 
@@ -29,3 +29,4 @@ ms.locfileid: "75477137"
 - [Lista kontrolna wydajności i skalowalności dla usługi Table Storage](storage-performance-checklist.md)
 - [Elementy docelowe skalowalności dla kont magazynu w warstwie Standardowa](../common/scalability-targets-standard-account.md)
 - [Elementy docelowe skalowalności dla dostawcy zasobów usługi Azure Storage](../common/scalability-targets-resource-provider.md)
+- [Ograniczenia i limity subskrypcji platformy Azure](../../azure-resource-manager/management/azure-subscription-service-limits.md)

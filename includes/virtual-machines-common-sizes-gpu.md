@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/11/2019
 ms.author: cynthn;azcspmt;jonbeck
 ms.custom: include file
-ms.openlocfilehash: 82e62b6d0925aa53fc8456addb4732b16e69080b
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 9b08dd60020dad6f747167f35e8d172fdc24a59e
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74935862"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75752429"
 ---
 Rozmiary maszyn wirtualnych zoptymalizowane pod kątem procesora GPU są wyspecjalizowanymi maszynami wirtualnymi z jednym lub wieloma procesorami GPU firmy NVIDIA. Te rozmiary są przeznaczone do obciążeń intensywnie korzystających z operacji obliczeniowych, intensywnie korzystających z grafiki i wizualizacji. Ten artykuł zawiera informacje o liczbie i typie procesorów GPU, procesorów wirtualnych vCPU, dysków danych i kart interfejsu sieciowego. Przepustowość magazynu i przepustowość sieci są również uwzględniane dla każdego rozmiaru w ramach grupowania.
 
@@ -93,22 +93,34 @@ Maszyny wirtualne z serii seria NCV3 są obsługiwane przez procesory [NVIDIA Te
 
 *Obsługa technologii RDMA
 
-## <a name="ndv2-series-preview"></a>NDv2 — seria (wersja zapoznawcza)
+## <a name="updated-ndv2-series-preview"></a>Zaktualizowana seria NDv2 (wersja zapoznawcza)
 
 Premium Storage: obsługiwane
 
 Buforowanie Premium Storage: obsługiwane
 
-InfiniBand: nieobsługiwane
+InfiniBand: obsługiwane
 
-Maszyna wirtualna z serii NDv2 to nowy dodatek do rodziny procesorów GPU przeznaczonej do obsługi obciążeń HPC, AI i uczenia maszynowego. Jest on obsługiwany przez 8 NVIDIA Tesla V100 NVLINK współpołączone procesory GPU i 40 rdzenie Intel Xeon Platinum 8168 (Skylake) oraz 672 GiB pamięci systemowej. Wystąpienie NDv2 zapewnia świetną wydajność w przypadku precyzji FP32 i FP64 dla obciążeń obliczeń HPC i sztucznej inteligencji korzystających ze struktur Cuda, TensorFlow, Pytorch, Caffe i innych.
+Maszyna wirtualna z serii NDv2 to nowa dołączenie do rodziny procesorów GPU przeznaczonej do potrzeb najbardziej wymagających obciążeń procesora GPU, uczenia maszynowego, symulacji i wdrożenia HPC. 
 
-[Utwórz konto i uzyskaj dostęp do tych maszyn w trakcie okresu zapoznawczego](https://aka.ms/ndv2signup).
+NDv2 jest obsługiwany przez 8 NVIDIA Tesla V100 NVLINK-podłączonych procesorów GPU, z których każdy ma 32 GB pamięci GPU. Każda maszyna wirtualna NDv2 ma także 40 rdzenie procesora Intel Xeon Platinum 8168 (Skylake) i 672 GiB pamięci systemowej. 
+
+Wystąpienia NDv2 zapewniają doskonałą wydajność obciążeń HPC i AI wykorzystujących jądra CUDA z zoptymalizowanymi procesorami GPU, a także wiele narzędzi typu AI, ML i analitycznego, które obsługują Przyspieszenie GPU ", takie jak TensorFlow, Pytorch, Caffe, RAPIDS i inne platform. 
+
+W sposób krytyczny NDv2 jest zbudowany na potrzeby skalowania w górę i skalowalnego w górę (wykorzystującego 8 procesorów GPU na maszynę wirtualną) i skalowania w poziomie (łączenie wielu maszyn wirtualnych współpracujących) z obciążeniami. Seria NDv2 obsługuje teraz sieci 100 Gigabit InfiniBand EDR zaplecza, podobnie jak te dostępne w serii HB maszyny wirtualnej HPC, aby umożliwić klastrowanie o wysokiej wydajności dla scenariuszy równoległych, w tym rozmieszczonych szkoleń dla AI i ML. Ta sieć zaplecza obsługuje wszystkie główne protokoły InfiniBand, włącznie z tymi, które są używane przez biblioteki NCCL2 firmy NVIDIA, umożliwiając bezproblemowe klastrowanie procesorów GPU.
+
+> Podczas [włączania funkcji InfiniBand](https://docs.microsoft.com/azure/virtual-machines/workloads/hpc/enable-infiniband) na maszynie wirtualnej ND40rs_v2 należy użyć sterownika 1.0.0.1 Mellanox OFED.
+
+> Ze względu na zwiększoną ilość pamięci GPU Nowa maszyna wirtualna ND40rs_v2 wymaga użycia [maszyn wirtualnych 2. generacji](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2) i obrazów w portalu Marketplace. 
+
+> [Utwórz konto, aby zażądać wczesnego dostępu do wersji zapoznawczej maszyny wirtualnej NDv2.](https://aka.ms/AzureNDrv2Preview)
+
+> Uwaga: ND40s_v2 z 16 GB pamięci na procesor GPU nie jest już dostępny do wersji zapoznawczej i został zastąpiony przez zaktualizowane ND40rs_v2.
 <br>
 
 | Rozmiar | vCPU | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Procesor GPU | Pamięć procesora GPU: GiB | Maksymalna liczba dysków danych | Maksymalna przepływność niebuforowanych dysków: liczba operacji we/wy na sekundę / MB/s | Maksymalna przepustowość sieci | Maksymalna liczba kart interfejsów sieciowych |
 |---|---|---|---|---|---|---|---|---|---|
-| Standard_ND40s_v2 | 40 | 672 | 2948 | 8 V100 (NVLink) | 16 | 32 | 80000/800 | 24000 MB/s | 8 |
+| Standard_ND40rs_v2 | 40 | 672 | 2948 | 8 V100 32 GB (NVLink) | 16 | 32 | 80000/800 | 24000 MB/s | 8 |
 
 ## <a name="nd-series"></a>Seria ND
 

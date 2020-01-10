@@ -9,12 +9,12 @@ ms.date: 06/27/2017
 ms.author: rogarana
 ms.reviewer: yuemlu
 ms.subservice: common
-ms.openlocfilehash: b8b3679676cf019a48c55211d81bee0523764db5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: HT
+ms.openlocfilehash: 7cb5a335af7093bc217578d57340b03b8b9c08b3
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75351237"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75748350"
 ---
 # <a name="migrating-to-azure-premium-storage-unmanaged-disks"></a>Migrowanie do usługi Azure Premium Storage (dyski niezarządzane)
 
@@ -64,7 +64,8 @@ Istnieje pięć typów dysków, które mogą być używane z maszyną wirtualną
 W zależności od obciążenia Ustal, czy dodatkowe dyski danych są niezbędne dla maszyny wirtualnej. Do maszyny wirtualnej można dołączyć kilka dysków danych trwałych. W razie potrzeby można rozdzielić dyski, aby zwiększyć pojemność i wydajność woluminu. (Zobacz, co to jest rozłożenie dysku w [tym miejscu](../../virtual-machines/windows/premium-storage-performance.md#disk-striping)). W przypadku rozłożenia dysków danych Premium Storage przy użyciu funkcji [miejsca do magazynowania][4]należy skonfigurować ją z jedną kolumną dla każdego używanego dysku. W przeciwnym razie ogólna wydajność woluminu rozłożonego może być niższa niż oczekiwano z powodu nierównomiernego rozkładu ruchu na dyskach. W przypadku maszyn wirtualnych z systemem Linux można użyć narzędzia *mdadm* do osiągnięcia tego samego. Aby uzyskać szczegółowe informacje, zobacz artykuł [Konfigurowanie oprogramowania RAID w systemie Linux](../../virtual-machines/linux/configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) .
 
 #### <a name="storage-account-scalability-targets"></a>Cele skalowalności konta magazynu
-Poniżej znajdują się następujące elementy docelowe skalowalności [i wydajności usługi Azure Storage](storage-scalability-targets.md). Premium Storage Jeśli wymagania dotyczące aplikacji przekraczają tarcze skalowalności pojedynczego konta magazynu, należy skompilować aplikację w celu korzystania z wielu kont magazynu i podzielić dane na te konta magazynu.
+
+Konta Premium Storage mają następujące elementy docelowe skalowalności. Jeśli wymagania dotyczące aplikacji przekraczają tarcze skalowalności pojedynczego konta magazynu, należy skompilować aplikację w celu korzystania z wielu kont magazynu i podzielić dane na te konta magazynu.
 
 | Łączna pojemność konta | Łączna przepustowość dla lokalnego nadmiarowego konta magazynu |
 |:--- |:--- |
@@ -162,7 +163,8 @@ W przypadku dysków z danymi można wybrać opcję przechowywania niektórych dy
 Musisz znaleźć ścieżkę kontenera i klucz konta magazynu, aby przetworzyć jedną z tych dwóch opcji. Ścieżkę kontenera i klucz konta magazynu można znaleźć w **witrynie Azure Portal** > **Magazyn**. Adres URL kontenera będzie wyglądać podobnie do "https:\//myaccount.blob.core.windows.net/mycontainer/".
 
 ##### <a name="option-1-copy-a-vhd-with-azcopy-asynchronous-copy"></a>Opcja 1: Kopiowanie dysku VHD z AzCopy (kopia asynchroniczna)
-Za pomocą AzCopy można łatwo przekazać wirtualny dysk twardy za pośrednictwem Internetu. W zależności od rozmiaru dysków VHD może to zająć trochę czasu. Należy pamiętać o sprawdzeniu limitów ruchu przychodzącego/wychodzącego kont magazynu przy użyciu tej opcji. Aby uzyskać szczegółowe informacje [, zobacz cele dotyczące skalowalności i wydajności usługi Azure Storage](storage-scalability-targets.md) .
+
+Za pomocą AzCopy można łatwo przekazać wirtualny dysk twardy za pośrednictwem Internetu. W zależności od rozmiaru dysków VHD może to zająć trochę czasu. Należy pamiętać o sprawdzeniu limitów ruchu przychodzącego/wychodzącego kont magazynu przy użyciu tej opcji. Aby uzyskać szczegółowe informacje [, zobacz cele dotyczące skalowalności i wydajności dla kont magazynu w warstwie Standardowa](scalability-targets-standard-account.md) .
 
 1. Pobierz i zainstaluj AzCopy z tego miejsca: [Najnowsza wersja AzCopy](https://aka.ms/downloadazcopy)
 2. Otwórz Azure PowerShell i przejdź do folderu, w którym zainstalowano AzCopy.
@@ -259,7 +261,8 @@ Add-AzureVhd [-Destination] <Uri> [-LocalFilePath] <FileInfo>
 Przykładem \<> URI może być **_"https://storagesample.blob.core.windows.net/mycontainer/blob1.vhd"_** . Przykładem \<FileInfo > może być **_"C:\path\to\upload.VHD"_** .
 
 ##### <a name="option-2-using-azcopy-to-upload-the-vhd-file"></a>Opcja 2: używanie AzCopy do przekazywania pliku VHD
-Za pomocą AzCopy można łatwo przekazać wirtualny dysk twardy za pośrednictwem Internetu. W zależności od rozmiaru dysków VHD może to zająć trochę czasu. Należy pamiętać o sprawdzeniu limitów ruchu przychodzącego/wychodzącego kont magazynu przy użyciu tej opcji. Aby uzyskać szczegółowe informacje [, zobacz cele dotyczące skalowalności i wydajności usługi Azure Storage](storage-scalability-targets.md) .
+
+Za pomocą AzCopy można łatwo przekazać wirtualny dysk twardy za pośrednictwem Internetu. W zależności od rozmiaru dysków VHD może to zająć trochę czasu. Należy pamiętać o sprawdzeniu limitów ruchu przychodzącego/wychodzącego kont magazynu przy użyciu tej opcji. Aby uzyskać szczegółowe informacje [, zobacz cele dotyczące skalowalności i wydajności dla kont magazynu w warstwie Standardowa](scalability-targets-standard-account.md) .
 
 1. Pobierz i zainstaluj AzCopy z tego miejsca: [Najnowsza wersja AzCopy](https://aka.ms/downloadazcopy)
 2. Otwórz Azure PowerShell i przejdź do folderu, w którym zainstalowano AzCopy.

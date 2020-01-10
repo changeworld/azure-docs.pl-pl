@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 12/10/2019
+ms.date: 01/08/2020
 ms.author: jingwang
-ms.openlocfilehash: 893ef88647824398ec106a964cbacf118bb14308
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: HT
+ms.openlocfilehash: 0e138e954501df3cf3c3c8819d0198ad9a9288f0
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75440330"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754462"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Działanie kopiowania w Azure Data Factory
 
@@ -252,6 +252,25 @@ W niektórych scenariuszach po uruchomieniu działania kopiowania w Data Factory
 W tym przykładzie podczas wykonywania kopii Data Factory śledzi wysokie wykorzystanie jednostek DTU w Azure SQL Database ujścia. Ten stan spowalnia operacje zapisu. Sugestia polega na zwiększeniu DTU w warstwie Azure SQL Database:
 
 ![Kopiuj monitorowanie ze wskazówkami dotyczącymi dostrajania wydajności](./media/copy-activity-overview/copy-monitoring-with-performance-tuning-tips.png)
+
+## <a name="resume-from-last-failed-run"></a>Wznowienie od ostatniego nieudanego uruchomienia
+
+Działanie kopiowania obsługuje wznowienie od ostatniego nieudanego uruchomienia, gdy kopiujesz duży rozmiar plików jako-jest w formacie binarnym między magazynami opartymi na plikach i chcesz zachować hierarchię folderów/plików ze źródła do ujścia, np. w celu migrowania danych z usługi Amazon S3 do Azure Data Lake Storage Gen2. Dotyczy to następujących łączników opartych na plikach: [Amazon S3](connector-amazon-simple-storage-service.md), [azure BLOB](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md), [Azure File Storage](connector-azure-file-storage.md), [system plików](connector-file-system.md), [FTP](connector-ftp.md), [Google Cloud Storage](connector-google-cloud-storage.md), [HDFS](connector-hdfs.md)i [SFTP](connector-sftp.md).
+
+Możesz użyć wznowienia działania kopiowania na dwa sposoby:
+
+- **Ponowna próba poziomu działania:** Możesz ustawić liczbę ponownych prób dla działania kopiowania. W trakcie wykonywania potoku, Jeśli uruchomienie tego działania kopiowania nie powiedzie się, następne automatyczne ponawianie prób rozpocznie się od punktu awarii z ostatniej wersji próbnej.
+- **Uruchom ponownie z działania zakończonego niepowodzeniem:** Po zakończeniu wykonywania potoku można także wyzwolić ponowne uruchomienie z działania zakończonego niepowodzeniem w widoku monitorowania interfejsu użytkownika usługi ADF lub programowo. Jeśli działanie zakończone niepowodzeniem jest działaniem kopiowania, potok nie zostanie ponownie uruchomiony z tego działania, ale również zostanie wznowiony od punktu awarii poprzedniego przebiegu.
+
+    ![Wznowienie kopiowania](media/copy-activity-overview/resume-copy.png)
+
+Kilka punktów do uwagi:
+
+- Wznowienie odbywa się na poziomie pliku. Jeśli działanie kopiowania zakończy się niepowodzeniem podczas kopiowania pliku, w następnym uruchomieniu ten określony plik zostanie ponownie skopiowany.
+- Aby wznowienie działało prawidłowo, nie należy zmieniać ustawień działania kopiowania między ponownie uruchomionym programem.
+- Podczas kopiowania danych z usługi Amazon S3, Azure Blob, Azure Data Lake Storage Gen2 i Google Cloud Storage, działanie Copy można wznowić z dowolnej liczby skopiowanych plików. W przypadku pozostałych łączników opartych na plikach jako źródło, obecnie działanie kopiowania obsługuje wznowienie od ograniczonej liczby plików, zwykle z zakresu liczby tysięcy i różni się w zależności od długości ścieżek plików; Pliki wykraczające poza tę liczbę zostaną ponownie skopiowane podczas ponownego uruchomienia.
+
+W przypadku innych scenariuszy niż kopiowanie plików binarnych ponowne uruchomienie działania kopiowania rozpoczyna się od początku.
 
 ## <a name="preserve-metadata-along-with-data"></a>Zachowywanie metadanych wraz z danymi
 

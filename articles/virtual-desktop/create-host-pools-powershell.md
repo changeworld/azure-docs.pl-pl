@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: a50a7966af8f6453441ac19c9dafac064015f9a2
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: f510879e7df967944f5e7a3deac308a430d53d0c
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607100"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771312"
 ---
 # <a name="create-a-host-pool-with-powershell"></a>Tworzenie puli hostów przy użyciu programu PowerShell
 
@@ -37,7 +37,7 @@ New-RdsHostPool -TenantName <tenantname> -Name <hostpoolname>
 Uruchom następne polecenie cmdlet, aby utworzyć token rejestracji służący do autoryzowania hosta sesji do przyłączenia do puli hostów i zapisania go w nowym pliku na komputerze lokalnym. Możesz określić, jak długo token rejestracji jest prawidłowy przy użyciu parametru-ExpirationHours.
 
 ```powershell
-New-RdsRegistrationInfo -TenantName <tenantname> -HostPoolName <hostpoolname> -ExpirationHours <number of hours> | Select-Object -ExpandProperty Token > <PathToRegFile>
+New-RdsRegistrationInfo -TenantName <tenantname> -HostPoolName <hostpoolname> -ExpirationHours <number of hours> | Select-Object -ExpandProperty Token | Out-File -FilePath <PathToRegFile>
 ```
 
 Następnie należy uruchomić to polecenie cmdlet, aby dodać Azure Active Directory użytkowników do domyślnej grupy aplikacji klasycznych dla puli hostów.

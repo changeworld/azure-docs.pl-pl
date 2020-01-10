@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 05/19/2018
-ms.openlocfilehash: 177c110ce9679f3d564918dfac50b3e3f66f84ce
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 2d150006fb4638d3efb15111013d17e43c8b125e
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893590"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75747022"
 ---
 # <a name="what-are-classic-alerts-in-microsoft-azure"></a>Co to są klasyczne alerty w Microsoft Azure?
 
@@ -93,7 +93,7 @@ Uzyskaj informacje na temat reguł alertów i skonfiguruj je przy użyciu:
 * Konfigurowanie [klasycznych alertów metryk programu PowerShell](alerts-classic-portal.md)
 * Konfigurowanie [klasycznego alertu metryki interfejsu wiersza polecenia (CLI)](alerts-classic-portal.md)
 * Konfigurowanie [klasycznych alertów metryk Azure monitor interfejs API REST](https://msdn.microsoft.com/library/azure/dn931945.aspx)
-* Dowiedz się więcej o [dzienniku aktywności](activity-logs-overview.md)
+* Dowiedz się więcej o [dzienniku aktywności](platform-logs-overview.md)
 * Konfigurowanie [alertów dziennika aktywności za pośrednictwem Azure Portal](activity-log-alerts.md)
 * Konfigurowanie [alertów dziennika aktywności za pośrednictwem Menedżer zasobów](alerts-activity-log.md)
 * Przejrzyj [schemat elementu webhook alertu dziennika aktywności](activity-log-alerts-webhook.md)

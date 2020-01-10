@@ -7,13 +7,13 @@ manager: cshankar
 services: time-series-insights
 ms.service: time-series-insights
 ms.topic: conceptual
-ms.date: 11/12/2019
-ms.openlocfilehash: ef7d78b292561e87eac12200bc0b9d68299759d9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: HT
+ms.date: 01/07/2020
+ms.openlocfilehash: 1f6b753052b882b75884503f8c05f34b8cead821
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75443626"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749381"
 ---
 # <a name="visualize-data-from-time-series-insights-in-power-bi"></a>Wizualizuj dane z Time Series Insights w Power BI
 
@@ -41,8 +41,8 @@ Pamiętaj o zarejestrowaniu się w celu uzyskania [bezpłatnej subskrypcji platf
 
 Aby połączyć środowisko Time Series Insights z Power BI, wykonaj następujące kroki:
 
-1. Otwórz Eksploratora Time Series Insights                      
-1. Eksportowanie danych jako zapytania lub danych pierwotnych                       
+1. Otwórz Eksploratora Time Series Insights
+1. Eksportowanie danych jako zapytania lub danych pierwotnych
 1. Otwórz Power BI Desktop
 1. Ładowanie z kwerendy niestandardowej
 
@@ -51,13 +51,14 @@ Aby połączyć środowisko Time Series Insights z Power BI, wykonaj następują
 Aby rozpocząć:
 
 1. Otwórz Eksploratora Time Series Insights w wersji zapoznawczej i sprawdź swoje dane.
-1. Po utworzeniu widoku, którego jesteś zadowolony, przejdź do menu rozwijanego **więcej akcji** , a następnie kliknij pozycję **Połącz z Power BI**. 
+1. Po utworzeniu widoku, którego jesteś zadowolony, przejdź do menu rozwijanego **więcej akcji** , a następnie kliknij pozycję **Połącz z Power BI**.
 
     [![Time Series Insights wersji zapoznawczej Eksploratora](media/how-to-connect-power-bi/time-series-insights-export-option.png)](media/how-to-connect-power-bi/time-series-insights-export-option.png#lightbox)
 
 1. Ustaw parametry na tej karcie:
 
-   1. Określ względną przedział czasu do wyświetlenia. Jeśli jesteś zadowolony z istniejącego widoku, pozostaw ten okres jako **istniejący przedział czasu**. 
+   1. Określ względną przedział czasu do wyświetlenia. Jeśli jesteś zadowolony z istniejącego widoku, pozostaw ten okres jako **istniejący przedział czasu**.
+   
    1. Wybierz między **zagregowanymi** a **nieprzetworzonymi zdarzeniami**. 
    
        > [!NOTE]

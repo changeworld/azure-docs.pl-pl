@@ -3,7 +3,7 @@ title: Konfigurowanie LVM na maszynie wirtualnej z systemem Linux
 description: Dowiedz się, jak skonfigurować LVM w systemie Linux na platformie Azure.
 services: virtual-machines-linux
 documentationcenter: na
-author: szarkos
+author: MicahMcKittrick-MSFT
 manager: gwallace
 editor: tysonn
 tag: azure-service-management,azure-resource-manager
@@ -13,14 +13,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 09/27/2018
-ms.author: szark
+ms.author: mimckitt
 ms.subservice: disks
-ms.openlocfilehash: f2774f0037d2655071b605c0cbcdf8122e66f6e7
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 38e460138fde1de6d8fd57dcab5a88238f0981fe
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036683"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75751029"
 ---
 # <a name="configure-lvm-on-a-linux-vm-in-azure"></a>Konfigurowanie LVM na maszynie wirtualnej z systemem Linux na platformie Azure
 W tym dokumencie omówiono sposób konfigurowania Menedżera woluminów logicznych (LVM) na maszynie wirtualnej platformy Azure. LVM mogą być używane na dysku systemu operacyjnego lub na dyskach z danymi na maszynach wirtualnych platformy Azure, jednak domyślnie większość obrazów w chmurze nie ma skonfigurowanych LVM na dysku systemu operacyjnego. Poniższe kroki zakoncentrują się na konfigurowaniu LVM dla dysków z danymi.
@@ -102,7 +102,7 @@ W tym przewodniku przyjęto założenie, że zostały dołączone trzy dyski dan
 
 ## <a name="add-the-new-file-system-to-etcfstab"></a>Dodaj nowy system plików do/etc/fstab
 > [!IMPORTANT]
-> Niewłaściwe edytowanie pliku `/etc/fstab` może spowodować nierozruchowy system. W razie wątpliwości zapoznaj się z dokumentacją dystrybucji, aby uzyskać informacje o tym, jak prawidłowo edytować ten plik. Przed rozpoczęciem edycji zaleca się również utworzenie kopii zapasowej pliku `/etc/fstab`.
+> Nieprawidłowe edytowanie pliku `/etc/fstab` może uniemożliwić rozruch systemu. Jeśli nie masz pewności, jak to zrobić, sprawdź informacje na temat prawidłowego edytowania tego pliku w dokumentacji dystrybucji. Przed rozpoczęciem edycji zaleca się również utworzenie kopii zapasowej pliku `/etc/fstab`.
 
 1. Utwórz żądany punkt instalacji dla nowego systemu plików, na przykład:
 

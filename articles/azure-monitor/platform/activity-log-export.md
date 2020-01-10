@@ -8,19 +8,19 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: ff8956d942aa54500a08cac4ebd94127b14b0bd4
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: b71f5590f120e15bd4ea027bcf6132795dac3cb6
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931775"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750575"
 ---
 # <a name="export-azure-activity-log-to-storage-or-azure-event-hubs"></a>Eksportowanie dziennika aktywności platformy Azure do magazynu lub Event Hubs platformy Azure
 
 > [!WARNING]
 > Teraz można zbierać dane dziennika aktywności w obszarze roboczym Log Analytics przy użyciu ustawienia diagnostycznego podobnego do sposobu zbierania dzienników zasobów. Zobacz [zbieranie i analizowanie dzienników aktywności platformy Azure w obszarze roboczym log Analytics w Azure monitor](diagnostic-settings-subscription.md).
 
-[Dziennik aktywności platformy Azure](activity-logs-overview.md) zapewnia wgląd w zdarzenia na poziomie subskrypcji, które wystąpiły w ramach subskrypcji platformy Azure. Oprócz wyświetlania dziennika aktywności w Azure Portal lub kopiowania go do Log Analytics obszaru roboczego, gdzie można analizować z innymi danymi zebranymi przez Azure Monitor, można utworzyć profil dziennika w celu zarchiwizowania dziennika aktywności na koncie usługi Azure Storage lub przesyłania strumienia do niego  Centrum zdarzeń.
+[Dziennik aktywności platformy Azure](platform-logs-overview.md) zapewnia wgląd w zdarzenia na poziomie subskrypcji, które wystąpiły w ramach subskrypcji platformy Azure. Oprócz wyświetlania dziennika aktywności w Azure Portal lub kopiowania go do Log Analytics obszaru roboczego, gdzie można analizować z innymi danymi zebranymi przez Azure Monitor, można utworzyć profil dziennika w celu zarchiwizowania dziennika aktywności na koncie usługi Azure Storage lub przesyłania strumienia do niego  Centrum zdarzeń.
 
 ## <a name="archive-activity-log"></a>Archiwizowanie dziennika aktywności
 Archiwizowanie dziennika aktywności na koncie magazynu jest przydatne, jeśli chcesz przechowywać dane dziennika dłużej niż 90 dni (z pełną kontrolą nad zasadami przechowywania) na potrzeby inspekcji, statycznej analizy lub tworzenia kopii zapasowych. Jeśli musisz tylko zachować zdarzenia przez 90 dni lub mniej, nie musisz konfigurować archiwizowania do konta magazynu, ponieważ zdarzenia dziennika aktywności są przechowywane na platformie Azure przez 90 dni.
@@ -160,93 +160,8 @@ Jeśli profil dziennika już istnieje, należy najpierw usunąć istniejący pro
     | storage-account-id |Tak |Identyfikator zasobu konta magazynu, do którego mają zostać zapisane dzienniki aktywności. |
     | locations |Tak |Rozdzielana spacjami lista regionów, dla których chcesz zbierać zdarzenia dziennika aktywności. Listę wszystkich regionów dla subskrypcji można wyświetlić przy użyciu `az account list-locations --query [].name`. |
     | days |Tak |Liczba dni przechowywania zdarzeń między 1 a 365. Wartość zerowa spowoduje przechowywanie dzienników w nieskończoność (w nieskończoność).  Jeśli wartość jest równa zero, wartość parametru enabled powinna być równa false. |
-    |enabled | Tak |Wartość TRUE lub False.  Służy do włączania lub wyłączania zasad przechowywania.  W przypadku wartości true wartość parametru Days musi być większa niż 0.
+    |włączony | Tak |Wartość TRUE lub False.  Służy do włączania lub wyłączania zasad przechowywania.  W przypadku wartości true wartość parametru Days musi być większa niż 0.
     | categories |Tak |Rozdzielana spacjami lista kategorii zdarzeń, które powinny być zbierane. Możliwe wartości to Write, DELETE i Action. |
-
-
-
-## <a name="activity-log-schema"></a>Schemat dziennika aktywności
-Niezależnie od tego, czy jest wysyłany do usługi Azure Storage, czy centrum zdarzeń, dane dziennika aktywności będą zapisywane w formacie JSON przy użyciu następującego formatu.
-
-
-> Format danych dziennika aktywności zapisany na koncie magazynu został zmieniony na wiersze JSON na lis. 1, 2018. Aby uzyskać szczegółowe informacje na temat tego formatu [, zobacz Przygotowywanie do zmiany formatu do Azure monitor dzienników zasobów zarchiwizowanych na koncie magazynu](diagnostic-logs-append-blobs.md) .
-
-``` JSON
-{
-    "records": [
-        {
-            "time": "2015-01-21T22:14:26.9792776Z",
-            "resourceId": "/subscriptions/s1/resourceGroups/MSSupportGroup/providers/microsoft.support/supporttickets/115012112305841",
-            "operationName": "microsoft.support/supporttickets/write",
-            "category": "Write",
-            "resultType": "Success",
-            "resultSignature": "Succeeded.Created",
-            "durationMs": 2826,
-            "callerIpAddress": "111.111.111.11",
-            "correlationId": "c776f9f4-36e5-4e0e-809b-c9b3c3fb62a8",
-            "identity": {
-                "authorization": {
-                    "scope": "/subscriptions/s1/resourceGroups/MSSupportGroup/providers/microsoft.support/supporttickets/115012112305841",
-                    "action": "microsoft.support/supporttickets/write",
-                    "evidence": {
-                        "role": "Subscription Admin"
-                    }
-                },
-                "claims": {
-                    "aud": "https://management.core.windows.net/",
-                    "iss": "https://sts.windows.net/72f988bf-86f1-41af-91ab-2d7cd011db47/",
-                    "iat": "1421876371",
-                    "nbf": "1421876371",
-                    "exp": "1421880271",
-                    "ver": "1.0",
-                    "http://schemas.microsoft.com/identity/claims/tenantid": "1e8d8218-c5e7-4578-9acc-9abbd5d23315 ",
-                    "http://schemas.microsoft.com/claims/authnmethodsreferences": "pwd",
-                    "http://schemas.microsoft.com/identity/claims/objectidentifier": "2468adf0-8211-44e3-95xq-85137af64708",
-                    "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn": "admin@contoso.com",
-                    "puid": "20030000801A118C",
-                    "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier": "9vckmEGF7zDKk1YzIY8k0t1_EAPaXoeHyPRn6f413zM",
-                    "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname": "John",
-                    "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname": "Smith",
-                    "name": "John Smith",
-                    "groups": "cacfe77c-e058-4712-83qw-f9b08849fd60,7f71d11d-4c41-4b23-99d2-d32ce7aa621c,31522864-0578-4ea0-9gdc-e66cc564d18c",
-                    "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name": " admin@contoso.com",
-                    "appid": "c44b4083-3bq0-49c1-b47d-974e53cbdf3c",
-                    "appidacr": "2",
-                    "http://schemas.microsoft.com/identity/claims/scope": "user_impersonation",
-                    "http://schemas.microsoft.com/claims/authnclassreference": "1"
-                }
-            },
-            "level": "Information",
-            "location": "global",
-            "properties": {
-                "statusCode": "Created",
-                "serviceRequestId": "50d5cddb-8ca0-47ad-9b80-6cde2207f97c"
-            }
-        }
-    ]
-}
-```
-Elementy w tym formacie JSON są opisane w poniższej tabeli.
-
-| Nazwa elementu | Opis |
-| --- | --- |
-| time |Sygnatura czasowa, gdy zdarzenie zostało wygenerowane przez usługę platformy Azure przetwarzające żądanie odpowiadające zdarzeniu. |
-| resourceId |Identyfikator zasobu zasobu, którego dotyczy problem. |
-| operationName |Nazwa operacji. |
-| category |Kategoria akcji, np. Zapis, Odczyt, akcja. |
-| resultType |Typ wyniku, np. Sukces, Niepowodzenie, rozpoczęcie |
-| resultSignature |Zależy od typu zasobu. |
-| durationMs |Czas trwania działania (w milisekundach) |
-| callerIpAddress |Adres IP użytkownika, który wykonał operację, oświadczenie nazwy UPN lub oświadczenie SPN na podstawie dostępności. |
-| correlationId |Zazwyczaj identyfikator GUID w formacie ciągu. Zdarzenia, które współużytkują identyfikator korelacji, należy do tej samej akcji Uber. |
-| tożsamość |Obiekt BLOB JSON opisujący autoryzację i oświadczenia. |
-| authorization |Obiekt BLOB właściwości RBAC zdarzenia. Zazwyczaj obejmuje właściwości "Action", "role" i "Scope". |
-| level |Poziom zdarzenia. Jedna z następujących wartości: _krytyczny_, _błąd_, _Ostrzeżenie_, _informacyjny_i _pełny_ |
-| location |Region, w którym wystąpiła lokalizacja (lub globalna). |
-| properties |Zestaw par `<Key, Value>` (tj. Dictionary) opisujących szczegóły zdarzenia. |
-
-> [!NOTE]
-> Właściwości i użycie tych właściwości mogą się różnić w zależności od zasobu.
 
 
 

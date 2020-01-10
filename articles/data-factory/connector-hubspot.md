@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 01/08/2020
 ms.author: jingwang
-ms.openlocfilehash: cb7091cf61efab8e5bd7e9321911980a1f681476
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 9ef8d6a8d97b2f2c2cff62c629219efb43077c77
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929282"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754140"
 ---
 # <a name="copy-data-from-hubspot-using-azure-data-factory-preview"></a>Kopiowanie danych z HubSpot przy użyciu usługi Azure Data Factory (wersja zapoznawcza)
 
@@ -50,19 +50,19 @@ Następujące właściwości są obsługiwane w przypadku HubSpot połączone us
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Właściwość type musi być równa: **Hubspot** | Tak |
-| clientId | Identyfikator klienta skojarzony z aplikacją Hubspot.  | Tak |
-| clientSecret | Klucz tajny klienta skojarzone z aplikacją Hubspot. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Tak |
-| accessToken | Token dostępu uzyskany podczas uwierzytelniania początkowo integracji usługi uwierzytelniania OAuth. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Tak |
+| clientId | Identyfikator klienta skojarzony z aplikacją HubSpot. Dowiedz się, jak utworzyć aplikację w usłudze HubSpot w [tym miejscu](https://developers.hubspot.com/docs/faq/how-do-i-create-an-app-in-hubspot). | Tak |
+| clientSecret | Wpis tajny klienta skojarzony z aplikacją HubSpot. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Tak |
+| accessToken | Token dostępu uzyskany podczas uwierzytelniania początkowo integracji usługi uwierzytelniania OAuth. Dowiedz się, jak uzyskać token dostępu z IDENTYFIKATORem klienta i wpisem tajnym w [tym miejscu](https://developers.hubspot.com/docs/methods/oauth2/get-access-and-refresh-tokens). Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Tak |
 | refreshToken | Token odświeżania uzyskanego podczas uwierzytelniania początkowo integracji usługi uwierzytelniania OAuth. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Tak |
-| useEncryptedEndpoints | Określa, czy punkty końcowe źródła danych są szyfrowane przy użyciu protokołu HTTPS. Wartość domyślna to true.  | Nie |
-| useHostVerification | Określa, czy wymagają zgodności nazwy hosta w certyfikacie serwera, aby dopasować nazwę hosta serwera podczas nawiązywania połączenia za pośrednictwem protokołu SSL. Wartość domyślna to true.  | Nie |
-| usePeerVerification | Określa, czy do zweryfikowania tożsamości serwera, podczas nawiązywania połączenia za pośrednictwem protokołu SSL. Wartość domyślna to true.  | Nie |
+| useEncryptedEndpoints | Określa, czy punkty końcowe źródła danych są szyfrowane przy użyciu protokołu HTTPS. Wartością domyślną jest true.  | Nie |
+| useHostVerification | Określa, czy wymagają zgodności nazwy hosta w certyfikacie serwera, aby dopasować nazwę hosta serwera podczas nawiązywania połączenia za pośrednictwem protokołu SSL. Wartością domyślną jest true.  | Nie |
+| usePeerVerification | Określa, czy do zweryfikowania tożsamości serwera, podczas nawiązywania połączenia za pośrednictwem protokołu SSL. Wartością domyślną jest true.  | Nie |
 
 **Przykład:**
 
 ```json
 {
-    "name": "HubspotLinkedService",
+    "name": "HubSpotLinkedService",
     "properties": {
         "type": "Hubspot",
         "typeProperties": {
@@ -99,13 +99,13 @@ Aby skopiować dane z HubSpot, należy ustawić właściwość typu zestawu dany
 
 ```json
 {
-    "name": "HubspotDataset",
+    "name": "HubSpotDataset",
     "properties": {
         "type": "HubspotObject",
         "typeProperties": {},
         "schema": [],        
         "linkedServiceName": {
-            "referenceName": "<Hubspot linked service name>",
+            "referenceName": "<HubSpot linked service name>",
             "type": "LinkedServiceReference"
         }
     }
@@ -134,7 +134,7 @@ Aby skopiować dane z HubSpot, należy ustawić typ źródła w działaniu kopio
         "type": "Copy",
         "inputs": [
             {
-                "referenceName": "<Hubspot input dataset name>",
+                "referenceName": "<HubSpot input dataset name>",
                 "type": "DatasetReference"
             }
         ],

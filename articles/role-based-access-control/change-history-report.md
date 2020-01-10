@@ -15,43 +15,43 @@ ms.date: 02/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e5758f480c9216cf71e47509682053b39f0b15bf
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 753c626fe44193b83cbd992f225fe01c2ff67f89
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172414"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75744808"
 ---
 # <a name="view-activity-logs-for-rbac-changes-to-azure-resources"></a>Wyświetlanie dzienników aktywności związanych ze zmianami RBAC w zasobach platformy Azure
 
-Czasami potrzebujesz informacji o zmianach kontroli dostępu opartej na rolach (RBAC) w zasobach platformy Azure, takich jak Inspekcja i rozwiązywanie problemów. Za każdym razem, gdy ktoś wprowadza zmiany w przypisaniach ról lub definicjach ról w ramach subskrypcji, zmiany zostaną zarejestrowane w [dzienniku aktywności platformy Azure](../azure-monitor/platform/activity-logs-overview.md). Można wyświetlić dzienniki aktywności, aby zobaczyć wszystkie zmiany RBAC w ciągu ostatnich 90 dni.
+Czasami potrzebujesz informacji o zmianach kontroli dostępu opartej na rolach (RBAC) w zasobach platformy Azure, takich jak Inspekcja i rozwiązywanie problemów. Za każdym razem, gdy ktoś wprowadza zmiany w przypisaniach ról lub definicjach ról w ramach subskrypcji, zmiany zostaną zarejestrowane w [dzienniku aktywności platformy Azure](../azure-monitor/platform/platform-logs-overview.md). Można wyświetlić dzienniki aktywności, aby zobaczyć wszystkie zmiany RBAC w ciągu ostatnich 90 dni.
 
 ## <a name="operations-that-are-logged"></a>Zarejestrowane operacje
 
 Poniżej znajdują się operacje związane z RBAC, które są rejestrowane w dzienniku aktywności:
 
-- Utwórz przypisanie roli
-- Usuń przypisanie roli
+- Utworzenie przypisania roli
+- Usunięcie przypisania roli
 - Utwórz lub zaktualizuj definicję roli niestandardowej
-- Usuń niestandardową definicję roli
+- Usunięcie niestandardowej definicji roli
 
-## <a name="azure-portal"></a>Azure Portal
+## <a name="azure-portal"></a>Portal Azure
 
-Najprostszym sposobem na rozpoczęcie pracy jest wyświetlenie dzienników aktywności z Azure Portal. Poniższy zrzut ekranu przedstawia przykład dziennika aktywności, który został przefiltrowany w celu wyświetlenia operacji przypisania roli i definicji roli. Zawiera również link umożliwiający pobranie dzienników jako plik CSV.
+Najprostszym sposobem rozpoczęcia pracy jest wyświetlenie dzienników aktywności za pomocą witryny Azure Portal. Poniższy zrzut ekranu przedstawia przykład dziennika aktywności, który został przefiltrowany w celu wyświetlenia operacji przypisania roli i definicji roli. Zawiera również link umożliwiający pobranie dzienników jako plik CSV.
 
 ![Dzienniki aktywności przy użyciu portalu — zrzut ekranu](./media/change-history-report/activity-log-portal.png)
 
 Dziennik aktywności w portalu ma kilka filtrów. Oto filtry dotyczące kontroli RBAC:
 
-|Filtr  |Value  |
+|Filtr  |Wartość  |
 |---------|---------|
 |Kategoria zdarzenia     | <ul><li>Administracyjne</li></ul>         |
-|Operacja     | <ul><li>Utwórz przypisanie roli</li> <li>Usuń przypisanie roli</li> <li>Utwórz lub zaktualizuj definicję roli niestandardowej</li> <li>Usuń niestandardową definicję roli</li></ul>      |
+|Operacja     | <ul><li>Utworzenie przypisania roli</li> <li>Usunięcie przypisania roli</li> <li>Utwórz lub zaktualizuj definicję roli niestandardowej</li> <li>Usunięcie niestandardowej definicji roli</li></ul>      |
 
 
 Aby uzyskać więcej informacji na temat dzienników aktywności, zobacz [Wyświetlanie zdarzeń w dzienniku aktywności](/azure/azure-resource-manager/resource-group-audit?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json).
 
-## <a name="azure-powershell"></a>Azure PowerShell
+## <a name="azure-powershell"></a>Program Azure PowerShell
 
 [!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 
@@ -127,7 +127,7 @@ Oto podstawowe kroki, które należy wykonać, aby rozpocząć pracę:
 
    ![Opcja dzienników Azure Monitor w portalu](./media/change-history-report/azure-log-analytics-option.png)
 
-1. Opcjonalnie możesz użyć strony przeszukiwania [dzienników](../log-analytics/log-analytics-log-search.md) lub [portalu analizy zaawansowanej](../azure-monitor/log-query/get-started-portal.md) do wykonywania zapytań i wyświetlania dzienników. Aby uzyskać więcej informacji na temat tych dwóch opcji, zobacz [stronę przeszukiwanie dzienników lub portal analizy zaawansowanej](../azure-monitor/log-query/portals.md).
+1. Opcjonalnie możesz użyć strony [przeszukiwania dzienników](../log-analytics/log-analytics-log-search.md) lub [portalu analizy zaawansowanej](../azure-monitor/log-query/get-started-portal.md) do wykonywania zapytań i wyświetlania dzienników. Aby uzyskać więcej informacji na temat tych dwóch opcji, zobacz [stronę przeszukiwanie dzienników lub portal analizy zaawansowanej](../azure-monitor/log-query/portals.md).
 
 Oto zapytanie zwracające nowe przypisania ról uporządkowane według docelowego dostawcy zasobów:
 

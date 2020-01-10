@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: barclayn
-ms.openlocfilehash: 44542fb299d769a3916407e09691a72efed01c79
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: HT
+ms.openlocfilehash: 6a775da59680004dadf0cec872057adfd5a16f49
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75462420"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749860"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Najlepsze rozwiązania dotyczące zabezpieczeń dla obciążeń IaaS na platformie Azure
 W tym artykule opisano najlepsze rozwiązania w zakresie zabezpieczeń dotyczące maszyn wirtualnych i systemów operacyjnych.
@@ -139,7 +139,7 @@ Użycie zasobów może być problemem, gdy procesy maszyny wirtualnej zużywają
 
 Zalecamy używanie [Azure monitor](/azure/monitoring-and-diagnostics/monitoring-overview-metrics) , aby uzyskać wgląd w kondycję zasobu. Funkcje Azure Monitor:
 
-- [Pliki dziennika diagnostyki zasobów](../../azure-monitor/platform/resource-logs-overview.md): monitoruje zasoby maszyn wirtualnych i identyfikuje potencjalne problemy, które mogą naruszyć wydajność i dostępność.
+- [Pliki dziennika diagnostyki zasobów](../../azure-monitor/platform/platform-logs-overview.md): monitoruje zasoby maszyn wirtualnych i identyfikuje potencjalne problemy, które mogą naruszyć wydajność i dostępność.
 - [Rozszerzenie Diagnostyka Azure](/azure/azure-monitor/platform/diagnostics-extension-overview): oferuje funkcje monitorowania i diagnostyki na maszynach wirtualnych z systemem Windows. Te możliwości można włączyć, dołączając rozszerzenie jako część [szablonu Azure Resource Manager](/azure/virtual-machines/windows/extensions-diagnostics-template).
 
 Organizacje, które nie monitorują wydajności maszyn wirtualnych, nie mogą określić, czy pewne zmiany wzorców wydajności są normalne, czy nietypowe. Maszyna wirtualna, która zużywa więcej zasobów niż normalna, może wskazywać na atak z zasobów zewnętrznych lub zagrożony proces uruchomiony na maszynie wirtualnej.

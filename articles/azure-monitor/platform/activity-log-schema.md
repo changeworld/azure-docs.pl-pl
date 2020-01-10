@@ -1,22 +1,24 @@
 ---
 title: Schemat zdarzeń dziennika aktywności platformy Azure
 description: Opisuje schemat zdarzeń dla każdej kategorii w dzienniku aktywności platformy Azure.
-author: johnkemnetz
+author: bwren
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: reference
-ms.date: 1/16/2019
-ms.author: dukek
+ms.date: 12/04/2019
+ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 73f6de80348b7d933e45a8145f6bdb8fe22b5954
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 272b71fe5fddea9299e5d660484fcbb3eb367d58
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893607"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749471"
 ---
 # <a name="azure-activity-log-event-schema"></a>Schemat zdarzeń dziennika aktywności platformy Azure
-**Dziennik aktywności platformy Azure** to dziennik zawierający szczegółowe informacje o wszystkich zdarzeniach na poziomie subskrypcji, które wystąpiły na platformie Azure. W tym artykule opisano schemat zdarzenia dla kategorii danych. Schemat danych różni się w zależności od tego, czy odczytujesz dane z portalu, programu PowerShell, interfejsu wiersza polecenia lub bezpośrednio za pośrednictwem interfejsu API REST, a następnie [Przesyłaj strumieniowo dane do magazynu lub Event Hubs przy użyciu profilu dziennika](activity-log-export.md). W poniższych przykładach pokazano schemat, który został udostępniony za pośrednictwem portalu, programu PowerShell, interfejsu wiersza polecenia i API REST. Mapowanie tych właściwości na [schemat dzienników platformy Azure](diagnostic-logs-schema.md) znajduje się na końcu tego artykułu.
+[Dziennik aktywności platformy Azure](platform-logs-overview.md) zawiera szczegółowe informacje o wszystkich zdarzeniach na poziomie subskrypcji, które wystąpiły na platformie Azure. W tym artykule opisano schemat zdarzeń dla każdej kategorii. 
+
+W poniższych przykładach przedstawiono schemat podczas uzyskiwania dostępu do dziennika aktywności z poziomu portalu, programu PowerShell, interfejsu wiersza polecenia i API REST. Schemat jest różny podczas [przesyłania strumieniowego dziennika aktywności do magazynu lub Event Hubs](resource-logs-stream-event-hubs.md). Mapowanie właściwości do [schematu dzienników zasobów](diagnostic-logs-schema.md) znajduje się na końcu artykułu.
 
 ## <a name="administrative"></a>Administracyjne
 Ta kategoria zawiera rekord wszystkich operacji tworzenia, aktualizowania, usuwania i akcji wykonywanych za pomocą Menedżer zasobów. Przykłady typów zdarzeń widocznych w tej kategorii obejmują "Tworzenie maszyny wirtualnej" i "Usuwanie sieciowej grupy zabezpieczeń" Każda Akcja podejmowana przez użytkownika lub aplikację przy użyciu Menedżer zasobów jest modelowana jako operacja dla określonego typu zasobu. Jeśli typem operacji jest zapis, usuwanie lub Akcja, rekordy zarówno rozpoczęcia, jak i sukcesu lub niepowodzenia tej operacji są rejestrowane w kategorii administracyjnej. Kategoria administracyjna zawiera również wszelkie zmiany w ramach kontroli dostępu opartej na rolach w ramach subskrypcji.
@@ -558,7 +560,7 @@ Ta kategoria zawiera rekordy wszystkich alertów wygenerowanych przez Azure Secu
 | eventDataId |Unikatowy identyfikator zdarzenia zabezpieczeń. |
 | eventName |Przyjazna nazwa zdarzenia zabezpieczeń. |
 | category | Zawsze "zabezpieczenia" |
-| id |Unikatowy identyfikator zasobu zdarzenia zabezpieczeń. |
+| ID |Unikatowy identyfikator zasobu zdarzenia zabezpieczeń. |
 | level |Poziom zdarzenia. Jedna z następujących wartości: "krytyczna", "błąd", "ostrzeżenie" lub "informacyjny" |
 | resourceGroupName |Nazwa grupy zasobów dla zasobu. |
 | resourceProviderName |Nazwa dostawcy zasobów dla Azure Security Center. Zawsze "Microsoft. Security". |
@@ -638,7 +640,7 @@ Ta kategoria zawiera rejestr wszelkich nowych zaleceń, które są generowane dl
 | description |Tekst statyczny opisu zdarzenia rekomendacji |
 | eventDataId | Unikatowy identyfikator zdarzenia rekomendacji. |
 | category | Zawsze "rekomendacja" |
-| id |Unikatowy identyfikator zasobu zdarzenia rekomendacji. |
+| ID |Unikatowy identyfikator zasobu zdarzenia rekomendacji. |
 | level |Poziom zdarzenia. Jedna z następujących wartości: "krytyczna", "błąd", "ostrzeżenie" lub "informacyjny" |
 | operationName |Nazwa operacji.  Zawsze "Microsoft. Advisor/generateRecommendations/Action"|
 | resourceGroupName |Nazwa grupy zasobów dla zasobu. |
@@ -753,7 +755,7 @@ Ta kategoria zawiera rekordy wszystkich operacji działania akcji wykonywanych p
 | eventName | "BeginRequest" lub "EndRequest". "BeginRequest" jest używany w przypadku opóźnionych ocen auditIfNotExists i deployIfNotExists oraz kiedy efekt deployIfNotExists uruchamia wdrożenie szablonu. Wszystkie inne operacje zwracają wartość "EndRequest". |
 | category | Deklaruje zdarzenie dziennika aktywności jako należące do "zasad". |
 | eventTimestamp | Sygnatura czasowa, gdy zdarzenie zostało wygenerowane przez usługę platformy Azure przetwarzające żądanie odpowiadające zdarzeniu. |
-| id | Unikatowy identyfikator zdarzenia dla określonego zasobu. |
+| ID | Unikatowy identyfikator zdarzenia dla określonego zasobu. |
 | level | Poziom zdarzenia. Inspekcja używa "Warning" i Odmów używa "Error". Błąd auditIfNotExists lub deployIfNotExists może generować "Warning" lub "Error" w zależności od ważności. Wszystkie inne zdarzenia zasad używają "informacyjnych". |
 | operationId | Identyfikator GUID współużytkowany przez zdarzenia, które odpowiadają pojedynczej operacji. |
 | operationName | Nazwa operacji i bezpośrednio skorelowanej z efektem zasad. |
@@ -771,9 +773,13 @@ Ta kategoria zawiera rekordy wszystkich operacji działania akcji wykonywanych p
 | Właściwości. zasady | Zawiera szczegółowe informacje na temat definicji zasad, przypisania, efektu i parametrów, których wynikiem jest ocena zasad. |
 | relatedEvents | To pole jest puste dla zdarzeń zasad. |
 
-## <a name="mapping-to-resource-logs-schema"></a>Mapowanie na schemat dzienników zasobów
 
-W przypadku przesyłania strumieniowego dziennika aktywności platformy Azure do konta magazynu lub Event Hubs przestrzeni nazw dane są następujące po [schemacie dzienników zasobów platformy Azure](./diagnostic-logs-schema.md). Poniżej znajduje się mapowanie właściwości z schematu powyżej do schematu dzienników zasobów:
+## <a name="schema-from-storage-account-and-event-hubs"></a>Schemat z centrów zdarzeń i kont magazynu
+Podczas przesyłania strumieniowego dziennika aktywności platformy Azure do konta magazynu lub centrum zdarzeń dane są zgodne ze [schematem dziennika zasobów](diagnostic-logs-schema.md). Poniższa tabela zawiera mapowanie właściwości z schematu powyżej do schematu dzienników zasobów.
+
+> [!IMPORTANT]
+> Format danych dziennika aktywności zapisany na koncie magazynu został zmieniony na wiersze JSON na lis. 1, 2018. Aby uzyskać szczegółowe informacje na temat tego formatu [, zobacz Przygotowywanie do zmiany formatu do Azure monitor dzienników zasobów zarchiwizowanych na koncie magazynu](diagnostic-logs-append-blobs.md) .
+
 
 | Właściwości schematu dzienników zasobów | Właściwość schematu interfejsu API REST dziennika aktywności | Uwagi |
 | --- | --- | --- |
@@ -796,8 +802,69 @@ W przypadku przesyłania strumieniowego dziennika aktywności platformy Azure do
 | properties.operationId | operationId |  |
 | Właściwości. eventProperties | properties |  |
 
+Poniżej znajduje się przykład zdarzenia korzystającego z tego schematu.
+
+``` JSON
+{
+    "records": [
+        {
+            "time": "2015-01-21T22:14:26.9792776Z",
+            "resourceId": "/subscriptions/s1/resourceGroups/MSSupportGroup/providers/microsoft.support/supporttickets/115012112305841",
+            "operationName": "microsoft.support/supporttickets/write",
+            "category": "Write",
+            "resultType": "Success",
+            "resultSignature": "Succeeded.Created",
+            "durationMs": 2826,
+            "callerIpAddress": "111.111.111.11",
+            "correlationId": "c776f9f4-36e5-4e0e-809b-c9b3c3fb62a8",
+            "identity": {
+                "authorization": {
+                    "scope": "/subscriptions/s1/resourceGroups/MSSupportGroup/providers/microsoft.support/supporttickets/115012112305841",
+                    "action": "microsoft.support/supporttickets/write",
+                    "evidence": {
+                        "role": "Subscription Admin"
+                    }
+                },
+                "claims": {
+                    "aud": "https://management.core.windows.net/",
+                    "iss": "https://sts.windows.net/72f988bf-86f1-41af-91ab-2d7cd011db47/",
+                    "iat": "1421876371",
+                    "nbf": "1421876371",
+                    "exp": "1421880271",
+                    "ver": "1.0",
+                    "http://schemas.microsoft.com/identity/claims/tenantid": "1e8d8218-c5e7-4578-9acc-9abbd5d23315 ",
+                    "http://schemas.microsoft.com/claims/authnmethodsreferences": "pwd",
+                    "http://schemas.microsoft.com/identity/claims/objectidentifier": "2468adf0-8211-44e3-95xq-85137af64708",
+                    "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn": "admin@contoso.com",
+                    "puid": "20030000801A118C",
+                    "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier": "9vckmEGF7zDKk1YzIY8k0t1_EAPaXoeHyPRn6f413zM",
+                    "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname": "John",
+                    "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname": "Smith",
+                    "name": "John Smith",
+                    "groups": "cacfe77c-e058-4712-83qw-f9b08849fd60,7f71d11d-4c41-4b23-99d2-d32ce7aa621c,31522864-0578-4ea0-9gdc-e66cc564d18c",
+                    "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name": " admin@contoso.com",
+                    "appid": "c44b4083-3bq0-49c1-b47d-974e53cbdf3c",
+                    "appidacr": "2",
+                    "http://schemas.microsoft.com/identity/claims/scope": "user_impersonation",
+                    "http://schemas.microsoft.com/claims/authnclassreference": "1"
+                }
+            },
+            "level": "Information",
+            "location": "global",
+            "properties": {
+                "statusCode": "Created",
+                "serviceRequestId": "50d5cddb-8ca0-47ad-9b80-6cde2207f97c"
+            }
+        }
+    ]
+}
+```
+
+
+
+
 
 ## <a name="next-steps"></a>Następne kroki
-* [Dowiedz się więcej o dzienniku aktywności](activity-logs-overview.md)
-* [Eksportowanie dziennika aktywności do usługi Azure Storage lub Event Hubs](activity-log-export.md)
+* [Dowiedz się więcej o dzienniku aktywności](platform-logs-overview.md)
+* [Tworzenie ustawień diagnostycznych w celu wysyłania dziennika aktywności do Log Analytics obszaru roboczego, usługi Azure Storage lub centrów zdarzeń](diagnostic-settings.md)
 

@@ -11,12 +11,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: shants
-ms.openlocfilehash: ab8ef516e5434ac5a9cde9324798d8dd1706a04e
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: f39e5ee7126fe381ad4ba77ec9a876db5f0a1ef6
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74807412"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75747248"
 ---
 # <a name="handling-planned-maintenance-notifications"></a>Obsługa powiadomień dotyczących planowanej konserwacji
 
@@ -29,7 +29,7 @@ Platforma Azure jest co pewien czas aktualizowana w celu poprawy niezawodności,
 
 Planowana konserwacja wymagająca ponownego uruchomienia jest zaplanowana na fale. Każda fala ma inny zakres (regiony).
 
-- Fala rozpoczyna się od powiadomienia do klientów. Domyślnie powiadomienia są wysyłane do właściciela subskrypcji i współwłaścicieli. Za pomocą [alertów dziennika aktywności](../azure-monitor/platform/activity-logs-overview.md)można dodać więcej opcji adresatów i komunikatów, takich jak wiadomości e-mail, wiadomości SMS i elementy webhook.  
+- Fala rozpoczyna się od powiadomienia do klientów. Domyślnie powiadomienia są wysyłane do właściciela subskrypcji i współwłaścicieli. Za pomocą [alertów dziennika aktywności](../azure-monitor/platform/platform-logs-overview.md)można dodać więcej opcji adresatów i komunikatów, takich jak wiadomości e-mail, wiadomości SMS i elementy webhook.  
 - Po przeprowadzeniu powiadomienia zostanie udostępnione *okno* samoobsługowe. W tym oknie możesz wykonywać zapytania dotyczące maszyn wirtualnych, których dotyczy ta operacja, i rozpocząć konserwację na podstawie własnych potrzeb związanych z planowaniem. Okno samoobsługowe jest zwykle około 35 dni.
 - Po włączeniu okna samoobsługowego zostanie rozpoczęte *zaplanowane okno obsługi* . W pewnym momencie w tym oknie usługa Azure planuje i stosuje wymaganą konserwację na maszynie wirtualnej. 
 

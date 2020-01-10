@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 11/28/2019
-ms.openlocfilehash: ef5bbc00ae0d3c7751bdcd4808c5368b0f5e1523
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 8a644beede4089133f88b824fd8d34dddec3b15e
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688242"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75751113"
 ---
 # <a name="install-and-use-hue-on-hdinsight-hadoop-clusters"></a>Instalowanie i używanie odcienia w klastrach usługi HDInsight Hadoop
 
@@ -72,7 +72,7 @@ Tunelowanie SSH jest jedynym sposobem, aby uzyskać dostęp do odcienia w klastr
 
     Spowoduje to zwrócenie nazwy podobnej do następującej:
 
-        hn0-myhdi-nfebtpfdv1nubcidphpap2eq2b.ex.internal.cloudapp.net
+        myhdi-nfebtpfdv1nubcidphpap2eq2b.ex.internal.cloudapp.net
 
     Jest to nazwa hosta głównego węzła głównego, w którym znajduje się witryna internetowa odcienia.
 

@@ -8,12 +8,12 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: spelluru
-ms.openlocfilehash: 3af951d120282767bd71bc569d8c0bfe39dafffe
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: a5aa6a2e2578a995e4ef00489557fc02623e2d6a
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74705464"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75744829"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal-preview"></a>Konfigurowanie kluczy zarządzanych przez klienta do szyfrowania danych Event Hubs platformy Azure przechowywanych przy użyciu Azure Portal (wersja zapoznawcza)
 Usługa Azure Event Hubs zapewnia szyfrowanie danych przechowywanych przy użyciu usługi Azure szyfrowanie usługi Storage (SSE platformy Azure). Event Hubs opiera się na usłudze Azure Storage do przechowywania danych i domyślnie wszystkie dane przechowywane w usłudze Azure Storage są szyfrowane przy użyciu kluczy zarządzanych przez firmę Microsoft. 
@@ -87,7 +87,7 @@ Po odwołaniu klucza szyfrowania usługa Event Hubs w zaszyfrowanej przestrzeni 
 > Jeśli usuniesz istniejący klucz szyfrowania z magazynu kluczy i zastąpi go nowym kluczem w przestrzeni nazw Event Hubs, ponieważ klucz usuwania jest nadal ważny (ponieważ jest buforowany) przez maksymalnie godzinę, stare dane (zaszyfrowany przy użyciu starego klucza) mogą być nadal dostępne.  nowe dane, które są teraz dostępne tylko przy użyciu nowego klucza. To zachowanie jest zaprojektowana w wersji zapoznawczej funkcji. 
 
 ## <a name="set-up-diagnostic-logs"></a>Konfigurowanie dzienników diagnostycznych 
-Ustawienie dzienników diagnostycznych dla przestrzeni nazw z włączoną obsługą BYOK umożliwia uzyskanie wymaganych informacji o operacjach, gdy przestrzeń nazw jest zaszyfrowana przy użyciu kluczy zarządzanych przez klienta. Te dzienniki mogą być włączone i później przesyłane strumieniowo do centrum zdarzeń lub analizowane przy użyciu usługi log Analytics lub przesyłane strumieniowo do magazynu w celu przeprowadzenia dostosowanej analizy. Aby dowiedzieć się więcej na temat dzienników diagnostycznych, zobacz [Omówienie dzienników diagnostycznych platformy Azure](../azure-monitor/platform/resource-logs-overview.md).
+Ustawienie dzienników diagnostycznych dla przestrzeni nazw z włączoną obsługą BYOK umożliwia uzyskanie wymaganych informacji o operacjach, gdy przestrzeń nazw jest zaszyfrowana przy użyciu kluczy zarządzanych przez klienta. Te dzienniki mogą być włączone i później przesyłane strumieniowo do centrum zdarzeń lub analizowane przy użyciu usługi log Analytics lub przesyłane strumieniowo do magazynu w celu przeprowadzenia dostosowanej analizy. Aby dowiedzieć się więcej na temat dzienników diagnostycznych, zobacz [Omówienie dzienników diagnostycznych platformy Azure](../azure-monitor/platform/platform-logs-overview.md).
 
 ## <a name="enable-user-logs"></a>Włącz dzienniki użytkowników
 Wykonaj następujące kroki, aby włączyć dzienniki dla kluczy zarządzanych przez klienta.
@@ -109,15 +109,15 @@ Wszystkie dzienniki są przechowywane w formacie JavaScript Object Notation (JSO
 
 | Nazwa | Opis |
 | ---- | ----------- | 
-| TaskName | Opis zadania, które zakończyło się niepowodzeniem. |
-| ActivityId | Wewnętrzny identyfikator używany do śledzenia. |
+| TaskName | Opis zadania, które nie powiodło się. |
+| Identyfikator działania | Wewnętrzny identyfikator używany do śledzenia. |
 | category | Definiuje klasyfikację zadania. Na przykład jeśli klucz z magazynu kluczy jest wyłączany, będzie to kategoria informacji lub jeśli klucz nie może zostać rozpakowany, może to oznaczać, że wystąpił błąd. |
 | resourceId | Identyfikator zasobu Azure Resource Manager |
 | keyVault | Pełna nazwa magazynu kluczy. |
 | key | Nazwa klucza służąca do szyfrowania przestrzeni nazw Event Hubs. |
 | version | Używana wersja klucza. |
-| operacje | Operacja wykonywana na kluczu w magazynie kluczy. Na przykład Wyłącz/Włącz klucz, Zawijaj lub Odpakuj |
-| Kodu | Kod, który jest skojarzony z operacją. Przykład: kod błędu, 404 oznacza, że nie znaleziono klucza. |
+| operation | Operacja wykonywana na kluczu w magazynie kluczy. Na przykład Wyłącz/Włącz klucz, Zawijaj lub Odpakuj |
+| kod | Kod, który jest skojarzony z operacją. Przykład: kod błędu, 404 oznacza, że nie znaleziono klucza. |
 | message | Dowolny komunikat o błędzie skojarzony z operacją |
 
 Oto przykład dziennika dla klucza zarządzanego przez klienta:

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: 547402fd2cca94f47a9ff0db3131d359bafd967a
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: b2c94e51e25fd34b7332e6653a9c2f2d5bb53139
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74225391"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754233"
 ---
 # <a name="create-an-internal-load-balancer-by-using-the-azure-powershell-module"></a>Tworzenie wewnętrznego modułu równoważenia obciążenia przy użyciu modułu Azure PowerShell
 
@@ -48,7 +48,7 @@ Aby wdrożyć moduł równoważenia obciążenia, muszą zostać utworzone nast�
 * Konfiguracja sondy: sondy stanu kondycji maszyn wirtualnych.
 * Reguły NAT dla ruchu przychodzącego: reguły portów dla bezpośredniego dostępu do maszyn wirtualnych.
 
-Aby uzyskać więcej informacji na temat składników modułu równoważenia obciążenia, zobacz [Azure Resource Manager support for load balancer (Obsługa usługi Azure Resource Manager dla modułu równoważenia obciążenia)](load-balancer-arm.md).
+Aby uzyskać więcej informacji na temat składników usługi równoważenia obciążenia, zobacz [Azure Load Balancer Components](load-balancer-overview.md#load-balancer-components).
 
 Poniższe kroki przedstawiają sposób konfigurowania modułu równoważenia obciążenia między dwiema maszynami wirtualnymi.
 

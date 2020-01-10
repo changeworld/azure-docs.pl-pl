@@ -3,29 +3,24 @@ title: Tworzenie i przekazywanie Ubuntu Linux wirtualnego dysku twardego na plat
 description: Zapoznaj się z tematem tworzenie i przekazywanie wirtualnego dysku twardego (VHD) platformy Azure zawierającego Ubuntu Linux system operacyjny.
 services: virtual-machines-linux
 documentationcenter: ''
-author: szarkos
-manager: gwallace
-editor: tysonn
-tags: azure-resource-manager,azure-service-management
-ms.assetid: 3e097959-84fc-4f6a-8cc8-35e087fd1542
+author: MicahMcKittrick-MSFT
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 06/24/2019
-ms.author: szark
-ms.openlocfilehash: cdf2c6c0d5621223655fc4571affcdde4563ac97
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.author: mimckitt
+ms.openlocfilehash: e8226322ad1aa9a1079834cc26b4ff8a1b40a204
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71258265"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750167"
 ---
 # <a name="prepare-an-ubuntu-virtual-machine-for-azure"></a>Przygotowywanie maszyny wirtualnej systemu Ubuntu dla platformy Azure
-[!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
-## <a name="official-ubuntu-cloud-images"></a>Oficjalne obrazy w chmurze Ubuntu
-Ubuntu teraz publikuje oficjalne wirtualne dyski twarde platformy Azure [https://cloud-images.ubuntu.com/](https://cloud-images.ubuntu.com/)do pobrania w systemie. Jeśli musisz utworzyć własny, wyspecjalizowany obraz Ubuntu dla platformy Azure, zamiast korzystać z procedury ręcznej poniżej, zaleca się rozpoczęcie od tych znanych, działających wirtualnych dysków twardych i dostosowanie ich w razie potrzeby. Najnowsze wersje obrazów można zawsze znaleźć w następujących lokalizacjach:
+
+Ubuntu teraz publikuje oficjalne wirtualne dyski twarde platformy Azure do pobrania w [https://cloud-images.ubuntu.com/](https://cloud-images.ubuntu.com/). Jeśli musisz utworzyć własny, wyspecjalizowany obraz Ubuntu dla platformy Azure, zamiast korzystać z procedury ręcznej poniżej, zaleca się rozpoczęcie od tych znanych, działających wirtualnych dysków twardych i dostosowanie ich w razie potrzeby. Najnowsze wersje obrazów można zawsze znaleźć w następujących lokalizacjach:
 
 * Ubuntu 12.04/Precise: [ubuntu-12.04-server-cloudimg-amd64-disk1.vhd.zip](https://cloud-images.ubuntu.com/precise/current/precise-server-cloudimg-amd64-disk1.vhd.zip)
 * Ubuntu 14.04/Trusty: [ubuntu-14.04-server-cloudimg-amd64-disk1.vhd.zip](https://cloud-images.ubuntu.com/releases/trusty/release/ubuntu-14.04-server-cloudimg-amd64-disk1.vhd.zip)
@@ -46,7 +41,7 @@ W tym artykule założono, że zainstalowano już Ubuntu Linux system operacyjny
 
 ## <a name="manual-steps"></a>Kroki ręczne
 > [!NOTE]
-> Przed podjęciem próby utworzenia własnego niestandardowego obrazu Ubuntu na platformie Azure Rozważ użycie wstępnie skompilowanych i przetestowanych obrazów [https://cloud-images.ubuntu.com/](https://cloud-images.ubuntu.com/) .
+> Przed podjęciem próby utworzenia własnego niestandardowego obrazu Ubuntu na platformie Azure Rozważ użycie wstępnie skompilowanych i przetestowanych obrazów z [https://cloud-images.ubuntu.com/](https://cloud-images.ubuntu.com/) .
 > 
 > 
 
@@ -54,9 +49,9 @@ W tym artykule założono, że zainstalowano już Ubuntu Linux system operacyjny
 
 2. Kliknij przycisk **Połącz** , aby otworzyć okno dla maszyny wirtualnej.
 
-3. Zastąp bieżące repozytoria w obrazie, aby używać Ubuntu repozytoriów platformy Azure. Kroki różnią się nieco w zależności od wersji Ubuntu.
+3. Zastąp bieżące repozytoria w obrazie, aby użyć repozytorium Azure Ubuntu. Kroki różnią się nieco w zależności od wersji Ubuntu.
    
-    Przed rozpoczęciem edycji `/etc/apt/sources.list`zaleca się wykonanie kopii zapasowej:
+    Przed edytowaniem `/etc/apt/sources.list`zaleca się wykonanie kopii zapasowej:
    
         # sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
 
@@ -103,16 +98,16 @@ W tym artykule założono, że zainstalowano już Ubuntu Linux system operacyjny
 
         # sudo reboot
 
-    **Zobacz również:**
+    **Zobacz też:**
     - [https://wiki.ubuntu.com/Kernel/LTSEnablementStack](https://wiki.ubuntu.com/Kernel/LTSEnablementStack)
     - [https://wiki.ubuntu.com/Kernel/RollingLTSEnablementStack](https://wiki.ubuntu.com/Kernel/RollingLTSEnablementStack)
 
 
-5. Zmodyfikuj wiersz rozruchowy jądra dla Grub, aby uwzględnić dodatkowe parametry jądra dla platformy Azure. Aby to zrobić, `/etc/default/grub` Otwórz w edytorze tekstów, znajdź zmienną o nazwie `GRUB_CMDLINE_LINUX_DEFAULT` (lub Dodaj ją w razie potrzeby) i zmodyfikuj ją w celu uwzględnienia następujących parametrów:
+5. Zmodyfikuj wiersz rozruchowy jądra dla Grub, aby uwzględnić dodatkowe parametry jądra dla platformy Azure. Aby to zrobić, Otwórz `/etc/default/grub` w edytorze tekstów, znajdź zmienną o nazwie `GRUB_CMDLINE_LINUX_DEFAULT` (lub Dodaj ją w razie potrzeby) i zmodyfikuj ją w celu uwzględnienia następujących parametrów:
    
         GRUB_CMDLINE_LINUX_DEFAULT="console=tty1 console=ttyS0,115200n8 earlyprintk=ttyS0,115200 rootdelay=300"
 
-    Zapisz i Zamknij ten plik, a następnie uruchom `sudo update-grub`polecenie. Dzięki temu wszystkie komunikaty konsoli są wysyłane do pierwszego portu szeregowego, który może pomóc w pomocy technicznej platformy Azure z problemami z debugowaniem.
+    Zapisz i Zamknij ten plik, a następnie uruchom `sudo update-grub`. Dzięki temu wszystkie komunikaty konsoli są wysyłane do pierwszego portu szeregowego, który może pomóc w pomocy technicznej platformy Azure z problemami z debugowaniem.
 
 6. Upewnij się, że serwer SSH został zainstalowany i skonfigurowany do uruchamiania w czasie rozruchu.  Zwykle jest to ustawienie domyślne.
 
@@ -122,7 +117,7 @@ W tym artykule założono, że zainstalowano już Ubuntu Linux system operacyjny
         # sudo apt-get install walinuxagent
 
    > [!Note]
-   >  Pakiet może usunąć pakiety `NetworkManager-gnome`i, jeśli są zainstalowane. `NetworkManager` `walinuxagent`
+   >  Pakiet `walinuxagent` może usunąć pakiety `NetworkManager` i `NetworkManager-gnome`, jeśli są zainstalowane.
 
 
 1. Uruchom następujące polecenia, aby anulować obsługę administracyjną maszyny wirtualnej i przygotować ją do aprowizacji na platformie Azure:
@@ -133,7 +128,7 @@ W tym artykule założono, że zainstalowano już Ubuntu Linux system operacyjny
 
 1. Kliknij **akcję-> wyłączyć** w Menedżerze funkcji Hyper-V. Wirtualny dysk twardy z systemem Linux jest teraz gotowy do przekazania na platformę Azure.
 
-## <a name="references"></a>Dokumentacja
+## <a name="references"></a>Informacje
 [Ubuntu Włączanie sprzętu (HWE)](https://wiki.ubuntu.com/Kernel/LTSEnablementStack)
 
 ## <a name="next-steps"></a>Następne kroki

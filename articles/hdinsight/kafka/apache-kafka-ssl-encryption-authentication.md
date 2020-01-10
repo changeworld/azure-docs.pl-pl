@@ -8,19 +8,19 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/01/2019
 ms.author: hrasheed
-ms.openlocfilehash: 5dd698b28a01ed251492cf34e9da2dda4d0c2580
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: 180b7c203755553c343e0f7fc65c93092b330124
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73241984"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75751313"
 ---
 # <a name="set-up-secure-sockets-layer-ssl-encryption-and-authentication-for-apache-kafka-in-azure-hdinsight"></a>Konfigurowanie szyfrowania SSL (SSL) i uwierzytelniania Apache Kafka w usłudze Azure HDInsight
 
 W tym artykule pokazano, jak skonfigurować szyfrowanie SSL między klientami Apache Kafka i brokerami Apache Kafka. Pokazano w nim także, jak skonfigurować uwierzytelnianie klientów (czasami określany jako dwukierunkowy protokół SSL).
 
 > [!Important]
-> Istnieją dwa klientów, których można używać do obsługi aplikacji Kafka: klient Java i klient konsoli. Tylko klient Java `ProducerConsumer.java` może korzystać z protokołu SSL zarówno do tworzenia, jak i zużywania. Klient producenta konsoli `console-producer.sh` nie działa z protokołem SSL.
+> Istnieją dwa klientów, których można używać do obsługi aplikacji Kafka: klient Java i klient konsoli. Tylko `ProducerConsumer.java` klienta Java mogą używać protokołu SSL zarówno do tworzenia, jak i zużywania. Klient producenta konsoli `console-producer.sh` nie działa z protokołem SSL.
 
 ## <a name="apache-kafka-broker-setup"></a>Konfiguracja brokera Apache Kafka
 
@@ -49,7 +49,7 @@ Podsumowanie procesu instalacji brokera przebiega następująco:
 Aby ukończyć konfigurowanie brokera, Skorzystaj z poniższych szczegółowych instrukcji:
 
 > [!Important]
-> W poniższych fragmentach kodu wnX jest skrót jednego z trzech węzłów procesu roboczego i powinien zostać zastąpiony `wn0`, `wn1` lub `wn2`, zgodnie z potrzebami. `WorkerNode0_Name` i `HeadNode0_Name` powinny zostać zastąpione nazwami odpowiednich maszyn, takimi jak `wn0-abcxyz` lub `hn0-abcxyz`.
+> W poniższych fragmentach kodu wnX jest skrót jednego z trzech węzłów procesu roboczego i powinien zostać zastąpiony `wn0`, `wn1` lub `wn2` zgodnie z potrzebami. `WorkerNode0_Name` i `HeadNode0_Name` powinny zostać zastąpione nazwami odpowiednich maszyn.
 
 1. Wykonaj konfigurację początkową w węźle głównym 0, dla którego Usługa HDInsight wypełni rolę urzędu certyfikacji.
 
@@ -125,7 +125,7 @@ Aby ukończyć modyfikację konfiguracji, wykonaj następujące czynności:
 
 1. Zaloguj się do Azure Portal i wybierz klaster Apache Kafka usługi Azure HDInsight.
 1. Przejdź do interfejsu użytkownika Ambari, klikając pozycję **Strona główna** w obszarze **pulpity nawigacyjne klastra**.
-1. W obszarze **Broker Kafka** ustaw właściwość **detektory** na `PLAINTEXT://localhost:9092,SSL://localhost:9093`
+1. W obszarze **Broker Kafka** ustaw właściwość **odbiorniki** na `PLAINTEXT://localhost:9092,SSL://localhost:9093`
 1. W obszarze **Advanced Kafka-Broker** ustaw właściwość **Security. Inter. Broker. Protocol** na `SSL`
 
     ![Edytowanie właściwości konfiguracji protokołu SSL Kafka w Ambari](./media/apache-kafka-ssl-encryption-authentication/editing-configuration-ambari.png)
@@ -157,10 +157,10 @@ Aby ukończyć modyfikację konfiguracji, wykonaj następujące czynności:
 
 Aby zakończyć instalację klienta, wykonaj następujące kroki:
 
-1. Zaloguj się do komputera klienckiego (hn1).
+1. Zaloguj się do komputera klienckiego (węzeł główny w stanie wstrzymania).
 1. Utwórz magazyn kluczy języka Java i uzyskaj podpisany certyfikat dla brokera. Następnie skopiuj certyfikat na maszynę wirtualną, na której działa urząd certyfikacji.
-1. Przejdź do komputera urzędu certyfikacji (hn0), aby podpisać certyfikat klienta.
-1. Przejdź do komputera klienckiego (hn1) i przejdź do folderu `~/ssl`. Skopiuj podpisany certyfikat na komputer kliencki.
+1. Przejdź do komputera urzędu certyfikacji (aktywny węzeł główny), aby podpisać certyfikat klienta.
+1. Przejdź do komputera klienckiego (węzeł główny w stanie wstrzymania) i przejdź do folderu `~/ssl`. Skopiuj podpisany certyfikat na komputer kliencki.
 
 ```bash
 cd ssl
@@ -174,11 +174,11 @@ keytool -keystore kafka.client.keystore.jks -certreq -file client-cert-sign-requ
 # Copy the cert to the CA
 scp client-cert-sign-request3 sshuser@HeadNode0_Name:~/tmp1/client-cert-sign-request
 
-# Switch to the CA machine (hn0) to sign the client certificate.
+# Switch to the CA machine (active head node) to sign the client certificate.
 cd ssl
 openssl x509 -req -CA ca-cert -CAkey ca-key -in /tmp1/client-cert-sign-request -out /tmp1/client-cert-signed -days 365 -CAcreateserial -passin pass:MyServerPassword123
 
-# Return to the client machine (hn1), navigate to ~/ssl folder and copy signed cert from the CA (hn0) to client machine
+# Return to the client machine (standby head node), navigate to ~/ssl folder and copy signed cert from the CA (active head node) to client machine
 scp -i ~/kafka-security.pem sshuser@HeadNode0_Name:/tmp1/client-cert-signed
 
 # Import CA cert to trust store
@@ -191,7 +191,7 @@ keytool -keystore kafka.client.keystore.jks -alias CARoot -import -file ca-cert 
 keytool -keystore kafka.client.keystore.jks -import -file client-cert-signed -alias my-local-pc1 -storepass "MyClientPassword123" -keypass "MyClientPassword123" -noprompt
 ```
 
-Na koniec Wyświetl plik `client-ssl-auth.properties` przy użyciu polecenia `cat client-ssl-auth.properties`. Powinien on zawierać następujące wiersze:
+Na koniec Wyświetl `client-ssl-auth.properties` pliku za pomocą polecenia `cat client-ssl-auth.properties`. Powinien on zawierać następujące wiersze:
 
 ```bash
 security.protocol=SSL
@@ -226,7 +226,7 @@ keytool -keystore kafka.client.truststore.jks -alias CARoot -import -file ca-cer
 keytool -keystore kafka.client.keystore.jks -alias CARoot -import -file cert-signed -storepass "MyClientPassword123" -keypass "MyClientPassword123" -noprompt
 ```
 
-Na koniec przejrzyj plik `client-ssl-auth.properties` z poleceniem `cat client-ssl-auth.properties`. Powinien on zawierać następujące wiersze:
+Na koniec przejrzyj plik `client-ssl-auth.properties` za pomocą polecenia `cat client-ssl-auth.properties`. Powinien on zawierać następujące wiersze:
 
 ```bash
 security.protocol=SSL

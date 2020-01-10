@@ -8,24 +8,24 @@ ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 24d601dc2116b7daf315bb3c6f20c4dc0b6f6ce5
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: e4103f8360f6fa80470b0f8002a61f8ac903bd8b
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72382044"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749232"
 ---
 # <a name="performance-and-scalability-checklist-for-blob-storage"></a>Lista kontrolna wydajności i skalowalności usługi BLOB Storage
 
 Firma Microsoft opracowała kilka sprawdzonych praktyk tworzenia aplikacji o wysokiej wydajności za pomocą usługi BLOB Storage. Ta lista kontrolna zawiera najważniejsze rozwiązania, które deweloperzy mogą wykonać w celu zoptymalizowania wydajności. Należy pamiętać o tych praktykach podczas projektowania aplikacji i w trakcie całego procesu.
 
-Usługa Azure Storage oferuje cele skalowalności i wydajności dla pojemności, szybkości transakcji i przepustowości. Aby uzyskać więcej informacji o celach skalowalności usługi Azure Storage, zobacz [cele dotyczące skalowalności i wydajności usługi Azure Storage dla kont magazynu](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+Usługa Azure Storage oferuje cele skalowalności i wydajności dla pojemności, szybkości transakcji i przepustowości. Aby uzyskać więcej informacji o obiektach docelowych skalowalności usługi Azure Storage, zobacz [cele skalowalności i wydajności dla standardowych kont magazynu](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) i [skalowalności i wydajności docelowych dla usługi BLOB Storage](scalability-targets.md).
 
 ## <a name="checklist"></a>Lista kontrolna
 
 Ten artykuł organizuje sprawdzone rozwiązania dotyczące wydajności w ramach listy kontrolnej, którą można wykonać podczas tworzenia aplikacji usługi BLOB Storage.
 
-| Gotowe | Kategoria | Zagadnienie dotyczące projektowania |
+| Gotowe | Kategoria | Zagadnienia związane z projektem |
 | --- | --- | --- |
 | &nbsp; |Tarcze skalowalności |[Czy można zaprojektować aplikację tak, aby korzystała z nie więcej niż maksymalna liczba kont magazynu?](#maximum-number-of-storage-accounts) |
 | &nbsp; |Tarcze skalowalności |[Czy unikasz zbliżania się limitów pojemności i transakcji?](#capacity-and-transaction-targets) |
@@ -42,7 +42,7 @@ Ten artykuł organizuje sprawdzone rozwiązania dotyczące wydajności w ramach 
 | &nbsp; |Konfiguracja platformy .NET |[Czy skonfigurowano klienta tak, aby używał wystarczającej liczby jednoczesnych połączeń?](#increase-default-connection-limit) |
 | &nbsp; |Konfiguracja platformy .NET |[Czy w przypadku aplikacji .NET skonfigurowano platformę .NET do używania wystarczającej liczby wątków?](#increase-minimum-number-of-threads) |
 | &nbsp; |Równoległości |[Czy istnieje pewność, że równoległość jest odpowiednio ograniczona, aby nie można było przeciążać możliwości klienta ani podejścia do celów skalowalności?](#unbounded-parallelism) |
-| &nbsp; |Narzędzia |[Czy używasz najnowszych wersji bibliotek i narzędzi klienta dostarczonych przez firmę Microsoft?](#client-libraries-and-tools) |
+| &nbsp; |narzędzia |[Czy używasz najnowszych wersji bibliotek i narzędzi klienta dostarczonych przez firmę Microsoft?](#client-libraries-and-tools) |
 | &nbsp; |Ponowne próby |[Czy zasady ponawiania są używane z wykładniczą wycofywaniaą do ograniczania błędów i przekroczeń limitu czasu?](#timeout-and-server-busy-errors) |
 | &nbsp; |Ponowne próby |[Czy aplikacja unika ponawiania prób w przypadku błędów, które nie są ponawiane?](#non-retryable-errors) |
 | &nbsp; |Kopiowanie obiektów BLOB |[Czy są kopiowane obiekty blob w sposób najbardziej wydajny?](#blob-copy-apis) |
@@ -52,13 +52,13 @@ Ten artykuł organizuje sprawdzone rozwiązania dotyczące wydajności w ramach 
 | &nbsp; |Użyj metadanych |[Czy są przechowywane często używane metadane dotyczące obiektów BLOB w swoich metadanych?](#use-metadata) |
 | &nbsp; |Szybkie przekazywanie |[Czy podczas próby przekazania jednego obiektu BLOB szybko przekazująsz bloki?](#upload-one-large-blob-quickly) |
 | &nbsp; |Szybkie przekazywanie |[Czy podczas próby przeładowania wielu obiektów BLOB szybko przekazujesz obiekty blob?](#upload-many-blobs-quickly) |
-| &nbsp; |Typ obiektu BLOB |[Czy używasz stronicowych obiektów blob lub blokowych obiektów BLOB w razie potrzeby?](#choose-the-correct-type-of-blob) |
+| &nbsp; |Typ obiektów blob |[Czy używasz stronicowych obiektów blob lub blokowych obiektów BLOB w razie potrzeby?](#choose-the-correct-type-of-blob) |
 
 ## <a name="scalability-targets"></a>Tarcze skalowalności
 
 Jeśli aplikacja zbliża się lub przekroczy elementy docelowe skalowalności, może wystąpić zwiększenie opóźnień transakcji lub ograniczenie przepustowości. Gdy usługa Azure Storage ogranicza swoją aplikację, rozpocznie się zwracanie kodów błędów 503 (serwer zajęty) lub 500 (limit czasu operacji). Unikanie tych błędów przez Przekroczenie limitów celów skalowalności jest ważną częścią zwiększania wydajności aplikacji.
 
-Aby uzyskać więcej informacji dotyczących skalowalności usługa kolejki, zobacz [cele dotyczące skalowalności i wydajności usługi Azure Storage](/azure/storage/common/storage-scalability-targets?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#azure-blob-storage-scale-targets).
+Aby uzyskać więcej informacji dotyczących skalowalności usługa kolejki, zobacz [cele dotyczące skalowalności i wydajności usługi Azure Storage](/azure/storage/queues/scalability-targets#scale-targets-for-queue-storage).
 
 ### <a name="maximum-number-of-storage-accounts"></a>Maksymalna liczba kont magazynu
 
@@ -99,7 +99,7 @@ Zrozumienie, jak usługa Azure Storage Partitions dane obiektów BLOB są przyda
 
 Usługa BLOB Storage używa schematu partycjonowania opartego na zakresie na potrzeby skalowania i równoważenia obciążenia. Każdy obiekt BLOB ma klucz partycji składający się z pełnej nazwy obiektu BLOB (account + Container + BLOB). Klucz partycji służy do partycjonowania danych obiektów BLOB w ramach zakresów. Zakresy są następnie zrównoważone obciążenie między magazynem obiektów BLOB.
 
-Partycjonowanie oparte na zakresie oznacza konwencje nazewnictwa, które korzystają z uporządkowanej kolejności (naprzykład:*log20160101* *,* *log20160102*, *log20160102* itd.) są bardziej podobne do tych, które znajdują się na partycji znajdujących się na tym samym serwerze partycji. , do momentu zwiększenia obciążenia wymaga, aby zostały podzielone na mniejsze zakresy. Wspólne lokalizowanie obiektów BLOB na tym samym serwerze partycji zwiększa wydajność, dzięki czemu istotna część rozszerzania wydajności polega na nazewnictwie obiektów BLOB w sposób, który organizuje je najbardziej efektywnie.
+Partycjonowanie oparte na zakresie oznacza, że konwencje nazewnictwa, które korzystają z porządkowania leksykalnego(na przykład:*log20160101*, *log20160102*, *log20160102*itp. *), są*bardziej podobne do tych, które znajdują się na tym samym serwerze partycji. , do momentu zwiększenia obciążenia wymaga, aby zostały podzielone na mniejsze zakresy. Wspólne lokalizowanie obiektów BLOB na tym samym serwerze partycji zwiększa wydajność, dzięki czemu istotna część rozszerzania wydajności polega na nazewnictwie obiektów BLOB w sposób, który organizuje je najbardziej efektywnie.
 
 Na przykład wszystkie obiekty blob w kontenerze mogą być obsługiwane przez jeden serwer, dopóki obciążenie tych obiektów BLOB nie wymaga dodatkowego ponownego zrównoważenia zakresów partycji. Analogicznie, Grupa jasno załadowanych kont z ich nazwami uporządkowanymi w kolejności leksykalnej może być obsługiwana przez jeden serwer do momentu, gdy obciążenie jednego lub wszystkich tych kont nie będzie wymagało ich podziału na wiele serwerów partycji.
 
@@ -285,5 +285,6 @@ Stronicowe obiekty blob są odpowiednie, jeśli aplikacja musi wykonywać losowe
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Cele dotyczące skalowalności i wydajności usługi Azure Storage dla kont magazynu](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+- [Cele skalowalności i wydajności dla usługi BLOB Storage](scalability-targets.md)
+- [Cele skalowalności i wydajności dla kont magazynu w warstwie Standardowa](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 - [Kody stanu i błędów](/rest/api/storageservices/Status-and-Error-Codes2)

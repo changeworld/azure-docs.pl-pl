@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/23/2018
 ms.author: memildin
-ms.openlocfilehash: 20d269c1614c82c8783d0e65149961c118c16a95
-ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
+ms.openlocfilehash: 45b7b419277d338d70cf285838103f97d4eb5c3a
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74559234"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749665"
 ---
 # <a name="manage-user-data-in-azure-security-center"></a>Zarządzanie danymi użytkowników w Azure Security Center
 Ten artykuł zawiera informacje o sposobach zarządzania danymi użytkownika w programie Azure Security Center. Zarządzanie danymi użytkownika obejmuje możliwość uzyskiwania dostępu do danych, ich usuwania lub eksportowania.
@@ -97,7 +97,7 @@ Użytkownik Security Center może zrezygnować z usunięcia swoich [danych konta
 [Dane alertu](security-center-managing-and-responding-alerts.md) są uznawane za dane zabezpieczeń i są przechowywane przez okres dwóch lat.
 
 ## <a name="auditing-and-reporting"></a>Inspekcja i raportowanie
-Dzienniki inspekcji dotyczące kontaktów zabezpieczeń, just-in-Time i aktualizacji alertów są przechowywane w [dziennikach aktywności platformy Azure](../azure-monitor/platform/activity-logs-overview.md).
+Dzienniki inspekcji dotyczące kontaktów zabezpieczeń, just-in-Time i aktualizacji alertów są przechowywane w [dziennikach aktywności platformy Azure](../azure-monitor/platform/platform-logs-overview.md).
 
 ## <a name="next-steps"></a>Następne kroki
 Aby uzyskać więcej informacji na temat zarządzania danymi użytkownika, zobacz temat [Zarządzanie danymi użytkownika w badaniu Azure Security Center](security-center-investigation-user-data.md).

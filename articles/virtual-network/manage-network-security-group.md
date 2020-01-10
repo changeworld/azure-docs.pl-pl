@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/05/2018
 ms.author: kumud
-ms.openlocfilehash: afbe4aae0ac1296bfc4b2011069f9d81afed977f
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: d6c948c7fdfe2c5dc89c3e284ada33c2f7b542db
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74273678"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750673"
 ---
 # <a name="create-change-or-delete-a-network-security-group"></a>Tworzenie, zmienianie lub usuwanie sieciowej grupy zabezpieczeń
 
@@ -30,7 +30,7 @@ Reguły zabezpieczeń w sieciowych grupach zabezpieczeń umożliwiają filtrowan
 Przed wykonaniem kroków opisanych w sekcji tego artykułu wykonaj następujące zadania:
 
 - Jeśli nie masz jeszcze konta platformy Azure, Utwórz [konto bezpłatnej wersji próbnej](https://azure.microsoft.com/free).
-- Jeśli używasz portalu, Otwórz https://portal.azure.comi zaloguj się przy użyciu konta platformy Azure.
+- Jeśli używasz portalu, Otwórz https://portal.azure.com i zaloguj się przy użyciu konta platformy Azure.
 - W przypadku wykonywania zadań w tym artykule przy użyciu poleceń programu PowerShell uruchom polecenia w [Azure Cloud Shell](https://shell.azure.com/powershell)lub przez uruchomienie programu PowerShell z komputera. Usługa Azure Cloud Shell to bezpłatna interaktywna powłoka, której możesz używać do wykonywania kroków opisanych w tym artykule. Udostępnia ona wstępnie zainstalowane i najczęściej używane narzędzia platformy Azure, które są skonfigurowane do użycia na koncie. Ten samouczek wymaga modułu Azure PowerShell w wersji 1.0.0 lub nowszej. Uruchom polecenie `Get-Module -ListAvailable Az`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-az-ps). Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie `Connect-AzAccount`, aby utworzyć połączenie z platformą Azure.
 - W przypadku korzystania z poleceń interfejsu wiersza polecenia (CLI) platformy Azure w celu wykonania zadań w tym artykule Uruchom polecenia w [Azure Cloud Shell](https://shell.azure.com/bash)lub przez uruchomienie interfejsu wiersza polecenia na komputerze. Ten samouczek wymaga interfejsu wiersza polecenia platformy Azure w wersji 2.0.28 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli). Jeśli używasz interfejsu wiersza polecenia platformy Azure lokalnie, musisz również uruchomić `az login`, aby utworzyć połączenie z platformą Azure.
 
@@ -42,9 +42,9 @@ Można tworzyć, [wyświetlać wszystkie](#view-all-network-security-groups), [w
 
 ### <a name="create-a-network-security-group"></a>Tworzenie sieciowej grupy zabezpieczeń
 
-Istnieje ograniczenie dotyczące liczby grup zabezpieczeń sieci, które można utworzyć na potrzeby lokalizacji i subskrypcji platformy Azure. Aby uzyskać więcej informacji, zobacz [Azure limits (Ograniczenia platformy Azure)](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
+Istnieje ograniczenie dotyczące liczby grup zabezpieczeń sieci, które można utworzyć na potrzeby lokalizacji i subskrypcji platformy Azure. Aby uzyskać więcej informacji, zobacz [Azure limits (Ograniczenia platformy Azure)](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
 
-1. W menu Azure Portal lub na stronie **głównej** wybierz pozycję **Utwórz zasób**.
+1. W menu witryny Azure Portal lub na **stronie głównej** wybierz pozycję **Utwórz zasób**.
 2. Wybierz pozycję **Sieć**, a następnie wybierz pozycję **sieciowa Grupa zabezpieczeń**.
 3. Wprowadź **nazwę** sieciowej grupy zabezpieczeń, wybierz **subskrypcję**, Utwórz nową **grupę zasobów**lub wybierz istniejącą grupę zasobów, wybierz **lokalizację**, a następnie wybierz pozycję **Utwórz**.
 
@@ -67,11 +67,11 @@ W polu wyszukiwania w górnej części portalu wprowadź *sieciowe grupy zabezpi
 1. W polu wyszukiwania w górnej części portalu wprowadź *sieciowe grupy zabezpieczeń*. Gdy **sieciowe grupy zabezpieczeń** są wyświetlane w wynikach wyszukiwania, wybierz je.
 2. Wybierz z listy grupę zabezpieczeń sieci, dla której chcesz wyświetlić szczegóły. W obszarze **Ustawienia** można wyświetlić **reguły zabezpieczeń ruchu przychodzącego** i **reguły zabezpieczeń ruchu wychodzącego**, do **interfejsów sieciowych** i **podsieci** , z którymi jest skojarzona Grupa zabezpieczeń sieci. Możesz również włączyć lub wyłączyć **dzienniki diagnostyczne** i wyświetlić **obowiązujące reguły zabezpieczeń**. Aby dowiedzieć się więcej, zobacz [dzienniki diagnostyczne](virtual-network-nsg-manage-log.md) i [Wyświetlanie obowiązujących reguł zabezpieczeń](diagnose-network-traffic-filter-problem.md).
 3. Aby dowiedzieć się więcej na temat typowych ustawień platformy Azure, zobacz następujące artykuły:
-    *   [Dziennik aktywności](../azure-monitor/platform/activity-logs-overview.md)
+    *   [Dziennik aktywności](../azure-monitor/platform/platform-logs-overview.md)
     *   [Kontrola dostępu (IAM)](../role-based-access-control/overview.md)
     *   [Tagi](../azure-resource-manager/resource-group-using-tags.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
     *   [Zamki](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-    *   [Skrypt automatyzacji](../azure-resource-manager/manage-resource-groups-portal.md#export-resource-groups-to-templates)
+    *   [Skrypt automatyzacji](../azure-resource-manager/templates/export-template-portal.md)
 
 **Polecenia**
 
@@ -98,7 +98,7 @@ Jeśli grupa zabezpieczeń sieci jest skojarzona z dowolnymi podsieciami lub int
 
 1. W polu wyszukiwania w górnej części portalu w polu wyszukiwania wprowadź *sieciowe grupy zabezpieczeń* . Gdy **sieciowe grupy zabezpieczeń** są wyświetlane w wynikach wyszukiwania, wybierz je.
 2. Wybierz z listy grupę zabezpieczeń sieci, która ma zostać usunięta.
-3. Wybierz pozycję **Usuń**, a następnie wybierz pozycję **tak**.
+3. Wybierz pozycję **Usuń**, a następnie wybierz pozycję **Tak**.
 
 **Polecenia**
 
@@ -111,7 +111,7 @@ Sieciowa Grupa zabezpieczeń zawiera co najmniej zero reguł zabezpieczeń. Moż
 
 ### <a name="create-a-security-rule"></a>Tworzenie reguły zabezpieczeń
 
-Istnieje limit liczby reguł dla każdej sieciowej grupy zabezpieczeń, które można utworzyć na potrzeby lokalizacji i subskrypcji platformy Azure. Aby uzyskać więcej informacji, zobacz [Azure limits (Ograniczenia platformy Azure)](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
+Istnieje limit liczby reguł dla każdej sieciowej grupy zabezpieczeń, które można utworzyć na potrzeby lokalizacji i subskrypcji platformy Azure. Aby uzyskać więcej informacji, zobacz [Azure limits (Ograniczenia platformy Azure)](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
 
 1. W polu wyszukiwania w górnej części portalu w polu wyszukiwania wprowadź *sieciowe grupy zabezpieczeń* . Gdy **sieciowe grupy zabezpieczeń** są wyświetlane w wynikach wyszukiwania, wybierz je.
 2. Wybierz z listy grupę zabezpieczeń sieci, do której chcesz dodać regułę zabezpieczeń.
@@ -120,12 +120,12 @@ Istnieje limit liczby reguł dla każdej sieciowej grupy zabezpieczeń, które m
     
     |Ustawienie  |Wartość  |Szczegóły  |
     |---------|---------|---------|
-    |Element źródłowy     | Wybierz **dowolną**, **grupę zabezpieczeń aplikacji**, **adresy IP**lub **tag usługi** dla reguł zabezpieczeń dla ruchu przychodzącego. W przypadku tworzenia reguły zabezpieczeń dla ruchu wychodzącego opcje są takie same jak opcje wymienione dla **miejsca docelowego**.       | W przypadku wybrania **grupy zabezpieczeń aplikacji**wybierz co najmniej jedną istniejącą grupę zabezpieczeń aplikacji, która istnieje w tym samym regionie co interfejs sieciowy. Dowiedz się, jak [utworzyć grupę zabezpieczeń aplikacji](#create-an-application-security-group). W przypadku wybrania **grupy zabezpieczeń aplikacji** zarówno dla **źródła** , jak i **docelowego**, interfejsy sieciowe w obu grupach zabezpieczeń aplikacji muszą znajdować się w tej samej sieci wirtualnej. W przypadku wybrania **adresów IP**Określ **źródłowe adresy IP/zakresy CIDR**. Można określić pojedynczą wartość lub rozdzieloną przecinkami listę wielu wartości. Przykładem wielu wartości jest 10.0.0.0/16, 192.188.1.1. Istnieją limity liczby wartości, które można określić. Aby uzyskać szczegółowe informacje, zobacz [limity platformy Azure](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) . Jeśli wybierzesz **tag usługi**, a następnie wybierz jeden tag usługi. Tag usługi jest wstępnie zdefiniowanym identyfikatorem dla kategorii adresów IP. Aby dowiedzieć się więcej na temat dostępnych tagów usługi i informacje o tym, co reprezentuje każdy tag, zobacz [Tagi usług](security-overview.md#service-tags). Jeśli określony adres IP jest przypisany do maszyny wirtualnej platformy Azure, upewnij się, że został określony prywatny adres IP, a nie publicznego adresu IP przypisanego do maszyny wirtualnej. Reguły zabezpieczeń są przetwarzane, gdy platforma Azure przekształci publiczny adres IP na prywatny adres IP dla reguł zabezpieczeń dla ruchu przychodzącego, a zanim platforma Azure przetłumaczy prywatny adres IP na publiczny adres IP dla reguł wychodzących. Aby dowiedzieć się więcej na temat publicznych i prywatnych adresów IP na platformie Azure, zobacz [typy adresów IP](virtual-network-ip-addresses-overview-arm.md).        |
-    |Source port ranges     | Określ pojedynczy port, taki jak 80, zakres portów, taki jak 1024-65535, lub rozdzielana przecinkami lista pojedynczych portów i/lub zakresów portów, takich jak 80, 1024-65535. Wprowadź gwiazdkę, aby zezwolić na ruch na dowolnym porcie. | Porty i zakresy określają, które porty są dozwolone lub odrzucane przez tę regułę. Istnieją limity liczby portów, które można określić. Aby uzyskać szczegółowe informacje, zobacz [limity platformy Azure](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) .  |
-    |Destination     | Wybierz **dowolną**, **grupę zabezpieczeń aplikacji**, **adresy IP**lub **Virtual Network** dla reguł zabezpieczeń dla ruchu wychodzącego. W przypadku tworzenia reguły zabezpieczeń dla ruchu przychodzącego opcje są takie same jak opcje na liście **Źródło**.        | W przypadku wybrania **grupy zabezpieczeń aplikacji** należy wybrać co najmniej jedną istniejącą grupę zabezpieczeń aplikacji, która istnieje w tym samym regionie co interfejs sieciowy. Dowiedz się, jak [utworzyć grupę zabezpieczeń aplikacji](#create-an-application-security-group). W przypadku wybrania **grupy zabezpieczeń aplikacji**wybierz jedną istniejącą grupę zabezpieczeń aplikacji, która istnieje w tym samym regionie co interfejs sieciowy. W przypadku wybrania opcji **adresy IP**Określ **docelowe adresy IP/zakresy CIDR**. Podobnie jak **źródłowe** i **źródłowe adresy IP/zakresy CIDR**, można określić pojedynczy lub wiele adresów lub zakresów, a liczba jest ograniczona do liczby, którą można określić. Wybranie opcji **Sieć wirtualna**, która jest tagiem usługi, oznacza, że ruch jest dozwolony dla wszystkich adresów IP w przestrzeni adresowej sieci wirtualnej. Jeśli określony adres IP jest przypisany do maszyny wirtualnej platformy Azure, upewnij się, że został określony prywatny adres IP, a nie publicznego adresu IP przypisanego do maszyny wirtualnej. Reguły zabezpieczeń są przetwarzane, gdy platforma Azure przekształci publiczny adres IP na prywatny adres IP dla reguł zabezpieczeń dla ruchu przychodzącego, a zanim platforma Azure przetłumaczy prywatny adres IP na publiczny adres IP dla reguł wychodzących. Aby dowiedzieć się więcej na temat publicznych i prywatnych adresów IP na platformie Azure, zobacz [typy adresów IP](virtual-network-ip-addresses-overview-arm.md).        |
+    |Źródło     | Wybierz **dowolną**, **grupę zabezpieczeń aplikacji**, **adresy IP**lub **tag usługi** dla reguł zabezpieczeń dla ruchu przychodzącego. W przypadku tworzenia reguły zabezpieczeń dla ruchu wychodzącego opcje są takie same jak opcje wymienione dla **miejsca docelowego**.       | W przypadku wybrania **grupy zabezpieczeń aplikacji**wybierz co najmniej jedną istniejącą grupę zabezpieczeń aplikacji, która istnieje w tym samym regionie co interfejs sieciowy. Dowiedz się, jak [utworzyć grupę zabezpieczeń aplikacji](#create-an-application-security-group). W przypadku wybrania **grupy zabezpieczeń aplikacji** zarówno dla **źródła** , jak i **docelowego**, interfejsy sieciowe w obu grupach zabezpieczeń aplikacji muszą znajdować się w tej samej sieci wirtualnej. W przypadku wybrania **adresów IP**Określ **źródłowe adresy IP/zakresy CIDR**. Można określić pojedynczą wartość lub rozdzieloną przecinkami listę wielu wartości. Przykładem wielu wartości jest 10.0.0.0/16, 192.188.1.1. Istnieją limity liczby wartości, które można określić. Aby uzyskać szczegółowe informacje, zobacz [limity platformy Azure](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) . Jeśli wybierzesz **tag usługi**, a następnie wybierz jeden tag usługi. Tag usługi jest wstępnie zdefiniowanym identyfikatorem dla kategorii adresów IP. Aby dowiedzieć się więcej na temat dostępnych tagów usługi i informacje o tym, co reprezentuje każdy tag, zobacz [Tagi usług](security-overview.md#service-tags). Jeśli określony adres IP jest przypisany do maszyny wirtualnej platformy Azure, upewnij się, że został określony prywatny adres IP, a nie publicznego adresu IP przypisanego do maszyny wirtualnej. Reguły zabezpieczeń są przetwarzane, gdy platforma Azure przekształci publiczny adres IP na prywatny adres IP dla reguł zabezpieczeń dla ruchu przychodzącego, a zanim platforma Azure przetłumaczy prywatny adres IP na publiczny adres IP dla reguł wychodzących. Aby dowiedzieć się więcej na temat publicznych i prywatnych adresów IP na platformie Azure, zobacz [typy adresów IP](virtual-network-ip-addresses-overview-arm.md).        |
+    |Zakresy portów źródłowych     | Określ pojedynczy port, taki jak 80, zakres portów, taki jak 1024-65535, lub rozdzielana przecinkami lista pojedynczych portów i/lub zakresów portów, takich jak 80, 1024-65535. Wprowadź gwiazdkę, aby zezwolić na ruch na dowolnym porcie. | Porty i zakresy określają, które porty są dozwolone lub odrzucane przez tę regułę. Istnieją limity liczby portów, które można określić. Aby uzyskać szczegółowe informacje, zobacz [limity platformy Azure](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) .  |
+    |Cel     | Wybierz **dowolną**, **grupę zabezpieczeń aplikacji**, **adresy IP**lub **Virtual Network** dla reguł zabezpieczeń dla ruchu wychodzącego. W przypadku tworzenia reguły zabezpieczeń dla ruchu przychodzącego opcje są takie same jak opcje na liście **Źródło**.        | W przypadku wybrania **grupy zabezpieczeń aplikacji** należy wybrać co najmniej jedną istniejącą grupę zabezpieczeń aplikacji, która istnieje w tym samym regionie co interfejs sieciowy. Dowiedz się, jak [utworzyć grupę zabezpieczeń aplikacji](#create-an-application-security-group). W przypadku wybrania **grupy zabezpieczeń aplikacji**wybierz jedną istniejącą grupę zabezpieczeń aplikacji, która istnieje w tym samym regionie co interfejs sieciowy. W przypadku wybrania opcji **adresy IP**Określ **docelowe adresy IP/zakresy CIDR**. Podobnie jak **źródłowe** i **źródłowe adresy IP/zakresy CIDR**, można określić pojedynczy lub wiele adresów lub zakresów, a liczba jest ograniczona do liczby, którą można określić. Wybranie opcji **Sieć wirtualna**, która jest tagiem usługi, oznacza, że ruch jest dozwolony dla wszystkich adresów IP w przestrzeni adresowej sieci wirtualnej. Jeśli określony adres IP jest przypisany do maszyny wirtualnej platformy Azure, upewnij się, że został określony prywatny adres IP, a nie publicznego adresu IP przypisanego do maszyny wirtualnej. Reguły zabezpieczeń są przetwarzane, gdy platforma Azure przekształci publiczny adres IP na prywatny adres IP dla reguł zabezpieczeń dla ruchu przychodzącego, a zanim platforma Azure przetłumaczy prywatny adres IP na publiczny adres IP dla reguł wychodzących. Aby dowiedzieć się więcej na temat publicznych i prywatnych adresów IP na platformie Azure, zobacz [typy adresów IP](virtual-network-ip-addresses-overview-arm.md).        |
     |Zakresy portów docelowych     | Określ pojedynczą wartość lub listę wartości rozdzielonych przecinkami. | Podobnie jak w przypadku **zakresów portów źródłowych**, można określić jeden lub wiele portów i zakresów, a liczba jest ograniczona do liczby, którą można określić. |
-    |Protokół     | Wybierz **dowolny**, **TCP**, **UDP** lub **ICMP**.        |         |
-    |Akcja     | Wybierz opcję **Zezwalaj** lub **Odmów**.        |         |
+    |Protocol (Protokół)     | Wybierz **dowolny**, **TCP**, **UDP** lub **ICMP**.        |         |
+    |Działanie     | Wybierz opcję **Zezwalaj** lub **Odmów**.        |         |
     |Priorytet     | Wprowadź wartość z zakresu od 100-4096, która jest unikatowa dla wszystkich reguł zabezpieczeń w sieciowej grupie zabezpieczeń. |Reguły są przetwarzane w kolejności priorytetów. Im niższa wartość, tym wyższy priorytet. Zaleca się pozostawienie przerwy między numerami priorytetu podczas tworzenia reguł, takich jak 100, 200, 300. Pozostawienie przerw w ułatwia dodawanie reguł w przyszłości, które mogą być konieczne do wprowadzenia wyższych lub niższych niż istniejące reguły.         |
     |Nazwa     | Unikatowa nazwa reguły w sieciowej grupie zabezpieczeń.        |  Nazwa może składać się z maksymalnie 80 znaków. Musi zaczynać się literą lub cyfrą, kończyć literą, cyfrą lub znakiem podkreślenia i może zawierać tylko litery, cyfry, podkreślenia, kropki lub łączniki.       |
     |Opis     | Opcjonalny opis.        |         |
@@ -175,7 +175,7 @@ Lista zawiera wszystkie utworzone reguły oraz [domyślne reguły zabezpieczeń]
 ### <a name="delete-a-security-rule"></a>Usuwanie reguły zabezpieczeń
 
 1. Wykonaj kroki opisane w temacie [Wyświetlanie szczegółów reguły zabezpieczeń](#view-details-of-a-security-rule).
-2. Wybierz pozycję **Usuń**, a następnie wybierz pozycję **tak**.
+2. Wybierz pozycję **Usuń**, a następnie wybierz pozycję **Tak**.
 
 **Polecenia**
 
@@ -195,9 +195,9 @@ Grupa zabezpieczeń aplikacji zawiera co najmniej jeden interfejs sieciowy. Aby 
     | Ustawienie        | Wartość                                                   |
     | ---            | ---                                                     |
     | Nazwa           | Nazwa musi być unikatowa w obrębie grupy zasobów.        |
-    | Subscription   | Wybierz subskrypcję.                               |
+    | Subskrypcja   | Wybierz subskrypcję.                               |
     | Grupa zasobów | Wybierz istniejącą grupę zasobów lub Utwórz nową. |
-    | Location       | Wybierz lokalizację                                       |
+    | Lokalizacja       | Wybieranie lokalizacji                                       |
 
 **Polecenia**
 
@@ -254,7 +254,7 @@ Aby wykonać zadania dotyczące sieciowych grup zabezpieczeń, reguł zabezpiecz
 
 ### <a name="network-security-group"></a>Sieciowa grupa zabezpieczeń
 
-| Akcja                                                        |   Nazwa                                                                |
+| Działanie                                                        |   Nazwa                                                                |
 |-------------------------------------------------------------- |   -------------------------------------------                         |
 | Microsoft.Network/networkSecurityGroups/read                  |   Pobierz sieciową grupę zabezpieczeń                                          |
 | Microsoft.Network/networkSecurityGroups/write                 |   Utwórz lub Zaktualizuj grupę zabezpieczeń sieci                             |
@@ -264,7 +264,7 @@ Aby wykonać zadania dotyczące sieciowych grup zabezpieczeń, reguł zabezpiecz
 
 ### <a name="network-security-group-rule"></a>Reguła sieciowej grupy zabezpieczeń
 
-| Akcja                                                        |   Nazwa                                                                |
+| Działanie                                                        |   Nazwa                                                                |
 |-------------------------------------------------------------- |   -------------------------------------------                         |
 | Microsoft.Network/networkSecurityGroups/rules/read            |   Pobierz regułę                                                            |
 | Microsoft.Network/networkSecurityGroups/rules/write           |   Utwórz lub zaktualizuj regułę                                               |
@@ -272,7 +272,7 @@ Aby wykonać zadania dotyczące sieciowych grup zabezpieczeń, reguł zabezpiecz
 
 ### <a name="application-security-group"></a>Grupa zabezpieczeń aplikacji
 
-| Akcja                                                                     | Nazwa                                                     |
+| Działanie                                                                     | Nazwa                                                     |
 | --------------------------------------------------------------             | -------------------------------------------              |
 | Microsoft.Network/applicationSecurityGroups/joinIpConfiguration/action     | Przyłączanie konfiguracji adresu IP do grupy zabezpieczeń aplikacji|
 | Microsoft.Network/applicationSecurityGroups/joinNetworkSecurityRule/action | Przyłączanie reguły zabezpieczeń do grupy zabezpieczeń aplikacji    |

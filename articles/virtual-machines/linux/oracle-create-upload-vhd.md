@@ -3,7 +3,7 @@ title: Tworzenie i przekazywanie Oracle Linux wirtualnego dysku twardego
 description: Zapoznaj się z tematem tworzenie i przekazywanie wirtualnego dysku twardego (VHD) platformy Azure zawierającego Oracle Linux system operacyjny.
 services: virtual-machines-linux
 documentationcenter: ''
-author: szarkos
+author: MicahMcKittrick-MSFT
 manager: gwallace
 editor: tysonn
 tags: azure-service-management,azure-resource-manager
@@ -13,21 +13,19 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/10/2019
-ms.author: szark
-ms.openlocfilehash: c1c70243748c1f8d3b93eac501bd50f8d80ecd75
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: HT
+ms.author: mimckitt
+ms.openlocfilehash: e0250737f1f2934548a16ee42e9ff582f2403c48
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75463812"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75747727"
 ---
 # <a name="prepare-an-oracle-linux-virtual-machine-for-azure"></a>Przygotowywanie maszyny wirtualnej systemu Linux w środowisku Oracle dla platformy Azure
-[!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
-## <a name="prerequisites"></a>Wymagania wstępne
 W tym artykule założono, że zainstalowano już Oracle Linux system operacyjny na wirtualnym dysku twardym. Istnieje wiele narzędzi do tworzenia plików VHD, na przykład rozwiązanie wirtualizacji, takie jak funkcja Hyper-V. Aby uzyskać instrukcje, zobacz [Instalowanie roli funkcji Hyper-V i Konfigurowanie maszyny wirtualnej](https://technet.microsoft.com/library/hh846766.aspx).
 
-### <a name="oracle-linux-installation-notes"></a>Oracle Linux uwagi dotyczące instalacji
+## <a name="oracle-linux-installation-notes"></a>Oracle Linux uwagi dotyczące instalacji
 * Aby uzyskać więcej porad dotyczących przygotowywania systemu Linux dla platformy Azure, zobacz również [Ogólne informacje o instalacji](create-upload-generic.md#general-linux-installation-notes) w systemie Linux.
 * Obsługa funkcji Hyper-V i platformy Azure Oracle Linux z nieprzerwanym jądrem przedsiębiorstwa (UEK) lub jądrem zgodnym z systemem Red Hat.
 * UEK2 firmy Oracle nie jest obsługiwana w przypadku funkcji Hyper-V i platformy Azure, ponieważ nie obejmują one wymaganych sterowników.

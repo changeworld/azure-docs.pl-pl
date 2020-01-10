@@ -2,15 +2,16 @@
 title: Wprowadzenie do mikrousług na platformie Azure
 description: Omówienie przyczyn kompilowania aplikacji w chmurze z podejściem mikrousług jest ważne w przypadku nowoczesnych zastosowań aplikacji oraz sposobu, w jaki usługa Azure Service Fabric zapewnia platformę do osiągnięcia tego celu.
 ms.topic: conceptual
-ms.date: 06/18/2019
-ms.openlocfilehash: e23c571d2000b5565da018d6ddf70a6388cb9226
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: HT
+ms.date: 01/07/2020
+ms.custom: sfrev
+ms.openlocfilehash: af18a6cb45808c0af5ec2782a3fd2100e3b7bf99
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75466328"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750619"
 ---
-# <a name="why-use-a-microservices-approach-to-building-applications"></a>Dlaczego warto korzystać z mikrousług do kompilowania aplikacji?
+# <a name="why-use-a-microservices-approach-to-building-applications"></a>Dlaczego warto stosować podejście mikrousług do kompilowania aplikacji
 
 W przypadku deweloperów oprogramowania aplikacja nie jest częścią żadnej nowej. Zwykle używane jest podejście warstwowe z magazynem zaplecza, logiką biznesową warstwy środkowej i interfejsem użytkownika frontonu. Zmiany *w* ciągu ostatnich kilku lat polegają na tym, że deweloperzy tworzą aplikacje rozproszone dla chmury.
 
@@ -128,7 +129,8 @@ Może wydawać się oczywiste i często pojawia się, a mikrousługa musi zgłos
 
 Kondycja różni się od diagnostyki. Kondycja polega na tym, że usługa mikrousług zgłasza bieżący stan, aby podjąć odpowiednie działania. Dobrym przykładem jest praca z mechanizmami uaktualniania i wdrażania w celu zapewnienia dostępności. Chociaż usługa może być w złej kondycji ze względu na awarię procesu lub ponowny rozruch komputera, usługa może nadal działać. Ostatnim wymaganiem jest, aby sytuacja była gorsza, rozpoczynając od uaktualnienia. Najlepszym rozwiązaniem jest zbadanie pierwszego lub poczekanie na odzyskanie mikrousługi. Zdarzenia dotyczące kondycji z mikrousługi pomagają nam podejmować świadome decyzje i, w efekcie, ułatwiają tworzenie samonaprawczych usług.
 
-## <a name="guidance-for-designing-microservices-on-azure"></a>Wskazówki dotyczące projektowania mikrousług na platformie Azure 
+## <a name="guidance-for-designing-microservices-on-azure"></a>Wskazówki dotyczące projektowania mikrousług na platformie Azure
+
 Odwiedź centrum architektury platformy Azure, aby uzyskać wskazówki dotyczące [projektowania i tworzenia mikrousług na platformie Azure](https://docs.microsoft.com/azure/architecture/microservices/).
 
 ## <a name="service-fabric-as-a-microservices-platform"></a>Service Fabric jako platforma mikrousług
@@ -185,7 +187,6 @@ Na tym etapie aplikacja jest w pełni złożona z mikrousług (lub podzielona na
 Może. W firmie Microsoft, ponieważ coraz więcej zespołów rozpoczęło kompilację w chmurze ze względów firmy, wiele z nich osiąga korzyści wynikające z zastosowania mikrousług. Na przykład usługa Bing korzysta z mikrousług przez lata. W przypadku innych zespołów podejście mikrousług było nowe. Zespoły stwierdziły, że wystąpiły problemy, które mogą zostać rozwiązane poza podstawowymi obszarami siły. Dlatego Service Fabric uzyskano trakcję jako technologia tworzenia usług.
 
 Celem Service Fabric jest zredukowanie złożoności tworzenia aplikacji mikrousług, aby nie trzeba było przełączać się jak wiele kosztów. Uruchamiaj małe, skalowane w razie konieczności, wycofaj usługi, dodawaj nowe i rozwijaj użycie przez klienta. Wiemy również, że istnieje wiele innych problemów, które nie zostały jeszcze rozwiązane, aby zwiększyć możliwości mikrousług dla większości deweloperów. Kontenery i model programowania aktora to przykłady małych kroków w tym kierunku. Wiemy, że coraz więcej innowacji zacznie ułatwić podejście mikrousług.
-
 
 ## <a name="next-steps"></a>Następne kroki
 

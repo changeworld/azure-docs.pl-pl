@@ -7,13 +7,13 @@ author: brjohnstmsft
 ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 24e16942410c72640628bd4120d05a85e68de993
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.date: 01/04/2020
+ms.openlocfilehash: ee8e11670d5b3e0f0edd57e3f87566faa60d4bc4
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720029"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754401"
 ---
 # <a name="azure-cognitive-search-service-rest-api-version-2019-05-06-preview"></a>Interfejs API REST usługi Wyszukiwanie poznawcze platformy Azure — Wersja 2019-05-06-Preview
 
@@ -25,11 +25,11 @@ W tym artykule opisano `api-version=2019-05-06-Preview` wersja interfejsu API RE
 
 ## <a name="new-in-2019-05-06-preview"></a>Nowość w 2019-05-06 — wersja zapoznawcza
 
-+ [Indeksowanie przyrostowe](cognitive-search-incremental-indexing-conceptual.md) jest nowym trybem do indeksowania, który dodaje stan i buforowanie do zestawu umiejętności, umożliwiając ponowne używanie istniejących danych wyjściowych, gdy definicje danych źródłowych, indeksatora i zestawu umiejętności są niezmienione. Ta funkcja ma zastosowanie tylko do wzbogacania zdefiniowanych zestawu umiejętności poznawczych.
++ [Wzbogacanie przyrostowe (wersja zapoznawcza)](cognitive-search-incremental-indexing-conceptual.md) dodaje buforowanie do potoku wzbogacania, umożliwiając ponowne użycie istniejących danych wyjściowych, jeśli dopuszczająca modyfikacja, taka jak aktualizacja zestawu umiejętności lub innego obiektu, nie spowoduje zmiany zawartości. Buforowanie dotyczy tylko ulepszonych dokumentów utworzonych przez zestawu umiejętności.
 
-+ [Cosmos DB indeksator](search-howto-index-cosmosdb.md) obsługuje interfejs API MongoDB, interfejs API Gremlin i interfejs API Cassandra.
++ [Cosmos DB indeksator](search-howto-index-cosmosdb.md) obsługuje interfejs API MongoDB (wersja zapoznawcza), interfejs Gremlin API (wersja zapoznawcza) i interfejs API Cassandra (wersja zapoznawcza).
 
-+ [Azure Data Lake Storage Gen2 indeksator](search-howto-index-azure-data-lake-storage.md) może indeksować zawartość i metadane z Data Lake Storage Gen2.
++ [Azure Data Lake Storage Gen2 indeksator (wersja zapoznawcza)](search-howto-index-azure-data-lake-storage.md) może indeksować zawartość i metadane z Data Lake Storage Gen2.
 
 + [Wyodrębnianie dokumentu (wersja zapoznawcza)](cognitive-search-skill-document-extraction.md) to umiejętność wykorzystywana podczas indeksowania, która pozwala wyodrębnić zawartość pliku z zestawu umiejętności. Wcześniej przed wykonaniem zestawu umiejętności tylko złamanie dokumentu. Po dodaniu tej umiejętności można także wykonać tę operację w ramach wykonywania zestawu umiejętności.
 

@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: 89364a3ee948abbe5d233052878abe92bc7663a7
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: ece6fdb743035069bc6c666d6e90c76860f63e82
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73241673"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75744914"
 ---
 # <a name="use-apache-oozie-with-apache-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>Korzystanie z usługi Apache Oozie z usługą Apache Hadoop do definiowania i uruchamiania przepływu pracy w usłudze Azure HDInsight opartej na systemie Linux
 
@@ -296,12 +296,12 @@ W definicji zadania opisano, gdzie znaleźć plik Workflow. XML. Opisano w nim r
 
 2. Edytuj Poniższy kod XML w następujący sposób:
 
-    |Wartość symbolu zastępczego| Zastąpiona wartość|
+    |Wartość symbolu zastępczego| Zamieniono wartość|
     |---|---|
     |wasbs://mycontainer\@mystorageaccount.blob.core.windows.net| Wartość odebrana z kroku 1.|
-    |Administratora| Nazwa logowania dla klastra usługi HDInsight, jeśli nie jest administratorem.|
+    |admin| Nazwa logowania dla klastra usługi HDInsight, jeśli nie jest administratorem.|
     |serverName| Nazwa serwera usługi Azure SQL Database.|
-    |SqlLogin| Logowanie do serwera usługi Azure SQL Database.|
+    |sqlLogin| Logowanie do serwera usługi Azure SQL Database.|
     |sqlPassword| Hasło logowania do serwera usługi Azure SQL Database.|
 
     ```xml
@@ -394,10 +394,10 @@ Poniższe kroki służą do przesyłania przepływów pracy Oozie do klastra i z
 
     ```xml
     <name>oozie.base.url</name>
-    <value>http://hn0-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:11000/oozie</value>
+    <value>http://ACTIVE-HEADNODE-NAME.UNIQUEID.cx.internal.cloudapp.net:11000/oozie</value>
     ```
 
-    Częścią `http://hn0-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:11000/oozie` jest adres URL do użycia z poleceniem Oozie.
+    Częścią `http://ACTIVE-HEADNODE-NAME.UNIQUEID.cx.internal.cloudapp.net:11000/oozie` jest adres URL do użycia z poleceniem Oozie.
 
 2. Edytuj kod, aby zastąpić adres URL otrzymany wcześniej. Aby utworzyć zmienną środowiskową dla adresu URL, użyj poniższego polecenia, aby nie trzeba było wprowadzać go dla wszystkich poleceń:
 
@@ -480,7 +480,7 @@ Za pomocą interfejsu API REST Oozie można tworzyć własne narzędzia, które 
 
 * **Identyfikator URI**: można uzyskać dostęp do interfejsu API REST spoza klastra w `https://CLUSTERNAME.azurehdinsight.net/oozie`.
 
-* **Uwierzytelnianie**: Aby przeprowadzić uwierzytelnianie, użyj interfejsu API dla konta http klastra (administratora) i hasła. Na przykład:
+* **Uwierzytelnianie**: Aby przeprowadzić uwierzytelnianie, użyj interfejsu API dla konta http klastra (administratora) i hasła. Przykład:
 
     ```bash
     curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/oozie/versions
@@ -657,7 +657,7 @@ Poniżej znajdują się konkretne błędy, które można napotkać i sposoby ich
 
 ### <a name="ja009-cannot-initialize-cluster"></a>JA009: nie można zainicjować klastra
 
-**Objawy**: stan zadania zmieni się na **zawieszone**. Szczegóły zadania przedstawiają stan `RunHiveScript` jako **START_MANUAL**. Po wybraniu akcji zostanie wyświetlony następujący komunikat o błędzie:
+**Objawy**: stan zadania zmieni się na **zawieszone**. Szczegóły zadania zawierają `RunHiveScript` stanu jako **START_MANUAL**. Po wybraniu akcji zostanie wyświetlony następujący komunikat o błędzie:
 
     JA009: Cannot initialize Cluster. Please check your configuration for map
 
@@ -667,7 +667,7 @@ Poniżej znajdują się konkretne błędy, które można napotkać i sposoby ich
 
 ### <a name="ja002-oozie-is-not-allowed-to-impersonate-ltusergt"></a>JA002: Oozie nie może personifikować użytkownika &lt;&gt;
 
-**Objawy**: stan zadania zmieni się na **zawieszone**. Szczegóły zadania przedstawiają stan `RunHiveScript` jako **START_MANUAL**. W przypadku wybrania akcji zostanie wyświetlony następujący komunikat o błędzie:
+**Objawy**: stan zadania zmieni się na **zawieszone**. Szczegóły zadania zawierają `RunHiveScript` stanu jako **START_MANUAL**. W przypadku wybrania akcji zostanie wyświetlony następujący komunikat o błędzie:
 
     JA002: User: oozie is not allowed to impersonate <USER>
 

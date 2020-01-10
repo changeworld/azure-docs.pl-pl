@@ -1,5 +1,5 @@
 ---
-title: Żądania wzrostu przydziału regionalnego platformy Azure | Microsoft Docs
+title: Poproś o zwiększenie limitów przydziału regionalnych vCPU platformy Azure | Microsoft Docs
 description: Żądania wzrostu limitu przydziału regionalnego
 author: sowmyavenkat86
 ms.author: svenkat
@@ -7,90 +7,100 @@ ms.date: 06/07/2019
 ms.topic: article
 ms.service: azure-supportability
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: 132cf6ccfec5af9951f5dc6d6a3c6d3c81363d81
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: e262651a6e040c40dbe240ad3437eff1914aa3e5
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850010"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750851"
 ---
-# <a name="standard-quota-regional-vcpu-limit-increase"></a>Przydział standardowy: Zwiększ limit vCPU regionalny 
+# <a name="standard-quota-increase-limits-by-region"></a>Przydział standardowy: Zwiększ limity według regionu 
 
-Menedżer zasobów obsługuje dwa typy przydziałów vCPU dla maszyn wirtualnych. **Maszyny wirtualne z opcją płatność zgodnie z rzeczywistym** użyciem i **zarezerwowane wystąpienia maszyn wirtualnych** używają standardowego limitu przydziału. **Miejsca na maszynach wirtualnych** używają limitu przydziału miejsca. 
+Azure Resource Manager obsługuje dwa typy przydziałów vCPU dla maszyn wirtualnych:
+* *Maszyny wirtualne z opcją płatność zgodnie z rzeczywistym* użyciem i *zarezerwowane wystąpienia maszyn wirtualnych* podlegają *standardowym limitowi przydziału vCPU*.
+* *Dodatkowe maszyny wirtualne* podlegają *limitowi przydziału vCPU*. 
 
-Standardowy przydział vCPU dla wystąpień z opcją płatność zgodnie z rzeczywistym użyciem i zarezerwowane wystąpienia maszyn wirtualnych są wymuszane w dwóch warstwach dla każdej subskrypcji w każdym regionie.
+Standardowy przydział vCPU dla wystąpień z opcją płatność zgodnie z rzeczywistym użyciem i zarezerwowanych maszyn wirtualnych jest wymuszany w dwóch warstwach dla każdej subskrypcji w każdym regionie:
+* Pierwsza warstwa to *całkowity limit procesorów wirtualnych vCPU regionalnych* (dla wszystkich serii maszyn wirtualnych).
+* Druga warstwa to *Limit procesorów wirtualnych vCPU serii dla maszyn wirtualnych* (na przykład procesorów wirtualnych vCPU serii D).
  
-Pierwsza warstwa to **łączny limit procesorów wirtualnych vCPU regionalnych** (dla wszystkich serii maszyn wirtualnych), a druga warstwa to **Limit procesorów wirtualnych vCPU dla serii maszyn wirtualnych** (na przykład procesorów wirtualnych vCPU serii D). Gdy zostanie wdrożona nowa maszyna wirtualna, suma nowych i istniejących procesorów wirtualnych vCPU użycie dla tej serii maszyn wirtualnych nie może przekraczać limitu przydziału vCPU zatwierdzonego dla danej serii maszyn wirtualnych. Dodatkowo całkowita i istniejąca liczba vCPU wdrożona na wszystkich seriach maszyn wirtualnych nie powinna przekraczać całkowitego przydziału regionalnego procesorów wirtualnych vCPU zatwierdzonego dla subskrypcji. Jeśli jeden z tych przydziałów zostanie przekroczony, wdrożenie maszyny wirtualnej nie będzie dozwolone. Można zażądać zwiększenia limitu przydziału procesorów wirtualnych vCPU dla serii maszyn wirtualnych z Azure Portal. Zwiększenie limitu przydziału serii maszyn wirtualnych powoduje automatyczne zwiększenie łącznej granicy procesorów wirtualnych vCPU w regionie o tej samej wartości.
+Za każdym razem, gdy wdrażasz nową maszynę wirtualną, całkowite i istniejące użycie vCPU dla tej serii maszyn wirtualnych nie mogą przekroczyć zatwierdzonego limitu przydziału vCPU dla danej serii maszyn wirtualnych. Ponadto całkowita liczba nowych i istniejących procesorów wirtualnych vCPU, które są wdrożone na wszystkich seriach maszyn wirtualnych, nie powinna przekraczać całkowitego zatwierdzonego przydziału regionalnego vCPU dla subskrypcji. Jeśli jeden z tych limitów przydziału zostanie przekroczony, wdrożenie maszyny wirtualnej jest niedozwolone. 
 
-Po utworzeniu nowej subskrypcji domyślna łączna liczba procesorów wirtualnych vCPU regionalnych może nie być równa sumie domyślnych przydziałów vCPU dla wszystkich poszczególnych serii maszyn wirtualnych. Może to skutkować subskrypcją z wystarczającym limitem przydziału dla każdej pojedynczej serii maszyn wirtualnych, która ma zostać wdrożona, ale nie jest wystarczająca do całkowitego procesorów wirtualnych vCPU regionalnych dla wszystkich wdrożeń. W takim przypadku musisz przesłać żądanie, aby w sposób jawny zwiększyć łączny limit procesorów wirtualnych vCPU regionalny. Łączny limit procesorów wirtualnych vCPU regionalnych nie może przekroczyć sumy zatwierdzonego przydziału dla całej serii maszyn wirtualnych dla regionu.
+Można zażądać zwiększenia limitu przydziału vCPU dla serii maszyn wirtualnych przy użyciu Azure Portal. Zwiększenie limitu przydziału serii maszyn wirtualnych powoduje automatyczne zwiększenie łącznej granicy vCPU w regionie o tej samej wartości.
 
-Dowiedz się więcej o standardowych przydziałach vCPU na [stronie limit przydziału vCPU maszyny wirtualnej](https://docs.microsoft.com/azure/virtual-machines/windows/quotas) oraz na stronie [limity subskrypcji i usług platformy Azure](https://aka.ms/quotalimits) .
+Gdy tworzysz nową subskrypcję, domyślną łączną liczbą procesorów wirtualnych vCPU regionalnych może być nie równa całkowity limit przydziału vCPU dla wszystkich poszczególnych serii maszyn wirtualnych. Ta niezgodność może skutkować subskrypcją z wystarczającym limitem przydziału dla poszczególnych serii maszyn wirtualnych, które mają zostać wdrożone. Jednak może nie być wystarczający limit przydziału, aby pomieścić łączną procesorów wirtualnych vCPU regionalną dla wszystkich wdrożeń. W takim przypadku należy przesłać żądanie, aby jawnie zwiększyć limit łącznej liczby procesorów wirtualnych vCPU regionalnych. Łączny limit vCPU regionalnych nie może przekroczyć całkowitego zatwierdzonego przydziału dla całej serii maszyn wirtualnych dla regionu.
 
-Dowiedz się więcej na temat **zwiększania liczby dodatkowych limitów vCPU maszyn wirtualnych** [.](https://docs.microsoft.com/azure/azure-supportability/low-priority-quota)
+Aby dowiedzieć się więcej na temat standardowych przydziałów usługi vCPU, zobacz limity [przydziału vCPU maszyny wirtualnej](https://docs.microsoft.com/azure/virtual-machines/windows/quotas) i [usługi Azure Subscription and Service limit](https://aka.ms/quotalimits).
 
-Możesz poprosić o zwiększenie **standardowego limitu regionalnej maszyny wirtualnej w vCPU** , za pośrednictwem bloku **Pomoc i obsługa techniczna** oraz bloku **użycie i przydział** w portalu.
+Aby dowiedzieć się więcej o zwiększaniu limitów vCPU maszyn wirtualnych, zobacz limit [przydziału miejsca na miejscu: zwiększenie limitów dla całej serii maszyn wirtualnych](https://docs.microsoft.com/azure/azure-supportability/low-priority-quota).
 
-## <a name="request-standard-quota-regional-vcpu-limit-increase-at-subscription-level-using-the-help--support-blade"></a>Żądaj vCPU limitu przydziału w warstwie Standardowa na poziomie subskrypcji przy użyciu bloku pomoc i obsługa techniczna
+Można zażądać zwiększenia limitu przydziału vCPU standardowego według regionu na dwa sposoby, zgodnie z opisem w następnych sekcjach.
 
-Postępuj zgodnie z poniższymi instrukcjami, aby utworzyć żądanie pomocy technicznej za pomocą bloku "pomoc i obsługa techniczna platformy Azure" dostępnego w Azure Portal. 
+## <a name="request-a-quota-increase-by-region-from-the-help--support-pane"></a>Poproś o zwiększenie limitu przydziału w regionie w okienku "pomoc + obsługa techniczna"
 
-1. W obszarze https://portal.azure.com wybierz pozycję **Pomoc i obsługa techniczna**.
+Aby zażądać zwiększenia przydziału vCPU w regionie z okienka **Pomoc i obsługa techniczna** , wykonaj następujące czynności: 
 
-![Pomoc i obsługa techniczna](./media/resource-manager-core-quotas-request/helpsupport.png)
+1. W lewym okienku [Azure Portal](https://portal.azure.com)wybierz pozycję **Pomoc i obsługa techniczna**.
+
+   ![Link "pomoc + obsługa techniczna"](./media/resource-manager-core-quotas-request/helpsupport.png)
  
-2.  Wybierz pozycję **Nowe żądanie obsługi**. 
+1. W okienku **Pomoc i obsługa techniczna** wybierz pozycję **nowe żądanie obsługi**. 
 
-![Nowe żądanie pomocy technicznej](./media/resource-manager-core-quotas-request/newsupportrequest.png)
+    ![Nowe żądanie pomocy technicznej](./media/resource-manager-core-quotas-request/newsupportrequest.png)
 
-3. Z listy rozwijanej Typ problemu wybierz pozycję **usługi i limity subskrypcji (przydziały)** .
+1. Z listy rozwijanej **typ problemu** wybierz pozycję **usługi i limity subskrypcji (przydziały)** .
 
-![Lista rozwijana typ problemu](./media/resource-manager-core-quotas-request/issuetypedropdown.png)
+   ![Lista rozwijana "typ problemu"](./media/resource-manager-core-quotas-request/issuetypedropdown.png)
 
-4. Wybierz subskrypcję, która wymaga zwiększenia limitu przydziału.
+1. Z listy rozwijanej **subskrypcja** wybierz subskrypcję, której przydział chcesz zwiększyć.
 
-![Wybieranie Aktualności subskrypcji](./media/resource-manager-core-quotas-request/select-subscription-sr.png)
+   ![Lista rozwijana "subskrypcja"](./media/resource-manager-core-quotas-request/select-subscription-sr.png)
    
-5. Wybierz pozycję **inne żądania** na liście rozwijanej **Typ limitu przydziału** .
+1. Z listy rozwijanej **typ przydziału** wybierz pozycję **inne żądania**.
 
-![Typ limitu przydziału](./media/resource-manager-core-quotas-request/regional-quotatype.png)
+   ![Lista rozwijana "typ przydziału"](./media/resource-manager-core-quotas-request/regional-quotatype.png)
 
-6. W okienku **szczegółów** podaj dodatkowe informacje zgodnie z poniższym przykładem, aby pomóc w przetwarzaniu żądania i kontynuować tworzenie przypadku. 
-    1.  **Model wdrażania** — określ "Menedżer zasobów"
-    2.  **Żądany region** — określ wymagany region, np. Wschodnie stany USA 2
-    3.  **Nowa wartość limitu** — Określ limit dla nowego regionu. Ta subskrypcja nie powinna przekroczyć sumy zatwierdzonego przydziału dla poszczególnych rodzin jednostek SKU
+1. W okienku **Szczegóły problemu** w polu **Opis** podaj następujące informacje dodatkowe: 
 
-![Szczegóły przydziału](./media/resource-manager-core-quotas-request/regional-details.png)
+    a. W obszarze **model wdrażania**Określ **Menedżer zasobów**.  
+    b. W **obszarze region**określ wymagany region (na przykład **Wschodnie stany USA 2**).  
+    d. W polu **nowy limit**określ nowy limit vCPU dla regionu. Ta wartość nie powinna przekraczać sumy zatwierdzonych przydziałów dla poszczególnych serii SKU dla tej subskrypcji.
 
-## <a name="request-total-regional-vcpus-quota-increase-at-subscription-level-using-the-usages--quota-blade"></a>Zażądaj całkowitego przydziału regionalnej procesorów wirtualnych vCPU na poziomie subskrypcji przy użyciu bloku **użycia i limitu przydziału**
+    ![Okienko "Szczegóły problemu"](./media/resource-manager-core-quotas-request/regional-details.png)
 
-Postępuj zgodnie z poniższymi instrukcjami, aby utworzyć żądanie pomocy technicznej za pomocą bloku "użycie i limit przydziału" platformy Azure dostępnego w Azure Portal. 
+1. Wybierz pozycję **Zapisz i Kontynuuj** , aby kontynuować tworzenie żądania obsługi.
 
-1. W obszarze https://portal.azure.com wybierz pozycję **subskrypcje**.
+## <a name="request-a-quota-increase-by-region-from-the-subscriptions-pane"></a>Poproś o zwiększenie limitu przydziału w regionie z okienka "subskrypcje"
 
-![Subskrypcje](./media/resource-manager-core-quotas-request/subscriptions.png)
+Aby zażądać zwiększenia przydziału vCPU według regionu z okienka **subskrypcje** , wykonaj następujące czynności: 
 
-2. Wybierz subskrypcję, która wymaga zwiększenia limitu przydziału.
+1. W lewym okienku [Azure Portal](https://portal.azure.com)wybierz pozycję **subskrypcje**.
 
-![Wybierz subskrypcję](./media/resource-manager-core-quotas-request/select-subscription.png)
+   ![Link "subskrypcje"](./media/resource-manager-core-quotas-request/subscriptions.png)
 
-3. Wybierz **użycie i przydziały**
+1. Wybierz subskrypcję, której przydział chcesz zwiększyć.
 
-![Wybierz użycie i przydziały](./media/resource-manager-core-quotas-request/select-usage-quotas.png)
+   ![Okienko "subskrypcje"](./media/resource-manager-core-quotas-request/select-subscription.png)
 
-4. W prawym górnym rogu wybierz pozycję **Zwiększ liczbę żądań**.
+1. W lewym okienku **nazwy subskrypcji\<** stronie wybierz pozycję **użycie + przydziały**.
 
-![Zwiększ liczbę żądań](./media/resource-manager-core-quotas-request/request-increase.png)
+   ![Link "użycie i przydziały"](./media/resource-manager-core-quotas-request/select-usage-quotas.png)
 
-5. Wybierz pozycję **inne żądania** na liście rozwijanej **Typ limitu przydziału** .
+1. W prawym górnym rogu wybierz pozycję **Zwiększ liczbę żądań**.
 
-![Typ limitu przydziału](./media/resource-manager-core-quotas-request/regional-quotatype.png)
+   ![Zwiększ liczbę żądań](./media/resource-manager-core-quotas-request/request-increase.png)
 
-6. W okienku **szczegółów** podaj dodatkowe informacje zgodnie z poniższym przykładem, aby pomóc w przetwarzaniu żądania i kontynuować tworzenie przypadku. 
-    1.  **Model wdrażania** — określ "Menedżer zasobów"
-    2.  **Żądany region** — określ wymagany region, np. Wschodnie stany USA 2
-    3.  **Nowa wartość limitu** — Określ limit dla nowego regionu. Ta subskrypcja nie powinna przekroczyć sumy zatwierdzonego przydziału dla poszczególnych rodzin jednostek SKU
+1. Z listy rozwijanej **typ przydziału** wybierz pozycję **inne żądania**.
 
-![Szczegóły przydziału](./media/resource-manager-core-quotas-request/regional-details.png)
+   ![Lista rozwijana "typ przydziału"](./media/resource-manager-core-quotas-request/regional-quotatype.png)
 
+1. W okienku **Szczegóły problemu** w polu **Opis** podaj następujące informacje dodatkowe: 
 
+    a. W obszarze **model wdrażania**Określ **Menedżer zasobów**.  
+    b. W **obszarze region**określ wymagany region (na przykład **Wschodnie stany USA 2**).  
+    d. W polu **nowy limit**określ nowy limit vCPU dla regionu. Ta wartość nie powinna przekraczać sumy zatwierdzonych przydziałów dla poszczególnych serii SKU dla tej subskrypcji.
+
+    ![Okienko "Szczegóły problemu"](./media/resource-manager-core-quotas-request/regional-details.png)
+
+1. Wybierz pozycję **Zapisz i Kontynuuj** , aby kontynuować tworzenie żądania obsługi.
 

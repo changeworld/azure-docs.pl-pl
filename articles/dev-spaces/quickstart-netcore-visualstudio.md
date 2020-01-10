@@ -3,17 +3,17 @@ title: 'Debugowanie i iteracja na Kubernetes: Visual Studio & .NET Core'
 services: azure-dev-spaces
 ms.date: 11/13/2019
 ms.topic: quickstart
-description: Szybkie tworzenie w środowisku Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
+description: W tym przewodniku szybki start pokazano, jak używać Azure Dev Spaces i programu Visual Studio do debugowania i szybkiej iteracji aplikacji platformy .NET Core w usłudze Azure Kubernetes Service
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, Service siatk, Service siatk Routing, polecenia kubectl, k8s
 manager: gwallace
 ms.custom: vs-azure
 ms.workload: azure-vs
-ms.openlocfilehash: a151314bef14e302879f4db0f7c0094779bdcfec
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: de830d07010037793eaf7471fc1147a42081b09c
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325604"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770598"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-visual-studio--net-core---azure-dev-spaces"></a>Szybki Start: debugowanie i iteracja na Kubernetes: Visual Studio & .NET Core — Azure Dev Spaces
 
@@ -44,7 +44,7 @@ Należy utworzyć klaster AKS w [obsługiwanym regionie][supported-regions]. Aby
     ![Utwórz AKS w Azure Portal](media/get-started-netcore-visualstudio/create-aks-portal.png)
 
 1. Kliknij pozycję *Przegląd + utwórz*.
-1. Kliknij pozycję *Utwórz*.
+1. Kliknij przycisk *Utwórz*.
 
 ## <a name="enable-azure-dev-spaces-on-your-aks-cluster"></a>Włączanie Azure Dev Spaces w klastrze AKS
 
@@ -60,7 +60,7 @@ Przejdź do klastra AKS w Azure Portal a następnie kliknij pozycję *Spaces*(Tw
 1. Nadaj nazwę projekt *webfrontonu* , a następnie kliknij przycisk *Utwórz*.
 1. Po wyświetleniu monitu wybierz pozycję *aplikacja sieci Web (Model-View-Controller)* dla szablonu.
 1. Wybierz pozycję *.NET Core* i *ASP.NET Core 2,1* w górnej części strony.
-1. Kliknij pozycję *Utwórz*.
+1. Kliknij przycisk *Utwórz*.
 
 ## <a name="connect-your-project-to-your-dev-space"></a>Połącz projekt z obszarem deweloperskim
 
@@ -134,4 +134,4 @@ az group delete --name MyResourceGroup --yes --no-wait
 > [Working with multiple containers and team development (Praca z wieloma kontenerami i programowanie zespołowe)](multi-service-netcore-visualstudio.md)
 
 [ingress-update]: how-dev-spaces-works.md#how-running-your-code-is-configured
-[supported-regions]: about.md#supported-regions-and-configurations
+[supported-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service

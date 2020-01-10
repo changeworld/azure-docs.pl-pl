@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/20/2019
 ms.author: juliako
-ms.openlocfilehash: 5e416087df6c27eff42db487e90ff908d7d49df8
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 37baed076ca074c1d558af36649e90959a0034c9
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977696"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750876"
 ---
 # <a name="diagnostic-logs-schemas"></a>Schematy dzienników diagnostycznych
 
 [Azure monitor](../../azure-monitor/overview.md) umożliwia monitorowanie metryk i dzienników diagnostycznych, które ułatwiają zrozumienie sposobu działania aplikacji. Można monitorować Media Services dzienników diagnostycznych oraz tworzyć alerty i powiadomienia dotyczące zebranych metryk i dzienników. Możesz wysyłać dzienniki do usługi [Azure Storage](https://azure.microsoft.com/services/storage/), przesyłać strumieniowo do [usługi Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)i eksportować je do [log Analytics](https://azure.microsoft.com/services/log-analytics/)lub korzystać z usług innych firm.
 
-Aby uzyskać szczegółowe informacje, zobacz [Azure monitor metryki](../../azure-monitor/platform/data-platform.md) i [Azure monitor dzienników diagnostycznych](../../azure-monitor/platform/resource-logs-overview.md).
+Aby uzyskać szczegółowe informacje, zobacz [Azure monitor metryki](../../azure-monitor/platform/data-platform.md) i [Azure monitor dzienników diagnostycznych](../../azure-monitor/platform/platform-logs-overview.md).
 
 W tym artykule opisano Media Services schematy dzienników diagnostycznych.
 

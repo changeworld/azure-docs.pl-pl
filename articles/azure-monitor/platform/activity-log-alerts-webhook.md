@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 03/31/2017
-ms.openlocfilehash: a79bf07c91ef80509355a10c1401d1ab94cc5118
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: eb43db7a67063622f6a6125178267573cd209471
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72552738"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75748805"
 ---
 # <a name="webhooks-for-azure-activity-log-alerts"></a>Elementy webhook dla alertów dziennika aktywności platformy Azure
 W ramach definicji grupy akcji można skonfigurować punkty końcowe elementu webhook, aby otrzymywać powiadomienia o alertach dziennika aktywności. Za pomocą elementów webhook można kierować te powiadomienia do innych systemów na potrzeby akcji wykonywanych po przetworzeniu lub w niestandardowym. W tym artykule przedstawiono sposób, w jaki zostanie wyświetlony ładunek dla wpisu HTTP dla elementu webhook.
@@ -174,7 +174,7 @@ Element webhook może opcjonalnie użyć autoryzacji opartej na tokenach na potr
 }
 ```
 
-### <a name="servicehealth"></a>Servicehealth
+### <a name="servicehealth"></a>ServiceHealth
 
 ```json
 {
@@ -260,9 +260,9 @@ Aby uzyskać szczegółowe informacje dotyczące schematu alertów dziennika akt
 | Nazwa elementu | Opis |
 | --- | --- |
 | status |Używane na potrzeby alertów dotyczących metryk. Zawsze ustawione na "aktywowane" dla alertów dziennika aktywności. |
-| Context |Kontekst zdarzenia. |
+| context |Kontekst zdarzenia. |
 | resourceProviderName |Dostawca zasobów zasobu, którego to dotyczy. |
-| warunektype |Zawsze "zdarzenie". |
+| conditionType |Zawsze "zdarzenie". |
 | name |Nazwa reguły alertu. |
 | id |Identyfikator zasobu alertu. |
 | description |Opis alertu ustawiany podczas tworzenia alertu. |
@@ -271,26 +271,26 @@ Aby uzyskać szczegółowe informacje dotyczące schematu alertów dziennika akt
 | resourceId |Identyfikator zasobu zasobu, którego dotyczy problem. |
 | resourceGroupName |Nazwa grupy zasobów dla zasobu, którego dotyczy problem. |
 | properties |Zestaw par `<Key, Value>` (czyli `Dictionary<String, String>`), który zawiera szczegółowe informacje o zdarzeniu. |
-| wydarzen |Element, który zawiera metadane dotyczące zdarzenia. |
-| Zgody |Właściwości Access Control oparte na rolach zdarzenia. Te właściwości zazwyczaj obejmują akcję, rolę i zakres. |
+| zdarzenie |Element, który zawiera metadane dotyczące zdarzenia. |
+| authorization |Właściwości Access Control oparte na rolach zdarzenia. Te właściwości zazwyczaj obejmują akcję, rolę i zakres. |
 | category |Kategoria zdarzenia. Obsługiwane wartości to: administracyjne, alert, zabezpieczenia, servicehealth i rekomendacja. |
 | Obiekt wywołujący |Adres e-mail użytkownika, który wykonał operację, oświadczenie nazwy UPN lub oświadczenie SPN na podstawie dostępności. Może mieć wartość null w przypadku niektórych wywołań systemowych. |
 | correlationId |Zazwyczaj identyfikator GUID w formacie ciągu. Zdarzenia z identyfikatorem korelacji należy do tej samej większej akcji i zwykle współużytkują identyfikator korelacji. |
 | eventDescription |Tekst statyczny opisu zdarzenia. |
 | eventDataId |Unikatowy identyfikator zdarzenia. |
-| EventSource |Nazwa usługi lub infrastruktury platformy Azure, która wygenerowała zdarzenie. |
+| eventSource |Nazwa usługi lub infrastruktury platformy Azure, która wygenerowała zdarzenie. |
 | httpRequest |Żądanie zwykle obejmuje metodę identyfikatorem żądania klienta, clientIpAddress i HTTP (na przykład PUT). |
-| poziomie |Jedna z następujących wartości: krytyczne, błąd, ostrzeżenie i informacje. |
+| level |Jedna z następujących wartości: krytyczne, błąd, ostrzeżenie i informacje. |
 | operationId |Zazwyczaj identyfikator GUID współużytkowany przez zdarzenia odpowiadające pojedynczej operacji. |
 | operationName |Nazwa operacji. |
 | properties |Właściwości zdarzenia. |
-| status |parametry. Stan operacji. Wspólne wartości obejmują rozpoczęte, w toku, zakończone powodzeniem, zakończone niepowodzeniem, aktywne i rozwiązane. |
+| status |Ciąg. Stan operacji. Wspólne wartości obejmują rozpoczęte, w toku, zakończone powodzeniem, zakończone niepowodzeniem, aktywne i rozwiązane. |
 | subStatus |Zwykle zawiera kod stanu HTTP odpowiadającego wywołania REST. Może również zawierać inne ciągi opisujące podstan. Typowe wartości stanu podstanu to OK (kod stanu HTTP: 200), utworzono (kod stanu HTTP: 201), zaakceptowane (kod stanu HTTP: 202), brak zawartości (kod stanu http: 204), niewłaściwe żądanie (kod stanu http: 400), nie znaleziono (kod stanu http: 404), konflikt (kod stanu http: 409 ), Wewnętrzny błąd serwera (kod stanu HTTP: 500), Usługa niedostępna (kod stanu HTTP: 503) i limit czasu bramy (kod stanu HTTP: 504). |
 
-Szczegółowe informacje o schemacie wszystkich innych alertów dziennika aktywności można znaleźć w temacie [Omówienie dziennika aktywności platformy Azure](../../azure-monitor/platform/activity-logs-overview.md).
+Szczegółowe informacje o schemacie wszystkich innych alertów dziennika aktywności można znaleźć w temacie [Omówienie dziennika aktywności platformy Azure](../../azure-monitor/platform/platform-logs-overview.md).
 
 ## <a name="next-steps"></a>Następne kroki
-* [Dowiedz się więcej o dzienniku aktywności](../../azure-monitor/platform/activity-logs-overview.md).
+* [Dowiedz się więcej o dzienniku aktywności](../../azure-monitor/platform/platform-logs-overview.md).
 * [Wykonaj skrypty usługi Azure Automation (elementy Runbook) w alertach platformy Azure](https://go.microsoft.com/fwlink/?LinkId=627081).
 * [Użyj aplikacji logiki, aby wysłać wiadomość SMS za pośrednictwem Twilio z alertu platformy Azure](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-text-message-with-logic-app). Ten przykład dotyczy alertów metryk, ale można go zmodyfikować do pracy z alertem dziennika aktywności.
 * [Użyj aplikacji logiki do wysłania komunikatu o zapasach z alertu platformy Azure](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-slack-with-logic-app). Ten przykład dotyczy alertów metryk, ale można go zmodyfikować do pracy z alertem dziennika aktywności.

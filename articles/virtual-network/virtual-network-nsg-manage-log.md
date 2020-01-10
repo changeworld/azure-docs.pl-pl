@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/04/2018
 ms.author: kumud
-ms.openlocfilehash: 55fc18a718d0c69ba90a86ff6aea00d32a8f465b
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: 9829e713f19ab9755e9dc79d676446c8048e09b3
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196729"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75751186"
 ---
 # <a name="diagnostic-logging-for-a-network-security-group"></a>Rejestrowanie diagnostyczne dla sieciowej grupy zabezpieczeń
 
@@ -29,13 +29,13 @@ Sieciowa Grupa zabezpieczeń (sieciowej grupy zabezpieczeń) zawiera reguły zez
 
 Dzienniki diagnostyczne są dostępne tylko dla sieciowych grup zabezpieczeń wdrożonych za pomocą modelu wdrażania Azure Resource Manager. Nie można włączyć rejestrowania diagnostycznego dla sieciowych grup zabezpieczeń wdrożonego za pomocą klasycznego modelu wdrażania. Aby lepiej zrozumieć te dwa modele, zobacz [Omówienie modeli wdrażania platformy Azure](../resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
-Rejestrowanie diagnostyczne jest włączane osobno dla *każdego* sieciowej grupy zabezpieczeńu, dla którego chcesz zbierać dane diagnostyczne. Jeśli interesuje Cię operacyjne lub działające dzienniki, zobacz [Rejestrowanie aktywności](../azure-monitor/platform/activity-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)platformy Azure.
+Rejestrowanie diagnostyczne jest włączane osobno dla *każdego* sieciowej grupy zabezpieczeńu, dla którego chcesz zbierać dane diagnostyczne. Jeśli interesuje Cię operacyjne lub działające dzienniki, zobacz [Rejestrowanie aktywności](../azure-monitor/platform/platform-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)platformy Azure.
 
-## <a name="enable-logging"></a>Włącz rejestrowanie
+## <a name="enable-logging"></a>Włączanie rejestrowania
 
 Aby włączyć rejestrowanie diagnostyczne, można użyć witryny [Azure Portal](#azure-portal), [programu PowerShell](#powershell)lub [interfejsu wiersza polecenia platformy Azure](#azure-cli) .
 
-### <a name="azure-portal"></a>Portalu Azure
+### <a name="azure-portal"></a>Azure Portal
 
 1. Zaloguj się do [portalu](https://portal.azure.com).
 2. Wybierz pozycję **wszystkie usługi**, a następnie wpisz *Network Security Groups*. Gdy **sieciowe grupy zabezpieczeń** są wyświetlane w wynikach wyszukiwania, wybierz je.
@@ -198,7 +198,7 @@ Dziennik liczników reguł zawiera informacje dotyczące każdej reguły stosowa
 
 ## <a name="view-and-analyze-logs"></a>Wyświetlanie i analizowanie dzienników
 
-Aby dowiedzieć się, jak wyświetlać dane dzienników diagnostycznych, zobacz [Omówienie dzienników diagnostycznych platformy Azure](../azure-monitor/platform/resource-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json). W przypadku wysyłania danych diagnostycznych do:
+Aby dowiedzieć się, jak wyświetlać dane dzienników diagnostycznych, zobacz [Omówienie dzienników diagnostycznych platformy Azure](../azure-monitor/platform/platform-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json). W przypadku wysyłania danych diagnostycznych do:
 - **Dzienniki Azure monitor**: Aby uzyskać szczegółowe informacje, możesz użyć rozwiązania do [analizy grup zabezpieczeń sieci](../azure-monitor/insights/azure-networking-analytics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-network-security-group-analytics-solution-in-azure-monitor
 ) . Rozwiązanie udostępnia wizualizacje dla reguł sieciowej grupy zabezpieczeń, które zezwalają na ruch lub odmawiają go na adres MAC w maszynie wirtualnej.
 - **Konto usługi Azure Storage**: dane są zapisywane w pliku PT1H. JSON. Można znaleźć następujące informacje:
@@ -207,7 +207,7 @@ Aby dowiedzieć się, jak wyświetlać dane dzienników diagnostycznych, zobacz 
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Dowiedz się więcej na temat [rejestrowania aktywności](../azure-monitor/platform/resource-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json), wcześniej znanego jako Inspekcja lub dzienniki operacyjne. Rejestrowanie aktywności jest domyślnie włączone dla sieciowych grup zabezpieczeń utworzonych za pomocą modelu wdrażania platformy Azure. Aby określić, które operacje zostały wykonane w sieciowych grup zabezpieczeń w dzienniku aktywności, poszukaj wpisów zawierających następujące typy zasobów:
+- Dowiedz się więcej na temat [rejestrowania aktywności](../azure-monitor/platform/platform-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json), wcześniej znanego jako Inspekcja lub dzienniki operacyjne. Rejestrowanie aktywności jest domyślnie włączone dla sieciowych grup zabezpieczeń utworzonych za pomocą modelu wdrażania platformy Azure. Aby określić, które operacje zostały wykonane w sieciowych grup zabezpieczeń w dzienniku aktywności, poszukaj wpisów zawierających następujące typy zasobów:
   - Microsoft.ClassicNetwork/networkSecurityGroups
   - Microsoft.ClassicNetwork/networkSecurityGroups/securityRules
   - Microsoft.Network/networkSecurityGroups

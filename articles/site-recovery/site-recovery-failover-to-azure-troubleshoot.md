@@ -1,70 +1,70 @@
 ---
-title: Rozwiązywanie problemów z trybu failover do błędów platformy Azure | Dokumentacja firmy Microsoft
-description: W tym artykule opisano sposoby rozwiązywania typowych problemów w przypadku przechodzenia w tryb failover na platformie Azure
+title: Rozwiązywanie problemów z trybem failover na platformie Azure — błędy | Microsoft Docs
+description: W tym artykule opisano sposoby rozwiązywania typowych błędów w przypadku przełączenia w tryb failover na platformie Azure
 author: ponatara
 manager: abhemraj
 ms.service: site-recovery
 services: site-recovery
 ms.topic: article
 ms.workload: storage-backup-recovery
-ms.date: 03/04/2019
+ms.date: 01/08/2020
 ms.author: mayg
-ms.openlocfilehash: 2156ee6cf27ecfa32b19ad5bbef7549e99c3f7ef
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6de37daa0b9e0ebc711a5dacbdce352e3675a3db
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61280657"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754424"
 ---
-# <a name="troubleshoot-errors-when-failing-over-vmware-vm-or-physical-machine-to-azure"></a>Rozwiązywanie problemów podczas przechodzenia w tryb failover maszyny Wirtualnej VMware lub maszyny fizyczne na platformie Azure
+# <a name="troubleshoot-errors-when-failing-over-vmware-vm-or-physical-machine-to-azure"></a>Rozwiązywanie problemów z błędami w przypadku przejścia w tryb failover maszyny wirtualnej VMware lub komputera fizycznego na platformę Azure
 
-Może pojawić się jeden z następujących błędów podczas wykonywania pracy w trybie failover maszyny wirtualnej na platformie Azure. Aby rozwiązać problemy, należy użyć opisane kroki poszczególnych warunków wystąpienia błędu.
+Podczas pracy w trybie failover maszyny wirtualnej na platformie Azure może zostać wyświetlony jeden z następujących błędów. Aby rozwiązać problem, należy wykonać opisane kroki dla każdego warunku błędu.
 
-## <a name="failover-failed-with-error-id-28031"></a>Tryb failover nie powiodło się z Identyfikator błędu 28031
+## <a name="failover-failed-with-error-id-28031"></a>Nie można przełączyć do trybu failover z powodu błędu o IDENTYFIKATORze 28031
 
-Usługa Site Recovery nie był w stanie niepowodzenia tworzenia maszyny wirtualnej platformy Azure. Może się zdarzyć z jednego z następujących powodów:
+Site Recovery nie mógł utworzyć maszyny wirtualnej przełączonej w tryb failover na platformie Azure. Może się to zdarzyć z jednego z następujących powodów:
 
-* Nie ma wystarczającego limitu przydziału, które są dostępne do utworzenia maszyny wirtualnej: Dostępny limit przydziału można sprawdzić, przechodząc do subskrypcji -> użycie i przydziały. Możesz otworzyć [nowe żądanie pomocy technicznej](https://aka.ms/getazuresupport) Aby zwiększyć limit przydziału.
+* Nie ma wystarczającego limitu przydziału, aby utworzyć maszynę wirtualną: można sprawdzić dostępny limit przydziału, przechodząc do opcji subskrypcja-> Użycie i przydziały. Aby zwiększyć limit przydziału, możesz otworzyć [nowe żądanie pomocy technicznej](https://aka.ms/getazuresupport) .
 
-* Próbujesz trybu failover maszyny wirtualne rozmiar różnych rodzin w tym samym zestawie dostępności. Upewnij się, wybierz ten sam rodzina rozmiarów dla wszystkich maszyn wirtualnych w tym samym zestawie dostępności. Zmiana rozmiaru, przechodząc do ustawień obliczenia i sieć maszyny wirtualnej, a następnie ponów próbę pracy awaryjnej.
+* Podjęto próbę przejścia do trybu failover maszyn wirtualnych z różnymi rodzinami rozmiarów w tym samym zestawie dostępności. Upewnij się, że wybrano rodzinę rozmiarów dla wszystkich maszyn wirtualnych w tym samym zestawie dostępności. Zmień rozmiar, przechodząc do ustawień obliczenia i sieć maszyny wirtualnej, a następnie ponów próbę przełączenia w tryb failover.
 
-* Brak zasad w ramach subskrypcji, która uniemożliwia tworzenie maszyny wirtualnej. Zmień zasady aby umożliwić tworzenie maszyny wirtualnej, a następnie ponów próbę pracy awaryjnej.
+* Istnieją zasady dotyczące subskrypcji, która uniemożliwia tworzenie maszyny wirtualnej. Zmień zasady, aby umożliwić tworzenie maszyny wirtualnej, a następnie ponów próbę przejścia w tryb failover.
 
-## <a name="failover-failed-with-error-id-28092"></a>Tryb failover nie powiodło się z Identyfikator błędu 28092
+## <a name="failover-failed-with-error-id-28092"></a>Nie można przełączyć do trybu failover z powodu błędu o IDENTYFIKATORze 28092
 
-Usługa Site Recovery nie mogła utworzyć interfejsu sieciowego dla nieudane przez maszynę wirtualną. Upewnij się, że masz wystarczającego limitu przydziału, które są dostępne w celu utworzenia interfejsów sieciowych w ramach subskrypcji. Dostępny limit przydziału można sprawdzić, przechodząc do subskrypcji -> użycie i przydziały. Możesz otworzyć [nowe żądanie pomocy technicznej](https://aka.ms/getazuresupport) Aby zwiększyć limit przydziału. Jeśli masz wystarczającego limitu przydziału, a następnie może to być tymczasowy wysyłania, spróbuj ponownie wykonać operację. Jeśli problem będzie nadal występować po ponawianiu prób, pozostaw komentarz na końcu tego dokumentu.  
+Site Recovery nie mógł utworzyć interfejsu sieciowego dla maszyny wirtualnej przełączonej w tryb failover. Upewnij się, że masz wystarczające przydziały dostępne do utworzenia interfejsów sieciowych w ramach subskrypcji. Dostępny limit przydziału można sprawdzić, przechodząc do opcji subskrypcja-> Użycie i przydziały. Aby zwiększyć limit przydziału, możesz otworzyć [nowe żądanie pomocy technicznej](https://aka.ms/getazuresupport) . Jeśli masz wystarczający limit przydziału, może to być sporadyczny problem, a następnie spróbuj ponownie wykonać operację. Jeśli problem będzie się powtarzać nawet po ponownych próbach, pozostaw komentarz na końcu tego dokumentu.  
 
-## <a name="failover-failed-with-error-id-70038"></a>Tryb failover nie powiodło się z Identyfikator błędu 70038
+## <a name="failover-failed-with-error-id-70038"></a>Nie można przełączyć do trybu failover z powodu błędu o IDENTYFIKATORze 70038
 
-Usługa Site Recovery nie mógł utworzyć nie powiodło się za pośrednictwem klasycznej maszyny wirtualnej na platformie Azure. Może się zdarzyć, ponieważ:
+Site Recovery nie mógł utworzyć klasycznej maszyny wirtualnej w trybie failover na platformie Azure. Może się tak zdarzyć, ponieważ:
 
-* Jeden z zasobów, takich jak sieć wirtualną, która jest wymagana dla maszyny wirtualnej, która ma zostać utworzony nie istnieje. Tworzenie sieci wirtualnej, zgodnie z postanowieniami w obszarze ustawień obliczenia i sieć maszyny wirtualnej lub zmodyfikuj ustawienia sieci wirtualnej, która już istnieje, a następnie ponów próbę pracy awaryjnej.
+* Jeden z zasobów, takich jak sieć wirtualna, która jest wymagana do utworzenia maszyny wirtualnej, nie istnieje. Utwórz sieć wirtualną zgodnie z ustawieniami w obszarze Ustawienia obliczeń i sieci maszyny wirtualnej albo Zmodyfikuj ustawienie do sieci wirtualnej, która już istnieje, a następnie ponów próbę przełączenia w tryb failover.
 
-## <a name="failover-failed-with-error-id-170010"></a>Tryb failover nie powiodło się z 170010 Identyfikator błędu
+## <a name="failover-failed-with-error-id-170010"></a>Nie można przełączyć do trybu failover z powodu błędu o IDENTYFIKATORze 170010
 
-Usługa Site Recovery nie był w stanie niepowodzenia tworzenia maszyny wirtualnej platformy Azure. Może się zdarzyć, ponieważ wewnętrzny działania wypełniania nie powiodła się dla maszyny wirtualnej w środowisku lokalnym.
+Site Recovery nie mógł utworzyć maszyny wirtualnej przełączonej w tryb failover na platformie Azure. Przyczyną może być fakt, że wewnętrzne działanie funkcji uzupełniania nie powiodło się dla lokalnej maszyny wirtualnej.
 
-Aby wyświetlić wszystkie maszyny na platformie Azure, w środowisku systemu Azure wymaga niektóre sterowniki rozruchowe są uruchamiane stanu i usług, takich jak DHCP, będzie w stanie automatyczne uruchamianie. W związku z tym, działanie wypełniania w momencie przejścia w tryb failover konwertuje typ uruchomienia **sterowniki atapi, intelide, storflt, vmbus i storvsc** do ekranu startowego rozruchu. Konwertuje również typ uruchomienia kilku usług, takich jak DHCP, automatyczne uruchamianie. To działanie może zakończyć się niepowodzeniem ze względu na problemy dotyczące określonego środowiska. 
+Aby można było wyświetlić wszystkie maszyny na platformie Azure, środowisko platformy Azure wymaga, aby niektóre sterowniki były w stanie uruchamiania rozruchu i usług takich jak DHCP, aby były w stanie autostartu. W ten sposób, podczas pracy w trybie failover, program konwertuje typ uruchomienia **sterowników ATAPI, Intelide, storflt, VMBus i storvsc** na uruchamianie rozruchu. Konwertuje również typ uruchomienia kilku usług, takich jak DHCP, na Autostart. To działanie może zakończyć się niepowodzeniem z powodu problemów specyficznych dla środowiska. 
 
-Aby ręcznie zmienić typ uruchamiania sterowników dla **systemie operacyjnym gościa Windows**, wykonaj poniższe kroki:
+Aby ręcznie zmienić typ uruchamiania sterowników dla **systemu operacyjnego gościa Windows**, wykonaj następujące czynności:
 
-1. [Pobierz](https://download.microsoft.com/download/5/D/6/5D60E67C-2B4F-4C51-B291-A97732F92369/Script-no-hydration.ps1) nie wypełniania skrypt i uruchom go jako zgodny. Ten skrypt sprawdza, czy maszyna wirtualna wymaga wypełniania zasobami.
+1. [Pobierz](https://download.microsoft.com/download/5/D/6/5D60E67C-2B4F-4C51-B291-A97732F92369/Script-no-hydration.ps1) skrypt No-odwodnieni i uruchom go w następujący sposób. Ten skrypt sprawdza, czy maszyna wirtualna wymaga odwodnienia.
 
     `.\Script-no-hydration.ps1`
 
-    Jeśli wymagana jest wypełniania, daje następujące wyniki:
+    Daje następujący wynik, jeśli jest wymagane odwodnienie:
 
         REGISTRY::HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\services\storvsc           start =  3 expected value =  0
 
         This system doesn't meet no-hydration requirement.
 
-    W przypadku, gdy maszyna wirtualna spełnia wymagania nie wypełniania, skrypt da wynik, "ten system spełnia wymagania nie wypełniania". W takim przypadku wszystkie sterowniki i usługi są w stanie zgodnie z wymaganiami platformy Azure i wypełniania na maszynie Wirtualnej nie jest wymagana.
+    Jeśli maszyna wirtualna spełnia wymagania dotyczące braku odwodnienia, skrypt zwróci wynik "ten system spełnia wymagania dotyczące braku odwodnienia". W takim przypadku wszystkie sterowniki i usługi są w stanie, w jakim jest to wymagane przez platformę Azure, a odwodnienie na maszynie wirtualnej nie są wymagane.
 
-2. Uruchom skrypt nie wypełniania zestawu w następujący sposób, jeśli maszyna wirtualna nie spełnia wymagań nie wypełniania.
+2. Uruchom w następujący sposób skrypt No-odwodnieni-Set, jeśli maszyna wirtualna nie spełnia wymagań uzupełniania.
 
     `.\Script-no-hydration.ps1 -set`
     
-    To zostaną przekonwertowane na typ uruchomienia sterowników i daje wynik, takich jak poniżej:
+    Spowoduje to przekonwertowanie typu uruchomienia sterowników i podaje wynik podobny do poniższego:
     
         REGISTRY::HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\services\storvsc           start =  3 expected value =  0 
 
@@ -72,63 +72,75 @@ Aby ręcznie zmienić typ uruchamiania sterowników dla **systemie operacyjnym g
 
         This system is now no-hydration compatible. 
 
-## <a name="unable-to-connectrdpssh-to-the-failed-over-virtual-machine-due-to-grayed-out-connect-button-on-the-virtual-machine"></a>Nie można nawiązać połączenia ani protokołu RDP/SSH nieudane przez maszynę wirtualną ze względu na szary przycisk Połącz na maszynie wirtualnej
+## <a name="unable-to-connectrdpssh-to-the-failed-over-virtual-machine-due-to-grayed-out-connect-button-on-the-virtual-machine"></a>Nie można nawiązać połączenia/RDP/SSH z maszyną wirtualną w trybie failover ze względu na szary przycisk Połącz na maszynie wirtualnej
 
-Jeśli **Connect** przycisku w trybie Failover maszyny Wirtualnej na platformie Azure jest wyszarzona i nie masz połączenia Expressroute lub sieci VPN typu lokacja-lokacja połączenie, następnie na platformie Azure
+Jeśli przycisk **Połącz** na maszynie wirtualnej w trybie failover na platformie Azure jest wyszarzony i nie masz połączenia z platformą Azure za pośrednictwem usługi Express Route lub sieci VPN typu lokacja-lokacja, a następnie
 
-1. Przejdź do **maszyny wirtualnej** > **sieć**, kliknij nazwę interfejsu sieciowego wymagane.  ![network-interface](media/site-recovery-failover-to-azure-troubleshoot/network-interface.PNG)
-2. Przejdź do **konfiguracje adresów Ip**, następnie kliknij pole nazwy wymaganych konfiguracji adresu IP. ![Elementy Ipconfiguration](media/site-recovery-failover-to-azure-troubleshoot/IpConfigurations.png)
-3. Aby włączyć publiczny adres IP, kliknij **Włącz**. ![Włączyć adresu IP](media/site-recovery-failover-to-azure-troubleshoot/Enable-Public-IP.png)
-4. Kliknij pozycję **Skonfiguruj wymagane ustawienia** > **Utwórz nową**. ![Utwórz nową](media/site-recovery-failover-to-azure-troubleshoot/Create-New-Public-IP.png)
-5. Wprowadź nazwę publicznego adresu, wybierz domyślne opcje dotyczące **jednostki SKU** i **przypisania**, następnie kliknij przycisk **OK**.
-6. Teraz, aby zapisać zmiany, kliknij **Zapisz**.
-7. Zamknięcie paneli i przejdź do **Przegląd** części maszyny wirtualnej do połączenia RDP.
+1. Przejdź do **maszyny wirtualnej** > **sieci**, kliknij nazwę wymaganego interfejsu sieciowego.  ![interfejs sieciowy](media/site-recovery-failover-to-azure-troubleshoot/network-interface.PNG)
+2. Przejdź do opcji **konfiguracje IP**, a następnie kliknij pole Nazwa wymaganej konfiguracji protokołu IP. ![elementy Ipconfiguration](media/site-recovery-failover-to-azure-troubleshoot/IpConfigurations.png)
+3. Aby włączyć publiczny adres IP, kliknij pozycję **Włącz**. ![włączyć](media/site-recovery-failover-to-azure-troubleshoot/Enable-Public-IP.png) IP
+4. Kliknij pozycję **Konfiguruj wymagane ustawienia** > **Utwórz nowe**. ![utworzyć nowe](media/site-recovery-failover-to-azure-troubleshoot/Create-New-Public-IP.png)
+5. Wprowadź nazwę publicznego adresu, wybierz opcje domyślne dla **jednostki SKU** i **przypisania**, a następnie kliknij przycisk **OK**.
+6. Teraz, aby zapisać wprowadzone zmiany, kliknij przycisk **Zapisz**.
+7. Zamknij panele i przejdź do sekcji **Omówienie** maszyny wirtualnej, aby nawiązać połączenie/RDP.
 
-## <a name="unable-to-connectrdpssh---vm-connect-button-available"></a>Nie można nawiązać połączenia ani protokołu RDP/SSH - dostępne przycisku Połącz z maszyną Wirtualną
+## <a name="unable-to-connectrdpssh---vm-connect-button-available"></a>Nie można nawiązać połączenia/RDP/SSH — przycisk połączenia z maszyną wirtualną
 
-Jeśli **Connect** przycisku w trybie Failover maszyny Wirtualnej na platformie Azure jest dostępna (nie szary), a następnie sprawdź **diagnostykę rozruchu** na maszynie wirtualnej i sprawdź błędy wymienione w [w tym artykule](../virtual-machines/windows/boot-diagnostics.md).
+Jeśli przycisk **Połącz** na maszynie wirtualnej w trybie failover na platformie Azure jest dostępny (nie jest wyszarzony), sprawdź **diagnostykę rozruchu** na maszynie wirtualnej i Sprawdź błędy wymienione w [tym artykule](../virtual-machines/windows/boot-diagnostics.md).
 
 1. Jeśli maszyna wirtualna nie została uruchomiona, spróbuj przejść w tryb failover do starszego punktu odzyskiwania.
-2. Jeśli aplikacja wewnątrz maszyny wirtualnej nie jest się, spróbuj przejść w tryb failover do punktu odzyskiwania spójnego na poziomie aplikacji.
-3. Jeśli maszyna wirtualna jest przyłączona do domeny, a następnie upewnij się, że kontroler domeny działa dokładnie. Można to zrobić, postępując poniżej podane kroki:
+2. Jeśli aplikacja wewnątrz maszyny wirtualnej nie działa, spróbuj przejść w tryb failover do punktu odzyskiwania spójnego na poziomie aplikacji.
+3. Jeśli maszyna wirtualna jest przyłączona do domeny, upewnij się, że kontroler domeny działa prawidłowo. Można to zrobić, wykonując następujące czynności:
 
     a. Utwórz nową maszynę wirtualną w tej samej sieci.
 
-    b.  Upewnij się, że jest mógł dołączyć do tej samej domeny, na którym nieudane przez maszynę wirtualną oczekuje się, co pozwoli uzyskać.
+    b.  Upewnij się, że można przyłączyć się do tej samej domeny, w której oczekiwana jest maszyna wirtualna w trybie failover.
 
-    c. Jeśli kontroler domeny jest **nie** działa prawidłowo, spróbuj zalogowanie się na nieudane przez maszynę wirtualną przy użyciu konta administratora lokalnego.
-4. Jeśli używasz niestandardowego serwera DNS, upewnij się, że jest dostępny. Można to zrobić, postępując poniżej podane kroki:
+    d. Jeśli kontroler domeny **nie** działa prawidłowo, spróbuj zalogować się do maszyny wirtualnej przełączonej w tryb failover przy użyciu konta administratora lokalnego.
+4. W przypadku korzystania z niestandardowego serwera DNS upewnij się, że jest on dostępny. Można to zrobić, wykonując następujące czynności:
 
     a. Utwórz nową maszynę wirtualną w tej samej sieci i
 
-    b. Sprawdź, czy maszyna wirtualna jest możliwość nazwa rozpoznawanie przy użyciu niestandardowego serwera DNS
+    b. Sprawdź, czy maszyna wirtualna może przeprowadzić rozpoznawanie nazw przy użyciu niestandardowego serwera DNS
 
 >[!Note]
->Włączenie dowolnego ustawienia innego niż Diagnostyka rozruchu wymaga agenta maszyny Wirtualnej platformy Azure do zainstalowania na maszynie wirtualnej przed włączeniem trybu failover
+>Włączenie dowolnego ustawienia innego niż diagnostyka rozruchu wymaga zainstalowania agenta maszyny wirtualnej platformy Azure na maszynie wirtualnej przed przejściem w tryb failover
 
-## <a name="unexpected-shutdown-message-event-id-6008"></a>Nieoczekiwane zamknięcie wiadomości (6008 identyfikator zdarzenia)
+## <a name="unable-to-open-serial-console-after-failover-of-a-uefi-based-machine-into-azure"></a>Nie można otworzyć konsoli szeregowej po przejściu maszyny z interfejsem UEFI na platformę Azure do trybu failover
 
-W przypadku uruchamiania systemu Windows maszyny Wirtualnej po przejściu w tryb failover, jeśli zostanie wyświetlony komunikat nieoczekiwanego zamknięcia w odzyskanej maszyny Wirtualnej, oznacza to, stan zamknięcia maszyny Wirtualnej nie została przechwycona w punkcie odzyskiwania do trybu failover. Dzieje się tak, podczas odzyskiwania do punktu, gdy maszyna wirtualna ma nie została w pełni zamknięta.
+Jeśli można nawiązać połączenie z maszyną przy użyciu protokołu RDP, ale nie można otworzyć konsoli szeregowej, wykonaj następujące czynności:
 
-Zwykle nie jest przyczyną problemu i zazwyczaj można zignorować dla niezaplanowanych operacji Failover. Jeśli jest planowane przełączenie w tryb failover, upewnij się, że maszyna wirtualna jest zamknięta prawidłowo przed trybu failover i zapewnić wystarczającą ilość czasu do czasu replikacji danych w sieci lokalnej do wysłania do platformy Azure. Następnie użyj **najnowsze** opcja [ekranu trybu Failover](site-recovery-failover.md#run-a-failover) tak, aby wszystkie oczekujące dane na platformie Azure są przetwarzane na punkt odzyskiwania, który jest następnie używany na potrzeby trybu failover maszyny Wirtualnej.
+* Jeśli system operacyjny komputera to Red Hat lub Oracle Linux 7. */8.0, uruchom następujące polecenie na maszynie wirtualnej platformy Azure w trybie failover z uprawnieniami głównymi. Uruchom ponownie maszynę wirtualną po poleceniu.
 
-## <a name="unable-to-select-the-datastore"></a>Nie można wybrać magazyn danych
+        grub2-mkconfig -o /boot/efi/EFI/redhat/grub.cfg
 
-Ten problem jest wskazywany, gdy nie są widoczne w portalu w magazynie danych na platformie Azure, podczas próby ponownego włączenia ochrony maszyny wirtualnej, która napotkała przejścia w tryb failover. Jest to spowodowane Master target nie został rozpoznany jako maszynę wirtualną w ramach vCenters dodane do usługi Azure Site Recovery.
+* Jeśli system operacyjny maszyny to CentOS 7. *, uruchom następujące polecenie na maszynie wirtualnej platformy Azure w trybie failover z uprawnieniami głównymi. Uruchom ponownie maszynę wirtualną po poleceniu.
 
-Aby uzyskać więcej informacji na temat ponowne włączanie ochrony maszyny wirtualnej, zobacz [ponowne włączanie ochrony i zakończyć się niepowodzeniem maszynami wstecz do lokacji lokalnej po włączeniu trybu failover na platformie Azure](vmware-azure-reprotect.md).
+        grub2-mkconfig -o /boot/efi/EFI/centos/grub.cfg
+
+## <a name="unexpected-shutdown-message-event-id-6008"></a>Nieoczekiwany komunikat zamknięcia (Identyfikator zdarzenia 6008)
+
+W przypadku uruchamiania maszyny wirtualnej z systemem Windows po przejściu w tryb failover po odebraniu nieoczekiwanego komunikatu zamknięcia na odzyskiwanej maszynie wirtualnej oznacza to, że stan zamykania maszyny wirtualnej nie został przechwycony w punkcie odzyskiwania używanym do pracy w trybie failover. Dzieje się tak w przypadku odzyskiwania do punktu, gdy maszyna wirtualna nie została w pełni wyłączona.
+
+Zwykle nie jest to przyczyną problemu i zazwyczaj można je zignorować dla nieplanowanych przełączeń w tryb failover. Jeśli zaplanowano przejście w tryb failover, należy upewnić się, że maszyna wirtualna została prawidłowo ZAMKNIĘTA przed przełączeniem w tryb failover i zapewni wystarczającą ilość czasu na wysłanie lokalnie oczekujących danych replikacji na platformę Azure. Następnie użyj **najnowszej** opcji na [ekranie trybu failover](site-recovery-failover.md#run-a-failover) , aby wszystkie oczekujące dane na platformie Azure były przetwarzane do punktu odzyskiwania, który jest następnie używany do pracy w trybie failover maszyny wirtualnej.
+
+## <a name="unable-to-select-the-datastore"></a>Nie można wybrać magazynu danych
+
+Ten problem jest wskazywany, gdy nie można wyświetlić magazynu danych w usłudze Azure Portal podczas próby ponownego włączenia ochrony maszyny wirtualnej, która wystąpiła w trybie failover. Wynika to z faktu, że główny element docelowy nie został rozpoznany jako maszyna wirtualna w obszarze vCenters dodanej do Azure Site Recovery.
+
+Aby uzyskać więcej informacji na temat ponownej ochrony maszyny wirtualnej, zobacz Ponowne [Włączanie ochrony i przywracanie maszyn w lokacji lokalnej po przejściu do trybu failover na platformie Azure](vmware-azure-reprotect.md).
 
 Aby rozwiązać ten problem:
 
-Ręczne tworzenie Master target w programie vCenter, który zarządza maszyna źródłowa. Magazyn danych będzie dostępna po następny operacjach vCenter odnajdywania i Odśwież sieci szkieletowej.
+Ręcznie Utwórz główny element docelowy w programie vCenter, który zarządza maszyną źródłową. Magazyn danych będzie dostępny po następnej operacji odnajdywania vCenter i odświeżania sieci szkieletowej.
 
 > [!Note]
 > 
-> Operacje odnajdywania i Odśwież sieci szkieletowej może potrwać do 30 minut. 
+> Operacje odnajdywania i odświeżania sieci szkieletowej mogą potrwać do 30 minut. 
 
-## <a name="linux-master-target-registration-with-cs-fails-with-an-ssl-error-35"></a>Linux główny element docelowy rejestracji CS zakończy się niepowodzeniem z powodu błędu protokołu SSL 35 
+## <a name="linux-master-target-registration-with-cs-fails-with-an-ssl-error-35"></a>Rejestracja głównego elementu docelowego systemu Linux z usługą CS kończy się niepowodzeniem z powodu błędu SSL 35 
 
-Rejestracja usługi Azure Site Recovery Master Target z serwerem konfiguracji kończy się niepowodzeniem z powodu serwera Proxy uwierzytelniony, włączane na główny element docelowy. 
+Rejestracja głównego elementu docelowego Azure Site Recovery z serwerem konfiguracji kończy się niepowodzeniem z powodu włączenia uwierzytelnionego serwera proxy w głównym elemencie docelowym. 
  
 Ten błąd jest wskazywany przez następujące ciągi w dzienniku instalacji: 
 
@@ -138,27 +150,27 @@ RegisterHostStaticInfo encountered exception config/talwrapper.cpp(107)[post] Cu
 
 Aby rozwiązać ten problem:
  
-1. Na serwerze konfiguracji maszyny Wirtualnej Otwórz wiersz polecenia i sprawdź ustawienia serwera proxy, za pomocą następujących poleceń:
+1. Na maszynie wirtualnej serwera konfiguracji Otwórz wiersz polecenia i sprawdź ustawienia serwera proxy przy użyciu następujących poleceń:
 
-    cat /etc/environment echo $że echo $https_proxy 
+    /etc/environment $http echo _proxy echo $https _proxy 
 
-2. Jeśli dane wyjściowe z poprzedniego polecenia pokazują, że albo https_proxy ustawień zdefiniowanych, użyj jednej z następujących metod można odblokować główny element docelowy komunikacji z serwerem konfiguracji:
+2. Jeśli dane wyjściowe poprzednich poleceń pokazują, że zdefiniowano http_proxy lub https_proxy ustawienia, użyj jednej z następujących metod, aby odblokować główną komunikację docelową z serwerem konfiguracji:
    
-   - Pobierz [narzędzia PsExec](https://aka.ms/PsExec).
-   - Narzędzie dostępu do kontekstu użytkownika systemu i sprawdzenie, czy adres serwera proxy jest skonfigurowany. 
-   - Jeśli skonfigurowano serwer proxy, należy uruchomić program IE w kontekście użytkownika systemu za pomocą narzędzia PsExec.
+   - Pobierz [Narzędzie PsExec](https://aka.ms/PsExec).
+   - Użyj narzędzia, aby uzyskać dostęp do kontekstu użytkownika systemu i określić, czy adres serwera proxy jest skonfigurowany. 
+   - Jeśli skonfigurowano serwer proxy, Otwórz program IE w kontekście użytkownika systemu przy użyciu narzędzia PsExec.
   
-     **psexec -s -i "%programfiles%\Internet Explorer\iexplore.exe"**
+     **PsExec-s-i "użycie ścieżki%ProgramFiles%\Internet Explorer\iexplore.exe"**
 
    - Aby upewnić się, że główny serwer docelowy może komunikować się z serwerem konfiguracji:
   
-     - Zmodyfikuj ustawienia serwera proxy w programie Internet Explorer, aby pominąć adres IP serwera głównego serwera docelowego za pośrednictwem serwera proxy.   
+     - Zmodyfikuj ustawienia serwera proxy w programie Internet Explorer, aby pominąć docelowy adres IP serwera za pomocą serwera proxy.   
      Lub
      - Wyłącz serwer proxy na głównym serwerze docelowym. 
 
 
-## <a name="next-steps"></a>Kolejne kroki
-- Rozwiązywanie problemów z [połączenia RDP z maszyną Wirtualną Windows](../virtual-machines/windows/troubleshoot-rdp-connection.md)
-- Rozwiązywanie problemów z [połączenie SSH z maszyną Wirtualną systemu Linux](../virtual-machines/linux/detailed-troubleshoot-ssh-connection.md)
+## <a name="next-steps"></a>Następne kroki
+- Rozwiązywanie problemów z [połączeniem RDP z maszyną wirtualną z systemem Windows](../virtual-machines/windows/troubleshoot-rdp-connection.md)
+- Rozwiązywanie problemów z [połączeniem SSH z maszyną wirtualną z systemem Linux](../virtual-machines/linux/detailed-troubleshoot-ssh-connection.md)
 
-Jeśli potrzebujesz więcej pomocy, na następnie publikują zapytania [forum Site Recovery](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr) lub pozostaw komentarz na końcu tego dokumentu. Mamy aktywnej społeczności użytkowników, które powinno być możliwe pomóc.
+Jeśli potrzebujesz więcej pomocy, Opublikuj zapytanie na [forum Site Recovery](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr) lub pozostaw komentarz na końcu tego dokumentu. Mamy aktywną społeczność, która powinna być w stanie pomóc.

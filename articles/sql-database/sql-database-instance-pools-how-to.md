@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab
 ms.date: 09/05/2019
-ms.openlocfilehash: 13c58ddf5f51e5b63d2dbe425b3ec795e21dabb8
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 5a45b9e3ba59a91f580ce0f2dc180adf5d20c87d
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73810351"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754060"
 ---
 # <a name="azure-sql-database-instance-pools-preview-how-to-guide"></a>Pule wystąpień Azure SQL Database (wersja zapoznawcza) — Przewodnik
 
@@ -26,7 +26,7 @@ Ten artykuł zawiera szczegółowe informacje na temat tworzenia [pul wystąpie�
 
 W poniższej tabeli przedstawiono dostępne operacje związane z pulami wystąpień i ich dostępność w Azure Portal i programie PowerShell.
 
-|Polecenie|Azure Portal|PowerShell|
+|Polecenie|Portal Azure|PowerShell|
 |:---|:---|:---|
 |Tworzenie puli wystąpień|Nie|Tak|
 |Aktualizuj pulę wystąpień (ograniczoną liczbę właściwości)|Nie |Tak |
@@ -92,11 +92,17 @@ Do pul wystąpień mają zastosowanie następujące ograniczenia:
 
 - Tylko Ogólnego przeznaczenia i 5 rdzeń są dostępne w publicznej wersji zapoznawczej.
 - Nazwa puli może zawierać tylko małe litery, cyfry i łączniki oraz nie może rozpoczynać się od łącznika.
-- Aby uzyskać identyfikator podsieci, użyj `Get-AzVirtualNetworkSubnetConfig -Name "miPoolSubnet" -VirtualNetwork $virtualNetwork`.
 - Jeśli chcesz użyć AHB (Korzyść użycia hybrydowego platformy Azure), jest on stosowany na poziomie puli wystąpień. Można ustawić typ licencji podczas tworzenia puli lub zaktualizować ją w dowolnym momencie po utworzeniu.
 
 > [!IMPORTANT]
 > Wdrożenie puli wystąpień jest długotrwałą operacją, która trwa około 4,5 godzin.
+
+Aby uzyskać parametry sieci:
+
+```powershell
+$virtualNetwork = Get-AzVirtualNetwork -Name "miPoolVirtualNetwork" -ResourceGroupName "myResourceGroup"
+$subnet = Get-AzVirtualNetworkSubnetConfig -Name "miPoolSubnet" -VirtualNetwork $virtualNetwork
+```
 
 Aby utworzyć pulę wystąpień:
 
@@ -104,7 +110,7 @@ Aby utworzyć pulę wystąpień:
 $instancePool = New-AzSqlInstancePool `
   -ResourceGroupName "myResourceGroup" `
   -Name "mi-pool-name" `
-  -SubnetId "/subscriptions/subscriptionID/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/miPoolVirtualNetwork/subnets/miPoolSubnet" `
+  -SubnetId $subnet.Id `
   -LicenseType "LicenseIncluded" `
   -VCore 80 `
   -Edition "GeneralPurpose" `

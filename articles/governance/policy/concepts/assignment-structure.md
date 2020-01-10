@@ -3,16 +3,16 @@ title: Szczegóły struktury przypisania zasad
 description: Zawiera opis definicji przypisania zasad używanej przez Azure Policy do powiązania definicji zasad i parametrów z zasobami do oceny.
 ms.date: 09/23/2019
 ms.topic: conceptual
-ms.openlocfilehash: 9301004fe05afa77f3e73c6ec97335a17c237ce9
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: f03c654dfc4c8dfdf2bdc5103a5961b4d8ce1e64
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279481"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75747207"
 ---
 # <a name="azure-policy-assignment-structure"></a>Struktura przypisań usługi Azure Policy
 
-Przypisania zasad są używane przez Azure Policy do definiowania, które zasoby są przypisane podczas zasad lub inicjatyw. Przypisanie zasad pozwala określić wartości parametrów dla tej grupy zasobów w czasie przypisywania, dzięki czemu można ponownie użyć definicji zasad, które odnoszą się do tych samych właściwości zasobów z różnymi potrzebami zgodności.
+Przypisania zasad są używane przez Azure Policy do definiowania zasobów, które są przypisane do zasad lub inicjatyw. Przypisanie zasad pozwala określić wartości parametrów dla tej grupy zasobów w czasie przypisywania, dzięki czemu można ponownie użyć definicji zasad, które odnoszą się do tych samych właściwości zasobów z różnymi potrzebami zgodności.
 
 Aby utworzyć przypisanie zasad, należy użyć formatu JSON. Przypisanie zasad zawiera elementy dla:
 
@@ -55,14 +55,14 @@ Użyj **DisplayName** i **Description** , aby zidentyfikować przypisanie zasad 
 
 ## <a name="enforcement-mode"></a>Tryb wymuszania
 
-Właściwość **wymuszmode** zapewnia klientom możliwość testowania wyniku zasad w istniejących zasobach bez zainicjowania efektu zasad ani wyzwalania wpisów w [dzienniku aktywności platformy Azure](../../../azure-monitor/platform/activity-logs-overview.md). Ten scenariusz jest często określany jako "What If" i wyrównany do bezpiecznych praktyk wdrażania. **wymuszanie** różni się od [wyłączonego](./effects.md#disabled) efektu, ponieważ ten efekt uniemożliwia wykonywanie oceny zasobów.
+Właściwość **wymuszmode** zapewnia klientom możliwość testowania wyniku zasad w istniejących zasobach bez zainicjowania efektu zasad ani wyzwalania wpisów w [dzienniku aktywności platformy Azure](../../../azure-monitor/platform/platform-logs-overview.md). Ten scenariusz jest często określany jako "What If" i wyrównany do bezpiecznych praktyk wdrażania. **wymuszanie** różni się od [wyłączonego](./effects.md#disabled) efektu, ponieważ ten efekt uniemożliwia wykonywanie oceny zasobów.
 
 Ta właściwość ma następujące wartości:
 
 |Tryb |Wartość JSON |Typ |Koryguj ręcznie |Wpis dziennika aktywności |Opis |
 |-|-|-|-|-|-|
-|Enabled (Włączony) |Domyślne |ciąg |Yes |Yes |Efekt zasad jest wymuszany podczas tworzenia lub aktualizowania zasobu. |
-|Disabled (Wyłączony) |DoNotEnforce |ciąg |Yes |Nie | Efekt zasad nie jest wymuszany podczas tworzenia lub aktualizowania zasobu. |
+|Enabled (Włączony) |Domyślne |string |Tak |Tak |Efekt zasad jest wymuszany podczas tworzenia lub aktualizowania zasobu. |
+|Disabled (Wyłączony) |DoNotEnforce |string |Tak |Nie | Efekt zasad nie jest wymuszany podczas tworzenia lub aktualizowania zasobu. |
 
 Jeśli w definicji zasad lub inicjatywy nie określono **wymuszania** , używana jest wartość _Domyślna_ . [Zadania korygowania](../how-to/remediate-resources.md) można uruchamiać dla zasad [deployIfNotExists](./effects.md#deployifnotexists) , nawet jeśli ustawienie **wymuszania** ma wartość _DoNotEnforce_.
 

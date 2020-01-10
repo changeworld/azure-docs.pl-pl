@@ -7,17 +7,17 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 1df8bb293834fca123b2573f02871410754a6bdc
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 01/06/2020
+ms.openlocfilehash: 17cefdd5976efdd86d9f171f4eb1518f63fe043b
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73479650"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754296"
 ---
 # <a name="what-is-azure-cognitive-search"></a>Co to jest wyszukiwanie poznawcze na platformie Azure?
 
-Usługa Azure Wyszukiwanie poznawcze ([znana wcześniej jako "Azure Search"](whats-new.md#new-service-name)) to rozwiązanie w chmurze typu "wyszukiwanie jako usługa", które udostępnia deweloperom interfejsy API i narzędzia umożliwiające dodawanie bogatego środowiska wyszukiwania za pośrednictwem prywatnej, heterogenicznej zawartości w aplikacjach sieci Web, mobilnych i firmowych . Twój kod lub narzędzie wywołuje pozyskiwanie danych (indeksowanie) w celu utworzenia i załadowania indeksu. Opcjonalnie możesz dodać umiejętności poznawcze, aby zastosować procesy AI podczas indeksowania. Takie działanie może dodawać nowe informacje i struktury przydatne w przypadku wyszukiwania i innych scenariuszy.
+Usługa Azure Wyszukiwanie poznawcze ([znana wcześniej jako "Azure Search"](whats-new.md#new-service-name)) to rozwiązanie w chmurze typu "wyszukiwanie jako usługa", które udostępnia deweloperom interfejsy API i narzędzia umożliwiające dodawanie bogatego środowiska wyszukiwania za pośrednictwem prywatnej, niejednorodnej zawartości w aplikacjach sieci Web, mobilnych i firmowych. Twój kod lub narzędzie wywołuje pozyskiwanie danych (indeksowanie) w celu utworzenia i załadowania indeksu. Opcjonalnie możesz dodać umiejętności poznawcze, aby zastosować procesy AI podczas indeksowania. Takie działanie może dodawać nowe informacje i struktury przydatne w przypadku wyszukiwania i innych scenariuszy.
 
 Po drugiej stronie usługi kod aplikacji wystawia żądania zapytań i obsługuje odpowiedzi. Środowisko wyszukiwania jest zdefiniowane w kliencie przy użyciu funkcji z usługi Azure Wyszukiwanie poznawcze, z wykonywaniem zapytań w odniesieniu do utrwalonego indeksu tworzonego, własnego i przechowywanego w usłudze.
 
@@ -43,7 +43,7 @@ Wyszukiwanie poznawcze platformy Azure są odpowiednie dla następujących scena
 
 ## <a name="feature-descriptions"></a>Opisy funkcji
 
-| Podstawowe&nbsp;wyszukiwania&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Funkcje |
+| Podstawowe&nbsp;Search&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Funkcje |
 |-------------------|----------|
 |Wyszukiwanie tekstowe w dowolnej postaci | [**Wyszukiwanie pełnotekstowe**](search-lucene-query-architecture.md) jest podstawowym przypadkiem użycia dla większości aplikacji opartych na wyszukiwaniu. Zapytania można formułować za pomocą obsługiwanej składni. <br/><br/>[**Prosta składnia zapytań**](query-simple-syntax.md) zawiera operatory logiczne, operatory wyszukiwania fraz, operatory sufiksów oraz operatory pierwszeństwa.<br/><br/>[**Składnia zapytań Lucene**](query-lucene-syntax.md) obejmuje wszystkie operacje prostej składni rozszerzone o wyszukiwanie rozmyte, wyszukiwanie w sąsiedztwie, promowanie terminów i wyrażenia regularne.|
 | Trafność | [**Proste ocenianie**](index-add-scoring-profiles.md) to kluczowa korzyść dla wyszukiwanie poznawcze platformy Azure. Profile oceniania służą do modelowania trafności jako funkcji wartości w samych dokumentach. Na przykład nowsze produkty lub produkty o obniżonej cenie mogą być wyświetlane na początku wyników wyszukiwania. Do tworzenia profilów oceniania można również używać tagów spersonalizowanej oceny opartych na preferencjach klientów, śledzonych i przechowywanych oddzielnie. |
@@ -53,8 +53,9 @@ Wyszukiwanie poznawcze platformy Azure są odpowiednie dla następujących scena
 
 | AI&nbsp;wzbogacanie&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;       | Funkcje |
 |-------------------|----------|
-|Wzbogacone dokumenty AI | [**Wzbogacenie AI**](cognitive-search-concept-intro.md) do analizy obrazów i tekstu można zastosować do potoku indeksowania, aby wyodrębnić informacje tekstowe z nieprzetworzonej zawartości. Kilka przykładów [wbudowanych możliwości](cognitive-search-predefined-skills.md) to optyczne rozpoznawanie znaków (które pozwala na przeszukiwanie plików JPEG), rozpoznawanie jednostek (identyfikowanie organizacji, nazwy lub lokalizacji) oraz rozpoznawanie kluczowych fraz. W celu dołączenia do potoku można również użyć [możliwości kodu niestandardowego](cognitive-search-create-custom-skill-example.md). |
-| Przechowywane wzbogacania na potrzeby analizy i zużycia| [**Magazyn wiedzy (wersja zapoznawcza)** ](knowledge-store-concept-intro.md) to rozszerzenie indeksowania opartego na formacie AI. Za pomocą usługi Azure Storage jako zaplecza można zapisywać wzbogacania utworzone podczas indeksowania. Te artefakty mogą służyć do projektowania lepszych umiejętności lub tworzenia kształtu i struktury z amorphous lub niejednoznacznych danych. Można tworzyć projekcje tych struktur, które są przeznaczone dla konkretnych obciążeń lub użytkowników. Można również bezpośrednio analizować wyodrębnione dane lub ładować je do innych aplikacji.<br/><br/> |
+|Przetwarzanie AI podczas indeksowania | [**Wzbogacenie AI**](cognitive-search-concept-intro.md) do analizy obrazów i tekstu można zastosować do potoku indeksowania, aby wyodrębnić informacje tekstowe z nieprzetworzonej zawartości. Kilka przykładów [wbudowanych możliwości](cognitive-search-predefined-skills.md) to optyczne rozpoznawanie znaków (które pozwala na przeszukiwanie plików JPEG), rozpoznawanie jednostek (identyfikowanie organizacji, nazwy lub lokalizacji) oraz rozpoznawanie kluczowych fraz. W celu dołączenia do potoku można również użyć [możliwości kodu niestandardowego](cognitive-search-create-custom-skill-example.md). |
+| Przechowywanie wzbogaconej zawartości do analizy i zużycia w scenariuszach niezwiązanych z wyszukiwaniem | [**Magazyn wiedzy (wersja zapoznawcza)** ](knowledge-store-concept-intro.md) to rozszerzenie indeksowania opartego na formacie AI. Za pomocą usługi Azure Storage jako zaplecza można zapisywać wzbogacania utworzone podczas indeksowania. Te artefakty mogą służyć do projektowania lepszych umiejętności lub tworzenia kształtu i struktury z amorphous lub niejednoznacznych danych. Można tworzyć projekcje tych struktur, które są przeznaczone dla konkretnych obciążeń lub użytkowników. Można również bezpośrednio analizować wyodrębnione dane lub ładować je do innych aplikacji.<br/><br/> |
+| Zawartość buforowana | [**Przyrostowe wzbogacanie (wersja zapoznawcza)** ](cognitive-search-incremental-indexing-conceptual.md) ogranicza przetwarzanie do tylko dokumentów, które są zmieniane przez specyficzną edycję potoku, przy użyciu zawartości z pamięci podręcznej dla części potoku, które nie ulegają zmianie. |
 
 | Importowanie/indeksowanie&nbsp;danych | Funkcje |
 |----------------------------------|----------|

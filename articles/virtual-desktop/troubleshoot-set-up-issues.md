@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: troubleshooting
-ms.date: 12/17/2019
+ms.date: 01/08/2020
 ms.author: helohr
-ms.openlocfilehash: 925894aea267e4f100f7bcdb817424b5cdfe6c25
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: HT
+ms.openlocfilehash: b2209e2ada2d825714d08b6ac3237583df28272a
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75459445"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749367"
 ---
 # <a name="tenant-and-host-pool-creation"></a>Tworzenie dzierżawy i puli hosta
 
@@ -138,8 +138,16 @@ Przykład nieprzetworzonego błędu:
 
 **Przyczyna 2:** Nie rozpoznano nazwy domeny.
 
-**Poprawka 2:** Zobacz "błąd nazwy domeny nie rozwiązano" w przypadku maszyn wirtualnych nie są przyłączone do domeny w [konfiguracji maszyny wirtualnej hosta sesji](troubleshoot-vm-configuration.md).
+**Poprawka 2:** Zobacz [błąd: nazwa domeny nie jest rozpoznawana](troubleshoot-vm-configuration.md#error-domain-name-doesnt-resolve) w [konfiguracji maszyny wirtualnej hosta sesji](troubleshoot-vm-configuration.md).
 
+**Przyczyna 3:** Konfiguracja DNS sieci wirtualnej (VNET) jest ustawiona na **wartość domyślna**.
+
+Aby rozwiązać ten problem, wykonaj następujące czynności:
+
+1. Otwórz witrynę Azure Portal i przejdź do bloku **sieci wirtualne** .
+2. Znajdź sieć wirtualną, a następnie wybierz pozycję **serwery DNS**.
+3. Menu serwery DNS powinno pojawić się po prawej stronie ekranu. W tym menu wybierz pozycję **niestandardowy**.
+4. Upewnij się, że serwery DNS wymienione w obszarze niestandardowe są zgodne z kontrolerem domeny lub Active Directory domeny. Jeśli nie widzisz serwera DNS, możesz go dodać, wprowadzając jego wartość w polu **Dodaj serwer DNS** .
 
 ### <a name="error-your-deployment-failedunauthorized"></a>Błąd: wdrożenie nie powiodło się. ..\Unauthorized
 
@@ -159,7 +167,7 @@ Przykład nieprzetworzonego błędu:
 
 **Przyczyna 2:** Błąd przejściowy z połączeniem.
 
-**Poprawka:** Potwierdź, że środowisko pulpitu wirtualnego systemu Windows jest w dobrej kondycji, logując się przy użyciu programu PowerShell. Ręcznie Zakończ rejestrację maszyny wirtualnej w obszarze [Tworzenie puli hostów przy użyciu programu PowerShell](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-powershell).
+**Poprawka:** Potwierdź, że środowisko pulpitu wirtualnego systemu Windows jest w dobrej kondycji, logując się przy użyciu programu PowerShell. Ręcznie Zakończ rejestrację maszyny wirtualnej w obszarze [Tworzenie puli hostów przy użyciu programu PowerShell](create-host-pools-powershell.md).
 
 ### <a name="error-the-admin-username-specified-isnt-allowed"></a>Błąd: określona nazwa użytkownika administratora jest niedozwolona
 
@@ -347,7 +355,7 @@ Przykład nieprzetworzonego błędu:
 
 **Przyczyna:** Określony Administrator dzierżawy usług pulpitu wirtualnego systemu Windows wymaga zalogowania się do usługi Azure Multi-Factor Authentication (MFA).
 
-**Poprawka:** Utwórz jednostkę usługi i przypisz ją do swojej dzierżawy pulpitu wirtualnego systemu Windows, wykonując kroki opisane w [samouczku: tworzenie jednostek usługi i przypisań ról przy użyciu programu PowerShell](https://docs.microsoft.com/azure/virtual-desktop/create-service-principal-role-powershell). Po sprawdzeniu, czy możesz zalogować się do pulpitu wirtualnego systemu Windows przy użyciu nazwy głównej usługi, uruchom ponownie ofertę witryny Azure Marketplace lub szablon Azure Resource Manager GitHub, w zależności od używanej metody. Postępuj zgodnie z poniższymi instrukcjami, aby wprowadzić poprawne parametry dla metody.
+**Poprawka:** Utwórz jednostkę usługi i przypisz ją do swojej dzierżawy pulpitu wirtualnego systemu Windows, wykonując kroki opisane w [samouczku: tworzenie jednostek usługi i przypisań ról przy użyciu programu PowerShell](create-service-principal-role-powershell.md). Po sprawdzeniu, czy możesz zalogować się do pulpitu wirtualnego systemu Windows przy użyciu nazwy głównej usługi, uruchom ponownie ofertę witryny Azure Marketplace lub szablon Azure Resource Manager GitHub, w zależności od używanej metody. Postępuj zgodnie z poniższymi instrukcjami, aby wprowadzić poprawne parametry dla metody.
 
 W przypadku korzystania z oferty portalu Azure Marketplace podaj wartości następujących parametrów, aby prawidłowo uwierzytelniać się na pulpicie wirtualnym systemu Windows:
 

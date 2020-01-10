@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2019
 ms.author: juliako
-ms.openlocfilehash: e00da689820778a8cc7c5ce95184d4d8c79c70f2
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: bf83c87c71c8e05dc74d7754c82c76489de1bd85
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977713"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750899"
 ---
 # <a name="monitor-media-services-diagnostic-logs"></a>Monitorowanie dzienników diagnostycznych Media Services
 
@@ -49,7 +49,7 @@ W tym artykule pokazano, jak skierować dane do konta magazynu, a następnie wy�
 
    ![Sekcja ustawień diagnostycznych](media/media-services-diagnostic-logs/logs02.png)
 1. Ustaw suwak **Okres przechowywania (w dniach)** na wartość 30. Suwak umożliwia ustawienie liczby dni przechowywania danych monitorowania na koncie magazynu. Starsze dane są automatycznie usuwane przez usługę Azure Monitor. Wpisanie wartości zero powoduje, że dane są przechowywane przez nieograniczony czas.
-1. Kliknij przycisk **Save** (Zapisz).
+1. Kliknij pozycję **Zapisz**.
 
 Dane monitorowania z zasobu będą teraz przepływać do konta magazynu.
 
@@ -73,7 +73,7 @@ az monitor diagnostic-settings create --name <diagnostic name> \
     }]'
 ```
 
-Na przykład:
+Przykład:
 
 ```cli
 az monitor diagnostic-settings create --name amsv3diagnostic \
@@ -181,8 +181,8 @@ Może upłynąć nawet pięć minut, zanim zdarzenie pojawi się na koncie magaz
 ## <a name="see-also"></a>Zobacz także
 
 * [Metryki Azure Monitor](../../azure-monitor/platform/data-platform.md)
-* [Azure Monitor dzienników diagnostycznych](../../azure-monitor/platform/resource-logs-overview.md)
-* [Jak zbierać i zużywać dane dzienników z zasobów platformy Azure](../../azure-monitor/platform/resource-logs-overview.md)
+* [Azure Monitor dzienników diagnostycznych](../../azure-monitor/platform/platform-logs-overview.md)
+* [Jak zbierać i zużywać dane dzienników z zasobów platformy Azure](../../azure-monitor/platform/platform-logs-overview.md)
 
 ## <a name="next-steps"></a>Następne kroki
 

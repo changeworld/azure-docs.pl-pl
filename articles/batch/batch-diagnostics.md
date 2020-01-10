@@ -14,21 +14,21 @@ ms.workload: big-compute
 ms.date: 12/05/2018
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: aa86d6cf22562fa1fac7d45de20b28aa0eec33aa
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 9412107759e0aa068d982828d47b97822c09ae35
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71261676"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75748089"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>Metryki usługi Batch, alerty i dzienniki diagnostyczne oceny i monitorowania
 
  
-W tym artykule wyjaśniono, jak monitorować konto usługi Batch przy użyciu funkcji [usługi Azure Monitor](../azure-monitor/overview.md). Usługa Azure Monitor umożliwia zbieranie informacji o [metryki](../azure-monitor/platform/data-platform-metrics.md) i [dzienniki diagnostyczne](../azure-monitor/platform/resource-logs-overview.md) zasobów na koncie usługi Batch. Zbieranie i używanie tych danych na wiele sposobów na monitorowanie konta usługi Batch i diagnozować problemy. Można również skonfigurować [alertów dotyczących metryk](../azure-monitor/platform/alerts-overview.md) Aby otrzymywać powiadomienia, gdy Metryka osiągnie określoną wartość. 
+W tym artykule wyjaśniono, jak monitorować konto usługi Batch przy użyciu funkcji [usługi Azure Monitor](../azure-monitor/overview.md). Usługa Azure Monitor umożliwia zbieranie informacji o [metryki](../azure-monitor/platform/data-platform-metrics.md) i [dzienniki diagnostyczne](../azure-monitor/platform/platform-logs-overview.md) zasobów na koncie usługi Batch. Zbieranie i używanie tych danych na wiele sposobów na monitorowanie konta usługi Batch i diagnozować problemy. Można również skonfigurować [alertów dotyczących metryk](../azure-monitor/platform/alerts-overview.md) Aby otrzymywać powiadomienia, gdy Metryka osiągnie określoną wartość. 
 
 ## <a name="batch-metrics"></a>Metryki usługi Batch
 
-Metryki są danych telemetrycznych platformy Azure (nazywanych również liczników wydajności) wyemitowane przez Twoich zasobów platformy Azure, które są używane przez usługę Azure Monitor. Przykładowe metryki na koncie wsadowym obejmują: Zdarzenia tworzenia puli, liczba węzłów o niskim priorytecie oraz zdarzenia ukończenia zadania. 
+Metryki są danych telemetrycznych platformy Azure (nazywanych również liczników wydajności) wyemitowane przez Twoich zasobów platformy Azure, które są używane przez usługę Azure Monitor. Przykładowe metryki na koncie usługi Batch obejmują: zdarzenia tworzenia puli, liczba węzłów o niskim priorytecie i zdarzenia ukończone zadania. 
 
 Zobacz [Lista obsługiwanych metryk usługi Batch](../azure-monitor/platform/metrics-supported.md#microsoftbatchbatchaccounts).
 
@@ -109,7 +109,7 @@ Inne opcjonalne miejsca docelowe dla dzienników diagnostycznych:
 
     ![Diagnostyka usługi Batch](media/batch-diagnostics/diagnostics-portal.png)
 
-Inne opcje, aby włączyć zbieranie danych dziennika obejmują: użycia usługi Azure Monitor w portalu w ustawień diagnostycznych, należy użyć [szablonu usługi Resource Manager](../azure-monitor/platform/diagnostic-settings-template.md), lub za pomocą programu Azure PowerShell lub interfejsu wiersza polecenia platformy Azure. zobacz [zbieranie i używanie dane dzienników z zasobów platformy Azure](../azure-monitor/platform/resource-logs-overview.md).
+Inne opcje, aby włączyć zbieranie danych dziennika obejmują: użycia usługi Azure Monitor w portalu w ustawień diagnostycznych, należy użyć [szablonu usługi Resource Manager](../azure-monitor/platform/diagnostic-settings-template.md), lub za pomocą programu Azure PowerShell lub interfejsu wiersza polecenia platformy Azure. zobacz [zbieranie i używanie dane dzienników z zasobów platformy Azure](../azure-monitor/platform/platform-logs-overview.md).
 
 
 ### <a name="access-diagnostics-logs-in-storage"></a>Dzienniki diagnostyczne dostępu w magazynie
@@ -130,15 +130,15 @@ insights-metrics-pt1m/resourceId=/SUBSCRIPTIONS/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXX
 RESOURCEGROUPS/MYRESOURCEGROUP/PROVIDERS/MICROSOFT.BATCH/
 BATCHACCOUNTS/MYBATCHACCOUNT/y=2018/m=03/d=05/h=22/m=00/PT1H.json
 ```
-Każdy `PT1H.json` plik obiektu BLOB zawiera zdarzenia w formacie JSON, które wystąpiły w ciągu godziny określonej w adresie URL `h=12`obiektu BLOB (na przykład). W ciągu tej godziny zdarzenia są dołączane do `PT1H.json` pliku w miarę ich występowania. Wartość minuta (`m=00`) jest zawsze `00`, ponieważ zdarzenia dzienników diagnostycznych są dzielone na pojedyncze obiekty blob na godzinę. (Wszystkie godziny są w formacie UTC).
+Każdy `PT1H.json` plik BLOB zawiera zdarzenia w formacie JSON, które wystąpiły w ciągu godziny określonej w adresie URL obiektu BLOB (na przykład `h=12`). W ciągu tej godziny zdarzenia są dołączane do pliku `PT1H.json` w miarę ich występowania. Wartość minuta (`m=00`) jest zawsze `00`, ponieważ zdarzenia dzienników diagnostycznych są dzielone na pojedyncze obiekty blob na godzinę. (Wszystkie godziny są w formacie UTC).
 
-Poniżej znajduje się przykład `PoolResizeCompleteEvent` wpisu `PT1H.json` w pliku dziennika. Zawiera informacje o bieżącej i docelowej liczbie węzłów dedykowanych i o niskim priorytecie oraz o godzinie rozpoczęcia i zakończenia operacji:
+Poniżej znajduje się przykład wpisu `PoolResizeCompleteEvent` w pliku dziennika `PT1H.json`. Zawiera informacje o bieżącej i docelowej liczbie węzłów dedykowanych i o niskim priorytecie oraz o godzinie rozpoczęcia i zakończenia operacji:
 
 ```
 { "Tenant": "65298bc2729a4c93b11c00ad7e660501", "time": "2019-08-22T20:59:13.5698778Z", "resourceId": "/SUBSCRIPTIONS/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/RESOURCEGROUPS/MYRESOURCEGROUP/PROVIDERS/MICROSOFT.BATCH/BATCHACCOUNTS/MYBATCHACCOUNT/", "category": "ServiceLog", "operationName": "PoolResizeCompleteEvent", "operationVersion": "2017-06-01", "properties": {"id":"MYPOOLID","nodeDeallocationOption":"Requeue","currentDedicatedNodes":10,"targetDedicatedNodes":100,"currentLowPriorityNodes":0,"targetLowPriorityNodes":0,"enableAutoScale":false,"isAutoPool":false,"startTime":"2019-08-22 20:50:59.522","endTime":"2019-08-22 20:59:12.489","resultCode":"Success","resultMessage":"The operation succeeded"}}
 ```
 
-Aby uzyskać więcej informacji o schemacie dzienniki diagnostyczne na koncie magazynu, zobacz [archiwizowanie dzienników diagnostycznych usługi Azure](../azure-monitor/platform/resource-logs-collect-storage.md#schema-of-resource-logs-in-storage-account). Aby programowo uzyskać dostęp dzienniki na koncie magazynu, przy użyciu interfejsów API magazynu. 
+Aby uzyskać więcej informacji o schemacie dzienniki diagnostyczne na koncie magazynu, zobacz [archiwizowanie dzienników diagnostycznych usługi Azure](../azure-monitor/platform/resource-logs-collect-storage.md#schema-of-platform-logs-in-storage-account). Aby programowo uzyskać dostęp dzienniki na koncie magazynu, przy użyciu interfejsów API magazynu. 
 
 ### <a name="service-log-events"></a>Usługa dziennika zdarzeń
 Dzienniki platformy Azure Batch usługi, jeżeli pobierane, zawierają zdarzenia emitowane przez usługę Azure Batch w okresie istnienia poszczególnych zasobów usługi Batch, takie jak pulą lub zadaniem. Każde zdarzenie emitowane przy użyciu usługi Batch są rejestrowane w formacie JSON. Na przykład, to jest treść próbkę **zdarzenie utworzenia puli**:
@@ -180,7 +180,7 @@ Usługa Batch obecnie emituje następujące zdarzenia dziennika usługi. Ta list
 
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Dowiedz się więcej o [interfejsach API i narzędziach usługi Batch](batch-apis-tools.md) umożliwiających tworzenie rozwiązań usługi Batch.
 * Dowiedz się więcej o [monitorowania rozwiązań usługi Batch](monitoring-overview.md).

@@ -7,16 +7,16 @@ author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 ms.topic: include
-ms.date: 11/12/2019
+ms.date: 01/07/2020
 ms.custom: include file
-ms.openlocfilehash: 4ed5be09d952d4d64c269e3eaf698ad7a74fffdd
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: afce629cc4aa5e3bb62bd2cf2eeaf8af12dc7d9f
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014095"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75752457"
 ---
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
 
 1. Wybierz pasek boczny po stronie głównej, a następnie pozycję **+ Utwórz zasób**. 
 

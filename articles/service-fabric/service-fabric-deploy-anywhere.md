@@ -1,51 +1,46 @@
 ---
-title: Omówienie platformy Azure i autonomicznego usługi Service Fabric clusters | Dokumentacja firmy Microsoft
-description: Na wszystkich maszynach wirtualnych lub komputerach z systemem Windows Server lub Linux, możesz utworzyć klastry usługi Service Fabric. Oznacza to, że jesteś w stanie wdrażania i uruchamiania aplikacji usługi Service Fabric w każdym środowisku, w którym masz zestaw systemu Windows Server lub komputery z systemem Linux, które są połączone ze sobą rozwiązań lokalnych, Microsoft Azure lub za pomocą dowolnego dostawcy chmury.
-services: service-fabric
-documentationcenter: .net
+title: Omówienie klastrów Service Fabric platformy Azure i autonomicznych
+description: Klastry Service Fabric można tworzyć na wszystkich maszynach wirtualnych lub komputerach z systemem Windows Server lub Linux. Oznacza to, że można wdrażać i uruchamiać aplikacje Service Fabric w dowolnym środowisku, w którym znajduje się zestaw komputerów z systemem Windows Server lub Linux, które są połączone lokalnie, Microsoft Azure lub z dowolnym dostawcą usług w chmurze.
 author: dkkapur
-manager: chackdan
-editor: ''
-ms.assetid: 19ca51e8-69b9-4952-b4b5-4bf04cded217
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.date: 02/01/2019
+ms.date: 01/07/2020
 ms.author: dekapur
-ms.openlocfilehash: 6d5169d8ea4480e95e09228f9eb02bd78fdd0be8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.custom: sfrev
+ms.openlocfilehash: a3627effe10039ded5007f9dd060bf1865929040
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60393507"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75751141"
 ---
-# <a name="comparing-azure-and-standalone-service-fabric-clusters-on-windows-server-and-linux"></a>Porównanie platformy Azure i autonomicznego usługi Service Fabric klastrów w systemie Windows Server i Linux
-Klaster usługi Service Fabric to zbiór połączonych z siecią maszyn wirtualnych lub fizycznych, w których mikrousługi są wdrażania i zarządzania nimi. Komputer lub maszynę Wirtualną, która jest częścią klastra, jest nazywana węzłem klastra. Klastry można skalować do tysięcy węzłów. Po dodaniu nowych węzłów do klastra usługi Service Fabric rebalances replik partycji usługi i wystąpień na większą liczbę węzłów. Ogólna zwiększa wydajność aplikacji i zmniejsza rywalizacji o dostęp do pamięci. Jeśli nie są wydajnie używane węzły w klastrze, możesz zmniejszyć liczbę węzłów w klastrze. Usługa Service Fabric ponownie rebalances replik partycji i wystąpień na obniżenie liczby węzłów, aby lepiej wykorzystać możliwości sprzętu na każdym węźle.
+# <a name="comparing-azure-and-standalone-service-fabric-clusters-on-windows-server-and-linux"></a>Porównywanie klastrów platformy Azure i autonomicznych Service Fabric w systemach Windows Server i Linux
 
-Usługa Service Fabric umożliwia tworzenie klastrów usługi Service Fabric na wszystkich maszynach wirtualnych lub komputerach z systemem Windows Server lub Linux. To oznacza, że jesteś w stanie wdrażania i uruchamiania aplikacji usługi Service Fabric w każdym środowisku, w którym masz zestaw komputerów Windows Server lub Linux, które są połączone ze sobą, można go lokalnie, Microsoft Azure lub za pomocą dowolnego dostawcy chmury.
+Klaster Service Fabric jest połączonym z siecią zestawem maszyn wirtualnych lub fizycznych, w którym są wdrażane i zarządzane mikrousługi. Maszyna lub maszyna wirtualna będąca częścią klastra nazywa się węzłem klastra. Klastry mogą być skalowane do tysięcy węzłów. Jeśli dodasz nowe węzły do klastra, Service Fabric ponownie zrównoważą repliki partycji usługi i wystąpienia w większej liczbie węzłów. Ogólna wydajność aplikacji zwiększa się i rywalizacja o zmniejszenie ilości pamięci. Jeśli węzły w klastrze nie są efektywnie używane, można zmniejszyć liczbę węzłów w klastrze. Service Fabric ponownie zrównoważy repliki partycji i wystąpienia na zmniejszonej liczbie węzłów, aby lepiej wykorzystać sprzęt w każdym węźle.
 
-## <a name="benefits-of-clusters-on-azure"></a>Zalety klastry na platformie Azure
-Na platformie Azure firma Microsoft zapewnia integrację z usługą innych funkcji platformy Azure i usług, co sprawia, że operacje i zarządzania klastrem łatwiejsze i bardziej niezawodne.
+Service Fabric umożliwia tworzenie klastrów Service Fabric na wszystkich maszynach wirtualnych lub komputerach z systemem Windows Server lub Linux. Oznacza to, że można wdrażać i uruchamiać aplikacje Service Fabric w dowolnym środowisku, w którym istnieje zestaw komputerów z systemem Windows Server lub Linux, które są połączone, muszą być lokalne, Microsoft Azure lub z dowolnego dostawcy chmury.
 
-* **Witryna Azure portal:** Azure portal ułatwia tworzenie klastrów i zarządzanie nimi.
-* **Usługa Azure Resource Manager:** Korzystanie z usługi Azure Resource Manager umożliwia łatwe zarządzanie wszelkie zasoby używane przez klaster jako jednostki i ułatwia śledzenie kosztów i rozliczeń.
-* **Klaster usługi Service Fabric jako zasobu platformy Azure** klastra usługi Service Fabric jest zasobem platformy Azure, dzięki czemu można modelować je tak jak inne zasoby na platformie Azure.
-* **Integracja z infrastrukturą Azure** usługi Service Fabric koordynuje z podstawową infrastrukturą platformy Azure dla systemu operacyjnego, sieci i innych uaktualnień w celu zwiększenia dostępności i niezawodności aplikacji.  
-* **Diagnostyka:** Na platformie Azure firma Microsoft zapewnia integrację z usługą Diagnostyka Azure i dzienniki usługi Azure Monitor.
-* **Skalowanie automatyczne:** W przypadku klastrów na platformie Azure firma Microsoft zapewnia wbudowane funkcje automatycznego skalowania ze względu na zestawach skalowania maszyn wirtualnych. W lokalnych i innych środowisk w chmurze musisz utworzyć własne automatyczne skalowanie się funkcji lub skalowania ręcznie przy użyciu interfejsów API, który udostępnia usługi Service Fabric Skalowanie klastrów.
+## <a name="benefits-of-clusters-on-azure"></a>Zalety klastrów na platformie Azure
 
-## <a name="benefits-of-standalone-clusters"></a>Zalety klastry autonomiczne
-* Masz swobodę wyboru wśród dostawców chmury do obsługi klastra.
-* Aplikacje usługi Service Fabric, napisane raz, można uruchomić w wielu środowiskach hostingu z minimalnym nie zmian.
-* Wiedzę na temat tworzenia aplikacji usługi Service Fabric są przenoszone z jednego środowiska hostingu do innego.
-* Środowisko operacyjne uruchamiania i zarządzania usługi Service Fabric clusters wykonuje za pośrednictwem z jednego środowiska do innego.
-* Możliwości dotarcia do klientów szerokiego jest nieograniczona ograniczeń środowiska hostingu.
-* Dodatkową warstwę niezawodności i ochrony przed awarii powszechne istnieje, ponieważ można przenosić usług za pośrednictwem do innego środowiska wdrażania, gdy dostawca danych Centrum lub w chmurze ma niedostępności.
+Na platformie Azure zapewniamy integrację z innymi funkcjami i usługami platformy Azure, dzięki czemu operacje i zarządzanie klastrem są łatwiejsze i bardziej niezawodne.
 
-## <a name="next-steps"></a>Kolejne kroki
+* **Azure Portal:** Azure Portal ułatwia tworzenie klastrów i zarządzanie nimi.
+* **Azure Resource Manager:** Użycie Azure Resource Manager umożliwia łatwe zarządzanie wszystkimi zasobami używanymi przez klaster jako jednostką i upraszcza śledzenie kosztów i rozliczeń.
+* **Service Fabric klaster jako zasób platformy Azure** Klaster Service Fabric jest zasobem platformy Azure, dzięki czemu można modelować go tak jak inne zasoby na platformie Azure.
+* **Integracja z infrastrukturą platformy Azure** Service Fabric koordynuje z podstawową infrastrukturą platformy Azure dla systemu operacyjnego, sieci i innych uaktualnień, aby zwiększyć dostępność i niezawodność aplikacji.  
+* **Diagnostyka:** Na platformie Azure zapewniamy integrację z usługą Azure Diagnostics i dziennikami Azure Monitor.
+* **Skalowanie automatyczne:** W przypadku klastrów na platformie Azure zapewniamy wbudowaną funkcję automatycznego skalowania ze względu na zestawy skalowania maszyn wirtualnych. W środowisku lokalnym i w innych środowiskach chmurowych musisz ręcznie utworzyć własną funkcję automatycznego skalowania, korzystając z interfejsów API, które Service Fabric uwidaczniają do skalowania klastrów.
 
-* Zapoznaj się z omówieniem programu [klastrów usługi Service Fabric, na platformie Azure](service-fabric-azure-clusters-overview.md)
-* Zapoznaj się z omówieniem programu [klastry autonomicznego usługi Service Fabric](service-fabric-standalone-clusters-overview.md)
+## <a name="benefits-of-standalone-clusters"></a>Zalety klastrów autonomicznych
+
+* Możesz wybrać dowolnego dostawcę usług w chmurze, który będzie hostować klaster.
+* Aplikacje Service Fabric, po ich zapisaniu, można uruchamiać w wielu środowiskach hostingu z minimalnym brakiem zmian.
+* Znajomość tworzenia aplikacji Service Fabric przenoszone z jednego środowiska hostingu do innego.
+* Środowisko operacyjne uruchamiania i zarządzania klastrami Service Fabric przenoszone z jednego środowiska do innego.
+* Rozległy zasięg klienta jest niepowiązany przez ograniczenia środowiska hostingu.
+* Istnieje dodatkowa warstwa niezawodności i ochrony przed powszechnym przestojem, ponieważ można przenieść usługi do innego środowiska wdrażania, jeśli centrum danych lub dostawca chmury ma niedostępność.
+
+## <a name="next-steps"></a>Następne kroki
+
+* Zapoznaj się z omówieniem [klastrów Service Fabric na platformie Azure](service-fabric-azure-clusters-overview.md)
+* Zapoznaj się z omówieniem [Service Fabric klastrów autonomicznych](service-fabric-standalone-clusters-overview.md)
 * Uzyskaj informacje o [opcjach pomocy technicznej usługi Service Fabric](service-fabric-support.md)

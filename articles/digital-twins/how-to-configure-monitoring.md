@@ -9,12 +9,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: ed376a3f500f6d6af3d0eab7f98b68e856513600
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 66be29b6d16e422eebd381cddb83ce94adf9f76e
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74547082"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75745447"
 ---
 # <a name="how-to-configure-monitoring-in-azure-digital-twins"></a>Jak skonfigurować monitorowanie w usłudze Azure Digital bliźniaczych reprezentacji
 
@@ -26,7 +26,7 @@ W tym artykule przedstawiono podsumowanie opcji rejestrowania i monitorowania or
 
 ## <a name="review-activity-logs"></a>Przegląd dzienników aktywności
 
-[Dzienniki aktywności](../azure-monitor/platform/activity-logs-overview.md) platformy Azure zapewniają szybki wgląd w szczegółowe dane historii zdarzeń i operacji na poziomie subskrypcji dla każdego wystąpienia usługi platformy Azure.
+[Dzienniki aktywności](../azure-monitor/platform/platform-logs-overview.md) platformy Azure zapewniają szybki wgląd w szczegółowe dane historii zdarzeń i operacji na poziomie subskrypcji dla każdego wystąpienia usługi platformy Azure.
 
 Zdarzenia na poziomie subskrypcji obejmują:
 
@@ -57,7 +57,7 @@ W przypadku zaawansowanego rejestrowania aktywności:
 
 ## <a name="enable-customer-diagnostic-logs"></a>Włączanie dzienników diagnostycznych klienta
 
-[Ustawienia diagnostyczne](../azure-monitor/platform/resource-logs-overview.md) platformy Azure można ustawić dla każdego wystąpienia platformy Azure w celu uzupełnienia rejestrowania aktywności. Dzienniki aktywności odnoszą się do zdarzeń na poziomie subskrypcji, rejestrowanie diagnostyczne zapewnia wgląd w historię operacyjną samych zasobów.
+[Ustawienia diagnostyczne](../azure-monitor/platform/platform-logs-overview.md) platformy Azure można ustawić dla każdego wystąpienia platformy Azure w celu uzupełnienia rejestrowania aktywności. Dzienniki aktywności odnoszą się do zdarzeń na poziomie subskrypcji, rejestrowanie diagnostyczne zapewnia wgląd w historię operacyjną samych zasobów.
 
 Przykłady rejestrowania diagnostycznego obejmują:
 
@@ -127,8 +127,8 @@ Usługa Azure Digital bliźniaczych reprezentacji obsługuje również rejestrow
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Dowiedz się więcej o [dziennikach aktywności](../azure-monitor/platform/activity-logs-overview.md)platformy Azure.
+- Dowiedz się więcej o [dziennikach aktywności](../azure-monitor/platform/platform-logs-overview.md)platformy Azure.
 
-- Zapoznaj się z [omówieniem dzienników diagnostycznych](../azure-monitor/platform/resource-logs-overview.md), szczegółowe do ustawień diagnostycznych platformy Azure.
+- Zapoznaj się z [omówieniem dzienników diagnostycznych](../azure-monitor/platform/platform-logs-overview.md), szczegółowe do ustawień diagnostycznych platformy Azure.
 
 - Przeczytaj więcej na temat [dzienników Azure monitor](../azure-monitor/log-query/get-started-portal.md).

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: enewman
-ms.openlocfilehash: b69abf098ba7646ebc98d126c7c0d949205d6275
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 5bf54b6975475810650aeaee4b477e60255757bf
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383976"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75530684"
 ---
 # <a name="set-up-a-lab-to-teach-data-science-with-python-and-jupyter-notebooks"></a>Konfigurowanie laboratorium do uczenia się danych za pomocą notesów Python i Jupyter
 
@@ -46,13 +46,13 @@ W poniższej tabeli przedstawiono ustawienia, które należy wykonać podczas ko
 | Ustawienia laboratorium | Wartość/instrukcje |
 | ------------ | ------------------ |
 |Rozmiar maszyny wirtualnej| Mały procesor GPU (COMPUTE). Ten rozmiar najlepiej nadaje się w przypadku aplikacji intensywnie korzystających z obliczeń i sieci, takich jak sztuczna inteligencja i uczenie głębokie. |
-|Obraz maszyny wirtualnej| SQL Server 2019 standard w systemie Windows Server 2019|
+|Obraz maszyny wirtualnej| Maszyna wirtualna do analizy danych — Windows 2016|
 
 ## <a name="template-machine"></a>Komputer szablonu
 
 Obraz [Data Science Virtual Machine-Windows 2016](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-windows) zapewnia niezbędne platformy uczenia głębokiego i narzędzia wymagane dla tego typu klasy.  Obraz zawiera notesy Jupyter i Visual Studio Code.  [Notesy Jupyter](http://jupyter-notebook.readthedocs.io) to aplikacja sieci Web, która umożliwia analitykom danych wykonywanie nieprzetworzonych danych, uruchamianie obliczeń i wyświetlanie wyników wszystkich w tym samym środowisku.  Dla naszego komputera szablonu aplikacja sieci Web będzie uruchomiona lokalnie.  [Visual Studio Code](https://code.visualstudio.com/) to środowisko IDE, które zapewnia bogate interaktywne środowisko podczas pisania i testowania notesu.  Aby uzyskać więcej informacji, zobacz [Praca z notesami Jupyter w Visual Studio Code](https://code.visualstudio.com/docs/python/jupyter-support).
 
-Pozostałe zadanie konfigurowania klasy polega na udostępnianiu lokalnych notesów.  Instrukcje dotyczące korzystania z przykładów Azure Machine Learning można znaleźć w temacie [How to Configure a Environment with Jupyter Notess](../../machine-learning/service/how-to-configure-environment.md#jupyter).  Możesz również udostępniać własne Notesy na komputerze szablonu.  Notesy zostaną skopiowane do wszystkich komputerów uczniów po opublikowaniu szablonu.
+Pozostałe zadanie konfigurowania klasy polega na udostępnianiu lokalnych notesów.  Instrukcje dotyczące korzystania z przykładów Azure Machine Learning można znaleźć w temacie [How to Configure a Environment with Jupyter Notess](../../machine-learning/how-to-configure-environment.md#jupyter).  Możesz również udostępniać własne Notesy na komputerze szablonu.  Notesy zostaną skopiowane do wszystkich komputerów uczniów po opublikowaniu szablonu.
 
 ## <a name="cost-estimate"></a>Szacowany koszt
 

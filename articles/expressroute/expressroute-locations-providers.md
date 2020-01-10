@@ -5,14 +5,14 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 12/09/2019
+ms.date: 01/07/2020
 ms.author: cherylmc
-ms.openlocfilehash: 71a0d18669ea2c5fc9e0548e195c3df0145f6cb0
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 803451ca3e011cc60a4b87ce0d6a1e15a09c5f40
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74967800"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750552"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>Partnerzy i lokalizacje komunikacji równorzędnej usługi ExpressRoute
 
@@ -42,7 +42,7 @@ Poniższa tabela zawiera mapę regionów świadczenia usługi Azure dla lokaliza
 | **Region geopolityczny** | **Regiony platformy Azure** | **Lokalizacje usługi ExpressRoute** |
 | --- | --- | --- |
 | **Australia — instytucje rządowe** | Australia Środkowa, Australia Środkowa 2 |Canberra, Canberra2 |
-| **Europa** | Europa Północna, Europa Zachodnia, Francja Południowa, Francja Środkowa, Południowe Zjednoczone Królestwo, Zachodnie Zjednoczone Królestwo |Amsterdam, Amsterdam2, Kopenhaga, Dublin, Frankfurt, Genewa, Londyn, London2, Marsylii, Mediolan, Monachium, Newport (Walia), Oslo, Paryż, Stavanger, Sztokholm, Zurych, Monachium |
+| **Europa** | Francja środkowa, Francja Południowa, Niemcy Północne, Niemcy Środkowo-Zachodnie, Europa Północna, Norwegia Wschodnia, Norwegia Zachodnia, Szwajcaria Północna, Szwajcaria Zachodnia, Zachodnie Zjednoczone Królestwo, Południowe Zjednoczone Królestwo, Europa Zachodnia |Amsterdam, Amsterdam2, Kopenhaga, Dublin, Frankfurt, Genewa, Londyn, London2, Marsylii, Mediolan, Monachium, Newport (Walia), Oslo, Paryż, Stavanger, Sztokholm, Zurych, Monachium |
 | **Ameryka Północna** | Wschodnie stany USA, Zachodnie stany USA, Wschodnie stany USA 2, Zachodnie stany USA 2, Środkowe stany USA, Południowo-środkowe stany USA, Północno-środkowe stany USA, Środkowo-zachodnie stany USA, Kanada Środkowa, Kanada Wschodnia |Atlanta, Chicago, Dallas, Denver, Las Vegas, Los Angeles, Miami, Nowy Jork, San Antonio, Seattle, Dolina Krzemowa, krzem Valley2, Waszyngton DC, Waszyngton DC2, Montrealu, Quebec City, Toronto |
 | **Azja** | Azja Wschodnia, Azja Południowo-Wschodnia |Hongkong SAR, Dżakarta, Kuala Lumpur, Singapur, Singapur2, Tajpej |
 | **Indie** | Indie Zachodnie, Indie Środkowe, Indie Południowe |Chennai, Chennai2, Mumbaj, Mumbaj2 |
@@ -94,15 +94,15 @@ W poniższej tabeli przedstawiono lokalizacje połączeń i dostawców usług dl
 | **Dubaj** | [PCCS](https://www.pacificcontrols.net/cloudservices/index.html) | 3 | Północne Zjednoczone Emiraty Arabskie | nd. | Etisalat Zjednoczone Emiraty Arabskie |
 | **Dubai2** | [du datamena](http://datamena.com/solutions/data-centre) | 3 | Północne Zjednoczone Emiraty Arabskie | nd. | du datamena, Megaport, Orixcom |
 | **Dublin** | [Equinix DB3](https://www.equinix.com/locations/europe-colocation/ireland-colocation/dublin-data-centers/db3/) | 1 | Europa Północna | 10G, 100G | Colt, eir, Equinix, Interxion, Megaport |
-| **Frankfurt** | [Interxion FRA11](https://www.interxion.com/Locations/frankfurt/) | 1 | Niemcy Środkowo-Zachodnie | 10G, 100G | Colt, DE-CIX, GEANT, Interxion, pomarańczowy, Telia |
-| **Genewie** | [Equinix GV2](https://www.equinix.com/locations/europe-colocation/switzerland-colocation/geneva-data-centers/gv2/) | 1 | Szwajcaria Zachodnia | 10G, 100G | |
+| **Frankfurt** | [Interxion FRA11](https://www.interxion.com/Locations/frankfurt/) | 1 | Niemcy Środkowo-Zachodnie | 10G, 100G | Colt, DE-CIX, GEANT, Interxion, Megaport, pomarańczowy, Telia |
+| **Genewie** | [Equinix GV2](https://www.equinix.com/locations/europe-colocation/switzerland-colocation/geneva-data-centers/gv2/) | 1 | Szwajcaria Zachodnia | 10G, 100G | Equinix |
 | **Hongkong SAR** | [Equinix HK1](https://www.equinix.com/locations/asia-colocation/hong-kong-colocation/hong-kong-data-center/hk1/) | 2 | Azja Wschodnia | nd. | Sieci aryaka networkse, telekomunikacyjne brytyjskie, CenturyLink Cloud Connect, dyrektor Telecom, Chiny Telecom, Equinix, międzychmurowe, Megaport, NTT Communications, pomarańcze, PCCW Global Limited, Tata Communications, Telia, Verizon |
 | **Dżakarta** | Telkom Indonezja | 4 | nd. | ° | |
-| **Johannesburg** | [Teraco JB1](https://www.teraco.co.za/data-centre-locations/johannesburg/#jb1) | 3 | Północna Republika Południowej Afryki | nd. | Kolumbia Telecom, Internet Solutions — Cloud Connect, ciecz Telecom, pomarańczowy, Teraco |
+| **Johannesburg** | [Teraco JB1](https://www.teraco.co.za/data-centre-locations/johannesburg/#jb1) | 3 | Północna Republika Południowej Afryki | ° | Kolumbia Telecom, Internet Solutions — Cloud Connect, ciecz Telecom, pomarańczowy, Teraco |
 | **Kuala Lumpur** | [CZAS dotCom Menara cele](https://www.aims.com.my/co-location/points-of-presence.html) | 2 | nd. | nd. | TIME dotCom |
 | **Las Vegas** | [Przełącz LV](https://www.switch.com/las-vegas) | 1 | nd. | nd. | CenturyLink Cloud Connect, Megaport |
 | **Londyn** | [Equinix LD5](https://www.equinix.com/locations/europe-colocation/united-kingdom-colocation/london-data-centers/ld5/) | 1 | Południowe Zjednoczone Królestwo | 10G, 100G | AT&T NetBond, British Telecom, Colt, Equinix, InterCloud, Internet Solutions — Cloud Connect, Interxion, Jisc, Level 3 Communications, Megaport, MTN, NTT Communications, Orange, PCCW Global Limited, Tata Communications, Telehouse — KDDI, Telenor, Telia Carrier, Verizon, Vodafone, Zayo |
-| **Londyn2** | [Dwa domowe północ](https://www.telehouse.com/global-data-centers/emea/london-data-centers/telehouse-north-two/) | 1 | Południowe Zjednoczone Królestwo | 10G, 100G | Colt, IX zasięg, Equinix, Megaport, telefirmowe-KDDI |
+| **Londyn2** | [Dwa domowe północ](https://www.telehouse.net/data-centres/emea/uk-data-centres/london-data-centres/north-two) | 1 | Południowe Zjednoczone Królestwo | 10G, 100G | Colt, IX zasięg, Equinix, Megaport, telefirmowe-KDDI |
 | **Los Angeles** | [CoreSite LA1](https://www.coresite.com/data-centers/locations/los-angeles/one-wilshire) | 1 | nd. | nd. | CoreSite, Equinix, Megaport, neutrony, NTT, Transtelco, Zayo |
 | **Marsylia** |[Interxion MRS1](https://www.interxion.com/Locations/marseille/) | 1 | Francja Południowa | nd. | DE-CIX, GEANT, Interxion, Jaguar Network |
 | **Melbourne** | [NextDC M1](https://www.nextdc.com/data-centres/m1-melbourne-data-centre) | 2 | Australia Południowo-Wschodnia | 10G, 100G | AARNet, Devoli, Equinix, Megaport, NEXTDC, Optus, Telstra Corporation, TPG Telecom |
@@ -114,8 +114,8 @@ W poniższej tabeli przedstawiono lokalizacje połączeń i dostawców usług dl
 | **Monachium** | [EdgeConneX](https://www.edgeconnex.com/locations/europe/) | 1 | nd. | 10G, 100G | |
 | **Nowy Jork** | [Equinix NY9](https://www.equinix.com/locations/americas-colocation/united-states-colocation/new-york-data-centers/ny9/) | 1 | nd. | nd. | CenturyLink Cloud Connect, Colt, CoreSite, Equinix, incloud, Megaport, Packet, Zayo |
 | **Newport (Walia)** | [Dane nowej generacji](https://www.nextgenerationdata.co.uk) | 1 | Zachodnie Zjednoczone Królestwo | nd. | Brytyjskie Telecom telekomunikacyjne, Colt, Level 3, dane nowej generacji |
-| **Osaka** | [Equinix OS1](https://www.equinix.com/locations/asia-colocation/japan-colocation/osaka-data-centers/os1/) | 2 | Japonia Zachodnia | nd. | Colt, Equinix, Internet Initiative — Japonia Inc. — IIJ, NTT Communications, NTT SmartConnect, Softbank |
-| **Oslo** | [DigiPlex Ulven](https://www.digiplex.com/locations/oslo-datacentre) | 1 | Norwegia Wschodnia | 10G, 100G | Telenor |
+| **Osaka** | [Equinix OS1](https://www.equinix.com/locations/asia-colocation/japan-colocation/osaka-data-centers/os1/) | 2 | Japonia Zachodnia | 10G, 100G | Colt, Equinix, Internet Initiative — Japonia Inc. — IIJ, NTT Communications, NTT SmartConnect, Softbank |
+| **Oslo** | [DigiPlex Ulven](https://www.digiplex.com/locations/oslo-datacentre) | 1 | Norwegia Wschodnia | 10G, 100G | Megaport, firma Telenor, Telia |
 | **Paryż** | [Interxion PAR5](https://www.interxion.com/Locations/paris/) | 1 | Francja Środkowa | nd. | CenturyLink Cloud Connect, Colt, Equinix, Intercloud, Interxion, Orange, Telia Carrier, Zayo |
 | **Perth** | [NextDC P1](https://www.nextdc.com/data-centres/p1-perth-data-centre) | 2 | nd. | ° | Megaport, NextDC |
 | **Miasto Quebec** | [Vantage](https://vantage-dc.com/data_centers/quebec-city-data-center-campus/) | 1 | Kanada Wschodnia | nd. | Bell Canada, Megaport |
@@ -127,16 +127,16 @@ W poniższej tabeli przedstawiono lokalizacje połączeń i dostawców usług dl
 | **Valley2 krzemu** | [Coresite SV7](https://www.coresite.com/data-centers/locations/silicon-valley/sv7) | 1 | Zachodnie stany USA | 10G, 100G | Colt, CoreSite | 
 | **Singapur** | [Equinix SG1](https://www.equinix.com/locations/asia-colocation/singapore-colocation/singapore-data-center/sg1/) | 2 | Azja Południowo-Wschodnia | 10G, 100G | Aryaka Networks, AT&T NetBond, British Telecom, Epsilon Global Communications, Equinix, InterCloud, Level 3 Communications, Megaport, NTT Communications, Orange, SingTel, Tata Communications, Telstra Corporation, Verizon, Vodafone |
 | **Singapur2** | [Przełącznik globalny Tai/Inseng](https://www.globalswitch.com/locations/singapore-data-centres/) | 2 | Azja Południowo-Wschodnia | 10G, 100G | Colt, Epsilon — komunikacja globalna, Megaport, SingTel |
-| **Stavanger** | [Zielony górski kontroler DC1](https://greenmountain.no/dc1-stavanger/) | 1 | nd. | 10G, 100G | |
+| **Stavanger** | [Zielony górski kontroler DC1](https://greenmountain.no/dc1-stavanger/) | 1 | Norwegia Zachodnia | 10G, 100G | |
 | **Sztokholm** | [Equinix SK1](https://www.equinix.com/locations/europe-colocation/sweden-colocation/stockholm-data-centers/sk1/) | 1 | nd. | ° | Equinix, Telia |
 | **Sydney** | [Equinix SY2](https://www.equinix.com/locations/asia-colocation/australia-colocation/sydney-data-centers/sy2/) | 2 | Australia Wschodnia | 10G, 100G | AARNet, w & T teleobligacje, Brytyjskie Telecom, Devoli, Equinix, kordia, Megaport, NEXTDC, NTT Communications, Optus, pomarańczowy, Spark NZ, Telstra Corporation, TPG Telecom, Verizon, Vocus Group NZ |
 | **Sydney2** | [NextDC S1](https://www.nextdc.com/data-centres/s1-sydney-data-centre) | 2 | Australia Wschodnia | 10G, 100G | NextDC |
 | **Tajpej** | Chief Telecom | 2 | nd. | ° | Dyrektor telekomunikacyjny, FarEasTone |
 | **Tokio** | [Equinix TY4](https://www.equinix.com/locations/asia-colocation/japan-colocation/tokyo-data-centers/ty4/) | 2 | Japonia Wschodnia | 10G, 100G | Sieci aryaka Networks, w & T teleobligacje, Kolumbia Telecom, CenturyLink Cloud Connect, Colt, Equinix, Internet Initiative Japonia Inc.-IIJ, Megaport, NTT Communications, NTT wschód, pomarańczowy, Softbank, Verizon |
 | **Toronto** | [Cologix TOR1](https://www.cologix.com/data-centers/toronto/tor1/) | 1 | Kanada Środkowa | 10G, 100G | W & T teleobligacji, Bell Canada, CenturyLink Cloud Connect, Cologix, Equinix, IX zasięg Megaport, Telus, Verizon, Zayo |
-| **Waszyngton** | [Equinix DC2](https://www.equinix.com/locations/americas-colocation/united-states-colocation/washington-dc-data-centers/dc2/) | 1 | Wschodnie stany USA, Wschodnie stany USA 2 | 10G, 100G | Aryaka Networks Networks, w & T teleobligacje, Brytyjskie Telecom, CenturyLink Cloud Connect, Cologix, Comcast, CoreSite, Equinix, Internet2, międzychmurowy, poziom 3 komunikacja, Megaport, neutrony, sieci, NTT Communications, pomarańczowy, PacketFabric, SES, przebieg, Tata Komunikacja, Telia, Verizon, Zayo |
-| **Waszyngton 2** | [Coresite Reston](https://www.coresite.com/data-centers/locations/northern-virginia-washington-dc/reston-campus) | 1 | Wschodnie stany USA, Wschodnie stany USA 2 | 10G, 100G | CenturyLink Cloud Connect, CoreSite, Viasat, Zayo | 
-| **Zurych** | [Interxion ZUR2](https://www.interxion.com/Locations/zurich/) | 1 | nd. | nd. | Międzychmurowe, Interxion, Megaport, Swisscom |
+| **Waszyngton** | [Equinix DC2](https://www.equinix.com/locations/americas-colocation/united-states-colocation/washington-dc-data-centers/dc2/) | 1 | Wschodnie stany USA, Wschodnie stany USA 2 | 10G, 100G | Aryaka Networks Networks, w & T teleobligacje, Kolumbia Telecom, CenturyLink Cloud Connect, Cologix, Colt, Comcast, CoreSite, Equinix, Internet2, międzychmurowe, IX zasięg, 3 komunikacja, Megaport, neutrony, sieci, NTT Communications, pomarańczowy, PacketFabric, SES , Przebieg, Tata Communications, Telia Carrier, Verizon, Zayo |
+| **Waszyngton 2** | [Coresite Reston](https://www.coresite.com/data-centers/locations/northern-virginia-washington-dc/reston-campus) | 1 | Wschodnie stany USA, Wschodnie stany USA 2 | 10G, 100G | CenturyLink Cloud Connect, CoreSite, Intelsat, Viasat, Zayo | 
+| **Zurych** | [Interxion ZUR2](https://www.interxion.com/Locations/zurich/) | 1 | Szwajcaria Północna | nd. | Międzychmurowe, Interxion, Megaport, Swisscom |
 
  **+** oznacza wkrótce
 
@@ -152,7 +152,7 @@ Chmury krajowe platformy Azure są odizolowane od siebie i z globalnego Commeric
 | **Nowy Jork** | [Equinix NY5](https://www.equinix.com/locations/americas-colocation/united-states-colocation/new-york-data-centers/ny5/) | nd. | 10G, 100G | Equinix, CenturyLink Cloud Connect, Verizon |
 | **Phoenix** | [CyrusOne Chandler](https://cyrusone.com/locations/arizona/phoenix-arizona-chandler/) | US Gov Arizona | nd. | W & T teleobligacji, CenturyLink Cloud Connect, Megaport |
 | **San Antonio** | [CyrusOne SA2](https://cyrusone.com/locations/texas/san-antonio-texas-ii/) | US Gov Teksas | nd. | CenturyLink Cloud Connect, Megaport |
-| **Dolina Krzemowa** | [Equinix SV4](https://www.equinix.com/locations/americas-colocation/united-states-colocation/silicon-valley-data-centers/sv4/) | nd. | 10G, 100G | Equinix, Level 3 Communications, Verizon |
+| **Dolina Krzemowa** | [Equinix SV4](https://www.equinix.com/locations/americas-colocation/united-states-colocation/silicon-valley-data-centers/sv4/) | nd. | 10G, 100G | W & T, Equinix, poziom 3 komunikacja, Verizon |
 | **Seattle** | [Equinix SE2](https://www.equinix.com/locations/americas-colocation/united-states-colocation/seattle-data-centers/se2/) | nd. | nd. | Equinix, Megaport |
 | **Waszyngton** | [Equinix DC2](https://www.equinix.com/locations/americas-colocation/united-states-colocation/washington-dc-data-centers/dc2/) | US DoD (region wschodni), US Gov Wirginia | 10G, 100G | AT&T NetBond, CenturyLink Cloud Connect, Equinix, Level 3 Communications, Megaport, Verizon |
 
@@ -182,7 +182,7 @@ Jeśli dostawca połączenia nie został wymieniony w poprzednich sekcjach, moż
   * [Interxion](https://www.interxion.com/)
   * [NextDC](https://www.nextdc.com/)
   * [Megaport](https://www.megaport.com/services/microsoft-expressroute/)
-  * [PacketFabric](https://www.packetfabric.com/packetcor/microsoft-azure/)
+  * [PacketFabric](https://www.packetfabric.com/cloud-connectivity/microsoft-azure)
   
 * Poproś dostawcę połączenia o rozszerzenie sieci o wybraną lokalizację komunikacji równorzędnej.
   * Dopilnuj, by dostawca połączenia rozszerzył łączność w sposób wysoko dostępny, aby nie wystąpiły żadne punkty awarii.

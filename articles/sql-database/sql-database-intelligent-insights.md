@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 12/19/2018
-ms.openlocfilehash: f17c588d28d0904041970eee8e9aa2201f905836
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: b576510749e691b6255c849f14275db221c54460
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74151417"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75745108"
 ---
 # <a name="intelligent-insights-using-ai-to-monitor-and-troubleshoot-database-performance"></a>Intelligent Insights przy użyciu AI do monitorowania i rozwiązywania problemów z wydajnością bazy danych
 
@@ -28,7 +28,7 @@ Intelligent Insights używa wbudowanej analizy do ciągłego monitorowania użyc
 
 Intelligent Insights to unikatowa funkcja analizy wbudowanej platformy Azure, która zapewnia następującą wartość:
 
-- Aktywne monitorowanie
+- Monitorowanie proaktywne
 - Dostosowane szczegółowe informacje o wydajności
 - Wczesne wykrywanie obniżenia wydajności bazy danych
 - Analiza głównych przyczyn problemów wykrytych
@@ -72,10 +72,10 @@ Opcje Intelligent Insights dostępne w Azure SQL Database to:
 
 | Opcja Intelligent Insights | Obsługa pojedynczej bazy danych i bazy danych w puli | Obsługa bazy danych wystąpień |
 | :----------------------------- | ----- | ----- |
-| **Skonfiguruj Intelligent Insights** — Skonfiguruj Intelligent Insights analizę dla baz danych. | Yes | Yes | 
-| **Szczegółowe informacje o usłudze Stream Insights do Azure SQL Analytics** --Stream Insights do rozwiązania monitorowania Azure SQL Analytics Azure SQL Database. | Yes | Yes | 
-| Usługi **Stream Insights do usługi Event Hub** — szczegółowe informacje o usłudze Stream Event Hubs w celu uzyskania dalszych integracji niestandardowych. | Yes | Yes | 
-| **Usługa Stream Insights w usłudze Azure Storage** — szczegółowe informacje o usłudze Stream w usłudze Azure Storage w celu przeprowadzenia dalszej analizy i długoterminowej archiwizacji. | Yes | Yes |
+| **Skonfiguruj Intelligent Insights** — Skonfiguruj Intelligent Insights analizę dla baz danych. | Tak | Tak | 
+| **Szczegółowe informacje o usłudze Stream Insights do Azure SQL Analytics** --Stream Insights do rozwiązania monitorowania Azure SQL Analytics Azure SQL Database. | Tak | Tak | 
+| Usługi **Stream Insights do usługi Event Hub** — szczegółowe informacje o usłudze Stream Event Hubs w celu uzyskania dalszych integracji niestandardowych. | Tak | Tak | 
+| **Usługa Stream Insights w usłudze Azure Storage** — szczegółowe informacje o usłudze Stream w usłudze Azure Storage w celu przeprowadzenia dalszej analizy i długoterminowej archiwizacji. | Tak | Tak |
 
 ## <a name="configure-intelligent-insights"></a>Konfigurowanie Intelligent Insights
 
@@ -190,4 +190,4 @@ Jeśli którykolwiek z monitorowanych wyjątków krytycznych przekroczy progi be
 - Dowiedz się, jak [rozwiązywać problemy z wydajnością SQL Database przy użyciu Intelligent Insights](sql-database-intelligent-insights-troubleshoot-performance.md).
 - Użyj [dziennika diagnostyki wydajności SQL Database Intelligent Insights](sql-database-intelligent-insights-use-diagnostics-log.md).
 - Dowiedz się [, jak monitorować SQL Database przy użyciu usługi SQL Analytics](../azure-monitor/insights/azure-sql.md).
-- Dowiedz się [, jak zbierać dane dzienników z zasobów platformy Azure i korzystać z nich](../azure-monitor/platform/resource-logs-overview.md).
+- Dowiedz się [, jak zbierać dane dzienników z zasobów platformy Azure i korzystać z nich](../azure-monitor/platform/platform-logs-overview.md).

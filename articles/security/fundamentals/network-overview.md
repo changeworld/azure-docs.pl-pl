@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/29/2018
 ms.author: terrylan
-ms.openlocfilehash: e70144bc71c182a6ec1668ee81f458a236289331
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 2293618b0685fe71ae553a95797fe8bfe1fe968c
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74384195"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749938"
 ---
 # <a name="azure-network-security-overview"></a>Omówienie zabezpieczeń sieci platformy Azure
 
@@ -44,7 +44,7 @@ W tym artykule omówiono niektóre opcje oferowane przez platformę Azure w dzie
 
 Platforma Azure wymaga, aby maszyny wirtualne były połączone z usługą Virtual Network platformy Azure. Sieć wirtualna to konstrukcja logiczna oparta na fizycznej sieci szkieletowej platformy Azure. Każda sieć wirtualna jest odizolowana od wszystkich innych sieci wirtualnych. Pozwala to zagwarantować, że ruch sieciowy we wdrożeniach nie będzie dostępny dla innych klientów platformy Azure.
 
-Więcej informacji:
+Dowiedz się więcej:
 
 * [Omówienie usługi Virtual Network](../../virtual-network/virtual-networks-overview.md)
 
@@ -75,7 +75,7 @@ Jeśli potrzebujesz podstawowej kontroli dostępu na poziomie sieci (na podstawi
 
 Sieciowych grup zabezpieczeń nie zapewniają kontroli warstwy aplikacji ani kontroli dostępu uwierzytelnionego.
 
-Więcej informacji:
+Dowiedz się więcej:
 
 * [Sieciowe grupy zabezpieczeń](../../virtual-network/security-overview.md)
 
@@ -83,7 +83,7 @@ Więcej informacji:
 
 [Usługa Azure Security Center](../../security-center/security-center-intro.md) może zarządzać sieciowych grup zabezpieczeń na maszynach wirtualnych i blokować dostęp do maszyny wirtualnej do momentu, gdy użytkownik z [odpowiednimi uprawnieniami kontroli](/azure/role-based-access-control/overview) dostępu opartej na rolach żąda dostępu. Gdy użytkownik zostanie pomyślnie autoryzowany, wprowadza modyfikacje sieciowych grup zabezpieczeń, aby zezwolić na dostęp do wybranych portów przez określony czas. Po upływie tego czasu sieciowych grup zabezpieczeń są przywracane do poprzedniego stanu bezpiecznego.
 
-Więcej informacji:
+Dowiedz się więcej:
 
 * [Azure Security Center dostęp just in Time](../../security-center/security-center-just-in-time.md)
 
@@ -91,7 +91,7 @@ Więcej informacji:
 
 Punkty końcowe usługi to inny sposób zastosowania kontroli nad ruchem. Możesz ograniczyć komunikację z obsługiwanymi usługami do sieci wirtualnych za pośrednictwem bezpośredniego połączenia. Ruch z sieci wirtualnej do określonej usługi platformy Azure pozostaje w sieci szkieletowej Microsoft Azure.  
 
-Więcej informacji:
+Dowiedz się więcej:
 
 * [Punkty końcowe usługi](../../virtual-network/virtual-network-service-endpoints-overview.md#secure-azure-services-to-virtual-networks)
 
@@ -109,7 +109,7 @@ Na serwerze frontonu sieci Web można zainicjować żądanie wychodzące. Takie 
 
 Zamiast tego należy użyć tunelowania wymuszonego, aby temu zapobiec. Po włączeniu wymuszonego tunelowania wszystkie połączenia z Internetem są wymuszane przez bramę lokalną. Wymuszone tunelowanie można skonfigurować przez skorzystanie z UDR.
 
-Więcej informacji:
+Dowiedz się więcej:
 
 * [Co to są trasy zdefiniowane przez użytkownika i przekazywanie adresów IP](../../virtual-network/virtual-networks-udr-overview.md)
 
@@ -122,7 +122,7 @@ Na przykład wymagania dotyczące zabezpieczeń mogą obejmować:
 * Uwierzytelnianie i autoryzacja przed zezwoleniem na dostęp do aplikacji
 * Wykrywanie włamań i reagowanie intruzów
 * Inspekcja warstwy aplikacji dla protokołów wysokiego poziomu
-* Filtrowanie adresów URL
+* filtrowanie adresów URL
 * Oprogramowanie antywirusowe i chroniące przed złośliwym kodem
 * Ochrona przed bot
 * Kontrola dostępu do aplikacji
@@ -139,7 +139,7 @@ Azure Firewall to zarządzana, sieciowa usługa zabezpieczeń oparta na chmurze,
 * Reguły filtrowania w pełni kwalifikowanych nazw domen aplikacji
 * Reguły filtrowania ruchu sieciowego
 
-Więcej informacji:
+Dowiedz się więcej:
 
 * [Omówienie Zapory platformy Azure](/azure/firewall/overview)
 
@@ -166,7 +166,7 @@ Połączenie sieci VPN typu punkt-lokacja umożliwia skonfigurowanie prywatnego 
 
 * [OpenVPN](https://azure.microsoft.com/updates/openvpn-support-for-azure-vpn-gateways/)
 
-Więcej informacji:
+Dowiedz się więcej:
 
 * [Konfigurowanie połączenia typu punkt-lokacja z siecią wirtualną przy użyciu programu PowerShell](../../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md)
 
@@ -176,7 +176,7 @@ Możesz chcieć połączyć całą sieć firmową lub jej fragmenty z siecią wi
 
 Jednym ze sposobów osiągnięcia tego celu jest użycie [sieci VPN typu lokacja-lokacja](https://www.techopedia.com/definition/30747/site-to-site-vpn). Różnica między siecią VPN typu lokacja-lokacja a siecią VPN typu punkt-lokacja polega na tym, że drugie łączy pojedyncze urządzenie z siecią wirtualną. Sieć VPN typu lokacja-lokacja łączy całą sieć (na przykład sieć lokalną) z siecią wirtualną. Połączenia sieci VPN typu lokacja-lokacja z siecią wirtualną używają protokołu VPN trybu tunelowania wysoce bezpiecznego protokołu IPsec.
 
-Więcej informacji:
+Dowiedz się więcej:
 
 * [Tworzenie Menedżer zasobów sieci wirtualnej z połączeniem sieci VPN typu lokacja-lokacja przy użyciu Azure Portal](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 * [VPN Gateway — informacje](../../vpn-gateway/vpn-gateway-about-vpngateways.md)
@@ -190,7 +190,7 @@ Połączenia sieci VPN typu punkt-lokacja i lokacja-lokacja są skuteczne do wł
 
 Organizacje, które potrzebują najwyższego poziomu zabezpieczeń i dostępności dla swoich połączeń obejmujących wiele lokalizacji, zazwyczaj używają dedykowanych łączy sieci WAN do łączenia się z lokacjami zdalnymi. Platforma Azure umożliwia korzystanie z dedykowanego linku WAN, który służy do łączenia sieci lokalnej z siecią wirtualną. W przypadku usług Azure ExpressRoute, Express Route Direct i Global Route.
 
-Więcej informacji:
+Dowiedz się więcej:
 
 * [ExpressRoute — omówienie techniczne](../../expressroute/expressroute-introduction.md)
 * [ExpressRoute bezpośrednie](../../expressroute/expressroute-erdirect-about.md)
@@ -206,7 +206,7 @@ Lepszym rozwiązaniem może być utworzenie sieci VPN typu lokacja-lokacja, któ
 
 Zaletą tego podejścia jest to, że połączenie sieci VPN jest nawiązywane za pośrednictwem sieci szkieletowej platformy Azure, a nie za pośrednictwem Internetu. Zapewnia to dodatkową warstwę zabezpieczeń w porównaniu z sieciami VPN typu lokacja-lokacja, które łączą się za pośrednictwem Internetu.
 
-Więcej informacji:
+Dowiedz się więcej:
 
 * [Konfigurowanie połączenia między sieciami wirtualnymi przy użyciu Azure Resource Manager i programu PowerShell](../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md)
 
@@ -235,7 +235,7 @@ Usługa Azure Application Gateway zapewnia równoważenia obciążenia opartego 
 * Odciążanie protokołu SSL. Gdy klient łączy się z usługą równoważenia obciążenia, ta sesja jest zaszyfrowana przy użyciu protokołu HTTPS (SSL). Jednak aby zwiększyć wydajność, można użyć protokołu HTTP (unencrypted) do łączenia się między usługą równoważenia obciążenia i serwerem sieci Web za modułem równoważenia obciążenia. Jest to określane jako "odciążanie protokołu SSL", ponieważ serwery sieci Web za modułem równoważenia obciążenia nie napotykają obciążenia procesora związanego z szyfrowaniem. W związku z tym serwery sieci Web mogą szybciej żądania obsługi.
 * Routing zawartości oparty na adresach URL. Ta funkcja umożliwia modułowi równoważenia obciążenia podejmowanie decyzji o tym, gdzie przekazywać połączenia na podstawie docelowego adresu URL. Zapewnia to większą elastyczność niż rozwiązania, które umożliwiają podejmowanie decyzji dotyczących równoważenia obciążenia na podstawie adresów IP.
 
-Więcej informacji:
+Dowiedz się więcej:
 
 * [Przegląd Application Gateway](/azure/application-gateway/application-gateway-introduction)
 
@@ -250,7 +250,7 @@ Korzystając z Azure Load Balancer, można uzyskać korzyści wynikające z rów
 * Może być używany zarówno w przypadku aplikacji internetowych (zewnętrznego równoważenia obciążenia), jak i niepołączonych z Internetem (wewnętrzne równoważenie obciążenia) i maszyn wirtualnych.
 * Monitorowanie punktu końcowego, które służy do określenia, czy dowolna z usług za modułem równoważenia obciążenia stanie się niedostępna.
 
-Więcej informacji:
+Dowiedz się więcej:
 
 * [Moduł równoważenia obciążenia dostępny z Internetu między wieloma maszynami wirtualnymi lub usługami](/azure/load-balancer/load-balancer-internet-overview)
 * [Przegląd wewnętrznego modułu równoważenia obciążenia](/azure/load-balancer/load-balancer-internal-overview)
@@ -263,7 +263,7 @@ Ta strategia równoważenia obciążenia może również przynieść korzyści z
 
 Na platformie Azure możesz uzyskać korzyści wynikające z globalnego równoważenia obciążenia, korzystając z usługi Azure Traffic Manager.
 
-Więcej informacji:
+Dowiedz się więcej:
 
 * [Co to jest usługa Traffic Manager?](../../traffic-manager/traffic-manager-overview.md)
 
@@ -281,7 +281,7 @@ Do rozpoznawania nazw wewnętrznych są dostępne dwie opcje:
 * Serwer DNS sieci wirtualnej. Podczas tworzenia nowej sieci wirtualnej jest tworzony serwer DNS. Ten serwer DNS może rozpoznać nazwy maszyn znajdujących się w tej sieci wirtualnej. Ten serwer DNS nie jest konfigurowalny, jest zarządzany przez Menedżera sieci szkieletowej Azure i w związku z tym może pomóc w zabezpieczeniu rozwiązania rozpoznawania nazw.
 * Przenieś własny serwer DNS. Istnieje możliwość wprowadzenia serwera DNS własnego wyboru w sieci wirtualnej. Ten serwer DNS może być Active Directory zintegrowanym serwerem DNS lub dedykowanym rozwiązaniem serwera DNS udostępnionym przez partnera platformy Azure, który można uzyskać z portalu Azure Marketplace.
 
-Więcej informacji:
+Dowiedz się więcej:
 
 * [Omówienie usługi Virtual Network](../../virtual-network/virtual-networks-overview.md)
 * [Zarządzanie serwerami DNS używanymi przez sieć wirtualną](../../virtual-network/manage-virtual-network.md#change-dns-servers)
@@ -297,7 +297,7 @@ W większości przypadków lepiej jest hostować usługi rozpoznawania nazw DNS 
 
 System Azure oferuje wysoce dostępne i wysoko działające rozwiązanie zewnętrznego serwera DNS w postaci Azure DNS. To rozwiązanie rozpoznawania nazw zewnętrznych wykorzystuje światową infrastrukturę Azure DNS. Umożliwia Hostowanie domeny na platformie Azure przy użyciu tych samych poświadczeń, interfejsów API, narzędzi i rozliczeń, co w przypadku innych usług platformy Azure. W ramach platformy Azure dziedziczy również silne mechanizmy kontroli zabezpieczeń wbudowane w platformę.
 
-Więcej informacji:
+Dowiedz się więcej:
 
 * [Przegląd Azure DNS](../../dns/dns-overview.md)
 * [Azure DNS strefy prywatne](../../dns/private-dns-overview.md) umożliwiają skonfigurowanie prywatnych nazw DNS dla zasobów platformy Azure, a nie nazw przypisanych automatycznie bez konieczności dodawania NIESTANDARDOWEGO rozwiązania DNS.
@@ -308,7 +308,7 @@ Wiele dużych organizacji używa sieci obwodowych do segmentacji swoich sieci i 
 
 Sieci obwodowe można projektować na wiele różnych sposobów. Decyzja o wdrożeniu sieci obwodowej, a następnie rodzaj sieci obwodowej, która ma być używana, jeśli zdecydujesz się użyć jednej z nich, zależy od wymagań dotyczących zabezpieczeń sieci.
 
-Więcej informacji:
+Dowiedz się więcej:
 
 * [Microsoft Cloud usług i zabezpieczeń sieci](network-best-practices.md)
 
@@ -330,7 +330,7 @@ Firma Microsoft zapewnia ochronę DDoSą znaną jako **podstawową** w ramach pl
 * **DDoS szybkie reagowanie** Klienci w DDoS Protection Standard mają teraz dostęp do szybkiego zespołu odpowiedzi podczas aktywnego ataku. DRR może pomóc w zbadaniu ataków, niestandardowych ograniczeniach podczas ataku i analizy po ataku.
 
 
-Więcej informacji:
+Dowiedz się więcej:
 
 * [Omówienie ochrony DDOS](../../virtual-network/ddos-protection-overview.md)
 
@@ -340,7 +340,7 @@ Usługa frontonu platformy Azure umożliwia definiowanie i monitorowanie globaln
 
 Samodzielna platforma jest chroniona przez Azure DDoS Protection podstawowa. W celu zastosowania dalszej ochrony przez atakami w warstwie sieci (protokół TCP/UDP) za pośrednictwem funkcji automatycznego dostrajania i ograniczania ryzyka można włączyć usługę Azure DDoS Protection w warstwie Standardowa w sieciach wirtualnych i zasobach zabezpieczeń. Przód drzwi to zwrotny serwer proxy warstwy 7, który umożliwia przekazywanie ruchu internetowego tylko do serwerów zaplecza i blokowanie innych typów ruchu domyślnego.
 
-Więcej informacji:
+Dowiedz się więcej:
 
 * Aby uzyskać więcej informacji na temat całego zestawu możliwości platformy Azure, zobacz [Przegląd drzwi z przodu platformy Azure](../../frontdoor/front-door-overview.md)
 
@@ -348,7 +348,7 @@ Więcej informacji:
 
 Usługa Azure Traffic Manager to oparty na systemie DNS moduł równoważenia obciążenia ruchu, który umożliwia optymalną dystrybucję ruchu do usług w wielu regionach platformy Azure na świecie, przy jednoczesnym zapewnieniu wysokiej dostępności i krótkiego czasu odpowiedzi. Usługa Traffic Manager używa systemu DNS do kierowania żądań klientów do najodpowiedniejszego punktu końcowego usługi w oparciu o metodę routingu ruchu i kondycję punktów końcowych. Punkt końcowy to dowolna internetowa usługa hostowana wewnątrz platformy Azure lub poza nią. Usługa Traffic Manager monitoruje punkty końcowe i nie kieruje ruchu do żadnych punktów końcowych, które są niedostępne.
 
-Więcej informacji:
+Dowiedz się więcej:
 
 * [Omówienie usługi Azure Traffic Manager](../../traffic-manager/traffic-manager-overview.md)
 
@@ -379,7 +379,7 @@ Security Center pomaga zoptymalizować i monitorować zabezpieczenia sieci przez
 * Monitorowanie stanu konfiguracji zabezpieczeń sieci.
 * Powiadamianie o zagrożeniach opartych na sieci, zarówno na poziomie punktu końcowego, jak i sieci.
 
-Więcej informacji:
+Dowiedz się więcej:
 
 * [Wprowadzenie do usługi Azure Security Center](../../security-center/security-center-intro.md)
 
@@ -387,7 +387,7 @@ Więcej informacji:
 
 Usługa Azure Virtual Network TAP (punkt dostępu terminalu) umożliwia ciągłą przesyłanie strumieniowego ruchu sieciowego maszyny wirtualnej do narzędzia do zbierania pakietów sieciowych lub narzędzi analitycznych. Moduł zbierający lub narzędzie analityczne jest dostarczany przez partnera wirtualnego urządzenia sieciowego. Możesz użyć tego samego zasobu sieci wirtualnej, aby agregować ruch z wielu interfejsów sieciowych w ramach tej samej lub różnych subskrypcji.
 
-Więcej informacji:
+Dowiedz się więcej:
 
 * [Wybieranie sieci wirtualnej](../../virtual-network/virtual-network-tap-overview.md)
 
@@ -395,11 +395,11 @@ Więcej informacji:
 
 Rejestrowanie na poziomie sieci jest kluczową funkcją dla dowolnego scenariusza zabezpieczeń sieci. Na platformie Azure można rejestrować informacje uzyskane dla sieciowych grup zabezpieczeń, aby uzyskać informacje dotyczące rejestrowania na poziomie sieci. Dzięki rejestrowaniu sieciowej grupy zabezpieczeń uzyskasz informacje z:
 
-* [Dzienniki aktywności](../../azure-monitor/platform/activity-logs-overview.md). Użyj tych dzienników, aby wyświetlić wszystkie operacje przesłane do subskrypcji platformy Azure. Te dzienniki są domyślnie włączone i mogą być używane w Azure Portal. Wcześniej były znane jako inspekcje lub dzienniki operacyjne.
+* [Dzienniki aktywności](../../azure-monitor/platform/platform-logs-overview.md). Użyj tych dzienników, aby wyświetlić wszystkie operacje przesłane do subskrypcji platformy Azure. Te dzienniki są domyślnie włączone i mogą być używane w Azure Portal. Wcześniej były znane jako inspekcje lub dzienniki operacyjne.
 * Dzienniki zdarzeń. Te dzienniki zawierają informacje o tym, jakie reguły sieciowej grupy zabezpieczeń zostały zastosowane.
 * Dzienniki liczników. Te dzienniki informują o tym, ile razy została zastosowana Każda reguła sieciowej grupy zabezpieczeń, aby odmówić lub zezwolić na ruch.
 
 Do wyświetlania i analizowania tych dzienników można także użyć [programu Microsoft Power BI](https://powerbi.microsoft.com/what-is-power-bi/), zaawansowanego narzędzia do wizualizacji danych.
-Więcej informacji:
+Dowiedz się więcej:
 
 * [Dzienniki Azure Monitor dla sieciowych grup zabezpieczeń (sieciowych grup zabezpieczeń)](../../virtual-network/virtual-network-nsg-manage-log.md)

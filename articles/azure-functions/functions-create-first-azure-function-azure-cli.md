@@ -5,12 +5,12 @@ ms.assetid: 674a01a7-fd34-4775-8b69-893182742ae0
 ms.date: 11/13/2018
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: 147ad4bd20ee1c7ae8f1529e1b3bc0e4f3e7dbb0
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 222e4a98974a1af40ff860cfc4fdb246d9c97bca
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230841"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769391"
 ---
 # <a name="quickstart-create-your-first-function-from-the-command-line-using-azure-cli"></a>Szybki Start: Tworzenie pierwszej funkcji z poziomu wiersza polecenia przy użyciu interfejsu CLI platformy Azure
 
@@ -46,7 +46,7 @@ Przed uruchomieniem tego przykładu należy dysponować następującymi elementa
 
 ## <a name="create-a-function-app"></a>Tworzenie aplikacji funkcji
 
-Do obsługi wykonywania funkcji potrzebna jest aplikacja funkcji. Aplikacja funkcji zapewnia środowisko do bezserwerowego wykonywania kodu funkcji. Umożliwia ona grupowanie funkcji w ramach jednostki logicznej, co ułatwia wdrażanie i udostępnianie zasobów oraz zarządzanie nimi. Utwórz aplikację funkcji przy użyciu polecenia [az functionapp create](/cli/azure/functionapp#az-functionapp-create). 
+Do obsługi wykonywania funkcji potrzebna jest aplikacja funkcji. Aplikacja funkcji zapewnia środowisko do bezserwerowego wykonywania kodu funkcji. Umożliwia grupowanie funkcji jako jednostki logicznej, co ułatwia zarządzanie, wdrażanie, skalowanie i udostępnianie zasobów. Utwórz aplikację funkcji przy użyciu polecenia [az functionapp create](/cli/azure/functionapp#az-functionapp-create).
 
 W poniższym poleceniu w miejsce symbolu zastępczego `<APP_NAME>` wstaw unikatową nazwę aplikacji funkcji, a w miejsce symbolu zastępczego `<STORAGE_NAME>` wstaw nazwę konta magazynu. Nazwa `<APP_NAME>` jest używana jako domyślna domena DNS aplikacji funkcji, więc nazwa ta musi być unikatowa wśród wszystkich aplikacji na platformie Azure. Należy również ustawić środowisko uruchomieniowe `<language>` dla aplikacji funkcji za pomocą pozycji `dotnet` (C#) lub `node` (JavaScript).
 

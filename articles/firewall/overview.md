@@ -6,19 +6,19 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc
-ms.date: 11/19/2019
+ms.date: 01/08/2020
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: 7b44597b24adce05498eed273c9494cae3360ed6
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 271a4f116b8b929e17c3a0379bef91d6b80e1490
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74168801"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754440"
 ---
 # <a name="what-is-azure-firewall"></a>Co to jest usługa Azure Firewall?
 
-Azure Firewall to zarządzana, sieciowa usługa zabezpieczeń oparta na chmurze, która zabezpiecza zasoby usługi Azure Virtual Network. Jest to w pełni stanowa Zapora jako usługa z wbudowaną wysoką dostępnością i nieograniczoną skalowalnością chmury.
+Azure Firewall to zarządzana, sieciowa usługa zabezpieczeń oparta na chmurze, która zabezpiecza zasoby usługi Azure Virtual Network. Jest to w pełni stanowa zapora oferowana jako usługa, z wbudowaną wysoką dostępnością i możliwością nieograniczonego skalowania w chmurze.
 
 ![Omówienie zapory](media/overview/firewall-threat.png)
 
@@ -57,7 +57,7 @@ Możesz ograniczyć ruch wychodzący HTTP/S lub ruch usługi Azure SQL (wersja z
 
 Można centralnie tworzyć reguły filtrowania sieci (*zezwalania* lub *blokowania*) na podstawie źródłowego i docelowego adresu IP, portu i protokołu. Usługa Azure Firewall jest w pełni stanowa, więc możesz rozróżniać autentyczne pakiety w ramach różnych typów połączeń. Reguły są wymuszane i rejestrowane w wielu subskrypcjach i sieciach wirtualnych.
 
-## <a name="fqdn-tags"></a>Tagi FQDN
+## <a name="fqdn-tags"></a>Tagi w pełni kwalifikowanych nazw domen
 
 Tagi w pełni kwalifikowanych nazw domen zezwalają na znany ruch sieciowy usługi Azure przez zaporę. Załóżmy na przykład, że chcesz zezwolić na ruch sieciowy z witryny Windows Update przez zaporę. Tworzysz regułę aplikacji i dołączasz tag „Windows Update”. Teraz ruch sieciowy z witryny Windows Update może przechodzić przez zaporę.
 
@@ -65,7 +65,7 @@ Tagi w pełni kwalifikowanych nazw domen zezwalają na znany ruch sieciowy usłu
 
 Tag usługi reprezentuje grupę prefiksów adresów IP, aby zminimalizować złożoność tworzenia reguły zabezpieczeń. Nie można utworzyć własnego tagu usługi ani określić, które adresy IP znajdują się w tagu. Firma Microsoft zarządza prefiksami adresów obejmowanymi przez tag usługi i automatycznie aktualizuje tag usługi, gdy adresy ulegną zmianie.
 
-## <a name="threat-intelligence"></a>Analiza zagrożeń
+## <a name="threat-intelligence"></a>Inteligentna analiza zagrożeń
 
 Filtrowanie oparte na analizie zagrożeń można włączyć dla zapory, aby wysyłać alerty oraz blokować ruch ze znanych złośliwych adresów IP i domen i do nich. Adresy IP i domeny pochodzą z kanału informacyjnego analizy zagrożeń firmy Microsoft.
 
@@ -94,7 +94,7 @@ Wszystkie zdarzenia są zintegrowane z usługą Azure Monitor, co umożliwia arc
 
 Zapora platformy Azure to usługa Payment Card Industry (PCI), kontrolki organizacji usług (SOC) i Międzynarodowa Organizacja Normalizacyjna (ISO). Obsługuje ona obecnie SOC 1 typu 2, SOC 2 typu 2, SOC 3, PCI DSS i ISO 27001, 27018, 20000-1, 22301, 9001, 27017.
 
-Więcej informacji można znaleźć w [przewodniku zgodności firmy Microsoft](https://servicetrust.microsoft.com/ViewPage/MSComplianceGuide).
+Aby uzyskać więcej informacji, zobacz [Przewodnik zgodności firmy Microsoft](https://servicetrust.microsoft.com/ViewPage/MSComplianceGuide).
 
 ## <a name="known-issues"></a>Znane problemy
 
@@ -106,7 +106,6 @@ Reguły filtrowania dla protokołów innych niż TCP/UDP (na przykład ICMP) nie
 |Brak obsługi protokołu ICMP w programie PowerShell i interfejsie wiersza polecenia|Program PowerShell i interfejs wiersza polecenia nie obsługują protokołu ICMP jako prawidłowego protokołu w regułach sieciowych.|Nadal jest możliwe używanie protokołu ICMP jako protokołu za pośrednictwem portalu i interfejsu API REST. Pracujemy nad dodaniem protokołu ICMP w programie PowerShell i interfejsie wiersza polecenia.|
 |Tagi FQDN wymagają ustawienia protokołu i portu|Reguły aplikacji ze znacznikami FQDN wymagają portu: Definicja protokołu.|Jako wartości portu i protokołu można użyć wartości **https**. Pracujemy nad tym, aby to pole było opcjonalne, gdy używane są Tagi FQDN.|
 |Przeniesienie zapory do innej grupy zasobów lub subskrypcji nie jest obsługiwane|Przeniesienie zapory do innej grupy zasobów lub subskrypcji nie jest obsługiwane.|Obsługa tej funkcji jest w naszym harmonogramie działania. Aby przenieść zaporę do innej grupy zasobów lub subskrypcji, musisz usunąć bieżące wystąpienie i utworzyć je ponownie w nowej grupie zasobów lub subskrypcji.|
-|Zakres portów w regułach sieci i aplikacji|Porty są ograniczone do 64 000, ponieważ porty o dużych numerach są zarezerwowane do zarządzania i sprawdzania kondycji. |Pracujemy nad ograniczeniem tego ograniczenia.|
 |Alerty analizy zagrożeń mogą zostać zamaskowane|Reguły sieciowe z lokalizacją docelową 80/443 dla wyzwalanych masek filtrowania zdarzeń analizy zagrożeń po skonfigurowaniu trybu tylko alertu.|Utwórz filtrowanie wychodzące dla 80/443 przy użyciu reguł aplikacji. Lub zmień tryb analizy zagrożeń na **alert i Odmów**.|
 |Zapora platformy Azure używa Azure DNS tylko do rozpoznawania nazw|Zapora platformy Azure rozwiązuje nazwy FQDN tylko przy użyciu Azure DNS. Niestandardowy serwer DNS nie jest obsługiwany. Nie ma to wpływu na rozpoznawanie nazw DNS w innych podsieciach.|Pracujemy nad ograniczeniem tego ograniczenia.|
 |Nie działa prywatne adresy IP zapory platformy Azure/DNAT|Obsługa adresów IP/DNAT zapory platformy Azure jest ograniczona do Internetu/ruchu przychodzącego. W przypadku prywatnych miejsc docelowych IP/DNAT nie działa obecnie. Na przykład satelity.|Jest to bieżące ograniczenie.|

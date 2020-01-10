@@ -1,6 +1,7 @@
 ---
-title: 'Szybki Start: Tworzenie wystąpienia Azure Database Migration Service przy użyciu Azure Portal | Microsoft Docs'
-description: Użyj Azure Portal, aby utworzyć wystąpienie Azure Database Migration Service
+title: 'Szybki Start: Tworzenie wystąpienia przy użyciu Azure Portal'
+titleSuffix: Azure Database Migration Service
+description: Użyj Azure Portal, aby utworzyć wystąpienie Azure Database Migration Service.
 services: database-migration
 author: HJToland3
 ms.author: jtoland
@@ -8,15 +9,15 @@ manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc
+ms.custom: seo-lt-2019
 ms.topic: quickstart
-ms.date: 11/05/2019
-ms.openlocfilehash: 6427de61ebf30a5e4a62070becd1cc1f750f6c1b
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.date: 01/08/2020
+ms.openlocfilehash: 42638af9f51770a9a5738cd92f91c28439af273a
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73571603"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750102"
 ---
 # <a name="quickstart-create-an-instance-of-the-azure-database-migration-service-by-using-the-azure-portal"></a>Szybki start: tworzenie wystąpienia usługi Azure Database Migration Service przy użyciu witryny Azure Portal
 
@@ -58,7 +59,7 @@ Przed utworzeniem pierwszego wystąpienia usługi Database Migration Service zar
 
         Sieć wirtualna zapewnia Azure Database Migration Service z dostępem do źródłowej bazy danych i środowiska docelowego.
 
-        Aby uzyskać więcej informacji na temat sposobu tworzenia sieci wirtualnej w Azure Portal, zobacz artykuł [Utwórz sieć wirtualną przy użyciu Azure Portal](https://aka.ms/vnet).
+        Aby uzyskać więcej informacji na temat sposobu tworzenia sieci wirtualnej w Azure Portal, zobacz artykuł [Tworzenie sieci wirtualnej przy użyciu Azure Portal](https://aka.ms/vnet).
 
     - Wybierz opcję Podstawowa: 1 rdzeń wirtualny dla pozycji **Warstwa cenowa**.
 
@@ -72,7 +73,7 @@ Przed utworzeniem pierwszego wystąpienia usługi Database Migration Service zar
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Możesz wyczyścić zasoby utworzone w tym przewodniku Szybki start, usuwając [grupę zasobów platformy Azure](../azure-resource-manager/resource-group-overview.md). Aby usunąć grupę zasobów, przejdź do utworzonego wystąpienia usługi Azure Database Migration Service. Wybierz nazwę w obszarze **Grupa zasobów**, a następnie wybierz pozycję **Usuń grupę zasobów**. Ta akcja spowoduje usunięcie wszystkich zasobów w grupie zasobów, a także usunięcie samej grupy.
+Możesz wyczyścić zasoby utworzone w tym przewodniku Szybki start, usuwając [grupę zasobów platformy Azure](../azure-resource-manager/management/overview.md). Aby usunąć grupę zasobów, przejdź do utworzonego wystąpienia usługi Azure Database Migration Service. Wybierz nazwę w obszarze **Grupa zasobów**, a następnie wybierz pozycję **Usuń grupę zasobów**. Ta akcja spowoduje usunięcie wszystkich zasobów w grupie zasobów, a także usunięcie samej grupy.
 
 ## <a name="next-steps"></a>Następne kroki
 

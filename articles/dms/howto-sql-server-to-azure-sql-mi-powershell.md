@@ -1,6 +1,7 @@
 ---
-title: Migrowanie SQL Server do Azure SQL Database wystąpienia zarządzanego przy użyciu narzędzia Database Migration Service i programu PowerShell | Microsoft Docs
-description: Dowiedz się, jak przeprowadzić migrację z lokalnego SQL Server do wystąpienia zarządzanego usługi Azure SQL DB przy użyciu Azure PowerShell.
+title: 'PowerShell: Migrowanie SQL Server do wystąpienia zarządzanego SQL'
+titleSuffix: Azure Database Migration Service
+description: Dowiedz się, jak przeprowadzić migrację z SQL Server lokalnych do Azure SQL Database wystąpienia zarządzanego przy użyciu Azure PowerShell i Azure Database Migration Service.
 services: database-migration
 author: HJToland3
 ms.author: jtoland
@@ -8,24 +9,25 @@ manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc
+ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 04/29/2019
-ms.openlocfilehash: 426285340a9401aa6c84a7ee07f172eee6791d9e
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.date: 01/08/2020
+ms.openlocfilehash: 3b434bc8a495f47f7fb2de8429069283821cf397
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163953"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75746632"
 ---
-# <a name="migrate-sql-server-on-premises-to-an-azure-sql-database-managed-instance-using-azure-powershell"></a>Migrowanie SQL Server lokalnie do wystąpienia zarządzanego Azure SQL Database przy użyciu Azure PowerShell
+# <a name="migrate-sql-server-to-sql-database-managed-instance-with-powershell--azure-database-migration-service"></a>Migrowanie SQL Server do SQL Database wystąpienia zarządzanego przy użyciu programu PowerShell & Azure Database Migration Service
+
 W tym artykule przeprowadzisz migrację bazy danych **Adventureworks2016** do lokalnego wystąpienia SQL Server 2005 lub nowszego do wystąpienia zarządzanego Azure SQL Database przy użyciu Microsoft Azure PowerShell. Bazy danych można migrować z wystąpienia SQL Server lokalnego do Azure SQL Database wystąpienia zarządzanego przy użyciu modułu `Az.DataMigration` w Microsoft Azure PowerShell.
 
 W tym artykule omówiono sposób wykonywania następujących zadań:
 > [!div class="checklist"]
 >
 > * Utwórz grupę zasobów.
-> * Utwórz wystąpienie Azure Database Migration Service.
+> * Utwórz wystąpienie usługi Azure Database Migration Service.
 > * Utwórz projekt migracji w wystąpieniu Azure Database Migration Service.
 > * Uruchamianie migracji.
 
@@ -44,20 +46,20 @@ Aby wykonać te kroki, potrzebne są:
 * Subskrypcja platformy Azure. Jeśli nie masz subskrypcji, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 * Azure SQL Database wystąpienie zarządzane. Wystąpienie zarządzane Azure SQL Database można utworzyć, postępując zgodnie ze szczegółowymi informacjami w artykule [tworzenie Azure SQL Database wystąpienia zarządzanego](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started).
 * Aby pobrać i zainstalować [Data Migration Assistant](https://www.microsoft.com/download/details.aspx?id=53595) v 3.3 lub nowszy.
-* Usługa Azure Virtual Network (VNet) utworzona przy użyciu modelu wdrażania Azure Resource Manager, która zapewnia Azure Database Migration Service z połączeniem lokacja-lokacja z lokalnymi serwerami źródłowymi przy użyciu usługi [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) lub [sieci VPN ](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways).
+* Microsoft Azure Virtual Network utworzony przy użyciu modelu wdrażania Azure Resource Manager, który zapewnia Azure Database Migration Service z połączeniem lokacja-lokacja z lokalnymi serwerami źródłowymi przy użyciu usługi [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) lub [sieci VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways).
 * Zakończono ocenę lokalnej bazy danych i migracji schematu przy użyciu Data Migration Assistant, zgodnie z opisem w artykule [wykonywanie oceny SQL Server migracji](https://docs.microsoft.com/sql/dma/dma-assesssqlonprem).
 * Aby pobrać i zainstalować moduł `Az.DataMigration` (w wersji 0.7.2 lub nowszej) z Galeria programu PowerShell przy użyciu [polecenia cmdlet programu PowerShell Install-module](https://docs.microsoft.com/powershell/module/powershellget/Install-Module?view=powershell-5.1).
 * Aby upewnić się, że poświadczenia używane do nawiązania połączenia z wystąpieniem źródła SQL Server mają uprawnienia [serwera kontroli](https://docs.microsoft.com/sql/t-sql/statements/grant-server-permissions-transact-sql) .
 * Aby upewnić się, że poświadczenia używane do nawiązania połączenia z docelowym Azure SQL Database wystąpieniem zarządzanym mają uprawnienia do sterowania bazą danych w docelowym Azure SQL Database bazach danych wystąpienia zarządzanego.
 
     > [!IMPORTANT]
-    > W przypadku migracji w trybie online należy już skonfigurować poświadczenia Azure Active Directory. Aby uzyskać więcej informacji, zobacz artykuł [Używanie portalu do tworzenia aplikacji usługi Azure AD i nazwy głównej usługi, która może uzyskiwać dostęp do zasobów](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
+    > W przypadku migracji w trybie online należy wcześniej skonfigurować poświadczenia Azure Active Directory. Aby uzyskać więcej informacji, zobacz artykuł [Używanie portalu do tworzenia aplikacji usługi Azure AD i nazwy głównej usługi, która może uzyskiwać dostęp do zasobów](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
 
 ## <a name="sign-in-to-your-microsoft-azure-subscription"></a>Zaloguj się do subskrypcji Microsoft Azure
 
 Zaloguj się do subskrypcji platformy Azure za pomocą programu PowerShell. Aby uzyskać więcej informacji, zobacz artykuł [Logowanie przy użyciu Azure PowerShell](https://docs.microsoft.com/powershell/azure/authenticate-azureps).
 
-## <a name="create-a-resource-group"></a>Utwórz grupę zasobów
+## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
 Grupa zasobów platformy Azure to logiczny kontener, w którym są wdrażane i zarządzane zasoby platformy Azure.
 
@@ -295,7 +297,7 @@ Bez względu na to, czy wykonywana jest migracja w trybie offline, czy online, p
 * *SelectedLogins*. Lista wybranych logowań do migracji.
 * *SelectedAgentJobs*. Lista wybranych zadań agenta do migracji.
 
-##### <a name="additional-parameters"></a>Dodatkowe parametry
+##### <a name="additional-parameters"></a>Parametry dodatkowe
 
 `New-AzDataMigrationTask` polecenie cmdlet oczekuje również parametrów, które są unikatowe dla typu migracji, w trybie offline lub online, który jest wykonywany.
 

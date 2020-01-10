@@ -9,12 +9,12 @@ ms.date: 09/17/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 8025228275afeb3f23268db759eb7659b9887132
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 7517c4d9b3f9b58d9cf745f5001078837e1fbfea
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71670784"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75748181"
 ---
 # <a name="azure-storage-redundancy"></a>Nadmiarowość usługi Azure Storage
 
@@ -34,23 +34,25 @@ Poniższa tabela zawiera krótkie omówienie zakresu trwałości i dostępności
 
 | Scenariusz                                                                                                 | LRS                             | ZRS                              | GRS/RA-GRS                                  | GZRS/RA-GZRS (wersja zapoznawcza)                              |
 | :------------------------------------------------------------------------------------------------------- | :------------------------------ | :------------------------------- | :----------------------------------- | :----------------------------------- |
-| Niedostępność węzła w centrum danych                                                                 | Tak                             | Yes                              | Yes                                  | Tak                                  |
-| Całe centrum danych (zona lub non-Zona) staną się niedostępne                                           | Nie                              | Yes                              | Yes                                  | Tak                                  |
-| Awaria całego regionu                                                                                     | Nie                              | Nie                               | Yes                                  | Tak                                  |
+| Niedostępność węzła w centrum danych                                                                 | Tak                             | Tak                              | Tak                                  | Tak                                  |
+| Całe centrum danych (zona lub non-Zona) staną się niedostępne                                           | Nie                              | Tak                              | Tak                                  | Tak                                  |
+| Awaria całego regionu                                                                                     | Nie                              | Nie                               | Tak                                  | Tak                                  |
 | Dostęp do odczytu do danych (w zdalnym, replikowanym regionie geograficznie) w przypadku niedostępności całego regionu | Nie                              | Nie                               | Tak (z RA-GRS)                                   | Tak (z RA-GZRS)                                 |
-| Zaprojektowano \_ w celu zapewnienia \_ trwałości obiektów w danym roku.                                          | co najmniej 99,999999999% (11 9) | co najmniej 99,9999999999% (12 9) | co najmniej 99.99999999999999% (16 9) | co najmniej 99.99999999999999% (16 9) |
-| Obsługiwane typy kont magazynu                                                                   | GPv2, GPv1, BLOB                | GPv2                             | GPv2, GPv1, BLOB                     | GPv2                     |
-| Umowa SLA dotycząca dostępności dla żądań odczytu | Co najmniej 99,9% (99% dla warstwy dostępu chłodnego) | Co najmniej 99,9% (99% dla warstwy dostępu chłodnego) | Co najmniej 99,9% (99% dla warstwy dostępu chłodnego) dla GRS<br /><br />Co najmniej 99,99% (99,9% dla warstwy dostępu chłodnego) dla usługi RA-GRS | Co najmniej 99,9% (99% dla warstwy dostępu chłodnego) dla GZRS<br /><br />Co najmniej 99,99% (99,9% dla warstwy dostępu chłodnego) dla usługi RA-GZRS |
-| Umowa SLA dotycząca dostępności dla żądań zapisu | Co najmniej 99,9% (99% dla warstwy dostępu chłodnego) | Co najmniej 99,9% (99% dla warstwy dostępu chłodnego) | Co najmniej 99,9% (99% dla warstwy dostępu chłodnego) | Co najmniej 99,9% (99% dla warstwy dostępu chłodnego) |
+| Zaprojektowano w celu zapewnienia \_\_ trwałości obiektów w danym roku<sup>1</sup>                                          | co najmniej 99,999999999% (11 9) | co najmniej 99,9999999999% (12 9) | co najmniej 99.99999999999999% (16 9) | co najmniej 99.99999999999999% (16 9) |
+| Obsługiwane typy kont magazynu<sup>2</sup>                                                                   | GPv2, GPv1, BlockBlobStorage, BlobStorage, FileStorage                | GPv2, BlockBlobStorage, FileStorage                             | GPv2, GPv1, BlobStorage                     | GPv2                     |
+| Umowa SLA dotycząca dostępności dla żądań odczytu<sup>1</sup>  | Co najmniej 99,9% (99% dla warstwy dostępu chłodnego) | Co najmniej 99,9% (99% dla warstwy dostępu chłodnego) | Co najmniej 99,9% (99% dla warstwy dostępu chłodnego) dla GRS<br /><br />Co najmniej 99,99% (99,9% dla warstwy dostępu chłodnego) dla usługi RA-GRS | Co najmniej 99,9% (99% dla warstwy dostępu chłodnego) dla GZRS<br /><br />Co najmniej 99,99% (99,9% dla warstwy dostępu chłodnego) dla usługi RA-GZRS |
+| Umowa SLA dotycząca dostępności dla żądań zapisu<sup>1</sup>  | Co najmniej 99,9% (99% dla warstwy dostępu chłodnego) | Co najmniej 99,9% (99% dla warstwy dostępu chłodnego) | Co najmniej 99,9% (99% dla warstwy dostępu chłodnego) | Co najmniej 99,9% (99% dla warstwy dostępu chłodnego) |
 
-Wszystkie dane na koncie magazynu są replikowane, w tym blokowe obiekty blob i dołączanie obiektów blob, stronicowych obiektów blob, kolejek, tabel i plików. Wszystkie typy kont magazynu są replikowane, chociaż ZRS wymaga konta magazynu ogólnego przeznaczenia w wersji 2.
+<sup>1</sup> Aby uzyskać informacje na temat gwarancji usługi Azure Storage dotyczących trwałości i dostępności, zobacz umowę SLA dotyczącą [usługi Azure Storage](https://azure.microsoft.com/support/legal/sla/storage/).   
 
-Aby uzyskać informacje o cenach dla każdej opcji nadmiarowości, zobacz [Cennik usługi Azure Storage](https://azure.microsoft.com/pricing/details/storage/). 
+<sup>2</sup> Aby uzyskać informacje na temat typów kont magazynu, zobacz [Omówienie konta magazynu](storage-account-overview.md).
 
-Aby uzyskać informacje na temat gwarancji usługi Azure Storage w zakresie trwałości i dostępności, zobacz umowę SLA dotyczącą [usługi Azure Storage](https://azure.microsoft.com/support/legal/sla/storage/).
+Wszystkie dane dla wszystkich typów kont magazynu są replikowane, w tym blokowe obiekty blob, dołączanie obiektów blob, stronicowych obiektów blob, kolejek, tabel i plików.
+
+Aby uzyskać informacje o cenach dla każdej opcji nadmiarowości, zobacz [Cennik usługi Azure Storage](https://azure.microsoft.com/pricing/details/storage/).
 
 > [!NOTE]
-> Usługa Azure Premium Storage obecnie obsługuje tylko Magazyn lokalnie nadmiarowy (LRS).
+> Usługa Azure Premium Disk Storage obecnie obsługuje tylko Magazyn lokalnie nadmiarowy (LRS). Usługa Azure Premium Block Blob Storage obsługuje Magazyn lokalnie nadmiarowy (LRS) i magazyn strefowo nadmiarowy (ZRS) w określonych regionach.
 
 ## <a name="changing-replication-strategy"></a>Zmiana strategii replikacji
 
@@ -69,11 +71,12 @@ Jeśli przeprowadzono migrację konta magazynu z usługi RA-GRS do usługi GRS l
 
 ## <a name="see-also"></a>Zobacz także
 
-- [Magazyn lokalnie nadmiarowy (LRS): Niski koszt nadmiarowości danych dla usługi Azure Storage](storage-redundancy-lrs.md)
-- [Magazyn strefowo nadmiarowy (ZRS): Aplikacje usługi Azure Storage o wysokiej dostępności](storage-redundancy-zrs.md)
-- [Magazyn Geograficznie nadmiarowy (GRS): Replikacja między regionami w ramach usługi Azure Storage](storage-redundancy-grs.md)
+- [Przegląd konta magazynu](storage-account-overview.md)
+- [Magazyn lokalnie nadmiarowy (LRS): niski koszt nadmiarowości danych dla usługi Azure Storage](storage-redundancy-lrs.md)
+- [Magazyn strefowo nadmiarowy (ZRS): aplikacje usługi Azure Storage o wysokiej dostępności](storage-redundancy-zrs.md)
+- [Magazyn Geograficznie nadmiarowy (GRS): replikacja w wielu regionach dla usługi Azure Storage](storage-redundancy-grs.md)
 - [Magazyn Geograficznie nadmiarowy (GZRS) w celu zapewnienia wysokiej dostępności i maksymalnej trwałości (wersja zapoznawcza)](storage-redundancy-gzrs.md)
-- [Azure Storage scalability and performance targets](storage-scalability-targets.md) (Cele dotyczące skalowalności i wydajności usługi Azure Storage)
+- [Cele skalowalności i wydajności dla kont magazynu w warstwie Standardowa](scalability-targets-standard-account.md)
 - [Projektowanie aplikacji o wysokiej dostępności przy użyciu magazynu RA-GRS](../storage-designing-ha-apps-with-ragrs.md)
 - [Microsoft Azure Storage opcje nadmiarowości i dostęp do odczytu geograficznie nadmiarowego magazynu](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/11/introducing-read-access-geo-replicated-storage-ra-grs-for-windows-azure-storage.aspx)
-- [Papier SOSP — Azure Storage: Usługa magazynu w chmurze o wysokiej dostępności z silną spójnością](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)
+- [Papier SOSP — Azure Storage: usługa magazynu w chmurze o wysokiej dostępności z silną spójnością](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)

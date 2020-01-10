@@ -1,19 +1,15 @@
 ---
 title: Rozwiązywanie problemów z funkcją automatycznego skalowania platformy Azure
 description: Śledzenie problemów z funkcją automatycznego skalowania platformy Azure używanej w usługach Service Fabric, Virtual Machines, Web Apps i w chmurze.
-author: rboucher
-services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 11/4/2019
-ms.author: robb
 ms.subservice: autoscale
-ms.openlocfilehash: 410c182075d0aa288ad05195958c396f1a357ff1
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 9780cf88070110c4efc13c477d65307aa3985fe5
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893573"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75751334"
 ---
 # <a name="troubleshooting-azure-autoscale"></a>Rozwiązywanie problemów z funkcją automatycznego skalowania platformy Azure
  
@@ -101,7 +97,7 @@ Na ekranie ustawienia skalowania automatycznego przejdź do karty **historia uru
 
 ## <a name="autoscale-resource-logs"></a>Automatyczne skalowanie dzienników zasobów
 
-Tak samo jak w przypadku każdego innego zasobu platformy Azure, usługa skalowania automatycznego udostępnia [dzienniki zasobów](resource-logs-overview.md). Istnieją dwie kategorie dzienników.
+Tak samo jak w przypadku każdego innego zasobu platformy Azure, usługa skalowania automatycznego udostępnia [dzienniki zasobów](platform-logs-overview.md). Istnieją dwie kategorie dzienników.
 
 - **Obliczenia skalowania automatycznego** — aparat skalowania automatycznego rejestruje wpisy dziennika dla każdej oceny pojedynczego warunku przy każdym sprawdzaniu.  Wpis zawiera szczegółowe informacje o obserwowanych wartościach metryk, obliczeniach reguł, a jeśli Ocena spowodowała akcję skalowania lub nie.
 

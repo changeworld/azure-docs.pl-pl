@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 10/28/2019
-ms.openlocfilehash: 8b914b8ffe995cf31f8a22b6f80250431facc770
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 68f4eb4fbad2a571e078cb9aedcfd56c80ffe054
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682247"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75747861"
 ---
 # <a name="availability-and-reliability-of-apache-hadoop-clusters-in-hdinsight"></a>Dostępność i niezawodność klastrów Apache Hadoop w usłudze HDInsight
 
@@ -33,7 +33,7 @@ Węzły w klastrze usługi HDInsight są implementowane przy użyciu Virtual Mac
 
 W celu zapewnienia wysokiej dostępności usług Hadoop Usługa HDInsight udostępnia dwa węzły główne. Oba węzły główne są aktywne i działają w klastrze usługi HDInsight jednocześnie. Niektóre usługi, takie jak Apache HDFS lub Apache Hadoop, są tylko "aktywne" w jednym węźle głównym w danym momencie. Inne usługi, takie jak serwera hiveserver2 lub Hive, są aktywne w obu węzłach głównych w tym samym czasie.
 
-Węzły główne (i inne węzły w usłudze HDInsight) mają wartość liczbową jako część nazwy hosta węzła. Na przykład: `hn0-CLUSTERNAME` lub `hn4-CLUSTERNAME`.
+Aby uzyskać nazwy hostów dla różnych typów węzłów w klastrze, należy użyć [interfejsu API REST Ambari](hdinsight-hadoop-manage-ambari-rest-api.md#example-get-the-fqdn-of-cluster-nodes).
 
 > [!IMPORTANT]  
 > Nie należy kojarzyć wartości liczbowej z czy węzłem jest podstawowy czy pomocniczy. Wartość liczbowa jest obecna tylko w celu zapewnienia unikatowej nazwy dla każdego węzła.
@@ -88,7 +88,7 @@ curl -u admin:$password "https://$clusterName.azurehdinsight.net/api/v1/clusters
 To polecenie zwraca wartość podobną do następującej, która zawiera wewnętrzny adres URL do użycia z `oozie` polecenie:
 
 ```output
-"oozie.base.url": "http://hn0-CLUSTERNAME-randomcharacters.cx.internal.cloudapp.net:11000/oozie"
+"oozie.base.url": "http://<ACTIVE-HEADNODE-NAME>cx.internal.cloudapp.net:11000/oozie"
 ```
 
 Aby uzyskać więcej informacji na temat pracy z interfejsem API REST Ambari, zobacz [monitorowanie i zarządzanie usługą HDInsight przy użyciu interfejsu API REST usługi Apache Ambari](hdinsight-hadoop-manage-ambari-rest-api.md).
@@ -99,9 +99,9 @@ Można połączyć się z węzłami, które nie są bezpośrednio dostępne za p
 
 |Metoda |Opis |
 |---|---|
-|Protokół SSH|Po nawiązaniu połączenia z węzłem głównym przy użyciu protokołu SSH można nawiązać połączenie z innymi węzłami w klastrze przy użyciu protokołu SSH z węzła głównego. Aby uzyskać więcej informacji, zobacz dokument [Używanie protokołu SSH w usłudze HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).|
+|SSH|Po nawiązaniu połączenia z węzłem głównym przy użyciu protokołu SSH można nawiązać połączenie z innymi węzłami w klastrze przy użyciu protokołu SSH z węzła głównego. Aby uzyskać więcej informacji, zobacz dokument [Używanie protokołu SSH w usłudze HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).|
 |Tunel SSH|Jeśli musisz uzyskać dostęp do usługi sieci Web hostowanej na jednym z węzłów, które nie są uwidocznione w Internecie, musisz użyć tunelu SSH. Aby uzyskać więcej informacji, zobacz artykuł [Używanie tunelu SSH z usługą HDInsight](hdinsight-linux-ambari-ssh-tunnel.md) .|
-|Azure Virtual Network|Jeśli klaster usługi HDInsight jest częścią Virtual Network platformy Azure, wszystkie zasoby w tym samym Virtual Network mogą bezpośrednio uzyskać dostęp do wszystkich węzłów w klastrze. Aby uzyskać więcej informacji, zapoznaj się z dokumentem [Planowanie sieci wirtualnej dla usługi HDInsight](hdinsight-plan-virtual-network-deployment.md) .|
+|Usługa Azure Virtual Network|Jeśli klaster usługi HDInsight jest częścią Virtual Network platformy Azure, wszystkie zasoby w tym samym Virtual Network mogą bezpośrednio uzyskać dostęp do wszystkich węzłów w klastrze. Aby uzyskać więcej informacji, zapoznaj się z dokumentem [Planowanie sieci wirtualnej dla usługi HDInsight](hdinsight-plan-virtual-network-deployment.md) .|
 
 ## <a name="how-to-check-on-a-service-status"></a>Jak sprawdzić stan usługi
 
@@ -141,7 +141,7 @@ Następujące alerty ułatwiają monitorowanie dostępności klastra:
 | Proces serwera hiveserver2                      | Ten alert na poziomie hosta jest wyzwalany, jeśli nie można ustalić HiveServer i odpowiadać na żądania klientów.                                                                        |
 | Stan serwera WebHCat                    | Ten alert na poziomie hosta jest wyzwalany, jeśli stan serwera `templeton` nie jest w dobrej kondycji.                                                                                                            |
 | Dostępne serwery dozorcy      | Ten alert jest wyzwalany, jeśli liczba serwerów dozorcy w klastrze jest większa niż skonfigurowany próg krytyczny. Agreguje wyniki testów procesu dozorcy.     |
-| Serwer Spark2 usługi Livy                       | Ten alert na poziomie hosta jest wyzwalany, jeśli nie można ustalić serwera Livy2.                                                                                                        |
+| Spark2 Livy Server                       | Ten alert na poziomie hosta jest wyzwalany, jeśli nie można ustalić serwera Livy2.                                                                                                        |
 | Serwer historii Spark2                    | Ten alert na poziomie hosta jest wyzwalany, jeśli nie można ustalić serwera historii Spark2.                                                                                               |
 | Proces modułów zbierających metryki                | Ten alert jest wyzwalany, jeśli moduł zbierający metryk nie może zostać potwierdzony i nasłuchuje na skonfigurowanym porcie przez liczbę sekund równą wartości progowej.                                 |
 | Moduł zbierający metryk — proces HBase Master | Ten alert jest wyzwalany, jeśli procesy wzorca HBase modułu zbierającego metryk nie mogą zostać potwierdzone i nasłuchuje w sieci pod kątem skonfigurowanego progu krytycznego, podanego w sekundach. |
@@ -194,7 +194,7 @@ Odpowiedź jest podobna do następującej:
 
 ```json
 {
-    "href" : "http://hn0-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:8080/api/v1/clusters/mycluster/services/HDFS?fields=ServiceInfo/state",
+    "href" : "http://mycluster.wutj3h4ic1zejluqhxzvckxq0g.cx.internal.cloudapp.net:8080/api/v1/clusters/mycluster/services/HDFS?fields=ServiceInfo/state",
     "ServiceInfo" : {
     "cluster_name" : "mycluster",
     "service_name" : "HDFS",
@@ -203,7 +203,7 @@ Odpowiedź jest podobna do następującej:
 }
 ```
 
-Adres URL informuje nas, że usługa jest obecnie uruchomiona w węźle głównym o nazwie **hn0-ClusterName**.
+Adres URL informuje nas, że usługa jest obecnie uruchomiona w węźle głównym o nazwie My **cluster. wutj3h4ic1zejluqhxzvckxq0g**.
 
 Stan informuje nas, że usługa jest obecnie uruchomiona lub **uruchomiona**.
 
@@ -231,7 +231,7 @@ curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CL
 
 ## <a name="how-to-access-log-files-on-the-head-nodes"></a>Jak uzyskać dostęp do plików dziennika w węzłach głównych
 
-### <a name="ssh"></a>Protokół SSH
+### <a name="ssh"></a>SSH
 
 W przypadku połączenia z węzłem głównym za pośrednictwem protokołu SSH pliki dzienników można znaleźć w obszarze **/var/log**. Na przykład **/var/log/Hadoop-Yarn/Yarn** zawiera dzienniki dla przędzy.
 

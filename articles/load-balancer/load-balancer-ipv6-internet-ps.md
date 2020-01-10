@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: fb697003da8c0604b2ce1e8956fcd434014b5b82
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 0294efb7510d4240cfdd6386c7f8bef1d4184538
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74077050"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754478"
 ---
 # <a name="get-started-creating-an-internet-facing-load-balancer-with-ipv6-using-powershell-for-resource-manager"></a>Wprowadzenie do tworzenia modułu równoważenia obciążenia połączonego z Internetem przy użyciu protokołu IPv6 dla Menedżer zasobów
 
@@ -55,13 +55,13 @@ Poniższe kroki przedstawiają sposób tworzenia modułu równoważenia obciąż
 
 Aby wdrożyć moduł równoważenia obciążenia, należy utworzyć i skonfigurować następujące obiekty:
 
-* Konfiguracja IP frontonu — publiczne adresy IP dla przychodzącego ruchu sieciowego.
-* Pula adresów zaplecza — interfejsy sieciowe (NIC) maszyn wirtualnych odbierających ruch sieciowy z modułu równoważenia obciążenia.
+* Konfiguracja adresu IP frontonu — zawiera publiczne adresy IP dla przychodzącego ruchu sieciowego.
+* Pula adresów zaplecza — zawiera interfejsy sieciowe dla maszyn wirtualnych, które mają odbierać ruch sieciowy z modułu równoważenia obciążenia.
 * Reguły równoważenia obciążenia — reguły mapowania portu publicznego modułu równoważenia obciążenia na port w puli adresów zaplecza.
 * Reguły NAT ruchu przychodzącego — reguły mapowania portu publicznego modułu równoważenia obciążenia na port określonej maszyny wirtualnej w puli adresów zaplecza.
 * Sondy — sondy kondycji używane do sprawdzania dostępności wystąpień maszyn wirtualnych w puli adresów zaplecza.
 
-Aby uzyskać więcej informacji, zobacz artykuł [Azure Resource Manager support for Load Balancer](load-balancer-arm.md) (Obsługa usługi Azure Resource Manager dla modułu równoważenia obciążenia).
+Aby uzyskać więcej informacji, zobacz [Azure Load Balancer Components](load-balancer-overview.md#load-balancer-components).
 
 ## <a name="set-up-powershell-to-use-resource-manager"></a>Konfigurowanie programu PowerShell do korzystania z usługi Resource Manager
 
