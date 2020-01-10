@@ -1,19 +1,15 @@
 ---
 title: Przygotowywanie maszyn wirtualnych funkcji Hyper-V do oceny/migracji za pomocą Azure Migrate
 description: Dowiedz się, jak przygotować się do oceny/migracji maszyn wirtualnych funkcji Hyper-V za pomocą Azure Migrate.
-author: rayne-wiselman
-manager: carmonm
-ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 11/19/2019
-ms.author: raynew
+ms.date: 01/01/2020
 ms.custom: mvc
-ms.openlocfilehash: f93528e2a35661f8a233aea476a958a079d7cd59
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: a76c249f3d179a34fbb14e6c8bfb3666816fa160
+ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196260"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75720212"
 ---
 # <a name="prepare-for-assessment-and-migration-of-hyper-v-vms-to-azure"></a>Przygotowanie do oceny i migracji maszyn wirtualnych funkcji Hyper-V na platformę Azure
 
@@ -21,11 +17,12 @@ W tym artykule opisano, jak przygotować się do oceny i migracji lokalnych masz
 
 [Azure Migrate](migrate-overview.md) udostępnia centrum narzędzi, które ułatwiają odnajdywanie, ocenianie i Migrowanie aplikacji, infrastruktury i obciążeń do Microsoft Azure. Centrum obejmuje narzędzia Azure Migrate i oferty niezależnych dostawców oprogramowania (ISV) innych firm.
 
-Ten samouczek jest pierwszą częścią serii, która pokazuje, jak oceniać i migrować maszyny wirtualne funkcji Hyper-V na platformę Azure. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Ten samouczek jest pierwszą częścią serii, która pokazuje, jak oceniać i migrować maszyny wirtualne funkcji Hyper-V na platformę Azure. Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Przygotuj platformę Azure. Skonfiguruj uprawnienia dla konta i zasobów platformy Azure do pracy z Azure Migrate.
-> * Przygotuj lokalne hosty i maszyny wirtualne funkcji Hyper-V na potrzeby oceny serwera.
+> * Przygotuj lokalne hosty i maszyny wirtualne funkcji Hyper-V na potrzeby oceny serwera. Możesz przygotować się przy użyciu skryptu konfiguracji lub ręcznie.
+> * Przygotuj się na wdrożenie urządzenia Azure Migrateowego. Urządzenie służy do odnajdywania i oceniania lokalnych maszyn wirtualnych.
 > * Przygotuj lokalne hosty i maszyny wirtualne funkcji Hyper-V na potrzeby migracji serwera.
 
 
@@ -43,7 +40,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 Musisz skonfigurować uprawnienia do wdrożenia Azure Migrate.
 
 - Uprawnienia do konta platformy Azure w celu utworzenia projektu Azure Migrate.
-- Uprawnienia dla Twojego konta, które zarejestrują urządzenie Azure Migrate. Urządzenie jest używane na potrzeby odnajdywania i migracji funkcji Hyper-V. Podczas rejestracji urządzenia Azure Migrate tworzy dwie aplikacje Azure Active Directory (Azure AD), które w unikatowy sposób identyfikują urządzenie:
+- Uprawnienia dla Twojego konta, które zarejestrują urządzenie Azure Migrate. Urządzenie służy do odnajdywania i oceny migrowanych maszyn wirtualnych funkcji Hyper-V. Podczas rejestracji urządzenia Azure Migrate tworzy dwie aplikacje Azure Active Directory (Azure AD), które w unikatowy sposób identyfikują urządzenie:
     - Pierwsza aplikacja komunikuje się z punktami końcowymi usługi Azure Migrate.
     - Druga aplikacja uzyskuje dostęp do Azure Key Vault, który jest tworzony podczas rejestracji, do przechowywania informacji o aplikacji usługi Azure AD i ustawień konfiguracji urządzenia.
 
@@ -62,7 +59,7 @@ Sprawdź, czy masz uprawnienia do tworzenia projektu Azure Migrate.
 
 ### <a name="assign-permissions-to-register-the-appliance"></a>Przypisywanie uprawnień do zarejestrowania urządzenia
 
-Można przypisać uprawnienia Azure Migrate do tworzenia aplikacji usługi Azure AD tworzonych podczas rejestracji urządzenia przy użyciu jednej z następujących metod:
+Można przypisać uprawnienia Azure Migrate do tworzenia aplikacji usługi Azure AD utworzonych podczas rejestracji urządzenia przy użyciu jednej z następujących metod:
 
 - Dzierżawa/Administrator globalny może udzielić uprawnień użytkownikom w dzierżawie, aby tworzyć i rejestrować aplikacje usługi Azure AD.
 - Dzierżawa/Administrator globalny może przypisać rolę dewelopera aplikacji (z uprawnieniami) do konta.
@@ -92,30 +89,25 @@ Dzierżawy/Administrator globalny mogą udzielić uprawnień w następujący spo
 Dzierżawa/Administrator globalny może przypisać rolę dewelopera aplikacji do konta. [Dowiedz się więcej](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal).
 
 
-## <a name="prepare-for-hyper-v-assessment"></a>Przygotowanie do oceny funkcji Hyper-V
+## <a name="prepare-hyper-v-for-assessment"></a>Przygotowanie funkcji Hyper-V do oceny
 
-Aby przygotować się do oceny funkcji Hyper-V, wykonaj następujące czynności:
+Funkcję Hyper-V do oceny maszyn wirtualnych można przygotować ręcznie lub za pomocą skryptu konfiguracji. Oto co należy przygotować:
 
-1. Sprawdź ustawienia hosta funkcji Hyper-V.
-2. Skonfiguruj komunikację zdalną programu PowerShell na każdym hoście, tak aby urządzenie Azure Migrate mogły uruchamiać polecenia programu PowerShell na hoście przy użyciu połączenia usługi WinRM.
-3. Jeśli dyski maszyny wirtualnej znajdują się w zdalnym magazynie SMB, potrzebne jest Delegowanie poświadczeń.
-    - Włącz delegowanie CredSSP, aby urządzenie Azure Migrate było działać jako klient, Delegowanie poświadczeń do hosta.
-    - Każdy host może działać jako delegat dla urządzenia, zgodnie z poniższym opisem.
-    - Później podczas konfigurowania urządzenia zostanie włączone delegowanie na urządzeniu.
-4. Przejrzyj wymagania dotyczące urządzenia i dostęp do adresu URL/portu, który jest wymagany dla urządzenia.
-5. Skonfiguruj konto, które będzie używane przez urządzenie do odnajdywania maszyn wirtualnych.
-6. Skonfiguruj usługi integracji funkcji Hyper-V na każdej maszynie wirtualnej, którą chcesz odnaleźć i ocenić.
+- Sprawdź ustawienia hosta funkcji Hyper-V i upewnij się, że wymagane porty są otwarte na hostach funkcji Hyper-V.
+- Skonfiguruj komunikację zdalną programu PowerShell na każdym hoście, tak aby urządzenie Azure Migrate mogły uruchamiać polecenia programu PowerShell na hoście przy użyciu połączenia usługi WinRM.
+- Delegowanie poświadczeń, jeśli dyski maszyny wirtualnej znajdują się na zdalnych udziałach SMB.
+- Skonfiguruj konto, które będzie używane przez urządzenie do odnajdywania maszyn wirtualnych na hostach funkcji Hyper-V.
+- Skonfiguruj usługi integracji funkcji Hyper-V na każdej maszynie wirtualnej, którą chcesz odnaleźć i ocenić.
 
 
-Te ustawienia można skonfigurować ręcznie, korzystając z poniższych procedur. Alternatywnie można uruchomić skrypt konfiguracji wymagań wstępnych funkcji Hyper-V.
 
-### <a name="hyper-v-prerequisites-configuration-script"></a>Skrypt konfiguracji wymagań wstępnych funkcji Hyper-V
+## <a name="prepare-with-a-script"></a>Przygotuj ze skryptem
 
-Skrypt weryfikuje hosty funkcji Hyper-V i konfiguruje ustawienia potrzebne do odnajdywania i oceniania maszyn wirtualnych funkcji Hyper-V. Oto co robi:
+Skrypt wykonuje następujące czynności:
 
 - Sprawdza, czy skrypt jest uruchamiany w obsługiwanej wersji programu PowerShell.
 - Sprawdza, czy użytkownika (użytkownik uruchamiający skrypt) ma uprawnienia administracyjne na hoście funkcji Hyper-V.
-- Umożliwia utworzenie konta użytkownika lokalnego (nie administratora), które jest używane przez usługę Azure Migrate do komunikacji z hostem funkcji Hyper-V. To konto użytkownika jest dodawane do tych grup na hoście:
+- Umożliwia utworzenie konta użytkownika lokalnego (nie administratora), którego usługa Azure Migrate używa do komunikacji z hostem funkcji Hyper-V. To konto użytkownika jest dodawane do tych grup na hoście:
     - Użytkownicy zarządzania zdalnego
     - Administratorzy funkcji Hyper-V
     - Użytkownicy monitora wydajności
@@ -129,7 +121,7 @@ Uruchom skrypt w następujący sposób:
 
 1. Upewnij się, że na hoście funkcji Hyper-V jest zainstalowany program PowerShell w wersji 4,0 lub nowszej.
 2. Pobierz skrypt z [Centrum pobierania Microsoft](https://aka.ms/migrate/script/hyperv). Skrypt jest kryptograficznie podpisany przez firmę Microsoft.
-3. Zweryfikuj integralność skryptów przy użyciu plików skrótów MD5 lub SHA256. Wartości hasztagów są poniżej. Uruchom to polecenie, aby wygenerować skrót dla skryptu:
+3. Zweryfikuj integralność skryptu przy użyciu plików MD5 lub SHA256 skrótów. Wartości hasztagów są poniżej. Uruchom to polecenie, aby wygenerować skrót dla skryptu:
     ```
     C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]
     ```
@@ -144,14 +136,38 @@ Uruchom skrypt w następujący sposób:
     PS C:\Users\Administrators\Desktop> MicrosoftAzureMigrate-Hyper-V.ps1
     ```
 
-#### <a name="hashtag-values"></a>Wartości hasztagów
+### <a name="hashtag-values"></a>Wartości hasztagów
 
 Wartości skrótu to:
 
-| **Skrótu** | **Wartość** |
+| **Skrót** | **Wartość** |
 | --- | --- |
 | **ALGORYTMU** | 0ef418f31915d01f896ac42a80dc414e |
 | **SHA256** | 0ad60e7299925eff4d1ae9f1c7db485dc9316ef45b0964148a3c07c80761ade2 |
+
+
+## <a name="prepare-hyper-v-manually"></a>Ręczne przygotowanie funkcji Hyper-V
+
+Wykonaj procedury opisane w tej sekcji, aby ręcznie przygotować funkcję Hyper-V zamiast używać skryptu.
+
+### <a name="verify-powershell-version"></a>Weryfikuj wersję programu PowerShell
+
+Upewnij się, że na hoście funkcji Hyper-V jest zainstalowany program PowerShell w wersji 4,0 lub nowszej.
+
+
+
+### <a name="set-up-an-account-for-vm-discovery"></a>Konfigurowanie konta do odnajdywania maszyn wirtualnych
+
+Azure Migrate wymaga uprawnień do odnajdowania lokalnych maszyn wirtualnych.
+
+- Skonfiguruj domenę lub konto użytkownika lokalnego z uprawnieniami administratora na hostach lub klastrach funkcji Hyper-V.
+
+    - W przypadku wszystkich hostów i klastrów, które mają zostać uwzględnione w odnajdywaniu, potrzebne jest jedno konto.
+    - Może to być konto lokalne lub konto domeny. Zalecamy, aby mieć uprawnienia administratora na hostach lub klastrach funkcji Hyper-V.
+    - Alternatywnie, jeśli nie chcesz przypisywać uprawnień administratora, potrzebne są następujące uprawnienia:
+        - Użytkownicy zarządzania zdalnego
+        - Administratorzy funkcji Hyper-V
+        - Użytkownicy monitora wydajności
 
 ### <a name="verify-hyper-v-host-settings"></a>Weryfikuj ustawienia hosta funkcji Hyper-V
 
@@ -168,6 +184,12 @@ Skonfiguruj komunikację zdalną programu PowerShell na każdym hoście w nastę
     ```
     Enable-PSRemoting -force
     ```
+### <a name="enable-integration-services-on-vms"></a>Włącz usługi integracji na maszynach wirtualnych
+
+Usługi integracji powinny być włączone na każdej maszynie wirtualnej, dzięki czemu Azure Migrate mogą przechwytywać informacje o systemie operacyjnym na maszynie wirtualnej.
+
+Na maszynach wirtualnych, które mają być odnajdywane i oceniane, Włącz [usługi integracji funkcji Hyper-V](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services) na każdej maszynie wirtualnej.
+
 
 ### <a name="enable-credssp-on-hosts"></a>Włącz protokół CredSSP na hostach
 
@@ -185,10 +207,10 @@ Włącz w następujący sposób:
     Enable-WSManCredSSP -Role Server -Force
     ```
 
-Po skonfigurowaniu urządzenia, które zostało ukończone, należy [włączyć je na urządzeniu](tutorial-assess-hyper-v.md#delegate-credentials-for-smb-vhds). Jest to opisane w następnym samouczku w tej serii.
+Po skonfigurowaniu urządzenia należy zakończyć konfigurowanie dostawcy CredSSP, [włączając je na urządzeniu](tutorial-assess-hyper-v.md#delegate-credentials-for-smb-vhds). Jest to opisane w następnym samouczku w tej serii.
 
 
-### <a name="verify-appliance-settings"></a>Weryfikowanie ustawień urządzenia
+## <a name="prepare-for-appliance-deployment"></a>Przygotowanie do wdrożenia urządzenia
 
 Przed skonfigurowaniem urządzenia Azure Migrate i rozpoczęciem oceny w następnym samouczku Przygotuj się do wdrożenia urządzenia.
 
@@ -198,25 +220,6 @@ Przed skonfigurowaniem urządzenia Azure Migrate i rozpoczęciem oceny w następ
 4. [Zwróć uwagę](migrate-support-matrix-hyper-v.md#assessment-port-requirements) na wymagania dotyczące dostępu do portów dla urządzenia.
 
 
-### <a name="set-up-an-account-for-vm-discovery"></a>Konfigurowanie konta do odnajdywania maszyn wirtualnych
-
-Azure Migrate wymaga uprawnień do odnajdowania lokalnych maszyn wirtualnych.
-
-- Skonfiguruj domenę lub konto użytkownika lokalnego z uprawnieniami administratora na hostach lub klastrach funkcji Hyper-V.
-
-    - W przypadku wszystkich hostów i klastrów, które mają zostać uwzględnione w odnajdywaniu, potrzebne jest jedno konto.
-    - Może to być konto lokalne lub konto domeny. Zalecamy, aby mieć uprawnienia administratora na hostach lub klastrach funkcji Hyper-V.
-    - Alternatywnie, jeśli nie chcesz przypisywać uprawnień administratora, potrzebne są następujące uprawnienia:
-        - Użytkownicy zarządzania zdalnego
-        - Administratorzy funkcji Hyper-V
-        - Użytkownicy monitora wydajności
-
-### <a name="enable-integration-services-on-vms"></a>Włącz usługi integracji na maszynach wirtualnych
-
-Usługi integracji powinny być włączone na każdej maszynie wirtualnej, dzięki czemu Azure Migrate mogą przechwytywać informacje o systemie operacyjnym na maszynie wirtualnej.
-
-Na maszynach wirtualnych, które mają być odnajdywane i oceniane, Włącz [usługi integracji funkcji Hyper-V](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services) na każdej maszynie wirtualnej.
-
 ## <a name="prepare-for-hyper-v-migration"></a>Przygotowanie do migracji funkcji Hyper-V
 
 1. [Przegląd](migrate-support-matrix-hyper-v.md#migration-hyper-v-host-requirements) Wymagania dotyczące hosta funkcji Hyper-V na potrzeby migracji.
@@ -225,13 +228,14 @@ Na maszynach wirtualnych, które mają być odnajdywane i oceniane, Włącz [us�
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku zostaną wykonane następujące czynności:
+W tym samouczku zostały wykonane następujące czynności:
 
 > [!div class="checklist"]
 > * Skonfiguruj uprawnienia konta platformy Azure.
 > * Przygotowane hosty i maszyny wirtualne funkcji Hyper-V na potrzeby oceny i migracji.
+> * Przygotowano do wdrożenia urządzenia Azure Migrateowego.
 
-Przejdź do następnego samouczka, aby utworzyć projekt Azure Migrate i ocenić maszyny wirtualne funkcji Hyper-V do migracji na platformę Azure
+Przejdź do następnego samouczka, aby utworzyć projekt Azure Migrate, wdrożyć urządzenie oraz odnajdywać i oceniać maszyny wirtualne funkcji Hyper-V na potrzeby migracji na platformę Azure.
 
 > [!div class="nextstepaction"]
 > [Ocenianie maszyn wirtualnych funkcji Hyper-V](./tutorial-assess-hyper-v.md)

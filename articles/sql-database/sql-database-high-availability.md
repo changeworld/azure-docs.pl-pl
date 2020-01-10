@@ -11,16 +11,16 @@ author: sashan
 ms.author: sashan
 ms.reviewer: carlrab, sashan
 ms.date: 10/14/2019
-ms.openlocfilehash: 86a3fd7c67dc2e544a1510dc910951452c32245d
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: b560cee23855d1c0e8a7b3c2cb9d82c184a1ebf6
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73811344"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75732403"
 ---
 # <a name="high-availability-and-azure-sql-database"></a>Wysoka dostępność i Azure SQL Database
 
-Celem architektury wysokiej dostępności w Azure SQL Database jest zagwarantowanie, że baza danych działa i działa 99,99% czasu, bez zakłócania wpływu operacji konserwacji i przestojów. Platforma Azure automatycznie obsługuje krytyczne zadania obsługi, takie jak stosowanie poprawek, kopii zapasowych, uaktualnienia systemu Windows i programu SQL, a także niezaplanowanych zdarzeń, takich jak sprzętowe, programowe lub awarie sieci.  Gdy bazowe wystąpienie programu SQL Server jest poprawione lub działa w trybie failover, przestoje nie jest zauważalne, jeśli w aplikacji jest stosowana [logika ponawiania](sql-database-develop-overview.md#resiliency) . Azure SQL Database można szybko odzyskać nawet w najbardziej krytycznych okolicznościach, dzięki czemu dane są zawsze dostępne.
+Celem architektury wysokiej dostępności w Azure SQL Database jest zagwarantowanie, że baza danych jest uruchomiona co najmniej 99,99% czasu (Aby uzyskać więcej informacji na temat konkretnej umowy SLA dla różnych warstw, zapoznaj się z umową [SLA dla Azure SQL Database](https://azure.microsoft.com/support/legal/sla/sql-database/)), bez obaw o wpływ operacji konserwacji i przestojów. Platforma Azure automatycznie obsługuje krytyczne zadania obsługi, takie jak stosowanie poprawek, kopii zapasowych, uaktualnienia systemu Windows i programu SQL, a także niezaplanowanych zdarzeń, takich jak sprzętowe, programowe lub awarie sieci.  Gdy bazowe wystąpienie programu SQL Server jest poprawione lub działa w trybie failover, przestoje nie jest zauważalne, jeśli w aplikacji jest stosowana [logika ponawiania](sql-database-develop-overview.md#resiliency) . Azure SQL Database można szybko odzyskać nawet w najbardziej krytycznych okolicznościach, dzięki czemu dane są zawsze dostępne.
 
 Rozwiązanie wysokiej dostępności zostało zaprojektowane z myślą o zapewnieniu, że przekazane dane nigdy nie zostaną utracone z powodu niepowodzeń, że operacje konserwacji nie wpłyną na obciążenie, a baza danych nie będzie single point of failure w architekturze oprogramowania. Nie ma okien obsługi ani przestojów, które powinny wymagać zatrzymania obciążenia, gdy baza danych jest uaktualniana lub utrzymywana. 
 

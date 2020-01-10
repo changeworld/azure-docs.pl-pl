@@ -1,26 +1,17 @@
 ---
 title: Szybkie tworzenie aplikacji platformy .NET na Service Fabric na platformie Azure
 description: W ramach tego przewodnika Szybki start utworzysz aplikację .NET dla platformy Azure za pomocą aplikacji przykładowej niezawodnych usług usługi Service Fabric.
-services: service-fabric
-documentationcenter: .net
 author: mikkelhegn
-manager: msfussell
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: quickstart
-ms.tgt_pltfrm: NA
-ms.workload: azure-vs
 ms.date: 06/26/2019
 ms.author: mikhegn
 ms.custom: mvc, devcenter, vs-azure
-ms.openlocfilehash: dfc8890d58763bd193f6a0b4137fc972d26beb9f
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: e3d984fee75dcdb8d4e14e7b454e74a3f7c629f2
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74013215"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75730147"
 ---
 # <a name="quickstart-deploy-a-net-reliable-services-application-to-service-fabric"></a>Szybki start: wdrażanie aplikacji niezawodnych usług .NET w usłudze Service Fabric
 
@@ -60,6 +51,8 @@ Po zainstalowaniu środowiska uruchomieniowego, zestawów SDK, narzędzi program
 > Powodem uruchamiania platformy Docker podczas tworzenia klastra jest utworzenie klastra z włączonymi funkcjami kontenerów. Jeśli platforma Docker nie będzie uruchomiona, konieczne będzie ponowne utworzenie klastra w celu włączenia funkcji kontenerów.
 > Mimo iż nie jest to konieczne w przypadku tego przewodnika Szybki Start, instrukcja dotycząca uruchamiania platformy Docker podczas tworzenia klastra jest uwzględniona jako najlepsze rozwiązanie.
 > Aby sprawdzić, czy platforma Docker jest uruchomiona, otwórz okno terminalu i uruchom polecenie `docker ps`. Jeśli odpowiedź nie wskazuje na wystąpienie błędu, oznacza to, że platforma Docker jest uruchomiona i można przystąpić do tworzenia klastra.
+>
+> [Konfigurowanie systemu Windows 10 lub Windows Server dla kontenerów](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/set-up-environment?tabs=Windows-10-Client)
 
 1. Otwórz nowe okno programu PowerShell jako administrator.
 2. Utwórz klaster projektowy za pomocą następującego polecenia programu PowerShell:

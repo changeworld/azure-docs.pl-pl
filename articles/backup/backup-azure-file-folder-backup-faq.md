@@ -3,18 +3,18 @@ title: Tworzenie kopii zapasowych plików i folderów — często zadawane pytan
 description: Rozwiązuje często zadawane pytania dotyczące tworzenia kopii zapasowych plików i folderów za pomocą Azure Backup.
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: b66eb7bca3c9a57f6b44697aa0340cd852fc3db4
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 45c01a08151060b60b0f3e3b27b2fcc16ec8e60b
+ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173056"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75720365"
 ---
 # <a name="common-questions-about-backing-up-files-and-folders"></a>Często zadawane pytania dotyczące tworzenia kopii zapasowych plików i folderów
 
 W tym artykule znajdują się odpowiedzi na często zadawane pytania abound tworzenia kopii zapasowych plików i folderów za pomocą agenta Microsoft Azure Recovery Services (MARS) w usłudze [Azure Backup](backup-overview.md) .
 
-## <a name="configure-backups"></a>Skonfiguruj kopie zapasowe
+## <a name="configure-backups"></a>Skonfigurowanie funkcji tworzenia kopii zapasowych
 
 ### <a name="where-can-i-download-the-latest-version-of-the-mars-agent"></a>Gdzie można pobrać najnowszą wersję agenta MARS?
 
@@ -76,7 +76,7 @@ Agent MARS jest oparty na systemie plików NTFS i używa specyfikacji długości
 
 Agent MARS jest oparty na systemie plików NTFS i zezwala na [obsługiwane znaki](/windows/desktop/FileIO/naming-a-file#naming-conventions) w nazwach plików/ścieżkach.
 
-### <a name="the-warning-azure-backups-have-not-been-configured-for-this-server-appears"></a>Zostanie wyświetlone ostrzeżenie "kopie zapasowe platformy Azure nie zostały skonfigurowane dla tego serwera".
+### <a name="the-warning-azure-backups-have-not-been-configured-for-this-server-appears"></a>Pojawia się ostrzeżenie "nie skonfigurowano kopii zapasowych platformy Azure dla tego serwera"
 
 To ostrzeżenie może wystąpić, mimo że skonfigurowano zasady tworzenia kopii zapasowych, gdy ustawienia harmonogramu tworzenia kopii zapasowych przechowywane na serwerze lokalnym nie są takie same jak ustawienia przechowywane w magazynie kopii zapasowych.
 
@@ -91,7 +91,7 @@ Rozmiar folderu pamięci podręcznej określa ilość danych, które można umie
 
 * Woluminy folderu pamięci podręcznej powinny mieć wolne miejsce mające co najmniej 5-10% całkowitego rozmiaru danych kopii zapasowej.
 * Jeśli wolumin ma mniej niż 5% wolnego miejsca, Zwiększ rozmiar woluminu lub Przenieś folder pamięci podręcznej do woluminu z wystarczającą ilością miejsca.
-* W przypadku tworzenia kopii zapasowej stanu systemu Windows konieczne będzie dodatkowe 30-35 GB wolnego miejsca w woluminie zawierającym folder pamięci podręcznej.
+* W przypadku tworzenia kopii zapasowej stanu systemu Windows potrzeba dodatkowego 30-35 GB wolnego miejsca w woluminie zawierającym folder pamięci podręcznej.
 
 ### <a name="how-to-check-if-scratch-folder-is-valid-and-accessible"></a>Jak sprawdzić, czy folder z katalogiem tymczasowym jest prawidłowy i dostępny?
 
@@ -130,7 +130,7 @@ Rozmiar folderu pamięci podręcznej określa ilość danych, które można umie
 
 ### <a name="where-should-the-cache-folder-be-located"></a>Gdzie ma znajdować się folder pamięci podręcznej?
 
-Nie zaleca się używać następujących lokalizacji dla folderu pamięci podręcznej:
+Nie zaleca się stosowania następujących lokalizacji dla folderu pamięci podręcznej:
 
 * Udział sieciowy/nośniki wymienne: folder pamięci podręcznej musi być lokalny dla serwera, którego kopie zapasowe mają być wykonywane przy użyciu kopii zapasowej online. Lokalizacje sieciowe lub nośniki wymienne, takie jak dyski USB, nie są obsługiwane.
 * Woluminy offline: folder pamięci podręcznej musi być w trybie online dla oczekiwanej kopii zapasowej przy użyciu agenta Azure Backup
@@ -139,13 +139,13 @@ Nie zaleca się używać następujących lokalizacji dla folderu pamięci podrę
 
 Następujące atrybuty folderu pamięci podręcznej ani ich kombinacje nie są obsługiwane:
 
-* Zaszyfrowane
+* Szyfrowane
 * Deduplikowane
 * Skompresowane
 * Rozrzedzone
 * Punkt ponownej analizy
 
-Folder pamięci podręcznej i dysk VHD metadanych nie mają wymaganych atrybutów dla agenta usługi Azure Backup.
+Folder pamięci podręcznej i dysk VHD metadanych nie mają wymaganych atrybutów dla agenta Azure Backup.
 
 ### <a name="is-there-a-way-to-adjust-the-amount-of-bandwidth-used-for-backup"></a>Czy istnieje sposób dostosowania przepustowości używanej do tworzenia kopii zapasowych?
 
@@ -153,9 +153,45 @@ Tak, możesz użyć opcji **Zmień właściwości** w agencie Mars, aby dostosow
 
 ## <a name="restore"></a>Przywracanie
 
+### <a name="manage"></a>Zarządzaj
+
+**Czy mogę odzyskać, jeśli nie pamiętam mojego hasła?**
+Agent Azure Backup wymaga hasła (podanego podczas rejestracji) do odszyfrowania danych kopii zapasowej podczas przywracania. Zapoznaj się z poniższymi scenariuszami, aby poznać opcje obsługi utraconego hasła:
+
+| Oryginalna maszyna <br> *(maszyna źródłowa, w której zostały wykonane kopie zapasowe)* | Passphrase | Dostępne opcje |
+| --- | --- | --- |
+| Dostępna |Następuje |Jeśli oryginalny komputer (w którym zostały wykonane kopie zapasowe) jest dostępny i nadal zarejestrowany w tym samym magazynie Recovery Services, możesz ponownie wygenerować hasło, wykonując następujące [kroki](https://docs.microsoft.com/azure/backup/backup-azure-manage-mars#re-generate-passphrase).  |
+| Następuje |Następuje |Nie można odzyskać danych lub dane są niedostępne |
+
+Należy rozważyć następujące kwestie:
+
+* Po odinstalowaniu i ponownym zarejestrowaniu agenta na tym samym komputerze oryginalnym przy użyciu
+  * To *samo hasło*, a następnie będzie można przywrócić dane kopii zapasowej.
+  * *Innym hasłem*nie będzie można przywrócić danych kopii zapasowej.
+* Jeśli Agent jest instalowany na *innym komputerze* z
+  * To *samo hasło* (używane w oryginalnej maszynie), będzie można przywrócić dane kopii zapasowej.
+  * *Innym hasłem*nie będzie można przywrócić danych kopii zapasowej.
+* Jeśli oryginalny komputer jest uszkodzony (nie można ponownie wygenerować hasła za pośrednictwem konsoli MARS), ale można przywrócić lub uzyskać dostęp do oryginalnego folderu tymczasowego używanego przez agenta MARS, można przywrócić (jeśli nie pamiętasz hasła). Aby uzyskać więcej pomocy, skontaktuj się z działem obsługi klienta.
+
+**Jak mogę Odzyskaj, Jeśli utracisz moją oryginalną maszynę (w której wykonano kopie zapasowe)?**
+
+Jeśli masz takie samo hasło (podane podczas rejestracji) oryginalnego komputera, możesz przywrócić kopię zapasową danych na alternatywnej maszynie. Zapoznaj się z poniższymi scenariuszami, aby poznać Opcje przywracania.
+
+| Oryginalna maszyna | Passphrase | Dostępne opcje |
+| --- | --- | --- |
+| Następuje |Dostępna |Agenta MARS można zainstalować i zarejestrować na innym komputerze z hasłem podanym podczas rejestracji oryginalnej maszyny. Wybierz **opcję odzyskiwania** > **inną lokalizację** , aby przeprowadzić przywracanie. Więcej informacji znajduje się w [tym](https://docs.microsoft.com/azure/backup/backup-azure-restore-windows-server#use-instant-restore-to-restore-data-to-an-alternate-machine) artykule.
+| Następuje |Następuje |Nie można odzyskać danych lub dane są niedostępne |
+
+
 ### <a name="what-happens-if-i-cancel-an-ongoing-restore-job"></a>Co się stanie w przypadku anulowania trwającego zadania przywracania?
 
 W przypadku anulowania trwającego zadania przywracania proces przywracania zostanie zatrzymany. Wszystkie pliki przywrócone przed anulowaniem pozostają w skonfigurowanym miejscu docelowym (w lokalizacji oryginalnej lub alternatywnej) bez żadnych wycofywania.
+
+### <a name="does-the-mars-agent-back-up-and-restore-acls-set-on-files-folders-and-volumes"></a>Czy Agent MARS wykonuje kopie zapasowe i przywraca listy ACL ustawione dla plików, folderów i woluminów?
+
+* Agent MARS tworzy kopie zapasowe list ACL ustawionych dla plików, folderów i woluminów
+* W przypadku opcji odzyskiwania przywracania woluminów Agent MARS udostępnia opcję pomijania przywracania uprawnień ACL do pliku lub folderu odzyskiwanego
+* W przypadku poszczególnych opcji odzyskiwania plików i folderów Agent MARS zostanie przywrócony z uprawnieniami ACL (nie ma opcji pomijania przywracania listy ACL).
 
 ## <a name="next-steps"></a>Następne kroki
 

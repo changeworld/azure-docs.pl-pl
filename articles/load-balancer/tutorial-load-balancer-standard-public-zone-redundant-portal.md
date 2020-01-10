@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: 6f9368dfa230817e985de09b1ee398c55693e425
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 99ba530d4857520693060d83ad78a7f127003a3d
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74214810"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75732330"
 ---
 # <a name="tutorial-load-balance-vms-across-availability-zones-with-a-standard-load-balancer-using-the-azure-portal"></a>Samouczek: równoważenie obciążenia maszyn wirtualnych w różnych strefach dostępności przy użyciu usługi Load Balancer w strefie Standardowa w witrynie Azure Portal
 
@@ -41,7 +41,7 @@ Jeśli chcesz, możesz wykonać ten samouczek przy użyciu [interfejsu wiersza p
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 
-## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
+## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
 
 Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com).
 
@@ -54,12 +54,12 @@ Usługa Load Balancer w warstwie Standardowa obsługuje tylko publiczny adres IP
 
     | Ustawienie                 | Wartość                                              |
     | ---                     | ---                                                |
-    | Subscription               | Wybierz subskrypcję.    |    
+    | Subskrypcja               | Wybierz subskrypcję.    |    
     | Grupa zasobów         | Wybierz pozycję **Utwórz nową** i wpisz *MyResourceGroupLBAZ* w polu tekstowym.|
     | Nazwa                   | *myLoadBalancer*                                   |
     | Region         | Wybierz pozycję **Europa Zachodnia**.                                        |
     | Typ          | Wybierz pozycję **Publiczna**.                                        |
-    | SKU           | Wybierz opcję **Standardowa**.                          |
+    | JSZ           | Wybierz pozycję **Standardowy**.                          |
     | Publiczny adres IP | Wybierz pozycję**Utwórz nowy**. |
     | Nazwa publicznego adresu IP              | Wpisz *myPublicIP* w polu tekstowym.   |
     |Strefa dostępności| Wybierz pozycję **Strefowo nadmiarowy**.    |
@@ -179,7 +179,7 @@ Na potrzeby rozdzielania ruchu między maszyny wirtualne używana jest pula adre
     - W menu rozwijanym w obszarze **Maszyna wirtualna** kliknij pozycję **myVM1**.
     - W menu rozwijanym w obszarze **Adres IP** kliknij pozycję myVM1.
 4. Kliknij pozycję **Dodaj nowy zasób zaplecza**, aby dodać wszystkie maszyny wirtualne (*myVM2* i *myVM3*) do dodania do puli zaplecza modułu równoważenia obciążenia.
-5. Kliknij pozycję **Add** (Dodaj).
+5. Kliknij pozycję **Dodaj**.
 
     ![Dodawanie do puli adresów zaplecza](./media/load-balancer-standard-public-availability-zones-portal/add-backend-pool.png)
 
@@ -215,6 +215,7 @@ Reguła modułu równoważenia obciążenia służy do definiowania sposobu dyst
     - *myBackendPool* — jako nazwy puli zaplecza.
     - *myHealthProbe* — jako nazwy sondy kondycji.
 4. Kliknij przycisk **OK**.
+    
     
     ![Dodawanie reguły równoważenia obciążenia](./media/load-balancer-standard-public-availability-zones-portal/load-balancing-rule.png)
 

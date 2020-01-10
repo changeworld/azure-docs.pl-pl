@@ -1,18 +1,14 @@
 ---
 title: Kubernetes monitorowanie za pomocą Azure Monitor dla kontenerów | Microsoft Docs
 description: W tym artykule opisano sposób wyświetlania i analizowania wydajności klastra Kubernetes za pomocą Azure Monitor dla kontenerów.
-ms.service: azure-monitor
-ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
-ms.date: 10/15/2019
-ms.openlocfilehash: 1cd0223a16a6308e777e4a0167154e975202df7b
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.date: 01/07/2020
+ms.openlocfilehash: f57f8982b2aa045156e6f48316610137260d6597
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872982"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75731020"
 ---
 # <a name="monitor-your-kubernetes-cluster-performance-with-azure-monitor-for-containers"></a>Monitorowanie wydajności klastra Kubernetes za pomocą Azure Monitor dla kontenerów
 
@@ -24,13 +20,7 @@ Informacje o sposobie włączania Azure Monitor dla kontenerów znajdują się w
 
 Azure Monitor zawiera widok z obsługą wielu klastrów, który pokazuje stan kondycji wszystkich monitorowanych klastrów Kubernetes z systemem Linux i Windows Server 2019 wdrożonych w grupach zasobów w Twoich subskrypcjach. Pokazuje ona klastry odnalezione we wszystkich środowiskach, które nie są monitorowane przez rozwiązanie. Możesz natychmiast zrozumieć kondycję klastra, a w tym miejscu możesz przejść do szczegółów na stronie wydajność węzła i kontrolera lub przejść do sekcji wykresy wydajności dla klastra. W przypadku klastrów AKS, które zostały odnalezione i zidentyfikowane jako niemonitorowane, można je włączyć w dowolnym momencie. 
 
-Główne różnice w monitorowaniu klastra z systemem Windows Server z Azure Monitor dla kontenerów w porównaniu z klastrem systemu Linux są następujące:
-
-- Metryka RSS pamięci nie jest dostępna dla węzła i kontenerów systemu Windows.
-- Informacje o pojemności magazynu dyskowego nie są dostępne dla węzłów systemu Windows.
-- Obsługa dzienników na żywo jest dostępna z wyjątkiem dzienników kontenera systemu Windows.
-- Monitorowane są tylko środowiska pod środowiskiem, a nie środowiska Docker.
-- W wersji zapoznawczej obsługiwane są maksymalnie 30 kontenerów systemu Windows Server. To ograniczenie nie dotyczy kontenerów systemu Linux. 
+Główne różnice w monitorowaniu klastra systemu Windows Server z Azure Monitor dla kontenerów w porównaniu z klastrem z systemem Linux [zostały opisane w](container-insights-overview.md#what-does-azure-monitor-for-containers-provide) artykule Omówienie.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
 
@@ -88,7 +78,7 @@ W poniższej tabeli przedstawiono podział obliczeń kontrolujących Stany kondy
 | |Ostrzeżenie |ND |
 | |Krytyczna |< 100% |
 | |Nieznane |Jeśli nie zostały zgłoszone w ciągu ostatnich 30 minut |
-|**Node** | | |
+|**Węzeł** | | |
 | |W dobrej kondycji |> 85% |
 | |Ostrzeżenie |60 - 84% |
 | |Krytyczna |< 60% |
@@ -103,7 +93,7 @@ Dostęp do Azure Monitor dla kontenerów jest dostępny bezpośrednio w klastrze
 - Klaster
 - Węzły 
 - Kontrolery 
-- Containers
+- Kontenery
 
 >[!NOTE]
 >Środowisko opisane w dalszej części tego artykułu dotyczy również wyświetlania stanu wydajności i kondycji klastrów Kubernetes hostowanych w Azure Stack lub innym środowisku w przypadku wybrania z widoku wiele klastrów. 
@@ -205,7 +195,7 @@ Informacje przedstawione podczas wyświetlania karty **węzły** są opisane w p
 | Stan | Kubernetes widok stanu węzła. |
 | Minimalna&nbsp;%, średnia&nbsp;%, pięćdziesiąt&nbsp;%,&nbsp;90%, używany 95.&nbsp;%, maks.&nbsp;%  | Średni procent węzła, w oparciu o procentowy podczas wybranego okresu. |
 | Minimum, AVG, pięćdziesiąt, 90, używany 95., Max | Średnia wartość rzeczywista węzłów oparta na percentylu podczas wybranego czasu trwania. Średnia wartość jest mierzona na podstawie limitu procesora CPU/pamięci ustawionego dla węzła. W przypadku zasobników i kontenerów jest to średnia wartość raportowana przez hosta. |
-| Containers | Liczba kontenerów. |
+| Kontenery | Liczba kontenerów. |
 | Czas pracy | Reprezentuje czas, ponieważ węzeł uruchomiony lub został ponownie uruchomiony. |
 | Kontroler | Tylko w przypadku kontenerów i zasobników. Pokazuje, który kontroler znajduje się w. Nie wszystkie zasobników są w kontrolerze, więc niektóre może być wyświetlany **n/d**. | 
 | Minimum trendu&nbsp;%, średnia&nbsp;%, pięćdziesiąt&nbsp;%,&nbsp;90%, używany 95.&nbsp;%, maks.&nbsp;% | Trend wykres słupkowy przedstawia procent metryki średni percentyl kontrolera. |
@@ -234,7 +224,7 @@ Informacje wyświetlane podczas przeglądania kontrolerów są opisane w poniżs
 | Stan | Stan zbiorczy kontenerów po zakończeniu działania z stanem takim jak *OK*, *przerwany*, *Niepowodzenie*, *zatrzymano*lub *wstrzymano*. Jeśli kontener jest uruchomiony, ale stan nie był prawidłowo wyświetlany lub nie został pobrany przez agenta i nie odpowiedział przez dłużej niż 30 minut, stan jest *nieznany*. Dodatkowe szczegóły ikony stanu znajdują się w poniższej tabeli.|
 | Minimalna&nbsp;%, średnia&nbsp;%, pięćdziesiąt&nbsp;%,&nbsp;90%, używany 95.&nbsp;%, maks.&nbsp;%| Pakiet zbiorczy średnią średnią wartość procentową poszczególnych jednostek dla wybranej metryki i percentyl. |
 | Minimum, AVG, pięćdziesiąt, 90, używany 95., Max  | Pakiet zbiorczy średni Procesora pamięci lub millicore wydajności kontenera dla wybranych percentyl. Średnia wartość jest mierzony od limitu Procesora/pamięci dla zasobnik. |
-| Containers | Łączna liczba kontenerów dla kontrolera lub zasobników. |
+| Kontenery | Łączna liczba kontenerów dla kontrolera lub zasobników. |
 | Ponowne uruchomienie | Zbiorcze informacje licznika ponowne uruchomienie z kontenerów. |
 | Czas pracy | Reprezentuje czas od momentu uruchomienia kontenera. |
 | Węzeł | Tylko w przypadku kontenerów i zasobników. Pokazuje, który kontroler znajduje się w. | 
@@ -289,7 +279,7 @@ Ikony w polu Stan wskazują stan online, zgodnie z opisem w poniższej tabeli.
 
 ## <a name="workbooks"></a>Skoroszyty
 
-Skoroszyty łączą tekst, [kwerendy dzienników](../log-query/query-language.md), [metryki](../platform/data-platform-metrics.md)i parametry w rozbudowanych raportach interaktywnych. Skoroszyty są edytowane przez innych członków zespołu, którzy mają dostęp do tych samych zasobów platformy Azure.
+Skoroszyty łączą tekst, [kwerendy dzienników](../log-query/query-language.md), [metryki](../platform/data-platform-metrics.md)i parametry w rozbudowanych raportach interaktywnych. Skoroszyty mogą być edytowane przez innych członków zespołu, którzy mają dostęp do tych samych zasobów platformy Azure.
 
 Azure Monitor kontenerów zawiera cztery skoroszyty umożliwiające rozpoczęcie pracy:
 

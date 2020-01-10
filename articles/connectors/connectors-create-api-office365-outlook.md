@@ -1,91 +1,93 @@
 ---
-title: Nawiązywanie połączenia z pakietem Office 365 Outlook
-description: Zarządzanie pocztą e-mail, kontaktami i kalendarzami przy użyciu interfejsów API REST pakietu Office 365 i Azure Logic Apps
+title: Łączenie z usługą Office 365 Outlook
+description: Automatyzowanie zadań i przepływów pracy, które zarządzają pocztą e-mail, kontaktami i kalendarzami w programie Office 365 Outlook przy użyciu Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
-ms.date: 10/18/2016
+ms.date: 01/08/2020
 tags: connectors
-ms.openlocfilehash: 858366947fe21a20d6f112fc51899d1533a36472
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: b0f2b8b9c369fdb42c7e0e7f77fc090424ae3729
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789622"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75732713"
 ---
-# <a name="get-started-with-the-office-365-outlook-connector"></a>Wprowadzenie do łącznika programu Outlook pakietu Office 365
-Łącznik Office 365 Outlook umożliwia interakcję z programem Outlook w pakiecie Office 365. Użyj tego łącznika, aby tworzyć, edytować i aktualizować kontakty i elementy kalendarza, a także uzyskiwać, wysyłać i odpowiadać na wiadomości e-mail.
+# <a name="manage-email-contacts-and-calendars-in-office-365-outlook-by-using-azure-logic-apps"></a>Zarządzanie pocztą e-mail, kontaktami i kalendarzami w programie Office 365 Outlook przy użyciu Azure Logic Apps
 
-Za pomocą pakietu Office 365 Outlook:
+Za pomocą [Azure Logic Apps](../logic-apps/logic-apps-overview.md) i [łącznika pakietu Office 365 Outlook](/connectors/office365connector/)można tworzyć zautomatyzowane zadania i przepływy pracy, które zarządzają kontem pakietu Office 365, tworząc Aplikacje logiki. Na przykład można zautomatyzować następujące zadania:
 
-* Kompilowanie przepływu pracy za pomocą funkcji poczty e-mail i kalendarza w pakiecie Office 365. 
-* Użyj wyzwalaczy, aby uruchomić przepływ pracy w przypadku nowej wiadomości e-mail, gdy element kalendarza zostanie zaktualizowany i nie tylko.
-* Użyj akcji do wysyłania wiadomości e-mail, tworzenia nowego zdarzenia kalendarza i innych. Na przykład jeśli w usłudze Salesforce (wyzwalacz) istnieje nowy obiekt, Wyślij wiadomość e-mail do programu Office 365 Outlook (akcję). 
+* Pobieranie, wysyłanie i odpowiadanie na wiadomości e-mail. 
+* Planowanie spotkań w kalendarzu.
+* Dodawanie i edytowanie kontaktów. 
 
-W tym artykule pokazano, jak używać łącznika Office 365 Outlook w aplikacji logiki, a także wyświetlać wyzwalacze i akcje.
+Możesz użyć dowolnego wyzwalacza, aby uruchomić przepływ pracy, na przykład po nadejściu nowej wiadomości e-mail, po zaktualizowaniu elementu kalendarza lub gdy zdarzenie występuje w usłudze różnicowej, na przykład w usłudze Salesforce. Możesz użyć akcji, które reagują na zdarzenie wyzwalacza, na przykład Wyślij wiadomość e-mail lub Utwórz nowe wydarzenie w kalendarzu. 
 
 > [!NOTE]
-> Ta wersja artykułu ma zastosowanie do Logic Apps ogólnej dostępności.
-> 
-> 
+> Aby zautomatyzować zadania dla @outlook.com lub konta @hotmail.com, użyj [łącznika Outlook.com](../connectors/connectors-create-api-outlook.md).
 
-Aby dowiedzieć się więcej na temat Logic Apps, zobacz [co to są aplikacje logiki](../logic-apps/logic-apps-overview.md) i [Utwórz aplikację logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+## <a name="prerequisites"></a>Wymagania wstępne
 
-## <a name="connect-to-office-365"></a>Łączenie z usługą Office 365
-Zanim aplikacja logiki będzie mogła uzyskać dostęp do dowolnej usługi, należy najpierw utworzyć *połączenie* z usługą. Połączenie zapewnia łączność między aplikacją logiki a inną usługą. Na przykład, aby nawiązać połączenie z pakietem Office 365 Outlook, najpierw musisz mieć *połączenie*z pakietem Office 365. Aby utworzyć połączenie, wprowadź poświadczenia, które zwykle są używane w celu uzyskania dostępu do usługi, z którą chcesz nawiązać połączenie. Tak jak w przypadku pakietu Office 365 Outlook, wprowadź poświadczenia do konta pakietu Office 365, aby utworzyć połączenie.
+* [Konto pakietu Office 365](https://www.office.com/)
 
-## <a name="create-the-connection"></a>Tworzenie połączenia
-> [!INCLUDE [Steps to create a connection to Office 365](../../includes/connectors-create-api-office365-outlook.md)]
-> 
-> 
+* Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, [zarejestruj się w celu założenia bezpłatnego konta platformy Azure](https://azure.microsoft.com/free/). 
 
-## <a name="use-a-trigger"></a>Użyj wyzwalacza
-Wyzwalacz to zdarzenie, którego można użyć do uruchomienia przepływu pracy zdefiniowanego w aplikacji logiki. Wyzwala "sondowanie" usługi z interwałem i częstotliwością. [Dowiedz się więcej o wyzwalaczach](../logic-apps/logic-apps-overview.md#logic-app-concepts).
+* Aplikacja logiki, do której chcesz uzyskać dostęp do konta programu Outlook w usłudze Office 365. Aby uruchomić przepływ pracy przy użyciu wyzwalacza programu Outlook pakietu Office 365, musisz mieć [pustą aplikację logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md). Aby dodać akcję programu Outlook pakietu Office 365 do przepływu pracy, aplikacja logiki musi już mieć wyzwalacz.
 
-1. W aplikacji logiki wpisz "Office 365", aby uzyskać listę wyzwalaczy:  
-   
-    ![](./media/connectors-create-api-office365-outlook/office365-trigger.png)
-2. Wybierz pozycję **Office 365 Outlook — gdy wkrótce zostanie uruchomione nadchodzące wydarzenie**. Jeśli połączenie już istnieje, wybierz kalendarz z listy rozwijanej.
-   
-    ![](./media/connectors-create-api-office365-outlook/sample-calendar.png)
-   
-    Jeśli zostanie wyświetlony monit o zalogowanie się, wprowadź szczegóły logowania, aby utworzyć połączenie. [Utwórz połączenie](connectors-create-api-office365-outlook.md#create-the-connection) w tym temacie, aby uzyskać listę kroków. 
-   
-   > [!NOTE]
-   > W tym przykładzie aplikacja logiki jest uruchamiana po zaktualizowaniu zdarzenia kalendarza. Aby wyświetlić wyniki tego wyzwalacza, Dodaj kolejną akcję, która wysyła wiadomość SMS. Na przykład Dodaj akcję Twilio *Wyślij wiadomość* , która zawiera tekst, gdy zdarzenie kalendarza zostanie uruchomione w ciągu 15 minut. 
-   > 
-   > 
-3. Wybierz przycisk **Edytuj** i ustaw wartości parametrów **częstotliwość** i **Interwał** . Na przykład jeśli wyzwalacz ma sondować co 15 minut, należy ustawić **częstotliwość** na **minutę**i ustawić **Interwał** na **15**. 
-   
-    ![](./media/connectors-create-api-office365-outlook/calendar-settings.png)
-4. **Zapisz** zmiany (w lewym górnym rogu paska narzędzi). Aplikacja logiki jest zapisywana i może być automatycznie włączona.
+## <a name="add-a-trigger"></a>Dodawanie wyzwalacza
 
-## <a name="use-an-action"></a>Korzystanie z akcji
-Akcja jest operacją wykonywaną przez przepływ pracy zdefiniowany w aplikacji logiki. [Dowiedz się więcej o akcjach](../logic-apps/logic-apps-overview.md#logic-app-concepts).
+[Wyzwalacz](../logic-apps/logic-apps-overview.md#logic-app-concepts) to zdarzenie, które uruchamia przepływ pracy w aplikacji logiki. Ta przykładowa aplikacja logiki używa wyzwalacza sondowania, który sprawdza każde zaktualizowane zdarzenie w kalendarzu na koncie e-mail na podstawie określonego interwału i częstotliwości.
 
-1. Wybierz znak plus. Zobaczysz kilka opcji: **Dodaj akcję**, **Dodaj warunek**lub jedną z opcji **więcej** .
+1. W [Azure Portal](https://portal.azure.com)Otwórz pustą aplikację logiki w Projektancie aplikacji logiki.
+
+1. W polu wyszukiwania wprowadź `office 365 outlook` jako filtr. Ten przykład wybiera **, gdy wkrótce zostanie uruchomione nadchodzące wydarzenie**.
    
-    ![](./media/connectors-create-api-office365-outlook/add-action.png)
-2. Wybierz pozycję **Dodaj akcję**.
-3. W polu tekstowym wpisz "Office 365", aby uzyskać listę wszystkich dostępnych akcji.
-   
-    ![](./media/connectors-create-api-office365-outlook/office365-actions.png) 
-4. W naszym przykładzie wybierz pozycję **Office 365 Outlook — utwórz kontakt**. Jeśli połączenie już istnieje, wybierz **Identyfikator folderu**, **podaną nazwę**i inne właściwości:  
-   
-    ![](./media/connectors-create-api-office365-outlook/office365-sampleaction.png)
-   
-    Jeśli zostanie wyświetlony monit o podanie informacji o połączeniu, wprowadź szczegóły, aby utworzyć połączenie. [Utwórz połączenie](connectors-create-api-office365-outlook.md#create-the-connection) w tym temacie opisuje te właściwości. 
-   
-   > [!NOTE]
-   > W tym przykładzie tworzymy nowy kontakt w pakiecie Office 365 Outlook. Możesz użyć danych wyjściowych z innego wyzwalacza, aby utworzyć kontakt. Na przykład Dodaj aplikację SalesForce, *gdy zostanie utworzony wyzwalacz obiektu* . Następnie Dodaj akcję *Utwórz kontakt* programu Outlook w usłudze Office 365, która używa pól usługi Salesforce do utworzenia nowego kontaktu w pakiecie Office 365. 
-   > 
-   > 
-5. **Zapisz** zmiany (w lewym górnym rogu paska narzędzi). Aplikacja logiki jest zapisywana i może być automatycznie włączona.
+   ![Wybierz wyzwalacz, aby uruchomić aplikację logiki](./media/connectors-create-api-office365-outlook/office365-trigger.png)
+
+1. Jeśli zostanie wyświetlony monit o zalogowanie się, podaj poświadczenia pakietu Office 365, aby aplikacja logiki mogła łączyć się z Twoim kontem. W przeciwnym razie, jeśli połączenie już istnieje, podaj informacje o właściwościach wyzwalacza.
+
+   Ten przykład wybiera kalendarz sprawdzany przez wyzwalacz, na przykład:
+
+   ![Skonfiguruj właściwości wyzwalacza](./media/connectors-create-api-office365-outlook/select-calendar.png)
+
+1. W wyzwalaczu Ustaw wartości **częstotliwości** i **interwałów** . Aby dodać inne dostępne właściwości wyzwalacza, takie jak **strefa czasowa**, wybierz te właściwości z listy **Dodaj nowy parametr** .
+
+   Na przykład, jeśli chcesz, aby wyzwalacz sprawdzał kalendarz co 15 minut, ustaw **częstotliwość** na **minutę**i ustaw **Interwał** na `15`. 
+
+   ![Ustawianie częstotliwości i interwału dla wyzwalacza](./media/connectors-create-api-office365-outlook/calendar-settings.png)
+
+1. Na pasku narzędzi projektanta wybierz pozycję **Zapisz**.
+
+Teraz Dodaj akcję, która jest uruchamiana po uruchomieniu wyzwalacza. Na przykład można dodać akcję Twilio **Wyślij wiadomość** , która wysyła tekst, gdy zdarzenie kalendarza zostanie uruchomione w ciągu 15 minut.
+
+## <a name="add-an-action"></a>Dodawanie akcji
+
+[Akcja](../logic-apps/logic-apps-overview.md#logic-app-concepts) jest operacją uruchomioną przez przepływ pracy w aplikacji logiki. Ta przykładowa aplikacja logiki tworzy nowy kontakt w pakiecie Office 365 Outlook. Aby utworzyć kontakt, można użyć danych wyjściowych z innego wyzwalacza lub akcji. Na przykład załóżmy, że aplikacja logiki używa wyzwalacza Dynamics 365, **gdy rekord zostanie utworzony**. Można dodać akcję **Utwórz kontakt** programu Outlook dla pakietu Office 365 i użyć danych wyjściowych z wyzwalacza usługi Salesforce, aby utworzyć nowy kontakt.
+
+1. W [Azure Portal](https://portal.azure.com)Otwórz aplikację logiki w Projektancie aplikacji logiki.
+
+1. Aby dodać akcję jako ostatni krok w przepływie pracy, wybierz pozycję **nowy krok**. 
+
+   Aby dodać akcję między krokami, przesuń wskaźnik myszy nad strzałkę między tymi krokami. Wybierz wyświetlony znak plus ( **+** ), a następnie wybierz pozycję **Dodaj akcję**.
+
+1. W polu wyszukiwania wprowadź `office 365 outlook` jako filtr. W tym przykładzie wybrano opcję **Utwórz kontakt**.
+
+   ![Wybierz akcję do uruchomienia w aplikacji logiki](./media/connectors-create-api-office365-outlook/office365-actions.png) 
+
+1. Jeśli zostanie wyświetlony monit o zalogowanie się, podaj poświadczenia pakietu Office 365, aby aplikacja logiki mogła łączyć się z Twoim kontem. W przeciwnym razie, jeśli połączenie już istnieje, podaj informacje o właściwościach akcji.
+
+   Ten przykład wybiera folder Kontakty, w którym akcja tworzy nowy kontakt, na przykład:
+
+   ![Konfigurowanie właściwości akcji](./media/connectors-create-api-office365-outlook/select-contacts-folder.png)
+
+   Aby dodać inne dostępne właściwości akcji, wybierz te właściwości z listy **Dodaj nowy parametr** .
+
+1. Na pasku narzędzi projektanta wybierz pozycję **Zapisz**.
 
 ## <a name="connector-specific-details"></a>Szczegóły dotyczące łącznika
 
-Wyświetlanie wszystkich wyzwalaczy i akcji zdefiniowanych w strukturze Swagger, a także wszystkich ograniczeń w [szczegółach łącznika](/connectors/office365connector/). 
+Aby uzyskać szczegółowe informacje techniczne na temat wyzwalaczy, akcji i limitów zgodnie z opisem w pliku Swagger łącznika, zobacz [stronę odwołania łącznika](/connectors/office365connector/). 
 
 ## <a name="next-steps"></a>Następne kroki
 

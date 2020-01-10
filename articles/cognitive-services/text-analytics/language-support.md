@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 12/18/2019
 ms.author: aahi
-ms.openlocfilehash: 529568cf4f667e72b0b4fb7ba83d0b85c4a90341
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: fcf7051a631e74f2f6db918c7c861e32295ae9e8
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499997"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75732641"
 ---
 # <a name="language-and-region-support-for-the-text-analytics-api"></a>Obsługa języka i regionu dla interfejs API analizy tekstu
 
@@ -31,9 +31,9 @@ Jeśli masz zawartość wyrażoną w rzadziej używanym języku, możesz spróbo
 
 ## <a name="sentiment-analysis-key-phrase-extraction-and-named-entity-recognition"></a>Analiza tonacji, wyodrębnianie kluczowych fraz i nazwanego rozpoznawania jednostek
 
-W przypadku analizy tonacji, wyodrębniania kluczowych fraz i rozpoznawania jednostek Lista obsługiwanych języków jest bardziej selektywna, ponieważ analizatory są udoskonalane w celu uwzględnienia reguł lingwistycznych dodatkowych języków. W przypadku nazwanego rozpoznawania jednostek v2 obsługa pełnego zestawu [typów jednostek](how-tos/text-analytics-how-to-entity-linking.md#supported-types-for-named-entity-recognition-v2) jest obecnie ograniczona do następujących języków: 
+W przypadku analizy tonacji, wyodrębniania kluczowych fraz i rozpoznawania jednostek Lista obsługiwanych języków jest bardziej selektywna, ponieważ analizatory są udoskonalane w celu uwzględnienia reguł lingwistycznych dodatkowych języków. W przypadku nazwanego rozpoznawania jednostek v2 obsługa pełnego zestawu [typów jednostek](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features) jest obecnie ograniczona do następujących języków: 
 * Polski
-* Chiński (uproszczony)
+* Chiński uproszczony
 * Francuski
 * Niemiecki
 * Hiszpański
@@ -51,8 +51,8 @@ Obsługa języka jest początkowo wdrażana w wersji zapoznawczej, z stopniowani
 |:----------------------|:-------------:|:---------:|:-----------:|:------------------------:|:--------------:|:------------------:|
 | Arabski                |     `ar`      |           |             |           ✔ \*           |                |                    |
 | Czeski                 |     `cs`      |           |             |           ✔ \*           |                |                    |
-| Chiński (uproszczony)    |   `zh-hans`   |  ✔ \*\*   |             |            ✔             |                |                    |
-| Chiński (tradycyjny)   |   `zh-hant`   |  ✔ \*\*   |             |                          |                |                    |
+| Chiński uproszczony    |   `zh-hans`   |  ✔ \*\*   |             |            ✔             |                |                    |
+| Chiński tradycyjny   |   `zh-hant`   |  ✔ \*\*   |             |                          |                |                    |
 | Duński                |     `da`      |   ✔ \*    |      ✔      |           ✔ \*           |                |                    |
 | Holenderski                 |     `nl`      |   ✔ \**   |      ✔      |           ✔ \*           |                |                    |
 | Polski               |     `en`      |   ✔ \**   |      ✔      |          ✔ \*\*          |     ✔ \**      |                    |
@@ -60,7 +60,7 @@ Obsługa języka jest początkowo wdrażana w wersji zapoznawczej, z stopniowani
 | Francuski                |     `fr`      |   ✔ \**   |      ✔      |            ✔             |                |                    |
 | Niemiecki                |     `de`      |   ✔ \**   |      ✔      |            ✔             |                |                    |
 | Grecki                 |     `el`      |   ✔ \*    |             |                          |                |                    |
-| Węgierski             |     `hu`      |           |             |           ✔ \*           |                |                    |
+| węgierski             |     `hu`      |           |             |           ✔ \*           |                |                    |
 | Włoski               |     `it`      |   ✔ \**   |      ✔      |           ✔ \*           |                |                    |
 | Japoński              |     `ja`      |   ✔ \**   |      ✔      |           ✔ \*           |                |                    |
 | Koreański                |     `ko`      |           |      ✔      |           ✔ \*           |                |                    |
@@ -75,7 +75,7 @@ Obsługa języka jest początkowo wdrażana w wersji zapoznawczej, z stopniowani
 
 Obsługa języków \* jest w wersji zapoznawczej
 
-\** również dostępna w [Analiza tonacji v3](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-sentiment-analysis#sentiment-analysis-v3-public-preview) i/lub [nazwane wersje zapoznawcze programu rozpoznawania jednostek](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-v3-public-preview) w wersji 3.
+\** również dostępna w [Analiza tonacji v3](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-sentiment-analysis#sentiment-analysis-versions-and-features) i/lub [nazwane wersje zapoznawcze programu rozpoznawania jednostek](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features) w wersji 3.
 
 ## <a name="see-also"></a>Zobacz także
 

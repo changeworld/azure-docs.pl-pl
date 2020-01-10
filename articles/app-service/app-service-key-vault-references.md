@@ -6,17 +6,14 @@ ms.topic: article
 ms.date: 10/09/2019
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: f0d3d36d3489557f0a07e9400c59debb2dca7073
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 7fdb7c980a278e2dcd4b64a4b70de50721d0b72a
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671466"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75728756"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions"></a>Użyj Key Vault odwołań dla App Service i Azure Functions
-
-> [!NOTE] 
-> Odwołania Key Vault nie są obecnie dostępne w planach zużycia systemu Linux.
 
 W tym temacie przedstawiono sposób pracy z wpisami tajnymi Azure Key Vault w App Service lub Azure Functions aplikacji bez konieczności wprowadzania jakichkolwiek zmian w kodzie. [Azure Key Vault](../key-vault/key-vault-overview.md) to usługa zapewniająca scentralizowane zarządzanie kluczami tajnymi z pełną kontrolą nad zasadami dostępu i historią inspekcji.
 
@@ -43,15 +40,15 @@ Odwołanie Key Vault ma postać `@Microsoft.KeyVault({referenceString})`, gdzie 
 > [!div class="mx-tdBreakAll"]
 > | Ciąg odwołania                                                            | Opis                                                                                                                                                                                 |
 > |-----------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-> | SecretUri =_SecretUri_                                                       | **SecretUri** powinien być pełnym identyfikatorem URI płaszczyzny danych klucza tajnego w Key Vault, w tym wersji, np., https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931  |
-> | Magazynname =_magazynname_; Secretname =_secretname_; Wersjawpisutajnego =_wersjawpisutajnego_ | Nazwa **magazynu** powinna być nazwą zasobu Key Vault. **Wpis tajny** musi być nazwą docelowego wpisu tajnego. **Wersjawpisutajnego** powinna być wersją klucza tajnego do użycia. |
+> | SecretUri=_secretUri_                                                       | **SecretUri** powinien być pełnym identyfikatorem URI płaszczyzny danych klucza tajnego w Key Vault, w tym wersji, np., https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931  |
+> | VaultName=_vaultName_;SecretName=_secretName_;SecretVersion=_secretVersion_ | Nazwa **magazynu** powinna być nazwą zasobu Key Vault. **Wpis tajny** musi być nazwą docelowego wpisu tajnego. **Wersjawpisutajnego** powinna być wersją klucza tajnego do użycia. |
 
 Na przykład kompletne odwołanie z wersją będzie wyglądać następująco:
 
 ```
 @Microsoft.KeyVault(SecretUri=https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931)
 ```
-Alternatywne
+Alternatywnie:
 
 ```
 @Microsoft.KeyVault(VaultName=myvault;SecretName=mysecret;SecretVersion=ec96f02080254f109c51a1f14cdb1931)
@@ -190,7 +187,7 @@ Możesz również użyć jednego z wbudowanych detektorów, aby uzyskać dodatko
 ### <a name="using-the-detector-for-app-service"></a>Używanie narzędzia wykrywania dla App Service
 
 1. W portalu przejdź do swojej aplikacji.
-2. Wybierz pozycję **Diagnozuj i rozwiąż problemy**.
+2. Wybierz pozycję **Diagnozowanie i rozwiązywanie problemów**.
 3. Wybierz pozycję **dostępność i wydajność** , a następnie wybierz pozycję **aplikacja internetowa.**
 4. Znajdź **Key Vault Diagnostyka ustawień aplikacji** i kliknij pozycję **więcej informacji**.
 
@@ -199,6 +196,6 @@ Możesz również użyć jednego z wbudowanych detektorów, aby uzyskać dodatko
 
 1. W portalu przejdź do swojej aplikacji.
 2. Przejdź do **opcji platformy.**
-3. Wybierz pozycję **Diagnozuj i rozwiąż problemy**.
+3. Wybierz pozycję **Diagnozowanie i rozwiązywanie problemów**.
 4. Wybierz opcję **dostępność i wydajność** , a następnie wybierz pozycję **aplikacja funkcjonalna lub raportowanie błędów.**
 5. Kliknij pozycję **Key Vault Diagnostyka ustawień aplikacji.**

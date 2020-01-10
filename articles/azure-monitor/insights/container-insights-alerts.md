@@ -1,18 +1,14 @@
 ---
 title: Tworzenie alertów wydajności dla Azure Monitor kontenerów | Microsoft Docs
 description: W tym artykule opisano sposób tworzenia niestandardowych alertów opartych na kwerendach dzienników dotyczących wykorzystania pamięci i procesora CPU z Azure Monitor dla kontenerów.
-ms.service: azure-monitor
-ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
-ms.date: 04/26/2019
-ms.openlocfilehash: 66baa3095744c8b486430d587b992ba507d87733
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.date: 01/07/2020
+ms.openlocfilehash: 5d73f4399d10683597fb2a2e8a3a2ab4ba0d1165
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74841629"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75730929"
 ---
 # <a name="how-to-set-up-alerts-for-performance-problems-in-azure-monitor-for-containers"></a>Jak skonfigurować alerty dotyczące problemów z wydajnością w Azure Monitor dla kontenerów
 
@@ -288,13 +284,14 @@ Wykonaj następujące kroki, aby utworzyć alert dziennika w Azure Monitor przy 
 >
 
 1. Zaloguj się do [portalu Azure](https://portal.azure.com).
-2. Wybierz pozycję **monitor** z okienka po lewej stronie. W obszarze **szczegółowe**dane wybierz pozycję **kontenery**.
-3. Na karcie **monitorowane klastry** wybierz klaster z listy.
-4. W okienku po lewej stronie w obszarze **monitorowanie**wybierz pozycję **dzienniki** , aby otworzyć stronę Dzienniki Azure monitor. Ta strona służy do pisania i wykonywania zapytań Log Analytics platformy Azure.
-5. Na stronie **dzienniki** wybierz pozycję **+ Nowa reguła alertu**.
-6. W sekcji **warunek** wybierz opcję zawsze, **gdy niestandardowa wyszukiwarka dziennika ma \<logiki niezdefiniowana >** wstępnie zdefiniowany warunek dziennika niestandardowego. Typ sygnału **niestandardowego wyszukiwania w dzienniku** jest automatycznie wybierany, ponieważ tworzymy regułę alertu bezpośrednio na stronie dzienników Azure monitor.  
-7. Wklej jedno z [zapytań](#resource-utilization-log-search-queries) dostarczonych wcześniej do pola **zapytania wyszukiwania** .
-8. Skonfiguruj alert w następujący sposób:
+2. W Azure Portal Wyszukaj i wybierz pozycję **log Analytics obszary robocze**.
+3. Na liście obszarów roboczych Log Analytics wybierz obszar roboczy obsługujący Azure Monitor kontenerów. 
+4. W okienku po lewej stronie wybierz pozycję **dzienniki** , aby otworzyć stronę Dzienniki Azure monitor. Ta strona służy do pisania i wykonywania zapytań Log Analytics platformy Azure.
+5. Na stronie **dzienniki** wklej jedno z [zapytań](#resource-utilization-log-search-queries) dostarczonych wcześniej do pola **zapytania wyszukiwania** , a następnie wybierz polecenie **Uruchom** , aby sprawdzić poprawność wyników. Jeśli ten krok nie zostanie wykonane, opcja **+ Nowy alert** nie jest dostępna do wybrania.
+6. Wybierz pozycję **+ Nowy alert** , aby utworzyć alert dziennika.
+7. W sekcji **warunek** wybierz opcję zawsze, **gdy niestandardowa wyszukiwarka dziennika ma \<logiki niezdefiniowana >** wstępnie zdefiniowany warunek dziennika niestandardowego. Typ sygnału **niestandardowego wyszukiwania w dzienniku** jest automatycznie wybierany, ponieważ tworzymy regułę alertu bezpośrednio na stronie dzienników Azure monitor.  
+8. Wklej jedno z [zapytań](#resource-utilization-log-search-queries) dostarczonych wcześniej do pola **zapytania wyszukiwania** .
+9. Skonfiguruj alert w następujący sposób:
 
     1. Z listy rozwijanej **Na podstawie** wybierz pozycję **Pomiar metryki**. Pomiar metryki tworzy alert dla każdego obiektu w zapytaniu, którego wartość przekracza nasz określony próg.
     1. W obszarze **warunek**wybierz opcję **większe niż**i wprowadź **75** jako początkowy **próg** punktu odniesienia dla alertów użycia procesora CPU i pamięci. W przypadku alertu o małej ilości miejsca na dysku wprowadź **90**. Lub wprowadź inną wartość, która spełnia kryteria.
@@ -302,11 +299,11 @@ Wykonaj następujące kroki, aby utworzyć alert dziennika w Azure Monitor przy 
     1. Aby skonfigurować alert dotyczący użycia procesora lub pamięci kontenera, w obszarze **agregowanie**wybierz pozycję **ContainerName**. Aby skonfigurować alert niskiego dysku węzła klastra, wybierz pozycję **ClusterId**.
     1. W sekcji **oceniane na podstawie** ustaw wartość **okresu** na **60 minut**. Reguła będzie działać co 5 minut i zwracać rekordy, które zostały utworzone w ciągu ostatniej godziny od bieżącego czasu. Ustawianie przedziału czasu dla kont okien szerokich dla potencjalnych opóźnień danych. Zapewnia również, że zapytanie zwraca dane, aby uniknąć fałszywych wartości ujemnych, w których alert nigdy nie jest uruchamiany.
 
-9. Wybierz pozycję **gotowe** , aby zakończyć regułę alertu.
-10. Wprowadź nazwę w polu **Nazwa reguły alertu** . Podaj **Opis** , który zawiera szczegóły dotyczące alertu. I wybierz odpowiedni poziom ważności z dostępnych opcji.
-11. Aby natychmiast aktywować regułę alertu, Zaakceptuj wartość domyślną dla **reguły Włącz przy tworzeniu**.
-12. Wybierz istniejącą **grupę akcji** lub Utwórz nową grupę. Ten krok zapewnia, że te same akcje są wykonywane za każdym razem, gdy zostanie wyzwolony alert. Skonfiguruj w zależności od tego, jak zespół IT lub DevOps Operations zarządza incydentami.
-13. Wybierz pozycję **Utwórz regułę alertu** , aby zakończyć regułę alertu. Rozpoczyna ona działanie od razu.
+10. Wybierz pozycję **gotowe** , aby zakończyć regułę alertu.
+11. Wprowadź nazwę w polu **Nazwa reguły alertu** . Podaj **Opis** , który zawiera szczegóły dotyczące alertu. I wybierz odpowiedni poziom ważności z dostępnych opcji.
+12. Aby natychmiast aktywować regułę alertu, Zaakceptuj wartość domyślną dla **reguły Włącz przy tworzeniu**.
+13. Wybierz istniejącą **grupę akcji** lub Utwórz nową grupę. Ten krok zapewnia, że te same akcje są wykonywane za każdym razem, gdy zostanie wyzwolony alert. Skonfiguruj w zależności od tego, jak zespół IT lub DevOps Operations zarządza incydentami.
+14. Wybierz pozycję **Utwórz regułę alertu** , aby zakończyć regułę alertu. Rozpoczyna ona działanie od razu.
 
 ## <a name="next-steps"></a>Następne kroki
 

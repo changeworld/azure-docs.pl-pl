@@ -5,17 +5,17 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
-ms.date: 08/01/2019
-ms.openlocfilehash: 7221619c8d9388a9f6d46ec1dfbb11e467db861a
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.date: 01/08/2020
+ms.openlocfilehash: c597bc4430e4390f0e29e4fe8ae4014521e1ae74
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793310"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75732265"
 ---
 # <a name="add-artifacts-to-your-integration-service-environment-ise-in-azure-logic-apps"></a>Dodaj artefakty do środowiska usługi integracji (ISE) w Azure Logic Apps
 
-Po utworzeniu [środowiska usługi integracji (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)Dodaj artefakty, takie jak aplikacje logiki, konta integracji i łączniki, aby mogły uzyskiwać dostęp do zasobów w sieci wirtualnej platformy Azure.
+Po utworzeniu [środowiska usługi integracji (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)Dodaj artefakty, takie jak aplikacje logiki, konta integracji i łączniki, aby mogły uzyskiwać dostęp do zasobów w sieci wirtualnej platformy Azure. Na przykład zarządzane łączniki ISE, które staną się dostępne po utworzeniu ISE, nie są automatycznie wyświetlane w Projektancie aplikacji logiki. Aby można było używać tych łączników ISE, należy ręcznie [dodać i wdrożyć te łączniki do ISE](#add-ise-connectors-environment) , aby były wyświetlane w Projektancie aplikacji logiki.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -84,17 +84,17 @@ Aby utworzyć konto integracji korzystające z ISE, wykonaj następujące kroki:
 
 ## <a name="add-ise-connectors"></a>Dodawanie łączników ISE
 
-Możesz dodać łączniki zarządzane przez firmę Microsoft, które są dostępne do użycia w ISE, ale nie są wdrożone w ISE.
+Łączniki zarządzane przez firmę Microsoft, które staną się dostępne po utworzeniu ISE, nie są automatycznie wyświetlane w selektorze łącznika w Projektancie aplikacji logiki. Aby można było używać tych łączników ISE, należy ręcznie dodać i wdrożyć te łączniki do ISE, aby były wyświetlane w Projektancie aplikacji logiki.
 
 1. W menu ISE w obszarze **Ustawienia**wybierz pozycję **Łączniki zarządzane**. Na pasku narzędzi wybierz pozycję **Dodaj**.
 
    ![Wyświetlanie łączników zarządzanych](./media/add-artifacts-integration-service-environment-ise/ise-view-managed-connectors.png)
 
-1. W okienku **Dodaj nowe łączniki zarządzane** Otwórz listę **Znajdź łącznik** . Jeśli potrzebny łącznik jest dostępny, wybierz ten łącznik, a następnie wybierz pozycję **Utwórz**.
+1. W okienku **Dodaj nowe łączniki zarządzane** Otwórz listę **Znajdź łącznik** . Wybierz łącznik ISE, który ma być używany, ale jeszcze nie został wdrożony w ISE. Wybierz pozycję **Utwórz**.
 
-   Na liście są wyświetlane tylko te łączniki, które są uprawnione, ale nie są wdrażane w ISE. Łączniki, które są już wdrożone w ISE, są niedostępne do wyboru.
+   ![Wybierz łącznik ISE, który ma zostać wdrożony w ISE](./media/add-artifacts-integration-service-environment-ise/add-managed-connector.png)
 
-   ![Wybierz kwalifikujący się łącznik](./media/add-artifacts-integration-service-environment-ise/add-managed-connector.png)
+   Tylko łączniki ISE, które są uprawnione, ale nie zostały jeszcze wdrożone do ISE, są dostępne do wyboru. Łączniki, które są już wdrożone w ISE, są niedostępne do wyboru.
 
 <a name="create-custom-connectors-environment"></a>
 

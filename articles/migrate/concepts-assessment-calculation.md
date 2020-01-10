@@ -1,55 +1,121 @@
 ---
-title: Obliczenia oceny w Azure Migrate | Microsoft Docs
-description: Zawiera omówienie obliczeń oceny w usłudze Azure Migrate.
-author: rayne-wiselman
-ms.service: azure-migrate
+title: Oceny w Azure Migrate
+description: Dowiedz się więcej na temat ocen w Azure Migrate.
 ms.topic: conceptual
-ms.date: 10/15/2019
-ms.author: hamusa
-ms.openlocfilehash: d72e5a6dea8b411b6214e7749b8993f9f5a6e7a8
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 01/06/2020
+ms.openlocfilehash: 6950050be3c6fb812a6ade47e98f2d1ed479e61f
+ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466923"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75720246"
 ---
-# <a name="assessment-calculations-in-azure-migrate"></a>Obliczenia oceny w Azure Migrate
+# <a name="about-assessments-in-azure-migrate"></a>Informacje o ocenach w Azure Migrate
 
-[Azure Migrate](migrate-services-overview.md) udostępnia centralne centrum do śledzenia odnajdywania, oceny i migracji lokalnych aplikacji i obciążeń. Śledzi również wystąpienia chmury prywatnej i publicznej na platformie Azure. Centrum oferuje Azure Migrate narzędzia do oceny i migracji, a także oferty niezależnych dostawców oprogramowania (ISV) innych firm.
+W tym artykule opisano sposób obliczania ocen w [Azure Migrate: Ocena serwera](migrate-services-overview.md#azure-migrate-server-assessment-tool). Można uruchamiać oceny w grupach maszyn lokalnych, aby ustalić, czy są one gotowe do migracji do Azure Migrate.
 
-Ocena serwera to narzędzie w Azure Migrate, które ocenia serwery lokalne pod kątem migracji na platformę Azure. Ten artykuł zawiera informacje o tym, jak są obliczane oceny.
+## <a name="how-do-i-run-an-assessment"></a>Jak mogę uruchomić ocenę?
+Ocenę można wykonać przy użyciu Azure Migrate: Ocena serwera lub inne narzędzie platformy Azure lub innych firm. Po utworzeniu projektu Azure Migrate należy dodać potrzebne narzędzie. [Dowiedz się więcej] (how-to-add-tool-first-time.md
 
+### <a name="collect-compute-data"></a>Zbieranie danych obliczeniowych
+
+Dane dotyczące wydajności dla ustawień obliczeń są zbierane w następujący sposób:
+
+1. [Urządzenie Azure Migrate](migrate-appliance.md) zbiera punkt próbkowania w czasie rzeczywistym:
+
+    - **maszyn wirtualnych VMware*: w przypadku maszyn wirtualnych vmware urządzenie Azure Migrate zbiera punkt próbkowania w czasie rzeczywistym co 20 sekund.
+    - **Maszyny wirtualne funkcji Hyper-v**: w przypadku maszyn wirtualnych funkcji Hyper-v punkt próbkowania w czasie rzeczywistym jest zbierany co 30 sekund.
+    - **Serwery fizyczne**: w przypadku serwerów fizycznych, punkt próbkowania w czasie rzeczywistym jest zbierany co pięć minut. 
+    
+2. Urządzenie zbiera punkty próbkowania (20 sekund, 30 sekund, pięć minut), aby utworzyć jeden punkt danych co 10 minut. Aby utworzyć pojedynczy punkt danych, urządzenie wybiera wartość szczytu ze wszystkich próbek, a następnie wysyła je do platformy Azure.
+3. W ramach oceny serwera są przechowywane wszystkie 10-minutowe punkty próbkowania w ciągu ostatniego miesiąca.
+4. Podczas tworzenia oceny Ocena serwera identyfikuje odpowiedni punkt danych do użycia dla odpowiedniego wymiaru, na podstawie wartości percentyla dla *historii wydajności* i *użycia percentylu*.
+
+    - Na przykład jeśli historia wydajności jest ustawiona na jeden tydzień, a użycie percentyla to używany 95. percentyl, Ocena serwera sortuje 10-minutowe punkty próbkowania dla ostatniego tygodnia w kolejności rosnącej, a następnie wybiera wartość percentylu używany 95. dla odpowiedniego wymiaru. 
+    - Wartość percentylu używany 95. gwarantuje, że zignorujesz wszelkie elementy odstające, które mogą zostać uwzględnione w przypadku wybrania 99 percentylu.
+    - Jeśli chcesz wybrać szczytowe użycie dla tego okresu i nie chcesz pominąć żadnych wartości odstających, należy wybrać 99 percentyl dla użycia percentylu.
+
+5. Ta wartość jest mnożona przez współczynnik komfortu, aby uzyskać efektywne dane użycia wydajności dla każdej metryki (użycie procesora CPU, użycie pamięci, operacje we/wy dysku (odczyt i zapis), przepływność dysku (odczyt i zapis) oraz przepływność sieci (w i wychodząca) zbieranie informacji o urządzeniu.
+
+Aby uruchamiać oceny w ocenie serwera, należy przygotować się do oceny w środowisku lokalnym i na platformie Azure, a następnie skonfigurować urządzenie Azure Migrate do ciągłego odnajdywania maszyn lokalnych. Po odnalezieniu maszyn należy zebrać je do grup, aby je ocenić. Aby uzyskać bardziej szczegółowe i niebezpieczne oceny, można wizualizować i mapować zależności między maszynami, aby dowiedzieć się, jak przeprowadzić migrację.
+
+- Dowiedz się więcej o uruchamianiu ocen dla [maszyn wirtualnych VMware](tutorial-prepare-vmware.md), [maszyn wirtualnych funkcji Hyper-V](tutorial-prepare-hyper-v.md)i [serwerów fizycznych](tutorial-prepare-physical.md).
+- Dowiedz się więcej na temat oceniania serwerów [zaimportowanych przy użyciu pliku CSV](tutorial-assess-import.md).
+- Dowiedz się więcej na temat konfigurowania [wizualizacji zależności](concepts-dependency-visualization.md).
+
+## <a name="assessments-in-server-assessment"></a>Oceny w ocenie serwera 
+
+Oceny tworzone przy użyciu oceny Azure Migrate Server są migawką danych w danym momencie. Narzędzie do oceny serwera oferuje dwa typy ocen.
+
+**Typ oceny** | **Szczegóły** | **Dane**
+--- | --- | ---
+**Oparta na wydajności** | Oceny, które podejmują zalecenia na podstawie zebranych danych wydajności | Zalecenie dotyczące rozmiaru maszyny wirtualnej bazuje na danych użycia procesora i pamięci.<br/><br/> Zalecenia dotyczące typu dysku (standardowy dysk twardy/SSD lub dyski zarządzane w warstwie Premium) jest oparty na liczbie operacji we/wy na sekundę i przepływności dysku lokalnego.
+**Zgodnie z lokalnym** | Oceny, które nie wykorzystują danych wydajności, aby wykonać zalecenia. | Zalecenie dotyczące rozmiaru maszyny wirtualnej bazuje na lokalnym rozmiarze maszyny wirtualnej<br/><br> Zalecany typ dysku jest oparty na wybranym typie magazynu dla oceny.
+
+## <a name="collecting-performance-data"></a>Zbieranie danych wydajności
+
+Dane dotyczące wydajności są zbierane w następujący sposób:
+
+1. [Urządzenie Azure Migrate](migrate-appliance.md) zbiera punkt próbkowania w czasie rzeczywistym:
+
+    - **maszyn wirtualnych VMware*: w przypadku maszyn wirtualnych vmware urządzenie Azure Migrate zbiera punkt próbkowania w czasie rzeczywistym co 20 sekund.
+    - **Maszyny wirtualne funkcji Hyper-v**: w przypadku maszyn wirtualnych funkcji Hyper-v punkt próbkowania w czasie rzeczywistym jest zbierany co 30 sekund.
+    - **Serwery fizyczne**: w przypadku serwerów fizycznych, punkt próbkowania w czasie rzeczywistym jest zbierany co pięć minut. 
+    
+2. Urządzenie zbiera punkty próbkowania (20 sekund, 30 sekund, pięć minut), aby utworzyć jeden punkt danych co 10 minut. Aby utworzyć pojedynczy punkt danych, urządzenie wybiera wartość szczytu ze wszystkich próbek, a następnie wysyła je do platformy Azure.
+3. W ramach oceny serwera są przechowywane wszystkie 10-minutowe punkty próbkowania w ciągu ostatniego miesiąca.
+4. Podczas tworzenia oceny Ocena serwera identyfikuje odpowiedni punkt danych do użycia dla odpowiedniego wymiaru, na podstawie wartości percentyla dla *historii wydajności* i *użycia percentylu*.
+
+    - Na przykład jeśli historia wydajności jest ustawiona na jeden tydzień, a użycie percentyla to używany 95. percentyl, Ocena serwera sortuje 10-minutowe punkty próbkowania dla ostatniego tygodnia w kolejności rosnącej, a następnie wybiera wartość percentylu używany 95. dla odpowiedniego wymiaru. 
+    - Wartość percentylu używany 95. gwarantuje, że zignorujesz wszelkie elementy odstające, które mogą zostać uwzględnione w przypadku wybrania 99 percentylu.
+    - Jeśli chcesz wybrać szczytowe użycie dla tego okresu i nie chcesz pominąć żadnych wartości odstających, należy wybrać 99 percentyl dla użycia percentylu.
+
+5. Ta wartość jest mnożona przez współczynnik komfortu, aby uzyskać efektywne dane użycia wydajności dla każdej metryki (użycie procesora CPU, użycie pamięci, operacje we/wy dysku (odczyt i zapis), przepływność dysku (odczyt i zapis) oraz przepływność sieci (w i wychodząca) zbieranie informacji o urządzeniu.
 ## <a name="whats-in-an-assessment"></a>Co obejmuje ocena?
+
+Oto co obejmuje Ocena w Azure Migrate: Ocena serwera
 
 **Właściwość** | **Szczegóły**
 --- | ---
-**Lokalizacja docelowa** | Określa lokalizację platformy Azure, do której chcesz przeprowadzić migrację.<br/><br/>Ocena serwera obsługuje obecnie następujące regiony docelowe: Australia Wschodnia, Australia Południowo-Wschodnia, Brazylia Południowa, Kanada środkowa, Kanada Wschodnia, Indie Środkowe, środkowe stany USA, Chiny Wschodnie, Chiny Północne, Azja Wschodnia, Wschodnie stany USA, Wschodnie stany USA 2, Niemcy środkowe, Niemcy północny, Japonia Południowo-Wschodnia, Japonia Zachodnia, Korea środkowa, Korea Południowa, Północno-środkowe stany USA, Europa Północna, Południowo-środkowe stany USA, Azja Południowo-Wschodnia, Indie Południowe, Południowe Zjednoczone Królestwo, Zachodnie Zjednoczone Królestwo, US Gov Arizona, US Gov Teksas, US Gov Wirginia, zachodnie stany USA, Europa Zachodnia, Indie Zachodnie, zachodnie stany USA i zachodnie stany USA 2Y.
-**Typ magazynu** | Określa typ dysków, które mają być używane na potrzeby magazynu na platformie Azure. <br/><br/> W przypadku lokalnego określania rozmiarów można określić typ docelowego dysku magazynującego, który ma być zarządzany przez usługę Premium, SSD w warstwie Standardowa zarządzany lub HDD w warstwie Standardowa. W przypadku ustalania rozmiarów na podstawie wydajności można określić typ docelowego dysku magazynującego jako automatyczne, oparte na warstwie Premium, zarządzane HDD w warstwie Standardowa i zarządzane przez SSD w warstwie Standardowa. Jeśli typ magazynu zostanie określony jako automatyczny, zalecenia dotyczące dysku opierają się na danych wydajności dysków: operacji wejścia/wyjścia na sekundę (IOPS) i przepływności. <br/><br/>W przypadku określenia typu magazynu jako wersji Premium lub standardowej Ocena będzie polecać dyskową jednostkę SKU w wybranym typie magazynu. Jeśli chcesz uzyskać umowę SLA dotyczącą pojedynczej instancji na maszynę wirtualną o 99,9%, możesz określić typ magazynu jako dysk zarządzany w warstwie Premium. Gwarantuje to, że wszystkie dyski w ocenie są zalecane jako dyski zarządzane w warstwie Premium. Usługa Azure Migrate obsługuje dyski zarządzane tylko na potrzeby oceny migracji.
-**Wystąpienia zarezerwowane (RIs)** | Ta właściwość pomaga określić [wystąpienia zarezerwowane](https://azure.microsoft.com/pricing/reserved-vm-instances/) na platformie Azure. Szacowanie kosztów w ocenie potrwają rabaty na konto. Usługi RIs są obecnie obsługiwane tylko w przypadku ofert z opcją płatność zgodnie z rzeczywistym użyciem w Azure Migrate.
-**Kryteria ustalania wielkości** | Ustawia kryteria do użycia dla maszyn wirtualnych o *odpowiednim rozmiarze* dla platformy Azure. Możesz wybrać opcję ustalania rozmiaru *na podstawie wydajności* lub rozmiaru maszyn wirtualnych *jako lokalnie* , bez uwzględniania historii wydajności.
-**Historia wydajności** | Określa czas, jaki należy wziąć pod uwagę podczas oceniania danych wydajności maszyn. Ta właściwość ma zastosowanie tylko wtedy, gdy kryterium ustalania wielkości jest *oparte na wydajności*.
-**Użycie percentyla** | Określa wartość percentylości zestawu próbek wydajności, który ma być brany pod uwagę w przypadku zmiany wielkości liter. Ta właściwość ma zastosowanie tylko wtedy, gdy rozmiar jest oparty na wydajności.
-**Serie maszyn wirtualnych** | Pozwala określić serie maszyn wirtualnych, które mają być brane pod uwagę w przypadku zmiany rozmiarów. Na przykład jeśli masz środowisko produkcyjne, którego nie planujesz migrować do maszyn wirtualnych serii A na platformie Azure, możesz wykluczyć serię z listy lub serii, a wielkość liter jest wykonywana tylko w wybranej serii.
-**Współczynnik komfortu** | Azure Migrate oceny serwera traktuje bufor (współczynnik komfortu) podczas oceny. Jest on stosowany do wszystkich danych użycia maszyn wirtualnych (procesora, pamięci, dysku i sieci). Współczynnik komfortu uwzględnia kwestie, takie jak okresowe użycie, krótka historia wydajności i prawdopodobne zwiększenie użycia w przyszłości.<br/><br/> Na przykład 10-rdzeniowa maszyna wirtualna o użyciu na poziomie 20% jest w normalnych warunkach równoważna 2-rdzeniowej maszynie wirtualnej. Jednak wynik zastosowania współczynnika komfortu o wartości 2 daje 4-rdzeniową maszynę wirtualną.
-**Oferta** | Wyświetla [ofertę platformy Azure](https://azure.microsoft.com/support/legal/offer-details/) , która jest zarejestrowana. Zgodnie z tym usługa Azure Migrate odpowiednio szacuje koszty.
-**Waluta** | Przedstawia walutę rozliczeń dla Twojego konta.
-**Rabat (%)** | Wyświetla rabat związany z subskrypcją, który otrzymujesz w górnej części oferty platformy Azure. Ustawienie domyślne to 0%.
-**Czas pracy maszyny wirtualnej** | Jeśli maszyny wirtualne nie będą działać przez 24 godziny na dobę, 7 dni w tygodniu na platformie Azure, możesz określić czas trwania (liczbę dni miesięcznie i liczbę godzin dziennie), dla których będą one uruchomione, a oszacowania kosztów są odpowiednio obsługiwane. Wartość domyślna to 31 dni w miesiącu i 24 godziny dziennie.
-**Korzyść użycia hybrydowego platformy Azure** | Określa, czy masz program Software Assurance i kwalifikujesz się do [korzyść użycia hybrydowego platformy Azure](https://azure.microsoft.com/pricing/hybrid-use-benefit/). W przypadku wybrania opcji Yes maszyny wirtualne z systemem Windows są wyceniane jak platforma Azure z systemami innymi niż Windows. Ustawieniem domyślnym jest tak.
+**Lokalizacja docelowa** | Lokalizacja, do której chcesz przeprowadzić migrację.<br/><br/>Ocena serwera obsługuje obecnie następujące docelowe regiony platformy Azure: Australia Wschodnia, Australia Południowo-Zachodnia, Brazylia Południowa, Kanada środkowa, Kanada Wschodnia, Indie Środkowe, środkowe stany USA, Chiny Wschodnie, Chiny Północne, Azja Wschodnia, Wschodnie stany USA, Wschodnie stany USA 2, Niemcy środkowe, Niemcy Północny, Japonia Wschodnia, Japonia Zachodnia, Korea środkowa, Korea Południowa, Północno-środkowe stany USA, Europa Północna, Południowo-środkowe stany USA, Azja Południowo-Wschodnia, Indie Południowo-Wschodnia, Południowe Zjednoczone Królestwo, Zachodnie Zjednoczone Królestwo, US Gov Arizona, US Gov Teksas, US Gov Wirginia, zachodnio-środkowe stany USA, Europa Zachodnia, Indie Zachodnie, zachodnie stany USA i zachodnie Stany USA 2.
+**Docelowy dysk magazynujący: ustalanie wielkości liter** | Typ dysków, które mają być używane na potrzeby magazynu na platformie Azure. <br/><br/> Określ docelowy dysk pamięci masowej w postaci zarządzanej, standardowej dysku SSD zarządzanej lub standardowej zarządzanej przestrzeni DYSKowej.<br/><br/> 
+**Docelowy dysk magazynujący: ustalanie wielkości na podstawie wydajności** | Określ typ docelowego dysku magazynującego w postaci automatycznej, zarządzanej w warstwie Premium, standardowej zarządzanej pamięci DYSKowej lub standardowej zarządzanej pamięci SSD.<br/><br/> **Automatyczne**: zalecenie dysku opiera się na danych wydajności dysków (operacji wejścia/wyjścia na sekundę (IOPS) i przepływności. <br/><br/>**Premium/Standard**: Ocena zaleca użycie jednostki SKU dysku w wybranym typie magazynu.<br/><br/> Jeśli chcesz uzyskać umowę SLA dotyczącą pojedynczej instancji na maszynę wirtualną o 99,9%, rozważ użycie dysków zarządzanych w warstwie Premium. Gwarantuje to, że wszystkie dyski w ocenie są zalecane jako dyski zarządzane w warstwie Premium.<br/><br/> Usługa Azure Migrate obsługuje tylko dyski zarządzane na potrzeby oceny migracji.
+**Wystąpienia zarezerwowane (RIs)** | Określ [wystąpienia zarezerwowane](https://azure.microsoft.com/pricing/reserved-vm-instances/) na platformie Azure, dzięki czemu szacunki kosztów w ramach oceny są uwzględniane w ramach rabatu.<br/><br/> Usługi RIs są obecnie obsługiwane tylko w przypadku ofert z opcją płatność zgodnie z rzeczywistym użyciem w Azure Migrate.
+**Kryteria ustalania wielkości** | Służy do odpowiedniego rozmiaru maszyny wirtualnej na platformie Azure.<br/><br/> Używaj wielkości liter lub wielkości na podstawie wydajności.
+**Historia wydajności** | Używane z rozmiarem opartym na wydajności. Określ czas trwania używany podczas oceny danych wydajności.
+**Użycie percentyla** | Używane z rozmiarem opartym na wydajności. Określa wartość percentylu przykładu wydajności, która ma być używana w przypadku zmiany wielkości liter. 
+**Serie maszyn wirtualnych** | Określ serię maszyn wirtualnych platformy Azure, którą chcesz wziąć pod uwagę w przypadku zmiany rozmiarów. Na przykład jeśli nie masz środowiska produkcyjnego wymagającego maszyn wirtualnych serii A na platformie Azure, możesz wykluczyć serię z listy lub serii.
+**Współczynnik komfortu** | Bufor używany podczas oceny. Stosowane na podstawie danych użycia maszyny dla maszyn wirtualnych (procesor CPU, pamięć, dysk i sieć). 
+W przypadku problemów takich jak użycie sezonowe, krótka historia wydajności i prawdopodobnie rośnie w przyszłości.<br/><br/> Na przykład 10-rdzeniowa maszyna wirtualna z wykorzystaniem 20% zwykle skutkuje dwurdzeniową maszyną wirtualną. W przypadku współczynnika komfortu wynoszącego 2,0 x w zamian powstaje wielordzeniowa maszyna wirtualna.
+**Oferta** | Wyświetla [ofertę platformy Azure](https://azure.microsoft.com/support/legal/offer-details/) , w której zarejestrowano. Ocena serwera szacuje odpowiednio koszt.
+**Waluta** | Waluta rozliczeniowa dla Twojego konta.
+**Rabat (%)** | Wyświetla wszystkie zniżki związane z subskrypcją, które otrzymujesz w ramach oferty platformy Azure. Ustawienie domyślne to 0%.
+**Czas pracy maszyny wirtualnej** | Jeśli maszyny wirtualne platformy Azure nie będą działać przez 24 godziny na dobę, 7 dni w tygodniu, możesz określić czas trwania (w dniach miesięcznie i godzinach dziennie), które będą uruchamiane. Oszacowania kosztów są odpowiednio obsługiwane.<br/><br/> Wartość domyślna to 31 dni w miesiącu i 24 godziny dziennie.
+**Korzyść użycia hybrydowego platformy Azure** | Określa, czy masz program Software Assurance i kwalifikujesz się do [korzyść użycia hybrydowego platformy Azure](https://azure.microsoft.com/pricing/hybrid-use-benefit/). W przypadku wybrania opcji tak (ustawienie domyślne) ceny za maszyny wirtualne z systemem Windows są brane pod uwagę w przypadku niezwiązanych z systemem Windows Azure.
 
-## <a name="how-are-assessments-calculated"></a>Jak są obliczane oceny?
+[Zapoznaj się z najlepszymi rozwiązaniami](best-practices-assessment.md) dotyczącymi tworzenia ocen przy użyciu oceny serwera.
 
-Ocena w Azure Migrate oceny serwera jest obliczana przy użyciu metadanych zebranych o serwerach lokalnych. Jeśli źródłem odnajdywania jest import przy użyciu. Plik CSV, ocena jest obliczana przy użyciu metadanych dostarczonych przez użytkownika o serwerach. Obliczenia oceny są obsługiwane w trzech etapach. W przypadku każdego serwera obliczenia oceny rozpoczynają się od analizy przydatności do platformy Azure, a następnie ustalają rozmiar i na koniec miesięczne oszacowanie kosztów. Serwer jest przenoszony do późniejszego etapu tylko wtedy, gdy przejdzie poprzedni. Na przykład jeśli serwer nie może sprawdzić przydatności do platformy Azure, zostanie oznaczony jako nieodpowiedni dla platformy Azure, a jego wielkość i koszt nie są wykonywane dla tego serwera.
+## <a name="how-are-assessments-calculated"></a>Jak są obliczane oceny? 
 
-## <a name="azure-suitability-analysis"></a>Analiza przydatności na platformie Azure
+Oceny w Azure Migrate: Ocena serwera jest obliczana przy użyciu metadanych zebranych o maszynach lokalnych. W przypadku uruchamiania oceny na maszynach zaimportowanych przy użyciu programu. Plik CSV udostępnia metadane do obliczenia. Obliczenia są wykonywane na trzech etapach:
 
-Nie wszystkie maszyny są odpowiednie do uruchamiania na platformie Azure. Ocena serwera ocenia każdą maszynę lokalną pod kątem jej przydatności do migracji na platformę Azure. Przypisuje także każdej ocenianej maszynie do jednej z następujących kategorii przydatności:
+1. **Oblicz gotowość platformy Azure**: Oceń, czy maszyny są odpowiednie do migracji na platformę Azure.
+2. **Obliczanie zaleceń dotyczących ustalania rozmiaru**: oszacowanie obliczeń, magazynu i rozmiaru sieci. 
+2. **Oblicz miesięczne koszty**: Oblicz szacowane miesięczne koszty obliczeń i magazynowania na potrzeby uruchamiania maszyn na platformie Azure po migracji.
+
+Obliczenia są w kolejności, a serwer maszynowy przechodzi do późniejszego etapu tylko wtedy, gdy przejdzie poprzednią. Jeśli na przykład serwer ulegnie awarii na potrzeby gotowości platformy Azure, zostanie oznaczony jako nieodpowiedni dla platformy Azure, a jego wielkość i koszt nie są wykonywane dla tego serwera.
+
+
+
+## <a name="calculate-readiness"></a>Oblicz gotowość
+
+Nie wszystkie maszyny są odpowiednie do uruchamiania na platformie Azure. Ocena serwera ocenia każdą maszynę lokalną i przypisuje jej kategorię gotowości. 
 - **Gotowe do użycia na platformie Azure**: maszynę można migrować na platformę Azure bez wprowadzania żadnych zmian. Zostanie ona uruchomiona na platformie Azure z pełną pomocą techniczną platformy Azure.
-- **Warunkowo gotowy na platformę Azure**: maszyna może zacząć pracę na platformie Azure, ale może nie mieć pełnej pomocy technicznej platformy Azure. Na przykład maszyna, na której działa Starsza wersja systemu Windows Server, nie jest obsługiwana na platformie Azure. Przed przeprowadzeniem migracji tych maszyn na platformę Azure należy zachować ostrożność i postępować zgodnie z zaleceniami związanymi z korygowaniem w celu rozwiązania problemów z gotowością.
-- **Nie gotowy na platformę Azure**: maszyna nie zostanie uruchomiona na platformie Azure. Jeśli na przykład maszyna lokalna ma dołączony dysk o pojemności ponad 64 terabajtów (TB), nie może być hostowany na platformie Azure. Przed przeprowadzeniem migracji maszyny do platformy Azure należy postępować zgodnie z zaleceniami dotyczącymi korygowania sugerowanymi w ocenie. Ustalanie wielkości liter i oszacowanie kosztów nie jest wykonywane dla maszyn oznaczonych jako niegotowe dla platformy Azure.
-- **Nieznane gotowość**: Azure Migrate nie mógł ustalić gotowości maszyny z powodu niewystarczających metadanych zebranych ze środowiska lokalnego.
+- **Warunkowo gotowy na platformę Azure**: maszyna może zacząć korzystać z platformy Azure, ale może nie mieć pełnej pomocy technicznej platformy Azure. Na przykład maszyna, na której działa Starsza wersja systemu Windows Server, nie jest obsługiwana na platformie Azure. Przed przeprowadzeniem migracji tych maszyn na platformę Azure należy zachować ostrożność. Postępuj zgodnie ze wskazówkami dotyczącymi korygowania proponowanymi w ocenie, aby rozwiązać problemy z gotowością.
+- **Nie gotowy na platformę Azure**: maszyna nie zostanie uruchomiona na platformie Azure. Na przykład jeśli dysk maszyny lokalnej ma więcej niż 64 usług TBs, nie może być hostowany na platformie Azure. Postępuj zgodnie ze wskazówkami dotyczącymi korygowania, aby rozwiązać problem przed migracją. 
+- **Nieznane gotowość**: Azure Migrate nie mógł ustalić gotowości maszyny z powodu niewystarczających metadanych.
 
-Ocena serwera przegląduje właściwości maszyny i systemu operacyjnego gościa w celu ustalenia gotowości maszyny lokalnej na platformę Azure.
+Aby obliczyć gotowość, Ocena serwera sprawdza właściwości komputera i ustawienia systemu operacyjnego podsumowane w poniższych tabelach. 
 
 ### <a name="machine-properties"></a>Właściwości maszyny
 
@@ -59,8 +125,8 @@ Ocena serwera sprawdza następujące właściwości lokalnej maszyny wirtualnej 
 --- | --- | ---
 **Typ rozruchu** | Platforma Azure obsługuje maszyny wirtualne z typem rozruchowym systemu BIOS, a nie z interfejsem UEFI. | Warunkowo gotowe, jeśli typ rozruchu to UEFI.
 **Rdzeni** | Liczba rdzeni w maszynach musi być mniejsza lub równa maksymalnej liczbie rdzeni (128) obsługiwanej przez maszynę wirtualną platformy Azure.<br/><br/> Jeśli historia wydajności jest dostępna, Azure Migrate traktuje wykorzystane rdzenie do porównania. Jeśli czynnik komfortu jest określony w ustawieniach oceny, Liczba użytych rdzeni jest mnożona przez współczynnik komfortu.<br/><br/> Jeśli nie ma historii wydajności, Azure Migrate używa przyznanych rdzeni bez zastosowania współczynnika komfortu. | Gotowe, jeśli jest mniejsze lub równe limitom.
-**Rozmiar** | Rozmiar pamięci maszyny musi być równy lub mniejszy niż maksymalna ilość pamięci (3892 gigabajtów [GB] na platformie Azure M Series Standard_M128m&nbsp;<sup>2</sup>), która jest dozwolona dla maszyny wirtualnej platformy Azure. [Dowiedz się więcej](https://docs.microsoft.com/azure/virtual-machines/windows/sizes).<br/><br/> Jeśli historia wydajności jest dostępna, Azure Migrate uwzględnia wykorzystanie pamięci do porównania. W przypadku określenia współczynnika komfortu wykorzystanie pamięci jest mnożone przez współczynnik komfortu.<br/><br/> Jeśli nie ma żadnej historii, przydzieloną pamięć jest używana bez zastosowania współczynnika komfortu.<br/><br/> | Gotowe, jeśli w ramach limitów.
-**Dysk magazynu** | Przydzielony rozmiar dysku nie może być mniejszy niż 32 TB. Mimo że platforma Azure obsługuje dyski o pojemności 64 TB z dyskami SSD w warstwie Ultra, Azure Migrate: Ocena serwera obecnie sprawdza dostępność 32 TB miejsca, ponieważ nie są one jeszcze obsługiwane w SSD w warstwie Ultra. <br/><br/> Liczba dysków dołączonych do maszyny musi wynosić co najmniej 65, łącznie z dyskiem systemu operacyjnego. | Gotowe, jeśli w ramach limitów.
+**Pamięć** | Rozmiar pamięci maszyny musi być równy lub mniejszy niż maksymalna ilość pamięci (3892 gigabajtów [GB] na platformie Azure M Series Standard_M128m&nbsp;<sup>2</sup>), która jest dozwolona dla maszyny wirtualnej platformy Azure. [Dowiedz się więcej](https://docs.microsoft.com/azure/virtual-machines/windows/sizes).<br/><br/> Jeśli historia wydajności jest dostępna, Azure Migrate uwzględnia wykorzystanie pamięci do porównania. W przypadku określenia współczynnika komfortu wykorzystanie pamięci jest mnożone przez współczynnik komfortu.<br/><br/> Jeśli nie ma żadnej historii, przydzieloną pamięć jest używana bez zastosowania współczynnika komfortu.<br/><br/> | Gotowe, jeśli w ramach limitów.
+**Dysk magazynu** | Przydzielony rozmiar dysku nie może być mniejszy niż 32 TB. Mimo że platforma Azure obsługuje dyski 64 TB z dyskami SSD w warstwie Ultra, Azure Migrate: Ocena serwera obecnie sprawdza, czy rozmiar dysku wynosi 32 TB, ponieważ nie obsługuje jeszcze SSD w warstwie Ultra. <br/><br/> Liczba dysków dołączonych do maszyny musi wynosić co najmniej 65, łącznie z dyskiem systemu operacyjnego. | Gotowe, jeśli w ramach limitów.
 **Sieć** | Komputer musi mieć dołączoną 32 lub mniej interfejsów sieciowych (nic). | Gotowe, jeśli w ramach limitów.
 
 ### <a name="guest-operating-system"></a>System operacyjny gościa
@@ -79,7 +145,7 @@ Windows Server 2012 & wszystkie SPs | Platforma Azure oferuje pełną pomoc tech
 Windows Server 2008 R2 ze wszystkimi usługami SPs | Platforma Azure oferuje pełną pomoc techniczną.| Gotowa na platformę Azure
 Windows Server 2008 (32-bitowe i 64-bit) | Platforma Azure oferuje pełną pomoc techniczną. | Gotowa na platformę Azure
 Windows Server 2003, 2003 R2 | Te systemy operacyjne przekazały datę końca okresu obsłudze i wymagają [niestandardowej umowy pomocy technicznej (CSA)](https://aka.ms/WSosstatement) w celu uzyskania pomocy technicznej na platformie Azure. | Warunkowo gotowy na platformę Azure. Przed przeprowadzeniem migracji na platformę Azure Rozważ uaktualnienie systemu operacyjnego.
-Windows 2000, 98, 95, NT, 3,1, MS-DOS | Te systemy operacyjne przekazały datę końca okresu obsłudze. Maszyna może zaczynać się na platformie Azure, ale nie obsługuje systemu operacyjnego. | Warunkowo gotowy na platformę Azure. Zalecamy uaktualnienie systemu operacyjnego przed przeprowadzeniem migracji na platformę Azure.
+Windows 2000, 98, 95, NT, 3.1, MS-DOS | Te systemy operacyjne przekazały datę końca okresu obsłudze. Maszyna może zaczynać się na platformie Azure, ale nie obsługuje systemu operacyjnego. | Warunkowo gotowy na platformę Azure. Zalecamy uaktualnienie systemu operacyjnego przed przeprowadzeniem migracji na platformę Azure.
 Klient z systemem Windows 7, 8 i 10 | Platforma Azure zapewnia pomoc techniczną tylko w przypadku [subskrypcji programu Visual Studio.](https://docs.microsoft.com/azure/virtual-machines/windows/client-images) | Warunkowo gotowa na platformę Azure
 Windows 10 Pro Desktop | Platforma Azure zapewnia pomoc techniczną z [wielodostępnymi prawami hostingu.](https://docs.microsoft.com/azure/virtual-machines/windows/windows-desktop-multitenant-hosting-deployment) | Warunkowo gotowa na platformę Azure
 Windows Vista, XP Professional | Te systemy operacyjne przekazały datę końca okresu obsłudze. Maszyna może zaczynać się na platformie Azure, ale nie obsługuje systemu operacyjnego. | Warunkowo gotowy na platformę Azure. Zalecamy uaktualnienie systemu operacyjnego przed przeprowadzeniem migracji na platformę Azure.
@@ -88,60 +154,54 @@ Inne systemy operacyjne<br/><br/> Na przykład Oracle Solaris, Apple Mac OS itp.
 System operacyjny określony jako **inny** w vCenter Server | W takim przypadku Azure Migrate nie może zidentyfikować systemu operacyjnego. | Nieznane gotowość. Upewnij się, że system operacyjny działający na maszynie wirtualnej jest obsługiwany na platformie Azure.
 32-bitowe systemy operacyjne | Maszyna może zaczynać się na platformie Azure, ale platforma Azure może nie zapewniać pełnej pomocy technicznej. | Warunkowo gotowy na platformę Azure. Przed przeprowadzeniem migracji na platformę Azure Rozważ uaktualnienie systemu operacyjnego maszyny z 32-bitowego systemu operacyjnego do 64-bitowego systemu operacyjnego.
 
-## <a name="sizing"></a>Ustalanie rozmiaru
+## <a name="calculate-sizing-as-is-on-premises"></a>Obliczanie rozmiaru (w trybie lokalnym)
 
-Po oznaczeniu maszyny jako gotowej na platformie Azure Ocena serwera wprowadza zalecenia dotyczące zmiany rozmiarów, co obejmuje zidentyfikowanie odpowiedniej maszyny wirtualnej platformy Azure i jednostki SKU dysku dla lokalnej maszyny wirtualnej. Zalecenia te różnią się w zależności od określonych właściwości oceny.
+Po oznaczeniu maszyny jako gotowej na platformie Azure Ocena serwera sprawia, że zalecenia dotyczące zmiany rozmiarów umożliwiają zidentyfikowanie maszyny wirtualnej platformy Azure i jednostki SKU dysku. Jeśli używasz jako lokalizacji lokalnej, Ocena serwera nie uwzględnia historii wydajności maszyn wirtualnych i dysków.
 
-- Jeśli Ocena korzysta z *ustalania rozmiaru na podstawie wydajności*, Azure Migrate traktuje historię wydajności maszyny w celu zidentyfikowania rozmiaru maszyny wirtualnej i typu dysku na platformie Azure. W przypadku serwerów ze źródłem odnajdywania jako Importuj są brane pod uwagę wartości wykorzystania wydajności określone przez użytkownika. Ta metoda jest szczególnie przydatna, jeśli masz nadmiernie przydzieloną lokalną maszynę wirtualną, ale wykorzystanie jest niskie i chcesz zmienić rozmiar maszyny wirtualnej na platformie Azure, aby zaoszczędzić koszty. Ta metoda pomoże zoptymalizować rozmiary podczas migracji.
-- Jeśli nie chcesz uwzględniać danych wydajności dotyczących rozmiarów maszyn wirtualnych i chcesz przełączyć maszyny lokalne na platformę Azure, możesz ustawić kryteria ustalania rozmiarów *jako lokalne*. Następnie Ocena serwera spowoduje rozmiary maszyn wirtualnych w oparciu o konfigurację lokalną, bez uwzględniania danych użycia. W takim przypadku działania związane z ustalaniem wielkości dysku są oparte na typie magazynu określonym we właściwościach oceny (HDD w warstwie Standardowa, SSD w warstwie Standardowa lub Premium).
+**Ustalanie rozmiaru obliczeń**: przydziela jednostki SKU maszyny wirtualnej platformy Azure na podstawie rozmiaru przydzielonego lokalnie.
+**Rozmiar magazynu/dysku**: Ocena serwera sprawdza typ magazynu określony we właściwościach oceny (standardowy dysk twardy/SSD/Premium) i zaleca odpowiedni typ dysku. Domyślny typ magazynu to dyski Premium.
+**Ustalanie wielkości sieci**: Ocena serwera traktuje kartę sieciową na komputerze lokalnym.
 
-### <a name="performance-based-sizing"></a>Ustalanie wielkości na podstawie wydajności
 
-W przypadku ustalania rozmiarów na podstawie wydajności Ocena serwera rozpoczyna się od dysków podłączonych do maszyny wirtualnej, a następnie kart sieciowych. Następnie mapuje jednostkę SKU maszyny wirtualnej platformy Azure na podstawie wymagań obliczeniowych lokalnej maszyny wirtualnej. Urządzenie Azure Migrate profiluje lokalne środowisko do zbierania danych wydajności dotyczących procesora CPU, pamięci, dysków i karty sieciowej.
+## <a name="calculate-sizing-performance-based"></a>Obliczanie rozmiaru (opartego na wydajności)
 
-**Kroki zbierania danych wydajności:**
+Gdy maszyna zostanie oznaczona jako gotowa na platformie Azure, w przypadku korzystania z ustalania rozmiarów w oparciu o wydajność Ocena serwera w następujący sposób:
 
-1. W przypadku maszyn wirtualnych VMware urządzenie Azure Migrate zbiera punkt próbkowania w czasie rzeczywistym co 20-sekundowy interwał. W przypadku maszyn wirtualnych funkcji Hyper-V punkt próbkowania w czasie rzeczywistym jest zbierany co 30 sekund. W przypadku serwerów fizycznych punkt próbkowania w czasie rzeczywistym jest zbierany co 5-minutowy interwał. 
-2. Urządzenie zbiera przykładowe punkty zebrane co 10 minut i wysyła maksymalną wartość dla ostatnich 10 minut do oceny serwera. 
-3. W ramach oceny serwera są przechowywane wszystkie 10-minutowe punkty próbkowania przez ostatni miesiąc. Następnie, w zależności od właściwości oceny określonych dla *historii wydajności* i *użycia percentylu*, identyfikuje odpowiedni punkt danych do użycia w celu zmiany wielkości liter. Na przykład jeśli historia wydajności jest ustawiona na 1 dzień, a wykorzystanie percentylu to używany 95. percentyl, Ocena serwera używa 10-minutowych punktów próbkowania w ciągu ostatniego dnia, sortuje je w kolejności rosnącej i wybiera wartość używany 95. percentylu dla odpowiedniego wymiaru. 
-4. Ta wartość jest mnożona przez współczynnik komfortu, aby uzyskać efektywne dane użycia wydajności dla każdej metryki (użycie procesora CPU, użycie pamięci, operacje we/wy dysku (odczyt i zapis), przepływność dysku (odczyt i zapis) oraz przepływność sieci (w i wychodząca) zbieranie informacji o urządzeniu.
+- Ocena serwera traktuje historię wydajności maszyny w celu zidentyfikowania rozmiaru maszyny wirtualnej i typu dysku na platformie Azure.
+- Jeśli serwery zostały zaimportowane przy użyciu pliku CSV, podane wartości są używane. Ta metoda jest szczególnie przydatna, jeśli masz nadmiernie przydzieloną maszynę lokalną, wykorzystanie jest w rzeczywistości niską i chcesz uzyskać odpowiednie rozmiary maszyny wirtualnej na platformie Azure, aby zaoszczędzić koszty. 
+- Jeśli nie chcesz używać danych dotyczących wydajności, zresetuj kryteria ustalania wielkości tak, aby były lokalne, zgodnie z opisem w poprzedniej sekcji.
 
-Po ustaleniu wartości efektywnego wykorzystania magazyn, Sieć i rozmiar obliczeń są obsługiwane w następujący sposób.
+### <a name="calculate-storage-sizing"></a>Oblicz rozmiar magazynu
 
-> [!NOTE]
-> W przypadku serwerów dodanych za pośrednictwem importu dane wydajności dostarczone przez użytkownika są używane bezpośrednio w celu uzyskania odpowiedniego poziomu.
+W przypadku określania wielkości magazynu Azure Migrate próbuje zmapować każdy dysk dołączony do maszyny na dysk na platformie Azure i działa w następujący sposób:
 
-**Rozmiar magazynu**: Azure Migrate próbuje zmapować każdy dysk dołączony do maszyny na dysk na platformie Azure.
+1. Ocena serwera umożliwia dodanie operacji odczytu i zapisu na dysku, aby uzyskać łączną liczbę operacji we/wy na sekundę. Podobnie dodaje wartości przepływności odczytu i zapisu w celu uzyskania całkowitej przepływności każdego dysku.
+2. Jeśli typ magazynu został określony jako automatyczny, na podstawie efektywnych wartości IOPS i przepływności, funkcja oceny serwera określa, czy dysk powinien być mapowany na standardowy dysk twardy, standardowy dysk SSD lub dysku Premium na platformie Azure. Jeśli typ magazynu jest ustawiony na HDD w warstwie Standardowa/SSD/Premium, Ocena serwera próbuje znaleźć jednostkę SKU dysku w wybranym typie magazynu (dyski HDD w warstwie Standardowa/SSD/Premium).
+3. Dyski są wybierane w następujący sposób:
+    - Jeśli Ocena serwera nie może znaleźć dysku z wymaganą liczbą operacji we/wy i przepływności, oznacza to, że maszyna jest nieodpowiednia dla platformy Azure.
+    - Jeśli Ocena serwera odnajdzie zestaw odpowiednich dysków, wybiera dyski, które obsługują lokalizację określoną w ustawieniach oceny.
+    - Jeśli istnieje wiele kwalifikujących się dysków, Ocena serwera wybiera dysk o najniższym koszcie.
+    - Jeśli dane dotyczące wydajności dla dowolnego dysku są niedostępne, dane konfiguracji dysku (rozmiar dysku) są używane w celu znalezienia standardowego dysku SSD na platformie Azure.
 
-> [!NOTE]
-> Azure Migrate oceny serwera obsługuje tylko dyski zarządzane do oceny.
+### <a name="calculate-network-sizing"></a>Oblicz rozmiar sieci
 
-  - Ocena serwera umożliwia dodanie operacji odczytu i zapisu na dysku, aby uzyskać łączną liczbę operacji we/wy na sekundę. Podobnie dodaje wartości przepływności odczytu i zapisu w celu uzyskania całkowitej przepływności każdego dysku.
-  - Jeśli typ magazynu został określony jako automatyczny, na podstawie wartości liczby operacji we/wy na sekundę, Ocena serwera określa, czy dysk powinien być mapowany na standardowy dysk twardy, standardowy dysk SSD czy w warstwie Premium na platformie Azure. Jeśli typ magazynu jest ustawiony na HDD w warstwie Standardowa/SSD/Premium, Ocena serwera próbuje znaleźć jednostkę SKU dysku w wybranym typie magazynu (dyski HDD w warstwie Standardowa/SSD/Premium).
-  - Jeśli Ocena serwera nie może znaleźć dysku z wymaganą liczbą operacji we/wy i przepływności, oznacza to, że maszyna jest nieodpowiednia dla platformy Azure.
-  - Jeśli Ocena serwera odnajdzie zestaw odpowiednich dysków, wybiera dyski, które obsługują lokalizację określoną w ustawieniach oceny.
-  - Jeśli istnieje wiele kwalifikujących się dysków, Ocena serwera wybiera dysk o najniższym koszcie.
-  - Jeśli dane dotyczące wydajności dla dowolnego dysku są niedostępne, dane konfiguracji dysku (rozmiar dysku) są używane w celu znalezienia standardowego dysku SSD na platformie Azure.
-
-**Ustalanie wielkości sieci**: Ocena serwera próbuje znaleźć maszynę wirtualną platformy Azure, która może obsługiwać liczbę kart sieciowych podłączonych do maszyny lokalnej oraz wydajność wymaganą przez te karty sieciowe.
+Ocena serwera próbuje znaleźć maszynę wirtualną platformy Azure, która może obsługiwać liczbę kart sieciowych podłączonych do maszyny lokalnej oraz wydajność wymaganą przez te karty sieciowe.
 - W celu uzyskania efektywnej wydajności sieci lokalnej maszyny wirtualnej Ocena serwera agreguje dane przesyłane na sekundę (MB/s) z komputera (w sieci) na wszystkich kartach sieciowych i stosuje współczynnik komfortu. Używa tej liczby, aby znaleźć maszynę wirtualną platformy Azure, która może obsługiwać wymaganą wydajność sieci.
 - Wraz z wydajnością sieci Ocena serwera uwzględnia również, czy maszyna wirtualna platformy Azure może obsługiwać wymaganą liczbę kart sieciowych.
 - Jeśli żadne dane wydajności sieci nie są dostępne, Ocena serwera uwzględnia tylko liczbę kart sieciowych na potrzeby ustalania rozmiarów maszyn wirtualnych.
 
-> [!NOTE]
-> Określanie liczby kart sieciowych nie jest obecnie obsługiwane w przypadku importowanych serwerów
 
-**Ustalanie rozmiaru obliczeń**: po obliczeniu wymagań dotyczących magazynu i sieci Ocena serwera uwzględnia wymagania dotyczące procesora CPU i pamięci, aby znaleźć odpowiedni rozmiar maszyny wirtualnej na platformie Azure.
+### <a name="calculate-compute-sizing"></a>Oblicz rozmiar obliczeń
+
+Po obliczeniu wymagań dotyczących magazynu i sieci Ocena serwera uwzględnia wymagania dotyczące procesora i pamięci, aby znaleźć odpowiedni rozmiar maszyny wirtualnej na platformie Azure.
 - Azure Migrate analizuje efektywne wykorzystanie rdzeni i pamięci, aby znaleźć odpowiedni rozmiar maszyny wirtualnej na platformie Azure.
 - Jeśli odpowiedni rozmiar nie zostanie znaleziony, oznacza to, że komputer jest oznaczony jako nieodpowiedni dla platformy Azure.
 - Jeśli zostanie znaleziony odpowiedni rozmiar, Azure Migrate stosuje obliczenia magazynu i sieci. Następnie stosuje ustawienia lokalizacji i warstwy cenowej dla ostatecznego zalecenia dotyczącego rozmiaru maszyny wirtualnej.
 - Jeśli występuje wiele kwalifikujących się rozmiarów maszyn wirtualnych platformy Azure, zalecany jest rozmiar, który generuje najniższy koszt.
 
-### <a name="as-on-premises-sizing"></a>Zgodnie z rozmiarem lokalnym
 
-Jeśli używasz *jako lokalizacji lokalnej*, Ocena serwera nie uwzględnia historii wydajności maszyn wirtualnych i dysków. Zamiast tego przypisuje jednostkę SKU maszyny wirtualnej na platformie Azure na podstawie rozmiaru przydzielonego lokalnie. Podobnie w przypadku określania wielkości dysku Ocena serwera sprawdza typ magazynu określony we właściwościach oceny (HDD w warstwie Standardowa/SSD/Premium) i zaleca odpowiedni typ dysku. Domyślny typ magazynu to dyski Premium.
+### <a name="calculate-confidence-ratings"></a>Oblicz klasyfikacje zaufania
 
-## <a name="confidence-ratings"></a>Klasyfikacje zaufania
 Każda Ocena oparta na wydajności w Azure Migrate jest skojarzona z oceną zaufania z zakresu od jednej (najniższej) do pięciu gwiazdek (najwyższa).
 - Ocena zaufania jest przypisana do oceny na podstawie dostępności punktów danych potrzebnych do obliczenia oceny.
 - Ocena zaufania do oceny pomaga oszacować niezawodność zaleceń dotyczących rozmiaru określanych przez usługę Azure Migrate.
@@ -166,7 +226,7 @@ W zależności od wartości procentowej dostępnych punktów danych Ocena zaufan
 > [!NOTE]
 > Klasyfikacje zaufania nie są przypisywane do ocen serwerów zaimportowanych przy użyciu programu. Plik CSV do Azure Migrate. 
 
-### <a name="low-confidence-ratings"></a>Oceny o niskiej pewności
+#### <a name="low-confidence-ratings"></a>Oceny o niskiej pewności
 
 Poniżej przedstawiono kilka powodów, dla których ocena może uzyskać klasyfikację o niskiej pewności:
 
@@ -177,7 +237,7 @@ Poniżej przedstawiono kilka powodów, dla których ocena może uzyskać klasyfi
 > [!NOTE]
 > Jeśli Ocena zaufania dowolnej oceny jest mniejsza niż pięć gwiazdek, zalecamy odczekanie co najmniej jednego dnia urządzenia, aby profilować środowisko, a następnie ponownie obliczyć ocenę. Jeśli tego nie zrobisz, ustalanie rozmiarów na podstawie wydajności może być niezawodne. W takim przypadku zaleca się przełączenie oceny do rozmiarów lokalnych.
 
-## <a name="monthly-cost-estimation"></a>Oszacowanie kosztu miesięcznego
+## <a name="calculate-monthly-costs"></a>Oblicz miesięczne koszty
 
 Po zakończeniu ustalania rozmiarów Azure Migrate oblicza koszty obliczeń i magazynowania po migracji.
 
@@ -193,4 +253,4 @@ Koszty są wyświetlane w walucie określonej w ustawieniach oceny.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Utwórz ocenę dla [maszyn wirtualnych VMware](tutorial-assess-vmware.md) lub [maszyn wirtualnych funkcji Hyper-V](tutorial-assess-hyper-v.md).
+[Zapoznaj](best-practices-assessment.md) się z najlepszymi rozwiązaniami dotyczącymi tworzenia ocen. 

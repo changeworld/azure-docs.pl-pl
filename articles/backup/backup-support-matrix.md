@@ -3,12 +3,12 @@ title: Tabela obsługi usługi Azure Backup
 description: Zawiera podsumowanie ustawień obsługi i ograniczeń dotyczących usługi Azure Backup.
 ms.topic: conceptual
 ms.date: 02/17/2019
-ms.openlocfilehash: 2c33c71e579cc6fa5d01ba086fb1a9a4fc9c142c
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: dc709294b92fd26343e9520e3775b9f079aba94f
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172065"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75708484"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Macierz obsługi dla Azure Backup
 
@@ -54,7 +54,7 @@ Oto nowości obsługiwane, jeśli chcesz utworzyć kopię zapasową maszyn lokal
 
 **Limit** | **Szczegóły**
 --- | ---
-**Dyski danych maszyny wirtualnej platformy Azure** | Limit wynoszący 16
+**Dyski danych maszyny wirtualnej platformy Azure** | Limit wynoszący 16 <br> Aby skorzystać z prywatnej wersji zapoznawczej maszyn wirtualnych z ponad 16 dyskami (do 32 dysków), wyślij wiadomość na adres AskAzureBackupTeam@microsoft.com
 **Rozmiar dysku danych maszyny wirtualnej platformy Azure** | Rozmiar poszczególnych dysków może należeć do 32 TB i maksymalnie 256 TB łączny dla wszystkich dysków w maszynie wirtualnej.
 
 ### <a name="azure-vm-backup-options"></a>Opcje kopii zapasowych maszyn wirtualnych platformy Azure
@@ -74,7 +74,7 @@ W tym miejscu nowości są obsługiwane, jeśli chcesz utworzyć kopię zapasow�
 
 **Typ kopii zapasowej** | **Linux (zatwierdzony przez Azure)**
 --- | ---
-**Bezpośrednie tworzenie kopii zapasowej maszyny lokalnej z systemem Linux** | Nieobsługiwane. Agenta MARS można zainstalować tylko na komputerach z systemem Windows.
+**Bezpośrednie tworzenie kopii zapasowej maszyny lokalnej z systemem Linux** | Bez pomocy technicznej. Agenta MARS można zainstalować tylko na komputerach z systemem Windows.
 **Używanie rozszerzenia agenta do tworzenia kopii zapasowej maszyny wirtualnej platformy Azure z systemem Linux** | Tworzenie kopii zapasowej spójnej na poziomie aplikacji przy użyciu [skryptów niestandardowych](backup-azure-linux-app-consistent.md).<br/><br/> Odzyskiwanie na poziomie plików.<br/><br/> Przywracanie przez utworzenie maszyny wirtualnej z punktu odzyskiwania lub dysku.
 **Używanie programu DPM do tworzenia kopii zapasowej lokalnej lub maszyny wirtualnej platformy Azure z systemem Linux** | Spójna z plikami kopia zapasowa maszyn wirtualnych gościa systemu Linux w funkcji Hyper-V i oprogramowaniu VMWare.<br/><br/> Przywracanie maszyny wirtualnej z maszynami wirtualnymi funkcji Hyper-V i VMWare Linux.<br/><br/> Kopia zapasowa spójna na poziomie plików nie jest dostępna dla maszyny wirtualnej platformy Azure.
 **Tworzenie kopii zapasowej maszyny lokalnej lub maszyny wirtualnej platformy Azure z systemem Linux przy użyciu programu serwera usługi MAB** | Spójna z plikami kopia zapasowa maszyn wirtualnych gościa systemu Linux w funkcji Hyper-V i oprogramowaniu VMWare.<br/><br/> Przywracanie maszyny wirtualnej z maszynami wirtualnymi funkcji Hyper-V i VMWare Linux.<br/><br/> Spójna na poziomie plików kopia zapasowa niedostępna dla maszyn wirtualnych platformy Azure.
@@ -141,6 +141,19 @@ Funkcja Backup obsługuje kompresję ruchu kopii zapasowej, jak przedstawiono w 
 **Przechowywanie punktów odzyskiwania** | Codziennie, co tydzień, co miesiąc, co rok
 **Maksymalny okres przechowywania** | Zależnie od częstotliwości wykonywania kopii zapasowych
 **Punkty odzyskiwania na dysku programu DPM/serwera usługi MAB** | 64 dla serwerów plików; 448 dla serwerów aplikacji <br/><br/>Nieograniczona liczba punktów odzyskiwania na taśmie dla lokalnego programu DPM
+
+## <a name="cross-region-restore"></a>Przywracanie między regionami
+
+Azure Backup dodano funkcję przywracania między regionami w celu wzmocnienia dostępności i możliwości odporności danych, dzięki czemu klienci mają pełną kontrolę nad przywracaniem danych do regionu pomocniczego. Aby skonfigurować tę funkcję, przejdź [do artykułu Ustawianie Międzyregionowego przywracania.](backup-create-rs-vault.md#set-cross-region-restore) Ta funkcja jest obsługiwana dla następujących typów zarządzania:
+
+| Typ zarządzania kopiami zapasowymi | Obsługiwane                                                    | Obsługiwane regiony |
+| ---------------------- | ------------------------------------------------------------ | ----------------- |
+| Maszyna wirtualna platformy Azure               | Tak. Publiczna ograniczona wersja zapoznawcza obsługiwana dla szyfrowanych maszyn wirtualnych i maszyn wirtualnych o pojemności mniejszej niż 4 TB | Zachodnio-środkowe stany USA   |
+| Agent MARS/lokalnie | Nie                                                           | ND               |
+| SQL/SAP HANA          | Nie                                                           | ND               |
+| AFS                    | Nie                                                           | ND               |
+
+
 
 ## <a name="next-steps"></a>Następne kroki
 

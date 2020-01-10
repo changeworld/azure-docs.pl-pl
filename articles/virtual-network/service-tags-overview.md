@@ -13,114 +13,111 @@ ms.workload: infrastructure-services
 ms.date: 10/22/2019
 ms.author: jispar
 ms.reviewer: kumud
-ms.openlocfilehash: 152b9f3974f24644e55bed68f5ed65faa90d7fe7
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: b1219153b2b2a0246110d2d9a7a84d16cc2a25f0
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851659"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75707563"
 ---
 # <a name="virtual-network-service-tags"></a>Tagi usługi sieci wirtualnej 
 <a name="network-service-tags"></a>
 
-Tag usługi reprezentuje grupę prefiksów adresów IP z danej usługi platformy Azure. Pomaga zminimalizować złożoność częstych aktualizacji w regułach zabezpieczeń sieci. Za pomocą tagów usługi można definiować kontrolę dostępu do sieci w [grupach zabezpieczeń sieci](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules) lub w [zaporze platformy Azure](https://docs.microsoft.com/azure/firewall/service-tags). Podczas tworzenia reguł zabezpieczeń można użyć tagów usługi zamiast konkretnych adresów IP. Określając nazwę tagu usługi (np. **ApiManagement**) w odpowiednim polu *źródłowym* lub *docelowym* reguły, można zezwolić na ruch dla odpowiedniej usługi lub go odrzucić. Firma Microsoft zarządza prefiksami adresów, które obejmują tag usługi, i automatycznie aktualizuje tag usługi jako adresy. 
+Tag usługi reprezentuje grupę prefiksów adresów IP z danej usługi platformy Azure. Pomaga zminimalizować złożoność częstych aktualizacji reguł zabezpieczeń sieciowych. Za pomocą tagów usługi można definiować kontrolę dostępu do sieci w [grupach zabezpieczeń sieci](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules) lub w [zaporze platformy Azure](https://docs.microsoft.com/azure/firewall/service-tags). 
+
+Podczas tworzenia reguł zabezpieczeń można używać tagów usługi zamiast określonych adresów IP. Określając nazwę tagu usługi (na przykład **ApiManagement**) w odpowiednim polu *źródłowym* lub *docelowym* reguły, można zezwolić na ruch dla odpowiedniej usługi lub go odrzucić. Firma Microsoft zarządza prefiksami adresów, które obejmują tag usługi, i automatycznie aktualizuje tag usługi jako adresy.
 
 ## <a name="available-service-tags"></a>Dostępne Tagi usług
-Poniższa tabela zawiera wszystkie znaczniki usługi dostępne do użycia w regułach [sieciowych grup zabezpieczeń](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules) .
+Poniższa tabela zawiera wszystkie Tagi usługi dostępne do użycia w regułach [sieciowej grupy zabezpieczeń](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules) .
 
-Kolumny wskazują, czy tag jest:
+Kolumny wskazują, czy tag:
 
-- Odpowiednie dla reguł obejmujących ruch przychodzący lub wychodzący
-- Obsługa zakresu [regionalnego](https://azure.microsoft.com/regions) 
-- Możliwe do użycia w regułach [zapory platformy Azure](https://docs.microsoft.com/azure/firewall/service-tags)
+- Jest odpowiednie dla reguł obejmujących ruch przychodzący lub wychodzący.
+- Obsługuje zakres [regionalny](https://azure.microsoft.com/regions) .
+- Jest użyteczny w regułach [zapory platformy Azure](https://docs.microsoft.com/azure/firewall/service-tags) .
 
-Domyślnie Tagi usług odzwierciedlają zakresy dla całej chmury.  Niektóre Tagi usług umożliwiają również dokładniejsze sterowanie ziarnem, ograniczając odpowiednie zakresy adresów IP do określonego regionu.  Na przykład, chociaż **Magazyn** tagów usługi reprezentuje usługę Azure Storage dla całej chmury, **Magazyn. Zachodnie** zawęża, że tylko zakresy adresów IP magazynu z regionu zachodniego.  Opisy każdego z poniższych tagów usługi wskazują, czy obsługują one zakres regionalny.  
-
-
+Domyślnie Tagi usług odzwierciedlają zakresy dla całej chmury. Niektóre Tagi usług umożliwiają również dokładniejszą kontrolę poprzez ograniczenie odpowiednich zakresów adresów IP do określonego regionu. Na przykład **Magazyn** znacznika usługi reprezentuje usługę Azure Storage dla całej chmury, ale w obszarze **Magazyn. Zachodnie** zawęża zakres tylko do zakresów adresów IP magazynu z regionu zachód. Poniższa tabela wskazuje, czy każdy tag usługi obsługuje taki zakres regionalny.  
 
 | Tag | Przeznaczenie | Może korzystać z ruchu przychodzącego lub wychodzącego? | Może być regionalna? | Czy można używać z zaporą platformy Azure? |
 | --- | -------- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| **ApiManagement** | Ruch związany z zarządzaniem dla wdrożeń dedykowanych APIM. | Oba | Nie | Tak |
-| **AppService**    | Usługa App Service. Ten tag jest zalecany w przypadku reguł zabezpieczeń wychodzących WebApp frontony. | Wychodzące | Tak | Tak |
-| **AppServiceManagement** | Ruch związany z zarządzaniem App Service Environment dedykowane wdrożenia. | Oba | Nie | Tak |
-| **Usługi azureactivedirectory** | Usługa Azure Active Directory. | Wychodzące | Nie | Tak |
-| **AzureActiveDirectoryDomainServices** | Ruch związany z zarządzaniem Azure Active Directory Domain Services dedykowane wdrożenia. | Oba | Nie | Tak |
-| **AzureBackup** |Usługa Azure Backup.<br/><br/>*Uwaga:* Ten tag ma zależność od tagów **Storage** i **usługi azureactivedirectory** . | Wychodzące | Nie | Tak |
+| **ApiManagement** | Ruch związany z zarządzaniem dla wdrożeń dedykowanych API Management platformy Azure. | Oba | Nie | Tak |
+| **AppService**    | Usługa Azure App Service. Ten tag jest zalecany w przypadku wychodzących reguł zabezpieczeń do frontonów aplikacji sieci Web. | Wychodzące | Tak | Tak |
+| **AppServiceManagement** | Ruch związany z zarządzaniem dla wdrożeń przeznaczonych dla App Service Environment. | Oba | Nie | Tak |
+| **Usługi azureactivedirectory** | Azure Active Directory. | Wychodzące | Nie | Tak |
+| **AzureActiveDirectoryDomainServices** | Ruch związany z zarządzaniem dla wdrożeń przeznaczonych dla Azure Active Directory Domain Services. | Oba | Nie | Tak |
+| **AzureBackup** |Azure Backup.<br/><br/>*Uwaga:* Ten tag ma zależność od tagów **Storage** i **usługi azureactivedirectory** . | Wychodzące | Nie | Tak |
 | **AzureCloud** | Wszystkie [publiczne adresy IP centrum](https://www.microsoft.com/download/details.aspx?id=41653)danych. | Wychodzące | Tak | Tak |
-| **AzureConnectors** | Logic Apps łączniki dla połączeń sondy/zaplecza. | Przychodzące | Tak | Tak |
-| **AzureContainerRegistry** | Usługa Azure Container Registry. | Wychodzące | Tak | Tak |
-| **AzureCosmosDB** | Usługa Azure Cosmos Database. | Wychodzące | Tak | Tak |
-| **AzureDataLake** | Usługa Azure Data Lake. | Wychodzące | Nie | Tak |
+| **AzureConnectors** | Azure Logic Apps łączniki dla połączeń sondy/zaplecza. | Przychodzące | Tak | Tak |
+| **AzureContainerRegistry** | Azure Container Registry. | Wychodzące | Tak | Tak |
+| **AzureCosmosDB** | Azure Cosmos DB. | Wychodzące | Tak | Tak |
+| **AzureDataLake** | Azure Data Lake. | Wychodzące | Nie | Tak |
 | **AzureHDInsight** | Usługa Azure HDInsight. | Przychodzące | Tak | Nie |
-| **AzureIoTHub** | Usługa IoT Hub platformy Azure. | Wychodzące | Nie | Nie |
-| **AzureKeyVault** | Usługa magazynu kluczy platformy Azure.<br/><br/>*Uwaga:* Ten tag ma zależność od znacznika **usługi azureactivedirectory** . | Wychodzące | Tak | Tak |
-| **AzureLoadBalancer** | Moduł równoważenia obciążenia infrastruktury platformy Azure. Ten znacznik przekłada się na [wirtualny adres IP hosta](security-overview.md#azure-platform-considerations) (168.63.129.16), z którego pochodzą sondy kondycji platformy Azure. Jeśli nie jest używana usługa Azure Load Balancer, tę zasadę można przesłonić. | Oba | Nie | Nie |
-| **AzureMachineLearning** | Usługa Azure Machine Learning. | Wychodzące | Nie | Tak |
-| **AzureMonitor** | Log Analytics, App Insights, AzMon i metryki niestandardowe (rdzeniowym procesorem Endpoints).<br/><br/>*Uwaga:* W przypadku Log Analytics ten tag ma zależność od tagu **magazynu** . | Wychodzące | Nie | Tak |
-| **AzurePlatformDNS** | Podstawowa infrastruktura (domyślna) usługi DNS.<br/><br>Za pomocą tego tagu można wyłączyć domyślny system DNS. Należy zachować ostrożność przy użyciu tego tagu. Zalecane jest zapoznanie się z [zagadnieniami dotyczącymi platformy Azure](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations) . Testowanie jest zalecane przed użyciem tego tagu. | Wychodzące | Nie | Nie |
-| **AzurePlatformIMDS** | IMDS, czyli podstawowa usługa infrastruktury.<br/><br/>Ten tag służy do wyłączania domyślnego IMDS.  Należy zachować ostrożność przy użyciu tego tagu. Zalecane jest zapoznanie się z [zagadnieniami dotyczącymi platformy Azure](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations) . Testowanie jest zalecane przed użyciem tego tagu. | Wychodzące | Nie | Nie |
-| **AzurePlatformLKM** | Licencjonowanie systemu Windows lub usługa zarządzania kluczami.<br/><br/>Ten tag służy do wyłączania ustawień domyślnych dla licencjonowania. Należy zachować ostrożność przy użyciu tego tagu.  Zalecane jest zapoznanie się z [zagadnieniami dotyczącymi platformy Azure](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations) . Testowanie jest zalecane przed użyciem tego tagu. | Wychodzące | Nie | Nie |
-| **AzureTrafficManaged** | Adresy IP badania Traffic Manager platformy Azure.<br/><br/>Więcej informacji na temat adresów IP sondy usługi Traffic Manager można znaleźć w temacie [Usługa Azure Traffic Manager — często zadawane pytania](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs). | Przychodzące | Nie | Tak |  
-| **BatchNodeManagement** | Ruch związany z zarządzaniem Azure Batch dedykowane wdrożenia. | Oba | Nie | Tak |
-| **CognitiveServicesManagement** | Zakresy adresów dla ruchu dla Cognitive Services | Wychodzące | Nie | Nie |
+| **AzureIoTHub** | IoT Hub platformy Azure. | Wychodzące | Nie | Nie |
+| **AzureKeyVault** | Usługa Azure Key Vault.<br/><br/>*Uwaga:* Ten tag ma zależność od znacznika **usługi azureactivedirectory** . | Wychodzące | Tak | Tak |
+| **AzureLoadBalancer** | Moduł równoważenia obciążenia infrastruktury platformy Azure. Tag tłumaczy na [wirtualny adres IP hosta](security-overview.md#azure-platform-considerations) (168.63.129.16), z którego pochodzą sondy kondycji platformy Azure. Jeśli nie używasz Azure Load Balancer, możesz zastąpić tę regułę. | Oba | Nie | Nie |
+| **AzureMachineLearning** | Azure Machine Learning. | Oba | Nie | Tak |
+| **AzureMonitor** | Log Analytics, Application Insights, AzMon i metryki niestandardowe (punkty końcowe rdzeniowym procesorem).<br/><br/>*Uwaga:* W przypadku Log Analytics ten tag ma zależność od tagu **magazynu** . | Wychodzące | Nie | Tak |
+| **AzurePlatformDNS** | Podstawowa infrastruktura (domyślna) usługi DNS.<br/><br>Za pomocą tego tagu można wyłączyć domyślny system DNS. Należy zachować ostrożność w przypadku użycia tego tagu. Zalecamy zapoznanie się z [zagadnieniami dotyczącymi platformy Azure](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations). Zalecamy również przeprowadzenie testów przed użyciem tego tagu. | Wychodzące | Nie | Nie |
+| **AzurePlatformIMDS** | Azure Instance Metadata Service (IMDS), czyli podstawowa usługa infrastruktury.<br/><br/>Ten tag służy do wyłączania domyślnego IMDS. Należy zachować ostrożność w przypadku użycia tego tagu. Zalecamy zapoznanie się z [zagadnieniami dotyczącymi platformy Azure](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations). Zalecamy również przeprowadzenie testów przed użyciem tego tagu. | Wychodzące | Nie | Nie |
+| **AzurePlatformLKM** | Licencjonowanie systemu Windows lub usługa zarządzania kluczami.<br/><br/>Ten tag służy do wyłączania ustawień domyślnych dla licencjonowania. Należy zachować ostrożność w przypadku użycia tego tagu. Zalecamy zapoznanie się z [zagadnieniami dotyczącymi platformy Azure](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations).  Zalecamy również przeprowadzenie testów przed użyciem tego tagu. | Wychodzące | Nie | Nie |
+| **AzureTrafficManager** | Adresy IP badania Traffic Manager platformy Azure.<br/><br/>Aby uzyskać więcej informacji na temat Traffic Manager adresów IP sondowania, zobacz [często zadawane pytania dotyczące usługi Azure Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs). | Przychodzące | Nie | Tak |  
+| **BatchNodeManagement** | Ruch związany z zarządzaniem dla wdrożeń przeznaczonych dla Azure Batch. | Oba | Nie | Tak |
+| **CognitiveServicesManagement** | Zakresy adresów dla ruchu dla Cognitive Services platformy Azure. | Wychodzące | Nie | Nie |
 | **Dynamics365ForMarketingEmail** | Zakresy adresów dla usługi marketingowej poczty programu Dynamics 365. | Wychodzące | Tak | Nie |
-| **EventHub** | Usługa EventHub platformy Azure. | Wychodzące | Tak | Tak |
-| **Bramamanager** | Ruch związany z zarządzaniem na potrzeby dedykowanych wdrożeń bram sieci VPN/aplikacji. | Przychodzące | Nie | Nie |
-| **Internet** | Przestrzeń adresów IP, która znajduje się poza siecią wirtualną i jest dostępna przez publiczny Internet.<br/><br/>Ten zakres adresów obejmuje [publiczną przestrzeń adresów IP należącą do platformy Azure](https://www.microsoft.com/download/details.aspx?id=41653). | Oba | Nie | Nie |
-| **MicrosoftContainerRegistry** | Usługa Container Registry firmy Microsoft. | Wychodzące | Tak | Tak |
-| **ServiceBus** | Usługa Azure Service Bus przy użyciu warstwy usługi Premium. | Wychodzące | Tak | Tak |
-| **ServiceFabric** | Usługa Service Fabric. | Wychodzące | Nie | Nie |
-| **Server** | Azure SQL Database, Azure Database for MySQL, Azure Database for PostgreSQL i Azure SQL Data Warehouse usługi.<br/><br/>*Uwaga:* Ten tag reprezentuje usługę, ale nie konkretne wystąpienia usługi. Na przykład tag reprezentuje usługę Azure SQL Database, ale nie konkretną bazę danych lub serwer SQL. | Wychodzące | Tak | Tak |
-| **Xmlmanagement** | Ruch związany z zarządzaniem dedykowanymi wdrożeniami programu SQL Server. | Oba | Nie | Tak |
-| **Magazyn** | Usługa Azure Storage. <br/><br/>*Uwaga:* Tag reprezentuje usługę, ale nie konkretne wystąpienia usługi. Na przykład tag reprezentuje usługę Azure Storage, ale nie konkretne konto usługi Azure Storage. | Wychodzące | Tak | Tak |
-| **VirtualNetwork** | Przestrzeń adresowa sieci wirtualnej (wszystkie zakresy adresów IP zdefiniowane dla sieci wirtualnej), wszystkie połączone lokalne przestrzenie adresowe, [równorzędne](virtual-network-peering-overview.md) sieci wirtualne lub Sieć wirtualna połączona z [bramą sieci wirtualnej](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%3ftoc.json), [wirtualny adres IP hosta](security-overview.md#azure-platform-considerations) i prefiksy adresów używane na [trasach zdefiniowanych przez użytkownika](virtual-networks-udr-overview.md). Należy pamiętać, że ten tag może również zawierać trasy domyślne. | Oba | Nie | Nie |
+| **EventHub** | Event Hubs platformy Azure. | Wychodzące | Tak | Tak |
+| **Bramamanager** | Ruch związany z zarządzaniem dla wdrożeń przeznaczonych dla usługi Azure VPN Gateway i Application Gateway. | Przychodzące | Nie | Nie |
+| **Internet** | Przestrzeń adresów IP, która znajduje się poza siecią wirtualną i jest dostępna przez publiczny Internet.<br/><br/>Zakres adresów obejmuje [publiczną przestrzeń adresów IP należącą do platformy Azure](https://www.microsoft.com/download/details.aspx?id=41653). | Oba | Nie | Nie |
+| **MicrosoftContainerRegistry** | Azure Container Registry. | Wychodzące | Tak | Tak |
+| **ServiceBus** | Azure Service Bus ruch korzystający z warstwy usługi Premium. | Wychodzące | Tak | Tak |
+| **ServiceFabric** | Service Fabric platformy Azure. | Wychodzące | Nie | Nie |
+| **Sql** | Azure SQL Database, Azure Database for MySQL, Azure Database for PostgreSQL i Azure SQL Data Warehouse.<br/><br/>*Uwaga:* Ten tag reprezentuje usługę, ale nie konkretne wystąpienia usługi. Na przykład tag reprezentuje usługę Azure SQL Database, ale nie konkretną bazę danych lub serwer SQL. | Wychodzące | Tak | Tak |
+| **Xmlmanagement** | Ruch związany z zarządzaniem dla wdrożeń dedykowanych przez program SQL Server. | Oba | Nie | Tak |
+| **Magazyn** | Azure Storage. <br/><br/>*Uwaga:* Ten tag reprezentuje usługę, ale nie konkretne wystąpienia usługi. Na przykład tag reprezentuje usługę Azure Storage, ale nie konkretne konto usługi Azure Storage. | Wychodzące | Tak | Tak |
+| **VirtualNetwork** | Przestrzeń adresowa sieci wirtualnej (wszystkie zakresy adresów IP zdefiniowane dla sieci wirtualnej), wszystkie połączone lokalne przestrzenie adresowe, [równorzędne](virtual-network-peering-overview.md) sieci wirtualne, sieci wirtualne połączone z [bramą sieci wirtualnej](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%3ftoc.json), [wirtualny adres IP hosta](security-overview.md#azure-platform-considerations)i prefiksy adresów używane na [trasach zdefiniowanych przez użytkownika](virtual-networks-udr-overview.md). Ten tag może również zawierać trasy domyślne. | Oba | Nie | Nie |
 
 >[!NOTE]
->Podczas pracy w środowisku *klasycznym* (pre-Azure Resource Manager) jest obsługiwany zestaw powyższych tagów.  Używają one alternatywnej pisowni:
-
-| Pisownia klasyczna | Odpowiednik tagu Menedżer zasobów |
-|---|---|
-| AZURE_LOADBALANCER | AzureLoadBalancer |
-| INTERNET | Internet |
-| VIRTUAL_NETWORK | VirtualNetwork |
-
-> [!NOTE]
-> Tagi usług platformy Azure określają prefiksy adresów określonych chmur, które są używane. na przykład zakresy źródłowych adresów IP odpowiadające wartości tagów **SQL** będą różnić się między chmurą publiczną platformy Azure a chmurą platformy Azure w Chinach.
+>W klasycznym modelu wdrażania (przed Azure Resource Manager) jest obsługiwany podzestaw tagów wymienionych w poprzedniej tabeli. Te Tagi są napisane inaczej:
+>
+>| Pisownia klasyczna | Odpowiednik tagu Menedżer zasobów |
+>|---|---|
+>| AZURE_LOADBALANCER | AzureLoadBalancer |
+>| INTERNET | Internet |
+>| VIRTUAL_NETWORK | VirtualNetwork |
 
 > [!NOTE]
-> W przypadku zaimplementowania [punktu końcowego usługi dla sieci wirtualnej](virtual-network-service-endpoints-overview.md) dla usługi takiej jak usługa Azure Storage lub Azure SQL Database, platforma Azure dodaje [trasę](virtual-networks-udr-overview.md#optional-default-routes) do podsieci sieci wirtualnej dla usługi. Prefiksy adresów dla trasy to te same prefiksy adresów lub zakresy CIDR, co w odpowiednim tagu usługi.
+> Tagi usług platformy Azure oznaczają prefiksy adresów z określonej chmury. Na przykład bazowe zakresy adresów IP, które odpowiadają wartości tagu **SQL** w chmurze publicznej platformy Azure, będą inne niż bazowe zakresy w chmurze platformy Azure w Chinach.
 
+> [!NOTE]
+> W przypadku zaimplementowania [punktu końcowego usługi dla sieci wirtualnej](virtual-network-service-endpoints-overview.md) dla usługi takiej jak usługa Azure Storage lub Azure SQL Database, platforma Azure dodaje [trasę](virtual-networks-udr-overview.md#optional-default-routes) do podsieci sieci wirtualnej dla usługi. Prefiksy adresów w marszrucie to te same prefiksy adresów lub zakresy CIDR, jak w przypadku odpowiedniego tagu usługi.
 
+## <a name="service-tags-on-premises"></a>Lokalne znaczniki usług  
+Możesz uzyskać informacje o bieżącym znaczniku i zakresie usługi, aby uwzględnić je w ramach konfiguracji zapory lokalnej. Te informacje to bieżąca lista punktów adresów IP, które odpowiadają każdemu tagowi usługi. Możesz uzyskać informacje programowo lub za pomocą pobierania pliku JSON, zgodnie z opisem w poniższych sekcjach.
 
-## <a name="service-tags-in-on-premises"></a>Tagi usług w środowisku lokalnym  
-Możesz uzyskać informacje o bieżącym znaczniku i zakresie usługi, aby uwzględnić je w ramach konfiguracji zapory lokalnej.  Te informacje są bieżącą listą punktów w czasie dla zakresów adresów IP odpowiadających każdemu tagowi usługi.  Informacje można uzyskać programowo lub za pomocą pliku JSON, jak pokazano poniżej.
-
-### <a name="service-tag-discovery-api-public-preview"></a>Interfejs API odnajdywania tagów usługi (publiczna wersja zapoznawcza)
-Można programowo pobrać bieżącą listę tagów usługi z informacjami o zakresie adresów IP:
+### <a name="use-the-service-tag-discovery-api-public-preview"></a>Korzystanie z interfejsu API odnajdywania tagów usługi (publiczna wersja zapoznawcza)
+Można programowo pobrać bieżącą listę tagów usługi wraz ze szczegółami zakresu adresów IP:
 
 - [REST](https://docs.microsoft.com/rest/api/virtualnetwork/servicetags/list)
 - [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.network/Get-AzNetworkServiceTag?view=azps-2.8.0&viewFallbackFrom=azps-2.3.2)
 - [Interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/network?view=azure-cli-latest#az-network-list-service-tags)
 
 > [!NOTE]
-> W publicznej wersji zapoznawczej interfejs API odnajdowania może zwracać informacje, które nie są aktualne jako pliki JSON (poniżej).
+> W publicznej wersji zapoznawczej interfejs API odnajdywania może zwracać informacje, które są mniej aktualne niż informacje zwrócone przez pobrane dane JSON. (Zobacz następną sekcję).
 
 
-### <a name="discover-service-tags-using-downloadable-json-files"></a>Odnajdywanie tagów usługi przy użyciu plików JSON do pobrania 
-Pliki JSON zawierające bieżącą listę tagów usługi można pobrać z informacjami o zakresie adresów IP. Są one aktualizowane i publikowane co tydzień.  Lokalizacje dla każdej chmury są następujące:
+### <a name="discover-service-tags-by-using-downloadable-json-files"></a>Odnajdywanie tagów usługi przy użyciu plików JSON do pobrania 
+Możesz pobrać pliki JSON zawierające bieżącą listę tagów usługi wraz ze szczegółami zakresu adresów IP. Te listy są aktualizowane i publikowane co tydzień. Lokalizacje dla każdej chmury są następujące:
 
 - [Usługa Azure Public](https://www.microsoft.com/download/details.aspx?id=56519)
-- [Azure Government](https://www.microsoft.com/download/details.aspx?id=57063)  
+- [Wersja platformy Azure dla administracji USA](https://www.microsoft.com/download/details.aspx?id=57063)  
 - [Chińska wersja platformy Azure](https://www.microsoft.com/download/details.aspx?id=57062) 
 - [Azure (Niemcy)](https://www.microsoft.com/download/details.aspx?id=57064)   
 
 > [!NOTE]
->Podzbiór tych informacji został wcześniej opublikowany w plikach XML dla usług [Azure Public](https://www.microsoft.com/download/details.aspx?id=41653), [Azure Chiny](https://www.microsoft.com/download/details.aspx?id=42064) i [Azure (Niemcy](https://www.microsoft.com/download/details.aspx?id=54770)). Te pobrania XML będą przestarzałe do 30 czerwca 2020 i nie będą już dostępne po tej dacie. Należy przeprowadzić migrację do programu przy użyciu interfejsu API odnajdywania lub plików JSON, jak opisano powyżej.
+>Podzestaw tych informacji został opublikowany w plikach XML dla usług [Azure Public](https://www.microsoft.com/download/details.aspx?id=41653), [Azure Chiny](https://www.microsoft.com/download/details.aspx?id=42064)i [Azure (Niemcy](https://www.microsoft.com/download/details.aspx?id=54770)). Te pobrania XML będą przestarzałe do 30 czerwca 2020 i nie będą już dostępne po tej dacie. Należy przeprowadzić migrację do programu przy użyciu interfejsu API odnajdywania lub plików JSON, jak opisano w poprzednich sekcjach.
 
 ### <a name="tips"></a>Porady 
-- Możesz wykrywać aktualizacje z jednego publikowania na następne przy użyciu zwiększonych wartości *changeNumber* w pliku JSON. Każda podsekcja (na przykład **Storage. zachodni**) ma własne *changeNumber* , które są zwiększane, gdy wystąpią zmiany.  Najwyższy poziom *changeNumber* pliku jest zwiększany, gdy dowolna z podsekcji została zmieniona.
-- Przykłady sposobu analizowania informacji z tagu usługi (np. pobrania wszystkich zakresów adresów dla magazynu w zachodniej) można znaleźć w dokumentacji [programu PowerShell dla interfejsu API odnajdywania tagów usług](https://aka.ms/discoveryapi_powershell) .
+- Możesz wykryć aktualizacje z jednej publikacji do następnej, zwracając więcej wartości *changeNumber* w pliku JSON. Każda podsekcja (na przykład **Storage. zachodni**) ma własne *changeNumber* , które są zwiększane, gdy wystąpią zmiany. Najwyższy poziom *changeNumber* pliku jest zwiększany, gdy dowolna z podsekcji jest zmieniana.
+- Aby zapoznać się z przykładami sposobu analizowania informacji o tagu usługi (na przykład Pobierz wszystkie zakresy adresów dla magazynu w zachodnich), zobacz dokumentację [interfejsu API odnajdywania tagów usług](https://aka.ms/discoveryapi_powershell) w programie PowerShell.
 
 ## <a name="next-steps"></a>Następne kroki
 - Dowiedz się, jak [utworzyć sieciową grupę zabezpieczeń](tutorial-filter-network-traffic.md).
-

@@ -7,16 +7,18 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 8f7cd864d90b8ab17a180a00a7a6d4bb683da9be
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 35efbb8d4d97ab52abb20487d15a80985946c499
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873305"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75732607"
 ---
 # <a name="lower-azure-cosmos-db"></a>NIŻSZY (Azure Cosmos DB)
  Zwraca wyrażenie ciągu po przekonwertowaniu danych znakowych wielkich liter na małe litery.  
-  
+
+NIŻSZA Funkcja systemowa nie korzysta z indeksu. Jeśli planujesz częste porównywanie bez uwzględniania wielkości liter, niższa Funkcja systemowa może zużywać znaczną ilość jednostek RU. W takim przypadku zamiast używać MNIEJSZEj funkcji systemowej do normalizacji danych za każdym razem w przypadku porównań, można znormalizować wielkość liter po wstawieniu. Następnie zapytanie takie jak SELECT * FROM c, gdzie LOWER (c. Name) = "Bob", po prostu wybiera * z c, gdzie c.name = "Bob".
+
 ## <a name="syntax"></a>Składnia
   
 ```sql
@@ -40,7 +42,7 @@ LOWER(<str_expr>)
 SELECT LOWER("Abc") AS lower
 ```  
   
- W tym miejscu znajduje się zestaw wyników.  
+ Tutaj znajduje się zestaw wyników.  
   
 ```json
 [{"lower": "abc"}]  

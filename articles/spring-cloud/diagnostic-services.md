@@ -4,24 +4,37 @@ description: Dowiedz się, jak analizować dane diagnostyczne w chmurze Azure wi
 author: jpconnock
 ms.service: spring-cloud
 ms.topic: conceptual
-ms.date: 10/06/2019
+ms.date: 01/06/2020
 ms.author: jeconnoc
-ms.openlocfilehash: ebe438bd2dc5b4921ce733001f3c9df19bc592fe
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 347867bc59206a24d32ca01f15bbff35fb73e1d0
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607859"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75730046"
 ---
 # <a name="analyze-logs-and-metrics-with-diagnostics-settings"></a>Analizowanie dzienników i metryk przy użyciu ustawień diagnostycznych
 
 Korzystając z funkcji diagnostyki chmury wiosennej platformy Azure, można analizować dzienniki i metryki przy użyciu dowolnej z następujących usług:
 
-* Użyj usługi Azure Log Analytics, w której dane są zapisywane natychmiast, bez konieczności wcześniejszego zapisywania w magazynie.
-* Zapisz je na koncie magazynu, aby przeprowadzić inspekcję lub inspekcję ręczną. Możesz określić czas przechowywania (w dniach).
-* Przesyłaj strumieniowo do centrum zdarzeń w celu pozyskiwania przez usługę innej firmy lub rozwiązanie do analizy niestandardowej.
+* Użyj usługi Azure Log Analytics, w której dane są zapisywane w usłudze Azure Storage. Podczas eksportowania dzienników do Log Analytics istnieje opóźnienie.
+* Zapisz dzienniki na koncie magazynu, aby przeprowadzić inspekcję lub inspekcję ręczną. Możesz określić czas przechowywania (w dniach).
+* Przesyłaj strumieniowo dzienniki do centrum zdarzeń w celu pozyskiwania przez usługę innej firmy lub rozwiązanie do analizy niestandardowej.
 
-Aby rozpocząć, włącz jedną z tych usług, aby otrzymywać dane. Aby dowiedzieć się więcej o konfigurowaniu Log Analytics, zobacz [wprowadzenie do log Analytics w Azure monitor](../azure-monitor/log-query/get-started-portal.md). 
+Wybierz kategorię dziennika i kategorię metryki, którą chcesz monitorować.
+
+## <a name="logs"></a>Dzienniki
+
+|Dziennik | Opis |
+|----|----|
+| **ApplicationConsole** | Dziennik konsoli wszystkich aplikacji klienta. | 
+| **SystemLogs** | Obecnie w tej kategorii znajdują się tylko [źródła dzienników serwera konfiguracji chmury](https://cloud.spring.io/spring-cloud-config/reference/html/#_spring_cloud_config_server) . |
+
+## <a name="metrics"></a>Metryki
+
+Aby uzyskać pełną listę metryk, zobacz [metryki w chmurze wiosennej](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-concept-metrics#user-portal-metrics-options)
+
+Aby rozpocząć, włącz jedną z tych usług, aby otrzymywać dane. Aby dowiedzieć się więcej o konfigurowaniu Log Analytics, zobacz Wprowadzenie do [log Analytics w Azure monitor](../azure-monitor/log-query/get-started-portal.md). 
 
 ## <a name="configure-diagnostics-settings"></a>Konfigurowanie ustawień diagnostycznych
 
@@ -38,17 +51,44 @@ Aby rozpocząć, włącz jedną z tych usług, aby otrzymywać dane. Aby dowiedz
 > [!NOTE]
 > Od momentu, gdy dzienniki lub metryki są emitowane i pojawiają się na koncie magazynu, centrum zdarzeń lub Log Analytics.
 
-## <a name="view-the-logs"></a>Wyświetlanie dzienników
+## <a name="view-the-logs-and-metrics"></a>Wyświetlanie dzienników i metryk
+Istnieją różne metody wyświetlania dzienników i metryk zgodnie z opisem w poniższych nagłówkach.
+
+### <a name="use-logs-blade"></a>Użyj bloku dzienników
+
+1. W Azure Portal przejdź do wystąpienia chmury wiosennej platformy Azure.
+1. Aby otworzyć okienko **przeszukiwania dzienników** , wybierz pozycję **dzienniki**.
+1. W polu wyszukiwania w **dzienniku**
+   * Aby wyświetlić dzienniki, wprowadź proste zapytanie, takie jak:
+
+    ```sql
+    AppPlatformLogsforSpring
+    | limit 50
+    ```
+   * Aby wyświetlić metryki, wprowadź proste zapytanie, takie jak:
+
+    ```sql
+    AzureMetrics
+    | limit 50
+    ```
+1. Aby wyświetlić wyniki wyszukiwania, wybierz pozycję **Uruchom**.
 
 ### <a name="use-log-analytics"></a>Korzystanie z usługi Log Analytics
 
 1. W Azure Portal w lewym okienku wybierz pozycję **log Analytics**.
 1. Wybierz obszar roboczy Log Analytics, który został wybrany podczas dodawania ustawień diagnostycznych.
 1. Aby otworzyć okienko **przeszukiwania dzienników** , wybierz pozycję **dzienniki**.
-1. W polu wyszukiwania w **dzienniku** wprowadź proste zapytanie, takie jak:
+1. W polu wyszukiwania w **dzienniku**
+   * Aby wyświetlić dzienniki, wprowadź proste zapytanie, takie jak:
 
     ```sql
     AppPlatformLogsforSpring
+    | limit 50
+    ```
+    * Aby wyświetlić metryki, wprowadź proste zapytanie, takie jak:
+
+    ```sql
+    AzureMetrics
     | limit 50
     ```
 
@@ -60,6 +100,8 @@ Aby rozpocząć, włącz jedną z tych usług, aby otrzymywać dane. Aby dowiedz
     | where ServiceName == "YourServiceName" and AppName == "YourAppName" and InstanceName == "YourInstanceName"
     | limit 50
     ```
+> [!NOTE]  
+> `==` uwzględnia wielkość liter, ale `=~` nie jest.
 
 Aby dowiedzieć się więcej o języku zapytań używanym w Log Analytics, zobacz [Azure monitor dziennika zapytań](../azure-monitor/log-query/query-language.md).
 
@@ -87,9 +129,9 @@ Aby dowiedzieć się więcej o wysyłaniu informacji diagnostycznych do centrum 
 
 ## <a name="analyze-the-logs"></a>Analizowanie dzienników
 
-Usługa Azure Log Analytics udostępnia Kusto, dzięki czemu możesz wysyłać zapytania do dzienników w celu analizy. Aby zapoznać się z krótkim wprowadzeniem do wykonywania zapytań dotyczących dzienników przy użyciu Kusto, zapoznaj się z [samouczkiem log Analytics](../azure-monitor/log-query/get-started-portal.md).
+Usługa Azure Log Analytics działa z aparatem Kusto, dzięki czemu możesz wysyłać zapytania do dzienników w celu analizy. Aby zapoznać się z krótkim wprowadzeniem do wykonywania zapytań dotyczących dzienników przy użyciu Kusto, zapoznaj się z [samouczkiem log Analytics](../azure-monitor/log-query/get-started-portal.md).
 
-Dzienniki aplikacji zawierają krytyczne informacje o kondycji, wydajności i innych aplikacjach. W następnych sekcjach znajdują się pewne proste zapytania, które pomagają zrozumieć bieżące i wcześniejsze Stany aplikacji.
+Dzienniki aplikacji zawierają informacje krytyczne i pełne dzienniki dotyczące kondycji, wydajności i innych aplikacji. W następnych sekcjach znajdują się pewne proste zapytania, które pomagają zrozumieć bieżące i wcześniejsze Stany aplikacji.
 
 ### <a name="show-application-logs-from-azure-spring-cloud"></a>Wyświetlanie dzienników aplikacji z chmury Azure wiosennej
 

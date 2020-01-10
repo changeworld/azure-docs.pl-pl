@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: d4269480887dba994559271de7e68b2ba2b460b6
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 00187051eec27ee7b6b2d4927510a2ab9dee442e
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227826"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75708261"
 ---
 # <a name="troubleshoot-azure-files-performance-issues"></a>Rozwiązywanie problemów z wydajnością Azure Files
 
@@ -26,7 +26,7 @@ Domyślny limit przydziału dla udziału w warstwie Premium to 100 GiB, który 1
 
 Aby potwierdzić, że Twój udział jest ograniczany, możesz skorzystać z metryk platformy Azure w portalu.
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
 
 1. Wybierz pozycję **wszystkie usługi** , a następnie wyszukaj **metryki**.
 
@@ -41,6 +41,9 @@ Aby potwierdzić, że Twój udział jest ograniczany, możesz skorzystać z metr
 1. Dodaj filtr dla elementu **responsetype** i sprawdź, czy jakieś żądania mają kod odpowiedzi **SuccessWithThrottling** (dla protokołu SMB) lub **ClientThrottlingError** (dla REST).
 
 ![Opcje metryk dla udziałów plików Premium](media/storage-troubleshooting-premium-fileshares/metrics.png)
+
+> [!NOTE]
+> Aby otrzymać Alert, jeśli udział plików jest ograniczany, zobacz [jak utworzyć alert, jeśli udział plików jest ograniczany](#how-to-create-an-alert-if-a-file-share-is-throttled).
 
 ### <a name="solution"></a>Rozwiązanie
 
@@ -168,3 +171,38 @@ Większe niż oczekiwane opóźnienie dostępu Azure Files do obciążeń intens
 ### <a name="workaround"></a>Obejście
 
 - Zainstaluj dostępną [poprawkę](https://support.microsoft.com/help/3114025/slow-performance-when-you-access-azure-files-storage-from-windows-8-1).
+
+## <a name="how-to-create-an-alert-if-a-file-share-is-throttled"></a>Jak utworzyć alert, jeśli udział plików jest ograniczany
+
+1. W [Azure Portal](https://portal.azure.com)kliknij pozycję **Monitoruj**. 
+
+2. Kliknij pozycję **alerty** , a następnie kliknij pozycję **+ Nowa reguła alertów**.
+
+3. Kliknij pozycję **Wybierz** , aby wybrać **konto magazynu/zasób pliku** zawierający udział plików, na którym chcesz utworzyć alert, a następnie kliknij pozycję **gotowe**. Jeśli na przykład nazwa konta magazynu to contoso, wybierz zasób contoso/File.
+
+4. Kliknij przycisk **Dodaj** , aby dodać warunek.
+
+5. Zostanie wyświetlona lista sygnałów obsługiwanych przez konto magazynu, wybierz metrykę **transakcji** .
+
+6. W bloku **Konfigurowanie logiki sygnału** przejdź do wymiaru **Typ odpowiedzi** , kliknij listę rozwijaną **wartości wymiaru** i wybierz pozycję **SuccessWithThrottling** (dla protokołu SMB) lub **ClientThrottlingError** (dla opcji REST). 
+
+  > [!NOTE]
+  > Jeśli wartość wymiaru SuccessWithThrottling lub ClientThrottlingError nie znajduje się na liście, oznacza to, że zasób nie został ograniczony.  Aby dodać wartość wymiaru, kliknij **+** obok listy rozwijanej **wartości wymiaru** , wpisz **SuccessWithThrottling** lub **ClientThrottlingError**, kliknij przycisk **OK** , a następnie powtórz krok #6.
+
+7. Przejdź do wymiaru **udział plików** , kliknij listę rozwijaną **wartości wymiaru** i wybierz udziały plików, dla których chcesz utworzyć alert. 
+
+  > [!NOTE]
+  > Jeśli udział plików jest standardowym udziałem plików, listy rozwijane wartości wymiarów będą puste, ponieważ metryki dla udziałów nie są dostępne w przypadku plików w warstwie Standardowa. Alerty dotyczące ograniczania przepustowości dla standardowych udziałów plików będą wyzwalane, jeśli jakikolwiek udział plików w ramach konta magazynu zostanie ograniczony, a alert nie określi, który udział plików został ograniczony. Ponieważ metryki dla poszczególnych udziałów nie są dostępne dla standardowych udziałów plików, zalecenie ma mieć jeden udział plików na konto magazynu. 
+
+8. Zdefiniuj **Parametry alertu** (próg, operator, stopień szczegółowości agregacja i częstotliwość), które są używane do obliczania reguły alertu metryki, a następnie kliknij przycisk **gotowe**.
+
+  > [!TIP]
+  > Jeśli jest używany próg statyczny, wykres metryk może pomóc w ustaleniu rozsądnego progu, jeśli udział plików jest obecnie ograniczany. Jeśli używasz progu dynamicznego, wykres metryki wyświetli obliczone progi na podstawie ostatnich danych.
+
+9. Dodaj **grupę akcji** (wiadomości e-mail, wiadomości SMS itp.) do alertu, wybierając istniejącą grupę akcji lub tworząc nową grupę akcji.
+
+10. Wypełnij **szczegóły alertu** , takie jak nazwa, **Opis** i **ważność** **reguły alertu**.
+
+11. Kliknij przycisk **Utwórz regułę alertu** , aby utworzyć alert.
+
+Aby dowiedzieć się więcej o konfigurowaniu alertów w Azure Monitor, zobacz [Omówienie alertów w Microsoft Azure]( https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview).

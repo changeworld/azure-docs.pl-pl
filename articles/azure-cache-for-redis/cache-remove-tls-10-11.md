@@ -6,18 +6,26 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: yegu
-ms.openlocfilehash: 74fcce412b2673a3ec9e4809cef018f1afbc3530
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 2f6203deb5e06ba69a3b4d06297d5e702992c79d
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74812843"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75708060"
 ---
 # <a name="remove-tls-10-and-11-from-use-with-azure-cache-for-redis"></a>Usuń protokoły TLS 1,0 i 1,1 z używania z usługą Azure cache for Redis
 
 Na wyłączne korzystanie z Transport Layer Security (TLS) w wersji 1,2 lub nowszej jest na całym branżą. Protokoły TLS w wersji 1,0 i 1,1 są podatne na ataki, takie jak BEAST i POODLE, a także zawierają inne słabe luki w zabezpieczeniach i zagrożenia (CVE). Nie obsługują one również nowoczesnych metod szyfrowania i mechanizmów szyfrowania zalecanych przez standardy zgodności z kartą płatniczą (PCI). Ten [Blog dotyczący zabezpieczeń protokołu TLS](https://www.acunetix.com/blog/articles/tls-vulnerabilities-attacks-final-part/) wyjaśnia niektóre z tych luk w bardziej szczegółowy sposób.
 
-Chociaż żadne z tych kwestii nie powoduje natychmiastowego problemu, zalecamy natychmiastowe zaprzestanie korzystania z protokołu TLS 1,0 i 1,1. Usługa Azure cache for Redis zatrzyma obsługę tych wersji protokołu TLS 31 marca 2020. Po tej dacie aplikacja będzie musiała korzystać z protokołu TLS 1,2 lub nowszego do komunikowania się z pamięcią podręczną.
+W ramach tego wysiłku wprowadzamy następujące zmiany w usłudze Azure cache dla Redis:
+
+* Od 13 stycznia 2020 skonfigurujemy domyślną minimalną wersję protokołu TLS równą 1,2 dla nowo utworzonych wystąpień pamięci podręcznej.  Istniejące wystąpienia pamięci podręcznej nie zostaną zaktualizowane w tym momencie.  W razie potrzeby będziesz mieć możliwość [zmiany minimalnej wersji protokołu TLS](cache-configure.md#access-ports) z powrotem do 1,0 lub 1,1 w celu zapewnienia zgodności z poprzednimi wersjami.  Tę zmianę można wykonać za pomocą Azure Portal lub innych interfejsów API zarządzania.
+* Od 31 marca 2020 zaprzestanie obsługi protokołu TLS w wersji 1,0 i 1,1. Po tej zmianie aplikacja będzie musiała korzystać z protokołu TLS 1,2 lub nowszego do komunikowania się z pamięcią podręczną.
+
+Ponadto w ramach tej zmiany zostanie usunięta pomoc techniczna dla starszych, niezabezpieczonych pakietów szyfr.  Nasze obsługiwane pakiety szyfr zostaną ograniczone do następujących, gdy pamięć podręczna zostanie skonfigurowana z minimalną wersją protokołu TLS 1,2.
+
+* TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P384
+* TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256
 
 Ten artykuł zawiera ogólne wskazówki dotyczące wykrywania zależności od wcześniejszych wersji protokołu TLS i usuwania ich z aplikacji.
 
@@ -42,15 +50,15 @@ Klienci programu Redis .NET Core domyślnie używają najnowszej wersji protoko�
 
 ### <a name="java"></a>Java
 
-Klienci Java Redis używają protokołu TLS 1,0 w wersji 6 lub starszej. Jedis, sałata i Radisson nie mogą połączyć się z pamięcią podręczną platformy Azure dla Redis, jeśli protokół TLS 1,0 jest wyłączony w pamięci podręcznej. Obecnie nie ma żadnego znanego obejścia.
+Klienci Java Redis używają protokołu TLS 1,0 w wersji 6 lub starszej. Jedis, sałata i Redisson nie mogą połączyć się z pamięcią podręczną platformy Azure dla Redis, jeśli protokół TLS 1,0 jest wyłączony w pamięci podręcznej. Uaktualnij strukturę języka Java, aby korzystać z nowych wersji protokołu TLS.
 
-W programie Java 7 lub nowszym klienci Redis domyślnie nie używają protokołu TLS 1,2, ale można go skonfigurować dla niego. Sałata i Radisson nie obsługują tej konfiguracji teraz. Zostaną one przerwane, jeśli pamięć podręczna akceptuje tylko połączenia TLS 1,2. Jedis pozwala określić podstawowe ustawienia protokołu TLS przy użyciu następującego fragmentu kodu:
+W przypadku języka Java 7 klienci Redis domyślnie nie używają protokołu TLS 1,2, ale można go skonfigurować dla niego. Jedis pozwala określić podstawowe ustawienia protokołu TLS przy użyciu następującego fragmentu kodu:
 
 ``` Java
 SSLSocketFactory sslSocketFactory = (SSLSocketFactory) SSLSocketFactory.getDefault();
 SSLParameters sslParameters = new SSLParameters();
 sslParameters.setEndpointIdentificationAlgorithm("HTTPS");
-sslParameters.setProtocols(new String[]{"TLSv1", "TLSv1.1", "TLSv1.2"});
+sslParameters.setProtocols(new String[]{"TLSv1.2"});
  
 URI uri = URI.create("rediss://host:port");
 JedisShardInfo shardInfo = new JedisShardInfo(uri, sslSocketFactory, sslParameters, null);
@@ -59,6 +67,10 @@ shardInfo.setPassword("cachePassword");
  
 Jedis jedis = new Jedis(shardInfo);
 ```
+
+Klienci sałaty i Redisson nie obsługują jeszcze określania wersji protokołu TLS, więc będą przerywane, jeśli pamięć podręczna akceptuje tylko połączenia TLS 1,2. Poprawki dla tych klientów są przeglądane, więc sprawdź te pakiety pod kątem zaktualizowanej wersji za pomocą tej obsługi.
+
+W języku Java 8 protokół TLS 1,2 jest domyślnie używany i nie należy w większości przypadków wymagać aktualizacji konfiguracji klienta. Aby można było bezpiecznie, Przetestuj aplikację.
 
 ### <a name="nodejs"></a>Node.js
 
