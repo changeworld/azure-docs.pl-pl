@@ -1,35 +1,35 @@
 ---
-title: Tworzenie bramy sieci wirtualnej strefowo nadmiarowy w strefy dostępności platformy Azure | Dokumentacja firmy Microsoft
-description: Wdrażanie bramy VPN Gateway i ExpressRoute w strefach dostępności
+title: Tworzenie strefowo nadmiarowej bramy sieci wirtualnej w Strefy dostępności platformy Azure
+description: Wdróż VPN Gateway i bram ExpressRoute w Strefy dostępności
 services: vpn-gateway
+titleSuffix: Azure VPN Gateway
 author: cherylmc
-Customer intent: As someone with a basic network background, I want to understand how to create zone-redundant gateways.
 ms.service: vpn-gateway
 ms.topic: article
 ms.date: 04/26/2019
 ms.author: cherylmc
-ms.openlocfilehash: 209c4deec2863de21362ab69a7f1d372921ac147
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 250ced13696d6ec34e7c434b26a2917a3c55e91d
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64575562"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834635"
 ---
-# <a name="create-a-zone-redundant-virtual-network-gateway-in-azure-availability-zones"></a>Tworzenie bramy sieci wirtualnej strefowo nadmiarowy w strefy dostępności platformy Azure
+# <a name="create-a-zone-redundant-virtual-network-gateway-in-azure-availability-zones"></a>Tworzenie strefowo nadmiarowej bramy sieci wirtualnej w Strefy dostępności platformy Azure
 
-Można wdrożyć bramy sieci VPN i ExpressRoute w strefach dostępności platformy Azure. To zapewniają elastyczność, skalowalność i większą dostępność bramy sieci wirtualnej. Wdrażanie bramy w strefach dostępności Azure fizycznie i logicznie dzieli bramy w danym regionie, przy jednoczesnej ochronie łączności sieci środowiska lokalnego do platformy Azure przed awariami poziomu strefy. Aby uzyskać informacje, zobacz [o bramach sieci wirtualnej strefowo nadmiarowe](about-zone-redundant-vnet-gateways.md) i [strefy dostępności platformy Azure o](../availability-zones/az-overview.md).
+Bramy sieci VPN i ExpressRoute można wdrożyć w Strefy dostępności platformy Azure. Zapewni to elastyczność, skalowalność i większą dostępność bram sieci wirtualnej. Wdrażanie bram w strefach dostępności platformy Azure fizycznie i logicznie dzieli bramy w danym regionie, chroniąc jednocześnie lokalną łączność sieci z platformą Azure przed błędami na poziomie strefy. Aby uzyskać więcej informacji, zobacz [about Zone-nadmiarowe bramy sieci wirtualnej](about-zone-redundant-vnet-gateways.md) i [Informacje o strefy dostępności platformy Azure](../availability-zones/az-overview.md).
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Możesz użyć programu PowerShell zainstalowane lokalnie na komputerze lub w usłudze Azure Cloud Shell. Jeśli zdecydujesz się zainstalować i korzystać z programu PowerShell lokalnie, ta funkcja wymaga najnowszej wersji modułu programu PowerShell.
+Można użyć programu PowerShell zainstalowane lokalnie na komputerze lub Azure Cloud Shell. Jeśli zdecydujesz się zainstalować program PowerShell i używać go lokalnie, ta funkcja wymaga najnowszej wersji modułu programu PowerShell.
 
 [!INCLUDE [Cloud shell](../../includes/vpn-gateway-cloud-shell-powershell.md)]
 
-### <a name="to-use-powershell-locally"></a>Przy użyciu programu PowerShell lokalnie
+### <a name="to-use-powershell-locally"></a>Aby używać programu PowerShell lokalnie
 
-Jeśli używasz programu PowerShell lokalnie na komputerze, a nie przy użyciu usługi Cloud Shell, musisz zainstalować moduł PowerShell 1.0.0 lub nowszym. Aby sprawdzić wersję programu PowerShell, który został zainstalowany, użyj następującego polecenia:
+Jeśli używasz programu PowerShell lokalnie na komputerze, zamiast używać Cloud Shell, musisz zainstalować moduł PowerShell 1.0.0 lub nowszy. Aby sprawdzić zainstalowaną wersję programu PowerShell, użyj następującego polecenia:
 
 ```azurepowershell
 Get-Module Az -ListAvailable | Select-Object -Property Name,Version,Path
@@ -39,9 +39,9 @@ Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure Power
 
 [!INCLUDE [PowerShell login](../../includes/vpn-gateway-ps-login-include.md)]
 
-## <a name="variables"></a>1. Zadeklarowanie zmiennych
+## <a name="variables"></a>1. Zadeklaruj zmienne
 
-Poniżej przedstawiono wartości używanych na potrzeby procedury w przykładzie. Ponadto niektóre przykłady używać zmiennych zadeklarowanych w ramach kroków. Jeśli używane są następujące kroki we własnym środowisku, koniecznie Zastąp te wartości własnymi. Podczas określania lokalizacji, należy sprawdzić, czy jest obsługiwany region, który określisz. Aby uzyskać więcej informacji, zobacz [— często zadawane pytania](#faq).
+Poniżej przedstawiono wartości, które są używane dla przykładowych kroków. Ponadto niektóre przykłady używają zadeklarowanych zmiennych w ramach kroków. Jeśli używasz tych kroków w środowisku własnym, pamiętaj, aby zastąpić te wartości własnymi. Podczas określania lokalizacji Sprawdź, czy określony region jest obsługiwany. Aby uzyskać więcej informacji, zobacz [często zadawane pytania](#faq).
 
 ```azurepowershell-interactive
 $RG1         = "TestRG1"
@@ -59,7 +59,7 @@ $GwIP1       = "VNet1GWIP"
 $GwIPConf1   = "gwipconf1"
 ```
 
-## <a name="configure"></a>2. Tworzenie sieci wirtualnej
+## <a name="configure"></a>2. Utwórz sieć wirtualną
 
 Utwórz grupę zasobów.
 
@@ -77,7 +77,7 @@ $vnet = New-AzVirtualNetwork -Name $VNet1 -ResourceGroupName $RG1 -Location $Loc
 
 ## <a name="gwsub"></a>3. Dodaj podsieć bramy
 
-Podsieć bramy zawiera zastrzeżone adresy IP, z których korzystają usługi bramy sieci wirtualnej. Aby dodać i ustawić podsieć bramy można użyć następujących przykładów:
+Podsieć bramy zawiera zastrzeżone adresy IP, z których korzystają usługi bramy sieci wirtualnej. Aby dodać i ustawić podsieć bramy, użyj następujących przykładów:
 
 Dodaj podsieć bramy.
 
@@ -91,34 +91,34 @@ Ustaw konfigurację podsieci bramy dla sieci wirtualnej.
 ```azurepowershell-interactive
 $getvnet | Set-AzVirtualNetwork
 ```
-## <a name="publicip"></a>4. Przesłanie żądania dotyczącego publicznego adresu IP
+## <a name="publicip"></a>4. Zażądaj publicznego adresu IP
  
-W tym kroku wybierz instrukcje, które są stosowane do bramy, która ma zostać utworzona. Wybór strefy do wdrażania bramy zależy od strefy, określony dla publicznego adresu IP.
+W tym kroku Wybierz instrukcje, które mają zastosowanie do bramy, którą chcesz utworzyć. Wybór stref do wdrożenia bram zależy od stref określonych dla publicznego adresu IP.
 
-### <a name="ipzoneredundant"></a>Strefowo nadmiarowe bram
+### <a name="ipzoneredundant"></a>W przypadku bram strefowo nadmiarowych
 
-Żądanie publicznego adresu IP za pomocą **standardowa** jednostki SKU publicznego adresu IP, a nie określać żadnej strefy. W tym przypadku standardowego publicznego adresu IP utworzonego będzie strefowo nadmiarowy publiczny adres IP.   
+Zażądaj publicznego adresu IP przy użyciu **standardowej** jednostki SKU PublicIpaddress i nie określaj żadnej strefy. W takim przypadku standardowy publiczny adres IP, który został utworzony, będzie strefowo nadmiarowym publicznym adresem IP.   
 
 ```azurepowershell-interactive
 $pip1 = New-AzPublicIpAddress -ResourceGroup $RG1 -Location $Location1 -Name $GwIP1 -AllocationMethod Static -Sku Standard
 ```
 
-### <a name="ipzonalgw"></a>Strefowy bram
+### <a name="ipzonalgw"></a>Dla bram strefowych
 
-Żądanie publicznego adresu IP za pomocą **standardowa** jednostki SKU publicznego adresu IP. Określenie strefy (1, 2 lub 3). Wszystkie wystąpienia bramy zostanie wdrożony w tej strefie.
+Zażądaj publicznego adresu IP przy użyciu **standardowej** jednostki SKU PublicIpaddress. Określ strefę (1, 2 lub 3). Wszystkie wystąpienia bramy zostaną wdrożone w tej strefie.
 
 ```azurepowershell-interactive
 $pip1 = New-AzPublicIpAddress -ResourceGroup $RG1 -Location $Location1 -Name $GwIP1 -AllocationMethod Static -Sku Standard -Zone 1
 ```
 
-### <a name="ipregionalgw"></a>Regionalne bram
+### <a name="ipregionalgw"></a>Dla bram regionalnych
 
-Żądanie publicznego adresu IP za pomocą **podstawowe** jednostki SKU publicznego adresu IP. W takich przypadkach brama jest wdrażana jako brama regionalnych i nie ma żadnych strefy nadmiarowości wbudowanej w bramie. Bramy są tworzone wystąpienia w żadnych stref odpowiednio.
+Zażądaj publicznego adresu IP z **podstawową** jednostką SKU PublicIpaddress. W takim przypadku Brama jest wdrażana jako brama regionalna i nie ma żadnej wbudowanej w nią nadmiarowości strefy. Wystąpienia bramy są tworzone odpowiednio w dowolnych strefach.
 
 ```azurepowershell-interactive
 $pip1 = New-AzPublicIpAddress -ResourceGroup $RG1 -Location $Location1 -Name $GwIP1 -AllocationMethod Dynamic -Sku Basic
 ```
-## <a name="gwipconfig"></a>5. Utwórz konfigurację adresów IP
+## <a name="gwipconfig"></a>5. Utwórz konfigurację adresu IP
 
 ```azurepowershell-interactive
 $getvnet = Get-AzVirtualNetwork -ResourceGroupName $RG1 -Name $VNet1
@@ -128,15 +128,15 @@ $gwipconf1 = New-AzVirtualNetworkGatewayIpConfig -Name $GwIPConf1 -Subnet $subne
 
 ## <a name="gwconfig"></a>6. Tworzenie bramy
 
-Tworzenie bramy sieci wirtualnej.
+Utwórz bramę sieci wirtualnej.
 
-### <a name="for-expressroute"></a>For ExpressRoute
+### <a name="for-expressroute"></a>Dla ExpressRoute
 
 ```azurepowershell-interactive
 New-AzVirtualNetworkGateway -ResourceGroup $RG1 -Location $Location1 -Name $Gw1 -IpConfigurations $GwIPConf1 -GatewayType ExpressRoute -GatewaySku ErGw1AZ
 ```
 
-### <a name="for-vpn-gateway"></a>For VPN Gateway
+### <a name="for-vpn-gateway"></a>Dla VPN Gateway
 
 ```azurepowershell-interactive
 New-AzVirtualNetworkGateway -ResourceGroup $RG1 -Location $Location1 -Name $Gw1 -IpConfigurations $GwIPConf1 -GatewayType Vpn -VpnType RouteBased -GatewaySku VpnGw1AZ
@@ -144,22 +144,22 @@ New-AzVirtualNetworkGateway -ResourceGroup $RG1 -Location $Location1 -Name $Gw1 
 
 ## <a name="faq"></a>Często zadawane pytania
 
-### <a name="what-will-change-when-i-deploy-these-new-skus"></a>Co się zmieni podczas wdrażania tych nowych jednostek SKU?
+### <a name="what-will-change-when-i-deploy-these-new-skus"></a>Co zmienią się, gdy wdrażam te nowe jednostki SKU?
 
-Z perspektywy można wdrożyć bram dzięki nadmiarowości strefy. Oznacza to, że wszystkie wystąpienia bramy zostanie wdrożone w różnych strefach dostępności platformy Azure, a każda strefa dostępności w innej domenie błędów i aktualizacji. Dzięki temu bram niezawodne, dostępna i odporna na awarie strefy.
+Z perspektywy można wdrożyć bramy z nadmiarowością strefy. Oznacza to, że wszystkie wystąpienia bram zostaną wdrożone między Strefy dostępności platformy Azure, a każda strefa dostępności jest inną domeną błędów i aktualizacji. Dzięki temu bramy są bardziej niezawodne, dostępne i odporne na awarie stref.
 
-### <a name="can-i-use-the-azure-portal"></a>Czy można użyć witryny Azure portal?
+### <a name="can-i-use-the-azure-portal"></a>Czy mogę użyć Azure Portal?
 
-Tak, można użyć witryny Azure portal do wdrażania nowych jednostek SKU. Jednak zobaczą te nowe jednostki SKU tylko w tych regionach platformy Azure, które mają strefy dostępności platformy Azure.
+Tak, możesz użyć Azure Portal do wdrożenia nowych jednostek SKU. Te nowe jednostki SKU będą jednak widoczne tylko w tych regionach świadczenia usługi Azure, w których Strefy dostępności platformy Azure.
 
-### <a name="what-regions-are-available-for-me-to-use-the-new-skus"></a>Jakie regiony są dostępne w użyciu nowych jednostek SKU?
+### <a name="what-regions-are-available-for-me-to-use-the-new-skus"></a>Jakie regiony są dostępne dla mnie, aby można było korzystać z nowych jednostek SKU?
 
-Zobacz [strefy dostępności](../availability-zones/az-overview.md#services-support-by-region) najbardziej aktualną listę dostępnych regionów.
+Zobacz [strefy dostępności](../availability-zones/az-overview.md#services-support-by-region) , aby uzyskać najnowszą listę dostępnych regionów.
 
-### <a name="can-i-changemigrateupgrade-my-existing-virtual-network-gateways-to-zone-redundant-or-zonal-gateways"></a>Czy mogę zmiany/migracja/uaktualnić Moje istniejącej bramy sieci wirtualnej do bram strefowo nadmiarowego lub strefowych?
+### <a name="can-i-changemigrateupgrade-my-existing-virtual-network-gateways-to-zone-redundant-or-zonal-gateways"></a>Czy mogę zmienić/migrować/uaktualnić istniejące bramy sieci wirtualnej do bram nadmiarowych lub stref stref?
 
-Migrowanie istniejących bram sieci wirtualnej do bram strefowo nadmiarowego lub strefowych nie jest obecnie obsługiwane. Można jednak usunąć istniejącą bramę i ponownie utworzyć bramę strefowo nadmiarowego lub strefowych.
+Migrowanie istniejących bram sieci wirtualnej do strefowo nadmiarowe lub bramy strefowe nie jest obecnie obsługiwane. Można jednak usunąć istniejącą bramę i ponownie utworzyć bramę nadmiarową lub strefowo.
 
-### <a name="can-i-deploy-both-vpn-and-express-route-gateways-in-same-virtual-network"></a>Czy można wdrożyć bramy sieci VPN i Expressroute w tej samej sieci wirtualnej?
+### <a name="can-i-deploy-both-vpn-and-express-route-gateways-in-same-virtual-network"></a>Czy mogę wdrożyć bramy sieci VPN i usługi Express Route w tej samej sieci wirtualnej?
 
-Współistnienie bram sieci VPN i Expressroute w tej samej sieci wirtualnej jest obsługiwana. Jednak należy zarezerwować/27 zakres adresów IP podsieci bramy.
+Obsługiwane są oba bramy sieci VPN i Express Route w tej samej sieci wirtualnej. Należy jednak zarezerwować zakres adresów IP/27 dla podsieci bramy.

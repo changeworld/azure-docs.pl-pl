@@ -1,10 +1,10 @@
-- name: Test porównawczy zabezpieczeń platformy Azure
+- name: Testy porównawcze zabezpieczeń platformy Azure
   href: index.yml
 - name: Wprowadzenie
   href: introduction.md
 - name: Mechanizmy zabezpieczeń
   items:
-    - name: Omówienie
+    - name: Omówienie kontroli zabezpieczeń platformy Azure
       href: overview.md
     - name: Bezpieczeństwo sieci
       href: security-control-network-security.md

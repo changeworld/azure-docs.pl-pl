@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: 2530c9b2f366bd64013c7125b4d7984ca2a69248
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 509545443bc08e8613d5f7a9ba7f33d2a90684b8
+ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75454287"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75830517"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>Wprowadzenie do rejestrowania przepływu dla sieciowych grup zabezpieczeń
 
@@ -90,10 +90,8 @@ Poniższy tekst jest przykładem dziennika przepływu. Jak widać, istnieje wiel
 
 **Zagadnienia dotyczące konta magazynu**: 
 
-1. Lokalizacja: używane konto magazynu musi znajdować się w tym samym regionie co sieciowej grupy zabezpieczeń.
-2. Brak zapory: dzienniki przepływu sieciowej grupy zabezpieczeń nie zostały dołączone jako [zaufaną usługę firmy Microsoft dla usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-network-security#trusted-microsoft-services). Zobacz [Jak mogę Wyłączanie zapory na moim koncie magazynu?](https://docs.microsoft.com/azure/network-watcher/frequently-asked-questions#how-do-i-disable-the--firewall-on-my-storage-account) aby wyłączyć zaporę. 
-3. Brak punktów końcowych usługi: ze względu na bieżące ograniczenie dzienniki mogą być wysyłane bezpośrednio do kont magazynu, a nie za pośrednictwem punktów końcowych usługi. Zobacz [Jak mogę użyć dzienników przepływu sieciowej grupy zabezpieczeń z punktami końcowymi usługi?](https://docs.microsoft.com/azure/network-watcher/frequently-asked-questions#how-do-i-use-nsg-flow-logs-with-service-endpoints) , aby uzyskać pomoc dotyczącą usuwania istniejących punktów końcowych usługi.
-4. Samozarządzanie rotacją kluczy: Jeśli zmienisz/przeniesiesz klucze dostępu do konta magazynu, dzienniki przepływu sieciowej grupy zabezpieczeń przestaną działać. Aby rozwiązać ten problem, należy wyłączyć i ponownie włączyć dzienniki przepływu sieciowej grupy zabezpieczeń.
+- Lokalizacja: używane konto magazynu musi znajdować się w tym samym regionie co sieciowej grupy zabezpieczeń.
+- Samozarządzanie rotacją kluczy: Jeśli zmienisz/przeniesiesz klucze dostępu do konta magazynu, dzienniki przepływu sieciowej grupy zabezpieczeń przestaną działać. Aby rozwiązać ten problem, należy wyłączyć i ponownie włączyć dzienniki przepływu sieciowej grupy zabezpieczeń.
 
 **Włącz rejestrowanie przepływu sieciowej grupy zabezpieczeń na wszystkich sieciowych grup zabezpieczeńach dołączonych do zasobu**: rejestrowanie przepływu na platformie Azure jest konfigurowane na zasobie sieciowej grupy zabezpieczeń. Przepływ zostanie skojarzony tylko z jedną regułą sieciowej grupy zabezpieczeń. W scenariuszach, w których jest używany wiele sieciowych grup zabezpieczeń, zalecamy włączenie rejestrowania przepływów sieciowej grupy zabezpieczeń na wszystkich sieciowych grup zabezpieczeń zastosowały podsieć lub interfejs sieciowy zasobu, aby upewnić się, że cały ruch jest zarejestrowany. Aby uzyskać więcej informacji, zobacz [jak oceniany jest ruch](../virtual-network/security-overview.md#how-traffic-is-evaluated) w sieciowych grupach zabezpieczeń.
 

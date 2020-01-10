@@ -44,6 +44,9 @@
         - name: Ustawianie kolejności wdrażania zasobów
           displayName: 'dependent resources, dependency'
           href: template-tutorial-create-templates-with-dependent-resources.md
+        - name: Używanie skryptu wdrażania
+          displayName: custom script
+          href: template-tutorial-deployment-script.md
         - name: Używanie warunków
           href: template-tutorial-use-conditions.md
         - name: Integrowanie usługi Key Vault
@@ -122,6 +125,9 @@
               href: add-resource-extensions.md
         - name: Dane wyjściowe
           href: template-outputs.md
+        - name: Skrypt wdrażania
+          displayName: custom script
+          href: deployment-script-template.md
         - name: Modularyzowanie szablonów
           displayName: 'linked templates, nested templates'
           href: linked-templates.md

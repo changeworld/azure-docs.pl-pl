@@ -5,12 +5,12 @@ author: mumian
 ms.date: 03/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 15c707b5424e84e99e0b1942bb623e6d3845213a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f73a35b9c04b8b520be4f0adeb8ddb4142499075
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75472667"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834361"
 ---
 # <a name="tutorial-create-azure-resource-manager-templates-with-dependent-resources"></a>Samouczek: tworzenie szablonów usługi Azure Resource Manager z zasobami zależnymi
 
@@ -18,7 +18,7 @@ Dowiedz się, jak utworzyć szablon Azure Resource Manager, aby wdrożyć wiele 
 
 Instrukcje w tym samouczku pozwalają utworzyć konto magazynu, maszynę wirtualną, sieć wirtualną oraz niektóre inne zasoby zależne. Niektórych zasobów nie można wdrożyć, dopóki nie istnieje inny zasób. Przykładowo nie można utworzyć maszyny wirtualnej, jeżeli nie istnieje konto magazynu i interfejs sieciowy. Relację tę definiuje się, ustawiając jeden zasób jako zależny od innych zasobów. Usługa Resource Manager ocenia zależności pomiędzy zasobami i wdraża je w kolejności opartej na zależności. Gdy zasoby nie zależą od siebie nawzajem, usługa Resource Manager wdraża je równolegle. Aby uzyskać więcej informacji, zobacz [Definiowanie kolejności wdrażania zasobów w szablonach usługi Azure Resource Manager](./define-resource-dependency.md).
 
-![Diagram kolejności wdrażania zasobów zależnych szablonu Menedżera zasobów](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-dependent-resources-diagram.png)
+![Diagram kolejności wdrażania zależnych zasobów szablonu Menedżer zasobów](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-dependent-resources-diagram.png)
 
 Ten samouczek obejmuje następujące zadania:
 
@@ -117,7 +117,7 @@ Istnieje wiele metod wdrażania szablonów.  W tym samouczku zostanie użyta us�
     ![Przekazywanie pliku w usłudze Cloud Shell w witrynie Azure Portal](./media/template-tutorial-create-templates-with-dependent-resources/azure-portal-cloud-shell-upload-file.png)
 1. Wybierz szablon, który został zapisany wcześniej w ramach tego samouczka. Nazwa domyślna to **azuredeploy.json**.  Jeżeli masz plik o tej samej nazwie, starszy plik zostanie zastąpiony bez żadnego powiadomienia.
 
-    Opcjonalnie możesz skorzystać z poleceń **ls $HOME** i **cat $HOME/azuredeploy.json**, aby sprawdzić, czy pliki zostały przekazane pomyślnie.
+    Opcjonalnie można użyć polecenia **ls $Home** i **Cat $Home/azuredeploy.JSON** polecenie, aby sprawdzić, czy pliki zostały pomyślnie przekazane.
 
 1. W usłudze Cloud Shell uruchom poniższe polecenia programu PowerShell. Aby zwiększyć bezpieczeństwo, użyj wygenerowanego hasła dla konta administratora maszyny wirtualnej. Zobacz [Wymagania wstępne](#prerequisites).
 
@@ -161,7 +161,7 @@ Gdy zasoby platformy Azure nie będą już potrzebne, wyczyść wdrożone zasoby
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku utworzono i wdrożono szablon, aby utworzyć maszynę wirtualną, sieć wirtualną i zasoby zależne. Aby dowiedzieć się, jak wdrażać zasoby platformy Azure na podstawie warunków, zobacz:
+W tym samouczku utworzono i wdrożono szablon, aby utworzyć maszynę wirtualną, sieć wirtualną i zasoby zależne. Aby dowiedzieć się, jak używać skryptów wdrażania do wykonywania operacji wykonywanych przed i po wdrożeniu, zobacz:
 
 > [!div class="nextstepaction"]
-> [Używanie warunków](./template-tutorial-use-conditions.md)
+> [Użyj skryptu wdrażania](./template-tutorial-deployment-script.md)

@@ -1,26 +1,20 @@
 ---
-title: 'Konfigurowanie tranzytu bramy sieci VPN na potrzeby wirtualnych sieci równorzędnych: Azure Resource Manager | Microsoft Docs'
+title: Konfigurowanie tranzytu bramy sieci VPN na potrzeby wirtualnych sieci równorzędnych
 description: Konfigurowanie tranzytu bramy sieci VPN na potrzeby wirtualnych sieci równorzędnych.
 services: vpn-gateway
-documentationcenter: na
+titleSuffix: Azure VPN Gateway
 author: yushwang
-manager: rossort
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 0683c664-9c03-40a4-b198-a6529bf1ce8b
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 03/25/2018
 ms.author: yushwang
-ms.openlocfilehash: d5e62bf1838c8f07068208019d28d7273c28bd63
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4c3d2352467a1ed8e7979acac403908303ba3bc4
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60457411"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834550"
 ---
 # <a name="configure-vpn-gateway-transit-for-virtual-network-peering"></a>Konfigurowanie tranzytu bramy sieci VPN na potrzeby wirtualnych sieci równorzędnych
 
@@ -61,9 +55,9 @@ Konta używane do tworzenia wirtualnych sieci równorzędnych muszą mieć niezb
 |Sieć wirtualna|Model wdrażania|Rola|Uprawnienia|
 |---|---|---|---|
 |Hub-RM|Resource Manager|[Współautor sieci](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)|Microsoft.Network/virtualNetworks/virtualNetworkPeerings/write|
-| |Wdrożenie klasyczne|[Współautor klasycznej sieci](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#classic-network-contributor)|ND|
+| |Klasyczny|[Współautor klasycznej sieci](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#classic-network-contributor)|ND|
 |Spoke-Classic|Resource Manager|[Współautor sieci](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)|Microsoft.Network/virtualNetworks/peer|
-||Wdrożenie klasyczne|[Współautor klasycznej sieci](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#classic-network-contributor)|Microsoft.ClassicNetwork/virtualNetworks/peer|
+||Klasyczny|[Współautor klasycznej sieci](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#classic-network-contributor)|Microsoft.ClassicNetwork/virtualNetworks/peer|
 
 Dowiedz się więcej na temat [wbudowanych ról](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) i przypisywania określonych uprawnień do [ról niestandardowych](../active-directory/role-based-access-control-custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (tyko usługa Resource Manager).
 
@@ -159,7 +153,7 @@ Add-AzVirtualNetworkPeering `
   -AllowGatewayTransit
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Dowiedz się więcej o [ograniczeniach i zachowaniu komunikacji równorzędnej sieci wirtualnej](../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints) i [ustawieniach komunikacji równorzędnej sieci wirtualnej](../virtual-network/virtual-network-manage-peering.md#create-a-peering) przed utworzeniem komunikacji równorzędnej sieci wirtualnej w środowisku produkcyjnym.
 * Dowiedz się, jak [utworzyć topologię sieciową gwiazdy](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json#vnet-peering) z komunikacją równorzędną sieci wirtualnej i tranzytem bramy.

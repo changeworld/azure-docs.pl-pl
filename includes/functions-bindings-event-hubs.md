@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 03/05/2019
 ms.author: cshoe
-ms.openlocfilehash: 27333f272ca5000fd3b09b305712875c065f6bc7
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 2ab07e55606533390f6f3d2da3caf3ceee981e14
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74924435"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75840692"
 ---
 ## <a name="trigger"></a>Wyzwalacz
 
@@ -337,7 +337,7 @@ def main(event: func.EventHubEvent):
 
 ### <a name="trigger---java-example"></a>Wyzwalacz - przykładzie w języku Java
 
-Poniższy przykład przedstawia powiązanie wyzwalacza centrum zdarzeń w pliku *Function. JSON* i [funkcję języka Java](../articles/azure-functions/functions-reference-java.md) , która używa powiązania. Funkcja rejestruje treść komunikatu wyzwalacza centrum zdarzeń.
+W poniższym przykładzie pokazano powiązanie wyzwalacza centrum zdarzeń w pliku *Function. JSON* oraz [funkcja języka Java](../articles/azure-functions/functions-reference-java.md) , która używa powiązania. Funkcja rejestruje treść komunikatu wyzwalacza centrum zdarzeń.
 
 ```json
 {
@@ -389,11 +389,10 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 |**direction** | nd. | Musi być równa `in`. Ta właściwość jest ustawiana automatycznie po utworzeniu wyzwalacza w witrynie Azure portal. |
 |**Nazwa** | nd. | Nazwa zmiennej, która reprezentuje element zdarzenia w kodzie funkcji. |
 |**path** |**EventHubName** | Tylko funkcje 1. x. Nazwa centrum zdarzeń. Gdy nazwa centrum zdarzeń jest również obecna w parametrach połączenia, ta wartość zastępuje tę właściwość w czasie wykonywania. |
-|**eventHubName** |**EventHubName** | Funkcje 2. x i nowsze. Nazwa centrum zdarzeń. Gdy nazwa centrum zdarzeń jest również obecna w parametrach połączenia, ta wartość zastępuje tę właściwość w czasie wykonywania. |
+|**eventHubName** |**EventHubName** | Funkcje 2. x i nowsze. Nazwa centrum zdarzeń. Gdy nazwa centrum zdarzeń jest również obecna w parametrach połączenia, ta wartość zastępuje tę właściwość w czasie wykonywania. Można odwoływać się za pomocą ustawień aplikacji% eventHubName% |
 |**odbiorca** |**Odbiorca** | Opcjonalna właściwość, która ustawia [grupę odbiorców](../articles/event-hubs/event-hubs-features.md#event-consumers) służącą do subskrybowania zdarzeń w centrum. W przypadku pominięcia zostanie użyta Grupa konsumentów `$Default`. |
-|**kardynalności** | nd. | Dla języka JavaScript. Ustaw wartość `many`, aby umożliwić przetwarzanie wsadowe.  W przypadku pominięcia lub ustawienia wartości `one`pojedynczy komunikat przeszedł do funkcji. |
+|**kardynalności** | nd. | Dla języka JavaScript. Ustaw wartość `many`, aby umożliwić przetwarzanie wsadowe.  W przypadku pominięcia lub ustawienia wartości `one`do funkcji zostaje przekazana jedna wiadomość. |
 |**połączenia** |**Połączenie** | Nazwa ustawienia aplikacji, które zawiera parametry połączenia z przestrzenią nazw centrum zdarzeń. Skopiuj te parametry połączenia, klikając przycisk **Informacje o połączeniu** dla [obszaru nazw](../articles/event-hubs/event-hubs-create.md#create-an-event-hubs-namespace), a nie samego centrum zdarzeń. Te parametry połączenia muszą mieć co najmniej uprawnienia do odczytu w celu aktywowania wyzwalacza.|
-|**path**|**EventHubName**|Nazwa centrum zdarzeń. Można odwoływać się za pomocą ustawień aplikacji `%eventHubName%`|
 
 [!INCLUDE [app settings to local.settings.json](../articles/azure-functions/../../includes/functions-app-settings-local.md)]
 
@@ -450,7 +449,7 @@ public static string Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, ILog
 }
 ```
 
-Poniższy przykład pokazuje, jak za pomocą interfejsu `IAsyncCollector` wysyłać partie komunikatów. Ten scenariusz jest typowy podczas przetwarzania komunikatów pochodzących z jednego centrum zdarzeń i wysyłania wyników do innego centrum zdarzeń.
+W poniższym przykładzie pokazano, jak za pomocą interfejsu `IAsyncCollector` wysyłać partie komunikatów. Ten scenariusz jest typowy podczas przetwarzania komunikatów pochodzących z jednego centrum zdarzeń i wysyłania wyników do innego centrum zdarzeń.
 
 ```csharp
 [FunctionName("EH2EH")]
@@ -640,13 +639,13 @@ def main(timer: func.TimerRequest) -> str:
 
 ### <a name="output---java-example"></a>Dane wyjściowe — przykładzie w języku Java
 
-Poniższy przykład pokazuje funkcję języka Java, która zapisuje komunikat contianing bieżący czas do centrum zdarzeń.
+Poniższy przykład pokazuje funkcję języka Java, która zapisuje komunikat zawierający bieżący czas do centrum zdarzeń.
 
 ```java
 @FunctionName("sendTime")
 @EventHubOutput(name = "event", eventHubName = "samples-workitems", connection = "AzureEventHubConnection")
 public String sendTime(
-   @TimerTrigger(name = "sendTimeTrigger", schedule = "0 *&#47;5 * * * *") String timerInfo)  {
+   @TimerTrigger(name = "sendTimeTrigger", schedule = "0 */5 * * * *") String timerInfo)  {
      return LocalDateTime.now().toString();
  }
 ```

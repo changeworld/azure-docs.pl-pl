@@ -66,6 +66,8 @@
     - name: Tworzenie i konfigurowanie usługi Personalizacja
       href: how-to-settings.md
       displayName: 'azure, portal, settings, evaluation, offline, policy, export, model, configure'
+    - name: Zarządzanie zasadami uczenia
+      href: how-to-learning-policy.md
     - name: Analiza
       items:
         - name: Ocena w trybie offline
