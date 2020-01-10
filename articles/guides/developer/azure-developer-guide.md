@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
-ms.openlocfilehash: c8ab954471e597cfea5c6f56cd45b2191aa73242
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 0df55f4ce790d6ea38f44ce0ca6dab43085c3455
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74424083"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770921"
 ---
-# <a name="get-started-guide-for-azure-developers"></a>Przewodnik dla początkujących deweloperów platformy Azure
+# <a name="get-started-guide-for-azure-developers"></a>Przewodnik wprowadzenie dla deweloperów platformy Azure
 
 ## <a name="what-is-azure"></a>Co to jest platforma Azure?
 
@@ -96,7 +96,7 @@ Azure Service Fabric to platforma systemów rozproszonych. Ta platforma ułatwia
 * Wdrażanie 
 * Monitorowanie
 * Uaktualnianie/stosowanie poprawek
-* Usuwanie 
+* Usunąć 
 
 Aplikacje, które są uruchamiane w udostępnionej puli maszyn, mogą być uruchamiane w miarę potrzeby na setkach lub tysiącach maszyn.
 
@@ -133,7 +133,7 @@ Większość aplikacji musi przechowywać dane, dlatego należy zdecydować, aby
   > **Wprowadzenie**: [Tworzenie bazy danych SQL w ciągu kilku minut przy użyciu Azure Portal](../../sql-database/sql-database-get-started.md).
 
 
-Za pomocą [Azure Data Factory](../../data-factory/introduction.md) można przenieść istniejące dane lokalne na platformę Azure. Jeśli nie jesteś gotowy do przenoszenia danych do chmury, [połączenia hybrydowe](../../biztalk-services/integration-hybrid-connection-overview.md) w BizTalk Services umożliwia połączenie App Service hostowanej aplikacji z zasobami lokalnymi. Możesz również nawiązać połączenie z usługami Azure Data and Storage z aplikacji lokalnych.
+Za pomocą [Azure Data Factory](../../data-factory/introduction.md) można przenieść istniejące dane lokalne na platformę Azure. Jeśli nie jesteś gotowy do przenoszenia danych do chmury, [połączenia hybrydowe](../../app-service/app-service-hybrid-connections.md) w Azure App Service umożliwia połączenie App Service hostowanej aplikacji z zasobami lokalnymi. Możesz również nawiązać połączenie z usługami Azure Data and Storage z aplikacji lokalnych.
 
 #### <a name="docker-support"></a>Obsługa platformy Docker
 
@@ -147,11 +147,11 @@ Platforma Azure oferuje kilka sposobów korzystania z kontenerów w aplikacjach.
   > 
   > **Wprowadzenie**: [Tworzenie środowiska Docker na platformie Azure przy użyciu rozszerzenia maszyny wirtualnej platformy Docker](../../virtual-machines/virtual-machines-linux-dockerextension.md).
 
-- **Azure Container Service**: umożliwia tworzenie i Konfigurowanie klastra maszyn wirtualnych, które są wstępnie skonfigurowane do uruchamiania aplikacji kontenerowych, oraz zarządzanie nim. Aby dowiedzieć się więcej o usłudze Container Service, zobacz [wprowadzenie Azure Container Service](../../container-service/container-service-intro.md).
+- **Usługa Azure Kubernetes**: umożliwia tworzenie i Konfigurowanie klastra maszyn wirtualnych, które są wstępnie skonfigurowane do uruchamiania aplikacji kontenerowych, oraz zarządzanie nim. Aby dowiedzieć się więcej o usłudze Azure Kubernetes, zobacz [wprowadzenie do usługi Azure Kubernetes](../../aks/intro-kubernetes.md).
 
   > **Kiedy należy używać**: Kiedy trzeba tworzyć gotowe do użycia środowisko produkcyjne, które zapewnia dodatkowe narzędzia do planowania i zarządzania, lub gdy wdrażasz klaster Docker Swarm.
   > 
-  > **Wprowadzenie**: [wdrażanie klastra usługi Container Service](../../container-service/dcos-swarm/container-service-deployment.md).
+  > **Wprowadzenie**: [wdrażanie klastra usługi Kubernetes](../../aks/tutorial-kubernetes-deploy-cluster.md).
 
 - **Maszyna platformy Docker**: umożliwia zainstalowanie aparatu platformy Docker na hostach wirtualnych i zarządzanie nim przy użyciu poleceń platformy Docker-Machine.
 
@@ -163,7 +163,7 @@ Platforma Azure oferuje kilka sposobów korzystania z kontenerów w aplikacjach.
   > 
   > **Wprowadzenie**: [Użyj niestandardowego obrazu platformy docker dla App Service w systemie Linux](../../app-service/containers/quickstart-docker-go.md).
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Uwierzytelnianie
 
 Niezwykle ważne jest, aby nie tylko wiedzieć, kto korzysta z aplikacji, ale również aby uniemożliwić nieautoryzowany dostęp do zasobów. Platforma Azure oferuje kilka metod uwierzytelniania klientów aplikacji.
 
@@ -185,7 +185,7 @@ Aby dowiedzieć się więcej o najlepszych rozwiązaniach dotyczących zabezpiec
 
 Gdy aplikacja działa na platformie Azure, musisz monitorować wydajność, śledzić problemy i zobaczyć, jak klienci korzystają z aplikacji. Platforma Azure oferuje kilka opcji monitorowania.
 
--   **Visual studio Application Insights**: hostowana na platformie Azure Usługa analityczna Analytics zintegrowana z programem Visual Studio do monitorowania aktywnych aplikacji sieci Web. Zapewnia to dane, które są potrzebne do ciągłego ulepszania wydajności i użyteczności aplikacji. To ulepszenie ma miejsce, gdy aplikacje są hostowane na platformie Azure.
+-   **Application Insights**: hostowana na platformie Azure Usługa analityczna Analytics zintegrowana z programem Visual Studio do monitorowania aktywnych aplikacji sieci Web. Zapewnia to dane, które są potrzebne do ciągłego ulepszania wydajności i użyteczności aplikacji. To ulepszenie ma miejsce, gdy aplikacje są hostowane na platformie Azure.
 
     >**Wprowadzenie**: Postępuj zgodnie z [samouczkiem Application Insights](../../azure-monitor/app/app-insights-overview.md).
 
@@ -193,7 +193,7 @@ Gdy aplikacja działa na platformie Azure, musisz monitorować wydajność, śle
  
     >**Wprowadzenie:** wprowadzenie [do Azure monitor](../../monitoring-and-diagnostics/monitoring-get-started.md).
 
-### <a name="devops-integration"></a>Integracja metodyki DevOps
+### <a name="devops-integration"></a>Integracja DevOps
 
 Niezależnie od tego, czy udostępniasz maszyny wirtualne, czy publikujesz aplikacje sieci Web z ciągłą integracją, platforma Azure integruje się z większością popularnych narzędzi DevOps. Możesz korzystać z narzędzi, które już masz, i zmaksymalizować istniejące środowisko, korzystając z pomocy technicznej dla narzędzi takich jak: 
 
@@ -238,7 +238,7 @@ Platforma Azure oferuje dwa sposoby zarządzania aplikacjami i usługami z pozio
 
 -   [Azure PowerShell](../../powershell-install-configure.md): zawiera zestaw modułów z poleceniami cmdlet, które umożliwiają zarządzanie zasobami platformy Azure przy użyciu programu Windows PowerShell.
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Portalu Azure
 
 [Azure Portal](https://portal.azure.com) jest aplikacją opartą na sieci Web. Za pomocą Azure Portal można tworzyć i usuwać zasoby i usługi platformy Azure oraz zarządzać nimi. Obejmuje:
 
@@ -266,7 +266,7 @@ Usługi, takie jak [Mobile Apps](../../app-service-mobile/app-service-mobile-dot
 
 ### <a name="azure-resource-manager"></a>Azure Resource Manager 
     
-Uruchomienie aplikacji na platformie Azure wymaga, aby pracować z wieloma usługami platformy Azure. Te usługi są zgodne z tym samym cyklem życia i można je traktować jako jednostkę logiczną. Na przykład aplikacja sieci Web może używać Web Apps, SQL Database, magazynu, pamięci podręcznej platformy Azure dla Redis i usług Azure Content Delivery Network. [Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md) pozwala na współpracę z zasobami w aplikacji jako grupą. Można wdrożyć, zaktualizować lub usunąć wszystkie zasoby w jednej, skoordynowanej operacji.
+Uruchomienie aplikacji na platformie Azure wymaga, aby pracować z wieloma usługami platformy Azure. Te usługi są zgodne z tym samym cyklem życia i można je traktować jako jednostkę logiczną. Na przykład aplikacja sieci Web może używać Web Apps, SQL Database, magazynu, pamięci podręcznej platformy Azure dla Redis i usług Azure Content Delivery Network. [Azure Resource Manager](../../azure-resource-manager/management/overview.md) pozwala na współpracę z zasobami w aplikacji jako grupą. Można wdrożyć, zaktualizować lub usunąć wszystkie zasoby w jednej, skoordynowanej operacji.
 
 Oprócz logicznego grupowania i zarządzania powiązanymi zasobami Azure Resource Manager obejmuje możliwości wdrażania umożliwiające dostosowanie wdrożenia i konfiguracji powiązanych zasobów. Można na przykład użyć Menedżer zasobów wdrożyć i skonfigurować aplikację. Ta aplikacja może składać się z wielu maszyn wirtualnych, modułu równoważenia obciążenia i bazy danych SQL Azure jako pojedynczej jednostki.
 

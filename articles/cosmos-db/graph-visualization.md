@@ -1,53 +1,53 @@
 ---
-title: Wizualizowanie danych programu graph w usłudze Azure Cosmos DB — interfejs API Gremlin
-description: Dowiedz się, jak integrować dane programu graph usługi Azure Cosmos DB dzięki rozwiązaniom wizualizacji (Linkurious przedsiębiorstwa, Cambridge analizy).
+title: Wizualizowanie danych grafu w Azure Cosmos DB interfejsie API Gremlin
+description: Dowiedz się, jak zintegrować dane grafu Azure Cosmos DB z rozwiązaniami do wizualizacji (Linkurious Enterprise, Cambridge Intelligence).
 author: luisbosquez
 ms.author: lbosq
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: conceptual
 ms.date: 07/02/2019
-ms.openlocfilehash: efe47cc5453a7259da37dcb3c33edcdfbea6d8c8
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 1cabe57a0e7f2869a30973c8bbc8b4b38f664d81
+ms.sourcegitcommit: 801e9118fae92f8eef8d846da009dddbd217a187
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67672634"
+ms.lasthandoff: 12/27/2019
+ms.locfileid: "75500024"
 ---
-# <a name="visualize-graph-data-stored-in-azure-cosmos-db-gremlin-api-with-data-visualization-solutions"></a>Wizualizacja wykresu — dane przechowywane w usłudze Azure Cosmos DB — interfejs API Gremlin za pomocą rozwiązania do wizualizacji danych
+# <a name="visualize-graph-data-stored-in-azure-cosmos-db-gremlin-api-with-data-visualization-solutions"></a>Wizualizowanie danych grafu przechowywanych w interfejsie API Azure Cosmos DB Gremlin z rozwiązaniami do wizualizacji danych
 
-Można wizualizować dane przechowywane w usłudze Azure Cosmos DB — interfejs API Gremlin za pomocą różnych rozwiązań wizualizacji danych. Następujące rozwiązania są zalecane przez [społeczności przez witrynę Apache Tinkerpop](http://tinkerpop.apache.org/#poweredby) do wizualizacji danych wykresu.
+Możesz wizualizować dane przechowywane w Azure Cosmos DB Gremlin API przy użyciu różnych rozwiązań do wizualizacji danych. Następujące rozwiązania są zalecane przez [społeczność Apache Tinkerpop](https://tinkerpop.apache.org/#poweredby) do wizualizacji danych grafu.
 
 ## <a name="linkurious-enterprise"></a>Linkurious Enterprise
 
-![Linkurious Logo](./media/graph-visualization/linkurious-logo.jpg)
+![Logo Linkurious](./media/graph-visualization/linkurious-logo.jpg)
 
-[Linkurious Enterprise](https://linkurio.us/product/) używa wykresu technologii i wizualizację danych można przekształcić złożone zestawy danych w interaktywne visual sieci. Platforma nawiązuje połączenie ze źródłami danych i umożliwia badaczy bezproblemowo przejść między miliardów jednostek i relacji. Wynik jest nowe możliwości w zakresie wykrywania podejrzanych relacje bez miejscami z zapytania lub tabel.
+[Firma Linkurious Enterprise](https://linkurio.us/product/) używa technologii Graph i wizualizacji danych, aby przekształcić złożone zestawy elementów DataSet w interaktywne sieci wizualne. Platforma nawiązuje połączenie ze źródłami danych i umożliwia badaczom bezproblemowe nawigowanie w miliardach jednostek i relacji. Wynikiem jest nowa możliwość wykrywania podejrzanych relacji bez Juggling z kwerendami lub tabelami.
 
-Interaktywny interfejs Linkurious Enterprise oferuje prosty sposób zbadać złożonych danych. Można wyszukiwania dla konkretnych jednostek, rozwiń węzeł połączenia, aby ujawnić ukryte relacje i stosować układy wybranym związanych z porządkowaniem złożonych sieci. Linkurious Enterprise jest teraz zgodna z usługi Azure Cosmos DB — interfejs API Gremlin. Jest ona odpowiednia dla scenariuszy wizualizacji wykresu end-to-end obsługuje odczytywać i zapisywać możliwości z poziomu interfejsu użytkownika. Możesz poprosić o [pokaz Linkurious za pomocą usługi Azure Cosmos DB](https://linkurio.us/contact/)
+Interaktywny interfejs programu Linkurious Enterprise oferuje łatwy sposób badania złożonych danych. Można wyszukiwać określone jednostki, rozszerzać połączenia, aby odkrywać ukryte relacje i stosować wybrane układy do porządkowaniem złożonych sieci. Linkurious Enterprise jest teraz zgodna z interfejsem API Gremlin Azure Cosmos DB. Jest to odpowiednie dla kompleksowych scenariuszy wizualizacji grafu i obsługuje możliwości odczytu i zapisu z interfejsu użytkownika. Możesz zażądać [pokazu Linkurious z Azure Cosmos DB](https://linkurio.us/contact/)
 
-![Pokaz Linkurious](./media/graph-visualization/linkurious-demo.gif)
+![Demonstracja Linkurious](./media/graph-visualization/linkurious-demo.gif)
 
 ## <a name="cambridge-intelligence"></a>Analiza Cambridge
 
-![Logo Cambridge analizy](./media/graph-visualization/ci-logo.png)
+![Logo analizy Cambridge](./media/graph-visualization/ci-logo.png)
 
-[Analiza Cambridge](https://cambridge-intelligence.com/products/) zestaw narzędzi wizualizacji wykresu obsługują teraz usługi Azure Cosmos DB. Następujące dwa zestawy narzędzi wizualizacji są obsługiwane przez usługę Azure Cosmos DB:
+Zestawy narzędzi do wizualizacji grafu [Cambridge Intelligence](https://cambridge-intelligence.com/products/) obsługują teraz Azure Cosmos DB. Następujące dwa zestawy narzędzi do wizualizacji są obsługiwane przez Azure Cosmos DB:
 
-- [Styku dla deweloperów języka JavaScript](https://cambridge-intelligence.com/keylines/)
+- [Linie dotyczące deweloperów języka JavaScript](https://cambridge-intelligence.com/keylines/)
 
-- [Ponownie programu Graph dla deweloperów platformy React](https://cambridge-intelligence.com/regraph/)
+- [Ponowne tworzenie grafu dla deweloperów reaguje](https://cambridge-intelligence.com/regraph/)
 
-![Pokaz analizy Cambridge](./media/graph-visualization/ci-demo-2.gif)
+![Demonstracja analizy Cambridge](./media/graph-visualization/ci-demo-2.gif)
 
-Te zestawy narzędzi umożliwiają projektowania wizualizacji wykresu o wysokiej wydajności oraz aplikacji do analizy dla przypadków użycia. One korzystaj z zaawansowanych renderowanie Library(WebGL) grafiki sieci Web i dokładnie przygotowane kod pozwala użytkownikom środowisko szybki i wnikliwe wizualizacji. Te narzędzia są zgodne z przeglądarki, urządzenia, serwera lub bazy danych i pochodzić z samouczki krok po kroku, w pełni udokumentowanych interfejsów API i interaktywne prezentacje.
+Te zestawy narzędzi umożliwiają projektowanie wizualizacji grafów o wysokiej wydajności i aplikacji analizy dla przypadków użycia. Wykorzystują one zaawansowane funkcje renderowania biblioteki grafiki sieci Web (WebGL) i starannie spreparowany kod, aby zapewnić użytkownikom szybkie i szczegółowe informacje na temat wizualizacji. Te narzędzia są zgodne z dowolną przeglądarką, urządzeniem, serwerem lub bazą danych, a także Samouczki krok po kroku, w pełni udokumentowane interfejsy API i interakcyjne pokazy.
 
-![Pokaz analizy Cambridge](./media/graph-visualization/ci-demo-1.gif)
+![Demonstracja analizy Cambridge](./media/graph-visualization/ci-demo-1.gif)
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
  
-- [Wypróbuj zestawy narzędzi](https://cambridge-intelligence.com/try/)
-- [Omówienie technologii styku](https://cambridge-intelligence.com/keylines/technology/)
-- [Omówienie technologii ponownie programu Graph](https://cambridge-intelligence.com/regraph/technology/)
+- [Wypróbuj zestaw narzędzi](https://cambridge-intelligence.com/try/)
+- [Omówienie technologii wiersza](https://cambridge-intelligence.com/keylines/technology/)
+- [Przegląd technologii regrafu](https://cambridge-intelligence.com/regraph/technology/)
 - [Przypadki użycia wizualizacji wykresu](https://cambridge-intelligence.com/use-cases/)

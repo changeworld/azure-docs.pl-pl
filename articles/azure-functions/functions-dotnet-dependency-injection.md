@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 09/05/2019
 ms.author: cshoe
 ms.reviewer: jehollan
-ms.openlocfilehash: dbd6762906bc189cad74d78dcd8f28b0cfeba183
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 4c6ccf9dce0fc119bd666871489a42a3ef734f81
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226986"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769204"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>Używanie iniekcji zależności w programie .NET Azure Functions
 
@@ -64,7 +64,7 @@ namespace MyNamespace
 
 ### <a name="caveats"></a>Zastrzeżenia
 
-Seria kroków rejestracji jest uruchamiana przed i po przetworzeniu klasy startowej przez środowisko uruchomieniowe. W związku z tym należy wziąć pod uwagę następujące elementy:
+Seria kroków rejestracji jest uruchamiana przed i po przetworzeniu klasy startowej przez środowisko uruchomieniowe. W związku z tym należy pamiętać o następujących elementach:
 
 - *Klasa startowa jest przeznaczona tylko do konfiguracji i rejestracji.* Unikaj korzystania z usług zarejestrowanych podczas uruchamiania podczas uruchamiania. Na przykład nie należy próbować rejestrować komunikatu w rejestratorze, który jest rejestrowany podczas uruchamiania. Ten punkt procesu rejestracji jest zbyt wczesny, aby Twoje usługi były dostępne do użycia. Po uruchomieniu metody `Configure` środowisko uruchomieniowe funkcji kontynuuje rejestrowanie dodatkowych zależności, co może wpłynąć na działanie usług.
 

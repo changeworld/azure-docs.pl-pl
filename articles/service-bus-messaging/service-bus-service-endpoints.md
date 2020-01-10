@@ -1,6 +1,6 @@
 ---
 title: Punkty końcowe usługi sieci wirtualnej — Azure Service Bus
-description: Dodaj punkt końcowy usługi Microsoft. ServiceBus do sieci wirtualnej.
+description: Ten artykuł zawiera informacje dotyczące sposobu dodawania punktu końcowego usługi Microsoft. ServiceBus do sieci wirtualnej.
 services: service-bus
 documentationcenter: ''
 author: axisc
@@ -8,18 +8,18 @@ editor: spelluru
 ms.service: service-bus-messaging
 ms.devlang: na
 ms.topic: article
-ms.date: 10/22/2018
+ms.date: 12/20/2019
 ms.author: aschhab
-ms.openlocfilehash: 99a705c3923821739ddc1dedd8f7c079dc534a1a
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 5446ee12a6933a916444d4f64a0eb983a35a59f8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277307"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462061"
 ---
 # <a name="use-virtual-network-service-endpoints-with-azure-service-bus"></a>Korzystanie z punktów końcowych usługi Virtual Network z Azure Service Bus
 
-Integracja Service Bus z [punktami końcowymi usługi Virtual Network (VNET)][vnet-sep] umożliwia bezpieczny dostęp do możliwości obsługi komunikatów z obciążeń takich jak maszyny wirtualne, które są powiązane z sieciami wirtualnymi, przy zabezpieczonej ścieżce ruchu sieciowego na obu celów.
+Integracja Service Bus z [punktami końcowymi usługi Virtual Network (VNET)][vnet-sep] umożliwia bezpieczny dostęp do funkcji obsługi komunikatów z obciążeń takich jak maszyny wirtualne, które są powiązane z sieciami wirtualnymi, z zabezpieczoną ścieżką ruchu sieciowego na obu końcach.
 
 Po skonfigurowaniu do powiązania z co najmniej jednym punktem końcowym usługi podsieci sieci wirtualnej odpowiednie przestrzenie nazw Service Bus nie będą już akceptować ruchu z dowolnego miejsca, ale autoryzowanych sieci wirtualnych. Z punktu widzenia sieci wirtualnej powiązanie przestrzeni nazw Service Bus z punktem końcowym usługi konfiguruje odizolowany tunel sieciowy z podsieci sieci wirtualnej do usługi obsługi komunikatów.
 
@@ -37,7 +37,7 @@ Wynikiem jest relacja między obciążeniami powiązanymi z podsiecią i odpowia
 > - Device Explorer usługi Azure IoT
 >
 > Poniższe usługi firmy Microsoft muszą znajdować się w sieci wirtualnej
-> - Usługa Azure App Service
+> - Azure App Service
 > - Azure Functions
 
 > [!IMPORTANT]
