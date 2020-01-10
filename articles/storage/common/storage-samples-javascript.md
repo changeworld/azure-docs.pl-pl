@@ -7,18 +7,21 @@ ms.date: 09/26/2019
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.openlocfilehash: 363739bbab67b92e78e0cdb56cf98cdb8e1446eb
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 44fe68b8b04a1192c928e04c7d2a9d147f400130
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71409103"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75748296"
 ---
 # <a name="azure-storage-samples-using-javascript"></a>Przykłady usługi Azure Storage korzystające z języka JavaScript
 
 Poniższe tabele zawierają omówienie naszych repozytorium przykładów oraz scenariusze omówione w poszczególnych przykładach. Kliknij linki, aby wyświetlić odpowiedni przykładowy kod w usłudze GitHub.
 
-## <a name="blob-samples"></a>Przykłady obiektów BLOB
+> [!NOTE]
+> Te przykłady używają biblioteki v10 JavaScript usługi Azure Storage. Aby uzyskać kod V12, zobacz [przykłady](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob/samples) w repozytorium GitHub.
+
+## <a name="blob-samples-v10"></a>Przykłady obiektów BLOB (v10)
 
 | **Scenariusz** | **Przykładowy kod** |
 |--------------|-----------------|
@@ -34,16 +37,16 @@ Poniższe tabele zawierają omówienie naszych repozytorium przykładów oraz sc
 | Metadane kontenera | [Wprowadzenie z usługą Azure Blob Service w języku JavaScript](https://github.com/Azure-Samples/storage-blob-node-getting-started/blob/master/advanced.js#L409) |
 | Właściwości kontenera | [Wprowadzenie z usługą Azure Blob Service w języku JavaScript](https://github.com/Azure-Samples/storage-blob-node-getting-started/blob/master/advanced.js#L377) |
 | Pobierz zakresy stron | [Wprowadzenie z usługą Azure Blob Service w języku JavaScript](https://github.com/Azure-Samples/storage-blob-node-getting-started/blob/master/basic.js#L170) |
-| Obiekt BLOB dzierżawy | [Wprowadzenie z usługą Azure Blob Service w języku JavaScript](https://github.com/Azure-Samples/storage-blob-node-getting-started/blob/master/advanced.js#L216) |
+| Dzierżawienie obiektu blob | [Wprowadzenie z usługą Azure Blob Service w języku JavaScript](https://github.com/Azure-Samples/storage-blob-node-getting-started/blob/master/advanced.js#L216) |
 | Kontener dzierżawy | [Wprowadzenie z usługą Azure Blob Service w języku JavaScript](https://github.com/Azure-Samples/storage-blob-node-getting-started/blob/master/advanced.js#L185) |
 | Lista obiektów BLOB/kontener | [Wprowadzenie z usługą Azure Blob Service w języku JavaScript](https://github.com/Azure-Samples/storage-blob-node-getting-started/blob/master/advanced.js#L134) |
-| Stronicowy obiekt blob | [Wprowadzenie z usługą Azure Blob Service w języku JavaScript](https://github.com/Azure-Samples/storage-blob-node-getting-started/blob/master/basic.js#L129) |
+| Obiekt BLOB strony | [Wprowadzenie z usługą Azure Blob Service w języku JavaScript](https://github.com/Azure-Samples/storage-blob-node-getting-started/blob/master/basic.js#L129) |
 | SAS | [Sygnatura dostępu współdzielonego w języku JavaScript](https://github.com/Azure-Samples/storage-blob-node-getting-started/blob/master/advanced.js#L257) |
 | Właściwości usługi | [Wprowadzenie z usługą Azure Blob Service w języku JavaScript](https://github.com/Azure-Samples/storage-blob-node-getting-started/blob/master/advanced.js#L308) |
 | Ustawianie reguł CORS | [Wprowadzenie z usługą Azure Blob Service w języku JavaScript](https://github.com/Azure-Samples/storage-blob-node-getting-started/blob/master/advanced.js#L152) |
 | Obiekt BLOB migawek | [Wprowadzenie z usługą Azure Blob Service w języku JavaScript](https://github.com/Azure-Samples/storage-blob-node-getting-started/blob/master/basic.js#L79) |
 
-## <a name="file-samples"></a>Przykłady plików
+## <a name="file-samples-v10"></a>Przykłady plików (v10)
 
 | **Scenariusz** | **Przykładowy kod** |
 |--------------|-----------------|
@@ -53,7 +56,7 @@ Poniższe tabele zawierają omówienie naszych repozytorium przykładów oraz sc
 | Wyświetlanie listy katalogów i plików | [Wprowadzenie z usługą plików platformy Azure w języku JavaScript](https://github.com/Azure-Samples/storage-file-node-getting-started/blob/master/fileSample.js#L115) |
 | Wyświetl listę udziałów | [Wprowadzenie z usługą plików platformy Azure w języku JavaScript](https://github.com/Azure-Samples/storage-file-node-getting-started/blob/master/fileSample.js#L187) |
 
-## <a name="queue-samples"></a>Przykładowe kolejki
+## <a name="queue-samples-v10"></a>Przykłady kolejki (v10)
 
 | **Scenariusz** | **Przykładowy kod** |
 |--------------|-----------------|
@@ -71,12 +74,12 @@ Poniższe tabele zawierają omówienie naszych repozytorium przykładów oraz sc
 | Statystyka kolejki | [Wprowadzenie z usługą kolejki platformy Azure w języku JavaScript](https://github.com/Azure-Samples/storage-queue-node-getting-started/blob/master/advanced.js#L149) |
 | Aktualizuj komunikat | [Wprowadzenie z usługą kolejki platformy Azure w języku JavaScript](https://github.com/Azure-Samples/storage-queue-node-getting-started/blob/master/basic.js#L176) |
 
-## <a name="table-samples"></a>Przykłady tabel
+## <a name="table-samples-v10"></a>Przykłady tabeli (v10)
 
 | **Scenariusz** | **Przykładowy kod** |
 |--------------|-----------------|
 | Jednostki partii | [Wprowadzenie z usługą Azure Table Service w języku JavaScript](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/basic.js#L87) |
-| Utwórz tabelę | [Wprowadzenie z usługą Azure Table Service w języku JavaScript](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/basic.js#L41) |
+| Create Table | [Wprowadzenie z usługą Azure Table Service w języku JavaScript](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/basic.js#L41) |
 | Usuń jednostkę/tabelę | [Wprowadzenie z usługą Azure Table Service w języku JavaScript](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/basic.js#L67) |
 | Wstaw/Scal/Zamień jednostkę | [Wprowadzenie z usługą Azure Table Service w języku JavaScript](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/basic.js#L49) |
 | Lista tabel | [Wprowadzenie z usługą Azure Table Service w języku JavaScript](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/advanced.js#L63) |
@@ -108,7 +111,7 @@ Zapoznaj się z następującymi przewodnikami, jeśli szukasz instrukcji dotycz�
 
 Aby uzyskać informacje na temat przykładów dla innych języków:
 
-* .NET: [Przykłady usługi Azure Storage korzystające z platformy .NET](storage-samples-dotnet.md)
-* Java: [Przykłady usługi Azure Storage korzystające z języka Java](storage-samples-java.md)
-* Python: [Przykłady usługi Azure Storage przy użyciu języka Python](storage-samples-python.md)
-* Wszystkie inne języki: [Przykłady usługi Azure Storage](storage-samples.md)
+* .NET: [przykłady usługi Azure Storage korzystające z platformy .NET](storage-samples-dotnet.md)
+* Java: [przykłady usługi Azure Storage korzystające z języka Java](storage-samples-java.md)
+* Python: [przykłady usługi Azure Storage przy użyciu języka Python](storage-samples-python.md)
+* Wszystkie inne języki: [przykłady usługi Azure Storage](storage-samples.md)

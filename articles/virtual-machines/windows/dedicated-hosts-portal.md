@@ -12,14 +12,14 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 07/26/2019
 ms.author: cynthn
-ms.openlocfilehash: 7abfa00b01f2e5e32b2486d69f36ac62f844c5ad
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: aa19c343e003bf1cd55e3d12b18e595113a7189e
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033831"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75833943"
 ---
-# <a name="preview-deploy-vms-to-dedicated-hosts-using-the-portal"></a>Wersja zapoznawcza: wdrażanie maszyn wirtualnych na dedykowanych hostach przy użyciu portalu
+# <a name="deploy-vms-to-dedicated-hosts-using-the-portal"></a>Wdrażanie maszyn wirtualnych na dedykowanych hostach przy użyciu portalu
 
 W tym artykule opisano sposób tworzenia [dedykowanego hosta](dedicated-hosts.md) platformy Azure do hostowania maszyn wirtualnych. 
 
@@ -27,7 +27,7 @@ W tym artykule opisano sposób tworzenia [dedykowanego hosta](dedicated-hosts.md
 
 ## <a name="create-a-vm"></a>Tworzenie maszyny wirtualnej
 
-1. W lewym górnym rogu okna witryny Azure Portal wybierz pozycję **Utwórz zasób**.
+1. W lewym górnym rogu witryny Azure Portal wybierz pozycję **Utwórz zasób**.
 1. Na stronie **Nowy** w obszarze **popularne**wybierz pozycję **Windows Server 2016 Datacenter**.
 1. Na karcie **podstawy** w obszarze **szczegóły projektu**upewnij się, że wybrano poprawną subskrypcję, a następnie wybierz pozycję *myDedicatedHostsRG* jako **grupę zasobów**. 
 1. W obszarze **Szczegóły wystąpienia** wpisz *myVM* w polu **Nazwa maszyny wirtualnej** i wybierz *Wschodnie stany USA* w polu **Lokalizacja** .

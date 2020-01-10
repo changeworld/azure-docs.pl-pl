@@ -10,18 +10,18 @@ ms.author: roastala
 author: rastala
 manager: cgronlun
 ms.reviewer: nibaccam
-ms.date: 11/04/2019
-ms.openlocfilehash: 1a82b6592782973920f4381129e9659eaebca033
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.date: 01/09/2020
+ms.openlocfilehash: cd9cada24ba5e7d2a2001d4ef0efef2a157b0fd6
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75537190"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834725"
 ---
 # <a name="start-monitor-and-cancel-training-runs-in-python"></a>Uruchamianie, monitorowanie i anulowanie przebiegów szkoleniowych w języku Python
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-[Zestaw Azure Machine Learning SDK dla języka Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) i [interfejsu wiersza polecenia Machine Learning](reference-azure-machine-learning-cli.md) udostępnia różne metody monitorowania, organizowania i zarządzania przebiegami w celu szkolenia i eksperymentowania.
+[Zestaw Azure Machine Learning SDK dla języka Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py), [Machine Learning interfejsu wiersza polecenia](reference-azure-machine-learning-cli.md)i [Azure Machine Learning Studio](https://ml.azure.com) udostępnia różne metody monitorowania, organizowania i zarządzania przebiegami w celu uczenia i eksperymentowania.
 
 W tym artykule przedstawiono przykłady następujących zadań:
 
@@ -105,6 +105,16 @@ Aby rozpocząć wykonywanie eksperymentu, wykonaj następujące czynności:
 
     Aby uzyskać więcej informacji, zobacz [AZ ml Run Submit-Script](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-submit-script).
 
+### <a name="using-azure-machine-learning-studio"></a>Korzystanie z programu Azure Machine Learning Studio
+
+Aby rozpocząć przesyłanie potoku w projektancie (wersja zapoznawcza), wykonaj następujące czynności:
+
+1. Ustaw domyślny element docelowy obliczeń dla potoku.
+
+1. Wybierz pozycję **Uruchom** w górnej części kanwy potoku.
+
+1. Wybierz eksperyment, aby zgrupować uruchomienia potoku.
+
 ## <a name="monitor-the-status-of-a-run"></a>Monitorowanie stanu przebiegu
 
 ### <a name="using-the-sdk"></a>Używanie zestawu SDK
@@ -160,6 +170,22 @@ print(notebook_run.get_status())
 
     Aby uzyskać więcej informacji, zobacz [AZ ml Run show](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-show).
 
+
+### <a name="using-azure-machine-learning-studio"></a>Korzystanie z programu Azure Machine Learning Studio
+
+Aby wyświetlić liczbę aktywnych przebiegów eksperymentu w programie Studio.
+
+1. Przejdź do sekcji **eksperymenty** . 
+
+1. Wybierz eksperyment.
+
+    Na stronie eksperymentów można zobaczyć liczbę aktywnych elementów docelowych obliczeń i czas trwania każdego uruchomienia. 
+
+1. Wybierz konkretny numer uruchomienia.
+
+1. Na karcie **dzienniki** można znaleźć dzienniki diagnostyczne i błędy dla uruchomienia potoku.
+
+
 ## <a name="cancel-or-fail-runs"></a>Anulowanie lub niepowodzenie przebiegów
 
 Jeśli zauważysz błąd lub jeśli wykonywanie przebiegu trwa zbyt długo, możesz anulować przebieg.
@@ -194,6 +220,17 @@ az ml run cancel -r runid -w workspace_name -e experiment_name
 ```
 
 Aby uzyskać więcej informacji, zobacz [AZ ml Run Cancel](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-cancel).
+
+### <a name="using-azure-machine-learning-studio"></a>Korzystanie z programu Azure Machine Learning Studio
+
+Aby anulować uruchomienie w programie Studio, wykonaj następujące czynności:
+
+1. Przejdź do działającego potoku w sekcji **eksperymenty** lub **potoki** . 
+
+1. Wybierz numer uruchomienia potoku, który chcesz anulować.
+
+1. Na pasku narzędzi wybierz pozycję **Anuluj** .
+
 
 ## <a name="create-child-runs"></a>Tworzenie przebiegów podrzędnych
 
@@ -331,6 +368,12 @@ az ml run list --experiment-name experiment [?properties.author=='azureml-user' 
 ```
 
 Aby uzyskać więcej informacji na temat wykonywania zapytań dotyczących wyników interfejsu wiersza polecenia platformy Azure, zobacz temat [zapytanie dotyczące danych wyjściowych poleceń platformy Azure](https://docs.microsoft.com/cli/azure/query-azure-cli?view=azure-cli-latest).
+
+### <a name="using-azure-machine-learning-studio"></a>Korzystanie z programu Azure Machine Learning Studio
+
+1. Przejdź do sekcji **potoki** .
+
+1. Korzystając z paska wyszukiwania, można filtrować potoki przy użyciu tagów, opisów, nazw eksperymentów i nazwiska osoby przesyłającej.
 
 ## <a name="example-notebooks"></a>Przykład notesów
 

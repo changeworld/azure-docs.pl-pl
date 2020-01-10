@@ -5,12 +5,12 @@ ms.assetid: ffbc6064-edf6-474d-971c-695598fd08bf
 ms.topic: article
 ms.date: 08/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: f9158a4094b7d2ec148c2cae85decb3ad959b7c3
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 12e16cc7e17ae217a334fe25d71672ab2cafa5a8
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671921"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768439"
 ---
 # <a name="configure-your-app-service-app-to-use-microsoft-account-login"></a>Skonfiguruj aplikację App Service, aby używała logowania do konta Microsoft
 
@@ -22,7 +22,7 @@ W tym temacie opisano sposób konfigurowania Azure App Service do korzystania z 
 
 1. Przejdź do [**rejestracje aplikacji**](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) w Azure Portal. W razie konieczności Zaloguj się przy użyciu konto Microsoft.
 1. Wybierz pozycję **Nowa rejestracja**, a następnie wprowadź nazwę aplikacji.
-1. W obszarze **identyfikatory URI przekierowania**wybierz pozycję **Sieć Web**, a następnie wprowadź `https://<app-domain-name>/.auth/login/microsoftaccount/callback supply the endpoint for your application`. Zastąp *\<App-domain-name >* nazwą domeny aplikacji.  Na przykład `https://contoso.azurewebsites.net/.auth/login/microsoftaccount/callback`. Upewnij się, że w adresie URL jest używany schemat HTTPS.
+1. W obszarze **identyfikatory URI przekierowania**wybierz pozycję **Sieć Web**, a następnie wprowadź `https://<app-domain-name>/.auth/login/microsoftaccount/callback`. Zastąp *\<App-domain-name >* nazwą domeny aplikacji.  Na przykład `https://contoso.azurewebsites.net/.auth/login/microsoftaccount/callback`. Upewnij się, że w adresie URL jest używany schemat HTTPS.
 
 1. Wybierz pozycję **Zarejestruj**.
 1. Skopiuj **Identyfikator aplikacji (klienta)** . Będzie on potrzebny później.
@@ -30,7 +30,7 @@ W tym temacie opisano sposób konfigurowania Azure App Service do korzystania z 
 1. Skopiuj wartość, która pojawia się na stronie **certyfikaty & wpisy tajne** . Po opuszczeniu strony nie będzie ona ponownie wyświetlana.
 
     > [!IMPORTANT]
-    > Hasło jest ważnym poświadczeniem zabezpieczeń. Nie udostępniaj nikomu hasła ani nie rozpowszechniaj go w aplikacji klienckiej.
+    > Wartość klucza tajnego klienta (hasło) jest ważnym poświadczeniem zabezpieczeń. Nie udostępniaj nikomu hasła ani nie rozpowszechniaj go w aplikacji klienckiej.
 
 ## <a name="secrets"> </a>Dodawanie informacji o koncie Microsoft do aplikacji App Service
 

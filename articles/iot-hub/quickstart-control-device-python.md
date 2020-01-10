@@ -10,12 +10,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 06/21/2019
-ms.openlocfilehash: b36e5d88c67a4aabf530aa8d945c17870e9c126b
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: bef259aa741e9c50ffaf28c6f81f63658ebda0a2
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892655"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75778108"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-python"></a>Szybki start: kontrolowanie urządzenia podłączonego do centrum IoT (Python)
 
@@ -28,10 +28,6 @@ Przewodnik Szybki start używa dwóch wstępnie napisanych aplikacji Python:
 * Aplikacja urządzenia symulowanego, która reaguje na metody bezpośrednie wywoływane z aplikacji zaplecza. Aby odbierać wywołania metod bezpośrednich, ta aplikacja łączy się z punktem końcowym właściwym dla urządzenia w centrum IoT.
 
 * Aplikacja zaplecza, która wywołuje metody bezpośrednie na urządzeniu symulowanym. Aby wywoływać metody bezpośrednie na urządzeniu, ta aplikacja łączy się z punktem końcowym po stronie usługi w centrum IoT.
-
-> [!IMPORTANT]
-> W tym artykule aplikacja zaplecza używa klienta usługi Python V1, a aplikacja urządzenia używa klienta urządzenia Python v2. Klient usługi V1 znajduje się w [rozgałęzieniu z przestarzałymi wersjami V1](https://github.com/Azure/azure-iot-sdk-python/tree/v1-deprecated) repozytorium usługi Azure IoT Python SDK w witrynie GitHub. Pakiet PIP dla klienta usługi V1, *Azure-iothub-Service-Client*, ma rygorystyczne wymagania specyficzne dla platformy — w tym wersję języka Python zainstalowaną na komputerze deweloperskim. Te wymagania są wymienione w sekcji **wymagania wstępne** .
->
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -47,15 +43,9 @@ az extension add --name azure-cli-iot-ext
 
 Jeśli nie zostało to jeszcze zrobione, pobierz przykładowy projekt Python z https://github.com/Azure-Samples/azure-iot-samples-python/archive/master.zip i wyodrębnij archiwum ZIP.
 
-W **przypadku systemu Windows**w celu zainstalowania pakietu PIP klienta usługi IoT Hub w wersji 1 wymagane są następujące wymagania wstępne:
+Na komputerze deweloperskim jest zainstalowany język [Python w wersji 3,7 lub nowszej](https://www.python.org/downloads/) . W przypadku innych obsługiwanych wersji języka Python zapoznaj się z tematem [Azure IoT Device Features](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device#azure-iot-device-features) w dokumentacji zestawu SDK.
 
-* Upewnij się, że masz zainstalowaną [wersję **3.6. x** języka Python](https://www.python.org/downloads/) .
-
-* Upewnij się, że masz zainstalowany pakiet [redystrybucyjny Microsoft Visual C++ dla programu Visual Studio](https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads) .
-
-W **przypadku platform innych niż Windows**zapoznaj się z [tabelą dystrybucji pakietu języka Python](https://github.com/Azure/azure-iot-sdk-python/blob/v1-deprecated/doc/python-devbox-setup.md#python-pip-package-distribution-table) w dokumentacji zestawu SDK v1. Upewnij się, że wersja języka Python 3. x określona dla danej platformy i wszystkie skojarzone wymagania są zainstalowane na komputerze deweloperskim. Zainstalowanie języka Python 3. x zamiast 2,7 włącza asynchroniczne operacje na kliencie urządzenia z v2, który jest również używany w tym przewodniku Szybki Start.
-
-## <a name="create-an-iot-hub"></a>Tworzenie centrum IoT Hub
+## <a name="create-an-iot-hub"></a>Tworzenie centrum IoT
 
 Jeśli ukończono poprzedni przewodnik [Szybki start: wysyłanie danych telemetrycznych z urządzenia do centrum IoT](quickstart-send-telemetry-python.md), możesz pominąć ten krok.
 
@@ -147,7 +137,7 @@ Aplikacja zaplecza łączy się z punktem końcowym po stronie usługi w usłudz
 1. W lokalnym oknie terminalu uruchom następujące polecenia, aby zainstalować wymagane biblioteki dla aplikacji urządzenia symulowanego:
 
     ```cmd/sh
-    pip install azure-iothub-service-client future
+    pip install azure-iot-hub
     ```
 
 1. W lokalnym oknie terminalu uruchom następujące polecenia, aby uruchomić aplikację zaplecza:
@@ -163,10 +153,6 @@ Aplikacja zaplecza łączy się z punktem końcowym po stronie usługi w usłudz
     Po uruchomieniu aplikacji zaplecza zobaczysz komunikat w oknie konsoli uruchomionym na urządzeniu symulowanym, a także zobaczysz, że zmienia się prędkość wysyłania komunikatów:
 
     ![Zmiana w kliencie symulowanym](./media/quickstart-control-device-python/SimulatedDevice-2.png)
-
-    > [!NOTE]
-    > Jeśli wystąpi błąd podczas importowania *iothub_service_client*upewnij się, że zainstalowano dokładną wersję środowiska Python i wszystkie inne skojarzone artefakty określone dla danej platformy w [wymaganiach wstępnych](#prerequisites). Jeśli po sprawdzeniu wymagań wstępnych nadal wystąpi błąd, może być konieczne skompilowanie klienta usługi dla danej platformy. Aby dowiedzieć się, jak utworzyć zestaw SDK dla danej platformy, zobacz [instrukcje dotyczące instalacji devbox](https://github.com/Azure/azure-iot-sdk-python/blob/v1-deprecated/doc/python-devbox-setup.md) w dokumentacji zestawu SDK w wersji 1.
-    >
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 

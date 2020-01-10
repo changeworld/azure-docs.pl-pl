@@ -7,54 +7,55 @@ manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 11/04/2019
-ms.openlocfilehash: 107dcfa9ea312774e679c301ea934255c7b836c0
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.date: 12/30/2019
+ms.openlocfilehash: 7dd1f07d44bd3b71bb83becee5405cf5c100460c
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720069"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754088"
 ---
-# <a name="create-an-azure-cognitive-search-knowledge-store-by-using-rest"></a>Tworzenie sklepu z bazami danych platformy Azure Wyszukiwanie poznawcze przy użyciu usługi REST
+# <a name="create-a-knowledge-store-using-rest-and-postman"></a>Tworzenie sklepu z bazami danych przy użyciu REST i programu Poster
 
 > [!IMPORTANT] 
 > Magazyn wiedzy jest obecnie w publicznej wersji zapoznawczej. Funkcje wersji zapoznawczej są dostępne bez umowy dotyczącej poziomu usług i nie są zalecane w przypadku obciążeń produkcyjnych. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). [Interfejs API REST w wersji 2019-05-06 — wersja zapoznawcza](search-api-preview.md) zapewnia funkcje w wersji zapoznawczej. Dostępna jest obecnie ograniczona obsługa portalu i nie ma obsługi zestawu SDK platformy .NET.
 
-Funkcja magazynu wiedzy na platformie Azure Wyszukiwanie poznawcze utrzymuje dane wyjściowe potoku wzbogacania AI do późniejszej analizy lub innego przetwarzania podrzędnego. Potok wzbogacony AI akceptuje pliki obrazów lub pliki tekstowe bez struktury, indeksuje je za pomocą usługi Azure Wyszukiwanie poznawcze, stosuje wzbogacenia AI z platformy Azure Cognitive Services (takie jak analiza obrazu i przetwarzanie języka naturalnego), a następnie zapisuje wyniki w Magazyn wiedzy w usłudze Azure Storage. Aby eksplorować informacje o sklepie z bazami danych, można użyć narzędzi takich jak Power BI lub Eksplorator usługi Storage w Azure Portal.
+Magazyn wiedzy zawiera dane wyjściowe z potoku wzbogacenia Wyszukiwanie poznawcze platformy Azure na potrzeby późniejszej analizy lub innego przetwarzania podrzędnego. Potok wzbogacony AI akceptuje pliki obrazów lub pliki tekstowe bez struktury, indeksuje je za pomocą usługi Azure Wyszukiwanie poznawcze, stosuje wzbogacenia AI z Cognitive Services (takich jak analiza obrazu i przetwarzanie języka naturalnego), a następnie zapisuje wyniki w Magazyn wiedzy w usłudze Azure Storage. Aby eksplorować informacje o sklepie z bazami danych, można użyć narzędzi takich jak Power BI lub Eksplorator usługi Storage w Azure Portal.
 
 W tym artykule opisano korzystanie z interfejsu API REST w celu pozyskiwania, indeksowania i stosowania wzbogacania systemu AI do zestawu przeglądów hotelowych. Przeglądy hotelu są importowane do usługi Azure Blob Storage. Wyniki są zapisywane jako magazyn wiedzy w usłudze Azure Table Storage.
 
 Po utworzeniu sklepu z informacjami można dowiedzieć się, jak uzyskać dostęp do sklepu z bazami danych przy użyciu [Eksplorator usługi Storage](knowledge-store-view-storage-explorer.md) lub [Power BI](knowledge-store-connect-power-bi.md).
 
-## <a name="create-services"></a>Tworzenie usług
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-Utwórz następujące usługi:
+> [!TIP]
+> Zalecamy [opublikowanie aplikacji klasycznych](https://www.getpostman.com/) w tym artykule. [Kod źródłowy](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/knowledge-store) tego artykułu zawiera kolekcję programu Poster zawierającą wszystkie żądania. 
 
-- Utwórz [usługę Azure wyszukiwanie poznawcze](search-create-service-portal.md) lub [Znajdź istniejącą usługę](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) w bieżącej subskrypcji. W tym samouczku możesz użyć bezpłatnej usługi.
+## <a name="create-services-and-load-data"></a>Tworzenie usług i ładowanie danych
 
-- Utwórz [konto usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) , aby przechowywać przykładowe dane i magazyn wiedzy. Twoje konto magazynu musi używać tej samej lokalizacji (na przykład US-zachodni) dla usługi Azure Wyszukiwanie poznawcze. Wartością dla **rodzaju konta** musi być **StorageV2 (ogólnego przeznaczenia w wersji 2)** (wartość domyślna) lub **Storage (ogólnego przeznaczenia w wersji 1)** .
+Ten przewodnik Szybki Start używa platformy Azure Wyszukiwanie poznawcze, usługi Azure Blob Storage i [usługi azure Cognitive Services dla systemu](https://azure.microsoft.com/services/cognitive-services/) AI. 
 
-- Zalecane: pobieranie [aplikacji klasycznej](https://www.getpostman.com/) do wysyłania żądań do usługi Azure wyszukiwanie poznawcze. Za pomocą interfejsu API REST można korzystać z dowolnego narzędzia, które może pracować z żądaniami i odpowiedziami HTTP. Na potrzeby eksplorowania interfejsów API REST jest dobrym rozwiązaniem. W tym artykule używamy programu Poster. Ponadto [kod źródłowy](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/knowledge-store) tego artykułu zawiera kolekcję żądań. 
+Ze względu na to, że obciążenie jest małe, Cognitive Services jest wybierana w tle, aby zapewnić bezpłatne przetwarzanie do 20 transakcji codziennie w przypadku wywołania z usługi Azure Wyszukiwanie poznawcze. Jeśli używasz przykładowych danych, które udostępniamy, możesz pominąć tworzenie i dołączanie zasobów Cognitive Services.
 
-## <a name="store-the-data"></a>Przechowywanie danych
+1. [Pobierz plik HotelReviews_Free. csv](https://knowledgestoredemo.blob.core.windows.net/hotel-reviews/HotelReviews_Free.csv?sp=r&st=2019-11-04T01:23:53Z&se=2025-11-04T16:00:00Z&spr=https&sv=2019-02-02&sr=b&sig=siQgWOnI%2FDamhwOgxmj11qwBqqtKMaztQKFNqWx00AY%3D). Te dane to dane z przeglądu hotelu zapisane w pliku CSV (pochodzące z Kaggle.com) i zawierają 19 opinii klientów na temat pojedynczego hotelu. 
 
-Załaduj plik CSV przeglądów hotelu do magazynu obiektów blob platformy Azure, aby uzyskać do niego dostęp za pomocą indeksatora usługi Azure Wyszukiwanie poznawcze i przechodzącego przez potok wzbogacania AI.
+1. [Utwórz konto usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal) lub [Znajdź istniejące konto](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/) w ramach bieżącej subskrypcji. Będziesz używać usługi Azure Storage do importowania nieprzetworzonej zawartości oraz magazynu wiedzy, który jest wynikiem końcowym.
 
-### <a name="create-a-blob-container-by-using-the-data"></a>Tworzenie kontenera obiektów BLOB przy użyciu danych
+   Wybierz typ konta **StorageV2 (ogólnego przeznaczenia w wersji 2)** .
 
-1. Pobierz [dane z przeglądu hotelu](https://knowledgestoredemo.blob.core.windows.net/hotel-reviews/HotelReviews_Free.csv?st=2019-07-29T17%3A51%3A30Z&se=2021-07-30T17%3A51%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=LnWLXqFkPNeuuMgnohiz3jfW4ijePeT5m2SiQDdwDaQ%3D) zapisane w pliku CSV (HotelReviews_Free. csv). Te dane pochodzą z programu Kaggle.com i zawierają opinie klientów dotyczące hoteli.
-1. Zaloguj się do [Azure Portal](https://portal.azure.com) i przejdź do konta usługi Azure Storage.
-1. Utwórz [kontener obiektów BLOB](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal). Aby utworzyć kontener, w menu po lewej stronie dla konta magazynu wybierz pozycję **obiekty blob**, a następnie wybierz pozycję **kontener**.
-1. Dla nowej **nazwy**kontenera wprowadź w obszarze **przeglądy hotelowe**.
-1. W obszarze **poziom dostępu publicznego**wybierz dowolną wartość. Użyto domyślnej.
-1. Wybierz **przycisk OK** , aby utworzyć kontener obiektów BLOB.
-1. Otwórz nowy kontener **hoteli-Recenzja** , wybierz pozycję **Przekaż**, a następnie wybierz plik HotelReviews-Free. csv, który został pobrany w pierwszym kroku.
+1. Otwórz strony usługi BLOB Services i Utwórz kontener o nazwie *"przeglądy hotelowe"* .
+
+1. Kliknij pozycję **Przekaż**.
 
     ![Przekaż dane](media/knowledge-store-create-portal/upload-command-bar.png "Przekaż przeglądy hotelu")
 
-1. Wybierz pozycję **Przekaż** , aby ZAIMPORTOWAĆ plik CSV do usługi Azure Blob Storage. Zostanie wyświetlony nowy kontener:
+1. Wybierz plik **HotelReviews-Free. csv** , który został pobrany w pierwszym kroku.
 
-    ![Tworzenie kontenera obiektów BLOB](media/knowledge-store-create-portal/hotel-reviews-blob-container.png "Tworzenie kontenera obiektów BLOB")
+    ![Tworzenie kontenera obiektów blob platformy Azure](media/knowledge-store-create-portal/hotel-reviews-blob-container.png "Tworzenie kontenera obiektów blob platformy Azure")
+
+1. Prawie zakończysz korzystanie z tego zasobu, ale zanim opuścisz te strony, Użyj linku w okienku nawigacji po lewej stronie, aby otworzyć stronę **klawisze dostępu** . Pobierz parametry połączenia, aby pobrać dane z magazynu obiektów BLOB. Parametry połączenia wyglądają podobnie jak w poniższym przykładzie: `DefaultEndpointsProtocol=https;AccountName=<YOUR-ACCOUNT-NAME>;AccountKey=<YOUR-ACCOUNT-KEY>;EndpointSuffix=core.windows.net`
+
+1. W portalu przejdź do usługi Azure Wyszukiwanie poznawcze. [Utwórz nową usługę](search-create-service-portal.md) lub [Znajdź istniejącą usługę](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices). W tym ćwiczeniu możesz użyć bezpłatnej usługi.
 
 ## <a name="configure-postman"></a>Konfigurowanie programu Postman
 
@@ -72,12 +73,12 @@ Zainstaluj i skonfiguruj program ogłaszający.
 
 Na karcie **zmienne** można dodawać wartości, które zaswapki są księgowane w każdym momencie napotkania określonej zmiennej wewnątrz podwójnych nawiasów klamrowych. Na przykład, program ogłaszający zastępuje symbol `{{admin-key}}` wartością bieżącą ustawioną dla `admin-key`. Program ogłaszający tworzy podstawienie w adresach URL, nagłówkach, treści żądania i tak dalej. 
 
-Aby uzyskać wartość `admin-key`, przejdź do usługi Azure Wyszukiwanie poznawcze i wybierz kartę **klucze** . Zmień `search-service-name` i `storage-account-name` na wartości wybrane w obszarze [Tworzenie usług](#create-services). Ustaw `storage-connection-string` przy użyciu wartości na karcie **klucze dostępu** konta magazynu. Można pozostawić wartości domyślne dla innych wartości.
+Aby uzyskać wartość `admin-key`, przejdź do usługi Azure Wyszukiwanie poznawcze i wybierz kartę **klucze** . Zmień `search-service-name` i `storage-account-name` na wartości wybrane w obszarze [Tworzenie usług](#create-services-and-load-data). Ustaw `storage-connection-string` przy użyciu wartości na karcie **klucze dostępu** konta magazynu. Można pozostawić wartości domyślne dla innych wartości.
 
 ![Karta zmiennych aplikacji po wprowadzeniu](media/knowledge-store-create-rest/postman-variables-window.png "Okno zmiennych autora")
 
 
-| Zmienna    | Gdzie uzyskać |
+| Zmienna    | Jak uzyskać narzędzie |
 |-------------|-----------------|
 | `admin-key` | Na stronie **klucze** usługi Azure wyszukiwanie poznawcze.  |
 | `api-version` | Pozostaw jako **2019-05-06 — wersja zapoznawcza**. |
@@ -107,7 +108,7 @@ Podczas tworzenia sklepu z bazami danych należy wydać cztery żądania HTTP:
 > Należy ustawić nagłówki `api-key` i `Content-type` we wszystkich żądaniach. Jeśli program Poster rozpoznaje zmienną, zmienna pojawia się w kolorze pomarańczowym, tak jak w przypadku `{{admin-key}}` na poprzednim zrzucie ekranu. Jeśli zmienna jest błędna, pojawia się na czerwono.
 >
 
-## <a name="create-an-azure-cognitive-search-index"></a>Tworzenie indeksu usługi Azure Wyszukiwanie poznawcze
+## <a name="create-an-azure-cognitive-search-index"></a>Tworzenie indeksu usługi Azure Cognitive Search
 
 Utwórz indeks Wyszukiwanie poznawcze platformy Azure, aby reprezentować dane, które interesują się wyszukiwaniem, filtrowaniem i stosowaniem ulepszeń. Utwórz indeks, wydając żądanie PUT do `https://{{search-service-name}}.search.windows.net/indexes/{{index-name}}?api-version={{api-version}}`. Program pocztowy zastępuje symbole, które są ujęte w podwójne nawiasy klamrowe (takie jak `{{search-service-name}}`, `{{index-name}}`i `{{api-version}}`) z wartościami ustawionymi w [konfiguracji programu Poster](#configure-postman). Jeśli używasz innego narzędzia do wystawiania poleceń REST, musisz samodzielnie zastąpić te zmienne.
 
@@ -152,7 +153,7 @@ Wybierz pozycję **Wyślij** , aby wydać żądanie Put. Powinien zostać wyświ
 
 ## <a name="create-the-datasource"></a>Tworzenie źródła danych
 
-Następnie połącz usługę Azure Wyszukiwanie poznawcze z danymi hotelu zapisanymi w [sklepie](#store-the-data). Aby utworzyć źródło danych, Wyślij żądanie POST do `https://{{search-service-name}}.search.windows.net/datasources?api-version={{api-version}}`. Należy ustawić `api-key` i `Content-Type` nagłówki zgodnie z wcześniejszym opisem. 
+Następnie połącz usługę Azure Wyszukiwanie poznawcze z danymi hotelu zapisanymi w usłudze BLOB Storage. Aby utworzyć źródło danych, Wyślij żądanie POST do `https://{{search-service-name}}.search.windows.net/datasources?api-version={{api-version}}`. Należy ustawić `api-key` i `Content-Type` nagłówki zgodnie z wcześniejszym opisem. 
 
 W programie Poster przejdź do żądania **Create DataSource** , a następnie do okienka **Body (treść** ). Powinien zostać wyświetlony następujący kod:
 

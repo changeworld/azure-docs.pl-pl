@@ -7,13 +7,13 @@ ms.author: v-chjen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 11/19/2019
-ms.openlocfilehash: 12372c1f00e994382338adf9bd078018ba702da1
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.date: 01/06/2020
+ms.openlocfilehash: b59600ffa6a83d00a83d642ab337df2e71cbee06
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74213358"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75777907"
 ---
 # <a name="create-a-new-saas-offer"></a>Utwórz nową ofertę SaaS
 
@@ -22,21 +22,21 @@ Aby rozpocząć tworzenie ofert oprogramowania jako usługi (SaaS), upewnij się
 ![Komercyjny pulpit nawigacyjny portalu Marketplace w centrum partnerskim](./media/new-offer-overview.png)
 
 >[!Note]
-> Po opublikowaniu oferty zmiany wprowadzone w centrum partnerskim zostaną zaktualizowane w systemie i przechowane przed ponownym opublikowaniem. Upewnij się, że przesyłasz ofertę do publikacji po wprowadzeniu zmian.
+> Po opublikowaniu oferty zmiany wprowadzone w centrum partnerskim zostaną zaktualizowane w systemie i przechowane przed ponownym opublikowaniem. Pamiętaj o przesłaniu oferty publikacji po wprowadzeniu zmian.
 
-Wybierz pozycję + **Nowa oferta...** , a następnie wybierz element menu **oprogramowanie jako usługa** . 
+Wybierz pozycję + **Nowa oferta...** , a następnie wybierz element menu **oprogramowanie jako usługa** .
 
 W przypadku wybrania innego typu oferty nastąpi przekierowanie do starszej [Portal Cloud partner](https://cloudpartner.azure.com/). Tylko oferty SaaS i Dynamics 365 są dostępne w portalu komercyjnej witryny Marketplace w centrum partnerskim.
 
 ![Utwórz okno oferty w centrum partnerskim](./media/new-offer-click.png)
 
-Zostanie wyświetlone okno dialogowe **Nowa oferta** . 
+Zostanie wyświetlone okno dialogowe **Nowa oferta** .
 
 ![Okno dialogowe Nowa oferta](./media/new-offer-popup.png)
 
 ## <a name="offer-id-and-alias"></a>Identyfikator oferty i alias
 
-- **Identyfikator oferty**: unikatowy identyfikator dla każdej oferty na Twoim koncie. Ten identyfikator będzie widoczny dla klientów w adresie URL dla oferty witryny Marketplace i szablonów Azure Resource Manager (jeśli dotyczy). Identyfikator oferty musi zawierać małe litery, znaki alfanumeryczne (w tym łączniki i podkreślenia, ale nie odstępy). Jest to ograniczone do 50 znaków i nie można go zmienić po wybraniu opcji *Utwórz*.  
+- **Identyfikator oferty**: unikatowy identyfikator dla każdej oferty na Twoim koncie. Ten identyfikator będzie widoczny dla klientów w adresie URL dla oferty witryny Marketplace i szablonów Azure Resource Manager (jeśli dotyczy). Identyfikator oferty musi zawierać małe litery, znaki alfanumeryczne (w tym łączniki i podkreślenia, ale nie odstępy). **Identyfikator oferty** jest ograniczony do 50 znaków i nie można go zmienić po wybraniu pozycji *Utwórz*.  
 Przykład: test-oferta-1
 <br>Wynikiem jest adres URL: `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`
 
@@ -52,14 +52,14 @@ Wybierz pozycję **Utwórz**.  Dla tej oferty została utworzona strona **przegl
 
 ## <a name="offer-overview"></a>Przegląd oferty
 
-Na stronie **Przegląd oferty** znajdują się następujące informacje: 
+Na stronie **Przegląd oferty** znajdują się następujące informacje:
 
-- **Stan publikowania** przedstawia wizualną reprezentację kroków wymaganych do opublikowania oferty oraz czas wykonania poszczególnych kroków. Niekompletne ikony kroków publikowania zostaną wyszarzone. 
+- **Stan publikowania** przedstawia wizualną reprezentację kroków wymaganych do opublikowania oferty oraz czas wykonania poszczególnych kroków. Niekompletne ikony kroków publikowania zostaną wyszarzone.
 
 - Menu **Przegląd oferty** zawiera listę linków do wykonywania operacji na tej ofercie. Ta lista operacji zmienia się w zależności od wyboru dokonanego dla oferty.  
-    - Jeśli oferta jest wersją roboczą, Usuń wersję roboczą 
-    - Jeśli oferta jest oferowana na żywo, Zatrzymaj sprzedawanie 
-    - Jeśli oferta jest dostępna w wersji zapoznawczej — przejdź na żywo 
+    - Jeśli oferta jest wersją roboczą, Usuń wersję roboczą
+    - Jeśli oferta jest oferowana na żywo, Zatrzymaj sprzedawanie
+    - Jeśli oferta jest dostępna w wersji zapoznawczej — przejdź na żywo
     - Jeśli nie ukończono wylogowania wydawcy — Anuluj publikowanie
 
 ## <a name="offer-setup"></a>Konfiguracja oferty
@@ -68,7 +68,7 @@ Na karcie **Konfiguracja oferty** są wyświetlane poniższe informacje. Po zako
 
 - **Czy chcesz sprzedawać w firmie Microsoft?** (Tak/nie)
     - **Tak**, chcemy sprzedawać swoją ofertę w firmie Microsoft, dzięki czemu firma Microsoft udostępnia transakcje portalu Marketplace w Twoim imieniu. oraz 
-    - **Nie**, wolisz po prostu wystawić ofertę za pomocą rynków Marketplace, przetwarzać wszelkie transakcje pieniężne niezależnie od firmy Microsoft.    
+    - **Nie**, wolisz po prostu wystawić ofertę za pomocą rynków Marketplace, przetwarzać wszelkie transakcje pieniężne niezależnie od firmy Microsoft.
 
 ### <a name="sell-through-microsoft"></a>Sprzedawanie przez firmę Microsoft
 
@@ -87,7 +87,7 @@ Dzięki rozwiązaniom SaaS działającym w ramach subskrypcji platformy Azure wy
 
 Usługa SaaS oferuje comiesięczne lub roczne rozliczanie w oparciu o stałą opłatę za użytkownika lub opłaty za użycie przy użyciu taryfowej usługi rozliczania. Komercyjny Portal firmy Microsoft działa na modelu agencji, zgodnie z którym wydawcy ustawili ceny, klienci Microsoft Bills i Microsoft płaciją za wydawcę, przy jednoczesnym potrąceniu Opłaty za Agencję.
 
-W poniższej tabeli przedstawiono przykład podziału kosztów i wypłaty w celu przedstawienia modelu agencji.
+W poniższej tabeli przedstawiono przykład podziału kosztów i wypłatów w celu przedstawienia modelu agencji.
 
 |**Koszt licencji**|**$100 miesięcznie**|
 |:---|:---|
@@ -102,11 +102,11 @@ W poniższej tabeli przedstawiono przykład podziału kosztów i wypłaty w celu
 - Partnerzy, którzy zakwalifikowani do **obniżonej opłaty za usługę Marketplace** , będą widzieć obniżoną opłatę za transakcje w ofertach SaaS od maja 2019 do 2020 czerwca. W tym scenariuszu firma Microsoft Bills $100,00 na potrzeby licencji na oprogramowanie i płaci wydawcę $90,00.
 
 > [!NOTE]
-> **Zmniejszona opłata za usługę Marketplace**: w przypadku niektórych ofert SaaS opublikowanych na naszym rynku komercyjnym firma Microsoft obniży opłatę za usługę Marketplace z 20% (zgodnie z opisem w umowie Microsoft Publisher) do 10%. Aby oferta mogła zakwalifikować się, co najmniej jedna oferta musi zostać wystawiona przez firmę Microsoft, ponieważ jest to adres IP do współsprzedaży lub co do sprzedaży.  Przed końcem każdego miesiąca kalendarzowego należy spełnić co najmniej pięć (5) dni roboczych, aby uzyskać tę obniżoną opłatę za usługę Marketplace w danym miesiącu.  Zmniejszona opłata za usługę Marketplace nie dotyczy maszyn wirtualnych, zarządzanych aplikacji ani innych produktów udostępnianych za pośrednictwem komercyjnej witryny Marketplace.  Zmniejszona opłata za usługę Marketplace będzie dostępna tylko w przypadku ofert z tytułu licencji uzyskanych przez firmę Microsoft od 1 maja 2019 do 30 czerwca 2020.  Po tym czasie opłata za usługę Marketplace powróci do normalnej kwoty. 
+> **Zmniejszona opłata za usługę Marketplace**: w przypadku niektórych ofert SaaS opublikowanych na naszym rynku komercyjnym firma Microsoft obniży opłatę za usługę Marketplace z 20% (zgodnie z opisem w umowie Microsoft Publisher) do 10%. Aby oferta mogła zakwalifikować się, co najmniej jedna oferta musi zostać wystawiona przez firmę Microsoft, ponieważ jest to adres IP do współsprzedaży lub co do sprzedaży.  Przed końcem każdego miesiąca kalendarzowego należy spełnić co najmniej pięć (5) dni roboczych, aby uzyskać tę obniżoną opłatę za usługę Marketplace w danym miesiącu.  Zmniejszona opłata za usługę Marketplace nie dotyczy maszyn wirtualnych, zarządzanych aplikacji ani innych produktów udostępnianych za pośrednictwem komercyjnej witryny Marketplace.  Zmniejszona opłata za usługę Marketplace będzie dostępna tylko w przypadku ofert z tytułu licencji uzyskanych przez firmę Microsoft od 1 maja 2019 do 30 czerwca 2020.  Po tym czasie opłata za usługę Marketplace powróci do normalnej kwoty.
 
 ### <a name="list-through-microsoft"></a>Wystaw za poorednictwem firmy Microsoft
 
-Promuj swoją firmę firmie Microsoft, tworząc listę Marketplace. Wybranie do wyświetlania listy tylko oferty, a nie w firmie Microsoft oznacza, że firma Microsoft nie uczestniczy bezpośrednio w transakcjach licencji na oprogramowanie. Nie ma żadnej powiązanej opłaty za transakcje, a wydawca utrzymuje 100% wszelkich opłat za Licencjonowanie oprogramowania zebranych od klienta. Jednak Wydawca jest odpowiedzialny za obsługę wszystkich aspektów transakcji związanych z licencją na oprogramowanie, w tym między innymi w kolejności realizacji, pomiaru, rozliczeń, fakturowania, płatności i kolekcji. 
+Promuj swoją firmę firmie Microsoft, tworząc listę Marketplace. Wybranie do wyświetlania listy tylko oferty, a nie w firmie Microsoft oznacza, że firma Microsoft nie uczestniczy bezpośrednio w transakcjach licencji na oprogramowanie. Nie ma żadnej powiązanej opłaty za transakcje, a wydawca utrzymuje 100% wszelkich opłat za Licencjonowanie oprogramowania zebranych od klienta. Jednak Wydawca jest odpowiedzialny za obsługę wszystkich aspektów transakcji związanych z licencją na oprogramowanie, w tym między innymi w kolejności realizacji, pomiaru, rozliczeń, fakturowania, płatności i kolekcji.
 
 - **Jak chcesz, aby potencjalni klienci mogli korzystać z tej oferty z licytacją?**
 
@@ -120,7 +120,7 @@ Utwórz listę ofert klientom z linkiem do bezpłatnej wersji próbnej, podając
 > Tokeny wysyłane przez aplikację za pomocą linku do wersji próbnej mogą być używane tylko w celu uzyskania informacji o użytkowniku za pomocą usługi Azure AD w celu zautomatyzowania tworzenia kont w aplikacji. Konta Microsoft (MSA) nie są obsługiwane na potrzeby uwierzytelniania przy użyciu tego tokenu.
 
 ##### <a name="contact-me"></a>Kontakt ze mną
-Zbierz informacje kontaktowe klienta, łącząc system zarządzania relacjami z klientami (CRM). Klient zostanie poproszony o zgodę na udostępnienie swoich informacji. Te szczegóły klienta, wraz z nazwą oferty, IDENTYFIKATORem i źródłem witryny Marketplace, gdzie znalazły ofertę, zostaną wysłane do skonfigurowanego systemu CRM. Aby uzyskać więcej informacji o konfigurowaniu programu CRM, zobacz [łączenie z usługą Zarządzanie potencjalnymi klientami](#connect-lead-management). 
+Zbierz informacje kontaktowe klienta, łącząc system zarządzania relacjami z klientami (CRM). Klient zostanie poproszony o zgodę na udostępnienie swoich informacji. Te szczegóły klienta, wraz z nazwą oferty, IDENTYFIKATORem i źródłem witryny Marketplace, gdzie znalazły ofertę, zostaną wysłane do skonfigurowanego systemu CRM. Aby uzyskać więcej informacji o konfigurowaniu programu CRM, zobacz [łączenie z usługą Zarządzanie potencjalnymi klientami](#connect-lead-management).
 
 ## <a name="example-marketplace-offer-listing"></a>Przykładowa lista ofert w witrynie Marketplace
 
@@ -160,11 +160,13 @@ Po włączeniu dysku testowego zostanie wyświetlony monit o skonfigurowanie śr
 Pamiętaj, aby **zapisać** przed przejściem do następnej sekcji.
 
 ## <a name="properties"></a>Właściwości
-Na karcie **Właściwości** zostanie wyświetlona prośba o zdefiniowanie kategorii i branż używanych do grupowania oferty na rynkach Marketplace, umów prawnych wspierających Twoją ofertę i wersję aplikacji. 
 
-Po zakończeniu tych pól wybierz pozycję **Zapisz** . 
+Na karcie **Właściwości** zostanie wyświetlona prośba o zdefiniowanie kategorii i branż używanych do grupowania oferty na rynkach Marketplace, umów prawnych wspierających Twoją ofertę i wersję aplikacji.
+
+Po zakończeniu tych pól wybierz pozycję **Zapisz** .
 
 ### <a name="category"></a>Kategoria
+
 Wybierz co najmniej jedną (1) i maksymalnie trzy kategorie (3) używane do grupowania oferty w odpowiednie obszary wyszukiwania w portalu Marketplace. Zapoznaj się ze sposobem, w jaki oferta obsługuje te kategorie w opisie oferty. 
 
 ### <a name="industry"></a>Branża
@@ -172,23 +174,49 @@ Wybierz co najmniej jedną (1) i maksymalnie trzy kategorie (3) używane do grup
 [!INCLUDE [Industry Taxonomy](./includes/industry-taxonomy.md)]
 
 ### <a name="app-version"></a>Wersja aplikacji
-Jest to pole opcjonalne używane w witrynie AppSource Marketplace do identyfikowania numeru wersji oferty. 
 
-### <a name="standard-contract"></a>Kontrakt standardowy
+Jest to pole opcjonalne używane w witrynie AppSource Marketplace do identyfikowania numeru wersji oferty.
 
-- **Używać standardowej umowy?**
+### <a name="standard-contract-for-the-microsoft-commercial-marketplace"></a>Standardowa umowa dla komercyjnego portalu Microsoft Marketplace
 
-Aby uprościć proces zakupów dla klientów i zmniejszyć złożoność prawną dla dostawców oprogramowania, firma Microsoft oferuje standardowy szablon kontraktu, aby ułatwić obsługę transakcji w portalu Marketplace. 
+Firma Microsoft oferuje standardowy szablon kontraktu.
 
-Zamiast przedstawiać niestandardowe warunki i postanowienia, wydawcy portalu Azure Marketplace mogą zaoferować swoje oprogramowanie w ramach standardowej umowy, której klienci muszą jedynie Zweryfikuj i akceptować. 
+- **Używasz standardowej umowy dotyczącej komercyjnej witryny Microsoft Marketplace?**
 
-Kontrakt standardowy można znaleźć tutaj: https://go.microsoft.com/fwlink/?linkid=2041178.
+Aby uprościć proces zakupów dla klientów i zmniejszyć złożoność prawną dla dostawców oprogramowania, firma Microsoft oferuje standardową umowę dotyczącą komercyjnego portalu Microsoft Marketplace, aby ułatwić obsługę transakcji w portalu Marketplace. Zamiast przedstawiać niestandardowe warunki i postanowienia, Komercyjni wydawcy portalu Marketplace mogą zaoferować swoje oprogramowanie zgodnie z umową standardową, której klienci muszą jedynie Zweryfikuj i akceptować. Kontrakt standardowy można znaleźć tutaj: https://go.microsoft.com/fwlink/?linkid=2041178.
 
-#### <a name="terms-of-use"></a>Warunki użytkowania
+Możesz wybrać opcję użycia kontraktu standardowego zamiast podawania własnych warunków i postanowień, wybierając opcję "Użyj standardowej umowy dla portalu komercyjnego".
 
-Jeśli postanowienia licencyjne różnią się od kontraktu standardowego, możesz wybrać w tym miejscu własne warunki prawne użytkowania. Można je wprowadzić jako zwykły tekst lub jako pojedynczy adres URL łączący z postanowieniami licencyjnymi.
+![Korzystanie z pola wyboru kontraktu standardowego](./media/use-standard-contract.png)
 
-Aby móc wypróbować aplikację, klienci muszą zaakceptować te warunki. 
+> [!NOTE]
+> Po opublikowaniu oferty przy użyciu standardowej umowy dotyczącej portalu komercyjnego firmy Microsoft nie można korzystać ze swoich niestandardowych warunków i postanowień. Jest to scenariusz "lub". Możesz zaoferować swoje rozwiązanie w ramach standardowej umowy **lub** własnych warunków i postanowień. Jeśli chcesz zmodyfikować warunki kontraktu standardowego, możesz to zrobić za pomocą standardowych poprawek kontraktu.
+
+#### <a name="standard-contract-amendments"></a>Standardowe zmiany kontraktu
+
+Standardowe zmiany umów umożliwiają wydawcom wybranie standardowych warunków umowy dla uproszczenia i dostosowanie warunków dla ich produktu lub firmy. Klienci muszą jedynie przejrzeć zmiany w umowie, jeśli zostali już zrecenzowani i zaakceptowali umowę standardową firmy Microsoft.
+
+Istnieją dwa rodzaje zmian dostępnych dla komercyjnych wydawców portalu Marketplace:
+
+- Uniwersalne zmiany: te zmiany są powszechnie stosowane do standardowej umowy dla wszystkich klientów. Uniwersalne zmiany są wyświetlane dla każdego klienta oferty w przepływie zakupu. Aby można było korzystać z oferty, klienci muszą zaakceptować warunki umowy standardowej i poprawki.
+- Zmiany niestandardowe: te zmiany są specjalnymi zmianami w standardowej umowie, które są przeznaczone dla określonych klientów tylko za pośrednictwem identyfikatorów dzierżaw platformy Azure. Wydawcy mogą wybrać dzierżawcę, do którego chce się kierować. Tylko klienci z dzierżawy będą widzieć niestandardowe warunki zmiany w przepływie zakupu oferty.  Aby można było korzystać z oferty, klienci muszą zaakceptować warunki umowy standardowej i poprawki.
+
+>[!NOTE]
+> Te dwa typy zmian stosują się między sobą. Klienci z niestandardowymi zmianami otrzymają także uniwersalną zmianę do standardowej umowy podczas zakupu.
+
+**Zasady uniwersalnej zmiany do standardowej umowy dotyczącej komercyjnego rynku firmy Microsoft**: w tym polu Wprowadź postanowienia dotyczące uniwersalnej poprawki. Możesz wprowadzić pojedynczą zmianę uniwersalną dla każdej oferty. W tym polu można wprowadzić nieograniczoną liczbę znaków. Są one wyświetlane klientom w AppSource, w witrynie Azure Marketplace i/lub Azure Portal podczas odnajdywania i przepływu zakupów.
+
+**Niestandardowe warunki zmiany do standardowej umowy dotyczącej komercyjnego rynku firmy Microsoft**: Zacznij od wybrania pozycji **Dodaj niestandardowe warunki zmiany**. Dla każdej oferty możesz podać maksymalnie 10 niestandardowych postanowień.
+
+- **Niestandardowe warunki zmiany**: wprowadź niestandardowe warunki zmiany w polu niestandardowe warunki zmiany. W tym polu można wprowadzić nieograniczoną liczbę znaków. Tylko klienci z identyfikatorów dzierżawców, którzy określisz dla tych terminów niestandardowych, będą przedstawiani niestandardowe warunki zmiany w przepływie zakupu oferty w Azure Portal.  
+- **Identyfikatory dzierżawców** (wymagane): Każda Poprawka niestandardowa może być przeznaczona do maksymalnie 20 identyfikatorów dzierżawy. W przypadku dodania niestandardowej zmiany należy podać co najmniej jeden identyfikator dzierżawy. Identyfikator dzierżawy identyfikuje Twojego klienta na platformie Azure. Możesz polecić klienta dla tego identyfikatora i znaleźć go, przechodząc do portal.azure.com > Azure Active Directory > właściwości. Wartość identyfikatora katalogu to identyfikator dzierżawy (np. 50c464d3-4930-494c-963c-1e951d15360e). Możesz również wyszukać identyfikator dzierżawy organizacji klienta przy użyciu adresu URL nazwy domeny, co [to jest mój Microsoft Azure i identyfikator dzierżawy pakietu Office 365?](https://www.whatismytenantid.com).
+- **Opis** (opcjonalnie): Opcjonalnie podaj przyjazny opis identyfikatora dzierżawy, który pomaga zidentyfikować klienta, którego celem jest zmiana.
+
+#### <a name="terms-and-conditions"></a>Postanowienia
+
+Jeśli chcesz podać własne niestandardowe warunki i postanowienia, możesz je wprowadzić w polu warunki i postanowienia. W tym polu można wprowadzić do 10 000 znaków tekstu. Jeśli warunki i postanowienia wymagają dłuższego opisu, wprowadź w tym polu link pojedynczego adresu URL, w którym można znaleźć warunki i postanowienia. Będzie ona wyświetlana klientom jako aktywne łącze.
+
+Aby móc wypróbować ofertę, klienci muszą zaakceptować te warunki.
 
 Pamiętaj, aby **zapisać** przed przejściem do następnej sekcji.
 
@@ -208,28 +236,28 @@ Podaj szczegóły, które mają być wyświetlane w witrynie Marketplace, w tym 
 - **Opis** (wymagane): Podaj opis oferty, która ma zostać wyświetlona na liście przeglądów portalu Marketplace. Rozważ uwzględnienie propozycji wartości, najważniejszych korzyści, wszelkich kategorii lub związków branżowych, możliwości zakupu w aplikacji, wszelkich wymaganych informacji oraz linku, aby dowiedzieć się więcej.
 W tym polu można wprowadzić do 3 000 znaków tekstu. Aby uzyskać dodatkowe wskazówki, zobacz artykuł [Napisz doskonały opis aplikacji](https://docs.microsoft.com/windows/uwp/publish/write-a-great-app-description).
 - **Słowa kluczowe wyszukiwania**: Wprowadź do trzech słów kluczowych wyszukiwania, których klienci mogą używać w celu znalezienia oferty w portalu Marketplace.
-- **Instrukcje dotyczące** rozpoczynania pracy (wymagane): Wyjaśnij, jak skonfigurować i rozpocząć korzystanie z aplikacji dla potencjalnych klientów.  Ten przewodnik Szybki Start może zawierać linki do bardziej szczegółowej dokumentacji online. W tym polu można wprowadzić do 3 000 znaków tekstu. 
+- **Instrukcje dotyczące** rozpoczynania pracy (wymagane): Wyjaśnij, jak skonfigurować i rozpocząć korzystanie z aplikacji dla potencjalnych klientów.  Ten przewodnik Szybki Start może zawierać linki do bardziej szczegółowej dokumentacji online. W tym polu można wprowadzić do 3 000 znaków tekstu.
 
 #### <a name="description"></a>**Opis**
 
-To pole jest wymagane. Elementy do uwzględnienia w opisie: 
+To pole jest wymagane. Elementy do uwzględnienia w opisie:
 
 * Jasno opisz swoją wartość oferty w pierwszych kilku zdaniach opisu.  
 * Należy pamiętać, że pierwsze niektóre zdania mogą być wyświetlane w wynikach wyszukiwania.  
 * Nie należy polegać na funkcjach i funkcjach, aby sprzedawać produkt. Zamiast tego należy skoncentrować się na dostarczanej wartości.  
-* Korzystaj z specyficznych dla branży słownictwa lub takich słów, jak to możliwe. 
+* Korzystaj z specyficznych dla branży słownictwa lub takich słów, jak to możliwe.
 
-Podstawowe składniki Twojej pozycji wartości powinny zawierać następujące informacje: 
+Podstawowe składniki Twojej pozycji wartości powinny zawierać następujące informacje:
 
-* Opis produktu. 
-* Typ użytkownika, który korzysta z produktu. 
-* Klienci muszą lub cierpili adresy produktów. 
+* Opis produktu.
+* Typ użytkownika, który korzysta z produktu.
+* Klienci muszą lub cierpili adresy produktów.
 
-Aby dowiedzieć się, jak będzie bardziej atrakcyjny opis oferty, możesz użyć tagów HTML do sformatowania opisu. 
+Aby dowiedzieć się, jak będzie bardziej atrakcyjny opis oferty, możesz użyć tagów HTML do sformatowania opisu.
 
 1. Jeśli chcesz utworzyć akapity, Dodaj `<p>` w BEGGING tekstu i Dodaj `</p>` na końcu.
 
-    **Przykład**: 
+    **Przykład**:
 
     `<p>` jest to mój pierwszy akapit. `</p>` <br>
     `<p>` to w drugim akapicie. `</p>` <br>
@@ -239,44 +267,44 @@ Aby dowiedzieć się, jak będzie bardziej atrakcyjny opis oferty, możesz uży�
     <p> Jest to mój pierwszy akapit. </p>
     <p> Jest to mój drugi akapit. </p>
 
-1. Jeśli chcesz dodać **punktowaną listę elementów**, umieść swój tekst w `<li>` tagach poniżej. Można kopiować i wklejać więcej elementów punktowanych (elementów między `<li>` i `</li>` tagów) w tagach `<ul>` i `</ul>`. Upewnij się, że dodano `<ul></ul>`. 
+1. Jeśli chcesz dodać **punktowaną listę elementów**, umieść swój tekst w `<li>` tagach poniżej. Można kopiować i wklejać więcej elementów punktowanych (elementów między `<li>` i `</li>` tagów) w tagach `<ul>` i `</ul>`. Upewnij się, że dodano `<ul></ul>`.
 
     **Przykład**:
 
     ```
     <ul> 
-        <li>add text here</li> 
-        <li> add text here </li> 
-        <li> add text here </li> 
-    </ul> 
+        <li>add text here</li>
+        <li> add text here </li>
+        <li> add text here </li>
+    </ul>
     ```
 
     Powyższy sposób będzie wyglądać następująco:
     <ul> 
-        <li>tutaj Dodaj tekst</li> 
-        <li> tutaj Dodaj tekst </li> 
-        <li> tutaj Dodaj tekst </li> 
+        <li>tutaj Dodaj tekst</li>
+        <li> tutaj Dodaj tekst </li>
+        <li> tutaj Dodaj tekst </li>
     </ul> 
 
-1. Aby **pogrubić** zawartość, Dodaj `<b>` na początku tekstu, który ma być pogrubiony, i Dodaj `</b>` na końcu tekstu, który ma być pogrubiony. 
+1. Aby **pogrubić** zawartość, Dodaj `<b>` na początku tekstu, który ma być pogrubiony, i Dodaj `</b>` na końcu tekstu, który ma być pogrubiony.
 
     **Przykład**: `<b>` bezpłatna wersja próbna `</b>`
     
-    Powyższe spowodowałoby pogrubienie słów BEZPŁATNEj wersji PRÓBnej w opisie oferty w sklepie. 
+    Powyższe spowodowałoby pogrubienie słów BEZPŁATNEj wersji PRÓBnej w opisie oferty w sklepie.
 
     **BEZPŁATNA WERSJA PRÓBNA**
 
-1. Aby dodać **podziały wierszy** między zawartością, Dodaj `<br>` przed zawartością, którą chcesz uruchomić w nowym wierszu. Jeśli chcesz pozostawić miejsce i upewnić się, że zawartość zaczyna się w nowym wierszu, Dodaj `<br><br>` przed zawartością. 
+1. Aby dodać **podziały wierszy** między zawartością, Dodaj `<br>` przed zawartością, którą chcesz uruchomić w nowym wierszu. Jeśli chcesz pozostawić miejsce i upewnić się, że zawartość zaczyna się w nowym wierszu, Dodaj `<br><br>` przed zawartością.
 
     **Przykład**:
 
-    To jest wiersz tekstu. `<br>` jest to wiersz tekstu, który zostanie uruchomiony w nowym wierszu. `<br><br>` to jest wiersz, w którym rozpocznie się dwa wiersze poniżej. 
+    To jest wiersz tekstu. `<br>` jest to wiersz tekstu, który zostanie uruchomiony w nowym wierszu. `<br><br>` to jest wiersz, w którym rozpocznie się dwa wiersze poniżej.
 
     Powyższy sposób będzie wyglądać następująco:
 
-    To jest wiersz tekstu. <br> To jest wiersz tekstu, który zostanie uruchomiony w nowym wierszu. <br><br> To jest wiersz, w którym rozpocznie się dwa wiersze poniżej. 
+    To jest wiersz tekstu. <br> To jest wiersz tekstu, który zostanie uruchomiony w nowym wierszu. <br><br> To jest wiersz, w którym rozpocznie się dwa wiersze poniżej.
 
-1. Jeśli chcesz **zwiększyć rozmiar tekstu**, najpierw wybierz, jak duży ma być tekst. Skorzystaj z poniższych przykładów. Po wybraniu rozmiaru tekstu Dodaj odpowiednie Tagi `<H*></H*>` na początku i na końcu tekstu. 
+1. Jeśli chcesz **zwiększyć rozmiar tekstu**, najpierw wybierz, jak duży ma być tekst. Skorzystaj z poniższych przykładów. Po wybraniu rozmiaru tekstu Dodaj odpowiednie Tagi `<H*></H*>` na początku i na końcu tekstu.
 
     **Przykład**:
 
@@ -299,7 +327,7 @@ Aby dowiedzieć się, jak będzie bardziej atrakcyjny opis oferty, możesz uży�
 
 #### <a name="contact-information"></a>Informacje kontaktowe
 
-- **Kontakty**: dla każdego kontaktu z klientem Podaj **nazwisko** pracownika, **numer telefonu**i adres **e-mail** .  ( *Nie będą* one wyświetlane publicznie). **Adres URL pomocy** technicznej jest również wymagany dla grupy **kontaktów pomoc techniczna** .  (Te informacje *będą* wyświetlane publicznie).
+- **Kontakty**: dla każdego kontaktu z klientem Podaj **nazwisko**pracownika, **numer telefonu**i adres **e-mail** .  ( *Nie będą* one wyświetlane publicznie). **Adres URL pomocy** technicznej jest również wymagany dla grupy **kontaktów pomoc techniczna** .  (Te informacje *będą* wyświetlane publicznie).
 
 **Kontakt z pomocą techniczną** (wymagany): w przypadku ogólnych pytań dotyczących pomocy technicznej.
 
@@ -310,7 +338,7 @@ Aby dowiedzieć się, jak będzie bardziej atrakcyjny opis oferty, możesz uży�
 #### <a name="files-and-images"></a>Pliki i obrazy
 
 - **Dokumenty** (wymagane): Dodaj powiązane dokumenty marketingowe dla oferty w formacie PDF, co daje co najmniej jedną (1) i trzy (3) dokumenty na ofertę.
-- **Obrazy** (opcjonalnie): istnieje wiele miejsc, w których obrazy logo oferty mogą pojawić się w portalu Marketplace, co wymaga następujących rozmiarów — małe: 48 x 48 pikseli _(wymagane),_ średni: 90 x 90 pikseli, duże: 216 x 216 pikseli _( wymagane),_ szeroki: 255 x 115 pikseli i Hero: 815 x 290 pikseli. Wszystkie obrazy muszą znajdować się w. Format PNG.
+- **Obrazy** (opcjonalnie): istnieje wiele miejsc, w których obrazy logo oferty mogą pojawić się w portalu Marketplace, co wymaga następujących rozmiarów — małe: 48 x 48 pikseli _(wymagane),_ średni: 90 x 90 pikseli, duże: 216 x 216 pikseli _(wymagane),_ szerokie: 255 x 115 pikseli i Hero: 815 x 290 pikseli. Wszystkie obrazy muszą znajdować się w. Format PNG.
 - **Zrzuty ekranu** (wymagane): Dodaj zrzuty ekranu pokazujące Twoją ofertę. Można dodać maksymalnie pięć (5) zrzutów ekranu i mieć rozmiar o 1280 x 720 pikseli. Wszystkie obrazy muszą znajdować się w. Format PNG.
 - **Wideo** (opcjonalnie): Dodaj linki do filmów wideo pokazujących Twoją ofertę. Możesz używać linków do filmów wideo w usłudze YouTube i/lub Vimeo, które są wyświetlane wraz z ofertą dla klientów. Należy również wprowadzić obraz miniatury wideo o rozmiarach do 1280 x 720 pikseli w formacie PNG. Możesz wyświetlić maksymalnie cztery wideo dla każdej oferty.
 
@@ -425,7 +453,7 @@ Wybierz częstotliwość, z jaką klienci muszą uiścić cenę. Należy podać 
 - **Cena**: USD miesięcznie lub USD rocznie
 
 Ceny ustawione w walucie lokalnej (USD = Stany Zjednoczone dolara) są konwertowane na walutę lokalną wszystkich wybranych rynków przy użyciu bieżących stawek wymiany dostępnych podczas instalacji. Sprawdź te ceny przed opublikowaniem, eksportując arkusz kalkulacyjny z cennikiem i sprawdzając cenę na każdym rynku. Jeśli chcesz ustawić ceny niestandardowe na indywidualnym rynku, zmodyfikuj i zaimportuj arkusz cen. Użytkownik jest odpowiedzialny za sprawdzanie poprawności cen i ich ustawienia.
-*\*należy najpierw zapisać zmiany cen, aby umożliwić eksportowanie danych cen.*
+*\*Najpierw musisz zapisać zmiany cen, aby włączyć eksportowanie danych cen.*
 
 Uważnie Przejrzyj ceny przed opublikowaniem, ponieważ istnieją pewne ograniczenia dotyczące tego, co można zmienić po opublikowaniu planu:
 
@@ -466,7 +494,7 @@ Mimo że usługa SaaS oferuje identyfikatory dzierżawców do definiowania prywa
 
 Wybranie oferty w programie CSP pozwala dostawcom rozwiązań w chmurze sprzedawać produkt w ramach rozwiązania do swoich klientów. Aby uzyskać więcej informacji, zobacz [dostawcy rozwiązań w chmurze](https://go.microsoft.com/fwlink/?linkid=2111109).
 
-## <a name="publish"></a>Publikowanie
+## <a name="publish"></a>Publikuj
 
 Po zakończeniu wszystkich wymaganych sekcji oferty wybierz pozycję **Publikuj** w prawym górnym rogu portalu. Nastąpi przekierowanie do strony **Recenzja i publikowanie** .
 
@@ -476,7 +504,7 @@ Jeśli ta oferta jest publikowana po raz pierwszy, możesz:
 
 - Zobacz stan ukończenia dla każdej sekcji oferty.
     - *Nie uruchomiono* — oznacza, że sekcja nie została dotknięcia i należy ją ukończyć.
-    - *Niekompletne* — oznacza, że sekcja zawiera błędy, które muszą zostać naprawione lub wymaga podania więcej informacji. Wróć do sekcji i zaktualizuj ją.
+    - *Niekompletne* — oznacza, że sekcja zawiera błędy, które muszą zostać naprawione lub wymaga podania więcej informacji. Musisz wrócić do sekcji i zaktualizować ją.
     - *Gotowe* — oznacza, że sekcja została ukończona, wszystkie wymagane dane zostały dostarczone i nie występują żadne błędy. Wszystkie sekcje oferty muszą być w stanie kompletnym, zanim będzie możliwe przesłanie oferty.
 - Podaj instrukcje dotyczące testowania dla zespołu certyfikacji, aby upewnić się, że aplikacja została prawidłowo przetestowana, a także wszelkich dodatkowych notatek przydatnych w zrozumieniu swojej aplikacji.
 - Prześlij ofertę do opublikowania, wybierając pozycję **Prześlij**. Wyślemy Ci wiadomość e-mail z prośbą o udostępnienie wersji zapoznawczej oferty, którą można przejrzeć i zatwierdzić. Musisz wrócić do Centrum partnerskiego i wybrać pozycję **Przejdź na żywo** , aby uzyskać ofertę opublikowania oferty na publiczną (lub w przypadku prywatnej oferty dla odbiorców prywatnych).

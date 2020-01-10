@@ -5,20 +5,20 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/18/2019
 ms.author: cshoe
-ms.openlocfilehash: f00637ff2c8cf39b683056b041fe0e991276a065
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: a9c45321d12b659febfeb4913d66ea3732813918
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227225"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769527"
 ---
 # <a name="azure-functions-binding-expression-patterns"></a>Wzorce wyrażeń powiązań Azure Functions
 
 Jedną z najbardziej zaawansowanych funkcji [wyzwalaczy i powiązań](./functions-triggers-bindings.md) jest *wyrażenie wiążące*. W pliku *Function. JSON* oraz w parametrach i kodzie funkcji można użyć wyrażeń, które rozwiązują wartości z różnych źródeł.
 
-Większość wyrażeń jest identyfikowana przez zapakowanie ich w nawiasy klamrowe. Na przykład w funkcji wyzwalacza kolejki `{queueTrigger}` jest rozpoznawana jako tekst komunikatu w kolejce. Jeśli właściwość `path` dla powiązania danych wyjściowych obiektu BLOB jest `container/{queueTrigger}` i funkcja jest wyzwalana przez `HelloWorld`komunikatu kolejki, tworzony jest obiekt BLOB o nazwie `HelloWorld`.
+Większość wyrażeń identyfikuje się przez umieszczenie ich w nawiasach klamrowych. Na przykład w funkcji wyzwalacza kolejki `{queueTrigger}` jest rozpoznawana jako tekst komunikatu w kolejce. Jeśli właściwość `path` dla powiązania danych wyjściowych obiektu BLOB jest `container/{queueTrigger}` i funkcja jest wyzwalana przez `HelloWorld`komunikatu kolejki, tworzony jest obiekt BLOB o nazwie `HelloWorld`.
 
-Typy wyrażeń powiązań
+Typy wyrażeń powiązania
 
 * [Ustawienia aplikacji](#binding-expressions---app-settings)
 * [Nazwa pliku wyzwalacza](#trigger-file-name)
@@ -141,7 +141,7 @@ Na przykład wyzwalacz usługi Azure queue storage obsługuje następujące wła
 
 * QueueTrigger — wyzwalanie zawartości komunikatu, jeśli prawidłowy ciąg
 * DequeueCount
-* expirationTime
+* ExpirationTime
 * Identyfikator
 * InsertionTime
 * NextVisibleTime
@@ -285,7 +285,7 @@ Wyrażenie powiązania `{rand-guid}` tworzy identyfikator GUID. Następująca ś
   "type": "blob",
   "name": "blobOutput",
   "direction": "out",
-  "path": "my-output-container/{rand-guid}"
+  "path": "my-output-container/{rand-guid}.txt"
 }
 ```
 
@@ -298,7 +298,7 @@ Wyrażenie powiązania `DateTime` jest rozpoznawane jako `DateTime.UtcNow`. Nast
   "type": "blob",
   "name": "blobOutput",
   "direction": "out",
-  "path": "my-output-container/{DateTime}"
+  "path": "my-output-container/{DateTime}.txt"
 }
 ```
 ## <a name="binding-at-runtime"></a>Powiązanie w czasie wykonywania

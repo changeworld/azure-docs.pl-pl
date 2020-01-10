@@ -15,12 +15,12 @@ ms.date: 09/11/2018
 ms.author: mimart
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 82360dacd68de512bc12ff5d39ddbd3a21578aa7
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 1f018edfa7cbb244c57f12c3b83dba086e1590f2
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74120122"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75778349"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>Inicjowanie obsługi aplikacji opartej na atrybutach przy użyciu filtrów zakresu
 Celem tego artykułu jest wyjaśnienie, jak używać filtrów zakresu do definiowania reguł opartych na atrybutach, które określają, którzy użytkownicy są obsługiwani do aplikacji.
@@ -94,8 +94,9 @@ Filtry zakresu są konfigurowane jako część mapowań atrybutów dla każdego 
    g. **dopasowanie wyrażenia regularnego**. Klauzula zwraca wartość "true", jeśli oceniony atrybut pasuje do wzorca wyrażenia regularnego. Na przykład: ([1-9] [0-9]) dopasowuje dowolną liczbę z zakresu od 10 do 99.
 
    h. **nie pasuje do wyrażenia regularnego**. Klauzula zwraca wartość "true", jeśli oceniony atrybut nie jest zgodny ze wzorcem wyrażenia regularnego.
-
-8. Wybierz pozycję **Dodaj nową klauzulę określania zakresu**.
+ 
+>[!IMPORTANT] 
+> Filtry include i IsMemberOf nie są obsługiwane. Wkrótce zostaną usunięte z interfejsu użytkownika.
 
 9. Opcjonalnie powtórz kroki 7-8, aby dodać więcej klauzul określania zakresu.
 
@@ -116,10 +117,10 @@ Filtry zakresu są konfigurowane jako część mapowań atrybutów dla każdego 
 |----|----|----|----|
 |userPrincipalName|DOPASOWANIE WYRAŻENIA REGULARNEGO|.\*@domain.com |Wszyscy użytkownicy z userPrincipalą z domeną @domain.com będą w zakresie aprowizacji|
 |userPrincipalName|NIE PASUJE DO WYRAŻENIA REGULARNEGO|.\*@domain.com|Wszyscy użytkownicy z userPrincipalą z domeną @domain.com będą poza zakresem aprowizacji|
-|Dział|UBIEGŁ|transakcje|Wszyscy użytkownicy z działu sprzedaży znajdują się w zakresie aprowizacji|
+|department|UBIEGŁ|sprzedaż|Wszyscy użytkownicy z działu sprzedaży znajdują się w zakresie aprowizacji|
 |workerID|DOPASOWANIE WYRAŻENIA REGULARNEGO|(1[0-9][0-9][0-9][0-9][0-9][0-9])| Wszyscy pracownicy z workerIDsem od 1000000 do 2000000 są w zakresie aprowizacji.|
 
-## <a name="related-articles"></a>Pokrewne artykuły
+## <a name="related-articles"></a>Pokrewne artykuły:
 * [Automatyzowanie aprowizacji użytkowników i anulowanie obsługi aplikacji SaaS](user-provisioning.md)
 * [Dostosuj mapowania atrybutów na potrzeby aprowizacji użytkowników](customize-application-attributes.md)
 * [Pisanie wyrażeń do mapowania atrybutów](functions-for-customizing-application-data.md)

@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a0697e151c50b9722fef908eeb2c7498503b8c0
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 09012d93a1f9fd24427cb8b3937b3a36cf75d9e4
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74027369"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834184"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Przejmowanie niezarządzanego katalogu jako administrator w Azure Active Directory
 
@@ -56,7 +56,7 @@ Po wykonaniu powyższych kroków jesteś teraz administratorem globalnym z czwar
 
 ### <a name="adding-the-domain-name-to-a-managed-tenant-in-azure-ad"></a>Dodawanie nazwy domeny do zarządzanej dzierżawy w usłudze Azure AD
 
-1. Otwórz [Centrum administracyjne Microsoft 365](https://admin.microsoft.com).
+1. Otwórz [centrum administracyjne usługi Microsoft 365](https://admin.microsoft.com).
 2. Wybierz kartę **Użytkownicy** , a następnie utwórz nowe konto użytkownika o nazwie *User\@fourthcoffeexyz.onmicrosoft.com* , która nie używa niestandardowej nazwy domeny. 
 3. Upewnij się, że nowe konto użytkownika ma uprawnienia administratora globalnego dla dzierżawy usługi Azure AD.
 4. Otwórz kartę **domeny** w centrum administracyjnym Microsoft 365, wybierz nazwę domeny i wybierz pozycję **Usuń**. 
@@ -113,7 +113,7 @@ Mimo że usługi RMS dla użytkowników indywidualnych są przeznaczone do obsł
 ### <a name="azure-ad-powershell-cmdlets-for-the-forcetakeover-option"></a>Polecenia cmdlet programu PowerShell dla usługi Azure AD dla opcji ForceTakeover
 Można wyświetlić te polecenia cmdlet używane w [przykładowym programie PowerShell](#powershell-example).
 
-parametr | Sposób użycia
+Polecenia cmdlet  programu | Użycie
 ------- | -------
 `connect-msolservice` | Po wyświetleniu monitu zaloguj się do zarządzanej dzierżawy.
 `get-msoldomain` | Wyświetla nazwy domen skojarzone z bieżącą dzierżawą.
@@ -130,40 +130,40 @@ parametr | Sposób użycia
 
 1. Połącz się z usługą Azure AD przy użyciu poświadczeń, które zostały użyte do udzielenia odpowiedzi na ofertę samoobsługi:
    ```powershell
-    Install-Module -Name MSOnline
-    $msolcred = get-credential
+   Install-Module -Name MSOnline
+   $msolcred = get-credential
     
-    connect-msolservice -credential $msolcred
+   connect-msolservice -credential $msolcred
    ```
 2. Pobierz listę domen:
   
    ```powershell
-    Get-MsolDomain
+   Get-MsolDomain
    ```
 3. Uruchom polecenie cmdlet Get-MsolDomainVerificationDns, aby utworzyć wyzwanie:
    ```powershell
-    Get-MsolDomainVerificationDns –DomainName *your_domain_name* –Mode DnsTxtRecord
-  
-    For example:
-  
-    Get-MsolDomainVerificationDns –DomainName contoso.com –Mode DnsTxtRecord
+   Get-MsolDomainVerificationDns –DomainName *your_domain_name* –Mode DnsTxtRecord
+   ```
+    Przykład:
+   ```
+   Get-MsolDomainVerificationDns –DomainName contoso.com –Mode DnsTxtRecord
    ```
 
-4. Skopiuj wartość (wyzwanie) zwracaną z tego polecenia. Na przykład:
+4. Skopiuj wartość (wyzwanie) zwracaną z tego polecenia. Przykład:
    ```powershell
-    MS=32DD01B82C05D27151EA9AE93C5890787F0E65D9
+   MS=32DD01B82C05D27151EA9AE93C5890787F0E65D9
    ```
 5. W publicznej przestrzeni nazw DNS Utwórz rekord TXT DNS zawierający wartość skopiowaną w poprzednim kroku. Nazwa tego rekordu to nazwa domeny nadrzędnej, więc jeśli ten rekord zasobu zostanie utworzony przy użyciu roli DNS z systemu Windows Server, pozostaw pustą nazwę rekordu i po prostu wklej wartość w polu tekstowym.
 6. Uruchom polecenie cmdlet Confirm-MsolDomain, aby zweryfikować wyzwanie:
   
    ```powershell
-    Confirm-MsolEmailVerifiedDomain -DomainName *your_domain_name*
+   Confirm-MsolDomain –DomainName *your_domain_name* –ForceTakeover Force
    ```
   
-   Na przykład:
+   Przykład:
   
    ```powershell
-    Confirm-MsolEmailVerifiedDomain -DomainName contoso.com
+   Confirm-MsolDomain –DomainName contoso.com –ForceTakeover Force
    ```
 
 Pomyślne wyzwanie powraca do monitu bez błędu.
@@ -171,7 +171,7 @@ Pomyślne wyzwanie powraca do monitu bez błędu.
 ## <a name="next-steps"></a>Następne kroki
 
 * [Dodawanie niestandardowej nazwy domeny do usługi Azure AD](../fundamentals/add-custom-domain.md)
-* [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/overview)
+* [How to install and configure Azure PowerShell](/powershell/azure/overview)
 * [Azure PowerShell](/powershell/azure/overview)
 * [Dokumentacja poleceń cmdlet platformy Azure](/powershell/azure/get-started-azureps)
 * [Set-MsolCompanySettings](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0)

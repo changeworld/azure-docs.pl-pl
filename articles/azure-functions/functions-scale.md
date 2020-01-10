@@ -5,24 +5,24 @@ ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6520f205d0a9c1a33d0cb4911a58a5e680bdadb7
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 2eba0c7ae546b5f5ab7525cc8c84e6b6de431085
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929732"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768927"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Azure Functions skalowanie i hosting
 
-Podczas tworzenia aplikacji funkcji na platformie Azure musisz wybrać plan hostingu dla swojej aplikacji. Istnieją trzy plany hostingu dostępne dla Azure Functions: [Plan zużycia](#consumption-plan), [Plan Premium](#premium-plan)i [Plan App Service](#app-service-plan).
+Podczas tworzenia aplikacji funkcji na platformie Azure musisz wybrać plan hostingu dla swojej aplikacji. Istnieją trzy plany hostingu dostępne dla Azure Functions: plan [zużycia](#consumption-plan), [Plan Premium](#premium-plan)i [dedykowany plan (App Service)](#app-service-plan).
 
 Wybrany plan hostingu wymusza następujące zachowania:
 
 * Sposób skalowania aplikacji funkcji.
 * Zasoby dostępne dla każdego wystąpienia aplikacji funkcji.
-* Obsługa zaawansowanych funkcji, takich jak łączność z siecią wirtualną.
+* Obsługa zaawansowanych funkcji, takich jak łączność z platformą Azure Virtual Network.
 
-Plany zużycia i Premium automatycznie dodają moc obliczeniową, gdy kod jest uruchomiony. Aplikacja jest skalowana w poziomie, gdy jest wymagana do obsłużenia obciążenia i skalowana w dół, gdy kod przestanie działać. W przypadku planu zużycia nie trzeba również uiszczać opłat za bezczynne maszyny wirtualne lub zarezerwować pojemność.  
+Plany zużycia i Premium automatycznie dodają moc obliczeniową, gdy kod jest uruchomiony. Aplikacja jest skalowana w poziomie, gdy jest wymagana do obsługi obciążenia i skalowana w czasie, gdy kod przestanie działać. W przypadku planu zużycia nie trzeba również uiszczać opłat za bezczynne maszyny wirtualne lub zarezerwować pojemność.  
 
 Plan Premium oferuje dodatkowe funkcje, takie jak wystąpienia obliczeniowe w warstwie Premium, możliwość utrzymywania nieokreślonych wystąpień i łączności między sieciami wirtualnymi.
 
@@ -33,7 +33,7 @@ Plan App Service umożliwia korzystanie z dedykowanej infrastruktury zarządzane
 Obsługa funkcji znajduje się w następujących dwóch kategoriach:
 
 * _Ogólnie dostępna (ga)_ : w pełni obsługiwana i zatwierdzona do użycia w środowisku produkcyjnym.
-* _Wersja zapoznawcza_: nie jest jeszcze w pełni obsługiwana i zatwierdzona do użycia w środowisku produkcyjnym.
+* _Wersja zapoznawcza_: nie jest jeszcze w pełni obsługiwana ani zatwierdzona do użycia w środowisku produkcyjnym.
 
 Poniższa tabela przedstawia bieżący poziom wsparcia dla trzech planów hostingu w przypadku uruchamiania w systemie Windows lub Linux:
 
@@ -78,7 +78,7 @@ Zapoznaj się z planem Azure Functions Premium w następujących sytuacjach:
 * Masz dużą liczbę niewielkich wykonań i masz rozliczenie o dużym obciążeniu, ale niski GB drugiego rachunku w planie zużycia.
 * Potrzebujesz więcej opcji dotyczących procesora CPU lub pamięci niż to, co jest dostępne w ramach planu zużycia.
 * Twój kod musi działać dłużej niż [Maksymalny dozwolony czas wykonywania](#timeout) w planie zużycia.
-* Wymagane są funkcje, które są dostępne tylko w planie Premium, np. łączność sieci wirtualnej/VPN.
+* Wymagane są funkcje, które są dostępne tylko w planie Premium, takie jak łączność sieci wirtualnej.
 
 Podczas uruchamiania funkcji JavaScript w planie Premium należy wybrać wystąpienie, które ma mniej procesorów wirtualnych vCPU. Aby uzyskać więcej informacji, zapoznaj się z tematem [Wybieranie jednego podstawowego planu Premium](functions-reference-node.md#considerations-for-javascript-functions).  
 
@@ -126,7 +126,9 @@ Gdy dane wyjściowe tego polecenia są `dynamic`, aplikacja funkcji jest w plani
 
 W każdym planie aplikacja funkcji wymaga konta usługi Azure Storage, które obsługuje obiekty blob, kolejki, pliki i tabele usługi Azure Storage. Wynika to z faktu, że funkcje programu korzystają z usługi Azure Storage w przypadku operacji takich jak zarządzanie wyzwalaczami i rejestrowanie wykonań funkcji, ale niektóre konta magazynu nie obsługują kolejek i tabel. Te konta, które obejmują konta magazynu tylko obiektów BLOB (w tym magazyn Premium Storage) i konta magazynu ogólnego przeznaczenia z replikacją magazynu w strefie nadmiarowej, są odfiltrowane z istniejących ustawień **konta magazynu** podczas tworzenia aplikacji funkcji.
 
-To samo konto magazynu używane przez aplikację funkcji może być również używane przez wyzwalacze i powiązania do przechowywania danych aplikacji. Jednak w przypadku operacji intensywnie korzystających z magazynu należy użyć oddzielnego konta magazynu.   
+To samo konto magazynu używane przez aplikację funkcji może być również używane przez wyzwalacze i powiązania do przechowywania danych aplikacji. Jednak w przypadku operacji intensywnie korzystających z magazynu należy użyć oddzielnego konta magazynu.  
+
+W przypadku wielu aplikacji funkcji można korzystać z tego samego konta magazynu bez żadnych problemów. (Dobrym przykładem jest to, że podczas tworzenia wielu aplikacji w środowisku lokalnym przy użyciu emulatora usługi Azure Storage, który działa jak jedno konto magazynu). 
 
 <!-- JH: Does using a Premium Storage account improve perf? -->
 
@@ -161,6 +163,8 @@ Różne wyzwalacze mogą również mieć różne limity skalowania, a także opi
 ### <a name="best-practices-and-patterns-for-scalable-apps"></a>Najlepsze rozwiązania i wzorce dotyczące skalowalnych aplikacji
 
 Istnieje wiele aspektów aplikacji funkcji, która będzie miała wpływ na wydajność skalowania, w tym konfigurację hosta, rozmiar środowiska uruchomieniowego i efektywność zasobów.  Aby uzyskać więcej informacji, zobacz [sekcję skalowalność artykułu zagadnienia dotyczące wydajności](functions-best-practices.md#scalability-best-practices). Należy również wiedzieć, jak połączenia działają w miarę skalowania aplikacji funkcji. Aby uzyskać więcej informacji, zobacz [jak zarządzać połączeniami w Azure Functions](manage-connections.md).
+
+Aby uzyskać dodatkowe informacje na temat skalowania w języku Python i Node. js, zobacz [Azure Functions Python Developer Guide — skalowanie i współbieżność](functions-reference-python.md#scaling-and-concurrency) oraz [Azure Functions przewodnik dewelopera środowiska Node. js — skalowanie i współbieżność](functions-reference-node.md#scaling-and-concurrency).
 
 ### <a name="billing-model"></a>Model rozliczania
 

@@ -7,12 +7,12 @@ author: hedidin
 ms.reviewer: klam, estfan, logicappspm
 ms.topic: article
 ms.date: 07/29/2016
-ms.openlocfilehash: 99141787c5133b578c943f0e11e5ab15171a2e3d
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 03ed4731e59280a3879d77ca3fb82f0158313aeb
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792976"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771567"
 ---
 # <a name="scenario-exception-handling-and-error-logging-for-logic-apps"></a>Scenariusz: obsługa wyjątków i rejestrowanie błędów dla aplikacji logiki
 
@@ -25,7 +25,7 @@ W tym scenariuszu opisano sposób, w jaki można rozłożyć aplikację logiki w
 
 Poniżej przedstawiono historię przypadku użycia w tym scenariuszu: 
 
-Dobrze znana organizacja opieki zdrowotnej zaangażowana w opracowywanie rozwiązania platformy Azure, które utworzy Portal pacjenta, za pomocą usługi Microsoft Dynamics CRM Online. Są one konieczne do wysyłania rekordów terminów między portalem programu Dynamics CRM Online i usługą Salesforce. Otrzymaliśmy prośbę o użycie standardu [HL7 FHIR](http://www.hl7.org/implement/standards/fhir/) w przypadku wszystkich rekordów pacjenta.
+Dobrze znana organizacja opieki zdrowotnej zaangażowana w opracowywanie rozwiązania platformy Azure, które utworzy Portal pacjenta, za pomocą usługi Microsoft Dynamics CRM Online. Są one konieczne do wysyłania rekordów terminów między portalem programu Dynamics CRM Online i usługą Salesforce. Otrzymaliśmy prośbę o użycie standardu [HL7 FHIR](https://www.hl7.org/implement/standards/fhir/) w przypadku wszystkich rekordów pacjenta.
 
 Projekt ma dwa główne wymagania:  
 
@@ -122,7 +122,7 @@ Należy zarejestrować źródło (żądanie) rekordu pacjenta z portalu usługi 
 
 Poniższy przykładowy kod aplikacji logiki pokazuje, jak obsługiwać rejestrowanie.
 
-#### <a name="log-entry"></a>Wpis dziennika
+#### <a name="log-entry"></a>Pozycja dziennika
 
 Poniżej znajduje się kod źródłowy aplikacji logiki służący do wstawiania wpisu dziennika.
 
@@ -466,7 +466,7 @@ Interfejs API jest wywoływany z aplikacji logiki przy użyciu następującej sk
  }
 ```
 
-Wyrażenie w poprzednim przykładzie kodu sprawdza stan *Create_NewPatientRecord* **nie powiodło się**.
+Sprawdza, czy wyrażenie w poprzednim przykładzie kodu *Create_NewPatientRecord* stan.
 
 ## <a name="summary"></a>Podsumowanie
 

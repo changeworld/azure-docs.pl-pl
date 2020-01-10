@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: 4593ee875f98e2c9f2f9406f8b9d4146e06a573d
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: c402d47f40a351d70f688aa93c5e1501c93b39dd
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825443"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75779884"
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-access-tiers"></a>Azure Blob Storage: warstwy dostępu gorąca, chłodna i archiwalna
 
@@ -61,7 +61,7 @@ Warstwa dostępu chłodna ma niższe koszty magazynowania i wyższe koszty dost�
 
 Warstwa dostępu archiwalnego ma najniższy koszt magazynowania. Jednak ma wyższy koszt pobierania danych w porównaniu do warstw gorąca i chłodna. Pobieranie danych w warstwie archiwum może potrwać kilka godzin. Dane muszą pozostać w warstwie archiwum przez co najmniej 180 dni lub podlegają opłacie za wczesne usunięcie.
 
-Gdy obiekt BLOB znajduje się w magazynie archiwum, dane obiektów BLOB są w trybie offline i nie można ich odczytywać, kopiować, zastępować ani modyfikować. Nie można wykonać migawek obiektu BLOB w magazynie archiwum. Jednak metadane obiektu BLOB pozostają w trybie online i są dostępne, umożliwiając wyświetlenie listy obiektów blob i jego właściwości. W przypadku obiektów BLOB w archiwum jedynymi prawidłowymi operacjami są GetBlobProperties, GetBlobMetadata, ListBlobs, SetBlobTier i DeleteBlob.
+Gdy obiekt BLOB znajduje się w magazynie archiwum, dane obiektów BLOB są w trybie offline i nie można ich odczytać, zastąpić ani modyfikować. Aby odczytać lub pobrać obiekt BLOB w archiwum, należy najpierw go przetworzyć w warstwie online. Nie można wykonać migawek obiektu BLOB w magazynie archiwum. Jednak metadane obiektu BLOB pozostają w trybie online i są dostępne, umożliwiając wyświetlenie listy obiektów blob i jego właściwości. W przypadku obiektów BLOB w archiwum jedynymi prawidłowymi operacjami są GetBlobProperties, GetBlobMetadata, ListBlobs, SetBlobTier, CopyBlob i DeleteBlob. Aby dowiedzieć się więcej, zobacz informacje dotyczące [danych obiektów BLOB w warstwie archiwum](storage-blob-rehydration.md) .
 
 Przykładowe scenariusze użycia dla warstwy dostępu archiwalnego obejmują:
 
@@ -77,9 +77,9 @@ Zmiana warstwy dostępu do konta ma zastosowanie do wszystkich obiektów _odrocz
 
 ## <a name="blob-level-tiering"></a>Obsługa warstw na poziomie obiektów blob
 
-Funkcja obsługi warstw na poziomie obiektów blob umożliwia zmianę warstwy danych na poziomie obiektu przy użyciu jednej operacji o nazwie [Ustawianie warstwy obiektu blob](/rest/api/storageservices/set-blob-tier). W odpowiedzi na zmiany wzorców użycia można łatwo zmieniać warstwy dostępu do obiektu blob (wybierając warstwę gorącą, chłodną lub archiwalną) bez przenoszenia danych między kontami. Wszystkie zmiany warstwy są wykonywane natychmiast. Ponownego wypełniania obiekt BLOB z archiwum może jednak trwać kilka godzin.
+Funkcja obsługi warstw na poziomie obiektów blob umożliwia zmianę warstwy danych na poziomie obiektu przy użyciu jednej operacji o nazwie [Ustawianie warstwy obiektu blob](/rest/api/storageservices/set-blob-tier). W odpowiedzi na zmiany wzorców użycia można łatwo zmieniać warstwy dostępu do obiektu blob (wybierając warstwę gorącą, chłodną lub archiwalną) bez przenoszenia danych między kontami. Wszystkie żądania zmiany warstwy są wykonywane natychmiast, a zmiany warstwy między gorącą i chłodną są chwilowo. Ponownego wypełniania obiekt BLOB z archiwum może jednak trwać kilka godzin.
 
-Czas ostatniej zmiany warstwy obiektu blob jest uwidaczniany za pomocą właściwości obiektu blob **Czas zmiany warstwy dostępu**. Jeśli obiekt BLOB znajduje się w warstwie archiwum, nie można go zastąpić, więc przekazywanie tego samego obiektu BLOB nie jest dozwolone w tym scenariuszu. Podczas zastępowania obiektu BLOB w warstwie gorąca lub chłodna nowo utworzony obiekt BLOB dziedziczy warstwę obiektu BLOB, który został zastąpiony, chyba że nowa warstwa dostępu do obiektów BLOB jest jawnie ustawiona podczas tworzenia.
+Czas ostatniej zmiany warstwy obiektu blob jest uwidaczniany za pomocą właściwości obiektu blob **Czas zmiany warstwy dostępu**. Podczas zastępowania obiektu BLOB w warstwie gorąca lub chłodna nowo utworzony obiekt BLOB dziedziczy warstwę obiektu BLOB, który został zastąpiony, chyba że nowa warstwa dostępu do obiektów BLOB jest jawnie ustawiona podczas tworzenia. Jeśli obiekt BLOB znajduje się w warstwie archiwum, nie można go zastąpić, więc przekazywanie tego samego obiektu BLOB nie jest dozwolone w tym scenariuszu. 
 
 > [!NOTE]
 > Magazyn Archiwum i funkcja obsługi warstw na poziomie obiektów blob obsługują tylko blokowe obiekty blob. Obecnie nie można zmienić warstwy blokowego obiektu BLOB, który ma migawki.
@@ -115,11 +115,11 @@ W poniższej tabeli przedstawiono porównanie magazynu obiektów BLOB wydajnośc
 
 |                                           | **Wydajność warstwy Premium**   | **Warstwa gorąca** | **Warstwa chłodna**       | **Warstwa Archiwum**  |
 | ----------------------------------------- | ------------------------- | ------------ | ------------------- | ----------------- |
-| **Dostępność**                          | 99,9%                     | 99,9%        | 99%                 | Stanie           |
-| **Dostępność** <br> **(odczyty RA-GRS)**  | Nie dotyczy                       | 99,99%       | 99,9%               | Stanie           |
+| **Dostępność**                          | 99,9%                     | 99,9%        | 99%                 | W trybie offline           |
+| **Dostępność** <br> **(odczyty RA-GRS)**  | ND                       | 99,99%       | 99,9%               | W trybie offline           |
 | **Opłaty za użycie**                         | Wyższe koszty magazynowania, niższy koszt dostępu i transakcji | Wyższe koszty magazynowania, niższy dostęp i koszty transakcji | Niższe koszty magazynowania, wyższego poziomu dostępu i kosztów transakcji | Najniższe koszty magazynowania, najwyższy poziom dostępu i koszty transakcji |
-| **Minimalny rozmiar obiektu**                   | Nie dotyczy                       | Nie dotyczy          | Nie dotyczy                 | Nie dotyczy               |
-| **Minimalny czas magazynowania**              | Nie dotyczy                       | Nie dotyczy          | 30 dni<sup>1</sup> | 180 dni
+| **Minimalny rozmiar obiektu**                   | ND                       | ND          | ND                 | ND               |
+| **Minimalny czas magazynowania**              | ND                       | ND          | 30 dni<sup>1</sup> | 180 dni
 | **Opóźnienie** <br> **(czas do pierwszego bajtu)** | Jednocyfrowe milisekundy | milisekundy | milisekundy        | godz.<sup>2</sup> |
 
 <sup>1</sup> obiekty w warstwie chłodna na kontach GPv2 mają minimalny okres przechowywania równy 30 dni. Konta usługi BLOB Storage nie mają minimalnego czasu trwania przechowywania dla warstwy chłodna.
@@ -127,38 +127,82 @@ W poniższej tabeli przedstawiono porównanie magazynu obiektów BLOB wydajnośc
 <sup>2</sup> Archive Storage obecnie obsługuje 2 dwuwodne priorytety, wysoki i standardowy, który oferuje różne opóźnienia pobierania. Aby uzyskać więcej informacji, zobacz informacje o [rehydratacji danych obiektów blob z warstwy archiwum](storage-blob-rehydration.md).
 
 > [!NOTE]
-> Konta magazynu obiektów BLOB obsługują te same cele dotyczące wydajności i skalowalności co konta magazynu ogólnego przeznaczenia w wersji 2. Aby uzyskać więcej informacji, zobacz [cele dotyczące skalowalności i wydajności usługi Azure Storage](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+> Konta magazynu obiektów BLOB obsługują te same cele dotyczące wydajności i skalowalności co konta magazynu ogólnego przeznaczenia w wersji 2. Aby uzyskać więcej informacji, zobacz [elementy docelowe skalowalności i wydajności dla usługi BLOB Storage](scalability-targets.md).
 
 ## <a name="quickstart-scenarios"></a>Scenariusze typu Szybki start
 
-W tej sekcji przedstawiono następujące scenariusze obejmujące użycie witryny Azure Portal:
+W tej sekcji przedstawiono następujące scenariusze przy użyciu Azure Portal i programu PowerShell:
 
 - Jak zmienić domyślną warstwę dostępu konta GPv2 lub usługi Blob Storage.
 - Jak zmienić warstwę obiektu blob na koncie GPv2 lub usługi Blob Storage.
 
 ### <a name="change-the-default-account-access-tier-of-a-gpv2-or-blob-storage-account"></a>Zmienianie domyślnej warstwy dostępu konta GPv2 lub usługi Blob Storage
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
 
-1. Aby przejść do konta magazynu, zaznacz pozycję Wszystkie zasoby, a następnie wybierz konto magazynu.
+1. W Azure Portal Wyszukaj i wybierz pozycję **wszystkie zasoby**.
 
-1. W obszarze Ustawienia kliknij pozycję **Konfiguracja** , aby wyświetlić i zmienić konfigurację konta.
+1. Wybierz swoje konto magazynu.
+
+1. W obszarze **Ustawienia**wybierz pozycję **Konfiguracja** , aby wyświetlić i zmienić konfigurację konta.
 
 1. Wybierz odpowiednią warstwę dostępu do własnych potrzeb: Ustaw **warstwę dostępu** na **chłodna** lub **gorąca**.
 
 1. Kliknij przycisk **Zapisz** u góry.
 
+![Zmień warstwę konta magazynu](media/storage-tiers/account-tier.png)
+
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+Za pomocą poniższego skryptu programu PowerShell można zmienić warstwę konta. Zmienna `$rgName` musi zostać zainicjowana przy użyciu nazwy grupy zasobów. Zmienna `$accountName` musi zostać zainicjowana przy użyciu nazwy konta magazynu. 
+```powershell
+#Initialize the following with your resource group and storage account names
+$rgName = ""
+$accountName = ""
+
+#Change the storage account tier to hot
+Set-AzStorageAccount -ResourceGroupName $rgName -Name $accountName -AccessTier Hot
+```
+---
+
 ### <a name="change-the-tier-of-a-blob-in-a-gpv2-or-blob-storage-account"></a>Zmienianie warstwy obiektu BLOB na koncie GPv2 lub BLOB Storage
+# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. W Azure Portal Wyszukaj i wybierz pozycję **wszystkie zasoby**.
 
-1. Aby przejść do obiektu blob na koncie magazynu, wybierz pozycję Wszystkie zasoby, wybierz konto magazynu, wybierz kontener, a następnie wybierz obiekt blob.
+1. Wybierz swoje konto magazynu.
+
+1. Wybierz kontener, a następnie wybierz obiekt BLOB.
 
 1. We **właściwościach obiektu BLOB**wybierz pozycję **Zmień warstwę**.
 
 1. Wybierz warstwę dostępu **gorąca**, **chłodna**lub **archiwalna** . Jeśli obiekt BLOB znajduje się obecnie w archiwum i chcesz go umieścić w warstwie online, możesz również wybrać priorytet rehydratacji dla warstwy **standardowa** lub **wysoka**.
 
 1. Wybierz pozycję **Zapisz** u dołu.
+
+![Zmień warstwę konta magazynu](media/storage-tiers/blob-access-tier.png)
+
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+Za pomocą poniższego skryptu programu PowerShell można zmienić warstwę obiektów BLOB. Zmienna `$rgName` musi zostać zainicjowana przy użyciu nazwy grupy zasobów. Zmienna `$accountName` musi zostać zainicjowana przy użyciu nazwy konta magazynu. Zmienna `$containerName` musi zostać zainicjowana przy użyciu nazwy kontenera. Zmienna `$blobName` musi zostać zainicjowana przy użyciu nazwy obiektu BLOB. 
+```powershell
+#Initialize the following with your resource group, storage account, container, and blob names
+$rgName = ""
+$accountName = ""
+$containerName = ""
+$blobName == ""
+
+#Select the storage account and get the context
+$storageAccount =Get-AzStorageAccount -ResourceGroupName $rgName -Name $accountName
+$ctx = $storageAccount.Context
+
+#Select the blob from a container
+$blobs = Get-AzStorageBlob -Container $containerName -Blob $blobName -Context $context
+
+#Change the blob’s access tier to archive
+$blob.ICloudBlob.SetStandardBlobTier("Archive")
+```
+---
 
 ## <a name="pricing-and-billing"></a>Cennik i rozliczenia
 
@@ -210,11 +254,11 @@ Wszystkie operacje w warstwach Gorąca i Chłodna są w 100% spójne. Wszystkie 
 
 **Kiedy podczas ponownego wypełniania obiektu blob z warstwy Archiwum do warstwy Gorąca lub Chłodna będę wiedzieć, że ten proces został ukończony?**
 
-Podczas ponownego wypełniania można użyć operacji pobierania właściwości obiektu BLOB do sondowania atrybutu **stanu archiwum** i potwierdzić, kiedy zmiana warstwy zostanie zakończona. Właściwość ta ma wartość „rehydrate-pending-to-hot” (ponowne wypełnianie w celu przejścia do warstwy gorącej) lub „rehydrate-pending-to-cool” (ponowne wypełnianie w celu przejścia do warstwy chłodnej) w zależności od warstwy docelowej. Po zakończeniu tego procesu właściwość obiektu blob „stan archiwum” jest usuwana, a wartość właściwości **Warstwa dostępu** odpowiada nowej warstwie Gorąca lub Chłodna.  
+Podczas ponownego wypełniania można użyć operacji pobierania właściwości obiektu BLOB do sondowania atrybutu **stanu archiwum** i potwierdzić, kiedy zmiana warstwy zostanie zakończona. Właściwość ta ma wartość „rehydrate-pending-to-hot” (ponowne wypełnianie w celu przejścia do warstwy gorącej) lub „rehydrate-pending-to-cool” (ponowne wypełnianie w celu przejścia do warstwy chłodnej) w zależności od warstwy docelowej. Po zakończeniu tego procesu właściwość obiektu blob „stan archiwum” jest usuwana, a wartość właściwości **Warstwa dostępu** odpowiada nowej warstwie Gorąca lub Chłodna. Aby dowiedzieć się więcej, zobacz informacje dotyczące [danych obiektów BLOB w warstwie archiwum](storage-blob-rehydration.md) .
 
 **Kiedy po ustawieniu warstwy obiektu blob rozpocznie się naliczanie opłat przy użyciu odpowiedniej stawki?**
 
-Każdy obiekt BLOB jest zawsze rozliczany zgodnie z warstwą określoną przez właściwość **warstwy dostępu** obiektu BLOB. Po ustawieniu nowej warstwy dla obiektu BLOB Właściwość **Warstwa dostępu** natychmiast odzwierciedla nową warstwę dla wszystkich przejść. Jednak ponowne wypełnienie obiektu blob z warstwy Archiwum w warstwie Gorąca lub Chłodna może potrwać kilka godzin. W tym przypadku opłaty są naliczane według stawek za archiwizację do momentu ukończenia ponownego wypełniania. w tym momencie Właściwość **Warstwa dostępu** odzwierciedla nową warstwę. W tym momencie naliczane są opłaty za ten obiekt BLOB przy użyciu stawki gorąca lub chłodna.
+Każdy obiekt BLOB jest zawsze rozliczany zgodnie z warstwą określoną przez właściwość **warstwy dostępu** obiektu BLOB. Po ustawieniu nowej warstwy online dla obiektu BLOB Właściwość **Warstwa dostępu** natychmiast odzwierciedla nową warstwę dla wszystkich przejść. Jednak ponownego wypełniania obiektu BLOB z warstwy archiwum offline do warstwy gorąca lub chłodna może potrwać kilka godzin. W tym przypadku opłaty są naliczane według stawek za archiwizację do momentu ukończenia ponownego wypełniania. w tym momencie Właściwość **Warstwa dostępu** odzwierciedla nową warstwę. Po ponownym przekonwertowaniu do warstwy online naliczane są opłaty za ten obiekt BLOB przy użyciu stawki gorąca lub chłodna.
 
 **Jak mogę określić, czy po usunięciu lub przeniesieniu obiektu BLOB z warstwy chłodna lub archiwum ma być naliczana opłata za wczesne usunięcie?**
 
@@ -226,7 +270,7 @@ Następujące rozwiązania: witryna Azure Portal, program PowerShell, narzędzia
 
 **Ile danych można przechowywać w warstwach Gorąca, Chłodna i Archiwum?**
 
-Magazyn danych oraz inne limity są ustawiane na poziomie konta, a nie na warstwie dostępu. Możesz użyć wszystkich limitów w jednej warstwie lub we wszystkich trzech warstwach. Aby uzyskać więcej informacji, zobacz [cele dotyczące skalowalności i wydajności usługi Azure Storage](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+Magazyn danych oraz inne limity są ustawiane na poziomie konta, a nie na warstwie dostępu. Możesz użyć wszystkich limitów w jednej warstwie lub we wszystkich trzech warstwach. Aby uzyskać więcej informacji, zobacz [cele skalowalności i wydajności dla kont magazynu w warstwie Standardowa](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
 ## <a name="next-steps"></a>Następne kroki
 

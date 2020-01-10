@@ -7,12 +7,12 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 07/29/2019
-ms.openlocfilehash: 2d2e929335f6af2ee24a81e719d9d0d899f7b8ef
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: 114f710c9d0e85ecde4ab163401c714c5e28a708
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73241837"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771602"
 ---
 # <a name="nativeazurefilesystemrequestbodytoolarge-appear-in-apache-spark-streaming-app-log-in-hdinsight"></a>"NativeAzureFileSystem... RequestBodyTooLarge "pojawia się w Apache Spark dzienniku aplikacji przesyłania strumieniowego w usłudze HDInsight
 
@@ -26,7 +26,7 @@ Błąd: `NativeAzureFileSystem ... RequestBodyTooLarge` pojawia się w dzienniku
 
 Plik dziennika zdarzeń Spark prawdopodobnie zostanie osiągnięty w limicie długości pliku dla WASB.
 
-W platformie Spark 2,3 Każda aplikacja Spark generuje jeden plik dziennika zdarzeń platformy Spark. Plik dziennika zdarzeń Spark dla aplikacji do przesyłania strumieniowego Spark nadal rośnie, gdy aplikacja jest uruchomiona. Dzisiaj plik w WASB ma limit bloków 50000, a domyślny rozmiar bloku to 4 MB. W konfiguracji domyślnej maksymalny rozmiar pliku to 195 GB. Jednak usługa Azure Storage zwiększyła maksymalny rozmiar bloku do 100 MB, co skutecznie przekroczy limit jednego pliku do 4,75 TB. Aby uzyskać więcej informacji, zobacz [cele dotyczące skalowalności i wydajności usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-scalability-targets).
+W platformie Spark 2,3 Każda aplikacja Spark generuje jeden plik dziennika zdarzeń platformy Spark. Plik dziennika zdarzeń Spark dla aplikacji do przesyłania strumieniowego Spark nadal rośnie, gdy aplikacja jest uruchomiona. Dzisiaj plik w WASB ma limit bloków 50000, a domyślny rozmiar bloku to 4 MB. W konfiguracji domyślnej maksymalny rozmiar pliku to 195 GB. Jednak usługa Azure Storage zwiększyła maksymalny rozmiar bloku do 100 MB, co skutecznie przekroczy limit jednego pliku do 4,75 TB. Aby uzyskać więcej informacji, zobacz [elementy docelowe skalowalności i wydajności dla usługi BLOB Storage](../../storage/blobs/scalability-targets.md).
 
 ## <a name="resolution"></a>Rozdzielczość
 

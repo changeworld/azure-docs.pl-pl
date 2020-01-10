@@ -4,15 +4,15 @@ description: Konfigurowanie Diagnostyka Azure na zakończenie Event Hubs, w tym 
 ms.service: azure-monitor
 ms.subservice: diagnostic-extension
 ms.topic: conceptual
-author: rboucher
-ms.author: robb
+author: bwren
+ms.author: bwren
 ms.date: 07/13/2017
-ms.openlocfilehash: 2b24618e4d7c12366db5e72226c6f94924d4d3a5
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 433d53e09fce6d3f6b2010956da91c4b7cf91d49
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555532"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770173"
 ---
 # <a name="streaming-azure-diagnostics-data-in-the-hot-path-by-using-event-hubs"></a>Przesyłanie strumieniowe danych Diagnostyka Azure w ścieżce gorąca przy użyciu Event Hubs
 Diagnostyka Azure zapewnia elastyczne sposoby zbierania metryk i dzienników z maszyn wirtualnych usług Cloud Services i przesyłania wyników do usługi Azure Storage. Począwszy od okresu 2016 marca (SDK 2,9), można wysyłać diagnostykę do niestandardowych źródeł danych i transferować dane w postaci gorącej ścieżki w ciągu kilku sekund przy użyciu [usługi Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/).
@@ -21,8 +21,7 @@ Obsługiwane typy danych obejmują:
 
 * Zdarzenia funkcji Śledzenie zdarzeń systemu Windows (ETW)
 * Liczniki wydajności
-* Dzienniki zdarzeń systemu Windows
-* Dzienniki aplikacji
+* Dzienniki zdarzeń systemu Windows, w tym Dzienniki aplikacji w dzienniku zdarzeń systemu Windows
 * Dzienniki infrastruktury diagnostyki Azure
 
 W tym artykule opisano sposób konfigurowania Diagnostyka Azure z Event Hubs od końca do końca. Wskazówki są również udostępniane w następujących typowych scenariuszach:
@@ -43,7 +42,7 @@ Event Hubs otrzymywanie danych z Diagnostyka Azure jest obsługiwane w Cloud Ser
 * Event Hubs przestrzeń nazw, która została zainicjowana zgodnie z artykułem, [wprowadzenie do Event Hubs](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)
 
 ## <a name="connect-azure-diagnostics-to-event-hubs-sink"></a>Łączenie Diagnostyka Azure z Event Hubs ujścia
-Domyślnie program Diagnostyka Azure zawsze wysyła dzienniki i metryki do konta usługi Azure Storage. Aplikacja może również wysyłać dane do Event Hubs przez dodanie nowej sekcji **ujścia** w elemencie **PublicConfig**  / **WadCfg** pliku *. wadcfgx* . W programie Visual Studio plik *. wadcfgx* jest przechowywany w następującej ścieżce:  >  ról  >  (**rolename** **)** **projektu usługi w chmurze**  >  pliku**Diagnostics. wadcfgx** .
+Domyślnie program Diagnostyka Azure zawsze wysyła dzienniki i metryki do konta usługi Azure Storage. Aplikacja może również wysyłać dane do Event Hubs przez dodanie nowej sekcji **ujścia** w elemencie **PublicConfig** / **WadCfg** pliku *. wadcfgx* . W programie Visual Studio plik *. wadcfgx* jest przechowywany w następującej ścieżce: > ról > ( **rolename** **)** **projektu usługi w chmurze** > pliku **Diagnostics. wadcfgx** .
 
 ```xml
 <SinksConfig>
@@ -200,7 +199,7 @@ Poniższy przykład pokazuje, jak Projektant może ograniczyć ilość wysłanyc
 W tym przykładzie obiekt sink jest stosowany do dzienników i jest filtrowany tylko w ślad poziomu błędu.
 
 ## <a name="deploy-and-update-a-cloud-services-application-and-diagnostics-config"></a>Wdrażanie i aktualizowanie Cloud Services aplikacji i konfiguracji diagnostyki
-Program Visual Studio zapewnia najłatwą ścieżkę do wdrożenia aplikacji i Event Hubs konfiguracji ujścia. Aby wyświetlić i edytować plik, Otwórz plik *. wadcfgx* w programie Visual Studio, edytuj go i Zapisz. Ścieżka **jest** ścieżką  >  ról  >  (**rolename** **)**  > **Diagnostics. wadcfgx**.  
+Program Visual Studio zapewnia najłatwą ścieżkę do wdrożenia aplikacji i Event Hubs konfiguracji ujścia. Aby wyświetlić i edytować plik, Otwórz plik *. wadcfgx* w programie Visual Studio, edytuj go i Zapisz. Ścieżka **jest** ścieżką > ról > ( **rolename** **)**  > **Diagnostics. wadcfgx**.  
 
 W tym momencie wszystkie akcje aktualizacji wdrożenia i wdrożenia w programie Visual Studio, Visual Studio Team System i wszystkie polecenia lub skrypty, które są oparte na programie MSBuild i używają elementu docelowego **/t: Publish** , obejmują *. wadcfgx* w procesie pakowania. Ponadto wdrożenia i aktualizacje wdrażają plik na platformie Azure przy użyciu odpowiedniego rozszerzenia agenta Diagnostyka Azure na maszynach wirtualnych.
 

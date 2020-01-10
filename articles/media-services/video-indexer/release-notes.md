@@ -10,25 +10,74 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.workload: na
 ms.topic: article
-ms.date: 10/27/2019
+ms.date: 01/07/2020
 ms.author: juliako
-ms.openlocfilehash: 0583c0093d240026e3ebcdad7b14494f07986ec2
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 88effd58e807d39e5915aa41425ecf2e8ca8e3cc
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72968731"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75832309"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Informacje o wersji Azure Media Services Video Indexer
 
-Aby zachować aktualność najnowszych zmian, ten artykuł zawiera informacje na temat:
+>Otrzymuj powiadomienia o tym, kiedy ponownie odwiedzasz Tę stronę pod kątem aktualizacji przez skopiowanie i wklejenie tego adresu URL: `https://docs.microsoft.com/api/search/rss?search=%22Azure+Media+Services+Video+Indexer+release+notes%22&locale=en-us` do czytnika kanału informacyjnego RSS.
 
-* Najnowsze wersje
+Aby uzyskać najnowsze informacje o najnowszych zmianach, w tym artykule przedstawiono informacje o:
+
+* Zainstalowane najnowsze wersje
 * Znane problemy
 * Poprawki błędów
 * Przestarzałe funkcje
 
-## <a name="october-2019"></a>Październik 2019
+## <a name="december-2019"></a>Grudzień 2019 r.
+
+### <a name="update-transcript-with-the-new-api"></a>Aktualizowanie transkrypcji przy użyciu nowego interfejsu API
+
+Zaktualizuj określoną sekcję w transkrypcji przy użyciu interfejsu API [Update-Video-index](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Update-Video-Index?&pattern=update) .
+
+### <a name="fix-account-configuration-from-the-video-indexer-portal"></a>Napraw konfigurację konta z poziomu portalu Video Indexer
+
+Teraz możesz aktualizować Media Services konfigurację połączenia, aby samoobsługowo rozwiązywać problemy, takie jak: 
+
+* Nieprawidłowy zasób Azure Media Services
+* zmiany hasła
+* Media Services zasoby zostały przeniesione między subskrypcjami  
+
+Aby naprawić konfigurację konta, w portalu Video Indexer przejdź do Ustawienia Karta konto > (jako właściciel).
+
+### <a name="configure-the-custom-vision-account"></a>Skonfiguruj niestandardowe konto wizji
+
+Skonfiguruj niestandardowe konto wizji na płatnych kontach przy użyciu portalu Video Indexer (wcześniej było to obsługiwane tylko przez interfejs API). W tym celu zaloguj się do portalu Video Indexer, wybierz pozycję dostosowanie modelu > animowane znaki > Skonfiguruj. 
+
+### <a name="scenes-shots-and-keyframes--now-in-one-insight-pane"></a>Sceny, zrzuty i klatki kluczowe — teraz w jednym okienku szczegółowych informacji
+
+Sceny, zrzuty i ramki kluczowe są teraz scalane w jeden wgląd w celu łatwiejszego użycia i nawigacji. Po wybraniu żądanej sceny można zobaczyć, jakie zrzuty i klatki kluczowe zawiera. 
+
+### <a name="notification-about-a-long-video-name"></a>Powiadomienie dotyczące długiej nazwy wideo
+
+Jeśli nazwa filmu wideo jest dłuższa niż 80 znaków, Video Indexer pokazuje opisowy błąd podczas przekazywania.
+
+### <a name="streaming-endpoint-is-disabled-notification"></a>Powiadomienie o punkcie końcowym przesyłania strumieniowego jest wyłączone
+
+Gdy punkt końcowy przesyłania strumieniowego jest wyłączony, Video Indexer wyświetli opisowy błąd na stronie odtwarzacza.
+
+### <a name="error-handling-improvement"></a>Poprawa obsługi błędów
+
+Kod stanu 409 będzie teraz zwracany przez [ponowne indeksowanie wideo](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Re-Index-Video? https://api-portal.videoindexer.ai/docs/services/Operations/operations/Re-Index-Video?) i aktualizowanie interfejsów API [indeksu wideo](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Update-Video-Index?) w przypadku, gdy wideo jest aktywnie indeksowane, aby zapobiec zastępowaniu bieżących zmian w indeksie.
+
+## <a name="november-2019"></a>Listopad 2019 r.
+ 
+* Obsługa koreańskich niestandardowych modeli języków
+
+    Indeksator wideo obsługuje teraz niestandardowe modele językowe w koreański (`ko-KR`) zarówno w interfejsie API, jak i w portalu. 
+* Nowe języki obsługiwane w przypadku zamiany mowy na tekst (monitora STT)
+
+    Interfejsy API Video Indexer obsługują teraz monitora STT w języku arabskim Levantine (AR-SY), dialekt angielskiej Brytanii (en-GB) i angielski dialekt australijski (en-AU).
+    
+    W przypadku przekazywania wideo zamieniono polecenie zh-HANS na zh-CN, obie są obsługiwane, ale zaleca się, aby Metoda zh-CN była zalecana i bardziej dokładna.
+    
+## <a name="october-2019"></a>Październik 2019 r.
  
 * Wyszukaj animowane znaki w galerii
 

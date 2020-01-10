@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2019
 ms.author: allensu
-ms.openlocfilehash: ff42c6e9bd3c25721d2b77e49c2dd98a3eebdb43
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: f5fa39e07eba6bdf24d96e72c9229e215ff6730b
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048726"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772044"
 ---
 # <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>Diagnostyka usługi Load Balancer w warstwie Standardowa przy użyciu metryk, alertów i kondycji zasobów
 
 Usługa Azure usługa Load Balancer w warstwie Standardowa udostępnia następujące możliwości diagnostyczne:
 
-* **Wielowymiarowe metryki i alerty**: udostępnia nowe wielowymiarowe funkcje diagnostyczne, [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/overview) dla konfiguracji usługi równoważenia obciążenia w warstwie Standardowa. Możesz monitorować zasoby standardowego modułu równoważenia obciążenia, zarządzać nimi i rozwiązywać problemy.
+* **Wielowymiarowe metryki i alerty**: zapewniają wielowymiarowe funkcje diagnostyczne, [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/overview) w przypadku konfiguracji usługi równoważenia obciążenia w warstwie Standardowa. Możesz monitorować zasoby standardowego modułu równoważenia obciążenia, zarządzać nimi i rozwiązywać problemy.
 
 * **Kondycja zasobów**: Strona Load Balancer na Azure Portal i Resource Health stronie (w obszarze monitor) uwidacznia sekcję Resource Health dla usługa Load Balancer w warstwie Standardowa. 
 
@@ -31,7 +31,7 @@ Ten artykuł zawiera krótki przewodnik po tych możliwościach i oferuje sposob
 
 ## <a name = "MultiDimensionalMetrics"></a>Metryki wielowymiarowe
 
-Azure Load Balancer udostępnia nowe wielowymiarowe metryki za pośrednictwem nowych metryk platformy Azure w Azure Portal i ułatwia uzyskiwanie szczegółowych informacji diagnostycznych w czasie rzeczywistym w zasobach modułu równoważenia obciążenia. 
+Azure Load Balancer udostępniają wielowymiarowe metryki za pośrednictwem metryk platformy Azure w Azure Portal i ułatwiają uzyskiwanie informacji diagnostycznych w czasie rzeczywistym do zasobów modułu równoważenia obciążenia. 
 
 Różne konfiguracje usługa Load Balancer w warstwie Standardowa zapewniają następujące metryki:
 
@@ -195,7 +195,7 @@ W poniższej tabeli wymieniono różne stany kondycji zasobów i ich opisy:
 
 | Stan kondycji zasobu | Opis |
 | --- | --- |
-| Dostępne | Zasób standardowego modułu równoważenia obciążenia jest w dobrej kondycji i jest dostępny. |
+| Dostępna | Zasób standardowego modułu równoważenia obciążenia jest w dobrej kondycji i jest dostępny. |
 | Niedostępny | Zasób standardowego modułu równoważenia obciążenia nie jest w dobrej kondycji. Diagnozuj kondycję, wybierając pozycję **Azure Monitor** > **metryki**.<br>(Stan*niedostępny* może również oznaczać, że zasób nie jest połączony z usługą równoważenia obciążenia w warstwie Standardowa). |
 | Nieznane | Stan kondycji zasobu dla zasobu standardowego modułu równoważenia obciążenia nie został jeszcze zaktualizowany.<br>(*Nieznany* stan może również oznaczać, że zasób nie jest połączony z usługą równoważenia obciążenia w warstwie Standardowa).  |
 

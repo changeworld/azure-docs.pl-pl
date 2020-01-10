@@ -1,5 +1,5 @@
 ---
-title: Przekazywanie plików na konto Azure Media Services przy użyciu usługi REST | Microsoft Docs
+title: Przekazywanie plików na konto Azure Media Services v3 przy użyciu usługi REST | Microsoft Docs
 description: Dowiedz się, jak pobrać zawartość multimedialną do Media Services przez utworzenie i przekazanie zasobów.
 services: media-services
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: 78c07330558241c889f284bcaf7302ce1327b5b8
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: a9fd38b857f513ff67ae2fbe4ccd0c6c9540967e
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70389800"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75779165"
 ---
 # <a name="upload-files-into-a-media-services-account-using-rest"></a>Przekazywanie plików na konto Media Services przy użyciu usługi REST
 
@@ -39,7 +39,7 @@ Aby wykonać kroki opisane w tym temacie, musisz:
 
 W tej sekcji przedstawiono sposób tworzenia nowego zasobu.
 
-1. Wybierz pozycję **zasoby** -> **Utwórz lub zaktualizuj element zawartości**.
+1. Wybierz pozycję **elementy zawartości** -> **Utwórz lub zaktualizuj element zawartości**.
 2. Kliknij pozycję **Wyślij**.
 
     ![Utwórz element zawartości](./media/upload-files/postman-create-asset.png)
@@ -50,10 +50,10 @@ Zostanie wyświetlona **odpowiedź** wraz z informacjami dotyczącymi nowo utwor
 
 W tej sekcji pokazano, jak uzyskać adres URL sygnatury dostępu współdzielonego, który został wygenerowany dla utworzonego elementu zawartości. Adres URL sygnatury dostępu współdzielonego został utworzony z uprawnieniami do odczytu i zapisu. może służyć do przekazywania plików cyfrowych do kontenera zasobów.
 
-1. Wybierz pozycję **zasoby** -> **Lista adresów URL zasobów**.
+1. Wybierz pozycję **elementy zawartości** -> **listę adresów URL zasobów**.
 2. Kliknij pozycję **Wyślij**.
 
-    ![Przekaż plik](./media/upload-files/postman-create-sas-locator.png)
+    ![Przekazywanie pliku](./media/upload-files/postman-create-sas-locator.png)
 
 Zostanie wyświetlona **odpowiedź** z informacjami o adresach URL zasobów. Skopiuj pierwszy adres URL i użyj go do przekazania pliku.
 
@@ -63,4 +63,4 @@ Użyj interfejsów API usługi Azure Storage lub zestawów SDK (na przykład [in
 
 ## <a name="next-steps"></a>Następne kroki
 
-[Samouczek: Kodowanie pliku zdalnego na podstawie adresu URL i przesyłanie strumieniowe wideo — REST](stream-files-tutorial-with-rest.md)
+[Samouczek: kodowanie pliku zdalnego na podstawie adresu URL i strumieniowego wideo — REST](stream-files-tutorial-with-rest.md)

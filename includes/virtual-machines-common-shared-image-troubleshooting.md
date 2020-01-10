@@ -8,95 +8,95 @@ ms.topic: include
 ms.date: 04/25/2019
 ms.author: akjosh; cynthn
 ms.custom: include file
-ms.openlocfilehash: 1476830313296615591a69a2cadd04bcc56b22bc
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 40ba5a935e78cd75c4fcd7729e44f1cdf6c2859b
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67183168"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772994"
 ---
-Jeśli napotkasz problemy podczas wykonywania jakichkolwiek operacji na galeriach obrazów udostępnionych, definicjach obrazów i wersjach obrazów, uruchom ponownie w trybie debugowania polecenie powodujące niepowodzenie. Tryb debugowania jest aktywowana przez przekazanie **— debugowania** przełączyć się z interfejsem wiersza polecenia i **-Debug** Przełącz przy użyciu programu PowerShell. Po zlokalizowaniu błąd, postępuj zgodnie z tym dokumentem, aby rozwiązać problemy z błędami.
+Jeśli napotkasz problemy podczas wykonywania jakichkolwiek operacji na galeriach obrazów udostępnionych, definicjach obrazów i wersjach obrazów, uruchom ponownie w trybie debugowania polecenie powodujące niepowodzenie. Tryb debugowania jest uaktywniany przez przekazanie przełącznika **-Debug** z interfejsem wiersza polecenia i przełącznikiem **-Debug** przy użyciu programu PowerShell. Po zlokalizowaniu błędu postępuj zgodnie z tym dokumentem, aby rozwiązać problemy.
 
 
-## <a name="unable-to-create-a-shared-image-gallery"></a>Nie można utworzyć galerii udostępnionego obrazu
+## <a name="unable-to-create-a-shared-image-gallery"></a>Nie można utworzyć galerii obrazów udostępnionych
 
 Możliwe przyczyny:
 
 *Nazwa galerii jest nieprawidłowa.*
 
-Dozwolone znaki dla nazwy galerii są wielkie i małe litery, cyfry, kropki i okresów. Nazwa galerii nie może zawierać łączników. Zmień nazwę galerii i spróbuj ponownie. 
+Dozwolone znaki w nazwie galerii to wielkie lub małe litery, cyfry, kropki i kropki. Nazwa galerii nie może zawierać kresek. Zmień nazwę galerii i spróbuj ponownie. 
 
-*Nazwa galerii nie jest unikatowa w ramach Twojej subskrypcji.*
+*Nazwa galerii nie jest unikatowa w ramach subskrypcji.*
 
-Wybierz inną nazwę galerii, a następnie spróbuj ponownie.
+Wybierz inną nazwę galerii i spróbuj ponownie.
 
 
-## <a name="unable-to-create-an-image-definition"></a>Nie można utworzyć definicję obrazu 
+## <a name="unable-to-create-an-image-definition"></a>Nie można utworzyć definicji obrazu 
 
 Możliwe przyczyny:
 
 *Nazwa definicji obrazu jest nieprawidłowa.*
 
-Dozwolone znaki definicję obrazu są wielkie i małe litery, cyfry, kropki, łączniki i kropki. Zmień nazwę definicji obraz i spróbuj ponownie.
+Dozwolone znaki dla definicji obrazu to wielkie lub małe litery, cyfry, kropki, łączniki i kropki. Zmień nazwę definicji obrazu i spróbuj ponownie.
 
-*Właściwości wymagane do utworzenia definicję obrazu nie zostały wypełnione.*
+*Właściwości obowiązkowe do tworzenia definicji obrazu nie są wypełnione.*
 
-Właściwości, takie jak nazwy, wydawcy, oferty, jednostki sku i typu systemu operacyjnego są obowiązkowe. Upewnij się, jeśli wszystkie właściwości są przekazywane.
+Właściwości, takie jak nazwa, Wydawca, oferta, jednostka SKU i typ systemu operacyjnego, są obowiązkowe. Sprawdź, czy wszystkie właściwości są przesyłane.
 
-Upewnij się, że **OSType**, Linux lub Windows definicji obrazu jest taki sam jak źródłowy zarządzany obraz, którego używasz, aby utworzyć wersję obrazu. 
+Upewnij się, że definicja obrazu **OSType**, Linux lub Windows jest taka sama jak źródłowy obraz zarządzany używany do tworzenia wersji obrazu. 
 
 
-## <a name="unable-to-create-an-image-version"></a>Nie można utworzyć wersję obrazu 
+## <a name="unable-to-create-an-image-version"></a>Nie można utworzyć wersji obrazu 
 
 Możliwe przyczyny:
 
 *Nazwa wersji obrazu jest nieprawidłowa.*
 
-Dozwolone znaki wersję obrazu są liczby i kropki. Numery muszą należeć do zakresu 32-bitową liczbę całkowitą. Format: *MajorVersion.MinorVersion.Patch*. Zmień nazwę wersji obrazu i spróbuj ponownie.
+Dozwolone znaki wersji obrazu to liczby i kropki. Liczba musi należeć do zakresu 32-bitowej liczby całkowitej. Format: *MajorVersion. MinorVersion. patch*. Zmień nazwę wersji obrazu i spróbuj ponownie.
 
-*Nie można odnaleźć zarządzanego obrazu źródłowego, z której utworzono wersję obrazu.* 
+*Nie znaleziono źródłowego obrazu zarządzanego, z którego jest tworzona wersja obrazu.* 
 
-Sprawdź, czy obraz źródłowy istnieje i znajduje się w tym samym regionie, co wersja obrazu.
+Sprawdź, czy obraz źródłowy istnieje i znajduje się w tym samym regionie co wersja obrazu.
 
-*Nie ukończono obrazu zarządzanego aprowizowana.*
+*Nie zainicjowano obsługi obrazu zarządzanego.*
 
-Upewnij się, stan inicjowania obsługi administracyjnej zarządzanych obrazu źródłowego jest **Powodzenie**.
+Upewnij się, że stan aprowizacji obrazu zarządzanego jest **zakończony pomyślnie**.
 
-*Na liście region docelowy nie ma w regionie źródłowym.*
+*Lista regionów docelowych nie obejmuje regionu źródłowego.*
 
-Na liście region docelowy musi zawierać region źródła wersję obrazu. Upewnij się, że w regionie źródłowym zostały uwzględnione na liście regiony docelowe, w której chcesz platformy Azure, aby replikować używana wersja obrazu do.
+Lista regionów docelowych musi zawierać region źródłowy wersji obrazu. Upewnij się, że na liście regionów docelowych została uwzględniona lokalizacja źródłowa, w której ma zostać zreplikowana wersja obrazu.
 
-*Replikacja do wszystkich regionów docelowych nie jest ukończona.*
+*Replikacja do wszystkich regionów docelowych nie została ukończona.*
 
-Użyj **— rozwiń ma wartość** flagi, aby sprawdzić, jeśli replikacja do wszystkich regionów określone miejsce docelowe zostało ukończone. W przeciwnym razie oczekiwania na ukończenie zadania do 6 godzin. Jeśli nie powiedzie się, uruchom polecenie ponownie, aby utworzyć i replikować wersję obrazu. Jeśli istnieje wiele regionów docelowych, którą wersję obrazu jest replikowana na, należy rozważyć przeprowadzenie replikacji w fazach.
+Użyj flagi **--expand ReplicationStatus** , aby sprawdzić, czy replikacja do wszystkich określonych regionów docelowych została ukończona. W przeciwnym razie poczekaj do 6 godzin, aż zadanie zostanie ukończone. Jeśli to się nie powiedzie, ponownie uruchom polecenie, aby utworzyć i replikować wersję obrazu. Jeśli istnieje wiele regionów docelowych, do których jest replikowana wersja obrazu, należy wziąć pod uwagę replikację w fazach.
 
-## <a name="unable-to-create-a-vm-or-a-scale-set"></a>Nie można utworzyć Maszynę wirtualną lub skalowania zestawu 
+## <a name="unable-to-create-a-vm-or-a-scale-set"></a>Nie można utworzyć maszyny wirtualnej lub zestawu skalowania 
 
 Możliwe przyczyny:
 
-*Użytkownik próbujący Tworzenie zestawu skalowania maszyny Wirtualnej lub maszyny wirtualnej nie ma dostępu do odczytu do wersji obrazu.*
+*Użytkownik próbujący utworzyć maszynę wirtualną lub zestaw skalowania maszyn wirtualnych nie ma dostępu do odczytu do wersji obrazu.*
 
-Skontaktuj się z właścicielem subskrypcji i poproś o przyznanie dostępu do odczytu do wersji obrazu lub nadrzędnego zasobów (takich jak Galeria obrazów udostępnionych lub definicję obrazu) za pośrednictwem [kontroli dostępu opartej na rolach](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles) (RBAC). 
+Skontaktuj się z właścicielem subskrypcji i poproś o przyznanie dostępu do odczytu wersji obrazu lub zasobów nadrzędnych (takich jak Galeria obrazów udostępnionych lub definicja obrazu) za pomocą [Access Control opartej na rolach](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles) (RBAC). 
 
-*Nie można odnaleźć wersję obrazu.*
+*Nie znaleziono wersji obrazu.*
 
-Sprawdź, czy regionu, o których chcesz utworzyć skalę maszyny Wirtualnej lub maszyny wirtualnej w jest dołączone do listy regiony docelowe wersji obrazu. Jeśli region jest już na liście regiony docelowe, sprawdź, jeśli zadanie replikacji zostało ukończone. Możesz użyć **ma — wartość** flagi, aby sprawdzić, jeśli replikacja do wszystkich regionów określone miejsce docelowe zostało ukończone. 
+Sprawdź, czy region, w którym próbujesz utworzyć maszynę wirtualną lub skalowanie maszyn wirtualnych, znajduje się na liście regionów docelowych wersji obrazu. Jeśli region znajduje się już na liście regionów docelowych, sprawdź, czy zadanie replikacji zostało ukończone. Możesz użyć flagi **-ReplicationStatus** , aby sprawdzić, czy replikacja do wszystkich określonych regionów docelowych została ukończona. 
 
-*Trwa tworzenie długo zestawu skalowania maszyny Wirtualnej lub maszyny wirtualnej.*
+*Tworzenie zestawu skalowania maszyn wirtualnych lub maszyny wirtualnej zajmuje dużo czasu.*
 
-Upewnij się, że **OSType** obrazu wersji, który chcesz utworzyć maszynę Wirtualną lub zestawu skalowania maszyn wirtualnych z ma taką samą **OSType** źródła zarządzanego obrazu, który został użyty do utworzenia wersję obrazu. 
+Sprawdź, czy **OSType** wersji obrazu, z której próbujesz utworzyć maszynę wirtualną lub zestaw skalowania maszyn wirtualnych, ma ten sam **OSType** obrazu zarządzanego, który został użyty do utworzenia wersji obrazu. 
 
-## <a name="unable-to-share-resources"></a>Nie można udostępnić zasoby
+## <a name="unable-to-share-resources"></a>Nie można udostępnić zasobów
 
-Udostępnianie galerii obrazów udostępnionych, definicję obrazu i obraz wersji zasobów między subskrypcjami jest włączane przy użyciu [kontroli dostępu opartej na rolach](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles) (RBAC). 
+Udostępnianie galerii obrazów udostępnionych, definicji obrazu oraz zasobów wersji obrazu w ramach subskrypcji jest włączone przy użyciu [Access Control opartej na rolach](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles) (RBAC). 
 
-## <a name="replication-is-slow"></a>Replikacja przebiega powoli
+## <a name="replication-is-slow"></a>Replikacja jest powolna
 
-Użyj **— rozwiń ma wartość** flagi, aby sprawdzić, jeśli replikacja do wszystkich regionów określone miejsce docelowe zostało ukończone. Jeśli nie, poczekaj na ukończenie zadania do 6 godzin. Jeśli nie powiedzie się, należy uruchomić polecenie ponownie, aby utworzyć i replikować wersję obrazu. Jeśli istnieje wiele regionów docelowych, którą wersję obrazu jest replikowana na, należy rozważyć przeprowadzenie replikacji w fazach.
+Użyj flagi **--expand ReplicationStatus** , aby sprawdzić, czy replikacja do wszystkich określonych regionów docelowych została ukończona. Jeśli nie, poczekaj na ukończenie zadania do 6 godzin. Jeśli to się nie powiedzie, wyzwól polecenie ponownie, aby utworzyć i replikować wersję obrazu. Jeśli istnieje wiele regionów docelowych, do których jest replikowana wersja obrazu, należy wziąć pod uwagę replikację w fazach.
 
 ## <a name="azure-limits-and-quotas"></a>Limity przydziału i ograniczenia platformy Azure 
 
-[Usługa Azure limity przydziału i ograniczenia](https://docs.microsoft.com/azure/azure-subscription-service-limits) mają zastosowanie do galerii obrazów udostępnionych, definicję obrazu i zasoby wersji obrazu. Upewnij się, że znajdujesz się w ramach subskrypcji. 
+[Ograniczenia i limity platformy Azure](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits) mają zastosowanie do całej galerii obrazów udostępnionych, definicji obrazu i zasobów wersji obrazu. Upewnij się, że jesteś w ramach limitów subskrypcji. 
 
 
 

@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 11/04/2019
-ms.openlocfilehash: 4a09a0fe4aa1f04e665aeb71ebece17a8b368090
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 813d3115d8df7227bde89a73a73bcae270f09bbb
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582388"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771346"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-cluster"></a>Samouczek: Tworzenie klastra usługi Azure Red Hat OpenShift
 
@@ -71,7 +71,7 @@ Wybierz lokalizację, w której ma zostać utworzony klaster. Aby zapoznać się
 LOCATION=<location>
 ```
 
-Ustaw `APPID` wartość zapisaną w kroku 5 [Tworzenie rejestracji aplikacji usługi Azure AD](howto-aad-app-configuration.md#create-an-azure-ad-app-registration).  
+Ustaw `APPID` wartość zapisaną w kroku 5 [Tworzenie rejestracji aplikacji usługi Azure AD](howto-aad-app-configuration.md#create-an-azure-ad-app-registration).
 
 ```bash
 APPID=<app ID value>
@@ -83,13 +83,13 @@ Dla opcji "GROUPID" Ustaw wartość zapisaną w kroku 10 [tworzenia grupy zabezp
 GROUPID=<group ID value>
 ```
 
-Ustaw `SECRET` wartość zapisaną w kroku 8 [tworzenia klucza tajnego klienta](howto-aad-app-configuration.md#create-a-client-secret).  
+Ustaw `SECRET` wartość zapisaną w kroku 8 [tworzenia klucza tajnego klienta](howto-aad-app-configuration.md#create-a-client-secret).
 
 ```bash
 SECRET=<secret value>
 ```
 
-Ustaw `TENANT` wartość identyfikatora dzierżawy zapisanej w kroku 7 [Tworzenie nowej dzierżawy](howto-create-tenant.md#create-a-new-azure-ad-tenant)  
+Ustaw `TENANT` wartość identyfikatora dzierżawy zapisanej w kroku 7 [Tworzenie nowej dzierżawy](howto-create-tenant.md#create-a-new-azure-ad-tenant)
 
 ```bash
 TENANT=<tenant ID>
@@ -105,7 +105,7 @@ az group create --name $CLUSTER_NAME --location $LOCATION
 
 Jeśli nie musisz łączyć sieci wirtualnej (VNET) tworzonego klastra z istniejącą siecią wirtualną za pośrednictwem komunikacji równorzędnej, Pomiń ten krok.
 
-W przypadku komunikacji równorzędnej z siecią poza domyślną subskrypcją w ramach tej subskrypcji należy również zarejestrować dostawcę Microsoft. ContainerService. Aby to zrobić, uruchom poniższe polecenie w tej subskrypcji. W przeciwnym razie, jeśli sieć wirtualna jest zlokalizowana w tej samej subskrypcji, możesz pominąć krok rejestrowania. 
+W przypadku komunikacji równorzędnej z siecią poza domyślną subskrypcją w ramach tej subskrypcji należy również zarejestrować dostawcę Microsoft. ContainerService. Aby to zrobić, uruchom poniższe polecenie w tej subskrypcji. W przeciwnym razie, jeśli sieć wirtualna jest zlokalizowana w tej samej subskrypcji, możesz pominąć krok rejestrowania.
 
 `az provider register -n Microsoft.ContainerService --wait`
 
@@ -113,13 +113,29 @@ Najpierw Pobierz identyfikator istniejącej sieci wirtualnej. Identyfikator będ
 
 Jeśli nie znasz nazwy sieci lub grupy zasobów, do której należy istniejąca sieć wirtualna, przejdź do [bloku sieci wirtualne](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Network%2FvirtualNetworks) , a następnie kliknij sieć wirtualną. Zostanie wyświetlona strona Sieć wirtualna z nazwą sieci i grupą zasobów, do której należy.
 
-Zdefiniuj zmienną VNET_ID przy użyciu następującego polecenia CLI w powłoce BASH:
+Zdefiniuj zmienną VNET_ID przy użyciu następującego polecenia CLI w BASH Shell:
 
 ```bash
 VNET_ID=$(az network vnet show -n {VNET name} -g {VNET resource group} --query id -o tsv)
 ```
 
 Na przykład: `VNET_ID=$(az network vnet show -n MyVirtualNetwork -g MyResourceGroup --query id -o tsv`
+
+### <a name="optional-connect-the-cluster-to-azure-monitoring"></a>Opcjonalnie: łączenie klastra z usługą Azure Monitoring
+
+Najpierw Pobierz identyfikator **istniejącego** obszaru roboczego usługi log Analytics. Identyfikator będzie miał postać:
+
+`/subscriptions/{subscription}/resourceGroups/{resourcegroup}/providers/Microsoft.OperationalInsights/workspaces/{workspace-id}`.
+
+Jeśli nie znasz nazwy obszaru roboczego analizy dzienników lub grupy zasobów, do której należy istniejący obszar roboczy usługi log Analytics, przejdź do [obszaru roboczego Analiza dzienników](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.OperationalInsights%2Fworkspaces) i kliknij obszar roboczy analizy dzienników. Zostanie wyświetlona strona obszaru roboczego Analiza dzienników, na której będzie wyświetlana nazwa obszaru roboczego i grupy zasobów, do której należy.
+
+_Aby utworzyć obszar roboczy usługi log Analytics, zobacz temat [Tworzenie obszaru roboczego usługi log Analytics](../azure-monitor/learn/quick-create-workspace-cli.md)_
+
+Zdefiniuj zmienną WORKSPACE_ID przy użyciu następującego polecenia CLI w BASH Shell:
+
+```bash
+WORKSPACE_ID=$(az monitor log-analytics workspace show -g {RESOURCE_GROUP} -n {NAME} --query id -o tsv)
+```
 
 ### <a name="create-the-cluster"></a>Tworzenie klastra
 
@@ -128,20 +144,29 @@ Teraz można przystąpić do tworzenia klastra. Poniższe polecenie spowoduje ut
 > [!IMPORTANT]
 > Upewnij się, że zostały prawidłowo dodane odpowiednie uprawnienia do aplikacji usługi Azure AD zgodnie z opisem w [tym miejscu](howto-aad-app-configuration.md#add-api-permissions) przed utworzeniem klastra
 
-Jeśli klaster **nie** jest używany do obsługi komunikacji równorzędnej z siecią wirtualną, użyj następującego polecenia:
+Jeśli klaster **nie** jest używany jako Komunikacja równorzędna z siecią wirtualną lub **nie** chcesz monitorować platformy Azure, użyj następującego polecenia:
 
 ```bash
 az openshift create --resource-group $CLUSTER_NAME --name $CLUSTER_NAME -l $LOCATION --aad-client-app-id $APPID --aad-client-app-secret $SECRET --aad-tenant-id $TENANT --customer-admin-group-id $GROUPID
 ```
 
 Jeśli klaster **jest** używany jako Komunikacja równorzędna z siecią wirtualną, użyj następującego polecenia, które dodaje flagę `--vnet-peer`:
- 
+
 ```bash
 az openshift create --resource-group $CLUSTER_NAME --name $CLUSTER_NAME -l $LOCATION --aad-client-app-id $APPID --aad-client-app-secret $SECRET --aad-tenant-id $TENANT --customer-admin-group-id $GROUPID --vnet-peer $VNET_ID
 ```
 
+Jeśli **chcesz** monitorować platformę Azure przy użyciu klastra, użyj następującego polecenia, które dodaje flagę `--workspace-id`:
+
+```bash
+az openshift create --resource-group $CLUSTER_NAME --name $CLUSTER_NAME -l $LOCATION --aad-client-app-id $APPID --aad-client-app-secret $SECRET --aad-tenant-id $TENANT --customer-admin-group-id $GROUPID --workspace-id $WORKSPACE_ID
+```
+
 > [!NOTE]
 > Jeśli wystąpi błąd, że nazwa hosta jest niedostępna, może to być spowodowane faktem, że nazwa klastra nie jest unikatowa. Spróbuj usunąć pierwotną rejestrację aplikacji i wykonać kroki z inną nazwą klastra w temacie [Tworzenie nowej aplikacji Rejestracja](howto-aad-app-configuration.md#create-an-azure-ad-app-registration), pomijając krok tworzenia nowego użytkownika i grupy zabezpieczeń.
+
+
+
 
 Po kilku minutach `az openshift create` zostanie ukończona.
 

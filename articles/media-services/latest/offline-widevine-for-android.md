@@ -1,5 +1,5 @@
 ---
-title: Skonfiguruj konto do przesyłania strumieniowego Widevine chronionej zawartości w trybie offline — Azure
+title: Widevine przesyłania strumieniowego w trybie offline dla systemu Android z Azure Media Services v3
 description: W tym temacie przedstawiono sposób konfigurowania konta Azure Media Services na potrzeby przesyłania strumieniowego w trybie offline Widevine chronionej zawartości.
 services: media-services
 keywords: ŁĄCZNIK, DRM, Widevine tryb offline, ExoPlayer, Android
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/08/2019
 ms.author: willzhan
-ms.openlocfilehash: 1c1142f995376a8a640f33402294e20c925bbfbb
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 17416fce887f5f5b952232e284873e539fd68337
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974159"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75779913"
 ---
 # <a name="offline-widevine-streaming-for-android"></a>Widevine przesyłania strumieniowego w trybie offline dla systemu Android
 

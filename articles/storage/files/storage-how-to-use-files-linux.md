@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 3d8d7c6d3c4e752480310c122bcb7db237b3022b
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 0ef9609cded29c94260d027212abbf0c62f8653c
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74209412"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772112"
 ---
 # <a name="use-azure-files-with-linux"></a>Używanie usługi Azure Files z systemem Linux
 [Azure Files](storage-files-introduction.md) to łatwy w użyciu system plików w chmurze firmy Microsoft. Udziały plików platformy Azure można instalować w dystrybucjach systemu Linux przy użyciu [klienta jądra SMB](https://wiki.samba.org/index.php/LinuxCIFS). W tym artykule przedstawiono dwa sposoby instalowania udziału plików platformy Azure: na żądanie przy użyciu polecenia `mount` i rozruchu przez utworzenie wpisu w `/etc/fstab`.
@@ -26,7 +26,7 @@ Zalecanym sposobem instalowania udziału plików platformy Azure w systemie Linu
 | CentOS | 7+ |  7.5+ |
 | Debian | 8+ | 10+ |
 | openSUSE | 13.2 + | 42.3 + |
-| SUSE Linux Enterprise Server | 12 + | 12 SP3+ |
+| SUSE Linux Enterprise Server | 12+ | 12 SP3+ |
 
 Jeśli używasz dystrybucji systemu Linux, która nie jest wymieniona w powyższej tabeli, możesz sprawdzić, czy w systemie Linux jest obsługiwana obsługa protokołu SMB 3,0 z szyfrowaniem. Protokół SMB 3,0 z szyfrowaniem został dodany do jądra systemu Linux w wersji 4,11. `uname` polecenie zwróci wersję jądra systemu Linux w użyciu:
 
@@ -80,7 +80,7 @@ uname -r
         --name $storageAccountName \
         --query "primaryEndpoints.file" | tr -d '"')
     smbPath=$(echo $httpEndpoint | cut -c7-$(expr length $httpEndpoint))
-    fileHost=$(echo $fileHost | tr -d "/")
+    fileHost=$(echo $smbPath | tr -d "/")
 
     nc -zvw3 $fileHost 445
     ```
@@ -202,18 +202,18 @@ Począwszy od jądra systemu Linux 4,18, moduł jądra protokołu SMB o nazwie `
 | Dystrybucja | Może wyłączyć protokół SMB 1 |
 |--------------|-------------------|
 | Ubuntu 14.04-16.04 | Nie |
-| Ubuntu 18.04 | Yes |
-| Ubuntu 19.04 + | Yes |
+| Ubuntu 18.04 | Tak |
+| Ubuntu 19.04 + | Tak |
 | Debian 8-9 | Nie |
-| Debian 10 + | Yes |
-| Fedora 29 + | Yes |
+| Debian 10 + | Tak |
+| Fedora 29 + | Tak |
 | CentOS 7 | Nie | 
-| CentOS 8 + | Yes |
+| CentOS 8 + | Tak |
 | Red Hat Enterprise Linux 6. x-7. x | Nie |
-| Red Hat Enterprise Linux 8 + | Yes |
+| Red Hat Enterprise Linux 8 + | Tak |
 | openSUSE przestępnie 15,0 | Nie |
-| openSUSE przestępny 15.1 + | Yes |
-| openSUSE Tumbleweed | Yes |
+| openSUSE przestępny 15.1 + | Tak |
+| openSUSE Tumbleweed | Tak |
 | SUSE Linux Enterprise 11. x-12. x | Nie |
 | SUSE Linux Enterprise 15 | Nie |
 | SUSE Linux Enterprise 15,1 | Nie |

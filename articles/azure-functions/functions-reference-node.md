@@ -3,13 +3,13 @@ title: Dokumentacja dla deweloperów języka JavaScript dla Azure Functions
 description: Dowiedz się, jak opracowywać funkcje przy użyciu języka JavaScript.
 ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: reference
-ms.date: 02/24/2019
-ms.openlocfilehash: b6b7db4c5f13a264b76dcab02dba51c464297307
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.date: 12/17/2019
+ms.openlocfilehash: 30d69476c96017319842a424c26de29350ec1ef6
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226722"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769051"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Przewodnik dla deweloperów Azure Functions JavaScript
 
@@ -267,10 +267,10 @@ Umożliwia zapis do dzienników funkcji przesyłania strumieniowego na domyślny
 
 | Metoda                 | Opis                                |
 | ---------------------- | ------------------------------------------ |
-| **błąd (_komunikat_)**   | Zapisuje dane w dzienniku na poziomie błędu lub niższym.   |
-| **warn (_komunikat_)**    | Zapisuje dane w dzienniku na poziomie ostrzeżeń lub niższym. |
-| **informacje (_komunikat_)**    | Zapisuje dane w dzienniku lub niższym poziomie informacji.    |
-| **verbose (_komunikat_)** | Zapisuje dane w celu pełnego rejestrowania na poziomie.           |
+| **error(_message_)**   | Zapisuje dane w dzienniku na poziomie błędu lub niższym.   |
+| **warn(_message_)**    | Zapisuje dane w dzienniku na poziomie ostrzeżeń lub niższym. |
+| **info(_message_)**    | Zapisuje dane w dzienniku lub niższym poziomie informacji.    |
+| **verbose(_message_)** | Zapisuje dane w celu pełnego rejestrowania na poziomie.           |
 
 Poniższy przykład zapisuje dziennik na poziomie śledzenia ostrzeżeń:
 
@@ -344,12 +344,12 @@ Obiekt `context.req` (Request) ma następujące właściwości:
 
 | Właściwość      | Opis                                                    |
 | ------------- | -------------------------------------------------------------- |
-| _jednostce_        | Obiekt, który zawiera treść żądania.               |
+| _body_        | Obiekt, który zawiera treść żądania.               |
 | _nagłówka_     | Obiekt, który zawiera nagłówki żądania.                   |
-| _Method_      | Metoda HTTP żądania.                                |
+| _method_      | Metoda HTTP żądania.                                |
 | _originalUrl_ | Adres URL żądania.                                        |
-| _Krocz_      | Obiekt, który zawiera parametry routingu żądania. |
-| _dotyczących_       | Obiekt, który zawiera parametry zapytania.                  |
+| _params_      | Obiekt, który zawiera parametry routingu żądania. |
+| _query_       | Obiekt, który zawiera parametry zapytania.                  |
 | _rawBody_     | Treść komunikatu jako ciąg.                           |
 
 
@@ -359,10 +359,10 @@ Obiekt `context.res` (odpowiedź) ma następujące właściwości:
 
 | Właściwość  | Opis                                               |
 | --------- | --------------------------------------------------------- |
-| _jednostce_    | Obiekt, który zawiera treść odpowiedzi.         |
+| _body_    | Obiekt, który zawiera treść odpowiedzi.         |
 | _nagłówka_ | Obiekt, który zawiera nagłówki odpowiedzi.             |
 | _isRaw_   | Wskazuje, że formatowanie dla odpowiedzi jest pomijane.    |
-| _Stany_  | Kod stanu HTTP odpowiedzi.                     |
+| _status_  | Kod stanu HTTP odpowiedzi.                     |
 
 ### <a name="accessing-the-request-and-response"></a>Uzyskiwanie dostępu do żądania i odpowiedzi 
 
@@ -371,9 +371,9 @@ Podczas pracy z wyzwalaczami HTTP można uzyskiwać dostęp do obiektów żądan
 + **Z `req` i `res` właściwości w obiekcie `context`.** W ten sposób można użyć wzorca konwencjonalnego, aby uzyskać dostęp do danych HTTP z obiektu kontekstu, zamiast korzystać z pełnego wzorca `context.bindings.name`. Poniższy przykład pokazuje, jak uzyskać dostęp do `req` i `res` obiektów w `context`:
 
     ```javascript
-    // You can access your http request off the context ...
+    // You can access your HTTP request off the context ...
     if(context.req.body.emoji === ':pizza:') context.log('Yay!');
-    // and also set your http response
+    // and also set your HTTP response
     context.res = { status: 202, body: 'You successfully ordered more coffee!' }; 
     ```
 
@@ -405,6 +405,16 @@ Podczas pracy z wyzwalaczami HTTP można uzyskiwać dostęp do obiektów żądan
     res = { status: 201, body: "Insert succeeded." };
     context.done(null, res);   
     ```  
+
+## <a name="scaling-and-concurrency"></a>Skalowanie i współbieżność
+
+Domyślnie Azure Functions automatycznie monitoruje obciążenie aplikacji i tworzy dodatkowe wystąpienia hosta dla środowiska Node. js zgodnie z potrzebami. Funkcja używa wbudowanych wartości progowych (nie można skonfigurować użytkownika) dla różnych typów wyzwalaczy, aby określić, kiedy należy dodać wystąpienia, takie jak wiek komunikatów i rozmiar kolejki dla QueueTrigger. Aby uzyskać więcej informacji, zobacz [jak działają plany zużycia i Premium](functions-scale.md#how-the-consumption-and-premium-plans-work).
+
+To zachowanie skalowania jest wystarczające dla wielu aplikacji node. js. W przypadku aplikacji powiązanych z PROCESORem można dodatkowo poprawić wydajność przy użyciu wielu procesów roboczych języka.
+
+Domyślnie każde wystąpienie hosta funkcji ma proces roboczy o pojedynczym języku. Liczbę procesów roboczych można zwiększyć na hosta (do 10) przy użyciu ustawienia aplikacji [FUNCTIONS_WORKER_PROCESS_COUNT](functions-app-settings.md#functions_worker_process_count) . Azure Functions następnie próbuje równomiernie rozpowszechnić jednoczesne wywołania funkcji przez tych pracowników. 
+
+FUNCTIONS_WORKER_PROCESS_COUNT ma zastosowanie do każdego hosta, który tworzy funkcje podczas skalowania aplikacji w celu spełnienia wymagań. 
 
 ## <a name="node-version"></a>Wersja węzła
 
@@ -477,7 +487,7 @@ W przypadku uruchamiania lokalnego ustawienia aplikacji są odczytywane z pliku 
 
 Właściwości `function.json` `scriptFile` i `entryPoint` mogą służyć do konfigurowania lokalizacji i nazwy wyeksportowanej funkcji. Te właściwości mogą być ważne w przypadku transsterty języka JavaScript.
 
-### <a name="using-scriptfile"></a>Używanie `scriptFile`
+### <a name="using-scriptfile"></a>Używanie elementu `scriptFile`
 
 Domyślnie funkcja języka JavaScript jest wykonywana z `index.js`, plik, który współużytkuje ten sam katalog nadrzędny co odpowiadający mu `function.json`.
 
@@ -506,7 +516,7 @@ FunctionApp
 }
 ```
 
-### <a name="using-entrypoint"></a>Używanie `entryPoint`
+### <a name="using-entrypoint"></a>Używanie elementu `entryPoint`
 
 W `scriptFile` (lub `index.js`) funkcja musi zostać wyeksportowana przy użyciu `module.exports` w celu znalezienia i uruchomienia. Domyślnie funkcja, która jest wykonywana, gdy wyzwalane jest jedynym eksportem z tego pliku, eksportu o nazwie `run`lub eksportu o nazwie `index`.
 

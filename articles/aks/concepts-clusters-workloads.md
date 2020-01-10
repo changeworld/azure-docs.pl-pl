@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: mlearned
-ms.openlocfilehash: a6b696e16d2c946572cc213115fb440775fce3fe
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: HT
+ms.openlocfilehash: 349d7d8206cc4139de020234ee063e85f9a8f9ef
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442972"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768643"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Podstawowe pojęcia Kubernetes dla usługi Azure Kubernetes Service (AKS)
 
@@ -95,24 +95,24 @@ Aby zachować wydajność i funkcjonalność węzła, zasoby są zastrzeżone dl
 |---|---|---|---|---|---|---|---|
 |Polecenia — zarezerwowane (millicores)|60|100|140|180|260|420|740|
 
-- Pamięć zarezerwowana **pamięci** zawiera sumę dwóch wartości
+- **Pamięć używana** przez AKS zawiera sumę dwóch wartości.
 
-1. Demon kubelet został zainstalowany we wszystkich węzłach agenta Kubernetes w celu zarządzania tworzeniem i kończeniem kontenera. Domyślnie w systemie AKS ten demon ma następującą regułę wykluczania: Memory. available < 750Mi, co oznacza, że w każdym momencie węzeł musi mieć co najmniej 750.  Gdy host jest poniżej tego progu dostępnej pamięci, kubelet zakończy jeden z uruchomionych zasobników, aby zwolnić pamięć na komputerze hosta i chronić ją.
+1. Demon kubelet został zainstalowany we wszystkich węzłach agenta Kubernetes w celu zarządzania tworzeniem i kończeniem kontenera. Domyślnie w systemie AKS ten demon ma następującą regułę wykluczania: *Memory. available < 750Mi*, co oznacza, że w każdym momencie węzeł musi mieć co najmniej 750.  Gdy host jest poniżej tego progu dostępnej pamięci, kubelet zakończy jeden z uruchomionych zasobników, aby zwolnić pamięć na komputerze hosta i chronić ją. Jest to akcja aktywna, gdy ilość dostępnej pamięci spada poza próg 750Mi.
 
-2. Druga wartość to progresywna szybkość pamięci zarezerwowanej dla demona kubelet, która prawidłowo działa (zarezerwowane polecenia).
+2. Druga wartość to progresywny współczynnik rezerwacji pamięci dla demona kubelet, aby prawidłowo działać (zarezerwowane polecenia).
     - 25% pierwszego 4 GB pamięci
     - 20% z następnych 4 GB pamięci (do 8 GB)
     - 10% z następnych 8 GB pamięci (do 16 GB)
     - 6% następnego 112 GB pamięci (do 128 GB)
     - 2% każdej pamięci powyżej 128 GB
 
-W wyniku tych dwóch określonych reguł nałożonych na zachowanie Kubernetes i węzłów agenta w dobrej kondycji, ilość przystosowanego procesora i pamięci będzie mniejsza niż w przypadku samego węzła. Nie można zmienić zdefiniowanych powyżej rezerwacji zasobów.
+Powyższe zasady dotyczące pamięci i alokacji procesora są używane w celu zachowania poprawnych węzłów agenta, ponieważ niektóre systemy hostingu mają krytyczne znaczenie dla kondycji klastra. Te reguły alokacji powodują również, że węzeł zgłasza mniejszą alokację pamięci i procesora CPU niż w przypadku, gdy nie był częścią klastra Kubernetes. Nie można zmienić powyższych rezerwacji zasobów.
 
-Na przykład, jeśli węzeł zawiera 7 GB, zgłasza 34% pamięci, która nie jest przydzielana:
+Na przykład, jeśli węzeł zawiera 7 GB, zgłasza 34% pamięci nie można przydzielić na podstawie progu wykluczeń twardych 750Mi.
 
-`750Mi + (0.25*4) + (0.20*3) = 0.786GB + 1 GB + 0.6GB = 2.386GB / 7GB = 34% reserved`
+`(0.25*4) + (0.20*3) = + 1 GB + 0.6GB = 1.6GB / 7GB = 22.86% reserved`
 
-Oprócz rezerwacji dla Kubernetes, podstawowy system operacyjny węzła również rezerwuje ilość zasobów procesora i pamięci do obsługi funkcji systemu operacyjnego.
+Oprócz rezerwacji dla samego Kubernetes, podstawowy system operacyjny węzła również rezerwuje ilość zasobów procesora i pamięci do obsługi funkcji systemu operacyjnego.
 
 Aby zapoznać się z najlepszymi rozwiązaniami, zobacz [najlepsze rozwiązania dotyczące podstawowych funkcji usługi Scheduler w AKS][operator-best-practices-scheduler].
 

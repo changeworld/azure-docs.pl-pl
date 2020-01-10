@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 08/31/2019
 ms.author: victorh
-ms.openlocfilehash: c93198848058bad8c9af6903cc68253e71e2d668
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 14fe8780bb7919d942da186698275d5199f4586e
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74996667"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770088"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Często zadawane pytania dotyczące Application Gateway
 
@@ -122,7 +122,7 @@ Użyj Traffic Manager do dystrybuowania ruchu między wieloma bramami aplikacji 
 
 Tak, jednostka SKU Application Gateway v2 obsługuje skalowanie automatyczne. Aby uzyskać więcej informacji, zobacz [Skalowanie automatyczne i strefowo nadmiarowe Application Gateway](application-gateway-autoscaling-zone-redundant.md).
 
-### <a name="does-manual-scale-up-or-scale-down-cause-downtime"></a>Czy ręczne skalowanie w górę lub w dół powoduje przestoje?
+### <a name="does-manual-or-automatic-scale-up-or-scale-down-cause-downtime"></a>Czy ręczna lub automatyczna skalowanie w górę lub w dół powoduje przestoje?
 
 Nie. Wystąpienia są dystrybuowane w domenach uaktualnień i domenach błędów.
 
@@ -158,7 +158,7 @@ Zobacz [trasy zdefiniowane przez użytkownika obsługiwane w podsieci Applicatio
 
 ### <a name="what-are-the-limits-on-application-gateway-can-i-increase-these-limits"></a>Jakie są limity Application Gateway? Czy mogę zwiększyć te limity?
 
-Zobacz [limity Application Gateway](../azure-subscription-service-limits.md#application-gateway-limits).
+Zobacz [limity Application Gateway](../azure-resource-manager/management/azure-subscription-service-limits.md#application-gateway-limits).
 
 ### <a name="can-i-simultaneously-use-application-gateway-for-both-external-and-internal-traffic"></a>Czy mogę jednocześnie używać Application Gateway zarówno dla ruchu zewnętrznego, jak i wewnętrznego?
 
@@ -200,6 +200,9 @@ Nie.
 
 Tak. Aby uzyskać szczegółowe informacje, zobacz [Migrowanie usługi Azure Application Gateway i zapory aplikacji sieci Web z wersji 1 do wersji 2](migrate-v1-v2.md).
 
+### <a name="does-application-gateway-support-ipv6"></a>Czy Application Gateway obsługuje protokół IPv6?
+
+Application Gateway v2 obecnie nie obsługuje protokołu IPv6. Może działać w sieci wirtualnej o podwójnej stercie tylko przy użyciu protokołu IPv4, ale podsieć bramy musi być tylko IPv4. Application Gateway V1 nie obsługuje podwójnego stosu sieci wirtualnych. 
 
 ## <a name="configuration---ssl"></a>Konfiguracja — SSL
 
@@ -380,6 +383,30 @@ Tak. Jeśli konfiguracja pasuje do poniższego scenariusza, w dziennikach przep�
 - Wdrożono Application Gateway v2
 - Masz sieciowej grupy zabezpieczeń w podsieci bramy aplikacji
 - Włączono dzienniki przepływu sieciowej grupy zabezpieczeń na tym sieciowej grupy zabezpieczeń
+
+### <a name="how-do-i-use-application-gateway-v2-with-only-private-frontend-ip-address"></a>Jak mogę używać Application Gateway v2 tylko z prywatnym adresem IP frontonu?
+
+Application Gateway v2 obecnie nie obsługuje trybu prywatnego adresu IP. Obsługuje następujące kombinacje
+* Prywatny adres IP i publiczny adres IP
+* Tylko publiczny adres IP
+
+Jeśli jednak chcesz używać Application Gateway v2 tylko z prywatnym adresem IP, możesz wykonać poniższe czynności:
+1. Utwórz Application Gateway z publicznym i prywatnym adresem IP frontonu
+2. Nie należy tworzyć żadnych odbiorników dla publicznego adresu IP frontonu. Application Gateway nie nasłuchuje ruchu na publicznym adresie IP, jeśli dla niego nie zostały utworzone żadne odbiorniki.
+3. Utwórz i Dołącz [grupę zabezpieczeń sieci](https://docs.microsoft.com/azure/virtual-network/security-overview) dla podsieci Application Gateway z następującą konfiguracją w kolejności priorytetu:
+    
+    a. Zezwalaj na ruch ze źródła jako tag usługi **gatewaymanager** i miejsce docelowe jako **dowolny** port docelowy AS **65200-65535**. Ten zakres portów jest wymagany w przypadku komunikacji infrastruktury platformy Azure. Te porty są chronione (zablokowane) przez uwierzytelnianie przy użyciu certyfikatu. Jednostki zewnętrzne, w tym Administratorzy użytkowników bramy, nie mogą inicjować zmian w tych punktach końcowych bez odpowiednich certyfikatów
+    
+    b. Zezwalaj na ruch ze źródła jako tag usługi **AzureLoadBalancer** oraz port docelowy i docelowy jako **dowolne**
+    
+    d. Odrzuć cały ruch przychodzący ze źródła jako tag usługi **internetowej** oraz port docelowy i docelowy jako **dowolny**. Nadaj tej regule *minimalny priorytet* w regułach ruchu przychodzącego
+    
+    d. Zachowaj domyślne reguły, takie jak Zezwalanie na VirtualNetwork przychodzące, aby dostęp do prywatnego adresu IP nie był blokowany
+    
+    e. Nie można zablokować wychodzącej łączności z Internetem. W przeciwnym razie będziesz mieć problemy z rejestrowaniem, metrykami itp.
+
+Przykładowa konfiguracja sieciowej grupy zabezpieczeń do dostępu tylko do prywatnego adresu IP: ![Application Gateway v2 sieciowej grupy zabezpieczeń Konfiguracja tylko do prywatnego dostępu do adresów IP](./media/application-gateway-faq/appgw-privip-nsg.png)
+
 
 ## <a name="next-steps"></a>Następne kroki
 

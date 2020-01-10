@@ -9,12 +9,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: hux
-ms.openlocfilehash: d6370509b49ae464b53525e7320676b04912bd12
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 1c06c1d0403e526e1ed58a193cfe9b57bb9fe561
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113707"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75780247"
 ---
 # <a name="rehydrate-blob-data-from-the-archive-tier"></a>Przeodwodnione dane obiektów blob z warstwy Archiwum
 
@@ -47,6 +47,68 @@ Obiekty blob w warstwie archiwum powinny być przechowywane przez co najmniej 18
 
 > [!NOTE]
 > Aby uzyskać więcej informacji na temat cen blokowych obiektów blob i uzupełniania danych, zobacz [Cennik usługi Azure Storage](https://azure.microsoft.com/pricing/details/storage/blobs/). Aby uzyskać więcej informacji na temat opłat za transfer danych wychodzących, zobacz [szczegóły cennika transferów danych](https://azure.microsoft.com/pricing/details/data-transfers/).
+
+## <a name="quickstart-scenarios"></a>Scenariusze typu Szybki start
+
+### <a name="rehydrate-an-archive-blob-to-an-online-tier"></a>Umożliwia dehydratacji obiektu BLOB archiwalnego do warstwy online
+# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+
+1. W Azure Portal Wyszukaj i wybierz pozycję **wszystkie zasoby**.
+
+1. Wybierz swoje konto magazynu.
+
+1. Wybierz kontener, a następnie wybierz obiekt BLOB.
+
+1. We **właściwościach obiektu BLOB**wybierz pozycję **Zmień warstwę**.
+
+1. Wybierz warstwę dostępu **gorąca** lub **chłodna** . 
+
+1. Wybierz priorytet rehydratacji **Standard** lub **High**.
+
+1. Wybierz pozycję **Zapisz** u dołu.
+
+![Zmień warstwę konta magazynu](media/storage-tiers/blob-access-tier.png)
+
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+Poniższy skrypt programu PowerShell może służyć do zmiany warstwy obiektów BLOB archiwum obiektów BLOB. Zmienna `$rgName` musi zostać zainicjowana przy użyciu nazwy grupy zasobów. Zmienna `$accountName` musi zostać zainicjowana przy użyciu nazwy konta magazynu. Zmienna `$containerName` musi zostać zainicjowana przy użyciu nazwy kontenera. Zmienna `$blobName` musi zostać zainicjowana przy użyciu nazwy obiektu BLOB. 
+```powershell
+#Initialize the following with your resource group, storage account, container, and blob names
+$rgName = ""
+$accountName = ""
+$containerName = ""
+$blobName == ""
+
+#Select the storage account and get the context
+$storageAccount =Get-AzStorageAccount -ResourceGroupName $rgName -Name $accountName
+$ctx = $storageAccount.Context
+
+#Select the blob from a container
+$blobs = Get-AzStorageBlob -Container $containerName -Blob $blobName -Context $context
+
+#Change the blob’s access tier to Hot using Standard priority rehydrate
+$blob.ICloudBlob.SetStandardBlobTier("Hot", “Standard”)
+```
+---
+
+### <a name="copy-an-archive-blob-to-a-new-blob-with-an-online-tier"></a>Kopiuj obiekt BLOB archiwalny do nowego obiektu BLOB za pomocą warstwy online
+Poniższy skrypt programu PowerShell może służyć do kopiowania archiwum BLOB do nowego obiektu BLOB w ramach tego samego konta magazynu. Zmienna `$rgName` musi zostać zainicjowana przy użyciu nazwy grupy zasobów. Zmienna `$accountName` musi zostać zainicjowana przy użyciu nazwy konta magazynu. Zmienne `$srcContainerName` i `$destContainerName` muszą zostać zainicjowane przy użyciu nazw kontenerów. Zmienne `$srcBlobName` i `$destBlobName` muszą być inicjowane przy użyciu nazw obiektów BLOB. 
+```powershell
+#Initialize the following with your resource group, storage account, container, and blob names
+$rgName = ""
+$accountName = ""
+$srcContainerName = ""
+$destContainerName = ""
+$srcBlobName == ""
+$destBlobName == ""
+
+#Select the storage account and get the context
+$storageAccount =Get-AzStorageAccount -ResourceGroupName $rgName -Name $accountName
+$ctx = $storageAccount.Context
+
+#Copy source blob to a new destination blob with access tier hot using standard rehydrate priority
+Start-AzStorageBlobCopy -SrcContainer $srcContainerName -SrcBlob $srcBlobName -DestContainer $destContainerName -DestBlob $destBlobName -StandardBlobTier Hot -RehydratePriority Standard -Context $ctx
+```
 
 ## <a name="next-steps"></a>Następne kroki
 

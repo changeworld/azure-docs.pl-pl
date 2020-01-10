@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 338619a13ec3f5fcd0d4fd62cf387f955c556a7c
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: b6a44bc31e21a63b12a0d06c537cc026ed77e386
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70879306"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75832852"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Wprowadzenie do Key Vault certyfikatów
 Poniższe scenariusze przedstawiają kilka podstawowych zastosowań usługi zarządzania certyfikatami Key Vault, w tym dodatkowe kroki wymagane do utworzenia pierwszego certyfikatu w magazynie kluczy.
@@ -38,10 +38,10 @@ Certyfikaty składają się z trzech powiązanych zasobów połączonych razem j
 **Krok 1** — dostawcy urzędu certyfikacji  
 -   Dołączanie do programu jako administrator IT, administrator infrastruktury PKI lub każda osoba zarządzająca kontami z urzędami certyfikacji dla danej firmy (np. Firma Contoso) jest warunkiem wstępnym korzystania z certyfikatów Key Vault.  
     Następujące urzędy certyfikacji są bieżącymi dostawcami partnerskimi z Key Vault:  
-    -   DigiCert — Key Vault oferuje OV certyfikaty SSL z DigiCert.  
-    -   GlobalSign — Key Vault oferuje OV certyfikaty SSL z GlobalSign.  
+    -   DigiCert — Key Vault oferuje OV protokołu TLS/SSL z DigiCert.  
+    -   GlobalSign — Key Vault oferuje OV protokołu TLS/SSL z GlobalSign.  
 
-**Krok 2** . Administrator konta dla dostawcy urzędu certyfikacji tworzy poświadczenia, które mają być używane przez Key Vault do rejestrowania, odnawiania i używania certyfikatów SSL za pośrednictwem Key Vault.
+**Krok 2** . Administrator konta dla dostawcy urzędu certyfikacji tworzy poświadczenia, które mają być używane przez Key Vault do rejestrowania, odnawiania i używania certyfikatów TLS/SSL za pośrednictwem Key Vault.
 
 **Krok 3** — administrator firmy Contoso, a także pracownik firmy contoso (Key Vault użytkownika), który jest właścicielem certyfikatów, w zależności od urzędu certyfikacji, może uzyskać certyfikat od administratora lub bezpośrednio z konta z urzędem certyfikacji.  
 
@@ -62,9 +62,9 @@ Uwaga — Ten proces, przez krok 3,1, jest operacją jednorazowej.
 
 **Krok 4** . Poniższe opisy odnoszą się do zielonych numerowanych kroków na powyższym diagramie.  
   (1) — na powyższym diagramie aplikacja tworzy certyfikat, który wewnętrznie zaczyna od utworzenia klucza w magazynie kluczy.  
-  (2) — Key Vault wysyła żądanie certyfikatu protokołu SSL do urzędu certyfikacji.  
-  (3) — Twoja aplikacja sonduje, w pętli i w procesie oczekiwania, do Key Vault do ukończenia certyfikatu. Tworzenie certyfikatu kończy się, gdy Key Vault otrzymuje odpowiedź urzędu certyfikacji z certyfikatem x509.  
-  (4) — urząd certyfikacji odpowiada na żądanie certyfikatu SSL Key Vault za pomocą certyfikatu x509 SSL.  
+  (2) — Key Vault wysyła żądanie certyfikatu TLS/SSL do urzędu certyfikacji.  
+  (3) — Twoja aplikacja sonduje, w pętli i w procesie oczekiwania, do Key Vault do ukończenia certyfikatu. Tworzenie certyfikatu kończy się, gdy usługa Key Vault otrzyma odpowiedź od urzędu certyfikacji z certyfikatem X.509.  
+  (4) — urząd certyfikacji odpowiada na żądanie certyfikatu TLS/SSL Key Vault przy użyciu certyfikatu x509 TLS/SSL.  
   (5) — nowe utworzenie certyfikatu kończy się na połączeniu z połączeniem certyfikatu x509 urzędu certyfikacji.  
 
   Key Vault User — tworzy certyfikat przez określenie zasad

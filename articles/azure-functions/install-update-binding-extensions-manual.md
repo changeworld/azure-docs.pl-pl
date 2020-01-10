@@ -3,12 +3,12 @@ title: Ręczne instalowanie lub aktualizowanie rozszerzeń powiązań Azure Func
 description: Dowiedz się, jak zainstalować lub zaktualizować rozszerzenia Azure Functions powiązań dla wdrożonych aplikacji funkcji.
 ms.topic: reference
 ms.date: 09/26/2018
-ms.openlocfilehash: 83ae2cdd16bce0b0a5b11b8c24e996306453a7a9
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: e8716f691a5d19ddac7fece47c423e1f7787b9db
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977492"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768864"
 ---
 # <a name="manually-install-or-update-azure-functions-binding-extensions-from-the-portal"></a>Ręczne instalowanie lub aktualizowanie Azure Functions powiązań z poziomu portalu
 

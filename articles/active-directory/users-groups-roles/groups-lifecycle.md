@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 10/24/2019
+ms.date: 01/03/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a9e410be7a52291d19478dbfb8e9ad30f144ccb
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: b49b10acb7f2deaed217bb28478d2c98a033eab9
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74914071"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768688"
 ---
 # <a name="configure-the-expiration-policy-for-office-365-groups"></a>Konfigurowanie zasad wygasania dla grup pakietu Office 365
 
@@ -86,11 +86,9 @@ Aby uzyskać więcej informacji na temat uprawnień do przywracania usuniętej g
     - Zapisz ustawienia po zakończeniu, wybierając pozycję **Zapisz**.
 
 > [!NOTE]
-> Po pierwszym skonfigurowaniu wygaśnięcia wszystkie grupy, które są starsze niż interwał wygaśnięcia, są ustawiane na 35 dni do momentu wygaśnięcia, chyba że grupa zostanie automatycznie odnowiona lub właściciel ją odnowi.
->
-> Gdy grupa dynamiczna zostanie usunięta i przywrócona, jest ona traktowana jako nowa grupa i uzupełniana zgodnie z tą regułą. Ten proces może potrwać do 24 godzin.
->
-> Powiadomienia o wygaśnięciu dotyczące grup używanych w zespołach są wyświetlane w kanale właściciele zespołów.
+> - Po pierwszym skonfigurowaniu wygaśnięcia wszystkie grupy, które są starsze niż interwał wygaśnięcia, są ustawiane na 35 dni do momentu wygaśnięcia, chyba że grupa zostanie automatycznie odnowiona lub właściciel ją odnowi.
+> - Gdy grupa dynamiczna zostanie usunięta i przywrócona, jest ona traktowana jako nowa grupa i uzupełniana zgodnie z tą regułą. Ten proces może potrwać do 24 godzin.
+> - Powiadomienia o wygaśnięciu dotyczące grup używanych w zespołach są wyświetlane w kanale właściciele zespołów.
 
 ## <a name="email-notifications"></a>Powiadomienia e-mail
 

@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: 63a7db6e7078df978f47a6d53ea82df83c22c800
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: e7ddb548d8dad5bdcc3021941877903377af9318
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74076982"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771482"
 ---
 # <a name="standard-load-balancer-and-availability-zones"></a>Usługa Load Balancer w warstwie Standardowa i strefy dostępności
 
-Usługa Azure usługa Load Balancer w warstwie Standardowa obsługuje scenariusze [stref dostępności](../availability-zones/az-overview.md) . Aby zoptymalizować dostępność w kompleksowym scenariuszu, można użyć usługa Load Balancer w warstwie Standardowa, przez wyrównanie zasobów do stref i dystrybuowanie ich między strefami.  Przejrzyj [strefy dostępności](../availability-zones/az-overview.md) , aby uzyskać wskazówki dotyczące stref dostępności, które obecnie obsługują strefy dostępności, oraz inne powiązane koncepcje i produkty. strefy dostępności w połączeniu z usługa Load Balancer w warstwie Standardowa są rozległych i elastycznym zestawem funkcji, który może tworzyć wiele różnych scenariuszy.  Zapoznaj się z tym dokumentem, aby poznać te [koncepcje](#concepts) i podstawowe [wskazówki dotyczące projektowania](#design).
+Usługa Azure usługa Load Balancer w warstwie Standardowa obsługuje scenariusze [stref dostępności](../availability-zones/az-overview.md) . Aby zoptymalizować dostępność w kompleksowym scenariuszu, można użyć usługa Load Balancer w warstwie Standardowa, przez wyrównanie zasobów do stref i dystrybuowanie ich między strefami.  Przejrzyj [strefy dostępności](../availability-zones/az-overview.md) , aby uzyskać wskazówki dotyczące stref dostępności, które obecnie obsługują strefy dostępności, oraz inne powiązane koncepcje i produkty. Strefy dostępności w połączeniu z usługa Load Balancer w warstwie Standardowa są rozległych i elastycznym zestawem funkcji, który może tworzyć wiele różnych scenariuszy.  Zapoznaj się z tym dokumentem, aby poznać te [koncepcje](#concepts) i podstawowe [wskazówki dotyczące projektowania](#design).
 
 >[!IMPORTANT]
 >Przejrzyj [strefy dostępności](../availability-zones/az-overview.md) Tematy pokrewne, w tym informacje specyficzne dla regionu.
@@ -37,7 +37,7 @@ W kontekście stref dostępności zachowanie i właściwości reguły Load Balan
 
 Zarówno publiczne, jak i wewnętrzne Load Balancer obsługują scenariusze nadmiarowe i strefowe, a oba mogą kierować ruchem między strefami w razie potrzeby (*równoważenie obciążenia między strefami*). 
 
-### <a name="frontend"></a>Frontonu
+### <a name="frontend"></a>Fronton
 
 Fronton Load Balancer jest konfiguracją adresów IP frontonu odwołującą się do zasobu publicznego adresu IP lub prywatnego adresu IP w podsieci zasobu sieci wirtualnej.  Tworzy punkt końcowy ze zrównoważonym obciążeniem, w którym jest udostępniana usługa.
 
@@ -151,7 +151,7 @@ Równoważenie obciążenia między strefami umożliwia Load Balancer dostępu d
 
 Należy zachować ostrożność konstruowania scenariusza w sposób, który wyraża koncepcję stref dostępności. Na przykład należy zagwarantowaniu wdrożenia maszyny wirtualnej w ramach jednej strefy lub wielu stref, a także wyrównania zasobów frontonu i stref wewnętrznej bazy danych do tej samej strefy.  W przypadku stref obejmujących wiele dostępności zawierających tylko zasoby strefowe scenariusz będzie działał, ale może nie mieć trybu niejawnego uszkodzenia w odniesieniu do stref dostępności. 
 
-### <a name="backend"></a>Danych
+### <a name="backend"></a>Zaplecze
 
 Load Balancer współpracuje z wystąpieniami maszyn wirtualnych.  Mogą to być autonomiczne, zestawy dostępności lub zestawy skalowania maszyn wirtualnych.  Każde wystąpienie maszyny wirtualnej w pojedynczej sieci wirtualnej może być częścią puli zaplecza, niezależnie od tego, czy została ona zagwarantowana do strefy, czy do której zagwarantowana jest strefa.
 

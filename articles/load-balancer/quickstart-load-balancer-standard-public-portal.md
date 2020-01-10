@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/11/2019
+ms.date: 01/08/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: d15223dfe6d9ce710f2a3d402a49203ef169132e
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 027e05b3fbf7163c4a1b927a2b83db84c7eef1ff
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74225204"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771465"
 ---
 # <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Szybki start: tworzenie usługi Load Balancer w warstwie Standardowa przy użyciu witryny Azure Portal w celu równoważenia obciążenia maszyn wirtualnych
 
@@ -28,25 +28,25 @@ Równoważenie obciążenia zapewnia większą dostępność i możliwości skal
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 
-## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
+## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
 
 Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com).
 
 ## <a name="create-a-standard-load-balancer"></a>Tworzenie usługi Load Balancer w warstwie Standardowa
 
-W tej sekcji utworzysz usługa Load Balancer w warstwie Standardowa, która pomaga zrównoważyć obciążenie maszyn wirtualnych. Usługa Load Balancer w warstwie Standardowa obsługuje tylko publiczny adres IP w warstwie Standardowa. Podczas tworzenia usługi Load Balancer w warstwie Standardowa musisz także utworzyć nowy publiczny adres IP w warstwie Standardowa, który jest skonfigurowany jako fronton (domyślnie o nazwie *LoadBalancerFrontend*) dla usługi Load Balancer w warstwie Standardowa. 
+W tej sekcji utworzysz usługa Load Balancer w warstwie Standardowa, która pomaga zrównoważyć obciążenie maszyn wirtualnych. Można utworzyć publiczną usługa Load Balancer w warstwie Standardowa lub usługa Load Balancer w warstwie Standardowa wewnętrzny. Usługa Load Balancer w warstwie Standardowa obsługuje tylko standardowy publiczny adres IP, podstawowe publiczne adresy IP nie są obsługiwane. Podczas tworzenia usługa Load Balancer w warstwie Standardowa publicznego i należy również utworzyć nowy, publiczny adres IP, który jest skonfigurowany jako fronton (domyślnie nazywany *LoadBalancerFrontend* usługa Load Balancer w warstwie Standardowa). 
 
 1. W lewym górnym rogu ekranu wybierz pozycję **Utwórz zasób** > **sieci** > **Load Balancer**.
 2. Na karcie **Podstawy** na stronie **Tworzenie modułu równoważenia obciążenia** wprowadź lub wybierz poniższe informacje, zaakceptuj wartości domyślne pozostałych ustawień, a następnie wybierz pozycję **Przeglądanie + tworzenie**:
 
     | Ustawienie                 | Wartość                                              |
     | ---                     | ---                                                |
-    | Subscription               | Wybierz subskrypcję.    |    
+    | Subskrypcja               | Wybierz subskrypcję.    |    
     | Grupa zasobów         | Wybierz pozycję **Utwórz nowy** i wpisz *myResourceGroupSLB* w polu tekstowym.|
     | Nazwa                   | *myLoadBalancer*                                   |
     | Region         | Wybierz pozycję **Europa Zachodnia**.                                        |
     | Typ          | Wybierz pozycję **Publiczna**.                                        |
-    | SKU           | Wybierz opcję **Standardowa**.                          |
+    | JSZ           | Wybierz pozycję **Standardowy**.                          |
     | Publiczny adres IP | Wybierz pozycję**Utwórz nowy**. |
     | Nazwa publicznego adresu IP              | Wpisz *myPublicIP* w polu tekstowym.   |
     |Strefa dostępności| Wybierz pozycję **Strefowo nadmiarowy**.    |
@@ -76,7 +76,7 @@ Aby umożliwić Load Balancer monitorowania stanu aplikacji, należy użyć sond
     | Ustawienie | Wartość |
     | ------- | ----- |
     | Nazwa | Wprowadź *myHealthProbe*. |
-    | Protokół | Wybierz pozycję **http**. |
+    | Protocol (Protokół) | Wybierz pozycję **http**. |
     | Port | Wprowadź *80*.|
     | Interval | Wprowadź *15* dla liczby **interwałów** (w sekundach) między kolejnymi próbami sondowania. |
     | Próg złej kondycji | Wybierz **2** dla liczby **progów złej kondycji** lub kolejnych niepowodzeń sondy, które muszą wystąpić, zanim maszyna wirtualna zostanie uznana za złą.|
@@ -93,7 +93,7 @@ Reguła modułu równoważenia obciążenia służy do definiowania sposobu dyst
     | Ustawienie | Wartość |
     | ------- | ----- |
     | Nazwa | Wprowadź *myHTTPRule*. |
-    | Protokół | wybierz pozycję **TCP**. |
+    | Protocol (Protokół) | Wybierz pozycję **TCP**. |
     | Port | Wprowadź *80*.|
     | Port zaplecza | Wprowadź *80*. |
     | Pula zaplecza | Wybierz pozycję *myBackendPool*.|
@@ -114,9 +114,9 @@ W tej sekcji utworzysz sieć wirtualną, utworzono trzy maszyny wirtualne dla pu
     | ------- | ----- |
     | Nazwa | Wprowadź nazwę *myVNet*. |
     | Przestrzeń adresowa | Wprowadź adres *10.1.0.0/16*. |
-    | Subscription | Wybierz subskrypcję.|
+    | Subskrypcja | Wybierz subskrypcję.|
     | Grupa zasobów | Wybierz pozycję istniejący zasób — *myResourceGroupSLB*. |
-    | Location | Wybierz pozycję **Europa Zachodnia**.|
+    | Lokalizacja | Wybierz pozycję **Europa Zachodnia**.|
     | Podsieć — nazwa | Wprowadź nazwę podsieci *myBackendSubnet*. |
     | Zakres adresów podsieci: 10.41.0.0/24 | Wprowadź *10.1.0.0/24*. |
 1. Pozostaw resztę ustawień domyślnych, a następnie wybierz pozycję **Utwórz**.

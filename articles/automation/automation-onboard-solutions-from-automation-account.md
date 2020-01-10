@@ -5,12 +5,12 @@ services: automation
 ms.date: 4/11/2019
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: a63202fd5f29c3c2eee4ecaaae9a940078c15edc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f61fdedcd3c910ef5d09685fea00473a83b321f1
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75421876"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834284"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions"></a>Dołączanie rozwiązań Update Management, Change Tracking i spisu
 
@@ -59,7 +59,7 @@ Jeśli wybrany obszar roboczy ma już rozwiązanie, rozwiązanie nie zostanie je
 
 Po dodaniu komputera do Update Management lub rozwiązań Change Tracking i spisu są one dodawane do jednego z dwóch zapisanych wyszukiwań w obszarze roboczym. Te zapisane wyszukiwania to zapytania zawierające komputery przeznaczone dla tych rozwiązań.
 
-Przejdź do konta usługi Automation i wybierz pozycję **zapisane wyszukiwania** w obszarze **Ogólne**. Dwa zapisane wyszukiwania używane przez te rozwiązania można zobaczyć w poniższej tabeli:
+Przejdź do obszaru roboczego Log Analytics i wybierz pozycję **zapisane wyszukiwania** w obszarze **Ogólne**. Dwa zapisane wyszukiwania używane przez te rozwiązania można zobaczyć w poniższej tabeli:
 
 |Nazwa     |Kategoria  |Alias  |
 |---------|---------|---------|

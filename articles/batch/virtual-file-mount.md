@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/13/2019
 ms.author: lahugh
-ms.openlocfilehash: 1c990c864f9daa98460832166b31f43fece1ed15
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: d687f3f9039ca39440abab218d75e1d5c5db6df9
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70093858"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770122"
 ---
 # <a name="mount-a-virtual-file-system-on-a-batch-pool"></a>Instalowanie wirtualnego systemu plików w puli partii
 
@@ -39,17 +39,17 @@ Rozważmy scenariusz z wieloma zadaniami wymagającymi dostępu do wspólnego ze
 
 Zainstalowanie wirtualnego systemu plików w puli sprawia, że system plików jest dostępny dla wszystkich węzłów obliczeniowych w puli. System plików jest konfigurowany, gdy węzeł obliczeniowy jest przyłączany do puli lub gdy węzeł jest ponownie uruchamiany lub odtwarzany z obrazu.
 
-Aby zainstalować system plików w puli, Utwórz `MountConfiguration` obiekt. Wybierz obiekt, który pasuje do wirtualnego systemu plików: `AzureBlobFileSystemConfiguration` `NfsMountConfiguration`, `AzureFileShareConfiguration`, lub `CifsMountConfiguration`.
+Aby zainstalować system plików w puli, Utwórz obiekt `MountConfiguration`. Wybierz obiekt, który pasuje do wirtualnego systemu plików: `AzureBlobFileSystemConfiguration`, `AzureFileShareConfiguration`, `NfsMountConfiguration`lub `CifsMountConfiguration`.
 
 Wszystkie obiekty konfiguracji instalacji muszą mieć następujące parametry podstawowe. Niektóre konfiguracje instalacji mają parametry specyficzne dla używanego systemu plików, które zostały omówione bardziej szczegółowo w przykładach kodu.
 
-- **Nazwa konta lub źródło**: Aby można było zainstalować wirtualny udział plików, potrzebna jest nazwa konta magazynu lub jego źródła.
-- **Względna ścieżka lub źródło instalacji**: Lokalizacja systemu plików zainstalowanego w węźle obliczeniowym względem katalogu standardowego `fsmounts` dostępnego w węźle za pośrednictwem. `AZ_BATCH_NODE_MOUNTS_DIR` Dokładna lokalizacja różni się w zależności od systemu operacyjnego używanego w węźle. Na przykład fizyczna lokalizacja w węźle Ubuntu jest zamapowana na `mnt\batch\tasks\fsmounts`, a w węźle CentOS, do `mnt\resources\batch\tasks\fsmounts`którego jest zamapowany.
-- **Opcje instalacji lub opcje blobfuse**: Te opcje opisują konkretne parametry instalacji systemu plików.
+- **Nazwa konta lub źródło**: Aby zainstalować wirtualny udział plików, potrzebna jest nazwa konta magazynu lub jego źródła.
+- **Względna ścieżka lub źródło instalacji**: Lokalizacja systemu plików zainstalowanego w węźle obliczeniowym względem katalogu standardowego `fsmounts` dostępnego w węźle za pośrednictwem `AZ_BATCH_NODE_MOUNTS_DIR`. Dokładna lokalizacja różni się w zależności od systemu operacyjnego używanego w węźle. Na przykład fizyczna lokalizacja w węźle Ubuntu jest zamapowana na `mnt\batch\tasks\fsmounts`i w węźle CentOS, który jest mapowany do `mnt\resources\batch\tasks\fsmounts`.
+- **Opcje instalacji lub opcje blobfuse**: te opcje opisują konkretne parametry instalowania systemu plików.
 
-`MountConfigurationList` Po utworzeniu `MountConfiguration` obiektu Przypisz obiekt do właściwości podczas tworzenia puli. System plików jest instalowany, gdy węzeł jest przyłączony do puli lub gdy węzeł jest ponownie uruchamiany lub odtwarzany z obrazu.
+Po utworzeniu obiektu `MountConfiguration` Przypisz obiekt do właściwości `MountConfigurationList` podczas tworzenia puli. System plików jest instalowany, gdy węzeł jest przyłączony do puli lub gdy węzeł jest ponownie uruchamiany lub odtwarzany z obrazu.
 
-Gdy system plików jest zainstalowany, tworzona jest zmienna `AZ_BATCH_NODE_MOUNTS_DIR` środowiskowa, która wskazuje lokalizację zainstalowanych systemów plików, a także pliki dziennika, które są przydatne do rozwiązywania problemów i debugowania. Pliki dziennika są wyjaśnione bardziej szczegółowo w sekcji [Diagnozowanie błędów instalacji](#diagnose-mount-errors) .  
+Gdy system plików jest zainstalowany, tworzona jest zmienna środowiskowa `AZ_BATCH_NODE_MOUNTS_DIR`, która wskazuje lokalizację zainstalowanych systemów plików, a także pliki dziennika, które są przydatne do rozwiązywania problemów i debugowania. Pliki dziennika są wyjaśnione bardziej szczegółowo w sekcji [Diagnozowanie błędów instalacji](#diagnose-mount-errors) .  
 
 > [!IMPORTANT]
 > Maksymalna liczba zainstalowanych systemów plików w puli wynosi 10. Zobacz [przydziały usługi Batch i limity](batch-quota-limit.md#other-limits) dotyczące szczegółów i innych limitów.
@@ -85,7 +85,7 @@ new PoolAddParameter
 
 ### <a name="azure-blob-file-system"></a>System plików obiektów blob platformy Azure
 
-Innym rozwiązaniem jest użycie usługi Azure Blob Storage za pośrednictwem [blobfuse](../storage/blobs/storage-how-to-mount-container-linux.md). Zainstalowanie systemu plików BLOB wymaga `AccountKey` lub `SasKey` dla konta magazynu. Aby uzyskać informacje na temat uzyskiwania tych kluczy, zobacz [Wyświetlanie kluczy konta](../storage/common/storage-account-manage.md#view-account-keys-and-connection-string)lub [Używanie sygnatur dostępu współdzielonego (SAS)](../storage/common/storage-dotnet-shared-access-signature-part-1.md). Aby uzyskać więcej informacji na temat korzystania z programu blobfuse, zobacz temat [Rozwiązywanie problemów](https://github.com/Azure/azure-storage-fuse/wiki/3.-Troubleshoot-FAQ)z blobfuse. Aby uzyskać domyślny dostęp do zainstalowanego katalogu blobfuse, uruchom zadanie jako **administrator**. Blobfuse instaluje katalog w miejscu użytkownika, a podczas tworzenia puli jest instalowany jako główny. W systemie Linux wszystkie zadania **administratora** są głównymi. Wszystkie opcje dla modułu bezpiecznik są opisane na [stronie odmowa](http://manpages.ubuntu.com/manpages/xenial/man8/mount.fuse.8.html).
+Innym rozwiązaniem jest użycie usługi Azure Blob Storage za pośrednictwem [blobfuse](../storage/blobs/storage-how-to-mount-container-linux.md). Zainstalowanie systemu plików BLOB wymaga `AccountKey` lub `SasKey` dla konta magazynu. Aby uzyskać informacje na temat uzyskiwania tych kluczy, zobacz [Zarządzanie kluczami dostępu do konta magazynu](../storage/common/storage-account-keys-manage.md)lub [przy użyciu sygnatur dostępu współdzielonego (SAS)](../storage/common/storage-dotnet-shared-access-signature-part-1.md). Aby uzyskać więcej informacji na temat korzystania z programu blobfuse, zobacz temat [Rozwiązywanie problemów](https://github.com/Azure/azure-storage-fuse/wiki/3.-Troubleshoot-FAQ)z blobfuse. Aby uzyskać domyślny dostęp do zainstalowanego katalogu blobfuse, uruchom zadanie jako **administrator**. Blobfuse instaluje katalog w miejscu użytkownika, a podczas tworzenia puli jest instalowany jako główny. W systemie Linux wszystkie zadania **administratora** są głównymi. Wszystkie opcje dla modułu bezpiecznik są opisane na [stronie odmowa](https://manpages.ubuntu.com/manpages/xenial/man8/mount.fuse.8.html).
 
 Oprócz przewodnika rozwiązywania problemów problemy z usługą GitHub w repozytorium blobfuse są przydatnym sposobem na sprawdzenie bieżących problemów i rozwiązań związanych z blobfuse. Aby uzyskać więcej informacji, zobacz [blobfuse problemy](https://github.com/Azure/azure-storage-fuse/issues).
 
@@ -116,7 +116,7 @@ new PoolAddParameter
 
 ### <a name="network-file-system"></a>Sieciowy system plików
 
-Systemy plików NFS można również zainstalować w węzłach puli, co umożliwia łatwe uzyskiwanie dostępu do tradycyjnych systemów plików przez węzły Azure Batch. Może to być jeden serwer NFS wdrożony w chmurze lub lokalny serwer NFS, do którego można uzyskać dostęp za pośrednictwem sieci wirtualnej. Alternatywnie możesz skorzystać z rozwiązania rozproszonej pamięci podręcznej [avere vFXT](../avere-vfxt/avere-vfxt-overview.md) , które zapewnia bezproblemową łączność z lokalnym magazynem, odczytywanie danych na żądanie do pamięci podręcznej oraz zapewnia wysoką wydajność i skalowalność do obliczeń opartych na chmurze. nich.
+Systemy plików NFS można również zainstalować w węzłach puli, co umożliwia łatwe uzyskiwanie dostępu do tradycyjnych systemów plików przez węzły Azure Batch. Może to być jeden serwer NFS wdrożony w chmurze lub lokalny serwer NFS, do którego można uzyskać dostęp za pośrednictwem sieci wirtualnej. Alternatywnie możesz skorzystać z rozwiązania rozproszonej pamięci podręcznej [avere vFXT](../avere-vfxt/avere-vfxt-overview.md) , które zapewnia bezproblemową łączność z lokalnym magazynem, odczytywanie danych na żądanie do pamięci podręcznej oraz zapewnia wysoką wydajność i skalowalność węzłów obliczeniowych opartych na chmurze.
 
 ```csharp
 new PoolAddParameter
@@ -164,25 +164,25 @@ new PoolAddParameter
 
 ## <a name="diagnose-mount-errors"></a>Diagnozuj błędy instalacji
 
-Jeśli konfiguracja instalacji nie powiedzie się, węzeł obliczeniowy w puli zakończy się niepowodzeniem, a stan węzła stanie się bezużyteczny. Aby zdiagnozować błąd konfiguracji instalacji, zbadaj [`ComputeNodeError`](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror) właściwość w celu uzyskania szczegółowych informacji o błędzie.
+Jeśli konfiguracja instalacji nie powiedzie się, węzeł obliczeniowy w puli zakończy się niepowodzeniem, a stan węzła stanie się bezużyteczny. Aby zdiagnozować błąd konfiguracji instalacji, sprawdź Właściwość [`ComputeNodeError`](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror) , aby uzyskać szczegółowe informacje o błędzie.
 
-Aby pobrać pliki dziennika do debugowania, użyj [OutputFiles](batch-task-output-files.md) do przekazania `*.log` plików. Pliki zawierają informacje o instalacji systemu plików `AZ_BATCH_NODE_MOUNTS_DIR` w lokalizacji. `*.log` Pliki dziennika instalacji mają format: `<type>-<mountDirOrDrive>.log` dla każdej instalacji. Na przykład `cifs` instalacja w katalogu instalacji o nazwie `test` będzie miała plik dziennika instalacji o nazwie: `cifs-test.log`.
+Aby pobrać pliki dziennika do debugowania, użyj [OutputFiles](batch-task-output-files.md) do przekazania plików `*.log`. Pliki `*.log` zawierają informacje o instalacji systemu plików w lokalizacji `AZ_BATCH_NODE_MOUNTS_DIR`. Pliki dziennika instalacji mają format: `<type>-<mountDirOrDrive>.log` dla każdej instalacji. Na przykład instalacja `cifs` w katalogu instalacji o nazwie `test` będzie miała plik dziennika instalacji o nazwie: `cifs-test.log`.
 
 ## <a name="supported-skus"></a>Obsługiwane jednostki SKU
 
-| Wydawca | Oferta | SKU | Udział Azure Files | Blobfuse | Instalacja systemu plików NFS | Instalacja CIFS |
+| Publisher | Oferta | JSZ | Udział Azure Files | Blobfuse | Instalacja systemu plików NFS | Instalacja CIFS |
 |---|---|---|---|---|---|---|
-| partia | rendering-centos73 | dawania | :heavy_check_mark: <br>Uwaga: Zgodne z CentOS 7,7</br>| :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| batch | rendering-centos73 | renderowanie | :heavy_check_mark: <br>Uwaga: zgodność z CentOS 7,7</br>| :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | Canonical | UbuntuServer | 16,04 – LTS, 18,04-LTS | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | credativ | Debian | 8, 9 | :heavy_check_mark: | y | :heavy_check_mark: | :heavy_check_mark: |
-| microsoft-ads | linux-data-science-vm | linuxdsvm | :heavy_check_mark: <br>Uwaga: Zgodne z CentOS 7,4. </br> | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| microsoft-azure-batch | CentOS — kontener | 7,6 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| microsoft-azure-batch | centos-container-rdma | 7.4 | :heavy_check_mark: <br>Uwaga: Obsługuje magazyn A_8 lub 9</br> | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| microsoft-ads | linux-data-science-vm | linuxdsvm | :heavy_check_mark: <br>Uwaga: zgodne z CentOS 7,4. </br> | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| microsoft-azure-batch | CentOS — kontener | 7.6 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| microsoft-azure-batch | centos-container-rdma | 7.4 | :heavy_check_mark: <br>Uwaga: obsługuje magazyn A_8 lub 9</br> | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | microsoft-azure-batch | ubuntu-server-container | 16.04-LTS | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | microsoft-dsvm | linux-data-science-vm-ubuntu | linuxdsvmubuntu | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| OpenLogic | CentOS | 7,6 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| OpenLogic | CentOS | 7.6 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | OpenLogic | CentOS-HPC | 7,4, 7,3, 7,1 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Oracle | Oracle-Linux | 7,6 | y | y | y | y |
+| Oracle | Oracle-Linux | 7.6 | y | y | y | y |
 | Windows | WindowsServer | 2012, 2016, 2019 | :heavy_check_mark: | y | y | y |
 
 ## <a name="next-steps"></a>Następne kroki

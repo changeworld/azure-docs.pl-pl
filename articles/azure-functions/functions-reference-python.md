@@ -2,13 +2,13 @@
 title: Dokumentacja dla deweloperów języka Python dla Azure Functions
 description: Informacje na temat tworzenia funkcji w języku Python
 ms.topic: article
-ms.date: 04/16/2018
-ms.openlocfilehash: 7c8ce87fdf396bc488a7deaf576eea28f989e0e4
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.date: 12/13/2019
+ms.openlocfilehash: adea5603c997380dde6731b53bc99ba7443e310b
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226645"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769008"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Przewodnik dewelopera w języku Python Azure Functions
 
@@ -100,8 +100,8 @@ Główny folder projektu (\_\_aplikacji\_\_) może zawierać następujące pliki
 * *Local. Settings. JSON*: służy do przechowywania ustawień aplikacji i parametrów połączenia podczas lokalnego uruchamiania. Ten plik nie jest publikowany na platformie Azure. Aby dowiedzieć się więcej, zobacz [Local. Settings. File](functions-run-local.md#local-settings-file).
 * *Requirements. txt*: zawiera listę pakietów instalowanych przez system podczas publikowania na platformie Azure.
 * plik *host. JSON*: zawiera globalne opcje konfiguracji, które mają wpływ na wszystkie funkcje w aplikacji funkcji. Ten plik jest publikowany na platformie Azure. Nie wszystkie opcje są obsługiwane w przypadku uruchamiania lokalnego. Aby dowiedzieć się więcej, zobacz plik [host. JSON](functions-host-json.md).
-* *funcignore*: (opcjonalnie) deklaruje pliki, które nie powinny zostać opublikowane na platformie Azure.
-* *GITIGNORE*: (opcjonalnie) deklaruje pliki, które są wykluczone z repozytorium git, takie jak Local. Settings. JSON.
+* *. funcignore*: (opcjonalnie) deklaruje pliki, które nie powinny zostać opublikowane na platformie Azure.
+* *. gitignore*: (opcjonalnie) deklaruje pliki, które są wykluczone z repozytorium git, takie jak Local. Settings. JSON.
 
 Każda funkcja ma własny plik kodu i plik konfiguracji powiązania (Function. JSON). 
 
@@ -171,7 +171,7 @@ def main(req: func.HttpRequest,
     logging.info(f'Python HTTP triggered function processed: {obj.read()}')
 ```
 
-Gdy funkcja jest wywoływana, żądanie HTTP jest przesyłane do funkcji jako `req`. Wpis zostanie pobrany z usługi Azure Blob Storage w oparciu o _Identyfikator_ w adresie URL trasy i udostępniony jako `obj` w treści funkcji.  W tym miejscu określone konto magazynu to parametry połączenia Znalezione w programie, które jest tym samym kontem magazynu, które jest używane przez aplikację funkcji.
+Po wywołaniu funkcji żądanie HTTP jest przekazywane do tej funkcji jako `req`. Wpis zostanie pobrany z usługi Azure Blob Storage w oparciu o _Identyfikator_ w adresie URL trasy i udostępniony jako `obj` w treści funkcji.  W tym miejscu jest określone konto magazynu z parametrami połączenia znalezionymi w ustawieniu aplikacji AzureWebJobsStorage, które jest tym samym kontem magazynu, które jest używane przez aplikację funkcji.
 
 
 ## <a name="outputs"></a>Dane wyjściowe
@@ -280,28 +280,30 @@ W tej funkcji wartość parametru zapytania `name` jest uzyskiwana z `params` pa
 
 Analogicznie, można ustawić `status_code` i `headers` dla komunikatu odpowiedzi w zwracanym obiekcie [HttpResponse] .
 
-## <a name="concurrency"></a>Współbieżność
+## <a name="scaling-and-concurrency"></a>Skalowanie i współbieżność
 
-Domyślnie środowisko uruchomieniowe języka Python może przetwarzać tylko jedno wywołanie funkcji w danym momencie. Ten poziom współbieżności może być niewystarczający w przypadku co najmniej jednego z następujących warunków:
+Domyślnie Azure Functions automatycznie monitoruje obciążenie aplikacji i tworzy dodatkowe wystąpienia hosta dla języka Python zgodnie z potrzebami. Funkcja używa wbudowanych wartości progowych (nie można skonfigurować użytkownika) dla różnych typów wyzwalaczy, aby określić, kiedy należy dodać wystąpienia, takie jak wiek komunikatów i rozmiar kolejki dla QueueTrigger. Aby uzyskać więcej informacji, zobacz [jak działają plany zużycia i Premium](functions-scale.md#how-the-consumption-and-premium-plans-work).
 
-+ Próbujesz obsłużyć wiele wywołań w tym samym czasie.
-+ Przetwarzasz dużą liczbę zdarzeń we/wy.
-+ Twoja aplikacja jest powiązana ze we/wy.
+To zachowanie skalowania jest wystarczające dla wielu aplikacji. Jednak aplikacje z jedną z następujących cech mogą nie skalować się efektywnie:
 
-W takich sytuacjach można poprawić wydajność, uruchamiając asynchronicznie i używając wielu procesów roboczych języka.  
+- Aplikacja musi obsługiwać wiele współbieżnych wywołań.
+- Aplikacja przetwarza dużą liczbę zdarzeń we/wy.
+- Aplikacja jest powiązana ze we/wy.
 
-### <a name="async"></a>Asynchroniczne
+W takich przypadkach można dodatkowo poprawić wydajność, używając wzorców Async i procesów roboczych wielu języków.
 
-Zalecamy użycie instrukcji `async def`, aby funkcja była uruchamiana jako procedura asynchroniczna.
+### <a name="async"></a>Async
+
+Ponieważ Python jest środowiskiem uruchomieniowym jednowątkowym, wystąpienie hosta dla języka Python może jednocześnie przetwarzać tylko jedno wywołanie funkcji. W przypadku aplikacji, które przetwarzają dużą liczbę zdarzeń we/wy i/lub są powiązane we/wy, można zwiększyć wydajność, uruchamiając funkcje asynchronicznie.
+
+Aby uruchomić funkcję asynchronicznie, użyj instrukcji `async def`, która uruchamia funkcję z [asyncio](https://docs.python.org/3/library/asyncio.html) bezpośrednio:
 
 ```python
-# Runs with asyncio directly
-
 async def main():
     await some_nonblocking_socket_io_op()
 ```
 
-Gdy funkcja `main()` jest synchroniczna (bez kwalifikatora `async`), funkcja jest automatycznie uruchamiana w puli wątków `asyncio`.
+Funkcja bez słowa kluczowego `async` jest uruchamiana automatycznie w puli wątków asyncio:
 
 ```python
 # Runs in an asyncio thread-pool
@@ -312,13 +314,15 @@ def main():
 
 ### <a name="use-multiple-language-worker-processes"></a>Korzystanie z wielu procesów roboczych języka
 
-Domyślnie każde wystąpienie hosta funkcji ma proces roboczy o pojedynczym języku. Jednak obsługa wielu procesów roboczych języka dla każdego wystąpienia hosta. Wywołania funkcji mogą być następnie dystrybuowane równomiernie między tymi procesami roboczymi. Aby zmienić tę wartość, użyj ustawienia aplikacji [FUNCTIONS_WORKER_PROCESS_COUNT](functions-app-settings.md#functions_worker_process_count) . 
+Domyślnie każde wystąpienie hosta funkcji ma proces roboczy o pojedynczym języku. Liczbę procesów roboczych można zwiększyć na hosta (do 10) przy użyciu ustawienia aplikacji [FUNCTIONS_WORKER_PROCESS_COUNT](functions-app-settings.md#functions_worker_process_count) . Azure Functions następnie próbuje równomiernie rozpowszechnić jednoczesne wywołania funkcji przez tych pracowników. 
+
+FUNCTIONS_WORKER_PROCESS_COUNT ma zastosowanie do każdego hosta, który tworzy funkcje podczas skalowania aplikacji w celu spełnienia wymagań. 
 
 ## <a name="context"></a>Kontekst
 
 Aby uzyskać kontekst wywołania funkcji podczas wykonywania, należy uwzględnić w podpisie argument [`context`](/python/api/azure-functions/azure.functions.context?view=azure-python) . 
 
-Na przykład:
+Przykład:
 
 ```python
 import azure.functions
@@ -637,7 +641,7 @@ Upewnij się, że Zaktualizowano również funkcję Function. JSON, aby obsługi
     ...
 ```
 
-Ta metoda jest używana przez przeglądarkę Chrome do negocjowania listy dozwolonych źródeł. 
+Ta metoda HTTP jest używana przez przeglądarki sieci Web do negocjowania listy dozwolonych źródeł. 
 
 ## <a name="next-steps"></a>Następne kroki
 

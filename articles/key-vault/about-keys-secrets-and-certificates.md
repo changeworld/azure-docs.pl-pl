@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 3024d77c02f623f8b8dc1a8956e692c208c8c9e5
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 6a107936d290609fec73d46a93a277c3bdcce354
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72799401"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75832914"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>Klucze, wpisy tajne i certyfikaty — informacje
 
@@ -44,7 +44,7 @@ Specyfikacja JavaScript Object Notation (JSON) i podpisywanie i szyfrowanie obie
 
 Zapoznaj się ze specyfikacją JOSE dla odpowiednich typów danych dla kluczy, szyfrowania i podpisywania.  
 
--   **algorytm** — obsługiwany algorytm dla operacji klucza, na przykład RSA1_5  
+-   **algorytm** — obsługiwany algorytm dla operacji Key, na przykład RSA1_5  
 -   tekst **szyfrowany-wartość** — umożliwia szyfrowanie oktetów tekstu zakodowanych przy użyciu Base64URL  
 -   **Digest-Value** — dane wyjściowe algorytmu wyznaczania wartości skrótu zakodowane przy użyciu Base64URL  
 -   **Typ klucza** — jeden z obsługiwanych typów kluczy, na przykład RSA (Rivest-Shamir-Adleman).  
@@ -124,7 +124,7 @@ Moduły kryptograficzne, które Key Vault używają, czy moduł HSM lub oprogram
 
 #### <a name="wrapkeyunwrapkey-encryptdecrypt"></a>WRAPKEY/UNWRAPKEY, SZYFROWANIE/ODSZYFROWYWANIE
 
--   **RSA1_5** -RSAES-PKCS1-V1_5 [RFC3447] szyfrowanie klucza  
+-   Szyfrowanie klucza **RSA1_5** -RSAES-PKCS1-V1_5 [RFC3447]  
 -   **RSA-OAEP** -RSAES przy użyciu optymalnego wypełnienia asymetrycznego szyfrowania (OAEP) [RFC3447] z domyślnymi parametrami określonymi w dokumencie RFC 3447 w sekcji A. 2.1. Te parametry domyślne używają funkcji hash algorytmu SHA-1 i funkcji generowania maski MGF1 z algorytmem SHA-1.  
 
 #### <a name="signverify"></a>PODPISZ/WERYFIKUJ
@@ -230,7 +230,7 @@ Aby uzyskać więcej informacji na temat pracy z kluczami, zobacz [najważniejsz
 
 Z perspektywy deweloperów Key Vault interfejsy API akceptują i zwracają wartości tajne jako ciągi. Wewnętrznie program Key Vault przechowuje klucze tajne i zarządza nimi jako sekwencje oktetów (8-bitowych bajtów), a każdy z nich ma maksymalny rozmiar 25k bajtów. Usługa Key Vault nie zapewnia semantyki dla wpisów tajnych. Tylko akceptuje dane, szyfruje je, zapisuje i zwraca identyfikator tajny ("ID"). Identyfikatora można użyć do pobrania klucza tajnego w późniejszym czasie.  
 
-W przypadku wysoce poufnych danych klienci powinni rozważyć dodatkowe warstwy ochrony danych. Szyfrowanie danych przy użyciu oddzielnego klucza ochrony przed magazynem w Key Vault jest jednym z przykładów.  
+W przypadku wysoce poufnych danych klienci powinni rozważyć zastosowanie dodatkowych warstw ochrony danych. Jednym z przykładów jest szyfrowanie danych przy użyciu oddzielnego klucza ochrony w celu przechowywania ich w usłudze Key Vault.  
 
 Key Vault obsługuje również pole ContentType dla wpisów tajnych. Klienci mogą określić typ zawartości wpisu tajnego, aby pomóc w interpretacji danych tajnych podczas pobierania. Maksymalna długość tego pola to 255 znaków. Brak wstępnie zdefiniowanych wartości. Sugerowane użycie jest wskazówką dotyczącą interpretacji danych tajnych. Na przykład implementacja może przechowywać hasła i certyfikaty jako wpisy tajne, a następnie używać tego pola do rozróżniania. Brak wstępnie zdefiniowanych wartości.  
 
@@ -376,7 +376,7 @@ Poniższa tabela przedstawia mapowanie zasad użycia klucza x509 do efektywnych 
 
 Obiekt certyfikatu Key Vault zawiera konfigurację służącą do komunikowania się z wybranym dostawcą wystawcy certyfikatu w celu uporządkowania certyfikatów x509.  
 
--   Key Vault partnerów z następującymi dostawcami wystawcy certyfikatów dla certyfikatów SSL
+-   Key Vault partnerów z następującymi dostawcami wystawcy certyfikatów dla certyfikatów TLS/SSL
 
 |**Nazwa dostawcy**|**Lokalizacje**|
 |----------|--------|
@@ -389,7 +389,7 @@ Przed utworzeniem wystawcy certyfikatu w Key Vault należy pomyślnie wykonać n
 
     -   Administrator organizacji musi być na pokładzie firmy (np. Firma Contoso) z co najmniej jednym dostawcą urzędu certyfikacji.  
 
-2. Administrator tworzy poświadczenia żądającego Key Vault w celu zarejestrowania (i odnowienia) certyfikatów SSL  
+2. Administrator tworzy poświadczenia żądającego w celu Key Vault rejestracji (i odnowienia) certyfikatów TLS/SSL  
 
     -   Zapewnia konfigurację, która ma zostać użyta do utworzenia obiektu wystawcy dostawcy w magazynie kluczy  
 

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/01/2016
 ms.author: dariac
 ms.custom: seodec18
-ms.openlocfilehash: 328e0c882ea2fb3860663e04b88488bd54339c75
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: ded812d5d7a0440466e7284b56c90965ea00406e
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671497"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768490"
 ---
 # <a name="best-practices-for-azure-app-service"></a>Najlepsze rozwiązania dla usługi Azure App Service
 W tym artykule opisano najlepsze rozwiązania dotyczące korzystania z [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). 
@@ -65,3 +65,13 @@ Gdy wystąpią błędy kopii zapasowej, przejrzyj najnowsze wyniki, aby zrozumie
 ## <a name="nodejs"></a>Po wdrożeniu nowych aplikacji node. js do Azure App Service
 Azure App Service konfigurację domyślną dla aplikacji node. js najlepiej odpowiadają potrzebom najpopularniejszych aplikacji. Jeśli konfiguracja aplikacji node. js będzie czerpać korzyści z spersonalizowanego dostrajania w celu zwiększenia wydajności lub zoptymalizowania użycia zasobów dla zasobów procesora/pamięci/sieci, zobacz [najlepsze rozwiązania i wskazówki dotyczące rozwiązywania problemów z aplikacjami węzłów na Azure App Service](app-service-web-nodejs-best-practices-and-troubleshoot-guide.md). W tym artykule opisano ustawienia programu iisnode, które mogą być potrzebne do skonfigurowania aplikacji node. js, opisano różne scenariusze lub problemy, na które może się znajdować aplikacja, i pokazano, jak rozwiązać te problemy.
 
+
+## <a name="next-steps"></a>Następne kroki
+Aby uzyskać więcej informacji na temat najlepszych rozwiązań, odwiedź stronę [App Service Diagnostics](https://docs.microsoft.com/azure/app-service/overview-diagnostics) , aby dowiedzieć się, jakie są najlepsze rozwiązania, które są odpowiednie dla danego zasobu.
+
+- Przejdź do aplikacji sieci Web w [Azure Portal](https://portal.azure.com).
+- Kliknij przycisk **diagnozowanie i rozwiązywanie problemów** w lewym okienku nawigacji, co spowoduje otwarcie App Service diagnostyki.
+- Wybierz kafelek strony głównej **najlepszych** rozwiązań.
+- Kliknij pozycję **najlepsze rozwiązania dotyczące dostępności & wydajność** lub **najlepsze rozwiązania w zakresie optymalnej konfiguracji** , aby wyświetlić bieżący stan aplikacji w odniesieniu do tych najlepszych rozwiązań.
+
+Za pomocą tego linku można również bezpośrednio otworzyć App Service Diagnostics dla zasobu: `https://ms.portal.azure.com/?websitesextension_ext=asd.featurePath%3Ddetectors%2FParentAvailabilityAndPerformance#@microsoft.onmicrosoft.com/resource/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/troubleshoot`.

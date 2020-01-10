@@ -1,5 +1,5 @@
 ---
-title: Azure Media Services społeczność — Omówienie | Microsoft Docs
+title: Azure Media Services — Omówienie społeczności w wersji 3 | Microsoft Docs
 description: Ta strona społeczności Azure Media Services omawia różne sposoby zadawania pytań, przekazywania opinii i uzyskiwania aktualizacji dotyczących Media Services.
 services: media-services
 documentationcenter: ''
@@ -13,14 +13,14 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/17/2019
 ms.author: juliako
-ms.openlocfilehash: f241ac3e1369e32a1f2a4b9ac80492094105ff8c
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 2bfa50068c5a61e8d6807da895dd5bf932ef05ba
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72598342"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75780355"
 ---
-# <a name="azure-media-services-community"></a>Społeczność usługi Azure Media Services  
+# <a name="azure-media-services-v3-community"></a>Społeczność Azure Media Services v3  
 
 Ta strona społeczności Azure Media Services omawia różne sposoby zadawania pytań, przekazywania opinii i uzyskiwania aktualizacji dotyczących Media Services.
 
@@ -28,7 +28,7 @@ Ta strona społeczności Azure Media Services omawia różne sposoby zadawania p
 
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="discussion"></a>Dyskusji
+## <a name="discussion"></a>Dyskusja
 
 ### <a name="twitter"></a>Serwis Twitter
 

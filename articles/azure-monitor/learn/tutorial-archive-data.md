@@ -9,12 +9,12 @@ ms.date: 09/25/2017
 ms.author: johnkem
 ms.custom: mvc
 ms.subservice: metrics
-ms.openlocfilehash: 2bb275b1ca129d2381fb89fcbe0111c573d4a8e7
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 86f042a451583759aa15e886b3261700335a5285
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893352"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75748550"
 ---
 # <a name="archive-azure-metric-and-log-data-using-azure-storage"></a>Archiwizowanie metryk platformy Azure i zapisywanie danych w dzienniku przy użyciu usługi Azure Storage
 
@@ -46,7 +46,7 @@ Najpierw musisz skonfigurować konto magazynu, na którym będą archiwizowane d
 
 ## <a name="route-subscription-logs-to-the-storage-account"></a>Przekierowywanie dzienników subskrypcji do konta magazynu
 
-Możesz teraz rozpocząć konfigurowanie środowiska platformy Azure pod kątem przekierowywania danych monitorowania do konta magazynu. Najpierw trzeba skonfigurować przekierowywanie danych poziomu subskrypcji (znajdujących się w dzienniku aktywności platformy Azure) do konta magazynu. [**Dziennik aktywności platformy Azure**](../../azure-monitor/platform/activity-logs-overview.md) zawiera historię zdarzeń na poziomie subskrypcji na platformie Azure. Możesz je przeglądać w witrynie Azure Portal, aby sprawdzić, *kto* i *kiedy* utworzył, zaktualizował lub usunął *jakie* zasoby.
+Możesz teraz rozpocząć konfigurowanie środowiska platformy Azure pod kątem przekierowywania danych monitorowania do konta magazynu. Najpierw trzeba skonfigurować przekierowywanie danych poziomu subskrypcji (znajdujących się w dzienniku aktywności platformy Azure) do konta magazynu. [**Dziennik aktywności platformy Azure**](../../azure-monitor/platform/platform-logs-overview.md) zawiera historię zdarzeń na poziomie subskrypcji na platformie Azure. Możesz je przeglądać w witrynie Azure Portal, aby sprawdzić, *kto* i *kiedy* utworzył, zaktualizował lub usunął *jakie* zasoby.
 
 1. Kliknij przycisk **Monitoruj** na liście w okienku nawigacji po lewej stronie, a następnie wybierz pozycję **Dziennik aktywności**.
 
@@ -96,7 +96,7 @@ Teraz skonfigurujemy dane na poziomie zasobów (metryki zasobów i dzienniki zas
 
 6. Ustaw suwak **Okres przechowywania (w dniach)** na wartość 30. Suwak umożliwia ustawienie liczby dni przechowywania danych monitorowania na koncie magazynu. Starsze dane są automatycznie usuwane przez usługę Azure Monitor. Wpisanie wartości zero powoduje, że dane są przechowywane przez nieograniczony czas.
 
-7. Kliknij przycisk **Save** (Zapisz).
+7. Kliknij pozycję **Zapisz**.
 
 Dane monitorowania z zasobu będą teraz przepływać do konta magazynu.
 
@@ -137,7 +137,7 @@ Dane monitorowania z zasobu będą teraz przepływać do konta magazynu.
 
 9. W wyświetlonej sekcji wybierz konto magazynu utworzone w kroku **Tworzenie konta magazynu**.
 
-10. Kliknij przycisk **Save** (Zapisz).
+10. Kliknij pozycję **Zapisz**.
 
 Dane monitorowania z maszyn wirtualnych będą teraz przepływać do konta magazynu.
 

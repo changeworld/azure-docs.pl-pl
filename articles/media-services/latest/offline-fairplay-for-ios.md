@@ -1,5 +1,5 @@
 ---
-title: Ochrona zawartości HLS za pomocą trybu offline Apple FairPlay-Azure | Microsoft Docs
+title: FairPlay przesyłania strumieniowego w trybie offline dla systemu iOS z Azure Media Services v3
 description: Ten temat zawiera omówienie i pokazuje, jak używać Azure Media Services do dynamicznego szyfrowania zawartości HTTP Live Streaming (HLS) przy użyciu usługi Apple FairPlay w trybie offline.
 services: media-services
 keywords: HLS, DRM, FairPlay streaming (FPS), offline, iOS 10
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/08/2019
 ms.author: willzhan
-ms.openlocfilehash: 83fa8c9c6d98728d48ff4ed8993963cdbd522724
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: c0d87de25cae44f17789dfaf7b1ec805138c351c
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974125"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75779930"
 ---
 # <a name="offline-fairplay-streaming-for-ios"></a>FairPlay przesyłania strumieniowego w trybie offline dla systemu iOS 
 

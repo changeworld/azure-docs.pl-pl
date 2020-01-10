@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: noelc
 ROBOTS: NOINDEX
-ms.openlocfilehash: f0484fc9fc2af5514ba0f5b61277146a51757057
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: fa4b6499260219b0eb8ea4df4b4ccfd5263b57bb
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855029"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770207"
 ---
 # <a name="project-acoustics-frequently-asked-questions"></a>Często zadawane pytania dotyczące akustycznych projektów
 
@@ -26,9 +26,9 @@ Pakiet protokołów akustycznych w projekcie to system akustyczny, który oblicz
 
 ## <a name="where-can-i-download-the-plugin"></a>Gdzie można pobrać wtyczkę?
 
-Możesz pobrać wtyczkę [aparatu Unity akustyczną projektu](https://www.microsoft.com/download/details.aspx?id=57346) lub [wtyczkę Unreali projektu](https://www.microsoft.com/download/details.aspx?id=58090).
+Możesz pobrać [wtyczkę aparatu Unity akustyczną projektu](https://www.microsoft.com/download/details.aspx?id=57346) lub [wtyczkę Unreali projektu](https://www.microsoft.com/download/details.aspx?id=58090).
 
-## <a name="does-project-acoustics-support-ltxgt-platform"></a>Czy akustyczne projektu obsługuje &lt;platformę x&gt; ?
+## <a name="does-project-acoustics-support-ltxgt-platform"></a>Czy akustyczne projektu obsługuje platformę &lt;x&gt;?
 
 Obsługa platformy akustycznej w projekcie zmienia się w zależności od potrzeb klientów. Skontaktuj się z nami na [forum problemu akustycznego projektu](https://github.com/microsoft/ProjectAcoustics/issues) , aby dowiedzieć się więcej o obsłudze dodatkowych platform.
 
@@ -75,6 +75,10 @@ Funkcja akustyczna projektu zapewnia dokładne i niezawodne parametry akustyczne
 ## <a name="what-exactly-happens-during-baking"></a>Co dokładnie się dzieje podczas "pieczenie"?
 
 Tworzenie składa się z symulowanych fal akustycznych regionów symulacji Cuboid wyśrodkowanych przez każdą sondę odbiornika.
+
+## <a name="is-my-source-content-secure"></a>Czy moja zawartość źródłowa jest zabezpieczona?
+
+Akustyczne projektu nie przekazuje geometrii sceny źródłowej do chmury. Zamiast tego symulacja działa na voxelization sceny, połączonej z danymi lokalizacji sondowania i przechowywanych w formacie zastrzeżonym.     
 
 ## <a name="next-steps"></a>Następne kroki
 * Wypróbuj [zawartość przykładową Unity](unity-quickstart.md) lub [Unreal przykładowej](unreal-quickstart.md) zawartości

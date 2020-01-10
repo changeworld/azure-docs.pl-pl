@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 8/29/2019
 ms.author: absha
-ms.openlocfilehash: 12ecacf1266c0d8211f5928a933cfd4acf8c49f0
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
-ms.translationtype: HT
+ms.openlocfilehash: 8d75dbe5d4ab819e5bbe64e20ad84eb1c26a87a3
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75551390"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75777822"
 ---
 # <a name="metrics-for-application-gateway"></a>Metryki dla Application Gateway
 
@@ -36,7 +36,7 @@ Dostępne są następujące metryki związane z chronometrażem żądania i odpo
 
   Średni czas przetwarzania żądania i jego odpowiedź do wysłania. Ta wartość jest obliczana jako średnia interwału od momentu, kiedy Application Gateway otrzymuje pierwszy bajt żądania HTTP do momentu zakończenia operacji wysyłania odpowiedzi. Należy pamiętać, że zwykle obejmuje to czas przetwarzania Application Gateway, czas, przez który pakiety żądań i odpowiedzi są przesyłane przez sieć i czas odpowiedzi serwera wewnętrznej bazy danych.
   
-Jeśli wartość *RTT klienta* jest znacznie większa niż *Całkowity czas trwania bramy aplikacji*, można określić, że opóźnienie zaobserwowane przez klienta jest spowodowane łącznością sieciową między klientem a Application Gateway. Jeśli oba opóźnienia są porównywalne, to duże opóźnienie może być spowodowane jedną z następujących czynności: Application Gateway, sieci między Application Gatewayą a aplikacją zaplecza lub wydajnością aplikacji zaplecza.
+Jeśli po filtrowaniu przez odbiornik wartość *RTT klienta* jest znacznie większa niż *Całkowity czas trwania bramy aplikacji*, można określić, że opóźnienie zaobserwowane przez klienta jest spowodowane łącznością sieciową między klientem a Application Gateway. Jeśli oba opóźnienia są porównywalne, to duże opóźnienie może być spowodowane jedną z następujących czynności: Application Gateway, sieci między Application Gatewayą a aplikacją zaplecza lub wydajnością aplikacji zaplecza.
 
 - **Czas odpowiedzi na pierwszy bajt zaplecza**
 

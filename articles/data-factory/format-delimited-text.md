@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 11/26/2019
+ms.date: 01/09/2020
 ms.author: jingwang
-ms.openlocfilehash: 77d2daf3fa17632d8a1c633c23815e0035e45481
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: f2e70a7b900ad918cda05ce34204e2de1e6e67ef
+ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931258"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75830194"
 ---
 # <a name="delimited-text-format-in-azure-data-factory"></a>Format tekstu rozdzielanego w Azure Data Factory
 
@@ -85,7 +85,7 @@ Obsługiwane **rozdzielane tekstem ustawienia odczytu** w obszarze `formatSettin
 
 | Właściwość      | Opis                                                  | Wymagane |
 | ------------- | ------------------------------------------------------------ | -------- |
-| type          | Typ formatSettings musi być ustawiony na **DelimitedTextReadSetting**. | Tak      |
+| type          | Typ formatSettings musi być ustawiony na **DelimitedTextReadSettings**. | Tak      |
 | skipLineCount | Wskazuje liczbę **niepuste** wierszy do pominięcia podczas odczytywania danych z plików wejściowych. <br>Jeśli określono zarówno właściwość skipLineCount, jak i firstRowAsHeader, najpierw zostaną pominięte wiersze, a następnie zostaną odczytane informacje nagłówka z pliku wejściowego. | Nie       |
 
 ### <a name="delimited-text-as-sink"></a>Tekst rozdzielony jako ujścia
@@ -102,8 +102,8 @@ Obsługiwane **rozdzielone ustawienia zapisu tekstu** w `formatSettings`:
 
 | Właściwość      | Opis                                                  | Wymagane                                              |
 | ------------- | ------------------------------------------------------------ | ----------------------------------------------------- |
-| type          | Typ formatSettings musi być ustawiony na **DelimitedTextWriteSetting**. | Tak                                                   |
-| fileExtension | Rozszerzenie pliku używane do nazwy plików wyjściowych, np. `.csv`, `.txt`. Należy określić, kiedy `fileName` nie jest określony w wyjściowym zestawie danych DelimitedText. | Tak, jeśli nazwa pliku nie jest określona w wyjściowym zestawie danych |
+| type          | Typ formatSettings musi być ustawiony na **DelimitedTextWriteSettings**. | Tak                                                   |
+| fileExtension | Rozszerzenie pliku używane do nazwy plików wyjściowych, np. `.csv`, `.txt`. Należy określić, kiedy `fileName` nie jest określony w wyjściowym zestawie danych DelimitedText. Jeśli nazwa pliku jest skonfigurowana w wyjściowym zestawie danych, zostanie użyta jako nazwa pliku ujścia i ustawienie rozszerzenia pliku zostanie zignorowane.  | Tak, jeśli nazwa pliku nie jest określona w wyjściowym zestawie danych |
 
 ## <a name="mapping-data-flow-properties"></a>Mapowanie właściwości przepływu danych
 

@@ -11,12 +11,12 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: carlrab
 ms.date: 12/20/2018
-ms.openlocfilehash: 75fe07dc9847ae32248688bc20fac01e74c7b26a
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: ee929fa227cb105b73bc929c13a768aabef37ce3
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821852"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771687"
 ---
 # <a name="best-practices-for-sql-data-sync"></a>Najlepsze rozwiązania dotyczące funkcji SQL Data Sync 
 
@@ -50,7 +50,7 @@ Azure SQL Database obsługuje tylko jeden zestaw poświadczeń. Aby wykonać te 
 -   Zmień poświadczenia dla różnych faz (na przykład *credentials1* na potrzeby instalacji i *credentials2* na bieżąco).  
 -   Zmień uprawnienia poświadczeń (oznacza to, że po skonfigurowaniu synchronizacji należy zmienić uprawnienia.
 
-## <a name="setup"></a>Konfigurowanie
+## <a name="setup"></a>Konfiguracja
 
 ### <a name="database-considerations-and-constraints"></a>Zagadnienia i ograniczenia dotyczące bazy danych
 
@@ -116,7 +116,7 @@ Aby zminimalizować opóźnienie, należy pozostawić bazę danych centrum w pob
 
 Zastosuj powyższe wskazówki do złożonych konfiguracji grup synchronizacji, takich jak te, które są mieszane w scenariuszach między przedsiębiorstwami a chmurą i chmurą.
 
-## <a name="sync"></a>Sync
+## <a name="sync"></a>Synchronizacja
 
 ### <a name="avoid-a-slow-and-costly-initial-synchronization"></a>Unikaj powolnej i kosztownej synchronizacji początkowej
 
@@ -217,6 +217,14 @@ Nie należy próbować usunąć bazy danych z grupy synchronizacji, a następnie
 Zamiast tego należy najpierw usunąć bazę danych z grupy synchronizacji. Następnie wdróż zmianę i poczekaj na zakończenie anulowania aprowizacji. Po zakończeniu anulowania aprowizacji można edytować grupę synchronizacji i wdrożyć zmiany.
 
 W przypadku próby usunięcia bazy danych, a następnie edytowania grupy synchronizacji bez wcześniejszego wdrożenia jednej z tych zmian jedna lub druga operacja zakończy się niepowodzeniem. Interfejs portalu może stać się niespójny. W takim przypadku należy odświeżyć stronę, aby przywrócić poprawny stan.
+
+### <a name="avoid-schema-refresh-timeout"></a>Unikanie limitu czasu odświeżania schematu
+
+Jeśli masz złożony schemat do synchronizacji, podczas odświeżania schematu może wystąpić komunikat "limit czasu operacji", jeśli baza danych metadanych synchronizacji ma niższą jednostkę SKU (przykład: Basic). 
+
+#### <a name="solution"></a>Rozwiązanie
+
+Aby rozwiązać ten problem, należy przeskalować bazę danych metadanych synchronizacji w celu uzyskania wyższej jednostki SKU, takiej jak S3. 
 
 ## <a name="next-steps"></a>Następne kroki
 Aby uzyskać więcej informacji na temat SQL Data Sync, zobacz:

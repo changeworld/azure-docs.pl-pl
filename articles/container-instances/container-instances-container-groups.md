@@ -4,12 +4,12 @@ description: Więcej informacji na temat grup kontenerów w Azure Container Inst
 ms.topic: article
 ms.date: 11/01/2019
 ms.custom: mvc
-ms.openlocfilehash: ca160c62160bc5233139dccc650474811c4cd784
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 19fa50f83a2593b8914931e25fa99cb2e4896227
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442297"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770275"
 ---
 # <a name="container-groups-in-azure-container-instances"></a>Grupy kontenerów w Azure Container Instances
 
@@ -66,7 +66,7 @@ W tym scenariuszu można ustawić limit zasobów równy 2 procesor CPU dla tego 
 
 ## <a name="networking"></a>Networking
 
-Grupy kontenerów mogą udostępniać zewnętrzny adres IP i przestrzeń nazw portu na tym adresie IP. Aby umożliwić klientom zewnętrznym dotarcie do kontenera w grupie, należy uwidocznić port w adresie IP i z kontenera. Ponieważ kontenery w grupie współużytkują przestrzeń nazw portu, mapowanie portów nie jest obsługiwane. 
+Grupy kontenerów mogą współużytkować zewnętrzny adres IP, co najmniej jeden port na tym adresie IP oraz etykietę DNS z w pełni kwalifikowaną nazwą domeny (FQDN). Aby umożliwić klientom zewnętrznym dotarcie do kontenera w grupie, należy uwidocznić port w adresie IP i z kontenera. Ponieważ kontenery w grupie współużytkują przestrzeń nazw portu, mapowanie portów nie jest obsługiwane. Adres IP i nazwa FQDN grupy kontenerów zostaną wydane po usunięciu grupy kontenerów. 
 
 W obrębie grupy kontenerów wystąpienia kontenerów mogą się łączyć ze sobą za pomocą hosta lokalnego na dowolnym porcie, nawet jeśli te porty nie są ujawniane zewnętrznie na adres IP grupy lub z kontenera.
 
@@ -74,7 +74,13 @@ Opcjonalnie można wdrożyć grupy kontenerów w usłudze [Azure Virtual Network
 
 ## <a name="storage"></a>Usługa Storage
 
-Możesz określić woluminy zewnętrzne do zainstalowania w obrębie grupy kontenerów. Te woluminy można mapować na określone ścieżki w poszczególnych kontenerach w grupie.
+Możesz określić woluminy zewnętrzne do zainstalowania w obrębie grupy kontenerów. Obsługiwane są następujące woluminy:
+* [Udział plików platformy Azure][azure-files]
+* [Wpis tajny][secret]
+* [Pusty katalog][empty-directory]
+* [Sklonowane repozytorium git][volume-gitrepo]
+
+Te woluminy można mapować na określone ścieżki w poszczególnych kontenerach w grupie. 
 
 ## <a name="common-scenarios"></a>Typowe scenariusze
 
@@ -110,5 +116,8 @@ Dowiedz się, jak wdrożyć wielokontenerową grupę kontenerów z szablonem Azu
 [resource-requirements]: /rest/api/container-instances/containergroups/createorupdate#resourcerequirements
 [azure-files]: container-instances-volume-azure-files.md
 [virtual-network]: container-instances-vnet.md
+[secret]: container-instances-volume-secret.md
+[volume-gitrepo]: container-instances-volume-gitrepo.md
 [gpus]: container-instances-gpu.md
+[empty-directory]: container-instances-volume-emptydir.md
 [az-container-export]: /cli/azure/container#az-container-export

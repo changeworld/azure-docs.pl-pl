@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 12/10/2019
 ms.author: mlearned
-ms.openlocfilehash: 8af0f998df2a92e51078a2e23806cca07ff08ca3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6152becb8debd0700ddab6190284514c6d6cf69d
+ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75480088"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75830058"
 ---
 # <a name="public-preview---private-azure-kubernetes-service-cluster"></a>Publiczna wersja zapoznawcza — prywatny klaster usługi Azure Kubernetes Service
 
@@ -81,16 +81,16 @@ WHERE--Enable-Private-Cluster to obowiązkowa Flaga dla klastra prywatnego
 #### <a name="advanced-networking"></a>Zaawansowane sieci  
 
 ```azurecli-interactive
-az aks create \ 
-    --resource-group <private-cluster-resource-group>\ 
-    --name <private-cluster-name> \ 
-    --load-balancer-sku standard
-    --enable-private-cluster 
-    --network-plugin azure \ 
-    --vnet-subnet-id <subnet-id> \ 
-    --docker-bridge-address 172.17.0.1/16 \ 
-    --dns-service-ip 10.2.0.10 \ 
-    --service-cidr 10.2.0.0/24 \ 
+az aks create \
+    --resource-group <private-cluster-resource-group> \
+    --name <private-cluster-name> \
+    --load-balancer-sku standard \
+    --enable-private-cluster \
+    --network-plugin azure \
+    --vnet-subnet-id <subnet-id> \
+    --docker-bridge-address 172.17.0.1/16 \
+    --dns-service-ip 10.2.0.10 \
+    --service-cidr 10.2.0.0/24 
 ```
 WHERE--Enable-Private-Cluster to obowiązkowa Flaga dla klastra prywatnego 
 
@@ -108,6 +108,11 @@ Punkt końcowy serwera interfejsu API nie ma publicznego adresu IP. W związku z
     * Kliknij strefę Prywatna strefa DNS 
     * Wybierz łącze sieci wirtualnej w lewym okienku
     * Utwórz nowe łącze, aby dodać sieć wirtualną maszyny wirtualnej do strefy Prywatna strefa DNS (aby *łącze strefy DNS stało się dostępne, potrwa kilka minut)*
+    * Wróć do grupy zasobów MC_ * w portalu
+    * Wybierz sieć wirtualną w okienku po prawej stronie. Nazwa sieci wirtualnej będzie mieć postać AKS-VNET-*.
+    * Wybierz pozycję Komunikacja równorzędna w okienku po lewej stronie
+    * Kliknij pozycję Dodaj i Dodaj sieć wirtualną maszyny wirtualnej i Utwórz komunikację równorzędną.
+    * Przejdź do sieci wirtualnej, w której znajduje się maszyna wirtualna, a następnie kliknij pozycję Komunikacja równorzędna i wybierz sieć wirtualną AKS i Utwórz komunikację równorzędną. Jeśli zakresy adresów w sieci wirtualnej AKS oraz w sieci wirtualnej maszyny wirtualnej są kolizje, Komunikacja równorzędna nie powiedzie się. Zapoznaj się z tym [dokumentem][virtual-network-peering] , aby uzyskać więcej informacji na temat komunikacji równorzędnej sieci wirtualnych.
 * Użyj protokołu SSH do maszyny wirtualnej
 * Instalowanie narzędzia polecenia kubectl i uruchamianie poleceń polecenia kubectl
 
@@ -132,3 +137,5 @@ Punkt końcowy serwera interfejsu API nie ma publicznego adresu IP. W związku z
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
 [private-link-service]: https://docs.microsoft.com/azure/private-link/private-link-service-overview
+[virtual-network-peering]: ../virtual-network/virtual-network-peering-overview.md
+

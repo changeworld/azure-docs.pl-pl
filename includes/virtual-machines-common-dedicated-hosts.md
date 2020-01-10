@@ -8,13 +8,18 @@ ms.topic: include
 ms.date: 07/26/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 31fdd85fdcc40b38738d33e2c0c13797db7b1d42
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 207f5180db8a589ed4a68741ac18180370d21788
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390543"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75833897"
 ---
+## <a name="limitations"></a>Ograniczenia
+
+- Zestawy skalowania maszyn wirtualnych nie są obecnie obsługiwane na dedykowanych hostach.
+- Obsługiwane są następujące serie maszyn wirtualnych: DSv3 i ESv3. 
+
 ## <a name="benefits"></a>Korzyści 
 
 Rezerwowanie całego hosta zapewnia następujące korzyści:
@@ -22,7 +27,6 @@ Rezerwowanie całego hosta zapewnia następujące korzyści:
 -   Izolacja sprzętowa na poziomie serwera fizycznego. Żadne inne maszyny wirtualne nie zostaną umieszczone na hostach. Dedykowane hosty są wdrażane w tych samych centrach danych i korzystają z tej samej sieci i podstawowej infrastruktury magazynu, co inne, nieizolowane hosty.
 -   Kontrola nad zdarzeniami konserwacji zainicjowanymi przez platformę Azure. Chociaż większość zdarzeń konserwacji nie ma wpływu na maszyny wirtualne, istnieją pewne wrażliwe obciążenia, w przypadku których każda sekunda wstrzymania może mieć wpływ. Za pomocą dedykowanych hostów możesz wybrać okno obsługi, aby zmniejszyć wpływ na usługę.
 -   Korzyść używania hybrydowego platformy Azure umożliwia korzystanie z własnych licencji dla systemów Windows i SQL na platformie Azure. Korzystanie z zalet hybrydowych zapewnia dodatkowe korzyści. Aby uzyskać więcej informacji, zobacz [korzyść użycia hybrydowego platformy Azure](https://azure.microsoft.com/pricing/hybrid-benefit/).
-
 
 
 ## <a name="groups-hosts-and-vms"></a>Grupy, hosty i maszyny wirtualne  
@@ -62,7 +66,7 @@ Można używać obu funkcji jednocześnie, aby osiągnąć jeszcze większą izo
 
 Przykładowy szablon Menedżer zasobów znaleziony w [tym miejscu](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-dedicated-hosts/README.md) używa stref i domen błędów do rozmieszczenia hostów w celu uzyskania maksymalnej odporności w regionie.
 
-## <a name="maintenance-control"></a>Kontrola konserwacji
+## <a name="maintenance-control"></a>Sterowanie konserwacją
 
 Infrastruktura obsługująca maszyny wirtualne może być czasami aktualizowana w celu poprawy niezawodności, wydajności, zabezpieczeń i uruchamiania nowych funkcji. Platforma Azure próbuje zminimalizować wpływ konserwacji na platformę, jeśli jest to możliwe, ale klienci, którzy mają *wrażliwe* obciążenia, nie mogą tolerować nawet kilka sekund, aby maszyna wirtualna mogła zostać zamrożona lub odłączona do konserwacji.
 
@@ -71,7 +75,7 @@ Infrastruktura obsługująca maszyny wirtualne może być czasami aktualizowana 
 > [!NOTE]
 >  Kontrola konserwacji jest obecnie w ograniczonym etapie wersji zapoznawczej i wymaga procesu dołączania. Zastosuj do tej wersji zapoznawczej, przesyłając [ankietę nominacji](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR6lJf7DwiQxNmz51ksQvxV9UNUM3UllWUjBMTFZQUFhHUDI0VTBPQlJFNS4u).
 
-## <a name="capacity-considerations"></a>Zagadnienia dotyczące pojemności
+## <a name="capacity-considerations"></a>Zagadnienia dotyczące wydajności
 
 Po aprowizacji dedykowanego hosta platforma Azure przypisze ją do serwera fizycznego. Gwarantuje to dostępność pojemności, gdy trzeba zainicjować obsługę administracyjną maszyny wirtualnej. Platforma Azure używa całej pojemności w regionie (lub strefie), aby wybrać serwer fizyczny dla hosta. Oznacza to również, że klienci mogą być w stanie rozwijać dedykowane hosty bez obaw o wykorzystaniu miejsca w klastrze.
 
@@ -99,11 +103,11 @@ Aby uzyskać więcej informacji, zobacz [Cennik dedykowanego hosta platformy Azu
 
 Jednostka SKU jest definiowana dla hosta i reprezentuje serię i typ rozmiaru maszyny wirtualnej. Można mieszać wiele maszyn wirtualnych o różnych rozmiarach w ramach jednego hosta, o ile mają one taką samą serię rozmiarów. Typ to generacja sprzętowa aktualnie dostępna w regionie.
 
-Różne `types` dla tej samej serii maszyn wirtualnych będą należeć od różnych dostawców procesora i mają różne generacji procesora CPU oraz liczbę rdzeni.
+Różne `types` dla tej samej serii maszyn wirtualnych będą należeć od różnych dostawców procesora CPU i mają różne generacji procesora CPU oraz liczbę rdzeni.
 
 Więcej informacji można znaleźć na [stronie cennika](https://aka.ms/ADHPricing) hosta.
 
-W ramach wersji zapoznawczej będziemy obsługiwać następujące SKU\types hosta: DSv3_Type1 i ESv3_Type1
+Dedykowane hosty obsługują następujące SKU\types hosta: DSv3_Type1 i ESv3_Type1
 
  
 ## <a name="host-life-cycle"></a>Cykl życia hosta
@@ -115,6 +119,6 @@ Platforma Azure monitoruje stan kondycji hostów i zarządza nim. Podczas wykony
 |----------|----------------|
 | Dostępne hosty     | Nie ma żadnych znanych problemów z hostem.   |
 | Host objęty badaniem  | Mamy problemy z hostem, do którego chcemy. Jest to stan przejściowy wymagany przez platformę Azure do wypróbowania i zidentyfikowania zakresu oraz głównej przyczyny zidentyfikowanego problemu. Może to mieć wpływ na maszyny wirtualne działające na hoście. |
-| Host oczekujący na cofnięcie alokacji   | Platforma Azure nie może przywrócić kondycji hosta z powrotem do stanu prawidłowego i poprosił o ponowne wdrożenie maszyn wirtualnych poza tym hostem. Jeśli `autoReplaceOnFailure` jest włączona, Twoje maszyny wirtualne są *usługą zaleczoną* do zdrowego sprzętu. W przeciwnym razie maszyna wirtualna może działać na hoście, który kończy się niepowodzeniem.|
+| Host oczekujący na cofnięcie alokacji   | Platforma Azure nie może przywrócić kondycji hosta z powrotem do stanu prawidłowego i poprosił o ponowne wdrożenie maszyn wirtualnych poza tym hostem. Jeśli `autoReplaceOnFailure` jest włączona, Twoje maszyny wirtualne są *usługą* dodaną do prawidłowego sprzętu. W przeciwnym razie maszyna wirtualna może działać na hoście, który kończy się niepowodzeniem.|
 | Cofnięto przydział hosta  | Wszystkie maszyny wirtualne zostały usunięte z hosta. Nie są już naliczane opłaty za tego hosta, ponieważ sprzęt nie został przetworzony.   |
 

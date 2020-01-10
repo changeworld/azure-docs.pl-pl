@@ -1,7 +1,7 @@
 ---
 title: 'Szybki Start: wykrywanie anomalii danych za pomocą biblioteki klienta wykrywania anomalii dla języka Python'
 titleSuffix: Azure Cognitive Services
-description: Użyj interfejsu API wykrywania anomalii w celu wykrycia nieprawidłowości w seriach danych jako partii lub przesyłania strumieniowego danych.
+description: Użyj interfejsu API wykrywania anomalii w celu wykrycia nieprawidłowości w seriach danych jako partii lub przesyłania strumieniowego danych za pomocą tego przewodnika Szybki Start.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: quickstart
 ms.date: 11/19/2019
 ms.author: aahi
-ms.openlocfilehash: 084ef1b81f7db5bd4a2d371e0c322211c0f0e142
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 17ca1a7671718b5b96df0add7775fb82d4d97303
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483501"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770445"
 ---
 # <a name="quickstart-anomaly-detector-client-library-for-nodejs"></a>Szybki Start: Biblioteka kliencka wykrywania anomalii dla środowiska Node. js
 
@@ -67,7 +67,7 @@ Utwórz zmienne i klucz punktu końcowego platformy Azure dla zasobu. Jeśli zmi
 Zainstaluj `ms-rest-azure` i `azure-cognitiveservices-anomalydetector` pakiety NPM. Biblioteka analizy woluminów CSV jest również używana w tym przewodniku szybki start:
 
 ```console
-npm install  @azure/cognitiveservices-anomalydetector ms-rest-azure csv-parse
+npm install  @azure/cognitiveservices-anomalydetector @azure/ms-rest-js csv-parse
 ```
 
 Plik `package.json` aplikacji zostanie zaktualizowany przy użyciu zależności.

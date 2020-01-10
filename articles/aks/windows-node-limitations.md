@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: mlearned
-ms.openlocfilehash: 3a57fbb010f8a04352d09d4b6d57cf465e3e6988
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 3dd7399b68388d92d38b0f64c6e816cb94b3f295
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279155"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768575"
 ---
 # <a name="current-limitations-for-windows-server-node-pools-and-application-workloads-in-azure-kubernetes-service-aks"></a>Bieżące ograniczenia dotyczące pul węzłów systemu Windows Server i obciążeń aplikacji w usłudze Azure Kubernetes Service (AKS)
 
@@ -65,6 +65,10 @@ Węzły systemu Windows Server w AKS muszą zostać *uaktualnione* w celu pobran
 > [!NOTE]
 > Zaktualizowany obraz systemu Windows Server będzie używany tylko wtedy, gdy uaktualnienie klastra (uaktualnienie płaszczyzny kontroli) zostało wykonane przed uaktualnieniem puli węzłów
 >
+
+## <a name="how-do-i-rotate-the-service-principal-for-my-windows-node-pool"></a>Jak mogę obrócić jednostki usługi dla puli węzłów systemu Windows?
+
+W trakcie okresu zapoznawczego pule węzłów systemu Windows nie obsługują rotacji jednostki usługi jako ograniczenia wersji zapoznawczej. Aby zaktualizować jednostkę usługi, należy utworzyć nową pulę węzłów systemu Windows i przeprowadzić migrację z starszej puli do nowej. Po zakończeniu tej czynności usuń starszą pulę węzłów.
 
 ## <a name="how-many-node-pools-can-i-create"></a>Ile pul węzłów można utworzyć?
 

@@ -5,12 +5,12 @@ ms.date: 03/04/2019
 ms.topic: conceptual
 description: Zawiera opis procesów Azure Dev Spaces i sposobu ich konfiguracji w pliku konfiguracji azds. YAML
 keywords: azds. YAML, Azure Dev Spaces, Spaces dev, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers
-ms.openlocfilehash: 9efae0e9d6bc53e08dce604fa79aa29e158ecabd
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: e96541b0008dca9cbaeda92152f835c188036971
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74280146"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771142"
 ---
 # <a name="how-azure-dev-spaces-works-and-is-configured"></a>Jak działa Azure Dev Spaces i jest skonfigurowany
 
@@ -415,7 +415,7 @@ Możesz również utworzyć nowe miejsce dev, które jest tworzone na podstawie 
 
 Pochodna przestrzeń dev również umożliwia inteligentne kierowanie żądań między własnymi aplikacjami i aplikacjami udostępnionymi z jego elementu nadrzędnego. Routing działa przez próbę skierowania żądania do aplikacji w pochodnym obszarze dev i powrocie do aplikacji udostępnionej z nadrzędnego obszaru dev. Routing powróci do aplikacji udostępnionej w obszarze nadrzędnym, jeśli aplikacja nie znajduje się w przestrzeni nadrzędnej.
 
-Na przykład:
+Przykład:
 * *Domyślna* przestrzeń dev ma aplikacje *Service* i *serviceB* .
 * Przestrzeń dev *azureuser* jest pochodną *domyślnego*.
 * Zaktualizowana wersja *usługi Service* . została wdrożona w *azureuser*.
@@ -440,4 +440,4 @@ Aby rozpocząć pracę z programowaniem zespołowym, zobacz następujące artyku
 
 
 
-[supported-regions]: about.md#supported-regions-and-configurations
+[supported-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service

@@ -5,47 +5,46 @@ services: data-factory
 author: linda33wj
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 11/26/2019
+ms.date: 01/09/2020
 ms.author: jingwang
 ms.reviewer: craigg
-ms.openlocfilehash: 218031830a7516dfd539e1c0b9b665807822f38d
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 9f3a13a097d7cce87aead4ec2d76ce7cbbb1a206
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533146"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75778230"
 ---
 # <a name="troubleshoot-azure-data-factory-connectors"></a>Rozwiązywanie problemów z łącznikami Azure Data Factory
 
 W tym artykule przedstawiono typowe metody rozwiązywania problemów z łącznikami w Azure Data Factory.
+  
 
-## <a name="azure-data-lake-storage"></a>Azure Data Lake Storage
+## <a name="azure-blob-storage"></a>Azure Blob Storage
 
-### <a name="error-message-the-remote-server-returned-an-error-403-forbidden"></a>Komunikat o błędzie: serwer zdalny zwrócił błąd: (403) zabroniony
+### <a name="error-code--azurebloboperationfailed"></a>Kod błędu: AzureBlobOperationFailed
 
-- **Objawy**: działanie kopiowania kończy się niepowodzeniem z powodu następującego błędu: 
+- **Komunikat**: `Blob operation Failed. ContainerName: %containerName;, path: %path;.`
 
-    ```
-    Message: The remote server returned an error: (403) Forbidden.. 
-    Response details: {"RemoteException":{"exception":"AccessControlException""message":"CREATE failed with error 0x83090aa2 (Forbidden. ACL verification failed. Either the resource does not exist or the user is not authorized to perform the requested operation.)....
-    ```
+- **Przyczyna**: problem z trafieniem magazynu obiektów BLOB.
 
-- **Przyczyna**: jedną z możliwych przyczyn jest to, że główna lub zarządzana tożsamość usługi nie ma uprawnień dostępu do określonego folderu/pliku.
+- **Zalecenie**: Sprawdź błąd w obszarze Szczegóły. Zapoznaj się z dokumentem pomocy obiektu BLOB: https://docs.microsoft.com/rest/api/storageservices/blob-service-error-codes. Skontaktuj się z zespołem ds. magazynu, jeśli potrzebujesz pomocy.
 
-- **Rozwiązanie**: Przyznaj odpowiednie uprawnienia do wszystkich folderów i podfolderów, które chcesz skopiować. Zapoznaj się z [tym dokumentem](connector-azure-data-lake-store.md#linked-service-properties).
 
-### <a name="error-message-failed-to-get-access-token-by-using-service-principal-adal-error-service_unavailable"></a>Komunikat o błędzie: nie można uzyskać tokenu dostępu przy użyciu nazwy głównej usługi. Błąd ADAL: service_unavailable
+### <a name="error-code--azureblobservicenotreturnexpecteddatalength"></a>Kod błędu: AzureBlobServiceNotReturnExpectedDataLength
 
-- **Objawy**: działanie kopiowania kończy się niepowodzeniem z powodu następującego błędu:
+- **Komunikat**: `Error occurred when trying to fetch the blob '%name;'. This could be a transient issue and you may rerun the job. If it fails again continuously, contact customer support.`
 
-    ```
-    Failed to get access token by using service principal. 
-    ADAL Error: service_unavailable, The remote server returned an error: (503) Server Unavailable.
-    ```
 
-- **Przyczyna**: gdy serwer tokenów usług (STS) należący do Azure Active Directory nie jest niedostępny, czyli zbyt zajęty, aby obsługiwać żądania, zwraca błąd HTTP 503. 
+### <a name="error-code--azureblobnotsupportmultiplefilesintosingleblob"></a>Kod błędu: AzureBlobNotSupportMultipleFilesIntoSingleBlob
 
-- **Rozwiązanie**: ponownie uruchom działanie kopiowania po kilku minutach.
+- **Komunikat**: `Transferring multiple files into a single Blob is not supported. Currently only single file source is supported.`
+
+
+### <a name="error-code--azurestorageoperationfailedconcurrentwrite"></a>Kod błędu: AzureStorageOperationFailedConcurrentWrite
+
+- **Komunikat**: `Error occurred when trying to upload a file. It's possible because you have multiple concurrent copy activities runs writing to the same file '%name;'. Check your ADF configuration.`
+
 
 ## <a name="azure-cosmos-db"></a>Azure Cosmos DB
 
@@ -119,60 +118,87 @@ W tym artykule przedstawiono typowe metody rozwiązywania problemów z łącznik
 - **Przyczyna**: Istnieją dwa sposoby reprezentowania identyfikatora UUID w BSON-UuidStardard i UuidLegacy. Domyślnie UuidLegacy jest używany do odczytywania danych. Zostanie trafiony błąd, jeśli dane UUID w MongoDB jest UuidStandard.
 
 - **Rozwiązanie**: w parametrach połączenia MongoDB Dodaj opcję "**uuidRepresentation = Standard**". Aby uzyskać więcej informacji, zobacz [MongoDB parametry połączenia](connector-mongodb.md#linked-service-properties).
+            
 
-## <a name="sftp"></a>SFTP
+## <a name="azure-data-lake-storage-gen2"></a>Usługa Azure Data Lake Storage 2. generacji
 
-### <a name="error-message-invalid-sftp-credential-provided-for-sshpublickey-authentication-type"></a>Komunikat o błędzie: podano nieprawidłowe poświadczenie SFTP dla typu uwierzytelniania "SshPublicKey"
+### <a name="error-code--adlsgen2operationfailed"></a>Kod błędu: AdlsGen2OperationFailed
 
-- **Objawy**: używasz uwierzytelniania `SshPublicKey` i wystąpił następujący błąd:
+- **Komunikat**: `ADLS Gen2 operation failed for: %adlsGen2Message;.%exceptionData;.`
+
+- **Przyczyna**: ADLS Gen2 zgłasza błąd wskazujący, że operacja nie powiodła się.
+
+- **Zalecenie**: Sprawdź szczegółowy komunikat o błędzie zgłoszony przez ADLS Gen2. Jeśli jest to spowodowane błędem przejściowym, spróbuj ponownie. Jeśli potrzebujesz dalszej pomocy, skontaktuj się z pomocą techniczną usługi Azure Storage i podaj identyfikator żądania w komunikacie o błędzie.
+
+- **Przyczyna**: Jeśli komunikat o błędzie zawiera wartość "zabronione", nazwa główna usługi lub tożsamość zarządzana może nie mieć wystarczających uprawnień, aby uzyskać dostęp do ADLS Gen2.
+
+- **Zalecenie**: Zapoznaj się z dokumentem pomocy: https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#service-principal-authentication.
+
+- **Przyczyna**: Jeśli komunikat o błędzie zawiera wartość "InternalServerError", błąd jest zwracany przez ADLS Gen2.
+
+- **Zalecenie**: może to być spowodowane błędem przejściowym, spróbuj ponownie. Jeśli problem będzie się powtarzać, skontaktuj się z pomocą techniczną usługi Azure Storage i podaj identyfikator żądania w komunikacie o błędzie.
+
+
+### <a name="error-code--adlsgen2invalidurl"></a>Kod błędu: AdlsGen2InvalidUrl
+
+- **Komunikat**: `Invalid url '%url;' provided, expecting http[s]://<accountname>.dfs.core.windows.net.`
+
+
+### <a name="error-code--adlsgen2invalidfolderpath"></a>Kod błędu: AdlsGen2InvalidFolderPath
+
+- **Komunikat**: `The folder path is not specified. Cannot locate the file '%name;' under the ADLS Gen2 account directly. Please specify the folder path instead.`
+
+
+### <a name="error-code--adlsgen2operationfailedconcurrentwrite"></a>Kod błędu: AdlsGen2OperationFailedConcurrentWrite
+
+- **Komunikat**: `Error occurred when trying to upload a file. It's possible because you have multiple concurrent copy activities runs writing to the same file '%name;'. Check your ADF configuration.`
+
+
+### <a name="error-code--adlsgen2timeouterror"></a>Kod błędu: AdlsGen2TimeoutError
+
+- **Komunikat**: `Request to ADLS Gen2 account '%account;' met timeout error. It is mostly caused by the poor network between the Self-hosted IR machine and the ADLS Gen2 account. Check the network to resolve such error.`
+
+
+## <a name="azure-data-lake-storage-gen1"></a>Azure Data Lake Storage 1. generacji
+
+### <a name="error-message-the-remote-server-returned-an-error-403-forbidden"></a>Komunikat o błędzie: serwer zdalny zwrócił błąd: (403) zabroniony
+
+- **Objawy**: działanie kopiowania kończy się niepowodzeniem z powodu następującego błędu: 
 
     ```
-    Invalid Sftp credential provided for 'SshPublicKey' authentication type
+    Message: The remote server returned an error: (403) Forbidden.. 
+    Response details: {"RemoteException":{"exception":"AccessControlException""message":"CREATE failed with error 0x83090aa2 (Forbidden. ACL verification failed. Either the resource does not exist or the user is not authorized to perform the requested operation.)....
     ```
 
-- **Przyczyna**: Istnieją trzy możliwe przyczyny:
+- **Przyczyna**: jedną z możliwych przyczyn jest to, że główna lub zarządzana tożsamość usługi nie ma uprawnień dostępu do określonego folderu/pliku.
 
-    1. Jeśli do utworzenia połączonej usługi SFTP jest używany interfejs użytkownika tworzenia APD, ten błąd oznacza, że klucz prywatny, którego chcesz użyć, ma zły format. Możesz użyć formatu PKCS # 8 prywatnego klucza SSH, podczas gdy funkcja ADF obsługuje tylko tradycyjny format klucza SSH. Bardziej szczegółowe różnice w formacie PKCS # 8 i tradycyjnym formacie klucza to zawartość klucza PKCS # 8 rozpoczyna się od " *-----rozpoczęcia szyfrowania klucza prywatnego-----* ", natomiast tradycyjny format klucza rozpoczyna się od " *-----Rozpocznij-----klucza prywatnego RSA*".
-    2. Jeśli używasz Azure Key Vault do przechowywania zawartości klucza prywatnego lub korzystania z programistycznego sposobu tworzenia połączonej usługi SFTP, ten błąd oznacza, że zawartość klucza prywatnego jest niepoprawna, prawdopodobnie nie jest zakodowana w formacie base64.
-    3. Nieprawidłowa zawartość poświadczeń lub klucza prywatnego.
+- **Rozwiązanie**: Przyznaj odpowiednie uprawnienia do wszystkich folderów i podfolderów, które chcesz skopiować. Zapoznaj się z [tym dokumentem](connector-azure-data-lake-store.md#linked-service-properties).
 
-- **Rozwiązanie**: 
+### <a name="error-message-failed-to-get-access-token-by-using-service-principal-adal-error-service_unavailable"></a>Komunikat o błędzie: nie można uzyskać tokenu dostępu przy użyciu nazwy głównej usługi. Błąd ADAL: service_unavailable
 
-    - W celu uzyskania przyczyny #1 Uruchom następujące polecenia, aby skonwertować klucz na tradycyjny format, a następnie użyj go w interfejsie użytkownika tworzenia ADF.
+- **Objawy**: działanie kopiowania kończy się niepowodzeniem z powodu następującego błędu:
 
-        ```
-        # Decrypt the pkcs8 key and convert the format to traditional key format
-        openssl pkcs8 -in pkcs8_format_key_file -out traditional_format_key_file
+    ```
+    Failed to get access token by using service principal. 
+    ADAL Error: service_unavailable, The remote server returned an error: (503) Server Unavailable.
+    ```
 
-        chmod 600 traditional_format_key_file
+- **Przyczyna**: gdy serwer tokenów usług (STS) należący do Azure Active Directory nie jest niedostępny, czyli zbyt zajęty, aby obsługiwać żądania, zwraca błąd HTTP 503. 
 
-        # Re-encrypte the key file using passphrase
-        ssh-keygen -f traditional_format_key_file -p
-        ```
+- **Rozwiązanie**: ponownie uruchom działanie kopiowania po kilku minutach.
+                  
 
-    - W celu wygenerowania takiego ciągu przez #2 Klient może użyć poniżej 2 sposobów:
-    - Używanie narzędzia konwersji Base64 innej firmy: wklej całą zawartość klucza prywatnego do narzędzi, takich jak [kodowanie base64 i dekodowanie](https://www.base64encode.org/), zakoduj ją w formacie Base64, a następnie wklej ten ciąg do magazynu kluczy lub Użyj tej wartości w celu programistycznego tworzenia połączonej usługi SFTP.
-    - Korzystanie C# z kodu:
-
-        ```c#
-        byte[] keyContentBytes = File.ReadAllBytes(privateKeyPath);
-        string keyContent = Convert.ToBase64String(keyContentBytes, Base64FormattingOptions.None);
-        ```
-
-    - W celu uzyskania przyczyny #3 należy dokładnie sprawdzić, czy plik klucza lub hasło są poprawne przy użyciu innych narzędzi do sprawdzenia, czy można go użyć w celu poprawnego dostępu do serwera SFTP.
-  
-
-## <a name="azure-sql-data-warehouse--azure-sql-database--sql-server"></a>Azure SQL Data Warehouse \ Azure SQL Database \ SQL Server
+## <a name="azure-sql-data-warehouseazure-sql-databasesql-server"></a>Azure SQL Data Warehouse/Azure SQL Database/SQL Server
 
 ### <a name="error-code--sqlfailedtoconnect"></a>Kod błędu: SqlFailedToConnect
 
-- **Komunikat**: `Cannot connect to SQL database: '%server;', Database: '%database;', User: '%user;'. Please check the linked service configuration is correct, and make sure the SQL database firewall allows the integration runtime to access.`
+- **Komunikat**: `Cannot connect to SQL Database: '%server;', Database: '%database;', User: '%user;'. Check the linked service configuration is correct, and make sure the SQL Database firewall allows the integration runtime to access.`
 
-- **Przyczyna**: Jeśli komunikat o błędzie zawiera wartość "SqlException", baza danych SQL zgłasza błąd wskazujący, że niektóre konkretne operacje nie powiodły się.
+- **Przyczyna**: Jeśli komunikat o błędzie zawiera wartość "SqlException", SQL Database zgłasza błąd wskazujący, że określona operacja nie powiodła się.
 
-- **Zalecenie**: Aby uzyskać więcej informacji, Wyszukaj według kodu błędu SQL w tym dokumencie odwołania: https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors. Jeśli potrzebujesz dalszej pomocy, skontaktuj się z pomocą techniczną platformy Azure.
+- **Zalecenie**: Aby uzyskać więcej informacji, Wyszukaj według kodu błędu SQL w tym dokumencie odwołania: https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors. Jeśli potrzebujesz dalszej pomocy, skontaktuj się z pomocą techniczną Azure SQL.
 
-- **Przyczyna**: Jeśli komunikat o błędzie zawiera wartość "klient z adresem IP"... " nie ma dostępu do serwera "i próbujesz nawiązać połączenie z usługą Azure SQL Database, zwykle jest to spowodowane problemem z zaporą usługi Azure SQL Database.
+- **Przyczyna**: Jeśli komunikat o błędzie zawiera wartość "klient z adresem IP"... " nie ma dostępu do serwera "i próbujesz nawiązać połączenie z Azure SQL Database, zwykle jest to spowodowane przez Azure SQL Database problem z zaporą.
 
 - **Zalecenie**: w konfiguracji zapory SQL Server platformy Azure Włącz opcję "Zezwalaj na dostęp do tego serwera dla usług i zasobów platformy Azure". Doc Reference: https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure.
 
@@ -181,13 +207,14 @@ W tym artykule przedstawiono typowe metody rozwiązywania problemów z łącznik
 
 - **Komunikat**: `A database operation failed. Please search error to get more details.`
 
-- **Przyczyna**: Jeśli komunikat o błędzie zawiera wartość "SqlException", baza danych SQL zgłasza błąd wskazujący, że niektóre konkretne operacje nie powiodły się.
+- **Przyczyna**: Jeśli komunikat o błędzie zawiera wartość "SqlException", SQL Database zgłasza błąd wskazujący, że określona operacja nie powiodła się.
 
-- **Zalecenie**: Aby uzyskać więcej informacji, Wyszukaj według kodu błędu SQL w tym dokumencie odwołania: https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors. Jeśli potrzebujesz dalszej pomocy, skontaktuj się z pomocą techniczną platformy Azure.
+- **Zalecenie**: Jeśli błąd SQL nie jest wyczyszczony, spróbuj zmienić bazę danych na najnowszy poziom zgodności "150". Może zgłosić najnowsze wersje programu SQL Server. Zapoznaj się z dokumentem szczegółowym: https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-compatibility-level?view=sql-server-ver15#backwardCompat.
+        Aby rozwiązać problemy związane z programem SQL, wyszukaj kod błędu SQL w tym dokumencie odwołania, aby uzyskać więcej szczegółów: https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors. Jeśli potrzebujesz dalszej pomocy, skontaktuj się z pomocą techniczną Azure SQL.
 
 - **Przyczyna**: Jeśli komunikat o błędzie zawiera "PdwManagedToNativeInteropException", zazwyczaj jest spowodowany niezgodnością rozmiarów kolumn źródłowych i ujścia.
 
-- **Zalecenie**: Sprawdź rozmiar kolumn źródłowych i ujścia. Jeśli potrzebujesz dalszej pomocy, skontaktuj się z pomocą techniczną platformy Azure.
+- **Zalecenie**: Sprawdź rozmiar kolumn źródłowych i ujścia. Jeśli potrzebujesz dalszej pomocy, skontaktuj się z pomocą techniczną Azure SQL.
 
 - **Przyczyna**: Jeśli komunikat o błędzie zawiera wartość "InvalidOperationException", zazwyczaj jest to spowodowane przez nieprawidłowe dane wejściowe.
 
@@ -198,23 +225,23 @@ W tym artykule przedstawiono typowe metody rozwiązywania problemów z łącznik
 
 - **Komunikat**: `Cannot connect to '%connectorName;'. Detail Message: '%message;'`
 
-- **Przyczyna**: poświadczenie jest niepoprawne lub konto logowania nie może uzyskać dostępu do bazy danych SQL.
+- **Przyczyna**: poświadczenie jest niepoprawne lub konto logowania nie może uzyskać dostępu do SQL Database.
 
-- **Zalecenie**: Sprawdź, czy konto logowania ma wystarczające uprawnienia dostępu do bazy danych SQL.
+- **Zalecenie**: Sprawdź, czy konto logowania ma wystarczające uprawnienia dostępu do SQL Database.
 
 
 ### <a name="error-code--sqlopenconnectiontimeout"></a>Kod błędu: SqlOpenConnectionTimeout
 
 - **Komunikat**: `Open connection to database timeout after '%timeoutValue;' seconds.`
 
-- **Przyczyna**: może to być błąd przejściowy bazy danych SQL.
+- **Przyczyna**: może być SQL Database błąd przejściowy.
 
 - **Zalecenie**: spróbuj ponownie zaktualizować parametry połączenia połączonej usługi z większą wartością limitu czasu połączenia.
 
 
 ### <a name="error-code--sqlautocreatetabletypemapfailed"></a>Kod błędu: SqlAutoCreateTableTypeMapFailed
 
-- **Komunikat**: `Type '%dataType;' in source side cannot be mapped to a type that supported by sink side(colunm name:'%colunmName;') in auto-create table.`
+- **Komunikat**: `Type '%dataType;' in source side cannot be mapped to a type that supported by sink side(column name:'%columnName;') in autocreate table.`
 
 - **Przyczyna**: tabela autotworzenia nie może spełnić wymagań źródłowych.
 
@@ -223,15 +250,15 @@ W tym artykule przedstawiono typowe metody rozwiązywania problemów z łącznik
 
 ### <a name="error-code--sqldatatypenotsupported"></a>Kod błędu: SqlDataTypeNotSupported
 
-- **Komunikat**: `A database operation failed. Please check the SQL errors.`
+- **Komunikat**: `A database operation failed. Check the SQL errors.`
 
 - **Przyczyna**: Jeśli problem występuje w źródle SQL, a błąd jest związany z przepełnieniem SqlDateTime, wartość danych jest poza zakresem typów logiki (1/1/1753 12:00:00 AM-12/31/9999 11:59:59 PM).
 
-- **Zalecenie**: Przeprowadź rzutowanie typu na ciąg w źródłowym zapytaniu SQL lub w mapowaniu kolumny działania kopiowania Zmień typ kolumny na "String".
+- **Zalecenie**: rzutowanie typu na ciąg w źródłowym zapytaniu SQL lub w mapowaniu kolumny działania kopiowania Zmień typ kolumny na "String".
 
 - **Przyczyna**: Jeśli problem występuje w usłudze SQL sink i błąd jest związany z przepełnieniem elementu SqlDateTime, wartość danych jest poza dozwolonym zakresem w tabeli ujścia.
 
-- **Zalecenie**: zaktualizuj odpowiedni typ kolumny do typu "datetime2" w tabeli sink.
+- **Zalecenie**: zaktualizuj odpowiedni typ kolumny na typ "datetime2" w tabeli sink.
 
 
 ### <a name="error-code--sqlinvaliddbstoredprocedure"></a>Kod błędu: SqlInvalidDbStoredProcedure
@@ -258,43 +285,58 @@ W tym artykule przedstawiono typowe metody rozwiązywania problemów z łącznik
 
 - **Przyczyna**: nie można odnaleźć kolumny. Nieprawidłowa konfiguracja.
 
-- **Zalecenie**: Upewnij się, że kolumna w zapytaniach "Structure" w elemencie DataSet i "Mappings" w działaniu.
+- **Zalecenie**: Sprawdź kolumnę w kwerendzie, "Structure" w zestawie danych i w działaniu.
+
+
+### <a name="error-code--sqlcolumnnamemismatchbycasesensitive"></a>Kod błędu: SqlColumnNameMismatchByCaseSensitive
+
+- **Komunikat**: `Column '%column;' in DataSet '%dataSetName;' cannot be found in physical SQL Database. Column matching is case-sensitive. Column '%columnInTable;' appears similar. Check the DataSet(s) configuration to proceed further.`
 
 
 ### <a name="error-code--sqlbatchwritetimeout"></a>Kod błędu: SqlBatchWriteTimeout
 
-- **Komunikat**: `Timeout in SQL write opertaion.`
+- **Komunikat**: `Timeouts in SQL write operation.`
 
-- **Przyczyna**: może to być błąd przejściowy bazy danych SQL.
+- **Przyczyna**: może być SQL Database błąd przejściowy.
 
-- **Zalecenie**: Jeśli problem Odtwórz, skontaktuj się z pomocą techniczną Azure SQL.
+- **Zalecenie**: spróbuj ponownie. Jeśli problem Odtwórz, skontaktuj się z pomocą techniczną Azure SQL.
 
 
-### <a name="error-code--sqlbatchwriterollbackfailed"></a>Kod błędu: SqlBatchWriteRollbackFailed
+### <a name="error-code--sqlbatchwritetransactionfailed"></a>Kod błędu: SqlBatchWriteTransactionFailed
 
-- **Komunikat**: `Timeout in SQL write operation and rollback also fail.`
+- **Komunikat**: `SQL transaction commits failed`
 
-- **Przyczyna**: może to być błąd przejściowy bazy danych SQL.
+- **Przyczyna**: Jeśli szczegóły wyjątku stale informują o limicie czasu transakcji, opóźnienie sieci między środowiskiem Integration Runtime i bazą danych jest większe niż domyślna wartość progowa co 30 sekund.
 
-- **Zalecenie**: spróbuj ponownie zaktualizować parametry połączenia połączonej usługi z większą wartością limitu czasu połączenia.
+- **Zalecenie**: zaktualizuj parametry połączenia połączonej usługi SQL z wartością "limit czasu połączenia" równą 120 lub wyższej i ponownie uruchom działanie.
+
+- **Przyczyna**: Jeśli szczegóły wyjątku sporadycznie informują o przerwaniu usługi SqlConnection, może to być tylko przejściowy błąd sieci lub SQL Database problemu ze stroną
+
+- **Zalecenie**: spróbuj ponownie wykonać działanie i przejrzyj metryki po stronie SQL Database.
 
 
 ### <a name="error-code--sqlbulkcopyinvalidcolumnlength"></a>Kod błędu: SqlBulkCopyInvalidColumnLength
 
-- **Komunikat**: `SQL Bulk Copy failed due to received an invalid column length from the bcp client.`
+- **Komunikat**: `SQL Bulk Copy failed due to receive an invalid column length from the bcp client.`
 
-- **Przyczyna**: Kopiowanie zbiorcze SQL nie powiodło się, ponieważ odebrano nieprawidłową długość kolumny od klienta bcp.
+- **Przyczyna**: Kopiowanie zbiorcze SQL nie powiodło się z powodu odebrania nieprawidłowej długości kolumny od klienta bcp.
 
 - **Zalecenie**: aby ustalić, który wiersz napotyka problem, Włącz funkcję odporności na uszkodzenia w działaniu kopiowania, która może przekierować problematyczne wiersze do magazynu w celu przeprowadzenia dalszej analizy. Doc Reference: https://docs.microsoft.com/azure/data-factory/copy-activity-fault-tolerance.
 
 
 ### <a name="error-code--sqlconnectionisclosed"></a>Kod błędu: SqlConnectionIsClosed
 
-- **Komunikat**: `The connection is closed by SQL database.`
+- **Komunikat**: `The connection is closed by SQL Database.`
 
-- **Przyczyna**: połączenie SQL jest zamknięte przez bazę danych SQL, gdy duże współbieżne uruchomienie i przerwanie połączenia serwera.
+- **Przyczyna**: połączenie SQL jest zamknięte przez SQL Database w przypadku dużego połączenia współbieżnego przebiegu i przerwania serwera.
 
-- **Zalecenie**: serwer zdalny zamknie połączenie SQL. Spróbuj ponownie. Jeśli problem Odtwórz, skontaktuj się z pomocą techniczną Azure SQL.
+- **Zalecenie**: serwer zdalny zamknął połączenie SQL. Spróbuj ponownie. Jeśli problem Odtwórz, skontaktuj się z pomocą techniczną Azure SQL.
+
+
+### <a name="error-code--sqlcreatetablefailedunsupportedtype"></a>Kod błędu: SqlCreateTableFailedUnsupportedType
+
+- **Komunikat**: `Type '%type;' in source side cannot be mapped to a type that supported by sink side(column name:'%name;') in autocreate table.`
+
 
 ### <a name="error-message-conversion-failed-when-converting-from-a-character-string-to-uniqueidentifier"></a>Komunikat o błędzie: konwersja nie powiodła się podczas konwertowania ciągu znaków na unikatowy identyfikator
 
@@ -373,35 +415,257 @@ W tym artykule przedstawiono typowe metody rozwiązywania problemów z łącznik
 - **Rozwiązanie**: Uruchom to samo zapytanie w programie SSMS i sprawdź, czy widzisz ten sam wynik. Jeśli tak, otwórz bilet pomocy technicznej dotyczący usługi Azure SQL Data Warehouse i podaj nazwę serwera i bazy danych SQL DW, aby kontynuować rozwiązywanie problemów.
             
 
-## <a name="azure-blob-storage"></a>Azure Blob Storage
+## <a name="delimited-text-format"></a>Format tekstu rozdzielanego
 
-### <a name="error-code--azurebloboperationfailed"></a>Kod błędu: AzureBlobOperationFailed
+### <a name="error-code--delimitedtextcolumnnamenotallownull"></a>Kod błędu: DelimitedTextColumnNameNotAllowNull
 
-- **Komunikat**: `Blob operation Failed. ContainerName: %containerName;, path: %path;.`
+- **Komunikat**: `The name of column index %index; is empty. Make sure column name is properly specified in the header row.`
 
-- **Przyczyna**: problem z trafieniem magazynu obiektów BLOB.
+- **Przyczyna**: w przypadku ustawienia opcji "użycia" w działaniu pierwszy wiersz będzie używany jako nazwa kolumny. Ten błąd oznacza, że pierwszy wiersz zawiera wartość pustą. Na przykład: "ColumnName,, ColumnB".
 
-- **Zalecenie**: Sprawdź błąd, aby uzyskać szczegółowe informacje. Zapoznaj się z dokumentem pomocy obiektu BLOB: https://docs.microsoft.com/rest/api/storageservices/blob-service-error-codes. Skontaktuj się z zespołem ds. magazynu, jeśli potrzebujesz pomocy.
+- **Zalecenie**: zaznacz pierwszy wiersz i popraw wartość, jeśli wartość jest pusta.
+
+
+### <a name="error-code--delimitedtextmorecolumnsthandefined"></a>Kod błędu: DelimitedTextMoreColumnsThanDefined
+
+- **Komunikat**: `Error found when processing '%function;' source '%name;' with row number %rowCount;: found more columns than expected column count: %columnCount;.`
+
+- **Przyczyna**: liczba kolumn problematycznych wierszy jest duża niż liczba kolumn w pierwszym wierszu. Może to być spowodowane problemem z danymi lub nieprawidłowym ogranicznikiem kolumny/ustawieniami znaku cudzysłowu.
+
+- **Zalecenie**: Pobierz liczbę wierszy w komunikacie o błędzie, Sprawdź kolumnę wiersza i popraw dane.
+
+- **Przyczyna**: jeśli oczekiwana liczba kolumn jest równa "1" w komunikacie o błędzie, istnieje możliwość określenia nieprawidłowych ustawień kompresji lub formatu, które spowodowały niewłaściwe przeanalizowanie plików przez ADF.
+
+- **Zalecenie**: Sprawdź ustawienia formatu, aby upewnić się, że jest ono zgodne z plikami źródłowymi.
+
+- **Przyczyna**: Jeśli źródło jest folderem, istnieje możliwość, że pliki w określonym folderze mają inny schemat.
+
+- **Zalecenie**: Upewnij się, że pliki w danym folderze mają identyczny schemat.
+
+
+### <a name="error-code--delimitedtextincorrectrowdelimiter"></a>Kod błędu: DelimitedTextIncorrectRowDelimiter
+
+- **Komunikat**: `The specified row delimiter %rowDelimiter; is incorrect. Cannot detect a row after parse %size; MB data.`
+
+
+### <a name="error-code--delimitedtexttoolargecolumncount"></a>Kod błędu: DelimitedTextTooLargeColumnCount
+
+- **Komunikat**: `Column count reaches limitation when deserializing csv file. Maximum size is '%size;'. Check the column delimiter and row delimiter provided. (Column delimiter: '%columnDelimiter;', Row delimiter: '%rowDelimiter;')`
+
+
+### <a name="error-code--delimitedtextinvalidsettings"></a>Kod błędu: DelimitedTextInvalidSettings
+
+- **Komunikat**: `%settingIssues;`
 
 
 
-## <a name="azure-data-lake-gen2"></a>Azure Data Lake Gen2
+## <a name="dynamics-365common-data-servicedynamics-crm"></a>Dynamics 365/Common Data Service/Dynamics CRM
 
-### <a name="error-code--adlsgen2operationfailed"></a>Kod błędu: AdlsGen2OperationFailed
+### <a name="error-code--dynamicscreateserviceclienterror"></a>Kod błędu: DynamicsCreateServiceClientError
 
-- **Komunikat**: `ADLS Gen2 operation failed for: %adlsGen2Message;.%exceptionData;.`
+- **Komunikat**: `This is a transient issue on dynamics server side. Try to rerun the pipeline.`
 
-- **Przyczyna**: ADLS Gen2 zgłasza błąd wskazujący, że operacja nie powiodła się.
+- **Przyczyna**: jest to przejściowy problem po stronie serwera Dynamics.
 
-- **Zalecenie**: Sprawdź szczegółowy komunikat o błędzie wygenerowany przez ADLS Gen2. Jeśli jest to spowodowane błędem przejściowym, spróbuj ponownie. Jeśli potrzebujesz dalszej pomocy, skontaktuj się z pomocą techniczną usługi Azure Storage i podaj identyfikator żądania w komunikacie o błędzie.
+- **Zalecenie**: Uruchom ponownie potok. Jeśli zachowanie nie powiedzie się, spróbuj zmniejszyć liczbę równoległości. Jeśli nadal nie powiedzie się, skontaktuj się z pomocą techniczną systemu Dynamics.
 
-- **Przyczyna**: Jeśli komunikat o błędzie zawiera wartość "zabronione", nazwa główna usługi lub tożsamość zarządzana może nie mieć wystarczających uprawnień, aby uzyskać dostęp do ADLS Gen2.
 
-- **Zalecenie**: Zapoznaj się z dokumentem pomocy: https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#service-principal-authentication.
 
-- **Przyczyna**: Jeśli komunikat o błędzie zawiera wartość "InternalServerError", błąd jest zwracany przez ADLS Gen2.
+## <a name="json-format"></a>Format JSON
 
-- **Zalecenie**: może to być spowodowane błędem przejściowym, spróbuj ponownie. Jeśli problem będzie się powtarzać, skontaktuj się z pomocą techniczną usługi Azure Storage i podaj identyfikator żądania w komunikacie o błędzie.
+### <a name="error-code--jsoninvalidarraypathdefinition"></a>Kod błędu: JsonInvalidArrayPathDefinition
+
+- **Komunikat**: `Error occurred when deserializing source JSON data. Check whether the JsonPath in JsonNodeReference and JsonPathDefintion is valid.`
+
+
+### <a name="error-code--jsonemptyjobjectdata"></a>Kod błędu: JsonEmptyJObjectData
+
+- **Komunikat**: `The specified row delimiter %rowDelimiter; is incorrect. Cannot detect a row after parse %size; MB data.`
+
+
+### <a name="error-code--jsonnullvalueinpathdefinition"></a>Kod błędu: JsonNullValueInPathDefinition
+
+- **Komunikat**: `Null JSONPath detected in JsonPathDefinition.`
+
+
+### <a name="error-code--jsonunsupportedhierarchicalcomplexvalue"></a>Kod błędu: JsonUnsupportedHierarchicalComplexValue
+
+- **Komunikat**: `The retrieved type of data %data; with value %value; is not supported yet. Please either remove the targeted column '%name;' or enable skip incompatible row to skip the issue rows.`
+
+
+### <a name="error-code--jsonconflictpartitiondiscoveryschema"></a>Kod błędu: JsonConflictPartitionDiscoverySchema
+
+- **Komunikat**: `Conflicting partition column names detected.'%schema;', '%partitionDiscoverySchema;'`
+
+
+### <a name="error-code--jsoninvaliddataformat"></a>Kod błędu: JsonInvalidDataFormat
+
+- **Komunikat**: `Error occurred when deserializing source JSON file '%fileName;'. Check if the data is in valid JSON object format.`
+
+
+### <a name="error-code--jsoninvaliddatamixedarrayandobject"></a>Kod błędu: JsonInvalidDataMixedArrayAndObject
+
+- **Komunikat**: `Error occurred when deserializing source JSON file '%fileName;'. The JSON format doesn't allow mixed arrays and objects.`
+
+
+
+## <a name="parquet-format"></a>Format Parquet
+
+### <a name="error-code--parquetjavainvocationexception"></a>Kod błędu: ParquetJavaInvocationException
+
+- **Komunikat**: `An error occurred when invoking java, message: %javaException;.`
+
+- **Przyczyna**: Jeśli komunikat o błędzie zawiera "Java. lang. OutOfMemory", "Space sterty Java" i "doubleCapacity", zazwyczaj jest to problem z zarządzaniem pamięcią w starej wersji środowiska Integration Runtime.
+
+- **Zalecenie**: Jeśli używasz samoobsługowego Integration Runtime a wersja jest wcześniejsza niż 3.20.7159.1, Sugeruj, aby uaktualnić do najnowszej wersji.
+
+- **Przyczyna**: Jeśli komunikat o błędzie zawiera plik "Java. lang. OutOfMemory", środowisko Integration Runtime nie ma wystarczającej ilości zasobów, aby przetworzyć pliki.
+
+- **Zalecenie**: Ogranicz współbieżne uruchomienia w środowisku Integration Runtime. W przypadku samodzielnej Integration Runtime skalowanie w górę do zaawansowanej maszyny z pamięcią równą lub większą niż 8 GB.
+
+- **Przyczyna**: Jeśli komunikat o błędzie zawiera wartość "NullPointerReference", możliwe, że jest to błąd przejściowy.
+
+- **Zalecenie**: spróbuj ponownie. Jeśli problem będzie się powtarzać, skontaktuj się z pomocą techniczną.
+
+
+### <a name="error-code--parquetinvalidfile"></a>Kod błędu: ParquetInvalidFile
+
+- **Komunikat**: `File is not a valid parquet file.`
+
+- **Przyczyna**: problem z plikiem Parquet.
+
+- **Zalecenie**: Sprawdź, czy dane wejściowe są prawidłowym plikiem Parquet.
+
+
+### <a name="error-code--parquetnotsupportedtype"></a>Kod błędu: ParquetNotSupportedType
+
+- **Komunikat**: `Unsupported Parquet type. PrimitiveType: %primitiveType; OriginalType: %originalType;.`
+
+- **Przyczyna**: format Parquet nie jest obsługiwany w Azure Data Factory.
+
+- **Zalecenie**: dokładnie sprawdź dane źródłowe. Zapoznaj się z dokumentem: https://docs.microsoft.com/azure/data-factory/supported-file-formats-and-compression-codecs.
+
+
+### <a name="error-code--parquetmisseddecimalprecisionscale"></a>Kod błędu: ParquetMissedDecimalPrecisionScale
+
+- **Komunikat**: `Decimal Precision or Scale information is not found in schema for column: %column;.`
+
+- **Przyczyna**: Spróbuj przeanalizować dokładność i skalę liczby, ale nie ma takich informacji.
+
+- **Zalecenie**: element "source" nie zwraca prawidłowych dokładności i skali. Sprawdź precyzję i skalę kolumny problemu.
+
+
+### <a name="error-code--parquetinvaliddecimalprecisionscale"></a>Kod błędu: ParquetInvalidDecimalPrecisionScale
+
+- **Komunikat**: `Invalid Decimal Precision or Scale. Precision: %precision; Scale: %scale;.`
+
+- **Przyczyna**: schemat jest nieprawidłowy.
+
+- **Zalecenie**: Sprawdź precyzję i skalę kolumny problemu.
+
+
+### <a name="error-code--parquetcolumnnotfound"></a>Kod błędu: ParquetColumnNotFound
+
+- **Komunikat**: `Column %column; does not exist in Parquet file.`
+
+- **Przyczyna**: schemat źródłowy jest niezgodny ze schematem ujścia.
+
+- **Zalecenie**: Sprawdź the'mappings "w" Activity ". Upewnij się, że kolumna źródłowa może być zmapowana do prawej kolumny ujścia.
+
+
+### <a name="error-code--parquetinvaliddataformat"></a>Kod błędu: ParquetInvalidDataFormat
+
+- **Komunikat**: `Incorrect format of %srcValue; for converting to %dstType;.`
+
+- **Przyczyna**: nie można przekonwertować danych na typ określony w mapowaniu. Źródło
+
+- **Zalecenie**: należy dokładnie sprawdzić dane źródłowe lub określić poprawny typ danych dla tej kolumny w mapowaniu kolumny działania kopiowania. Zapoznaj się z dokumentem: https://docs.microsoft.com/azure/data-factory/supported-file-formats-and-compression-codecs.
+
+
+### <a name="error-code--parquetdatacountnotmatchcolumncount"></a>Kod błędu: ParquetDataCountNotMatchColumnCount
+
+- **Komunikat**: `The data count in a row '%sourceColumnCount;' does not match the column count '%sinkColumnCount;' in given schema.`
+
+- **Przyczyna**: niezgodność liczby kolumn źródłowych i liczby kolumn ujścia
+
+- **Zalecenie**: liczba kolumn źródłowych sprawdzania podwójnego jest taka sama jak liczba kolumn ujścia w elemencie "mapowanie".
+
+
+### <a name="error-code--parquetdatatypenotmatchcolumntype"></a>Kod błędu: ParquetDataTypeNotMatchColumnType
+
+- **Komunikat**: typ danych% srcType; nie jest zgodny z podanym typem kolumny% dstType;. w kolumnie "% columnIndex;".
+
+- **Przyczyna**: dane ze źródła nie mogą zostać skonwertowane na typ zdefiniowany w ujścia
+
+- **Zalecenie**: Określ poprawny typ w mapowaniu. sink.
+
+
+### <a name="error-code--parquetbridgeinvaliddata"></a>Kod błędu: ParquetBridgeInvalidData
+
+- **Komunikat**: `%message;`
+
+- **Przyczyna**: wartość danych przekracza ograniczenie
+
+- **Zalecenie**: spróbuj ponownie. Jeśli problem będzie się powtarzać, skontaktuj się z nami.
+
+
+### <a name="error-code--parquetunsupportedinterpretation"></a>Kod błędu: ParquetUnsupportedInterpretation
+
+- **Komunikat**: `The given interpretation '%interpretation;' of parquet format is not supported.`
+
+- **Przyczyna**: nieobsługiwany scenariusz
+
+- **Zalecenie**: element "ParquetInterpretFor" nie może być "sparkSql".
+
+
+### <a name="error-code--parquetunsupportfilelevelcompressionoption"></a>Kod błędu: ParquetUnsupportFileLevelCompressionOption
+
+- **Komunikat**: `File level compression is not supported for Parquet.`
+
+- **Przyczyna**: nieobsługiwany scenariusz
+
+- **Zalecenie**: Usuń element "CompressionType" w ładunku.
+
+
+
+## <a name="general-copy-activity-error"></a>Ogólny błąd działania kopiowania
+
+### <a name="error-code--jrenotfound"></a>Kod błędu: JreNotFound
+
+- **Komunikat**: `Java Runtime Environment cannot be found on the Self-hosted Integration Runtime machine. It is required for parsing or writing to Parquet/ORC files. Make sure Java Runtime Environment has been installed on the Self-hosted Integration Runtime machine.`
+
+- **Przyczyna**: własne środowisko Integration Runtime nie może znaleźć środowiska uruchomieniowego języka Java. Środowisko uruchomieniowe Java jest wymagane do odczytywania określonego źródła.
+
+- **Zalecenie**: Sprawdź środowisko Integration Runtime, doc reference: https://docs.microsoft.com/azure/data-factory/format-parquet#using-self-hosted-integration-runtime
+
+
+### <a name="error-code--wildcardpathsinknotsupported"></a>Kod błędu: WildcardPathSinkNotSupported
+
+- **Komunikat**: `Wildcard in path is not supported in sink dataset. Fix the path: '%setting;'.`
+
+- **Przyczyna**: zestaw danych ujścia nie obsługuje symboli wieloznacznych.
+
+- **Zalecenie**: Sprawdź zestaw danych ujścia i popraw ścieżkę bez symbolu wieloznacznego.
+
+
+### <a name="error-code--mappinginvalidpropertywithemptyvalue"></a>Kod błędu: MappingInvalidPropertyWithEmptyValue
+
+- **Komunikat**: `One or more '%sourceOrSink;' in copy activity mapping doesn't point to any data. Choose one of the three properties 'name', 'path' and 'ordinal' to reference columns/fields.`
+
+
+### <a name="error-code--mappinginvalidpropertywithnamepathandordinal"></a>Kod błędu: MappingInvalidPropertyWithNamePathAndOrdinal
+
+- **Komunikat**: `Mixed properties are used to reference '%sourceOrSink;' columns/fields in copy activity mapping. Please only choose one of the three properties 'name', 'path' and 'ordinal'. The problematic mapping setting is 'name': '%name;', 'path': '%path;','ordinal': '%ordinal;'.`
+
+
+### <a name="error-code--mappingduplicatedordinal"></a>Kod błędu: MappingDuplicatedOrdinal
+
+- **Komunikat**: `Copy activity 'mappings' has duplicated ordinal value "%Ordinal;". Fix the setting in 'mappings'.`
+
+
+### <a name="error-code--mappinginvalidordinalforsinkcolumn"></a>Kod błędu: MappingInvalidOrdinalForSinkColumn
+
+- **Komunikat**: `Invalid 'ordinal' property for sink column under 'mappings' property. Ordinal: %Ordinal;.`
 
 
 ## <a name="next-steps"></a>Następne kroki

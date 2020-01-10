@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: zarhoads
-ms.openlocfilehash: 5bceb6715fc3fd2f9f23738936df2f2c549d0212
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: aaa279596532d3a1d47a974b48a45bd67101fa95
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048192"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768626"
 ---
 # <a name="scaling-options-for-applications-in-azure-kubernetes-service-aks"></a>Opcje skalowania dla aplikacji w usłudze Azure Kubernetes Service (AKS)
 
@@ -28,6 +28,8 @@ W tym artykule przedstawiono podstawowe pojęcia, które ułatwiają skalowanie 
 ## <a name="manually-scale-pods-or-nodes"></a>Ręczne skalowanie z podziałów lub węzłów
 
 W celu przetestowania, w jaki sposób aplikacja reaguje na zmianę w dostępnych zasobach i stanie, można ręcznie skalować repliki (na podst.) i węzły. Ręczne skalowanie zasobów pozwala także zdefiniować określoną ilość zasobów do użycia w celu utrzymania stałego kosztu, takiego jak liczba węzłów. Aby ręcznie skalować, należy zdefiniować replikę lub liczbę węzłów. Interfejs API Kubernetes następnie tworzy harmonogram tworzenia dodatkowych węzłów lub opróżniania w oparciu o tę replikę lub liczbę węzłów.
+
+Podczas skalowania węzłów w dół interfejs API Kubernetes wywołuje odpowiedni interfejs API obliczeń platformy Azure związany z typem obliczeń używanym przez klaster. Na przykład w przypadku klastrów opartych na VM Scale Sets logiki do wybierania węzłów do usunięcia jest określana przez VM Scale Sets API. Aby dowiedzieć się więcej o tym, jak węzły są wybrane do usunięcia podczas skalowania, zobacz [często zadawane pytania](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-faq#if-i-reduce-my-scale-set-capacity-from-20-to-15-which-vms-are-removed)dotyczące usługi VMSS.
 
 Aby rozpocząć pracę z ręcznym skalowaniem i węzłami, zobacz [skalowanie aplikacji w AKS][aks-scale].
 

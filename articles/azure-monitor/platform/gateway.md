@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/24/2019
-ms.openlocfilehash: 1811796de96e87343544f63fcee7acdd9907693c
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 8d48c889681eabc2519a0a60d0f9846b8f30bfd5
+ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75530990"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75830143"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>Łączenie komputerów bez dostępu do Internetu przy użyciu bramy Log Analytics w programie Azure Monitor
 
@@ -103,7 +103,7 @@ W poniższej tabeli przedstawiono około liczby agentów, które mogą komunikow
 
 ## <a name="download-the-log-analytics-gateway"></a>Pobierz bramę usługi Log Analytics
 
-Pobierz najnowszą wersję pliku instalacyjnego bramy Log Analytics z [Centrum pobierania firmy Microsoft](https://www.microsoft.com/download/details.aspx?id=54443) lub Azure Portal.
+Pobierz najnowszą wersję pliku instalacyjnego bramy Log Analytics z centrum pobierania Microsoft ([link do pobierania](https://go.microsoft.com/fwlink/?linkid=837444)) lub Azure Portal.
 
 Aby uzyskać bramę Log Analytics z Azure Portal, wykonaj następujące kroki:
 

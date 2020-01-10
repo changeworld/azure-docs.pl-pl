@@ -3,12 +3,12 @@ title: Funkcje zabezpieczeń pomagające w ochronie obciążeń w chmurze
 description: Dowiedz się, jak używać funkcji zabezpieczeń w programie Azure Backup, aby tworzyć kopie zapasowe bardziej bezpieczne.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 9a3c13856d3c130f2396488fed09313578dda79c
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.openlocfilehash: e3da4778a82cd5eb50fbb82c7f9f00cf6c6f1a85
+ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75496928"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75829633"
 ---
 # <a name="security-features-to-help-protect-cloud-workloads-that-use-azure-backup"></a>Funkcje zabezpieczeń pomagające w ochronie obciążeń w chmurze korzystających z Azure Backup
 
@@ -26,7 +26,7 @@ Usuwanie nietrwałe jest obecnie obsługiwane w regionie zachodnie stany USA, Az
 
 ### <a name="soft-delete-for-vms-using-azure-portal"></a>Usuwanie nietrwałe dla maszyn wirtualnych przy użyciu Azure Portal
 
-1. Aby można było usunąć dane kopii zapasowej maszyny wirtualnej, należy zatrzymać wykonywanie kopii zapasowej. W Azure Portal przejdź do magazynu usługi Recovery Services, kliknij prawym przyciskiem myszy element kopii zapasowej, a następnie wybierz polecenie **Zatrzymaj tworzenie kopii zapasowej**.
+1. Aby usunąć dane kopii zapasowej maszyny wirtualnej, należy zatrzymać wykonywanie kopii zapasowej. W Azure Portal przejdź do magazynu usługi Recovery Services, kliknij prawym przyciskiem myszy element kopii zapasowej, a następnie wybierz polecenie **Zatrzymaj tworzenie kopii zapasowej**.
 
    ![Zrzut ekranu przedstawiający elementy Azure Portal kopii zapasowej](./media/backup-azure-security-feature-cloud/backup-stopped.png)
 
@@ -41,7 +41,7 @@ Usuwanie nietrwałe jest obecnie obsługiwane w regionie zachodnie stany USA, Az
    > [!NOTE]
    > Jeśli w magazynie znajdują się jakiekolwiek nietrwałe usunięte elementy kopii zapasowej, nie można w tym momencie usunąć magazynu. Spróbuj usunąć magazyn po usunięciu trwałych elementów kopii zapasowej. w magazynie nie ma żadnego elementu usuniętego nietrwałego stanu.
 
-4. Aby przywrócić maszynę wirtualną usuniętą z nietrwałego, należy najpierw ją usunąć. Aby cofnąć usunięcie, wybierz maszynę wirtualną, która została usunięta, a następnie wybierz opcję **Cofnij usunięcie**.
+4. Aby przywrócić nietrwałą maszynę wirtualną, należy najpierw ją usunąć. Aby cofnąć usunięcie, wybierz maszynę wirtualną, która została usunięta, a następnie wybierz opcję **Cofnij usunięcie**.
 
    ![Zrzut ekranu przedstawiający Azure Portal, cofanie usunięcia maszyny wirtualnej](./media/backup-azure-security-feature-cloud/choose-undelete.png)
 
@@ -89,7 +89,7 @@ AppVM1           DeleteBackupData     Completed            12/5/2019 12:44:15 PM
 
 #### <a name="undoing-the-deletion-operation-using-azure-powershell"></a>Cofanie operacji usuwania przy użyciu programu Azure PowerShell
 
-Najpierw Pobierz odpowiedni element kopii zapasowej, który jest w stanie usuwania nietrwałego, tj., który ma zostać usunięty
+Najpierw Pobierz odpowiedni element kopii zapasowej, który jest w stanie usuwania nietrwałego (to oznacza, że zostanie usunięty).
 
 ```powershell
 
@@ -164,7 +164,7 @@ Dane kopii zapasowej w stanie nietrwałego usunięcia przed wyłączeniem tej fu
 Wykonaj następujące kroki:
 
 1. Postępuj zgodnie z instrukcjami, aby [wyłączyć usuwanie nietrwałe](#disabling-soft-delete).
-2. W Azure Portal przejdź do swojego magazynu, przejdź do **pozycji elementy kopii zapasowej** i wybierz nietrwałe usunięte maszyny wirtualne
+2. W Azure Portal przejdź do swojego magazynu, przejdź do **pozycji elementy kopii zapasowej**, a następnie wybierz nietrwałą maszynę wirtualną.
 
 ![Wybierz nietrwałe usunięte maszyny wirtualne](./media/backup-azure-security-feature-cloud/vm-soft-delete.png)
 
@@ -232,19 +232,32 @@ Jeśli elementy zostały usunięte przed wyłączeniem usuwania nietrwałego, zo
 2. Następnie wyłącz funkcje usuwania nietrwałego za pomocą interfejsu API REST, wykonując kroki opisane [tutaj](use-restapi-update-vault-properties.md#update-soft-delete-state-using-rest-api).
 3. Następnie usuń kopie zapasowe przy użyciu interfejsu API REST, jak wspomniano [tutaj](backup-azure-arm-userestapi-backupazurevms.md#stop-protection-and-delete-data).
 
-## <a name="other-security-features"></a>Inne funkcje zabezpieczeń
+## <a name="encryption"></a>Szyfrowanie
 
-### <a name="storage-side-encryption"></a>Szyfrowanie po stronie magazynu
+### <a name="encryption-of-backup-data-using-microsoft-managed-keys"></a>Szyfrowanie danych kopii zapasowej przy użyciu kluczy zarządzanych przez firmę Microsoft
 
-Usługa Azure Storage automatycznie szyfruje dane podczas ich utrwalania w chmurze. Szyfrowanie chroni dane i pomaga sprostać wymaganiom bezpieczeństwa i zgodności w organizacji. Dane w usłudze Azure Storage są szyfrowane i odszyfrowywane w sposób niewidoczny dla użytkownika przy użyciu 256-bitowego szyfrowania AES, jednego z najsilniejszych szyfrów blokowych i jest zgodny ze standardem FIPS 140-2. Szyfrowanie usługi Azure Storage jest podobne do szyfrowania funkcją BitLocker w systemie Windows. Azure Backup automatycznie szyfruje dane przed ich zapisaniem. Usługa Azure Storage odszyfrowuje dane przed ich pobraniem.  
+Dane kopii zapasowej są automatycznie szyfrowane przy użyciu szyfrowania usługi Azure Storage. Szyfrowanie chroni dane i pomaga sprostać wymaganiom dotyczącym zabezpieczeń i zgodności w organizacji. Dane są szyfrowane i odszyfrowywane w sposób niewidoczny dla użytkownika przy użyciu 256-bitowego szyfrowania AES, jednego z najsilniejszych szyfrów blokowych i jest zgodny ze standardem FIPS 140-2. Szyfrowanie usługi Azure Storage jest podobne do szyfrowania funkcją BitLocker w systemie Windows.
 
 W ramach platformy Azure dane przesyłane między usługą Azure Storage i magazynem są chronione za pośrednictwem protokołu HTTPS. Te dane pozostają w sieci szkieletowej platformy Azure.
 
-Aby uzyskać więcej informacji, zobacz [szyfrowanie usługi Azure Storage w przypadku przechowywanych danych](https://docs.microsoft.com/azure/storage/common/storage-service-encryption).  Zapoznaj się z [Azure Backup często zadawanych](https://docs.microsoft.com/azure/backup/backup-azure-backup-faq#encryption) pytań, aby odpowiedzieć na pytania dotyczące szyfrowania.
+Aby uzyskać więcej informacji, zobacz [szyfrowanie usługi Azure Storage dla danych magazynowanych](https://docs.microsoft.com/azure/storage/common/storage-service-encryption). Zapoznaj się z [Azure Backup często zadawanych](https://docs.microsoft.com/azure/backup/backup-azure-backup-faq#encryption) pytań, aby odpowiedzieć na pytania dotyczące szyfrowania.
 
-### <a name="vm-encryption"></a>Szyfrowanie maszyny wirtualnej
+### <a name="encryption-of-backup-data-using-customer-managed-keys"></a>Szyfrowanie danych kopii zapasowej przy użyciu kluczy zarządzanych przez klienta
+
+Podczas tworzenia kopii zapasowej usługi Azure Virtual Machines istnieje również możliwość szyfrowania danych kopii w magazynie Recovery Services przy użyciu kluczy szyfrowania przechowywanych w Azure Key Vault.
+
+>[!NOTE]
+>Ta funkcja jest obecnie pod wczesnym użyciem. Wypełnij [tę ankietę](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0H3_nezt2RNkpBCUTbWEapURE9TTDRIUEUyNFhNT1lZS1BNVDdZVllHWi4u) , jeśli chcesz zaszyfrować dane kopii zapasowej przy użyciu kluczy zarządzanych przez klienta. Należy zauważyć, że możliwość korzystania z tej funkcji podlega zatwierdzeniu przez usługę Azure Backup.
+
+### <a name="backup-of-managed-disk-vm-encrypted-using-customer-managed-keys"></a>Tworzenie kopii zapasowej maszyny wirtualnej dysku zarządzanego zaszyfrowanej przy użyciu kluczy zarządzanych przez klienta
+
+Azure Backup umożliwia tworzenie kopii zapasowych Virtual Machines platformy Azure zawierających dyski zaszyfrowane przy użyciu kluczy zarządzanych przez klienta. Aby uzyskać szczegółowe informacje, zobacz [szyfrowanie dysków zarządzanych przy użyciu kluczy zarządzanych przez klienta](https://docs.microsoft.com//azure/virtual-machines/windows/disk-encryption#customer-managed-keys-public-preview).
+
+### <a name="backup-of-encrypted-vms"></a>Tworzenie kopii zapasowych zaszyfrowanych maszyn wirtualnych
 
 Można tworzyć kopie zapasowe i przywracać maszyny wirtualne systemu Windows lub Linux z szyfrowanymi dyskami przy użyciu usługi Azure Backup. Aby uzyskać instrukcje, zobacz [wykonywanie kopii zapasowej i Przywracanie zaszyfrowanych maszyn wirtualnych przy użyciu Azure Backup](https://docs.microsoft.com/azure/backup/backup-azure-vms-encryption).
+
+## <a name="other-security-features"></a>Inne funkcje zabezpieczeń
 
 ### <a name="protection-of-azure-backup-recovery-points"></a>Ochrona punktów odzyskiwania Azure Backup
 
@@ -258,7 +271,7 @@ Aby uzyskać więcej informacji, zobacz [używanie Access Control opartej na rol
 
 #### <a name="do-i-need-to-enable-the-soft-delete-feature-on-every-vault"></a>Czy muszę włączyć funkcję usuwania nietrwałego dla każdego magazynu?
 
-Nie. jest on tworzony i domyślnie włączony dla wszystkich magazynów usługi Recovery Services.
+Nie. jest ona domyślnie skompilowana i włączona dla wszystkich magazynów usługi Recovery Services.
 
 #### <a name="can-i-configure-the-number-of-days-for-which-my-data-will-be-retained-in-soft-deleted-state-after-delete-operation-is-complete"></a>Czy można skonfigurować liczbę dni, przez jaką dane będą przechowywane w stanie nieusuniętym, po zakończeniu operacji usuwania?
 

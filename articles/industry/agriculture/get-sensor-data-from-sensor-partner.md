@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: ece310a248140b7913ffcc9f7146d382ee44fb5d
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: d9e20c8e5859efc8f1f8a5214e6837ad46d2980d
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851302"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75777788"
 ---
 # <a name="get-sensor-data-from-sensor-partners"></a>Pobierz dane czujnika z partnerów czujników
 
@@ -18,16 +18,16 @@ Usługa Azure FarmBeats ułatwia przenoszenie strumieniowych danych z urządzeń
 
   ![Partnerzy FarmBeats](./media/get-sensor-data-from-sensor-partner/partner-information-1.png)
 
-Integrowanie danych urządzenia z usługą Azure FarmBeats ułatwia pobieranie danych z czujników IoT wdrożonych w farmie do centrum danych. Dane, które są dostępne, można wizualizować za pomocą akceleratora FarmBeats. Dane mogą służyć do kompilowania modelu i uczenia maszynowego/sztucznej analizy danych (ML/AI) przy użyciu FarmBeats.
+Integrowanie danych urządzenia z usługą Azure FarmBeats ułatwia uzyskiwanie danych naziemnych z czujników IoT wdrożonych w farmie do datahub. Dane, które są dostępne, można wizualizować za pomocą akceleratora FarmBeats. Dane mogą służyć do kompilowania modelu i uczenia maszynowego/sztucznej analizy danych (ML/AI) przy użyciu FarmBeats.
 
 Aby rozpocząć przesyłanie strumieniowe danych z czujnika, upewnij się, że:
 
 -  Zainstalowano FarmBeats w portalu Azure Marketplace.
 -  Użytkownik zdecydował się na czujników i urządzeniach, które mają zostać zainstalowane w farmie.
--  Jeśli planujesz korzystanie z czujników odnoszących się do wilgotności gleby, Użyj mapy umieszczenia czujnika wilgoci FarmBeats, aby uzyskać zalecenie dotyczące liczby czujników i dokładnie je umieścić. Aby uzyskać więcej informacji, zobacz [generowanie map](generate-maps.md).
+-  Jeśli planujesz korzystanie z czujników odnoszących się do wilgotności gleby, Użyj mapy umieszczenia czujnika wilgoci FarmBeats, aby uzyskać zalecenie dotyczące liczby czujników i dokładnie je umieścić. Aby uzyskać więcej informacji, zobacz [generowanie map](generate-maps-in-azure-farmbeats.md).
 - Możesz zakupić i wdrożyć urządzenia lub czujniki od partnera urządzenia w farmie. Upewnij się, że masz dostęp do danych czujników za pośrednictwem rozwiązania partnerów urządzeń.
 
-## <a name="enable-device-integration-with-farmbeats"></a>Włącz integrację urządzeń z usługą FarmBeats 
+## <a name="enable-device-integration-with-farmbeats"></a>Włącz integrację urządzeń z usługą FarmBeats
 
 Po rozpoczęciu przesyłania strumieniowego danych czujników można rozpocząć proces uzyskiwania danych do systemu FarmBeats. Podaj następujące informacje dla dostawcy urządzenia, aby umożliwić integrację z usługą FarmBeats:
 
@@ -41,28 +41,36 @@ Poprzednie informacje są udostępniane przez Integrator systemu. W przypadku pr
 
 Alternatywnie można wygenerować poświadczenia, uruchamiając ten skrypt z Azure Cloud Shell. Wykonaj następujące kroki.
 
-1. Pobierz [plik zip](https://aka.ms/farmbeatspartnerscript)i wyodrębnij go na dysk lokalny. Dwa pliki znajdują się w pliku zip.
-2. Zaloguj się do https://portal.azure.com/ i Otwórz Cloud Shell. Ta opcja jest dostępna na pasku narzędzi w prawym górnym rogu Azure Portal.
+1. Pobierz [plik zip](https://aka.ms/farmbeatspartnerscriptv2)i wyodrębnij go na dysk lokalny. Plik zip będzie zawierać jeden plik.
+2. Zaloguj się do https://portal.azure.com/ i przejdź do pozycji Azure Active Directory-> rejestracji aplikacji
+
+3. Kliknij rejestrację aplikacji, która została utworzona w ramach wdrożenia FarmBeats. Ma taką samą nazwę jak FarmBeats Datahub.
+
+4. Kliknij pozycję "Uwidacznianie interfejsu API" — > kliknij pozycję "Dodaj aplikację kliencką" i wprowadź **04b07795-8ddb-461a-bbee-02f9e1bf7b46** i zaznacz pole wyboru Autoryzuj zakres. Zapewni to dostęp do interfejsu wiersza polecenia platformy Azure (Cloud Shell) w celu wykonania poniższych czynności.
+
+5. Otwórz usługę Cloud Shell. Ta opcja jest dostępna na pasku narzędzi w prawym górnym rogu Azure Portal.
 
     ![Azure Portal pasek narzędzi](./media/get-drone-imagery-from-drone-partner/navigation-bar-1.png)
 
-3. Upewnij się, że środowisko jest ustawione na **PowerShell**. Domyślnie jest ono ustawione na bash.
+6. Upewnij się, że środowisko jest ustawione na **PowerShell**. Domyślnie jest ono ustawione na bash.
 
     ![Ustawienie paska narzędzi programu PowerShell](./media/get-sensor-data-from-sensor-partner/power-shell-new-1.png)
 
-4. Przekaż dwa pliki z kroku 1 w wystąpieniu Cloud Shell.
+7. Przekaż plik z kroku 1 w wystąpieniu Cloud Shell.
 
     ![Przekaż przycisk paska narzędzi](./media/get-sensor-data-from-sensor-partner/power-shell-two-1.png)
 
-5. Przejdź do katalogu, do którego pliki zostały przekazane. Domyślnie są one przekazywane do katalogu macierzystego w ramach nazwy użytkownika.
-6. Uruchom następujący skrypt:
+8. Przejdź do katalogu, w którym plik został przekazany. Domyślnie pliki są przekazywane do katalogu macierzystego w ramach nazwy użytkownika.
+
+9. Uruchom następujący skrypt. Skrypt pyta o identyfikator dzierżawy, który można uzyskać ze strony Przegląd Azure Active Directory->.
 
     ```azurepowershell-interactive 
 
-    ./generateCredentials.ps1   
+    ./generatePartnerCredentials.ps1   
 
     ```
-7. Postępuj zgodnie z instrukcjami na ekranie, aby przechwycić wartości dla **punktów końcowych interfejsu API**, **identyfikatora dzierżawy**, **identyfikatora klienta**, **klucza tajnego klienta**i **parametrów połączenia centrum EventHub**. Parametry połączenia EventHub są dostępne jako część odpowiedzi interfejsu API w strukturze Swagger.
+
+10. Postępuj zgodnie z instrukcjami na ekranie, aby przechwycić wartości dla **punktów końcowych interfejsu API**, **identyfikatora dzierżawy**, **identyfikatora klienta**, **klucza tajnego klienta**i **parametrów połączenia centrum EventHub**.
 
 ### <a name="integrate-device-data-by-using-the-generated-credentials"></a>Integrowanie danych urządzenia przy użyciu wygenerowanych poświadczeń
 
@@ -155,4 +163,4 @@ Wykonaj następujące kroki.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Teraz dane czujnika są przepływane do wystąpienia usługi Azure FarmBeats. Teraz Dowiedz się, jak [generować mapy](generate-maps.md#generate-maps) dla Farm.
+Teraz dane czujnika są przepływane do wystąpienia usługi Azure FarmBeats. Teraz Dowiedz się, jak [generować mapy](generate-maps-in-azure-farmbeats.md#generate-maps) dla Farm.

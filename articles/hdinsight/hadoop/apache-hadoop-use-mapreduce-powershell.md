@@ -1,63 +1,59 @@
 ---
-title: Używanie MapReduce i programu PowerShell przy użyciu technologii Apache Hadoop — Azure HDInsight
-description: Dowiedz się, jak i zdalne uruchamianie zadań MapReduce z usługą Apache Hadoop w HDInsight przy użyciu programu PowerShell.
+title: Używanie MapReduce i programu PowerShell z usługą Apache Hadoop Azure HDInsight
+description: Dowiedz się, jak używać programu PowerShell do zdalnego uruchamiania Apache Hadoop zadań MapReduce w usłudze HDInsight.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/09/2018
-ms.author: hrasheed
-ms.openlocfilehash: 2ba8ab07edc4fd036b82c97f0ae3fb565d5eed72
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.custom: hdinsightactive
+ms.date: 01/08/2020
+ms.openlocfilehash: b3c1abb7bff54e3e2d294b073b867c6c0e06f482
+ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67078397"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75830075"
 ---
-# <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-powershell"></a>Wykonywanie zadań MapReduce z usługą Apache Hadoop w HDInsight przy użyciu programu PowerShell
+# <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-powershell"></a>Uruchamianie zadań MapReduce w Apache Hadoop usłudze HDInsight przy użyciu programu PowerShell
 
 [!INCLUDE [mapreduce-selector](../../../includes/hdinsight-selector-use-mapreduce.md)]
 
-Ten dokument zawiera przykład przy użyciu programu Azure PowerShell do uruchamiania zadania MapReduce na platformie Hadoop w klastrze HDInsight.
+Ten dokument zawiera przykład użycia Azure PowerShell do uruchamiania zadania MapReduce w klastrze usługi HDInsight.
 
-## <a id="prereq"></a>Wymagania wstępne
+## <a name="prerequisites"></a>Wymagania wstępne
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+* Klaster Apache Hadoop w usłudze HDInsight. Zobacz [Tworzenie klastrów Apache Hadoop przy użyciu Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md).
 
-* **Klaster usługi Azure HDInsight (Hadoop w HDInsight)**
+* Program PowerShell [AZ module](https://docs.microsoft.com/powershell/azure/overview) został zainstalowany.
 
-* **Stacja robocza z programem Azure PowerShell**.
+## <a name="run-a-mapreduce-job"></a>Uruchamianie zadania MapReduce
 
-## <a id="powershell"></a>Uruchom zadanie MapReduce
+Azure PowerShell udostępnia *polecenia cmdlet* , które umożliwiają zdalne uruchamianie zadań MapReduce w usłudze HDInsight. Wewnętrznie program PowerShell tworzy wywołania REST do [WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat) (dawniej Templeton) uruchomionego w klastrze usługi HDInsight.
 
-Azure PowerShell udostępnia *poleceń cmdlet* umożliwiającą zdalne uruchamianie zadań MapReduce w HDInsight. Wewnętrznie, programu PowerShell sprawia, że wywołania REST do [WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat) (dawniej nazywanych Templeton) działającej w klastrze HDInsight.
+Następujące polecenia cmdlet są używane podczas uruchamiania zadań MapReduce w zdalnym klastrze usługi HDInsight.
 
-Następujące polecenia cmdlet są używane podczas uruchamiania zadań MapReduce w zdalnym klastrze HDInsight.
+|Polecenie cmdlet | Opis |
+|---|---|
+|Connect-AzAccount|Uwierzytelnia Azure PowerShell w ramach subskrypcji platformy Azure.|
+|New-AzHDInsightMapReduceJobDefinition|Tworzy nową *definicję zadania* przy użyciu określonych informacji MapReduce.|
+|Start-AzHDInsightJob|Wysyła definicję zadania do usługi HDInsight i uruchamia zadanie. Obiekt *zadania* jest zwracany.|
+|Wait-AzHDInsightJob|Używa obiektu zadanie do sprawdzenia stanu zadania. Czeka na zakończenie zadania lub przekroczenie czasu oczekiwania.|
+|Get-AzHDInsightJobOutput|Służy do pobierania danych wyjściowych zadania.|
 
-* **Połącz AzAccount**: Uwierzytelnianie programu Azure PowerShell do subskrypcji platformy Azure.
+Poniższe kroki pokazują, jak używać tych poleceń cmdlet do uruchamiania zadania w klastrze usługi HDInsight.
 
-* **New-AzHDInsightMapReduceJobDefinition**: Tworzy nową *definicji zadania* przy użyciu określonej informacji o MapReduce.
-
-* **Start-AzHDInsightJob**: Wysyła definicji zadania do HDInsight i uruchamia zadanie. A *zadania* obiekt jest zwracany.
-
-* **Wait-AzHDInsightJob**: Używa obiektu zadania, aby sprawdzić stan zadania. Oczekuje, aż do ukończenia zadania lub przekroczenia czasu oczekiwania.
-
-* **Get-AzHDInsightJobOutput**: Używany do pobierania danych wyjściowych zadania.
-
-Poniższe kroki pokazują, jak używać tych poleceń cmdlet do uruchamiania zadań w klastrze usługi HDInsight.
-
-1. Za pomocą edytora, Zapisz poniższy kod jako **mapreducejob.ps1**.
+1. Za pomocą edytora Zapisz następujący kod jako **mapreducejob. ps1**.
 
     [!code-powershell[main](../../../powershell_scripts/hdinsight/use-mapreduce/use-mapreduce.ps1?range=5-69)]
 
-2. Otwórz nowy **programu Azure PowerShell** wiersza polecenia. Zmień katalogi na lokalizację **mapreducejob.ps1** pliku, a następnie użyj następującego polecenia, aby uruchomić skrypt:
+2. Otwórz nowy wiersz polecenia **Azure PowerShell** . Zmień katalogi na lokalizację pliku **mapreducejob. ps1** , a następnie użyj następującego polecenia, aby uruchomić skrypt:
 
         .\mapreducejob.ps1
 
-    Po uruchomieniu skryptu, wyświetlany jest monit o nazwę klastra HDInsight i logowania do klastra. Użytkownik może również się monit o uwierzytelnienie do subskrypcji platformy Azure.
+    Po uruchomieniu skryptu zostanie wyświetlony monit o podanie nazwy klastra usługi HDInsight i logowania do klastra. Może być również wyświetlony monit o uwierzytelnienie w ramach subskrypcji platformy Azure.
 
-3. Po zakończeniu zadania, otrzymasz dane wyjściowe podobne do następującego tekstu:
+3. Po zakończeniu zadania otrzymujesz dane wyjściowe podobne do następującego tekstu:
 
         Cluster         : CLUSTERNAME
         ExitCode        : 0
@@ -69,23 +65,23 @@ Poniższe kroki pokazują, jak używać tych poleceń cmdlet do uruchamiania zad
         SubmissionTime  : 12/5/2014 8:34:09 PM
         JobId           : job_1415949758166_0071
 
-    Te dane wyjściowe wskazuje, że zadanie zakończyło się powodzeniem.
+    Dane wyjściowe wskazują, że zadanie zostało ukończone pomyślnie.
 
     > [!NOTE]  
-    > Jeśli **ExitCode** jest wartością innego niż 0, zobacz [Rozwiązywanie problemów](#troubleshooting).
+    > Jeśli **ExitCode** jest wartością inną niż 0, zobacz [Rozwiązywanie problemów](#troubleshooting).
 
-    W tym przykładzie przechowuje także pliki pobrane do **output.txt** pliku w katalogu, w którym należy uruchomić skrypt.
+    W tym przykładzie przechowywane są również pobrane pliki do pliku **Output. txt** w katalogu, w którym uruchamiany jest skrypt.
 
-### <a name="view-output"></a>Wyświetlanie danych wyjściowych
+### <a name="view-output"></a>Wyświetl dane wyjściowe
 
-Aby wyświetlić wyrazy i liczby utworzone przez zadanie, otwórz **output.txt** plik w edytorze tekstów.
+Aby zobaczyć słowa i liczby wygenerowane przez zadanie, Otwórz plik **Output. txt** w edytorze tekstu.
 
 > [!NOTE]  
-> Pliki wyjściowe zadania MapReduce są niezmienne. Dlatego jeśli uruchomisz tego przykładu, należy zmienić nazwę pliku wyjściowego.
+> Pliki wyjściowe zadania MapReduce są niezmienne. Dlatego w przypadku ponownego uruchomienia tego przykładu należy zmienić nazwę pliku wyjściowego.
 
-## <a id="troubleshooting"></a>Rozwiązywanie problemów
+## <a name="troubleshooting"></a>Rozwiązywanie problemów
 
-Jeśli nie informacje są zwracane po zakończeniu zadania, należy przejrzeć błędy, zadania. Aby wyświetlić informacje o błędzie dla tego zadania, Dodaj następujące polecenie na końcu **mapreducejob.ps1** pliku, zapisz go i uruchom go ponownie.
+Jeśli po zakończeniu zadania nie zostaną zwrócone żadne informacje, Wyświetl błędy dla tego zadania. Aby wyświetlić informacje o błędzie dla tego zadania, Dodaj następujące polecenie na końcu pliku **mapreducejob. ps1** . Następnie Zapisz plik i ponownie uruchom skrypt.
 
 ```powershell
 # Print the output of the WordCount job.
@@ -97,19 +93,11 @@ Get-AzHDInsightJobOutput `
         -DisplayOutputType StandardError
 ```
 
-To polecenie cmdlet zwraca informacje, które zostały zapisane do strumienia wyjściowego STDERR po uruchomieniu zadania.
+To polecenie cmdlet zwraca informacje, które zostały zapisaną w STDERR, gdy zadanie zostanie uruchomione.
 
-## <a id="summary"></a>Podsumowanie
+## <a name="next-steps"></a>Następne kroki
 
-Jak widać, programu Azure PowerShell umożliwia łatwe uruchamianie zadań MapReduce w klastrze usługi HDInsight, monitorować stan zadania i pobrać dane wyjściowe.
+Jak widać, Azure PowerShell zapewnia łatwy sposób uruchamiania zadań MapReduce w klastrze usługi HDInsight, monitorowania stanu zadania i pobierania danych wyjściowych. Aby uzyskać informacje o innych sposobach pracy z usługą Hadoop w usłudze HDInsight:
 
-## <a id="nextsteps"></a>Następne kroki
-
-Aby uzyskać ogólne informacje na temat zadań MapReduce w HDInsight:
-
-* [Korzystanie z technologii MapReduce w usłudze HDInsight Hadoop](hdinsight-use-mapreduce.md)
-
-Aby uzyskać informacje o innych metodach można pracować z platformą Hadoop w HDInsight:
-
-* [Apache Hive za pomocą technologii Apache Hadoop w HDInsight](hdinsight-use-hive.md)
-* [Use Apache Pig z platformą Apache Hadoop w HDInsight](hdinsight-use-pig.md)
+* [Korzystanie z MapReduce w usłudze HDInsight Hadoop](hdinsight-use-mapreduce.md)
+* [Używanie Apache Hive z Apache Hadoop w usłudze HDInsight](hdinsight-use-hive.md)
