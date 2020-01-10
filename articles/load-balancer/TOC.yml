@@ -35,7 +35,7 @@
     - name: Równoważenie obciążenia ruchem internetowym przez skierowanie go do maszyn wirtualnych
       href: tutorial-load-balancer-standard-manage-portal.md
     - name: Równoważenie obciążenia ruchem wewnętrznym przez skierowanie go do maszyn wirtualnych
-      href: tutorial-load-balancer-basic-internal-portal.md
+      href: tutorial-load-balancer-standard-internal-portal.md
     - name: Równoważenie obciążenia maszyn wirtualnych w różnych strefach dostępności
       href: tutorial-load-balancer-standard-public-zone-redundant-portal.md
     - name: Równoważenie obciążenia maszyny wirtualnej w określonej strefie dostępności
