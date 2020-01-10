@@ -1,25 +1,16 @@
 ---
-title: Partnerzy monitorowania Service Fabric platformy Azure | Microsoft Docs
-description: Dowiedz się, jak monitorować usługę Azure Service Fabric przy użyciu rozwiązań do monitorowania partnerów
-services: service-fabric
-documentationcenter: .net
+title: Partnerzy monitorowania Service Fabric platformy Azure
+description: Dowiedz się, jak monitorować aplikacje, klastry i infrastruktury platformy Azure Service Fabric przy użyciu rozwiązań do monitorowania partnerów.
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 10/16/2018
 ms.author: srrengar
-ms.openlocfilehash: 8353c8846820aa996214e6b119a2f9027b8b6fe6
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: fd24d65ebdf4e458870819286024d1ea2e13d83e
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232448"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645722"
 ---
 # <a name="azure-service-fabric-monitoring-partners"></a>Partnerzy monitorowania Service Fabric platformy Azure
 
@@ -43,11 +34,11 @@ New Relic to inne narzędzie do zarządzania wydajnością aplikacji, które int
 
 ## <a name="elk"></a>ELK 
 
-Stos ELK to zbiór technologii typu open source: Elasticsearch, logstash i Kibana. Korzystając z tych elementów, można zbierać, przechowywać i analizować Service Fabric dane monitorowania i diagnostyki. Mamy samouczek, jak to zrobić za pomocą natywnych [aplikacji Java](service-fabric-tutorial-java-elk.md)Service Fabric. 
+Stos ELK to zbiór technologii typu "open source": Elasticsearch, logstash i Kibana. Korzystając z tych technologii w połączeniu, można zbierać, przechowywać i analizować Service Fabric dane monitorowania i diagnostyki. Mamy samouczek, jak to zrobić za pomocą natywnych [aplikacji Java](service-fabric-tutorial-java-elk.md)Service Fabric. 
 
 ## <a name="humio"></a>Humio
 
-Humio to usługa zbierania dzienników, która umożliwia zbieranie dzienników z aplikacji i zdarzeń z Service Fabric w chmurze lub lokalnie w czasie rzeczywistym. Oprócz możliwości wglądu na żywo, Humio oferuje stan funkcji analizy i wizualizacji artystycznej służącej do przeglądania i zbierania szczegółowych informacji z diagnostyki. Usługa Humio ma oszczędne plany cenowe i jest zbudowana w celu skalowania w czasie, gdy zachowuje szybko szybką szybkość. Integruje się ona bezpośrednio ze zdarzeniami platformy Service Fabric i telemetrii aplikacji. Więcej informacji na temat integracji z programem Humio i Service Fabric można znaleźć [tutaj](https://github.com/humio/service-fabric-humio).
+Humio to usługa zbierania dzienników, która umożliwia zbieranie dzienników z aplikacji i zdarzeń z Service Fabric w chmurze lub lokalnie w czasie rzeczywistym. Oprócz możliwości wglądu na żywo, Humio oferuje najnowocześniejszą funkcję analizy i wizualizacji do wyświetlania i zbierania informacji z diagnostyki. Usługa Humio ma oszczędne plany cenowe i jest zbudowana w celu skalowania w czasie, gdy zachowuje szybko szybką szybkość. Integruje się ona bezpośrednio ze zdarzeniami platformy Service Fabric i telemetrii aplikacji. Więcej informacji na temat integracji z programem Humio i Service Fabric można znaleźć [tutaj](https://github.com/humio/service-fabric-humio).
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -1,6 +1,7 @@
 ---
-title: 'Szybki Start: Tworzenie wystąpienia Azure Database Migration Service trybu hybrydowego przy użyciu Azure Portal | Microsoft Docs'
-description: Użyj Azure Portal, aby utworzyć wystąpienie Azure Database Migration Service w trybie hybrydowym
+title: 'Szybki Start: Tworzenie wystąpienia trybu hybrydowego z Azure Portal'
+titleSuffix: Azure Database Migration Service
+description: Użyj Azure Portal, aby utworzyć wystąpienie Azure Database Migration Service w trybie hybrydowym.
 services: database-migration
 author: HJToland3
 ms.author: jtoland
@@ -8,21 +9,32 @@ manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc
+ms.custom: seo-lt-2019
 ms.topic: quickstart
-ms.date: 12/06/2019
-ms.openlocfilehash: a124c33f15318f1b9b22a750a1de15601823afa3
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.date: 12/17/2019
+ms.openlocfilehash: 64d4998e287f9981c666dee54fc3b67886791bbf
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74890695"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75708295"
 ---
-# <a name="quickstart-create-an-instance-of-azure-database-migration-service-in-hybrid-mode-using-the-azure-portal-preview"></a>Szybki Start: Tworzenie wystąpienia Azure Database Migration Service w trybie hybrydowym przy użyciu Azure Portal (wersja zapoznawcza)
+# <a name="quickstart-create-a-hybrid-mode-instance-with-azure-portal--azure-database-migration-service"></a>Szybki Start: Tworzenie wystąpienia trybu hybrydowego z Azure Portal & Azure Database Migration Service
 
 Azure Database Migration Service Tryb hybrydowy zarządza migracjami baz danych przy użyciu procesu roboczego migracji hostowanego lokalnie wraz z wystąpieniem Azure Database Migration Service uruchomionym w chmurze. Tryb hybrydowy jest szczególnie przydatny w scenariuszach, w których między siecią lokalną a platformą Azure nie ma łączności między lokacjami lub w przypadku ograniczonej przepustowości połączenia typu lokacja-lokacja.
 
+>[!NOTE]
+>Obecnie Azure Database Migration Service działające w trybie hybrydowym obsługuje migracje SQL Server do programu:
+>
+>- Azure SQL Database wystąpienie zarządzane z niemal zerowym przestojem (online).
+>- Azure SQL Database pojedynczą bazę danych z czasem przestoju (offline).
+>- MongoDb do platformy Azure CosmosDB z niemal zerowym przestojem (online).
+>- MongoDb do usługi Azure CosmosDB z pewnym przestojem (offline).
+
 W tym przewodniku szybki start użyjesz Azure Portal, aby utworzyć wystąpienie Azure Database Migration Service w trybie hybrydowym. Następnie należy pobrać, zainstalować i skonfigurować hybrydowy proces roboczy w sieci lokalnej. W trakcie korzystania z wersji zapoznawczej można użyć Azure Database Migration Service trybu hybrydowego do migrowania danych z lokalnego wystąpienia SQL Server do Azure SQL Database.
+
+> [!NOTE]
+> Azure Database Migration Service Instalatora hybrydowego jest uruchamiany w systemie Microsoft Windows Server 2012 R2, 2019 Windows Server 2016, w systemie i Windows 10.
 
 > [!IMPORTANT]
 > Azure Database Migration Service Instalatora hybrydowego wymaga platformy .NET w wersji lub nowszej. Aby znaleźć najnowsze wersje programu .NET, zobacz stronę [pobieranie .NET Framework](https://dotnet.microsoft.com/download/dotnet-framework) .
@@ -51,7 +63,7 @@ Zarejestruj dostawcę zasobów Microsoft. datamigration przed utworzeniem pierws
 
 1. Wybierz pozycję +**Utwórz zasób** , aby utworzyć wystąpienie Azure Database Migration Service.
 
-2. Wyszukaj w witrynie Marketplace hasło „migration”, wybierz pozycję **Azure Database Migration Service**, a następnie na ekranie **Azure Database Migration Service** wybierz pozycję **Utwórz**.
+2. Wyszukaj ciąg "migracja" w portalu Marketplace, wybierz pozycję **Azure Database Migration Service**, a następnie na ekranie **Azure Database Migration Service** wybierz pozycję **Utwórz**.
 
 3. Na ekranie **Tworzenie usługi migracji**:
 
@@ -59,13 +71,9 @@ Zarejestruj dostawcę zasobów Microsoft. datamigration przed utworzeniem pierws
     - Wybierz **subskrypcję** platformy Azure, w której chcesz utworzyć wystąpienie.
     - Wybierz istniejącą **grupę zasobów** lub utwórz nową.
     - Wybierz pozycję **Lokalizacja** położoną najbliżej Twojego serwera źródłowego lub docelowego.
-
-    > [!IMPORTANT]
-    > W trakcie okresu zapoznawczego Tryb hybrydowy jest obsługiwany tylko w regionie Wschodnie stany USA. Ze względu na to, że hybrydowy proces roboczy jest zainstalowany w sieci lokalnej, nie ma wpływu na wydajność nawet w przypadku migrowania do miejsca docelowego w innym regionie.
-
     - W obszarze **tryb usługi**wybierz pozycję **hybrydowe (wersja zapoznawcza)** .
 
-      ![Tworzenie usługi migracji — podstawy](media/quickstart-create-data-migration-service-hybrid-portal/dms-create-service-basics.png)
+           ![Create migration service - basics](media/quickstart-create-data-migration-service-hybrid-portal/dms-create-service-basics.png)
 
 4. Wybierz pozycję **Przegląd + utwórz**.
 
@@ -120,7 +128,7 @@ Musisz utworzyć identyfikator rejestracji aplikacji platformy Azure, który mo�
 4. W folderze Install zlokalizuj i Otwórz plik **dmsSettings. JSON** , określ identyfikator **aplikacji** i identyfikator **zasobu**, a następnie Zapisz plik.
 
     ![Azure Database Migration Service ustawień hybrydowego procesu roboczego](media/quickstart-create-data-migration-service-hybrid-portal/dms-settings.png)
- 
+
 5. Wygeneruj certyfikat, którego Azure Database Migration Service może użyć do uwierzytelnienia komunikacji od hybrydowego procesu roboczego przy użyciu następującego polecenia.
 
     ```
@@ -141,6 +149,12 @@ Musisz utworzyć identyfikator rejestracji aplikacji platformy Azure, który mo�
     <drive>:\<folder>\Install>DMSWorkerBootstrap.exe -a Install -IAcceptDMSLicenseTerms
     ```
 
+    > [!NOTE]
+    > Podczas uruchamiania polecenia install można także użyć następujących parametrów:
+    >
+    > - **-TelemetryOptOut** — wyłącza wysyłanie danych telemetrycznych przez proces roboczy, ale w minimalnym stopniu loguje się lokalnie.  Instalator nadal wysyła dane telemetryczne.
+    > - **-p {InstallLocation}** . Włącza zmianę ścieżki instalacji, która domyślnie jest "C:\Program Files\DatabaseMigrationServiceHybrid".
+
 8. Jeśli Instalator zostanie uruchomiony bez błędu, usługa wyświetli stan online w Azure Database Migration Service i wszystko jest gotowe do migracji baz danych.
 
     ![Azure Database Migration Service online](media/quickstart-create-data-migration-service-hybrid-portal/dms-instance-hybrid-mode-online.png)
@@ -152,6 +166,27 @@ Obecnie odinstalowanie Azure Database Migration Service trybu hybrydowego jest o
 ```
 <drive>:\<folder>\Install>DMSWorkerBootstrap.exe -a uninstall
 ```
+
+> [!NOTE]
+> Podczas uruchamiania polecenia Odinstaluj można także użyć parametru "-ReuseCert", który utrzymuje certyfikat AdApp wygenerowany przez przepływ pracy generateCert.  Umożliwia to korzystanie z tego samego certyfikatu, który został wcześniej wygenerowany i przekazany.
+
+## <a name="set-up-the-azure-database-migration-service-hybrid-worker-using-powershell"></a>Konfigurowanie Azure Database Migration Service hybrydowego procesu roboczego przy użyciu programu PowerShell
+
+Oprócz instalacji Azure Database Migration Service hybrydowego procesu roboczego za pośrednictwem Azure Portal udostępniamy [skrypt programu PowerShell](https://techcommunity.microsoft.com/gxcuf89792/attachments/gxcuf89792/MicrosoftDataMigration/119/1/DMS_Hybrid_Script.zip) , którego można użyć do zautomatyzowania kroków instalacji procesu roboczego po utworzeniu nowego wystąpienia Azure Database Migration Service w trybie hybrydowym. Skrypt:
+
+1. Tworzy nowy AdApp.
+2. Pobiera Instalatora.
+3. Uruchamia przepływ pracy generateCert.
+4. Przekazuje certyfikat.
+5. Dodaje AdApp jako współautor do wystąpienia Azure Database Migration Service.
+6. Uruchamia przepływ pracy instalacji.
+
+Ten skrypt jest przeznaczony do szybkiego tworzenia prototypów, gdy użytkownik dysponuje już wszystkimi niezbędnymi uprawnieniami w środowisku. Należy pamiętać, że w środowisku produkcyjnym AdApp i certyfikat mogą mieć inne wymagania, więc skrypt może się nie powieść.
+
+> [!IMPORTANT]
+> Ten skrypt zakłada, że istnieje wystąpienie Azure Database Migration Service w trybie hybrydowym oraz że używane konto platformy Azure ma uprawnienia do tworzenia AdApps w dzierżawie oraz modyfikowania kontroli RBAC w ramach subskrypcji.
+
+Po prostu wypełnij parametry w górnej części skryptu, a następnie uruchom skrypt z wystąpienia administratora programu PowerShell.
 
 ## <a name="next-steps"></a>Następne kroki
 

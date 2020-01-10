@@ -8,12 +8,12 @@ ms.author: babanisa
 ms.date: 11/15/2019
 ms.topic: quickstart
 ms.service: event-grid
-ms.openlocfilehash: 5c4ba510360475e1365d4901136c94181e8c3da3
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: a9281ba1e2bf68da2318c32ab7037515697f92a5
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74174370"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75708850"
 ---
 # <a name="quickstart-route-custom-events-to-an-azure-function-with-event-grid"></a>Szybki Start: kierowanie zdarzeń niestandardowych do funkcji platformy Azure za pomocą Event Grid
 
@@ -21,7 +21,7 @@ Azure Event Grid to usługa obsługi zdarzeń dla chmury. Azure Functions jest j
 
 [!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="create-azure-function"></a>Utwórz funkcję platformy Azure
+## <a name="create-azure-function"></a>Tworzenie funkcji platformy Azure
 
 Przed zasubskrybowaniem tematu niestandardowego Utwórzmy funkcję do obsługi zdarzeń. W Azure Portal kliknij pozycję "Utwórz zasób" i wpisz "funkcja", a następnie wybierz opcję "aplikacja funkcji" i kliknij przycisk Utwórz. Wybierz pozycję "Utwórz nowy" w obszarze Grupa zasobów i nadaj jej nazwę. Ta funkcja zostanie użyta w pozostałej części samouczka. Nadaj aplikacja funkcji nazwę, pozostaw przełącznik "Publikuj" w "kodzie", Wybierz dowolne środowisko uruchomieniowe i region, a następnie kliknij przycisk Utwórz.
 
@@ -121,7 +121,7 @@ W pierwszym przykładzie użyto interfejsu wiersza polecenia platformy Azure. Po
     curl -X POST -H "aeg-sas-key: $key" -d "$event" $endpoint
     ```
 
-### <a name="azure-powershell"></a>Azure PowerShell
+### <a name="azure-powershell"></a>Program Azure PowerShell
 Drugi przykład obejmuje wykonanie podobnych kroków przy użyciu programu PowerShell.
 
 1. W Azure Portal wybierz pozycję **Cloud Shell** (Alternatywnie przejdź do https://shell.azure.com/). W lewym górnym rogu okna Cloud Shell wybierz pozycję **PowerShell** . Zapoznaj się z przykładowym obrazem okna **Cloud Shell** w sekcji interfejsu wiersza polecenia platformy Azure.
@@ -184,13 +184,12 @@ Jeśli zamierzasz kontynuować pracę z tym zdarzeniem, nie usuwaj zasobów utwo
     ![Grupy zasobów](./media/custom-event-to-function/delete-resource-groups.png)
 
     Inna grupa zasobów widoczna w obrazie została utworzona i użyta przez okno Cloud Shell. Usuń ten element, jeśli nie planujesz użyć okna Cloud Shell w późniejszym czasie. 
-```
 
-## Next steps
+## <a name="next-steps"></a>Następne kroki
 
-Now that you know how to create topics and event subscriptions, learn more about what Event Grid can help you do:
+Wiesz już, jak tworzyć tematy i subskrypcje zdarzeń. Dowiedz się więcej na temat tego, co może Ci ułatwić usługa Event Grid:
 
-- [About Event Grid](overview.md)
-- [Route Blob storage events to a custom web endpoint](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json)
-- [Monitor virtual machine changes with Azure Event Grid and Logic Apps](monitor-virtual-machine-changes-event-grid-logic-app.md)
-- [Stream big data into a data warehouse](event-grid-event-hubs-integration.md)
+- [Event Grid — informacje](overview.md)
+- [Kierowanie zdarzeń usługi Blob Storage do niestandardowego internetowego punktu końcowego](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json)
+- [Monitorowanie zmian maszyn wirtualnych za pomocą usług Azure Event Grid i Logic Apps](monitor-virtual-machine-changes-event-grid-logic-app.md)
+- [Przesyłanie strumieniowe danych Big Data do magazynu danych](event-grid-event-hubs-integration.md)

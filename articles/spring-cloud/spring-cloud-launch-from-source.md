@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 10/30/2019
 ms.author: jeconnoc
-ms.openlocfilehash: ca78a9d7eeeeccb71fea75f6ab429e76f2344bbe
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 37af0ee99e48bfeddf4be81241b75318d1afda40
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895456"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75707888"
 ---
 # <a name="quickstart-launch-your-spring-cloud-application-from-source-code"></a>Szybki Start: uruchamianie aplikacji w chmurze wiosny z poziomu kodu źródłowego
 
@@ -77,6 +77,9 @@ az configure --defaults group=<service group name>
 az configure --defaults spring-cloud=<service instance name>
 ```
 
+> [!div class="nextstepaction"]
+> [Wystąpił problem](https://www.research.net/r/javae2e?tutorial=asc-source-quickstart&step=provision)
+
 ## <a name="create-the-spring-cloud-application"></a>Tworzenie aplikacji w chmurze wiosny
 
 Następujące polecenie tworzy aplikację w chmurze wiosny w Twojej subskrypcji.  Spowoduje to utworzenie pustej usługi w chmurze wiosny, do której możemy przekazać aplikację.
@@ -137,12 +140,18 @@ az spring-cloud app show-deploy-log -n <app-name> [-d <deployment-name>]
 > [!NOTE]
 > W dziennikach kpack będzie wyświetlane tylko najnowsze wdrożenie, jeśli wdrożenie zostało skompilowane ze źródła przy użyciu kpack.
 
+> [!div class="nextstepaction"]
+> [Wystąpił problem](https://www.research.net/r/javae2e?tutorial=asc-source-quickstart&step=deploy)
+
 ## <a name="assign-a-public-endpoint-to-gateway"></a>Przypisywanie publicznego punktu końcowego do bramy
 
 1. Otwórz stronę **pulpitu nawigacyjnego aplikacji** .
 2. Wybierz aplikację `gateway`, aby wyświetlić stronę **Szczegóły aplikacji** .
 3. Wybierz pozycję **Przypisz domenę** , aby przypisać publiczny punkt końcowy do bramy. Może to potrwać kilka minut. 
 4. Wprowadź przypisany publiczny adres IP do przeglądarki, aby wyświetlić uruchomioną aplikację.
+
+> [!div class="nextstepaction"]
+> [Wystąpił problem](https://www.research.net/r/javae2e?tutorial=asc-source-quickstart&step=public-endpoint)
 
 ## <a name="next-steps"></a>Następne kroki
 
