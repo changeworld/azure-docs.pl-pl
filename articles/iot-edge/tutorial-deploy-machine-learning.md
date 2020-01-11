@@ -9,22 +9,22 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 3d46e0695238ed7a09f180fe59063f8e2590f307
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 47a84e11149d9c54d335fe09f3c56532f2aaf58b
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74701920"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75862870"
 ---
 # <a name="tutorial-deploy-azure-machine-learning-as-an-iot-edge-module-preview"></a>Samouczek: wdrażanie usługi Azure Machine Learning jako modułu usługi IoT Edge (wersja zapoznawcza)
 
 Użyj Azure Notebooks do opracowania modułu uczenia maszynowego i wdrożenia go na urządzeniu z systemem Linux z Azure IoT Edge. 
 
-Moduły usługi IoT Edge umożliwiają wdrożenie kodu implementującego logikę biznesową bezpośrednio na urządzeniach usługi IoT Edge. Ten samouczek zawiera opis sposobu wdrażania modułu usługi Azure Machine Learning, który przewiduje awarię urządzenia na podstawie symulowanych danych dotyczących temperatury maszyny. Aby uzyskać więcej informacji na temat Azure Machine Learning na IoT Edge, zobacz [dokumentację Azure Machine Learning](../machine-learning/service/how-to-deploy-to-iot.md).
+Moduły usługi IoT Edge umożliwiają wdrożenie kodu implementującego logikę biznesową bezpośrednio na urządzeniach usługi IoT Edge. Ten samouczek zawiera opis sposobu wdrażania modułu usługi Azure Machine Learning, który przewiduje awarię urządzenia na podstawie symulowanych danych dotyczących temperatury maszyny. Aby uzyskać więcej informacji na temat Azure Machine Learning na IoT Edge, zobacz [dokumentację Azure Machine Learning](../machine-learning/how-to-deploy-and-where.md).
 
 Moduł usługi Azure Machine Learning tworzony w tym samouczku odczytuje dane środowiska wygenerowane przez urządzenie i oznacza, czy komunikaty wskazują wystąpienie anomalii, czy nie.
 
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Tworzenie modułu usługi Azure Machine Learning
@@ -49,7 +49,7 @@ Urządzenie usługi Azure IoT Edge:
 Zasoby w chmurze:
 
 * Usługa [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) w warstwie Bezpłatna lub Standardowa na platformie Azure.
-* Obszar roboczy usługi Azure Machine Learning. Postępuj zgodnie z instrukcjami w temacie [Use the Azure Portal, aby rozpocząć pracę z Azure Machine Learning](../machine-learning/service/quickstart-get-started.md) , aby je utworzyć i dowiedzieć się, jak z niej korzystać.
+* Obszar roboczy usługi Azure Machine Learning. Postępuj zgodnie z instrukcjami w temacie [Use the Azure Portal, aby rozpocząć pracę z Azure Machine Learning](../machine-learning/tutorial-1st-experiment-sdk-setup.md) , aby je utworzyć i dowiedzieć się, jak z niej korzystać.
    * Zanotuj nazwę obszaru roboczego, grupę zasobów i Identyfikator subskrypcji. Te wartości są dostępne w obszarze roboczym przegląd w Azure Portal. Te wartości zostaną użyte w dalszej części samouczka, aby połączyć Notes platformy Azure z zasobami obszaru roboczego. 
 
 
@@ -62,7 +62,7 @@ W tej sekcji przekonwertujesz przeszkolone pliki modelu uczenia maszynowego na k
 
 2. Wybierz pozycję **Przekaż repozytorium GitHub**.
 
-3. Podaj następującą nazwę repozytorium GitHub: `Azure/ai-toolkit-iot-edge`. Usuń zaznaczenie pola **publicznego** , jeśli chcesz zachować prywatny projekt. Wybierz pozycję **Importuj**. 
+3. Podaj następującą nazwę repozytorium GitHub: `Azure/ai-toolkit-iot-edge`. Usuń zaznaczenie pola **publicznego** , jeśli chcesz zachować prywatny projekt. Wybierz pozycję **Import** (Importuj). 
 
 4. Po zakończeniu importowania przejdź do nowego projektu **AI-Toolkit-IoT-Edge** i Otwórz folder **samouczek wykrywania anomalii IoT Edge** . 
 
@@ -101,11 +101,11 @@ Sprawdź, czy obraz kontenera został pomyślnie utworzony i zapisany w rejestrz
 
 4. Wybierz pozycję **tempanomalydetection**. Powinno być widoczne, że repozytorium ma jeden tag: **1**. 
 
-   Teraz, gdy znasz nazwę rejestru, nazwę repozytorium i tag, znasz pełną ścieżkę obrazu do kontenera. Ścieżki obrazów wyglądają jak **\<registry_name\>. azurecr.IO/tempanomalydetection:1**. Możesz użyć ścieżki obrazu do wdrożenia tego kontenera na IoT Edge urządzeniach. 
+   Teraz, gdy znasz nazwę rejestru, nazwę repozytorium i tag, znasz pełną ścieżkę obrazu do kontenera. Ścieżki obrazów wyglądają jak **\<registry_name\>. azurecr.IO/tempanomalydetection:1**. Możesz użyć ścieżki obrazu do wdrożenia tego kontenera na urządzeniach usługi IoT Edge. 
 
 5. W rejestrze kontenerów wybierz pozycję **klucze dostępu**. Powinna zostać wyświetlona liczba poświadczeń dostępu, w tym **serwer logowania** i **Nazwa użytkownika**oraz **hasło** administratora.
 
-   Te poświadczenia mogą być zawarte w manifeście wdrożenia, aby umożliwić IoT Edge dostęp urządzenia do ściągania obrazów kontenerów z rejestru. 
+   Te poświadczenia można dołączyć do manifestu wdrożenia, aby umożliwić urządzeniu usługi IoT Edge dostęp do ściągania obrazów kontenera z rejestru. 
 
 Teraz wiesz, gdzie jest przechowywany obraz kontenera Machine Learning. W następnej sekcji omówiono procedurę wyświetlania kontenera działającego jako moduł na urządzeniu IoT Edge. 
 
@@ -147,7 +147,7 @@ Poniższe kroki pokazują, jak skonfigurować program Visual Studio Code w celu 
 
 4. Wybierz ponownie pozycję **...** , a następnie wybierz pozycję **Rozpocznij monitorowanie wbudowanego punktu końcowego zdarzenia**.
 
-5. Obserwuj komunikaty przychodzące z modułu tempSensor co pięć sekund. Treść wiadomości zawiera właściwość o nazwie **anomalia**, która machinelearningmodule zawiera wartość true lub false. Właściwość **AzureMLResponse** zawiera wartość „OK”, jeśli model został uruchomiony pomyślnie.
+5. Obserwuj komunikaty przychodzące z modułu tempSensor co pięć sekund. Treść komunikatu zawiera właściwość o nazwie **anomaly**, którą moduł machinelearningmodule ustawia na wartość true lub false. Właściwość **AzureMLResponse** zawiera wartość „OK”, jeśli model został uruchomiony pomyślnie.
 
    ![Odpowiedź Azure Machine Learning w treści komunikatu](./media/tutorial-deploy-machine-learning/ml-output.png)
 

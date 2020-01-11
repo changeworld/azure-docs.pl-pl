@@ -1,22 +1,171 @@
 ---
 title: Tworzenie zapytań dotyczących dzienników usługi Azure Update Management
-description: W tym artykule opisano sposób wykonywania zapytań w dziennikach pod kątem Update Management
+description: W tym artykule opisano sposób wykonywania zapytań w dziennikach pod kątem Update Management w obszarze roboczym Log Analytics.
 services: automation
 ms.subservice: update-management
-ms.date: 09/26/2019
+ms.date: 01/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: 85b09aa32c8ddee6406469a2adc44e067c58e186
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5a1979b0e714f35694999c04e1f890b710d54ac9
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75420329"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867064"
 ---
-# <a name="query-update-records-for-update-management-in-log-analytics"></a>Kwerendy aktualizacji rekordów dla Update Management w Log Analytics
+# <a name="query-update-records-for-update-management-in-azure-monitor-logs"></a>Kwerendy aktualizacji rekordów dla Update Management w dziennikach Azure Monitor
 
-Oprócz szczegółów, które są dostępne w Azure Portal, można przeszukiwać dzienniki. Na stronie rozwiązania wybierz pozycję **log Analytics**. Zostanie otwarte okienko **przeszukiwania dzienników** .
+Oprócz szczegółów dostępnych w rozwiązaniu Update Management można wyszukiwać dzienniki przechowywane w Log Analytics obszarze roboczym. Na stronie rozwiązanie w okienku po lewej stronie wybierz pozycję **dzienniki**. Zostanie otwarta strona **Wyszukiwanie w dzienniku** .
 
 Możesz również dowiedzieć się, jak dostosować zapytania lub użyć ich z różnych klientów i więcej, odwiedzając: [log Analytics dokumentację interfejsu API wyszukiwania](https://dev.loganalytics.io/).
+
+## <a name="update-records"></a>Rekordy Update (Aktualizacja)
+
+Rekordy zbierane przez Update Management dla maszyn wirtualnych z systemami Windows i Linux oraz typy danych, które są wyświetlane w wynikach przeszukiwania dzienników. W poniższych sekcjach opisano te rekordy.
+
+### <a name="required-updates"></a>Wymagane aktualizacje
+
+Tworzony jest rekord typu `RequiredUpdate`, który reprezentuje aktualizacje wymagane przez komputer. Te rekordy mają właściwości podane w poniższej tabeli:
+
+| Właściwość | Opis | 
+|----------|-------------|
+| Computer (Komputer) | W pełni kwalifikowana nazwa domeny komputera raportowania. |
+| KBID | Identyfikator artykułu bazy wiedzy dla usługi Windows Update. |
+| ManagementGroupName | Nazwa grupy zarządzania Operations Manager lub Log Analytics obszaru roboczego. | 
+| Produkt | Produkty, dla których ma zastosowanie aktualizacja. | 
+| PublishDate | Data gotowości do pobrania i zainstalowania aktualizacji z Windows Update. |
+| Serwer | | 
+| SourceHealthServiceId | Unikatowy identyfikator reprezentujący identyfikator Log Analytics agenta systemu Windows. |
+| SourceSystem | *OperationsManager* | 
+| TenantId | Unikatowy identyfikator reprezentujący wystąpienie organizacji Azure Active Directory. | 
+| TimeGenerated | Data i godzina utworzenia rekordu. | 
+| Typ | *Aktualizacja* | 
+| UpdateClassification | Wskazuje typ aktualizacji, które mogą być stosowane. W przypadku systemu Windows:<br> *Aktualizacje krytyczne*<br> *Aktualizacje zabezpieczeń*<br> *Pakiety zbiorcze aktualizacji*<br> *Pakiety Feature Pack*<br> *Dodatki Service Pack*<br> *Aktualizacje definicji*<br> *Narzędzia*<br> *Aktualizacje*. W przypadku systemu Linux:<br> *Aktualizacje krytyczne i zabezpieczeń*<br> *Inne* |
+| UpdateSeverity | Klasyfikacja ważności luki w zabezpieczeniach. Wartości to:<br> *Najistotniejsz*<br> *Ważne*<br> *Umiarkowany*<br> *Niski* |
+| UpdateTitle | Tytuł aktualizacji.|
+
+### <a name="update"></a>Aktualizacja
+
+Tworzony jest rekord typu `Update`, który reprezentuje dostępne aktualizacje i ich stan instalacji. Te rekordy mają właściwości podane w poniższej tabeli:
+
+| Właściwość | Opis | 
+|----------|-------------|
+| ApprovalSource | Dotyczy tylko systemu operacyjnego Windows. Wartość jest *Microsoft Update*. |
+| Approved (Zatwierdzono) | *Prawda* lub *Fałsz* |
+| Klasyfikacja | *Aktualizacje* |
+| Computer (Komputer) | W pełni kwalifikowana nazwa domeny komputera raportowania. |
+| ComputerEnvironment | *Azure* lub *innym niż Azure*. |
+| MSRCBulletinID | Numer IDENTYFIKACYJNy biuletynu zabezpieczeń | 
+| MSRCSeverity | Klasyfikacja ważności luki w zabezpieczeniach. Wartości to:<br> *Najistotniejsz*<br> *Ważne*<br> *Umiarkowany*<br> *Niski* |  
+| KBID | Identyfikator artykułu bazy wiedzy dla usługi Windows Update. |
+| ManagementGroupName | Nazwa grupy zarządzania Operations Manager lub Log Analytics obszaru roboczego. |
+| UpdateID | Unikatowy identyfikator aktualizacji oprogramowania. |
+| RevisionNumber | Numer poprawki określonej poprawki aktualizacji. |
+| Opcjonalne | *Prawda* lub *Fałsz* | 
+| RebootBehavior | Zachowanie ponownego uruchomienia po zainstalowaniu/odinstalowaniu aktualizacji. |
+| _ResourceId | Unikatowy identyfikator zasobu, z którym jest skojarzony rekord. |
+| Typ | *Aktualizacja* |
+| VMUUID | Unikatowy identyfikator dla maszyny wirtualnej. |
+| MG | Unikatowy identyfikator grupy zarządzania lub Log Analytics obszaru roboczego. | 
+| TenantId | Unikatowy identyfikator reprezentujący wystąpienie organizacji Azure Active Directory. | 
+| SourceSystem | *OperationsManager* | 
+| TimeGenerated | Data i godzina utworzenia rekordu. | 
+| SourceComputerId | Unikatowy identyfikator reprezentujący komputer źródłowy. | 
+| Tytuł | Tytuł aktualizacji. |
+| PublishedDate (UTC) | Data gotowości do pobrania i zainstalowania aktualizacji z Windows Update.  |
+| UpdateState | Bieżący stan aktualizacji. | 
+| Produkt | Produkty, dla których ma zastosowanie aktualizacja. |
+| SubscriptionId | Unikatowy identyfikator subskrypcji platformy Azure. | 
+| ResourceGroup | Nazwa grupy zasobów, do której należy zasób. | 
+| ResourceProvider | Określa dostawcę zasobów. | 
+| Zasób | Nazwa zasobu. | 
+| ResourceType | Nazwa typu zasobu. | 
+
+### <a name="update-agent"></a>Aktualizuj agenta
+
+Tworzony jest rekord typu `UpdateAgent`, który zawiera szczegółowe informacje o agencie aktualizacji na komputerze. Te rekordy mają właściwości podane w poniższej tabeli:
+
+| Właściwość | Opis | 
+|----------|-------------|
+| AgeofOldestMissingRequiredUpdate | | 
+| AutomaticUpdateEnabled | | 
+| Computer (Komputer) | W pełni kwalifikowana nazwa domeny komputera raportowania. |
+| DaySinceLastUpdateBucket | | 
+| ManagementGroupName | Nazwa grupy zarządzania Operations Manager lub Log Analytics obszaru roboczego. |
+| OSVersion | Wersja systemu operacyjnego. |
+| Serwer | |
+| SourceHealthServiceId | Unikatowy identyfikator reprezentujący identyfikator Log Analytics agenta systemu Windows. |
+| SourceSystem | *OperationsManager* | 
+| TenantId | Unikatowy identyfikator reprezentujący wystąpienie organizacji Azure Active Directory. |
+| TimeGenerated | Data i godzina utworzenia rekordu. |
+| Typ | *Aktualizacja* | 
+| WindowsUpdateAgentVersion | Wersja agenta Windows Update. |
+| WSUSServer | Przedstawia błędy, jeśli Agent Windows Update może pomóc w rozwiązaniu problemu. |
+
+### <a name="update-deployment-status"></a>Aktualizuj stan wdrożenia 
+
+Tworzony jest rekord typu `UpdateRunProgress`, który zapewnia stan wdrożenia aktualizacji zaplanowane wdrożenie według maszyny. Te rekordy mają właściwości podane w poniższej tabeli:
+
+| Właściwość | Opis | 
+|----------|-------------|
+| Computer (Komputer) | W pełni kwalifikowana nazwa domeny komputera raportowania. |
+| ComputerEnvironment | *Azure* lub *innym niż Azure*. | 
+| CorrelationId | Unikatowy identyfikator zadania elementu Runbook uruchomionego dla aktualizacji. |
+| EndTime | Godzina, o której zakończył się proces synchronizacji. | 
+| ErrorResult | Windows Update wygenerowany kod błędu, jeśli instalacja aktualizacji nie powiedzie się. | 
+| InstallationStatus | Możliwe stany instalacji aktualizacji na komputerze klienckim, *w toku*, *zakończyły się powodzeniem*, *częściowo zakończyły się niepowodzeniem*. |
+| KBID | Identyfikator artykułu bazy wiedzy dla usługi Windows Update. | 
+| ManagementGroupName | Nazwa grupy zarządzania Operations Manager lub Log Analytics obszaru roboczego. |
+| OSType | Określa typ systemu operacyjnego, *Windows* lub *Linux*. | 
+| Produkt | Produkty, dla których ma zastosowanie aktualizacja. |
+| Zasób | Nazwa zasobu. | 
+| ResourceId | Unikatowy identyfikator zasobu, z którym jest skojarzony rekord. |
+| ResourceProvider | Określa dostawcę zasobów. | 
+| ResourceType | Nazwa typu zasobu. | 
+| SourceComputerId | Unikatowy identyfikator reprezentujący komputer źródłowy. | 
+| SourceSystem | *OperationsManager* |
+| StartTime | Godzina, o której zaplanowano zainstalowanie aktualizacji. |
+| SubscriptionId | Unikatowy identyfikator subskrypcji platformy Azure. | 
+| SucceededOnRetry | Pokazuje, kiedy wykonanie aktualizacji nie powiodło się przy pierwszej próbie, a bieżąca operacja jest ponowieniem próby. |
+| TimeGenerated | Data i godzina utworzenia rekordu. |
+| Tytuł | Tytuł aktualizacji. |
+| Typ | *UpdateRunProgress* |
+| UpdateId | Unikatowy identyfikator aktualizacji oprogramowania. |
+| VMUUID | Unikatowy identyfikator dla maszyny wirtualnej. |
+| _ResourceId | Unikatowy identyfikator zasobu, z którym jest skojarzony rekord. |
+
+### <a name="update-summary"></a>Podsumowanie aktualizacji 
+
+Tworzony jest rekord typu `UpdateSummary`, który udostępnia podsumowanie aktualizacji według maszyn. Te rekordy mają właściwości podane w poniższej tabeli:
+
+| Właściwość | Opis | 
+|----------|-------------|
+| Computer (Komputer) | W pełni kwalifikowana nazwa domeny komputera raportowania. |
+| ComputerEnvironment | *Azure* lub *innym niż Azure*. | 
+| CriticalUpdatesMissing | Liczba krytycznych aktualizacji, które mają zastosowanie. | 
+| ManagementGroupName | Nazwa grupy zarządzania Operations Manager lub Log Analytics obszaru roboczego. |
+| NETRuntimeVersion | Wersja .NET Framework zainstalowana na komputerze z systemem Windows. |
+| OldestMissingSecurityUpdateBucket | | 
+| OldestMissingSecurityUpdateInDays | |
+| OsVersion | Wersja systemu operacyjnego. |
+| OtherUpdatesMissing | Brak liczby wykrytych aktualizacji. |
+| Zasób |  Nazwa zasobu. | 
+| ResourceGroup | Nazwa grupy zasobów, do której należy zasób. |
+| ResourceId | Unikatowy identyfikator zasobu, z którym jest skojarzony rekord. |
+| ResourceProvider | Określa dostawcę zasobów. |
+| ResourceType | Nazwa typu zasobu. |
+| RestartPending | *True* lub *False*. |
+| SecurityUpdatesMissing | Liczba zastosowanych brakujących aktualizacji zabezpieczeń.| 
+| SourceComputerId | Unikatowy identyfikator dla maszyny wirtualnej. |
+| SourceSystem | *OpsManager* | 
+| SubscriptionId | Unikatowy identyfikator subskrypcji platformy Azure. |
+| TimeGenerated | Data i godzina utworzenia rekordu. |
+| TotalUpdatesMissing | Łączna liczba wymaganych aktualizacji. | 
+| Typ | *UpdateSummary* |
+| VMUUID | Unikatowy identyfikator dla maszyny wirtualnej. |
+| WindowsUpdateAgentVersion | Wersja agenta Windows Update. |
+| WindowsUpdateSetting | Pokazuje stan agenta Windows Update. Możliwe wartości:<br> *Zaplanowana instalacja*<br> *Powiadom przed instalacją*<br> Błąd zwrócony przez agenta usługi WUA w złej kondycji. | 
+| WSUSServer | Przedstawia błędy, jeśli Agent Windows Update może pomóc w rozwiązaniu problemu. |
+| _ResourceId | Unikatowy identyfikator zasobu, z którym jest skojarzony rekord. |
 
 ## <a name="sample-queries"></a>Przykładowe zapytania
 

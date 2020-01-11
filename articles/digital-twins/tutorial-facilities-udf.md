@@ -9,18 +9,18 @@ ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 11/13/2019
-ms.openlocfilehash: 80fd1275f3bf9585ff8e40a94d0de2d422baec71
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: b988d500ed2a201bb31f0d3a7cbeb7df00af9faf
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383225"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75860898"
 ---
 # <a name="tutorial-provision-your-building-and-monitor-working-conditions-with-azure-digital-twins-preview"></a>Samouczek: udostępnianie warunków roboczych tworzenia i monitorowania za pomocą usługi Azure Digital bliźniaczych reprezentacji Preview
 
 W tym samouczku pokazano, jak używać usługi Azure Digital bliźniaczych reprezentacji Preview do monitorowania obszarów pod kątem wymagań dotyczących temperatury i poziomu komfortu. Po [skonfigurowaniu przykładowego budynku](tutorial-facilities-setup.md) możesz zaaprowizować swój budynek i uruchamiać funkcje niestandardowe na danych z czujników, wykonując czynności opisane w tym samouczki.
 
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Definiowanie warunków, które mają być monitorowane.
@@ -234,7 +234,7 @@ W tej sekcji będziesz korzystać z projektu o nazwie *device-connectivity* w ra
 
 ## <a name="get-results-of-the-user-defined-function"></a>Pobieranie wyników funkcji zdefiniowanej przez użytkownika
 
-Funkcja zdefiniowana przez użytkownika jest uruchamiana za każdym razem, gdy wystąpienie odbiera dane z urządzeń i czujników. W tej sekcji jest wykonywane zapytanie względem wystąpienia usługi Azure Digital Twins w celu uzyskania wyników funkcji zdefiniowanej przez użytkownika. Zobaczysz niemal w czasie rzeczywistym, czy pomieszczenie jest dostępne, powietrze czyste, a temperatura odpowiednia. 
+Funkcja zdefiniowana przez użytkownika jest uruchamiana za każdym razem, gdy wystąpienie odbiera dane z urządzeń i czujników. W tej sekcji jest wykonywane zapytanie względem wystąpienia usługi Azure Digital Twins w celu uzyskania wyników funkcji zdefiniowanej przez użytkownika. Użytkownik zostanie powiadomiony o niemal czasie rzeczywistym, gdy będzie dostępny pokój, że powietrze jest świeże i temperatura jest odpowiednia. 
 
 1. Otwórz okno polecenia, którego użyto do aprowizacji przykładu, lub nowe okno polecenia i ponownie przejdź do folderu **occupancy-quickstart\src** w przykładzie.
 

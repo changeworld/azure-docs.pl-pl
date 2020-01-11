@@ -9,13 +9,13 @@ services: iot-hub
 ms.devlang: python
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 06/21/2019
-ms.openlocfilehash: bef259aa741e9c50ffaf28c6f81f63658ebda0a2
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.date: 01/09/2020
+ms.openlocfilehash: 11768a0d72549d917d93c0f6f7f4d0c7e8217da4
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75778108"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75864420"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-python"></a>Szybki start: kontrolowanie urządzenia podłączonego do centrum IoT (Python)
 
@@ -122,7 +122,7 @@ Aplikacja urządzenia symulowanego łączy się z punktem końcowym właściwym 
 
     Poniższy zrzut ekranu przedstawia dane wyjściowe w momencie wysyłania przez aplikację urządzenia symulowanego danych telemetrycznych do centrum IoT:
 
-    ![Uruchamianie urządzenia symulowanego](./media/quickstart-control-device-python/SimulatedDevice-1.png)
+    ![Uruchamianie urządzenia symulowanego](./media/quickstart-control-device-python/simulated-device-1.png)
 
 ## <a name="call-the-direct-method"></a>Wywoływanie metody bezpośredniej
 
@@ -148,11 +148,11 @@ Aplikacja zaplecza łączy się z punktem końcowym po stronie usługi w usłudz
 
     Na poniższym zrzucie ekranu przedstawiono dane wyjściowe, gdy aplikacja wysyła wywołanie metody bezpośredniej do urządzenia i otrzymuje potwierdzenie:
 
-    ![Uruchamianie aplikacji zaplecza](./media/quickstart-control-device-python/BackEndApplication.png)
+    ![Uruchamianie aplikacji zaplecza](./media/quickstart-control-device-python/backend-application.png)
 
     Po uruchomieniu aplikacji zaplecza zobaczysz komunikat w oknie konsoli uruchomionym na urządzeniu symulowanym, a także zobaczysz, że zmienia się prędkość wysyłania komunikatów:
 
-    ![Zmiana w kliencie symulowanym](./media/quickstart-control-device-python/SimulatedDevice-2.png)
+    ![Zmiana w kliencie symulowanym](./media/quickstart-control-device-python/simulated-device-2.png)
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 

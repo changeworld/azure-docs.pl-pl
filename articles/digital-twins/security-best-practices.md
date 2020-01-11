@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 11/19/2019
-ms.openlocfilehash: f5c0f6d9f6f7f35722f3df5f35dc1da945f21b9a
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 5d2fe5a00d131af54862551991cf984d8576b57e
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229039"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75860949"
 ---
 # <a name="azure-digital-twins-security-best-practices"></a>Najlepsze rozwiązania dotyczące zabezpieczeń usługi Azure Digital bliźniaczych reprezentacji
 
@@ -46,7 +46,7 @@ Oto kilka najważniejszych metod bezpiecznego zabezpieczania przestrzeni IoT:
 > [!div class="checklist"]
 > * Szyfruj zapisane, przechowywane lub trwałe dane.
 > * Wymagaj, aby hasła lub klucze były okresowo zmieniane lub odświeżane.
-> * Należy uważnie ograniczyć dostęp i uprawnienia według roli. Zobacz sekcję dotyczącą [kontroli dostępu opartej na rolach](#role-based-access-control-best-practices) poniżej.
+> * Należy uważnie ograniczyć dostęp i uprawnienia według roli. Zapoznaj się z sekcją dotyczącej [kontroli dostępu opartej na rolach](#role-based-access-control-best-practices) poniżej.
 > * Rozważ podzieloną topologię sieci, dzięki czemu urządzenia w każdej sieci są odizolowane od innych.
 > * Użyj zaawansowanego szyfrowania. Wymagaj długich haseł, używaj protokołów Secure Protocol i [uwierzytelniania wieloskładnikowego](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks).
 
@@ -56,7 +56,7 @@ Oto kilka najważniejszych metod bezpiecznego zabezpieczania przestrzeni IoT:
 > Przeczytaj temat [najlepsze rozwiązania](../iot-fundamentals/iot-security-best-practices.md) dotyczące usługi Azure IoT Security, aby rozpocząć kompleksową strategię zabezpieczeń IoT.
 
 > [!NOTE]
-> Aby uzyskać więcej informacji o przetwarzaniu i monitorowaniu zdarzeń, zobacz temat [kierowanie zdarzeń i komunikatów za pomocą usługi Azure Digital bliźniaczych reprezentacji](./concepts-events-routing.md).
+> Aby uzyskać więcej informacji o przetwarzaniu i monitorowaniu zdarzeń, Odczytaj [zdarzenia i komunikaty dotyczące tras za pomocą usługi Azure Digital bliźniaczych reprezentacji](./concepts-events-routing.md).
 
 ## <a name="azure-active-directory-best-practices"></a>Azure Active Directory najlepszych praktyk
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: time-series-insights
 services: time-series-insights
 ms.custom: seodec18
-ms.openlocfilehash: 5f0f1cf4202eebd3639d3946cd4c800bc5c216a0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c33fce5b6999c5b8372fe4c04401bf55898aee8d
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75460328"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863448"
 ---
 # <a name="summary-of-customer-data-request-features"></a>Podsumowanie funkcji żądania danych klienta
 
@@ -34,9 +34,9 @@ Administrator dzierżawy może usunąć dane klienta przy użyciu Azure Portal.
 
 [!INCLUDE [gdpr-dsr-and-stp-note](../../includes/gdpr-dsr-and-stp-note.md)]
 
-Jednak przed usunięciem danych klienta za pośrednictwem portalu należy usunąć zasady dostępu użytkownika ze środowiska Time Series Insights w Azure Portal. Aby uzyskać więcej informacji, zobacz [udzielanie dostępu do danych w środowisku Time Series Insights przy użyciu Azure Portal](time-series-insights-data-access.md).
+Jednak przed usunięciem danych klienta za pośrednictwem portalu należy usunąć zasady dostępu użytkownika ze środowiska Time Series Insights w Azure Portal. Aby uzyskać więcej informacji, przeczytaj temat [udzielanie dostępu do danych w środowisku Time Series Insights przy użyciu Azure Portal](time-series-insights-data-access.md).
 
-Można również wykonywać operacje usuwania na zasadach dostępu przy użyciu interfejsu API REST. Aby uzyskać więcej informacji, zobacz [zasady dostępu — usuwanie](https://docs.microsoft.com/rest/api/time-series-insights/management/accesspolicies/delete).
+Można również wykonywać operacje usuwania na zasadach dostępu przy użyciu interfejsu API REST. Aby uzyskać więcej informacji, zobacz [zasady dostępu do odczytu — usuwanie](https://docs.microsoft.com/rest/api/time-series-insights/management/accesspolicies/delete).
 
 Time Series Insights jest zintegrowany z blokiem zasad w Azure Portal. Zarówno Time Series Insights, jak i blok zasad umożliwiają wyświetlanie, eksportowanie i usuwanie danych użytkownika przechowywanych w ramach usługi. Każda akcja usuwania podjęta w bloku zasady Azure Portal powoduje usunięcie danych użytkownika w Time Series Insights. Na przykład jeśli użytkownik ma zapisane zapytanie osobiste, to zapytanie zostanie trwale usunięte z Eksploratora Time Series Insights. Jeśli użytkownik ma zapisane zapytanie udostępnione, zapytanie będzie przechowywane, ale informacje o użytkowniku są trwale usuwane. Poniższa Uwaga zawiera instrukcje dotyczące wykonywania tych zadań.
 
@@ -46,9 +46,9 @@ Podobnie jak w przypadku usuwania danych, Administrator dzierżawy może wyświe
 
 [!INCLUDE [gdpr-dsr-and-stp-note](../../includes/gdpr-dsr-and-stp-note.md)]
 
-Jeśli jesteś administratorem dzierżawy, możesz wyświetlić zasady dostępu do danych w środowisku Time Series Insights w Azure Portal. Aby uzyskać więcej informacji, zobacz [udzielanie dostępu do danych w środowisku Time Series Insights przy użyciu Azure Portal](time-series-insights-data-access.md).
+Jeśli jesteś administratorem dzierżawy, możesz wyświetlić zasady dostępu do danych w środowisku Time Series Insights w Azure Portal. Aby uzyskać więcej informacji, przeczytaj temat [udzielanie dostępu do danych w środowisku Time Series Insights przy użyciu Azure Portal](time-series-insights-data-access.md).
 
-Możliwe jest również wykonywanie operacji eksportowania na zasadach dostępu przy użyciu operacji "list by Environment" w podanym interfejsie API REST. Aby uzyskać więcej informacji, zobacz [zasady dostępu — lista według środowiska](https://docs.microsoft.com/rest/api/time-series-insights/management/accesspolicies/listbyenvironment).
+Możliwe jest również wykonywanie operacji eksportowania na zasadach dostępu przy użyciu operacji "list by Environment" w podanym interfejsie API REST. Aby uzyskać więcej informacji, zobacz [zasady dostępu do odczytu — lista według środowiska](https://docs.microsoft.com/rest/api/time-series-insights/management/accesspolicies/listbyenvironment).
 
 ## <a name="to-delete-data-stored-within-time-series-insights"></a>Aby usunąć dane przechowywane w Time Series Insights
 
@@ -58,13 +58,13 @@ Dane osobowe mogą być w Time Series Insights magazynem innym scenariuszu niż 
 
 Aby wyświetlić i wyeksportować dane przechowywane w Time Series Insights, należy wyszukać te dane. Do wyświetlania i eksportowania danych można używać interfejsów API Time Series Insights Explorer lub Time Series Insights zapytań. Aby wyświetlić i wyeksportować dane za pomocą Eksploratora Time Series Insights, najpierw Wyszukaj, aby znaleźć dane użytkownika. Po przeszukiwaniu kliknij prawym przyciskiem myszy wykres i wybierz polecenie **Eksploruj zdarzenia**. Zostanie wyświetlona siatka zdarzeń i przedstawiono opcje eksportowania danych jako plików CSV i JSON.
 
-Aby uzyskać więcej informacji, zobacz [Azure Time Series Insights Explorer](time-series-insights-explorer.md).
+Aby uzyskać więcej informacji, Przeczytaj [Azure Time Series Insights Explorer](time-series-insights-explorer.md).
 
 **Usuń dane**
 
 Obecnie Time Series Insights nie obsługuje szczegółowego usuwania danych. Jednak Time Series Insights zapewnia możliwość usuwania danych klienta przechowywanych w ramach Time Series Insights przez skonfigurowanie zasad przechowywania. Okres przechowywania całego środowiska Time Series Insights można dostosować do dowolnej liczby dni, aby obsługiwać wymagania dotyczące usuwania.
 
-Aby uzyskać więcej informacji, zobacz [Konfigurowanie przechowywania w Time Series Insights](time-series-insights-how-to-configure-retention.md).
+Aby uzyskać więcej informacji, przeczytaj temat [Konfigurowanie przechowywania w Time Series Insights](time-series-insights-how-to-configure-retention.md).
 
 ## <a name="next-steps"></a>Następne kroki
 

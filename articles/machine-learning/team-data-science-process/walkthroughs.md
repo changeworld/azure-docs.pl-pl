@@ -3,24 +3,24 @@ title: Przewodniki dotyczące wykonywania procesu do nauki o danych zespołu na 
 description: Jak połączyć w chmurze i lokalnych narzędzi i usług w przepływie pracy lub potoku do tworzenia inteligentnych aplikacji.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 08/17/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 98595ea0ef5b6d9d4cef0f239390b364fb1e4e75
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8fa21cc690742a71100c53b4e5b6ce122d1a6147
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60589055"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75864081"
 ---
 # <a name="walkthroughs-executing-the-team-data-science-process"></a>Przewodniki dotyczące wykonywania procesu do nauki o danych zespołu
 
-Te **przewodniki end-to-end** pokaz czynności w procesie nauki o danych zespołu w określonych scenariuszach. One ilustrują sposób łączenia chmury, lokalnego narzędzia i usługi w przepływie pracy lub potoku, aby utworzyć **inteligentną aplikację**. Przewodniki są pogrupowane według **platformy** używane.
+Te **kompleksowe przewodniki** demonstrują kroki procesu nauki o danych zespołowych dla konkretnych scenariuszy. Ilustrują one sposób łączenia chmur, narzędzi lokalnych i usług w przepływ pracy dla **inteligentnej aplikacji**. Przewodniki są pogrupowane według **platformy** używane.
 
 
 ## <a name="walkthrough-descriptions"></a>Opisy wskazówki
@@ -36,11 +36,11 @@ Poniżej przedstawiono krótkie opisy te wskazówki przykłady zapewniają w odp
 
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać omówienie najważniejsze składniki wchodzące w skład procesu do nauki o danych zespołu, zobacz [przegląd danych zespołu dla celów naukowych](overview.md).
 
-Omówienie cyklu życia procesu do nauki o danych zespołu, używanej do organizowania projektów do nauki o danych, zobacz [cykl życia zespołowego danych naukowych](lifecycle.md). Cykl życia zawiera opis kroków, od początku do końca, że projekty zazwyczaj należy wykonać podczas są wykonywane. 
+Aby zapoznać się z omówieniem cyklu życia procesu nauki o danych zespołowych, zobacz [cykl życia procesu nauki o danych zespołowych](lifecycle.md). Ten cykl życia przedstawia kroki od początku do końca, które zwykle są wykonywane podczas wykonywania projektów. 
 
-Aby uzyskać omówienie tematów, które przeprowadzą Cię przez zadania, wchodzące w skład procesu do nauki o danych na platformie Azure, zobacz [danych dla celów naukowych](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/). 
+Aby zapoznać się z omówieniem, zobacz [proces nauki o danych](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/). 
 

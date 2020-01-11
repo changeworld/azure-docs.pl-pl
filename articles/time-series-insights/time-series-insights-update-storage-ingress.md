@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: dada1a8ed8b1725905ee2ad159e385d1bee62fc6
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 1deca696ba576849701eb8719de7fbaa7895a26a
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75615099"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861408"
 ---
 # <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Magazyn danych i ruch przychodzący w wersji zapoznawczej Azure Time Series Insights
 
@@ -116,9 +116,9 @@ Możesz chcieć uzyskać dostęp do danych wyświetlanych w Eksploratorze Time S
 
 Dostęp do danych można uzyskać na trzy sposoby:
 
-* W Eksploratorze Time Series Insights w wersji zapoznawczej. Dane można eksportować jako plik CSV z Eksploratora. Aby uzyskać więcej informacji, zobacz [Time Series Insights Explorer w wersji zapoznawczej](./time-series-insights-update-explorer.md).
-* Z poziomu interfejsu API usługi Time Series Insights Preview. Punkt końcowy interfejsu API można uzyskać w `/getRecorded`. Aby dowiedzieć się więcej na temat tego interfejsu API, zobacz [zapytanie szeregów czasowych](./time-series-insights-update-tsq.md).
-* Bezpośrednio z konta usługi Azure Storage. Musisz mieć dostęp do odczytu do dowolnego konta, którego używasz, aby uzyskać dostęp do danych w wersji zapoznawczej Time Series Insights. Aby uzyskać więcej informacji, zobacz [Zarządzanie dostępem do zasobów konta magazynu](../storage/blobs/storage-manage-access-to-resources.md).
+* W Eksploratorze Time Series Insights w wersji zapoznawczej. Dane można eksportować jako plik CSV z Eksploratora. Aby uzyskać więcej informacji, Przeczytaj [Time Series Insights Explorer w wersji zapoznawczej](./time-series-insights-update-explorer.md).
+* Z poziomu interfejsu API usługi Time Series Insights Preview. Punkt końcowy interfejsu API można uzyskać w `/getRecorded`. Aby dowiedzieć się więcej na temat tego interfejsu API, Przeczytaj [zapytanie dotyczące szeregów czasowych](./time-series-insights-update-tsq.md).
+* Bezpośrednio z konta usługi Azure Storage. Musisz mieć dostęp do odczytu do dowolnego konta, którego używasz, aby uzyskać dostęp do danych w wersji zapoznawczej Time Series Insights. Aby uzyskać więcej informacji, zapoznaj się z artykułem [Zarządzanie dostępem do zasobów konta magazynu](../storage/blobs/storage-manage-access-to-resources.md).
 
 ### <a name="data-deletion"></a>Usuwanie danych
 
@@ -128,7 +128,7 @@ Nie usuwaj plików w wersji zapoznawczej Time Series Insights. Zarządzaj powią
 
 Parquet to format pliku kolumnowego Open Source, który został zaprojektowany w celu zapewnienia wydajnego magazynu i wydajności. Z tych powodów Time Series Insights w wersji zapoznawczej program używa Parquet. Umożliwia ona Partycjonowanie danych według identyfikatora szeregów czasowych na potrzeby wykonywania zapytań na dużą skalę.  
 
-Więcej informacji o typie pliku Parquet można znaleźć w [dokumentacji Parquet](https://parquet.apache.org/documentation/latest/).
+Aby uzyskać więcej informacji na temat typu pliku Parquet, Przeczytaj [dokumentację dotyczącą Parquet](https://parquet.apache.org/documentation/latest/).
 
 Time Series Insights w wersji zapoznawczej przechowuje kopie danych w następujący sposób:
 

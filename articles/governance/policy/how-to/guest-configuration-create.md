@@ -3,12 +3,12 @@ title: Jak utworzyć zasady konfiguracji gościa
 description: Dowiedz się, jak utworzyć Azure Policy zasady konfiguracji gościa dla maszyn wirtualnych z systemem Windows lub Linux przy użyciu Azure PowerShell.
 ms.date: 12/16/2019
 ms.topic: how-to
-ms.openlocfilehash: f2e611998e42510eccde64ff6f945f58133fc4e9
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: dbdb4288812b8d1016c3ccc879582f76222d17cd
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75608528"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867335"
 ---
 # <a name="how-to-create-guest-configuration-policies"></a>Jak utworzyć zasady konfiguracji gościa
 
@@ -65,7 +65,7 @@ Gdy konfiguracja gościa przeprowadza inspekcję maszyny, najpierw działa `Test
 
 #### <a name="configuration-requirements"></a>Wymagania dotyczące konfiguracji
 
-Jedyną wymogiem dla konfiguracji gościa do korzystania z konfiguracji niestandardowej jest nazwa konfiguracji, która będzie spójna wszędzie tam, gdzie jest używana.  Dotyczy to również nazwy pliku zip pakietu zawartości, nazwy konfiguracji w pliku MOF przechowywanego wewnątrz pakietu zawartości oraz nazwy konfiguracji używanej w usłudze ARM jako nazwy przypisania gościa.
+Jedyną wymogiem dla konfiguracji gościa do korzystania z konfiguracji niestandardowej jest nazwa konfiguracji, która będzie spójna wszędzie tam, gdzie jest używana. To wymaganie dotyczące nazwy obejmuje nazwę pliku zip pakietu zawartości, nazwę konfiguracji w pliku MOF przechowywanego w pakiecie zawartości oraz nazwę konfiguracji używaną w szablonie Menedżer zasobów jako nazwę przydziału gościa.
 
 #### <a name="get-targetresource-requirements"></a>Wymagania Get-TargetResource
 
@@ -181,7 +181,7 @@ Można również zaimplementować [punkt końcowy usługi](../../../storage/comm
 
 W Azure Policy konfiguracji gościa najlepszym sposobem zarządzania kluczami tajnymi używanymi w czasie wykonywania jest przechowywanie ich w Azure Key Vault. Ten projekt jest implementowany w ramach niestandardowych zasobów DSC.
 
-1. Najpierw utwórz tożsamość zarządzaną przypisaną przez użytkownika na platformie Azure.
+1. Tworzenie tożsamości zarządzanej przypisanej przez użytkownika na platformie Azure.
 
    Tożsamość jest używana przez maszyny do uzyskiwania dostępu do wpisów tajnych przechowywanych w Key Vault. Aby uzyskać szczegółowe instrukcje, zobacz [Tworzenie, wyświetlanie listy lub usuwanie tożsamości zarządzanej przypisanej przez użytkownika przy użyciu Azure PowerShell](../../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md).
 
@@ -193,9 +193,9 @@ W Azure Policy konfiguracji gościa najlepszym sposobem zarządzania kluczami ta
 1. Przypisz do komputera tożsamość przypisaną przez użytkownika.
 
    Aby uzyskać szczegółowe instrukcje, zobacz [Konfigurowanie zarządzanych tożsamości dla zasobów platformy Azure na maszynie wirtualnej platformy Azure przy użyciu programu PowerShell](../../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md#user-assigned-managed-identity).
-   Na dużą skalę Przypisz tę tożsamość przy użyciu Azure Resource Manager za pośrednictwem Azure Policy. Aby uzyskać szczegółowe instrukcje, zobacz [Konfigurowanie zarządzanych tożsamości dla zasobów platformy Azure na maszynie wirtualnej platformy Azure przy użyciu szablonu](../../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md#assign-a-user-assigned-managed-identity-to-an-azure-vm).
+   Przypisz tę tożsamość przy użyciu Azure Resource Manager za pośrednictwem Azure Policy na dużą skalę. Aby uzyskać szczegółowe instrukcje, zobacz [Konfigurowanie zarządzanych tożsamości dla zasobów platformy Azure na maszynie wirtualnej platformy Azure przy użyciu szablonu](../../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md#assign-a-user-assigned-managed-identity-to-an-azure-vm).
 
-1. Na koniec w ramach zasobu niestandardowego Użyj identyfikatora klienta wygenerowanego powyżej, aby uzyskać dostęp do Key Vault przy użyciu tokenu dostępnego na komputerze.
+1. Użyj identyfikatora klienta wygenerowanego powyżej w ramach zasobu niestandardowego, aby uzyskać dostęp do Key Vault przy użyciu tokenu dostępnego na komputerze.
 
    `client_id` i adres URL do wystąpienia Key Vault można przesłać do zasobu jako [Właściwości](/powershell/scripting/dsc/resources/authoringresourcemof#creating-the-mof-schema) , więc nie trzeba aktualizować zasobu dla wielu środowisk lub należy zmienić wartości.
 
@@ -305,7 +305,7 @@ New-GuestConfigurationPolicy
     -Verbose
 ```
 
-W przypadku zasad systemu Linux Uwzględnij Właściwość **AttributesYmlContent** w konfiguracji i Zastąp odpowiednie wartości. Agent konfiguracji gościa automatycznie tworzy plik YaML używany przez specyfikację do przechowywania atrybutów. Zobacz poniższy przykład.
+W przypadku zasad systemu Linux Uwzględnij Właściwość **AttributesYmlContent** w konfiguracji i Zastąp wartości zgodnie z potrzebami. Agent konfiguracji gościa automatycznie tworzy plik YAML używany przez specyfikację do przechowywania atrybutów. Zobacz poniższy przykład.
 
 ```powershell
 Configuration FirewalldEnabled {

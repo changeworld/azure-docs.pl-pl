@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: b447a0328de210caeb23a1beb91c532853c180bc
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: e80194f53a406b8b378d0fb787df627937125a27
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75550472"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867488"
 ---
 # <a name="quickstart-use-a-device-capability-model-to-create-an-iot-plug-and-play-preview-device-windows"></a>Szybki Start: korzystanie z modelu możliwości urządzenia do tworzenia urządzenia w wersji zapoznawczej IoT Plug and Play (Windows)
 
@@ -85,9 +85,9 @@ W tym przewodniku szybki start użyjesz Menedżera bibliotek [Vcpkg](https://git
 
 W tym przewodniku szybki start użyjesz istniejącego modelu możliwości przykładowego urządzenia i skojarzonych interfejsów.
 
-1. Utwórz katalog `pnp_app` na dysku lokalnym. Ten folder służy do plików modelu urządzenia i szczątkowego kodu urządzenia.
+1. Utwórz folder `pnp_app` na dysku lokalnym. Ten folder służy do plików modelu urządzenia i szczątkowego kodu urządzenia.
 
-1. Pobierz [model możliwości urządzenia oraz przykładowe pliki](https://github.com/Azure/IoTPlugandPlay/blob/master/samples/SampleDevice.capabilitymodel.json) [i interfejs interfejsu i](https://github.com/Azure/IoTPlugandPlay/blob/master/samples/EnvironmentalSensor.interface.json) zapisz pliki w folderze `pnp_app`.
+1. Pobierz [model możliwości urządzenia oraz przykładowe pliki interfejsu](https://github.com/Azure/IoTPlugandPlay/blob/master/samples/SampleDevice.capabilitymodel.json) i [przykład interfejsu](https://github.com/Azure/IoTPlugandPlay/blob/master/samples/EnvironmentalSensor.interface.json) i zapisz pliki w folderze `pnp_app`.
 
     > [!TIP]
     > Aby pobrać plik z usługi GitHub, przejdź do pliku, kliknij prawym przyciskiem myszy pozycję **RAW**, a następnie wybierz pozycję **Zapisz łącze jako**.
@@ -109,7 +109,7 @@ Teraz, gdy masz już DCM i skojarzone z nią interfejsy, możesz wygenerować ko
 
 1. Wybierz plik **SampleDevice. capabilitymodel. JSON** , który ma być używany do generowania szczątkowego kodu urządzenia.
 
-1. Wprowadź nazwę projektu **sample_device**. Będzie to nazwa aplikacji urządzenia.
+1. Wprowadź nazwę projektu **sample_device**. Jest to nazwa aplikacji urządzenia.
 
 1. Wybierz **ANSI C** jako język.
 
@@ -124,7 +124,7 @@ Teraz, gdy masz już DCM i skojarzone z nią interfejsy, możesz wygenerować ko
 
 ## <a name="build-and-run-the-code"></a>Kompiluj i uruchamiaj kod
 
-Kod źródłowy zestawu SDK urządzenia służy do tworzenia wygenerowanej procedury wejścia kodu urządzenia. Utworzona Aplikacja symuluje urządzenie, które nawiązuje połączenie z usługą IoT Hub. Aplikacja wysyła dane telemetryczne i właściwości oraz odbiera polecenia.
+Pakiet Vcpkg jest używany do kompilowania wygenerowanej procedury tworzenia kodu urządzenia. Utworzona Aplikacja symuluje urządzenie, które nawiązuje połączenie z usługą IoT Hub. Aplikacja wysyła dane telemetryczne i właściwości oraz odbiera polecenia.
 
 1. Utwórz podkatalog `cmake` w folderze `sample_device` i przejdź do tego folderu:
 

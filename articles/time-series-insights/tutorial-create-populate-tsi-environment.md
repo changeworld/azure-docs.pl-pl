@@ -9,16 +9,16 @@ ms.service: time-series-insights
 ms.topic: tutorial
 ms.date: 12/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 387f3df7313c26c5cd8f7fee7c9b58ec3b5c4552
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 83462d47af49a02817dcfa05afcd8fdb5e0beab1
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872413"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863710"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-environment"></a>Samouczek: Tworzenie środowiska usługi Azure Time Series Insights
 
-Ten samouczek przeprowadzi Cię przez proces tworzenia środowiska Azure Time Series Insights, które jest wypełniane danymi z symulowanych urządzeń. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Ten samouczek przeprowadzi Cię przez proces tworzenia środowiska Azure Time Series Insights, które jest wypełniane danymi z symulowanych urządzeń. Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Tworzenie środowiska usługi Time Series Insights.
@@ -32,7 +32,7 @@ Ten samouczek przeprowadzi Cię przez proces tworzenia środowiska Azure Time Se
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Konto logowania platformy Azure musi być również członkiem roli **właściciela** subskrypcji. Aby uzyskać więcej informacji, zobacz [Zarządzanie dostępem przy użyciu kontroli dostępu opartej na rolach i Azure Portal](../role-based-access-control/role-assignments-portal.md).
+* Konto logowania platformy Azure musi być również członkiem roli **właściciela** subskrypcji. Aby uzyskać więcej informacji, zapoznaj się z tematem [Zarządzanie dostępem przy użyciu kontroli dostępu opartej na rolach i Azure Portal](../role-based-access-control/role-assignments-portal.md).
 
 ## <a name="review-video"></a>Przejrzyj wideo
 
@@ -72,7 +72,7 @@ Najpierw utwórz rozwiązanie do symulacji urządzenia, które generuje dane tes
 
    [![aprowizacji rozwiązania do symulacji urządzeń](media/tutorial-create-populate-tsi-environment/iot-solution-accelerators-configuration.png)](media/tutorial-create-populate-tsi-environment/iot-solution-accelerators-configuration.png#lightbox)
 
-1. Po zakończeniu aprowizacji zobaczysz dwie aktualizacje zawierające stan wdrożenia przeniesiono z **aprowizacji** na **gotowe**. 
+1. Po zakończeniu aprowizacji zostaną wyświetlone dwie aktualizacje z informacją o tym, że stan wdrożenia został przeniesiony z **aprowizacji** na **gotowe**. 
 
    >[!IMPORTANT]
    > Nie wprowadzaj jeszcze akceleratora rozwiązania. Pozostaw Tę stronę sieci Web otwartą, ponieważ wrócisz do niej później.
@@ -162,7 +162,7 @@ W tej ostatniej sekcji można sprawdzić, czy dane telemetryczne zostały wygene
 
    [![Time Series Insights Explorer](media/tutorial-create-populate-tsi-environment/ap-view-tsi-env-explorer-url.png)](media/tutorial-create-populate-tsi-environment/ap-view-tsi-env-explorer-url.png#lightbox)
 
-1. Eksplorator Time Series Insights ładuje i uwierzytelnia się przy użyciu konta Azure Portal. W widoku początkowym można zobaczyć w obszarze wykresu, że środowisko Time Series Insights zostało wypełnione przy użyciu symulowanych danych telemetrycznych. Aby odfiltrować węższy zakres czasu, zaznacz listę rozwijaną w lewym górnym rogu. Wprowadź wystarczająco duży zakres czasu, aby przekroczyć czas trwania symulacji urządzenia. Następnie wybierz opcję wyszukiwania Lupa.
+1. Eksplorator Time Series Insights ładuje i uwierzytelnia się przy użyciu konta Azure Portal. Początkowo zostanie wyświetlony obszar wykresu, w którym zapełnił się środowisko Time Series Insights wraz z symulowanymi danymi telemetrycznymi. Aby odfiltrować węższy zakres czasu, zaznacz listę rozwijaną w lewym górnym rogu. Wprowadź wystarczająco duży zakres czasu, aby przekroczyć czas trwania symulacji urządzenia. Następnie wybierz opcję wyszukiwania Lupa.
 
    [Filtr zakresu czasu Eksploratora Time Series Insights ![](media/tutorial-create-populate-tsi-environment/tsie-filter-time-range.png)](media/tutorial-create-populate-tsi-environment/tsie-filter-time-range.png#lightbox)
 
@@ -198,4 +198,4 @@ W niniejszym samouczku zawarto informacje na temat wykonywania następujących c
 Teraz, gdy wiesz już, jak utworzyć własne środowisko Time Series Insights, Dowiedz się, jak stworzyć aplikację sieci Web, która wykorzystuje dane ze środowiska Time Series Insights:
 
 > [!div class="nextstepaction"]
-> [Zobacz przykłady wizualizacji zestawu SDK klienta hostowanego](https://tsiclientsample.azurewebsites.net/)
+> [Przeczytaj przykłady wizualizacji zestawu SDK klienta hostowanego](https://tsiclientsample.azurewebsites.net/)

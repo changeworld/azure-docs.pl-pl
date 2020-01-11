@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 12/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 20c1f1f9a8b0b0ef105893e44c9daaeae68604db
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: a1d32bf7ea296ed2c4ed9351fcefe400c03effa5
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74889757"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861442"
 ---
 # <a name="query-data-from-the-azure-time-series-insights-preview-environment-using-c"></a>Wykonywanie zapytań dotyczących danych ze środowiska Azure Time Series Insights w wersji zapoznawczej przy użyciuC#
 
@@ -24,7 +24,7 @@ W C# tym przykładzie pokazano, jak wykonywać zapytania dotyczące danych ze ś
 
 Przykładowy kod zawiera kilka podstawowych przykładów użycia interfejsu API zapytań:
 
-1. Jako krok przygotowania Uzyskaj token dostępu za pomocą interfejsu API Azure Active Directory. Przekaż ten token w nagłówku `Authorization` każdego żądania interfejsu API zapytań. Aby skonfigurować aplikacje nieinteraktywne, zobacz [uwierzytelnianie i autoryzacja](time-series-insights-authentication-and-authorization.md). Upewnij się również, że wszystkie stałe zdefiniowane na początku próbki są prawidłowo ustawione.
+1. Jako krok przygotowania Uzyskaj token dostępu za pomocą interfejsu API Azure Active Directory. Przekaż ten token w nagłówku `Authorization` każdego żądania interfejsu API zapytań. Aby skonfigurować aplikacje nieinteraktywne, Odczytaj [uwierzytelnianie i autoryzację](time-series-insights-authentication-and-authorization.md). Upewnij się również, że wszystkie stałe zdefiniowane na początku próbki są prawidłowo ustawione.
 1. Zostanie uzyskana lista środowisk, do których użytkownik ma dostęp. Jedno z tych środowisk jest wybierane jako interesujące środowisko i dla tego środowiska są badane dalsze dane.
 1. Przykładem żądania HTTPS może być żądanie danych dostępności dla odpowiedniego środowiska.
 1. Zawiera przykład obsługi autogeneracji zestawu SDK z [usługi Azure AutoRest](https://github.com/Azure/AutoRest).

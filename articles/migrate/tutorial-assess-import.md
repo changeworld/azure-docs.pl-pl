@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: raynew
-ms.openlocfilehash: 7bf47731f2a3621e7bbdc1b104d94e97f2d03099
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: b9ad5ea6def79c4d7f132558b8b5339bac6f1bc3
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158654"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861306"
 ---
 # <a name="assess-servers-using-imported-data"></a>Ocenianie serwerów za pomocą zaimportowanych danych
 
@@ -33,7 +33,7 @@ Należy pamiętać, że:
 - Informacje o serwerze można przekazać wielokrotnie przy użyciu woluminu CSV w celu Azure Migrate oceny serwera.
 - Chociaż zbieranie informacji o aplikacji jest przydatne podczas oceniania środowiska lokalnego na potrzeby migracji, Azure Migrate oceny serwera nie przeprowadza oceny na poziomie aplikacji i nie przyjmuje aplikacji do konta, gdy Tworzenie oceny.
 
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 > [!div class="checklist"]
 > * Skonfiguruj projekt Azure Migrate.
 > * Wypełnij plik CSV informacjami o serwerze.
@@ -96,7 +96,7 @@ Pobierz szablon CSV i Dodaj do niego informacje o serwerze.
 
 1. W obszarze **cele migracji** > **serwery** > **Azure Migrate: Ocena serwera**, kliknij przycisk **odkryj**.
 2. W obszarze **odnajdywanie maszyn**wybierz pozycję **Importuj przy użyciu. Wolumin CSV**.
-3. Kliknij pozycję **Pobierz** , aby pobrać. Szablon CSV. Alternatywnie możesz [pobrać go bezpośrednio](https://go.microsoft.com/fwlink/?linkid=2108404).
+3. Kliknij pozycję **Pobierz** , aby pobrać. Szablon CSV. Alternatywnie możesz [pobrać go bezpośrednio](https://go.microsoft.com/fwlink/?linkid=2109031).
 
     ![Przesłać. Szablon CSV](./media/tutorial-assess-import/download-template.png)
 
@@ -310,12 +310,12 @@ SCO OpenServer 5<br/>SCO OpenServer 6<br/>SCO dla systemu UNIX 7 | Serenity Syst
 Sun Microsystems Solaris 8<br/>Sun Microsystems Solaris 9 | SUSE Linux Enterprise 10<br/> SUSE Linux Enterprise 11<br/>SUSE Linux Enterprise 12<br/>SUSE Linux Enterprise 8/9<br/>SUSE Linux Enterprise 11<br/>SUSE openSUSE
 **U-Z** |
 Ubuntu Linux | VMware ESXi 4<br/>VMware ESXi 5<br/>VMware ESXi 6
-Windows 10<br/>Windows 2000<br/>System Windows 3<br/>Windows 7<br/>Windows 8<br/>System Windows 95<br/>System Windows 98<br/>System Windows NT<br/>System Windows Server (R) 2008<br/>Windows Server 2003 | Windows Server 2008<br/>Windows Server 2008 R2<br/>Windows Server 2012<br/>Windows Server 2012 R2<br/>Windows Server 2016<br/>Windows Server 2019<br/>Próg systemu Windows Server<br/>Windows Vista<br/>Serwer sieci Web systemu Windows 2008 R2<br/>Windows XP Professional
+Windows 10<br/>Windows 2000<br/>System Windows 3<br/>Windows 7<br/>Windows 8<br/>Windows 95<br/>Windows 98<br/>System Windows NT<br/>System Windows Server (R) 2008<br/>Windows Server 2003 | Windows Server 2008<br/>Windows Server 2008 R2<br/>Windows Server 2012<br/>Windows Server 2012 R2<br/>Windows Server 2016<br/>Windows Server 2019<br/>Próg systemu Windows Server<br/>Windows Vista<br/>Windows Web Server 2008 R2<br/>Windows XP Professional
 
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku zostaną wykonane następujące czynności:
+W tym samouczku zostały wykonane następujące czynności:
 
 > [!div class="checklist"]
 > * Zaimportowane serwery do Azure Migrate: Ocena serwera przy użyciu woluminu CSV.

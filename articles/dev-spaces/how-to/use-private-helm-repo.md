@@ -8,12 +8,12 @@ ms.topic: conceptual
 description: Używaj prywatnego repozytorium Helm w obszarze dev platformy Azure.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, kontenery, Helm
 manager: gwallace
-ms.openlocfilehash: f212df74ab8102391e4170ccef6b0c3b1129b046
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: dddec69dc019f286c714a09e6f1a7e47240d5572
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279917"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867281"
 ---
 # <a name="use-a-private-helm-repository-in-azure-dev-spaces"></a>Korzystanie z prywatnego repozytorium Helm w Azure Dev Spaces
 
@@ -35,6 +35,9 @@ Przejdź do katalogu projektu i uruchom `azds prep`.
 ```cmd
 azds prep --public
 ```
+
+> [!TIP]
+> Polecenie `prep` podejmuje próbę wygenerowania [wykresu pliku dockerfile i Helm](../how-dev-spaces-works.md#prepare-your-code) dla projektu. Azure Dev Spaces używa tych plików do kompilowania i uruchamiania kodu, ale te pliki można modyfikować, jeśli chcesz zmienić sposób kompilowania i wykonywania projektu.
 
 Utwórz plik [Requirements. YAML][helm-requirements] z wykresem w katalogu wykresów aplikacji. Na przykład jeśli aplikacja ma nazwę *APP1*, utworzysz *wykresy/APP1/Requirements. YAML*.
 

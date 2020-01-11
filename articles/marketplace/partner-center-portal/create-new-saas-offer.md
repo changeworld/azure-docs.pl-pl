@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: b59600ffa6a83d00a83d642ab337df2e71cbee06
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: 1df30b25d2029ba31525eaea232d258bbb134366
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75777907"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863809"
 ---
 # <a name="create-a-new-saas-offer"></a>Utwórz nową ofertę SaaS
 
@@ -374,7 +374,8 @@ Karta **konfiguracja techniczna** zawiera szczegółowe informacje techniczne (�
 
 - **Identyfikator aplikacji usługi Azure AD** (wymagane): wymagany jest również [Identyfikator aplikacji](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) i klucz uwierzytelniania. Aby uzyskać te wartości, przejdź do Azure Active Directory i wybierz pozycję **rejestracje aplikacji**, a następnie wyszukaj numer **identyfikatora aplikacji** (np. 50c464d3-4930-494c-963c-1e951d15360e). Aby znaleźć klucz uwierzytelniania, przejdź do pozycji **Ustawienia** i wybierz pozycję **klucze**. Należy podać opis i czas trwania, a następnie podać wartość liczbową.
 
- Zwróć uwagę, że identyfikator aplikacji platformy Azure jest skojarzony z IDENTYFIKATORem wydawcy, dlatego upewnij się, że ten sam identyfikator aplikacji jest używany we wszystkich ofertach.
+>[!Note]
+>Identyfikator aplikacji platformy Azure jest skojarzony z IDENTYFIKATORem wydawcy, dlatego upewnij się, że ten sam identyfikator aplikacji jest używany we wszystkich ofertach.
 
 ## <a name="plan-overview"></a>Przegląd planu
 

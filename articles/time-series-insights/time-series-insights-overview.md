@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: overview
 ms.date: 12/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9b9491a4438ff07222bb5ce5bd684964bdfc0031
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c068e33bc7844c464bc8a289387990128d96dd35
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75452831"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861799"
 ---
 # <a name="what-is-azure-time-series-insights"></a>Co to jest usługa Azure Time Series Insights?
 
@@ -67,7 +67,7 @@ Azure Time Series Insights przechwytuje i zapisuje każde nowe zdarzenie jako wi
 
 ## <a name="capabilities"></a>Możliwości
 
-- **Szybko Rozpocznij pracę**: Azure Time Series Insights nie wymaga przygotowania do przedniego danych, dzięki czemu możesz szybko połączyć się z milionami zdarzeń w centrum IoT Hub lub centrum zdarzeń. Po nawiązaniu połączenia możesz wizualizować dane czujników i korzystać z nich, aby szybko weryfikować Twoje rozwiązania IoT. Możesz korzystać z danych bez pisania kodu i nie musisz uczyć się nowego języka. Time Series Insights udostępnia szczegółową, niezależną powierzchnię zapytania dla zaawansowanych użytkowników, a następnie wskaż i kliknij eksplorację.
+- **Szybko Rozpocznij pracę**: Azure Time Series Insights nie wymaga przygotowania do przedniego danych, dzięki czemu możesz szybko połączyć się z milionami zdarzeń w centrum IoT Hub lub centrum zdarzeń. Po nawiązaniu połączenia możesz wizualizować dane czujników i korzystać z nich, aby szybko weryfikować Twoje rozwiązania IoT. Możesz korzystać z danych bez pisania kodu i nie musisz uczyć się nowego języka. Time Series Insights udostępnia szczegółową, niezależną powierzchnię zapytania dla zaawansowanych użytkowników, a także Eksplorowanie punktów i klikanie.
 
 - **Szczegółowe informacje**w czasie rzeczywistym: Time Series Insights mogą pozyskiwanie milionów zdarzeń czujników dziennie, z opóźnieniem jednej minuty. Time Series Insights pomaga uzyskać wgląd w dane czujników. Korzystaj z nich, aby wypróbować trendy i anomalie, przeprowadzać analizy głównych przyczyn i uniknąć kosztownych przestojów. Wzajemna korelacja między danymi w czasie rzeczywistym i historycznymi ułatwia znalezienie ukrytych trendów w danych.
 
@@ -82,7 +82,7 @@ Aby rozpocząć, wykonaj następujące kroki.
 1. Zainicjuj obsługę środowiska Time Series Insights w Azure Portal.
 1. Nawiąż połączenie ze źródłem zdarzenia, takim jak IoT Hub lub centrum zdarzeń.
 1. Przekaż dane referencyjne. To nie jest dodatkowa usługa.
-1. Po kilku minutach zobaczysz swoje dane w eksploratorze usługi Time Series Insights.
+1. Przejrzyj i Wyświetl dane w kilka minut za pomocą Eksploratora Time Series Insights.
 
 ## <a name="explorer"></a>Eksplorator
 

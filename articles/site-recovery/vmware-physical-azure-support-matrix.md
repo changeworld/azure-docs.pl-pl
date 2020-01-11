@@ -3,13 +3,14 @@ title: Macierz obsługi dla oprogramowania VMware/fizycznego odzyskiwania po awa
 description: Podsumowuje obsługę odzyskiwania po awarii maszyn wirtualnych programu VMware i serwera fizycznego na platformie Azure przy użyciu Azure Site Recovery.
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 12/23/2019
-ms.openlocfilehash: 752f2276f23aa22feac870493e1ea5c1fdc4ca98
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.date: 1/10/2020
+ms.author: raynew
+ms.openlocfilehash: 1d6f5df59a318388a7a5fea75d1fd17e18cb7745
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75645943"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75864336"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Macierz obsługi odzyskiwania po awarii maszyn wirtualnych VMware i serwerów fizycznych na platformie Azure
 
@@ -226,7 +227,7 @@ Chłodny magazyn | Nie
 Magazyn gorąca| Nie
 Obiekty BLOB typu Block | Nie
 Szyfrowanie — w spoczynku (SSE)| Tak
-Szyfrowanie na poziomie spoczynku (CMK)| Nie
+Szyfrowanie na poziomie spoczynku (CMK)| Tak (za pośrednictwem programu PowerShell AZ 3.3.0 module lub nowszym)
 Premium Storage | Tak
 Usługa importu/eksportu | Nie
 Zapory usługi Azure Storage dla sieci wirtualnych | Tak.<br/> Skonfigurowane na docelowym koncie magazynu/pamięci podręcznej (używane do przechowywania danych replikacji).

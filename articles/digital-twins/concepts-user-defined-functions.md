@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 01/03/2020
-ms.openlocfilehash: 5b1c3e6dcd106e16ab07f707729f31ee1e269461
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 75ed2029582438ede43687addfd54c0a187e0120
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75660311"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861102"
 ---
 # <a name="data-processing-and-user-defined-functions"></a>Przetwarzanie danych i funkcje zdefiniowane przez użytkownika
 
@@ -104,7 +104,7 @@ Funkcje zdefiniowane przez użytkownika mogą być zapisywane w języku JavaScri
 - Utwórz powiadomienie w przypadku spełnienia określonych warunków w przypadku odczytywania czujnika przychodzącego.
 - Dołącz metadane grafu do odczytu czujnika przed wysłaniem powiadomienia.
 
-Aby uzyskać więcej informacji, zobacz [jak korzystać z funkcji zdefiniowanych przez użytkownika](./how-to-user-defined-functions.md).
+Aby uzyskać więcej informacji, Przeczytaj, [jak korzystać z funkcji zdefiniowanych przez użytkownika](./how-to-user-defined-functions.md).
 
 #### <a name="examples"></a>Przykłady
 
@@ -114,7 +114,7 @@ Aby uzyskać więcej informacji, zobacz [jak korzystać z funkcji zdefiniowanych
 
 ### <a name="role-assignment"></a>Przypisanie roli
 
-Akcje funkcji zdefiniowane przez użytkownika podlegają [kontroli dostępu opartej na rolach](./security-role-based-access-control.md) usługi Azure Digital bliźniaczych reprezentacji w celu zabezpieczania danych w ramach usługi. Przypisania ról definiują, które funkcje zdefiniowane przez użytkownika mają odpowiednie uprawnienia do współdziałania z wykresem przestrzennym i jego jednostkami. Na przykład funkcja zdefiniowana przez użytkownika może mieć możliwość i uprawnienia do *tworzenia*, *odczytywania*, *aktualizowania*lub *usuwania* danych grafu w danym miejscu. Poziom dostępu zdefiniowany przez użytkownika jest sprawdzany, gdy funkcja zdefiniowana przez użytkownika prosi wykres o dane lub próbuje wykonać akcję. Aby uzyskać więcej informacji, zobacz [Kontrola dostępu na podstawie ról](./security-create-manage-role-assignments.md).
+Akcje funkcji zdefiniowane przez użytkownika podlegają [kontroli dostępu opartej na rolach](./security-role-based-access-control.md) usługi Azure Digital bliźniaczych reprezentacji w celu zabezpieczania danych w ramach usługi. Przypisania ról definiują, które funkcje zdefiniowane przez użytkownika mają odpowiednie uprawnienia do współdziałania z wykresem przestrzennym i jego jednostkami. Na przykład funkcja zdefiniowana przez użytkownika może mieć możliwość i uprawnienia do *tworzenia*, *odczytywania*, *aktualizowania*lub *usuwania* danych grafu w danym miejscu. Poziom dostępu zdefiniowany przez użytkownika jest sprawdzany, gdy funkcja zdefiniowana przez użytkownika prosi wykres o dane lub próbuje wykonać akcję. Aby uzyskać więcej informacji, przeczytaj temat [Kontrola dostępu oparta na rolach](./security-create-manage-role-assignments.md).
 
 Istnieje możliwość, aby można było wyzwolić funkcję zdefiniowaną przez użytkownika, która nie ma przypisań ról. W takim przypadku funkcja zdefiniowana przez użytkownika nie odczyta żadnych danych z grafu.
 

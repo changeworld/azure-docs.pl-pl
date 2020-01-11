@@ -2,32 +2,32 @@
 title: Śledzenie postępu projektów procesów naukowych dotyczących danych zespołu
 description: Jak Menedżerowie grupy analizy danych, liderzy zespołu i potencjalni klienci projektu mogą śledzić postęp projektu analizy danych.
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 09/26/2019
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 28bd3e558294c000ba65a1c60fe227bbae7e82dd
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 8cf1e5a4d97b882e7a8d0c81041bbcde709760d1
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244060"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75864200"
 ---
 # <a name="track-the-progress-of-data-science-projects"></a>Śledzenie postępu projektów analizy danych
 
-Menedżerowie grupy nauki o danych, liderzy zespołu i potencjalni klienci projektu mogą śledzić postęp swoich projektów, takich jak wykonane prace, osoby, które pozostały do pracy. 
+Menedżerowie grupy analizy danych, liderzy zespołu i potencjalni klienci projektu mogą śledzić postęp swoich projektów.  Menedżerowie chcą wiedzieć, jakie prace zostały wykonane, kto pracował i ile pracy pozostało.   Zarządzanie oczekiwaniami jest ważnym elementem sukcesu.
 
-## <a name="azure-devops-dashboards"></a>Pulpity nawigacyjne usługi Azure DevOps
+## <a name="azure-devops-dashboards"></a>Pulpitów nawigacyjnych DevOps platformy Azure
 
 Jeśli używasz usługi Azure DevOps, możesz tworzyć pulpity nawigacyjne w celu śledzenia działań i elementów roboczych skojarzonych z danym projektem Agile. Aby uzyskać więcej informacji na temat pulpitów nawigacyjnych, zobacz [pulpity nawigacyjne, raporty i widżety](/azure/devops/report/dashboards/).
 
 Aby uzyskać instrukcje dotyczące sposobu tworzenia i dostosowywania pulpitów nawigacyjnych i widżetów w usłudze Azure DevOps, zobacz następujące przewodniki szybki start:
 
-- [Dodawanie pulpitów nawigacyjnych i zarządzanie nimi](/azure/devops/report/dashboards/dashboards)
+- [Dodaj i Zarządzaj pulpitów nawigacyjnych](/azure/devops/report/dashboards/dashboards)
 - [Dodawanie widżetów do pulpitu nawigacyjnego](/azure/devops/report/dashboards/add-widget-to-dashboard)
 
 ## <a name="example-dashboard"></a>Przykładowy pulpit nawigacyjny
@@ -50,4 +50,4 @@ Oto prosty przykładowy pulpit nawigacyjny, który śledzi działania przebiegu 
 
 ## <a name="next-steps"></a>Następne kroki
 
-[Instruktaże wykonujące analizy danych zespołowych](walkthroughs.md) — instruktaże pokazujące wszystkie kroki procesu dla konkretnych scenariuszy, z linkami i opisami miniatur. Połączone scenariusze ilustrują sposób łączenia narzędzi i usług w chmurze i lokalnych z przepływami pracy lub potokami w celu tworzenia inteligentnych aplikacji. 
+[Instruktaże wykonujące analizy danych zespołowych](walkthroughs.md) — instruktaże pokazujące wszystkie etapy procesu. Połączone scenariusze ilustrują sposób zarządzania zasobami chmurowymi i lokalnymi w aplikacjach inteligentnych. 

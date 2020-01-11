@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/21/2019
 ms.author: allensu
-ms.openlocfilehash: 5a4240065039bd6e0633a19c8aad00604970c216
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 68f95c893646d76a80a4edfeb557064660ff9f1c
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834673"
+ms.locfileid: "75864268"
 ---
 # <a name="azure-standard-load-balancer-overview"></a>Omówienie usługi Azure usługa Load Balancer w warstwie Standardowa
 
@@ -38,20 +38,6 @@ Funkcje zasobu Load Balancer są zawsze wyrażone jako fronton, reguła, sonda k
 Jednym z kluczowych aspektów jest zakres sieci wirtualnej dla zasobu.  Chociaż podstawowa Load Balancer istnieje w zakresie zestawu dostępności, usługa Load Balancer w warstwie Standardowa jest w pełni zintegrowana z zakresem sieci wirtualnej i ma zastosowanie wszystkie pojęcia dotyczące sieci wirtualnej.
 
 Zasoby Load Balancer są obiektami, w których można wypróbować, w jaki sposób platforma Azure powinna programować infrastrukturę z wieloma dzierżawcami, aby osiągnąć scenariusz, który ma zostać utworzony.  Nie ma bezpośredniej relacji między zasobami Load Balancer i rzeczywistą infrastrukturą; utworzenie Load Balancer nie powoduje utworzenia wystąpienia, pojemność jest zawsze dostępna i nie ma opóźnień uruchamiania ani skalowania do uwzględnienia. 
-
-## <a name="why-use-standard-load-balancer"></a>Dlaczego warto używać usługa Load Balancer w warstwie Standardowa?
-
-Usługa Load Balancer w warstwie Standardowa pozwala skalować aplikacje i zapewniać wysoką dostępność zarówno wdrożeniom o małej skali, jak i dużym oraz złożonym architekturom obejmującym wiele stref.
-
-Zapoznaj się z tabelą poniżej, aby zapoznać się z omówieniem różnic między usługa Load Balancer w warstwie Standardowa i Load Balancer Basic:
-
->[!NOTE]
-> Nowe projekty powinny zostać dostosowane do modułu równoważenia obciążenia w warstwie Standardowa. 
-
-[!INCLUDE [comparison table](../../includes/load-balancer-comparison-table.md)]
-
-Przejrzyj [limity usługi dla Load Balancer](https://aka.ms/lblimits), a także [ceny](https://aka.ms/lbpricing)i [umowy SLA](https://aka.ms/lbsla).
-
 
 ### <a name="backend"></a>Pula zaplecza
 
@@ -184,12 +170,6 @@ Jednostki SKU nie są modyfikowalne. Postępuj zgodnie z instrukcjami w tej sekc
 4. Dołącz wszystkie wystąpienia maszyn wirtualnych do nowych zasobów standardowej jednostki SKU.
 
 >[!IMPORTANT]
->
->Istnieją ograniczenia dotyczące korzystania z podstawowych i standardowych jednostek SKU.
->
->Porty HA i Diagnostyka standardowej jednostki SKU są dostępne tylko w standardowej jednostce SKU. Nie można migrować ze standardowej jednostki SKU do podstawowej jednostki SKU, a także zachować te funkcje.
->
->Podstawowa i standardowa jednostka SKU mają wiele różnic, jak opisano w tym artykule.  Upewnij się, że rozumiesz i przygotowasz do nich.
 >
 >Do Load Balancer i publicznych zasobów IP muszą być używane zgodne jednostki SKU. Nie można korzystać z kombinacji podstawowych zasobów jednostki SKU i standardowych zasobów jednostki SKU. Nie można dołączyć autonomicznych maszyn wirtualnych, maszyn wirtualnych w zasobie zestawu dostępności lub zasobów zestawu skalowania maszyn wirtualnych jednocześnie do obu jednostek SKU.
 

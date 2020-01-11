@@ -10,12 +10,12 @@ ms.devlang: csharp
 ms.topic: quickstart
 ms.custom: mvc seodec18
 ms.date: 11/12/2019
-ms.openlocfilehash: b150167ca6a808e0da337be4a609a21cd974598a
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 621b02363310ccc6f3dc1b32807874307210e964
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383143"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861136"
 ---
 # <a name="quickstart-find-available-rooms-by-using-azure-digital-twins"></a>Szybki start: wyszukiwanie dostępnych pomieszczeń przy użyciu usługi Azure Digital Twins
 
@@ -102,14 +102,14 @@ Skompiluj i uruchom aplikację urządzenia czujnika czujników, wykonując nast�
 1. Uruchom polecenie `cd device-connectivity`.
 1. Uruchom polecenie `dotnet restore`.
 1. Zmodyfikuj plik [appsettings.json](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/device-connectivity/appsettings.json), aby zaktualizować wartość **DeviceConnectionString** za pomocą wartości `ConnectionString` skopiowanej powyżej. Zapisz zmodyfikowany plik.
-1. Uruchom polecenie `dotnet run`, aby rozpocząć wysyłanie danych z czujników. Na poniższej ilustracji przedstawiono wysyłanie danych do usługi Digital Twins.
+1. Uruchom polecenie `dotnet run`, aby rozpocząć wysyłanie danych z czujników. Zostanie on wysłany do usługi Azure Digital bliźniaczych reprezentacji, jak pokazano na poniższej ilustracji.
 
      [![łączności urządzeń](media/quickstart-view-occupancy-dotnet/digital-twins-device-connectivity.png)](media/quickstart-view-occupancy-dotnet/digital-twins-device-connectivity.png#lightbox)
 
 1. Pozostaw ten symulator uruchomiony, aby jego wyniki były widoczne obok wyników uzyskanych po wykonaniu kolejnego kroku. To okno zawiera dane symulowanych czujników wysyłane do usługi Digital Twins. Następny krok obejmuje wysyłanie zapytania w czasie rzeczywistym, które umożliwia znalezienie dostępnych pomieszczeń ze świeżym powietrzem.
 
     >[!TIP]
-    > Jeśli podczas wykonywania tego kroku pojawi się komunikat o błędzie `DeviceConnectionString`, upewnij się, że wartość `EXIT: Unexpected error: The input is not a valid Base-64 string ...` została skopiowana poprawnie
+    > Jeśli podczas wykonywania tego kroku pojawi się komunikat o błędzie `EXIT: Unexpected error: The input is not a valid Base-64 string ...`, upewnij się, że wartość `DeviceConnectionString` została skopiowana poprawnie
 
 ## <a name="find-available-spaces-with-fresh-air"></a>Znajdowanie dostępnych obszarów ze świeżym powietrzem
 
@@ -161,7 +161,7 @@ Jeśli planujesz kontynuować pracę z samouczkami, nie usuwaj zasobów utworzon
 
 ## <a name="next-steps"></a>Następne kroki
 
-Ten przewodnik Szybki Start używa prostego scenariusza i przykładowych aplikacji, aby pokazać, w jaki sposób Digital bliźniaczych reprezentacji może służyć do znajdowania pokojów z dobrymi warunkami pracy. Aby zapoznać się ze szczegółową analizą tego scenariusza, przejdź do następującego samouczka:
+Ten przewodnik Szybki Start używa prostego scenariusza i przykładowych aplikacji, aby pokazać, w jaki sposób Digital bliźniaczych reprezentacji może służyć do znajdowania pokojów z dobrymi warunkami pracy. Aby uzyskać szczegółowe informacje na temat tego scenariusza, przeczytaj ten samouczek:
 
 >[!div class="nextstepaction"]
 >[Samouczek: wdrażanie usługi Azure Digital Twins i konfigurowanie wykresu przestrzennego](tutorial-facilities-setup.md)

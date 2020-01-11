@@ -3,20 +3,20 @@ title: Analiza w usłudze Azure HDInsight Hadoop przy użyciu technologii Hive -
 description: Przykłady procesie nauki o danych zespołu, które pomagają przy użyciu programu Hive w usłudze Azure HDInsight Hadoop do analizy predykcyjnej.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 09/04/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: d3c3278a058162632a6ba7ea9731e5f233190700
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f72ea6ed5f0eec076d181ef56c99c4f1308a7741
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60804656"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75864166"
 ---
 # <a name="hdinsight-hadoop-data-science-walkthroughs-using-hive-on-azure"></a>HDInsight Hadoop przewodniki dotyczące przetwarzania danych za pomocą programu Hive na platformie Azure 
 
@@ -36,10 +36,10 @@ Scenariusz jest implementowany przy użyciu programu Hive za pomocą [klastra Az
 
 ## <a name="predict-advertisement-clicks-using-hive-with-hdinsight-hadoop"></a>Przewidywanie kliknięć anonsu przy użyciu technologii Hive z usługą HDInsight Hadoop
 
-[Klastrów Hadoop użycia usługi Azure HDInsight w zestawie 1 TB pojemności](hive-criteo-walkthrough.md) instruktażu wykorzystano publicznie dostępnych [Criteo](https://labs.criteo.com/downloads/download-terabyte-click-logs/) kliknij zestaw danych do prognozowania czy Porada zostało opłacone i zakres kwoty oczekiwano. Scenariusz jest implementowany przy użyciu programu Hive za pomocą [klastra Azure HDInsight Hadoop](https://azure.microsoft.com/services/hdinsight/) do przechowywania, zapoznaj się z, inżynier ds. funkcji i w dół przykładowych danych. Tworzenie, szkolenie i score model klasyfikacji binarnej przewidywania, czy użytkownik kliknie anonsu używa usługi Azure Machine Learning. Zawiera przewodnik pokazujący sposób publikowania jednego z tych modeli jako usług sieci Web.
+W przypadku [klastrów użycia Azure HDInsight Hadoop na 1 TB zestawu danych](hive-criteo-walkthrough.md) są używane publicznie dostępne [Criteo](https://labs.criteo.com/downloads/download-terabyte-click-logs/) kliknij zestaw danych, aby przewidzieć, czy Porada jest płatna i oczekiwane kwoty. Scenariusz jest implementowany przy użyciu programu Hive za pomocą [klastra Azure HDInsight Hadoop](https://azure.microsoft.com/services/hdinsight/) do przechowywania, zapoznaj się z, inżynier ds. funkcji i w dół przykładowych danych. Tworzenie, szkolenie i score model klasyfikacji binarnej przewidywania, czy użytkownik kliknie anonsu używa usługi Azure Machine Learning. Zawiera przewodnik pokazujący sposób publikowania jednego z tych modeli jako usług sieci Web.
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać omówienie najważniejsze składniki wchodzące w skład procesu do nauki o danych zespołu, zobacz [przegląd danych zespołu dla celów naukowych](overview.md).
 

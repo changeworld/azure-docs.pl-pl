@@ -9,12 +9,12 @@ ms.topic: overview
 ms.service: digital-twins
 services: digital-twins
 ms.custom: mvc
-ms.openlocfilehash: c0413e4b9b0995c6712d30bbc22550d0ae10183b
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: a3c696a5bfa9286e664f69bd379bac408b7459d6
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75562191"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863244"
 ---
 # <a name="overview-of-azure-digital-twins"></a>Omówienie usługi Azure Digital Twins
 
@@ -95,7 +95,7 @@ Usługa Azure Digital Twins używa usługi Azure IoT Hub w celu łączenia urzą
 
 [![Azure Digital bliźniaczych reprezentacji to usługa oparta na platformie Azure IoT Hub](media/overview/azure-digital-twins-in-iot-ecosystem.png)](media/overview/azure-digital-twins-in-iot-ecosystem.png#lightbox)
 
-Aby uzyskać więcej informacji na temat Internetu rzeczy, zobacz [Technologie i rozwiązania usługi Azure IoT](../iot-fundamentals/iot-services-and-technologies.md).
+Aby uzyskać więcej informacji na temat IoT, Przeczytaj [technologie i rozwiązania Azure IoT](../iot-fundamentals/iot-services-and-technologies.md).
 
 ## <a name="next-steps"></a>Następne kroki
 

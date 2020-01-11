@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 12/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: ff723f490a3f6d34f652e0b21e5f6e0b16f0a841
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.openlocfilehash: 3e73afa89ee61243784c5952eeda26a79d508dee
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74900251"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863414"
 ---
 # <a name="diagnose-and-solve-issues-in-your-time-series-insights-environment"></a>Diagnozowanie i rozwiązywanie problemów w środowisku Time Series Insights
 
@@ -34,7 +34,7 @@ W tym artykule opisano niektóre problemy, które mogą wystąpić w środowisku
 
 ### <a name="cause-a-event-source-data-isnt-in-json-format"></a>Przyczyna: dane źródłowe zdarzenia nie są w formacie JSON
 
-Azure Time Series Insights obsługuje tylko dane JSON. Aby uzyskać przykłady kodu JSON, zobacz [kształty JSON obsługiwany](./how-to-shape-query-json.md).
+Azure Time Series Insights obsługuje tylko dane JSON. W przypadku przykładów JSON Przeczytaj [obsługiwane kształty JSON](./how-to-shape-query-json.md).
 
 ### <a name="cause-b-the-event-source-key-is-missing-a-required-permission"></a>Przyczyna B: klucz źródła zdarzenia nie ma wymaganego uprawnienia
 
@@ -69,7 +69,7 @@ Jeśli masz stare zdarzenia w źródle zdarzeń, możesz przyejść do ogranicza
 - Zmień limity przechowywania źródła zdarzeń, aby pomóc w usunięciu starych zdarzeń, które nie mają być wyświetlane w Time Series Insights.
 - Zapewnij większy rozmiar środowiska (liczbę jednostek), aby zwiększyć przepływność starych zdarzeń. Korzystając z powyższego przykładu, jeśli zwiększy się to samo środowisko S1 do pięciu jednostek przez jeden dzień, środowisko powinno przechwycić w ciągu dnia. Jeśli produkcja zdarzeń o stałym stanie wynosi 1 000 000 lub mniej zdarzeń dziennie, można zmniejszyć pojemność zdarzenia do jednej jednostki po wychwyceniu.
 
-Limit ograniczania jest wymuszany na podstawie typu i pojemności jednostki SKU środowiska. Wszystkie źródła zdarzeń w środowisku współużytkują tę pojemność. Jeśli źródło zdarzeń dla Centrum IoT Hub lub centrum zdarzeń wypycha dane poza wymuszonymi limitami, zobaczysz ograniczenie i opóźnienie.
+Limit ograniczania jest wymuszany na podstawie typu i pojemności jednostki SKU środowiska. Wszystkie źródła zdarzeń w środowisku współużytkują tę pojemność. Jeśli źródło zdarzeń dla Centrum IoT Hub lub centrum zdarzeń wypycha dane poza wymuszonymi limitami, nastąpi ograniczenie przepustowości i opóźnienia.
 
 Na poniższej ilustracji przedstawiono środowisko Time Series Insights, które ma jednostkę SKU S1 i pojemność 3. Może on przypadać na 3 000 000 zdarzeń dziennie.
 
@@ -82,7 +82,7 @@ Załóżmy na przykład, że środowisko przejmuje komunikaty z centrum zdarzeń
 
 Środowisko jednostki SKU S1 o pojemności 3 może przypadać tylko 2 100 zdarzeń co minutę (1 000 000 zdarzeń dziennie = 700 zdarzeń na minutę w trzech jednostkach = 2 100 zdarzeń na minutę). 
 
-Aby zapoznać się z ogólnym zrozumieniem działania logiki spłaszczania, zobacz [obsługiwane kształty JSON](./how-to-shape-query-json.md).
+Aby uzyskać ogólne informacje na temat sposobu działania logiki spłaszczania, Przeczytaj [obsługiwane kształty JSON](./how-to-shape-query-json.md).
 
 #### <a name="recommended-resolutions-for-excessive-throttling"></a>Zalecane rozwiązania do nadmiernego ograniczania przepustowości
 
@@ -109,9 +109,9 @@ Upewnij się, że nazwa właściwości sygnatury czasowej i wartość są zgodne
 
 Najprostszym sposobem, aby upewnić się, że nazwa właściwości sygnatury czasowej została przechwycona i działa prawidłowo, to użycie Eksploratora Time Series Insights. W Eksploratorze Time Series Insights przy użyciu wykresu Wybierz okres czasu po wprowadzeniu nazwy właściwości sygnatury czasowej. Kliknij prawym przyciskiem myszy zaznaczenie, a następnie wybierz opcję **Eksploruj zdarzenia** .
 
-Pierwszy nagłówek kolumny powinien być nazwą właściwości sygnatury czasowej. Obok **sygnatury czasowej**wyrazów powinna zostać wyświetlona wartość **($TS)** .
+Pierwszy nagłówek kolumny powinien być nazwą właściwości sygnatury czasowej. Obok **sygnatury czasowej**wyrazu zostanie wyświetlona wartość **($TS)** .
 
-Nie powinny być widoczne następujące wartości:
+Następujące wartości nie będą wyświetlane:
 
 - *(ABC)* : wskazuje, że Time Series Insights odczytuje wartości danych jako ciągi.
 - *Ikona kalendarza*: wskazuje, że Time Series Insights odczytuje wartość danych jako *datę i godzinę*.

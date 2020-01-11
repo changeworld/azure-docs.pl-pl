@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 13bff4abcb308e4d5ea55f360d979e3e67d313c4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 39665e0361747e0f75fa6c92f244317b995ce6a8
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75452864"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863380"
 ---
 # <a name="plan-your-azure-time-series-insights-ga-environment"></a>Zaplanuj środowisko Azure Time Series Insights GA
 
@@ -32,7 +32,7 @@ W tym artykule opisano sposób planowania środowiska Azure Time Series Insights
 
 Aby rozpocząć pracę z Azure Time Series Insights, najlepiej, Jeśli wiesz, ile danych ma być wypchnięcich przez minutę, i jak długo chcesz przechowywać dane.  
 
-Aby uzyskać więcej informacji o pojemności i przechowywaniu dla obu Time Series Insights jednostek SKU, zobacz [cennik Time Series Insights](https://azure.microsoft.com/pricing/details/time-series-insights/).
+Aby uzyskać więcej informacji o pojemności i przechowywaniu dla Time Series Insights jednostek SKU, Przeczytaj [Time Series Insights Cennik](https://azure.microsoft.com/pricing/details/time-series-insights/).
 
 Aby najlepiej zaplanować środowisko Time Series Insights na potrzeby długotrwałego sukcesu, należy wziąć pod uwagę następujące atrybuty:
 
@@ -71,7 +71,7 @@ Można dostosować przechowywanie i przełączać się między dwoma trybami na 
    [![skonfigurować przechowywanie](media/data-retention/1-configure-data-retention.png)](media/data-retention/1-configure-data-retention.png#lightbox)
 
 > [!TIP]
-> Aby dowiedzieć się więcej na temat implementowania odpowiednich zasad przechowywania danych, zobacz [jak skonfigurować przechowywanie](./time-series-insights-how-to-configure-retention.md).
+> Aby dowiedzieć się więcej na temat implementowania odpowiednich zasad przechowywania danych, przeczytaj artykuł [jak skonfigurować przechowywanie](./time-series-insights-how-to-configure-retention.md).
 
 ## <a name="ingress-capacity"></a>Pojemność transferu danych przychodzących
 
@@ -103,7 +103,7 @@ Aby obliczyć wymagania dotyczące transferu danych przychodzących:
 
 ### <a name="mitigate-throttling-and-latency"></a>Ograniczanie przepustowości i opóźnienia
 
-Aby dowiedzieć się, jak zapobiegać ograniczaniu i opóźnieniu, zobacz [ograniczanie opóźnień i ograniczanie przepustowości](time-series-insights-environment-mitigate-latency.md).
+Aby uzyskać informacje o tym, jak zapobiegać ograniczaniu i opóźnieniu, przeczytaj temat [ograniczanie opóźnień i ograniczanie przepustowości](time-series-insights-environment-mitigate-latency.md).
 
 ## <a name="shape-your-events"></a>Kształtowanie zdarzeń
 
@@ -119,7 +119,7 @@ Ważne jest, aby upewnić się, że sposób wysyłania zdarzeń do Time Series I
 > [!NOTE]
 > Dane referencyjne nie są przyłączone wstecz. Tylko bieżące i przyszłe dane wejściowe są dopasowywane i przyłączone do zestawu danych referencyjnych po jego skonfigurowaniu i przekazaniu. Jeśli planujesz wysłanie dużej ilości danych historycznych do Time Series Insights i nie przekażesz ani nie utworzysz danych referencyjnych w Time Series Insights, może być konieczne ponowne wykonanie pracy (Wskazówka: brak zabawy).  
 
-Aby dowiedzieć się więcej na temat sposobu tworzenia, przekazywania i zarządzania danymi referencyjnymi w Time Series Insights, zobacz [dokumentację zestawu danych referencyjnych](time-series-insights-add-reference-data-set.md).
+Aby dowiedzieć się więcej na temat sposobu tworzenia, przekazywania i zarządzania danymi referencyjnymi w Time Series Insights, Przeczytaj [dokumentację zestawu danych referencyjnych](time-series-insights-add-reference-data-set.md).
 
 [!INCLUDE [business-disaster-recover](../../includes/time-series-insights-business-recovery.md)]
 

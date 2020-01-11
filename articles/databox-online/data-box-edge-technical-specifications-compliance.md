@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 09/26/2019
 ms.author: alkohli
-ms.openlocfilehash: 365507f482217bd804bbd5017d4dbbaf8c187ad2
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 9e1a7f7cd2643aae61e60d77ad74f4a08266a977
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326895"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863601"
 ---
 # <a name="azure-data-box-edge-technical-specifications"></a>Azure Data Box Edge specyfikacje techniczne
 
@@ -23,30 +23,30 @@ Składniki sprzętowe Microsoft Azure Data Box Edge urządzeniu przestrzegają s
 
 Urządzenie Data Box Edge ma następujące specyfikacje dotyczące obliczeń i pamięci:
 
-| Określając           | Value                  |
+| Specyfikacja           | Wartość                  |
 |-------------------------|----------------------------|
 | Procesor CPU    | 2 X 10 rdzeni procesora CPU                     |
-| Memory (Pamięć)              | 128 GB pamięci RAM                  |
+| Pamięć              | 128 GB pamięci RAM                  |
 
 
 ## <a name="fpga-specifications"></a>Specyfikacje FPGA
 
 FPGA jest dołączana do wszystkich urządzeń Data Box Edge, które umożliwiają Machine Learning (ML) scenariusze. 
 
-| Określając           | Value                  |
+| Specyfikacja           | Wartość                  |
 |-------------------------|----------------------------|
-| FPGA   | Intel Arria 10 <br> Dostępne modele sieci neuronowych Network (DNN) są takie same, jak te [obsługiwane przez wystąpienia FPGA chmury](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-fpga-web-service#whats-supported-on-azure).| 
+| FPGA   | Intel Arria 10 <br> Dostępne modele sieci neuronowych Network (DNN) są takie same, jak te [obsługiwane przez wystąpienia FPGA chmury](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-fpga-web-service#whats-supported-on-azure).| 
 
 
 ## <a name="power-supply-unit-specifications"></a>Specyfikacje jednostek zasilacza
 
 Urządzenie Data Box Edge ma dwie jednostki dostarczania 100-240 V (PSUs) z wentylatorami o wysokiej wydajności. Dwa PSUs zapewniają nadmiarową konfigurację zasilacza. Jeśli PSU nie powiedzie się, urządzenie będzie nadal działać normalnie na innych PSU, dopóki nie zostanie zastąpiony moduł zakończony niepowodzeniem. W poniższej tabeli przedstawiono specyfikacje techniczne PSUs.
 
-| Określając           | 750 W PSU                  |
+| Specyfikacja           | 750 W PSU                  |
 |-------------------------|----------------------------|
 | Maksymalna moc wyjściowa    | 750 W                     |
 | Częstotliwość               | 50/60 Hz                   |
-| Wybór zakresu napięcia | Wybór z autozakresem: 100-240 V AC |
+| Wybór zakresu napięcia | Wybór na Wydziale: 100-240 V AC |
 | Możliwość podłączenia gorąca           | Tak                        |
 
 <!--## Power consumption statistics
@@ -57,14 +57,14 @@ The following table lists the typical power consumption data (actual values may 
 
 Data Box Edge urządzenia mają 9 X 2,5 "interfejsu NVMe dysków SSD, każdy z pojemnością 1,6 TB. Z tych dysków SSD 1 to dysk systemu operacyjnego, a drugi 8 to dyski z danymi. Całkowita pojemność urządzenia wynosi około 12,5 TB. Poniższa tabela zawiera szczegółowe informacje dotyczące pojemności magazynu urządzenia.
 
-|     Określając                          |     Value             |
+|     Specyfikacja                          |     Wartość             |
 |--------------------------------------------|-----------------------|
 |    Liczba dysków półprzewodnikowych (dysków SSD)     |    8                  |
 |    Pojemność jednego dysku SSD                     |    1,6 TB             |
 |    Całkowita pojemność                          |    12,8 TB            |
 |    Łączna pojemność użyteczna *                  |    ~ 12,5 TB            |
 
-**Niektóre miejsca są zarezerwowane do użytku wewnętrznego.*
+**miejsce jest zarezerwowane do użytku wewnętrznego.*
 
 ## <a name="enclosure-dimensions-and-weight-specifications"></a>Wymiary obudowy i specyfikacje wagi
 
@@ -74,7 +74,7 @@ W poniższych tabelach przedstawiono różne specyfikacje obudowy dla wymiarów 
 
 W poniższej tabeli przedstawiono wymiary obudowy w milimetrach i calach.
 
-|     Obudowa     |     Milimetrach     |     15     |
+|     Szaf     |     Milimetrach     |     15     |
 |-------------------|---------------------|----------------|
 |    Wysokość         |    44,45            |    1,75 "          |
 |    Szerokość          |    434,1           |    17,09 "          |
@@ -92,7 +92,7 @@ W poniższej tabeli przedstawiono wymiary pakietu wysyłki w milimetrach i calac
 
 Pakiet urządzenia waży 66 funtów. i wymaga od dwóch osób, aby je obsłużyć. Waga urządzenia zależy od konfiguracji obudowy.
 
-|     Obudowa                                 |     Waga          |
+|     Szaf                                 |     Waga          |
 |-----------------------------------------------|---------------------|
 |    Łączna waga włącznie z opakowaniem       |    61 funtów          |
 |    Waga urządzenia                       |    35 funtów          |
@@ -103,14 +103,14 @@ W tej sekcji przedstawiono specyfikacje dotyczące środowiska obudowy, takie ja
 
 ### <a name="temperature-and-humidity"></a>Temperatura i wilgotność
 
-|     Obudowa         |     Zakres temperatury otoczenia     |     Wilgotność względna     |     Maksymalny punkt Rosa     |
+|     Szaf         |     Zakres temperatury otoczenia     |     Wilgotność względna     |     Maksymalny punkt Rosa     |
 |-----------------------|--------------------------------------|--------------------------------------|---------------------------|
-|    Działa        |    10 OC – 35 °C (50 °F-86 °F)         |    10%-80% bez kondensacji.         |    29 °C (84 °F)            |
+|    Operacyjne        |    10 OC – 35 °C (50 °F-86 °F)         |    10%-80% bez kondensacji.         |    29 °C (84 °F)            |
 |    Niedziałające    |    -40 °C do 65 °C (-40 °F-149 °F)     |    5%-95% bez kondensacji.          |    33°C (91°F)            |
 
 ### <a name="airflow-altitude-shock-vibration-orientation-safety-and-emc"></a>Przepływ powietrza, wysokość, wstrząsy, wibracje, Orientacja, bezpieczeństwo i EMC
 
-|     Obudowa                           |     Specyfikacje operacyjne                                                                                                                                                                                         |
+|     Szaf                           |     Specyfikacje operacyjne                                                                                                                                                                                         |
 |-----------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |    Przepływ powietrza                              |    Przepływ powietrza systemu jest przedsunięty do tyłu. System musi być obsługiwany przy użyciu instalacji z niską ilością wylotu. <!--Back pressure created by rack doors and obstacles should not exceed 5 pascals (0.5 mm water gauge).-->    |
 |    Maksymalna wysokość, operacyjna        |    3048 mierników (10 000 stóp) z maksymalną temperaturą działania, która jest określana przez niesklasyfikowane [wymagania dotyczące temperatury działania](#operating-temperature-de-rating-specifications).                                                                                |
@@ -122,7 +122,7 @@ W tej sekcji przedstawiono specyfikacje dotyczące środowiska obudowy, takie ja
 |    Orientacja i zamontowanie             |    19 "montaż w stojaku                                                                                                                                                                                        |
 |    Bezpieczeństwo i zatwierdzenia                 |    EN 60950-1:2006 + A1:2010 + a2:2013 + A11:2009 + A12:2011/IEC 60950-1:2005 ED2 + a1:2009 + a2:2013 EN 62311:2008                                                                                                                                                                       |
 |    ELEKTROMAGNETYCZNEJ                                  |    FCC A, ICES-003 <br>EN 55032:2012/CISPR 32:2012  <br>EN 55032:2015/CISPR 32:2015  <br>EN 55024:2010 + A1:2015/CISPR 24:2010 + A1:2015  <br>EN 61000-3-2:2014/IEC 61000-3-2:2014 (Klasa D)   <br>EN 61000-3-3:2013/IEC 61000-3-3:2013                                                                                                                                                                                         |
-|    Energetyczna             |    Rozporządzenie Komisji (UE) nr. 617/2013                                                                                                                                                                                        |
+|    Energia             |    Rozporządzenie Komisji (UE) nr. 617/2013                                                                                                                                                                                        |
 |    RoHS           |    EN 50581:2012                                                                                                                                                                                        |
 
 

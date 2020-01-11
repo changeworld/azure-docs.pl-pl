@@ -1,25 +1,19 @@
 ---
-title: Rozwiązywanie problemów z połączeniem punkt-lokacja na platformie Azure | Microsoft Docs
+title: Rozwiązywanie problemów z połączeniem punkt-lokacja platformy Azure
+titleSuffix: Azure VPN Gateway
 description: Dowiedz się, jak rozwiązywać problemy z połączeniem punkt-lokacja.
 services: vpn-gateway
-documentationcenter: na
 author: chadmath
-manager: dcscontentpm
-editor: ''
-tags: ''
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: troubleshooting
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 09/30/2019
 ms.author: genli
-ms.openlocfilehash: cfa95f2aab5ba270aea0a36b037ae293b36c7b28
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 2c5e8b344cad6928ee586dc5a5b69095f0b14552
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695537"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863652"
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>Rozwiązywanie problemów: problemy z połączeniem punkt-lokacja platformy Azure
 
@@ -77,7 +71,7 @@ Aby przygotowywać system Windows 10 lub Server 2016 pod kątem protokołu IKEv2
 
 1. Zainstaluj aktualizację.
 
-   | Wersja systemu operacyjnego | Date | Numer/link |
+   | Wersja systemu operacyjnego | Data | Numer/link |
    |---|---|---|---|
    | Windows Server 2016<br>Windows 10 w wersji 1607 | 17 stycznia 2018 r. | [KB4057142](https://support.microsoft.com/help/4057142/windows-10-update-kb4057142) |
    | Windows 10 w wersji 1703 | 17 stycznia 2018 r. | [KB4057144](https://support.microsoft.com/help/4057144/windows-10-update-kb4057144) |
@@ -133,7 +127,7 @@ Podczas próby nawiązania połączenia z siecią wirtualną platformy Azure prz
 
 ### <a name="symptom"></a>Objaw
 
-Zostanie wyświetlony następujący komunikat o błędzie:
+Zostanie zgłoszony następujący komunikat o błędzie:
 
 **Błąd pobierania pliku. Nie określono docelowego identyfikatora URI.**
 
@@ -342,7 +336,7 @@ Aktualizowanie sterownika karty sieciowej:
 1. Kliknij przycisk **Start**, wpisz **Menedżer urządzeń**i wybierz go z listy wyników. Jeśli zostanie wyświetlony monit o hasło administratora lub potwierdzenie, wpisz hasło lub potwierdź.
 2. W kategorii **karty sieciowe Znajdź kartę sieciową** , którą chcesz zaktualizować.  
 3. Kliknij dwukrotnie nazwę urządzenia, wybierz pozycję **Aktualizuj sterownik**, a następnie pozycję **Wyszukaj automatycznie dla zaktualizowanego oprogramowania sterownika**.
-4. Jeśli system Windows nie znajdzie nowego sterownika, możesz spróbować go wyszukać w witrynie sieci Web producenta urządzenia i postępować zgodnie z instrukcjami.
+4. Jeśli system Windows nie znajduje nowego sterownika, możesz spróbować znaleźć go w witrynie internetowej producenta urządzenia i wykonać podane w niej instrukcje.
 5. Uruchom ponownie komputer i spróbuj ponownie nawiązać połączenie.
 
 ## <a name="error-file-download-error-target-uri-is-not-specified"></a>Błąd: "nie określono docelowego identyfikatora URI błędu pobierania pliku"

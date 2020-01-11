@@ -1,27 +1,20 @@
 ---
-title: Rozwiązywanie problemów z połączeniem sieci VPN typu lokacja-lokacja platformy Azure, które nie może nawiązać połączenia | Microsoft Docs
+title: 'Rozwiązywanie problemów z połączeniem sieci VPN typu lokacja-lokacja platformy Azure, które nie może nawiązać połączenia z titleSuffix: Azure VPN Gateway'
 description: Dowiedz się, jak rozwiązywać problemy z połączeniem sieci VPN typu lokacja-lokacja, które nagle przestanie działać i nie można go ponownie połączyć.
 services: vpn-gateway
-documentationcenter: na
 author: chadmath
-manager: dcscontentpm
-editor: ''
-tags: ''
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: troubleshooting
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 09/16/2019
 ms.author: genli
-ms.openlocfilehash: e196c4b512de3fac97347e4c252b697ed6818227
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 4e827c5f6eedc819bc3635cb09a28f65df51312c
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058871"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75862581"
 ---
-# <a name="troubleshooting-an-azure-site-to-site-vpn-connection-cannot-connect-and-stops-working"></a>Rozwiązywanie problemów z Połączenie sieci VPN typu lokacja-lokacja platformy Azure nie może nawiązać połączenia i przestanie działać
+# <a name="troubleshooting-an-azure-site-to-site-vpn-connection-cannot-connect-and-stops-working"></a>Rozwiązywanie problemów: połączenie sieci VPN typu lokacja-lokacja platformy Azure nie może nawiązać połączenia i przestanie działać
 
 Po skonfigurowaniu połączenia sieci VPN typu lokacja-lokacja między siecią lokalną a siecią wirtualną platformy Azure połączenie sieci VPN nagle przestanie działać i nie można go ponownie połączyć. W tym artykule opisano kroki rozwiązywania problemów, które ułatwiają rozwiązanie tego problemu. 
 

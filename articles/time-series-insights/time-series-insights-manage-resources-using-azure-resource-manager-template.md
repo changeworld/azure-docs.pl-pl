@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 12/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4edf5189b54a5b1fb1b953064c5db1cd50930b84
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c4902ff5194c1648a8353b2a21ea559d15d574b3
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75452844"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861850"
 ---
 # <a name="create-time-series-insights-resources-using-azure-resource-manager-templates"></a>Tworzenie zasobów Time Series Insights przy użyciu szablonów Azure Resource Manager
 
@@ -26,7 +26,7 @@ Time Series Insights obsługuje następujące zasoby:
 
    | Zasób | Opis |
    | --- | --- |
-   | Środowisko | Środowisko Time Series Insights jest logicznym grupą zdarzeń odczytywanych z brokerów zdarzeń, przechowywanych i udostępnionych dla zapytań. Aby uzyskać więcej informacji, zobacz [Planowanie środowiska Azure Time Series Insightsowego](time-series-insights-environment-planning.md) |
+   | Środowisko | Środowisko Time Series Insights jest logicznym grupą zdarzeń odczytywanych z brokerów zdarzeń, przechowywanych i udostępnionych dla zapytań. Aby uzyskać więcej informacji, przeczytaj temat [Planowanie środowiska Azure Time Series Insightsowego](time-series-insights-environment-planning.md) |
    | Źródło zdarzeń | Źródłem zdarzenia jest połączenie z brokerem zdarzeń, z którego Time Series Insights odczytuje i pobiera zdarzenia do środowiska. Obecnie obsługiwane źródła zdarzeń to IoT Hub i centrum zdarzeń. |
    | Zestaw danych referencyjnych | Zestawy danych referencyjnych zapewniają metadane dotyczące zdarzeń w środowisku. Metadane w zestawach danych referencyjnych zostaną dołączone do zdarzeń w czasie wykonywania operacji we/wychodzącym. Zestawy danych referencyjnych są definiowane jako zasoby według ich właściwości klucza zdarzenia. Rzeczywiste metadane, które tworzą zestaw danych referencyjnych, są przekazywane lub modyfikowane za pomocą interfejsów API płaszczyzny danych. |
    | Zasady dostępu | Zasady dostępu udzielają uprawnień do wydawania zapytań dotyczących danych, manipulowania danymi referencyjnymi w środowisku oraz udostępniania zapisanych zapytań i perspektyw skojarzonych ze środowiskiem. Aby uzyskać więcej informacji, przeczytaj temat [udzielanie dostępu do danych w środowisku Time Series Insights przy użyciu Azure Portal](time-series-insights-data-access.md) |
@@ -75,8 +75,8 @@ Poniższa procedura opisuje sposób użycia programu PowerShell do wdrożenia sz
      | --- | --- |
      | existingEventHubResourceId | Opcjonalny identyfikator zasobu istniejącego centrum zdarzeń, który zostanie połączony ze środowiskiem Time Series Insights za pomocą źródła zdarzenia. **Uwaga:** Użytkownik wdrażający szablon musi mieć uprawnienia do wykonywania operacji ListKeys w centrum zdarzeń. Jeśli żadna wartość nie zostanie przeniesiona, do szablonu zostanie utworzony nowy centrum zdarzeń. |
      | environmentDisplayName | Opcjonalna przyjazna nazwa wyświetlana w narzędziach lub interfejsach użytkownika zamiast nazwy środowiska. |
-     | environmentSkuName | Nazwa jednostki SKU. Aby uzyskać więcej informacji, zobacz [stronę z cennikiem Time Series Insights](https://azure.microsoft.com/pricing/details/time-series-insights/).  |
-     | environmentSkuCapacity | Pojemność jednostki SKU. Aby uzyskać więcej informacji, zobacz [stronę z cennikiem Time Series Insights](https://azure.microsoft.com/pricing/details/time-series-insights/).|
+     | environmentSkuName | Nazwa jednostki SKU. Aby uzyskać więcej informacji, zapoznaj się ze [stroną cennika Time Series Insights](https://azure.microsoft.com/pricing/details/time-series-insights/).  |
+     | environmentSkuCapacity | Pojemność jednostki SKU. Aby uzyskać więcej informacji, zapoznaj się ze [stroną cennika Time Series Insights](https://azure.microsoft.com/pricing/details/time-series-insights/).|
      | environmentDataRetentionTime | Minimalny przedział czasu, w którym zdarzenia środowiska będą dostępne dla zapytania. Wartość musi być określona w formacie ISO 8601, na przykład `P30D` dla zasad przechowywania wynoszących 30 dni. |
      | eventSourceDisplayName | Opcjonalna przyjazna nazwa wyświetlana w narzędziach lub interfejsach użytkownika zamiast nazwy źródła zdarzenia. |
      | eventSourceTimestampPropertyName | Właściwość zdarzenia, która będzie używana jako sygnatura czasowa źródła zdarzeń. Jeśli wartość nie jest określona dla timestampPropertyName lub określono wartość null lub pusty ciąg, zostanie użyty czas tworzenia zdarzenia. |
@@ -86,7 +86,7 @@ Poniższa procedura opisuje sposób użycia programu PowerShell do wdrożenia sz
 
    * Na przykład następujący plik parametrów służy do tworzenia środowiska i źródła zdarzeń, które odczytuje zdarzenia z istniejącego centrum zdarzeń. Tworzy również dwie zasady dostępu, które przyznają dostęp współautora do środowiska.
 
-     ```json
+     ```JSON
      {
          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
          "contentVersion": "1.0.0.0",
@@ -119,7 +119,7 @@ Poniższa procedura opisuje sposób użycia programu PowerShell do wdrożenia sz
      }
      ```
   
-    * Aby uzyskać więcej informacji, zobacz artykuł dotyczący [parametrów](../azure-resource-manager/templates/parameter-files.md) .
+    * Aby uzyskać więcej informacji, przeczytaj artykuł dotyczący [parametrów](../azure-resource-manager/templates/parameter-files.md) .
 
 ## <a name="deploy-the-quickstart-template-locally-using-powershell"></a>Wdrażanie szablonu szybkiego startu przy użyciu programu PowerShell
 
@@ -252,4 +252,4 @@ Poniższa procedura opisuje sposób użycia programu PowerShell do wdrożenia sz
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Aby uzyskać informacje na temat programistycznego zarządzania zasobami Time Series Insights przy użyciu interfejsów API REST, zobacz [zarządzanie Time Series Insights](https://docs.microsoft.com/rest/api/time-series-insights-management/).
+- Aby uzyskać informacje na temat programistycznego zarządzania zasobami Time Series Insights przy użyciu interfejsów API REST, Odczytaj [Time Series Insights zarządzania](https://docs.microsoft.com/rest/api/time-series-insights-management/).

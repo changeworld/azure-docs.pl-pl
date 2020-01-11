@@ -1,20 +1,20 @@
 ---
-title: Weryfikowanie przepływności sieci VPN do Microsoft Azure Virtual Network | Microsoft Docs
+title: Weryfikowanie przepływności sieci VPN do Microsoft Azure Virtual Network
 description: Celem tego dokumentu jest ułatwienie użytkownikowi zweryfikowania przepływności sieci z zasobów lokalnych do maszyny wirtualnej platformy Azure.
+titleSuffix: Azure VPN Gateway
 services: vpn-gateway
 author: cherylmc
-manager: dcscontentpm
 ms.service: vpn-gateway
 ms.topic: troubleshooting
 ms.date: 05/29/2019
 ms.author: radwiv
 ms.reviewer: chadmat;genli
-ms.openlocfilehash: 9c2f50c49037305663330a3c455e40291b9e6242
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: a88e339e82484c2ec1cd2276f6218fa718b990f9
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058799"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75860490"
 ---
 # <a name="how-to-validate-vpn-throughput-to-a-virtual-network"></a>Jak zweryfikować przepływność sieci VPN do sieci wirtualnej
 
@@ -25,14 +25,14 @@ W tym artykule pokazano, jak zweryfikować przepływność sieci z zasobów loka
 > [!NOTE]
 > Ten artykuł ma na celu ułatwienie diagnozowania i rozwiązywania typowych problemów. Jeśli nie możesz rozwiązać problemu, korzystając z poniższych informacji, [skontaktuj się z pomocą techniczną](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 Połączenie bramy sieci VPN obejmuje następujące składniki:
 
 * Lokalne urządzenie sieci VPN (Wyświetlanie listy [zweryfikowanych urządzeń sieci VPN](vpn-gateway-about-vpn-devices.md#devicetable)).
 * Publiczny Internet
 * Brama sieci VPN platformy Azure
-* Azure VM
+* Maszyna wirtualna platformy Azure
 
 Na poniższym diagramie przedstawiono logiczne połączenie sieci lokalnej z siecią wirtualną platformy Azure za pośrednictwem sieci VPN.
 
@@ -64,7 +64,7 @@ To narzędzie nie wykonuje żadnych operacji odczytu/zapisu na dysku. Generuje o
 Pobierz [iPerf](https://iperf.fr/download/iperf_3.1/iperf-3.1.2-win64.zip). Aby uzyskać szczegółowe informacje, zobacz [dokumentację iPerf](https://iperf.fr/iperf-doc.php).
 
  > [!NOTE]
- > Produkty innych firm omówione w tym artykule są wytwarzane przez firmy niezależne od firmy Microsoft. Firma Microsoft nie udziela żadnych gwarancji, dorozumianych lub w inny sposób, dotyczących wydajności lub niezawodności tych produktów.
+ > Produkty innych firm omówione w tym artykule są wytwarzane przez firmy niezależne od firmy Microsoft. Firma Microsoft nie udziela żadnych gwarancji, dorozumianych ani żadnego innego rodzaju, w odniesieniu do wydajności ani niezawodności tych produktów.
 
 ### <a name="run-iperf-iperf3exe"></a>Uruchom iPerf (iperf3. exe)
 
@@ -72,7 +72,7 @@ Pobierz [iPerf](https://iperf.fr/download/iperf_3.1/iperf-3.1.2-win64.zip). Aby 
 
 1. Na obu węzłach Włącz wyjątek zapory dla portu 5001.
 
-   **Windows:** Uruchom następujące polecenie jako administrator:
+   **System Windows:** Uruchom następujące polecenie jako administrator:
 
    ```CMD
    netsh advfirewall firewall add rule name="Open Port 5001" dir=in action=allow protocol=TCP localport=5001
@@ -84,7 +84,7 @@ Pobierz [iPerf](https://iperf.fr/download/iperf_3.1/iperf-3.1.2-win64.zip). Aby 
    netsh advfirewall firewall delete rule name="Open Port 5001" protocol=TCP localport=5001
    ```
 
-   **System Linux systemu Azure:** Obrazy systemu Linux na platformie Azure mają przypisaną zaporę. Jeśli aplikacja nasłuchuje na porcie, ruch jest dozwolony w. Chronione obrazy niestandardowe mogą wymagać jawnego otwierania portów. Typowe zapory systemu operacyjnego Linux obejmują `iptables`, `ufw`, lub `firewalld`.
+   System **Linux systemu Azure:** Obrazy systemu Linux na platformie Azure mają przypisaną zaporę. Jeśli aplikacja nasłuchuje na porcie, ruch jest dozwolony w. Chronione obrazy niestandardowe mogą wymagać jawnego otwierania portów. Typowe zapory systemu operacyjnego Linux obejmują `iptables`, `ufw`lub `firewalld`.
 
 1. W węźle serwer przejdź do katalogu, w którym został wyodrębniony iperf3. exe. Następnie uruchom program iPerf w trybie serwera i ustaw go, aby nasłuchiwać na porcie 5001 jako następujące polecenia:
 
@@ -107,7 +107,7 @@ Pobierz [iPerf](https://iperf.fr/download/iperf_3.1/iperf-3.1.2-win64.zip). Aby 
 
    Na poniższym ekranie przedstawiono dane wyjściowe z tego przykładu:
 
-   ![Output](./media/vpn-gateway-validate-throughput-to-vnet/06theoutput.png)
+   ![Dane wyjściowe](./media/vpn-gateway-validate-throughput-to-vnet/06theoutput.png)
 
 1. OBOWIĄZKOWE Aby zachować wyniki testów, uruchom następujące polecenie:
 
@@ -126,7 +126,7 @@ Pobierz [iPerf](https://iperf.fr/download/iperf_3.1/iperf-3.1.2-win64.zip). Aby 
 
 Pobierz najnowszą wersję programu [latte. exe](https://gallery.technet.microsoft.com/Latte-The-Windows-tool-for-ac33093b)
 
-Rozważ umieszczenie pliku latte. exe w osobnym folderze, na przykład`c:\tools`
+Rozważ umieszczenie pliku latte. exe w osobnym folderze, takim jak `c:\tools`
 
 ### <a name="allow-latteexe-through-the-windows-firewall"></a>Zezwalaj programowi latte. exe za pomocą zapory systemu Windows
 
@@ -224,7 +224,7 @@ W szczególności analiza śladów przechwytywania pakietów (Wireshark/Monitor 
 
 Nawet jeśli ogólna przepływność oceniona przy poprzednich krokach (iPERF/NTTTCP/itp.) była dobra, może wystąpić powolne polecenie ping do pliku podczas korzystania z Eksploratora Windows lub przeciąganie i upuszczanie przez sesję RDP. Ten problem jest zwykle spowodowany przez jeden lub oba z następujących czynników:
 
-* Aplikacje do kopiowania plików, takie jak Eksplorator Windows i RDP, nie używają wielu wątków podczas kopiowania plików. Aby uzyskać lepszą wydajność, należy użyć wielowątkowej aplikacji do kopiowania plików, takiej jak [RichCopy](https://technet.microsoft.com/magazine/2009.04.utilityspotlight.aspx) , do kopiowania plików przy użyciu 16 lub 32 wątków. Aby zmienić numer wątku dla kopiowania plików w RichCopy, kliknij pozycję **Akcja** > **Kopiuj opcje** > **pliku Kopiuj**.
+* Aplikacje do kopiowania plików, takie jak Eksplorator Windows i RDP, nie używają wielu wątków podczas kopiowania plików. Aby uzyskać lepszą wydajność, należy użyć wielowątkowej aplikacji do kopiowania plików, takiej jak [RichCopy](https://technet.microsoft.com/magazine/2009.04.utilityspotlight.aspx) , do kopiowania plików przy użyciu 16 lub 32 wątków. Aby zmienić numer wątku dla kopiowania plików w RichCopy, kliknij pozycję **akcja** > **Kopiuj opcje** > **Kopiuj plik**.
 
    ![Problemy związane z kopiowaniem plików](./media/vpn-gateway-validate-throughput-to-vnet/Richcopy.png)<br>
 
@@ -238,9 +238,9 @@ Nawet jeśli ogólna przepływność oceniona przy poprzednich krokach (iPERF/NT
 
 Wymieniono podsieci zakresów lokalnych, które mają być dostępne na platformie Azure za pośrednictwem sieci VPN w bramie sieci lokalnej. Jednocześnie Zdefiniuj przestrzeń adresową sieci wirtualnej na platformie Azure z urządzeniem lokalnym.
 
-* **Brama oparta na trasach**: Zasady lub selektor ruchu dla sieci VPN opartych na trasach są skonfigurowane jako każdy z każdym (lub symbole wieloznaczne).
+* **Brama oparta na trasach**: zasady lub selektor ruchu dla sieci VPN opartych na trasach są skonfigurowane jako dowolne (lub symbole wieloznaczne).
 
-* **Brama oparta na zasadach**: Sieci VPN oparte na zasadach szyfrują pakiety i kierują je bezpośrednio przez tunele protokołu IPsec na podstawie kombinacji prefiksów adresów między siecią lokalną użytkownika i siecią wirtualną platformy Azure. Zasady (lub selektor ruchu) są zazwyczaj zdefiniowane jako lista dostępu w konfiguracji VPN.
+* **Brama oparta na zasadach**: sieci VPN oparte na zasadach szyfrują pakiety i kierują je bezpośrednio przez tunele IPSec na podstawie kombinacji prefiksów adresów między siecią lokalną i sieci wirtualnej platformy Azure. Zasady (lub selektor ruchu) są zazwyczaj zdefiniowane jako lista dostępu w konfiguracji VPN.
 
 * Połączenia **UsePolicyBasedTrafficSelector** : ("UsePolicyBasedTrafficSelectors" do $true połączenia skonfiguruje bramę sieci VPN platformy Azure w celu połączenia z ZAPORĄ sieci VPN opartą na zasadach lokalnie. W przypadku włączenia usługi PolicyBasedTrafficSelectors należy upewnić się, że urządzenie sieci VPN ma pasujące selektory ruchu zdefiniowane ze wszystkimi kombinacjami prefiksów sieci lokalnej (bram sieciowych) do i z prefiksów sieci wirtualnej platformy Azure, a nie dowolny z nich.
 
@@ -252,7 +252,7 @@ Opóźnienie można sprawdzić przy użyciu następujących narzędzi:
 
 * WinMTR
 * TCPTraceroute
-* `ping`i `psping` (te narzędzia mogą zapewnić dobre oszacowanie RTT, ale nie mogą być używane we wszystkich przypadkach).
+* `ping` i `psping` (te narzędzia mogą zapewnić dobre oszacowanie RTT, ale nie mogą być używane we wszystkich przypadkach).
 
 ![Opóźnienie sprawdzania](./media/vpn-gateway-validate-throughput-to-vnet/08checkinglatency.png)
 

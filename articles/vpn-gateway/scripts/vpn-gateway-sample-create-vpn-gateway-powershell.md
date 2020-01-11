@@ -7,14 +7,14 @@ author: anzaman
 ms.service: vpn-gateway
 ms.devlang: powershell
 ms.topic: sample
-ms.date: 04/17/2018
+ms.date: 01/09/2020
 ms.author: alzam
-ms.openlocfilehash: 433899c2b558a5182ca1a5c7c0e0ac76c87e0007
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 52a5a70bc8c9f56ff4c5a2e971775d582c8db94d
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66113758"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75862394"
 ---
 # <a name="create-a-vpn-gateway-with-powershell"></a>Tworzenie bramy VPN Gateway przy użyciu programu PowerShell
 
@@ -80,6 +80,6 @@ Ten skrypt używa następujących poleceń w celu utworzenia wdrożenia. Każda 
 |[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Usuwa grupę zasobów i wszystkie zasoby w niej zawarte. |
 | [Set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork) | Ustawia konfigurację podsieci dla sieci wirtualnej. |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji na temat modułu Azure PowerShell, zobacz [dokumentację programu Azure PowerShell](/powershell/azure/overview).

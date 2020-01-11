@@ -10,19 +10,19 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: c305da097a4474e6a4aa91ec0e784e627533ee43
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b25639b237979aff8980c1ff5b8787d298c157e1
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75452439"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861471"
 ---
 # <a name="plan-your-azure-time-series-insights-preview-environment"></a>Planowanie środowiska Azure Time Series Insights w wersji zapoznawczej
 
 W tym artykule opisano najlepsze rozwiązania dotyczące szybkiego planowania i rozpoczynania pracy przy użyciu wersji zapoznawczej Azure Time Series Insights.
 
 > [!NOTE]
-> Aby zapoznać się z najlepszymi rozwiązaniami dotyczącymi planowania ogólnej dostępności Time Series Insights, zobacz [planowanie Azure Time Series Insights ogólnego środowiska dostępności](time-series-insights-environment-planning.md).
+> Aby zapoznać się z najlepszymi rozwiązaniami dotyczącymi planowania ogólnej dostępności Time Series Insights, przeczytaj artykuł [planowanie Azure Time Series Insights ogólnej dostępności](time-series-insights-environment-planning.md).
 
 ## <a name="best-practices-for-planning-and-preparation"></a>Najlepsze rozwiązania dotyczące planowania i przygotowywania
 
@@ -34,7 +34,7 @@ Najlepsze rozwiązania związane z planowaniem i przygotowywaniem środowiska s�
 * Jak [efektywnie wysyłać zdarzenia w formacie JSON](#shape-your-events).
 * Time Series Insights [Opcje odzyskiwania po awarii firmy](#business-disaster-recovery).
 
-Azure Time Series Insights wykorzystuje model biznesowy z płatność zgodnie z rzeczywistym użyciem. Aby uzyskać więcej informacji o opłatach i pojemności, zobacz [Time Series Insights Cennik](https://azure.microsoft.com/pricing/details/time-series-insights/).
+Azure Time Series Insights wykorzystuje model biznesowy z płatność zgodnie z rzeczywistym użyciem. Aby uzyskać więcej informacji na temat opłat i pojemności, Przeczytaj [Time Series Insights Cennik](https://azure.microsoft.com/pricing/details/time-series-insights/).
 
 ## <a name="the-preview-environment"></a>Środowisko wersji zapoznawczej
 
@@ -48,7 +48,7 @@ W ramach procesu inicjowania obsługi administracyjnej należy określić, czy m
 Zapytania dotyczące sklepu w sklepie są bezpłatne, podczas gdy zapytania dotyczące magazynu zimnego są ponoszone. Ważne jest, aby zrozumieć wzorce zapytań i odpowiednio zaplanować konfigurację magazynu ciepłego. Zalecamy, aby interakcyjna analiza najnowszych danych znajdował się w magazynie ciepłym i analizie wzorców oraz długoterminowe trendy znajdowały się na zimno.
 
 > [!NOTE]
-> Aby dowiedzieć się więcej na temat wykonywania zapytań dotyczących danych ciepłych, [Zobacz tutaj](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/query/execute#uri-parameters).
+> Aby dowiedzieć się więcej na temat wykonywania zapytań dotyczących danych ciepłych, Przeczytaj [Informacje o interfejsie API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/query/execute#uri-parameters).
 
 Aby rozpocząć, potrzebne są trzy dodatkowe elementy:
 
@@ -80,7 +80,7 @@ Po podaniu pustego pola czas do kolejki zdarzeń źródła zdarzeń jest używan
 
 Teraz można skonfigurować model szeregów czasowych środowiska Time Series Insights. Nowy model ułatwia znajdowanie i analizowanie danych IoT. Umożliwia ona nadzorowanie, konserwację i wzbogacanie danych szeregów czasowych i pomaga przygotować zestawy danych gotowe do użycia przez klientów. Model używa identyfikatorów szeregów czasowych, które mapują do wystąpienia, które kojarzy unikatowy zasób ze zmiennymi, znanymi jako typy i hierarchie. Przeczytaj o nowym [modelu szeregów czasowych](./time-series-insights-update-tsm.md).
 
-Model jest dynamiczny, więc można go skompilować w dowolnym momencie. Aby szybko rozpocząć pracę, skompiluj ją i przekaż przed wypchnięciem danych do Time Series Insights. Aby skompilować model, zobacz [Korzystanie z modelu szeregów czasowych](./time-series-insights-update-how-to-tsm.md).
+Model jest dynamiczny, więc można go skompilować w dowolnym momencie. Aby szybko rozpocząć pracę, skompiluj ją i przekaż przed wypchnięciem danych do Time Series Insights. Aby skompilować model, przeczytaj artykuł [Korzystanie z modelu szeregów czasowych](./time-series-insights-update-how-to-tsm.md).
 
 W przypadku wielu klientów model szeregów czasowych jest mapowany na istniejący model zasobów lub system ERP. Jeśli nie masz istniejącego modelu, [zapewnione](https://github.com/Microsoft/tsiclient) zostanie wbudowane środowisko użytkownika umożliwiające szybkie rozpoczęcie pracy. Aby Envision, jak może pomóc model, zobacz [przykładowe środowisko demonstracyjne](https://insights.timeseries.azure.com/preview/demo).
 
@@ -93,7 +93,7 @@ Dobrym regułą dla elementu kciuk:
 * Przechowuj metadane w modelu szeregów czasowych.
 * Upewnij się, że tryb szeregów czasowych, pola wystąpień i zdarzenia zawierają tylko niezbędne informacje, takie jak identyfikator szeregów czasowych lub właściwość sygnatury czasowej.
 
-Aby uzyskać więcej informacji, zobacz [Shape Events](./time-series-insights-send-events.md#supported-json-shapes).
+Aby uzyskać więcej informacji, Odczytaj [zdarzenia kształtu](./time-series-insights-send-events.md#supported-json-shapes).
 
 [!INCLUDE [business-disaster-recover](../../includes/time-series-insights-business-recovery.md)]
 

@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: eb181cbf6c647c816886f330502a9a46cb956dee
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: f920df20a8dc1cace76f641ce1c71f9b91a30bf4
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75763287"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867666"
 ---
 # <a name="tutorial-train-and-deploy-a-model-from-the-cli"></a>Samouczek: uczenie i wdrażanie modelu z poziomu interfejsu wiersza polecenia
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -242,8 +242,14 @@ Dane wyjściowe tego polecenia są podobne do następujących:
 }
 ```
 
+
 > [!IMPORTANT]
 > Skopiuj wartość wpisu `id`, ponieważ jest ona używana w następnej sekcji.
+
+Aby zapoznać się z bardziej szczegółowym szablonem pliku JSON opisującym zestaw danych, użyj następującego polecenia:
+```azurecli-interactive
+az ml dataset register --show-template
+```
 
 ## <a name="reference-the-dataset"></a>Odwołuje się do zestawu danych
 

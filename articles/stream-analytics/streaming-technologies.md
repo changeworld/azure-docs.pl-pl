@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/15/2019
-ms.openlocfilehash: f3ecb3bedb8e0f55590aca1aa1c0e0c185f9acc3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2146b1bd782aba5d98729a2d37d956744e469ba1
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75369256"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75860252"
 ---
 # <a name="choose-a-real-time-analytics-and-streaming-processing-technology-on-azure"></a>Wybierz technologię analizy i przetwarzania strumieniowego w czasie rzeczywistym na platformie Azure
 
@@ -41,10 +41,6 @@ Azure Stream Analytics ma wbudowane środowisko pracy. Można od razu korzystać
 * W obszarze 100-ms-end-to-end opóźnienia od wejścia do Event Hubs, do danych wyjściowych w Event Hubs, w tym opóźnienia sieci z i do Event Hubs, z trwałą wysoką przepustowością
 
 ## <a name="when-to-use-other-technologies"></a>Kiedy używać innych technologii
-
-### <a name="you-need-to-input-from-or-output-to-kafka"></a>Musisz wprowadzić dane z lub do Kafka
-
-Azure Stream Analytics nie ma Apache Kafka danych wejściowych lub wyjściowych. Jeśli masz zdarzenia, które znajdują się w lub muszą wysyłać do Kafka i nie masz wymaganego uruchamiania własnego klastra Kafka, możesz nadal używać Stream Analytics, wysyłając zdarzenia do Event Hubs przy użyciu interfejsu API usługi Event Hubs Kafka bez zmiany nadawcy zdarzenia. Jeśli musisz uruchomić własny klaster Kafka, możesz użyć przesyłania strumieniowego platformy Spark, które jest w pełni obsługiwane w [Azure Databricks](../azure-databricks/index.yml)lub burze w [usłudze Azure HDInsight](../hdinsight/storm/apache-storm-overview.md).
 
 ### <a name="you-want-to-write-udfs-udas-and-custom-deserializers-in-a-language-other-than-javascript-or-c"></a>Chcesz napisać UDF, uda i niestandardowe deserializacji w języku innym niż JavaScript lubC#
 

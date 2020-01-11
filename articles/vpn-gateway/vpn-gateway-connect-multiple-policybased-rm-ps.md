@@ -2,18 +2,17 @@
 title: 'Azure VPN Gateway: łączenie bram z wieloma lokalnymi urządzeniami sieci VPN opartymi na zasadach'
 description: Skonfiguruj bramę sieci VPN opartą na trasach platformy Azure dla wielu urządzeń sieci VPN opartych na zasadach przy użyciu Azure Resource Manager i programu PowerShell.
 services: vpn-gateway
-documentationcenter: na
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 10/17/2019
 ms.author: yushwang
-ms.openlocfilehash: f307e37debe47d2d352b1a375259fe7a0d6dd3cd
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 029b7ce31e7e3f1c71d9fbe806b2d76d8a98d24b
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74146703"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863744"
 ---
 # <a name="connect-azure-vpn-gateways-to-multiple-on-premises-policy-based-vpn-devices-using-powershell"></a>Łączenie bram sieci VPN platformy Azure z wieloma lokalnymi urządzeniami sieci VPN opartymi na zasadach przy użyciu programu PowerShell
 
@@ -25,7 +24,7 @@ Ten artykuł ułatwia skonfigurowanie bramy sieci VPN opartej na trasach platfor
 
 Zasady — *a* urządzenia sieci VPN oparte na trasach różnią się w zależności od tego, jak selektory ruchu IPSec są ustawiane dla połączenia:
 
-* **Oparte na zasadach** Urządzenia sieci VPN używają kombinacji prefiksów z obu sieci do definiowania sposobu szyfrowania i odszyfrowywania ruchu za pośrednictwem tuneli IPsec. Jest zazwyczaj oparty na urządzeniach zapory, które wykonują filtrowanie pakietów. Szyfrowanie i odszyfrowywanie tunelu IPsec są dodawane do aparatu filtrowania pakietów i przetwarzania.
+* **Oparte na zasadach** Urządzenia sieci VPN używają kombinacji prefiksów z obu sieci do definiowania sposobu szyfrowania i odszyfrowywania ruchu za pośrednictwem tuneli IPsec. Jest zazwyczaj oparty na urządzeniach zapory, które wykonują filtrowanie pakietów. Szyfrowanie i odszyfrowywanie tunelu IPsec jest dodawane do aparatu filtrowania i przetwarzania pakietów.
 * **Oparta na trasach** Urządzenia sieci VPN używają selektorów ruchu dowolnego do dowolnego (symbol wieloznaczny) i umożliwiają kierowanie tabel routingu/przekazywania do różnych tuneli IPsec. Jest zazwyczaj oparty na platformach routera, w których każdy tunel IPsec jest modelowany jako interfejs sieciowy lub VTI (interfejs tunelu wirtualnego).
 
 Na poniższych diagramach są wyróżniane dwa modele:
@@ -41,7 +40,7 @@ Obecnie platforma Azure obsługuje oba tryby bram sieci VPN: bramy sieci VPN opa
 
 |                          | **PolicyBased VPN Gateway** | **RouteBased VPN Gateway**       |**RouteBased VPN Gateway**                          |
 | ---                      | ---                         | ---                              |---                                                 |
-| **Jednostka SKU bramy platformy Azure**    | Podstawowa                       | Podstawowa                            | Standard, HighPerformance, VpnGw1, VpnGw2, VpnGw3  |
+| **Jednostka SKU bramy platformy Azure**    | Basic                       | Basic                            | Standard, HighPerformance, VpnGw1, VpnGw2, VpnGw3  |
 | **Wersja IKE**          | IKEv1                       | IKEv2                            | Protokoły IKEv1 i IKEv2                                    |
 | **Maksymalny. Połączenia S2S** | **1**                       | 10                               |Standardowa: 10<br> Inne jednostki SKU: 30                     |
 |                          |                             |                                  |                                                    |

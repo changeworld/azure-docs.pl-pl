@@ -9,12 +9,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3d4470a89455fd4b49fb7bb5ae26375f9cf9884c
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: a14f3f6c17423dd9a86cbafe477fb8148932d43c
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456979"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863533"
 ---
 # <a name="azure-digital-twins-swagger-reference-documentation"></a>Dokumentacja usługi Azure Digital bliźniaczych reprezentacji Swagger
 
@@ -50,9 +50,9 @@ Są również wyświetlane modele obiektów interfejsu API zarządzania.
 
 Możesz wybrać każdy z wymienionych modeli obiektów, aby uzyskać bardziej szczegółowy opis atrybutów klucza.
 
-[![modele struktury Swagger rozwinięte, aby wyświetlić zawartość modeli](media/how-to-use-swagger/swagger-management-model-img.png)](media/how-to-use-swagger/swagger-management-model-img.png#lightbox)
+[![modele struktury Swagger rozwinięte w celu odczytania zawartości modeli](media/how-to-use-swagger/swagger-management-model-img.png)](media/how-to-use-swagger/swagger-management-model-img.png#lightbox)
 
-Wygenerowane modele obiektów Swagger są wygodne do wyświetlania wszystkich dostępnych [obiektów i interfejsów API](./concepts-objectmodel-spatialgraph.md)usługi Azure Digital bliźniaczych reprezentacji. Deweloperzy mogą korzystać z tego zasobu podczas tworzenia rozwiązań na platformie Azure Digital bliźniaczych reprezentacji.
+Wygenerowane modele obiektów Swagger są wygodne do odczytania wszystkich dostępnych [obiektów i interfejsów API](./concepts-objectmodel-spatialgraph.md)usługi Azure Digital bliźniaczych reprezentacji. Deweloperzy mogą korzystać z tego zasobu podczas tworzenia rozwiązań na platformie Azure Digital bliźniaczych reprezentacji.
 
 ## <a name="endpoint-summary"></a>Podsumowanie punktu końcowego
 
@@ -66,13 +66,13 @@ Każdy z wymienionych punktów końcowych zawiera również wymagane informacje 
 
 [![punkty końcowe struktury Swagger wyświetlane w interfejsie użytkownika programu Swagger](media/how-to-use-swagger/swagger-management-endpoints-img.png)](media/how-to-use-swagger/swagger-management-endpoints-img.png#lightbox)
 
-Aby zapoznać się z bardziej szczegółowym omówieniem, wybierz każdy zasób.
+Wybierz każdy zasób, aby wyświetlić jego dodatkową zawartość, aby zapoznać się z bardziej szczegółowym omówieniem.
 
 ## <a name="use-swagger-to-test-endpoints"></a>Użyj struktury Swagger do testowania punktów końcowych
 
 Jedną z zaawansowanych funkcji struktury Swagger zapewnia możliwość przetestowania punktu końcowego interfejsu API bezpośrednio za pomocą interfejsu użytkownika dokumentacji.
 
-Po wybraniu określonego punktu końcowego zobaczysz **go**.
+Po wybraniu określonego punktu końcowego zostanie wyświetlony przycisk **wypróbuj go** .
 
 [![Swagger Wypróbuj ten przycisk](media/how-to-use-swagger/swagger-management-try-img.png)](media/how-to-use-swagger/swagger-management-try-img.png#lightbox)
 
@@ -84,7 +84,7 @@ Po wykonaniu testu można sprawdzić poprawność danych odpowiedzi.
 
 ## <a name="swagger-response-data"></a>Dane odpowiedzi struktury Swagger
 
-Każdy z wymienionych punktów końcowych zawiera również dane treści odpowiedzi w celu zweryfikowania rozwoju i testów. Te przykłady obejmują kody stanu i kod JSON, które mają być wyświetlane w przypadku pomyślnych żądań HTTP.
+Każdy z wymienionych punktów końcowych zawiera również dane treści odpowiedzi w celu zweryfikowania rozwoju i testów. Te przykłady obejmują kody stanu i kod JSON dla pomyślnych żądań HTTP.
 
 [przykład odpowiedzi JSON ![Swagger](media/how-to-use-swagger/swagger-management-response-img.png)](media/how-to-use-swagger/swagger-management-response-img.png#lightbox)
 
@@ -124,7 +124,7 @@ Po zakończeniu rejestracji Azure Active Directory:
 
     [modalne przekierowanie ![Swagger](media/how-to-use-swagger/swagger-auth-redirect-img.png)](media/how-to-use-swagger/swagger-auth-redirect-img.png#lightbox)
 
-Aby dowiedzieć się więcej na temat interakcyjnych żądań testowania chronionych przez uwierzytelnianie OAuth 2,0, zobacz [oficjalną dokumentację](https://swagger.io/docs/specification/authentication/oauth2/).
+Aby dowiedzieć się więcej na temat interakcyjnych żądań testowania chronionych przez uwierzytelnianie OAuth 2,0, zapoznaj się z [oficjalną dokumentacją](https://swagger.io/docs/specification/authentication/oauth2/).
 
 ## <a name="next-steps"></a>Następne kroki
 

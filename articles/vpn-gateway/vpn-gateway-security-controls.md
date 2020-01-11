@@ -4,16 +4,16 @@ description: Lista kontrolna zabezpieczeń na potrzeby oceny VPN Gateway platfor
 services: sql-database
 author: msmbaldwin
 manager: rkarlin
-ms.service: load-balancer
+ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 1babb892063da6d460ea2bc4c567da954731956f
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 2c32f46ca85007608b5e17f2bf77b0a8f0fb8397
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70886519"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75862751"
 ---
 # <a name="security-controls-for-azure-vpn-gateway"></a>Kontrolki zabezpieczeń dla usługi Azure VPN Gateway
 
@@ -21,7 +21,7 @@ W tym artykule opisano mechanizmy kontroli zabezpieczeń wbudowane w usługę Az
 
 [!INCLUDE [Security controls Header](../../includes/security-controls-header.md)]
 
-## <a name="network"></a>Sieć
+## <a name="network"></a>Network (Sieć)
 
 | Kontrola zabezpieczeń | Tak/Nie | Uwagi |
 |---|---|--|
@@ -34,7 +34,7 @@ W tym artykule opisano mechanizmy kontroli zabezpieczeń wbudowane w usługę Az
 
 | Kontrola zabezpieczeń | Tak/Nie | Uwagi|
 |---|---|--|
-| Pomoc techniczna dotycząca monitorowania platformy Azure (log Analytics, App Insights itp.)| Tak | Zobacz [dzienniki/](vpn-gateway-howto-setup-alerts-virtual-network-gateway-log.md) & alerty diagnostyki Azure monitor[Azure monitor metryki/alerty](vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric.md).  |
+| Pomoc techniczna dotycząca monitorowania platformy Azure (log Analytics, App Insights itp.)| Tak | Zobacz [dzienniki/alerty diagnostyki Azure Monitor & alertów](vpn-gateway-howto-setup-alerts-virtual-network-gateway-log.md) [Azure monitor metryki/alertów](vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric.md).  |
 | Rejestrowanie i inspekcja płaszczyzny kontroli i zarządzania| Tak | Azure Resource Manager dziennik aktywności. |
 | Rejestrowanie i inspekcja płaszczyzny danych | Tak | [Azure monitor dzienników diagnostycznych](../azure-resource-manager/resource-group-audit.md) dotyczących rejestrowania i inspekcji łączności sieci VPN. |
 
@@ -43,13 +43,13 @@ W tym artykule opisano mechanizmy kontroli zabezpieczeń wbudowane w usługę Az
 | Kontrola zabezpieczeń | Tak/Nie | Uwagi|
 |---|---|--|
 | Authentication| Tak | [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) zarządzania usługą i konfigurowania bramy sieci VPN platformy Azure. |
-| Authorization| Tak | Obsługa autoryzacji za pośrednictwem [RBAC](../role-based-access-control/overview.md). |
+| Autoryzacja| Tak | Obsługa autoryzacji za pośrednictwem [RBAC](../role-based-access-control/overview.md). |
 
 ## <a name="data-protection"></a>Ochrona danych
 
 | Kontrola zabezpieczeń | Tak/Nie | Uwagi |
 |---|---|--|
-| Szyfrowanie po stronie serwera w czasie spoczynku: Klucze zarządzane przez firmę Microsoft | ND | Dane klienta dotyczące tranzytowej bramy sieci VPN nie przechowują danych klienta |
+| Szyfrowanie po stronie serwera w czasie spoczynku: klucze zarządzane przez firmę Microsoft | ND | Dane klienta dotyczące tranzytowej bramy sieci VPN nie przechowują danych klienta |
 | Szyfrowanie podczas przesyłania (takie jak szyfrowanie ExpressRoute, szyfrowanie sieci wirtualnej i szyfrowanie sieci wirtualnej)| Tak | Usługa VPN Gateway szyfruje pakiety klienta między bramami sieci VPN platformy Azure i lokalnymi urządzeniami sieci VPN (S2S) lub klientami sieci VPN (P2S). Bramy VPN obsługują również szyfrowanie między sieciami wirtualnymi. |
 | Szyfrowanie po stronie serwera w spoczynku: klucze zarządzane przez klienta (BYOK) | Nie | Klucze wstępne określone przez klienta są szyfrowane w stanie spoczynku; ale nie jest to jeszcze zintegrowane z CMK. |
 | Szyfrowanie na poziomie kolumny (Data Services platformy Azure)| ND | |
