@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 11/08/2019
-ms.openlocfilehash: 2ffc3ced360e1fdf00f69ea5826e6c6af7806f71
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 26eec9cdd327ceb51e72deb1d6f40d585ce368fb
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74215995"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75896139"
 ---
 # <a name="authentication-issues-in-azure-hdinsight"></a>Problemy z uwierzytelnianiem w usłudze Azure HDInsight
 
@@ -36,7 +36,7 @@ Reason: Bad Request, Detailed Response: {"error":"invalid_grant","error_descript
 
 Kod błędu usługi Azure AD 50126 oznacza, że zasady `AllowCloudPasswordValidation` nie zostały ustawione przez dzierżawcę.
 
-### <a name="resolution"></a>Rozwiązanie
+### <a name="resolution"></a>Rozdzielczość
 
 Administrator firmy w dzierżawie usługi Azure AD powinien zezwolić usłudze Azure AD na używanie skrótów haseł dla użytkowników z kopiami zapasowymi usług ADFS.  Zastosuj `AllowCloudPasswordValidationPolicy`, jak pokazano w artykule [użycie pakiet Enterprise Security w usłudze HDInsight](../domain-joined/apache-domain-joined-architecture.md).
 
@@ -56,7 +56,7 @@ Logowanie kończy się niepowodzeniem z kodem błędu 50034. Komunikat o błędz
 
 Nazwa użytkownika jest niepoprawna (nie istnieje). Użytkownik nie korzysta z tej samej nazwy użytkownika, która jest używana w Azure Portal.
 
-### <a name="resolution"></a>Rozwiązanie
+### <a name="resolution"></a>Rozdzielczość
 
 Użyj tej samej nazwy użytkownika, która działa w tym portalu.
 
@@ -76,7 +76,7 @@ Konto użytkownika jest zablokowane, kod błędu 50053. Komunikat o błędzie je
 
 Zbyt wiele prób logowania przy użyciu niepoprawnego hasła.
 
-### <a name="resolution"></a>Rozwiązanie
+### <a name="resolution"></a>Rozdzielczość
 
 Zaczekaj 30 minut lub tak, Zatrzymaj wszystkie aplikacje, które mogą próbować uwierzytelniać.
 
@@ -96,7 +96,7 @@ Hasło wygasło, kod błędu 50053. Komunikat o błędzie jest podobny do:
 
 Hasło wygasło.
 
-### <a name="resolution"></a>Rozwiązanie
+### <a name="resolution"></a>Rozdzielczość
 
 Zmień hasło w Azure Portal (w systemie lokalnym), a następnie poczekaj 30 minut na przechwycenie synchronizacji.
 
@@ -112,7 +112,7 @@ Odbierz komunikat o błędzie `interaction_required`.
 
 Zasady dostępu warunkowego lub uwierzytelniania wieloskładnikowego są stosowane do użytkownika. Ponieważ uwierzytelnianie interakcyjne nie jest jeszcze obsługiwane, użytkownika lub klaster należy wykluczyć z uwierzytelniania wieloskładnikowego lub dostępu warunkowego. Jeśli zdecydujesz się na wykluczenie klastra (Zasady wykluczania oparte na adresach IP), upewnij się, że `ServiceEndpoints` usługi AD są włączone dla tej sieci wirtualnej.
 
-### <a name="resolution"></a>Rozwiązanie
+### <a name="resolution"></a>Rozdzielczość
 
 Użyj zasad dostępu warunkowego i Wyklucz klastry HDInisght z usługi MFA, jak pokazano w temacie [Konfigurowanie klastra usługi HDInsight z pakiet Enterprise Security przy użyciu Azure Active Directory Domain Services](./apache-domain-joined-configure-using-azure-adds.md).
 
@@ -128,7 +128,7 @@ Odmowa logowania.
 
 Aby przejść do tego etapu, uwierzytelnianie OAuth nie jest problemem, ale uwierzytelnianie Kerberos to. Jeśli ten klaster jest objęty ADLS, logowanie OAuth zakończyło się pomyślnie przed podjęciem próby uwierzytelnienia Kerberos. W klastrach WASB nie podjęto próby logowania przy użyciu protokołu OAuth. Może istnieć wiele powodów użycia protokołu Kerberos skróty haseł, które nie są zsynchronizowane, konto użytkownika zostało zablokowane na platformie Azure AD DS i tak dalej. Skróty haseł synchronizują się tylko wtedy, gdy użytkownik zmienia hasło. Podczas tworzenia wystąpienia usługi Azure AD DS rozpocznie się Synchronizowanie haseł, które zostały zmienione po utworzeniu. Nie synchronizuje wstecz hasła, które zostały ustawione przed jego rozpoczęciem.
 
-### <a name="resolution"></a>Rozwiązanie
+### <a name="resolution"></a>Rozdzielczość
 
 Jeśli uważasz, że hasła mogą nie być zsynchronizowane, spróbuj zmienić hasło i poczekaj kilka minut na synchronizację.
 
@@ -146,7 +146,7 @@ Narzędzie kinit kończy się niepowodzeniem.
 
 Różni się.
 
-### <a name="resolution"></a>Rozwiązanie
+### <a name="resolution"></a>Rozdzielczość
 
 Aby narzędzie kinit się powieść, musisz znać `sAMAccountName` (to jest krótka nazwa konta bez obszaru). `sAMAccountName` jest zazwyczaj prefiksem konta (na przykład Roberta w `bob@contoso.com`). W przypadku niektórych użytkowników może się to różnić. Aby poznać `sAMAccountName`, będziesz potrzebować możliwości przeglądania i przeszukiwania katalogu.
 
@@ -172,7 +172,7 @@ Narzędzie kinit kończy się niepowodzeniem z powodu niepowodzenia `Preauthenti
 
 Nieprawidłowa nazwa użytkownika lub hasło.
 
-### <a name="resolution"></a>Rozwiązanie
+### <a name="resolution"></a>Rozdzielczość
 
 Sprawdź nazwę użytkownika i hasło. Sprawdź również inne opisane powyżej właściwości. Aby włączyć pełne debugowanie, uruchom `export KRB5_TRACE=/tmp/krb.log` z sesji przed podjęciem próby narzędzie kinit.
 
@@ -188,7 +188,7 @@ Polecenie Job/HDFS nie powiodło się z powodu `TokenNotFoundException`.
 
 Nie znaleziono wymaganego tokenu dostępu OAuth, aby zadanie/polecenie zakończyło się pomyślnie. Sterownik ADLS/ABFS podejmie próbę pobrania tokenu dostępu OAuth z usługi Credential przed przekazaniem żądań magazynu. Ten token jest rejestrowany po zalogowaniu się do portalu Ambari przy użyciu tego samego użytkownika.
 
-### <a name="resolution"></a>Rozwiązanie
+### <a name="resolution"></a>Rozdzielczość
 
 Upewnij się, że po pomyślnym zalogowaniu się do portalu Ambari za pomocą nazwy użytkownika, której tożsamość jest używana do uruchomienia zadania.
 
@@ -204,7 +204,7 @@ Użytkownik otrzymuje komunikat o błędzie `Error fetching access token`.
 
 Ten błąd występuje sporadycznie, gdy użytkownicy próbują uzyskać dostęp do ADLS Gen2 przy użyciu list kontroli dostępu, a token Kerberos wygasł.
 
-### <a name="resolution"></a>Rozwiązanie
+### <a name="resolution"></a>Rozdzielczość
 
 * W przypadku Azure Data Lake Storage Gen1, wyczyść pamięć podręczną przeglądarki i ponownie zaloguj się do Ambari.
 
@@ -220,4 +220,4 @@ Jeśli problem nie został wyświetlony lub nie można rozwiązać problemu, odw
 
 * Połącz się z [@AzureSupport](https://twitter.com/azuresupport) — oficjalnego Microsoft Azure konta, aby zwiększyć komfort obsługi klienta. Połączenie społeczności platformy Azure z właściwymi zasobami: odpowiedziami, wsparciem i ekspertami.
 
-* Jeśli potrzebujesz więcej pomocy, możesz przesłać żądanie pomocy technicznej z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Na pasku menu wybierz pozycję **Obsługa** , a następnie otwórz Centrum **pomocy i obsługi technicznej** . Aby uzyskać szczegółowe informacje, zapoznaj [się z tematem jak utworzyć żądanie pomocy technicznej platformy Azure](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). Dostęp do pomocy technicznej dotyczącej zarządzania subskrypcjami i rozliczeniami jest oferowany w ramach subskrypcji platformy Microsoft Azure, a pomoc techniczna jest świadczona w ramach jednego z [planów pomocy technicznej platformy Azure](https://azure.microsoft.com/support/plans/).
+* Jeśli potrzebujesz więcej pomocy, możesz przesłać żądanie pomocy technicznej z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Na pasku menu wybierz pozycję **Obsługa** , a następnie otwórz Centrum **pomocy i obsługi technicznej** . Aby uzyskać szczegółowe informacje, zapoznaj [się z tematem jak utworzyć żądanie pomocy technicznej platformy Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). Dostęp do pomocy w zakresie zarządzania subskrypcjami i rozliczeń jest dostępny w ramach subskrypcji Microsoft Azure, a pomoc techniczna jest świadczona za pomocą jednego z [planów pomocy technicznej systemu Azure](https://azure.microsoft.com/support/plans/).

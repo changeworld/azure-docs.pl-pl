@@ -7,12 +7,12 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/13/2019
-ms.openlocfilehash: 7b511ab0c3093747d6e713754c04533e5f25b6ad
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 21269f7d5a9ec832a49a613351702dd24be156af
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71087402"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894167"
 ---
 # <a name="unable-to-access-data-lake-storage-files-in-azure-hdinsight"></a>Nie można uzyskać dostępu do plików magazynu Data Lake w usłudze Azure HDInsight
 
@@ -30,7 +30,7 @@ LISTSTATUS failed with error 0x83090aa2 (Forbidden. ACL verification failed. Eit
 
 Użytkownik mógł mieć odwołane uprawnienia jednostki usługi (SP) w plikach/folderach.
 
-### <a name="resolution"></a>Rozwiązanie
+### <a name="resolution"></a>Rozdzielczość
 
 1. Sprawdź, czy SP ma uprawnienia "x" do przechodzenia wzdłuż ścieżki. Aby uzyskać więcej informacji, zobacz [uprawnienia](https://hdinsight.github.io/ClusterCRUD/ADLS/adls-create-permission-setup.html). Przykładowe polecenie systemu plików DFS, aby sprawdzić dostęp do plików/folderów na koncie magazynu Data Lake:
 
@@ -42,7 +42,7 @@ Użytkownik mógł mieć odwołane uprawnienia jednostki usługi (SP) w plikach/
 
 ---
 
-## <a name="issue-service-principal-certificate-expiry"></a>Problem: Wygaśnięcie certyfikatu jednostki usługi
+## <a name="issue-service-principal-certificate-expiry"></a>Problem: ważność certyfikatu głównego usługi
 
 Zostanie wyświetlony komunikat o błędzie podobny do:
 
@@ -66,7 +66,7 @@ Certyfikat podany dla dostępu do jednostki usługi mógł wygasnąć.
     {"stderr": "-ls: Token Refresh failed - Received invalid http response: 500, text = Response{protocol=http/1.1, code=500, message=Internal Server Error, url=http://gw0-abccluster.24ajrd4341lebfgq5unsrzq0ue.fx.internal.cloudapp.net:909/api/oauthtoken}}...
     ```
 
-1. Pobierz jeden z adresów URL z `core-site.xml property`  -  `fs.azure.datalake.token.provider.service.urls`programu.
+1. Pobierz jeden z adresów URL z `core-site.xml property` - `fs.azure.datalake.token.provider.service.urls`.
 
 1. Uruchom następujące polecenie zwinięcie, aby pobrać token uwierzytelniania OAuth.
 
@@ -99,7 +99,7 @@ Certyfikat podany dla dostępu do jednostki usługi mógł wygasnąć.
     Error: java.lang.IllegalArgumentException: Token Refresh failed - Received invalid http response: 500, text = Response{protocol=http/1.1, code=500, message=Internal Server Error, url=http://clustername.hmssomerandomstringc.cx.internal.cloudapp.net:909/api/oauthtoken}
     ```
 
-### <a name="resolution"></a>Rozwiązanie
+### <a name="resolution"></a>Rozdzielczość
 
 Utwórz nowy certyfikat lub Przypisz istniejący certyfikat przy użyciu następującego skryptu programu PowerShell:
 
@@ -171,6 +171,6 @@ Jeśli problem nie został wyświetlony lub nie można rozwiązać problemu, odw
 
 * Uzyskaj odpowiedzi od ekspertów platformy Azure za pośrednictwem [pomocy technicznej dla społeczności platformy Azure](https://azure.microsoft.com/support/community/).
 
-* Połącz się [@AzureSupport](https://twitter.com/azuresupport) z programem — oficjalnego konta Microsoft Azure, aby zwiększyć komfort obsługi klienta. Połączenie społeczności platformy Azure z właściwymi zasobami: odpowiedziami, wsparciem i ekspertami.
+* Połącz się z [@AzureSupport](https://twitter.com/azuresupport) — oficjalnego Microsoft Azure konta, aby zwiększyć komfort obsługi klienta. Połączenie społeczności platformy Azure z właściwymi zasobami: odpowiedziami, wsparciem i ekspertami.
 
-* Jeśli potrzebujesz więcej pomocy, możesz przesłać żądanie pomocy technicznej z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Na pasku menu wybierz pozycję **Obsługa** , a następnie otwórz Centrum **pomocy i obsługi technicznej** . Aby uzyskać szczegółowe informacje, zapoznaj [się z tematem jak utworzyć żądanie pomocy technicznej platformy Azure](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). Dostęp do pomocy w zakresie zarządzania subskrypcjami i rozliczeń jest dostępny w ramach subskrypcji Microsoft Azure, a pomoc techniczna jest świadczona za pomocą jednego z [planów pomocy technicznej systemu Azure](https://azure.microsoft.com/support/plans/).
+* Jeśli potrzebujesz więcej pomocy, możesz przesłać żądanie pomocy technicznej z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Na pasku menu wybierz pozycję **Obsługa** , a następnie otwórz Centrum **pomocy i obsługi technicznej** . Aby uzyskać szczegółowe informacje, zapoznaj [się z tematem jak utworzyć żądanie pomocy technicznej platformy Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). Dostęp do pomocy w zakresie zarządzania subskrypcjami i rozliczeń jest dostępny w ramach subskrypcji Microsoft Azure, a pomoc techniczna jest świadczona za pomocą jednego z [planów pomocy technicznej systemu Azure](https://azure.microsoft.com/support/plans/).

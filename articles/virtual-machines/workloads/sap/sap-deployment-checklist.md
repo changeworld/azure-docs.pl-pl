@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 11/08/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ddba2b70bc9d9e01518cdc0f373fc31224e9c932
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b3a424c142fbfcbfe5e4c1802f3ba61da655f77f
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75425934"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75896032"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>Obciążenia SAP na platformie Azure: Lista kontrolna planowania i wdrażania
 
@@ -76,7 +76,7 @@ W tej fazie planujesz migrację obciążenia SAP na platformę Azure. Co najmnie
     - [Strategia tagowania](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags#tags-and-billing).
     - Konwencje nazewnictwa dla maszyn wirtualnych i innych składników infrastruktury i/lub nazw logicznych.
 5.  Kontrakt pomoc techniczna Premier firmy Microsoft. Zidentyfikuj firmę Microsoft Technical Account Manager (konsultant). Aby uzyskać wymagania dotyczące pomocy technicznej SAP, zobacz [uwagi dotyczące pomocy technicznej sap #2015553](https://launchpad.support.sap.com/#/notes/2015553).
-6.  Liczba subskrypcji platformy Azure i limit przydziału rdzeni dla subskrypcji. [Otwórz żądania obsługi, aby zwiększyć przydziały subskrypcji platformy Azure](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) zgodnie z wymaganiami.
+6.  Liczba subskrypcji platformy Azure i limit przydziału rdzeni dla subskrypcji. [Otwórz żądania obsługi, aby zwiększyć przydziały subskrypcji platformy Azure](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request) zgodnie z wymaganiami.
 7.  Planowanie zmniejszenia i migracji danych na potrzeby migrowania danych SAP na platformę Azure. W przypadku systemów SAP NetWeaver w systemie SAP zawarto wskazówki dotyczące ograniczania ilości dużych ilości danych. Zobacz [ten przewodnik SAP](https://wiki.scn.sap.com/wiki/download/attachments/247399467/DVM_%20Guide_7.2.pdf?version=1&modificationDate=1549365516000&api=v2) dotyczący zarządzania danymi w systemach SAP ERP. Część zawartości dotyczy również systemów NetWeaver i S/4HANA.
 8.  Automatyczne podejście do wdrożenia. Celem automatyzacji wdrożeń infrastruktury na platformie Azure jest wdrożenie w sposób deterministyczny i uzyskanie deterministycznych wyników. Wielu klientów używa programu PowerShell lub skryptów opartych na interfejsie wiersza polecenia. Istnieją jednak różne technologie "open source", których można użyć do wdrożenia infrastruktury platformy Azure dla oprogramowania SAP, a nawet w przypadku instalowania programu SAP. Przykłady można znaleźć w witrynie GitHub:
     - [Automatyczne wdrożenia SAP w chmurze platformy Azure](https://github.com/Azure/sap-hana)

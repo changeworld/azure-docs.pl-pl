@@ -10,12 +10,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 10/23/2019
 ms.author: cynthn
-ms.openlocfilehash: d2c8e599e44e48517920862e1fcf83e1a5e24910
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: b57c13d4a5c671595a3e82ac7858c027456107f2
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647632"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894072"
 ---
 # <a name="preview-azure-spot-vms-for-virtual-machine-scale-sets"></a>Wersja zapoznawcza: maszyny wirtualne platformy Azure dla zestawów skalowania maszyn wirtualnych 
 
@@ -156,7 +156,7 @@ Odp **.:** Wystąpienia w miejscu i wystąpienia standardowe będą mieć oddzie
 
 **P:** Czy mogę zażądać dodatkowego przydziału na miejscu?
 
-Odp **.:** Tak, będzie można przesłać żądanie w celu zwiększenia limitu przydziału dla maszyn wirtualnych na miejscu za pośrednictwem [standardowego procesu żądania limitu przydziału](https://docs.microsoft.com/azure/azure-supportability/per-vm-quota-requests).
+Odp **.:** Tak, będzie można przesłać żądanie w celu zwiększenia limitu przydziału dla maszyn wirtualnych na miejscu za pośrednictwem [standardowego procesu żądania limitu przydziału](https://docs.microsoft.com/azure/azure-portal/supportability/per-vm-quota-requests).
 
 
 **P:** Czy mogę przekonwertować istniejące zestawy skalowania na zestawy skalowania?

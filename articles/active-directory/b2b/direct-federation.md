@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f5b6e99c803fb703f18b61200c28cbdac3282750
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 036c8361af3f6631b6151782fa18495542d2e3f6
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74272750"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75888890"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>Bezpośrednia Federacja z dostawcami AD FS i innych firm dla użytkowników-Gości (wersja zapoznawcza)
 |     |
@@ -83,7 +83,7 @@ Najpierw organizacja partnera musi skonfigurować swojego dostawcę tożsamości
 Usługę Azure AD B2B można skonfigurować tak, aby sfederować się z dostawcami tożsamości, którzy korzystają z protokołu SAML z określonymi wymaganiami wymienionymi poniżej. Aby uzyskać więcej informacji na temat konfigurowania zaufania między dostawcą tożsamości SAML i usługą Azure AD, zobacz [Używanie dostawcy tożsamości saml 2,0 (dostawcy tożsamości) na potrzeby logowania jednokrotnego](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-fed-saml-idp).  
 
 > [!NOTE]
-> Zwróć uwagę, że domena docelowa dla Federacji bezpośredniej nie może być zweryfikowana przez system DNS w usłudze Azure AD. Domena adresu URL uwierzytelniania musi być zgodna z domeną docelową lub musi być domeną dozwolonego dostawcy tożsamości. Szczegółowe informacje znajdują się w sekcji [ograniczenia](#limitations) . 
+> Domena docelowa dla Federacji bezpośredniej nie może być zweryfikowana przez system DNS w usłudze Azure AD. Domena adresu URL uwierzytelniania musi być zgodna z domeną docelową lub musi być domeną dozwolonego dostawcy tożsamości. Szczegółowe informacje znajdują się w sekcji [ograniczenia](#limitations) . 
 
 #### <a name="required-saml-20-attributes-and-claims"></a>Wymagane atrybuty i oświadczenia SAML 2,0
 W poniższych tabelach przedstawiono wymagania dotyczące określonych atrybutów i oświadczeń, które muszą być skonfigurowane w dostawcy tożsamości innej firmy. Aby skonfigurować bezpośrednią Federacji, należy odebrać następujące atrybuty w odpowiedzi SAML 2,0 od dostawcy tożsamości. Te atrybuty można skonfigurować, łącząc się z plikiem XML usługi tokenu zabezpieczającego w trybie online lub wprowadzając je ręcznie.
@@ -93,7 +93,7 @@ Atrybuty wymagane dla odpowiedzi SAML 2,0 z dostawcy tożsamości:
 |Atrybut  |Wartość  |
 |---------|---------|
 |AssertionConsumerService     |`https://login.microsoftonline.com/login.srf`         |
-|Grupy odbiorców     |`urn:federation:MicrosoftOnline`         |
+|Odbiorcy     |`urn:federation:MicrosoftOnline`         |
 |Wystawca     |Identyfikator URI wystawcy partnera dostawcy tożsamości, na przykład `http://www.example.com/exk10l6w90DHM0yi...`         |
 
 
@@ -119,7 +119,7 @@ Wymagane atrybuty w wiadomości protokołu WS-pokarmowego z dostawcy tożsamośc
 |Atrybut  |Wartość  |
 |---------|---------|
 |PassiveRequestorEndpoint     |`https://login.microsoftonline.com/login.srf`         |
-|Grupy odbiorców     |`urn:federation:MicrosoftOnline`         |
+|Odbiorcy     |`urn:federation:MicrosoftOnline`         |
 |Wystawca     |Identyfikator URI wystawcy partnera dostawcy tożsamości, na przykład `http://www.example.com/exk10l6w90DHM0yi...`         |
 
 Wymagane oświadczenia dla tokenu protokołu WS-pokarmowego wydanego przez dostawcy tożsamości:

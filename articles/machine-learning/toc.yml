@@ -67,7 +67,7 @@
       href: 'https://github.com/microsoft/MLOps'
 - name: Pojęcia
   items:
-    - name: Obszar roboczy
+    - name: Workspace
       href: concept-workspace.md
     - name: Środowiska
       href: concept-environments.md
@@ -121,8 +121,8 @@
           href: how-to-setup-authentication.md
         - name: Monitorowanie usługi Azure Machine Learning
           href: monitor-azure-machine-learning.md
-        - name: Integracja z usługą Event Grid
-          href: concept-event-grid-integration.md
+    - name: Integracja z usługą Event Grid
+      href: concept-event-grid-integration.md
     - name: Uczenie głębokie
       displayName: 'deep learning vs machine learning, deep learning, vs, versus'
       href: concept-deep-learning-vs-machine-learning.md

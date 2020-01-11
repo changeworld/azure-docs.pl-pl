@@ -232,7 +232,7 @@
     - name: Wyłączony widok kosztów przedsiębiorstwa
       href: billing-enterprise-mgmt-grp-troubleshoot-cost-view.md
     - name: Kontakt z pomocą techniczną
-      href: ../azure-supportability/how-to-create-azure-support-request.md
+      href: ../azure-portal/supportability/how-to-create-azure-support-request.md
 - name: Samples
   items:
     - name: Interfejs API REST

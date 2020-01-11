@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2019
 ms.author: memildin
-ms.openlocfilehash: 42bd6037bcc94a83e649433e9ea0425fbdf11cd2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0ecbb4399e038355a328055590da1c34170f3852
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75353319"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894618"
 ---
 # <a name="supported-platforms"></a>Obsługiwane platformy 
 
@@ -48,7 +48,7 @@ W poniższych sekcjach wymieniono obsługiwane systemy operacyjne serwera, na kt
 |Windows Server 2012 R2|✔|✔|
 |Windows Server 2008 R2|✔|✔|
 
-Aby dowiedzieć się więcej o obsługiwanych funkcjach systemów operacyjnych Windows wymienionych powyżej, zobacz [funkcje obsługiwane przez maszynę wirtualną/serwer](security-center-services.md##vm-server-features).
+Aby dowiedzieć się więcej o obsługiwanych funkcjach systemów operacyjnych Windows wymienionych powyżej, zobacz [funkcje obsługiwane przez maszynę wirtualną/serwer](security-center-services.md#vm-server-features).
 
 ### Systemy operacyjne Linux<a name="os-linux"></a>
 
@@ -72,7 +72,7 @@ Aby dowiedzieć się więcej o obsługiwanych funkcjach systemów operacyjnych W
 > [!NOTE]
 > Ponieważ lista obsługiwanych systemów operacyjnych Linux jest ciągle zmieniana, kliknij [tutaj](https://github.com/microsoft/OMS-Agent-for-Linux#supported-linux-operating-systems) , aby wyświetlić najbardziej aktualną listę obsługiwanych wersji, na wypadek zmiany od momentu ostatniej publikacji tego tematu.
 
-Aby dowiedzieć się więcej o obsługiwanych funkcjach dla systemów operacyjnych Linux wymienionych powyżej, zobacz [funkcje obsługiwane przez maszynę wirtualną/serwer](security-center-services.md##vm-server-features).
+Aby dowiedzieć się więcej o obsługiwanych funkcjach dla systemów operacyjnych Linux wymienionych powyżej, zobacz [funkcje obsługiwane przez maszynę wirtualną/serwer](security-center-services.md#vm-server-features).
 
 ### Zarządzane usługi maszyny wirtualnej<a name="virtual-machine"></a>
 

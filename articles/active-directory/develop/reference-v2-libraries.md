@@ -18,12 +18,12 @@ ms.author: negoe
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d2b2ea9d878db8284aa44cdbdacb92c8cd4fabe
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e7ff9e2015b4621c89b6a831cf7000aa32db5ea6
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75424002"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75888943"
 ---
 # <a name="microsoft-identity-platform-authentication-libraries"></a>Biblioteki uwierzytelniania platformy tożsamości firmy Microsoft
 
@@ -108,7 +108,7 @@ W przypadku dowolnej biblioteki zgodnej ze standardami można użyć punktu koń
 * W przypadku problemów i nowych żądań funkcji w kodzie biblioteki należy skontaktować się z właścicielem biblioteki.
 * W przypadku problemów i nowych żądań funkcji w implementacji protokołu po stronie usługi należy skontaktować się z firmą Microsoft.
 * Prześlij [żądanie funkcji](https://feedback.azure.com/forums/169401-azure-active-directory) w celu uzyskania dodatkowych funkcji, które mają być widoczne w protokole.
-* [Utwórz żądanie pomocy technicznej](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) , jeśli znajdziesz problem polegający na tym, że punkt końcowy platformy tożsamości firmy Microsoft nie jest zgodny z uwierzytelnianiem OAuth 2,0 lub openid connect Connect 1,0.
+* [Utwórz żądanie pomocy technicznej](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) , jeśli znajdziesz problem polegający na tym, że punkt końcowy platformy tożsamości firmy Microsoft nie jest zgodny z uwierzytelnianiem OAuth 2,0 lub openid connect Connect 1,0.
 
 ## <a name="related-content"></a>Powiązana zawartość
 

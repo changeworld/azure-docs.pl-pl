@@ -53,7 +53,7 @@
         - name: PHP z bazą danych MySQL
           href: ../app-service/app-service-web-tutorial-php-mysql.md
           maintainContext: true
-- name: Przykłady
+- name: Samples
   items:
     - name: Interfejs wiersza polecenia platformy Azure
       href: sample-scripts-azure-cli.md
@@ -91,6 +91,8 @@
           href: concepts-data-access-and-security-vnet.md
         - name: Zaawansowana ochrona przed zagrożeniami
           href: concepts-data-access-and-security-threat-protection.md
+        - name: Link prywatny
+          href: concepts-data-access-security-private-link.md
     - name: Ciągłość działalności biznesowej
       items:
         - name: Wprowadzenie do ciągłości działalności biznesowej
@@ -138,11 +140,11 @@
   items:
     - name: Zarządzanie serwerem
       items:
-        - name: Portal Azure
+        - name: Azure Portal
           href: howto-create-manage-server-portal.md
     - name: Reguły zapory
       items:
-        - name: Portal Azure
+        - name: Azure Portal
           href: howto-manage-firewall-using-portal.md
         - name: Interfejs wiersza polecenia platformy Azure
           href: howto-manage-firewall-using-cli.md
@@ -178,7 +180,7 @@
           href: howto-configure-server-parameters-using-cli.md
     - name: Automatyczne zwiększanie rozmiaru magazynu
       items:
-        - name: Portal Azure
+        - name: Azure Portal
           href: howto-auto-grow-storage-portal.md
         - name: Interfejs wiersza polecenia platformy Azure
           href: howto-auto-grow-storage-cli.md
@@ -186,13 +188,13 @@
       items:
         - name: Dzienniki wolnych zapytań
           items:
-            - name: Portal Azure
+            - name: Azure Portal
               href: howto-configure-server-logs-in-portal.md
             - name: Interfejs wiersza polecenia platformy Azure
               href: howto-configure-server-logs-in-cli.md
         - name: Dzienniki inspekcji
           items:
-            - name: Portal Azure
+            - name: Azure Portal
               href: howto-configure-audit-logs-portal.md
     - name: Monitorowanie
       items:
@@ -224,9 +226,15 @@
           href: howto-manage-vnet-using-portal.md
         - name: Interfejs wiersza polecenia platformy Azure
           href: howto-manage-vnet-using-cli.md
+    - name: Link prywatny
+      items:
+        - name: Azure Portal
+          href: howto-configure-privatelink-portal.md
+        - name: Interfejs wiersza polecenia platformy Azure
+          href: howto-configure-privatelink-cli.md
     - name: Ponowne uruchamianie serwera
       items:
-        - name: Portal Azure
+        - name: Azure Portal
           href: howto-restart-server-portal.md
         - name: Interfejs wiersza polecenia platformy Azure
           href: howto-restart-server-cli.md

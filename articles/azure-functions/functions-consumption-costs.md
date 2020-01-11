@@ -3,12 +3,12 @@ title: Szacowanie kosztów planu zużycia w Azure Functions
 description: Dowiedz się, jak lepiej oszacować koszty, które mogą zostać naliczone podczas uruchamiania aplikacji funkcji w planie zużycia na platformie Azure.
 ms.date: 9/20/2019
 ms.topic: conceptual
-ms.openlocfilehash: 38a3435ddbc6e7cce5d18c99e227d405fdc2e7dd
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 6a68069ab9af54c1c8cfaf6c20727181e48ba1ec
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75613062"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75890317"
 ---
 # <a name="estimating-consumption-plan-costs"></a>Szacowanie kosztów planu zużycia
 
@@ -22,7 +22,7 @@ Obecnie istnieją trzy typy planów hostingu dla aplikacji, która działa w Azu
 
 Wybrano plan, który najlepiej obsługuje wymagania dotyczące wydajności i kosztów. Aby dowiedzieć się więcej, zobacz [Azure Functions skalowanie i hosting](functions-scale.md).
 
-Ten artykuł dotyczy tylko planu zużycia, ponieważ ten plan skutkuje zmiennymi kosztami. 
+Ten artykuł dotyczy tylko planu zużycia, ponieważ ten plan skutkuje zmiennymi kosztami. Ten artykuł zastępuje artykuł dotyczący [rozliczeń kosztów planu zużycia](https://github.com/Azure/Azure-Functions/wiki/Consumption-Plan-Cost-Billing-FAQ) .
 
 Durable Functions można również uruchomić w planie zużycia. Aby dowiedzieć się więcej na temat zagadnień dotyczących kosztów podczas korzystania z Durable Functions, zobacz [Durable Functions rozliczenia](./durable/durable-functions-billing.md).
 

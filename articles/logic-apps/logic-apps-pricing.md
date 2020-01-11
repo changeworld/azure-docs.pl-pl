@@ -8,12 +8,12 @@ ms.author: klam
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 07/19/2019
-ms.openlocfilehash: 80eadcadad58cc126a9213c9e5bc5c65c1eb5c6c
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 1c21a84bd9aaa259d0459b4e16c7a62aabaa615d
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793428"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75896383"
 ---
 # <a name="pricing-model-for-azure-logic-apps"></a>Model cen dla Azure Logic Apps
 
@@ -29,7 +29,7 @@ Na przykład akcje obejmują:
 
 * Wyzwalacze, które są specjalnymi akcjami. Wszystkie aplikacje logiki wymagają wyzwalacza jako pierwszy krok.
 * ["Wbudowane" lub natywne akcje](../connectors/apis-list.md#built-in) , takie jak http, wywołania do Azure Functions i API Management itd.
-* Wywołania [łączników zarządzanych](../connectors/apis-list.md##managed-connectors) , takich jak Outlook 365, Dropbox itd.
+* Wywołania [łączników zarządzanych](../connectors/apis-list.md#managed-connectors) , takich jak Outlook 365, Dropbox itd.
 * Kroki przepływu sterowania, takie jak pętle, instrukcje warunkowe i tak dalej
 
 [Standardowe łączniki](../connectors/apis-list.md#managed-connectors) są rozliczane według [standardowej ceny łącznika](https://azure.microsoft.com/pricing/details/logic-apps). Ogólnie dostępne [Łączniki Enterprise](../connectors/apis-list.md#managed-connectors) są obciążane [kosztami łącznika przedsiębiorstwa](https://azure.microsoft.com/pricing/details/logic-apps), podczas gdy w publicznej wersji zapoznawczej Łączniki przedsiębiorstwa są obciążani opłatami za [Standardowy łącznik](https://azure.microsoft.com/pricing/details/logic-apps).

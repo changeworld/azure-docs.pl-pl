@@ -12,19 +12,19 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/12/2018
 ms.author: genli
-ms.openlocfilehash: 666868d723b5e040b69762cdb39f472f2f8822c9
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: bc637976632551eb1afce1894714fc96baabfe03
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71057922"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894235"
 ---
 #  <a name="cannot-remote-desktop-to-a-vm-because-the-network-interface-is-disabled"></a>Nie można wykonać pulpitu zdalnego z maszyną wirtualną, ponieważ interfejs sieciowy jest wyłączona.
 
 W tym artykule wyjaśniono, jak rozwiązać problem, w której nie można wprowadzać Podłączanie pulpitu zdalnego do platformy Azure Windows Virtual Machines (VMs) Jeśli interfejs sieciowy jest wyłączona.
 
 > [!NOTE]
-> Platforma Azure oferuje dwa różne modele wdrażania związane z tworzeniem zasobów i pracą z nimi: [model wdrażania przy użyciu usługi Resource Manager i model klasyczny](../../azure-resource-manager/resource-manager-deployment-model.md). W tym artykule opisano, przy użyciu modelu wdrażania usługi Resource Manager, w którym firma Microsoft zaleca używanie w przypadku nowych wdrożeń zamiast klasycznego modelu wdrażania.
+> Platforma Azure ma dwa różne modele wdrażania związane z tworzeniem zasobów i pracą z nimi: [Resource Manager i model klasyczny](../../azure-resource-manager/resource-manager-deployment-model.md). W tym artykule opisano, przy użyciu modelu wdrażania usługi Resource Manager, w którym firma Microsoft zaleca używanie w przypadku nowych wdrożeń zamiast klasycznego modelu wdrażania.
 
 ## <a name="symptoms"></a>Objawy
 
@@ -34,7 +34,7 @@ Nie można wprowadzać z połączeniem RDP lub dowolny inny typ połączenia do 
 
 Przed wykonaniem tych kroków należy utworzyć migawkę dysku systemu operacyjnego, których to dotyczy maszyny wirtualnej do przechowywania kopii zapasowych. Aby uzyskać więcej informacji, zobacz [Tworzenie migawki dysku](../windows/snapshot-copy-managed-disk.md).
 
-Aby włączyć interfejs dla maszyny Wirtualnej, należy użyć formantu szeregowego lub [interfejs sieciowy resetowania](##reset-network-interface) dla maszyny Wirtualnej.
+Aby włączyć interfejs dla maszyny Wirtualnej, należy użyć formantu szeregowego lub [interfejs sieciowy resetowania](#reset-network-interface) dla maszyny Wirtualnej.
 
 ### <a name="use-serial-control"></a>Korzystanie z kontroli szeregowej
 

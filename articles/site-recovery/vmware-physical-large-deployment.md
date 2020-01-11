@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: e08c7d5f794611a92688e931f35da7482c04407f
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 36cc63721fe003934aabfb3ae2a03a4113937ca4
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082220"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75895792"
 ---
 # <a name="set-up-disaster-recovery-at-scale-for-vmware-vmsphysical-servers"></a>Konfigurowanie odzyskiwania po awarii na dużą skalę dla maszyn wirtualnych VMware/serwerów fizycznych
 
@@ -83,9 +83,9 @@ Te zalecenia umożliwiają planowanie zasobów platformy Azure, przepustowości 
 
 Chcemy upewnić się, że dostępne przydziały w subskrypcji docelowej są wystarczające do obsługi trybu failover.
 
-**Zadanie** | **Szczegóły** | **Akcja**
+**Zadanie podrzędne** | **Szczegóły** | **Akcja**
 --- | --- | ---
-**Sprawdź rdzenie** | Jeśli rdzenie w dostępnym limicie przydziału nie są równe ani przekraczają łączną liczbę elementów docelowych w momencie przejścia w tryb failover, tryb failover zakończy się niepowodzeniem. | W przypadku maszyn wirtualnych VMware Sprawdź, czy masz wystarczającą liczbę rdzeni w subskrypcji docelowej, aby spełnić zalecenia dotyczące Planista wdrażania Core.<br/><br/> W przypadku serwerów fizycznych Sprawdź, czy rdzenie platformy Azure są zgodne z ręcznymi oszacowaniami.<br/><br/> Aby sprawdzić przydziały, w Azure Portal > **subskrypcji**kliknij pozycję **użycie i limity przydziału**.<br/><br/> [Dowiedz się więcej](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) o zwiększaniu przydziałów.
+**Sprawdź rdzenie** | Jeśli rdzenie w dostępnym limicie przydziału nie są równe ani przekraczają łączną liczbę elementów docelowych w momencie przejścia w tryb failover, tryb failover zakończy się niepowodzeniem. | W przypadku maszyn wirtualnych VMware Sprawdź, czy masz wystarczającą liczbę rdzeni w subskrypcji docelowej, aby spełnić zalecenia dotyczące Planista wdrażania Core.<br/><br/> W przypadku serwerów fizycznych Sprawdź, czy rdzenie platformy Azure są zgodne z ręcznymi oszacowaniami.<br/><br/> Aby sprawdzić przydziały, w Azure Portal > **subskrypcji**kliknij pozycję **użycie i limity przydziału**.<br/><br/> [Dowiedz się więcej](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request) o zwiększaniu przydziałów.
 **Sprawdzanie limitów trybu failover** | Liczba nie może trybu failover przekracza limity Site Recovery trybu failover. |  Jeśli przełączenie w tryb failover przekracza limity, możesz dodać subskrypcje i przełączyć się w tryb pracy awaryjnej do wielu subskrypcji lub zwiększyć przydział dla subskrypcji. 
 
 
@@ -100,7 +100,7 @@ Co oznacza zgodność? Aby uruchomić maszynę wirtualną platformy Azure, platf
 
 **Maszyna jest zgodna z platformą Azure?** | **Limity maszyn wirtualnych platformy Azure (tryb failover dysku zarządzanego)**
 --- | --- 
-Yes | 2000
+Tak | 2000
 Nie | 1000
 
 - Limity zakładają, że minimalne inne zadania są w toku w regionie docelowym dla subskrypcji.

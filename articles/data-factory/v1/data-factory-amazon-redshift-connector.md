@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 3c9e10df9f2be2a07bc7b7af0e01905d5b278d35
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: c2e2394bbcee5294bfb752a0af2969457ffff0ee
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74924883"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894208"
 ---
 # <a name="move-data-from-amazon-redshift-using-azure-data-factory"></a>Przenoszenie danych z usługi Amazon RedShift przy użyciu Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
@@ -146,7 +146,7 @@ Przykład zawiera następujące jednostki fabryki danych:
 * Połączona usługa typu [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties).
 * Wejściowy [zestaw danych](data-factory-create-datasets.md) typu [relacyjnego](#dataset-properties)
 * Wyjściowy [zestaw danych](data-factory-create-datasets.md) typu [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties)
-* [Potok](data-factory-create-pipelines.md) z działaniem kopiowania, który używa właściwości [RelationalSource](#copy-activity-properties) i [wartość blobsink](data-factory-azure-blob-connector.md##copy-activity-properties)
+* [Potok](data-factory-create-pipelines.md) z działaniem kopiowania, który używa właściwości [RelationalSource](#copy-activity-properties) i [wartość blobsink](data-factory-azure-blob-connector.md#copy-activity-properties)
 
 Przykład kopiuje dane z wyniku zapytania w usłudze Amazon RedShift do obiektu blob platformy Azure co godzinę. Właściwości JSON, które są używane w przykładzie, są opisane w sekcjach, które są zgodne z definicjami jednostek.
 
@@ -336,7 +336,7 @@ Następujące mapowania są używane, gdy działanie kopiowania konwertuje dane 
 | REAL |Pojedyncze |
 | DOUBLE PRECISION |Double |
 | BOOLEAN |Ciąg |
-| CHAR |Ciąg |
+| DELIKATN |Ciąg |
 | VARCHAR |Ciąg |
 | DATE |Data i godzina |
 | TIMESTAMP |Data i godzina |
