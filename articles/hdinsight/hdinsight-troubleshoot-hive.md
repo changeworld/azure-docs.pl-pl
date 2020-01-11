@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: troubleshooting
 ms.date: 08/15/2019
-ms.openlocfilehash: 9169bd9a63666238e9d6b97d86bf1e9e10312c1b
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 02247adb9852a72b386feb2ef0924b0f1b3d6277
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076523"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75895230"
 ---
 # <a name="troubleshoot-apache-hive-by-using-azure-hdinsight"></a>Rozwiązywanie problemów z Apache Hive przy użyciu usługi Azure HDInsight
 
@@ -39,7 +39,7 @@ Zapoznaj się z najważniejszymi pytaniami i ich rozwiązaniami podczas pracy z 
     hive -f alltables.sql
     ```
 
-Kod w krokach rozwiązania założono, że ścieżki danych w nowym klastrze są takie same jak ścieżki danych w starym klastrze. Jeśli ścieżki danych są różne, można ręcznie edytować wygenerowany `alltables.sql` plik w celu odzwierciedlenia zmian.
+Kod w krokach rozwiązania założono, że ścieżki danych w nowym klastrze są takie same jak ścieżki danych w starym klastrze. Jeśli ścieżki danych są różne, można ręcznie edytować wygenerowany plik `alltables.sql`, aby odzwierciedlić zmiany.
 
 ### <a name="additional-reading"></a>Materiały uzupełniające
 
@@ -120,17 +120,17 @@ Kod w krokach rozwiązania założono, że ścieżki danych w nowym klastrze są
    Musisz podać Przykładowy program jako pierwszy argument.
 
    Prawidłowe nazwy programów to:
-    - **ContainerReuseAnalyzer**: Szczegóły ponownego użycia kontenera drukowania w DAG
-    - **CriticalPath**: Znajdowanie ścieżki krytycznej DAG
-    - **LocalityAnalyzer**: Szczegóły lokalnego drukowania w DAG
-    - **ShuffleTimeAnalyzer**: Analizuj szczegóły czasu losowego w DAG
-    - **SkewAnalyzer**: Analizowanie szczegółów pochylenia w DAG
-    - **SlowNodeAnalyzer**: Drukowanie szczegółów węzła w DAG
-    - **SlowTaskIdentifier**: Drukuj wolne szczegóły zadania w DAG
-    - **SlowestVertexAnalyzer**: Drukuj najwolniejsze szczegóły wierzchołka w DAG
-    - **SpillAnalyzer**: Drukuj szczegóły rozlania w DAG
-    - **TaskConcurrencyAnalyzer**: Drukuj szczegóły współbieżności zadania w DAG
-    - **VertexLevelCriticalPathAnalyzer**: Znajdowanie ścieżki krytycznej na poziomie wierzchołka w DAG
+    - **ContainerReuseAnalyzer**: Drukuj szczegóły ponownego użycia kontenera w Dag
+    - **CriticalPath**: Znajdź ścieżkę KRYTYCZNą Dag
+    - **LocalityAnalyzer**: szczegóły drukowania w Dag
+    - **ShuffleTimeAnalyzer**: Analizuj szczegóły czasu losowego w Dag
+    - **SkewAnalyzer**: Analizuj szczegóły pochylenia w Dag
+    - **SlowNodeAnalyzer**: drukowanie szczegółów węzła w Dag
+    - **SlowTaskIdentifier**: Drukuj wolne szczegóły zadania w Dag
+    - **SlowestVertexAnalyzer**: Drukuj najwolniejsze szczegóły wierzchołka w Dag
+    - **SpillAnalyzer**: drukowanie szczegółów rozlania w Dag
+    - **TaskConcurrencyAnalyzer**: Wydrukuj szczegóły współbieżności zadania w Dag
+    - **VertexLevelCriticalPathAnalyzer**: Znajdź ścieżkę krytyczną na poziomie wierzchołka w Dag
 
 ### <a name="additional-reading"></a>Materiały uzupełniające
 
@@ -142,9 +142,9 @@ Kod w krokach rozwiązania założono, że ścieżki danych w nowym klastrze są
 
 Istnieją dwa sposoby zbierania danych tez DAG:
 
-- W wierszu polecenia:
+- Za pomocą wiersza polecenia:
 
-    Połącz się z klastrem usługi HDInsight przy użyciu protokołu SSH. W wierszu polecenia Uruchom następujące polecenie:
+    Połącz się z klastrem usługi HDInsight przy użyciu protokołu SSH. W wierszu polecenia wpisz następujące polecenie:
 
   ```apache
   hadoop jar /usr/hdp/current/tez-client/tez-history-parser-*.jar org.apache.tez.history.ATSImportTool -downloadDir . -dagId <DagId>
@@ -167,6 +167,6 @@ Jeśli problem nie został wyświetlony lub nie można rozwiązać problemu, odw
 
 - Uzyskaj odpowiedzi od ekspertów platformy Azure za pośrednictwem [pomocy technicznej dla społeczności platformy Azure](https://azure.microsoft.com/support/community/).
 
-- Połącz się [@AzureSupport](https://twitter.com/azuresupport) z programem — oficjalnego konta Microsoft Azure, aby zwiększyć komfort obsługi klienta. Połączenie społeczności platformy Azure z właściwymi zasobami: odpowiedziami, wsparciem i ekspertami.
+- Połącz się z [@AzureSupport](https://twitter.com/azuresupport) — oficjalnego Microsoft Azure konta, aby zwiększyć komfort obsługi klienta. Połączenie społeczności platformy Azure z właściwymi zasobami: odpowiedziami, wsparciem i ekspertami.
 
-- Jeśli potrzebujesz więcej pomocy, możesz przesłać żądanie pomocy technicznej z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Na pasku menu wybierz pozycję **Obsługa** , a następnie otwórz Centrum **pomocy i obsługi technicznej** . Aby uzyskać szczegółowe informacje, zapoznaj [się z tematem jak utworzyć żądanie pomocy technicznej platformy Azure](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). Dostęp do pomocy w zakresie zarządzania subskrypcjami i rozliczeń jest dostępny w ramach subskrypcji Microsoft Azure, a pomoc techniczna jest świadczona za pomocą jednego z [planów pomocy technicznej systemu Azure](https://azure.microsoft.com/support/plans/).
+- Jeśli potrzebujesz więcej pomocy, możesz przesłać żądanie pomocy technicznej z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Na pasku menu wybierz pozycję **Obsługa** , a następnie otwórz Centrum **pomocy i obsługi technicznej** . Aby uzyskać szczegółowe informacje, zapoznaj [się z tematem jak utworzyć żądanie pomocy technicznej platformy Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). Dostęp do pomocy w zakresie zarządzania subskrypcjami i rozliczeń jest dostępny w ramach subskrypcji Microsoft Azure, a pomoc techniczna jest świadczona za pomocą jednego z [planów pomocy technicznej systemu Azure](https://azure.microsoft.com/support/plans/).
