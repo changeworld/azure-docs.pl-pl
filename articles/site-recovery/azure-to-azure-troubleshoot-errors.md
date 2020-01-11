@@ -6,13 +6,13 @@ manager: rochakm
 ms.service: site-recovery
 ms.topic: article
 ms.date: 04/08/2019
-ms.author: asgang
-ms.openlocfilehash: b3c459c0eaac98a1cb704b4346153f77ec974188
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.author: asgangal
+ms.openlocfilehash: efa05f5769bcd174992a7a91a522c5f30ce6e448
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084923"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75895010"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-errors"></a>Rozwiązywanie problemów z replikacją maszyny wirtualnej z platformy Azure do platformy Azure
 
@@ -34,7 +34,7 @@ Jeśli nie ma rozmiaru obsługującego konfigurację źródłowej maszyny wirtua
 
 ### <a name="fix-the-problem"></a>Rozwiąż problem
 
-Skontaktuj się z [pomocą techniczną dotyczącą rozliczeń platformy Azure](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) , aby umożliwić subskrypcji Tworzenie maszyn wirtualnych o wymaganych rozmiarach w lokalizacji docelowej. Następnie ponów próbę wykonania operacji zakończonej niepowodzeniem.
+Skontaktuj się z [pomocą techniczną dotyczącą rozliczeń platformy Azure](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request) , aby umożliwić subskrypcji Tworzenie maszyn wirtualnych o wymaganych rozmiarach w lokalizacji docelowej. Następnie ponów próbę wykonania operacji zakończonej niepowodzeniem.
 
 Jeśli lokalizacja docelowa ma ograniczenie pojemności, wyłącz replikację. Następnie należy włączyć replikację do innej lokalizacji, w której subskrypcja ma wystarczający przydział do tworzenia maszyn wirtualnych o wymaganych rozmiarach.
 
@@ -80,7 +80,7 @@ Ponieważ system SuSE Linux używa linków symbolicznych (lub *linków symbolicz
 
 1. Jeśli certyfikat głównego urzędu certyfikacji firmy Symantec nie zostanie znaleziony, uruchom następujące polecenie, aby pobrać plik. Sprawdź pod kątem błędów i postępuj zgodnie z zalecanymi akcjami dotyczącymi błędów sieci.
 
-    **# wget https://www.symantec.com/content/dam/symantec/docs/other-resources/verisign-class-3-public-primary-certification-authority-g5-en.pem-O VeriSign_Class_3_Public_Primary_Certification_Authority_G5. pem**
+    **# wget https://www.symantec.com/content/dam/symantec/docs/other-resources/verisign-class-3-public-primary-certification-authority-g5-en.pem -O VeriSign_Class_3_Public_Primary_Certification_Authority_G5. pem**
 
 1. Sprawdź, czy certyfikat głównego urzędu certyfikacji Baltimore jest obecny:
 
@@ -88,7 +88,7 @@ Ponieważ system SuSE Linux używa linków symbolicznych (lub *linków symbolicz
 
 1. Jeśli certyfikat głównego urzędu certyfikacji Baltimore nie zostanie znaleziony, Uruchom to polecenie, aby pobrać certyfikat:
 
-    **# wget https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem-O Baltimore_CyberTrust_Root. pem**
+    **# wget https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem -O Baltimore_CyberTrust_Root. pem**
 
 1. Sprawdź, czy certyfikat DigiCert_Global_Root_CA jest obecny:
 
@@ -106,7 +106,7 @@ Ponieważ system SuSE Linux używa linków symbolicznych (lub *linków symbolicz
 
 1. Uruchom te polecenia, aby sprawdzić, czy dla certyfikatów zostały utworzone wartości skrótu podmiotu jako linków symbolicznych:
 
-    - Dotyczące
+    - Polecenie:
 
         **# ls-l | Baltimore grep**
 
@@ -116,7 +116,7 @@ Ponieważ system SuSE Linux używa linków symbolicznych (lub *linków symbolicz
 
         `-rw-r--r-- 1 root root 1303 Jun  5  2014 Baltimore_CyberTrust_Root.pem`
 
-    - Dotyczące
+    - Polecenie:
 
         **# ls-l | VeriSign_Class_3_Public_Primary_Certification_Authority_G5 grep**
 
@@ -126,7 +126,7 @@ Ponieważ system SuSE Linux używa linków symbolicznych (lub *linków symbolicz
 
         `lrwxrwxrwx 1 root root   62 Jan  8 09:48 facacbc6.0 -> VeriSign_Class_3_Public_Primary_Certification_Authority_G5.pem`
 
-    - Dotyczące
+    - Polecenie:
 
         **# ls-l | DigiCert_Global_Root grep**
 
@@ -150,7 +150,7 @@ Ponieważ system SuSE Linux używa linków symbolicznych (lub *linków symbolicz
 
 1. Sprawdź, czy pliki są obecne:
 
-    - Dotyczące
+    - Polecenie:
 
         **# ls-l 653b494a. 0 b204d74a. 0 3513523f. 0**
 
@@ -180,7 +180,7 @@ W przypadku korzystania z niestandardowej usługi DNS upewnij się, że serwer D
 
 ![Lista niestandardowych serwerów DNS](./media/azure-to-azure-troubleshoot-errors/custom_dns.PNG)
 
-Wypróbuj, uzyskiwanie dostępu do serwera DNS z maszyny wirtualnej. Jeśli serwer jest niedostępny, udostępnij go przez przełączenie serwera DNS w tryb failover lub przez utworzenie linii lokacji między siecią DR a usługą DNS.
+Spróbuj uzyskać dostęp do serwera DNS z maszyny wirtualnej. Jeśli serwer jest niedostępny, udostępnij go przez przełączenie serwera DNS w tryb failover lub przez utworzenie linii lokacji między siecią DR a usługą DNS.
 
 ### <a name="issue-2-site-recovery-configuration-failed-error-code-151196"></a>Problem 2: Konfiguracja Site Recovery nie powiodła się (kod błędu 151196)
 
@@ -388,7 +388,7 @@ Aby włączyć replikację na maszynie wirtualnej, jej stan aprowizacji musi si�
 
 ### <a name="fix-the-problem"></a>Rozwiąż problem
 
-- Jeśli **provisioningState** jest, skontaktuj się z pomocą techniczną, podając szczegóły, aby rozwiązać **.**
+- Jeśli **provisioningState** jest, skontaktuj się z pomocą techniczną, podając szczegóły, aby rozwiązać.
 - W przypadku **aktualizowania** **provisioningState** może być wdrażane inne rozszerzenie. Sprawdź, czy na maszynie wirtualnej istnieją bieżące operacje, poczekaj na ich zakończenie, a następnie spróbuj ponownie wykonać zadanie "Włącz replikację" Site Recovery.
 
 ## <a name="unable-to-select-target-vm-network-selection-tab-is-unavailable"></a>Nie można wybrać docelowej maszyny wirtualnej (karta wybór sieci jest niedostępna)
@@ -466,7 +466,7 @@ Poniższe przykłady są wierszami z plików GRUB, w których pojawiają się na
 
 Zastąp nazwy poszczególnych urządzeń odpowiednimi identyfikatorami UUID:
 
-1. Znajdź identyfikator UUID urządzenia, wykonując polecenie **blkid** ***nazwę urządzenia***. Na przykład:
+1. Znajdź identyfikator UUID urządzenia, wykonując polecenie **blkid** ***nazwę urządzenia***. Przykład:
 
     ```
     blkid /dev/sda1

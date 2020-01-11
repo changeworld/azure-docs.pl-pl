@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 09/24/2019
-ms.openlocfilehash: 0466b08e551a5fa9da37afe2e5ad175ef28c804e
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 93698fadcecf190dd8bbc24a9d03978899d3c5e9
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72529572"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75887159"
 ---
 # <a name="troubleshoot-apache-hbase-performance-issues-on-azure-hdinsight"></a>Rozwiązywanie problemów z wydajnością oprogramowania Apache HBase w usłudze Azure HDInsight
 
@@ -75,7 +75,7 @@ Poniżej przedstawiono niektóre z innych określonych parametrów, które zosta
 
 - Zwiększ liczbę wątków, które są dedykowane dla kompaktowania, z domyślnego ustawienia od **1** do **4**. To ustawienie ma zastosowanie, jeśli obserwujemy często drobne kompakty.
 
-- Unikaj blokowania opróżniania `memstore` z powodu limitu magazynu. Aby podać ten bufor, należy zwiększyć ustawienie `Hbase.hstore.blockingStoreFiles` do **100**.
+- Unikaj blokowania `memstore` opróżniania z powodu limitu magazynu. Aby podać ten bufor, należy zwiększyć ustawienie `Hbase.hstore.blockingStoreFiles` do **100**.
 
 - Aby kontrolować opróżnianie, użyj następujących ustawień:
 
@@ -124,4 +124,4 @@ Jeśli problem nie zostanie rozwiązany, odwiedź jeden z następujących kanał
 
 - Połącz się z [@AzureSupport](https://twitter.com/azuresupport). Jest to oficjalne konto Microsoft Azure na potrzeby ulepszania środowiska klienta. Łączy społeczność platformy Azure z właściwymi zasobami: odpowiedziami, pomocą techniczną i ekspertami.
 
-- Jeśli potrzebujesz więcej pomocy, możesz przesłać żądanie pomocy technicznej z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Na pasku menu wybierz pozycję **Obsługa** , a następnie otwórz Centrum **pomocy i obsługi technicznej** . Aby uzyskać szczegółowe informacje, zapoznaj [się z tematem jak utworzyć żądanie pomocy technicznej platformy Azure](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). Twoja subskrypcja Microsoft Azure obejmuje dostęp do zarządzania subskrypcjami i rozliczeń, a pomoc techniczna jest świadczona za pomocą jednego z [planów pomocy technicznej systemu Azure](https://azure.microsoft.com/support/plans/).
+- Jeśli potrzebujesz więcej pomocy, możesz przesłać żądanie pomocy technicznej z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Na pasku menu wybierz pozycję **Obsługa** , a następnie otwórz Centrum **pomocy i obsługi technicznej** . Aby uzyskać szczegółowe informacje, zapoznaj [się z tematem jak utworzyć żądanie pomocy technicznej platformy Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). Twoja subskrypcja Microsoft Azure obejmuje dostęp do zarządzania subskrypcjami i rozliczeń, a pomoc techniczna jest świadczona za pomocą jednego z [planów pomocy technicznej systemu Azure](https://azure.microsoft.com/support/plans/).

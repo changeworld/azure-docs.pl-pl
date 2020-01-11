@@ -4,12 +4,12 @@ description: Usługa Azure Container Instances to najszybszy i najprostszy spos�
 ms.topic: overview
 ms.date: 04/25/2019
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 040f246fa687dfe3ca56877c11c140ddb40247a4
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: c871c09e29b64c4f0dcd107361154efdce306481
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552325"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75888037"
 ---
 # <a name="what-is-azure-container-instances"></a>Co to jest usługa Azure Container Instances?
 
@@ -54,7 +54,7 @@ Niektóre funkcje są obecnie ograniczone do kontenerów systemu Linux:
 * Wiele kontenerów na grupę kontenerów
 * Instalowanie woluminu ([Azure Files](container-instances-volume-azure-files.md), [emptyDir](container-instances-volume-emptydir.md), [GitRepo](container-instances-volume-gitrepo.md), [Secret](container-instances-volume-secret.md))
 * [Metryki użycia zasobów](container-instances-monitor.md) z Azure monitor
-* [Wdrażanie sieci wirtualnej](container-instances-vnet.md) (wersja zapoznawcza)
+* [Wdrażanie sieci wirtualnej](container-instances-vnet.md)
 * [Zasoby procesora GPU](container-instances-gpu.md) (wersja zapoznawcza)
 
 W przypadku wdrożeń kontenerów systemu Windows należy używać obrazów opartych na typowych [obrazach podstawowych systemu Windows](container-instances-faq.md#what-windows-base-os-images-are-supported).
@@ -66,12 +66,9 @@ W przypadku wdrożeń kontenerów systemu Windows należy używać obrazów opar
 
 Usługa Azure Container Instances obsługuje planowanie [grup wielu kontenerów](container-instances-container-groups.md), które współużytkują maszynę hosta, sieć lokalną, magazyn i cykl życia. Dzięki temu można łączyć główny kontener aplikacji z innymi kontenerami pełniącymi rolę pomocniczą, np. przyczepkami rejestrowania.
 
-## <a name="virtual-network-deployment-preview"></a>Wdrażanie sieci wirtualnej (wersja zapoznawcza)
+## <a name="virtual-network-deployment"></a>Wdrażanie sieci wirtualnej
 
-Ta funkcja usługi Azure Container Instances (obecnie dostępna w wersji zapoznawczej) umożliwia [wdrażanie wystąpień kontenerów w sieci wirtualnej platformy Azure](container-instances-vnet.md). Wdrożenie wystąpień kontenerów w podsieci w sieci wirtualnej umożliwia bezpieczną komunikację z innymi zasobami w sieci wirtualnej, w tym z zasobami lokalnymi (przy użyciu [bramy sieci VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md) lub [usługi ExpressRoute](../expressroute/expressroute-introduction.md)).
-
-> [!IMPORTANT]
-> Niektóre funkcje usługi Azure Container Instances są w wersji zapoznawczej i [obowiązują pewne ograniczenia](container-instances-vnet.md#preview-limitations). Wersje zapoznawcze są udostępniane pod warunkiem udzielenia zgody na [dodatkowe warunki użytkowania][terms-of-use]. Niektóre cechy tych funkcji mogą ulec zmianie, zanim stanie się ona ogólnie dostępna.
+Obecnie dostępne dla obciążeń produkcyjnych w podzbiorze regionów świadczenia usługi Azure, ta funkcja Azure Container Instances umożliwia [wdrażanie wystąpień kontenerów w sieci wirtualnej platformy Azure](container-instances-vnet.md). Wdrożenie wystąpień kontenerów w podsieci w sieci wirtualnej umożliwia bezpieczną komunikację z innymi zasobami w sieci wirtualnej, w tym z zasobami lokalnymi (przy użyciu [bramy sieci VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md) lub [usługi ExpressRoute](../expressroute/expressroute-introduction.md)).
 
 ## <a name="next-steps"></a>Następne kroki
 

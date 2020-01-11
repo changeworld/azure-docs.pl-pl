@@ -11,12 +11,12 @@ author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 11/04/2019
-ms.openlocfilehash: c05b29dd5909d1371c71bffb9db555c15c5d23ed
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 00a316f69cfa77d705a789d40868105e9a098def
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75764647"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894018"
 ---
 # <a name="create-explore-and-deploy-automated-machine-learning-experiments-with-azure-machine-learning-studio"></a>Twórz, eksploruj i wdrażaj zautomatyzowane eksperymenty uczenia maszynowego za pomocą programu Azure Machine Learning Studio
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -150,11 +150,12 @@ Wariancja| Mierzona, jak daleko odłożenie danych z tej kolumny pochodzi z wart
 Skośność| Mierzona, jak różne dane tej kolumny pochodzą z rozkładu normalnego.
 Kurtoza| Mierzona, jak silnie naśladowanie danych tej kolumny jest porównywane z rozkładem normalnym.
 
+
 <a name="preprocess"></a>
 
 ## <a name="advanced-preprocessing-options"></a>Zaawansowane opcje przetwarzania wstępnego
 
-Podczas konfigurowania eksperymentów można włączyć ustawienie zaawansowane `Preprocess`. Oznacza to, że następujące czynności związane z przetwarzaniem i cechowaniam danych są wykonywane automatycznie.
+Podczas konfigurowania eksperymentów można włączyć ustawienie zaawansowane `Preprocess`. Oznacza to, że w ramach wstępnego przetwarzania następujących etapów danych guardrails i cechowania są wykonywane automatycznie.
 
 |Przetwarzanie wstępne&nbsp;kroków| Opis |
 | ------------- | ------------- |
@@ -167,6 +168,20 @@ Podczas konfigurowania eksperymentów można włączyć ustawienie zaawansowane 
 |Kodowanie obiektu docelowego tekstu|W przypadku wprowadzania tekstu, skumulowany model liniowy z zbiorem słów jest używany do generowania prawdopodobieństwa każdej klasy.|
 |Waga dowodu (WoE)|Oblicza WoE jako miarę korelacji kolumn kategorii z kolumną docelową. Jest ona obliczana jako dziennik proporcji prawdopodobieństwa klasy w klasie a. Ten krok powoduje wyjście z jednej kolumny funkcji liczbowej dla każdej klasy i eliminuje konieczność jawnego wyprowadzania brakujących wartości i odstającego traktowania.|
 |Odległość klastra|Pociąga k-oznacza model klastra dla wszystkich kolumn liczbowych.  Wyprowadzaj nowe funkcje, jedną nową funkcję liczbową na klaster zawierający odległość poszczególnych próbek do centroida każdego klastra.|
+
+### <a name="data-guardrails"></a>Guardrails danych
+
+Automatyczne Uczenie maszynowe oferuje guardrailsy danych, które ułatwiają identyfikację potencjalnych problemów dotyczących danych (np. brakujących wartości, nierównowagi klasy) i ułatwiają podejmowanie działań naprawczych w celu uzyskania lepszych wyników. Istnieje wiele najlepszych rozwiązań, które są dostępne i mogą być stosowane w celu uzyskania wiarygodnych wyników. 
+
+W poniższej tabeli opisano aktualnie obsługiwane guardrails danych oraz powiązane Stany, które użytkownicy mogą napotkać podczas przesyłania eksperymentu.
+
+Guardrail|Stan|&nbsp;warunku dla wyzwalacza&nbsp;
+---|---|---
+Brak wartości&nbsp;&nbsp;ich przypisywaniu |**Przekazany** <br> <br> **Stały**|    Brak wartości w żadnej z&nbsp;wejściowych kolumn <br> <br> Niektóre kolumny mają brakujące wartości
+Krzyżowe sprawdzanie poprawności|**Odbywać**|Jeśli nie podano jawnego zestawu walidacji
+Wysoka&nbsp;kardynalności&nbsp;funkcja wykrywania&nbsp;|  **Przekazany** <br> <br>**Odbywać**|   Nie wykryto żadnych funkcji wysokiej kardynalności <br><br> Wykryto wysoką liczebność kolumn wejściowych
+Wykrywanie balansu klas |**Przekazany** <br><br><br>**Alerty** |Klasy są zrównoważone w danych szkoleniowych; Zestaw danych jest uznawany za zrównoważony, jeśli każda klasa ma dobrą reprezentację w zestawie danych, zgodnie z liczbą i stosunkiem próbek <br> <br> Klasy w danych szkoleniowych są niezrównoważone
+Spójność danych szeregów czasowych|**Przekazany** <br><br><br><br> **Stały** |<br> Przeanalizowane wartości wybranych elementów {Horizon, lag, kroczących} i nie wykryto problemów braku związanych z pamięcią. <br> <br>Przeanalizowane zostały wartości wybrane w polu {Horizon, zwłoka, krocząca}, co może spowodować, że w Twoim doświadczeniu zabrakło pamięci. Okno zwłoki lub stopniowe zostało wyłączone.
 
 ## <a name="run-experiment-and-view-results"></a>Uruchamianie eksperymentu i wyświetlanie wyników
 

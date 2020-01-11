@@ -4,12 +4,12 @@ description: Więcej informacji na temat grup kontenerów w Azure Container Inst
 ms.topic: article
 ms.date: 11/01/2019
 ms.custom: mvc
-ms.openlocfilehash: 19fa50f83a2593b8914931e25fa99cb2e4896227
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 73781418321c3932bf3e0190b646dcd3bb178195
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770275"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75888060"
 ---
 # <a name="container-groups-in-azure-container-instances"></a>Grupy kontenerów w Azure Container Instances
 
@@ -32,7 +32,7 @@ Ta przykładowa Grupa kontenerów:
 * Obejmuje dwa udziały plików platformy Azure jako instalacje woluminów, a każdy kontener instaluje jeden z udziałów lokalnie.
 
 > [!NOTE]
-> Grupy wielokontenerowe obsługują obecnie tylko kontenery systemu Linux. W przypadku kontenerów systemu Windows Azure Container Instances obsługuje tylko wdrożenie jednego wystąpienia. Gdy pracujemy nad przełączeniem wszystkich funkcji do kontenerów systemu Windows, w [przeglądzie](container-instances-overview.md#linux-and-windows-containers)usługi można znaleźć bieżące różnice między platformami.
+> Grupy wielokontenerowe obsługują obecnie tylko kontenery systemu Linux. W przypadku kontenerów systemu Windows Azure Container Instances obsługuje tylko wdrażanie jednego wystąpienia kontenera. Gdy pracujemy nad przełączeniem wszystkich funkcji do kontenerów systemu Windows, w [przeglądzie](container-instances-overview.md#linux-and-windows-containers)usługi można znaleźć bieżące różnice między platformami.
 
 ## <a name="deployment"></a>Wdrażanie
 
@@ -44,19 +44,19 @@ Aby zachować konfigurację grupy kontenerów, można wyeksportować konfiguracj
 
 ## <a name="resource-allocation"></a>Alokacja zasobów
 
-Azure Container Instances przydziela zasoby, takie jak procesory CPU, pamięć i opcjonalnie [procesory GPU][gpus] (wersja zapoznawcza) do grupy wielokontenerowej przez dodanie [żądań zasobów][resource-requests] wystąpień w grupie. Jeśli na przykład utworzysz grupę kontenerów z dwoma wystąpieniami, każdy z nich żąda 1 procesora CPU, Grupa kontenerów zostanie przypisana 2 procesory CPU.
+Azure Container Instances przydziela zasoby, takie jak procesory CPU, pamięć i opcjonalnie [procesory GPU][gpus] (wersja zapoznawcza) do grupy wielokontenerowej przez dodanie [żądań zasobów][resource-requests] wystąpień w grupie. Jeśli na przykład utworzysz grupę kontenerów z dwoma wystąpieniami kontenerów, każdy z nich żąda 1 procesora CPU, Grupa kontenerów zostanie przypisana 2 procesory CPU.
 
-### <a name="resource-usage-by-instances"></a>Użycie zasobów według wystąpień
+### <a name="resource-usage-by-container-instances"></a>Użycie zasobów według wystąpień kontenera
 
-Każde wystąpienie kontenera w grupie ma przydzieloną zasoby określone w żądaniu zasobu. Jednak maksymalne zasoby używane przez wystąpienie w grupie mogą być różne w przypadku skonfigurowania jej opcjonalnej właściwości [limitu zasobów][resource-limits] . Limit zasobów wystąpienia musi być większy lub równy właściwości obowiązkowego [żądania zasobu][resource-requests] .
+Każde wystąpienie kontenera w grupie ma przydzieloną zasoby określone w żądaniu zasobu. Jednak maksymalne zasoby używane przez wystąpienie kontenera w grupie mogą być różne w przypadku skonfigurowania jej opcjonalnej właściwości [limitu zasobów][resource-limits] . Limit zasobów wystąpienia kontenera musi być większy lub równy właściwości obowiązkowego [żądania zasobu][resource-requests] .
 
-* Jeśli nie określisz limitu zasobów, maksymalne użycie zasobów przez wystąpienie będzie takie samo jak jego żądanie zasobu.
+* Jeśli nie określisz limitu zasobów, maksymalne użycie zasobów przez wystąpienie kontenera będzie takie samo jak jego żądanie zasobu.
 
-* W przypadku określenia limitu dla wystąpienia maksymalne użycie wystąpienia może być większe niż żądanie, do ustawionego limitu. Analogicznie, użycie zasobów przez inne wystąpienia w grupie może ulec zmniejszeniu. Maksymalny limit zasobów, który można ustawić dla wystąpienia, to łączna liczba zasobów przypisywanych do grupy.
+* Jeśli określisz limit dla wystąpienia kontenera, maksymalne użycie wystąpienia może być większe niż żądanie, do ustawionego limitu. Analogicznie, użycie zasobów przez inne wystąpienia kontenerów w grupie może ulec zmniejszeniu. Maksymalny limit zasobów, który można ustawić dla wystąpienia kontenera, to łączna liczba zasobów przypisywanych do grupy.
     
-Na przykład w grupie z dwoma wystąpieniami, które żądają 1 procesora CPU, jeden z kontenerów może uruchamiać obciążenie, które wymaga więcej niż drugi procesor CPU.
+Na przykład w grupie z dwoma wystąpieniami kontenerów każdy żądający 1 procesor CPU jeden z kontenerów może uruchamiać obciążenie, które wymaga więcej niż drugiego procesora CPU.
 
-W tym scenariuszu można ustawić limit zasobów równy 2 procesor CPU dla tego wystąpienia. Ta konfiguracja umożliwia kontenerowi użycie do pełnych 2 procesorów CPU, jeśli są dostępne.
+W tym scenariuszu można ustawić limit zasobów równy 2 procesor CPU dla wystąpienia kontenera. Ta konfiguracja pozwala na użycie przez wystąpienie kontenera maksymalnie dwóch procesorów CPU, jeśli są dostępne.
 
 ### <a name="minimum-and-maximum-allocation"></a>Minimalna i maksymalna alokacja
 
@@ -68,9 +68,9 @@ W tym scenariuszu można ustawić limit zasobów równy 2 procesor CPU dla tego 
 
 Grupy kontenerów mogą współużytkować zewnętrzny adres IP, co najmniej jeden port na tym adresie IP oraz etykietę DNS z w pełni kwalifikowaną nazwą domeny (FQDN). Aby umożliwić klientom zewnętrznym dotarcie do kontenera w grupie, należy uwidocznić port w adresie IP i z kontenera. Ponieważ kontenery w grupie współużytkują przestrzeń nazw portu, mapowanie portów nie jest obsługiwane. Adres IP i nazwa FQDN grupy kontenerów zostaną wydane po usunięciu grupy kontenerów. 
 
-W obrębie grupy kontenerów wystąpienia kontenerów mogą się łączyć ze sobą za pomocą hosta lokalnego na dowolnym porcie, nawet jeśli te porty nie są ujawniane zewnętrznie na adres IP grupy lub z kontenera.
+W obrębie grupy kontenerów wystąpienia kontenerów mogą się łączyć ze sobą za pomocą hosta lokalnego na dowolnym porcie, nawet jeśli te porty nie są udostępniane zewnętrznie na adres IP grupy lub z kontenera.
 
-Opcjonalnie można wdrożyć grupy kontenerów w usłudze [Azure Virtual Network][virtual-network] (wersja zapoznawcza), aby umożliwić kontenerom bezpieczne komunikowanie się z innymi zasobami w sieci wirtualnej.
+Opcjonalnie można wdrożyć grupy kontenerów w [sieci wirtualnej platformy Azure][virtual-network] , aby umożliwić bezpiecznym komunikację kontenerów z innymi zasobami w sieci wirtualnej.
 
 ## <a name="storage"></a>Usługa Storage
 

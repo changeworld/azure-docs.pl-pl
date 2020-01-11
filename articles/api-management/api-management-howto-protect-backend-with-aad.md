@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 05/21/2019
 ms.author: apimpm
-ms.openlocfilehash: 82341f29ffda03c5f047d7566ff64884c6698b07
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 36b4b597ae70642fee8726555ea71b5164c13cca
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442516"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75889386"
 ---
 # <a name="protect-an-api-by-using-oauth-20-with-azure-active-directory-and-api-management"></a>Ochrona interfejsu API przy użyciu protokołu OAuth 2,0 z Azure Active Directory i API Management
 
@@ -47,12 +47,12 @@ Poniżej przedstawiono krótkie omówienie kroków:
 
 Aby chronić interfejs API za pomocą usługi Azure AD, pierwszy krok polega na zarejestrowaniu aplikacji w usłudze Azure AD, która reprezentuje interfejs API. 
 
-1. Przejdź do strony [Azure Portal-rejestracje aplikacji](https://go.microsoft.com/fwlink/?linkid=2083908) . 
+1. Przejdź do [Azure Portal](https://portal.azure.com) , aby zarejestrować aplikację. Wyszukaj i wybierz pozycję **rejestracje interfejsu API**.
 
 1. Wybierz pozycję **Nowa rejestracja**. 
 
 1. Po wyświetleniu strony **Rejestrowanie aplikacji** podaj informacje dotyczące rejestracji aplikacji: 
-    - W sekcji **Nazwa** podaj znaczącą nazwę aplikacji, która będzie wyświetlana użytkownikom aplikacji, na przykład `backend-app`. 
+    - W sekcji **Nazwa** wprowadź zrozumiałą nazwę aplikacji, która będzie wyświetlana użytkownikom aplikacji, na przykład *zapleczu*. 
     - W sekcji **obsługiwane typy kont** wybierz opcję, która odpowiada Twojemu scenariuszowi. 
 
 1. Pozostaw pustą sekcję **Identyfikator URI przekierowania** .
@@ -63,51 +63,51 @@ Aby chronić interfejs API za pomocą usługi Azure AD, pierwszy krok polega na 
 
 1. Wybierz opcję **Uwidocznij interfejs API** i ustaw **Identyfikator URI aplikacji** z wartością domyślną. Zapisz tę wartość w późniejszym czasie.
 
-1. Na stronie **Dodawanie zakresu** Utwórz nowy zakres obsługiwany przez interfejs API. (np., Odczytaj), a następnie kliknij pozycję *Dodaj zakres* , aby utworzyć zakres. Powtórz ten krok, aby dodać wszystkie zakresy obsługiwane przez interfejs API.
+1. Wybierz przycisk **Dodaj zakres** , aby wyświetlić stronę **Dodawanie zakresu** . Następnie utwórz nowy zakres, który jest obsługiwany przez interfejs API (na przykład `Files.Read`). Na koniec wybierz przycisk **Dodaj zakres** , aby utworzyć zakres. Powtórz ten krok, aby dodać wszystkie zakresy obsługiwane przez interfejs API.
 
-1. Po utworzeniu zakresu należy zanotować go w celu użycia w kolejnym kroku. 
+1. Po utworzeniu zakresów należy zanotować je do użycia w kolejnym kroku. 
 
 ## <a name="register-another-application-in-azure-ad-to-represent-a-client-application"></a>Zarejestruj inną aplikację w usłudze Azure AD, aby reprezentować aplikację kliencką
 
 Każda aplikacja kliencka, która wywołuje interfejs API, musi zostać zarejestrowana jako aplikacja w usłudze Azure AD. W tym przykładzie aplikacja kliencka jest konsolą dewelopera w portalu API Management developer. Poniżej przedstawiono sposób rejestrowania innej aplikacji w usłudze Azure AD do reprezentowania konsoli dewelopera.
 
-1. Przejdź do strony [Azure Portal-rejestracje aplikacji](https://go.microsoft.com/fwlink/?linkid=2083908) . 
+1. Przejdź do [Azure Portal](https://portal.azure.com) , aby zarejestrować aplikację. Wyszukaj i wybierz pozycję **rejestracje interfejsu API**.
 
 1. Wybierz pozycję **Nowa rejestracja**.
 
 1. Po wyświetleniu strony **Rejestrowanie aplikacji** podaj informacje dotyczące rejestracji aplikacji: 
-    - W sekcji **Nazwa** podaj znaczącą nazwę aplikacji, która będzie wyświetlana użytkownikom aplikacji, na przykład `client-app`. 
-    - W sekcji **obsługiwane typy kont** wybierz pozycję **konta w dowolnym katalogu organizacyjnym**. 
+    - W sekcji **Nazwa** wprowadź zrozumiałą nazwę aplikacji, która będzie wyświetlana użytkownikom aplikacji, na przykład *klient-aplikacja*. 
+    - W sekcji **obsługiwane typy kont** wybierz pozycję **konta w dowolnym katalogu organizacji (dowolny katalog usługi Azure AD — wielodostępny)** . 
 
-1. W sekcji **Identyfikator URI przekierowania** wybierz pozycję `Web` i wprowadź adres URL `https://contoso5.portal.azure-api.net/signin`
+1. W sekcji **Identyfikator URI przekierowania** wybierz pozycję `Web` i wprowadź adres URL `https://contoso5.portal.azure-api.net/signin`.
 
 1. Wybierz pozycję **Zarejestruj**, aby utworzyć aplikację. 
 
 1. Na stronie **Przegląd** aplikacji Znajdź wartość **Identyfikator aplikacji (klienta)** i Zapisz ją jako nowszą.
 
-Teraz Utwórz klucz tajny klienta dla tej aplikacji, aby użyć go w kolejnym kroku.
+Teraz Utwórz klucz tajny klienta dla tej aplikacji do użycia w kolejnym kroku.
 
 1. Z listy stron dla aplikacji klienckiej wybierz pozycję **certyfikaty & wpisy tajne**i wybierz pozycję **nowy klucz tajny klienta**.
 
 1. W obszarze **Dodaj wpis tajny klienta**Podaj **Opis**. Wybierz czas wygaśnięcia klucza i wybierz pozycję **Dodaj**.
 
-Po utworzeniu wpisu tajnego należy zanotować wartość klucza, aby użyć jej w kolejnym kroku. 
+Po utworzeniu wpisu tajnego należy zwrócić uwagę na wartość klucza do użycia w kolejnym kroku. 
 
 ## <a name="grant-permissions-in-azure-ad"></a>Przyznawanie uprawnień w usłudze Azure AD
 
 Po zarejestrowaniu dwóch aplikacji do reprezentowania interfejsu API i konsoli dewelopera należy przyznać uprawnienia, aby umożliwić aplikacji klienta wywoływanie aplikacji zaplecza.  
 
-1. Przejdź do **rejestracje aplikacji**. 
+1. Przejdź do [Azure Portal](https://portal.azure.com) , aby udzielić uprawnień do aplikacji klienckiej. Wyszukaj i wybierz pozycję **rejestracje interfejsu API**.
 
-1. Wybierz pozycję `client-app`, a na liście stron dla aplikacji przejdź do pozycji **interfejs API**.
+1. Wybierz aplikację kliencką. Następnie na liście stron dla aplikacji wybierz pozycję **uprawnienia interfejsu API**.
 
 1. Wybierz pozycję **Dodaj uprawnienie**.
 
-1. W obszarze **Wybierz interfejs API**Znajdź i wybierz `backend-app`.
+1. W obszarze **Wybierz interfejs API**wybierz pozycję **Moje interfejsy API**, a następnie Znajdź i wybierz swoją aplikację zaplecza.
 
-1. W obszarze **delegowane uprawnienia**wybierz odpowiednie uprawnienia, aby `backend-app` następnie kliknij pozycję **Dodaj uprawnienia**.
+1. W obszarze **delegowane uprawnienia**wybierz odpowiednie uprawnienia dla aplikacji zaplecza, a następnie wybierz pozycję **Dodaj uprawnienia**.
 
-1. Opcjonalnie na stronie **uprawnienia interfejsu API** kliknij pozycję **Udziel zgody administratorowi na < nazwę dzierżawy >** w dolnej części strony, aby przyznać zgodę w imieniu wszystkich użytkowników w tym katalogu. 
+1. Opcjonalnie na stronie **uprawnienia interfejsu API** wybierz opcję **Przyznaj zgodę administratora na \<swoją nazwę dzierżawy >** , aby przyznać zgodę w imieniu wszystkich użytkowników w tym katalogu. 
 
 ## <a name="enable-oauth-20-user-authorization-in-the-developer-console"></a>Włącz autoryzację użytkownika OAuth 2,0 w konsoli dewelopera
 

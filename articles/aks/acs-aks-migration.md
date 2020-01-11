@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/07/2018
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 8070e209910425f9baa0ae81aca349a067c70f76
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 68c50d3455c0ed240fa62532818a0b07b39ec772
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75658546"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75889520"
 ---
 # <a name="migrate-to-azure-kubernetes-service-aks"></a>Migrowanie do usługi Azure Kubernetes Service (AKS)
 
@@ -87,9 +87,9 @@ Podczas migrowania klastrów możesz dołączyć zewnętrzne usługi platformy A
 
 ## <a name="ensure-valid-quotas"></a>Upewnij się, że prawidłowe limity przydziału
 
-Ponieważ dodatkowe maszyny wirtualne zostaną wdrożone w ramach subskrypcji podczas migracji, należy sprawdzić, czy limity przydziału i ograniczenia są wystarczające dla tych zasobów. Może być konieczne zażądanie zwiększenia [limitu przydziału vCPU](https://docs.microsoft.com/azure/azure-supportability/per-vm-quota-requests).
+Ponieważ dodatkowe maszyny wirtualne zostaną wdrożone w ramach subskrypcji podczas migracji, należy sprawdzić, czy limity przydziału i ograniczenia są wystarczające dla tych zasobów. Może być konieczne zażądanie zwiększenia [limitu przydziału vCPU](https://docs.microsoft.com/azure/azure-portal/supportability/per-vm-quota-requests).
 
-Może być konieczne zażądanie zwiększenia liczby [przydziałów sieci](https://docs.microsoft.com/azure/azure-supportability/networking-quota-requests) , aby upewnić się, że nie wyczerpuje się adresów IP. Aby uzyskać dodatkowe informacje, zobacz artykuł [sieci i zakresy adresów IP dla usługi AKS](https://docs.microsoft.com/azure/aks/configure-kubenet) .
+Może być konieczne zażądanie zwiększenia liczby [przydziałów sieci](https://docs.microsoft.com/azure/azure-portal/supportability/networking-quota-requests) , aby upewnić się, że nie wyczerpuje się adresów IP. Aby uzyskać dodatkowe informacje, zobacz artykuł [sieci i zakresy adresów IP dla usługi AKS](https://docs.microsoft.com/azure/aks/configure-kubenet) .
 
 Aby uzyskać więcej informacji, zobacz [limity subskrypcji i usług platformy Azure](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits). Aby sprawdzić bieżące przydziały, w Azure Portal przejdź do [bloku subskrypcje](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade), wybierz subskrypcję, a następnie wybierz pozycję **użycie i przydziały**.
 

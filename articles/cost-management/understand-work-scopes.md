@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 63b778379dda39a795cccdcfa0c1443870d50365
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 653e57a69e1c7ff8dbeadb14cda6e415ff3a9ee9
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75440977"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75887567"
 ---
 # <a name="understand-and-work-with-scopes"></a>Opis zakresów i praca z nimi
 
@@ -110,7 +110,7 @@ Subskrypcje platformy Azure utworzone na podstawie indywidualnych ofert, takich 
 
 Indywidualni Administratorzy konta subskrypcji platformy Azure mogą wyświetlać dane dotyczące rozliczeń, takie jak faktury i płatności, a także zarządzać nimi, w [centrum konta platformy Azure](https://account.azure.com/subscriptions). Nie mogą jednak wyświetlać danych kosztów ani zarządzać zasobami w Azure Portal. Aby udzielić dostępu do administratora konta, użyj wcześniej wymienionych ról Cost Management.
 
-W przeciwieństwie do umowy EA Administratorzy indywidualnych kont subskrypcji platformy Azure mogą zobaczyć swoje faktury w Azure Portal. Należy pamiętać, że role Cost Management Reader i Cost Management współautor nie zapewniają dostępu do faktur. Aby uzyskać więcej informacji, zobacz [jak udzielić dostępu do faktur](../billing/billing-manage-access.md##give-read-only-access-to-billing).
+W przeciwieństwie do umowy EA Administratorzy indywidualnych kont subskrypcji platformy Azure mogą zobaczyć swoje faktury w Azure Portal. Należy pamiętać, że role Cost Management Reader i Cost Management współautor nie zapewniają dostępu do faktur. Aby uzyskać więcej informacji, zobacz [jak udzielić dostępu do faktur](../billing/billing-manage-access.md#give-read-only-access-to-billing).
 
 ## <a name="microsoft-customer-agreement-scopes"></a>Zakresy umów klienta firmy Microsoft
 

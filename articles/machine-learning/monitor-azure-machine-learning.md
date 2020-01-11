@@ -9,12 +9,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 11/04/2019
-ms.openlocfilehash: e8a2a00014d0118301193337cc9bb544e4a07690
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 1c5b2879659305e55bb01e4cfab27c7a1b343155
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770819"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894854"
 ---
 # <a name="monitoring-azure-machine-learning"></a>Azure Machine Learning monitorowania
 
@@ -25,7 +25,7 @@ W tym artykule opisano dane monitorowania wygenerowane przez Azure Machine Learn
 >
 > * [Uruchamianie, monitorowanie i anulowanie przebiegów szkoleniowych](how-to-manage-runs.md)
 > * [Metryki dzienników dla przebiegów szkoleniowych](how-to-track-experiments.md)
-> * [Śledź eexperiments z MLflow](how-to-use-mlflow.md)
+> * [Śledzenie eksperymentów za pomocą MLflow](how-to-use-mlflow.md)
 > * [Wizualizacja jest uruchamiana z TensorBoard](how-to-monitor-tensorboard.md)
 
 ## <a name="azure-monitor"></a>Azure Monitor

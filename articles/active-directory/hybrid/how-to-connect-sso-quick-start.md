@@ -16,12 +16,12 @@ ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8cf1e5f9f47ebdc132bdc826af3e54d206095085
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 3ec56d37ca2c0a199968707b3d93f4797be2beca
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73603408"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75888672"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Azure Active Directory bezproblemowe logowanie jednokrotne: Szybki Start
 
@@ -115,7 +115,7 @@ Domyślnie przeglądarka automatycznie oblicza poprawną strefę, Internet lub i
 
 Istnieją dwa sposoby modyfikacji ustawień strefy intranetowej użytkowników:
 
-| Opcja | Zagadnienie dla administratorów | Środowisko użytkownika |
+| Opcja | Zagadnienie dla administratorów | Czynności po stronie użytkownika |
 | --- | --- | --- |
 | Zasady grupy | Administrator blokuje Edytowanie ustawień strefy intranetowej | Użytkownicy nie mogą modyfikować własnych ustawień |
 | Preferencja zasad grupy |  Administrator umożliwia edytowanie ustawień strefy intranetowej | Użytkownicy mogą modyfikować własne ustawienia |
@@ -124,7 +124,7 @@ Istnieją dwa sposoby modyfikacji ustawień strefy intranetowej użytkowników:
 
 1. Otwórz narzędzie Edytor zarządzania zasadami grupy.
 2. Edytuj zasady grupy, które są stosowane do niektórych lub wszystkich użytkowników. Ten przykład używa **domyślnych zasad domeny**.
-3. Przejdź do węzła **Konfiguracja użytkownika** > **zasady** > **Szablony administracyjne** > **składniki systemu Windows** > **Internet Explorer** > **internetowy Panel sterowania** >  **Strona zabezpieczeń**. Następnie wybierz pozycję **lokacja do przypisywania stref**.
+3. Przejdź do strony **Konfiguracja użytkownika** > **zasady** > **Szablony administracyjne** > **składniki systemu Windows** > **Internet Explorer** > internetowy **Panel sterowania** > **zabezpieczenia**. Następnie wybierz pozycję **lokacja do przypisywania stref**.
     ![Logowanie jednokrotne](./media/how-to-connect-sso-quick-start/sso6.png)
 4. Włącz zasady, a następnie wprowadź następujące wartości w oknie dialogowym:
    - **Nazwa wartości**: adres URL usługi Azure AD, gdzie są przekazywane bilety protokołu Kerberos.
@@ -140,11 +140,11 @@ Istnieją dwa sposoby modyfikacji ustawień strefy intranetowej użytkowników:
    > Aby uniemożliwić niektórym użytkownikom korzystanie z bezproblemowego logowania jednokrotnego (na przykład jeśli użytkownicy logują się do współużytkowanych kiosków), należy ustawić powyższe wartości na **4**. Ta akcja powoduje dodanie adresu URL usługi Azure AD do strefy z ograniczeniami i bezproblemowy dostęp do logowania jednokrotnego.
    >
 
-5. Wybierz **przycisk OK**, a następnie ponownie wybierz przycisk **OK** .
+5. Wybierz przycisk **OK**, a następnie ponownie wybierz przycisk **OK**.
 
     ![Logowanie jednokrotne](./media/how-to-connect-sso-quick-start/sso7.png)
 
-6. Przejdź do węzła **Konfiguracja użytkownika** > **zasady** > **Szablony administracyjne** > **składniki systemu Windows** > **Internet Explorer** > **internetowy Panel sterowania** >  **Strona zabezpieczeń** > **strefy intranetowej**. Następnie wybierz pozycję **Zezwalaj na aktualizacje na pasku stanu za pomocą skryptu**.
+6. Przejdź do obszaru **Konfiguracja użytkownika** > **zasady** > **Szablony administracyjne** > **składniki systemu Windows** > **internet Explorer** > **internetowego panelu sterowania** > **stronie zabezpieczenia** > **strefy intranetowej**. Następnie wybierz pozycję **Zezwalaj na aktualizacje na pasku stanu za pomocą skryptu**.
 
     ![Logowanie jednokrotne](./media/how-to-connect-sso-quick-start/sso11.png)
 
@@ -213,7 +213,7 @@ Aby przetestować funkcję dla określonego użytkownika, upewnij się, że zost
   - Użytkownik loguje się na urządzeniu firmowym.
   - Urządzenie jest przyłączone do domeny Active Directory. Urządzenie _nie_ musi być [przyłączone do usługi Azure AD](../active-directory-azureadjoin-overview.md).
   - Urządzenie ma bezpośrednie połączenie z kontrolerem domeny (DC) w sieci przewodowej lub bezprzewodowej firmy lub za pośrednictwem połączenia dostępu zdalnego, takiego jak połączenie sieci VPN.
-  - Funkcja dla tego użytkownika została [przeprowadzona](##step-3-roll-out-the-feature) za pomocą zasady grupy.
+  - Funkcja dla tego użytkownika została [przeprowadzona](#step-3-roll-out-the-feature) za pomocą zasady grupy.
 
 W celu przetestowania scenariusza, w którym użytkownik wprowadza tylko nazwę użytkownika, ale nie hasło:
    - Zaloguj się do `https://myapps.microsoft.com/` w nowej sesji przeglądarki prywatnej.

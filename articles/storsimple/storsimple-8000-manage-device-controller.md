@@ -1,6 +1,6 @@
 ---
-title: Zarządzaj kontrolerami urządzenia serii StorSimple 8000 | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak zatrzymać, ponowne uruchomienie, zamknięta lub zresetować Twoje kontrolery urządzeń StorSimple.
+title: Zarządzanie kontrolerami urządzeń z serii StorSimple 8000 | Microsoft Docs
+description: Informacje na temat zatrzymywania, ponownego uruchamiania, zamykania lub resetowania kontrolerów urządzeń StorSimple.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -14,151 +14,151 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/19/2017
 ms.author: alkohli
-ms.openlocfilehash: 5e461f340e1c58f64c6d645a1e47cfd811bc4de5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ce49dcaa06288ba9e7a4d232338c727064d59685
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60505998"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894841"
 ---
-# <a name="manage-your-storsimple-device-controllers"></a>Zarządzanie przez kontrolery urządzeń StorSimple
+# <a name="manage-your-storsimple-device-controllers"></a>Zarządzanie kontrolerami urządzeń StorSimple
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
-W tym samouczku opisano różne operacje, które mogą być wykonywane na kontrolerach urządzeń StorSimple. Kontrolerów w urządzeniu StorSimple są kontrolery nadmiarowe (peer) w konfiguracji aktywne pasywne. W danym momencie tylko jeden kontroler jest aktywny i trwa jego przetwarzanie wszystkich operacji dysku i sieci. Drugi kontroler jest w trybie pasywnym. W przypadku niepowodzenia aktywnego kontrolera kontrolera pasywnego automatycznie stanie się aktywny.
+W tym samouczku opisano różne operacje, które mogą być wykonywane na kontrolerach urządzeń StorSimple. Kontrolery na urządzeniu StorSimple są nadmiarowe (równorzędne) kontrolery w konfiguracji aktywne-pasywne. W danym momencie tylko jeden kontroler jest aktywny i przetwarza wszystkie operacje na dysku i sieci. Drugi kontroler jest w trybie pasywnym. Jeśli aktywny kontroler ulegnie awarii, kontroler pasywny automatycznie stanie się aktywny.
 
-Ten samouczek zawiera instrukcje krok po kroku, aby zarządzać kontrolery urządzeń za pomocą:
+Ten samouczek zawiera instrukcje krok po kroku dotyczące zarządzania kontrolerami urządzeń przy użyciu:
 
-* **Kontrolery** bloku dla urządzenia w usłudze Menedżer urządzeń StorSimple.
-* Program Windows PowerShell dla usługi StorSimple.
+* Blok **kontrolerów** urządzenia w usłudze StorSimple Menedżer urządzeń.
+* program Windows PowerShell dla usługi StorSimple.
 
-Zaleca się, że zarządzać kontrolery urządzeń za pomocą usługi Menedżer urządzeń StorSimple. Jeśli akcję można wykonać tylko przy użyciu programu Windows PowerShell dla usługi StorSimple, samouczek sprawia, że je zapisać.
+Zalecamy zarządzanie kontrolerami urządzeń za pośrednictwem usługi StorSimple Menedżer urządzeń. Jeśli akcja może zostać wykonana tylko przy użyciu program Windows PowerShell dla usługi StorSimple, samouczek zanotuje go.
 
-Po przeczytaniu tego samouczka, będzie mieć możliwość:
+Po przeczytaniu tego samouczka będziesz mieć możliwość:
 
 * Ponowne uruchamianie lub zamykanie kontrolera urządzenia StorSimple
-* Wyłączyć urządzenie StorSimple
-* Resetowanie urządzenia StorSimple do ustawień fabrycznych
+* Zamykanie urządzenia StorSimple
+* Zresetuj urządzenie z StorSimple do domyślnych ustawień fabrycznych
 
-## <a name="restart-or-shut-down-a-single-controller"></a>Ponowne uruchamianie lub zamykanie jednego kontrolera
-Zamknięcie lub ponowne uruchomienie kontrolera nie jest wymagane jako część normalnego działania. Operacji zamknięcia kontrolera pojedynczego urządzenia są powszechne tylko w przypadkach, w których wymagana jest wymiana składnik sprzętowy urządzenia nie powiodło się. Ponowne uruchomienie kontrolera będzie należało również w sytuacji, w których wpływ na wydajność w nadmiernego wykorzystania pamięci lub nieprawidłowe działanie kontrolera. Również konieczne może być ponowne uruchomienie kontrolera, po zastąpienia pomyślne kontrolera, jeśli chcesz włączyć i zastąpione kontrolera testów.
+## <a name="restart-or-shut-down-a-single-controller"></a>Ponowne uruchamianie lub zamykanie pojedynczego kontrolera
+Nie jest wymagane ponowne uruchomienie lub zamknięcie kontrolera w ramach normalnej operacji systemu. Operacje zamykania dla pojedynczego kontrolera urządzeń są wspólne tylko w przypadkach, w których składnik sprzętowy urządzenia nie wymaga zastąpienia. Może być również wymagane ponowne uruchomienie kontrolera w sytuacji, w której wydajność ma wpływ nadmierne użycie pamięci lub niedziałający kontroler. Może być również konieczne ponowne uruchomienie kontrolera po pomyślnym zastępowaniu kontrolera, jeśli chcesz włączyć i przetestować zastąpiony kontroler.
 
-Ponowne uruchamianie urządzenia nie jest znaczący wpływ na połączonych inicjatory, przy założeniu, że jest dostępny kontroler pasywny. Jeśli kontroler pasywny nie jest dostępna lub wyłączyć wyłączone, a następnie ponowne uruchomienie aktywny kontroler może spowodować zakłócenia w działaniu usługi i przestoje.
+Ponowne uruchomienie urządzenia nie przerywa pracy podłączonych inicjatorów przy założeniu, że kontroler pasywny jest dostępny. Jeśli kontroler pasywny jest niedostępny lub wyłączony, ponowne uruchomienie aktywnego kontrolera może spowodować zakłócenia usługi i przestoje.
 
 > [!IMPORTANT]
-> * **Uruchamianie kontrolera powinno nigdy nie można w fizycznie usunąć, ponieważ spowodowałoby utratę nadmiarowości i zwiększone ryzyko przestoju.**
-> * Poniższa procedura dotyczy tylko urządzenia fizycznego StorSimple. Aby dowiedzieć się, jak uruchomić, zatrzymać i ponownie uruchomić urządzenie StorSimple w chmurze, zobacz [pracy z urządzeniem w chmurze](storsimple-8000-cloud-appliance-u2.md##work-with-the-storsimple-cloud-appliance).
+> * **Uruchomiony Kontroler nigdy nie powinien być fizycznie usunięty, ponieważ spowoduje to utratę nadmiarowości i zwiększone ryzyko przestoju.**
+> * Poniższa procedura dotyczy tylko urządzenia fizycznego StorSimple. Aby uzyskać informacje o sposobach uruchamiania, zatrzymywania i ponownego uruchamiania urządzenia w chmurze StorSimple, zobacz [Working with the Cloud urządzenie](storsimple-8000-cloud-appliance-u2.md#work-with-the-storsimple-cloud-appliance).
 
-Można ponownie uruchomić lub zamknąć kontroler pojedynczego urządzenia w portalu Azure usługi Menedżer urządzeń StorSimple lub środowiska Windows PowerShell dla usługi StorSimple.
+Można ponownie uruchomić lub zamknąć pojedynczy kontroler urządzenia za pomocą Azure Portal usługi StorSimple Menedżer urządzeń lub program Windows PowerShell dla usługi StorSimple.
 
-Aby zarządzać Twoje kontrolery urządzeń w witrynie Azure portal, wykonaj następujące czynności.
+Aby zarządzać kontrolerami urządzeń z poziomu Azure Portal, wykonaj następujące czynności.
 
-#### <a name="to-restart-or-shut-down-a-controller-in-azure-portal"></a>Aby ponownie uruchomić lub zamknąć kontroler w witrynie Azure portal
-1. W usłudze Menedżer urządzeń StorSimple przejdź do **urządzeń**. Wybierz urządzenie z listy urządzeń. 
+#### <a name="to-restart-or-shut-down-a-controller-in-azure-portal"></a>Aby ponownie uruchomić lub zamknąć kontroler w Azure Portal
+1. W usłudze StorSimple Menedżer urządzeń przejdź do pozycji **urządzenia**. Wybierz urządzenie z listy urządzeń. 
 
     ![Wybierz urządzenie](./media/storsimple-8000-manage-device-controller/manage-controller1.png)
 
-2. Przejdź do **Ustawienia > kontrolery**.
+2. Przejdź do pozycji **ustawienia > kontrolery**.
    
     ![Sprawdź, czy kontrolery urządzeń StorSimple są w dobrej kondycji](./media/storsimple-8000-manage-device-controller/manage-controller2.png)
-3. W **kontrolerów** bloku, sprawdź, czy stan kontrolera na urządzeniu z systemem **dobra kondycja**. Wybierz kontroler, kliknij prawym przyciskiem myszy, a następnie wybierz **ponowne uruchomienie** lub **Zamknij**.
+3. W bloku **Kontrolery** Sprawdź, czy stan obu kontrolerów na urządzeniu jest w **dobrej kondycji**. Wybierz kontroler, kliknij prawym przyciskiem myszy, a następnie wybierz polecenie **Uruchom ponownie** lub **Zamknij**.
 
-    ![Uruchom ponownie lub zamknij kontrolery urządzeń StorSimple](./media/storsimple-8000-manage-device-controller/manage-controller3.png)
+    ![Wybierz pozycję Uruchom ponownie lub Zamknij StorSimple kontrolery urządzeń](./media/storsimple-8000-manage-device-controller/manage-controller3.png)
 
-4. Zostanie utworzone zadanie, aby ponownie uruchomić lub zamknąć kontroler i zostanie wyświetlony dotyczy ostrzeżenia, jeśli istnieje. Aby monitorować, ponowne uruchomienie lub zamknięcie, przejdź do **usługi > dzienników aktywności** a następnie przeprowadź filtrowanie według parametrów specyficzne dla usługi. Jeśli kontroler został zamknięty, będzie potrzebne na naciśnięcie przycisku zasilania, aby włączyć na kontrolerze, aby włączyć tę funkcję.
+4. Zadanie jest tworzone w celu ponownego uruchomienia lub zamknięcia kontrolera i wyświetlenie odpowiednich ostrzeżeń, jeśli istnieją. Aby monitorować ponowne uruchomienie lub zamknięcie, przejdź do pozycji **usługa > Dzienniki aktywności** , a następnie Przefiltruj według parametrów specyficznych dla usługi. Jeśli kontroler został zamknięty, należy wypchnąć przycisk zasilacza, aby włączyć go.
 
-#### <a name="to-restart-or-shut-down-a-controller-in-windows-powershell-for-storsimple"></a>Aby ponownie uruchomić lub zamknąć kontroler w programie Windows PowerShell dla usługi StorSimple
-Wykonaj poniższe kroki, aby zamknięcie lub ponowne uruchomienie jednego kontrolera na urządzeniu StorSimple z poziomu programu Windows PowerShell dla usługi StorSimple.
+#### <a name="to-restart-or-shut-down-a-controller-in-windows-powershell-for-storsimple"></a>Aby ponownie uruchomić lub zamknąć kontroler w program Windows PowerShell dla usługi StorSimple
+Wykonaj następujące kroki, aby zamknąć lub ponownie uruchomić jeden kontroler na urządzeniu StorSimple z poziomu program Windows PowerShell dla usługi StorSimple.
 
-1. Dostęp do urządzenia za pośrednictwem konsoli szeregowej lub sesji telnet z komputera zdalnego. Aby połączyć z kontrolera 0 i Controller 1, wykonaj kroki w [przy użyciu programu PuTTY, aby nawiązać połączenie z konsolą szeregową urządzenia](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console).
-2. W menu konsoli szeregowej wybierz opcję 1, **Zaloguj się przy użyciu pełnego dostępu**.
-3. W komunikacie transparentu Zanotuj kontrolera nawiązano połączenie (kontrolera 0 lub 1 kontrolera) i czy jest ona aktywna lub kontrolerze pasywnym (wstrzymania).
+1. Dostęp do urządzenia za pośrednictwem konsoli szeregowej lub sesji Telnet z komputera zdalnego. Aby połączyć się z kontrolerem 0 lub kontrolerem 1, wykonaj kroki opisane w temacie [Korzystanie z konsoli szeregowej urządzenia](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console).
+2. W menu konsoli szeregowej wybierz opcję 1, **Zaloguj się z pełnymi prawami dostępu**.
+3. W komunikacie transparentu Zanotuj kontroler, z którym nawiązano połączenie (kontroler 0 lub kontroler 1) i czy jest to kontroler aktywny lub pasywny (Standby).
    
-   * Aby zamknąć jednego kontrolera, w wierszu polecenia wpisz:
+   * Aby zamknąć pojedynczy kontroler, w wierszu polecenia wpisz:
      
        `Stop-HcsController`
      
-       Zamyka kontrolera, która jest podłączona. Jeśli zatrzymasz aktywny kontroler, następnie urządzenia nie powiedzie się za pośrednictwem na kontrolerze pasywnym.
+       Spowoduje to zamknięcie kontrolera, z którym nawiązano połączenie. Jeśli zatrzymasz aktywny kontroler, urządzenie przejdzie w tryb failover na kontrolerze pasywnym.
 
-   * Aby ponownie uruchomić kontroler, w wierszu polecenia wpisz polecenie:
+   * Aby ponownie uruchomić kontroler, w wierszu polecenia wpisz:
      
        `Restart-HcsController`
      
-       Spowoduje to ponowne uruchomienie kontrolera, która jest podłączona. Jeśli ponownie aktywny kontroler nie za pośrednictwem kontrolera pasywnego przed ponownym uruchomieniem.
+       Spowoduje to ponowne uruchomienie kontrolera, z którym nawiązano połączenie. Jeśli ponownie uruchomisz kontroler Active, przejdzie on w tryb failover na kontrolerze pasywnym przed ponownym uruchomieniem.
 
-## <a name="shut-down-a-storsimple-device"></a>Wyłączyć urządzenie StorSimple
+## <a name="shut-down-a-storsimple-device"></a>Zamykanie urządzenia StorSimple
 
-W tej sekcji wyjaśniono, jak zamknąć bieżących lub zakończonych niepowodzeniem urządzenia StorSimple z komputera zdalnego. Urządzenie jest wyłączone, po oba kontrolery urządzeń są zamykane. Zamknięcie urządzenia jest wykonywane, gdy urządzenie jest przenoszony fizycznie lub jest wykluczana z usługi.
+W tej sekcji wyjaśniono, jak zamknąć uruchomione lub uszkodzone Urządzenie StorSimple z komputera zdalnego. Urządzenie jest wyłączone po wyłączeniu obu kontrolerów urządzeń. Urządzenie jest zamykane, gdy urządzenie jest fizycznie przenoszone lub jest wyłączane z usługi.
 
 > [!IMPORTANT]
-> Przed zamknięciem urządzenia należy sprawdzić kondycję składników urządzenia. Przejdź do urządzenia, a następnie kliknij przycisk **Ustawienia > kondycja sprzętu**. W **stan i kondycja sprzętu** bloku, sprawdź, czy stan diody LED wszystkich składników jest zielony. Dobra urządzenie ma stan zielony. Jeśli urządzenie jest wyłączone w celu zastąpienia nieprawidłowo działający składnik, wyświetlona zostanie zakończone niepowodzeniem (czerwony) lub uszkodzenia (żółty) dla odpowiednich składników.
+> Przed zamknięciem urządzenia Sprawdź kondycję składników urządzenia. Przejdź do urządzenia, a następnie kliknij pozycję **ustawienia > kondycja sprzętu**. W bloku **kondycja stanu i sprzętu** Sprawdź, czy stan diody LED wszystkich składników jest zielony. Tylko urządzenie o dobrej kondycji ma zielony stan. Jeśli urządzenie jest zamykane w celu zastąpienia nieprawidłowego składnika, zobaczysz błąd (czerwony) lub obniżony stan (żółty) dla odpowiednich składników.
 
 
-#### <a name="to-shut-down-a-storsimple-device"></a>Aby wyłączyć urządzenie StorSimple
+#### <a name="to-shut-down-a-storsimple-device"></a>Aby zamknąć Urządzenie StorSimple
 
-1. Użyj [ponowne uruchamianie lub zamykanie kontrolera](#restart-or-shut-down-a-single-controller) procedurę, aby zidentyfikować i zamknij kontrolera pasywnego na urządzeniu. Tę operację mogą wykonać w witrynie Azure portal lub w programie Windows PowerShell dla usługi StorSimple.
-2. Powtórz powyższy krok, aby zamknąć aktywny kontroler.
-3. Należy teraz sprawdźmy płaszczyzny wstecz urządzenia. Po dwa kontrolery są całkowicie zamknięty, stan diod LED na obu kontrolerach powinien migające czerwony. Jeśli potrzebujesz całkowicie wyłączyć urządzenia w tej chwili Przerzucanie wyłączniki moc zasilania i chłodzenia modułów (PCMs) do pozycji wył. Należy wyłączyć się od urządzenia.
+1. Użyj procedury [restart lub Zamknij kontroler](#restart-or-shut-down-a-single-controller) , aby zidentyfikować i zamknąć kontroler pasywny na urządzeniu. Tę operację można wykonać w Azure Portal lub program Windows PowerShell dla usługi StorSimple.
+2. Powtórz powyższy krok, aby zamknąć kontroler aktywny.
+3. Należy teraz sprawdzić płaszczyznę tyłu urządzenia. Po wyłączeniu obu kontrolerów, diody LED stanu na kontrolerach powinny migać czerwoną. Jeśli zachodzi potrzeba wyłączenia całkowicie urządzenia w tym momencie, należy przerzucić przełączniki zasilające w modułach zasilanie i chłodzące (PCMs). Powinno to spowodować wyłączenie urządzenia.
 
 ## <a name="reset-the-device-to-factory-default-settings"></a>Resetowanie urządzenia do domyślnych ustawień fabrycznych
 
 > [!IMPORTANT]
-> Jeśli zajdzie potrzeba zresetowania urządzenia do domyślnych ustawień fabrycznych, skontaktuj się z Microsoft Support. W procedurze opisanej poniżej powinna służyć tylko w połączeniu z Microsoft Support.
+> Jeśli musisz zresetować urządzenie do domyślnych ustawień fabrycznych, skontaktuj się z pomoc techniczna firmy Microsoft. Opisana poniżej procedura powinna być używana tylko w połączeniu z pomoc techniczna firmy Microsoft.
 
-Ta procedura opisuje sposób zresetowania urządzenia z systemem Microsoft Azure StorSimple do domyślnych ustawień fabrycznych przy użyciu programu Windows PowerShell dla usługi StorSimple.
-Zresetowanie urządzenia usuwa wszystkie dane i ustawienia z całego klastra, domyślnie.
+Ta procedura zawiera opis sposobu resetowania urządzenia Microsoft Azure StorSimple do domyślnych ustawień fabrycznych przy użyciu program Windows PowerShell dla usługi StorSimple.
+Zresetowanie urządzenia spowoduje domyślnie usunięcie wszystkich danych i ustawień z całego klastra.
 
-Wykonaj poniższe kroki, aby zresetowania urządzenia z systemem Microsoft Azure StorSimple do domyślnych ustawień fabrycznych:
+Wykonaj następujące kroki, aby przywrócić domyślne ustawienia fabryczne urządzenia Microsoft Azure StorSimple:
 
-### <a name="to-reset-the-device-to-default-settings-in-windows-powershell-for-storsimple"></a>Aby zresetować urządzenie do domyślnych ustawień w programie Windows PowerShell dla usługi StorSimple
-1. Dostęp do urządzenia za pomocą jego konsoli szeregowej. Sprawdź komunikat transparentu, aby upewnić się, że nawiązano **Active** kontrolera.
-2. W menu konsoli szeregowej wybierz opcję 1, **Zaloguj się przy użyciu pełnego dostępu**.
-3. W wierszu polecenia wpisz następujące polecenie, aby zresetować cały klaster, usuwając wszystkie ustawienia danych, metadane i kontrolera:
+### <a name="to-reset-the-device-to-default-settings-in-windows-powershell-for-storsimple"></a>Aby zresetować ustawienia domyślne urządzenia do program Windows PowerShell dla usługi StorSimple
+1. Uzyskaj dostęp do urządzenia za pomocą jego konsoli szeregowej. Sprawdź wiadomość banerową, aby upewnić się, że nawiązano połączenie z **aktywnym** kontrolerem.
+2. W menu konsoli szeregowej wybierz opcję 1, **Zaloguj się z pełnymi prawami dostępu**.
+3. W wierszu polecenia wpisz następujące polecenie, aby zresetować cały klaster, usuwając wszystkie dane, metadane i ustawienia kontrolera:
    
     `Reset-HcsFactoryDefault`
    
-    Aby zresetować zamiast jednego kontrolera, należy użyć [HcsFactoryDefault resetowania](https://technet.microsoft.com/library/dn688132.aspx) polecenia cmdlet z `-scope` parametru.)
+    Aby zamiast tego zresetować pojedynczy kontroler, należy użyć polecenia cmdlet [Reset-HcsFactoryDefault](https://technet.microsoft.com/library/dn688132.aspx) z parametrem `-scope`).
    
-    System zostanie ponownie uruchomiony wielokrotnie. Użytkownik zostanie powiadomiony, gdy resetowanie zostało pomyślnie zakończone. W zależności od modelu systemu może potrwać 45 do 60 minut dla urządzenia 8100 i 8600 zakończyć ten proces 60 – 90 minut.
+    System zostanie wielokrotnie uruchomiony ponownie. Użytkownik zostanie powiadomiony o pomyślnym zakończeniu resetowania. W zależności od modelu systemu może upłynąć 45-60 minut na urządzenie 8100 i 60-90 min, aby w ciągu tego procesu wystąpił komunikat 8600.
    
-## <a name="questions-and-answers-about-managing-device-controllers"></a>Pytania i odpowiedzi na pytania dotyczące zarządzania kontrolery urządzeń
-W tej sekcji, firma Microsoft utworzono podsumowanie niektóre często zadawane pytania dotyczące zarządzania kontrolery urządzeń StorSimple.
+## <a name="questions-and-answers-about-managing-device-controllers"></a>Pytania i odpowiedzi dotyczące zarządzania kontrolerami urządzeń
+Ta sekcja zawiera podsumowanie niektórych często zadawanych pytań dotyczących zarządzania kontrolerami urządzeń StorSimple.
 
-**PYTANIE** Co się stanie, jeśli oba kontrolery Moje urządzenia są w dobrej kondycji i wyłączyć na i I ponownie uruchomić lub zamknąć aktywny kontroler?
+**PYTANIE** Co się stanie, jeśli kontrolery na urządzeniu są w dobrej kondycji i są włączone i ponownie uruchamiają lub wyłączają aktywny kontroler?
 
-**ODPOWIEDŹ** Jeśli oba kontrolery na twoim urządzeniu są w dobrej kondycji i wyłączyć, pojawi się monit o potwierdzenie. Można wybrać opcję:
+**ODPOWIEDŹ** Jeśli kontrolery na urządzeniu są w dobrej kondycji i są włączone, zostanie wyświetlony monit o potwierdzenie. Możesz wybrać następujące opcje:
 
-* **Ponownie aktywny kontroler** — otrzymasz powiadomienie, że ponowne uruchomienie aktywny kontroler leży urządzenia do trybu failover kontrolera pasywnego. Ponowne uruchomienie kontrolera.
-* **Zamknij aktywny kontroler** — otrzymasz powiadomienie, że zamykanie aktywny kontroler powoduje przestoje. Należy również naciśnij przycisk zasilania na urządzeniu, aby włączyć na kontrolerze.
+* **Uruchom ponownie aktywny kontroler** — zostanie wyświetlony komunikat z powiadomieniem, że ponowne uruchomienie aktywnego kontrolera spowodowało przełączenie urządzenia w tryb failover na kontrolerze pasywnym. Kontroler zostanie uruchomiony ponownie.
+* **Zamknij aktywny kontroler** — zostanie wyświetlony komunikat z powiadomieniem, że Zamknięcie aktywnego kontrolera skutkuje przestojem. Aby włączyć kontroler, należy również wypchnąć przycisk energia na urządzeniu.
 
-**PYTANIE** Co się stanie, jeśli kontrolera pasywnego na Moje urządzenie jest niedostępne lub wyłączyć wyłączone i I ponownie uruchomić lub zamknąć aktywny kontroler?
+**PYTANIE** Co się stanie, Jeśli kontroler pasywny na urządzeniu jest niedostępny lub wyłączony i ponownie uruchomisz lub wyłączysz aktywny kontroler?
 
-**ODPOWIEDŹ** Jeśli kontrolera pasywnego na urządzeniu z systemem niedostępny lub wyłączyć wyłączone i chcesz:
+**ODPOWIEDŹ** Jeśli kontroler pasywny na urządzeniu jest niedostępny lub wyłączony i użytkownik zdecyduje się na:
 
-* **Ponownie aktywny kontroler** — otrzymasz powiadomienie, że kontynuowanie tej operacji spowoduje tymczasowe przerw w działaniu usługi i pojawi się monit o potwierdzenie.
-* **Zamknij aktywny kontroler** — otrzymasz powiadomienie, że kontynuowanie tej operacji skutkuje przestojów. Należy również naciśnij przycisk zasilania na jednej lub obu kontrolerów, aby włączyć urządzenie. Zostanie wyświetlony monit o potwierdzenie.
+* **Uruchom ponownie aktywny kontroler** — zostanie wyświetlony komunikat informujący o tym, że kontynuowanie operacji spowoduje chwilowe zakłócenie działania usługi i wyświetli monit o potwierdzenie.
+* **Zamknij aktywny kontroler** — otrzymasz powiadomienie, że kontynuowanie operacji powoduje przestoje. Aby włączyć urządzenie, należy również wypchnąć przycisk energia na jednym lub obu kontrolerach. Zostanie wyświetlony monit o potwierdzenie.
 
-**PYTANIE** Gdy jest zamknięcie lub ponowne uruchomienie kontrolera nie powiedzie się kontynuować?
+**PYTANIE** Kiedy proces ponownego uruchamiania lub zamykania kontrolera kończy się niepowodzeniem?
 
-**ODPOWIEDŹ** Ponowne uruchamianie lub zamykanie kontroler może się niepowodzeniem, jeśli:
+**ODPOWIEDŹ** Ponowne uruchomienie lub zamknięcie kontrolera może zakończyć się niepowodzeniem, jeśli:
 
 * Aktualizacja urządzenia jest w toku.
 * Ponowne uruchomienie kontrolera jest już w toku.
-* Zamknij kontroler jest już w toku.
+* Zamykanie kontrolera jest już w toku.
 
-**PYTANIE** Jak można ustalenie przypadku kontrolera został ponownie uruchomiony lub zamknięty?
+**PYTANIE** Jak ustalić, czy kontroler został ponownie uruchomiony lub zamknięty?
 
-**ODPOWIEDŹ** Można sprawdzić stan kontrolera w bloku kontrolera. Stan kontrolera będą wskazywać, czy kontroler jest w trakcie ponownego uruchamiania lub zamykania. Ponadto **alerty** bloku zawierać alerty informacyjne, jeśli kontroler zostanie ponownie uruchomiony lub zamknąć. Operacji zamknięcia i ponownego uruchomienia kontrolera są także rejestrowane w dziennikach aktywności. Aby uzyskać więcej informacji na temat dzienników aktywności, przejdź do [wyświetlanie dzienników aktywności](storsimple-8000-service-dashboard.md#view-the-activity-logs).
+**ODPOWIEDŹ** Stan kontrolera można sprawdzić w bloku kontroler. Stan kontrolera wskazuje, czy kontroler jest w trakcie ponownego uruchamiania lub zamykania. Ponadto blok **alerty** zawiera alert informacyjny, Jeśli kontroler jest ponownie uruchamiany lub wyłączony. Operacje ponownego uruchamiania i zamykania kontrolera są również rejestrowane w dziennikach aktywności. Aby uzyskać więcej informacji na temat dzienników aktywności, przejdź do [wyświetlania dzienników aktywności](storsimple-8000-service-dashboard.md#view-the-activity-logs).
 
-**PYTANIE** Czy istnieje żadnego wpływu na operacje We/Wy w wyniku praca awaryjna kontrolera działanie?
+**PYTANIE** Czy istnieje jakikolwiek wpływ na we/wy w wyniku przełączenia kontrolera do trybu failover?
 
-**ODPOWIEDŹ** Połączenia TCP między inicjatory i aktywny kontroler zostanie zresetowany w wyniku praca awaryjna kontrolera, ale będzie można ponownie ustanowić podczas operacji przyjęto założenie, kontrolera pasywnego. W trakcie tej operacji może być Wstrzymaj tymczasowych (mniej niż 30 sekund), w działaniu operacji We/Wy między inicjatory i urządzenia.
+**ODPOWIEDŹ** Połączenia TCP między inicjatorami i aktywnym kontrolerem będą resetowane w wyniku przełączenia kontrolera do trybu failover, ale zostaną ponownie nawiązane, gdy zostanie przyjęty kontroler pasywny. W przypadku działania we/wy między inicjatorami a urządzeniem w trakcie tej operacji może istnieć tymczasowy (mniej niż 30 sekund).
 
-**PYTANIE** Jak zwrócić Mój kontroler do obsługi po ukończeniu zamknij i usunąć?
+**PYTANIE** Jak mogę zwrócić kontroler do usługi po jej zamknięciu i usunięciu?
 
-**ODPOWIEDŹ** Aby przywrócić usługę kontrolera, należy wstawić jej do obudowy zgodnie z opisem w [zastąpić modułu kontrolera na urządzeniu StorSimple](storsimple-8000-controller-replacement.md).
+**ODPOWIEDŹ** Aby przywrócić kontroler do usługi, należy go wstawić do obudowy zgodnie z opisem w artykule [Zastąp moduł kontrolera na urządzeniu StorSimple](storsimple-8000-controller-replacement.md).
 
-## <a name="next-steps"></a>Kolejne kroki
-* Jeśli napotkasz jakiekolwiek problemy przy użyciu usługi StorSimple kontrolerach urządzeń, których nie można rozwiązać, korzystając z procedur wymienionych w tym samouczku [skontaktuj się z Microsoft Support](storsimple-8000-contact-microsoft-support.md).
-* Aby dowiedzieć się więcej o korzystaniu z usługi Menedżer urządzeń StorSimple, przejdź do [korzystać z usługi Menedżer urządzeń StorSimple do administrowania urządzeniem StorSimple](storsimple-8000-manager-service-administration.md).
+## <a name="next-steps"></a>Następne kroki
+* Jeśli wystąpią problemy z kontrolerami urządzeń StorSimple, których nie można rozwiązać za pomocą procedur wymienionych w tym samouczku, [skontaktuj się z pomoc techniczna firmy Microsoft](storsimple-8000-contact-microsoft-support.md).
+* Aby dowiedzieć się więcej o korzystaniu z usługi StorSimple Menedżer urządzeń, przejdź do [korzystania z usługi StorSimple Menedżer urządzeń w celu administrowania urządzeniem StorSimple](storsimple-8000-manager-service-administration.md).
 

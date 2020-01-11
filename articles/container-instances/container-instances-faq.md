@@ -3,19 +3,19 @@ title: Często zadawane pytania
 description: Odpowiedzi na często zadawane pytania dotyczące usługi Azure Container Instances
 author: dkkapur
 ms.topic: article
-ms.date: 4/25/2019
-ms.openlocfilehash: b5888efe210ab0f3794895d350c5647b6f685880
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.date: 01/07/2020
+ms.openlocfilehash: 4a3fb4c1818d86f7fe2913790fd9e573c630cbfd
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74484126"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75888042"
 ---
 # <a name="frequently-asked-questions-about-azure-container-instances"></a>Często zadawane pytania dotyczące Azure Container Instances
 
 W tym artykule opisano często zadawane pytania dotyczące Azure Container Instances.
 
-## <a name="deployment"></a>Wdrożenie
+## <a name="deployment"></a>Wdrażanie
 
 ### <a name="how-large-can-my-container-image-be"></a>Jak duży może być mój obraz kontenera?
 
@@ -83,7 +83,7 @@ Obecnie skalowanie nie jest dostępne dla kontenerów lub grup kontenerów. Jeś
 
 ### <a name="what-features-are-available-to-instances-running-in-a-custom-vnet"></a>Jakie funkcje są dostępne dla wystąpień uruchomionych w niestandardowej sieci wirtualnej?
 
-Możesz wdrożyć grupy kontenerów w wybranej sieci wirtualnej platformy Azure i delegować prywatne adresy IP do grup kontenerów, aby kierować ruchem sieciowym w sieci wirtualnej przez zasoby platformy Azure. Wdrożenie grupy kontenerów w sieci wirtualnej jest obecnie w wersji zapoznawczej, a niektóre aspekty tej funkcji mogą ulec zmianie przed ogólnym udostępnieniem. Aby uzyskać zaktualizowane informacje, zobacz temat [ograniczenia wersji zapoznawczej](container-instances-vnet.md#preview-limitations) .
+Możesz [wdrożyć grupy kontenerów w wybranej sieci wirtualnej platformy Azure](container-instances-vnet.md) i delegować prywatne adresy IP do grup kontenerów, aby kierować ruchem sieciowym w sieci wirtualnej przez zasoby platformy Azure. Wdrożenie grupy kontenerów w sieci wirtualnej jest obecnie dostępne dla obciążeń produkcyjnych w podzbiorze regionów świadczenia usługi Azure.
 
 ## <a name="pricing"></a>Cennik
 

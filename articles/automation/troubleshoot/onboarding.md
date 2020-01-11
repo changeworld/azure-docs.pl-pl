@@ -8,12 +8,12 @@ ms.date: 05/22/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 737b963074a2bec851882bddd78ad0b89f48d1d9
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: c949556949e0c187d7c23c4dd32436e245bfbb95
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769901"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75889329"
 ---
 # <a name="troubleshoot-errors-when-onboarding-update-management-change-tracking-and-inventory"></a>Rozwiązywanie problemów podczas dołączania Update Management, Change Tracking i spisu
 
@@ -156,7 +156,7 @@ Po usunięciu rozwiązań możesz odłączyć obszar roboczy. Ważne jest, aby w
   * Usuń wdrożenia aktualizacji (harmonogramy) z konta usługi Automation
 * Uruchamianie lub zatrzymywanie maszyn wirtualnych po godzinach pracy
   * Usuń wszystkie blokady składników rozwiązania na koncie usługi Automation w obszarze **ustawienia** > **blokady**.
-  * Aby uzyskać dodatkowe kroki usuwania rozwiązania Start/Stop VMs during off-hours, zobacz [Uruchamianie/zatrzymywanie maszyny wirtualnej w rozwiązaniu off-godzinnym](../automation-solution-vm-management.md##remove-the-solution).
+  * Aby uzyskać dodatkowe kroki usuwania rozwiązania Start/Stop VMs during off-hours, zobacz [Uruchamianie/zatrzymywanie maszyny wirtualnej w rozwiązaniu off-godzinnym](../automation-solution-vm-management.md#remove-the-solution).
 
 ## <a name="mma-extension-failures"></a>Błędy rozszerzenia MMA
 

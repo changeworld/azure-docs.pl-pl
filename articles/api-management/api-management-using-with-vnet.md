@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/13/2019
 ms.author: apimpm
-ms.openlocfilehash: 4a188a8de4f1cbf9d5bc20f7e514e3f5a2c752dc
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 26a353251bd85a30ab26c86f3d6b363b0a84e074
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074622"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75889540"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Jak używać usługi Azure API Management z sieciami wirtualnymi
 Sieci wirtualne platformy Azure umożliwiają umieszczanie dowolnych zasobów platformy Azure w sieci nieobsługującej routingu internetowego, do której kontrolujesz dostęp. Te sieci mogą następnie być połączone z sieciami lokalnymi przy użyciu różnych technologii sieci VPN. Aby dowiedzieć się więcej na temat sieci wirtualnych platformy Azure, Zacznij od informacji tutaj: [Omówienie usługi azure Virtual Network](../virtual-network/virtual-networks-overview.md).
@@ -45,44 +45,47 @@ Aby wykonać kroki opisane w tym artykule, musisz dysponować:
 
 ### <a name="enable-vnet-connectivity-using-the-azure-portal"></a>Włączanie łączności sieci wirtualnej przy użyciu Azure Portal
 
-1. Przejdź do wystąpienia APIM w [Azure Portal](https://portal.azure.com/).
-2. Wybierz **Virtual Network**.
-3. Skonfiguruj wystąpienie API Management, które ma zostać wdrożone w sieci wirtualnej.
+1. Przejdź do [Azure Portal](https://portal.azure.com) , aby znaleźć wystąpienie usługi API Management. Wyszukaj i wybierz **usługi API Management Services**.
+
+2. Wybierz wystąpienie API Management.
+
+3. Wybierz pozycję **Sieć wirtualna**.
+4. Skonfiguruj wystąpienie API Management, które ma zostać wdrożone w sieci wirtualnej.
 
     ![Menu sieci wirtualnej API Management][api-management-using-vnet-menu]
-4. Wybierz żądany typ dostępu:
+5. Wybierz żądany typ dostępu:
 
-   * **Wyłączone**: jest to ustawienie domyślne. API Management nie jest wdrożona w sieci wirtualnej.
+    * **Wyłączone**: jest to ustawienie domyślne. API Management nie jest wdrożona w sieci wirtualnej.
 
-   * **Zewnętrzny**: Brama API Management i Portal dla deweloperów są dostępni z publicznej sieci Internet za pośrednictwem zewnętrznego modułu równoważenia obciążenia. Brama może uzyskać dostęp do zasobów w sieci wirtualnej.
+    * **Zewnętrzny**: Brama API Management i Portal dla deweloperów są dostępni z publicznej sieci Internet za pośrednictwem zewnętrznego modułu równoważenia obciążenia. Brama może uzyskać dostęp do zasobów w sieci wirtualnej.
 
-     ![Publiczna komunikacja równorzędna][api-management-vnet-public]
+        ![Publiczna komunikacja równorzędna][api-management-vnet-public]
 
-   * **Wewnętrzne**: Brama API Management i Portal dla deweloperów są dostępni tylko z poziomu sieci wirtualnej za pośrednictwem wewnętrznego modułu równoważenia obciążenia. Brama może uzyskać dostęp do zasobów w sieci wirtualnej.
+    * **Wewnętrzne**: Brama API Management i Portal dla deweloperów są dostępni tylko z poziomu sieci wirtualnej za pośrednictwem wewnętrznego modułu równoważenia obciążenia. Brama może uzyskać dostęp do zasobów w sieci wirtualnej.
 
-     ![Prywatna komunikacja równorzędna][api-management-vnet-private]
+        ![Prywatna komunikacja równorzędna][api-management-vnet-private]
 
-     Zostanie wyświetlona lista wszystkich regionów, w których zainicjowano usługę API Management. W każdym regionie wybierz sieć wirtualną i podsiecię. Lista jest wypełniana przy użyciu klasycznych i Menedżer zasobówych sieci wirtualnych dostępnych w ramach subskrypcji platformy Azure, które są skonfigurowane w konfigurowanym regionie.
+6. W przypadku wybrania wartości **zewnętrzny** lub **wewnętrzny**zostanie wyświetlona lista wszystkich regionów, w których Zainicjowano obsługę usługi API Management. Wybierz **lokalizację**, a następnie wybierz jej **sieć wirtualną** i **podsieć**. Lista Sieć wirtualna jest wypełniana zarówno klasycznymi, jak i Menedżer zasobów sieciami wirtualnymi dostępnymi w ramach subskrypcji platformy Azure, które są skonfigurowane w konfigurowanym regionie.
 
-     > [!IMPORTANT]
-     > W przypadku wdrażania wystąpienia usługi Azure API Management w sieci wirtualnej Menedżer zasobów usługa musi znajdować się w dedykowanej podsieci, która nie zawiera żadnych innych zasobów z wyjątkiem wystąpień API Management platformy Azure. Jeśli podjęto próbę wdrożenia wystąpienia usługi Azure API Management w sieci wirtualnej Menedżer zasobów zawierającej inne zasoby, wdrożenie zakończy się niepowodzeniem.
-     >
+    > [!IMPORTANT]
+    > W przypadku wdrażania wystąpienia usługi Azure API Management w sieci wirtualnej Menedżer zasobów usługa musi znajdować się w dedykowanej podsieci, która nie zawiera żadnych innych zasobów z wyjątkiem wystąpień API Management platformy Azure. Jeśli podjęto próbę wdrożenia wystąpienia usługi Azure API Management w sieci wirtualnej Menedżer zasobów zawierającej inne zasoby, wdrożenie zakończy się niepowodzeniem.
 
-     ![Wybieranie sieci VPN][api-management-setup-vpn-select]
+    Następnie wybierz pozycję **Zastosuj**. Strona **Sieć wirtualna** wystąpienia API Management jest aktualizowana przy użyciu nowych opcji sieci wirtualnej i podsieci.
 
-5. Kliknij przycisk **Zapisz** na górnym pasku nawigacyjnym.
-6. Kliknij przycisk **Zastosuj konfigurację sieci** na górnym pasku nawigacyjnym.
+    ![Wybieranie sieci VPN][api-management-setup-vpn-select]
+
+7. Na górnym pasku nawigacyjnym wybierz pozycję **Zapisz**, a następnie wybierz pozycję **Zastosuj konfigurację sieci**.
 
 > [!NOTE]
 > Adres VIP wystąpienia API Management zmieni się za każdym razem, gdy sieć wirtualna jest włączona lub wyłączona.
-> Adres VIP zostanie również zmieniony, gdy API Management zostanie przeniesiony z **zewnątrz** do **wewnętrznego** lub odwrotnie
+> Adres VIP zostanie również zmieniony, gdy API Management jest przenoszona z **zewnątrz** do **wewnętrznego**lub odwrotnie.
 >
 
 > [!IMPORTANT]
 > Jeśli usuniesz API Management z sieci wirtualnej lub zmienisz ją wdrożoną w programie, wcześniej użyta Sieć wirtualna może pozostać zablokowana przez maksymalnie sześć godzin. W tym czasie nie będzie można usunąć sieci wirtualnej ani wdrożyć w niej nowego zasobu. To zachowanie jest prawdziwe w przypadku klientów korzystających z interfejsu API w wersji 2018-01-01 lub starszej. Klienci korzystający z interfejsu API w wersji 2019-01-01 lub nowszej sieci wirtualnej są zwalniane od razu po usunięciu skojarzonej usługi API Management.
 
 ## <a name="enable-vnet-powershell"> </a>Włączanie połączenia sieci wirtualnej przy użyciu poleceń cmdlet programu PowerShell
-Połączenie sieci wirtualnej można również włączyć za pomocą poleceń cmdlet programu PowerShell
+Połączenie sieci wirtualnej można również włączyć za pomocą poleceń cmdlet programu PowerShell.
 
 * **Tworzenie usługi API Management wewnątrz sieci wirtualnej**: za pomocą polecenia cmdlet [New-AzApiManagement](/powershell/module/az.apimanagement/new-azapimanagement) Utwórz usługę Azure API Management w sieci wirtualnej.
 
@@ -107,20 +110,20 @@ Poniżej znajduje się lista typowych problemów z błędami konfiguracji, któr
 
 | Porty źródłowe/docelowe | Kierunek          | Protokół transportowy |   [Tagi usług](../virtual-network/security-overview.md#service-tags) <br> Źródło/miejsce docelowe   | Cel (*)                                                 | Typ Virtual Network |
 |------------------------------|--------------------|--------------------|---------------------------------------|-------------------------------------------------------------|----------------------|
-| * / 80, 443                  | Przychodzący            | TCP                | INTERNET/VIRTUAL_NETWORK            | Komunikacja z klientem do API Management                      | Zewnętrzna             |
-| * / 3443                     | Przychodzący            | TCP                | ApiManagement/VIRTUAL_NETWORK       | Punkt końcowy zarządzania dla Azure Portal i programu PowerShell         | Wewnętrzna & zewnętrzna  |
-| * / 80, 443                  | Wychodzący           | TCP                | VIRTUAL_NETWORK/magazyn             | **Zależność od usługi Azure Storage**                             | Wewnętrzna & zewnętrzna  |
-| * / 80, 443                  | Wychodzący           | TCP                | VIRTUAL_NETWORK/usługi azureactivedirectory | Azure Active Directory (jeśli dotyczy)                   | Wewnętrzna & zewnętrzna  |
-| * / 1433                     | Wychodzący           | TCP                | VIRTUAL_NETWORK/SQL                 | **Dostęp do punktów końcowych usługi Azure SQL**                           | Wewnętrzna & zewnętrzna  |
-| */5671, 5672, 443          | Wychodzący           | TCP                | VIRTUAL_NETWORK/EventHub            | Zależność dla dziennika do zasad usługi Event Hub i agenta monitorowania | Wewnętrzna & zewnętrzna  |
-| * / 445                      | Wychodzący           | TCP                | VIRTUAL_NETWORK/magazyn             | Zależność od udziału plików platformy Azure dla usługi GIT                      | Wewnętrzna & zewnętrzna  |
-| * / 1886                     | Wychodzący           | TCP                | VIRTUAL_NETWORK/INTERNET            | Potrzeba opublikowania stanu kondycji w celu Resource Health          | Wewnętrzna & zewnętrzna  |
-| * / 443                     | Wychodzący           | TCP                | VIRTUAL_NETWORK/AzureMonitor         | Publikowanie dzienników diagnostycznych i metryk                        | Wewnętrzna & zewnętrzna  |
-| * / 25                       | Wychodzący           | TCP                | VIRTUAL_NETWORK/INTERNET            | Nawiązywanie połączenia z przekaźnikiem SMTP w celu wysyłania wiadomości e-mail                    | Wewnętrzna & zewnętrzna  |
-| */587                      | Wychodzący           | TCP                | VIRTUAL_NETWORK/INTERNET            | Nawiązywanie połączenia z przekaźnikiem SMTP w celu wysyłania wiadomości e-mail                    | Wewnętrzna & zewnętrzna  |
-| * / 25028                    | Wychodzący           | TCP                | VIRTUAL_NETWORK/INTERNET            | Nawiązywanie połączenia z przekaźnikiem SMTP w celu wysyłania wiadomości e-mail                    | Wewnętrzna & zewnętrzna  |
+| * / 80, 443                  | Przychodzące            | TCP                | INTERNET/VIRTUAL_NETWORK            | Komunikacja z klientem do API Management                      | Zewnętrzne             |
+| * / 3443                     | Przychodzące            | TCP                | ApiManagement/VIRTUAL_NETWORK       | Punkt końcowy zarządzania dla Azure Portal i programu PowerShell         | Wewnętrzna & zewnętrzna  |
+| * / 80, 443                  | Wychodzące           | TCP                | VIRTUAL_NETWORK/magazyn             | **Zależność od usługi Azure Storage**                             | Wewnętrzna & zewnętrzna  |
+| * / 80, 443                  | Wychodzące           | TCP                | VIRTUAL_NETWORK/usługi azureactivedirectory | Azure Active Directory (jeśli dotyczy)                   | Wewnętrzna & zewnętrzna  |
+| * / 1433                     | Wychodzące           | TCP                | VIRTUAL_NETWORK/SQL                 | **Dostęp do punktów końcowych usługi Azure SQL**                           | Wewnętrzna & zewnętrzna  |
+| */5671, 5672, 443          | Wychodzące           | TCP                | VIRTUAL_NETWORK/EventHub            | Zależność dla dziennika do zasad usługi Event Hub i agenta monitorowania | Wewnętrzna & zewnętrzna  |
+| * / 445                      | Wychodzące           | TCP                | VIRTUAL_NETWORK/magazyn             | Zależność od udziału plików platformy Azure dla usługi GIT                      | Wewnętrzna & zewnętrzna  |
+| * / 1886                     | Wychodzące           | TCP                | VIRTUAL_NETWORK/INTERNET            | Potrzeba opublikowania stanu kondycji w celu Resource Health          | Wewnętrzna & zewnętrzna  |
+| * / 443                     | Wychodzące           | TCP                | VIRTUAL_NETWORK/AzureMonitor         | Publikowanie dzienników diagnostycznych i metryk                        | Wewnętrzna & zewnętrzna  |
+| * / 25                       | Wychodzące           | TCP                | VIRTUAL_NETWORK/INTERNET            | Nawiązywanie połączenia z przekaźnikiem SMTP w celu wysyłania wiadomości e-mail                    | Wewnętrzna & zewnętrzna  |
+| */587                      | Wychodzące           | TCP                | VIRTUAL_NETWORK/INTERNET            | Nawiązywanie połączenia z przekaźnikiem SMTP w celu wysyłania wiadomości e-mail                    | Wewnętrzna & zewnętrzna  |
+| * / 25028                    | Wychodzące           | TCP                | VIRTUAL_NETWORK/INTERNET            | Nawiązywanie połączenia z przekaźnikiem SMTP w celu wysyłania wiadomości e-mail                    | Wewnętrzna & zewnętrzna  |
 | * / 6381 - 6383              | Przychodzące & wychodzące | TCP                | VIRTUAL_NETWORK/VIRTUAL_NETWORK     | Dostęp do pamięci podręcznej platformy Azure dla wystąpień Redis między RoleInstances          | Wewnętrzna & zewnętrzna  |
-| * / *                        | Przychodzący            | TCP                | AZURE_LOAD_BALANCER/VIRTUAL_NETWORK | Load Balancer infrastruktury platformy Azure                          | Wewnętrzna & zewnętrzna  |
+| * / *                        | Przychodzące            | TCP                | AZURE_LOAD_BALANCER/VIRTUAL_NETWORK | Load Balancer infrastruktury platformy Azure                          | Wewnętrzna & zewnętrzna  |
 
 >[!IMPORTANT]
 > Porty, dla których *przeznaczenie* jest **pogrubienie** , są wymagane do pomyślnego wdrożenia usługi API Management. Zablokowanie innych portów spowoduje jednak obniżenie wydajności i monitorowanie uruchomionej usługi.
@@ -134,7 +137,7 @@ Poniżej znajduje się lista typowych problemów z błędami konfiguracji, któr
     | Środowisko platformy Azure | Punkty końcowe                                                                                                                                                                                                                                                                                                                                                              |
     |-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
     | Azure Public      | <ul><li>prod.warmpath.msftcloudes.com</li><li>shoebox2.metrics.nsatc.net</li><li>prod3.metrics.nsatc.net</li><li>prod3-black.prod3.metrics.nsatc.net</li><li>prod3-red.prod3.metrics.nsatc.net</li><li>prod.warm.ingestion.msftcloudes.com</li><li>`azure region`. warm.ingestion.msftcloudes.com, gdzie `East US 2` jest eastus2.warm.ingestion.msftcloudes.com</li></ul> |
-    | Azure Government  | <ul><li>fairfax.warmpath.usgovcloudapi.net</li><li>shoebox2.metrics.nsatc.net</li><li>prod3.metrics.nsatc.net</li></ul>                                                                                                                                                                                                                                                |
+    | Platforma Azure dla instytucji rządowych  | <ul><li>fairfax.warmpath.usgovcloudapi.net</li><li>shoebox2.metrics.nsatc.net</li><li>prod3.metrics.nsatc.net</li></ul>                                                                                                                                                                                                                                                |
     | Azure (Chiny)       | <ul><li>mooncake.warmpath.chinacloudapi.cn</li><li>shoebox2.metrics.nsatc.net</li><li>prod3.metrics.nsatc.net</li></ul>                                                                                                                                                                                                                                                |
 
 + **Przekaźnik SMTP**: wychodząca łączność sieciowa dla przekaźnika SMTP, która jest rozpoznawana w obszarze `smtpi-co1.msn.com`hosta, `smtpi-ch1.msn.com`, `smtpi-db3.msn.com`, `smtpi-sin.msn.com` i `ies.global.microsoft.com`
@@ -152,7 +155,7 @@ Poniżej znajduje się lista typowych problemów z błędami konfiguracji, któr
      | Środowisko platformy Azure | Adresy IP zarządzania                                                                                                                                                                                                                                                                                                                                                              |
     |-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
     | Azure Public      | 13.84.189.17/32, 13.85.22.63/32, 23.96.224.175/32, 23.101.166.38/32, 52.162.110.80/32, 104.214.19.224/32, 52.159.16.255/32, 40.82.157.167/32, 51.137.136.0/32, 40.81.185.8/32, 40.81.47.216/32, 51.145.56.125/32, 40.81.89.24/32, 52.224.186.99/32, 51.145.179.78/32, 52.140.238.179/32, 40.66.60.111/32, 52.139.80.117/32, 20.46.144.85/32, 191.233.24.179/32, 40.90.185.46/32, 102.133.130.197/32, 52.139.20.34/32, 20.37.52.67/32, 20.44.33.246/32, 13.86.102.66/32, 20.40.125.155/32, 51.143.127.203/32, 52.253.225.124/32, 52.253.159.160/32, 20.188.77.119/32, 20.44.72.3/32, 52.142.95.35/32, 52.139.152.27/32, 20.39.80.2/32, 51.107.96.8/32, 20.39.99.81/32, 20.37.81.41/32 |
-    | Azure Government  | 52.127.42.160/32, 52.127.34.192/32 |
+    | Platforma Azure dla instytucji rządowych  | 52.127.42.160/32, 52.127.34.192/32 |
     | Azure (Chiny)       | 139.217.51.16/32, 139.217.171.176/32 |
 
   * W przypadku innych zależności usługi API Management, które są wymuszane tunelowanie, powinien istnieć sposób, aby rozpoznać nazwę hosta i skontaktować się z punktem końcowym. Obejmują one
@@ -164,7 +167,7 @@ Poniżej znajduje się lista typowych problemów z błędami konfiguracji, któr
 ## <a name="troubleshooting"> </a>Rozwiązywanie problemów
 * **Początkowa konfiguracja**: Jeśli początkowe wdrożenie usługi API Management w podsieci nie powiedzie się, zaleca się najpierw wdrożyć maszynę wirtualną w tej samej podsieci. Następne pulpit zdalny do maszyny wirtualnej i sprawdza, czy istnieje połączenie z jednym z poniższych zasobów w ramach subskrypcji platformy Azure
     * Obiekt BLOB usługi Azure Storage
-    * Azure SQL Database
+    * Baza danych SQL Azure
     * Azure Storage Table
 
   > [!IMPORTANT]
