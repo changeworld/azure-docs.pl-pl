@@ -3,12 +3,12 @@ title: Dokumentacja dla deweloperów języka Python dla Azure Functions
 description: Informacje na temat tworzenia funkcji w języku Python
 ms.topic: article
 ms.date: 12/13/2019
-ms.openlocfilehash: adea5603c997380dde6731b53bc99ba7443e310b
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 374770c50300b9ca37253b3323a02c3371bfa521
+ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769008"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75903234"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Przewodnik dewelopera w języku Python Azure Functions
 
@@ -382,7 +382,7 @@ W przypadku programowania lokalnego ustawienia aplikacji są [przechowywane w pl
 
 ## <a name="python-version"></a>Wersja języka Python 
 
-Obecnie Azure Functions obsługuje zarówno Język Python 3.6. x, jak i 3.7. x (oficjalne dystrybucje CPython). W przypadku uruchamiania lokalnego środowisko uruchomieniowe korzysta z dostępnej wersji języka Python. Aby zażądać określonej wersji języka Python podczas tworzenia aplikacji funkcji na platformie Azure, użyj opcji `--runtime-version` polecenia [`az functionapp create`](/cli/azure/functionapp#az-functionapp-create) .  
+Obecnie Azure Functions obsługuje zarówno Język Python 3.6. x, jak i 3.7. x (oficjalne dystrybucje CPython). W przypadku uruchamiania lokalnego środowisko uruchomieniowe korzysta z dostępnej wersji języka Python. Aby zażądać określonej wersji języka Python podczas tworzenia aplikacji funkcji na platformie Azure, użyj opcji `--runtime-version` polecenia [`az functionapp create`](/cli/azure/functionapp#az-functionapp-create) . Zmiana wersji jest dozwolona tylko w przypadku tworzenia aplikacja funkcji.  
 
 ## <a name="package-management"></a>Zarządzanie pakietami
 

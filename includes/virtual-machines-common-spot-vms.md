@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/23/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 8d28566cb10ddd1637eb81dffd102df6bd7b6e7a
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: a6c333da0e88af25e3907af23f792a210002477f
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75663032"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75902022"
 ---
 Korzystanie z maszyn wirtualnych na miejscu pozwala korzystać z nieużywanej pojemności przy znaczącym obciążeniu kosztów. W dowolnym momencie, gdy platforma Azure wymaga przywrócenia pojemności, infrastruktura platformy Azure wyłączy maszyny wirtualne. W związku z tym maszyny wirtualne są doskonałe dla obciążeń, które mogą obsłużyć przerwy, takie jak zadania przetwarzania wsadowego, środowiska deweloperskie/testowe, duże obciążenia obliczeniowe i inne.
 
@@ -83,7 +83,7 @@ Odp **.:** Maszyny wirtualne na miejscu będą mieć oddzielną pulę przydział
 
 **P:** Czy mogę zażądać dodatkowego przydziału na miejscu?
 
-Odp **.:** Tak, będzie można przesłać żądanie w celu zwiększenia limitu przydziału dla maszyn wirtualnych na miejscu za pośrednictwem [standardowego procesu żądania limitu przydziału](https://docs.microsoft.com/azure/azure-supportability/per-vm-quota-requests).
+Odp **.:** Tak, będzie można przesłać żądanie w celu zwiększenia limitu przydziału dla maszyn wirtualnych na miejscu za pośrednictwem [standardowego procesu żądania limitu przydziału](https://docs.microsoft.com/azure/azure-portal/supportability/per-vm-quota-requests).
 
 
 **P:** Jakie kanały obsługują maszyny wirtualne na miejscu?

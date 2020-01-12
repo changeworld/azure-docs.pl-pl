@@ -8,18 +8,15 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: spelluru
-ms.openlocfilehash: a5aa6a2e2578a995e4ef00489557fc02623e2d6a
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 50d12a0aba9018b1ecb30c018249e8f94ebe6d95
+ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75744829"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75903286"
 ---
-# <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal-preview"></a>Konfigurowanie kluczy zarządzanych przez klienta do szyfrowania danych Event Hubs platformy Azure przechowywanych przy użyciu Azure Portal (wersja zapoznawcza)
+# <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal"></a>Skonfiguruj klucze zarządzane przez klienta do szyfrowania danych Event Hubs platformy Azure przechowywanych przy użyciu Azure Portal
 Usługa Azure Event Hubs zapewnia szyfrowanie danych przechowywanych przy użyciu usługi Azure szyfrowanie usługi Storage (SSE platformy Azure). Event Hubs opiera się na usłudze Azure Storage do przechowywania danych i domyślnie wszystkie dane przechowywane w usłudze Azure Storage są szyfrowane przy użyciu kluczy zarządzanych przez firmę Microsoft. 
-
->[!NOTE]
-> Ta funkcja jest obecnie dostępna w wersji zapoznawczej. Zaleca się, aby nie korzystać z programu w środowisku produkcyjnym.
 
 ## <a name="overview"></a>Przegląd
 Usługa Azure Event Hubs obsługuje teraz opcję szyfrowania danych przechowywanych przy użyciu kluczy zarządzanych przez firmę Microsoft lub kluczy zarządzanych przez klienta (Bring Your Own Key – BYOK). Ta funkcja umożliwia tworzenie, obracanie, wyłączanie i odwoływanie dostępu do kluczy zarządzanych przez klienta, które są używane do szyfrowania danych Event Hubs platformy Azure.
@@ -41,7 +38,7 @@ Aby włączyć klucze zarządzane przez klienta w Azure Portal, wykonaj następu
 
 1. Przejdź do klastra Event Hubs — warstwa Dedykowana.
 1. Wybierz przestrzeń nazw, w której chcesz włączyć BYOK.
-1. Na stronie **Ustawienia** przestrzeni nazw Event Hubs wybierz pozycję **szyfrowanie (wersja zapoznawcza)** . 
+1. Na stronie **Ustawienia** obszaru nazw Event Hubs wybierz pozycję **szyfrowanie**. 
 1. Wybierz **szyfrowanie klucza zarządzanego przez klienta** , jak pokazano na poniższej ilustracji. 
 
     ![Włącz klucz zarządzany przez klienta](./media/configure-customer-managed-key/enable-customer-managed-key.png)
@@ -72,8 +69,6 @@ Po włączeniu kluczy zarządzanych przez klienta należy skojarzyć klucz zarz�
         ![Wybierz klucz z magazynu kluczy](./media/configure-customer-managed-key/select-key-from-key-vault.png)
     1. Wprowadź szczegóły klucza i kliknij przycisk **Wybierz**. Umożliwi to szyfrowanie danych przechowywanych w przestrzeni nazw za pomocą klucza zarządzanego przez klienta. 
 
-        > [!NOTE]
-        > W przypadku wersji zapoznawczej można wybrać tylko jeden klucz. 
 
 ## <a name="rotate-your-encryption-keys"></a>Obróć klucze szyfrowania
 Możesz obrócić klucz w magazynie kluczy przy użyciu mechanizmu rotacji magazynów kluczy platformy Azure. Aby uzyskać więcej informacji, zobacz [Konfigurowanie rotacji kluczy i inspekcji](../key-vault/key-vault-key-rotation-log-monitoring.md). Daty aktywacji i wygaśnięcia można także skonfigurować w celu zautomatyzowania rotacji kluczy. Usługa Event Hubs wykryje nowe wersje klucza i rozpocznie korzystanie z nich automatycznie.
@@ -82,9 +77,6 @@ Możesz obrócić klucz w magazynie kluczy przy użyciu mechanizmu rotacji magaz
 Cofnięcie dostępu do kluczy szyfrowania nie spowoduje przeczyszczenia danych z Event Hubs. Nie można jednak uzyskać dostępu do danych z przestrzeni nazw Event Hubs. Możesz odwołać klucz szyfrowania za pomocą zasad dostępu lub usunąć klucz. Dowiedz się więcej na temat zasad dostępu i zabezpieczania magazynu kluczy, [Aby uzyskać bezpieczny dostęp do magazynu kluczy](../key-vault/key-vault-secure-your-key-vault.md).
 
 Po odwołaniu klucza szyfrowania usługa Event Hubs w zaszyfrowanej przestrzeni nazw stanie się niezależna. Jeśli dostęp do klucza jest włączony lub przywrócono klawisz Delete, usługa Event Hubs wybierze klucz, aby można było uzyskać dostęp do danych z przestrzeni nazw zaszyfrowanej Event Hubs.
-
-> [!NOTE]
-> Jeśli usuniesz istniejący klucz szyfrowania z magazynu kluczy i zastąpi go nowym kluczem w przestrzeni nazw Event Hubs, ponieważ klucz usuwania jest nadal ważny (ponieważ jest buforowany) przez maksymalnie godzinę, stare dane (zaszyfrowany przy użyciu starego klucza) mogą być nadal dostępne.  nowe dane, które są teraz dostępne tylko przy użyciu nowego klucza. To zachowanie jest zaprojektowana w wersji zapoznawczej funkcji. 
 
 ## <a name="set-up-diagnostic-logs"></a>Konfigurowanie dzienników diagnostycznych 
 Ustawienie dzienników diagnostycznych dla przestrzeni nazw z włączoną obsługą BYOK umożliwia uzyskanie wymaganych informacji o operacjach, gdy przestrzeń nazw jest zaszyfrowana przy użyciu kluczy zarządzanych przez klienta. Te dzienniki mogą być włączone i później przesyłane strumieniowo do centrum zdarzeń lub analizowane przy użyciu usługi log Analytics lub przesyłane strumieniowo do magazynu w celu przeprowadzenia dostosowanej analizy. Aby dowiedzieć się więcej na temat dzienników diagnostycznych, zobacz [Omówienie dzienników diagnostycznych platformy Azure](../azure-monitor/platform/platform-logs-overview.md).
@@ -171,10 +163,6 @@ Poniżej przedstawiono kody typowych błędów, które należy wyszukać, gdy w�
 
 > [!IMPORTANT]
 > Aby włączyć funkcję Geo-DR w przestrzeni nazw używającej szyfrowania BYOK, pomocnicza przestrzeń nazw dla parowania musi znajdować się w dedykowanym klastrze i musi mieć włączoną dla niej tożsamość zarządzaną przez system. Aby dowiedzieć się więcej, zobacz [zarządzane tożsamości dla zasobów platformy Azure](../active-directory/managed-identities-azure-resources/overview.md).
-
-> [!NOTE]
-> Jeśli punkty końcowe usługi Sieć wirtualna (VNet) są skonfigurowane na Azure Key Vault dla Event Hubs przestrzeni nazw, BYOK nie będzie obsługiwana. 
-
 
 ## <a name="next-steps"></a>Następne kroki
 Zobacz następujące artykuły:

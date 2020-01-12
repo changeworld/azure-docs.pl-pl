@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/08/2019
 ms.author: azcspmt;jonbeck;cynthn;joelpell
 ms.custom: include file
-ms.openlocfilehash: 5d652eb3bad72bded8e85a6ac841aae7a9c82a40
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: e66314e06aa87a01dcd2a3ff0a51ae86082173e3
+ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75663140"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75904462"
 ---
 Rozmiary maszyn wirtualnych ogólnego przeznaczenia zapewniają zrównoważony współczynnik procesora CPU do pamięci. Idealne na potrzeby testowania i programowania, małych i średnich baz danych oraz serwerów sieci Web o niewielkim i średnim ruchu. Ten artykuł zawiera informacje na temat liczby procesorów wirtualnych vCPU, dysków danych i kart sieciowych, a także przepływności magazynu dla rozmiarów w tym grupowaniu.
 
@@ -29,7 +29,7 @@ Rozmiary maszyn wirtualnych ogólnego przeznaczenia zapewniają zrównoważony w
 
   Przykładowe przypadki użycia serii D obejmują aplikacje klasy korporacyjnej, relacyjne bazy danych, buforowanie w pamięci i analizy.
 
-- Serie Dav4 i Dasv4 to nowe rozmiary wykorzystujące procesor<sup>AMD 7452 z</sup> 2.35 GHz w konfiguracji wielowątkowej z maksymalnie 256 GB pamięci podręcznej L3 o rozmiarze 8 GB w tej pamięci podręcznej L3 do każdego 8 rdzeni, które zwiększają możliwości uruchamiania ich obciążeń ogólnego przeznaczenia. Serie Dav4 i Dasv4 mają takie same konfiguracje pamięci i dysków jak seria D & Dsv3.
+- Serie Dav4 i Dasv4 to nowe rozmiary wykorzystujące procesor<sup>AMD 7452 o</sup> rozmiarze 2.35 GHz w konfiguracji wielowątkowej z maksymalnie 256 MB pamięci podręcznej L3 z 8 GB pamięci podręcznej L3 do każdego 8 rdzeni, które zwiększają możliwości uruchamiania ich obciążeń ogólnego przeznaczenia. Serie Dav4 i Dasv4 mają takie same konfiguracje pamięci i dysków jak seria D & Dsv3.
   
 ## <a name="b-series"></a>Seria B
 

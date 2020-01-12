@@ -1,18 +1,18 @@
 ---
 title: Rozwiązywanie problemów z replikacją maszyn wirtualnych platformy Azure w Azure Site Recovery
 description: Rozwiązywanie problemów podczas replikowania maszyn wirtualnych platformy Azure na potrzeby odzyskiwania po awarii.
-author: asgang
+author: rochakm
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
 ms.date: 04/08/2019
-ms.author: asgangal
-ms.openlocfilehash: efa05f5769bcd174992a7a91a522c5f30ce6e448
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.author: rochakm
+ms.openlocfilehash: 3f97975f09d846cd3277bb8a53a4ad922f1b5b69
+ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/11/2020
-ms.locfileid: "75895010"
+ms.locfileid: "75902553"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-errors"></a>Rozwiązywanie problemów z replikacją maszyny wirtualnej z platformy Azure do platformy Azure
 
@@ -66,7 +66,7 @@ Aby uzyskać więcej informacji, zobacz [Konfigurowanie zaufanych katalogów gł
 
 Postępuj zgodnie ze wskazówkami dostarczonymi przez dystrybutora wersji systemu operacyjnego Linux w celu uzyskania najnowszych zaufanych certyfikatów głównych i najnowszej listy odwołania certyfikatów na maszynie wirtualnej.
 
-Ponieważ system SuSE Linux używa linków symbolicznych (lub *linków symbolicznych*) do obsługi listy certyfikatów, wykonaj następujące kroki:
+Ponieważ system SUSE Linux używa linków symbolicznych (lub *linków symbolicznych*) do obsługi listy certyfikatów, wykonaj następujące kroki:
 
 1. Zaloguj się jako użytkownik root.
 

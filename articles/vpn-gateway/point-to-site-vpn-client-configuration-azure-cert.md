@@ -6,14 +6,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 09/12/2019
+ms.date: 01/10/2020
 ms.author: cherylmc
-ms.openlocfilehash: ad6e912f976095ae7d8fd5276b0f1365566c181a
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 4df22108591fe3f80078bce050081c4953443847
+ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74143799"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75902998"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-native-azure-certificate-authentication-p2s-configurations"></a>Tworzenie i Instalowanie plików konfiguracji klienta sieci VPN dla natywnych konfiguracji P2S uwierzytelniania certyfikatu platformy Azure
 
@@ -48,7 +48,7 @@ Można generować pliki konfiguracji klienta przy użyciu programu PowerShell lu
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-1. Podczas generowania plików konfiguracji klienta sieci VPN wartość "-bioEapTls" jest równa "". Wygeneruj pliki konfiguracji klienta VPN za pomocą następującego polecenia:
+1. Podczas generowania plików konfiguracji klienta sieci VPN wartość "-bioEapTls" jest równa "{0}". Wygeneruj pliki konfiguracji klienta VPN za pomocą następującego polecenia:
 
    ```azurepowershell-interactive
    $profile=New-AzVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW" -AuthenticationMethod "EapTls"
@@ -95,7 +95,7 @@ Wykonaj następujące kroki, aby skonfigurować natywnego klienta sieci VPN na k
 
    Wartość **interfejsu** to "VPN", a wartość **typu sieci VPN** to "IKEv2". Określ nazwę profilu w polu **nazwa usługi** , a następnie kliknij przycisk **Utwórz** , aby utworzyć profil połączenia klienta sieci VPN.
 
-   ![NFS](./media/point-to-site-vpn-client-configuration-azure-cert/network.png)
+   ![sieć](./media/point-to-site-vpn-client-configuration-azure-cert/network.png)
 4. W folderze **ogólnym** , w pliku **VpnSettings. XML** skopiuj wartość tagu **VpnServer** . Wklej tę wartość do pól **adres serwera** i **Identyfikator zdalny** profilu.
 
    ![Informacje o serwerze](./media/point-to-site-vpn-client-configuration-azure-cert/server.png)
@@ -107,10 +107,10 @@ Wykonaj następujące kroki, aby skonfigurować natywnego klienta sieci VPN na k
    ![certyfikat](./media/point-to-site-vpn-client-configuration-azure-cert/certificate.png)
 7. **Wybierz tożsamość** wyświetla listę certyfikatów do wyboru. Wybierz odpowiedni certyfikat, a następnie kliknij przycisk **Kontynuuj**.
 
-   ![identity](./media/point-to-site-vpn-client-configuration-azure-cert/identity.png)
+   ![tożsamość](./media/point-to-site-vpn-client-configuration-azure-cert/identity.png)
 8. W polu **Identyfikator lokalny** Określ nazwę certyfikatu (z kroku 6). W tym przykładzie jest to "ikev2Client.com". Następnie kliknij przycisk **Zastosuj** , aby zapisać zmiany.
 
-   ![stosowa](./media/point-to-site-vpn-client-configuration-azure-cert/applyconnect.png)
+   ![zgłoś się](./media/point-to-site-vpn-client-configuration-azure-cert/applyconnect.png)
 9. W oknie dialogowym **Sieć** kliknij pozycję **Zastosuj** , aby zapisać wszystkie zmiany. Następnie kliknij przycisk **Połącz** , aby rozpocząć połączenie P2S z siecią wirtualną platformy Azure.
 
 ## <a name="linuxgui"></a>Linux (klient strongswan GUI)

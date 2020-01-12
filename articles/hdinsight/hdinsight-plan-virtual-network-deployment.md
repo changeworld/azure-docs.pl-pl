@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.openlocfilehash: d337d026e89d2383e25498288ba11a9c60f77b39
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: bb60d22c62096725e29b9351bf304504861d9bf1
+ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228989"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75902517"
 ---
 # <a name="plan-a-virtual-network-for-azure-hdinsight"></a>Planowanie sieci wirtualnej dla usługi Azure HDInsight
 
@@ -69,7 +69,7 @@ Wykonaj kroki opisane w tej sekcji, aby dowiedzieć się, jak dodać nową usłu
     
     Aby znaleźć istniejącą konfigurację zabezpieczeń, użyj następujących Azure PowerShell lub poleceń interfejsu wiersza polecenia platformy Azure:
 
-    * Grupy zabezpieczeń sieci
+    * Sieciowe grupy zabezpieczeń
 
         Zastąp `RESOURCEGROUP` nazwą grupy zasobów zawierającej sieć wirtualną, a następnie wprowadź polecenie:
     
@@ -252,6 +252,12 @@ Aby uzyskać więcej informacji na temat reguł zapory dla urządzeń wirtualnyc
 ## <a name="load-balancing"></a>Równoważenie obciążenia
 
 Podczas tworzenia klastra usługi HDInsight jest również tworzony moduł równoważenia obciążenia. Typ tego modułu równoważenia obciążenia jest na [poziomie podstawowej jednostki SKU](../load-balancer/load-balancer-overview.md#skus) , który ma pewne ograniczenia. Jedno z tych ograniczeń polega na tym, że w przypadku dwóch sieci wirtualnych w różnych regionach nie można nawiązać połączenia z podstawowymi usługami równoważenia obciążenia. Zobacz [często zadawane pytania dotyczące usługi Virtual Networks: ograniczenia dotyczące globalnej komunikacji równorzędnej sieci](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)wirtualnej, aby uzyskać więcej informacji.
+
+## <a name="transport-layer-security"></a>Transport Layer Security
+
+Połączenia z klastrem za pośrednictwem publicznego punktu końcowego klastra `https://<clustername>.azurehdinsight.net` są serwerami proxy za pośrednictwem węzłów bramy klastra. Te połączenia są zabezpieczone przy użyciu protokołu o nazwie TLS. Wymuszanie wyższych wersji protokołu TLS na bramach usprawnia zabezpieczenia tych połączeń. Aby uzyskać więcej informacji na temat tego, dlaczego należy używać nowszych wersji protokołu TLS, zobacz [Rozwiązywanie problemów z protokołem tls 1,0](https://docs.microsoft.com/security/solving-tls1-problem).
+
+Można kontrolować minimalne wersje protokołu TLS obsługiwane w węzłach bramy dla klastra usługi HDInsight przy użyciu właściwości *minSupportedTlsVersion* w szablonie usługi Resource Manager w czasie wdrażania. Aby zapoznać się z przykładowym szablonem, zobacz [minimalny szablon szybkiego startu protokołu TLS 1,2](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-minimum-tls)w usłudze HDInsight. Ta właściwość obsługuje trzy wartości: "1,0", "1,1" i "1,2", które odnoszą się do protokołów TLS 1.0 +, TLS 1.1 + i TLS 1.2 + odpowiednio. Domyślnie bez określania tej właściwości klastry usługi Azure HDInsight akceptują połączenia protokołu TLS 1,2 na publicznych punktach końcowych HTTPS, a także w starszych wersjach zgodności z poprzednimi wersjami. Ostatecznie Usługa HDInsight będzie wymuszać protokół TLS 1,2 lub nowszy na wszystkich połączeniach węzłów bramy.
 
 ## <a name="next-steps"></a>Następne kroki
 

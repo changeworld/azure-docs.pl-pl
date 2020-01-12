@@ -7,12 +7,12 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 09/23/2019
 ms.author: spelluru
-ms.openlocfilehash: 277a745d26961ed509258d5423fc3c0da9b79a24
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: ae357d25a37e188ed043aaa0ca750bb0e52d58da
+ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219408"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75903546"
 ---
 # <a name="security-controls-for-azure-event-hubs"></a>Kontrolki zabezpieczeń dla usługi Azure Event Hubs
 
@@ -20,7 +20,7 @@ W tym artykule opisano mechanizmy kontroli zabezpieczeń wbudowane w usługę Az
 
 [!INCLUDE [Security controls Header](../../includes/security-controls-header.md)]
 
-## <a name="network"></a>Sieć
+## <a name="network"></a>Network (Sieć)
 
 | Kontrola zabezpieczeń | Tak/Nie | Uwagi | Dokumentacja |
 |---|---|--|--|
@@ -42,14 +42,14 @@ W tym artykule opisano mechanizmy kontroli zabezpieczeń wbudowane w usługę Az
 | Kontrola zabezpieczeń | Tak/Nie | Uwagi| Dokumentacja |
 |---|---|--|--|
 | Authentication| Tak | | Autoryzuj [dostęp do usługi Azure Event Hubs](authorize-access-event-hubs.md), [Autoryzuj dostęp do zasobów Event Hubs za pomocą Azure Active Directory](authorize-access-azure-active-directory.md), [autoryzując dostęp do zasobów Event Hubs przy użyciu sygnatur dostępu współdzielonego](authorize-access-shared-access-signature.md) |
-| Authorization|  Tak | | [Uwierzytelnianie zarządzanej tożsamości za pomocą Azure Active Directory w celu uzyskania dostępu do zasobów Event Hubs](authenticate-managed-identity.md), [uwierzytelniania aplikacji za pomocą Azure Active Directory w celu uzyskania dostępu do zasobów Event Hubs](authenticate-application.md), [uwierzytelniania dostępu do zasobów Event Hubs przy użyciu sygnatury dostępu współdzielonego (SAS)](authenticate-shared-access-signature.md) |
+| Autoryzacja|  Tak | | [Uwierzytelnianie zarządzanej tożsamości za pomocą Azure Active Directory w celu uzyskania dostępu do zasobów Event Hubs](authenticate-managed-identity.md), [uwierzytelniania aplikacji za pomocą Azure Active Directory w celu uzyskania dostępu do zasobów Event Hubs](authenticate-application.md), [uwierzytelniania dostępu do Event Hubs zasobów przy użyciu sygnatur dostępu współdzielonego (SAS)](authenticate-shared-access-signature.md) |
 
 ## <a name="data-protection"></a>Ochrona danych
 
 | Kontrola zabezpieczeń | Tak/Nie | Uwagi | Dokumentacja |
 |---|---|--|--|
-| Szyfrowanie po stronie serwera w czasie spoczynku: Klucze zarządzane przez firmę Microsoft |  Tak | |  |
-| Szyfrowanie po stronie serwera w spoczynku: klucze zarządzane przez klienta (BYOK) | Nie |  |  |
+| Szyfrowanie po stronie serwera w czasie spoczynku: klucze zarządzane przez firmę Microsoft |  Tak | |  |
+| Szyfrowanie po stronie serwera w spoczynku: klucze zarządzane przez klienta (BYOK) | Tak. Dostępne dla dedykowanych klastrów. | Klucz zarządzany przez klienta w magazynie kluczy platformy Azure może służyć do szyfrowania danych w centrum zdarzeń w stanie spoczynku. | [Skonfiguruj klucze zarządzane przez klienta do szyfrowania danych Event Hubs platformy Azure przechowywanych przy użyciu Azure Portal](configure-customer-managed-key.md) |
 | Szyfrowanie na poziomie kolumny (Data Services platformy Azure)| ND | |  |
 | Szyfrowanie podczas przesyłania (takie jak szyfrowanie ExpressRoute, szyfrowanie sieci wirtualnej i szyfrowanie sieci wirtualnej)| Tak | |  |
 | Wywołania interfejsu API są szyfrowane| Tak |  |  |

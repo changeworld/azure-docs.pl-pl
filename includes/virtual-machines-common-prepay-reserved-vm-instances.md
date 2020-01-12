@@ -4,12 +4,12 @@ ms.author: banders
 ms.service: virtual-machines-windows
 ms.topic: include
 ms.date: 11/21/2019
-ms.openlocfilehash: f583796fc353852ef3898e28fa96524e08cfb4ad
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: 9bed0a47c6c13b3c209f593509b71aa697c6eb4a
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74414467"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75902005"
 ---
 Po zatwierdzeniu do wystąpienia zarezerwowanego maszyny wirtualnej platformy Azure Możesz zaoszczędzić pieniądze. Rabat rezerwacji jest automatycznie stosowany do liczby uruchomionych maszyn wirtualnych, które pasują do zakresu rezerwacji i atrybutów. Nie musisz przypisywać rezerwacji do maszyny wirtualnej, aby uzyskać rabaty. Zakup wystąpienia zarezerwowanego obejmuje tylko część obliczeniową użycia maszyny wirtualnej. W przypadku maszyn wirtualnych z systemem Windows licznik użycia jest podzielony na dwa oddzielne liczniki. Istnieje licznik obliczeniowy, który jest taki sam jak licznik systemu Linux i miernik adresów IP w systemie Windows. Opłaty, które zobaczysz po dokonaniu zakupu, dotyczą tylko kosztów obliczeń. Opłaty nie obejmują kosztów oprogramowania systemu Windows. Aby uzyskać więcej informacji o kosztach oprogramowania, zobacz [koszty oprogramowania nieuwzględnione w Azure Reserved VM Instances](../articles/billing/billing-reserved-instance-windows-software-costs.md).
 
@@ -37,11 +37,11 @@ Ustawienie elastyczności rozmiaru wystąpienia określa, dla których usług s�
 Niezależnie od tego, czy to ustawienie jest włączone czy wyłączone, rabaty na rezerwację są automatycznie stosowane do każdego pasującego użycia maszyn wirtualnych, dla którego wartość *ConsumedService* to `Microsoft.Compute`. Należy zatem sprawdzić dane użycia dla wartości *ConsumedService*. Oto niektóre przykłady:
 
 - Maszyny wirtualne
-- Zestawy skalowania maszyn wirtualnych
+- Virtual Machine Scale Sets
 - Usługa kontenera
 - Wdrożenia usługi Azure Batch (w trybie subskrypcji użytkownika)
 - Azure Kubernetes Service (AKS)
-- Service Fabric
+- Sieć szkieletowa usługi
 
 Jeśli to ustawienie jest włączone, rabaty na rezerwację są automatycznie stosowane do pasującego użycia maszyn wirtualnych, które ma dowolną z następujących wartości *ConsumedService*:
 
@@ -72,7 +72,7 @@ Wystąpienia zarezerwowane maszyn wirtualnych są dostępne w przypadku większo
 
 - **Chmury** — rezerwacje nie są dostępne do zakupu w regionach Niemcy i Chiny.
 
-- **Niewystarczające limity przydziału** — rezerwacja w zakresie jednej subskrypcji musi mieć przydziały vCPU dostępne w subskrypcji dla nowego wystąpienia RI. Jeśli na przykład subskrypcja docelowa ma limit przydziału równy 10 procesorów wirtualnych vCPU dla serii D, nie można zakupić rezerwacji dla 11 Standard_D1 wystąpień. Sprawdzanie przydziału dla rezerwacji obejmuje maszyny wirtualne już wdrożone w subskrypcji. Na przykład jeśli subskrypcja ma przydział 10 procesorów wirtualnych vCPU dla serii D i ma dwa wystąpienia standard_D1 wdrożonych, można kupić rezerwację dla 10 standard_D1 wystąpień w tej subskrypcji. Aby rozwiązać ten problem, można [utworzyć żądanie zwiększenia oferty](../articles/azure-supportability/resource-manager-core-quotas-request.md) .
+- **Niewystarczające limity przydziału** — rezerwacja w zakresie jednej subskrypcji musi mieć przydziały vCPU dostępne w subskrypcji dla nowego wystąpienia RI. Jeśli na przykład subskrypcja docelowa ma limit przydziału równy 10 procesorów wirtualnych vCPU dla serii D, nie można zakupić rezerwacji dla 11 Standard_D1 wystąpień. Sprawdzanie przydziału dla rezerwacji obejmuje maszyny wirtualne już wdrożone w subskrypcji. Na przykład jeśli subskrypcja ma przydział 10 procesorów wirtualnych vCPU dla serii D i ma dwa wystąpienia standard_D1 wdrożonych, można kupić rezerwację dla 10 standard_D1 wystąpień w tej subskrypcji. Aby rozwiązać ten problem, można [utworzyć żądanie zwiększenia oferty](../articles/azure-portal/supportability/resource-manager-core-quotas-request.md) .
 
 - **Ograniczenia pojemności** — w rzadkich przypadkach platforma Azure ogranicza zakup nowych rezerwacji dla podzbioru rozmiarów maszyn wirtualnych z powodu niskiej wydajności w regionie.
 
@@ -87,7 +87,7 @@ Te wymagania dotyczą kupowania zarezerwowanych wystąpień maszyn wirtualnych:
 
 Aby kupić wystąpienie:
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
 1. Wybierz pozycję **Wszystkie usługi** > **Rezerwacje**.
 1. Wybierz pozycję **Dodaj** , aby zakupić nową rezerwację, a następnie kliknij pozycję **maszyna wirtualna**.
 1. Podaj wartości w wymaganych polach. Uruchomione wystąpienia maszyn wirtualnych pasujące do wybranych atrybutów kwalifikują się do uzyskania rabatu rezerwacji. Rzeczywista liczba wystąpień maszyn wirtualnych objętych rabatem zależy od wybranego zakresu i wybranej ilości.
@@ -102,8 +102,8 @@ Jeśli masz umowę EA, możesz użyć **opcji Dodaj więcej** , aby szybko doda�
 |Region    |Region świadczenia usługi Azure objęty rezerwacją.|    
 |Rozmiar maszyny wirtualnej     |Rozmiar wystąpień maszyn wirtualnych.|
 |Optymalizuj pod kątem     |Domyślnie wybrana jest elastyczność rozmiaru wystąpienia maszyny wirtualnej. Kliknij pozycję **Ustawienia zaawansowane** , aby zmienić elastyczność rozmiaru wystąpienia, aby zastosować rabat rezerwacji do innych maszyn wirtualnych w tej samej [grupie rozmiarów maszyn wirtualnych](../articles/virtual-machines/windows/reserved-vm-instance-size-flexibility.md). Priorytet pojemności powoduje przydzielanie priorytetów pojemności centrum danych dla wdrożeń. Oferuje ona dodatkowe zaufanie do uruchamiania wystąpień maszyn wirtualnych, gdy ich potrzebujesz. Priorytet pojemności jest dostępny tylko wtedy, gdy zakresem rezerwacji jest pojedyncza subskrypcja. |
-|Termin        |Jeden rok lub trzy lata.|
-|Liczba    |Liczba wystąpień zakupionych w ramach rezerwacji. Ilość to liczba uruchomionych wystąpień maszyn wirtualnych, które mogą uzyskać rabat rozliczeń. Jeśli na przykład w regionie Wschodnie stany USA są uruchomione 10 Standard_D2 maszyn wirtualnych, należy określić liczbę jako 10, aby zmaksymalizować korzyść dla wszystkich uruchomionych maszyn wirtualnych. |
+|Okres obowiązywania Umowy        |Jeden rok lub trzy lata.|
+|Ilość    |Liczba wystąpień zakupionych w ramach rezerwacji. Ilość to liczba uruchomionych wystąpień maszyn wirtualnych, które mogą uzyskać rabat rozliczeń. Jeśli na przykład w regionie Wschodnie stany USA są uruchomione 10 Standard_D2 maszyn wirtualnych, należy określić liczbę jako 10, aby zmaksymalizować korzyść dla wszystkich uruchomionych maszyn wirtualnych. |
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2PjmT]
 
@@ -119,20 +119,20 @@ W zakupionej rezerwacji można wprowadzać następujące zmiany:
 
 - Aktualizacja zakresu rezerwacji
 - Elastyczność rozmiaru wystąpienia (jeśli dotyczy)
-- Wyniku
+- Własność
 
 Można również podzielić rezerwację na mniejsze fragmenty i scalić już rezerwacje. Żadna ze zmian nie powoduje nowej transakcji komercyjnej lub zmiana daty zakończenia rezerwacji.
 
 Po zakupie nie można wprowadzać następujących typów zmian bezpośrednio:
 
 - Istniejący region rezerwacji
-- SKU
-- Liczba
+- JSZ
+- Ilość
 - Czas trwania
 
 Istnieje jednak możliwość *wymiany* rezerwacji, jeśli chcesz wprowadzić zmiany.
 
-## <a name="cancel-exchange-or-refund-reservations"></a>Anulowanie, wymiana lub zwrot kosztów rezerwacji
+## <a name="cancel-exchange-or-refund-reservations"></a>Anulowanie, wymiana lub zwrot rezerwacji
 
 Rezerwacje można anulować, wymieniać lub zwracać, jednak obowiązują przy tym pewne ograniczenia. Aby uzyskać więcej informacji, zobacz temat [Self-service exchanges and refunds for Azure Reservations](../articles/billing/billing-azure-reservations-self-service-exchange-and-refund.md) (Samoobsługowe wymiany i zwroty kosztów dla rezerwacji platformy Azure).
 
@@ -142,12 +142,12 @@ Jeśli masz pytania lub potrzebujesz pomocy, [utwórz wniosek o pomoc techniczn�
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Aby dowiedzieć się, jak zarządzać wystąpieniem zarezerwowanym, zobacz temat [Manage Azure Reservations](../articles/billing/billing-manage-reserved-vm-instance.md) (Zarządzanie wystąpieniami zarezerwowanymi na platformie Azure).
-- Aby dowiedzieć się więcej na temat rezerwacji na platformie Azure, zobacz następujące artykuły:
+- Aby dowiedzieć się, jak zarządzać wystąpieniem zarezerwowanym, zobacz [Zarządzanie rejestracjami platformy Azure](../articles/billing/billing-manage-reserved-vm-instance.md).
+- Aby dowiedzieć się więcej na temat usługi Azure Reservations, zobacz następujące artykuły:
     - [Co to jest Azure Reservations?](../articles/billing/billing-save-compute-costs-reservations.md)
     - [Zarządzanie rezerwacjami na platformie Azure](../articles/billing/billing-manage-reserved-vm-instance.md)
-    - [Jak jest stosowany rabat na rezerwacje](../articles/billing/billing-understand-vm-reservation-charges.md)
+    - [Omówienie stosowania rabatu na rezerwacje](../articles/billing/billing-understand-vm-reservation-charges.md)
     - [Informacje na temat użycia wystąpień zarezerwowanych w przypadku subskrypcji z płatnością zgodnie z rzeczywistym użyciem](../articles/billing/billing-understand-reserved-instance-usage.md)
     - [Understand reservation usage for your Enterprise enrollment (Informacje na temat użycia wystąpień zarezerwowanych w przypadku rejestracji Enterprise)](../articles/billing/billing-understand-reserved-instance-usage-ea.md)
     - [Koszty oprogramowania systemu Windows nieuwzględniane w przypadku wystąpień zarezerwowanych](../articles/billing/billing-reserved-instance-windows-software-costs.md)
-    - [Rezerwacje platformy Azure w programie Cloud Solution Provider w Centrum partnerskim](https://docs.microsoft.com/partner-center/azure-reservations)
+    - [Azure Reservations in Partner Center Cloud Solution Provider (CSP) program](https://docs.microsoft.com/partner-center/azure-reservations) (Rezerwacje platformy Azure w programie Cloud Solution Provider w Centrum partnerskim)

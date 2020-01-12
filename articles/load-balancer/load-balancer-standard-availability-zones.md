@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: e7ddb548d8dad5bdcc3021941877903377af9318
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 9e585f7d13e1686f125055056fd1e2d88e2bf8ff
+ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771482"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75903329"
 ---
 # <a name="standard-load-balancer-and-availability-zones"></a>Usługa Load Balancer w warstwie Standardowa i strefy dostępności
 
@@ -209,10 +209,6 @@ Strefa — nadmiarowe może zapewnić prostotę z opcją niezależny od strefy i
 Strefa może zapewnić jawną gwarancję dla strefy, jawnie udostępniającą losy z kondycją strefy. Tworzenie reguły Load Balancer przy użyciu strefy frontonu IP lub strefy wewnętrznej Load Balancer wewnętrzna może być pożądane, szczególnie jeśli dołączony zasób jest maszyną wirtualną w tej samej strefie.  Lub być może Twoja aplikacja wymaga jawnej wiedzy na temat strefy, w której zasób znajduje się przed chwilą, i chcemy jawnie określić dostępność w oddzielnych strefach.  Możesz uwidocznić wiele frontonów na potrzeby kompleksowych usług rozproszonych w różnych strefach (to jest na frontony strefy stref dla wielu zestawów skalowania maszyn wirtualnych).  A jeśli strefą frontony są publiczne adresy IP, można użyć tych wielu frontonów, aby uwidocznić swoją usługę za pomocą [Traffic Manager](../traffic-manager/traffic-manager-overview.md).  Można też użyć wielu stref frontonów, aby uzyskać informacje o kondycji strefy i wydajności za pomocą rozwiązań do monitorowania innych firm i uwidocznić ogólną usługę za pomocą nadmiarowej strefy. Zasoby strefowe z frontonami stref są wyrównane do tej samej strefy, co pozwala uniknąć potencjalnie szkodliwych scenariuszy między strefami dla zasobów strefowych.  Zasoby strefowe istnieją tylko w regionach, w których istnieją strefy dostępności.
 
 Nie ma ogólnych wskazówek, które są lepszym wyborem niż pozostałe, bez znajomości architektury usług.  Przejrzyj [wzorce projektowania w chmurze platformy Azure](https://docs.microsoft.com/azure/architecture/patterns/) , aby zwiększyć odporność aplikacji na błędy.
-
-## <a name="limitations"></a>Ograniczenia
-
-- Gdy płaszczyzna danych jest w pełni strefowo nadmiarowa (chyba że została określona gwarancja Zona), operacje płaszczyzny kontroli nie są w pełni nadmiarowe.
 
 ## <a name="next-steps"></a>Następne kroki
 - Dowiedz się więcej o [strefy dostępności](../availability-zones/az-overview.md)

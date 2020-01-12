@@ -13,19 +13,21 @@ ms.workload: infrastructure-services
 ms.date: 10/22/2019
 ms.author: jispar
 ms.reviewer: kumud
-ms.openlocfilehash: b1219153b2b2a0246110d2d9a7a84d16cc2a25f0
-ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
+ms.openlocfilehash: 95d0e1dfc977d77f7cd9853945dabefee3bb7bbd
+ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75707563"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75903406"
 ---
 # <a name="virtual-network-service-tags"></a>Tagi usługi sieci wirtualnej 
 <a name="network-service-tags"></a>
 
-Tag usługi reprezentuje grupę prefiksów adresów IP z danej usługi platformy Azure. Pomaga zminimalizować złożoność częstych aktualizacji reguł zabezpieczeń sieciowych. Za pomocą tagów usługi można definiować kontrolę dostępu do sieci w [grupach zabezpieczeń sieci](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules) lub w [zaporze platformy Azure](https://docs.microsoft.com/azure/firewall/service-tags). 
+Tag usługi reprezentuje grupę prefiksów adresów IP z danej usługi platformy Azure. Firma Microsoft zarządza prefiksami adresów, które obejmują tag usługi, i automatycznie aktualizuje tag usługi jako adresy, minimalizując złożoność częstych aktualizacji reguł securitiy sieci. 
 
-Podczas tworzenia reguł zabezpieczeń można używać tagów usługi zamiast określonych adresów IP. Określając nazwę tagu usługi (na przykład **ApiManagement**) w odpowiednim polu *źródłowym* lub *docelowym* reguły, można zezwolić na ruch dla odpowiedniej usługi lub go odrzucić. Firma Microsoft zarządza prefiksami adresów, które obejmują tag usługi, i automatycznie aktualizuje tag usługi jako adresy.
+Możesz użyć tagów usługi do definiowania kontroli dostępu do sieci w [sieciowych grupach zabezpieczeń](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules) lub [Zapora platformy Azure](https://docs.microsoft.com/azure/firewall/service-tags). Podczas tworzenia reguł zabezpieczeń należy używać tagów usługi zamiast określonych adresów IP. Określając nazwę tagu usługi (na przykład **ApiManagement**) w odpowiednim polu *źródłowym* lub *miejscu docelowym* reguły, można zezwolić na ruch dla odpowiedniej usługi lub go odrzucić. 
+
+Tagi usług umożliwiają uzyskanie izolacji sieci i ochronę zasobów platformy Azure z ogólnego Internetu podczas uzyskiwania dostępu do usług platformy Azure z publicznymi punktami końcowymi. Utwórz przychodzące/wychodzące reguły sieciowej grupy zabezpieczeń, aby odmówić ruch do/z **Internetu** i zezwolić na ruch do/z **AzureCloud** lub innych [dostępnych tagów usługi]() określonych usług platformy Azure. 
 
 ## <a name="available-service-tags"></a>Dostępne Tagi usług
 Poniższa tabela zawiera wszystkie Tagi usługi dostępne do użycia w regułach [sieciowej grupy zabezpieczeń](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules) .

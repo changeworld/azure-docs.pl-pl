@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 9b47d3bde4c4c5ef7fd3d41c038ea078c19db900
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: e590c07c3969865d573838352a8a778caa1cc799
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74005725"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75901731"
 ---
 W tym artykule skatalogowano najbardziej typowe błędy i środki zaradcze w trakcie migracji zasobów IaaS z klasycznego modelu wdrażania platformy Azure do stosu usługi Azure Resource Manager.
 
@@ -19,9 +19,9 @@ W tym artykule skatalogowano najbardziej typowe błędy i środki zaradcze w tra
 
 | Ciąg błędu | Środki zaradcze |
 | --- | --- |
-| Wewnętrzny błąd serwera |W niektórych przypadkach jest to błąd przejściowy, który znika przy ponownej próbie. Jeśli ten błąd będzie się powtarzać, [skontaktuj się z pomocą techniczną platformy Azure](../articles/azure-supportability/how-to-create-azure-support-request.md), ponieważ wymaga to badania dzienników platformy. <br><br> **UWAGA:** Kiedy zdarzenie jest śledzone przez zespół pomocy technicznej, nie należy podejmować żadnych samodzielnych prób rozwiązania problemu, ponieważ może to mieć niezamierzone konsekwencje w używanym środowisku. |
+| Wewnętrzny błąd serwera |W niektórych przypadkach jest to błąd przejściowy, który znika przy ponownej próbie. Jeśli ten błąd będzie się powtarzać, [skontaktuj się z pomocą techniczną platformy Azure](../articles/azure-portal/supportability/how-to-create-azure-support-request.md), ponieważ wymaga to badania dzienników platformy. <br><br> **UWAGA:** Kiedy zdarzenie jest śledzone przez zespół pomocy technicznej, nie należy podejmować żadnych samodzielnych prób rozwiązania problemu, ponieważ może to mieć niezamierzone konsekwencje w używanym środowisku. |
 | Migracja wdrożenia {nazwa_wdrożenia} w usłudze hostowanej {nazwa_usługi_hostowanej} nie jest obsługiwana, ponieważ jest to wdrożenie PaaS (sieć Web/proces roboczy). |Ma to miejsce w przypadku, gdy wdrożenie zawiera rolę sieci Web/procesu roboczego. Ponieważ migracja jest obsługiwana tylko dla maszyn wirtualnych, usuń rolę sieci Web/procesu roboczego z wdrożenia i ponownie spróbuj przeprowadzić migrację. |
-| Wdrożenie szablonu {nazwa_szablonu} nie powiodło się. CorrelationId={guid} |W zapleczu usługi migracji używamy szablonów usługi Azure Resource Manager do tworzenia zasobów w stosie usługi Azure Resource Manager. Ponieważ szablony są idempotentne, zwykle możesz bezpiecznie ponowić próbę operacji migracji, aby pokonać ten błąd. Jeśli ten błąd nie ustąpi, [skontaktuj się z pomocą techniczną platformy Azure](../articles/azure-supportability/how-to-create-azure-support-request.md) i podaj im wartość CorrelationId. <br><br> **UWAGA:** Kiedy zdarzenie jest śledzone przez zespół pomocy technicznej, nie należy podejmować żadnych samodzielnych prób rozwiązania problemu, ponieważ może to mieć niezamierzone konsekwencje w używanym środowisku. |
+| Wdrożenie szablonu {nazwa_szablonu} nie powiodło się. CorrelationId={guid} |W zapleczu usługi migracji używamy szablonów usługi Azure Resource Manager do tworzenia zasobów w stosie usługi Azure Resource Manager. Ponieważ szablony są idempotentne, zwykle możesz bezpiecznie ponowić próbę operacji migracji, aby pokonać ten błąd. Jeśli ten błąd nie ustąpi, [skontaktuj się z pomocą techniczną platformy Azure](../articles/azure-portal/supportability/how-to-create-azure-support-request.md) i podaj im wartość CorrelationId. <br><br> **UWAGA:** Kiedy zdarzenie jest śledzone przez zespół pomocy technicznej, nie należy podejmować żadnych samodzielnych prób rozwiązania problemu, ponieważ może to mieć niezamierzone konsekwencje w używanym środowisku. |
 | Sieć wirtualna {nazwa_sieci_wirtualnej} nie istnieje. |Może to się zdarzyć, jeśli sieć wirtualna została utworzona w nowej witrynie Azure Portal. Rzeczywista nazwa Virtual Network jest zgodna ze wzorcem "Grupa * \<nazwę sieci wirtualnej >" |
 | Maszyna wirtualna {nazwa_maszyny_wirtualnej} w usłudze hostowanej {nazwa_usługi_hostowanej} zawiera rozszerzenie {nazwa_rozszerzenia}, które nie jest obsługiwane w usłudze Azure Resource Manager. Zaleca się odinstalowanie go z maszyny wirtualnej przed kontynuowaniem migracji. |Rozszerzenia XML, takie jak BGInfo 1.\* nie są obsługiwane w Azure Resource Manager. W związku z tym nie można migrować tych rozszerzeń. Jeśli te rozszerzenia pozostaną zainstalowane na maszynie wirtualnej, zostaną automatycznie odinstalowane przed ukończeniem migracji. |
 | Maszyna wirtualna {nazwa_maszyny_wirtualnej} w usłudze hostowanej {nazwa_usługi_hostowanej} zawiera rozszerzenie VMSnapshot/VMSnapshotLinux, które nie jest obecnie obsługiwane dla migracji. Odinstaluj je z maszyny wirtualnej i dodaj ponownie za pomocą usługi Azure Resource Manager po zakończeniu migracji |Jest to scenariusz, w którym maszyna wirtualna jest skonfigurowana na potrzeby usługi Azure Backup. Ponieważ obecnie jest to nieobsługiwany scenariusz, należy postępować zgodnie z obejściem w https://aka.ms/vmbackupmigration |

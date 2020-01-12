@@ -8,14 +8,14 @@ author: axisc
 ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: aschhab
-ms.openlocfilehash: 356f825524192c3b6cf7df7f0460975f23ea4f7c
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 6d20d4031f0ed4d1be4dddf9e33946251d6dd523
+ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74852291"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75903315"
 ---
-# <a name="configure-customer-managed-keys-for-encrypting-azure-service-bus-data-at-rest-by-using-the-azure-portal-preview"></a>Konfigurowanie kluczy zarządzanych przez klienta do szyfrowania Azure Service Bus danych przechowywanych przy użyciu Azure Portal (wersja zapoznawcza)
+# <a name="configure-customer-managed-keys-for-encrypting-azure-service-bus-data-at-rest-by-using-the-azure-portal"></a>Konfigurowanie kluczy zarządzanych przez klienta do szyfrowania Azure Service Bus danych przechowywanych przy użyciu Azure Portal
 Azure Service Bus Premium zapewnia szyfrowanie danych przechowywanych przy użyciu usługi Azure szyfrowanie usługi Storage (SSE platformy Azure). Service Bus Premium bazuje na usłudze Azure Storage do przechowywania danych i domyślnie wszystkie dane przechowywane w usłudze Azure Storage są szyfrowane przy użyciu kluczy zarządzanych przez firmę Microsoft. 
 
 ## <a name="overview"></a>Przegląd
@@ -27,7 +27,6 @@ Włączenie funkcji BYOK to jednorazowy proces konfiguracji w przestrzeni nazw.
 > Klucz zarządzany przez klienta ma pewne zastrzeżenia dotyczące szyfrowania po stronie usługi. 
 >   * Ta funkcja jest obsługiwana przez [Azure Service Bus warstwy Premium](service-bus-premium-messaging.md) . Nie można jej włączyć dla Service Bus przestrzeni nazw w warstwie Standardowa.
 >   * Szyfrowanie można włączyć tylko dla nowych lub pustych przestrzeni nazw. Jeśli przestrzeń nazw zawiera dane, operacja szyfrowania zakończy się niepowodzeniem.
->   * Jeśli [punkty końcowe usługi Sieć wirtualna (VNET)](service-bus-service-endpoints.md) są skonfigurowane na Azure Key Vault dla Service Bus przestrzeni nazw, BYOK nie będzie obsługiwana. 
 
 Za pomocą Azure Key Vault można zarządzać kluczami i przeprowadzać inspekcję użycia klucza. Możesz utworzyć własne klucze i zapisać je w magazynie kluczy lub użyć Azure Key Vault interfejsów API do wygenerowania kluczy. Aby uzyskać więcej informacji na temat Azure Key Vault, zobacz [co to jest Azure Key Vault?](../key-vault/key-vault-overview.md)
 
@@ -40,7 +39,7 @@ W tym artykule pokazano, jak skonfigurować magazyn kluczy z kluczami zarządzan
 Aby włączyć klucze zarządzane przez klienta w Azure Portal, wykonaj następujące kroki:
 
 1. Przejdź do przestrzeni nazw w warstwie Premium Service Bus.
-2. Na stronie **Ustawienia** przestrzeni nazw Service Bus wybierz pozycję **szyfrowanie (wersja zapoznawcza)** .
+2. Na stronie **Ustawienia** obszaru nazw Service Bus wybierz pozycję **szyfrowanie**.
 3. Wybierz **szyfrowanie klucza zarządzanego przez klienta** , jak pokazano na poniższej ilustracji.
 
     ![Włącz klucz zarządzany przez klienta](./media/configure-customer-managed-key/enable-customer-managed-key.png)
@@ -106,9 +105,6 @@ Możesz obrócić klucz w magazynie kluczy przy użyciu mechanizmu rotacji magaz
 Cofnięcie dostępu do kluczy szyfrowania nie spowoduje przeczyszczenia danych z Service Bus. Nie można jednak uzyskać dostępu do danych z przestrzeni nazw Service Bus. Możesz odwołać klucz szyfrowania za pomocą zasad dostępu lub usunąć klucz. Dowiedz się więcej na temat zasad dostępu i zabezpieczania magazynu kluczy, [Aby uzyskać bezpieczny dostęp do magazynu kluczy](../key-vault/key-vault-secure-your-key-vault.md).
 
 Po odwołaniu klucza szyfrowania Usługa Service Bus w zaszyfrowanej przestrzeni nazw stanie się niezależna. Jeśli dostęp do klucza jest włączony lub przywrócono usunięty klucz, Usługa Service Bus wybierze klucz, aby można było uzyskać dostęp do danych z przestrzeni nazw zaszyfrowanej Service Bus.
-
-> [!NOTE]
-> Jeśli usuniesz istniejący klucz szyfrowania z magazynu kluczy i zastąpi go nowym kluczem w przestrzeni nazw Service Bus, ponieważ klucz usuwania jest nadal ważny (w pamięci podręcznej) przez maksymalnie godzinę, stare dane (zaszyfrowany przy użyciu starego klucza) mogą nadal być dostępne Alon g z nowymi danymi, które są teraz dostępne tylko przy użyciu nowego klucza. To zachowanie jest zaprojektowana w wersji zapoznawczej funkcji. 
 
 ## <a name="next-steps"></a>Następne kroki
 Zobacz następujące artykuły:
