@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/13/2019
 ms.author: ashishth
-ms.openlocfilehash: d19640d19c3b7fa611f5bfe0e4fd0868924650c5
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: ceafee2d3356d37e74039789c8243ace41c141b2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71066938"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435791"
 ---
 # <a name="extract-transform-and-load-etl-at-scale"></a>Wyodrębnianie, przekształcanie i ładowanie (ETL) na dużą skalę
 
@@ -25,7 +25,7 @@ Użycie usługi HDInsight w procesie ETL może być podsumowane przez ten potok:
 
 W poniższych sekcjach opisano wszystkie fazy ETL i powiązane z nimi składniki.
 
-## <a name="orchestration"></a>Orkiestracja
+## <a name="orchestration"></a>Aranżacja
 
 Aranżacja obejmuje wszystkie fazy potoku ETL. Zadania ETL w usłudze HDInsight często obejmują kilka różnych produktów współpracujących ze sobą.  Możesz użyć programu Hive do oczyszczenia części danych, natomiast świnia czyści inną część.  Azure Data Factory można użyć do załadowania danych do Azure SQL Database z Azure Data Lake Store.
 
@@ -51,11 +51,11 @@ Aby uzyskać więcej informacji na temat Azure Data Factory, zobacz [dokumentacj
 
 ## <a name="ingest-file-storage-and-result-storage"></a>Pozyskiwanie magazynu plików i magazynu wyników
 
-Pliki danych źródłowych są zwykle ładowane do lokalizacji w usłudze Azure Storage lub Azure Data Lake Storage. Pliki mogą być w dowolnym formacie, ale zazwyczaj są plikami prostymi, takimi jak CSV. 
+Pliki danych źródłowych są zwykle ładowane do lokalizacji w usłudze Azure Storage lub Azure Data Lake Storage. Pliki mogą być w dowolnym formacie, ale zazwyczaj są plikami prostymi, takimi jak CSV.
 
-### <a name="azure-storage"></a>Azure Storage 
+### <a name="azure-storage"></a>Azure Storage
 
-[Usługa Azure Storage](https://azure.microsoft.com/services/storage/blobs/) ma [konkretne elementy docelowe skalowalności](../../storage/common/storage-scalability-targets.md).  W przypadku większości węzłów analitycznych usługa Azure Storage jest Najlepsza w przypadku pracy w wielu mniejszych plikach.  Usługa Azure Storage gwarantuje taką samą wydajność, niezależnie od liczby plików lub wielkości plików (o ile znajdują się w granicach limitów).  Oznacza to, że można przechowywać terabajty danych i nadal uzyskać spójną wydajność, niezależnie od tego, czy jest używany podzbiór danych, czy też wszystkie dane.
+[Usługa Azure Storage](https://azure.microsoft.com/services/storage/blobs/) ma konkretne elementy docelowe skalowalności. Aby uzyskać więcej informacji, zobacz [elementy docelowe skalowalności i wydajności dla usługi BLOB Storage](../../storage/blobs/scalability-targets.md). W przypadku większości węzłów analitycznych usługa Azure Storage jest Najlepsza w przypadku pracy w wielu mniejszych plikach.  Usługa Azure Storage gwarantuje taką samą wydajność, niezależnie od liczby plików lub wielkości plików (o ile znajdują się w granicach limitów).  Oznacza to, że można przechowywać terabajty danych i nadal uzyskać spójną wydajność, niezależnie od tego, czy jest używany podzbiór danych, czy też wszystkie dane.
 
 Usługa Azure Storage ma kilka różnych typów obiektów BLOB.  *Dołącz obiekt BLOB* jest doskonałym rozwiązaniem do przechowywania dzienników sieci Web lub danych czujników.  
 
@@ -77,7 +77,7 @@ ADLS jest również zoptymalizowany pod kątem pozyskiwania zdarzeń przy użyci
 
 W przypadku przekazywania zestawów danych w zakresie terabajtów opóźnienie sieci może być poważnym problemem, szczególnie w przypadku, gdy dane pochodzą z lokalizacji lokalnej.  W takich przypadkach można użyć poniższych opcji:
 
-* Azure ExpressRoute:  Usługa Azure ExpressRoute umożliwia tworzenie prywatnych połączeń między centrami danych platformy Azure a infrastrukturą lokalną. Te połączenia zapewniają niezawodną opcję przesyłania dużych ilości danych. Aby uzyskać więcej informacji, zobacz [dokumentację usługi Azure ExpressRoute](../../expressroute/expressroute-introduction.md).
+* Azure ExpressRoute: usługa Azure ExpressRoute umożliwia tworzenie prywatnych połączeń między centrami danych platformy Azure a infrastrukturą lokalną. Te połączenia zapewniają niezawodną opcję przesyłania dużych ilości danych. Aby uzyskać więcej informacji, zobacz [dokumentację usługi Azure ExpressRoute](../../expressroute/expressroute-introduction.md).
 
 * Przekazywanie danych w trybie offline. [Usługa Azure Import/Export](../../storage/common/storage-import-export-service.md) umożliwia wysyłanie dysków twardych z danymi do centrum danych platformy Azure. Dane są najpierw przekazywane do obiektów BLOB usługi Azure Storage. Następnie można użyć [Azure Data Factory](../../data-factory/connector-azure-data-lake-store.md) lub narzędzia [AdlCopy](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md) do kopiowania danych z obiektów BLOB usługi Azure Storage do Data Lake Storage.
 
@@ -129,7 +129,7 @@ Apache Flume to dystrybuowana, niezawodna i dostępna usługa służąca do wyda
 
 Nie można używać Apache Flume z usługą Azure HDInsight.  Lokalna instalacja usługi Hadoop może używać Flume do wysyłania danych do obiektów blob magazynu Azure lub Azure Data Lake Storage.  Aby uzyskać więcej informacji, zobacz [Korzystanie z platformy Apache Flume z usługą HDInsight](https://web.archive.org/web/20190217104751/https://blogs.msdn.microsoft.com/bigdatasupport/2014/03/18/using-apache-flume-with-hdinsight/).
 
-## <a name="transform"></a>Transformacja
+## <a name="transform"></a>Przekształcaj
 
 Gdy dane istnieją w wybranej lokalizacji, należy je wyczyścić, połączyć lub przygotować do określonego wzorca użycia.  Usługi Hive, świnie i Spark SQL są dobrym wyborami dla tego rodzaju pracy.  Są one obsługiwane w usłudze HDInsight. 
 

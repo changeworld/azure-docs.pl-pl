@@ -1,6 +1,6 @@
 ---
-title: Jak zażądać danych tranzytowych w Azure Maps | Microsoft Docs
-description: Poproś o dane tranzytu publicznego przy użyciu usługi mobilności Azure Maps.
+title: Żądaj danych tranzytowych | Mapy Microsoft Azure
+description: W tym artykule dowiesz się, jak żądać danych tranzytu publicznego przy użyciu usługi mobilności w Microsoft Azure Maps.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 09/06/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 47952421c50979a014507c81ef5bc3217df7d860
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: HT
+ms.openlocfilehash: d9fac909dbb264dea65447a086b78e8a53acefae
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432950"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911423"
 ---
 # <a name="request-public-transit-data-using-the-azure-maps-mobility-service"></a>Żądanie danych tranzytu publicznego przy użyciu usługi Azure Maps Mobility 
 

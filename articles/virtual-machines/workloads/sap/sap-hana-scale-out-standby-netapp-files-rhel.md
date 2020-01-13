@@ -13,14 +13,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 12/18/2019
+ms.date: 01/10/2020
 ms.author: radeltch
-ms.openlocfilehash: 059937cc390a15c986724b3107a7f64fb789fc92
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: HT
+ms.openlocfilehash: 975f4940590bfbdab559122c68488c51c65d868e
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75480283"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75896304"
 ---
 # <a name="deploy-a-sap-hana-scale-out-system-with-standby-node-on-azure-vms-by-using-azure-netapp-files-on-red-hat-enterprise-linux"></a>Wdróż system SAP HANA skalowalny w poziomie z aktywnym węzłem na maszynach wirtualnych platformy Azure przy użyciu Azure NetApp Files na Red Hat Enterprise Linux 
 
@@ -435,7 +435,11 @@ Skonfiguruj i przygotuj system operacyjny, wykonując następujące czynności:
     mount 10.9.0.4:/HN1-shared /mnt/tmp
     umount  /mnt/tmp
     echo "Y" > /sys/module/nfs/parameters/nfs4_disable_idmapping
-    </code></pre>`
+    # Make the configuration permanent
+    echo "options nfs nfs4_disable_idmapping=Y" >> /etc/modprobe.d/nfs.conf
+    </code></pre>
+
+   Aby uzyskać więcej informacji na temat zmiany `nfs4_disable_idmapping` parametru, zobacz https://access.redhat.com/solutions/1749883.
 
 6. **[A]** Zainstaluj udostępnione woluminy Azure NetApp Files.  
 
@@ -569,14 +573,14 @@ W tym przykładzie w celu wdrożenia SAP HANA w konfiguracji skalowania w poziom
      * Dla **opcji wybierz użycie systemu/wprowadź indeks [4]** : wprowadź **4** (dla niestandardowych)
      * W przypadku **lokalizacji woluminów danych** [/Hana/Data/HN1]: naciśnij klawisz ENTER, aby zaakceptować wartość domyślną
      * **Lokalizacja dzienników woluminów dziennika** [/Hana/log/HN1]: naciśnij klawisz ENTER, aby zaakceptować wartość domyślną
-     * Aby **ograniczyć maksymalną alokację pamięci?** [n]\: wprowadź **n**
+     * Aby **ograniczyć maksymalną alokację pamięci?** [n]: wprowadź **n**
      * **Nazwa hosta certyfikatu dla hosta hanadb1** [hanadb1]: naciśnij klawisz ENTER, aby zaakceptować wartość domyślną
      * **Nazwa hosta certyfikatu dla hosta hanadb2** [hanadb2]: naciśnij klawisz ENTER, aby zaakceptować wartość domyślną
      * **Nazwa hosta certyfikatu dla hosta hanadb3** [hanadb3]: naciśnij klawisz ENTER, aby zaakceptować wartość domyślną
      * W polu **hasło administratora systemu (hn1adm)** : wprowadź hasło
      * Dla **systemu systemowej bazy danych hasło użytkownika (system)** : wprowadź hasło systemu
      * Potwierdź hasło użytkownika systemowej **bazy danych (system)** : wprowadź hasło systemu
-     * **Czy po ponownym uruchomieniu komputera należy ponownie uruchomić system?** [n]\: wprowadź **n** 
+     * **Czy po ponownym uruchomieniu komputera należy ponownie uruchomić system?** [n]: wprowadź **n** 
      * Na **pewno chcesz kontynuować (t/n)** : Sprawdź poprawność podsumowania i jeśli wszystko wygląda dobrze, wprowadź wartość **y**
 
 

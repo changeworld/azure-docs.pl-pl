@@ -9,12 +9,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: 610673c548294f875ca70edb8ab26b1fdeb41cb6
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 8b2a24b6f2d7df92f1c8ea1b22432471aa432011
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838074"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644906"
 ---
 # <a name="azure-resource-manager-test-drive"></a>Wersja testowa usługi Azure Resource Manager
 
@@ -85,10 +85,10 @@ Jest również pamiętać, że **wszystkie parametry są opcjonalne**, więc je�
 
 | Typ metadanych   | Typ parametru  | Opis     | Przykładowa wartość    |
 |---|---|---|---|
-| **BaseUri**     | ciąg          | Podstawowy identyfikator URI pakietu wdrażania| https:\//\<\..\>. blob.core.windows.net/\<\..\> |
-| **Nazwa użytkownika**    | ciąg          | Nowa nazwa użytkownika losowych.| admin68876      |
+| **BaseUri**     | string          | Podstawowy identyfikator URI pakietu wdrażania| https:\//\<\..\>. blob.core.windows.net/\<\..\> |
+| **Nazwa użytkownika**    | string          | Nowa nazwa użytkownika losowych.| admin68876      |
 | **Hasło**    | bezpieczny ciąg    | Losowe hasło. | LP! ACS\^2kh     |
-| **Identyfikator sesji**   | ciąg          | Unikatowe sesji testowej identyfikator (GUID)    | b8c8693e-5673-449c-badd-257a405a6dee |
+| **Identyfikator sesji**   | string          | Unikatowe sesji testowej identyfikator (GUID)    | b8c8693e-5673-449c-badd-257a405a6dee |
 
 #### <a name="username"></a>nazwa użytkownika
 
@@ -289,7 +289,7 @@ Przykład:
 
 I jeszcze jedno należy wziąć pod uwagę to subskrypcja oraz limity usługi. Na przykład jeśli chcesz wdrożyć maszyny wirtualne z maksymalnie dziesięć 4-rdzeniową, musisz upewnij się, że subskrypcja używać dla swojego laboratorium umożliwia 40 rdzeni.
 
-Można znaleźć więcej informacji na temat subskrypcji platformy Azure i limity usługi w [w tym artykule](https://docs.microsoft.com/azure/azure-subscription-service-limits). Jak wiele wersji testowych mogą być podejmowane w tym samym czasie, sprawdź, czy Twoja subskrypcja może obsługiwać \# rdzeni pomnożoną przez łączną liczbę równoczesnych testu dyski, które mogą być podejmowane.
+Można znaleźć więcej informacji na temat subskrypcji platformy Azure i limity usługi w [w tym artykule](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits). Jak wiele wersji testowych mogą być podejmowane w tym samym czasie, sprawdź, czy Twoja subskrypcja może obsługiwać \# rdzeni pomnożoną przez łączną liczbę równoczesnych testu dyski, które mogą być podejmowane.
 
 ### <a name="what-to-upload"></a>Co do przekazania
 
@@ -404,7 +404,7 @@ Kliknij pozycję Zapisz. Ostatnim krokiem jest identyfikator aplikacji dla tej a
 Biorąc pod uwagę używamy aplikacji do wdrożenia do subskrypcji, musimy dodać aplikację jako współautora w subskrypcji. Instrukcje te są jak poniżej:
 
 1. Przejdź do bloku subskrypcje i wybierz odpowiednią subskrypcję, którego używasz do testowej.
-1. Kliknij przycisk **kontrola dostępu (IAM)** .
+1. Kliknij pozycję **Kontrola dostępu (IAM)** .
 1. Kliknij kartę **przypisania ról** .  ![dodać nowego Access Control głównej](./media/azure-resource-manager-test-drive/SetupSub7_1.jpg)
 1. Kliknij przycisk **Dodaj przypisanie roli**.
 1. Ustaw rolę **Współautor**.
@@ -420,7 +420,7 @@ Biorąc pod uwagę używamy aplikacji do wdrożenia do subskrypcji, musimy doda�
 
 Teraz, gdy wszystkich pól wersji testowej wypełnione przejść i **ponownie opublikować** oferty. Po upływie wersji testowej certyfikacji powinien przeprowadzić dokładnie przetestować środowiska klienta w **(wersja zapoznawcza)** oferty. Uruchom wersję testową w interfejsie użytkownika, a następnie otwórz Twojej subskrypcji platformy Azure w witrynie Azure portal i sprawdź, czy wersji testowych są w pełni wdrażany prawidłowo.
 
-![Azure Portal](./media/azure-resource-manager-test-drive/subdetails9.png)
+![Portal Azure](./media/azure-resource-manager-test-drive/subdetails9.png)
 
 Jest to należy pamiętać, że nie zostaną usunięte wszystkie wystąpienia wersji testowej jako są udostępnione dla klientów, więc wersji testowej usługi będzie automatycznie wyczyścić te grupy zasobów po zakończeniu z nim pracy klienta.
 
