@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Znajdowanie trasy z Azure Maps'
-description: 'Samouczek: kierowanie do punktu orientacyjnego za pomocą Azure Maps'
+title: 'Samouczek: Znajdowanie trasy do lokalizacji | Mapy Microsoft Azure'
+description: W tym samouczku przedstawiono sposób renderowania trasy do lokalizacji (punktu orientacyjnego) na mapie za pomocą usługi Routing Maps Microsoft Azure.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 11/12/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: efc60acae78c96983e79044ae1ba7399154f3568
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 7f13e5342e880a9ed5e2cb35ebaf558a1641618b
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75613605"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910834"
 ---
 # <a name="tutorial-route-to-a-point-of-interest-using-azure-maps"></a>Samouczek: kierowanie do punktu orientacyjnego za pomocą Azure Maps
 
@@ -168,7 +168,7 @@ W tym samouczku zostanie wyrenderowana prosta trasa przy użyciu ikon symboli pr
 
 3. Zapisz plik **MapRoute.html** i odśwież przeglądarkę. Teraz mapa jest wyśrodkowana w Seattle i widzisz niebieski numer PIN oznaczający punkt początkowy oraz okrągły niebieski numer PIN oznaczający punkt końcowy.
 
-   ![Wyświetlanie mapy z zaznaczonym punktem początkowym i punktem końcowym](media/tutorial-route-location/map-pins.png)
+   ![Wyświetlanie punktów początkowych i końcowych tras na mapie](media/tutorial-route-location/map-pins.png)
 
 <a id="getroute"></a>
 

@@ -1,6 +1,6 @@
 ---
-title: Pobieranie kształtów danych z Menedżera rysowania w Azure Maps | Microsoft Docs
-description: Jak uzyskać dane kształtu przy użyciu zestawu Azure Maps Web SDK
+title: Pobieranie danych z kształtów na mapie | Mapy Microsoft Azure
+description: W tym artykule dowiesz się, jak uzyskać dane kształtu rysowane na mapie przy użyciu zestawu Microsoft Azure Web SDK Maps.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 09/04/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: bc8efe46453f76d353842b32bd52b41838979b49
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ca1b9854b118d359167873313f1fcb11bfecee52
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432824"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911008"
 ---
 # <a name="get-shape-data"></a>Pobieranie danych kształtów
 

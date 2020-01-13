@@ -8,16 +8,16 @@ ms.service: internet-peering
 ms.topic: overview
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: c5fd37c532e2abf2697c741e4dab10a945926e2b
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 576bc3e37711851acd7d6c7ac811a10e40080710
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75775691"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75908917"
 ---
 # <a name="internet-peering-overview"></a>Internet Komunikacja równorzędna — Omówienie
 
-Komunikacja równorzędna to połączenie między siecią globalną firmy Microsoft (AS8075) a siecią na potrzeby wymiany ruchu internetowego z/do usług Microsoft Usługi online i Microsoft Azure. Operatorzy lub dostawcy usług mogą zażądać połączenia z firmą Microsoft w dowolnej lokalizacji brzegowej. Każde żądanie jest analizowane przez Microsoft Azure sieci, aby upewnić się, że jest ono zgodne z naszymi zasadami komunikacji równorzędnej. Komunikację równorzędną z siecią firmy Microsoft można skonfigurować na dwa sposoby:
+Komunikacja równorzędna to połączenie między siecią globalną firmy Microsoft (AS8075) a siecią na potrzeby wymiany ruchu internetowego z/do usług Microsoft Usługi online i Microsoft Azure. Operatorzy lub dostawcy usług mogą zażądać połączenia z firmą Microsoft w dowolnej lokalizacji brzegowej. Każde żądanie jest analizowane przez firmę Microsoft, aby upewnić się, że jest ono zgodne z naszymi zasadami komunikacji równorzędnej. Komunikację równorzędną z siecią firmy Microsoft można skonfigurować na dwa sposoby:
 
 * **Bezpośrednia Komunikacja równorzędna:**
 
@@ -33,7 +33,7 @@ Komunikacja równorzędna to połączenie między siecią globalną firmy Micros
 * Należy chronić ruch klientów przed awariami w sieci lub przez sieć dostawcy tranzytu za pomocą komunikacji równorzędnej z firmą Microsoft w nadmiarowych lokalizacjach.
 * Poznaj metryki wydajności połączeń komunikacji równorzędnej i korzystaj ze szczegółowych informacji w celu rozwiązywania problemów z siecią.
 
-## <a name="benefits-of-using-azure"></a>Zalety korzystania z platformy Azure
+## <a name="benefits-of-using-azure-to-set-up-peering"></a>Zalety korzystania z platformy Azure w celu skonfigurowania komunikacji równorzędnej
 
 Możesz zażądać komunikacji równorzędnej z firmą Microsoft przy użyciu Azure PowerShell lub portalu. Komunikacja równorzędna skonfigurowana w ten sposób jest zarządzana jako zasób platformy Azure i zapewnia następujące korzyści:
 * Uproszczone i automatyzuje kroki służące do konfigurowania komunikacji równorzędnej z firmą Microsoft i zarządzania nią.

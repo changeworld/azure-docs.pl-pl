@@ -8,12 +8,12 @@ ms.service: internet-peering
 ms.topic: article
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: d3737be5a3186774f230aef9d932464a27a764f4
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: cee548aff49cd5e4a57eed994b8ade2d157c6313
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75775643"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75912133"
 ---
 # <a name="associate-peer-asn-to-azure-subscription-using-the-portal"></a>Kojarzenie równorzędnych elementów ASN z subskrypcją platformy Azure przy użyciu portalu
 
@@ -25,6 +25,34 @@ Jeśli wolisz, możesz ukończyć ten przewodnik przy użyciu programu [PowerShe
 
 ### <a name="sign-in-to-the-portal"></a>Logowanie się do portalu
 [!INCLUDE [Account](./includes/account-portal.md)]
+
+### <a name="register-for-peering-resource-provider"></a>Zarejestruj dla dostawcy zasobów komunikacji równorzędnej
+Zarejestruj się w celu uzyskania dostawcy zasobów komunikacji równorzędnej w ramach subskrypcji, wykonując poniższe kroki. Jeśli to nie zrobisz, zasoby platformy Azure wymagane do skonfigurowania komunikacji równorzędnej są niedostępne.
+
+1. Kliknij pozycję **subskrypcje** w lewym górnym rogu portalu. Jeśli go nie widzisz, kliknij pozycję **więcej usług** i wyszukaj go.
+
+    > [!div class="mx-imgBorder"]
+    > ![otwarte subskrypcje](./media/rp-subscriptions-open.png)
+
+1. Kliknij subskrypcję, której chcesz użyć do komunikacji równorzędnej.
+
+    > [!div class="mx-imgBorder"]
+    > ![uruchomić subskrypcję](./media/rp-subscriptions-launch.png)
+
+1. Po otwarciu subskrypcji po lewej stronie kliknij pozycję **dostawcy zasobów**. Następnie w okienku po prawej stronie Wyszukaj *komunikację równorzędną* w oknie wyszukiwania lub Użyj paska przewijania, aby znaleźć pozycję **Microsoft. peering** i sprawdzić **stan**. Jeśli stan jest ***zarejestrowany***, Pomiń poniższe kroki i przejdź do sekcji **Tworzenie PeerAsn**. Jeśli stan to ***NotRegistered***, wybierz pozycję **Microsoft. Komunikacja równorzędna** i kliknij pozycję **zarejestruj**.
+
+    > [!div class="mx-imgBorder"]
+    > ](./media/rp-register-start.png) rozpoczęcia rejestracji ![
+
+1. Zwróć uwagę, że stan zmieni się na ***zarejestrowanie***.
+
+    > [!div class="mx-imgBorder"]
+    > ![](./media/rp-register-progress.png) rejestracji
+
+1. Poczekaj chwilę lub na ukończenie rejestracji. Następnie kliknij przycisk **Odśwież** i sprawdź, czy stan jest ***zarejestrowany***.
+
+    > [!div class="mx-imgBorder"]
+    > zakończono rejestrację ![](./media/rp-register-completed.png)
 
 ### <a name="create-peerasn"></a>Utwórz PeerAsn
 Można utworzyć nowy zasób PeerAsn do kojarzenia numeru systemu autonomicznego (ASN) z subskrypcją platformy Azure. Można skojarzyć wiele numerów WPW z subskrypcją, tworząc **PeerAsn** dla każdego numeru ASN, który należy skojarzyć.

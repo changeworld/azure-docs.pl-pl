@@ -1,6 +1,6 @@
 ---
-title: Pokrycie ruchu w Azure Maps | Microsoft Docs
-description: Informacje o pokryciu ruchu w Azure Maps
+title: Pokrycie ruchu | Mapy Microsoft Azure
+description: Ten artykuł zawiera informacje na temat pokrycia ruchu w mapach Microsoft Azure.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 09/22/2018
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: cb7ebe5d9519f1a3967a29f4c883c420a892817f
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 544cae7f33bfb1077bfdf7f215fb313974334216
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73957999"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910396"
 ---
 # <a name="azure-maps-traffic-coverage"></a>Azure Maps pokrycie ruchu
 
@@ -23,7 +23,7 @@ Mapy nie mają jednak tego samego poziomu informacji i dokładności dla wszystk
 
 ## <a name="americas"></a>Ameryki
 
-|Kraj/region  |Zdarzenia  |Ruch  |
+|Kraj/region  |Zdarzenia  |Przepływ  |
 |---------|:---------:|:---------:|
 |Argentyna      |✓         |✓         |
 |Brazylia     |✓         |✓         |
@@ -39,7 +39,7 @@ Mapy nie mają jednak tego samego poziomu informacji i dokładności dla wszystk
 
 ## <a name="asia-pacific"></a>Azja i Pacyfik
 
-|Kraj/region   |Zdarzenia  |Ruch  |
+|Kraj/region   |Zdarzenia  |Przepływ  |
 |---------|:---------:|:---------:|
 |Australia     |✓         |✓        |
 |Brunei   |✓         |✓        |
@@ -58,7 +58,7 @@ Mapy nie mają jednak tego samego poziomu informacji i dokładności dla wszystk
 
 ## <a name="europe"></a>Europa
 
-|Kraj/region   |Zdarzenia  |Ruch  |
+|Kraj/region   |Zdarzenia  |Przepływ  |
 |---------|:---------:|:---------:|
 |Andora   |✓         |✓         |
 |Austria     |✓         |✓         |
@@ -73,7 +73,7 @@ Mapy nie mają jednak tego samego poziomu informacji i dokładności dla wszystk
 |Finlandia     |✓         |✓         |
 |\+ Wyspy Åland      |✓         |✓         |
 |Francja     |✓         |✓         |
-|Monaco     |✓         |✓         |
+|Monako     |✓         |✓         |
 |Niemcy     |✓         |✓         |
 |Grecja     |✓         |✓         |
 |Węgry     |✓         |✓         |
@@ -87,7 +87,7 @@ Mapy nie mają jednak tego samego poziomu informacji i dokładności dla wszystk
 |Litwa     |✓         |✓         |
 |Luksemburg     |✓         |✓         |
 |Malta     |✓         |✓         |
-|Monaco   |✓         |✓         |
+|Monako   |✓         |✓         |
 |Holandia     |✓         |✓         |
 |Norwegia     |✓         |✓         |
 |Polska     |✓         |✓         |
@@ -116,12 +116,12 @@ Mapy nie mają jednak tego samego poziomu informacji i dokładności dla wszystk
 
 ## <a name="middle-east-and-africa"></a>Bliski Wschód i Afryka
 
-|Kraj/region |Zdarzenia  |Ruch  |
+|Kraj/region |Zdarzenia  |Przepływ  |
 |---------|:---------:|:---------:|
 |Bahrajn     |✓         |✓         |
 |Egipt     |✓         |✓         |
 |Izrael     |✓         |✓         |
-|Kenya     |✓         |✓         |
+|Kenia     |✓         |✓         |
 |Kuwejt     |✓         |✓         |
 |Maroko     |✓         |✓         |
 |Mozambik  |✓         |✓         |

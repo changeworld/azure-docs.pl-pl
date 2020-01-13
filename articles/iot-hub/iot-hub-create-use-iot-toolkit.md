@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/04/2019
 ms.author: junhan
-ms.openlocfilehash: 3fe4dfae2e86d549056805e87c0fd3927697fe24
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 668087ae596688e86b7b84a16bc5c0fd0f9fcef6
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73890564"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75912246"
 ---
 # <a name="create-an-iot-hub-using-the-azure-iot-tools-for-visual-studio-code"></a>Tworzenie Centrum IoT Hub przy użyciu narzędzi Azure IoT Tools for Visual Studio Code
 
@@ -30,15 +30,15 @@ Aby wykonać ten artykuł, potrzebne są następujące elementy:
 
 - [Narzędzia usługi Azure IoT](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) dla programu Visual Studio Code.
 
-## <a name="create-an-iot-hub"></a>Tworzenie centrum IoT Hub
+## <a name="create-an-iot-hub"></a>Tworzenie centrum IoT
 
-1. W Visual Studio Code Otwórz widok **Eksploratora** .
+1. W programie Visual Studio Code Otwórz **Explorer** widoku.
 
-2. W dolnej części Eksploratora rozwiń sekcję **usługi Azure IoT Hub Devices** . 
+2. W dolnej części Eksploratora rozwiń **Azure IoT Hub Devices** sekcji. 
 
    ![Rozwiń węzeł Azure IoT Hub Devices](./media/iot-hub-create-use-iot-toolkit/azure-iot-hub-devices.png)
 
-3. Kliknij pozycję **...** w nagłówku sekcji **urządzenia IoT Hub Azure** . Jeśli nie widzisz wielokropka, umieść kursor nad nagłówkiem. 
+3. Kliknij pozycję **...**  w **Azure IoT Hub Devices** nagłówek sekcji. Jeśli nie widzisz wielokropka, umieść kursor nad nagłówka. 
 
 4. Wybierz pozycję **utwórz IoT Hub**.
 
@@ -64,4 +64,4 @@ Teraz wdrożono Centrum IoT przy użyciu narzędzi Azure IoT Tools for Visual St
 
 * [Korzystanie z narzędzi Azure IoT Tools dla Visual Studio Code na potrzeby zarządzania urządzeniami IoT Hub platformy Azure](iot-hub-device-management-iot-toolkit.md)
 
-* [Zobacz stronę typu wiki zestawu narzędzi platformy Azure IoT Hub](https://github.com/microsoft/vscode-azure-iot-toolkit/wiki).
+* [Zapoznaj się ze stroną usługi IoT Hub Azure dla vs Code wiki](https://github.com/microsoft/vscode-azure-iot-toolkit/wiki).

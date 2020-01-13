@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: kierowanie pojazdów elektrycznych przy użyciu Azure Notebooks (Python)'
-description: 'Samouczek: kierowanie pojazdów elektrycznych przy użyciu Azure Maps interfejsów API routingu i Azure Notebooks.'
+title: 'Samouczek: kierowanie pojazdów elektrycznych przy użyciu Azure Notebooks (Python) | Mapy Microsoft Azure'
+description: Kierowanie pojazdów elektrycznych przy użyciu Microsoft Azure Maps Routing interfejsów API i Azure Notebooks.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 11/12/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 7039cd73263388f206075a53d7898e0d15da6b03
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: f45859370ae178fb186399fdd2648bf37f0985aa
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75613690"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910900"
 ---
 # <a name="tutorial-route-electric-vehicles-by-using-azure-notebooks-python"></a>Samouczek: kierowanie pojazdów elektrycznych przy użyciu Azure Notebooks (Python)
 

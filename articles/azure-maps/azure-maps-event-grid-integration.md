@@ -1,6 +1,6 @@
 ---
-title: Reagowanie na zdarzenia usługi Azure Maps za pomocą usługi Event Grid | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak reagować na zdarzenia usługi Azure Maps za pomocą usługi Event Grid.
+title: Reagowanie na zdarzenia mapy za pomocą Event Grid | Mapy Microsoft Azure
+description: W tym artykule dowiesz się, jak reagować na Microsoft Azure mapowanie zdarzeń przy użyciu Event Grid.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 02/08/2019
@@ -9,36 +9,36 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: a70011b934398ac4e7f74bb67013e93bb5e86e4e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9a946d189706c9c789ab884670d13b0b3e7fcb0c
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60799156"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911811"
 ---
-# <a name="react-to-azure-maps-events-by-using-event-grid"></a>Reagowanie na zdarzenia usługi Azure Maps za pomocą usługi Event Grid 
+# <a name="react-to-azure-maps-events-by-using-event-grid"></a>Reagowanie na zdarzenia Azure Maps przy użyciu Event Grid 
 
-Tak, aby można było wysyłać powiadomienia o zdarzeniach do innych usług i procesy podrzędne wyzwalacza usługi Azure Maps integruje się z usługą Azure Event Grid. Celem tego artykułu jest pomocne w konfigurowaniu aplikacji biznesowych do nasłuchiwania zdarzeń usługi Azure Maps, dzięki czemu pozwala reagować na krytyczne zdarzenia w niezawodny, skalowalny i bezpieczny sposób. Na przykład utworzyć aplikację, która wykonuje wiele operacji, takich jak aktualizacja bazy danych, tworząc bilet i dostarczania wiadomość e-mail z powiadomieniem za każdym razem, gdy urządzenie wejdzie w wirtualnym ogrodzeniu.
+Azure Maps integruje się z Azure Event Grid, aby można było wysyłać powiadomienia o zdarzeniach do innych usług i wyzwalać procesy podrzędne. W tym artykule opisano, jak skonfigurować aplikacje biznesowe do nasłuchiwania zdarzeń Azure Maps, dzięki czemu można reagować na krytyczne zdarzenia w niezawodny, skalowalny i bezpieczny sposób. Na przykład skompiluj aplikację wykonującą wiele akcji, takich jak aktualizowanie bazy danych, tworzenie biletu i dostarczanie powiadomienia e-mail za każdym razem, gdy urządzenie przejdzie do geofencingu.
 
-Azure Event Grid to w pełni zarządzanej usługi routingu zdarzeń korzystającej Publikuj — Subskrybuj modelu. Usługa Event Grid ma wbudowaną obsługę usług Azure, takich jak [usługi Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-overview) i [usługi Azure Logic Apps](https://docs.microsoft.com/azure/azure-functions/functions-overview)i mogą dostarczać alerty zdarzeń do usługi spoza platformy Azure przy użyciu elementów webhook. Aby uzyskać pełną listę obsługi zdarzeń, które obsługuje usługi Event Grid, zobacz [wprowadzenie do usługi Azure Event Grid](https://docs.microsoft.com/azure/event-grid/overview).
-
-
-![Usługa Azure Event Grid funkcjonalności modelu.](./media/azure-maps-event-grid-integration/azure-event-grid-functional-model.png)
+Azure Event Grid to w pełni zarządzana usługa routingu zdarzeń, która używa modelu publikowania/subskrybowania. Event Grid ma wbudowaną obsługę usług platformy Azure, takich jak [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-overview) i [Azure Logic Apps](https://docs.microsoft.com/azure/azure-functions/functions-overview), i mogą dostarczać alerty zdarzeń do usług innych niż Azure przy użyciu elementów webhook. Aby zapoznać się z pełną listą programów obsługi zdarzeń obsługiwanych przez Event Grid, zobacz [wprowadzenie do Azure Event Grid](https://docs.microsoft.com/azure/event-grid/overview).
 
 
-## <a name="azure-maps-events-types"></a>Typy zdarzeń usługi Azure Maps
+![Azure Event Grid model funkcjonalny](./media/azure-maps-event-grid-integration/azure-event-grid-functional-model.png)
 
-Korzysta z usługi Event grid [subskrypcji zdarzeń](https://docs.microsoft.com/azure/event-grid/concepts#event-subscriptions) aby komunikaty o zdarzeniach trasy dla subskrybentów. Konto usługi Azure Maps emituje następujące typy zdarzeń: 
+
+## <a name="azure-maps-events-types"></a>Typy zdarzeń Azure Maps
+
+Funkcja Event Grid używa [subskrypcji zdarzeń](https://docs.microsoft.com/azure/event-grid/concepts#event-subscriptions) do kierowania komunikatów o zdarzeniach do subskrybentów. Konto Azure Maps emituje następujące typy zdarzeń: 
 
 | Typ zdarzenia | Opis |
 | ---------- | ----------- |
-| Microsoft.Maps.GeofenceEntered | Wywoływane, gdy współrzędne Odebrano zostały przeniesione z poza danego wirtualnego ogrodzenia można w ciągu |
-| Microsoft.Maps.GeofenceExited | Wywoływane, gdy współrzędne Odebrano zostały przeniesione z w ramach danego wirtualnego ogrodzenia na zewnątrz |
-| Microsoft.Maps.GeofenceResult | Wywoływane za każdym razem, gdy zapytanie geofencing zwraca wynik, bez względu na stan |
+| Microsoft.Maps.GeofenceEntered | Wywoływane, gdy otrzymane współrzędne zostały przeniesione z zewnątrz danego elementu geołożonego do wewnątrz |
+| Microsoft.Maps.GeofenceExited | Wywoływane, gdy odebrane współrzędne przeniesiono z wewnątrz danego elementu geołożonego do zewnątrz |
+| Microsoft.Maps.GeofenceResult | Wywoływane za każdym razem, gdy zapytanie geofencingu zwraca wynik, niezależnie od stanu |
 
 ## <a name="event-schema"></a>Schemat zdarzeń
 
-Poniższy schemat Pokaż przykład GeofenceResult
+Poniższy przykład przedstawia schemat dla GeofenceResult
 
 ```JSON
 {   
@@ -76,17 +76,17 @@ Poniższy schemat Pokaż przykład GeofenceResult
 }
 ```
 
-## <a name="tips-for-consuming-events"></a>Wskazówki dotyczące używania zdarzenia
+## <a name="tips-for-consuming-events"></a>Porady dotyczące używania zdarzeń
 
-Aplikacje, które obsługują usługi Azure Maps wirtualnego ogrodzenia zdarzenia, należy wykonać kilka zalecanych rozwiązań:
+Aplikacje, które obsługują zdarzenia geofencingu Azure Maps powinny spełniać kilka zalecanych praktyk:
 
-* Wiele subskrypcji można skonfigurować do kierowanie zdarzeń do tego samego programu obsługi zdarzeń. Warto nie przyjęto założenie, że zdarzenia pochodzą z określonego źródła. Zawsze sprawdzaj temat wiadomość, aby upewnić się, że pochodzi on z źródła, których oczekujesz.
-* Komunikaty mogą pojawić się poza kolejnością, lub z opóźnieniem. Użyj `X-Correlation-id` pole w nagłówku odpowiedzi, aby dowiedzieć się, jeśli Twoje informacje o obiektach jest aktualny.
-* Gdy Get i POST wirtualnego ogrodzenia API jest wywoływana z parametrem mode równa `EnterAndExit`, Enter lub przycisk Zakończ zdarzenie jest generowane dla każdego geometrii w wirtualnym ogrodzeniu, dla których stan zmienił się z poprzedniego wywołania interfejsu API w wirtualnym ogrodzeniu.
+* Można skonfigurować wiele subskrypcji, aby kierować zdarzenia do tego samego programu obsługi zdarzeń. Ważne jest, aby nie założyć, że zdarzenia pochodzą z określonego źródła. Zawsze sprawdzaj temat wiadomości, aby upewnić się, że pochodzi od oczekiwanego źródła.
+* Komunikaty mogą być przychodzące z kolejności lub po opóźnieniu. Użyj pola `X-Correlation-id` w nagłówku odpowiedzi, aby zrozumieć, czy informacje o obiektach są aktualne.
+* Gdy interfejs API get i POST jest wywoływany z parametrem Mode ustawionym na `EnterAndExit`, zdarzenie Enter lub Exit jest generowane dla każdej geometrii w geoogrodzeniu, dla którego stan zmienił się od poprzedniego wywołania interfejsu API z geoogrodzeniem.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Aby dowiedzieć się więcej o sposobie używania wirtualnego grodzenia do operacji kontroli lokacji konstruowania, zobacz:
+Aby dowiedzieć się więcej o sposobach kontrolowania operacji w lokacji konstrukcja przy użyciu geofencingu, zobacz:
 
 > [!div class="nextstepaction"] 
-> [Konfigurowanie wirtualnego ogrodzenia przy użyciu usługi Azure Maps](tutorial-geofence.md)
+> [Konfigurowanie geoogrodzenia przy użyciu Azure Maps](tutorial-geofence.md)

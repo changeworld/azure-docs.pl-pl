@@ -1,6 +1,6 @@
 ---
-title: Pokrycie geokodowania w Azure Maps | Microsoft Docs
-description: Dowiedz się więcej o zapotrzebowaniu geokodowania w Microsoft Azure Maps i w których regionach/krajach można używać Azure Maps geocodeing.
+title: Pokrycie geokodowania | Mapy Microsoft Azure
+description: Proces konwertowania adresu lokalizacji na współrzędne geograficzne i Długość geograficzna jest znany jako geokodowania. Ten artykuł zawiera informacje na temat regionów z pokryciem geokodowania w Microsoft Azure Maps.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 12/31/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 4def947c13588cde57b55aeaa9d958eafa923093
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 38d25b7494f8b2f3e1abdac959edde8969d7d4c7
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75768813"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911625"
 ---
 # <a name="azure-maps-geocoding-coverage"></a>Pokrycie geokodowania Azure Maps
 

@@ -1,6 +1,6 @@
 ---
-title: Wyrażenia stylów oparte na danych w zestawie SDK sieci Web Azure Maps | Microsoft Docs
-description: Jak używać wyrażeń stylów opartych na danych w zestawie SDK sieci Web Azure Maps.
+title: Wyrażenia stylów oparte na danych w zestawie SDK sieci Web Azure Maps | Mapy Microsoft Azure
+description: Ten artykuł zawiera informacje na temat używania wyrażeń stylów opartych na danych w Microsoft Azure Maps Web SDK.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 4/4/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen
-ms.openlocfilehash: 6cd69ba8abe243daadf5d517ab7c5a224953cc99
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 8372012734d937da99c32d2d18fed91ae52c7444
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74480649"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911780"
 ---
 # <a name="data-driven-style-expressions-web-sdk"></a>Wyrażenia stylów oparte na danych (zestaw SDK sieci Web)
 
@@ -81,10 +81,10 @@ We wszystkich przykładach w tym dokumencie zostanie użyta następująca funkcj
 
 Wyrażenia danych zapewniają dostęp do danych właściwości w funkcji. 
 
-| Wyrażenie | Typ zwracany | Opis |
+| Wyrażenie | Zwracany typ | Opis |
 |------------|-------------|-------------|
 | `['at', number, array]` | obiekt | Pobiera element z tablicy. |
-| `['geometry-type']` | ciąg | Pobiera typ geometrii funkcji: punkt, MultiPoint, LineString, MultiLineString, Wielokąt, MultiPolygon. |
+| `['geometry-type']` | string | Pobiera typ geometrii funkcji: punkt, MultiPoint, LineString, MultiLineString, Wielokąt, MultiPolygon. |
 | `['get', string]` | wartość | Pobiera wartość właściwości z właściwości bieżącej funkcji. Zwraca wartość null, jeśli brakuje żądanej właściwości. |
 | `['get', string, object]` | wartość | Pobiera wartość właściwości z właściwości podanego obiektu. Zwraca wartość null, jeśli brakuje żądanej właściwości. |
 | `['has', string]` | wartość logiczna | Określa, czy właściwości funkcji mają określoną właściwość. |
@@ -139,7 +139,7 @@ Podobnie konspekt wielokątów będzie renderowany w warstwach liniowych. Aby wy
 
 Wyrażenia matematyczne zapewniają operatory matematyczne do wykonywania obliczeń opartych na danych w ramach struktury wyrażeń.
 
-| Wyrażenie | Typ zwracany | Opis |
+| Wyrażenie | Zwracany typ | Opis |
 |------------|-------------|-------------|
 | `['+', number, number, …]` | numer | Oblicza sumę podanych liczb. |
 | `['-', number]` | numer | Odejmuje 0 według podanej liczby. |
@@ -194,7 +194,7 @@ Wyrażenia logiczne zawierają zestaw wyrażeń operatorów logicznych do ocenia
 
 Porównując wartości, porównanie jest ściśle wpisane. Wartości różnych typów są zawsze uznawane za nierówne. Przypadki, w których typy muszą być różne w czasie analizy, są uważane za nieprawidłowe i spowodują błąd analizy. 
 
-| Wyrażenie | Typ zwracany | Opis |
+| Wyrażenie | Zwracany typ | Opis |
 |------------|-------------|-------------|
 | `['! ', boolean]` | wartość logiczna | Negacja logiczna. Zwraca `true`, jeśli dane wejściowe są `false`, i `false` Jeśli dane wejściowe są `true`. |
 | `['!= ', value, value]` | wartość logiczna | Zwraca `true`, jeśli wartości wejściowe nie są równe, `false` w przeciwnym razie. |
@@ -397,15 +397,15 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
 
 Wyrażenia typu dostarczają narzędzia do testowania i konwertowania różnych typów danych, takich jak ciągi, liczby i wartości logiczne.
 
-| Wyrażenie | Typ zwracany | Opis |
+| Wyrażenie | Zwracany typ | Opis |
 |------------|-------------|-------------|
 | `['literal', array]`<br/><br/>`['literal', object]` | Array \| — obiekt | Zwraca tablicę literałową lub wartość obiektu. Użyj tego wyrażenia, aby zapobiec ocenie tablicy lub obiektu jako wyrażenia. Jest to konieczne, gdy tablica lub obiekt musi zostać zwrócony przez wyrażenie. |
-| `['image', string]` | ciąg | Sprawdza, czy określony identyfikator obrazu jest ładowany do Sprite obrazu mapy. Jeśli jest, zwracany jest identyfikator, w przeciwnym razie zwracana jest wartość null. |
+| `['image', string]` | string | Sprawdza, czy określony identyfikator obrazu jest ładowany do Sprite obrazu mapy. Jeśli jest, zwracany jest identyfikator, w przeciwnym razie zwracana jest wartość null. |
 | `['to-boolean', value]` | wartość logiczna | Konwertuje wartość wejściową do wartości logicznej. Wynik jest `false`, gdy dane wejściowe są pustym ciągiem, `0`, `false`, `null`lub `NaN`. w przeciwnym razie `true`. |
 | `['to-color', value]`<br/><br/>`['to-color', value1, value2…]` | color | Konwertuje wartość wejściową na kolor. Jeśli podano wiele wartości, każda z nich jest szacowana w kolejności do momentu uzyskania pierwszej pomyślnej konwersji. Jeśli żadne dane wejściowe nie mogą być konwertowane, wyrażenie jest błędem. |
 | `['to-number', value]`<br/><br/>`['to-number', value1, value2, …]` | numer | Konwertuje wartość wejściową na liczbę, jeśli jest to możliwe. Jeśli dane wejściowe są `null` lub `false`, wynik wynosi 0. Jeśli dane wejściowe są `true`, wynik wynosi 1. Jeśli dane wejściowe są ciągami, są konwertowane na liczbę przy użyciu funkcji [ToNumber](https://tc39.github.io/ecma262/#sec-tonumber-applied-to-the-string-type) String specyfikacji języka ECMAScript. Jeśli podano wiele wartości, każda z nich jest szacowana w kolejności do momentu uzyskania pierwszej pomyślnej konwersji. Jeśli żadne dane wejściowe nie mogą być konwertowane, wyrażenie jest błędem. |
-| `['to-string', value]` | ciąg | Konwertuje wartość wejściową na ciąg. Jeśli dane wejściowe są `null`, wynik jest `""`. Jeśli dane wejściowe są wartością logiczną, wynik jest `"true"` lub `"false"`. Jeśli dane wejściowe są liczbami, są konwertowane na ciąg przy użyciu funkcji [ToString](https://tc39.github.io/ecma262/#sec-tostring-applied-to-the-number-type) Number specyfikacji języka ECMAScript. Jeśli dane wejściowe są kolorem, są konwertowane na ciąg koloru RGBA CSS `"rgba(r,g,b,a)"`. W przeciwnym razie dane wejściowe są konwertowane na ciąg przy użyciu funkcji [JSON. stringify](https://tc39.github.io/ecma262/#sec-json.stringify) specyfikacji języka ECMAScript. |
-| `['typeof', value]` | ciąg | Zwraca ciąg opisujący typ danej wartości. |
+| `['to-string', value]` | string | Konwertuje wartość wejściową na ciąg. Jeśli dane wejściowe są `null`, wynik jest `""`. Jeśli dane wejściowe są wartością logiczną, wynik jest `"true"` lub `"false"`. Jeśli dane wejściowe są liczbami, są konwertowane na ciąg przy użyciu funkcji [ToString](https://tc39.github.io/ecma262/#sec-tostring-applied-to-the-number-type) Number specyfikacji języka ECMAScript. Jeśli dane wejściowe są kolorem, są konwertowane na ciąg koloru RGBA CSS `"rgba(r,g,b,a)"`. W przeciwnym razie dane wejściowe są konwertowane na ciąg przy użyciu funkcji [JSON. stringify](https://tc39.github.io/ecma262/#sec-json.stringify) specyfikacji języka ECMAScript. |
+| `['typeof', value]` | string | Zwraca ciąg opisujący typ danej wartości. |
 
 > [!TIP]
 > Jeśli komunikat o błędzie podobny do `Expression name must be a string, but found number instead. If you wanted a literal array, use ["literal", [...]].` pojawia się w konsoli przeglądarki, oznacza to, że w kodzie znajduje się wyrażenie, które zawiera tablicę, która nie ma ciągu dla swojej pierwszej wartości. Jeśli chcesz, aby wyrażenie zwracało tablicę, zawiń tablicę za pomocą wyrażenia `literal`. Poniższy przykład ustawia ikonę `offset` opcji warstwy symboli, która musi być tablicą zawierającą dwie liczby, przy użyciu wyrażenia `match` do wyboru między dwiema wartościami przesunięcia na podstawie wartości właściwości `entityType` funkcji punktu.
@@ -433,7 +433,7 @@ Wyrażenia typu dostarczają narzędzia do testowania i konwertowania różnych 
 
 Wyrażenia kolorów ułatwiają tworzenie wartości kolorów i manipulowanie nimi.
 
-| Wyrażenie | Typ zwracany | Opis |
+| Wyrażenie | Zwracany typ | Opis |
 |------------|-------------|-------------|
 | `['rgb', number, number, number]` | color | Tworzy wartość koloru dla składników *czerwony*, *zielony*i *niebieski* , które muszą namieścić się w zakresie między `0` i `255`, i składnika alfa `1`. Jeśli dowolny składnik znajduje się poza zakresem, wyrażenie jest błędem. |
 | `['rgba', number, number, number, number]` | color | Tworzy wartość koloru na podstawie *czerwonych*, *zielonych*, *niebieskich* składników, które muszą należeć do zakresu `0` i `255`, i składnika alfa w zakresie `0` i `1`. Jeśli dowolny składnik znajduje się poza zakresem, wyrażenie jest błędem. |
@@ -461,11 +461,11 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 
 Wyrażenia operatora ciągu wykonują operacje konwersji na ciągach, takich jak łączenie i konwertowanie wielkości liter. 
 
-| Wyrażenie | Typ zwracany | Opis |
+| Wyrażenie | Zwracany typ | Opis |
 |------------|-------------|-------------|
-| `['concat', string, string, …]` | ciąg | Łączy wiele ciągów ze sobą. Każda wartość musi być ciągiem. Użyj wyrażenia typu `to-string`, aby przekonwertować inne typy wartości na ciąg w razie potrzeby. |
-| `['downcase', string]` | ciąg | Konwertuje określony ciąg na małe litery. |
-| `['upcase', string]` | ciąg | Konwertuje określony ciąg na wielkie litery. |
+| `['concat', string, string, …]` | string | Łączy wiele ciągów ze sobą. Każda wartość musi być ciągiem. Użyj wyrażenia typu `to-string`, aby przekonwertować inne typy wartości na ciąg w razie potrzeby. |
+| `['downcase', string]` | string | Konwertuje określony ciąg na małe litery. |
+| `['upcase', string]` | string | Konwertuje określony ciąg na wielkie litery. |
 
 **Przykład**
 
@@ -821,7 +821,7 @@ var layer = new atlas.layer.HeatMapLayer(datasource, null, {
 
 Wyrażenia powiązań zmiennych przechowują wyniki obliczeń w zmiennej, dzięki czemu można odwoływać się w innym miejscu w wyrażeniu wielokrotnie bez konieczności ponownego obliczania. Jest to przydatna Optymalizacja dla wyrażeń obejmujących wiele obliczeń
 
-| Wyrażenie | Typ zwracany | Opis |
+| Wyrażenie | Zwracany typ | Opis |
 |--------------|---------------|--------------|
 | \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;"let",<br/>&nbsp;&nbsp;&nbsp;&nbsp;Name1: ciąg,<br/>&nbsp;&nbsp;&nbsp;&nbsp;wartość1: any,<br/>&nbsp;&nbsp;&nbsp;&nbsp;NAME2: ciąg,<br/>&nbsp;&nbsp;&nbsp;&nbsp;wartość2: any,<br/>&nbsp;&nbsp;&nbsp;&nbsp;...<br/>&nbsp;&nbsp;&nbsp;&nbsp;childExpression<br/>\] | | Przechowuje co najmniej jedną wartość jako zmienne do użycia przez wyrażenie `var` w wyrażeniu podrzędnym zwracającym wynik. |
 | `['var', name: string]` | ile | Odwołuje się do zmiennej, która została utworzona przy użyciu wyrażenia `let`. |

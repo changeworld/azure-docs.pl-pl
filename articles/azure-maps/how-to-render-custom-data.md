@@ -1,6 +1,6 @@
 ---
-title: Jak renderować dane niestandardowe na mapie rastrowej w Azure Maps | Microsoft Docs
-description: W tym artykule dowiesz się, jak renderować dane niestandardowe na mapie rastrowej za pomocą usługi statycznego obrazu Azure Maps.
+title: Renderowanie niestandardowych danych na mapie rastrowej | Mapy Microsoft Azure
+description: W tym artykule dowiesz się, jak renderować dane niestandardowe na mapie rastrowej za pomocą usługi Microsoft Azure Maps static Image Service.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 07/29/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: b77cb73f08852768d10de8c76cde5e299f0776c2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c052ae1f7bab902dcd22b3cc081907468874b35c
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75408895"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911470"
 ---
 # <a name="render-custom-data-on-a-raster-map"></a>Renderowanie niestandardowych danych na mapie rastrowej
 

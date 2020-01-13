@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/18/2019
 ms.author: azcspmt;ayshak;cynthn
 ms.custom: include file
-ms.openlocfilehash: 78b73688306fb51278afba7283a1ea82af603349
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7705ea3b60d8c8e2b189ad555d1b53fa395aa1fb
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75459157"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75912524"
 ---
 Usługa Azure Compute oferuje różne rozmiary maszyn wirtualnych, które są izolowane pod kątem konkretnego rodzaju sprzętu i przeznaczone dla jednego klienta.  Te rozmiary maszyn wirtualnych są dostosowane do obciążeń wymagających wysokiego stopnia izolacji od innych klientów, a zwłaszcza obciążeń związanych z takimi elementami jak zgodność z przepisami i wymogi prawne.  Klienci mogą również dodatkowo podzielić zasoby tych izolowanych maszyn wirtualnych, korzystając z [pomocy technicznej platformy Azure dla zagnieżdżonych maszyn wirtualnych](https://azure.microsoft.com/blog/nested-virtualization-in-azure/).
 
@@ -30,7 +30,7 @@ Wykorzystanie wyizolowanego rozmiaru gwarantuje, że Twoja maszyna wirtualna bę
 Więcej informacji o każdym dostępnym rozmiarze izolowanym można znaleźć [tutaj](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory).
 
 ## <a name="retiring-d15_v2ds15_v2-isolation-on-february-15-2020"></a>Wycofanie izolacji D15_v2/DS15_v2 15 lutego 2020
-Dedykowany Host platformy Azure jest teraz dostępny, co umożliwia uruchamianie maszyn wirtualnych z systemem Linux i Windows na serwerach fizycznych z jedną dzierżawą. Planujemy w pełni zastąpić izolowane maszyny wirtualne platformy Azure za pomocą dedykowanego hosta platformy Azure. Po **15 lutego 2020** maszyny wirtualne D15_v2/DS15_v2 platformy Azure nie będą już izolowane sprzętowo.
+Dedykowany Host platformy Azure jest teraz dostępny, co umożliwia uruchamianie maszyn wirtualnych z systemem Linux i Windows na serwerach fizycznych z jedną dzierżawą. Planujemy w pełni zastąpić izolowane maszyny wirtualne platformy Azure za pomocą dedykowanego hosta platformy Azure. Po **15 lutego 2020** maszyny wirtualne platformy Azure D15_v2/DS15_v2 nie będą już izolowane sprzętowo.
 
 ## <a name="how-does-this-affect-me"></a>Jak to wpłynie na mnie?
 Po 15 lutego 2020 nie będą już udzielane gwarancje izolacji dla D15_v2/DS15_v2 maszyn wirtualnych platformy Azure. 

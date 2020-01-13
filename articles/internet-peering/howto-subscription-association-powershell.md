@@ -8,12 +8,12 @@ ms.service: internet-peering
 ms.topic: article
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: e7239fdedafedc96a382de6c3c2f90b5da4df00c
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 77cc4732e017d95cbae19578cf26b1111b08fdde
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75774252"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75908982"
 ---
 # <a name="associate-peer-asn-to-azure-subscription-using-powershell"></a>Kojarzenie równorzędnych elementów ASN z subskrypcją platformy Azure przy użyciu programu PowerShell
 
@@ -29,7 +29,24 @@ Jeśli wolisz, możesz ukończyć ten przewodnik przy użyciu [portalu](howto-su
 ### <a name="sign-in-to-your-azure-account-and-select-your-subscription"></a>Zaloguj się do konta platformy Azure i wybierz swoją subskrypcję
 [!INCLUDE [Account](./includes/account-powershell.md)]
 
+### <a name="register-for-peering-resource-provider"></a>Zarejestruj dla dostawcy zasobów komunikacji równorzędnej
+Zarejestruj się w przypadku dostawcy zasobów komunikacji równorzędnej w subskrypcji przy użyciu poniższego polecenia. Jeśli to nie zrobisz, zasoby platformy Azure wymagane do skonfigurowania komunikacji równorzędnej są niedostępne.
+
+```powershell
+Register-AzResourceProvider -ProviderNamespace Microsoft.Peering
+```
+
+Stan rejestracji można sprawdzić za pomocą poniższych poleceń:
+```powershell
+Get-AzResourceProvider -ProviderNamespace Microsoft.Peering
+```
+
+> [!IMPORTANT]
+> Poczekaj, aż *RegistrationState* "zarejestrowano" przed kontynuowaniem. Po wykonaniu polecenia może upłynąć od 5 do 30 minut.
+
 ### <a name="update-the-peer-information-associated-with-this-subscription"></a>Aktualizowanie informacji równorzędnych skojarzonych z tą subskrypcją
+
+Poniżej znajduje się przykład aktualizacji informacji o komunikacji równorzędnej.
 
 ```powershell
 New-AzPeerAsn `

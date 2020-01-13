@@ -1,6 +1,6 @@
 ---
-title: Jak zapewnić informacje zwrotne dotyczące danych Azure Maps | Microsoft Docs
-description: Prześlij opinię na temat danych za pomocą narzędzia do Azure Maps Opinie.
+title: Podaj dane zwrotne do Azure Maps | Mapy Microsoft Azure
+description: Prześlij opinię na temat danych za pomocą narzędzia do Microsoft Azure Maps — Opinie.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 08/19/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 28c463204080296e431edb3c30b4fdd66f07a189
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 59670742586f596a817ad52383160a38358a6786
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74776596"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911382"
 ---
 # <a name="provide-data-feedback-to-azure-maps"></a>Podaj dane zwrotne do Azure Maps
 
@@ -50,11 +50,11 @@ Jeśli lokalizacja numeru PIN dla miejsca jest nieprawidłowa, zaznacz pole wybo
 
   ![Przenieś lokalizację numeru PIN](./media/how-to-use-feedback-tool/move-pin.png)
 
-## <a name="add-a-comment"></a>Dodawanie komentarza 
+## <a name="add-a-comment"></a>Dodaj komentarz 
 
 Oprócz tego, aby wyszukać lokalizację, narzędzie do przesyłania opinii umożliwia również dodanie bezpłatnego komentarza do tekstu formularza w celu uzyskania szczegółowych informacji dotyczących lokalizacji. Aby dodać wyszukiwanie komentarzy do lokalizacji lub kliknij lokalizację, a następnie kliknij pozycję "Dodaj komentarz", Napisz komentarz, a następnie kliknij pozycję "Prześlij". 
 
-  ![Dodaj komentarz](./media/how-to-use-feedback-tool/add-comment.png)
+  ![dodaj komentarz](./media/how-to-use-feedback-tool/add-comment.png)
 
 ## <a name="track-status"></a>Śledzenie stanu 
 

@@ -1,6 +1,6 @@
 ---
-title: Szablony obrazów w zestawie SDK sieci Web Azure Maps | Microsoft Docs
-description: Jak używać szablonów obrazów w zestawie SDK sieci Web Azure Maps.
+title: Szablony obrazów w zestawie SDK sieci Web Azure Maps | Mapy Microsoft Azure
+description: W tym artykule dowiesz się, jak używać szablonów obrazów ze znacznikami HTML i różnymi warstwami w Microsoft Azure Maps Web SDK.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 8/6/2019
@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen
-ms.openlocfilehash: b9b1543ca37c636f4a82ff9ada3dfe212fa9b8d0
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: cb182a5db77a517b11fb1863665f8c54d58b254a
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976668"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911572"
 ---
 # <a name="how-to-use-image-templates"></a>Jak używać szablonów obrazów
 
-Obrazy mogą być używane przez znaczniki HTML i różne warstwy w Azure Maps Web SDK:
+Obrazy mogą być używane ze znacznikami HTML i różnymi warstwami w Azure Maps Web SDK:
 
  - Warstwy symboli mogą renderować punkty na mapie za pomocą ikony obrazu. Symbole mogą być również renderowane wzdłuż ścieżki linii.
  - Warstwy wielokątów mogą być renderowane przy użyciu obrazu deseniu wypełnienia. 
@@ -26,13 +26,13 @@ Obrazy mogą być używane przez znaczniki HTML i różne warstwy w Azure Maps W
 
 Aby zapewnić dobrą wydajność przy użyciu warstw, te obrazy muszą zostać załadowane do zasobu mapy ikon obrazu przed renderowaniem. [IconOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.iconoptions) SymbolLayer wstępnie ładuje kilka obrazów znaczników w kilkue kolory do ikon obrazu mapy domyślnie. Te same obrazy znaczników i inne są dostępne jako szablony SVG i mogą być używane do tworzenia obrazów z skalami niestandardowymi, a także kolorem podstawowym i pomocniczym klienta. W sumie dostępne są 42 szablony obrazów; 27 ikon symboli i 15 wzorców wypełnienia wielokąta.
 
-Szablony obrazów można dodawać do zasobów obrazu mapy Sprite przy użyciu `map.imageSprite.createFromTemplate` funkcji. Ta funkcja umożliwia przekazanie maksymalnie pięciu parametrów;
+Szablony obrazów można dodawać do zasobów Sprite obrazu mapy za pomocą funkcji `map.imageSprite.createFromTemplate`. Ta funkcja umożliwia przekazanie maksymalnie pięciu parametrów;
 
 ```javascript
 createFromTemplate(id: string, templateName: string, color?: string, secondaryColor?: string, scale?: number): Promise<void>
 ```
 
-`id` gdzie jest tworzony unikatowy identyfikator, który jest przypisywany do obrazu, gdy zostanie dodany do ikon obrazu mapy. Użyj tego identyfikatora w warstwach, aby określić, który zasób obrazu ma być renderowany. `templateName` Określa szablon obrazu, który ma być używany. Opcja ustawia kolor podstawowy obrazu `secondaryColor` , a opcje ustawia kolor pomocniczy obrazu. `color` `scale` Opcja skaluje szablon obrazu przed zastosowaniem go do ikonki obrazu. Gdy obraz zostanie zastosowany do ikon obrazu, jest konwertowany na PNG. Aby zapewnić wyraźne renderowanie, lepiej skalować szablon obrazu przed dodaniem go do Sprite, aby skalować go w warstwie.
+gdzie `id` jest unikatowym identyfikatorem tworzonym do obrazu, gdy zostanie on dodany do ikon obrazu mapy. Użyj tego identyfikatora w warstwach, aby określić, który zasób obrazu ma być renderowany. `templateName` Określa szablon obrazu, który ma być używany. Opcja `color` ustawia kolor podstawowy obrazu, a opcje `secondaryColor` ustawia kolor pomocniczy obrazu. Opcja `scale` skaluje szablon obrazu przed zastosowaniem go do ikonki obrazu. Gdy obraz zostanie zastosowany do ikon obrazu, jest konwertowany na PNG. Aby zapewnić wyraźne renderowanie, lepiej skalować szablon obrazu przed dodaniem go do Sprite, aby skalować go w warstwie.
 
 Ta funkcja asynchronicznie ładuje obraz do ikon obrazu i w ten sposób zwraca obietnicę, która może poczekać na ukończenie tej funkcji.
 
@@ -52,36 +52,36 @@ map.imageSprite.createFromTemplate('myTemplatedIcon', 'marker-flat', 'teal', '#f
 
 ## <a name="use-an-image-template-with-a-symbol-layer"></a>Używanie szablonu obrazu z warstwą symboli
 
-Po załadowaniu szablonu obrazu do ikonki obrazu mapy można go renderować jako symbol w warstwie symboli, odwołując się do identyfikatora zasobu obrazu w `image` opcji. `iconOptions`
+Po załadowaniu szablonu obrazu do ikonki obrazu mapy można go renderować jako symbol w warstwie symboli, odwołując się do identyfikatora zasobu obrazu w `image` opcji `iconOptions`.
 
-Poniższy przykład renderuje warstwę symboli przy użyciu `marker-flat` szablonu obrazu z pierwotnym kolorem podstawowym i białym kolorem pomocniczym. 
+Poniższy przykład renderuje warstwę symboli przy użyciu szablonu obrazu `marker-flat` z kolorem pierwszego rzędu zielonomodry i białym kolorem pomocniczym. 
 
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Warstwa symboli z wbudowanym szablonem ikony" src="//codepen.io/azuremaps/embed/VoQMPp/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Zobacz <a href='https://codepen.io/azuremaps/pen/VoQMPp/'>warstwę symboli pióra przy użyciu wbudowanego szablonu ikony</a> , Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) w <a href='https://codepen.io'>CodePen</a>.
+Zapoznaj się z <a href='https://codepen.io/azuremaps/pen/VoQMPp/'>warstwą symboli pióra przy użyciu wbudowanego szablonu ikony</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) w <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="use-an-image-template-along-a-lines-path"></a>Używanie szablonu obrazu wzdłuż ścieżki linii
 
-Po załadowaniu szablonu obrazu do ikonki obrazu mapy można go renderować wzdłuż ścieżki linii przez dodanie LineString do źródła danych i użycie warstwy symbol z `lineSpacing`opcją oraz przez odwołanie się do identyfikatora zasobu obrazu `image` w opcji o f ty `iconOptions`. 
+Po załadowaniu szablonu obrazu do ikonki obrazu mapy można go renderować wzdłuż ścieżki linii przez dodanie LineString do źródła danych i użycie warstwy symbol z opcją `lineSpacing`i odwołanie do identyfikatora zasobu obrazu w opcji `image` tego `iconOptions`. 
 
-Poniższy przykład renderuje różowy wiersz na mapie i używa warstwy symboli przy użyciu `car` szablonu obrazu z niebieski Dodger niebieskim kolorem podstawowym i białym kolorem pomocniczym. 
+Poniższy przykład renderuje różowy wiersz na mapie i używa warstwy symboli przy użyciu szablonu obrazu `car` z niebieski Dodger niebieskim kolorem podstawowym i białym kolorem pomocniczym. 
 
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Warstwa linii z wbudowanym szablonem ikony" src="//codepen.io/azuremaps/embed/KOQvJe/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Zobacz <a href='https://codepen.io/azuremaps/pen/KOQvJe/'>warstwę linii pióra przy użyciu wbudowanego szablonu ikony</a> , Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) w <a href='https://codepen.io'>CodePen</a>.
+Zapoznaj się z <a href='https://codepen.io/azuremaps/pen/KOQvJe/'>warstwą linii pióra przy użyciu wbudowanego szablonu ikony</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) w <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 > [!TIP]
-> Jeśli szablon obrazu zostanie utworzony, ustaw `rotation` opcję ikona warstwy symboli na 90, jeśli chcesz, aby wskazywała ona ten sam kierunek co linia.
+> Jeśli szablon obrazu zostanie utworzony, ustaw opcję `rotation` ikonę warstwy symbol na 90, jeśli ma ona wskazywać w tym samym kierunku co linia.
 
 ## <a name="use-an-image-template-with-a-polygon-layer"></a>Używanie szablonu obrazu z warstwą wielokątów
 
-Po załadowaniu szablonu obrazu do ikonki obrazu mapy można go renderować jako wzór wypełnienia w warstwie wielokąta, odwołując się do identyfikatora zasobu obrazu w `fillPattern` opcji warstwy.
+Po załadowaniu szablonu obrazu do ikonki obrazu mapy można go renderować jako wzór wypełnienia w warstwie wielokąta, odwołując się do identyfikatora zasobu obrazu w opcji `fillPattern` warstwy.
 
-Poniższy przykład renderuje warstwę wielokąta przy użyciu `dot` szablonu obrazu z czerwonym kolorem podstawowym i przezroczystym kolorem pomocniczym.  
+Poniższy przykład renderuje warstwę wielokątową przy użyciu szablonu obrazu `dot` z czerwonym kolorem podstawowym i przezroczystym kolorem pomocniczym.  
 
 <br/>
 
@@ -94,25 +94,25 @@ Zobacz <a href='https://codepen.io/azuremaps/pen/WVMEmz/'>Wielokąt wypełnienia
 
 ## <a name="use-an-image-template-with-an-html-marker"></a>Używanie szablonu obrazu z znacznikiem HTML
 
-Szablon obrazu można pobrać przy użyciu `altas.getImageTemplate` funkcji i używane jako zawartość znacznika HTML. `htmlContent` Szablon może być przekazywać do opcji znacznika, a następnie dostosowany `color`przy użyciu opcji, `secondaryColor`i `text` .
+Szablon obrazu można pobrać przy użyciu funkcji `altas.getImageTemplate` i użytej jako zawartość znacznika HTML. Szablon może być przesłany do opcji `htmlContent` znacznika, a następnie dostosowany przy użyciu opcji `color`, `secondaryColor`i `text`.
 
-Poniższy przykład używa `marker-arrow` szablonu z czerwonym kolorem podstawowym, różowym kolorem pomocniczym i wartością tekstową "00".
+Poniższy przykład używa szablonu `marker-arrow` z czerwonym kolorem podstawowym, różowym kolorem pomocniczym i wartością tekstową "00".
 
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Znacznik HTML z wbudowanym szablonem ikony" src="//codepen.io/azuremaps/embed/EqQvzq/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Zobacz <a href='https://codepen.io/azuremaps/pen/EqQvzq/'>znacznik HTML pióra przy użyciu wbudowanego szablonu ikony</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
+Zobacz <a href='https://codepen.io/azuremaps/pen/EqQvzq/'>znacznik HTML pióra przy użyciu wbudowanego szablonu ikony</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) w <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="create-custom-reusable-templates"></a>Tworzenie niestandardowych szablonów do wielokrotnego użytku
 
-Jeśli aplikacja używa tej samej ikony z różnymi ikonami lub jeśli tworzysz moduł, który dodaje dodatkowe szablony obrazów, można łatwo dodawać i pobierać te ikony z Azure Maps Web SDK przy użyciu następujących funkcji statycznych w `atlas` obszaru.
+Jeśli aplikacja używa tej samej ikony z różnymi ikonami lub jeśli tworzysz moduł, który dodaje dodatkowe szablony obrazów, można łatwo dodawać i pobierać te ikony z Azure Maps Web SDK przy użyciu następujących funkcji statycznych w przestrzeni nazw `atlas`.
 
-| Name (Nazwa) | Zwracany typ | Opis | 
+| Nazwa | Typ zwracany | Opis | 
 |-|-|-|
 | `addImageTemplate(templateName: string, template: string, override: boolean)` | | Dodaje niestandardowy szablon obrazu SVG do przestrzeni nazw szczytu. |
-|  `getImageTemplate(templateName: string, scale?: number)`| ciąg | Pobiera szablon SVG według nazwy. |
-| `getAllImageTemplateNames()` | ciąg [] |  Pobiera szablon SVG według nazwy. |
+|  `getImageTemplate(templateName: string, scale?: number)`| string | Pobiera szablon SVG według nazwy. |
+| `getAllImageTemplateNames()` | string[] |  Pobiera szablon SVG według nazwy. |
 
 Szablony obrazów SVG obsługują następujące wartości zastępcze:
 
@@ -128,7 +128,7 @@ Poniższy przykład pokazuje, jak zastosować szablon SVG i dodać go do Azure M
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Dodaj niestandardowy szablon ikon do obszaru nazw szczytu" src="//codepen.io/azuremaps/embed/NQyvEX/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Zobacz pióro <a href='https://codepen.io/azuremaps/pen/NQyvEX/'>Dodaj niestandardowy szablon ikony do obszaru nazw szczytu</a> według<a href='https://codepen.io/azuremaps'>@azuremaps</a>Azure Maps () na <a href='https://codepen.io'>CodePen</a>.
+Zobacz pióro <a href='https://codepen.io/azuremaps/pen/NQyvEX/'>Dodaj niestandardowy szablon ikony do obszaru nazw szczytu</a> według Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) w <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="list-of-image-templates"></a>Lista szablonów obrazów
@@ -139,32 +139,32 @@ Poniższa tabela zawiera listę wszystkich szablonów obrazu dostępnych obecnie
 
 |||||
 |:-:|:-:|:-:|:-:|
-| obrys | znacznik — gruby | znacznik — okrąg | znacznik — Flat |
+| Obrys | znacznik — gruby | znacznik — okrąg | znacznik — Flat |
 |![ikona znacznika](./media/image-templates/marker.png)|![ikona o szerokim znaczniku](./media/image-templates/marker-thick.png)|![znacznik — ikona okręgu](./media/image-templates/marker-circle.png)|![znacznik — ikona płaska](./media/image-templates/marker-flat.png)|
 ||||
 | znacznik — kwadrat | znacznik — kwadrat — klaster | znacznik — strzałka | znacznik — piłka — numer PIN | 
 |![znacznik — ikona kwadratu](./media/image-templates/marker-square.png)|![znacznik — prostokąt — ikona klastra](./media/image-templates/marker-square-cluster.png)|![ikona strzałki w dół](./media/image-templates/marker-arrow.png)|![znacznik — piłka — ikona pinezki](./media/image-templates/marker-ball-pin.png)|
 ||||
-| znacznik — zaokrąglony kwadrat | znacznik — zaokrąglony do kwadratu — klaster | znacznik | Flaga-Trójkąt |
+| znacznik — zaokrąglony kwadrat | znacznik — zaokrąglony do kwadratu — klaster | flag | Flaga-Trójkąt |
 | ![znacznik — ikona zaokrąglona kwadratowo](./media/image-templates/marker-square-rounded.png) | ![znacznik — zaokrąglony prostokąt-ikona klastra](./media/image-templates/marker-square-rounded-cluster.png) | ![ikona flagi](./media/image-templates/flag.png) | ![ikona trójkąta flaga](./media/image-templates/flag-triangle.png) |
 ||||
-| widoczny | Trójkąt — gruby | Trójkąt — Strzałka w górę | Trójkąt — Strzałka w lewo |
+| trójkąt | Trójkąt — gruby | Trójkąt — Strzałka w górę | Trójkąt — Strzałka w lewo |
 | ![ikona trójkąta](./media/image-templates/triangle.png) | ![ikona o szerokim trójkącie](./media/image-templates/triangle-thick.png) | ![Trójkąt — ikona strzałki w górę](./media/image-templates/triangle-arrow-up.png) | ![Trójkąt-Strzałka w lewo](./media/image-templates/triangle-arrow-left.png) |
 ||||
 | sześciokąt | sześciokątny | zaokrąglony | sześciokąt — zaokrąglony |
 | ![ikona sześciokątna](./media/image-templates/hexagon.png) | ![ikona o grubości sześciokątnej](./media/image-templates/hexagon-thick.png) | ![ikona z zaokrągleniem sześciokątnym](./media/image-templates/hexagon-rounded.png) | ![ikona z zaokrągleniem do grubości](./media/image-templates/hexagon-rounded-thick.png) |
 ||||
-| pinezka | kod PIN — Zaokrąglij | zaokrąglony kwadrat | zaokrąglona-kwadratowa |
+| Kod PIN | kod PIN — Zaokrąglij | zaokrąglony kwadrat | zaokrąglona-kwadratowa |
 | ![ikona przypinania](./media/image-templates/pin.png) | ![ikona z zaokrągleniem numeru PIN](./media/image-templates/pin-round.png) | ![ikona zaokrąglony kwadrat](./media/image-templates/rounded-square.png) | ![ikona o zaokrąglonej grubości kwadratowej](./media/image-templates/rounded-square-thick.png) |
 ||||
-| Strzałka w górę | Strzałka w górę — cienka | samochód ||
+| Strzałka w górę | Strzałka w górę — cienka | car ||
 | ![ikona strzałki w górę](./media/image-templates/arrow-up.png) | ![Strzałka w górę — ikona cienkiej](./media/image-templates/arrow-up-thin.png) | ![ikona samochodu](./media/image-templates/car.png) | |
 
 **Szablony deseni wypełnienia wielokąta**
 
 |||||
 |:-:|:-:|:-:|:-:|
-| kwestionuj | pion — obrócony | kółek | koła — w odstępach |
+| kwestionuj | pion — obrócony | okręgi | koła — w odstępach |
 | ![Ikona narzędzia do sprawdzania](./media/image-templates/checker.png) | ![Narzędzie sprawdzania — obrócona ikona](./media/image-templates/checker-rotated.png) | ![ikona okręgów](./media/image-templates/circles.png) | ![kółka — ikona odstępu](./media/image-templates/circles-spaced.png) |
 |||||
 | ukośne linie — w górę | ukośne linie — w dół | ukośne paski — w górę | ukośne paski — w dół |
@@ -183,7 +183,7 @@ Korzystając z następującego narzędzia, można renderować różne wbudowane 
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Opcje szablonu ikony" src="//codepen.io/azuremaps/embed/NQyaaO/?height=500&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Zobacz <a href='https://codepen.io/azuremaps/pen/NQyaaO/'>Opcje szablonu ikony</a> pióra według Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) w witrynie <a href='https://codepen.io'>CodePen</a>.
+Zobacz <a href='https://codepen.io/azuremaps/pen/NQyaaO/'>Opcje szablonu ikony</a> pióra według Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="next-steps"></a>Następne kroki

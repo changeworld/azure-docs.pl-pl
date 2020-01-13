@@ -4,14 +4,15 @@ description: Dowiedz się, jak skonfigurować klucze zarządzane przez klienta d
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 01/09/2020
+ms.date: 01/11/2020
 ms.author: thweiss
-ms.openlocfilehash: 32266abd5bcf8d7e137095d130ee872cc07edaf0
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ROBOTS: noindex, nofollow
+ms.openlocfilehash: 964c3e4e2de43e6bcae353f0b525eb62e6613361
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75904083"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911858"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-cosmos-db-account"></a>Konfigurowanie kluczy zarządzanych przez klienta dla konta Azure Cosmos DB
 
@@ -30,13 +31,13 @@ Obecnie klucze zarządzane przez klienta są dostępne tylko dla nowych kont i n
 
 ### <a name="1-make-sure-the-azure-cosmos-db-resource-provider-is-registered-for-your-azure-subscription"></a>1. Upewnij się, że dostawca zasobów Azure Cosmos DB został zarejestrowany dla Twojej subskrypcji platformy Azure
 
-W Azure Portal przejdź do subskrypcji platformy Azure i wybierz pozycję "dostawcy zasobów" z menu po lewej stronie:
+W Azure Portal przejdź do subskrypcji platformy Azure i wybierz pozycję **dostawcy zasobów** z menu po lewej stronie:
 
 ![Wpis "dostawcy zasobów" z menu po lewej stronie](./media/how-to-setup-cmk/portal-rp.png)
 
-Wyszukaj dostawcę zasobów "Microsoft. DocumentDB".
+Wyszukaj dostawcę zasobów **Microsoft. DocumentDB** .
 - Jeśli dostawca zasobów został już oznaczony jako zarejestrowany, nie trzeba nic robić.
-- Jeśli nie, zaznacz ją i kliknij pozycję "Zarejestruj":
+- Jeśli nie, zaznacz ją i kliknij pozycję **zarejestruj**się:
 
     ![Rejestrowanie dostawcy zasobów Microsoft. DocumentDB](./media/how-to-setup-cmk/portal-rp-register.png)
 
@@ -50,34 +51,34 @@ Aby dowiedzieć się, jak włączyć te właściwości na istniejącym wystąpie
 
 ### <a name="3-add-an-access-policy-to-your-azure-key-vault-instance"></a>3. Dodaj zasady dostępu do wystąpienia Azure Key Vault
 
-W Azure Portal przejdź do wystąpienia Azure Key Vault, które ma być używane do hostowania kluczy szyfrowania. Następnie wybierz pozycję "zasady dostępu" w menu po lewej stronie:
+W Azure Portal przejdź do wystąpienia Azure Key Vault, które ma być używane do hostowania kluczy szyfrowania. Następnie wybierz pozycję **zasady dostępu** w menu po lewej stronie:
 
 !["Zasady dostępu" z menu po lewej stronie](./media/how-to-setup-cmk/portal-akv-ap.png)
 
-- Kliknij pozycję "+ Dodaj zasady dostępu"
-- W menu rozwijanym "uprawnienia klucza" Wybierz pozycję "Pobierz", "Odpakuj klucz" i "Zawijanie klucza":
+- Wybierz pozycję **+ Dodaj zasady dostępu**
+- W menu rozwijanym **uprawnienia klucza** wybierz pozycję **Pobierz**, **Odpakuj klucz** i **Zawijaj klucz**:
 
     ![Wybieranie odpowiednich uprawnień](./media/how-to-setup-cmk/portal-akv-add-ap-perm2.png)
 
-- W obszarze "Wybierz podmiot zabezpieczeń" kliknij pozycję "Brak wybranych", Wyszukaj i wybierz podmiot zabezpieczeń "Azure Cosmos DB", a następnie kliknij pozycję "Wybierz" u dołu (jeśli nie można odnaleźć podmiotu zabezpieczeń "Azure Cosmos DB", konieczne może być ponowne zarejestrowanie zasobu "Microsoft. DocumentDB" Dostawca w kroku 2):
+- W obszarze **Wybierz podmiot zabezpieczeń**wybierz pozycję **nie wybrano**. Następnie wyszukaj i wybierz **Azure Cosmos DB** podmiotu zabezpieczeń. Na koniec kliknij pozycję **Wybierz** u dołu (jeśli nie można znaleźć **Azure Cosmos DB** podmiotu zabezpieczeń, konieczne może być ponowne zarejestrowanie dostawcy zasobów **Microsoft. DocumentDB** w kroku 1):
 
     ![Wybieranie Azure Cosmos DB podmiotu zabezpieczeń](./media/how-to-setup-cmk/portal-akv-add-ap.png)
 
-- Kliknij przycisk "Dodaj", aby dodać nowe zasady dostępu
+- Wybierz pozycję **Dodaj** , aby dodać nowe zasady dostępu
 
 ### <a name="4-generate-a-key-in-azure-key-vault"></a>4. Wygeneruj klucz w Azure Key Vault
 
-W Azure Portal przejdź do wystąpienia Azure Key Vault, którego planujesz użyć do hostowania kluczy szyfrowania. Następnie wybierz pozycję "klucze" w menu po lewej stronie:
+W Azure Portal przejdź do wystąpienia Azure Key Vault, którego planujesz użyć do hostowania kluczy szyfrowania. Następnie wybierz pozycję **klucze** z menu po lewej stronie:
 
 ![Wpis "klucze" z menu po lewej stronie](./media/how-to-setup-cmk/portal-akv-keys.png)
 
-- Kliknij pozycję "Generuj/Importuj"
-- Podaj nazwę nowego klucza, wybierz rozmiar klucza RSA (co najmniej 3072 zaleca się, aby uzyskać najlepsze zabezpieczenia), a następnie kliknij pozycję "Utwórz":
+- Wybierz pozycję **Generuj/Importuj**
+- Podaj nazwę nowego klucza, wybierz rozmiar klucza RSA (co najmniej 3072 jest zalecane w celu uzyskania najlepszego zabezpieczenia) i wybierz pozycję **Utwórz**:
 
     ![Tworzenie nowego klucza](./media/how-to-setup-cmk/portal-akv-gen.png)
 
 - Po utworzeniu klucza kliknij nowo utworzony klucz, a następnie w jego bieżącej wersji
-- Skopiuj klucz "Identyfikator klucza" z wyjątkiem części po ostatnim ukośniku:
+- Skopiuj **Identyfikator klucza** klucza z wyjątkiem części po ostatnim ukośniku:
 
     ![Kopiowanie identyfikatora klucza klucza](./media/how-to-setup-cmk/portal-akv-keyid.png)
 
@@ -85,15 +86,18 @@ W Azure Portal przejdź do wystąpienia Azure Key Vault, którego planujesz uży
 
 #### <a name="using-the-azure-portal"></a>Korzystanie z witryny Azure Portal
 
-Podczas tworzenia nowego konta Azure Cosmos DB z Azure Portal wybierz pozycję "klucz zarządzany przez klienta" w kroku "szyfrowanie". W polu "klucz URI" Przekaż identyfikator URI klucza Azure Key Vault skopiowanego z kroku 4:
+Podczas tworzenia nowego konta Azure Cosmos DB z Azure Portal, wybierz opcję **klucz zarządzany przez klienta** w kroku **szyfrowanie** . W polu **Identyfikator URI klucza** Przekaż identyfikator URI klucza Azure Key Vault skopiowanego z kroku 4:
 
 ![Ustawianie parametrów CMK w Azure Portal](./media/how-to-setup-cmk/portal-cosmos-enc.png)
 
 #### <a name="using-powershell"></a>Używanie programu PowerShell
 
 Podczas tworzenia nowego konta Azure Cosmos DB przy użyciu programu PowerShell
-- Przekaż identyfikator URI klucza Azure Key Vault skopiowanego z kroku 4 we właściwości "keyVaultKeyUri" w "Propertyobject",
+- Przekaż identyfikator URI klucza Azure Key Vault skopiowanego z kroku 4 we właściwości **keyVaultKeyUri** w **właściwościobject**,
 - Upewnij się, że jako wersja interfejsu API jest używana wartość "2019-12-12".
+
+> [!IMPORTANT]
+> Należy jawnie ustawić parametr `Location`, aby konto zostało pomyślnie utworzone za pomocą CMK.
 
 ```powershell
 $resourceGroupName = "myResourceGroup"
@@ -118,10 +122,13 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
 #### <a name="using-azure-resource-manager-templates"></a>Korzystanie z szablonów Azure Resource Manager
 
 Podczas tworzenia nowego konta Azure Cosmos DB przy użyciu szablonu Azure Resource Manager:
-- Przekaż identyfikator URI klucza Azure Key Vault skopiowanego z kroku 4 we właściwości "keyVaultKeyUri" w obiekcie "Properties" (właściwości).
+- Przekaż identyfikator URI klucza Azure Key Vault skopiowanego z kroku 4 we właściwości **keyVaultKeyUri** w obiekcie **Properties**
 - Upewnij się, że jako wersja interfejsu API jest używana wartość "2019-12-12"
 
-```
+> [!IMPORTANT]
+> Należy jawnie ustawić parametr `location`, aby konto zostało pomyślnie utworzone za pomocą CMK.
+
+```json
 {
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",

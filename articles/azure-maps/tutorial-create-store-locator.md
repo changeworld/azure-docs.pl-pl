@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Tworzenie lokalizatora sklepu przy użyciu Azure Maps'
-description: 'Samouczek: Tworzenie lokalizatora sklepu za pomocą Azure Maps.'
+title: 'Samouczek: Tworzenie aplikacji lokalizatora sklepu przy użyciu Azure Maps | Mapy Microsoft Azure'
+description: W tym samouczku dowiesz się, jak utworzyć aplikację sieci Web lokalizatora magazynu za pomocą Microsoft Azure Maps Web SDK.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 11/12/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: b5ce78e95d139cf16b6193fedffc563513b39719
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 830641ae1421b799ab8e7d8b47a1c1a6e38419cf
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75408041"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910965"
 ---
 # <a name="tutorial-create-a-store-locator-by-using-azure-maps"></a>Samouczek: Tworzenie lokalizatora sklepu za pomocą Azure Maps
 
@@ -43,13 +43,13 @@ Zanim przejdziesz do kodu, dobrze jest zacząć od projektu. Lokalizator sklepó
 
 <center>
 
-![szkieletem lokalizatora magazynu dla lokalizacji warsztatów systemu kawowego firmy Contoso](./media/tutorial-create-store-locator/SimpleStoreLocatorWireframe.png)</center>
+![szkieletem aplikacji lokalizatora sklepu dla lokalizacji warsztatów firmy Contoso](./media/tutorial-create-store-locator/SimpleStoreLocatorWireframe.png)</center>
 
 Aby zmaksymalizować przydatność tego lokalizatora sklepów, dołączymy układ dynamiczny, który dostosowuje się, jeśli szerokość ekranu użytkownika jest mniejsza niż 700 pikseli. Układ dynamiczny ułatwia używanie lokalizatora sklepów na małym ekranie, na przykład na urządzeniu przenośnym. Poniżej przedstawiono szkielet układu dla małego ekranu:  
 
 <center>
 
-![szkieletem lokalizatora magazynu kawy firmy Contoso na urządzeniu przenośnym](./media/tutorial-create-store-locator/SimpleStoreLocatorMobileWireframe.png)</center>
+![szkieletem aplikacji lokalizatora magazynu kawy firmy Contoso na urządzeniu przenośnym](./media/tutorial-create-store-locator/SimpleStoreLocatorMobileWireframe.png)</center>
 
 Powyższe szkielety pokazują dość prostą aplikację. Aplikacja zawiera pole wyszukiwania, listę pobliskich sklepów, mapę z kilkoma znacznikami (symbolami) i okno podręczne, które wyświetla dodatkowe informacje, gdy użytkownik wybierze znacznik. Poniżej znajduje się bardziej szczegółowa lista funkcji wbudowanych w lokalizatorze sklepów w tym samouczku:
 

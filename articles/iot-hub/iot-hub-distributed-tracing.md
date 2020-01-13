@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: jlian
-ms.openlocfilehash: 4cd4cffdb0357b1cd73b1613e52c2a6c1a60f71e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fc861126cd723bbb0f7c43d5d2db4eed1503605a
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457056"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911898"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>Śledzenie komunikatów z urządzenia do chmury w usłudze Azure IoT z rozproszonym śledzeniem (wersja zapoznawcza)
 
@@ -208,15 +208,15 @@ Aby zmienić procent komunikatów, które mają być śledzone z chmury, należy
 
 1. Obowiązkowe Zmień częstotliwość próbkowania na inną wartość i obserwuj zmianę częstotliwości, jaką komunikaty zawierają `tracestate` we właściwościach aplikacji.
 
-### <a name="update-using-azure-iot-hub-toolkit-for-vs-code"></a>Aktualizowanie za pomocą narzędzia Azure IoT Hub Toolkit dla VS Code
+### <a name="update-using-azure-iot-hub-for-vs-code"></a>Aktualizowanie za pomocą usługi Azure IoT Hub dla VS Code
 
-1. Zainstaluj VS Code, a następnie zainstaluj najnowszą wersję zestawu narzędzi platformy Azure IoT Hub na potrzeby VS Code z tego [miejsca](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools).
+1. Zainstaluj VS Code a następnie zainstaluj najnowszą wersję usługi Azure IoT Hub na potrzeby VS Code z tego [miejsca](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools).
 
 1. Otwórz VS Code i [skonfiguruj IoT Hub parametry połączenia](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit#user-content-prerequisites).
 
 1. Rozwiń urządzenie i Wyszukaj **ustawienia śledzenia rozproszonego (wersja zapoznawcza)** . W obszarze IT kliknij pozycję **Aktualizuj rozproszone śledzenie ustawień (wersja zapoznawcza)** węzła podrzędnego.
 
-    ![Włączanie śledzenia rozproszonego w usłudze Azure IoT Hub Toolkit](./media/iot-hub-distributed-tracing/update-distributed-tracing-setting-1.png)
+    ![Włącz śledzenie rozproszone w rozszerzeniu usługi Azure IoT Hub](./media/iot-hub-distributed-tracing/update-distributed-tracing-setting-1.png)
 
 1. W oknie podręcznym wybierz pozycję **Włącz**, a następnie naciśnij klawisz ENTER, aby potwierdzić 100 jako częstotliwość próbkowania.
 

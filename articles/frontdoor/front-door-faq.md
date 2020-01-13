@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2019
 ms.author: sharadag
-ms.openlocfilehash: 39051014e5e474264a44983fb366bc08f02c31e0
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: dd315277e6e8f29a103760d605a7da4603190c20
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75639858"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75908872"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door-service"></a>Często zadawane pytania dotyczące usługi Azure Front drzwiczk
 
@@ -99,7 +99,7 @@ Aby zablokować aplikację w celu akceptowania tylko ruchu pochodzącego z okre�
     > Przestrzeń adresów IP zaplecza z drzwiami może ulec zmianie później, jednak zapewnimy, że przed takim wdrożeniem będziemy zintegrowane z [zakresem adresów IP i tagami usług platformy Azure](https://www.microsoft.com/download/details.aspx?id=56519). Zalecamy, aby zasubskrybować [zakresy adresów IP platformy Azure i Tagi usług](https://www.microsoft.com/download/details.aspx?id=56519) dla wszelkich zmian lub aktualizacji.
 
 -   Filtrowanie wartości dla przychodzącego nagłówka "**X-forwardd-Host**" wysyłanego przez przód drzwi. Jedyne dozwolone wartości nagłówka to wszystkie hosty frontonu, zgodnie z definicją w konfiguracji drzwi do przodu. W rzeczywistości jeszcze bardziej szczegółowo tylko nazwy hostów, dla których ma zostać zaakceptowany ruch, w tym konkretnym zaplecze.
-    - Przykład: Załóżmy, że konfiguracja drzwi do przodu zawiera następujące hosty frontonu _`contoso.azurefd.net`_ (A), _`www.contoso.com`_ (B), _ (C) i _`notifications.contoso.com`_ (D). Załóżmy, że masz dwa punkty końcowe X i Y. 
+    - Przykład: Załóżmy, że konfiguracja drzwi do przodu obejmuje następujące hosty frontonu _`contoso.azurefd.net`_ (A), _`www.contoso.com`_ (B), _`api.contoso.com`_ (C) i _`notifications.contoso.com`_ (D). Załóżmy, że masz dwa punkty końcowe X i Y. 
     - Zaplecze X powinien przyjmować tylko ruch z nazw hostów a i B. zaplecze t może przyjmować ruch z, C i D.
     - Dlatego w zapleczu X należy akceptować tylko ruch, który ma nagłówek "**X-Forward-Host**" ustawiony na wartość _`contoso.azurefd.net`_ lub _`www.contoso.com`_ . W przypadku wszystkich innych elementów zaplecza X powinna odrzucać ruch.
     - Podobnie, w przypadku zaplecza t należy akceptować tylko ruch z nagłówkiem "**X-Forward-Host**" ustawionym na wartość _`contoso.azurefd.net`_ , _`api.contoso.com`_ lub _`notifications.contoso.com`_ . W przypadku wszystkich innych elementów zaplecza t powinna odrzucać ruch.

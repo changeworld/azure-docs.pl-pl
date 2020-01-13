@@ -1,6 +1,6 @@
 ---
-title: Zarządzanie kontem Azure Maps | Microsoft Docs
-description: Azure Portal można użyć do zarządzania kontem Azure Maps.
+title: Zarządzanie kontem Azure Maps w witrynie Azure Portal | Mapy Microsoft Azure
+description: W tym artykule dowiesz się, jak za pomocą Azure Portal zarządzać kontem Microsoft Azure Maps.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 02/14/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: a5697989696d0d375e52baeb9f7332e7013d16bf
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 92c76780473372c3e2ef87cdf4da0f21a22d9ac6
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75768847"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911497"
 ---
 # <a name="manage-your-azure-maps-account"></a>Zarządzanie kontem Azure Maps
 
@@ -31,13 +31,13 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 4. Wprowadź informacje dotyczące nowego konta.
 
-![Wprowadzanie informacji o koncie w portalu](./media/how-to-manage-account-keys/new-account-portal.png)
+![Wprowadź informacje o koncie Azure Maps w Azure Portal](./media/how-to-manage-account-keys/new-account-portal.png)
 
 ## <a name="delete-an-account"></a>Usuwanie konta
 
 Konto można usunąć z Azure Portal. Przejdź do strony Przegląd konta i wybierz pozycję **Usuń**.
 
-![Usuwanie konta w portalu](./media/how-to-manage-account-keys/account-delete-portal.png)
+![Usuń konto Azure Maps w Azure Portal](./media/how-to-manage-account-keys/account-delete-portal.png)
 
 Zostanie wyświetlona strona potwierdzenia. Można potwierdzić usunięcie konta, wpisując jego nazwę.
 

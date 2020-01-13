@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/04/2019
 ms.author: junhan
-ms.openlocfilehash: 03997bb6999af9ebaad36cc95f7834e3b9ed4569
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 9d4d82472664900c96b77b31740573d0463465b8
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73953206"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911904"
 ---
 # <a name="use-azure-iot-tools-for-visual-studio-code-for-azure-iot-hub-device-management"></a>Korzystanie z narzędzi Azure IoT Tools for Visual Studio Code na potrzeby zarządzania urządzeniami IoT Hub platformy Azure
 
@@ -71,7 +71,7 @@ Uruchom narzędzia Azure IoT Tools dla Visual Studio Code z różnymi opcjami za
 
 2. Wprowadź nazwę metody i ładunek w polu wejściowym.
 
-3. Wyniki będą wyświetlane w **danych wyjściowych** > widoku **zestawu narzędzi platformy Azure IoT Hub** .
+3. Wyniki będą wyświetlane w **danych wyjściowych** > widoku **IoT Hub platformy Azure** .
 
 ## <a name="read-device-twin"></a>Odczytaj sznurki urządzenia
 
@@ -95,7 +95,7 @@ Aby wysłać komunikat z usługi IoT Hub do urządzenia, wykonaj następujące k
 
 2. Wprowadź komunikat w polu wejściowym.
 
-3. Wyniki będą wyświetlane w **danych wyjściowych** > widoku **zestawu narzędzi platformy Azure IoT Hub** .
+3. Wyniki będą wyświetlane w **danych wyjściowych** > widoku **IoT Hub platformy Azure** .
 
 ## <a name="next-steps"></a>Następne kroki
 

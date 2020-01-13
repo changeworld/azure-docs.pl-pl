@@ -1,6 +1,6 @@
 ---
-title: Dodaj warstwę symboli do Azure Maps | Microsoft Docs
-description: Jak dodać symbole do Azure Maps Web SDK.
+title: Dodawanie warstwy symboli do mapy | Mapy Microsoft Azure
+description: W tym artykule dowiesz się, jak za pomocą warstwy symboli dostosowywać i dodawać symbole na mapie przy użyciu zestawu SDK sieci Web Microsoft Azure Maps.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 07/29/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: fff73801d20333a6df5e7952d02ed664c17fe40b
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 744d5ecd3aab02071f7c3aaff7dd760fc14a2a62
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74480617"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911162"
 ---
 # <a name="add-a-symbol-layer-to-a-map"></a>Dodawanie warstwy symboli do mapy
 

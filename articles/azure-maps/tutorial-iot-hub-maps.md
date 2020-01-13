@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: implementowanie analizy przestrzennej IoT przy użyciu Azure Maps'
-description: 'Samouczek: integracja IoT Hub z interfejsami API usługi Azure Maps.'
+title: 'Samouczek: implementowanie analizy przestrzennej usługi IoT | Mapy Microsoft Azure'
+description: Integruj IoT Hub z interfejsami API usługi Maps Microsoft Azure.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 11/12/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 6c35b52149e3c0117c727771d38d0f010180fc63
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: cf2c5aceae0112187949ded78bea8e93e8723084
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432813"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910991"
 ---
 # <a name="tutorial-implement-iot-spatial-analytics-using-azure-maps"></a>Samouczek: implementowanie analizy przestrzennej IoT przy użyciu Azure Maps
 

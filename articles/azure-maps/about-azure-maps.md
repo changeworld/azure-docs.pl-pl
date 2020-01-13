@@ -1,6 +1,6 @@
 ---
-title: Omówienie usługi Azure Maps | Microsoft Docs
-description: Wprowadzenie do usługi Azure Maps
+title: Przegląd | Mapy Microsoft Azure
+description: Ten artykuł zawiera informacje na temat usług i możliwości dostępnych w Microsoft Azure Maps i sposobach ich użycia w aplikacjach.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 02/04/2019
@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: dbcb0e87159efc7cc33101cdd5eee55afbdf3c10
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 353850cacb06dcc8a0db1b957114db314d7002a3
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516635"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911848"
 ---
 # <a name="what-is-azure-maps"></a>Co to jest usługa Azure Maps?
 
-Azure Maps jest kolekcją usług geoprzestrzennych, które używają danych do odwzorowania w celu zapewnienia dokładnego kontekstu geograficznego w aplikacjach sieci Web i mobilnych. Azure Maps zapewnia:
+Azure Maps to zbiór usług geoprzestrzennych opartych na aktualnych danych mapowych, zapewniający dokładny kontekst geograficzny do użycia w aplikacjach internetowych i mobilnych. Azure Maps zapewnia:
 
 * Interfejsy API REST do renderowania map w wielu stylach i obrazach satelitarnych.
 * Wyszukuje adresy, miejsca i punkty zainteresowania na całym świecie.
@@ -90,9 +90,9 @@ Usługa Route Service oferuje wersję zapoznawczą zaawansowanych funkcji, takic
 
 Aby uzyskać szczegółowe informacje o możliwościach routingu, zapoznaj się z [dokumentacją interfejsu API tras](https://docs.microsoft.com/rest/api/maps/route).
 
-### <a name="search-service"></a>Usługa wyszukiwania
+### <a name="search-service"></a>Search Service
 
-Usługa Search ułatwia deweloperom wyszukiwanie adresów, miejsc, aukcji w biznesie według nazwy lub kategorii oraz innych informacji geograficznych. Usługa wyszukiwania może [odwrócić](https://en.wikipedia.org/wiki/Reverse_geocoding) adresy geokodowe i krzyżyki na podstawie Latitudes i długości geograficznej.
+Usługa Search ułatwia deweloperom wyszukiwanie adresów, miejsc, aukcji w biznesie według nazwy lub kategorii oraz innych informacji geograficznych. Usługa wyszukiwania może [odwrócić adresy geokodowe](https://en.wikipedia.org/wiki/Reverse_geocoding) i krzyżyki na podstawie Latitudes i długości geograficznej.
 
 ![Przykład wyszukiwania na mapie](media/about-azure-maps/Introduction_Search.png)
 
@@ -145,8 +145,8 @@ Aby uzyskać szczegółowe informacje na temat tej usługi, Przeczytaj [dokument
 
 Usługa ruchu to pakiet usług sieci Web, za pomocą których deweloperzy mogą tworzyć aplikacje internetowe i mobilne, które wymagają informacji o ruchu. Usługa udostępnia dwa typy danych:
 
-* Przepływ ruchu: Szybkość i czas podróży w czasie rzeczywistym dla wszystkich kluczowych dróg w sieci.
-* Zdarzenia dotyczące ruchu: Aktualny widok zakleszczenia ruchu i zdarzeń w sieci drogowej.
+* Przepływ ruchu: zaobserwowane szybkości i czasy podróży dla wszystkich kluczowych dróg w sieci.
+* Zdarzenia dotyczące ruchu: aktualny widok zakleszczenia ruchu i zdarzeń w sieci drogowej.
 
 ![Przykład mapy z informacjami o ruchu](media/about-azure-maps/Introduction_Traffic.png)
 
@@ -179,12 +179,12 @@ Interfejsy API Azure Maps są obecnie dostępne we wszystkich krajach/regionach,
 
 Zweryfikuj, czy lokalizacja Twojego bieżącego adresu IP nie znajduje się w jednym z nieobsługiwanych krajów wymienionych powyżej.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Wypróbuj przykładową aplikację, która przedstawia Azure Maps:
 
 > [!div class="nextstepaction"]
-> [Szybki start: Tworzenie aplikacji sieci Web](quick-demo-map-app.md)
+> [Szybki Start: Tworzenie aplikacji sieci Web](quick-demo-map-app.md)
 
 Bądź na bieżąco z Azure Maps: 
 

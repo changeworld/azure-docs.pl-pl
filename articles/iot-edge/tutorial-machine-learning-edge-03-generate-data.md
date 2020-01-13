@@ -8,12 +8,12 @@ ms.date: 11/11/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: d51a577b8a460e872b2baddcb668b13981609e40
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 1c56dd23084feabeb72f084b03e055d4aa09a11d
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707743"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75912265"
 ---
 # <a name="tutorial-generate-simulated-device-data"></a>Samouczek: generowanie danych symulowanego urządzenia
 
@@ -111,7 +111,7 @@ Teraz, gdy mamy już kompilację projektu, Połącz się z Centrum IoT Hub, aby 
 
    Jeśli nie widzisz monitu, wybierz klawisz ENTER.
 
-1. Wprowadź `dotnet run` w terminalu.
+1. Wprowadź w terminalu polecenie `dotnet run`.
 
 1. Po wyświetleniu monitu o parametry połączenia IoT Hub wklej parametry połączenia skopiowane w poprzedniej sekcji.
 
@@ -123,7 +123,7 @@ Teraz, gdy mamy już kompilację projektu, Połącz się z Centrum IoT Hub, aby 
 
 1. Komunikaty wysyłane do centrum można wyświetlić, klikając prawym przyciskiem myszy dowolne urządzenie i wybierając pozycję **Rozpocznij monitorowanie wbudowanego punktu końcowego zdarzenia**. Komunikaty będą wyświetlane w okienku danych wyjściowych w Visual Studio Code.
 
-1. Zatrzymaj monitorowanie, klikając w okienku danych wyjściowych **zestaw narzędzi platformy Azure IoT Hub** i wybierz pozycję **Zatrzymaj monitorowanie wbudowanego punktu końcowego zdarzenia**.
+1. Zatrzymaj monitorowanie, klikając w okienku danych wyjściowych **IoT Hub Azure** , a następnie wybierz pozycję **Zatrzymaj monitorowanie wbudowanego punktu końcowego zdarzenia**.
 
 1. Pozwól, aby aplikacja działała, co potrwa kilka minut.
 

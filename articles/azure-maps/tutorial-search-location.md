@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: wyszukiwanie przy użyciu Azure Maps'
-description: 'Samouczek: wyszukiwanie w pobliżu punktu orientacyjnego za pomocą Azure Maps'
+title: 'Samouczek: wyszukiwanie lokalizacji w pobliżu mapy | Mapy Microsoft Azure'
+description: W tym samouczku dowiesz się, jak wyszukiwać lokalizacje w pobliżu (punkty orientacyjne) na mapie przy użyciu Microsoft Azure Maps.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 11/12/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: ae2d7b3d855f1c06397d4eb0f977dd04aa841942
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 65a091dbe935967d63a11c3c40dd834207f34782
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432733"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910825"
 ---
 # <a name="tutorial-search-nearby-points-of-interest-using-azure-maps"></a>Samouczek: Wyszukiwanie punktów orientacyjnych w pobliżu za pomocą Azure Maps
 
@@ -49,7 +49,7 @@ Utwórz nowe konto usługi Maps, wykonując następujące czynności:
     * Zapoznaj się z *Licencją* oraz *Zasadami zachowania poufności informacji* i zaznacz pole wyboru, aby zaakceptować warunki.
     * Kliknij przycisk **Utwórz**.
 
-![Tworzenie konta usługi Maps w portalu](./media/tutorial-search-location/create-account.png)
+![Utwórz konto Azure Maps w Azure Portal](./media/tutorial-search-location/create-account.png)
 
 <a id="getkey"></a>
 
@@ -61,7 +61,7 @@ Po pomyślnym utworzeniu konta usługi Maps pobierz klucz, który umożliwia wys
 2. W sekcji Ustawienia wybierz pozycję **uwierzytelnianie**.
 3. Skopiuj **klucz podstawowy** do schowka. Zapisz go lokalnie — będzie używany w dalszej części tego samouczka.
 
-![Pobieranie klucza podstawowego w portalu](./media/tutorial-search-location/get-key.png)
+![Pobierz klucz podstawowy w Azure Portal](./media/tutorial-search-location/get-key.png)
 
 Aby uzyskać więcej informacji na temat uwierzytelniania w Azure Maps, zobacz [Zarządzanie uwierzytelnianiem w programie Azure Maps](how-to-manage-authentication.md).
 

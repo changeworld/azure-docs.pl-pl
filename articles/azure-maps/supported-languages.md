@@ -1,6 +1,6 @@
 ---
-title: Obsługa lokalizacji w Azure Maps | Microsoft Docs
-description: Informacje o obsługiwanych językach dla usług w Azure Maps
+title: Obsługa lokalizacji | Mapy Microsoft Azure
+description: W tym artykule przedstawiono informacje o obsługiwanych językach dla usług w Microsoft Azure Maps.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 11/20/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 64197cc85822997926a8011af8cb3b981fa9064d
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: 4926cb2bb4cb1aa15b212cc7130e0db995a24ed9
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74286419"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910432"
 ---
 # <a name="localization-support-in-azure-maps"></a>Obsługa lokalizacji w Azure Maps
 
@@ -25,7 +25,7 @@ Azure Maps obsługuje różne języki i widoki na podstawie kraju/regionu. W tym
 Azure Maps zostały zlokalizowane w różnych językach w ramach usług. W poniższej tabeli przedstawiono obsługiwane kody języka dla każdej usługi.  
   
 
-| ID         | Nazwa                   |  Maps | Wyszukaj | Routing | Pogoda | Zdarzenia dotyczące ruchu | Formant mapy JS |
+| ID         | Nazwa                   |  Mapy | Search | Wyznaczanie tras | Pogoda | Zdarzenia dotyczące ruchu | Formant mapy JS |
 |------------|------------------------|:-----:|:------:|:-------:|:--------:|:-----------------:|:--------------:|
 | af-ZA      | Afrikaans              |       |    ✓   |    ✓    |         |                   |                |
 | ar-SA      | Arabski                 |   ✓   |    ✓   |    ✓    |    ✓      |         ✓         |        ✓       |
@@ -35,7 +35,7 @@ Azure Maps zostały zlokalizowane w różnych językach w ramach usług. W poni�
 | EU-ES      | Baskijski                 |       |    ✓   |         |         |                   |                |
 | bg-BG      | Bułgarski              |   ✓   |    ✓   |    ✓    |     ✓     |                   |        ✓       |
 | ES urzędu certyfikacji      | Kataloński                |       |    ✓   |         |    ✓      |                   |                |
-| zh-HanS    | Chiński (uproszczony)   |       |  zh-CN |         |     zh-CN   |                   |                |
+| zh-HanS    | Chiński uproszczony   |       |  zh-CN |         |     zh-CN   |                   |                |
 | zh-HanT    | Chiński (SRA Hongkong)  |  |   |    |    zh-HK   |                   |           |
 | zh-HanT    | Chiński (Tajwan)  | zh-TW |  zh-TW |  zh-TW  |    zh-TW   |                   |      zh-TW     |
 | hr-HR      | Chorwacki               |       |    ✓   |         |    ✓      |                   |                |
@@ -45,20 +45,20 @@ Azure Maps zostały zlokalizowane w różnych językach w ramach usług. W poni�
 | NL-NL      | Holenderski (Holandia)    |   ✓   |    ✓   |    ✓    |     ✓     |         ✓         |        ✓       |
 | EN-AU      | Angielski (Australia)    |   ✓   |    ✓   |    ✓    |     ✓     |         ✓         |        ✓       |
 | EN NZ      | Angielski (Nowa Zelandia)  |   ✓   |    ✓   |    ✓    |     ✓     |         ✓         |        ✓       |
-| en-GB      | Angielski (Zjednoczone Królestwo) |   ✓   |    ✓   |    ✓    |     ✓     |         ✓         |        ✓       |
-| en-US      | Angielski (USA)          |   ✓   |    ✓   |    ✓    |      ✓    |         ✓         |        ✓       |
+| en-GB      | Angielski (Wielka Brytania) |   ✓   |    ✓   |    ✓    |     ✓     |         ✓         |        ✓       |
+| pl-PL      | Angielski (USA)          |   ✓   |    ✓   |    ✓    |      ✓    |         ✓         |        ✓       |
 | et-EE      | Estoński               |       |    ✓   |         |      ✓    |         ✓         |                |
 | PLI — PH     | Filipino               |       |       |         |     ✓    |                   |                |
 | fi-FI      | Fiński                |   ✓   |    ✓   |    ✓    |      ✓    |         ✓         |        ✓       |
 | fr-FR      | Francuski                 |   ✓   |    ✓   |    ✓    |      ✓    |         ✓         |        ✓       |
 | fr-CA      | Francuski (Kanada)      |       |    ✓   |         |     ✓     |                   |                |
-| GL — ES      | Galicyjski               |       |    ✓   |         |         |                   |                |
+| gl-ES      | Galicyjski               |       |    ✓   |         |         |                   |                |
 | de-DE.      | Niemiecki                 |   ✓   |    ✓   |    ✓    |   ✓      |         ✓         |        ✓       |
 | el-GR      | Grecki                  |   ✓   |    ✓   |    ✓    |    ✓     |         ✓         |        ✓       |
-| gu      | Gudżarati                |       |       |         |     ✓    |                   |                |
+| gu      | Gujarati                |       |       |         |     ✓    |                   |                |
 | HE-IL      | Hebrajski                 |       |    ✓   |         |     ✓    |         ✓         |                |
 | w      | Hindi                  |       |        |         |     ✓    |                   |                |
-| hu-HU      | Węgierski              |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
+| hu-HU      | węgierski              |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
 | IS-IS      | Islandzki              |       |       |         |     ✓    |                   |                |
 | id-ID      | Indonezyjski             |   ✓   |    ✓    |    ✓    |     ✓    |         ✓         |        ✓       |
 | IT-IT      | Włoski                |   ✓   |    ✓   |    ✓    |      ✓   |         ✓         |        ✓       |
@@ -67,7 +67,7 @@ Azure Maps zostały zlokalizowane w różnych językach w ramach usług. W poni�
 | kk-KZ      | Kazachski                 |       |    ✓   |         |     ✓    |                   |                |
 | ko-KR      | Koreański                 |   ✓   |        |    ✓    |     ✓    |                   |        ✓       |
 | es-419     | Łaciński (Ameryka Łacińska) |       |    ✓   |         |         |                   |                |
-| LV — LV      | Łotewski                |       |    ✓   |         |     ✓    |         ✓         |                |
+| lv-LV      | Łotewski                |       |    ✓   |         |     ✓    |         ✓         |                |
 | lt-LT      | Litewski             |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
 | mk — MK      | Macedonii             |       |       |         |     ✓    |                   |                |
 | ms-MY      | Malajski (łaciński)          |   ✓   |    ✓   |    ✓    |    ✓   |                   |        ✓       |
@@ -78,11 +78,11 @@ Azure Maps zostały zlokalizowane w różnych językach w ramach usług. W poni�
 | pl-PL      | Polski                 |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
 | pt-BR      | Portugalski (Brazylia)    |   ✓   |    ✓   |    ✓    |      ✓   |                   |        ✓       |
 | pt-PT      | Portugalski (Portugalia)  |   ✓   |    ✓   |    ✓    |      ✓   |         ✓         |        ✓       |
-| PA-IN      | Pendżabski                 |       |       |         |     ✓    |                   |                |
+| PA-IN      | Punjabi                 |       |       |         |     ✓    |                   |                |
 | RO RO      | Rumuński               |       |    ✓    |         |     ✓    |         ✓         |                |
 | ru-RU      | Rosyjski                |   ✓   |    ✓   |    ✓    |      ✓   |         ✓         |        ✓       |
 | sr-Cyrl-RS | Serbski (Cyrylica)     |       |   Wirtualizacja SR-RS  |         |    Wirtualizacja SR-RS     |                   |                |
-| sr-latn-RS | Serbski (łaciński)        |       |       |         |     Wirtualizacja sr-latn    |                   |                |
+| sr-Latn-RS | Serbski (łaciński)        |       |       |         |     Wirtualizacja sr-latn    |                   |                |
 | sk-SK      | Słowacki             |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
 | sl-SL      | Słoweński              |   ✓   |    ✓   |    ✓    |     ✓    |                   |        ✓       |
 | es-ES      | Hiszpański                |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
@@ -148,7 +148,7 @@ Domyślnie parametr widoku jest ustawiony na **ujednolicony**, nawet jeśli nie 
 
 W poniższej tabeli przedstawiono obsługiwane widoki.
 
-| Widok         | Opis                            |  Maps | Wyszukaj | kontrolka mapy JS |
+| Wyświetl         | Opis                            |  Mapy | Search | kontrolka mapy JS |
 |--------------|----------------------------------------|:-----:|:------:|:--------------:|
 | AE           | Zjednoczone Emiraty Arabskie (widok arabski)    |   ✓   |        |     ✓          |
 | AR           | Argentyna (widok argentyński)           |   ✓   |    ✓   |     ✓          |
