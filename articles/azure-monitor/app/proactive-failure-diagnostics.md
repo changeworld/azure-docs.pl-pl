@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 12/18/2018
 ms.reviewer: yalavi
-ms.openlocfilehash: 1eebb41c83071f34cf367826a21c4bfbf0189394
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: c556f726cd63971abe1e9b6d8b87117bb3e378db
+ms.sourcegitcommit: e9776e6574c0819296f28b43c9647aa749d1f5a6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749008"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75912853"
 ---
 # <a name="smart-detection---failure-anomalies"></a>Wykrywanie inteligentne — anomalie błędów
 [Application Insights](../../azure-monitor/app/app-insights-overview.md) automatycznie alarmuje użytkownika w czasie niemal rzeczywistym, jeśli aplikacja sieci Web napotyka nietypowy wzrost liczby żądań zakończonych niepowodzeniem. Wykrywa nietypowy wzrost liczby żądań HTTP lub wywołań zależności zgłaszanych jako zakończone niepowodzeniem. W przypadku żądań żądania zakończone niepowodzeniem zazwyczaj mają kody odpowiedzi 400 lub wyższe. Aby ułatwić Klasyfikacja i zdiagnozowanie problemu, analiza charakterystyk błędów i powiązanych danych aplikacji znajduje się w szczegółach alertu. Istnieją także linki do portalu Application Insights w celu przeprowadzenia dalszej diagnostyki. Ta funkcja nie wymaga konfigurowania ani konfiguracji, ponieważ używa algorytmów uczenia maszynowego do przewidywania normalnego współczynnika niepowodzeń.
@@ -48,13 +48,11 @@ Po wyzwoleniu analizy usługa wykonuje analizę klastra dla żądania zakończon
 
 W powyższym przykładzie analiza wykryła, że większość błędów dotyczy określonego kodu wynikowego, nazwy żądania, hosta adresu URL serwera i wystąpienia roli. 
 
-Z drugiej strony analiza wykryła, że właściwość systemu operacyjnego klienta jest dystrybuowana na wiele wartości i dlatego nie jest wyświetlana na liście.
-
 Gdy usługa jest Instrumentacją tych wywołań, Analizator szuka wyjątku i awarii zależności, które są skojarzone z żądaniami w klastrze, który zidentyfikował, wraz z przykładem wszystkich dzienników śledzenia skojarzonych z tymi żądaniami.
 
 Wyniki analizy są wysyłane do Ciebie jako alert, chyba że skonfigurowano go w taki sposób, aby nie został skonfigurowany.
 
-Podobnie jak w [przypadku alertów ustawionych ręcznie](../../azure-monitor/app/alerts.md), można sprawdzić stan alertu i skonfigurować go na stronie alertów zasobu Application Insights. Ale w przeciwieństwie do innych alertów nie trzeba konfigurować ani konfigurować inteligentnego wykrywania. Jeśli chcesz, możesz ją wyłączyć lub zmienić docelowe adresy e-mail.
+Podobnie jak w przypadku [alertów ustawionych ręcznie](../../azure-monitor/app/alerts.md), można sprawdzić stan wygenerowanego alertu, który można rozwiązać, jeśli problem został rozwiązany. Skonfiguruj reguły alertów na stronie Alerty zasobu Application Insights. Ale w przeciwieństwie do innych alertów nie trzeba konfigurować ani konfigurować inteligentnego wykrywania. Jeśli chcesz, możesz ją wyłączyć lub zmienić docelowe adresy e-mail.
 
 ### <a name="alert-logic-details"></a>Szczegóły logiki alertu
 
@@ -63,6 +61,7 @@ Alerty są wyzwalane przez swój własny algorytm uczenia maszynowego, dlatego n
 * Analiza procentu niepowodzenia żądań/zależności w przedziale czasu na 20 minut.
 * Porównanie procentu niepowodzenia z ostatnich 20 minut z szybkością w ciągu ostatnich 40 minut i ostatnich siedmiu dni i wyszukiwanie znaczących odchyleń, które przekraczają X-Times w przypadku odchylenia standardowego.
 * Użycie limitu adaptacyjnego dla procentu minimalnej awarii, który różni się w zależności od liczby żądań/zależności aplikacji.
+* Istnieje logika, która może automatycznie rozpoznać wygenerowanego stanu monitora alertów, jeśli problem nie zostanie już wykryty przez 8-24 godzin.
 
 ## <a name="configure-alerts"></a>Konfigurowanie alertów
 
@@ -83,7 +82,7 @@ Kliknij alert, aby go skonfigurować.
 
 [![](./media/proactive-failure-diagnostics/032.png "Rule configuration screen")](./media/proactive-failure-diagnostics/032.png#lightbox)
 
-Należy zauważyć, że można wyłączyć wykrywanie inteligentne, ale nie można go usunąć (lub utworzyć innego).
+Należy zauważyć, że można wyłączyć lub usunąć regułę alertów o anomalii niepowodzeń, ale nie można utworzyć kolejnej na tym samym Application Insights zasobów.
 
 ## <a name="example-of-failure-anomalies-alert-webhook-payload"></a>Przykład ładunku elementu webhook alertu dotyczącego anomalii awarii
 

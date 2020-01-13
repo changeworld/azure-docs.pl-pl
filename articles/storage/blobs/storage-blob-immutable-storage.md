@@ -9,12 +9,12 @@ ms.date: 11/18/2019
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: 61a8cf366d5ae03f5267718f8ab20580295ddab5
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.openlocfilehash: 473f1d12188a8686748d19c8c35d4421f9477ae9
+ms.sourcegitcommit: e9776e6574c0819296f28b43c9647aa749d1f5a6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75903437"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75912794"
 ---
 # <a name="store-business-critical-blob-data-with-immutable-storage"></a>Przechowywanie kluczowych dla działalności danych obiektów blob z niezmiennym magazynem
 
@@ -80,7 +80,7 @@ Tylko zasady przechowywania oparte na czasie mają ustawienie `allowProtectedApp
 
 Ponieważ to ustawienie jest częścią zasad przechowywania opartych na czasie, Dodawanie obiektów BLOB nadal pozostaje w niezmiennym stanie przez okres *obowiązywania obowiązującego* okresu przechowywania. Ponieważ nowe dane mogą być dołączane poza początkowym tworzeniem obiektu BLOB dołączania, istnieje niewielka różnica w sposobie określania okresu przechowywania. Efektywne przechowywanie jest różnicą między **czasem ostatniej modyfikacji** obiektu BLOB i interwałem przechowywania określonym przez użytkownika. Podobnie gdy Interwał przechowywania jest rozszerzony, niezmienny magazyn używa najnowszej wartości interwału przechowywania określonego przez użytkownika, aby obliczyć obowiązujący okres przechowywania.
 
-Załóżmy na przykład, że użytkownik tworzy zasady przechowywania oparte na czasie z włączonym `allowProtectedAppendWrites` i interwałem przechowywania wynoszącym 90 dni. W kontenerze zostanie utworzony obiekt BLOB append, _logblob1_, nowe dzienniki są nadal dodawane do dołączanego obiektu BLOB przez następne 10 dni; w związku z tym obowiązuje okres przechowywania _logblob1_ przez 100 dni od dzisiaj (godzina ostatniej modyfikacji/dołączenia).
+Załóżmy na przykład, że użytkownik tworzy zasady przechowywania oparte na czasie z włączonym `allowProtectedAppendWrites` i interwałem przechowywania wynoszącym 90 dni. W kontenerze zostanie utworzony obiekt BLOB append, _logblob1_, nowe dzienniki są nadal dodawane do dołączanego obiektu BLOB przez następne 10 dni; w związku z tym obowiązuje okres przechowywania _logblob1_ przez 100 dni od dzisiaj (godzina ostatniego dołączenia + 90 dni).
 
 Zablokowane zasady przechowywania oparte na czasie umożliwiają włączenie i wyłączenie ustawienia `allowProtectedAppendWrites` w dowolnym momencie. Po zablokowaniu zasad przechowywania na podstawie czasu nie można zmienić ustawienia `allowProtectedAppendWrites`.
 

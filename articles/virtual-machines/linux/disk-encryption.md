@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-linux
 ms.subservice: disks
-ms.openlocfilehash: f5a7e9f1248f9a73786fb9c4a6ecb32691400881
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 61e45a5d13da7af42bbed273e5b39ce2af15d1ca
+ms.sourcegitcommit: e9776e6574c0819296f28b43c9647aa749d1f5a6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894926"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75912740"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Szyfrowanie po stronie serwera dla usługi Azure Managed disks
 
@@ -67,13 +67,14 @@ Obecnie obsługiwane są tylko następujące scenariusze:
 
 Na razie mamy również następujące ograniczenia:
 
-- **Dostępna tylko w regionach zachodnie stany USA, Południowo-środkowe stany USA, Wschodnie stany USA 2, Wschodnie stany USA, zachodnie stany USA 2, Europa Środkowa i Europa Północna.**
+- Dostępna jako nasza oferta w regionach Wschodnie stany USA, zachodnie stany USA 2 i Południowo-środkowe stany USA.
+- Dostępna jako publiczna wersja zapoznawcza w regionach zachodnie stany USA, Wschodnie stany USA 2, Kanada Środkowa i Europa Północna.
 - Dyski utworzone na podstawie obrazów niestandardowych zaszyfrowanych przy użyciu szyfrowania po stronie serwera i kluczy zarządzanych przez klienta muszą być szyfrowane przy użyciu tych samych kluczy zarządzanych przez klienta i muszą znajdować się w tej samej subskrypcji.
 - Migawki utworzone na podstawie dysków zaszyfrowanych przy użyciu szyfrowania po stronie serwera i kluczy zarządzanych przez klienta muszą być szyfrowane przy użyciu tych samych kluczy zarządzanych przez klienta.
 - Obrazy niestandardowe szyfrowane za pomocą szyfrowania po stronie serwera i kluczy zarządzanych przez klienta nie mogą być używane w galerii obrazów udostępnionych.
 - Wszystkie zasoby związane z kluczami zarządzanymi przez klienta (magazyny kluczy Azure, zestawy szyfrowania dysków, maszyny wirtualne, dyski i migawki) muszą znajdować się w tej samej subskrypcji i regionie.
 - Dyski, migawki i obrazy zaszyfrowane przy użyciu kluczy zarządzanych przez klienta nie mogą zostać przeniesione do innej subskrypcji.
-- W przypadku tworzenia zestawu szyfrowania dysków przy użyciu witryny Azure Portal nie można teraz używać migawek.
+- Jeśli używasz Azure Portal do utworzenia zestawu szyfrowania dysku, nie możesz używać migawek teraz.
 
 ### <a name="cli"></a>Interfejs CLI
 #### <a name="setting-up-your-azure-key-vault-and-diskencryptionset"></a>Konfigurowanie Azure Key Vault i DiskEncryptionSet
@@ -136,8 +137,20 @@ diskEncryptionSetName=yourDiskencryptionSetName
 diskEncryptionSetId=$(az disk-encryption-set show -n $diskEncryptionSetName -g $rgName --query [id] -o tsv)
 
 az vm create -g $rgName -n $vmName -l $location --image $image --size $vmSize --generate-ssh-keys --os-disk-encryption-set $diskEncryptionSetId --data-disk-sizes-gb 128 128 --data-disk-encryption-sets $diskEncryptionSetId $diskEncryptionSetId
+```
 
+#### <a name="create-a-virtual-machine-scale-set-using-a-marketplace-image-encrypting-the-os-and-data-disks-with-customer-managed-keys"></a>Tworzenie zestawu skalowania maszyn wirtualnych przy użyciu obrazu z witryny Marketplace, szyfrowanie dysków systemu operacyjnego i danych za pomocą kluczy zarządzanych przez klienta
 
+```azurecli
+rgName=ssecmktesting
+vmssName=ssecmktestvmss5
+location=WestCentralUS
+vmSize=Standard_DS3_V2
+image=UbuntuLTS 
+diskEncryptionSetName=diskencryptionset786
+
+diskEncryptionSetId=$(az disk-encryption-set show -n $diskEncryptionSetName -g $rgName --query [id] -o tsv)
+az vmss create -g $rgName -n $vmssName --image UbuntuLTS --upgrade-policy automatic --admin-username azureuser --generate-ssh-keys --os-disk-encryption-set $diskEncryptionSetId --data-disk-sizes-gb 64 128 --data-disk-encryption-sets $diskEncryptionSetId $diskEncryptionSetId
 ```
 
 #### <a name="create-an-empty-disk-encrypted-using-server-side-encryption-with-customer-managed-keys-and-attach-it-to-a-vm"></a>Utwórz pusty dysk zaszyfrowany przy użyciu szyfrowania po stronie serwera z kluczami zarządzanymi przez klienta i dołącz go do maszyny wirtualnej

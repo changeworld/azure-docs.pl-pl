@@ -3,12 +3,12 @@ title: Azure Resource Health często zadawane pytania
 description: Omówienie Azure Resource Health
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: 5a15ded1c279e700fb71e5ea7aa866e5afc29f8a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9f626dc4366cbdd9215704de97bb03fad19422eb
+ms.sourcegitcommit: e9776e6574c0819296f28b43c9647aa749d1f5a6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75426521"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75912789"
 ---
 # <a name="azure-resource-health-faq"></a>Azure Resource Health często zadawane pytania
 Poznaj odpowiedzi na często zadawane pytania dotyczące Azure Resource Health.
@@ -46,7 +46,7 @@ Tak, gdy zasób jest niedostępny, Resource Health identyfikuje główną przycz
 W portalu akcje zainicjowane przez użytkownika są wyświetlane przy użyciu niebieską ikonę powiadomienia, podczas gdy planowane i niezaplanowane zdarzenia są wyświetlane przy użyciu czerwonej ikony ostrzeżenia. Więcej szczegółowych informacji znajduje się w [Resource Health przegląd](Resource-health-overview.md).  
 
 ## <a name="can-i-integrate-resource-health-with-my-monitoring-tools"></a>Czy mogę zintegrować Resource Health z narzędziami monitorowania?
-W obszarze Kondycja zasobów jest [obsługiwana wersja zapoznawcza](resource-health-alert-arm-template-guide.md) alertów opartych na dzienniku aktywności. Alerty dziennika [aktywności służą](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups) do powiadamiania użytkowników o wyzwoleniu alertu. Grupy akcji obsługują wiele kanałów powiadomień, takich jak wiadomości e-mail, wiadomości SMS, elementy webhook i akcje narzędzia ITSM.
+W obszarze Kondycja zasobów jest [obsługiwana obsługa](resource-health-alert-arm-template-guide.md) alertów opartych na dziennikach aktywności. Alerty dziennika [aktywności służą](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups) do powiadamiania użytkowników o wyzwoleniu alertu. Grupy akcji obsługują wiele kanałów powiadomień, takich jak wiadomości e-mail, wiadomości SMS, elementy webhook i akcje narzędzia ITSM.
 
 ## <a name="where-do-i-find-resource-health"></a>Gdzie mogę znaleźć Resource Health?
 Po zalogowaniu się do Azure Portal istnieje wiele sposobów uzyskiwania dostępu do Resource Health:

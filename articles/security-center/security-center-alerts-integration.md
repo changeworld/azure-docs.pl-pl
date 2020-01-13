@@ -1,6 +1,6 @@
 ---
-title: Wykrywanie zagrożeń dla produktów zabezpieczeń platformy Azure w Azure Security Center
-description: W tym temacie przedstawiono produkty zabezpieczeń platformy Azure, dla których Azure Security Center może zapewnić wykrywanie zagrożeń
+title: Alerty dotyczące wykrywania zagrożeń z produktów zabezpieczeń platformy Azure w Azure Security Center
+description: W tym temacie przedstawiono produkty zabezpieczeń platformy Azure, z których Azure Security Center mogą wyświetlać alerty dotyczące zagrożeń
 services: security-center
 documentationcenter: na
 author: memildin
@@ -8,18 +8,18 @@ manager: rkarlin
 ms.assetid: ad4b0373-08ee-46ca-a573-638ed93a647c
 ms.service: security-center
 ms.topic: conceptual
-ms.date: 01/05/2020
+ms.date: 01/12/2020
 ms.author: memildin
-ms.openlocfilehash: 1ea207f0ba09e0637a08632d5c56591fd1335b22
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.openlocfilehash: 16cae819b1714c2b410cfa311a3602e0f4ed968a
+ms.sourcegitcommit: e9776e6574c0819296f28b43c9647aa749d1f5a6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75665714"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75913042"
 ---
-# <a name="threat-detection-for-azure-waf-and-azure-ddos-protection"></a>Wykrywanie zagrożeń dla usług Azure WAF i Azure DDoS Protection
+# <a name="threat-detection-alerts-from-azure-waf-and-azure-ddos-protection"></a>Alerty wykrywania zagrożeń z usługi Azure WAF i Azure DDoS Protection
 
-Azure Security Center może zapewnić wykrywanie zagrożeń dla następujących produktów zabezpieczeń platformy Azure (wymagane jest oddzielną licencję dla każdego produktu):
+Azure Security Center mogą wyświetlać i zbierać alerty wykrywania zagrożeń wygenerowane przez następujące produkty zabezpieczeń platformy Azure (wymagane są oddzielne licencje dla każdego produktu):
 
 * [Azure WAF](#azure-waf)
 * [Azure DDoS Protection](#azure-ddos)
