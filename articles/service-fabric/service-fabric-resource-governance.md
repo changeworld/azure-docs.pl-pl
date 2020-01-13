@@ -3,12 +3,12 @@ title: Nadzór nad zasobami dla kontenerów i usług
 description: Usługa Azure Service Fabric pozwala określić limity zasobów dla usług uruchomionych wewnątrz lub na zewnątrz kontenerów.
 ms.topic: conceptual
 ms.date: 8/9/2017
-ms.openlocfilehash: 0a4cdc7dd7c2e81447201ca85843c9ba4c7e2af4
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 85520876d7f0c89450b572d28dee6cb66ed2231d
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75609456"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772384"
 ---
 # <a name="resource-governance"></a>Nadzór nad zasobami
 
@@ -65,7 +65,7 @@ Oto przykład sposobu poinstruować Service Fabric, aby użyć 50% dostępnego p
 </Section>
 ```
 
-Jeśli potrzebna jest pełna ręczna konfiguracja pojemności węzłów, można użyć zwykłego mechanizmu opisywania węzłów w klastrze. Oto przykład sposobu konfigurowania węzła z czterema rdzeniami i 2 GB pamięci:
+W przypadku większości klientów i scenariuszy zalecaną konfiguracją jest automatyczne wykrywanie pojemności węzłów dla procesora CPU i pamięci (automatyczne wykrywanie jest domyślnie włączone). Jeśli jednak potrzebna jest pełna ręczna konfiguracja pojemności węzłów, można skonfigurować te typy dla każdego typu węzła przy użyciu mechanizmu opisywania węzłów w klastrze. Oto przykład sposobu konfigurowania typu węzła z czterema rdzeniami i 2 GB pamięci:
 
 ```xml
     <NodeType Name="MyNodeType">

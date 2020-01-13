@@ -82,6 +82,8 @@
       href: resource-manager-samples.md
 - name: Pojęcia
   items:
+    - name: Bazy danych NoSQL a relacyjne bazy danych
+      href: relational-nosql.md
     - name: Dystrybucja globalna
       items:
         - name: Omówienie
@@ -976,6 +978,8 @@
           href: certificate-based-authentication.md
         - name: Ograniczanie dostępu użytkowników tylko do operacji na danych
           href: how-to-restrict-user-data.md
+        - name: Konfigurowanie kluczy zarządzanych przez klienta
+          href: how-to-setup-cmk.md
     - name: Gotowość przedsiębiorstwa
       items:
         - name: Przywracanie danych z kopii zapasowej
@@ -1058,6 +1062,8 @@
           href: cassandra-migrate-cosmos-db-blitzz.md
         - name: Migrowanie setek terabajtów danych do usługi Azure Cosmos DB
           href: migrate-cosmosdb-data.md
+        - name: Migrowanie danych relacyjnych jeden-do-kilku
+          href: migrate-relational-to-cosmos-db-sql-api.md
     - name: Biblioteka funkcji wykonawczej operacji zbiorczych
       items:
         - name: Informacje o funkcji wykonywania zbiorczego

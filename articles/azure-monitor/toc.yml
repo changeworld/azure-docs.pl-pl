@@ -91,6 +91,8 @@
       items:
         - name: Dane dziennika
           href: platform/data-security.md
+        - name: Klucze zarządzane przez klienta
+          href: platform/customer-managed-keys.md
         - name: Obsługa danych osobowych w dzienniku
           href: platform/personal-data-mgmt.md
         - name: 'Zbieranie, przechowywanie i magazynowanie danych aplikacji'

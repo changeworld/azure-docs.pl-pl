@@ -32,6 +32,30 @@
       href: azure-portal-export-delete-settings.md
     - name: Seria instruktażowych wideo dla witryny Azure Portal
       href: azure-portal-video-series.md
+    - name: Tworzenie wniosków o pomoc techniczną i zarządzanie nimi
+      items:
+        - name: Tworzenie wniosku o pomoc techniczną platformy Azure
+          href: supportability/how-to-create-azure-support-request.md
+        - name: Przekazywanie plików dla żądania pomocy technicznej
+          href: supportability/how-to-use-file-uploader.md
+        - name: Prośba o zwiększenie limitów przydziałów
+          items:
+            - name: Zwiększanie limitów obliczeniowych procesorów wirtualnych
+              items:
+                - name: Model wdrażania usługi Resource Manager
+                  items:
+                    - name: Zwiększanie limitu procesorów wirtualnych serii maszyn wirtualnych
+                      href: supportability/per-vm-quota-requests.md
+                    - name: Zwiększanie limitu całkowitej liczby regionalnych procesorów wirtualnych
+                      href: supportability/regional-quota-requests.md
+                    - name: Zwiększanie limitu przydziału typu spot
+                      href: supportability/low-priority-quota.md
+                - name: Klasyczny model wdrażania
+                  href: supportability/classic-deployment-model-quota-increase-requests.md
+            - name: Zwiększanie limitów sieci
+              href: supportability/networking-quota-requests.md
+        - name: Rozwiązywanie problemów z subskrypcją dotyczących regionu lub jednostki SKU
+          href: supportability/sku-series-unavailable.md
 - name: Dokumentacja
   items:
     - name: Skróty klawiaturowe

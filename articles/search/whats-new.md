@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.openlocfilehash: 0ce2884a2382c7dff2bdb90bd92934609675f314
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
-ms.translationtype: HT
+ms.openlocfilehash: 2627e4be20d80251e3753e46624c58a0c6244aba
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834387"
+ms.locfileid: "75863091"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Co nowego w usłudze Azure Wyszukiwanie poznawcze
 
@@ -38,6 +38,8 @@ Wersje interfejsu API, pakiety NuGet, przestrzenie nazw i punkty końcowe nie s�
 ### <a name="december-2019"></a>Grudzień 2019 r.
 
 + [Tworzenie aplikacji (wersja zapoznawcza)](search-create-app-portal.md) to nowy Kreator w portalu, który GENERUJE plik HTML do pobrania. Plik zawiera osadzony skrypt, który renderuje operacyjną aplikację sieci Web w stylu "localhost", powiązaną z indeksem w usłudze wyszukiwania. Strony można konfigurować w Kreatorze i zawierać pasek wyszukiwania, obszar wyników, nawigację paska bocznego i obsługę zapytań typeahead. Możesz zmodyfikować kod HTML w trybie offline, aby zwiększyć lub dostosować przepływ pracy lub wygląd.
+
++ [Utwórz prywatny punkt końcowy dla bezpiecznych połączeń (wersja zapoznawcza)](service-create-private-endpoint.md) zawiera opis sposobu konfigurowania prywatnego linku dla bezpiecznych połączeń do usługi wyszukiwania. Ta funkcja w wersji zapoznawczej jest dostępna na żądanie i używa [prywatnego linku platformy Azure](../private-link/private-link-overview.md) i [usługi Azure Virtual Network](../virtual-network/virtual-networks-overview.md) w ramach rozwiązania.
 
 ### <a name="november-2019---ignite-conference"></a>Listopad 2019 — Konferencja zapłonowa
 

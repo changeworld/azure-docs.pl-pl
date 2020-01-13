@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/04/2019
+ms.date: 01/10/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: e1544303ee7b792a00f7afb57fe62b7b86a300f8
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: ec32990513d9199c4aaccf1bcfcbf76f348f877b
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74891956"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867503"
 ---
 # <a name="use-the-azure-portal-to-assign-an-rbac-role-for-access-to-blob-and-queue-data"></a>Użyj Azure Portal, aby przypisać rolę RBAC na potrzeby dostępu do danych obiektów blob i kolejek
 
@@ -45,7 +45,7 @@ W poniższych sekcjach opisano poszczególne kroki bardziej szczegółowo.
 
 > [!NOTE]
 > Jako właściciel konta usługi Azure Storage możesz nie są automatycznie przypisywane uprawnienia dostępu do danych. Należy jawnie przypisać sobie rolę RBAC dla usługi Azure Storage. Można ją przypisać na poziomie subskrypcji, grupy zasobów, konta magazynu lub kontenera lub kolejki.
-> 
+>
 > Nie można przypisać roli do kontenera lub kolejki, jeśli konto magazynu ma włączoną hierarchiczną przestrzeń nazw.
 
 ### <a name="assign-a-built-in-rbac-role"></a>Przypisywanie wbudowanej roli RBAC
@@ -66,7 +66,7 @@ Pokazana tutaj procedura przypisuje rolę w zakresie kontenera, ale można wykon
 
     ![Zrzut ekranu przedstawiający sposób przypisywania roli RBAC](media/storage-auth-aad-rbac-portal/add-rbac-role.png)
 
-1. Kliknij przycisk **Save** (Zapisz). Tożsamość, do której przypisano rolę, jest wyświetlana na liście w ramach tej roli. Na przykład na poniższej ilustracji przedstawiono, że dodany użytkownik ma teraz uprawnienia do odczytu danych w kontenerze o nazwie *Sample-Container*.
+1. Kliknij pozycję **Zapisz**. Tożsamość, do której przypisano rolę, jest wyświetlana na liście w ramach tej roli. Na przykład na poniższej ilustracji przedstawiono, że dodany użytkownik ma teraz uprawnienia do odczytu danych w kontenerze o nazwie *Sample-Container*.
 
     ![Zrzut ekranu przedstawiający listę użytkowników przypisanych do roli](media/storage-auth-aad-rbac-portal/container-scoped-role.png)
 
@@ -75,7 +75,6 @@ Możesz wykonać podobne kroki, aby przypisać rolę do zakresu konta magazynu, 
 ### <a name="assign-the-reader-role-for-portal-access"></a>Przypisz rolę czytelnika do dostępu do portalu
 
 Gdy przypiszesz wbudowaną lub niestandardową rolę usługi Azure Storage do podmiotu zabezpieczeń, przyznasz uprawnienia temu podmiotowi zabezpieczeń do wykonywania operacji na danych na koncie magazynu. Wbudowane role **czytnika danych** zapewniają uprawnienia do odczytu danych w kontenerze lub kolejce, natomiast wbudowane role **współautor danych** zapewniają uprawnienia do odczytu, zapisu i usuwania do kontenera lub kolejki. Uprawnienia są ograniczone do określonego zasobu.  
-
 Na przykład, Jeśli rola **współautor danych obiektów blob magazynu** zostanie przypisana do użytkownika Mary na poziomie kontenera o nazwie **Sample-Container**, Mary zostanie udzielony dostęp do odczytu, zapisu i usuwania do wszystkich obiektów BLOB w tym kontenerze.
 
 Jeśli jednak użytkownik Jan chce wyświetlić obiekt BLOB w Azure Portal, wówczas rola **współautor danych obiektów blob magazynu** nie będzie mieć wystarczających uprawnień do nawigowania w portalu do obiektu BLOB w celu wyświetlenia go. Dodatkowe uprawnienia usługi Azure AD są wymagane do nawigowania po portalu i wyświetlania innych zasobów, które są tam widoczne.
@@ -91,8 +90,10 @@ Wykonaj następujące kroki, aby przypisać rolę **czytelnika** , aby użytkown
 1. Wyszukaj w celu zlokalizowania podmiotu zabezpieczeń, do którego chcesz przypisać rolę.
 1. Zapisz przypisanie roli.
 
-> [!NOTE]
-> Przypisywanie roli czytelnik jest niezbędne tylko dla użytkowników, którzy muszą uzyskać dostęp do obiektów blob lub kolejek przy użyciu Azure Portal. 
+Przypisywanie roli **czytelnik** jest niezbędne tylko dla użytkowników, którzy muszą uzyskać dostęp do obiektów blob lub kolejek przy użyciu Azure Portal.
+
+> [!IMPORTANT]
+> Wersja zapoznawcza Eksplorator usługi Storage w Azure Portal nie obsługuje korzystania z poświadczeń usługi Azure AD w celu wyświetlania i modyfikowania danych obiektów blob i kolejek. Eksplorator usługi Storage w Azure Portal zawsze używa kluczy konta do uzyskiwania dostępu do danych. Aby użyć Eksplorator usługi Storage w Azure Portal, musisz mieć przypisaną rolę, która zawiera element **Microsoft. Storage/storageAccounts/ListKeys/Action**.
 
 ## <a name="next-steps"></a>Następne kroki
 

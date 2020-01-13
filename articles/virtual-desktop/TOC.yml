@@ -16,9 +16,7 @@
       href: manage-app-groups.md
     - name: 5. Tworzenie puli hostów na potrzeby weryfikacji aktualizacji usług
       href: create-validation-host-pool.md
-    - name: 6. Wdrażanie narzędzia do zarządzania
-      href: manage-resources-using-ui.md
-    - name: 7. Konfigurowanie alertów usługi
+    - name: 6. Konfigurowanie alertów usługi
       href: set-up-service-alerts.md
 - name: Porady
   items:
@@ -70,6 +68,12 @@
       href: set-up-scaling-script.md
     - name: Dostosowywanie źródła
       href: customize-feed-for-virtual-desktop-users.md
+    - name: Wdrażanie narzędzia do zarządzania
+      items:
+        - name: Szablon usługi Azure Resource Manager
+          href: manage-resources-using-ui.md
+        - name: PowerShell
+          href: manage-resources-using-ui-powershell.md
     - name: Korzystanie z diagnostyki usługi
       items:
         - name: Wdrażanie narzędzia diagnostycznego

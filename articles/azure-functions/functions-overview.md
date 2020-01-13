@@ -6,12 +6,12 @@ ms.assetid: 01d6ca9f-ca3f-44fa-b0b9-7ffee115acd4
 ms.topic: overview
 ms.date: 10/03/2017
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: 28a2732965ee0a19f69dcd0fc2cd7705cb5f94a1
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 4af2afc0efad2784bbde902fd2cdf4a40beb7803
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230429"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769085"
 ---
 # <a name="an-introduction-to-azure-functions"></a>Wprowadzenie do usługi Azure Functions  
 Azure Functions to rozwiązanie umożliwiające łatwe uruchamianie małych fragmentów kodu („funkcji”) w chmurze. Możesz napisać tylko kod rozwiązujący aktualny problem, nie martwiąc się o całą aplikację ani infrastrukturę do jej uruchomienia. Funkcje mogą jeszcze bardziej zwiększyć produktywność i można korzystać z wybranego języka programowania, takiego jak C#Java, JavaScript, PowerShell i Python. Płać tylko za czas działania kodu — platforma Azure jest skalowana zgodnie z potrzebami. Usługa Azure Functions pozwala tworzyć na platformie Microsoft Azure aplikacje [bezserwerowe](https://azure.microsoft.com/solutions/serverless/).
@@ -61,7 +61,8 @@ Usługę Azure Functions można integrować z różnymi usługami platformy Azur
 ## <a name="pricing"></a>Ile kosztuje usługa Azure Functions?
 Usługa Azure Functions oferuje dwa rodzaje planów cenowych. Wybierz ten, który najlepiej odpowiada Twoim potrzebom: 
 
-* **Plan zużycia** — po uruchomieniu funkcji platforma Azure udostępnia wszystkie niezbędne zasoby obliczeniowe. Nie musisz martwić się o zarządzanie zasobami i płacisz tylko za czas działania kodu. 
+* **Plan zużycia** — po uruchomieniu funkcji platforma Azure udostępnia wszystkie niezbędne zasoby obliczeniowe. Nie musisz martwić się o zarządzanie zasobami i płacisz tylko za czas działania kodu.
+* **Plan Premium** — należy określić wiele wystąpień, które są już w trybie online i są gotowe do natychmiastowego reagowania. Po uruchomieniu funkcji platforma Azure udostępnia wszelkie dodatkowe potrzebne zasoby obliczeniowe. Płacisz za uruchomione przed chwilą wystąpienia ciągłe i wszelkie dodatkowe wystąpienia, które są używane w miarę skalowania aplikacji w systemie Azure.
 * **Plan usługi App Service** — uruchamianie funkcji tak samo, jak aplikacji internetowych. Jeśli już używasz usługi App Service dla innych aplikacji, możesz uruchamiać swoje funkcje w ramach tego samego planu bez dodatkowych kosztów. 
 
 Aby uzyskać więcej informacji o planach hostingu, zobacz [Porównanie planów hostingu usługi Azure Functions](functions-scale.md). Szczegółowe informacje są dostępne na [stronie cennika usługi Functions](https://azure.microsoft.com/pricing/details/functions/).

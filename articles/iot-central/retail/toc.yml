@@ -36,6 +36,8 @@
       href: architecture-smart-inventory-management-pnp.md
     - name: Architektura analizy magazynu
       href: store-analytics-architecture.md
+    - name: Architektura szablonu aplikacji centrum mikrorealizacji
+      href: architecture-micro-fulfillment-center-pnp.md
     - name: Łączność
       href: ../preview/overview-iot-central-get-connected.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
     - name: Co to są szablony aplikacji?

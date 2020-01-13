@@ -147,6 +147,8 @@
       href: troubleshooting.md
     - name: Formaty plików
       items:
+        - name: Dokumentacja języka Markdown
+          href: reference-markdown-format.md
         - name: Wsadowe testowanie plików TSV
           href: reference-tsv-format-batch-testing.md
     - name: Dokumentacja interfejsu API REST
