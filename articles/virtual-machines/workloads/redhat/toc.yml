@@ -1,5 +1,5 @@
 - name: Omówienie
-  href: redhat-overview.md
+  href: overview.md
 - name: Obrazy systemu Red Hat Enterprise Linux
   items:
     - name: Obrazy systemu Red Hat Enterprise Linux — omówienie
@@ -9,4 +9,4 @@
 - name: Infrastruktura aktualizacji systemu Red Hat na platformie Azure
   href: redhat-rhui.md
 - name: Oferta obrazów BYOS systemu Red Hat Enterprise Linux
-  href: redhat-byos.md
+  href: byos.md

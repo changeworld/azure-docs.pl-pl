@@ -7,7 +7,17 @@
 - name: Dokumentacja rozszerzeń maszyny wirtualnej
   href: ./extensions/overview.md
 - name: Obciążenia
-  href: ./workloads/workloads.md
+  items:
+    - name: Red Hat
+      href: /redhat/redhat-overview.md
+    - name: Obliczenia o wysokiej wydajności
+      href: /hpc/overview.md
+    - name: SAP
+      href: /sap/get-started.md
+    - name: Oracle
+      href: /oracle/oracle-considerations.md
+    - name: Zmiana hosta komputera mainframe
+      href: /mainframe-rehosting/overview.md
 - name: Klasyczne wdrożenia
   items:
     - name: Maszyny wirtualne z systemem Linux korzystające z klasycznego wdrożenia
