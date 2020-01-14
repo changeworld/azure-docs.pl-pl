@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
 ms.date: 12/20/2019
-ms.openlocfilehash: b97c8c51bc63fb0c1ff0070714e7393d11ea0dbf
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.openlocfilehash: 023128d35030f99458bc5fd2c7a4a155a856e4c9
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75497476"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861510"
 ---
 # <a name="quickstart-explore-the-azure-time-series-insights-preview-demo-environment"></a>Szybki Start: Eksplorowanie środowiska demonstracyjnego w wersji zapoznawczej Azure Time Series Insights
 
@@ -45,7 +45,7 @@ W Eksploratorze Time Series Insights w wersji zapoznawczej przedstawiono dane hi
 
       [![W7 w firmie Contoso 1](media/v2-update-quickstart/quick-start-generator-speed.png)](media/v2-update-quickstart/quick-start-generator-speed.png#lightbox)
 
-1. Niedawno firma Contoso wykryła pożar w turbinie **W7**. Opinie różnią się w zależności od tego, co spowodowało pożar. W Time Series Insights widzimy, że czujnik alertów o zapłonie został aktywowany podczas uruchamiania.
+1. Niedawno firma Contoso wykryła pożar w turbinie **W7**. Opinie różnią się w zależności od tego, co spowodowało pożar. W Time Series Insights zostanie wyświetlony czujnik alertów o zapłonie, który został aktywowany podczas pożaru.
 
    1. Zmień zakres widoku na **3/9/17 20:00:00.00 do 3/10/17 20:00:00.00 (UTC)** .
    1. Wybierz pozycję **system bezpieczeństwa** > **FireAlert**.
@@ -59,7 +59,7 @@ W Eksploratorze Time Series Insights w wersji zapoznawczej przedstawiono dane hi
 
       [![przeglądać inne zdarzenia w tym samym czasie](media/v2-update-quickstart/quick-start-active-warning.png)](media/v2-update-quickstart/quick-start-active-warning.png#lightbox)
 
-1. Czujniki ropy naftowej i aktywne ostrzeżenia są napowietrzane bezpośrednio przed pożarem. Rozwiń wyświetlaną serię czasową, aby zobaczyć inne oznaki wskazujące na ogień. Obie czujniki zmieniają się w miarę upływu czasu. Wahania wskazują, że wzorzec trwały i worrisome.
+1. Czujniki ropy naftowej i aktywne ostrzeżenia są napowietrzane bezpośrednio przed pożarem. Rozwiń wyświetlaną serię czasową, aby przejrzeć inne oznaki, które były oczywiste, co prowadzi do pożaru. Obie czujniki zmieniają się w miarę upływu czasu. Wahania wskazują, że wzorzec trwały i worrisome.
 
     * Zmień zakres widoku na **2/24/17 20:00:00.00 do 3/10/17 20:00:00.00 (UTC)** .
 
@@ -86,7 +86,7 @@ Korzystając z Time Series Insights i danych telemetrycznych czujnika, wykryliś
 
        [![zmienić zakres widoku i wybrać W6](media/v2-update-quickstart/quick-start-voltage-switch-warning.png)](media/v2-update-quickstart/quick-start-voltage-switch-warning.png#lightbox)
 
-1. Ostrzeżenie wskazuje na problem z napięciem z generatora. Ogólne dane wyjściowe mocy generatora są w normalnych parametrach w bieżącym interwale. Zwiększając nasz interwał, zobaczymy inny wzorzec. Inicjał jest oczywisty.
+1. Ostrzeżenie wskazuje na problem z napięciem z generatora. Ogólne dane wyjściowe mocy generatora są w normalnych parametrach w bieżącym interwale. Przez zwiększenie naszego interwału okazuje się, że kolejny wzór zostanie spowodowany. Inicjał jest oczywisty.
 
     1. Usuń czujnik **VoltageActuatorSwitchWarning** .
     1. Wybierz **system generatora** > **ActivePower**.
@@ -100,7 +100,7 @@ Korzystając z Time Series Insights i danych telemetrycznych czujnika, wykryliś
 
       [![zwiększyć czas przedziału czasu do 60 dni](media/v2-update-quickstart/quick-start-expand-interval-range.png)](media/v2-update-quickstart/quick-start-expand-interval-range.png#lightbox)
 
-1. Inne punkty danych czujników można dodać, aby zapewnić większy kontekst. Im więcej czujników jest wyświetlanych, tym pełniejsze zrozumienie problemu jest. Ustawmy znacznik, aby zobaczyć rzeczywiste wartości. 
+1. Inne punkty danych czujników można dodać, aby zapewnić większy kontekst. Im więcej czujników jest wyświetlanych, tym pełniejsze zrozumienie problemu jest. Upuśćmy znacznik, aby wyświetlić rzeczywiste wartości. 
 
     1. Wybierz pozycję **system generatora**, a następnie wybierz pozycję trzy czujniki: **GridVoltagePhase1**, **GridVoltagePhase2**i **GridVoltagePhase3**.
     1. Ustaw znacznik na ostatnim punkcie danych w widocznym obszarze.

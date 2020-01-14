@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: apimpm
-ms.openlocfilehash: 76a87d539e19acc30944a6a896cb0e01f431fa37
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: bf8d8a2c11962467300ae8d65fe5bbbe9a65cf92
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073562"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75708359"
 ---
 # <a name="add-caching-to-improve-performance-in-azure-api-management"></a>Dodawanie buforowania w celu poprawy wydajności usługi Azure API Management
 
@@ -43,7 +43,7 @@ Zawartość:
 
 W celu ukończenia tego samouczka:
 
-+ [Tworzenie wystąpienia usługi Azure API Management](get-started-create-service-instance.md)
++ [Utwórz wystąpienie usługi Azure API Management](get-started-create-service-instance.md)
 + [Zaimportuj i opublikuj interfejs API](import-and-publish.md)
 
 ## <a name="caching-policies"> </a>Dodawanie zasad buforowania
@@ -70,7 +70,7 @@ W zasadach buforowania pokazanych w tym przykładzie pierwsze żądanie operacji
 
 9. W elemencie **outbound** (wychodzące) dodaj następujące zasady:
 
-        <cache-store caching-mode="cache-on" duration="20" />
+        <cache-store duration="20" />
 
     **Czas trwania** określa interwał wygasania buforowanych odpowiedzi. W tym przykładzie interwał to **20** sekund.
 

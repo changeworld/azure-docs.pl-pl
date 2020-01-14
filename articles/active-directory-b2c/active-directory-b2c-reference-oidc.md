@@ -11,12 +11,12 @@ ms.date: 08/22/2019
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 8aedb57f6fee68c4d11a123033d34bb58314eb8f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 355bd75f865e821fa19fba0715cf5eca90a9a2d3
+ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75367624"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75829565"
 ---
 # <a name="web-sign-in-with-openid-connect-in-azure-active-directory-b2c"></a>Logowanie w sieci Web za pomocą OpenID Connect Connect in Azure Active Directory B2C
 
@@ -24,7 +24,7 @@ OpenID Connect Connect to protokół uwierzytelniania oparty na protokole OAuth 
 
 [OpenID Connect Connect](https://openid.net/specs/openid-connect-core-1_0.html) rozszerza protokół *autoryzacji* OAuth 2,0 do użycia jako protokół *uwierzytelniania* . Ten protokół uwierzytelniania umożliwia logowanie jednokrotne. Wprowadza koncepcję *tokenu identyfikatora*, dzięki czemu klient może weryfikować tożsamość użytkownika i uzyskać podstawowe informacje o profilu użytkownika.
 
-Ponieważ rozszerza on protokół OAuth 2,0, umożliwia również aplikacjom bezpieczne pozyskiwanie *tokenów dostępu*. Za pomocą tokenów dostępu można uzyskać dostęp do zasobów zabezpieczonych przez [serwer autoryzacji](active-directory-b2c-reference-protocols.md). Połączenie OpenID Connect jest zalecane, jeśli tworzysz aplikację sieci Web, która jest hostowana na serwerze i jest dostępna za pomocą przeglądarki. Jeśli chcesz dodać Zarządzanie tożsamościami do aplikacji mobilnych lub klasycznych przy użyciu Azure AD B2C, Użyj protokołu [OAuth 2,0](active-directory-b2c-reference-oauth-code.md) zamiast opcji OpenID Connect Connect. Aby uzyskać więcej informacji na temat tokenów, zobacz [Omówienie tokenów w Azure Active Directory B2C](active-directory-b2c-reference-tokens.md)
+Ponieważ rozszerza on protokół OAuth 2,0, umożliwia również aplikacjom bezpieczne pozyskiwanie *tokenów dostępu*. Za pomocą tokenów dostępu można uzyskać dostęp do zasobów zabezpieczonych przez [serwer autoryzacji](active-directory-b2c-reference-protocols.md). Połączenie OpenID Connect jest zalecane, jeśli tworzysz aplikację sieci Web, która jest hostowana na serwerze i jest dostępna za pomocą przeglądarki. Aby uzyskać więcej informacji na temat tokenów, zobacz [Omówienie tokenów w Azure Active Directory B2C](active-directory-b2c-reference-tokens.md)
 
 Azure AD B2C rozszerza standardowy protokół połączenia OpenID Connect, aby wykonywać więcej niż proste uwierzytelnianie i autoryzację. Wprowadza [parametr przepływu użytkownika](active-directory-b2c-reference-policies.md), który umożliwia korzystanie z programu OpenID Connect Connect w celu dodawania środowisk użytkownika do aplikacji, takich jak rejestrowanie, logowanie i Zarządzanie profilem.
 

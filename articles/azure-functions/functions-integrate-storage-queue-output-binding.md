@@ -5,12 +5,12 @@ ms.assetid: 0b609bc0-c264-4092-8e3e-0784dcc23b5d
 ms.topic: quickstart
 ms.date: 09/19/2017
 ms.custom: mvc
-ms.openlocfilehash: fb5fc2fadf4087ebc42253cf568af424a80cb9d5
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 73f8d23dcd53b4cbbb3fbd902c789e868c2b021b
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226879"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769187"
 ---
 # <a name="add-messages-to-an-azure-storage-queue-using-functions"></a>Dodawanie komunikatów do kolejki usługi Azure Storage przy użyciu funkcji
 
@@ -20,7 +20,7 @@ W usłudze Azure Functions powiązania danych wejściowych i wyjściowych zapewn
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby ukończyć ten przewodnik Szybki start:
+Aby ukończyć ten przewodnik Szybki Start:
 
 * Postępuj zgodnie z instrukcjami znajdującymi się w kroku [Tworzenie pierwszej funkcji w witrynie Azure Portal](functions-create-first-azure-function.md) i nie wykonuj kroku **Oczyszczanie zasobów**. W tym przewodniku Szybki start tworzona jest aplikacja funkcji i funkcja używana w tym miejscu.
 
@@ -34,7 +34,7 @@ W tej sekcji użyjesz interfejsu użytkownika portalu w celu dodania powiązania
 
 1. Wybierz funkcję utworzoną we wcześniejszym przewodniku Szybki start.
 
-1. Wybierz pozycję **Integracja > Nowe dane wyjściowe > Azure Queue Storage**.
+1. Wybierz pozycję **zintegruj > nowe dane wyjściowe > Azure queue storage**.
 
 1. Kliknij pozycję **Wybierz**.
 

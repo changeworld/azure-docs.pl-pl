@@ -14,12 +14,12 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b041d8777f81f1796a2e2f7926f324e3b601bd93
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 7c5022533cf0db57779bc36bd74cfb38932f10d6
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74916506"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75777840"
 ---
 # <a name="initialize-client-applications-using-msaljs"></a>Inicjuj aplikacje klienckie przy użyciu MSAL. js
 W tym artykule opisano inicjowanie biblioteki uwierzytelniania firmy Microsoft dla języka JavaScript (MSAL. js) przy użyciu wystąpienia aplikacji agent użytkownika. Aplikacja agent użytkownika jest formą publicznej aplikacji klienckiej, w której kod klienta jest wykonywany w agencie użytkownika, takim jak przeglądarka sieci Web. Ci klienci nie przechowują wpisów tajnych, ponieważ kontekst przeglądarki jest otwarty. Aby dowiedzieć się więcej na temat typów aplikacji klienta i opcji konfiguracji aplikacji, zapoznaj się z [omówieniem](msal-client-applications.md).
@@ -116,7 +116,7 @@ Poniżej znajduje się całkowity zbiór konfigurowalnych opcji, które są obec
         * `https://login.microsoftonline.com/common`— służy do logowania użytkowników przy użyciu kont służbowych lub konta osobistego firmy Microsoft.
         * `https://login.microsoftonline.com/organizations/`— służy do logowania użytkowników przy użyciu kont służbowych.
         * `https://login.microsoftonline.com/consumers/` — służy do logowania użytkowników tylko przy użyciu konto Microsoft osobistych (Live).
-    * W Azure AD B2C ma postać `https://<instance>/tfp/<tenant>/<policyName>/`, gdzie wystąpienie jest domeną Azure AD B2C, dzierżawcą jest nazwą dzierżawy Azure AD B2C, PolicyName jest nazwą zasad B2C, które mają zostać zastosowane.
+    * W Azure AD B2C jest to formularz `https://<instance>/tfp/<tenant>/<policyName>/`, gdzie wystąpienie jest domeną Azure AD B2C. {nazwa-dzierżawy}. b2clogin. com, dzierżawca to nazwa dzierżawy Azure AD B2Cej, czyli {nazwa dzierżawcy-dzierżawca}. onmicrosoft. com, PolicyName to nazwa zasad B2C, które mają zostać zastosowane.
 
 
 - **validateAuthority**: opcjonalne.  Sprawdź poprawność wystawcy tokenów. Wartość domyślna to `true`. W przypadku aplikacji B2C, ponieważ wartość urzędu jest znana i może być różna dla zasad, weryfikacja urzędu nie będzie działać i musi być ustawiona na `false`.

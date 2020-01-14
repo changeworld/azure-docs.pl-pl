@@ -1,19 +1,19 @@
 ---
 title: Ponowne kompilowanie indeksu wyszukiwania
 titleSuffix: Azure Cognitive Search
-description: Dodaj nowe elementy, zaktualizuj istniejące elementy lub dokumenty lub Usuń przestarzałe dokumenty z pełnego przebudowy lub częściowego indeksowania przyrostowego, aby odświeżyć indeks Wyszukiwanie poznawcze platformy Azure.
+description: Dodaj nowe elementy, zaktualizuj istniejące elementy lub dokumenty lub Usuń przestarzałe dokumenty z pełną kompilacją lub częściowym indeksem, aby odświeżyć indeks Wyszukiwanie poznawcze platformy Azure.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: b14c153f52e0427e289afeccdfd22d6510e4ace1
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 18cfa3c6fde399ea61e09c5788c72ce20e5570e8
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112969"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754392"
 ---
 # <a name="how-to-rebuild-an-index-in-azure-cognitive-search"></a>Jak ponownie skompilować indeks na platformie Azure Wyszukiwanie poznawcze
 
@@ -36,7 +36,7 @@ W przeciwieństwie do rekompilacji, które mają indeks w trybie offline, *odśw
 
 Wszelkie inne modyfikacje mogą być wprowadzane bez wpływu na istniejące struktury fizyczne. W szczególnych przypadkach następujące zmiany nie *wymagają* odbudowania indeksu:
 
-+ Dodaj nowe pole
++ Dodawanie nowego pola
 + Ustaw atrybut możliwy do **pobierania** dla istniejącego pola
 + Ustaw **searchAnalyzer** dla istniejącego pola
 + Dodaj nową definicję analizatora w indeksie

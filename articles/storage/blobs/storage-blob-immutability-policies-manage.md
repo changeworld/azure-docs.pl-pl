@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/26/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 79d7454722900eb1d9d6280e35313ef2f4a5cd54
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: 68b144a838f0c6e65f3e399f610644315d109fde
+ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555680"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75903469"
 ---
 # <a name="set-and-manage-immutability-policies-for-blob-storage"></a>Ustawianie zasad niezmienności dla usługi BLOB Storage i zarządzanie nimi
 
@@ -57,7 +57,7 @@ W tym artykule przedstawiono sposób ustawiania zasad niezmienności i zarządza
 
     ![Pole "nazwa tagu" w obszarze Typ zasad](media/storage-blob-immutability-policies-manage/portal-image-set-legal-hold-tags.png)
 
-9. Aby wyczyścić blokadę prawną, po prostu usuń zastosowany tag identyfikatora blokady dozwolonej.
+9. Aby wyczyścić blokadę prawną, Usuń zastosowany tag identyfikatora blokady dozwolonej.
 
 ### <a name="azure-clitabazure-cli"></a>[Interfejs wiersza polecenia platformy Azure](#tab/azure-cli)
 
@@ -73,7 +73,7 @@ Moduł AZ. Storage obsługuje niezmienny magazyn.  Aby włączyć tę funkcję, 
 2. Usuń poprzednią instalację Azure PowerShell.
 3. Zainstaluj Azure PowerShell: `Install-Module Az –Repository PSGallery –AllowClobber`.
 
-Poniższy przykładowy skrypt programu PowerShell jest przeznaczony do celów referencyjnych. Ten skrypt tworzy nowe konto magazynu i kontener. Następnie pokazano, jak ustawić i wyczyścić blokady prawne, utworzyć i zablokować zasady przechowywania oparte na czasie (znane także jako zasady niezmienności) i zwiększyć Interwał przechowywania.
+Poniższy przykładowy skrypt programu PowerShell jest przeznaczony do celów referencyjnych. Ten skrypt tworzy nowe konto magazynu i kontener. Następnie pokazano, jak ustawiać i czyścić informacje prawne, tworzyć i blokować zasady przechowywania oparte na czasie (znane także jako zasady niezmienności) i zwiększać Interwał przechowywania.
 
 Najpierw utwórz konto usługi Azure Storage:
 
@@ -165,6 +165,20 @@ Remove-AzRmStorageContainerImmutabilityPolicy -ImmutabilityPolicy $policy
 ```
 
 ---
+
+## <a name="enabling-allow-protected-append-blobs-writes"></a>Włączanie funkcji Zezwalaj na chronione Dodawanie obiektów BLOB
+
+W tej chwili można uzyskać dostęp tylko do ustawienia `allowProtectedAppendWrites` dla zasad przechowywania opartych na czasie za pośrednictwem tego konkretnego [linku portalu](https://aka.ms/immutableappendblobs). 
+
+> [!IMPORTANT] 
+>  Ustawienie Zezwalaj na chronione Dodawanie obiektów BLOB w obszarze przechowywanie na podstawie czasu jest obecnie dostępne i widoczne tylko w następujących regionach:
+> - Wschodnie stany USA
+> - Południowo-środkowe stany USA
+> - Zachodnie stany USA 2
+>
+> Aby uzyskać więcej informacji, zobacz [Zezwalanie na chronione Dodawanie obiektów BLOB](storage-blob-immutable-storage.md#allow-protected-append-blobs-writes).
+
+![Zezwalaj na dodatkowe zapisy do dołączenia](media/storage-blob-immutability-policies-manage/immutable-allow-additional-append-writes.png)
 
 ## <a name="next-steps"></a>Następne kroki
 

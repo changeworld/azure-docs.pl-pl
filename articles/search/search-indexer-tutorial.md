@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 36215403f99cc86ab4fb111ce95a6b3190063d7b
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: 1b03f5569386212905cdeb362cfe0a88774eb887
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406711"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754338"
 ---
 # <a name="tutorial-import-azure-sql-database-in-c-using-azure-cognitive-search-indexers"></a>Samouczek: Importowanie bazy danych Azure SQL C# Database przy użyciu usługi Azure wyszukiwanie poznawcze indeksatory
 
@@ -159,7 +159,7 @@ W tym samouczku indeksator ściąga dane z jednego źródła danych. W tym celu 
 
 Program główny zawiera logikę tworzenia klienta, indeksu, źródła danych i indeksatora. Kod sprawdza i usuwa istniejące zasoby o tej samej nazwie, przy założeniu, że ten program może być uruchamiany wiele razy.
 
-Obiekt źródła danych jest skonfigurowany przy użyciu ustawień specyficznych dla zasobów usługi Azure SQL Database, w tym [indeksowania przyrostowego](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#capture-new-changed-and-deleted-rows) do korzystania z wbudowanych [funkcji wykrywania zmian](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-tracking-sql-server) w usłudze Azure SQL. Baza danych hoteli demonstracyjna w usłudze Azure SQL zawiera kolumnę "Usuwanie trwałe" o nazwie **IsDeleted**. Gdy ta kolumna ma wartość true w bazie danych, indeksator usuwa odpowiedni dokument z indeksu Wyszukiwanie poznawcze platformy Azure.
+Obiekt źródła danych jest skonfigurowany z ustawieniami specyficznymi dla zasobów usługi Azure SQL Database, w tym [częściowym lub przyrostowym indeksem](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#capture-new-changed-and-deleted-rows) , korzystającym z wbudowanych [funkcji wykrywania zmian](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-tracking-sql-server) usługi Azure SQL. Baza danych hoteli demonstracyjna w usłudze Azure SQL zawiera kolumnę "Usuwanie trwałe" o nazwie **IsDeleted**. Gdy ta kolumna ma wartość true w bazie danych, indeksator usuwa odpowiedni dokument z indeksu Wyszukiwanie poznawcze platformy Azure.
 
   ```csharp
   Console.WriteLine("Creating data source...");

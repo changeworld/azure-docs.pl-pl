@@ -1,18 +1,19 @@
 ---
-title: 'Połącz sieć lokalną z siecią wirtualną platformy Azure: Sieć VPN typu lokacja-lokacja: Program PowerShell | Microsoft Docs'
+title: 'Łączenie sieci lokalnej z siecią wirtualną platformy Azure: sieci VPN typu lokacja-lokacja: PowerShell'
 description: Kroki tworzenia połączenia IPsec z sieci lokalnej do sieci wirtualnej platformy Azure za pośrednictwem publicznego Internetu. Ta procedura jest pomocna podczas tworzenia połączenia usługi VPN Gateway typu lokacja-lokacja obejmującego wiele lokalizacji za pomocą programu PowerShell.
+titleSuffix: Azure VPN Gateway
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: cherylmc
-ms.openlocfilehash: 69cdf248e299ce4fdf08540836d44958438a2665
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 85ea3855b13350901d85701e9bca8d87ff6632c3
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699900"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75778808"
 ---
 # <a name="create-a-vnet-with-a-site-to-site-vpn-connection-using-powershell"></a>Tworzenie sieci wirtualnej za pomocą połączenia sieci VPN typu lokacja-lokacja przy użyciu programu PowerShell
 
@@ -76,7 +77,7 @@ ConnectionName          = VNet1toSite1
 
 ```
 
-## <a name="VNet"></a>1. Tworzenie sieci wirtualnej i podsieci bramy
+## <a name="VNet"></a>1. Utwórz sieć wirtualną i podsieć bramy
 
 Jeśli nie masz jeszcze sieci wirtualnej, utwórz ją. Podczas tworzenia sieci wirtualnej upewnij się, że określone przestrzenie adresowe nie nakładają się na żadne inne przestrzenie adresowe w obrębie sieci lokalnej. 
 
@@ -136,7 +137,7 @@ Wykonaj kroki znajdujące się w tej sekcji, jeśli masz już sieć wirtualną, 
    Set-AzVirtualNetwork -VirtualNetwork $vnet
    ```
 
-## 2. <a name="localnet"></a>Tworzenie bramy sieci lokalnej
+## 2. <a name="localnet"> </a>Utwórz bramę sieci lokalnej
 
 Brama sieci lokalnej (LNG) zazwyczaj odnosi się do lokalizacji lokalnej. Nie jest taka sama jak Brama sieci wirtualnej. Nadaj lokacji nazwę, za pomocą której platforma Azure może odwołać się do niej, a następnie określ adres IP lokalnego urządzenia sieci VPN, z którym będzie tworzone połączenie. Określ również prefiksy adresów IP, które będą kierowane za pośrednictwem bramy sieci VPN do urządzenia sieci VPN. Określone prefiksy adresów są prefiksami znajdującymi się w Twojej sieci lokalnej. W przypadku zmian w sieci lokalnej prefiksy można łatwo zaktualizować.
 
@@ -163,7 +164,7 @@ Aby zmodyfikować prefiksy adresów IP bramy sieci lokalnej:
 
 Zdarza się, że prefiksy bramy sieci lokalnej są zmieniane. Kroki, które należy wykonać w celu zmodyfikowania prefiksów adresów IP, zależą od tego, czy utworzono połączenie bramy sieci VPN. Zapoznaj się z sekcją [Modyfikowanie prefiksów adresów IP bramy sieci lokalnej](#modify) tego artykułu.
 
-## <a name="PublicIP"></a>3. Żądanie publicznego adresu IP
+## <a name="PublicIP"></a>3. Zażądaj publicznego adresu IP
 
 Brama sieci VPN musi mieć publiczny adres IP. Najpierw żąda się zasobu adresu IP, a następnie odwołuje do niego podczas tworzenia bramy sieci wirtualnej. Adres IP jest dynamicznie przypisywany do zasobu podczas tworzenia bramy sieci VPN. 
 
@@ -175,7 +176,7 @@ Prześlij żądanie przydzielenia publicznego adresu IP, który zostanie przypis
 $gwpip= New-AzPublicIpAddress -Name VNet1GWPIP -ResourceGroupName TestRG1 -Location 'East US' -AllocationMethod Dynamic
 ```
 
-## <a name="GatewayIPConfig"></a>4. Tworzenie konfiguracji adresowania IP bramy
+## <a name="GatewayIPConfig"></a>4. Utwórz konfigurację adresowania IP bramy
 
 Konfiguracja bramy definiuje podsieć ("GatewaySubnet") i publiczny adres IP do użycia. Poniższy przykład umożliwia utworzenie własnej konfiguracji bramy:
 
@@ -189,7 +190,7 @@ $gwipconfig = New-AzVirtualNetworkGatewayIpConfig -Name gwipconfig1 -SubnetId $s
 
 Utwórz bramę sieci VPN sieci wirtualnej.
 
-Użyj następujących wartości:
+Wprowadź następujące wartości:
 
 * Wartość *-GatewayType* dla konfiguracji lokacja-lokacja to *Vpn*. Typ bramy zawsze zależy od wdrażanej konfiguracji. Na przykład inne konfiguracje bramy mogą wymagać zastosowania wartości -GatewayType ExpressRoute.
 * Dla pozycji *-VpnType* określającej typ sieci VPN można wybrać opcję *RouteBased* (oparta na trasach; w dokumentacji używa się czasem określenia „brama dynamiczna”) lub *PolicyBased* (oparta na zasadach; w dokumentacji używa się czasem określenia „brama statyczna”). Więcej informacji o typach bram sieci VPN można znaleźć w artykule [VPN Gateway — informacje](vpn-gateway-about-vpngateways.md).
@@ -203,7 +204,7 @@ New-AzVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1 `
 
 Po uruchomieniu tego polecenia konfigurowanie bramy może potrwać do 45 minut.
 
-## <a name="ConfigureVPNDevice"></a>6. Konfiguracja urządzenia sieci VPN
+## <a name="ConfigureVPNDevice"></a>6. Skonfiguruj urządzenie sieci VPN
 
 Połączenia typu lokacja-lokacja z siecią lokalną wymagają urządzenia sieci VPN. W tym kroku konfigurowane jest urządzenie sieci VPN. Podczas konfigurowania urządzenia sieci VPN, potrzebne są następujące elementy:
 
@@ -219,7 +220,7 @@ Połączenia typu lokacja-lokacja z siecią lokalną wymagają urządzenia sieci
 
 ## <a name="CreateConnection"></a>7. Tworzenie połączenia sieci VPN
 
-Następnie należy utworzyć połączenie sieci VPN typu lokacja-lokacja między bramą sieci wirtualnej i urządzeniem sieci VPN. Przedstawione wartości należy zastąpić własnymi. Klucz współużytkowany musi odpowiadać wartości użytej podczas konfiguracji urządzenia sieci VPN. Należy pamiętać, że dla połączenia typu lokacja-lokacja wartość parametru „-ConnectionType” to **IPsec**.
+Następnie należy utworzyć połączenie sieci VPN typu lokacja-lokacja między bramą sieci wirtualnej i urządzeniem sieci VPN. Przedstawione na nich wartości należy zastąpić własnymi. Klucz współużytkowany musi odpowiadać wartości użytej podczas konfiguracji urządzenia sieci VPN. Należy pamiętać, że dla połączenia typu lokacja-lokacja wartość parametru „-ConnectionType” to **IPsec**.
 
 1. Ustaw zmienne.
    ```azurepowershell-interactive
@@ -236,7 +237,7 @@ Następnie należy utworzyć połączenie sieci VPN typu lokacja-lokacja między
 
 Po chwili zostanie nawiązane połączenie.
 
-## <a name="toverify"></a>8. Sprawdzenie połączenia sieci VPN
+## <a name="toverify"></a>8. Sprawdź połączenie sieci VPN
 
 Istnieje kilka różnych sposobów sprawdzenia połączenia sieci VPN.
 

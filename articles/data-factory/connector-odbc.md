@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 01/09/2020
 ms.author: jingwang
-ms.openlocfilehash: 816009bb7481d93fd53011d067ab56cecbe8e3ef
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6513cfc5432e969fc53aa72b075af194a064d178
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75440424"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75892136"
 ---
 # <a name="copy-data-from-and-to-odbc-data-stores-using-azure-data-factory"></a>Kopiowanie danych z i do magazynów danych ODBC przy użyciu Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
@@ -34,14 +34,14 @@ Ten łącznik ODBC jest obsługiwany dla następujących działań:
 
 Możesz skopiować dane ze źródła ODBC do dowolnego obsługiwanego magazynu danych ujścia lub skopiować z dowolnego obsługiwanego źródłowego magazynu danych do ujścia ODBC. Aby uzyskać listę magazynów danych, obsługiwane przez działanie kopiowania jako źródła/ujścia, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats) tabeli.
 
-Ten łącznik ODBC obsługuje kopiowanie danych z/do **wszelkich magazynów danych zgodnych z ODBC** przy użyciu uwierzytelniania **podstawowego** lub **anonimowego** .
+Ten łącznik ODBC obsługuje kopiowanie danych z/do **wszelkich magazynów danych zgodnych z ODBC** przy użyciu uwierzytelniania **podstawowego** lub **anonimowego** . Wymagany jest **64-bitowy sterownik ODBC** .
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Aby użyć tego łącznika ODBC, należy wykonać następujące:
 
 - Skonfiguruj samodzielny Integration Runtime. Zobacz [własne środowisko IR](create-self-hosted-integration-runtime.md) artykuł, aby uzyskać szczegółowe informacje.
-- Zainstaluj sterownik ODBC dla magazynu danych na maszynie Integration Runtime.
+- Zainstaluj 64-bitowy sterownik ODBC dla magazynu danych na maszynie Integration Runtime.
 
 ## <a name="getting-started"></a>Wprowadzenie
 
@@ -289,4 +289,4 @@ Aby rozwiązać problemy z połączeniem, Użyj karty **Diagnostyka** w **Integr
 5. Kliknij przycisk **Test connection** , aby przetestować połączenie z magazynem danych.
 
 ## <a name="next-steps"></a>Następne kroki
-Aby uzyskać listę magazynów danych obsługiwanych jako źródła i ujścia działania kopiowania w usłudze Azure Data Factory, zobacz [obsługiwane magazyny danych](copy-activity-overview.md##supported-data-stores-and-formats).
+Aby uzyskać listę magazynów danych obsługiwanych jako źródła i ujścia działania kopiowania w usłudze Azure Data Factory, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).

@@ -108,6 +108,9 @@
     - name: Automatyzacja
       tocHref: /azure/automation/
       topicHref: /azure/automation/
+    - name: Internetowa komunikacja równorzędna
+      tocHref: /azure/internet-peering/
+      topicHref: /azure/internet-peering/
     - name: Łańcuch bloków
       tocHref: /azure/blockchain/
       topicHref: /azure/blockchain/
@@ -253,8 +256,8 @@
       tocHref: /azure/azure-stack/user/
       topicHref: /azure/azure-stack/user/
     - name: Możliwości obsługi
-      tocHref: /azure/azure-supportability/
-      topicHref: /azure/azure-supportability/
+      tocHref: /azure/azure-portal/supportability/
+      topicHref: /azure/azure-portal/supportability/
     - name: Backup
       tocHref: /azure/backup/
       topicHref: /azure/backup/

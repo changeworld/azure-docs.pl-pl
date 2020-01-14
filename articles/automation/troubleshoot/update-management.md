@@ -1,6 +1,6 @@
 ---
-title: Rozwiązywanie problemów z Update Management
-description: Dowiedz się, jak rozwiązywać problemy z Update Management.
+title: Rozwiązywanie problemów z usługą Azure Update Management
+description: Dowiedz się, jak rozwiązywać problemy z rozwiązaniem Update Management na platformie Azure.
 services: automation
 author: mgoedtel
 ms.author: magoedte
@@ -8,12 +8,12 @@ ms.date: 05/31/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: a42b05239ae1ddf8909e288486694bf57595b195
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: f60ec802af0c88ee8cb3809bf27feef89e11570a
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849245"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769799"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Rozwiązywanie problemów z Update Management
 
@@ -253,9 +253,13 @@ Unable to Register Machine for Patch Management, Registration Failed with Except
 The certificate presented by the service <wsid>.oms.opinsights.azure.com was not issued by a certificate authority used for Microsoft services. Contact your network administrator to see if they are running a proxy that intercepts TLS/SSL communication.
 ```
 
+```error
+Access is denied. (Exception form HRESULT: 0x80070005(E_ACCESSDENIED))
+```
+
 ### <a name="cause"></a>Przyczyna
 
-Serwer proxy, Brama lub Zapora mogą blokować komunikację sieciową.
+Serwer proxy, Brama lub Zapora mogą blokować komunikację sieciową. 
 
 ### <a name="resolution"></a>Rozdzielczość
 
@@ -325,9 +329,10 @@ Jeśli zobaczysz wynik HRESULT, kliknij dwukrotnie wyjątek wyświetlany na czer
 |`0x8024402C`     | W przypadku korzystania z serwera programu WSUS upewnij się, że wartości rejestru `WUServer` i `WUStatusServer` w kluczu rejestru `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate` określają poprawny serwer WSUS.        |
 |`0x80072EE2`|Występuje problem z łącznością sieciową lub problem podczas rozmowy ze skonfigurowanym serwerem WSUS. Sprawdź ustawienia usług WSUS i upewnij się, że usługa jest dostępna z poziomu klienta.|
 |`The service cannot be started, either because it is disabled or because it has no enabled devices associated with it. (Exception from HRESULT: 0x80070422)`     | Upewnij się, że usługa Windows Update (wuauserv) jest uruchomiona i nie jest wyłączona.        |
+|`0x80070005`| Błąd odmowy dostępu może być spowodowany jedną z następujących czynności:<br> Zainfekowany komputer<br> Ustawienia Windows Update niepoprawnie skonfigurowane<br> Błąd uprawnień pliku w folderze%WinDir%\SoftwareDistribution<br> Za mało miejsca na dysku systemowym (C:).
 |Każdy inny wyjątek ogólny     | Uruchom wyszukiwanie w Internecie, aby zapoznać się z możliwymi rozwiązaniami, i pracuj z lokalną pomocą techniczną IT.         |
 
-Przeglądanie pliku Windowsupdate. log może również pomóc w ustaleniu możliwych przyczyn. Aby uzyskać więcej informacji na temat odczytywania dziennika, zobacz [jak odczytać plik WindowsUpdate. log](https://support.microsoft.com/en-ca/help/902093/how-to-read-the-windowsupdate-log-file).
+Przeglądanie pliku%Windir%\Windowsupdate.log może również pomóc w ustaleniu możliwych przyczyn. Aby uzyskać więcej informacji na temat odczytywania dziennika, zobacz [jak odczytać plik WindowsUpdate. log](https://support.microsoft.com/en-ca/help/902093/how-to-read-the-windowsupdate-log-file).
 
 Możesz również pobrać i uruchomić narzędzie do [rozwiązywania problemów Windows Update](https://support.microsoft.com/help/4027322/windows-update-troubleshooter) , aby sprawdzić, czy występują problemy z Windows Update na komputerze.
 

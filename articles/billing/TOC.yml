@@ -149,7 +149,7 @@
       href: billing-understand-mca-roles.md
     - name: Identyfikator partnera linku
       href: billing-partner-admin-link-started.md
-    - name: Organizowanie kosztów w sekcjach faktury
+    - name: Organizowanie kosztów przez dostosowanie konta rozliczeniowego — umowa klienta firmy Microsoft
       href: billing-mca-section-invoice.md
     - name: Zadania umowy EA w umowie klienta firmy Microsoft
       href: billing-mca-enterprise-operations.md
@@ -232,7 +232,7 @@
     - name: Wyłączony widok kosztów przedsiębiorstwa
       href: billing-enterprise-mgmt-grp-troubleshoot-cost-view.md
     - name: Kontakt z pomocą techniczną
-      href: ../azure-supportability/how-to-create-azure-support-request.md
+      href: ../azure-portal/supportability/how-to-create-azure-support-request.md
 - name: Samples
   items:
     - name: Interfejs API REST

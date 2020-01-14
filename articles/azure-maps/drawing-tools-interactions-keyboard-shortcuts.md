@@ -1,6 +1,6 @@
 ---
-title: Typy interakcji narzędzi do rysowania i skróty klawiaturowe w Azure Maps | Microsoft Docs
-description: Jak rysować i edytować kształty przy użyciu myszy, ekranu dotykowego lub klawiatury w zestawie SDK sieci Web Azure Maps
+title: Narzędzia do rysowania — typy interakcji i skróty klawiaturowe na mapie | Mapy Microsoft Azure
+description: Jak rysować i edytować kształty przy użyciu myszy, ekranu dotykowego lub klawiatury w zestawie Microsoft Azure Web SDK mapy
 author: rbrundritt
 ms.author: richbrun
 ms.date: 12/05/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 8385f294426f6d793f7b539006eafd0b2cb940ea
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 267579f7b4bbfe026f3aa01b00f01f3b872cf4a6
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75481947"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911652"
 ---
 # <a name="interaction-types-and-keyboard-shortcuts-in-the-drawing-tools-module"></a>Typy interakcji i skróty klawiaturowe w module narzędzi do rysowania
 

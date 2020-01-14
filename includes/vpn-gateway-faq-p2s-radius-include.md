@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: f9b787413dd6e2aaeafd4aa3bcee0eff746abece
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: b802cab7d52fd886770c326e97d0378a0da64762
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71310547"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75751499"
 ---
 [!INCLUDE [P2S FAQ All](vpn-gateway-faq-p2s-all-include.md)]
 
@@ -53,4 +53,4 @@ Tak, uwierzytelnianie za pomocą protokołu RADIUS jest obsługiwane dla sieci z
 
 ### <a name="does-radius-authentication-work-with-the-openvpn-client"></a>Czy uwierzytelnianie usługi RADIUS działa z klientem OpenVPN?
 
-Uwierzytelnianie usługi RADIUS nie jest obsługiwane przez klienta OpenVPN.
+Uwierzytelnianie usługi RADIUS jest obsługiwane dla protokołu OpenVPN tylko za pomocą programu PowerShell.

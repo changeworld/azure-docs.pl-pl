@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Tworzenie geofencingu przy użyciu Azure Maps'
-description: 'Samouczek: Konfigurowanie geoogrodzenia przy użyciu Azure Maps.'
+title: 'Samouczek: Tworzenie geoogrodzenia i śledzenie urządzeń na mapie | Mapy Microsoft Azure'
+description: W tym samouczku dowiesz się, jak skonfigurować geoogrodzenie i śledzić urządzenia względem geoogrodzenia przy użyciu usługi Microsoft Azure Maps.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 11/12/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 2998c67bf00c74422baa19af0b389118600ba1c7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0e408adfe1daed402ef690224368e846bd0a97c8
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75407830"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910942"
 ---
 # <a name="tutorial-set-up-a-geofence-by-using-azure-maps"></a>Samouczek: Konfigurowanie geoogrodzenia przy użyciu Azure Maps
 
@@ -58,7 +58,7 @@ Otwórz aplikację Postman i wykonaj poniższe kroki, aby przekazać geofencing 
 
 3. Kliknij pozycję **Params** (Parametry), a następnie wprowadź poniższą parę klucz-wartość, która będzie używana w przypadku adresu URL żądania POST. Zastąp wartość klucza subskrypcji kluczem Azure Maps.
    
-    ![Parametry klucz-wartość narzędzia Postman](./media/tutorial-geofence/postman-key-vals.png)
+    ![Parametry przekazywania danych (geoogrodzenia) w programie Poster](./media/tutorial-geofence/postman-key-vals.png)
 
 4. Kliknij pozycję **Body** (Treść), a następnie wybierz nieprzetworzony format danych wejściowych i z listy rozwijanej wybierz format danych wejściowych JSON. Jako dane do przekazania podaj następujące dane JSON:
 
@@ -177,7 +177,7 @@ Aby uzyskać więcej informacji, możesz wyświetlić wszystkie [obsługiwane pr
 
 1. Tworzenie aplikacji logiki w witrynie Azure Portal
 
-   ![Tworzenie aplikacji Logic Apps](./media/tutorial-geofence/logic-app.png)
+   ![Tworzenie Azure Logic Apps do obsługi zdarzeń geoogrodzenia](./media/tutorial-geofence/logic-app.png)
 
 2. Wybierz wyzwalacz żądania HTTP, a następnie wybierz pozycję „Wyślij wiadomość e-mail” jako akcję w łączniku programu Outlook
   
@@ -185,7 +185,7 @@ Aby uzyskać więcej informacji, możesz wyświetlić wszystkie [obsługiwane pr
 
 3. Zapisz aplikację logiki, aby wygenerować punkt końcowy adresu URL HTTP i skopiuj adres URL HTTP.
 
-   ![Punkt końcowy usługi Logic Apps](./media/tutorial-geofence/logic-app-endpoint.png)
+   ![Generowanie punktu końcowego Logic Apps](./media/tutorial-geofence/logic-app-endpoint.png)
 
 
 ## <a name="create-an-azure-maps-events-subscription"></a>Tworzenie subskrypcji zdarzeń usługi Azure Maps
@@ -196,15 +196,15 @@ Wykonaj poniższe kroki, aby utworzyć subskrypcję dla zdarzeń wjazdu wirtualn
 
 1. Przejdź do swojego konta usługi Azure Maps za pomocą [tego linku do portalu](https://ms.portal.azure.com/#@microsoft.onmicrosoft.com/dashboard/) i wybierz kartę zdarzeń.
 
-   ![Zdarzenia usługi Azure Maps](./media/tutorial-geofence/events-tab.png)
+   ![Przejdź do Azure Maps zdarzeń konta](./media/tutorial-geofence/events-tab.png)
 
 2. Aby utworzyć subskrypcję zdarzeń, wybierz pozycję Subskrypcja zdarzeń ze strony zdarzeń.
 
-   ![Subskrypcja zdarzeń usługi Azure Maps](./media/tutorial-geofence/create-event-subscription.png)
+   ![Tworzenie subskrypcji zdarzeń usługi Azure Maps](./media/tutorial-geofence/create-event-subscription.png)
 
 3. Nadaj nazwę subskrypcji zdarzeń i rozpocznij subskrypcję typu zdarzenia Wjazd. Teraz jako „Typ punktu końcowego” wybierz element webhook i skopiuj punkt końcowy adresu URL HTTP aplikacji logiki do pola „Punkt końcowy”
 
-   ![Subskrypcja zdarzeń](./media/tutorial-geofence/events-subscription.png)
+   ![Szczegóły subskrypcji zdarzeń Azure Maps](./media/tutorial-geofence/events-subscription.png)
 
 
 ## <a name="use-geofence-api"></a>Używanie interfejsu API wirtualnego ogrodzenia
@@ -214,7 +214,7 @@ Interfejs API geofencingu umożliwia sprawdzanie, czy **urządzenie** (sprzęt j
 > [!Note]
 > Powyższy scenariusz i zachowanie są oparte na tym samym **identyfikatorze urządzenia**, dzięki czemu odzwierciedlają one pięć różnych lokalizacji, jak na poniższej ilustracji.
 
-![Mapa geofencingu](./media/tutorial-geofence/geofence.png)
+![Mapa geoogrodzenia w Azure Maps](./media/tutorial-geofence/geofence.png)
 
 W aplikacji Postman otwórz nową kartę w tej samej kolekcji, która została utworzona powyżej. Na karcie konstruktora wybierz metodę GET HTTP:
 

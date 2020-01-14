@@ -5,12 +5,12 @@ ms.assetid: 361da2a4-15d1-4903-bdc4-cc4b27fc3ff4
 ms.topic: quickstart
 ms.date: 10/01/2018
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: 3f4e9f8a607856e3de92a4824a4221071f3c02a4
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 3d4cfc40f1849ecd2745b1d662973c7f64a0a60c
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227136"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769255"
 ---
 # <a name="create-a-function-triggered-by-azure-queue-storage"></a>Tworzenie funkcji wyzwalanej przez usługę Azure Queue Storage
 
@@ -46,7 +46,7 @@ Następnie należy utworzyć funkcję w nowej aplikacji funkcji.
 
 1. W polu wyszukiwania wpisz `queue`, a następnie wybierz szablon **Wyzwalacz kolejki**.
 
-1. Po wyświetleniu monitu wybierz pozycję **Instaluj**, aby zainstalować rozszerzenie usługi Azure Storage i wszelkie zależności w aplikacji funkcji. Po pomyślnym zakończeniu instalacji wybierz pozycję **Kontynuuj**.
+1. Jeśli zostanie wyświetlony monit, wybierz pozycję **Zainstaluj** , aby zainstalować rozszerzenie usługi Azure Storage i wszystkie zależności w aplikacji funkcji. Po pomyślnym zakończeniu instalacji wybierz pozycję **Kontynuuj**.
 
     ![Instalowanie rozszerzeń powiązania](./media/functions-create-storage-queue-triggered-function/functions-create-queue-storage-trigger-portal.png)
 
@@ -58,7 +58,7 @@ Następnie należy utworzyć funkcję w nowej aplikacji funkcji.
     |---|---|---|
     | **Nazwa** | Unikatowa w obrębie aplikacji funkcji | Nazwa funkcji wyzwalanej przez kolejkę. |
     | **Nazwa kolejki**   | myqueue-items    | Nazwa kolejki, z którą zostanie nawiązane połączenie na koncie magazynu. |
-    | **Połączenie konta magazynu** | AzureWebJobStorage | Możesz skorzystać z połączenia konta magazynu już używanego przez aplikację funkcji lub utworzyć nowe.  |    
+    | **Połączenie konta magazynu** | AzureWebJobsStorage | Możesz skorzystać z połączenia konta magazynu już używanego przez aplikację funkcji lub utworzyć nowe.  |    
 
 1. Kliknij przycisk **Utwórz**, aby utworzyć funkcję.
 
@@ -88,7 +88,7 @@ Teraz, gdy masz już kolejkę magazynu, możesz przetestować funkcję, dodając
 
 1. Wróć do witryny Azure Portal, przejdź do swojej funkcji, rozwiń pozycję **Dzienniki** w dolnej części strony i upewnij się, że strumieniowe przesyłanie dzienników nie jest wstrzymane.
 
-1. W programie Storage Explorer rozwiń swoje konto magazynu, wybierz kolejno pozycje **Queues** (Kolejki) i **myqueue-items**, a następnie kliknij pozycję **Add message** (Dodaj komunikat).
+1. W Eksplorator usługi Storage rozwiń konto magazynu, **kolejki**i **elementy moje kolejki**, a następnie kliknij pozycję **Dodaj komunikat**.
 
     ![Dodawanie komunikatu do kolejki.](./media/functions-create-storage-queue-triggered-function/functions-storage-manager-add-message.png)
 

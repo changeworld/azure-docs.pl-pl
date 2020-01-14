@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: sngun
-ms.openlocfilehash: 5ab4281f1ad591befda5a439906604331a1ab323
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 1ac4d12f58977497642cdb0706ab7e85e9a4db64
+ms.sourcegitcommit: e9776e6574c0819296f28b43c9647aa749d1f5a6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872149"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75913090"
 ---
 # <a name="security-controls-for-azure-cosmos-db"></a>Kontrolki zabezpieczeń dla Azure Cosmos DB
 
@@ -20,7 +20,7 @@ W tym artykule opisano kontrolki zabezpieczeń wbudowane w Azure Cosmos DB.
 
 [!INCLUDE [Security controls Header](../../includes/security-controls-header.md)]
 
-## <a name="network"></a>Sieć
+## <a name="network"></a>Network (Sieć)
 
 | Kontrola zabezpieczeń | Tak/nie | Uwagi |
 |---|---|--|
@@ -41,18 +41,18 @@ W tym artykule opisano kontrolki zabezpieczeń wbudowane w Azure Cosmos DB.
 
 | Kontrola zabezpieczeń | Tak/nie | Uwagi|
 |---|---|--|
-| Uwierzytelnianie| Tak | Tak na poziomie konta bazy danych; na poziomie płaszczyzny danych Cosmos DB używa tokenów zasobów i dostępu do kluczy. |
+| Authentication| Tak | Tak na poziomie konta bazy danych; na poziomie płaszczyzny danych Cosmos DB używa tokenów zasobów i dostępu do kluczy. |
 | Autoryzacja| Tak | Obsługiwane na koncie usługi Azure Cosmos z kluczami głównymi (podstawowymi i pomocniczymi) i tokenami zasobów. Możesz uzyskać dostęp do odczytu/zapisu lub tylko do odczytu do danych z kluczami głównymi. Tokeny zasobów umożliwiają ograniczony dostęp do zasobów, takich jak dokumenty i kontenery. |
 
 ## <a name="data-protection"></a>Ochrona danych
 
 | Kontrola zabezpieczeń | Tak/nie | Uwagi |
 |---|---|--|
-| Szyfrowanie po stronie serwera w czasie spoczynku: klucze zarządzane przez firmę Microsoft | Tak | Wszystkie bazy danych i kopie zapasowe usługi Azure Cosmos są domyślnie szyfrowane. Zobacz [szyfrowanie danych w Azure Cosmos DB](database-encryption-at-rest.md). Szyfrowanie po stronie serwera z kluczami zarządzanymi przez klienta nie jest obsługiwane. |
-| Szyfrowanie po stronie serwera w spoczynku: klucze zarządzane przez klienta (BYOK) | Nie |  |
+| Szyfrowanie po stronie serwera w czasie spoczynku: klucze zarządzane przez firmę Microsoft | Tak | Wszystkie bazy danych i kopie zapasowe usługi Azure Cosmos są domyślnie szyfrowane. Zobacz [szyfrowanie danych w Azure Cosmos DB](database-encryption-at-rest.md). |
+| Szyfrowanie po stronie serwera w spoczynku: klucze zarządzane przez klienta (BYOK) | Tak | Zobacz [Konfigurowanie kluczy zarządzanych przez klienta dla konta Azure Cosmos DB](how-to-setup-cmk.md)  |
 | Szyfrowanie na poziomie kolumny (Data Services platformy Azure)| Tak | Tylko w interfejsie API tabel Premium. Nie wszystkie interfejsy API obsługują tę funkcję. Zapoznaj [się z artykułem wprowadzenie do Azure Cosmos DB: interfejs API tabel](table-introduction.md). |
 | Szyfrowanie podczas przesyłania (takie jak szyfrowanie ExpressRoute, szyfrowanie sieci wirtualnej i szyfrowanie sieci wirtualnej)| Tak | Wszystkie dane Azure Cosmos DB są szyfrowane podczas przesyłania. |
-| Wywołania interfejsu API są szyfrowane| Tak | Wszystkie połączenia do Azure Cosmos DB obsługują protokół HTTPS. Azure Cosmos DB obsługuje również połączenia TLS 1,2, ale nie jest to jeszcze wymuszane. Jeśli klienci wyłączają niższy poziom protokołu TLS na swoich końcach, mogą się upewnić, że nawiąże połączenie z Cosmos DB.  |
+| Wywołania interfejsu API są szyfrowane| Tak | Wszystkie połączenia do Azure Cosmos DB obsługują protokół HTTPS. Azure Cosmos DB obsługuje również protokół TLS 1,2.<br>Istnieje możliwość wymuszenia minimalnej wersji protokołu TLS po stronie serwera. Aby to zrobić, skontaktuj się z [cosmosdbpm@microsoft.com](maito:cosmosdbpm@microsoft.com]). |
 
 ## <a name="configuration-management"></a>Zarządzanie konfiguracją
 

@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Dołączanie danych z czujników z danymi prognoz pogody przy użyciu Azure Notebooks (Python) | Microsoft Docs'
-description: 'Samouczek: w tym samouczku pokazano, jak połączyć dane czujników z danymi prognoz pogody z usługi Azure Maps Pogoda przy użyciu Azure Notebooks (Python).'
+title: 'Samouczek: Dołączanie danych z czujników z danymi prognoz pogody przy użyciu Azure Notebooks (Python) | Mapy Microsoft Azure'
+description: W tym samouczku pokazano, jak sprzęgać dane czujników z danymi prognoz pogody z Microsoft Azure Maps usługi Pogoda przy użyciu Azure Notebooks (Python).
 author: walsehgal
 ms.author: v-musehg
 ms.date: 12/09/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 809c188dc37aba64de27e89e38acd8692c7de032
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 1a1493033717b18bef5d80b28d06004c901ffb29
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75613571"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910791"
 ---
 # <a name="tutorial-join-sensor-data-with-weather-forecast-data-by-using-azure-notebooks-python"></a>Samouczek: Dołączanie danych z czujników z danymi prognoz pogody przy użyciu Azure Notebooks (Python)
 

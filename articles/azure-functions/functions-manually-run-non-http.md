@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: tutorial
 ms.date: 12/12/2018
 ms.author: cshoe
-ms.openlocfilehash: 8198ff6579aff839ff9aacb729e2f3f8d3472fae
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 4ce7b8590e4718585fe841921466e049dc204928
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230472"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769136"
 ---
 # <a name="manually-run-a-non-http-triggered-function"></a>Ręczne uruchamianie funkcji niewyzwalanej przez protokół HTTP
 
@@ -22,7 +22,7 @@ W poniższym przykładzie jest używane narzędzie [Postman](https://www.getpost
 
 ## <a name="define-the-request-location"></a>Definiowanie lokalizacji żądania
 
-Aby uruchomić funkcję niewyzwalaną przez protokół HTTP, potrzebujesz sposobu wysyłania żądania do platformy Azure umożliwiającego uruchomienie funkcji. Adres URL używany do wykonania tego żądania przyjmuje określoną postać.
+Aby uruchomić funkcję niewyzwalaną przez protokół HTTP, należy wysłać żądanie do platformy Azure w celu uruchomienia funkcji. Adres URL używany do wykonania tego żądania przyjmuje określoną postać.
 
 ![Definiowanie lokalizacji żądania: nazwa hosta + ścieżka folderu + nazwa funkcji](./media/functions-manually-run-non-http/azure-functions-admin-url-anatomy.png)
 

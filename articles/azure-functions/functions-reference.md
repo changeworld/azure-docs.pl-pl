@@ -4,12 +4,12 @@ description: Poznaj Azure Functions koncepcje i techniki, które są potrzebne d
 ms.assetid: d8efe41a-bef8-4167-ba97-f3e016fcd39e
 ms.topic: conceptual
 ms.date: 10/12/2017
-ms.openlocfilehash: 3ccfc28dc332d2ff90ec09256a43a9143e37c03b
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 7dd7ef3c4833fb9ffa3781f06faba4f40cd40cfb
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974227"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769017"
 ---
 # <a name="azure-functions-developers-guide"></a>Przewodnik dla deweloperów Azure Functions
 W Azure Functions określone funkcje udostępniają kilka podstawowych pojęć i składników technicznych, niezależnie od używanego języka lub powiązania. Przed przejściem do szczegółów szczegółowych informacji dotyczących danego języka lub powiązania należy zapoznać się z tym omówieniem, który ma zastosowanie do wszystkich z nich.
@@ -102,4 +102,4 @@ Więcej informacji zawierają następujące zasoby:
 * [Kodowanie i testowanie usługi Azure Functions lokalnie](./functions-develop-local.md)
 * [Najlepsze rozwiązania dotyczące usługi Azure Functions](functions-best-practices.md)
 * [Dokumentacja C# dla deweloperów Azure Functions](functions-dotnet-class-library.md)
-* [Dokumentacja dla deweloperów Azure Functions NodeJS](functions-reference-node.md)
+* [Azure Functions Dokumentacja dla deweloperów Node. js](functions-reference-node.md)

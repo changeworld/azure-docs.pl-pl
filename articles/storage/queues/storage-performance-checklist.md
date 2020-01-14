@@ -8,24 +8,24 @@ ms.topic: overview
 ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: queues
-ms.openlocfilehash: 8ab4cb6b06f0f023a8f6368dac633a97afe29fd4
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: eb1821537e6e25b05dfdca3107729eecf4c6e1bf
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390027"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750496"
 ---
 # <a name="performance-and-scalability-checklist-for-queue-storage"></a>Lista kontrolna wydajności i skalowalności usługi queue storage
 
 Firma Microsoft opracowała kilka sprawdzonych praktyk tworzenia aplikacji o wysokiej wydajności za pomocą usługi queue storage. Ta lista kontrolna zawiera najważniejsze rozwiązania, które deweloperzy mogą wykonać w celu zoptymalizowania wydajności. Należy pamiętać o tych praktykach podczas projektowania aplikacji i w trakcie całego procesu.
 
-Usługa Azure Storage oferuje cele skalowalności i wydajności dla pojemności, szybkości transakcji i przepustowości. Aby uzyskać więcej informacji o celach skalowalności usługi Azure Storage, zobacz [cele dotyczące skalowalności i wydajności usługi Azure Storage dla kont magazynu](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json).
+Usługa Azure Storage oferuje cele skalowalności i wydajności dla pojemności, szybkości transakcji i przepustowości. Aby uzyskać więcej informacji na temat celów skalowalności usługi Azure Storage, zobacz [cele skalowalności i wydajności dla standardowych kont magazynu](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json) i [skalowalności i wydajności docelowych dla magazynu kolejek](scalability-targets.md).
 
 ## <a name="checklist"></a>Lista kontrolna
 
 Ten artykuł organizuje sprawdzone rozwiązania dotyczące wydajności w ramach listy kontrolnej, którą można wykonać podczas tworzenia aplikacji usługi queue storage.
 
-| Gotowe | Kategoria | Zagadnienie dotyczące projektowania |
+| Gotowe | Kategoria | Zagadnienia związane z projektem |
 | --- | --- | --- |
 | &nbsp; |Tarcze skalowalności |[Czy można zaprojektować aplikację tak, aby korzystała z nie więcej niż maksymalna liczba kont magazynu?](#maximum-number-of-storage-accounts) |
 | &nbsp; |Tarcze skalowalności |[Czy unikasz zbliżania się limitów pojemności i transakcji?](#capacity-and-transaction-targets) |
@@ -37,7 +37,7 @@ Ten artykuł organizuje sprawdzone rozwiązania dotyczące wydajności w ramach 
 | &nbsp; |Konfiguracja platformy .NET |[Czy skonfigurowano klienta tak, aby używał wystarczającej liczby jednoczesnych połączeń?](#increase-default-connection-limit) |
 | &nbsp; |Konfiguracja platformy .NET |[Czy w przypadku aplikacji .NET skonfigurowano platformę .NET do używania wystarczającej liczby wątków?](#increase-minimum-number-of-threads) |
 | &nbsp; |Równoległości |[Czy istnieje pewność, że równoległość jest odpowiednio ograniczona, aby nie można było przeciążać możliwości klienta ani podejścia do celów skalowalności?](#unbounded-parallelism) |
-| &nbsp; |Narzędzia |[Czy używasz najnowszych wersji bibliotek i narzędzi klienta dostarczonych przez firmę Microsoft?](#client-libraries-and-tools) |
+| &nbsp; |narzędzia |[Czy używasz najnowszych wersji bibliotek i narzędzi klienta dostarczonych przez firmę Microsoft?](#client-libraries-and-tools) |
 | &nbsp; |Ponowne próby |[Czy zasady ponawiania są używane z wykładniczą wycofywaniaą do ograniczania błędów i przekroczeń limitu czasu?](#timeout-and-server-busy-errors) |
 | &nbsp; |Ponowne próby |[Czy aplikacja unika ponawiania prób w przypadku błędów, które nie są ponawiane?](#non-retryable-errors) |
 | &nbsp; |Konfigurowanie |[Czy wyłączono algorytm nagle, aby zwiększyć wydajność małych żądań?](#disable-nagle) |
@@ -51,7 +51,7 @@ Ten artykuł organizuje sprawdzone rozwiązania dotyczące wydajności w ramach 
 
 Jeśli aplikacja zbliża się lub przekroczy elementy docelowe skalowalności, może wystąpić zwiększenie opóźnień transakcji lub ograniczenie przepustowości. Gdy usługa Azure Storage ogranicza swoją aplikację, rozpocznie się zwracanie kodów błędów 503 (serwer zajęty) lub 500 (limit czasu operacji). Unikanie tych błędów przez Przekroczenie limitów celów skalowalności jest ważną częścią zwiększania wydajności aplikacji.
 
-Aby uzyskać więcej informacji dotyczących skalowalności usługa kolejki, zobacz [cele dotyczące skalowalności i wydajności usługi Azure Storage](/azure/storage/common/storage-scalability-targets?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#azure-queue-storage-scale-targets).
+Aby uzyskać więcej informacji dotyczących skalowalności usługa kolejki, zobacz [cele dotyczące skalowalności i wydajności usługi Azure Storage](/azure/storage/queues/scalability-targets#scale-targets-for-queue-storage).
 
 ### <a name="maximum-number-of-storage-accounts"></a>Maksymalna liczba kont magazynu
 
@@ -194,5 +194,6 @@ Użyj kolejek, aby zapewnić skalowalność architektury aplikacji. Poniżej wym
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Cele dotyczące skalowalności i wydajności usługi Azure Storage dla kont magazynu](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)
+- [Elementy docelowe skalowalności i wydajności dla usługi queue storage](scalability-targets.md)
+- [Cele skalowalności i wydajności dla kont magazynu w warstwie Standardowa](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)
 - [Kody stanu i błędów](/rest/api/storageservices/Status-and-Error-Codes2)

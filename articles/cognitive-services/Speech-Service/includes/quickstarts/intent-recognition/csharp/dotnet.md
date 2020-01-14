@@ -1,37 +1,36 @@
 ---
 title: 'Szybki Start: Rozpoznawanie mowy, zamiar i jednostek, C# usługa mowy'
 titleSuffix: Azure Cognitive Services
-description: do ustalenia
 services: cognitive-services
 author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: quickstart
-ms.date: 10/28/2019
+ms.date: 01/02/2020
+ms.topic: include
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: c7e63008e6c54d517c0d4c0e1661a9836f9f38c3
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: acd122668a5aa70becbf284bd064535e859ad01b
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74815877"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75773025"
 ---
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Przed rozpoczęciem upewnij się, że:
+Przed rozpoczęciem:
 
-> [!div class="checklist"]
->
-> * [Tworzenie zasobu usługi Azure Speech](../../../../get-started.md)
-> * [Tworzenie aplikacji Language Understanding (LUIS) i pobieranie klucza punktu końcowego](../../../../quickstarts/create-luis.md)
-> * [Konfigurowanie środowiska deweloperskiego](../../../../quickstarts/setup-platform.md?tabs=dotnet)
-> * [Tworzenie pustego przykładowego projektu](../../../../quickstarts/create-project.md?tabs=dotnet)
+* Jeśli jest to Twój pierwszy C# projekt, użyj tego przewodnika, aby <a href="~/articles/cognitive-services/Speech-Service/quickstarts/create-project.md?tabs=dotnet" target="_blank">utworzyć pusty przykładowy projekt</a>.
+* <a href="~/articles/cognitive-services/Speech-Service/quickstarts/setup-platform.md?tabs=dotnet" target="_blank">Zainstaluj zestaw Speech SDK dla środowiska deweloperskiego</a>.
+
+## <a name="create-a-luis-app-for-intent-recognition"></a>Tworzenie aplikacji LUIS na potrzeby rozpoznawania intencji
+
+[!INCLUDE [Create a LUIS app for intent recognition](../luis-sign-up.md)]
 
 ## <a name="open-your-project-in-visual-studio"></a>Otwórz projekt w programie Visual Studio
 
-Pierwszym krokiem jest upewnienie się, że projekt jest otwarty w programie Visual Studio.
+Następnie otwórz projekt w programie Visual Studio.
 
 1. Uruchom program Visual Studio 2019.
 2. Załaduj projekt i Otwórz `Program.cs`.
@@ -43,42 +42,62 @@ Dodajmy kod, który działa jako szkielet dla projektu. Należy pamiętać, że 
 
 ## <a name="create-a-speech-configuration"></a>Tworzenie konfiguracji mowy
 
-Przed zainicjowaniem obiektu `IntentRecognizer` należy utworzyć konfigurację, która używa klucza i regionu punktu końcowego LUIS. Wstaw ten kod w metodzie `RecognizeIntentAsync()`.
+Przed zainicjowaniem obiektu `IntentRecognizer` należy utworzyć konfigurację, która używa klucza i lokalizacji dla zasobu przewidywania LUIS. 
 
-Ten przykład używa metody `FromSubscription()`, aby skompilować `SpeechConfig`. Aby uzyskać pełną listę dostępnych metod, zobacz [SpeechConfig Class](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet).
-Zestaw Speech SDK będzie domyślnie rozpoznawał użycie języka en-us w celu uzyskania informacji na temat wybierania [języka źródłowego.](../../../../how-to-specify-source-language.md)
+> [!IMPORTANT]
+> Klucz początkowy i klucze tworzenia nie będą działały. Musisz użyć utworzonego wcześniej klucza predykcyjnego i lokalizacji. Aby uzyskać więcej informacji, zobacz [Tworzenie aplikacji Luis na potrzeby rozpoznawania intencji](#create-a-luis-app-for-intent-recognition). 
 
-> [!NOTE]
-> Ważne jest, aby użyć klucza punktu końcowego LUIS, a nie kluczy początkowych lub autorskich, ponieważ tylko klucz punktu końcowego jest prawidłowy dla rozpoznawania mowy dla konwersji. Zobacz [Tworzenie aplikacji Luis i Uzyskiwanie klucza punktu końcowego,](~/articles/cognitive-services/Speech-Service/quickstarts/create-luis.md) Aby uzyskać instrukcje dotyczące pobierania poprawnego klucza.
+Wstaw ten kod w metodzie `RecognizeIntentAsync()`. Upewnij się, że te wartości są aktualizowane: 
+
+* Zastąp `"YourLanguageUnderstandingSubscriptionKey"` kluczem przewidywania LUIS. 
+* Zastąp `"YourLanguageUnderstandingServiceRegion"` lokalizacją LUIS. 
+
+>[!TIP]
+> Jeśli potrzebujesz pomocy w znalezieniu tych wartości, zobacz [Tworzenie aplikacji Luis na potrzeby rozpoznawania intencji](#create-a-luis-app-for-intent-recognition).
 
 [!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/intent-recognition/helloworld/Program.cs?range=26)]
+
+Ten przykład używa metody `FromSubscription()`, aby skompilować `SpeechConfig`. Aby uzyskać pełną listę dostępnych metod, zobacz [SpeechConfig Class](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet).
+
+Zestaw Speech SDK będzie domyślnie rozpoznawał użycie języka en-us w celu uzyskania informacji na temat wybierania [języka źródłowego.](../../../../how-to-specify-source-language.md)
 
 ## <a name="initialize-an-intentrecognizer"></a>Inicjowanie elementu IntentRecognizer
 
 Teraz Utwórzmy `IntentRecognizer`. Ten obiekt jest tworzony wewnątrz instrukcji using, aby zapewnić odpowiednią wersję niezarządzanych zasobów. Wstaw ten kod w metodzie `RecognizeIntentAsync()`, bezpośrednio poniżej konfiguracji mowy.
+
 [!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/intent-recognition/helloworld/Program.cs?range=28-30,76)]
 
 ## <a name="add-a-languageunderstandingmodel-and-intents"></a>Dodaj LanguageUnderstandingModel i intencje
 
-Teraz musisz skojarzyć `LanguageUnderstandingModel` z aparatem zamierzania i dodać żądane intencje.
+Należy skojarzyć `LanguageUnderstandingModel` z aparatem zamierzania i dodać żądane intencje. Będziemy używać intencji z prekompilowanej domeny dla automatyzacji domowej. Wstaw ten kod w instrukcji using z poprzedniej sekcji. Upewnij się, że `"YourLanguageUnderstandingAppId"` jest zastępowany IDENTYFIKATORem aplikacji LUIS. 
+
+>[!TIP]
+> Jeśli potrzebujesz pomocy w znalezieniu tej wartości, zobacz [Tworzenie aplikacji Luis na potrzeby rozpoznawania intencji](#create-a-luis-app-for-intent-recognition).
+
 [!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/intent-recognition/helloworld/Program.cs?range=31-35)]
 
 ## <a name="recognize-an-intent"></a>Rozpoznawanie zamiaru
 
 Z obiektu `IntentRecognizer` nastąpi wywołanie metody `RecognizeOnceAsync()`. Ta metoda pozwala usłudze rozpoznawania mowy wysyłać pojedyncze frazy do rozpoznawania, a po zidentyfikowaniu frazy do zatrzymania rozpoznawania mowy.
 
-Wewnątrz instrukcji using Dodaj następujący kod: [!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/intent-recognition/helloworld/Program.cs?range=46)]
+Wewnątrz instrukcji using Dodaj następujący kod pod modelem: [!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/intent-recognition/helloworld/Program.cs?range=46)]
 
-## <a name="display-the-recognition-results-or-errors"></a>Wyświetlanie wyników rozpoznawania (lub błędów)
+## <a name="display-recognition-results-or-errors"></a>Wyświetl wyniki (lub błędy) rozpoznawania
 
-Gdy usługa mowy zwróci wynik rozpoznawania, należy wykonać coś z nim. Zajmiemy się tym, że będzie on prosty i będzie drukował wynik do konsoli.
+Gdy usługa mowy zwróci wynik rozpoznawania, należy wykonać coś z nim. Zajmiemy się tym, że będzie to proste i będzie można drukować wyniki w konsoli.
 
-Wewnątrz instrukcji using, poniżej `RecognizeOnceAsync()`, Dodaj następujący kod: [!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/intent-recognition/helloworld/Program.cs?range=48-75)]
+Wewnątrz instrukcji using poniżej `RecognizeOnceAsync()`Dodaj następujący kod:
+
+[!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/intent-recognition/helloworld/Program.cs?range=48-75)]
 
 ## <a name="check-your-code"></a>Sprawdź swój kod
 
 W tym momencie kod powinien wyglądać następująco:  
-(Dodaliśmy Komentarze do tej wersji) [!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/intent-recognition/helloworld/Program.cs?range=5-86)]
+
+> [!NOTE]
+> Dodaliśmy Komentarze do tej wersji.
+
+[!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/intent-recognition/helloworld/Program.cs?range=5-86)]
 
 ## <a name="build-and-run-your-app"></a>Kompilowanie i uruchamianie aplikacji
 

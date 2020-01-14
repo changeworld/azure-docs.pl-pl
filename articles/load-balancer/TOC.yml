@@ -8,26 +8,34 @@
       href: load-balancer-standard-overview.md
 - name: Szybki start
   items:
-    - name: Tworzenie standardowego modułu równoważenia obciążenia — portal
-      href: quickstart-load-balancer-standard-public-portal.md
-    - name: Tworzenie standardowego modułu równoważenia obciążenia — interfejs wiersza polecenia platformy Azure
-      href: quickstart-load-balancer-standard-public-cli.md
-    - name: Tworzenie standardowego modułu równoważenia obciążenia — program Azure PowerShell
-      href: quickstart-create-standard-load-balancer-powershell.md
-    - name: Tworzenie usługi Load Balancer w warstwie Standardowa — szablon
-      href: quickstart-load-balancer-standard-public-template.md
-    - name: Tworzenie podstawowego modułu równoważenia obciążenia — portal
-      href: quickstart-create-basic-load-balancer-portal.md
-    - name: Tworzenie podstawowego modułu równoważenia obciążenia — interfejs wiersza polecenia platformy Azure
-      href: quickstart-create-basic-load-balancer-cli.md
-    - name: Tworzenie podstawowego modułu równoważenia obciążenia — program Azure PowerShell
-      href: quickstart-create-basic-load-balancer-powershell.md
+    - name: Tworzenie usługi Load Balancer w warstwie Standardowa
+      items:
+        - name: Portal
+          href: quickstart-load-balancer-standard-public-portal.md
+        - name: Interfejs wiersza polecenia platformy Azure
+          href: quickstart-load-balancer-standard-public-cli.md
+        - name: Azure PowerShell
+          href: quickstart-create-standard-load-balancer-powershell.md
+        - name: Szablon
+          href: quickstart-load-balancer-standard-public-template.md
+    - name: Tworzenie podstawowego modułu równoważenia obciążenia
+      items:
+        - name: Portal
+          href: quickstart-create-basic-load-balancer-portal.md
+        - name: Interfejs wiersza polecenia platformy Azure
+          href: quickstart-create-basic-load-balancer-cli.md
+        - name: Azure PowerShell
+          href: quickstart-create-basic-load-balancer-powershell.md
+        - name: Szablon
+          href: load-balancer-get-started-internet-arm-template.md
+        - name: Interfejs API REST
+          href: create-load-balancer-rest-api.md
 - name: Samouczki
   items:
     - name: Równoważenie obciążenia ruchem internetowym przez skierowanie go do maszyn wirtualnych
       href: tutorial-load-balancer-standard-manage-portal.md
     - name: Równoważenie obciążenia ruchem wewnętrznym przez skierowanie go do maszyn wirtualnych
-      href: tutorial-load-balancer-basic-internal-portal.md
+      href: tutorial-load-balancer-standard-internal-portal.md
     - name: Równoważenie obciążenia maszyn wirtualnych w różnych strefach dostępności
       href: tutorial-load-balancer-standard-public-zone-redundant-portal.md
     - name: Równoważenie obciążenia maszyny wirtualnej w określonej strefie dostępności
@@ -42,8 +50,16 @@
       href: powershell-samples.md
 - name: Pojęcia
   items:
-    - name: Sondy kondycji
-      href: load-balancer-custom-probe-overview.md
+    - name: Monitorowanie kondycji
+      items:
+        - name: Sondy kondycji
+          href: load-balancer-custom-probe-overview.md
+        - name: Metryki i diagnostyka usługi Load Balancer w warstwie Standardowa
+          href: load-balancer-standard-diagnostics.md
+        - name: Dzienniki usługi Azure Monitor dla usługi Load Balancer w warstwie Podstawowa
+          href: load-balancer-monitor-log.md
+        - name: Pobieranie metryk usługi Load Balancer
+          href: load-balancer-query-metrics-rest-api.md
     - name: Porty wysokiej dostępności
       href: load-balancer-ha-ports-overview.md
     - name: Pomoc techniczna dotycząca protokołu IPv6
@@ -58,72 +74,63 @@
       href: load-balancer-tcp-reset.md
     - name: Usługa Load Balancer w warstwie Standardowa i strefy dostępności
       href: load-balancer-standard-availability-zones.md
-    - name: Metryki i diagnostyka usługi Load Balancer w warstwie Standardowa
-      href: load-balancer-standard-diagnostics.md
     - name: Wbudowane mechanizmy zabezpieczeń
       href: load-balancer-security-controls.md
 - name: Instrukcje
   items:
     - name: Tworzenie strefowo nadmiarowej publicznej usługi Load Balancer w warstwie Standardowa
-      href: load-balancer-get-started-internet-az-portal.md
       items:
-        - name: Tworzenie strefowo nadmiarowej publicznej usługi Load Balancer w warstwie Standardowa (PowerShell)
-          href: load-balancer-get-started-internet-az-powershell.md
-        - name: Tworzenie strefowo nadmiarowej publicznej usługi Load Balancer w warstwie Standardowa (interfejs wiersza polecenia)
+        - name: Portal
+          href: load-balancer-get-started-internet-az-portal.md
+        - name: Interfejs wiersza polecenia platformy Azure
           href: load-balancer-get-started-internet-az-cli.md
+        - name: Azure PowerShell
+          href: load-balancer-get-started-internet-az-powershell.md
     - name: Tworzenie strefowej publicznej usługi Load Balancer w warstwie Standardowa
-      href: load-balancer-get-started-internet-availability-zones-zonal-portal.md
       items:
-        - name: Tworzenie strefowej publicznej usługi Load Balancer w warstwie Standardowa (PowerShell)
-          href: load-balancer-get-started-internet-availability-zones-zonal-powershell.md
-        - name: Tworzenie strefowej publicznej usługi Load Balancer w warstwie Standardowa (interfejs wiersza polecenia)
+        - name: Portal
+          href: load-balancer-get-started-internet-availability-zones-zonal-portal.md
+        - name: Interfejs wiersza polecenia platformy Azure
           href: load-balancer-get-started-internet-availability-zones-zonal-cli.md
+        - name: Azure PowerShell
+          href: load-balancer-get-started-internet-availability-zones-zonal-powershell.md
     - name: Równoważenie obciążenia maszyn wirtualnych w różnych strefach dostępności (interfejs wiersza polecenia)
       href: load-balancer-standard-public-zone-redundant-cli.md
     - name: Równoważenie obciążenia maszyn wirtualnych w strefie (interfejs wiersza polecenia)
       href: load-balancer-standard-public-zonal-cli.md
     - name: Konfigurowanie reguł dla ruchu wychodzącego
       items:
-        - name: Konfigurowanie reguł ruchu wychodzącego — interfejs wiersza polecenia
+        - name: Interfejs wiersza polecenia platformy Azure
           href: configure-load-balancer-outbound-cli.md
-        - name: Konfigurowanie reguł ruchu wychodzącego — PowerShell
+        - name: Azure PowerShell
           href: configure-load-balancer-outbound-powershell.md
-    - name: Tworzenie usługi Azure Load Balancer przy użyciu interfejsu API REST
-      href: create-load-balancer-rest-api.md
-    - name: Tworzenie usługi Load Balancer w warstwie Podstawowa (szablon)
-      href: load-balancer-get-started-internet-arm-template.md
     - name: Tworzenie publicznego modułu równoważenia obciążenia przy użyciu protokołu IPv6
-      href: load-balancer-ipv6-internet-ps.md
       items:
-        - name: Tworzenie publicznego modułu równoważenia obciążenia przy użyciu protokołu IPv6 (interfejs wiersza polecenia)
+        - name: Interfejs wiersza polecenia platformy Azure
           href: load-balancer-ipv6-internet-cli.md
-        - name: Tworzenie publicznego modułu równoważenia obciążenia przy użyciu protokołu IPv6 (szablon)
+        - name: Azure PowerShell
+          href: load-balancer-ipv6-internet-ps.md
+        - name: Szablon
           href: load-balancer-ipv6-internet-template.md
     - name: Konfigurowanie wewnętrznego modułu równoważenia obciążenia
       items:
-        - name: Konfigurowanie wewnętrznego modułu równoważenia obciążenia (PowerShell)
-          href: load-balancer-get-started-ilb-arm-ps.md
-        - name: Konfigurowanie wewnętrznego modułu równoważenia obciążenia (interfejs wiersza polecenia)
+        - name: Interfejs wiersza polecenia platformy Azure
           href: load-balancer-get-started-ilb-arm-cli.md
-        - name: Konfigurowanie wewnętrznego modułu równoważenia obciążenia (szablon)
+        - name: Azure PowerShell
+          href: load-balancer-get-started-ilb-arm-ps.md
+        - name: Szablon
           href: load-balancer-get-started-ilb-arm-template.md
     - name: Konfigurowanie limitu czasu bezczynności protokołu TCP dla usługi równoważenia obciążenia
       href: load-balancer-tcp-idle-timeout.md
     - name: Konfigurowanie trybu dystrybucji dla usługi Load Balancer
       href: load-balancer-distribution-mode.md
-    - name: Łączenie usług równoważenia obciążenia
-      href: ../traffic-manager/traffic-manager-load-balancing-azure.md?toc=%2fazure%2fload-balancer%2ftoc.json
     - name: Używanie wielu konfiguracji adresu IP
       href: load-balancer-multiple-ip.md
       items:
-        - name: Używanie wielu konfiguracji adresu IP (interfejs wiersza polecenia)
+        - name: Interfejs wiersza polecenia platformy Azure
           href: load-balancer-multiple-ip-cli.md
-        - name: Używanie wielu konfiguracji adresu IP (PowerShell)
+        - name: Azure PowerShell
           href: load-balancer-multiple-ip-powershell.md
-    - name: Dzienniki usługi Azure Monitor dla usługi Azure Load Balancer
-      href: load-balancer-monitor-log.md
-    - name: Pobieranie metryk usługi Load Balancer
-      href: load-balancer-query-metrics-rest-api.md
     - name: Konfigurowanie portów wysokiej dostępności dla wewnętrznego modułu równoważenia obciążenia
       href: load-balancer-configure-ha-ports.md
     - name: Przechodzenie między regionami
@@ -160,22 +167,6 @@
       href: 'http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.mgmt.network.operations.html#azure.mgmt.network.operations.LoadBalancersOperations'
     - name: REST
       href: 'https://msdn.microsoft.com/library/azure/mt163651.aspx'
-- name: Powiązane
-  items:
-    - name: Application Gateway
-      href: /azure/application-gateway/
-    - name: ExpressRoute
-      href: /azure/expressroute/
-    - name: Virtual Network
-      href: /azure/virtual-network/
-    - name: VPN Gateway
-      href: /azure/vpn-gateway/
-    - name: Maszyna wirtualna
-      href: /azure/virtual-machines/
-    - name: Traffic Manager
-      href: /azure/traffic-manager/
-    - name: DNS
-      href: /azure/dns/
 - name: Zasoby
   items:
     - name: Rozwijanie umiejętności dzięki środowisku Microsoft Learn
@@ -188,5 +179,5 @@
       href: 'https://azure.microsoft.com/pricing/details/load-balancer/'
     - name: Kalkulator cen
       href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: Aktualizacje usług
+    - name: Aktualizacje produktu
       href: 'https://azure.microsoft.com/updates/?product=load-balancer'

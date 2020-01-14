@@ -7,30 +7,30 @@ author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 ms.topic: include
-ms.date: 11/12/2019
+ms.date: 01/07/2020
 ms.custom: include file
-ms.openlocfilehash: 4ed5be09d952d4d64c269e3eaf698ad7a74fffdd
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 9ccdc7a438d1dade534d39dc97a39a3bdae37dc4
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014095"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75895400"
 ---
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
 
 1. Wybierz pasek boczny po stronie głównej, a następnie pozycję **+ Utwórz zasób**. 
 
-   [![Rozwiń pasek po stronie głównej, a następnie wybierz pozycję + Utwórz zasób](./media/create-digital-twins-portal/create-a-resource.png)](./media/create-digital-twins-portal/create-a-resource.png#lightbox)
+   [![Rozwiń pasek po stronie głównej, a następnie wybierz pozycję + Utwórz zasób](./media/create-digital-twins-portal/azure-portal-create-a-resource.png)](./media/create-digital-twins-portal/azure-portal-create-a-resource.png#lightbox)
 
 1. Wyszukaj ciąg **Digital bliźniaczych reprezentacji**i wybierz pozycję **Digital bliźniaczych reprezentacji**. 
 
-   [![wybór dla tworzenia nowego wystąpienia bliźniaczych reprezentacji Digital](./media/create-digital-twins-portal/create-digital-twins.png)](./media/create-digital-twins-portal/create-digital-twins.png#lightbox)
+   [![wybór dla tworzenia nowego wystąpienia bliźniaczych reprezentacji Digital](./media/create-digital-twins-portal/azure-portal-create-digital-twins.png)](./media/create-digital-twins-portal/azure-portal-create-digital-twins.png#lightbox)
 
    Alternatywnie wybierz pozycję **Internet rzeczy**i wybierz pozycję **Digital bliźniaczych reprezentacji (wersja zapoznawcza)** .
 
 1. Wybierz przycisk **Utwórz**, aby rozpocząć proces wdrażania.
 
-   [![utworzyć i potwierdzić wdrożenie zasobu](./media/create-digital-twins-portal/create-and-confirm-resource.png)](./media/create-digital-twins-portal/create-and-confirm-resource.png#lightbox)
+   [![utworzyć i potwierdzić wdrożenie zasobu](./media/create-digital-twins-portal/azure-create-and-confirm-resource.png)](./media/create-digital-twins-portal/azure-create-and-confirm-resource.png#lightbox)
 
 1. W okienku **Digital Twins** wprowadź następujące informacje:
    * **Nazwa zasobu**: utwórz unikatową nazwę dla wystąpienia usługi Digital Twins.

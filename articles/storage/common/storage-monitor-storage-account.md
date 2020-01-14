@@ -4,16 +4,16 @@ description: Dowiedz się, jak monitorować konto magazynu na platformie Azure p
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/31/2018
+ms.date: 01/09/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 143574ff02960fcd0fd33ccaed5a80a9bb4f3147
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: e9ef700e45acc55f476d72883107b0c5c958fa7f
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71211859"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75862836"
 ---
 # <a name="monitor-a-storage-account-in-the-azure-portal"></a>Monitorowanie konta magazynu w Azure Portal
 
@@ -53,7 +53,7 @@ Domyślny zestaw metryk jest wyświetlany na wykresach w bloku konta magazynu, a
 Zbieranie metryk i rejestrowanie można wyłączyć, ustawiając **stan** na **wyłączone**.
 
 > [!NOTE]
-> Usługa Azure Storage używa [magazynu tabel](storage-introduction.md#table-storage) do przechowywania metryk dla konta magazynu i przechowuje metryki w tabelach na Twoim koncie. Aby uzyskać więcej informacji, zobacz. [Jak są przechowywane metryki](storage-analytics-metrics.md#how-metrics-are-stored).
+> Usługa Azure Storage używa [magazynu tabel](storage-introduction.md#table-storage) do przechowywania metryk dla konta magazynu i przechowuje metryki w tabelach na Twoim koncie. Więcej informacji można znaleźć w temacie . [Jak są przechowywane metryki](storage-analytics-metrics.md#how-metrics-are-stored).
 >
 
 ## <a name="customize-metrics-charts"></a>Dostosuj wykresy metryk
@@ -88,7 +88,7 @@ Lista dostępnych metryk zmienia się w zależności od wybranej usługi na liś
 
 Metryki wybrane w obszarze **Diagnostyka** określają rozdzielczość metryk, które są dostępne dla Twojego konta:
 
-* Funkcja monitorowania zagregowanego zapewnia takie metryki jak ruch przychodzący/wychodzący, dostępność, opóźnienie i procent sukcesu. Te metryki są agregowane z usług obiektów blob, tabel, plików i kolejek.
+* Funkcja monitorowania **zagregowanego** zapewnia takie metryki jak ruch przychodzący/wychodzący, dostępność, opóźnienie i procent sukcesu. Te metryki są agregowane z usług obiektów blob, tabel, plików i kolejek.
 * **Na interfejs API** zapewnia bardziej precyzyjną rozdzielczość, z metrykami dostępnymi dla poszczególnych operacji magazynu, poza agregacjami na poziomie usług.
 
 ## <a name="configure-metrics-alerts"></a>Konfigurowanie alertów metryk
@@ -100,7 +100,7 @@ Można utworzyć alerty powiadamiające o osiągnięciu progów dla metryk zasob
 3. Wprowadź **nazwę** i **Opis** nowej reguły alertu.
 4. Wybierz **metrykę** , dla której chcesz dodać alert, **warunek**alertu i **próg**. Typ jednostki progowej zmienia się w zależności od wybranej metryki. Na przykład "Count" jest typem jednostki dla *ContainerCount*, podczas gdy jednostka dla metryki *wzrost percentnetworkerror* jest wartością procentową.
 5. Wybierz **okres**. Metryki osiągające lub przekroczenia wartości progowej w ramach okresu wyzwalają alert.
-6. Obowiązkowe Konfigurowanie powiadomień **e-mail** i elementów webhook. Aby uzyskać więcej informacji na temat elementów webhook, zobacz [Konfigurowanie elementu webhook w ramach alertu dotyczącego metryki platformy Azure](../../azure-monitor/platform/alerts-webhooks.md). Jeśli nie skonfigurujesz powiadomień dotyczących poczty e-mail lub elementu webhook, alerty będą wyświetlane tylko w Azure Portal.
+6. Obowiązkowe Konfigurowanie powiadomień **e-mail** i elementów **webhook** . Aby uzyskać więcej informacji na temat elementów webhook, zobacz [Konfigurowanie elementu webhook w ramach alertu dotyczącego metryki platformy Azure](../../azure-monitor/platform/alerts-webhooks.md). Jeśli nie skonfigurujesz powiadomień dotyczących poczty e-mail lub elementu webhook, alerty będą wyświetlane tylko w Azure Portal.
 
 !["Dodaj blok reguły alertu" w Azure Portal](./media/storage-monitor-storage-account/add-alert-rule.png)
 
@@ -110,9 +110,9 @@ Wykresy metryk usługi Azure Storage można dodać do pulpitu nawigacyjnego port
 
 1. Wybierz pozycję **Edytuj pulpit nawigacyjny** podczas wyświetlania pulpitu nawigacyjnego w [Azure Portal](https://portal.azure.com).
 1. W **galerii kafelków**wybierz pozycję **Znajdź kafelki według** > **typu**.
-1. Wybierz pozycję **Typ** > **konta magazynu**.
+1. Wybierz **typ** > **konta magazynu**.
 1. W obszarze **zasoby**wybierz konto magazynu, którego metryki chcesz dodać do pulpitu nawigacyjnego.
-1. Wybierz pozycję **Kategorie** > **monitorowanie**.
+1. Wybierz pozycję **kategorie** > **monitorowanie**.
 1. Przeciągnij i upuść kafelek wykresu na pulpicie nawigacyjnym dla metryki, która ma być wyświetlana. Powtórz te czynności dla wszystkich metryk, które mają być wyświetlane na pulpicie nawigacyjnym. Na poniższej ilustracji wykres "obiekty blob — łączna liczba żądań" został wyróżniony jako przykład, ale wszystkie wykresy są dostępne do umieszczenia na pulpicie nawigacyjnym.
 
    ![Galeria kafelków w Azure Portal](./media/storage-monitor-storage-account/storage-customize-dashboard.png)
@@ -129,7 +129,7 @@ Można nakazać usłudze Azure Storage zapisywanie dzienników diagnostycznych d
 >
 
 1. W [Azure Portal](https://portal.azure.com)wybierz pozycję **konta magazynu**, a następnie nazwę konta magazynu, aby otworzyć blok konto magazynu.
-1. Wybierz pozycję **Diagnostyka** w sekcji **monitorowanie** w bloku menu.
+1. Wybierz pozycję **Ustawienia diagnostyczne (klasyczne)** w sekcji **monitorowanie (klasyczne)** w bloku menu.
 
     ![Element menu Diagnostyka w obszarze monitorowanie w Azure Portal.](./media/storage-monitor-storage-account/storage-enable-metrics-00.png)
 

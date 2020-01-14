@@ -8,18 +8,18 @@ ms.date: 08/13/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: e749dc48b1834aedbfea048c49c1f9090e5b5bb8
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: e1789122079d5cbc6f5914a6fd6a69a38df04e45
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74534306"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75748262"
 ---
 # <a name="build-highly-available-azure-storage-applications-with-geo-zone-redundant-storage-gzrs-preview"></a>Twórz aplikacje usługi Azure Storage o wysokiej dostępności przy użyciu strefy geograficznej nadmiarowej (GZRS) (wersja zapoznawcza)
 
 Magazyn Geograficznie nadmiarowy (GZRS) (wersja zapoznawcza) cywilnego wysokiej dostępności [magazynu Strefowo nadmiarowego (ZRS)](storage-redundancy-zrs.md) z ochroną z regionu w regionie [geograficznie nadmiarowym (GRS)](storage-redundancy-grs.md). Dane na koncie magazynu GZRS są replikowane w trzech [strefach dostępności platformy Azure](../../availability-zones/az-overview.md) w regionie podstawowym, a także zreplikowane do pomocniczego regionu geograficznego na potrzeby ochrony przed awariami regionalnymi. Każdy region platformy Azure jest sparowany z innym regionem w tej samej lokalizacji geograficznej, tworząc parę regionalną. Więcej informacji i wyjątków można znaleźć w [dokumentacji](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
 
-Za pomocą konta magazynu GZRS można nadal odczytywać i zapisywać dane, jeśli strefa dostępności stanie się niedostępna lub nie można jej odzyskać. Ponadto dane są również trwałe w przypadku kompletnej awarii regionalnej lub awarii, w której region podstawowy nie jest możliwy do odzyskania. GZRS zaprojektowano w celu udostępnienia co najmniej 99.99999999999999% (16 9) trwałości obiektów w danym roku. GZRS oferuje również te same [elementy docelowe skalowalności](storage-scalability-targets.md) jak LRS, ZRS, GRS lub RA-GRS. Opcjonalnie można włączyć dostęp do odczytu do danych w regionie pomocniczym ze strefą geograficzną z dostępem do odczytu — nadmiarowy magazyn (RA-GZRS), jeśli aplikacje muszą mieć możliwość odczytywania danych w przypadku awarii w regionie podstawowym.
+Za pomocą konta magazynu GZRS można nadal odczytywać i zapisywać dane, jeśli strefa dostępności stanie się niedostępna lub nie można jej odzyskać. Ponadto dane są również trwałe w przypadku kompletnej awarii regionalnej lub awarii, w której region podstawowy nie jest możliwy do odzyskania. GZRS zaprojektowano w celu udostępnienia co najmniej 99.99999999999999% (16 9) trwałości obiektów w danym roku. GZRS oferuje również te same elementy docelowe skalowalności jak LRS, ZRS, GRS lub RA-GRS. Opcjonalnie można włączyć dostęp do odczytu do danych w regionie pomocniczym ze strefą geograficzną z dostępem do odczytu — nadmiarowy magazyn (RA-GZRS), jeśli aplikacje muszą mieć możliwość odczytywania danych w przypadku awarii w regionie podstawowym.
 
 Firma Microsoft zaleca używanie GZRS dla aplikacji wymagających spójności, trwałości, wysokiej dostępności, doskonałej wydajności i odporności na odzyskiwanie po awarii. Aby uzyskać dodatkowe zabezpieczenia dotyczące dostępu do odczytu do regionu pomocniczego w przypadku awarii regionalnej, Włącz RA-GZRS dla konta magazynu.
 
@@ -160,3 +160,4 @@ Przedstawiciel działu pomocy technicznej skontaktuje się z Tobą, aby zapewni�
 - [Replikacja usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-redundancy)
 - [Magazyn lokalnie nadmiarowy (LRS): niski koszt nadmiarowości danych dla usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs)
 - [Magazyn strefowo nadmiarowy (ZRS): aplikacje usługi Azure Storage o wysokiej dostępności](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) 
+- [Cele skalowalności i wydajności dla kont magazynu w warstwie Standardowa](scalability-targets-standard-account.md)

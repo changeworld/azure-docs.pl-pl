@@ -12,12 +12,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 08/05/2019
-ms.openlocfilehash: 16de1d9fcf86459b6bcadd9d8c372e436aad0915
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 44fcaa0a4292ac86c7371c27f29faf0e7246e9d5
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73802939"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894791"
 ---
 # <a name="azure-sql-database-and-data-warehouse-network-access-controls"></a>Azure SQL Database i kontrola dostępu do sieci hurtowni danych
 
@@ -47,24 +47,53 @@ Możesz również zmienić to ustawienie za pośrednictwem okienka Zapora po utw
 
 Po ustawieniu opcji **na** platformie Azure SQL Server umożliwia komunikację ze wszystkich zasobów w ramach granicy platformy Azure, która może być niedostępna w ramach subskrypcji.
 
-W wielu przypadkach ustawienie **on** jest bardziej ograniczane niż to, czego chcą klienci. Mogą chcieć ustawić to ustawienie jako **wyłączone** i zamienić je na bardziej restrykcyjne reguły zapory IP lub Virtual Network reguły zapory. Takie działanie ma wpływ na następujące funkcje:
+W wielu przypadkach ustawienie **on** jest bardziej ograniczane niż to, czego chcą klienci. Mogą chcieć ustawić to ustawienie jako **wyłączone** i zamienić je na bardziej restrykcyjne reguły zapory IP lub Virtual Network reguły zapory. To ma wpływ na następujące funkcje, które są uruchamiane na maszynach wirtualnych platformy Azure, które nie są częścią sieci wirtualnej, a tym samym łączą się z bazą danych SQL za pośrednictwem adresu IP platformy Azure.
 
 ### <a name="import-export-service"></a>Importuj usługę eksportu
+Usługa Import Export nie działa, **zezwalając usługom platformy Azure na dostęp do serwera** z ustawieniem off. Można jednak obejść ten problem [, ręcznie uruchamiając program sqlpackage. exe z maszyny wirtualnej platformy Azure lub wykonując eksport](https://docs.microsoft.com/azure/sql-database/import-export-from-vm) bezpośrednio w kodzie przy użyciu interfejsu API DACFx.
 
-Usługa Azure SQL Database Import Export jest uruchamiana na maszynach wirtualnych na platformie Azure. Te maszyny wirtualne nie znajdują się w sieci wirtualnej, dlatego Uzyskaj adres IP platformy Azure podczas łączenia się z bazą danych. Po usunięciu **Zezwalaj usługom platformy Azure na dostęp do serwera** te maszyny wirtualne nie będą mogły uzyskać dostępu do baz danych.
-Problem można obejść, uruchamiając BACPAC importowania lub eksportowania bezpośrednio w kodzie przy użyciu interfejsu API DACFx.
+### <a name="data-sync"></a>Synchronizacja danych
+Aby użyć funkcji synchronizacji danych z opcją **Zezwalaj usługom platformy Azure na dostęp do serwera** , należy utworzyć poszczególne wpisy reguły zapory w celu [dodania adresów IP](sql-database-server-level-firewall-rule.md) ze **znacznika usługi SQL** dla regionu, w którym znajduje się baza danych **centrum** .
+Dodaj te reguły zapory na poziomie serwera do serwerów logicznych, na których znajdują się bazy danych **Hub** i **elementów członkowskich** (które mogą znajdować się w różnych regionach)
 
-### <a name="sql-database-query-editor"></a>Edytor zapytań SQL Database
+Użyj poniższego skryptu programu PowerShell, aby wygenerować adresy IP odpowiadające tagowi usługi SQL dla regionu zachodnie stany USA
+```powershell
+PS C:\>  $serviceTags = Get-AzNetworkServiceTag -Location eastus2
+PS C:\>  $sql = $serviceTags.Values | Where-Object { $_.Name -eq "Sql.WestUS" }
+PS C:\> $sql.Properties.AddressPrefixes.Count
+70
+PS C:\> $sql.Properties.AddressPrefixes
+13.86.216.0/25
+13.86.216.128/26
+13.86.216.192/27
+13.86.217.0/25
+13.86.217.128/26
+13.86.217.192/27
+```
 
-Edytor zapytań Azure SQL Database jest wdrażany na maszynach wirtualnych na platformie Azure. Te maszyny wirtualne nie znajdują się w sieci wirtualnej. W związku z tym maszyny wirtualne uzyskują adres IP platformy Azure podczas łączenia się z bazą danych. Po usunięciu **Zezwalaj usługom platformy Azure na dostęp do serwera**te maszyny wirtualne nie będą mogły uzyskać dostępu do baz danych.
+> [!TIP]
+> Funkcja Get-AzNetworkServiceTag zwraca globalny zakres dla tagu usługi SQL pomimo określenia parametru Location. Pamiętaj, aby przefiltrować go do regionu, który hostuje bazę danych centrum używaną przez daną grupę synchronizacji
 
-### <a name="table-auditing"></a>Inspekcja tabeli
+Należy pamiętać, że dane wyjściowe skryptu programu PowerShell są w notacji CIDR (Classless Inter-Domain Routing) i muszą zostać przekonwertowane na format początkowy i końcowy adres IP przy użyciu [Get-IPrangeStartEnd. ps1](https://gallery.technet.microsoft.com/scriptcenter/Start-and-End-IP-addresses-bcccc3a9) , jak to
+```powershell
+PS C:\> Get-IPrangeStartEnd -ip 52.229.17.93 -cidr 26                                                                   
+start        end
+-----        ---
+52.229.17.64 52.229.17.127
+```
 
-Obecnie istnieją dwa sposoby włączania inspekcji na SQL Database. Inspekcja tabeli kończy się niepowodzeniem po włączeniu punktów końcowych usługi w usłudze Azure SQL Server. Środki zaradcze w tym miejscu umożliwiają przejście do inspekcji obiektów BLOB.
+Wykonaj następujące dodatkowe kroki, aby przekonwertować wszystkie adresy IP z CIDR na początkowy i końcowy format adresu IP.
 
-### <a name="impact-on-data-sync"></a>Wpływ na synchronizację danych
+```powershell
+PS C:\>foreach( $i in $sql.Properties.AddressPrefixes) {$ip,$cidr= $i.split('/') ; Get-IPrangeStartEnd -ip $ip -cidr $cidr;}                                                                                                                
+start          end
+-----          ---
+13.86.216.0    13.86.216.127
+13.86.216.128  13.86.216.191
+13.86.216.192  13.86.216.223
+```
+Teraz można je dodać jako odrębne reguły zapory, a następnie ustawić opcję **Zezwól usługom platformy Azure na dostęp do serwera** .
 
-Azure SQL Database zawiera funkcję synchronizacji danych, która łączy się z bazami danych przy użyciu adresów IP platformy Azure. W przypadku korzystania z punktów końcowych usługi należy wyłączyć opcję **Zezwól usługom platformy Azure na dostęp do serwera** na serwerze SQL Database i przerwać funkcję synchronizacji danych.
 
 ## <a name="ip-firewall-rules"></a>Reguły zapory adresów IP
 Zapora oparta na protokole IP to funkcja platformy Azure SQL Server, która zapobiega wszystkim dostępowi do serwera bazy danych, dopóki nie zostaną jawnie [dodane adresy IP](sql-database-server-level-firewall-rule.md) komputerów klienckich.

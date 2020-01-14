@@ -15,18 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 807a5ede3feee115b1a8dc51fe14966731fc7784
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 4c451c62a16a70d85d75ee00c3e08758e27425f6
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240787"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749977"
 ---
 # <a name="connect-data-from-azure-activity-log"></a>Połącz dane z dziennika aktywności platformy Azure
 
 
 
-Dzienniki [aktywności platformy Azure](../azure-monitor/platform/activity-logs-overview.md) można przesyłać strumieniowo do usługi Azure wskaźnikowej przy użyciu jednego kliknięcia. Dziennik aktywności jest dziennikiem subskrypcji, który zapewnia wgląd w zdarzenia na poziomie subskrypcji, które wystąpiły na platformie Azure. Obejmuje to szereg danych, od Azure Resource Manager dane operacyjne do aktualizacji na zdarzeniach Service Health. Korzystając z dziennika aktywności, można określić, kto i kiedy w każdej operacji zapisu (PUT, POST, DELETE) zajęło zasoby w ramach subskrypcji. Dodatkowo użytkownik rozumie stanu operacji i inne odpowiednie właściwości. Dziennik aktywności nie obejmuje operacji odczytu (GET) ani operacji dla zasobów, które używają modelu klasycznego/"FRONTONu". 
+Dzienniki [aktywności platformy Azure](../azure-monitor/platform/platform-logs-overview.md) można przesyłać strumieniowo do usługi Azure wskaźnikowej przy użyciu jednego kliknięcia. Dziennik aktywności jest dziennikiem subskrypcji, który zapewnia wgląd w zdarzenia na poziomie subskrypcji, które wystąpiły na platformie Azure. Obejmuje to szereg danych, od danych operacyjnych usługi Azure Resource Manager do aktualizacji zdarzeń usługi Service Health. Korzystając z dziennika aktywności, można określić, kto i kiedy w każdej operacji zapisu (PUT, POST, DELETE) zajęło zasoby w ramach subskrypcji. Dodatkowo użytkownik rozumie stanu operacji i inne odpowiednie właściwości. Dziennik aktywności nie obejmuje operacji odczytu (GET) ani operacji dla zasobów, które używają modelu klasycznego/"FRONTONu". 
 
 
 ## <a name="prerequisites"></a>Wymagania wstępne

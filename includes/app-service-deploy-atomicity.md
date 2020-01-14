@@ -5,20 +5,20 @@ services: app-service
 author: cephalin
 ms.service: app-service
 ms.topic: include
-ms.date: 06/12/2019
+ms.date: 01/07/2020
 ms.author: cephalin
 ms.custom: include file
-ms.openlocfilehash: 93332002cd2ac513d125e0f9eb75dff4a2d8760c
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 3d9b0a7f08efcf9ea5892467b638e95d0404f35f
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67836824"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75752066"
 ---
-## <a name="what-happens-to-my-app-during-deployment"></a>Co się dzieje z mojej aplikacji podczas wdrażania?
+## <a name="what-happens-to-my-app-during-deployment"></a>Co się stanie z moją aplikacją podczas wdrażania?
 
-Wszystkie metody oficjalnie obsługiwane wdrożenie wprowadzić zmiany do plików w `/home/site/wwwroot` folderu aplikacji. Te pliki są identyczne, te, które są uruchamiane w środowisku produkcyjnym. Dlatego wdrożenie może zakończyć się niepowodzeniem z powodu zablokowane pliki. Aplikacji w środowisku produkcyjnym może również nieprzewidywalne zachowanie podczas wdrażania, ponieważ nie wszystkie pliki są aktualizowane w tym samym czasie. Istnieje kilka różnych sposobów, aby uniknąć tych problemów:
+Wszystkie oficjalnie obsługiwane metody wdrażania wprowadzają zmiany w plikach w folderze `/home/site/wwwroot` aplikacji. Te pliki są używane do uruchamiania aplikacji. W związku z tym wdrożenie może zakończyć się niepowodzeniem ze względu na zablokowane pliki. Aplikacja może również zachowywać się nieprzewidywalne podczas wdrażania, ponieważ nie wszystkie pliki zostały zaktualizowane w tym samym czasie. Jest to niepożądane dla aplikacji klienta. Istnieje kilka różnych sposobów, aby uniknąć następujących problemów:
 
-- Zatrzymaj aplikację lub włączyć tryb offline dla aplikacji podczas wdrażania. Aby uzyskać więcej informacji, zobacz [przeciwdziałania pliki zablokowane podczas wdrażania](https://github.com/projectkudu/kudu/wiki/Dealing-with-locked-files-during-deployment).
-- Wdrażanie [miejscu przejściowym](../articles/app-service/deploy-staging-slots.md) z [automatycznej wymiany](../articles/app-service/deploy-staging-slots.md#configure-auto-swap) włączone. 
-- Użyj [uruchomienia z pakietu](https://github.com/Azure/app-service-announcements/issues/84) zamiast ciągłego wdrażania.
+- Zatrzymaj aplikację lub Włącz tryb offline dla aplikacji podczas wdrażania. Aby uzyskać więcej informacji, zobacz temat [postępowanie z zablokowanymi plikami podczas wdrażania](https://github.com/projectkudu/kudu/wiki/Dealing-with-locked-files-during-deployment).
+- Wdróż w [miejscu przejściowym](../articles/app-service/deploy-staging-slots.md) z włączonym funkcją [autozamieniania](../articles/app-service/deploy-staging-slots.md#configure-auto-swap) . 
+- Użyj polecenia [Run z pakietu](https://github.com/Azure/app-service-announcements/issues/84) zamiast ciągłego wdrażania.

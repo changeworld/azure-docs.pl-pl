@@ -2,25 +2,17 @@
 title: 'Azure VPN Gateway: Konfigurowanie protokołu BGP: PowerShell'
 description: W tym artykule opisano konfigurowanie protokołu BGP z bramami sieci VPN platformy Azure przy użyciu Azure Resource Manager i programu PowerShell.
 services: vpn-gateway
-documentationcenter: na
 author: yushwang
-manager: rossort
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 905b11a7-1333-482c-820b-0fd0f44238e5
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 04/12/2017
 ms.author: yushwang
-ms.openlocfilehash: f4c5e3ddb5a7f5c9a21d29aa24fe28e095123836
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: ba8031db3c99b3062f5f552e02c39170ccfd850b
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74151395"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75860412"
 ---
 # <a name="how-to-configure-bgp-on-azure-vpn-gateways-using-powershell"></a>Jak skonfigurować protokół BGP na bramach sieci VPN platformy Azure przy użyciu programu PowerShell
 W tym artykule przedstawiono kroki umożliwiające włączenie protokołu BGP w ramach połączenia sieci VPN między lokacjami (S2S) i połączenia między sieciami wirtualnymi przy użyciu modelu wdrażania Menedżer zasobów i programu PowerShell.

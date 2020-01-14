@@ -14,19 +14,18 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: cynthn
-ms.openlocfilehash: f6d521c7003583228990c80a90c1454821f584d3
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: bbfad994de663881e3aa03292fc0d0611a0d0933
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035263"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75747800"
 ---
 # <a name="install-and-configure-postgresql-on-azure"></a>Instalowanie i konfigurowanie rozwiązania PostgreSQL na platformie Azure
 PostgreSQL to zaawansowana baza danych open source podobna do Oracle i DB2. Obejmuje ona funkcje gotowe dla przedsiębiorstwa, takie jak Pełna zgodność ze standardami KWASowymi, niezawodne przetwarzanie transakcyjne i wielostronicowa kontrola współbieżności. Obsługuje ona również standardy, takie jak ANSI SQL i SQL/MED (w tym obce otoki danych dla systemów Oracle, MySQL, MongoDB i wielu innych). Jest wysoce rozszerzalny z obsługą ponad 12 języków proceduralnych, indeksów ĄTEK i dzienników, obsługi danych przestrzennych i wielu funkcji podobnej do NoSQL dla aplikacji opartych na kluczach JSON lub wartościowych.
 
 Ten artykuł zawiera informacje na temat instalowania i konfigurowania PostgreSQL na maszynie wirtualnej platformy Azure z systemem Linux.
 
-[!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
 ## <a name="install-postgresql"></a>Zainstaluj PostgreSQL
 > [!NOTE]
@@ -64,7 +63,7 @@ Nawiąż połączenie z maszyną wirtualną z systemem Linux utworzoną za pomoc
         # cd postgresql-9.3.5
    
         # ./configure --prefix=/opt/postgresql-9.3.5
-5. Jeśli chcesz skompilować wszystko, co można skompilować, łącznie z dokumentacją (strony HTML i Man) i dodatkowymi modułami (contrib), uruchom następujące polecenie zamiast:
+5. Jeśli chcesz skompilować wszystko, co można skompilować, łącznie z dokumentacją (strony HTML i Man) i dodatkowymi modułami (`contrib`), uruchom następujące polecenie zamiast:
    
         # gmake install-world
    
@@ -200,7 +199,7 @@ Najpierw Wstaw informacje do wiersza:
 
     INSERT INTO potluck (name, food, confirmed, signup_date) VALUES('John', 'Casserole', 'Y', '2012-04-11');
 
-Powinny zostać wyświetlone następujące dane wyjściowe:
+Powinny być widoczne następujące dane wyjściowe:
 
 ![image](./media/postgresql-install/no6.png)
 
@@ -217,7 +216,7 @@ Użyj następującego polecenia, aby wyświetlić tabelę:
 
     select * from potluck;
 
-Dane wyjściowe:
+Dane wyjściowe wyglądają następująco:
 
 ![image](./media/postgresql-install/no7.png)
 
@@ -226,7 +225,7 @@ Użyj następującego polecenia, aby usunąć dane w tabeli:
 
     delete from potluck where name=’John’;
 
-Spowoduje to usunięcie wszystkich informacji w wierszu "Jan". Dane wyjściowe:
+Spowoduje to usunięcie wszystkich informacji w wierszu "Jan". Dane wyjściowe wyglądają następująco:
 
 ![image](./media/postgresql-install/no8.png)
 

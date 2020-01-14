@@ -9,12 +9,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 11/27/2019
-ms.openlocfilehash: d57f1e87c503a86a522fdb3004b021fbcb5c6ff1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c01e5c508644214c078dfc42ae8c77964933a277
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75351401"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75895992"
 ---
 # <a name="vcore-model-overview"></a>Omówienie modelu rdzeni wirtualnych
 
@@ -33,7 +33,7 @@ Opcje warstwy usług w modelu rdzeń wirtualny obejmują Ogólnego przeznaczenia
 |---|---|---|---|
 |Najlepsze dla|Większość obciążeń firmowych. Oferuje zorientowane na budżety, zrównoważone i skalowalne Opcje obliczeniowe i magazynowe. |Oferuje aplikacjom biznesowym największą odporność na błędy przy użyciu kilku izolowanych replik i zapewnia największą wydajność operacji we/wy na replikę bazy danych.|Większość obciążeń firmowych z wysoce skalowalnym magazynem i wymaganiami dotyczącymi skali odczytu.  Zapewnia wyższą odporność na błędy, umożliwiając konfigurację wielu izolowanych replik baz danych. |
 |Usługa Storage|Używa magazynu zdalnego.<br/>**Pojedyncze bazy danych i alokowane pule elastyczne**:<br/>5 GB – 4 TB<br/>**Obliczenia bezserwerowe**:<br/>5 GB — 3 TB<br/>**Wystąpienie zarządzane**: 32 GB – 8 TB |Używa lokalnego magazynu SSD.<br/>**Pojedyncze bazy danych i alokowane pule elastyczne**:<br/>5 GB – 4 TB<br/>**Wystąpienie zarządzane**:<br/>32 GB — 4 TB |Elastyczna automatyczne zwiększanie magazynu zgodnie z wymaganiami. Obsługuje do 100 TB pamięci masowej. Używa lokalnego magazynu SSD dla lokalnej pamięci podręcznej puli buforów i lokalnego magazynu danych. Używa magazynu zdalnego platformy Azure jako końcowego długoterminowego magazynu danych. |
-|Przepływność we/wy (przybliżona)|**Pojedyncza baza danych i Pula elastyczna**: 500 operacji we/wy na sekundę rdzeń wirtualny do 40000 maksymalnej liczby IOPS.<br/>**Wystąpienie zarządzane**: zależy od [rozmiaru pliku](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes).|5000 operacji we/wy na sekundę na 320 000 rdzeń wirtualny Maksymalna liczba IOPS|Skalowanie jest architekturą wielowarstwową z buforowaniem na wielu poziomach. Efektywne operacje we/wy będą zależeć od obciążenia.|
+|Operacje we/wy i przepływność (przybliżona)|**Pojedyncze bazy danych i pule elastyczne**: Zobacz limity zasobów dla [pojedynczych baz danych](../sql-database/sql-database-vcore-resource-limits-single-databases.md) i [pul elastycznych](../sql-database/sql-database-vcore-resource-limits-elastic-pools.md).<br/>**Wystąpienie zarządzane**: zobacz [Przegląd Azure SQL Database limity zasobów wystąpienia zarządzanego](../sql-database/sql-database-managed-instance-resource-limits.md#service-tier-characteristics).|Zobacz limity zasobów dla [pojedynczych baz danych](../sql-database/sql-database-vcore-resource-limits-single-databases.md) i [pul elastycznych](../sql-database/sql-database-vcore-resource-limits-elastic-pools.md).|Skalowanie jest architekturą wielowarstwową z buforowaniem na wielu poziomach. Efektywne operacje we/wy i przepływność będą zależeć od obciążenia.|
 |Dostępność|1 replika, brak replik w skali odczytu|3 repliki, 1 [replika w skali odczytu](sql-database-read-scale-out.md),<br/>Strefa — nadmiarowa wysoka dostępność (HA)|1 replika odczytu i zapisu oraz 0-4 [replik w skali odczytu](sql-database-read-scale-out.md)|
 |Tworzenie kopii zapasowych|[Magazyn Geograficznie nadmiarowy do odczytu (RA-GRS)](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7-35 dni (domyślnie 7 dni)|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7-35 dni (domyślnie 7 dni)|Tworzenie kopii zapasowych opartych na migawce w magazynie zdalnym platformy Azure. Przywraca używanie tych migawek do szybkiego odzyskiwania. Kopie zapasowe są natychmiast i nie wpływają na wydajność obliczeń we/wy. Przywracanie odbywa się szybko i nie jest operacją o rozmiarze danych (w minutach, a nie w godzinach lub dniach).|
 |W pamięci|Brak obsługi|Obsługiwane|Brak obsługi|

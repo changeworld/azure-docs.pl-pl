@@ -9,12 +9,12 @@ ms.date: 04/12/2019
 ms.author: jafreebe
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: dec5d1c7c7664bf72d92e5aca4333ba64db26d02
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 9ee989a079366a470d086a8b931685a6c1dbc757
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671909"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75889354"
 ---
 # <a name="configure-a-windows-java-app-for-azure-app-service"></a>Konfigurowanie aplikacji Java systemu Windows dla Azure App Service
 
@@ -209,11 +209,11 @@ W tej sekcji przedstawiono sposób łączenia aplikacji Java wdrożonych w syste
 
 Te instrukcje dotyczą wszystkich połączeń z bazą danych. Musisz wypełnić symbole zastępcze nazwą klasy sterownika wybranej bazy danych i plikiem JAR. Dostarczono tabelę z nazwami klas i pobraniami sterowników dla wspólnych baz danych.
 
-| Database (Baza danych)   | Nazwa klasy sterownika                             | Sterownik JDBC                                                                      |
+| baza danych   | Nazwa klasy sterownika                             | Sterownik JDBC                                                                      |
 |------------|-----------------------------------------------|------------------------------------------------------------------------------------------|
 | PostgreSQL | `org.postgresql.Driver`                        | [Pobieranie](https://jdbc.postgresql.org/download.html)                                    |
 | MySQL      | `com.mysql.jdbc.Driver`                        | [Pobierz](https://dev.mysql.com/downloads/connector/j/) (wybierz pozycję "Platforma niezależna") |
-| Oprogramowanie SQL Server | `com.microsoft.sqlserver.jdbc.SQLServerDriver` | [Pobieranie](https://docs.microsoft.com/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server?view=sql-server-2017#available-downloads-of-jdbc-driver-for-sql-server)                                                           |
+| SQL Server | `com.microsoft.sqlserver.jdbc.SQLServerDriver` | [Pobieranie](https://docs.microsoft.com/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server?view=sql-server-2017#available-downloads-of-jdbc-driver-for-sql-server)                                                           |
 
 Aby skonfigurować Tomcat do korzystania z łączności z bazą danych Java (JDBC) lub interfejsu API trwałości Java (JPA), najpierw Dostosuj zmienną środowiskową `CATALINA_OPTS`, która jest odczytywana przez Tomcat w momencie uruchomienia. Ustaw te wartości za pomocą ustawienia aplikacji w [dodatku App Service Maven](https://github.com/Microsoft/azure-maven-plugins/blob/develop/azure-webapp-maven-plugin/README.md):
 
@@ -315,7 +315,7 @@ Pomoc techniczna dla platformy [Azure Azul Zulu JDK](https://www.azul.com/downlo
 
 ### <a name="runtime-support"></a>Obsługa środowiska uruchomieniowego
 
-Deweloperzy mogą [otworzyć problem](/azure/azure-supportability/how-to-create-azure-support-request) z usługą Azul Zulu zestawy JDK za pomocą pomocy technicznej systemu Azure, jeśli ma on [wykwalifikowany plan pomocy technicznej](https://azure.microsoft.com/support/plans/).
+Deweloperzy mogą [otworzyć problem](/azure/azure-portal/supportability/how-to-create-azure-support-request) z usługą Azul Zulu zestawy JDK za pomocą pomocy technicznej systemu Azure, jeśli ma on [wykwalifikowany plan pomocy technicznej](https://azure.microsoft.com/support/plans/).
 
 ## <a name="next-steps"></a>Następne kroki
 

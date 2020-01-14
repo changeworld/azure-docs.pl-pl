@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/16/2019
 ms.author: amsriva
-ms.openlocfilehash: 6b3d52f1f6bd0390ab6ccafa80b2979cb0e498fd
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: fe70bd5994d835bdc2651a64d35c988ea38b8511
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74130410"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770037"
 ---
 # <a name="application-gateway-ssl-policy-overview"></a>Omówienie zasad protokołu SSL Application Gateway
 
@@ -39,7 +39,7 @@ Application Gateway ma trzy wstępnie zdefiniowane zasady zabezpieczeń. Bramę 
 |   ---      |  ---       |
 |Nazwa     | AppGwSslPolicy20170401        |
 |MinProtocolVersion     | TLSv1_1        |
-|Domyślne| False |
+|Domyślne| Fałsz |
 |CipherSuites     |TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256<br>TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384<br>TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA<br>TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA<br>TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256<br>TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384<br>TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384<br>TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256<br>TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA<br>TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA<br>TLS_RSA_WITH_AES_256_GCM_SHA384<br>TLS_RSA_WITH_AES_128_GCM_SHA256<br>TLS_RSA_WITH_AES_256_CBC_SHA256<br>TLS_RSA_WITH_AES_128_CBC_SHA256<br>TLS_RSA_WITH_AES_256_CBC_SHA<br>TLS_RSA_WITH_AES_128_CBC_SHA |
   
 ### <a name="appgwsslpolicy20170401s"></a>AppGwSslPolicy20170401S
@@ -48,7 +48,7 @@ Application Gateway ma trzy wstępnie zdefiniowane zasady zabezpieczeń. Bramę 
 |---|---|
 |Nazwa     | AppGwSslPolicy20170401S        |
 |MinProtocolVersion     | TLSv1_2        |
-|Domyślne| False |
+|Domyślne| Fałsz |
 |CipherSuites     |TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 <br>    TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 <br>    TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA <br>TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA <br>TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256<br>TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384<br>TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384<br>TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256<br>TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA<br>TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA<br>TLS_RSA_WITH_AES_256_GCM_SHA384<br>TLS_RSA_WITH_AES_128_GCM_SHA256<br>TLS_RSA_WITH_AES_256_CBC_SHA256<br>TLS_RSA_WITH_AES_128_CBC_SHA256<br>TLS_RSA_WITH_AES_256_CBC_SHA<br>TLS_RSA_WITH_AES_128_CBC_SHA<br> |
 
 ## <a name="custom-ssl-policy"></a>Niestandardowe zasady protokołu SSL
@@ -97,6 +97,17 @@ Application Gateway obsługuje następujące mechanizmy szyfrowania, z których 
 
 > [!NOTE]
 > Mechanizmy szyfrowania SSL używane na potrzeby połączenia są również oparte na typie używanego certyfikatu. W przypadku połączeń między klientem a bramą aplikacji używane mechanizmy szyfrowania są oparte na typie certyfikatów serwera w odbiorniku bramy aplikacji. W usłudze Application Gateway do połączeń puli zaplecza używane mechanizmy szyfrowania są oparte na typie certyfikatów serwera na serwerach puli zaplecza.
+
+## <a name="known-issue"></a>Znany problem
+Application Gateway v2 nie obsługuje obecnie następujących szyfrów:
+- DHE-RSA-AES128-GCM-SHA256
+- DHE-RSA-AES128-SHA
+- DHE-RSA-AES256-GCM-SHA384
+- DHE-RSA-AES256-SHA
+- DHE-DSS-AES128-SHA256
+- DHE-DSS-AES128-SHA
+- DHE-DSS-AES256-SHA256
+- DHE-DSS-AES256-SHA
 
 ## <a name="next-steps"></a>Następne kroki
 

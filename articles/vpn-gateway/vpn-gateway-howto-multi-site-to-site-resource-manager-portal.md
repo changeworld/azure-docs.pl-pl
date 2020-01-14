@@ -1,19 +1,20 @@
 ---
-title: 'Dodawanie wielu połączeń typu lokacja-lokacja bramy sieci VPN do sieci wirtualnej: Azure Portal: Menedżer zasobów | Microsoft Docs'
+title: 'Dodawanie wielu połączeń typu lokacja-lokacja bramy sieci VPN do sieci wirtualnej: Azure Portal'
 description: Dodawanie połączeń S2S obejmujących wiele lokacji do bramy sieci VPN z istniejącym połączeniem
 services: vpn-gateway
+titleSuffix: Azure VPN Gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 10/09/2019
 ms.author: cherylmc
-ms.openlocfilehash: d2c32fd35bbc6de1f010013c40a06af69052d3f5
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 7b438f2b966dc43d41b91a138b39193d230d5546
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244618"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75779692"
 ---
 # <a name="add-a-site-to-site-connection-to-a-vnet-with-an-existing-vpn-gateway-connection"></a>Dodawanie połączenia lokacja-lokacja do sieci wirtualnej z istniejącym połączeniem bramy sieci VPN
 
@@ -49,24 +50,24 @@ Sprawdź następujące elementy:
 2. Kliknij pozycję **wszystkie zasoby** i Znajdź **bramę sieci wirtualnej** z listy zasobów i kliknij ją.
 3. Na stronie **Brama sieci wirtualnej** kliknij pozycję **połączenia**.
    
-    ![Strona Połączenia](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/connectionsblade.png "Strona Połączenia")<br>
+    ![Strona połączeń](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/connectionsblade.png "Strona połączeń")<br>
 4. Na stronie **połączenia** kliknij pozycję **+ Dodaj**.
    
-    Przycisk ![dodawania połączenia](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/addbutton.png "Dodaj połączenie")<br>
+    ![Przycisk Dodaj połączenie](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/addbutton.png "Przycisk Dodaj połączenie")<br>
 5. Na stronie **Dodawanie połączenia** wypełnij następujące pola:
    
    * **Nazwa:** Nazwa, która ma zostać przydana do witryny, z którą chcesz nawiązać połączenie.
    * **Typ połączenia:** Wybierz pozycję **lokacja-lokacja (IPSec)** .
      
-     Strona ![dodawania]połączenia(./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/addconnectionblade.png "Dodaj") stronę połączenia<br>
+     ![Strona dodawania połączenia](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/addconnectionblade.png "Strona dodawania połączenia")<br>
 
 ## <a name="part2"></a>Część 2 — Dodawanie bramy sieci lokalnej
 1. Kliknij pozycję **Brama sieci lokalnej** ***Wybierz bramę sieci lokalnej***. Spowoduje to otwarcie strony **Wybierz bramę sieci lokalnej** .
    
-    ![Wybierz bramę sieci lokalnej](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/chooselng.png "Wybierz bramę sieci lokalnej")<br>
+    ![Wybieranie bramy sieci lokalnej](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/chooselng.png "Wybieranie bramy sieci lokalnej")<br>
 2. Kliknij przycisk **Utwórz nowy** , aby otworzyć stronę **Utwórz bramę sieci lokalnej** .
    
-    Utwórz ![stronę bramy sieci lokalnej](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/createlngblade.png "Tworzenie bramy sieci lokalnej")<br>
+    ![Strona tworzenia bramy sieci lokalnej](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/createlngblade.png "Utwórz bramę sieci lokalnej")<br>
 3. Na stronie **Tworzenie bramy sieci lokalnej** wypełnij następujące pola:
    
    * **Nazwa:** Nazwa, która ma zostać przydana do zasobu bramy sieci lokalnej.

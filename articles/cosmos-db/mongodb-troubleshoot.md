@@ -4,15 +4,15 @@ description: W tym dokumencie omówiono sposoby rozwiązywania typowych problem�
 author: roaror
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 06/05/2019
 ms.author: roaror
-ms.openlocfilehash: ece975fa37e500b1c160210684a0cb46e719c48b
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 41d667f4e90114052a17c5707989634bbb5fc421
+ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72754970"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75719838"
 ---
 # <a name="troubleshoot-common-issues-in-azure-cosmos-dbs-api-for-mongodb"></a>Rozwiązywanie typowych problemów z interfejsem API Azure Cosmos DB MongoDB
 
@@ -22,10 +22,10 @@ Chociaż interfejs API Azure Cosmos DB dla MongoDB jest zgodny z 3,2 wersją pro
 
 ## <a name="common-errors-and-solutions"></a>Typowe błędy i rozwiązania
 
-| Błąd               | Kod  | Opis  | Rozwiązanie  |
+| Błąd               | Code  | Opis  | Rozwiązanie  |
 |---------------------|-------|--------------|-----------|
-| TooManyRequests     | 16500 | Całkowita liczba zużytych jednostek żądania jest większa niż stawka żądania aprowizacji dla kolekcji i została ograniczona. | Rozważ przeskalowanie przepływności przypisanej do kontenera lub zestawu kontenerów z Azure Portal lub Ponów próbę wykonania operacji. |
-| ExceededMemoryLimit | 16501 | W ramach usługi wielodostępnej Operacja przekroczyła przydział pamięci klienta. | Zmniejsz zakres operacji przy użyciu bardziej restrykcyjnych kryteriów zapytania lub skontaktuj się z pomocą techniczną z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade). Przykład: `db.getCollection('users').aggregate([{$match: {name: "Andy"}}, {$sort: {age: -1}}]))` |
+| TooManyRequests     | 16500 | Całkowita liczba jednostek żądań, używane jest większa niż współczynnik aprowizowane jednostki żądań dla kolekcji i zostały ograniczone. | Rozważ przeskalowanie przepływności przypisanej do kontenera lub zestawu kontenerów z Azure Portal lub Ponów próbę wykonania operacji. |
+| ExceededMemoryLimit | 16501 | Jako usługa dla wielu dzierżawców operacji stała się za pośrednictwem przydziału pamięci klienta. | Zmniejsz zakres operacji przy użyciu bardziej restrykcyjnych kryteria zapytania lub skontaktuj się z działem pomocy technicznej firmy [witryny Azure portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade). Przykład: `db.getCollection('users').aggregate([{$match: {name: "Andy"}}, {$sort: {age: -1}}]))` |
 | Ścieżka indeksu odpowiadająca określonemu elementowi order-by jest wykluczona/zapytanie order by nie ma odpowiedniego indeksu złożonego, z którego może być obsługiwane. | 2 | Zapytanie żąda sortowania dla pola, które nie jest indeksowane. | Utwórz zgodny indeks (lub indeks złożony) dla podjętych kwerend sortowania. |
 | Problemy dotyczące wersji MongoDB Wire | - | Starsze wersje sterowników MongoDB nie mogą wykryć nazwy konta usługi Azure Cosmos w parametrach połączenia. | Dołącz *nazwa_aplikacji = @**accountname**@* na końcu interfejsu API Cosmos DB dla parametrów połączenia MongoDB, gdzie ***accountname*** jest nazwą konta Cosmos DB. |
 

@@ -11,12 +11,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: shants
-ms.openlocfilehash: ab8ef516e5434ac5a9cde9324798d8dd1706a04e
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 83a1f3921272f5ec15ae4d1f4220652f56679c96
+ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74807412"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75903220"
 ---
 # <a name="handling-planned-maintenance-notifications"></a>Obsługa powiadomień dotyczących planowanej konserwacji
 
@@ -29,7 +29,7 @@ Platforma Azure jest co pewien czas aktualizowana w celu poprawy niezawodności,
 
 Planowana konserwacja wymagająca ponownego uruchomienia jest zaplanowana na fale. Każda fala ma inny zakres (regiony).
 
-- Fala rozpoczyna się od powiadomienia do klientów. Domyślnie powiadomienia są wysyłane do właściciela subskrypcji i współwłaścicieli. Za pomocą [alertów dziennika aktywności](../azure-monitor/platform/activity-logs-overview.md)można dodać więcej opcji adresatów i komunikatów, takich jak wiadomości e-mail, wiadomości SMS i elementy webhook.  
+- Fala rozpoczyna się od powiadomienia do klientów. Domyślnie powiadomienia są wysyłane do administrator usługi i współadministratorów. Za pomocą [alertów dziennika aktywności](../service-health/alerts-activity-log-service-notifications.md)można dodać więcej opcji adresatów i komunikatów, takich jak wiadomości e-mail, wiadomości SMS i elementy webhook.  
 - Po przeprowadzeniu powiadomienia zostanie udostępnione *okno* samoobsługowe. W tym oknie możesz wykonywać zapytania dotyczące maszyn wirtualnych, których dotyczy ta operacja, i rozpocząć konserwację na podstawie własnych potrzeb związanych z planowaniem. Okno samoobsługowe jest zwykle około 35 dni.
 - Po włączeniu okna samoobsługowego zostanie rozpoczęte *zaplanowane okno obsługi* . W pewnym momencie w tym oknie usługa Azure planuje i stosuje wymaganą konserwację na maszynie wirtualnej. 
 
@@ -84,7 +84,7 @@ Aby uzyskać więcej informacji na temat wysokiej dostępności, zobacz [dostęp
 
 **P: Jak mogę Otrzymuj powiadomienia o planowanej konserwacji?**
 
-Odp **.:** Planowana fala konserwacji jest uruchamiana przez ustawienie harmonogramu do co najmniej jednego regionu świadczenia usługi Azure. Wkrótce po otrzymaniu powiadomienia e-mail do właścicieli subskrypcji (jednej wiadomości e-mail na subskrypcję). Dodatkowe kanały i adresatów dla tego powiadomienia można skonfigurować przy użyciu alertów dziennika aktywności. W przypadku wdrożenia maszyny wirtualnej w regionie, w którym zaplanowano zaplanowaną konserwację, nie otrzymasz powiadomienia, ale konieczne jest sprawdzenie stanu konserwacji maszyny wirtualnej.
+Odp **.:** Planowana fala konserwacji jest uruchamiana przez ustawienie harmonogramu do co najmniej jednego regionu świadczenia usługi Azure. Wkrótce po otrzymaniu powiadomienia e-mail do administratorów subskrypcji (jednej wiadomości e-mail na subskrypcję). Dodatkowe kanały i adresatów dla tego powiadomienia można skonfigurować przy użyciu alertów dziennika aktywności. W przypadku wdrożenia maszyny wirtualnej w regionie, w którym zaplanowano zaplanowaną konserwację, nie otrzymasz powiadomienia, ale konieczne jest sprawdzenie stanu konserwacji maszyny wirtualnej.
 
 **P: nie widzę żadnego wskazania planowanej konserwacji w portalu, programie PowerShell lub interfejsie wiersza polecenia. Co jest nie tak?**
 

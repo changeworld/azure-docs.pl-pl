@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: 37846aacd9e2c5c63cdf5d29bccb42df8e02fce9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 567770c00c645aeb79e1efb0e9119b9ac829f3fe
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75452613"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861663"
 ---
 # <a name="shape-events-with-azure-time-series-insights-preview"></a>Kształt zdarzeń za pomocą usługi Azure czas Series Insights w wersji zapoznawczej
 
@@ -31,7 +31,7 @@ Zastanów się, jak wysyłasz zdarzenia do Time Series Insights wersji zapoznawc
 Aby uzyskać najlepszą wydajność zapytań, wykonaj następujące czynności:
 
 * Nie wysyłaj niepotrzebnych właściwości. Czas Series Insights w wersji zapoznawczej opłaty naliczane są na wykorzystanie. Najlepiej do przechowywania i przetwarzania danych, który zostanie kwerenda.
-* Użyj pól wystąpień dla danych statycznych. Praktyka ta pomaga unikać wysyłania danych statycznych za pośrednictwem sieci. Pola wystąpienia, składnik modelu szeregów czasowych, działają jak dane referencyjne w usłudze Time Series Insights, która jest ogólnie dostępna. Aby dowiedzieć się więcej na temat pól wystąpień, zobacz [model szeregów czasowych](./time-series-insights-update-tsm.md).
+* Użyj pól wystąpień dla danych statycznych. Praktyka ta pomaga unikać wysyłania danych statycznych za pośrednictwem sieci. Pola wystąpienia, składnik modelu szeregów czasowych, działają jak dane referencyjne w usłudze Time Series Insights, która jest ogólnie dostępna. Aby dowiedzieć się więcej o polach wystąpienia, Odczytaj [model szeregów czasowych](./time-series-insights-update-tsm.md).
 * Udostępnianie właściwości wymiaru spośród dwóch lub większej liczby zdarzeń. Pomaga to bardziej wydajne wysyłanie danych przez sieć.
 * Nie używaj tablicy głębokiego zagnieżdżenia. Wersja zapoznawcza Time Series Insights obsługuje do dwóch poziomów zagnieżdżonych tablic, które zawierają obiekty. Czas Series Insights w wersji zapoznawczej spłaszcza tablic w wiadomości do wielu zdarzeń przy użyciu pary wartości właściwości.
 * Jeśli tylko kilka istnieją środki dla wszystkich lub większości zdarzeń, zaleca się wysłać te miary jako osobne właściwości w ramach tego samego obiektu. Ich wysyłanie osobno zmniejsza liczbę zdarzeń i może poprawić wydajność zapytań, ponieważ wymaga przetworzenia mniejszych zdarzeń.
@@ -156,5 +156,5 @@ W powyższym przykładzie właściwość spłaszczone `data_flow` zaprezentuje k
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Aby umieścić te wytyczne w praktyce, zobacz [składni zapytań Azure czas Series Insights w wersji zapoznawczej](./time-series-insights-query-data-csharp.md). Dowiesz się więcej na temat składni zapytania dla interfejsu API REST usługi Time Series Insights Preview na potrzeby dostępu do danych.
-- Aby dowiedzieć się więcej na temat obsługiwane kształty JSON, zobacz [kształty JSON obsługiwany](./time-series-insights-send-events.md#supported-json-shapes).
+- Aby zapoznać się z zaleceniami, Przeczytaj [Azure Time Series Insights wersja zapoznawcza zapytania](./time-series-insights-query-data-csharp.md). Dowiesz się więcej na temat składni zapytania dla interfejsu API REST usługi Time Series Insights Preview na potrzeby dostępu do danych.
+- Aby dowiedzieć się więcej o obsługiwanych kształtach JSON, Odczytaj [obsługiwane kształty JSON](./time-series-insights-send-events.md#supported-json-shapes).

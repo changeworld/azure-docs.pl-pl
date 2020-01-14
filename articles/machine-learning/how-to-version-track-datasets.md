@@ -11,12 +11,12 @@ author: sihhu
 ms.reviewer: nibaccam
 ms.date: 11/04/2019
 ms.custom: ''
-ms.openlocfilehash: f70c826d839be1de82f3f21cf615f261a2193358
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 4c8f3e7e47f9c8f924faf513d984d5474c105038
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75536436"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834795"
 ---
 # <a name="version-and-track-datasets-in-experiments"></a>Wersje i śledzenie zestawów danych w eksperymentach
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -169,9 +169,9 @@ input_dataset = inputs[0]['dataset']
 input_dataset.to_path()
 ```
 
-Możesz również znaleźć `input_datasets` z eksperymentów, używając [Azure Machine Learning Studio (klasyczny)](https://ml.azure.com/). 
+`input_datasets` z eksperymentów można również znaleźć w programie [Azure Machine Learning Studio](https://ml.azure.com/). 
 
-Na poniższej ilustracji przedstawiono, gdzie znaleźć zestaw danych wejściowych eksperymentu na Azure Machine Learning Studio (klasyczny). Na potrzeby tego przykładu przejdź do okienka **eksperymenty** i Otwórz kartę **Właściwości** dla określonego uruchomienia eksperymentu, `keras-mnist`.
+Na poniższej ilustracji przedstawiono, gdzie znaleźć zestaw danych wejściowych eksperymentu w programie Azure Machine Learning Studio. Na potrzeby tego przykładu przejdź do okienka **eksperymenty** i Otwórz kartę **Właściwości** dla określonego uruchomienia eksperymentu, `keras-mnist`.
 
 ![Wejściowe zestawy danych](./media/how-to-version-track-datasets/input-datasets.png)
 
@@ -183,7 +183,7 @@ model = run.register_model(model_name='keras-mlp-mnist',
                            datasets =[('training data',train_dataset)])
 ```
 
-Po zarejestrowaniu można zobaczyć listę modeli zarejestrowanych w zestawie danych przy użyciu języka Python lub [Azure Machine Learning Studio (klasycznego)](https://ml.azure.com/). Poniższy widok pochodzi z okienka **zestawy danych** w obszarze **zasoby**. Wybierz zestaw danych, a następnie wybierz kartę **modele** , aby wyświetlić listę modeli zarejestrowanych z zestawem danych. 
+Po zarejestrowaniu można zobaczyć listę modeli zarejestrowanych w zestawie danych przy użyciu języka Python lub [Azure Machine Learning Studio](https://ml.azure.com/). Poniższy widok pochodzi z okienka **zestawy danych** w obszarze **zasoby**. Wybierz zestaw danych, a następnie wybierz kartę **modele** , aby wyświetlić listę modeli zarejestrowanych z zestawem danych. 
 
 ![Modele wejściowych zestawów danych](./media/how-to-version-track-datasets/dataset-models.png)
 

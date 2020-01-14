@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: mjbrown
-ms.openlocfilehash: 68515c51862ada0b1aa794c09b3a6730504a57ee
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: a8df220be211c3c8d8cdeab8a8aebfd35e77ebf8
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873254"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75732590"
 ---
 # <a name="offset-limit-clause-in-azure-cosmos-db"></a>Klauzula limitu przesunięcia w Azure Cosmos DB
 
@@ -37,7 +37,7 @@ OFFSET <offset_amount> LIMIT <limit_amount>
 
 ## <a name="remarks"></a>Uwagi
   
-  W klauzuli LIMIT przesunięcia są wymagane zarówno licznik przesunięcia, jak i liczba LIMITów. Jeśli zostanie użyta opcjonalna klauzula `ORDER BY`, zestaw wyników zostanie wytworzony przez przeskoczenie na uporządkowane wartości. W przeciwnym razie zapytanie zwróci ustaloną kolejność wartości. Obecnie ta klauzula jest obsługiwana w przypadku zapytań w ramach pojedynczej partycji. zapytania między partycjami jeszcze nie obsługują tego programu.
+  W klauzuli LIMIT przesunięcia są wymagane zarówno licznik przesunięcia, jak i liczba LIMITów. Jeśli zostanie użyta opcjonalna klauzula `ORDER BY`, zestaw wyników zostanie wytworzony przez przeskoczenie na uporządkowane wartości. W przeciwnym razie zapytanie zwróci ustaloną kolejność wartości. Ta klauzula jest teraz obsługiwana w przypadku zapytań w ramach jednej partycji, a także zapytań między partycjami.
 
 ## <a name="examples"></a>Przykłady
 

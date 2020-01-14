@@ -1,6 +1,6 @@
 ---
-title: Wprowadzenie do kontrolki mapy systemu Android w Azure Maps | Microsoft Docs
-description: Kontrolka mapy systemu Android w Azure Maps.
+title: Wprowadzenie do kontrolki mapy systemu Android | Mapy Microsoft Azure
+description: W tym artykule dowiesz się, jak rozpocząć pracę z kontrolką mapy systemu Android przy użyciu Android SDK Microsoft Azure Maps.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 04/26/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: cb79b24a37758307657c1245622fa980123cc5c9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: bb9dc16eabbd6065e05d26258c1421aa7a46dbd7
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432935"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911393"
 ---
 # <a name="getting-started-with-azure-maps-android-sdk"></a>Wprowadzenie do Azure Maps Android SDK
 
@@ -43,7 +43,7 @@ Najpierw utwórz nowy projekt z pustym działaniem. Wykonaj następujące kroki,
 
 Zapoznaj się z [dokumentacją Android Studio](https://developer.android.com/studio/intro/) , aby uzyskać pomoc dotyczącą instalowania Android Studio i tworzenia nowego projektu.
 
-![Tworzenie projektu](./media/how-to-use-android-map-control-library/form-factor-android.png)
+![Tworzenie projektu w programie Android Studio ](./media/how-to-use-android-map-control-library/form-factor-android.png)
 
 ## <a name="set-up-a-virtual-device"></a>Konfigurowanie urządzenia wirtualnego
 
@@ -217,7 +217,7 @@ Kompilowanie aplikacji Android Studio potrwa kilka sekund. Po zakończeniu kompi
 
 <center>
 
-![](./media/how-to-use-android-map-control-library/android-map.png)</center> mapy systemu Android
+Azure Maps ![w aplikacji systemu Android](./media/how-to-use-android-map-control-library/android-map.png)</center>
 
 ## <a name="localizing-the-map"></a>Lokalizowanie mapy
 
@@ -263,7 +263,7 @@ Oto przykład Azure Maps z językiem ustawionym na "fr-FR" i widoku regionalnym 
 
 <center>
 
-obraz mapy ![pokazujący etykiety w](./media/how-to-use-android-map-control-library/android-localization.png)
+![Azure Maps, obraz mapy pokazujący etykiety w](./media/how-to-use-android-map-control-library/android-localization.png)
 francuskiej </center>
 
 Pełna lista obsługiwanych języków i widoków regionalnych została udokumentowana [tutaj](supported-languages.md).

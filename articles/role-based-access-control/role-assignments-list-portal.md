@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/02/2019
+ms.date: 01/08/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: c265e03cfea2ebe8bbe55a63ade04bffd06360e0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9582881626f58ebbbae5648fe5d4b46e14fd5850
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75462243"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75763332"
 ---
 # <a name="list-role-assignments-using-azure-rbac-and-the-azure-portal"></a>Wyświetlanie listy przypisań ról przy użyciu funkcji RBAC platformy Azure i Azure Portal
 
@@ -40,6 +40,22 @@ Najprostszym sposobem wyświetlenia ról przypisanych do użytkownika lub grupy 
     ![Przypisania ról dla użytkownika](./media/role-assignments-list-portal/azure-resources-user.png)    
 
 1. Aby zmienić subskrypcję, kliknij listę **subskrypcje** .
+
+## <a name="list-owners-of-a-subscription"></a>Wyświetl listę właścicieli subskrypcji
+
+Użytkownicy, którym przypisano rolę [właściciela](built-in-roles.md#owner) dla subskrypcji, mogą zarządzać wszystkimi subskrypcjami w ramach subskrypcji. Wykonaj następujące kroki, aby wyświetlić listę właścicieli subskrypcji.
+
+1. W witrynie Azure Portal kliknij pozycję **Wszystkie usługi**, a następnie wybierz pozycję **Subskrypcje**.
+
+1. Kliknij subskrypcję, dla której chcesz wyświetlić listę właścicieli.
+
+1. Kliknij pozycję **Kontrola dostępu (IAM)** .
+
+1. Kliknij kartę **Przypisania ról**, aby wyświetlić wszystkie przypisania ról dla tej subskrypcji.
+
+1. Przewiń do sekcji **właściciele** , aby wyświetlić wszystkich użytkowników, którym przypisano rolę właściciela dla tej subskrypcji.
+
+   ![Kontrola dostępu do subskrypcji — karta przypisania ról](./media/role-assignments-list-portal/access-control-role-assignments-subscription.png)
 
 ## <a name="list-role-assignments-at-a-scope"></a>Wyświetl listę przypisań ról w zakresie
 

@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 11/13/2019
-ms.openlocfilehash: 784e31b823c65c0b908dc07582805e7a69d19563
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: 8c358b727a436f1951337005883b5d577119fac1
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74304801"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75895622"
 ---
 # <a name="how-to-configure-postman-for-azure-digital-twins"></a>Jak skonfigurować usługę Poster dla usługi bliźniaczych reprezentacji Digital
 
@@ -66,7 +66,7 @@ Skonfiguruj aplikację Azure Active Directory tak, aby korzystała z niejawnego 
 
     Sprawdź **tokeny dostępu** , aby włączyć ustawienie **Oauth2AllowImplicitFlow** w pliku manifest. JSON.
 
-    [![ustawienia konfiguracji klienta publicznego](../../includes/media/digital-twins-permissions/aad-public-client.png)](../../includes/media/digital-twins-permissions/aad-public-client.png#lightbox)
+    [![ustawienia konfiguracji klienta publicznego](../../includes/media/digital-twins-permissions/aad-configure-public-client.png)](../../includes/media/digital-twins-permissions/aad-configure-public-client.png#lightbox)
 
 1. Skopiuj i Zachowaj **Identyfikator aplikacji** Azure Active Directory aplikacji. Jest on używany w kolejnych krokach.
 
@@ -94,19 +94,19 @@ Skonfiguruj i skonfiguruj aplikację do ogłaszania w celu uzyskania tokenu Azur
 
     | Pole  | Wartość |
     |---------|---------|
-    | Typ udzielania | `Implicit` |
+    | Typ udzielenia | `Implicit` |
     | Adres URL wywołania zwrotnego | `https://www.getpostman.com/oauth2/callback` |
     | Adres URL uwierzytelniania | Użyj **adresu URL autoryzacji** z **kroku 2** |
     | Identyfikator klienta | Użyj **identyfikatora aplikacji** dla aplikacji Azure Active Directory, która została utworzona lub ponownie użyta w poprzedniej sekcji |
     | Zakres | Pozostaw puste |
-    | State | Pozostaw puste |
+    | Stan | Pozostaw puste |
     | Uwierzytelnianie klienta | `Send as Basic Auth header` |
 
 1. Klient powinien teraz wyglądać następująco:
 
     [przykład ![ego tokena klienta w programie Poster](media/how-to-configure-postman/configure-postman-oauth-token.png)](media/how-to-configure-postman/configure-postman-oauth-token.png#lightbox)
 
-1. Wybierz **token żądania**.
+1. Wybierz pozycję **Request Token** (Zażądaj tokenu).
   
 1. Przewiń w dół i wybierz pozycję **Użyj tokenu**.
 
@@ -130,7 +130,7 @@ Po wykonaniu powyższych kroków Skonfiguruj program do ogłaszania w celu wypr�
    > * Nie trzeba określać tych nagłówków dla każdej części.
    > * Musisz wybrać `multipart/mixed` lub inny odpowiedni **Typ zawartości** dla całego żądania.
 
-1. Na koniec wybierz pozycję **Wyślij** , aby przesłać wieloczęściowe żądanie HTTP POST. Kod stanu `200` lub `201` wskazuje pomyślne żądanie. Zobaczysz również odpowiedni komunikat odpowiedzi.
+1. Na koniec wybierz pozycję **Wyślij** , aby przesłać wieloczęściowe żądanie HTTP POST. Kod stanu `200` lub `201` wskazuje pomyślne żądanie. Odpowiedni komunikat odpowiedzi pojawi się w interfejsie klienta.
 
 ## <a name="next-steps"></a>Następne kroki
 

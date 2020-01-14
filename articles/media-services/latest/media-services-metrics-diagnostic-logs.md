@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2019
 ms.author: juliako
-ms.openlocfilehash: 38fcda40a208da3f3f5aef5b13778ca38092d8f8
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 16897ad095afcacff04d53b0956a972c36a25893
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186116"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750805"
 ---
 # <a name="monitor-media-services-metrics-and-diagnostic-logs-via-azure-monitor"></a>Monitoruj Media Services metryki i dzienniki diagnostyczne za pośrednictwem Azure Monitor
 
 [Azure monitor](../../azure-monitor/overview.md) umożliwia monitorowanie metryk i dzienników diagnostycznych, które ułatwiają zrozumienie sposobu działania aplikacji. Wszystkie dane zbierane przez Azure Monitor są uwzględniane w jednym z dwóch podstawowych typów: metryki i dzienniki. Można monitorować Media Services dzienników diagnostycznych oraz tworzyć alerty i powiadomienia dotyczące zebranych metryk i dzienników. Możesz wizualizować i analizować dane metryk przy użyciu [Eksploratora metryk](../../azure-monitor/platform/metrics-getting-started.md). Możesz wysyłać dzienniki do usługi [Azure Storage](https://azure.microsoft.com/services/storage/), przesyłać strumieniowo do [usługi Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/), eksportować je do [log Analytics](https://azure.microsoft.com/services/log-analytics/)lub korzystać z usług innych firm.
 
-Aby zapoznać się z szczegółowym omówieniem, zobacz [Azure monitor metryki](../../azure-monitor/platform/data-platform.md) i [Azure monitor dzienników diagnostycznych](../../azure-monitor/platform/resource-logs-overview.md).
+Aby zapoznać się z szczegółowym omówieniem, zobacz [Azure monitor metryki](../../azure-monitor/platform/data-platform.md) i [Azure monitor dzienników diagnostycznych](../../azure-monitor/platform/platform-logs-overview.md).
 
 W tym temacie omówiono obsługiwane [Media Services metryki](#media-services-metrics) i [dzienniki diagnostyczne Media Services](#media-services-diagnostic-logs).
 
@@ -84,7 +84,7 @@ Zobacz [, jak monitorować Media Services metryki](media-services-metrics-howto.
 
 ## <a name="media-services-diagnostic-logs"></a>Media Services dzienników diagnostycznych
 
-Dzienniki diagnostyczne zapewniają rozbudowane i częste dane dotyczące operacji zasobu platformy Azure. Aby uzyskać więcej informacji, zobacz [jak zbierać i zużywać dane dzienników z zasobów platformy Azure](../../azure-monitor/platform/resource-logs-overview.md).
+Dzienniki diagnostyczne zapewniają rozbudowane i częste dane dotyczące operacji zasobu platformy Azure. Aby uzyskać więcej informacji, zobacz [jak zbierać i zużywać dane dzienników z zasobów platformy Azure](../../azure-monitor/platform/platform-logs-overview.md).
 
 Media Services obsługuje następujące dzienniki diagnostyczne:
 
@@ -111,7 +111,7 @@ Zobacz [monitorowanie dzienników diagnostycznych usługi Media Service](media-s
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Jak zbierać i zużywać dane dzienników z zasobów platformy Azure](../../azure-monitor/platform/resource-logs-overview.md)
+* [Jak zbierać i zużywać dane dzienników z zasobów platformy Azure](../../azure-monitor/platform/platform-logs-overview.md)
 * [Tworzenie i wyświetlanie alertów metryk oraz zarządzanie nimi w usłudze Azure Monitor](../../azure-monitor/platform/alerts-metric.md)
 * [Jak monitorować metryki Media Services](media-services-metrics-howto.md)
 * [Monitorowanie dzienników diagnostycznych usługi Media Service](media-services-diagnostic-logs-howto.md)

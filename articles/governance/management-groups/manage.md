@@ -1,14 +1,14 @@
 ---
 title: Jak korzystać z grup zarządzania — Zarządzanie platformą Azure
 description: Dowiedz się, jak wyświetlać, obsługiwać, aktualizować i usuwać hierarchię grup zarządzania.
-ms.date: 05/22/2019
+ms.date: 12/18/2019
 ms.topic: conceptual
-ms.openlocfilehash: 90f4bacf462ed5f2590f51d15b6b660057c51738
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 59f1b48e0a668d506a87ae1ef14de6df76b26ad7
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73960239"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75751234"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Zarządzanie zasobami za pomocą grup zarządzania
 
@@ -64,11 +64,9 @@ Aby można było usunąć grupę zarządzania, muszą zostać spełnione następ
 
 1. W grupie zarządzania nie ma podrzędnych grup ani subskrypcji zarządzania.
 
-   - Aby przenieść subskrypcję z grupy zarządzania, zobacz [przenoszenie subskrypcji do innej grupy zarządzania](#move-subscriptions-in-the-hierarchy).
+   - Aby przenieść subskrypcję lub grupę zarządzania do innej grupy zarządzania [, zobacz Przenoszenie grup zarządzania i subskrypcji w hierarchii](#moving-management-groups-and-subscriptions).
 
-   - Aby przenieść grupę zarządzania do innej grupy zarządzania, zobacz [przenoszenie grup zarządzania w hierarchii programu](#move-management-groups-in-the-hierarchy).
-
-1. Masz uprawnienia do zapisu w grupie zarządzania ("właściciel", "Współautor" lub "Współautor grupy zarządzania"). Aby zobaczyć, jakie masz uprawnienia, wybierz grupę zarządzania, a następnie wybierz pozycję **IAM**. Aby dowiedzieć się więcej na temat ról RBAC, zobacz [Zarządzanie dostępem i uprawnieniami za pomocą RBAC](../../role-based-access-control/overview.md).  
+1. Potrzebujesz uprawnień do zapisu w grupie zarządzania ("właściciel", "Współautor" lub "Współautor grupy zarządzania"). Aby zobaczyć, jakie masz uprawnienia, wybierz grupę zarządzania, a następnie wybierz pozycję **IAM**. Aby dowiedzieć się więcej na temat ról RBAC, zobacz [Zarządzanie dostępem i uprawnieniami za pomocą RBAC](../../role-based-access-control/overview.md).  
 
 ### <a name="delete-in-the-portal"></a>Usuwanie w portalu
 
@@ -123,7 +121,7 @@ Można wyświetlić dowolną grupę zarządzania, w której jest włączona bezp
 
 1. Aby wyświetlić szczegóły grupy zarządzania, wybierz łącze **(szczegóły)** obok tytułu grupy zarządzania. Jeśli ten link nie jest dostępny, nie masz uprawnień do wyświetlania tej grupy zarządzania.
 
-   ![Główną](./media/main.png)
+   ![Główne](./media/main.png)
 
 ### <a name="view-in-powershell"></a>Wyświetl w programie PowerShell
 
@@ -194,25 +192,31 @@ Aby zwrócić konkretną grupę zarządzania i wszystkie poziomy hierarchii w ni
 az account management-group show --name 'Contoso' -e -r
 ```
 
-## <a name="move-subscriptions-in-the-hierarchy"></a>Przenoszenie subskrypcji w hierarchii
+## <a name="moving-management-groups-and-subscriptions"></a>Przeniesienie grup zarządzania i subskrypcji   
 
-Jednym z powodów tworzenia grupy zarządzania jest łączenie subskrypcji. Tylko grupy zarządzania i subskrypcje mogą być elementami podrzędnymi innej grupy zarządzania. Subskrypcja przenoszona do grupy zarządzania odziedziczy wszystkie uprawnienia dostępu użytkowników i zasad z nadrzędnej grupy zarządzania.
+Jednym z powodów tworzenia grupy zarządzania jest łączenie subskrypcji. Tylko grupy zarządzania i subskrypcje mogą być elementami podrzędnymi innej grupy zarządzania. Subskrypcja przenoszona do grupy zarządzania odziedziczy wszystkie uprawnienia dostępu użytkowników i zasad z nadrzędnej grupy zarządzania
 
-Aby przenieść subskrypcję, wszystkie następujące uprawnienia RBAC muszą mieć wartość true:
+Podczas przeniesienia grupy zarządzania lub subskrypcji jako elementu podrzędnego innej grupy zarządzania należy ocenić trzy reguły jako prawdziwe.
 
-- Rola "Owner" w subskrypcji podrzędnej.
-- Rola "Owner", "Współautor" lub "Współautor grupy zarządzania" w docelowej nadrzędnej grupie zarządzania.
-- Rola "Owner", "Współautor" lub "Współautor grupy zarządzania" w istniejącej nadrzędnej grupie zarządzania.
+Jeśli wykonujesz akcję Przenieś, potrzebujesz: 
 
-Jeśli obiekt docelowy lub istniejąca nadrzędna grupa zarządzania jest główną grupą zarządzania, wymagania dotyczące uprawnień nie są stosowane. Ponieważ główną grupą zarządzania jest domyślny punkt załadunkowy dla wszystkich nowych grup zarządzania i subskrypcji, nie musisz mieć uprawnień do przenoszenia elementu.
+-  Uprawnienia Zapis grup zarządzania i przypisywanie ról w podrzędnej subskrypcji lub grupie zarządzania.
+    - **Właściciel** przykładu wbudowanej roli
+- Dostęp do zapisu grupy zarządzania w docelowej nadrzędnej grupie zarządzania.
+    - Wbudowana rola — przykład: **właściciel**, **współautor**, **współautor grupy zarządzania**
+- Dostęp do zapisu grupy zarządzania w istniejącej nadrzędnej grupie zarządzania.
+    - Wbudowana rola — przykład: **właściciel**, **współautor**, **współautor grupy zarządzania**
 
-Jeśli rola właściciela w subskrypcji jest dziedziczona z bieżącej grupy zarządzania, cele przenoszenia są ograniczone. Subskrypcję można przenieść tylko do innej grupy zarządzania, w której masz rolę właściciela. Nie można przenieść go do grupy zarządzania, w której jesteś współautorem, ponieważ utracisz własność subskrypcji. Jeśli użytkownik jest bezpośrednio przypisany do roli właściciela subskrypcji (niedziedziczonej z grupy zarządzania), można przenieść ją do dowolnej grupy zarządzania, w której jesteś współautorem.
+**Wyjątek**: Jeśli obiekt docelowy lub istniejąca nadrzędna grupa zarządzania jest główną grupą zarządzania, wymagania dotyczące uprawnień nie są stosowane. Ponieważ główną grupą zarządzania jest domyślny punkt załadunkowy dla wszystkich nowych grup zarządzania i subskrypcji, nie musisz mieć uprawnień do przenoszenia elementu.
+
+Jeśli rola właściciela w subskrypcji jest dziedziczona z bieżącej grupy zarządzania, cele przenoszenia są ograniczone. Subskrypcję można przenieść tylko do innej grupy zarządzania, w której masz rolę właściciela. Nie można przenieść go do grupy zarządzania, w której jesteś współautorem, ponieważ utracisz własność subskrypcji. Jeśli masz bezpośrednio przypisaną rolę właściciela subskrypcji (niedziedziczonej z grupy zarządzania), możesz przenieść ją do dowolnej grupy zarządzania, w której jesteś współautorem. 
 
 Aby sprawdzić, jakie uprawnienia znajdują się w Azure Portal, wybierz grupę zarządzania, a następnie wybierz pozycję **IAM**. Aby dowiedzieć się więcej na temat ról RBAC, zobacz [Zarządzanie dostępem i uprawnieniami za pomocą RBAC](../../role-based-access-control/overview.md).
 
-### <a name="move-subscriptions-in-the-portal"></a>Przenoszenie subskrypcji w portalu
 
-#### <a name="add-an-existing-subscription-to-a-management-group"></a>Dodaj istniejącą subskrypcję do grupy zarządzania
+## <a name="move-subscriptions"></a>Przenoszenie subskrypcji 
+
+#### <a name="add-an-existing-subscription-to-a-management-group-in-the-portal"></a>Dodawanie istniejącej subskrypcji do grupy zarządzania w portalu
 
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com).
 
@@ -228,7 +232,7 @@ Aby sprawdzić, jakie uprawnienia znajdują się w Azure Portal, wybierz grupę 
 
 1. Wybierz pozycję "Zapisz".
 
-#### <a name="remove-a-subscription-from-a-management-group"></a>Usuwanie subskrypcji z grupy zarządzania
+#### <a name="remove-a-subscription-from-a-management-group-in-the-portal"></a>Usuwanie subskrypcji z grupy zarządzania w portalu
 
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com).
 
@@ -276,9 +280,7 @@ Aby usunąć subskrypcję z grupy zarządzania, użyj polecenia Usuń subskrypcj
 az account management-group subscription remove --name 'Contoso' --subscription '12345678-1234-1234-1234-123456789012'
 ```
 
-## <a name="move-management-groups-in-the-hierarchy"></a>Przenoszenie grup zarządzania w hierarchii  
-
-Po przeniesieniu nadrzędnej grupy zarządzania hierarchia w tej grupie jest przenoszona wraz z nią. Aby uzyskać dostęp do przenoszenia grup zarządzania, zobacz dostęp do [grupy zarządzania](overview.md#management-group-access).
+## <a name="move-management-groups"></a>Przenoszenie grup zarządzania 
 
 ### <a name="move-management-groups-in-the-portal"></a>Przenoszenie grup zarządzania w portalu
 
@@ -318,7 +320,7 @@ az account management-group update --name 'Contoso' --parent ContosoIT
 
 ## <a name="audit-management-groups-using-activity-logs"></a>Inspekcja grup zarządzania przy użyciu dzienników aktywności
 
-Grupy zarządzania są obsługiwane w [dzienniku aktywności platformy Azure](../../azure-monitor/platform/activity-logs-overview.md). Możesz badać wszystkie zdarzenia, które wystąpiły do grupy zarządzania w tej samej centralnej lokalizacji co inne zasoby platformy Azure.  Na przykład widoczne są wszystkie przypisania ról i zmiany przypisań zasad w określonej grupie zarządzania.
+Grupy zarządzania są obsługiwane w [dzienniku aktywności platformy Azure](../../azure-monitor/platform/platform-logs-overview.md). Możesz badać wszystkie zdarzenia, które wystąpiły do grupy zarządzania w tej samej centralnej lokalizacji co inne zasoby platformy Azure.  Na przykład widoczne są wszystkie przypisania ról i zmiany przypisań zasad w określonej grupie zarządzania.
 
 ![Dzienniki aktywności z grupami zarządzania](media/al-mg.png)
 

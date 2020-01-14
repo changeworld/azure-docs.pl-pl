@@ -3,12 +3,12 @@ title: Dokumentacja dla deweloperów Java dla Azure Functions
 description: Dowiedz się, jak opracowywać funkcje przy użyciu języka Java.
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.openlocfilehash: 50fc4dc278e274109725ff60ea8d438310ce464d
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 4af2a860657f6066112146e1f88d81861d9430ea
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230396"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769034"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Przewodnik dewelopera Azure Functions Java
 
@@ -156,7 +156,7 @@ Funkcje umożliwiają dostosowanie maszyny wirtualnej Java (JVM) używanej do ur
 
 W ustawieniach aplikacji można podać dodatkowe argumenty o nazwie `JAVA_OPTS`. Możesz dodać ustawienia aplikacji do aplikacji funkcji wdrożonej na platformie Azure w Azure Portal lub interfejsie wiersza polecenia platformy Azure.
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Portal Azure
 
 W [Azure Portal](https://portal.azure.com)Użyj [karty Ustawienia aplikacji](functions-how-to-use-azure-function-app-settings.md#settings) , aby dodać ustawienie `JAVA_OPTS`.
 
@@ -331,7 +331,7 @@ Wywołujesz tę funkcję na wywołaniu HttpRequest. Zapisuje wiele wartości do 
 
  Są one zdefiniowane w `azure-functions-java-library`. Są to typy pomocnika do pracy z funkcjami HttpTrigger.
 
-| Typ wyspecjalizowany      |       Środowisko docelowe        | Typowy sposób użycia                  |
+| Typ wyspecjalizowany      |       Cel        | Typowy sposób użycia                  |
 | --------------------- | :-----------------: | ------------------------------ |
 | `HttpRequestMessage<T>`  |    Wyzwalacz HTTP     | Pobiera metodę, nagłówki lub zapytania |
 | `HttpResponseMessage` | Powiązanie danych wyjściowych HTTP | Zwraca stan inny niż 200   |

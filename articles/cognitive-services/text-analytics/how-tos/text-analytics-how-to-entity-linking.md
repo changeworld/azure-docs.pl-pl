@@ -8,79 +8,137 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 11/21/2019
+ms.date: 01/06/2019
 ms.author: aahi
-ms.openlocfilehash: ae5222dcd05740ecb9747037b315c4e920b3eabd
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: a9bfa2a51341bf60f92378f5d96a390bd1d92db1
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74326637"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75732782"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Jak używać rozpoznawania jednostek nazwanych w analiza tekstu
 
-[Interfejs API rozpoznawania jednostek nazwanych](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634) Pobiera tekst bez struktury, a dla każdego dokumentu JSON zwraca listę niejednoznacznych jednostek z linkami do dodatkowych informacji na temat sieci Web (Wikipedia i Bing).
-
-## <a name="entity-linking-and-named-entity-recognition"></a>Łączenie jednostek i rozpoznawanie nazwanych jednostek
-
-Analiza tekstu "`entities` punkt końcowy obsługuje zarówno rozpoznawanie jednostek nazwanych (NER), jak i łączenie jednostek.
+Interfejs API analizy tekstu umożliwia przyjęcie tekstu bez struktury i zwrócenie listy niejednoznacznych jednostek z linkami do dodatkowych informacji w sieci Web. Interfejs API obsługuje jednocześnie rozpoznawanie jednostek nazwanych (NER) i łączenie jednostek.
 
 ### <a name="entity-linking"></a>Łączenie podmiotów
-Łączenie jednostek to możliwość identyfikacji i odróżnienia tożsamości jednostki znalezionej w tekście (na przykład określenie, czy element "Mars" jest używany jako globalnej, czy jako Rzymskie akty Boże War). Ten proces wymaga obecności bazy wiedzy, do której są połączone powiązane jednostki — jest używana jako baza wiedzy dla analiza tekstu punktu końcowego `entities`.
+
+Łączenie jednostek to możliwość identyfikowania i odróżnienia tożsamości jednostki znalezionej w tekście (na przykład w przypadku określenia, czy wystąpienie słowa `Mars` odwołuje się do globalnej, czy do rzymskie akty Boże wojny). Ten proces wymaga obecności bazy wiedzy w odpowiednim języku do łączenia rozpoznanych jednostek w tekście. 
+
 
 ### <a name="named-entity-recognition-ner"></a>Rozpoznawanie jednostek nazwanych (NER)
-Funkcja rozpoznawania jednostek nazwanych (NER) to możliwość identyfikowania różnych jednostek w tekście i kategoryzowania ich w wstępnie zdefiniowanych klasach lub typach. 
 
-## <a name="named-entity-recognition-v3-public-preview"></a>Niestandardowa wersja próbna rozpoznawania jednostek v3
+Funkcja rozpoznawania jednostek nazwanych (NER) to możliwość identyfikowania różnych jednostek w tekście i kategoryzowania ich w wstępnie zdefiniowanych klasach lub typach. Na przykład: osoby, miejsca i organizacje.
 
-Następna wersja rozpoznawania nazwanych jednostek jest teraz dostępna w publicznej wersji zapoznawczej. Udostępnia ona aktualizacje zarówno do łączenia jednostek, jak i nazwanego rozpoznawania jednostek. Wypróbuj go przy użyciu [konsoli testowej API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionGeneral).
+## <a name="named-entity-recognition-versions-and-features"></a>Wersje i funkcje rozpoznawania jednostek nazwanych
 
-:::row:::
-    :::column span="":::
-        **Funkcja**
-    :::column-end:::
-    ::: column span="":::
-        **Opis** 
-    :::column-end:::
-:::row-end:::
-<!-- expanded types and subtypes row-->
-:::row:::
-    :::column span="":::
-        Rozwinięte typy i podtypy jednostek
-    :::column-end:::
-    :::column span="":::
-     Rozszerzona klasyfikacja i wykrywanie dla kilku typów jednostek nazwanych.
-    :::column-end:::
-:::row-end:::
-<!-- separate endpoints row-->
-:::row:::
-    :::column span="":::
-        Oddziel punkty końcowe żądania 
-    :::column-end:::
-    :::column span="":::
-        Oddziel punkty końcowe do wysyłania połączeń jednostek i żądań NER.
-    :::column-end:::
-:::row-end:::
-<!-- model-version row -->
-:::row:::
-    :::column span="":::
-        `model-version` parametr
-    :::column-end:::
-    :::column span="":::
-        Opcjonalny parametr służący do wybierania wersji modelu analiza tekstu. Obecnie tylko domyślny model jest dostępny do użycia.
-    :::column-end:::
-:::row-end:::
+Interfejs API analizy tekstu oferuje dwie wersje nazwanego rozpoznawania jednostek — v2 i v3. Wersja 3 (Public Preview) zawiera bardziej szczegółowe informacje na temat jednostek, które mogą być wykrywane i klasyfikowane.
+
+| Funkcja                                                         | NER v2 | NER v3 |
+|-----------------------------------------------------------------|--------|--------|
+| Metody dla żądań pojedynczych i wsadowych                          | X      | X      |
+| Podstawowe rozpoznawanie jednostek w różnych kategoriach              | X      | X      |
+| Rozszerzona klasyfikacja dla rozpoznanych jednostek                 |        | X      |
+| Oddziel punkty końcowe do wysyłania połączeń jednostek i żądań NER. |        | X      |
+| Przechowywanie wersji modelu                                                |        | X      |
+
+Aby uzyskać informacje, zobacz temat [Obsługa języków](../language-support.md#sentiment-analysis-key-phrase-extraction-and-named-entity-recognition) .
+
+#### <a name="version-2tabversion-2"></a>[Wersja 2](#tab/version-2)
 
 ### <a name="entity-types"></a>Typy jednostek
 
-Rozpoznawanie jednostek nazwanych v3 zapewnia rozszerzone wykrywanie w wielu typach. Obecnie NER v3 może rozpoznać następujące kategorie jednostek. Aby uzyskać szczegółową listę obsługiwanych jednostek i języków, zobacz artykuł [typy jednostek nazwanych](../named-entity-types.md) .
+> [!NOTE]
+> Rozpoznawanie jednostek nazwanych (NER) w wersji 2 obsługuje tylko następujące jednostki. NER V3 jest dostępna w publicznej wersji zapoznawczej i znacząco rozszerza liczbę i głębokość jednostek rozpoznawanych w tekście.   
+
+| Typ  | SubType | Przykład |
+|:-----------   |:------------- |:---------|
+| Osoba        | Nie dotyczy\*         | "Jan", "bramy Bill"     |
+| Lokalizacja      | Nie dotyczy\*         | „Redmond, Washington”, „Paris”  |
+| Organizacja  | Nie dotyczy\*         | „Microsoft”   |
+| Ilość      | Liczba        | „6”, „six”     |
+| Ilość      | Wartość procentowa    | „50%”, „fifty percent”|
+| Ilość      | Liczba porządkowa       | „2nd”, „second”     |
+| Ilość      | Wiek           | "90 dzień dawna", "30 lat starych"    |
+| Ilość      | Waluta      | „$10,99”     |
+| Ilość      | Wymiar     | „10 miles”, „40 cm”     |
+| Ilość      | Temperatura   | „32 degrees”    |
+| Data i godzina      | Nie dotyczy\*         | „6:30PM February 4, 2012”      |
+| Data i godzina      | Data          | „May 2nd, 2017”, „05/02/2017”   |
+| Data i godzina      | Czas          | "8:00", "8:00"  |
+| Data i godzina      | Zakres dat     | „May 2nd to May 5th”    |
+| Data i godzina      | Zakres czasu     | „6pm to 7pm”     |
+| Data i godzina      | Czas trwania      | „1 minute and 45 seconds”   |
+| Data i godzina      | Zestaw           | „every Tuesday”     |
+| Adres URL           | Nie dotyczy\*         | "https:\//www.bing.com"    |
+| Adres e-mail         | Nie dotyczy\*         | „support@contoso.com” |
+| Numer telefonu USA  | Nie dotyczy\*         | (Tylko numery telefonów US) "(312) 555-0176" |
+| Adres IP    | Nie dotyczy\*         | "10.0.0.100" |
+
+\* w zależności od danych wejściowych i wyodrębnionych, niektóre jednostki mogą pominąć `SubType`.  Wszystkie obsługiwane typy jednostek są dostępne tylko w językach angielskim, chińskim, francuskim, niemieckim i hiszpańskim.
+
+### <a name="request-endpoints"></a>Punkty końcowe żądania
+
+Rozpoznawanie jednostek nazwanych v2 używa jednego punktu końcowego dla żądań NER i konsolidacji jednostek:
+
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/entities`
+
+#### <a name="version-3-public-previewtabversion-3"></a>[3 (publiczna wersja zapoznawcza)](#tab/version-3)
+
+### <a name="entity-types"></a>Typy jednostek
+
+Rozpoznawanie jednostek nazwanych v3 zapewnia rozszerzone wykrywanie w wielu typach. Obecnie NER v3 może rozpoznać następujące kategorie jednostek:
 
 * Ogólne
 * Dane osobowe 
 
+Aby uzyskać szczegółową listę obsługiwanych jednostek i języków, zobacz artykuł [obsługiwane typy jednostek ner v3](../named-entity-types.md) .
+
 ### <a name="request-endpoints"></a>Punkty końcowe żądania
 
 Nazwanego rozpoznawania jednostek v3 używa oddzielnych punktów końcowych dla żądań NER i konsolidacji jednostek. Użyj poniższego formatu adresu URL na podstawie Twojego żądania:
+
+NER
+* Jednostki ogólne — `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/entities/recognition/general`
+
+* Dane osobowe — `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/entities/recognition/pii`
+
+Łączenie jednostek
+* `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/entities/linking`
+
+### <a name="model-versioning"></a>Przechowywanie wersji modelu
+
+[!INCLUDE [v3-model-versioning](../includes/model-versioning.md)]
+
+---
+
+## <a name="sending-a-rest-api-request"></a>Wysyłanie żądania interfejsu API REST
+
+### <a name="preparation"></a>Przygotowywanie
+
+Musisz mieć dokumenty JSON w tym formacie: ID, text, language.
+
+Każdy dokument musi mieć 5 120 znaków i może mieć do 1 000 elementów (identyfikatorów) na kolekcję. Kolekcja jest przesyłana w treści żądania.
+
+### <a name="structure-the-request"></a>Określenie struktury żądania
+
+Utwórz żądanie POST. Można [użyć programu Poster](text-analytics-how-to-call-api.md) lub **konsoli testowania interfejsu API** w poniższych linkach, aby szybko przeprowadzić strukturę i wysłać ją. 
+
+[!INCLUDE [text-analytics-find-resource-information](../includes/find-azure-resource-info.md)]
+
+#### <a name="version-2tabversion-2"></a>[Wersja 2](#tab/version-2)
+
+[Dokumentacja rozpoznawania jednostek nazwanych (NER) v2](https://eastus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)
+
+Wersja 2 używa następującego punktu końcowego do konsolidacji obiektów i żądań NER: 
+
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/entities`
+
+#### <a name="version-3tabversion-3"></a>[Wersja 3](#tab/version-3)
+
+[Odwołanie do nazwanego rozpoznawania jednostek v3](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionGeneral)
+
+W wersji 3 są używane oddzielne punkty końcowe dla żądań NER i konsolidacji jednostek. Użyj poniższego formatu adresu URL na podstawie Twojego żądania:
 
 NER
 * Jednostki ogólne — `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/entities/recognition/general`
@@ -90,269 +148,145 @@ NER
 Łączenie jednostek
 * `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/entities/linking`
 
-### <a name="model-versioning"></a>Przechowywanie wersji modelu
+---
 
-[!INCLUDE [v3-model-versioning](../includes/model-versioning.md)]
+Ustaw nagłówek żądania w taki sposób, aby zawierał klucz interfejs API analizy tekstu. W treści żądania Podaj przygotowane dokumenty JSON.
 
-## <a name="supported-types-for-named-entity-recognition-v2"></a>Obsługiwane typy dla nazwanego rozpoznawania jednostek v2
+### <a name="example-ner-request"></a>Przykładowe żądanie NER 
 
-> [!NOTE]
-> Następujące jednostki są obsługiwane przez funkcję rozpoznawania jednostek nazwanych (NER) w wersji 2. [Ner v3](#named-entity-recognition-v3-public-preview) jest dostępna w publicznej wersji zapoznawczej i znacząco rozszerza liczbę i głębokość jednostek rozpoznawanych w tekście.   
-
-| Typ  | SubType | Przykład |
-|:-----------   |:------------- |:---------|
-| Person (Osoba)        | Nie dotyczy\*         | "Jan", "bramy Bill"     |
-| Location      | Nie dotyczy\*         | „Redmond, Washington”, „Paris”  |
-| Organizacja  | Nie dotyczy\*         | „Microsoft”   |
-| Ilość      | Liczba        | „6”, „six”     |
-| Ilość      | Wartość procentowa    | „50%”, „fifty percent”|
-| Ilość      | Liczba porządkowa       | „2nd”, „second”     |
-| Ilość      | Wiek           | "90 dzień dawna", "30 lat starych"    |
-| Ilość      | Waluta      | „$10,99”     |
-| Ilość      | Wymiar     | „10 miles”, „40 cm”     |
-| Ilość      | Temperatura   | „32 degrees”    |
-| DateTime      | Nie dotyczy\*         | „6:30PM February 4, 2012”      |
-| DateTime      | Date          | „May 2nd, 2017”, „05/02/2017”   |
-| DateTime      | Time          | "8:00", "8:00"  |
-| DateTime      | Zakres dat     | „May 2nd to May 5th”    |
-| DateTime      | Zakres czasu     | „6pm to 7pm”     |
-| DateTime      | Czas trwania      | „1 minute and 45 seconds”   |
-| DateTime      | Zestaw           | „every Tuesday”     |
-| Adres URL           | Nie dotyczy\*         | "https:\//www.bing.com"    |
-| Poczta e-mail         | Nie dotyczy\*         | „support@contoso.com” |
-| Numer telefonu USA  | Nie dotyczy\*         | (Tylko numery telefonów US) "(312) 555-0176" |
-| Adres IP    | Nie dotyczy\*         | "10.0.0.100" |
-
-\* w zależności od danych wejściowych i wyodrębnionych, niektóre jednostki mogą pominąć `SubType`.  Wszystkie obsługiwane typy jednostek są dostępne tylko w językach angielskim, chińskim, francuskim, niemieckim i hiszpańskim.
-
-### <a name="language-support"></a>Obsługa języków
-
-Używanie łączenia jednostek w różnych językach wymaga użycia odpowiedniej bazy wiedzy w każdym z języków. W przypadku łączenia jednostek w analiza tekstu oznacza to, że każdy język, który jest obsługiwany przez punkt końcowy `entities`, zostanie połączony z odpowiednim korpus witryny Wikipedia w tym języku. Ponieważ rozmiar korpusy różni się między językami, oczekuje się, że odwołanie do funkcji łączenia jednostki również będzie się różnić. Aby uzyskać więcej informacji, zobacz artykuł [Obsługa języka](../language-support.md#sentiment-analysis-key-phrase-extraction-and-named-entity-recognition) .
-
-## <a name="preparation"></a>Przygotowanie
-
-Musisz mieć dokumenty JSON w tym formacie: ID, text, language
-
-W przypadku obecnie obsługiwanych języków zapoznaj się z [tą listą](../text-analytics-supported-languages.md).
-
-Dokument musi mieć mniej niż 5120 znaków, a kolekcja może zawierać maksymalnie 1000 elementów (identyfikatorów). Kolekcja jest przesyłana w treści żądania. Poniższy przykład jest ilustracją zawartości, którą można przesłać do obiektu łączącego.
+Poniżej znajduje się przykład zawartości, którą można wysłać do interfejsu API. Format żądania jest taki sam dla obu wersji interfejsu API.
 
 ```json
+{
+  "documents": [
     {
-        "documents": [
-            {
-                "id": "1",
-                "language": "en",
-                "text": "Jeff bought three dozen eggs because there was a 50% discount."
-            },
-            {
-                "id": "2",
-                "language": "en",
-                "text": "The Great Depression began in 1929. By 1933, the GDP in America fell by 25%."
-            }
-        ]
+      "language": "en",
+      "id": "1",
+      "text": "I had a wonderful trip to Seattle last week."
     }
+  ]
+}
 ```
 
-## <a name="step-1-structure-the-request"></a>Krok 1: Określenie struktury żądania
-
-Szczegółowe informacje na temat definicji żądania można znaleźć w artykule [Jak wywołać interfejs API analizy tekstu](text-analytics-how-to-call-api.md). Dla wygody poniżej ponownie podano odpowiednie kroki:
-
-+ Utwórz żądanie **POST**. Przejrzyj dokumentację interfejsu API dla tego żądania: [interfejs API jednostek](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)
-
-+ Ustaw punkt końcowy HTTP na potrzeby wyodrębniania fraz kluczowych przy użyciu zasobu analiza tekstu na platformie Azure lub [kontenera analiza tekstu](text-analytics-how-to-install-containers.md)wystąpienia. Musisz dołączyć `/text/analytics/v2.1/entities`. Na przykład: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/entities`.
-
-+ Ustaw nagłówek żądania w taki sposób [, aby zawierał klucz dostępu](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) dla operacji analiza tekstu.
-
-+ W treści żądania podaj kolekcję dokumentów JSON przygotowaną na potrzeby tej analizy.
-
-> [!Tip]
-> Użyj programu [Postman](text-analytics-how-to-call-api.md) lub otwórz **konsolę testowania interfejsu API** w [dokumentacji](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634), aby określić strukturę żądania i przesłać je do usługi za pomocą operacji POST.
-
-## <a name="step-2-post-the-request"></a>Krok 2: Wysłanie żądania
+## <a name="post-the-request"></a>Wysłanie żądania
 
 Analiza jest wykonywana po odebraniu żądania. Zapoznaj się z sekcją [limity danych](../overview.md#data-limits) w temacie Omówienie dotyczącej rozmiaru i liczby żądań wysyłanych na minutę i sekundę.
 
-Pamiętaj, że usługa jest bezstanowa. Żadne dane nie są przechowywane na koncie. Wyniki są zwracane natychmiast w odpowiedzi.
+Interfejs API analizy tekstu jest bezstanowy. Na Twoim koncie nie są przechowywane żadne dane, a wyniki są zwracane natychmiast w odpowiedzi.
 
-## <a name="step-3-view-results"></a>Krok 3: Wyświetlenie wyników
+## <a name="view-results"></a>Wyświetlanie wyników
 
-Wszystkie żądania POST zwracają odpowiedź w formacie JSON z identyfikatorami i wykrytymi właściwościami.
+Wszystkie żądania POST zwracają sformatowaną w formacie JSON odpowiedź z identyfikatorami i wykrytymi właściwościami jednostki.
 
 Dane wyjściowe są zwracane natychmiast. Wyniki można przesłać strumieniowo do aplikacji, która akceptuje kod JSON, lub zapisać do pliku w systemie lokalnym, a następnie zaimportować do aplikacji, która umożliwia sortowanie i wyszukiwanie danych oraz manipulowanie nimi.
 
-Przykład danych wyjściowych dla łączenia encji jest pokazany poniżej:
+#### <a name="version-2tabversion-2"></a>[Wersja 2](#tab/version-2)
+
+### <a name="example-ner-v2-response"></a>Przykładowa odpowiedź NER v2
+```json
+{
+  "documents": [{
+    "id": "1",
+    "entities": [{
+      "name": "Seattle",
+      "matches": [{
+        "wikipediaScore": 0.15046201222847677,
+        "entityTypeScore": 0.80624294281005859,
+        "text": "Seattle",
+        "offset": 26,
+        "length": 7
+      }],
+      "wikipediaLanguage": "en",
+      "wikipediaId": "Seattle",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Seattle",
+      "bingId": "5fbba6b8-85e1-4d41-9444-d9055436e473",
+      "type": "Location"
+    }, {
+      "name": "last week",
+      "matches": [{
+        "entityTypeScore": 0.8,
+        "text": "last week",
+        "offset": 34,
+        "length": 9
+      }],
+      "type": "DateTime",
+      "subType": "DateRange"
+    }]
+  }],
+  "errors": []
+}
+```
+
+#### <a name="version-3-public-previewtabversion-3"></a>[3 (publiczna wersja zapoznawcza)](#tab/version-3)
+
+### <a name="example-v3-responses"></a>Przykładowe odpowiedzi v3
+
+Wersja 3 zapewnia oddzielne punkty końcowe dla NER i konsolidacji jednostek. Odpowiedzi dla obu operacji są poniżej.
+
+#### <a name="example-ner-response"></a>Przykładowa odpowiedź NER
 
 ```json
-    {
-        "Documents": [
-            {
-                "Id": "1",
-                "Entities": [
-                    {
-                        "Name": "Jeff",
-                        "Matches": [
-                            {
-                                "Text": "Jeff",
-                                "Offset": 0,
-                                "Length": 4
-                            }
-                        ],
-                        "Type": "Person"
-                    },
-                    {
-                        "Name": "three dozen",
-                        "Matches": [
-                            {
-                                "Text": "three dozen",
-                                "Offset": 12,
-                                "Length": 11
-                            }
-                        ],
-                        "Type": "Quantity",
-                        "SubType": "Number"
-                    },
-                    {
-                        "Name": "50",
-                        "Matches": [
-                            {
-                                "Text": "50",
-                                "Offset": 49,
-                                "Length": 2
-                            }
-                        ],
-                        "Type": "Quantity",
-                        "SubType": "Number"
-                    },
-                    {
-                        "Name": "50%",
-                        "Matches": [
-                            {
-                                "Text": "50%",
-                                "Offset": 49,
-                                "Length": 3
-                            }
-                        ],
-                        "Type": "Quantity",
-                        "SubType": "Percentage"
-                    }
-                ]
-            },
-            {
-                "Id": "2",
-                "Entities": [
-                    {
-                        "Name": "Great Depression",
-                        "Matches": [
-                            {
-                                "Text": "The Great Depression",
-                                "Offset": 0,
-                                "Length": 20
-                            }
-                        ],
-                        "WikipediaLanguage": "en",
-                        "WikipediaId": "Great Depression",
-                        "WikipediaUrl": "https://en.wikipedia.org/wiki/Great_Depression",
-                        "BingId": "d9364681-98ad-1a66-f869-a3f1c8ae8ef8"
-                    },
-                    {
-                        "Name": "1929",
-                        "Matches": [
-                            {
-                                "Text": "1929",
-                                "Offset": 30,
-                                "Length": 4
-                            }
-                        ],
-                        "Type": "DateTime",
-                        "SubType": "DateRange"
-                    },
-                    {
-                        "Name": "By 1933",
-                        "Matches": [
-                            {
-                                "Text": "By 1933",
-                                "Offset": 36,
-                                "Length": 7
-                            }
-                        ],
-                        "Type": "DateTime",
-                        "SubType": "DateRange"
-                    },
-                    {
-                        "Name": "Gross domestic product",
-                        "Matches": [
-                            {
-                                "Text": "GDP",
-                                "Offset": 49,
-                                "Length": 3
-                            }
-                        ],
-                        "WikipediaLanguage": "en",
-                        "WikipediaId": "Gross domestic product",
-                        "WikipediaUrl": "https://en.wikipedia.org/wiki/Gross_domestic_product",
-                        "BingId": "c859ed84-c0dd-e18f-394a-530cae5468a2"
-                    },
-                    {
-                        "Name": "United States",
-                        "Matches": [
-                            {
-                                "Text": "America",
-                                "Offset": 56,
-                                "Length": 7
-                            }
-                        ],
-                        "WikipediaLanguage": "en",
-                        "WikipediaId": "United States",
-                        "WikipediaUrl": "https://en.wikipedia.org/wiki/United_States",
-                        "BingId": "5232ed96-85b1-2edb-12c6-63e6c597a1de",
-                        "Type": "Location"
-                    },
-                    {
-                        "Name": "25",
-                        "Matches": [
-                            {
-                                "Text": "25",
-                                "Offset": 72,
-                                "Length": 2
-                            }
-                        ],
-                        "Type": "Quantity",
-                        "SubType": "Number"
-                    },
-                    {
-                        "Name": "25%",
-                        "Matches": [
-                            {
-                                "Text": "25%",
-                                "Offset": 72,
-                                "Length": 3
-                            }
-                        ],
-                        "Type": "Quantity",
-                        "SubType": "Percentage"
-                    }
-                ]
-            }
-        ],
-        "Errors": []
-    }
+{
+    "documents": [{
+    "id": "1",
+    "entities": [{
+        "text": "Seattle",
+        "type": "Location",
+        "offset": 26,
+        "length": 7,
+        "score": 0.80624294281005859
+    }, {
+        "text": "last week",
+        "type": "DateTime",
+        "subtype": "DateRange",
+        "offset": 34,
+        "length": 9,
+        "score": 0.8
+    }]
+    }],
+    "errors": [],
+    "modelVersion": "2019-10-01"
+}
 ```
+
+#### <a name="example-entity-linking-response"></a>Przykład powiązania jednostki z odpowiedzią
+
+```json
+{
+  "documents": [{
+    "id": "1",
+    "entities": [{
+      "name": "Seattle",
+      "matches": [{
+        "text": "Seattle",
+        "offset": 26,
+        "length": 7,
+        "score": 0.15046201222847677
+      }],
+      "language": "en",
+      "id": "Seattle",
+      "url": "https://en.wikipedia.org/wiki/Seattle",
+      "dataSource": "Wikipedia"
+    }]
+  }],
+  "errors": [],
+  "modelVersion": "2019-10-01"
+}
+```
+
+---
 
 ## <a name="summary"></a>Podsumowanie
 
 W tym artykule przedstawiono koncepcje i przepływ pracy dotyczące łączenia jednostek przy użyciu analiza tekstu w Cognitive Services. Podsumowanie:
 
-+ [Interfejs API jednostek](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634) jest dostępny dla wybranych języków.
-+ Dokumenty JSON w treści żądania obejmują identyfikator, tekst i kod języka.
-+ Żądanie POST jest wysyłane do punktu końcowego `/entities` za pomocą spersonalizowanego [klucza dostępu i punktu końcowego](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) prawidłowego dla używanej subskrypcji.
-+ Dane wyjściowe odpowiedzi, które obejmują połączone jednostki (w tym wyniki pewności, przesunięcia i linki sieci Web dla każdego identyfikatora dokumentu) mogą być używane w dowolnej aplikacji
+* Rozpoznawanie jednostek nazwanych jest dostępne dla wybranych języków w dwóch wersjach.
+* Dokumenty JSON w treści żądania obejmują identyfikator, tekst i kod języka.
+* Żądania POST są wysyłane do jednego lub większej liczby punktów końcowych, przy użyciu spersonalizowanego [klucza dostępu i punktu końcowego](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) , który jest prawidłowy dla Twojej subskrypcji.
+* Dane wyjściowe odpowiedzi, które obejmują połączone jednostki (w tym wyniki pewności, przesunięcia i linki sieci Web dla każdego identyfikatora dokumentu) mogą być używane w dowolnej aplikacji
 
 ## <a name="next-steps"></a>Następne kroki
 
-> [!div class="nextstepaction"]
-> [Interfejs API analizy tekstu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)
-
 * [Text Analytics overview (Omówienie analizy tekstu)](../overview.md)
-* [Często zadawane pytania](../text-analytics-resource-faq.md)</br>
-* [Strona produktu analizy tekstu](//go.microsoft.com/fwlink/?LinkID=759712)
+* [Korzystanie z biblioteki klienta analiza tekstu](../quickstarts/text-analytics-sdk.md)
+* [Co nowego](../whats-new.md)

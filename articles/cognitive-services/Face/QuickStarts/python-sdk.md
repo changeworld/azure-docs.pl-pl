@@ -1,6 +1,6 @@
 ---
-title: 'Przewodnik Szybki Start: Tworzenie biblioteki klienckiej dla języka Python | Microsoft Docs'
-description: Ten artykuł pomoże Ci rozpocząć pracę z biblioteką klienta programu Front for Python w celu wykrycia, znalezienia podobnej, identyfikacji, sprawdzenia i innych.
+title: 'Przewodnik Szybki Start: Tworzenie biblioteki klienckiej dla języka Python'
+description: Ten przewodnik Szybki Start pomoże Ci rozpocząć pracę z biblioteką klienta programu Front for Python w celu wykrycia, znalezienia podobnej, identyfikacji, sprawdzenia i innych.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: cd797567b381fb89c568b06dc8b056648e5c734a
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: badfec71ad44fd9eebc748f716301ad6731883cf
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977815"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770360"
 ---
 # <a name="quickstart-face-client-library-for-python"></a>Przewodnik Szybki Start: Tworzenie biblioteki klienckiej dla języka Python
 
@@ -153,7 +153,7 @@ Po skonfigurowaniu obrazów Zdefiniuj etykietę w górnej części skryptu **dla
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_persongroupvars)]
 
-Następnie Dodaj następujący kod w dolnej części skryptu. Ten kod tworzy **PersongGroup** i trzy obiekty **osób** .
+Następnie Dodaj następujący kod w dolnej części skryptu. Ten kod tworzy **osobę** i trzy obiekty **osób** .
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_persongroup_create)]
 

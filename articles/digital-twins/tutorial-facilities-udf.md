@@ -8,19 +8,19 @@ manager: bertvanhoof
 ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
-ms.date: 11/13/2019
-ms.openlocfilehash: 80fd1275f3bf9585ff8e40a94d0de2d422baec71
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.date: 01/10/2020
+ms.openlocfilehash: 6cf6a8f7de181a81d60028e33ba2631815c8ca04
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383225"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75895357"
 ---
 # <a name="tutorial-provision-your-building-and-monitor-working-conditions-with-azure-digital-twins-preview"></a>Samouczek: udostępnianie warunków roboczych tworzenia i monitorowania za pomocą usługi Azure Digital bliźniaczych reprezentacji Preview
 
 W tym samouczku pokazano, jak używać usługi Azure Digital bliźniaczych reprezentacji Preview do monitorowania obszarów pod kątem wymagań dotyczących temperatury i poziomu komfortu. Po [skonfigurowaniu przykładowego budynku](tutorial-facilities-setup.md) możesz zaaprowizować swój budynek i uruchamiać funkcje niestandardowe na danych z czujników, wykonując czynności opisane w tym samouczki.
 
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Definiowanie warunków, które mają być monitorowane.
@@ -38,7 +38,7 @@ W tym samouczku przyjęto założenie, że [ukończono konfigurację usługi Azu
 - [Zestaw SDK .NET Core w wersji 2.1.403 lub nowszej](https://www.microsoft.com/net/download) na komputerze deweloperskim w celu skompilowania i uruchomienia przykładu. Uruchom polecenie `dotnet --version`, aby sprawdzić, czy zainstalowano prawidłową wersję. 
 - Program [Visual Studio Code](https://code.visualstudio.com/) umożliwiający eksplorowanie przykładowego kodu. 
 
-> [!TIP]
+>[!TIP]
 > Jeśli zainicjowano nowe wystąpienie, użyj unikatowej nazwy wystąpienia bliźniaczych reprezentacji Digital.
 
 ## <a name="define-conditions-to-monitor"></a>Definiowanie warunków, które mają być monitorowane
@@ -74,7 +74,7 @@ Zwróć również uwagę na sekcję o nazwie **roleassignments**. Służy ona do
 
    Zmodyfikuj plik JavaScript, aby monitorować temperaturę oraz inne warunki. Dodaj następujące wiersze kodu, aby wyszukiwać warunki, gdy w pomieszczeniu nie jest wykrywany ruch, poziom dwutlenku węgla jest niższy niż 1,000 ppm, a temperatura jest niższa niż 78 stopni Fehrenheita (25,5 stopnia Celsjusza).
 
-   > [!NOTE]
+   >[!NOTE]
    > W tej sekcji zostanie zmodyfikowany plik *src\actions\userDefinedFunctions\availability.js*, aby umożliwić Ci szczegółowe poznanie jednego ze sposobów pisania funkcji zdefiniowanej przez użytkownika. Możesz jednak bezpośrednio użyć pliku [src\actions\userDefinedFunctions\availabilityForTutorial.js](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/userDefinedFunctions/availabilityForTutorial.js) w swojej konfiguracji. Ten plik zawiera wszystkie zmiany, które są wymagane do celów tego samouczka. Jeśli w zamian użyjesz tego pliku, pamiętaj, aby użyć prawidłowej nazwy pliku dla klucza **script** w pliku [src\actions\provisionSample.yaml](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/provisionSample.yaml).
 
     a. W górnej części pliku dodaj następujące wiersze dla temperatury pod komentarzem `// Add your sensor type here`:
@@ -178,7 +178,7 @@ Zwróć również uwagę na sekcję o nazwie **roleassignments**. Służy ona do
     dotnet run ProvisionSample
     ```
 
-   > [!IMPORTANT]
+   >[!IMPORTANT]
    > Aby uniemożliwić nieautoryzowany dostęp do interfejsu API zarządzania usługą Digital Twins, aplikacja **occupancy-quickstart** wymaga zalogowania się przy użyciu poświadczeń konta platformy Azure. Zapisuje ona Twoje poświadczenia na pewien okres czasu, aby logowanie nie było konieczne przy każdym uruchomieniu. Przy pierwszym uruchomieniu tego programu, a także po wygaśnięciu zapisanych poświadczeń, aplikacja przekieruje Cię do strony logowania i poda kod specyficzny dla sesji, który należy wprowadzić na tej stronie. Postępuj zgodnie z monitami, aby zalogować się na koncie platformy Azure.
 
 1. Po uwierzytelnieniu konta aplikacja rozpocznie Tworzenie przykładowego wykresu przestrzennego zgodnie z konfiguracją w *provisionSample. YAML*. Poczekaj na ukończenie aprowizowania. Może to potrwać kilka minut. Następnie przyjrzyj się komunikatom w oknie polecenia i spójrz na utworzony wykres przestrzenny. Zauważ, że aplikacja tworzy centrum IoT w węźle głównym lub w lokalizacji `Venue`.
@@ -187,7 +187,7 @@ Zwróć również uwagę na sekcję o nazwie **roleassignments**. Służy ona do
 
     [przykład udostępniania ![](./media/tutorial-facilities-udf/run-provision-sample.png)](./media/tutorial-facilities-udf/run-provision-sample.png#lightbox)
 
-> [!TIP]
+>[!TIP]
 > Jeśli podczas aprowizowania zostanie wyświetlony komunikat podobny do następującego „Operacja We/Wy została przerwana z powodu zakończenia wątku lub żądania aplikacji”, spróbuj ponownie uruchomić polecenie. Może się to zdarzyć, jeśli klient HTTP przekroczy limit czasu ze względu na problem z siecią.
 
 ## <a name="simulate-sensor-data"></a>Symulowanie danych z czujników
@@ -229,12 +229,12 @@ W tej sekcji będziesz korzystać z projektu o nazwie *device-connectivity* w ra
     dotnet run
     ```
 
-   > [!NOTE]
+   >[!NOTE]
    > Ponieważ przykładowa symulacja nie komunikuje się bezpośrednio z wystąpieniem usługi Digital Twins, uwierzytelnianie nie jest konieczne.
 
 ## <a name="get-results-of-the-user-defined-function"></a>Pobieranie wyników funkcji zdefiniowanej przez użytkownika
 
-Funkcja zdefiniowana przez użytkownika jest uruchamiana za każdym razem, gdy wystąpienie odbiera dane z urządzeń i czujników. W tej sekcji jest wykonywane zapytanie względem wystąpienia usługi Azure Digital Twins w celu uzyskania wyników funkcji zdefiniowanej przez użytkownika. Zobaczysz niemal w czasie rzeczywistym, czy pomieszczenie jest dostępne, powietrze czyste, a temperatura odpowiednia. 
+Funkcja zdefiniowana przez użytkownika jest uruchamiana za każdym razem, gdy wystąpienie odbiera dane z urządzeń i czujników. W tej sekcji jest wykonywane zapytanie względem wystąpienia usługi Azure Digital Twins w celu uzyskania wyników funkcji zdefiniowanej przez użytkownika. Użytkownik zostanie powiadomiony o niemal czasie rzeczywistym, gdy będzie dostępny pokój, że powietrze jest świeże i temperatura jest odpowiednia. 
 
 1. Otwórz okno polecenia, którego użyto do aprowizacji przykładu, lub nowe okno polecenia i ponownie przejdź do folderu **occupancy-quickstart\src** w przykładzie.
 
@@ -246,7 +246,7 @@ Funkcja zdefiniowana przez użytkownika jest uruchamiana za każdym razem, gdy w
 
 W oknie danych wyjściowych będzie widoczne wykonywanie funkcji zdefiniowanej przez użytkownika oraz przechwytywanie zdarzeń z symulacji urządzenia. 
 
-   [Dane wyjściowe ![dla UDF](./media/tutorial-facilities-udf/udf-running.png)](./media/tutorial-facilities-udf/udf-running.png#lightbox)
+   [Dane wyjściowe ![dla UDF](./media/tutorial-facilities-udf/adt-tutorial-udf-running.png)](./media/tutorial-facilities-udf/adt-tutorial-udf-running.png#lightbox)
 
 W przypadku spełnienia monitorowanego warunku funkcja zdefiniowana przez użytkownika ustawi wartość dla przestrzeni, zwracając odpowiedni komunikat, jak pokazano [wyżej](#create-a-user-defined-function). Funkcja `GetAvailableAndFreshSpaces` wyświetla komunikat w konsoli.
 
@@ -256,7 +256,7 @@ Jeśli nie chcesz kontynuować pracy z usługą Azure Digital Twins, możesz usu
 
 1. W menu po lewej stronie w witrynie [Azure Portal](https://portal.azure.com) wybierz przycisk **Wszystkie zasoby**, wybierz grupę zasobów usługi Digital Twins i wybierz polecenie **Usuń**.
 
-    > [!TIP]
+    >[!TIP]
     > Jeśli podczas usuwania wystąpienia usługi Digital Twins wystąpił problem, została wdrożona aktualizacja usługi zawierająca poprawkę. Ponów próbę usunięcia wystąpienia.
 
 2. Jeśli będzie to konieczne, możesz usunąć przykładowe aplikacje na komputerze służbowym.

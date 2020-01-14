@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 11/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: f29bd4ab679d734c3acce967a5d60784b9884ba6
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 5000d79db0d9036fe8904322764e4c480111d6cc
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561392"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863397"
 ---
 # <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights"></a>Monitorowanie i ograniczanie ograniczania przepustowości w celu zmniejszenia opóźnień w Azure Time Series Insights
 
@@ -74,11 +74,11 @@ Alerty mogą ułatwić diagnozowanie i łagodzenie problemów z opóźnieniami s
 
 ## <a name="throttling-and-ingress-management"></a>Ograniczanie i zarządzanie ruchem przychodzącym
 
-* W przypadku ograniczania przepustowości zostanie wyświetlona wartość *opóźnienia czasu komunikatu przychodzącego*, informująca o tym, ile sekund w środowisku usługi Time Series Insights jest rzeczywisty czas, który komunikat trafi do źródła zdarzenia (z wyłączeniem czasu indeksowania modułu APPX). 30-60 sekund).  
+* W przypadku ograniczenia przepustowości zostanie zarejestrowana wartość *opóźnienia czasu komunikatu przychodzącego* informującego o tym, ile sekund w środowisku usługi Time Series Insights jest rzeczywisty czas, jaki komunikat trafi do źródła zdarzenia (z wyłączeniem czasu indeksowania w ramach APPX). 30-60 sekund).  
 
   *Opóźnienie liczby przychodzących komunikatów* przychodzących powinno również mieć wartość, co pozwala określić liczbę komunikatów znajdujących się za Ciebie.  Najprostszym sposobem na przezwyciężenie jest zwiększenie pojemności środowiska do rozmiaru, który umożliwi pokonanie różnic.  
 
-  Jeśli na przykład widzisz, że środowisko S1 wykazuje opóźnienie komunikatów 5 000 000, możesz zwiększyć rozmiar środowiska do sześciu jednostek przez około dobę, aby przechwycić.  Możesz jeszcze bardziej zwiększyć szybkość przechwytywania. Okres przechwytywania jest typowym wystąpieniem podczas wstępnej aprowizacji środowiska, szczególnie w przypadku łączenia go ze źródłem zdarzeń, które zawiera już zdarzenia w nim lub w przypadku zbiorczego przekazywania wielu danych historycznych.
+  Na przykład jeśli środowisko S1 wykazuje opóźnienie komunikatów 5 000 000, można zwiększyć rozmiar środowiska do sześciu jednostek przez około raz dziennie, aby przechwycić.  Możesz jeszcze bardziej zwiększyć szybkość przechwytywania. Okres przechwytywania jest typowym wystąpieniem podczas wstępnej aprowizacji środowiska, szczególnie w przypadku łączenia go ze źródłem zdarzeń, które zawiera już zdarzenia w nim lub w przypadku zbiorczego przekazywania wielu danych historycznych.
 
 * Inną techniką jest ustawienie alertu dotyczącego **zdarzeń związanych** z transferem danych przychodzących > = próg nieco niższy od całkowitej pojemności środowiska przez okres 2 godzin.  Ten alert może pomóc w zrozumieniu, czy ma on ciągle pojemność, co oznacza wysokie prawdopodobieństwo opóźnienia. 
 
@@ -90,7 +90,7 @@ Alerty mogą ułatwić diagnozowanie i łagodzenie problemów z opóźnieniami s
 
 Aby zmniejszyć ograniczenia przepustowości lub opóźnienia, najlepszym sposobem na jego poprawienie jest zwiększenie wydajności środowiska.
 
-Można uniknąć opóźnień i ograniczania przepustowości przez prawidłowe skonfigurowanie środowiska pod kątem ilości danych, które mają być analizowane. Aby uzyskać więcej informacji o sposobach dodawania pojemności do środowiska, zobacz [skalowanie środowiska](time-series-insights-how-to-scale-your-environment.md).
+Można uniknąć opóźnień i ograniczania przepustowości przez prawidłowe skonfigurowanie środowiska pod kątem ilości danych, które mają być analizowane. Aby uzyskać więcej informacji na temat dodawania pojemności do środowiska, Przeczytaj [skalę środowiska](time-series-insights-how-to-scale-your-environment.md).
 
 ## <a name="next-steps"></a>Następne kroki
 

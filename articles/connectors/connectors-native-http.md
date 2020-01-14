@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 07/05/2019
 tags: connectors
-ms.openlocfilehash: 971d7432c841c4ef984c7bbd7899fce733512303
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 232b17852e89ebdfa6f81b5aadcdbcd9c83d4055
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74787186"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75888145"
 ---
 # <a name="send-outgoing-calls-to-http-or-https-endpoints-by-using-azure-logic-apps"></a>Wysyłaj wywołania wychodzące do punktów końcowych HTTP lub HTTPS za pomocą Azure Logic Apps
 
@@ -48,7 +48,7 @@ Ten wbudowany wyzwalacz wykonuje wywołanie HTTP do określonego adresu URL dla 
 
    Ten przykład zmienia nazwę wyzwalacza na "wyzwalacz HTTP", tak aby krok miał bardziej opisową nazwę. Ponadto przykład później dodaje akcję HTTP, a obie nazwy muszą być unikatowe.
 
-1. Podaj wartości [parametrów wyzwalacza http](../logic-apps/logic-apps-workflow-actions-triggers.md##http-trigger) , które mają zostać uwzględnione w wywołaniu docelowego punktu końcowego. Skonfiguruj Cykl dla tego, jak często wyzwalacz ma sprawdzać docelowy punkt końcowy.
+1. Podaj wartości [parametrów wyzwalacza http](../logic-apps/logic-apps-workflow-actions-triggers.md#http-trigger) , które mają zostać uwzględnione w wywołaniu docelowego punktu końcowego. Skonfiguruj Cykl dla tego, jak często wyzwalacz ma sprawdzać docelowy punkt końcowy.
 
    W przypadku wybrania typu uwierzytelniania innego niż **none**ustawienia uwierzytelniania różnią się w zależności od wybranej opcji. Aby uzyskać więcej informacji, zobacz [Dodawanie uwierzytelniania do połączeń wychodzących](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound).
 
@@ -78,7 +78,7 @@ Ta wbudowana akcja powoduje wywołanie HTTP do określonego adresu URL dla punkt
 
    Ten przykład zmienia nazwę akcji na "Akcja HTTP", aby krok miał bardziej opisową nazwę.
 
-1. Podaj wartości [parametrów akcji http](../logic-apps/logic-apps-workflow-actions-triggers.md##http-action) , które mają zostać uwzględnione w wywołaniu docelowego punktu końcowego.
+1. Podaj wartości [parametrów akcji http](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action) , które mają zostać uwzględnione w wywołaniu docelowego punktu końcowego.
 
    W przypadku wybrania typu uwierzytelniania innego niż **none**ustawienia uwierzytelniania różnią się w zależności od wybranej opcji. Aby uzyskać więcej informacji, zobacz [Dodawanie uwierzytelniania do połączeń wychodzących](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound).
 
@@ -138,8 +138,8 @@ Poniżej znajduje się ten sam przykład pokazujący definicję JSON akcji HTTP 
 
 Aby uzyskać więcej informacji na temat wyzwalaczy i parametrów akcji, zobacz następujące sekcje:
 
-* [Parametry wyzwalacza HTTP](../logic-apps/logic-apps-workflow-actions-triggers.md##http-trigger)
-* [Parametry akcji HTTP](../logic-apps/logic-apps-workflow-actions-triggers.md##http-action)
+* [Parametry wyzwalacza HTTP](../logic-apps/logic-apps-workflow-actions-triggers.md#http-trigger)
+* [Parametry akcji HTTP](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action)
 
 ### <a name="output-details"></a>Szczegóły danych wyjściowych
 
@@ -147,16 +147,16 @@ Poniżej znajduje się więcej informacji na temat danych wyjściowych wyzwalacz
 
 | Nazwa właściwości | Typ | Opis |
 |---------------|------|-------------|
-| nagłówka | obiekt | Nagłówki żądania |
-| jednostce | obiekt | Obiekt JSON | Obiekt z zawartością treści z żądania |
+| nagłówki | obiekt | Nagłówki żądania |
+| treść | obiekt | JSON — Obiekt | Obiekt z zawartością treści z żądania |
 | kod stanu | int | Kod stanu z żądania |
 |||
 
 | Kod stanu | Opis |
 |-------------|-------------|
 | 200 | OK |
-| 202 | Przyjmować |
-| 400 | Złe żądanie |
+| 202 | Zaakceptowano |
+| 400 | Nieprawidłowe żądanie |
 | 401 | Brak autoryzacji |
 | 403 | Forbidden |
 | 404 | Nie znaleziono |

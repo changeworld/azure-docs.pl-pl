@@ -10,12 +10,12 @@ keywords: Azure Automation, DSC, PowerShell, Konfiguracja żądanego stanu, zarz
 ms.date: 11/04/2019
 ms.custom: mvc
 ms.topic: quickstart
-ms.openlocfilehash: e7a527fc290433390436eac3d4c291f2a32bf2b3
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 814be233c80213f84fb81a62caf152536ef4811f
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951449"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834074"
 ---
 # <a name="quickstart-connect-machines-to-azure-using-azure-arc-for-servers---powershell"></a>Szybki Start: łączenie maszyn z platformą Azure przy użyciu usługi Azure ARC dla serwerów — PowerShell
 
@@ -35,6 +35,9 @@ Nazwa główna usługi jest specjalną ograniczoną tożsamością zarządzania,
 ### <a name="steps-to-create-the-service-principal"></a>Procedura tworzenia nazwy głównej usługi
 
 W tym przykładzie będziemy używać [Azure PowerShell](/powershell/azure/install-az-ps) do tworzenia głównej nazwy usługi (SPN). Alternatywnie możesz wykonać kroki opisane w sekcji [Tworzenie nazwy głównej usługi przy użyciu Azure Portal](../../active-directory/develop/howto-create-service-principal-portal.md) dla tego zadania.
+
+> [!NOTE]
+> Podczas tworzenia nazwy głównej usługi należy być właścicielem lub administratorem dostępu użytkowników w subskrypcji, która ma być używana do dołączania. Jeśli nie masz wystarczających uprawnień do tworzenia przypisań ról, można utworzyć nazwę główną usługi, ale nie będzie ona mogła dołączyć maszyn.
 
 Rola `Azure Connected Machine Onboarding` zawiera tylko uprawnienia wymagane do dołączania. Można zdefiniować uprawnienia nazwy SPN, aby umożliwić jej zakresowi pokrycie grupy zasobów lub subskrypcji.
 
@@ -142,7 +145,7 @@ W systemie Windows otwórz program PowerShell jako administrator w węźle docel
   --service-principal-secret "{your-spn-password}" `
   --resource-group "{your-resource-group-name}" `
   --tenant-id "{your-tenant-id}" `
-  --location "{location-of-your-resource-group}" `
+  --location "{desired-location}" `
   --subscription-id "{your-subscription-id}"
 ```
 
@@ -164,7 +167,7 @@ Parametry:
 * `tenant-id`: identyfikator GUID dzierżawy. Można go znaleźć w Azure Portal, wybierając pozycję **Azure Active directory** -> **Właściwości** -> **Directory ID**.
 * `subscription-id`: identyfikator GUID subskrypcji na platformie Azure, w której ma zostać nawiązane połączenie z maszyną.
 * `resource-group`: Grupa zasobów, w której ma nawiązać połączenie z maszyną.
-* `location`: zobacz [regiony i lokalizacje platformy Azure](https://azure.microsoft.com/global-infrastructure/regions/). Ta lokalizacja może być taka sama lub inna, jak lokalizacja grupy zasobów. W publicznej wersji zapoznawczej usługa jest obsługiwana w **WestUS2** i **Europa Zachodnia**.
+* `location`: zobacz [regiony i lokalizacje platformy Azure](https://azure.microsoft.com/global-infrastructure/regions/). Ta lokalizacja może być taka sama lub inna, jak lokalizacja grupy zasobów. W publicznej wersji zapoznawczej usługa jest obsługiwana w **WestUS2**, **Azja Południowo-Wschodnia**i **Europa Zachodnia**.
 * `resource-name`: (*Opcjonalnie*) używany do reprezentacji zasobów platformy Azure na komputerze lokalnym. Jeśli ta wartość nie zostanie określona, zostanie użyta nazwa hosta maszyny.
 
 Więcej informacji na temat narzędzia "azcmagent" można znaleźć w temacie [Azcmagent Reference](azcmagent-reference.md).

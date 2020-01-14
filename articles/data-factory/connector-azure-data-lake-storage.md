@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 12/13/2019
-ms.openlocfilehash: e1729d9e0c793b944b1e02d3108388f9d2533e5d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: HT
+ms.date: 01/08/2020
+ms.openlocfilehash: c32fbef3db0c0df2af1e07c062eb178e5516d736
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75441080"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75893207"
 ---
 # <a name="copy-and-transform-data-in-azure-data-lake-storage-gen2-using-azure-data-factory"></a>Kopiowanie i Przekształcanie danych w Azure Data Lake Storage Gen2 przy użyciu Azure Data Factory
 
@@ -119,7 +119,7 @@ Aby użyć uwierzytelniania jednostki usługi, wykonaj następujące kroki.
     - **Jako ujścia**: w Eksplorator usługi Storage Przyznaj co najmniej uprawnienie **Execute** dla wszystkich folderów nadrzędnych i systemu plików oraz uprawnienia do **zapisu** dla folderu ujścia. Alternatywnie, w kontroli dostępu (IAM), udziel co najmniej roli **współautor danych obiektów blob magazynu** .
 
 >[!NOTE]
->W przypadku używania Data Factory interfejsu użytkownika do tworzenia i nazwy głównej usługi nie jest ustawiona z rolą "czytelnik/współautor danych magazynu obiektów BLOB" w usłudze IAM, podczas testowania połączenia lub przeglądania/nawigowania w folderach wybierz opcję "Test connection do ścieżki pliku" lub "Przeglądaj z określonej ścieżki" i określ ścieżkę z uprawnieniem odczyt i wykonywanie, aby kontynuować. Na razie połączenie testowe z systemem plików nie powiedzie się, określ podkatalog do testowania lub pomijania tej operacji.
+>W przypadku używania Data Factory interfejsu użytkownika do tworzenia i nazwy głównej usługi nie jest ustawiona z rolą "czytelnik/współautor danych magazynu obiektów BLOB" w usłudze IAM, podczas testowania połączenia lub przeglądania/nawigowania w folderach wybierz opcję "Test connection do ścieżki pliku" lub "Przeglądaj z określonej ścieżki" i określ ścieżkę z uprawnieniem **Odczyt i wykonywanie** , aby kontynuować.
 
 Te właściwości są obsługiwane dla połączonej usługi:
 
@@ -170,7 +170,7 @@ Aby używać tożsamości zarządzanych do uwierzytelniania zasobów platformy A
     - **Jako ujścia**: w Eksplorator usługi Storage Przyznaj co najmniej uprawnienie **Execute** dla wszystkich folderów nadrzędnych i systemu plików oraz uprawnienia do **zapisu** dla folderu ujścia. Alternatywnie, w kontroli dostępu (IAM), udziel co najmniej roli **współautor danych obiektów blob magazynu** .
 
 >[!NOTE]
->Jeśli używasz interfejsu użytkownika Data Factory do tworzenia, a tożsamość zarządzana nie jest ustawiona z rolą "czytelnik danych BLOB/współautor" w usłudze IAM, podczas testowania połączenia lub przeglądania/nawigowania w folderach wybierz opcję "Test connection do ścieżki pliku" lub "Przeglądaj z określonej ścieżki" i określ ścieżkę z uprawnieniem odczyt i wykonywanie, aby kontynuować. Na razie połączenie testowe z systemem plików nie powiedzie się, określ podkatalog do testowania lub pomijania tej operacji.
+>Jeśli używasz interfejsu użytkownika Data Factory do tworzenia, a tożsamość zarządzana nie jest ustawiona z rolą "czytelnik danych BLOB/współautor" w usłudze IAM, podczas testowania połączenia lub przeglądania/nawigowania w folderach wybierz opcję "Test connection do ścieżki pliku" lub "Przeglądaj z określonej ścieżki" i określ ścieżkę z uprawnieniem **Odczyt i wykonywanie** , aby kontynuować.
 
 >[!IMPORTANT]
 >W przypadku korzystania z bazy danych Base, aby załadować dane z Data Lake Storage Gen2 do SQL Data Warehouse, podczas korzystania z uwierzytelniania tożsamości zarządzanej dla Data Lake Storage Gen2, należy wykonać kroki 1 i 2 w [niniejszych wskazówkach](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage) do 1) zarejestrować serwer SQL Database z Azure Active Directory (Azure AD) i 2) przypisać rolę współautor danych obiektów blob magazynu do serwera SQL Database; pozostałe są obsługiwane przez Data Factory. Jeśli Data Lake Storage Gen2 jest skonfigurowany za pomocą punktu końcowego Virtual Network platformy Azure, aby można było załadować z niego dane, należy użyć uwierzytelniania tożsamości zarządzanej zgodnie z wymaganiami firmy Base.
@@ -255,7 +255,7 @@ Następujące właściwości są obsługiwane dla Data Lake Storage Gen2 w obsza
 
 | Właściwość                 | Opis                                                  | Wymagane                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
-| type                     | Właściwość Type w obszarze `storeSettings` musi być ustawiona na wartość **AzureBlobFSReadSetting**. | Tak                                           |
+| type                     | Właściwość Type w obszarze `storeSettings` musi być ustawiona na wartość **AzureBlobFSReadSettings**. | Tak                                           |
 | recursive                | Wskazuje, czy dane są odczytywane cyklicznie z podfolderów lub tylko z określonego folderu. Gdy wartość cykliczna jest ustawiona na wartość true, a ujścia jest magazynem opartym na plikach, pusty folder lub podfolder nie jest kopiowany ani tworzony w ujścia. Dozwolone wartości to **true** (ustawienie domyślne) i **false**. | Nie                                            |
 | wildcardFolderPath       | Ścieżka folderu z symbolami wieloznacznymi w danym systemie plików skonfigurowanym w zestawie danych do filtrowania folderów źródłowych. <br>Dozwolone symbole wieloznaczne są `*` (dopasowuje zero lub więcej znaków) i `?` (dopasowuje zero lub pojedynczy znak). Użyj `^`, aby wyjść, jeśli rzeczywista nazwa folderu ma symbol wieloznaczny lub ten znak ucieczki wewnątrz. <br>Zobacz więcej przykładów w [przykładach folderów i filtrów plików](#folder-and-file-filter-examples). | Nie                                            |
 | wildcardFileName         | Nazwa pliku z symbolami wieloznacznymi w danym systemie plików + folderPath/wildcardFolderPath do filtrowania plików źródłowych. <br>Dozwolone symbole wieloznaczne są `*` (dopasowuje zero lub więcej znaków) i `?` (dopasowuje zero lub pojedynczy znak). Użyj `^`, aby wyjść, jeśli rzeczywista nazwa folderu ma symbol wieloznaczny lub ten znak ucieczki wewnątrz. Zobacz więcej przykładów w [przykładach folderów i filtrów plików](#folder-and-file-filter-examples). | Tak, jeśli nie określono `fileName` w zestawie danych |
@@ -286,11 +286,11 @@ Następujące właściwości są obsługiwane dla Data Lake Storage Gen2 w obsza
             "source": {
                 "type": "DelimitedTextSource",
                 "formatSettings":{
-                    "type": "DelimitedTextReadSetting",
+                    "type": "DelimitedTextReadSettings",
                     "skipLineCount": 10
                 },
                 "storeSettings":{
-                    "type": "AzureBlobFSReadSetting",
+                    "type": "AzureBlobFSReadSettings",
                     "recursive": true,
                     "wildcardFolderPath": "myfolder*A",
                     "wildcardFileName": "*.csv"
@@ -312,7 +312,7 @@ Następujące właściwości są obsługiwane dla Data Lake Storage Gen2 w obsza
 
 | Właściwość                 | Opis                                                  | Wymagane |
 | ------------------------ | ------------------------------------------------------------ | -------- |
-| type                     | Właściwość Type w obszarze `storeSettings` musi być ustawiona na wartość **AzureBlobFSWriteSetting**. | Tak      |
+| type                     | Właściwość Type w obszarze `storeSettings` musi być ustawiona na wartość **AzureBlobFSWriteSettings**. | Tak      |
 | copyBehavior             | Definiuje zachowania dotyczącego kopiowania, gdy źródłem jest pliki z magazynu danych oparte na plikach.<br/><br/>Dozwolone wartości to:<br/><b>-PreserveHierarchy (ustawienie domyślne)</b>: zachowuje hierarchii plików w folderze docelowym. Ścieżka względna pliku źródłowego do folderu źródłowego jest taka sama jak ścieżka względna pliku docelowego do folderu docelowego.<br/><b>-FlattenHierarchy</b>: wszystkie pliki z folderu źródłowego znajdują się w pierwszy poziom folderu docelowego. Pliki docelowe mają nazwy wygenerowany automatycznie. <br/><b>-MergeFiles</b>: scala wszystkie pliki z folderu źródłowego do jednego pliku. Jeśli nazwa pliku jest określony, nazwa pliku scalonego jest określona nazwa. W przeciwnym razie jest automatycznie wygenerowana nazwa pliku. | Nie       |
 | maxConcurrentConnections | Liczba połączeń do równoczesnego połączenia z magazynem danych. Określ tylko wtedy, gdy chcesz ograniczyć współbieżne połączenie z magazynem danych. | Nie       |
 
@@ -342,7 +342,7 @@ Następujące właściwości są obsługiwane dla Data Lake Storage Gen2 w obsza
             "sink": {
                 "type": "ParquetSink",
                 "storeSettings":{
-                    "type": "AzureBlobFSWriteSetting",
+                    "type": "AzureBlobFSWriteSettings",
                     "copyBehavior": "PreserveHierarchy"
                 }
             }
@@ -609,4 +609,4 @@ Aby uzyskać szczegółowe informacje na temat właściwości, zaznacz pozycję 
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby uzyskać listę magazynów danych obsługiwanych jako źródła i ujścia działania kopiowania w usłudze Data Factory, zobacz [obsługiwane magazyny danych](copy-activity-overview.md##supported-data-stores-and-formats).
+Aby uzyskać listę magazynów danych obsługiwanych jako źródła i ujścia działania kopiowania w usłudze Data Factory, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).

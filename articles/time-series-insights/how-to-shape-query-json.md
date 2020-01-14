@@ -9,12 +9,12 @@ ms.service: time-series-insights
 ms.topic: article
 ms.date: 12/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3d611806d31719899d249b29ed4b0ea499280252
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 3b8c25c09b87dc8e9874870881173944fea1ee73
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894910"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75864353"
 ---
 # <a name="shape-json-to-maximize-query-performance"></a>Shape JSON w celu zmaksymalizowania wydajności zapytań 
 
@@ -26,7 +26,7 @@ Ten artykuł zawiera wskazówki dotyczące sposobu tworzenia kształtu JSON w ce
 
 > [!VIDEO https://www.youtube.com/embed/b2BD5hwbg5I]
 
-## <a name="best-practices"></a>Najlepsze praktyki
+## <a name="best-practices"></a>Najlepsze rozwiązania
 
 Pomyśl o sposobie wysyłania zdarzeń do Time Series Insights. Mianowicie:
 
@@ -50,7 +50,7 @@ Poniższe wskazówki ułatwiają zapewnienie najlepszej możliwej wydajności za
 
 ## <a name="example-overview"></a>Przykład — Omówienie
 
-W poniższych dwóch przykładach pokazano, jak wysyłać zdarzenia, aby wyróżnić poprzednie zalecenia. Po każdym przykładzie można zobaczyć, jak zostały zastosowane zalecenia.
+W poniższych dwóch przykładach pokazano, jak wysyłać zdarzenia, aby wyróżnić poprzednie zalecenia. Poniższy przykład umożliwia przejrzenie sposobu zastosowania zaleceń.
 
 Przykłady są oparte na scenariuszu, w którym wiele urządzeń wysyła pomiary lub sygnały. Pomiary lub sygnały mogą być natężeniem przepływu, ciśnieniem oleju, temperatury i wilgotności. W pierwszym przykładzie istnieje kilka pomiarów dla wszystkich urządzeń. Drugi przykład zawiera wiele urządzeń, a każde urządzenie wysyła wiele unikatowych pomiarów.
 
@@ -95,14 +95,14 @@ Należy wziąć pod uwagę następujący ładunek JSON wysłany do środowiska T
 
 * Tabela danych referencyjnych, która ma klucz **deviceId**właściwości klucza:
 
-   | deviceId | messageId | deviceLocation |
+   | deviceId | messageId | DeviceLocation |
    | --- | --- | --- |
    | FXXX | LINE\_DATA | Unia Europejska |
    | FYYY | LINE\_DATA | Stany Zjednoczone |
 
 * Time Series Insights tabeli zdarzeń po spłaszczeniu:
 
-   | deviceId | messageId | deviceLocation | sygnatura czasowa | Seria. Przepływ współczynnika ft3/s | Seria. Aparat wykorzystanie ropa naftowa psi |
+   | deviceId | messageId | DeviceLocation | sygnatura czasowa | Seria. Przepływ współczynnika ft3/s | Seria. Aparat wykorzystanie ropa naftowa psi |
    | --- | --- | --- | --- | --- | --- |
    | FXXX | LINE\_DATA | Unia Europejska | 2018-01-17T01:17:00Z | 1.0172575712203979 | 34.7 |
    | FXXX | LINE\_DATA | Unia Europejska | 2018-01-17T01:17:00Z | 2.445906400680542 | 49.2 |
@@ -165,7 +165,7 @@ Przykładowy ładunek JSON:
 
 * Tabela danych referencyjnych, która zawiera właściwości klucza **deviceId** i **Series. tagId**:
 
-   | deviceId | series.tagId | messageId | deviceLocation | type | jednostka |
+   | deviceId | series.tagId | messageId | DeviceLocation | type | jednostka |
    | --- | --- | --- | --- | --- | --- |
    | FXXX | pumpRate | LINE\_DATA | Unia Europejska | Szybkość przepływu | ft3/s |
    | FXXX | oilPressure | LINE\_DATA | Unia Europejska | Ciśnienie oleju silnikowego | psi |
@@ -174,7 +174,7 @@ Przykładowy ładunek JSON:
 
 * Time Series Insights tabeli zdarzeń po spłaszczeniu:
 
-   | deviceId | series.tagId | messageId | deviceLocation | type | jednostka | sygnatura czasowa | Serie. wartość |
+   | deviceId | series.tagId | messageId | DeviceLocation | type | jednostka | sygnatura czasowa | Serie. wartość |
    | --- | --- | --- | --- | --- | --- | --- | --- |
    | FXXX | pumpRate | LINE\_DATA | Unia Europejska | Szybkość przepływu | ft3/s | 2018-01-17T01:17:00Z | 1.0172575712203979 | 
    | FXXX | oilPressure | LINE\_DATA | Unia Europejska | Ciśnienie oleju silnikowego | psi | 2018-01-17T01:17:00Z | 34.7 |

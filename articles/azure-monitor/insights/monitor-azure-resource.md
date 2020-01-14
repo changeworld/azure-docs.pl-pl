@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2019
-ms.openlocfilehash: 5a46de9fa17790cb93ce7d5a2af8008d34d4dc35
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: b092b037cc10671e89f18af287b52f8ad1c0060e
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74888788"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75747311"
 ---
 # <a name="monitoring-azure-resources-with-azure-monitor"></a>Monitorowanie zasobów platformy Azure za pomocą Azure Monitor
 Jeśli masz krytyczne aplikacje i procesy biznesowe polegające na zasobach platformy Azure, chcesz monitorować te zasoby pod kątem ich dostępności, wydajności i operacji. W tym artykule opisano dane monitorowania wygenerowane przez zasoby platformy Azure oraz sposób używania funkcji Azure Monitor do analizowania i generowania alertów dotyczących tych danych.
@@ -57,8 +57,8 @@ Zasoby na platformie Azure generują [dzienniki](../platform/data-platform-logs.
 
 
 - [Metryki platformy](../platform/data-platform-metrics.md) — wartości liczbowe, które są automatycznie zbierane w regularnych odstępach czasu i opisują niektóre aspekty zasobu w określonym czasie. 
-- [Dzienniki zasobów](../platform/resource-logs-overview.md) — umożliwiają uzyskanie wglądu w operacje wykonywane w ramach zasobu platformy Azure (płaszczyzny danych), na przykład w celu uzyskania wpisu tajnego z Key Vault lub żądania do bazy danych. Zawartość i struktura dzienników zasobów różnią się w zależności od usługi i typu zasobów platformy Azure.
-- [Dziennik aktywności](../platform/activity-logs-overview.md) — zawiera szczegółowe informacje o operacjach dotyczących poszczególnych zasobów platformy Azure w ramach subskrypcji z zewnątrz (płaszczyzny zarządzania), na przykład tworzenia nowego zasobu lub uruchamiania maszyny wirtualnej. Są to informacje o tym, kto i kiedy w przypadku operacji zapisu (PUT, POST, DELETE) wykonanych na zasobach w ramach subskrypcji.
+- [Dzienniki zasobów](../platform/platform-logs-overview.md) — umożliwiają uzyskanie wglądu w operacje wykonywane w ramach zasobu platformy Azure (płaszczyzny danych), na przykład w celu uzyskania wpisu tajnego z Key Vault lub żądania do bazy danych. Zawartość i struktura dzienników zasobów różnią się w zależności od usługi i typu zasobów platformy Azure.
+- [Dziennik aktywności](../platform/platform-logs-overview.md) — zawiera szczegółowe informacje o operacjach dotyczących poszczególnych zasobów platformy Azure w ramach subskrypcji z zewnątrz (płaszczyzny zarządzania), na przykład tworzenia nowego zasobu lub uruchamiania maszyny wirtualnej. Są to informacje o tym, kto i kiedy w przypadku operacji zapisu (PUT, POST, DELETE) wykonanych na zasobach w ramach subskrypcji.
 
 
 ## <a name="configuration-requirements"></a>Wymagania dotyczące konfiguracji
@@ -67,8 +67,8 @@ Zasoby na platformie Azure generują [dzienniki](../platform/data-platform-logs.
 Niektóre dane monitorowania są zbierane automatycznie, ale może być konieczne wykonanie pewnej konfiguracji w zależności od wymagań. Zobacz poniższe informacje, aby uzyskać szczegółowe informacje dotyczące poszczególnych typów danych monitorowania.
 
 - [Metryki platformy](../platform/data-platform-metrics.md) — metryki platformy są zbierane automatycznie do [metryk Azure monitor](../platform/data-platform-metrics.md) , bez konieczności konfigurowania. Utwórz ustawienie diagnostyczne, aby wysyłać wpisy do dzienników Azure Monitor lub do ich przesyłania poza platformę Azure.
-- [Dzienniki zasobów](../platform/resource-logs-overview.md) — dzienniki zasobów są automatycznie generowane przez zasoby platformy Azure, ale nie zbierane bez ustawień diagnostycznych.  Utwórz ustawienie diagnostyczne, aby wysyłać wpisy do dzienników Azure Monitor lub do ich przesyłania poza platformę Azure.
-- [Dziennik aktywności](../platform/activity-logs-overview.md) — dziennik aktywności jest zbierany automatycznie bez wymaganej konfiguracji i może być wyświetlany w Azure Portal. Utwórz ustawienie diagnostyczne, aby skopiować je do dzienników Azure Monitor lub do ich przesyłania poza platformę Azure.
+- [Dzienniki zasobów](../platform/platform-logs-overview.md) — dzienniki zasobów są automatycznie generowane przez zasoby platformy Azure, ale nie zbierane bez ustawień diagnostycznych.  Utwórz ustawienie diagnostyczne, aby wysyłać wpisy do dzienników Azure Monitor lub do ich przesyłania poza platformę Azure.
+- [Dziennik aktywności](../platform/platform-logs-overview.md) — dziennik aktywności jest zbierany automatycznie bez wymaganej konfiguracji i może być wyświetlany w Azure Portal. Utwórz ustawienie diagnostyczne, aby skopiować je do dzienników Azure Monitor lub do ich przesyłania poza platformę Azure.
 
 ### <a name="log-analytics-workspace"></a>Obszar roboczy usługi Log Analytics
 Zbieranie danych do dzienników Azure Monitor wymaga Log Analytics obszaru roboczego. Możesz szybko rozpocząć monitorowanie usługi, tworząc nowy obszar roboczy, ale może być dostępna wartość przy użyciu obszaru roboczego, który zbiera dane z innych usług. Zobacz [Tworzenie obszaru roboczego log Analytics w Azure Portal,](../learn/quick-create-workspace.md) Aby uzyskać szczegółowe informacje na temat tworzenia obszaru roboczego i [projektowania wdrożenia dzienników Azure monitor](../platform/design-logs-deployment.md) , aby pomóc w ustaleniu najlepszego projektu obszaru roboczego dla wymagań. W przypadku korzystania z istniejącego obszaru roboczego w organizacji wymagane są odpowiednie uprawnienia zgodnie z opisem w temacie [Zarządzanie dostępem do danych dziennika i obszarów roboczych w Azure monitor](../platform/manage-access.md). 
@@ -101,7 +101,7 @@ Niektóre usługi udostępniają narzędzia wykraczające poza standardowe funkc
 
 Jeśli usługa ma Azure Monitor wgląd, możesz uzyskać do niej dostęp z poziomu **monitorowania** w menu każdego zasobu. Uzyskaj dostęp do wszystkich szczegółowych informacji i rozwiązań z menu **Azure monitor** .
 
-![Szczegółowe informacje](media/monitor-azure-resource/insights.png)
+![Analizy](media/monitor-azure-resource/insights.png)
 
 ### <a name="metrics"></a>Metryki
 Analizuj metryki w Azure Portal przy użyciu [Eksploratora metryk](../platform/metrics-getting-started.md) , który jest dostępny z poziomu elementu menu **metryk** dla większości usług. To narzędzie umożliwia korzystanie z poszczególnych metryk lub łączenie wielu w celu identyfikowania korelacji i trendów. 
@@ -127,7 +127,7 @@ Dzienniki Azure Monitor konsolidują dzienniki i metryki z wielu usług i innych
 
 - Zobacz Rozpoczynanie [pracy z dziennikami w Azure monitor](../log-query/get-started-queries.md) , aby zapoznać się z samouczkiem dotyczącym korzystania z języka zapytań używanego do zapisywania zapytań dzienników.
 - Zobacz [zbieranie dzienników zasobów platformy Azure w obszarze roboczym log Analytics w Azure monitor](../platform/resource-logs-collect-workspace.md) , aby uzyskać informacje na temat sposobu zbierania dzienników zasobów w dziennikach Azure monitor i szczegółowe informacje dotyczące sposobu uzyskiwania dostępu do nich w zapytaniu.
-- Zobacz [tryb kolekcji](../platform/resource-logs-collect-workspace.md#collection-mode) , aby dowiedzieć się, jak dane dzienników zasobów są uporządkowane w dziennikach Azure monitor.
+- Zobacz [tryb kolekcji](../platform/resource-logs-collect-workspace.md#resource-log-collection-mode) , aby dowiedzieć się, jak dane dzienników zasobów są uporządkowane w dziennikach Azure monitor.
 - Zapoznaj się z dokumentacją dla każdej usługi platformy Azure, aby uzyskać szczegółowe informacje na temat tabeli w Azure Monitor dziennikach.
 
 ![Dzienniki](media/monitor-azure-resource/logs.png)

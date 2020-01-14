@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 10/10/2019
 tags: connectors
-ms.openlocfilehash: 7ff411ae082acfe2d465ab9d3371982b0693c226
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 14daa37a414e814ed6de036bbb625933ce2532e0
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74787050"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75888128"
 ---
 # <a name="create-and-run-automated-event-based-workflows-by-using-http-webhooks-in-azure-logic-apps"></a>Tworzenie i uruchamianie zautomatyzowanych przepływów zadań opartych na zdarzeniach za pomocą elementów webhook protokołu HTTP w Azure Logic Apps
 
@@ -38,7 +38,7 @@ Na przykład akcja [**Wyślij wiadomość e-mail**](connectors-create-api-office
 > [!NOTE]
 > Logic Apps wymusza Transport Layer Security (TLS) 1,2 podczas otrzymywania wywołania z powrotem do wyzwalacza lub akcji elementu webhook protokołu HTTP. Jeśli widzisz błędy uzgadniania protokołu SSL, upewnij się, że korzystasz z protokołu TLS 1,2.
 
-Aby uzyskać więcej informacji, zobacz następujące tematy:
+Aby uzyskać więcej informacji zobacz następujące tematy:
 
 * [Parametry wyzwalacza elementu webhook protokołu HTTP](../logic-apps/logic-apps-workflow-actions-triggers.md#http-webhook-trigger)
 * [Elementy webhook i subskrypcje](../logic-apps/logic-apps-workflow-actions-triggers.md#webhooks-and-subscriptions)
@@ -100,7 +100,7 @@ Ta wbudowana akcja rejestruje adres URL wywołania zwrotnego z określoną usłu
 
    Ten przykład zmienia nazwę akcji na "akcja elementu webhook protokołu HTTP" tak, aby krok miał bardziej opisową nazwę.
 
-1. Podaj wartości parametrów akcji elementu webhook protokołu HTTP, które są podobne do [parametrów wyzwalacza elementu webhook protokołu HTTP](../logic-apps/logic-apps-workflow-actions-triggers.md##http-webhook-trigger) , które mają być używane dla wywołań subskrybowania i anulowania subskrypcji, na przykład:
+1. Podaj wartości parametrów akcji elementu webhook protokołu HTTP, które są podobne do [parametrów wyzwalacza elementu webhook protokołu HTTP](../logic-apps/logic-apps-workflow-actions-triggers.md#http-webhook-trigger) , które mają być używane dla wywołań subskrybowania i anulowania subskrypcji, na przykład:
 
    ![Wprowadź parametry akcji elementu webhook protokołu HTTP](./media/connectors-native-webhook/http-webhook-action-parameters.png)
 
@@ -114,7 +114,7 @@ Ta wbudowana akcja rejestruje adres URL wywołania zwrotnego z określoną usłu
 
 ## <a name="connector-reference"></a>Dokumentacja łączników
 
-Aby uzyskać więcej informacji na temat parametrów wyzwalacza i akcji, które są podobne do siebie, zobacz [Parametry elementu webhook protokołu HTTP](../logic-apps/logic-apps-workflow-actions-triggers.md##http-webhook-trigger).
+Aby uzyskać więcej informacji na temat parametrów wyzwalacza i akcji, które są podobne do siebie, zobacz [Parametry elementu webhook protokołu HTTP](../logic-apps/logic-apps-workflow-actions-triggers.md#http-webhook-trigger).
 
 ### <a name="output-details"></a>Szczegóły danych wyjściowych
 
@@ -122,16 +122,16 @@ Poniżej znajduje się więcej informacji na temat danych wyjściowych wyzwalacz
 
 | Nazwa właściwości | Typ | Opis |
 |---------------|------|-------------|
-| nagłówka | obiekt | Nagłówki żądania |
-| jednostce | obiekt | Obiekt JSON | Obiekt z zawartością treści z żądania |
+| nagłówki | obiekt | Nagłówki żądania |
+| treść | obiekt | JSON — Obiekt | Obiekt z zawartością treści z żądania |
 | kod stanu | int | Kod stanu z żądania |
 |||
 
 | Kod stanu | Opis |
 |-------------|-------------|
 | 200 | OK |
-| 202 | Przyjmować |
-| 400 | Złe żądanie |
+| 202 | Zaakceptowano |
+| 400 | Nieprawidłowe żądanie |
 | 401 | Brak autoryzacji |
 | 403 | Forbidden |
 | 404 | Nie znaleziono |

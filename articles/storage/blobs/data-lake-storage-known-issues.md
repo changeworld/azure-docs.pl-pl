@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 099dc723db44ba71fc4672c382d24ac93ffe742f
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: 951d707c898ad0efa1f21480c12f0c733f5218ee
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75689144"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834942"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Znane problemy związane z usługi Azure Data Lake Storage Gen2
 
@@ -66,7 +66,7 @@ W poniższej tabeli wymieniono wszystkie inne funkcje i narzędzia, które nie s
 |--------|-----------|
 | **Tryb failover konta** |Jeszcze nieobsługiwane|
 | **Narzędzie AzCopy** | Obsługa specyficzna dla wersji <br><br>Użyj tylko najnowszej wersji AzCopy ([AzCopy v10](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2ftables%2ftoc.json)). Wcześniejsze wersje AzCopy, takie jak AzCopy v 8.1, nie są obsługiwane.|
-| **Zasady zarządzania cyklem życia Blob Storage platformy Azure** | Zasady zarządzania cyklem życia są obsługiwane (wersja zapoznawcza).  Obsługiwane są wszystkie warstwy dostępu. Warstwa dostępu archiwalnego jest obecnie w wersji zapoznawczej. Usuwanie migawek obiektów BLOB nie jest jeszcze obsługiwane. <br><br> Obecnie niektóre usterki mają wpływ na zasady zarządzania cyklem życia i warstwę dostępu archiwizowania.  Utwórz konto w wersji zapoznawczej zasad zarządzania cyklem życia i zarchiwizuj warstwę dostępu w [tym miejscu](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2EUNXd_ZNJCq_eDwZGaF5VURjFLTDRGS0Q4VVZCRFY5MUVaTVJDTkROMi4u).   |
+| **Zasady zarządzania cyklem życia Blob Storage platformy Azure** | Zasady zarządzania cyklem życia są obsługiwane (wersja zapoznawcza).  Utwórz konto w wersji zapoznawczej zasad zarządzania cyklem życia i zarchiwizuj warstwę dostępu w [tym miejscu](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2EUNXd_ZNJCq_eDwZGaF5VURjFLTDRGS0Q4VVZCRFY5MUVaTVJDTkROMi4u).   <br><br>Obsługiwane są wszystkie warstwy dostępu. Warstwa dostępu archiwalnego jest obecnie w wersji zapoznawczej. Usuwanie migawek obiektów BLOB nie jest jeszcze obsługiwane.  Obecnie niektóre usterki mają wpływ na zasady zarządzania cyklem życia i warstwę dostępu archiwizowania.  |
 | **Azure Content Delivery Network (CDN)** | Jeszcze nieobsługiwane|
 | **Usługa Azure Search** |Obsługiwane (wersja zapoznawcza)|
 | **Azure Storage Explorer** | Obsługa specyficzna dla wersji. <br><br>Używaj tylko wersji `1.6.0` lub nowszej. <br> Obecnie istnieje usterka magazynu wpływająca na `1.11.0` wersji, która może powodować błędy uwierzytelniania w niektórych scenariuszach. Poprawka dotycząca usterki magazynu jest wdrażana, ale jako obejście zalecamy korzystanie z wersji `1.10.x` dostępnej [bezpłatnie do pobrania](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-relnotes). Usterka magazynu nie ma na `1.10.x`.|
@@ -74,7 +74,7 @@ W poniższej tabeli wymieniono wszystkie inne funkcje i narzędzia, które nie s
 | **Blobfuse** |Jeszcze nieobsługiwane|
 | **Niestandardowe domeny** |Jeszcze nieobsługiwane|
 | **Eksplorator usługi Storage w Azure Portal** | Ograniczona pomoc techniczna. Listy ACL nie są jeszcze obsługiwane. |
-| **Rejestrowanie diagnostyczne** |Dzienniki diagnostyczne są obsługiwane (wersja zapoznawcza).<br><br>Włączanie dzienników w Azure Portal nie jest obecnie obsługiwane. Oto przykład sposobu włączania dzienników przy użyciu programu PowerShell. <br><br>`$storageAccount = Get-AzStorageAccount -ResourceGroupName <resourceGroup> -Name <storageAccountName>`<br><br>`Set-AzStorageServiceLoggingProperty -Context $storageAccount.Context -ServiceType Blob -LoggingOperations read,write,delete -RetentionDays <days>`. <br><br>Upewnij się, że określono `Blob` jako wartość parametru `-ServiceType`, jak pokazano w tym przykładzie. <br><br>Obecnie nie można używać Eksplorator usługi Azure Storage do wyświetlania dzienników diagnostycznych. Aby wyświetlić dzienniki, użyj AzCopy lub zestawów SDK.
+| **Rejestrowanie diagnostyczne** |Dzienniki diagnostyczne są obsługiwane (wersja zapoznawcza). <br><br>Eksplorator usługi Azure Storage 1.10. x nie można używać do wyświetlania dzienników diagnostycznych. Aby wyświetlić dzienniki, użyj AzCopy lub zestawów SDK.
 | **Niezmienny magazyn** |Jeszcze nieobsługiwane <br><br>Niezmienny magazyn umożliwia przechowywanie danych w [robaku (zapis jeden raz, odczyt wielu)](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutable-storage) .|
 | **Warstwy na poziomie obiektów** |Obsługiwane są warstwy chłodna i archiwalna. Warstwa archiwum jest w wersji zapoznawczej. Wszystkie inne warstwy dostępu nie są jeszcze obsługiwane. <br><br> Obecnie niektóre usterki mają wpływ na warstwę dostępu archiwizowania.  Utwórz konto w wersji zapoznawczej warstwy dostępu archiwalnego w [tym miejscu](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2EUNXd_ZNJCq_eDwZGaF5VURjFLTDRGS0Q4VVZCRFY5MUVaTVJDTkROMi4u).|
 | **Statyczne witryny sieci Web** |Jeszcze nieobsługiwane <br><br>W oddzielnym zakresie możliwość obsługiwania plików do [statycznych witryn sieci Web](https://docs.microsoft.com/azure/storage/blobs/storage-blob-static-website).|

@@ -4,12 +4,12 @@ description: Dowiedz się, jak opracowywać i testować Azure Functions przy uż
 ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: 04074579b3eb34175a6d29897bbd38b95ae3a596
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 571519b996948a9fc4ac98e18e510fcee1dbef9b
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230658"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769777"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Opracowywanie Azure Functions przy użyciu programu Visual Studio  
 
@@ -42,7 +42,7 @@ Inne zasoby, które są potrzebne, takie jak konto usługi Azure Storage, są tw
 
 ### <a name="check-your-tools-version"></a>Sprawdź wersję narzędzi w programie Visual Studio 2017
 
-1. W menu **Narzędzia** wybierz pozycję **rozszerzenia i aktualizacje**. Rozwiń węzeł **zainstalowane** > **Narzędzia** i wybierz pozycję **Narzędzia do Azure Functions i zadania w sieci Web**.
+1. Z **narzędzia** menu, wybierz **rozszerzenia i aktualizacje**. Rozwiń węzeł **zainstalowane** > **Narzędzia** i wybierz pozycję **Narzędzia do Azure Functions i zadania w sieci Web**.
 
     ![Weryfikowanie wersji narzędzi funkcji](./media/functions-develop-vs/functions-vstools-check-functions-tools.png)
 
@@ -63,7 +63,7 @@ Inne zasoby, które są potrzebne, takie jak konto usługi Azure Storage, są tw
 1. Po zakończeniu aktualizacji wybierz pozycję **Zamknij** i uruchom ponownie program Visual Studio.
 
 > [!NOTE]  
-W programie Visual Studio 2019 i nowszych rozszerzenie narzędzi Azure Functions zostało zaktualizowane w ramach programu Visual Studio.  
+> W programie Visual Studio 2019 i nowszych rozszerzenie narzędzi Azure Functions zostało zaktualizowane w ramach programu Visual Studio.  
 
 ## <a name="create-an-azure-functions-project"></a>Tworzenie projektu usługi Azure Functions
 

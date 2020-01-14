@@ -1,5 +1,6 @@
 ---
-title: 'Samouczek: używanie Azure Database Migration Service do przeprowadzenia migracji w trybie online SQL Server do wystąpienia zarządzanego Azure SQL Database | Microsoft Docs'
+title: 'Samouczek: Migrowanie SQL Server online do wystąpienia zarządzanego SQL'
+titleSuffix: Azure Database Migration Service
 description: Dowiedz się, jak przeprowadzić migrację online SQL Server lokalnie do wystąpienia zarządzanego Azure SQL Database przy użyciu Azure Database Migration Service.
 services: dms
 author: HJToland3
@@ -8,15 +9,15 @@ manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc, tutorial
+ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 12/04/2019
-ms.openlocfilehash: 53c0601be29c5cac9bddc37158d705f07349323d
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.date: 01/10/2020
+ms.openlocfilehash: e9a24daeeab906419416a3a10fda901c91d9fb33
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975027"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863227"
 ---
 # <a name="tutorial-migrate-sql-server-to-an-azure-sql-database-managed-instance-online-using-dms"></a>Samouczek: Migrowanie SQL Server do wystąpienia zarządzanego Azure SQL Database w trybie online za pomocą usługi DMS
 
@@ -24,7 +25,7 @@ Azure Database Migration Service do migracji baz danych z wystąpienia lokalnego
 
 W tym samouczku przeprowadzisz migrację bazy danych **Adventureworks2012** z wystąpienia lokalnego SQL Server do wystąpienia zarządzanego SQL Database o minimalnym przestoju przy użyciu Azure Database Migration Service.
 
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 > [!div class="checklist"]
 >
 > * Utwórz wystąpienie usługi Azure Database Migration Service.
@@ -42,6 +43,9 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 > [!IMPORTANT]
 > Aby zapewnić optymalne środowisko migracji, firma Microsoft zaleca Tworzenie wystąpienia Azure Database Migration Service w tym samym regionie świadczenia usługi Azure jako docelowej bazie danych. Przenoszenie danych między regionami lub lokalizacjami geograficznymi może spowalniać proces migracji i powodować błędy.
 
+> [!IMPORTANT]
+> Skrócenie czasu trwania procesu migracji w trybie online jest możliwe, aby zminimalizować ryzyko przerwania spowodowane przez ponowną konfigurację lub planowaną konserwację. W przypadku takiego zdarzenia proces migracji rozpocznie się od początku. W przypadku planowanej konserwacji istnieje okres prolongaty wynoszący 36 godzin przed ponownym uruchomieniem procesu migracji.
+
 [!INCLUDE [online-offline](../../includes/database-migration-service-offline-online.md)]
 
 W tym artykule opisano migrację w trybie online z SQL Server do wystąpienia zarządzanego SQL Database. Aby przeprowadzić migrację w trybie offline, zobacz [migrowanie SQL Server do wystąpienia zarządzanego SQL Database w trybie offline za pomocą usługi DMS](tutorial-sql-server-to-managed-instance.md).
@@ -50,10 +54,10 @@ W tym artykule opisano migrację w trybie online z SQL Server do wystąpienia za
 
 Do ukończenia tego samouczka niezbędne są następujące elementy:
 
-* Utwórz Virtual Network platformy Azure dla Azure Database Migration Service przy użyciu modelu wdrażania Azure Resource Manager, który zapewnia łączność między lokacjami z lokalnymi serwerami źródłowymi przy użyciu usługi [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) lub [sieci VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways). [Informacje o topologii sieci dla Azure SQL Database migracji wystąpień zarządzanych przy użyciu Azure Database Migration Service](https://aka.ms/dmsnetworkformi). Aby uzyskać więcej informacji na temat tworzenia sieci wirtualnej, zapoznaj się z [dokumentacją Virtual Network](https://docs.microsoft.com/azure/virtual-network/), a w szczególności artykuły szybkiego startu z szczegółowymi szczegółami.
+* Utwórz Microsoft Azure Virtual Network dla Azure Database Migration Service przy użyciu modelu wdrażania Azure Resource Manager, który zapewnia łączność między lokacjami z lokalnymi serwerami źródłowymi przy użyciu usługi [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) lub [sieci VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways). [Informacje o topologii sieci dla Azure SQL Database migracji wystąpień zarządzanych przy użyciu Azure Database Migration Service](https://aka.ms/dmsnetworkformi). Aby uzyskać więcej informacji na temat tworzenia sieci wirtualnej, zapoznaj się z [dokumentacją Virtual Network](https://docs.microsoft.com/azure/virtual-network/), a w szczególności artykuły szybkiego startu z szczegółowymi szczegółami.
 
     > [!NOTE]
-    > W przypadku korzystania z usługi ExpressRoute z usługą Komunikacja równorzędna z firmą Microsoft podczas instalacji sieci wirtualnej należy dodać następujące [punkty końcowe](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) usługi do podsieci, w której zostanie zainicjowana usługa:
+    > Jeśli podczas konfigurowania sieci wirtualnej używasz usługi ExpressRoute z usługą Komunikacja równorzędna z firmą Microsoft, Dodaj następujące [punkty końcowe](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) do podsieci, w której zostanie zainicjowana usługa:
     >
     > * Docelowy punkt końcowy bazy danych (na przykład punkt końcowy SQL, Cosmos DB punkt końcowy itd.)
     > * Punkt końcowy magazynu
@@ -66,9 +70,9 @@ Do ukończenia tego samouczka niezbędne są następujące elementy:
     > [!IMPORTANT]
     > W odniesieniu do konta magazynu używanego w ramach migracji należy wykonać następujące działania:
     > * Wybierz, aby zezwolić wszystkim sieci na dostęp do konta magazynu.
-    > * Skonfiguruj listy ACL dla sieci wirtualnej. Aby uzyskać więcej informacji, zobacz artykuł [Konfigurowanie zapór i sieci wirtualnych usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-network-security).
+    > * Włącz [delegowanie podsieci](https://docs.microsoft.com/azure/virtual-network/manage-subnet-delegation) w podsieci mi i zaktualizuj reguły zapory konta magazynu, aby zezwolić na tę podsieć.
 
-* Upewnij się, że zasady grupy zabezpieczeń sieci wirtualnej nie blokują następujących portów komunikacji przychodzącej do Azure Database Migration Service: 443, 53, 9354, 445, 12000. Aby uzyskać więcej szczegółów na temat filtrowania ruchu w sieci wirtualnej platformy Azure, zobacz artykuł [Filtrowanie ruchu sieciowego przy użyciu sieciowych grup zabezpieczeń](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg).
+* Upewnij się, że reguły grupy zabezpieczeń sieci wirtualnej nie blokują następujących portów komunikacji przychodzącej do Azure Database Migration Service: 443, 53, 9354, 445, 12000. Aby uzyskać więcej szczegółów na temat filtrowania ruchu sieciowej grupy zabezpieczeń w sieci wirtualnej, zobacz artykuł [Filtrowanie ruchu sieciowego przy użyciu sieciowych grup zabezpieczeń](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg).
 * [Zapora sytemu Windows skonfigurowana pod kątem dostępu do aparatu źródłowej bazy danych](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access).
 * Otwórz Zaporę systemu Windows, aby umożliwić Azure Database Migration Service dostęp do SQL Server źródłowej, która domyślnie jest portem TCP 1433.
 * W przypadku uruchamiania wielu wystąpień o nazwach SQL Server przy użyciu portów dynamicznych można włączyć usługę SQL Browser i zezwolić na dostęp do portu UDP 1434 za pośrednictwem zapór, aby Azure Database Migration Service mógł nawiązać połączenie z nazwanym wystąpieniem w źródle Server.
@@ -115,9 +119,9 @@ Do ukończenia tego samouczka niezbędne są następujące elementy:
 
 5. Wybierz istniejącą sieć wirtualną lub utwórz ją.
 
-    Sieć wirtualna zapewnia Azure Database Migration Service z dostępem do SQL Server źródłowej i docelowego wystąpienia zarządzanego SQL Database.
+    Sieć wirtualna zapewnia Azure Database Migration Service z dostępem do SQL Server źródłowych i docelowym SQL Database wystąpieniem zarządzanym.
 
-    Aby uzyskać więcej informacji na temat sposobu tworzenia sieci wirtualnej w Azure Portal, zobacz artykuł [Tworzenie sieci wirtualnych przy użyciu Azure Portal](https://aka.ms/DMSVnet).
+    Aby uzyskać więcej informacji na temat sposobu tworzenia sieci wirtualnej w Azure Portal, zobacz artykuł [Tworzenie sieci wirtualnej przy użyciu Azure Portal](https://aka.ms/DMSVnet).
 
     Aby uzyskać dodatkowe informacje, zobacz artykuł [topologie sieci dla Azure SQL Database migracji wystąpień zarządzanych przy użyciu Azure Database Migration Service](https://aka.ms/dmsnetworkformi).
 
@@ -204,7 +208,7 @@ Po utworzeniu wystąpienia usługi znajdź je w witrynie Azure Portal, otwórz j
 
     | | |
     |--------|---------|
-    |**Udział lokalizacji sieciowej protokołu SMB** | Lokalny udział sieciowy SMB lub udział plików platformy Azure, który zawiera pliki pełnej kopii zapasowej bazy danych i pliki kopii zapasowej dziennika transakcji, które Azure Database Migration Service mogą być używane do migracji. Konto usługi, na którym uruchomiono źródłowe wystąpienie programu SQL Server, musi mieć uprawnienia do odczytu/zapisu w tym udziale sieciowym. Podaj nazwę FQDN lub adresy IP serwera w udziale sieciowym, na przykład „\\\nazwa_serwera.nazwa_domeny.com\folder_kopii_zapasowych” lub „\\\adres_IP\folder_kopii_zapasowych”.|
+    |**Udział lokalizacji sieciowej protokołu SMB** | Lokalny udział sieciowy SMB lub udział plików platformy Azure, który zawiera pliki pełnej kopii zapasowej bazy danych i pliki kopii zapasowej dziennika transakcji, które Azure Database Migration Service mogą być używane do migracji. Konto usługi, na którym uruchomiono źródłowe wystąpienie programu SQL Server, musi mieć uprawnienia do odczytu/zapisu w tym udziale sieciowym. Podaj nazwę FQDN lub adresy IP serwera w udziale sieciowym, na przykład „\\\nazwa_serwera.nazwa_domeny.com\folder_kopii_zapasowych” lub „\\\adres_IP\folder_kopii_zapasowych”. W celu zwiększenia wydajności zaleca się użycie osobnego folderu dla każdej bazy danych, która ma zostać zmigrowana. Ścieżkę udziału plików na poziomie bazy danych można podać przy użyciu opcji **Ustawienia zaawansowane** . |
     |**Nazwa użytkownika** | Upewnij się, że użytkownik systemu Windows ma uprawnienia pełnej kontroli w udziale sieciowym, który podano powyżej. Azure Database Migration Service personifikuje poświadczenia użytkownika w celu przekazania plików kopii zapasowej do kontenera usługi Azure Storage w celu wykonania operacji przywracania. Jeśli korzystasz z udziału plików platformy Azure, użyj nazwy konta magazynu wstępnie na platformie AZURE jako nazwy użytkownika. |
     |**Hasło** | Hasło użytkownika. Jeśli używasz udziału plików platformy Azure, użyj klucza konta magazynu jako hasła. |
     |**Subskrypcja konta usługi Azure Storage** | Wybierz subskrypcję, która zawiera konto usługi Azure Storage. |
@@ -212,10 +216,11 @@ Po utworzeniu wystąpienia usługi znajdź je w witrynie Azure Portal, otwórz j
 
     ![Konfigurowanie ustawień migracji](media/tutorial-sql-server-to-managed-instance-online/dms-configure-migration-settings4.png)
 
+    > [!NOTE]
+    > Jeśli Azure Database Migration Service pokazuje błąd "System Error 53" lub "System Error 57", przyczyna może skutkować niezdolnością Azure Database Migration Service dostępu do udziału plików platformy Azure. W przypadku wystąpienia jednego z tych błędów Udziel dostępu do konta magazynu z sieci wirtualnej, korzystając z instrukcji znajdujących się [tutaj](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network).
 
-> [!NOTE]
-  > Jeśli Azure Database Migration Service pokazuje błąd "System Error 53" lub "System Error 57", przyczyna może skutkować niezdolnością Azure Database Migration Service dostępu do udziału plików platformy Azure. W przypadku wystąpienia jednego z tych błędów Udziel dostępu do konta magazynu z sieci wirtualnej, korzystając z instrukcji znajdujących się [tutaj](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network).
-
+    > [!IMPORTANT]
+    > Jeśli funkcja sprawdzania sprzężenia zwrotnego jest włączona, a SQL Server źródłowa i udział plików znajdują się na tym samym komputerze, źródło nie będzie w stanie uzyskać dostępu do plików udziału przy użyciu nazwy FQDN. Aby rozwiązać ten problem, wyłącz funkcję sprawdzania sprzężenia zwrotnego przy użyciu instrukcji w [tym miejscu](https://support.microsoft.com/help/926642/error-message-when-you-try-to-access-a-server-locally-by-using-its-fqd).
 
 2. Wybierz pozycję **Zapisz**.
 

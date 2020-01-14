@@ -5,14 +5,14 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 10/17/2019
+ms.date: 01/10/2020
 ms.author: yushwang
-ms.openlocfilehash: f1d30ef56350c3e1df796f20e3f9f39fdbc6428a
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 93e13592d9c434b159ad4f4c10ef30328941c64e
+ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74666498"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75902823"
 ---
 # <a name="about-cryptographic-requirements-and-azure-vpn-gateways"></a>Wymagania kryptograficzne i bramy sieci VPN platformy Azure — informacje
 
@@ -34,7 +34,7 @@ Domyślny zestaw zasad dla usługi Azure VPN Gateway jest wymieniony w artykule:
 
 ## <a name="cryptographic-requirements"></a>Wymagania kryptograficzne
 
-W przypadku komunikacji wymagającej określonych algorytmów kryptograficznych lub parametrów, zazwyczaj z powodu zgodności lub wymagań dotyczących zabezpieczeń, można teraz skonfigurować bramy sieci VPN platformy Azure do korzystania z niestandardowych zasad protokołu IPsec/IKE z określonymi algorytmami kryptograficznymi i Najważniejsze zalety, a nie domyślne zestawy zasad platformy Azure.
+W przypadku komunikacji wymagającej określonych algorytmów kryptograficznych lub parametrów, zazwyczaj ze względu na wymagania dotyczące zgodności lub zabezpieczeń, można teraz skonfigurować bramy sieci VPN platformy Azure tak, aby korzystały z niestandardowych zasad protokołu IPsec/IKE z określonymi algorytmami kryptograficznymi i silnymi zasadami, a nie z domyślnymi zestawami zasad platformy Azure.
 
 Na przykład zasady trybu głównego protokołu IKEv2 dla bram sieci VPN platformy Azure używają tylko grupy Diffie'ego-Hellmana 2 (1024 bitów), podczas gdy może być konieczne określenie silniejszych grup do użycia w usłudze IKE, takich jak grupa 14 (2048-bitowa), Grupa 24 (2048-bitowa Grupa MODP, bitowy) lub ECP (krzywa eliptyczna grupy) 256 lub 384 bit (odpowiednio grupy 19 i grupy 20). Podobne wymagania dotyczą również zasad trybu szybkiego protokołu IPsec.
 
@@ -42,7 +42,7 @@ Na przykład zasady trybu głównego protokołu IKEv2 dla bram sieci VPN platfor
 
 Bramy sieci VPN platformy Azure obsługują teraz dla połączeń, niestandardowe zasady protokołu IPsec/IKE. W przypadku połączenia typu lokacja-lokacja lub Sieć wirtualna-sieć wirtualna można wybrać konkretną kombinację algorytmów kryptograficznych dla protokołów IPsec i IKE z odpowiednią siłą klucza, jak pokazano w następującym przykładzie:
 
-![IPSec — zasady IKE](./media/vpn-gateway-about-compliance-crypto/ipsecikepolicy.png)
+![ipsec-ike-policy](./media/vpn-gateway-about-compliance-crypto/ipsecikepolicy.png)
 
 Można utworzyć zasady protokołu IPsec/IKE i zastosować je do nowego lub istniejącego połączenia.
 

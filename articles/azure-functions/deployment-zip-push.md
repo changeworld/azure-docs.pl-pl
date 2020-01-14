@@ -3,12 +3,12 @@ title: Wdrożenie usługi zip push dla Azure Functions
 description: Aby opublikować Azure Functions, użyj funkcji wdrożenia pliku zip usługi wdrażania kudu.
 ms.topic: conceptual
 ms.date: 08/12/2018
-ms.openlocfilehash: 88455e85607c608757067cea9d54b60e30cacb50
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 6bda0859ca4741fe74f572b204e40130c56c46fc
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74233057"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769675"
 ---
 # <a name="zip-deployment-for-azure-functions"></a>Wdrożenie pliku ZIP dla Azure Functions
 
@@ -66,10 +66,10 @@ Możesz również pobrać plik zip z repozytorium GitHub. Pobranie repozytorium 
 
 Aby wyzwolić wdrożenie wypychane, można użyć interfejsu wiersza polecenia platformy Azure. Wypychanie Wdróż plik. zip w aplikacji funkcji przy użyciu polecenia [AZ functionapp Deployment Source config-zip](/cli/azure/functionapp/deployment/source#az-functionapp-deployment-source-config-zip) . Aby użyć tego polecenia, musisz użyć interfejsu wiersza polecenia platformy Azure w wersji 2.0.21 lub nowszej. Aby sprawdzić, jaka wersja interfejsu wiersza polecenia platformy Azure jest używana, użyj polecenia `az --version`.
 
-W poniższym poleceniu Zastąp symbol zastępczy `<zip_file_path>` ścieżką do lokalizacji pliku. zip. Ponadto Zastąp `<app_name>` unikatową nazwą aplikacji funkcji. 
+W poniższym poleceniu Zastąp symbol zastępczy `<zip_file_path>` ścieżką do lokalizacji pliku. zip. Ponadto Zastąp `<app_name>` unikatową nazwą aplikacji funkcji i Zastąp `<resource_group>` nazwą grupy zasobów.
 
 ```azurecli-interactive
-az functionapp deployment source config-zip  -g myResourceGroup -n \
+az functionapp deployment source config-zip -g <resource_group> -n \
 <app_name> --src <zip_file_path>
 ```
 

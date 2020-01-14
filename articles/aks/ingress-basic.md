@@ -5,14 +5,14 @@ services: container-service
 author: mlearned
 ms.service: container-service
 ms.topic: article
-ms.date: 05/24/2019
+ms.date: 12/20/2019
 ms.author: mlearned
-ms.openlocfilehash: 7b1fb26adc49067c35745011414ada7b33d7e55e
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 4299846f48524799084efa5456c169d18af4185d
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74913574"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75728875"
 ---
 # <a name="create-an-ingress-controller-in-azure-kubernetes-service-aks"></a>Tworzenie kontrolera transferu danych przychodzących w usłudze Azure Kubernetes Service (AKS)
 
@@ -29,18 +29,18 @@ Możesz również wykonać następujące czynności:
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-W tym artykule używa się Helm do zainstalowania kontrolera transferu danych przychodzących, Menedżera certyfikatów i przykładowej aplikacji sieci Web. Konieczne jest zainicjowanie Helm w ramach klastra AKS i użycie konta usługi dla tego elementu. Aby uzyskać więcej informacji na temat konfigurowania i używania Helm, zobacz [Install Applications with Helm in Azure Kubernetes Service (AKS)][use-helm].
+W tym artykule zainstalowano kontroler NGINX Helm i przykładową aplikację internetową.
 
 Ten artykuł wymaga również uruchomienia interfejsu wiersza polecenia platformy Azure w wersji 2.0.64 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure][azure-cli-install].
 
 ## <a name="create-an-ingress-controller"></a>Tworzenie kontrolera transferu danych przychodzących
 
-Aby utworzyć kontroler transferu danych przychodzących, użyj `Helm`, aby zainstalować *Nginx-ruch przychodzący*. W celu dodania nadmiarowości dwie repliki kontrolerów NGINX Ingress są wdrażane z parametrem `--set controller.replicaCount`. Aby w pełni korzystać z uruchamiania replik kontrolera transferu danych przychodzących, upewnij się, że w klastrze AKS znajduje się więcej niż jeden węzeł.
+Aby utworzyć kontroler transferu danych przychodzących, należy użyć Helm do zainstalowania *Nginx — ruch przychodzący*. W celu dodania nadmiarowości dwie repliki kontrolerów NGINX Ingress są wdrażane z parametrem `--set controller.replicaCount`. Aby w pełni korzystać z uruchamiania replik kontrolera transferu danych przychodzących, upewnij się, że w klastrze AKS znajduje się więcej niż jeden węzeł.
 
 Kontroler transferu danych przychodzących należy również zaplanować w węźle systemu Linux. W węzłach systemu Windows Server (obecnie w wersji zapoznawczej w AKS) nie należy uruchamiać kontrolera transferu danych przychodzących. Selektor węzła jest określany za pomocą parametru `--set nodeSelector`, aby poinformować usługę Kubernetes Scheduler o uruchomieniu kontrolera usługi NGINX w węźle opartym na systemie Linux.
 
 > [!TIP]
-> Poniższy przykład tworzy przestrzeń nazw Kubernetes dla zasobów przychodzących o nazwie transfery *-Basic*. W razie potrzeby określ przestrzeń nazw dla własnego środowiska. Jeśli w klastrze AKS nie włączono kontroli RBAC, Dodaj `--set rbac.create=false` do poleceń Helm.
+> Poniższy przykład tworzy przestrzeń nazw Kubernetes dla zasobów przychodzących o nazwie transfery *-Basic*. W razie potrzeby określ przestrzeń nazw dla własnego środowiska.
 
 > [!TIP]
 > Jeśli chcesz włączyć [zachowywanie źródłowych adresów IP klienta][client-source-ip] dla żądań do kontenerów w klastrze, Dodaj `--set controller.service.externalTrafficPolicy=Local` do polecenia instalacji Helm. Adres IP źródła klienta jest przechowywany w nagłówku żądania w obszarze *X-forwardd-for*. W przypadku korzystania z kontrolera transferu danych przychodzących z włączonym zachowywaniem źródłowych adresów IP klienta przekazywanie protokołu SSL nie będzie działało.
@@ -49,8 +49,11 @@ Kontroler transferu danych przychodzących należy również zaplanować w węź
 # Create a namespace for your ingress resources
 kubectl create namespace ingress-basic
 
+# Add the official stable repository
+helm repo add stable https://kubernetes-charts.storage.googleapis.com/
+
 # Use Helm to deploy an NGINX ingress controller
-helm install stable/nginx-ingress \
+helm install nginx-ingress stable/nginx-ingress \
     --namespace ingress-basic \
     --set controller.replicaCount=2 \
     --set controller.nodeSelector."beta\.kubernetes\.io/os"=linux \
@@ -62,16 +65,16 @@ Gdy usługa równoważenia obciążenia Kubernetes jest tworzona dla kontrolera 
 ```
 $ kubectl get service -l app=nginx-ingress --namespace ingress-basic
 
-NAME                                                 TYPE           CLUSTER-IP     EXTERNAL-IP   PORT(S)                      AGE
-aspiring-labradoodle-nginx-ingress-controller        LoadBalancer   10.0.61.144    40.117.74.8   80:30386/TCP,443:32276/TCP   6m2s
-aspiring-labradoodle-nginx-ingress-default-backend   ClusterIP      10.0.192.145   <none>        80/TCP                       6m2s
+NAME                             TYPE           CLUSTER-IP     EXTERNAL-IP   PORT(S)                      AGE
+nginx-ingress-controller         LoadBalancer   10.0.61.144    EXTERNAL_IP   80:30386/TCP,443:32276/TCP   6m2s
+nginx-ingress-default-backend    ClusterIP      10.0.192.145   <none>        80/TCP                       6m2s
 ```
 
 Nie utworzono jeszcze żadnych reguł dotyczących ruchu przychodzącego, więc w przypadku przechodzenia do wewnętrznego adresu IP zostanie wyświetlona domyślna strona 404 kontrolera NGINX. Reguły dotyczące transferu danych przychodzących są konfigurowane w poniższych krokach.
 
 ## <a name="run-demo-applications"></a>Uruchom aplikacje demonstracyjne
 
-Aby wyświetlić kontroler transferu danych przychodzących w działaniu, Uruchom na klastrze AKS dwie aplikacje demonstracyjne. W tym przykładzie Helm jest używany do wdrażania dwóch wystąpień prostej aplikacji "Hello World".
+Aby wyświetlić kontroler transferu danych przychodzących w działaniu, Uruchom na klastrze AKS dwie aplikacje demonstracyjne. W tym przykładzie Helm jest używany do wdrażania dwóch wystąpień prostej aplikacji *Hello World* .
 
 Przed zainstalowaniem przykładowych wykresów Helm należy dodać repozytorium przykładów platformy Azure do środowiska Helm w następujący sposób:
 
@@ -82,23 +85,23 @@ helm repo add azure-samples https://azure-samples.github.io/helm-charts/
 Utwórz pierwszą aplikację demonstracyjną z wykresu Helm za pomocą następującego polecenia:
 
 ```console
-helm install azure-samples/aks-helloworld --namespace ingress-basic
+helm install aks-helloworld azure-samples/aks-helloworld --namespace ingress-basic
 ```
 
 Teraz Zainstaluj drugie wystąpienie aplikacji demonstracyjnej. Dla drugiego wystąpienia należy określić nowy tytuł, tak aby dwie aplikacje były wizualnie różne. Należy również określić unikatową nazwę usługi:
 
 ```console
-helm install azure-samples/aks-helloworld \
+helm install aks-helloworld-two azure-samples/aks-helloworld \
     --namespace ingress-basic \
     --set title="AKS Ingress Demo" \
-    --set serviceName="ingress-demo"
+    --set serviceName="aks-helloworld-two"
 ```
 
 ## <a name="create-an-ingress-route"></a>Tworzenie trasy transferu danych przychodzących
 
 Obie aplikacje działają teraz w klastrze Kubernetes. Aby skierować ruch do poszczególnych aplikacji, utwórz zasób Kubernetes. Zasób danych przychodzących konfiguruje reguły, które kierują ruch do jednej z dwóch aplikacji.
 
-W poniższym przykładzie ruch do `http://40.117.74.8/` adresu jest kierowany do usługi o nazwie `aks-helloworld`. Ruch do `http://40.117.74.8/hello-world-two` adresu jest kierowany do usługi `ingress-demo`.
+W poniższym przykładzie ruch do *EXTERNAL_IP* jest kierowany do usługi o nazwie `aks-helloworld`. Ruch do *EXTERNAL_IP/Hello-World-Two* jest kierowany do usługi `aks-helloworld-two`. Ruch do *EXTERNAL_IP/static* jest kierowany do usługi o nazwie `aks-helloworld` dla zasobów statycznych.
 
 Utwórz plik o nazwie `hello-world-ingress.yaml` i skopiuj go w poniższym przykładzie YAML.
 
@@ -121,9 +124,27 @@ spec:
           servicePort: 80
         path: /(.*)
       - backend:
-          serviceName: ingress-demo
+          serviceName: aks-helloworld-two
           servicePort: 80
         path: /hello-world-two(/|$)(.*)
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: hello-world-ingress-static
+  namespace: ingress-basic
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/rewrite-target: /static/$2
+spec:
+  rules:
+  - http:
+      paths:
+      - backend:
+          serviceName: aks-helloworld
+          servicePort: 80
+        path: /static(/|$)(.*)
 ```
 
 Utwórz zasób transferu danych przychodzących przy użyciu polecenia `kubectl apply -f hello-world-ingress.yaml`.
@@ -132,15 +153,16 @@ Utwórz zasób transferu danych przychodzących przy użyciu polecenia `kubectl 
 $ kubectl apply -f hello-world-ingress.yaml
 
 ingress.extensions/hello-world-ingress created
+ingress.extensions/hello-world-ingress-static created
 ```
 
 ## <a name="test-the-ingress-controller"></a>Testowanie kontrolera transferu danych przychodzących
 
-Aby przetestować trasy dla kontrolera transferu danych przychodzących, przejdź do dwóch aplikacji. Otwórz przeglądarkę sieci Web na adres IP kontrolera NGINX Ingres, taki jak *http://40.117.74.8* . Pierwsza aplikacja demonstracyjna zostanie wyświetlona w przeglądarce sieci Web, jak pokazano w poniższym przykładzie:
+Aby przetestować trasy dla kontrolera transferu danych przychodzących, przejdź do dwóch aplikacji. Otwórz przeglądarkę sieci Web na adres IP kontrolera NGINX Ingres, taki jak *EXTERNAL_IP*. Pierwsza aplikacja demonstracyjna zostanie wyświetlona w przeglądarce sieci Web, jak pokazano w poniższym przykładzie:
 
 ![Pierwsza aplikacja uruchomiona za kontrolerem transferu danych przychodzących](media/ingress-basic/app-one.png)
 
-Teraz dodaj ścieżkę */Hello-World-Two* do adresu IP, na przykład *http://40.117.74.8/hello-world-two* . Zostanie wyświetlona druga aplikacja demonstracyjna z tytułem niestandardowym:
+Teraz dodaj ścieżkę */Hello-World-Two* do adresu IP, na przykład *EXTERNAL_IP/Hello-World-Two*. Zostanie wyświetlona druga aplikacja demonstracyjna z tytułem niestandardowym:
 
 ![Druga aplikacja uruchomiona za kontrolerem transferu danych przychodzących](media/ingress-basic/app-two.png)
 
@@ -167,22 +189,22 @@ helm repo remove azure-samples
 Alternatywnie, bardziej szczegółowe podejście polega na usunięciu utworzonych poszczególnych zasobów. Utwórz listę wydań Helm za pomocą polecenia `helm list`. Poszukaj wykresów o nazwie *Nginx-Ingress* i *AKS-HelloWorld*, jak pokazano w następujących przykładowych danych wyjściowych:
 
 ```
-$ helm list
+$ helm list --namespace ingress-basic
 
-NAME                    REVISION    UPDATED                     STATUS      CHART                   APP VERSION NAMESPACE
-aspiring-labradoodle    1           Wed Mar 27 19:55:37 2019    DEPLOYED    nginx-ingress-1.3.1     0.22.0      ingress-basic
-esteemed-koala          1           Wed Mar 27 19:59:18 2019    DEPLOYED    aks-helloworld-0.1.0                ingress-basic
-wonderful-puma          1           Wed Mar 27 19:59:07 2019    DEPLOYED    aks-helloworld-0.1.0                ingress-basic
+NAME                    NAMESPACE       REVISION        UPDATED                                 STATUS          CHART                   APP VERSION
+aks-helloworld          ingress-basic   1               2020-01-06 19:57:00.131576 -0600 CST    deployed        aks-helloworld-0.1.0               
+aks-helloworld-two      ingress-basic   1               2020-01-06 19:57:10.971365 -0600 CST    deployed        aks-helloworld-0.1.0               
+nginx-ingress           ingress-basic   1               2020-01-06 19:55:46.358275 -0600 CST    deployed        nginx-ingress-1.27.1    0.26.1  
 ```
 
 Usuń wydania za pomocą polecenia `helm delete`. Poniższy przykład usuwa wdrożenie NGINX, a dwa przykładowe aplikacje AKS Hello World.
 
 ```
-$ helm delete aspiring-labradoodle esteemed-koala wonderful-puma
+$ helm delete aks-helloworld aks-helloworld-two nginx-ingress --namespace ingress-basic
 
-release "aspiring-labradoodle" deleted
-release "esteemed-koala" deleted
-release "wonderful-puma" deleted
+release "aks-helloworld" uninstalled
+release "aks-helloworld-two" uninstalled
+release "nginx-ingress" uninstalled
 ```
 
 Następnie usuń repozytorium Helm dla aplikacji AKS Hello World:

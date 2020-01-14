@@ -4,16 +4,28 @@ description: Jak edytować cele magazynu pamięci podręcznej platformy Azure HP
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 11/4/2019
+ms.date: 1/08/2020
 ms.author: rohogue
-ms.openlocfilehash: 115e75c0149a35104d9c3696710bf8231a98743d
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 5635bfc6ea5faea41b125037c76c0b8635e0f528
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74168522"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867006"
 ---
 # <a name="edit-storage-targets"></a>Edytowanie lokalizacji docelowych magazynu
+
+Można usunąć lub zmodyfikować miejsce docelowe magazynu z poziomu strony **miejsca docelowe magazynu** pamięci podręcznej.
+
+## <a name="remove-a-storage-target"></a>Usuń miejsce docelowe magazynu
+
+Aby usunąć miejsce docelowe magazynu, wybierz je z listy i kliknij przycisk **Usuń** .
+
+Ta akcja powoduje usunięcie skojarzenia obiektu docelowego magazynu z tym systemem pamięci podręcznej platformy Azure HPC, ale nie powoduje zmiany systemu magazynu zaplecza. Na przykład jeśli użyto kontenera magazynu obiektów blob platformy Azure, kontener i jego zawartość nadal istnieją po usunięciu z pamięci podręcznej. Możesz dodać kontener do innej pamięci podręcznej platformy Azure HPC, dodać go ponownie do tej pamięci podręcznej lub usunąć za pomocą Azure Portal.
+
+Wszelkie zmiany plików przechowywane w pamięci podręcznej są zapisywane w systemie magazynu zaplecza przed usunięciem miejsca docelowego magazynu. Ten proces może potrwać godzinę lub dłużej, jeśli wiele zmienionych danych znajduje się w pamięci podręcznej.
+
+## <a name="update-storage-targets"></a>Aktualizuj cele magazynu
 
 Można edytować cele magazynu w celu zmodyfikowania niektórych ich właściwości. Różne właściwości można edytować w przypadku różnych typów magazynu:
 
@@ -23,7 +35,7 @@ Można edytować cele magazynu w celu zmodyfikowania niektórych ich właściwo�
 
   * Ścieżka przestrzeni nazw
   * Model użycia
-  * Eksportowanie
+  * Eksportuj
   * Eksportuj podkatalog
 
 Nie można edytować nazwy, typu lub systemu magazynu zaplecza magazynu (kontenera obiektów blob lub nazwy hosta lub adresu IP systemu plików NFS). Aby zmienić te właściwości, należy usunąć miejsce docelowe magazynu i utworzyć zamiennik z nową wartością.

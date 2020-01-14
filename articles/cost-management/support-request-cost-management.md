@@ -10,12 +10,12 @@ ms.topic: troubleshooting
 ms.service: cost-management-billing
 manager: benshy
 ms.custom: ''
-ms.openlocfilehash: 82c9a13c50f9d9786f405032d6339c8323d9cf68
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 2ea1d33f6302a04a7844e4504d30bac897599e69
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229900"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75887550"
 ---
 # <a name="create-a-support-request-for-cloudyn"></a>Utwórz żądanie pomocy technicznej dla platformy Cloudyn
 
@@ -23,29 +23,29 @@ Jeśli nie możesz znaleźć informacje, których szukasz, możesz otworzyć ż�
 
 ## <a name="open-a-support-ticket"></a>Otwieranie biletu pomocy technicznej
 
-1. Zaloguj się do Azure Portal (https://portal.azure.com).
-2. Na górnym pasku nawigacyjnym kliknij przycisk **Pomoc**.
-3. W menu **Pomoc** kliknij pozycję **Pomoc i obsługa techniczna**.
-4. W menu Pomoc i obsługa techniczna w obszarze Pomoc techniczna kliknij pozycję **nowe żądanie obsługi**.
-5. W obszarze podstawy w obszarze Typ problemu wybierz pozycję **rozliczenia**.
+1. Zaloguj się do witryny Azure portal (https://portal.azure.com).
+2. Na górnym pasku nawigacyjnym, kliknij przycisk **pomocy**.
+3. W **pomocy** menu, kliknij przycisk **Pomoc i obsługa techniczna**.
+4. W pomocy i obsługi menu w ramach pomocy technicznej, kliknij przycisk **nowe żądanie obsługi**.
+5. W obszarze podstawy w obszarze Typ problemu wybierz **rozliczeń**.
 6. W ramach subskrypcji wybierz żadnej z wymienionych subskrypcji. Subskrypcję, możesz wybrać nie jest używany do routingu problem.
-7. W obszarze plan pomocy technicznej wybierz plan pomocy technicznej systemu Azure, a następnie kliknij przycisk **dalej**.  
-8. W obszarze problem wybierz poziom **ważności** , aby pomóc określić czas odpowiedzi.
-9. W polu **typ problemu** wybierz pozycję **Cloudyn starsze**, a następnie wybierz **kategorię**.
-10. W polu **tytuł** wprowadź tytuł opisujący Twoje żądanie.
-11. W polu **szczegóły** wpisz dodatkowe informacje.
-12. W przypadku **gdy pojawił się problem?** , wybierz przybliżoną datę i godzinę dla, a następnie kliknij przycisk **dalej**.  
-14. W obszarze **informacje kontaktowe** wybierz preferowaną metodę kontaktu i podaj swoje informacje kontaktowe, a następnie kliknij przycisk **Utwórz**.  
+7. W ramach planu pomocy technicznej, wybierz Plan pomocy technicznej platformy Azure, a następnie kliknij przycisk **dalej**.  
+8. W obszarze Problem, wybierz **ważność** poziomu, aby określić czas odpowiedzi.
+9. W **typ problemu** wybierz **starszej wersji platformy Cloudyn**, a następnie wybierz pozycję **kategorii**.
+10. W **tytuł** wprowadź tytuł, który opisuje Twoje żądanie.
+11. W **szczegóły** polu dodatkowe informacje o typie.
+12. Aby uzyskać **kiedy problem zaczął występować?** , wybierz przybliżony datę i godzinę dla, a następnie kliknij przycisk **dalej**.  
+14. W **informacje kontaktowe** obszaru, wybierz preferowany metoda kontaktu i podaj swoje informacje kontaktowe, a następnie kliknij przycisk **Utwórz**.  
 
-Po utworzeniu biletu pomocy technicznej jest to dodane do kolejki pomocy technicznej. Czas odpowiedzi różni się w oparciu o Plan pomocy technicznej i ważności (wpływ na działalność) problem. Aby uzyskać więcej informacji, zobacz [zakres pomocy technicznej i czas odpowiedzi](https://azure.microsoft.com/support/plans/response/).
+Po utworzeniu biletu pomocy technicznej jest to dodane do kolejki pomocy technicznej. Czas odpowiedzi różni się w oparciu o Plan pomocy technicznej i ważności (wpływ na działalność) problem. Aby uzyskać więcej informacji, zobacz [zakres i szybkość reakcji pomocy technicznej](https://azure.microsoft.com/support/plans/response/).
 
-Jeśli chcesz utworzyć bilet pomocy technicznej dotyczącej rozliczeń dla Cost Management, w obszarze **typ problemu**wybierz pozycję **Azure Cost Management**.
+Jeśli chcesz utworzyć bilet pomocy technicznej rozliczeń usługi Cost Management, w obszarze **typ problemu**, wybierz opcję **usługi Azure Cost Management**.
 
-Aby sprawdzić stan zgłoszenia, zobacz [wszystkie żądania pomocy technicznej](../azure-supportability/how-to-create-azure-support-request.md#all-support-requests).
+Aby sprawdzić stan zdarzenie, które zostały wprowadzone, zobacz [wszystkie żądania obsługi](../azure-portal/supportability/how-to-create-azure-support-request.md#all-support-requests).
 
-Jeśli jesteś starszym użytkownikiem programu Cloudyn bez konta platformy Azure, możesz otworzyć żądanie pomocy technicznej w https://support.microsoft.com/oas/default.aspx?prid=16451.
+Jeśli jesteś użytkownikiem platformy Cloudyn starszej wersji, bez konta platformy Azure, możesz otworzyć żądania pomocy technicznej w https://support.microsoft.com/oas/default.aspx?prid=16451.
 
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Aby dowiedzieć się więcej na temat Cloudyn, przejdź do samouczka [Przegląd użycia i kosztów](tutorial-review-usage.md) dla Cloudyn.
+- Aby dowiedzieć się więcej na temat platformy Cloudyn, przejdź do [przeglądanie użycia i kosztów](tutorial-review-usage.md) samouczek dotyczący platformy Cloudyn.

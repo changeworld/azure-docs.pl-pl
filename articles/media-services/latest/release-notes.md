@@ -9,16 +9,18 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 10/07/2019
+ms.date: 12/13/2019
 ms.author: juliako
-ms.openlocfilehash: 50c28f86a1ba36ac44a25e047800d14fe314f9bf
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 0f2eabf0167865333131e0f8e5b0c4ccb409e40e
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420037"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771244"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Informacje o wersji Azure Media Services v3
+
+>Otrzymuj powiadomienia o tym, kiedy ponownie odwiedzasz Tę stronę pod kątem aktualizacji przez skopiowanie i wklejenie tego adresu URL: `https://docs.microsoft.com/api/search/rss?search=%22Azure+Media+Services+v3+release+notes%22&locale=en-us` do czytnika kanału informacyjnego RSS.
 
 Aby uzyskać najnowsze informacje o najnowszych zmianach, w tym artykule przedstawiono informacje o:
 
@@ -33,6 +35,40 @@ Aby uzyskać najnowsze informacje o najnowszych zmianach, w tym artykule przedst
 > Obecnie nie można zarządzać zasobami w wersji 3 z witryny Azure Portal. Użyj [interfejsu API REST](https://aka.ms/ams-v3-rest-sdk), interfejsu wiersza polecenia lub jednego z obsługiwanych zestawów SDK.
 
 Aby uzyskać więcej informacji, zobacz [wskazówki dotyczące migracji dotyczące przenoszenia z Media Services V2 do wersji v3](migrate-from-v2-to-v3.md#known-issues).
+
+## <a name="november-2019"></a>Listopad 2019 r.
+
+### <a name="live-transcription-preview"></a>Podgląd transkrypcji na żywo
+
+Transkrypcja na żywo jest teraz dostępna w publicznej wersji zapoznawczej i można jej używać w regionie zachodnie stany USA 2.
+
+Transkrypcja dynamiczna została zaprojektowana tak, aby działała w połączeniu ze zdarzeniami na żywo jako funkcją dodatkową.  Jest on obsługiwany zarówno na żywo, jak i w standardowym i w warstwie Premium.  Gdy ta funkcja jest włączona, usługa korzysta z funkcji [zamiany mowy na tekst](../../cognitive-services/speech-service/speech-to-text.md) Cognitive Services, aby transkrypcja słowa mówione w przychodzącym audio do tekstu. Ten tekst jest następnie udostępniany do dostarczania wraz z wideo i dźwiękiem w protokołach MPEG-KRESKowych i HLS. Opłaty są naliczane na podstawie nowego miernika dodatku, który jest dodatkowym kosztem zdarzenia na żywo, gdy jest on w stanie "uruchomiona".  Aby uzyskać szczegółowe informacje na temat transkrypcji i rozliczeń na żywo, zobacz [transkrypcja dynamiczna](live-transcription.md)
+
+> [!NOTE]
+> Obecnie transkrypcja na żywo jest dostępna tylko jako funkcja w wersji zapoznawczej w regionie zachodnie stany USA 2. Obsługuje transkrypcję wyrazów mówionych w języku angielskim (EN-US) tylko w tym czasie.
+
+### <a name="content-protection"></a>Ochrona zawartości
+
+Funkcja *zapobiegania powtarzaniu tokenów* wydana w ograniczonych regionach z powrotem we wrześniu jest teraz dostępna we wszystkich regionach.
+Media Services klienci mogą teraz ustawić limit liczby przypadków użycia tego samego tokenu do żądania klucza lub licencji. Aby uzyskać więcej informacji, zobacz [Zapobieganie powtarzaniu tokenu](content-protection-overview.md#token-replay-prevention).
+
+### <a name="new-recommended-live-encoder-partners"></a>Nowi Polecani partnerzy na żywo
+
+Dodano obsługę następujących nowych zalecanych koderów partnerów dla przesyłania strumieniowego RTMP na żywo:
+
+- [Cambria na żywo 4,3](https://www.capellasystems.net/products/cambria-live/)
+- [GoPro Hero7/8 i Maksymalna liczba kamer funkcjonalnych](https://gopro.com/help/articles/block/getting-started-with-live-streaming)
+- [Restream.io](https://restream.io/)
+
+### <a name="file-encoding-enhancements"></a>Ulepszenia kodowania plików
+- Dostępne jest nowe ustawienie wstępne kodowania z obsługą zawartości. Tworzy zestaw pliki MP4 wyrównanych grupę GOP przy użyciu kodowania obsługującego zawartość. Mając daną zawartość wejściową, usługa wykonuje początkową analizę uproszczoną zawartości wejściowej. Używa tych wyników do określenia optymalnej liczby warstw, odpowiedniej szybkości transmisji bitów i ustawień rozdzielczości do dostarczenia przez adaptacyjne przesyłanie strumieniowe. To ustawienie wstępne jest szczególnie przydatne w przypadku wideo o niskiej złożoności i średniej złożoności, w przypadku których pliki wyjściowe są z niższymi szybkościami transmisji bitów, ale z jakością, która nadal zapewnia dobre doświadczenie dla osób przeglądających. Dane wyjściowe będą zawierać pliki MP4 z przeplotem wideo i audio. Aby uzyskać więcej informacji, zobacz informacje o [otwartych interfejsach API](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01/Encoding.json).
+- Ulepszona wydajność i wielowątkowość dla ponownego rozmiaru w Media Encoder Standard. W określonych warunkach klient powinien zobaczyć zwiększenie wydajności między 5-40% kodowanie VOD. Zawartość o niskiej złożoności zakodowana na wiele szybkości transmisji bitów będzie mieć największy wzrost wydajności. 
+- Kodowanie standardowe teraz zachowuje zwykłe grupę GOP erze dla zawartości zmiennej współczynnika klatek (VFR) podczas kodowania VOD przy użyciu ustawienia grupę GOP opartego na czasie.  Oznacza to, że klient przesyłający zawartość współczynnika klatek mieszanych, która różni się od 15-30 fps na przykład, powinien teraz widzieć regularne grupę GOPe odległości obliczone na podstawie danych wyjściowych do adaptacyjnego przesyłania strumieniowego plików MP4. Poprawi to możliwość bezproblemowego przełączania się między ścieżkami podczas dostarczania na HLS lub PAUZy. 
+-  Ulepszona synchronizacja AV dla zawartości źródłowej współczynnika klatek (VFR)
+
+### <a name="video-indexer-video-analytics"></a>Video Indexer, analiza wideo
+
+- Ramki kluczowe wyodrębnione przy użyciu ustawień wstępnych VideoAnalyzer są teraz w oryginalnej rozdzielczości wideo zamiast zmiany rozmiaru. Funkcja wyodrębniania klatek kluczowych o wysokiej rozdzielczości zapewnia oryginalne obrazy z jakością i pozwala korzystać z sztucznych modeli analizy opartych na obrazach udostępnianych przez usługi Microsoft przetwarzanie obrazów i Custom Vision, aby uzyskać jeszcze więcej szczegółowych informacji na temat wideo.
 
 ## <a name="september-2019"></a>Wrzesień 2019 r.
 
@@ -74,7 +110,7 @@ Aby uzyskać szczegółowe informacje, zobacz [Migrowanie WAME do Media Encoder 
 
 W przypadku przesyłania strumieniowego zawartości chronionej przy użyciu ograniczenia tokenu użytkownicy końcowi muszą uzyskać token, który jest wysyłany w ramach żądania dostarczenia klucza. Funkcja *zapobiegania powtarzaniu tokenów* umożliwia Media Services klientom Ustawianie limitu, ile razy można użyć tego samego tokenu do żądania klucza lub licencji. Aby uzyskać więcej informacji, zobacz [Zapobieganie powtarzaniu tokenu](content-protection-overview.md#token-replay-prevention).
 
-Ta funkcja jest obecnie dostępna w regionach Środkowe stany USA i zachodnie stany USA.
+Od lipca funkcja wersji zapoznawczej była dostępna tylko w regionach Środkowe stany USA i zachodnie stany USA.
 
 ## <a name="june-2019"></a>Czerwiec 2019 r.
 
@@ -160,15 +196,15 @@ Moduł interfejsu wiersza polecenia 2,0 jest teraz dostępny dla [Azure Media Se
 ### <a name="new-commands"></a>Nowe polecenia
 
 - [AZ AMS Account](https://docs.microsoft.com/cli/azure/ams/account?view=azure-cli-latest)
-- [AZ AMS Account-Filter](https://docs.microsoft.com/cli/azure/ams/account-filter?view=azure-cli-latest)
+- [az ams account-filter](https://docs.microsoft.com/cli/azure/ams/account-filter?view=azure-cli-latest)
 - [AZ AMS — zasób](https://docs.microsoft.com/cli/azure/ams/asset?view=azure-cli-latest)
-- [AZ AMS Asset-Filter](https://docs.microsoft.com/cli/azure/ams/asset-filter?view=azure-cli-latest)
+- [az ams asset-filter](https://docs.microsoft.com/cli/azure/ams/asset-filter?view=azure-cli-latest)
 - [AZ AMS Content-Key-Policy](https://docs.microsoft.com/cli/azure/ams/content-key-policy?view=azure-cli-latest)
 - [zadanie AZ AMS](https://docs.microsoft.com/cli/azure/ams/job?view=azure-cli-latest)
 - [AZ AMS Live-Event](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest)
 - [AZ AMS Live-Output](https://docs.microsoft.com/cli/azure/ams/live-output?view=azure-cli-latest)
-- [AZ AMS Streaming-Endpoint](https://docs.microsoft.com/cli/azure/ams/streaming-endpoint?view=azure-cli-latest)
-- [AZ AMS Streaming-Locator](https://docs.microsoft.com/cli/azure/ams/streaming-locator?view=azure-cli-latest)
+- [az ams streaming-endpoint](https://docs.microsoft.com/cli/azure/ams/streaming-endpoint?view=azure-cli-latest)
+- [az ams streaming-locator](https://docs.microsoft.com/cli/azure/ams/streaming-locator?view=azure-cli-latest)
 - [AZ AMS Account MRU](https://docs.microsoft.com/cli/azure/ams/account/mru?view=azure-cli-latest) — umożliwia zarządzanie jednostkami zarezerwowanymi multimediów. Aby uzyskać więcej informacji, zobacz [skalowanie jednostek zarezerwowanych multimediów](media-reserved-units-cli-how-to.md).
 
 ### <a name="new-features-and-breaking-changes"></a>Nowe funkcje i istotne zmiany
@@ -276,7 +312,7 @@ Jeśli utworzono zasoby lub filtry kont z zakresu od 09/28 do 10/12 przy użyciu
 
 ## <a name="may-2018---preview"></a>Maj 2018 — wersja zapoznawcza
 
-### <a name="net-sdk"></a>Zestaw SDK .NET
+### <a name="net-sdk"></a>Zestaw SDK dla platformy .NET
 
 Zestaw SDK platformy .NET zawiera następujące funkcje:
 

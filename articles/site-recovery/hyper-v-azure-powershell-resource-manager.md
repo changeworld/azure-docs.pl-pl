@@ -5,14 +5,14 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 06/18/2019
+ms.date: 01/10/2020
 ms.author: sutalasi
-ms.openlocfilehash: 73f5f64a64ab28cdb4b57d0904911f62c2020cf0
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 548fa8181c4841d8f57de485c0a4e714b5e9321a
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082679"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863914"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-hyper-v-vms-using-powershell-and-azure-resource-manager"></a>Konfigurowanie odzyskiwania po awarii na platformie Azure dla maszyn wirtualnych funkcji Hyper-V przy użyciu programu PowerShell i Azure Resource Manager
 
@@ -23,7 +23,7 @@ W tym artykule opisano sposób korzystania z programu Windows PowerShell wraz z 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="azure-powershell"></a>Azure PowerShell
+## <a name="azure-powershell"></a>Program Azure PowerShell
 
 Azure PowerShell udostępnia polecenia cmdlet do zarządzania platformą Azure przy użyciu programu Windows PowerShell. Site Recovery polecenia cmdlet programu PowerShell, dostępne w Azure PowerShell dla Azure Resource Manager, pomagają chronić i odzyskiwać serwery na platformie Azure.
 
@@ -188,7 +188,13 @@ Przed rozpoczęciem należy zauważyć, że określone konto magazynu powinno zn
 
         Succeeded
 
-
+> [!NOTE]
+> Jeśli chcesz przeprowadzić replikację do CMK dysków zarządzanych na platformie Azure, wykonaj następujące czynności za pomocą polecenia AZ PowerShell 3.3.0 i nowszego:
+>
+> 1. Włącz tryb failover na dyskach zarządzanych przez zaktualizowanie właściwości maszyny wirtualnej
+> 2. Użyj polecenia cmdlet Get-AsrReplicationProtectedItem, aby pobrać identyfikator dysku dla każdego dysku chronionego elementu
+> 3. Utwórz obiekt słownika przy użyciu polecenia cmdlet New-Object "System. Collections. Generic. dictionary" "2 [System. String, system. String]", aby zawierać mapowanie identyfikatora dysku na zestaw szyfrowania dysków. Te zestawy szyfrowania dysków są wstępnie utworzone przez użytkownika w regionie docelowym.
+> 4. Zaktualizuj właściwości maszyny wirtualnej za pomocą polecenia cmdlet Set-AsrReplicationProtectedItem, przekazując obiekt dictionary w parametrze-DiskIdToDiskEncryptionSetMap.
 
 ## <a name="step-8-run-a-test-failover"></a>Krok 8. Uruchamianie testu pracy w trybie failover
 1. Uruchom test pracy w trybie failover w następujący sposób:

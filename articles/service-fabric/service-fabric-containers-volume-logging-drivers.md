@@ -1,28 +1,21 @@
 ---
-title: Sterownik woluminu Azure Files Service Fabric (GA) | Microsoft Docs
+title: Azure Files sterownik woluminu dla Service Fabric
 description: Service Fabric obsługuje używanie Azure Files do tworzenia kopii zapasowych woluminów z kontenera.
-services: service-fabric
-author: athinanthny
-manager: chackdan
-ms.assetid: ab49c4b9-74a8-4907-b75b-8d2ee84c6d90
-ms.service: service-fabric
 ms.topic: conceptual
 ms.date: 6/10/2018
-ms.author: atsenthi
-ms.openlocfilehash: 1287df567c60b7ad851c94a8ba787270255d0f35
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 514a0cb12359d58e38ebc30ae12cdb277757f2b2
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74422786"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750042"
 ---
-# <a name="service-fabric-azure-files-volume-driver"></a>Sterownik woluminu Azure Files Service Fabric
-Wtyczka woluminu Azure Files, [wtyczka woluminu platformy Docker](https://docs.docker.com/engine/extend/plugins_volume/) , która dostarcza woluminy oparte na [Azure Files](/azure/storage/files/storage-files-introduction) dla kontenerów platformy Docker, ma teraz wartość **GA (ogólnie dostępna)** .
+# <a name="azure-files-volume-driver-for-service-fabric"></a>Azure Files sterownik woluminu dla Service Fabric
 
-Ta wtyczka woluminu platformy Docker ma postać pakietu aplikacji usługi Service Fabric, który można wdrożyć w klastrach usługi Service Fabric. Ma ona na celu udostępnianie woluminów opartych na usłudze Azure Files w innych aplikacjach kontenerów usługi Service Fabric wdrożonych w klastrze.
+Sterownik woluminu Azure Files to [wtyczka woluminu platformy Docker](https://docs.docker.com/engine/extend/plugins_volume/) , która dostarcza woluminy oparte na [Azure Files](/azure/storage/files/storage-files-introduction) dla kontenerów platformy Docker. Jest ona spakowana jako aplikacja Service Fabric, którą można wdrożyć w klastrze Service Fabric w celu udostępnienia woluminów dla innych Service Fabric aplikacji kontenera w klastrze.
 
 > [!NOTE]
-> Wersja 6.5.661.9590 dodatku plug-in woluminu Azure Files to wersja GA (ogólnie dostępna). 
+> Wersja 6.5.661.9590 wtyczki woluminu Azure Files została udostępniona w celu uzyskania ogólnej dostępności.
 >
 
 ## <a name="prerequisites"></a>Wymagania wstępne
@@ -61,7 +54,6 @@ W sekcji fabricSettings szablonu Azure Resource Manager (dla wdrożeń platformy
   }
 ]
 ```
-
 
 ## <a name="deploy-a-sample-application-using-service-fabric-azure-files-volume-driver"></a>Wdrażanie przykładowej aplikacji przy użyciu sterownika woluminu Azure Files Service Fabric
 

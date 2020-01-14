@@ -1,36 +1,42 @@
 ---
-title: 'Szybki Start: usługa Azure Blob Storage dla języka JavaScript v2 w przeglądarce'
-description: Dowiedz się, jak używać wystąpienia BlobService do przekazywania, wyświetlania i usuwania obiektów BLOB za pomocą zestawu SDK języka JavaScript V2 na stronie HTML.
-keywords: magazyn, javascript, html
+title: 'Szybki Start: usługa Azure Blob Storage dla języka JavaScript v10 w przeglądarce'
+description: Dowiedz się, jak przekazywać, wyświetlać i usuwać obiekty blob za pomocą zestawu SDK języka JavaScript v10 na stronie HTML.
+services: storage
 author: mhopkins-msft
+ms.custom: mvc
+ms.service: storage
 ms.author: mhopkins
 ms.date: 08/29/2019
-ms.service: storage
-ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 1bf71f899a38fa4ce36f8f0ffc78de0c64f6c3f3
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.subservice: blobs
+ms.openlocfilehash: 7d481b115650c72df95f7516bb3b39411201bf83
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74270035"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75862904"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
-# <a name="quickstart-upload-list-and-delete-blobs-using-javascripthtml-in-the-browser"></a>Szybki start: przekazywanie, usuwanie oraz wyświetlanie listy obiektów blob przy użyciu języka JavaScript/HTML w przeglądarce
+# <a name="quickstart-upload-list-and-delete-blobs-using-azure-storage-v10-sdk-for-javascripthtml-in-the-browser"></a>Szybki Start: przekazywanie, wyświetlanie i usuwanie obiektów BLOB za pomocą usługi Azure Storage v10 SDK dla języka JavaScript/HTML w przeglądarce
 
-Ten przewodnik Szybki start opisuje zarządzanie obiektami blob z poziomu kodu uruchamianego w całości w przeglądarce. Podejście użyte w tym miejscu pokazuje, jak użyć wymaganych środków zabezpieczeń do zapewnienia chronionego dostępu do konta magazynu obiektów blob. Do wykonania kroków tego przewodnika Szybki start jest potrzebna [subskrypcja platformy Azure](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+W tym przewodniku szybki start dowiesz się, jak używać [zestawu SDK usługi Azure Storage v10 for JavaScript-BLOB](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob#readme) Library do zarządzania obiektami BLOB z kodu JavaScript działającego w całości w przeglądarce. Podejście użyte w tym miejscu pokazuje, jak użyć wymaganych środków zabezpieczeń do zapewnienia chronionego dostępu do konta magazynu obiektów blob.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 [!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 
-## <a name="setting-up-storage-account-cors-rules"></a>Konfigurowanie reguł CORS konta magazynu 
-Aby aplikacja internetowa mogła uzyskać dostęp do magazynu obiektów blob z klienta, na koncie musi być włączone [współużytkowanie zasobów między źródłami](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) (CORS, cross-origin resource sharing). 
+Biblioteki klienckie JavaScript usługi Azure Storage nie będą działać bezpośrednio z systemu plików i muszą być obsługiwane przez serwer sieci Web. W tym temacie jest uruchamiany podstawowy serwer przy użyciu środowiska [Node. js](https://nodejs.org) . Jeśli wolisz nie instalować węzła, możesz użyć dowolnego innego sposobu uruchamiania lokalnego serwera sieci Web.
 
-Wróć do witryny Azure Portal i wybierz konto magazynu. Aby zdefiniować nową regułę CORS, wróć do sekcji **Ustawienia** i kliknij link **CORS**. Następnie kliknij przycisk **Dodaj**, aby otworzyć okno **Dodawanie reguły CORS**. W tym przewodniku Szybki start utworzymy otwartą regułę CORS:
+Aby wykonać czynności opisane w sekcji debugowanie, musisz [Visual Studio Code](https://code.visualstudio.com) i [debuger dla programu Chrome](vscode:extension/msjsdiag.debugger-for-chrome) lub [debugera dla rozszerzenia Microsoft Edge](vscode:extension/msjsdiag.debugger-for-edge) .
 
-![Ustawienia mechanizmu CORS konta usługi Azure Blob Storage](media/storage-quickstart-blobs-javascript-client-libraries/azure-blob-storage-cors-settings.png)
+## <a name="setting-up-storage-account-cors-rules"></a>Konfigurowanie reguł CORS konta magazynu
+
+Zanim aplikacja sieci Web będzie mogła uzyskać dostęp do magazynu obiektów blob z klienta, musisz skonfigurować konto, aby umożliwić [udostępnianie zasobów między źródłami](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services)lub CORS.
+
+Wróć do witryny Azure Portal i wybierz konto magazynu. Aby zdefiniować nową regułę CORS, przejdź do sekcji **Ustawienia** i kliknij link **CORS** . Następnie kliknij przycisk **Dodaj**, aby otworzyć okno **Dodawanie reguły CORS**. W tym przewodniku Szybki start utworzymy otwartą regułę CORS:
+
+![Ustawienia mechanizmu CORS konta usługi Azure Blob Storage](media/storage-quickstart-blobs-javascript-client-libraries-v10/azure-blob-storage-cors-settings.png)
 
 W poniższej tabeli przedstawiono poszczególne ustawienia mechanizmu CORS i wyjaśniono, jakie wartości zostały użyte do zdefiniowania reguły.
 
@@ -43,16 +49,17 @@ W poniższej tabeli przedstawiono poszczególne ustawienia mechanizmu CORS i wyj
 | Maksymalny wiek (w sekundach) | 86400 | Maksymalny czas buforowania żądania wstępnego OPTIONS przez przeglądarkę. Podanie wartości *86400* powoduje, że buforowanie trwa całą dobę. |
 
 > [!IMPORTANT]
-> Aby zapewnić bezpieczny dostęp do konta magazynu, zadbaj o to, aby ustawienia używane w środowisku produkcyjnym zapewniały minimalny dostęp, umożliwiający korzystanie z tego konta. Opisane w tym przewodniku Szybki start ustawienia mechanizmu CORS definiują łagodne zasady zabezpieczeń. Te ustawienia nie są jednak zalecane w rzeczywistym kontekście.
+> Upewnij się, że wszystkie ustawienia używane w środowisku produkcyjnym uwidaczniają minimalny dostęp wymagany do konta magazynu w celu zapewnienia bezpiecznego dostępu. Opisane w tym przewodniku Szybki start ustawienia mechanizmu CORS definiują łagodne zasady zabezpieczeń. Te ustawienia nie są jednak zalecane w rzeczywistym kontekście.
 
 Następnie utworzymy token zabezpieczający za pomocą usługi Azure Cloud Shell.
 
 [!INCLUDE [Open the Azure cloud shell](../../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-a-shared-access-signature"></a>Tworzenie sygnatury dostępu współdzielonego
+
 Sygnatura dostępu współdzielonego (SAS, Shared Access Signature) jest używana przez kod uruchomiony w przeglądarce do autoryzowania żądań w usłudze Blob Storage. Sygnatura dostępu współdzielonego umożliwia klientowi autoryzację dostępu do zasobów magazynu bez użycia klucza dostępu konta ani parametrów połączenia. Zobacz [Using shared access signatures (SAS) (Używanie sygnatur dostępu współdzielonego)](../common/storage-sas-overview.md), aby uzyskać więcej informacji.
 
-Sygnaturę dostępu współdzielonego można utworzyć w usłudze Azure Cloud Shell przy użyciu interfejsu wiersza polecenia platformy Azure lub Eksploratora usługi Azure Storage. W poniższej tabeli opisano parametry, których wartości musisz podać, aby wygenerować sygnaturę dostępu współdzielonego za pomocą interfejsu wiersza polecenia.
+Sygnaturę dostępu współdzielonego można utworzyć przy użyciu interfejsu wiersza polecenia platformy Azure za pośrednictwem usługi Azure Cloud Shell lub z Azure Portal lub Eksplorator usługi Azure Storage. W poniższej tabeli opisano parametry, które należy podać wartości w celu wygenerowania sygnatury dostępu współdzielonego za pomocą interfejsu wiersza polecenia.
 
 | Parametr      |Opis  | Symbol zastępczy |
 |----------------|-------------|-------------|
@@ -60,21 +67,19 @@ Sygnaturę dostępu współdzielonego można utworzyć w usłudze Azure Cloud Sh
 | *account-name* | Nazwa konta magazynu. Użyj nazwy zanotowanej w poprzednim kroku. | *YOUR_STORAGE_ACCOUNT_NAME* |
 | *account-key*  | Klucz konta magazynu. Użyj klucza zanotowanego w poprzednim kroku. | *YOUR_STORAGE_ACCOUNT_KEY* |
 
-W poniższym skrypcie za pomocą interfejsu wiersza polecenia platformy Azure utworzono sygnaturę dostępu współdzielonego, którą można przekazać do usługi obiektów blob języka JavaScript.
+Aby wygenerować sygnaturę dostępu współdzielonego, która może być używana w kodzie JavaScript, użyj poniższego polecenia CLI z wartościami rzeczywistymi.
 
-> [!NOTE]
-> Aby uzyskać najlepszy efekt, przed wklejeniem polecenia do usługi Azure Cloud Shell usuń dodatkowe spacje widoczne między parametrami.
-
-```bash
-az storage account generate-sas
-                    --permissions racwdl
-                    --resource-types sco
-                    --services b
-                    --expiry FUTURE_DATE
-                    --account-name YOUR_STORAGE_ACCOUNT_NAME
-                    --account-key YOUR_STORAGE_ACCOUNT_KEY
+```azurecli-interactive
+az storage account generate-sas \
+  --permissions racwdl \
+  --resource-types sco \
+  --services b \
+  --expiry FUTURE_DATE \
+  --account-name YOUR_STORAGE_ACCOUNT_NAME \
+  --account-key YOUR_STORAGE_ACCOUNT_KEY
 ```
-Serie wartości występujące po każdym parametrze mogą wydawać się niezrozumiałe. Te wartości parametrów odpowiadają pierwszym literom odpowiednich uprawnień. W poniższej tabeli wyjaśniono pochodzenie tych wartości: 
+
+Serie wartości występujące po każdym parametrze mogą wydawać się niezrozumiałe. Te wartości parametrów odpowiadają pierwszym literom odpowiednich uprawnień. W poniższej tabeli wyjaśniono pochodzenie tych wartości:
 
 | Parametr        | Wartość   | Opis  |
 |------------------|---------|---------|
@@ -82,177 +87,278 @@ Serie wartości występujące po każdym parametrze mogą wydawać się niezrozu
 | *resource-types* | sco     | Ta sygnatura dostępu współdzielonego dotyczy następujących zasobów: *usługa*, *kontener* i *obiekt*. |
 | *services*       | b       | Ta sygnatura dostępu współdzielonego dotyczy usługi *obiektów blob*. |
 
-Po wygenerowaniu sygnatury dostępu współdzielonego skopiuj wartość zwróconą w konsoli do edytora tekstu. Możesz jej użyć w następnym kroku.
+Po wygenerowaniu sygnatury dostępu współdzielonego skopiuj wartość zwracaną i Zapisz ją w miejscu do użycia w nadchodzącym kroku. Jeśli sygnatura dostępu współdzielonego została wygenerowana przy użyciu metody innej niż interfejs wiersza polecenia platformy Azure, należy usunąć początkową `?`, jeśli jest obecna. Ten znak jest separatorem adresów URL, który jest już podany w szablonie adresu URL w dalszej części tego tematu, w którym jest używane sygnatura dostępu współdzielonego.
 
 > [!IMPORTANT]
 > W środowisku produkcyjnym zawsze przekazuj tokeny sygnatur dostępu współdzielonego przy użyciu protokołu SSL. Ponadto tokeny sygnatur dostępu współdzielonego powinny być generowane na serwerze i wysyłane do strony HTML w celu przekazania ich z powrotem do usługi Azure Blob Storage. Jedna z metod polega na wygenerowaniu tokenów sygnatur dostępu współdzielonego przy użyciu funkcji bezserwerowej. Witryna Azure Portal zawiera szablony funkcji umożliwiające generowanie sygnatury dostępu współdzielonego za pomocą funkcji języka JavaScript.
 
 ## <a name="implement-the-html-page"></a>Implementowanie strony HTML
 
+W tej sekcji utworzysz podstawową stronę internetową i skonfigurujesz VS Code do uruchamiania i debugowania strony. Przed uruchomieniem programu należy jednak użyć środowiska Node. js do uruchomienia lokalnego serwera sieci Web i obsłużyć stronę, gdy przeglądarka zażąda. Następnie dodasz kod JavaScript, który wywoła różne interfejsy API magazynu obiektów blob i wyświetli wyniki na stronie. Wyniki tych wywołań można także zobaczyć w [Azure Portal](https://portal.azure.com), [Eksplorator usługi Azure Storage](https://azure.microsoft.com/features/storage-explorer)i [rozszerzenia usługi Azure Storage](vscode:extension/ms-azuretools.vscode-azurestorage) dla vs Code.
+
 ### <a name="set-up-the-web-application"></a>Konfigurowanie aplikacji internetowej
-Biblioteki klienta JavaScript usługi Azure Storage nie działają bezpośrednio z systemu plików i muszą być obsługiwane przez serwer internetowy. Poniższe kroki zawierają szczegółowe instrukcje dotyczące korzystania z prostego, lokalnego serwera internetowego za pomocą oprogramowania Node.js.
 
-> [!NOTE]
-> W tej sekcji przedstawiono tworzenie lokalnego serwera internetowego, który wymaga zainstalowania języka Node.js na komputerze. Jeśli nie chcesz instalować języka Node.js, możesz uruchomić lokalny serwer internetowy w inny sposób.
-
-Najpierw utwórz nowy folder dla projektu i nazwij go *azure-blobs-javascript*. Następnie otwórz wiersz polecenia w folderze *azure-blobs-javascript* i przygotuj aplikację do zainstalowania modułu serwera internetowego, wprowadzając następujące polecenie:
-
-```bash
-npm init -y
-```
-Polecenie *init* dodaje pliki potrzebne do zainstalowania modułu serwera internetowego. Aby zainstalować moduł, wprowadź następujące polecenie:
-
-```bash
-npm i http-server
-```
-Następnie zmodyfikuj plik *package.json*, zastępując istniejącą definicję *scripts* poniższym fragmentem kodu:
-
-```javascript
-"scripts": {
-    "start": "http-server"
-}
-```
-Na koniec w wierszu polecenia wpisz `npm start`, aby uruchomić serwer internetowy:
-
-```bash
-npm start
-```
-
-### <a name="get-the-blob-storage-client-library"></a>Pobieranie biblioteki klienta magazynu obiektów blob
-[Pobierz biblioteki klienta JavaScript](https://aka.ms/downloadazurestoragejs), a następnie wyodrębnij zawartość pliku zip i umieść pliki skryptów z folderu *bundle* w folderze *scripts*.
-
-### <a name="add-the-client-script-reference-to-the-page"></a>Dodawanie odwołania do skryptu klienta do strony
-Utwórz stronę HTML w katalogu głównym folderu *azure-blobs-javascript* i nazwij ją *index.html*. Po utworzeniu strony dodaj do niej następujące znaczniki.
+Najpierw utwórz nowy folder o nazwie *Azure-Blobs-JavaScript* i otwórz go w vs Code. Następnie utwórz nowy plik w VS Code, Dodaj następujący kod HTML i Zapisz go jako *index. html* w folderze *Azure-Blobs-JavaScript* .
 
 ```html
 <!DOCTYPE html>
 <html>
-    <body>
-        <button id="create-button">Create Container</button>
 
-        <input type="file" id="fileinput" />
-        <button id="upload-button">Upload</button>
+<body>
+    <button id="create-container-button">Create container</button>
+    <button id="delete-container-button">Delete container</button>
+    <button id="select-button">Select and upload files</button>
+    <input type="file" id="file-input" multiple style="display: none;" />
+    <button id="list-button">List files</button>
+    <button id="delete-button">Delete selected files</button>
+    <p><b>Status:</b></p>
+    <p id="status" style="height:160px; width: 593px; overflow: scroll;" />
+    <p><b>Files:</b></p>
+    <select id="file-list" multiple style="height:222px; width: 593px; overflow: scroll;" />
+</body>
 
-        <button id="list-button">List</button>
-        
-        <button id="delete-button">Delete</button>
-    </body>
-    <script src="scripts/azure-storage.blob.min.js" charset="utf-8"></script>
-    <script>
-        // Blob-related code goes here
-    </script>
+<!-- You'll add code here later in this quickstart. -->
+
 </html>
 ```
-Ten kod znaczników umożliwia dodanie do strony następujących elementów:
 
-- odwołanie do lokalizacji *scripts/azure-storage.blob.js*;
-- przyciski umożliwiające tworzenie kontenera oraz przekazywanie, usuwanie i wyświetlanie listy obiektów blob;
-- element *INPUT* używany do przekazywania pliku;
-- symbol zastępczy dla kodu specyficznego dla magazynu.
+### <a name="configure-the-debugger"></a>Skonfiguruj debuger
 
-### <a name="create-an-instance-of-blobservice"></a>Tworzenie wystąpienia usługi BlobService 
-Obiekt [BlobService](https://azure.github.io/azure-storage-node/BlobService.html) udostępnia interfejs do komunikacji z usługą Azure Blob Storage. Aby utworzyć wystąpienie tej usługi, musisz podać nazwę konta magazynu i sygnaturę dostępu współdzielonego wygenerowaną w poprzednim kroku.
+Aby skonfigurować rozszerzenie debugera w VS Code, wybierz pozycję **debuguj > Dodaj konfigurację...** , a następnie wybierz pozycję **Chrome** lub **Edge**, w zależności od rozszerzenia zainstalowanego wcześniej w sekcji wymagania wstępne. Ta akcja powoduje utworzenie pliku *Launch. JSON* i otwarcie go w edytorze.
+
+Następnie zmodyfikuj plik *Launch. JSON* w taki sposób, aby wartość `url` zawierała `/index.html`, jak pokazano:
+
+```json
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "chrome",
+            "request": "launch",
+            "name": "Launch Chrome against localhost",
+            "url": "http://localhost:8080/index.html",
+            "webRoot": "${workspaceFolder}"
+        }
+    ]
+}
+```
+
+Ta konfiguracja informuje VS Code, która przeglądarka zostanie uruchomiona i który adres URL ma zostać załadowany.
+
+### <a name="launch-the-web-server"></a>Uruchom serwer sieci Web
+
+Aby uruchomić lokalny serwer sieci Web Node. js, wybierz pozycję **wyświetl > Terminal** , aby otworzyć okno konsoli wewnątrz vs Code, a następnie wprowadź następujące polecenie.
+
+```console
+npx http-server
+```
+
+To polecenie spowoduje zainstalowanie pakietu *http-Server* i uruchomienie serwera, udostępniając bieżący folder za pośrednictwem domyślnych adresów URL, włącznie z wymienionym w poprzednim kroku.
+
+### <a name="start-debugging"></a>Rozpocznij debugowanie
+
+Aby uruchomić *plik index. html* w przeglądarce z dołączonym debugerem vs Code, wybierz pozycję **Debuguj > Rozpocznij debugowanie** lub naciśnij klawisz F5 w vs Code.
+
+Wyświetlany interfejs użytkownika nie wykonuje jeszcze niczego, ale dodasz kod JavaScript w poniższej sekcji, aby zaimplementować każdą pokazaną funkcję. Następnie można ustawić punkty przerwania i korzystać z debugera, gdy jest on wstrzymany w kodzie.
+
+Po wprowadzeniu zmian w *pliku index. html*należy ponownie załadować stronę, aby zobaczyć zmiany w przeglądarce. W VS Code można również wybrać **debuguj > ponownie debugowanie** lub nacisnąć klawisze Ctrl + Shift + F5.
+
+### <a name="add-the-blob-storage-client-library"></a>Dodaj bibliotekę klienta magazynu obiektów BLOB
+
+Aby włączyć wywołania interfejsu API magazynu obiektów blob, najpierw [Pobierz zestaw SDK usługi Azure Storage dla języka JavaScript — Biblioteka klienta obiektów BLOB](https://aka.ms/downloadazurestoragejsblob), Wyodrębnij zawartość pliku zip i umieść plik *Azure-Storage-BLOB. js* w folderze *Azure-Blobs-JavaScript* .
+
+Następnie wklej następujący kod HTML do *pliku index. html* po tagu zamykającym `</body>`, zastępując komentarz zastępczy.
+
+```html
+<script src="azure-storage-blob.js" charset="utf-8"></script>
+
+<script>
+// You'll add code here in the following sections.
+</script>
+```
+
+Ten kod dodaje odwołanie do pliku skryptu i zapewnia miejsce na własny kod JavaScript. Na potrzeby tego przewodnika Szybki Start korzystamy z pliku skryptu *Azure-Storage-BLOB. js* , aby można było go otworzyć w vs Code, odczytać jego zawartość i ustawić punkty przerwania. W środowisku produkcyjnym należy użyć bardziej kompaktowego pliku *Azure-Storage. blob. min. js* , który jest również dostępny w pliku zip.
+
+Więcej informacji na temat każdej funkcji magazynu obiektów BLOB można znaleźć w [dokumentacji referencyjnej](https://docs.microsoft.com/javascript/api/%40azure/storage-blob/index). Należy pamiętać, że niektóre funkcje w zestawie SDK są dostępne tylko w programie Node. js lub są dostępne tylko w przeglądarce.
+
+Kod w *Azure-Storage-BLOB. js* eksportuje zmienną globalną o nazwie `azblob`, która będzie używana w kodzie JavaScript w celu uzyskania dostępu do interfejsów API magazynu obiektów BLOB.
+
+### <a name="add-the-initial-javascript-code"></a>Dodaj początkowy kod JavaScript
+
+Następnie wklej następujący kod do elementu `<script>` pokazanego w poprzednim bloku kodu, zastępując komentarz symbol zastępczy.
 
 ```javascript
-const account = {
-    name: YOUR_STORAGE_ACCOUNT_NAME,
-    sas:  YOUR_SAS
+const createContainerButton = document.getElementById("create-container-button");
+const deleteContainerButton = document.getElementById("delete-container-button");
+const selectButton = document.getElementById("select-button");
+const fileInput = document.getElementById("file-input");
+const listButton = document.getElementById("list-button");
+const deleteButton = document.getElementById("delete-button");
+const status = document.getElementById("status");
+const fileList = document.getElementById("file-list");
+
+const reportStatus = message => {
+    status.innerHTML += `${message}<br/>`;
+    status.scrollTop = status.scrollHeight;
+}
+```
+
+Ten kod tworzy pola dla każdego elementu HTML, który będzie używany przez Poniższy kod, i implementuje funkcję `reportStatus`, aby wyświetlić dane wyjściowe.
+
+W poniższych sekcjach Dodaj każdy nowy blok kodu JavaScript po poprzednim bloku.
+
+### <a name="add-your-storage-account-info"></a>Dodawanie informacji o koncie magazynu
+
+Następnie Dodaj kod, aby uzyskać dostęp do konta magazynu, zastępując symbole zastępcze nazwą konta i sygnaturą dostępu współdzielonego wygenerowaną w poprzednim kroku.
+
+```javascript
+const accountName = "<Add your storage account name>";
+const sasString = "<Add the SAS you generated earlier>";
+const containerName = "testcontainer";
+const containerURL = new azblob.ContainerURL(
+    `https://${accountName}.blob.core.windows.net/${containerName}?${sasString}`,
+    azblob.StorageURL.newPipeline(new azblob.AnonymousCredential));
+```
+
+Ten kod używa informacji o koncie i sygnatury dostępu współdzielonego w celu utworzenia wystąpienia [obiektu containerurl](https://docs.microsoft.com/javascript/api/@azure/storage-blob/ContainerURL) , które jest przydatne do tworzenia kontenera magazynu i manipulowania nim.
+
+### <a name="create-and-delete-a-storage-container"></a>Tworzenie i usuwanie kontenera magazynu
+
+Następnie Dodaj kod do tworzenia i usuwania kontenera magazynu po naciśnięciu odpowiedniego przycisku.
+
+```javascript
+const createContainer = async () => {
+    try {
+        reportStatus(`Creating container "${containerName}"...`);
+        await containerURL.create(azblob.Aborter.none);
+        reportStatus(`Done.`);
+    } catch (error) {
+        reportStatus(error.body.message);
+    }
 };
 
-const blobUri = 'https://' + account.name + '.blob.core.windows.net';
-const blobService = AzureStorage.Blob.createBlobServiceWithSas(blobUri, account.sas);
+const deleteContainer = async () => {
+    try {
+        reportStatus(`Deleting container "${containerName}"...`);
+        await containerURL.delete(azblob.Aborter.none);
+        reportStatus(`Done.`);
+    } catch (error) {
+        reportStatus(error.body.message);
+    }
+};
+
+createContainerButton.addEventListener("click", createContainer);
+deleteContainerButton.addEventListener("click", deleteContainer);
 ```
 
-### <a name="create-a-blob-container"></a>Tworzenie kontenera obiektów blob
-Po utworzeniu usługi obiektów blob możesz utworzyć nowy kontener do przechowywania przekazanego obiektu blob. Metoda [createContainerIfNotExists](https://azure.github.io/azure-storage-node/BlobService.html#createContainerIfNotExists__anchor) tworzy nowy kontener i nie zwraca błędu, jeśli kontener już istnieje.
-
-```javascript
-document.getElementById('create-button').addEventListener('click', () => {
-
-    blobService.createContainerIfNotExists('mycontainer',  (error, container) => {
-        if (error) {
-            // Handle create container error
-        } else {
-            console.log(container.name);
-        }
-    });
-
-});
-```
-
-### <a name="upload-a-blob"></a>Przesyłanie obiektów blob
-Aby przekazać obiekt blob z formularza HTML, uzyskaj odwołanie do wybranego pliku z elementu *INPUT*. Wybrany plik jest dostępny za pośrednictwem tablicy `files` z elementem *type* ustawionym na wartość *file*.
-
-W skrypcie możesz odwołać się do elementu HTML i przekazać wybrany plik do usługi obiektów blob.
-
-```javascript
-document.getElementById('upload-button').addEventListener('click', () => {
-
-    const file = document.getElementById('fileinput').files[0];
-
-    blobService.createBlockBlobFromBrowserFile('mycontainer', 
-                                                file.name, 
-                                                file, 
-                                                (error, result) => {
-                                                    if(error) {
-                                                        // Handle blob error
-                                                    } else {
-                                                        console.log('Upload is successful');
-                                                    }
-                                                });
-
-});
-```
-
-Metoda [createBlockBlobFromBrowserFile](https://azure.github.io/azure-storage-node/BlobService.html#createBlockBlobFromBrowserFile__anchor) przekazuje plik przeglądarki bezpośrednio do kontenera obiektów blob.
+Ten kod wywołuje funkcje obiektu containerurl [Create](https://docs.microsoft.com/javascript/api/@azure/storage-blob/containerclient#create-containercreateoptions-) i [delete](https://docs.microsoft.com/javascript/api/@azure/storage-blob/containerclient#delete-containerdeletemethodoptions-) bez używania wystąpienia elementu [Abort](https://docs.microsoft.com/javascript/api/@azure/storage-blob/aborter) . Aby zachować prostotę w tym przewodniku Szybki Start, ten kod zakłada, że konto magazynu zostało utworzone i jest włączone. W polu kod produkcyjny Użyj wystąpienia przerwania, aby dodać funkcję limitu czasu.
 
 ### <a name="list-blobs"></a>Wyświetlanie listy obiektów blob
-Po przekazaniu pliku do kontenera obiektów blob możesz wyświetlić listę obiektów blob w kontenerze za pomocą metody [listBlobsSegmented](https://azure.github.io/azure-storage-node/BlobService.html#listBlobsSegmented__anchor).
+
+Następnie Dodaj kod, aby wyświetlić listę zawartości kontenera magazynu po naciśnięciu przycisku **listy pliki** .
 
 ```javascript
-document.getElementById('list-button').addEventListener('click', () => {
-
-    blobService.listBlobsSegmented('mycontainer', null, (error, results) => {
-        if (error) {
-            // Handle list blobs error
+const listFiles = async () => {
+    fileList.size = 0;
+    fileList.innerHTML = "";
+    try {
+        reportStatus("Retrieving file list...");
+        let marker = undefined;
+        do {
+            const listBlobsResponse = await containerURL.listBlobFlatSegment(
+                azblob.Aborter.none, marker);
+            marker = listBlobsResponse.nextMarker;
+            const items = listBlobsResponse.segment.blobItems;
+            for (const blob of items) {
+                fileList.size += 1;
+                fileList.innerHTML += `<option>${blob.name}</option>`;
+            }
+        } while (marker);
+        if (fileList.size > 0) {
+            reportStatus("Done.");
         } else {
-            results.entries.forEach(blob => {
-                console.log(blob.name);
-            });
+            reportStatus("The container does not contain any files.");
         }
-    });
-    
-});
+    } catch (error) {
+        reportStatus(error.body.message);
+    }
+};
+
+listButton.addEventListener("click", listFiles);
 ```
 
-Metoda *listBlobsSegmented* zwraca kolekcję obiektów blob. Domyślna wielkość kolekcji to 5000 obiektów blob, ale można dostosować tę wartość do własnych potrzeb. [Kontynuacja przykładu](https://github.com/Azure/azure-storage-node/blob/master/examples/samples/continuationsample.js#L132) przedstawia sposób pracy z dużą liczbą obiektów blob oraz obsługę stronicowania w bibliotece klienta. 
+Ten kod wywołuje funkcję [obiektu containerurl. listBlobFlatSegment](https://docs.microsoft.com/javascript/api/@azure/storage-blob/containerclient#listblobsflat-containerlistblobsoptions-) w pętli, aby upewnić się, że wszystkie segmenty są pobierane. Dla każdego segmentu jest on pętli nad listą elementów obiektów blob, które zawiera i aktualizuje listę **plików** .
 
+### <a name="upload-blobs"></a>Przekazywanie obiektów BLOB
+
+Następnie Dodaj kod do przekazywania plików do kontenera magazynu po naciśnięciu przycisku **Wybierz i przekaż pliki** .
+
+```javascript
+const uploadFiles = async () => {
+    try {
+        reportStatus("Uploading files...");
+        const promises = [];
+        for (const file of fileInput.files) {
+            const blockBlobURL = azblob.BlockBlobURL.fromContainerURL(containerURL, file.name);
+            promises.push(azblob.uploadBrowserDataToBlockBlob(
+                azblob.Aborter.none, file, blockBlobURL));
+        }
+        await Promise.all(promises);
+        reportStatus("Done.");
+        listFiles();
+    } catch (error) {
+        reportStatus(error.body.message);
+    }
+}
+
+selectButton.addEventListener("click", () => fileInput.click());
+fileInput.addEventListener("change", uploadFiles);
+```
+
+Ten kod łączy przycisk **Wybierz i przekaż pliki** do ukrytego elementu `file-input`. W ten sposób zdarzenie `click`ego przycisku wyzwala zdarzenie `click` danych wejściowych i wyświetla selektor plików. Po wybraniu opcji pliki i zamknięciu okna dialogowego wystąpi zdarzenie `input`, a funkcja `uploadFiles` zostanie wywołana. Ta funkcja wywołuje funkcję [uploadBrowserDataToBlockBlob](https://docs.microsoft.com/javascript/api/@azure/storage-blob/blockblobclient#uploadbrowserdata-blob---arraybuffer---arraybufferview--blockblobparalleluploadoptions-) tylko dla przeglądarki dla każdego wybranego pliku. Każde wywołanie zwraca obietnicę, która jest dodawana do listy, dzięki czemu można oczekiwać, że wszystkie jednocześnie czekają na przekazanie plików.
 
 ### <a name="delete-blobs"></a>Usuwanie obiektów blob
-Przekazany obiekt blob możesz usunąć, wywołując metodę [deleteBlobIfExists](https://azure.github.io/azure-storage-node/BlobService.html#deleteBlobIfExists__anchor).
+
+Następnie Dodaj kod w celu usunięcia plików z kontenera magazynu po naciśnięciu przycisku **Usuń wybrane pliki** .
 
 ```javascript
-document.getElementById('delete-button').addEventListener('click', () => {
-
-    var blobName = YOUR_BLOB_NAME;
-    blobService.deleteBlobIfExists('mycontainer', blobName, (error, result) => {
-        if (error) {
-            // Handle delete blob error
+const deleteFiles = async () => {
+    try {
+        if (fileList.selectedOptions.length > 0) {
+            reportStatus("Deleting files...");
+            for (const option of fileList.selectedOptions) {
+                const blobURL = azblob.BlobURL.fromContainerURL(containerURL, option.text);
+                await blobURL.delete(azblob.Aborter.none);
+            }
+            reportStatus("Done.");
+            listFiles();
         } else {
-            console.log('Blob deleted successfully');
+            reportStatus("No files selected.");
         }
-    });
-    
-});
+    } catch (error) {
+        reportStatus(error.body.message);
+    }
+};
+
+deleteButton.addEventListener("click", deleteFiles);
 ```
-> [!WARNING]
-> Aby ten przykładowy kod zadziałał, musisz podać wartość ciągu dla parametru *blobName*.
+
+Ten kod wywołuje funkcję [BlobURL. Delete](https://docs.microsoft.com/javascript/api/@azure/storage-blob/BlobURL#delete-aborter--iblobdeleteoptions-) , aby usunąć każdy plik wybrany na liście. Następnie wywołuje funkcję `listFiles` widoczną wcześniej w celu odświeżenia zawartości listy **plików** .
+
+### <a name="run-and-test-the-web-application"></a>Uruchamianie i testowanie aplikacji sieci Web
+
+W tym momencie możesz uruchomić stronę i eksperyment, aby poznać sposób działania usługi BLOB Storage. Jeśli wystąpią błędy (na przykład podczas próby wyświetlenia listy plików przed utworzeniem kontenera), w okienku **stan** zostanie wyświetlony komunikat o błędzie otrzymany. Możesz również ustawić punkty przerwania w kodzie JavaScript, aby przeanalizować wartości zwracane przez interfejsy API magazynu.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
-Aby wyczyścić zasoby utworzone podczas pracy z tym przewodnikiem Szybki start, wróć do witryny [Azure Portal](https://portal.azure.com) i wybierz konto magazynu. Po wybraniu konta magazynu możesz je usunąć, wybierając pozycję **Przegląd > Usuń konto magazynu**.
+
+Aby wyczyścić zasoby utworzone w ramach tego przewodnika Szybki Start, przejdź do [Azure Portal](https://portal.azure.com) i Usuń grupę zasobów utworzoną w sekcji wymagania wstępne.
 
 ## <a name="next-steps"></a>Następne kroki
-Zapoznaj się z przykładami, aby dowiedzieć się, jak pobrać obiekty blob oraz wyświetlić informację o postępie przekazywania plików.
+
+W tym przewodniku szybki start utworzono prostą witrynę sieci Web, która uzyskuje dostęp do usługi BLOB Storage z poziomu języka JavaScript opartego na przeglądarce. Aby dowiedzieć się, jak można hostować witrynę internetową w usłudze BLOB Storage, przejdź do następującego samouczka:
 
 > [!div class="nextstepaction"]
-> [Blob storage client libraries (Biblioteki klienta magazynu obiektów blob)](https://github.com/Azure/azure-storage-node/tree/master/browser)
+> [Hostowanie statycznej witryny sieci Web na Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blob-static-website-host)

@@ -7,22 +7,20 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: c6f7e921886a6acdaa31d0f69f57119c339c0b8b
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 0f935999b68a7283c032d43c42d688b273d5c450
+ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172592"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75720348"
 ---
-# <a name="secure-your-cluster-in-azure-data-explorer"></a>Zabezpieczanie klastra na platformie Azure Eksplorator danych
+# <a name="secure-your-cluster-in-azure-data-explorer---azure-portal"></a>Zabezpieczanie klastra na platformie Azure Eksplorator danych — Azure Portal
 
-[Azure Disk Encryption](/azure/security/azure-security-disk-encryption-overview) pomaga chronić dane i zabezpieczać je w celu spełnienia wymagań dotyczących zabezpieczeń i zgodności w organizacji. Zapewnia szyfrowanie woluminów systemu operacyjnego i dysków danych maszyn wirtualnych klastra. Integruje się ona również z usługą [Azure Key Vault](/azure/key-vault/) , która pozwala nam kontrolować klucze szyfrowania dysków i wpisy tajne oraz zarządzać nimi, a także upewnić się, że wszystkie dane na dyskach maszyn wirtualnych są szyfrowane w stanie spoczynku w usłudze Azure Storage. 
-
-Ustawienia zabezpieczeń klastra umożliwiają włączenie szyfrowania dysków w klastrze.
+[Azure Disk Encryption](/azure/security/azure-security-disk-encryption-overview) pomaga chronić dane i zabezpieczać je w celu spełnienia wymagań dotyczących zabezpieczeń i zgodności w organizacji. Zapewnia szyfrowanie woluminów systemu operacyjnego i dysków danych maszyn wirtualnych klastra. Integruje się ona również z [Azure Key Vault](/azure/key-vault/), co pozwala nam kontrolować klucze szyfrowania dysków i wpisy tajne oraz zarządzać nimi oraz upewnić się, że wszystkie dane na dyskach maszyn wirtualnych są szyfrowane. 
   
-## <a name="enable-encryption-at-rest"></a>Włącz szyfrowanie w spoczynku
+## <a name="enable-encryption-at-rest-in-the-azure-portal"></a>Włącz szyfrowanie w Azure Portal
   
-Włączenie [szyfrowania](/azure/security/fundamentals/encryption-atrest) przechowywanego w klastrze zapewnia ochronę danych przechowywanych danych (w spoczynku). 
+Ustawienia zabezpieczeń klastra umożliwiają włączenie szyfrowania dysków w klastrze. Włączenie [szyfrowania](/azure/security/fundamentals/encryption-atrest) przechowywanego w klastrze zapewnia ochronę danych przechowywanych danych (w spoczynku). 
 
 1. W Azure Portal przejdź do zasobu klastra usługi Azure Eksplorator danych. W obszarze **Ustawienia** wybierz pozycję **zabezpieczenia**. 
 

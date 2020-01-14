@@ -12,12 +12,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 12/19/2019
 ms.author: kumud
-ms.openlocfilehash: a44f99b5a7f25a7350e6a63cf85c6b2287647162
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: HT
+ms.openlocfilehash: 9214886f468a4a052328a99289845361a059b650
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75373251"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75780083"
 ---
 # <a name="what-is-ipv6-for-azure-virtual-network-preview"></a>Co to jest protokół IPv6 dla usługi Azure Virtual Network? (Wersja zapoznawcza)
 
@@ -75,7 +75,7 @@ IPv6 dla sieci wirtualnej platformy Azure to fundamentowy zestaw funkcji, który
 ## <a name="limitations"></a>Ograniczenia
 Bieżąca wersja protokołu IPv6 dla usługi Azure Virtual Network ma następujące ograniczenia:
 - Protokół IPv6 dla usługi Azure Virtual Network (wersja zapoznawcza) jest dostępny we wszystkich globalnych regionach platformy Azure, ale tylko na platformie Azure, a nie w chmurach dla instytucji rządowych.
-- Bramy Express Route i sieci VPN nie można używać w sieci wirtualnej z włączonym protokołem IPv6, bezpośrednio lub za pomocą komunikacji równorzędnej z "UseRemoteGateway". 
+- Bram ExpressRoute i VPN Gateway nie można używać w sieci wirtualnej z włączonym protokołem IPv6, bezpośrednio lub za pomocą komunikacji równorzędnej z "UseRemoteGateway". 
 - Platforma Azure (AKS itp.) nie obsługuje komunikacji IPv6 dla kontenerów.  
 
 ## <a name="pricing"></a>Cennik

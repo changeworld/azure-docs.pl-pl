@@ -6,22 +6,25 @@ manager: nitinme
 description: Dwie tabele przedstawiające rejestry kontenerów, repozytoria i nazwy obrazów dla wszystkich ofert usług poznawczych.
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 11/15/2019
+ms.date: 01/10/2020
 ms.author: dapine
-ms.openlocfilehash: 2058dd6e52ddb417e24368b27384df9a222c378e
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 7c229ea306d89f85fb37a68fc84e3e4f6770e5ad
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74142211"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75866936"
 ---
 ### <a name="container-repositories-and-images"></a>Repozytoria kontenerów i obrazy
 
-Poniższe tabele stanowią listę dostępnych obrazów kontenerów oferowanych przez usługę Azure Cognitive Services. Aby uzyskać pełną listę wszystkich dostępnych nazw obrazów kontenerów i ich dostępnych tagów, zobacz [Cognitive Services znacznika obrazu kontenera](../container-image-tags.md).
+Poniższe tabele stanowią listę dostępnych obrazów kontenerów oferowanych przez usługę Azure Cognitive Services. Aby uzyskać pełną listę wszystkich dostępnych nazw obrazów kontenerów i ich dostępnych tagów, zobacz [Cognitive Services znacznika obrazu kontenera](../container-image-tags.md). Obecnie nie ma Cognitive Services kontenerów, które są ogólnie dostępne (GA). Przez czas do momentu wykonania dalszych anonsów — kontenery są dostępne jako publiczne, *niewarunkowe* lub *publicznej wersji zapoznawczej*.
+
+ - *Publiczne niewarunkowe*: kontenery są dostępne publicznie bez mechanizmu kontroli.
+ - *Publiczna wersja zapoznawcza*: kontenery są dostępne publicznie, ale najpierw wymagają formalnego żądania dostępu do rejestru kontenerów.
 
 #### <a name="public-ungated-container-registry-mcrmicrosoftcom"></a>Public "ungated" (rejestr kontenerów: `mcr.microsoft.com`)
 
-Microsoft Container Registry (MCR) łączy wszystkie publicznie dostępne kontenery "niebrama" dla Cognitive Services. Są one również dostępne bezpośrednio w usłudze [Docker Hub](https://hub.docker.com/_/microsoft-azure-cognitive-services).
+Microsoft Container Registry (MCR) łączy wszystkie publicznie dostępne kontenery "niebrama" dla Cognitive Services. Kontenery są również dostępne bezpośrednio w usłudze [Docker Hub](https://hub.docker.com/_/microsoft-azure-cognitive-services).
 
 | Usługa | Kontener | Container Registry/repozytorium/nazwa obrazu |
 |--|--|--|
@@ -32,11 +35,11 @@ Microsoft Container Registry (MCR) łączy wszystkie publicznie dostępne konten
 
 #### <a name="public-gated-preview-container-registry-containerpreviewazurecrio"></a>Public "Gated" (wersja zapoznawcza) (rejestr kontenerów: `containerpreview.azurecr.io`)
 
-Rejestr w wersji zapoznawczej kontenera zawiera wszystkie publicznie dostępne kontenery "Gated" Cognitive Services. Te kontenery wymagają formalnego żądania dostępu w celu ich użycia.
+Rejestr w wersji zapoznawczej kontenera zawiera wszystkie publicznie dostępne kontenery "Gated" Cognitive Services. Te kontenery wymagają formalnego żądania dostępu do nich za pośrednictwem ich rejestru kontenerów.
 
 | Usługa | Kontener | Container Registry/repozytorium/nazwa obrazu |
 |--|--|--|
-| [Narzędzie do wykrywania anomalii](../../anomaly-detector/anomaly-detector-container-howto.md) | Narzędzie do wykrywania anomalii | `containerpreview.azurecr.io/microsoft/cognitive-services-anomaly-detector` |
+| [Wykrywacz anomalii](../../anomaly-detector/anomaly-detector-container-howto.md) | Narzędzie do wykrywania anomalii | `containerpreview.azurecr.io/microsoft/cognitive-services-anomaly-detector` |
 | [Przetwarzanie obrazów](../../Computer-vision/computer-vision-how-to-install-containers.md) | Odczyt | `containerpreview.azurecr.io/microsoft/cognitive-services-read` |
 | [Twarzy](../../face/face-how-to-install-containers.md) | Rozpoznawanie twarzy | `containerpreview.azurecr.io/microsoft/cognitive-services-face` |
 | [Aparat rozpoznawania formularzy](https://go.microsoft.com/fwlink/?linkid=2083826&clcid=0x409) | Rozpoznawanie formularzy | `containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer` |

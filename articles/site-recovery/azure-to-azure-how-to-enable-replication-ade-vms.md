@@ -7,19 +7,19 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 08/08/2019
 ms.author: sutalasi
-ms.openlocfilehash: 2b6c6f2882701515d868e96ae10af85890004587
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 3a59f137240eff2a3a68fa5547be8c6c25d3e5fe
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954682"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772231"
 ---
 # <a name="replicate-azure-disk-encryption-enabled-virtual-machines-to-another-azure-region"></a>Replikowanie maszyn wirtualnych z obsługą Azure Disk Encryption w innym regionie platformy Azure
 
 W tym artykule opisano sposób replikowania maszyn wirtualnych platformy Azure z włączonym Azure Disk Encryption (ADE) z jednego regionu świadczenia usługi Azure do innego.
 
 >[!NOTE]
-> Site Recovery obecnie obsługuje ADE, z i bez Azure Active Directory (AAD) dla maszyn wirtualnych z systemem Windows.  W przypadku maszyn z uruchomionym programem ADE 1,1 (bez usługi AAD) maszyny wirtualne z systemem Windows muszą używać dysków zarządzanych. Maszyny wirtualne z dyskami niezarządzanymi nie są obsługiwane. Jeśli przełączysz się z programu ADE 0,1 (z usługą AAD) do 1,1, musisz wyłączyć replikację i włączyć replikację dla maszyny wirtualnej po włączeniu opcji 1,1.
+> Site Recovery obecnie obsługuje ADE, z i bez Azure Active Directory (AAD) dla maszyn wirtualnych z systemami operacyjnymi Windows i Linux.  W przypadku maszyn z uruchomionym programem ADE 1,1 (bez usługi AAD) maszyny wirtualne muszą używać dysków zarządzanych. Maszyny wirtualne z dyskami niezarządzanymi nie są obsługiwane. Jeśli przełączysz się z programu ADE 0,1 (z usługą AAD) do 1,1, musisz wyłączyć replikację i włączyć replikację dla maszyny wirtualnej po włączeniu opcji 1,1.
 
 
 ## <a id="required-user-permissions"></a>Wymagane uprawnienia użytkownika

@@ -73,3 +73,5 @@
       href: ../templates/ethereum-poa-deployment.md
     - name: Konsorcjum sieci Hyperledger Fabric
       href: ../templates/hyperledger-fabric-consortium-blockchain.md
+    - name: Konsorcjum sieci Hyperledger Fabric — Azure Kubernetes Service
+      href: ../templates/hyperledger-fabric-consortium-azure-kubernetes-service.md

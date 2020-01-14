@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 12/16/2019
-ms.openlocfilehash: d6bb57c8163f7653f4b10142d7ec2b34f50456f1
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: d8d57c15fffaa6a9d18ad3c83716f99247512c15
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75527862"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75860757"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>Dostęp do zasobów platformy Azure Virtual Network z Azure Logic Apps przy użyciu środowisk usługi integracji (ISEs)
 
@@ -23,7 +23,7 @@ Po utworzeniu ISE, gdy przejdziesz do tworzenia aplikacji logiki lub konta integ
 
 ![Wybierz środowisko usługi integracji](./media/connect-virtual-network-vnet-isolated-environment-overview/select-logic-app-integration-service-environment.png)
 
-Aplikacja logiki może teraz bezpośrednio uzyskiwać dostęp do systemów, które znajdują się wewnątrz lub są połączone z siecią wirtualną przy użyciu dowolnego z następujących elementów:
+Aplikacja logiki może teraz bezpośrednio uzyskiwać dostęp do systemów, które znajdują się wewnątrz lub są połączone z siecią wirtualną przy użyciu dowolnego z tych elementów, które są uruchamiane w ramach tego samego ISE, co aplikacja logiki:
 
 * Łącznik **ISE**z etykietą dla tego systemu
 * Wbudowany wyzwalacz lub akcja z oznaczeniem **rdzenia**, na przykład wyzwalacz http lub Akcja
@@ -43,23 +43,21 @@ To omówienie zawiera szczegółowe informacje o tym, w jaki sposób usługa ISE
 
 Podczas tworzenia zintegrowanego środowiska usługi (ISE) na platformie Azure Możesz wybrać sieć wirtualną platformy Azure, w której chcesz *wstrzyknąć* swój ISE. Platforma Azure następnie wprowadza lub wdraża prywatne wystąpienie usługi Logic Apps w sieci wirtualnej. Ta akcja powoduje utworzenie środowiska izolowanego, w którym można tworzyć i uruchamiać aplikacje logiki dla zasobów dedykowanych. Podczas tworzenia aplikacji logiki wybierasz ISE jako lokalizację swojej aplikacji, co zapewnia aplikacji logiki bezpośredni dostęp do sieci wirtualnej i zasobów w tej sieci.
 
-Usługa Logic Apps w ISE zapewnia te same środowiska użytkownika i podobne funkcje jak globalna Logic Apps. Można nie tylko korzystać z tych samych wbudowanych wyzwalaczy, wbudowanych akcji i łączników z globalnej usługi Logic Apps, ale można również używać łączników specyficznych dla ISE. Oto kilka standardowych łączników oferujących wersje, które są uruchamiane w ISE:
+Usługa Logic Apps w ISE zapewnia te same środowiska użytkownika i podobne funkcje jak publiczna Logic Apps globalna. Można użyć wszystkich wbudowanych wyzwalaczy, akcji i łączników zarządzanych, które są dostępne w globalnej usłudze Logic Apps. Niektóre zarządzane łączniki oferują dodatkowe wersje ISE. Różnica istnieje w miejscu, w którym są uruchamiane, oraz etykiet, które są wyświetlane w Projektancie aplikacji logiki podczas pracy w ISE.
 
-* Blob Storage, File Storage i Table Storage platformy Azure
-* Azure Queues, Azure Service Bus, Azure Event Hubs i IBM MQ
-* FTP i SFTP — SSH
-* SQL Server, Azure SQL Data Warehouse, Azure Cosmos DB
-* AS2, X12 i EDIFACT
+![Łączniki z etykietami i bez nich w ISE](./media/connect-virtual-network-vnet-isolated-environment-overview/labeled-built-in-actions-triggers-managed-connectors.png)
 
-Różnica między łącznikami ISE i innymi niż ISE znajduje się w lokalizacjach, w których uruchamiane są wyzwalacze i akcje:
+* Wbudowane wyzwalacze i akcje wyświetlają etykietę **podstawową** i są zawsze uruchamiane w tym samym ISE, co aplikacja logiki. Łączniki zarządzane, które wyświetlają etykietę **ISE** , są również uruchamiane w tym samym ISE, jak w aplikacji logiki.
 
-* W ISE wbudowane wyzwalacze i akcje, takie jak HTTP, są zawsze uruchamiane w tym samym ISE jako aplikacja logiki i wyświetlają etykietę **podstawową** .
+  Na przykład Oto kilka łączników oferujących wersje ISE:
 
-  ![Wybierz wyzwalacze wbudowane "podstawowe" i akcje](./media/connect-virtual-network-vnet-isolated-environment-overview/select-core-built-in-actions-triggers.png)
+  * Blob Storage, File Storage i Table Storage platformy Azure
+  * Azure Queues, Azure Service Bus, Azure Event Hubs i IBM MQ
+  * FTP i SFTP — SSH
+  * SQL Server, Azure SQL Data Warehouse, Azure Cosmos DB
+  * AS2, X12 i EDIFACT
 
-* Łączniki, które działają w ISE, mają publicznie hostowane wersje dostępne w globalnej usłudze Logic Apps. W przypadku łączników oferujących dwie wersje łączniki z **ISE** etykieta zawsze są uruchamiane w tym samym ISE, co aplikacja logiki. Łączniki bez etykiety **ISE** są uruchamiane w globalnej usłudze Logic Apps.
-
-  ![Wybieranie łączników ISE](./media/connect-virtual-network-vnet-isolated-environment-overview/select-ise-connectors.png)
+* Łączniki zarządzane, które nie wyświetlają żadnych dodatkowych etykiet, są zawsze uruchamiane w publicznej globalnej usłudze Logic Apps, ale nadal można używać tych łączników w aplikacji logiki opartej na ISE.
 
 ISE zapewnia również zwiększone limity czasu trwania działania, przechowywania magazynu, przepływności, żądań HTTP i limitów czasu odpowiedzi, rozmiarów komunikatów i żądań łączników niestandardowych. Aby uzyskać więcej informacji, zobacz [limity i konfiguracja dla Azure Logic Apps](logic-apps-limits-and-config.md).
 

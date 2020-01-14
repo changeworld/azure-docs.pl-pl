@@ -1,19 +1,15 @@
 ---
 title: Oceń maszyny wirtualne funkcji Hyper-V do migracji na platformę Azure za pomocą Azure Migrate | Microsoft Docs
 description: Opisuje sposób oceny lokalnych maszyn wirtualnych funkcji Hyper-V na potrzeby migracji na platformę Azure przy użyciu Azure Migrate.
-author: rayne-wiselman
-manager: carmonm
-ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 11/18/2019
-ms.author: raynew
+ms.date: 01/01/2020
 ms.custom: mvc
-ms.openlocfilehash: d8a4a6d650684cd5c8c0f22ad683c3952e2f6d08
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: f2a7caad13ad845d5b2aeb3240b7d77fa89faf12
+ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158386"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75720263"
 ---
 # <a name="assess-hyper-v-vms-with-azure-migrate-server-assessment"></a>Ocenianie maszyn wirtualnych funkcji Hyper-V za pomocą oceny serwera Azure Migrate
 
@@ -23,7 +19,7 @@ W tym artykule przedstawiono sposób oceny lokalnych maszyn wirtualnych funkcji 
 
 
 
-Ten samouczek jest drugą częścią serii, która pokazuje, jak oceniać i migrować maszyny wirtualne funkcji Hyper-V na platformę Azure. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Ten samouczek jest drugą częścią serii, która pokazuje, jak oceniać i migrować maszyny wirtualne funkcji Hyper-V na platformę Azure. Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Skonfiguruj projekt Azure Migrate.
@@ -43,7 +39,8 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 - [Wykonaj](tutorial-prepare-hyper-v.md) pierwszy samouczek z tej serii. Jeśli tego nie zrobisz, instrukcje podane w tym samouczku nie będą działały.
 - Oto co należy zrobić w pierwszym samouczku:
     - [Skonfiguruj uprawnienia platformy Azure](tutorial-prepare-hyper-v.md#prepare-azure) dla Azure Migrate.
-    - [Przygotuj klastry Hyper-V](tutorial-prepare-hyper-v.md#prepare-for-hyper-v-assessment) , hosty i maszyny wirtualne w celu oceny.
+    - [Przygotuj klastry Hyper-V](tutorial-prepare-hyper-v.md#prepare-hyper-v-for-assessment) , hosty i maszyny wirtualne w celu oceny.
+    - [Przygotuj się do wdrożenia](tutorial-prepare-hyper-v.md#prepare-for-appliance-deployment) urządzenia Azure Migrate, służącego do odnajdywania i oceny maszyn wirtualnych funkcji Hyper-V.
 
 ## <a name="set-up-an-azure-migrate-project"></a>Konfigurowanie projektu Azure Migrate
 
@@ -184,7 +181,7 @@ Skonfiguruj urządzenie po raz pierwszy.
 
 Jeśli używasz dysków VHD w systemie technologii, musisz włączyć delegowanie poświadczeń z urządzenia do hostów funkcji Hyper-V. Wymaga to:
 
-- Każdemu hostowi można umożliwić działanie jako delegata urządzenia. Należy to zrobić w poprzednim samouczku, gdy przygotowano funkcję Hyper-V do oceny i migracji. Należy skonfigurować protokół CredSSP dla hostów [ręcznie](tutorial-prepare-hyper-v.md#enable-credssp-on-hosts)lub przez [uruchomienie skryptu konfiguracji wymagań wstępnych funkcji Hyper-V](tutorial-prepare-hyper-v.md#hyper-v-prerequisites-configuration-script).
+- Każdemu hostowi można umożliwić działanie jako delegata urządzenia. Jeśli samouczki zostały wykonane w powyższej części samouczka, podczas przygotowywania funkcji Hyper-V do oceny i migracji należy wykonać te instrukcje. Należy skonfigurować protokół CredSSP dla hostów [ręcznie](tutorial-prepare-hyper-v.md#enable-credssp-on-hosts)lub przez [uruchomienie skryptu](tutorial-prepare-hyper-v.md#prepare-with-a-script) , który to robi.
 - Włącz delegowanie CredSSP, aby urządzenie Azure Migrate było działać jako klient, Delegowanie poświadczeń do hosta.
 
 Włącz na urządzeniu w następujący sposób:
@@ -322,10 +319,10 @@ Klasyfikacje zaufania dla oceny są następujące.
 **Dostępność punktu danych** | **Ocenę zaufania**
 --- | ---
 0%–20% | 1 gwiazdka
-21%-40% | 2 gwiazdki
+21%–40% | 2 gwiazdki
 41%–60% | 3 gwiazdki
 61%–80% | 4 gwiazdki
-81%-100% | 5 gwiazdek
+81%–100% | 5 gwiazdek
 
 [Dowiedz się więcej](best-practices-assessment.md#best-practices-for-confidence-ratings) o najlepszych rozwiązaniach dotyczących klasyfikacji zaufania.
 
@@ -335,7 +332,7 @@ Klasyfikacje zaufania dla oceny są następujące.
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku zostaną wykonane następujące czynności:
+W tym samouczku zostały wykonane następujące czynności:
 
 > [!div class="checklist"]
 > * Konfigurowanie urządzenia Azure Migrate

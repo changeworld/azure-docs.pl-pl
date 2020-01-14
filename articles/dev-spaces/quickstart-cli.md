@@ -3,15 +3,15 @@ title: Opracowywanie aplikacji na Kubernetes
 services: azure-dev-spaces
 ms.date: 07/08/2019
 ms.topic: quickstart
-description: Wdrażanie mikrousługi na AKS z Azure Dev Spaces
+description: W tym przewodniku szybki start pokazano, jak używać Azure Dev Spaces i wiersza polecenia do tworzenia aplikacji w usłudze Azure Kubernetes Service
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, Service siatk, Service siatk Routing, polecenia kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 932b25e277936a2efe6a3e037458fabd67b024c2
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 553c316587d27e0921fbbbf78b02ddb048532c43
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325640"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867250"
 ---
 # <a name="quickstart-develop-an-application-on-kubernetes---azure-dev-spaces"></a>Szybki Start: Tworzenie aplikacji na Kubernetes — Azure Dev Spaces
 Ten przewodnik zawiera informacje na temat wykonywania następujących czynności:
@@ -81,6 +81,9 @@ azds prep --public
 
 Należy uruchomić polecenie `prep` w katalogu *dev-Spaces/Samples/NodeJS/Data-Start/webfrontonu* , aby poprawnie wygenerować zasoby wykresu Docker i Helm.
 
+> [!TIP]
+> Polecenie `prep` podejmuje próbę wygenerowania [wykresu pliku dockerfile i Helm](how-dev-spaces-works.md#prepare-your-code) dla projektu. Azure Dev Spaces używa tych plików do kompilowania i uruchamiania kodu, ale te pliki można modyfikować, jeśli chcesz zmienić sposób kompilowania i wykonywania projektu.
+
 ## <a name="build-and-run-code-in-kubernetes"></a>Kompilowanie i uruchamianie kodu na platformie Kubernetes
 
 Kompiluj i uruchamiaj kod w AKS za pomocą polecenia `azds up`:
@@ -116,7 +119,7 @@ Jeśli zatrzymasz polecenie `azds up` za pomocą *klawiszy CTRL + c*, usługa b�
 
 ## <a name="update-code"></a>Aktualizowanie kodu
 
-Aby wdrożyć zaktualizowaną wersję usługi, możesz zaktualizować dowolny plik w projekcie i ponownie uruchomić polecenie `azds up`. Na przykład:
+Aby wdrożyć zaktualizowaną wersję usługi, możesz zaktualizować dowolny plik w projekcie i ponownie uruchomić polecenie `azds up`. Przykład:
 
 1. Jeśli `azds up` nadal działa, naciśnij *klawisze CTRL + c*.
 1. Aktualizuj [wiersz 13 w `server.js`](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/webfrontend/server.js#L13) do:
@@ -157,4 +160,4 @@ Dowiedz się, jak Azure Dev Spaces ułatwiają tworzenie bardziej złożonych ap
 [nodejs-quickstart]: quickstart-nodejs.md
 [netcore-quickstart]: quickstart-netcore.md
 [team-quickstart]: quickstart-team-development.md
-[supported-regions]: about.md#supported-regions-and-configurations
+[supported-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service

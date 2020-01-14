@@ -5,22 +5,22 @@ author: bwren
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 09/20/2019
+ms.date: 12/18/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 83b91be52694076373d950e0ad785ef22671ef4f
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: b0b8757590876669e00e81378411c010514e3036
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894530"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750367"
 ---
-# <a name="collect-azure-resource-logs-in-log-analytics-workspace-in-azure-monitor"></a>Zbieranie dzienników zasobów platformy Azure w obszarze roboczym Log Analytics w Azure Monitor
-[Dzienniki zasobów](resource-logs-overview.md) na platformie Azure zapewniają rozbudowane, częste dane dotyczące wewnętrznej operacji zasobu platformy Azure. W tym artykule opisano zbieranie dzienników zasobów w Log Analytics obszarze roboczym, które umożliwiają analizowanie go przy użyciu innych danych monitorowania zebranych w dziennikach Azure Monitor przy użyciu zaawansowanych zapytań dzienników, a także do korzystania z innych funkcji Azure Monitor, takich jak alerty i wizualizacje. 
+# <a name="collect-azure-platform-logs-in-log-analytics-workspace-in-azure-monitor"></a>Zbierz dzienniki platformy Azure w obszarze roboczym Log Analytics w Azure Monitor
+[Dzienniki platformy](platform-logs-overview.md) na platformie Azure, w tym dziennik aktywności platformy Azure i dzienniki zasobów, zapewniają szczegółowe informacje diagnostyczne i inspekcji dla zasobów platformy Azure oraz platformy platformy Azure, od których zależą. W tym artykule opisano zbieranie dzienników zasobów w Log Analytics obszarze roboczym, które umożliwiają analizowanie go przy użyciu innych danych monitorowania zebranych w dziennikach Azure Monitor przy użyciu zaawansowanych zapytań dzienników, a także do korzystania z innych funkcji Azure Monitor, takich jak alerty i wizualizacje. 
 
 
-## <a name="what-you-can-do-with-resource-logs-in-a-workspace"></a>Co możesz zrobić z dziennikami zasobów w obszarze roboczym
-Zbieranie dzienników zasobów w obszarze roboczym Log Analytics pozwala analizować dzienniki wszystkich zasobów platformy Azure razem i korzystać ze wszystkich funkcji dostępnych dla [Azure monitor dzienników](data-platform-logs.md) , które obejmują następujące elementy:
+## <a name="what-you-can-do-with-platform-logs-in-a-workspace"></a>Co możesz zrobić za pomocą dzienników platformy w obszarze roboczym
+Zbieranie dzienników platformy w obszarze roboczym Log Analytics pozwala analizować dzienniki wszystkich zasobów platformy Azure razem i korzystać ze wszystkich funkcji dostępnych dla [Azure monitor dzienników](data-platform-logs.md) , które obejmują następujące elementy:
 
 * **Zapytania dzienników** — Twórz [zapytania dzienników](../log-query/log-query-overview.md) przy użyciu zaawansowanego języka zapytań, aby szybko analizować i uzyskiwać wgląd w dane diagnostyczne i analizować je z danymi zebranymi z innych źródeł w Azure monitor.
 * **Alerty** — Uzyskaj aktywne powiadomienie o krytycznych warunkach i wzorcach zidentyfikowanych w dziennikach zasobów przy użyciu [alertów dziennika w Azure monitor](alerts-log.md).
@@ -30,10 +30,14 @@ Zbieranie dzienników zasobów w obszarze roboczym Log Analytics pozwala analizo
 Jeśli jeszcze tego nie zrobiono, należy [utworzyć nowy obszar roboczy](../learn/quick-create-workspace.md) . Obszar roboczy nie musi znajdować się w tej samej subskrypcji co zasób wysyła dzienniki, dopóki użytkownik, który konfiguruje ustawienie, ma dostęp do obu subskrypcji.
 
 ## <a name="create-a-diagnostic-setting"></a>Utwórz ustawienie diagnostyczne
-Dzienniki zasobów nie są domyślnie zbierane. Zbierz je w obszarze roboczym Log Analytics i innych miejscach docelowych, tworząc ustawienia diagnostyczne dla zasobu platformy Azure. Aby uzyskać szczegółowe informacje [, zobacz Tworzenie ustawień diagnostycznych w celu zbierania dzienników i metryk na platformie Azure](diagnostic-settings.md) .
+Wyślij dzienniki platformy do obszaru roboczego Log Analytics i innych miejsc docelowych, tworząc ustawienia diagnostyczne dla zasobu platformy Azure. Aby uzyskać szczegółowe informacje [, zobacz Tworzenie ustawień diagnostycznych w celu zbierania dzienników i metryk na platformie Azure](diagnostic-settings.md) .
 
-## <a name="collection-mode"></a>Tryb kolekcji
-Dane zbierane w obszarze roboczym Log Analytics są przechowywane w tabelach zgodnie z opisem w temacie [struktura dzienników Azure monitor](../log-query/logs-structure.md). Tabele używane przez dzienniki zasobów zależą od typu kolekcji używanej przez zasób:
+
+## <a name="activity-log-collection"></a>Zbieranie dzienników aktywności
+Dziennik aktywności można wysłać z dowolnej subskrypcji do pięciu Log Analytics obszarów roboczych. Dane dzienników zasobów zebrane w obszarze roboczym Log Analytics są przechowywane w tabeli **usługi Azure** . 
+
+## <a name="resource-log-collection-mode"></a>Tryb zbierania dzienników zasobów
+Dane dzienników zasobów zebrane w obszarze roboczym Log Analytics są przechowywane w tabelach zgodnie z opisem w temacie [struktura dzienników Azure monitor](../log-query/logs-structure.md). Tabele używane przez dzienniki zasobów zależą od typu kolekcji używanej przez zasób:
 
 - Diagnostyka Azure — wszystkie dane są zapisywane w tabeli _AzureDiagnostics_ .
 - Specyficzne dla zasobów — dane są zapisywane w pojedynczej tabeli dla każdej kategorii zasobu.
@@ -53,12 +57,12 @@ Tabela AzureDiagnostics będzie wyglądać następująco:
 
 | ResourceProvider    | Kategoria     | A  | B  | C  | D  | E  | F  | G  | H  | I  |
 | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- |
-| Microsoft. Service1 | AuditLogs    | x1 | y1 | z1 |    |    |    |    |    |    |
+| Microsoft. Service1 | Dzienniki inspekcji    | x1 | y1 | z1 |    |    |    |    |    |    |
 | Microsoft. Service1 | ErrorLogs    |    |    |    | q1 | w1 | e1 |    |    |    |
-| Microsoft. Językowej2 | AuditLogs    |    |    |    |    |    |    | j1 | k1 | l1 |
+| Microsoft. Językowej2 | Dzienniki inspekcji    |    |    |    |    |    |    | j1 | k1 | l1 |
 | Microsoft. Service1 | ErrorLogs    |    |    |    | q2 | w2 | e2 |    |    |    |
-| Microsoft. Językowej2 | AuditLogs    |    |    |    |    |    |    | j3 | k3 | l3 |
-| Microsoft. Service1 | AuditLogs    | x5 | Y5 | z5 |    |    |    |    |    |    |
+| Microsoft. Językowej2 | Dzienniki inspekcji    |    |    |    |    |    |    | j3 | k3 | l3 |
+| Microsoft. Service1 | Dzienniki inspekcji    | x5 | Y5 | z5 |    |    |    |    |    |    |
 | Przyciski ... |
 
 ### <a name="resource-specific"></a>Specyficzne dla zasobów
@@ -70,8 +74,8 @@ W powyższym przykładzie powstaje trzy tabele:
 
     | Dostawca zasobów | Kategoria | A | B | C |
     | -- | -- | -- | -- | -- |
-    | Service1 | AuditLogs | x1 | y1 | z1 |
-    | Service1 | AuditLogs | x5 | Y5 | z5 |
+    | Service1 | Dzienniki inspekcji | x1 | y1 | z1 |
+    | Service1 | Dzienniki inspekcji | x5 | Y5 | z5 |
     | Przyciski ... |
 
 - *Service1ErrorLogs* tabeli w następujący sposób:  
@@ -86,8 +90,8 @@ W powyższym przykładzie powstaje trzy tabele:
 
     | Dostawca zasobów | Kategoria | G | H | I |
     | -- | -- | -- | -- | -- |
-    | Językowej2 | AuditLogs | j1 | k1 | l1|
-    | Językowej2 | AuditLogs | j3 | k3 | l3|
+    | Językowej2 | Dzienniki inspekcji | j1 | k1 | l1|
+    | Językowej2 | Dzienniki inspekcji | j3 | k3 | l3|
     | Przyciski ... |
 
 
@@ -120,5 +124,5 @@ Aby jak najszybciej użyć trybu określonego dla zasobu, należy przeprowadzić
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Aby dowiedzieć się więcej o dziennikach zasobów platformy Azure, zobacz [Omówienie dzienników zasobów platformy Azure](resource-logs-overview.md).
-* Aby utworzyć ustawienie diagnostyczne w celu zbierania dzienników zasobów do obszaru roboczego Log Analytics, zobacz [Tworzenie ustawienia diagnostycznego w celu zbierania dzienników i metryk na platformie Azure](diagnostic-settings.md).
+* [Przeczytaj więcej na temat dzienników zasobów](platform-logs-overview.md).
+* [Utwórz ustawienie diagnostyczne, aby zbierać dzienniki i metryki na platformie Azure](diagnostic-settings.md).

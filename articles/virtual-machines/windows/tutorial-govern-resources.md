@@ -1,5 +1,5 @@
 ---
-title: Samouczek — zarządzanie maszynami wirtualnymi platformy Azure za pomocą Azure PowerShell
+title: Samouczek — zarządzanie maszynami wirtualnymi za pomocą programu PowerShell
 description: Z tego samouczka dowiesz się, jak za pomocą programu Azure PowerShell zarządzać maszynami wirtualnymi platformy Azure, stosując kontrolę dostępu opartą na rolach, zasady, blokady i tagi
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -13,20 +13,18 @@ ms.topic: tutorial
 ms.date: 12/05/2018
 ms.author: tomfitz
 ms.custom: mvc
-ms.openlocfilehash: 9f806c6790c953d86cf7fe99daf40c17a43d2d35
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 6a4c02883c80b2ad7e5283c6ac33a4604ee35c75
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74067943"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75751366"
 ---
 # <a name="tutorial-learn-about-windows-virtual-machine-management-with-azure-powershell"></a>Samouczek: informacje o zarządzaniu maszynami wirtualnymi systemu Windows za pomocą Azure PowerShell
 
 [!INCLUDE [Resource Manager governance introduction](../../../includes/resource-manager-governance-intro.md)]
 
 ## <a name="launch-azure-cloud-shell"></a>Uruchamianie usługi Azure Cloud Shell
-
- 
 
 Usługa Azure Cloud Shell to bezpłatna interaktywna powłoka, której możesz używać do wykonywania kroków opisanych w tym artykule. Udostępnia ona wstępnie zainstalowane i najczęściej używane narzędzia platformy Azure, które są skonfigurowane do użycia na koncie. 
 

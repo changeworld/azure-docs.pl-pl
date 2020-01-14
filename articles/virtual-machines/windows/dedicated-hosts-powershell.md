@@ -12,39 +12,23 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/01/2019
 ms.author: cynthn
-ms.openlocfilehash: 92dca6f4f41ff426aebcb8e580653afaa71afff8
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: ae7c6f2d5f05b3d4ed3744be57112a62606cf622
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033368"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75833834"
 ---
-# <a name="preview-deploy-vms-to-dedicated-hosts-using-the-azure-powershell"></a>Wersja zapoznawcza: wdrażanie maszyn wirtualnych na dedykowanych hostach przy użyciu Azure PowerShell
+# <a name="deploy-vms-to-dedicated-hosts-using-the-azure-powershell"></a>Wdrażanie maszyn wirtualnych na dedykowanych hostach przy użyciu Azure PowerShell
 
 W tym artykule opisano sposób tworzenia [dedykowanego hosta](dedicated-hosts.md) platformy Azure do hostowania maszyn wirtualnych. 
 
-Upewnij się, że zainstalowano Azure PowerShell wersji 2.4.2 lub nowszej, i zalogujesz się do konta platformy Azure w programie z dodatkiem `Connect-AzAccount`. Aby zainstalować wersję 2.4.2, Otwórz wiersz polecenia programu PowerShell i wpisz:
+Upewnij się, że zainstalowano program Azure PowerShell w wersji 2.8.0 lub nowszej i zalogujesz się do konta platformy Azure w programie z dodatkiem `Connect-AzAccount`. 
 
-```powershell
-Install-Module -Name Az.Compute -Repository PSGallery -RequiredVersion 2.4.2-preview -AllowPrerelease
-```
+## <a name="limitations"></a>Ograniczenia
 
-Aby włączyć funkcję modułu podglądu w programie PowerShell, potrzebna jest co najmniej wersja 1.6.0 modułu PowerShellGet. Najnowsze wersje programu PowerShell Core mają to automatycznie wbudowaną wersję, ale w przypadku starszych wersji programu PowerShell można uruchomić następujące polecenie, aby zaktualizować do najnowszej wersji:
-
-```powershell
-Install-Module -Name PowerShellGet -Repository PSGallery -Force
-```
-
-
-> [!IMPORTANT]
-> Dedykowane hosty platformy Azure są obecnie dostępne w publicznej wersji zapoznawczej.
-> Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
->
-> **Ograniczenia znanej wersji zapoznawczej**
-> - Zestawy skalowania maszyn wirtualnych nie są obecnie obsługiwane na dedykowanych hostach.
-> - Początkowa wersja zapoznawcza obsługuje następujące serie maszyn wirtualnych: DSv3 i ESv3. 
-
-
+- Zestawy skalowania maszyn wirtualnych nie są obecnie obsługiwane na dedykowanych hostach.
+- Obsługiwane są następujące serie maszyn wirtualnych: DSv3 i ESv3. 
 
 ## <a name="create-a-host-group"></a>Tworzenie grupy hostów
 

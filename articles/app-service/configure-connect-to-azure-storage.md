@@ -5,12 +5,12 @@ author: msangapu-msft
 ms.topic: article
 ms.date: 7/01/2019
 ms.author: msangapu
-ms.openlocfilehash: ad70bbe36369c03225079d1194043e6ceb109c6f
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: c5543470f790d00158297cb7c3f0c06c5fc05e14
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671010"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75866980"
 ---
 # <a name="configure-azure-files-in-a-windows-container-on-app-service"></a>Konfigurowanie Azure Files w kontenerze systemu Windows na App Service
 
@@ -31,6 +31,15 @@ W tym przewodniku pokazano, jak uzyskać dostęp do usługi Azure Storage w kont
 > Azure Files jest magazynem innym niż domyślne i są rozliczane oddzielnie, a nie dołączone do aplikacji sieci Web. Nie obsługuje ona konfigurowania zapory z powodu ograniczeń infrastruktury.
 >
 
+## <a name="limitations"></a>Ograniczenia
+
+- Usługa Azure Storage w kontenerach systemu Windows jest **w wersji zapoznawczej** i **nie jest obsługiwana** w **scenariuszach produkcyjnych**.
+- Usługa Azure Storage w kontenerach systemu Windows obsługuje instalowanie **kontenerów Azure Files** (tylko do odczytu i zapisu).
+- Usługa Azure Storage w kontenerach systemu Windows nie jest obecnie **obsługiwana** w celu przeprowadzenia własnych scenariuszy kodu w planach App Service systemu Windows.
+- Usługa Azure Storage w kontenerach systemu Windows **nie obsługuje** korzystania z konfiguracji **zapory magazynu** z powodu ograniczeń infrastruktury.
+- Usługa Azure Storage w kontenerach systemu Windows umożliwia określenie **maksymalnie pięciu** punktów instalacji na aplikację.
+- Usługa Azure Storage jest rozliczana niezależnie i **nie jest uwzględniana** w aplikacji sieci Web. Dowiedz się więcej o [cenach usługi Azure Storage](https://azure.microsoft.com/pricing/details/storage).
+
 ## <a name="link-storage-to-your-web-app-preview"></a>Łączenie magazynu z aplikacją internetową (wersja zapoznawcza)
 
  Aby zainstalować udział Azure Files w katalogu w aplikacji App Service, użyj polecenia [`az webapp config storage-account add`](https://docs.microsoft.com/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-add) . Typ magazynu musi być migracji pamięci.
@@ -48,7 +57,6 @@ Gdy udział Azure Files jest połączony z aplikacją sieci Web, możesz to spra
 ```azurecli
 az webapp config storage-account list --resource-group <resource_group> --name <app_name>
 ```
-
 
 ## <a name="next-steps"></a>Następne kroki
 

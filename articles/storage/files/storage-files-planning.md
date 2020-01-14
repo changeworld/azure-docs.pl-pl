@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: a315b012cf103840eae6b141fe5177dfa709896d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: HT
+ms.openlocfilehash: a51bb91a63f032f87da59fe95f5e3282cbaa0bea
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75463946"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771619"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planowanie wdrażania usługi Pliki Azure
 
@@ -24,7 +24,7 @@ ms.locfileid: "75463946"
 
 ![Struktura plików](./media/storage-files-introduction/files-concepts.png)
 
-* **Konto magazynu**: cały dostęp do usługi Azure Storage odbywa się przez konto magazynu. Aby uzyskać szczegółowe informacje na temat pojemności konta magazynu, zobacz [Cele dotyczące skalowalności i wydajności](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
+* **Konto magazynu**: cały dostęp do usługi Azure Storage odbywa się przez konto magazynu. Aby uzyskać szczegółowe informacje na temat pojemności konta magazynu [, zobacz cele dotyczące skalowalności i wydajności dla kont magazynu w warstwie Standardowa](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) .
 
 * **Udział**: udział usługi File Storage jest udziałem plików SMB na platformie Azure. Wszystkie pliki i katalogi muszą być tworzone w udziale nadrzędnym. Konto może zawierać nieograniczoną liczbę udziałów, a udział może przechowywać nieograniczoną liczbę plików, do całkowitej pojemności udziału plików. Całkowita pojemność udziałów plików w warstwie Premium i Standardowa to 100 TiB.
 
@@ -205,29 +205,40 @@ Standardowe udziały plików są dostępne we wszystkich regionach do 5 TiB. W n
 
 |Region |Obsługiwana nadmiarowość |
 |-------|---------|
+|Australia Środkowa    |LRS     |
+|Australia Środkowa 2    |LRS     |
 |Australia Wschodnia |LRS     |
 |Australia Południowo-Wschodnia|LRS |
+|Brazylia Południowa    |LRS     |
 |Kanada Środkowa  |LRS     |
 |Kanada Wschodnia     |LRS     |
 |Indie Środkowe  |LRS     |
-|Środkowe stany USA *   |LRS     |
+|Środkowe stany USA *   |LRS, ZRS    |
 |Azja Wschodnia      |LRS     |
 |Wschodnie stany USA *        |LRS, ZRS|
-|Wschodnie stany USA 2 *      |LRS     |
+|Wschodnie stany USA 2 *      |LRS, ZRS     |
 |Francja Środkowa |LRS, ZRS|
 |Francja Południowa   |LRS     |
 |Japonia Wschodnia     |LRS     |
+|Japonia Zachodnia     |LRS     |
+|Korea Środkowa  |LRS     |
+|Korea Południowa    |LRS     |
 |Północno-środkowe stany USA |LRS   |
 |Europa Północna   |LRS     |
 |Indie Południowe    |LRS     |
 |Południowo-środkowe stany USA |LRS     |
 |Azja Południowo-Wschodnia |LRS, ZRS|
+|Szwajcaria Północna    |LRS     |
+|Szwajcaria Zachodnia    |LRS     |
 |Środkowe Zjednoczone Emiraty Arabskie    |LRS     |
-|Południowe Zjednoczone Królestwo   |LRS     |
+|Północne Zjednoczone Emiraty Arabskie    |LRS     |
+|Północne Zjednoczone Królestwo   |LRS, ZRS    |
+|Południowe Zjednoczone Królestwo    |LRS     |
 |Zachodnie Zjednoczone Królestwo    |LRS     |
 |Zachodnio-środkowe stany USA|LRS     |
 |Europa Zachodnia *    |LRS, ZRS|
-|Zachodnie stany USA *        |LRS     |
+|Indie Zachodnie   |LRS     |
+|Zachodnie stany USA        |LRS     |
 |Zachodnie stany USA 2      |LRS, ZRS|
 
 \* obsługiwane dla nowych kont, a nie wszystkie istniejące konta ukończyły proces uaktualniania. Możesz sprawdzić, czy istniejące konta magazynu ukończyły proces uaktualniania, podejmując próbę [włączenia dużych udziałów plików](storage-files-how-to-create-large-file-share.md).
@@ -248,7 +259,7 @@ Istnieje możliwość synchronizacji wielu udziałów plików platformy Azure z 
 
 Istnieje wiele łatwych opcji przesyłania zbiorczego danych z istniejącego udziału plików, takiego jak lokalny udział plików, do Azure Files. Oto kilka popularnych (niewyczerpująca lista):
 
-* **Azure File Sync**: w ramach pierwszej synchronizacji między udziałem plików platformy Azure ("punktem końcowym w chmurze") a przestrzenią nazw katalogu systemu Windows ("punkt końcowy serwera"), Azure File Sync będzie replikowana wszystkie dane z istniejącego udziału plików do Azure Files.
+* **[Azure File Sync](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning)** : w ramach pierwszej synchronizacji między udziałem plików platformy Azure ("punktem końcowym w chmurze") a przestrzenią nazw katalogu systemu Windows ("punkt końcowy serwera"), Azure File Sync będzie replikowana wszystkie dane z istniejącego udziału plików do Azure Files.
 * **[Azure import/](../common/storage-import-export-service.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)** Export: usługa Azure Import/Export umożliwia bezpieczne przesyłanie dużych ilości danych do udziału plików platformy Azure przez dostarczenie dysków twardych do centrum danych platformy Azure. 
 * **[Robocopy](https://technet.microsoft.com/library/cc733145.aspx)** : Robocopy to dobrze znane narzędzie do kopiowania, które jest dostarczane z systemami Windows i Windows Server. Robocopy może służyć do transferowania danych do Azure Files przez zainstalowanie udziału plików lokalnie, a następnie użycie zainstalowanej lokalizacji jako miejsca docelowego w poleceniu Robocopy.
 * **[AzCopy](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)** : AzCopy to narzędzie wiersza polecenia przeznaczone do kopiowania danych do i z Azure Files, a także do usługi Azure Blob Storage przy użyciu prostych poleceń z optymalną wydajnością.

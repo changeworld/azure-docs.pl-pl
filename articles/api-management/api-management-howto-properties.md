@@ -10,26 +10,26 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/05/2019
+ms.date: 01/08/2020
 ms.author: apimpm
-ms.openlocfilehash: d11239aa49a53a90a38f2b5336d36cea6c97e9df
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 7c25455e28e57ff40664a69718a2e406b52b7632
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824171"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834296"
 ---
 # <a name="how-to-use-named-values-in-azure-api-management-policies"></a>Jak używać nazwanych wartości w zasadach usługi Azure API Management
 
 Zasady API Management są zaawansowaną możliwością systemu, która umożliwia Azure Portal zmianę zachowania interfejsu API za pomocą konfiguracji. Zasady to zbiór instrukcji, które są wykonywane sekwencyjnie podczas żądania lub odpowiedzi interfejsu API. Instrukcje zasad można utworzyć przy użyciu literałów wartości tekstowych, wyrażeń zasad i nazwanych wartości.
 
-Każde wystąpienie usługi API Management ma kolekcję właściwości par klucz/wartość, która jest nazywana wartościami nazwanymi, które są globalne dla wystąpienia usługi. Nie ma żadnego narzuconego limitu liczby elementów w kolekcji. Nazwane wartości mogą służyć do zarządzania stałymi wartościami ciągu w ramach wszystkich konfiguracji i zasad interfejsu API. Każda nazwana wartość może mieć następujące atrybuty:
+Każde wystąpienie usługi API Management ma kolekcję par klucz/wartość, które są nazywane wartościami nazwanymi, które są globalne dla wystąpienia usługi. Nie ma żadnego narzuconego limitu liczby elementów w kolekcji. Nazwane wartości mogą służyć do zarządzania stałymi wartościami ciągu w ramach wszystkich konfiguracji i zasad interfejsu API. Każda nazwana wartość może mieć następujące atrybuty:
 
-| Atrybut      | Typ            | Opis                                                                                                                         |
-| -------------- | --------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-| `Display name` | ciąg          | Służy do odwoływania się do nazwanej wartości w zasadach. Ciąg od jednego do 256 znaków. Dozwolone są tylko litery, cyfry, kropki i kreski. |
-| `Value`        | ciąg          | Wartość rzeczywista. Nie może być pusty ani zawierać tylko odstępów. Maksymalnie 4096 znaków.                                     |
-| `Secret`       | wartość logiczna         | Określa, czy wartość jest kluczem tajnym i powinna być szyfrowana, czy nie.                                                            |
+| Atrybut      | Typ            | Opis                                                                                                                            |
+| -------------- | --------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| `Display name` | string          | Służy do odwoływania się do nazwanej wartości w zasadach. Ciąg od jednego do 256 znaków. Dozwolone są tylko litery, cyfry, kropki i kreski. |
+| `Value`        | string          | Wartość rzeczywista. Nie może być pusty ani zawierać tylko odstępów. Maksymalnie 4096 znaków.                                        |
+| `Secret`       | wartość logiczna         | Określa, czy wartość jest kluczem tajnym i powinna być szyfrowana, czy nie.                                                               |
 | `Tags`         | tablica ciągów | Służy do filtrowania listy nazwanych wartości. Do 32 tagów.                                                                                    |
 
 ![Nazwane wartości](./media/api-management-howto-properties/named-values.png)
@@ -38,21 +38,24 @@ Nazwane wartości mogą zawierać ciągi literałów i [wyrażenia zasad](/azure
 
 | Nazwa       | Wartość                      | Wpis tajny | Tagi          |
 | ---------- | -------------------------- | ------ | ------------- |
-| Wartość      | 42                         | False  | Najważniejsze wartości |
-| Poświadczenie | ••••••••••••••••••••••     | True   | security      |
-| Wyrażenie | @ (DateTime. Now. ToString ()) | False  |               |
+| Wartość      | 42                         | Fałsz  | Najważniejsze wartości |
+| Poświadczenie | ••••••••••••••••••••••     | Prawda   | zabezpieczenia      |
+| Wyrażenie | @(DateTime.Now.ToString()) | Fałsz  |               |
+
+> [!NOTE]
+> Zamiast nazwanych wartości przechowywanych w ramach usługi API Management, można użyć wartości przechowywanych w usłudze [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) , jak pokazano w tym [przykładzie](https://github.com/Azure/api-management-policy-snippets/blob/master/examples/Look%20up%20Key%20Vault%20secret%20using%20Managed%20Service%20Identity.policy.xml).
 
 ## <a name="to-add-and-edit-a-named-value"></a>Aby dodać i edytować nazwaną wartość
 
 ![Dodaj nazwaną wartość](./media/api-management-howto-properties/add-property.png)
 
-1. Wybierz **Interfejsy API** w obszarze **ZARZĄDZANIE INTERFEJSAMI API**.
+1. Wybierz pozycję **Interfejsy API** w obszarze **API MANAGEMENT**.
 2. Wybierz **nazwane wartości**.
 3. Naciśnij klawisze **+ Dodaj**.
 
-    Wartości Name i value są wymagane. Jeśli wartość jest kluczem tajnym, zaznacz pole wyboru *to jest wpis tajny* . Wprowadź jeden lub więcej tagów opcjonalnych, aby pomóc w organizowaniu nazwanych wartości, a następnie kliknij przycisk Zapisz.
+    Wartości Name i value są wymagane. Jeśli wartość jest kluczem tajnym, zaznacz pole wyboru _to jest wpis tajny_ . Wprowadź jeden lub więcej tagów opcjonalnych, aby pomóc w organizowaniu nazwanych wartości, a następnie kliknij przycisk Zapisz.
 
-4. Kliknij pozycję **Utwórz**.
+4. Kliknij przycisk **Utwórz**.
 
 Po utworzeniu nazwanej wartości można ją edytować, klikając ją. W przypadku zmiany nazwy nazwanej wartości wszystkie zasady odwołujące się do tej nazwanej wartości są automatycznie aktualizowane w celu użycia nowej nazwy.
 
@@ -101,7 +104,7 @@ Możesz to przetestować w portalu dla deweloperów, wywołując operację, któ
 
 ![Portal deweloperów][api-management-send-results]
 
-Jeśli przeszukiwany jest [ślad inspektora interfejsu API](api-management-howto-api-inspector.md) dla wywołania, które obejmuje dwie poprzednie przykładowe zasady o nazwanych wartościach, można zobaczyć dwie `set-header` zasady z nazwanymi wartościami wstawionymi, a także oszacować wyrażenie zasad dla nazwanej wartości, która zawiera wyrażenie zasad.
+Jeśli przeszukiwany jest [ślad inspektora interfejsu API](api-management-howto-api-inspector.md) dla wywołania, które obejmuje dwie poprzednie przykładowe zasady o nazwanych wartościach, można zobaczyć dwie `set-header` zasady z nazwanymi wartościami wstawionymi, a także oszacować wyrażenie zasad dla nazwanej wartości, która zawierała wyrażenie zasad.
 
 ![Ślad Inspektora interfejsów API][api-management-api-inspector-trace]
 

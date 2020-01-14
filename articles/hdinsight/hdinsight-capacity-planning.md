@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.openlocfilehash: 9080a0f327aae50a87b5e69ec157a46181a38a65
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: db7b2787df68e5e9baadddc7e6e6159cfff26097
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75640945"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75887244"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>Planowanie pojemności klastrów usługi HDInsight
 
@@ -123,7 +123,7 @@ Jeśli musisz zażądać zwiększenia limitu przydziału, wykonaj następujące 
 > [!NOTE]  
 > Jeśli potrzebujesz zwiększyć przydział rdzenia usługi HDInsight w regionie prywatnym, [Prześlij żądanie dozwolonych](https://aka.ms/canaryintwhitelist).
 
-Możesz [skontaktować się z pomocą techniczną, aby zażądać zwiększenia limitu przydziału](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request).
+Możesz [skontaktować się z pomocą techniczną, aby zażądać zwiększenia limitu przydziału](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request).
 
 Istnieją jednak pewne limity przydziałów, na przykład jedna subskrypcja platformy Azure może mieć co najwyżej 10 000 rdzeni. Aby uzyskać szczegółowe informacje dotyczące tych limitów, zobacz [limity subskrypcji i usług platformy Azure, przydziały i ograniczenia](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits).
 

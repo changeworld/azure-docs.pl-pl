@@ -1,6 +1,6 @@
 ---
-title: Zarządzanie warstwy cenowej konta usługi Azure Maps | Dokumentacja firmy Microsoft
-description: Za pomocą witryny Azure portal do zarządzania kontem usługi Azure Maps i jego warstw cenowych.
+title: Zarządzaj warstwą cenową konta Azure Maps | Mapy Microsoft Azure
+description: Azure Portal można użyć do zarządzania kontem mapy Microsoft Azure i jego warstwą cenową.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 02/12/2019
@@ -8,37 +8,37 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 43f5c6ea42464a83d070775fae8c5befe35bf60d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8cba1e56b96f24764af00f04f399d0cdbe54be24
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60794181"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911484"
 ---
-# <a name="manage-the-pricing-tier-of-your-azure-maps-account"></a>Zarządzanie warstwy cenowej konta usługi Azure Maps
+# <a name="manage-the-pricing-tier-of-your-azure-maps-account"></a>Zarządzaj warstwą cenową konta Azure Maps
 
-Możesz zarządzać warstwy cenowej konta usługi Azure Maps w witrynie Azure portal. Po utworzeniu [konta](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), można wyświetlić lub zmienić warstwę cenową konta.
+Możesz zarządzać warstwą cenową konta Azure Maps przy użyciu Azure Portal. Po utworzeniu [konta](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)możesz wyświetlić lub zmienić warstwę cenową konta.
 
-Uzyskaj więcej informacji o [Wybieranie odpowiedniej warstwy cenowej w usługi Azure Maps](https://docs.microsoft.com/azure/azure-maps/choose-pricing-tier).
+Uzyskaj więcej informacji na temat [wybierania odpowiedniej warstwy cenowej w Azure Maps](https://docs.microsoft.com/azure/azure-maps/choose-pricing-tier).
 
-## <a name="view-your-pricing-tier"></a>Wyświetl warstwy cenowej
+## <a name="view-your-pricing-tier"></a>Wyświetlanie warstwy cenowej
 
-Aby wyświetlić wybranego warstwę cenową, przejdź do **warstwy cenowej** opcji w menu Ustawienia.
+Aby wyświetlić wybraną warstwę cenową, przejdź do opcji **warstwa cenowa** w menu Ustawienia.
 
-![Widok wybrana warstwa cenowa](./media/how-to-manage-pricing-tier/view-pricing-tier.png)
+![Wyświetlanie wybranej warstwy cenowej](./media/how-to-manage-pricing-tier/view-pricing-tier.png)
 
-## <a name="change-a-pricing-tier"></a>Zmień warstwę cenową
+## <a name="change-a-pricing-tier"></a>Zmiana warstwy cenowej
 
-Po utworzeniu konta usługi Azure Maps, można uaktualnić lub obniżyć warstwę cenową dla konta usługi Azure Maps. Aby uaktualnić lub obniżyć wersję, przejdź do **warstwy cenowej** opcji w menu Ustawienia. Wybierz warstwę cenową, która nie jest wyróżniona. Wybierz **Zapisz** przycisk, aby zapisać wybranego opcji warstwy cenowej.
+Po utworzeniu konta Azure Maps można uaktualnić lub obniżyć warstwę cenową dla konta Azure Maps. Aby uaktualnić lub obniżyć wersję, przejdź do opcji **warstwa cenowa** w menu Ustawienia. Wybierz warstwę cenową, która nie jest podświetlona. Wybierz przycisk **Zapisz** , aby zapisać wybraną opcję warstwy cenowej.
 
-![Zmień warstwę cenową](./media/how-to-manage-pricing-tier/change-pricing-tier.png)
+![Zmiana warstwy cenowej](./media/how-to-manage-pricing-tier/change-pricing-tier.png)
 
 > [!NOTE]
-> Nie masz do generowania nowych kluczy subskrypcji lub Identyfikatora klienta (w przypadku uwierzytelniania usługi Azure AD), jeśli uaktualnić lub obniżyć warstwę cenową dla konta usługi Azure Maps.
+> Nie trzeba generować nowych kluczy subskrypcji ani identyfikatora klienta (na potrzeby uwierzytelniania w usłudze Azure AD) w przypadku uaktualnienia lub obniżenia poziomu warstwy cenowej dla konta Azure Maps.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się, jak wyświetlać metryki użycia interfejsu API dla swojego konta usługi Azure Maps:
+Dowiedz się, jak wyświetlić metryki użycia interfejsu API dla konta Azure Maps:
 
 > [!div class="nextstepaction"] 
 > [Wyświetl metryki użycia](./how-to-view-api-usage.md)

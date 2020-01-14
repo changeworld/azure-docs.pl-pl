@@ -1,6 +1,6 @@
 ---
-title: Dodawanie warstwy kafelków do Azure Maps | Microsoft Docs
-description: Jak dodać warstwę kafelków do Azure Maps Web SDK.
+title: Dodawanie warstwy kafelków do mapy | Mapy Microsoft Azure
+description: W tym artykule dowiesz się, jak nałożyć warstwę kafelków na mapie za pomocą zestawu Microsoft Azure Web SDK mapy. Warstwy kafelków umożliwiają renderowanie obrazów na mapie.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 07/29/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 3f047ec1aced55038384cbe29bd3a4b8a948dce9
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 83e8f6d684d6d39102fd682653cd19816a9f7b10
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976455"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911092"
 ---
 # <a name="add-a-tile-layer-to-a-map"></a>Dodawanie warstwy kafelków do mapy
 
@@ -24,23 +24,23 @@ Warstwa kafelków jest ładowana na kafelkach z serwera. Te obrazy mogą być ws
 
 * X, Y, z notacją powiększenia w oparciu o poziom powiększenia, x to kolumna, a Y to pozycja w wierszu kafelka w siatce kafelków.
 * Quadkey-kombinacja x, y, Powiększ informacje w postaci pojedynczej wartości ciągu, która jest unikatowym identyfikatorem dla kafelka.
-* Współrzędne pola ograniczenia obwiedni mogą służyć do określania obrazu w formacie `{west},{south},{east},{north}` , który jest często używany przez [usługi mapowania sieci Web (WMS)](https://www.opengeospatial.org/standards/wms).
+* Współrzędne pola powiązanego obwiedni mogą służyć do określania obrazu w formacie `{west},{south},{east},{north}`, który jest często używany przez [usługi mapowania sieci Web (WMS)](https://www.opengeospatial.org/standards/wms).
 
 > [!TIP]
 > [TileLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer?view=azure-iot-typescript-latest) to doskonały sposób wizualizacji dużych zestawów danych na mapie. Nie tylko można wygenerować warstwy kafelków z obrazu, ale dane wektorowe mogą być również renderowane jako warstwa kafelków. Przez renderowanie danych wektorowych jako warstwy kafelków, formant mapy musi ładować tylko kafelki, które mogą być znacznie mniejsze w rozmiarze pliku niż dane wektorowe, które reprezentują. Ta technika jest używana przez wiele osób, które muszą renderować miliony wierszy danych na mapie.
 
 Adres URL kafelka przesłany do warstwy kafelków musi być adresem URL protokołu HTTP/HTTPS do zasobu TileJSON lub szablonem adresu URL kafelka, który używa następujących parametrów: 
 
-* `{x}`-X pozycja kafelka. Również wymagają `{y}` i `{z}`.
-* `{y}`-Y pozycja kafelka. Również wymagają `{x}` i `{z}`.
-* `{z}`— Poziom powiększenia kafelka. Również wymagają `{x}` i `{y}`.
-* `{quadkey}`-Kafelek quadkey identyfikator oparty na konwencji nazewnictwa systemu kafelków mapy Bing.
-* `{bbox-epsg-3857}`-Ciąg pola granicznego z formatem `{west},{south},{east},{north}` w systemie referencyjnym przestrzennym EPSG 3857.
-* `{subdomain}`— Symbol zastępczy, w którym zostaną dodane wartości poddomeny, jeśli zostały określone.
+* Pozycja `{x}`-X kafelka. Wymaga również `{y}` i `{z}`.
+* Pozycja `{y}`-Y kafelka. Wymaga również `{x}` i `{z}`.
+* `{z}` — poziom powiększenia kafelka. Wymaga również `{x}` i `{y}`.
+* Identyfikator quadkey na kafelku oparty na konwencji nazewnictwa systemu kafelków mapy Bing. `{quadkey}`
+* `{bbox-epsg-3857}`-ciąg pola ograniczenia w formacie `{west},{south},{east},{north}` w systemie referencyjnym EPSG 3857.
+* `{subdomain}` — symbol zastępczy, w którym zostaną dodane wartości poddomeny, jeśli zostały określone.
 
 ## <a name="add-a-tile-layer"></a>Dodawanie warstwy kafelków
 
- Ten przykład pokazuje, jak utworzyć warstwę kafelków, która wskazuje zestaw kafelków korzystających z systemu dzielenia x, y. Źródłem tej warstwy kafelków jest nałożenie radaru pogody z [Iowa środowiska Mesonet Iowa University](https://mesonet.agron.iastate.edu/ogc/). Podczas przeglądania danych radaru najlepiej, aby użytkownicy mogli jasno widzieć etykiety miast podczas nawigowania po mapie. można to zrobić, wstawiając warstwę kafelka poniżej `labels` warstwy.
+ Ten przykład pokazuje, jak utworzyć warstwę kafelków, która wskazuje zestaw kafelków korzystających z systemu dzielenia x, y. Źródłem tej warstwy kafelków jest nałożenie radaru pogody z [Iowa środowiska Mesonet Iowa University](https://mesonet.agron.iastate.edu/ogc/). Podczas przeglądania danych radarowych najlepiej, aby użytkownicy mogli jasno widzieć etykiety miast podczas nawigowania po mapie. można to zrobić, wstawiając warstwę kafelka poniżej warstwy `labels`.
 
 ```javascript
 //Create a tile layer and add it to the map below the label layer.
@@ -56,7 +56,7 @@ Poniżej znajduje się kompletny przykładowy kod wykonywany z powyższymi funkc
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Warstwa kafelków używająca X, Y i Z' src='//codepen.io/azuremaps/embed/BGEQjG/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobacz warstwę kafelków pióra <a href='https://codepen.io/azuremaps/pen/BGEQjG/'>przy użyciu X, Y i z z</a> Azure Maps<a href='https://codepen.io/azuremaps'>@azuremaps</a>() na <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Warstwa kafelków używająca X, Y i Z' src='//codepen.io/azuremaps/embed/BGEQjG/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobacz <a href='https://codepen.io/azuremaps/pen/BGEQjG/'>warstwę kafelków pióra przy użyciu X, Y i z</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) w <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="customize-a-tile-layer"></a>Dostosowywanie warstwy kafelków
@@ -65,7 +65,7 @@ Klasa kafelków ma wiele opcji stylów. Oto narzędzie do wypróbowania.
 
 <br/>
 
-<iframe height='700' scrolling='no' title='Opcje warstwy kafelków' src='//codepen.io/azuremaps/embed/xQeRWX/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobacz <a href='https://codepen.io/azuremaps/pen/xQeRWX/'>Opcje warstwy kafelków</a> pióra według Azure Maps<a href='https://codepen.io/azuremaps'>@azuremaps</a>() na <a href='https://codepen.io'>CodePen</a>.
+<iframe height='700' scrolling='no' title='Opcje warstwy kafelków' src='//codepen.io/azuremaps/embed/xQeRWX/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobacz <a href='https://codepen.io/azuremaps/pen/xQeRWX/'>Opcje warstwy kafelków</a> pióra według Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="next-steps"></a>Następne kroki

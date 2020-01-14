@@ -9,14 +9,14 @@ manager: cshankar
 ms.reviewer: jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 11/21/2019
+ms.date: 01/10/2020
 ms.custom: seodec18
-ms.openlocfilehash: 2c68c64202efec6d7dab745b6e1bdc029fa3976f
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 34cf1e91b1fe5aae516c77bf2c280dfe70000611
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561300"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894754"
 ---
 # <a name="understand-data-retention-in-azure-time-series-insights"></a>Informacje o przechowywaniu danych w Azure Time Series Insights
 
@@ -44,7 +44,7 @@ Zasady przechowywania danych są szczegółowo opisane poniżej.
 ## <a name="purge-old-data"></a>Przeczyść stare dane
 
 - **Przeczyść stare dane** jest domyślnym ustawieniem dla środowisk Azure Time Series Insightsych.  
-- **Przeczyść stare dane** jest preferowany, gdy użytkownicy chcą zawsze zobaczyć *najnowsze dane* w środowisku Time Series Insights.
+- Jeśli użytkownicy chcą zawsze korzystać z *najnowszych danych* w środowisku Time Series Insights, należy **przeczyścić stare dane** .
 - Ustawienie **Przeczyść stare dane** umożliwia *przeczyszczenie* danych po osiągnięciu limitów środowiska (czasu przechowywania, rozmiaru lub liczby, zależnie od tego, co nastąpi wcześniej). Wartość przechowywania jest domyślnie ustawiona na 30 dni.
 - Najstarsze dane pozyskiwane są czyszczone jako pierwsze (podejście "najpierw w pierwszej kolejności").
 

@@ -1,5 +1,6 @@
 ---
-title: 'Samouczek: Użyj DMS, aby przeprowadzić migrację do wystąpienia zarządzanego Azure SQL Database | Microsoft Docs'
+title: 'Samouczek: Migrowanie SQL Server do wystąpienia zarządzanego SQL'
+titleSuffix: Azure Database Migration Service
 description: Dowiedz się, jak przeprowadzić migrację z SQL Server lokalnie do wystąpienia zarządzanego Azure SQL Database przy użyciu Azure Database Migration Service.
 services: dms
 author: HJToland3
@@ -8,15 +9,15 @@ manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc, tutorial
+ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 11/08/2019
-ms.openlocfilehash: ca6f94664ad07b15c9c0c6dada6d6824e97527d9
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.date: 01/08/2020
+ms.openlocfilehash: d8e5b531684e175e5b9423bbc302bbe0b3d36058
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73903152"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75745289"
 ---
 # <a name="tutorial-migrate-sql-server-to-an-azure-sql-database-managed-instance-offline-using-dms"></a>Samouczek: Migrowanie SQL Server do wystąpienia zarządzanego Azure SQL Database w trybie offline za pomocą usługi DMS
 
@@ -24,10 +25,10 @@ Za pomocą Azure Database Migration Service można migrować bazy danych z wyst�
 
 W tym samouczku przeprowadzisz migrację bazy danych **Adventureworks2012** z wystąpienia lokalnego SQL Server do wystąpienia zarządzanego SQL Database przy użyciu Azure Database Migration Service.
 
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 > [!div class="checklist"]
 >
-> - Utwórz wystąpienie Azure Database Migration Service.
+> - Utwórz wystąpienie usługi Azure Database Migration Service.
 > - Utwórz projekt migracji przy użyciu Azure Database Migration Service.
 > - Uruchamianie migracji.
 > - Monitorowanie migracji.
@@ -44,23 +45,32 @@ W tym artykule opisano migrację w trybie offline z SQL Server do wystąpienia z
 
 Do ukończenia tego samouczka niezbędne są następujące elementy:
 
-- Utwórz Virtual Network platformy Azure dla Azure Database Migration Service przy użyciu modelu wdrażania Azure Resource Manager, który zapewnia łączność między lokacjami z lokalnymi serwerami źródłowymi przy użyciu usługi [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) lub [sieci VPN. ](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways). [Informacje o topologii sieci dla Azure SQL Database migracji wystąpień zarządzanych przy użyciu Azure Database Migration Service](https://aka.ms/dmsnetworkformi). Aby uzyskać więcej informacji na temat tworzenia sieci wirtualnej, zapoznaj się z [dokumentacją Virtual Network](https://docs.microsoft.com/azure/virtual-network/), a w szczególności artykuły szybkiego startu z szczegółowymi szczegółami.
+- Utwórz Microsoft Azure Virtual Network dla Azure Database Migration Service przy użyciu modelu wdrażania Azure Resource Manager, który zapewnia łączność między lokacjami z lokalnymi serwerami źródłowymi przy użyciu usługi [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) lub [sieci VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways). [Informacje o topologii sieci dla Azure SQL Database migracji wystąpień zarządzanych przy użyciu Azure Database Migration Service](https://aka.ms/dmsnetworkformi). Aby uzyskać więcej informacji na temat tworzenia sieci wirtualnej, zapoznaj się z [dokumentacją Virtual Network](https://docs.microsoft.com/azure/virtual-network/), a w szczególności artykuły szybkiego startu z szczegółowymi szczegółami.
 
     > [!NOTE]
-    > W przypadku korzystania z usługi ExpressRoute z usługą Komunikacja równorzędna z firmą Microsoft podczas instalacji sieci wirtualnej należy dodać następujące [punkty końcowe](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) usługi do podsieci, w której zostanie zainicjowana usługa:
+    > Jeśli podczas konfigurowania sieci wirtualnej używasz usługi ExpressRoute z usługą Komunikacja równorzędna z firmą Microsoft, Dodaj następujące [punkty końcowe](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) do podsieci, w której zostanie zainicjowana usługa:
     > - Docelowy punkt końcowy bazy danych (na przykład punkt końcowy SQL, Cosmos DB punkt końcowy itd.)
     > - Punkt końcowy magazynu
     > - Punkt końcowy usługi Service Bus
     >
     > Ta konfiguracja jest konieczna, ponieważ Azure Database Migration Service brak łączności z Internetem.
 
-- Upewnij się, że zasady grupy zabezpieczeń sieci wirtualnej nie blokują następujących portów komunikacji przychodzącej do Azure Database Migration Service: 443, 53, 9354, 445, 12000. Aby uzyskać więcej szczegółów na temat filtrowania ruchu w sieci wirtualnej platformy Azure, zobacz artykuł [Filtrowanie ruchu sieciowego przy użyciu sieciowych grup zabezpieczeń](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg).
+- Upewnij się, że reguły grupy zabezpieczeń sieci wirtualnej nie blokują następujących portów komunikacji przychodzącej do Azure Database Migration Service: 443, 53, 9354, 445, 12000. Aby uzyskać więcej szczegółów na temat filtrowania ruchu sieciowej grupy zabezpieczeń w sieci wirtualnej, zobacz artykuł [Filtrowanie ruchu sieciowego przy użyciu sieciowych grup zabezpieczeń](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg).
 - [Zapora sytemu Windows skonfigurowana pod kątem dostępu do aparatu źródłowej bazy danych](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access).
 - Otwórz Zaporę systemu Windows, aby umożliwić Azure Database Migration Service dostęp do SQL Server źródłowej, która domyślnie jest portem TCP 1433.
 - W przypadku uruchamiania wielu wystąpień o nazwach SQL Server przy użyciu portów dynamicznych można włączyć usługę SQL Browser i zezwolić na dostęp do portu UDP 1434 za pośrednictwem zapór, aby Azure Database Migration Service mógł nawiązać połączenie z nazwanym wystąpieniem w źródle Server.
 - Jeśli używasz urządzenia zapory przed źródłowymi bazami danych, może być konieczne dodanie reguł zapory, aby umożliwić Azure Database Migration Service dostęp do źródłowych baz danych na potrzeby migracji, a także plików za pośrednictwem portu SMB 445.
 - Utworzenie wystąpienia zarządzanego usługi Azure SQL Database — szczegółowe instrukcje znajdują się w artykule [Tworzenie wystąpienia zarządzanego usługi Azure SQL Database w witrynie Azure Portal](https://aka.ms/sqldbmi).
 - Upewnienie się, że dane logowania używane do połączenia źródłowego programu SQL Server i docelowego wystąpienia zarządzanego należą do roli administratora systemu serwera.
+
+    >[!NOTE]
+    >Domyślnie Azure Database Migration Service obsługuje tylko Migrowanie nazw logowania SQL. Można jednak włączyć możliwość migracji nazw logowania systemu Windows przez:
+    >
+    >- Upewnienie się, że obiekt docelowy SQL Database wystąpienia zarządzanego ma dostęp do odczytu usługi AAD, który można skonfigurować za pośrednictwem Azure Portal przez użytkownika z rolą **administratora firmy**lub **administratora globalnego**.
+    >- Konfigurowanie wystąpienia Azure Database Migration Service, aby umożliwić migrację logowania użytkownika/grupy systemu Windows, która jest konfigurowana za pośrednictwem Azure Portal na stronie Konfiguracja. Po włączeniu tego ustawienia należy ponownie uruchomić usługę, aby zmiany zaczęły obowiązywać.
+    >
+    > Po ponownym uruchomieniu usługi, logowania użytkownika/grupy systemu Windows są wyświetlane na liście nazw logowania dostępnych do migracji. W przypadku wszystkich migrowanych kont użytkowników/grup systemu Windows zostanie wyświetlony monit o podanie skojarzonej nazwy domeny. Konta użytkowników usługi (konto z nazwą domeny NT AUTHORITY) i wirtualne konta użytkowników (nazwa konta z usługą nazw domen NT) nie są obsługiwane.
+
 - Utwórz udział sieciowy, który Azure Database Migration Service może używać do tworzenia kopii zapasowej źródłowej bazy danych.
 - Upewnienie się, że konto usługi z uruchomionym źródłowym wystąpieniem programu SQL Server ma uprawnienia w utworzonym udziale sieciowym oraz że konto komputera serwera źródłowego ma uprawnienia odczytu i zapisu do tego samego udziału.
 - Zapisanie nazwy i hasła użytkownika systemu Windows, który ma uprawnienia do pełnej kontroli nad wcześniej utworzonym udziałem sieciowym. Azure Database Migration Service personifikuje poświadczenia użytkownika w celu przekazania plików kopii zapasowej do kontenera usługi Azure Storage w celu wykonania operacji przywracania.
@@ -70,7 +80,7 @@ Do ukończenia tego samouczka niezbędne są następujące elementy:
 
 1. Zaloguj się w witrynie Azure Portal, wybierz pozycję **Wszystkie usługi**, a następnie wybierz pozycję **Subskrypcje**.
 
-    ![Wyświetlanie subskrypcji w portalu](media/tutorial-sql-server-to-managed-instance/portal-select-subscriptions.png)        
+    ![Wyświetlanie subskrypcji w portalu](media/tutorial-sql-server-to-managed-instance/portal-select-subscriptions.png)
 
 2. Wybierz subskrypcję, w której chcesz utworzyć wystąpienie Azure Database Migration Service, a następnie wybierz pozycję **dostawcy zasobów**.
 
@@ -84,7 +94,7 @@ Do ukończenia tego samouczka niezbędne są następujące elementy:
 
 1. W witrynie Azure Portal wybierz pozycję + **Utwórz zasób**, wyszukaj usługę **Azure Database Migration Service**, a następnie wybierz usługę **Azure Database Migration Service** z listy rozwijanej.
 
-     ![Azure Marketplace](media/tutorial-sql-server-to-managed-instance/portal-marketplace.png)
+    ![Azure Marketplace](media/tutorial-sql-server-to-managed-instance/portal-marketplace.png)
 
 2. Na ekranie **Azure Database Migration Service** wybierz polecenie **Utwórz**.
 
@@ -96,9 +106,9 @@ Do ukończenia tego samouczka niezbędne są następujące elementy:
 
 5. Wybierz istniejącą sieć wirtualną lub utwórz ją.
 
-    Sieć wirtualna zapewnia Azure Database Migration Service z dostępem do SQL Server źródłowej i docelowego wystąpienia zarządzanego Azure SQL Database.
+    Sieć wirtualna zapewnia Azure Database Migration Service z dostępem do SQL Server źródłowych i docelowym Azure SQL Database wystąpieniem zarządzanym.
 
-    Aby uzyskać więcej informacji na temat sposobu tworzenia sieci wirtualnej w Azure Portal, zobacz artykuł [Tworzenie sieci wirtualnych przy użyciu Azure Portal](https://aka.ms/DMSVnet).
+    Aby uzyskać więcej informacji na temat sposobu tworzenia sieci wirtualnej w Azure Portal, zobacz artykuł [Tworzenie sieci wirtualnej przy użyciu Azure Portal](https://aka.ms/DMSVnet).
 
     Aby uzyskać dodatkowe informacje, zobacz artykuł [topologie sieci dla migracji wystąpienia zarządzanego usługi Azure SQL dB przy użyciu Azure Database Migration Service](https://aka.ms/dmsnetworkformi).
 
@@ -158,7 +168,7 @@ Po utworzeniu wystąpienia usługi znajdź je w witrynie Azure Portal, otwórz j
 
     Jeśli jeszcze nie zainicjowano obsługi administracyjnej SQL Database wystąpienia zarządzanego, wybierz [link](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started) , aby ułatwić obsługę administracyjną wystąpienia. Nadal możesz kontynuować tworzenie projektu, a następnie, gdy Azure SQL Database wystąpienie zarządzane jest gotowe, Wróć do tego konkretnego projektu, aby przeprowadzić migrację.
 
-     ![Wybieranie obiektu docelowego](media/tutorial-sql-server-to-managed-instance/dms-target-details2.png)
+    ![Wybieranie obiektu docelowego](media/tutorial-sql-server-to-managed-instance/dms-target-details2.png)
 
 2. Wybierz pozycję **Zapisz**.
 
@@ -175,7 +185,7 @@ Po utworzeniu wystąpienia usługi znajdź je w witrynie Azure Portal, otwórz j
 1. Na ekranie **Wybierz identyfikatory logowania** wybierz identyfikatory logowania, które chcesz zmigrować.
 
     >[!NOTE]
-    >Ta wersja obsługuje tylko migrację danych logowania SQL.
+    >Domyślnie Azure Database Migration Service obsługuje tylko Migrowanie nazw logowania SQL. Aby włączyć obsługę migracji logowań systemu Windows, zobacz sekcję **wymagania wstępne** w tym samouczku.
 
     ![Wybieranie identyfikatorów logowania](media/tutorial-sql-server-to-managed-instance/select-logins.png)
 

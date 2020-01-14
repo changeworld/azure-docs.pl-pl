@@ -3,12 +3,12 @@ title: Przegląd wersji środowiska uruchomieniowego Azure Functions
 description: Azure Functions obsługuje wiele wersji środowiska uruchomieniowego. Poznaj różnice między nimi i wybierz odpowiedni dla siebie.
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.openlocfilehash: 874d2e657c2c9d7cba7874ff9815c61f9bbe8ef7
-ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
+ms.openlocfilehash: 1172f1cba3dfc10fe08863626db0aa8e7a4bf173
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74941730"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769119"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Przegląd wersji środowiska uruchomieniowego Azure Functions
 
@@ -115,11 +115,11 @@ Wersja środowiska uruchomieniowego funkcji używanych przez opublikowane aplika
 
 ### <a name="locally-developed-application-versions"></a>Wersje aplikacji opracowane lokalnie
 
-Następujące aktualizacje funkcji można wprowadzać lokalnie zmiany wersji aplikacji.
+Możesz wprowadzić następujące aktualizacje, aby aplikacje funkcjonowały lokalnie w celu zmiany wersji.
 
 #### <a name="visual-studio-runtime-versions"></a>Wersje środowiska uruchomieniowego programu Visual Studio
 
-W programie Visual Studio podczas tworzenia projektu wybierana jest wersja środowiska uruchomieniowego. Narzędzia Azure Functions Tools for Visual Studio obsługują zarówno główne wersje środowiska uruchomieniowego. Poprawna wersja jest używana podczas debugowania i publikowania na podstawie ustawień projektu. Ustawienia wersji są zdefiniowane w pliku `.csproj` w następujących właściwościach:
+W programie Visual Studio podczas tworzenia projektu wybierana jest wersja środowiska uruchomieniowego. Narzędzia Azure Functions Tools for Visual Studio obsługują trzy główne wersje środowiska uruchomieniowego. Poprawna wersja jest używana podczas debugowania i publikowania na podstawie ustawień projektu. Ustawienia wersji są zdefiniowane w pliku `.csproj` w następujących właściwościach:
 
 ##### <a name="version-1x"></a>Wersja 1. x
 
@@ -147,10 +147,10 @@ W programie Visual Studio podczas tworzenia projektu wybierana jest wersja środ
 
 ###### <a name="updating-2x-apps-to-3x-in-visual-studio"></a>Aktualizowanie aplikacji 2. x na 3. x w programie Visual Studio
 
-Istnieje możliwość otwarcia istniejącej funkcji docelowej 2. x i przejścia do 3. x poprzez edycję pliku `.csproj` i zaktualizowanie powyższych wartości.  Program Visual Studio automatycznie zarządza wersjami środowiska uruchomieniowego na podstawie metadanych projektu.  Jednak jest możliwe, jeśli nigdy nie utworzono aplikacji 3. x, a program Visual Studio nie ma jeszcze szablonów i środowiska uruchomieniowego dla 3. x na komputerze.  Może się to stać z błędem, takim jak "Brak dostępnego środowiska uruchomieniowego funkcji pasującego do wersji określonej w projekcie".  Aby pobrać najnowsze szablony i środowisko uruchomieniowe, przejdź przez środowisko, aby utworzyć nowy projekt funkcji.  Po wyświetleniu okna Wybieranie wersji i szablonu Zaczekaj, aż program Visual Studio zakończy pobieranie najnowszych szablonów.  Po udostępnieniu i wyświetleniu najnowszych szablonów programu .NET Core 3 należy mieć możliwość uruchamiania i debugowania dowolnego projektu skonfigurowanego dla wersji 3. x.
+Istnieje możliwość otwarcia istniejącej funkcji docelowej 2. x i przejścia do 3. x poprzez edycję pliku `.csproj` i zaktualizowanie powyższych wartości.  Program Visual Studio automatycznie zarządza wersjami środowiska uruchomieniowego na podstawie metadanych projektu.  Jednak jest to możliwe, jeśli nigdy nie utworzono aplikacji 3. x, a program Visual Studio nie ma jeszcze szablonów i środowiska uruchomieniowego dla 3. x na komputerze.  Może się to stać z błędem, takim jak "Brak dostępnego środowiska uruchomieniowego funkcji pasującego do wersji określonej w projekcie".  Aby pobrać najnowsze szablony i środowisko uruchomieniowe, przejdź przez środowisko, aby utworzyć nowy projekt funkcji.  Po wyświetleniu okna Wybieranie wersji i szablonu Zaczekaj, aż program Visual Studio zakończy pobieranie najnowszych szablonów.  Po udostępnieniu i wyświetleniu najnowszych szablonów programu .NET Core 3 należy mieć możliwość uruchamiania i debugowania dowolnego projektu skonfigurowanego dla wersji 3. x.
 
 > [!IMPORTANT]
-> Funkcje w wersji 3. x można opracowywać tylko w programie Visual Studio, jeśli jest używany program w wersji 16,4 lub nowszej.
+> Funkcje w wersji 3. x można opracowywać tylko w programie Visual Studio, jeśli jest używany program Visual Studio w wersji 16,4 lub nowszej.
 
 #### <a name="vs-code-and-azure-functions-core-tools"></a>VS Code i Azure Functions Core Tools
 

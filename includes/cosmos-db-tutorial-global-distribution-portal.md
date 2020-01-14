@@ -2,21 +2,21 @@
 title: Globalna dystrybucja usługi Azure Cosmos DB
 description: Dowiedz się, jak globalnie replikować dane za pomocą usługi Azure Cosmos DB w witrynie Azure Portal
 services: cosmos-db
-author: rimman
+author: SnehaGunda
+ms.author: sngun
 ms.service: cosmos-db
 ms.topic: include
 ms.date: 12/26/2018
-ms.author: rimman
 ms.custom: include file
-ms.openlocfilehash: 751571820d52c003a7e740bd63af8c9d9e071c7a
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: cb9899712fd023aaec41f4b6bb34357b60ecb106
+ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67182974"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75751641"
 ---
 ## <a id="addregion"></a>Dodawanie regionów globalnej bazy danych przy użyciu witryny Azure Portal
-Usługa Azure Cosmos DB jest dostępna we wszystkich [regionach świadczenia usługi Azure][azureregions] na całym świecie. Po wybraniu domyślnego poziomu spójności dla Twojego konta bazy danych możesz skojarzyć co najmniej jeden region (w zależności od wybranego domyślnego poziomu spójności i globalnych potrzeb dystrybucji).
+Azure Cosmos DB jest dostępna we wszystkich [regionach świadczenia usługi Azure][azureregions] na całym świecie. Po wybraniu domyślnego poziomu spójności dla Twojego konta bazy danych możesz skojarzyć co najmniej jeden region (w zależności od wybranego domyślnego poziomu spójności i globalnych potrzeb dystrybucji).
 
 1. W witrynie [Azure Portal](https://portal.azure.com/) na pasku po lewej stronie kliknij pozycję **Azure Cosmos DB**.
 2. Na stronie usługi **Azure Cosmos DB** wybierz konto bazy danych do modyfikacji.
@@ -35,7 +35,7 @@ Istnieją dwa typowe scenariusze konfigurowania co najmniej dwóch regionów:
 
 Aby zapewnić użytkownikom końcowym małe opóźnienia, zalecane jest wdrożenie zarówno aplikacji, jak i usługi Azure Cosmos DB w regionach, które odpowiadają lokalizacjom użytkowników aplikacji.
 
-W przypadku BCDR zalecane jest dodawanie regionów na podstawie par regionów opisanych w artykule [Ciągłość działania i odzyskiwanie po awarii (BCDR): sparowane regiony platformy Azure][bcdr].
+W przypadku BCDR zaleca się dodanie regionów na podstawie par regionów opisanych w artykule dotyczącym [ciągłości biznesowej i odzyskiwania po awarii (BCDR): artykuł z sparowanymi regionami platformy Azure][bcdr] .
 
 <!--
 

@@ -177,6 +177,8 @@
               href: azure-to-azure-how-to-enable-replication.md
             - name: Włączanie replikacji Azure–Azure dla szyfrowanych maszyn wirtualnych
               href: azure-to-azure-how-to-enable-replication-ade-vms.md
+            - name: Włączanie replikacji Azure–Azure dla maszyn wirtualnych z dyskami obsługującymi klucz zarządzany przez klienta
+              href: azure-to-azure-how-to-enable-replication-cmk-disks.md
             - name: Włączanie replikacji Azure–Azure dla maszyn wirtualnych S2D
               href: azure-to-azure-how-to-enable-replication-s2d-vms.md
             - name: Włączanie replikacji dodanego dysku

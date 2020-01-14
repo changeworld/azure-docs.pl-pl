@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 46195a0a799f9edabcd8cd5a27e1b79752d03a45
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: f7fadd974fdc572dddb403c25e90246fd92b1989
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74964059"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75763236"
 ---
 # <a name="how-to-require-two-step-verification-for-a-user"></a>Jak wymagać weryfikacji dwuetapowej dla użytkownika
 
@@ -29,9 +29,9 @@ W celu przeprowadzenia weryfikacji dwuetapowej można wykonać jedną z dwóch m
 
 **Włączone przez zmianę stanu użytkownika** — jest to tradycyjna metoda wymagająca weryfikacji dwuetapowej i została omówiona w tym artykule. Działa ona zarówno z usługą Azure MFA w chmurze, jak i na serwerze usługi Azure MFA. Użycie tej metody wymaga, aby użytkownicy przeprowadzali weryfikację dwuetapową przy **każdym** logowaniu i zastępują zasady dostępu warunkowego.
 
-Włączone przez zasady dostępu warunkowego — jest to najbardziej elastyczny sposób na umożliwienie weryfikacji dwuetapowej dla użytkowników. Włączenie zasad dostępu warunkowego działa tylko dla usługi Azure MFA w chmurze i jest funkcją Premium usługi Azure AD. Więcej informacji na temat tej metody można znaleźć w temacie [wdrażanie usługi Azure Multi-Factor Authentication opartej na chmurze](howto-mfa-getstarted.md).
+**Włączone przez zasady dostępu warunkowego** — jest to najbardziej elastyczny sposób na umożliwienie weryfikacji dwuetapowej dla użytkowników. Włączenie zasad dostępu warunkowego działa tylko dla usługi Azure MFA w chmurze i jest funkcją Premium usługi Azure AD. Więcej informacji na temat tej metody można znaleźć w temacie [wdrażanie usługi Azure Multi-Factor Authentication opartej na chmurze](howto-mfa-getstarted.md).
 
-Włączone przez Azure AD Identity Protection — ta metoda korzysta z zasad ryzyka Azure AD Identity Protection, aby wymagać weryfikacji dwuetapowej na podstawie ryzyka związanego z logowaniem dla wszystkich aplikacji w chmurze. Ta metoda wymaga licencjonowania Azure Active Directory P2. Więcej informacji na temat tej metody można znaleźć w [Azure Active Directory Identity Protection](../identity-protection/howto-sign-in-risk-policy.md)
+**Włączone przez Azure AD Identity Protection** — ta metoda korzysta z zasad ryzyka Azure AD Identity Protection, aby wymagać weryfikacji dwuetapowej na podstawie ryzyka związanego z logowaniem dla wszystkich aplikacji w chmurze. Ta metoda wymaga licencjonowania Azure Active Directory P2. Więcej informacji na temat tej metody można znaleźć w [Azure Active Directory Identity Protection](../identity-protection/howto-sign-in-risk-policy.md)
 
 > [!Note]
 > Więcej informacji o licencjach i cenach można znaleźć na stronach z cennikiem [usługi Azure AD](https://azure.microsoft.com/pricing/details/active-directory/
@@ -136,7 +136,7 @@ Korzystanie z programu PowerShell jest dobrym rozwiązaniem w przypadku konieczn
 Aby wyłączyć usługę MFA, użyj tego skryptu:
 
    ```PowerShell
-   Get-MsolUser -UserPrincipalName user@domain.com | Set-MsolUser -StrongAuthenticationMethods @()
+   Get-MsolUser -UserPrincipalName user@domain.com | Set-MsolUser -StrongAuthenticationRequirements @()
    ```
 
 który może być również skrócony do:

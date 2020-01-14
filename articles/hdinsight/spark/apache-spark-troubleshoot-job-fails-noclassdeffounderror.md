@@ -7,12 +7,12 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 07/29/2019
-ms.openlocfilehash: 7ccd908c96e68190f09da37a83e0a34a09f5e697
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 4659274110add96613ca88560edfb459b20a99cb
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71087151"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894347"
 ---
 # <a name="apache-spark-streaming-job-that-reads-apache-kafka-data-fails-with-noclassdeffounderror-in-hdinsight"></a>Apache Spark zadanie przesyłania strumieniowego, które odczytuje Apache Kafka danych kończy się niepowodzeniem z NoClassDefFoundError w usłudze HDInsight
 
@@ -20,7 +20,7 @@ W tym artykule opisano kroki rozwiązywania problemów oraz możliwe rozwiązani
 
 ## <a name="issue"></a>Problem
 
-Klaster Apache Spark uruchamia zadanie przesyłania strumieniowego Spark, które odczytuje dane z klastra Apache Kafka. Zadanie przesyłania strumieniowego Spark kończy się niepowodzeniem, jeśli kompresja strumienia Kafka jest włączona. W takim przypadku application_1525986016285_0193 aplikacji przędzy strumienia Spark nie powiodła się z powodu błędu:
+Klaster Apache Spark uruchamia zadanie przesyłania strumieniowego Spark, które odczytuje dane z klastra Apache Kafka. Zadanie przesyłania strumieniowego Spark kończy się niepowodzeniem, jeśli kompresja strumienia Kafka jest włączona. W takim przypadku aplikacja przędzy strumienia Spark application_1525986016285_0193 nie powiodła się z powodu błędu:
 
 ```
 18/05/17 20:01:33 WARN YarnAllocator: Container marked as failed: container_e25_1525986016285_0193_01_000032 on host: wn87-Scaled.2ajnsmlgqdsutaqydyzfzii3le.cx.internal.cloudapp.net. Exit status: 50. Diagnostics: Exception from container-launch.
@@ -32,7 +32,7 @@ Stack trace: ExitCodeException exitCode=50:
 
 ## <a name="cause"></a>Przyczyna
 
-Ten błąd może być spowodowany określeniem wersji `spark-streaming-kafka` pliku JAR, który jest inny niż wersja klastra Kafka, który jest uruchomiony.
+Ten błąd może być spowodowany określeniem wersji pliku `spark-streaming-kafka` jar, który jest inny niż wersja klastra Kafka, który jest uruchomiony.
 
 Na przykład jeśli używasz Kafka klastra w wersji 0.10.1, następujące polecenie spowoduje wystąpienie błędu:
 
@@ -44,9 +44,9 @@ spark-submit \
 ~/Kafka_Spark_SQL.py <bootstrap server details>
 ```
 
-## <a name="resolution"></a>Rozwiązanie
+## <a name="resolution"></a>Rozdzielczość
 
-Użyj polecenia Spark-Submit z `–packages` opcją i upewnij się, że wersja pliku JAR-Streaming-Kafka jest taka sama jak wersja klastra Kafka, który jest uruchomiony.
+Użyj polecenia Spark-Submit z opcją `–packages` i upewnij się, że wersja pliku JAR-Streaming-Kafka jest taka sama jak wersja klastra Kafka, który jest uruchomiony.
 
 ## <a name="next-steps"></a>Następne kroki
 
@@ -54,6 +54,6 @@ Jeśli problem nie został wyświetlony lub nie można rozwiązać problemu, odw
 
 * Uzyskaj odpowiedzi od ekspertów platformy Azure za pośrednictwem [pomocy technicznej dla społeczności platformy Azure](https://azure.microsoft.com/support/community/).
 
-* Połącz się [@AzureSupport](https://twitter.com/azuresupport) za pomocą — oficjalnego konta Microsoft Azure, aby zwiększyć komfort obsługi klienta, łącząc społeczność platformy Azure z właściwymi zasobami: odpowiedziami, pomocą techniczną i ekspertami.
+* Połącz się z [@AzureSupport](https://twitter.com/azuresupport) — oficjalne Microsoft Azure konto, aby usprawnić obsługę klienta, łącząc społeczność platformy Azure z właściwymi zasobami: odpowiedziami, pomocą techniczną i ekspertami.
 
-* Jeśli potrzebujesz więcej pomocy, możesz przesłać żądanie pomocy technicznej z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Na pasku menu wybierz pozycję **Obsługa** , a następnie otwórz Centrum **pomocy i obsługi technicznej** . Aby uzyskać szczegółowe informacje, zobacz [jak utworzyć żądanie pomocy technicznej platformy Azure](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). Dostęp do pomocy w zakresie zarządzania subskrypcjami i rozliczeń jest dostępny w ramach subskrypcji Microsoft Azure, a pomoc techniczna jest świadczona za pomocą jednego z [planów pomocy technicznej systemu Azure](https://azure.microsoft.com/support/plans/).
+* Jeśli potrzebujesz więcej pomocy, możesz przesłać żądanie pomocy technicznej z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Na pasku menu wybierz pozycję **Obsługa** , a następnie otwórz Centrum **pomocy i obsługi technicznej** . Aby uzyskać szczegółowe informacje, zobacz [jak utworzyć żądanie pomocy technicznej platformy Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). Dostęp do pomocy w zakresie zarządzania subskrypcjami i rozliczeń jest dostępny w ramach subskrypcji Microsoft Azure, a pomoc techniczna jest świadczona za pomocą jednego z [planów pomocy technicznej systemu Azure](https://azure.microsoft.com/support/plans/).

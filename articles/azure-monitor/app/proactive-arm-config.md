@@ -8,16 +8,16 @@ author: harelbr
 ms.author: harelbr
 ms.date: 06/26/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 74014a91684749eec7c4086a88785f2024694677
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: bc66a286bee193b377731a549129446bba431cb3
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929089"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749042"
 ---
 # <a name="manage-application-insights-smart-detection-rules-using-azure-resource-manager-templates"></a>Zarządzanie Application Insights regułami wykrywania inteligentnego przy użyciu szablonów Azure Resource Manager
 
-Reguły inteligentnego wykrywania w Application Insights mogą być zarządzane i konfigurowane przy użyciu [szablonów Azure Resource Manager](../../azure-resource-manager/resource-group-authoring-templates.md).
+Reguły inteligentnego wykrywania w Application Insights mogą być zarządzane i konfigurowane przy użyciu [szablonów Azure Resource Manager](../../azure-resource-manager/templates/template-syntax.md).
 Tej metody można użyć podczas wdrażania nowych zasobów Application Insights z automatyzacją Azure Resource Manager lub do modyfikowania ustawień istniejących zasobów.
 
 ## <a name="smart-detection-rule-configuration"></a>Konfiguracja reguły wykrywania inteligentnego
@@ -133,9 +133,12 @@ Pamiętaj, aby zastąpić nazwę zasobu Application Insights i określić odpowi
 
 ```
 
-### <a name="failure-anomalies-v2-non-classic-alert-rule"></a>Reguła alertu o niepowodzeniu w wersji 2 (nieklasycznej)
+### <a name="failure-anomalies-alert-rule"></a>Reguła alertu dotyczącego anomalii niepowodzeń
 
-Ten szablon Azure Resource Manager demonstruje konfigurację reguły alertu o anomalii niepowodzeń v2 o ważności 2. Ta nowa wersja reguły alertu dotyczącego anomalii awarii jest częścią nowej platformy alertów platformy Azure i zastępuje wersję klasyczną, która jest wycofywana w ramach procesu wycofywania [alertów klasycznych](https://azure.microsoft.com/updates/classic-alerting-monitoring-retirement/).
+Ten szablon Azure Resource Manager ilustruje konfigurowanie reguły alertów o anomalii awarii o ważności 2. Ta nowa wersja reguły alertu dotyczącego anomalii awarii jest częścią nowej platformy alertów platformy Azure i zastępuje wersję klasyczną, która jest wycofywana w ramach procesu wycofywania [alertów klasycznych](https://azure.microsoft.com/updates/classic-alerting-monitoring-retirement/).
+
+> [!NOTE]
+> Anomalie błędów to usługa globalna, dlatego w lokalizacji globalnej jest tworzona lokalizacja reguły.
 
 ```json
 {
@@ -166,7 +169,7 @@ Ten szablon Azure Resource Manager demonstruje konfigurację reguły alertu o an
 ```
 
 > [!NOTE]
-> Ten szablon Azure Resource Manager jest unikatowy dla reguły alertu niepowodzenia anomalii v2 i różni się od innych klasycznych reguł wykrywania inteligentnego opisanych w tym artykule.   
+> Ten szablon Azure Resource Manager jest unikatowy dla reguły alertu dotyczącego anomalii awarii i różni się od innych klasycznych reguł wykrywania inteligentnego opisanych w tym artykule.
 
 ## <a name="smart-detection-rule-names"></a>Nazwy reguł wykrywania inteligentnego
 

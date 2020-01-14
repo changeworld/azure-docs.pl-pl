@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/21/2019
 ms.author: allensu
-ms.openlocfilehash: 3b6a16436b2719d1571f5d5a3c16711a9100b75d
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 68f95c893646d76a80a4edfeb557064660ff9f1c
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894427"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75864268"
 ---
 # <a name="azure-standard-load-balancer-overview"></a>Omówienie usługi Azure usługa Load Balancer w warstwie Standardowa
 
@@ -38,20 +38,6 @@ Funkcje zasobu Load Balancer są zawsze wyrażone jako fronton, reguła, sonda k
 Jednym z kluczowych aspektów jest zakres sieci wirtualnej dla zasobu.  Chociaż podstawowa Load Balancer istnieje w zakresie zestawu dostępności, usługa Load Balancer w warstwie Standardowa jest w pełni zintegrowana z zakresem sieci wirtualnej i ma zastosowanie wszystkie pojęcia dotyczące sieci wirtualnej.
 
 Zasoby Load Balancer są obiektami, w których można wypróbować, w jaki sposób platforma Azure powinna programować infrastrukturę z wieloma dzierżawcami, aby osiągnąć scenariusz, który ma zostać utworzony.  Nie ma bezpośredniej relacji między zasobami Load Balancer i rzeczywistą infrastrukturą; utworzenie Load Balancer nie powoduje utworzenia wystąpienia, pojemność jest zawsze dostępna i nie ma opóźnień uruchamiania ani skalowania do uwzględnienia. 
-
-## <a name="why-use-standard-load-balancer"></a>Dlaczego warto używać usługa Load Balancer w warstwie Standardowa?
-
-Usługa Load Balancer w warstwie Standardowa pozwala skalować aplikacje i zapewniać wysoką dostępność zarówno wdrożeniom o małej skali, jak i dużym oraz złożonym architekturom obejmującym wiele stref.
-
-Zapoznaj się z tabelą poniżej, aby zapoznać się z omówieniem różnic między usługa Load Balancer w warstwie Standardowa i Load Balancer Basic:
-
->[!NOTE]
-> Nowe projekty powinny zostać dostosowane do modułu równoważenia obciążenia w warstwie Standardowa. 
-
-[!INCLUDE [comparison table](../../includes/load-balancer-comparison-table.md)]
-
-Przejrzyj [limity usługi dla Load Balancer](https://aka.ms/lblimits), a także [ceny](https://aka.ms/lbpricing)i [umowy SLA](https://aka.ms/lbsla).
-
 
 ### <a name="backend"></a>Pula zaplecza
 
@@ -183,38 +169,24 @@ Jednostki SKU nie są modyfikowalne. Postępuj zgodnie z instrukcjami w tej sekc
 
 4. Dołącz wszystkie wystąpienia maszyn wirtualnych do nowych zasobów standardowej jednostki SKU.
 
-### <a name="migrate-from-standard-to-basic-sku"></a>Migrowanie z wersji Standard do podstawowa
-
-1. Utwórz nowy zasób podstawowy (w razie konieczności Load Balancer i publicznych adresów IP). Utwórz ponownie reguły i definicje sondy.  Zmień sondę HTTPS na sondę TCP na 443/TCP. 
-
-2. Usuń standardowe zasoby jednostki SKU (Load Balancer i publiczne adresy IP zgodnie z wymaganiami) ze wszystkich wystąpień maszyn wirtualnych. Pamiętaj również o usunięciu wszystkich wystąpień maszyn wirtualnych zestawu dostępności.
-
-3. Dołącz wszystkie wystąpienia maszyn wirtualnych do nowych zasobów podstawowej jednostki SKU.
-
 >[!IMPORTANT]
->
->Istnieją ograniczenia dotyczące korzystania z podstawowych i standardowych jednostek SKU.
->
->Porty HA i Diagnostyka standardowej jednostki SKU są dostępne tylko w standardowej jednostce SKU. Nie można migrować ze standardowej jednostki SKU do podstawowej jednostki SKU, a także zachować te funkcje.
->
->Podstawowa i standardowa jednostka SKU mają wiele różnic, jak opisano w tym artykule.  Upewnij się, że rozumiesz i przygotowasz do nich.
 >
 >Do Load Balancer i publicznych zasobów IP muszą być używane zgodne jednostki SKU. Nie można korzystać z kombinacji podstawowych zasobów jednostki SKU i standardowych zasobów jednostki SKU. Nie można dołączyć autonomicznych maszyn wirtualnych, maszyn wirtualnych w zasobie zestawu dostępności lub zasobów zestawu skalowania maszyn wirtualnych jednocześnie do obu jednostek SKU.
 
 ## <a name="region-availability"></a>Dostępność w poszczególnych regionach
 
-Usługa Load Balancer w warstwie Standardowa jest obecnie dostępna we wszystkich regionach chmury publicznej.
+Usługa Load Balancer w warstwie Standardowa jest obecnie dostępna we wszystkich regionach świadczenia usługi Azure.
 
-## <a name="sla"></a>Umowa SLA
+## <a name="sla"></a>Umowa SLA 
 
-Usługi równoważenia obciążenia w warstwie Standardowa są dostępne z umową SLA na 99,99%.  Aby uzyskać szczegółowe informacje, zapoznaj się z umową [SLA usługa Load Balancer w warstwie Standardowa](https://aka.ms/lbsla) .
+Usługi równoważenia obciążenia w warstwie Standardowa są dostępne z umową SLA na 99,99%.  Aby uzyskać szczegółowe informacje, zapoznaj się z umową [SLA usługa Load Balancer w warstwie Standardowa](https://aka.ms/lbsla) . 
 
-## <a name="pricing"></a>Cennik
+## <a name="pricing"></a>Cennik 
 
-Usługa Load Balancer w warstwie Standardowa jest płatna.
+Usługa Load Balancer w warstwie Standardowa jest płatna. 
 
-- Liczba skonfigurowanych reguł równoważenia obciążenia i reguł dla ruchu wychodzącego (reguły NAT dla ruchu przychodzącego nie są wliczane do łącznej liczby reguł).
-- Ilość przetworzonych danych dla ruchu przychodzącego i wychodzącego niezależnie od reguły. 
+- Liczba skonfigurowanych reguł równoważenia obciążenia i reguł dla ruchu wychodzącego (reguły NAT dla ruchu przychodzącego nie są wliczane do łącznej liczby reguł). 
+- Ilość przetworzonych danych dla ruchu przychodzącego i wychodzącego niezależnie od reguły.
 
 Aby uzyskać informacje na temat cen modułu równoważenia obciążenia w warstwie Standardowa, przejdź na stronę [cennika modułu równoważenia obciążenia](https://azure.microsoft.com/pricing/details/load-balancer/).
 
@@ -224,15 +196,15 @@ Aby uzyskać informacje na temat cen modułu równoważenia obciążenia w warst
 - Zasób autonomicznej maszyny wirtualnej, zasób zestawu dostępności lub zasób zestawu skalowania maszyn wirtualnych może odwoływać się do jednej jednostki SKU, nigdy nie obu.
 - Reguła Load Balancer nie może obejmować dwóch sieci wirtualnych.  Frontony i powiązane z nimi wystąpienia zaplecza muszą znajdować się w tej samej sieci wirtualnej.  
 - [Operacje przenoszenia subskrypcji](../azure-resource-manager/resource-group-move-resources.md) nie są obsługiwane w przypadku zasobów w warstwie Standardowa i PIP.
-- Role procesów roboczych sieci Web bez sieci wirtualnej i innych usług platformy firmy Microsoft mogą być dostępne, gdy jest używany tylko wewnętrzny usługa Load Balancer w warstwie Standardowa ze względu na efekt uboczny od sposobu, w jaki działają usługi frontonu i inne usługi platformy. Nie należy polegać na tym, ponieważ sama usługa lub podstawowa platforma może ulec zmianie bez powiadomienia. Zawsze należy założyć, że konieczne jest utworzenie [połączenia wychodzącego](load-balancer-outbound-connections.md) jawnie, jeśli jest to potrzebne, przy użyciu tylko wewnętrznego usługa Load Balancer w warstwie Standardowa.
+- Role procesów roboczych sieci Web bez sieci wirtualnej i innych usług platformy firmy Microsoft mogą być dostępne z wystąpień w ramach tylko wewnętrznego usługa Load Balancer w warstwie Standardowa ze względu na efekt uboczny od sposobu, w jaki działają usługi frontonu i inne usługi platformy. Nie należy polegać na tym, ponieważ sama usługa lub podstawowa platforma może ulec zmianie bez powiadomienia. Zawsze należy założyć, że konieczne jest utworzenie [połączenia wychodzącego](load-balancer-outbound-connections.md) jawnie, jeśli jest to potrzebne, przy użyciu tylko wewnętrznego usługa Load Balancer w warstwie Standardowa.
 - Moduł równoważenia obciążenia to produkt protokołu TCP lub UDP służący do równoważenia obciążenia i przekierowania portów na potrzeby tych konkretnych protokołów IP.  Reguły równoważenia obciążenia i reguły NAT dla ruchu przychodzącego są obsługiwane dla protokołów TCP i UDP, ale nie są obsługiwane dla innych protokołów IP, w tym protokołu ICMP. Moduł równoważenia obciążenia nie kończy, nie odpowiada ani w żaden inny sposób nie wchodzi w interakcję z ładunkiem przepływu protokołu UDP ani TCP. Nie jest to serwer proxy. Pomyślne zweryfikowanie łączności z frontonem musi odbywać się w paśmie przy użyciu tego samego protokołu, który jest używany w ramach równoważenia obciążenia lub przychodzącej reguły NAT (TCP lub UDP) _, a_ co najmniej jedna maszyna wirtualna musi generować odpowiedź dla klienta, aby zobaczyć odpowiedź z frontonu.  Nieodebrana odpowiedź w paśmie z frontonu Load Balancer nie wskazuje, że żadne maszyny wirtualne nie mogły odpowiedzieć.  Nie jest możliwe korzystanie z Load Balancer frontonu bez możliwości reagowania maszyny wirtualnej.  Dotyczy to również połączeń wychodzących, dla których [translator adresów sieciowych opartych na źródle na potrzeby maskowania portów](load-balancer-outbound-connections.md#snat) jest obsługiwany tylko w przypadku protokołów TCP i UDP; dla wszystkich innych protokołów IP, w tym ICMP, również zakończy się to niepowodzeniem.  Przypisz publiczny adres IP na poziomie wystąpienia, aby rozwiązać ten problem.
 - W przeciwieństwie do publicznych modułów równoważenia obciążenia, które zapewniają [połączenia wychodzące](load-balancer-outbound-connections.md) w przypadku przejścia z prywatnych adresów IP w sieci wirtualnej do publicznych adresów IP, wewnętrzne moduły równoważenia obciążenia nie tłumaczą wychodzących połączeń przychodzących na fronton Load Balancer wewnętrznego, tak jak w przypadku elementów prywatnych.  Pozwala to uniknąć potencjalnych wyczerpania adresów IP wewnątrz unikatowej wewnętrznej przestrzeni adresowej, w której tłumaczenie nie jest wymagane.  Efekt uboczny polega na tym, że jeśli przepływ wychodzący z maszyny wirtualnej w puli zaplecza próbuje przepływ do frontonu wewnętrznego Load Balancer, w którym znajduje się ta pula, _i_ jest mapowany do samego siebie, oba etapy przepływu nie są zgodne i przepływ zakończy się niepowodzeniem.  Jeśli przepływ nie został zmapowany z powrotem do tej samej maszyny wirtualnej w puli zaplecza, która utworzyła przepływ na fronton, przepływ zakończy się pomyślnie.   Gdy przepływ zamapuje się z powrotem do samego siebie, wydaje się, że przepływ wychodzący pochodzi z maszyny wirtualnej do frontonu, a odpowiedni przepływ przychodzący wydaje się pochodzić z maszyny wirtualnej do samej siebie. Z punktu widzenia systemu operacyjnego gościa części dotyczące ruchu przychodzącego i wychodzącego tego samego przepływu nie są zgodne w ramach maszyny wirtualnej. Stos TCP nie rozpozna tych części jednego przepływu jako należących do tego samego przepływu, ponieważ elementy źródłowe i docelowe nie będą zgodne.  Gdy przepływ jest mapowany na dowolną inną maszynę wirtualną w puli zaplecza, połowy przepływu będą zgodne, a maszyna wirtualna może pomyślnie odpowiedzieć na przepływ.  Objawem tego scenariusza jest sporadyczne przekroczenie limitu czasu połączenia. Istnieje kilka typowych obejść do niezawodnego osiągania tego scenariusza (przepływy pochodzące z puli zaplecza do pul zaplecza z wewnętrznymi Load Balancer frontonu), które obejmują Wstawianie serwera proxy innej firmy za wewnętrzną Load Balancer lub [przy użyciu reguł stylu DSR](load-balancer-multivip-overview.md).  Użycie publicznego modułu równoważenia obciążenia jest możliwe w celu rozwiązania tego problemu, ale wynikowy scenariusz jest podatny na [wyczerpanie translatora adresów sieciowych opartych na źródle](load-balancer-outbound-connections.md#snat) i należy tego unikać lub starannie kontrolować.
 
 ## <a name="next-steps"></a>Następne kroki
 
+- Dowiedz się więcej o [Azure Load Balancer](load-balancer-overview.md).
 - Dowiedz się więcej o korzystaniu z [Usługa Load Balancer w warstwie Standardowa i strefy dostępności](load-balancer-standard-availability-zones.md).
 - Dowiedz się więcej o [sondach kondycji](load-balancer-custom-probe-overview.md).
-- Dowiedz się więcej o [strefy dostępności](../availability-zones/az-overview.md).
 - Dowiedz się więcej na temat [diagnostyki usługa Load Balancer w warstwie Standardowa](load-balancer-standard-diagnostics.md).
 - Dowiedz się więcej na temat [obsługiwanych metryk wielowymiarowych](../azure-monitor/platform/metrics-supported.md#microsoftnetworkloadbalancers) dla diagnostyki w [Azure monitor](../monitoring-and-diagnostics/monitoring-overview.md).
 - Dowiedz się więcej o korzystaniu z [modułu równoważenia obciążenia dla połączeń wychodzących](load-balancer-outbound-connections.md).
@@ -240,8 +212,4 @@ Aby uzyskać informacje na temat cen modułu równoważenia obciążenia w warst
 - Więcej informacji [na temat resetowania protokołu TCP w trybie bezczynności](load-balancer-tcp-reset.md).
 - Dowiedz się więcej o [Usługa Load Balancer w warstwie Standardowa z regułami równoważenia obciążenia dla portów ha](load-balancer-ha-ports-overview.md).
 - Dowiedz się więcej o korzystaniu [z Load Balancer z wieloma frontonami](load-balancer-multivip-overview.md).
-- Dowiedz się więcej o [sieciach wirtualnych](../virtual-network/virtual-networks-overview.md).
 - Dowiedz się więcej na temat [sieciowych grup zabezpieczeń](../virtual-network/security-overview.md).
-- Dowiedz się więcej o [punktach końcowych usługi sieci wirtualnej](../virtual-network/virtual-network-service-endpoints-overview.md).
-- Poznaj inne kluczowe [możliwości sieciowe](../networking/networking-overview.md) na platformie Azure.
-- Dowiedz się więcej o [Load Balancer](load-balancer-overview.md).

@@ -7,22 +7,25 @@ ms.date: 09/06/2019
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.openlocfilehash: 2d08180d40233c0ab990bc700f0412d11647d5f1
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: dfdde1ae981dcd2d539dec3667e44e90cef4d1c8
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349955"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75748031"
 ---
 # <a name="azure-storage-samples-using-java"></a>Przykłady usługi Azure Storage korzystające z języka Java
 
 Poniższa tabela zawiera omówienie naszego repozytorium przykładów oraz scenariusze omówione w poszczególnych przykładach. Kliknij linki, aby wyświetlić odpowiedni przykładowy kod w usłudze GitHub.
 
-## <a name="blob-samples"></a>Przykłady obiektów BLOB
+> [!NOTE]
+> Te przykłady używają biblioteki v11 Java usługi Azure Storage. Aby uzyskać kod V12, zobacz [przykłady](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob) w repozytorium GitHub.
+
+## <a name="blob-samples-v11"></a>Przykłady obiektów BLOB (v11)
 
 | **Scenariusz** | **Przykładowy kod** |
 |--------------|-----------------|
-| Dołącz obiekt blob | [Wprowadzenie z usługą Azure Blob Service w języku Java](https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java) |
+| Dołącz obiekt BLOB | [Wprowadzenie z usługą Azure Blob Service w języku Java](https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java) |
 | Blokowy obiekt blob | [Wprowadzenie z usługą Azure Blob Service w języku Java](https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java) |
 | Szyfrowania po stronie klienta | [Wprowadzenie z szyfrowaniem po stronie klienta platformy Azure w języku Java](https://github.com/Azure-Samples/storage-java-client-side-encryption) |
 | Copy Blob | [Wprowadzenie z usługą Azure Blob Service w języku Java](https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java) |
@@ -34,12 +37,12 @@ Poniższa tabela zawiera omówienie naszego repozytorium przykładów oraz scena
 | Pobierz zakresy stron | [Wprowadzenie z usługą Azure Blob Service w języku Java](https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java#L399) |
 | Obiekt BLOB dzierżawy/kontener | [Wprowadzenie z usługą Azure Blob Service w języku Java](https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java) |
 | Lista obiektów BLOB/kontener | [Wprowadzenie z usługą Azure Blob Service w języku Java](https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java) |
-| Stronicowy obiekt blob | [Wprowadzenie z usługą Azure Blob Service w języku Java](https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java) |
+| Obiekt BLOB strony | [Wprowadzenie z usługą Azure Blob Service w języku Java](https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java) |
 | SAS | [Przykład testów SAS](https://github.com/Azure/azure-storage-java/blob/89540f018f1160ce55619c6fe7b5f5ff57d0ce10/src/test/java/com/microsoft/azure/storage/Samples.java#L513) |
 | Właściwości usługi | [Wprowadzenie z usługą Azure Blob Service w języku Java](https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobAdvanced.java) |
 | Obiekt BLOB migawek | [Wprowadzenie z usługą Azure Blob Service w języku Java](https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java) |
 
-## <a name="file-samples"></a>Przykłady plików
+## <a name="file-samples-v11"></a>Przykłady plików (v11)
 
 | **Scenariusz** | **Przykładowy kod** |
 |--------------|-----------------|
@@ -53,7 +56,7 @@ Poniższa tabela zawiera omówienie naszego repozytorium przykładów oraz scena
 | Wyświetl listę udziałów | [Wprowadzenie z usługą plików platformy Azure w języku Java](https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileBasics.java) |
 | Udostępnianie właściwości/metadanych/statystyk | [Wprowadzenie z usługą plików platformy Azure w języku Java](https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileAdvanced.java) |
 
-## <a name="queue-samples"></a>Przykładowe kolejki
+## <a name="queue-samples-v11"></a>Przykłady kolejki (v11)
 
 | **Scenariusz** | **Przykładowy kod** |
 |--------------|-----------------|
@@ -66,11 +69,11 @@ Poniższa tabela zawiera omówienie naszego repozytorium przykładów oraz scena
 | Właściwości usługi kolejki | [Wprowadzenie z usługą Azure Queue Service w języku Java](https://github.com/Azure-Samples/storage-queue-java-getting-started/blob/master/src/QueueAdvanced.java) |
 | Aktualizuj komunikat | [Wprowadzenie z usługą Azure Queue Service w języku Java](https://github.com/Azure-Samples/storage-queue-java-getting-started/blob/master/src/QueueBasics.java)
 |
-## <a name="table-samples"></a>Przykłady tabel
+## <a name="table-samples-v11"></a>Przykłady tabeli (v11)
 
 | **Scenariusz** | **Przykładowy kod** |
 |--------------|-----------------|
-| Utwórz tabelę | [Wprowadzenie do usługi Azure Table Service w języku Java](https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java) |
+| Create Table | [Wprowadzenie do usługi Azure Table Service w języku Java](https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java) |
 | Usuń jednostkę/tabelę | [Wprowadzenie do usługi Azure Table Service w języku Java](https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java) |
 | Wstaw/Scal/Zamień jednostkę | [Wprowadzenie do usługi Azure Table Service w języku Java](https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java) |
 | Jednostki zapytań | [Wprowadzenie do usługi Azure Table Service w języku Java](https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java) |
@@ -96,7 +99,7 @@ Zapoznaj się z następującymi przewodnikami, jeśli szukasz instrukcji dotycz�
 
 Aby uzyskać informacje na temat przykładów dla innych języków:
 
-* .NET: [Przykłady usługi Azure Storage korzystające z platformy .NET](storage-samples-dotnet.md)
-* JavaScript/Node. js: [Przykłady usługi Azure Storage korzystające z języka JavaScript](storage-samples-javascript.md)
-* Python: [Przykłady usługi Azure Storage przy użyciu języka Python](storage-samples-python.md)
-* Wszystkie inne języki: [Przykłady usługi Azure Storage](storage-samples.md)
+* .NET: [przykłady usługi Azure Storage korzystające z platformy .NET](storage-samples-dotnet.md)
+* JavaScript/Node. js: [przykłady usługi Azure Storage przy użyciu języka JavaScript](storage-samples-javascript.md)
+* Python: [przykłady usługi Azure Storage przy użyciu języka Python](storage-samples-python.md)
+* Wszystkie inne języki: [przykłady usługi Azure Storage](storage-samples.md)

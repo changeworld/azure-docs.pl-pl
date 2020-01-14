@@ -1,6 +1,6 @@
 ---
-title: Tworzenie źródła danych w Azure Maps | Microsoft Docs
-description: Tworzenie źródła danych i używanie go z Azure Maps Web SDK.
+title: Tworzenie źródła danych dla mapy | Mapy Microsoft Azure
+description: W tym artykule dowiesz się, jak utworzyć źródło danych i dodać je do mapy za pomocą Microsoft Azure Maps Web SDK.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 08/08/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: codepen
-ms.openlocfilehash: b83a66296d54a179a56e37de199ec900ae23a1db
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 74b45d3f7fa7d0e13b8767d4a887d8a22cad3a30
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433014"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911729"
 ---
 # <a name="create-a-data-source"></a>Tworzenie źródła danych
 

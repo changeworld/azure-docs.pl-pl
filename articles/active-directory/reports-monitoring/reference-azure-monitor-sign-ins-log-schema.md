@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 98157009b5a005d1d1f9efbe2f59bac1302cdb01
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 5525f2f8ab4ef83ba9c3aeeff945bc9d875600d5
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014313"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75748665"
 ---
 # <a name="interpret-the-azure-ad-sign-in-logs-schema-in-azure-monitor"></a>Interpretuj schemat dzienników logowania usługi Azure AD w Azure Monitor
 
@@ -145,12 +145,12 @@ W tym artykule opisano schemat dziennika logowania Azure Active Directory (Azure
 
 | Nazwa pola | Opis |
 |------------|-------------|
-| Time | Data i godzina w formacie UTC. |
+| Czas | Data i godzina w formacie UTC. |
 | ResourceId | Ta wartość jest niezamapowana i można bezpiecznie zignorować to pole.  |
 | OperationName | W przypadku logowania ta wartość jest zawsze *aktywność logowania*. |
 | OperationVersion | Wersja interfejsu API REST, która jest wymagana przez klienta programu. |
 | Kategoria | W przypadku logowania ta wartość jest zawsze *rejestracja*. | 
-| tenantId | Identyfikator GUID dzierżawy, który jest skojarzony z dziennikami. |
+| TenantId | Identyfikator GUID dzierżawy, który jest skojarzony z dziennikami. |
 | Result | Wynik operacji logowania może być spowodowany *sukcesem* lub *niepowodzeniem*. | 
 | ResultSignature | Zawiera kod błędu (jeśli istnieje) dla operacji logowania. |
 | ResultDescription | Zawiera opis błędu dla operacji logowania. |
@@ -170,4 +170,4 @@ W tym artykule opisano schemat dziennika logowania Azure Active Directory (Azure
 ## <a name="next-steps"></a>Następne kroki
 
 * [Interpret audit logs schema in Azure Monitor (Interpretowanie schematu dzienników inspekcji w usłudze Azure Monitor)](reference-azure-monitor-audit-log-schema.md)
-* [Przeczytaj więcej na temat dzienników diagnostycznych platformy Azure](../../azure-monitor/platform/resource-logs-overview.md)
+* [Przeczytaj więcej na temat dzienników diagnostycznych platformy Azure](../../azure-monitor/platform/platform-logs-overview.md)

@@ -11,34 +11,28 @@ ms.author: clauren
 ms.reviewer: jmartens
 ms.date: 10/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5d6f94d9b454ee0144ef6d495b164686014952e5
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: bf86826d77c690b60c7b091d6250a85fffd21fc0
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75539101"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75896333"
 ---
 # <a name="troubleshooting-azure-machine-learning-azure-kubernetes-service-and-azure-container-instances-deployment"></a>Rozwiązywanie problemów Azure Machine Learning usługi Azure Kubernetes i wdrożenia Azure Container Instances
 
 Dowiedz się, jak obejść typowe błędy wdrażania platformy Docker i rozwiązać je za pomocą usług Azure Container Instances (ACI) i Azure Kubernetes Service (AKS) przy użyciu Azure Machine Learning.
 
-W przypadku wdrażania modelu w Azure Machine Learning system wykonuje wiele zadań. Dostępne są następujące zadania wdrażania:
+W przypadku wdrażania modelu w Azure Machine Learning system wykonuje wiele zadań.
+
+Zalecane i najbardziej aktualne podejście do wdrażania modelu polega za pośrednictwem interfejsu API [model. deploy ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) przy użyciu obiektu [środowiska](https://docs.microsoft.com/azure/machine-learning/service/how-to-use-environments) jako parametru wejściowego. W takim przypadku Nasza usługa utworzy podstawowy obraz platformy Docker na etapie wdrażania i zainstaluje wymagane modele wszystkie w jednym wywołaniu. Podstawowe zadania wdrażania są następujące:
 
 1. W rejestrze modelu obszaru roboczego, należy zarejestrować model.
 
-2. Zbuduj obraz Docker, w tym:
-    1. Pobierz zarejestrowanego modelu z rejestru. 
-    2. Utwórz plik dockerfile, za pomocą środowiska Python na podstawie zależności, określonych w pliku yaml środowiska.
-    3. Dodawanie plików modelu, a skrypt oceniania, które należy podać w pliku dockerfile.
-    4. Twórz nowy obraz platformy Docker przy użyciu pliku dockerfile.
-    5. Zarejestruj obrazu platformy Docker za pomocą usługi Azure Container Registry, skojarzone z obszarem roboczym.
+2. Zdefiniuj konfigurację wnioskowania:
+    1. Utwórz obiekt [środowiska](https://docs.microsoft.com/azure/machine-learning/service/how-to-use-environments) na podstawie zależności określonych w pliku YAML środowiska lub użyj jednego z naszych środowisk.
+    2. Utwórz konfigurację wnioskowania (obiekt InferenceConfig) w oparciu o środowisko i skrypt oceniania.
 
-    > [!IMPORTANT]
-    > W zależności od kodu Tworzenie obrazu odbywa się automatycznie bez wprowadzania danych przez użytkownika.
-
-3. Wdrażanie obrazu platformy Docker do usługi Azure Container wystąpienia (ACI) lub do usługi Azure Kubernetes Service (AKS).
-
-4. Uruchom nowy kontener (lub kontenery) w usłudze ACI i AKS. 
+3. Wdróż model w usłudze Azure Container Instance (ACI) lub w usłudze Azure Kubernetes Service (AKS).
 
 Dowiedz się więcej na temat tego procesu w [zarządzania modelami](concept-model-management-and-deployment.md) wprowadzenie.
 
@@ -56,11 +50,14 @@ Dowiedz się więcej na temat tego procesu w [zarządzania modelami](concept-mod
 
 Jeśli napotkasz problem z dowolnym najpierw musisz jest podzielenie zadania wdrożenia (opisany poprzedniego) na poszczególne kroki, aby ustalić przyczynę problemu.
 
-Rozdzielenie wdrożenia na zadania jest przydatne, jeśli używasz interfejsu API usługi [WebService. deploy ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#deploy-workspace--name--model-paths--image-config--deployment-config-none--deployment-target-none--overwrite-false-) lub usługi [WebService. deploy_from_model ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#deploy-from-model-workspace--name--models--image-config--deployment-config-none--deployment-target-none--overwrite-false-) , ponieważ obie te funkcje wykonują wyżej wymienione kroki jako pojedynczą akcję. Zwykle te interfejsy API są wygodne, ale ułatwiają rozbicie czynności podczas rozwiązywania problemów przez zastąpienie ich przy użyciu poniższych wywołań interfejsu API.
+Przy założeniu, że używasz nowej/zalecanej metody wdrażania za pośrednictwem interfejsu API [model. deploy ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) z obiektem [środowiska](https://docs.microsoft.com/azure/machine-learning/service/how-to-use-environments) jako parametrem wejściowym, kod może być podzielony na trzy główne kroki:
 
-1. Należy zarejestrować model. Poniżej przedstawiono przykładowy kod:
+1. Należy zarejestrować model. Oto przykładowy kod:
 
     ```python
+    from azureml.core.model import Model
+
+
     # register a model out of a run record
     model = best_run.register_model(model_name='my_best_model', model_path='outputs/my_model.pkl')
 
@@ -68,99 +65,35 @@ Rozdzielenie wdrożenia na zadania jest przydatne, jeśli używasz interfejsu AP
     model = Model.register(model_path='my_model.pkl', model_name='my_best_model', workspace=ws)
     ```
 
-2. Tworzenie obrazu. Poniżej przedstawiono przykładowy kod:
+2. Zdefiniuj konfigurację wnioskowania dla wdrożenia:
 
     ```python
-    # configure the image
-    image_config = ContainerImage.image_configuration(runtime="python",
-                                                      entry_script="score.py",
-                                                      conda_file="myenv.yml")
+    from azureml.core.model import InferenceConfig
+    from azureml.core.environment import Environment
 
-    # create the image
-    image = Image.create(name='myimg', models=[model], image_config=image_config, workspace=ws)
 
-    # wait for image creation to finish
-    image.wait_for_creation(show_output=True)
+    # create inference configuration based on the requirements defined in the YAML
+    myenv = Environment.from_conda_specification(name="myenv", file_path="myenv.yml")
+    inference_config = InferenceConfig(entry_script="score.py", environment=myenv)
     ```
 
-3. Obraz, który można wdrożyć jako usługę. Poniżej przedstawiono przykładowy kod:
+3. Wdróż model przy użyciu konfiguracji wnioskowania utworzonej w poprzednim kroku:
 
     ```python
-    # configure an ACI-based deployment
-    aci_config = AciWebservice.deploy_configuration(cpu_cores=1, memory_gb=1)
+    from azureml.core.webservice import AciWebservice
 
-    aci_service = Webservice.deploy_from_image(deployment_config=aci_config, 
-                                               image=image, 
-                                               name='mysvc', 
-                                               workspace=ws)
-    aci_service.wait_for_deployment(show_output=True)    
+
+    # deploy the model
+    aci_config = AciWebservice.deploy_configuration(cpu_cores=1, memory_gb=1)
+    aci_service = Model.deploy(workspace=ws,
+                           name='my-service',
+                           models=[model],
+                           inference_config=inference_config,
+                           deployment_config=aci_config)
+    aci_service.wait_for_deployment(show_output=True)
     ```
 
 Gdy zostały podzielone procesu wdrażania na poszczególne zadania, można przyjrzymy się niektóre z najbardziej typowych błędów.
-
-## <a name="image-building-fails"></a>Obraz tworzenia kończy się niepowodzeniem
-
-Jeśli nie można skompilować obrazu platformy Docker, wywołanie [Image. wait_for_creation ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.image(class)?view=azure-ml-py#wait-for-creation-show-output-false-) lub [Service. wait_for_deployment ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#wait-for-deployment-show-output-false-) zakończy się niepowodzeniem z komunikatami o błędach, które mogą oferować pewne wskazówki. Można także znaleźć więcej szczegółowych informacji o błędach w dzienniku kompilacji obrazu. Poniżej przykładowy kod pokazuje sposób odnajdowania identyfikator uri dziennika kompilacji obrazu.
-
-```python
-# if you already have the image object handy
-print(image.image_build_log_uri)
-
-# if you only know the name of the image (note there might be multiple images with the same name but different version number)
-print(ws.images['myimg'].image_build_log_uri)
-
-# list logs for all images in the workspace
-for name, img in ws.images.items():
-    print(img.name, img.version, img.image_build_log_uri)
-```
-
-Identyfikator uri dziennika obrazu jest adres URL sygnatury dostępu Współdzielonego do pliku dziennika przechowywanych w usłudze Azure blob storage. Po prostu skopiuj i wklej identyfikator uri do okna przeglądarki i możesz pobrać i przejrzeć plik dziennika.
-
-### <a name="azure-key-vault-access-policy-and-azure-resource-manager-templates"></a>Azure Key Vault zasad dostępu i szablonów Azure Resource Manager
-
-Kompilacja obrazu może również zakończyć się niepowodzeniem z powodu problemu z zasadami dostępu dla Azure Key Vault. Ta sytuacja może wystąpić, gdy używasz szablonu Azure Resource Manager do tworzenia obszaru roboczego i skojarzonych zasobów (w tym Azure Key Vault), wiele razy. Przykładowo wielokrotne użycie szablonu z tymi samymi parametrami w ramach potoku ciągłej integracji i wdrażania.
-
-Większość operacji tworzenia zasobów za pomocą szablonów to idempotentne, ale Key Vault czyści zasady dostępu za każdym razem, gdy szablon jest używany. Wyczyszczenie zasad dostępu powoduje przerwanie dostępu do Key Vault wszystkich istniejących obszarów roboczych, które go używają. Ten warunek powoduje błędy podczas próby utworzenia nowych obrazów. Poniżej przedstawiono przykłady błędów, które można odbierać:
-
-__Portal__:
-```text
-Create image "myimage": An internal server error occurred. Please try again. If the problem persists, contact support.
-```
-
-__Zestaw SDK__:
-```python
-image = ContainerImage.create(name = "myimage", models = [model], image_config = image_config, workspace = ws)
-Creating image
-Traceback (most recent call last):
-  File "C:\Python37\lib\site-packages\azureml\core\image\image.py", line 341, in create
-    resp.raise_for_status()
-  File "C:\Python37\lib\site-packages\requests\models.py", line 940, in raise_for_status
-    raise HTTPError(http_error_msg, response=self)
-requests.exceptions.HTTPError: 500 Server Error: Internal Server Error for url: https://eastus.modelmanagement.azureml.net/api/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.MachineLearningServices/workspaces/<workspace-name>/images?api-version=2018-11-19
-
-Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-  File "C:\Python37\lib\site-packages\azureml\core\image\image.py", line 346, in create
-    'Content: {}'.format(resp.status_code, resp.headers, resp.content))
-azureml.exceptions._azureml_exception.WebserviceException: Received bad response from Model Management Service:
-Response Code: 500
-Headers: {'Date': 'Tue, 26 Feb 2019 17:47:53 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'api-supported-versions': '2018-03-01-preview, 2018-11-19', 'x-ms-client-request-id': '3cdcf791f1214b9cbac93076ebfb5167', 'x-ms-client-session-id': '', 'Strict-Transport-Security': 'max-age=15724800; includeSubDomains; preload'}
-Content: b'{"code":"InternalServerError","statusCode":500,"message":"An internal server error occurred. Please try again. If the problem persists, contact support"}'
-```
-
-__Interfejs wiersza polecenia__:
-```text
-ERROR: {'Azure-cli-ml Version': None, 'Error': WebserviceException('Received bad response from Model Management Service:\nResponse Code: 500\nHeaders: {\'Date\': \'Tue, 26 Feb 2019 17:34:05
-GMT\', \'Content-Type\': \'application/json\', \'Transfer-Encoding\': \'chunked\', \'Connection\': \'keep-alive\', \'api-supported-versions\': \'2018-03-01-preview, 2018-11-19\', \'x-ms-client-request-id\':
-\'bc89430916164412abe3d82acb1d1109\', \'x-ms-client-session-id\': \'\', \'Strict-Transport-Security\': \'max-age=15724800; includeSubDomains; preload\'}\nContent:
-b\'{"code":"InternalServerError","statusCode":500,"message":"An internal server error occurred. Please try again. If the problem persists, contact support"}\'',)}
-```
-
-Aby uniknąć tego problemu, zalecamy zastosowanie jednej z następujących metod:
-
-* Nie Wdrażaj szablonu więcej niż raz dla tych samych parametrów. Lub Usuń istniejące zasoby przed użyciem szablonu, aby utworzyć je ponownie.
-* Przejrzyj zasady dostępu Key Vault a następnie użyj tych zasad, aby ustawić właściwość `accessPolicies` szablonu.
-* Sprawdź, czy zasób Key Vault już istnieje. Jeśli tak, nie należy go ponownie tworzyć za pomocą szablonu. Na przykład Dodaj parametr, który umożliwia wyłączenie tworzenia zasobu Key Vault, jeśli już istnieje.
 
 ## <a name="debug-locally"></a>Debuguj lokalnie
 
@@ -169,17 +102,17 @@ Jeśli wystąpią problemy ze wdrożeniem modelu do ACI lub AKS, spróbuj wdroż
 > [!WARNING]
 > Lokalne wdrożenia usługi sieci Web nie są obsługiwane w scenariuszach produkcyjnych.
 
-Aby wdrożyć lokalnie, zmodyfikuj swój kod, aby użyć `LocalWebservice.deploy_configuration()` do utworzenia konfiguracji wdrożenia. Następnie użyj `Model.deploy()`, aby wdrożyć usługę. W poniższym przykładzie jest wdrażany model (zawarty w zmiennej `model`) jako lokalna usługa sieci Web:
+Aby wdrożyć lokalnie, zmodyfikuj swój kod, aby użyć `LocalWebservice.deploy_configuration()` do utworzenia konfiguracji wdrożenia. Następnie użyj `Model.deploy()`, aby wdrożyć usługę. W poniższym przykładzie jest wdrażany model (zawarty w zmiennej modelu) jako lokalna usługa sieci Web:
 
 ```python
-from azureml.core.model import InferenceConfig, Model
 from azureml.core.environment import Environment
+from azureml.core.model import InferenceConfig, Model
 from azureml.core.webservice import LocalWebservice
+
 
 # Create inference configuration based on the environment definition and the entry script
 myenv = Environment.from_conda_specification(name="env", file_path="myenv.yml")
 inference_config = InferenceConfig(entry_script="score.py", environment=myenv)
-
 # Create a local deployment, using port 8890 for the web service endpoint
 deployment_config = LocalWebservice.deploy_configuration(port=8890)
 # Deploy the service
@@ -208,6 +141,8 @@ test_sample = bytes(test_sample, encoding='utf8')
 prediction = service.run(input_data=test_sample)
 print(prediction)
 ```
+
+Aby uzyskać więcej informacji na temat dostosowywania środowiska języka Python, zobacz [Tworzenie środowisk i zarządzanie nimi na potrzeby szkolenia i wdrażania](how-to-use-environments.md). 
 
 ### <a name="update-the-service"></a>Aktualizowanie usługi
 
@@ -327,13 +262,12 @@ Istnieją dwie rzeczy, które mogą pomóc w zapobieganiu kodów stanu 503:
 
 Aby uzyskać więcej informacji na temat ustawiania `autoscale_target_utilization`, `autoscale_max_replicas`i `autoscale_min_replicas` dla programu, zobacz odwołanie do modułu [AksWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py) .
 
-
 ## <a name="advanced-debugging"></a>Zaawansowane debugowanie
 
 W niektórych przypadkach może być konieczne interaktywne Debugowanie kodu w języku Python zawartego we wdrożeniu modelu. Na przykład, jeśli skrypt wejścia kończy się niepowodzeniem i powód nie może być określony przez dodatkowe rejestrowanie. Używając Visual Studio Code i Python Tools for Visual Studio (PTVSD), możesz dołączyć do kodu działającego wewnątrz kontenera Docker.
 
 > [!IMPORTANT]
-> Ta metoda debugowania nie działa w przypadku używania `Model.deploy()` i `LocalWebservice.deploy_configuration` do lokalnego wdrożenia modelu. Zamiast tego należy utworzyć obraz przy użyciu klasy [ContainerImage](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.containerimage?view=azure-ml-py) . 
+> Ta metoda debugowania nie działa w przypadku używania `Model.deploy()` i `LocalWebservice.deploy_configuration` do lokalnego wdrożenia modelu. Zamiast tego należy utworzyć obraz przy użyciu metody [model. Package ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#package-workspace--models--inference-config-none--generate-dockerfile-false-) .
 
 Lokalne wdrożenia usługi sieci Web wymagają pracy instalacji platformy Docker w systemie lokalnym. Aby uzyskać więcej informacji na temat korzystania z platformy Docker, zapoznaj się z [dokumentacją platformy Docker](https://docs.docker.com/).
 
@@ -382,13 +316,14 @@ Lokalne wdrożenia usługi sieci Web wymagają pracy instalacji platformy Docker
 
     ```python
     from azureml.core.conda_dependencies import CondaDependencies 
-    
+
+
     # Usually a good idea to choose specific version numbers
     # so training is made on same packages as scoring
     myenv = CondaDependencies.create(conda_packages=['numpy==1.15.4',            
                                 'scikit-learn==0.19.1', 'pandas==0.23.4'],
-                                 pip_packages = ['azureml-defaults==1.0.17', 'ptvsd'])
-    
+                                 pip_packages = ['azureml-defaults==1.0.45', 'ptvsd'])
+
     with open("myenv.yml","w") as f:
         f.write(myenv.serialize_to_string())
     ```
@@ -404,70 +339,33 @@ Lokalne wdrożenia usługi sieci Web wymagają pracy instalacji platformy Docker
     print("Debugger attached...")
     ```
 
-1. Podczas debugowania, możesz chcieć wprowadzić zmiany w plikach w obrazie bez konieczności ponownego tworzenia go. Aby zainstalować Edytor tekstu (vim) w obrazie platformy Docker, Utwórz nowy plik tekstowy o nazwie `Dockerfile.steps` i użyj następujących elementów jako zawartości pliku:
-
-    ```text
-    RUN apt-get update && apt-get -y install vim
-    ```
-
-    Edytor tekstu umożliwia modyfikowanie plików wewnątrz obrazu platformy Docker w celu przetestowania zmian bez tworzenia nowego obrazu.
-
-1. Aby utworzyć obraz, który używa pliku `Dockerfile.steps`, użyj parametru `docker_file` podczas tworzenia obrazu. W poniższym przykładzie pokazano, jak to zrobić:
+1. Tworzenie obrazu na podstawie definicji środowiska i ściąganie obrazu do rejestru lokalnego. Podczas debugowania, możesz chcieć wprowadzić zmiany w plikach w obrazie bez konieczności ponownego tworzenia go. Aby zainstalować Edytor tekstu (vim) w obrazie platformy Docker, użyj właściwości `Environment.docker.base_image` i `Environment.docker.base_dockerfile`:
 
     > [!NOTE]
     > W tym przykładzie przyjęto założenie, że `ws` wskazuje obszar roboczy Azure Machine Learning, a `model` jest wdrażanym modelem. Plik `myenv.yml` zawiera zależności Conda utworzone w kroku 1.
 
     ```python
-    from azureml.core.image import Image, ContainerImage
-    image_config = ContainerImage.image_configuration(runtime= "python",
-                                 execution_script="score.py",
-                                 conda_file="myenv.yml",
-                                 docker_file="Dockerfile.steps")
+    from azureml.core.conda_dependencies import CondaDependencies
+    from azureml.core.model import InferenceConfig
+    from azureml.core.environment import Environment
 
-    image = Image.create(name = "myimage",
-                     models = [model],
-                     image_config = image_config, 
-                     workspace = ws)
-    # Print the location of the image in the repository
-    print(image.image_location)
+
+    myenv = Environment.from_conda_specification(name="env", file_path="myenv.yml")
+    myenv.docker.base_image = NONE
+    myenv.docker.base_dockerfile = "FROM mcr.microsoft.com/azureml/base:intelmpi2018.3-ubuntu16.04\nRUN apt-get update && apt-get install vim -y"
+    inference_config = InferenceConfig(entry_script="score.py", environment=myenv)
+    package = Model.package(ws, [model], inference_config)
+    package.wait_for_creation(show_output=True)  # Or show_output=False to hide the Docker build logs.
+    package.pull()
     ```
 
-Po utworzeniu obrazu zostanie wyświetlona lokalizacja obrazu w rejestrze. Lokalizacja jest podobna do następującego tekstu:
+    Po utworzeniu i pobraniu obrazu ścieżka obrazu (łącznie z repozytorium, nazwą i tagiem, która w tym przypadku jest również skrótem) zostanie wyświetlona w komunikacie podobnym do poniższego:
 
-```text
-myregistry.azurecr.io/myimage:1
-```
-
-W tym przykładzie tekstu Nazwa rejestru jest `myregistry` a obraz ma nazwę `myimage`. Wersja obrazu jest `1`.
-
-### <a name="download-the-image"></a>Pobierz obraz
-
-1. Otwórz wiersz polecenia, terminal lub inną powłokę i użyj następującego polecenia [platformy Azure](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) w celu uwierzytelnienia w ramach subskrypcji platformy Azure, która zawiera obszar roboczy Azure Machine Learning:
-
-    ```azurecli
-    az login
+    ```text
+    Status: Downloaded newer image for myregistry.azurecr.io/package@sha256:<image-digest>
     ```
 
-1. Aby uwierzytelnić się w Azure Container Registry (ACR), który zawiera obraz, użyj następującego polecenia. Zastąp `myregistry` zwracaną po zarejestrowaniu obrazu:
-
-    ```azurecli
-    az acr login --name myregistry
-    ```
-
-1. Aby pobrać obraz do lokalnego platformy Docker, użyj następującego polecenia. Zastąp `myimagepath` lokalizacją zwróconą po zarejestrowaniu obrazu:
-
-    ```bash
-    docker pull myimagepath
-    ```
-
-    Ścieżka obrazu powinna być podobna do `myregistry.azurecr.io/myimage:1`. Gdy `myregistry` jest rejestrem, `myimage` jest obrazem, a `1` to wersja obrazu.
-
-    > [!TIP]
-    > Uwierzytelnianie z poprzedniego kroku nie jest ostatnio nieograniczone. Jeśli czekasz na wystarczającą ilość czasu między poleceniem uwierzytelniania a poleceniem ściągania, zostanie wyświetlony komunikat o błędzie uwierzytelniania. W takim przypadku należy ponownie uwierzytelnić.
-
-    Czas potrzebny na ukończenie pobierania zależy od szybkości połączenia internetowego. Podczas procesu jest wyświetlany stan pobierania. Po zakończeniu pobierania można użyć polecenia `docker images`, aby sprawdzić, czy plik został pobrany.
-
-1. Aby ułatwić pracę z obrazem, użyj następującego polecenia, aby dodać tag. Zastąp `myimagepath` wartością lokalizacji z kroku 2.
+1. Aby ułatwić pracę z obrazem, użyj następującego polecenia, aby dodać tag. Zastąp `myimagepath` wartością lokalizacji z poprzedniego kroku.
 
     ```bash
     docker tag myimagepath debug:1

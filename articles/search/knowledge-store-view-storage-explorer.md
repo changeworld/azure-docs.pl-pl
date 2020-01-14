@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: ca2df05cf20ef51b2d5ca866f22bd9450dd6acaf
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.date: 12/30/2019
+ms.openlocfilehash: 167316eca1f85530a040d4543f98ae34a9fb93c6
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406550"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754064"
 ---
 # <a name="view-a-knowledge-store-with-storage-explorer"></a>Wyświetlanie sklepu z bazami danych za pomocą Eksplorator usługi Storage
 
@@ -24,7 +24,7 @@ W tym artykule przedstawiono przykład sposobu nawiązywania połączenia z maga
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-+ Postępuj zgodnie z instrukcjami w temacie [Tworzenie sklepu z bazami danych w Azure Portal](knowledge-store-create-portal.md) lub [Utwórz magazyn wiedzy Azure wyszukiwanie poznawcze przy użyciu opcji REST](knowledge-store-create-rest.md) , aby utworzyć przykładowy magazyn wiedzy użyty w tym instruktażu.
++ Wykonaj kroki opisane w temacie [Tworzenie magazynu wiedzy w Azure Portal](knowledge-store-create-portal.md) , aby utworzyć przykładowy magazyn wiedzy używany w tym instruktażu.
 
 + Potrzebna będzie również nazwa konta usługi Azure Storage, które zostało użyte do utworzenia magazynu wiedzy, wraz z jego kluczem dostępu z poziomu Azure Portal.
 
@@ -36,7 +36,7 @@ W tym artykule przedstawiono przykład sposobu nawiązywania połączenia z maga
 
 1. Rozwiń listę **tabele** , aby wyświetlić listę projekcji tabeli platformy Azure, które zostały utworzone podczas uruchamiania kreatora **importu danych** na przykładowych danych dotyczących usług hotelowych.
 
-Wybierz dowolną tabelę, aby wyświetlić wzbogacone dane, w tym kluczowe frazy tonacji wyniki, dane lokalizacji i szerokości geograficznej i nie tylko.
+Wybierz dowolną tabelę, aby wyświetlić wzbogacone dane, w tym kluczowe frazy i wyniki tonacji.
 
    ![Wyświetl tabele w Eksplorator usługi Storage](media/knowledge-store-view-storage-explorer/storage-explorer-tables.png "Wyświetl tabele w Eksplorator usługi Storage")
 
@@ -50,7 +50,7 @@ Aby uruchomić zapytania, kliknij pozycję **zapytanie** na pasku poleceń, a na
 
 ## <a name="clean-up"></a>Czyszczenie
 
-Gdy pracujesz nad własną subskrypcją, dobrym pomysłem jest zakończenie projektu w celu ustalenia, czy nadal potrzebujesz utworzonych zasobów. Zasoby po lewej stronie mogą być kosztowne. Możesz usunąć zasoby pojedynczo lub usunąć grupę zasobów, aby usunąć cały zestaw zasobów.
+W przypadku pracy w ramach własnej subskrypcji warto sprawdzić po zakończeniu projektu, czy dalej potrzebuje się utworzonych zasobów. Uruchomione zasoby mogą generować koszty. Możesz usunąć zasoby pojedynczo lub usunąć grupę zasobów w celu usunięcia całego zestawu zasobów.
 
 Zasoby można znaleźć w portalu i zarządzać nimi za pomocą linku **wszystkie zasoby** lub **grupy zasobów** w okienku nawigacji po lewej stronie.
 
@@ -62,4 +62,4 @@ Połącz ten magazyn wiedzy, aby Power BI w celu uzyskania dokładniejszej anali
 
 > [!div class="nextstepaction"]
 > [Nawiązywanie połączenia z usługą Power BI](knowledge-store-connect-power-bi.md)
-> [Tworzenie sklepu z bazami danych w usłudze REST](knowledge-store-howto.md)
+> [Tworzenie sklepu z bazami danych w usłudze REST](knowledge-store-create-rest.md)

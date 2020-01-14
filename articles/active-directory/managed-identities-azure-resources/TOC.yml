@@ -20,8 +20,6 @@
           href: tutorial-windows-vm-access-datalake.md
         - name: Uzyskiwanie dostępu do usługi Azure Storage
           href: tutorial-vm-windows-access-storage.md
-        - name: Uzyskiwanie dostępu do usługi Azure Storage za pomocą klucza dostępu
-          href: tutorial-windows-vm-access-storage.md
         - name: Uzyskiwanie dostępu do usługi Azure SQL
           href: tutorial-windows-vm-access-sql.md
         - name: Uzyskiwanie dostępu do usługi Azure Key Vault

@@ -1,5 +1,5 @@
 ---
-title: Testy porównawcze aplikacji na dyskach zarządzanych przez Azure Disk Storage
+title: Testy porównawcze aplikacji na Azure Disk Storage
 description: Poznaj proces tworzenia testów porównawczych aplikacji na platformie Azure.
 author: roygara
 ms.author: rogarana
@@ -7,12 +7,12 @@ ms.date: 01/11/2019
 ms.topic: conceptual
 ms.service: virtual-machines-windows
 ms.subservice: disks
-ms.openlocfilehash: 600b456cd77d866f1365b7dadfa9ea2473db0fa4
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 77e542e9bff399e58b433286385864478bcb5076
+ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698754"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75719549"
 ---
 # <a name="benchmarking-a-disk"></a>Przeprowadzenie testu porównawczego dysku
 
@@ -26,7 +26,6 @@ Aby postępować zgodnie z poniższymi przykładami, należy utworzyć standardo
 
 ## <a name="next-steps"></a>Następne kroki
 
-Postępuj zgodnie z naszym projektem, aby uzyskać wysoką wydajność artykułu. W tym celu należy utworzyć listę kontrolną podobną do istniejącej aplikacji dla prototypu. Korzystając z narzędzi testowych, można symulować obciążenia i mierzyć wydajność aplikacji prototypowej. Dzięki temu można określić, które oferty dysku mogą być zgodne lub przekraczać wymagania dotyczące wydajności aplikacji. Następnie można zaimplementować te same wytyczne dla aplikacji produkcyjnej.
+Zajrzyj do naszego artykułu na temat [projektowania pod kątem wysokiej wydajności](premium-storage-performance.md).
 
-> [!div class="nextstepaction"]
-> Zapoznaj się z artykułem na temat [projektowania pod kątem wysokiej wydajności](premium-storage-performance.md) .
+W tym artykule opisano tworzenie listy kontrolnej podobnej do istniejącej aplikacji dla prototypu. Korzystając z narzędzi testowych, można symulować obciążenia i mierzyć wydajność aplikacji prototypowej. Dzięki temu można określić, które oferty dysku mogą być zgodne lub przekraczać wymagania dotyczące wydajności aplikacji. Następnie można zaimplementować te same wytyczne dla aplikacji produkcyjnej.

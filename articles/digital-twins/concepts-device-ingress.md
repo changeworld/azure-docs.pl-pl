@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 01/03/2020
-ms.openlocfilehash: f9f0a74a6ca57f90ed8bd217d0d2f57e4bc16749
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 5c2c519ece9806b92c3e455d5f550bc2abfc9f3b
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75660345"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75862479"
 ---
 # <a name="device-connectivity-and-telemetry-ingress"></a>Ruch przychodzący danych telemetrycznych i łączność urządzeń
 
@@ -21,7 +21,7 @@ Dane telemetryczne wysyłane przez urządzenia i czujniki tworzą szkielet dowol
 
 Aby rozpocząć, utwórz zasób usługi Azure IoT Hub w katalogu głównym wykresu przestrzennego. Zasób IoT Hub umożliwia wszystkim urządzeniom znajdującym się poniżej przestrzeni głównej wysyłanie komunikatów. Po utworzeniu IoT Hub Zarejestruj urządzenia, korzystając z czujników w ramach wystąpienia Digital bliźniaczych reprezentacji. Urządzenia mogą wysyłać dane do usługi Digital bliźniaczych reprezentacji za pośrednictwem [zestawu SDK urządzeń Azure IoT](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks).
 
-Aby zapoznać się z przewodnikiem krok po kroku dotyczącym sposobu przenoszenia urządzeń, zobacz [Samouczek dotyczący wdrażania i konfigurowania cyfrowego bliźniaczych reprezentacji](tutorial-facilities-setup.md). Na pierwszy rzut oka są następujące czynności:
+Aby zapoznać się z przewodnikiem krok po kroku dotyczącym sposobu przenoszenia urządzeń, Przeczytaj [Samouczek dotyczący wdrażania i konfigurowania cyfrowego bliźniaczych reprezentacji](tutorial-facilities-setup.md). Na pierwszy rzut oka są następujące czynności:
 
 - Wdróż wystąpienie bliźniaczych reprezentacji Digital na podstawie [Azure Portal](https://portal.azure.com).
 - Utwórz spacje na wykresie.

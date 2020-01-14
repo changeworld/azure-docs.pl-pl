@@ -2,17 +2,17 @@
 title: Zbieranie & analizowanie dzienników zasobów
 description: Rejestruj i Analizuj zdarzenia dziennika zasobów dla Azure Container Registry takich jak uwierzytelnianie, wypychanie obrazów i ściąganie obrazów.
 ms.topic: article
-ms.date: 10/30/2019
-ms.openlocfilehash: ada8502724c1779b9bdab2e8ac7e8ea61c256e44
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.date: 01/03/2020
+ms.openlocfilehash: 72d03149cd24636ba2086dfaaff0dbba16d30f1e
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456433"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75748003"
 ---
 # <a name="azure-container-registry-logs-for-diagnostic-evaluation-and-auditing"></a>Dzienniki Azure Container Registry na potrzeby oceny i inspekcji diagnostyki
 
-W tym artykule wyjaśniono, jak zbierać dane dziennika dla usługi Azure Container Registry przy użyciu funkcji programu [Azure monitor](../azure-monitor/overview.md). Azure Monitor zbiera [dzienniki zasobów](../azure-monitor/platform/resource-logs-overview.md) (wcześniej nazywane *dziennikami diagnostycznymi*) dla zdarzeń sterowanych przez użytkownika w rejestrze. Zbieraj dane i korzystaj z nich w celu zaspokajania potrzeb, takich jak:
+W tym artykule wyjaśniono, jak zbierać dane dziennika dla usługi Azure Container Registry przy użyciu funkcji programu [Azure monitor](../azure-monitor/overview.md). Azure Monitor zbiera [dzienniki zasobów](../azure-monitor/platform/platform-logs-overview.md) (wcześniej nazywane *dziennikami diagnostycznymi*) dla zdarzeń sterowanych przez użytkownika w rejestrze. Zbieraj dane i korzystaj z nich w celu zaspokajania potrzeb, takich jak:
 
 * Inspekcja zdarzeń uwierzytelniania rejestru w celu zapewnienia bezpieczeństwa i zgodności 
 
@@ -26,9 +26,14 @@ Zbieranie danych dzienników zasobów przy użyciu Azure Monitor może pociągn�
 
 ## <a name="preview-limitations"></a>Ograniczenia wersji zapoznawczej
 
-Rejestrowanie zdarzeń na poziomie repozytorium nie obejmuje obecnie zdarzeń Delete ani UNTAG. Rejestrowane są tylko następujące zdarzenia repozytorium:
-* **Zdarzenia wypychania** dla obrazów i innych artefaktów
-* **Zdarzenia ściągania** dla obrazów i innych artefaktów
+Następujące zdarzenia na poziomie repozytorium dla obrazów i innych artefaktów są obecnie rejestrowane:
+
+* **Zdarzenia wypychania**
+* **Zdarzenia ściągnięcia**
+* **Zdarzenia UNTAG**
+* **Usuń zdarzenia** (w tym zdarzenia usuwania repozytorium)
+
+Zdarzenia na poziomie repozytorium, które nie są obecnie rejestrowane: przeczyszczanie zdarzeń.
 
 ## <a name="registry-resource-logs"></a>Dzienniki zasobów rejestru
 
@@ -42,7 +47,7 @@ W przypadku operacji dane dziennika obejmują:
   * Stan powodzenia lub niepowodzenia
   * Sygnatury czasowe rozpoczęcia i zakończenia
 
-Oprócz dzienników zasobów platforma Azure udostępnia [Dziennik aktywności](../azure-monitor/platform/activity-logs-overview.md), pojedynczy rekord poziomu subskrypcji zdarzeń zarządzania platformy Azure, taki jak tworzenie lub usuwanie rejestru kontenerów.
+Oprócz dzienników zasobów platforma Azure udostępnia [Dziennik aktywności](../azure-monitor/platform/platform-logs-overview.md), pojedynczy rekord poziomu subskrypcji zdarzeń zarządzania platformy Azure, taki jak tworzenie lub usuwanie rejestru kontenerów.
 
 ## <a name="enable-collection-of-resource-logs"></a>Włącz zbieranie dzienników zasobów
 

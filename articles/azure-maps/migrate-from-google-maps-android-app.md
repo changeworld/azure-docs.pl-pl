@@ -1,20 +1,20 @@
 ---
-title: Migrowanie aplikacji systemu Android | Microsoft Docs
-description: Samouczek dotyczący sposobu migrowania aplikacji systemu Android z usługi Mapy Google do usługi Microsoft Azure Maps.
+title: 'Samouczek: Migrowanie aplikacji systemu Android | Mapy Microsoft Azure'
+description: Jak przeprowadzić migrację aplikacji systemu Android z usługi Google Maps do Microsoft Azure Maps.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 12/17/2019
-ms.topic: conceptual
+ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 60d8fcc9879e89276aad80bbaf3a0edf244a45b8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 643d48cb931bcec1a8a3385d2ec24a394660c368
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75481401"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75909184"
 ---
 # <a name="migrate-an-android-app-from-google-maps"></a>Migrowanie aplikacji systemu Android ze sklepu Google Maps
 

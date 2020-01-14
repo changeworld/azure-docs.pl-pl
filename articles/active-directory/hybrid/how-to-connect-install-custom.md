@@ -14,12 +14,12 @@ ms.date: 11/14/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 80b90a22a793c15104bba3eb91e88f851158e13f
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 301fe9c213ec6d78d32d6ccde84a689c4659acb3
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74106949"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75888973"
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Niestandardowa instalacja programu Azure AD Connect
 Opcja **Ustawienia niestandardowe** programu Azure AD Connect umożliwia skorzystanie z większej liczby opcji instalacji. Jest używana w przypadku występowania wielu lasów lub w celu skonfigurowania funkcji opcjonalnych, których nie obejmuje instalacja ekspresowa. Jest przydatna w każdej sytuacji, gdy opcja [**instalacji ekspresowej**](how-to-connect-install-express.md) nie zaspokaja potrzeb związanych z wdrożeniem lub topologią.
@@ -82,7 +82,7 @@ Po wprowadzeniu nazwy lasu i kliknięciu pozycji **Dodaj katalog** zostanie wyś
 | Opcja | Opis |
 | --- | --- |
 | Utwórz nowe konto | Wybierz tę opcję, jeśli chcesz, aby kreator programu Azure AD Connect utworzył konto usługi AD DS wymagane przez program Azure AD Connect na potrzeby nawiązywania połączenia z lasem usługi AD podczas synchronizacji katalogów. Jeśli wybierzesz tę opcję, wprowadź nazwę użytkownika i hasło konta administratora przedsiębiorstwa. Podane konto administratora przedsiębiorstwa będzie używane przez kreatora programu Azure AD Connect do utworzenia wymaganego konta usługi AD DS. Możesz wprowadzić domenę w formacie NetBios lub FQDN, czyli FABRIKAM\administrator lub fabrikam.com\administrator. |
-| Użyj istniejącego konta | Wybierz tę opcję, jeśli chcesz, aby podczas synchronizacji katalogów do nawiązywania połączenia z lasem usługi AD program Azure AD Connect używał istniejącego konta usługi AD DS. Możesz wprowadzić domenę w formacie NetBios lub FQDN, tj. FABRIKAM\syncuser lub fabrikam.com\syncuser. To konto może być kontem zwykłego użytkownika, ponieważ wymaga tylko domyślnych uprawnień odczytu. Jednak w zależności od scenariusza, mogą być potrzebne większe uprawnienia. Więcej informacji znajduje się w temacie [Konta i uprawnienia w programie Azure AD Connect](reference-connect-accounts-permissions.md##create-the-ad-ds-connector-account). |
+| Użyj istniejącego konta | Wybierz tę opcję, jeśli chcesz, aby podczas synchronizacji katalogów do nawiązywania połączenia z lasem usługi AD program Azure AD Connect używał istniejącego konta usługi AD DS. Możesz wprowadzić domenę w formacie NetBios lub FQDN, tj. FABRIKAM\syncuser lub fabrikam.com\syncuser. To konto może być kontem zwykłego użytkownika, ponieważ wymaga tylko domyślnych uprawnień odczytu. Jednak w zależności od scenariusza, mogą być potrzebne większe uprawnienia. Więcej informacji znajduje się w temacie [Konta i uprawnienia w programie Azure AD Connect](reference-connect-accounts-permissions.md#create-the-ad-ds-connector-account). |
 
 ![Podłączanie katalogu](./media/how-to-connect-install-custom/connectdir02.png)
 
@@ -382,7 +382,7 @@ Po kliknięciu przycisku Weryfikuj program Azure AD Connect sprawdza ustawienia 
 
 * Rozpoznawanie federacyjnej nazwy FQDN: program Azure AD Connect sprawdza, czy federacyjna nazwa FQDN może zostać rozpoznana przez serwer DNS w celu zapewnienia łączności.
 
-![Zakończ](./media/how-to-connect-install-custom/completed.png)
+![Kompletne](./media/how-to-connect-install-custom/completed.png)
 
 ![Weryfikuj](./media/how-to-connect-install-custom/adfs7.png)
 

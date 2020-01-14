@@ -5,12 +5,12 @@ author: sajayantony
 ms.topic: article
 ms.date: 07/02/2019
 ms.author: sajaya
-ms.openlocfilehash: 1f2c79b47df4cf44b6fa3981bac4a5a3bf61c4df
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 74863823f3e8ef32565e01981d3a742d696a8165
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456391"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75708312"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Często zadawane pytania dotyczące usługi Azure Container Registry
 
@@ -32,7 +32,7 @@ Tak. Oto [szablon](https://github.com/Azure/azure-quickstart-templates/tree/mast
 
 ### <a name="is-there-security-vulnerability-scanning-for-images-in-acr"></a>Czy istnieją luki w zabezpieczeniach dotyczące skanowania obrazów w ACR?
 
-Tak. Zapoznaj się z dokumentacją z [TwistLock](https://www.twistlock.com/2016/11/07/twistlock-supports-azure-container-registry/) i [akwamaryna](https://blog.aquasec.com/image-vulnerability-scanning-in-azure-container-registry).
+Tak. Zapoznaj się z dokumentacją z [Azure Security Center](https://docs.microsoft.com/azure/security-center/azure-container-registry-integration), [TwistLock](https://www.twistlock.com/2016/11/07/twistlock-supports-azure-container-registry/) i [akwamaryna](https://blog.aquasec.com/image-vulnerability-scanning-in-azure-container-registry).
 
 ### <a name="how-do-i-configure-kubernetes-with-azure-container-registry"></a>Jak mogę skonfigurować Kubernetes z Azure Container Registry?
 
@@ -101,7 +101,7 @@ Propagowanie zmian reguł zapory zajmuje trochę czasu. Po zmianie ustawień zap
 - [Dlaczego użycie limitu przydziału rejestru nie jest zmniejszane po usunięciu obrazów?](#why-does-the-registry-quota-usage-not-reduce-after-deleting-images)
 - [Jak mogę sprawdzić poprawność zmian przydziału magazynu?](#how-do-i-validate-storage-quota-changes)
 - [Jak mogę uwierzytelniać się przy użyciu mojego rejestru podczas uruchamiania interfejsu wiersza polecenia w kontenerze?](#how-do-i-authenticate-with-my-registry-when-running-the-cli-in-a-container)
-- [Czy Azure Container Registry oferować konfigurację tylko TLS v 1.2 i jak włączyć protokół TLS w wersji 1.2?](#does-azure-container-registry-offer-tls-v12-only-configuration-and-how-to-enable-tls-v12)
+- [Jak włączyć protokół TLS 1,2?](#how-to-enable-tls-12)
 - [Czy Azure Container Registry obsługuje zaufanie zawartości?](#does-azure-container-registry-support-content-trust)
 - [Jak mogę udzielić dostępu do obrazów ściągania lub wypychania bez zezwolenia na zarządzanie zasobem rejestru?](#how-do-i-grant-access-to-pull-or-push-images-without-permission-to-manage-the-registry-resource)
 - [Jak mogę włączyć automatycznej kwarantanny obrazu dla rejestru](#how-do-i-enable-automatic-image-quarantine-for-a-registry)
@@ -181,9 +181,12 @@ Następnie Uwierzytelnij się w rejestrze:
 az acr login -n MyRegistry
 ```
 
-### <a name="does-azure-container-registry-offer-tls-v12-only-configuration-and-how-to-enable-tls-v12"></a>Czy Azure Container Registry oferować konfigurację tylko TLS v 1.2 i jak włączyć protokół TLS w wersji 1.2?
+### <a name="how-to-enable-tls-12"></a>Jak włączyć protokół TLS 1,2?
 
-Tak. Włącz protokół TLS przy użyciu dowolnego ostatniego klienta platformy Docker (wersja 18.03.0 lub nowsza). 
+Włącz protokół TLS 1,2 przy użyciu dowolnego ostatniego klienta platformy Docker (wersja 18.03.0 i nowsze). 
+
+> [!IMPORTANT]
+> Od 13 stycznia 2020, Azure Container Registry będą wymagały wszystkich bezpiecznych połączeń z serwerów i aplikacji do korzystania z protokołu TLS 1,2. Obsługa protokołu TLS 1,0 i 1,1 zostanie wycofana.
 
 ### <a name="does-azure-container-registry-support-content-trust"></a>Czy usługa Azure Container Registry obsługuje funkcję zaufania do kontenera?
 
@@ -305,7 +308,7 @@ unauthorized: authentication required
 ```
 
 Aby rozwiązać ten problem:
-1. Dodaj `--signature-verification=false` opcji do pliku konfiguracji demona platformy Docker `/etc/sysconfig/docker`. Na przykład:
+1. Dodaj `--signature-verification=false` opcji do pliku konfiguracji demona platformy Docker `/etc/sysconfig/docker`. Przykład:
 
   ```
   OPTIONS='--selinux-enabled --log-driver=journald --live-restore --signature-verification=false'
@@ -427,8 +430,8 @@ Skontaktuj się z administratorem sieci lub Sprawdź konfigurację sieci i łąc
 
 ### <a name="why-does-my-pull-or-push-request-fail-with-disallowed-operation"></a>Dlaczego moje żądanie ściągnięcia lub wypychania zakończy się niepowodzeniem z niedozwoloną operacją?
 
-Poniżej przedstawiono niektóre senarios, w których operacje mogą być niedozwolone:
-* Klasyczne rejestry nie są już obsługiwane. Przeprowadź uaktualnienie do obsługiwanej [jednostki SKU](https://aka.ms/acr/skus) przy użyciu polecenia [AZ ACR Update lub witryny](https://docs.microsoft.com/cli/azure/acr?view=azure-cli-latest#az-acr-update) Azure Portal.
+Poniżej przedstawiono kilka scenariuszy, w których operacje mogą być niedozwolone:
+* Klasyczne rejestry nie są już obsługiwane. Przeprowadź uaktualnienie do obsługiwanych [jednostek SKU](https://aka.ms/acr/skus) przy użyciu polecenia [AZ acr Update](https://docs.microsoft.com/cli/azure/acr?view=azure-cli-latest#az-acr-update) lub Azure Portal.
 * Obraz lub repozytorium może być zablokowane, aby nie można go było usunąć ani zaktualizować. Aby wyświetlić bieżące atrybuty, można użyć polecenia [AZ ACR show Repository](https://docs.microsoft.com/azure/container-registry/container-registry-image-lock) .
 * Niektóre operacje są niedozwolone, jeśli obraz jest objęty kwarantanną. Dowiedz się więcej o [kwarantannie](https://github.com/Azure/acr/tree/master/docs/preview/quarantine).
 
@@ -488,14 +491,14 @@ Obecnie nie obsługujemy GitLab dla wyzwalaczy źródłowych.
 
 | Usługa git | Kontekst źródła | Kompilacja ręczna | Automatycznie Kompiluj przez wyzwalacz zatwierdzania |
 |---|---|---|---|
-| GitHub | https://github.com/user/myapp-repo.git#mybranch:myfolder | Yes | Yes |
-| Azure Repos | https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder | Yes | Yes |
-| GitLab | https://gitlab.com/user/myapp-repo.git#mybranch:myfolder | Yes | Nie |
-| BitBucket | https://user@bitbucket.org/user/mayapp-repo.git#mybranch:myfolder | Yes | Nie |
+| Witryna GitHub | https://github.com/user/myapp-repo.git#mybranch:myfolder | Tak | Tak |
+| Azure Repos | https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder | Tak | Tak |
+| GitLab | https://gitlab.com/user/myapp-repo.git#mybranch:myfolder | Tak | Nie |
+| BitBucket | https://user@bitbucket.org/user/mayapp-repo.git#mybranch:myfolder | Tak | Nie |
 
 ## <a name="run-error-message-troubleshooting"></a>Rozwiązywanie problemów z komunikatem o błędzie
 
-| Komunikat o błędzie | Przewodnik rozwiązywania problemów |
+| Komunikat o błędzie | Podręcznik rozwiązywania problemów |
 |---|---|
 |Nie skonfigurowano dostępu dla maszyny wirtualnej, dlatego nie znaleziono żadnych subskrypcji|Może się tak zdarzyć, jeśli używasz `az login --identity` w zadaniu ACR. Jest to błąd przejściowy i występuje, gdy przypisanie roli zarządzanej tożsamości nie zostanie przekazane. Oczekiwanie na kilka sekund przed ponowną próbą.|
 

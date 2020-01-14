@@ -9,12 +9,12 @@ ms.author: deli
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 09/23/2019
-ms.openlocfilehash: 3d748e1625f27be27b7f403fbab3e213b16c4dd6
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: c5de7b7bf30726dbfbf165799280ad892eca628a
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73890174"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911994"
 ---
 # <a name="migrate-azure-scheduler-jobs-to-azure-logic-apps"></a>Migrowanie zadań usługi Azure Scheduler do Azure Logic Apps
 
@@ -108,7 +108,7 @@ Na przykład przy użyciu aplikacji post można utworzyć żądanie POST z ustaw
 
 | Metoda żądania | Adres URL | Treść | Nagłówki |
 |----------------|-----|------|---------|
-| **POST** | <*punkt końcowy — adres URL*> | **surowców** <p>**JSON (Application/JSON)** <p>W polu **RAW** wprowadź ładunek, który ma zostać wysłany w żądaniu. <p>**Uwaga**: to ustawienie powoduje automatyczne skonfigurowanie wartości **nagłówków** . | **Klucz**: Content-Type <br>**Wartość**: Application/JSON |
+| **POST** | <*endpoint-URL*> | **surowców** <p>**JSON (Application/JSON)** <p>W polu **RAW** wprowadź ładunek, który ma zostać wysłany w żądaniu. <p>**Uwaga**: to ustawienie powoduje automatyczne skonfigurowanie wartości **nagłówków** . | **Klucz**: Content-Type <br>**Wartość**: Application/JSON |
 |||||
 
 ![Wyślij żądanie ręcznego wyzwalania aplikacji logiki](./media/migrate-from-scheduler-to-logic-apps/postman-send-post-request.png)
@@ -191,7 +191,7 @@ Jeśli nie uda się uruchomić akcji domyślnej w usłudze Azure Scheduler, moż
 
 1. Po zakończeniu wybierz pozycję **Gotowe**.
 
-Aby dowiedzieć się więcej o obsłudze wyjątków, zobacz temat [Obsługa błędów i wyjątków — Właściwość RunAfter](../logic-apps/logic-apps-exception-handling.md#catch-and-handle-failures-with-the-runafter-property).
+Aby dowiedzieć się więcej o obsłudze wyjątków, zobacz temat [Obsługa błędów i wyjątków — Właściwość RunAfter](../logic-apps/logic-apps-exception-handling.md#control-run-after-behavior).
 
 ## <a name="faq"></a>Często zadawane pytania
 
@@ -223,13 +223,13 @@ Jeśli Twoja subskrypcja platformy Azure ma płatny Plan pomocy technicznej, mo�
    | Właściwość | Wartość |
    |---------|-------|
    | **Typ problemu** | **Naukow** |
-   | **Subskrypcja** | <*subskrypcję platformy Azure*> |
+   | **Subskrypcja** | <*your-Azure-subscription*> |
    | **Usługa** | W obszarze **monitorowanie & zarządzanie**wybierz pozycję **harmonogram**. Jeśli nie możesz znaleźć **harmonogramu**, najpierw wybierz pozycję **wszystkie usługi** . |
    ||| 
 
 1. Wybierz żądaną opcję pomocy technicznej. Jeśli masz płatny Plan pomocy technicznej, wybierz pozycję **dalej**.
 
-**We**
+**Community**
 
 * [Forum Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-scheduler)

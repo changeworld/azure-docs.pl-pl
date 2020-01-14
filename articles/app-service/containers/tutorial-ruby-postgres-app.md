@@ -5,12 +5,12 @@ ms.devlang: ruby
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6af9da060f7742fe2a9b9656199edd5feb67bec1
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 3238de3f1d3416964af05db031b5ecec20e4f140
+ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74687410"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75720195"
 ---
 # <a name="build-a-ruby-and-postgres-app-in-azure-app-service-on-linux"></a>Tworzenie aplikacji w języku Ruby i korzystającej z bazy danych Postgres w usłudze Azure App Service w systemie Linux
 
@@ -18,7 +18,7 @@ Usługa [App Service w systemie Linux](app-service-linux-intro.md) oferuje wysoc
 
 ![Aplikacja platformy Ruby on Rails uruchomiona w usłudze Azure App Service](./media/tutorial-ruby-postgres-app/complete-checkbox-published.png)
 
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Tworzenie bazy danych PostgreSQL na platformie Azure
@@ -110,7 +110,7 @@ Aby zatrzymać serwer platformy Rails, naciśnij w terminalu klawisze `Ctrl + C`
 
 W tym kroku utworzysz bazę danych Postgres w usłudze [Azure Database for PostgreSQL](/azure/postgresql/). Następnie skonfigurujesz aplikację platformy Ruby on Rails i połączysz ją z tą bazą danych.
 
-### <a name="create-a-resource-group"></a>Utwórz grupę zasobów
+### <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
 [!INCLUDE [Create resource group](../../../includes/app-service-web-create-resource-group-linux-no-h.md)] 
 
@@ -151,7 +151,7 @@ Po utworzeniu serwera usługi Azure Database for PostgreSQL w interfejsie wiersz
 W usłudze Cloud Shell przy użyciu polecenia [`az postgres server firewall-rule create`](/cli/azure/postgres/server/firewall-rule?view=azure-cli-latest#az-postgres-server-firewall-rule-create) utwórz regułę zapory dla serwera Postgres, aby zezwolić na połączenia klientów. Po ustawieniu początkowego i końcowego adresu IP na 0.0.0.0 zapora będzie otwierana tylko dla innych zasobów platformy Azure. Zastąp unikatową nazwę serwera dla symbolu zastępczego *\<Postgres-Server-name >* .
 
 ```azurecli-interactive
-az postgres server firewall-rule create --resource-group myResourceGroup --server <postgres-server-name> --name AllowAllIps --start-ip-address 0.0.0.0 --end-ip-address 255.255.255.255
+az postgres server firewall-rule create --resource-group myResourceGroup --server <postgres-server-name> --name AllowAllIps --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
 ```
 
 > [!TIP] 
@@ -503,7 +503,7 @@ W niniejszym samouczku zawarto informacje na temat wykonywania następujących c
 > * Strumieniowe przesyłanie dzienników diagnostycznych z platformy Azure
 > * Zarządzanie aplikacją w witrynie Azure Portal
 
-Przejdź do następnego samouczka, aby dowiedzieć się, jak zmapować niestandardową nazwę DNS na aplikację.
+Przejdź do następnego samouczka, aby dowiedzieć się, jak zamapować niestandardową nazwę DNS na aplikację.
 
 > [!div class="nextstepaction"]
 > [Samouczek: mapowanie niestandardowej nazwy DNS na aplikację](../app-service-web-tutorial-custom-domain.md)

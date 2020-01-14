@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 05/30/2019
+ms.date: 01/09/2019
 ms.author: diberry
-ms.openlocfilehash: 1641a1020193395d7d2ddb9c4893bd7bc89cdcd0
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 90658e030c907a9fd99dd8fb9a6e90698d72b1f0
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681872"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834477"
 ---
 # <a name="active-and-inactive-events"></a>Zdarzenia aktywne i nieaktywne
 
@@ -25,10 +25,11 @@ W niektórych scenariuszach aplikacja może wymagać wywołania rangi, aby nie w
 
 Zwykle te scenariusze są wykonywane, gdy:
 
-* Korzystasz z interfejsu użytkownika, który może zostać wyświetlony przez użytkownika lub może się nie powieść. 
-* Aplikacja wykonuje personalizację predykcyjną, w której wywołania rangi są wykonywane z niewielkim kontekstem w czasie rzeczywistym, a aplikacja może nie używać danych wyjściowych. 
+* Korzystasz z interfejsu użytkownika, który może zostać wyświetlony przez użytkownika lub może się nie powieść.
+* Aplikacja wykonuje personalizację predykcyjną, w której wywołania rangi są wykonywane z niewielkim kontekstem w czasie rzeczywistym, a aplikacja może nie używać danych wyjściowych.
 
-W takich przypadkach należy użyć personalizacji do wywołania rangi, żądając zdarzenia jako _nieaktywnego_. Personalizacja nie będzie oczekiwać dla tego zdarzenia i nie będzie stosowała domyślnego wynagrodzenia. W dalszej części logiki biznesowej, jeśli aplikacja używa informacji z wywołania rangi, po prostu _Aktywuj_ zdarzenie. Gdy tylko zdarzenie jest aktywne, Personalizacja oczekuje na odłożenie zdarzenia. Jeśli w interfejsie API nagradzania nie jest wykonywane żadne jawne wywołanie, Personalizacja stosuje wynagrodzenie domyślne.
+W takich przypadkach należy użyć personalizacji do wywołania rangi, żądając zdarzenia jako _nieaktywnego_. Personalizacja nie będzie oczekiwać dla tego zdarzenia i nie będzie stosowała domyślnego wynagrodzenia.
+W dalszej części logiki biznesowej, jeśli aplikacja używa informacji z wywołania rangi, po prostu _Aktywuj_ zdarzenie. Gdy tylko zdarzenie jest aktywne, Personalizacja oczekuje na odłożenie zdarzenia. Jeśli w interfejsie API nagradzania nie jest wykonywane żadne jawne wywołanie, Personalizacja stosuje wynagrodzenie domyślne.
 
 ## <a name="inactive-events"></a>Zdarzenia nieaktywne
 
@@ -42,15 +43,28 @@ Ustawienia uczenia określają *Parametry* szkolenia modelu. Dwa modele tych sam
 
 Można importować i eksportować pliki zasad uczenia z Azure Portal. Ta metoda służy do zapisywania istniejących zasad, testowania ich, zastępowania i archiwizowania ich w kontroli kodu źródłowego jako artefaktów do przyszłego odwołania i inspekcji.
 
+Dowiedz się, [jak](how-to-learning-policy.md) importować i eksportować zasady uczenia.
+
 ### <a name="understand-learning-policy-settings"></a>Informacje o ustawieniach zasad nauki
 
 Ustawienia zasad nauki nie są przeznaczone do zmiany. Zmień ustawienia tylko wtedy, gdy zrozumiesz, jak mają wpływ na personalizowanie. Bez tej wiedzy mogą wystąpić problemy, w tym unieważnienie modeli personalizacji.
+
+Personalizacja używa [vowpalwabbit](https://github.com/VowpalWabbit) do uczenia i oceny zdarzeń. Zapoznaj się z [dokumentacją vowpalwabbit](https://github.com/VowpalWabbit/vowpal_wabbit/wiki/Command-line-arguments) na temat edytowania ustawień uczenia przy użyciu vowpalwabbit. Po otrzymaniu prawidłowych argumentów wiersza polecenia Zapisz polecenie do pliku o następującym formacie (Zastąp wartość właściwości argumenty pożądanym poleceniem) i Przekaż plik, aby zaimportować ustawienia uczenia w okienku **Ustawienia modelu i uczenia** w Azure Portal dla zasobu personalizowania.
+
+Poniższe `.json` to przykład zasad uczenia się.
+
+```json
+{
+  "name": "new learning settings",
+  "arguments": " --cb_explore_adf --epsilon 0.2 --power_t 0 -l 0.001 --cb_type mtr -q ::"
+}
+```
 
 ### <a name="compare-learning-policies"></a>Porównanie zasad uczenia
 
 Można porównać, w jaki sposób różne zasady uczenia są wykonywane względem wcześniejszych danych w dziennikach personalizacji przez wykonywanie [ocen w trybie offline](concepts-offline-evaluation.md).
 
-[Przekaż własne zasady uczenia](how-to-offline-evaluation.md) , aby porównać je z bieżącymi zasadami nauki.
+[Przekaż własne zasady uczenia](how-to-learning-policy.md) , aby porównać je z bieżącymi zasadami nauki.
 
 ### <a name="optimize-learning-policies"></a>Optymalizowanie zasad uczenia
 

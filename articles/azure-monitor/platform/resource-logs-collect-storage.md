@@ -5,18 +5,18 @@ author: bwren
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 09/20/2019
+ms.date: 12/15/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 306f6cb0b50b7befcbf51e6164a5da887d35616e
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: b6a687fc7ddf5eeacdfe3480a252598c6f9e773e
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74030873"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750392"
 ---
 # <a name="archive-azure-resource-logs-to-storage-account"></a>Archiwizuj dzienniki zasobów platformy Azure na koncie magazynu
-[Dzienniki zasobów](resource-logs-overview.md) na platformie Azure zapewniają rozbudowane, częste dane dotyczące wewnętrznej operacji zasobu platformy Azure. W tym artykule opisano zbieranie dzienników zasobów na koncie usługi Azure Storage w celu zachowania danych do archiwizacji.
+[Dzienniki platformy](platform-logs-overview.md) na platformie Azure, w tym dziennik aktywności platformy Azure i dzienniki zasobów, zapewniają szczegółowe informacje diagnostyczne i inspekcji dla zasobów platformy Azure oraz platformy platformy Azure, od których zależą.  W tym artykule opisano zbieranie dzienników platformy na koncie usługi Azure Storage w celu zachowania danych do archiwizacji.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Jeśli jeszcze tego nie zrobiono, musisz [utworzyć konto usługi Azure Storage](../../storage/common/storage-quickstart-create-account.md) . Konto magazynu nie musi znajdować się w tej samej subskrypcji co zasób wysyła dzienniki, dopóki użytkownik, który konfiguruje ustawienie, ma dostęp do obu subskrypcji.
@@ -26,19 +26,17 @@ Jeśli jeszcze tego nie zrobiono, musisz [utworzyć konto usługi Azure Storage]
 > Konta Azure Data Lake Storage Gen2 nie są obecnie obsługiwane jako miejsce docelowe dla ustawień diagnostycznych, mimo że mogą być wymienione jako prawidłowe opcje w Azure Portal.
 
 
-Nie należy używać istniejącego konta magazynu, które ma inne niemonitorowane dane, które są w nim przechowywane, dzięki czemu można lepiej kontrolować dostęp do danych monitorowania. Jeśli przechowujesz również [Dziennik aktywności](activity-logs-overview.md) na koncie magazynu, możesz użyć tego samego konta magazynu, aby zachować wszystkie dane monitorowania w centralnej lokalizacji.
+Nie należy używać istniejącego konta magazynu, które ma inne niemonitorowane dane, które są w nim przechowywane, dzięki czemu można lepiej kontrolować dostęp do danych. Jeśli archiwizowanie dzienników aktywności i dzienników zasobów odbywa się razem, możesz użyć tego samego konta magazynu, aby zachować wszystkie dane monitorowania w centralnej lokalizacji.
 
 ## <a name="create-a-diagnostic-setting"></a>Utwórz ustawienie diagnostyczne
-Dzienniki zasobów nie są domyślnie zbierane. Zbierz je na koncie usługi Azure Storage i innych miejscach docelowych, tworząc ustawienia diagnostyczne dla zasobu platformy Azure. Aby uzyskać szczegółowe informacje [, zobacz Tworzenie ustawień diagnostycznych w celu zbierania dzienników i metryk na platformie Azure](diagnostic-settings.md) .
+Wyślij dzienniki platformy do magazynu i innych miejsc docelowych, tworząc ustawienia diagnostyczne dla zasobu platformy Azure. Aby uzyskać szczegółowe informacje [, zobacz Tworzenie ustawień diagnostycznych w celu zbierania dzienników i metryk na platformie Azure](diagnostic-settings.md) .
 
 
-## <a name="data-retention"></a>Przechowywanie danych
-Zasady przechowywania definiują liczbę dni przechowywania danych z poszczególnych kategorii dzienników i danych metryk przechowywanych na koncie magazynu. Zasady przechowywania mogą zawierać dowolną liczbę dni z zakresu od 0 do 365. Zasada przechowywania równa zero określa, że zdarzenia dla tej kategorii dziennika są przechowywane przez czas nieokreślony.
-
-Zasady przechowywania są stosowane dziennie, więc po zakończeniu dnia (UTC) dzienniki będą usuwane z dnia, w którym dane są już poza tymi zasadami przechowywania. Na przykład jeśli masz zasady przechowywania w jeden dzień, na początku dnia już dziś dzienników z wczoraj zanim dnia zostaną usunięte. Proces usuwania rozpoczyna się od północy czasu UTC, ale należy pamiętać, że może upłynąć do 24 godzin dla dzienników są usuwane z konta magazynu. 
+## <a name="collect-data-from-compute-resources"></a>Zbieranie danych z zasobów obliczeniowych
+Ustawienia diagnostyczne będą zbierać dzienniki zasobów dla zasobów obliczeniowych platformy Azure, takich jak każdy inny zasób, ale nie system operacyjny gościa ani ich obciążenia. Aby zebrać te dane, zainstaluj [agenta Diagnostyka Azure systemu Windows](diagnostics-extension-overview.md). Aby uzyskać szczegółowe informacje, zobacz artykuł [przechowywanie i wyświetlanie danych diagnostycznych w usłudze Azure Storage](diagnostics-extension-to-storage.md) .
 
 
-## <a name="schema-of-resource-logs-in-storage-account"></a>Schemat dzienników zasobów na koncie magazynu
+## <a name="schema-of-platform-logs-in-storage-account"></a>Schemat dzienników platformy na koncie magazynu
 
 Po utworzeniu ustawienia diagnostycznego kontener magazynu jest tworzony na koncie magazynu zaraz po wystąpieniu zdarzenia w jednej z włączonych kategorii dzienników. Obiekty blob w kontenerze używają następującej konwencji nazewnictwa:
 
@@ -54,7 +52,7 @@ insights-logs-networksecuritygrouprulecounter/resourceId=/SUBSCRIPTIONS/xxxxxxxx
 
 Każdy obiekt blob PT1H.json zawiera obiekt blob JSON ze zdarzeniami, które wystąpiły w ciągu godziny określonej w adresie URL obiektu blob (na przykład h = 12). Zdarzenia występujące w danej chwili są na bieżąco dołączane do pliku PT1H.json. Wartość minuta (m = 00) jest zawsze równa 00, ponieważ zdarzenia dziennika zasobów są podzielone na pojedyncze obiekty blob na godzinę.
 
-W pliku PT1H. JSON każde zdarzenie jest przechowywane w następującym formacie. Spowoduje to użycie wspólnego schematu najwyższego poziomu, ale będzie unikatowy dla każdej usługi platformy Azure, zgodnie z opisem w [schemacie dzienniki zasobów](resource-logs-overview.md#resource-logs-schema).
+W pliku PT1H. JSON każde zdarzenie jest przechowywane w następującym formacie. Spowoduje to użycie wspólnego schematu najwyższego poziomu, ale jest unikatowa dla każdej usługi platformy Azure, zgodnie z opisem w schemacie [dzienniki zasobów](diagnostic-logs-schema.md) i [schemat dziennika aktywności](activity-log-schema.md).
 
 ``` JSON
 {"time": "2016-07-01T00:00:37.2040000Z","systemId": "46cdbb41-cb9c-4f3d-a5b4-1d458d827ff1","category": "NetworkSecurityGroupRuleCounter","resourceId": "/SUBSCRIPTIONS/s1id1234-5679-0123-4567-890123456789/RESOURCEGROUPS/TESTRESOURCEGROUP/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/TESTNSG","operationName": "NetworkSecurityGroupCounters","properties": {"vnetResourceGuid": "{12345678-9012-3456-7890-123456789012}","subnetPrefix": "10.3.0.0/24","macAddress": "000123456789","ruleName": "/subscriptions/ s1id1234-5679-0123-4567-890123456789/resourceGroups/testresourcegroup/providers/Microsoft.Network/networkSecurityGroups/testnsg/securityRules/default-allow-rdp","direction": "In","type": "allow","matchedConnections": 1988}}
@@ -65,7 +63,7 @@ W pliku PT1H. JSON każde zdarzenie jest przechowywane w następującym formacie
 
 ## <a name="next-steps"></a>Następne kroki
 
+* [Przeczytaj więcej na temat dzienników zasobów](platform-logs-overview.md).
+* [Utwórz ustawienie diagnostyczne, aby zbierać dzienniki i metryki na platformie Azure](diagnostic-settings.md).
 * [Pobierz obiekty blob do analizy](../../storage/blobs/storage-quickstart-blobs-dotnet.md).
 * [Archiwizuj dzienniki Azure Active Directory przy użyciu Azure monitor](../../active-directory/reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account.md).
-* [Przeczytaj więcej na temat dzienników zasobów](../../azure-monitor/platform/resource-logs-overview.md).
-

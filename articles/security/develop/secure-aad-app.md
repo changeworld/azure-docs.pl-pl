@@ -1,10 +1,10 @@
 ---
-title: Opracowywanie bezpiecznej aplikacji sieci Web usługi Azure AD | Microsoft Docs
+title: Tworzenie bezpiecznej aplikacji sieci Web usługi Azure AD | Microsoft Docs
 description: Ta prosta Przykładowa aplikacja implementuje najlepsze rozwiązania w zakresie zabezpieczeń, które ulepszają aplikację i stan bezpieczeństwa organizacji podczas opracowywania na platformie Azure.
-keywords: potrącon
+keywords: Nie dotyczy
 services: security
 documentationcenter: na
-author: fehase
+author: TerryLanfear
 manager: alclabo
 editor: ''
 ms.assetid: cd906856-f4f9-4ddc-9249-c998386f4085
@@ -14,13 +14,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/12/2019
-ms.author: v-fehase
-ms.openlocfilehash: 88ef0874d760fb87700eac83c0d615be5887ddee
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.author: terrylan
+ms.openlocfilehash: a936fb4a0a6eadc2840fc6d642428091a6b0fe9e
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73159837"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771278"
 ---
 # <a name="develop-secure-app-for-an-azure-ad-app"></a>Opracowywanie bezpiecznej aplikacji dla aplikacji usługi Azure AD
 ## <a name="overview"></a>Przegląd
@@ -275,7 +275,7 @@ Azure App Service umożliwia tworzenie i hostowanie aplikacji sieci Web przy uż
 
 ## <a name="guidance-and-recommendations"></a>Wskazówki i zalecenia
 
-### <a name="network"></a>Sieć
+### <a name="network"></a>Network (Sieć)
 Po zakończeniu wdrażania masz bramę aplikacji z włączoną zaporą aplikacji sieci Web.
 
 Wystąpienie bramy uwidacznia port 443 dla protokołu HTTPS. Ta konfiguracja gwarantuje, że nasza aplikacja jest dostępna tylko na porcie 443 za pośrednictwem protokołu HTTPS.
@@ -334,7 +334,7 @@ Po włączeniu integracji sieci wirtualnej możesz dodać sieciowe grupy zabezpi
 
 5. W bloku podsieci sieciowej grupy zabezpieczeń wybierz opcję **Skojarz**, wybierz sieć wirtualną utworzoną we wdrożeniu i wybierz podsieć bramy o nazwie **GW-Subnet**. SIECIOWEJ grupy zabezpieczeń jest stosowana do podsieci.
 
-6. Utwórz kolejną sieciowej grupy zabezpieczeń jak w poprzednim kroku, tym razem z wystąpieniem App Service. Nadaj mu nazwę. Dodaj regułę ruchu przychodzącego dla portu 443, jak w przypadku usługi Application Gateway sieciowej grupy zabezpieczeń.
+6. Utwórz kolejną sieciowej grupy zabezpieczeń jak w poprzednim kroku, tym razem z wystąpieniem App Service. Nadaj jej nazwę. Dodaj regułę ruchu przychodzącego dla portu 443, jak w przypadku usługi Application Gateway sieciowej grupy zabezpieczeń.
 
    Jeśli masz wystąpienie App Service wdrożone w wystąpieniu App Service Environment, które nie jest używane w przypadku tej aplikacji, możesz dodać reguły ruchu przychodzącego, aby umożliwić Azure Service Healthe sondy przez otwarcie portów 454-455 w przychodzących grupach zabezpieczeń App Service sieciowej grupy zabezpieczeń. Oto konfiguracja:
 
@@ -361,7 +361,7 @@ Poniższe technologie zapewniają możliwości zarządzania dostępem do danych 
 - Kontrola dostępu oparta na rolach na platformie Azure umożliwia administratorom definiowanie szczegółowych uprawnień dostępu w celu udzielania dostępu tylko użytkownikom potrzebnym do wykonywania swoich zadań. Zamiast zapewniać każdemu użytkownikowi nieograniczony dostęp do zasobów platformy Azure, Administratorzy mogą zezwalać na dostęp do danych posiadaczy tylko określonym akcjom. Dostęp do subskrypcji jest ograniczony do administratora subskrypcji.
 - Azure Active Directory Privileged Identity Management umożliwia klientom zminimalizowanie liczby użytkowników, którzy mają dostęp do pewnych informacji, takich jak dane posiadaczy kart. Administratorzy mogą używać Azure Active Directory Privileged Identity Management do odnajdywania, ograniczania i monitorowania uprzywilejowanych tożsamości oraz ich dostępu do zasobów. Tej funkcji można także użyć do wymuszenia dostępu administracyjnego na żądanie, w miarę potrzeb, w razie potrzeby.
 - Azure Active Directory Identity Protection wykrywa potencjalne luki w zabezpieczeniach, które mają wpływ na tożsamości organizacji, konfiguruje automatyczne odpowiedzi na wykryte podejrzane działania związane z tożsamościami organizacji i bada podejrzane zdarzenia w celu podjęcia odpowiednich działań w celu ich rozwiązania.
-### <a name="secrets-management"></a>Zarządzanie kluczami tajnymi
+### <a name="secrets-management"></a>Zarządzanie wpisami tajnymi
 Rozwiązanie używa Azure Key Vault do zarządzania kluczami i wpisami tajnymi. Usługa Azure Key Vault ułatwia ochronę kluczy kryptograficznych i kluczy tajnych używanych przez aplikacje i usługi w chmurze. Następujące funkcje Azure Key Vault pomagają klientom chronić takie dane i uzyskiwać do nich dostęp
    - Zaawansowane zasady dostępu są konfigurowane w zależności od potrzeb.
    - Zasady dostępu Key Vault są zdefiniowane z minimalnymi wymaganymi uprawnieniami do kluczy i wpisów tajnych.
@@ -465,7 +465,7 @@ Aby włączyć usługę MFA dla logowania administratora
    1. Przejdź do karty **Azure Active Directory** w Azure Portal
    2. W kategorii zabezpieczenia wybierz pozycję dostęp warunkowy. Zobaczysz ten ekran
 
-       ![Dostęp warunkowy — zasady](./media/secure-aad-app/ad-mfa-conditional-add.png)
+       ![Dostęp warunkowy — Zasady](./media/secure-aad-app/ad-mfa-conditional-add.png)
 
 Jeśli nie możesz utworzyć nowych zasad
 
@@ -512,13 +512,13 @@ Aby utworzyć ten obszar roboczy
    *Wyszukaj Log Analytics obszary robocze*
 
    2. Na następnej stronie wybierz pozycję **Dodaj** , a następnie podaj nazwę, grupę zasobów i lokalizację dla obszaru roboczego.
-   ![utworzyć Log Analytics obszaru roboczego](./media/secure-aad-app/sentinel-log-analytics-create.png)
+   ![Utwórz obszar roboczy usługi Log Analytics](./media/secure-aad-app/sentinel-log-analytics-create.png)
 
-   *Tworzenie obszaru roboczego Log Analytics*
+   *Utwórz obszar roboczy usługi Log Analytics*
 
    3. Użyj pola wyszukiwania, aby wyszukać **platformę Azure**.
 
-   ![Wyszukaj platformę Azure — wskaźnik](./media/secure-aad-app/sentinel-add.png)
+   ![Wyszukiwanie ciągu „Azure Sentinel”](./media/secure-aad-app/sentinel-add.png)
 
    *Wyszukaj platformę Azure — wskaźnik*
 
@@ -537,7 +537,7 @@ Aby utworzyć ten obszar roboczy
    Aby na przykład połączyć się z bramą aplikacji, wykonaj następujące czynności:
 
    1. Otwórz blok wystąpienia usługi Azure Application Gateway.
-   2. W obszarze **monitorowanie**wybierz pozycję **Ustawienia diagnostyczne**.
+   2. W obszarze **monitorowanie**, wybierz opcję **ustawień diagnostycznych**.
    3. Wybierz pozycję **Dodaj ustawienie diagnostyczne**.
 
    ![Dodawanie Application Gateway diagnostyki](./media/secure-aad-app/sentinel-gateway-connector.png)
@@ -558,6 +558,6 @@ Aby utworzyć ten obszar roboczy
 ## <a name="next-steps"></a>Następne kroki
    Poniższe artykuły mogą pomóc w projektowaniu, projektowaniu i wdrażaniu bezpiecznych aplikacji.
 
-- [Zdefiniowanych](secure-design.md)
+- [Projektowanie](secure-design.md)
 - [Opracowywanie](secure-develop.md)
 - [Wdrażanie](secure-deploy.md)

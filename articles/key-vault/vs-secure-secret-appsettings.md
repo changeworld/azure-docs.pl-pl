@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: cawa
-ms.openlocfilehash: d5662fa3cae8ba0cec0fd76965597ccac7c83889
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 8a85dd3d3d80a8c3988c7653eb74f403fdc54cd4
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69639479"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772503"
 ---
 # <a name="securely-save-secret-application-settings-for-a-web-application"></a>Bezpieczne Zapisywanie ustawień tajnych aplikacji dla aplikacji sieci Web
 
@@ -41,7 +41,8 @@ Jeśli opracowujesz projekt i chcesz bezpiecznie udostępniać kod źródłowy, 
 
     ![Utwórz Azure Key Vault](./media/vs-secure-secret-appsettings/create-keyvault.PNG)
 
-2. Udziel użytkownikowi i członkom zespołu dostępu do Key Vault. Jeśli masz duży zespół, możesz utworzyć [grupę Azure Active Directory](../active-directory/active-directory-groups-create-azure-portal.md) i dodać tę grupę zabezpieczeń do Key Vault. Na liście rozwijanej *uprawnienia* do wpisów tajnych Sprawdź pozycję *Pobierz* i *wystaw* w obszarze *operacje zarządzania kluczami tajnymi*.
+2. Udziel użytkownikowi i członkom zespołu dostępu do Key Vault. Jeśli masz duży zespół, możesz utworzyć [grupę Azure Active Directory](../active-directory/active-directory-groups-create-azure-portal.md) i dodać tę grupę zabezpieczeń do Key Vault. Na liście rozwijanej uprawnienia do wpisów *tajnych* Sprawdź pozycję *Pobierz* i *wystaw* w obszarze *operacje zarządzania kluczami tajnymi*.
+Jeśli masz już utworzoną aplikację sieci Web, przyznaj aplikacji sieci Web dostęp do Key Vault, aby mógł uzyskać dostęp do magazynu kluczy bez zapisywania wpisu tajnego w ustawieniach lub plikach aplikacji. Wyszukaj swoją aplikację sieci Web według jej nazwy i Dodaj ją w taki sam sposób, jak przyznano użytkownikom dostęp.
 
     ![Dodawanie zasad dostępu Key Vault](./media/vs-secure-secret-appsettings/add-keyvault-access-policy.png)
 
@@ -49,39 +50,43 @@ Jeśli opracowujesz projekt i chcesz bezpiecznie udostępniać kod źródłowy, 
 
     ![Dodaj Key Vault tajny](./media/vs-secure-secret-appsettings/add-keyvault-secret.png)
 
-    > [!NOTE] 
+    > [!NOTE]
     > Przed rozpoczęciem korzystania z programu Visual Studio 2017 15.6 w wersji zazalecamy zainstalowanie rozszerzenia uwierzytelniania usług platformy Azure dla programu Visual Studio. Jest to jednak przestarzałe, ponieważ funkcje są zintegrowane w ramach programu Visual Studio. W związku z tym, jeśli używasz starszej wersji programu Visual Studio 2017, Zalecamy zaktualizowanie do programu VS 2017 15,6 lub w taki sposób, aby można było używać tych funkcji natywnie i uzyskać dostęp do magazynu kluczy z użyciem tożsamości logowania programu Visual Studio.
     >
- 
+
 4. Dodaj następujące pakiety NuGet do projektu:
 
     ```
+    Microsoft.Azure.KeyVault
     Microsoft.Azure.Services.AppAuthentication
+    Microsoft.Extensions.Configuration.AzureKeyVault
     ```
 5. Dodaj następujący kod do pliku Program.cs:
 
     ```csharp
-    public static IWebHost BuildWebHost(string[] args) =>
-        WebHost.CreateDefaultBuilder(args)
-            .ConfigureAppConfiguration((ctx, builder) =>
-            {
-                var keyVaultEndpoint = GetKeyVaultEndpoint();
-                if (!string.IsNullOrEmpty(keyVaultEndpoint))
+    public static IHostBuilder CreateHostBuilder(string[] args) =>
+             Host.CreateDefaultBuilder(args)
+                .ConfigureAppConfiguration((ctx, builder) =>
                 {
-                    var azureServiceTokenProvider = new AzureServiceTokenProvider();
-                    var keyVaultClient = new KeyVaultClient(
-                        new KeyVaultClient.AuthenticationCallback(
-                            azureServiceTokenProvider.KeyVaultTokenCallback));
-                            builder.AddAzureKeyVault(
-                            keyVaultEndpoint, keyVaultClient, new DefaultKeyVaultSecretManager());
-                        }
-                    })
-                    .UseStartup<Startup>()
-                    .Build();
+                    var keyVaultEndpoint = GetKeyVaultEndpoint();
+                    if (!string.IsNullOrEmpty(keyVaultEndpoint))
+                    {
+                        var azureServiceTokenProvider = new AzureServiceTokenProvider();
+                        var keyVaultClient = new KeyVaultClient(
+                            new KeyVaultClient.AuthenticationCallback(
+                                azureServiceTokenProvider.KeyVaultTokenCallback));
+                        builder.AddAzureKeyVault(
+                        keyVaultEndpoint, keyVaultClient, new DefaultKeyVaultSecretManager());
+                    }
+                })
+                .ConfigureWebHostDefaults(webBuilder =>
+                {
+                    webBuilder.UseStartup<Startup>();
+                });
 
         private static string GetKeyVaultEndpoint() => Environment.GetEnvironmentVariable("KEYVAULT_ENDPOINT");
     ```
-6. Dodaj adres URL Key Vault do pliku profilu launchsettings. JSON. Nazwa zmiennej środowiskowej *KEYVAULT_ENDPOINT* jest zdefiniowana w kodzie dodanym w kroku 6.
+6. Dodaj adres URL Key Vault do pliku profilu launchsettings. JSON. Nazwa zmiennej środowiskowej *KEYVAULT_ENDPOINT* jest zdefiniowana w kodzie, który został dodany w kroku 6.
 
     ![Dodaj adres URL Key Vault jako zmienną środowiskową projektu](./media/vs-secure-secret-appsettings/add-keyvault-url.png)
 

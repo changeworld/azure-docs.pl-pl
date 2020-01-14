@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 11/15/2018
 ms.author: cshoe
-ms.openlocfilehash: d6a17322c360040b8fa77ac243a1b568f0d10c1f
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 9ddf72e8e54245e3ce7ab9a926288587e205fc9c
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74996497"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769476"
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions"></a>Powiązania magazynu obiektów blob platformy Azure dla Azure Functions
 
@@ -328,7 +328,7 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 |**direction** | nd. | Musi być równa `in`. Ta właściwość jest ustawiana automatycznie po utworzeniu wyzwalacza w witrynie Azure portal. Wyjątki są zanotowane w sekcji [użycie](#trigger---usage) . |
 |**Nazwa** | nd. | Nazwa zmiennej, która reprezentuje obiekt BLOB w kodzie funkcji. |
 |**path** | **BlobPath** |[Kontener](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources) do monitorowania.  Może być [wzorcem nazw obiektów BLOB](#trigger---blob-name-patterns). |
-|**połączenia** | **Połączenie** | Nazwa ustawienia aplikacji, które zawiera parametry połączenia magazynu, które będą używane dla tego powiązania. Jeśli nazwa ustawienia aplikacji zaczyna się od "AzureWebJobs", w tym miejscu możesz określić tylko resztę nazwy. Na przykład jeśli ustawisz `connection` na "WebStorage", środowisko uruchomieniowe funkcji szuka ustawienia aplikacji o nazwie "AzureWebJobsMyStorage". W przypadku pozostawienia `connection` pustego środowisko uruchomieniowe funkcji używa domyślnych parametrów połączenia magazynu w ustawieniu aplikacji o nazwie `AzureWebJobsStorage`.<br><br>Parametry połączenia muszą być kontem magazynu ogólnego przeznaczenia, a nie [kontem usługi BLOB Storage](../storage/common/storage-account-overview.md#types-of-storage-accounts).|
+|**połączenia** | **Połączenie** | Nazwa ustawienia aplikacji, które zawiera parametry połączenia magazynu, które będą używane dla tego powiązania. Jeśli nazwa ustawienia aplikacji zaczyna się od "AzureWebJobs", w tym miejscu możesz określić tylko resztę nazwy. Na przykład jeśli ustawisz `connection` na "WebStorage", środowisko uruchomieniowe Functions szuka ustawienia aplikacji o nazwie "WebStorage". W przypadku pozostawienia `connection` pustego środowisko uruchomieniowe funkcji używa domyślnych parametrów połączenia magazynu w ustawieniu aplikacji o nazwie `AzureWebJobsStorage`.<br><br>Parametry połączenia muszą być kontem magazynu ogólnego przeznaczenia, a nie [kontem usługi BLOB Storage](../storage/common/storage-account-overview.md#types-of-storage-accounts).|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -344,7 +344,7 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-Dostęp do danych obiektów BLOB przy użyciu `context.bindings.<name from function.json>`.
+Dostęp do danych obiektów BLOB przy użyciu `context.bindings.<NAME>`, gdzie `<NAME>` pasuje do wartości zdefiniowanej w *funkcji Function. JSON*.
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
@@ -763,7 +763,7 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 |**direction** | nd. | Musi być równa `in`. Wyjątki są zanotowane w sekcji [użycie](#input---usage) . |
 |**Nazwa** | nd. | Nazwa zmiennej, która reprezentuje obiekt BLOB w kodzie funkcji.|
 |**path** |**BlobPath** | Ścieżka do obiektu BLOB. |
-|**połączenia** |**Połączenie**| Nazwa ustawienia aplikacji, które zawiera [Parametry połączenia magazynu](../storage/common/storage-configure-connection-string.md) , które będą używane dla tego powiązania. Jeśli nazwa ustawienia aplikacji zaczyna się od "AzureWebJobs", w tym miejscu możesz określić tylko resztę nazwy. Na przykład jeśli ustawisz `connection` na "WebStorage", środowisko uruchomieniowe funkcji szuka ustawienia aplikacji o nazwie "AzureWebJobsMyStorage". W przypadku pozostawienia `connection` pustego środowisko uruchomieniowe funkcji używa domyślnych parametrów połączenia magazynu w ustawieniu aplikacji o nazwie `AzureWebJobsStorage`.<br><br>Parametry połączenia muszą być kontem magazynu ogólnego przeznaczenia, a nie [kontem magazynu obsługującym tylko obiekty blob](../storage/common/storage-account-overview.md#types-of-storage-accounts).|
+|**połączenia** |**Połączenie**| Nazwa ustawienia aplikacji, które zawiera [Parametry połączenia magazynu](../storage/common/storage-configure-connection-string.md) , które będą używane dla tego powiązania. Jeśli nazwa ustawienia aplikacji zaczyna się od "AzureWebJobs", w tym miejscu możesz określić tylko resztę nazwy. Na przykład jeśli ustawisz `connection` na "WebStorage", środowisko uruchomieniowe Functions szuka ustawienia aplikacji o nazwie "WebStorage". W przypadku pozostawienia `connection` pustego środowisko uruchomieniowe funkcji używa domyślnych parametrów połączenia magazynu w ustawieniu aplikacji o nazwie `AzureWebJobsStorage`.<br><br>Parametry połączenia muszą być kontem magazynu ogólnego przeznaczenia, a nie [kontem magazynu obsługującym tylko obiekty blob](../storage/common/storage-account-overview.md#types-of-storage-accounts).|
 |nd. | **Dostęp** | Wskazuje, czy będą odczytywane i zapisywane. |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
@@ -780,7 +780,7 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-Dostęp do danych obiektów BLOB przy użyciu `context.bindings.<name from function.json>`.
+Dostęp do danych obiektów BLOB przy użyciu `context.bindings.<NAME>`, gdzie `<NAME>` pasuje do wartości zdefiniowanej w *funkcji Function. JSON*.
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
@@ -811,41 +811,44 @@ using SixLabors.ImageSharp.Formats;
 using SixLabors.ImageSharp.PixelFormats;
 using SixLabors.ImageSharp.Processing;
 
-[FunctionName("ResizeImage")]
-public static void Run(
-    [BlobTrigger("sample-images/{name}")] Stream image,
-    [Blob("sample-images-sm/{name}", FileAccess.Write)] Stream imageSmall,
-    [Blob("sample-images-md/{name}", FileAccess.Write)] Stream imageMedium)
+public class ResizeImages
 {
-    IImageFormat format;
-
-    using (Image<Rgba32> input = Image.Load(image, out format))
+    [FunctionName("ResizeImage")]
+    public static void Run([BlobTrigger("sample-images/{name}")] Stream image,
+        [Blob("sample-images-sm/{name}", FileAccess.Write)] Stream imageSmall,
+        [Blob("sample-images-md/{name}", FileAccess.Write)] Stream imageMedium)
     {
-      ResizeImage(input, imageSmall, ImageSize.Small, format);
+        IImageFormat format;
+
+        using (Image<Rgba32> input = Image.Load<Rgba32>(image, out format))
+        {
+            ResizeImage(input, imageSmall, ImageSize.Small, format);
+        }
+
+        image.Position = 0;
+        using (Image<Rgba32> input = Image.Load<Rgba32>(image, out format))
+        {
+            ResizeImage(input, imageMedium, ImageSize.Medium, format);
+        }
     }
 
-    image.Position = 0;
-    using (Image<Rgba32> input = Image.Load(image, out format))
+    public static void ResizeImage(Image<Rgba32> input, Stream output, ImageSize size, IImageFormat format)
     {
-      ResizeImage(input, imageMedium, ImageSize.Medium, format);
+        var dimensions = imageDimensionsTable[size];
+
+        input.Mutate(x => x.Resize(dimensions.Item1, dimensions.Item2));
+        input.Save(output, format);
     }
+
+    public enum ImageSize { ExtraSmall, Small, Medium }
+
+    private static Dictionary<ImageSize, (int, int)> imageDimensionsTable = new Dictionary<ImageSize, (int, int)>() {
+        { ImageSize.ExtraSmall, (320, 200) },
+        { ImageSize.Small,      (640, 400) },
+        { ImageSize.Medium,     (800, 600) }
+    };
+
 }
-
-public static void ResizeImage(Image<Rgba32> input, Stream output, ImageSize size, IImageFormat format)
-{
-    var dimensions = imageDimensionsTable[size];
-
-    input.Mutate(x => x.Resize(dimensions.Item1, dimensions.Item2));
-    input.Save(output, format);
-}
-
-public enum ImageSize { ExtraSmall, Small, Medium }
-
-private static Dictionary<ImageSize, (int, int)> imageDimensionsTable = new Dictionary<ImageSize, (int, int)>() {
-    { ImageSize.ExtraSmall, (320, 200) },
-    { ImageSize.Small,      (640, 400) },
-    { ImageSize.Medium,     (800, 600) }
-};
 ```
 
 # <a name="c-scripttabcsharp-script"></a>[C#Napisy](#tab/csharp-script)
@@ -1130,7 +1133,7 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 |**direction** | nd. | Musi być ustawiony na `out` dla powiązania danych wyjściowych. Wyjątki są zanotowane w sekcji [użycie](#output---usage) . |
 |**Nazwa** | nd. | Nazwa zmiennej, która reprezentuje obiekt BLOB w kodzie funkcji.  Ustaw `$return`, aby odwoływać się do zwracanej wartości funkcji.|
 |**path** |**BlobPath** | Ścieżka do kontenera obiektów BLOB. |
-|**połączenia** |**Połączenie**| Nazwa ustawienia aplikacji, które zawiera parametry połączenia magazynu, które będą używane dla tego powiązania. Jeśli nazwa ustawienia aplikacji zaczyna się od "AzureWebJobs", w tym miejscu możesz określić tylko resztę nazwy. Na przykład jeśli ustawisz `connection` na "WebStorage", środowisko uruchomieniowe funkcji szuka ustawienia aplikacji o nazwie "AzureWebJobsMyStorage". W przypadku pozostawienia `connection` pustego środowisko uruchomieniowe funkcji używa domyślnych parametrów połączenia magazynu w ustawieniu aplikacji o nazwie `AzureWebJobsStorage`.<br><br>Parametry połączenia muszą być kontem magazynu ogólnego przeznaczenia, a nie [kontem magazynu obsługującym tylko obiekty blob](../storage/common/storage-account-overview.md#types-of-storage-accounts).|
+|**połączenia** |**Połączenie**| Nazwa ustawienia aplikacji, które zawiera parametry połączenia magazynu, które będą używane dla tego powiązania. Jeśli nazwa ustawienia aplikacji zaczyna się od "AzureWebJobs", w tym miejscu możesz określić tylko resztę nazwy. Na przykład jeśli ustawisz `connection` na "WebStorage", środowisko uruchomieniowe Functions szuka ustawienia aplikacji o nazwie "WebStorage". W przypadku pozostawienia `connection` pustego środowisko uruchomieniowe funkcji używa domyślnych parametrów połączenia magazynu w ustawieniu aplikacji o nazwie `AzureWebJobsStorage`.<br><br>Parametry połączenia muszą być kontem magazynu ogólnego przeznaczenia, a nie [kontem magazynu obsługującym tylko obiekty blob](../storage/common/storage-account-overview.md#types-of-storage-accounts).|
 |nd. | **Dostęp** | Wskazuje, czy będą odczytywane i zapisywane. |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]

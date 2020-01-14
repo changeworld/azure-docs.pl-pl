@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0158a7df96f4c83763c5b2324ccc2bfcb5a72b5d
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: e03aa99e53f4aa2c646dc425a18d848539d537b0
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73159162"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768337"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hackerone"></a>Samouczek: integracja Azure Active Directory z usługą HackerOne
 
@@ -107,12 +107,9 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji HackerOne,
 
     ![Informacje o domenie i adresach URL logowania jednokrotnego aplikacji HackerOne](common/sp-identifier.png)
 
-    a. W polu tekstowym **Adres URL logowania** wpisz adres URL, używając następującego wzorca: `https://hackerone.com/<company name>/authentication`
+    a. W polu tekstowym **adres URL logowania** wpisz następujące polecenie: `https://hackerone.com/users/saml/auth`
 
-    b. W polu tekstowym **Identyfikator (identyfikator jednostki)** wpisz adres URL: `https://hackerone.com/users/saml/metadata`
-
-    > [!NOTE]
-    > Wartość adresu URL logowania nie jest prawdziwa. Zastąp tę wartość rzeczywistym adresem URL logowania. Aby uzyskać tę wartość, skontaktuj się z [zespołem pomocy technicznej klienta aplikacji HackerOne](mailto:support@hackerone.com). Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
+    b. W polu tekstowym **Identyfikator (identyfikator jednostki)** wprowadź następujące polecenie: `hackerone.com`
 
 5. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **certyfikat (Base64)** z podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 
@@ -150,7 +147,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji HackerOne,
 
     d. Otwórz pobrany **plik certyfikatu** z Azure Portal do Notatnika, skopiuj jego zawartość do schowka, a następnie wklej go do pola tekstowego **certyfikatu x509** .
 
-    d. Kliknij przycisk **Save** (Zapisz).
+    d. Kliknij pozycję **Zapisz**.
 
 5. W oknie dialogowym Authentication Settings (Ustawienia uwierzytelniania) wykonaj następujące czynności:
 
@@ -227,4 +224,4 @@ Po kliknięciu kafelka HackerOne w panelu dostępu powinno nastąpić automatycz
 
 - [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co to jest dostęp warunkowy w Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

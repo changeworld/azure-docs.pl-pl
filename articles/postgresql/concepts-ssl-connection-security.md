@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: 21b4dffa135e1311be8c738c634de22304665695
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 4f7fd3ea1c83e1bf5183aedf4fe894809884414c
+ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74768150"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75903503"
 ---
 # <a name="configure-ssl-connectivity-in-azure-database-for-postgresql---single-server"></a>Konfigurowanie łączności SSL w Azure Database for PostgreSQL — pojedynczy serwer
 Azure Database for PostgreSQL preferuje łączenie aplikacji klienckich z usługą PostgreSQL przy użyciu SSL (SSL). Wymuszanie połączeń SSL między serwerem bazy danych i aplikacjami klienckimi pomaga chronić przed atakami typu man-in-the-Middle przez szyfrowanie strumienia danych między serwerem a aplikacją.
@@ -25,6 +25,9 @@ Analogicznie, parametry połączenia, które są wstępnie zdefiniowane w ustawi
 
 ## <a name="configure-enforcement-of-ssl"></a>Skonfiguruj Wymuszanie protokołu SSL
 Opcjonalnie można wyłączyć wymuszanie łączności SSL. Zaleca się, aby zawsze włączyć ustawienie **Wymuszaj połączenie SSL** dla zwiększonych zabezpieczeń. Microsoft Azure
+
+> [!NOTE]
+> Obecnie wersja protokołu TLS obsługiwana przez Azure Database for PostgreSQL to TLS 1,0, TLS 1,1, TLS 1,2.
 
 ### <a name="using-the-azure-portal"></a>Korzystanie z witryny Azure Portal
 Odwiedź serwer Azure Database for PostgreSQL i kliknij pozycję **zabezpieczenia połączeń**. Użyj przycisku przełącznika, aby włączyć lub wyłączyć ustawienie **Wymuszaj połączenie SSL** . Następnie kliknij przycisk **Zapisz**. 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/02/2019
 ms.author: rkarlin
-ms.openlocfilehash: fe0eb6c2305dd01d8ff3df5be7056cbeae92fff2
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 98c76b2be6a5cc801f9e7b31357cbeb158a966fe
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74762721"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771295"
 ---
 # <a name="useful-resources-for-working-with-azure-sentinel"></a>Przydatne zasoby do pracy z platformą Azure — wskaźnikiem
 
@@ -32,7 +32,7 @@ W tym artykule wymieniono zasoby, które mogą pomóc uzyskać więcej informacj
 
 
 ## <a name="auditing-and-reporting"></a>Inspekcja i raportowanie
-Dzienniki inspekcji platformy Azure są przechowywane w [dziennikach aktywności platformy Azure](../azure-monitor/platform/activity-logs-overview.md).
+Dzienniki inspekcji platformy Azure są przechowywane w [dziennikach aktywności platformy Azure](../azure-monitor/platform/platform-logs-overview.md).
 
 Możliwe jest przeprowadzenie inspekcji następujących obsługiwanych operacji.
 
@@ -40,12 +40,10 @@ Możliwe jest przeprowadzenie inspekcji następujących obsługiwanych operacji.
 |----|----|
 |Utwórz lub zaktualizuj skoroszyt  |Microsoft. Insights/skoroszyty|
 |Usuń skoroszyt    |Microsoft. Insights/skoroszyty|
-|Ustaw przepływ pracy   |Microsoft. Logic/przepływy pracy|
-|Usuń przepływ pracy    |Microsoft. Logic/przepływy pracy|
+|Ustaw przepływ pracy   |Microsoft.Logic/workflows|
+|Usuń przepływ pracy    |Microsoft.Logic/workflows|
 |Utwórz zapisane wyszukiwanie    |Microsoft. OperationalInsights/Workspaces/savedSearches|
 |Usuń zapisane wyszukiwanie    |Microsoft. OperationalInsights/Workspaces/savedSearches|
-|Ustawianie pulpitu nawigacyjnego  |Microsoft. Portal/pulpity nawigacyjne|
-|Usuń pulpit nawigacyjny   |Microsoft. Portal/pulpity nawigacyjne|
 |Aktualizowanie reguł alertów |Microsoft. SecurityInsights/alertRules|
 |Usuń reguły alertów |Microsoft. SecurityInsights/alertRules|
 |Aktualizuj akcje odpowiedzi reguły alertu |Microsoft. SecurityInsights/alertRules|

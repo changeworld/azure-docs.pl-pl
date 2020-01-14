@@ -1,0 +1,86 @@
+- name: Dokumentacja internetowej komunikacji równorzędnej
+  href: index.yml
+- name: Omówienie
+  items:
+    - name: Informacje o internetowej komunikacji równorzędnej
+      href: overview.md
+    - name: Internetowa komunikacja równorzędna a Peering Service
+      href: overview-peering-service.md
+- name: Pojęcia
+  items:
+    - name: Zasady komunikacji równorzędnej
+      href: policy.md
+- name: Przewodniki z instrukcjami
+  items:
+    - name: Wymagania wstępne dotyczące konfigurowania komunikacji równorzędnej z firmą Microsoft
+      href: prerequisites.md
+    - name: Przewodnik po bezpośredniej komunikacji równorzędnej
+      href: walkthrough-direct-all.md
+    - name: Przewodnik po komunikacji równorzędnej z punktem wymiany
+      href: walkthrough-exchange-all.md
+    - name: Przewodnik partnera usługi Peering Service
+      href: walkthrough-peering-service-all.md
+    - name: Kojarzenie równorzędnego numeru ASN z subskrypcją platformy Azure
+      items:
+        - name: Portal
+          href: howto-subscription-association-portal.md
+        - name: Azure PowerShell
+          href: howto-subscription-association-powershell.md
+    - name: Włączanie usługi Peering Service w bezpośredniej komunikacji równorzędnej
+      items:
+        - name: Portal
+          href: howto-peering-service-portal.md
+        - name: Azure PowerShell
+          href: howto-peering-service-powershell.md
+    - name: Tworzenie lub modyfikowanie bezpośredniej komunikacji równorzędnej
+      items:
+        - name: Portal
+          href: howto-direct-portal.md
+        - name: Azure PowerShell
+          href: howto-direct-powershell.md
+    - name: Konwertowanie starszej bezpośredniej komunikacji równorzędnej na zasób platformy Azure
+      items:
+        - name: Portal
+          href: howto-legacy-direct-portal.md
+        - name: Azure PowerShell
+          href: howto-legacy-direct-powershell.md
+    - name: Tworzenie lub modyfikowanie komunikacji równorzędnej z punktem wymiany
+      items:
+        - name: Portal
+          href: howto-exchange-portal.md
+        - name: Azure PowerShell
+          href: howto-exchange-powershell.md
+    - name: Konwertowanie starszej komunikacji równorzędnej z punktem wymiany na zasób platformy Azure
+      items:
+        - name: Portal
+          href: howto-legacy-exchange-portal.md
+        - name: Azure PowerShell
+          href: howto-legacy-exchange-powershell.md
+- name: Dokumentacja
+  items:
+    - name: Interfejs wiersza polecenia platformy Azure
+      href: 'https://docs.microsoft.com/cli/azure/network'
+    - name: Azure PowerShell
+      href: 'https://docs.microsoft.com/powershell/module/az.network'
+    - name: Java
+      href: 'https://docs.microsoft.com/java/api/'
+    - name: Node.js
+      href: 'https://docs.microsoft.com/javascript/azure#azure-sdk'
+    - name: Python
+      href: 'https://azure.microsoft.com/develop/python/'
+    - name: Szablon usługi Resource Manager
+      href: 'https://docs.microsoft.com/azure/templates/microsoft.network/allversions'
+- name: Zasoby
+  items:
+    - name: Rozwijanie umiejętności dzięki środowisku Microsoft Learn
+      href: 'https://docs.microsoft.com/learn/browse/'
+    - name: Harmonogram działania dla platformy Azure
+      href: 'https://azure.microsoft.com/roadmap/?category=networking'
+    - name: Blog na temat sieci
+      href: 'https://azure.microsoft.com/blog/topics/networking'
+    - name: Opinie dotyczące sieci
+      href: 'https://feedback.azure.com/forums/217313-networking?category_id=77469'
+    - name: Często zadawane pytania na temat internetowej komunikacji równorzędnej
+      href: faqs.md
+    - name: Często zadawane pytania na temat usługi Peering Service
+      href: service-faqs.md

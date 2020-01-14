@@ -4,14 +4,14 @@ description: Jak zarządzać i aktualizować pamięć podręczną Azure HPC przy
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 11/18/2019
+ms.date: 1/08/2020
 ms.author: rohogue
-ms.openlocfilehash: 9cd5ad151c977838fea30f52c7d4a93b4663c8ff
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: a166a904b2e63419efd5803fd54be1d1b59836fb
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74166721"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867081"
 ---
 # <a name="manage-your-cache-from-the-azure-portal"></a>Zarządzanie pamięcią podręczną przy użyciu Azure Portal
 
@@ -23,7 +23,7 @@ Aby otworzyć stronę przegląd, wybierz zasób pamięci podręcznej w Azure Por
 
 Przyciski w górnej części strony mogą pomóc w zarządzaniu pamięcią podręczną:
 
-* [**Opróżnij**](#flush-cached-data) — zapisuje wszystkie dane w pamięci podręcznej do celów magazynu
+* [**Opróżnianie**](#flush-cached-data) — zapisuje zmienione dane w celu przechowywania
 * [**Upgrade**](#upgrade-cache-software) — aktualizuje oprogramowanie pamięci podręcznej
 * **Refresh** -ponownie ładuje stronę przeglądu
 * [**Usuń**](#delete-the-cache) — trwale niszczy pamięć podręczną
@@ -63,9 +63,18 @@ Kliknij przycisk **Uaktualnij** , aby rozpocząć aktualizację oprogramowania. 
 
 Przycisk **Usuń** niszczy pamięć podręczną. Po usunięciu pamięci podręcznej wszystkie jej zasoby zostaną zniszczone i nie będą już naliczane opłaty za konto.
 
-Usunięcie pamięci podręcznej nie ma żadnych zmian w magazynie docelowym. Możesz dodać je do przyszłej pamięci podręcznej później lub zlikwidować je osobno.
+W przypadku usunięcia pamięci podręcznej nie ma to żadnego oddziaływania na woluminy magazynu zaplecza używane jako cele magazynu. Możesz dodać je do przyszłej pamięci podręcznej później lub zlikwidować je osobno.
 
-Pamięć podręczna automatycznie opróżnia wszystkie niezapisane dane do miejsc docelowych magazynu w ramach końcowego zamknięcia.
+> [!NOTE]
+> Pamięć podręczna Azure HPC nie zapisuje automatycznie zmienionych danych z pamięci podręcznej w systemach magazynu zaplecza przed usunięciem pamięci podręcznej.
+>
+> Aby upewnić się, że wszystkie dane w pamięci podręcznej zostały zapisaną do magazynu długoterminowego, wykonaj następującą procedurę:
+>
+> 1. [Usuń](hpc-cache-edit-storage.md#remove-a-storage-target) każdy docelowy magazyn z pamięci podręcznej platformy Azure HPC przy użyciu przycisku Usuń na stronie miejsce docelowe magazynu. System automatycznie zapisuje wszystkie zmienione dane z pamięci podręcznej do systemu magazynu zaplecza przed usunięciem obiektu docelowego.
+> 1. Poczekaj na całkowite usunięcie miejsca docelowego magazynu. Proces może potrwać godzinę lub dłużej, jeśli istnieje dużo danych do zapisu z pamięci podręcznej. Gdy to zrobisz, powiadomienie portalu wskazuje, że operacja usunięcia zakończyła się pomyślnie, a miejsce docelowe magazynu znika z listy.
+> 1. Po usunięciu wszystkich obiektów docelowych, których dotyczy ten magazyn, można bezpiecznie usunąć pamięć podręczną.
+>
+> Alternatywnie można użyć opcji [Flush](#flush-cached-data) , aby zapisać dane buforowane, ale istnieje małe ryzyko utraty pracy, jeśli klient zapisuje zmiany w pamięci podręcznej po zakończeniu opróżniania, ale przed zniszczeniem wystąpienia pamięci podręcznej.
 
 ## <a name="cache-metrics-and-monitoring"></a>Metryki pamięci podręcznej i monitorowanie
 

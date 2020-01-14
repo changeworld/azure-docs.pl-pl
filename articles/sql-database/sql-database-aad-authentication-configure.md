@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
-ms.date: 11/06/2019
-ms.openlocfilehash: 76ca8a5d781c22279ccad633cc7c5bc98d645df8
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.date: 01/07/2020
+ms.openlocfilehash: dc2661bbc443201d6a2da4b5efb7ecdc2caad444
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74901360"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75732573"
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql"></a>Konfigurowanie i Zarządzanie uwierzytelnianiem Azure Active Directory przy użyciu programu SQL
 
@@ -178,7 +178,7 @@ Jako najlepsze rozwiązanie dla istniejących administratorów usługi Azure AD 
 
 # <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
 
-Aby uruchomić polecenia cmdlet programu PowerShell, należy zainstalować i uruchomić Azure PowerShell. Aby uzyskać szczegółowe informacje, zobacz artykuł [How to install and configure Azure PowerShell](/powershell/azure/overview) (Instalowanie i konfigurowanie programu Azure PowerShell).
+Aby uruchomić polecenia cmdlet programu PowerShell, należy zainstalować i uruchomić Azure PowerShell. Aby uzyskać szczegółowe informacje, zobacz temat [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/overview).
 
 > [!IMPORTANT]
 > Moduł programu PowerShell Azure Resource Manager (RM) jest nadal obsługiwany przez Azure SQL Database, ale wszystkie przyszłe Programowanie dla modułu AZ. SQL. Moduł AzureRM będzie nadal otrzymywać poprawki błędów do co najmniej grudnia 2020.  Argumenty poleceń polecenia AZ module i w modułach AzureRm są zasadniczo identyczne. Aby uzyskać więcej informacji o zgodności, zobacz [wprowadzenie do nowego Azure PowerShell AZ module](/powershell/azure/new-azureps-module-az).
@@ -236,7 +236,7 @@ Aby uzyskać więcej informacji na temat poleceń interfejsu wiersza polecenia, 
 
 W poniższych dwóch procedurach pokazano, jak zainicjować obsługę administracyjną Azure Active Directory administratorem programu Azure SQL Server w Azure Portal i przy użyciu programu PowerShell.
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Portal Azure
 
 1. W witrynie [Azure Portal](https://portal.azure.com/) w prawym górnym rogu wybierz swoje połączenia, aby wyświetlić listę rozwijaną możliwych usług Active Directory. Wybierz odpowiednią usługę Active Directory jako domyślną usługę Azure AD. W tym kroku powiązana z subskrypcją usługa Active Directory zostaje połączona z serwerem Azure SQL. Dzięki temu mamy pewność, że ta sama subskrypcja jest używana zarówno przez usługę Azure AD, jak i SQL Server. (Serwer Azure SQL może hostować usługę Azure SQL Database lub Azure SQL Data Warehouse).
 
@@ -274,7 +274,7 @@ Aby później usunąć administratora, w górnej części strony **administrator
 
 # <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
 
-Aby uruchomić polecenia cmdlet programu PowerShell, należy zainstalować i uruchomić Azure PowerShell. Aby uzyskać szczegółowe informacje, zobacz artykuł [How to install and configure Azure PowerShell](/powershell/azure/overview) (Instalowanie i konfigurowanie programu Azure PowerShell). Aby zainicjować obsługę administracyjną administratora usługi Azure AD, wykonaj następujące polecenia Azure PowerShell:
+Aby uruchomić polecenia cmdlet programu PowerShell, należy zainstalować i uruchomić Azure PowerShell. Aby uzyskać szczegółowe informacje, zobacz temat [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/overview). Aby zainicjować obsługę administracyjną administratora usługi Azure AD, wykonaj następujące polecenia Azure PowerShell:
 
 - Connect-AzAccount
 - SELECT-AzSubscription
@@ -345,14 +345,17 @@ Aby uzyskać więcej informacji na temat poleceń interfejsu wiersza polecenia, 
 Na wszystkich komputerach klienckich, z których aplikacje lub użytkownicy łączą się z Azure SQL Database lub Azure SQL Data Warehouse przy użyciu tożsamości usługi Azure AD, należy zainstalować następujące oprogramowanie:
 
 - .NET Framework 4,6 lub nowszy z [https://msdn.microsoft.com/library/5a4x27ek.aspx](https://msdn.microsoft.com/library/5a4x27ek.aspx).
-- Azure Active Directory bibliotekę uwierzytelniania dla SQL Server (*ADALSQL. DLL*) jest dostępny w wielu językach (x86 i AMD64) z centrum pobierania w [witrynie Microsoft Active Directory Authentication Library Microsoft SQL Server](https://www.microsoft.com/download/details.aspx?id=48742).
+- Azure Active Directory bibliotekę uwierzytelniania dla SQL Server (*ADAL. DLL*). Poniżej znajdują się linki pobierania umożliwiające zainstalowanie najnowszego sterownika programu SSMS, ODBC i OLE DB zawierającego bibliotekę *ADAL. Biblioteka DLL* .
+    1. [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms)
+    1. [Sterownik ODBC 17 dla SQL Server](https://www.microsoft.com/download/details.aspx?id=56567)
+    1. [OLE DB Driver 18 dla SQL Server](https://www.microsoft.com/download/details.aspx?id=56730)
 
 Wymagania te można spełnić w następujący sposób:
 
-- Instalowanie [SQL Server 2016 Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) lub [SQL Server Data Tools for Visual Studio 2015](https://msdn.microsoft.com/library/mt204009.aspx) spełnia wymagania .NET Framework 4,6.
-- Program SSMS instaluje wersję x86 programu *ADALSQL. Biblioteka DLL*.
-- SSDT instaluje wersję amd64 *ADALSQL. Biblioteka DLL*.
-- Najnowsza wersja programu Visual Studio z programu [Visual Studio](https://www.visualstudio.com/downloads/download-visual-studio-vs) jest zgodna z wymaganiami dotyczącymi .NET Framework 4,6, ale nie instaluje wymaganej wersji amd64 *ADALSQL. Biblioteka DLL*.
+- Zainstalowanie najnowszej wersji [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) lub [narzędzi danych SQL Server](/sql/ssdt/download-sql-server-data-tools-ssdt) spełnia wymagania .NET Framework 4,6.
+    - Program SSMS instaluje wersję x86 *biblioteki ADAL. Biblioteka DLL*.
+    - SSDT instaluje wersję amd64 *biblioteki ADAL. Biblioteka DLL*.
+    - Najnowsza wersja programu Visual Studio z programu [Visual Studio](https://www.visualstudio.com/downloads/download-visual-studio-vs) jest zgodna z wymaganiami dotyczącymi .NET Framework 4,6, ale nie instaluje wymaganej wersji amd64 *biblioteki ADAL. Biblioteka DLL*.
 
 ## <a name="create-contained-database-users-in-your-database-mapped-to-azure-ad-identities"></a>Utwórz użytkowników zawartej bazy danych w bazie danych zamapowanej na tożsamości usługi Azure AD
 
@@ -513,9 +516,13 @@ Poniższe instrukcje łączą się przy użyciu wersji 13,1 narzędzia sqlcmd, k
 > `sqlcmd` za pomocą polecenia `-G` nie działa z tożsamościami systemowymi i wymaga logowania do nazwy głównej użytkownika.
 
 ```cmd
-sqlcmd -S Target_DB_or_DW.testsrv.database.windows.net  -G  
+sqlcmd -S Target_DB_or_DW.testsrv.database.windows.net -G  
 sqlcmd -S Target_DB_or_DW.testsrv.database.windows.net -U bob@contoso.com -P MyAADPassword -G -l 30
 ```
+
+## <a name="troubleshooting-azure-ad-authentication"></a>Rozwiązywanie problemów z uwierzytelnianiem w usłudze Azure AD
+
+Wskazówki dotyczące rozwiązywania problemów z uwierzytelnianiem za pomocą usługi Azure AD można znaleźć w następującym blogu: <https://techcommunity.microsoft.com/t5/azure-sql-database/troubleshooting-problems-related-to-azure-ad-authentication-with/ba-p/1062991>
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/18/2019
 ms.author: v-miegge
-ms.openlocfilehash: 50c0a670eb492aef01c3499bc2c8605917f4c7b8
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: 176b0634fe2c7ee2f47162e439c4ea16bde77a8a
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965482"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772622"
 ---
 # <a name="troubleshoot-azure-virtual-machine-performance-on-linux-or-windows"></a>Rozwiązywanie problemów z wydajnością maszyny wirtualnej platformy Azure w systemie Linux lub Windows
 
@@ -30,7 +30,7 @@ Ten artykuł przeprowadzi Cię przez proces monitorowania w celu zdiagnozowania 
 
 ### <a name="azure-iaas-virtual-machine-monitoring"></a>Monitorowanie maszyn wirtualnych IAAS platformy Azure
 
-Aby monitorować maszynę wirtualną gościa, należy użyć monitorowania maszyn wirtualnych platformy Azure, które będzie powiadamiać o określonych warunkach zasobów wysokiego poziomu. Aby sprawdzić, czy włączono diagnostykę maszyny wirtualnej, zobacz [Omówienie dzienników zasobów platformy Azure](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-overview#collecting-resource-logs). Jeśli zobaczysz następujące polecenie, najprawdopodobniej nie masz włączonej diagnostyki:
+Aby monitorować maszynę wirtualną gościa, należy użyć monitorowania maszyn wirtualnych platformy Azure, które będzie powiadamiać o określonych warunkach zasobów wysokiego poziomu. Aby sprawdzić, czy włączono diagnostykę maszyny wirtualnej, zobacz [Omówienie dzienników zasobów platformy Azure](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-resource-logs). Jeśli zobaczysz następujące polecenie, najprawdopodobniej nie masz włączonej diagnostyki:
 
 ![Monitorowanie nie jest włączone](media/troubleshoot-performance-virtual-machine-linux-windows/1-virtual-machines-monitoring-not-enabled.png)
  
@@ -61,7 +61,7 @@ Magazyn jest bardzo ważną warstwą, gdy zamierzamy analizować wydajność ope
    1. Kliknij pozycję przegląd dla konta magazynu znalezionego w powyższym kroku.
    2. Zostaną wyświetlone metryki domyślne. 
 
-    ![Metryki domyślne](media/troubleshoot-performance-virtual-machine-linux-windows/5-default-metrics.png)
+    ![Domyślne metryki](media/troubleshoot-performance-virtual-machine-linux-windows/5-default-metrics.png)
 
 3. Kliknij dowolną z metryk, co spowoduje wyświetlenie innego bloku zawierającego więcej opcji konfigurowania i dodawania metryk.
 
@@ -137,9 +137,9 @@ Użycie pamięci pokazuje, ile pamięci jest zużywanej z maszyną wirtualną. Z
 
 Powiększanie i stałe/stałe — duże użycie pamięci może nie być przyczyną złej wydajności, ponieważ niektóre aplikacje, takie jak aparaty relacyjnych baz danych, przydzielają duże ilości pamięci, a wykorzystanie może nie być znaczące. Jeśli jednak istnieje wiele aplikacji zasobożernych pamięci, może zostać wyświetlona niska wydajność z rywalizacji o pamięć powodująca przycinanie i stronicowanie na dysku. Ta niska wydajność jest często zauważalną przyczyną wpływu na wydajność aplikacji.
 
-Stałe zwiększenie zużycia — możliwą aplikację "rozgrzewanie", to zużycie jest wspólne między aparatami bazy danych. Jednak może to również być znak przecieku pamięci w aplikacji. Zidentyfikuj aplikację i sprawdź, czy zachowanie jest oczekiwane.
+Stałe zwiększenie zużycia — możliwą aplikację "rozgrzewanie", to zużycie jest wspólne między aparatami bazy danych. Jednak może to również być oznaką przecieku pamięci w aplikacji. Zidentyfikuj aplikację i sprawdź, czy zachowanie jest oczekiwane.
 
-Użycie strony lub pliku wymiany — Sprawdź, czy używasz pliku stronicowania systemu Windows (znajdującego się na komputerze D: \) lub plik wymiany Linux (znajdujący się w `/dev/sdb`) są intensywnie używane. Jeśli na tych woluminach nie ma niczego z wyjątkiem tych plików, sprawdź, czy na tych dyskach są dostępne duże operacje odczytu i zapisu. Ten problem jest wskaźnikiem niewielkich warunków pamięci.
+Użycie pliku stronicowania lub strony wymiany — Sprawdź, czy używasz systemu Windows (znajdującego się na komputerze D:\) lub plik wymiany w systemie Linux (znajdujący się w `/dev/sdb`), czy jest intensywnie używany. Jeśli na tych woluminach nie ma niczego z wyjątkiem tych plików, sprawdź, czy na tych dyskach są dostępne duże operacje odczytu i zapisu. Ten problem jest wskaźnikiem niewielkich warunków pamięci.
 
 ### <a name="high-memory-utilization-remediation"></a>Duże korygowanie wykorzystania pamięci
 
@@ -186,8 +186,8 @@ Jeśli pojawi się lista dostępności, może wystąpić problem z platformą, s
 
 * ClientTimeOutError
 * ServerTimeOutError
-* Niską averagee2elatency
-* Wartość averageserverlatency
+* AverageE2ELatency
+* AverageServerLatency
 * TotalRequests
 
 Wartości w metrykach * TimeOutError wskazują, że operacja we/wy trwała zbyt długo i przekroczyła limit czasu. Wykonanie kolejnych kroków pomoże w zidentyfikowaniu potencjalnych przyczyn.
@@ -212,11 +212,11 @@ Dzięki nowym oferowanym dyskom w ramach magazynu w warstwie Standardowa przepus
 
 #### <a name="references"></a>Informacje
 
-* [Elementy docelowe skalowalności dla dysków maszyny wirtualnej](https://azure.microsoft.com/documentation/articles/storage-scalability-targets/#scalability-targets-for-virtual-machine-disks)
+* [Cele skalowalności i wydajności dla kont usługi BLOB Storage na stronie Premium](../../storage/blobs/scalability-targets-premium-page-blobs.md)
 
 Przepustowość konta magazynu jest mierzona przez metryki konta magazynu: TotalIngress i TotalEgress. Istnieją różne progi przepustowości w zależności od typu nadmiarowości i regionów.
 
-* [Elementy docelowe skalowalności dla obiektów blob, kolejek, tabel i plików](https://azure.microsoft.com/documentation/articles/storage-scalability-targets/#scalability-targets-for-blobs-queues-tables-and-files)
+* [Cele skalowalności i wydajności dla kont magazynu w warstwie Standardowa](../../storage/common/scalability-targets-standard-account.md)
 
 Sprawdź TotalIngress i TotalEgress względem limitów ruchu przychodzącego i wychodzącego dla opcji Typ i region nadmiarowości konta magazynu.
 

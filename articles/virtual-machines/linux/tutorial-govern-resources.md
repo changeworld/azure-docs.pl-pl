@@ -1,6 +1,6 @@
 ---
-title: Samouczek — zarządzanie maszynami wirtualnymi platformy Azure przy użyciu interfejsu wiersza polecenia platformy Azure
-description: Z tego samouczka dowiesz się, jak za pomocą interfejsu wiersza polecenia platformy Azure zarządzać maszynami wirtualnymi platformy Azure, stosując kontrolę dostępu opartą na rolach, zasady, blokady i tagi
+title: Samouczek — zarządzanie maszynami wirtualnymi za pomocą interfejsu wiersza polecenia
+description: W ramach tego samouczka nauczysz się używać interfejsu wiersza polecenia platformy Azure do zarządzania maszynami wirtualnymi platformy Azure przez zastosowanie RBAC, zasad, blokad i tagów.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: tfitzmac
@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.date: 09/30/2019
 ms.author: tomfitz
 ms.custom: mvc
-ms.openlocfilehash: e9475f4226a65ad06d45170e0ab802c6cdb79d8f
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 97003699f8dbaa028ff7d4739a4f0576a8790716
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034539"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749926"
 ---
-# <a name="tutorial-learn-about-linux-virtual-machine-governance-with-azure-cli"></a>Samouczek: informacje o zarządzaniu maszynami wirtualnymi za pomocą interfejsu wiersza polecenia platformy Azure
+# <a name="tutorial-learn-about-linux-virtual-machine-management-with-azure-cli"></a>Samouczek: informacje o zarządzaniu maszynami wirtualnymi z systemem Linux przy użyciu interfejsu wiersza polecenia platformy Azure
 
 [!INCLUDE [Resource Manager governance introduction](../../../includes/resource-manager-governance-intro.md)]
 

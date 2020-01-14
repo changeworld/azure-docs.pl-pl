@@ -8,12 +8,12 @@ ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: d9890a393d9b2955c1eb0c9894d454a774af68ef
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 3cba7781ac80ae567b2bfd54c4131429ed94b90f
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74701844"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772367"
 ---
 # <a name="tutorial-create-and-deploy-custom-iot-edge-modules"></a>Samouczek: Tworzenie i wdrażanie niestandardowych modułów IoT Edge
 
@@ -22,7 +22,7 @@ ms.locfileid: "74701844"
 
 W tym artykule tworzymy trzy moduły IoT Edge, które odbierają komunikaty z urządzeń typu liść, uruchamiają dane za pośrednictwem modelu uczenia maszynowego, a następnie przesyłają szczegółowe informacje do IoT Hub.
 
-IoT Edge Hub ułatwia komunikację modułu z modułem. Używanie Centrum IoT Edge jako brokera komunikatów zachowuje moduły niezależne od siebie. Moduły muszą określać dane wejściowe, na których są akceptowane wiadomości i dane wyjściowe, do których są zapisywane wiadomości.
+IoT Edge Hub ułatwia komunikację modułu z modułem. Używanie Centrum IoT Edge jako brokera komunikatów zachowuje moduły niezależne od siebie. Moduły muszą tylko określić danych wejściowych, które akceptują wiadomości i danych wyjściowych, do których one zapisywania komunikatów.
 
 Chcemy, aby IoT Edge urządzenie miało cztery rzeczy dla nas:
 
@@ -39,13 +39,13 @@ Aby wykonać te zadania, używamy trzech modułów niestandardowych:
 
 * **Moduł routera:** Moduł routera odbiera komunikaty z podrzędnych urządzeń liścia, a następnie formatuje i wysyła komunikaty do klasyfikatora. Następnie moduł otrzymuje komunikaty z klasyfikatora i przekazuje komunikat do modułu Avro Writer. Na koniec moduł wysyła tylko prognozę pozostałego czasu eksploatacji do IoT Hub.
 
-  * Danych wejściowych
+  * Dane wejściowe:
     * **deviceInput**: odbiera komunikaty z urządzeń liścia
     * **rulInput:** odbiera komunikaty z "amlOutput"
 
-  * Wydajności
+  * Dane wyjściowe:
     * **klasyfikowanie:** wysyła komunikaty do "amlInput"
-    * **writeAvro:** wysyła komunikaty "avroModuleInput"
+    * **writeAvro:** wysyła komunikaty do "avroModuleInput"
     * **toIotHub:** wysyła komunikaty do $Upstream, które przekazują komunikaty do podłączonego IoT Hub
 
 Na poniższym diagramie przedstawiono moduły, dane wejściowe, wyjścia i trasy Centrum IoT Edge dla pełnego rozwiązania:
@@ -639,7 +639,7 @@ W przypadku routera i klasyfikatora oczekuje się otrzymywania zwykłych komunik
 
 13. Wybierz opcję **trasa testowa**. Jeśli test zakończy się pomyślnie, zobaczysz komunikat pasujący do zapytania.
 
-14. Kliknij przycisk **Save** (Zapisz).
+14. Kliknij pozycję **Zapisz**.
 
 #### <a name="update-turbofandevicetostorage-route"></a>Aktualizowanie trasy turbofanDeviceToStorage
 
@@ -828,7 +828,7 @@ W tym artykule utworzyliśmy rozwiązanie IoT Edge w Visual Studio Code z trzema
 Więcej informacji można znaleźć na następujących stronach:
 
 * [Learn how to deploy modules and establish routes in IoT Edge (Dowiedz się, jak wdrażać moduły i ustanawiać trasy w usłudze IoT Edge)](module-composition.md).
-* [Składnia zapytania dotyczącego routingu komunikatów IoT Hub](../iot-hub/iot-hub-devguide-routing-query-syntax.md)
+* [Składnia zapytania dotyczącego routingu komunikatów usługi IoT Hub](../iot-hub/iot-hub-devguide-routing-query-syntax.md)
 * [IoT Hub Routing komunikatów: teraz z routingiem w treści wiadomości](https://azure.microsoft.com/blog/iot-hub-message-routing-now-with-routing-on-message-body/)
 * [Przekazywanie plików za pomocą usługi IoT Hub](../iot-hub/iot-hub-devguide-file-upload.md)
 * [Przekaż pliki z urządzenia do chmury za pomocą IoT Hub](../iot-hub/iot-hub-python-python-file-upload.md)

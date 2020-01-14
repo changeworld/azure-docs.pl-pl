@@ -11,12 +11,12 @@ author: peterclu
 ms.reviewer: peterlu
 ms.date: 08/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: a30753a31af2b70e7f35ae3ee4ccae0868e6ee08
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 136ee197271fc659497c169e27a6399c3940c19e
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75539088"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834863"
 ---
 # <a name="train-pytorch-deep-learning-models-at-scale-with-azure-machine-learning"></a>Uczenie modeli Pytorch głębokie uczenie na dużą skalę dzięki Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -148,6 +148,8 @@ estimator = PyTorch(source_directory=project_folder,
                     pip_packages=['pillow==5.4.1'])
 ```
 
+Aby uzyskać więcej informacji na temat dostosowywania środowiska języka Python, zobacz [Tworzenie środowisk i zarządzanie nimi na potrzeby szkolenia i wdrażania](how-to-use-environments.md).
+
 ## <a name="submit-a-run"></a>Prześlij przebieg
 
 [Obiekt Run](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py) udostępnia interfejs do historii uruchamiania, gdy zadanie jest uruchomione i po jego zakończeniu.
@@ -234,3 +236,4 @@ W tym artykule opisano przeszkolone i zarejestrowano uczenie głębokie, neurono
 * [Dostosowywanie hiperparametrów](how-to-tune-hyperparameters.md)
 * [Wdrażanie uczonego modelu](how-to-deploy-and-where.md)
 * [Architektura referencyjna na potrzeby rozproszonego szkolenia uczenia głębokiego na platformie Azure](/azure/architecture/reference-architectures/ai/training-deep-learning)
+

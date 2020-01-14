@@ -1,21 +1,21 @@
 ---
-title: Dzienniki zasobów dla grup kontenerów
+title: Zbieranie & analizowanie dzienników zasobów
 description: Dowiedz się, jak wysyłać dzienniki zasobów i dane zdarzeń z grup kontenerów w Azure Container Instances do dzienników Azure Monitor
 ms.topic: article
-ms.date: 09/02/2019
+ms.date: 01/08/2020
 ms.author: danlep
-ms.openlocfilehash: 02f950917f43b514f83bd7e10078c79634c6c751
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 304e98fff386911b878877d2f03d489d0eef5dd7
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533736"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770547"
 ---
 # <a name="container-group-and-instance-logging-with-azure-monitor-logs"></a>Rejestrowanie grup kontenerów i wystąpień przy użyciu dzienników Azure Monitor
 
-Obszary robocze Log Analytics zapewniają scentralizowaną lokalizację do przechowywania i wykonywania zapytań dotyczących danych dzienników tylko z zasobów platformy Azure, ale także zasobów i zasobów lokalnych w innych chmurach. Azure Container Instances zawiera wbudowaną obsługę wysyłania dzienników i danych zdarzeń do dzienników Azure Monitor.
+Obszary robocze Log Analytics zapewniają scentralizowaną lokalizację do przechowywania i wykonywania zapytań dotyczących danych dzienników nie tylko z zasobów platformy Azure, ale także zasobów i zasobów lokalnych w innych chmurach. Azure Container Instances zawiera wbudowaną obsługę wysyłania dzienników i danych zdarzeń do dzienników Azure Monitor.
 
-Aby wysłać dziennik grupy kontenerów i dane zdarzeń do dzienników Azure Monitor, należy określić identyfikator obszaru roboczego Log Analytics i klucz obszaru roboczego podczas tworzenia grupy kontenerów. W poniższych sekcjach opisano tworzenie grupy kontenerów z włączonym rejestrowaniem oraz dzienników wykonujących zapytania.
+Aby wysłać dziennik grupy kontenerów i dane zdarzeń do dzienników Azure Monitor, określ istniejący identyfikator Log Analytics obszaru roboczego i klucz obszaru roboczego podczas tworzenia grupy kontenerów. W poniższych sekcjach opisano sposób tworzenia grupy kontenerów z włączoną obsługą rejestrowania oraz wykonywania zapytań dotyczących dzienników.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -46,7 +46,7 @@ Aby uzyskać identyfikator obszaru roboczego analizy dzienników i klucz podstaw
 
 Teraz, gdy masz identyfikator obszaru roboczego analizy dzienników i klucz podstawowy, możesz utworzyć grupę kontenerów z włączonym rejestrowaniem.
 
-W poniższych przykładach pokazano dwa sposoby tworzenia grupy kontenerów [z pojedynczym][fluentd] postawionym kontenerem: interfejs wiersza polecenia platformy Azure i interfejs wiersza polecenia platformy Azure z szablonem YAML. Kontener Fluentd tworzy kilka wierszy danych wyjściowych w konfiguracji domyślnej. Ponieważ te dane wyjściowe są wysyłane do obszaru roboczego usługi Log Analytics, są przydatne do przedstawiania wyświetlania i wykonywania zapytań przez dzienniki.
+W poniższych przykładach pokazano dwa sposoby tworzenia grupy kontenerów składającej się [z pojedynczego utworzonego][fluentd] kontenera: interfejsu wiersza polecenia platformy Azure i interfejsu wiersza polecenia platformy Azure z szablonem YAML. Pomyślny kontener wytwarza kilka wierszy danych wyjściowych w konfiguracji domyślnej. Ponieważ te dane wyjściowe są wysyłane do obszaru roboczego usługi Log Analytics, są przydatne do przedstawiania wyświetlania i wykonywania zapytań przez dzienniki.
 
 ### <a name="deploy-with-azure-cli"></a>Wdrażanie przy użyciu interfejsu wiersza polecenia platformy Azure
 

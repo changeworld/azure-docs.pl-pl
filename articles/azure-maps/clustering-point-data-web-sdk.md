@@ -1,6 +1,6 @@
 ---
-title: Dane punktu klastrowania w Azure Maps | Microsoft Docs
-description: Jak Klastrować dane punktu w zestawie SDK sieci Web
+title: Dane punktu klastrowania na mapie | Mapy Microsoft Azure
+description: W tym artykule dowiesz się, jak wskazać dane punktu klastra i renderować je na mapie za pomocą zestawu Microsoft Azure Maps Web SDK.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 07/29/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: codepen
-ms.openlocfilehash: 56d9a9a629e64430c97cf392ee4381e1ad7ca906
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 846abb61511ae1d5aedf77059ed2f1e9f4e5dbfb
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433030"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911736"
 ---
 # <a name="clustering-point-data"></a>Dane punktu klastrowania
 

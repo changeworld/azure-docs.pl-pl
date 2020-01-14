@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/05/2019
 ms.author: allensu
-ms.openlocfilehash: 4f6a0a2631c3f7458548a2ff435c3e565e744f41
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: c4f06afb63279f2b493c8938da2e9954b2c7e6c3
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75660220"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894485"
 ---
 # <a name="what-is-azure-load-balancer"></a>Co to jest usługa Azure Load Balancer?
 
@@ -93,7 +93,7 @@ Na poniższej ilustracji przedstawiono punkt końcowy ze zrównoważonym obcią�
 
 *Ilustracja: Równoważenie ruchu internetowego przy użyciu Load Balancer publicznego*
 
-Klienci internetowi wysyłają żądania strony sieci Web na publiczny adres IP aplikacji sieci Web na porcie TCP 80. Azure Load Balancer dystrybuuje żądania między trzema maszynami wirtualnymi w zestawie o zrównoważonym obciążeniu. Aby uzyskać więcej informacji na temat algorytmów Load Balancer, zobacz temat [Load Balancer koncepcje](load-balancer-overview.md##load-balancer-concepts).
+Klienci internetowi wysyłają żądania strony sieci Web na publiczny adres IP aplikacji sieci Web na porcie TCP 80. Azure Load Balancer dystrybuuje żądania między trzema maszynami wirtualnymi w zestawie o zrównoważonym obciążeniu. Aby uzyskać więcej informacji na temat algorytmów Load Balancer, zobacz temat [Load Balancer koncepcje](load-balancer-overview.md#load-balancer-concepts).
 
 Azure Load Balancer domyślnie dystrybuuje ruch sieciowy między wieloma wystąpieniami maszyn wirtualnych. Można również skonfigurować koligację sesji. Aby uzyskać więcej informacji, zobacz [Konfigurowanie trybu dystrybucji dla Azure Load Balancer](load-balancer-distribution-mode.md).
 

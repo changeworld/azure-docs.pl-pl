@@ -229,6 +229,8 @@
           href: certificate-rotation.md
         - name: Tworzenie klastra prywatnego
           href: private-clusters.md
+        - name: Strategia BYOK dla dysków
+          href: azure-disk-customer-managed-keys.md
     - name: Monitorowanie i rejestrowanie
       items:
         - name: Usługa Azure Monitor dla kontenerów

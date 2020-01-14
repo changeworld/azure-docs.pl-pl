@@ -8,12 +8,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 04/25/2019
 ms.author: pabutler
-ms.openlocfilehash: 9bc3c375c5111c144b6b137ca547875225aba58f
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 283274986c753fc8ad05b9b7b0dd87aea956bcce
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824463"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75762896"
 ---
 # <a name="virtual-machine-marketplace-tab"></a>Karta Marketplace maszyny wirtualnej
 
@@ -30,14 +30,14 @@ W poniższej tabeli opisano przeznaczenie i zawartość tych pól. Wymagane pola
 |  **Pole**                |     **Opis**                                                          |
 |  ---------                |     ---------------                                                          |
 | **\* tytułu**                 | Tytuł oferty, często długi, formalna nazwa. Ten tytuł zostanie wyświetlony w widocznym miejscu w portalu Marketplace.  Maksymalna długość 50 znaków. |
-| **\* podsumowania**               | Krótki cel lub funkcja rozwiązania.  Maksymalna długość 100 znaków. |
+| **Podsumowanie\***               | Krótki cel lub funkcja rozwiązania.  Maksymalna długość 100 znaków. |
 | **Długi\* podsumowujący**          | Cel lub funkcja rozwiązania.  Maksymalna długość 256 znaków. |
 | **\* opisu**           | Opis rozwiązania.  Maksymalna długość 3000 znaków, obsługuje proste formatowanie HTML. |
 | **\* kanału odsprzedawcy dostawcy Microsoft CSP** | Niedostępność kanału partnera dostawcy rozwiązań w chmurze (CSP) jest teraz dostępna.  Zobacz [dostawcy rozwiązań w chmurze](../../cloud-solution-providers.md) , aby uzyskać więcej informacji na temat marketingu oferty przez kanały partnerskie programu Microsoft CSP. |
-| **\* identyfikatora marketingu**  | Unikatowy adres URL do skojarzenia z ofertą zwykle zawiera nazwę organizacji i rozwiązania, maksymalną długość 50 znaków.  Na przykład: <br/> `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleApp`  |
+| **\* identyfikatora marketingu**  | Unikatowy adres URL do skojarzenia z ofertą zwykle zawiera nazwę organizacji i rozwiązania, maksymalną długość 50 znaków.  Przykład: <br/> `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleApp`  |
 | **Zapodgląd identyfikatorów subskrypcji\*** | Dodaj jeden do 100 identyfikatorów subskrypcji dla recenzentów. Te białe subskrypcje będą miały dostęp do oferty po jej opublikowaniu. |
 | **Przydatne linki**          | Dodaj adresy URL do dokumentów, informacji o wersji, często zadawanych pytań i tak dalej. |
-| **Sugerowane kategorie (maksymalnie 5)\*** | Można z nich najlepiej skojarzyć wiele wybranych kategorii branżowych i technicznych.  Maksymalnie pięć dozwolonych.  |
+| **Sugerowane kategorie\*** | Wybierz maksymalnie dwie kategorie (2), w tym podstawową i pomocniczą kategorię (opcjonalnie). Wybierz do dwóch (2) podkategorii dla każdej kategorii podstawowej i/lub pomocniczej. Jeśli nie wybrano żadnej podkategorii, oferta nadal będzie wykrywalna tylko w wybranej kategorii. |
 |  |  |
 
 

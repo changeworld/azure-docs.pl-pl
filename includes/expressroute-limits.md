@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 07/25/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 45d34297bf37a6e46bc57e95ff49def49051e32e
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 1fc63dc53d61a8b2e26f97cc09a359b3f2c7665c
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "67622114"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75901787"
 ---
-| Resource | Domyślny/maksymalny limit |
+| Zasób | Domyślny/maksymalny limit |
 | --- | --- |
 | Obwody usługi ExpressRoute na subskrypcję |10 |
 | Obwody usługi ExpressRoute na region na subskrypcję z Azure Resource Manager |10 |
@@ -43,3 +43,6 @@ ms.locfileid: "67622114"
 | 100 GB/s * |10 |100 |
 
 **100 GB/s ExpressRoute tylko bezpośrednie*
+
+> [!NOTE]
+> Liczba połączeń Global Reach jest ograniczona względem limitu połączeń sieci wirtualnej na obwód ExpressRoute. Na przykład obwód w warstwie Premium 10 GB/s zezwoli na 5 Global Reach połączeń i 95 połączeń z bramami usługi ExpressRoute lub 95 Global Reach i 5 połączeń z bramami ExpressRoute lub dowolną inną kombinację do limitu 100 połączeń dla obwodu.

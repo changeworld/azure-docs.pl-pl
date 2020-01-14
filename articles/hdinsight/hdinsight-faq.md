@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/20/2019
-ms.openlocfilehash: f688f0ddfb62e988ddebada1f612aa842afa5181
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: d9daefaec33c435ae9f8eceec370c83de4535f8b
+ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75644600"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75830381"
 ---
 # <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight: często zadawane pytania
 
@@ -84,23 +84,9 @@ Tak. Aby zainstalować dodatkowe składniki lub dostosować konfigurację klastr
 
 - Skrypty podczas tworzenia lub po nim. Skrypty są wywoływane za pośrednictwem [akcji skryptu](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux), która jest opcją konfiguracji, której można użyć z Azure Portal, poleceń cmdlet programu Windows PowerShell usługi HDInsight lub zestawu .NET SDK usługi HDInsight. Tej opcji konfiguracji można użyć z Azure Portal, poleceń cmdlet programu Windows PowerShell usługi HDInsight lub zestawu .NET SDK usługi HDInsight.
 
-- `sudo` lub innych metod po zainicjowaniu obsługi administracyjnej klastra.
-  
 - [Platforma aplikacji HDInsight](https://azure.microsoft.com/services/hdinsight/partner-ecosystem/) do instalowania aplikacji ekosystemu.
 
-Jednak pomoc techniczna firmy Microsoft zespoły mogą oferować pomoc techniczną tylko w następujących sytuacjach:
-
-- Problemy lub błędy występujące podczas ładowania skryptu. Wszelkie błędy występujące podczas wykonywania skryptów niestandardowych wykraczają poza zakres biletu pomocy technicznej.
-
-- Dodatkowe aplikacje, które są częścią procesu tworzenia klastra. 
-
 Aby uzyskać listę obsługiwanych składników, zobacz [co to są składniki Apache Hadoop i wersje dostępne w usłudze HDInsight?](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#apache-hadoop-components-available-with-different-hdinsight-versions)
-
-Obsługa poszczególnych składników może być również zależna od typu klastra. Na przykład platforma Spark nie jest obsługiwana w klastrze Kafka i na odwrót.
-
-W przypadku aplikacji i usług poza procesem tworzenia klastra skontaktuj się z dostawcą lub dostawcą usług, aby uzyskać pomoc techniczną. Możesz również użyć wielu witryn pomocy technicznej społeczności. Przykłady to [forum MSDN dotyczące usługi HDInsight](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight) i [Stack Overflow](https://stackoverflow.com/). Projekty Apache zawierają również witryny projektu w [witrynie Apache](https://apache.org/). Przykładem jest usługa [Hadoop](https://hadoop.apache.org/). 
-
-Aby uzyskać więcej informacji na temat pomocy technicznej platformy Azure, zobacz [często zadawane pytania dotyczące pomocy technicznej platformy Azure](https://azure.microsoft.com/support/faq/).
 
 ### <a name="can-i-upgrade-the-individual-components-that-are-pre-installed-on-the-cluster"></a>Czy mogę uaktualnić poszczególne składniki, które są wstępnie zainstalowane w klastrze?
 

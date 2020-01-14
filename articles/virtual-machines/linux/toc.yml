@@ -41,11 +41,11 @@
       href: tutorial-monitor.md
     - name: 13 — Zarządzanie zabezpieczeniami maszyn wirtualnych
       href: tutorial-azure-security.md
-    - name: 14 — Wdrażanie usługi Jenkins
+    - name: 14a — Kompilowanie za pomocą usługi Jenkins
       href: tutorial-jenkins-github-docker-cicd.md
-    - name: 15a — Wdrażanie za pomocą usługi Azure Pipelines
+    - name: 14b — Wdrażanie za pomocą usługi Azure Pipelines (klasycznie)
       href: tutorial-build-deploy-jenkins.md
-    - name: 15b — Ciągła integracja/ciągłe wdrażanie za pomocą usługi Azure Pipelines
+    - name: 15 — Ciągła integracja/ciągłe wdrażanie za pomocą usługi Azure Pipelines (YAML)
       href: tutorial-build-deploy-azure-pipelines.md
     - name: 16a — Tworzenie stosu LAMP
       href: tutorial-lamp-stack.md

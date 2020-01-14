@@ -8,14 +8,14 @@ ms.topic: overview
 ms.date: 09/05/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: d4fae87d999bd0f6b0b388613098a17c181dae0c
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 78440b8150a0992bed2e2a3e597fdac8e7a1c7b0
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70392142"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749728"
 ---
-# <a name="latency-in-blob-storage"></a>Opóźnienie w usłudze BLOB Storage
+# <a name="latency-in-blob-storage"></a>Opóźnienia w magazynie obiektów blob
 
 Opóźnienie, czasami przywoływany jako czas odpowiedzi, to ilość czasu, jaką aplikacja musi oczekiwać na ukończenie żądania. Opóźnienie może bezpośrednio wpływać na wydajność aplikacji. Małe opóźnienia często są ważne w przypadku scenariuszy z ludźmi w pętli, takich jak przeprowadzenie transakcji karty kredytowej lub załadowanie stron sieci Web. Systemy, które muszą przetwarzać zdarzenia przychodzące przy wysokich stawkach, takie jak rejestrowanie danych telemetrycznych lub zdarzenia IoT, wymagają również małych opóźnień. W tym artykule opisano sposób zrozumienia i mierzenia opóźnienia operacji na blokowych obiektach Blob oraz sposobu projektowania aplikacji pod kątem małych opóźnień.
 
@@ -39,7 +39,7 @@ Usługa Azure Storage udostępnia dwie metryki opóźnienia dla blokowych obiekt
 
 - **Opóźnienie serwera** mierzy interwał od momentu, gdy usługa Azure Storage odbierze ostatni pakiet żądania do momentu zwrócenia pierwszego pakietu odpowiedzi z usługi Azure Storage.
 
-Na poniższej ilustracji przedstawiono **średnie pomyślne opóźnienie E2E** i **Średni czas opóźnienia serwera** dla przykładowego obciążenia wywołującego `Get Blob` operację:
+Na poniższej ilustracji przedstawiono **średnie pomyślne opóźnienie E2E** i **Średni czas opóźnienia serwera** dla przykładowego obciążenia wywołującego operację `Get Blob`:
 
 ![Zrzut ekranu przedstawiający metryki opóźnienia dla operacji pobierania obiektu BLOB](media/storage-blobs-latency/latency-metrics-get-blob.png)
 
@@ -67,5 +67,5 @@ Aby ocenić opóźnienia, najpierw Ustanów metryki bazowe dla danego scenariusz
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Cele dotyczące skalowalności i wydajności usługi Azure Storage dla kont magazynu](../common/storage-scalability-targets.md)
-- [Lista kontrolna wydajności i skalowalności usługi Azure Storage](../common/storage-performance-checklist.md)
+- [Cele skalowalności i wydajności dla usługi BLOB Storage](scalability-targets.md)
+- [Lista kontrolna wydajności i skalowalności usługi BLOB Storage](storage-performance-checklist.md)

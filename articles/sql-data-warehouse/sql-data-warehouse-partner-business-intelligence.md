@@ -11,12 +11,12 @@ ms.date: 03/27/2019
 ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 882067f25030c6594526914fb8d111639b205949
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 32e7251c7c47e7ccc03e313b939c917557a31417
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685630"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772214"
 ---
 # <a name="sql-data-warehouse-business-intelligence-partners"></a>SQL Data Warehouse partnerów analizy biznesowej
 Aby utworzyć kompleksowe rozwiązanie magazynu danych, wybierz jedną z szerokich narzędzi wiodących w branży.  W tym artykule przedstawiono firmy partnerskie firmy Microsoft z oficjalnymi rozwiązaniami do analizy biznesowej, które obsługują Azure SQL Data Warehouse.
@@ -33,7 +33,7 @@ Aby utworzyć kompleksowe rozwiązanie magazynu danych, wybierz jedną z szeroki
 | ![LogiAnalytics][6] |**Analiza wiedzy**<br>Wspólnie analiza i Azure SQL Data Warehouse umożliwia organizacji zbieranie, analizowanie i natychmiastowe działanie na największych i najbardziej różnorodnych zestawach danych na całym świecie. |[Strona produktu][logianalytics_website]<br>|
 | ![Looker][7] |**Wyszukaj w usłudze BI**<br>Poszukiwanie zapewnia wszystkim w firmie możliwość eksplorowania i zrozumienia danych, które są przeznaczone dla Twojej firmy. Poszukiwanie umożliwia również analitykom danych elastyczne i wielokrotne użycie warstwy modelowania do kontrolowania i nadzorowania tych danych.  Firmy mają zasadniczo przekształconą kulturę przy użyciu narzędzia szukającego jako katalizator.|[Strona produktu][looker_website]<br> [Azure Marketplace][looker_marketplace]<br> |
 | ![Mikrostrategia][14] |**Mikrostrategia**<br>Platforma mikrostrategii oferuje pełen zestaw funkcji analizy biznesowej i analizy, które umożliwiają organizacjom uzyskanie wartości z ich danych firmowych. Wydajny aparat analityczny mikrostrategii, kompleksowy zestaw narzędzi, różne łączniki danych i skalowalność, otwarta architektura upewnij się, że masz wszystko, czego potrzebujesz, aby zwiększyć dostęp do analiz dla każdego zespołu i funkcji biznesowej |[Strona produktu][microstrategy_website]<br> [Azure Marketplace][microstrategy_marketplace]<br> |
-| ![Qlik][8] |**Qlik wykrywanie przedsiębiorstwa**<br>Wykrywanie szczegółowych informacji za pomocą aplikacji do wizualizacji danych, która może być używana przez każdy z nich. Dzięki Qlik sensu wszystkie osoby w organizacji mogą łatwo tworzyć elastyczne, interaktywne wizualizacje i podejmować znaczące decyzje. |[Strona produktu][qlik_website]<br> |
+| ![Qlik][8] |**Qlik Sense Enterprise**<br>Wykrywanie szczegółowych informacji za pomocą aplikacji do wizualizacji danych, która może być używana przez każdy z nich. Dzięki Qlik sensu wszystkie osoby w organizacji mogą łatwo tworzyć elastyczne, interaktywne wizualizacje i podejmować znaczące decyzje. |[Strona produktu][qlik_website]<br> |
 | ![SiSense][9] |**SiSense**<br>SiSense to oprogramowanie do analizy biznesowej w pełnym stosie, które jest dostarczane z narzędziami, które firma musi analizować i wizualizować dane: wysokiej wydajności analityczna baza danych, możliwość sprzęgania wielu źródeł, prostej wyodrębniania danych (ETL) i danych opartych na sieci Web dopasowywa. Zacznij analizować i wizualizować duże zestawy danych za pomocą usługi SiSense BI i Analytics już dziś. |[Strona produktu][sisense_website]<br> |
 | ![Tableau][10] |**Tableau**<br>Samoobsługowa usługa Tableau Analytics umożliwia użytkownikom przeglądanie i zrozumienie ich danych w wielu rodzajach danych z prostych plików do baz danych. Tableau ma natywny, zoptymalizowany Łącznik do Microsoft Azure SQL Data Warehouse, który obsługuje zarówno dane na żywo, jak i analizę w pamięci. |[Strona produktu][tableau_website]<br> [Azure Marketplace][tableau_marketplace]<br>|
 | ![Targit][11] |**TARGIT (pakiet decyzyjny)**<br>Pakiet decyzyjny TARGIT udostępnia platformę analizy biznesowej i analitycznej, która zapewnia pulpity nawigacyjne w czasie rzeczywistym, analizy samoobsługowe, raportowanie przyjazne dla użytkowników, atrakcyjne możliwości mobilne oraz prostą technologię odnajdywania danych w jednym, spójnym rozwiązaniu. TARGIT udziela przedsiębiorstwom zalecanym do działania. |[Strona produktu][targit_website]<br> [Azure Marketplace][targit_marketplace]<br> |
@@ -87,7 +87,7 @@ Aby dowiedzieć się więcej o niektórych naszych partnerach, zobacz [partnerzy
 
 [birst_marketplace]:https://azure.microsoft.com/marketplace/partners/birst/birst/
 [dundas_bi_marketplace]:https://azure.microsoft.com/marketplace/partners/dundas/dundas-bi/ 
-[looker_marketplace]:https://azure.microsoft.com/marketplace/partners/looker/looker-analytics-platform-326/
+[looker_marketplace]:https://azuremarketplace.microsoft.com/marketplace/apps/looker.looker-analytics-platform-6_20
 [qlik_marketplace]:https://azure.microsoft.com/marketplace/partners/qliktech-international-ab/qlikview/
 [tableau_marketplace]:https://azure.microsoft.com/marketplace/partners/tableau/tableau-server/
 [targit_marketplace]:https://azure.microsoft.com/marketplace/partners/targit/targit-decision-suite/ 

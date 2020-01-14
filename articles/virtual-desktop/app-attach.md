@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 12/14/2019
 ms.author: helohr
-ms.openlocfilehash: 8d9a6664caa7d0d84de54de232d6f8d0eab0a793
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: HT
+ms.openlocfilehash: 8e8eec8af81832992a27206efcd7b7e7051a83b8
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75356248"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772554"
 ---
 # <a name="set-up-msix-app-attach"></a>Konfigurowanie dołączania aplikacji MSIX
 
@@ -40,7 +40,7 @@ Najpierw należy uzyskać obraz systemu operacyjnego, który będzie używany dl
      >[!NOTE]
      >Aby uzyskać dostęp do portalu niejawnego testera systemu Windows, musisz być członkiem niejawnego programu testów systemu Windows. Aby dowiedzieć się więcej o programie testów systemu Windows, zapoznaj się z [dokumentacją zatestera systemu Windows](https://docs.microsoft.com/windows-insider/at-home/).
 
-2. Przewiń w dół do sekcji **Wybierz wersję** i wybierz pozycję **Windows 10 wersja zapoznawcza wersji zapoznawczej Enterprise (Fast) — Kompilacja XXXXX**.
+2. Przewiń w dół do sekcji **Wybierz wersję** i wybierz pozycję **Windows 10 wersja zapoznawcza wersji zapoznawczej Enterprise (Fast) — Kompilacja 19035** lub nowsza.
 
 3. Wybierz pozycję **Potwierdź**, a następnie wybierz język, którego chcesz użyć, a następnie wybierz pozycję **Potwierdź** ponownie.
     

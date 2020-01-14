@@ -1,5 +1,5 @@
 ---
-title: Rozwiązywanie problemów związanych z dołączaniem Update Management, Change Tracking i spisu
+title: Rozwiązywanie problemów z dołączaniem Azure Automation rozwiązania do zarządzania
 description: Dowiedz się, jak rozwiązywać problemy z dołączaniem za pomocą rozwiązań Update Management, Change Tracking i spisu
 services: automation
 author: mgoedtel
@@ -8,14 +8,14 @@ ms.date: 05/22/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 0371c59ae63389bc3f7f0132260b0d98f496086c
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: c949556949e0c187d7c23c4dd32436e245bfbb95
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849313"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75889329"
 ---
-# <a name="troubleshoot-errors-when-onboarding-solutions"></a>Rozwiązywanie problemów podczas dołączania rozwiązań
+# <a name="troubleshoot-errors-when-onboarding-update-management-change-tracking-and-inventory"></a>Rozwiązywanie problemów podczas dołączania Update Management, Change Tracking i spisu
 
 Mogą wystąpić błędy podczas dołączania rozwiązań, takich jak Update Management lub Change Tracking i spisu. W tym artykule opisano różne błędy, które mogą wystąpić i sposoby ich rozwiązywania.
 
@@ -140,7 +140,7 @@ The link cannot be updated or deleted because it is linked to Update Management 
 
 #### <a name="cause"></a>Przyczyna
 
-Ten błąd występuje, gdy w obszarze roboczym Log Analytics nadal są aktywne rozwiązania, które są zależne od konta usługi Automation i połączonego obszaru roboczego Analytics.
+Ten błąd występuje, gdy nadal masz aktywne rozwiązania w obszarze roboczym Log Analytics, które zależą od konta usługi Automation i połączonego obszaru roboczego Log Analytics.
 
 ### <a name="resolution"></a>Rozdzielczość
 
@@ -156,7 +156,7 @@ Po usunięciu rozwiązań możesz odłączyć obszar roboczy. Ważne jest, aby w
   * Usuń wdrożenia aktualizacji (harmonogramy) z konta usługi Automation
 * Uruchamianie lub zatrzymywanie maszyn wirtualnych po godzinach pracy
   * Usuń wszystkie blokady składników rozwiązania na koncie usługi Automation w obszarze **ustawienia** > **blokady**.
-  * Aby uzyskać dodatkowe kroki usuwania rozwiązania Start/Stop VMs during off-hours, zobacz [Uruchamianie/zatrzymywanie maszyny wirtualnej w rozwiązaniu off-godzinnym](../automation-solution-vm-management.md##remove-the-solution).
+  * Aby uzyskać dodatkowe kroki usuwania rozwiązania Start/Stop VMs during off-hours, zobacz [Uruchamianie/zatrzymywanie maszyny wirtualnej w rozwiązaniu off-godzinnym](../automation-solution-vm-management.md#remove-the-solution).
 
 ## <a name="mma-extension-failures"></a>Błędy rozszerzenia MMA
 

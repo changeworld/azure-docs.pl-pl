@@ -6,12 +6,12 @@ ms.author: jaiello
 ms.reviewer: glenga
 ms.date: 04/25/2019
 ms.topic: quickstart
-ms.openlocfilehash: 8f77083ae0107ed9f9c5e3943cfcec25846ff087
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 934f3f69d46362e4bef4e713bcee23e9a3e24eb6
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227200"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769357"
 ---
 # <a name="create-your-first-powershell-function-in-azure"></a>Tworzenie pierwszej funkcji programu PowerShell na platformie Azure
 
@@ -48,7 +48,7 @@ Aby ukończyć ten przewodnik Szybki start:
 
 ## <a name="create-a-function-app-project"></a>Tworzenie projektu aplikacji funkcji
 
-Szablon projektu usługi Azure Functions w programie Visual Studio Code umożliwia utworzenie projektu, który można opublikować w aplikacji funkcji na platformie Azure. Aplikacja funkcji umożliwia grupowanie funkcji w jednostki logiczne, co ułatwia wdrażanie i udostępnianie zasobów oraz zarządzanie nimi. 
+Szablon projektu usługi Azure Functions w programie Visual Studio Code umożliwia utworzenie projektu, który można opublikować w aplikacji funkcji na platformie Azure. Aplikacja funkcji umożliwia grupowanie funkcji jako jednostki logicznej, co ułatwia zarządzanie, wdrażanie, skalowanie i udostępnianie zasobów.
 
 1. W programie Visual Studio Code wybierz logo platformy Azure, aby wyświetlić obszar**Azure: Functions**, a następnie wybierz ikonę tworzenia nowego projektu.
 
@@ -138,4 +138,4 @@ Użyto Visual Studio Code do utworzenia aplikacji funkcji programu PowerShell z 
 [Azure portal]: https://portal.azure.com
 [Azure Functions Core Tools]: functions-run-local.md
 [Rozszerzenie usługi Azure Functions dla programu Visual Studio Code]: https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions
-["Czekaj-Debugger"]: /powershell/module/microsoft.powershell.utility/wait-debugger?view=powershell-6
+[`Wait-Debugger`]: /powershell/module/microsoft.powershell.utility/wait-debugger?view=powershell-6

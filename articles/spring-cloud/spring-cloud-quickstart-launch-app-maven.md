@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 11/04/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 61436b4317e85b67387a75e87c31a1c6cd13d84f
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 8aaf5f5fbcabf3476284f0d5e9f4f50ef3e92bd6
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895410"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75891631"
 ---
 # <a name="quickstart-launch-an-azure-spring-cloud-app-using-the-maven-plug-in"></a>Szybki Start: uruchamianie aplikacji w chmurze ze sprężyną na platformie Azure przy użyciu wtyczki Maven
 
@@ -27,13 +27,13 @@ Postępując zgodnie z tym przewodnikiem Szybki Start, dowiesz się, jak:
 > * Przypisywanie publicznego punktu końcowego aplikacji
 
 >[!Note]
-> Chmura Wiosenna platformy Azure jest obecnie oferowana jako publiczna wersja zapoznawcza. Oferty publicznej wersji zapoznawczej umożliwiają klientom eksperymentowanie z nowymi funkcjami przed ich oficjalną wersją.  Funkcje i usługi publicznej wersji zapoznawczej nie są przeznaczone do użytku produkcyjnego.  Aby uzyskać więcej informacji na temat pomocy technicznej w przypadku wersji zapoznawczych, zapoznaj się z naszymi [często zadawanymi pytaniami](https://azure.microsoft.com/support/faq/) lub zapoznaj się z [support requestą](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)
+> Chmura Wiosenna platformy Azure jest obecnie oferowana jako publiczna wersja zapoznawcza. Oferty publicznej wersji zapoznawczej umożliwiają klientom eksperymentowanie z nowymi funkcjami przed ich oficjalną wersją.  Funkcje i usługi publicznej wersji zapoznawczej nie są przeznaczone do użytku produkcyjnego.  Aby uzyskać więcej informacji na temat pomocy technicznej w przypadku wersji zapoznawczych, zapoznaj się z naszymi [często zadawanymi pytaniami](https://azure.microsoft.com/support/faq/) lub zapoznaj się z [support requestą](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)
 
 
 >[!TIP]
 > Azure Cloud Shell to bezpłatna interaktywna powłoka, której można użyć do uruchomienia poleceń z tego artykułu. Ma ona popularne narzędzia platformy Azure preinstalowane, w tym najnowsze wersje narzędzia Git, zestawu Java Development Kit (JDK), Maven i interfejsu wiersza polecenia platformy Azure. Jeśli logujesz się do subskrypcji platformy Azure, uruchom [Azure Cloud Shell](https://shell.azure.com). Aby uzyskać więcej informacji, zobacz [omówienie Azure Cloud Shell](../cloud-shell/overview.md).
 
-Aby ukończyć ten przewodnik Szybki Start:
+Aby ukończyć ten przewodnik Szybki start:
 
 1. [Zainstaluj oprogramowanie Git](https://git-scm.com/).
 2. [Zainstaluj program JDK 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable).
@@ -57,6 +57,9 @@ Aby ukończyć ten przewodnik Szybki Start:
 
 Wdrożenie usługi wymaga około 5 minut. Po wdrożeniu usługi wybierz pozycję **Przejdź do zasobu** , a zostanie wyświetlona strona **Omówienie** wystąpienia usługi.
 
+> [!div class="nextstepaction"]
+> [Wystąpił problem](https://www.research.net/r/javae2e?tutorial=asc-maven-quickstart&step=provision)
+
 ## <a name="set-up-your-configuration-server"></a>Konfigurowanie serwera konfiguracji
 
 1. Na stronie **Przegląd** usługi wybierz opcję **serwer konfiguracji**.
@@ -64,6 +67,9 @@ Wdrożenie usługi wymaga około 5 minut. Po wdrożeniu usługi wybierz pozycję
 
     > [!div class="mx-imgBorder"]
     > ![zdefiniować i zastosować ustawienia konfiguracji](media/maven-qs-apply-config.jpg)
+
+> [!div class="nextstepaction"]
+> [Wystąpił problem](https://www.research.net/r/javae2e?tutorial=asc-maven-quickstart&step=config-server)
 
 ## <a name="clone-and-build-the-sample-application-repository"></a>Klonowanie i kompilowanie przykładowego repozytorium aplikacji
 
@@ -105,6 +111,9 @@ Wdrożenie usługi wymaga około 5 minut. Po wdrożeniu usługi wybierz pozycję
    ```
 
 1. Po zakończeniu wdrażania możesz uzyskać dostęp do PiggyMetrics przy użyciu adresu URL podanego w danych wyjściowych z poprzedniego polecenia.
+
+> [!div class="nextstepaction"]
+> [Wystąpił problem](https://www.research.net/r/javae2e?tutorial=asc-maven-quickstart&step=deploy)
 
 ## <a name="next-steps"></a>Następne kroki
 

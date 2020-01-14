@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 01/03/2020
-ms.openlocfilehash: 094a3a838269921339dcd6c2c3b551720f394251
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 65b760eaf28d907fab3654ed92f960be7556b0d6
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75660328"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75862360"
 ---
 # <a name="routing-iot-events-and-messages"></a>Routing zdarzeń i komunikatów IoT
 
@@ -62,7 +62,7 @@ Usługa Azure Digital bliźniaczych reprezentacji obecnie obsługuje następują
 | EventGrid|               |         X         |     X       |      X       |   X       |
 
 >[!NOTE]  
->Aby uzyskać więcej informacji na temat tworzenia punktów końcowych i przykładów schematu zdarzeń, zobacz [wyjście i punkty końcowe](how-to-egress-endpoints.md).
+>Aby uzyskać więcej informacji na temat tworzenia punktów końcowych i przykładów zdarzeń "schemat", Odczytaj dane [wyjściowe i punkty końcowe](how-to-egress-endpoints.md).
 
 ## <a name="next-steps"></a>Następne kroki
 

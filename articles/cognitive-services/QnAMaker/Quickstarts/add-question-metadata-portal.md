@@ -1,7 +1,7 @@
 ---
 title: 'Szybki Start: dodawanie pytań i odpowiedzi w portalu QnA Maker'
 titleSuffix: Azure Cognitive Services
-description: ''
+description: Ten przewodnik Szybki Start przedstawia sposób dodawania zestawów pytań i odpowiedzi za pomocą metadanych, dzięki czemu użytkownicy mogą znaleźć odpowiednią odpowiedź na pytanie.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 11/22/2019
 ms.author: diberry
-ms.openlocfilehash: bf88928ca24a1205ec7a1ddd2fd20af0d0e91468
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: ae5e3481d51a27b05afdb334e6e04c785a68c01a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74422658"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75447674"
 ---
 # <a name="quickstart-add-questions-and-answer-with-qna-maker-portal"></a>Szybki Start: dodawanie pytań i odpowiedzi za pomocą portalu QnA Maker
 
@@ -23,12 +23,12 @@ Po utworzeniu bazy wiedzy Dodaj do niej zestawy pytań i odpowiedzi, aby użytko
 
 Właściwą odpowiedzią jest pojedyncza odpowiedź, ale może być wiele sposobów, aby klient mógł zadać pytanie, które prowadzi do tej pojedynczej odpowiedzi.
 
-Na przykład pytania w poniższej tabeli dotyczą limitów usługi platformy Azure, ale każdy z nich musi wykonać inną usługę platformy Azure. 
+Na przykład pytania w poniższej tabeli dotyczą limitów usługi platformy Azure, ale każdy z nich musi wykonać inną usługę platformy Azure.
 
 <a name="qna-table"></a>
 
 
-|Set|Pytania|Odpowiedź|Metadane|
+|Zestaw|Pytania|Odpowiedź|Metadane|
 |--|--|--|--|
 |1\.|`How large a knowledge base can I create?`<br><br>`What is the max size of a knowledge base?`<br><br>`How many GB of data can a knowledge base hold?` |`The size of the knowledge base depends on the SKU of Azure search you choose when creating the QnA Maker service. Read [here](https://docs.microsoft.com/azure/cognitive-services/qnamaker/tutorials/choosing-capacity-qnamaker-deployment) for more details.`|`service=qna_maker`<br>`link_in_answer=true`|
 |2\.|`How many knowledge bases can I have for my QnA Maker service?`<br><br>`I selected a Azure Cognitive Search tier that holds 15 knowledge bases, but I can only create 14 - what is going on?`<br><br>`What is the connection between the number of knowledge bases in my QnA Maker service and the Azure Cognitive Search service size?` |`Each knowledge base uses 1 index, and all the knowledge bases share a test index. You can have N-1 knowledge bases where N is the number of indexes your Azure Cognitive Search tier supports.`|`service=search`<br>`link_in_answer=false`|
@@ -38,7 +38,7 @@ Po dodaniu metadanych do zestawu pytań i odpowiedzi aplikacja kliencka może:
 * Zażądaj odpowiedzi, które pasują tylko do niektórych metadanych.
 * Odbieraj wszystkie odpowiedzi, ale nie Przetwarzaj odpowiedzi w zależności od metadanych dla każdej odpowiedzi.
 
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -53,11 +53,11 @@ Oba zostały utworzone w [pierwszym przewodniku szybki start](../how-to/create-k
 
 1. Wybierz istniejącą bazę wiedzy. Jeśli nie masz bazy wiedzy, Wróć do [poprzedniego przewodnika Szybki Start](../how-to/create-knowledge-base.md) i Zakończ procedurę tworzenia bazy wiedzy.
 
-## <a name="add-additional-alternatively-phrased-questions"></a>Dodawanie dodatkowych pytań z możliwością frazy 
+## <a name="add-additional-alternatively-phrased-questions"></a>Dodawanie dodatkowych pytań z możliwością frazy
 
-Bieżąca baza wiedzy z [poprzedniego przewodnika Szybki Start](../how-to/create-knowledge-base.md)zawiera QNA Maker pytania i odpowiedzi dotyczące rozwiązywania problemów. Te zestawy zostały utworzone, gdy adres URL został dodany do bazy wiedzy podczas procesu tworzenia. 
+Bieżąca baza wiedzy z [poprzedniego przewodnika Szybki Start](../how-to/create-knowledge-base.md)zawiera QNA Maker pytania i odpowiedzi dotyczące rozwiązywania problemów. Te zestawy zostały utworzone, gdy adres URL został dodany do bazy wiedzy podczas procesu tworzenia.
 
-Po zaimportowaniu tego adresu URL zostanie utworzona tylko jedno pytanie z jedną odpowiedzią. 
+Po zaimportowaniu tego adresu URL zostanie utworzona tylko jedno pytanie z jedną odpowiedzią.
 
 W tej procedurze należy dodać dodatkowe pytania.
 
@@ -68,9 +68,9 @@ W tej procedurze należy dodać dodatkowe pytania.
     |Alternatywne sformułowanie|
     |--|
     |`What is the max size of a knowledge base?`|
-    |`How many GB of data can a knowledge base hold?`| 
+    |`How many GB of data can a knowledge base hold?`|
 
-1. Wybierz pozycję **Zapisz i poszkol** , aby ponownie przeprowadzić uczenie bazy wiedzy. 
+1. Wybierz pozycję **Zapisz i poszkol** , aby ponownie przeprowadzić uczenie bazy wiedzy.
 
 1. Wybierz pozycję **test**, a następnie wprowadź pytanie blisko jednego z nowych alternatywnych frazy, ale nie dokładnie ten sam wyraz:
 
@@ -78,7 +78,7 @@ W tej procedurze należy dodać dodatkowe pytania.
 
     Prawidłowa odpowiedź jest zwracana w formacie promocji: `The size of the knowledge base depends on the SKU of Azure search you choose when creating the QnA Maker service. Read [here](https://docs.microsoft.com/azure/cognitive-services/qnamaker/tutorials/choosing-capacity-qnamaker-deployment) for more details.`
 
-    W przypadku wybrania opcji **Sprawdź** w odpowiedzi na odpowiedź można zobaczyć więcej odpowiedzi, ale nie ma tego samego wysokiego poziomu zaufania. 
+    W przypadku wybrania opcji **Sprawdź** w odpowiedzi na odpowiedź można zobaczyć więcej odpowiedzi, ale nie ma tego samego wysokiego poziomu zaufania.
 
     Nie dodawaj każdej możliwej kombinacji alternatywnych wyrazów. Włącz [aktywną naukę](../how-to/improve-knowledge-base.md)w ramach usługi QNA Maker, aby znaleźć alternatywną frazy, która najlepiej odpowiada potrzebom użytkowników w bazie wiedzy.
 
@@ -88,26 +88,26 @@ W tej procedurze należy dodać dodatkowe pytania.
 
 Dodanie metadanych do zestawu pytań i odpowiedzi umożliwia aplikacji klienckiej żądanie filtrowanych odpowiedzi. Ten filtr jest stosowany przed zastosowaniem [pierwszej i drugiej rangi](../concepts/knowledge-base.md#ranker-process) .
 
-1. Dodaj drugie pytanie i zestaw odpowiedzi, bez metadanych, z [pierwszej tabeli w tym przewodniku szybki start](#qna-table), a następnie wykonaj poniższe kroki. 
+1. Dodaj drugie pytanie i zestaw odpowiedzi, bez metadanych, z [pierwszej tabeli w tym przewodniku szybki start](#qna-table), a następnie wykonaj poniższe kroki.
 
-1. Wybierz pozycję **Wyświetl opcje**, a następnie wybierz pozycję **Pokaż metadane**. 
+1. Wybierz pozycję **Wyświetl opcje**, a następnie wybierz pozycję **Pokaż metadane**.
 
 1. Dla dodawanego pytania i odpowiedzi wybierz pozycję **Dodaj Tagi metadanych**, a następnie dodaj nazwę `service` i wartość `search`, `service:search`.
 
 1. Dodaj kolejne Tagi metadanych o nazwie `link_in_answer` i wartości `false`, `link_in_answer:false`.
 
-1. Wyszukaj pierwszą odpowiedź w tabeli, `How large a knowledge base can I create?`. 
+1. Wyszukaj pierwszą odpowiedź w tabeli, `How large a knowledge base can I create?`.
 1. Dodaj pary metadanych dla tych samych dwóch tagów metadanych:
 
-    `link_in_answer`: `true`<br>
+    `link_in_answer` : `true`<br>
     `server`: `qna_maker`
 
-    Masz teraz dwa pytania z tymi samymi tagami metadanych o różnych wartościach. 
+    Masz teraz dwa pytania z tymi samymi tagami metadanych o różnych wartościach.
 
-1. Wybierz pozycję **Zapisz i poszkol** , aby ponownie przeprowadzić uczenie bazy wiedzy. 
+1. Wybierz pozycję **Zapisz i poszkol** , aby ponownie przeprowadzić uczenie bazy wiedzy.
 
-1. Wybierz pozycję **Publikuj** w górnym menu, aby przejść do strony publikowanie. 
-1. Wybierz przycisk **Publikuj** , aby opublikować bieżącą bazę wiedzy w punkcie końcowym queryable. 
+1. Wybierz pozycję **Publikuj** w górnym menu, aby przejść do strony publikowanie.
+1. Wybierz przycisk **Publikuj** , aby opublikować bieżącą bazę wiedzy w punkcie końcowym queryable.
 1. Po opublikowaniu bazy wiedzy wybierz kartę **zwinięcie** , aby zobaczyć przykładowe polecenie zwinięcie użyte do wygenerowania odpowiedzi z bazy wiedzy.
 1. Skopiuj polecenie do konsoli notatek lub innego środowiska do edycji, aby można było edytować polecenie. Edytuj pod kątem własnej nazwy zasobu, identyfikatora bazy wiedzy i klucza punktu końcowego:
 
@@ -121,11 +121,11 @@ Dodanie metadanych do zestawu pytań i odpowiedzi umożliwia aplikacji klienckie
     curl -X POST https://your-resource-name.azurewebsites.net/qnamaker/knowledgebases/your-knowledge-base-id/generateAnswer -H "Authorization: EndpointKey your-endpoint-key" -H "Content-type: application/json" -d "{'top':30, 'question':'size','strictFilters': [{'name':'service','value':'qna_maker'}]}"
     ```
 
-    Zwróć uwagę, że pytanie jest tylko pojedynczym słowem, `size`, które może zwracać zestaw pytań i odpowiedzi. Tablica `strictFilters` informuje odpowiedź, aby zmniejszyć do zaledwie `qna_maker` odpowiedzi. 
+    Zwróć uwagę, że pytanie jest tylko pojedynczym słowem, `size`, które może zwracać zestaw pytań i odpowiedzi. Tablica `strictFilters` informuje odpowiedź, aby zmniejszyć do zaledwie `qna_maker` odpowiedzi.
 
     [!INCLUDE [Tip for debug property to JSON request](../includes/tip-debug-json.md)]
 
-1. Odpowiedź zawiera tylko odpowiedź, która spełnia kryteria filtru. 
+1. Odpowiedź zawiera tylko odpowiedź, która spełnia kryteria filtru.
 
     Następująca odpowiedź programu zwinięcie została sformatowana w celu zapewnienia czytelności:
 
@@ -164,7 +164,7 @@ Dodanie metadanych do zestawu pytań i odpowiedzi umożliwia aplikacji klienckie
 
     Jeśli istnieje pytanie i odpowiedź, które nie spełniły wyszukiwanego terminu, ale spełniały filtr, nie zostanie on zwrócony. Zamiast tego zostanie zwrócona ogólna `No good match found in KB.` odpowiedzi.
 
-    Upewnij się, że nazwy metadanych i wartości są przechowywane w wymaganym limicie. 
+    Upewnij się, że nazwy metadanych i wartości są przechowywane w wymaganym limicie.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 

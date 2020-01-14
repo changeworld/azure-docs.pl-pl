@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/26/2019
 ms.author: jingwang
-ms.openlocfilehash: f8f5e65115acddd71808a169039d0b98b2470147
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: e7a6e819676752aac679a36221eb60f9ad767071
+ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74932080"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75830160"
 ---
 # <a name="json-format-in-azure-data-factory"></a>Format JSON w Azure Data Factory
 
@@ -86,7 +86,7 @@ Obsługiwane **Ustawienia zapisu** w formacie JSON w `formatSettings`:
 
 | Właściwość      | Opis                                                  | Wymagane                                              |
 | ------------- | ------------------------------------------------------------ | ----------------------------------------------------- |
-| type          | Typ formatSettings musi być ustawiony na **JsonWriteSetting**. | Tak                                                   |
+| type          | Typ formatSettings musi być ustawiony na **JsonWriteSettings**. | Tak                                                   |
 | filePattern |Wskazuje wzorzec danych przechowywanych w każdym pliku JSON. Dozwolone wartości to: **setOfObjects** i **arrayOfObjects**. Wartością **domyślną** jest **setOfObjects**. Aby uzyskać szczegółowe informacje o tych wzorcach, zobacz sekcję [Wzorce plików JSON](#json-file-patterns). |Nie |
 
 ### <a name="json-file-patterns"></a>Wzorce plików JSON

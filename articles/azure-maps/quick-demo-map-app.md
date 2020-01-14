@@ -1,6 +1,6 @@
 ---
-title: 'Szybki Start: interakcyjne wyszukiwanie map przy użyciu Azure Maps'
-description: 'Przewodnik Szybki start platformy Azure: tworzenie pokazu interaktywnego wyszukiwania na mapie za pomocą usługi Azure Maps'
+title: 'Szybki Start: interakcyjne wyszukiwanie map przy użyciu Azure Maps | Mapy Microsoft Azure'
+description: Dowiedz się, jak utworzyć pokazową aplikację sieci Web dla interakcyjnego wyszukiwania mapy za pomocą Microsoft Azure Maps Web SDK.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 11/08/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 7553499dc9aba8d20bee126204b6d19f2386d295
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5f11fa4fce38b125e21564b4cfbe4582e55a7b64
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75408420"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910691"
 ---
 # <a name="quickstart-create-an-interactive-search-map-by-using-azure-maps"></a>Szybki Start: Tworzenie mapy wyszukiwania interaktywnego za pomocą Azure Maps
 
@@ -57,7 +57,7 @@ Po pomyślnym utworzeniu konta usługi Maps pobierz klucz, który umożliwia wys
 2. W sekcji Ustawienia wybierz pozycję **uwierzytelnianie**.
 3. Skopiuj **klucz podstawowy** do schowka. Zapisz go lokalnie — będzie używany w dalszej części tego samouczka.
 
-![Pobieranie klucza podstawowego w portalu](./media/quick-demo-map-app/get-key.png)
+![Pobierz klucz podstawowy Azure Maps w Azure Portal](./media/quick-demo-map-app/get-key.png)
 
 ## <a name="download-the-application"></a>Pobieranie aplikacji
 
@@ -73,7 +73,7 @@ Po pomyślnym utworzeniu konta usługi Maps pobierz klucz, który umożliwia wys
 4. Wypróbuj funkcję wyszukiwania interaktywnego. W polu wyszukiwania w lewym górnym rogu demonstracyjnej aplikacji internetowej wyszukaj **restauracje**.
 5. Przesuń wskaźnik myszy na liście adresów i lokalizacji, które są wyświetlane pod polem wyszukiwania. Zwróć uwagę, jak za pomocą odpowiedniej pinezki na mapie wyświetlane są informacje o tej lokalizacji. Ze względu na ochronę danych prywatnych firm wyświetlono fikcyjne nazwy i adresy.
 
-    ![Aplikacja internetowa z wyszukiwaniem interaktywnym](./media/quick-demo-map-app/interactive-search.png)
+    ![Aplikacja sieci Web do wyszukiwania map interakcyjnych](./media/quick-demo-map-app/interactive-search.png)
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 

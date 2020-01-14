@@ -13,14 +13,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 11/21/2019
+ms.date: 01/10/2020
 ms.author: radeltch
-ms.openlocfilehash: 49e7fd49e000a3d4475c60a0c58cf6a2c7455fa5
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 243bbd431b7332d06a4e14581aa5c02bae2b7cba
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74531410"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75896289"
 ---
 # <a name="deploy-a-sap-hana-scale-out-system-with-standby-node-on-azure-vms-by-using-azure-netapp-files-on-suse-linux-enterprise-server"></a>Wdróż system SAP HANA skalowalny w poziomie z aktywnym węzłem na maszynach wirtualnych platformy Azure przy użyciu Azure NetApp Files na SUSE Linux Enterprise Server 
 
@@ -429,7 +429,9 @@ Skonfiguruj i przygotuj system operacyjny, wykonując następujące czynności:
     mount 10.23.1.4:/HN1-shared /mnt/tmp
     umount  /mnt/tmp
     echo "Y" > /sys/module/nfs/parameters/nfs4_disable_idmapping
-    </code></pre>`
+    # Make the configuration permanent
+    echo "options nfs nfs4_disable_idmapping=Y" >> /etc/modprobe.d/nfs.conf
+    </code></pre>
 
 5. **[A]** ręcznie utwórz grupę SAP HANA i użytkownika. Identyfikatory dla grup sapsys i User **hn1**ADM muszą być ustawione na te same identyfikatory, które są dostępne podczas dołączania. (W tym przykładzie identyfikatory są ustawione na **1001**). Jeśli identyfikatory nie są ustawione prawidłowo, nie będzie można uzyskać dostępu do woluminów. Identyfikatory grup sapsys i kont użytkowników **hn1**adm i sapadm muszą być takie same na wszystkich maszynach wirtualnych.  
 

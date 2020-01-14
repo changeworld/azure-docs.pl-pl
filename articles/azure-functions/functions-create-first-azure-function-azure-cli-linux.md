@@ -4,12 +4,12 @@ description: Dowiedz się, jak utworzyć pierwszą funkcję hostowaną w systemi
 ms.date: 03/12/2019
 ms.topic: quickstart
 ms.custom: mvc, fasttrack-edit
-ms.openlocfilehash: 57c1b4a0ef5e8f030360bca6d69f66e8752f3da1
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 972feedf880ed55210c8422094d5b26a85b31d5e
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74964144"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769408"
 ---
 # <a name="quickstart-create-your-first-function-hosted-on-linux-using-command-line-tools"></a>Szybki Start: Tworzenie pierwszej funkcji hostowanej w systemie Linux przy użyciu narzędzi wiersza polecenia
 
@@ -47,7 +47,7 @@ Przed uruchomieniem tego przykładu należy dysponować następującymi elementa
 
 ## <a name="create-a-linux-function-app-in-azure"></a>Tworzenie aplikacji funkcji systemu Linux na platformie Azure
 
-Do obsługi wykonywania funkcji w systemie Linux potrzebna jest aplikacja funkcji. Aplikacja funkcji zapewnia bezserwerowe środowisko do wykonywania kodu funkcji. Umożliwia ona grupowanie funkcji w ramach jednostki logicznej, co ułatwia wdrażanie i udostępnianie zasobów oraz zarządzanie nimi. Utwórz aplikację funkcji działającą w systemie Linux przy użyciu polecenia [az functionapp create](/cli/azure/functionapp#az-functionapp-create).
+Do obsługi wykonywania funkcji w systemie Linux potrzebna jest aplikacja funkcji. Aplikacja funkcji zapewnia bezserwerowe środowisko do wykonywania kodu funkcji. Umożliwia grupowanie funkcji jako jednostki logicznej, co ułatwia zarządzanie, wdrażanie, skalowanie i udostępnianie zasobów. Utwórz aplikację funkcji działającą w systemie Linux przy użyciu polecenia [az functionapp create](/cli/azure/functionapp#az-functionapp-create).
 
 W poniższym poleceniu zamiast symbolu zastępczego `<app_name>` użyj unikatowej nazwy aplikacji funkcji, a zamiast symbolu zastępczego `<storage_name>` użyj nazwy konta magazynu. `<app_name>` jest również domyślną domeną DNS aplikacji funkcji. Ta nazwa musi być unikatowa dla wszystkich aplikacji na platformie Azure. Należy również ustawić `<language>` środowisko uruchomieniowe dla aplikacji funkcji, z `dotnet` (C#), `node` (JavaScript/TypeScript) lub `python`.
 

@@ -3,12 +3,12 @@ title: Dokumentacja ustawień aplikacji dla usługi Azure Functions
 description: Dokumentacja ustawień aplikacji usługi Azure Functions lub zmienne środowiskowe.
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: 1c7f5f9f8f6f198c5fe74baa613306732fa9b55b
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 4de6f093e43bbb8b3e258c3dd2a71f728beb7287
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977271"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769544"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Dokumentacja ustawień aplikacji dla usługi Azure Functions
 
@@ -109,6 +109,19 @@ Wersja środowiska uruchomieniowego funkcji do użycia w tej aplikacji funkcji. 
 |---|------------|
 |FUNKCJE\_ROZSZERZENIA\_WERSJI|~ 2|
 
+## <a name="functions_v2_compatibility_mode"></a>FUNKCJE\_w wersji 2\_\_tryb zgodności
+
+To ustawienie umożliwia uruchamianie aplikacji funkcji w trybie zgodności w wersji 2. x w wersji 3. x środowiska uruchomieniowego. Tego ustawienia należy używać tylko w przypadku napotkania problemów podczas [uaktualniania aplikacji funkcji z wersji 2. x do 3. x środowiska uruchomieniowego](functions-versions.md#migrating-from-2x-to-3x). 
+
+>[!IMPORTANT]
+> To ustawienie jest przeznaczone tylko jako krótkoterminowe obejście podczas aktualizowania aplikacji tak, aby działała prawidłowo w wersji 3. x. To ustawienie jest obsługiwane, o ile jest [obsługiwane środowisko uruchomieniowe 2. x](functions-versions.md). Jeśli wystąpią problemy uniemożliwiające uruchomienie aplikacji w wersji 3. x bez użycia tego ustawienia, [Zgłoś problem](https://github.com/Azure/azure-functions-host/issues/new?template=Bug_report.md).
+
+Wymaga, aby [funkcje\_EXTENSION\_wersja](functions-app-settings.md#functions_extension_version) była ustawiona na `~3`.
+
+|Klucz|Wartość przykładowa|
+|---|------------|
+|FUNKCJE\_w wersji 2\_\_tryb zgodności|true|
+
 ## <a name="functions_worker_process_count"></a>FUNKCJE\_proces\_procesu roboczego\_liczba
 
 Określa maksymalną liczbę procesów roboczych języka z wartością domyślną `1`. Maksymalna dozwolona wartość to `10`. Wywołania funkcji są równomiernie dystrybuowane między procesami roboczymi języka. Procesy robocze języka są duplikowane co 10 sekund, dopóki nie zostanie osiągnięta liczba określona przez funkcje\_proces\_\_procesu roboczego. Używanie wielu procesów roboczych z wieloma językami nie jest takie samo jak [skalowanie](functions-scale.md). Należy rozważyć użycie tego ustawienia, jeśli obciążenie ma połączenie z wywołaniami związanymi z PROCESORem i we/wy. To ustawienie ma zastosowanie do wszystkich języków non-.NET.
@@ -179,7 +192,7 @@ Domyślnie skrót do wysyłania wywołania interfejsu API z serwerów proxy bezp
 |Klucz|Wartość|Opis|
 |-|-|-|
 |AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|true|Wywołania z adresem URL zaplecza wskazujące funkcję w lokalnym aplikacja funkcji nie będą już wysyłane bezpośrednio do funkcji i będą kierowane z powrotem do frontonu HTTP dla aplikacja funkcji|
-|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|false|Jest to wartość domyślna. Wywołania z adres url wewnętrznej funkcji lokalnej aplikacji funkcji zostaną przekazane bezpośrednio do tej funkcji|
+|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|false|Jest to wartość domyślna. Wywołania z adresem URL zaplecza wskazujące funkcję w lokalnym aplikacja funkcji będą przekazywane bezpośrednio do tej funkcji|
 
 
 ## <a name="azure_function_proxy_backend_url_decode_slashes"></a>AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES

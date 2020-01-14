@@ -61,6 +61,16 @@
           href: stream-analytics-sql-output-perf.md
         - name: Wzorce niestandardowych ścieżek obiektów blob
           href: stream-analytics-custom-path-patterns-blob-storage-output.md
+    - name: Optymalizowanie zadania usługi Stream Analytics
+      items:
+        - name: Opis i dostosowywanie jednostek przesyłania strumieniowego
+          href: stream-analytics-streaming-unit-consumption.md
+        - name: Zwiększanie wydajności zapytań
+          href: stream-analytics-parallelization.md
+        - name: Ponownie podziel dane wejściowe na partycje
+          href: repartition.md
+        - name: Zwiększanie przepływności zadania
+          href: stream-analytics-scale-jobs.md
     - name: Stany zadania
       href: job-states.md
     - name: Funkcje okien
@@ -148,20 +158,6 @@
           href: stream-analytics-monitor-jobs.md
         - name: Monitorowanie zadań — Visual Studio
           href: stream-analytics-monitor-jobs-use-vs.md
-    - name: Skalowanie
-      items:
-        - name: Skalowanie za pomocą jednostek przesyłania strumieniowego
-          href: stream-analytics-streaming-unit-consumption.md
-        - name: Skalowanie za pomocą przetwarzania równoległego
-          items:
-            - name: Przetwarzanie równoległe zapytań
-              href: stream-analytics-parallelization.md
-            - name: Zwiększanie przepływności
-              href: stream-analytics-scale-jobs.md
-        - name: Skalowanie za pomocą usługi ML
-          href: stream-analytics-scale-with-machine-learning-functions.md
-        - name: Skalowanie za pomocą ponownego partycjonowania
-          href: repartition.md
     - name: Automatyzacja
       items:
         - name: Korzystanie z zestawu SDK dla platformy .NET
@@ -218,6 +214,8 @@
           href: stream-analytics-how-to-configure-azure-machine-learning-endpoints-in-stream-analytics.md
     - name: Debugowanie za pomocą diagramu zadań
       href: stream-analytics-job-diagram-with-metrics.md
+    - name: Skalowanie za pomocą usługi ML
+      href: stream-analytics-scale-with-machine-learning-functions.md
 - name: Język zapytań usługi Stream Analytics
   items:
     - name: Funkcje wbudowane

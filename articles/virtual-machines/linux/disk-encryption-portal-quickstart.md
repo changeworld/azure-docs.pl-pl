@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.service: security
 ms.topic: quickstart
 ms.date: 10/02/2019
-ms.openlocfilehash: e777387437b572eb11ebb7999d87a172b54738bb
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 20802cf9f9934a85e00bce41b6bbe21a6ff95579
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74151255"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772299"
 ---
 # <a name="quickstart-create-and-encrypt-a-virtual-machine-with-the-azure-portal"></a>Szybki Start: Tworzenie i szyfrowanie maszyny wirtualnej przy użyciu Azure Portal
 
@@ -19,9 +19,9 @@ Maszyny wirtualne platformy Azure można utworzyć za pomocą witryny Azure Port
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
+## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
 
-Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+Zaloguj się do [portalu Azure](https://portal.azure.com).
 
 ## <a name="create-a-virtual-machine"></a>Tworzenie maszyny wirtualnej
 
@@ -71,7 +71,7 @@ Gdy grupa zasobów, maszyna wirtualna i wszystkie pokrewne zasoby nie będą ju�
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym przewodniku szybki start utworzono Key Vault, które zostały włączone dla kluczy szyfrowania, utworzono maszynę wirtualną i włączono maszynę wirtualną w celu szyfrowania.  
+W tym przewodniku szybki start utworzono Key Vault, dla których włączono obsługę kluczy szyfrowania, utworzono maszynę wirtualną i włączono maszynę wirtualną do szyfrowania.  
 
 > [!div class="nextstepaction"]
 > [Przegląd Azure Disk Encryption](disk-encryption-overview.md)

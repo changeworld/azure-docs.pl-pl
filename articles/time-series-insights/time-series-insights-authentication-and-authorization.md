@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: b54034dc8828fb8a96f488197e517ef07ed55ab5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 960eb9b48a158358a076202db0d435feb918a6c8
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75460432"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863482"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Uwierzytelnianie i autoryzacja interfejsu API Azure Time Series Insights
 
@@ -87,7 +87,7 @@ Na **krok 3**oddzielenie poświadczeń aplikacji i użytkownika pozwala:
 
    1. Użyj **identyfikatora aplikacji** i klucza **tajnego klienta** (klucza aplikacji) z sekcji Azure Active Directory rejestracji aplikacji, aby uzyskać token w imieniu aplikacji.
 
-   1. W C#programie Poniższy kod może uzyskać token w imieniu aplikacji. Aby uzyskać pełny przykład, zobacz [dane zapytania przy C#użyciu ](time-series-insights-query-data-csharp.md).
+   1. W C#programie Poniższy kod może uzyskać token w imieniu aplikacji. Aby uzyskać kompletny przykład, Przeczytaj [dane zapytania przy C#użyciu ](time-series-insights-query-data-csharp.md).
 
         [!code-csharp[csharpquery-example](~/samples-tsi/csharp-tsi-ga-sample/Program.cs?range=170-199)]
 
@@ -107,7 +107,7 @@ W tej sekcji opisano typowe nagłówki i parametry żądań HTTP służące do w
 Aby wykonać uwierzytelnione zapytania dotyczące [Time Series Insights interfejsów API REST](https://docs.microsoft.com/rest/api/time-series-insights/), należy przesłać prawidłowy token okaziciela OAuth 2,0 w [nagłówku autoryzacji](/rest/api/apimanagement/2019-01-01/authorizationserver/createorupdate) za pomocą wybranego przez siebie klienta REST (Poster, JavaScript, C#). 
 
 > [!TIP]
-> Zapoznaj się z [przykładową wizualizacją zestawu SDK klienta](https://tsiclientsample.azurewebsites.net/) hostowanego Azure Time Series Insights, aby dowiedzieć się, jak uwierzytelniać się za pomocą interfejsu API Time Series Insights programowo przy użyciu [zestawu SDK klienta języka JavaScript](https://github.com/microsoft/tsiclient/blob/master/docs/API.md) , a także wykresów
+> Zapoznaj się z [przykładową wizualizacją zestawu SDK klienta](https://tsiclientsample.azurewebsites.net/) hostowanego Azure Time Series Insights, aby dowiedzieć się, jak uwierzytelniać się za pomocą interfejsu API Time Series Insights programowo przy użyciu [zestawu SDK klienta JavaScript](https://github.com/microsoft/tsiclient/blob/master/docs/API.md) oraz wykresów i grafów
 
 ### <a name="http-headers"></a>Nagłówki HTTP
 
@@ -161,10 +161,10 @@ Opcjonalne parametry ciągu zapytania URL obejmują ustawianie limitu czasu dla 
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Aby zapoznać się z przykładowym kodem, który wywołuje interfejs API usługi GA Time Series Insights, zobacz [dane zapytania przy użyciu C# ](./time-series-insights-query-data-csharp.md).
+- Przykładowy kod, który wywołuje interfejs API Time Series Insights GA, Odczytaj [dane zapytania C#przy użyciu ](./time-series-insights-query-data-csharp.md).
 
-- Przykłady kodu interfejsu API Time Series Insights w wersji zapoznawczej znajdują się w temacie [Query Preview Data using C# ](./time-series-insights-update-query-data-csharp.md).
+- Przykłady kodu interfejsu API Time Series Insights w wersji zapoznawczej można znaleźć w artykule [Podgląd zapytań danych przy użyciu polecenia C# ](./time-series-insights-update-query-data-csharp.md).
 
-- Informacje referencyjne dotyczące interfejsu API znajdują się w dokumentacji dotyczącej [interfejsu API zapytań](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api) .
+- Informacje referencyjne dotyczące interfejsu API można znaleźć w dokumentacji dotyczącej [interfejsu API zapytań](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api) .
 
 - Dowiedz się, jak [utworzyć jednostkę usługi](../active-directory/develop/howto-create-service-principal-portal.md).

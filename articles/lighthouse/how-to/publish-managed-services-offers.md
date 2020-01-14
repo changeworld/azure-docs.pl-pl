@@ -1,14 +1,14 @@
 ---
 title: Publikowanie oferty usług zarządzanych w witrynie Azure Marketplace
 description: Dowiedz się, jak opublikować ofertę usługi zarządzanej, która dołączy klientów do zarządzania zasobami delegowanymi przez platformę Azure.
-ms.date: 12/16/2019
+ms.date: 01/09/2020
 ms.topic: conceptual
-ms.openlocfilehash: d1eb06794551be498e05e2b9c3b893013b718ce9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6a1720a3bcfd0b08f8d9c8147b5e47ed42af6fda
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453533"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834088"
 ---
 # <a name="publish-a-managed-services-offer-to-azure-marketplace"></a>Publikowanie oferty usług zarządzanych w witrynie Azure Marketplace
 
@@ -63,7 +63,7 @@ Wykonaj następujące sekcje w sekcji **szczegóły planu** :
 |**Czy jest to plan prywatny?**     | Wskazuje, czy jednostka SKU jest prywatna, czy publiczna. Wartość domyślna to **no** (Public). Jeśli opuścisz tę opcję, Twój plan nie zostanie ograniczony do określonych klientów (lub do określonej liczby klientów); Po opublikowaniu planu publicznego nie można go później zmienić do prywatnego. Aby ten plan był dostępny tylko dla określonych klientów, wybierz opcję **tak**. W takim przypadku należy zidentyfikować klientów, podając ich identyfikatory subskrypcji. Można je wprowadzić jeden po jednym (dla maksymalnie 10 subskrypcji) lub przez przekazanie pliku CSV (dla maksymalnie 20 000 subskrypcji). Pamiętaj o dołączeniu własnych subskrypcji tutaj, aby móc testować i sprawdzać poprawność oferty. Aby uzyskać więcej informacji, zobacz [prywatne jednostki SKU i plany](../../marketplace/cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus.md).  |
 
 > [!IMPORTANT]
-> Po opublikowaniu planu jako publicznego nie można go zmienić na prywatny. Aby kontrolować, którzy klienci mogą akceptować ofertę i delegować zasoby, należy użyć planu prywatnego. W przypadku planu publicznego nie można ograniczyć dostępności do określonych klientów, a nawet do określonej liczby klientów (mimo że można już zrezygnować z sprzedaży planu w przypadku wybrania tej opcji). Obecnie nie ma żadnego mechanizmu odrzucania lub usuwania delegowania, gdy klient zaakceptuje ofertę, chociaż zawsze możesz skontaktować się z klientem i poproś o [usunięcie dostępu](view-manage-service-providers.md#add-or-remove-service-provider-offers).
+> Po opublikowaniu planu jako publicznego nie można go zmienić na prywatny. Aby kontrolować, którzy klienci mogą akceptować ofertę i delegować zasoby, należy użyć planu prywatnego. W przypadku planu publicznego nie można ograniczyć dostępności do określonych klientów, a nawet do określonej liczby klientów (mimo że można już zrezygnować z sprzedaży planu w przypadku wybrania tej opcji). [Dostęp do delegowania można usunąć](onboard-customer.md#remove-access-to-a-delegation) , gdy klient zaakceptuje ofertę tylko wtedy, gdy została uwzględniona **autoryzacja** z **definicją roli** ustawioną na [przypisanie rejestracji usług zarządzanych](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role) , po opublikowaniu oferty. Możesz również skontaktować się z klientem i poproś o [usunięcie dostępu](view-manage-service-providers.md#add-or-remove-service-provider-offers).
 
 ### <a name="manifest-details"></a>Szczegóły manifestu
 
@@ -76,7 +76,10 @@ Najpierw Podaj **wersję** manifestu. Użyj formatu *n. n. n* (na przykład 1.2.
 
 Następnie wprowadź swój **Identyfikator dzierżawy**. Jest to identyfikator GUID skojarzony z IDENTYFIKATORem dzierżawy Azure Active Directory organizacji (tj. dzierżawcą, w którym będziesz pracować w celu zarządzania zasobami klientów). Jeśli go nie masz, możesz go znaleźć, umieszczając kursor nad nazwą swojego konta w prawym górnym rogu Azure Portal lub wybierając pozycję **Przełącz katalog**.
 
-Na koniec Dodaj jeden lub więcej wpisów **autoryzacji** do planu. Autoryzacje definiują jednostki, które mogą uzyskiwać dostęp do zasobów i subskrypcji dla klientów, którzy kupują plan, i przypisują role, które udzielają określonych poziomów dostępu. Aby uzyskać szczegółowe informacje o obsługiwanych rolach, zobacz [dzierżawy, role i użytkowników w scenariuszach usługi Azure Lighthouse](../concepts/tenants-users-roles.md).
+Na koniec Dodaj jeden lub więcej wpisów **autoryzacji** do planu. Autoryzacje definiują jednostki, które mogą uzyskiwać dostęp do zasobów i subskrypcji dla klientów, którzy kupują plan, i przypisują role, które udzielają określonych poziomów dostępu.
+
+> [!TIP]
+> W większości przypadków użytkownik chce przypisać uprawnienia do grupy użytkowników usługi Azure AD lub nazwy głównej usług, a nie do serii poszczególnych kont użytkowników. Pozwala to na dodawanie lub usuwanie dostępu dla poszczególnych użytkowników bez konieczności aktualizacji i ponownego publikowania planu, gdy zmienią się wymagania dotyczące dostępu. Aby uzyskać dodatkowe zalecenia, zobacz [dzierżawy, role i użytkowników w scenariuszach usługi Azure Lighthouse](../concepts/tenants-users-roles.md).
 
 Dla każdej **autoryzacji**należy podać następujące dane. Następnie można wybrać **nową autoryzację** dowolną liczbę razy, aby dodać więcej użytkowników i definicje ról.
 
@@ -86,7 +89,7 @@ Dla każdej **autoryzacji**należy podać następujące dane. Następnie można 
 - **Role**możliwe do przypisania: jest to wymagane tylko wtedy, gdy w **definicji roli** dla tej autoryzacji została wybrana wartość administrator dostępu użytkowników. Jeśli tak, należy dodać co najmniej jedną przypisaną rolę w tym miejscu. Użytkownik w polu **Identyfikator obiektu usługi Azure AD** będzie mógł przypisać te role możliwe do **przypisania** do [tożsamości zarządzanych](../../active-directory/managed-identities-azure-resources/overview.md), które są wymagane w celu [wdrożenia zasad, które można skorygować](deploy-policy-remediation.md). Należy pamiętać, że żadne inne uprawnienia zwykle skojarzone z rolą administratora dostępu użytkowników będą stosowane dla tego użytkownika. Jeśli nie wybierzesz w tym miejscu co najmniej jednej roli, przesyłanie nie zostanie przekazane do certyfikacji. (Jeśli nie wybrano administratora dostępu użytkowników dla definicji roli tego użytkownika, to pole nie ma żadnego efektu).
 
 > [!TIP]
-> W większości przypadków użytkownik chce przypisać uprawnienia do grupy użytkowników usługi Azure AD lub nazwy głównej usług, a nie do serii poszczególnych kont użytkowników. Pozwala to na dodawanie lub usuwanie dostępu dla poszczególnych użytkowników bez konieczności aktualizacji i ponownego publikowania planu, gdy zmienią się wymagania dotyczące dostępu. Aby uzyskać dodatkowe zalecenia, zobacz [dzierżawy, role i użytkowników w scenariuszach usługi Azure Lighthouse](../concepts/tenants-users-roles.md).
+> Aby mieć pewność, że w razie potrzeby będzie można [usunąć dostęp do delegowania](onboard-customer.md#remove-access-to-a-delegation) , Uwzględnij **autoryzację** z **definicją roli** ustawioną na [przydział rejestracji usług zarządzanych](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role). Jeśli ta rola nie jest przypisana, delegowane zasoby mogą zostać usunięte tylko przez użytkownika w dzierżawie klienta.
 
 Po zakończeniu tych informacji możesz wybrać pozycję **nowy plan** dowolną liczbę razy, aby utworzyć dodatkowe plany. Gdy skończysz, wybierz pozycję **Zapisz**, a następnie przejdź do sekcji **Marketplace** .
 
@@ -147,7 +150,7 @@ Po zakończeniu wszystkich sekcji następnym krokiem jest opublikowanie oferty w
 Po dodaniu oferty przez klienta będzie można [delegować co najmniej jedną określoną subskrypcję lub grupę zasobów](view-manage-service-providers.md#delegate-resources), która następnie zostanie dołączona do zarządzania zasobami delegowanymi przez platformę Azure. Jeśli klient zaakceptuje ofertę, ale nie oddelegowano jeszcze żadnych zasobów, w górnej części **strony dostawcy** [**usług**](view-manage-service-providers.md) w Azure Portal zostanie wyświetlona Uwaga.
 
 > [!IMPORTANT]
-> Delegowanie musi odbywać się przez konto niebędące Gośćmi w dzierżawie klienta, które ma [wbudowaną rolę właściciela](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) dla dołączanej subskrypcji (lub która zawiera grupy zasobów, które są dołączane). Aby wyświetlić wszystkich użytkowników, którzy mogą delegować subskrypcję, użytkownik w dzierżawie klienta może wybrać subskrypcję w Azure Portal, otworzyć pozycję **Kontrola dostępu (IAM)** , [wyświetlić listę wszystkich ról](../../role-based-access-control/role-definitions-list.md#list-all-roles), a następnie wybrać pozycję **właściciel** , aby wyświetlić wszystkich użytkowników z tą rolą.
+> Delegowanie musi odbywać się przez konto niebędące Gośćmi w dzierżawie klienta, które ma [wbudowaną rolę właściciela](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) dla dołączanej subskrypcji (lub która zawiera grupy zasobów, które są dołączane). Aby wyświetlić wszystkich użytkowników, którzy mogą delegować subskrypcję, użytkownik w dzierżawie może wybrać subskrypcję w Azure Portal, otworzyć funkcję **Kontrola dostępu (IAM)** i [wyświetlić wszystkich użytkowników z rolą właściciela](../../role-based-access-control/role-assignments-list-portal.md#list-owners-of-a-subscription).
 
 Po oddelegowaniu subskrypcji (lub jednej lub większej liczby grup zasobów w ramach subskrypcji przez klienta) dostawca zasobów **Microsoft. ManagedServices** zostanie zarejestrowany dla tej subskrypcji, a użytkownicy w Twojej dzierżawie będą mogli uzyskiwać dostęp do zasobów delegowanych zgodnie z autoryzacjami w ofercie.
 

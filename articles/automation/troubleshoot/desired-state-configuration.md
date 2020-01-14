@@ -1,5 +1,5 @@
 ---
-title: Rozwiązywanie problemów z Azure Automation konfiguracją żądanego stanu (DSC)
+title: Rozwiązywanie problemów Azure Automation konfiguracji żądanego stanu (DSC)
 description: Ten artykuł zawiera informacje dotyczące rozwiązywania problemów z konfiguracją żądanego stanu (DSC)
 services: automation
 ms.service: automation
@@ -9,14 +9,14 @@ ms.author: magoedte
 ms.date: 04/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 3d358ac1fb766804b35d969f4d06bc6c07e62661
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 3c3c9950aab9a5a422ebc9e858daded2888fd82e
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951466"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834269"
 ---
-# <a name="troubleshoot-desired-state-configuration-dsc"></a>Rozwiązywanie problemów z konfiguracją żądanego stanu (DSC)
+# <a name="troubleshoot-issues-with-azure-automation-desired-state-configuration-dsc"></a>Rozwiązywanie problemów z Azure Automation konfiguracją żądanego stanu (DSC)
 
 Ten artykuł zawiera informacje dotyczące rozwiązywania problemów z konfiguracją żądanego stanu (DSC).
 
@@ -270,7 +270,7 @@ Traktuj węzeł między subskrypcjami, tak jakby był on w osobnej chmurze lub l
 
 Wykonaj poniższe kroki, aby zarejestrować węzeł.
 
-* Windows — [fizyczne/wirtualne maszyny z systemem Windows lokalnie lub w chmurze innej niż Azure/AWS](../automation-dsc-onboarding.md#physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azureaws).
+* Windows — [fizyczne/wirtualne maszyny z systemem Windows lokalnie lub w chmurze innej niż Azure/AWS](../automation-dsc-onboarding.md#physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azure-including-aws-ec2-instances).
 * Linux — [fizyczne/wirtualne maszyny z systemem Linux w środowisku lokalnym lub w chmurze innej niż Azure](../automation-dsc-onboarding.md#physicalvirtual-linux-machines-on-premises-or-in-a-cloud-other-than-azure).
 
 ### <a name="agent-has-a-problem"></a>Scenariusz: komunikat o błędzie — "Inicjowanie obsługi nie powiodło się"

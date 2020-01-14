@@ -83,7 +83,9 @@
       href: tutorial-connectivity.md
 - name: Pojęcia
   items:
-    - name: Wymuszanie protokołu TLS 1.2
+    - name: Obsługa protokołu TLS
+      href: iot-hub-tls.md
+    - name: Wycofanie protokołów TLS 1.0 i 1.1
       href: tls-1.2-everywhere.md
     - name: Przegląd wzbogaceń wiadomości
       href: iot-hub-message-enrichments-overview.md

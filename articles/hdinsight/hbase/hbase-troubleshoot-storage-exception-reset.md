@@ -7,14 +7,14 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/08/2019
-ms.openlocfilehash: 52135391024eafdfea15afd6c05a5d13bf92a2c7
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: a7af6407191577112f936bfb9048985e85c868ea
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091587"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75887227"
 ---
-# <a name="scenario-storage-exception-after-connection-reset-in-azure-hdinsight"></a>Scenariusz: Wyjątek magazynu po zresetowaniu połączenia w usłudze Azure HDInsight
+# <a name="scenario-storage-exception-after-connection-reset-in-azure-hdinsight"></a>Scenariusz: wyjątek magazynu po zresetowaniu połączenia w usłudze Azure HDInsight
 
 W tym artykule opisano kroki rozwiązywania problemów oraz możliwe rozwiązania problemów występujących w przypadku współpracy z klastrami usługi Azure HDInsight.
 
@@ -26,13 +26,13 @@ Nie można utworzyć nowej tabeli Apache HBase.
 
 Podczas procesu obcięcia tabeli wystąpił problem z połączeniem magazynu. Wpis tabeli został usunięty w tabeli metadanych HBase. Wszystkie pliki obiektów blob, ale zostały usunięte.
 
-Mimo że w magazynie nie znaleziono obiektu `/hbase/data/default/ThatTable` BLOB w folderze. Sterownik WASB znalazł obecność powyżej pliku obiektu BLOB i nie zezwolił na utworzenie obiektu BLOB o nazwie `/hbase/data/default/ThatTable` , ponieważ założono, że foldery nadrzędne istniały, w związku z czym Tworzenie tabeli zakończy się niepowodzeniem.
+Chociaż nie znaleziono obiektu BLOB folderu o nazwie `/hbase/data/default/ThatTable` w magazynie. Sterownik WASB znalazł obecność powyżej pliku obiektu BLOB i nie zezwolił na utworzenie obiektu BLOB o nazwie `/hbase/data/default/ThatTable`, ponieważ założono, że foldery nadrzędne istnieją, w związku z czym Tworzenie tabeli zakończy się niepowodzeniem.
 
-## <a name="resolution"></a>Rozwiązanie
+## <a name="resolution"></a>Rozdzielczość
 
-1. W interfejsie użytkownika Apache Ambari Uruchom ponownie aktywne serwera hmaster. Dzięki temu jedna z dwóch serwera hmaster stanu wstrzymania stanie się aktywna, a nowa aktywna serwera hmaster będzie ponownie ładować informacje tabeli metadanych. Oznacza to, że `already-deleted` tabela nie zostanie wyświetlona w interfejsie użytkownika serwera hmaster.
+1. W interfejsie użytkownika Apache Ambari Uruchom ponownie aktywne serwera hmaster. Dzięki temu jedna z dwóch serwera hmaster stanu wstrzymania stanie się aktywna, a nowa aktywna serwera hmaster będzie ponownie ładować informacje tabeli metadanych. W ten sposób nie zobaczysz tabeli `already-deleted` w interfejsie użytkownika serwera hmaster.
 
-1. Oddzielony plik obiektów BLOB można znaleźć w narzędziach interfejsu użytkownika, takich jak Eksplorator chmury `hdfs dfs -ls /xxxxxx/yyyyy`lub uruchomione polecenie takie jak. Uruchom `hdfs dfs -rmr /xxxxx/yyyy` , aby usunąć ten obiekt BLOB. Na przykład `hdfs dfs -rmr /hbase/data/default/ThatTable/ThatFile`.
+1. Oddzielony plik obiektów BLOB można znaleźć z narzędzi interfejsu użytkownika, takich jak Eksplorator chmury lub uruchomione polecenie, takie jak `hdfs dfs -ls /xxxxxx/yyyyy`. Uruchom `hdfs dfs -rmr /xxxxx/yyyy`, aby usunąć ten obiekt BLOB. Na przykład `hdfs dfs -rmr /hbase/data/default/ThatTable/ThatFile`.
 
 Teraz można utworzyć nową tabelę o tej samej nazwie w HBase.
 
@@ -42,6 +42,6 @@ Jeśli problem nie został wyświetlony lub nie można rozwiązać problemu, odw
 
 * Uzyskaj odpowiedzi od ekspertów platformy Azure za pośrednictwem [pomocy technicznej dla społeczności platformy Azure](https://azure.microsoft.com/support/community/).
 
-* Połącz się [@AzureSupport](https://twitter.com/azuresupport) z programem — oficjalnego konta Microsoft Azure, aby zwiększyć komfort obsługi klienta. Połączenie społeczności platformy Azure z właściwymi zasobami: odpowiedziami, wsparciem i ekspertami.
+* Połącz się z [@AzureSupport](https://twitter.com/azuresupport) — oficjalnego Microsoft Azure konta, aby zwiększyć komfort obsługi klienta. Połączenie społeczności platformy Azure z właściwymi zasobami: odpowiedziami, wsparciem i ekspertami.
 
-* Jeśli potrzebujesz więcej pomocy, możesz przesłać żądanie pomocy technicznej z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Na pasku menu wybierz pozycję **Obsługa** , a następnie otwórz Centrum **pomocy i obsługi technicznej** . Aby uzyskać szczegółowe informacje, zapoznaj [się z tematem jak utworzyć żądanie pomocy technicznej platformy Azure](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). Dostęp do pomocy w zakresie zarządzania subskrypcjami i rozliczeń jest dostępny w ramach subskrypcji Microsoft Azure, a pomoc techniczna jest świadczona za pomocą jednego z [planów pomocy technicznej systemu Azure](https://azure.microsoft.com/support/plans/).
+* Jeśli potrzebujesz więcej pomocy, możesz przesłać żądanie pomocy technicznej z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Na pasku menu wybierz pozycję **Obsługa** , a następnie otwórz Centrum **pomocy i obsługi technicznej** . Aby uzyskać szczegółowe informacje, zapoznaj [się z tematem jak utworzyć żądanie pomocy technicznej platformy Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). Dostęp do pomocy w zakresie zarządzania subskrypcjami i rozliczeń jest dostępny w ramach subskrypcji Microsoft Azure, a pomoc techniczna jest świadczona za pomocą jednego z [planów pomocy technicznej systemu Azure](https://azure.microsoft.com/support/plans/).

@@ -1,6 +1,6 @@
 ---
-title: Tworzenie grupy dynamicznej i sprawdzanie stanu — Azure AD | Microsoft Docs
-description: Jak utworzyć regułę członkostwa w grupie w Azure Portal, sprawdź stan.
+title: Tworzenie lub edytowanie grupy dynamicznej oraz pobieranie stanu — Azure AD | Microsoft Docs
+description: Jak utworzyć lub zaktualizować regułę członkostwa w grupie w Azure Portal i sprawdzić jej stan przetwarzania.
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -9,19 +9,19 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 11/08/2019
+ms.date: 01/07/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7e8ce4f2fbdffc46d18a5f94496e9433c01a65fb
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.openlocfilehash: d2ed7f27e2145f666f38eec5ddc6c985a4d32138
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74900932"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768773"
 ---
-# <a name="create-a-dynamic-group-and-check-status"></a>Utwórz grupę dynamiczną i sprawdź stan
+# <a name="create-or-update-a-dynamic-group-in-azure-active-directory"></a>Utwórz lub Zaktualizuj grupę dynamiczną w Azure Active Directory
 
 W Azure Active Directory (Azure AD) można używać reguł do określania członkostwa w grupach na podstawie właściwości użytkownika lub urządzenia. W tym artykule opisano sposób konfigurowania reguły dla grupy dynamicznej w Azure Portal.
 Dynamiczne członkostwo jest obsługiwane dla grup zabezpieczeń lub grup pakietu Office 365. Po zastosowaniu reguły członkostwa w grupie atrybuty użytkownika i urządzenia są oceniane pod kątem zgodności z regułą członkostwa. Gdy atrybut zostanie zmieniony dla użytkownika lub urządzenia, wszystkie reguły grupy dynamicznej w organizacji są przetwarzane pod kątem zmiany członkostwa. Użytkownicy i urządzenia są dodawani lub usuwani, jeśli spełnią warunki dla grupy. Grupy zabezpieczeń mogą być używane dla urządzeń lub użytkowników, ale grupy Office 365 mogą dotyczyć tylko grup użytkowników.
@@ -40,7 +40,7 @@ Poniżej przedstawiono kilka przykładów zaawansowanych reguł lub składni, dl
 > [!NOTE]
 > Konstruktor reguł może nie być w stanie wyświetlić niektórych reguł skonstruowanych w polu tekstowym. Gdy Konstruktor reguł nie może wyświetlić reguły, może zostać wyświetlony komunikat. Konstruktor reguł nie zmienia obsługiwanej składni, walidacji lub przetwarzania reguł grupy dynamicznej w dowolny sposób.
 
-![Dodawanie reguły członkostwa dla grupy dynamicznej](./media/groups-update-rule/update-dynamic-group-rule.png)
+![Dodawanie reguły członkostwa dla grupy dynamicznej](./media/groups-create-rule/update-dynamic-group-rule.png)
 
 Przykłady składni, obsługiwane właściwości, operatory i wartości dla reguły członkostwa można znaleźć w temacie [dynamiczne reguły członkostwa dla grup w Azure Active Directory](groups-dynamic-membership.md).
 
@@ -63,6 +63,20 @@ Przykłady składni, obsługiwane właściwości, operatory i wartości dla regu
 1. Na stronie **Nowa grupa** wybierz pozycję **Utwórz** , aby utworzyć grupę.
 
 Jeśli wprowadzona reguła jest nieprawidłowa, wyjaśnienie, dlaczego nie można przetworzyć reguły, jest wyświetlana w powiadomieniach platformy Azure w portalu. Przeczytaj uważnie, aby zrozumieć, jak naprawić regułę.
+
+## <a name="to-update-an-existing-rule"></a>Aby zaktualizować istniejącą regułę
+
+1. Zaloguj się do [Centrum administracyjnego usługi Azure AD](https://aad.portal.azure.com) przy użyciu konta należącego do roli Administrator globalny, administrator grupy, administrator usługi Intune lub administrator użytkowników w dzierżawie.
+1. Wybierz **grupy** > **wszystkie grupy**.
+1. Wybierz grupę, aby otworzyć jej profil.
+1. Na stronie profil grupy wybierz pozycję **dynamiczne reguły członkostwa**. Konstruktor reguł obsługuje maksymalnie pięć wyrażeń. Aby dodać więcej niż pięć wyrażeń, należy użyć pola tekstowego.
+
+   ![Dodawanie reguły członkostwa dla grupy dynamicznej](./media/groups-create-rule/update-dynamic-group-rule.png)
+
+1. Aby wyświetlić niestandardowe właściwości rozszerzenia dostępne dla reguły członkostwa:
+   1. Wybierz pozycję **Pobierz niestandardowe właściwości rozszerzenia**
+   1. Wprowadź identyfikator aplikacji, a następnie wybierz pozycję **Odśwież właściwości**.
+1. Po zaktualizowaniu reguły wybierz pozycję **Zapisz**.
 
 ## <a name="turn-on-or-off-welcome-email"></a>Włączanie lub wyłączanie powitalnej poczty e-mail
 

@@ -1,6 +1,6 @@
 ---
 title: 'Samouczek: Konfigurowanie programu dla automatycznej aprowizacji użytkowników przy użyciu Azure Active Directory | Microsoft Docs'
-description: Dowiedz się, jak skonfigurować Azure Active Directory, aby automatycznie udostępniać i cofać obsługę administracyjną kont użytkowników.
+description: Dowiedz się, jak skonfigurować Azure Active Directory, aby automatycznie inicjować udostępnianie kont użytkowników i cofać ich obsługę.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -15,156 +15,164 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/29/2019
 ms.author: Zhchia
-ms.openlocfilehash: 34d05d6392e00757bf1e5562ffd8341ad04cc9dc
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 9d00024351c18789e26120cc2af006b9aac4232d
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74807760"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75767844"
 ---
 # <a name="tutorial-configure-harness-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie programu dla automatycznej aprowizacji użytkowników
 
-Celem tego samouczka jest przedstawienie czynności, które należy wykonać w ramach programu obsługi i Azure Active Directory (Azure AD) w celu skonfigurowania usługi Azure AD w celu automatycznego aprowizacji i cofania aprowizacji użytkowników i/lub grup do udostępnienia.
+W tym artykule dowiesz się, jak skonfigurować usługę Azure Active Directory (Azure AD) w celu automatycznego aprowizacji i cofania aprowizacji użytkowników lub grup do udostępnienia.
 
 > [!NOTE]
-> Ten samouczek zawiera opis łącznika utworzonego na podstawie usługi Azure AD User Provisioning. Aby uzyskać ważne informacje o tym, jak działa ta usługa, jak ona dotyczy, i często zadawanych pytań, zobacz [Automatyzowanie aprowizacji użytkowników i Anulowanie udostępniania aplikacji SaaS przy użyciu programu Azure Active Directory](../manage-apps/user-provisioning.md).
+> W tym artykule opisano łącznik, który jest oparty na usłudze aprowizacji użytkowników usługi Azure AD. Aby uzyskać ważne informacje dotyczące tej usługi i odpowiedzi na często zadawane pytania, zobacz [Automatyzowanie aprowizacji użytkowników i Cofanie udostępniania aplikacji SaaS przy użyciu Azure Active Directory](../manage-apps/user-provisioning.md).
 >
-> Ten łącznik jest obecnie w publicznej wersji zapoznawczej. Aby uzyskać więcej informacji na temat ogólnych Microsoft Azure warunki użytkowania funkcji w wersji zapoznawczej, zobacz [dodatkowe warunki użytkowania dla Microsoft Azure podglądów](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Ten łącznik jest obecnie w wersji zapoznawczej. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Scenariusz opisany w tym samouczku założono, że masz już następujące wymagania wstępne:
+W scenariuszu opisanym w tym artykule przyjęto założenie, że istnieją już następujące wymagania wstępne:
 
 * Dzierżawa usługi Azure AD
 * [Dzierżawa programu](https://harness.io/pricing/)
-* Konto użytkownika w programie z uprawnieniami administratora.
+* Konto użytkownika w programie do współdzielenia z uprawnieniami *administratora*
 
-## <a name="assigning-users-to-harness"></a>Przypisywanie użytkowników do programu
+## <a name="assign-users-to-harness"></a>Przypisywanie użytkowników do programu
 
-Azure Active Directory używa koncepcji zwanej *zadaniami* w celu określenia, którzy użytkownicy powinni otrzymywać dostęp do wybranych aplikacji. W kontekście automatycznej aprowizacji użytkowników są synchronizowane tylko użytkownicy i/lub grupy, które zostały przypisane do aplikacji w usłudze Azure AD.
+Azure Active Directory używa koncepcji zwanej *zadaniami* w celu określenia, którzy użytkownicy powinni otrzymywać dostęp do wybranych aplikacji. W kontekście automatycznej aprowizacji użytkowników są synchronizowane tylko użytkownicy lub grupy, które zostały przypisane do aplikacji w usłudze Azure AD.
 
-Przed skonfigurowaniem i włączeniem automatycznej aprowizacji użytkowników należy zdecydować, którzy użytkownicy i/lub grupy w usłudze Azure AD potrzebują dostępu do programu. Po ustaleniu tych użytkowników i/lub grup możesz przypisać je do programu, postępując zgodnie z poniższymi instrukcjami:
-* [Przypisywanie użytkownika lub grupy do aplikacji dla przedsiębiorstw](../manage-apps/assign-user-or-group-access-portal.md)
+Przed skonfigurowaniem i włączeniem automatycznej aprowizacji użytkowników należy zdecydować, którzy użytkownicy lub grupy w usłudze Azure AD potrzebują dostępu do programu. Następnie można przypisać tych użytkowników lub grupy do programu, postępując zgodnie z instrukcjami w temacie [Przypisywanie użytkownika lub grupy do aplikacji dla przedsiębiorstw](../manage-apps/assign-user-or-group-access-portal.md).
 
 ## <a name="important-tips-for-assigning-users-to-harness"></a>Ważne porady dotyczące przypisywania użytkowników do programu
 
-* Zaleca się, aby jeden użytkownik usługi Azure AD został przypisany do programu do obsługi przetestowania automatycznej konfiguracji aprowizacji użytkowników. Dodatkowych użytkowników i/lub grupy można przypisywać później.
+* Zalecamy przypisanie pojedynczego użytkownika usługi Azure AD do programu, aby przetestować konfigurację automatycznej aprowizacji użytkowników. Dodatkowych użytkowników lub grup można przypisywać później.
 
-* Podczas przypisywania użytkownika do programu, należy wybrać dowolną prawidłową rolę specyficzną dla aplikacji (jeśli jest dostępna) w oknie dialogowym przypisania. Użytkownicy z **domyślną rolą dostępu** są wykluczeni z aprowizacji.
+* Po przypisaniu użytkownika do programu, należy wybrać dowolną prawidłową rolę specyficzną dla aplikacji (jeśli jest dostępna) w oknie dialogowym **przypisanie** . Użytkownicy z *domyślną rolą dostępu* są wykluczeni z aprowizacji.
 
 ## <a name="set-up-harness-for-provisioning"></a>Konfigurowanie programu dla aprowizacji
 
-1. Zaloguj się do [konsoli administracyjnej](https://app.harness.io/#/login)programu. Przejdź do programu **ciągłe zabezpieczenia > zarządzanie dostępem**.
+1. Zaloguj się do [konsoli administracyjnej](https://app.harness.io/#/login)programu, a następnie przejdź do pozycji **ciągłe zabezpieczenia** > **Zarządzanie dostępem**.
 
     ![Konsola administracyjna programu](media/harness-provisioning-tutorial/admin.png)
 
-2.  Kliknij pozycję **klucze interfejsu API**.
+1. Wybierz pozycję **klucze interfejsu API**.
 
-    ![Dodaj Standard scim](media/harness-provisioning-tutorial/apikeys.png)
+    ![Link kluczy interfejsu API usługi](media/harness-provisioning-tutorial/apikeys.png)
 
-3. Kliknij pozycję **Dodaj nowy klucz**. W oknie dialogowym **Dodaj klucz interfejsu API** Podaj **nazwę** i wybierz opcję z **uprawnień dziedziczonych z** menu rozwijanego. Kliknij przycisk **Prześlij** .
+1. Wybierz pozycję **Dodaj klucz interfejsu API**. 
 
-    ![Dodaj nowy klucz do zespołu](media/harness-provisioning-tutorial/addkey.png)
+    ![Link dodawania klucza interfejsu API](media/harness-provisioning-tutorial/addkey.png)
 
-    ![Okno dialogowe Dodawanie nowego klucza](media/harness-provisioning-tutorial/title.png)
+1. W okienku **Dodaj klucz interfejsu API** wykonaj następujące czynności:
 
-3.  Skopiuj **klucz**. Ta wartość zostanie wprowadzona w polu token tajny na karcie aprowizacji aplikacji programu dla zespołu w Azure Portal.
+    ![Panel dodawania klucza interfejsu API](media/harness-provisioning-tutorial/title.png)
+   
+   a. W polu **Nazwa** Podaj nazwę klucza.  
+   b. Z listy rozwijanej **uprawnienia Odziedziczone z** wybierz opcję. 
+   
+1. Wybierz pozycję **Prześlij**.
+
+1. Skopiuj **klucz** do późniejszego użycia w tym samouczku.
 
     ![Utwórz token dla zespołu](media/harness-provisioning-tutorial/token.png)
 
 ## <a name="add-harness-from-the-gallery"></a>Dodaj zespół z galerii
 
-Przed skonfigurowaniem programu do obsługi automatycznego aprowizacji użytkowników w usłudze Azure AD należy dodać zespół z galerii aplikacji usługi Azure AD do listy zarządzanych aplikacji SaaS.
+Przed skonfigurowaniem programu do automatycznej aprowizacji użytkowników przy użyciu usługi Azure AD należy dodać zespół z galerii aplikacji usługi Azure AD do listy zarządzanych aplikacji SaaS.
 
-**Aby dodać program do programu z galerii aplikacji usługi Azure AD, wykonaj następujące czynności:**
+1. W [witrynie Azure Portal](https://portal.azure.com) w okienku po lewej stronie wybierz pozycję **Azure Active Directory**.
 
-1. W **[Azure Portal](https://portal.azure.com)** w lewym panelu nawigacyjnym wybierz pozycję **Azure Active Directory**.
+    ![Przycisk "Azure Active Directory"](common/select-azuread.png)
 
-    ![Przycisk Azure Active Directory](common/select-azuread.png)
+1. Wybierz pozycję **Aplikacje dla przedsiębiorstw** > **Wszystkie aplikacje**.
 
-2. Przejdź do pozycji **aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **wszystkie aplikacje**.
+    ![Łącze "wszystkie aplikacje"](common/enterprise-applications.png)
 
-    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
+1. Aby dodać nową aplikację, wybierz przycisk **Nowa aplikacja** w górnej części okienka.
 
-3. Aby dodać nową aplikację, wybierz przycisk **Nowa aplikacja** w górnej części okienka.
+    ![Przycisk "Nowa aplikacja"](common/add-new-app.png)
 
-    ![Przycisk Nowa aplikacja](common/add-new-app.png)
-
-4. W polu wyszukiwania wprowadź wartość **zespół**, wybierz pozycję **zespół** w panelu wyników, a następnie kliknij przycisk **Dodaj** , aby dodać aplikację.
+1. W polu wyszukiwania wprowadź wartość **zespół**, wybierz pozycję **zespół** na liście wyników, a następnie wybierz przycisk **Dodaj** , aby dodać aplikację.
 
     ![Korzystanie z listy wyników](common/search-new-app.png)
 
-## <a name="configuring-automatic-user-provisioning-to-harness"></a>Konfigurowanie automatycznego aprowizacji użytkowników do programu 
+## <a name="configure-automatic-user-provisioning-to-harness"></a>Konfigurowanie automatycznego aprowizacji użytkowników do programu 
 
-Ta sekcja przeprowadzi Cię przez kroki konfigurowania usługi Azure AD Provisioning w celu tworzenia, aktualizowania i wyłączania użytkowników i/lub grup w programie dla programu na podstawie przypisań użytkowników i/lub grup w usłudze Azure AD.
+Ta sekcja przeprowadzi Cię przez kroki konfigurowania usługi Azure AD Provisioning w celu tworzenia, aktualizowania i wyłączania użytkowników lub grup w ramach programu obsługi na podstawie przypisań użytkowników lub grup w usłudze Azure AD.
 
 > [!TIP]
-> Możesz również włączyć logowanie jednokrotne oparte na protokole SAML dla programu obsługi, postępując zgodnie z instrukcjami podanymi w [samouczku logowanie](https://docs.microsoft.com/azure/active-directory/saas-apps/harness-tutorial)jednokrotne w programie. Logowanie jednokrotne można skonfigurować niezależnie od automatycznej aprowizacji użytkowników, chociaż te dwie funkcje uzupełniają się wzajemnie
+> Możesz również włączyć logowanie jednokrotne oparte na protokole SAML dla programu obsługi, postępując zgodnie z instrukcjami w [samouczku logowanie](https://docs.microsoft.com/azure/active-directory/saas-apps/harness-tutorial)jednokrotne w programie. Można skonfigurować Logowanie jednokrotne niezależnie od automatycznej aprowizacji użytkowników, chociaż te dwie funkcje uzupełniają się wzajemnie.
 
 > [!NOTE]
-> Aby dowiedzieć się więcej o punkcie końcowym "Standard scim", zapoznaj się z [tym](https://docs.harness.io/article/smloyragsm-api-keys)
+> Aby dowiedzieć się więcej o punkcie końcowym programu Standard scim, zobacz artykuł [klucze interfejsu API](https://docs.harness.io/article/smloyragsm-api-keys) usługi.
 
-### <a name="to-configure-automatic-user-provisioning-for-harness-in-azure-ad"></a>Aby skonfigurować funkcję automatycznej aprowizacji użytkowników dla programu obsługi w usłudze Azure AD:
+Aby skonfigurować automatyczną obsługę administracyjną dla programu obsługi w usłudze Azure AD, wykonaj następujące czynności:
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com). Wybierz pozycję **aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **wszystkie aplikacje**.
+1. W [Azure Portal](https://portal.azure.com)wybierz pozycję **aplikacje dla przedsiębiorstw** > **wszystkie aplikacje**.
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-2. Na liście Aplikacje wybierz pozycję **zespół**.
+1. Na liście Aplikacje wybierz pozycję **zespół**.
 
     ![Link programu dla programu z listy aplikacji](common/all-applications.png)
 
-3. Wybierz kartę **aprowizacji** .
+1. Wybierz opcję **aprowizacji**.
 
-    ![Karta aprowizacji](common/provisioning.png)
+    ![Przycisk aprowizacji](common/provisioning.png)
 
-4. Ustaw **tryb aprowizacji** na **automatyczny**.
+1. Z listy rozwijanej **tryb aprowizacji** wybierz pozycję **automatycznie**.
 
-    ![Karta aprowizacji](common/provisioning-automatic.png)
+    ![Lista rozwijana "tryb aprowizacji"](common/provisioning-automatic.png)
 
-5. W sekcji **poświadczenia administratora** wprowadź `https://app.harness.io/gateway/api/scim/account/XCPzWkCIQ46ypIu2DeT7yw` w **adresie URL dzierżawy**. Wprowadź wartość **tokenu uwierzytelniania Standard scim** pobraną wcześniej w **tokenie tajnym**. Kliknij pozycję **Testuj połączenie** , aby upewnić się, że usługa Azure AD może nawiązać połączenie z usługą. Jeśli połączenie nie powiedzie się, upewnij się, że konto usługi dla zespołu ma uprawnienia administratora i spróbuj ponownie.
+1. W obszarze **poświadczenia administratora**wykonaj następujące czynności:
 
     ![Adres URL dzierżawy + token](common/provisioning-testconnection-tenanturltoken.png)
+ 
+   a. W polu **adres URL dzierżawy** wprowadź **`https://app.harness.io/gateway/api/scim/account/XCPzWkCIQ46ypIu2DeT7yw`** .  
+   b. W polu **token Secret** wprowadź wartość tokenu uwierzytelniania Standard scim, która została zapisana w kroku 6 sekcji "Konfigurowanie usługi dla aprowizacji".  
+   d. Wybierz pozycję **Testuj połączenie** , aby upewnić się, że usługa Azure AD może nawiązać połączenie z serwerem programu. Jeśli połączenie nie powiedzie się, upewnij się, że konto usługi klienta ma uprawnienia *administratora* , a następnie spróbuj ponownie.
 
-6. W polu **adres E-mail powiadomienia** wprowadź adres e-mail osoby lub grupy, które powinny otrzymywać powiadomienia o błędach aprowizacji, i zaznacz pole wyboru — **Wyślij powiadomienie e-mail, gdy wystąpi awaria**.
+1. W polu **E-mail powiadomienia** wprowadź adres e-mail osoby lub grupy, która powinna otrzymywać powiadomienia o błędach aprowizacji, a następnie zaznacz pole wyboru **Wyślij powiadomienie e-mail, gdy wystąpi błąd** .
 
-    ![Adres e-mail powiadamiania](common/provisioning-notification-email.png)
+    ![Pole "powiadomienie E-mail"](common/provisioning-notification-email.png)
 
-7. Kliknij przycisk **Save** (Zapisz).
+1. Wybierz pozycję **Zapisz**.
 
-8. W sekcji **mapowania** wybierz pozycję **Synchronizuj Azure Active Directory użytkowników do programu**.
+1. W obszarze **mapowania**wybierz pozycję **Synchronizuj Azure Active Directory użytkownicy, aby uzyskać**dostęp.
 
-    ![Mapowanie użytkowników z korzystaniem z zespołu](media/harness-provisioning-tutorial/usermappings.png)
+    ![Łącze "Synchronizuj Azure Active Directory użytkowników do zespołu"](media/harness-provisioning-tutorial/usermappings.png)
 
-9. Przejrzyj atrybuty użytkownika synchronizowane z usługą Azure AD, aby uzyskać dostęp do programu w sekcji **Mapowanie atrybutów** . Atrybuty wybrane jako **pasujące** właściwości są używane w celu dopasowania do kont użytkowników w programie dla operacji aktualizacji. Wybierz przycisk **Zapisz** , aby zatwierdzić zmiany.
+1. W obszarze **mapowania atrybutów**Przejrzyj atrybuty użytkownika, które są synchronizowane z usługi Azure AD do programu. Atrybuty wybrane jako *zgodne* są używane do dopasowywania do kont użytkowników w programie dla operacji aktualizacji. Wybierz pozycję **Zapisz** , aby zatwierdzić wszelkie zmiany.
 
-    ![Wykorzystaj atrybuty użytkownika](media/harness-provisioning-tutorial/userattributes.png)
+    ![Okienko "Mapowanie atrybutów" użytkownika](media/harness-provisioning-tutorial/userattributes.png)
 
-10. W sekcji **mapowania** wybierz kolejno pozycje **Synchronizuj Azure Active Directory grupy, aby uzyskać**dostęp.
+1. W obszarze **mapowania**wybierz pozycję **Synchronizuj grupy Azure Active Directory, aby uzyskać**dostęp.
 
-    ![Mapowania grup zespołu](media/harness-provisioning-tutorial/groupmappings.png)
+    ![Łącze "Synchronizuj grupy Azure Active Directory do zespołu"](media/harness-provisioning-tutorial/groupmappings.png)
 
-11. Przejrzyj atrybuty grupy, które są synchronizowane z usługi Azure AD, aby uzyskać możliwość wypróbowania w sekcji **Mapowanie atrybutów** . Atrybuty wybrane jako **pasujące** właściwości są używane do dopasowania do grup w programie dla operacji aktualizacji. Wybierz przycisk **Zapisz** , aby zatwierdzić zmiany.
+1. W obszarze **mapowania atrybutów**Przejrzyj atrybuty grupy, które są synchronizowane z usługi Azure AD do programu. Atrybuty wybrane jako *pasujące* właściwości są używane do dopasowania do grup w programie dla operacji aktualizacji. Wybierz pozycję **Zapisz** , aby zatwierdzić wszelkie zmiany.
 
-    ![Atrybuty grupy dla zespołu](media/harness-provisioning-tutorial/groupattributes.png)
+    ![Okienko "Mapowanie atrybutów" grupy](media/harness-provisioning-tutorial/groupattributes.png)
 
-12. Aby skonfigurować filtry określania zakresu, zapoznaj się z poniższymi instrukcjami w [samouczku dotyczącym filtru określania zakresu](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
+1. Aby skonfigurować filtry określania zakresu, zobacz Tworzenie [aplikacji opartych na atrybutach przy użyciu filtrów zakresu](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
 
-13. Aby włączyć usługę Azure AD Provisioning dla programu, Zmień **stan aprowizacji** na **włączone** w sekcji **Ustawienia** .
+1. W obszarze **Ustawienia**, aby włączyć usługę Azure AD Provisioning dla programu, Przełącz przełącznik **stanu aprowizacji** na **włączony**.
 
-    ![Stan aprowizacji jest przełączany](common/provisioning-toggle-on.png)
+    ![Przełącznik stanu aprowizacji jest przełączany do "on"](common/provisioning-toggle-on.png)
 
-14. Zdefiniuj użytkowników i/lub grupy, które chcesz udostępnić, wybierając odpowiednie wartości w **zakresie** w sekcji **Ustawienia** .
+1. W obszarze **Ustawienia**wybierz z listy rozwijanej **zakres** , w jaki sposób chcesz synchronizować użytkowników lub grupy, które są używane do obsługi.
 
     ![Zakres aprowizacji](common/provisioning-scope.png)
 
-15. Gdy wszystko będzie gotowe do udostępnienia, kliknij przycisk **Zapisz**.
+1. Gdy wszystko będzie gotowe do udostępnienia, wybierz pozycję **Zapisz**.
 
-    ![Zapisywanie konfiguracji aprowizacji](common/provisioning-configuration-save.png)
+    ![Przycisk zapisywania aprowizacji](common/provisioning-configuration-save.png)
 
-Ta operacja uruchamia początkową synchronizację wszystkich użytkowników i/lub grup zdefiniowanych w **zakresie** w sekcji **Ustawienia** . Synchronizacja początkowa trwa dłużej niż kolejne synchronizacje, które wystąpiły co około 40 minut, o ile usługa Azure AD Provisioning jest uruchomiona. Możesz użyć sekcji **szczegóły synchronizacji** do monitorowania postępu i postępuj zgodnie z raportem aktywności aprowizacji, który opisuje wszystkie akcje wykonywane przez usługę Azure AD Provisioning w ramach programu.
+Ta operacja uruchamia początkową synchronizację użytkowników lub grup, które są inicjowane. Synchronizacja początkowa trwa dłużej niż w późniejszym czasie. Synchronizacje odbywają się około co 40 minut, o ile usługa Azure AD Provisioning jest uruchomiona. Aby monitorować postęp, przejdź do sekcji **szczegóły synchronizacji** . Możesz również śledzić łącza do raportu działań aprowizacji, który opisuje wszystkie akcje wykonywane przez usługę Azure AD Provisioning w ramach programu.
 
-Aby uzyskać więcej informacji na temat sposobu odczytywania aprowizacji dzienniki usługi Azure AD, zobacz [raportowanie na inicjowanie obsługi administracyjnej konta użytkownika automatyczne](../manage-apps/check-status-user-account-provisioning.md).
+Aby uzyskać więcej informacji o sposobie odczytywania dzienników aprowizacji usługi Azure AD, zobacz [raport dotyczący automatycznego inicjowania obsługi konta użytkownika](../manage-apps/check-status-user-account-provisioning.md).
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 

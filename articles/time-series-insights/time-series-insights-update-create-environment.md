@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: tutorial
 ms.date: 12/26/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6adb48b9d6c490b60302f93101506ec53679ae4f
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: bebc7dde30dad57157d0abee7f2294d9da58fd5c
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75530407"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861816"
 ---
 # <a name="tutorial-set-up-an-azure-time-series-insights-preview-environment"></a>Samouczek: Konfigurowanie środowiska Azure Time Series Insights w wersji zapoznawczej
 
@@ -39,7 +39,7 @@ Utwórz konto [bezpłatnej subskrypcji platformy Azure](https://azure.microsoft.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Co najmniej musisz mieć rolę **współautor** dla subskrypcji platformy Azure. Aby uzyskać więcej informacji, zobacz [Zarządzanie dostępem przy użyciu kontroli dostępu opartej na rolach i Azure Portal](../role-based-access-control/role-assignments-portal.md).
+* Co najmniej musisz mieć rolę **współautor** dla subskrypcji platformy Azure. Aby uzyskać więcej informacji, zapoznaj się z tematem [Zarządzanie dostępem przy użyciu kontroli dostępu opartej na rolach i Azure Portal](../role-based-access-control/role-assignments-portal.md).
 
 ## <a name="create-a-device-simulation"></a>Tworzenie symulacji urządzeń
 
@@ -62,12 +62,12 @@ W tej sekcji utworzysz trzy symulowane urządzenia, które wysyłają dane do wy
 
    [![zainicjować obsługę rozwiązania do symulacji urządzeń.](media/v2-update-provision/iot-solution-accelerators-configuration.png)](media/v2-update-provision/iot-solution-accelerators-configuration.png#lightbox)
 
-1. Po zakończeniu aprowizacji zobaczysz dwie aktualizacje zawierające stan wdrożenia przeniesiono z **aprowizacji** na **gotowe**. 
+1. Po zakończeniu aprowizacji zostaną wyświetlone dwa powiadomienia informujące o tym, że stan wdrożenia został przeniesiony z **aprowizacji** do **gotowe**. 
 
    >[!IMPORTANT]
    > Nie wprowadzaj jeszcze akceleratora rozwiązania. Pozostaw Tę stronę sieci Web otwartą, ponieważ wrócisz do niej później.
 
-   [Zakończono Inicjowanie obsługi rozwiązania symulacji urządzenia ![.](media/v2-update-provision/iot-solution-accelerator-ready.png)](media/v2-update-provision/iot-solution-accelerator-ready.png#lightbox)
+   [Zakończono Inicjowanie obsługi rozwiązań symulacji urządzenia ![.](media/v2-update-provision/iot-solution-accelerator-ready.png)](media/v2-update-provision/iot-solution-accelerator-ready.png#lightbox)
 
 1. Teraz Sprawdź nowo utworzone zasoby w Azure Portal. Na stronie **grupy zasobów** Zwróć uwagę, że nowa grupa zasobów została utworzona przy użyciu **nazwy rozwiązania** podanej w ostatnim kroku. Zanotuj zasoby, które zostały utworzone dla symulacji urządzenia.
 
@@ -92,7 +92,7 @@ W tej sekcji opisano sposób tworzenia środowiska Azure Time Series Insights w 
     | **Grupa zasobów** | Wybierz istniejącą grupę zasobów lub Utwórz nową grupę zasobów dla zasobu środowiska Azure Time Series Insights wersji zapoznawczej. Grupa zasobów jest kontenerem zasobów platformy Azure. Najlepszym rozwiązaniem jest użycie tej samej grupy zasobów co inne zasoby IoT, które są tworzone przez symulatora urządzeń. |
     | **Lokalizacja** | Wybierz region centrum danych dla środowiska Azure Time Series Insights w wersji zapoznawczej. Aby uniknąć dodatkowego opóźnienia, najlepszym rozwiązaniem jest utworzenie środowiska Azure Time Series Insights w wersji zapoznawczej w tym samym regionie, w którym znajduje się centrum IoT utworzone w symulatorze urządzeń. |
     | **Warstwa** |  Wybierz pozycję **PAYG** (*płatność zgodnie z rzeczywistym*użyciem). Jest to jednostka SKU produktu Azure Time Series Insights w wersji zapoznawczej. |
-    | **Nazwa właściwości** | Wprowadź wartość, która jednoznacznie identyfikuje wystąpienie szeregów czasowych. Nie można później zmienić wartości wprowadzonej w polu **ID właściwości** . Na potrzeby tego samouczka wprowadź ***iothub-Connection-Device-ID***. Aby dowiedzieć się więcej na temat identyfikatora szeregów czasowych, zobacz [najlepsze rozwiązania dotyczące wybierania identyfikatora szeregów czasowych](./time-series-insights-update-how-to-id.md). |
+    | **Nazwa właściwości** | Wprowadź wartość, która jednoznacznie identyfikuje wystąpienie szeregów czasowych. Nie można później zmienić wartości wprowadzonej w polu **ID właściwości** . Na potrzeby tego samouczka wprowadź ***iothub-Connection-Device-ID***. Aby dowiedzieć się więcej na temat identyfikatora szeregów czasowych, Przeczytaj [najlepsze rozwiązania dotyczące wybierania identyfikatora szeregów czasowych](./time-series-insights-update-how-to-id.md). |
     | **Nazwa konta magazynu** | Wprowadź globalnie unikatową nazwę nowego konta magazynu.|
     |**Włącz sklep ciepły**|Wybierz pozycję **tak** , aby włączyć sklep ciepły. Można wrócić później i włączyć to ustawienie. |
     |**Przechowywanie danych (w dniach)**|Wybierz opcję domyślną 7 dni. |
@@ -125,7 +125,7 @@ W tej sekcji opisano sposób tworzenia środowiska Azure Time Series Insights w 
 
     [![przegląd + Tworzenie strony z przyciskiem Utwórz.](media/v2-update-provision/tsi-environment-confirmation.png)](media/v2-update-provision/tsi-environment-confirmation.png#lightbox)
 
-    Możesz zobaczyć stan wdrożenia:
+    Stan wdrożenia można sprawdzić:
 
     [![powiadomienia o zakończeniu wdrażania.](media/v2-update-provision/tsi-deployment-notification.png)](media/v2-update-provision/tsi-deployment-notification.png#lightbox)
 
@@ -169,7 +169,7 @@ Teraz, gdy wdrożono środowisko Time Series Insights, Rozpocznij przesyłanie s
 
     Wybierz pozycję **Rozpocznij symulację**.
 
-    Na pulpicie nawigacyjnym symulacji urządzenia będą widoczne **aktywne urządzenia** i **całkowita liczba komunikatów**.
+    Na pulpicie nawigacyjnym symulacji urządzenia są wyświetlane **aktywne urządzenia** i **całkowita liczba komunikatów** .
 
     [![pulpitu nawigacyjnego symulacji usługi Azure IoT.](media/v2-update-provision/tsi-see-active-devices-and-messages.png)](media/v2-update-provision/tsi-see-active-devices-and-messages.png#lightbox)
 
@@ -181,9 +181,9 @@ W tej sekcji przeprowadzimy podstawową analizę danych szeregów czasowych przy
 
     [![adres URL Eksploratora Time Series Insights Preview.](media/v2-update-provision/tsi-select-explorer-url.png)](media/v2-update-provision/tsi-select-explorer-url.png#lightbox)
 
-1. W Eksploratorze Time Series Insights zostanie wyświetlony pasek obejmujący górną część ekranu. Jest to Twój selektor dostępności. Upewnij się, że wybrano co najmniej dwa 2 m i jeśli to konieczne, rozwiń przedział czasu, zaznaczając i przeciągając uchwyty selektora w lewo i w prawo.
+1. W Eksploratorze Time Series Insights zostanie wyświetlony pasek z górną częścią ekranu. Jest to Twój selektor dostępności. Upewnij się, że wybrano co najmniej dwa 2 m i jeśli to konieczne, rozwiń przedział czasu, zaznaczając i przeciągając uchwyty selektora w lewo i w prawo.
 
-1. Po lewej stronie będą widoczne **wystąpienia szeregów czasowych** .
+1. **Wystąpienia szeregów czasowych** będą wyświetlane po lewej stronie.
 
     [![listę wystąpień nienadrzędnych.](media/v2-update-provision/tsi-explorer-unparented-instances.png)](media/v2-update-provision/tsi-explorer-unparented-instances.png#lightbox)
 
@@ -254,9 +254,9 @@ W tej sekcji zastosujesz model, aby ustrukturyzować dane. Do utworzenia modelu 
 
     Wybierz przycisk **Zastosuj**.
 
-1. Wybierz pozycję **Zapisz**. Powinny pojawić się trzy utworzone zmienne.
+1. Wybierz pozycję **Zapisz**. Zostaną utworzone i wyświetlone trzy zmienne.
 
-    [![po dodaniu typu, zobacz go w widoku model.](media/v2-update-provision/tsi-add-type-and-view.png)](media/v2-update-provision/tsi-add-type-and-view.png#lightbox)
+    [![po dodaniu typu, przejrzyj go w widoku model.](media/v2-update-provision/tsi-add-type-and-view.png)](media/v2-update-provision/tsi-add-type-and-view.png#lightbox)
 
 1. Wybierz kartę **hierarchie** . Następnie wybierz pozycję **+ Dodaj**.
    

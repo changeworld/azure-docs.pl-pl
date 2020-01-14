@@ -10,12 +10,12 @@ ms.date: 11/22/2019
 ms.author: brendm
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 571d4cd395cd0cec0982fedf267a88143fd73872
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 9c95772c8f10d7170a06d1d6793545a60fc8dd7c
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74805743"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750743"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>Konfigurowanie aplikacji Java dla systemu Linux dla Azure App Service
 
@@ -238,24 +238,37 @@ Aby wstrzyknąć te wpisy tajne w pliku konfiguracji wiosennej lub Tomcat, użyj
 
 ### <a name="using-the-java-key-store"></a>Korzystanie z magazynu kluczy języka Java
 
-Domyślnie wszystkie certyfikaty publiczne lub prywatne [przekazane do App Service Linux](../configure-ssl-certificate.md) zostaną załadowane do magazynu kluczy Java w trakcie uruchamiania kontenera. Oznacza to, że przekazane certyfikaty będą dostępne w kontekście połączenia podczas tworzenia wychodzących połączeń TLS. Po przekazaniu certyfikatu należy ponownie uruchomić App Service, aby można go było załadować do magazynu kluczy Java.
+Domyślnie wszystkie certyfikaty publiczne lub prywatne [przekazane do App Service Linux](../configure-ssl-certificate.md) zostaną załadowane do odpowiednich magazynów kluczy Java podczas uruchamiania kontenera. Po przekazaniu certyfikatu należy ponownie uruchomić App Service, aby można go było załadować do magazynu kluczy Java. Certyfikaty publiczne są ładowane do magazynu kluczy w `$JAVA_HOME/jre/lib/security/cacerts`, a certyfikaty prywatne są przechowywane w `$JAVA_HOME/lib/security/client.jks`.
 
-Możesz korzystać z narzędzia klucza Java lub debugować je, [otwierając połączenie SSH](app-service-linux-ssh-support.md) do App Service i uruchamiając polecenie `keytool`. Listę poleceń można znaleźć w dokumentacji dotyczącej [najważniejszych narzędzi](https://docs.oracle.com/javase/8/docs/technotes/tools/unix/keytool.html) . Certyfikaty są przechowywane w domyślnej lokalizacji pliku magazynu języka Java, `$JAVA_HOME/jre/lib/security/cacerts`.
-
-Aby można było zaszyfrować połączenie JDBC, może być wymagana dodatkowa konfiguracja. Zapoznaj się z dokumentacją wybranego sterownika JDBC.
+Dodatkowa konfiguracja może być niezbędna do szyfrowania połączenia usługi JDBC przy użyciu certyfikatów w magazynie kluczy języka Java. Zapoznaj się z dokumentacją wybranego sterownika JDBC.
 
 - [PostgreSQL](https://jdbc.postgresql.org/documentation/head/ssl-client.html)
 - [SQL Server](https://docs.microsoft.com/sql/connect/jdbc/connecting-with-ssl-encryption?view=sql-server-ver15)
 - [MySQL](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-reference-using-ssl.html)
 - [MongoDB](https://mongodb.github.io/mongo-java-driver/3.4/driver/tutorials/ssl/)
-- [Cassandra](https://docs.datastax.com/developer/java-driver/4.3/)
+- [Cassandra](https://docs.datastax.com/en/developer/java-driver/4.3/)
 
+#### <a name="initializing-the-java-key-store"></a>Inicjowanie magazynu kluczy języka Java
 
-#### <a name="manually-initialize-and-load-the-key-store"></a>Ręczne inicjowanie i ładowanie magazynu kluczy
+Aby zainicjować obiekt `import java.security.KeyStore`, Załaduj plik magazynu kluczy przy użyciu hasła. Domyślnym hasłem dla obu magazynów kluczy jest "changeit".
 
-Możesz zainicjować Magazyn kluczy i ręcznie dodać certyfikaty. Utwórz ustawienie aplikacji `SKIP_JAVA_KEYSTORE_LOAD`z wartością `1`, aby wyłączyć App Service ładowania certyfikatów do magazynu kluczy automatycznie. Wszystkie certyfikaty publiczne przekazane do App Service za pośrednictwem Azure Portal są przechowywane w `/var/ssl/certs/`. Certyfikaty prywatne są przechowywane w obszarze `/var/ssl/private/`.
+```java
+KeyStore keyStore = KeyStore.getInstance("jks");
+keyStore.load(
+    new FileInputStream(System.getenv("JAVA_HOME")+"/lib/security/cacets"),
+    "changeit".toCharArray());
 
-Aby uzyskać więcej informacji na temat interfejsu API magazynu kluczy, zapoznaj się z [oficjalną dokumentacją](https://docs.oracle.com/javase/8/docs/api/java/security/KeyStore.html).
+KeyStore keyStore = KeyStore.getInstance("pkcs12");
+keyStore.load(
+    new FileInputStream(System.getenv("JAVA_HOME")+"/lib/security/client.jks"),
+    "changeit".toCharArray());
+```
+
+#### <a name="manually-load-the-key-store"></a>Ręczne ładowanie magazynu kluczy
+
+Certyfikaty można ładować ręcznie do magazynu kluczy. Utwórz ustawienie aplikacji `SKIP_JAVA_KEYSTORE_LOAD`z wartością `1`, aby wyłączyć App Service ładowania certyfikatów do magazynu kluczy automatycznie. Wszystkie certyfikaty publiczne przekazane do App Service za pośrednictwem Azure Portal są przechowywane w `/var/ssl/certs/`. Certyfikaty prywatne są przechowywane w obszarze `/var/ssl/private/`.
+
+Możesz korzystać z narzędzia klucza Java lub debugować je, [otwierając połączenie SSH](app-service-linux-ssh-support.md) do App Service i uruchamiając polecenie `keytool`. Listę poleceń można znaleźć w dokumentacji dotyczącej [najważniejszych narzędzi](https://docs.oracle.com/javase/8/docs/technotes/tools/unix/keytool.html) . Aby uzyskać więcej informacji na temat interfejsu API magazynu kluczy, zapoznaj się z [oficjalną dokumentacją](https://docs.oracle.com/javase/8/docs/api/java/security/KeyStore.html).
 
 ## <a name="configure-apm-platforms"></a>Konfigurowanie platform APM
 
@@ -313,11 +326,11 @@ App Service system Linux kieruje żądania przychodzące do portu 80, dlatego ap
 
 Te instrukcje dotyczą wszystkich połączeń z bazą danych. Musisz wypełnić symbole zastępcze nazwą klasy sterownika wybranej bazy danych i plikiem JAR. Dostarczono tabelę z nazwami klas i pobraniami sterowników dla wspólnych baz danych.
 
-| Database (Baza danych)   | Nazwa klasy sterownika                             | Sterownik JDBC                                                                      |
+| baza danych   | Nazwa klasy sterownika                             | Sterownik JDBC                                                                      |
 |------------|-----------------------------------------------|------------------------------------------------------------------------------------------|
 | PostgreSQL | `org.postgresql.Driver`                        | [Pobieranie](https://jdbc.postgresql.org/download.html)                                    |
 | MySQL      | `com.mysql.jdbc.Driver`                        | [Pobierz](https://dev.mysql.com/downloads/connector/j/) (wybierz pozycję "Platforma niezależna") |
-| Oprogramowanie SQL Server | `com.microsoft.sqlserver.jdbc.SQLServerDriver` | [Pobieranie](https://docs.microsoft.com/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server?view=sql-server-2017#available-downloads-of-jdbc-driver-for-sql-server)                                                           |
+| SQL Server | `com.microsoft.sqlserver.jdbc.SQLServerDriver` | [Pobieranie](https://docs.microsoft.com/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server?view=sql-server-2017#available-downloads-of-jdbc-driver-for-sql-server)                                                           |
 
 Aby skonfigurować Tomcat do korzystania z łączności z bazą danych Java (JDBC) lub interfejsu API trwałości Java (JPA), najpierw Dostosuj zmienną środowiskową `CATALINA_OPTS`, która jest odczytywana przez Tomcat w momencie uruchomienia. Ustaw te wartości za pomocą ustawienia aplikacji w [dodatku App Service Maven](https://github.com/Microsoft/azure-maven-plugins/blob/develop/azure-webapp-maven-plugin/README.md):
 
@@ -373,7 +386,7 @@ Skrypt uruchamiania wykona [przekształcenie XSL](https://www.w3schools.com/xml/
 apk add --update libxslt
 
 # Usage: xsltproc --output output.xml style.xsl input.xml
-xsltproc --output /usr/local/tomcat/conf/server.xml /home/tomcat/conf/transform.xsl /home/tomcat/conf/server.xml
+xsltproc --output /home/tomcat/conf/server.xml /home/tomcat/conf/transform.xsl /usr/local/tomcat/conf/server.xml
 ```
 
 Poniżej przedstawiono przykładowy plik XSL. Przykładowy plik XSL dodaje nowy węzeł łącznika do tomcat Server. XML.

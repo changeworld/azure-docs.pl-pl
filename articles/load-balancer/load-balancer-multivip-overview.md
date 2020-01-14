@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: 58309133a46e32f409a0414be71791de73db9bed
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 0a54416a70a8561edfad5915944100e0ce686bbf
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075947"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771261"
 ---
 # <a name="multiple-frontends-for-azure-load-balancer"></a>Wiele frontonów dla Azure Load Balancer
 
@@ -29,7 +29,7 @@ Podczas definiowania Azure Load Balancer konfiguracja frontonu i puli zaplecza s
 
 Poniższa tabela zawiera kilka przykładowych konfiguracji frontonu:
 
-| Frontonu | Adres IP | protocol | port |
+| Fronton | Adres IP | protocol | port |
 | --- | --- | --- | --- |
 | 1 |65.52.0.1 |TCP |80 |
 | 2 |65.52.0.1 |TCP |*8080* |
@@ -53,7 +53,7 @@ Te scenariusze są bardziej szczegółowe, zaczynając od zachowania domyślnego
 
 W tym scenariuszu frontony są konfigurowane w następujący sposób:
 
-| Frontonu | Adres IP | protocol | port |
+| Fronton | Adres IP | protocol | port |
 | --- | --- | --- | --- |
 | ![zielony fronton](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1 |65.52.0.1 |TCP |80 |
 | ![Purpurowy fronton](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2 |*65.52.0.2* |TCP |80 |
@@ -65,11 +65,11 @@ Definiujemy dwie reguły:
 | Reguła | Fronton mapy | Do puli zaplecza |
 | --- | --- | --- |
 | 1 |![zielony fronton](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Frontend1:80 |![zaplecze](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) DIP1:80, ![zaplecze](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) DIP2:80 |
-| 2 |![POWODZEŃ](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) Frontend2:80 |![zaplecze](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) DIP1:81, ![zaplecze](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) DIP2:81 |
+| 2 |![Adres VIP](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) Frontend2:80 |![zaplecze](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) DIP1:81, ![zaplecze](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) DIP2:81 |
 
 Pełne mapowanie w Azure Load Balancer jest teraz następujące:
 
-| Reguła | Adres IP frontonu | protocol | port | Element docelowy | port |
+| Reguła | Adres IP frontonu | protocol | port | Cel | port |
 | --- | --- | --- | --- | --- | --- |
 | ![Zielona reguła](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1 |65.52.0.1 |TCP |80 |Adres IP DIP |80 |
 | ![Reguła purpurowa](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2 |65.52.0.2 |TCP |80 |Adres IP DIP |81 |
@@ -98,26 +98,46 @@ W tym scenariuszu wszystkie maszyny wirtualne w puli zaplecza mają trzy interfe
 * Fronton 1: interfejs sprzężenia zwrotnego w systemie operacyjnym gościa skonfigurowany przy użyciu adresu IP frontonu 1
 * Fronton 2: interfejs sprzężenia zwrotnego w systemie operacyjnym gościa skonfigurowany przy użyciu adresu IP frontonu 2
 
+W przypadku każdej maszyny wirtualnej w puli zaplecza Uruchom następujące polecenia w wierszu polecenia systemu Windows.
+
+Aby uzyskać listę nazw interfejsów, które znajdują się na maszynie wirtualnej, wpisz następujące polecenie:
+
+    netsh interface show interface 
+
+Dla karty sieciowej maszyny wirtualnej (zarządzanej przez platformę Azure) wpisz następujące polecenie:
+
+    netsh interface ipv4 set interface “interfacename” weakhostreceive=enabled
+   (Zastąp wartość InterfaceName nazwą tego interfejsu)
+
+Dla każdego dodanego interfejsu sprzężenia zwrotnego Powtórz następujące polecenia:
+
+    netsh interface ipv4 set interface “interfacename” weakhostreceive=enabled 
+   (Zastąp wartość InterfaceName nazwą tego interfejsu sprzężenia zwrotnego)
+     
+    netsh interface ipv4 set interface “interfacename” weakhostsend=enabled 
+   (Zastąp wartość InterfaceName nazwą tego interfejsu sprzężenia zwrotnego)
+
 > [!IMPORTANT]
 > Konfiguracja interfejsów sprzężenia zwrotnego jest wykonywana w systemie operacyjnym gościa. Ta konfiguracja nie jest wykonywana ani zarządzana przez platformę Azure. Bez tej konfiguracji reguły nie będą działać. Definicje sond kondycji używają adresu DIP maszyny wirtualnej, a nie interfejsu sprzężenia zwrotnego reprezentującego fronton DSR. W związku z tym usługa musi dostarczyć odpowiedzi na port DIP, który odzwierciedla stan usługi oferowanej w interfejsie sprzężenia zwrotnego reprezentującym fronton DSR.
 
+
 Załóżmy, że konfiguracja frontonu jest taka sama jak w poprzednim scenariuszu:
 
-| Frontonu | Adres IP | protocol | port |
+| Fronton | Adres IP | protocol | port |
 | --- | --- | --- | --- |
 | ![zielony fronton](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1 |65.52.0.1 |TCP |80 |
 | ![Purpurowy fronton](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2 |*65.52.0.2* |TCP |80 |
 
 Definiujemy dwie reguły:
 
-| Reguła | Frontonu | Mapowanie na pulę zaplecza |
+| Reguła | Fronton | Mapowanie na pulę zaplecza |
 | --- | --- | --- |
 | 1 |![rule](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Frontend1:80 |![zaplecze](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Frontend1:80 (w VM1 i VM2) |
 | 2 |![rule](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) Frontend2:80 |![zaplecze](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) Frontend2:80 (w VM1 i VM2) |
 
 W poniższej tabeli przedstawiono pełne mapowanie modułu równoważenia obciążenia:
 
-| Reguła | Adres IP frontonu | protocol | port | Element docelowy | port |
+| Reguła | Adres IP frontonu | protocol | port | Cel | port |
 | --- | --- | --- | --- | --- | --- |
 | ![Zielona reguła](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1 |65.52.0.1 |TCP |80 |Analogicznie jak fronton (65.52.0.1) |Analogicznie jak fronton (80) |
 | ![Reguła purpurowa](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2 |65.52.0.2 |TCP |80 |Analogicznie jak fronton (65.52.0.2) |Analogicznie jak fronton (80) |
@@ -133,7 +153,7 @@ Typ reguły zmiennoprzecinkowy adres IP jest podstawą kilku wzorców konfigurac
 * Wiele konfiguracji frontonu jest obsługiwanych tylko z maszynami wirtualnymi IaaS.
 * W przypadku reguły zmiennoprzecinkowych adresów IP aplikacja musi używać podstawowej konfiguracji protokołu IP dla przepływów ruchu wychodzącego. Jeśli aplikacja jest powiązana z adresem IP frontonu skonfigurowanym w interfejsie sprzężenia zwrotnego w systemie operacyjnym gościa, ruch wychodzący z platformy Azure nie jest dostępny do ponownego zapisania przepływu wychodzącego i przepływ kończy się niepowodzeniem.  Przejrzyj [scenariusze wychodzące](load-balancer-outbound-connections.md).
 * Publiczne adresy IP mają wpływ na rozliczenia. Aby uzyskać więcej informacji, zobacz [cennik adresów IP](https://azure.microsoft.com/pricing/details/ip-addresses/)
-* Obowiązują limity subskrypcji. Aby uzyskać więcej informacji, zobacz [limity usług](../azure-subscription-service-limits.md#networking-limits) w celu uzyskania szczegółów.
+* Obowiązują limity subskrypcji. Aby uzyskać więcej informacji, zobacz [limity usług](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits) w celu uzyskania szczegółów.
 
 ## <a name="next-steps"></a>Następne kroki
 

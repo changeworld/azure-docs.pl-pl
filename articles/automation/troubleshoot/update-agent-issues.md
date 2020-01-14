@@ -1,6 +1,6 @@
 ---
-title: Informacje o kondycji hybrydowego procesu roboczego elementu Runbook systemu Windows w usłudze Azure Update Management
-description: Dowiedz się, jak rozwiązywać problemy z hybrydowym procesem roboczym elementu Runbook w systemie Windows, który obsługuje Update Management.
+title: Diagnozuj hybrydowy proces roboczy elementu Runbook systemu Windows — Update Management platformy Azure
+description: Dowiedz się, jak rozwiązywać problemy z Azure Automation hybrydowego procesu roboczego elementu Runbook w systemie Windows, który obsługuje Update Management.
 services: automation
 author: mgoedtel
 ms.author: magoedte
@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: 284376759e9e2da1f42bd04eea6e564c9690d4a9
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: bfc2c4a660afa4341a676fc79ab447c8cb86d5e1
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850129"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769816"
 ---
-# <a name="understand-the-windows-hybrid-runbook-worker-health-in-update-management"></a>Informacje o kondycji hybrydowego procesu roboczego elementu Runbook systemu Windows w Update Management
+# <a name="understand-and-resolve-windows-hybrid-runbook-worker-health-in-update-management"></a>Poznaj i rozwiązuj kondycję hybrydowego procesu roboczego elementu Runbook systemu Windows w Update Management
 
 Może istnieć wiele przyczyn, dla których Twoja maszyna nie **jest wyświetlana w** Update Management. W Update Management można sprawdzić kondycję agenta hybrydowego procesu roboczego elementu Runbook w celu ustalenia podstawowego problemu. W tym artykule omówiono sposób uruchamiania narzędzia do rozwiązywania problemów dla maszyn platformy Azure z poziomu maszyn Azure Portal i spoza platformy Azure w [scenariuszu w trybie offline](#troubleshoot-offline).
 

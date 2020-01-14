@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/03/2019
 ms.author: damaerte
-ms.openlocfilehash: 2edb50910614b47aca5a4d8f7f02c2e3bc69b643
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 513c3da8031774f5f111ee357b5a3c43e1d09d95
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75449004"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75832458"
 ---
 # <a name="overview-of-azure-cloud-shell"></a>Omówienie Azure Cloud Shell
 Azure Cloud Shell to interaktywna, uwierzytelniona powłoka dostępna dla przeglądarki służąca do zarządzania zasobami platformy Azure.
@@ -40,11 +40,14 @@ Cloud Shell umożliwia dostęp do opartego na przeglądarce środowiska wiersza 
 Wykorzystanie Cloud Shell do pracy w sposób nieużywany przez maszynę lokalną w sposób zapewniany przez chmurę.
 
 ### <a name="choice-of-preferred-shell-experience"></a>Wybór preferowanego środowiska powłoki
-Użytkownicy mogą wybrać między bash lub PowerShell z listy rozwijanej powłoka.
+Użytkownicy mogą wybierać między bash lub PowerShell.
+1. Wybierz **Cloud Shell**.
 
-![Bash w Cloud Shell](media/overview/overview-bash-pic.png)
+    ![Ikona Cloud Shell](media/overview/overview-cloudshell-icon.png)
 
-![Program PowerShell w usłudze Cloud Shell](media/overview/overview-ps-pic.png)
+2. Wybierz pozycję **bash** lub **PowerShell**.
+
+    ![Wybierz opcję bash lub PowerShell](media/overview/overview-choices.png)
 
 ### <a name="authenticated-and-configured-azure-workstation"></a>Uwierzytelniona i skonfigurowana stacja robocza platformy Azure
 Cloud Shell jest zarządzany przez firmę Microsoft, dzięki czemu zawiera popularne narzędzia wiersza polecenia i obsługę języków. Cloud Shell również bezpiecznie uwierzytelniać się automatycznie w celu natychmiastowego dostępu do zasobów za pomocą interfejsu wiersza polecenia platformy Azure Azure PowerShell lub poleceń cmdlet.

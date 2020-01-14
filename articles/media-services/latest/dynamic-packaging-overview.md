@@ -1,5 +1,5 @@
 ---
-title: Dynamiczne pakowanie w Media Services
+title: Dynamiczne pakowanie w Azure Media Services v3
 titleSuffix: Azure Media Services
 description: Ten artykuł zawiera omówienie tworzenia pakietów dynamicznych w programie Azure Media Services.
 author: Juliako
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 10/17/2019
 ms.author: juliako
-ms.openlocfilehash: c12ebe307eb370e07b785b4379f82a4274964492
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 05a515d5f74569ff8d0fa8aec68eb681dc79d2fc
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977764"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75779607"
 ---
-# <a name="dynamic-packaging-in-media-services"></a>Dynamiczne pakowanie w Media Services
+# <a name="dynamic-packaging-in-media-services-v3"></a>Dynamiczne pakowanie w Media Services v3
 
 Microsoft Azure Media Services może służyć do kodowania wielu formatów plików źródłowych multimediów. Udostępnia je za pośrednictwem różnych protokołów przesyłania strumieniowego z ochroną zawartości lub bez niej, aby dotrzeć do wszystkich głównych urządzeń (takich jak urządzenia z systemem iOS lub Android). Ci klienci rozumieją różne protokoły. Na przykład system iOS wymaga dostarczania strumieni w formacie HTTP Live Streaming (HLS), a urządzenia z systemem Android obsługują HLS, a także KRESKę MPEG.
 

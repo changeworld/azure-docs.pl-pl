@@ -5,12 +5,12 @@ author: deepakpalled
 ms.author: dpalled
 manager: cshankar
 ms.date: 12/06/2019
-ms.openlocfilehash: 8d0c1edd2766d5fa46603d241c4f769fe5777cd1
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: dec7f022a73c5eb47c99b2d2d38e1a3258bcf14e
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74981207"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861470"
 ---
 ## <a name="business-disaster-recovery"></a>Odzyskiwanie po awarii firmy
 
@@ -55,7 +55,7 @@ Ogólnie rzecz biorąc, najlepszym sposobem duplikowania środowiska Time Series
 
 Aby utworzyć zduplikowane środowisko:
 
-1. Utwórz środowisko w drugim regionie. Aby uzyskać więcej informacji, zobacz [Tworzenie nowego środowiska Time Series Insights w Azure Portal](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-get-started).
+1. Utwórz środowisko w drugim regionie. Aby uzyskać więcej informacji, przeczytaj artykuł [Tworzenie nowego środowiska Time Series Insights w Azure Portal](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-get-started).
 1. Utwórz drugą dedykowaną grupę odbiorców dla źródła zdarzeń.
 1. Połącz to źródło zdarzeń z nowym środowiskiem. Upewnij się, że wyznaczysz drugą dedykowaną grupę odbiorców.
 1. Zapoznaj się z dokumentacją [IoT Hub](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-iothub) Time Series Insights i [Event Hubs](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-data-access) .
@@ -71,5 +71,5 @@ Jeśli wystąpi zdarzenie:
 > * Może również wystąpić opóźnienie.
 > * Może wystąpić chwilowe skoki przetwarzania komunikatów, ponieważ operacje są przekierowywane.
 > 
-> Aby uzyskać więcej informacji, zobacz [ograniczanie opóźnień w Time Series Insights](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-environment-mitigate-latency).
+> Aby uzyskać więcej informacji, przeczytaj temat [ograniczanie opóźnień w Time Series Insights](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-environment-mitigate-latency).
 

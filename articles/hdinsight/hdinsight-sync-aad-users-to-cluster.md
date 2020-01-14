@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/21/2019
-ms.openlocfilehash: acacb9c10250d43e22b5b5b1d073b18461561512
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: 299d242c38152db6a471159d1f3d2803598c1832
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406834"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75744865"
 ---
 # <a name="synchronize-azure-active-directory-users-to-an-hdinsight-cluster"></a>Synchronizowanie użytkowników usługi Azure Active Directory z klastrem usługi HDInsight
 
@@ -65,7 +65,7 @@ W poniższej metodzie jest używany wpis POST z interfejsem API REST Ambari. Aby
     {
       "resources" : [
         {
-          "href" : "http://hn0-hadoop.<YOUR DOMAIN>.com:8080/api/v1/ldap_sync_events/1",
+          "href" : "http://<ACTIVE-HEADNODE-NAME>.<YOUR DOMAIN>.com:8080/api/v1/ldap_sync_events/1",
           "Event" : {
             "id" : 1
           }
@@ -84,7 +84,7 @@ W poniższej metodzie jest używany wpis POST z interfejsem API REST Ambari. Aby
 
     ```json
     {
-      "href" : "http://hn0-hadoop.YOURDOMAIN.com:8080/api/v1/ldap_sync_events/1",
+      "href" : "http://<ACTIVE-HEADNODE-NAME>.YOURDOMAIN.com:8080/api/v1/ldap_sync_events/1",
       "Event" : {
         "id" : 1,
         "specs" : [
@@ -127,7 +127,7 @@ W poniższej metodzie jest używany wpis POST z interfejsem API REST Ambari. Aby
 
 ## <a name="verify-the-newly-added-azure-ad-user"></a>Weryfikowanie nowo dodanego użytkownika usługi Azure AD
 
-Otwórz [interfejs użytkownika programu Apache Ambari Web](hdinsight-hadoop-manage-ambari.md) , aby sprawdzić, czy został dodany nowy użytkownik usługi Azure AD. Uzyskaj dostęp do interfejsu użytkownika sieci Web Ambari, przechodząc do **`https://CLUSTERNAME.azurehdinsight.net`** . Wprowadź nazwę użytkownika i hasło administratora klastra.
+Otwórz [interfejs użytkownika programu Apache Ambari Web](hdinsight-hadoop-manage-ambari.md) , aby sprawdzić, czy został dodany nowy użytkownik usługi Azure AD. Dostęp do Interfejsu sieci Web Ambari, przechodząc do **`https://CLUSTERNAME.azurehdinsight.net`** . Wprowadź nazwę użytkownika i hasło administratora klastra.
 
 1. Na pulpicie nawigacyjnym Ambari wybierz pozycję **Zarządzaj Ambari** w menu **administrator** .
 
@@ -146,7 +146,7 @@ Otwórz [interfejs użytkownika programu Apache Ambari Web](hdinsight-hadoop-man
 Gdy nowy użytkownik (lub inny użytkownik domeny) zaloguje się do usługi Ambari, użyje pełnej nazwy użytkownika i domeny usługi Azure AD.  Ambari wyświetla alias użytkownika, który jest nazwą wyświetlaną użytkownika w usłudze Azure AD.
 Nowy przykładowy użytkownik ma nazwę użytkownika `hiveuser3@contoso.com`. W programie Ambari ten nowy użytkownik jest wyświetlany jako `hiveuser3` ale użytkownik loguje się do Ambari jako `hiveuser3@contoso.com`.
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 
 * [Konfigurowanie zasad Apache Hive w usłudze HDInsight przy użyciu protokołu ESP](hdinsight-domain-joined-run-hive.md)
 * [Zarządzanie klastrami usługi HDInsight przy użyciu protokołu ESP](hdinsight-domain-joined-manage.md)

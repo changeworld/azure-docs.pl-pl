@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: ambapat
-ms.openlocfilehash: 04f4a71e6b54100e5a133958845cf732c2286b32
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 5152859bec944c761d4608d1e039d56423d57bcd
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72301060"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75832759"
 ---
 # <a name="secure-access-to-a-key-vault"></a>Bezpieczny dostęp do magazynu kluczy
 
@@ -51,7 +51,7 @@ Aplikacje uzyskują dostęp do płaszczyzn za pomocą punktów końcowych. Kontr
 
 W poniższej tabeli przedstawiono punkty końcowe dla punktów zarządzania i płaszczyzny danych.
 
-| &nbsp;płaszczyzny dostępu | Punkty końcowe dostępu | Operacje | Mechanizm kontroli dostępu&nbsp; |
+| &nbsp;płaszczyzny dostępu | Punkty końcowe dostępu | Operations | Mechanizm kontroli dostępu&nbsp; |
 | --- | --- | --- | --- |
 | Płaszczyzna zarządzania | **Cały świat:**<br> management.azure.com:443<br><br> **Azure Chiny 21Vianet:**<br> management.chinacloudapi.cn:443<br><br> **Wersja platformy Azure dla administracji USA:**<br> management.usgovcloudapi.net:443<br><br> **Niemiecka wersja platformy Azure:**<br> management.microsoftazure.de:443 | Tworzenie, odczytywanie, aktualizowanie i usuwanie magazynów kluczy<br><br>Ustawianie zasad dostępu Key Vault<br><br>Ustawianie tagów Key Vault | Azure Resource Manager RBAC |
 | Płaszczyzna danych | **Cały świat:**<br> &lt;nazwa_magazynu&gt;.vault.azure.net:443<br><br> **Azure Chiny 21Vianet:**<br> &lt;nazwa_magazynu&gt;.vault.azure.cn:443<br><br> **Wersja platformy Azure dla administracji USA:**<br> &lt;nazwa_magazynu&gt;.vault.usgovcloudapi.net:443<br><br> **Niemiecka wersja platformy Azure:**<br> &lt;nazwa_magazynu&gt;.vault.microsoftazure.de:443 | Klucze: Odszyfruj, Szyfruj,<br> odpakowywanie, zawijanie, weryfikowanie, podpisywanie,<br> Pobieranie, wyświetlanie, aktualizowanie, tworzenie,<br> Importuj, Usuń, Utwórz kopię zapasową, Przywróć<br><br> Wpisy tajne: pobieranie, wyświetlanie, Ustawianie, usuwanie | Zasady dostępu Key Vault |
@@ -89,17 +89,17 @@ Dostęp do płaszczyzny danych można ograniczyć za pomocą [punktów końcowyc
 
 ## <a name="example"></a>Przykład
 
-W tym przykładzie opracowujemy aplikację korzystającą z certyfikatu dla protokołu SSL, usługi Azure Storage do przechowywania danych oraz klucz RSA 2 048-bitowy dla operacji podpisywania. Nasza aplikacja działa na maszynie wirtualnej platformy Azure (lub w zestawie skalowania maszyn wirtualnych). Możemy użyć magazynu kluczy do przechowywania wpisów tajnych aplikacji. Firma Microsoft może przechowywać certyfikat Bootstrap używany przez aplikację do uwierzytelniania w usłudze Azure AD.
+W tym przykładzie tworzymy aplikację, która używa certyfikatu dla protokołów TLS/SSL, usługi Azure Storage do przechowywania danych oraz klucza RSA 2 048-bitowego dla operacji podpisywania. Nasza aplikacja działa na maszynie wirtualnej platformy Azure (lub w zestawie skalowania maszyn wirtualnych). Możemy użyć magazynu kluczy do przechowywania wpisów tajnych aplikacji. Firma Microsoft może przechowywać certyfikat Bootstrap używany przez aplikację do uwierzytelniania w usłudze Azure AD.
 
 Potrzebujemy dostępu do następujących przechowywanych kluczy i wpisów tajnych:
-- **Certyfikat SSL**: używany na potrzeby protokołu SSL.
+- **Certyfikat TLS/SSL**: używany w przypadku protokołu TLS/SSL.
 - **Klucz magazynu**: służy do uzyskiwania dostępu do konta magazynu.
 - **Klucz RSA 2 048-bitowy**: służy do podpisywania operacji.
 - **Certyfikat Bootstrap**: używany do uwierzytelniania w usłudze Azure AD. Po udzieleniu dostępu można pobrać klucz magazynu i użyć klucza RSA do podpisywania.
 
 Musimy zdefiniować następujące role, aby określić, kto może zarządzać aplikacją, wdrażać ją i przeprowadzać inspekcję:
-- **Zespół ds. zabezpieczeń**: personel działu IT z biura firmy CSO (Dyrektor ds. zabezpieczeń) lub podobnych współautorów. Zespół ds. zabezpieczeń jest odpowiedzialny za odpowiednie przechowywanie wpisów tajnych. Wpisy tajne mogą obejmować certyfikaty SSL, klucze RSA do podpisywania, parametry połączenia i klucze kont magazynu.
-- **Deweloperzy i operatorzy**: pracownicy, którzy opracowują aplikację i wdrażają ją na platformie Azure. Członkowie tego zespołu nie są częścią personelu zabezpieczeń. Nie powinny mieć dostępu do poufnych danych, takich jak certyfikaty SSL i klucze RSA. Tylko wdrażana aplikacja powinna mieć dostęp do poufnych danych.
+- **Zespół ds. zabezpieczeń**: personel działu IT z biura firmy CSO (Dyrektor ds. zabezpieczeń) lub podobnych współautorów. Zespół ds. zabezpieczeń jest odpowiedzialny za odpowiednie przechowywanie wpisów tajnych. Wpisy tajne mogą obejmować certyfikaty protokołu TLS/SSL, klucze RSA do podpisywania, parametry połączenia i klucze kont magazynu.
+- **Deweloperzy i operatorzy**: pracownicy, którzy opracowują aplikację i wdrażają ją na platformie Azure. Członkowie tego zespołu nie są częścią personelu zabezpieczeń. Nie powinny mieć dostępu do poufnych danych, takich jak certyfikaty TLS/SSL i klucze RSA. Tylko wdrażana aplikacja powinna mieć dostęp do poufnych danych.
 - **Audytorzy**: Ta rola jest dla współautorów, którzy nie są członkami rozwoju ani ogólnego personelu IT. Zapoznają się z użyciem i konserwacją certyfikatów, kluczy i wpisów tajnych w celu zapewnienia zgodności ze standardami zabezpieczeń. 
 
 Istnieje inna rola, która jest poza zakresem naszej aplikacji: Administrator subskrypcji (lub grupy zasobów). Administrator subskrypcji konfiguruje uprawnienia dostępu początkowego do zespołu ds. zabezpieczeń. Przyznają one dostęp do zespołu ds. zabezpieczeń przy użyciu grupy zasobów, która zawiera zasoby wymagane przez aplikację.
@@ -115,7 +115,7 @@ Musimy autoryzować następujące operacje dla naszych ról:
 - Okresowe przywracanie kluczy i wpisów tajnych.
 
 **Deweloperzy i operatorzy**
-- Uzyskaj odwołania od zespołu ds. zabezpieczeń dla certyfikatów Bootstrap i SSL (odciski palców), klucza magazynu (Secret URI) i klucza RSA (identyfikator URI klucza) do podpisywania.
+- Uzyskaj odwołania od zespołu ds. zabezpieczeń dla certyfikatów Bootstrap i TLS/SSL (odciski palców), klucza magazynu (Secret URI) i klucza RSA (identyfikator URI klucza) do podpisywania.
 - Programowe tworzenie i wdrażanie aplikacji w celu programowanego dostępu do kluczy i wpisów tajnych.
 
 **Audytorzy**
@@ -183,7 +183,7 @@ Set-AzKeyVaultAccessPolicy -VaultName ContosoKeyVault -ObjectId (Get-AzADGroup -
 
 Nasze zdefiniowane role niestandardowe można przypisać tylko do subskrypcji, w której jest tworzona Grupa zasobów **ContosoAppRG** . Aby użyć roli niestandardowej dla innych projektów w innych subskrypcjach, Dodaj inne subskrypcje do zakresu roli.
 
-W przypadku naszego działu DevOpsego niestandardowe przypisanie roli dla magazynu kluczy uprawnienia `deploy/action` jest ograniczone do grupy zasobów. Tylko maszyny wirtualne utworzone w grupie zasobów **ContosoAppRG** mają dostęp do wpisów tajnych (certyfikaty SSL i Bootstrap). Maszyny wirtualne utworzone w innych grupach zasobów przez DevOps element członkowski nie mogą uzyskać dostępu do tych kluczy tajnych, nawet jeśli maszyna wirtualna ma identyfikatory URI.
+W przypadku naszego działu DevOpsego niestandardowe przypisanie roli dla magazynu kluczy uprawnienia `deploy/action` jest ograniczone do grupy zasobów. Tylko maszyny wirtualne utworzone w grupie zasobów **ContosoAppRG** mają dostęp do wpisów tajnych (TLS/SSL i certyfikaty Bootstrap). Maszyny wirtualne utworzone w innych grupach zasobów przez DevOps element członkowski nie mogą uzyskać dostępu do tych kluczy tajnych, nawet jeśli maszyna wirtualna ma identyfikatory URI.
 
 Nasz przykład opisuje prosty scenariusz. Scenariusze życiowe mogą być bardziej skomplikowane. Możesz dostosować uprawnienia do magazynu kluczy w zależności od potrzeb. Zakładamy, że zespół ds. zabezpieczeń zawiera odwołania do kluczy i wpisów tajnych (identyfikatorów URI i odcisków palców), które są używane przez personel DevOps w swoich aplikacjach. Deweloperzy i operatorzy nie potrzebują dostępu do płaszczyzny danych. Firma Microsoft koncentruje się na sposobie zabezpieczania magazynu kluczy. Zadawaj podobne kwestie w przypadku zabezpieczania [maszyn wirtualnych](https://azure.microsoft.com/services/virtual-machines/security/), [kont magazynu](../storage/common/storage-security-guide.md)i innych zasobów platformy Azure.
 

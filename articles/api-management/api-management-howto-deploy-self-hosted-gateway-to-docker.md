@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/31/2019
 ms.author: apimpm
-ms.openlocfilehash: fc7e0f7e4e0e80a030a437bc4f0f13360595f32e
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: b5acda30f7f4a01e1b7b6ac82652452c3c40e3bf
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747693"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768507"
 ---
 # <a name="deploy-an-azure-api-management-self-hosted-gateway-to-docker"></a>Wdrażanie bramy samohostowanej na platformie Azure API Management w usłudze Docker
 
@@ -33,7 +33,7 @@ W tym artykule przedstawiono kroki wdrażania samodzielnej bramy usługi Azure A
 - [Inicjowanie obsługi administracyjnej zasobu bramy w wystąpieniu API Management](api-management-howto-provision-self-hosted-gateway.md)
 
 > [!NOTE]
-> Brama samoobsługowa jest spakowana jako kontener platformy Docker oparty na systemie Linux.
+> Brama samoobsługowa jest pakowana jako kontener platformy Docker oparty na architekturze x86-64.
 
 ## <a name="deploy-the-self-hosted-gateway-to-docker"></a>Wdrażanie bramy samohostowanej na platformie Docker
 
@@ -57,7 +57,7 @@ CONTAINER ID        IMAGE                                                 COMMAN
 ```
 10. Wróć do Azure Portal i upewnij się, że wdrożony węzeł bramy jest w stanie dobra kondycja.
 
-![Stan bramy](media/api-management-howto-deploy-self-hosted-gateway-to-docker/status.png)
+![stan bramy](media/api-management-howto-deploy-self-hosted-gateway-to-docker/status.png)
 
 > [!TIP]
 > Użyj <code>console docker container logs <gateway-name></code> polecenia, aby wyświetlić migawkę dziennika bramy samohostowanej.

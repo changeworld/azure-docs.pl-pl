@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/27/2019
-ms.openlocfilehash: c6e60474f74a23add429bf13ca7744afb8e8e1a3
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 72006f907a1c1641308c8ee43e7a405765410789
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74777600"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770887"
 ---
 # <a name="monitor-cluster-performance-in-azure-hdinsight"></a>Monitorowanie wydajności klastra w usłudze Azure HDInsight
 
@@ -30,9 +30,9 @@ Aby uzyskać ogólne omówienie węzłów klastra i ich ładowania, zaloguj się
 | Kolor | Opis |
 | --- | --- |
 | Czerwony | Co najmniej jeden główny składnik na hoście nie działa. Umieść kursor w celu wyświetlenia etykietki narzędzia, która wyświetla listę składników, których to dotyczy. |
-| Pomarańczowy | Co najmniej jeden składnik pomocniczy na hoście nie działa. Umieść kursor w celu wyświetlenia etykietki narzędzia, która wyświetla listę składników, których to dotyczy. |
-| Żółty | Serwer Ambari nie otrzymał pulsu od hosta przez więcej niż 3 minuty. |
-| Zielony | Normalny stan działania. |
+| Orange | Co najmniej jeden składnik pomocniczy na hoście nie działa. Umieść kursor w celu wyświetlenia etykietki narzędzia, która wyświetla listę składników, których to dotyczy. |
+| Kryje | Serwer Ambari nie otrzymał pulsu od hosta przez więcej niż 3 minuty. |
+| Znacznika | Normalny stan działania. |
  
 Zobaczysz również kolumny przedstawiające liczbę rdzeni i ilość pamięci RAM dla każdego hosta, a także użycie dysku i średnie obciążenie.
 
@@ -72,7 +72,7 @@ W interfejsie użytkownika Menedżer zasobów wybierz pozycję **harmonogram** z
 
 ## <a name="storage-throttling"></a>Ograniczanie magazynu
 
-Na poziomie magazynu mogą wystąpić wąskie gardła wydajności klastra. Ten typ wąskich gardeł najczęściej z powodu *blokowania* operacji wejścia/wyjścia (IO), które są wykonywane, gdy uruchomione zadania wysyłają więcej operacji we/wy niż może obsłużyć usługa magazynu. Ten blok umożliwia utworzenie kolejki żądań we/wy oczekujących na przetworzenie do momentu przetworzenia bieżącego systemu IOs. Bloki są spowodowane *ograniczeniami magazynu*, które nie jest limitem fizycznym, ale raczej limitem narzuconym przez usługę magazynu przez umowę dotyczącą poziomu usług (SLA). Ten limit gwarantuje, że żaden pojedynczy klient lub dzierżawca nie może monopolize usługi. Umowa SLA ogranicza liczbę operacji we/wy na sekundę (IOPS) dla usługi Azure Storage — Aby uzyskać szczegółowe informacje, zobacz [cele dotyczące skalowalności i wydajności usługi Azure Storage](https://docs.microsoft.com/azure/storage/storage-scalability-targets).
+Na poziomie magazynu mogą wystąpić wąskie gardła wydajności klastra. Ten typ wąskich gardeł najczęściej z powodu *blokowania* operacji wejścia/wyjścia (IO), które są wykonywane, gdy uruchomione zadania wysyłają więcej operacji we/wy niż może obsłużyć usługa magazynu. Ten blok umożliwia utworzenie kolejki żądań we/wy oczekujących na przetworzenie do momentu przetworzenia bieżącego systemu IOs. Bloki są spowodowane *ograniczeniami magazynu*, które nie jest limitem fizycznym, ale raczej limitem narzuconym przez usługę magazynu przez umowę dotyczącą poziomu usług (SLA). Ten limit gwarantuje, że żaden pojedynczy klient lub dzierżawca nie może monopolize usługi. Umowa SLA ogranicza liczbę operacji we/wy na sekundę (IOPS) dla usługi Azure Storage — Aby uzyskać szczegółowe informacje, zobacz [elementy docelowe skalowalności i wydajności dla kont magazynu w warstwie Standardowa](../storage/common/scalability-targets-standard-account.md).
 
 Jeśli używasz usługi Azure Storage, aby uzyskać informacje na temat monitorowania problemów związanych z magazynem, w tym ograniczania przepustowości, zobacz [monitorowanie, diagnozowanie i rozwiązywanie problemów Microsoft Azure Storage](https://docs.microsoft.com/azure/storage/storage-monitoring-diagnosing-troubleshooting).
 

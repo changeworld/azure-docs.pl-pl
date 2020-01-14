@@ -1,18 +1,14 @@
 ---
-title: Obsługa oceny i migracji oprogramowania VMware w Azure Migrate
-description: Dowiedz się więcej o obsłudze oceny/migracji maszyn wirtualnych VMware w Azure Migrate.
-author: rayne-wiselman
-manager: carmonm
-ms.service: azure-migrate
+title: Obsługa oprogramowania VMware w Azure Migrate
+description: Dowiedz się więcej o obsłudze oceny oprogramowania VMware/migracji w Azure Migrate.
 ms.topic: conceptual
-ms.date: 11/19/2019
-ms.author: raynew
-ms.openlocfilehash: 135680a9b0b6c8b5520958c884d99a83f1f87c88
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.date: 01/02/2020
+ms.openlocfilehash: b4d498b869bafe579e2539a049aae58ac6f26575
+ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196274"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75719447"
 ---
 # <a name="support-matrix-for-vmware-assessment-and-migration"></a>Macierz obsługi dotycząca oceny i migracji środowiska VMware
 
@@ -39,7 +35,7 @@ W tabeli zestawiono obsługiwane scenariusze dotyczące maszyn wirtualnych VMwar
 
 **Lokalizacja geograficzna** | **Lokalizacja magazynu metadanych**
 --- | ---
-Azure Government | Administracja USA — Wirginia
+Platforma Azure dla instytucji rządowych | US Gov Wirginia
 Azja i Pacyfik | Azja Wschodnia lub Azja Południowo-Wschodnia
 Australia | Australia Wschodnia lub Australia Południowo-Wschodnia
 Brazylia | Brazylia Południowa
@@ -48,8 +44,8 @@ Europa | Europa Północna lub Europa Zachodnia
 Francja | Francja Środkowa
 Indie | Indie Środkowe lub Indie Południowe
 Japonia |  Japonia Wschodnia lub Japonia Zachodnia
-Korea | Korea środkowa lub Korea Południowa
-Wielka Brytania | Południowe Zjednoczone Królestwo lub Zachodnie Zjednoczone Królestwo
+Korea Południowa | Korea środkowa lub Korea Południowa
+Zjednoczone Królestwo | Południowe Zjednoczone Królestwo lub Zachodnie Zjednoczone Królestwo
 Stany Zjednoczone | Środkowe stany USA lub zachodnie stany USA 2
 
 
@@ -80,11 +76,10 @@ W tej tabeli zestawiono wsparcie oceny i ograniczenia dotyczące serwerów wirtu
 
 Azure Migrate musi uzyskać dostęp do vCenter Server w celu odnalezienia maszyn wirtualnych na potrzeby oceny i migracji bez wykorzystania agentów.
 
-- Jeśli planujesz odnajdywanie aplikacji lub wizualizowanie zależności w sposób niezależny od agenta, Utwórz konto vCenter Server z dostępem tylko do odczytu wraz z włączonymi uprawnieniami dla **maszyn wirtualnych** > **operacji gościa**.
-
-  ![uprawnienia vCenter Server konta](./media/tutorial-prepare-vmware/vcenter-server-permissions.png)
-
-- Jeśli nie planujesz przeprowadzać odnajdywania aplikacji ani wizualizacji zależności bez agenta, skonfiguruj konto tylko do odczytu dla vCenter Server.
+**Zadanie podrzędne** | **Uprawnienia są odpowiednie**
+--- | ---
+Tylko Ocena | vCenter Server konto tylko do odczytu.
+Ocena przy użyciu funkcji [odnajdywania aplikacji](how-to-discover-applications.md) lub [wizualizacji zależności bez wykorzystania agentów](how-to-create-group-machine-dependencies-agentless.md) | konto vCenter Server z dostępem tylko do odczytu i przywileje włączone dla **maszyn wirtualnych** > **operacji gościa**.
 
 ## <a name="assessment-appliance-requirements"></a>Ocena — wymagania dotyczące urządzenia
 
@@ -94,7 +89,7 @@ Azure Migrate uruchamia lekkie urządzenie w celu odnalezienia maszyn wirtualnyc
 --- | ---
 **Wdrażanie urządzenia** | Urządzenie jest wdrażane jako maszyna wirtualna VMware. Musisz mieć wystarczającą ilość zasobów na vCenter Server, aby przydzielić maszynę wirtualną z 32 GB pamięci RAM, 8 procesorów wirtualnych vCPU, około 80 GB miejsca na dysku i zewnętrznym przełączniku wirtualnym.<br/><br/> Urządzenie wymaga dostępu do Internetu, bezpośrednio lub za pomocą serwera proxy.<br/> Maszynę wirtualną urządzenia należy wdrożyć na hoście ESXi z systemem w wersji 5,5 lub nowszej.
 **Projekt Azure Migrate** | Urządzenie może być skojarzone z pojedynczym projektem. <br/> Dowolna liczba urządzeń może być skojarzona z pojedynczym projektem.<br/> Można ocenić do 35 000 maszyn wirtualnych w projekcie.
-**Odnajdowa** | Urządzenie może wykryć do 10 000 maszyn wirtualnych VMware na vCenter Server.<br/> Urządzenie może połączyć się z pojedynczym vCenter Server.
+**Discovery** (Odnajdywanie) | Urządzenie może wykryć do 10 000 maszyn wirtualnych VMware na vCenter Server.<br/> Urządzenie może połączyć się z pojedynczym vCenter Server.
 **Grupa oceny** | Można dodać do 35 000 maszyn w jednej grupie.
 **Ocena** | W ramach jednej oceny można ocenić do 35 000 maszyn wirtualnych.
 
@@ -109,7 +104,7 @@ Urządzenie Azure Migrate wymaga połączenia z Internetem.
 **Adres URL** | **Szczegóły**  
 --- | --- |
 *.portal.azure.com  | Przejdź do Azure Migrate w Azure Portal.
-*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *. microsoft.com <br/> *. live.com | Zaloguj się do subskrypcji platformy Azure.
+*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *.microsoft.com <br/> *.live.com | Zaloguj się do subskrypcji platformy Azure.
 *.microsoftonline.com <br/> *.microsoftonline-p.com | Utwórz Active Directory aplikacje dla urządzenia, aby komunikować się z usługą Azure Migrate.
 management.azure.com | Utwórz Active Directory aplikacje dla urządzenia, aby komunikować się z usługą Azure Migrate.
 dc.services.visualstudio.com | Przekaż Dzienniki aplikacji używane do wewnętrznego monitorowania.
@@ -121,7 +116,7 @@ https://aka.ms/latestapplianceservices<br/><br/> https://download.microsoft.com/
 
 ## <a name="assessment-port-requirements"></a>Ocena — wymagania dotyczące portów
 
-**Pliku** | **Połączenie**
+**urządzenia** | **Połączenie**
 --- | ---
 Wprowadzony | Połączenia przychodzące na porcie TCP 3389, aby zezwolić na połączenia pulpitu zdalnego z urządzeniem.<br/><br/> Połączenia przychodzące na porcie 44368 do zdalnego dostępu do aplikacji do zarządzania urządzeniami przy użyciu adresu URL: ```https://<appliance-ip-or-name>:44368``` <br/><br/>Połączenia wychodzące na porcie 443, 5671 i 5672 do wysyłania metadanych odnajdywania i wydajności do Azure Migrate.
 Serwer vCenter | Połączenia przychodzące na porcie TCP 443 umożliwiające urządzeniu zbieranie metadanych dotyczących konfiguracji i wydajności dla ocen. <br/><br/> Urządzenie domyślnie łączy się z programem vCenter na porcie 443. Jeśli serwer vCenter nasłuchuje na innym porcie, można zmodyfikować port podczas konfigurowania odnajdywania.
@@ -138,8 +133,8 @@ Wizualizacja zależności ułatwia wizualizację zależności między maszynami,
         - Nazwy zainstalowanych aplikacji, które uruchamiają powyższe procesy
         - Nie. wykrytych połączeń podczas każdego interwału sondowania
 - **Wizualizacja zależności oparta na agentach**: Aby użyć wizualizacji zależności opartej na agentach, należy pobrać i zainstalować następujących agentów na każdej maszynie lokalnej, która ma zostać przeanalizowana.
-    - Program Microsoft Monitoring Agent (MMA) musi zostać zainstalowany na każdej maszynie. [Dowiedz się więcej](how-to-create-group-machine-dependencies.md#install-the-mma) na temat sposobu instalowania agenta MMA.
-    - Agent zależności musi być zainstalowany na każdej maszynie. [Dowiedz się więcej](how-to-create-group-machine-dependencies.md#install-the-dependency-agent) na temat sposobu instalowania agenta zależności.
+    - Zainstaluj program Microsoft Monitoring Agent (MMA) na każdym komputerze. [Dowiedz się więcej](how-to-create-group-machine-dependencies.md#install-the-mma) na temat sposobu instalowania agenta MMA.
+    - Zainstaluj agenta zależności na każdym komputerze. [Dowiedz się więcej](how-to-create-group-machine-dependencies.md#install-the-dependency-agent) na temat sposobu instalowania agenta zależności.
     - Ponadto w przypadku maszyn, które nie są połączone z Internetem, należy pobrać i zainstalować na nich bramę usługi Log Analytics.
 
 ## <a name="migration---limitations"></a>Migracja — ograniczenia
@@ -176,18 +171,18 @@ Maszyna wirtualna. Interaction. Zasilanie wyłączone | Zezwalaj na wyłączenie
 **Wymagane zmiany dotyczące platformy Azure** | Niektóre maszyny wirtualne mogą wymagać zmian, aby mogły być uruchamiane na platformie Azure. Azure Migrate automatycznie wprowadza te zmiany w następujących systemach operacyjnych:<br/> -Red Hat Enterprise Linux 6.5 +, 7.0 +<br/> - CentOS 6.5+, 7.0+</br> -SUSE Linux Enterprise Server 12 SP1 +<br/> -Ubuntu 14.04 LTS, 16.04 LTS, 18.04 LTS<br/> -Debian 7, 8<br/><br/> W przypadku innych systemów operacyjnych należy ręcznie wprowadzić zmiany przed migracją. Odpowiednie artykuły zawierają instrukcje, jak to zrobić.
 **Rozruch systemu Linux** | Jeśli/Boot znajduje się na dedykowanej partycji, powinien znajdować się na dysku systemu operacyjnego i nie można go rozłożyć na wiele dysków.<br/> Jeśli/boot jest częścią partycji głównej (/), partycja "/" powinna znajdować się na dysku systemu operacyjnego i nie może obejmować innych dysków.
 **Rozruch z interfejsem UEFI** | Maszyny wirtualne z rozruchem UEFI nie są obsługiwane w przypadku migracji.
-**Rozmiar dysku** | dysk systemu operacyjnego: 2 TB; 4 TB dla dysków z danymi.
+**Rozmiar dysku** | dysk systemu operacyjnego o pojemności 2 TB; 4 TB dla dysków z danymi.
 **Limity dysku** |  Do 60 dysków na maszynę wirtualną.
 **Zaszyfrowane dyski/woluminy** | Maszyny wirtualne z szyfrowanymi dyskami/woluminami nie są obsługiwane na potrzeby migracji.
-**Udostępniony klaster dysków** | Nieobsługiwane.
-**Dyski niezależne** | Nieobsługiwane.
+**Udostępniony klaster dysków** | Bez pomocy technicznej.
+**Dyski niezależne** | Bez pomocy technicznej.
 **RDM/przekazywanie dysków** | Jeśli maszyny wirtualne mają dyski RDM lub przekazujących, te dyski nie będą replikowane do platformy Azure.
 **NFS** | Woluminy NFS zainstalowane jako woluminy na maszynach wirtualnych nie zostaną zreplikowane.
 **obiekty docelowe iSCSI** | Maszyny wirtualne z obiektami docelowymi iSCSI nie są obsługiwane w przypadku migracji bez wykorzystania agentów.
-**Wielościeżkowe we/wy** | Nieobsługiwane.
-**VMotion magazynu** | Nieobsługiwane. Replikacja nie będzie działała, jeśli maszyna wirtualna korzysta z vMotion magazynu.
-**Zespoły kart sieciowych** | Nieobsługiwane.
-**If** | Nieobsługiwane.
+**Wielościeżkowe we/wy** | Bez pomocy technicznej.
+**VMotion magazynu** | Bez pomocy technicznej. Replikacja nie będzie działała, jeśli maszyna wirtualna korzysta z vMotion magazynu.
+**Zespoły kart sieciowych** | Bez pomocy technicznej.
+**If** | Bez pomocy technicznej.
 **Dysk docelowy** | Maszyny wirtualne można migrować tylko do dysków zarządzanych (dysk twardy w warstwie Standardowa) na platformie Azure.
 **Równoczesna replikacja** | 100 maszyn wirtualnych na vCenter Server. Jeśli masz więcej, Migruj je w partiach 100.
 
@@ -212,7 +207,7 @@ Urządzenie Azure Migrate wymaga połączenia z Internetem za pośrednictwem Int
 **Adres URL** | **Szczegóły**  
 --- | ---
 *.portal.azure.com | Przejdź do Azure Migrate w Azure Portal.
-*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *. microsoft.com <br/> *. live.com  | Zaloguj się do subskrypcji platformy Azure.
+*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *.microsoft.com <br/> *.live.com  | Zaloguj się do subskrypcji platformy Azure.
 *.microsoftonline.com <br/> *.microsoftonline-p.com | Utwórz Active Directory aplikacje dla urządzenia, aby komunikować się z usługą Azure Migrate.
 management.azure.com | Utwórz Active Directory aplikacje dla urządzenia, aby komunikować się z usługą Azure Migrate.
 dc.services.visualstudio.com | Przekaż Dzienniki aplikacji używane do wewnętrznego monitorowania.
@@ -225,7 +220,7 @@ https://aka.ms/latestapplianceservices<br/><br/> https://download.microsoft.com/
 
 ## <a name="agentless-migration-port-requirements"></a>Migracja bez agentów — wymagania dotyczące portów
 
-**Pliku** | **Połączenie**
+**urządzenia** | **Połączenie**
 --- | ---
 Wprowadzony | Połączenia wychodzące na porcie 443 do przekazywania replikowanych danych na platformę Azure oraz do komunikowania się z usługami Azure Migrate organizowanie replikacji i migracji.
 Serwer vCenter | Połączenia przychodzące na porcie 443, aby umożliwić organizowanie replikacji — tworzenie migawek, kopiowanie danych i migawki wersji
@@ -322,18 +317,18 @@ Pobierz i zainstaluj w Azure Migrate | Po zainstalowaniu urządzenia i wyświetl
 **Usługa mobilności** | Agent usługi mobilności musi być zainstalowany na każdej maszynie wirtualnej, która ma zostać poddana migracji.
 **Rozruch z interfejsem UEFI** | Migrowana maszyna wirtualna na platformie Azure zostanie automatycznie przekonwertowana na maszynę wirtualną rozruchową w systemie BIOS.<br/><br/> Dysk systemu operacyjnego powinien mieć maksymalnie cztery partycje, a woluminy powinny być sformatowane w systemie plików NTFS.
 **Dysk docelowy** | Maszyny wirtualne można migrować tylko do dysków zarządzanych (dysk twardy w warstwie Standardowa) na platformie Azure.
-**Rozmiar dysku** | dysk systemu operacyjnego: 2 TB; 8 TB dla dysków z danymi.
+**Rozmiar dysku** | dysk systemu operacyjnego o pojemności 2 TB; 8 TB dla dysków z danymi.
 **Limity dysku** |  Do 63 dysków na maszynę wirtualną.
 **Zaszyfrowane dyski/woluminy** | Maszyny wirtualne z szyfrowanymi dyskami/woluminami nie są obsługiwane na potrzeby migracji.
-**Udostępniony klaster dysków** | Nieobsługiwane.
+**Udostępniony klaster dysków** | Bez pomocy technicznej.
 **Dyski niezależne** | Obsługiwane.
 **Przekazywanie dysków** | Obsługiwane.
 **NFS** | Woluminy NFS zainstalowane jako woluminy na maszynach wirtualnych nie zostaną zreplikowane.
 **obiekty docelowe iSCSI** | Maszyny wirtualne z obiektami docelowymi iSCSI nie są obsługiwane w przypadku migracji bez wykorzystania agentów.
-**Wielościeżkowe we/wy** | Nieobsługiwane.
+**Wielościeżkowe we/wy** | Bez pomocy technicznej.
 **VMotion magazynu** | Obsługiwane
-**Zespoły kart sieciowych** | Nieobsługiwane.
-**If** | Nieobsługiwane.
+**Zespoły kart sieciowych** | Bez pomocy technicznej.
+**If** | Bez pomocy technicznej.
 
 
 
@@ -359,7 +354,7 @@ dc.services.visualstudio.com | Przekaż Dzienniki aplikacji używane do wewnętr
 
 ## <a name="agent-based-migration-port-requirements"></a>Migracja oparta na agencie — wymagania dotyczące portów
 
-**Pliku** | **Połączenie**
+**urządzenia** | **Połączenie**
 --- | ---
 Maszyny wirtualne | Usługa mobilności działająca na maszynach wirtualnych komunikuje się z lokalnym urządzeniem replikacji (serwer konfiguracji) na porcie HTTPS 443 przychodzącego na potrzeby zarządzania replikacją.<br/><br/> Maszyny wirtualne wysyłają dane replikacji do serwera przetwarzania (uruchomionego na komputerze serwera konfiguracji) na porcie HTTPS 9443 w ruchu przychodzącym. Ten port może być modyfikowany.
 Urządzenie replikacji | Urządzenie replikacji organizuje replikację za pomocą platformy Azure przez port HTTPS 443.
@@ -378,9 +373,9 @@ Liczba dysków systemu operacyjnego | 1 | Sprawdzanie kończy się niepowodzenie
 Liczba dysków danych | 64 lub mniej. | Sprawdzanie kończy się niepowodzeniem, jeśli nie jest obsługiwane.
 Rozmiar dysku danych | Do 4 095 GB | Sprawdzanie kończy się niepowodzeniem, jeśli nie jest obsługiwane.
 Karty sieciowe | Obsługiwane są wiele kart. |
-Udostępniony wirtualny dysk twardy | Nieobsługiwane. | Sprawdzanie kończy się niepowodzeniem, jeśli nie jest obsługiwane.
-Dysk FC | Nieobsługiwane. | Sprawdzanie kończy się niepowodzeniem, jeśli nie jest obsługiwane.
-BitLocker | Nieobsługiwane. | Aby włączyć replikację dla maszyny, należy wyłączyć funkcję BitLocker.
+Udostępniony wirtualny dysk twardy | Bez pomocy technicznej. | Sprawdzanie kończy się niepowodzeniem, jeśli nie jest obsługiwane.
+Dysk FC | Bez pomocy technicznej. | Sprawdzanie kończy się niepowodzeniem, jeśli nie jest obsługiwane.
+BitLocker | Bez pomocy technicznej. | Aby włączyć replikację dla maszyny, należy wyłączyć funkcję BitLocker.
 Nazwa maszyny wirtualnej | Od 1 do 63 znaków.<br/> Ograniczone do liter, cyfr i łączników.<br/><br/> Nazwa maszyny musi rozpoczynać się i kończyć literą lub cyfrą. |  Zaktualizuj wartość we właściwościach komputera w Site Recovery.
 Połącz po migracji — Windows | Aby nawiązać połączenie z maszynami wirtualnymi platformy Azure z systemem Windows po migracji:<br/> -Przed migracją włącza protokół RDP na lokalnej maszynie wirtualnej. Upewnij się, że reguły TCP i UDP zostały dodane do profilu **publicznego** oraz że w pozycji **Zapora systemu Windows** > **Dozwolone aplikacje** zezwolono na użycie protokołu RDP we wszystkich profilach.<br/> W przypadku dostępu do sieci VPN typu lokacja-lokacja Włącz protokół RDP i Zezwalaj na używanie protokołu RDP w **zaporze systemu Windows** -> **dozwolonych aplikacji i funkcji** dla sieci **,** w których są dozwolone. Ponadto sprawdź, czy zasady sieci SAN systemu operacyjnego są ustawione na **OnlineAll**. [Dowiedz się więcej](prepare-for-migration.md). |
 Połącz po migracji — system Linux | Aby nawiązać połączenie z maszynami wirtualnymi platformy Azure po migracji przy użyciu protokołu SSH:<br/> Przed migracją na maszynie lokalnej Sprawdź, czy usługa Secure Shell jest ustawiona do uruchamiania, oraz czy reguły zapory zezwalają na połączenie SSH.<br/> Po przejściu w tryb failover na maszynie wirtualnej platformy Azure Zezwól na połączenia przychodzące do portu SSH dla reguł sieciowej grupy zabezpieczeń na maszynie wirtualnej w trybie failover oraz dla podsieci platformy Azure, do której jest podłączona. Dodatkowo Dodaj publiczny adres IP dla maszyny wirtualnej. |  

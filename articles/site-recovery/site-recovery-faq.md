@@ -2,13 +2,14 @@
 title: Ogólne pytania dotyczące usługi Azure Site Recovery
 description: W tym artykule omówiono popularne pytania dotyczące Azure Site Recovery.
 ms.topic: conceptual
-ms.date: 11/14/2019
-ms.openlocfilehash: f64b885e82d2f790d7d146e16bb6ccb44e207465
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.date: 1/10/2020
+ms.author: raynew
+ms.openlocfilehash: 44abe9eafa9aef9e027778470d3f0483f99b0d32
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75497537"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863567"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>Ogólne pytania dotyczące Azure Site Recovery
 
@@ -101,7 +102,8 @@ Tak. Po utworzeniu magazynu Site Recovery w regionie firma Microsoft gwarantuje,
 ### <a name="does-site-recovery-encrypt-replication"></a>Czy usługa Site Recovery szyfruje replikację?
 W przypadku maszyn wirtualnych i serwerów fizycznych replikacja między lokacjami lokalnymi jest obsługiwana. W przypadku maszyn wirtualnych i serwerów fizycznych replikowanych do platformy Azure obsługiwane są zarówno szyfrowanie podczas przesyłania, jak i [szyfrowanie (na platformie Azure)](https://docs.microsoft.com/azure/storage/storage-service-encryption) .
 
-
+### <a name="how-can-i-enforce-tls-12-on-all-on-premises-azure-site-recovery-components"></a>Jak wymusić protokół TLS 1,2 na wszystkich lokalnych składnikach Azure Site Recovery?
+Agenci mobilności instalowani na replikowanych elementach komunikują się tylko z serwerem przetwarzania tylko w protokole TLS 1,2. Jednak komunikacja z serwera konfiguracji do platformy Azure i z serwera przetwarzania na platformę Azure może należeć do protokołu TLS 1,1 lub 1,0. Postępuj zgodnie ze [wskazówkami](https://support.microsoft.com/en-us/help/3140245/update-to-enable-tls-1-1-and-tls-1-2-as-default-secure-protocols-in-wi) , aby wymusić szyfrowanie TLS 1,2 na wszystkich serwerach konfiguracji i serwerach przetwarzania skonfigurowanych przez użytkownika.
 
 
 ## <a name="disaster-recovery"></a>Odzyskiwanie po awarii

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: conceptual
-ms.date: 10/18/2019
+ms.date: 01/06/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 37091b2551d68e241c7179949c3eb1db9a381de6
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 4ffa08f7ebf013d42d6da0589ce0f1ccc97289de
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74382174"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75707009"
 ---
 # <a name="how-to-configure-and-enable-risk-policies"></a>Instrukcje: Konfigurowanie i Włączanie zasad ryzyka
 
@@ -47,6 +47,8 @@ Wybranie **wysokiego** progu zmniejsza liczbę wyzwalanych zasad i minimalizuje 
 
 Wszystkie zasady zezwalają na wykluczenie użytkowników, takich jak [dostęp awaryjny lub konta administratora z przerwaniem](../users-groups-roles/directory-emergency-access.md). Organizacje mogą określić, że muszą wykluczać inne konta z określonych zasad w zależności od sposobu korzystania z kont. Wszystkie wykluczenia powinny być regularnie przeglądane w celu sprawdzenia, czy nadal mają zastosowanie.
 
+Skonfigurowane lokalizacje zaufanej [sieci](../conditional-access/location-condition.md) są używane przez funkcję ochrony tożsamości podczas niektórych wykryć ryzyka, aby zmniejszyć liczbę fałszywie dodatnich.
+
 ## <a name="enable-policies"></a>Włącz zasady
 
 Aby włączyć ryzyko dla użytkownika i zasady dotyczące ryzyka związanego z logowaniem, wykonaj następujące czynności.
@@ -70,7 +72,7 @@ Aby włączyć ryzyko dla użytkownika i zasady dotyczące ryzyka związanego z 
    1. W obszarze **Controls**
       1. **Dostęp** — zalecenia firmy Microsoft mają na celu **umożliwienie dostępu** i **wymaganie uwierzytelniania wieloskładnikowego**.
    1. **Wymuś** - zasad **na**
-   1. **Pisał**
+   1. **Zapisywanie**
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -33,7 +33,7 @@
       items:
         - name: Wyzwalanie za pomocą usługi Azure Functions
           href: container-instances-tutorial-azure-function-trigger.md
-- name: Przykłady
+- name: Samples
   items:
     - name: Przykłady kodu
       href: 'https://azure.microsoft.com/resources/samples/?sort=0&term=aci'
@@ -55,10 +55,14 @@
   items:
     - name: Wdrażanie
       items:
-        - name: Wdrażanie w sieci wirtualnej (wersja zapoznawcza)
+        - name: Wdrażanie w sieci wirtualnej
           href: container-instances-vnet.md
         - name: Wdrażanie z usługi Azure Container Registry
           href: container-instances-using-azure-container-registry.md
+        - name: Szyfrowanie danych wdrożenia
+          href: container-instances-encrypt-data.md
+        - name: Wdrażanie na dedykowanych hostach
+          href: container-instances-dedicated-hosts.md
     - name: Scenariusze związane z kontenerami
       items:
         - name: Ustawianie zasad ponownego uruchamiania dla zadań uruchamianych jednokrotnie

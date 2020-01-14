@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: a9c1ca3ac55c1c995ac858e758d6930b49c5ea1c
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: 1074c4bc561236039e6ee55ef2df4fc8bd8dbbfc
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74287006"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772520"
 ---
 # <a name="azure-serial-console-for-linux"></a>Konsola szeregowa platformy Azure dla systemu Linux
 
@@ -29,7 +29,7 @@ Konsola szeregowa działa w taki sam sposób w przypadku maszyn wirtualnych i wy
 Aby uzyskać dokumentację konsoli szeregowej dla systemu Windows, zobacz [konsola szeregowa dla systemu Windows](../windows/serial-console.md).
 
 > [!NOTE]
-> Konsola szeregowa jest ogólnie dostępna w globalnych regionach platformy Azure. Nie jest jeszcze dostępne w Azure dla instytucji rządowych lub chmury chińskiej wersji platformy Azure.
+> Konsola szeregowa jest ogólnie dostępna w globalnych regionach platformy Azure i w publicznej wersji zapoznawczej w Azure Government. Nie jest jeszcze dostępna w chmurze platformy Azure w Chinach.
 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
@@ -63,6 +63,7 @@ Dystrybucja      | Dostęp do konsoli szeregowej
 :-----------|:---------------------
 Red Hat Enterprise Linux    | Konsola szeregowa dostęp domyślnie włączony.
 CentOS      | Konsola szeregowa dostęp domyślnie włączony.
+Debian      | Konsola szeregowa dostęp domyślnie włączony.
 Ubuntu      | Konsola szeregowa dostęp domyślnie włączony.
 CoreOS      | Konsola szeregowa dostęp domyślnie włączony.
 SUSE        | Nowsze obrazy SLES dostępne na platformie Azure mają domyślnie włączony dostęp do konsoli szeregowej. Jeśli używasz starszych wersji (10 lub wcześniejszych) SLES na platformie Azure, zapoznaj się z [artykułem KB](https://www.novell.com/support/kb/doc.php?id=3456486) , aby włączyć konsolę szeregową.
@@ -101,7 +102,7 @@ Wszystkie dane, które są wysyłane w obie strony są szyfrowane w sieci.
 Wszystkie prawa dostępu do konsoli szeregowej są obecnie rejestrowane w dziennikach [diagnostyki rozruchu](https://docs.microsoft.com/azure/virtual-machines/linux/boot-diagnostics) maszyny wirtualnej. Dostęp do tych dzienników są własnością i kontrolowane przez administratora maszyny wirtualnej platformy Azure.
 
 > [!CAUTION]
-> Żadne hasła dostępu do konsoli są rejestrowane. Jednak jeśli polecenia uruchamiane w ramach konsoli zawierają lub danych wyjściowych haseł, kluczy tajnych, nazwy użytkowników lub jakąkolwiek inną formę identyfikowalne dane osobowe (PII), te będą zapisywane do dzienników diagnostyki rozruchu maszyny Wirtualnej. One będą zapisywane wraz z wszystkich innych widocznych tekstu, jako część wykonania wstecz przewijania konsoli szeregowej funkcji. Te dzienniki są cykliczne i tylko osoby z uprawnieniami do odczytu do konta magazynu diagnostyki mieli do nich dostęp. Jednak zaleca się następujące najlepsze rozwiązanie polegające na przy użyciu pulpitu zdalnego dla wszystkich elementów, które mogą obejmować wpisów tajnych i/lub dane osobowe.
+> Żadne hasła dostępu do konsoli są rejestrowane. Jednak jeśli polecenia uruchamiane w ramach konsoli zawierają lub danych wyjściowych haseł, kluczy tajnych, nazwy użytkowników lub jakąkolwiek inną formę identyfikowalne dane osobowe (PII), te będą zapisywane do dzienników diagnostyki rozruchu maszyny Wirtualnej. One będą zapisywane wraz z wszystkich innych widocznych tekstu, jako część wykonania wstecz przewijania konsoli szeregowej funkcji. Te dzienniki są cykliczne i tylko osoby z uprawnieniami do odczytu do konta magazynu diagnostyki mieli do nich dostęp. W przypadku umieszczania jakichkolwiek poleceń dotyczących danych, które zawierają wpisy tajne lub dane OSOBowe, zalecamy użycie protokołu SSH, chyba że konsola szeregowa jest absolutnie konieczna.
 
 ### <a name="concurrent-usage"></a>Współbieżne użycie
 Jeśli użytkownik jest połączony z konsoli szeregowej i inny użytkownik pomyślnie żąda dostępu do tej samej maszyny wirtualnej, pierwszy użytkownik zostanie odłączony, a drugi użytkownik nawiązał połączenie z tą samą sesją.
@@ -169,7 +170,7 @@ A. Tak. Ponieważ konsola szeregowa nie wymaga kluczy SSH, wystarczy skonfigurow
 ## <a name="next-steps"></a>Następne kroki
 * Użyj konsoli szeregowej, aby [uzyskać dostęp do grub i trybu jednego użytkownika](serial-console-grub-single-user-mode.md).
 * Użyj konsoli szeregowej dla [wywołań NMI i sysrq](serial-console-nmi-sysrq.md).
-* Dowiedz się, jak [włączyć Grub w różnych dystrybucjeach](serial-console-grub-proactive-configuration.md) za pomocą konsoli szeregowej 
+* Dowiedz się, jak [włączyć Grub w różnych dystrybucjeach](serial-console-grub-proactive-configuration.md) za pomocą konsoli szeregowej
 * Konsola szeregowa jest również dostępna dla [maszyn wirtualnych z systemem Windows](../windows/serial-console.md).
 * Dowiedz się więcej na temat [diagnostyki rozruchu](boot-diagnostics.md).
 

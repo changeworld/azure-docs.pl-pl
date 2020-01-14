@@ -5,12 +5,12 @@ author: jeffhollan
 ms.topic: quickstart
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 6b3ead9eefd6f0d4c504cc7711ea4e03facf8edc
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 12e79df4af2dab097a41cf8482d5a344080890cf
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231507"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769709"
 ---
 # <a name="create-your-first-durable-function-in-c"></a>Tworzenie pierwszej funkcji trwałej w języku C\#
 
@@ -26,7 +26,7 @@ W tym artykule dowiesz się, jak używać programu Visual Studio 2019 do lokalne
 
 W celu ukończenia tego samouczka:
 
-* Zainstaluj [program Visual Studio 2019](https://visualstudio.microsoft.com/vs/). Upewnij się, że obciążenie **programowanie na platformie Azure** jest również instalowane. Program Visual Studio 2017 obsługuje także programowanie Durable Functions, ale interfejs użytkownika i kroki różnią się.
+* Zainstaluj program [Visual Studio 2019](https://visualstudio.microsoft.com/vs/). Upewnij się, że obciążenie **programowanie na platformie Azure** jest również instalowane. Program Visual Studio 2017 obsługuje także programowanie Durable Functions, ale interfejs użytkownika i kroki różnią się.
 
 * Sprawdź, czy zainstalowano i uruchomiono [emulator magazynu Azure](../../storage/common/storage-use-emulator.md).
 
@@ -34,7 +34,7 @@ W celu ukończenia tego samouczka:
 
 ## <a name="create-a-function-app-project"></a>Tworzenie projektu aplikacji funkcji
 
-Szablon projektu usługi Azure Functions umożliwia utworzenie projektu, który można opublikować w aplikacji funkcji na platformie Azure. Aplikacja funkcji umożliwia grupowanie funkcji w jednostki logiczne, co ułatwia wdrażanie i udostępnianie zasobów oraz zarządzanie nimi.
+Szablon projektu usługi Azure Functions umożliwia utworzenie projektu, który można opublikować w aplikacji funkcji na platformie Azure. Aplikacja funkcji umożliwia grupowanie funkcji jako jednostki logicznej, co ułatwia zarządzanie, wdrażanie, skalowanie i udostępnianie zasobów.
 
 1. W programie Visual Studio wybierz pozycję **Nowy** > **Projekt** z menu **Plik**.
 

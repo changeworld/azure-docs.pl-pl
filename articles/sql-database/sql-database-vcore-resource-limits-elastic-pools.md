@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: carlrab, sstein
-ms.date: 12/11/2019
-ms.openlocfilehash: 1c419e0550561e99694d9256c9c9111a2549b82e
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
-ms.translationtype: HT
+ms.date: 01/09/2020
+ms.openlocfilehash: f6b7797fbebd3d1df3da3405926543d716e584f4
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647870"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75835097"
 ---
 # <a name="resource-limits-for-elastic-pools-using-the-vcore-purchasing-model"></a>Limity zasobów dla pul elastycznych przy użyciu modelu zakupu rdzeń wirtualny
 
@@ -52,8 +52,8 @@ Możesz ustawić warstwę usług, rozmiar obliczeń i ilość miejsca do magazyn
 |Maksymalny rozmiar danych TempDB (GB)|32|64|96|128|160|192|
 |Typ usługi Storage|Magazyn Premium (zdalny)|Magazyn Premium (zdalny)|Magazyn Premium (zdalny)|Magazyn Premium (zdalny)|Magazyn Premium (zdalny)|Magazyn Premium (zdalny)|
 |We/Wy, czas oczekiwania (w przybliżeniu)|5-7 ms (zapis)<br>5-10 ms (odczyt)|5-7 ms (zapis)<br>5-10 ms (odczyt)|5-7 ms (zapis)<br>5-10 ms (odczyt)|5-7 ms (zapis)<br>5-10 ms (odczyt)|5-7 ms (zapis)<br>5-10 ms (odczyt)|5-7 ms (zapis)<br>5-10 ms (odczyt)|
-|Maksymalna liczba operacji we/wy danych *|400|800|1200|1600|2000|2400|
-|Maksymalny współczynnik rejestrowania (MB/s)|4.7|9.4|14,1|18,8|23,4|28.1|
+|Maksymalna liczba operacji we/wy na sekundę na pulę *|400|800|1200|1600|2000|2400|
+|Maksymalna szybkość rejestrowania na pulę (MB/s)|4.7|9.4|14,1|18,8|23,4|28.1|
 |Maksymalna liczba współbieżnych procesów roboczych na pulę (żądania) * * |210|420|630|840|1050|1260|
 |Maksymalna liczba współbieżnych logowań na pulę * * |210|420|630|840|1050|1260|
 |Maksymalna liczba współbieżnych sesji|30,000|30,000|30,000|30,000|30,000|30,000|
@@ -82,8 +82,8 @@ Możesz ustawić warstwę usług, rozmiar obliczeń i ilość miejsca do magazyn
 |Maksymalny rozmiar danych TempDB (GB)|224|256|288|320|512|768|
 |Typ usługi Storage|Magazyn Premium (zdalny)|Magazyn Premium (zdalny)|Magazyn Premium (zdalny)|Magazyn Premium (zdalny)|Magazyn Premium (zdalny)|Magazyn Premium (zdalny)|
 |We/Wy, czas oczekiwania (w przybliżeniu)|5-7 ms (zapis)<br>5-10 ms (odczyt)|5-7 ms (zapis)<br>5-10 ms (odczyt)|5-7 ms (zapis)<br>5-10 ms (odczyt)|5-7 ms (zapis)<br>5-10 ms (odczyt)|5-7 ms (zapis)<br>5-10 ms (odczyt)|5-7 ms (zapis)<br>5-10 ms (odczyt)|
-|Maksymalna liczba operacji we/wy danych *|2800|3200|3600|4000|6400|9600|
-|Maksymalny współczynnik rejestrowania (MB/s)|32,8|37,5|37,5|37,5|37,5|37,5|
+|Maksymalna liczba operacji we/wy na sekundę na pulę *|2800|3200|3600|4000|6400|9600|
+|Maksymalna szybkość rejestrowania na pulę (MB/s)|32,8|37,5|37,5|37,5|37,5|37,5|
 |Maksymalna liczba współbieżnych procesów roboczych na pulę (żądania) *|1470|1680|1890|2100|3360|5040|
 |Maksymalna liczba współbieżnych logowań w puli (żądania) *|1470|1680|1890|2100|3360|5040|
 |Maksymalna liczba współbieżnych sesji|30,000|30,000|30,000|30,000|30,000|30,000|
@@ -112,8 +112,8 @@ Możesz ustawić warstwę usług, rozmiar obliczeń i ilość miejsca do magazyn
 |Maksymalny rozmiar danych TempDB (GB)|64|128|192|256|320|384|448|
 |Typ usługi Storage|Magazyn Premium (zdalny)|Magazyn Premium (zdalny)|Magazyn Premium (zdalny)|Magazyn Premium (zdalny)|Magazyn Premium (zdalny)|Magazyn Premium (zdalny)|Magazyn Premium (zdalny)|
 |We/Wy, czas oczekiwania (w przybliżeniu)|5-7 ms (zapis)<br>5-10 ms (odczyt)|5-7 ms (zapis)<br>5-10 ms (odczyt)|5-7 ms (zapis)<br>5-10 ms (odczyt)|5-7 ms (zapis)<br>5-10 ms (odczyt)|5-7 ms (zapis)<br>5-10 ms (odczyt)|5-7 ms (zapis)<br>5-10 ms (odczyt)|5-7 ms (zapis)<br>5-10 ms (odczyt)|
-|Maksymalna liczba operacji we/wy danych *|800|1600|2400|3200|4000|4800|5600|
-|Maksymalny współczynnik rejestrowania (MB/s)|9.4|18,8|28.1|37,5|37,5|37,5|37,5|
+|Maksymalna liczba operacji we/wy na sekundę na pulę *|800|1600|2400|3200|4000|4800|5600|
+|Maksymalna szybkość rejestrowania na pulę (MB/s)|9.4|18,8|28.1|37,5|37,5|37,5|37,5|
 |Maksymalna liczba współbieżnych procesów roboczych na pulę (żądania) * *|210|420|630|840|1050|1260|1470|
 |Maksymalna liczba współbieżnych logowań na pulę (żądania) * *|210|420|630|840|1050|1260|1470|
 |Maksymalna liczba współbieżnych sesji|30,000|30,000|30,000|30,000|30,000|30,000|30,000|
@@ -142,8 +142,8 @@ Możesz ustawić warstwę usług, rozmiar obliczeń i ilość miejsca do magazyn
 |Maksymalny rozmiar danych TempDB (GB)|512|576|640|768|1024|1280|2560|
 |Typ usługi Storage|Magazyn Premium (zdalny)|Magazyn Premium (zdalny)|Magazyn Premium (zdalny)|Magazyn Premium (zdalny)|Magazyn Premium (zdalny)|Magazyn Premium (zdalny)|Magazyn Premium (zdalny)|
 |We/Wy, czas oczekiwania (w przybliżeniu)|5-7 ms (zapis)<br>5-10 ms (odczyt)|5-7 ms (zapis)<br>5-10 ms (odczyt)|5-7 ms (zapis)<br>5-10 ms (odczyt)|5-7 ms (zapis)<br>5-10 ms (odczyt)|5-7 ms (zapis)<br>5-10 ms (odczyt)|5-7 ms (zapis)<br>5-10 ms (odczyt)|5-7 ms (zapis)<br>5-10 ms (odczyt)|
-|Maksymalna liczba operacji we/wy danych * |6,400|7 200|8000|9600|12,800|16,000|32,000|
-|Maksymalny współczynnik rejestrowania (MB/s)|37,5|37,5|37,5|37,5|37,5|37,5|37,5|
+|Maksymalna liczba operacji we/wy na sekundę na pulę * |6,400|7 200|8000|9600|12,800|16,000|32,000|
+|Maksymalna szybkość rejestrowania na pulę (MB/s)|37,5|37,5|37,5|37,5|37,5|37,5|37,5|
 |Maksymalna liczba współbieżnych procesów roboczych na pulę (żądania) * *|1680|1890|2100|2520|3360|4200|8400|
 |Maksymalna liczba współbieżnych logowań na pulę (żądania) * *|1680|1890|2100|2520|3360|4200|8400|
 |Maksymalna liczba współbieżnych sesji|30,000|30,000|30,000|30,000|30,000|30,000|30,000|
@@ -174,10 +174,10 @@ Możesz ustawić warstwę usług, rozmiar obliczeń i ilość miejsca do magazyn
 |Maksymalny rozmiar danych TempDB (GB)|333|
 |Typ usługi Storage|Magazyn Premium (zdalny)|
 |We/Wy, czas oczekiwania (w przybliżeniu)|5-7 ms (zapis)<br>5-10 ms (odczyt)|
-|Maksymalna liczba operacji we/wy danych *|28 800|
-|Maksymalny współczynnik rejestrowania (MB/s)|37,5|
-|Maksymalna liczba współbieżnych procesów roboczych na pulę (żądania) * *|1680|
-|Maksymalna liczba współbieżnych logowań na pulę (żądania) * *|1680|
+|Maksymalna liczba operacji we/wy na sekundę na pulę *|16,000|
+|Maksymalna szybkość rejestrowania na pulę (MB/s)|37,5|
+|Maksymalna liczba współbieżnych procesów roboczych na pulę (żądania) * *|3780|
+|Maksymalna liczba współbieżnych logowań na pulę (żądania) * *|3780|
 |Maksymalna liczba współbieżnych sesji|30,000|
 |Minimalna/Maksymalna liczba opcji rdzeń wirtualny puli elastycznej na bazę danych|0-72|
 |Liczba replik|1|
@@ -209,8 +209,8 @@ Możesz ustawić warstwę usług, rozmiar obliczeń i ilość miejsca do magazyn
 |Maksymalny rozmiar dziennika (GB)|307|307|307|307|307|
 |Maksymalny rozmiar danych TempDB (GB)|64|96|128|160|192|
 |We/Wy, czas oczekiwania (w przybliżeniu)|1-2 ms (zapis)<br>1-2 ms (odczyt)|1-2 ms (zapis)<br>1-2 ms (odczyt)|1-2 ms (zapis)<br>1-2 ms (odczyt)|1-2 ms (zapis)<br>1-2 ms (odczyt)|1-2 ms (zapis)<br>1-2 ms (odczyt)|
-|Maksymalna liczba operacji we/wy danych *|9000|13 500|18 000|22 500|27 000|
-|Maksymalny współczynnik rejestrowania (MB/s)|20|30|40|50|60|
+|Maksymalna liczba operacji we/wy na sekundę na pulę *|9000|13 500|18 000|22 500|27 000|
+|Maksymalna szybkość rejestrowania na pulę (MB/s)|20|30|40|50|60|
 |Maksymalna liczba współbieżnych procesów roboczych na pulę (żądania) * *|420|630|840|1050|1260|
 |Maksymalna liczba współbieżnych logowań na pulę (żądania) * *|420|630|840|1050|1260|
 |Maksymalna liczba współbieżnych sesji|30,000|30,000|30,000|30,000|30,000|
@@ -239,8 +239,8 @@ Możesz ustawić warstwę usług, rozmiar obliczeń i ilość miejsca do magazyn
 |Maksymalny rozmiar dziennika (GB)|307|307|307|307|307|307|
 |Maksymalny rozmiar danych TempDB (GB)|224|256|288|320|512|768|
 |We/Wy, czas oczekiwania (w przybliżeniu)|1-2 ms (zapis)<br>1-2 ms (odczyt)|1-2 ms (zapis)<br>1-2 ms (odczyt)|1-2 ms (zapis)<br>1-2 ms (odczyt)|1-2 ms (zapis)<br>1-2 ms (odczyt)|1-2 ms (zapis)<br>1-2 ms (odczyt)|1-2 ms (zapis)<br>1-2 ms (odczyt)|
-|Maksymalna liczba operacji we/wy danych *|31 500|36 000|40 500|45,000|72 000|90,000|
-|Maksymalny współczynnik rejestrowania (MB/s)|70|80|80|80|80|80|
+|Maksymalna liczba operacji we/wy na sekundę na pulę *|31 500|36 000|40 500|45,000|72 000|96 000|
+|Maksymalna szybkość rejestrowania na pulę (MB/s)|70|80|80|80|80|80|
 |Maksymalna liczba współbieżnych procesów roboczych na pulę (żądania) * *|1470|1680|1890|2100|3360|5040|
 |Maksymalna liczba współbieżnych logowań na pulę (żądania) * *|1470|1680|1890|2100|3360|5040|
 |Maksymalna liczba współbieżnych sesji|30,000|30,000|30,000|30,000|30,000|30,000|
@@ -271,8 +271,8 @@ Możesz ustawić warstwę usług, rozmiar obliczeń i ilość miejsca do magazyn
 |Maksymalny rozmiar danych TempDB (GB)|128|192|256|320|384|448|
 |Typ usługi Storage|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|
 |We/Wy, czas oczekiwania (w przybliżeniu)|1-2 ms (zapis)<br>1-2 ms (odczyt)|1-2 ms (zapis)<br>1-2 ms (odczyt)|1-2 ms (zapis)<br>1-2 ms (odczyt)|1-2 ms (zapis)<br>1-2 ms (odczyt)|1-2 ms (zapis)<br>1-2 ms (odczyt)|1-2 ms (zapis)<br>1-2 ms (odczyt)|
-|Maksymalna liczba operacji we/wy danych *|18 000|27 000|36 000|45,000|54,000|63 000|
-|Maksymalny współczynnik rejestrowania (MB/s)|60|90|120|120|120|120|
+|Maksymalna liczba operacji we/wy na sekundę na pulę *|18 000|27 000|36 000|45,000|54,000|63 000|
+|Maksymalna szybkość rejestrowania na pulę (MB/s)|60|90|120|120|120|120|
 |Maksymalna liczba współbieżnych procesów roboczych na pulę (żądania) * *|420|630|840|1050|1260|1470|
 |Maksymalna liczba współbieżnych logowań na pulę (żądania) * *|420|630|840|1050|1260|1470|
 |Maksymalna liczba współbieżnych sesji|30,000|30,000|30,000|30,000|30,000|30,000|
@@ -301,8 +301,8 @@ Możesz ustawić warstwę usług, rozmiar obliczeń i ilość miejsca do magazyn
 |Maksymalny rozmiar danych TempDB (GB)|512|576|640|768|1024|1280|2560|
 |Typ usługi Storage|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|
 |We/Wy, czas oczekiwania (w przybliżeniu)|1-2 ms (zapis)<br>1-2 ms (odczyt)|1-2 ms (zapis)<br>1-2 ms (odczyt)|1-2 ms (zapis)<br>1-2 ms (odczyt)|1-2 ms (zapis)<br>1-2 ms (odczyt)|1-2 ms (zapis)<br>1-2 ms (odczyt)|1-2 ms (zapis)<br>1-2 ms (odczyt)|1-2 ms (zapis)<br>1-2 ms (odczyt)|
-|Maksymalna liczba operacji we/wy danych *|72 000|81 000|90,000|108 000|144 000|180,000|256 000|
-|Maksymalny współczynnik rejestrowania (MB/s)|120|120|120|120|120|120|120|
+|Maksymalna liczba operacji we/wy na sekundę na pulę *|72 000|81 000|90,000|108 000|144 000|180,000|256 000|
+|Maksymalna szybkość rejestrowania na pulę (MB/s)|120|120|120|120|120|120|120|
 |Maksymalna liczba współbieżnych procesów roboczych na pulę (żądania) * *|1680|1890|2100|2520|3360|4200|8400|
 |Maksymalna liczba współbieżnych logowań na pulę (żądania) * *|1680|1890|2100|2520|3360|4200|8400|
 |Maksymalna liczba współbieżnych sesji|30,000|30,000|30,000|30,000|30,000|30,000|30,000|
@@ -320,23 +320,23 @@ Możesz ustawić warstwę usług, rozmiar obliczeń i ilość miejsca do magazyn
 
 ### <a name="m-series-compute-generation-preview"></a>Generowanie obliczeń serii M (wersja zapoznawcza)
 
-|Rozmiar obliczeń|GP_M_128|
+|Rozmiar obliczeń|BC_M_128|
 |:--- | --: |
 |Generowanie obliczeń|Seria M|
 |Rdzenie wirtualne|128|
-|Pamięć (GB)|3767|
+|Pamięć (GB)|3767,1|
 |Maksymalna liczba baz danych na pulę|100|
 |Obsługa magazynu kolumn|Tak|
-|Magazyn OLTP w pamięci (GB)|481|
+|Magazyn OLTP w pamięci (GB)|1768|
 |Maksymalny rozmiar danych (GB)|4096|
 |Maksymalny rozmiar dziennika (GB)|2048|
 |Maksymalny rozmiar danych TempDB (GB)|4096|
 |Typ usługi Storage|Lokalny dysk SSD|
 |We/Wy, czas oczekiwania (w przybliżeniu)|1-2 ms (zapis)<br>1-2 ms (odczyt)|
-|Maksymalna liczba operacji we/wy danych *|40,000|
-|Maksymalny współczynnik rejestrowania (MB/s)|120|
-|Maksymalna liczba współbieżnych procesów roboczych na pulę (żądania) *|1680|
-|Maksymalna liczba współbieżnych logowań na pulę (żądania) *|1680|
+|Maksymalna liczba operacji we/wy na sekundę na pulę *|200,000|
+|Maksymalna szybkość rejestrowania na pulę (MB/s)|333|
+|Maksymalna liczba współbieżnych procesów roboczych na pulę (żądania) *|13 440|
+|Maksymalna liczba współbieżnych logowań na pulę (żądania) *|13 440|
 |Maksymalna liczba współbieżnych sesji|30,000|
 |Minimalna/Maksymalna liczba opcji rdzeń wirtualny puli elastycznej na bazę danych|0-128|
 |Liczba replik|4|

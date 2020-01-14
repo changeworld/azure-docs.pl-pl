@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 11/04/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 51f72011b89656d8f56e996d4654a2714f2f482b
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 8071fe12b925384465c1e570465ebaa0100c53e9
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73615602"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749813"
 ---
 # <a name="introduction-to-azure-blob-storage"></a>Wprowadzenie do usługi Azure Blob Storage
 
@@ -73,5 +73,5 @@ Istnieje wiele rozwiązań do migrowania istniejących danych do magazynu obiekt
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Tworzenie konta magazynu](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
-* [Azure Storage scalability and performance targets](../common/storage-scalability-targets.md) (Cele dotyczące skalowalności i wydajności usługi Azure Storage)
+- [Tworzenie konta magazynu](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+- [Cele skalowalności i wydajności dla usługi BLOB Storage](scalability-targets.md)

@@ -10,12 +10,12 @@ ms.author: jimgries
 author: greazer
 ms.date: 09/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: d5843937233309e1b37f0127d364066a8a747e21
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 59002d0f17fc7213d8db0fad01b1f984542adbd5
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75538243"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834801"
 ---
 # <a name="get-started-with-azure-machine-learning-for-visual-studio-code"></a>Wprowadzenie do Azure Machine Learning dla Visual Studio Code
 
@@ -332,5 +332,7 @@ Korzystając z palety poleceń, można uzyskać dostęp do wielu funkcji Azure M
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Aby poznać wskazówki dotyczące uczenia się z Azure Machine Learning poza Visual Studio Code, zobacz [Samouczek: uczenie modeli przy użyciu Azure Machine Learning](tutorial-train-models-with-aml.md).
-* Aby zapoznać się z przewodnikiem dotyczącym sposobu edytowania, uruchamiania i debugowania kodu lokalnie, zobacz [samouczek Python Hello-World](https://code.visualstudio.com/docs/Python/Python-tutorial).
+* Aby poznać wskazówki dotyczące uczenia się z Azure Machine Learning poza Visual Studio Code, zobacz [Samouczek: uczenie modeli za pomocą Azure Machine Learning](tutorial-train-models-with-aml.md)
+* Aby zapoznać się z przewodnikiem dotyczącym sposobu edytowania, uruchamiania i debugowania kodu lokalnie, zobacz [samouczek Python Hello-World](https://code.visualstudio.com/docs/Python/Python-tutorial)
+* Aby uzyskać więcej informacji na temat dostosowywania środowiska języka Python, zobacz [Tworzenie środowisk i zarządzanie nimi na potrzeby szkolenia i wdrażania](how-to-use-environments.md)
+

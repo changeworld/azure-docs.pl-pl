@@ -3,15 +3,15 @@ title: Programowanie zespołowe w witrynie Kubernetes
 services: azure-dev-spaces
 ms.date: 04/25/2019
 ms.topic: quickstart
-description: Tworzenie zespołu Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
+description: Ten przewodnik Szybki Start przedstawia sposób tworzenia zespołu Kubernetes z użyciem kontenerów i mikrousług za pomocą Azure Dev Spaces
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, Service siatk, Service siatk Routing, polecenia kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 2f3ed0f2a9635488aea509e7816fbe84e1589d14
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 86d8d559a2d6408eb6846705887a82b440d50d7b
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74484029"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770836"
 ---
 # <a name="quickstart-team-development-on-kubernetes---azure-dev-spaces"></a>Szybki Start: Programowanie zespołowe w usłudze Kubernetes — Azure Dev Spaces
 
@@ -236,4 +236,4 @@ Dowiedz się, jak usługa Azure Dev Spaces pomaga tworzyć bardziej złożone ap
 > [Working with multiple containers and team development (Praca z wieloma kontenerami i programowanie zespołowe)](multi-service-nodejs.md)
 
 [helm-installed]: https://v2.helm.sh/docs/using_helm/#installing-helm
-[supported-regions]: about.md#supported-regions-and-configurations
+[supported-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service

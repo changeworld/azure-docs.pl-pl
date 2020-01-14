@@ -5,18 +5,18 @@ author: alexkarcher-msft
 ms.topic: article
 ms.date: 09/05/2018
 ms.author: alkarche
-ms.openlocfilehash: 212f10bd33479e5a9f7244d5b2090c0324f937c2
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 40037252ddf8e505ae7fe734813d598e7de96336
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226759"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834234"
 ---
 # <a name="how-to-troubleshoot-functions-runtime-is-unreachable"></a>Jak rozwiązywać problemy ze środowiskiem uruchomieniowym funkcji jest nieosiągalny "
 
 
 ## <a name="error-text"></a>Tekst błędu
-Ten dokument jest przeznaczony do rozwiązywania problemów z następującym błędem, gdy jest wyświetlany w portalu funkcji.
+Ten artykuł ma na celu rozwiązanie następującego błędu, gdy jest wyświetlany w portalu funkcji.
 
 `Error: Azure Functions Runtime is unreachable. Click here for details on storage configuration`
 
@@ -31,6 +31,8 @@ Przeprowadzimy cztery najczęstsze przypadki błędów, sposób identyfikowania 
 1. Nieprawidłowe poświadczenia konta magazynu
 1. Konto magazynu jest niedostępne
 1. Pełny limit przydziału dziennego wykonania
+1. Aplikacja znajduje się za zaporą
+
 
 ## <a name="storage-account-deleted"></a>Usunięto konto magazynu
 
@@ -38,13 +40,13 @@ Każda aplikacja funkcji wymaga konta magazynu do działania. Jeśli to konto zo
 
 ### <a name="how-to-find-your-storage-account"></a>Jak znaleźć konto magazynu
 
-Zacznij od przejrzenia nazwy konta magazynu w ustawieniach aplikacji. `AzureWebJobsStorage` lub `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` będzie zawierać nazwę konta magazynu opakowaną w ciągu połączenia. Więcej szczegółowych informacji znajduje się w [dokumentacji dotyczącej ustawień aplikacji](https://docs.microsoft.com/azure/azure-functions/functions-app-settings#azurewebjobsstorage)
+Zacznij od przejrzenia nazwy konta magazynu w ustawieniach aplikacji. `AzureWebJobsStorage` lub `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` będzie zawierać nazwę konta magazynu opakowaną w ciągu połączenia. Więcej szczegółowych informacji znajduje się w [dokumentacji dotyczącej ustawień aplikacji](https://docs.microsoft.com/azure/azure-functions/functions-app-settings#azurewebjobsstorage).
 
 Wyszukaj swoje konto magazynu w Azure Portal, aby sprawdzić, czy jeszcze nie istnieje. Jeśli został usunięty, należy ponownie utworzyć konto magazynu i zastąpić parametry połączenia magazynu. Kod funkcji zostanie utracony i konieczne będzie ponowne wdrożenie ponownie.
 
 ## <a name="storage-account-application-settings-deleted"></a>Usunięto ustawienia aplikacji konta magazynu
 
-W poprzednim kroku, jeśli nie masz parametrów połączenia konta magazynu, które zostały już usunięte lub nadpisane. Usuwanie ustawień aplikacji jest najczęściej wykonywane w przypadku używania miejsc wdrożenia lub skryptów Azure Resource Manager do ustawiania ustawień aplikacji.
+W poprzednim kroku, jeśli nie masz parametrów połączenia konta magazynu, prawdopodobnie został on usunięty lub nadpisany. Usuwanie ustawień aplikacji jest najczęściej wykonywane w przypadku używania miejsc wdrożenia lub skryptów Azure Resource Manager do ustawiania ustawień aplikacji.
 
 ### <a name="required-application-settings"></a>Wymagane ustawienia aplikacji
 
@@ -54,9 +56,9 @@ W poprzednim kroku, jeśli nie masz parametrów połączenia konta magazynu, kt�
     * [`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`](https://docs.microsoft.com/azure/azure-functions/functions-app-settings)
     * [`WEBSITE_CONTENTSHARE`](https://docs.microsoft.com/azure/azure-functions/functions-app-settings)
 
-[Tutaj Przeczytaj informacje o tych ustawieniach aplikacji](https://docs.microsoft.com/azure/azure-functions/functions-app-settings)
+[Tutaj Przeczytaj informacje o tych ustawieniach aplikacji](https://docs.microsoft.com/azure/azure-functions/functions-app-settings).
 
-### <a name="guidance"></a>Wskazówki
+### <a name="guidance"></a>Wskazówka
 
 * Nie sprawdzaj ustawień gniazda dla żadnego z tych ustawień. Podczas wymiany miejsc wdrożenia funkcja zostanie przerwana.
 * Nie należy modyfikować tych ustawień w ramach zautomatyzowanych wdrożeń.
@@ -64,7 +66,7 @@ W poprzednim kroku, jeśli nie masz parametrów połączenia konta magazynu, kt�
 
 ## <a name="storage-account-credentials-invalid"></a>Nieprawidłowe poświadczenia konta magazynu
 
-Jeśli klucze magazynu zostaną ponownie wygenerowane, należy zaktualizować powyższe parametry połączenia konta magazynu. [Przeczytaj więcej na temat zarządzania kluczami magazynu tutaj](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account)
+Jeśli klucze magazynu zostaną ponownie wygenerowane, należy zaktualizować powyższe parametry połączenia konta magazynu. [Przeczytaj więcej na temat zarządzania kluczami magazynu tutaj](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account).
 
 ## <a name="storage-account-inaccessible"></a>Konto magazynu jest niedostępne
 
@@ -77,9 +79,15 @@ Aplikacja funkcji musi mieć możliwość uzyskania dostępu do konta magazynu. 
 
 W przypadku skonfigurowania dziennego przydziału wykonywania aplikacja funkcji zostanie tymczasowo wyłączona i wiele kontrolek portalu stanie się niedostępne. 
 
-* Aby sprawdzić, zaznacz pozycję Otwórz funkcje platformy > aplikacja funkcji ustawienia w portalu. Jeśli limit przydziału zostanie przekroczony, zobaczysz następujący komunikat
+* Aby sprawdzić, Otwórz funkcje platformy > aplikacja funkcji ustawienia w portalu. W przypadku przekroczenia limitu przydziału zostanie wyświetlony następujący komunikat:
     * `The Function App has reached daily usage quota and has been stopped until the next 24 hours time frame.`
 * Usuń przydział i ponownie uruchom aplikację, aby rozwiązać ten problem.
+
+## <a name="app-is-behind-a-firewall"></a>Aplikacja znajduje się za zaporą
+
+Środowisko uruchomieniowe funkcji będzie nieosiągalne, jeśli aplikacja funkcji jest hostowana w ramach [wewnętrznego równoważenia obciążenia App Service Environment](../app-service/environment/create-ilb-ase.md) i jest skonfigurowana do blokowania przychodzącego ruchu internetowego lub ma [ograniczenia przychodzące IP](functions-networking-options.md#inbound-ip-restrictions) skonfigurowane do blokowania dostępu do Internetu. Azure Portal wykonuje wywołania bezpośrednio do uruchomionej aplikacji w celu pobrania listy funkcji, a także nawiązuje wywołania HTTP do punktu końcowego KUDU. Ustawienia poziomu platformy na karcie `Platform Features` będą nadal dostępne.
+
+* Aby sprawdzić konfigurację środowiska ASE, przejdź do sieciowej grupy zabezpieczeń podsieci, w której znajduje się środowisko ASE, i Sprawdź reguły ruchu przychodzącego, aby zezwolić na ruch pochodzący z publicznego adresu IP komputera, na którym uzyskujesz dostęp do aplikacji. Portalu można także użyć z komputera połączonego z siecią wirtualną, na której działa aplikacja lub maszyna wirtualna działająca w sieci wirtualnej. [Więcej informacji na temat konfiguracji reguły ruchu przychodzącego można znaleźć tutaj](https://docs.microsoft.com/azure/app-service/environment/network-info#network-security-groups)
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -1,6 +1,6 @@
 ---
-title: Dostęp do usługi Azure Cosmos DB Cassandra API z platformy Spark w ramach platformy YARN z HDInsight
-description: W tym artykule opisano sposób pracy z interfejsem API Cassandra DB Cosmos Azure z platformy Spark w ramach platformy YARN z HDInsight
+title: Dostęp do Azure Cosmos DB interfejs API Cassandra z platformy Spark w ramach PRZĘDZy z usługą HDInsight
+description: W tym artykule opisano sposób pracy z Azure Cosmos DB interfejs API Cassandra z platformy Spark w ramach PRZĘDZy z usługą HDInsight
 author: kanshiG
 ms.author: govindk
 ms.reviewer: sngun
@@ -8,34 +8,34 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: f728baedf9e325f224ce52e64325064f553d2671
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bef4ee14cb4a7d64d80dc5776d8ecea0f831881a
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60893706"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75887636"
 ---
-# <a name="access-azure-cosmos-db-cassandra-api-from-spark-on-yarn-with-hdinsight"></a>Dostęp do usługi Azure Cosmos DB Cassandra API z platformy Spark w ramach platformy YARN z HDInsight
+# <a name="access-azure-cosmos-db-cassandra-api-from-spark-on-yarn-with-hdinsight"></a>Dostęp do Azure Cosmos DB interfejs API Cassandra z platformy Spark w ramach PRZĘDZy z usługą HDInsight
 
-W tym artykule opisano, jak uzyskać dostęp do interfejsu API usługi Azure Cosmos DB Cassandra z platformy Spark w ramach platformy YARN z platformą Spark HDInsight z powłoki aparatu spark. HDInsight to firmy Microsoft Hortonworks Hadoop PaaS platformy Azure, która korzysta z magazynu obiektów dla systemu plików HDFS i jest dostępna w tym kilka odmian systemu [Spark](../hdinsight/spark/apache-spark-overview.md).  Zawartość w tym dokumencie odwołań HDInsight Spark, ma zastosowanie do wszystkich dystrybucjach Hadoop.  
+W tym artykule opisano, jak uzyskać dostęp do Azure Cosmos DB interfejs API Cassandra z platformy Spark w ramach PRZĘDZy z usługą HDInsight-Spark z aparatu Spark-Shell. Usługa HDInsight to Hortonworks usługi Hadoop firmy Microsoft na platformie Azure, która korzysta z magazynu obiektów dla systemu plików HDFS i zawiera kilka wersji, w tym [platformy Spark](../hdinsight/spark/apache-spark-overview.md).  Chociaż zawartość tego dokumentu odwołuje się do usługi HDInsight-Spark, ma zastosowanie do wszystkich dystrybucji usługi Hadoop.  
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* [Aprowizowanie interfejsu API rozwiązania Cassandra usługi Azure Cosmos DB](create-cassandra-dotnet.md#create-a-database-account)
+* [Inicjowanie obsługi administracyjnej Azure Cosmos DB interfejs API Cassandra](create-cassandra-dotnet.md#create-a-database-account)
 
-* [Przejrzyj podstawowe informacje dotyczące nawiązywania połączenia z interfejsem API usługi Azure Cosmos DB Cassandra](cassandra-spark-generic.md)
+* [Zapoznaj się z podstawowymi informacjami na temat łączenia się z Azure Cosmos DB interfejs API Cassandra](cassandra-spark-generic.md)
 
-* [Ustanawianie klastra HDInsight Spark](../hdinsight/spark/apache-spark-jupyter-spark-sql.md)
+* [Inicjowanie obsługi administracyjnej klastra usługi HDInsight-Spark](../hdinsight/spark/apache-spark-jupyter-spark-sql.md)
 
-* [Przejrzyj przykłady kodu do pracy z interfejsem API bazy danych Cassandra](cassandra-spark-generic.md#next-steps)
+* [Zapoznaj się z przykładami kodu dotyczącymi pracy z interfejs API Cassandra](cassandra-spark-generic.md#next-steps)
 
-* [Używać cqlsh do sprawdzania poprawności, jeśli więc chcesz](cassandra-spark-generic.md##connecting-to-azure-cosmos-db-cassandra-api-from-spark)
+* [Użyj cqlsh do walidacji, jeśli wolisz](cassandra-spark-generic.md#connecting-to-azure-cosmos-db-cassandra-api-from-spark)
 
-* **Konfiguracja interfejsu API rozwiązania Cassandra w Spark2** — łącznik platformy Spark dla bazy danych Cassandra wymaga, że połączenia bazy danych Cassandra szczegóły, aby być inicjowane jako część kontekstu aparatu Spark. Po uruchomieniu notesu programu Jupyter, sesja platformy spark i kontekst już zainicjowany i nie jest zalecane, aby zatrzymać i ponownie zainicjować kontekstu aparatu Spark, chyba że jest to wraz z każdej konfiguracji Ustaw jako część uruchamiania notesu programu Jupyter domyślne HDInsight. Jeden obejściem jest dodać szczegóły wystąpienia bazy danych Cassandra do Ambari, Spark2 bezpośrednio konfiguracji usługi. Jest to jednorazowa działania dla klastra, która wymaga ponownego uruchomienia tej usługi Spark2.
+* **Konfiguracja interfejs API Cassandra w Spark2** — łącznik platformy Spark dla Cassandra wymaga zainicjowania szczegółów połączenia Cassandra jako części kontekstu Spark. Po uruchomieniu notesu Jupyter, sesja i kontekst platformy Spark są już zainicjowane i nie jest zalecane zatrzymywanie i ponowne inicjowanie kontekstu platformy Spark, chyba że zostanie on ukończony z każdym zestawem konfiguracyjnym w ramach usługi HDInsight default Jupyter notesu. Obejście polega na tym, aby dodać szczegóły wystąpienia Cassandra do Ambari, Spark2 konfiguracji usługi. Jest to jednorazowe działanie na klaster, który wymaga ponownego uruchomienia usługi Spark2.
  
-  1. Przejdź do narzędzia Ambari, usługa Spark2 i wybierz konfiguracje
+  1. Przejdź do Ambari, usługi Spark2 i wybierz pozycję konfiguracje
 
-  2. Następnie przejdź do niestandardowych spark2 wartości domyślne i dodać nową właściwość następującym kodem i uruchom ponownie usługę Spark2:
+  2. Następnie przejdź do obszaru niestandardowe spark2 — domyślne i Dodaj nową właściwość z następującymi wartościami, a następnie uruchom ponownie usługę Spark2:
 
   ```scala
   spark.cassandra.connection.host=YOUR_COSMOSDB_ACCOUNT_NAME.cassandra.cosmosdb.azure.com<br>
@@ -45,11 +45,11 @@ W tym artykule opisano, jak uzyskać dostęp do interfejsu API usługi Azure Cos
   spark.cassandra.auth.password=YOUR_COSMOSDB_KEY<br>
   ```
 
-## <a name="access-azure-cosmos-db-cassandra-api-from-spark-shell"></a>Dostęp do usługi Azure Cassandra interfejsu API Cosmos DB z poziomu powłoki Spark
+## <a name="access-azure-cosmos-db-cassandra-api-from-spark-shell"></a>Dostęp do Azure Cosmos DB interfejs API Cassandra z powłoki Spark
 
-Powłoki usługi Spark jest używana do celów testowania eksploracji.
+Powłoka Spark jest używana do testowania/eksploracji.
 
-* Uruchamianie powłoki aparatu spark za pomocą zależności wymagane narzędzia maven, zgodny z wersją platformy Spark w klastrze.
+* Uruchom powłokę Spark z wymaganymi zależnościami Maven, które są zgodne z wersją platformy Spark w klastrze.
 
   ```scala
   spark-shell --packages "com.datastax.spark:spark-cassandra-connector_2.11:2.3.0,com.microsoft.azure.cosmosdb:azure-cosmos-cassandra-spark-helper:1.0.0"
@@ -86,7 +86,7 @@ Powłoki usługi Spark jest używana do celów testowania eksploracji.
   spark.conf.set("spark.cassandra.connection.keep_alive_ms", "60000000") //Increase this number as needed
   ```
 
-* Uruchamianie operacji CRUD
+* Uruchom operacje CRUD
 
   ```scala
   //1) Create table if it does not exist
@@ -112,28 +112,28 @@ Powłoki usługi Spark jest używana do celów testowania eksploracji.
   spark.read.format("org.apache.spark.sql.cassandra").options(Map( "table" -> "books", "keyspace" -> "books_ks")).load.show
   ```
 
-## <a name="access-azure-cosmos-db-cassandra-api-from-jupyter-notebooks"></a>Dostęp do usługi Azure Cassandra interfejsu API Cosmos DB z notesów programu Jupyter
+## <a name="access-azure-cosmos-db-cassandra-api-from-jupyter-notebooks"></a>Dostęp do Azure Cosmos DB interfejs API Cassandra z notesów Jupyter
 
-HDInsight — Spark jest dostarczana z usługami Notes Zeppelin i Jupyter. Są one obu środowiskach opartych na sieci web Notes, obsługujące Scala i Python. Notesy doskonale nadają się do interaktywnego analizowania poznawcze i współpracy, ale nie jest przeznaczone do procesów operacyjnych/productionized.
+Usługa HDInsight-Spark oferuje Zeppelin i Jupyter notesy. Są to środowiska notesu opartego na sieci Web, które obsługują Scala i Python. Notesy doskonale nadaje się do interaktywnej analizy poznawczej i współpracy, ale nie są przeznaczone dla procesów operacyjnych/produkcyjnych.
 
-Następujące notesów Jupyter mogła być przekazana do klastra platformy HDInsight Spark i zapewnia przykłady gotowe do pracy z interfejsem API usługi Azure Cosmos DB Cassandra. Należy przejrzeć pierwszego notesu `1.0-ReadMe.ipynb` przejrzeć konfigurację usługi Spark do łączenia się z interfejsem API usługi Azure Cosmos DB Cassandra.
+Następujące notesy Jupyter można przekazać do klastra usługi HDInsight Spark i udostępnić próbki gotowe do pracy z Azure Cosmos DB interfejs API Cassandra. Należy zapoznać się z pierwszym `1.0-ReadMe.ipynb` notesu w celu przejrzenia konfiguracji usługi Spark w celu nawiązania połączenia z Azure Cosmos DB interfejs API Cassandra.
 
-Pobierz te notesy w obszarze [azure-cosmos-db-cassandra-api-spark-notebooks-jupyter](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-api-spark-notebooks-jupyter/blob/master/scala/) na komputer.
+Pobierz te notesy w obszarze [Azure-Cosmos-DB-Cassandra-API-Spark-Notess-Jupyter](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-api-spark-notebooks-jupyter/blob/master/scala/) do komputera.
   
-### <a name="how-to-upload"></a>Sposób przekazywania:
-Po uruchomieniu programu Jupyter, przejdź do Scala. Najpierw utwórz katalog, a następnie przekaż notesów w katalogu. Przycisk Przekaż znajduje się na górze, po prawej stronie.  
+### <a name="how-to-upload"></a>Jak przekazać:
+Po uruchomieniu Jupyter przejdź do Scala. Najpierw Utwórz katalog, a następnie Przekaż Notes do katalogu. Przycisk Przekaż znajduje się na górze, po prawej stronie.  
 
 ### <a name="how-to-run"></a>Jak uruchomić:
-Uruchom za pomocą notesów, a każda komórka notesu sekwencyjnie.  Kliknij przycisk uruchamiania w górnej części każdego Notes, aby wykonać wszystkie komórki lub shift + enter w każdej komórce.
+Uruchamiaj za pomocą notesów i każdej komórki notesu sekwencyjnie.  Kliknij przycisk Run (Uruchom) w górnej części każdego notesu, aby wykonać wszystkie komórki, lub naciśnij klawisze Shift + Enter dla każdej komórki.
 
-## <a name="access-with-azure-cosmos-db-cassandra-api-from-your-spark-scala-program"></a>Dostęp za pomocą interfejsu Cassandra API usługi Azure Cosmos DB z programu Spark Scala
+## <a name="access-with-azure-cosmos-db-cassandra-api-from-your-spark-scala-program"></a>Dostęp do Azure Cosmos DB interfejs API Cassandra z programu Spark Scala
 
-W przypadku zautomatyzowanych procesów w środowisku produkcyjnym programów platformy Spark są przesyłane do klastra za pomocą [skryptu spark-submit](https://spark.apache.org/docs/latest/submitting-applications.html).
+W przypadku zautomatyzowanych procesów w środowisku produkcyjnym programy Spark są przesyłane do klastra za pośrednictwem usługi [Spark-Submit](https://spark.apache.org/docs/latest/submitting-applications.html).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* [Jak tworzyć Spark Scala program w środowisku IDE i przesłać ją do klastra platformy HDInsight Spark za pomocą usługi Livy do wykonania](../hdinsight/spark/apache-spark-create-standalone-application.md)
+* [Jak utworzyć program Spark Scala w środowisku IDE i przesłać go do klastra usługi HDInsight Spark za pomocą usługi Livy na potrzeby wykonywania](../hdinsight/spark/apache-spark-create-standalone-application.md)
 
-* [Jak połączyć się z interfejsem API usługi Azure Cosmos DB Cassandra z programu Spark Scala](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-api-spark-connector-sample/blob/master/src/main/scala/com/microsoft/azure/cosmosdb/cassandra/SampleCosmosDBApp.scala)
+* [Jak nawiązać połączenie z Azure Cosmos DB interfejs API Cassandra z programu Spark Scala](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-api-spark-connector-sample/blob/master/src/main/scala/com/microsoft/azure/cosmosdb/cassandra/SampleCosmosDBApp.scala)
 
-* [Pełna lista przykłady kodu dla pracy z interfejsem API bazy danych Cassandra](cassandra-spark-generic.md)
+* [Pełna Lista przykładów kodu do pracy z interfejs API Cassandra](cassandra-spark-generic.md)

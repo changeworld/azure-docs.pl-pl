@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ef3edace53cf7367716027811cf3061b617a9a6
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: fb7fed7cf5f38f9f7677126aff92492ccacd6e12
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74379199"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75707948"
 ---
 # <a name="troubleshooting-devices-using-the-dsregcmd-command"></a>Rozwiązywanie problemów z urządzeniami za pomocą polecenia dsregcmd
 
@@ -28,10 +28,10 @@ Ta sekcja zawiera listę parametrów stanu przyłączania urządzenia. W poniżs
 
 | AzureAdJoined | EnterpriseJoined | DomainJoined | Stan urządzenia |
 | ---   | ---   | ---   | ---   |
-| OPCJĘ | NO | NO | Przyłączone do usługi Azure AD |
-| NO | NO | OPCJĘ | Przyłączone do domeny |
-| OPCJĘ | NO | OPCJĘ | Dołączono do hybrydowej usługi AD |
-| NO | OPCJĘ | OPCJĘ | Lokalne DRS dołączone |
+| TAK | NO | NO | Przyłączone do usługi Azure AD |
+| NO | NO | TAK | Przyłączone do domeny |
+| TAK | NO | TAK | Dołączono do hybrydowej usługi AD |
+| NO | TAK | TAK | Lokalne DRS dołączone |
 
 > [!NOTE]
 > W sekcji "stan użytkownika" jest wyświetlany stan Workplace Join (zarejestrowane w usłudze Azure AD)
@@ -297,10 +297,22 @@ W tej sekcji przedstawiono dane wyjściowe testów Sanity wykonanych na urządze
 
 ## <a name="ngc-prerequisite-check"></a>Sprawdzanie wymagań wstępnych NGC
 
-W tej sekcji są wykonywane oryginalne checks dotyczące aprowizacji klucza NGC. 
+W tej sekcji są wykonywane oryginalne checks dla aprowizacji usługi Windows Hello dla firm (WHFB). 
 
 > [!NOTE]
-> Szczegóły sprawdzania wymagań wstępnych NGC w dsregcmd/status mogą nie być widoczne, jeśli użytkownik pomyślnie skonfigurował już poświadczenia NGC.
+> Szczegóły sprawdzania wymagań wstępnych NGC w dsregcmd/status mogą nie być widoczne, jeśli użytkownik pomyślnie skonfigurował już WHFB.
+
+- **IsDeviceJoined:** -ustaw na wartość "tak", jeśli urządzenie jest przyłączone do usługi Azure AD.
+- **IsUserAzureAD:** -ustaw na wartość "tak", Jeśli zalogowany użytkownik jest obecny w usłudze Azure AD.
+- **PolicyEnabled:** -ustaw na wartość "yes", jeśli na urządzeniu włączono zasady WHFB.
+- **PostLogonEnabled:** -ustaw na wartość "yes", jeśli rejestracja WHFB jest natywnie wywoływana przez platformę. Jeśli jest ustawiona na wartość "nie", oznacza to, że rejestracja w usłudze Windows Hello dla firm jest wyzwalana przez mechanizm niestandardowy
+- **DeviceEligible:** -ustaw wartość "yes" (tak), jeśli urządzenie spełnia wymagania sprzętowe wymagane do zarejestrowania się w usłudze WHFB.
+- **SessionIsNotRemote:** -ustaw na wartość "tak", jeśli bieżący użytkownik jest zalogowany bezpośrednio na urządzeniu, a nie zdalnie.
+- **CertEnrollment:** -specyficzne dla WHFB wdrożenie zaufania certyfikatu wskazujące urząd rejestracji certyfikatu dla WHFB. Ustaw wartość "urząd rejestracji", jeśli źródło zasad WHFB jest zasady grupy "Zarządzanie urządzeniami przenośnymi", jeśli źródłem jest MDM. "Brak" w przeciwnym razie
+- **AdfsRefreshToken:** — specyficzne dla wdrożenia zaufania certyfikatu WHFB. Występuje tylko wtedy, gdy CertEnrollment jest "urząd rejestracji". Wskazuje, czy urządzenie ma PRT Enterprise dla użytkownika.
+- **AdfsRaIsReady:** — specyficzne dla wdrożenia zaufania certyfikatu WHFB.  Występuje tylko wtedy, gdy CertEnrollment jest "urząd rejestracji". Ustaw wartość "YES" (tak), jeśli w metadanych odnajdowania określono obsługę WHFB *oraz* szablon certyfikatu logowania.
+- **LogonCertTemplateReady:** — specyficzne dla wdrożenia zaufania certyfikatu WHFB. Występuje tylko wtedy, gdy CertEnrollment jest "urząd rejestracji". Ustaw wartość "tak", jeśli stan szablonu certyfikatu logowania jest prawidłowy i pomaga w rozwiązywaniu problemów z urzędem rejestrowania usług AD FS.
+- **PreReqResult:** — zapewnia wynik całej oceny wymagań wstępnych WHFB. Ustawienie "przyinicjuje obsługę", jeśli rejestracja WHFB będzie uruchamiana jako zadanie po zalogowaniu, gdy użytkownik zaloguje się w następnym czasie.
 
 ### <a name="sample-ngc-prerequisite-check-output"></a>Przykładowe dane wyjściowe sprawdzania wymagań wstępnych NGC
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: 18031400155b92f243877ae8c8d7a56e1d5295a0
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: d70f2f3ec87c8673013bcf7b6f70ebcbb8d06f08
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933645"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770020"
 ---
 # <a name="select-and-deploy-a-security-agent-on-your-iot-device"></a>Wybieranie i wdrażanie agenta zabezpieczeń na urządzeniu IoT
 
@@ -59,7 +59,7 @@ Agent zabezpieczeń oparty na języku C ma mniejszą ilość pamięci i jest ide
 
 ## <a name="security-agent-installation-guidelines"></a>Wskazówki dotyczące instalacji agenta zabezpieczeń
 
-Dla **systemu Windows**: Skrypt install SecurityAgent. ps1 musi być wykonywany z poziomu okna programu PowerShell administratora. 
+Dla **systemu Windows**: skrypt install SecurityAgent. ps1 musi zostać wykonany z okna programu PowerShell administratora. 
 
 Dla systemu **Linux**: InstallSecurityAgent.sh musi być uruchomiona jako administratora. Zalecamy prefiks polecenia instalacji z "sudo".
 
@@ -91,10 +91,10 @@ Poniższa lista zawiera wszystkie aktualnie obsługiwane platformy.
 |Azure Security Center dla agenta IoT |System operacyjny |Architektura |
 |--------------|------------|--------------|
 |C|Ubuntu 16.04 |   x64|
-|C|Ubuntu 18.04 |   x64|
+|C|Ubuntu 18.04 |   x64, architektury ARMv7|
 |C|Debian 9 |   x64, x86|
 |C#|Ubuntu 16.04    |x64|
-|C#|Ubuntu 18.04    |x64|
+|C#|Ubuntu 18.04    |x64, architektury ARMv7|
 |C#|Debian 9    |x64|
 |C#|Windows Server 2016|    X64|
 |C#|Windows 10 IoT Core, kompilacja 17763    |x64|

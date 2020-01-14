@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 11/06/2018
 ms.author: cshoe
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: c7b8e41cc09137ee06e975d136dd999ba146731b
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 7d121e9aeb897897322f1253c332e7a1baabdc9e
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226610"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768966"
 ---
 # <a name="create-a-function-that-integrates-with-azure-logic-apps"></a>Tworzenie funkcji integrującej się z usługą Azure Logic Apps
 
@@ -22,7 +22,7 @@ W tym samouczku pokazano, jak za pomocą usługi Functions z usługami Logic App
 
 ![ilustracja: pierwsze dwa kroki aplikacji w Projektancie aplikacji usługi Logic Apps](media/functions-twitter-email/00-logic-app-overview.png)
 
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Tworzenie zasobu interfejsu API usług Cognitive Services.
@@ -43,7 +43,7 @@ Jeśli jeszcze tego nie zrobiono, wykonaj teraz te kroki, aby utworzyć aplikacj
 
 Interfejsy API usług Cognitive Services są dostępne na platformie Azure jako pojedyncze zasoby. Użyj interfejsu API analizy tekstu do wykrywania tonacji monitorowanych tweetów.
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
 
 2. W lewym górnym rogu witryny Azure Portal kliknij przycisk **Utwórz zasób**.
 
@@ -129,7 +129,7 @@ Została utworzona funkcja kategoryzująca wyniki tonacji. Następnie należy ut
 
 ## <a name="create-a-logic-app"></a>Tworzenie aplikacji logiki   
 
-1. W witrynie Azure Portal kliknij przycisk **Nowy** znajdujący się w lewym górnym rogu tej witryny.
+1. W Azure Portal kliknij przycisk **Utwórz zasób** znajdujący się w lewym górnym rogu Azure Portal.
 
 2. Kliknij kolejno pozycje **Sieć Web** > **Aplikacja logiki**.
  

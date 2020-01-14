@@ -3,12 +3,13 @@ title: Różnice w usłudze Azure Service Fabric w systemach Linux i Windows
 description: Różnice między usługą Azure Service Fabric w systemie Linux a usługą Azure Service Fabric w systemie Windows.
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: bcb2b4b112cf5247da8ca6a5d735ca247b3c06f2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: HT
+ms.custom: sfrev
+ms.openlocfilehash: c064291491110b17c172a561afbd1e65d6c08d06
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75463029"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75748531"
 ---
 # <a name="differences-between-service-fabric-on-linux-and-windows"></a>Różnice między usługą Service Fabric w systemach Linux i Windows
 
@@ -77,9 +78,8 @@ Pewne funkcje, które są obsługiwane w systemie Windows, nie są jeszcze obsł
 * Stop-ServiceFabricRepairTask
 * Update-ServiceFabricRepairTaskHealthPolicy
 
-
-
 ## <a name="next-steps"></a>Następne kroki
+
 * [Przygotowywanie środowiska projektowego w systemie Linux](service-fabric-get-started-linux.md)
 * [Przygotowywanie środowiska projektowego w systemie OSX](service-fabric-get-started-mac.md)
 * [Create and deploy your first Service Fabric Java application on Linux using Yeoman](service-fabric-create-your-first-linux-application-with-java.md) (Tworzenie i wdrażanie pierwszej aplikacji Java usługi Service Fabric w systemie Linux przy użyciu programu Yeoman)

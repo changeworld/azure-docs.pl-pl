@@ -1,27 +1,21 @@
 ---
-title: Rozwiązywanie problemów z siecią VPN typu lokacja-lokacja na platformie Azure sporadycznie | Microsoft Docs
+title: Rozwiązywanie problemów z siecią VPN typu lokacja-lokacja na platformie Azure sporadycznie
 description: Dowiedz się, jak rozwiązać problem polegający na tym, że połączenie sieci VPN typu lokacja-lokacja jest regularnie rozłączone.
 services: vpn-gateway
-documentationcenter: na
+titleSuffix: Azure VPN Gateway
 author: chadmath
-manager: dcscontentpm
-editor: ''
-tags: ''
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: troubleshooting
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 394062257f09bb0b8cfa6875795b88d35404f87c
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 82054099a5a496e99c49135ab98ee1163af19784
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058833"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75862564"
 ---
-# <a name="troubleshooting-azure-site-to-site-vpn-disconnects-intermittently"></a>Rozwiązywanie problemów z Połączenie sieci VPN typu lokacja-lokacja jest sporadycznie rozłączane
+# <a name="troubleshooting-azure-site-to-site-vpn-disconnects-intermittently"></a>Rozwiązywanie problemów: połączenie sieci VPN typu lokacja-lokacja jest sporadycznie rozłączane
 
 Może wystąpić problem polegający na tym, że nowe lub istniejące Microsoft Azure połączenie sieci VPN typu lokacja-lokacja nie jest stabilne lub rozłączane regularnie. W tym artykule opisano kroki rozwiązywania problemów, które ułatwiają zidentyfikowanie i rozwiązanie przyczyny problemu. 
 

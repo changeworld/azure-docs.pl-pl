@@ -3,18 +3,18 @@ title: 'Tworzenie Kubernetesego miejsca deweloperskiego: Visual Studio Code & No
 services: azure-dev-spaces
 ms.date: 09/26/2018
 ms.topic: tutorial
-description: Szybkie tworzenie w środowisku Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
+description: W tym samouczku pokazano, jak używać Azure Dev Spaces i Visual Studio Code do debugowania i szybkiej iteracji aplikacji node. js w usłudze Azure Kubernetes Service
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, Service siatk, Service siatk Routing, polecenia kubectl, k8s
-ms.openlocfilehash: 64d4f7560325429fc2a36be066c6c475d4d60e90
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 902489524206ac1d4f403f254ecda820c29545c2
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74708597"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867319"
 ---
 # <a name="create-a-kubernetes-dev-space-visual-studio-code-and-nodejs-with-azure-dev-spaces"></a>Utwórz przestrzeń Kubernetes dev: Visual Studio Code i Node. js z Azure Dev Spaces
 
-Niniejszy przewodnik zawiera informacje na temat wykonywania następujących czynności:
+Ten przewodnik zawiera informacje na temat wykonywania następujących czynności:
 
 - Tworzenie środowiska Kubernetes na platformie Azure zoptymalizowanego pod kątem programowania — _przestrzeń deweloperów_.
 - Iteracyjne tworzenie kodu w kontenerach przy użyciu programu VS Code i wiersza polecenia.
@@ -105,6 +105,9 @@ Polecenie `azds prep` interfejsu wiersza polecenia platformy Azure generuje zaso
 * Plik `./Dockerfile` opisuje obraz kontenera aplikacji oraz sposób kompilowania kodu źródłowego i uruchamiania go w kontenerze.
 * [Pakiet Helm](https://docs.helm.sh) w folderze `./charts/webfrontend` opisuje, jak wdrożyć kontener na platformie Kubernetes.
 
+> [!TIP]
+> [Wykres pliku dockerfile i Helm](how-dev-spaces-works.md#prepare-your-code) dla projektu jest używany przez Azure dev Spaces do kompilowania i uruchamiania kodu, ale można modyfikować te pliki, jeśli chcesz zmienić sposób kompilowania i wykonywania projektu.
+
 Na razie nie trzeba rozumieć pełnej zawartości tych plików. Warto jednak wspomnieć, że **te same zasoby konfiguracji jako kodu platformy Kubernetes i Docker mogą być używane od etapu opracowywania po etap produkcyjny, co zapewnia większą spójność w różnych środowiskach.**
  
 Polecenie `prep` generuje również plik o nazwie `./azds.yaml`. Jest to plik konfiguracji usługi Azure Dev Spaces. Uzupełnia on artefakty platformy Docker i Kubernetes o dodatkową konfigurację zapewniającą środowisko programowania przyrostowego na platformie Azure.
@@ -152,7 +155,7 @@ Usługa Azure Dev Spaces umożliwia nie tylko uruchamianie kodu w środowisku Ku
     ```
 
 1. Zapisz plik. Po chwili w oknie terminalu pojawi się komunikat informujący o tym, że plik w uruchomionym kontenerze został zaktualizowany.
-1. Przejdź do przeglądarki i odśwież stronę. Powinna być widoczna zmiana koloru.
+1. Otwórz przeglądarkę i odśwież stronę. Powinna być widoczna zmiana koloru.
 
 Co się stało? Modyfikacje plików zawartości, takich jak HTML i CSS, nie wymagają ponownego uruchomienia procesu Node.js. Z tego względu aktywne polecenie `azds up` automatycznie synchronizuje wszystkie zmodyfikowane pliki zawartości bezpośrednio z uruchomionym kontenerem na platformie Azure, co umożliwia szybki podgląd zmian zawartości.
 
@@ -281,4 +284,4 @@ W tej konfiguracji kontener uruchamia narzędzie *nodemon*. Po zmianie kodu po s
 > [Dowiedz się więcej o opracowywaniu dla wielu usług](multi-service-nodejs.md)
 
 
-[supported-regions]: about.md#supported-regions-and-configurations
+[supported-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service

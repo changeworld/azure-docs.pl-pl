@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
-ms.reviewer: ''
-ms.date: 12/11/2019
-ms.openlocfilehash: 4455181ddf69613ba07bcaeedb26273a4bb5a74d
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
-ms.translationtype: HT
+ms.reviewer: carlrab
+ms.date: 01/09/2020
+ms.openlocfilehash: 27868f062cd628347e38b5fdb9f243347dea3e23
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647853"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834984"
 ---
 # <a name="resource-limits-for-single-databases-using-the-vcore-purchasing-model"></a>Limity zasobów dla pojedynczych baz danych przy użyciu modelu zakupu rdzeń wirtualny
 
@@ -322,9 +322,10 @@ Możesz ustawić warstwę usług, rozmiar obliczeń i ilość miejsca do magazyn
 |Maksymalny rozmiar danych TempDB (GB)|333|
 |Typ usługi Storage|Zdalny dysk SSD|
 |We/Wy, czas oczekiwania (w przybliżeniu)|5-7 ms (zapis)<br>5-10 ms (odczyt)|
-|Maksymalna liczba operacji we/wy danych *|23 040|
+|Maksymalna liczba operacji we/wy danych *|12,800|
 |Maksymalny współczynnik rejestrowania (MB/s)|30|
 |Maksymalna liczba współbieżnych procesów roboczych (żądań)|3600|
+|Maksymalna liczba współbieżnych logowań|3600|
 |Maksymalna liczba współbieżnych sesji|30,000|
 |Liczba replik|1|
 |Multi-AZ|ND|
@@ -448,21 +449,22 @@ Możesz ustawić warstwę usług, rozmiar obliczeń i ilość miejsca do magazyn
 
 ### <a name="m-series-compute-generation-preview"></a>Generowanie obliczeń serii M (wersja zapoznawcza)
 
-|Rozmiar obliczeń|GP_M_128|
+|Rozmiar obliczeń|BC_M_128|
 |:--- | --: |
 |Generowanie obliczeń|Seria M|
 |Rdzenie wirtualne|128|
-|Pamięć (GB)|3767|
+|Pamięć (GB)|3767,1|
 |Obsługa magazynu kolumn|Tak|
-|Magazyn OLTP w pamięci (GB)|481|
+|Magazyn OLTP w pamięci (GB)|1768|
 |Maksymalny rozmiar danych (GB)|4096|
 |Maksymalny rozmiar dziennika (GB)|2048|
 |Maksymalny rozmiar danych TempDB (GB)|4096|
 |Typ usługi Storage|Lokalny dysk SSD|
 |We/Wy, czas oczekiwania (w przybliżeniu)|1-2 ms (zapis)<br>1-2 ms (odczyt)|
-|Maksymalna liczba operacji we/wy danych *|204 800|
-|Maksymalny współczynnik rejestrowania (MB/s)|192|
-|Maksymalna liczba współbieżnych procesów roboczych (żądań)|12800|
+|Maksymalna liczba operacji we/wy danych *|160 000|
+|Maksymalny współczynnik rejestrowania (MB/s)|264|
+|Maksymalna liczba współbieżnych procesów roboczych (żądań)|12,800|
+|Maksymalna liczba współbieżnych logowań|12,800|
 |Maksymalna liczba współbieżnych sesji|30000|
 |Liczba replik|4|
 |Multi-AZ|Tak|

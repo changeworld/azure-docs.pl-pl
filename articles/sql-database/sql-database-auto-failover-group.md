@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-ms.date: 11/07/2019
-ms.openlocfilehash: 470e9a9c36b6b4ec2e40db5dfc47ae03fb6b5aa8
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.date: 1/05/2020
+ms.openlocfilehash: 73314cb2d3ac77347e0de720a6a3ab0084181218
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74421376"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75732420"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Używanie grup z obsługą trybu failover w celu zapewnienia przezroczystej i skoordynowanej pracy w trybie failover wielu baz danych
 
@@ -32,8 +32,9 @@ Ponadto grupy autotrybu failover udostępniają punkty końcowe odbiornika do od
 W przypadku korzystania z grup automatycznych trybu failover z automatycznymi zasadami trybu failover każda awaria wpływająca na bazy danych na serwerze SQL Database lub wystąpieniu zarządzanym powoduje automatyczne przejście w tryb failover. Grupa autotrybu failover można zarządzać przy użyciu:
 
 - [Azure Portal](sql-database-implement-geo-distributed-database.md)
+- [Interfejs wiersza polecenia platformy Azure: Grupa trybu failover](scripts/sql-database-add-single-db-to-failover-group-cli.md)
 - [PowerShell: Grupa trybu failover](scripts/sql-database-add-single-db-to-failover-group-powershell.md)
-- [Interfejs API REST: Grupa trybu failover](https://docs.microsoft.com/rest/api/sql/failovergroups).
+- [Interfejs API REST: Grupa trybu failover](/rest/api/sql/failovergroups).
 
 Po przejściu w tryb failover upewnij się, że wymagania dotyczące uwierzytelniania dla serwera i bazy danych są skonfigurowane na nowym serwerze podstawowym. Aby uzyskać szczegółowe informacje, zobacz [SQL Database zabezpieczenia po odzyskiwaniu po awarii](sql-database-geo-replication-security-config.md).
 
@@ -95,7 +96,7 @@ Aby osiągnąć prawdziwą ciągłość biznesową, Dodawanie nadmiarowości baz
 
 - **Zasady trybu failover tylko do odczytu**
 
-  Domyślnie tryb failover odbiornika tylko do odczytu jest wyłączony. Gwarantuje to, że nie ma to wpływu na wydajność podstawowego, gdy pomocnicza jest w trybie offline. Oznacza to jednak również, że sesje tylko do odczytu nie będą mogły nawiązywać połączenia do momentu odzyskania pomocniczego. Jeśli nie można tolerować przestojów w przypadku sesji tylko do odczytu i są one prawidłowe do tymczasowego użycia podstawowego dla ruchu tylko do odczytu i zapisu do odczytu z kosztem potencjalnego obniżenia wydajności podstawowego, można włączyć tryb failover dla odbiornika tylko do odczytu Konfigurując Właściwość `AllowReadOnlyFailoverToPrimary`. W takim przypadku ruch tylko do odczytu zostanie automatycznie przekierowany do podstawowego, jeśli pomocnicza nie jest dostępna.
+  Domyślnie tryb failover odbiornika tylko do odczytu jest wyłączony. Gwarantuje to, że nie ma to wpływu na wydajność podstawowego, gdy pomocnicza jest w trybie offline. Oznacza to jednak również, że sesje tylko do odczytu nie będą mogły nawiązywać połączenia do momentu odzyskania pomocniczego. Jeśli nie można tolerować przestojów w sesjach tylko do odczytu i są one prawidłowe do tymczasowego użycia podstawowego w przypadku zarówno do odczytu, jak i do odczytu i zapisu na koszt potencjalnego obniżenia wydajności podstawowego, można włączyć tryb failover dla odbiornika tylko do odczytu, konfigurując Właściwość `AllowReadOnlyFailoverToPrimary`. W takim przypadku ruch tylko do odczytu zostanie automatycznie przekierowany do podstawowego, jeśli pomocnicza nie jest dostępna.
 
 - **Planowana praca w trybie failover**
 
@@ -151,34 +152,57 @@ Grupa autotrybu failover musi być skonfigurowana na serwerze głównym SQL Data
 
 Podczas projektowania usługi z zachowaniem ciągłości działania postępuj zgodnie z następującymi ogólnymi wskazówkami:
 
-- **Korzystanie z jednej lub kilku grup trybu failover w celu zarządzania trybem failover wielu baz danych**
+### <a name="using-one-or-several-failover-groups-to-manage-failover-of-multiple-databases"></a>Korzystanie z jednej lub kilku grup trybu failover w celu zarządzania trybem failover wielu baz danych
 
-  Można utworzyć co najmniej jedną grupę trybu failover między dwoma serwerami w różnych regionach (serwery podstawowe i pomocnicze). Każda grupa może zawierać jedną lub kilka baz danych, które są odzyskiwane jako jednostki na wypadek, a niektóre podstawowe bazy danych staną się niedostępne z powodu awarii w regionie podstawowym. Grupa trybu failover tworzy geograficzną i pomocniczą bazę danych z tym samym celem usługi co podstawowy. W przypadku dodania istniejącej relacji replikacji geograficznej do grupy trybu failover upewnij się, że dla elementu podrzędnego jest skonfigurowana ta sama warstwa usługi i rozmiar obliczeń jako podstawowa.
+Można utworzyć co najmniej jedną grupę trybu failover między dwoma serwerami w różnych regionach (serwery podstawowe i pomocnicze). Każda grupa może zawierać jedną lub kilka baz danych, które są odzyskiwane jako jednostki na wypadek, a niektóre podstawowe bazy danych staną się niedostępne z powodu awarii w regionie podstawowym. Grupa trybu failover tworzy geograficzną i pomocniczą bazę danych z tym samym celem usługi co podstawowy. W przypadku dodania istniejącej relacji replikacji geograficznej do grupy trybu failover upewnij się, że dla elementu podrzędnego jest skonfigurowana ta sama warstwa usługi i rozmiar obliczeń jako podstawowa.
   
-  > [!IMPORTANT]
-  > Tworzenie grup trybu failover między dwoma serwerami w różnych subskrypcjach nie jest obecnie obsługiwane w przypadku pojedynczych baz danych i pul elastycznych. Przeniesienie podstawowego lub pomocniczego serwera do innej subskrypcji po utworzeniu grupy trybu failover może spowodować błędy żądań trybu failover i innych operacji.
+> [!IMPORTANT]
+> Tworzenie grup trybu failover między dwoma serwerami w różnych subskrypcjach nie jest obecnie obsługiwane w przypadku pojedynczych baz danych i pul elastycznych. Przeniesienie podstawowego lub pomocniczego serwera do innej subskrypcji po utworzeniu grupy trybu failover może spowodować błędy żądań trybu failover i innych operacji.
 
-- **Używanie odbiornika do odczytu i zapisu w obciążeniu OLTP**
+### <a name="using-read-write-listener-for-oltp-workload"></a>Używanie odbiornika do odczytu i zapisu w obciążeniu OLTP
 
-  Podczas wykonywania operacji OLTP Użyj `<fog-name>.database.windows.net` jako adresu URL serwera, a połączenia są automatycznie kierowane do podstawowego. Ten adres URL nie zmienia się po przełączeniu w tryb failover. Należy zauważyć, że tryb failover obejmuje aktualizację rekordu DNS, dlatego połączenia klientów są przekierowywane do nowego podstawowego tylko po odświeżeniu pamięci podręcznej DNS klienta.
+Podczas wykonywania operacji OLTP Użyj `<fog-name>.database.windows.net` jako adresu URL serwera, a połączenia są automatycznie kierowane do podstawowego. Ten adres URL nie zmienia się po przełączeniu w tryb failover. Należy zauważyć, że tryb failover obejmuje aktualizację rekordu DNS, dlatego połączenia klientów są przekierowywane do nowego podstawowego tylko po odświeżeniu pamięci podręcznej DNS klienta.
 
-- **Używanie odbiornika tylko do odczytu dla obciążenia przeznaczonego tylko do odczytu**
+### <a name="using-read-only-listener-for-read-only-workload"></a>Używanie odbiornika tylko do odczytu dla obciążenia przeznaczonego tylko do odczytu
 
-  Jeśli istnieje logicznie izolowane obciążenie przeznaczone tylko do odczytu, które jest odporne na określoną nieaktualność danych, możesz użyć pomocniczej bazy danych w aplikacji. W przypadku sesji tylko do odczytu Użyj `<fog-name>.secondary.database.windows.net` jako adresu URL serwera, a połączenie jest automatycznie przekierowywane do pomocniczego. Zaleca się również, aby wskazać w polu cel odczytu parametrów połączenia przy użyciu `ApplicationIntent=ReadOnly`. Jeśli chcesz mieć pewność, że obciążenie tylko do odczytu może być ponownie nawiązywane po przejściu w tryb failover lub jeśli serwer pomocniczy przejdzie w tryb offline, upewnij się, że skonfigurowano Właściwość `AllowReadOnlyFailoverToPrimary` zasad trybu failover.
+Jeśli istnieje logicznie izolowane obciążenie przeznaczone tylko do odczytu, które jest odporne na określoną nieaktualność danych, możesz użyć pomocniczej bazy danych w aplikacji. W przypadku sesji tylko do odczytu Użyj `<fog-name>.secondary.database.windows.net` jako adresu URL serwera, a połączenie jest automatycznie przekierowywane do pomocniczego. Zaleca się również, aby wskazać w polu cel odczytu parametrów połączenia przy użyciu `ApplicationIntent=ReadOnly`. Jeśli chcesz mieć pewność, że obciążenie tylko do odczytu może być ponownie nawiązywane po przejściu w tryb failover lub jeśli serwer pomocniczy przejdzie w tryb offline, upewnij się, że skonfigurowano Właściwość `AllowReadOnlyFailoverToPrimary` zasad trybu failover.
 
-- **Przygotowanie do obniżenia wydajności**
+### <a name="preparing-for-performance-degradation"></a>Przygotowanie do obniżenia wydajności
 
-  Decyzja o przejściu w tryb failover SQL jest niezależna od pozostałej części aplikacji lub innych używanych usług. Aplikacja może być "mieszana" z niektórymi składnikami w jednym regionie i innymi. Aby uniknąć obniżenia wydajności, należy upewnić się, że wdrożenie nadmiarowe aplikacji znajduje się w regionie odzyskiwania po awarii, a następnie przestrzegać tych [wytycznych dotyczących zabezpieczeń sieci](#failover-groups-and-network-security).
+Typowa aplikacja platformy Azure używa wielu usług platformy Azure i składa się z wielu składników. Automatyczna praca awaryjna grupy trybu failover jest wyzwalana na podstawie stanu samych składników usługi Azure SQL. Awaria może nie wpływać na inne usługi platformy Azure w regionie podstawowym, a ich składniki nadal mogą być dostępne w tym regionie. Po przełączeniu podstawowych baz danych do regionu DR opóźnienie między składnikami zależnymi może się zwiększyć. Aby uniknąć wpływu większego opóźnienia na wydajność aplikacji, należy upewnić się, że nadmiarowość wszystkich składników aplikacji w regionie odzyskiwania po awarii jest zgodna z tymi [wskazówkami dotyczącymi zabezpieczeń sieci](#failover-groups-and-network-security).
 
-  > [!NOTE]
-  > Aplikacja w regionie DR nie musi używać innych parametrów połączenia.  
+### <a name="preparing-for-data-loss"></a>Przygotowywanie do utraty danych
 
-- **Przygotowanie do utraty danych**
+Jeśli zostanie wykryta awaria, program SQL czeka na okres określony przez `GracePeriodWithDataLossHours`. Wartość domyślna to 1 godzina. Jeśli nie możesz zapewnić utraty danych, pamiętaj, aby ustawić `GracePeriodWithDataLossHours` na wystarczająco dużą liczbę, na przykład 24 godziny. Użyj ręcznej pracy awaryjnej grupy, aby wrócić z poziomu pomocniczego do podstawowego.
 
-  Jeśli zostanie wykryta awaria, program SQL czeka na okres określony przez `GracePeriodWithDataLossHours`. Wartość domyślna to 1 godzina. Jeśli nie możesz zapewnić utraty danych, pamiętaj, aby ustawić `GracePeriodWithDataLossHours` na wystarczająco dużą liczbę, na przykład 24 godziny. Użyj ręcznej pracy awaryjnej grupy, aby wrócić z poziomu pomocniczego do podstawowego.
+> [!IMPORTANT]
+> Pule elastyczne z 800 lub mniej DTU i więcej niż 250 baz danych korzystających z replikacji geograficznej mogą napotkać problemy, w tym dłuższe planowane przełączanie w tryb failover i wydajność o obniżonej wydajności.  Te problemy mogą wystąpić w przypadku obciążeń intensywnie korzystających z zapisu, gdy punkty końcowe replikacji geograficznej są szeroko oddzielane przez geografię lub gdy dla każdej bazy danych są używane wiele pomocniczych punktów końcowych.  Objawy tych problemów są wskazywane, gdy opóźnienie replikacji geograficznej rośnie wraz z upływem czasu.  Te opóźnienia można monitorować przy użyciu wykazu [sys. dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database).  Jeśli te problemy wystąpią, środki zaradcze obejmują zwiększenie liczby DTU puli lub zmniejszenie liczby replikowanych geograficznie baz danych w tej samej puli.
 
-  > [!IMPORTANT]
-  > Pule elastyczne z 800 lub mniej DTU i więcej niż 250 baz danych korzystających z replikacji geograficznej mogą napotkać problemy, w tym dłuższe planowane przełączanie w tryb failover i wydajność o obniżonej wydajności.  Te problemy mogą wystąpić w przypadku obciążeń intensywnie korzystających z zapisu, gdy punkty końcowe replikacji geograficznej są szeroko oddzielane przez geografię lub gdy dla każdej bazy danych są używane wiele pomocniczych punktów końcowych.  Objawy tych problemów są wskazywane, gdy opóźnienie replikacji geograficznej rośnie wraz z upływem czasu.  Te opóźnienia można monitorować przy użyciu wykazu [sys. dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database).  Jeśli te problemy wystąpią, środki zaradcze obejmują zwiększenie liczby DTU puli lub zmniejszenie liczby replikowanych geograficznie baz danych w tej samej puli.
+### <a name="changing-secondary-region-of-the-failover-group"></a>Zmienianie regionu pomocniczego grupy trybu failover
+
+W celu zilustrowania sekwencji zmian przyjęto założenie, że serwer A jest serwerem podstawowym, serwer B jest istniejącym serwerem pomocniczym, a serwer C jest nowym dodatkowym w trzecim regionie.  Aby dokonać przejścia, wykonaj następujące kroki:
+
+1.  Utwórz dodatkowe usługi pomocnicze dla każdej bazy danych na serwerze A na serwerze C przy użyciu [aktywnej replikacji geograficznej](sql-database-active-geo-replication.md). Każda baza danych na serwerze A będzie mieć dwie serwery pomocnicze, jeden na serwerze B i jeden na serwerze C. Pozwoli to zagwarantować, że podstawowe bazy danych pozostaną chronione podczas przejścia.
+2.  Usuń grupę trybu failover. W tym momencie logowania będą kończyć się niepowodzeniem. Wynika to z faktu, że aliasy SQL dla odbiorników grupy trybu failover zostały usunięte, a Brama nie rozpozna nazwy grupy trybu failover.
+3.  Utwórz ponownie grupę trybu failover o tej samej nazwie między serwerami A i C. W tym momencie logowania zakończą się niepowodzeniem.
+4.  Dodaj wszystkie podstawowe bazy danych na serwerze A do nowej grupy trybu failover.
+5.  Upuść serwer B. Wszystkie bazy danych w B zostaną usunięte automatycznie. 
+
+
+### <a name="changing-primary-region-of-the-failover-group"></a>Zmienianie regionu podstawowego grupy trybu failover
+
+W celu zilustrowania sekwencji zmian przyjęto, że serwer A jest serwerem podstawowym, serwer B jest istniejącym serwerem pomocniczym, a serwer C jest nowym podstawowym w trzecim regionie.  Aby dokonać przejścia, wykonaj następujące kroki:
+
+1.  Wykonaj planowaną pracę w trybie failover w celu przełączenia serwera podstawowego na B. serwer A stanie się nowym serwerem pomocniczym. Przejście w tryb failover może spowodować powstanie kilku minut przestoju. Rzeczywista godzina będzie zależeć od rozmiaru grupy trybu failover.
+2.  Utwórz dodatkowe usługi pomocnicze dla każdej bazy danych na serwerze B na serwerze C przy użyciu [aktywnej replikacji geograficznej](sql-database-active-geo-replication.md). Każda baza danych na serwerze B będzie miała dwie serwery pomocnicze, jeden na serwerze A i jeden na serwerze C. Pozwoli to zagwarantować, że podstawowe bazy danych pozostaną chronione podczas przejścia.
+3.  Usuń grupę trybu failover. W tym momencie logowania będą kończyć się niepowodzeniem. Wynika to z faktu, że aliasy SQL dla odbiorników grupy trybu failover zostały usunięte, a Brama nie rozpozna nazwy grupy trybu failover.
+4.  Utwórz ponownie grupę trybu failover o tej samej nazwie między serwerami A i C. W tym momencie logowania zakończą się niepowodzeniem.
+5.  Dodaj wszystkie podstawowe bazy danych w B do nowej grupy trybu failover. 
+6.  Wykonaj planowaną pracę w trybie failover grupy trybu failover w celu przełączenia B i C. Teraz serwer C stanie się podstawowym i B-pomocniczym. Wszystkie pomocnicze bazy danych na serwerze A zostaną automatycznie połączone z Primaries na dysku C. Jak w kroku 1 w trybie failover może wystąpić kilka minut przestoju.
+6.  Usuń serwer A. Wszystkie bazy danych na serwerze zostaną usunięte automatycznie.
+
+> [!IMPORTANT]
+> Po usunięciu grupy trybu failover rekordy DNS dla punktów końcowych odbiornika również są usuwane. W tym momencie istnieje prawdopodobieństwo, że ktoś inny tworzy grupę trybu failover lub alias serwera o tej samej nazwie, co uniemożliwi jego ponowne użycie. Aby zminimalizować ryzyko, nie używaj ogólnych nazw grup trybu failover.
 
 ## <a name="best-practices-of-using-failover-groups-with-managed-instances"></a>Najlepsze rozwiązania dotyczące korzystania z grup trybu failover z wystąpieniami zarządzanymi
 
@@ -193,62 +217,86 @@ Na poniższym diagramie przedstawiono typową konfigurację aplikacji w chmurze 
 
 Jeśli aplikacja używa wystąpienia zarządzanego jako warstwy danych, postępuj zgodnie z ogólnymi wskazówkami podczas projektowania pod kątem ciągłości działania:
 
-- **Utwórz wystąpienie pomocnicze w tej samej strefie DNS co wystąpienie podstawowe**
+### <a name="creating-the-secondary-instance"></a>Tworzenie wystąpienia dodatkowego 
 
-  Aby zapewnić nieprzerwane połączenie z wystąpieniem podstawowym po przejściu w tryb failover, oba wystąpienia muszą znajdować się w tej samej strefie DNS. Gwarantuje to, że ten sam certyfikat wielodomenowy (SAN) może służyć do uwierzytelniania połączeń klientów z jednym z dwóch wystąpień w grupie trybu failover. Gdy aplikacja jest gotowa do wdrożenia produkcyjnego, Utwórz wystąpienie pomocnicze w innym regionie i upewnij się, że współużytkuje strefę DNS z wystąpieniem podstawowym. Można to zrobić, określając `DNS Zone Partner` opcjonalny parametr przy użyciu Azure Portal, programu PowerShell lub interfejsu API REST.
+Aby zapewnić nieprzerwane połączenie z wystąpieniem podstawowym po przejściu w tryb failover, oba wystąpienia muszą znajdować się w tej samej strefie DNS. Gwarantuje to, że ten sam certyfikat wielodomenowy (SAN) może służyć do uwierzytelniania połączeń klientów z jednym z dwóch wystąpień w grupie trybu failover. Gdy aplikacja jest gotowa do wdrożenia produkcyjnego, Utwórz wystąpienie pomocnicze w innym regionie i upewnij się, że współużytkuje strefę DNS z wystąpieniem podstawowym. Można to zrobić, określając `DNS Zone Partner` opcjonalny parametr przy użyciu Azure Portal, programu PowerShell lub interfejsu API REST.
 
 > [!IMPORTANT]
 > Pierwsze wystąpienie utworzone w podsieci określa strefę DNS dla wszystkich kolejnych wystąpień w tej samej podsieci. Oznacza to, że dwa wystąpienia z tej samej podsieci nie mogą należeć do różnych stref DNS.
 
-  Aby uzyskać więcej informacji o tworzeniu wystąpienia pomocniczego w tej samej strefie DNS co wystąpienie podstawowe, zobacz [Tworzenie pomocniczego wystąpienia zarządzanego](sql-database-managed-instance-failover-group-tutorial.md#3---create-a-secondary-managed-instance).
+Aby uzyskać więcej informacji o tworzeniu wystąpienia pomocniczego w tej samej strefie DNS co wystąpienie podstawowe, zobacz [Tworzenie pomocniczego wystąpienia zarządzanego](sql-database-managed-instance-failover-group-tutorial.md#3---create-a-secondary-managed-instance).
 
-- **Włącz ruch związany z replikacją między dwoma wystąpieniami**
+### <a name="enabling-replication-traffic-between-two-instances"></a>Włączanie ruchu replikacji między dwoma wystąpieniami
 
-  Ze względu na to, że każde wystąpienie jest izolowane w własnej sieci wirtualnej, należy zezwolić na ruch dwukierunkowy między tymi sieci wirtualnychami. Zobacz [Azure VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md)
+Ze względu na to, że każde wystąpienie jest izolowane w własnej sieci wirtualnej, należy zezwolić na ruch dwukierunkowy między tymi sieci wirtualnychami. Zobacz [Azure VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md)
 
-- **Tworzenie grupy trybu failover między wystąpieniami zarządzanymi w różnych subskrypcjach**
+### <a name="creating-a-failover-group-between-managed-instances-in-different-subscriptions"></a>Tworzenie grupy trybu failover między wystąpieniami zarządzanymi w różnych subskrypcjach
 
-  Można utworzyć grupę trybu failover między wystąpieniami zarządzanymi w dwóch różnych subskrypcjach. Korzystając z interfejsu API programu PowerShell, można to zrobić, określając parametr `PartnerSubscriptionId` wystąpienia pomocniczego. W przypadku korzystania z interfejsu API REST każdy identyfikator wystąpienia uwzględniony w parametrze `properties.managedInstancePairs` może mieć własną wartość identyfikatora subskrypcji.
+Można utworzyć grupę trybu failover między wystąpieniami zarządzanymi w dwóch różnych subskrypcjach. Korzystając z interfejsu API programu PowerShell, można to zrobić, określając parametr `PartnerSubscriptionId` wystąpienia pomocniczego. W przypadku korzystania z interfejsu API REST każdy identyfikator wystąpienia uwzględniony w parametrze `properties.managedInstancePairs` może mieć własną wartość identyfikatora subskrypcji.
   
-  > [!IMPORTANT]
-  > Witryna Azure Portal nie obsługuje grup trybu failover w różnych subskrypcjach.
+> [!IMPORTANT]
+> Witryna Azure Portal nie obsługuje grup trybu failover w różnych subskrypcjach.
 
-- **Skonfiguruj grupę trybu failover, aby zarządzać trybem failover całego wystąpienia**
+### <a name="managing-failover-to-secondary-instance"></a>Zarządzanie przejściem do trybu failover do wystąpienia dodatkowego
 
-  Grupa trybu failover będzie zarządzać trybem failover wszystkich baz danych w wystąpieniu. Gdy grupa zostanie utworzona, każda baza danych w wystąpieniu zostanie automatycznie zreplikowana geograficznie do wystąpienia pomocniczego. Nie można użyć grup trybu failover w celu zainicjowania częściowej pracy awaryjnej podzestawu baz danych.
+Grupa trybu failover będzie zarządzać trybem failover wszystkich baz danych w wystąpieniu. Gdy grupa zostanie utworzona, każda baza danych w wystąpieniu zostanie automatycznie zreplikowana geograficznie do wystąpienia pomocniczego. Nie można użyć grup trybu failover w celu zainicjowania częściowej pracy awaryjnej podzestawu baz danych.
 
-  > [!IMPORTANT]
-  > Jeśli baza danych zostanie usunięta z wystąpienia podstawowego, zostanie ona również porzucona automatycznie w wystąpieniu pomocniczej lokalizacji geograficznej.
+> [!IMPORTANT]
+> Jeśli baza danych zostanie usunięta z wystąpienia podstawowego, zostanie ona również porzucona automatycznie w wystąpieniu pomocniczej lokalizacji geograficznej.
 
-- **Używanie odbiornika do odczytu i zapisu w obciążeniu OLTP**
+### <a name="using-read-write-listener-for-oltp-workload"></a>Używanie odbiornika do odczytu i zapisu w obciążeniu OLTP
 
-  Podczas wykonywania operacji OLTP Użyj `<fog-name>.zone_id.database.windows.net` jako adresu URL serwera, a połączenia są automatycznie kierowane do podstawowego. Ten adres URL nie zmienia się po przełączeniu w tryb failover. Tryb failover obejmuje aktualizację rekordu DNS, dlatego połączenia klienckie są przekierowywane do nowego serwera podstawowego dopiero po odświeżeniu pamięci podręcznej DNS klienta. Ponieważ wystąpienie pomocnicze współużytkuje strefę DNS z serwerem podstawowym, aplikacja kliencka będzie mogła ponownie połączyć się z nim przy użyciu tego samego certyfikatu sieci SAN.
+Podczas wykonywania operacji OLTP Użyj `<fog-name>.zone_id.database.windows.net` jako adresu URL serwera, a połączenia są automatycznie kierowane do podstawowego. Ten adres URL nie zmienia się po przełączeniu w tryb failover. Tryb failover obejmuje aktualizację rekordu DNS, dlatego połączenia klienckie są przekierowywane do nowego serwera podstawowego dopiero po odświeżeniu pamięci podręcznej DNS klienta. Ponieważ wystąpienie pomocnicze współużytkuje strefę DNS z serwerem podstawowym, aplikacja kliencka będzie mogła ponownie połączyć się z nim przy użyciu tego samego certyfikatu sieci SAN.
 
-- **Bezpośrednie łączenie z replikacją geograficzną na potrzeby zapytań tylko do odczytu**
+### <a name="using-read-only-listener-to-connect-to-the-secondary-instance"></a>Używanie odbiornika z tylko odczytem do nawiązywania połączenia z wystąpieniem pomocniczym
 
-  Jeśli istnieje logicznie izolowane obciążenie przeznaczone tylko do odczytu, które jest odporne na określoną nieaktualność danych, możesz użyć pomocniczej bazy danych w aplikacji. Aby połączyć się bezpośrednio z replikacją geograficzną, użyj `server.secondary.zone_id.database.windows.net` jako adresu URL serwera, a połączenie jest nawiązywane bezpośrednio do pomocniczej replikacji geograficznej.
+Jeśli istnieje logicznie izolowane obciążenie przeznaczone tylko do odczytu, które jest odporne na określoną nieaktualność danych, możesz użyć pomocniczej bazy danych w aplikacji. Aby połączyć się bezpośrednio z replikacją geograficzną, użyj `server.secondary.zone_id.database.windows.net` jako adresu URL serwera, a połączenie jest nawiązywane bezpośrednio do pomocniczej replikacji geograficznej.
 
-  > [!NOTE]
-  > W niektórych warstwach usług Azure SQL Database obsługuje korzystanie z [replik tylko do odczytu](sql-database-read-scale-out.md) w celu równoważenia obciążenia obciążeń zapytań tylko do odczytu przy użyciu pojemności jednej repliki tylko do odczytu i przy użyciu parametru `ApplicationIntent=ReadOnly` w parametrach połączenia. Jeśli skonfigurowano pomocniczą replikację geograficzną, można użyć tej funkcji do łączenia się z repliką tylko do odczytu w lokalizacji podstawowej lub w lokalizacji zreplikowanej geograficznie.
-  > - Aby nawiązać połączenie z repliką tylko do odczytu w lokalizacji podstawowej, użyj `<fog-name>.zone_id.database.windows.net`.
-  > - Aby nawiązać połączenie z repliką tylko do odczytu w lokalizacji pomocniczej, użyj `<fog-name>.secondary.zone_id.database.windows.net`.
+> [!NOTE]
+> W niektórych warstwach usług Azure SQL Database obsługuje korzystanie z [replik tylko do odczytu](sql-database-read-scale-out.md) w celu równoważenia obciążenia obciążeń zapytań tylko do odczytu przy użyciu pojemności jednej repliki tylko do odczytu i przy użyciu parametru `ApplicationIntent=ReadOnly` w parametrach połączenia. Jeśli skonfigurowano pomocniczą replikację geograficzną, można użyć tej funkcji do łączenia się z repliką tylko do odczytu w lokalizacji podstawowej lub w lokalizacji zreplikowanej geograficznie.
+> - Aby nawiązać połączenie z repliką tylko do odczytu w lokalizacji podstawowej, użyj `<fog-name>.zone_id.database.windows.net`.
+> - Aby nawiązać połączenie z repliką tylko do odczytu w lokalizacji pomocniczej, użyj `<fog-name>.secondary.zone_id.database.windows.net`.
 
-- **Przygotowanie do obniżenia wydajności**
+### <a name="preparing-for-performance-degradation"></a>Przygotowanie do obniżenia wydajności
 
-  Decyzja o przejściu w tryb failover SQL jest niezależna od pozostałej części aplikacji lub innych używanych usług. Aplikacja może być "mieszana" z niektórymi składnikami w jednym regionie i innymi. Aby uniknąć obniżenia wydajności, należy upewnić się, że wdrożenie nadmiarowe aplikacji znajduje się w regionie odzyskiwania po awarii, a następnie przestrzegać tych [wytycznych dotyczących zabezpieczeń sieci](#failover-groups-and-network-security).
+Typowa aplikacja platformy Azure używa wielu usług platformy Azure i składa się z wielu składników. Automatyczna praca awaryjna grupy trybu failover jest wyzwalana na podstawie stanu samych składników usługi Azure SQL. Awaria może nie wpływać na inne usługi platformy Azure w regionie podstawowym, a ich składniki nadal mogą być dostępne w tym regionie. Po przełączeniu podstawowych baz danych do regionu DR opóźnienie między składnikami zależnymi może się zwiększyć. Aby uniknąć wpływu większego opóźnienia na wydajność aplikacji, należy upewnić się, że nadmiarowość wszystkich składników aplikacji w regionie odzyskiwania po awarii jest zgodna z tymi [wskazówkami dotyczącymi zabezpieczeń sieci](#failover-groups-and-network-security).
 
-- **Przygotowanie do utraty danych**
+### <a name="preparing-for-data-loss"></a>Przygotowywanie do utraty danych
 
-  Jeśli zostanie wykryta awaria, program SQL automatycznie wyzwala tryb failover do odczytu i zapisu, jeśli nie ma utraty danych w najlepszej wiedzy. W przeciwnym razie czeka na okres określony przez `GracePeriodWithDataLossHours`. Jeśli określono `GracePeriodWithDataLossHours`, przygotuj się na utratę danych. Ogólnie rzecz biorąc, platforma Azure preferuje dostępność. Jeśli nie możesz zapewnić utraty danych, pamiętaj, aby ustawić GracePeriodWithDataLossHours na wystarczająco dużą liczbę, na przykład 24 godziny.
+Jeśli zostanie wykryta awaria, program SQL automatycznie wyzwala tryb failover do odczytu i zapisu, jeśli nie ma utraty danych w najlepszej wiedzy. W przeciwnym razie czeka na okres określony przez `GracePeriodWithDataLossHours`. Jeśli określono `GracePeriodWithDataLossHours`, przygotuj się na utratę danych. Ogólnie rzecz biorąc, platforma Azure preferuje dostępność. Jeśli nie możesz zapewnić utraty danych, pamiętaj, aby ustawić GracePeriodWithDataLossHours na wystarczająco dużą liczbę, na przykład 24 godziny.
 
-  Aktualizacja systemu DNS odbiornika do odczytu i zapisu stanie się natychmiast po zainicjowaniu trybu failover. Ta operacja nie powoduje utraty danych. Jednak proces przełączania ról bazy danych może potrwać do 5 minut w normalnych warunkach. Dopóki nie zostanie ukończona, niektóre bazy danych w nowym wystąpieniu podstawowym nadal będą tylko do odczytu. Jeśli tryb failover jest inicjowany przy użyciu programu PowerShell, cała operacja jest synchroniczna. Jeśli zostanie zainicjowany przy użyciu Azure Portal, interfejs użytkownika będzie wskazywać stan ukończenia. Jeśli zostanie zainicjowany przy użyciu interfejsu API REST, należy użyć mechanizmu sondowania standardowej Azure Resource Manager, aby monitorować ukończenie.
+Aktualizacja systemu DNS odbiornika do odczytu i zapisu stanie się natychmiast po zainicjowaniu trybu failover. Ta operacja nie powoduje utraty danych. Jednak proces przełączania ról bazy danych może potrwać do 5 minut w normalnych warunkach. Dopóki nie zostanie ukończona, niektóre bazy danych w nowym wystąpieniu podstawowym nadal będą tylko do odczytu. Jeśli tryb failover jest inicjowany przy użyciu programu PowerShell, cała operacja jest synchroniczna. Jeśli zostanie zainicjowany przy użyciu Azure Portal, interfejs użytkownika będzie wskazywać stan ukończenia. Jeśli zostanie zainicjowany przy użyciu interfejsu API REST, należy użyć mechanizmu sondowania standardowej Azure Resource Manager, aby monitorować ukończenie.
 
-  > [!IMPORTANT]
-  > Aby przenieść Primaries z powrotem do oryginalnej lokalizacji, Użyj ręcznego trybu failover grupy. Gdy awaria, która spowodowała przejście w tryb failover, jest zmniejszana, można przenieść podstawowe bazy danych do oryginalnej lokalizacji. W tym celu należy zainicjować ręczną pracę awaryjną grupy.
+> [!IMPORTANT]
+> Aby przenieść Primaries z powrotem do oryginalnej lokalizacji, Użyj ręcznego trybu failover grupy. Gdy awaria, która spowodowała przejście w tryb failover, jest zmniejszana, można przenieść podstawowe bazy danych do oryginalnej lokalizacji. W tym celu należy zainicjować ręczną pracę awaryjną grupy.
+  
+### <a name="changing-secondary-region-of-the-failover-group"></a>Zmienianie regionu pomocniczego grupy trybu failover
 
-- **Potwierdź znane ograniczenia grup trybu failover**
+Załóżmy, że wystąpienie A jest wystąpieniem podstawowym, wystąpienie B jest istniejącym wystąpieniem pomocniczym, a wystąpienie C jest nowym wystąpieniem pomocniczym w trzecim regionie.  Aby dokonać przejścia, wykonaj następujące kroki:
 
-  Zmiana nazwy bazy danych nie jest obsługiwana w przypadku wystąpień w grupie trybu failover. Należy tymczasowo usunąć grupę trybu failover, aby można było zmienić nazwę bazy danych.
+1.  Utwórz wystąpienie C o takim samym rozmiarze jak i w tej samej strefie DNS. 
+2.  Usuń grupę trybu failover między wystąpieniami A i B. W tym momencie logowania będą kończyć się niepowodzeniem, ponieważ aliasy SQL dla odbiorników grupy trybu failover zostały usunięte, a Brama nie rozpozna nazwy grupy trybu failover. Pomocnicze bazy danych zostaną rozłączone z Primaries i staną się bazami danych do odczytu i zapisu. 
+3.  Utwórz grupę trybu failover o tej samej nazwie między wystąpieniem A i C. Postępuj zgodnie z instrukcjami podanymi w [grupie trybu failover z samouczkiem wystąpienia zarządzanego](sql-database-managed-instance-failover-group-tutorial.md). Jest to operacja o rozmiarze danych i zostanie ukończona, gdy wszystkie bazy danych z wystąpienia A zostaną rozłączone i zsynchronizowane.
+4.  Usuń wystąpienie B, jeśli nie jest potrzebne, aby uniknąć niepotrzebnych opłat.
+
+> [!NOTE]
+> Po wykonaniu kroku 2 i zakończeniu kroku 3 bazy danych w wystąpieniu A pozostaną niechronione przed uszkodzeniem wystąpienia A.
+
+### <a name="changing-primary-region-of-the-failover-group"></a>Zmienianie regionu podstawowego grupy trybu failover
+
+Załóżmy, że wystąpienie A jest wystąpieniem podstawowym, wystąpienie B jest istniejącym wystąpieniem pomocniczym, a wystąpienie C jest nowym wystąpieniem podstawowym w trzecim regionie.  Aby dokonać przejścia, wykonaj następujące kroki:
+
+1.  Utwórz wystąpienie C o takim samym rozmiarze jak B i w tej samej strefie DNS. 
+2.  Połącz się z wystąpieniem B i ręcznie trybem failover w celu przełączenia wystąpienia podstawowego na B. wystąpienie A stanie się automatycznie nowym wystąpieniem pomocniczym.
+3.  Usuń grupę trybu failover między wystąpieniami A i B. W tym momencie logowania będą kończyć się niepowodzeniem, ponieważ aliasy SQL dla odbiorników grupy trybu failover zostały usunięte, a Brama nie rozpozna nazwy grupy trybu failover. Pomocnicze bazy danych zostaną rozłączone z Primaries i staną się bazami danych do odczytu i zapisu. 
+4.  Utwórz grupę trybu failover o tej samej nazwie między wystąpieniem A i C. Postępuj zgodnie z instrukcjami podanymi w temacie [Grupa trybu failover z wystąpieniem zarządzanym](sql-database-managed-instance-failover-group-tutorial.md). Jest to operacja o rozmiarze danych i zostanie ukończona, gdy wszystkie bazy danych z wystąpienia A zostaną rozłączone i zsynchronizowane.
+5.  Usuń wystąpienie A, jeśli nie jest potrzebne, aby uniknąć niepotrzebnych opłat.
+
+> [!NOTE] 
+> Po kroku 3 i do momentu zakończenia krok 4 bazy danych w wystąpieniu A pozostaną niechronione przed uszkodzeniem wystąpienia A.
+
+> [!IMPORTANT]
+> Po usunięciu grupy trybu failover rekordy DNS dla punktów końcowych odbiornika również są usuwane. W tym momencie istnieje prawdopodobieństwo, że ktoś inny tworzy grupę trybu failover lub alias serwera o tej samej nazwie, co uniemożliwi jego ponowne użycie. Aby zminimalizować ryzyko, nie używaj ogólnych nazw grup trybu failover.
 
 ## <a name="failover-groups-and-network-security"></a>Grupy trybu failover i zabezpieczenia sieci
 
@@ -289,16 +337,16 @@ Powyższa konfiguracja gwarantuje, że automatyczna praca awaryjna nie będzie b
 Po skonfigurowaniu grupy trybu failover między podstawowym i pomocniczym wystąpieniem zarządzanym w dwóch różnych regionach każde wystąpienie jest izolowane przy użyciu niezależnej sieci wirtualnej. Aby zezwolić na ruch związany z replikacją między tymi sieci wirtualnychami, upewnij się, że spełniono następujące wymagania wstępne:
 
 1. Dwa zarządzane wystąpienia muszą znajdować się w różnych regionach świadczenia usługi Azure.
-1. Dwa zarządzane wystąpienia muszą mieć tę samą warstwę usług i mieć ten sam rozmiar magazynu.
-1. Dodatkowe wystąpienie zarządzane musi być puste (bez baz danych użytkowników).
-1. Sieci wirtualne używane przez zarządzane wystąpienia muszą być połączone za pomocą [VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md) lub Express Route. Gdy dwie sieci wirtualne nawiązują połączenie za poorednictwem sieci lokalnej, upewnij się, że nie ma portów blokowania reguły zapory 5022 i 11000-11999. Globalna komunikacja równorzędna sieci wirtualnych nie jest obsługiwana.
-1. Dwa wystąpienia zarządzane sieci wirtualnych nie mogą mieć nakładających się adresów IP.
-1. Należy skonfigurować sieciowe grupy zabezpieczeń (sieciowej grupy zabezpieczeń), takie jak porty 5022 i zakres 11000 ~ 12 000 są otwarte i wychodzące dla połączeń z innej podsieci zarządzanego wystąpienia. Jest to dozwolone dla ruchu replikacji między wystąpieniami
+2. Dwa zarządzane wystąpienia muszą mieć tę samą warstwę usług i mieć ten sam rozmiar magazynu.
+3. Dodatkowe wystąpienie zarządzane musi być puste (bez baz danych użytkowników).
+4. Sieci wirtualne używane przez zarządzane wystąpienia muszą być połączone za pomocą [VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md) lub [Express Route](../expressroute/expressroute-howto-circuit-portal-resource-manager.md). Gdy dwie sieci wirtualne nawiązują połączenie za poorednictwem sieci lokalnej, upewnij się, że nie ma portów blokowania reguły zapory 5022 i 11000-11999. Globalna komunikacja równorzędna sieci wirtualnych nie jest obsługiwana.
+5. Dwa wystąpienia zarządzane sieci wirtualnych nie mogą mieć nakładających się adresów IP.
+6. Należy skonfigurować sieciowe grupy zabezpieczeń (sieciowej grupy zabezpieczeń), takie jak porty 5022 i zakres 11000 ~ 12 000 są otwarte i wychodzące dla połączeń z podsieci drugiego wystąpienia zarządzanego. Jest to dozwolone dla ruchu związanego z replikacją między wystąpieniami.
 
    > [!IMPORTANT]
    > Nieprawidłowo skonfigurowane reguły zabezpieczeń sieciowej grupy zabezpieczeń prowadzą do zablokowanych operacji kopiowania bazy danych.
 
-1. Wystąpienie pomocnicze jest skonfigurowane z prawidłowym IDENTYFIKATORem strefy DNS. Strefa DNS jest właściwością wystąpienia zarządzanego i klastra wirtualnego, a jego identyfikator jest zawarty w adresie nazwy hosta. Identyfikator strefy jest generowany jako ciąg losowy, gdy pierwsze wystąpienie zarządzane jest tworzone w każdej sieci wirtualnej, a ten sam identyfikator jest przypisany do wszystkich innych wystąpień w tej samej podsieci. Po przypisaniu strefa DNS nie może być modyfikowana. Wystąpienia zarządzane zawarte w tej samej grupie trybu failover muszą współdzielić strefę DNS. W tym celu należy przekazać Identyfikator strefy wystąpienia podstawowego jako wartość parametru DnsZonePartner podczas tworzenia wystąpienia pomocniczego. 
+7. Wystąpienie pomocnicze jest skonfigurowane z prawidłowym IDENTYFIKATORem strefy DNS. Strefa DNS jest właściwością wystąpienia zarządzanego i klastra wirtualnego, a jego identyfikator jest zawarty w adresie nazwy hosta. Identyfikator strefy jest generowany jako ciąg losowy, gdy pierwsze wystąpienie zarządzane jest tworzone w każdej sieci wirtualnej, a ten sam identyfikator jest przypisany do wszystkich innych wystąpień w tej samej podsieci. Po przypisaniu strefa DNS nie może być modyfikowana. Wystąpienia zarządzane zawarte w tej samej grupie trybu failover muszą współdzielić strefę DNS. W tym celu należy przekazać Identyfikator strefy wystąpienia podstawowego jako wartość parametru DnsZonePartner podczas tworzenia wystąpienia pomocniczego. 
 
    > [!NOTE]
    > Aby uzyskać szczegółowy samouczek dotyczący konfigurowania grup trybu failover z wystąpieniem zarządzanym, zobacz [Dodawanie wystąpienia zarządzanego do grupy trybu failover](sql-database-managed-instance-failover-group-tutorial.md).
@@ -323,6 +371,14 @@ Ze względu na duże opóźnienie sieci rozległej, ciągła kopia używa mechan
 
 Informacje o korzystaniu z funkcji przywracania do punktu w czasie z grupami trybu failover można znaleźć [w temacie odzyskiwanie do punktu w czasie (kopie)](sql-database-recovery-using-backups.md#point-in-time-restore).
 
+## <a name="limitations-of-failover-groups"></a>Ograniczenia grup trybu failover
+
+Należy pamiętać o następujących ograniczeniach:
+
+- Nie można utworzyć grupy trybu failover między dwoma serwerami lub wystąpieniami w tym samym regionie świadczenia usługi Azure.
+- Nie można zmienić nazwy grupy trybu failover. Musisz usunąć grupę i utworzyć ją ponownie, podając inną nazwę. 
+- Zmiana nazwy bazy danych nie jest obsługiwana w przypadku wystąpień w grupie trybu failover. Należy tymczasowo usunąć grupę trybu failover, aby można było zmienić nazwę bazy danych.
+
 ## <a name="programmatically-managing-failover-groups"></a>Programowe zarządzanie grupami trybu failover
 
 Jak wspomniano wcześniej, grupy autotrybu failover i aktywnej replikacji geograficznej mogą być również zarządzane programowo przy użyciu Azure PowerShell i interfejsu API REST. W poniższych tabelach opisano zestaw dostępnych poleceń. Aktywna replikacja geograficzna obejmuje zestaw Azure Resource Manager interfejsów API do zarządzania, w tym [Azure SQL Database interfejsu API REST](https://docs.microsoft.com/rest/api/sql/) i [poleceń cmdlet Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview). Te interfejsy API wymagają użycia grup zasobów i obsługują zabezpieczenia oparte na rolach (RBAC). Aby uzyskać więcej informacji na temat implementowania ról dostępu, zobacz [Access Control oparte na rolach platformy Azure](../role-based-access-control/overview.md).
@@ -334,20 +390,20 @@ Jak wspomniano wcześniej, grupy autotrybu failover i aktywnej replikacji geogra
 | Polecenie cmdlet | Opis |
 | --- | --- |
 | [New-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/new-azsqldatabasefailovergroup) |To polecenie tworzy grupę trybu failover i rejestruje ją na serwerze podstawowym i pomocniczym|
-| [Remove-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/remove-azsqldatabasefailovergroup) | Usuwa grupę trybu failover z serwera i usuwa wszystkie pomocnicze bazy danych uwzględnione w grupie |
+| [Remove-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/remove-azsqldatabasefailovergroup) | Usuwa grupę trybu failover z serwera |
 | [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) | Pobiera konfigurację grupy trybu failover |
 | [Set-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/set-azsqldatabasefailovergroup) |Modyfikuje konfigurację grupy trybu failover |
-| [Przełącznik-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup) | Wyzwala tryb failover grupy trybu failover na serwerze pomocniczym |
-| [Add-AzSqlDatabaseToFailoverGroup](/powershell/module/az.sql/add-azsqldatabasetofailovergroup)|Dodaje co najmniej jedną bazę danych do grupy trybu failover Azure SQL Database|
+| [Switch-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup) | Wyzwala tryb failover grupy trybu failover na serwerze pomocniczym |
+| [Add-AzSqlDatabaseToFailoverGroup](/powershell/module/az.sql/add-azsqldatabasetofailovergroup)|Dodaje co najmniej jedną bazę danych do grupy trybu failover|
 
 ### <a name="manage-sql-database-failover-groups-with-managed-instances"></a>Zarządzanie grupami trybu failover bazy danych SQL z wystąpieniami zarządzanymi
 
 | Polecenie cmdlet | Opis |
 | --- | --- |
-| [New-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/new-azsqldatabaseinstancefailovergroup) |To polecenie tworzy grupę trybu failover i rejestruje ją na serwerze podstawowym i pomocniczym|
+| [New-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/new-azsqldatabaseinstancefailovergroup) |To polecenie tworzy grupę trybu failover i rejestruje ją w wystąpieniach podstawowych i pomocniczych|
 | [Set-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/set-azsqldatabaseinstancefailovergroup) |Modyfikuje konfigurację grupy trybu failover|
 | [Get-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/get-azsqldatabaseinstancefailovergroup) |Pobiera konfigurację grupy trybu failover|
-| [Przełącznik-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/switch-azsqldatabaseinstancefailovergroup) |Wyzwala tryb failover grupy trybu failover na serwerze pomocniczym|
+| [Przełącznik-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/switch-azsqldatabaseinstancefailovergroup) |Wyzwala tryb failover grupy trybu failover w wystąpieniu pomocniczym|
 | [Remove-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/remove-azsqldatabaseinstancefailovergroup) | Usuwa grupę trybu failover|
 
 # <a name="azure-clitabazure-cli"></a>[Interfejs wiersza polecenia platformy Azure](#tab/azure-cli)
@@ -357,19 +413,19 @@ Jak wspomniano wcześniej, grupy autotrybu failover i aktywnej replikacji geogra
 | Polecenie | Opis |
 | --- | --- |
 | [AZ SQL failover-Group Create](/cli/azure/sql/failover-group#az-sql-failover-group-create) |To polecenie tworzy grupę trybu failover i rejestruje ją na serwerze podstawowym i pomocniczym|
-| [AZ SQL failover-Group Delete](/cli/azure/sql/failover-group#az-sql-failover-group-delete) | Usuwa grupę trybu failover z serwera i usuwa wszystkie pomocnicze bazy danych uwzględnione w grupie |
+| [AZ SQL failover-Group Delete](/cli/azure/sql/failover-group#az-sql-failover-group-delete) | Usuwa grupę trybu failover z serwera |
 | [AZ SQL failover-Group Show](/cli/azure/sql/failover-group#az-sql-failover-group-show) | Pobiera konfigurację grupy trybu failover |
-| [AZ SQL failover — aktualizacja grupy](/cli/azure/sql/failover-group#az-sql-failover-group-update) |Modyfikuje konfigurację grupy trybu failover i/lub dodaje co najmniej jedną bazę danych do grupy trybu failover Azure SQL Database|
+| [AZ SQL failover — aktualizacja grupy](/cli/azure/sql/failover-group#az-sql-failover-group-update) |Modyfikuje konfigurację grupy trybu failover i/lub dodaje co najmniej jedną bazę danych do grupy trybu failover|
 | [AZ SQL failover-Group Set-Primary](/cli/azure/sql/failover-group#az-sql-failover-group-set-primary) | Wyzwala tryb failover grupy trybu failover na serwerze pomocniczym |
 
 ### <a name="manage-sql-database-failover-groups-with-managed-instances"></a>Zarządzanie grupami trybu failover bazy danych SQL z wystąpieniami zarządzanymi
 
 | Polecenie | Opis |
 | --- | --- |
-| [AZ SQL instance-failover-Group Create](/cli/azure/sql/instance-failover-group#az-sql-instance-failover-group-create) | To polecenie tworzy grupę trybu failover i rejestruje ją na serwerze podstawowym i pomocniczym|
+| [AZ SQL instance-failover-Group Create](/cli/azure/sql/instance-failover-group#az-sql-instance-failover-group-create) | To polecenie tworzy grupę trybu failover i rejestruje ją w wystąpieniach podstawowych i pomocniczych |
 | [AZ SQL instance-failover-Group Update](/cli/azure/sql/instance-failover-group#az-sql-instance-failover-group-update) | Modyfikuje konfigurację grupy trybu failover|
 | [AZ SQL instance-failover-Group Show](/cli/azure/sql/instance-failover-group#az-sql-instance-failover-group-show) | Pobiera konfigurację grupy trybu failover|
-| [AZ SQL instance-failover-Set Group-Primary](/cli/azure/sql/instance-failover-group#az-sql-instance-failover-group-set-primary) | Wyzwala tryb failover grupy trybu failover na serwerze pomocniczym|
+| [AZ SQL instance-failover-Set Group-Primary](/cli/azure/sql/instance-failover-group#az-sql-instance-failover-group-set-primary) | Wyzwala tryb failover grupy trybu failover w wystąpieniu pomocniczym|
 | [AZ SQL instance-failover-Group Delete](/cli/azure/sql/instance-failover-group#az-sql-instance-failover-group-delete) | Usuwa grupę trybu failover |
 
 * * *
@@ -379,25 +435,25 @@ Jak wspomniano wcześniej, grupy autotrybu failover i aktywnej replikacji geogra
 
 ### <a name="rest-api-manage-sql-database-failover-groups-with-single-and-pooled-databases"></a>Interfejs API REST: Zarządzanie grupami trybu failover usługi SQL Database przy użyciu jednej i puli baz danych
 
-| Interfejs API | Opis |
+| API | Opis |
 | --- | --- |
 | [Utwórz lub Zaktualizuj grupę trybu failover](https://docs.microsoft.com/rest/api/sql/failovergroups/createorupdate) | Tworzy lub aktualizuje grupę trybu failover |
 | [Usuń grupę trybu failover](https://docs.microsoft.com/rest/api/sql/failovergroups/delete) | Usuwa grupę trybu failover z serwera |
-| [Tryb failover (zaplanowany)](https://docs.microsoft.com/rest/api/sql/failovergroups/failover) | Przełączenie w tryb failover z bieżącego serwera podstawowego na ten serwer. |
-| [Wymuś utratę danych w trybie failover](https://docs.microsoft.com/rest/api/sql/failovergroups/forcefailoverallowdataloss) |ails z bieżącego serwera podstawowego na ten serwer. Ta operacja może spowodować utratę danych. |
-| [Pobierz grupę trybu failover](https://docs.microsoft.com/rest/api/sql/failovergroups/get) | Pobiera grupę trybu failover. |
+| [Tryb failover (zaplanowany)](https://docs.microsoft.com/rest/api/sql/failovergroups/failover) | Wyzwala tryb failover z bieżącego serwera podstawowego na serwerze pomocniczym z pełną synchronizacją danych.|
+| [Wymuś utratę danych w trybie failover](https://docs.microsoft.com/rest/api/sql/failovergroups/forcefailoverallowdataloss) | Wyzwala tryb failover z bieżącego serwera podstawowego na serwerze pomocniczym bez synchronizowania danych. Ta operacja może spowodować utratę danych. |
+| [Pobierz grupę trybu failover](https://docs.microsoft.com/rest/api/sql/failovergroups/get) | Pobiera konfigurację grupy trybu failover. |
 | [Wyświetl listę grup trybu failover według serwera](https://docs.microsoft.com/rest/api/sql/failovergroups/listbyserver) | Wyświetla listę grup trybu failover na serwerze. |
-| [Aktualizuj grupę trybu failover](https://docs.microsoft.com/rest/api/sql/failovergroups/update) | Aktualizuje grupę trybu failover. |
+| [Aktualizuj grupę trybu failover](https://docs.microsoft.com/rest/api/sql/failovergroups/update) | Aktualizuje konfigurację grupy trybu failover. |
 
 ### <a name="rest-api-manage-failover-groups-with-managed-instances"></a>Interfejs API REST: Zarządzanie grupami trybu failover z wystąpieniami zarządzanymi
 
-| Interfejs API | Opis |
+| API | Opis |
 | --- | --- |
-| [Utwórz lub Zaktualizuj grupę trybu failover](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/createorupdate) | Tworzy lub aktualizuje grupę trybu failover |
-| [Usuń grupę trybu failover](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/delete) | Usuwa grupę trybu failover z serwera |
-| [Tryb failover (zaplanowany)](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/failover) | Przełączenie w tryb failover z bieżącego serwera podstawowego na ten serwer. |
-| [Wymuś utratę danych w trybie failover](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/forcefailoverallowdataloss) |ails z bieżącego serwera podstawowego na ten serwer. Ta operacja może spowodować utratę danych. |
-| [Pobierz grupę trybu failover](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/get) | Pobiera grupę trybu failover. |
+| [Utwórz lub Zaktualizuj grupę trybu failover](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/createorupdate) | Tworzy lub aktualizuje konfigurację grupy trybu failover |
+| [Usuń grupę trybu failover](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/delete) | Usuwa grupę trybu failover z wystąpienia |
+| [Tryb failover (zaplanowany)](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/failover) | Wyzwala przejście w tryb failover z bieżącego wystąpienia podstawowego do tego wystąpienia z pełną synchronizacją danych. |
+| [Wymuś utratę danych w trybie failover](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/forcefailoverallowdataloss) | Wyzwala przejście w tryb failover z bieżącego wystąpienia podstawowego do wystąpienia pomocniczego bez synchronizowania danych. Ta operacja może spowodować utratę danych. |
+| [Pobierz grupę trybu failover](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/get) | Pobiera konfigurację grupy trybu failover. |
 | [Lista grup trybu failover — lista według lokalizacji](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/listbylocation) | Wyświetla listę grup trybu failover w lokalizacji. |
 
 ## <a name="next-steps"></a>Następne kroki

@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
-ms.date: 11/13/2019
-ms.openlocfilehash: 548b74dbaf36fa0a0b5f999d1de61a0c05241c61
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.date: 01/03/2020
+ms.openlocfilehash: 333d7faacfb5965e74eae69f07ff974a8fff8f25
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75690816"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894014"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>Zabezpieczanie zadań eksperymentowania i wnioskowania usługi Azure ML w ramach Virtual Network platformy Azure
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -89,6 +89,7 @@ Wystąpienie magazynu kluczy skojarzone z obszarem roboczym jest używane przez 
 * Parametry połączenia do magazynów danych
 
 Aby korzystać z funkcji eksperymentowania Azure Machine Learning z Azure Key Vault za siecią wirtualną, wykonaj następujące czynności:
+
 1. Przejdź do magazynu kluczy skojarzonego z obszarem roboczym.
 
    [![magazynu kluczy skojarzonego z obszarem roboczym Azure Machine Learning](./media/how-to-enable-virtual-network/workspace-key-vault.png)](./media/how-to-enable-virtual-network/workspace-key-vault.png#lightbox)
@@ -162,7 +163,7 @@ Jeśli nie chcesz używać domyślnych reguł ruchu wychodzącego i chcesz ogran
 
 - Odmowa wychodzącego połączenia internetowego przy użyciu reguł sieciowej grupy zabezpieczeń.
 
-- Ogranicz ruch wychodzący do następujących:
+- Ogranicz ruch wychodzący do następujących elementów:
    - Azure Storage, przy użyciu __znacznika usługi__ __Storage. Region_Name__ (na przykład Storage. wschód)
    - Azure Container Registry, przy użyciu __znacznika usługi__ __AzureContainerRegistry. Region_Name__ (na przykład AzureContainerRegistry. wschód)
    - Azure Machine Learning, przy użyciu __tagu usługi__ __AzureMachineLearning__
@@ -393,6 +394,82 @@ aks_target = ComputeTarget.create(workspace=ws,
 
 Po zakończeniu procesu tworzenia można uruchomić wnioskowanie lub ocenianie modelu w klastrze AKS za siecią wirtualną. Aby uzyskać więcej informacji, zobacz [How to Deploy to AKS](how-to-deploy-and-where.md).
 
+### <a name="use-private-ips-with-azure-kubernetes-service"></a>Używanie prywatnych adresów IP w usłudze Azure Kubernetes Service
+
+Domyślnie publiczny adres IP jest przypisywany do wdrożeń AKS. W przypadku używania AKS wewnątrz sieci wirtualnej można zamiast tego użyć prywatnego adresu IP. Prywatne adresy IP są dostępne tylko z wewnątrz sieci wirtualnej lub połączonych sieci.
+
+Prywatny adres IP jest włączony przez skonfigurowanie AKS do korzystania z _wewnętrznego modułu równoważenia obciążenia_. 
+
+> [!IMPORTANT]
+> Nie można włączyć prywatnego adresu IP podczas tworzenia klastra usługi Azure Kubernetes. Musi być włączona jako aktualizacja istniejącego klastra.
+
+Poniższy fragment kodu przedstawia sposób **tworzenia nowego klastra AKS**, a następnie aktualizowania go do korzystania z prywatnego modułu równoważenia obciążenia IP/wewnętrznego:
+
+```python
+import azureml.core
+from azureml.core.compute.aks import AksUpdateConfiguration
+from azureml.core.compute import AksCompute, ComputeTarget
+
+# Verify that cluster does not exist already
+try:
+    aks_target = AksCompute(workspace=ws, name=aks_cluster_name)
+    print("Found existing aks cluster")
+
+except:
+    print("Creating new aks cluster")
+
+    # Create AKS configuration
+    prov_config = AksCompute.provisioning_configuration(location = "eastus2")
+    # Set info for existing virtual network to create the cluster in
+    prov_config.vnet_resourcegroup_name = "myvnetresourcegroup"
+    prov_config.vnet_name = "myvnetname"
+    prov_config.service_cidr = "10.0.0.0/16"
+    prov_config.dns_service_ip = "10.0.0.10"
+    prov_config.subnet_name = "default"
+    prov_config.docker_bridge_cidr = "172.17.0.1/16"
+
+    # Create compute target
+    aks_target = ComputeTarget.create(workspace = ws, name = “myaks”, provisioning_configuration = prov_config)
+    # Wait for the operation to complete
+    aks_target.wait_for_completion(show_output = True)
+    
+    # Update AKS configuration to use an internal load balancer
+    update_config = AksUpdateConfiguration(None, "InternalLoadBalancer", "default")
+    aks_target.update(update_config)
+    # Wait for the operation to complete
+    aks_target.wait_for_completion(show_output = True)
+```
+
+__Interfejs wiersza polecenia platformy Azure__
+
+```azurecli-interactive
+az rest --method put --uri https://management.azure.com"/subscriptions/<subscription-id>/resourcegroups/<resource-group>/providers/Microsoft.ContainerService/managedClusters/<aks-resource-id>?api-version=2018-11-19 --body @body.json
+```
+
+Zawartość pliku `body.json`, do którego odwołuje się polecenie, jest podobna do następującego dokumentu JSON:
+
+```json
+{ 
+    "location": “<region>”, 
+    "properties": { 
+        "resourceId": "/subscriptions/<subscription-id>/resourcegroups/<resource-group>/providers/Microsoft.ContainerService/managedClusters/<aks-resource-id>", 
+        "computeType": "AKS", 
+        "provisioningState": "Succeeded", 
+        "properties": { 
+            "loadBalancerType": "InternalLoadBalancer", 
+            "agentCount": <agent-count>, 
+            "agentVmSize": "vm-size", 
+            "clusterFqdn": "<cluster-fqdn>" 
+        } 
+    } 
+} 
+```
+
+> [!NOTE]
+> Obecnie nie można skonfigurować modułu równoważenia obciążenia podczas wykonywania operacji __Attach__ w istniejącym klastrze. Najpierw należy dołączyć klaster, a następnie wykonać operację aktualizacji w celu zmiany usługi równoważenia obciążenia.
+
+Aby uzyskać więcej informacji na temat używania wewnętrznego modułu równoważenia obciążenia z programem AKS, zobacz [Korzystanie z wewnętrznego modułu równoważenia obciążenia z usługą Azure Kubernetes Service](/azure/aks/internal-lb).
+
 ## <a name="use-azure-firewall"></a>Korzystanie z zapory platformy Azure
 
 W przypadku korzystania z zapory platformy Azure należy skonfigurować regułę sieci, aby zezwalać na ruch do i z następujących adresów:
@@ -414,4 +491,3 @@ Aby uzyskać więcej informacji na temat konfigurowania reguły sieci, zobacz [w
 * [Konfigurowanie środowisk szkoleniowych](how-to-set-up-training-targets.md)
 * [Gdzie można wdrażać modele](how-to-deploy-and-where.md)
 * [Bezpieczne wdrażanie modeli przy użyciu protokołu SSL](how-to-secure-web-service.md)
-

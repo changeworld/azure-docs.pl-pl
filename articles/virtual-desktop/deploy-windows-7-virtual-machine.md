@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 10/03/2019
 ms.author: helohr
-ms.openlocfilehash: 90b871c2b75f7ed40c290231ef822258c6b4e6d4
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 28111e45d365069f80f10b88c38618dbb2b4651d
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606867"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75896216"
 ---
 # <a name="deploy-a-windows-7-virtual-machine-on-windows-virtual-desktop"></a>Wdrażanie maszyny wirtualnej z systemem Windows 7 w usłudze Windows Virtual Desktop
 
@@ -35,20 +35,21 @@ Aby skonfigurować MASZYNę wirtualną z systemem Windows 7 na pulpicie wirtualn
 5. Przejdź do Windows Update na maszynie wirtualnej.
 6. Zainstaluj wszystkie aktualizacje systemu Windows w ważnej kategorii.
 7. Zainstaluj wszystkie aktualizacje systemu Windows w opcjonalnej kategorii (z wyjątkiem pakietów językowych). Spowoduje to zainstalowanie Remote Desktop Protocol 8,0 Update ([KB2592687](https://www.microsoft.com/download/details.aspx?id=35393)), które należy wykonać w celu wykonania tych instrukcji.
-8. Otwórz Edytor lokalnych zasad grupy i przejdź do **konfiguracji komputera** > **Szablony administracyjne** > **składniki systemu Windows** > **usługi pulpitu zdalnego > pulpit zdalny** **Host sesji**  > **środowisko sesji zdalnej**.
+8. Otwórz Edytor lokalnych zasad grupy i przejdź do **konfiguracji komputera** > **Szablony administracyjne** > **składniki systemu Windows** > **usługi pulpitu zdalnego > pulpit zdalny** **Host sesji** > **środowisko sesji zdalnej**.
 9. Włącz zasady Remote Desktop Protocol 8,0.
-10. Uruchom ponownie maszynę wirtualną, uruchamiając następujące polecenie:
+10. Dołącz tę maszynę wirtualną do domeny Active Directory.
+11. Uruchom ponownie maszynę wirtualną, uruchamiając następujące polecenie:
     
      ```cmd
      shutdown /r /t 0
      ```
     
-11. Postępuj zgodnie z instrukcjami znajdującymi się [tutaj](https://docs.microsoft.com/powershell/module/windowsvirtualdesktop/export-rdsregistrationinfo) , aby uzyskać token rejestracji.
-12. [Pobierz agenta pulpitu wirtualnego systemu Windows dla systemu Windows 7](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3JZCm).
-13. [Pobierz Menedżera agentów usług pulpitu wirtualnego systemu Windows dla systemu Windows 7](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3K2e3).
-14. Otwórz instalatora agenta pulpitu wirtualnego systemu Windows i postępuj zgodnie z instrukcjami. Po wyświetleniu monitu podaj klucz rejestracji utworzony w kroku 11.
-15. Otwórz instalatora pulpitu wirtualnego systemu Windows i postępuj zgodnie z instrukcjami.
-16. Opcjonalnie można zablokować port TCP/3389, aby usunąć bezpośredni dostęp Remote Desktop Protocol do maszyny wirtualnej.
+12. Postępuj zgodnie z instrukcjami znajdującymi się [tutaj](https://docs.microsoft.com/powershell/module/windowsvirtualdesktop/export-rdsregistrationinfo) , aby uzyskać token rejestracji.
+13. [Pobierz agenta pulpitu wirtualnego systemu Windows dla systemu Windows 7](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3JZCm).
+14. [Pobierz Menedżera agentów usług pulpitu wirtualnego systemu Windows dla systemu Windows 7](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3K2e3).
+15. Otwórz instalatora agenta pulpitu wirtualnego systemu Windows i postępuj zgodnie z instrukcjami. Po wyświetleniu monitu podaj klucz rejestracji utworzony w kroku 12.
+16. Otwórz instalatora pulpitu wirtualnego systemu Windows i postępuj zgodnie z instrukcjami.
+17. Opcjonalnie można zablokować port TCP/3389, aby usunąć bezpośredni dostęp Remote Desktop Protocol do maszyny wirtualnej.
 
 ## <a name="next-steps"></a>Następne kroki
 

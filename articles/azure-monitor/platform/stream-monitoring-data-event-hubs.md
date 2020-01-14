@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 254cbc995da9380f108970fb981c000fca7dc63f
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 6a474bdceffa07b18530250a02a9ef94159a8e35
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74925807"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750333"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub"></a>Przesyłanie strumieniowe danych monitorowania platformy Azure do centrum zdarzeń
 Azure Monitor zapewnia pełne rozwiązanie do monitorowania stosu dla aplikacji i usług na platformie Azure, w innych chmurach i lokalnie. Oprócz Azure Monitor do analizowania danych i korzystania z nich w różnych scenariuszach monitorowania może być konieczne wysłanie ich do innych narzędzi do monitorowania w środowisku. Najbardziej efektywną metodą przesyłania strumieniowego danych monitorowania do zewnętrznych narzędzi w większości przypadków jest użycie [usługi Azure Event Hubs](/azure/event-hubs/). Ten artykuł zawiera krótki opis sposobu przesyłania strumieniowego danych monitorowania z różnych źródeł do centrum zdarzeń oraz linki do szczegółowych wskazówek.
@@ -62,7 +62,7 @@ Kierowanie danych monitorowania do centrum zdarzeń za pomocą Azure Monitor poz
 
 ## <a name="next-steps"></a>Następne kroki
 * [Archiwizowanie dziennika aktywności na koncie magazynu](../../azure-monitor/platform/archive-activity-log.md)
-* [Zapoznaj się z omówieniem dziennika aktywności platformy Azure](../../azure-monitor/platform/activity-logs-overview.md)
+* [Zapoznaj się z omówieniem dziennika aktywności platformy Azure](../../azure-monitor/platform/platform-logs-overview.md)
 * [Konfigurowanie alertu na podstawie zdarzenia dziennika aktywności](../../azure-monitor/platform/alerts-log-webhook.md)
 
 

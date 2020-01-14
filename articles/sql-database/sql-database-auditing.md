@@ -9,12 +9,12 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 08/22/2019
-ms.openlocfilehash: 450f40c8ba49028d99143d7cf2b2995eb354f8fd
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
-ms.translationtype: HT
+ms.openlocfilehash: 0266c08052cd3db7d9081d6b617da94703b9ab77
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75551628"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75896322"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Rozpoczynanie pracy z inspekcją bazy danych SQL
 
@@ -86,8 +86,11 @@ W poniższej sekcji opisano konfigurację inspekcji przy użyciu Azure Portal.
     ![Okienko nawigacji][3]
 
 5. **Nowość** — masz teraz wiele opcji konfigurowania lokalizacji, w której będą zapisywane dzienniki inspekcji. Dzienniki można zapisywać na koncie usługi Azure Storage, w obszarze roboczym Log Analytics do użycia przez dzienniki Azure Monitor lub do centrum zdarzeń w celu użycia przy użyciu centrum zdarzeń. Można skonfigurować dowolną kombinację tych opcji, a dzienniki inspekcji będą zapisywane w każdym z nich.
-
-   > [!WARNING]
+  
+  > [!NOTE]
+   >Klient, który chce skonfigurować niezmienny magazyn dzienników dla zdarzeń inspekcji na poziomie serwera lub bazy danych, powinien postępować zgodnie z [instrukcjami dostarczonymi przez usługę Azure Storage] (https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutable-storage)
+  
+  > [!WARNING]
    > Włączenie inspekcji do Log Analytics będzie powodować naliczanie kosztów na podstawie stawek za pozyskiwanie. Zapoznaj się z powiązanym kosztem przy użyciu tej [opcji](https://azure.microsoft.com/pricing/details/monitor/)lub Rozważ przechowywanie dzienników inspekcji na koncie usługi Azure Storage.
 
     ![Opcje magazynu](./media/sql-database-auditing-get-started/auditing-select-destination.png)
@@ -241,6 +244,8 @@ W środowisku produkcyjnym można okresowo odświeżać klucze magazynu. Podczas
     Inspekcję dla różnych typów akcji i grup akcji można skonfigurować przy użyciu programu PowerShell, zgodnie z opisem w sekcji [Zarządzanie inspekcją usługi SQL Database przy użyciu Azure PowerShell](#subheading-7) .
 
 - W przypadku korzystania z uwierzytelniania usługi AAD rekordy nieudanych logowań *nie* będą widoczne w dzienniku inspekcji SQL. Aby wyświetlić nieudane rekordy inspekcji logowania, należy odwiedzić [portal Azure Active Directory]( ../active-directory/reports-monitoring/reference-sign-ins-error-codes.md), w którym znajdują się szczegóły dotyczące tych zdarzeń.
+
+- Inspekcja Azure SQL Database jest zoptymalizowana pod kątem dostępności & wydajności. Podczas bardzo dużego działania Azure SQL Database umożliwia wykonywanie operacji i może nie rejestrować niektórych zdarzeń poddawanych inspekcji.
 
 
 ## <a id="subheading-7"></a>Zarządzanie usługą Azure SQL Server i inspekcją bazy danych przy użyciu Azure PowerShell

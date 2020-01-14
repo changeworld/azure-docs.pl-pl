@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7d70e87a9a0c7fb9b28f2a025db15ce4ba666255
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 43e50f8787516b1877f7867419b6edfd819ad158
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74379610"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75746047"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>Instrukcje: Planowanie wdrożenia usługi Azure AD Join
 
@@ -75,7 +75,7 @@ W przypadku korzystania z AD FS należy włączyć następujące punkty końcowe
  `/adfs/services/trust/2005/certificatemixed`
  `/adfs/services/trust/13/certificatemixed`
 
-Jeśli dostawca tożsamości nie obsługuje tych protokołów, usługa Azure AD Join nie działa w sposób natywny. Począwszy od systemu Windows 10 1809, użytkownicy mogą logować się do urządzenia dołączonego do usługi Azure AD przy użyciu dostawcy tożsamości opartego na protokole SAML za pośrednictwem [logowania w sieci Web w systemie Windows 10](https://docs.microsoft.com/windows/whats-new/whats-new-windows-10-version-1809#web-sign-in-to-windows-10). Obecnie logowanie w sieci Web jest funkcją w wersji zapoznawczej i nie jest zalecane w przypadku wdrożeń produkcyjnych.
+Jeśli dostawca tożsamości nie obsługuje tych protokołów, usługa Azure AD Join nie działa w sposób natywny. 
 
 >[!NOTE]
 > Obecnie usługa Azure AD Join nie działa w przypadku [AD FS 2019 skonfigurowanego z zewnętrznymi dostawcami uwierzytelniania jako podstawową metodą uwierzytelniania](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/additional-authentication-methods-ad-fs#enable-external-authentication-methods-as-primary). Usługa Azure AD Join domyślnie przyjmuje uwierzytelnianie hasła jako podstawową metodę, która powoduje błędy uwierzytelniania w tym scenariuszu
@@ -169,7 +169,7 @@ Użytkownicy odbierają Logowanie jednokrotne z urządzeń przyłączonych do us
 
 Użytkownicy mają Logowanie jednokrotne z urządzeń przyłączonych do usługi Azure AD, gdy urządzenie ma dostęp do lokalnego kontrolera domeny.
 
-### <a name="printers"></a>Drukarz
+### <a name="printers"></a>Drukarki
 
 W przypadku drukarek należy wdrożyć drukowanie w [chmurze hybrydowej](https://docs.microsoft.com/windows-server/administration/hybrid-cloud-print/hybrid-cloud-print-deploy) w celu odnajdywania drukarek na urządzeniach dołączonych do usługi Azure AD. 
 
@@ -195,12 +195,12 @@ Usługę Azure AD Join można zainicjować przy użyciu następujących metod:
  
 Poniżej przedstawiono porównanie tych trzech metod 
  
-|   | Konfiguracja samoobsługowa | Autopilotaż systemu Windows | Rejestracja Zbiorcza |
+|   | Konfiguracja samoobsługowa | Windows Autopilot | Rejestrowanie zbiorcze |
 | --- | --- | --- | --- |
 | Wymagaj interakcji z użytkownikiem w celu skonfigurowania | Tak | Tak | Nie |
 | Wymaganie nakładu pracy IT | Nie | Tak | Tak |
 | Odpowiednie przepływy | Ustawienia & OOBE | Tylko OOBE | Tylko OOBE |
-| Prawa administratora lokalnego do użytkownika podstawowego | Tak, domyślnie | Skonfigurować | Nie |
+| Prawa administratora lokalnego do użytkownika podstawowego | Tak, domyślnie | Konfigurowalny | Nie |
 | Wymagaj obsługi OEM urządzenia | Nie | Tak | Nie |
 | Obsługiwane wersje | 1511+ | 1709+ | 1703+ |
  
@@ -266,9 +266,9 @@ Na podstawie Twojego zakresu występuje jedna z następujących sytuacji:
 
 Istnieją trzy adresy URL powiązane z konfiguracją rozwiązania MDM:
 
-- Adres URL warunków użytkowania MDM
-- Adres URL odnajdywania MDM 
-- Adres URL zgodności MDM
+- Adres URL warunków użytkowania zarządzania urządzeniami przenośnymi
+- Adres URL odnajdywania zarządzania urządzeniami przenośnymi 
+- Adres URL zgodności zarządzania urządzeniami przenośnymi
 
 ![Dodawanie aplikacji](./media/azureadjoin-plan/06.png)
 

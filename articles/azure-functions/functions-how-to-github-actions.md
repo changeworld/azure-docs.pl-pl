@@ -5,12 +5,12 @@ author: ahmedelnably
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: aelnably
-ms.openlocfilehash: 18ba99077592a7d03e19fda86bc61e5839b82b5e
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: c34847577b7e83228fafad431f541497be9a21ae
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226913"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769153"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>Ciągłe dostarczanie za pomocą akcji GitHub
 
@@ -25,7 +25,7 @@ W przypadku przepływu pracy Azure Functions plik ma trzy sekcje:
 | Sekcja | Zadania |
 | ------- | ----- |
 | **Uwierzytelnianie** | <ol><li>Zdefiniuj nazwę główną usługi.</li><li>Pobierz profil publikowania.</li><li>Utwórz wpis tajny usługi GitHub.</li></ol>|
-| **Utworzenia** | <ol><li>Skonfiguruj środowisko.</li><li>Kompiluj aplikację funkcji.</li></ol> |
+| **Kompilacja** | <ol><li>Skonfiguruj środowisko.</li><li>Kompiluj aplikację funkcji.</li></ol> |
 | **Wdrażanie** | <ol><li>Wdróż aplikację funkcji.</li></ol>|
 
 > [!NOTE]
@@ -46,7 +46,7 @@ W tym przykładzie Zastąp symbole zastępcze w zasobie IDENTYFIKATORem subskryp
 
 ## <a name="download-the-publishing-profile"></a>Pobieranie profilu publikowania
 
-Możesz pobrać profil publikacji functionapp, przechodząc do strony **Przegląd** swojej aplikacji, a następnie klikając pozycję **Pobierz profil publikowania**.
+Profil publikowania aplikacji funkcji można pobrać, przechodząc do strony **przeglądu** aplikacji i klikając pozycję **Pobierz profil publikowania**.
 
    ![Pobierz profil publikowania](media/functions-how-to-github-actions/get-publish-profile.png)
 
@@ -54,28 +54,24 @@ Skopiuj zawartość pliku.
 
 ## <a name="configure-the-github-secret"></a>Konfigurowanie wpisu tajnego usługi GitHub
 
-1. W witrynie [GitHub](https://github.com)Przejrzyj repozytorium, wybierz pozycję **Ustawienia** > wpisy **tajne** > **Dodaj nowe hasło**.
+1. W witrynie [GitHub](https://github.com)przejdź do repozytorium, wybierz pozycję **Ustawienia** > wpisy **tajne** > **Dodaj nowe hasło**.
 
    ![Dodaj klucz tajny](media/functions-how-to-github-actions/add-secret.png)
 
-1. Użyj `AZURE_CREDENTIALS` dla **nazwy** i skopiowanych danych wyjściowych polecenia dla **wartości**, jeśli następnie wybierz pozycję **Dodaj klucz tajny**. Jeśli używasz profilu publikowania, użyj `SCM_CREDENTIALS` dla **nazwy** i zawartości pliku dla **wartości**.
+1. Dodaj nowy wpis tajny.
+
+   * Jeśli używasz jednostki usługi, która została utworzona przy użyciu interfejsu wiersza polecenia platformy Azure, użyj `AZURE_CREDENTIALS` dla **nazwy**. Następnie wklej skopiowany dane wyjściowe obiektu JSON dla **wartości**, a następnie wybierz pozycję **Dodaj klucz tajny**.
+   * Jeśli używasz profilu publikowania, użyj `SCM_CREDENTIALS` **nazwy**. Następnie użyj zawartości pliku profilu publikowania dla **wartości**, a następnie wybierz pozycję **Dodaj klucz tajny**.
 
 Usługa GitHub umożliwia teraz uwierzytelnianie w aplikacji funkcji na platformie Azure.
 
 ## <a name="set-up-the-environment"></a>Konfigurowanie środowiska 
 
-Konfigurowanie środowiska można wykonać przy użyciu jednej z akcji instalacji publikowania.
+Konfigurowanie środowiska odbywa się przy użyciu akcji konfiguracji publikowania specyficznego dla języka.
 
-|Język | Akcja konfiguracji |
-|---------|---------|
-|**.NET**     | `actions/setup-dotnet` |
-|**Java**    | `actions/setup-java` |
-|**JavaScript**     | `actions/setup-node` |
-|**Python**   | `actions/setup-python` |
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-W poniższych przykładach przedstawiono część przepływu pracy, który konfiguruje środowisko dla różnych obsługiwanych języków:
-
-**JavaScript**
+Poniższy przykład przedstawia część przepływu pracy, który używa akcji `actions/setup-node` do konfigurowania środowiska:
 
 ```yaml
     - name: 'Login via Azure CLI'
@@ -88,7 +84,9 @@ W poniższych przykładach przedstawiono część przepływu pracy, który konfi
         node-version: '10.x'
 ```
 
-**Python**
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Poniższy przykład przedstawia część przepływu pracy, który używa akcji `actions/setup-python` do konfigurowania środowiska:
 
 ```yaml
     - name: 'Login via Azure CLI'
@@ -101,7 +99,9 @@ W poniższych przykładach przedstawiono część przepływu pracy, który konfi
         python-version: 3.6
 ```
 
-**.NET**
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+Poniższy przykład przedstawia część przepływu pracy, który używa akcji `actions/setup-dotnet` do konfigurowania środowiska:
 
 ```yaml
     - name: 'Login via Azure CLI'
@@ -114,7 +114,9 @@ W poniższych przykładach przedstawiono część przepływu pracy, który konfi
         dotnet-version: '2.2.300'
 ```
 
-**Java**
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Poniższy przykład przedstawia część przepływu pracy, który używa akcji `actions/setup-java` do konfigurowania środowiska:
 
 ```yaml
     - name: 'Login via Azure CLI'
@@ -128,14 +130,15 @@ W poniższych przykładach przedstawiono część przepływu pracy, który konfi
         # Please change the Java version to match the version in pom.xml <maven.compiler.source>
         java-version: '1.8.x'
 ```
+---
 
 ## <a name="build-the-function-app"></a>Tworzenie aplikacji funkcji
 
 Jest to zależne od języka i języków obsługiwanych przez Azure Functions Ta sekcja powinna być standardowym etapem kompilacji każdego języka.
 
-W poniższych przykładach pokazano część przepływu pracy, która kompiluje aplikację funkcji, w różnych obsługiwanych językach.:
+Poniższy przykład przedstawia część przepływu pracy, który kompiluje aplikację funkcji, która jest specyficzna dla języka:
 
-**JavaScript**
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```yaml
     - name: 'Run npm'
@@ -150,7 +153,7 @@ W poniższych przykładach pokazano część przepływu pracy, która kompiluje 
         popd
 ```
 
-**Python**
+# <a name="pythontabpython"></a>[Python](#tab/python)
 
 ```yaml
     - name: 'Run pip'
@@ -164,7 +167,7 @@ W poniższych przykładach pokazano część przepływu pracy, która kompiluje 
         popd
 ```
 
-**.NET**
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```yaml
     - name: 'Run dotnet build'
@@ -177,7 +180,7 @@ W poniższych przykładach pokazano część przepływu pracy, która kompiluje 
         popd
 ```
 
-**Java**
+# <a name="javatabjava"></a>[Java](#tab/java)
 
 ```yaml
     - name: 'Run mvn'
@@ -190,6 +193,7 @@ W poniższych przykładach pokazano część przepływu pracy, która kompiluje 
         mvn azure-functions:package
         popd
 ```
+---
 
 ## <a name="deploy-the-function-app"></a>Wdrażanie aplikacji funkcji
 

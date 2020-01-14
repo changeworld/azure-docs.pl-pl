@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d67a73ca47811e7275a6f2177573e10a09b230df
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 18da289f9d364fa79023809324d59b89b8ac898c
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073628"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768116"
 ---
 # <a name="controlled-validation-of-hybrid-azure-ad-join"></a>Kontrolowana walidacja przyłączenia do hybrydowej usługi Azure AD
 
@@ -79,7 +79,7 @@ Użyj poniższego przykładu, aby utworzyć obiekt zasady grupy (GPO) w celu wdr
 
 ### <a name="configure-ad-fs-settings"></a>Skonfiguruj ustawienia AD FS
 
-Jeśli używasz AD FS, najpierw musisz skonfigurować punkt połączenia usługi po stronie klienta, korzystając z instrukcji wymienionych powyżej, ale łącząc obiekt zasad grupy z serwerami AD FS. Obiekt SCP definiuje Źródło uprawnień dla obiektów urządzeń. Może być lokalna lub Azure AD. W przypadku skonfigurowania AD FS źródłem obiektów urządzeń jest usługa Azure AD.
+Jeśli używasz AD FS, najpierw musisz skonfigurować punkt połączenia usługi po stronie klienta, korzystając z instrukcji wymienionych powyżej przez połączenie obiektu zasad grupy z serwerami AD FS. Obiekt SCP definiuje Źródło uprawnień dla obiektów urządzeń. Może być lokalna lub Azure AD. Gdy punkt połączenia usługi klienta jest skonfigurowany dla AD FS, Źródło dla obiektów urządzeń jest ustanawiane jako usługa Azure AD.
 
 > [!NOTE]
 > Jeśli nie powiodło się skonfigurowanie punktu połączenia usługi po stronie klienta na serwerach AD FS, Źródło tożsamości urządzeń będzie traktowane jako lokalne. Następnie Usługa AD FS rozpocznie usuwanie obiektów urządzeń z katalogu lokalnego po określonym okresie zdefiniowanym w atrybucie rejestracji urządzenia ADFS "MaximumInactiveDays". Obiekty rejestracji urządzeń ADFS można znaleźć za pomocą [polecenia cmdlet Get-AdfsDeviceRegistration](https://docs.microsoft.com/powershell/module/adfs/get-adfsdeviceregistration?view=win10-ps).

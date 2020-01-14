@@ -7,13 +7,13 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 11/04/2019
-ms.openlocfilehash: 362662cb6ac9b0535a0e762e5c484b31dcc009a6
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.date: 01/10/2020
+ms.openlocfilehash: b69d67a5c4fc1d907f676cf4e400f9fa7df2653b
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73796110"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867262"
 ---
 # <a name="quickstart-build-a-console-app-using-the-net-v4-sdk-to-manage-azure-cosmos-db-sql-api-account-resources"></a>Szybki Start: Tworzenie aplikacji konsolowej przy użyciu zestawu .NET v4 SDK do zarządzania Azure Cosmos DB zasobów konta interfejsu API SQL.
 
@@ -51,7 +51,7 @@ Jeśli używasz opcji [wypróbuj Azure Cosmos DB bezpłatnie](https://azure.micr
 
 Jeśli masz własną subskrypcję platformy Azure lub masz subskrypcję bezpłatnie, należy utworzyć konto usługi Azure Cosmos jawnie. Poniższy kod utworzy konto usługi Azure Cosmos z spójnością sesji. Konto jest replikowane w `South Central US` i `North Central US`.  
 
-Za pomocą Azure Cloud Shell można utworzyć konto usługi Azure Cosmos. Azure Cloud Shell to interaktywna, uwierzytelniona powłoka dostępna dla przeglądarki służąca do zarządzania zasobami platformy Azure. Zapewnia ona elastyczność wybierania środowiska powłoki, które najlepiej odpowiada pracy, bash lub PowerShell. Na potrzeby tego przewodnika Szybki Start wybierz tryb **bash** . Azure Cloud Shell również wymaga konta magazynu, można je utworzyć po wyświetleniu monitu.
+Za pomocą Azure Cloud Shell można utworzyć konto usługi Azure Cosmos. Azure Cloud Shell to interaktywna, uwierzytelniona powłoka dostępna dla przeglądarki służąca do zarządzania zasobami platformy Azure. Oferuje ona elastyczny wybór środowiska powłoki, Bash lub PowerShell, które najlepiej pasuje do sposobu, w jaki wykonujesz swoją pracę. Na potrzeby tego przewodnika Szybki Start wybierz tryb **bash** . Azure Cloud Shell również wymaga konta magazynu, można je utworzyć po wyświetleniu monitu.
 
 Wybierz przycisk **Wypróbuj** obok poniższego kodu, wybierz tryb **bash** wybierz pozycję **Utwórz konto magazynu** i zaloguj się do Cloud Shell. Następnie skopiuj Poniższy kod i wklej go do usługi Azure Cloud Shell i uruchom go. Nazwa konta usługi Azure Cosmos musi być globalnie unikatowa, przed uruchomieniem polecenia należy zaktualizować wartość `mysqlapicosmosdb`.
 
@@ -115,14 +115,14 @@ Time Elapsed 00:00:34.17
 Nadal w katalogu aplikacji Zainstaluj Azure Cosmos DBą bibliotekę kliencką dla platformy .NET Core za pomocą polecenia dotnet Add Package.
 
    ```bash
-   dotnet add package Azure.Cosmos --version 4.0.0-preview
+   dotnet add package Azure.Cosmos --version 4.0.0-preview3
    ```
 
 ### <a name="copy-your-azure-cosmos-account-credentials-from-the-azure-portal"></a>Skopiuj poświadczenia konta usługi Azure Cosmos z Azure Portal
 
 Przykładowa aplikacja wymaga uwierzytelnienia na koncie usługi Azure Cosmos. Aby przeprowadzić uwierzytelnianie, należy przekazać poświadczenia konta usługi Azure Cosmos do aplikacji. Uzyskaj poświadczenia konta usługi Azure Cosmos, wykonując następujące czynności:
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
 
 1. Przejdź do swojego konta usługi Azure Cosmos.
 

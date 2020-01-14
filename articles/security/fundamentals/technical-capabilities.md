@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/31/2019
 ms.author: TomSh
-ms.openlocfilehash: dbc17cff2347cd86db3296f4aa2de76ef0f75460
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 41289110049a7f907b76c8f9a8b2d9dc850f201c
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73468078"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75707207"
 ---
 # <a name="azure-security-technical-capabilities"></a>Możliwości techniczne zabezpieczeń platformy Azure
 Ten artykuł zawiera wprowadzenie do usług zabezpieczeń na platformie Azure, które ułatwiają ochronę danych, zasobów i aplikacji w chmurze oraz zaspokajanie potrzeb firmy.
@@ -51,13 +51,13 @@ Microsoft Azure udostępnia usługi, które pomagają sprostać wymaganiom zwią
 
 Platforma Azure pomaga w ochronie danych firmowych i osobistych, umożliwiając Zarządzanie tożsamościami i poświadczeniami użytkowników oraz kontrolę dostępu.
 
-### <a name="azure-active-directory"></a>Usługa Azure Active Directory
+### <a name="azure-active-directory"></a>Usługa Active Directory systemu Azure
 
 Rozwiązania do zarządzania tożsamościami i dostępem firmy Microsoft ułatwiają ochronę dostępu do aplikacji i zasobów w centrum danych firmy oraz w chmurze, co pozwala na dodatkowe poziomy weryfikacji, takie jak uwierzytelnianie wieloskładnikowe i dostęp warunkowy. jazd. Monitorowanie podejrzanej aktywności przy użyciu zaawansowanych raportów zabezpieczeń, inspekcji i alertów umożliwia rozwiązywanie potencjalnych problemów z zabezpieczeniami. [Azure Active Directory — wersja Premium](../../active-directory/active-directory-whatis.md) zapewnia Logowanie jednokrotne do tysięcy aplikacji w chmurze i dostęp do aplikacji sieci Web uruchamianych lokalnie.
 
 Zalety zabezpieczeń Azure Active Directory (Azure AD) obejmują:
 
-- Utwórz pojedynczą tożsamość dla każdego użytkownika w przedsiębiorstwie hybrydowym, aby zachować synchronizację użytkowników, grup i urządzeń.
+- Utwórz jedną tożsamość dla każdego użytkownika w całym przedsiębiorstwie hybrydowym i zarządzaj nią, synchronizując użytkowników, grupy i urządzenia.
 
 - Zapewniaj Logowanie jednokrotne do swoich aplikacji, w tym tysiące wstępnie zintegrowanych aplikacji SaaS.
 
@@ -67,7 +67,7 @@ Zalety zabezpieczeń Azure Active Directory (Azure AD) obejmują:
 
 [Portal Azure Active Directory](https://aad.portal.azure.com/) jest dostępny w ramach Azure Portal. Z tego pulpitu nawigacyjnego można zapoznać się z omówieniem stanu organizacji oraz łatwo zarządzać dostępem do katalogu, użytkowników lub aplikacji.
 
-![Usługa Azure Active Directory](./media/technical-capabilities/azure-security-technical-capabilities-fig2.png)
+![Usługa Active Directory systemu Azure](./media/technical-capabilities/azure-security-technical-capabilities-fig2.png)
 
 Poniżej przedstawiono podstawowe możliwości usługi Azure Identity Management:
 
@@ -91,7 +91,7 @@ Logowanie jednokrotne [(SSO)](https://azure.microsoft.com/documentation/videos/o
 
 Wiele organizacji korzysta z aplikacji SaaS (Software as a Service), takich jak Office 365, Box i Salesforce, na potrzeby produktywności użytkowników końcowych. W przeszłości pracownicy działu IT musieli indywidualnie utworzyć i zaktualizować konta użytkowników w każdej aplikacji SaaS, a użytkownicy musieli zapamiętać hasło dla każdej aplikacji SaaS.
 
-[Usługa Azure AD rozszerza Active Directory lokalne na chmurę](../../active-directory/manage-apps/what-is-single-sign-on.md), umożliwiając użytkownikom używanie ich podstawowego konta organizacyjnego, aby nie tylko zalogować się do urządzeń przyłączonych do domeny i zasobów firmy, ale także do wszystkich aplikacji sieci Web i SaaS wymaganych przez ich zleceń.
+[Usługa Azure AD rozszerza Active Directory lokalne na chmurę](../../active-directory/manage-apps/what-is-single-sign-on.md), umożliwiając użytkownikom używanie ich podstawowych kont organizacyjnych do logowania się do urządzeń przyłączonych do domeny i zasobów firmy, ale także wszystkich aplikacji sieci Web i SaaS wymaganych dla ich zadań.
 
 Nie tylko użytkownicy nie muszą zarządzać wieloma zestawami nazw użytkowników i haseł. dostęp do aplikacji może być inicjowany automatycznie lub nieobsługiwany w oparciu o grupy organizacyjne i ich stan jako pracownika. [Usługa Azure AD wprowadza kontrolę zabezpieczeń i dostępu](../../active-directory/active-directory-enterprise-apps-manage-sso.md) , która umożliwia centralne zarządzanie dostępem użytkowników w aplikacjach SaaS.
 
@@ -171,7 +171,7 @@ Jednym z kluczy ochrony danych w chmurze jest uwzględnienie możliwych stanów,
 
 - W spoczynku: obejmuje to wszystkie obiekty magazynu informacji, kontenery i typy, które znajdują się statycznie na nośniku fizycznym, jako dysk magnetyczny lub optyczny.
 
-- W tranzycie: w przypadku przesyłania danych między składnikami, lokalizacjami lub programami, takimi jak sieć, przez magistralę usług (od lokalnego do chmury i na odwrót, w tym połączenia hybrydowe, takie jak ExpressRoute) lub w procesie wejścia/wyjścia uważa się, że jest to ruch w ruchu.
+- W tranzycie: w przypadku przesyłania danych między składnikami, lokalizacjami lub programami, takimi jak sieć, przez magistralę usług (od lokalnego do chmury i na odwrót, łącznie z połączeniami hybrydowymi, takimi jak ExpressRoute) lub w procesie wejścia/wyjścia, uważa się, że jest on ruchem.
 
 ### <a name="encryption-at-rest"></a>Szyfrowanie w spoczynku
 
@@ -194,7 +194,7 @@ Celem szyfrowania w czasie spoczynku jest zaszyfrowanie wszystkich danych. Wykon
 > [!Note]
 > Nie tylko "dane aplikacji" lub "OSOBowe", ale wszelkie dane dotyczące aplikacji, w tym metadane konta (mapowania subskrypcji, informacje o kontrakcie, dane OSOBowe).
 
-Zastanów się, które sklepy są używane do przechowywania danych. Na przykład:
+Zastanów się, które sklepy są używane do przechowywania danych. Przykład:
 
 - Magazyn zewnętrzny (na przykład SQL Azure, baza danych dokumentów, HDInsight, Data Lake itd.)
 
@@ -256,7 +256,7 @@ Większe zestawy danych można przenieść za pomocą dedykowanego, szybkiego ł
 
 W przypadku korzystania z usługi Azure Storage za pośrednictwem witryny Azure Portal wszystkie transakcje odbywają się za pośrednictwem protokołu HTTPS. [Interfejs API REST magazynu](https://msdn.microsoft.com/library/azure/dd179355.aspx) za pośrednictwem protokołu HTTPS może być również używany do współpracy z [usługą Azure Storage](https://azure.microsoft.com/services/storage/) i [Azure SQL Database](https://azure.microsoft.com/services/sql-database/).
 
-Organizacje, które nie chronią przesyłanych danych, są bardziej podatne na [ataki typu man-in-the-Middle](https://technet.microsoft.com/library/gg195821.aspx), [podsłuchiwanie](https://technet.microsoft.com/library/gg195641.aspx)i przejmowanie sesji. Ataki te mogą być pierwszym krokiem w celu uzyskania dostępu do poufnych danych.
+Organizacje, które nie chronią przesyłanych danych, są bardziej podatne na [ataki typu man-in-the-Middle](https://technet.microsoft.com/library/gg195821.aspx), [podsłuchiwanie](https://technet.microsoft.com/library/gg195641.aspx)i przejmowanie sesji. Takie ataki mogą być pierwszym krokiem do uzyskania dostępu do poufnych danych.
 
 Więcej informacji na temat opcji sieci VPN platformy Azure można znaleźć w artykule [Planowanie i projektowanie VPN Gateway](../../vpn-gateway/vpn-gateway-about-vpngateways.md).
 
@@ -410,7 +410,7 @@ Usługa [Azure Security Center](../../security-center/security-center-intro.md) 
 
 Centrum zabezpieczeń analizuje stan zabezpieczeń zasobów platformy Azure w celu identyfikowania potencjalnych luk w zabezpieczeniach. Lista zaleceń prowadzi użytkownika przez proces konfigurowania wymaganych elementów sterujących.
 
-Przykłady obejmują:
+Przykłady:
 
 - Inicjowanie ochrony przed złośliwym oprogramowaniem w celu identyfikacji i usuwania złośliwego oprogramowania
 
@@ -432,7 +432,7 @@ Centrum zabezpieczeń automatycznie gromadzi, analizuje i integruje dane dzienni
 
 - Alerty zabezpieczeń ze zintegrowanych programów chroniących przed złośliwym oprogramowaniem i zapór
 
-### <a name="azure-monitor"></a>Monitor platformy Azure
+### <a name="azure-monitor"></a>Azure Monitor
 
 [Azure monitor](../../azure-monitor/overview.md) zawiera wskaźniki do informacji o określonych typach zasobów. Oferuje wizualizacje, zapytania, routing, alerty, automatyczne skalowanie i automatyzację danych zarówno z infrastruktury platformy Azure (Dziennik aktywności), jak i poszczególnych zasobów platformy Azure (dzienników diagnostycznych).
 
@@ -476,7 +476,7 @@ Monitoruje ona:
 
 - **Niestandardowe zdarzenia i metryki** , które można napisać samodzielnie w kodzie klienta lub serwera, do śledzenia wydarzeń, takich jak sprzedane elementy lub gry.
 
-Infrastruktura aplikacji zwykle obejmuje wiele składników — może to być maszyna wirtualna, konto magazynu i sieć wirtualna albo aplikacja internetowa, baza danych, serwer bazy danych i usługi zewnętrzne. Te składniki nie są widoczne jako osobne jednostki, tylko jako powiązane i zależne od siebie nawzajem części jednej całości. Dlatego najlepiej wdrażać i monitorować je oraz zarządzać nimi grupowo. [Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md) umożliwia współpracę z zasobami w rozwiązaniu jako Grupa.
+Infrastruktura aplikacji zwykle obejmuje wiele składników — może to być maszyna wirtualna, konto magazynu i sieć wirtualna albo aplikacja internetowa, baza danych, serwer bazy danych i usługi zewnętrzne. Te składniki nie są widoczne jako osobne jednostki, tylko jako powiązane i zależne od siebie nawzajem części jednej całości. Dlatego najlepiej wdrażać i monitorować je oraz zarządzać nimi grupowo. [Azure Resource Manager](../../azure-resource-manager/management/overview.md) umożliwia współpracę z zasobami w rozwiązaniu jako Grupa.
 
 Wszystkie zasoby danego rozwiązania można wdrożyć, zaktualizować lub usunąć w ramach jednej skoordynowanej operacji. Wdrażanie wykonuje się przy użyciu szablonu, którego można następnie używać w różnych środowiskach (testowanie, etap przejściowy i produkcja). Usługa Resource Manager zapewnia funkcje zabezpieczeń, inspekcji i tagowania ułatwiające zarządzanie zasobami po wdrożeniu.
 

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: mlearned
-ms.openlocfilehash: 7113fd7f17fd7695e25489931d7a6cbf35e334ec
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e1ef87471c81fbf0d242837bd94fdc17f686387f
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442814"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75889398"
 ---
 # <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>Uaktualnianie klastra usługi Azure Kubernetes Service (AKS)
 
@@ -25,7 +25,7 @@ W przypadku klastrów AKS, które korzystają z wielu pul węzłów lub węzłó
 Ten artykuł wymaga uruchomienia interfejsu wiersza polecenia platformy Azure w wersji 2.0.65 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure][azure-cli-install].
 
 > [!WARNING]
-> Uaktualnienie klastra AKS wyzwala Cordon i opróżnia węzły. W przypadku braku dostępnego limitu przydziału obliczeń uaktualnienie może zakończyć się niepowodzeniem.  Aby uzyskać więcej informacji, zobacz [zwiększenie limitów przydziału](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request?branch=pr-en-us-83289) .
+> Uaktualnienie klastra AKS wyzwala Cordon i opróżnia węzły. W przypadku braku dostępnego limitu przydziału obliczeń uaktualnienie może zakończyć się niepowodzeniem.  Aby uzyskać więcej informacji, zobacz [zwiększenie limitów przydziału](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request?branch=pr-en-us-83289) .
 > Jeśli używasz własnego wdrożenia automatycznego skalowania klastra, wyłącz je (można je skalować do replik zerowych) podczas uaktualniania, ponieważ będzie to miało wpływ na problem z procesem uaktualniania. Zarządzane automatyczne skalowanie jest automatycznie obsługiwane. 
 
 ## <a name="check-for-available-aks-cluster-upgrades"></a>Sprawdź dostępność dostępnych uaktualnień klastrów AKS

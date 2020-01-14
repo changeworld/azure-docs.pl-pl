@@ -1,92 +1,101 @@
 ---
-title: Często zadawane pytania — Azure ExpressRoute | Microsoft Docs
-description: Często zadawane pytania ExpressRoute zawierają informacje o obsługiwanych usługach platformy Azure, kosztach, danych i połączeniach, umowie SLA, dostawcach i lokalizacjach, przepustowości oraz dodatkowych szczegółach technicznych.
+title: Często zadawane pytania — usługa Azure ExpressRoute | Dokumentacja firmy Microsoft
+description: Często zadawane pytania dotyczące usługi ExpressRoute zawiera informacje o obsługiwanych usług platformy Azure, kosztów, danych i połączeń, umowy SLA, dostawcy i lokalizacje, przepustowości i dodatkowe szczegóły techniczne.
 services: expressroute
 author: jaredr80
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 10/28/2019
+ms.date: 12/13/2019
 ms.author: jaredro
-ms.custom: seodec18
-ms.openlocfilehash: f27a6df86ebbe2b07b73016f304ac364e88664bb
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 9f2b106df531dfdf26c2c83b765e3f7270a63df5
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73891036"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770989"
 ---
 # <a name="expressroute-faq"></a>Usługa ExpressRoute — często zadawane pytania
 
 ## <a name="what-is-expressroute"></a>Co to jest ExpressRoute?
 
-ExpressRoute to usługa platformy Azure, która umożliwia tworzenie prywatnych połączeń między centrami danych firmy Microsoft i infrastrukturą lokalną lub międzylokalizacyjną. Połączenia ExpressRoute nie przechodzą przez publiczny Internet i oferują wyższe opóźnienia niż typowe połączenia przez Internet.
+ExpressRoute to usługa, która umożliwia tworzenie prywatnych połączeń między centrami danych firmy Microsoft i infrastrukturą lokalną lub w funkcji wspólnej lokalizacji. Połączenia ExpressRoute nie omijają publiczny Internet i oferują wyższe bezpieczeństwa, niezawodności i szybkości pracy krótsze opóźnienia niż typowe połączenia przez Internet.
 
-### <a name="what-are-the-benefits-of-using-expressroute-and-private-network-connections"></a>Jakie korzyści wynikają z używania ExpressRoute i prywatnych połączeń sieciowych?
+### <a name="what-are-the-benefits-of-using-expressroute-and-private-network-connections"></a>Jakie są korzyści z używania usługi ExpressRoute i prywatne połączenia sieciowe?
 
-Połączenia ExpressRoute nie odbywają się za pośrednictwem publicznego Internetu. Oferują one wyższy poziom bezpieczeństwa, niezawodność i szybkość oraz krótsze i spójne opóźnienia niż typowe połączenia przez Internet. W niektórych przypadkach używanie połączeń ExpressRoute do przesyłania danych między urządzeniami lokalnymi i platformą Azure może przynieść znaczący koszt.
+Połączenia ExpressRoute nie odbywają się za pośrednictwem publicznego Internetu. Oferują one wyższe bezpieczeństwa, niezawodności i szybkości, z niższym i spójny opóźnienia niż typowe połączenia przez Internet. W niektórych przypadkach używanie połączeń ExpressRoute do przesyłania danych między lokalnymi urządzeniami i platformy Azure może przynieść znaczną oszczędność kosztów.
 
-### <a name="where-is-the-service-available"></a>Gdzie jest dostępna usługa?
+### <a name="where-is-the-service-available"></a>Gdy usługa jest dostępna
 
-Zobacz Tę stronę, aby poznać lokalizację i dostępność usługi: [ExpressRoute partnerzy i lokalizacje](expressroute-locations.md).
+Ta strona lokalizacji usługi i dostępność: [ExpressRoute partnerzy i lokalizacje](expressroute-locations.md).
 
-### <a name="how-can-i-use-expressroute-to-connect-to-microsoft-if-i-dont-have-partnerships-with-one-of-the-expressroute-carrier-partners"></a>Jak mogę używać ExpressRoute do łączenia się z firmą Microsoft, jeśli nie mam partnerstwa z jednym z partnerów ExpressRoute-przewoźnika?
+### <a name="how-can-i-use-expressroute-to-connect-to-microsoft-if-i-dont-have-partnerships-with-one-of-the-expressroute-carrier-partners"></a>Jak używać usługi ExpressRoute do łączenia się z firmą Microsoft, jeśli nie mam partnerstwa z jednym z partnerów operatora usługi ExpressRoute?
 
-Do jednej z obsługiwanych lokalizacji dostawcy programu Exchange można wybrać przewoźników regionalnych i sieci Ethernet. Następnie można nawiązać komunikację równorzędną z firmą Microsoft w lokalizacji dostawcy. Zapoznaj się z ostatnią sekcją [partnerów i lokalizacji ExpressRoute](expressroute-locations.md) , aby sprawdzić, czy dostawca usług znajduje się w dowolnej lokalizacji programu Exchange. Następnie można zamówić obwód usługi ExpressRoute za pomocą dostawcy usług w celu nawiązania połączenia z platformą Azure.
+Można wybrać regionalnych operatora i przejście połączenia Ethernet do jednego z programu exchange obsługiwanych lokalizacji dostawcy. Możesz następnie komunikacji równorzędnej z firmą Microsoft w lokalizacji dostawcy. Sprawdź ostatnią sekcję [ExpressRoute partnerzy i lokalizacje](expressroute-locations.md) aby zobaczyć, czy dostawcą usług znajduje się w tych lokalizacjach programu exchange. Następnie można zamówić obwodu usługi ExpressRoute za pośrednictwem dostawcy usług w celu połączenia z platformą Azure.
 
-### <a name="how-much-does-expressroute-cost"></a>Ile kosztuje ExpressRoute?
+### <a name="how-much-does-expressroute-cost"></a>Jaki jest koszt usługi ExpressRoute?
 
-Sprawdź [szczegóły cennika](https://azure.microsoft.com/pricing/details/expressroute/) , aby uzyskać informacje o cenach.
+Sprawdź [cennik](https://azure.microsoft.com/pricing/details/expressroute/) Aby uzyskać informacje o cenach.
 
-### <a name="if-i-pay-for-an-expressroute-circuit-of-a-given-bandwidth-does-the-vpn-connection-i-purchase-from-my-network-service-provider-have-to-be-the-same-speed"></a>Czy jeśli płacisz za obwód usługi ExpressRoute danej przepustowości, czy połączenie sieci VPN, które mam zakupić od usługodawcy sieciowego, musi mieć taką samą szybkość?
+### <a name="if-i-pay-for-an-expressroute-circuit-of-a-given-bandwidth-does-the-vpn-connection-i-purchase-from-my-network-service-provider-have-to-be-the-same-speed"></a>Jeśli płacisz obwód usługi ExpressRoute w danej przepustowości połączenia sieci VPN, który można zakupić od dostawcy usług w mojej sieci ma być tej samej szybkości?
 
-Nie. Możesz zakupić połączenie sieci VPN z dowolną szybkością od dostawcy usług. Jednak połączenie z platformą Azure jest ograniczone do zakupionej przepustowości obwodu usługi ExpressRoute.
+Nie. Połączenie sieci VPN, o dowolnym szybkości można kupić od dostawcy usług. Jednak Twoje połączenie z platformą Azure jest ograniczona do przepustowości obwodu usługi ExpressRoute, która zakupu.
 
-### <a name="if-i-pay-for-an-expressroute-circuit-of-a-given-bandwidth-do-i-have-the-ability-to-burst-up-to-higher-speeds-if-necessary"></a>Czy w przypadku skorzystania z obwodu usługi ExpressRoute o danej przepustowości czy można w razie potrzeby przeprowadzić szeregowanie do większej szybkości?
+### <a name="if-i-pay-for-an-expressroute-circuit-of-a-given-bandwidth-do-i-have-the-ability-to-burst-up-to-higher-speeds-if-necessary"></a>Jeśli płacisz obwód usługi ExpressRoute w danej przepustowości I masz opcję przejścia do większe szybkości, jeśli to konieczne?
 
-Tak. Obwody usługi ExpressRoute są skonfigurowane tak, aby umożliwiały wielokrotne przekroczenie limitu przepustowości, który został pozyskany bez dodatkowych kosztów. Skontaktuj się z dostawcą usług, aby sprawdzić, czy obsługują tę funkcję. Nie jest to przez dłuższy czas i nie jest gwarantowane.  Jeśli ruch przepływów przez bramę ExpressRoute, przepustowość dla jednostki SKU jest stała i nie można jej przełączać.
+Tak. Obwody usługi ExpressRoute są skonfigurowane do umożliwiają serii maksymalnie dwa razy limit przepustowości, który został uzyskany bez dodatkowych kosztów. Skontaktuj się z dostawcą usługi, aby sprawdzić, czy obsługują one tę możliwość. Nie jest to przez dłuższy czas i nie jest gwarantowane.  Jeśli ruch przepływów przez bramę ExpressRoute, przepustowość dla jednostki SKU jest stała i nie można jej przełączać.
 
-### <a name="can-i-use-the-same-private-network-connection-with-virtual-network-and-other-azure-services-simultaneously"></a>Czy można jednocześnie używać tego samego połączenia sieci prywatnej z siecią wirtualną i innymi usługami platformy Azure?
+### <a name="can-i-use-the-same-private-network-connection-with-virtual-network-and-other-azure-services-simultaneously"></a>Czy mogę za pomocą tego samego połączenia sieci prywatnej sieci wirtualnej i innych usług platformy Azure jednocześnie?
 
-Tak. Obwód usługi ExpressRoute, po skonfigurowaniu, umożliwia dostęp do usług w sieci wirtualnej i w innych usługach platformy Azure jednocześnie. Nawiąż połączenie z sieciami wirtualnymi za pośrednictwem prywatnej ścieżki komunikacji równorzędnej i innych usług za pośrednictwem ścieżki komunikacji równorzędnej firmy Microsoft.
+Tak. Obwód usługi ExpressRoute, po skonfigurowaniu pozwala jednocześnie dostęp do usług w ramach sieci wirtualnej i innych usług platformy Azure. Możesz łączyć z sieciami wirtualnymi w ścieżce prywatnej komunikacji równorzędnej, a także do innych usług za pośrednictwem ścieżki komunikacji równorzędnej firmy Microsoft.
 
-### <a name="does-expressroute-offer-a-service-level-agreement-sla"></a>Czy ExpressRoute oferuje Umowa dotycząca poziomu usług (SLA)?
+### <a name="how-are-vnets-advertised-on-expressroute-private-peering"></a>Jak sieci wirtualnych są anonsowane w prywatnej komunikacji równorzędnej ExpressRoute?
 
-Aby uzyskać więcej informacji, zobacz stronę [umów SLA ExpressRoute](https://azure.microsoft.com/support/legal/sla/) .
+Brama ExpressRoute będzie ogłaszać *przestrzeń adresową* sieci wirtualnej platformy Azure, nie można dołączyć/wykluczyć na poziomie podsieci. Jest to zawsze anonsowana przestrzeń adresowa sieci wirtualnej. Ponadto jeśli używana jest Komunikacja równorzędna sieci wirtualnych, a w równorzędnej sieci wirtualnej jest włączona funkcja "Użyj bramy zdalnej", przestrzeń adresowa równorzędnej sieci wirtualnej również będzie anonsowana.
+
+### <a name="can-i-filter-routes-coming-from-my-on-premises-network"></a>Czy można filtrować trasy pochodzące z sieci lokalnej?
+
+Jedynym sposobem filtrowania/uwzględniania tras jest lokalny router brzegowy. Trasy zdefiniowane przez użytkownika można dodać w sieci wirtualnej, aby mieć wpływ na określony Routing, ale będzie to statyczne i nie jest częścią anonsu protokołu BGP.
+
+### <a name="does-expressroute-offer-a-service-level-agreement-sla"></a>Usługa ExpressRoute oferuje umowy poziomu usług (SLA)?
+
+Aby uzyskać informacje, zobacz [umowa SLA usługi ExpressRoute](https://azure.microsoft.com/support/legal/sla/) strony.
 
 ## <a name="supported-services"></a>Obsługiwane usługi
 
-ExpressRoute obsługuje [trzy domeny routingu](expressroute-circuit-peerings.md) dla różnych typów usług: prywatnej komunikacji równorzędnej, komunikacji równorzędnej firmy Microsoft i publicznej komunikacji równorzędnej.
+ExpressRoute obsługuje [trzy domeny routingu](expressroute-circuit-peerings.md) dla różnych typów usług: prywatna Komunikacja równorzędna, Komunikacja równorzędna firmy Microsoft i publiczna Komunikacja równorzędna (przestarzałe).
 
 ### <a name="private-peering"></a>Prywatna komunikacja równorzędna
 
-* Sieci wirtualne, w tym wszystkie maszyny wirtualne i usługi w chmurze
+**Obsługiwał**
+
+* Sieci wirtualne, w tym wszystkich maszyn wirtualnych i usług w chmurze
 
 ### <a name="microsoft-peering"></a>Komunikacja równorzędna firmy Microsoft
 
+Jeśli obwód usługi ExpressRoute jest włączony dla komunikacji równorzędnej Azure Microsoft, możesz uzyskać dostęp do [zakresów publicznych adresów IP](../virtual-network/virtual-network-ip-addresses-overview-arm.md#public-ip-addresses) używanych na platformie Azure w ramach obwodu. Komunikacja równorzędna Azure firmy Microsoft zapewnia dostęp do usług hostowanych obecnie na platformie Azure (z ograniczeniami geograficznymi w zależności od jednostki SKU obwodu). Aby sprawdzić dostępność określonej usługi, możesz sprawdzić dokumentację tej usługi, aby sprawdzić, czy istnieje zastrzeżony zakres opublikowany dla tej usługi. Następnie należy odszukać zakresy adresów IP usługi docelowej i porównać z zakresami wymienionymi w obszarze [zakresy adresów IP platformy Azure i Tagi usług — plik XML chmury publicznej](https://www.microsoft.com/download/details.aspx?id=56519). Możesz również otworzyć bilet pomocy technicznej dla omawianej usługi, aby uzyskać wyjaśnienie.
+
+**Obsługiwał**
+
 * [Office 365](https://aka.ms/ExpressRouteOffice365)
 * Power BI — dostępne za pośrednictwem społeczności regionalnej platformy Azure, zobacz [tutaj](https://docs.microsoft.com/power-bi/service-admin-where-is-my-tenant-located) , jak sprawdzić region dzierżawy Power BI.
-* Usługa Azure Active Directory
+* Usługa Active Directory systemu Azure
 * [Pulpit wirtualny systemu Windows](https://azure.microsoft.com/services/virtual-desktop/)
-* [Azure DevOps](https://blogs.msdn.microsoft.com/devops/2018/10/23/expressroute-for-azure-devops/) (społeczność usług globalnych platformy Azure)
-* Większość usług platformy Azure jest obsługiwanych. Skontaktuj się bezpośrednio z usługą, która ma zostać użyta, aby zweryfikować pomoc techniczną.<br><br>**Następujące usługi nie są obsługiwane**:
-    * CDN
-    * Azure Front Door
-    * Serwer uwierzytelniania wieloskładnikowego (starsza wersja)
-    * Traffic Manager
+* [Usługa Azure DevOps](https://blogs.msdn.microsoft.com/devops/2018/10/23/expressroute-for-azure-devops/) (społeczność globalne usługi platformy Azure)
+* Publiczne adresy IP platformy Azure dla IaaS (Virtual Machines, bram Virtual Network, modułów równoważenia obciążenia itp.)  
+* Obsługiwane są również większość innych usług platformy Azure. Sprawdź, czy bezpośrednio z usługą, który chcesz użyć, aby sprawdzić, pomocy technicznej.
+
+**Nieobsługiwane:**
+
+* CDN
+* Azure Front Door
+* Serwer uwierzytelniania wieloskładnikowego (starsza wersja)
+* Traffic Manager
 
 ### <a name="public-peering"></a>Publiczna komunikacja równorzędna
 
->[!NOTE]
->Publiczna Komunikacja równorzędna została wyłączona w nowych obwodach usługi ExpressRoute. Usługi platformy Azure są dostępne w komunikacji równorzędnej firmy Microsoft.
->
+Publiczna komunikacja równorzędna została wyłączona na obwodów usługi ExpressRoute. Usługi platformy Azure są teraz dostępne w komunikacji równorzędnej firmy Microsoft. Jeśli obwód, który został utworzony przed zainstalowaniem publicznej komunikacji równorzędnej, jest przestarzały, możesz użyć komunikacji równorzędnej firmy Microsoft lub publicznej komunikacji równorzędnej w zależności od żądanych usług.
 
-* Power BI
-* Większość usług platformy Azure jest obsługiwanych. Skontaktuj się bezpośrednio z usługą, która ma zostać użyta, aby zweryfikować pomoc techniczną.<br><br>
-  **Następujące usługi nie są obsługiwane**:
-    * CDN
-    * Azure Front Door
-    * Serwer uwierzytelniania wieloskładnikowego (starsza wersja)
-    * Traffic Manager
+Aby uzyskać więcej informacji i kroków konfiguracji dla publicznej komunikacji równorzędnej, zobacz [ExpressRoute publicznej komunikacji równorzędnej](about-public-peering.md).
 
 ### <a name="why-i-see-advertised-public-prefixes-status-as-validation-needed-while-configuring-microsoft-peering"></a>Dlaczego podczas konfigurowania komunikacji równorzędnej firmy Microsoft jest wyświetlany stan "anonsowane publiczne prefiksy"?
 
@@ -103,35 +112,35 @@ Jeśli zobaczysz komunikat "wymagana Walidacja", Zbierz dokumenty, które pokazu
 > [!NOTE]
 > Usługa [ExpressRoute Premium](https://docs.microsoft.com/azure/expressroute/expressroute-faqs#expressroute-premium) **nie** jest wymagana dla łączności z usługą Dynamics 365 za pośrednictwem usługi Azure ExpressRoute.
 
-## <a name="data-and-connections"></a>Dane i połączenia
+## <a name="data-and-connections"></a>Połączeń i danych
 
-### <a name="are-there-limits-on-the-amount-of-data-that-i-can-transfer-using-expressroute"></a>Czy istnieją ograniczenia dotyczące ilości danych, które można przenieść za pomocą ExpressRoute?
+### <a name="are-there-limits-on-the-amount-of-data-that-i-can-transfer-using-expressroute"></a>Czy istnieją ograniczenia dotyczące ilości danych, które mogą przesyłać przy użyciu usługi ExpressRoute?
 
-Nie ustawimy limitu liczby transferów danych. Aby uzyskać informacje dotyczące stawek przepustowości, zobacz [szczegóły cennika](https://azure.microsoft.com/pricing/details/expressroute/) .
+Firma Microsoft nie Ustaw limit ilości przesyłanych danych. Zapoznaj się [cennik](https://azure.microsoft.com/pricing/details/expressroute/) uzyskać informacji na temat stawki za przepustowość.
 
-### <a name="what-connection-speeds-are-supported-by-expressroute"></a>Jakie szybkości połączeń są obsługiwane przez ExpressRoute?
+### <a name="what-connection-speeds-are-supported-by-expressroute"></a>Szybkość połączenia, które są obsługiwane przez usługę ExpressRoute?
 
 Obsługiwane oferty przepustowości:
 
 50 Mb/s, 100 Mb/s, 200 Mb/s, 500 Mb/s, 1 Gb/s, 2 Gb/s, 5 Gb/s, 10 Gb/s
 
-### <a name="which-service-providers-are-available"></a>Którzy dostawcy usług są dostępni?
+### <a name="which-service-providers-are-available"></a>Dostawcy usług, które są dostępne?
 
-Listę dostawców usług i lokalizacji można znaleźć w temacie [ExpressRoute Partners and Locations](expressroute-locations.md) .
+Zobacz [ExpressRoute partnerzy i lokalizacje](expressroute-locations.md) listy usługodawców i lokalizacji.
 
 ## <a name="technical-details"></a>Szczegóły techniczne
 
-### <a name="what-are-the-technical-requirements-for-connecting-my-on-premises-location-to-azure"></a>Jakie są wymagania techniczne dotyczące łączenia mojej lokalizacji lokalnej z platformą Azure?
+### <a name="what-are-the-technical-requirements-for-connecting-my-on-premises-location-to-azure"></a>Jakie są wymagania techniczne dotyczące łączenia z moją lokalizacją lokalną na platformę Azure?
 
-Wymagania można znaleźć na [stronie Wymagania wstępne ExpressRoute](expressroute-prerequisites.md) .
+Zobacz [strony wymagania wstępne usługi ExpressRoute](expressroute-prerequisites.md) wymagania.
 
-### <a name="are-connections-to-expressroute-redundant"></a>Czy połączenia z ExpressRoute nadmiarowe?
+### <a name="are-connections-to-expressroute-redundant"></a>Czy nadmiarowych połączeń usługi expressroute?
 
-Tak. Każdy obwód ExpressRoute ma nadmiarową parę połączeń krzyżowych skonfigurowanych do zapewnienia wysokiej dostępności.
+Tak. Każdy obwód usługi ExpressRoute ma nadmiarowej parze wielu połączeń skonfigurowanych w celu zapewnienia wysokiej dostępności.
 
-### <a name="will-i-lose-connectivity-if-one-of-my-expressroute-links-fail"></a>Czy nastąpi utrata łączności w przypadku niepowodzenia jednego z linków ExpressRoute?
+### <a name="will-i-lose-connectivity-if-one-of-my-expressroute-links-fail"></a>Łączność zostaną utracone w przypadku awarii jednej z moich łączy usługi ExpressRoute?
 
-Jeśli jedno z połączeń krzyżowych zakończy się niepowodzeniem, nastąpi utrata połączenia. Dostępne jest nadmiarowe połączenie obsługujące obciążenie sieci i zapewniające wysoką dostępność obwodu usługi ExpressRoute. Dodatkowo można utworzyć obwód w innej lokalizacji komunikacji równorzędnej w celu uzyskania odporności poziomu obwodu.
+Nie nastąpi utrata połączenia w przypadku awarii jednego z wielu połączeń. Nadmiarowe połączenie jest dostępne do obsługi obciążenia sieci i zapewnić wysoką dostępność obwód usługi ExpressRoute. Ponadto można utworzyć obwodu, w innej lokalizacji komunikacji równorzędnej do osiągnięcia obwodu na poziomie odporności na błędy.
 
 ### <a name="how-do-i-implement-redundancy-on-private-peering"></a>Jak mogę zaimplementować nadmiarowości prywatnej komunikacji równorzędnej?
 
@@ -145,170 +154,170 @@ Zdecydowanie zaleca się, aby klienci używali komunikacji równorzędnej firmy 
 
 Zobacz [tutaj](https://docs.microsoft.com/azure/expressroute/designing-for-high-availability-with-expressroute) , aby zapoznać się z projektowaniem pod kątem wysokiej dostępności.
 
-### <a name="how-do-i-ensure-high-availability-on-a-virtual-network-connected-to-expressroute"></a>Jak mogę zapewnić wysoką dostępność w sieci wirtualnej połączonej z usługą ExpressRoute?
+### <a name="how-do-i-ensure-high-availability-on-a-virtual-network-connected-to-expressroute"></a>Jak zapewnić wysoką dostępność w sieci wirtualnej, która jest połączona z usługą ExpressRoute?
 
-Wysoką dostępność można uzyskać, łącząc obwody usługi ExpressRoute w różnych lokalizacjach komunikacji równorzędnej (na przykład Singapur, Singapur2) z siecią wirtualną. Jeśli jeden obwód usługi ExpressRoute ulegnie awarii, nastąpi przełączenie w tryb failover do innego obwodu ExpressRoute. Domyślnie ruch wychodzący z sieci wirtualnej jest kierowany w oparciu o równy koszt Routing z obsługą wielu ścieżek (ECMP). Możesz użyć wagi połączeń, aby preferować jeden obwód do innego. Aby uzyskać więcej informacji, zobacz [Optymalizacja routingu ExpressRoute](expressroute-optimize-routing.md).
+Wysoka dostępność można osiągnąć przez nawiązanie połączenia z siecią wirtualną obwodów usługi ExpressRoute w innej lokalizacji komunikacji równorzędnej (na przykład, Singapur, singapur2). Jeśli jeden obwód usługi ExpressRoute ulegnie awarii, połączenia zakończy się niepowodzeniem za pośrednictwem innego obwodu usługi ExpressRoute. Domyślnie ruchu wychodzącego z sieci wirtualnej odbywa się na podstawie na równy koszt wiele ścieżek routingu (ECMP). Waga połączenia służy do woli jednym obwodem łączącym. Aby uzyskać więcej informacji, zobacz [Optymalizacja routingu usługi ExpressRoute](expressroute-optimize-routing.md).
 
-### <a name="how-do-i-ensure-that-my-traffic-destined-for-azure-public-services-like-azure-storage-and-azure-sql-on-microsoft-or-public-peering-is-preferred-on-the-expressroute-path"></a>Jak mogę upewnij się, że mój ruch przeznaczony dla usług publicznych platformy Azure, takich jak Azure Storage i Azure SQL w firmie Microsoft lub publiczna Komunikacja równorzędna, jest preferowany na ścieżce ExpressRoute?
+### <a name="how-do-i-ensure-that-my-traffic-destined-for-azure-public-services-like-azure-storage-and-azure-sql-on-microsoft-peering-or-public-peering-is-preferred-on-the-expressroute-path"></a>Jak mogę upewnić się, że mój ruch przeznaczony dla usług publicznych platformy Azure, takich jak Azure Storage i Azure SQL w komunikacji równorzędnej firmy Microsoft lub publicznej komunikacji równorzędnej, jest preferowany na ścieżce ExpressRoute?
 
 Musisz zaimplementować lokalny atrybut *preferencji* na routerach, aby upewnić się, że ścieżka z lokalnego do platformy Azure jest zawsze preferowana w obwodach usługi ExpressRoute.
 
 [Więcej szczegółowych informacji](https://docs.microsoft.com/azure/expressroute/expressroute-optimize-routing#path-selection-on-microsoft-and-public-peerings) znajduje się w sekcji Wybór ścieżki BGP i typowe konfiguracje routera. 
 
-### <a name="onep2plink"></a>Jeśli nie znajduje się na serwerze Exchange w chmurze, a dostawca usług oferuje połączenie punkt-punkt, czy muszę zamówić dwa połączenia fizyczne między siecią lokalną a firmą Microsoft?
+### <a name="onep2plink"></a>Jeśli nie mam wspólnie w ramach wymiany w chmurze i usługodawcą oferuje połączenia punkt-punkt, czy muszę zamówić łączność obejmującą dwóch fizycznych połączeń między Moje między siecią lokalną a firmą Microsoft?
 
-Jeśli usługodawca może ustanowić dwa wirtualne obwody Ethernet za pośrednictwem połączenia fizycznego, potrzebne jest tylko jedno połączenie fizyczne. Połączenie fizyczne (na przykład Optical Fiber) zostało zakończone na urządzeniu warstwy 1 (L1) (Zobacz obraz). Dwa obwody wirtualne Ethernet są znakowane przy użyciu różnych identyfikatorów sieci VLAN, jeden dla obwodu podstawowego, a drugi dla elementu pomocniczego. Identyfikatory sieci VLAN znajdują się w zewnętrznym nagłówku 802.1 Q. Wewnętrzny nagłówek 802.1 Q (niepokazywany) jest mapowany na konkretną [domenę routingu ExpressRoute](expressroute-circuit-peerings.md).
+Jeśli usługodawca może ustanowić dwóch obwodów sieci Ethernet w wirtualnej za pośrednictwem połączenia fizycznego, wystarczy jedno fizyczne połączenie. Fizyczne połączenie (na przykład, światłowód) zostanie zakończone w warstwie 1 urządzenie (L1) (patrz obrazu). Dwie wirtualne obwodów sieci Ethernet są oznaczane za pomocą różnych identyfikatorach sieci VLAN, jeden dla obwód podstawowy i jeden dla pomocniczej. Te identyfikatory sieci VLAN znajdują się w zewnętrznym 802.1Q nagłówek Ethernet. Wewnętrzny 802.1Q nagłówek Ethernet (niewyświetlany) jest mapowany na konkretnym [domeny routingu usługi ExpressRoute](expressroute-circuit-peerings.md).
 
 ![](./media/expressroute-faqs/expressroute-p2p-ref-arch.png)
 
-### <a name="can-i-extend-one-of-my-vlans-to-azure-using-expressroute"></a>Czy mogę rozłożyć jedną z moich sieci VLAN na platformę Azure przy użyciu usługi ExpressRoute?
+### <a name="can-i-extend-one-of-my-vlans-to-azure-using-expressroute"></a>Czy mogę przedłużyć jednej z moich sieci VLAN na platformie Azure przy użyciu usługi ExpressRoute?
 
-Nie. Nie obsługujemy rozszerzeń łączności warstwy 2 na platformie Azure.
+Nie. Warstwa 2 łączności rozszerzenia nie jest obsługiwana na platformie Azure.
 
-### <a name="can-i-have-more-than-one-expressroute-circuit-in-my-subscription"></a>Czy mogę mieć więcej niż jeden obwód usługi ExpressRoute w mojej subskrypcji?
+### <a name="can-i-have-more-than-one-expressroute-circuit-in-my-subscription"></a>W mojej subskrypcji można mieć więcej niż jeden obwód usługi ExpressRoute?
 
-Tak. W ramach subskrypcji można korzystać z więcej niż jednego obwodu usługi ExpressRoute. Domyślny limit jest ustawiony na 10. Możesz skontaktować się z pomoc techniczna firmy Microsoft, aby zwiększyć limit, w razie potrzeby.
+Tak. Może mieć więcej niż jeden obwód usługi ExpressRoute w ramach subskrypcji. Domyślny limit jest ustawiony na 10. Możesz skontaktować się Support firmy Microsoft, aby zwiększyć limit, jeśli to konieczne.
 
-### <a name="can-i-have-expressroute-circuits-from-different-service-providers"></a>Czy mogę mieć ExpressRoute obwodów od różnych dostawców usług?
+### <a name="can-i-have-expressroute-circuits-from-different-service-providers"></a>Czy można mieć obwodów usługi ExpressRoute z różnych dostawców usług?
 
-Tak. Możesz mieć ExpressRoute obwodów z wieloma dostawcami usług. Każdy obwód usługi ExpressRoute jest skojarzony tylko z jednym dostawcą usług. 
+Tak. Obwody usługi ExpressRoute może mieć z wielu dostawców usług. Każdy obwód usługi ExpressRoute jest skojarzony z tylko jedną usługę Dostawca. 
 
-### <a name="i-see-two-expressroute-peering-locations-in-the-same-metro-for-example-singapore-and-singapore2-which-peering-location-should-i-choose-to-create-my-expressroute-circuit"></a>Widzę dwie lokalizacje komunikacji równorzędnej ExpressRoute w tej samej linii metra, na przykład Singapur i Singapur2. Którą lokalizację komunikacji równorzędnej należy wybrać, aby utworzyć mój obwód ExpressRoute?
-Jeśli dostawca usług oferuje ExpressRoute w obu lokacjach, możesz współpracować z dostawcą i wybrać dowolną lokację w celu skonfigurowania usługi ExpressRoute. 
+### <a name="i-see-two-expressroute-peering-locations-in-the-same-metro-for-example-singapore-and-singapore2-which-peering-location-should-i-choose-to-create-my-expressroute-circuit"></a>Czy mogę zobaczyć dwa lokalizacji usługi ExpressRoute komunikacji równorzędnej w tym samym metro, na przykład, Singapur i singapur2. Lokalizacji, do której peering wybrać do utworzenia Mój obwód ExpressRoute
+Jeśli usługodawca oferuje usługi ExpressRoute w obu lokacjach, możesz współpracować z dostawcą i pobranie jednej lokacji do skonfigurowania usługi ExpressRoute. 
 
-### <a name="can-i-have-multiple-expressroute-circuits-in-the-same-metro-can-i-link-them-to-the-same-virtual-network"></a>Czy mogę mieć wiele obwodów usługi ExpressRoute w tej samej linii metra? Czy mogę połączyć je z tą samą siecią wirtualną?
+### <a name="can-i-have-multiple-expressroute-circuits-in-the-same-metro-can-i-link-them-to-the-same-virtual-network"></a>W tym samym metro można mieć wiele obwodów usługi ExpressRoute? Czy można połączyć je z tej samej sieci wirtualnej?
 
-Tak. Można mieć wiele obwodów usługi ExpressRoute z tymi samymi lub różnymi dostawcami usług. Jeśli Metro ma wiele lokalizacji komunikacji równorzędnej ExpressRoute, a obwody są tworzone w różnych lokalizacjach komunikacji równorzędnej, można połączyć je z tą samą siecią wirtualną. Jeśli obwody są tworzone w tej samej lokalizacji komunikacji równorzędnej, można połączyć maksymalnie 4 obwodów z tą samą siecią wirtualną.
+Tak. Masz wiele obwodów usługi ExpressRoute za pomocą tego samego lub innego usługodawcy. Jeżeli metro ma wiele lokalizacji komunikacji równorzędnej usługi ExpressRoute i obwodów tworzonych w różnych lokalizacjach komunikacji równorzędnej, możesz je połączyć do tej samej sieci wirtualnej. Jeśli obwody są tworzone w tej samej lokalizacji komunikacji równorzędnej, można połączyć maksymalnie 4 obwodów z tą samą siecią wirtualną.
 
-### <a name="how-do-i-connect-my-virtual-networks-to-an-expressroute-circuit"></a>Jak mogę połączyć moje sieci wirtualne z obwodem ExpressRoute
+### <a name="how-do-i-connect-my-virtual-networks-to-an-expressroute-circuit"></a>Jak połączyć mojej sieci wirtualne z obwodem usługi ExpressRoute
 
-Podstawowe kroki są następujące:
+Przedstawiono podstawowe kroki:
 
-* Ustanów obwód usługi ExpressRoute i włącz go przez dostawcę usług.
-* Użytkownik lub dostawca musi skonfigurować komunikację równorzędną BGP.
-* Połącz sieć wirtualną z obwodem ExpressRoute.
+* Ustanów obwodu usługi ExpressRoute i mieć dostawcę usług ją włączyć.
+* Użytkownik lub dostawcę, należy skonfigurować komunikacji równorzędnej protokołu BGP (s).
+* Łączenie sieci wirtualnej z obwodem usługi ExpressRoute.
 
-Aby uzyskać więcej informacji, zobacz [przepływy pracy ExpressRoute dla aprowizacji obwodów i Stanów obwodów](expressroute-workflows.md).
+Aby uzyskać więcej informacji, zobacz [przepływy pracy ExpressRoute dla aprowizacji obwodu i stanów obwodów](expressroute-workflows.md).
 
-### <a name="are-there-connectivity-boundaries-for-my-expressroute-circuit"></a>Czy istnieją granice łączności dla mojego obwodu usługi ExpressRoute?
+### <a name="are-there-connectivity-boundaries-for-my-expressroute-circuit"></a>Czy istnieją połączenia granice Mój obwód ExpressRoute?
 
-Tak. Artykuł dotyczący [partnerów i lokalizacji ExpressRoute](expressroute-locations.md) zawiera omówienie granic łączności dla obwodu usługi ExpressRoute. Łączność dla obwodu usługi ExpressRoute jest ograniczona do jednego regionu geopolitycznego. Łączność może być rozszerzona na regiony międzypolityczne, włączając funkcję ExpressRoute Premium.
+Tak. [ExpressRoute partnerzy i lokalizacje](expressroute-locations.md) artykuł zawiera omówienie granic łączności dla obwodu usługi ExpressRoute. Łączność dla obwodu usługi ExpressRoute jest ograniczona w pojedynczym regionie geopolitycznym. Połączenia można rozszerzyć, aby obejmujące wiele regionów geopolitycznych, włączając funkcję premium usługi ExpressRoute.
 
-### <a name="can-i-link-to-more-than-one-virtual-network-to-an-expressroute-circuit"></a>Czy mogę połączyć się z więcej niż jedną siecią wirtualną do obwodu ExpressRoute?
+### <a name="can-i-link-to-more-than-one-virtual-network-to-an-expressroute-circuit"></a>Czy można połączyć z więcej niż jednej sieci wirtualnej z obwodem usługi ExpressRoute?
 
-Tak. Możesz mieć maksymalnie 10 połączeń sieci wirtualnych w standardowym obwodzie ExpressRoute, a nawet 100 w [obwodzie ExpressRoute w warstwie Premium](#expressroute-premium). 
+Tak. Może mieć maksymalnie 10 połączeń sieci wirtualnych na standardowy obwód usługi ExpressRoute i maksymalnie 100 [obwód usługi ExpressRoute premium](#expressroute-premium). 
 
-### <a name="i-have-multiple-azure-subscriptions-that-contain-virtual-networks-can-i-connect-virtual-networks-that-are-in-separate-subscriptions-to-a-single-expressroute-circuit"></a>Mam wiele subskrypcji platformy Azure, które zawierają sieci wirtualne. Czy można połączyć sieci wirtualne, które znajdują się w osobnych subskrypcjach, do pojedynczego obwodu ExpressRoute?
+### <a name="i-have-multiple-azure-subscriptions-that-contain-virtual-networks-can-i-connect-virtual-networks-that-are-in-separate-subscriptions-to-a-single-expressroute-circuit"></a>Masz wiele subskrypcji platformy Azure, które zawierają sieci wirtualne. Czy można połączyć sieci wirtualne, które znajdują się w osobnych subskrypcji do jednego obwodu usługi ExpressRoute?
 
-Tak. Możesz połączyć maksymalnie 10 sieci wirtualnych w tej samej subskrypcji co obwód lub różne subskrypcje, korzystając z pojedynczego obwodu usługi ExpressRoute. Ten limit można zwiększyć, włączając funkcję ExpressRoute Premium.
+Tak. Możesz połączyć maksymalnie 10 sieci wirtualnych w tej samej subskrypcji co obwód lub różne subskrypcje, korzystając z pojedynczego obwodu usługi ExpressRoute. Ten limit można zwiększyć przez włączenie funkcji premium usługi ExpressRoute.
 
-Aby uzyskać więcej informacji, zobacz [udostępnianie obwodu usługi ExpressRoute w wielu subskrypcjach](expressroute-howto-linkvnet-arm.md).
+Aby uzyskać więcej informacji, zobacz [udostępnianie obwodu usługi ExpressRoute w ramach wielu subskrypcji](expressroute-howto-linkvnet-arm.md).
 
-### <a name="i-have-multiple-azure-subscriptions-associated-to-different-azure-active-directory-tenants-or-enterprise-agreement-enrollments-can-i-connect-virtual-networks-that-are-in-separate-tenants-and-enrollments-to-a-single-expressroute-circuit-not-in-the-same-tenant-or-enrollment"></a>Mam wiele subskrypcji platformy Azure skojarzonych z różnymi dzierżawami Azure Active Directory lub Umowa Enterprise rejestracji. Czy można połączyć sieci wirtualne, które znajdują się w osobnych dzierżawcach i rejestracje do pojedynczego obwodu ExpressRoute, nie w tej samej dzierżawie lub rejestracji?
+### <a name="i-have-multiple-azure-subscriptions-associated-to-different-azure-active-directory-tenants-or-enterprise-agreement-enrollments-can-i-connect-virtual-networks-that-are-in-separate-tenants-and-enrollments-to-a-single-expressroute-circuit-not-in-the-same-tenant-or-enrollment"></a>Masz wiele subskrypcji platformy Azure skojarzone z różnych dzierżaw usługi Azure Active Directory lub rejestracji umowy Enterprise Agreement. Czy można połączyć sieci wirtualne, które znajdują się w oddzielnych dzierżaw i rejestracji do pojedynczego obwodu usługi ExpressRoute nie znajduje się w tej samej dzierżawy lub rejestracji?
 
-Tak. Autoryzacje ExpressRoute mogą obejmować granice subskrypcji, dzierżawy i rejestracji bez konieczności dodatkowej konfiguracji. 
+Tak. Autoryzacji ExpressRoute mogą znajdować się na granice subskrypcji, dzierżawcy i rejestracji bez konieczności dodatkowej konfiguracji. 
 
-Aby uzyskać więcej informacji, zobacz [udostępnianie obwodu usługi ExpressRoute w wielu subskrypcjach](expressroute-howto-linkvnet-arm.md).
+Aby uzyskać więcej informacji, zobacz [udostępnianie obwodu usługi ExpressRoute w ramach wielu subskrypcji](expressroute-howto-linkvnet-arm.md).
 
-### <a name="are-virtual-networks-connected-to-the-same-circuit-isolated-from-each-other"></a>Czy sieci wirtualne są połączone z tym samym obwodem odizolowanym od siebie?
+### <a name="are-virtual-networks-connected-to-the-same-circuit-isolated-from-each-other"></a>Sieci wirtualne są połączone ten sam obwód odizolowane od siebie?
 
-Nie. Z punktu widzenia routingu wszystkie sieci wirtualne połączone z tym samym obwodem usługi ExpressRoute są częścią tej samej domeny routingu i nie są od siebie odizolowane. Jeśli wymagana jest izolacja trasy, należy utworzyć oddzielny obwód ExpressRoute.
+Nie. Z punktu widzenia routingu wszystkie sieci wirtualne połączone z tym samym obwodem usługi ExpressRoute są częścią tej samej domenie routingu i nie są od siebie odizolowane. Jeśli potrzebujesz izolacji trasy, musisz utworzyć oddzielne obwód usługi ExpressRoute.
 
-### <a name="can-i-have-one-virtual-network-connected-to-more-than-one-expressroute-circuit"></a>Czy jedna sieć wirtualna jest połączona z więcej niż jednym obwodem ExpressRoute?
+### <a name="can-i-have-one-virtual-network-connected-to-more-than-one-expressroute-circuit"></a>Czy można mieć jedną sieć wirtualną podłączony do więcej niż jeden obwód usługi ExpressRoute?
 
 Tak. Można połączyć pojedynczą sieć wirtualną z maksymalnie czterema obwodami ExpressRoute w jednej lub innej lokalizacji komunikacji równorzędnej. 
 
-### <a name="can-i-access-the-internet-from-my-virtual-networks-connected-to-expressroute-circuits"></a>Czy mogę uzyskać dostęp do Internetu z sieci wirtualnych podłączonych do obwodów usługi ExpressRoute?
+### <a name="can-i-access-the-internet-from-my-virtual-networks-connected-to-expressroute-circuits"></a>Z mojej sieci wirtualnych, które zostały podłączone do obwodów usługi ExpressRoute ma dostęp do Internetu?
 
-Tak. Jeśli trasy domyślne (0.0.0.0/0) lub trasy internetowe nie są anonsowane przez sesję protokołu BGP, można nawiązać połączenie z Internetem z sieci wirtualnej połączonej z obwodem usługi ExpressRoute.
+Tak. Jeśli nie anonsujesz trasy domyślnej (0.0.0.0/0) lub prefiksy trasy Internet za pośrednictwem sesji protokołu BGP, możesz połączyć się z Internetem z sieci wirtualnej połączonej z obwodem usługi ExpressRoute.
 
-### <a name="can-i-block-internet-connectivity-to-virtual-networks-connected-to-expressroute-circuits"></a>Czy mogę zablokować łączność internetową z sieciami wirtualnymi podłączonymi do obwodów usługi ExpressRoute?
+### <a name="can-i-block-internet-connectivity-to-virtual-networks-connected-to-expressroute-circuits"></a>Czy można zablokować połączenia internetowego z sieci wirtualne podłączone do obwodów usługi ExpressRoute?
 
-Tak. Można anonsować trasy domyślne (0.0.0.0/0), aby blokować wszystkie połączenia internetowe z maszynami wirtualnymi wdrożonymi w ramach sieci wirtualnej i rozsyłać cały ruch za pośrednictwem obwodu usługi ExpressRoute.
+Tak. Można anonsować trasy domyślnej (0.0.0.0/0) do Blokuj wszystkie połączenia internetowego z maszyn wirtualnych wdrożonych w ramach sieci wirtualnej, a następnie kierować cały ruch się za pośrednictwem obwodu usługi ExpressRoute.
 
-W przypadku anonsowania tras domyślnych Wymuś ruch do usług oferowanych za pośrednictwem komunikacji równorzędnej firmy Microsoft (np. usługi Azure Storage i bazy danych SQL) z powrotem do lokalizacji lokalnej. Należy skonfigurować routery, aby zwracały ruch do platformy Azure za pośrednictwem ścieżki komunikacji równorzędnej firmy Microsoft lub za pośrednictwem Internetu. Jeśli włączono punkt końcowy usługi dla usługi, ruch do usługi nie jest wymuszany w środowisku lokalnym. Ruch pozostaje w sieci szkieletowej platformy Azure. Aby dowiedzieć się więcej o punktach końcowych usługi, zobacz [punkty końcowe usługi sieci wirtualnej](../virtual-network/virtual-network-service-endpoints-overview.md?toc=%2fazure%2fexpressroute%2ftoc.json)
+Jeśli możesz anonsować trasy domyślne, firma Microsoft wymuszają ruch usługi oferowane za pośrednictwem komunikacji równorzędnej (np. usługi Azure storage i bazą danych SQL) firmy Microsoft do środowisku lokalnym. Należy skonfigurować routery do zwrócenia ruchu na platformie Azure za pośrednictwem ścieżki komunikacji równorzędnej firmy Microsoft lub za pośrednictwem Internetu. Po włączeniu punktu końcowego usługi dla usługi, ruch do usługi nie jest zmuszony do środowisku lokalnym. Ruch pozostaje w sieci szkieletowej platformy Azure. Aby dowiedzieć się więcej na temat punktów końcowych usługi, zobacz [punkty końcowe usługi sieci wirtualnej](../virtual-network/virtual-network-service-endpoints-overview.md?toc=%2fazure%2fexpressroute%2ftoc.json)
 
-### <a name="can-virtual-networks-linked-to-the-same-expressroute-circuit-talk-to-each-other"></a>Czy sieci wirtualne połączone z tym samym obwodem ExpressRoute komunikują się ze sobą?
+### <a name="can-virtual-networks-linked-to-the-same-expressroute-circuit-talk-to-each-other"></a>Sieci wirtualne połączone z tym samym obwodem usługi ExpressRoute skontaktować się ze sobą?
 
-Tak. Maszyny wirtualne wdrożone w sieciach wirtualnych podłączonych do tego samego obwodu ExpressRoute mogą komunikować się ze sobą.
+Tak. Maszyny wirtualne wdrożone w sieciach wirtualnych połączonych z tym samym obwodem usługi ExpressRoute może komunikować się ze sobą.
 
-### <a name="can-i-use-site-to-site-connectivity-for-virtual-networks-in-conjunction-with-expressroute"></a>Czy można używać łączności między lokacjami dla sieci wirtualnych w połączeniu z usługą ExpressRoute?
+### <a name="can-i-use-site-to-site-connectivity-for-virtual-networks-in-conjunction-with-expressroute"></a>Czy można używać połączenia lokacja lokacja dla sieci wirtualnych w połączeniu z usługą ExpressRoute?
 
-Tak. ExpressRoute może współistnieć z sieciami VPN typu lokacja-lokacja. Zobacz [Konfigurowanie współistniejących połączeń ExpressRoute i lokacja-lokacja](expressroute-howto-coexist-resource-manager.md).
+Tak. Usługa ExpressRoute może współistnieć z sieci VPN typu lokacja lokacja. Zobacz [Konfigurowanie usługi ExpressRoute i współistniejących połączeń lokacja lokacja](expressroute-howto-coexist-resource-manager.md).
 
-### <a name="why-is-there-a-public-ip-address-associated-with-the-expressroute-gateway-on-a-virtual-network"></a>Dlaczego istnieje Publiczny adres IP skojarzony z bramą ExpressRoute w sieci wirtualnej?
+### <a name="why-is-there-a-public-ip-address-associated-with-the-expressroute-gateway-on-a-virtual-network"></a>Dlaczego jest publiczny adres IP skojarzony z bramą ExpressRoute w sieci wirtualnej
 
-Publiczny adres IP jest używany wyłącznie do zarządzania wewnętrznego i nie stanowi zagrożenia dla sieci wirtualnej.
+Publiczny adres IP jest używany do zarządzania wewnętrznych, tylko, a nie stanowi zagrożenie bezpieczeństwa w sieci wirtualnej.
 
-### <a name="are-there-limits-on-the-number-of-routes-i-can-advertise"></a>Czy istnieją limity liczby tras, które mogę anonsować?
+### <a name="are-there-limits-on-the-number-of-routes-i-can-advertise"></a>Czy istnieją ograniczenia liczby tras, które można było ogłaszać dłuższe?
 
-Tak. Akceptujemy do 4000 prefiksy trasy prywatnej komunikacji równorzędnej i 200 dla komunikacji równorzędnej firmy Microsoft. W przypadku włączenia funkcji ExpressRoute Premium można zwiększyć tę wartość do 10 000 tras prywatnej komunikacji równorzędnej.
+Tak. Akceptujemy do 4000 prefiksów tras do prywatnej komunikacji równorzędnej i 200 dla komunikacji równorzędnej firmy Microsoft. Może to zwiększyć do 10 000 tras do prywatnej komunikacji równorzędnej, po włączeniu funkcji premium usługi ExpressRoute.
 
-### <a name="are-there-restrictions-on-ip-ranges-i-can-advertise-over-the-bgp-session"></a>Czy istnieją ograniczenia dotyczące zakresów adresów IP, które mogę anonsować za pośrednictwem sesji BGP?
+### <a name="are-there-restrictions-on-ip-ranges-i-can-advertise-over-the-bgp-session"></a>Czy istnieją ograniczenia dotyczące zakresów adresów IP I można anonsować za pośrednictwem sesji protokołu BGP?
 
-Nie akceptujemy prywatnych prefiksów (RFC1918) dla sesji protokołu BGP komunikacji równorzędnej firmy Microsoft. Akceptujemy każdy rozmiar prefiksu (do/32) zarówno przez firmę Microsoft, jak i prywatną komunikację równorzędną.
+Prefiksy prywatne (RFC1918) nie są akceptowane dla sesji protokołu BGP z komunikacji równorzędnej firmy Microsoft. Akceptujemy każdy rozmiar prefiksu (do/32) zarówno przez firmę Microsoft, jak i prywatną komunikację równorzędną.
 
-### <a name="what-happens-if-i-exceed-the-bgp-limits"></a>Co się stanie w przypadku przekroczenia limitów protokołu BGP?
+### <a name="what-happens-if-i-exceed-the-bgp-limits"></a>Co się stanie w przypadku przekroczenia Protokół BGP ogranicza?
 
-Sesje protokołu BGP zostaną usunięte. Zostaną zresetowane, gdy liczba prefiksów spadnie poniżej limitu.
+Sesje protokołu BGP zostanie porzucony. One zostaną zresetowane, gdy liczba prefiks spadnie poniżej limitu.
 
-### <a name="what-is-the-expressroute-bgp-hold-time-can-it-be-adjusted"></a>Co to jest czas wstrzymania BGP ExpressRoute? Czy można je dostosować?
+### <a name="what-is-the-expressroute-bgp-hold-time-can-it-be-adjusted"></a>Co to jest czas wstrzymania BGP usługi ExpressRoute? Czy może być regulowany?
 
-Czas wstrzymania to 180. Komunikaty Keep-Alive są wysyłane co 60 sekund. Są to ustalone ustawienia po stronie firmy Microsoft, które nie mogą zostać zmienione. Istnieje możliwość skonfigurowania różnych czasomierzy, a parametry sesji protokołu BGP zostaną odpowiednio wynegocjowane.
+Czas wstrzymania to 180. Komunikaty utrzymywania aktywności są wysyłane co 60 sekund. Te ustawienia są stałych po stronie firmy Microsoft, nie można jej zmienić. Istnieje możliwość skonfigurowania różnych czasomierze i będzie negocjowane odpowiednio parametry sesji protokołu BGP.
 
-### <a name="can-i-change-the-bandwidth-of-an-expressroute-circuit"></a>Czy mogę zmienić przepustowość obwodu ExpressRoute?
+### <a name="can-i-change-the-bandwidth-of-an-expressroute-circuit"></a>Czy można zmienić przepustowość obwodu usługi ExpressRoute?
 
-Tak, możesz próbować zwiększyć przepustowość obwodu usługi ExpressRoute w Azure Portal lub przy użyciu programu PowerShell. Jeśli na porcie fizycznym, na którym został utworzony obwód, jest dostępna pojemność, zmiana zakończy się pomyślnie. 
+Tak, można spróbować zwiększyć przepustowość obwodu usługi ExpressRoute w witrynie Azure portal lub przy użyciu programu PowerShell. Brak dostępnej pojemności na port fizyczny, w której utworzono obwodu, zmiany zakończy się pomyślnie. 
 
-Jeśli zmiana nie powiedzie się, oznacza to, że nie ma wystarczającej wydajności w bieżącym porcie i konieczne jest utworzenie nowego obwodu ExpressRoute o wyższej przepustowości lub brak dodatkowej pojemności w tej lokalizacji. w takim przypadku nie będzie można zwiększyć zużywa. 
+Jeśli zmiany nie powiedzie się, oznacza to, albo nie ma za małą pojemność na bieżącego portu i należy utworzyć nowy obwód usługi ExpressRoute z wyższej przepustowości lub, w tej lokalizacji nie ma żadnych dodatkowych możliwości, w którym to przypadku nie można zwiększyć przepustowość. 
 
-Należy również wykonać monit z dostawcą połączenia, aby upewnić się, że aktualizuje ograniczenia w ramach sieci, aby zapewnić obsługę większej przepustowości. Nie można jednak zmniejszyć przepustowości obwodu ExpressRoute. Konieczne jest utworzenie nowego obwodu ExpressRoute o mniejszej przepustowości i usunięcie starego obwodu.
+Należy również wykonać kolejne czynności z dostawcą połączenia, aby upewnić się, aby zaktualizować ograniczenia w obrębie ich sieci w celu obsługi zwiększonej przepustowości. Nie można jednak zmniejszyć przepustowość obwodu usługi ExpressRoute. Musisz utworzyć nowy obwód usługi ExpressRoute za pomocą mniejszej przepustowości i Usuń stare obwodu.
 
-### <a name="how-do-i-change-the-bandwidth-of-an-expressroute-circuit"></a>Jak mogę zmienić przepustowości obwodu ExpressRoute?
+### <a name="how-do-i-change-the-bandwidth-of-an-expressroute-circuit"></a>Jak zmienić przepustowość obwodu usługi ExpressRoute?
 
-Przepustowość obwodu usługi ExpressRoute można zaktualizować za pomocą interfejsu API REST lub polecenia cmdlet programu PowerShell.
+Możesz zaktualizować przepustowość obwodu usługi ExpressRoute za pomocą interfejsu API REST lub polecenia cmdlet programu PowerShell.
 
-## <a name="expressroute-premium"></a>ExpressRoute Premium
+## <a name="expressroute-premium"></a>ExpressRoute premium
 
-### <a name="what-is-expressroute-premium"></a>Co to jest ExpressRoute Premium?
+### <a name="what-is-expressroute-premium"></a>Co to jest ExpressRoute w wersji premium?
 
-ExpressRoute Premium to zbiór następujących funkcji:
+ExpressRoute premium jest kolekcją następujące funkcje:
 
-* Zwiększono limit tabeli routingu z 4000 tras do 10 000 tras dla prywatnej komunikacji równorzędnej.
-* Zwiększona liczba połączeń sieci wirtualnych i ExpressRoute Global Reach, które można włączyć w obwodzie ExpressRoute (wartość domyślna to 10). Aby uzyskać więcej informacji, zobacz tabelę [limitów ExpressRoute](#limits) .
+* Zwiększono routingu limit tabeli z tras 4000 do 10 000 tras do prywatnej komunikacji równorzędnej.
+* Zwiększenie liczby połączeń sieci wirtualne i usługi ExpressRoute zasięgu globalnym, które można włączyć dla obwodu usługi ExpressRoute (wartość domyślna to 10). Aby uzyskać więcej informacji, zobacz [limity usługi ExpressRoute](#limits) tabeli.
 * Łączność z pakietem Office 365
-* Globalna łączność przez sieć podstawową firmy Microsoft. Teraz można połączyć sieć wirtualną w jednym regionie geopolitycznym z obwodem ExpressRoute w innym regionie.<br>
-    **Pokazują**
+* Globalna łączność między za pośrednictwem sieci podstawowej firmy Microsoft. Teraz można połączyć sieć wirtualną w jednym regionie geopolitycznym obwodu usługi ExpressRoute w innym regionie.<br>
+    **Przykłady:**
 
-    *  Można połączyć sieć wirtualną utworzoną w Europie zachodniej z obwodem ExpressRoute utworzonym w Dolina krzemu. 
-    *  W przypadku komunikacji równorzędnej firmy Microsoft są anonsowane prefiksy z innych regionów geopolitycznych, które mogą nawiązywać połączenia, na przykład, SQL Azure w Europie Zachodniej od obwodu w Dolina krzemu.
+    *  Możliwe jest łączenie sieci wirtualnej utworzonej w regionie Europa Zachodnia z obwodem usługi ExpressRoute utworzony w Dolinie Krzemowej. 
+    *  W komunikacji równorzędnej firmy Microsoft prefiksów z innych regionów geopolitycznych są anonsowane w taki sposób, że można nawiązać połączenie, na przykład SQL Azure w regionie Europa Zachodnia z obwodem w Dolinie Krzemowej.
 
 
-### <a name="limits"></a>Ile połączeń sieci wirtualnych i ExpressRoute Global Reach można włączyć w obwodzie ExpressRoute, jeśli włączono opcję ExpressRoute Premium?
+### <a name="limits"></a>Liczba połączeń sieci wirtualne i usługi ExpressRoute zasięgu globalnym można włączyć na obwód usługi ExpressRoute włączenie ExpressRoute w wersji premium?
 
-W poniższych tabelach przedstawiono limity ExpressRoute oraz liczbę połączeń sieci wirtualnych i ExpressRoute Global Reach na obwód ExpressRoute:
+W poniższej tabeli przedstawiono limity usługi ExpressRoute i połączeń sieci wirtualne i usługi ExpressRoute zasięgu globalnym na obwód usługi ExpressRoute:
 
 [!INCLUDE [ExpressRoute limits](../../includes/expressroute-limits.md)]
 
-### <a name="how-do-i-enable-expressroute-premium"></a>Jak mogę włączyć usługę ExpressRoute Premium?
+### <a name="how-do-i-enable-expressroute-premium"></a>Jak włączyć ExpressRoute w wersji premium?
 
-Funkcje ExpressRoute Premium można włączyć, gdy ta funkcja jest włączona, i można ją wyłączyć, aktualizując stan obwodu. Możesz włączyć funkcję ExpressRoute Premium w czasie tworzenia obwodu lub wywołać interfejs API REST/polecenie cmdlet programu PowerShell.
+Funkcje premium usługi ExpressRoute można włączyć, jeśli funkcja jest włączona i może zostać wyłączony, aktualizując Stan obwodu. Możesz włączyć w czasie tworzenia obwodu ExpressRoute w wersji premium lub może wywołać interfejs API REST / polecenia cmdlet programu PowerShell.
 
-### <a name="how-do-i-disable-expressroute-premium"></a>Jak mogę wyłączyć usługę ExpressRoute Premium?
+### <a name="how-do-i-disable-expressroute-premium"></a>Jak wyłączyć ExpressRoute w wersji premium?
 
-Możesz wyłączyć usługę ExpressRoute Premium, wywołując interfejs API REST lub polecenie cmdlet programu PowerShell. Przed wyłączeniem usługi ExpressRoute Premium należy upewnić się, że masz skalowane skalowanie, aby spełnić domyślne limity. Jeśli użycie nie przekroczy limitów domyślnych, żądanie wyłączenia ExpressRoute Premium zakończy się niepowodzeniem.
+ExpressRoute premium można wyłączyć przez wywołanie interfejsu API REST lub polecenia cmdlet programu PowerShell. Upewnij się, że była skalowana potrzeb łączności, aby spełnić limity domyślne przed wyłączeniem ExpressRoute w wersji premium. Skaluje swoje użycie przekroczą ustalone limity domyślne, żądanie wyłączenia ExpressRoute premium nie powiedzie się.
 
-### <a name="can-i-pick-and-choose-the-features-i-want-from-the-premium-feature-set"></a>Czy mogę wybrać wybrane funkcje z zestawu funkcji w warstwie Premium?
+### <a name="can-i-pick-and-choose-the-features-i-want-from-the-premium-feature-set"></a>Można można wybrać funkcje, których chcę z zestawu funkcji premium?
 
-Nie. Nie można wybrać funkcji. Wszystkie funkcje są włączane po włączeniu opcji ExpressRoute Premium.
+Nie. Nie można wybrać funkcje. Włączyliśmy wszystkich funkcji, po włączeniu ExpressRoute w wersji premium.
 
-### <a name="how-much-does-expressroute-premium-cost"></a>Ile kosztuje ExpressRoute?
+### <a name="how-much-does-expressroute-premium-cost"></a>Jaki jest koszt premium usługi ExpressRoute?
 
-Zapoznaj się ze [szczegółami cennika](https://azure.microsoft.com/pricing/details/expressroute/) kosztu.
+Zapoznaj się [cennik](https://azure.microsoft.com/pricing/details/expressroute/) kosztów.
 
-### <a name="do-i-pay-for-expressroute-premium-in-addition-to-standard-expressroute-charges"></a>Czy oprócz standardowych opłat za usługę ExpressRoute płacisz za usługę ExpressRoute Premium?
+### <a name="do-i-pay-for-expressroute-premium-in-addition-to-standard-expressroute-charges"></a>Czy opłaty za usługi ExpressRoute premium oprócz standardowe opłaty za usługę ExpressRoute?
 
-Tak. Opłaty za usługę ExpressRoute Premium stosują się do opłat za obwód ExpressRoute i opłat wymaganych przez dostawcę połączenia.
+Tak. ExpressRoute premium opłaty na podstawie obwodu usługi ExpressRoute opłaty za magazyn i wymagane przez dostawcę połączenia.
 
 ## <a name="expressroute-local"></a>ExpressRoute lokalny
 ### <a name="what-is-expressroute-local"></a>Co to jest ExpressRoute Local?
@@ -327,68 +336,68 @@ ExpressRoute lokalna ma również te same limity dotyczące zasobów (np. liczb�
 ### <a name="where-is-expressroute-local-available-and-which-azure-regions-is-each-peering-location-mapped-to"></a>Gdzie jest dostępna usługa ExpressRoute lokalna i które regiony platformy Azure są mapowane na poszczególne lokalizacje komunikacji równorzędnej?
 ExpressRoute Local jest dostępny w lokalizacjach komunikacji równorzędnej, w których jeden lub dwa regiony platformy Azure są zamknięte. Nie jest on dostępny w lokalizacji komunikacji równorzędnej, w której nie ma regionu świadczenia usługi Azure w tym stanie lub województwie lub kraju. Sprawdź dokładne mapowania na [stronie Lokalizacje](expressroute-locations-providers.md).  
 
-## <a name="expressroute-for-office-365"></a>ExpressRoute pakietu Office 365
+## <a name="expressroute-for-office-365"></a>Usługa ExpressRoute dla usługi Office 365
 
 [!INCLUDE [expressroute-office365-include](../../includes/expressroute-office365-include.md)]
 
-### <a name="how-do-i-create-an-expressroute-circuit-to-connect-to-office-365-services"></a>Jak mogę utworzyć obwód usługi ExpressRoute, aby połączyć się z usługami pakietu Office 365?
+### <a name="how-do-i-create-an-expressroute-circuit-to-connect-to-office-365-services"></a>Jak utworzyć obwód usługi ExpressRoute, aby połączyć się z usługami Office 365?
 
-1. Przejrzyj [stronę wymagań wstępnych ExpressRoute](expressroute-prerequisites.md) , aby upewnić się, że spełniasz wymagania.
-2. Aby upewnić się, że wymagania dotyczące łączności są spełnione, zapoznaj się z listą dostawców usług i lokalizacji w artykule [ExpressRoute partnerzy i lokalizacje](expressroute-locations.md) .
-3. Zaplanuj wymagania dotyczące pojemności, przeglądając temat [Planowanie sieci i dostrajanie wydajności dla pakietu Office 365](https://aka.ms/tune/).
-4. Wykonaj kroki wymienione w obszarze przepływy pracy, aby skonfigurować [przepływy pracy ExpressRoute łączności dla aprowizacji obwodów i Stanów obwodów](expressroute-workflows.md).
+1. Przegląd [strony wymagania wstępne usługi ExpressRoute](expressroute-prerequisites.md) się upewnić, że spełnione są wymagania.
+2. Aby upewnić się, że spełnione są Twoje potrzeby w zakresie łączności, zapoznaj się z listy dostawców usług i lokalizacje w [ExpressRoute partnerzy i lokalizacje](expressroute-locations.md) artykułu.
+3. Planowanie wymagań dotyczących pojemności, przeglądając [Planowanie sieci i dostrajanie wydajności dla usługi Office 365](https://aka.ms/tune/).
+4. Wykonaj następujące kroki w przepływach pracy, aby skonfigurować łączność [przepływy pracy ExpressRoute dla aprowizacji obwodu i stanów obwodów](expressroute-workflows.md).
 
 > [!IMPORTANT]
-> Upewnij się, że dodatek ExpressRoute Premium został włączony podczas konfigurowania łączności z usługami Office 365.
+> Upewnij się, że włączono dodatek ExpressRoute premium podczas konfigurowania łączności z usługami Office 365.
 > 
 > 
 
 ### <a name="can-my-existing-expressroute-circuits-support-connectivity-to-office-365-services"></a>Czy istniejące obwody usługi ExpressRoute obsługują łączność z usługami Office 365?
 
-Tak. Istniejący obwód usługi ExpressRoute można skonfigurować w taki sposób, aby obsługiwał łączność z usługami Office 365. Upewnij się, że masz wystarczającą pojemność, aby nawiązać połączenie z usługami Office 365 i że włączono dodatek Premium. [Planowanie sieci i dostrajanie wydajności dla pakietu Office 365](https://aka.ms/tune/) ułatwia planowanie potrzeb związanych z łącznością. Ponadto zobacz [Tworzenie i modyfikowanie obwodu ExpressRoute](expressroute-howto-circuit-classic.md).
+Tak. Istniejący obwód usługi ExpressRoute można skonfigurować do obsługi łączności z usługami Office 365. Upewnij się, że masz wystarczająco duże, aby połączyć się z usługami Office 365 i włączeniu dodatku premium. [Planowanie sieci i dostrajanie wydajności dla usługi Office 365](https://aka.ms/tune/) musi pomaga zaplanować łączności. Zobacz też [tworzenie i modyfikowanie obwodu ExpressRoute](expressroute-howto-circuit-classic.md).
 
-### <a name="what-office-365-services-can-be-accessed-over-an-expressroute-connection"></a>Do jakich usług pakietu Office 365 można uzyskać dostęp za pośrednictwem połączenia ExpressRoute?
+### <a name="what-office-365-services-can-be-accessed-over-an-expressroute-connection"></a>Jakie usługi Office 365 services jest dostępna za pośrednictwem połączenia usługi ExpressRoute?
 
-Zapoznaj się ze stroną usługi [Office 365 i zakresami adresów IP,](https://aka.ms/o365endpoints) Aby uzyskać aktualną listę usług obsługiwanych za pośrednictwem ExpressRoute.
+Zapoznaj się [URL usługi Office 365 i zakresy adresów IP](https://aka.ms/o365endpoints) strony, aby uzyskać aktualną listę usług obsługiwanych za pośrednictwem usługi ExpressRoute.
 
-### <a name="how-much-does-expressroute-for-office-365-services-cost"></a>Ile kosztuje ExpressRoute usługi Office 365?
+### <a name="how-much-does-expressroute-for-office-365-services-cost"></a>Ile kosztuje usługa ExpressRoute dla kosztu usługi Office 365?
 
-Usługi pakietu Office 365 wymagają włączenia dodatku Premium. Aby uzyskać informacje o kosztach, zobacz [stronę z cennikiem](https://azure.microsoft.com/pricing/details/expressroute/) .
+Usługi Office 365 wymaga dodatku premium, aby włączyć. Zobacz [stronę szczegółów cennika](https://azure.microsoft.com/pricing/details/expressroute/) kosztów.
 
-### <a name="what-regions-is-expressroute-for-office-365-supported-in"></a>Jakie regiony są ExpressRoute dla pakietu Office 365?
+### <a name="what-regions-is-expressroute-for-office-365-supported-in"></a>W jakich regionach jest obsługiwane usługi ExpressRoute dla usługi Office 365?
 
-Aby uzyskać informacje [, zobacz ExpressRoute partnerzy i lokalizacje](expressroute-locations.md) .
+Zobacz [ExpressRoute partnerzy i lokalizacje](expressroute-locations.md) informacji.
 
-### <a name="can-i-access-office-365-over-the-internet-even-if-expressroute-was-configured-for-my-organization"></a>Czy mogę uzyskać dostęp do pakietu Office 365 za pośrednictwem Internetu, nawet jeśli ExpressRoute został skonfigurowany dla mojej organizacji?
+### <a name="can-i-access-office-365-over-the-internet-even-if-expressroute-was-configured-for-my-organization"></a>Można uzyskać dostęp do usługi Office 365 za pośrednictwem Internetu, nawet jeśli usługa ExpressRoute została skonfigurowana dla mojej organizacji?
 
-Tak. Punkty końcowe usługi Office 365 są dostępne za pośrednictwem Internetu, nawet jeśli skonfigurowano ExpressRoute dla sieci. Skontaktuj się z zespołem sieci w organizacji, jeśli sieć w lokalizacji jest skonfigurowana do łączenia się z usługami Office 365 za pomocą ExpressRoute.
+Tak. Punkty końcowe usługi Office 365 są dostępne za pośrednictwem Internetu, nawet jeśli usługa ExpressRoute został skonfigurowany w sieci. Sprawdź sieci zespołowi w organizacji, jeśli sieć lokalizacji jest skonfigurowany nawiązać połączenia z usługami Office 365 za pośrednictwem usługi ExpressRoute.
 
-### <a name="how-can-i-plan-for-high-availability-for-office-365-network-traffic-on-azure-expressroute"></a>Jak zaplanować wysoką dostępność ruchu sieciowego pakietu Office 365 na platformie Azure ExpressRoute?
-Zapoznaj się z zaleceniami dotyczącymi [wysokiej dostępności i trybu failover za pomocą usługi Azure ExpressRoute](https://aka.ms/erhighavailability)
+### <a name="how-can-i-plan-for-high-availability-for-office-365-network-traffic-on-azure-expressroute"></a>Jak można zaplanować wysokiej dostępności dla usługi Office 365, ruch sieciowy w ramach usługi Azure ExpressRoute?
+Zobacz zalecenie dla [wysokiej dostępności i pracy awaryjnej przy użyciu usługi Azure ExpressRoute](https://aka.ms/erhighavailability)
 
-### <a name="can-i-access-office-365-us-government-community-gcc-services-over-an-azure-us-government-expressroute-circuit"></a>Czy mogę uzyskać dostęp do usług Office 365 dla instytucji rządowych USA (Microsoft Community) w ramach obwodu ExpressRoute dla instytucji rządowych USA platformy Azure?
+### <a name="can-i-access-office-365-us-government-community-gcc-services-over-an-azure-us-government-expressroute-circuit"></a>Można uzyskać dostęp do usług Office 365 US Government Community (GCC) za pośrednictwem obwodu usługi ExpressRoute systemu Azure US Government?
 
-Tak. Punkty końcowe usługi 365 Microsoft Azure w zatoce są dostępne za pomocą ExpressRoute dla instytucji rządowych USA. Należy jednak najpierw otworzyć bilet pomocy technicznej na Azure Portal, aby podać prefiksy, które mają być anonsowane firmie Microsoft. Po rozwiązaniu biletu pomocy technicznej zostanie nawiązane połączenie z usługami w ramach programu Office 365 w zatoce. 
+Tak. Punkty końcowe usługi GCC usługi Office 365 są dostępne za pośrednictwem usługi Azure US Government usługi ExpressRoute. Jednakże należy najpierw otworzyć bilet pomocy technicznej w witrynie Azure portal, aby zapewnić prefiksy, które mają być anonsowane do firmy Microsoft. Łączność z usługami Office 365 GCC zostanie nawiązane, po usunięciu bilet pomocy technicznej. 
 
-## <a name="route-filters-for-microsoft-peering"></a>Filtry tras dla komunikacji równorzędnej firmy Microsoft
+## <a name="route-filters-for-microsoft-peering"></a>Filtrów tras dla komunikacji równorzędnej firmy Microsoft
 
-### <a name="i-am-turning-on-microsoft-peering-for-the-first-time-what-routes-will-i-see"></a>Po raz pierwszy włączam komunikację równorzędną firmy Microsoft?
+### <a name="i-am-turning-on-microsoft-peering-for-the-first-time-what-routes-will-i-see"></a>Czy mogę jestem włączenie komunikacji równorzędnej firmy Microsoft po raz pierwszy, jakie trasy zostanie wyświetlony?
 
-Nie będą wyświetlane żadne trasy. Musisz dołączyć filtr trasy do obwodu, aby rozpocząć anonse z prefiksami. Aby uzyskać instrukcje, zobacz [Konfigurowanie filtrów tras dla komunikacji równorzędnej firmy Microsoft](how-to-routefilter-powershell.md).
+Nie będą widzieć wszystkie trasy. Musisz dołączyć filtru tras do obwodu można uruchomić anonse prefiks. Aby uzyskać instrukcje, zobacz [Konfigurowanie filtrów tras dla komunikacji równorzędnej firmy Microsoft](how-to-routefilter-powershell.md).
 
-### <a name="i-turned-on-microsoft-peering-and-now-i-am-trying-to-select-exchange-online-but-it-is-giving-me-an-error-that-i-am-not-authorized-to-do-it"></a>Mam włączoną komunikację równorzędną firmy Microsoft i teraz próbuję wybrać opcję Exchange Online, ale jest to błąd, do którego nie mam autoryzacji.
+### <a name="i-turned-on-microsoft-peering-and-now-i-am-trying-to-select-exchange-online-but-it-is-giving-me-an-error-that-i-am-not-authorized-to-do-it"></a>Po włączeniu komunikacji równorzędnej firmy Microsoft i teraz próbuję wybierz usługi Exchange Online, ale jej zapewniając mnie błąd I nie mam uprawnień to zrobić.
 
-W przypadku korzystania z filtrów tras każdy klient może włączyć komunikację równorzędną firmy Microsoft. Jednak w przypadku korzystania z usług Office 365 nadal trzeba uzyskać autoryzację w pakiecie Office 365.
+Korzystając z filtrów tras, każdy klient można włączyć komunikację równorzędną firmy Microsoft. Jednak co umożliwia korzystanie z usługi Office 365, nadal musisz uzyskać autoryzowane przez usługę Office 365.
 
-### <a name="i-enabled-microsoft-peering-prior-to-august-1-2017-how-can-i-take-advantage-of-route-filters"></a>Po włączeniu komunikacji równorzędnej firmy Microsoft przed 1 sierpnia 2017, jak mogę wykorzystać filtry tras?
+### <a name="i-enabled-microsoft-peering-prior-to-august-1-2017-how-can-i-take-advantage-of-route-filters"></a>Czy włączono komunikacji równorzędnej przed 1 sierpnia 2017 r., jak skorzystać z filtrów tras firmy Microsoft?
 
 Istniejący obwód będzie nadal ogłaszał prefiksy dla pakietu Office 365. Jeśli chcesz dodać anonse publicznych prefiksów platformy Azure za pośrednictwem tej samej komunikacji równorzędnej firmy Microsoft, możesz utworzyć filtr tras, wybrać usługi, które są anonsowane (w tym usługi Office 365), i dołączyć filtr do komunikacji równorzędnej firmy Microsoft. Aby uzyskać instrukcje, zobacz [Konfigurowanie filtrów tras dla komunikacji równorzędnej firmy Microsoft](how-to-routefilter-powershell.md).
 
-### <a name="i-have-microsoft-peering-at-one-location-now-i-am-trying-to-enable-it-at-another-location-and-i-am-not-seeing-any-prefixes"></a>Mam dostęp do komunikacji równorzędnej firmy Microsoft w jednej lokalizacji, teraz próbuję włączyć ją w innej lokalizacji i nie widzę żadnych prefiksów.
+### <a name="i-have-microsoft-peering-at-one-location-now-i-am-trying-to-enable-it-at-another-location-and-i-am-not-seeing-any-prefixes"></a>Mam komunikacji równorzędnej w jednej lokalizacji firmy Microsoft, a teraz próbuję włączyć ją w innej lokalizacji i nie widzę żadnych prefiksów.
 
-* Komunikacja równorzędna firmy Microsoft ze obwodów usługi ExpressRoute, które zostały skonfigurowane przed 1 sierpnia 2017, będzie miała wszystkie prefiksy usług anonsowane za pomocą komunikacji równorzędnej firmy Microsoft, nawet jeśli filtry tras nie są zdefiniowane.
+* Obwodów usługi ExpressRoute, które zostały skonfigurowane przed 1 sierpnia 2017 r. komunikacji równorzędnej firmy Microsoft będzie miał wszystkie prefiksy usługi anonsowanego za pośrednictwem komunikacji równorzędnej firmy Microsoft, nawet jeśli nie zdefiniowano filtry tras.
 
-* Komunikacja równorzędna firmy Microsoft obwodów usługi ExpressRoute, które są skonfigurowane w dniu lub po 1 sierpnia 2017, nie będzie miała żadnych prefiksów anonsowanych do momentu dołączenia do obwodu filtru tras. Domyślnie nie będą wyświetlane żadne prefiksy.
+* Komunikacja równorzędna firmy Microsoft obwodów usługi ExpressRoute, skonfigurowanych po 1 sierpnia 2017 r. nie będzie miał wszelkie prefiksy anonsowane do czasu podłączenia filtru tras do obwodu. Domyślnie, zostanie wyświetlony bez prefiksów.
 
 ## <a name="expressRouteDirect"></a>ExpressRoute bezpośrednie
 

@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/05/2019
+ms.date: 1/08/2020
 ms.author: raynew
-ms.openlocfilehash: e83c14e5ce337e8a3c4c119acc2397b98afd5b56
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: e5fdf0a14586a0a2ea97d222f4be481e8fe31e51
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73621120"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754516"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Architektura odzyskiwania po awarii z platformy Azure do platformy Azure
 
@@ -97,13 +97,13 @@ W poniższej tabeli objaśniono różne typy spójności.
 
 ### <a name="crash-consistent"></a>Spójny na poziomie awarii
 
-**Opis** | **Szczegóły** | **Zaleca**
+**Opis** | **Szczegóły** | **Zalecenie**
 --- | --- | ---
 Migawka spójna pod kątem awarii przechwytuje dane znajdujące się na dysku podczas tworzenia migawki. Nie zawiera żadnych elementów w pamięci.<br/><br/> Zawiera odpowiednik danych na dysku, które mogą być obecne, jeśli maszyna wirtualna uległa awarii lub przewód zasilający został pobrany z serwera na chwilę, gdy migawka została wykonana.<br/><br/> Spójna awaria nie gwarantuje spójności danych dla systemu operacyjnego lub aplikacji na maszynie wirtualnej. | Site Recovery domyślnie tworzy punkty odzyskiwania spójne z awarią co pięć minut. Nie można zmodyfikować tego ustawienia.<br/><br/>  | Obecnie większość aplikacji może odzyskać z punktów spójnych z awarią.<br/><br/> Punkty odzyskiwania spójne z awarią są zwykle wystarczające do replikacji systemów operacyjnych i aplikacji, takich jak serwery DHCP i serwery wydruku.
 
 ### <a name="app-consistent"></a>Spójna na poziomie aplikacji
 
-**Opis** | **Szczegóły** | **Zaleca**
+**Opis** | **Szczegóły** | **Zalecenie**
 --- | --- | ---
 Punkty odzyskiwania spójne z aplikacjami są tworzone na podstawie migawek spójnych na poziomie aplikacji.<br/><br/> Migawka spójna na poziomie aplikacji zawiera wszystkie informacje w migawce spójnej na poziomie awarii oraz wszystkie dane w pamięci i transakcjach w toku. | Migawki spójne z aplikacjami używają Usługa kopiowania woluminów w tle (VSS):<br/><br/>   1) po zainicjowaniu migawki usługa VSS wykonuje na woluminie operację kopiowania na zapis (KROWy).<br/><br/>   2) przed wykonaniem KROWy usługa VSS informuje każdą aplikację na komputerze, że musi ona opróżnić dane rezydentne pamięci na dysk.<br/><br/>   3) usługa VSS umożliwia korzystanie z kopii zapasowej/odzyskiwania po awarii (w tym przypadku Site Recovery) w celu odczytania danych migawki i przejścia. | Migawki spójne z aplikacjami są wykonywane zgodnie z określoną częstotliwością. Ta częstotliwość powinna być zawsze mniejsza niż ustawiona dla zachowywania punktów odzyskiwania. Jeśli na przykład zachowasz punkty odzyskiwania przy użyciu domyślnego ustawienia przez 24 godziny, należy ustawić częstotliwość krótszą niż 24 godziny.<br/><br/>Są one bardziej skomplikowane i trwają dłużej niż w przypadku migawek spójnych na poziomie awarii.<br/><br/> Wpływają one na wydajność aplikacji uruchomionych na maszynie wirtualnej z włączoną obsługą replikacji. 
 
@@ -143,19 +143,21 @@ Należy pamiętać, że szczegółowe informacje o wymaganiach dotyczących łą
 
 #### <a name="source-region-rules"></a>Reguły regionu źródłowego
 
-**Rule** |  **Szczegóły** | **Tag usługi**
+**Reguły** |  **Szczegóły** | **Tag usługi**
 --- | --- | --- 
-Zezwalaj na ruch wychodzący HTTPS: port 443 | Zezwalaj na zakresy, które odpowiadają kontom magazynu w regionie źródłowym | Chowan.\<> nazwy regionu.
-Zezwalaj na ruch wychodzący HTTPS: port 443 | Zezwalaj na zakresy, które odpowiadają Azure Active Directory (Azure AD).<br/><br/> Jeśli w przyszłości zostaną dodane adresy usługi Azure AD, musisz utworzyć nowe reguły sieciowej grupy zabezpieczeń (sieciowej grupy zabezpieczeń).  | Usługi azureactivedirectory
-Zezwalaj na ruch wychodzący HTTPS: port 443 | Zezwalaj na dostęp do [Site Recovery punktów końcowych](https://aka.ms/site-recovery-public-ips) , które odpowiadają lokalizacji docelowej. 
+Zezwalaj na ruch wychodzący HTTPS: port 443 | Zezwalaj na zakresy, które odpowiadają kontom magazynu w regionie źródłowym | Chowan.\<nazwę regionu >
+Zezwalaj na ruch wychodzący HTTPS: port 443 | Zezwalaj na zakresy, które odpowiadają Azure Active Directory (Azure AD).<br/><br/> Jeśli w przyszłości zostaną dodane adresy usługi Azure AD, musisz utworzyć nowe reguły sieciowej grupy zabezpieczeń (sieciowej grupy zabezpieczeń).  | AzureActiveDirectory
+Zezwalaj na ruch wychodzący HTTPS: port 443 | Zezwalaj na zakresy odpowiadające centrum zdarzeń w regionie docelowym. | EventsHub.\<nazwę regionu >
+Zezwalaj na ruch wychodzący HTTPS: port 443 | Zezwalaj na zakresy, które odpowiadają Azure Site Recovery  | AzureSiteRecovery
 
 #### <a name="target-region-rules"></a>Reguły regionu docelowego
 
-**Rule** |  **Szczegóły** | **Tag usługi**
+**Reguły** |  **Szczegóły** | **Tag usługi**
 --- | --- | --- 
-Zezwalaj na ruch wychodzący HTTPS: port 443 | Zezwalaj na zakresy, które odpowiadają kontom magazynu w regionie docelowym. | Chowan.\<> nazwy regionu.
-Zezwalaj na ruch wychodzący HTTPS: port 443 | Zezwalaj na zakresy odpowiadające usłudze Azure AD.<br/><br/> Jeśli w przyszłości zostaną dodane adresy usługi Azure AD, musisz utworzyć nowe reguły sieciowej grupy zabezpieczeń.  | Usługi azureactivedirectory
-Zezwalaj na ruch wychodzący HTTPS: port 443 | Zezwalaj na dostęp do [Site Recovery punktów końcowych](https://aka.ms/site-recovery-public-ips) odpowiadających lokalizacji źródłowej. 
+Zezwalaj na ruch wychodzący HTTPS: port 443 | Zezwalaj na zakresy, które odpowiadają kontom magazynu w regionie docelowym | Chowan.\<nazwę regionu >
+Zezwalaj na ruch wychodzący HTTPS: port 443 | Zezwalaj na zakresy odpowiadające usłudze Azure AD.<br/><br/> Jeśli w przyszłości zostaną dodane adresy usługi Azure AD, musisz utworzyć nowe reguły sieciowej grupy zabezpieczeń.  | AzureActiveDirectory
+Zezwalaj na ruch wychodzący HTTPS: port 443 | Zezwalaj na zakresy odpowiadające centrum zdarzeń w regionie źródłowym. | EventsHub.\<nazwę regionu >
+Zezwalaj na ruch wychodzący HTTPS: port 443 | Zezwalaj na zakresy, które odpowiadają Azure Site Recovery  | AzureSiteRecovery
 
 
 #### <a name="control-access-with-nsg-rules"></a>Kontrola dostępu przy użyciu reguł sieciowej grupy zabezpieczeń

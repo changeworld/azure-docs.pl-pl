@@ -1,20 +1,20 @@
 ---
-title: Uwierzytelnianie w usłudze Azure Maps | Microsoft Docs
-description: Uwierzytelnianie na potrzeby używania usług Azure Maps.
+title: Metody uwierzytelniania | Mapy Microsoft Azure
+description: Ten artykuł zawiera informacje na temat usługi Azure Active Directory (Azure AD) lub uwierzytelniania opartego na kluczu współdzielonym do korzystania z usług Maps Microsoft Azure Services. Dowiedz się, jak uzyskać klucz subskrypcji Azure Maps.
 author: walsehgal
 ms.author: v-musehg
-ms.date: 10/24/2019
+ms.date: 12/30/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 84af496a92bd3c7b30062e965335782f7661aa4a
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 006adae99b2430f4c08ce5fc692598e48f45c239
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73575650"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911822"
 ---
 # <a name="authentication-with-azure-maps"></a>Uwierzytelnianie w usłudze Azure Maps
 
@@ -22,12 +22,14 @@ Azure Maps obsługuje dwa sposoby uwierzytelniania żądań: klucz współużytk
 
 ## <a name="shared-key-authentication"></a>Uwierzytelnianie klucza wspólnego
 
-Uwierzytelnianie klucza wspólnego przekazuje klucze generowane przez konto Azure Maps przy każdym żądaniu do Azure Maps.  Podczas tworzenia konta Azure Maps są generowane dwa klucze. Dla każdego żądania do Azure Maps usług należy dodać klucz subskrypcji jako parametr do adresu URL.
+Uwierzytelnianie klucza wspólnego przekazuje klucze generowane przez konto Azure Maps przy każdym żądaniu do Azure Maps. Dla każdego żądania do Azure Maps usług należy dodać *klucz subskrypcji* jako parametr do adresu URL. Klucze podstawowe i pomocnicze są generowane po utworzeniu konta Azure Maps. Zalecamy używanie klucza podstawowego jako klucza subskrypcji podczas wywoływania Azure Maps przy użyciu uwierzytelniania klucza współużytkowanego. Klucz pomocniczy może być używany w scenariuszach, takich jak stopniowe zmiany klawiszy.  
+
+Aby uzyskać informacje na temat wyświetlania kluczy w Azure Portal, zobacz [Zarządzanie uwierzytelnianiem](https://aka.ms/amauthdetails).
 
 > [!Tip]
 > Zaleca się regularne ponowne generowanie kluczy. Podano dwa klucze, aby można było zachować połączenia z jednym kluczem przy ponownym generowaniu innych. Po ponownym wygenerowaniu kluczy należy zaktualizować wszystkie aplikacje, które uzyskują dostęp do konta, aby użyć nowych kluczy.
 
-Aby uzyskać informacje o wyświetlaniu kluczy, zobacz [Wyświetlanie szczegółów uwierzytelniania](https://aka.ms/amauthdetails).
+
 
 ## <a name="authentication-with-azure-active-directory-preview"></a>Uwierzytelnianie w usłudze Azure Active Directory (wersja zapoznawcza)
 
@@ -45,8 +47,8 @@ Azure Maps generuje *unikatowy identyfikator (identyfikator klienta)* dla każde
 
 | Środowisko platformy Azure   | Punkt końcowy tokenu usługi Azure AD |
 | --------------------|-------------------------|
-| Usługa Azure Public        | https://login.microsoftonline.com |
-| Azure Government    | https://login.microsoftonline.us |
+| Azure Public        | https://login.microsoftonline.com |
+| Platforma Azure dla instytucji rządowych    | https://login.microsoftonline.us |
 
 
 Aby uzyskać więcej informacji na temat sposobu konfigurowania usługi Azure AD i tokenów żądań dla Azure Maps, zobacz [Zarządzanie uwierzytelnianiem w programie Azure Maps](https://docs.microsoft.com/azure/azure-maps/how-to-manage-authentication).

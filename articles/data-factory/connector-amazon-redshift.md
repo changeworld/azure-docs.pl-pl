@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/04/2018
-ms.openlocfilehash: 262afd00428c61d828837fd4692fd4fe110448c8
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 4d729a0117c7c409d1a3e0c3fd440aed96153203
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931810"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75893332"
 ---
 # <a name="copy-data-from-amazon-redshift-using-azure-data-factory"></a>Kopiowanie danych z usługi Amazon RedShift przy użyciu Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
@@ -220,7 +220,7 @@ Podczas kopiowania danych z usługi Amazon RedShift następujące mapowania są 
 |:--- |:--- |
 | BIGINT |Int64 |
 | BOOLEAN |Ciąg |
-| CHAR |Ciąg |
+| DELIKATN |Ciąg |
 | DATE |Data i godzina |
 | DECIMAL |Decimal |
 | DOUBLE PRECISION |Double |
@@ -236,4 +236,4 @@ Podczas kopiowania danych z usługi Amazon RedShift następujące mapowania są 
 Aby dowiedzieć się więcej o właściwościach, sprawdź [działanie Lookup (wyszukiwanie](control-flow-lookup-activity.md)).
 
 ## <a name="next-steps"></a>Następne kroki
-Aby uzyskać listę magazynów danych obsługiwanych jako źródła i ujścia działania kopiowania w usłudze Azure Data Factory, zobacz [obsługiwane magazyny danych](copy-activity-overview.md##supported-data-stores-and-formats).
+Aby uzyskać listę magazynów danych obsługiwanych jako źródła i ujścia działania kopiowania w usłudze Azure Data Factory, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).

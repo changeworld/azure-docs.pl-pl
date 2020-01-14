@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/10/2019
+ms.date: 01/10/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d578b5d08fecde733bb7b257057e480fef83c4e
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: ad7065ba6378bcb383e67b4a58d7c195e88679ca
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72754418"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75890681"
 ---
 # <a name="tutorial-integrate-azure-ad-single-sign-on-sso-with-netsuite"></a>Samouczek: integracja logowania jednokrotnego w usłudze Azure AD z pakietem
 
@@ -71,9 +70,8 @@ Skonfiguruj i przetestuj Logowanie jednokrotne usługi Azure AD za pomocą pakie
 Aby skonfigurować i przetestować Logowanie jednokrotne usługi Azure AD za pomocą pakietu, wykonaj następujące bloki konstrukcyjne:
 
 1. [Skonfiguruj Logowanie jednokrotne usługi Azure AD](#configure-azure-ad-sso) , aby umożliwić użytkownikom korzystanie z tej funkcji.
-
-    a. [Utwórz użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user) , aby przetestować Logowanie jednokrotne w usłudze Azure AD za pomocą użytkownika B. Simon.  
-    b. [Przypisz użytkownika testowego usługi Azure AD,](#assign-the-azure-ad-test-user) aby umożliwić użytkownikowi B. Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+    * [Utwórz użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user) , aby przetestować Logowanie jednokrotne w usłudze Azure AD za pomocą użytkownika B. Simon.  
+    * [Przypisz użytkownika testowego usługi Azure AD,](#assign-the-azure-ad-test-user) aby umożliwić użytkownikowi B. Simon korzystanie z logowania jednokrotnego usługi Azure AD.
 1. [Skonfiguruj logowanie](#configure-netsuite-sso) jednokrotne w ramach pakietu, aby skonfigurować ustawienia logowania jednokrotnego po stronie aplikacji.
     * [Utwórz użytkownika testowego pakietu](#create-the-netsuite-test-user) dla sieci, aby dysponować odpowiednikiem użytkownika B. Simon w pakiecie, który jest połączony z reprezentacją usługi Azure AD.
 1. [Przetestuj Logowanie jednokrotne](#test-sso) , aby sprawdzić, czy konfiguracja działa.
@@ -90,52 +88,32 @@ Aby włączyć logowanie jednokrotne usługi Azure AD w Azure Portal, wykonaj na
 
 1. W sekcji **Podstawowa konfiguracja SAML** , w polu tekstowym **adres URL odpowiedzi** wpisz adres URL w jednym z następujących formatów:
 
-    ```
-    https://<tenant-name>.NetSuite.com/saml2/acs
-    https://<tenant-name>.na1.NetSuite.com/saml2/acs
-    https://<tenant-name>.na2.NetSuite.com/saml2/acs
-    https://<tenant-name>.sandbox.NetSuite.com/saml2/acs
-    https://<tenant-name>.na1.sandbox.NetSuite.com/saml2/acs
-    https://<tenant-name>.na2.sandbox.NetSuite.com/saml2/acs
-    ```
+    ||
+    |-|
+    | `https://<Account ID>.NetSuite.com/saml2/acs`|
+    | `https://<Account ID>.na1.NetSuite.com/saml2/acs`|
+    | `https://<Account ID>.na2.NetSuite.com/saml2/acs`|
+    | `https://<Account ID>.sandbox.NetSuite.com/saml2/acs`|
+    | `https://<Account ID>.na1.sandbox.NetSuite.com/saml2/acs`|
+    | `https://<Account ID>.na2.sandbox.NetSuite.com/saml2/acs`|
 
     > [!NOTE]
     > Wartości w poprzednich adresach URL nie są prawdziwe. Zaktualizuj je za pomocą adresu URL rzeczywistej odpowiedzi. Aby uzyskać wartość, skontaktuj się z [zespołem obsługi klienta dla pakietu](http://www.netsuite.com/portal/services/support-services/suitesupport.shtml). Można również odnieść się do formatów przedstawionych w sekcji podstawowe informacje o **konfiguracji SAML** w Azure Portal.
 
-    Aplikacja sieci oczekuje, że potwierdzenia SAML będą wyświetlane w określonym formacie. Musisz dodać niestandardowe mapowania atrybutów do konfiguracji atrybutów tokenu SAML. 
-    
-1. Aby otworzyć okienko **atrybuty użytkownika** , wybierz ikonę **Edytuj** ("ołówek"). W okienku zostanie wyświetlona lista atrybutów domyślnych, jak pokazano na poniższej ilustracji: 
+1. Aplikacja dla pakietu servicesuite oczekuje potwierdzeń SAML w określonym formacie, co wymaga dodania niestandardowych mapowań atrybutów do konfiguracji atrybutów tokenu SAML. Poniższy zrzut ekranu przedstawia listę atrybutów domyślnych.
 
-    ![Okienko atrybuty użytkownika](common/edit-attribute.png)
+    ![image](common/default-attributes.png)
 
-    Oprócz tych atrybutów aplikacja dla pakietu może oczekiwać kilku atrybutów do przekazania z powrotem do odpowiedzi SAML. 
+1. Oprócz powyższych, aplikacja pakietu servicesuite oczekuje kilku atrybutów do przekazania z powrotem w odpowiedzi SAML, które przedstawiono poniżej. Te atrybuty są również wstępnie wypełnione, ale można je sprawdzić zgodnie z wymaganiami.
 
-1. W okienku **atrybuty użytkownika** w obszarze **oświadczenia użytkownika**wykonaj następujące kroki, aby dodać atrybut tokenu SAML przedstawiony w poniższej tabeli:
-
-    | Nazwa | Atrybut źródłowy | 
+    | Nazwa | Atrybut źródłowy |
     | ---------------| --------------- |
     | account  | `account id` |
 
-    a. Wybierz pozycję **Dodaj nowe oświadczenie** , aby otworzyć okienko **Zarządzanie oświadczeniami użytkowników** .
+    > [!NOTE]
+    > Wartość atrybutu Account nie jest prawdziwa. Ta wartość zostanie zaktualizowana zgodnie z opisem w dalszej części tego samouczka.
 
-    b. W polu **Nazwa** wpisz nazwę atrybutu, który jest pokazywany dla tego wiersza.
-
-    d. Pozostaw puste pole **obszar nazw** .
-
-    d. Z listy rozwijanej **Źródło** wybierz pozycję **atrybut**.
-
-    e. Na liście **atrybutów źródłowych** wprowadź wartość atrybutu, która jest wyświetlana dla tego wiersza.
-
-    f. Kliknij przycisk **OK**.
-
-    g. Wybierz pozycję **Zapisz**.
-
-    >[!NOTE]
-    >Wartość atrybutu Account nie jest prawdziwa. Ta wartość zostanie zaktualizowana zgodnie z opisem w dalszej części tego samouczka.
-
-1. W okienku **Konfigurowanie logowania jednokrotnego przy użyciu protokołu SAML** w sekcji **certyfikat podpisywania SAML** Znajdź pozycję **XML metadanych Federacji**.
-
-1. Wybierz pozycję **Pobierz** , aby pobrać certyfikat i zapisać go na komputerze.
+1. Na stronie Konfigurowanie logowania jednokrotnego przy użyciu protokołu SAML w sekcji certyfikat podpisywania SAML Znajdź plik XML metadanych Federacji i wybierz pozycję Pobierz, aby pobrać certyfikat i zapisać go na komputerze.
 
     ![Link do pobierania certyfikatu](common/metadataxml.png)
 
@@ -147,7 +125,7 @@ Aby włączyć logowanie jednokrotne usługi Azure AD w Azure Portal, wykonaj na
 
 W tej sekcji utworzysz użytkownika testowego w Azure Portal o nazwie B. Simon.
 
-1. W lewym okienku Azure Portal wybierz pozycję **Azure Active Directory**  > **Użytkownicy**  > **Wszyscy użytkownicy**.
+1. W lewym okienku Azure Portal wybierz pozycję **Azure Active Directory** > **Użytkownicy** > **Wszyscy użytkownicy**.
 
 1. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
 
@@ -183,7 +161,7 @@ W tej sekcji zostanie włączona funkcja User B. Simon, która umożliwia logowa
 
 1. Otwórz nową kartę w przeglądarce i zaloguj się do swojej witryny firmowej jako administrator.
 
-2. Na górnym pasku nawigacyjnym wybierz pozycję **Instalator**, a następnie wybierz pozycję **firma**  > **włączyć funkcje**.
+2. Na górnym pasku nawigacyjnym wybierz pozycję **Instalator**, a następnie wybierz pozycję **firma** > **włączyć funkcje**.
 
     ![Konfigurowanie logowania jednokrotnego](./media/NetSuite-tutorial/ns-setupsaml.png)
 
@@ -217,7 +195,7 @@ W tej sekcji zostanie włączona funkcja User B. Simon, która umożliwia logowa
 
     d. Wybierz pozycję **Prześlij**.
 
-9. Na górnym pasku nawigacyjnym pakietu, wybierz pozycję **Instalator**, a następnie wybierz pozycję **firma**  > **Informacje o**firmie.
+9. Na górnym pasku nawigacyjnym pakietu, wybierz pozycję **Instalator**, a następnie wybierz pozycję **firma** > **Informacje o**firmie.
 
     ![Konfigurowanie logowania jednokrotnego](./media/NetSuite-tutorial/ns-com.png)
 
@@ -275,7 +253,7 @@ W tej sekcji zostanie włączona funkcja User B. Simon, która umożliwia logowa
 
 W tej sekcji użytkownik o nazwie B. Simon został utworzony w pakiecie. Aplikacja NetSuite obsługuje aprowizację użytkowników just in time, która jest domyślnie włączona. W tej sekcji nie ma elementu Action. Jeśli użytkownik jeszcze nie istnieje w aplikacji NetSuite, zostanie utworzony po uwierzytelnieniu.
 
-## <a name="test-sso"></a>Testuj Logowanie jednokrotne 
+## <a name="test-sso"></a>Testuj Logowanie jednokrotne
 
 W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
@@ -287,4 +265,3 @@ Po wybraniu kafelka pakietu w panelu dostępu należy automatycznie zalogować s
 - [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 - [Wypróbuj pakiet z usługą Azure AD](https://aad.portal.azure.com/)
-

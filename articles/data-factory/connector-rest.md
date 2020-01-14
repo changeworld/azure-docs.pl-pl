@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/20/2019
 ms.author: jingwang
-ms.openlocfilehash: 34abb93dd54245e03baaa6efe0130d951f7565bf
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 3e0dd6e0bb81aef340dc83288e6e5c0af0bf11c6
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927730"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867366"
 ---
 # <a name="copy-data-from-a-rest-endpoint-by-using-azure-data-factory"></a>Kopiowanie danych z punktu końcowego REST przy użyciu Azure Data Factory
 
@@ -371,6 +371,75 @@ Odpowiednia konfiguracja źródła działania kopiowania REST w szczególności 
     }
 }
 ```
+
+## <a name="use-oauth"></a>Korzystanie z protokołu OAuth
+W tej sekcji opisano, jak używać szablonu rozwiązania do kopiowania danych z łącznika REST do Azure Data Lake Storage w formacie JSON przy użyciu protokołu OAuth. 
+
+### <a name="about-the-solution-template"></a>Informacje o szablonie rozwiązania
+
+Szablon zawiera dwa działania:
+- Działanie **sieci Web** pobiera token okaziciela, a następnie przekazuje go do kolejnego działania kopiowania jako autoryzacji.
+- Działanie **kopiowania** kopiuje dane z REST do Azure Data Lake Storage.
+
+Szablon definiuje dwa parametry:
+- **SinkContainer** to ścieżka folderu głównego, w której dane są kopiowane do Azure Data Lake Storage. 
+- **SinkDirectory** jest ścieżką katalogu w katalogu głównym, w którym dane są kopiowane do Azure Data Lake Storage. 
+
+### <a name="how-to-use-this-solution-template"></a>Jak używać tego szablonu rozwiązania
+
+1. Przejdź do **kopii z szablonu REST lub http przy użyciu protokołu OAuth** . Utwórz nowe połączenie dla połączenia źródłowego. 
+    ![utworzyć nowe połączenia](media/solution-template-copy-from-rest-or-http-using-oauth/source-connection.png)
+
+    Poniżej przedstawiono kluczowe kroki dla nowych ustawień połączonej usługi (REST):
+    
+     1. W polu **podstawowy adres URL**określ parametr adresu URL dla własnej źródłowej usługi REST. 
+     2. W obszarze **Typ uwierzytelniania**wybierz pozycję *anonimowe*.
+        ![nowe połączenie REST](media/solution-template-copy-from-rest-or-http-using-oauth/new-rest-connection.png)
+
+2. Utwórz nowe połączenie dla połączenia docelowego.  
+    ![Nowe połączenie Gen2](media/solution-template-copy-from-rest-or-http-using-oauth/destination-connection.png)
+
+3. Wybierz przycisk **Użyj tego szablonu**.
+    ![użyć tego szablonu](media/solution-template-copy-from-rest-or-http-using-oauth/use-this-template.png)
+
+4. Zostanie wyświetlony potok utworzony, jak pokazano w poniższym przykładzie: ![potoku](media/solution-template-copy-from-rest-or-http-using-oauth/pipeline.png)
+
+5. Wybierz aktywność **sieci Web** . W obszarze **Ustawienia**Określ odpowiedni **adres URL**, **metodę**, **nagłówki**i **treść** , aby pobrać token okaziciela OAuth z interfejsu API logowania usługi, z której chcesz skopiować dane. Symbol zastępczy w szablonie prezentuje przykład Azure Active Directory (AAD) OAuth. Uwaga uwierzytelnianie w usłudze AAD jest natywnie obsługiwane przez łącznik REST. Oto przykład dla przepływu OAuth. 
+
+    | Właściwość | Opis |
+    |:--- |:--- |:--- |
+    | Adres URL |Określ adres URL, z którego ma zostać pobrany token okaziciela OAuth. Przykładowo w przykładzie https://login.microsoftonline.com/microsoft.onmicrosoft.com/oauth2/token |. 
+    | Metoda | Metoda HTTP. Dozwolone wartości to **post** i **Get**. | 
+    | Nagłówki | Nagłówek jest zdefiniowany przez użytkownika, który odwołuje się do jednej nazwy nagłówka w żądaniu HTTP. | 
+    | Treść | Treść żądania HTTP. | 
+
+    ![Potok](media/solution-template-copy-from-rest-or-http-using-oauth/web-settings.png)
+
+6. W obszarze **Kopiowanie danych** , wybierz kartę *Źródło* , zobaczysz, że token okaziciela (access_token) pobrany z poprzedniego kroku zostałby przekazaną do działania Kopiuj dane jako **autoryzacja** w dodatkowych nagłówkach. Przed rozpoczęciem przebiegu potoku Potwierdź ustawienia następujących właściwości.
+
+    | Właściwość | Opis |
+    |:--- |:--- |:--- | 
+    | Metoda żądania | Metoda HTTP. Dozwolone wartości to **Get** (default) i **post**. | 
+    | Dodatkowe nagłówki | Dodatkowe nagłówki żądań HTTP.| 
+
+   ![Kopiuj uwierzytelnianie źródła](media/solution-template-copy-from-rest-or-http-using-oauth/copy-data-settings.png)
+
+7. Wybierz pozycję **Debuguj**, wprowadź **Parametry**, a następnie wybierz pozycję **Zakończ**.
+   ![uruchomienia potoku](media/solution-template-copy-from-rest-or-http-using-oauth/pipeline-run.png) 
+
+8. Po pomyślnym zakończeniu przebiegu potoku zobaczysz wynik podobny do następującego: ![wyniku uruchomienia potoku](media/solution-template-copy-from-rest-or-http-using-oauth/run-result.png) 
+
+9. Kliknij ikonę "dane wyjściowe" elementu webactivity w kolumnie **Akcje** , zobaczysz access_token zwrócone przez usługę.
+
+   ![Dane wyjściowe tokenu](media/solution-template-copy-from-rest-or-http-using-oauth/token-output.png) 
+
+10. Kliknij ikonę "dane wejściowe" operacji kopiowania w kolumnie **Akcje** , zobaczysz, że access_token pobrane przez webactivity są przesyłane do funkcji kopiowania w celu uwierzytelnienia. 
+
+    ![Dane wejściowe tokenu](media/solution-template-copy-from-rest-or-http-using-oauth/token-input.png)
+        
+    >[!CAUTION] 
+    >Aby uniknąć zarejestrowania tokenu w postaci zwykłego tekstu, należy włączyć opcję "bezpieczne wyjście" w działaniu sieci Web i "bezpieczne dane wejściowe" w działaniu kopiowania.
+
 
 ## <a name="export-json-response-as-is"></a>Eksportuj odpowiedź JSON jako-is
 

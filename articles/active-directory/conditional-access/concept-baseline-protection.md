@@ -5,28 +5,31 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 11/21/2019
+ms.date: 12/18/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
-ms.reviewer: calebb, rogoya
+ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9bb384045c8b2e0a5743fdc301a829792639b7e
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 55de5a5c604273225a85e49ca682980f83a951d2
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420559"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75767572"
 ---
 # <a name="what-are-baseline-policies"></a>Co to są zasady podstawowe?
 
-Zasady linii bazowej to zestaw wstępnie zdefiniowanych zasad, które pomagają w ochronie organizacji przed wieloma typowymi atakami. Te typowe ataki mogą obejmować rozpylanie, odtwarzanie i wyłudzanie informacji. Zasady linii bazowej są dostępne we wszystkich wersjach usługi Azure AD. Firma Microsoft udostępnia te zasady ochrony linii bazowej wszystkim, ponieważ ataki oparte na tożsamościach zostały spowodowane wzrostem w ciągu kilku ostatnich lat. Celem tych czterech zasad jest upewnienie się, że wszystkie organizacje mają włączony poziom zabezpieczeń na poziomie linii bazowej bez dodatkowych kosztów.  
+Zasady linii bazowej to zestaw wstępnie zdefiniowanych zasad, które pomagają w ochronie organizacji przed wieloma typowymi atakami. Te typowe ataki mogą obejmować rozpylanie, odtwarzanie i wyłudzanie informacji. Zasady linii bazowej są dostępne we wszystkich wersjach usługi Azure AD. Firma Microsoft udostępnia te zasady ochrony linii bazowej wszystkim, ponieważ ataki oparte na tożsamościach zostały spowodowane wzrostem w ciągu kilku ostatnich lat. Celem tych czterech zasad jest upewnienie się, że wszystkie organizacje mają włączony poziom zabezpieczeń na poziomie linii bazowej bez dodatkowych kosztów.
 
 Zarządzanie dostosowanymi zasadami dostępu warunkowego wymaga licencji Azure AD — wersja Premium.
 
+> [!IMPORTANT]
+> Zasady linii bazowej są przestarzałe. Zobacz [co nowego w Azure Active Directory?](../fundamentals/whats-new.md#replacement-of-baseline-policies-with-security-defaults) , aby uzyskać więcej informacji.
+
 ## <a name="baseline-policies"></a>Zasady punktu odniesienia
 
-![Zasady dostępu warunkowego do punktu odniesienia w Azure Portal](./media/concept-baseline-protection/conditional-access-policies.png)
+![Zasady dostępu warunkowego do punktu odniesienia w Azure Portal](./media/concept-baseline-protection/conditional-access-baseline-policies.png)
 
 Istnieją cztery zasady linii bazowej:
 
@@ -36,6 +39,10 @@ Istnieją cztery zasady linii bazowej:
 * Wymagaj uwierzytelniania wieloskładnikowego dla zarządzania usługami (wersja zapoznawcza)
 
 Wszystkie cztery z tych zasad będą miały wpływ na starsze przepływy uwierzytelniania, takie jak POP, IMAP i starsze klienckie aplikacje biurowe.
+
+### <a name="exclusions"></a>Wykluczenia
+
+Gdy zasady linii bazowej przeprowadzono w początkowej publicznej wersji zapoznawczej, istnieje możliwość wykluczenia użytkowników z zasad. Ta funkcja została rozwijająca się w wersji zapoznawczej i została usunięta w lipcu 2019. Organizacje, które już utworzyły wykluczenia, były w stanie kontynuować, że nowi użytkownicy nie mogą dodać wykluczeń do zasad.
 
 ### <a name="require-mfa-for-admins-preview"></a>Wymagaj uwierzytelniania wieloskładnikowego dla administratorów (wersja zapoznawcza)
 
@@ -60,8 +67,8 @@ Administratorzy o wysokim poziomie uprawnień nie są jedynymi odpowiednimi atak
 
 **Ochrona użytkowników końcowych (wersja zapoznawcza)** to zasady linii bazowej chroniące wszystkich użytkowników w katalogu. Włączenie tych zasad wymaga, aby wszyscy użytkownicy rejestrowali się w usłudze Azure Multi-Factor Authentication w ciągu 14 dni. Po zarejestrowaniu użytkownicy będą monitowani o uwierzytelnianie MFA tylko w trakcie ryzykownych prób logowania. Naruszone konta użytkowników są blokowane do momentu zresetowania hasła i odrzucenia ryzyka. 
 
-[!NOTE]
-Wszyscy użytkownicy, którzy wcześniej oflagowani w związku z ryzykiem, są Zablokowani do momentu zresetowania hasła i odrzucenia ryzyka podczas aktywacji zasad.
+> [!NOTE]
+> Wszyscy użytkownicy, którzy wcześniej oflagowani w związku z ryzykiem, są Zablokowani do momentu zresetowania hasła i odrzucenia ryzyka podczas aktywacji zasad.
 
 ### <a name="block-legacy-authentication-preview"></a>Blokuj starsze uwierzytelnianie (wersja zapoznawcza)
 
@@ -75,8 +82,8 @@ Zasady linii bazowej **blokowania starszego uwierzytelniania (wersja zapoznawcza
 
 Organizacje korzystają z różnych usług platformy Azure i zarządzają nimi za pomocą narzędzi opartych na Azure Resource Manager, takich jak:
 
-* Azure Portal
-* Azure PowerShell
+* Portal Azure
+* Program Azure PowerShell
 * Interfejs wiersza polecenia platformy Azure
 
 Zarządzanie zasobami odbywa się przy użyciu dowolnego z tych narzędzi, co jest wysoce uprzywilejowane. Narzędzia te mogą zmieniać konfiguracje dla całej subskrypcji, takie jak ustawienia usługi i rozliczenia subskrypcji.
@@ -87,6 +94,6 @@ Aby chronić uprzywilejowane akcje, ta funkcja wymaga uwierzytelniania wieloskł
 
 Aby uzyskać więcej informacji, zobacz:
 
+* [Włączanie ustawień domyślnych zabezpieczeń](../fundamentals/concept-fundamentals-security-defaults.md)
 * [Typowe zasady dostępu warunkowego](concept-conditional-access-policy-common.md)
-* [Pięć kroków do zabezpieczania infrastruktury tożsamości](../../security/fundamentals/steps-secure-identity.md)
-* [Co to jest dostęp warunkowy w Azure Active Directory?](overview.md)
+* [Pięć sposobów zabezpieczania infrastruktury tożsamości](../../security/fundamentals/steps-secure-identity.md)

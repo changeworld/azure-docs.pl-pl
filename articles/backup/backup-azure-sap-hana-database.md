@@ -3,12 +3,12 @@ title: Tworzenie kopii zapasowej bazy danych SAP HANA na platformie Azure przy u
 description: W tym artykule dowiesz się, jak utworzyć kopię zapasową bazy danych SAP HANA na maszynach wirtualnych platformy Azure przy użyciu usługi Azure Backup.
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: 3246f6cf8046e0a0c5795059ad3448b70130e7e1
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
-ms.translationtype: HT
+ms.openlocfilehash: c5df198d009f0d4a9f37a68d6b21386f06842722
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75496959"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75753973"
 ---
 # <a name="back-up-sap-hana-databases-in-azure-vms"></a>Tworzenie kopii zapasowych baz danych platformy SAP HANA na maszynach wirtualnych platformy Azure
 
@@ -30,11 +30,60 @@ Zapoznaj się z sekcjami [wymagania wstępne](tutorial-backup-sap-hana-db.md#pre
 
 ### <a name="set-up-network-connectivity"></a>Konfigurowanie łączności sieciowej
 
-W przypadku wszystkich operacji maszyna wirtualna SAP HANA wymaga łączności z publicznymi adresami IP platformy Azure. Operacje maszyny wirtualnej (Odnajdywanie bazy danych, konfigurowanie kopii zapasowych, Planowanie kopii zapasowych, przywracanie punktów odzyskiwania itd.) nie działają bez łączności. Ustanów połączenie, zezwalając na dostęp do zakresów adresów IP centrum danych platformy Azure:
+Dla wszystkich operacji maszyna wirtualna SAP HANA wymaga łączności z publicznymi adresami IP platformy Azure. Operacje maszyny wirtualnej (Odnajdywanie bazy danych, konfigurowanie kopii zapasowych, Planowanie kopii zapasowych, przywracanie punktów odzyskiwania itd.) kończą się niepowodzeniem bez łączności z publicznymi adresami IP platformy Azure.
 
-* Możesz pobrać [zakresy adresów IP](https://www.microsoft.com/download/details.aspx?id=41653) dla centrów danych platformy Azure, a następnie zezwolić na dostęp do tych adresów IP.
-* Jeśli używasz sieciowych grup zabezpieczeń (sieciowych grup zabezpieczeń), możesz użyć [znacznika usługi](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) AzureCloud, aby zezwolić na wszystkie publiczne adresy IP platformy Azure. Aby zmodyfikować reguły sieciowej grupy zabezpieczeń, można użyć [polecenia cmdlet Set-AzureNetworkSecurityRule](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azurenetworksecurityrule?view=azuresmps-4.0.0) .
-* Port 443 należy dodać do listy dozwolonych, ponieważ transport odbywa się za pośrednictwem protokołu HTTPS.
+Ustanów łączność przy użyciu jednej z następujących opcji:
+
+#### <a name="allow-the-azure-datacenter-ip-ranges"></a>Zezwalaj na zakresy adresów IP centrum danych platformy Azure
+
+Ta opcja zezwala na [zakresy adresów IP](https://www.microsoft.com/download/details.aspx?id=41653) w pobranym pliku. Aby uzyskać dostęp do sieciowej grupy zabezpieczeń (sieciowej grupy zabezpieczeń), użyj polecenia cmdlet Set-AzureNetworkSecurityRule. Jeśli lista bezpiecznych adresatów zawiera tylko adresy IP specyficzne dla regionu, należy również zaktualizować Azure Active Directory listę bezpiecznych adresatów, aby włączyć uwierzytelnianie.
+
+#### <a name="allow-access-using-nsg-tags"></a>Zezwalaj na dostęp za pomocą tagów sieciowej grupy zabezpieczeń
+
+Jeśli używasz sieciowej grupy zabezpieczeń do ograniczenia łączności, należy użyć znacznika usługi AzureBackup w celu zezwalania na dostęp wychodzący do Azure Backup. Ponadto należy również zezwolić na łączność z uwierzytelnianiem i transferem danych przy użyciu [reguł](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) dla usług Azure AD i Azure Storage. Można to zrobić w Azure Portal lub za pomocą programu PowerShell.
+
+Aby utworzyć regułę przy użyciu portalu:
+
+  1. W obszarze **wszystkie usługi**przejdź do pozycji **sieciowe grupy zabezpieczeń** i wybierz grupę zabezpieczeń sieci.
+  2. W obszarze **Ustawienia**wybierz pozycję **reguły zabezpieczeń dla ruchu wychodzącego** .
+  3. Wybierz pozycję **Dodaj**. Wprowadź wszystkie wymagane szczegóły dotyczące tworzenia nowej reguły zgodnie z opisem w [ustawieniach reguły zabezpieczeń](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group#security-rule-settings). Upewnij się, że opcja **miejsce docelowe** jest ustawiona na **tag usługi** i **znacznik usługi docelowej** jest ustawiony na **AzureBackup**.
+  4. Kliknij przycisk **Dodaj**, aby zapisać nowo utworzoną regułę zabezpieczeń dla ruchu wychodzącego.
+
+Aby utworzyć regułę przy użyciu programu PowerShell:
+
+ 1. Dodawanie poświadczeń konta platformy Azure i aktualizowanie chmur narodowych<br/>
+      `Add-AzureRmAccount`<br/>
+
+ 2. Wybierz subskrypcję usługi sieciowej grupy zabezpieczeń<br/>
+      `Select-AzureRmSubscription "<Subscription Id>"`
+
+ 3. Wybierz sieciowej grupy zabezpieczeń<br/>
+    `$nsg = Get-AzureRmNetworkSecurityGroup -Name "<NSG name>" -ResourceGroupName "<NSG resource group name>"`
+
+ 4. Dodaj regułę zezwalającą na ruch wychodzący dla tagu usługi Azure Backup<br/>
+    `Add-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg -Name "AzureBackupAllowOutbound" -Access Allow -Protocol * -Direction Outbound -Priority <priority> -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix "AzureBackup" -DestinationPortRange 443 -Description "Allow outbound traffic to Azure Backup service"`
+
+ 5. Dodaj regułę zezwalającą na ruch wychodzący dla tagu usługi magazynu<br/>
+    `Add-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg -Name "StorageAllowOutbound" -Access Allow -Protocol * -Direction Outbound -Priority <priority> -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix "Storage" -DestinationPortRange 443 -Description "Allow outbound traffic to Azure Backup service"`
+
+ 6. Dodaj regułę zezwalającą na ruch wychodzący dla tagu usługi usługi azureactivedirectory<br/>
+    `Add-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg -Name "AzureActiveDirectoryAllowOutbound" -Access Allow -Protocol * -Direction Outbound -Priority <priority> -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix "AzureActiveDirectory" -DestinationPortRange 443 -Description "Allow outbound traffic to AzureActiveDirectory service"`
+
+ 7. Zapisz sieciowej grupy zabezpieczeń<br/>
+    `Set-AzureRmNetworkSecurityGroup -NetworkSecurityGroup $nsg`
+
+**Zezwalaj na dostęp za pomocą tagów zapory platformy Azure**. Jeśli używasz zapory platformy Azure, Utwórz regułę aplikacji przy użyciu [znacznika FQDN](https://docs.microsoft.com/azure/firewall/fqdn-tags)AzureBackup. Umożliwia to wychodzący dostęp do Azure Backup.
+
+**Wdróż serwer proxy HTTP, aby kierować ruchem**. Podczas tworzenia kopii zapasowej bazy danych SAP HANA na maszynie wirtualnej platformy Azure rozszerzenie kopii zapasowej na maszynie wirtualnej używa interfejsów API HTTPS do wysyłania poleceń zarządzania do Azure Backup i danych do usługi Azure Storage. Rozszerzenie kopii zapasowej używa także usługi Azure AD do uwierzytelniania. Ruch rozszerzenia kopii zapasowej dla tych trzech usług należy kierować za pośrednictwem serwera proxy HTTP. Rozszerzenia są jedynym składnikiem skonfigurowanym do uzyskiwania dostępu do publicznego Internetu.
+
+Opcje łączności obejmują następujące zalety i wady:
+
+**Opcja** | **Zalety** | **Wady**
+--- | --- | ---
+Zezwolenie na zakresy adresów IP | Brak dodatkowych kosztów | Skomplikowane do zarządzania, ponieważ zakresy adresów IP zmieniają się w czasie <br/><br/> Zapewnia dostęp do całości platformy Azure, a nie tylko usługi Azure Storage
+Użyj tagów usługi sieciowej grupy zabezpieczeń | Łatwiejsze zarządzanie, ponieważ zmiany zakresu są automatycznie scalane <br/><br/> Brak dodatkowych kosztów <br/><br/> | Może być używany tylko z sieciowych grup zabezpieczeń <br/><br/> Zapewnia dostęp do całej usługi
+Używanie tagów nazwy FQDN zapory platformy Azure | Łatwiejsze zarządzanie, ponieważ wymagane są automatycznie zarządzane nazwy FQDN | Może być używany tylko z zaporą platformy Azure
+Używanie serwera proxy HTTP | Szczegółowa kontrola w serwerze proxy za pośrednictwem adresów URL magazynu jest dozwolona <br/><br/> Dostęp do maszyn wirtualnych w jednym punkcie dostępu do Internetu <br/><br/> Nie podlegają zmianom adresów IP platformy Azure | Dodatkowe koszty związane z uruchamianiem maszyny wirtualnej za pomocą oprogramowania serwera proxy
 
 ## <a name="onboard-to-the-public-preview"></a>Dołączanie do publicznej wersji zapoznawczej
 

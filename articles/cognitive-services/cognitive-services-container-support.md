@@ -8,14 +8,14 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 11/11/2019
+ms.date: 01/10/2020
 ms.author: dapine
-ms.openlocfilehash: a35ceed4cefa47b903ceec915388b4831cd9e69b
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: d75962b98543991a065f6b165279215614175925
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173772"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75866946"
 ---
 # <a name="container-support-in-azure-cognitive-services"></a>Obsługa kontenerów w usługach Azure Cognitive Services
 
@@ -51,7 +51,7 @@ Kontenery usługi Azure Cognitive Services zapewniają następujący zestaw kont
 
 | Usługa | Obsługiwana warstwa cenowa | Kontener | Opis |
 |---------|----------|----------|-------------|
-|[Narzędzie do wykrywania anomalii][ad-containers] |F0, S0|**Anomaly-Detector** |Interfejs API wykrywania anomalii umożliwia monitorowanie i wykrywanie anomalii w danych szeregów czasowych przy użyciu uczenia maszynowego.<br>[Poproś o dostęp](https://aka.ms/adcontainer)|
+|[Wykrywacz anomalii][ad-containers] |F0, S0|**Anomaly-Detector** |Interfejs API wykrywania anomalii umożliwia monitorowanie i wykrywanie anomalii w danych szeregów czasowych przy użyciu uczenia maszynowego.<br>[Poproś o dostęp](https://aka.ms/adcontainer)|
 |[Przetwarzanie obrazów][cv-containers] |F0, S1|**Odczyt** |Wyodrębnia tekst drukowanego z obrazów różne obiekty na różnych powierzchniach i tłach, takich jak przychody oraz plakaty i wizytówki. Kontener odczytu wykrywa także *Tekst odręczny* w obrazach i zapewnia obsługę formatu PDF/TIFF/wielostronicowej.<br/><br/>**Ważne:** Kontener odczytu jest obecnie stosowany tylko w języku angielskim.|
 |[Twarzy][fa-containers] |F0, S0|**Twarzy** |Wykrywa twarze osób na obrazach i identyfikuje atrybutów, w tym to punktów charakterystycznych (takie jak elementy ruchome i oczy), płeć, wiek i inne funkcje twarzy przewidzieć maszyny. Oprócz wykrywania twarzy można sprawdzić, czy dwie twarze w ten sam obraz lub różne obrazy są takie same, za pomocą współczynnik ufności lub porównywania twarzy względem bazy danych, aby sprawdzić, czy podobnie wyglądających twarzy identyczne już istnieje. Można również zorganizować podobnych twarzy w grupach, przy użyciu udostępnionego visual traits.<br>[Poproś o dostęp](Face/face-how-to-install-containers.md#request-access-to-the-private-container-registry) |
 |[Aparat rozpoznawania formularzy][fr-containers] |F0, S0|**Aparat rozpoznawania formularzy** |Zrozumienie formularza stosuje technologię uczenia maszynowego do identyfikowania i wyodrębniania par klucz-wartość oraz tabel z formularzy.<br>[Poproś o dostęp](https://aka.ms/FormRecognizerContainerRequestAccess)|
@@ -81,7 +81,7 @@ Kontenery usługi Azure Cognitive Services są publicznie dostępne w ramach sub
 
 > [!IMPORTANT]
 > Obecnie należy zakończyć proces tworzenia konta, aby uzyskać dostęp do następujących kontenerów, w których wypełniasz i przesłać kwestionariusz z pytaniami dotyczącymi użytkownika, firmy i przypadku użycia, dla którego chcesz zaimplementować kontenery. Po uzyskaniu dostępu i uzyskaniu poświadczeń można ściągnąć obrazy kontenerów z prywatnego rejestru kontenerów hostowanych przez Azure Container Registry.
-> * [Narzędzie do wykrywania anomalii](Anomaly-Detector/anomaly-detector-container-howto.md#request-access-to-the-container-registry)
+> * [Wykrywacz anomalii](Anomaly-Detector/anomaly-detector-container-howto.md#request-access-to-the-container-registry)
 > * [Twarzy](Face/face-how-to-install-containers.md)
 > * [Aparat rozpoznawania formularzy](form-recognizer/form-recognizer-container-howto.md#request-access-to-the-container-registry)
 > * [Odczyt](computer-vision/computer-vision-how-to-install-containers.md)

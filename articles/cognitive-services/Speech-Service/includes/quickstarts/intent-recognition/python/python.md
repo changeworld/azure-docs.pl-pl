@@ -1,88 +1,109 @@
 ---
 title: 'Szybki Start: Rozpoznawanie mowy, intencji i jednostek, usługa Python-Speech'
 titleSuffix: Azure Cognitive Services
-description: do ustalenia
 services: cognitive-services
 author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: quickstart
-ms.date: 10/28/2019
+ms.date: 01/02/2020
+ms.topic: include
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 9a4c7f24a2e28743679e312e3dce0bc605db6749
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: f2a46b8a0868aaa1097dd7f1ae738a2a3e06e3b8
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74815876"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772933"
 ---
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Przed rozpoczęciem upewnij się, że:
+Przed rozpoczęciem:
 
-> [!div class="checklist"]
->
-> * [Tworzenie zasobu usługi Azure Speech](../../../../get-started.md)
-> * [Tworzenie aplikacji Language Understanding (LUIS) i pobieranie klucza punktu końcowego](../../../../quickstarts/create-luis.md)
-> * [Konfigurowanie środowiska deweloperskiego](../../../../quickstarts/setup-platform.md)
-> * [Tworzenie pustego przykładowego projektu](../../../../quickstarts/create-project.md)
+* Jeśli jest to Twój pierwszy projekt w języku Python, użyj tego przewodnika, aby <a href="~/articles/cognitive-services/Speech-Service/quickstarts/create-project.md" target="_blank">utworzyć pusty przykładowy projekt</a>.
+* <a href="~/articles/cognitive-services/Speech-Service/quickstarts/setup-platform.md" target="_blank">Zainstaluj zestaw Speech SDK dla środowiska deweloperskiego</a>.
+
+## <a name="create-a-luis-app-for-intent-recognition"></a>Tworzenie aplikacji LUIS na potrzeby rozpoznawania intencji
+
+[!INCLUDE [Create a LUIS app for intent recognition](../luis-sign-up.md)]
 
 ## <a name="open-your-project"></a>Otwórz projekt
 
-Otwórz Quickstart.py w edytorze języka Python.
+1. Otwórz preferowany IDE.
+2. Utwórz nowy projekt i Utwórz plik o nazwie `quickstart.py`, a następnie otwórz go.
 
 ## <a name="start-with-some-boilerplate-code"></a>Zacznij od pewnego kodu standardowego
 
 Dodajmy kod, który działa jako szkielet dla projektu.
+
 [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=5-7)]
 
 ## <a name="create-a-speech-configuration"></a>Tworzenie konfiguracji mowy
 
-Przed zainicjowaniem obiektu `IntentRecognizer` należy utworzyć konfigurację, która używa klucza i regionu punktu końcowego LUIS. Wstaw ten kod dalej.
+Przed zainicjowaniem obiektu `IntentRecognizer` należy utworzyć konfigurację, która używa klucza i lokalizacji dla zasobu przewidywania LUIS.
 
-Ten przykład konstruuje obiekt `SpeechConfig` przy użyciu klucza i regionu LUIS. Aby uzyskać pełną listę dostępnych metod, zobacz [SpeechConfig Class](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig).
-Zestaw Speech SDK będzie domyślnie rozpoznawał użycie języka en-us w celu uzyskania informacji na temat wybierania [języka źródłowego.](../../../../how-to-specify-source-language.md)
+Wstaw ten kod w `quickstart.py`. Upewnij się, że te wartości są aktualizowane:
 
-> [!NOTE]
-> Ważne jest, aby użyć klucza punktu końcowego LUIS, a nie kluczy początkowych lub autorskich, ponieważ tylko klucz punktu końcowego jest prawidłowy dla rozpoznawania mowy dla konwersji. Zobacz [Tworzenie aplikacji Luis i Uzyskiwanie klucza punktu końcowego,](~/articles/cognitive-services/Speech-Service/quickstarts/create-luis.md) Aby uzyskać instrukcje dotyczące pobierania poprawnego klucza.
+* Zastąp `"YourLanguageUnderstandingSubscriptionKey"` kluczem przewidywania LUIS. 
+* Zastąp `"YourLanguageUnderstandingServiceRegion"` lokalizacją LUIS. 
+
+>[!TIP]
+> Jeśli potrzebujesz pomocy w znalezieniu tych wartości, zobacz [Tworzenie aplikacji Luis na potrzeby rozpoznawania intencji](#create-a-luis-app-for-intent-recognition).
 
 [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=12)]
+
+Ten przykład konstruuje obiekt `SpeechConfig` przy użyciu klucza i regionu LUIS. Aby uzyskać pełną listę dostępnych metod, zobacz [SpeechConfig Class](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig).
+
+Zestaw Speech SDK będzie domyślnie rozpoznawał użycie języka en-us w celu uzyskania informacji na temat wybierania [języka źródłowego.](../../../../how-to-specify-source-language.md)
 
 ## <a name="initialize-an-intentrecognizer"></a>Inicjowanie elementu IntentRecognizer
 
 Teraz Utwórzmy `IntentRecognizer`. Wstaw ten kod bezpośrednio poniżej konfiguracji mowy.
+
 [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=15)]
 
 ## <a name="add-a-languageunderstandingmodel-and-intents"></a>Dodaj LanguageUnderstandingModel i intencje
 
-Teraz musisz skojarzyć `LanguageUnderstandingModel` z aparatem zamierzania i dodać żądane intencje.
+Konieczne jest skojarzenie `LanguageUnderstandingModel` z aparatem zamierzania i dodaniem żądanych intencji. Będziemy używać intencji z prekompilowanej domeny dla automatyzacji domowej. 
+
+Wstaw ten kod poniżej `IntentRecognizer`. Upewnij się, że `"YourLanguageUnderstandingAppId"` jest zastępowany IDENTYFIKATORem aplikacji LUIS. 
+
+>[!TIP]
+> Jeśli potrzebujesz pomocy w znalezieniu tej wartości, zobacz [Tworzenie aplikacji Luis na potrzeby rozpoznawania intencji](#create-a-luis-app-for-intent-recognition).
+
 [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=19-27)]
 
 ## <a name="recognize-an-intent"></a>Rozpoznawanie zamiaru
 
 Z obiektu `IntentRecognizer` nastąpi wywołanie metody `recognize_once()`. Ta metoda pozwala usłudze rozpoznawania mowy wysyłać pojedyncze frazy do rozpoznawania, a po zidentyfikowaniu frazy do zatrzymania rozpoznawania mowy.
+
+Wstaw ten kod pod modelem:
+
 [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=35)]
 
 ## <a name="display-the-recognition-results-or-errors"></a>Wyświetlanie wyników rozpoznawania (lub błędów)
 
 Gdy usługa mowy zwróci wynik rozpoznawania, należy wykonać coś z nim. Zajmiemy się tym, że będzie on prosty i będzie drukował wynik do konsoli.
 
-Wewnątrz instrukcji using poniżej wywołania `recognize_once()`Dodaj następujący kod: [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=38-47)]
+Poniżej Zadzwoń do `recognize_once()`Dodaj następujący kod: [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=38-47)]
 
 ## <a name="check-your-code"></a>Sprawdź swój kod
 
 W tym momencie kod powinien wyglądać następująco:  
-(Dodaliśmy Komentarze do tej wersji) [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=5-47)]
+
+> [!NOTE]
+> Dodaliśmy Komentarze do tej wersji.
+
+[!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=5-47)]
 
 ## <a name="build-and-run-your-app"></a>Kompilowanie i uruchamianie aplikacji
 
 Uruchom próbkę z konsoli programu lub w środowisku IDE:
 
-    ````
-    python quickstart.py
-    ````
+```
+python quickstart.py
+```
 
 Następne 15 sekund mowy z mikrofonu zostanie rozpoznane i zarejestrowane w oknie konsoli.
 

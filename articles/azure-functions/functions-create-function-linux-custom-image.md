@@ -4,12 +4,12 @@ description: Informacje o sposobie tworzenia usługi Azure Functions działając
 ms.date: 09/27/2019
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 7bf079f84978539735f3bbf5bb13b18130871fb1
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: e70edac09c8b2d61c148c9ba0fd04ec231e9a965
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74484385"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769323"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-image"></a>Tworzenie funkcji w systemie Linux przy użyciu obrazu niestandardowego
 
@@ -17,9 +17,9 @@ Usługa Azure Functions umożliwia hostowanie funkcji w systemie Linux w utworzo
 
 Z tego samouczka dowiesz się, jak wdrożyć funkcje na platformie Azure jako obraz niestandardowy platformy Docker. Ten wzorzec jest przydatny, gdy trzeba dostosować wbudowany obraz kontenera. Użycie obrazu niestandardowego może być przydatne w przypadku, kiedy funkcje wymagają konkretnej wersji języka lub konkretnej zależności bądź konfiguracji, które nie są dostarczone w obrazie wbudowanym. Obsługiwane obrazy podstawowe dla Azure Functions są dostępne w [repozytorium Azure Functions obrazów podstawowych](https://hub.docker.com/_/microsoft-azure-functions-base). 
 
-Ten samouczek przedstawia sposób użycia narzędzi Azure Functions Core Tools do tworzenia funkcji w niestandardowym obrazie systemu Linux. Ten obraz jest publikowany na platformie Azure w aplikacji funkcji, która została utworzona przy użyciu interfejsu wiersza polecenia platformy Azure. Później należy zaktualizować funkcję w celu nawiązania połączenia z usługą Azure queue storage. Można również włączyć.  
+Ten samouczek przedstawia sposób użycia narzędzi Azure Functions Core Tools do tworzenia funkcji w niestandardowym obrazie systemu Linux. Ten obraz jest publikowany na platformie Azure w aplikacji funkcji, która została utworzona przy użyciu interfejsu wiersza polecenia platformy Azure. Później należy zaktualizować funkcję w celu nawiązania połączenia z usługą Azure queue storage.
 
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Tworzenie aplikacji funkcji i pliku Dockerfile przy użyciu podstawowych narzędzi.
@@ -101,7 +101,7 @@ docker build --tag <docker-id>/mydockerimage:v1.0.0 .
 Po zakończeniu działania polecenia można uruchomić nowy kontener lokalnie.
 
 ### <a name="run-the-image-locally"></a>Uruchamianie obrazu lokalnie
-Sprawdź, czy skompilowany obraz działa, uruchamiając obraz platformy Docker w kontenerze lokalnym. Uruchom polecenie [docker run](https://docs.docker.com/engine/reference/commandline/run/) i przekaż do niego nazwę oraz tag obrazu. Pamiętaj o określeniu portu przy użyciu argumentu `-p`.
+Sprawdź, czy skompilowany obraz działa, uruchamiając obraz platformy Docker w kontenerze lokalnym. Uruchom polecenie [docker run](https://docs.docker.com/engine/reference/commandline/run/) i przekaż do niego nazwę oraz tag obrazu. Upewnij się, że określono porty przy użyciu argumentu `-p`.
 
 ```bash
 docker run -p 8080:80 -it <docker-ID>/mydockerimage:v1.0.0
@@ -118,7 +118,7 @@ Po zweryfikowaniu aplikacji funkcji w kontenerze zatrzymaj wykonywanie. Teraz mo
 
 ## <a name="push-to-docker-hub"></a>Wypychanie do centrum platformy Docker
 
-Rejestr to aplikacja hostująca obrazy i udostępniająca usługi obrazów oraz kontenerów. Aby udostępnić obraz, należy wypchnąć go do rejestru. Usługa Docker Hub jest rejestrem obrazów platformy Docker, który umożliwia hostowanie własnych repozytoriów — publicznych lub prywatnych.
+Rejestr to aplikacja, która hostuje obrazy i oferuje usługi obrazów i kontenerów. Aby udostępnić obraz, należy wypchnąć go do rejestru. Usługa Docker Hub jest rejestrem obrazów platformy Docker, który umożliwia hostowanie własnych repozytoriów — publicznych lub prywatnych.
 
 Przed wypchnięciem obrazu należy najpierw zalogować się w usłudze Docker Hub przy użyciu polecenia [docker login](https://docs.docker.com/engine/reference/commandline/login/). Zastąp ciąg `<docker-id>` nazwą swojego konta i wpisz swoje hasło w konsoli, gdy zostanie wyświetlony odpowiedni monit. Inne opcje dotyczące hasła usługi Docker Hub opisano w [dokumentacji polecenia docker login](https://docs.docker.com/engine/reference/commandline/login/).
 
@@ -140,7 +140,7 @@ Po pomyślnym wypchnięciu można użyć obrazu jako źródła wdrożenia dla no
 
 ## <a name="create-a-premium-plan"></a>Tworzenie planu Premium
 
-Hosting systemu Linux dla kontenerów funkcji niestandardowych obsługiwanych w ramach [dedykowanych planów (App Service)](functions-scale.md#app-service-plan) i [planów Premium](functions-premium-plan.md#features). W tym samouczku jest używany plan Premium, który można skalować zgodnie z wymaganiami. Aby dowiedzieć się więcej o hostingu, zobacz [Porównanie planów hostingu usługi Azure Functions](functions-scale.md).
+Obsługa systemu Linux dla kontenerów funkcji niestandardowych jest obsługiwana w przypadku [planów dedykowanych (App Service)](functions-scale.md#app-service-plan) i [planów Premium](functions-premium-plan.md#features). W tym samouczku jest używany plan Premium, który można skalować zgodnie z wymaganiami. Aby dowiedzieć się więcej o hostingu, zobacz [Porównanie planów hostingu usługi Azure Functions](functions-scale.md).
 
 Poniższy przykład tworzy plan Premium o nazwie `myPremiumPlan` w warstwie cenowej **elastyczne 1** (`--sku EP1`) w regionie zachodnie Stany usa (`-location WestUS`) i w kontenerze systemu Linux (`--is-linux`).
 
@@ -175,8 +175,7 @@ storageConnectionString=$(az storage account show-connection-string \
 
 az functionapp config appsettings set --name <app_name> \
 --resource-group myResourceGroup \
---settings AzureWebJobsDashboard=$storageConnectionString \
-AzureWebJobsStorage=$storageConnectionString
+--settings AzureWebJobsStorage=$storageConnectionString
 ```
 
 > [!NOTE]
@@ -278,7 +277,7 @@ Po nawiązaniu połączenia Uruchom polecenie `top`, aby wyświetlić aktualnie 
 
 ## <a name="write-to-queue-storage"></a>Zapisz do magazynu kolejki
 
-Funkcje umożliwiają łączenie usług platformy Azure i innych zasobów z funkcjami bez konieczności pisania kodu integracji. Te *powiązania*, które reprezentują zarówno dane wejściowe, jak i wyjściowe, są zadeklarowane w definicji funkcji. Dane z powiązań są przekazywane do funkcji jako parametry. *Wyzwalacz* jest specjalnym typem powiązania danych wejściowych. Chociaż funkcja ma tylko jeden wyzwalacz, może mieć wiele powiązań wejściowych i wyjściowych. Aby dowiedzieć się więcej, zobacz temat [Azure Functions wyzwalacze i koncepcje powiązań](functions-triggers-bindings.md).
+Funkcje umożliwiają łączenie usług platformy Azure i innych zasobów z funkcjami bez konieczności pisania kodu integracji. Te *powiązania*, które reprezentują zarówno dane wejściowe, jak i wyjściowe, są zadeklarowane w definicji funkcji. Dane z powiązań są podawane do funkcji jako parametry. *Wyzwalacz* jest specjalnym typem powiązania danych wejściowych. Chociaż funkcja ma tylko jeden wyzwalacz, może mieć wiele powiązań wejściowych i wyjściowych. Aby dowiedzieć się więcej, zobacz temat [Azure Functions wyzwalacze i koncepcje powiązań](functions-triggers-bindings.md).
 
 W tej sekcji pokazano, jak zintegrować funkcję z kolejką usługi Azure Storage. Powiązanie danych wyjściowych dodawane do tej funkcji zapisuje dane z żądania HTTP do wiadomości w kolejce.
 
@@ -347,13 +346,13 @@ Po zdefiniowaniu powiązania można użyć `name` powiązania, aby uzyskać do n
 W folderze głównym ponownie uruchom polecenie [Docker Build](https://docs.docker.com/engine/reference/commandline/build/) , a następnie zaktualizuj wersję w znaczniku, aby `v1.0.2`. Tak jak wcześniej, Zastąp `<docker-id>` IDENTYFIKATORem konta centrum platformy Docker. 
 
 ```bash
-docker build --tag <docker-id>/mydockerimage:v1.0.0 .
+docker build --tag <docker-id>/mydockerimage:v1.0.2
 ```
 
 Wypchnij zaktualizowany obraz z powrotem do repozytorium.
 
 ```bash
-docker push <docker-id>/mydockerimage:v1.0.0
+docker push <docker-id>/mydockerimage:v1.0.2
 ```
 
 ### <a name="verify-the-updates-in-azure"></a>Weryfikowanie aktualizacji na platformie Azure

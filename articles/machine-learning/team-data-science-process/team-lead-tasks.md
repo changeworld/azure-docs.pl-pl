@@ -2,26 +2,26 @@
 title: Zadania dla zespołu prowadzić w zespole procesu do nauki o danych zespołu
 description: Szczegółowy przewodnik dotyczący zadań dla zespołu, który prowadzi do zespołu procesów nauki o danych zespołowych
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 09/23/2019
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 9c6d0fcc20afc613094f10e9f3fb7c917ec6fa73
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: d099d7c233c3f4b5e65bfdb7d4b875a0e4098499
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71327248"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75864285"
 ---
 # <a name="tasks-for-the-team-lead-on-a-team-data-science-process-team"></a>Zadania dla zespołu liderzy zespołu ds. procesów naukowych
 
 W tym artykule opisano zadania, które *lider zespołu* ukończy dla zespołu ds. analizy danych. Celem lidera zespołu jest ustanowienie środowiska zespołu współpracy, które jest standaryzacją w [zespołowym procesie nauki o danych](overview.md) (przetwarzania TDSP). PRZETWARZANIA TDSP zaprojektowano tak, aby pomóc w ulepszaniu współpracy i uczenia zespołu. 
 
-PRZETWARZANIA TDSP to metoda Agile, iteracyjnej analizy danych, która umożliwia wydajne dostarczanie rozwiązań do analizy predykcyjnej i inteligentnych aplikacji. Proces ten polega na przeprowadzeniu najlepszych praktyk i struktur firmy Microsoft i branży, które są potrzebne do pomyślnej implementacji inicjatyw naukowych dotyczących danych, aby pomóc firmom w pełni wykorzystać zalety swoich programów do analizy. Aby zapoznać się z zarysem ról pracowników i skojarzonych zadań dla zespołu ds. analizy danych w przetwarzania TDSP, zobacz temat [role i zadania zespołowego procesu nauki danych](roles-tasks.md).
+PRZETWARZANIA TDSP to metoda Agile, iteracyjnej analizy danych, która umożliwia wydajne dostarczanie rozwiązań do analizy predykcyjnej i inteligentnych aplikacji. Proces odwołuje najlepsze rozwiązania i struktury od firmy Microsoft i branży.  Celem jest pomyślne wdrożenie inicjatyw naukowych dotyczących danych i w pełni realizowanie korzyści wynikających z ich programów analitycznych. Aby zapoznać się z zarysem ról pracowników i skojarzonych zadań dla zespołu ds. analizy danych w przetwarzania TDSP, zobacz temat [role i zadania zespołowego procesu nauki danych](roles-tasks.md).
 
 Lider zespołu zarządza zespołem składającym się z kilku analityków danych w jednostce analizy danych przedsiębiorstwa. W zależności od rozmiaru i struktury jednostki analizy danych [Menedżer grupy](group-manager-tasks.md) i lider zespołu mogą należeć do tej samej osoby lub mogą delegować swoje zadania do surogatów. Ale nie zmieniaj samych zadań. 
 
@@ -142,7 +142,7 @@ Aby wypełnić repozytoria zespołu zawartością grup wspólnych repozytoriów,
    
 1. W oknie dialogowym **Importowanie repozytorium git** wybierz pozycję **git** jako **Typ źródła**, a następnie wprowadź adres URL repozytorium wspólnych szablonów grupy w obszarze **Klonowanie adresu URL**. Adres URL to *https:\//\<nazwa serwera >/\<nazwa organizacji >/_git/\<Nazwa repozytorium*>. Na przykład: *https:\//dev.Azure.com/DataScienceUnit/GroupCommon/_git/GroupProjectTemplate*. 
    
-1. Wybierz pozycję **Importuj**. Zawartość repozytorium szablonów grup jest zaimportowana do repozytorium szablonów zespołu. 
+1. Wybierz pozycję **Import** (Importuj). Zawartość repozytorium szablonów grup jest zaimportowana do repozytorium szablonów zespołu. 
    
    ![Importuj repozytorium wspólnych szablonów grupy](./media/team-lead-tasks/import-repo-2.png)
    

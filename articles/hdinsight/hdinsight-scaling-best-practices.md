@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/22/2019
-ms.openlocfilehash: 15d44f95cccf15fd0f7615655f5bbac1b0c35127
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 2d26cbce3398b9a44530553fbff0413c631b7579
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706057"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75744770"
 ---
 # <a name="scale-azure-hdinsight-clusters"></a>Skalowanie klastrów usługi Azure HDInsight
 
@@ -29,7 +29,7 @@ Klaster można skalować ręcznie przy użyciu jednej z metod opisanych poniżej
 
 Firma Microsoft udostępnia następujące narzędzia do skalowania klastrów:
 
-|Spuninst | Opis|
+|Narzędzie | Opis|
 |---|---|
 |[PowerShell AZ](https://docs.microsoft.com/powershell/azure)|[Set-AzHDInsightClusterSize](https://docs.microsoft.com/powershell/module/az.hdinsight/set-azhdinsightclustersize) -clustername \<nazwa klastra >-TargetInstanceCount \<NewSize >|
 |[AzureRM programu PowerShell](https://docs.microsoft.com/powershell/azure/azurerm) |[Set-AzureRmHDInsightClusterSize](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/set-azurermhdinsightclustersize) -clustername \<nazwa klastra >-TargetInstanceCount \<NewSize >|
@@ -126,7 +126,7 @@ Aby ręcznie skasować tę uruchomioną aplikację, wykonaj następujące polece
 yarn application -kill <application_id>
 ```
 
-Na przykład:
+Przykład:
 
 ```bash
 yarn application -kill "application_1499348398273_0003"
@@ -147,10 +147,10 @@ org.apache.hadoop.hdfs.server.namenode.SafeModeException: Cannot create director
 ```
 
 ```
-org.apache.http.conn.HttpHostConnectException: Connect to hn0-clustername.servername.internal.cloudapp.net:10001 [hn0-clustername.servername. internal.cloudapp.net/1.1.1.1] failed: Connection refused
+org.apache.http.conn.HttpHostConnectException: Connect to active-headnode-name.servername.internal.cloudapp.net:10001 [active-headnode-name.servername. internal.cloudapp.net/1.1.1.1] failed: Connection refused
 ```
 
-Aby sprawdzić, kiedy klaster został przeskalowany, można sprawdzić nazwy dzienników węzłów z folderu `/var/log/hadoop/hdfs/` w czasie, w którym przeprowadzono skalowanie klastra. Pliki dziennika mają nazwę `Hadoop-hdfs-namenode-hn0-clustername.*`.
+Aby sprawdzić, kiedy klaster został przeskalowany, można sprawdzić nazwy dzienników węzłów z folderu `/var/log/hadoop/hdfs/` w czasie, w którym przeprowadzono skalowanie klastra. Pliki dziennika mają nazwę `Hadoop-hdfs-namenode-<active-headnode-name>.*`.
 
 Główną przyczyną wcześniejszych błędów jest to, że usługa Hive jest zależna od plików tymczasowych w systemie plików HDFS podczas wykonywania zapytań. Gdy system plików HDFS przechodzi w tryb awaryjny, gałąź nie może uruchamiać zapytań, ponieważ nie może zapisywać w systemie plików HDFS. Pliki tymczasowe w systemie plików HDFS znajdują się na dysku lokalnym zainstalowanym na maszynach wirtualnych węzłów procesu roboczego i replikowane między innymi węzłami procesu roboczego w trzech replikach, co najmniej.
 
@@ -194,7 +194,7 @@ Jeśli gałąź została pozostawiona za pliki tymczasowe, można ręcznie oczy�
     Oto przykładowe dane wyjściowe, gdy istnieją pliki:
 
     ```output
-    sshuser@hn0-scalin:~$ hadoop fs -ls -R hdfs://mycluster/tmp/hive/hive
+    sshuser@scalin:~$ hadoop fs -ls -R hdfs://mycluster/tmp/hive/hive
     drwx------   - hive hdfs          0 2017-07-06 13:40 hdfs://mycluster/tmp/hive/hive/4f3f4253-e6d0-42ac-88bc-90f0ea03602c
     drwx------   - hive hdfs          0 2017-07-06 13:40 hdfs://mycluster/tmp/hive/hive/4f3f4253-e6d0-42ac-88bc-90f0ea03602c/_tmp_space.db
     -rw-r--r--   3 hive hdfs         27 2017-07-06 13:40 hdfs://mycluster/tmp/hive/hive/4f3f4253-e6d0-42ac-88bc-90f0ea03602c/inuse.info

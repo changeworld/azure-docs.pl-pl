@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 12/02/2019
 ms.author: shvija
-ms.openlocfilehash: a94e67af927365eda2b8b98240285e7cd3079a95
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 8b6a9978d6db1a8978f993abf16d7cfbfb2f44a9
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688152"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771023"
 ---
 # <a name="quickstart-create-an-event-hub-using-azure-portal"></a>Szybki start: tworzenie centrum zdarzeń przy użyciu witryny Azure Portal
 Azure Event Hubs to platforma do pozyskiwania i strumieniowego przesyłania danych, która umożliwia odbieranie i przetwarzanie milionów zdarzeń na sekundę. Usługa Event Hubs pozwala przetwarzać i przechowywać zdarzenia, dane lub dane telemetryczne generowane przez rozproszone oprogramowanie i urządzenia. Dane wysłane do centrum zdarzeń mogą zostać przekształcone i zmagazynowane przy użyciu dowolnego dostawcy analityki czasu rzeczywistego lub adapterów przetwarzania wsadowego/magazynowania. Aby zapoznać się ze szczegółowym omówieniem usługi Event Hubs, zobacz [Omówienie usługi Event Hubs](event-hubs-about.md) i [Funkcje usługi Event Hubs](event-hubs-features.md).
@@ -29,7 +29,7 @@ Aby ukończyć ten przewodnik Szybki start, upewnij się, że dysponujesz nastę
 - [Visual Studio 2019)](https://www.visualstudio.com/vs) lub później.
 - [Zestaw .NET Standard SDK](https://www.microsoft.com/net/download/windows) w wersji 2.0 lub nowszej.
 
-## <a name="create-a-resource-group"></a>Utwórz grupę zasobów
+## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
 Grupa zasobów to logiczna kolekcja zasobów platformy Azure. Wszystkie zasoby są wdrażane i zarządzane w ramach grupy zasobów. Aby utworzyć grupę zasobów:
 
@@ -60,7 +60,7 @@ Przestrzeń nazw usługi Event Hubs udostępnia unikatowy kontener zakresu przyw
 4. Na stronie **Tworzenie przestrzeni nazw** wykonaj następujące czynności:
     1. Wprowadź **nazwę** dla przestrzeni nazw. System od razu sprawdza, czy nazwa jest dostępna.
     2. Wybierz **warstwę cenową** (podstawowa lub standardowa).
-    3. Zauważ, że opcja **Włącz Kafka** jest automatycznie włączona. Usługa Azure Event Hubs udostępnia punkt końcowy Kafka. Ten punkt końcowy umożliwia Event Hubsom przestrzeni nazw natywne zrozumienie protokołu komunikatów [Apache Kafka](https://kafka.apache.org/intro) i interfejsów API. Korzystając z tej możliwości, można komunikować się z centrami zdarzeń w taki sam sposób, jak w przypadku Kafka tematów bez zmiany klientów protokołu lub uruchamiania własnych klastrów. Event Hubs obsługuje [Apache Kafka wersje 1,0](https://kafka.apache.org/10/documentation.html) i nowsze.
+    3. Zauważ, że opcja **Włącz Kafka** jest automatycznie włączona. Usługa Azure Event Hubs zapewnia punkt końcowy platformy Kafka. Ten punkt końcowy umożliwia przestrzeni nazw usługi Event Hubs zrozumieć, natywnie [platformy Apache Kafka](https://kafka.apache.org/intro) komunikatu protokołu i interfejsów API. Dzięki tej możliwości możesz mogą komunikować się za pomocą usługi event hubs, co w przypadku tematów platformy Kafka bez zmieniania klientów protokołu lub działające własne klastry. Usługa Event Hubs obsługuje [platformy Apache Kafka w wersji 1.0](https://kafka.apache.org/10/documentation.html) i nowszych.
     4. Wybierz **subskrypcję**, w ramach której chcesz utworzyć przestrzeń nazw.
     5. Wybierz istniejącą **grupę zasobów** lub Utwórz nową grupę zasobów. 
     4. Wybierz **lokalizację** dla przestrzeni nazw.
@@ -102,7 +102,7 @@ W tym artykule utworzono grupę zasobów, przestrzeń nazw usługi Event Hubs i 
 - [Node.js](event-hubs-node-get-started-send.md)
 - [Go](event-hubs-go-get-started-send.md)
 - [C (tylko wysyłanie)](event-hubs-c-getstarted-send.md)
-- [Apache Storm (tylko reecive)](event-hubs-storm-getstarted-receive.md)
+- [Apache Storm (tylko odbieranie)](event-hubs-storm-getstarted-receive.md)
 
 
 [Azure portal]: https://portal.azure.com/

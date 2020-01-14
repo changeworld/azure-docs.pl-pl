@@ -5,12 +5,12 @@ author: ahmedelnably
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: aelnably
-ms.openlocfilehash: 9aac6662304395b1bce5dfc21770d296f6a4f2ab
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: f4af646569edc8a9274af752e7e4f2a36585ae4d
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226848"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769102"
 ---
 # <a name="monitoring-azure-functions-with-azure-monitor-logs"></a>Azure Functions monitorowania z dziennikami Azure Monitor
 
@@ -25,51 +25,54 @@ Azure Monitor używa wersji [języka zapytań Kusto](/azure/kusto/query/) używa
 
 ## <a name="setting-up"></a>Konfigurowanie
 
-W sekcji monitorowanie wybierz pozycję **Ustawienia diagnostyczne** , a następnie kliknij przycisk **Dodaj**.
+W sekcji **monitorowanie** wybierz pozycję **Ustawienia diagnostyczne** , a następnie kliknij pozycję **Dodaj ustawienie diagnostyczne**.
 
 ![Dodaj ustawienie diagnostyczne](media/functions-monitor-log-analytics/diagnostic-settings-add.png)
 
-Na stronie Ustawienia wybierz pozycję **Wyślij do log Analytics**i w obszarze **Dziennik** wybierz pozycję **FunctionAppLogs**. Ta tabela zawiera odpowiednie dzienniki.
+Na stronie **Ustawienia diagnostyki** wybierz pozycję **Wyślij do log Analytics**a następnie wybierz obszar roboczy log Analytics. W obszarze **Dziennik** wybierz **FunctionAppLogs**, ta tabela zawiera odpowiednie dzienniki.
 
 ![Dodaj ustawienie diagnostyczne](media/functions-monitor-log-analytics/choose-table.png)
 
-## <a name="user-generated-logs"></a>Dzienniki wygenerowane przez użytkownika
+## <a name="user-generated-logs"></a>Dzienniki generowane przez użytkownika
 
 W celu wygenerowania dzienników niestandardowych można użyć określonej instrukcji rejestrowania w zależności od języka, poniżej przedstawiono przykładowe fragmenty kodu:
 
-**JavaScript**
 
-```javascript
-    context.log('My app logs here.');
-```
-
-**Python**
-
-```python
-    logging.info('My app logs here.')
-```
-
-**.NET**
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
-    log.LogInformation("My app logs here.");
+log.LogInformation("My app logs here.");
 ```
 
-**Java**
+# <a name="javatabjava"></a>[Java](#tab/java)
 
 ```java
-    context.getLogger().info("My app logs here.");
+context.getLogger().info("My app logs here.");
 ```
 
-**Program PowerShell**
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+```javascript
+context.log('My app logs here.');
+```
+
+# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
 
 ```powershell
-    Write-Host "My app logs here."
+Write-Host "My app logs here."
 ```
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+```python
+logging.info('My app logs here.')
+```
+
+---
 
 ## <a name="querying-the-logs"></a>Wykonywanie zapytania dotyczącego dzienników
 
-Aby wykonać zapytanie dotyczące wygenerowanych dzienników, przejdź do obszaru roboczego usługi log Analytics i kliknij pozycję **dzienniki**.
+Aby wykonać zapytanie dotyczące wygenerowanych dzienników, przejdź do obszaru roboczego Log Analytics skonfigurowanego do wysyłania dzienników funkcji do i kliknij pozycję **dzienniki**.
 
 ![Okno zapytania w obszarze roboczym LA](media/functions-monitor-log-analytics/querying.png)
 

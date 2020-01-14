@@ -2,14 +2,14 @@
 title: Organizowanie zasobów przy użyciu grup zarządzania — Zarządzanie platformą Azure
 description: Dowiedz się więcej na temat grup zarządzania, sposobu działania ich uprawnień i korzystania z nich.
 ms.assetid: 482191ac-147e-4eb6-9655-c40c13846672
-ms.date: 04/22/2019
+ms.date: 12/18/2019
 ms.topic: overview
-ms.openlocfilehash: 7e121ed256e04332ca7fd33c9fc48cd2bc7bae03
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 507f4575e6d8daa16a1ed7db3d429d2810a63a7c
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73960181"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750251"
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>Organizowanie zasobów przy użyciu grup zarządzania platformy Azure
 
@@ -23,7 +23,7 @@ Można utworzyć elastyczną strukturę grup zarządzania i subskrypcji w celu o
 
 ![Przykład drzewa hierarchii grupy zarządzania](./media/tree.png)
 
-Możesz utworzyć hierarchię stosującą zasady, na przykład ograniczające lokalizacje maszyn wirtualnych do regionu Zachodnie stany USA w grupie o nazwie „Produkcja”. Te zasady będą dziedziczone przez obie subskrypcje umowy EA w ramach tej grupy zarządzania i będą stosowane do wszystkich maszyn wirtualnych w ramach tych subskrypcji. Te zasady zabezpieczeń nie mogą zostać zmienione przez właściciela zasobu lub subskrypcji, co zapewnia ulepszony nadzór.
+Możesz utworzyć hierarchię stosującą zasady, na przykład ograniczające lokalizacje maszyn wirtualnych do regionu Zachodnie stany USA w grupie o nazwie „Produkcja”. Te zasady będą dziedziczyć we wszystkich subskrypcjach EA, które są elementami podrzędnymi tej grupy zarządzania i będą miały zastosowanie do wszystkich maszyn wirtualnych w ramach tych subskrypcji. Te zasady zabezpieczeń nie mogą zostać zmienione przez właściciela zasobu lub subskrypcji, co zapewnia ulepszony nadzór.
 
 Innym scenariuszem, w którym można użyć grup zarządzania, jest zapewnienie użytkownikom dostępu do wielu subskrypcji. Przenosząc wiele subskrypcji do tej grupy zarządzania, można utworzyć jedno przypisanie [kontroli dostępu opartej na rolach](../../role-based-access-control/overview.md) (RBAC) do grupy zarządzania, które będzie dziedziczyło ten dostęp do wszystkich subskrypcji.
 Jedno przypisanie grupy zarządzania może zapewnić użytkownikom dostęp do wszystkiego, czego potrzebują, bez konieczności tworzenia skryptów RBAC dla wielu subskrypcji.
@@ -45,7 +45,7 @@ Główna grupa zarządzania jest wbudowana w hierarchię, aby wszystkie grupy za
 ### <a name="important-facts-about-the-root-management-group"></a>Ważne informacje dotyczące głównej grupy zarządzania
 
 - Domyślnie nazwa wyświetlana głównej grupy zarządzania to **Grupa główna dzierżawy**. Identyfikatorem jest identyfikator usługi Azure Active Directory.
-- Aby zmienić nazwę wyświetlaną, Twoje konto musi mieć przypisaną rolę właściciela lub współautora w głównej grupie zarządzania. Aby uzyskać instrukcje dotyczące zmiany nazwy, zobacz [Zmienianie nazwy grupy zarządzania](manage.md#change-the-name-of-a-management-group).
+- Aby zmienić nazwę wyświetlaną, Twoje konto musi mieć przypisaną rolę właściciela lub współautora w głównej grupie zarządzania. Aby zaktualizować nazwę grupy zarządzania, zobacz [zmiana nazwy grupy zarządzania](manage.md#change-the-name-of-a-management-group) .
 - Głównej grupy zarządzania nie można przenieść ani usunąć, w odróżnieniu od innych grup zarządzania.  
 - Wszystkie subskrypcje i grupy zarządzania składają się do jednej głównej grupy zarządzania w katalogu.
   - Wszystkie zasoby w katalogu składają się do głównej grupy zarządzania dla globalnego zarządzania.
@@ -82,12 +82,12 @@ Jeśli masz pytania na temat tego procesu wypełniania, napisz na adres manageme
 ## <a name="management-group-access"></a>Dostęp do grupy zarządzania
 
 Grupy zarządzania platformy Azure obsługują [kontrolę dostępu opartą na rolach (RBAC) na platformie Azure](../../role-based-access-control/overview.md) dla wszystkich uprawnień dostępu do zasobów oraz definicji ról.
-Te uprawnienia są dziedziczone do zasobów podrzędnych, które istnieją w hierarchii. Dowolną wbudowaną rolę RBAC można przypisać do grupy zarządzania, aby była dziedziczona w dół hierarchii do zasobów.
+Te uprawnienia są dziedziczone do zasobów podrzędnych, które istnieją w hierarchii. Każda rola RBAC może być przypisana do grupy zarządzania, która będzie dziedziczyć hierarchię do zasobów.
 Na przykład można przypisać do grupy zarządzania rolę RBAC Współautor maszyny wirtualnej. Ta rola nie ma żadnej akcji wykonywanej na grupie zarządzania, ale będzie dziedziczona do wszystkich maszyn wirtualnych w ramach tej grupy zarządzania.
 
 Na poniższym wykresie przedstawiono listę ról i obsługiwane akcje na grupach zarządzania.
 
-| Nazwa roli RBAC             | Tworzenie | Zmiana nazwy | Przenoszenie** | Usuwanie | Przypisywanie dostępu | Przypisywanie zasad | Odczyt  |
+| Nazwa roli RBAC             | Create | Zmiana nazwy | Przenoszenie** | Usuń | Przypisywanie dostępu | Przypisywanie zasad | Odczyt  |
 |:-------------------------- |:------:|:------:|:------:|:------:|:-------------:| :------------:|:-----:|
 |Właściciel                       | X      | X      | X      | X      | X             | X             | X     |
 |Współautor                 | X      | X      | X      | X      |               |               | X     |
@@ -100,13 +100,90 @@ Na poniższym wykresie przedstawiono listę ról i obsługiwane akcje na grupach
 *: role Współautor grupy zarządzania i Czytelnik grupy zarządzania zezwalają użytkownikom na wykonywanie tych akcji tylko dla zakresu grupy zarządzania.  
 \* *: Przypisania roli w głównej grupie zarządzania nie są wymagane do przeniesienia subskrypcji lub grupy zarządzania do i z niej.  Aby uzyskać szczegółowe informacje o przenoszeniu elementów w hierarchii, zobacz [Zarządzanie zasobami przy użyciu grup zarządzania](manage.md).
 
-### <a name="custom-rbac-role-definition-and-assignment"></a>Definicja i przypisanie niestandardowej roli RBAC
+## <a name="custom-rbac-role-definition-and-assignment"></a>Niestandardowa definicja roli RBAC i przypisanie
 
-Niestandardowe role RBAC nie są obecnie obsługiwane dla grup zarządzania. Zobacz [forum opinii dotyczących grup zarządzania](https://aka.ms/mgfeedback), aby sprawdzić stan tego elementu.
+Obsługa niestandardowych ról RBAC dla grup zarządzania jest obecnie obsługiwana z pewnymi [ograniczeniami](#limitations).  Zakres grupy zarządzania można zdefiniować w zakresie możliwym do przypisania definicji roli.  Ta niestandardowa rola RBAC będzie następnie dostępna do przypisywania do tej grupy zarządzania oraz dla każdej grupy zarządzania, subskrypcji, grupy zasobów lub zasobu. Ta rola niestandardowa odziedziczy hierarchię, jak każda wbudowana rola.    
+
+### <a name="example-definition"></a>Przykładowa definicja
+[Definiowanie i tworzenie roli niestandardowej](../../role-based-access-control/custom-roles.md) nie zmienia się wraz z uwzględnieniem grup zarządzania. Użyj pełnej ścieżki, aby zdefiniować grupę zarządzania **/providers/Microsoft.Management/managementgroups/{GroupID}** . 
+
+Użyj identyfikatora grupy zarządzania, a nie nazwy wyświetlanej grupy zarządzania. Ten typowy błąd występuje, ponieważ oba te pola są zdefiniowanymi niestandardowymi podczas tworzenia grupy zarządzania. 
+
+```json
+...
+{
+  "Name": "MG Test Custom Role",
+  "Id": "id", 
+  "IsCustom": true,
+  "Description": "This role provides members understand custom roles.",
+  "Actions": [
+    "Microsoft.Management/managementgroups/delete",
+    "Microsoft.Management/managementgroups/read",
+    "Microsoft.Management/managementgroup/write",
+    "Microsoft.Management/managementgroup/subscriptions/delete",
+    "Microsoft.Management/managementgroup/subscriptions/write",
+    "Microsoft.resources/subscriptions/read",
+    "Microsoft.Authorization/policyAssignments/*",
+    "Microsoft.Authorization/policyDefinitions/*",
+    "Microsoft.Authorization/policySetDefinitions/*",
+    "Microsoft.PolicyInsights/*",
+    "Microsoft.Authorization/roleAssignments/*",
+    "Microsoft.Authorization/roledefinitions/*"
+  ],
+  "NotActions": [],
+  "DataActions": [],
+  "NotDataActions": [],
+  "AssignableScopes": [
+        "/providers/microsoft.management/managementGroups/ContosoCorporate"
+  ]
+}
+...
+```
+
+### <a name="issues-with-breaking-the-role-definition-and-assignment-hierarchy-path"></a>Problemy ze uszkodzeniem definicji roli i ścieżki hierarchii przypisania
+Definicje ról są przypisywane w dowolnym miejscu w hierarchii grupy zarządzania. Definicję roli można zdefiniować w nadrzędnej grupie zarządzania, podczas gdy rzeczywiste przypisanie roli istnieje w subskrypcji podrzędnej. Ponieważ istnieje relacja między tymi dwoma elementami, podczas próby oddzielenia przypisania od jego definicji wystąpi błąd. 
+
+Na przykład: Przyjrzyjmy się małej sekcji hierarchii dla wizualizacji. 
+
+![poddrzewo](./media/subtree.png)
+
+Załóżmy, że w grupie zarządzania Marketing zdefiniowano rolę niestandardową. Ta rola niestandardowa jest następnie przypisywana do dwóch subskrypcji bezpłatnych wersji próbnych.  
+
+Jeśli spróbujesz przenieść jedną z tych subskrypcji jako podrzędną grupy zarządzania produkcyjnego, spowoduje to przerwanie ścieżki z przypisania roli subskrypcji do definicji roli grupy zarządzania Marketing. W tym scenariuszu zostanie wyświetlony komunikat o błędzie informujący, że przeniesienie nie jest dozwolone, ponieważ spowoduje przerwanie tej relacji.  
+
+Istnieje kilka różnych opcji umożliwiających rozwiązanie tego scenariusza:
+- Przed przeniesieniem subskrypcji do nowego elementu nadrzędnego MG usuń przypisanie roli z subskrypcji.
+- Dodaj subskrypcję do zakresu umożliwiającego przypisanie definicji roli.
+- Zmień zakres możliwy do przypisania w ramach definicji roli. W powyższym przykładzie można zaktualizować zakresy przypisywane z marketingu do głównej grupy zarządzania, aby można było osiągnąć tę definicję w obu gałęziach hierarchii.   
+- Utwórz dodatkową rolę niestandardową, która zostanie zdefiniowana w innej gałęzi.  Ta nowa rola będzie wymagała również zmiany przypisania roli w subskrypcji.  
+
+### <a name="limitations"></a>Ograniczenia  
+Istnieją ograniczenia, które istnieją podczas korzystania z ról niestandardowych w grupach zarządzania. 
+
+ - Można zdefiniować tylko jedną grupę zarządzania w przypisywanych zakresach nowej roli.  To ograniczenie jest stosowane w celu zmniejszenia liczby sytuacji, w których definicje ról i przypisania ról są rozłączone.  Dzieje się tak, gdy subskrypcja lub Grupa zarządzania z przypisaniem roli jest przenoszona do innego elementu nadrzędnego, który nie ma definicji roli.   
+ - Akcje płaszczyzny danych RBAC nie mogą być zdefiniowane w rolach niestandardowych grupy zarządzania.  To ograniczenie ma miejsce w przypadku, gdy występuje problem z opóźnieniami akcji RBAC aktualizujących dostawców zasobów płaszczyzny danych. Ten problem opóźnienia jest opracowywany, a akcje te zostaną wyłączone z definicji roli w celu ograniczenia ryzyka.
+ - Azure Resource Manager nie sprawdza poprawności istnienia grupy zarządzania w zakresie możliwym do przypisania definicji roli.  Jeśli na liście występuje literówka lub nieprawidłowy identyfikator grupy zarządzania, definicja roli nadal zostanie utworzona.   
+
+## <a name="moving-management-groups-and-subscriptions"></a>Przeniesienie grup zarządzania i subskrypcji 
+
+Aby Grupa zarządzania lub subskrypcja była podrzędną inną grupą zarządzania, należy ocenić trzy reguły jako prawdziwe.
+
+Jeśli wykonujesz akcję Przenieś, potrzebujesz: 
+
+-  Uprawnienia Zapis grup zarządzania i przypisywanie ról w podrzędnej subskrypcji lub grupie zarządzania.
+   - **Właściciel** przykładu wbudowanej roli
+- Dostęp do zapisu grupy zarządzania w docelowej nadrzędnej grupie zarządzania.
+   - Wbudowana rola — przykład: **właściciel**, **współautor**, **współautor grupy zarządzania**
+- Dostęp do zapisu grupy zarządzania w istniejącej nadrzędnej grupie zarządzania.
+   - Wbudowana rola — przykład: **właściciel**, **współautor**, **współautor grupy zarządzania**
+
+**Wyjątek**: Jeśli obiekt docelowy lub istniejąca nadrzędna grupa zarządzania jest główną grupą zarządzania, wymagania dotyczące uprawnień nie są stosowane. Ponieważ główną grupą zarządzania jest domyślny punkt załadunkowy dla wszystkich nowych grup zarządzania i subskrypcji, nie musisz mieć uprawnień do przenoszenia elementu.
+
+Jeśli rola właściciela w subskrypcji jest dziedziczona z bieżącej grupy zarządzania, cele przenoszenia są ograniczone. Subskrypcję można przenieść tylko do innej grupy zarządzania, w której masz rolę właściciela. Nie można przenieść go do grupy zarządzania, w której jesteś współautorem, ponieważ utracisz własność subskrypcji. Jeśli użytkownik jest bezpośrednio przypisany do roli właściciela subskrypcji (niedziedziczonej z grupy zarządzania), można przenieść ją do dowolnej grupy zarządzania, w której jesteś współautorem. 
 
 ## <a name="audit-management-groups-using-activity-logs"></a>Inspekcja grup zarządzania przy użyciu dzienników aktywności
 
-Grupy zarządzania są obsługiwane w [dzienniku aktywności platformy Azure](../../azure-monitor/platform/activity-logs-overview.md). Możesz wyszukiwać wszystkie zdarzenia, które wystąpiły w grupie zarządzania w tej samej lokalizacji centralnej co inne zasoby platformy Azure.  Na przykład widoczne są wszystkie przypisania ról i zmiany przypisań zasad w określonej grupie zarządzania.
+Grupy zarządzania są obsługiwane w [dzienniku aktywności platformy Azure](../../azure-monitor/platform/platform-logs-overview.md). Możesz wyszukiwać wszystkie zdarzenia, które wystąpiły w grupie zarządzania w tej samej lokalizacji centralnej co inne zasoby platformy Azure.  Na przykład widoczne są wszystkie przypisania ról i zmiany przypisań zasad w określonej grupie zarządzania.
 
 ![Dzienniki aktywności z grupami zarządzania](media/al-mg.png)
 

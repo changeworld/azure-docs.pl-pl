@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 3e72bd366cdbba1d73bc05f98d3848e2d4f0ca6c
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 3680de5d8e0e761047e1263c2679da87b1fa2d0b
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74925334"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769459"
 ---
 # <a name="azure-queue-storage-bindings-for-azure-functions"></a>Powiązania usługi Azure queue storage dla Azure Functions
 
@@ -297,7 +297,7 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 |**direction**| nd. | Tylko w pliku *Function. JSON* . Musi być równa `in`. Ta właściwość jest ustawiana automatycznie po utworzeniu wyzwalacza w witrynie Azure portal. |
 |**Nazwa** | nd. |Nazwa zmiennej, która zawiera ładunek elementu kolejki w kodzie funkcji.  |
 |**queueName** | **QueueName**| Nazwa kolejki do sondowania. |
-|**połączenia** | **Połączenie** |Nazwa ustawienia aplikacji, które zawiera parametry połączenia magazynu, które będą używane dla tego powiązania. Jeśli nazwa ustawienia aplikacji zaczyna się od "AzureWebJobs", w tym miejscu możesz określić tylko resztę nazwy. Na przykład jeśli ustawisz `connection` na "WebStorage", środowisko uruchomieniowe funkcji szuka ustawienia aplikacji o nazwie "AzureWebJobsMyStorage". W przypadku pozostawienia `connection` pustego środowisko uruchomieniowe funkcji używa domyślnych parametrów połączenia magazynu w ustawieniu aplikacji o nazwie `AzureWebJobsStorage`.|
+|**połączenia** | **Połączenie** |Nazwa ustawienia aplikacji, które zawiera parametry połączenia magazynu, które będą używane dla tego powiązania. Jeśli nazwa ustawienia aplikacji zaczyna się od "AzureWebJobs", w tym miejscu możesz określić tylko resztę nazwy. Na przykład jeśli ustawisz `connection` na "WebStorage", środowisko uruchomieniowe Functions szuka ustawienia aplikacji o nazwie "WebStorage". W przypadku pozostawienia `connection` pustego środowisko uruchomieniowe funkcji używa domyślnych parametrów połączenia magazynu w ustawieniu aplikacji o nazwie `AzureWebJobsStorage`.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -336,7 +336,18 @@ Aby ręcznie obsłużyć trujące komunikaty, sprawdź [dequeueCount](#trigger--
 
 ## <a name="trigger---polling-algorithm"></a>Algorytm sondowania wyzwalacza
 
-Wyzwalacz kolejki implementuje losowy wykładniczy algorytm wycofywania, aby zmniejszyć wpływ sondowania w kolejce na koszty transakcji magazynu.  Po znalezieniu komunikatu środowisko uruchomieniowe czeka dwa sekundy, a następnie sprawdza inny komunikat; gdy nie zostanie znaleziony żaden komunikat, czeka około czterech sekund przed ponowieniem próby. Po kolejnych nieudanych próbach pobrania komunikatu w kolejce czas oczekiwania będzie się zwiększać do momentu osiągnięcia maksymalnego czasu oczekiwania, który jest wartością domyślną jednej minuty. Maksymalny czas oczekiwania można skonfigurować za pomocą właściwości `maxPollingInterval` w [pliku host. JSON](functions-host-json.md#queues).
+Wyzwalacz kolejki implementuje losowy wykładniczy algorytm wycofywania, aby zmniejszyć wpływ sondowania w kolejce na koszty transakcji magazynu.
+
+Algorytm używa następującej logiki:
+
+- Po znalezieniu komunikatu środowisko uruchomieniowe czeka dwa sekundy, a następnie sprawdza inny komunikat
+- Gdy nie zostanie znaleziony żaden komunikat, czeka około czterech sekund przed ponowieniem próby.
+- Po kolejnych nieudanych próbach pobrania komunikatu w kolejce czas oczekiwania będzie się zwiększać do momentu osiągnięcia maksymalnego czasu oczekiwania, który jest wartością domyślną jednej minuty.
+- Maksymalny czas oczekiwania można skonfigurować za pomocą właściwości `maxPollingInterval` w [pliku host. JSON](functions-host-json.md#queues).
+
+W przypadku lokalnego tworzenia maksymalnego interwału sondowania wartość domyślna to dwie sekundy.
+
+W odniesieniu do rozliczania czas spędzony na sondowaniu przez środowisko uruchomieniowe jest "bezpłatny" i nie jest liczony na koncie.
 
 ## <a name="trigger---concurrency"></a>Wyzwalacz — współbieżność
 
@@ -614,7 +625,7 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 |**direction** | nd. | Musi być równa `out`. Ta właściwość jest ustawiana automatycznie po utworzeniu wyzwalacza w witrynie Azure portal. |
 |**Nazwa** | nd. | Nazwa zmiennej, która reprezentuje kolejkę w kodzie funkcji. Ustaw `$return`, aby odwoływać się do zwracanej wartości funkcji.|
 |**queueName** |**QueueName** | Nazwa kolejki. |
-|**połączenia** | **Połączenie** |Nazwa ustawienia aplikacji, które zawiera parametry połączenia magazynu, które będą używane dla tego powiązania. Jeśli nazwa ustawienia aplikacji zaczyna się od "AzureWebJobs", w tym miejscu możesz określić tylko resztę nazwy. Na przykład jeśli ustawisz `connection` na "WebStorage", środowisko uruchomieniowe funkcji szuka ustawienia aplikacji o nazwie "AzureWebJobsMyStorage". W przypadku pozostawienia `connection` pustego środowisko uruchomieniowe funkcji używa domyślnych parametrów połączenia magazynu w ustawieniu aplikacji o nazwie `AzureWebJobsStorage`.|
+|**połączenia** | **Połączenie** |Nazwa ustawienia aplikacji, które zawiera parametry połączenia magazynu, które będą używane dla tego powiązania. Jeśli nazwa ustawienia aplikacji zaczyna się od "AzureWebJobs", w tym miejscu możesz określić tylko resztę nazwy. Na przykład jeśli ustawisz `connection` na "WebStorage", środowisko uruchomieniowe Functions szuka ustawienia aplikacji o nazwie "WebStorage". W przypadku pozostawienia `connection` pustego środowisko uruchomieniowe funkcji używa domyślnych parametrów połączenia magazynu w ustawieniu aplikacji o nazwie `AzureWebJobsStorage`.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 

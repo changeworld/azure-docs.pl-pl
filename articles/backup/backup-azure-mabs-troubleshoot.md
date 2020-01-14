@@ -4,12 +4,12 @@ description: Rozwiązywanie problemów z instalacją, rejestracją Azure Backup 
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: bf641c4ef27ce561c005709e6de94f40855b9a5f
-ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
+ms.openlocfilehash: 7fc27a2624fc38883135bdb6d2767625ab02a5a5
+ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/05/2020
-ms.locfileid: "75665329"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75830211"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>Rozwiązywanie problemów ze składnikiem Azure Backup Server
 
@@ -46,11 +46,11 @@ Przed rozpoczęciem rozwiązywania problemów Microsoft Azure Backup Server (ser
 | --- | --- | --- |
 | Tworzenie kopii zapasowych | Tworzenie punktu odzyskiwania w trybie online nie powiodło się | **Komunikat o błędzie**: Agent Azure Backup systemu Windows nie mógł utworzyć migawki wybranego woluminu. <br> **Obejście**: Spróbuj zwiększyć ilość miejsca w woluminie repliki i punktu odzyskiwania.<br> <br> **Komunikat o błędzie**: Agent Azure Backup systemu Windows nie może nawiązać połączenia z usługą usługą obengine <br> **Obejście**: Sprawdź, czy na liście uruchomionych usług na komputerze znajduje się usługą obengine. Jeśli usługa usługą obengine nie jest uruchomiona, użyj polecenia "net start usługą obengine", aby uruchomić usługę usługą obengine. <br> <br> **Komunikat o błędzie**: nie ustawiono hasła szyfrowania dla tego serwera. Skonfiguruj hasło szyfrowania. <br> **Obejście**: spróbuj skonfigurować hasło szyfrowania. Jeśli to się nie powiedzie, wykonaj następujące czynności: <br> <ol><li>Upewnij się, że istnieje lokalizacja tymczasowa. Jest to lokalizacja wymieniona w rejestrze **HKEY_LOCAL_MACHINE \Software\microsoft\windows Azure Backup\Config**, o nazwie **ScratchLocation** .</li><li> Jeśli lokalizacja tymczasowa istnieje, spróbuj ponownie zarejestrować się przy użyciu starego hasła. *Za każdym razem, gdy konfigurujesz hasło szyfrowania, Zapisz je w bezpiecznej lokalizacji.*</li><ol>|
 
-## <a name="the-vault-credentials-provided-are-different-from-the-vault-the-server-is-registered"></a>Podane poświadczenia magazynu różnią się od magazynu, w którym zarejestrowano serwer
+## <a name="the-original-and-external-dpm-servers-must-be-registered-to-the-same-vault"></a>Oryginalne i zewnętrzne serwery DPM muszą być zarejestrowane w tym samym magazynie
 
 | Operacja | Szczegóły błędu | Obejście |
 | --- | --- | --- |
-| Przywracanie | **Kod błędu**: błąd CBPServerRegisteredVaultDontMatchWithCurrent/poświadczeń magazynu: 100110 <br/> <br/>**Komunikat o błędzie**: podane poświadczenia magazynu różnią się od magazynu, w którym zarejestrowano serwer | **Przyczyna**: ten problem występuje, gdy próbujesz przywrócić pliki na alternatywny serwer z oryginalnego serwera przy użyciu opcji odzyskiwania zewnętrznego programu DPM i jeśli przywracany serwer i oryginalny serwer, z którego są tworzone kopie zapasowe, nie są skojarzone z tym samym magazynem usługi odzyskiwania.<br/> <br/>**Obejście problemu** Aby rozwiązać ten problem, upewnij się, że oryginalny i alternatywny serwer jest zarejestrowany w tym samym magazynie.|
+| Przywracanie | **Kod błędu**: błąd CBPServerRegisteredVaultDontMatchWithCurrent/poświadczeń magazynu: 100110 <br/> <br/>**Komunikat o błędzie**: oryginalne i zewnętrzne serwery DPM muszą być zarejestrowane w tym samym magazynie | **Przyczyna**: ten problem występuje, gdy próbujesz przywrócić pliki na alternatywny serwer z oryginalnego serwera przy użyciu opcji odzyskiwania zewnętrznego programu DPM i jeśli przywracany serwer i oryginalny serwer, z którego są tworzone kopie zapasowe, nie są skojarzone z tym samym magazynem usługi odzyskiwania.<br/> <br/>**Obejście problemu** Aby rozwiązać ten problem, upewnij się, że oryginalny i alternatywny serwer jest zarejestrowany w tym samym magazynie.|
 
 ## <a name="online-recovery-point-creation-jobs-for-vmware-vm-fail"></a>Zadania tworzenia punktu odzyskiwania w trybie online dla maszyny wirtualnej VMware kończą się niepowodzeniem
 

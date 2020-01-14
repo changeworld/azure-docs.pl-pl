@@ -184,7 +184,7 @@
           items:
             - name: Optymalizacja pod kątem procesora GPU
               href: sizes-gpu.md
-            - name: Konfigurowanie sterowników procesora GPU
+            - name: Konfigurowanie sterowników procesorów GPU firmy NVIDIA
               href: n-series-driver-setup.md
             - name: Konfigurowanie sterowników procesora GPU AMD
               href: n-series-amd-driver-setup.md

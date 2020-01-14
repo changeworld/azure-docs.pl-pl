@@ -1,26 +1,18 @@
 ---
-title: Rozwiązywanie problemów z połączeniami sieci VPN Azure Point-to-Site od klientów z systemem Mac OS X | Dokumentacja firmy Microsoft
+title: 'VPN Gateway platformy Azure: Rozwiązywanie problemów z połączeniami punkt-lokacja: Mac OS X klientów'
 description: Kroki umożliwiające rozwiązywanie problemów z połączeniami klienta sieci VPN P2S Mac OS X
 services: vpn-gateway
-documentationcenter: na
 author: anzaman
-manager: rossort
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: troubleshooting
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 03/27/2018
 ms.author: alzam
-ms.openlocfilehash: 0c058cb6547d67469d3138dc331b6181c07e6e65
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f76fd7bce539ebcf79216aabb5bf868b2d18107a
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60457078"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75780185"
 ---
 # <a name="troubleshoot-point-to-site-vpn-connections-from-mac-os-x-vpn-clients"></a>Rozwiązywanie problemów z połączeniami sieci VPN typu punkt-lokacja z klientów Mac OS X w sieci VPN
 
@@ -63,12 +55,12 @@ Ten artykuł pomaga rozwiązać problemy z połączeniem punkt-lokacja z systeme
 
 Jeśli spróbujesz poprzednich kroków i wszystko jest poprawnie skonfigurowana, Pobierz [Wireshark](https://www.wireshark.org/#download) i wykonać przechwytywania pakietów.
 
-1. Filtrowanie według *isakmp* i przyjrzyj się **IKE_SA** pakietów. Powinno być możliwe wyświetlić szczegóły propozycji skojarzeń zabezpieczeń, w obszarze **ładunek: Oferty skojarzeń zabezpieczeń**. 
+1. Filtrowanie według *isakmp* i przyjrzyj się **IKE_SA** pakietów. Powinno być możliwe wyświetlić szczegóły propozycji skojarzeń zabezpieczeń, w obszarze **ładunek: oferty skojarzeń zabezpieczeń**. 
 2. Sprawdź, czy klient i serwer cechują się wspólnym zestawem.
 
    ![pakiet](./media/vpn-gateway-troubleshoot-point-to-site-osx-ikev2/packet5.jpg) 
   
 3. Jeśli istnieje serwer nie odpowiedział na danych śledzenia sieci, sprawdź, czy włączono protokół IKEv2, na stronie konfiguracji bramy platformy Azure w witrynie Azure Portal.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Aby uzyskać dodatkową pomoc, zobacz [Microsoft Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).

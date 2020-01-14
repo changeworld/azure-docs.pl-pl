@@ -7,12 +7,12 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/15/2019
-ms.openlocfilehash: f3f89de07e2e17a4dda47ce3650391af38663004
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 31cdef281b1cb26d01a4690c815e3d3621e2c053
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71087202"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894312"
 ---
 # <a name="outofmemoryerror-exceptions-for-apache-spark-in-azure-hdinsight"></a>OutOfMemoryError wyjątki dla Apache Spark w usłudze Azure HDInsight
 
@@ -56,11 +56,11 @@ java.lang.OutOfMemoryError
 
 Najbardziej prawdopodobną przyczyną tego wyjątku to, że nie ma wystarczającej ilości pamięci sterty jest przydzielany do maszyny wirtualnej Java (JVMs). Te JVMs są uruchamiane jako elementy wykonawcze lub sterowniki w ramach aplikacji Apache Spark.
 
-### <a name="resolution"></a>Rozwiązanie
+### <a name="resolution"></a>Rozdzielczość
 
 1. Określ maksymalny rozmiar danych obsługiwanych przez aplikację aparatu Spark. Należy oszacować rozmiar na podstawie maksymalnego rozmiaru danych wejściowych, danych pośrednich generowanych przez transformacje danych wejściowych i danych wyjściowych, które wygenerowały dalsze Przekształcanie danych pośrednich. Jeśli wstępne oszacowanie nie jest wystarczające, Zwiększ rozmiar nieco i wykonaj iterację do momentu wystąpienia błędów pamięci.
 
-1. Upewnij się, że klaster usługi HDInsight, który ma być używany, ma wystarczającą ilość zasobów pamięci i rdzeni, aby pomieścić aplikację aparatu Spark. Można to ustalić, wyświetlając sekcję metryki klastra w interfejsie użytkownika PRZĘDZy w klastrze dla wartości **używanej pamięci** a. **Łączna ilość pamięci** i **użycie rdzeni wirtualnych** zamiast **Łączna liczba rdzeni wirtualnych**.
+1. Upewnij się, że klaster usługi HDInsight, który ma być używany, ma wystarczającą ilość zasobów pamięci i rdzeni, aby pomieścić aplikację aparatu Spark. Można to ustalić, wyświetlając sekcję metryki klastra w interfejsie użytkownika PRZĘDZy w klastrze, aby uzyskać wartości **używanej pamięci** a **łącznie** z **rdzeni wirtualnych** i **rdzeni wirtualnych**.
 
     ![Widok pamięci podstawowej przędzy](./media/apache-spark-ts-outofmemory/yarn-core-memory-view.png)
 
@@ -90,7 +90,7 @@ Najbardziej prawdopodobną przyczyną tego wyjątku to, że nie ma wystarczając
 
 ---
 
-## <a name="scenario-java-heap-space-error-when-trying-to-open-apache-spark-history-server"></a>Scenariusz: Błąd obszaru sterty Java podczas próby otwarcia serwera historii Apache Spark
+## <a name="scenario-java-heap-space-error-when-trying-to-open-apache-spark-history-server"></a>Scenariusz: błąd obszaru sterty Java podczas próby otwarcia serwera historii Apache Spark
 
 ### <a name="issue"></a>Problem
 
@@ -114,9 +114,9 @@ hadoop fs -du -s -h wasb:///hdp/spark2-events/application_1503957839788_0264_1/
 **2.1 G**  wasb:///hdp/spark2-events/application_1503957839788_0264_1
 ```
 
-### <a name="resolution"></a>Rozwiązanie
+### <a name="resolution"></a>Rozdzielczość
 
-Pamięć serwera historii platformy Spark można zwiększyć, edytując `SPARK_DAEMON_MEMORY` właściwość w konfiguracji platformy Spark i uruchamiając ponownie wszystkie usługi.
+Pamięć serwera historii platformy Spark można zwiększyć, edytując Właściwość `SPARK_DAEMON_MEMORY` w konfiguracji platformy Spark i uruchamiając ponownie wszystkie usługi.
 
 Można to zrobić z poziomu interfejsu użytkownika przeglądarki Ambari, wybierając sekcję Spark2/config/Advanced Spark2-ENV.
 
@@ -130,7 +130,7 @@ Upewnij się, że wszystkie usługi, których to dotyczy, zostały uruchomione p
 
 ---
 
-## <a name="scenario-livy-server-fails-to-start-on-apache-spark-cluster"></a>Scenariusz: Nie można uruchomić serwera usługi Livy w klastrze Apache Spark
+## <a name="scenario-livy-server-fails-to-start-on-apache-spark-cluster"></a>Scenariusz: nie można uruchomić serwera usługi Livy w klastrze Apache Spark
 
 ### <a name="issue"></a>Problem
 
@@ -194,13 +194,13 @@ Exception in thread "main" java.lang.OutOfMemoryError: unable to create new nati
 
 ### <a name="cause"></a>Przyczyna
 
-`java.lang.OutOfMemoryError: unable to create new native thread`Najważniejsze elementy systemu operacyjnego nie mogą przypisywać więcej natywnych wątków do JVMs. Potwierdzenie, że ten wyjątek jest spowodowany przez naruszenie limitu liczby wątków dla procesu.
+`java.lang.OutOfMemoryError: unable to create new native thread` podświetlów systemu operacyjnego nie można przypisać więcej natywnych wątków do JVMs. Potwierdzenie, że ten wyjątek jest spowodowany przez naruszenie limitu liczby wątków dla procesu.
 
 Po nieoczekiwanym zakończeniu działania serwera usługi Livy wszystkie połączenia z klastrami Spark są również przerywane, co oznacza, że wszystkie zadania i powiązane dane zostaną utracone. W ramach mechanizmu odzyskiwania sesji HDP 2,6 wprowadzono usługi Livy szczegóły sesji w dozorcy do odzyskania po zakończeniu działania serwera usługi Livy.
 
 W przypadku przesyłania dużej liczby zadań za pośrednictwem usługi usługi Livy, w ramach wysokiej dostępności dla serwera usługi Livy są przechowywane te Stany sesji w ZK (w klastrach usługi HDInsight) i odzyskiwać te sesje po ponownym uruchomieniu usługi usługi Livy. Po ponownym uruchomieniu po nieoczekiwanym zakończeniu usługi Livy tworzy jeden wątek dla każdej sesji, co spowoduje zsumowanie określonej liczby sesji do odzyskiwania, co powoduje utworzenie zbyt wielu wątków.
 
-### <a name="resolution"></a>Rozwiązanie
+### <a name="resolution"></a>Rozdzielczość
 
 Usuń wszystkie wpisy, wykonując kroki opisane poniżej.
 
@@ -239,7 +239,7 @@ Usuń wszystkie wpisy, wykonując kroki opisane poniżej.
 1. Poczekaj na zakończenie powyższego polecenia, a kursor ma zwrócić monit, a następnie uruchom ponownie usługę usługi Livy z Ambari, która powinna zakończyć się powodzeniem.
 
 > [!NOTE]
-> `DELETE`sesja usługi Livy po zakończeniu jego wykonywania. Sesje wsadowe usługi Livy nie zostaną usunięte automatycznie zaraz po zakończeniu aplikacji platformy Spark, która jest zaprojektowana. Sesja usługi Livy jest jednostką utworzoną przez żądanie POST na serwerze REST usługi Livy. Do usunięcia tej jednostki jest potrzebne wywołanie.`DELETE` W przeciwnym razie należy poczekać na zakończenie działania GC.
+> `DELETE` sesję usługi Livy po zakończeniu jej wykonywania. Sesje wsadowe usługi Livy nie zostaną usunięte automatycznie zaraz po zakończeniu aplikacji platformy Spark, która jest zaprojektowana. Sesja usługi Livy jest jednostką utworzoną przez żądanie POST na serwerze REST usługi Livy. Do usunięcia tej jednostki jest potrzebne wywołanie `DELETE`. W przeciwnym razie należy poczekać na zakończenie działania GC.
 
 ---
 
@@ -253,6 +253,6 @@ Jeśli problem nie został wyświetlony lub nie można rozwiązać problemu, odw
 
 * Uzyskaj odpowiedzi od ekspertów platformy Azure za pośrednictwem [pomocy technicznej dla społeczności platformy Azure](https://azure.microsoft.com/support/community/).
 
-* Połącz się [@AzureSupport](https://twitter.com/azuresupport) z programem — oficjalnego konta Microsoft Azure, aby zwiększyć komfort obsługi klienta. Połączenie społeczności platformy Azure z właściwymi zasobami: odpowiedziami, wsparciem i ekspertami.
+* Połącz się z [@AzureSupport](https://twitter.com/azuresupport) — oficjalnego Microsoft Azure konta, aby zwiększyć komfort obsługi klienta. Połączenie społeczności platformy Azure z właściwymi zasobami: odpowiedziami, wsparciem i ekspertami.
 
-* Jeśli potrzebujesz więcej pomocy, możesz przesłać żądanie pomocy technicznej z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Na pasku menu wybierz pozycję **Obsługa** , a następnie otwórz Centrum **pomocy i obsługi technicznej** . Aby uzyskać szczegółowe informacje, zapoznaj [się z tematem jak utworzyć żądanie pomocy technicznej platformy Azure](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). Dostęp do pomocy w zakresie zarządzania subskrypcjami i rozliczeń jest dostępny w ramach subskrypcji Microsoft Azure, a pomoc techniczna jest świadczona za pomocą jednego z [planów pomocy technicznej systemu Azure](https://azure.microsoft.com/support/plans/).
+* Jeśli potrzebujesz więcej pomocy, możesz przesłać żądanie pomocy technicznej z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Na pasku menu wybierz pozycję **Obsługa** , a następnie otwórz Centrum **pomocy i obsługi technicznej** . Aby uzyskać szczegółowe informacje, zapoznaj [się z tematem jak utworzyć żądanie pomocy technicznej platformy Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). Dostęp do pomocy w zakresie zarządzania subskrypcjami i rozliczeń jest dostępny w ramach subskrypcji Microsoft Azure, a pomoc techniczna jest świadczona za pomocą jednego z [planów pomocy technicznej systemu Azure](https://azure.microsoft.com/support/plans/).

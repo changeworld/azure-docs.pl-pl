@@ -9,12 +9,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 824fe611867216233e223e505f5321b23b7406fb
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 7334d4292db710a32b888d9a3ad4e78872d15227
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383318"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863516"
 ---
 # <a name="how-to-create-user-defined-functions-in-azure-digital-twins"></a>Jak utworzyć funkcje zdefiniowane przez użytkownika w usłudze Azure Digital bliźniaczych reprezentacji
 
@@ -197,7 +197,7 @@ Aby uzyskać bardziej złożony przykładowy kod funkcji zdefiniowany przez uży
 
 ## <a name="create-a-role-assignment"></a>Utwórz przypisanie roli
 
-Utwórz przypisanie roli dla funkcji zdefiniowanej przez użytkownika do uruchomienia. Jeśli dla funkcji zdefiniowanej przez użytkownika nie istnieje przypisanie roli, nie będzie ono miało odpowiednich uprawnień do współdziałania z interfejsem API zarządzania ani dostępu do wykonywania akcji na obiektach grafu. Akcje, które może wykonywać funkcja zdefiniowana przez użytkownika, są określane i definiowane za pośrednictwem kontroli dostępu opartej na rolach w ramach interfejsów API usługi Azure Digital bliźniaczych reprezentacji Management. Na przykład funkcje zdefiniowane przez użytkownika mogą być ograniczone do zakresu przez określenie pewnych ról lub określonych ścieżek kontroli dostępu. Aby uzyskać więcej informacji, zobacz dokumentację [kontroli dostępu opartej na rolach](./security-role-based-access-control.md) .
+Utwórz przypisanie roli dla funkcji zdefiniowanej przez użytkownika do uruchomienia. Jeśli dla funkcji zdefiniowanej przez użytkownika nie istnieje przypisanie roli, nie będzie ono miało odpowiednich uprawnień do współdziałania z interfejsem API zarządzania ani dostępu do wykonywania akcji na obiektach grafu. Akcje, które może wykonywać funkcja zdefiniowana przez użytkownika, są określane i definiowane za pośrednictwem kontroli dostępu opartej na rolach w ramach interfejsów API usługi Azure Digital bliźniaczych reprezentacji Management. Na przykład funkcje zdefiniowane przez użytkownika mogą być ograniczone do zakresu przez określenie pewnych ról lub określonych ścieżek kontroli dostępu. Aby uzyskać więcej informacji, Przeczytaj dokumentację [kontroli dostępu opartą na rolach](./security-role-based-access-control.md) .
 
 1. [Wykonaj zapytanie dotyczące systemowego interfejsu API](./security-create-manage-role-assignments.md#retrieve-all-roles) dla wszystkich ról, aby uzyskać identyfikator roli, która ma zostać przypisana do funkcji zdefiniowanej przez użytkownika. Zrób to, wykonując uwierzytelnione żądanie HTTP GET:
 

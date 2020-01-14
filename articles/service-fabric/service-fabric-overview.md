@@ -2,25 +2,28 @@
 title: Omówienie Service Fabric na platformie Azure
 description: Omówienie usługi Service Fabric obsługującej aplikacje złożone z wielu mikrousług, co umożliwia zapewnienie skalowalności i odporności. Service Fabric to platforma systemów rozproszonych używana do tworzenia skalowalnych i niezawodnych aplikacji dla chmury, które są łatwe w zarządzaniu.
 ms.topic: overview
-ms.date: 04/22/2019
-ms.custom: mvc
-ms.openlocfilehash: a9b8c2051322a7d99af7359c31cb6c77f53d4b1f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: HT
+ms.date: 01/07/2020
+ms.custom: sfrev
+ms.openlocfilehash: 3c8eb7ead7851c311c79c2f9e9bdc7e703c3af71
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75466307"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75747488"
 ---
 # <a name="overview-of-azure-service-fabric"></a>Omówienie usługi Azure Service Fabric
+
 Usługa Azure Service Fabric to platforma systemów rozproszonych ułatwiająca pakowanie i wdrażanie skalowalnych i niezawodnych mikrousług i kontenerów oraz zarządzanie nimi. Ponadto usługa Service Fabric pozwala sprostać istotnym wyzwaniom związanym z opracowywaniem natywnych aplikacji w chmurze i zarządzaniem nimi. Deweloperzy i administratorzy mogą uniknąć złożonych problemów związanych z infrastrukturą i skoncentrować się na implementowaniu wymagających obciążeń o znaczeniu strategicznym, które są skalowalne, niezawodne i łatwe w zarządzaniu. Usługa Service Fabric to platforma następnej generacji do tworzenia działających w kontenerach aplikacji w skali chmury warstwy pierwszej dla przedsiębiorstw i zarządzania nimi.
 
 Ten krótki klip wideo zawiera wprowadzenie do usługi Service Fabric i mikrousług:
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-Service-Fabric/player]
 
 ## <a name="compliance"></a>Zgodność
+
 Dostawca zasobów usługi Azure Service Fabric jest dostępny we wszystkich regionach świadczenia usługi Azure i jest zgodny ze wszystkimi certyfikatami zgodności, które obejmuje platforma Azure; obejmuje to następujące elementy: SOC, ISO, PCI DSS, HIPAA i Rodo. Aby uzyskać pełną listę certyfikatów zgodności, zapoznaj się z poniższymi tematami: [oferty zgodności](https://www.microsoft.com/trustcenter/compliance/complianceofferings)
 
-## <a name="applications-composed-of-microservices"></a>Aplikacje złożone z mikrousług 
+## <a name="applications-composed-of-microservices"></a>Aplikacje złożone z mikrousług
+
 Service Fabric umożliwia tworzenie skalowalnych i niezawodnych aplikacji składających się z mikrousług oraz zarządzanie nimi. Te rozproszone mikrousługi są uruchamiane z dużą gęstością w udostępnionej puli maszyn, która jest określana jako klaster. Service Fabric zapewnia zaawansowane, lekkie środowisko uruchomieniowe, które obsługuje mikrousługi bezstanowe i stanowe. Zapewnia również kompleksowe funkcje zarządzania aplikacjami umożliwiające inicjowanie, wdrażanie, monitorowanie i uaktualnianie oraz usuwanie wdrożonych aplikacji.
 
 Usługa Service Fabric została zaprojektowana z myślą o tworzeniu natywnych aplikacji chmurowych, które można skalować stosownie do potrzeb, od małych początkowych rozmiarów do ogromnej skali z setkami, a nawet tysiącami maszyn. Współczesne usługi internetowe złożone są z mikrousług. Przykładami mikrousług są bramy protokołów, profile użytkowników, koszyki zakupów, usługi przetwarzania spisów, kolejki czy pamięci podręczne.
@@ -32,9 +35,11 @@ Service Fabric hostuje mikrousługi wewnątrz kontenerów, które są wdrażane 
 Aby dowiedzieć się więcej na temat podejścia opartego na mikrousługach, zapoznaj się z artykułem [Why a microservices approach to building applications?](service-fabric-overview-microservices.md) (Dlaczego warto tworzyć aplikacje z użyciem mikrousług?).
 
 ## <a name="container-deployment-and-orchestration"></a>Wdrażanie i orkiestracja kontenerów
+
 Usługa Service Fabric to [orkiestrator kontenerów](service-fabric-cluster-resource-manager-introduction.md) firmy Microsoft, umożliwiający wdrażanie mikrousług w klastrze maszyn. Mikrousługi można tworzyć na wiele sposobów, na przykład korzystając z [modeli programowania usługi Service Fabric](service-fabric-choose-framework.md) czy struktury [ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md) lub wdrażając [dowolnie wybrany kod](service-fabric-guest-executables-introduction.md). Istotne jest to, że można łączyć w ramach jednej aplikacji usługi w procesach i usługi w kontenerach. Jeśli chcesz tylko [wdrażać kontenery i zarządzać nimi](service-fabric-containers-overview.md), usługa Service Fabric doskonale sprawdzi się jako orkiestrator kontenerów.
 
 ## <a name="any-os-any-cloud"></a>Dowolny system operacyjny, dowolna chmura
+
 Usługa Service Fabric może działać wszędzie. Możesz tworzyć klastry usługi Service Fabric w wielu różnych środowiskach, na przykład na platformie Azure lub lokalnie, w systemie Windows Server lub Linux. Można nawet tworzyć klastry w innych chmurach publicznych. Ponadto środowisko programowania w zestawie SDK jest **identyczne** ze środowiskiem produkcyjnym i nie wymaga używania żadnych emulatorów. Innymi słowy — wszystko, co działa w lokalnym klastrze programowania, zostanie wdrożone w klastrach w innych środowiskach.
 
 ![Platforma Service Fabric][Image1]
@@ -44,12 +49,13 @@ Na potrzeby programowania dla systemu Windows zestaw SDK .NET usługi Service Fa
 Aby uzyskać więcej informacji na temat tworzenia klastrów, zapoznaj się z artykułami dotyczącymi [tworzenia klastra w systemie Windows Server lub Linux](service-fabric-deploy-anywhere.md) lub w przypadku platformy Azure — tworzenia klastra [w witrynie Azure Portal](service-fabric-cluster-creation-via-portal.md).
 
 ## <a name="stateless-and-stateful-microservices-for-service-fabric"></a>Mikrousługi stanowe i bezstanowe dla usługi Service Fabric
+
 Usługa Service Fabric umożliwia tworzenie aplikacji składających się z mikrousług lub kontenerów. Mikrousługi bezstanowe (na przykład bramy protokołów i internetowe serwery proxy) nie utrzymują modyfikowalnego stanu poza żądaniem i odpowiedzią serwera. Przykładem usługi bezstanowej są procesy robocze usług Azure Cloud Services. Mikrousługi stanowe (na przykład konta użytkowników, bazy danych, urządzenia, koszyki zakupów i kolejki) utrzymują modyfikowalny, autorytatywny stan poza żądaniem i odpowiedzią. Współczesne aplikacje internetowe łączą w sobie mikrousługi stanowe i bezstanowe. 
 
 Ważną cechą wyróżniającą usługę Service Fabric jest koncentracja na tworzeniu usług stanowych przy użyciu [wbudowanych modeli programowania](service-fabric-choose-framework.md) lub konteneryzowanych usług stanowych. [Scenariusze zastosowania](service-fabric-application-scenarios.md) opisują sytuacje, w których używane są usługi stanowe.
 
-
 ## <a name="application-lifecycle-management"></a>Zarządzanie cyklem życia aplikacji
+
 Usługa Service Fabric zapewnia obsługę całego cyklu życia aplikacji i ciągłej integracji/ciągłego wdrażania (CI/CD) aplikacji chmurowych, w tym kontenerów. Ten cykl obejmuje etapy od programowania przez wdrożenie, bieżące zarządzanie i utrzymanie, aż do ostatecznego wycofania.
 
 Funkcje zarządzania cyklem życia aplikacji w usłudze Service Fabric umożliwiają administratorom aplikacji i operatorom IT inicjowanie obsługi, wdrażanie, poprawianie i monitorowanie aplikacji z użyciem prostych przepływów pracy wymagających niewielkich nakładów pracy. Dzięki tym wbudowanym przepływom pracy zapewnienie ciągłej dostępności aplikacji wymaga od operatorów IT znacznie mniej wysiłku.
@@ -61,6 +67,7 @@ Usługa Service Fabric jest zintegrowana z narzędziami do obsługi cyklu ciąg�
 Aby uzyskać więcej informacji o zarządzaniu cyklem życia aplikacji, zobacz [Cykl życia aplikacji](service-fabric-application-lifecycle.md). Aby uzyskać więcej informacji o wdrażaniu dowolnego kodu, zobacz [Wdrażanie aplikacji wykonywalnej gościa](service-fabric-deploy-existing-app.md).
 
 ## <a name="key-capabilities"></a>Najważniejsze możliwości
+
 Usługa Service Fabric umożliwia:
 
 * Wdrażanie aplikacji na platformie Azure lub w lokalnych centrach danych z systemem Windows lub Linux bez konieczności wprowadzania zmian w kodzie. Jednokrotne utworzenie aplikacji i wdrożenie jej w dowolnej lokalizacji, w dowolnym klastrze usługi Service Fabric.
@@ -77,6 +84,7 @@ Usługa Service Fabric umożliwia:
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## <a name="next-steps"></a>Następne kroki
+
 * Więcej informacji:
   * [Why a microservices approach to building applications?](service-fabric-overview-microservices.md) (Dlaczego warto tworzyć aplikacje z użyciem mikrousług?)
   * [Terminology overview](service-fabric-technical-overview.md) (Omówienie terminologii)

@@ -9,12 +9,12 @@ ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 11/12/2019
-ms.openlocfilehash: cab13fd65e9fdbd7179e6ba759b1aa696ef95fa1
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: d955711c44e3822f9c37d47b390b928701ab773b
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790336"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861000"
 ---
 # <a name="tutorial-visualize-and-analyze-events-from-azure-digital-twins-by-using-time-series-insights"></a>Samouczek: wizualizacja i analiza zdarzeń z usługi Azure Digital bliźniaczych reprezentacji przy użyciu Time Series Insights
 
@@ -24,7 +24,7 @@ W [pierwszym samouczku](tutorial-facilities-setup.md) skonfigurowano wykres prze
 
 W tym samouczku pokazano, w jaki sposób zintegrować powiadomienia i dane przychodzące z konfiguracji usługi Azure Digital Twins za pomocą usługi Azure Time Series Insights. Można wówczas wizualizować wartości z czujników na przestrzeni czasu. Możesz wyszukiwać trendy, na przykład aby dowiedzieć się, które pomieszczenie jest najczęściej używane i w jakich porach dnia. Możesz również wykrywać anomalie, na przykład to, który pokój wydaje się bardziej duszny i w którym jest wyższa temperatura lub czy z jakiegoś obszaru w budynku wysyłane są stale wysokie wartości temperatury, co wskazuje na wadliwe działanie klimatyzacji.
 
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Przesyłanie strumieniowe danych za pomocą usługi Azure Event Hubs.
@@ -157,7 +157,7 @@ Korzystając z usługi [Event Hubs](../event-hubs/event-hubs-about.md), możesz 
 
 1. Wybranie przycisku **Przejdź do środowiska** powoduje otwarcie [eksploratora usługi Time Series Insights](../time-series-insights/time-series-insights-explorer.md). Jeśli nie zostaną wyświetlone żadne zdarzenia, zasymuluj zdarzenia urządzenia, przechodząc do projektu **device-connectivity** przykładu usługi Digital Twins i uruchamiając polecenie `dotnet run`.
 
-1. Po wygenerowaniu kilku symulowanych zdarzeń wróć do eksploratora usługi Time Series Insights i wybierz przycisk Odśwież u góry strony. Powinny być widoczne wykresy analityczne tworzone dla symulowanych danych czujnika. 
+1. Po wygenerowaniu kilku symulowanych zdarzeń wróć do eksploratora usługi Time Series Insights i wybierz przycisk Odśwież u góry strony. Zostaną wyświetlone wykresy analityczne, które są tworzone dla symulowanych danych czujników. 
 
     [![wykresu w Eksploratorze Time Series Insights](./media/tutorial-facilities-analyze/tsi-explorer.png)](./media/tutorial-facilities-analyze/tsi-explorer.png#lightbox)
 

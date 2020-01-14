@@ -6,16 +6,16 @@ author: alexkarcher-msft
 ms.topic: quickstart
 ms.date: 02/22/2019
 ms.author: alkarche
-ms.openlocfilehash: aa2e0e8be8805187ec1f5b8ea6498e90e2d5a7c4
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: d20f56e0fba3af5885043fa344e7c6aa4e13d1b2
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74976880"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769238"
 ---
 # <a name="create-a-function-using-azure-for-students-starter"></a>Tworzenie funkcji przy użyciu platformy Azure for Students Starter
 
-W tym samouczku utworzymy funkcję HTTP Hello World w ramach subskrypcji platformy Azure for Students Starter. Zawarto również informacje o tym, co jest dostępne w Azure Functions w tym typie subskrypcji.
+W tym samouczku utworzymy funkcję HTTP "Hello World" w ramach subskrypcji platformy Azure for Students Starter. Zawarto również informacje o tym, co jest dostępne w Azure Functions w tym typie subskrypcji.
 
 *Platforma Microsoft Azure for Students Starter* ułatwia rozpoczęcie pracy z produktami platformy Azure, które są potrzebne do samotworzenia w chmurze. [Więcej informacji na temat tej oferty znajdziesz tutaj.](https://azure.microsoft.com/offers/ms-azr-0144p/)
 
@@ -27,15 +27,15 @@ Usługa Azure Functions umożliwia wykonywanie kodu w środowisku [bezserwerowym
 
 ![Tworzenie aplikacji funkcji w witrynie Azure Portal](./media/functions-create-student-starter/function-app-in-portal-editor.png)
 
-## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
+## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
 Zaloguj się do witryny Azure Portal pod adresem <https://portal.azure.com> przy użyciu danych konta Azure.
 
 ## <a name="create-a-function-app"></a>Tworzenie aplikacji funkcji
 
-Do obsługi wykonywania funkcji potrzebna jest aplikacja funkcji. Aplikacja funkcji umożliwia grupowanie funkcji jako jednostki logicznej, co ułatwia wdrażanie i udostępnianie zasobów oraz zarządzanie nimi. 
+Do obsługi wykonywania funkcji potrzebna jest aplikacja funkcji. Aplikacja funkcji umożliwia grupowanie funkcji jako jednostki logicznej, co ułatwia zarządzanie, wdrażanie, skalowanie i udostępnianie zasobów.
 
-1. Wybierz przycisk **Nowy** znajdujący się w lewym górnym rogu witryny Azure Portal, a następnie wybierz pozycje **Obliczenia** > **Aplikacja funkcji**.
+1. Wybierz przycisk **Utwórz zasób** znajdujący się w lewym górnym rogu Azure Portal. Następnie wybierz pozycję **obliczeniowe** > **aplikacja funkcji**.
 
     ![Tworzenie aplikacji funkcji w witrynie Azure Portal](./media/functions-create-student-starter/function-app-create-flow.png)
 
@@ -47,8 +47,8 @@ Do obsługi wykonywania funkcji potrzebna jest aplikacja funkcji. Aplikacja funk
     | ------------ |  ------- | -------------------------------------------------- |
     | **Nazwa aplikacji** | Nazwa unikatowa w skali globalnej | Nazwa identyfikująca nową aplikację funkcji. Prawidłowe znaki to `a-z`, `0-9` i `-`.  | 
     | **Subskrypcja** | Twoja subskrypcja | Subskrypcja, w ramach której jest tworzona ta nowa aplikacja funkcji. | 
-    | **[Grupa zasobów](../azure-resource-manager/resource-group-overview.md)** |  myResourceGroup | Nazwa nowej grupy zasobów, w której ma zostać utworzona aplikacja funkcji. |
-   | **[App Service plan/lokalizacja](./functions-scale.md)** | Nowość | Plan hostingu kontrolujący region, w którym wdrożono aplikację funkcji, oraz gęstość zasobów. Wiele aplikacji funkcji wdrożonych w ramach tego samego planu będzie korzystać z tego samego pojedynczego bezpłatnego wystąpienia. Jest to ograniczenie planu początkowego studenta. W [tym miejscu objaśniono](./functions-scale.md) pełne opcje hostingu.|
+    | **[Grupa zasobów](../azure-resource-manager/management/overview.md)** |  myResourceGroup | Nazwa nowej grupy zasobów, w której ma zostać utworzona aplikacja funkcji. |
+   | **[App Service plan/lokalizacja](./functions-scale.md)** | Nowa | Plan hostingu kontrolujący region, w którym wdrożono aplikację funkcji, oraz gęstość zasobów. Wiele aplikacji funkcji wdrożonych w ramach tego samego planu będzie korzystać z tego samego pojedynczego bezpłatnego wystąpienia. Jest to ograniczenie planu początkowego studenta. W [tym miejscu objaśniono](./functions-scale.md) pełne opcje hostingu.|
     | **Stos środowiska uruchomieniowego** | Preferowany język | Wybierz środowisko uruchomieniowe, które obsługuje ulubiony język programowania funkcji. Wybierz **.NET** dla funkcji w językach C# i F#. |
     |**[Application Insights](./functions-monitoring.md)**| Enabled (Włączony) | Application Insights jest używany do przechowywania i analizowania dzienników aplikacji funkcji. Jest ona domyślnie włączona w przypadku wybrania lokalizacji, która obsługuje Application Insights. Application Insights można włączyć dla dowolnej funkcji, ręcznie wybierając w pobliżu region do wdrożenia Application Insights. Bez Application Insights będziesz mieć możliwość wyświetlania dzienników przesyłania strumieniowego na żywo.
 
@@ -110,7 +110,7 @@ Możesz teraz uruchomić nową funkcję, wysyłając żądanie HTTP.
 
 ## <a name="supported-features-in-azure-for-students-starter"></a>Obsługiwane funkcje platformy Azure dla uczniów Starter
 
-Na platformie Azure dla uczniów masz dostęp do większości funkcji środowiska uruchomieniowego Azure Functions, z poniższymi ograniczeniami kluczowymi:
+Na platformie Azure for Students Starter masz dostęp do większości funkcji środowiska uruchomieniowego Azure Functions, a poniżej przedstawiono kilka ograniczeń klucza:
 
 * Wyzwalacz HTTP jest jedynym obsługiwanym typem wyzwalacza.
     * Wszystkie powiązania danych wejściowych i danych wyjściowych są obsługiwane. [Zapoznaj się z pełną listą tutaj.](functions-triggers-bindings.md)

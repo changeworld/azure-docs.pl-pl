@@ -3,15 +3,15 @@ title: Wdróż obraz kontenera z Azure Container Registry
 description: Dowiedz się, jak wdrażać kontenery w Azure Container Instances przy użyciu obrazów kontenerów w usłudze Azure Container Registry.
 services: container-instances
 ms.topic: article
-ms.date: 01/04/2019
+ms.date: 12/30/2019
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: adc2c95874c1cc20e49506891c9972ebcfe71f94
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 823a25f388860fa55962a717b9dfed22f5d9c103
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533286"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770524"
 ---
 # <a name="deploy-to-azure-container-instances-from-azure-container-registry"></a>Wdróż do Azure Container Instances z Azure Container Registry
 
@@ -25,7 +25,9 @@ ms.locfileid: "74533286"
 
 ## <a name="configure-registry-authentication"></a>Konfigurowanie uwierzytelniania rejestru
 
-W każdym scenariuszu produkcyjnym należy zapewnić dostęp do usługi Azure Container Registry przy użyciu nazw [głównych usług](../container-registry/container-registry-auth-service-principal.md). Jednostki usługi umożliwiają zapewnienie [kontroli dostępu opartej na rolach](../container-registry/container-registry-roles.md) do obrazów kontenerów. Na przykład można skonfigurować jednostkę usługi z dostępem tylko do ściągania do rejestru.
+W scenariuszu produkcyjnym, w którym zapewniasz dostęp do "bezobsługowego" usług i aplikacji, zaleca się skonfigurowanie dostępu do rejestru przy użyciu [nazwy głównej usługi](../container-registry/container-registry-auth-service-principal.md). Jednostka usługi umożliwia zapewnienie [kontroli dostępu opartej na rolach](../container-registry/container-registry-roles.md) dla obrazów kontenerów. Na przykład można skonfigurować jednostkę usługi z dostępem tylko do ściągania do rejestru.
+
+Azure Container Registry zapewnia dodatkowe [Opcje uwierzytelniania](../container-registry/container-registry-authentication.md).
 
 W poniższej sekcji utworzysz Magazyn kluczy Azure i nazwę główną usługi, a następnie przechowujesz poświadczenia jednostki usługi w magazynie. 
 
@@ -33,7 +35,9 @@ W poniższej sekcji utworzysz Magazyn kluczy Azure i nazwę główną usługi, a
 
 Jeśli nie masz jeszcze magazynu w usłudze [Azure Key Vault](../key-vault/key-vault-overview.md), utwórz go przy użyciu interfejsu wiersza polecenia platformy Azure przy użyciu poniższych poleceń.
 
-Zaktualizuj zmienną `RES_GROUP` nazwą istniejącej grupy zasobów, w której ma zostać utworzony magazyn kluczy, i `ACR_NAME` nazwą rejestru kontenerów. Określ nazwę nowego magazynu kluczy w `AKV_NAME`. Nazwa magazynu musi być unikatowa w ramach platformy Azure i musi mieć 3-24 znaków alfanumerycznych, zaczynać się od litery, kończyć się literą lub cyfrą i nie może zawierać kolejnych łączników.
+Zaktualizuj zmienną `RES_GROUP` nazwą istniejącej grupy zasobów, w której ma zostać utworzony magazyn kluczy, i `ACR_NAME` nazwą rejestru kontenerów. W przypadku zwięzłości w poleceniach w tym artykule przyjęto założenie, że rejestr, Magazyn kluczy i wystąpienia kontenera zostały utworzone w tej samej grupie zasobów.
+
+ Określ nazwę nowego magazynu kluczy w `AKV_NAME`. Nazwa magazynu musi być unikatowa w ramach platformy Azure i musi mieć 3-24 znaków alfanumerycznych, zaczynać się od litery, kończyć się literą lub cyfrą i nie może zawierać kolejnych łączników.
 
 ```azurecli
 RES_GROUP=myresourcegroup # Resource Group name
@@ -45,12 +49,12 @@ az keyvault create -g $RES_GROUP -n $AKV_NAME
 
 ### <a name="create-service-principal-and-store-credentials"></a>Tworzenie jednostki usługi i poświadczenia magazynu
 
-Musisz teraz utworzyć jednostkę usługi i przechowywać jej poświadczenia w magazynie kluczy.
+Teraz Utwórz nazwę główną usługi i Zapisz jej poświadczenia w magazynie kluczy.
 
 Następujące polecenie używa polecenia [AZ AD Sp Create-for-RBAC][az-ad-sp-create-for-rbac] , aby utworzyć jednostkę usługi, i [AZ klucz tajny Set][az-keyvault-secret-set] do przechowywania **hasła** jednostki usługi w magazynie.
 
 ```azurecli
-# Create service principal, store its password in AKV (the registry *password*)
+# Create service principal, store its password in vault (the registry *password*)
 az keyvault secret set \
   --vault-name $AKV_NAME \
   --name $ACR_NAME-pull-pwd \
@@ -67,14 +71,14 @@ Argument `--role` w poprzednim poleceniu konfiguruje jednostkę usługi z rolą 
 Następnie należy zapisać *identyfikator appid* jednostki usługi w magazynie, który jest **nazwą użytkownika** , która zostanie przekazana do Azure Container Registry na potrzeby uwierzytelniania.
 
 ```azurecli
-# Store service principal ID in AKV (the registry *username*)
+# Store service principal ID in vault (the registry *username*)
 az keyvault secret set \
     --vault-name $AKV_NAME \
     --name $ACR_NAME-pull-usr \
     --value $(az ad sp show --id http://$ACR_NAME-pull --query appId --output tsv)
 ```
 
-Utworzono magazyn Azure Key Vault, w którym są przechowywane dwa wpisy tajne:
+Utworzono magazyn kluczy platformy Azure, w którym zapisano dwa wpisy tajne:
 
 * `$ACR_NAME-pull-usr`: identyfikator jednostki usługi do użycia jako **nazwa użytkownika** rejestru kontenerów.
 * `$ACR_NAME-pull-pwd`: hasło jednostki usługi do użycia jako **hasło** rejestru kontenerów.
@@ -116,9 +120,10 @@ Po pomyślnym rozpoczęciu pracy kontenera możesz przejść do jego nazwy FQDN 
 
 ## <a name="deploy-with-azure-resource-manager-template"></a>Wdrażanie przy użyciu szablonu Azure Resource Manager
 
-Możesz określić właściwości Azure Container Registry w szablon Azure Resource Manager, dołączając Właściwość `imageRegistryCredentials` w definicji grupy kontenerów:
+Właściwości usługi Azure Container Registry można określić w szablonie Azure Resource Manager, dołączając Właściwość `imageRegistryCredentials` do definicji grupy kontenerów. Na przykład można określić bezpośrednio poświadczenia rejestru:
 
 ```JSON
+[...]
 "imageRegistryCredentials": [
   {
     "server": "imageRegistryLoginServer",
@@ -126,7 +131,10 @@ Możesz określić właściwości Azure Container Registry w szablon Azure Resou
     "password": "imageRegistryPassword"
   }
 ]
+[...]
 ```
+
+Aby uzyskać pełne ustawienia grupy kontenerów, zobacz [odwołanie do szablonu Menedżer zasobów](/azure/templates/Microsoft.ContainerInstance/2018-10-01/containerGroups).    
 
 Aby uzyskać szczegółowe informacje dotyczące odwoływania się do Azure Key Vault wpisów tajnych w szablonie Menedżer zasobów, zobacz [używanie Azure Key Vault do przekazywania bezpiecznej wartości parametru podczas wdrażania](../azure-resource-manager/resource-manager-keyvault-parameter.md).
 

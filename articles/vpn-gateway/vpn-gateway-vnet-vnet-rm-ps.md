@@ -1,5 +1,5 @@
 ---
-title: 'Połącz sieć wirtualną platformy Azure z inną siecią wirtualną przy użyciu połączenia między sieciami wirtualnymi: Program PowerShell | Microsoft Docs'
+title: 'Łączenie sieci wirtualnej z inną siecią wirtualną za pomocą połączenia Sieć wirtualna-sieć wirtualna VPN Gateway platformy Azure: program PowerShell'
 description: Łączenie sieci wirtualnych przy użyciu połączenia sieć wirtualna-sieć wirtualna oraz programu PowerShell.
 services: vpn-gateway
 author: cherylmc
@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: cherylmc
-ms.openlocfilehash: dbf59740af64bf8d403b6596a17646304c0f1eb0
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: eebe66ca038b31f23ca864b107816b8cf761b29c
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385776"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75860542"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-powershell"></a>Konfigurowanie połączenia bramy sieci VPN między sieciami wirtualnymi przy użyciu programu PowerShell
 
@@ -32,7 +32,7 @@ Kroki podane w tym artykule mają zastosowanie do modelu wdrażania przy użyciu
 
 Z sieciami wirtualnymi można łączyć się na wiele sposobów. W poniższych sekcjach opisano różne metody łączenia się z sieciami wirtualnymi.
 
-### <a name="vnet-to-vnet"></a>Sieć wirtualna-sieć wirtualna
+### <a name="vnet-to-vnet"></a>Połączenia między sieciami wirtualnymi
 
 Skonfigurowanie połączenia sieci wirtualnej z siecią wirtualną jest dobrym sposobem łatwego połączenia sieci wirtualnych. Proces łączenia dwóch sieci wirtualnych przy użyciu typu połączenia sieć wirtualna-sieć wirtualna (VNet2VNet) przebiega podobnie do procesu tworzenia połączenia IPsec typu lokacja-lokacja z lokacją lokalną.  Oba typy połączeń używają bramy sieci VPN, aby zapewnić bezpieczny tunel korzystający z protokołu IPsec/IKE, oraz działają tak samo pod względem komunikacji. Różnica między nimi dotyczy konfiguracji bramy sieci lokalnej. Podczas tworzenia połączenia sieć wirtualna-sieć wirtualna przestrzeń adresowa bramy sieci lokalnej nie jest widoczna. Jest ona tworzona i wypełniana automatycznie. Po zaktualizowaniu przestrzeni adresowej dla jednej sieci wirtualnej druga sieć wirtualna automatycznie kieruje ruch do zaktualizowanej przestrzeni adresowej. Utworzenie połączenia sieć wirtualna-sieć wirtualna jest zwykle szybsze i łatwiejsze niż utworzenie połączenia lokacja-lokacja między sieciami wirtualnymi.
 
@@ -40,7 +40,7 @@ Skonfigurowanie połączenia sieci wirtualnej z siecią wirtualną jest dobrym s
 
 W przypadku pracy ze złożoną konfiguracją sieci lepszym rozwiązaniem może być połączenie sieci wirtualnych za pomocą procedury tworzenia połączenia [lokacja-lokacja](vpn-gateway-create-site-to-site-rm-powershell.md) zamiast sieć wirtualna-sieć wirtualna. W przypadku korzystania z procedury tworzenia połączenia lokacja-lokacja bramy sieci lokalnej są tworzone i konfigurowane ręcznie. Każda z bram sieci lokalnej sieci wirtualnej traktuje drugą sieć wirtualną jako lokację lokalną. Dzięki temu można określić dodatkową przestrzeń adresową dla bramy sieci lokalnej w celu kierowania ruchu. W przypadku zmiany przestrzeni adresowej sieci wirtualnej należy zaktualizować odpowiednią bramę sieci lokalnej w celu odzwierciedlenia zmiany. Nie jest to aktualizowane automatycznie.
 
-### <a name="vnet-peering"></a>Komunikacja równorzędna sieci wirtualnych
+### <a name="vnet-peering"></a>Wirtualne sieci równorzędne
 
 Warto rozważyć połączenie sieci wirtualnych za pomocą komunikacji równorzędnej sieci wirtualnych. W przypadku komunikacji równorzędnej sieci wirtualnych nie jest używana brama sieci VPN i są z nią związane inne ograniczenia. Ponadto [ceny dotyczące komunikacji równorzędnej sieci wirtualnych](https://azure.microsoft.com/pricing/details/virtual-network) są obliczane inaczej niż [ceny dotyczące usługi VPN Gateway połączenia sieć wirtualna-sieć wirtualna](https://azure.microsoft.com/pricing/details/vpn-gateway). Aby uzyskać więcej informacji, zobacz temat [Komunikacja równorzędna sieci wirtualnych](../virtual-network/virtual-network-peering-overview.md).
 
@@ -65,11 +65,11 @@ Zasadnicza różnica między nimi polega na tym, że podczas konfigurowania poł
 
 W tym ćwiczeniu możesz łączyć konfiguracje lub po prostu wybrać tę, której chcesz używać. Wszystkie konfiguracje używają typu połączenia sieć wirtualna-sieć wirtualna. Ruch sieciowy przepływa między bezpośrednio połączonymi sieciami wirtualnymi. W tym ćwiczeniu ruch z sieci TestVNet4 nie jest kierowany do sieci TestVNet5.
 
-* [Sieci wirtualnych, które znajdują się w tej samej subskrypcji](#samesub): W krokach dla tej konfiguracji używane są sieci TestVNet1 i TestVNet4.
+* [Sieci wirtualne znajdujące się w tej samej subskrypcji:](#samesub) w ramach tej konfiguracji są używane sieci TestVNet1 i TestVNet4.
 
   ![Diagram połączenia między sieciami wirtualnymi (v2v)](./media/vpn-gateway-vnet-vnet-rm-ps/v2vrmps.png)
 
-* [Sieci wirtualnych, które znajdują się w różnych subskrypcjach](#difsub): W krokach dla tej konfiguracji są używane sieci TestVNet1 i TestVNet5.
+* [Sieci wirtualne znajdujące się w różnych subskrypcjach:](#difsub) w ramach tej konfiguracji są używane sieci TestVNet1 i TestVNet5.
 
   ![Diagram połączenia między sieciami wirtualnymi (v2v)](./media/vpn-gateway-vnet-vnet-rm-ps/v2vdiffsub.png)
 
@@ -83,7 +83,7 @@ W tym ćwiczeniu możesz łączyć konfiguracje lub po prostu wybrać tę, któr
 
 * Jeśli zamiast tego chcesz lokalnie zainstalować najnowszą wersję modułu Azure PowerShell, zobacz [jak zainstalować i skonfigurować Azure PowerShell](/powershell/azure/overview).
 
-### <a name="Step1"></a>Krok 1 — Planowanie zakresów adresów IP
+### <a name="Step1"></a>Krok 1 — planowanie zakresów adresów IP
 
 W poniższych krokach utworzymy dwie sieci wirtualne wraz z odpowiednimi konfiguracjami oraz podsieciami bram. Następnie utworzymy połączenie sieci VPN między dwiema sieciami wirtualnymi. Ważne, aby zaplanować zakresy adresów IP dla konfiguracji sieci. Niezbędne jest upewnienie się, że zakresy sieci wirtualnej ani sieci lokalnej nie zachodzą na siebie w jakikolwiek sposób. W tych przykładach nie uwzględniamy serwera DNS. Jeśli chcesz, aby w sieciach wirtualnych działało rozpoznawanie nazw, zobacz artykuł o [rozpoznawaniu nazw](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md).
 
@@ -93,8 +93,8 @@ W przykładach stosujemy następujące wartości:
 
 * Nazwa sieci wirtualnej: TestVNet1
 * Grupa zasobów: TestRG1
-* Lokalizacja: East US
-* TestVNet1: 10.11.0.0/16 i 10.12.0.0/16
+* Lokalizacja: Wschodnie stany USA
+* TestVNet1: 10.11.0.0/16 & 10.12.0.0/16
 * FrontEnd: 10.11.0.0/24
 * BackEnd: 10.12.0.0/24
 * GatewaySubnet: 10.12.255.0/27
@@ -108,12 +108,12 @@ W przykładach stosujemy następujące wartości:
 **Wartości dla sieci TestVNet4:**
 
 * Nazwa sieci wirtualnej: TestVNet4
-* TestVNet2: 10.41.0.0/16 i 10.42.0.0/16
+* TestVNet2: 10.41.0.0/16 & 10.42.0.0/16
 * FrontEnd: 10.41.0.0/24
 * BackEnd: 10.42.0.0/24
 * GatewaySubnet: 10.42.255.0/27
 * Grupa zasobów: TestRG4
-* Lokalizacja: Zachodnie stany USA
+* Lokalizacja: West US
 * GatewayName: VNet4GW
 * Publiczny adres IP: VNet4GWIP
 * VPNType: RouteBased
@@ -121,7 +121,7 @@ W przykładach stosujemy następujące wartości:
 * ConnectionType: VNet2VNet
 
 
-### <a name="Step2"></a>Krok 2 — Tworzenie i konfigurowanie sieci TestVNet1
+### <a name="Step2"></a>Krok 2 — tworzenie i konfigurowanie sieci TestVNet1
 
 1. Sprawdź ustawienia subskrypcji.
 
@@ -168,7 +168,7 @@ W przykładach stosujemy następujące wartości:
    ```
 4. Utwórz konfiguracje podsieci dla sieci TestVNet1. Poniższy przykład pozwala utworzyć sieć wirtualną o nazwie TestVNet1 oraz trzy podsieci noszące kolejno nazwy GatewaySubnet, FrontEnd i Backend. Podczas zastępowania wartości ważne jest, aby podsieć bramy zawsze nosiła nazwę GatewaySubnet. W przypadku nadania jej innej nazwy proces tworzenia bramy zakończy się niepowodzeniem. Z tego powodu nie jest on przypisywany przez zmienną poniżej.
 
-   W poniższym przykładzie użyto zmiennych, które zostały ustawione wcześniej. W tym przykładzie użyto podsieci bramy /27. Chociaż możliwe jest utworzenie małej podsieci bramy /29, zaleca się utworzenie większej podsieci zawierającej więcej adresów, wybierając podsieć przynajmniej /28 lub /27. Zapewni to wystarczająco dużo adresów, aby możliwe były dodatkowe konfiguracje, które mogą być potrzebne w przyszłości.
+   W poniższym przykładzie użyto zmiennych, które zostały ustawione wcześniej. W tym przykładzie użyto podsieci bramy /27. Chociaż możliwe jest utworzenie małej podsieci bramy /29, zaleca się wybranie podsieci przynajmniej /28 lub /27, aby zawierała więcej adresów. Zapewni to wystarczająco dużo adresów, aby możliwe były dodatkowe konfiguracje, które mogą być potrzebne w przyszłości.
 
    ```azurepowershell-interactive
    $fesub1 = New-AzVirtualNetworkSubnetConfig -Name $FESubName1 -AddressPrefix $FESubPrefix1
@@ -312,8 +312,8 @@ Należy upewnić się, że przestrzeń adresów IP nowej sieci wirtualnej o nazw
 
 * Nazwa sieci wirtualnej: TestVNet5
 * Grupa zasobów: TestRG5
-* Lokalizacja: Japonia Wschodnia
-* TestVNet5: 10.51.0.0/16 i 10.52.0.0/16
+* Lokalizacja: Japan East
+* TestVNet5: 10.51.0.0/16 & 10.52.0.0/16
 * FrontEnd: 10.51.0.0/24
 * BackEnd: 10.52.0.0/24
 * GatewaySubnet: 10.52.255.0.0/27
@@ -481,7 +481,7 @@ Jako że bramy należą do różnych subskrypcji, w tym przykładzie zastosowano
 
 [!INCLUDE [vpn-gateway-vnet-vnet-faq](../../includes/vpn-gateway-faq-vnet-vnet-include.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Po zakończeniu procesu nawiązywania połączenia można dodać do sieci wirtualnych maszyny wirtualne. Zobacz [dokumentację dotyczącą maszyn wirtualnych](https://docs.microsoft.com/azure/), aby uzyskać więcej informacji.
 * Informacje na temat protokołu BGP można znaleźć w artykułach [BGP Overview](vpn-gateway-bgp-overview.md) (Omówienie protokołu BGP) i [How to configure BGP](vpn-gateway-bgp-resource-manager-ps.md) (Konfigurowanie protokołu BGP).

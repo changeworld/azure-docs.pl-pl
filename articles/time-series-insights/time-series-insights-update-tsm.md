@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7d588e11525e5087f8667da4602797e5299c76f0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1f560a7aa746ce7c6262dcaddf74c9d573332fa6
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75374745"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861391"
 ---
 # <a name="time-series-model-in-azure-time-series-insights-preview"></a>Model szeregów czasowych w wersji zapoznawczej Azure Time Series Insights
 
@@ -129,7 +129,7 @@ Wystąpienia mają następującą reprezentację JSON:
 ```
 
 > [!TIP]
-> Aby uzyskać pomoc techniczną dla Time Series Insights wystąpienia interfejsu API i tworzenia, odczytu, aktualizacji i usuwania (CRUD), zapoznaj się z artykułem [wykonywanie zapytań dotyczących danych](time-series-insights-update-tsq.md#time-series-model-query-tsm-q-apis) i [dokumentacją interfejsu API usługi instance](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#instances-api).
+> Aby uzyskać informacje na temat obsługi interfejsu API Time Series Insights i tworzenia, odczytu, aktualizacji i usuwania (CRUD), zapoznaj się z artykułem [wykonywanie zapytań dotyczących danych](time-series-insights-update-tsq.md#time-series-model-query-tsm-q-apis) i [dokumentacją interfejsu API usługi instance](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#instances-api).
 
 ## <a name="time-series-model-hierarchies"></a>Hierarchie modelu szeregów czasowych
 
@@ -186,7 +186,7 @@ W poprzednim przykładzie JSON:
 * `ManufactureDate` definiuje hierarchię z `year` nadrzędnym i `month`podrzędnym. Każda `ManufactureDate` może mieć wiele `years`, co z kolei może mieć wiele `months`.
 
 > [!TIP]
-> Aby uzyskać pomoc dotyczącą Time Series Insights wystąpienia API i CRUD, zobacz artykuł [wykonywanie zapytań dotyczących danych](time-series-insights-update-tsq.md#time-series-model-query-tsm-q-apis) oraz [Dokumentacja interfejsu API REST](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#hierarchies-api).
+> Aby uzyskać pomoc dotyczącą Time Series Insights wystąpienia interfejsu API i CRUD, przeczytaj artykuł dotyczący [zapytań dotyczących danych](time-series-insights-update-tsq.md#time-series-model-query-tsm-q-apis) oraz [dokumentację interfejsu API REST](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#hierarchies-api).
 
 ### <a name="hierarchy-example"></a>Przykład hierarchii
 
@@ -231,7 +231,7 @@ Typ może mieć co najmniej jednej zmiennej. Na przykład wystąpienie modelu sz
 [przykład ![typu modelu szeregów czasowych](media/v2-update-tsm/time-series-model-types.png)](media/v2-update-tsm/time-series-model-types.png#lightbox)
 
 > [!TIP]
-> Aby uzyskać pomoc dotyczącą Time Series Insights wystąpienia API i CRUD, zapoznaj się z artykułem [wykonywanie zapytań dotyczących danych](time-series-insights-update-tsq.md#time-series-model-query-tsm-q-apis) i [dokumentacją interfejsu API REST](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#types-api).
+> Aby uzyskać pomoc techniczną dla Time Series Insights wystąpienia interfejsu API i CRUD, przeczytaj artykuł dotyczący [zapytań dotyczących danych](time-series-insights-update-tsq.md#time-series-model-query-tsm-q-apis) i [dokumentację interfejsu API REST](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#types-api).
 
 ### <a name="type-properties"></a>Właściwości typu
 
@@ -391,7 +391,7 @@ Zmienne są przechowywane w definicji typu w modelu szeregów czasowych i mogą 
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Zobacz [Azure Time Series Insights w wersji zapoznawczej magazynu i transferu danych](./time-series-insights-update-storage-ingress.md)przychodzących.
+- Przeczytaj [Azure Time Series Insights w wersji zapoznawczej magazynu i transferu danych](./time-series-insights-update-storage-ingress.md)przychodzących.
 
 - Informacje na temat typowych operacji modelu szeregów czasowych w ramach [modelowania danych w programie Azure Time Series Insights Preview](./time-series-insights-update-how-to-tsm.md)
 

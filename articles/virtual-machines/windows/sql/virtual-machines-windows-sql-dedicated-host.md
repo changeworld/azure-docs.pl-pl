@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 08/12/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 8b29bbce1511b022def522d46c74b99967a76ea3
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: edb2d3fa670475d9b08fe05494035949181a9240
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71204525"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834350"
 ---
 # <a name="sql-server-vm-on-an-azure-dedicated-host"></a>SQL Server maszynę wirtualną na dedykowanym hoście platformy Azure 
 
@@ -28,16 +28,17 @@ W tym artykule przedstawiono szczegółowe informacje dotyczące używania maszy
 ## <a name="overview"></a>Przegląd
 [Dedykowany Host platformy Azure](/azure/virtual-machines/windows/dedicated-hosts) to usługa, która zapewnia serwerom fizycznym możliwość hostowania co najmniej jednej maszyny wirtualnej — dedykowanej dla jednej subskrypcji platformy Azure. Dedykowane hosty to te same serwery fizyczne, które są używane w centrach danych firmy Microsoft, dostępne jako zasoby. Można udostępnić dedykowane hosty w obrębie regionu, strefy dostępności i domeny błędów. Następnie można umieścić maszyny wirtualne bezpośrednio na hostach, w których konfiguracja najlepiej odpowiada Twoim potrzebom.
 
+## <a name="limitations"></a>Ograniczenia
 
-[!INCLUDE [Connect to SQL Server VM with remote desktop](../../../../includes/virtual-machines-common-dedicated-hosts-preview.md)]
-
+- Zestawy skalowania maszyn wirtualnych nie są obecnie obsługiwane na dedykowanych hostach.
+- Obsługiwane są następujące serie maszyn wirtualnych: DSv3 i ESv3. 
 
 ## <a name="licensing"></a>Licencjonowanie
 
 Podczas dodawania maszyny wirtualnej SQL Server do dedykowanego hosta platformy Azure można wybrać jedną z dwóch różnych opcji licencjonowania. 
 
-  - **Licencjonowanie maszyn wirtualnych SQL**: Jest to istniejąca opcja licencjonowania, w przypadku której płacisz osobno za każdą licencję na SQL Server maszyny wirtualnej. 
-  - **Dedykowane Licencjonowanie hosta**: Nowy model licencjonowania dostępny dla dedykowanego hosta platformy Azure, w którym SQL Server licencje są powiązane i płatne na poziomie hosta. 
+  - **Licencjonowanie maszyn wirtualnych SQL**: jest to istniejąca opcja licencjonowania, w przypadku której płacisz osobno za każdą licencję na SQL Server maszynę wirtualną. 
+  - **Dedykowane Licencjonowanie hosta**: nowy model licencjonowania dostępny dla dedykowanego hosta platformy Azure, w którym SQL Server licencje są powiązane i płatne na poziomie hosta. 
 
 
 Opcje na poziomie hosta dotyczące korzystania z istniejących licencji SQL Server: 
@@ -66,9 +67,9 @@ Ponieważ jest to Twój host, kwalifikujesz się do ustawienia wirtualizacji o w
 
 ## <a name="faq"></a>Często zadawane pytania
 
-**Pyt.: Jak działa Korzyść użycia hybrydowego platformy Azure dla licencji systemu Windows Server/SQL Server na dedykowanym hoście platformy Azure?**
+**P: jak działa Korzyść użycia hybrydowego platformy Azure dla licencji systemu Windows Server/SQL Server na dedykowanym hoście platformy Azure?**
 
-Odp.: Klienci mogą używać wartości swoich istniejących licencji systemu Windows Server i SQL Server z pakietem Software Assurance lub uprawniających licencji subskrypcyjnych, aby uregulować ograniczoną stawkę za dedykowany Host platformy Azure przy użyciu Korzyść użycia hybrydowego platformy Azure. Klienci korzystający z systemu Windows Server Datacenter i SQL Server Enterprise Edition uzyskują nieograniczoną wirtualizację (w zależności od liczby maszyn wirtualnych z systemem Windows Server można wdrożyć na hoście z uwzględnieniem fizycznej pojemności serwera bazowego), gdy uzyskują licencję na cały Host i użyj Korzyść użycia hybrydowego platformy Azure.  Wszystkie obciążenia systemu Windows Server i SQL Server na dedykowanym hoście platformy Azure są również uprawnione do rozszerzonych aktualizacji zabezpieczeń dla systemów Windows Server i SQL Server 2008/R2 bez dodatkowych opłat. 
+Odp.: klienci mogą korzystać z wartości swoich istniejących licencji systemu Windows Server i SQL Server z pakietem Software Assurance lub uprawniających licencji subskrypcyjnych, aby uregulować obniżoną stawkę za dedykowanego hosta platformy Azure przy użyciu Korzyść użycia hybrydowego platformy Azure. Klienci korzystający z systemu Windows Server Datacenter i SQL Server Enterprise Edition uzyskują nieograniczoną wirtualizację (w zależności od liczby maszyn wirtualnych z systemem Windows Server można wdrożyć na hoście z uwzględnieniem fizycznej pojemności serwera bazowego), gdy uzyskują licencję na cały Host i użyj Korzyść użycia hybrydowego platformy Azure.  Wszystkie obciążenia systemu Windows Server i SQL Server na dedykowanym hoście platformy Azure są również uprawnione do rozszerzonych aktualizacji zabezpieczeń dla systemów Windows Server i SQL Server 2008/R2 bez dodatkowych opłat. 
 
 ## <a name="next-steps"></a>Następne kroki
 

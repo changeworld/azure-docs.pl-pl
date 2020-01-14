@@ -6,19 +6,19 @@ ms.topic: article
 ms.date: 10/30/2019
 ms.author: mahender
 ms.reviewer: yevbronsh
-ms.openlocfilehash: f341f5bbf7221664301ca53eea1edd6af7544950
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4e2a76e40206e1562d565571dbe22e5d9d0e930e
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422051"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834160"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>Jak używać tożsamości zarządzanych do App Service i Azure Functions
 
 > [!Important] 
 > Tożsamości zarządzane dla App Service i Azure Functions nie będą działać zgodnie z oczekiwaniami, jeśli Twoja aplikacja jest migrowana między subskrypcjami/dzierżawcami. Aplikacja będzie musiała uzyskać nową tożsamość, którą można wykonać, wyłączając i ponownie włączając funkcję. Zobacz [usuwanie tożsamości](#remove) poniżej. Zasoby podrzędne również muszą mieć zaktualizowane zasady dostępu do korzystania z nowej tożsamości.
 
-W tym temacie pokazano, jak utworzyć zarządzaną tożsamość dla App Service i Azure Functions aplikacji oraz jak używać jej do uzyskiwania dostępu do innych zasobów. Tożsamość zarządzana z usługi Azure Active Directory umożliwia aplikacji łatwy dostęp do innych zasobów chronionych przez usługę AAD, takich jak usługa Azure Key Vault. Tożsamość jest zarządzana przez platformę Azure i nie wymaga aprowizacji ani rotacji żadnych wpisów tajnych. Aby uzyskać więcej informacji o tożsamościach zarządzanych w usłudze AAD, zobacz [zarządzane tożsamości dla zasobów platformy Azure](../active-directory/managed-identities-azure-resources/overview.md).
+W tym temacie pokazano, jak utworzyć zarządzaną tożsamość dla App Service i Azure Functions aplikacji oraz jak używać jej do uzyskiwania dostępu do innych zasobów. Zarządzana tożsamość z usługi Azure Active Directory (AAD) umożliwia aplikacji łatwe uzyskiwanie dostępu do innych zasobów chronionych przez usługi AAD, takich jak Azure Key Vault. Tożsamość jest zarządzana przez platformę Azure i nie wymaga aprowizacji ani rotacji żadnych wpisów tajnych. Aby uzyskać więcej informacji o tożsamościach zarządzanych w usłudze AAD, zobacz [zarządzane tożsamości dla zasobów platformy Azure](../active-directory/managed-identities-azure-resources/overview.md).
 
 Aplikacja może mieć przyznane dwa typy tożsamości: 
 - **Tożsamość przypisana do systemu** jest powiązana z aplikacją i jest usuwana, jeśli aplikacja zostanie usunięta. Aplikacja może mieć tylko jedną tożsamość przypisaną do systemu.
@@ -77,7 +77,7 @@ Poniższe kroki przeprowadzą Cię przez proces tworzenia aplikacji sieci Web i 
 
 Poniższe kroki przeprowadzą Cię przez proces tworzenia aplikacji sieci Web i przypisywania jej tożsamości przy użyciu Azure PowerShell:
 
-1. W razie potrzeby zainstaluj program Azure PowerShell, korzystając z instrukcji w [przewodniku programu Azure PowerShell](/powershell/azure/overview), a następnie uruchom polecenie `Login-AzAccount`, aby utworzyć połączenie z platformą Azure.
+1. W razie potrzeby zainstaluj Azure PowerShell przy użyciu instrukcji znajdujących się w [przewodniku Azure PowerShell](/powershell/azure/overview), a następnie uruchom `Login-AzAccount`, aby utworzyć połączenie z platformą Azure.
 
 2. Utwórz aplikację sieci Web przy użyciu Azure PowerShell. Aby uzyskać więcej przykładów użycia Azure PowerShell z App Service, zobacz [App Service przykładów programu PowerShell](../app-service/samples-powershell.md):
 
@@ -235,12 +235,12 @@ Gdzie `<PRINCIPALID>` i `<CLIENTID>` są zastępowane identyfikatorami GUID. Pri
 
 ## <a name="obtaining-tokens-for-azure-resources"></a>Uzyskiwanie tokenów dla zasobów platformy Azure
 
-Aplikacja może używać swojej tożsamości do uzyskiwania tokenów do innych zasobów chronionych przez usługi AAD, takich jak Azure Key Vault. Te tokeny reprezentują aplikację, która uzyskują dostęp do zasobu, a nie do określonego użytkownika aplikacji. 
+Aplikacja może używać swojej tożsamości zarządzanej, aby uzyskiwać tokeny umożliwiające dostęp do innych zasobów chronionych przez usługi AAD, takich jak Azure Key Vault. Te tokeny reprezentują aplikację, która uzyskują dostęp do zasobu, a nie do określonego użytkownika aplikacji. 
 
 > [!IMPORTANT]
-> Może być konieczne skonfigurowanie zasobu docelowego, aby zezwalać na dostęp z poziomu aplikacji. Na przykład, Jeśli zażądasz tokenu do Key Vault, musisz się upewnić, że dodano zasady dostępu zawierające tożsamość aplikacji. W przeciwnym razie wywołania Key Vault będą odrzucane, nawet jeśli zawierają token. Aby dowiedzieć się więcej o tym, które zasoby obsługują tokeny Azure Active Directory, zobacz [usługi platformy Azure, które obsługują uwierzytelnianie usługi Azure AD](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication).
+> Może być konieczne skonfigurowanie zasobu docelowego, aby zezwalać na dostęp z poziomu aplikacji. Na przykład, Jeśli zażądasz tokenu dostępu do Key Vault, musisz upewnić się, że dodano zasady dostępu zawierające tożsamość aplikacji. W przeciwnym razie wywołania Key Vault będą odrzucane, nawet jeśli zawierają token. Aby dowiedzieć się więcej o tym, które zasoby obsługują tokeny Azure Active Directory, zobacz [usługi platformy Azure, które obsługują uwierzytelnianie usługi Azure AD](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication).
 
-Istnieje prosty protokół REST umożliwiający uzyskanie tokenu w App Service i Azure Functions. Można go używać dla wszystkich aplikacji i języków. W przypadku niektórych platform .NET i Java zestaw Azure SDK zapewnia streszczenie za pośrednictwem tego protokołu i ułatwia lokalne środowisko programistyczne.
+Istnieje prosty protokół REST umożliwiający uzyskanie tokenu w App Service i Azure Functions. Można go używać dla wszystkich aplikacji i języków. W przypadku platformy .NET i środowiska Java zestaw Azure SDK zapewnia streszczenie za pośrednictwem tego protokołu i ułatwia lokalne środowisko programistyczne.
 
 ### <a name="using-the-rest-protocol"></a>Korzystanie z protokołu REST
 

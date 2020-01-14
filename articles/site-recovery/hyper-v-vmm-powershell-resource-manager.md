@@ -6,14 +6,14 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 11/27/2018
+ms.date: 1/10/2020
 ms.author: sutalasi
-ms.openlocfilehash: 2fc66514bdf33611f9e6266d35a2d537fe3b9261
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: d2f25774f89182004e23605bf4c37d1e1d739df7
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084902"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867031"
 ---
 # <a name="set-up-disaster-recovery-of-hyper-v-vms-to-a-secondary-site-by-using-powershell-resource-manager"></a>Konfigurowanie odzyskiwania po awarii maszyn wirtualnych funkcji Hyper-V w lokacji dodatkowej przy użyciu programu PowerShell (Menedżer zasobów)
 
@@ -194,6 +194,14 @@ Po poprawnym skonfigurowaniu serwerów, chmur i sieci należy włączyć ochron�
 3. Włącz replikację dla maszyny wirtualnej.
 
           $jobResult = Set-AzSiteRecoveryProtectionEntity -ProtectionEntity $protectionentity -Protection Enable -Policy $policy
+
+> [!NOTE]
+> Jeśli chcesz przeprowadzić replikację do CMK dysków zarządzanych na platformie Azure, wykonaj następujące czynności za pomocą polecenia AZ PowerShell 3.3.0 i nowszego:
+>
+> 1. Włącz tryb failover na dyskach zarządzanych przez zaktualizowanie właściwości maszyny wirtualnej
+> 2. Użyj polecenia cmdlet Get-AsrReplicationProtectedItem, aby pobrać identyfikator dysku dla każdego dysku chronionego elementu
+> 3. Utwórz obiekt słownika przy użyciu polecenia cmdlet New-Object "System. Collections. Generic. dictionary" "2 [System. String, system. String]", aby zawierać mapowanie identyfikatora dysku na zestaw szyfrowania dysków. Te zestawy szyfrowania dysków są wstępnie utworzone przez użytkownika w regionie docelowym.
+> 4. Zaktualizuj właściwości maszyny wirtualnej za pomocą polecenia cmdlet Set-AsrReplicationProtectedItem, przekazując obiekt dictionary w parametrze-DiskIdToDiskEncryptionSetMap.
 
 ## <a name="run-a-test-failover"></a>Wykonywanie próby przejścia w tryb failover
 

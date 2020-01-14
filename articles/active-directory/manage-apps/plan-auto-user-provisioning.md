@@ -12,12 +12,12 @@ ms.date: 10/17/2019
 ms.author: martinco
 ms.reviewer: arvindha
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cdf4e5dfc48fdeee86526257d6d8c47a464ce113
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: b1e8128066794932abaca4290a5c896354522544
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74786422"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75732454"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment"></a>Planowanie wdrożenia automatycznego aprowizowania użytkowników
 
@@ -138,7 +138,7 @@ Komunikacja jest niezwykle ważna dla sukcesu każdej nowej usługi. Proaktywnie
 
 ### <a name="plan-a-pilot"></a>Planowanie pilotażu
 
-Zaleca się, aby początkowa konfiguracja automatycznego aprowizacji użytkowników była w środowisku testowym z małym podzbiorem użytkowników przed ich przeskalowaniem do wszystkich użytkowników w produkcji.
+Zaleca się, aby początkowa konfiguracja automatycznego aprowizacji użytkowników była w środowisku testowym z małym podzbiorem użytkowników przed ich przeskalowaniem do wszystkich użytkowników w produkcji. Zobacz [najlepsze rozwiązania](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-deployment-plans#best-practices-for-a-pilot) dotyczące uruchamiania programu pilotażowego.
 
 #### <a name="best-practices-for-a-pilot"></a>Najlepsze rozwiązania dla pilotażu  
 

@@ -1,6 +1,6 @@
 ---
 title: Rozwiązywanie problemów z Azure Automation elementami Runbook
-description: Dowiedz się, jak rozwiązywać problemy z Azure Automation elementami Runbook
+description: Dowiedz się, jak rozwiązywać problemy z elementami Runbook Azure Automation.
 services: automation
 author: mgoedtel
 ms.author: magoedte
@@ -8,12 +8,12 @@ ms.date: 01/24/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 84a17cb4468f60abf2463e6aa3ca331466aad247
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 10152087b45a4048f30f382b237017efbbb63787
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850146"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769884"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Rozwiązywanie problemów z elementami Runbook
 
@@ -270,9 +270,9 @@ The job was tried three times but it failed
 
 Ten błąd występuje z powodu jednego z następujących problemów:
 
-* Limit pamięci. Udokumentowane limity ilości pamięci przydzielanej do piaskownicy znajdują się w [granicach usługi Automation](../../azure-subscription-service-limits.md#automation-limits). Zadanie może zakończyć się niepowodzeniem, jeśli używa więcej niż 400 MB pamięci.
+* Limit pamięci. Udokumentowane limity ilości pamięci przydzielanej do piaskownicy znajdują się w [granicach usługi Automation](../../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits). Zadanie może zakończyć się niepowodzeniem, jeśli używa więcej niż 400 MB pamięci.
 
-* Gniazda sieciowe. Piaskownice platformy Azure są ograniczone do 1000 współbieżnych gniazd sieciowych zgodnie z opisem w [limitach usługi Automation](../../azure-subscription-service-limits.md#automation-limits).
+* Gniazda sieciowe. Piaskownice platformy Azure są ograniczone do 1000 współbieżnych gniazd sieciowych zgodnie z opisem w [limitach usługi Automation](../../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits).
 
 * Moduł jest niezgodny. Ten błąd może wystąpić, jeśli zależności modułu nie są poprawne i jeśli nie, element Runbook zwykle zwróci komunikat "nie można odnaleźć polecenia" lub "nie można powiązać parametru".
 

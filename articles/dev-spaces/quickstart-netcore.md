@@ -3,15 +3,15 @@ title: 'Debugowanie i iteracja na Kubernetes: Visual Studio Code & .NET Core'
 services: azure-dev-spaces
 ms.date: 07/08/2019
 ms.topic: quickstart
-description: Szybkie tworzenie w środowisku Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
+description: W tym przewodniku szybki start pokazano, jak używać Azure Dev Spaces i Visual Studio Code do debugowania i szybkiej iteracji aplikacji platformy .NET Core w usłudze Azure Kubernetes Service
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, Service siatk, Service siatk Routing, polecenia kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 278ec0683a7ddb3c41f724e06e8ca291d18e3bad
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 0025f395c89a8a9f2eff4204ed0859cda0fa86fc
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325597"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867520"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-visual-studio-code-and-net-core---azure-dev-spaces"></a>Szybki Start: debugowanie i iteracja na Kubernetes: Visual Studio Code i .NET Core — Azure Dev Spaces
 
@@ -93,6 +93,9 @@ Gdy Visual Studio Code również zostanie wyświetlony komunikat z prośbą o sk
 
 To polecenie przygotowuje projekt do uruchomienia w Azure Dev Spaces przez wygenerowanie wykresu pliku dockerfile i Helm. Generuje również katalog *. programu vscode* z konfiguracją debugowania w katalogu głównym projektu.
 
+> [!TIP]
+> [Wykres pliku dockerfile i Helm](how-dev-spaces-works.md#prepare-your-code) dla projektu jest używany przez Azure dev Spaces do kompilowania i uruchamiania kodu, ale można modyfikować te pliki, jeśli chcesz zmienić sposób kompilowania i wykonywania projektu.
+
 ## <a name="build-and-run-code-in-kubernetes-from-visual-studio"></a>Kompiluj i uruchamiaj kod w programie Kubernetes z programu Visual Studio
 
 Kliknij ikonę *debugowania* po lewej stronie, a następnie kliknij pozycję *.NET Core Launch (AZDS)* w górnej części ekranu.
@@ -110,7 +113,7 @@ Kliknij pozycję *Debuguj* , a następnie *Zatrzymaj debugowanie* , aby zatrzyma
 
 ## <a name="update-code"></a>Aktualizowanie kodu
 
-Aby wdrożyć zaktualizowaną wersję usługi, możesz zaktualizować każdy plik w projekcie i ponownie uruchomić program *.NET Core (AZDS)* . Na przykład:
+Aby wdrożyć zaktualizowaną wersję usługi, możesz zaktualizować każdy plik w projekcie i ponownie uruchomić program *.NET Core (AZDS)* . Przykład:
 
 1. Jeśli aplikacja jest nadal uruchomiona, kliknij pozycję *Debuguj* , a następnie *Zatrzymaj debugowanie* , aby ją zatrzymać.
 1. Aktualizuj [wiersz 22 w `Controllers/HomeController.cs`](https://github.com/Azure/dev-spaces/blob/master/samples/dotnetcore/getting-started/webfrontend/Controllers/HomeController.cs#L22) do:
@@ -139,7 +142,7 @@ Usuń punkt przerwania, umieszczając kursor w wierszu 22 w `Controllers/HomeCon
 
 ## <a name="update-code-from-visual-studio-code"></a>Aktualizuj kod z Visual Studio Code
 
-Gdy usługa jest uruchomiona w trybie debugowania, zaktualizuj wiersz 22 w `Controllers/HomeController.cs`. Na przykład:
+Gdy usługa jest uruchomiona w trybie debugowania, zaktualizuj wiersz 22 w `Controllers/HomeController.cs`. Przykład:
 
 ```csharp
 ViewData["Message"] = "Your application description page in Azure while debugging!";
@@ -167,4 +170,4 @@ Dowiedz się, jak Azure Dev Spaces ułatwiają tworzenie bardziej złożonych ap
 > [Working with multiple containers and team development (Praca z wieloma kontenerami i programowanie zespołowe)](multi-service-netcore.md)
 
 
-[supported-regions]: about.md#supported-regions-and-configurations
+[supported-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service

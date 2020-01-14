@@ -9,12 +9,12 @@ tags: complex data types; compound data types; aggregate data types
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: c7578b84fe1d23d2b4d97aa263cac576305db240
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 657cded5e16897f9581bbcf365bacc2d2f1a821a
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889918"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754360"
 ---
 # <a name="how-to-model-complex-data-types-in-azure-cognitive-search"></a>Jak modelować złożone typy danych w usłudze Azure Wyszukiwanie poznawcze
 
@@ -65,12 +65,6 @@ Poniższy dokument JSON składa się z pól prostych i złożonych. Pola złożo
 Podobnie jak w przypadku dowolnej definicji indeksu, można użyć portalu, [interfejsu API REST](https://docs.microsoft.com/rest/api/searchservice/create-index)lub [zestawu .NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index?view=azure-dotnet) , aby utworzyć schemat zawierający typy złożone. 
 
 Poniższy przykład przedstawia schemat indeksu JSON z prostymi polami, kolekcjami i typami złożonymi. Zwróć uwagę, że w ramach typu złożonego każde pole podrzędne ma typ i może mieć atrybuty, tak jak pola najwyższego poziomu. Schemat odnosi się do przykładowych danych powyżej. `Address` to złożone pole, które nie jest kolekcją (Hotel ma jeden adres). `Rooms` to złożone pole kolekcji (Hotel ma wiele pokojów).
-
-<!---
-For indexes used in a [push-model data import](search-what-is-data-import.md) strategy, where you are pushing a JSON data set to an Azure Cognitive Search index, you can only have the basic syntax shown here: single complex types like `Address`, or a `Collection(Edm.ComplexType)` like `Rooms`. You cannot have complex types nested inside other complex types in an index used for push-model data ingestion.
-
-Indexers are a different story. When defining an indexer, in particular one used to build a knowledge store, your index can have nested complex types. An indexer is able to hold a chain of complex data structures in-memory, and when it includes a skillset, it can support highly complex data forms. For more information and an example, see [How to get started with knowledge store](knowledge-store-howto.md).
--->
 
 ```json
 {

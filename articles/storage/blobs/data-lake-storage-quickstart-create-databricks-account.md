@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 02/15/2019
 ms.reviewer: jeking
-ms.openlocfilehash: a19a6e7e74fc645c891754e5afdbd2a6a1bdefd4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: HT
+ms.openlocfilehash: 193fe96d3e98b2917d9228784b93a9335406283f
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75443812"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771755"
 ---
 # <a name="quickstart-analyze-data-in-azure-data-lake-storage-gen2-by-using-azure-databricks"></a>Szybki Start: analizowanie danych w Azure Data Lake Storage Gen2 przy użyciu Azure Databricks
 
@@ -140,7 +140,7 @@ W tej komórce naciśnij klawisze **SHIFT + ENTER**, aby uruchomić kod.
 
 Teraz w nowej komórce pod tą komórką wprowadź następujący kod, zastępując wartości w nawiasach tymi samymi wartościami, których użyto wcześniej:
 
-    dbutils.fs.cp("file:///tmp/small_radio_json.json", "abfss://<file-system>@<account-name>.dfs.core.windows.net/")
+    dbutils.fs.cp("file:///tmp/small_radio_json.json", "abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/")
 
 W tej komórce naciśnij klawisze **SHIFT + ENTER**, aby uruchomić kod.
 

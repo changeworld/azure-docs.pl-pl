@@ -1,6 +1,6 @@
 ---
-title: Poziomów usług dla usługi Azure Files NetApp | Dokumentacja firmy Microsoft
-description: W tym artykule opisano wydajność przepustowości dla poziomów usług Azure Files NetApp.
+title: Poziomy usługi dla Azure NetApp Files | Microsoft Docs
+description: Opisuje wydajność przepływności dla poziomów usługi Azure NetApp Files.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -12,50 +12,51 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/22/2019
+ms.date: 01/09/2019
 ms.author: b-juche
-ms.openlocfilehash: 1f9c427045c9d42f6a11cc4bcc798cfc47a4428c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0398cc6a5336141f51dde26ed7cf4cce8c2c0bb4
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65523105"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75832579"
 ---
 # <a name="service-levels-for-azure-netapp-files"></a>Poziomy usług dla usługi Azure NetApp Files
-Poziomy usług są atrybut pojemności puli. Poziomy usług są zdefiniowane i zróżnicowane według dozwoloną maksymalną przepustowość dla woluminu w puli pojemność, w oparciu o przydział, który jest przypisany do woluminu.
+Poziomy usług są atrybutem puli pojemności. Poziomy usług są zdefiniowane i odróżniane przez maksymalną przepustowość dla woluminu w puli pojemności na podstawie przydziału przypisanego do woluminu.
 
-## <a name="supported-service-levels"></a>Poziomy usług obsługiwanych
+## <a name="supported-service-levels"></a>Obsługiwane poziomy usług
 
-Usługa Azure Files NetApp obsługuje trzy poziomy usług: *Największa*, *Premium*, i *standardowa*. 
+Azure NetApp Files obsługuje trzy poziomy usługi: *Ultra*, *Premium*i *Standard*. 
 
-* <a name="Ultra"></a>Największa magazynu
+* <a name="Ultra"></a>Ultra Storage
 
-    Warstwy magazynowania Ultra oferuje do 128 MiB/s przepływności na 1 TiB przypisane limit przydziału woluminu. 
+    Warstwa Ultra Storage zapewnia do 128 MiB/s przepływność na 1 TiB przydzielonego przydziału woluminu. 
 
-* <a name="Premium"></a>Usługa Premium storage
+* <a name="Premium"></a>Premium Storage
 
-    Warstwa magazynu Premium oferuje maksymalnie 64 MiB/s przepływności na 1 TiB przypisane limit przydziału woluminu. 
+    Warstwa magazynu Premium Storage zapewnia do 64 MiB/s przepływność na 1 TiB przydzielonego przydziału woluminu. 
 
-* <a name="Standard"></a>Magazynu w warstwie standardowa
+* <a name="Standard"></a>Magazyn w warstwie Standardowa
 
-    Warstwa magazynu w warstwie standardowa zapewnia się maksymalnie 16 MiB/s przepływności na 1 TiB przypisane limit przydziału woluminu.
+    Standardowa warstwa magazynowania oferuje do 16 MiB/s przepływność na 1 TiB przydzielonego przydziału woluminu.
 
-## <a name="throughput-limits"></a>Limity przepustowości
+## <a name="throughput-limits"></a>Limity przepływności
 
-Limit przepływności dla woluminu jest określany przez kombinację następujących czynników:
-* Usługi poziomu pojemność puli, do której należy dany wolumin
-* Limit przydziału przypisanych do woluminu  
+Limit przepływności dla woluminu jest określany przez połączenie następujących czynników:
+* Poziom usługi puli pojemności, do której należy wolumin
+* Przydział przypisany do woluminu  
 
-Pojęcie to zostało zilustrowane na poniższym diagramie:
+Koncepcje te przedstawiono na poniższym diagramie:
 
 ![Ilustracja poziomu usługi](../media/azure-netapp-files/azure-netapp-files-service-levels.png)
 
-W przykładzie 1 powyżej woluminu z puli pojemności w warstwie Premium storage, przypisana 2 TiB limit przydziału zostanie przypisany limit przepływności 128 MiB/s (2 TiB * 64 MiB/s). Ten scenariusz dotyczy niezależnie od rozmiaru puli pojemność i użycie rzeczywistej objętości.
+W powyższym przykładzie 1 wolumin z puli pojemności w warstwie Premium Storage, do której przypisano 2 TiB przydziału, zostanie przypisany limit przepływności równy 128 MiB/s (2 TiB * 64 MiB/s). Ten scenariusz dotyczy niezależnie od rozmiaru puli pojemności lub rzeczywistego zużycia woluminu.
 
-W przykładzie 2 powyżej, wolumin z puli pojemności w warstwie Premium magazyn, którą przypisano 100 GiB limitu przydziału zostanie przypisany limit przepływności 6.25 MiB/s (0.09765625 TiB * 64 MiB/s). Ten scenariusz dotyczy niezależnie od rozmiaru puli pojemność i użycie rzeczywistej objętości.
+W przykładzie 2 powyżej wolumin z puli pojemności w warstwie magazynu Premium przypisany 100 GiB przydziału zostanie przypisany limit przepływności równy 6,25 MiB/s (0,09765625 TiB * 64 MiB/s). Ten scenariusz dotyczy niezależnie od rozmiaru puli pojemności lub rzeczywistego zużycia woluminu.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Informacje o różnych poziomach usługi można uzyskać na [stronie z cennikiem dla usługi Azure NetApp Files](https://azure.microsoft.com/pricing/details/storage/netapp/)
-- Zobacz [modelu kosztów dla usługi Azure Files NetApp](azure-netapp-files-cost-model.md) obliczania poziom zużycia pojemności w puli pojemności 
+- Aby uzyskać Azure NetApp Files obliczania zużycia pojemności w puli pojemności, zobacz [model kosztów](azure-netapp-files-cost-model.md) . 
 - [Konfigurowanie puli pojemności](azure-netapp-files-set-up-capacity-pool.md)
+- Zobacz [Umowa dotycząca poziomu usług (SLA) dla Azure NetApp Files](https://azure.microsoft.com/support/legal/sla/netapp/)

@@ -1,19 +1,18 @@
 ---
-title: Starsza wersja SKU bramy sieci VPN platformy Azure | Microsoft Docs
+title: Starsza jednostka SKU bramy sieci wirtualnej platformy Azure
 description: Jak korzystać ze starych jednostek SKU bramy sieci wirtualnej; Basic, standard i HighPerformance.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
-ms.workload: infrastructure-services
 ms.date: 08/15/2019
 ms.author: cherylmc
-ms.openlocfilehash: 5c745258929d495c1e568a156690f569de9f0e36
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 9c5e6d5aca51bd560a46837ba47de86362665773
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69533911"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861918"
 ---
 # <a name="working-with-virtual-network-gateway-skus-legacy-skus"></a>Praca z jednostkami SKU bramy sieci wirtualnej (starszą wersją SKU)
 

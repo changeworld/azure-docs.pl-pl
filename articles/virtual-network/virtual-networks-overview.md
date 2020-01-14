@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2019
 ms.author: anavin
-ms.openlocfilehash: 3aee53b823af5929ce48045d1addcbc4881b2825
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 768d01346b7697953d44742458c7e507ae7c115a
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75638276"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894609"
 ---
 # <a name="what-is-azure-virtual-network"></a>Co to jest Azure Virtual Network?
 
@@ -79,7 +79,7 @@ Platforma Azure domyślnie kieruje ruchem pomiędzy podsieciami, połączonymi s
 
 ## <a name="azure-vnet-limits"></a>Limity sieci wirtualnej platformy Azure
 
-Istnieją pewne ograniczenia dotyczące liczby zasobów platformy Azure, które można wdrożyć. Większość limitów sieci platformy Azure znajduje się na maksymalnych wartościach. Można jednak [zwiększyć niektóre limity sieci](../azure-supportability/networking-quota-requests.md) , zgodnie z [limitem na stronie limity Sieć wirtualna](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits). 
+Istnieją pewne ograniczenia dotyczące liczby zasobów platformy Azure, które można wdrożyć. Większość limitów sieci platformy Azure znajduje się na maksymalnych wartościach. Można jednak [zwiększyć niektóre limity sieci](../azure-portal/supportability/networking-quota-requests.md) , zgodnie z [limitem na stronie limity Sieć wirtualna](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits). 
 
 ## <a name="pricing"></a>Cennik
 

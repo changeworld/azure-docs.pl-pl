@@ -8,16 +8,16 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: kgremban
-ms.openlocfilehash: 0feca8b477a1d76eae9e3f41de0026a33cc3249d
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: ab07da38c01b052a4220274fb059683a22950a3f
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71259336"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750700"
 ---
 # <a name="migrate-your-iot-hub-from-operations-monitoring-to-diagnostics-settings"></a>Migrowanie IoT Hub z monitorowania operacji do ustawień diagnostycznych
 
-Klienci korzystający z [monitorowania operacji](iot-hub-operations-monitoring.md) do śledzenia stanu operacji w IoT Hub mogą migrować ten przepływ pracy do [ustawień diagnostycznych platformy Azure](../azure-monitor/platform/resource-logs-overview.md), funkcję Azure monitor. Ustawienia diagnostyki dostarczają informacji diagnostycznych na poziomie zasobów dla wielu usług platformy Azure.
+Klienci korzystający z [monitorowania operacji](iot-hub-operations-monitoring.md) do śledzenia stanu operacji w IoT Hub mogą migrować ten przepływ pracy do [ustawień diagnostycznych platformy Azure](../azure-monitor/platform/platform-logs-overview.md), funkcję Azure monitor. Ustawienia diagnostyki dostarczają informacji diagnostycznych na poziomie zasobów dla wielu usług platformy Azure.
 
 **Funkcja monitorowania operacji IoT Hub jest przestarzała**i została usunięta z portalu. W tym artykule przedstawiono procedurę przenoszenia obciążeń z monitorowania operacji do ustawień diagnostycznych. Aby uzyskać więcej informacji na temat osi czasu wycofania, zobacz [monitorowanie rozwiązań usługi Azure IoT za pomocą Azure monitor i Azure Resource Health](https://azure.microsoft.com/blog/monitor-your-azure-iot-solutions-with-azure-monitor-and-azure-resource-health/).
 
@@ -56,7 +56,7 @@ Aby uzyskać informacje o określonych strukturach schematu, zobacz [Omówienie 
 
 ## <a name="monitoring-device-connect-and-disconnect-events-with-low-latency"></a>Monitorowanie zdarzeń łączenia i rozłączania urządzeń z małymi opóźnieniami
 
-Aby monitorować zdarzenia łączenia i rozłączania urządzeń w środowisku produkcyjnym, zalecamy subskrybowanie [zdarzenia **odłączenia urządzenia** ](iot-hub-event-grid.md#event-types) w Event Grid w celu uzyskania alertów i monitorowania stanu połączenia urządzenia. Skorzystaj z [](iot-hub-how-to-order-connection-state-events.md) tego samouczka, aby dowiedzieć się, jak zintegrować urządzenia połączone i odłączone urządzenia z IoT Hub w rozwiązaniu IoT.
+Aby monitorować zdarzenia łączenia i rozłączania urządzeń w środowisku produkcyjnym, zalecamy subskrybowanie [zdarzenia **odłączenia urządzenia** ](iot-hub-event-grid.md#event-types) w Event Grid w celu uzyskania alertów i monitorowania stanu połączenia urządzenia. Skorzystaj z tego [samouczka](iot-hub-how-to-order-connection-state-events.md) , aby dowiedzieć się, jak zintegrować urządzenia połączone i odłączone urządzenia z IoT Hub w rozwiązaniu IoT.
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: ab3805e39112d4d37635571d8aa43030a1896951
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: aa6d3d61cb2ce0972653f787976a89e3d372ae27
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552444"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75912360"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-windows-device"></a>Szybki Start: wdrażanie pierwszego modułu IoT Edge na urządzeniu wirtualnym z systemem Windows
 
@@ -130,35 +130,35 @@ Podczas instalowania środowiska uruchomieniowego pojawi się prośba o podanie 
 
 ### <a name="connect-to-your-iot-edge-device"></a>Nawiązywanie połączenia z urządzeniem usługi IoT Edge
 
-Kroki opisane w tej sekcji odbywają się na urządzeniu IoT Edge, dlatego chcesz połączyć się z tą maszyną wirtualną teraz za pośrednictwem pulpitu zdalnego.
+The steps in this section all take place on your IoT Edge device, so you want to connect to that virtual machine now via remote desktop.
 
-### <a name="install-and-configure-the-iot-edge-service"></a>Instalowanie i Konfigurowanie usługi IoT Edge
+### <a name="install-and-configure-the-iot-edge-service"></a>Install and configure the IoT Edge service
 
 Pobierz i zainstaluj środowisko uruchomieniowe usługi IoT Edge za pomocą programu PowerShell. Do skonfigurowania urządzenia użyj parametrów połączenia urządzenia pobranych z usługi IoT Hub.
 
-1. Jeśli jeszcze tego nie zrobiono, wykonaj kroki opisane w temacie [Rejestrowanie nowego urządzenia Azure IoT Edge](how-to-register-device.md) , aby zarejestrować urządzenie i pobrać parametry połączenia urządzenia.
+1. If you haven't already, follow the steps in [Register a new Azure IoT Edge device](how-to-register-device.md) to register your device and retrieve the device connection string.
 
-2. Na maszynie wirtualnej Uruchom program PowerShell jako administrator.
+2. In the virtual machine, run PowerShell as an administrator.
 
    >[!NOTE]
-   >Użyj sesji AMD64 programu PowerShell, aby zainstalować IoT Edge, a nie PowerShell (x86). Jeśli nie masz pewności, który typ sesji jest używany, uruchom następujące polecenie:
+   >Use an AMD64 session of PowerShell to install IoT Edge, not PowerShell (x86). If you're not sure which session type you're using, run the following command:
    >
    >```powershell
    >(Get-Process -Id $PID).StartInfo.EnvironmentVariables["PROCESSOR_ARCHITECTURE"]
    >```
 
-3. Polecenie **Deploy-IoTEdge** sprawdza, czy komputer z systemem Windows jest w obsługiwanej wersji, włącza funkcję Containers, pobiera środowisko uruchomieniowe Moby, a następnie pobiera środowisko uruchomieniowe IoT Edge.
+3. The **Deploy-IoTEdge** command checks that your Windows machine is on a supported version, turns on the containers feature, downloads the Moby runtime, and then downloads the IoT Edge runtime.
 
    ```powershell
    . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `
    Deploy-IoTEdge -ContainerOs Windows
    ```
 
-4. Komputer może zostać automatycznie uruchomiony ponownie. Jeśli zostanie wyświetlony monit o polecenie Deploy-IoTEdge w celu ponownego uruchomienia, zrób to teraz.
+4. Your machine may restart automatically. If you are prompted by the Deploy-IoTEdge command to reboot, do so now.
 
-5. Uruchom ponownie program PowerShell jako administrator.
+5. Run PowerShell as an administrator again.
 
-6. Polecenie **Initialize-IoTEdge** konfiguruje środowisko uruchomieniowe IoT Edge na komputerze. Polecenie domyślnie umożliwia ręczne Inicjowanie obsługi przy użyciu kontenerów systemu Windows. 
+6. The **Initialize-IoTEdge** command configures the IoT Edge runtime on your machine. The command defaults to manual provisioning with Windows containers. 
 
    ```powershell
    . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `
@@ -183,7 +183,7 @@ Sprawdź, czy środowisko uruchomieniowe zostało pomyślnie zainstalowane i sko
    . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Get-IoTEdgeLog
    ```
 
-3. Wyświetl wszystkie moduły uruchomione na urządzeniu usługi IoT Edge. Ponieważ usługa została właśnie uruchomiona po raz pierwszy, tylko moduł **edgeAgent** powinien być widoczny jako uruchomiony. Moduł edgeAgent jest domyślnie uruchamiany i ułatwia Instalowanie i uruchamianie wszelkich dodatkowych modułów wdrażanych na urządzeniu.
+3. Wyświetl wszystkie moduły uruchomione na urządzeniu usługi IoT Edge. Ponieważ usługa została właśnie uruchomiona po raz pierwszy, tylko moduł **edgeAgent** powinien być widoczny jako uruchomiony. The edgeAgent module runs by default and helps to install and start any additional modules that you deploy to your device.
 
     ```powershell
     iotedge list
@@ -191,7 +191,7 @@ Sprawdź, czy środowisko uruchomieniowe zostało pomyślnie zainstalowane i sko
 
    ![Wyświetlanie jednego modułu na urządzeniu](./media/quickstart/iotedge-list-1.png)
 
-Ukończenie instalacji może potrwać kilka minut, a moduł agenta IoT Edge zostanie uruchomiony.
+It may take a few minutes for the installation to complete and the IoT Edge agent module to start.
 
 Urządzenie usługi IoT Edge jest teraz skonfigurowane. Jest ono gotowe do uruchamiania modułów wdrożonych w chmurze.
 
@@ -227,11 +227,11 @@ iotedge logs SimulatedTemperatureSensor -f
 
    ![Wyświetlanie danych z modułu](./media/quickstart/iotedge-logs.png)
 
-Możesz również wyświetlić komunikaty odbierane przez centrum IoT Hub przy użyciu [rozszerzenia zestawu narzędzi usługi Azure IoT Hub dla programu Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) (wcześniej nazywane rozszerzeniem zestawu narzędzi usługi Azure IoT).
+You can also watch the messages arrive at your IoT hub by using the [Azure IoT Hub extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit).
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Jeśli chcesz przejść do samouczków dotyczących usługi IoT Edge, możesz użyć urządzenia, które zostało zarejestrowane i skonfigurowane w ramach tego przewodnika Szybki start. W przeciwnym razie możesz usunąć utworzone zasoby platformy Azure, aby uniknąć naliczania opłat.
+Jeśli chcesz przejść do samouczków dotyczących usługi IoT Edge, możesz użyć urządzenia, które zostało zarejestrowane i skonfigurowane w ramach tego przewodnika Szybki start. Otherwise, you can delete the Azure resources that you created to avoid charges.
 
 Jeśli maszyna wirtualna i centrum IoT Hub zostały utworzone w nowej grupie zasobów, możesz usunąć tę grupę i wszystkie powiązane zasoby. Sprawdź dokładnie zawartość grupy zasobów, aby się upewnić, że nie ma w niej żadnych elementów, które chcesz zachować. Jeśli nie chcesz usuwać całej grupy, możesz usunąć poszczególne zasoby.
 
@@ -245,7 +245,7 @@ az group delete --name IoTEdgeResources
 
 W tym przewodniku Szybki start utworzono urządzenie usługi IoT Edge i wdrożono na nim kod przy użyciu interfejsu usługi Azure IoT Edge w chmurze. Masz teraz urządzenie testowe generujące dane pierwotne dotyczące jego otoczenia.
 
-Następnym krokiem jest skonfigurowanie lokalnego środowiska programistycznego, aby można było rozpocząć tworzenie modułów IoT Edge, które uruchamiają logikę biznesową. 
+The next step is to set up your local development environment so that you can start creating IoT Edge modules that run your business logic. 
 
 > [!div class="nextstepaction"]
-> [Rozpocznij opracowywanie modułów IoT Edge dla urządzeń z systemem Windows](tutorial-develop-for-windows.md)
+> [Start developing IoT Edge modules for Windows devices](tutorial-develop-for-windows.md)

@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0e4ec63ffe715b17f55fde2a53c15d96d391cdba
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1fc3aa6caa6266d2cd42e4783e8e39d5cc92c220
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75452492"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861578"
 ---
 # <a name="diagnose-and-troubleshoot-a-preview-environment"></a>Diagnozowanie i rozwiązywanie problemów dotyczących środowiska w wersji zapoznawczej
 
@@ -29,7 +29,7 @@ Ten problem może wystąpić, jeśli nie masz uprawnień dostępu do środowiska
 
 ## <a name="problem-no-data-is-seen-in-the-preview-explorer"></a>Problem: w Eksploratorze wersji zapoznawczej nie są widoczne żadne dane
 
-Istnieje kilka typowych przyczyn, dla których Twoje dane mogą nie być widoczne w [eksploratorze Azure Time Series Insights w wersji zapoznawczej](https://insights.timeseries.azure.com/preview).
+Istnieje kilka typowych przyczyn, dla których dane mogą nie być wyświetlane w [eksploratorze Azure Time Series Insights w wersji zapoznawczej](https://insights.timeseries.azure.com/preview).
 
 - Źródło zdarzenia może nie odbierać danych.
 
@@ -39,7 +39,7 @@ Istnieje kilka typowych przyczyn, dla których Twoje dane mogą nie być widoczn
 
 - Dane źródłowe zdarzenia nie są w formacie JSON.
 
-    Time Series Insights obsługuje tylko dane JSON. Aby uzyskać przykłady kodu JSON, zobacz [kształty JSON obsługiwany](./how-to-shape-query-json.md).
+    Time Series Insights obsługuje tylko dane JSON. W przypadku przykładów JSON Przeczytaj [obsługiwane kształty JSON](./how-to-shape-query-json.md).
 
 - Klucz źródła zdarzenia nie ma wymaganego uprawnienia.
 
@@ -61,13 +61,13 @@ Istnieje kilka typowych przyczyn, dla których Twoje dane mogą nie być widoczn
 
 - Właściwość identyfikatora szeregów czasowych określona w chwili aprowizacji jest nieprawidłowa, nie istnieje lub ma wartość null.
 
-    Ten problem może wystąpić, jeśli właściwość identyfikatora szeregów czasowych została skonfigurowana niepoprawnie w momencie aprowizacji środowiska. Aby uzyskać więcej informacji, zobacz [najlepsze rozwiązania dotyczące wybierania identyfikatora szeregów czasowych](./time-series-insights-update-how-to-id.md). W tej chwili nie można zaktualizować istniejącego środowiska Time Series Insights, aby użyć innego identyfikatora szeregów czasowych.
+    Ten problem może wystąpić, jeśli właściwość identyfikatora szeregów czasowych została skonfigurowana niepoprawnie w momencie aprowizacji środowiska. Aby uzyskać więcej informacji, zapoznaj się z [najlepszymi rozwiązaniami dotyczącymi wybierania identyfikatora szeregów czasowych](./time-series-insights-update-how-to-id.md). W tej chwili nie można zaktualizować istniejącego środowiska Time Series Insights, aby użyć innego identyfikatora szeregów czasowych.
 
 ## <a name="problem-some-data-shows-but-some-is-missing"></a>Problem: niektóre dane są widoczne, ale brakuje niektórych
 
 Dane mogą być wysyłane bez identyfikatora szeregów czasowych.
 
-- Ten problem może wystąpić, gdy wysyłasz zdarzenia bez pola identyfikatora szeregów czasowych w ładunku. Aby uzyskać więcej informacji, zobacz [obsługiwane kształty JSON](./how-to-shape-query-json.md).
+- Ten problem może wystąpić, gdy wysyłasz zdarzenia bez pola identyfikatora szeregów czasowych w ładunku. Aby uzyskać więcej informacji, Przeczytaj [obsługiwane kształty JSON](./how-to-shape-query-json.md).
 - Ten problem może wystąpić, ponieważ Twoje środowisko jest ograniczone.
 
     > [!NOTE]
@@ -97,7 +97,7 @@ Jeśli właściwość sygnatury czasowej nie zostanie określona jawnie, jako do
 
 - Można uzyskać dostęp do środowiska Time Series Insights S1 lub S2.
 
-   Modele szeregów czasowych są obsługiwane tylko w środowiskach z opcją płatność zgodnie z rzeczywistym użyciem. Aby uzyskać więcej informacji na temat uzyskiwania dostępu do środowiska S1 lub S2 z programu Time Series Insights Explorer w wersji zapoznawczej, zobacz [Wizualizacja danych w Eksploratorze](./time-series-insights-update-explorer.md).
+   Modele szeregów czasowych są obsługiwane tylko w środowiskach z opcją płatność zgodnie z rzeczywistym użyciem. Aby uzyskać więcej informacji na temat uzyskiwania dostępu do środowiska S1 lub S2 z programu Time Series Insights Explorer w wersji zapoznawczej, przeczytaj temat [Wizualizacja danych w Eksploratorze](./time-series-insights-update-explorer.md).
 
    [Nie ![żadnych zdarzeń w środowisku.](media/preview-troubleshoot/troubleshoot-no-events.png)](media/preview-troubleshoot/troubleshoot-no-events.png#lightbox)
 
@@ -107,7 +107,7 @@ Jeśli właściwość sygnatury czasowej nie zostanie określona jawnie, jako do
 
 ## <a name="problem-all-my-instances-in-the-preview-explorer-lack-a-parent"></a>Problem: wszystkie moje wystąpienia w Eksploratorze podglądu nie mają elementu nadrzędnego
 
-Ten problem może wystąpić, jeśli środowisko nie ma zdefiniowanej hierarchii modelu czasu szeregów czasowych. Aby uzyskać więcej informacji, zobacz temat [współpraca z modelami szeregów czasowych](./time-series-insights-update-how-to-tsm.md).
+Ten problem może wystąpić, jeśli środowisko nie ma zdefiniowanej hierarchii modelu czasu szeregów czasowych. Aby uzyskać więcej informacji, przeczytaj artykuł [współpraca z modelami szeregów czasowych](./time-series-insights-update-how-to-tsm.md).
 
   [w ![wystąpienia nienadrzędne będą wyświetlane ostrzeżenie.](media/preview-troubleshoot/unparented-instances.png)](media/preview-troubleshoot/unparented-instances.png#lightbox)
 

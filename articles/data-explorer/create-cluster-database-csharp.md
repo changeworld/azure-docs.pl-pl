@@ -1,18 +1,18 @@
 ---
 title: Tworzenie klastra Eksplorator danych i bazy danych platformy Azure przy użyciu programuC#
 description: Dowiedz się, jak utworzyć klaster Eksplorator danych i bazę danych platformy Azure przy użyciuC#
-author: oflipman
-ms.author: oflipman
+author: lucygoldbergmicrosoft
+ms.author: lugoldbe
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 1260b7754f80a3d008084f632d299c684162628e
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 7dc032d52a8cb3c5c54cf57c7ae7bf697796b5cc
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74667874"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910602"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-c"></a>Tworzenie klastra Eksplorator danych i bazy danych platformy Azure przy użyciu programuC#
 
@@ -36,7 +36,7 @@ Usługa Azure Data Explorer to szybka, w pełni zarządzana usługa do analizy d
 * Zainstaluj [pakiet NuGet platformy Azure Eksplorator danych (Kusto)](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/).
 * Zainstaluj [pakiet NuGet Microsoft. IdentityModel. clients. ActiveDirectory](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/) na potrzeby uwierzytelniania.
 
-## <a name="authentication"></a>Uwierzytelnianie
+## <a name="authentication"></a>Authentication
 Aby uruchomić przykłady z tego artykułu, potrzebujemy aplikacji usługi Azure AD i nazwy głównej usługi, która może uzyskać dostęp do zasobów. Zaznacz opcję [Utwórz aplikację usługi Azure AD](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) , aby utworzyć bezpłatną aplikację usługi Azure AD, a następnie Dodaj przypisanie roli do zakresu subskrypcji. Przedstawiono w nim również, jak uzyskać `Directory (tenant) ID`, `Application ID`i `Client Secret`.
 
 ## <a name="create-the-azure-data-explorer-cluster"></a>Tworzenie klastra usługi Azure Data Explorer
@@ -74,7 +74,7 @@ Aby uruchomić przykłady z tego artykułu, potrzebujemy aplikacji usługi Azure
    |---|---|---|
    | clusterName | *mykustocluster* | Wybrana nazwa klastra.|
    | skuName | *Standard_D13_v2* | Jednostka SKU, która będzie używana na potrzeby klastra. |
-   | tier | *Standard* | Warstwa SKU. |
+   | tier | *Standardowa* | Warstwa SKU. |
    | capacity | *Liczba* | Liczba wystąpień klastra. |
    | resourceGroupName | *testrg* | Nazwa grupy zasobów, w której zostanie utworzony klaster. |
 
@@ -105,7 +105,7 @@ Jeśli wynik zawiera element `ProvisioningState` o wartości `Succeeded`, klaste
    |**Ustawienie** | **Sugerowana wartość** | **Opis pola**|
    |---|---|---|
    | clusterName | *mykustocluster* | Nazwa klastra, w którym zostanie utworzona baza danych.|
-   | Bazy | *mykustodatabase* | Nazwa bazy danych.|
+   | databaseName | *mykustodatabase* | Nazwa bazy danych.|
    | resourceGroupName | *testrg* | Nazwa grupy zasobów, w której zostanie utworzony klaster. |
    | softDeletePeriod | *3650:00:00:00* | Okres przechowywania danych na potrzeby zapytań. |
    | hotCachePeriod | *3650:00:00:00* | Okres przechowywania danych w pamięci podręcznej. |

@@ -7,12 +7,12 @@ ms.author: mamccrea
 ms.date: 09/19/2019
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: bbea71464e8a1f4e93e510106d372257f155b0c6
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: c70cfb6c1626908a2ba4e707a890f6dc7481c51a
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72935062"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75732386"
 ---
 # <a name="use-repartitioning-to-optimize-processing-with-azure-stream-analytics"></a>Użyj ponownego partycjonowania, aby zoptymalizować przetwarzanie za pomocą Azure Stream Analytics
 
@@ -21,11 +21,11 @@ W tym artykule pokazano, jak za pomocą ponownego partycjonowania skalować zapy
 Nie można używać [przetwarzanie równoległe](stream-analytics-parallelization.md) , jeśli:
 
 * Nie kontrolujesz klucza partycji dla strumienia wejściowego.
-* Twoje Źródło "rozpylania" na wielu partycjach, które później muszą zostać scalone. 
-
-## <a name="how-to-repartition"></a>Jak ponownie podzielić na partycje
+* Twoje Źródło "rozpylania" na wielu partycjach, które później muszą zostać scalone.
 
 Ponowne partycjonowanie lub reshuffling jest wymagane podczas przetwarzania danych w strumieniu, który nie jest podzielonej na fragmenty zgodnie z naturalnym schematem wejściowym, takim jak **PartitionID** dla Event Hubs. Po ponownym partycjonowaniu każdy fragmentu może być przetwarzany niezależnie, co pozwala na liniowe skalowanie potoku przesyłania strumieniowego.
+
+## <a name="how-to-repartition"></a>Jak ponownie podzielić na partycje
 
 Aby ponownie podzielić na partycje, użyj słowa kluczowego **do** po instrukcji **Partition by** w zapytaniu. Poniższy przykład dzieli dane według elementu **DeviceID** na liczbę partycji 10. Mieszanie elementu **DeviceID** służy do określenia, która partycja akceptuje Podstrumień. Dane są opróżniane niezależnie dla każdego strumienia partycjonowanego, przy założeniu, że dane wyjściowe obsługują operacje zapisu partycjonowane i mają 10 partycji.
 

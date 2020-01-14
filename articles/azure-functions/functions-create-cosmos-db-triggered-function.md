@@ -5,12 +5,12 @@ ms.assetid: bc497d71-75e7-47b1-babd-a060a664adca
 ms.topic: quickstart
 ms.date: 10/02/2018
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: e321fcdf4b5871cf4a55e7018229569a337e8305
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 830c7cdee247118ed24fc9b3a2a9efe8609c75d0
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230924"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863297"
 ---
 # <a name="create-a-function-triggered-by-azure-cosmos-db"></a>Tworzenie funkcji wyzwalanej przez usługę Azure Cosmos DB
 
@@ -57,7 +57,7 @@ Następnie należy utworzyć funkcję w nowej aplikacji funkcji.
 
     ![Instalowanie rozszerzeń powiązania](./media/functions-create-cosmos-db-triggered-function/functions-create-cosmos-db-trigger-portal.png)
 
-1. Skonfiguruj nowy wyzwalacz, wprowadzając ustawienia wymienione w tabeli pod ilustracją.
+1. Skonfiguruj nowy wyzwalacz, wprowadzając ustawienia określone w tabeli znajdującej się poniżej obrazu.
 
     ![Tworzenie funkcji wyzwalanej przez usługę Azure Cosmos DB](./media/functions-create-cosmos-db-triggered-function/functions-cosmosdb-trigger-settings.png)
 
@@ -65,9 +65,9 @@ Następnie należy utworzyć funkcję w nowej aplikacji funkcji.
     | ------------ | ---------------- | ------------------------------------------ |
     | **Nazwa** | Domyślne | Użyj domyślnej nazwy funkcji sugerowanej przez szablon.|
     | **Połączenie konta usługi Azure Cosmos DB** | Nowe ustawienie | Wybierz pozycję **Nowy**, swoją **subskrypcję**, utworzone wcześniej **konto bazy danych** i polecenie **Wybierz**. Spowoduje to utworzenie ustawienia aplikacji na potrzeby połączenia konta. To ustawienie jest używane przez powiązanie do nawiązywania połączenia z bazą danych. |
-    | **Nazwa kolekcji** | Items | Nazwa monitorowanej kolekcji. |
-    | **Utwórz kolekcję dzierżaw, jeśli nie istnieje** | Zaznaczone | Kolekcja jeszcze nie istnieje, więc należy ją utworzyć. |
-    | **Nazwa bazy danych** | Zadania | Nazwa bazy danych zawierającej monitorowaną kolekcję. |
+    | **Nazwa kontenera** | Items | Nazwa kontenera do monitorowania. |
+    | **Utwórz kontener dzierżawy, jeśli nie istnieje** | Zaznaczone | Kontener jeszcze nie istnieje, więc utwórz go. |
+    | **Nazwa bazy danych** | Zadania | Nazwa bazy danych z kontenerem, który ma być monitorowany. |
 
 1. Kliknij pozycję **Utwórz**, aby utworzyć funkcję wyzwalaną usługi Azure Cosmos DB. Po utworzeniu funkcji zostanie wyświetlony kod funkcji oparty na szablonie.  
 
@@ -75,9 +75,9 @@ Następnie należy utworzyć funkcję w nowej aplikacji funkcji.
 
     Ten szablon funkcji zapisuje w dziennikach liczbę dokumentów oraz identyfikator pierwszego dokumentu.
 
-Następnie należy połączyć się z kontem usługi Azure Cosmos DB i utworzyć kolekcję `Items` w bazie danych `Tasks`.
+Następnie nawiąż połączenie z kontem Azure Cosmos DB i Utwórz kontener `Items` w bazie danych `Tasks`.
 
-## <a name="create-the-items-collection"></a>Tworzenie kolekcji Elementy
+## <a name="create-the-items-container"></a>Tworzenie kontenera elementów
 
 1. Otwórz drugie wystąpienie witryny [Azure Portal](https://portal.azure.com) w nowej karcie przeglądarki.
 
@@ -87,33 +87,32 @@ Następnie należy połączyć się z kontem usługi Azure Cosmos DB i utworzyć
 
 1. Wybierz konto usługi Azure Cosmos DB, a następnie wybierz pozycję **Eksplorator danych**. 
 
-1. W obszarze **Kolekcje** wybierz pozycję **taskDatabase**, a następnie **Nowa kolekcja**.
+1. W obszarze **interfejs API SQL**wybierz pozycję baza danych **zadania** i wybierz pozycję **nowy kontener**.
 
-    ![Tworzenie kolekcji](./media/functions-create-cosmos-db-triggered-function/cosmosdb-create-collection.png)
+    ![Tworzenie kontenera](./media/functions-create-cosmos-db-triggered-function/cosmosdb-create-container.png)
 
-1. W obszarze **Dodawanie kolekcji** wprowadź ustawienia wymienione w tabeli pod ilustracją. 
+1. W obszarze **Dodaj kontener**Użyj ustawień przedstawionych w tabeli poniżej obrazu. 
 
-    ![Definiowanie kolekcji taskCollection](./media/functions-create-cosmos-db-triggered-function/cosmosdb-create-collection2.png)
+    ![Definiowanie kontenera zadań](./media/functions-create-cosmos-db-triggered-function/cosmosdb-create-container2.png)
 
     | Ustawienie|Sugerowana wartość|Opis |
     | ---|---|--- |
     | **Identyfikator bazy danych** | Zadania |Nazwa nowej bazy danych. Musi być zgodna z nazwą zdefiniowaną w powiązaniu funkcji. |
-    | **Identyfikator kolekcji** | Items | Nazwa nowej kolekcji. Musi być zgodna z nazwą zdefiniowaną w powiązaniu funkcji.  |
-    | **Pojemność magazynu** | Stała (10 GB)|Użyj wartości domyślnej. Ta wartość to pojemność magazynu bazy danych. |
-    | **Przepływność** |400 RU| Użyj wartości domyślnej. Jeśli chcesz zmniejszyć opóźnienie, możesz później przeskalować przepływność w górę. |
-    | **[Klucz partycji](../cosmos-db/partition-data.md)** | /category|Klucz partycji służący do równomiernego dystrybuowania danych do każdej partycji. Wybór odpowiedniego klucza partycji jest ważny w celu utworzenia wydajnej kolekcji. | 
+    | **Identyfikator kontenera** | Items | Nazwa nowego kontenera. Musi być zgodna z nazwą zdefiniowaną w powiązaniu funkcji.  |
+    | **[Klucz partycji](../cosmos-db/partition-data.md)** | /category|Klucz partycji służący do równomiernego dystrybuowania danych do każdej partycji. Wybór poprawnego klucza partycji jest istotny podczas tworzenia kontenera wykonywania. | 
+    | **Przepływność** |400 RU| Użyj wartości domyślnej. Jeśli chcesz zmniejszyć opóźnienie, możesz później przeskalować przepływność w górę. |    
 
-1. Kliknij przycisk **OK**, aby utworzyć kolekcję Items (Elementy). Tworzenie kolekcji może chwilę potrwać.
+1. Kliknij przycisk **OK** , aby utworzyć kontener elementów. Utworzenie kontenera może chwilę potrwać.
 
-Po utworzeniu kolekcji wskazanej w powiązaniu funkcji możesz przetestować funkcję, dodając dokumenty do nowej kolekcji.
+Gdy kontener określony w powiązaniu funkcji istnieje, można przetestować funkcję, dodając elementy do tego nowego kontenera.
 
 ## <a name="test-the-function"></a>Testowanie funkcji
 
-1. Rozwiń nową kolekcję **taskCollection** w Eksploratorze danych, a następnie wybierz kolejno pozycje **Dokumenty** i **Nowy dokument**.
+1. Rozwiń kontener nowe **elementy** w obszarze Eksplorator danych, wybierz pozycję **elementy**, a następnie wybierz pozycję **nowy element**.
 
-    ![Tworzenie dokumentu w kolekcji taskCollection](./media/functions-create-cosmos-db-triggered-function/create-document-in-collection.png)
+    ![Tworzenie elementu w kontenerze elementów](./media/functions-create-cosmos-db-triggered-function/create-item-in-container.png)
 
-1. Zastąp zawartość nowego dokumentu następującą zawartością, a następnie wybierz pozycję **Zapisz**.
+1. Zastąp zawartość nowego elementu następującą zawartością, a następnie wybierz pozycję **Zapisz**.
 
         {
             "id": "task1",

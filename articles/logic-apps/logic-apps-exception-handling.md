@@ -1,57 +1,57 @@
 ---
-title: Obsługa błędów i wyjątków
+title: Obsługa błędów i wyjątków w przepływach pracy
 description: Dowiedz się, jak obsługiwać błędy i wyjątki, które występują w zautomatyzowanych zadaniach i przepływach pracy utworzonych przy użyciu Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 author: dereklee
 ms.author: deli
 ms.reviewer: klam, estfan, logicappspm
-ms.date: 01/31/2018
+ms.date: 01/11/2020
 ms.topic: article
-ms.openlocfilehash: fa197a04b91f398bda2e402b18a638b9bf0ab9a3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a5cfb79626370ab9f8493038ac1583993a154b59
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453392"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75912111"
 ---
 # <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>Obsługa błędów i wyjątków w Azure Logic Apps
 
-Sposób, w jaki każda architektura integracji odpowiednio obsługuje przestoje lub problemy spowodowane przez systemy zależne mogą stanowić wyzwanie. Aby ułatwić tworzenie niezawodnych i odpornych integracji, które bezpiecznie obsługują problemy i błędy, Logic Apps zapewnia środowisko pierwszej klasy do obsługi błędów i wyjątków. 
+Sposób, w jaki każda architektura integracji odpowiednio obsługuje przestoje lub problemy spowodowane przez systemy zależne mogą stanowić wyzwanie. Aby ułatwić tworzenie niezawodnych i odpornych integracji, które bezpiecznie obsługują problemy i błędy, Logic Apps zapewnia środowisko pierwszej klasy do obsługi błędów i wyjątków.
 
 <a name="retry-policies"></a>
 
 ## <a name="retry-policies"></a>Zasady ponawiania prób
 
-Aby uzyskać najbardziej podstawowy wyjątek i obsługę błędów, można użyć *zasad ponawiania* w dowolnej akcji lub wyzwalaczu, jeśli jest obsługiwany. Zasady ponawiania określają, czy i w jaki sposób akcja lub wyzwalacz ponawiają próbę żądania, gdy pierwotne żądanie przekroczy limit czasu lub zakończy się niepowodzeniem, co oznacza każde żądanie, które powoduje wystąpienie odpowiedzi 408, 429 lub 5xx. Jeśli nie zostaną użyte żadne inne zasady ponawiania, zostaną użyte zasady domyślne. 
+Aby uzyskać najbardziej podstawowy wyjątek i obsługę błędów, można użyć *zasad ponawiania* w dowolnej akcji lub wyzwalaczu, jeśli jest to obsługiwane, na przykład w temacie [Akcja http](../logic-apps/logic-apps-workflow-actions-triggers.md#http-trigger). Zasady ponawiania określają, czy i w jaki sposób akcja lub wyzwalacz ponawiają próbę żądania, gdy pierwotne żądanie przekroczy limit czasu lub zakończy się niepowodzeniem, co oznacza każde żądanie, które powoduje wystąpienie odpowiedzi 408, 429 lub 5xx. Jeśli nie zostaną użyte żadne inne zasady ponawiania, zostaną użyte zasady domyślne.
 
-Oto typy zasad ponawiania prób: 
+Oto typy zasad ponawiania prób:
 
-| Typ | Opis | 
-|------|-------------| 
-| **Domyślne** | Te zasady wysyłają do czterech ponownych prób w *wykładniczo rosnących* odstępach czasu, które są skalowane o 7,5 sekund, ale są ograniczone do zakresu od 5 do 45 sekund. | 
-| **Interwał wykładniczy**  | Te zasady czekają losowy interwał wybrany z wykładniczo rosnącego zakresu przed wysłaniem kolejnego żądania. | 
-| **Stały interwał**  | Te zasady czekają określony interwał przed wysłaniem kolejnego żądania. | 
-| **Brak**  | Nie wysyłaj ponownie żądania. | 
-||| 
+| Typ | Opis |
+|------|-------------|
+| **Domyślne** | Te zasady wysyłają do czterech ponownych prób w *wykładniczo rosnących* odstępach czasu, które są skalowane o 7,5 sekund, ale są ograniczone do zakresu od 5 do 45 sekund. |
+| **Interwał wykładniczy**  | Te zasady czekają losowy interwał wybrany z wykładniczo rosnącego zakresu przed wysłaniem kolejnego żądania. |
+| **Stały interwał**  | Te zasady czekają określony interwał przed wysłaniem kolejnego żądania. |
+| **Brak**  | Nie wysyłaj ponownie żądania. |
+|||
 
-Aby uzyskać informacje na temat limitów ponowień zasad, zobacz [Logic Apps limity i konfiguracja](../logic-apps/logic-apps-limits-and-config.md#request-limits). 
+Aby uzyskać informacje na temat limitów ponowień zasad, zobacz [Logic Apps limity i konfiguracja](../logic-apps/logic-apps-limits-and-config.md#request-limits).
 
 ### <a name="change-retry-policy"></a>Zmień zasady ponawiania
 
-Aby wybrać inne zasady ponawiania, wykonaj następujące kroki: 
+Aby wybrać inne zasady ponawiania, wykonaj następujące kroki:
 
-1. Otwórz aplikację logiki w Projektancie aplikacji logiki. 
+1. Otwórz aplikację logiki w Projektancie aplikacji logiki.
 
-2. Otwórz **Ustawienia** dla akcji lub wyzwalacza.
+1. Otwórz **Ustawienia** dla akcji lub wyzwalacza.
 
-3. Jeśli akcja lub wyzwalacz obsługuje zasady ponawiania, w obszarze **zasady ponawiania**wybierz odpowiedni typ. 
+1. Jeśli akcja lub wyzwalacz obsługuje zasady ponawiania, w obszarze **zasady ponawiania**wybierz odpowiedni typ.
 
 Można też ręcznie określić zasady ponawiania w sekcji `inputs` dla akcji lub wyzwalacza, który obsługuje zasady ponawiania. Jeśli nie określisz zasad ponawiania, akcja będzie używać zasad domyślnych.
 
 ```json
 "<action-name>": {
-   "type": "<action-type>", 
+   "type": "<action-type>",
    "inputs": {
       "<action-specific-inputs>",
       "retryPolicy": {
@@ -59,7 +59,7 @@ Można też ręcznie określić zasady ponawiania w sekcji `inputs` dla akcji lu
          "interval": "<retry-interval>",
          "count": <retry-attempts>,
          "minimumInterval": "<minimum-interval>",
-         "maximumInterval": "<maximun-interval>"
+         "maximumInterval": "<maximum-interval>"
       },
       "<other-action-specific-inputs>"
    },
@@ -71,18 +71,18 @@ Można też ręcznie określić zasady ponawiania w sekcji `inputs` dla akcji lu
 
 | Wartość | Typ | Opis |
 |-------|------|-------------|
-| <*Ponów próbę — typ zasad*> | Ciąg | Typ zasad ponawiania prób, który ma być używany: `default`, `none`, `fixed`lub `exponential` | 
-| <*interwał ponawiania prób*> | Ciąg | Interwał ponawiania, w którym wartość musi używać [formatu ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations). Domyślny interwał minimalny jest `PT5S`, a maksymalny interwał jest `PT1D`. Korzystając z zasad interwału wykładniczego, można określić różne wartości minimalne i maksymalne. | 
-| <*ponownych prób*> | Liczba całkowita | Liczba ponownych prób, które muszą zawierać się w przedziale od 1 do 90 | 
+| <*Ponów próbę — typ zasad*> | Ciąg | Typ zasad ponawiania prób, który ma być używany: `default`, `none`, `fixed`lub `exponential` |
+| <*interwał ponawiania prób*> | Ciąg | Interwał ponawiania, w którym wartość musi używać [formatu ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations). Domyślny interwał minimalny jest `PT5S`, a maksymalny interwał jest `PT1D`. Korzystając z zasad interwału wykładniczego, można określić różne wartości minimalne i maksymalne. |
+| <*ponownych prób*> | Liczba całkowita | Liczba ponownych prób, które muszą zawierać się w przedziale od 1 do 90 |
 ||||
 
 *Opcjonalne*
 
 | Wartość | Typ | Opis |
 |-------|------|-------------|
-| <> *minimalnym interwałem* | Ciąg | Dla zasad interwału wykładniczego najmniejszy interwał dla losowo wybranego interwału w [formacie ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) | 
-| <*Maksymalny interwał*> | Ciąg | Dla zasad interwałów wykładniczych największy interwał dla losowo wybranego interwału w [formacie ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) | 
-|||| 
+| <> *minimalnym interwałem* | Ciąg | Dla zasad interwału wykładniczego najmniejszy interwał dla losowo wybranego interwału w [formacie ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) |
+| <*Maksymalny interwał*> | Ciąg | Dla zasad interwałów wykładniczych największy interwał dla losowo wybranego interwału w [formacie ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) |
+||||
 
 Poniżej znajduje się więcej informacji na temat różnych typów zasad.
 
@@ -90,7 +90,7 @@ Poniżej znajduje się więcej informacji na temat różnych typów zasad.
 
 ### <a name="default"></a>Domyślne
 
-Jeśli nie określisz zasad ponawiania, akcja będzie używać zasad domyślnych, które są w rzeczywistości [zasadami interwału wykładniczego](#exponential-interval) , które wysyłają do czterech ponownych prób przy wykładniczym zwiększeniu interwałów, które są skalowane przez 7,5 sekund. Interwał jest limitem od 5 do 45 sekund. 
+Jeśli nie określisz zasad ponawiania, akcja będzie używać zasad domyślnych, które są w rzeczywistości [zasadami interwału wykładniczego](#exponential-interval) , które wysyłają do czterech ponownych prób przy wykładniczym zwiększeniu interwałów, które są skalowane przez 7,5 sekund. Interwał jest limitem od 5 do 45 sekund.
 
 Chociaż nie zostało to jawnie zdefiniowane w akcji lub wyzwalaczu, poniżej przedstawiono sposób zachowania zasad domyślnych w przykładowej akcji HTTP:
 
@@ -155,65 +155,107 @@ W tej tabeli przedstawiono sposób, w jaki Logic Apps generuje jednorodną zmien
 | 2 | Max (interwał, <*minimalny interwał*>) | minimum (2 * interwał, <*Maksymalny interwał*>) |
 | 3 | Max (2 * interwał, <*minimalny interwał*>) | minimum (4 * interwał, <*Maksymalny interwał*>) |
 | 4 | Max (4 * interwał, <*minimalny interwał*>) | minimum (8 * interwał, <*Maksymalny interwał*>) |
-| .... | .... | .... | 
-|||| 
+| .... | .... | .... |
+||||
 
-## <a name="catch-and-handle-failures-with-the-runafter-property"></a>Błędy catch i Handle z właściwością RunAfter
+<a name="control-run-after-behavior"></a>
 
-Każda akcja aplikacji logiki deklaruje akcje, które muszą zakończyć się przed rozpoczęciem tej akcji, podobnie jak w przypadku określania kolejności kroków w przepływie pracy. W definicji akcji właściwość **runAfter** definiuje tę kolejność i jest obiektem opisującym, które akcje i stan akcji wykonują akcję.
+## <a name="catch-and-handle-failures-by-changing-run-after-behavior"></a>Błędy catch i Handle poprzez zmianę zachowania "Uruchom po"
 
-Domyślnie wszystkie akcje dodane w Projektancie aplikacji logiki są ustawiane do uruchomienia po poprzednim kroku, gdy wynik poprzedniego kroku **zakończy się pomyślnie**. Można jednak dostosować **runAfter** tak, aby akcje zostać wywołane podczas poprzedniej akcji powoduje jako **,** **pomijane**, lub kombinacji tych wartości. Na przykład, aby dodać element do określonego tematu Service Bus po niepowodzeniu konkretnej akcji **Insert_Row** , można użyć tego przykładowej definicji **runAfter** :
+Po dodaniu akcji w Projektancie aplikacji logiki niejawnie deklaruje zamówienie, które ma być używane do uruchamiania tych akcji. Po zakończeniu działania tej akcji zostanie ona oznaczona jako zawierająca stan, na przykład `Succeeded`, `Failed`, `Skipped`lub `TimedOut`. W każdej definicji akcji właściwość `runAfter` określa akcję poprzednika, która musi zostać zakończona, i Stany dozwolone dla tego poprzednika przed uruchomieniem akcji następnika. Domyślnie akcja dodana w Projektancie jest uruchamiana dopiero po zakończeniu poprzednika ze stanem `Succeeded`.
 
-```json
-"Send_message": {
-    "inputs": {
+Gdy akcja zgłasza nieobsługiwany błąd lub wyjątek, akcja jest oznaczona `Failed`i każda akcja następnika jest oznaczona `Skipped`. Jeśli takie zachowanie ma miejsce w przypadku akcji, która ma gałęzie równoległe, aparat Logic Apps jest zgodny z innymi gałęziami w celu określenia ich stanu ukończenia. Na przykład, jeśli rozgałęzienie zakończy się akcją `Skipped`, stan zakończenia tej gałęzi jest oparty na pominięciu stanu poprzednika. Po zakończeniu działania aplikacji logiki aparat określa stan całego przebiegu, oceniając wszystkie Stany gałęzi. Jeśli dowolna gałąź zostanie zakończona niepowodzeniem, cały przebieg aplikacji logiki zostanie oznaczony `Failed`.
+
+![Przykłady pokazujące, jak są oceniane Stany uruchamiania](./media/logic-apps-exception-handling/status-evaluation-for-parallel-branches.png)
+
+Aby upewnić się, że akcja może być nadal uruchomiona pomimo stanu jego poprzednika, [Dostosuj działanie "Uruchom po"](#customize-run-after) , aby obsłużyć stan niepowodzeń poprzedników.
+
+<a name="customize-run-after"></a>
+
+### <a name="customize-run-after-behavior"></a>Dostosuj zachowanie "Uruchom po"
+
+Można dostosować działanie "Uruchom po" akcji, aby akcja była uruchamiana, gdy stan poprzednika to `Succeeded`, `Failed`, `Skipped`, `TimedOut`lub dowolny z tych stanów. Na przykład w celu wysłania wiadomości e-mail po wybraniu akcji programu Excel Online `Add_a_row_into_a_table` poprzednik zostanie oznaczona `Failed`, a nie `Succeeded`, należy zmienić zachowanie "Uruchom po", wykonując następujące czynności:
+
+* W widoku Projekt wybierz przycisk wielokropka ( **...** ), a następnie wybierz pozycję **Skonfiguruj przebieg po**.
+
+  ![Skonfiguruj zachowanie "Uruchom po" dla akcji](./media/logic-apps-exception-handling/configure-run-after-property-setting.png)
+
+  Kształt akcji pokazuje domyślny stan wymagany dla akcji poprzednika, która **dodaje wiersz do tabeli** w tym przykładzie:
+
+  ![Domyślne zachowanie "Uruchom po" dla akcji](./media/logic-apps-exception-handling/change-run-after-property-status.png)
+
+  Zmień zachowanie "Uruchom po" na żądany stan, którego **nie powiodło się** w tym przykładzie:
+
+  ![Zmień zachowanie "Uruchom po" na "zakończone niepowodzeniem"](./media/logic-apps-exception-handling/run-after-property-status-set-to-failed.png)
+
+  Aby określić, że akcja ma być uruchamiana, gdy akcja poprzednika jest oznaczona jako `Failed`, `Skipped` lub `TimedOut`, wybierz inne stany:
+
+  ![Zmień zachowanie "Uruchom po", aby mieć inne Stany](./media/logic-apps-exception-handling/run-after-property-multiple-statuses.png)
+
+* W widoku Kod w definicji JSON akcji Edytuj Właściwość `runAfter`, która jest zgodna z następującą składnią:
+
+  ```json
+  "<action-name>": {
+     "inputs": {
+        "<action-specific-inputs>"
+     },
+     "runAfter": {
+        "<preceding-action>": [
+           "Succeeded"
+        ]
+     },
+     "type": "<action-type>"
+  }
+  ```
+
+  Na potrzeby tego przykładu Zmień właściwość `runAfter` z `Succeeded` na `Failed`:
+
+  ```json
+  "Send_an_email_(V2)": {
+     "inputs": {
         "body": {
-            "ContentData": "@{encodeBase64(body('Insert_Row'))}",
-            "ContentType": "{ \"content-type\" : \"application/json\" }"
+           "Body": "<p>Failed to&nbsp;add row to &nbsp;@{body('Add_a_row_into_a_table')?['Terms']}</p>",,
+           "Subject": "Add row to table failed: @{body('Add_a_row_into_a_table')?['Terms']}",
+           "To": "Sophia.Owen@fabrikam.com"
         },
         "host": {
-            "api": {
-                "runtimeUrl": "https://logic-apis-westus.azure-apim.net/apim/servicebus"
-            },
-            "connection": {
-                "name": "@parameters('$connections')['servicebus']['connectionId']"
-            }
+           "connection": {
+              "name": "@parameters('$connections')['office365']['connectionId']"
+           }
         },
         "method": "post",
-        "path": "/@{encodeURIComponent('failures')}/messages"
-    },
-    "runAfter": {
-        "Insert_Row": [
-            "Failed"
+        "path": "/v2/Mail"
+     },
+     "runAfter": {
+        "Add_a_row_into_a_table": [
+           "Failed"
         ]
-    }
-}
-```
+     },
+     "type": "ApiConnection"
+  }
+  ```
 
-**RunAfter** uruchomiony, jeśli właściwość ma wartość **Insert_Row** stanu akcji jest. Aby uruchomić akcję, gdy stan działania to **zakończyło się pomyślnie**, lub **pomijane**, należy użyć następującej składni:
+  Aby określić, że akcja ma być uruchamiana, gdy akcja poprzednika jest oznaczona jako `Failed`, `Skipped` lub `TimedOut`, Dodaj inne stany:
 
-```json
-"runAfter": {
-        "Insert_Row": [
-            "Failed", "Succeeded", "Skipped"
-        ]
-    }
-```
-
-> [!TIP]
-> Akcje, które są wykonywane i kończone pomyślnie po pomyślnym wykonaniu tej akcji, są oznaczone jako **zakończone powodzeniem**. To zachowanie oznacza, że jeśli pomyślnie przechwytuje wszystkie błędy w przepływie pracy, sam przebieg zostanie oznaczony jako **zakończony powodzeniem**.
+  ```json
+  "runAfter": {
+     "Add_a_row_into_a_table": [
+        "Failed", "Skipped", "TimedOut"
+     ]
+  },
+  ```
 
 <a name="scopes"></a>
 
 ## <a name="evaluate-actions-with-scopes-and-their-results"></a>Oceń akcje z zakresami i ich wynikami
 
-Podobnie jak w przypadku wykonywania pojedynczych akcji za pomocą właściwości **runAfter** , można grupować akcje w obrębie [zakresu](../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md). Zakresy można używać w celu logicznego grupowania akcji, oceny stanu zagregowanego zakresu i wykonywania akcji na podstawie tego stanu. Po zakończeniu wszystkich akcji w zakresie, sam zakres uzyskuje własny stan. 
+Podobnie jak w przypadku wykonywania pojedynczych akcji z właściwością `runAfter` można grupować akcje w obrębie [zakresu](../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md). Zakresy można używać w celu logicznego grupowania akcji, oceny stanu zagregowanego zakresu i wykonywania akcji na podstawie tego stanu. Po zakończeniu wszystkich akcji w zakresie, sam zakres uzyskuje własny stan. 
 
-Aby sprawdzić stan zakresu, można użyć takich samych kryteriów używanych do sprawdzenia stanu uruchomienia aplikacji logiki, takich jak **zakończyło się pomyślnie**, i tak dalej. 
+Aby sprawdzić stan zakresu, można użyć tych samych kryteriów, które są używane do sprawdzania stanu uruchomienia aplikacji logiki, takiej jak `Succeeded`, `Failed`i tak dalej.
 
-Domyślnie, gdy wszystkie akcje tego zakresu zakończyły się powodzeniem, stan zakresu jest oznaczony jako **zakończony powodzeniem**. Jeśli powoduje ostatecznych działań w zakresie lub **przerwania**, stan zakresu jest oznaczony jako **nie powiodło się**. 
+Domyślnie, gdy wszystkie akcje tego zakresu zakończyły się powodzeniem, stan zakresu jest oznaczony `Succeeded`. Jeśli Ostatnia akcja w zakresie jest `Failed` lub `Aborted`, stan zakresu jest oznaczony jako `Failed`.
 
-Przechwytują wyjątki w **nie powiodło się** zakres i wykonywania działań, które obsługi tych błędów, można użyć **runAfter** właściwości, dla którego zakresu. W ten sposób, jeśli *jakiekolwiek* akcje w zakresie zakończą się niepowodzeniem i używasz właściwości **runAfter** dla tego zakresu, można utworzyć pojedynczą akcję w celu przechwycenia błędów.
+Aby przechwytywać wyjątki w zakresie `Failed` i uruchamiać akcje, które obsługują te błędy, można użyć właściwości `runAfter` dla tego zakresu `Failed`. Dzięki temu, jeśli *jakieś* akcje w zakresie zakończą się niepowodzeniem i używasz właściwości `runAfter` tego zakresu, można utworzyć pojedynczą akcję w celu przechwycenia błędów.
 
 Aby uzyskać ograniczenia dotyczące zakresów, zobacz [limity i konfiguracja](../logic-apps/logic-apps-limits-and-config.md).
 
@@ -223,9 +265,9 @@ Aby uzyskać ograniczenia dotyczące zakresów, zobacz [limity i konfiguracja](.
 
 Chociaż przechwytywanie błędów z zakresu jest przydatne, można również zastanowić się, że kontekst pomaga zrozumieć, które akcje nie powiodły się, oraz wszelkie zwrócone błędy lub kody stanu.
 
-Funkcja [`result()`](../logic-apps/workflow-definition-language-functions-reference.md#result) zapewnia kontekst dotyczący wyników wszystkich akcji w zakresie. Funkcja `result()` akceptuje pojedynczy parametr, który jest nazwą zakresu i zwraca tablicę zawierającą wszystkie wyniki akcji z tego zakresu. Te obiekty akcji zawierają te same atrybuty co obiekt `@actions()`, takie jak godzina rozpoczęcia akcji, godzina zakończenia, stan, dane wejściowe, identyfikatory korelacji i wyjścia. Aby wysłać kontekst dla wszystkich akcji, które zakończyły się niepowodzeniem w zakresie, można łatwo sparować wyrażenie `@result()` z właściwością `runAfter`.
+Funkcja [`result()`](../logic-apps/workflow-definition-language-functions-reference.md#result) zapewnia kontekst dotyczący wyników wszystkich akcji w zakresie. Funkcja `result()` akceptuje pojedynczy parametr, który jest nazwą zakresu i zwraca tablicę zawierającą wszystkie wyniki akcji z tego zakresu. Te obiekty akcji zawierają te same atrybuty co obiekt `actions()`, takie jak godzina rozpoczęcia akcji, godzina zakończenia, stan, dane wejściowe, identyfikatory korelacji i wyjścia. Aby wysłać kontekst dla wszystkich akcji, które zakończyły się niepowodzeniem w zakresie, można łatwo sparować wyrażenie `@result()` z właściwością `runAfter`.
 
-Aby uruchomić akcję dla każdej akcji w zakresie, który ma wynik **Niepowodzenie** i filtrować tablicę wyników w dół do akcji zakończonych niepowodzeniem, można sparować wyrażenie `@result()` z akcją [**filtru Array**](../connectors/connectors-native-query.md) i pętlą [**for each**](../logic-apps/logic-apps-control-flow-loops.md) . Można użyć przefiltrowanej tablicy wyników i wykonać akcję dla każdej awarii przy użyciu pętli **for each** .
+Aby uruchomić akcję dla każdej akcji w zakresie, który ma `Failed` wynik i filtrować tablicę wyników w dół do akcji zakończonych niepowodzeniem, można sparować wyrażenie `@result()` z akcją [**filtru Array**](../connectors/connectors-native-query.md) i pętlą [**for each**](../logic-apps/logic-apps-control-flow-loops.md) . Można zastosować przefiltrowaną tablicę wyników i wykonać akcję dla każdej awarii przy użyciu pętli `For_each`.
 
 Oto przykład, a następnie szczegółowy opis, który wysyła żądanie HTTP POST z treścią odpowiedzi dla wszystkich akcji, które zakończyły się niepowodzeniem w zakresie "My_Scope":
 
@@ -272,20 +314,19 @@ Oto szczegółowy przewodnik, w którym opisano, co się dzieje w tym przykładz
 
 1. Aby uzyskać wynik ze wszystkich akcji w ramach elementu "My_Scope", Akcja **filtrowania tablicy** używa tego wyrażenia filtru: `@result('My_Scope')`
 
-2. Warunek dla **tablicy filtru** to dowolny `@result()` element o stanie równy **Niepowodzenie**. Ten warunek filtruje tablicę, która ma wszystkie wyniki akcji z "My_Scope" w dół do tablicy z wynikami akcji zakończonych niepowodzeniem.
+1. Warunek dla **tablicy filtru** to dowolny `@result()` element o stanie równy `Failed`. Ten warunek filtruje tablicę, która ma wszystkie wyniki akcji z "My_Scope" w dół do tablicy z wynikami akcji zakończonych niepowodzeniem.
 
-3. Wykonaj pętlę **for each** w *odfiltrowanych* danych wyjściowych tablicy. Ten krok wykonuje akcję dla każdego wyniku działania zakończonego niepowodzeniem, który został wcześniej przefiltrowany.
+1. Wykonaj akcję pętli `For_each` w *odfiltrowanych* danych wyjściowych tablicy. Ten krok wykonuje akcję dla każdego wyniku działania zakończonego niepowodzeniem, który został wcześniej przefiltrowany.
 
-   Jeśli pojedyncza akcja w zakresie nie powiodła się, akcje w pętli **for each** są wykonywane tylko raz. 
-   Wiele akcji zakończonych niepowodzeniem powoduje jedną akcję na awarię.
+   Jeśli pojedyncza akcja w zakresie zakończy się niepowodzeniem, akcje w pętli `For_each` są uruchamiane tylko raz. Wiele akcji zakończonych niepowodzeniem powoduje jedną akcję na awarię.
 
-4. Wyślij HTTP POST **dla każdej** treści odpowiedzi elementu, która jest wyrażeniem `@item()['outputs']['body']`. 
+1. Wyślij wpis HTTP w treści odpowiedzi elementu `For_each`, która jest wyrażeniem `@item()['outputs']['body']`.
 
    Kształt elementu `@result()` jest taki sam jak kształt `@actions()` i można go analizować w taki sam sposób.
 
-5. Uwzględnij dwa nagłówki niestandardowe z nazwą nieudanej akcji (`@item()['name']`) i IDENTYFIKATORem śledzenia klienta (`@item()['clientTrackingId']`), którego nie można uruchomić.
+1. Uwzględnij dwa nagłówki niestandardowe z nazwą nieudanej akcji (`@item()['name']`) i IDENTYFIKATORem śledzenia klienta (`@item()['clientTrackingId']`), którego nie można uruchomić.
 
-Poniżej przedstawiono przykład pojedynczego elementu `@result()`, w którym są wyświetlane właściwości **name**, **Body**i **clientTrackingId** , które są analizowane w poprzednim przykładzie. Na zewnątrz **dla każdej** akcji `@result()` zwraca tablicę tych obiektów.
+Oto przykład pojedynczego elementu `@result()`, pokazującego `name`, `body`i `clientTrackingId` właściwości, które są analizowane w poprzednim przykładzie. Poza akcją `For_each`, `@result()` zwraca tablicę tych obiektów.
 
 ```json
 {
@@ -317,12 +358,11 @@ Poniżej przedstawiono przykład pojedynczego elementu `@result()`, w którym s�
 }
 ```
 
-Aby wykonać różne wzorce obsługi wyjątków, można użyć wyrażeń opisanych wcześniej w tym artykule. Możesz wykonać akcję obejmującą pojedynczą obsługę wyjątków poza zakresem, który akceptuje całą przefiltrowaną tablicę błędów, i Usuń **dla każdej** akcji. Możesz również dodać inne przydatne właściwości z odpowiedzi **\@wynik ()** , jak opisano wcześniej.
+Aby wykonać różne wzorce obsługi wyjątków, można użyć wyrażeń opisanych wcześniej w tym artykule. Możesz wykonać akcję obejmującą pojedynczą obsługę wyjątków poza zakresem, który akceptuje całą przefiltrowaną tablicę błędów, i Usuń akcję `For_each`. Możesz również dołączyć inne przydatne właściwości z odpowiedzi `\@result()`, jak opisano wcześniej.
 
 ## <a name="azure-diagnostics-and-metrics"></a>Diagnostyka Azure i metryki
 
-Poprzednie wzorce to doskonałe rozwiązanie do obsługi błędów i wyjątków w ramach przebiegu, ale można również identyfikować błędy niezależne od samego uruchomienia i odpowiadać na nie. 
-[Diagnostyka Azure](../logic-apps/logic-apps-monitor-your-logic-apps.md) zapewnia prosty sposób wysyłania wszystkich zdarzeń przepływu pracy, w tym wszystkich stanów uruchamiania i akcji, do konta usługi Azure Storage lub centrum zdarzeń utworzonego za pomocą usługi Azure Event Hubs. 
+Poprzednie wzorce to doskonałe rozwiązanie do obsługi błędów i wyjątków w ramach przebiegu, ale można również identyfikować błędy niezależne od samego uruchomienia i odpowiadać na nie. [Diagnostyka Azure](../logic-apps/logic-apps-monitor-your-logic-apps.md) zapewnia prosty sposób wysyłania wszystkich zdarzeń przepływu pracy, w tym wszystkich stanów uruchamiania i akcji, do konta usługi Azure Storage lub centrum zdarzeń utworzonego za pomocą [usługi Azure Event Hubs](../event-hubs/event-hubs-about.md).
 
 Aby oszacować Stany uruchamiania, można monitorować dzienniki i metryki lub publikować je w dowolnym preferowanym narzędziu do monitorowania. Jedną z potencjalnych opcji jest przesyłanie strumieniowe wszystkich zdarzeń za pomocą Event Hubs do [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/). W Stream Analytics można pisać zapytania na żywo na podstawie wszelkich anomalii, średnich lub błędów z dzienników diagnostycznych. Za pomocą Stream Analytics można wysyłać informacje do innych źródeł danych, takich jak kolejki, tematy, SQL, Azure Cosmos DB lub Power BI.
 
@@ -330,6 +370,3 @@ Aby oszacować Stany uruchamiania, można monitorować dzienniki i metryki lub p
 
 * [Zobacz, jak klient kompiluje obsługę błędów w Azure Logic Apps](../logic-apps/logic-apps-scenario-error-and-exception-handling.md)
 * [Znajdź więcej Logic Apps przykładów i scenariuszy](../logic-apps/logic-apps-examples-and-scenarios.md)
-
-<!-- References -->
-[retryPolicyMSDN]: https://docs.microsoft.com/rest/api/logic/actions-and-triggers#Anchor_9

@@ -9,14 +9,14 @@ manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 11/20/2019
+ms.date: 01/10/2020
 ms.custom: seodec18
-ms.openlocfilehash: b79ca1d93baf1941d5de8db0c314f9cd21e51056
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 1c8f14bb1bca082a9d887e5d6d88aec213448c3e
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74328263"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894805"
 ---
 # <a name="grant-data-access-to-an-environment"></a>Przyznawanie dostępu do danych w środowisku
 
@@ -27,7 +27,7 @@ W tym artykule omówiono dwa typy zasad dostępu w wersji zapoznawczej Azure Tim
 
 ## <a name="sign-in-to-time-series-insights"></a>Zaloguj się do Time Series Insights
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
 1. Znajdź środowisko Time Series Insights. Wprowadź `Time Series` w polu **wyszukiwania** . Wybierz pozycję **środowisko szeregów czasowych** w wynikach wyszukiwania.
 1. Wybierz środowisko usługi Time Series Insights z listy.
 
@@ -103,7 +103,7 @@ Wykonaj następujące kroki, aby przyznać dostęp gościa do środowiska Time S
 
     [![gość wybierz opcję Rozpocznij, aby zaakceptować](media/data-access/data-access-email-invitation.png)](media/data-access/data-access-email-invitation.png#lightbox)
 
-1. Po wybraniu pozycji **Rozpocznij** użytkownikowi gość zostanie wyświetlony pole uprawnień skojarzone z organizacją administratora. Po udzieleniu uprawnień przez wybranie pozycji **Akceptuj**, zostaną one zalogowane.
+1. Po wybraniu pozycji **Rozpocznij**użytkownik zostanie wyświetlony z polem uprawnień skojarzonym z organizacją administratora. Po udzieleniu uprawnień przez wybranie pozycji **Akceptuj**, zostaną one zalogowane.
 
     [![e przegląd uprawnień Gości i akceptuje](media/data-access/data-access-grant-permission-sign-in.png)](media/data-access/data-access-grant-permission-sign-in.png#lightbox)
 
@@ -113,7 +113,7 @@ Wykonaj następujące kroki, aby przyznać dostęp gościa do środowiska Time S
 
 1. Gość może teraz uzyskiwać dostęp do udostępnionego środowiska przy użyciu adresu URL środowiska udostępnionego przez administratora. Mogą oni wprowadzić ten adres URL w przeglądarce sieci Web, aby uzyskać natychmiastowy dostęp.
 
-1. Użytkownik-Gość zobaczy dzierżawę administratora, wybierając ikonę profilu w prawym górnym rogu Eksploratora szeregów czasowych.
+1. Dzierżawa administratora zostanie wyświetlona dla użytkownika-gościa po wybraniu ikony profilu w prawym górnym rogu Eksploratora szeregów czasowych.
 
     [![wybór awatara w insights.azure.com](media/data-access/data-access-select-tenant-and-instance.png)](media/data-access/data-access-select-tenant-and-instance.png#lightbox)
 

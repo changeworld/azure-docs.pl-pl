@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 11/13/2019
+ms.date: 01/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: 17ba808ebfabb68765cf35bbf0799d117bc6383b
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: c117510749abcf997e414371faa6dea1dc79ea7a
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74133438"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861765"
 ---
 # <a name="azure-time-series-insights-preview-explorer"></a>Eksplorator Azure Time Series Insights w wersji zapoznawczej
 
@@ -48,7 +48,7 @@ Eksplorator Azure Time Series Insights w wersji zapoznawczej składa się z nast
 
 ## <a name="1-environment-panel"></a>1. Panel środowiska
 
-Na panelu środowiska są wyświetlane wszystkie środowiska usługi Time Series Insights, do których masz dostęp do. Lista obejmuje środowiska z opcją płatność zgodnie z rzeczywistym użyciem (wersja zapoznawcza), a także środowiska S1/S2 (ogólna dostępność). Po prostu kliknij środowisko Time Series Insights, które ma być używane do natychmiastowego wykonania.
+Na panelu środowiska są wyświetlane wszystkie środowiska usługi Time Series Insights, do których masz dostęp do. Lista obejmuje środowiska z opcją płatność zgodnie z rzeczywistym użyciem (wersja zapoznawcza), a także środowiska S1/S2 (ogólna dostępność). Po prostu wybierz środowisko Time Series Insights, które ma być używane do natychmiastowego wykonania.
 
 1. Wybierz strzałkę listy rozwijanej obok wyświetlanego środowiska.
 
@@ -58,7 +58,7 @@ Na panelu środowiska są wyświetlane wszystkie środowiska usługi Time Series
 
 ## <a name="2-navigation-bar"></a>2. pasek nawigacyjny
 
-  [![pasku nawigacyjnym](media/v2-update-explorer/navigation-bar.png)](media/v2-update-explorer/navigation-bar.png#lightbox)
+  [![pasku nawigacyjnym](media/v2-update-explorer/tsi-preview-navigation-bar.png)](media/v2-update-explorer/tsi-preview-navigation-bar.png#lightbox)
 
 Użyj paska nawigacyjnego, aby wybrać dwa widoki:
 
@@ -75,13 +75,13 @@ Wersja zapoznawcza Azure Time Series Insights obsługuje operacje pełnego tworz
 * **Czas hierarchii modelu szeregów**: hierarchie są systematycznego organizacji danych. Hierarchie przedstawiać relacje między różnymi jednostkami danych usługi Time Series Insights.
 * **Wystąpienie modelu serii czasu**: wystąpienia są szeregów czasowych, samodzielnie. W większości przypadków są to **DeviceID** lub **AssetID**, który jest unikatowym identyfikatorem zasobu w środowisku.
 
-Aby dowiedzieć się więcej na temat modelu szeregów czasowych, zobacz [modeli szeregów razy](./time-series-insights-update-tsm.md).
+Aby dowiedzieć się więcej na temat modelu szeregów czasowych, należy zapoznać się z modelami [serii godzin](./time-series-insights-update-tsm.md).
 
 ## <a name="3-hierarchy-tree-and-search-panel"></a>3. drzewo hierarchii i panel wyszukiwania
 
 Drzewo hierarchii i panel wyszukiwania umożliwiają łatwe wyszukiwanie i nawigowanie w hierarchii [modelu szeregów czasowych](./time-series-insights-update-tsm.md) , aby znaleźć określone wystąpienia szeregów czasowych, które mają być wyświetlane na wykresie. Po wybraniu wystąpień nie są one dodawane tylko do bieżącego wykresu, ale również są dodawane do obszaru dane. 
 
-[drzewo hierarchii ![i panel wyszukiwania](media/v2-update-explorer/hierarchy-search.png)](media/v2-update-explorer/hierarchy-search.png#lightbox)
+[drzewo hierarchii ![i panel wyszukiwania](media/v2-update-explorer/tsi-preview-explorer-hierarchy-search.png)](media/v2-update-explorer/tsi-preview-explorer-hierarchy-search.png#lightbox)
 
 Okienko wyników wyszukiwania umożliwia również wyświetlanie wyników w widoku hierarchii lub widoku listy, ułatwiając Znajdowanie wystąpień, które mają być wyświetlane.
  
@@ -89,7 +89,7 @@ Okienko wyników wyszukiwania umożliwia również wyświetlanie wyników w wido
 
 Wyświetla pola wystąpienia i inne metadane skojarzone z wybranymi wystąpieniami Time Series Insights. Zaznaczając pola wyboru po prawej stronie, można ukryć lub wyświetlić określone wystąpienia z bieżącego wykresu. 
 
-  [![Źródło podglądu](media/v2-update-explorer/preview-well.png)](media/v2-update-explorer/preview-well.png#lightbox)
+  [![Źródło podglądu](media/v2-update-explorer/tsi-preview-ui-explorer-well.png)](media/v2-update-explorer/tsi-preview-ui-explorer-well.png#lightbox)
 
 Można usunąć konkretne elementy danych z bieżących danych, zaznaczając formant Red **delete** (kosza) po lewej stronie elementu. Ponadto pozwala kontrolować sposób wyświetlania poszczególnych elementów na wykresie. Można wybrać opcję dodawania minimalnych i maksymalnych cieni, punktów danych, przesunąć element w czasie i wizualizować wystąpienie w sposób. 
 
@@ -98,21 +98,21 @@ Ponadto kontrolka eksploracji pozwala łatwo tworzyć zmiany czasu i wykresy pun
   [![opcje układu](media/v2-update-explorer/well-layout-options.png)](media/v2-update-explorer/well-layout-options.png#lightbox)
 
 > [!NOTE]
-> Jeśli zobaczysz następujący komunikat, wystąpienie nie ma żadnych danych w wybranym okresie. Aby rozwiązać ten problem, należy zwiększyć przedział czasu lub potwierdzić, że wystąpienie jest wypychane dane.
+> Jeśli zostanie wyświetlony następujący komunikat, wystąpienie nie ma żadnych danych w wybranym okresie. Aby rozwiązać ten problem, należy zwiększyć przedział czasu lub potwierdzić, że wystąpienie jest wypychane dane.
 >
-> ![Brak powiadomienia o danych](media/v2-update-explorer/no-data-warning.png)
+> ![Brak powiadomienia o danych](media/v2-update-explorer/tsi-preview-no-data-warning.png)
 
 ## <a name="5-chart-panel"></a>5. Panel wykresu
 
 Wykres umożliwia wyświetlanie wystąpień szeregów czasowych jako wierszy. Można zwinąć panelu środowiska, modelu danych i godzina w Panelu sterowania zakresu, klikając kontrolki sieci web, aby powiększyć wykresu. 
 
-  [Przegląd wykresu ![Podgląd](media/v2-update-explorer/chart-overview.png)](media/v2-update-explorer/chart-overview.png#lightbox)
+  [Przegląd wykresu ![Podgląd](media/v2-update-explorer/tsi-preview-chart-overview.png)](media/v2-update-explorer/tsi-preview-chart-overview.png#lightbox)
 
 1. **Typ wykresu**: określa, które elementy danych są dostępne do wizualizacji.
 
-1. **Rozmiar interwału**: Narzędzie suwaka Rozmiar interwału umożliwia powiększanie i wyświetlanie interwałów w tym samym przedziale czasu. Zapewnia to dokładniejszą kontrolę nad przenoszeniem między dużymi wycinkami czasu, które przedstawiają płynne trendy w dół do wycinków jako milisekundy, co pozwala na wyświetlanie szczegółowych i wysokiej rozdzielczości kawałków danych. Domyślny punkt początkowy suwaka jest ustawiany jako najbardziej optymalny widok danych z wyboru. zrównoważenie rozdzielczości, szybkość zapytania i stopień szczegółowości.
+1. **Rozmiar interwału**: Narzędzie suwaka Rozmiar interwału umożliwia powiększanie i wyświetlanie interwałów w tym samym przedziale czasu. Zapewnia to dokładniejszą kontrolę nad przenoszeniem między dużymi wycinkami czasu, które pokazują płynne trendy w dół do wycinków jako milisekundy, co pozwala na przeglądanie szczegółowych i wysokiej rozdzielczości kawałków danych. Domyślny punkt początkowy suwaka jest ustawiany jako najbardziej optymalny widok danych z wyboru. zrównoważenie rozdzielczości, szybkość zapytania i stopień szczegółowości.
 
-1. **Powiększanie i kadrowanie**: kliknij tę kontrolkę, aby powiększyć i przesunąć wykres.
+1. **Powiększanie i kadrowanie**: zaznacz tę kontrolkę, aby powiększyć i przesunąć wykres.
 
 1. **Kontrolka osi y**: przechodzenie między dostępnymi opcjami widoku osi y:
 
@@ -122,29 +122,29 @@ Wykres umożliwia wyświetlanie wystąpień szeregów czasowych jako wierszy. Mo
 
 1. **Znacznik — element**: aktualnie wybrany element danych i jego skojarzone szczegóły.
 
-Możesz kontynuować przechodzenie do określonego wycinka danych, **klikając lewym przyciskiem** myszy punkt danych na bieżącym grafie, trzymając mysz, a następnie przeciągając wybrany obszar do wybranego punktu końcowego. **Kliknij prawym przyciskiem myszy** szary, wybrany obszar, a następnie kliknij pozycję **powiększenie** , jak pokazano poniżej. Możesz również wyświetlić i pobrać zdarzenia telemetryczne z wybranego przedziału czasu.
+Możesz kontynuować przechodzenie do określonego wycinka danych, **klikając lewym przyciskiem** myszy punkt danych na bieżącym grafie, trzymając mysz, a następnie przeciągając wybrany obszar do wybranego punktu końcowego. **Kliknij prawym przyciskiem myszy** niebieski, wybrany obszar, a następnie wybierz polecenie **powiększenie** , jak pokazano poniżej. Możesz również wyświetlić i pobrać zdarzenia telemetryczne z wybranego przedziału czasu.
 
   [![powiększenie wykresu podglądu](media/v2-update-explorer/preview-chart-zoom.png)](media/v2-update-explorer/preview-chart-zoom.png#lightbox)
 
-Po wykonaniu akcji **powiększenia** zobaczysz wybrany zestaw danych. Wybierz kontrolkę format, aby przechodzić przez trzy reprezentacje osi y danych Time Series Insights.
+Po wykonaniu akcji **powiększenie** zostanie wyświetlony wybrany zestaw danych. Wybierz kontrolkę format, aby przechodzić przez trzy reprezentacje osi y danych Time Series Insights.
 
-  [![Podgląd osi y wykresu](media/v2-update-explorer/standard-chart.png)](media/v2-update-explorer/standard-chart.png#lightbox)
+  [![Podgląd osi y wykresu](media/v2-update-explorer/tsi-preview-explorer-standard-chart.png)](media/v2-update-explorer/tsi-preview-explorer-standard-chart.png#lightbox)
 
-Tutaj można zobaczyć przykład **nakładającego się wykresu**:
+Oto przykład **nakładających się wykresów** :
 
-  [![nakładania się opcji wykresu](media/v2-update-explorer/overlapping-chart.png)](media/v2-update-explorer/overlapping-chart.png#lightbox)
+  [![nakładania się opcji wykresu](media/v2-update-explorer/tsi-preview-explorer-overlapping-chart.png)](media/v2-update-explorer/tsi-preview-explorer-overlapping-chart.png#lightbox)
 
-Przycisk **więcej akcji** rozwija się, aby wyświetlić opcje **Pobierz jako CSV** i **Eksportuj do Power BI** .
+Przycisk **więcej akcji** rozwija się, aby wyświetlić opcję **Pobierz jako plik CSV**, **nawiązać połączenie z Power BI**, **pokazać dane wykresu jako tabelę**i zapoznać się z opcjami **nieprzetworzonych zdarzeń** .
 
   [Opcja ![więcej akcji](media/v2-update-explorer/more-actions-icon.png)](media/v2-update-explorer/more-actions-icon.png#lightbox)
 
-Przeczytaj o [Time Series Insights Power BI natywnego łącznika](concepts-power-bi.md).
+Dowiedz się więcej o opcji **Połącz z Power BI** w [Time Series Insights natywny łącznik Power BI](concepts-power-bi.md).
 
 ## <a name="6-time-editor-panel"></a>6. Panel edytora czasu
 
 Podczas pracy z Time Series Insights najpierw wybierz przedział czasu. Wybrany przedział czasu będzie kontrolować zestaw danych, który jest dostępny do manipulowania za pomocą widżetów aktualizacji Time Series Insights.
 
-  [Panel wyboru ![czas](media/v2-update-explorer/timeline-element.png)](media/v2-update-explorer/timeline-element.png#lightbox)
+  [Panel wyboru ![czas](media/v2-update-explorer/tsi-preview-explorer-timeline-element.png)](media/v2-update-explorer/tsi-preview-explorer-timeline-element.png#lightbox)
 
 > [!TIP]
 > Część osi czasu jest wyróżniona w kolorze bursztynowym lub pomarańczowym, aby wskazać zakres danych dostępnych w sklepie ciepłym.
@@ -171,15 +171,15 @@ Panel nawigacji Time Series Insights Preview pojawia się u góry aplikacji Time
 
 ### <a name="current-session-share-link-control"></a>Kontrola łącza udział w bieżącej sesji
 
-  [ikona udostępniania ![](media/v2-update-explorer/share-icon.png)](media/v2-update-explorer/share-icon.png#lightbox)
+  [ikona udostępniania ![](media/v2-update-explorer/tsi-preview-explorer-share-icon.png)](media/v2-update-explorer/tsi-preview-explorer-share-icon.png#lightbox)
 
 Wybierz ikonę Nowy **udział** , aby udostępnić link adresu URL do zespołu.
 
-  [![udostępnić swój adres URL wystąpienia](media/v2-update-explorer/share-your-view.png)](media/v2-update-explorer/share-your-view.png#lightbox)
+  [![udostępnić swój adres URL wystąpienia](media/v2-update-explorer/tsi-preview-explorer-share-your-view.png)](media/v2-update-explorer/tsi-preview-explorer-share-your-view.png#lightbox)
 
 ### <a name="tenant-section"></a>Sekcja dzierżawy
 
-  [![wybór dzierżawy](media/v2-update-explorer/tenant-selection.png)](media/v2-update-explorer/tenant-selection.png#lightbox)
+  [![wybór dzierżawy](media/v2-update-explorer/tsi-preview-explorer-tenant-selection.png)](media/v2-update-explorer/tsi-preview-explorer-tenant-selection.png#lightbox)
 
 * Wyświetla bieżące informacje o koncie logowania Time Series Insights.
 * Użyj go, aby przełączać się między dostępnymi Time Series Insightsmi motywami.
@@ -189,7 +189,7 @@ Wybierz ikonę Nowy **udział** , aby udostępnić link adresu URL do zespołu.
 
 Aby wybrać nowy motyw, wybierz ikonę profilu znajdującą się w prawym górnym rogu. Następnie wybierz pozycję **Zmień motyw**.
 
-  [wybór motywu ![](media/v2-update-explorer/theme-selection.png)](media/v2-update-explorer/theme-selection.png#lightbox)
+  [wybór motywu ![](media/v2-update-explorer/tsi-preview-theme-selection.png)](media/v2-update-explorer/tsi-preview-theme-selection.png#lightbox)
 
 > [!TIP]
 > Wybór języka jest również dostępny przez wybranie ikony profilu.
@@ -199,7 +199,7 @@ Azure czas Series Insights w wersji zapoznawczej obsługuje dwa motywy:
 * **Motyw jasny**: motyw domyślny pokazywany w tym dokumencie.
 * **Ciemny motyw**: renderuje Eksploratora, jak pokazano poniżej:
 
-  [![wybrany motyw ciemny](media/v2-update-explorer/dark-theme-selected.png)](media/v2-update-explorer/dark-theme-selected.png#lightbox)
+  [![wybrany motyw ciemny](media/v2-update-explorer/tsi-preview-dark-theme-selected.png)](media/v2-update-explorer/tsi-preview-dark-theme-selected.png#lightbox)
 
 ## <a name="s1s2-environment-controls"></a>Kontrolki środowiska S1/S2
 
@@ -207,7 +207,7 @@ Azure czas Series Insights w wersji zapoznawczej obsługuje dwa motywy:
 
 Ta sekcja dotyczy tylko do istniejących środowisk S1/S2, które próbują w Interfejsie użytkownika zaktualizowane przy użyciu Eksploratora. Możesz chcieć korzystać z ogólnie dostępnego produktu i wersji zapoznawczej. Niektóre funkcje z istniejącego interfejsu użytkownika do dodaliśmy zaktualizowane explorer, ale można uzyskać pełnego środowiska interfejsu użytkownika dla środowiska S1/S2 w istniejących Eksploratora usługi Time Series Insights. 
 
-Zamiast hierarchii zobaczysz panel warunki Time Series Insights, w którym można definiować zapytania w danym środowisku. Służy do filtrowania danych w oparciu o predykat.
+Zamiast hierarchii jest wyświetlany panel warunków Time Series Insights. Panel warunki pozwala definiować zapytania w danym środowisku. Umożliwia ona również filtrowanie danych na podstawie predykatu.
 
   [![, gdzie panel zapytania](media/v2-update-explorer/s1-s2-preview-query.png)](media/v2-update-explorer/s1-s2-preview-query.png#lightbox)
 
@@ -222,11 +222,11 @@ Panel Edytor warunków czasu Series Insights w wersji zapoznawczej przyjmuje nas
 | `IN` | String, Bool, Double, DateTime, przedział czasu, wartość NULL | Wszystkie argumenty powinny być tego samego typu lub być stała NULL. |
 | `HAS` | Ciąg | Tylko stałe literały ciągu są dozwolone po prawej stronie. Pusty ciąg i wartość NULL są niedozwolone. |
 
-Aby dowiedzieć się więcej na temat obsługiwanych operacji zapytań i typów danych, zobacz [wyrażenie szeregów czasowych (TSX)](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax).
+Aby dowiedzieć się więcej o obsługiwanych operacjach zapytań i typach danych, zobacz [wyrażenie szeregów czasowych (TSX)](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax).
 
 ### <a name="examples-of-where-clauses"></a>Przykłady klauzul WHERE
 
-  [Przykłady klauzul ![WHERE](media/v2-update-explorer/example-queries.png)](media/v2-update-explorer/example-queries.png#lightbox)
+  [Przykłady klauzul ![WHERE](media/v2-update-explorer/tsi-preview-example-queries.png)](media/v2-update-explorer/tsi-preview-example-queries.png#lightbox)
 
 **Miara**: Lista rozwijana, która wyświetla wszystkie kolumny liczbowe (**podwaja**), których można użyć jako elementów dla bieżącego wykresu.
 

@@ -5,16 +5,16 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 08/12/2019
 ms.author: cshoe
-ms.openlocfilehash: a59b62e19ac1e470dcdaaf0281dde9904a70b583
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 0e8c93ea6d5c2b525ccbea2af900f100afcc3d93
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230670"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769221"
 ---
 # <a name="azure-functions-deployment-slots"></a>Azure Functions miejsc wdrożenia
 
-Azure Functions miejsca wdrożenia pozwalają aplikacji funkcji uruchamiać różne wystąpienia o nazwie "gniazda". Gniazda są różnymi środowiskami udostępnianymi za pośrednictwem publicznie dostępnego punktu końcowego. Jedno wystąpienie aplikacji jest zawsze mapowane na miejsce produkcyjne i można zamienić wystąpienia przypisane do gniazda na żądanie. Aplikacje funkcji działające w ramach planu usługi aplikacji mogą mieć wiele gniazd, a w obszarze użycie jest dozwolony tylko jedno gniazdo.
+Azure Functions miejsca wdrożenia pozwalają aplikacji funkcji uruchamiać różne wystąpienia o nazwie "gniazda". Gniazda są różnymi środowiskami udostępnianymi za pośrednictwem publicznie dostępnego punktu końcowego. Jedno wystąpienie aplikacji jest zawsze mapowane na miejsce produkcyjne i można zamienić wystąpienia przypisane do gniazda na żądanie. Aplikacje funkcji działające w ramach planu usługi aplikacji mogą mieć wiele gniazd, a w ramach planu zużycia dozwolone jest tylko jedno gniazdo.
 
 Poniżej przedstawiono sposób, w jaki funkcje mają wpływ na zamienienie gniazd:
 
@@ -135,14 +135,14 @@ Korzystając z [interfejsu wiersza polecenia platformy Azure](https://docs.micro
 - [wymiany](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-swap)
 - [Zamień na siebie](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-auto-swap)
 
-## <a name="change-app-service-plan"></a>Zmień plan usługi App Service
+## <a name="change-app-service-plan"></a>Zmień plan App Service
 
-Za pomocą aplikacji funkcji działającej w ramach planu App Service istnieje możliwość zmiany bazowego planu usługi App Service dla gniazda.
+W przypadku aplikacji funkcji działającej w ramach planu App Service istnieje możliwość zmiany bazowego planu App Service dla gniazda.
 
 > [!NOTE]
 > Nie można zmienić planu App Service gniazda w ramach planu zużycia.
 
-Aby zmienić plan usługi App Service na miejscu, wykonaj następujące kroki:
+Aby zmienić plan App Service gniazda, wykonaj następujące czynności:
 
 1. Przejdź do miejsca
 

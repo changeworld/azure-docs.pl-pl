@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.date: 03/28/2017
 ms.author: mlearned
 ms.custom: H1Hack27Feb201
-ms.openlocfilehash: 0165ace1d373d267658c78e020356816fb9cc02f
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: 317862b694b93de44422ac3c28575c732ffc5be5
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74286472"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75887924"
 ---
 # <a name="deprecated-container-service-frequently-asked-questions"></a>(PRZESTARZAŁE) Często zadawane pytania dotyczące usługi Container Service
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
-## <a name="orchestrators"></a>Koordynatorzy
+## <a name="orchestrators"></a>Orkiestratorzy
 
 ### <a name="which-container-orchestrators-do-you-support-on-azure-container-service"></a>Których koordynatorów kontenerów obsługuje usługa Azure Container Service? 
 
@@ -64,7 +64,7 @@ Jeśli używasz [poleceń interfejsu wiersza polecenia Azure](../../container-se
 Możesz utworzyć klaster z 1, 3 lub 5 węzłami głównymi. Możesz wybrać maksymalnie 100 węzłów agentów.
 
 > [!IMPORTANT]
-> W przypadku większych klastrów i w zależności od rozmiaru maszyny wirtualnej wybranego dla węzłów może być konieczne zwiększenie limitu przydziału rdzeni w ramach subskrypcji. Aby zażądać zwiększenia limitu przydziału, otwórz bezpłatnie [żądanie obsługi klienta online](../../azure-supportability/how-to-create-azure-support-request.md). Jeśli używasz [bezpłatnego konta platformy Azure](https://azure.microsoft.com/free/), możesz użyć ograniczonej liczby rdzeni obliczeniowych platformy Azure.
+> W przypadku większych klastrów i w zależności od rozmiaru maszyny wirtualnej wybranego dla węzłów może być konieczne zwiększenie limitu przydziału rdzeni w ramach subskrypcji. Aby zażądać zwiększenia limitu przydziału, otwórz bezpłatnie [żądanie obsługi klienta online](../../azure-portal/supportability/how-to-create-azure-support-request.md). Jeśli używasz [bezpłatnego konta platformy Azure](https://azure.microsoft.com/free/), możesz użyć ograniczonej liczby rdzeni obliczeniowych platformy Azure.
 > 
 
 ### <a name="how-do-i-increase-the-number-of-masters-after-a-cluster-is-created"></a>Jak mogę zwiększyć liczbę wzorców po utworzeniu klastra? 
@@ -104,7 +104,7 @@ Parametry połączenia można znaleźć w witrynie Azure Portal lub za pomocą n
 
 4. Na stronie **Podsumowanie** w obszarze **Dane wyjściowe** znajduje się kilka linków klastra. Element **SSHMaster0** zawiera parametry połączenia SSH z pierwszym wzorcem w klastrze usługi kontenera. 
 
-Jak wspomniano wcześniej, do wyszukania nazwy FQDN wzorca można również użyć narzędzi platformy Azure. Utwórz połączenie SSH z wzorcem, używając nazwy FQDN wzorca i nazwy użytkownika podanej podczas tworzenia klastra. Na przykład:
+Jak wspomniano wcześniej, do wyszukania nazwy FQDN wzorca można również użyć narzędzi platformy Azure. Utwórz połączenie SSH z wzorcem, używając nazwy FQDN wzorca i nazwy użytkownika podanej podczas tworzenia klastra. Przykład:
 
 ```bash
 ssh userName@masterFQDN –A –p 22 
@@ -112,7 +112,7 @@ ssh userName@masterFQDN –A –p 22 
 
 Aby uzyskać więcej informacji, zobacz [Łączenie z klastrem usługi Azure Container Service](../../container-service/kubernetes/container-service-connect.md).
 
-### <a name="my-dns-name-resolution-isnt-working-on-windows-what-should-i-do"></a>Rozpoznawanie nazw DNS nie działa w systemie Windows. Co mam zrobić?
+### <a name="my-dns-name-resolution-isnt-working-on-windows-what-should-i-do"></a>Rozpoznawanie nazw DNS nie działa w systemie Windows. Co mamy zrobić?
 
 W systemie Windows istnieją znane problemy związane z usługą DNS, których poprawki są nadal aktywnie wycofywane. Upewnij się, że korzystasz z najnowszej zaktualizowanej wersji aparatu ACS i systemu Windows (z zainstalowanym programem [KB4074588](https://www.catalog.update.microsoft.com/Search.aspx?q=KB4074588) i [KB4089848](https://www.catalog.update.microsoft.com/Search.aspx?q=KB4089848) ), aby umożliwić korzystanie z tego środowiska. W przeciwnym razie kroki zaradcze znajdziesz w tabeli poniżej:
 

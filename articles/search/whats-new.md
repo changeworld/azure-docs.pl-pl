@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: b1df328f151a4085ec0aadd1b880048f81483a51
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.date: 01/07/2020
+ms.openlocfilehash: 2627e4be20d80251e3753e46624c58a0c6244aba
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74901324"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863091"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Co nowego w usłudze Azure Wyszukiwanie poznawcze
 
@@ -29,13 +29,21 @@ Wersje interfejsu API, pakiety NuGet, przestrzenie nazw i punkty końcowe nie s�
 
 ## <a name="feature-announcements"></a>Anonse funkcji
 
-### <a name="december-2019"></a>Grudzień 2019
+### <a name="january-2020"></a>Styczeń 2020
+
++ [Klucze szyfrowania zarządzane przez klienta](search-security-manage-encryption-keys.md) są teraz ogólnie dostępne. Jeśli używasz usługi REST, możesz uzyskać dostęp do tej funkcji przy użyciu `api-version=2019-05-06`. W przypadku kodu zarządzanego prawidłowy pakiet nadal jest [zestawem SDK .NET w wersji 8,0-Preview](search-dotnet-sdk-migration-version-9.md) , nawet jeśli ta funkcja nie jest dostępna w wersji zapoznawczej. 
+
++ *Ograniczony dostęp do adresów IP i prywatny punkt końcowy (wersja zapoznawcza)* w punkcie końcowym usługi wyszukiwania jest teraz dostępny w **wersji API-Version = 2019-10 -01-Preview**. Bezpieczny punkt końcowy można skonfigurować przy użyciu nowych właściwości **IpRule** i **NetworkRuleSet** w interfejsie API REST usługi [Create lub Update](https://docs.microsoft.com/rest/api/searchmanagement/services/createorupdate) Management. Aby uzyskać więcej informacji na temat wersji interfejsu API i regionalnej dostępności, zobacz [jak używać interfejsu API REST zarządzania](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api).
+
+### <a name="december-2019"></a>Grudzień 2019 r.
 
 + [Tworzenie aplikacji (wersja zapoznawcza)](search-create-app-portal.md) to nowy Kreator w portalu, który GENERUJE plik HTML do pobrania. Plik zawiera osadzony skrypt, który renderuje operacyjną aplikację sieci Web w stylu "localhost", powiązaną z indeksem w usłudze wyszukiwania. Strony można konfigurować w Kreatorze i zawierać pasek wyszukiwania, obszar wyników, nawigację paska bocznego i obsługę zapytań typeahead. Możesz zmodyfikować kod HTML w trybie offline, aby zwiększyć lub dostosować przepływ pracy lub wygląd.
 
++ [Utwórz prywatny punkt końcowy dla bezpiecznych połączeń (wersja zapoznawcza)](service-create-private-endpoint.md) zawiera opis sposobu konfigurowania prywatnego linku dla bezpiecznych połączeń do usługi wyszukiwania. Ta funkcja w wersji zapoznawczej jest dostępna na żądanie i używa [prywatnego linku platformy Azure](../private-link/private-link-overview.md) i [usługi Azure Virtual Network](../virtual-network/virtual-networks-overview.md) w ramach rozwiązania.
+
 ### <a name="november-2019---ignite-conference"></a>Listopad 2019 — Konferencja zapłonowa
 
-+ [Indeksowanie przyrostowe (wersja zapoznawcza)](cognitive-search-incremental-indexing-conceptual.md) pozwala na wybór i wybór kroków, które mają zostać przetworzone podczas wprowadzania modyfikacji do potoku wzbogacania. Indeksowanie przyrostowe jest przydatne, jeśli masz zawartość obrazu, która została wcześniej przeanalizowana. Dane wyjściowe analizy kosztów są przechowywane, a następnie używane jako podstawa do dodatkowego indeksowania lub wzbogacania.
++ [Wzbogacanie przyrostowe (wersja zapoznawcza)](cognitive-search-incremental-indexing-conceptual.md) dodaje buforowanie i statefullness do potoku wzbogacania, dzięki czemu można korzystać z określonych etapów lub faz bez utraty zawartości, która została już przetworzona. Wcześniej każda zmiana potoku wzbogacania wymagała pełnej kompilacji. W przypadku przyrostowego wzbogacania dane wyjściowe analizy kosztów, w szczególności analizy obrazów, są zachowywane.
 
 <!-- 
 + Custom Entity Lookup is a cognitive skill used during indexing that allows you to provide a list of custom entities (such as part numbers, diseases, or names of locations you care about) that should be found within the text. It supports fuzzy matching, case-insensitive matching, and entity synonyms. -->

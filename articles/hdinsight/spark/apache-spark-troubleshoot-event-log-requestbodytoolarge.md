@@ -7,12 +7,12 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 07/29/2019
-ms.openlocfilehash: 2d2e929335f6af2ee24a81e719d9d0d899f7b8ef
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: 777d06670238a7625d190c92f78a55cd4794d226
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73241837"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894395"
 ---
 # <a name="nativeazurefilesystemrequestbodytoolarge-appear-in-apache-spark-streaming-app-log-in-hdinsight"></a>"NativeAzureFileSystem... RequestBodyTooLarge "pojawia się w Apache Spark dzienniku aplikacji przesyłania strumieniowego w usłudze HDInsight
 
@@ -26,7 +26,7 @@ Błąd: `NativeAzureFileSystem ... RequestBodyTooLarge` pojawia się w dzienniku
 
 Plik dziennika zdarzeń Spark prawdopodobnie zostanie osiągnięty w limicie długości pliku dla WASB.
 
-W platformie Spark 2,3 Każda aplikacja Spark generuje jeden plik dziennika zdarzeń platformy Spark. Plik dziennika zdarzeń Spark dla aplikacji do przesyłania strumieniowego Spark nadal rośnie, gdy aplikacja jest uruchomiona. Dzisiaj plik w WASB ma limit bloków 50000, a domyślny rozmiar bloku to 4 MB. W konfiguracji domyślnej maksymalny rozmiar pliku to 195 GB. Jednak usługa Azure Storage zwiększyła maksymalny rozmiar bloku do 100 MB, co skutecznie przekroczy limit jednego pliku do 4,75 TB. Aby uzyskać więcej informacji, zobacz [cele dotyczące skalowalności i wydajności usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-scalability-targets).
+W platformie Spark 2,3 Każda aplikacja Spark generuje jeden plik dziennika zdarzeń platformy Spark. Plik dziennika zdarzeń Spark dla aplikacji do przesyłania strumieniowego Spark nadal rośnie, gdy aplikacja jest uruchomiona. Dzisiaj plik w WASB ma limit bloków 50000, a domyślny rozmiar bloku to 4 MB. W konfiguracji domyślnej maksymalny rozmiar pliku to 195 GB. Jednak usługa Azure Storage zwiększyła maksymalny rozmiar bloku do 100 MB, co skutecznie przekroczy limit jednego pliku do 4,75 TB. Aby uzyskać więcej informacji, zobacz [elementy docelowe skalowalności i wydajności dla usługi BLOB Storage](../../storage/blobs/scalability-targets.md).
 
 ## <a name="resolution"></a>Rozdzielczość
 
@@ -64,4 +64,4 @@ Jeśli problem nie został wyświetlony lub nie można rozwiązać problemu, odw
 
 * Połącz się z [@AzureSupport](https://twitter.com/azuresupport) — oficjalne Microsoft Azure konto, aby usprawnić obsługę klienta, łącząc społeczność platformy Azure z właściwymi zasobami: odpowiedziami, pomocą techniczną i ekspertami.
 
-* Jeśli potrzebujesz więcej pomocy, możesz przesłać żądanie pomocy technicznej z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Na pasku menu wybierz pozycję **Obsługa** , a następnie otwórz Centrum **pomocy i obsługi technicznej** . Aby uzyskać szczegółowe informacje, zobacz [jak utworzyć żądanie pomocy technicznej platformy Azure](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). Dostęp do pomocy w zakresie zarządzania subskrypcjami i rozliczeń jest dostępny w ramach subskrypcji Microsoft Azure, a pomoc techniczna jest świadczona za pomocą jednego z [planów pomocy technicznej systemu Azure](https://azure.microsoft.com/support/plans/).
+* Jeśli potrzebujesz więcej pomocy, możesz przesłać żądanie pomocy technicznej z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Na pasku menu wybierz pozycję **Obsługa** , a następnie otwórz Centrum **pomocy i obsługi technicznej** . Aby uzyskać szczegółowe informacje, zobacz [jak utworzyć żądanie pomocy technicznej platformy Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). Dostęp do pomocy w zakresie zarządzania subskrypcjami i rozliczeń jest dostępny w ramach subskrypcji Microsoft Azure, a pomoc techniczna jest świadczona za pomocą jednego z [planów pomocy technicznej systemu Azure](https://azure.microsoft.com/support/plans/).

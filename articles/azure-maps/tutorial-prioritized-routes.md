@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: wiele tras z Azure Maps'
-description: 'Samouczek: Znajdowanie tras dla różnych trybów podróży przy użyciu Azure Maps'
+title: 'Samouczek: Znajdowanie wielu tras według trybu podróży | Mapy Microsoft Azure'
+description: W tym samouczku dowiesz się, jak znaleźć trasy dla różnych trybów podróży przy użyciu Microsoft Azure Maps.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 11/12/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: cec7027ee0eadae2284e9aa2b127c195870ee929
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 258572d4451be6d9a1090c032467e85889148d14
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75613639"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910865"
 ---
 # <a name="tutorial-find-routes-for-different-modes-of-travel-using-azure-maps"></a>Samouczek: Znajdowanie tras dla różnych trybów podróży przy użyciu Azure Maps
 
@@ -117,7 +117,7 @@ Poniższe kroki pokazują, jak utworzyć statyczną stronę HTML osadzoną przy 
 
 2. Zapisz plik **MapTruckRoute.html** i odśwież stronę w przeglądarce. W przypadku korzystania z mapy i powiększania do Los Angeles należy zobaczyć ulice z bieżącymi danymi o ruchu.
 
-   ![Wyświetlanie mapy ruchu ulicznego](./media/tutorial-prioritized-routes/traffic-map.png)
+   ![Wyświetlanie ruchu na mapie](./media/tutorial-prioritized-routes/traffic-map.png)
 
 <a id="queryroutes"></a>
 

@@ -1,6 +1,6 @@
 ---
-title: Dodawanie warstwy kafelków do map systemu Android w Azure Maps | Microsoft Docs
-description: Jak dodać warstwę kafelków do mapy przy użyciu Azure Maps Android SDK
+title: Dodawanie warstwy kafelków do map systemu Android | Mapy Microsoft Azure
+description: W tym artykule dowiesz się, jak renderować warstwę kafelków na mapie przy użyciu Android SDK Microsoft Azure Maps.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 04/26/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 5d5f50a38db95f6e62bdd8c51aefd5957041e682
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: e54eeaa6dafd60e5fc481f2f4b45929edda77c44
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68886613"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911526"
 ---
 # <a name="add-a-tile-layer-to-a-map-using-the-azure-maps-android-sdk"></a>Dodawanie warstwy kafelków do mapy przy użyciu Azure Maps Android SDK
 
@@ -23,19 +23,19 @@ Warstwa kafelków jest ładowana na kafelkach z serwera. Te obrazy mogą być ws
 
 * X, Y, z notacją powiększenia w oparciu o poziom powiększenia, x to kolumna, a Y to pozycja w wierszu kafelka w siatce kafelków.
 * Quadkey-kombinacja x, y, Powiększ informacje w postaci pojedynczej wartości ciągu, która jest unikatowym identyfikatorem dla kafelka.
-* Współrzędne pola ograniczenia obwiedni mogą służyć do określania obrazu w formacie `{west},{south},{east},{north}` , który jest często używany przez [usługi mapowania sieci Web (WMS)](https://www.opengeospatial.org/standards/wms).
+* Współrzędne pola powiązanego obwiedni mogą służyć do określania obrazu w formacie `{west},{south},{east},{north}`, który jest często używany przez [usługi mapowania sieci Web (WMS)](https://www.opengeospatial.org/standards/wms).
 
 > [!TIP]
 > TileLayer to doskonały sposób wizualizacji dużych zestawów danych na mapie. Nie tylko można wygenerować warstwy kafelków z obrazu, ale dane wektorowe mogą być również renderowane jako warstwa kafelków. Przez renderowanie danych wektorowych jako warstwy kafelków, formant mapy musi ładować tylko kafelki, które mogą być znacznie mniejsze w rozmiarze pliku niż dane wektorowe, które reprezentują. Ta technika jest używana przez wiele osób, które muszą renderować miliony wierszy danych na mapie.
 
 Adres URL kafelka przesłany do warstwy kafelków musi być adresem URL protokołu HTTP/HTTPS do zasobu TileJSON lub szablonem adresu URL kafelka, który używa następujących parametrów: 
 
-* `{x}`-X pozycja kafelka. Również wymagają `{y}` i `{z}`.
-* `{y}`-Y pozycja kafelka. Również wymagają `{x}` i `{z}`.
-* `{z}`— Poziom powiększenia kafelka. Również wymagają `{x}` i `{y}`.
-* `{quadkey}`-Kafelek quadkey identyfikator oparty na konwencji nazewnictwa systemu kafelków mapy Bing.
-* `{bbox-epsg-3857}`-Ciąg pola granicznego z formatem `{west},{south},{east},{north}` w systemie referencyjnym przestrzennym EPSG 3857.
-* `{subdomain}`— Symbol zastępczy, w którym zostaną dodane wartości poddomeny, jeśli zostały określone.
+* Pozycja `{x}`-X kafelka. Wymaga również `{y}` i `{z}`.
+* Pozycja `{y}`-Y kafelka. Wymaga również `{x}` i `{z}`.
+* `{z}` — poziom powiększenia kafelka. Wymaga również `{x}` i `{y}`.
+* Identyfikator quadkey na kafelku oparty na konwencji nazewnictwa systemu kafelków mapy Bing. `{quadkey}`
+* `{bbox-epsg-3857}`-ciąg pola ograniczenia w formacie `{west},{south},{east},{north}` w systemie referencyjnym EPSG 3857.
+* `{subdomain}` — symbol zastępczy, w którym zostaną dodane wartości poddomeny, jeśli zostały określone.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -48,7 +48,7 @@ Aby ukończyć proces w tym artykule, należy zainstalować [Azure Maps Android 
 
 Do mapy można dodać warstwę kafelków, wykonując poniższe kroki.
 
-1. Edytuj **układ > res > activity_main. XML** , tak aby wyglądał następująco:
+1. Edytuj **> układ zasobów > activity_main. XML** , tak aby wyglądał wyglądać następująco:
 
     ```XML
     <?xml version="1.0" encoding="utf-8"?>
@@ -71,7 +71,7 @@ Do mapy można dodać warstwę kafelków, wykonując poniższe kroki.
     </FrameLayout>
     ```
 
-2. Skopiuj poniższy fragment kodu poniżej do metody `MainActivity.java` OnCreate **()** klasy.
+2. Skopiuj poniższy fragment kodu poniżej do metody **OnCreate ()** klasy `MainActivity.java`.
 
     ```Java
     mapControl.onReady(map -> {
@@ -84,9 +84,9 @@ Do mapy można dodać warstwę kafelków, wykonując poniższe kroki.
     });
     ```
     
-    Poniższy fragment kodu uzyskuje Azure Maps wystąpienia kontrolki mapy za pomocą metody wywołania zwrotnego **()** . Następnie tworzy `TileLayer` obiekt i przekazuje sformatowany adres URL `tileUrl` kafelka **XYZ** do opcji. Nieprzezroczystość warstwy jest ustawiona na `0.8` , a ponieważ kafelki z używanej usługi kafelków są 256 pikseli, te informacje są przesyłane `tileSize` do opcji. Warstwa kafelków jest następnie przenoszona do Menedżera warstwy map.
+    Poniższy fragment kodu uzyskuje Azure Maps wystąpienia kontrolki mapy za pomocą metody wywołania zwrotnego **()** . Powoduje to utworzenie obiektu `TileLayer` i przekazanie sformatowanego adresu URL kafelka **XYZ** do opcji `tileUrl`. Nieprzezroczystość warstwy jest ustawiona na `0.8` i ponieważ kafelki z używanej usługi kafelków są 256 pikseli, te informacje są przesyłane do `tileSize` opcji. Warstwa kafelków jest następnie przenoszona do Menedżera warstwy map.
 
-    Po dodaniu fragmentu kodu powyżej `MainActivity.java` powinien wyglądać tak jak poniżej:
+    Po dodaniu powyższego fragmentu kodu `MainActivity.java` powinien wyglądać podobnie do przedstawionego poniżej:
     
     ```Java
     package com.example.myapplication;
@@ -172,7 +172,7 @@ Jeśli aplikacja zostanie uruchomiona teraz, na mapie powinna zostać wyświetlo
 
 <center>
 
-![Linia mapy systemu Android](./media/how-to-add-tile-layer-android-map/xyz-tile-layer-android.png)</center>
+![linię mapy systemu Android](./media/how-to-add-tile-layer-android-map/xyz-tile-layer-android.png)</center>
 
 ## <a name="next-steps"></a>Następne kroki
 

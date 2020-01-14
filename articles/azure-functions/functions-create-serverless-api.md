@@ -6,16 +6,16 @@ ms.topic: conceptual
 ms.date: 05/04/2017
 ms.author: mahender
 ms.custom: mvc
-ms.openlocfilehash: 8bb30da9be5a025f87e5c6d17e0233d0793f3acb
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 61b930eec1385b8c4054f9c202547a82e61e55e7
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230697"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769272"
 ---
 # <a name="customize-an-http-endpoint-in-azure-functions"></a>Dostosowywanie punktu końcowego HTTP w Azure Functions
 
-W tym artykule dowiesz się, jak Azure Functions pozwala tworzyć wysoce skalowalne interfejsy API. Usługa Azure Functions zawiera kolekcję wbudowanych wyzwalaczy i powiązań HTTP, które ułatwiają tworzenie punktu końcowego w różnych językach, takich jak Node.JS, C# itp. W tym artykule opisano dostosowanie wyzwalacza protokołu HTTP w celu obsługi określonych akcji w projekcie interfejsu API. Przygotujesz się również na rozwój Twojego interfejsu API, integrując go z serwerami proxy usługi Azure Functions i konfigurując makiety interfejsów API. Wszystko to dzieje się w górnej warstwie bezserwerowego środowiska obliczeniowego usługi Functions, dzięki czemu nie musisz martwić się o skalowanie zasobów — możesz po prostu skupić się na logice interfejsu API.
+W tym artykule dowiesz się, jak Azure Functions pozwala tworzyć wysoce skalowalne interfejsy API. Azure Functions zawiera kolekcję wbudowanych wyzwalaczy i powiązań HTTP, które ułatwiają tworzenie punktów końcowych w różnych językach, w tym Node. js, C#i innych. W tym artykule opisano dostosowanie wyzwalacza protokołu HTTP w celu obsługi określonych akcji w projekcie interfejsu API. Przygotujesz się również na rozwój Twojego interfejsu API, integrując go z serwerami proxy usługi Azure Functions i konfigurując makiety interfejsów API. Wszystko to dzieje się w górnej warstwie bezserwerowego środowiska obliczeniowego usługi Functions, dzięki czemu nie musisz martwić się o skalowanie zasobów — możesz po prostu skupić się na logice interfejsu API.
 
 ## <a name="prerequisites"></a>Wymagania wstępne 
 
@@ -47,7 +47,7 @@ Domyślnie funkcja wyzwalana przez protokół HTTP jest skonfigurowana tak, aby 
     > [!NOTE] 
     > Zwróć uwagę, że w szablonie trasy nie został uwzględniony prefiks ścieżki podstawowej `/api`, ponieważ jest on obsługiwany przez ustawienie globalne.
 
-1. Kliknij pozycję **Zapisz**.
+1. Kliknij przycisk **Save** (Zapisz).
 
 Więcej informacji na temat dostosowywania funkcji HTTP możesz znaleźć w artykule [Powiązania HTTP usługi Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook).
 
@@ -88,7 +88,7 @@ Wykonaj ponownie procedurę [Tworzenie aplikacji funkcji](https://docs.microsoft
     > [!NOTE] 
     > Ustawienia aplikacji są zalecane w przypadku konfiguracji hosta, aby uniknąć zakodowanej zależności środowiska dla serwera proxy. Korzystanie z ustawień aplikacji oznacza możliwość przenoszenia konfiguracji serwera proxy między środowiskami i zastosowanie ustawień aplikacji specyficznych dla środowiska.
 
-1. Kliknij pozycję **Zapisz**.
+1. Kliknij przycisk **Save** (Zapisz).
 
 ### <a name="creating-a-proxy-on-the-frontend"></a>Tworzenie serwera proxy we frontonie
 
@@ -99,13 +99,13 @@ Wykonaj ponownie procedurę [Tworzenie aplikacji funkcji](https://docs.microsoft
 
     | Pole | Wartość przykładowa | Opis |
     |---|---|---|
-    | Nazwa | HelloProxy | Przyjazna nazwa używana tylko do zarządzania |
+    | Name (Nazwa) | HelloProxy | Przyjazna nazwa używana tylko do zarządzania |
     | Szablon trasy | /api/remotehello | Określa trasę używaną do wywoływania tego serwera proxy |
     | Adres URL zaplecza | https://%HELLO_HOST%/api/hello | Określa punkt końcowy, do którego powinno być przekazywane żądanie |
     
 1. Zwróć uwagę, że serwery proxy nie zapewniają prefiksu ścieżki podstawowej `/api`, który musi znajdować się w szablonie trasy.
 1. Składnia `%HELLO_HOST%` będzie odwoływać się do utworzonego wcześniej ustawienia aplikacji. Rozpoznany adres URL będzie wskazywał oryginalną funkcję.
-1. Kliknij pozycję **Utwórz**.
+1. Kliknij przycisk **Utwórz**.
 1. Nowy serwer proxy możesz wypróbować, kopiując adres URL serwera proxy i testując go w przeglądarce lub używając ulubionego klienta HTTP.
     1. W przypadku funkcji anonimowej użyj adresu:
         1. `https://YOURPROXYAPP.azurewebsites.net/api/remotehello?name="Proxies"`

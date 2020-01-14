@@ -5,16 +5,16 @@ ms.topic: quickstart
 ms.date: 03/28/2019
 ms.reviewer: astay; kraigb
 ms.custom: seodec18
-ms.openlocfilehash: b17bec5663cc8e9d199ad79bb5282b052b8c0182
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 74b0f83500903170616034d9d18d8ad31fa7065c
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74670392"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834317"
 ---
 # <a name="configure-a-linux-ruby-app-for-azure-app-service"></a>Konfigurowanie aplikacji Ruby systemu Linux dla Azure App Service
 
-W tym artykule opisano, jak [Azure App Service](app-service-linux-intro.md) są uruchamiane aplikacje Ruby oraz jak można dostosować zachowanie App Service w razie konieczności. Aplikacje Ruby muszą zostać wdrożone ze wszystkimi wymaganymi modułami [PIP](https://pypi.org/project/pip/) .
+W tym artykule opisano, jak [Azure App Service](app-service-linux-intro.md) są uruchamiane aplikacje Ruby oraz jak można dostosować zachowanie App Service w razie konieczności. Aplikacje Ruby muszą zostać wdrożone ze wszystkimi wymaganymi [Gems](https://rubygems.org/gems).
 
 Ten przewodnik zawiera najważniejsze pojęcia i instrukcje dla deweloperów języka Ruby, którzy używają wbudowanego kontenera systemu Linux w App Service. Jeśli nie korzystasz z Azure App Service, najpierw należy wykonać samouczka [Ruby](quickstart-ruby.md) i [Ruby with PostgreSQL](tutorial-ruby-postgres-app.md) .
 
@@ -82,7 +82,7 @@ Jeśli to ustawienie jest zdefiniowane, aparat wdrażania działa `bundle instal
 
 ### <a name="precompile-assets"></a>Wstępne Kompilowanie zasobów
 
-Kroki po wdrożeniu nie domyślnie kompilują zasoby. Aby włączyć prekompilowanie zasobów, należy ustawić [ustawienie `ASSETS_PRECOMPILE` aplikacji](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) na `true`. Następnie `bundle exec rake --trace assets:precompile` polecenie jest uruchamiane po zakończeniu kroków po wdrożeniu. Na przykład:
+Kroki po wdrożeniu nie domyślnie kompilują zasoby. Aby włączyć prekompilowanie zasobów, należy ustawić [ustawienie `ASSETS_PRECOMPILE` aplikacji](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) na `true`. Następnie `bundle exec rake --trace assets:precompile` polecenie jest uruchamiane po zakończeniu kroków po wdrożeniu. Przykład:
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings ASSETS_PRECOMPILE=true
@@ -111,7 +111,7 @@ Proces uruchamiania można dostosować w następujący sposób:
 Serwer szyn w kontenerze Ruby jest domyślnie uruchamiany w trybie produkcyjnym i zakłada, [że zasoby są wstępnie skompilowane i są obsługiwane przez serwer sieci Web](https://guides.rubyonrails.org/asset_pipeline.html#in-production). Aby zapewnić statyczne zasoby z serwera szyn, należy wykonać dwie czynności:
 
 - Wstępne **Kompilowanie zasobów** - wstępne [Kompilowanie statycznych zasobów](https://guides.rubyonrails.org/asset_pipeline.html#local-precompilation) i wdrażanie ich ręcznie. Lub pozwól, aby aparat wdrażania go obsłużył go (zobacz [prekompilowanie zasobów](#precompile-assets).
-- **Włącz obsługę plików statycznych** — aby obsłużyć statyczne elementy zawartości z kontenera Ruby, [Ustaw `RAILS_SERVE_STATIC_FILES` ustawienie aplikacji](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) na `true`. Na przykład:
+- **Włącz obsługę plików statycznych** — aby obsłużyć statyczne elementy zawartości z kontenera Ruby, [Ustaw `RAILS_SERVE_STATIC_FILES` ustawienie aplikacji](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) na `true`. Przykład:
 
     ```azurecli-interactive
     az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings RAILS_SERVE_STATIC_FILES=true
@@ -125,7 +125,7 @@ Domyślnie serwer szyn działa w trybie produkcyjnym. Aby uruchomić program w t
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings RAILS_ENV="development"
 ```
 
-Jednak to ustawienie powoduje, że serwer szyn będzie uruchamiany w trybie programistycznym, który akceptuje tylko żądania localhost i nie jest dostępny poza kontenerem. Aby zaakceptować żądania klientów zdalnych, należy ustawić [ustawienie `APP_COMMAND_LINE` aplikacji](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) na `rails server -b 0.0.0.0`. To ustawienie aplikacji umożliwia uruchomienie polecenia niestandardowego w kontenerze Ruby. Na przykład:
+Jednak to ustawienie powoduje, że serwer szyn będzie uruchamiany w trybie programistycznym, który akceptuje tylko żądania localhost i nie jest dostępny poza kontenerem. Aby zaakceptować żądania klientów zdalnych, należy ustawić [ustawienie `APP_COMMAND_LINE` aplikacji](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) na `rails server -b 0.0.0.0`. To ustawienie aplikacji umożliwia uruchomienie polecenia niestandardowego w kontenerze Ruby. Przykład:
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings APP_COMMAND_LINE="rails server -b 0.0.0.0"
@@ -133,7 +133,7 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 ### <a name="set-secret_key_base-manually"></a>Ustaw secret_key_base ręcznie
 
-Aby użyć własnej wartości `secret_key_base` zamiast zezwalać App Service na ich generowanie, należy ustawić [ustawienie aplikacji](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) `SECRET_KEY_BASE` na wartość, która ma zostać wybrana. Na przykład:
+Aby użyć własnej wartości `secret_key_base` zamiast zezwalać App Service na ich generowanie, należy ustawić [ustawienie aplikacji](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) `SECRET_KEY_BASE` na wartość, która ma zostać wybrana. Przykład:
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings SECRET_KEY_BASE="<key-base-value>"

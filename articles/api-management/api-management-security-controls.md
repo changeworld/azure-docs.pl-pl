@@ -7,12 +7,12 @@ ms.service: api-management
 ms.topic: conceptual
 ms.date: 09/23/2019
 ms.author: vlvinogr
-ms.openlocfilehash: 7f5fe404c93b7db22444b9dad97a0d3474c33a16
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 670050efe01fb658fab52a43914f193e9798b828
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71257084"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75751124"
 ---
 # <a name="security-controls-for-api-management"></a>Kontrolki zabezpieczeń dla API Management
 
@@ -20,7 +20,7 @@ W tym artykule opisano kontrolki zabezpieczeń wbudowane w API Management.
 
 [!INCLUDE [Security controls Header](../../includes/security-controls-header.md)]
 
-## <a name="network"></a>Sieć
+## <a name="network"></a>Network (Sieć)
 
 | Kontrola zabezpieczeń | Tak/Nie | Uwagi | Dokumentacja |
 |---|---|--|--|
@@ -34,8 +34,8 @@ W tym artykule opisano kontrolki zabezpieczeń wbudowane w API Management.
 | Kontrola zabezpieczeń | Tak/Nie | Uwagi| Dokumentacja |
 |---|---|--|--|
 | Pomoc techniczna dotycząca monitorowania platformy Azure (log Analytics, App Insights itp.)| Tak | | |
-| Rejestrowanie i inspekcja płaszczyzny kontroli i zarządzania| Tak | [Azure Monitor dzienników aktywności](../azure-monitor/platform/activity-logs-overview.md) | |
-| Rejestrowanie i inspekcja płaszczyzny danych| Tak | [Azure monitor dzienniki diagnostyczne](../azure-monitor/platform/resource-logs-overview.md) i (opcjonalnie) [Application Insights platformy Azure](../azure-monitor/app/app-insights-overview.md).  | |
+| Rejestrowanie i inspekcja płaszczyzny kontroli i zarządzania| Tak | [Azure Monitor dzienników aktywności](../azure-monitor/platform/platform-logs-overview.md) | |
+| Rejestrowanie i inspekcja płaszczyzny danych| Tak | [Azure monitor dzienniki diagnostyczne](../azure-monitor/platform/platform-logs-overview.md) i (opcjonalnie) [Application Insights platformy Azure](../azure-monitor/app/app-insights-overview.md).  | |
 
 
 ## <a name="identity"></a>Tożsamość
@@ -43,13 +43,13 @@ W tym artykule opisano kontrolki zabezpieczeń wbudowane w API Management.
 | Kontrola zabezpieczeń | Tak/Nie | Uwagi| Dokumentacja |
 |---|---|--|--|
 | Authentication| Tak | |  |
-| Authorization| Tak | |  |
+| Autoryzacja| Tak | |  |
 
 ## <a name="data-protection"></a>Ochrona danych
 
 | Kontrola zabezpieczeń | Tak/Nie | Uwagi | Dokumentacja |
 |---|---|--|--|
-| Szyfrowanie po stronie serwera w czasie spoczynku: Klucze zarządzane przez firmę Microsoft | Tak | Dane poufne, takie jak certyfikaty, klucze i wartości nazwane tajne, są szyfrowane przy użyciu zarządzanych przez usługę usług według kluczy wystąpienia usługi. |  |
+| Szyfrowanie po stronie serwera w czasie spoczynku: klucze zarządzane przez firmę Microsoft | Tak | Dane poufne, takie jak certyfikaty, klucze i wartości nazwane tajne, są szyfrowane przy użyciu zarządzanych przez usługę usług według kluczy wystąpienia usługi. |  |
 | Szyfrowanie po stronie serwera w spoczynku: klucze zarządzane przez klienta (BYOK) | Nie | Wszystkie klucze szyfrowania są dla każdego wystąpienia usługi i są zarządzane przez usługę. |  |
 | Szyfrowanie na poziomie kolumny (Data Services platformy Azure)| ND | |  |
 | Szyfrowanie podczas przesyłania (takie jak szyfrowanie ExpressRoute, szyfrowanie sieci wirtualnej i szyfrowanie sieci wirtualnej)| Tak | Usługa [Express Route](../expressroute/index.yml) i szyfrowanie sieci wirtualnej są udostępniane przez [Sieć Azure](../virtual-network/index.yml). |  |
@@ -66,7 +66,7 @@ W tym artykule opisano kontrolki zabezpieczeń wbudowane w API Management.
 
 W tej części udokumentowano typowe luki w zabezpieczeniach, które nie wpływają na API Management platformy Azure.
 
-| Luka w zabezpieczeniach               | Opis                                                                                                                                                                                                                                                                                                               |
+| Problemy               | Opis                                                                                                                                                                                                                                                                                                               |
 |-----------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Ticketbleed (CVE-2016-9244) | Ticketbleed jest luką w zabezpieczeniach w implementacji rozszerzenia SessionTicket protokołu TLS znalezionego w niektórych F5. Pozwala na wycieki ("wykrwawinie") do 31 bajtów danych z niezainicjowanej pamięci. Jest to spowodowane tym, że stos TLS uzupełnia identyfikator sesji, który został przesłany przez klienta z danymi, aby zapewnić 32 bitów. |
 

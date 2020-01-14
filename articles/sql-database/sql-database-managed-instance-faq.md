@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: b409824c2adb544560dfa17b4871ba23760d35c7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 81f776428303ad5e6486ba52c1acdf70d051563e
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75443856"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75835016"
 ---
 # <a name="sql-database-managed-instance-frequently-asked-questions-faq"></a>SQL Database często zadawane pytania dotyczące wystąpienia zarządzanego
 
@@ -105,7 +105,7 @@ Jeśli oba generacje sprzętowe nie są obsługiwane w tym samym regionie, zmian
 
 ## <a name="tune-performance"></a>Dostosowywanie wydajności
 
-\* * Jak mogę dostosować wydajność mojego wystąpienia zarządzanego? **
+**Jak mogę dostosować wydajność wystąpienia zarządzanego?**
 
 Ogólnego przeznaczenia zarządzanym wystąpieniem używa magazynu zdalnego, ponieważ rozmiar danych i plików dziennika jest istotny dla wydajności. Aby uzyskać więcej informacji, zobacz [wpływ rozmiaru pliku dziennika na wydajność wystąpienia zarządzanego ogólnego przeznaczenia](https://medium.com/azure-sqldb-managed-instance/impact-of-log-file-size-on-general-purpose-managed-instance-performance-21ad170c823e).
 
@@ -180,8 +180,8 @@ Aby lepiej zrozumieć korzyści, koszty i ryzyko związane z wdrażaniem Azure S
 
 ## <a name="dns-refresh"></a>Odświeżanie DNS 
 
-\* * Czy można odświeżyć DNS? **
-  
+**Czy można odświeżyć DNS?**
+
 Obecnie nie udostępniamy funkcji odświeżania konfiguracji serwera DNS dla wystąpienia zarządzanego.
 
 Konfiguracja DNS jest ostatecznie odświeżana:

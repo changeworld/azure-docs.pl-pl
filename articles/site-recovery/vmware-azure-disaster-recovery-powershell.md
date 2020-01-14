@@ -4,15 +4,15 @@ description: Dowiedz się, jak skonfigurować replikację i przejście w tryb fa
 author: sujayt
 manager: rochakm
 ms.service: site-recovery
-ms.date: 06/30/2019
+ms.date: 01/10/2020
 ms.topic: conceptual
 ms.author: sutalasi
-ms.openlocfilehash: 9546ae590918cdf6f3a6a95b9a68e9208054dcee
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: d2dfaab3d01ea29b0f9ecba1e9d748415bed2edc
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73953928"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861289"
 ---
 # <a name="set-up-disaster-recovery-of-vmware-vms-to-azure-with-powershell"></a>Konfigurowanie odzyskiwania po awarii maszyn wirtualnych VMware na platformie Azure przy użyciu programu PowerShell
 
@@ -118,7 +118,7 @@ W poniższym przykładzie szczegóły magazynu ze zmiennej $vault są używane d
    VMwareDRToAzurePs VMwareDRToAzurePs Microsoft.RecoveryServices vaults
    ```
 
-Zamiast polecenia cmdlet Set-ASRVaultContext, można również użyć polecenia cmdlet Import-AzRecoveryServicesAsrVaultSettingsFile, aby ustawić kontekst magazynu. Określ ścieżkę, w której znajduje się plik klucza rejestracji magazynu jako parametr-path polecenia cmdlet Import-AzRecoveryServicesAsrVaultSettingsFile. Na przykład:
+Zamiast polecenia cmdlet Set-ASRVaultContext, można również użyć polecenia cmdlet Import-AzRecoveryServicesAsrVaultSettingsFile, aby ustawić kontekst magazynu. Określ ścieżkę, w której znajduje się plik klucza rejestracji magazynu jako parametr-path polecenia cmdlet Import-AzRecoveryServicesAsrVaultSettingsFile. Przykład:
 
    ```azurepowershell
    Get-AzRecoveryServicesVaultSettingsFile -SiteRecovery -Vault $Vault -Path "C:\Work\"
@@ -351,11 +351,11 @@ Aby chronić odnalezioną maszynę wirtualną, potrzebne są następujące szcze
 Teraz Replikuj następujące maszyny wirtualne przy użyciu ustawień określonych w tej tabeli
 
 
-|Maszyna wirtualna  |Serwer przetwarzania        |Konto magazynu              |Konto magazynu dzienników  |Zasady           |Konto do instalacji usługi mobilności|Docelowa Grupa zasobów  | Docelowa sieć wirtualna  |Podsieć docelowa  |
+|Maszyna wirtualna  |Serwer przetwarzania        |Konto magazynu              |Konto magazynu dzienników  |Zasady           |Konto do instalacji usługi mobilności|Docelowa grupa zasobów  | Docelowa sieć wirtualna  |Podsieć docelowa  |
 |-----------------|----------------------|-----------------------------|---------------------|-----------------|-----------------------------------------|-----------------------|-------------------------|---------------|
-|CentOSVM1       |ConfigurationServer   |Nie dotyczy| logstorageaccount1                 |ReplicationPolicy|LinuxAccount                             |VMwareDRToAzurePs      |ASR-vnet                 |Subnet-1       |
+|CentOSVM1       |ConfigurationServer   |ND| logstorageaccount1                 |ReplicationPolicy|LinuxAccount                             |VMwareDRToAzurePs      |ASR-vnet                 |Subnet-1       |
 |Win2K12VM1       |ScaleOut-ProcessServer|premiumstorageaccount1       |logstorageaccount1   |ReplicationPolicy|WindowsAccount                           |VMwareDRToAzurePs      |ASR-vnet                 |Subnet-1       |   
-|CentOSVM2       |ConfigurationServer   |replicationstdstorageaccount1| Nie dotyczy                 |ReplicationPolicy|LinuxAccount                             |VMwareDRToAzurePs      |ASR-vnet                 |Subnet-1       |   
+|CentOSVM2       |ConfigurationServer   |replicationstdstorageaccount1| ND                 |ReplicationPolicy|LinuxAccount                             |VMwareDRToAzurePs      |ASR-vnet                 |Subnet-1       |   
 
 
 ```azurepowershell
@@ -372,9 +372,13 @@ $PolicyMap  = Get-AzRecoveryServicesAsrProtectionContainerMapping -ProtectionCon
 #Get the protectable item corresponding to the virtual machine CentOSVM1
 $VM1 = Get-AzRecoveryServicesAsrProtectableItem -ProtectionContainer $ProtectionContainer -FriendlyName "CentOSVM1"
 
-# Enable replication for virtual machine CentOSVM1 using the Az.RecoveryServices module 2.0.0
+# Enable replication for virtual machine CentOSVM1 using the Az.RecoveryServices module 2.0.0 onwards to replicate to managed disks
 # The name specified for the replicated item needs to be unique within the protection container. Using a random GUID to ensure uniqueness
 $Job_EnableReplication1 = New-AzRecoveryServicesAsrReplicationProtectedItem -VMwareToAzure -ProtectableItem $VM1 -Name (New-Guid).Guid -ProtectionContainerMapping $PolicyMap -ProcessServer $ProcessServers[1] -Account $AccountHandles[2] -RecoveryResourceGroupId $ResourceGroup.ResourceId -logStorageAccountId $LogStorageAccount.Id -RecoveryAzureNetworkId $RecoveryVnet.Id -RecoveryAzureSubnetName "Subnet-1"
+
+# Alternatively, if the virtual machine CentOSVM1 has CMK enabled disks, enable replication using Az module 3.3.0 onwards as below
+# $diskID is the Disk Encryption Set ID to be used for all replica managed disks and target managed disks in the target region
+$Job_EnableReplication1 = New-AzRecoveryServicesAsrReplicationProtectedItem -VMwareToAzure -ProtectableItem $VM1 -Name (New-Guid).Guid -ProtectionContainerMapping $PolicyMap -ProcessServer $ProcessServers[1] -Account $AccountHandles[2] -RecoveryResourceGroupId $ResourceGroup.ResourceId -logStorageAccountId -DiskEncryptionSetId $diskId $LogStorageAccount.Id -RecoveryAzureNetworkId $RecoveryVnet.Id -RecoveryAzureSubnetName "Subnet-1"
 
 #Get the protectable item corresponding to the virtual machine Win2K12VM1
 $VM2 = Get-AzRecoveryServicesAsrProtectableItem -ProtectionContainer $ProtectionContainer -FriendlyName "Win2K12VM1"
@@ -463,7 +467,7 @@ Errors           : {}
    $Job_TFOCleanup = Start-AzRecoveryServicesAsrTestFailoverCleanupJob -ReplicationProtectedItem $ReplicatedVM1
    ```
 
-## <a name="fail-over-to-azure"></a>Przechodzenie w tryb failover na platformie Azure
+## <a name="fail-over-to-azure"></a>Przełączenie do trybu failover na platformie Azure
 
 W tym kroku przejdziemy do trybu failover maszyny wirtualnej Win2K12VM1 do określonego punktu odzyskiwania.
 

@@ -3,7 +3,7 @@ title: Tworzenie i przekazywanie Red Hat Enterprise Linux wirtualnego dysku twar
 description: Zapoznaj się z tematem tworzenie i przekazywanie wirtualnego dysku twardego (VHD) platformy Azure, który zawiera system operacyjny Red Hat Linux.
 services: virtual-machines-linux
 documentationcenter: ''
-author: szarkos
+author: MicahMcKittrick-MSFT
 manager: gwallace
 editor: tysonn
 tags: azure-resource-manager,azure-service-management
@@ -13,13 +13,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 05/17/2019
-ms.author: szark
-ms.openlocfilehash: 7c03271dc5fda5cee0b210370a965a45a6a7ef42
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.author: mimckitt
+ms.openlocfilehash: 77334e3e807776e9072bb4ad9674bf7ba5a8f915
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035169"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75732522"
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure"></a>Przygotowywanie maszyny wirtualnej systemu Red Hat dla platformy Azure
 W tym artykule dowiesz się, jak przygotować maszynę wirtualną Red Hat Enterprise Linux (RHEL) do użycia na platformie Azure. Wersje RHEL omówione w tym artykule to 6.7 + i 7.1 +. Funkcja hypervisor dla przygotowania, która jest omówiona w tym artykule, to funkcja Hyper-V, maszyna wirtualna oparta na jądrze (KVM) i oprogramowanie VMware. Aby uzyskać więcej informacji na temat wymagań dotyczących uprawnień dla uczestnictwa w programie w ramach programu dostępu do chmury Red Hat, zobacz [witrynę sieci Web dostępu do chmury w systemie Red Hat](https://www.redhat.com/en/technologies/cloud-computing/cloud-access) i [RHEL na platformie Azure](https://access.redhat.com/ecosystem/ccsp/microsoft-azure). Aby poznać sposoby automatyzowania tworzenia obrazów RHEL, zobacz [Azure Image Builder](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-overview).
@@ -154,7 +154,7 @@ W tej sekcji założono, że plik ISO został już pobrany z witryny sieci Web f
         USERCTL=no
         PEERDNS=yes
         IPV6INIT=no
-        NM_CONTROLLED=no
+    PERSISTENT_DHCLIENT = tak NM_CONTROLLED = tak
 
 1. Upewnij się, że usługa sieciowa zacznie działać przy rozruchu, uruchamiając następujące polecenie:
 
@@ -164,7 +164,7 @@ W tej sekcji założono, że plik ISO został już pobrany z witryny sieci Web f
 
         # sudo subscription-manager register --auto-attach --username=XXX --password=XXX
 
-1. Zmodyfikuj wiersz rozruchowy jądra w konfiguracji grub, aby uwzględnić dodatkowe parametry jądra platformy Azure. Aby to zrobić, Otwórz `/etc/default/grub` w edytorze tekstów i edytuj parametr `GRUB_CMDLINE_LINUX`. Na przykład:
+1. Zmodyfikuj wiersz rozruchowy jądra w konfiguracji grub, aby uwzględnić dodatkowe parametry jądra platformy Azure. Aby to zrobić, Otwórz `/etc/default/grub` w edytorze tekstów i edytuj parametr `GRUB_CMDLINE_LINUX`. Przykład:
    
         GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
    
@@ -408,7 +408,7 @@ W tej sekcji założono, że plik ISO został już pobrany z witryny sieci Web f
         USERCTL=no
         PEERDNS=yes
         IPV6INIT=no
-        NM_CONTROLLED=no
+    PERSISTENT_DHCLIENT = tak NM_CONTROLLED = tak
 
 1. Upewnij się, że usługa sieciowa zacznie działać przy rozruchu, uruchamiając następujące polecenie:
 
@@ -418,7 +418,7 @@ W tej sekcji założono, że plik ISO został już pobrany z witryny sieci Web f
 
         # subscription-manager register --auto-attach --username=XXX --password=XXX
 
-1. Zmodyfikuj wiersz rozruchowy jądra w konfiguracji grub, aby uwzględnić dodatkowe parametry jądra platformy Azure. Aby przeprowadzić tę konfigurację, Otwórz `/etc/default/grub` w edytorze tekstów i edytuj parametr `GRUB_CMDLINE_LINUX`. Na przykład:
+1. Zmodyfikuj wiersz rozruchowy jądra w konfiguracji grub, aby uwzględnić dodatkowe parametry jądra platformy Azure. Aby przeprowadzić tę konfigurację, Otwórz `/etc/default/grub` w edytorze tekstów i edytuj parametr `GRUB_CMDLINE_LINUX`. Przykład:
    
         GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
    
@@ -568,7 +568,7 @@ W tej sekcji założono, że zainstalowano już maszynę wirtualną RHEL w oprog
 
         # subscription-manager repos --enable=rhel-6-server-extras-rpms
 
-1. Zmodyfikuj wiersz rozruchowy jądra w konfiguracji grub, aby uwzględnić dodatkowe parametry jądra platformy Azure. W tym celu otwórz `/etc/default/grub` w edytorze tekstów i edytuj parametr `GRUB_CMDLINE_LINUX`. Na przykład:
+1. Zmodyfikuj wiersz rozruchowy jądra w konfiguracji grub, aby uwzględnić dodatkowe parametry jądra platformy Azure. W tym celu otwórz `/etc/default/grub` w edytorze tekstów i edytuj parametr `GRUB_CMDLINE_LINUX`. Przykład:
    
         GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0"
    
@@ -666,7 +666,7 @@ W tej sekcji założono, że zainstalowano już maszynę wirtualną RHEL w oprog
         USERCTL=no
         PEERDNS=yes
         IPV6INIT=no
-        NM_CONTROLLED=no
+    PERSISTENT_DHCLIENT = tak NM_CONTROLLED = tak
 
 1. Upewnij się, że usługa sieciowa zacznie działać przy rozruchu, uruchamiając następujące polecenie:
 
@@ -676,7 +676,7 @@ W tej sekcji założono, że zainstalowano już maszynę wirtualną RHEL w oprog
 
         # sudo subscription-manager register --auto-attach --username=XXX --password=XXX
 
-1. Zmodyfikuj wiersz rozruchowy jądra w konfiguracji grub, aby uwzględnić dodatkowe parametry jądra platformy Azure. Aby to zrobić, Otwórz `/etc/default/grub` w edytorze tekstów i edytuj parametr `GRUB_CMDLINE_LINUX`. Na przykład:
+1. Zmodyfikuj wiersz rozruchowy jądra w konfiguracji grub, aby uwzględnić dodatkowe parametry jądra platformy Azure. Aby to zrobić, Otwórz `/etc/default/grub` w edytorze tekstów i edytuj parametr `GRUB_CMDLINE_LINUX`. Przykład:
    
         GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
    
@@ -883,8 +883,7 @@ W tej sekcji założono, że zainstalowano już maszynę wirtualną RHEL w oprog
         USERCTL=no
         PEERDNS=yes
         IPV6INIT=no
-        NM_CONTROLLED=no
-        EOF
+    PERSISTENT_DHCLIENT = Yes NM_CONTROLLED = Yes EOF
 
         # Deprovision and prepare for Azure if you are creating a generalized image
         waagent -force -deprovision

@@ -7,12 +7,12 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/08/2019
-ms.openlocfilehash: 2448550cf35f92bc8d91bc6ad9d5b22cc90b5ae0
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 765bbc352c493124c1adec68eff456f4d0de3d49
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494307"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75744873"
 ---
 # <a name="integrate-apache-spark-and-apache-hive-with-the-hive-warehouse-connector"></a>Integrowanie Apache Spark i Apache Hive z łącznikiem magazynu Hive
 
@@ -58,7 +58,7 @@ Skopiuj informacje o węźle z pliku `/etc/hosts` w headnode0 klastra interakcyj
 
 1. Przejdź do strony **hive** > **konfiguracjami** > **Advanced** > **Advanced Hive-site** > **Hive. dozorcy. kworum** i zanotuj wartość. Wartość może być podobna do: `zk0-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:2181,zk1-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:2181,zk4-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:2181`.
 
-1. Przejdź do **gałęzi** > **konfiguracjami** > **Advanced** > **General** > **Hive. metadanych. URI** i zanotuj wartość. Wartość może być podobna do: `thrift://hn0-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:9083,thrift://hn1-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:9083`.
+1. Przejdź do **gałęzi** > **konfiguracjami** > **Advanced** > **General** > **Hive. metadanych. URI** i zanotuj wartość. Wartość może być podobna do: `thrift://iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:9083,thrift://hn1-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:9083`.
 
 #### <a name="from-your-apache-spark-cluster"></a>Z klastra Apache Spark
 
@@ -93,7 +93,7 @@ Można wybrać kilka różnych metod nawiązywania połączenia z klastrem inter
 
 * [Spark — Shell](../spark/apache-spark-shell.md)
 * PySpark
-* Platforma Spark — przesyłanie
+* spark-submit
 * [Zeppelin](../spark/apache-spark-zeppelin-notebook.md)
 * [Livy](../spark/apache-spark-livy-rest-interface.md)
 
@@ -107,7 +107,7 @@ Aby rozpocząć sesję platformy Spark-Shell, wykonaj następujące czynności:
 
     ```bash
     spark-shell --master yarn \
-    --jars /usr/hdp/current/hive_warehouse_connector/hive-warehouse-connector-assembly-1.0.0.3.0.2.1-8.jar \
+    --jars /usr/hdp/current/hive_warehouse_connector/hive-warehouse-connector-assembly-<STACK_VERSION>.jar \
     --conf spark.security.credentials.hiveserver2.enabled=false
     ```
 
@@ -132,7 +132,7 @@ Pakiet Enterprise Security (ESP) oferuje funkcje klasy korporacyjnej, takie jak 
 
     ```bash
     spark-shell --master yarn \
-    --jars /usr/hdp/3.0.1.0-183/hive_warehouse_connector/hive-warehouse-connector-assembly-1.0.0.3.0.1.0-183.jar \
+    --jars /usr/hdp/current/hive_warehouse_connector/hive-warehouse-connector-assembly-<STACK_VERSION>.jar \
     --conf spark.security.credentials.hiveserver2.enabled=false
     --conf spark.hadoop.hive.llap.daemon.service.hosts='<LLAP_APP_NAME>'
     --conf spark.sql.hive.hiveserver2.jdbc.url='jdbc:hive2://<ZOOKEEPER_QUORUM>;serviceDiscoveryMode=zookeeper;zookeeperNamespace=hiveserver2-interactive'

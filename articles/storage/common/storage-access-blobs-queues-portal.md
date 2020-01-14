@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 03/19/2019
+ms.date: 01/10/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 89816e3640c0afad6290e77faa3904c691df4318
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 602be49ef0c60274f1cd016c4f8e870cf033ec7b
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892401"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75866896"
 ---
 # <a name="use-the-azure-portal-to-access-blob-or-queue-data"></a>Używanie Azure Portal do uzyskiwania dostępu do danych obiektu BLOB lub kolejki
 
@@ -57,8 +57,10 @@ Wbudowane role obsługujące dostęp do danych obiektu BLOB lub kolejki obejmuj�
     
 Role niestandardowe mogą obsługiwać różne kombinacje tych samych uprawnień zapewnianych przez wbudowane role. Aby uzyskać więcej informacji na temat tworzenia niestandardowych ról RBAC, zobacz [role niestandardowe dla zasobów platformy Azure](../../role-based-access-control/custom-roles.md) i [Opis ról dla zasobów platformy Azure](../../role-based-access-control/role-definitions.md).
 
-> [!NOTE]
-> Wyświetlanie listy kolejek z rolą klasycznego administratora subskrypcji nie jest obsługiwane. Aby wyświetlić listę kolejek, użytkownik musi mieć przypisane do nich rolę **czytnika** Azure Resource Manager, rolę **czytnika danych kolejki magazynu** lub rolę **współautora danych kolejki magazynu** .
+Wyświetlanie listy kolejek z rolą klasycznego administratora subskrypcji nie jest obsługiwane. Aby wyświetlić listę kolejek, użytkownik musi mieć przypisane do nich rolę **czytnika** Azure Resource Manager, rolę **czytnika danych kolejki magazynu** lub rolę **współautora danych kolejki magazynu** .
+
+> [!IMPORTANT]
+> Wersja zapoznawcza Eksplorator usługi Storage w Azure Portal nie obsługuje korzystania z poświadczeń usługi Azure AD w celu wyświetlania i modyfikowania danych obiektów blob i kolejek. Eksplorator usługi Storage w Azure Portal zawsze używa kluczy konta do uzyskiwania dostępu do danych. Aby użyć Eksplorator usługi Storage w Azure Portal, musisz mieć przypisaną rolę, która zawiera element **Microsoft. Storage/storageAccounts/ListKeys/Action**.
 
 ## <a name="navigate-to-blobs-or-queues-in-the-portal"></a>Nawigowanie do obiektów blob lub kolejek w portalu
 

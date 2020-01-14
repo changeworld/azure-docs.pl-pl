@@ -7,19 +7,19 @@ ms.topic: reference
 ms.date: 10/22/2019
 author: rboucher
 ms.author: robb
-ms.openlocfilehash: af47195a336739d604f0eb40ce6c5c54e15547cb
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: e744cdde298054de3631adb96b56bbc808f36a38
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894083"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750940"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-resource-logs"></a>Obsługiwane usługi, schematy i kategorie dla dzienników zasobów platformy Azure
 
 > [!NOTE]
 > Dzienniki zasobów były wcześniej znane jako dzienniki diagnostyczne.
 
-[Dzienniki zasobów Azure monitor](../../azure-monitor/platform/resource-logs-overview.md) to dzienniki wysyłane przez usługi platformy Azure opisujące operacje tych usług lub zasobów. Wszystkie dzienniki zasobów dostępne za pomocą Azure Monitor współdzielą wspólny schemat najwyższego poziomu, z elastycznością dla każdej usługi do emitowania unikatowych właściwości dla własnych zdarzeń.
+[Dzienniki zasobów Azure monitor](../../azure-monitor/platform/platform-logs-overview.md) to dzienniki wysyłane przez usługi platformy Azure opisujące operacje tych usług lub zasobów. Wszystkie dzienniki zasobów dostępne za pomocą Azure Monitor współdzielą wspólny schemat najwyższego poziomu, z elastycznością dla każdej usługi do emitowania unikatowych właściwości dla własnych zdarzeń.
 
 Połączenie typu zasobu (dostępnego we właściwości `resourceId`) i `category` jednoznacznie Identyfikuj schemat. W tym artykule opisano schemat najwyższego poziomu dla dzienników zasobów i linki do schematu dla każdej usługi.
 
@@ -195,7 +195,7 @@ Schemat dzienników diagnostycznych zasobów różni się w zależności od kate
 |Microsoft.EventHub/namespaces|KafkaUserErrorLogs|Kafka dzienniki błędów użytkownika|
 |Microsoft.EventHub/namespaces|EventHubVNetConnectionEvent|Dzienniki połączeń sieci wirtualnej/IP filtrowania|
 |Microsoft.EventHub/namespaces|CustomerManagedKeyUserLogs|Dzienniki kluczy zarządzanych przez klienta|
-|Microsoft. HealthcareApis/usługi|AuditLogs|Dzienniki inspekcji|
+|Microsoft. HealthcareApis/usługi|Dzienniki inspekcji|Dzienniki inspekcji|
 |Microsoft.Insights/AutoscaleSettings|AutoscaleEvaluations|Obliczenia automatycznego skalowania|
 |Microsoft.Insights/AutoscaleSettings|AutoscaleScaleActions|Akcje skalowania automatycznego skalowania|
 |Microsoft.IoTSpaces/Graph|Ślad|Ślad|
@@ -265,7 +265,7 @@ Schemat dzienników diagnostycznych zasobów różni się w zależności od kate
 |Microsoft.Sql/servers/databases|AutomaticTuning|Automatyczne dostrajanie|
 |Microsoft.Sql/servers/databases|QueryStoreRuntimeStatistics|Statystyka środowiska uruchomieniowego magazynu zapytań|
 |Microsoft.Sql/servers/databases|QueryStoreWaitStatistics|Statystyka oczekiwania magazynu zapytań|
-|Microsoft.Sql/servers/databases|Błędy|Błędy|
+|Microsoft.Sql/servers/databases|Errors|Errors|
 |Microsoft.Sql/servers/databases|DatabaseWaitStatistics|Statystyka oczekiwania bazy danych|
 |Microsoft.Sql/servers/databases|Limity czasu|Limity czasu|
 |Microsoft.Sql/servers/databases|Bloki|Bloki|
@@ -282,7 +282,7 @@ Schemat dzienników diagnostycznych zasobów różni się w zależności od kate
 |Microsoft.Sql/managedInstances/databases|SQLInsights|Szczegółowe informacje SQL|
 |Microsoft.Sql/managedInstances/databases|QueryStoreRuntimeStatistics|Statystyka środowiska uruchomieniowego magazynu zapytań|
 |Microsoft.Sql/managedInstances/databases|QueryStoreWaitStatistics|Statystyka oczekiwania magazynu zapytań|
-|Microsoft.Sql/managedInstances/databases|Błędy|Błędy|
+|Microsoft.Sql/managedInstances/databases|Errors|Errors|
 |Microsoft.Storage/storageAccounts/tableServices|StorageRead|StorageRead|
 |Microsoft.Storage/storageAccounts/tableServices|StorageWrite|StorageWrite|
 |Microsoft.Storage/storageAccounts/tableServices|StorageDelete|StorageDelete|
@@ -313,7 +313,7 @@ Schemat dzienników diagnostycznych zasobów różni się w zależności od kate
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Dowiedz się więcej o dziennikach zasobów](../../azure-monitor/platform/resource-logs-overview.md)
+* [Dowiedz się więcej o dziennikach zasobów](../../azure-monitor/platform/platform-logs-overview.md)
 * [Przesyłanie strumieniowe dzienników zasobów zasobów do **Event Hubs**](../../azure-monitor/platform/resource-logs-stream-event-hubs.md)
 * [Zmienianie ustawień diagnostycznych dziennika zasobów przy użyciu interfejsu API REST Azure Monitor](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings)
 * [Analizowanie dzienników z usługi Azure storage za pomocą usługi Log Analytics](../../azure-monitor/platform/collect-azure-metrics-logs.md)

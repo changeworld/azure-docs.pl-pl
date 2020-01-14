@@ -4,12 +4,12 @@ description: Dowiedz się, jak zainstalować rozszerzenie Durable Functions dla 
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.reviewer: azfuncdf
-ms.openlocfilehash: eaa241eff6e1c359045a0ea3d8871fde6c60a059
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 0060088acb100036c094406e01d0d736a4af88eb
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231481"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769646"
 ---
 # <a name="create-durable-functions-using-the-azure-portal"></a>Tworzenie Durable Functions przy użyciu Azure Portal
 
@@ -22,7 +22,7 @@ Rozszerzenie [Durable Functions](durable-functions-overview.md) dla Azure Functi
 
 ## <a name="create-a-function-app"></a>Tworzenie aplikacji funkcji
 
-Aby hostować wykonywanie dowolnej funkcji, musisz mieć aplikację funkcji. Aplikacja funkcji umożliwia grupowanie funkcji jako jednostki logicznej, co ułatwia zarządzanie, wdrażanie i udostępnianie zasobów. Możesz utworzyć aplikację platformy .NET lub JavaScript.
+Aby hostować wykonywanie dowolnej funkcji, musisz mieć aplikację funkcji. Aplikacja funkcji umożliwia grupowanie funkcji jako jednostki logicznej, co ułatwia zarządzanie, wdrażanie, skalowanie i udostępnianie zasobów. Możesz utworzyć aplikację platformy .NET lub JavaScript.
 
 [!INCLUDE [Create function app Azure portal](../../../includes/functions-create-function-app-portal.md)]
 
@@ -68,7 +68,7 @@ W przypadku tworzenia Durable Functions JavaScript należy zainstalować [pakiet
 
 1. W polu wyszukiwania wpisz `durable` a następnie wybierz szablon **DURABLE Functions http Starter** .
 
-1. Po wyświetleniu monitu wybierz pozycję **Zainstaluj** , aby zainstalować rozszerzenie Azure DurableTask wszystkie zależności w aplikacji funkcji. Wystarczy zainstalować rozszerzenie tylko raz dla aplikacji funkcji. Po pomyślnym zakończeniu instalacji wybierz pozycję **Kontynuuj**.
+1. Po wyświetleniu monitu wybierz pozycję **Zainstaluj** , aby zainstalować rozszerzenie Azure DurableTask i wszystkie zależności w aplikacji funkcji. Dla danej aplikacji funkcji wystarczy zainstalować rozszerzenie tylko raz. Po pomyślnym zakończeniu instalacji wybierz pozycję **Kontynuuj**.
 
     ![Instalowanie rozszerzeń powiązania](./media/durable-functions-create-portal/install-durabletask-extension.png)
 
@@ -88,7 +88,7 @@ W przypadku tworzenia Durable Functions JavaScript należy zainstalować [pakiet
     curl -X POST https://{your-function-app-name}.azurewebsites.net/api/orchestrators/HelloSequence
     ```
 
-    W tym przykładzie `{your-function-app-name}` jest domeną, która jest nazwą aplikacji funkcji. Komunikat odpowiedzi zawiera zestaw punktów końcowych identyfikatora URI, których można użyć do monitorowania wykonywania i zarządzania nim, który wygląda podobnie do następującego przykładu:
+    W tym przykładzie `{your-function-app-name}` jest domeną, która jest nazwą aplikacji funkcji. Komunikat odpowiedzi zawiera zestaw punktów końcowych identyfikatora URI, które umożliwiają monitorowanie wykonywania i zarządzanie nim, co wygląda podobnie jak w poniższym przykładzie:
 
     ```json
     {  

@@ -1,6 +1,6 @@
 ---
-title: Dodaj warstwę mapy cieplnej do Azure Maps | Microsoft Docs
-description: Jak dodać warstwę mapy cieplnej do Azure Maps Web SDK.
+title: Dodawanie warstwy mapy cieplnej do mapy | Mapy Microsoft Azure
+description: W tym artykule dowiesz się, jak dodać warstwę mapy cieplnej do mapy za pomocą Microsoft Azure Maps Web SDK.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 07/29/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: b0d07f18682bf39558180753de38a9c5ff106ee3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ead30a80a6568e72f922f355916d31121b49a93b
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75408527"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911219"
 ---
 # <a name="add-a-heat-map-layer"></a>Dodawanie warstwy mapy cieplnej
 

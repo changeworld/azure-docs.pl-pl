@@ -11,12 +11,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
-ms.openlocfilehash: a4b0debc712504e8cb3c6d61372bd3a82c7932bb
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.openlocfilehash: 58bfc35776e83df7754379a12ad4b7afca73e32c
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75497020"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75892341"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Dołączanie środowiska Azure-SSIS Integration Runtime do sieci wirtualnej
 
@@ -30,10 +30,20 @@ Korzystając z SQL Server Integration Services (SSIS) w Azure Data Factory, nale
 
 - Chcesz nawiązać połączenie z magazynami danych/zasobami skonfigurowanymi przy użyciu reguł zapory adresów IP z pakietów SSIS uruchomionych na Azure-SSIS IR.
 
-Data Factory umożliwia dołączenie Azure-SSIS IR do sieci wirtualnej utworzonej za pomocą klasycznego modelu wdrażania lub Azure Resource Managergo modelu wdrażania. 
+Data Factory umożliwia dołączenie Azure-SSIS IR do sieci wirtualnej utworzonej za pomocą klasycznego modelu wdrażania lub Azure Resource Managergo modelu wdrażania.
 
 > [!IMPORTANT]
 > Klasyczna Sieć wirtualna jest przestarzała, dlatego użyj w zamian Azure Resource Manager sieci wirtualnej.  Jeśli używasz już klasycznej sieci wirtualnej, przełącz się do Azure Resource Manager sieci wirtualnej najszybciej, jak to możliwe.
+
+W przypadku [konfigurowania środowiska Integration Runtime (IR) platformy Azure — SQL Server Integration Services (SSIS) w celu dołączenia do samouczka dotyczącego sieci wirtualnej](tutorial-deploy-ssis-virtual-network.md) przedstawiono minimalne kroki w Azure Portal. Ten artykuł rozszerza się w samouczku i opisuje wszystkie opcjonalne zadania:
+
+- Jeśli używasz sieci wirtualnej (klasycznej).
+- Jeśli utworzysz własne publiczne adresy IP dla Azure-SSIS IR.
+- Jeśli używasz własnego serwera DNS (Domain Name System).
+- W przypadku używania sieciowej grupy zabezpieczeń (sieciowej grupy zabezpieczeń) w podsieci.
+- Jeśli używasz usługi Azure ExpressRoute lub trasy zdefiniowanej przez użytkownika (UDR).
+- Jeśli używasz niestandardowych Azure-SSIS IR.
+- W przypadku korzystania z aprowizacji programu Azure PowerShell.
 
 ## <a name="access-to-on-premises-data-stores"></a>Dostęp do lokalnych magazynów danych
 
@@ -47,7 +57,7 @@ Podczas dołączania Azure-SSIS IR do sieci wirtualnej należy pamiętać o nast
 
 - Jeśli klasyczna Sieć wirtualna jest już połączona z siecią lokalną w innej lokalizacji z Azure-SSIS IR, można utworzyć [Azure Resource Manager sieci wirtualnej](../virtual-network/quick-create-portal.md#create-a-virtual-network) dla Azure-SSIS IR do przyłączenia. Następnie skonfiguruj połączenie z [siecią wirtualną w trybie klasycznym Azure Resource Manager](../vpn-gateway/vpn-gateway-connect-different-deployment-models-portal.md) . 
  
-- Jeśli Azure Resource Manager Sieć wirtualna jest już połączona z siecią lokalną w innej lokalizacji z Azure-SSIS IR, można najpierw utworzyć [Azure Resource Manager sieci wirtualnej](../virtual-network/quick-create-portal.md##create-a-virtual-network) dla Azure-SSIS IR do przyłączenia. Następnie skonfiguruj połączenie sieci wirtualnej Azure Resource Manager Azure Resource Manager. 
+- Jeśli Azure Resource Manager Sieć wirtualna jest już połączona z siecią lokalną w innej lokalizacji z Azure-SSIS IR, można najpierw utworzyć [Azure Resource Manager sieci wirtualnej](../virtual-network/quick-create-portal.md#create-a-virtual-network) dla Azure-SSIS IR do przyłączenia. Następnie skonfiguruj połączenie sieci wirtualnej Azure Resource Manager Azure Resource Manager. 
 
 ## <a name="hosting-the-ssis-catalog-in-sql-database"></a>Hostowanie wykazu usług SSIS w SQL Database
 
@@ -231,7 +241,7 @@ Użyj portalu, aby skonfigurować sieć wirtualną Azure Resource Manager przed 
 
 1. Uruchom przeglądarkę Microsoft Edge lub Google Chrome. Obecnie tylko te przeglądarki sieci Web obsługują interfejs użytkownika Data Factory. 
 
-1. Zaloguj się do [Portalu Azure](https://portal.azure.com). 
+1. Zaloguj się do [portalu Azure](https://portal.azure.com). 
 
 1. Wybierz pozycję **więcej usług**. Odfiltruj i wybierz **sieci wirtualne**. 
 
@@ -261,7 +271,7 @@ Użyj portalu, aby skonfigurować klasyczną sieć wirtualną przed podjęciem p
 
 1. Uruchom przeglądarkę Microsoft Edge lub Google Chrome. Obecnie tylko te przeglądarki sieci Web obsługują interfejs użytkownika Data Factory. 
 
-1. Zaloguj się do [Portalu Azure](https://portal.azure.com). 
+1. Zaloguj się do [portalu Azure](https://portal.azure.com). 
 
 1. Wybierz pozycję **więcej usług**. Filtruj i wybieraj **sieci wirtualne (klasyczne)** . 
 
@@ -319,7 +329,7 @@ Po skonfigurowaniu sieci wirtualnej Azure Resource Manager lub klasycznej sieci 
 
    ![Lista fabryk danych](media/join-azure-ssis-integration-runtime-virtual-network/data-factories-list.png)
 
-1. Wybierz fabrykę danych z Azure-SSIS IR na liście. Zostanie wyświetlona strona główna fabryki danych. Wybierz kafelek **tworzenie & Wdróż** . Na oddzielnej karcie zobaczysz interfejs użytkownika Data Factory. 
+1. Wybierz fabrykę danych z Azure-SSIS IR na liście. Zostanie wyświetlona strona główna fabryki danych. Wybierz kafelek **tworzenie & monitor** . Na oddzielnej karcie zobaczysz interfejs użytkownika Data Factory. 
 
    ![Strona główna fabryki danych](media/join-azure-ssis-integration-runtime-virtual-network/data-factory-home-page.png)
 

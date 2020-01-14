@@ -1,6 +1,6 @@
 ---
-title: Jak żądania danych w czasie rzeczywistym w Azure Maps | Microsoft Docs
-description: Zażądaj danych w czasie rzeczywistym przy użyciu usługi mobilności Azure Maps.
+title: Żądaj danych tranzytowych w czasie rzeczywistym | Mapy Microsoft Azure
+description: Zażądaj danych w czasie rzeczywistym przy użyciu usługi mobilności Maps Microsoft Azure.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 09/06/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 5f69bcafbc3abb39b4185e0144ff6029808c0704
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 169764f015f332d07c21ef815e6044c653489774
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432975"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911427"
 ---
 # <a name="request-real-time-data-using-the-azure-maps-mobility-service"></a>Żądanie danych w czasie rzeczywistym przy użyciu usługi mobilności Azure Maps
 

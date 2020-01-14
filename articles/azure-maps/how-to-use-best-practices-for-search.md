@@ -1,6 +1,6 @@
 ---
-title: Jak wyszukiwać efektywnie przy użyciu usługi Azure Maps Search | Microsoft Docs
-description: Dowiedz się, jak używać najlepszych rozwiązań do wyszukiwania za pomocą usługi Azure Maps Search
+title: Efektywne wyszukiwanie przy użyciu Search Service Azure Maps | Mapy Microsoft Azure
+description: Dowiedz się, jak używać najlepszych rozwiązań do wyszukiwania przy użyciu Microsoft Azure Maps Search Service
 author: walsehgal
 ms.author: v-musehg
 ms.date: 04/08/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: de9e484e43c87375c2fdf9b34dd2efce3bb8aa8c
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: aa3c7b58b3a391de40940636a67a4a224c44fe10
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72429183"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911363"
 ---
 # <a name="best-practices-to-use-azure-maps-search-service"></a>Najlepsze rozwiązania dotyczące korzystania z Azure Maps Search Service
 
@@ -27,13 +27,13 @@ Azure Maps [Search Service](https://docs.microsoft.com/rest/api/maps/search) obe
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby wykonać wywołania do interfejsów API usługi Maps, musisz mieć konto i klucz mapy. Aby uzyskać informacje na temat tworzenia konta, postępuj zgodnie z instrukcjami w sekcji [Zarządzanie kontem](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account) i wykonaj kroki opisane w sekcji [Uzyskiwanie klucza podstawowego](./tutorial-search-location.md#getkey) , aby pobrać podstawowy klucz subskrypcji dla konta.
+Aby wykonać wywołania do interfejsów API usługi Maps, musisz mieć konto i klucz mapy. Aby uzyskać informacje na temat tworzenia konta, postępuj zgodnie z instrukcjami w temacie [Tworzenie konta](quick-demo-map-app.md#create-an-account-with-azure-maps) i wykonaj kroki opisane w sekcji [Uzyskiwanie klucza podstawowego](quick-demo-map-app.md#get-the-primary-key-for-your-account) w celu pobrania klucza podstawowego (subskrypcja) dla konta. Aby uzyskać więcej informacji na temat uwierzytelniania w Azure Maps, zobacz [Zarządzanie uwierzytelnianiem w programie Azure Maps](./how-to-manage-authentication.md).
 
 > [!Tip]
 > Aby wysłać zapytanie do usługi wyszukiwania, możesz użyć [aplikacji Poster](https://www.getpostman.com/apps) do kompilowania wywołań REST lub można użyć dowolnego preferowanego środowiska DEWELOPERSKIEGO interfejsu API.
 
 
-## <a name="best-practices-for-geocoding"></a>Najlepsze rozwiązania dotyczące geokodowania
+## <a name="best-practices-for-geocoding-address-search"></a>Najlepsze rozwiązania dotyczące geokodowania (wyszukiwanie adresów)
 
 Podczas wyszukiwania pełnych lub częściowych adresów przy użyciu Azure Maps Search Service, pobiera termin wyszukiwania i zwraca współrzędne długości geograficznej adresu. Ten proces jest nazywany geokodowaniem. Możliwość geokodowania w kraju zależy od pokrycia danych drogowych oraz dokładności geokodowanej usługi geokodowania.
 
@@ -58,10 +58,12 @@ Zobacz [pokrycie geokodowania](https://docs.microsoft.com/azure/azure-maps/geoco
 
 
    **Parametry wyszukiwania rozmytego**
+   
+   Azure Maps [interfejs API wyszukiwania rozmytego](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) jest zalecaną usługą, która jest używana, gdy nie wiesz, jak dane wejściowe użytkownika są przeznaczone dla zapytania wyszukiwania. Interfejs API łączy funkcję wyszukiwania (punkt POI) z wyszukiwaniem i geokodowaniem do kanonicznego *wyszukiwania jednowierszowego*. 
 
    1. `minFuzzyLevel` i `maxFuzzyLevel`, pomagają zwrócić odpowiednie dopasowania nawet wtedy, gdy parametry zapytania nie są dokładnie zgodne z żądanymi informacjami. Większość zapytań wyszukiwania jest domyślnie `minFuzzyLevel=1` i `maxFuzzyLevel=2`, aby uzyskać wydajność i zmniejszyć nietypowe wyniki. Zapoznaj się z przykładem terminu wyszukiwania "restrant", który jest dopasowywany do "restauracji", gdy `maxFuzzyLevel` ma wartość 2. Domyślne poziomy rozmyte mogą być zastępowane zgodnie z potrzebami żądania. 
 
-   2. Można również określić dokładny zestaw typów wyników do zwrócenia przy użyciu parametru `idxSet`. W tym celu można przesłać listę indeksów rozdzieloną przecinkami, kolejność elementów nie ma znaczenia. Obsługiwane są następujące indeksy:
+   2. Można również określić priorytety dokładnego zestawu typów wyników do zwrócenia przy użyciu parametru `idxSet`. W tym celu można przesłać listę indeksów rozdzieloną przecinkami. kolejność elementów nie ma znaczenia. Obsługiwane są następujące indeksy:
 
        * `Addr`**zakresy adresów** - : w przypadku niektórych ulic istnieją punkty adresów, które są interpolowane od początku i końca ulicy; te punkty są reprezentowane jako zakresy adresów.
        * `Geo` - **lokalizacje geograficzne**: obszary na mapie, które reprezentują Wydział administracyjny terenu, czyli kraj, Województwo, miasto.
@@ -317,7 +319,10 @@ Wyszukiwanie punktów orientacyjnych (punkt POI) umożliwia żądanie punkt POI 
 
 Aby poprawić znaczenie wyników i informacje zawarte w odpowiedzi, punkt zainteresowania (punkt POI) odpowiedzi na odpowiedź zawiera informacje o marce, których można użyć do przeanalizowania odpowiedzi.
 
+W żądaniu można również przesłać listę nazw marek rozdzielonych przecinkami. Możesz użyć listy, aby ograniczyć wyniki do określonych marek przy użyciu parametru `brandSet`. Kolejność elementów nie ma znaczenia. Jeśli podano wiele marek, zwracane są tylko wyniki należące do (co najmniej jednej z podanych list).
+
 Przyjrzyjmy się żądaniu [wyszukiwania kategorii punkt POI](https://docs.microsoft.com/rest/api/maps/search/getsearchpoicategory) dla stacji gazowych blisko Microsoft kampusów (REDMOND, WA). Jeśli zobaczysz odpowiedź, zobaczysz informacje o marce dla każdej zwróconej punkt POI.
+
 
 **Przykładowe zapytanie:**
 

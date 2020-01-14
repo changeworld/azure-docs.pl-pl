@@ -1,6 +1,6 @@
 ---
-title: Informacje na temat kondycji hybrydowego procesu roboczego elementu Runbook w systemie Linux w usłudze Azure Update Management
-description: Dowiedz się, jak rozwiązywać problemy z hybrydowym procesem roboczym elementu Runbook w systemie Linux, który obsługuje Update Management.
+title: Diagnostyka hybrydowego procesu roboczego elementu Runbook w systemie Linux — Update Management platformy Azure
+description: Dowiedz się, jak rozwiązywać problemy z Azure Automation hybrydowego procesu roboczego elementu Runbook w systemie Linux, który obsługuje Update Management.
 services: automation
 author: mgoedtel
 ms.author: magoedte
@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: 924c2fd176b5b8e45352d616d226f484e814450d
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: e60ba71607b99f0ea97e0725ffdd0740f3e9c579
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849263"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769833"
 ---
-# <a name="understand-the-linux-hybrid-runbook-worker-health-in-update-management"></a>Informacje o kondycji hybrydowego procesu roboczego elementu Runbook w systemie Linux w Update Management
+# <a name="understand-and-resolve-linux-hybrid-runbook-worker-health-for-update-management"></a>Informacje na temat kondycji hybrydowego procesu roboczego elementu Runbook w systemie Linux dla Update Management
 
 Może istnieć wiele przyczyn, dla których Twoja maszyna nie **jest wyświetlana w** Update Management. W Update Management można sprawdzić kondycję agenta hybrydowego procesu roboczego elementu Runbook w celu ustalenia podstawowego problemu. W tym artykule omówiono sposób uruchamiania narzędzia do rozwiązywania problemów dla maszyn platformy Azure z poziomu maszyn Azure Portal i spoza platformy Azure w [scenariuszu w trybie offline](#troubleshoot-offline).
 

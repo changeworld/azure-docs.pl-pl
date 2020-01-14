@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: a4a4393a25bfa49a8074793b572111f69dcc17c4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: HT
+ms.openlocfilehash: 34c0c52945abc6e0ab74b1cb180581c76464bee8
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75459644"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749957"
 ---
 # <a name="azure-operational-security"></a>Zabezpieczenia operacyjne platformy Azure
 ## <a name="introduction"></a>Wprowadzenie
@@ -195,7 +195,7 @@ Te dzienniki są emitowane przez zasób i zapewniają rozbudowane, częste dane 
 
 Na przykład Dzienniki systemu zdarzeń systemu Windows są jedną kategorią dziennika diagnostycznego dla maszyn wirtualnych i dzienników obiektów blob, tabel i kolejek są kategorie dzienników diagnostycznych dla kont magazynu.
 
-Dzienniki diagnostyczne różnią się od [dziennika aktywności (dawniej zwanego dziennikiem inspekcji lub dziennikiem operacji)](../../azure-monitor/platform/activity-logs-overview.md). Dziennik aktywności zawiera szczegółowe informacje o operacjach wykonywanych na zasobach w ramach subskrypcji. Dzienniki diagnostyczne udostępniają szczegółowe dane operacji wykonanych przez sam zasób.
+Dzienniki diagnostyczne różnią się od [dziennika aktywności (dawniej zwanego dziennikiem inspekcji lub dziennikiem operacji)](../../azure-monitor/platform/platform-logs-overview.md). Dziennik aktywności zawiera szczegółowe informacje o operacjach wykonywanych na zasobach w ramach subskrypcji. Dzienniki diagnostyczne udostępniają szczegółowe dane operacji wykonanych przez sam zasób.
 
 ### <a name="metrics"></a>Metryki
 

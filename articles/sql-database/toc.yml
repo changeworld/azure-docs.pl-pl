@@ -337,6 +337,8 @@
               href: sql-database-design-first-database-csharp.md
         - name: Ładowanie i przenoszenie danych
           items:
+            - name: Importowanie na maszynę wirtualną platformy Azure lub eksportowanie z niej
+              href: import-export-from-vm.md
             - name: Importowanie bazy danych z pliku BACPAC
               href: sql-database-import.md
             - name: Eksportowanie bazy danych do pliku BACPAC
@@ -504,6 +506,8 @@
           href: sql-database-security-tutorial.md
         - name: Strumieniowe przesyłanie danych za pomocą usługi Stream Analytics
           href: sql-database-stream-analytics.md
+        - name: Migrowanie bazy danych programu SQLite do bezserwerowej usługi Azure SQL Database
+          href: tutorial-sqlite-db-to-azure-sql-serverless-offline.md
     - name: Pojęcia
       items:
         - name: Zasoby pojedynczej bazy danych

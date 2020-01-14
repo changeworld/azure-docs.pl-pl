@@ -10,18 +10,18 @@ ms.date: 10/14/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: c37d778fe9ad7d21943ed92452fae34b4b8771e7
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: e353a65544e86e702bd216db5c8b5f81f033c46a
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74560925"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772248"
 ---
 # <a name="tutorial-develop-and-deploy-a-python-iot-edge-module-for-linux-devices"></a>Samouczek: Tworzenie i wdrażanie modułu IoT Edge Python dla urządzeń z systemem Linux
 
-Użyj Visual Studio Code, aby opracować kod C i wdrożyć go na urządzeniu z systemem Linux z Azure IoT Edge. 
+Użyj Visual Studio Code, aby opracować kod w języku Python i wdrożyć go na urządzeniu z systemem Linux z Azure IoT Edge. 
 
-Moduły usługi Azure IoT Edge umożliwiają wdrożenie kodu implementującego logikę biznesową bezpośrednio na urządzeniach usługi IoT Edge. Ten samouczek przeprowadzi Cię przez proces tworzenia i wdrażania modułu IoT Edge, który filtruje dane czujników na urządzeniu IoT Edge skonfigurowanym w ramach przewodnika Szybki Start. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:    
+Moduły usługi Azure IoT Edge umożliwiają wdrożenie kodu implementującego logikę biznesową bezpośrednio na urządzeniach usługi IoT Edge. Ten samouczek przeprowadzi Cię przez proces tworzenia i wdrażania modułu IoT Edge, który filtruje dane czujników na urządzeniu IoT Edge skonfigurowanym w ramach przewodnika Szybki Start. Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:    
 
 > [!div class="checklist"]
 > * Tworzenie modułu usługi IoT Edge w języku Python przy użyciu programu Visual Studio Code.
@@ -34,16 +34,13 @@ Utworzony w tym samouczku moduł usługi IoT Edge filtruje dane temperatury gene
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-> [!NOTE]
-> Poniższy przewodnik dotyczy zestawu SDK języka Python w wersji 1, który został uznany za przestarzały. Obecnie pracujemy nad udostępnieniem tego przewodnika w wersji 2. Obejrzyj to miejsce, aby uzyskać aktualizacje.
-
 ## <a name="solution-scope"></a>Zakres rozwiązania
 
 W tym samouczku przedstawiono sposób tworzenia modułu w języku **Python** przy użyciu **Visual Studio Code**i sposobu wdrażania go na **urządzeniu z systemem Linux**. IoT Edge nie obsługuje modułów języka Python dla urządzeń z systemem Windows. 
 
 Skorzystaj z poniższej tabeli, aby poznać opcje tworzenia i wdrażania modułów języka Python w systemie Linux: 
 
-| Python | Visual Studio Code | Program Visual Studio 2017/2019 | 
+| Python | Visual Studio Code | Visual Studio 2017/2019 | 
 | - | ------------------ | ------------------ |
 | **Linux AMD64** | ![Używanie VS Code dla modułów języka Python w systemie Linux AMD64](./media/tutorial-c-module/green-check.png) |  |
 | **ARM32 systemu Linux** | ![Używanie VS Code dla modułów języka Python w systemie Linux ARM32](./media/tutorial-c-module/green-check.png) |  |
@@ -103,7 +100,7 @@ W pliku środowiska przechowywane są poświadczenia repozytorium kontenera, udo
 
 ### <a name="select-your-target-architecture"></a>Wybieranie architektury docelowej
 
-Obecnie Visual Studio Code mogą opracowywać moduły C dla urządzeń z systemem Linux AMD64 i Linux ARM32v7. Należy wybrać, która architektura ma być ukierunkowana na każde rozwiązanie, ponieważ kontener jest zbudowany i uruchamiany inaczej dla każdego typu architektury. Wartość domyślna to Linux AMD64. 
+Obecnie Visual Studio Code mogą opracowywać moduły języka Python dla urządzeń z systemem Linux AMD64 i Linux ARM32v7. Należy wybrać, która architektura ma być ukierunkowana na każde rozwiązanie, ponieważ kontener jest zbudowany i uruchamiany inaczej dla każdego typu architektury. Wartość domyślna to Linux AMD64. 
 
 1. Otwórz paletę poleceń i Wyszukaj **Azure IoT Edge: Ustaw domyślną platformę docelową dla rozwiązania brzegowego**lub wybierz ikonę skrótu na pasku bocznym u dołu okna. 
 
@@ -274,7 +271,7 @@ W tym samouczku został utworzony moduł usługi IoT Edge zawierający kod słu�
 Możesz przejść do kolejnych samouczków, aby dowiedzieć się, jak Azure IoT Edge może pomóc w wdrażaniu usług Azure Cloud Services w celu przetwarzania i analizowania danych na krawędzi.
 
 > [!div class="nextstepaction"]
-> [Funkcje](tutorial-deploy-function.md)
+> [Functions](tutorial-deploy-function.md)
 > [Stream Analytics](tutorial-deploy-stream-analytics.md)
 > [Machine Learning](tutorial-deploy-machine-learning.md)
 > [Custom Vision Service](tutorial-deploy-custom-vision.md)

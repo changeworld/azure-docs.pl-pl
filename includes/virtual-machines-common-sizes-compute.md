@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/04/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 21b982389b186e949b21352f4b11bd6b4aa06dcb
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: dd94f29317e703a68ba1b4a78639f635034d4492
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279202"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75752375"
 ---
 <!-- F-series, Fs-series* -->
 
@@ -31,7 +31,7 @@ Premium Storage: obsługiwane
 
 Buforowanie Premium Storage: obsługiwane
 
-| Rozmiar             | Procesorów wirtualnych vCPU | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Maks. liczba dysków danych | Maksymalna przepływność magazynu buforowanego i tymczasowego: liczba operacji we/wy na sekundę / MB/s (rozmiar pamięci podręcznej w GiB) | Maksymalna przepływność niebuforowanych dysków: liczba operacji we/wy na sekundę / MB/s | Maksymalna liczba kart sieciowych/oczekiwana przepustowość sieci (MB/s) |
+| Rozmiar             | Procesory wirtualne | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Maksymalna liczba dysków danych | Maksymalna przepływność magazynu buforowanego i tymczasowego: liczba operacji we/wy na sekundę / MB/s (rozmiar pamięci podręcznej w GiB) | Maksymalna przepływność niebuforowanych dysków: liczba operacji we/wy na sekundę / MB/s | Maksymalna liczba kart sieciowych/oczekiwana przepustowość sieci (MB/s) |
 |------------------|--------|-------------|----------------|----------------|--------------------------|--------------------------|-------------------------|
 | Standard_F2s_v2  | 2      | 4           | 16             | 4              | 4000/31 (32)           | 3200/47                | 2 / 875                 |
 | Standard_F4s_v2  | 4      | 8           | 32             | 8              | 8000/63 (64)           | 6400/95                | 2 / 1750               |
@@ -44,6 +44,15 @@ Buforowanie Premium Storage: obsługiwane
 
 <sup>1</sup> maszyny wirtualne serii Fsv2 z technologią Hyper-Threading firmy Intel®.
 
-<sup>2</sup> użycie więcej niż 64 vCPU wymaga jednego z obsługiwanych systemów operacyjnych gościa: Windows Server 2016, Ubuntu 16,04 LTS, SLES 12 SP2 i Red Hat Enterprise Linux, CentOS 7,3 lub Oracle Linux 7,3 z prze4.2.1.
+<sup>2</sup> użycie więcej niż 64 vCPU wymaga jednego z obsługiwanych systemów operacyjnych gościa:
+- System Windows Server 2016 lub nowszy
+- Ubuntu 16,04 LTS lub nowszy z dostrojonym jądrem platformy Azure (jądrem 4,15 lub nowszym)
+- SLES 12 z dodatkiem SP2 lub nowszym
+- RHEL lub CentOS w wersji 6,7 przez 6,10 z zainstalowanym pakietem LIS firmy Microsoft (lub nowszym)
+- RHEL lub CentOS w wersji 7,3 z pakietem LIS dostarczonym przez firmę Microsoft (lub nowszym)
+- RHEL lub CentOS w wersji 7,6 lub nowszej
+- Oracle Linux z UEK4 lub nowszym
+- Debian 9 z jądrem, Debian 10 lub nowszym
+- CoreOS z jądrem 4,14 lub nowszym
 
 <sup>3</sup> wystąpienie jest izolowane do sprzętu dedykowanego pojedynczemu klientowi.

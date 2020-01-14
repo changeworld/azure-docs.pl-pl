@@ -5,17 +5,17 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: quickstart
-ms.date: 11/12/2019
+ms.date: 01/08/2020
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 91674d6335ae95993bcdd59250658d562302b1dc
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: de4d3ce11e23d7ec4f6ad26852e7d7d01eebe590
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954144"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75780015"
 ---
-# <a name="set-up-disaster-recovery-to-a-secondary-azure-region-for-an-azure-vm"></a>Konfigurowanie odzyskiwania po awarii do regionu pomocniczego platformy Azure dla maszyny wirtualnej platformy Azure        
+# <a name="set-up-disaster-recovery-to-a-secondary-azure-region-for-an-azure-vm"></a>Konfigurowanie odzyskiwania po awarii do regionu pomocniczego platformy Azure dla maszyny wirtualnej platformy Azure
 
 Usługa [Azure Site Recovery](site-recovery-overview.md) stanowi część strategii związanej z ciągłością biznesową i odzyskiwaniem po awarii przez zapewnienie niezawodnego działania aplikacji biznesowych podczas planowanych i nieplanowanych przestojów. Usługa Site Recovery zarządza odzyskiwaniem po awarii maszyn lokalnych i maszyn wirtualnych platformy Azure, a także organizuje to odzyskiwanie. Obejmuje to replikację, przechodzenie w tryb failover i odzyskiwanie.
 
@@ -24,11 +24,11 @@ W tym przewodniku szybki start opisano sposób konfigurowania odzyskiwania po aw
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 > [!NOTE]
-> Ten artykuł stanowi krótki przewodnik dla nowych użytkowników. Używa najprostszej ścieżki z opcjami domyślnymi i minimalnym dostosowaniem.  Aby zapoznać się z [naszym samouczkiem, zobacz nasz samouczek](azure-to-azure-tutorial-enable-replication.md).
+> Ten artykuł stanowi krótki przewodnik dla nowych użytkowników. Używa najprostszej ścieżki z opcjami domyślnymi i minimalnym dostosowaniem. Aby zapoznać się z pełnym przewodnikiem, zapoznaj się z samouczkiem [Włączanie replikacji](azure-to-azure-tutorial-enable-replication.md).
 
 ## <a name="log-in-to-azure"></a>Zaloguj się do platformy Azure.
 
-Zaloguj się do witryny Azure Portal na stronie https://portal.azure.com.
+Zaloguj się do witryny [Azure Portal](https://portal.azure.com).
 
 ## <a name="enable-replication-for-the-azure-vm"></a>Włączanie replikacji maszyny wirtualnej platformy Azure
 
@@ -38,7 +38,7 @@ Zaloguj się do witryny Azure Portal na stronie https://portal.azure.com.
 4. W przypadku tego przewodnika Szybki Start należy zaakceptować ustawienia domyślne.
 5. Wybierz kolejno pozycje **Recenzja + Uruchom replikację**. Następnie wybierz pozycję **Rozpocznij replikację** , aby uruchomić zadanie umożliwiające REPLIKACJĘ maszyny wirtualnej.
 
-    ![włączanie replikacji](media/azure-to-azure-quickstart/enable-replication1.png)
+   ![włączanie replikacji](media/azure-to-azure-quickstart/enable-replication1.png)
 
 ## <a name="verify-settings"></a>Weryfikowanie ustawień
 
@@ -55,10 +55,10 @@ Po zakończeniu zadania replikacji można sprawdzić stan replikacji, zmodyfikow
 
 Replikowanie maszyny wirtualnej w regionie podstawowym jest zatrzymywane w przypadku wyłączenia dla niej replikacji:
 
-- Ustawienia replikacji źródła są automatycznie czyszczone. Rozszerzenie Site Recovery zainstalowane na maszynie wirtualnej w ramach replikacji nie jest usuwane i należy je usunąć ręcznie. 
+- Ustawienia replikacji źródła są automatycznie czyszczone. Rozszerzenie Site Recovery zainstalowane na maszynie wirtualnej w ramach replikacji nie jest usuwane i należy je usunąć ręcznie.
 - Rozliczanie Site Recovery dla maszyny wirtualnej zostanie zatrzymane.
 
-Zatrzymaj replikację w następujący sposób
+Aby zatrzymać replikację:
 
 1. W menu Azure Portal wybierz pozycję **maszyny wirtualne**lub Wyszukaj i wybierz pozycję *maszyny wirtualne* na dowolnej stronie. Wybierz maszynę wirtualną, którą chcesz zmodyfikować.
 2. W obszarze **odzyskiwanie po awarii**wybierz pozycję **Wyłącz replikację**.

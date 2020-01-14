@@ -11,12 +11,12 @@ ms.author: jaredmoo
 author: jaredmoo
 ms.reviewer: sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: deefc1cc1d8fe82eab9ec0085b3a11ccd2fe7840
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 6b70eb1a6e51c98311ae51648b1a9618f9c3349d
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820600"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861340"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs"></a>Tworzenie Elastic Database zadań i zarządzanie nimi przy użyciu języka Transact-SQL (T-SQL)
 
@@ -1192,7 +1192,7 @@ GO
 Poniższe widoki są dostępne w [bazie danych zadań](sql-database-job-automation-overview.md#job-database).
 
 
-|Widok  |Opis  |
+|Wyświetl  |Opis  |
 |---------|---------|
 |[job_executions](#job_executions-view)     |  Pokazuje historię wykonywania zadań.      |
 |[zadania](#jobs-view)     |   Pokazuje wszystkie zadania.      |
@@ -1200,7 +1200,7 @@ Poniższe widoki są dostępne w [bazie danych zadań](sql-database-job-automati
 |[jobsteps](#jobsteps-view)     |     Przedstawia wszystkie kroki w bieżącej wersji każdego zadania.    |
 |[jobstep_versions](#jobstep_versions-view)     |     Przedstawia wszystkie kroki we wszystkich wersjach każdego zadania.    |
 |[target_groups](#target_groups-view)     |      Pokazuje wszystkie grupy docelowe.   |
-|[target_group_members](#target_groups_members-view)     |   Pokazuje wszystkie elementy członkowskie wszystkich grup docelowych.      |
+|[target_group_members](#target_group_members-view)     |   Pokazuje wszystkie elementy członkowskie wszystkich grup docelowych.      |
 
 
 ### <a name="job_executions-view"></a>Widok job_executions
@@ -1224,11 +1224,11 @@ Pokazuje historię wykonywania zadań.
 |**end_time**|  datetime2 (7)    |Data i godzina zakończenia wykonywania zadania. Wartość NULL, jeśli zadanie nie zostało jeszcze wykonane lub nie zostało jeszcze ukończone.
 |**current_attempts**   |int    |Liczba ponownych prób wykonania kroku. Zadanie nadrzędne zostanie równe 0, a podrzędne wykonania zadania będą mieć wartość 1 lub wyższą na podstawie zasad wykonywania.
 |**current_attempt_start_time** |datetime2 (7)|  Data i godzina wykonania zadania. Wartość NULL wskazuje, że jest to zadanie nadrzędne.
-|**last_message**   |nvarchar (max)| Komunikat historii zadania lub kroku. 
+|**last_message**   |nvarchar(max)| Komunikat historii zadania lub kroku. 
 |**target_type**|   nvarchar (128)   |Typ docelowej bazy danych lub kolekcji baz danych, w tym wszystkich baz danych na serwerze, wszystkich baz danych w puli elastycznej lub w bazie danych. Prawidłowe wartości dla target_type to "SqlServer", "SqlElasticPool" lub "SQLDatabase". Wartość NULL wskazuje, że jest to zadanie nadrzędne.
 |**target_id**  |uniqueidentifier|  Unikatowy identyfikator członka grupy docelowej.  Wartość NULL wskazuje, że jest to zadanie nadrzędne.
 |**target_group_name**  |nvarchar (128)  |Nazwa grupy docelowej. Wartość NULL wskazuje, że jest to zadanie nadrzędne.
-|**target_server_name**|    nvarchar (256)|  Nazwa serwera SQL Database znajdującego się w grupie docelowej. Określany tylko wtedy, gdy target_type to "SqlServer". Wartość NULL wskazuje, że jest to zadanie nadrzędne.
+|**target_server_name**|    nvarchar(256)|  Nazwa serwera SQL Database znajdującego się w grupie docelowej. Określany tylko wtedy, gdy target_type to "SqlServer". Wartość NULL wskazuje, że jest to zadanie nadrzędne.
 |**target_database_name**   |nvarchar (128)| Nazwa bazy danych zawartej w grupie docelowej. Określany tylko wtedy, gdy target_type jest "SQLDatabase". Wartość NULL wskazuje, że jest to zadanie nadrzędne.
 
 
@@ -1278,23 +1278,23 @@ Przedstawia wszystkie kroki w bieżącej wersji każdego zadania.
 |**step_name**  |nvarchar (128)  |Unikatowa nazwa (dla tego zadania) dla tego kroku.|
 |**command_type**   |nvarchar (50)   |Typ polecenia do wykonania w kroku zadania. Dla wersji 1 musi być równa i domyślna wartość "TSql".|
 |**command_source** |nvarchar (50)|  Lokalizacja polecenia. W wersji 1 wartość "inline" jest wartością domyślną i jedyną zaakceptowaną wartością.|
-|**dotyczące**|   nvarchar (max)|  Polecenia, które mają być wykonywane przez zadania elastyczne za pomocą command_type.|
+|**dotyczące**|   nvarchar(max)|  Polecenia, które mają być wykonywane przez zadania elastyczne za pomocą command_type.|
 |**credential_name**|   nvarchar (128)   |Nazwa poświadczenia w zakresie bazy danych używanej do wykonywania zadania.|
 |**target_group_name**| nvarchar (128)   |Nazwa grupy docelowej.|
 |**target_group_id**|   uniqueidentifier|   Unikatowy identyfikator grupy docelowej.|
 |**initial_retry_interval_seconds**|    int |Opóźnienie przed pierwszym ponowieniem próby. Wartość domyślna to 1.|
 |**maximum_retry_interval_seconds** |int|   Maksymalne opóźnienie między ponownymi próbami. Jeśli opóźnienie między kolejnymi próbami będzie większe niż ta wartość, zostanie ona ograniczona do tej wartości. Wartość domyślna to 120.|
-|**retry_interval_backoff_multiplier**  |czasie rzeczywistym|  Mnożnik, który ma zostać zastosowany do opóźnienia ponowienia próby w przypadku niepowodzenia wykonywania wielu kroków zadania. Wartość domyślna to 2,0.|
+|**retry_interval_backoff_multiplier**  |real|  Mnożnik, który ma zostać zastosowany do opóźnienia ponowienia próby w przypadku niepowodzenia wykonywania wielu kroków zadania. Wartość domyślna to 2,0.|
 |**retry_attempts** |int|   Liczba ponownych prób do użycia, jeśli ten krok zakończy się niepowodzeniem. Wartość domyślna to 10, co oznacza, że nie ponowienia próby.|
 |**step_timeout_seconds**   |int|   Czas (w minutach) między ponownymi próbami. Wartość domyślna to 0, co oznacza interwał 0 minut.|
 |**output_type**    |nvarchar (11)|  Lokalizacja polecenia. W bieżącej wersji zapoznawczej "inline" jest wartością domyślną i jedyną zaakceptowaną wartością.|
 |**output_credential_name**|    nvarchar (128)   |Nazwa poświadczeń do użycia w celu nawiązania połączenia z serwerem docelowym w celu zapisania zestawu wyników.|
 |**output_subscription_id**|    uniqueidentifier|   Unikatowy identyfikator subskrypcji server\database docelowego dla zestawu wyników w wyniku wykonywania zapytania.|
 |**output_resource_group_name** |nvarchar (128)| Nazwa grupy zasobów, w której znajduje się serwer docelowy.|
-|**output_server_name**|    nvarchar (256)   |Nazwa serwera docelowego dla zestawu wyników.|
+|**output_server_name**|    nvarchar(256)   |Nazwa serwera docelowego dla zestawu wyników.|
 |**output_database_name**   |nvarchar (128)| Nazwa docelowej bazy danych dla zestawu wyników.|
-|**output_schema_name** |nvarchar (max)| Nazwa schematu docelowego. Jeśli nie zostanie określony, domyślnie jest używany obiekt dbo.|
-|**output_table_name**| nvarchar (max)|  Nazwa tabeli, w której mają być przechowywane wyniki z wyników zapytania. Tabela zostanie utworzona automatycznie na podstawie schematu zestawu wyników, jeśli jeszcze nie istnieje. Schemat musi być zgodny ze schematem zestawu wyników.|
+|**output_schema_name** |nvarchar(max)| Nazwa schematu docelowego. Jeśli nie zostanie określony, domyślnie jest używany obiekt dbo.|
+|**output_table_name**| nvarchar(max)|  Nazwa tabeli, w której mają być przechowywane wyniki z wyników zapytania. Tabela zostanie utworzona automatycznie na podstawie schematu zestawu wyników, jeśli jeszcze nie istnieje. Schemat musi być zgodny ze schematem zestawu wyników.|
 |**max_parallelism**|   int|    Maksymalna liczba baz danych na pulę elastyczną, w której krok zadania będzie uruchamiany w danym momencie. Wartość domyślna to NULL, co oznacza brak limitu. |
 
 
@@ -1315,9 +1315,9 @@ Wyświetla listę wszystkich grup docelowych.
 |**target_group_name**| nvarchar (128)   |Nazwa grupy docelowej, kolekcja baz danych. 
 |**target_group_id**    |uniqueidentifier   |Unikatowy identyfikator grupy docelowej.
 
-### <a name="target_groups_members-view"></a>Widok target_groups_members
+### <a name="target_group_members-view"></a>Widok target_group_members
 
-[zadania]. [target_groups_members]
+[zadania]. [target_group_members]
 
 Pokazuje wszystkie elementy członkowskie wszystkich grup docelowych.
 

@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 12/17/2019
-ms.openlocfilehash: c3da9c6a49fd79946d62b0319bead1bd721f3aa6
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: ce85c45d80a776af84a0987cfbc3f496c2bbb72b
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75536709"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75893959"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>Konfigurowanie uwierzytelniania dla Azure Machine Learning zasobów i przepływów pracy
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -170,7 +170,8 @@ ws.get_details()
 
 Nazwa główna usługi utworzona w powyższych krokach może być również używana do uwierzytelniania w [interfejsie API REST](https://docs.microsoft.com/rest/api/azureml/)Azure Machine Learning. Używasz [przepływu przyznawania poświadczeń klienta](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow)Azure Active Directory, który zezwala na wywołania usługi do usługi dla bezobsługowego uwierzytelniania w zautomatyzowanych przepływach pracy. Przykłady są implementowane za pomocą [biblioteki ADAL](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries) w języku Python i Node. js, ale można również użyć dowolnej biblioteki Open Source, która obsługuje openid connect Connect 1,0. 
 
-> ! KORYGUJĄC MSAL. js jest nowszą biblioteką niż ADAL, ale nie można przeprowadzić uwierzytelniania między usługami przy użyciu poświadczeń klienta z MSAL. js, ponieważ jest to przede wszystkim Biblioteka po stronie klienta przeznaczona do uwierzytelniania interaktywnego/interfejsu użytkownika powiązanego z określonym użytkownikiem. Zalecamy użycie biblioteki ADAL, jak pokazano poniżej, aby utworzyć zautomatyzowane przepływy pracy za pomocą interfejsu API REST.
+> [!NOTE]
+> MSAL. js jest nowszą biblioteką niż ADAL, ale nie można przeprowadzić uwierzytelniania między usługami przy użyciu poświadczeń klienta z MSAL. js, ponieważ jest to przede wszystkim Biblioteka po stronie klienta przeznaczona do uwierzytelniania interaktywnego/interfejsu użytkownika powiązanego z określonym użytkownikiem. Zalecamy użycie biblioteki ADAL, jak pokazano poniżej, aby utworzyć zautomatyzowane przepływy pracy za pomocą interfejsu API REST.
 
 ### <a name="nodejs"></a>Node.js
 
@@ -268,15 +269,19 @@ aci_config = AciWebservice.deploy_configuration(cpu_cores = 1,
                                                 auth_enable=True)
 ```
 
-Następnie można użyć konfiguracji niestandardowej ACI we wdrożeniu przy użyciu klasy nadrzędnej `WebService`.
+Następnie można użyć konfiguracji niestandardowej ACI we wdrożeniu przy użyciu klasy `Model`.
 
 ```python
-from azureml.core.webservice import Webservice
+from azureml.core.model import Model, InferenceConfig
 
-aci_service = Webservice.deploy_from_image(deployment_config=aci_config,
-                                           image=image,
-                                           name="aci_service_sample",
-                                           workspace=ws)
+
+inference_config = InferenceConfig(entry_script="score.py",
+                                   environment=myenv)
+aci_service = Model.deploy(workspace=ws,
+                       name="aci_service_sample",
+                       models=[model],
+                       inference_config=inference_config,
+                       deployment_config=aci_config)
 aci_service.wait_for_deployment(True)
 ```
 

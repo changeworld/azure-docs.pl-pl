@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/02/2019
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: 58a00d36120a4f8bbab0388f02f414c7f48b47b9
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: f4ca521e13ac51d7df4917e75fdf1c21b1e9cfa2
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72028774"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75751093"
 ---
 # <a name="connect-to-hdinsight-apache-hadoop-using-ssh"></a>Nawiązywanie połączenia z usługą HDInsight (Apache Hadoop) przy użyciu protokołu SSH
 
@@ -88,9 +88,9 @@ Zostanie wyświetlony monit o podanie informacji podczas procesu tworzenia klucz
 
 | Metoda tworzenia | Sposób użycia klucza publicznego |
 | ------- | ------- |
-| Azure Portal | Usuń zaznaczenie pola __Użyj hasła logowania klastra dla protokołu SSH__, a następnie wybierz opcję __klucz publiczny__ jako typ uwierzytelniania SSH. Na koniec wybierz plik klucza publicznego lub wklej zawartość tekstową pliku w polu __Klucz publiczny SSH__.</br>![Okno dialogowe dotyczące klucza publicznego SSH w procesie tworzenia klastra usługi HDInsight](./media/hdinsight-hadoop-linux-use-ssh-unix/create-hdinsight-ssh-public-key.png) |
-| Program Azure PowerShell | Użyj parametru `-SshPublicKey` polecenia cmdlet [New-AzHdinsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) i przekaż zawartość klucza publicznego jako ciąg.|
-| Interfejs wiersza polecenia platformy Azure | Użyj parametru `--sshPublicKey` polecenia [AZ HDInsight Create](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create) i przekaż zawartość klucza publicznego jako ciąg. |
+| Portal Azure | Usuń zaznaczenie pola __Użyj hasła logowania klastra dla protokołu SSH__, a następnie wybierz opcję __klucz publiczny__ jako typ uwierzytelniania SSH. Na koniec wybierz plik klucza publicznego lub wklej zawartość tekstową pliku w polu __Klucz publiczny SSH__.</br>![Okno dialogowe dotyczące klucza publicznego SSH w procesie tworzenia klastra usługi HDInsight](./media/hdinsight-hadoop-linux-use-ssh-unix/create-hdinsight-ssh-public-key.png) |
+| Program Azure PowerShell | Użyj `-SshPublicKey` parametru polecenia cmdlet [New-AzHdinsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) i przekaż zawartość klucza publicznego jako ciąg.|
+| Interfejs wiersza polecenia platformy Azure | Użyj `--sshPublicKey` parametru polecenia [AZ HDInsight Create](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create) i przekaż zawartość klucza publicznego jako ciąg. |
 | Szablon usługi Resource Manager | Przykład użycia kluczy SSH razem z szablonem można znaleźć w temacie [Deploy HDInsight on Linux with SSH key](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-ssh-publickey/) (Wdrażanie usługi HDInsight w systemie Linux przy użyciu klucza SSH). Element `publicKeys` w pliku [azuredeploy.json](https://github.com/Azure/azure-quickstart-templates/blob/master/101-hdinsight-linux-ssh-publickey/azuredeploy.json) umożliwia przekazanie kluczy do platformy Azure podczas tworzenia klastra. |
 
 ## <a id="sshpassword"></a>Uwierzytelnianie: hasło
@@ -107,9 +107,9 @@ Konta SSH mogą być chronione przy użyciu hasła. Po nawiązaniu połączenia 
 
 | Metoda tworzenia | Sposób określenia hasła |
 | --------------- | ---------------- |
-| Azure Portal | Domyślnie hasło do konta użytkownika SSH jest takie samo jak hasło do konta umożliwiającego logowanie do klastra. Aby użyć innego hasła, usuń zaznaczenie pola __Użyj hasła logowania klastra dla protokołu SSH__, a następnie wprowadź hasło w polu __hasło ssh__ .</br>![Okno dialogowe dotyczące hasła SSH w procesie tworzenia klastra usługi HDInsight](./media/hdinsight-hadoop-linux-use-ssh-unix/create-hdinsight-ssh-password.png)|
-| Program Azure PowerShell | Użyj parametru `--SshCredential` polecenia cmdlet [New-AzHdinsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) i przekaż obiekt `PSCredential`, który zawiera nazwę i hasło konta użytkownika ssh. |
-| Interfejs wiersza polecenia platformy Azure | Użyj parametru `--sshPassword` polecenia [AZ HDInsight Create](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create) i podaj wartość hasła. |
+| Portal Azure | Domyślnie hasło do konta użytkownika SSH jest takie samo jak hasło do konta umożliwiającego logowanie do klastra. Aby użyć innego hasła, usuń zaznaczenie pola __Użyj hasła logowania klastra dla protokołu SSH__, a następnie wprowadź hasło w polu __hasło ssh__ .</br>![Okno dialogowe dotyczące hasła SSH w procesie tworzenia klastra usługi HDInsight](./media/hdinsight-hadoop-linux-use-ssh-unix/create-hdinsight-ssh-password.png)|
+| Program Azure PowerShell | Użyj `--SshCredential` parametru polecenia cmdlet [New-AzHdinsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) i przekaż obiekt `PSCredential`, który zawiera nazwę konta użytkownika ssh i hasło. |
+| Interfejs wiersza polecenia platformy Azure | Użyj `--sshPassword` parametru polecenia [AZ HDInsight Create](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create) i podaj wartość hasła. |
 | Szablon usługi Resource Manager | Przykład użycia hasła razem z szablonem można znaleźć w temacie [Deploy HDInsight on Linux with SSH password](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-ssh-password/) (Wdrażanie usługi HDInsight w systemie Linux przy użyciu hasła SSH). Element `linuxOperatingSystemProfile` w pliku [azuredeploy.json](https://github.com/Azure/azure-quickstart-templates/blob/master/101-hdinsight-linux-ssh-password/azuredeploy.json) umożliwia przekazanie nazwy konta SSH i hasła do platformy Azure podczas tworzenia klastra.|
 
 ### <a name="change-the-ssh-password"></a>Zmienianie hasła SSH
@@ -161,7 +161,7 @@ Do węzłów głównych i węzła brzegowego (jeśli taki istnieje) można uzysk
 > [!IMPORTANT]  
 > Poprzednie przykłady zakładają, że korzystasz z uwierzytelniania przy użyciu hasła lub że uwierzytelnianie certyfikatu odbywa się automatycznie. Jeśli korzystasz z pary kluczy SSH do uwierzytelniania, a certyfikat nie jest używany automatycznie, skorzystaj z parametru `-i`, aby określić klucz prywatny. Na przykład `ssh -i ~/.ssh/mykey sshuser@clustername-ssh.azurehdinsight.net`.
 
-Po nawiązaniu połączenia zostanie wyświetlony monit o podanie nazwy użytkownika SSH i węzła, z którym nawiązano połączenie. Na przykład w przypadku połączenia z podstawowym węzłem głównym jako użytkownik `sshuser` wiersz polecenia będzie wyglądać następująco: `sshuser@hn0-clustername:~$`.
+Po nawiązaniu połączenia zostanie wyświetlony monit o podanie nazwy użytkownika SSH i węzła, z którym nawiązano połączenie. Na przykład w przypadku połączenia z podstawowym węzłem głównym jako użytkownik `sshuser` wiersz polecenia będzie wyglądać następująco: `sshuser@<active-headnode-name>:~$`.
 
 ### <a name="connect-to-worker-and-apache-zookeeper-nodes"></a>Łączenie z węzłami procesu roboczego i Apache dozorcy
 
@@ -218,7 +218,7 @@ Jeśli konto SSH jest zabezpieczone przy użyciu __kluczy SSH__, upewnij się, �
     /tmp/ssh-rfSUL1ldCldQ/agent.1792
     ```
 
-    Jeśli nic nie zostanie zwrócone, wówczas `ssh-agent` nie jest uruchomiony. Aby dowiedzieć się więcej, zapoznaj się z informacjami na temat skryptów uruchamiania agenta na stronie [Using ssh-agent with ssh (http://mah.everybody.org/docs/ssh)](http://mah.everybody.org/docs/ssh) (Korzystanie z agenta SSH z protokołem SSH) lub zajrzyj do dokumentacji używanego klienta SSH.
+    Jeśli nic nie zostanie zwrócone, `ssh-agent` nie jest uruchomiony. Aby dowiedzieć się więcej, zapoznaj się z informacjami na temat skryptów uruchamiania agenta na stronie [Using ssh-agent with ssh (http://mah.everybody.org/docs/ssh)](http://mah.everybody.org/docs/ssh) (Korzystanie z agenta SSH z protokołem SSH) lub zajrzyj do dokumentacji używanego klienta SSH.
 
 4. Po sprawdzeniu, że **Agent SSH** jest uruchomiony, użyj następującego programu, aby dodać klucz prywatny SSH do agenta:
 

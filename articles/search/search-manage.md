@@ -9,12 +9,12 @@ tags: azure-portal
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: e00a810e7977e1c45c1833e0b901ff6804f7fb32
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 3abbf2c8e0734d17aabadd2ae5f61cc03889964b
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113290"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754330"
 ---
 # <a name="service-administration-for-azure-cognitive-search-in-the-azure-portal"></a>Administracja usługi dla platformy Azure Wyszukiwanie poznawcze w Azure Portal
 > [!div class="op_single_selector"]
@@ -71,11 +71,11 @@ Mimo że możemy odzyskać Twoje dane, usługa Azure Wyszukiwanie poznawcze nie 
 
 Jeśli ciągła usługa jest wymagana w przypadku wystąpienia awarii poza kontrolą firmy Microsoft, można [zainicjować obsługę administracyjną dodatkowej usługi](search-create-service-portal.md) w innym regionie i wdrożyć strategię replikacji geograficznej w celu zapewnienia, że indeksy są w pełni nadmiarowe dla wszystkich usług.
 
-Klienci używający [indeksatorów](search-indexer-overview.md) do wypełniania i odświeżania indeksów mogą obsługiwać odzyskiwanie po awarii za pomocą indeksatorów specyficznych dla lokalizacji geograficznych wykorzystujących to samo źródło danych. Dwie usługi w różnych regionach, z których każdy uruchamia indeksator, może indeksować to samo źródło danych w celu zapewnienia nadmiarowości geograficznej. W przypadku indeksowania ze źródeł danych, które są również geograficznie nadmiarowe, należy pamiętać, że indeksatory usługi Azure Wyszukiwanie poznawcze mogą wykonywać tylko indeksowanie przyrostowe z replik podstawowych. W przypadku zdarzenia trybu failover Pamiętaj, aby ponownie wskazać indeksator do nowej repliki podstawowej. 
+Klienci używający [indeksatorów](search-indexer-overview.md) do wypełniania i odświeżania indeksów mogą obsługiwać odzyskiwanie po awarii za pomocą indeksatorów specyficznych dla lokalizacji geograficznych wykorzystujących to samo źródło danych. Dwie usługi w różnych regionach, z których każdy uruchamia indeksator, może indeksować to samo źródło danych w celu zapewnienia nadmiarowości geograficznej. W przypadku indeksowania ze źródeł danych, które są również geograficznie nadmiarowe, należy pamiętać, że indeksatory usługi Azure Wyszukiwanie poznawcze mogą wykonywać tylko indeksowanie przyrostowe (Scalanie aktualizacji z nowych, zmodyfikowanych lub usuniętych dokumentów) z replik podstawowych. W przypadku zdarzenia trybu failover Pamiętaj, aby ponownie wskazać indeksator do nowej repliki podstawowej. 
 
 Jeśli nie używasz indeksatorów, użyj kodu aplikacji do wypychania obiektów i danych do różnych usług wyszukiwania równolegle. Aby uzyskać więcej informacji, zobacz [wydajność i optymalizacja na platformie Azure wyszukiwanie poznawcze](search-performance-optimization.md).
 
-## <a name="backup-and-restore"></a>Tworzenie kopii zapasowej i przywracanie
+## <a name="backup-and-restore"></a>Tworzenie i przywracanie kopii zapasowych
 
 Ponieważ platforma Azure Wyszukiwanie poznawcze nie jest podstawowym rozwiązaniem do przechowywania danych, firma Microsoft nie udostępnia formalnego mechanizmu tworzenia kopii zapasowych i przywracania samoobsługowego. Można jednak użyć przykładowego kodu do **przywracania kopii zapasowej** w ramach tego [przykładowego repozytorium platformy Azure wyszukiwanie poznawcze .NET](https://github.com/Azure-Samples/azure-search-dotnet-samples) , aby utworzyć kopię zapasową definicji indeksu i migawki do serii plików JSON, a następnie użyć tych plików do przywrócenia indeksu, w razie potrzeby. To narzędzie umożliwia również przenoszenie indeksów między warstwami usług.
 

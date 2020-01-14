@@ -93,7 +93,7 @@
       href: knowledge-store-concept-intro.md
     - name: Projekcje
       href: knowledge-store-projection-overview.md
-    - name: Indeksowanie przyrostowe
+    - name: Wzbogacanie przyrostowe
       href: cognitive-search-incremental-indexing-conceptual.md
 - name: Przewodniki z instrukcjami
   items:
@@ -113,6 +113,8 @@
       items:
         - name: Omówienie zabezpieczeń
           href: search-security-overview.md
+        - name: Tworzenie prywatnego punktu końcowego
+          href: service-create-private-endpoint.md
         - name: Zarządzanie kluczem usługi
           href: search-security-api-keys.md
         - name: Oparty na rolach dostęp administratora
@@ -237,9 +239,9 @@
               href: cognitive-search-concept-annotations-syntax.md
             - name: Tworzenie mapowania na pola indeksu
               href: cognitive-search-output-field-mapping.md
-            - name: Przetwarzanie i wyodrębnianie informacji z obrazów
+            - name: Wyodrębnianie informacji z obrazów
               href: cognitive-search-concept-image-scenarios.md
-            - name: Konfigurowanie indeksowania przyrostowego
+            - name: Wzbogacanie pamięci podręcznej (przyrostowe)
               href: search-howto-incremental-index.md
         - name: Umiejętności niestandardowe
           items:
@@ -330,7 +332,11 @@
     - name: REST (zarządzanie)
       href: /rest/api/searchmanagement
     - name: REST (wersja zapoznawcza)
-      href: search-api-preview.md
+      items:
+        - name: Interfejs API w wersji 2019-05-06-Preview
+          href: search-api-preview.md
+        - name: Interfejs API resetowania umiejętności
+          href: preview-api-resetskills.md
     - name: Szablon usługi Resource Manager
       href: /azure/templates/microsoft.search/searchservices
     - name: Dokumentacja języka OData

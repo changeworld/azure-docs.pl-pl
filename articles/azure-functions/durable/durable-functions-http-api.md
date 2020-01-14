@@ -3,14 +3,14 @@ title: Interfejsy API protokołu HTTP w Durable Functions — Azure Functions
 description: Dowiedz się, jak zaimplementować interfejsy API protokołu HTTP w rozszerzeniu Durable Functions, aby Azure Functions.
 author: cgillum
 ms.topic: conceptual
-ms.date: 09/07/2019
+ms.date: 12/17/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 0390211e6fc42bd7183a770cac409b880310d317
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 4e4081ecca4714c713d105d363a83a4f96a0d3fc
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231400"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769629"
 ---
 # <a name="http-api-reference"></a>Dokumentacja interfejsu API protokołu HTTP
 
@@ -32,7 +32,7 @@ W następnych sekcjach znajdują się określone interfejsy API protokołu HTTP 
 
 Uruchamia nowe wystąpienie określonej funkcji programu Orchestrator.
 
-### <a name="request"></a>Żądanie
+### <a name="request"></a>Prośba
 
 W przypadku wersji 1. x środowiska uruchomieniowego usługi Functions żądanie jest sformatowane w następujący sposób (wiele wierszy jest widocznych dla przejrzystości):
 
@@ -57,8 +57,8 @@ Parametry żądania dla tego interfejsu API obejmują domyślnie wymieniony wcze
 | Pole              | Typ parametru  | Opis |
 |--------------------|-----------------|-------------|
 | **`functionName`** | Adres URL             | Nazwa funkcji programu Orchestrator do uruchomienia. |
-| **`instanceId`**   | Adres URL             | Opcjonalny parametr. Identyfikator wystąpienia aranżacji. Jeśli nie zostanie określony, funkcja programu Orchestrator rozpocznie się od losowego identyfikatora wystąpienia. |
-| **`{content}`**    | Żądaj zawartości | Opcjonalny. Dane wejściowe funkcji programu Orchestrator w formacie JSON. |
+| **`instanceId`**   | Adres URL             | Parametr opcjonalny. Identyfikator wystąpienia aranżacji. Jeśli nie zostanie określony, funkcja programu Orchestrator rozpocznie się od losowego identyfikatora wystąpienia. |
+| **`{content}`**    | Żądanie zawartości | Element opcjonalny. Dane wejściowe funkcji programu Orchestrator w formacie JSON. |
 
 ### <a name="response"></a>Odpowiedź
 
@@ -108,7 +108,7 @@ Oto przykładowy ładunek odpowiedzi dla wystąpienia aranżacji o `abc123` jako
 Odpowiedź HTTP ma być zgodna ze *wzorcem dla odbiorców sondowania*. Zawiera również następujące istotne nagłówki odpowiedzi:
 
 * **Lokalizacja**: adres URL punktu końcowego stanu. Ten adres URL zawiera tę samą wartość, co pole `statusQueryGetUri`.
-* **Retry-After**: liczba sekund oczekiwania między operacjami sondowania. Wartość domyślna to `10`.
+* **Retry-After**: liczba sekund oczekiwania między operacjami sondowania. Wartością domyślną jest `10`.
 
 Aby uzyskać więcej informacji na temat asynchronicznego wzorca sondowania HTTP, zobacz dokumentację [śledzenia asynchronicznych operacji http](durable-functions-http-features.md#async-operation-tracking) .
 
@@ -116,7 +116,7 @@ Aby uzyskać więcej informacji na temat asynchronicznego wzorca sondowania HTTP
 
 Pobiera stan określonego wystąpienia aranżacji.
 
-### <a name="request"></a>Żądanie
+### <a name="request"></a>Prośba
 
 W przypadku wersji 1. x środowiska uruchomieniowego usługi Functions żądanie jest sformatowane w następujący sposób (wiele wierszy jest widocznych dla przejrzystości):
 
@@ -147,12 +147,12 @@ Parametry żądania dla tego interfejsu API obejmują domyślnie wymieniony wcze
 | Pole                   | Typ parametru  | Opis |
 |-------------------------|-----------------|-------------|
 | **`instanceId`**        | Adres URL             | Identyfikator wystąpienia aranżacji. |
-| **`showInput`**         | Ciąg zapytania    | Opcjonalny parametr. W przypadku wybrania wartości `false`dane wejściowe funkcji nie zostaną uwzględnione w ładunku odpowiedzi.|
-| **`showHistory`**       | Ciąg zapytania    | Opcjonalny parametr. W przypadku wybrania wartości `true`historia wykonywania aranżacji zostanie uwzględniona w ładunku odpowiedzi.|
-| **`showHistoryOutput`** | Ciąg zapytania    | Opcjonalny parametr. W przypadku wybrania wartości `true`dane wyjściowe funkcji zostaną uwzględnione w historii wykonywania aranżacji.|
-| **`createdTimeFrom`**   | Ciąg zapytania    | Opcjonalny parametr. Jeśli ta wartość jest określona, filtruje listę zwracanych wystąpień, które zostały utworzone w lub po danej sygnaturze czasowej ISO8601.|
-| **`createdTimeTo`**     | Ciąg zapytania    | Opcjonalny parametr. Jeśli ta wartość jest określona, filtruje listę zwracanych wystąpień, które zostały utworzone w czasie lub przed daną sygnaturą czasową ISO8601.|
-| **`runtimeStatus`**     | Ciąg zapytania    | Opcjonalny parametr. Jeśli ta wartość jest określona, filtruje listę zwracanych wystąpień na podstawie ich stanu czasu wykonywania. Aby wyświetlić listę możliwych wartości stanu środowiska uruchomieniowego, zobacz artykuł o [wystąpieniach zapytań](durable-functions-instance-management.md) . |
+| **`showInput`**         | Ciąg zapytania    | Parametr opcjonalny. W przypadku wybrania wartości `false`dane wejściowe funkcji nie zostaną uwzględnione w ładunku odpowiedzi.|
+| **`showHistory`**       | Ciąg zapytania    | Parametr opcjonalny. W przypadku wybrania wartości `true`historia wykonywania aranżacji zostanie uwzględniona w ładunku odpowiedzi.|
+| **`showHistoryOutput`** | Ciąg zapytania    | Parametr opcjonalny. W przypadku wybrania wartości `true`dane wyjściowe funkcji zostaną uwzględnione w historii wykonywania aranżacji.|
+| **`createdTimeFrom`**   | Ciąg zapytania    | Parametr opcjonalny. Jeśli ta wartość jest określona, filtruje listę zwracanych wystąpień, które zostały utworzone w lub po danej sygnaturze czasowej ISO8601.|
+| **`createdTimeTo`**     | Ciąg zapytania    | Parametr opcjonalny. Jeśli ta wartość jest określona, filtruje listę zwracanych wystąpień, które zostały utworzone w czasie lub przed daną sygnaturą czasową ISO8601.|
+| **`runtimeStatus`**     | Ciąg zapytania    | Parametr opcjonalny. Jeśli ta wartość jest określona, filtruje listę zwracanych wystąpień na podstawie ich stanu czasu wykonywania. Aby wyświetlić listę możliwych wartości stanu środowiska uruchomieniowego, zobacz artykuł o [wystąpieniach zapytań](durable-functions-instance-management.md) . |
 
 ### <a name="response"></a>Odpowiedź
 
@@ -168,12 +168,12 @@ Można zwrócić kilka możliwych wartości kodu stanu.
 
 | Pole                 | Typ danych | Opis |
 |-----------------------|-----------|-------------|
-| **`runtimeStatus`**   | ciąg    | Stan środowiska uruchomieniowego wystąpienia. Wartości obejmują *Uruchamianie*, *oczekiwanie*, *Niepowodzenie*, *anulowane*, *zakończone*, *zakończone.* |
+| **`runtimeStatus`**   | string    | Stan środowiska uruchomieniowego wystąpienia. Wartości to *systemem*, *oczekujące*, *anulowane*, *zwolniony*, *Ukończone*. |
 | **`input`**           | JSON      | Dane JSON używane do inicjowania wystąpienia. To pole jest `null`, jeśli parametr ciągu zapytania `showInput` jest ustawiony na `false`.|
 | **`customStatus`**    | JSON      | Dane JSON używane dla niestandardowego stanu aranżacji. To pole jest `null`, jeśli nie zostało ustawione. |
 | **`output`**          | JSON      | Dane wyjściowe JSON wystąpienia. To pole jest `null`, jeśli wystąpienie nie jest w stanie ukończone. |
-| **`createdTime`**     | ciąg    | Godzina utworzenia wystąpienia. Używa rozszerzonej notacji ISO 8601. |
-| **`lastUpdatedTime`** | ciąg    | Godzina, o której wystąpienie zostało ostatnio utrwalone. Używa rozszerzonej notacji ISO 8601. |
+| **`createdTime`**     | string    | Godzina utworzenia wystąpienia. Używa rozszerzonej notacji ISO 8601. |
+| **`lastUpdatedTime`** | string    | Godzina, o której wystąpienie zostało ostatnio utrwalone. Używa rozszerzonej notacji ISO 8601. |
 | **`historyEvents`**   | JSON      | Tablica JSON zawierająca historię wykonywania aranżacji. To pole jest `null`, chyba że parametr `showHistory` ciągu zapytania jest ustawiony na `true`. |
 
 Oto przykładowy ładunek odpowiedzi, w tym historia wykonywania aranżacji i dane wyjściowe działań (sformatowane pod kątem czytelności):
@@ -240,7 +240,7 @@ Możesz również zbadać stan wszystkich wystąpień, usuwając `instanceId` z 
 Należy pamiętać, że `connection` i `code` są opcjonalne. Jeśli masz anonimową autoryzację funkcji, `code` nie jest to wymagane.
 Jeśli nie chcesz używać innych parametrów połączenia magazynu innego niż zdefiniowane w ustawieniu aplikacji AzureWebJobsStorage, możesz bezpiecznie zignorować parametr ciągu zapytania połączenia.
 
-### <a name="request"></a>Żądanie
+### <a name="request"></a>Prośba
 
 W przypadku wersji 1. x środowiska uruchomieniowego usługi Functions żądanie jest sformatowane w następujący sposób (wiele wierszy jest widocznych dla przejrzystości):
 
@@ -275,13 +275,13 @@ Parametry żądania dla tego interfejsu API obejmują domyślnie wymieniony wcze
 | Pole                   | Typ parametru  | Opis |
 |-------------------------|-----------------|-------------|
 | **`instanceId`**        | Adres URL             | Identyfikator wystąpienia aranżacji. |
-| **`showInput`**         | Ciąg zapytania    | Opcjonalny parametr. W przypadku wybrania wartości `false`dane wejściowe funkcji nie zostaną uwzględnione w ładunku odpowiedzi.|
-| **`showHistory`**       | Ciąg zapytania    | Opcjonalny parametr. W przypadku wybrania wartości `true`historia wykonywania aranżacji zostanie uwzględniona w ładunku odpowiedzi.|
-| **`showHistoryOutput`** | Ciąg zapytania    | Opcjonalny parametr. W przypadku wybrania wartości `true`dane wyjściowe funkcji zostaną uwzględnione w historii wykonywania aranżacji.|
-| **`createdTimeFrom`**   | Ciąg zapytania    | Opcjonalny parametr. Jeśli ta wartość jest określona, filtruje listę zwracanych wystąpień, które zostały utworzone w lub po danej sygnaturze czasowej ISO8601.|
-| **`createdTimeTo`**     | Ciąg zapytania    | Opcjonalny parametr. Jeśli ta wartość jest określona, filtruje listę zwracanych wystąpień, które zostały utworzone w czasie lub przed daną sygnaturą czasową ISO8601.|
-| **`runtimeStatus`**     | Ciąg zapytania    | Opcjonalny parametr. Jeśli ta wartość jest określona, filtruje listę zwracanych wystąpień na podstawie ich stanu czasu wykonywania. Aby wyświetlić listę możliwych wartości stanu środowiska uruchomieniowego, zobacz artykuł o [wystąpieniach zapytań](durable-functions-instance-management.md) . |
-| **`top`**               | Ciąg zapytania    | Opcjonalny parametr. Gdy ta wartość jest określona, ogranicza liczbę wystąpień zwracanych przez zapytanie. |
+| **`showInput`**         | Ciąg zapytania    | Parametr opcjonalny. W przypadku wybrania wartości `false`dane wejściowe funkcji nie zostaną uwzględnione w ładunku odpowiedzi.|
+| **`showHistory`**       | Ciąg zapytania    | Parametr opcjonalny. W przypadku wybrania wartości `true`historia wykonywania aranżacji zostanie uwzględniona w ładunku odpowiedzi.|
+| **`showHistoryOutput`** | Ciąg zapytania    | Parametr opcjonalny. W przypadku wybrania wartości `true`dane wyjściowe funkcji zostaną uwzględnione w historii wykonywania aranżacji.|
+| **`createdTimeFrom`**   | Ciąg zapytania    | Parametr opcjonalny. Jeśli ta wartość jest określona, filtruje listę zwracanych wystąpień, które zostały utworzone w lub po danej sygnaturze czasowej ISO8601.|
+| **`createdTimeTo`**     | Ciąg zapytania    | Parametr opcjonalny. Jeśli ta wartość jest określona, filtruje listę zwracanych wystąpień, które zostały utworzone w czasie lub przed daną sygnaturą czasową ISO8601.|
+| **`runtimeStatus`**     | Ciąg zapytania    | Parametr opcjonalny. Jeśli ta wartość jest określona, filtruje listę zwracanych wystąpień na podstawie ich stanu czasu wykonywania. Aby wyświetlić listę możliwych wartości stanu środowiska uruchomieniowego, zobacz artykuł o [wystąpieniach zapytań](durable-functions-instance-management.md) . |
+| **`top`**               | Ciąg zapytania    | Parametr opcjonalny. Gdy ta wartość jest określona, ogranicza liczbę wystąpień zwracanych przez zapytanie. |
 
 ### <a name="response"></a>Odpowiedź
 
@@ -348,7 +348,7 @@ Jeśli ustawisz wartość tokenu kontynuacji w następnym nagłówku żądania, 
 
 Usuwa historię i powiązane artefakty dla określonego wystąpienia aranżacji.
 
-### <a name="request"></a>Żądanie
+### <a name="request"></a>Prośba
 
 W przypadku wersji 1. x środowiska uruchomieniowego usługi Functions żądanie jest sformatowane w następujący sposób (wiele wierszy jest widocznych dla przejrzystości):
 
@@ -399,7 +399,7 @@ Oto przykładowy ładunek odpowiedzi (sformatowany na potrzeby czytelności):
 
 Można również usunąć historię i powiązane artefakty dla wielu wystąpień w centrum zadań, usuwając `{instanceId}` z żądania "Przeczyść historię pojedynczego wystąpienia". Aby selektywnie przeczyścić historię wystąpień, Użyj tych samych filtrów opisanych w żądaniu "Pobierz wszystkie wystąpienia stanu".
 
-### <a name="request"></a>Żądanie
+### <a name="request"></a>Prośba
 
 W przypadku wersji 1. x środowiska uruchomieniowego usługi Functions żądanie jest sformatowane w następujący sposób (wiele wierszy jest widocznych dla przejrzystości):
 
@@ -430,8 +430,8 @@ Parametry żądania dla tego interfejsu API obejmują domyślnie wymieniony wcze
 | Pole                 | Typ parametru  | Opis |
 |-----------------------|-----------------|-------------|
 | **`createdTimeFrom`** | Ciąg zapytania    | Filtruje listę przeczyszczonych wystąpień, które zostały utworzone w czasie lub po danej sygnaturze czasowej ISO8601.|
-| **`createdTimeTo`**   | Ciąg zapytania    | Opcjonalny parametr. Jeśli ta wartość jest określona, filtruje listę przeczyszczonych wystąpień, które zostały utworzone w czasie lub przed daną sygnaturą czasową ISO8601.|
-| **`runtimeStatus`**   | Ciąg zapytania    | Opcjonalny parametr. Jeśli ta wartość jest określona, program filtruje listę przeczyszczonych wystąpień na podstawie ich stanu czasu wykonywania. Aby wyświetlić listę możliwych wartości stanu środowiska uruchomieniowego, zobacz artykuł o [wystąpieniach zapytań](durable-functions-instance-management.md) . |
+| **`createdTimeTo`**   | Ciąg zapytania    | Parametr opcjonalny. Jeśli ta wartość jest określona, filtruje listę przeczyszczonych wystąpień, które zostały utworzone w czasie lub przed daną sygnaturą czasową ISO8601.|
+| **`runtimeStatus`**   | Ciąg zapytania    | Parametr opcjonalny. Jeśli ta wartość jest określona, program filtruje listę przeczyszczonych wystąpień na podstawie ich stanu czasu wykonywania. Aby wyświetlić listę możliwych wartości stanu środowiska uruchomieniowego, zobacz artykuł o [wystąpieniach zapytań](durable-functions-instance-management.md) . |
 
 > [!NOTE]
 > Ta operacja może być bardzo kosztowna w odniesieniu do operacji we/wy usługi Azure Storage, jeśli w tabelach wystąpień i/lub historia występuje wiele wierszy. Więcej informacji o tych tabelach można znaleźć w dokumentacji dotyczącej [wydajności i skalowania w Durable Functions (Azure Functions)](durable-functions-perf-and-scale.md#instances-table) .
@@ -461,7 +461,7 @@ Oto przykładowy ładunek odpowiedzi (sformatowany na potrzeby czytelności):
 
 Wysyła komunikat z powiadomieniem o zdarzeniu do uruchomionego wystąpienia aranżacji.
 
-### <a name="request"></a>Żądanie
+### <a name="request"></a>Prośba
 
 W przypadku wersji 1. x środowiska uruchomieniowego usługi Functions żądanie jest sformatowane w następujący sposób (wiele wierszy jest widocznych dla przejrzystości):
 
@@ -487,7 +487,7 @@ Parametry żądania dla tego interfejsu API obejmują domyślnie wymieniony wcze
 |-------------------|-----------------|-------------|
 | **`instanceId`**  | Adres URL             | Identyfikator wystąpienia aranżacji. |
 | **`eventName`**   | Adres URL             | Nazwa zdarzenia, na które oczekuje wystąpienie aranżacji docelowej. |
-| **`{content}`**   | Żądaj zawartości | Ładunek zdarzenia w formacie JSON. |
+| **`{content}`**   | Żądanie zawartości | Ładunek zdarzenia w formacie JSON. |
 
 ### <a name="response"></a>Odpowiedź
 
@@ -514,7 +514,7 @@ Odpowiedzi dla tego interfejsu API nie zawierają żadnej zawartości.
 
 Kończy uruchomione wystąpienie aranżacji.
 
-### <a name="request"></a>Żądanie
+### <a name="request"></a>Prośba
 
 W przypadku wersji 1. x środowiska uruchomieniowego usługi Functions żądanie jest sformatowane w następujący sposób (wiele wierszy jest widocznych dla przejrzystości):
 
@@ -541,7 +541,7 @@ Parametry żądania dla tego interfejsu API zawierają zestaw domyślny opisany 
 | Pole             | Typ parametru  | Opis |
 |-------------------|-----------------|-------------|
 | **`instanceId`**  | Adres URL             | Identyfikator wystąpienia aranżacji. |
-| **`reason`**      | Ciąg zapytania    | Opcjonalny. Przyczyna zakończenia wystąpienia aranżacji. |
+| **`reason`**      | Ciąg zapytania    | Element opcjonalny. Przyczyna zakończenia wystąpienia aranżacji. |
 
 ### <a name="response"></a>Odpowiedź
 
@@ -563,7 +563,7 @@ Odpowiedzi dla tego interfejsu API nie zawierają żadnej zawartości.
 
 Przywraca niepowodzenie wystąpienia aranżacji do stanu uruchomienia przez odtwarzanie najnowszych operacji zakończonych niepowodzeniem.
 
-### <a name="request"></a>Żądanie
+### <a name="request"></a>Prośba
 
 W przypadku wersji 1. x środowiska uruchomieniowego usługi Functions żądanie jest sformatowane w następujący sposób (wiele wierszy jest widocznych dla przejrzystości):
 
@@ -590,7 +590,7 @@ Parametry żądania dla tego interfejsu API zawierają zestaw domyślny opisany 
 | Pole             | Typ parametru  | Opis |
 |-------------------|-----------------|-------------|
 | **`instanceId`**  | Adres URL             | Identyfikator wystąpienia aranżacji. |
-| **`reason`**      | Ciąg zapytania    | Opcjonalny. Przyczyna odwinięcia wystąpienia aranżacji. |
+| **`reason`**      | Ciąg zapytania    | Element opcjonalny. Przyczyna odwinięcia wystąpienia aranżacji. |
 
 ### <a name="response"></a>Odpowiedź
 
@@ -615,12 +615,12 @@ Wysyła jednokierunkową wiadomość operacji do [jednostki trwałej](durable-fu
 > [!NOTE]
 > Trwałe jednostki są dostępne w Durable Functions 2,0.
 
-### <a name="request"></a>Żądanie
+### <a name="request"></a>Prośba
 
 Żądanie HTTP jest sformatowane w następujący sposób (wiele wierszy jest widocznych dla przejrzystości):
 
 ```http
-POST /runtime/webhooks/durabletask/entities/{entityType}/{entityKey}
+POST /runtime/webhooks/durabletask/entities/{entityName}/{entityKey}
     ?taskHub={taskHub}
     &connection={connectionName}
     &code={systemKey}
@@ -631,10 +631,10 @@ Parametry żądania dla tego interfejsu API obejmują domyślnie wymieniony wcze
 
 | Pole             | Typ parametru  | Opis |
 |-------------------|-----------------|-------------|
-| **`entityType`**  | Adres URL             | Typ jednostki. |
-| **`entityKey`**   | Adres URL             | Unikatowa nazwa jednostki. |
-| **`op`**          | Ciąg zapytania    | Opcjonalny. Nazwa operacji zdefiniowanej przez użytkownika do wywołania. |
-| **`{content}`**   | Żądaj zawartości | Ładunek zdarzenia w formacie JSON. |
+| **`entityName`**  | Adres URL             | Nazwa (typ) jednostki. |
+| **`entityKey`**   | Adres URL             | Klucz (unikatowy identyfikator) jednostki. |
+| **`op`**          | Ciąg zapytania    | Element opcjonalny. Nazwa operacji zdefiniowanej przez użytkownika do wywołania. |
+| **`{content}`**   | Żądanie zawartości | Ładunek zdarzenia w formacie JSON. |
 
 Oto przykładowe żądanie, które wysyła komunikat "Dodaj" zdefiniowany przez użytkownika do jednostki `Counter` o nazwie `steps`. Zawartość komunikatu jest wartością `5`. Jeśli jednostka jeszcze nie istnieje, zostanie utworzona przez to żądanie:
 
@@ -645,26 +645,29 @@ Content-Type: application/json
 5
 ```
 
+> [!NOTE]
+> Domyślnie w przypadku [obiektów opartych na klasie w programie .NET](durable-functions-dotnet-entities.md#defining-entity-classes)określanie wartości `op` `delete` spowoduje usunięcie stanu jednostki. Jeśli jednostka definiuje operację o nazwie `delete`, jednak zostanie wywołana operacja zdefiniowana przez użytkownika.
+
 ### <a name="response"></a>Odpowiedź
 
 Ta operacja ma kilka możliwych odpowiedzi:
 
 * **HTTP 202 (zaakceptowane)** : operacja sygnału została zaakceptowana do przetwarzania asynchronicznego.
 * **HTTP 400 (Nieprawidłowe żądanie)** : zawartość żądania nie jest typu `application/json`, nie jest prawidłowym kodem JSON lub ma nieprawidłową wartość `entityKey`.
-* **HTTP 404 (nie znaleziono)** : nie znaleziono określonego `entityType`.
+* **HTTP 404 (nie znaleziono)** : nie znaleziono określonego `entityName`.
 
 Pomyślne żądanie HTTP nie zawiera żadnej zawartości odpowiedzi. Żądanie HTTP, które nie powiodło się, może zawierać informacje o błędzie w formacie JSON w treści odpowiedzi.
 
-## <a name="query-entity"></a>Obiekt zapytania
+## <a name="get-entity"></a>Pobierz jednostkę
 
 Pobiera stan określonej jednostki.
 
-### <a name="request"></a>Żądanie
+### <a name="request"></a>Prośba
 
 Żądanie HTTP jest sformatowane w następujący sposób (wiele wierszy jest widocznych dla przejrzystości):
 
 ```http
-GET /runtime/webhooks/durabletask/entities/{entityType}/{entityKey}
+GET /runtime/webhooks/durabletask/entities/{entityName}/{entityKey}
     ?taskHub={taskHub}
     &connection={connectionName}
     &code={systemKey}
@@ -692,6 +695,100 @@ Jeśli jednostka `Counter` po prostu zawiera kilka kroków zapisanych w polu `cu
 {
     "currentValue": 5
 }
+```
+
+## <a name="list-entities"></a>Lista jednostek
+
+Można wykonywać zapytania dotyczące wielu jednostek według nazwy jednostki lub daty ostatniej operacji.
+
+### <a name="request"></a>Prośba
+
+Żądanie HTTP jest sformatowane w następujący sposób (wiele wierszy jest widocznych dla przejrzystości):
+
+```http
+GET /runtime/webhooks/durabletask/entities/{entityName}
+    ?taskHub={taskHub}
+    &connection={connectionName}
+    &code={systemKey}
+    &lastOperationTimeFrom={timestamp}
+    &lastOperationTimeTo={timestamp}
+    &fetchState=[true|false]
+    &top={integer}
+```
+
+Parametry żądania dla tego interfejsu API obejmują domyślnie wymieniony wcześniej zestaw, a także następujące unikatowe parametry:
+
+| Pole                       | Typ parametru  | Opis |
+|-----------------------------|-----------------|-------------|
+| **`entityName`**            | Adres URL             | Element opcjonalny. Jeśli ta wartość jest określona, filtruje listę zwracanych jednostek według nazwy jednostki (bez uwzględniania wielkości liter). |
+| **`fetchState`**            | Ciąg zapytania    | Parametr opcjonalny. W przypadku wybrania wartości `true`stan jednostki zostanie uwzględniony w ładunku odpowiedzi. |
+| **`lastOperationTimeFrom`** | Ciąg zapytania    | Parametr opcjonalny. Jeśli ta wartość jest określona, filtruje listę zwracanych jednostek, które przetworzyły operacje po podanej sygnaturze czasowej ISO8601. |
+| **`lastOperationTimeTo`**   | Ciąg zapytania    | Parametr opcjonalny. Jeśli ta wartość jest określona, filtruje listę zwracanych jednostek, które przetworzyły operacje przed daną sygnaturą czasową ISO8601. |
+| **`top`**                   | Ciąg zapytania    | Parametr opcjonalny. Gdy ta wartość jest określona, ogranicza liczbę jednostek zwracanych przez zapytanie. |
+
+
+### <a name="response"></a>Odpowiedź
+
+Pomyślnie odpowiedź HTTP 200 zawiera serializowaną w notacji JSON tablicę jednostek i opcjonalnie stan każdej jednostki.
+
+Domyślnie operacja zwraca pierwsze 100 jednostek, które pasują do kryteriów zapytania. Obiekt wywołujący może określić wartość parametru ciągu zapytania dla `top`, aby zwrócić inną maksymalną liczbę wyników. Jeśli więcej wyników istnieje poza zwracanymi informacjami, w nagłówku odpowiedzi jest również zwracany token kontynuacji. Nazwa nagłówka jest `x-ms-continuation-token`.
+
+Jeśli ustawisz wartość tokenu kontynuacji w następnym nagłówku żądania, możesz uzyskać następną stronę wyników. Ta nazwa nagłówka żądania jest również `x-ms-continuation-token`.
+
+### <a name="example---list-all-entities"></a>Przykład — Wyświetl listę wszystkich jednostek
+
+Następujące przykładowe żądanie HTTP wyświetla listę wszystkich jednostek w centrum zadań:
+
+```http
+GET /runtime/webhooks/durabletask/entities
+```
+
+Plik JSON odpowiedzi może wyglądać podobnie do poniższego (sformatowanego pod kątem czytelności):
+
+```json
+[
+    {
+        "entityId": { "key": "cats", "name": "counter" },
+        "lastOperationTime": "2019-12-18T21:45:44.6326361Z",
+    },
+    {
+        "entityId": { "key": "dogs", "name": "counter" },
+        "lastOperationTime": "2019-12-18T21:46:01.9477382Z"
+    },
+    {
+        "entityId": { "key": "mice", "name": "counter" },
+        "lastOperationTime": "2019-12-18T21:46:15.4626159Z"
+    },
+    {
+        "entityId": { "key": "radio", "name": "device" },
+        "lastOperationTime": "2019-12-18T21:46:18.2616154Z"
+    },
+]
+```
+
+### <a name="example---filtering-the-list-of-entities"></a>Przykład — filtrowanie listy jednostek
+
+Poniższe przykładowe żądanie HTTP wyświetla tylko dwie pierwsze jednostki typu `counter` i pobiera ich stan:
+
+```http
+GET /runtime/webhooks/durabletask/entities/counter?top=2&fetchState=true
+```
+
+Plik JSON odpowiedzi może wyglądać podobnie do poniższego (sformatowanego pod kątem czytelności):
+
+```json
+[
+    {
+        "entityId": { "key": "cats", "name": "counter" },
+        "lastOperationTime": "2019-12-18T21:45:44.6326361Z",
+        "state": { "value": 9 }
+    },
+    {
+        "entityId": { "key": "dogs", "name": "counter" },
+        "lastOperationTime": "2019-12-18T21:46:01.9477382Z",
+        "state": { "value": 10 }
+    }
+]
 ```
 
 ## <a name="next-steps"></a>Następne kroki

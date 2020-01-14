@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: aahi
-ms.openlocfilehash: 6ef23c03f01cd8e83d4327f358eaf12209659ce8
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: 6fa7d6a93a56cc531df238a8580207ef7a89d5d0
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74286455"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75732624"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>Co nowego w interfejsie API analizy tekstu?
 
@@ -35,7 +35,7 @@ Kolejna wersja usługi nazwanego rozpoznawania jednostek (NER) jest teraz dostę
 Łączenie jednostek obsługuje język angielski i hiszpański. Obsługa języka NER zależy od typu jednostki. 
 
 > [!div class="nextstepaction"]
-> [Dowiedz się więcej na temat nazwanego rozpoznawania jednostek v3](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-v3-public-preview)
+> [Dowiedz się więcej na temat nazwanego rozpoznawania jednostek v3](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features)
 
 ## <a name="sentiment-analysis-v3-public-preview---october-2019"></a>Analiza tonacji v3 (publiczna wersja zapoznawcza) — październik 2019
 
@@ -47,7 +47,7 @@ Kolejna wersja usługi nazwanego rozpoznawania jednostek (NER) jest teraz dostę
 Obsługuje język angielski (`en`), japoński (`ja`), chiński uproszczony (`zh-Hans`), chiński tradycyjny (`zh-Hant`), francuski (`fr`), włoski (`it`), hiszpański (`es`), holenderski (`nl`), portugalski (`pt`), niemiecki (`de`) i dostępny w następujących regionach: `Australia East`, `Central Canada`, `Central US`, `East Asia`, `East US`, `East US 2`, `North Europe`, `Southeast Asia`, `South Central US`, `UK South`, `West Europe`i `West US 2`. 
 
 > [!div class="nextstepaction"]
-> [Dowiedz się więcej o analiza tonacji wersji 3](how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-v3-public-preview)
+> [Dowiedz się więcej o analiza tonacji wersji 3](how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features)
 
 ## <a name="next-steps"></a>Następne kroki
 

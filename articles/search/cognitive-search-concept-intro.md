@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
 ms.date: 11/04/2019
-ms.openlocfilehash: 92fe564b849c728952dd549757be42b8b5131b25
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 2ef7f273d6838b1bc051c70539ef7d9da59d7148
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74791033"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754584"
 ---
 # <a name="introduction-to-ai-in-azure-cognitive-search"></a>Wprowadzenie do AI na platformie Azure Wyszukiwanie poznawcze
 
@@ -105,7 +105,7 @@ Indeksy są generowane na podstawie schematu indeksu, który definiuje pola, atr
 
 | Pojęcie | Opis| Linki |
 |---------|------------|-------|
-| zestawu umiejętności | Zasób o nazwie najwyższego poziomu zawierający kolekcję umiejętności. Zestawu umiejętności to potok wzbogacania. Jest wywoływana podczas indeksowania przez indeksator. | Zobacz [Definiowanie zestawu umiejętności](cognitive-search-defining-skillset.md) |
+| Zestawu umiejętności | Zasób o nazwie najwyższego poziomu zawierający kolekcję umiejętności. Zestawu umiejętności to potok wzbogacania. Jest wywoływana podczas indeksowania przez indeksator. | Zobacz [Definiowanie zestawu umiejętności](cognitive-search-defining-skillset.md) |
 | Umiejętność | Niepodzielna transformacja w potoku wzbogacania. Często jest to składnik, który wyodrębnia lub wnioskuje strukturę i w związku z tym rozszerza zrozumienie danych wejściowych. Prawie zawsze, dane wyjściowe są oparte na tekście, a przetwarzanie polega na przetwarzaniu języka naturalnego lub przetwarzaniu obrazu, który wyodrębnia lub generuje tekst z danych wejściowych obrazu. Dane wyjściowe z umiejętności mogą być mapowane do pola w indeksie lub używane jako dane wejściowe dla wzbogacania podrzędnego. Umiejętności są wstępnie zdefiniowane i udostępniane przez firmę Microsoft albo niestandardowe: utworzone i wdrożone przez użytkownika. | [Wbudowane umiejętności poznawcze](cognitive-search-predefined-skills.md) |
 | Wyodrębnianie danych | Obejmuje szeroką gamę przetwarzania, ale odnoszące się do wzbogacenia AI, umiejętność rozpoznawania jednostki jest najczęściej używana do wyodrębniania danych (jednostki) ze źródła, które nie zapewnia natywnej informacji. | Zobacz umiejętności [rozpoznawania obiektów](cognitive-search-skill-entity-recognition.md) i [umiejętność wyodrębniania dokumentów (wersja zapoznawcza)](cognitive-search-skill-document-extraction.md)| 
 | Przetwarzanie obrazów | Wnioskuje tekst z obrazu, taki jak możliwość rozpoznawania punktu orientacyjnego, lub wyodrębniania tekstu z obrazu. Typowe przykłady obejmują OCR do podnoszenia znaków z pliku zeskanowanego dokumentu (JPEG) lub rozpoznania nazwy ulicy w fotografii zawierającej znak ulicy. | Zobacz [umiejętność analizy obrazów](cognitive-search-skill-image-analysis.md) lub [umiejętność OCR](cognitive-search-skill-ocr.md)
@@ -113,11 +113,11 @@ Indeksy są generowane na podstawie schematu indeksu, który definiuje pola, atr
 | Łamanie dokumentów | Proces wyodrębniania lub tworzenia zawartości tekstowej ze źródeł nietekstowych podczas indeksowania. Optyczne rozpoznawanie znaków (OCR) to przykład, ale ogólnie odnosi się do podstawowej funkcjonalności indeksatora, ponieważ indeksator wyodrębnia zawartość z plików aplikacji. Źródło danych dostarczające lokalizację pliku źródłowego oraz definicję indeksatora dostarczającego mapowania pól są kluczowymi czynnikami w przypadku łamania dokumentów. | Zobacz [Omówienie indeksatorów](search-indexer-overview.md) |
 | Kształtowania | Konsolidowanie fragmentów tekstu do większej struktury lub odwrotne rozdzielenie większych fragmentów tekstu do rozmiaru do zarządzania w celu przeprowadzenia dalszej obróbki podrzędnej. | Zobacz [umiejętność kształtu](cognitive-search-skill-shaper.md), [umiejętność łączenia tekstu](cognitive-search-skill-textmerger.md), [umiejętność dzielenia tekstu](cognitive-search-skill-textsplit.md) |
 | Wzbogacone dokumenty | Przejściowa Struktura wewnętrzna, wygenerowana podczas przetwarzania, z końcowym wyjściem odzwierciedlonym w indeksie wyszukiwania. Zestawu umiejętności określa, które wzbogacania są wykonywane. Mapowania pól określają, które elementy danych są dodawane do indeksu. Opcjonalnie możesz utworzyć magazyn wiedzy, aby utrwalać i eksplorować wzbogacone dokumenty przy użyciu narzędzi takich jak Eksplorator usługi Storage, Power BI lub dowolne inne narzędzie, które nawiązuje połączenie z usługą Azure Blob Storage. | Zobacz artykuł [Magazyn wiedzy (wersja zapoznawcza)](knowledge-store-concept-intro.md) |
-| Indeksator |  Przeszukiwarka, która wyodrębnia dane z możliwością wyszukiwania i metadane z zewnętrznego źródła danych i wypełnia indeks na podstawie mapowań pól między indeksem i źródłem danych na potrzeby łamania dokumentów. W przypadku wzbogacania AI indeksator wywołuje zestawu umiejętności i zawiera mapowania pól, które kojarzą dane wyjściowe wzbogacania z polami docelowymi w indeksie. Definicja indeksatora zawiera wszystkie instrukcje i odwołania do operacji potoku, a potok jest wywoływany po uruchomieniu indeksatora. W przypadku dodatkowej konfiguracji można użyć istniejącej operacji przetwarzania i wykonać tylko te czynności i umiejętności, które zostały zmienione. | Zobacz [indeksatory](search-indexer-overview.md) i [indeksowanie przyrostowe (wersja zapoznawcza)](cognitive-search-incremental-indexing-conceptual.md). |
+| Indeksator |  Przeszukiwarka, która wyodrębnia dane z możliwością wyszukiwania i metadane z zewnętrznego źródła danych i wypełnia indeks na podstawie mapowań pól między indeksem i źródłem danych na potrzeby łamania dokumentów. W przypadku wzbogacania AI indeksator wywołuje zestawu umiejętności i zawiera mapowania pól, które kojarzą dane wyjściowe wzbogacania z polami docelowymi w indeksie. Definicja indeksatora zawiera wszystkie instrukcje i odwołania do operacji potoku, a potok jest wywoływany po uruchomieniu indeksatora. Za pomocą dodatkowej konfiguracji można używać istniejącej przetworzonej zawartości i wykonywać tylko te czynności i umiejętności, które zostały zmienione. | Zobacz [indeksatory](search-indexer-overview.md) i [przyrostowe wzbogacanie (wersja zapoznawcza)](cognitive-search-incremental-indexing-conceptual.md). |
 | Źródło danych  | Obiekt używany przez indeksator do nawiązywania połączenia z zewnętrznym źródłem danych obsługiwanych typów na platformie Azure. | Zobacz [Omówienie indeksatorów](search-indexer-overview.md) |
 | Indeks | Utrwalony indeks wyszukiwania na platformie Azure Wyszukiwanie poznawcze utworzony na podstawie schematu indeksu, który definiuje strukturę pól i użycie. | Zobacz [Tworzenie indeksu podstawowego](search-what-is-an-index.md) | 
 | Magazyn wiedzy | Konto magazynu, w którym wzbogacone dokumenty mogą być widoczne i rzutowane poza indeks wyszukiwania | Zobacz [wprowadzenie do sklepu merytorycznego](knowledge-store-concept-intro.md) | 
-| Pamięć podręczna indeksatora | Dane wyjściowe umiejętności konta magazynu są buforowane przez indeksator. Pamięć podręczna umożliwia indexeer do zminimalizowania kosztów ponownego przetwarzania dużej liczby dokumentów podczas edytowania zestawu umiejętności. | Zobacz [indeksowanie przyrostowe](cognitive-search-incremental-indexing-conceptual.md) | 
+| Cache | Konto magazynu zawierające buforowane dane wyjściowe utworzone przez potok wzbogacania. Włączenie pamięci podręcznej zachowuje istniejące dane wyjściowe, które nie mają wpływ na zmiany w zestawu umiejętności lub innych składnikach potoku wzbogacania. | Zobacz [wzbogacanie przyrostowe](cognitive-search-incremental-indexing-conceptual.md) | 
 
 <a name="where-do-i-start"></a>
 
@@ -174,4 +174,4 @@ Aby uzyskać więcej informacji na temat określonych pytań lub problemów, zob
 + [Szybki Start: Wypróbuj wzbogacanie AI w przewodniku po portalu](cognitive-search-quickstart-blob.md)
 + [Samouczek: informacje na temat interfejsów API wzbogacania AI](cognitive-search-tutorial-blob.md)
 + [Sklep merytoryczny (wersja zapoznawcza)](knowledge-store-concept-intro.md)
-+ [Przewodnik po sklepie merytorycznym](knowledge-store-howto.md)
++ [Tworzenie sklepu merytorycznego w usłudze REST](knowledge-store-create-rest.md)

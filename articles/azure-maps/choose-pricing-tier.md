@@ -1,6 +1,6 @@
 ---
-title: Wybrać właściwą warstwę cenową dla usługi Azure Maps | Dokumentacja firmy Microsoft
-description: Dowiedz się więcej o oferowanych przez usługi Azure Maps warstw cenowych
+title: Wybierz odpowiednią warstwę cenową | Mapy Microsoft Azure
+description: W tym artykule znajdziesz informacje o warstwach cenowych oferowanych przez Microsoft Azure Maps.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 01/02/2019
@@ -8,61 +8,61 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 1bf60014b20f4cec29d661db4deb029fea4ab1d5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5ff774f9848db948058075a98504e6c13db5467a
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60796311"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911766"
 ---
-# <a name="choose-the-right-pricing-tier-in-azure-maps"></a>Wybrać właściwą warstwę cenową w usługi Azure Maps
+# <a name="choose-the-right-pricing-tier-in-azure-maps"></a>Wybierz odpowiednią warstwę cenową w Azure Maps
 
-Usługa Azure Maps oferuje dwie warstwy cenowe. Ten artykuł ma na celu pomóc wybrać właściwą ceny dla Twoich potrzeb warstwę. Aby wybrać właściwą warstwę cenową, spróbuj odpowiedzieć sobie następujące dwa pytania.
+Usługa Azure Maps oferuje dwie warstwy cenowe. Celem tego artykułu jest ułatwienie wyboru odpowiedniej warstwy cenowej dla potrzeb użytkownika. Aby wybrać odpowiednią warstwę cenową, należy zadać sobie poniższe dwa pytania.
 
-## <a name="what-geospatial-capabilities-do-i-plan-to-use"></a>Jakie funkcje geoprzestrzenne chcę użyć?
-Warstwa cenowa S0 jest dla Ciebie odpowiednia, jeśli dane geograficzne podstawowych interfejsów API spełniają Twoje wymagania usługi. Jeśli chcesz bardziej zaawansowane funkcje dla aplikacji, należy wziąć pod uwagę sposób na warstwę cenową S1. Przykład możliwości są areal plus obrazach hybrydowych, uzyskiwanie zakres z trasy i geokodowania usługi batch. **Ceny warstwy możliwości** tabeli znajdującej się poniżej pozwala lepiej zrozumieć wymagania Twojej aplikacji. Ułatwia on również wybrać warstwę cenową najbardziej odpowiedni dla aplikacji.
+## <a name="what-geospatial-capabilities-do-i-plan-to-use"></a>Jakie możliwości geoprzestrzenne są planowane do użycia?
+Warstwa cenowa S0 jest odpowiednia dla Ciebie, jeśli podstawowe interfejsy API geoprzestrzenne spełniają wymagania dotyczące usługi. Jeśli chcesz uzyskać bardziej zaawansowane możliwości aplikacji, rozważ rezygnację z warstwy cenowej S1. Przykładowe możliwości to Areal Plus obrazów hybrydowych, uzyskiwanie zakresu tras i geokodowania wsadowego. W poniższej tabeli **możliwości warstwy cenowej** podano lepszy pomysł dotyczący potrzeb aplikacji. Pomaga również wybrać warstwę cenową, która jest odpowiednia dla Twojej aplikacji.
 
-## <a name="how-many-concurrent-users-do-i-plan-to-support"></a>Jak wiele równoczesnych użytkowników zaplanować do obsługi? 
-Warstwy cenowe S0 i S1 obsługiwać różne ilości przepływność danych. Przed wybraniem usługi Azure Maps warstwy cenowej, spróbuj odpowiedzieć sobie kilka pytań. Przykładem jest "jak wielu równoczesnych użytkowników I chcesz do pomocy technicznej?" Warstwa cenowa S0 obsługuje maksymalnie **50 zapytań na sekundę**. Uchwyty warstwę cenową S1 **więcej niż 50 zapytań na sekundę**.
+## <a name="how-many-concurrent-users-do-i-plan-to-support"></a>Ile współbieżnych użytkowników planuję obsługiwać? 
+Warstwy cenowe S0 i S1 obsługują różne ilości przepływności danych. Przed wybraniem warstwy cenowej Azure Maps Zwróć się do siebie o kilka pytań. Przykładem jest "jak dużo równoczesnych użytkowników chcemy obsługiwać?". Warstwa cenowa S0 obsługuje do **50 zapytań na sekundę**. Warstwa cenowa S1 obsługuje **więcej niż 50 zapytań na sekundę**.
 
-### <a name="pricing-tier-capabilities"></a>Cennik warstwy możliwości
+### <a name="pricing-tier-capabilities"></a>Możliwości warstwy cenowej
 
-| Możliwości                              |        S0           |  S1      |
+| Możliwość                              |        S0           |  S1      |
 |-----------------------------------------|:-------------------:|:--------:|
-| Wyszukiwanie (fwd/rev geokodowania, punktów orientacyjnych)  |        ✓           |     ✓    |
-| Geokodowanie usługi Batch (wersja zapoznawcza)              |                   |     ✓    |
-| Wielokąty z wyszukiwania          |                   |     ✓    |
-| Routing                                 |        ✓           |     ✓    |
-| Zakres z trasy                    |                   |     ✓    |
-| Batch routingu (wersja zapoznawcza)                |                   |     ✓    |
-| Tabela routingu (wersja zapoznawcza)               |                   |     ✓    |
+| Search (FWD/Rev geokodowanie, punkty orientacyjne)  |        ✓           |     ✓    |
+| Geokodowanie wsadowe (wersja zapoznawcza)              |                   |     ✓    |
+| Wielokąty od wyszukiwania          |                   |     ✓    |
+| Wyznaczanie tras                                 |        ✓           |     ✓    |
+| Zakres tras                    |                   |     ✓    |
+| Routing wsadowy (wersja zapoznawcza)                |                   |     ✓    |
+| Routing macierzy (wersja zapoznawcza)               |                   |     ✓    |
 | Renderowanie                                  |        ✓           |     ✓    |
-| Zdjęcia i obrazach hybrydowych    |            |     ✓    |
+| Obrazów i obrazów hybrydowych    |            |     ✓    |
 | Ruch                                 |        ✓           |     ✓    |
 | Strefy czasowe                              |        ✓           |     ✓    |
-| Używanie funkcji Geolokalizacji (wersja zapoznawcza)                |        ✓           |     ✓    |
+| Geolokalizacja (wersja zapoznawcza)                |        ✓           |     ✓    |
 | Dane (wersja zapoznawcza)               |                   |     ✓    |
-| Przestrzenne (wersja zapoznawcza)               |                   |     ✓    |
-| Geofencing (wersja zapoznawcza)               |                   |     ✓    |
+| Przestrzenny (wersja zapoznawcza)               |                   |     ✓    |
+| Geofencingu (wersja zapoznawcza)               |                   |     ✓    |
 
 
 
-Warto wspomnieć biorąc pod uwagę te dodatkowych punktów danych:
-* Jakiego rodzaju przedsiębiorstwa mają?
-* Jak bardzo krytyczna jest aplikacja kompilowanego na bieżąco?
+Rozważane są następujące dodatkowe punkty danych:
+* Jakiego rodzaju przedsiębiorstwa masz?
+* Jak krytyczne są kompilowane aplikacje?
 
-Zobacz **warstwy cenowej docelowych klientów** tabeli, aby lepiej poznać S0 i S1 warstw cenowych. Aby uzyskać więcej informacji, zobacz [cennika usługi Azure Maps](https://azure.microsoft.com/pricing/details/azure-maps/). 
+Zapoznaj się z tabelą **docelową dla klientów warstwy cenowej** , aby lepiej poznać warstwy cenowe S0 i S1. Aby uzyskać więcej informacji, zobacz [Cennik usługi Azure Maps](https://azure.microsoft.com/pricing/details/azure-maps/). 
 
-### <a name="pricing-tier-targeted-customers"></a>Warstwa cenowa docelowych klientów
+### <a name="pricing-tier-targeted-customers"></a>Zamierzone odbiorcy warstwy cenowej
 
-| Warstwa cenowa  |     Klientów docelowych                                                                |
+| Warstwa cenowa  |     Dokierowany klienci                                                                |
 |---------------|:-----------------------------------------------------------------------------------------|
-| S0            |    <p>Warstwa cenowa S0 jest przeznaczona dla klientów, którzy przedsiębiorstwom małych i średnich. To prawo warstwy cenowej dla Ciebie, jeśli nie spodziewasz się dużej liczby równoczesnych użytkowników. Jest również odpowiednie, jeśli dane geograficzne podstawowych interfejsów API wyświetlane w powyższej tabeli spełniają Twoje wymagania usługi. Ta warstwa jest ogólnie dostępna. Działa to w przypadku aplikacji na wszystkich etapach produkcji: opracowywania weryfikacji koncepcji i wczesnym etapie testowania do produkcyjnych aplikacji i wdrożenia.<p>|
-| S1            |    <p>Warstwę cenową S1 jest klientom potrzebującym obsługę dużych przedsiębiorstw, aplikacji o znaczeniu krytycznym lub dużej liczby równoczesnych użytkowników. Jest również klienci, którzy wymagają usług geoprzestrzennych zaawansowane.</p>|
+| S0            |    <p>Warstwa cenowa S0 jest przeznaczony dla klientów, którzy są małymi lub średnimi przedsiębiorstwami. Jest to odpowiednia warstwa cenowa, jeśli nie oczekuje się dużych ilości równoczesnych użytkowników. Jest to również właściwe, jeśli podstawowe interfejsy API geoprzestrzenne, które przedstawiono w powyższej tabeli, spełniają wymagania dotyczące usługi. Ta warstwa jest ogólnie dostępna. Działa to w przypadku aplikacji na wszystkich etapach produkcji: od tworzenia i testowania wczesnych etapów do produkcji i wdrażania aplikacji.<p>|
+| S1            |    <p>Warstwa cenowa S1 jest dla klientów potrzebujących wsparcia dla dużych aplikacji o znaczeniu strategicznym, a także dużych ilości równoczesnych użytkowników. Jest on również przeznaczony dla tych klientów, którzy wymagają zaawansowanych usług geoprzestrzennych.</p>|
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się więcej o tym, jak można wyświetlać i zmieniać warstwy cenowe:
+Dowiedz się więcej o sposobie wyświetlania i zmieniania warstw cenowych:
 
 > [!div class="nextstepaction"] 
-> [Warstwa cenowa zarządzania](how-to-manage-pricing-tier.md)
+> [Zarządzanie warstwą cenową](how-to-manage-pricing-tier.md)

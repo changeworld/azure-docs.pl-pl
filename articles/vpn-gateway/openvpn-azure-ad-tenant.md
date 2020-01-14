@@ -5,14 +5,14 @@ services: vpn-gateway
 author: anzaman
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 11/13/2019
+ms.date: 01/03/2020
 ms.author: alzam
-ms.openlocfilehash: 73c379d914f37de351165c19e3d73425e9a202b2
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 6357fb2d69a9c0ded430c17b77e854f63fc8f5c6
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74151867"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75747380"
 ---
 # <a name="create-an-azure-active-directory-tenant-for-p2s-openvpn-protocol-connections"></a>Tworzenie dzierżawy Azure Active Directory dla połączeń protokołu OpenVPN P2S
 
@@ -54,19 +54,19 @@ Wykonaj kroki opisane w [tym artykule](../active-directory/fundamentals/add-user
 
 4. Następnie udziel zgody administratora. Skopiuj i wklej adres URL odnoszący się do lokalizacji wdrożenia na pasku adresu przeglądarki:
 
-    Public
+    Publiczne
 
     ```
     https://login.microsoftonline.com/common/oauth2/authorize?client_id=41b23e61-6c1e-4545-b367-cd054e0ed4b4&response_type=code&redirect_uri=https://portal.azure.com&nonce=1234&prompt=admin_consent
     ````
 
-    Azure Government
+    Platforma Azure dla instytucji rządowych
 
     ```
     https://login-us.microsoftonline.com/common/oauth2/authorize?client_id=51bb15d4-3a4f-4ebf-9dca-40096fe32426&response_type=code&redirect_uri=https://portal.azure.us&nonce=1234&prompt=admin_consent
     ````
 
-    Microsoft Cloud Niemcy
+    Microsoft Cloud Germany
 
     ```
     https://login-us.microsoftonline.de/common/oauth2/authorize?client_id=538ee9e6-310a-468d-afef-ea97365856a9&response_type=code&redirect_uri=https://portal.microsoftazure.de&nonce=1234&prompt=admin_consent
@@ -84,36 +84,41 @@ Wykonaj kroki opisane w [tym artykule](../active-directory/fundamentals/add-user
 
 6. Wybierz pozycję **Akceptuj** po wyświetleniu monitu.
 
-    ![Odebrać](./media/openvpn-create-azure-ad-tenant/accept.jpg)
+    ![Zaakceptuj](./media/openvpn-create-azure-ad-tenant/accept.jpg)
 
 7. W ramach usługi Azure AD w **aplikacjach dla przedsiębiorstw**zostanie wyświetlona lista **Azure VPN** .
 
     ![Sieć VPN platformy Azure](./media/openvpn-create-azure-ad-tenant/azurevpn.png)
+    
+8. Jeśli nie masz jeszcze działającego środowiska punkt-lokacja, postępuj zgodnie z instrukcjami, aby je utworzyć. Zobacz [Tworzenie sieci VPN typu punkt-lokacja](vpn-gateway-howto-point-to-site-resource-manager-portal.md) , aby utworzyć i skonfigurować bramę sieci VPN typu punkt-lokacja z natywnym uwierzytelnianiem certyfikatu platformy Azure. 
 
-8. Włącz uwierzytelnianie usługi Azure AD na bramie sieci VPN, uruchamiając następujące polecenia, pamiętając, aby zmodyfikować polecenie w celu odzwierciedlenia własnego środowiska:
+    > [!IMPORTANT]
+    > Podstawowa jednostka SKU nie jest obsługiwana w przypadku OpenVPN.
+
+9. Włącz uwierzytelnianie usługi Azure AD na bramie sieci VPN, uruchamiając następujące polecenia, pamiętając, aby zmodyfikować polecenie w celu odzwierciedlenia własnego środowiska:
 
     ```azurepowershell-interactive
     $gw = Get-AzVirtualNetworkGateway -Name <name of VPN gateway> -ResourceGroupName <Resource group>
     Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -VpnClientRootCertificates @()
-    Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -AadTenantUri "https://login.microsoftonline.com/<your Directory ID>" -AadAudienceId "41b23e61-6c1e-4545-b367-cd054e0ed4b4" -AadIssuerUri "https://sts.windows.net/<your Directory ID>/"
+    Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -AadTenantUri "https://login.microsoftonline.com/<your Directory ID>" -AadAudienceId "41b23e61-6c1e-4545-b367-cd054e0ed4b4" -AadIssuerUri "https://sts.windows.net/<your Directory ID>/" -VpnClientAddressPool 192.168.0.0/24 -VpnClientProtocol OpenVPN
     ```
 
-9. Utwórz i Pobierz profil, uruchamiając następujące polecenia. Zmień wartości parametrów-ResourcGroupName i-Name, aby były zgodne z własnymi.
+10. Utwórz i Pobierz profil, uruchamiając następujące polecenia. Zmień wartości parametrów-ResourceGroupName i-Name, aby były zgodne z własnymi.
 
     ```azurepowershell-interactive
     $profile = New-AzVpnClientConfiguration -Name <name of VPN gateway> -ResourceGroupName <Resource group> -AuthenticationMethod "EapTls"
     $PROFILE.VpnProfileSASUrl
     ```
 
-10. Po uruchomieniu poleceń zobaczysz wynik podobny do przedstawionego poniżej. Skopiuj adres URL wyniku do przeglądarki, aby pobrać plik zip profilu.
+11. Po uruchomieniu poleceń zobaczysz wynik podobny do przedstawionego poniżej. Skopiuj adres URL wyniku do przeglądarki, aby pobrać plik zip profilu.
 
     ![Sieć VPN platformy Azure](./media/openvpn-create-azure-ad-tenant/profile.png)
 
-11. Wyodrębnij pobrany plik zip.
+12. Wyodrębnij pobrany plik zip.
 
-12. Przejdź do folderu rozpakowanego "AzureVPN".
+13. Przejdź do folderu rozpakowanego "AzureVPN".
 
-13. Zanotuj lokalizację pliku "azurevpnconfig. xml". Azurevpnconfig. xml zawiera ustawienie dla połączenia sieci VPN i można je zaimportować bezpośrednio do aplikacji klienckiej sieci VPN platformy Azure. Możesz również dystrybuować ten plik do wszystkich użytkowników, którzy muszą łączyć się za pośrednictwem poczty e-mail lub w inny sposób. Aby nawiązać połączenie, użytkownik musi dysponować prawidłowymi poświadczeniami usługi Azure AD.
+14. Zanotuj lokalizację pliku "azurevpnconfig. xml". Azurevpnconfig. xml zawiera ustawienie dla połączenia sieci VPN i można je zaimportować bezpośrednio do aplikacji klienckiej sieci VPN platformy Azure. Możesz również dystrybuować ten plik do wszystkich użytkowników, którzy muszą łączyć się za pośrednictwem poczty e-mail lub w inny sposób. Aby nawiązać połączenie, użytkownik musi dysponować prawidłowymi poświadczeniami usługi Azure AD.
 
 ## <a name="next-steps"></a>Następne kroki
 

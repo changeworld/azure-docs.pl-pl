@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a3518dfcad3678dc298ba8529e731d48ec1d195
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 78f148f435edee16805cc8b0ae78652a17826727
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72893472"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768152"
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Azure Active Directory informacje o ustawieniach dostępu warunkowego
 
@@ -29,8 +29,6 @@ Ten artykuł zawiera informacje o pomocy technicznej dotyczące następujących 
 - Warunek aplikacji klienckich
 - Wymagania dotyczące zatwierdzonej aplikacji klienckiej
 
-Jeśli nie są to informacje, których szukasz, pozostaw komentarz na końcu tego artykułu.
-
 ## <a name="cloud-apps-assignments"></a>Przypisania aplikacji w chmurze
 
 Korzystając z zasad dostępu warunkowego, można kontrolować sposób, w jaki użytkownicy uzyskują dostęp do [aplikacji w chmurze](conditions.md#cloud-apps-and-actions). Konfigurując zasady dostępu warunkowego, należy wybrać co najmniej jedną aplikację w chmurze. 
@@ -41,6 +39,7 @@ Korzystając z zasad dostępu warunkowego, można kontrolować sposób, w jaki u
 
 Zasady dostępu warunkowego można przypisać do następujących aplikacji w chmurze firmy Microsoft:
 
+- Office 365 (wersja zapoznawcza)
 - Azure Analysis Services
 - Azure DevOps
 - Azure SQL Database i magazyn danych — [Dowiedz się więcej](https://docs.microsoft.com/azure/sql-database/sql-database-conditional-access)
@@ -55,14 +54,14 @@ Zasady dostępu warunkowego można przypisać do następujących aplikacji w chm
 - Microsoft Flow
 - Microsoft Forms
 - Microsoft Intune
-- Rejestracja Microsoft Intune
+- Rejestracja w usłudze Microsoft Intune
 - Microsoft Planner
 - Microsoft PowerApps
 - Wyszukiwanie w usłudze Bing firmy Microsoft
 - Microsoft StaffHub
 - Microsoft Stream
 - Microsoft Teams
-- Pakiet Office 365 Exchange Online
+- Office 365 Exchange Online
 - Pakiet Office 365 SharePoint Online
 - Usługa Yammer pakietu Office 365
 - Office Delve
@@ -74,6 +73,22 @@ Zasady dostępu warunkowego można przypisać do następujących aplikacji w chm
 - Wirtualna sieć prywatna (VPN)
 - Zaawansowana ochrona przed zagrożeniami w usłudze Windows Defender
 
+### <a name="office-365-preview"></a>Office 365 (wersja zapoznawcza)
+
+Pakiet Office 365 zapewnia oparte na chmurze usługi do pracy i współpracy, takie jak Exchange, SharePoint i Microsoft Teams. Usługi w chmurze pakietu Office 365 są głęboko zintegrowane w celu zapewnienia bezproblemowego i wspólnego środowiska. Aplikacja pakietu Office 365 (wersja zapoznawcza) umożliwia wszystkim wszystkim kierowanie tych usług jednocześnie. Zalecamy używanie nowej aplikacji pakietu Office 365 (wersja zapoznawcza), a nie kierowanie pojedynczych aplikacji w chmurze, takich jak Office 365 Exchange Online i Office 365 SharePoint Online, aby uniknąć problemów, które mogą wystąpić z powodu niespójnych zasad i zależności usług.
+
+Najważniejsze aplikacje, które są zawarte w aplikacji klienckiej pakietu Office 365 (wersja zapoznawcza):
+
+- Office 365 Exchange Online
+- Pakiet Office 365 SharePoint Online
+- Microsoft Teams
+- Usługa Yammer pakietu Office 365
+- Portal pakietu Office
+- Microsoft Forms
+- Microsoft — Automatyzacja
+- Microsoft Planner
+- Microsoft PowerApps
+
 ### <a name="other-applications"></a>Inne aplikacje
 
 Oprócz aplikacji w chmurze firmy Microsoft można przypisać zasady dostępu warunkowego do następujących typów aplikacji w chmurze:
@@ -81,7 +96,7 @@ Oprócz aplikacji w chmurze firmy Microsoft można przypisać zasady dostępu wa
 - Aplikacje połączone z usługą Azure AD
 - Wstępnie zintegrowana aplikacja federacyjna oprogramowania jako usługi (SaaS)
 - Aplikacje korzystające z logowania jednokrotnego (SSO) hasła
-- Aplikacje biznesowe
+- Line-of-business aplikacji
 - Aplikacje korzystające z usługi Azure serwer proxy aplikacji usługi Azure AD
 
 ## <a name="device-platform-condition"></a>Warunek platformy urządzenia
@@ -115,11 +130,11 @@ W zasadach dostępu warunkowego można wybrać **przeglądarki** jako aplikację
 
 To ustawienie działa ze wszystkimi przeglądarkami. Jednak w celu spełnienia zasad dotyczących urządzeń, takich jak zgodne wymagania dotyczące urządzeń, obsługiwane są następujące systemy operacyjne i przeglądarki:
 
-| System operacyjny                     | Browser                                        |
+| System operacyjny                     | Przeglądarki                                        |
 | :--                    | :--                                             |
 | Windows 10             | Microsoft Edge, Internet Explorer, Chrome       |
-| Windows 8/8,1        | Internet Explorer, program Chrome                       |
-| Windows 7              | Internet Explorer, program Chrome                       |
+| Windows 8 / 8.1        | Internet Explorer, Chrome                       |
+| Windows 7              | Internet Explorer, Chrome                       |
 | iOS                    | Microsoft Edge, Intune Managed Browser, Safari  |
 | Android                | Microsoft Edge, Intune Managed Browser, Chrome  |
 | Windows Phone          | Microsoft Edge, Internet Explorer               |
@@ -142,7 +157,7 @@ Aby automatycznie wdrożyć to rozszerzenie w przeglądarkach programu Chrome, U
 
 |    |    |
 | --- | --- |
-| Ścieżka | HKEY_LOCAL_MACHINE\Software\Policies\Google\Chrome\ExtensionInstallForcelist |
+| Ścieżka | HKEY_LOCAL_MACHINE \Software\Policies\Google\Chrome\ExtensionInstallForcelist |
 | Nazwa | 1 |
 | Typ | REG_SZ (ciąg) |
 | Dane | ppnbnpeolgkicgegkbkbjmhlideopiji; https\://clients2.google.com/service/update2/crx |
@@ -154,7 +169,7 @@ Aby uzyskać pomoc techniczną dla programu Chrome w **Windows 8.1 i 7**, Utwór
 | Ścieżka | HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls |
 | Nazwa | 1 |
 | Typ | REG_SZ (ciąg) |
-| Dane | {"wzorzec": "https://device.login.microsoftonline.com", "filter": {"WYSTAWCa": {"CN": "MS-Organization-Access"}}} |
+| Dane | {"pattern":"https://device.login.microsoftonline.com","filter":{"ISSUER":{"CN":"MS-Organization-Access"}}} |
 
 Te przeglądarki obsługują uwierzytelnianie urządzeń, co pozwala na identyfikację i weryfikację urządzenia względem zasad. Sprawdzenie urządzenia kończy się niepowodzeniem, jeśli przeglądarka działa w trybie prywatnym.
 
@@ -169,7 +184,7 @@ To ustawienie ma wpływ na próby dostępu wykonane z następujących aplikacji 
 | Aplikacje klienckie | Usługa docelowa | Platforma |
 | --- | --- | --- |
 | Aplikacja Dynamics CRM | Dynamics CRM | Windows 10, Windows 8.1, iOS i Android |
-| Aplikacja poczty/kalendarza/osoby, Outlook 2016, Outlook 2013 (z nowoczesnego uwierzytelniania)| Pakiet Office 365 Exchange Online | Windows 10 |
+| Aplikacja poczty/kalendarza/osoby, Outlook 2016, Outlook 2013 (z nowoczesnego uwierzytelniania)| Office 365 Exchange Online | Windows 10 |
 | Zasady usługi MFA i lokalizacji dla aplikacji. Zasady oparte na urządzeniach nie są obsługiwane.| Wszystkie aplikacje my App Service| Systemy Android i iOS |
 | Usługi Microsoft Teams — kontroluje wszystkie usługi obsługujące Microsoft Teams i wszystkie jej aplikacje klienckie — Windows Desktop, iOS, Android, WP i klient sieci Web | Microsoft Teams | Windows 10, Windows 8.1, Windows 7, iOS, Android i macOS |
 | Aplikacje pakietu Office 2016, pakiet Office 2013 (z nowoczesnego uwierzytelniania), klient synchronizacji usługi OneDrive (zobacz [uwagi](https://support.office.com/en-US/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e)) | Pakiet Office 365 SharePoint Online | Windows 8.1, Windows 7 |
@@ -179,11 +194,11 @@ To ustawienie ma wpływ na próby dostępu wykonane z następujących aplikacji 
 | Aplikacje mobilne pakietu Office | Pakiet Office 365 SharePoint Online | Android, iOS |
 | Aplikacja Yammera pakietu Office | Usługa Yammer pakietu Office 365 | Windows 10, iOS, Android |
 | Outlook 2019 | Pakiet Office 365 SharePoint Online | Windows 10, macOS |
-| Outlook 2016 (Office for macOS) | Pakiet Office 365 Exchange Online | macOS |
-| Outlook 2016, Outlook 2013 (z nowoczesnego uwierzytelniania), Skype dla firm (z nowoczesnego uwierzytelniania) | Pakiet Office 365 Exchange Online | Windows 8.1, Windows 7 |
-| Aplikacja mobilna Outlook | Pakiet Office 365 Exchange Online | Android, iOS |
-| Aplikacja Power BI | usługa Power BI | Windows 10, Windows 8.1, Windows 7, Android i iOS |
-| Skype dla firm | Pakiet Office 365 Exchange Online| Android, IOS |
+| Outlook 2016 (Office for macOS) | Office 365 Exchange Online | macOS |
+| Outlook 2016, Outlook 2013 (z nowoczesnego uwierzytelniania), Skype dla firm (z nowoczesnego uwierzytelniania) | Office 365 Exchange Online | Windows 8.1, Windows 7 |
+| Aplikacja mobilna Outlook | Office 365 Exchange Online | Android, iOS |
+| Aplikacja Power BI | Usługa Power BI | Windows 10, Windows 8.1, Windows 7, Android i iOS |
+| Skype dla firm | Office 365 Exchange Online| Android, IOS |
 | Aplikacja Visual Studio Team Services | Visual Studio Team Services | Windows 10, Windows 8.1, Windows 7, iOS i Android |
 
 ## <a name="support-for-legacy-authentication"></a>Obsługa starszego uwierzytelniania
@@ -235,6 +250,7 @@ To ustawienie dotyczy następujących aplikacji klienckich:
 - Zatwierdzone aplikacje klienckie obsługują funkcję zarządzania aplikacjami mobilnymi w usłudze Intune.
 - Wymagane wymagania dotyczące **zatwierdzonej aplikacji klienckiej** :
    - Obsługuje tylko [warunek platformy](#device-platform-condition)dla systemów iOS i Android.
+- Dostęp warunkowy nie może rozważyć Microsoft Edge w trybie InPrivate w zatwierdzonej aplikacji klienckiej.
 
 ## <a name="app-protection-policy-requirement"></a>Wymaganie dotyczące zasad ochrony aplikacji 
 

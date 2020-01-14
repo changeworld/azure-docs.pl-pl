@@ -9,12 +9,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: d362512ac6d06577a5c46bb0c6dab461f07ae709
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 94038d743bf0aafaadb4693ffc48108e5351bca4
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74457020"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863550"
 ---
 # <a name="how-to-debug-user-defined-functions-in-azure-digital-twins"></a>Jak debugować funkcje zdefiniowane przez użytkownika w usłudze Azure Digital bliźniaczych reprezentacji
 
@@ -35,7 +35,7 @@ Usługa Azure Digital bliźniaczych reprezentacji obsługuje niezawodne rejestro
 
 * Aby uzyskać konfigurację rejestrowania specyficzną dla usługi Azure Digital bliźniaczych reprezentacji, przeczytaj artykuł [jak skonfigurować monitorowanie i rejestrowanie](./how-to-configure-monitoring.md).
 * Zapoznaj się z omówieniem [Azure monitor](../azure-monitor/overview.md) , aby dowiedzieć się więcej o zaawansowanych ustawieniach rejestrowania włączonych za pomocą Azure monitor.
-* Zapoznaj się z artykułem [gromadzenie i używanie danych dziennika z zasobów platformy Azure](../azure-monitor/platform/resource-logs-overview.md) w celu skonfigurowania ustawień dzienników diagnostycznych w usłudze Azure Digital bliźniaczych reprezentacji za pośrednictwem Azure Portal, interfejsu wiersza polecenia platformy Azure lub programu PowerShell.
+* Zapoznaj się z artykułem [gromadzenie i używanie danych dziennika z zasobów platformy Azure](../azure-monitor/platform/platform-logs-overview.md) w celu skonfigurowania ustawień dzienników diagnostycznych w usłudze Azure Digital bliźniaczych reprezentacji za pośrednictwem Azure Portal, interfejsu wiersza polecenia platformy Azure lub programu PowerShell.
 
 Po skonfigurowaniu można wybrać wszystkie kategorie i metryki dzienników oraz zaawansowane Azure Monitor obszary robocze usługi log Analytics do obsługi działań związanych z debugowaniem.
 
@@ -56,7 +56,7 @@ AzureDiagnostics
 | --- | --- |
 | YOUR_CORRELATION_IDENTIFIER | Identyfikator korelacji określony dla danych zdarzenia |
 
-Aby wyświetlić wszystkie ostatnie zapytania dotyczące dzienników telemetrycznych:
+Aby odczytać wszystkie ostatnie zapytania dotyczące dzienników telemetrycznych:
 
 ```Kusto
 AzureDiagnostics
@@ -216,4 +216,4 @@ W przypadku włączenia ustawień diagnostycznych mogą wystąpić następujące
 
 - Dowiedz się, jak włączyć [monitorowanie i dzienniki](./how-to-configure-monitoring.md) w usłudze Azure Digital bliźniaczych reprezentacji.
 
-- Zapoznaj się z artykułem [Omówienie dziennika aktywności platformy Azure](../azure-monitor/platform/activity-logs-overview.md) , aby uzyskać więcej opcji rejestrowania na platformie Azure.
+- Zapoznaj się z artykułem [Omówienie dziennika aktywności platformy Azure](../azure-monitor/platform/platform-logs-overview.md) , aby uzyskać więcej opcji rejestrowania na platformie Azure.

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 3/13/2019
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: 88101aacab8b4745ce6bc9180521e66500086edd
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: e0094add11755ecb0c303adf874abe5a4a8f5811
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084358"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75746204"
 ---
 # <a name="tutorial-set-up-and-use-metrics-and-diagnostic-logs-with-an-iot-hub"></a>Samouczek: Konfigurowanie metryk i dzienników diagnostycznych za pomocą Centrum IoT Hub oraz korzystanie z nich
 
@@ -38,7 +38,7 @@ Ten samouczek obejmuje wykonanie następujących zadań:
 
 - Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-- Zainstalować program [Visual Studio](https://www.visualstudio.com/). 
+- Instalacja programu [Visual Studio](https://www.visualstudio.com/). 
 
 - Konto e-mail umożliwiające odbieranie wiadomości e-mail.
 
@@ -50,7 +50,7 @@ W tym samouczku potrzebujesz centrum IoT, konta magazynu i symulowanego urządze
 
 Poniżej przedstawiono wymagane kroki.
 
-1. Utwórz [grupę zasobów](../azure-resource-manager/resource-group-overview.md). 
+1. Utwórz [grupę zasobów](../azure-resource-manager/management/overview.md). 
 
 2. Utwórz centrum IoT.
 
@@ -125,7 +125,7 @@ az iot hub device-identity show --device-id $iotDeviceName \
 
 ## <a name="enable-the-diagnostic-logs"></a>Włączanie dzienników diagnostycznych 
 
-[Dzienniki diagnostyczne](../azure-monitor/platform/resource-logs-overview.md) są domyślnie wyłączone po utworzeniu nowego centrum IoT. W tej sekcji włączysz dzienniki diagnostyczne dla swojego centrum.
+[Dzienniki diagnostyczne](../azure-monitor/platform/platform-logs-overview.md) są domyślnie wyłączone po utworzeniu nowego centrum IoT. W tej sekcji włączysz dzienniki diagnostyczne dla swojego centrum.
 
 1. Najpierw, jeśli nie jesteś jeszcze w swoim centrum w portalu, kliknij pozycję **Grupy zasobów**, a następnie kliknij grupę zasobów Contoso-Resources. Wybierz centrum z listy wyświetlanych zasobów. 
 

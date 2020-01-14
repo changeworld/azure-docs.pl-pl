@@ -1,5 +1,6 @@
 ---
-title: 'Samouczek: Użyj Azure Database Migration Service do migracji w trybie online usług RDS MySQL do Azure Database for MySQL | Microsoft Docs'
+title: 'Samouczek: Migrowanie usług RDS MySQL online do Azure Database for MySQL'
+titleSuffix: Azure Database Migration Service
 description: Dowiedz się, jak przeprowadzić migrację w trybie online z usług RDS MySQL do Azure Database for MySQL przy użyciu Azure Database Migration Service.
 services: dms
 author: HJToland3
@@ -8,25 +9,25 @@ manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc, tutorial
+ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 10/28/2019
-ms.openlocfilehash: 2df76c5906037fc5ce35e0c3a6558b0240c4b2be
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.date: 01/08/2020
+ms.openlocfilehash: c34de48d0184057f42d1b779abee56e1fa9ac169
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73043304"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75751310"
 ---
 # <a name="tutorial-migrate-rds-mysql-to-azure-database-for-mysql-online-using-dms"></a>Samouczek: Migrowanie usług RDS MySQL do Azure Database for MySQL online przy użyciu usługi DMS
 
 Za pomocą Azure Database Migration Service można migrować bazy danych z wystąpienia programu RDS MySQL do [Azure Database for MySQL](https://docs.microsoft.com/azure/mysql/) , gdy źródłowa baza danych pozostanie w trybie online podczas migracji. Innymi słowy, migracja może zostać osiągnięta przy minimalnym przestoju aplikacji. W tym samouczku przeprowadzisz migrację przykładowej bazy danych **Employees** z wystąpienia programu RDS MySQL do Azure Database for MySQL przy użyciu działania migracji w trybie online w programie Azure Database Migration Service.
 
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 > [!div class="checklist"]
 >
 > * Przeprowadź migrację przykładowego schematu przy użyciu narzędzi mysqldump i MySQL.
-> * Utwórz wystąpienie Azure Database Migration Service.
+> * Utwórz wystąpienie usługi Azure Database Migration Service.
 > * Utwórz projekt migracji przy użyciu Azure Database Migration Service.
 > * Uruchamianie migracji.
 > * Monitorowanie migracji.
@@ -55,8 +56,8 @@ Do ukończenia tego samouczka niezbędne są następujące elementy:
 
 * Pobierz i zainstaluj [przykładową bazę danych programu MySQL **Employees** ](https://dev.mysql.com/doc/employee/en/employees-installation.html).
 * Utwórz wystąpienie [Azure Database for MySQL](https://docs.microsoft.com/azure/mysql/quickstart-create-mysql-server-database-using-azure-portal).
-* Utwórz Virtual Network platformy Azure dla Azure Database Migration Service przy użyciu modelu wdrażania Azure Resource Manager, który zapewnia łączność między lokacjami z lokalnymi serwerami źródłowymi przy użyciu usługi [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) lub [sieci VPN. ](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways). Aby uzyskać więcej informacji na temat tworzenia sieci wirtualnej, zapoznaj się z [dokumentacją Virtual Network](https://docs.microsoft.com/azure/virtual-network/), a w szczególności artykuły szybkiego startu z szczegółowymi szczegółami.
-* Upewnij się, że zasady grupy zabezpieczeń sieci wirtualnej nie blokują następujących portów komunikacji przychodzącej do Azure Database Migration Service: 443, 53, 9354, 445 i 12000. Aby uzyskać więcej szczegółów na temat filtrowania ruchu w sieci wirtualnej platformy Azure, zobacz artykuł [Filtrowanie ruchu sieciowego przy użyciu sieciowych grup zabezpieczeń](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg).
+* Utwórz Microsoft Azure Virtual Network dla Azure Database Migration Service przy użyciu modelu wdrażania Azure Resource Manager, który zapewnia łączność między lokacjami z lokalnymi serwerami źródłowymi przy użyciu usługi [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) lub [sieci VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways). Aby uzyskać więcej informacji na temat tworzenia sieci wirtualnej, zapoznaj się z [dokumentacją Virtual Network](https://docs.microsoft.com/azure/virtual-network/), a w szczególności artykuły szybkiego startu z szczegółowymi szczegółami.
+* Upewnij się, że reguły grupy zabezpieczeń sieci wirtualnej nie blokują następujących portów komunikacji przychodzącej do Azure Database Migration Service: 443, 53, 9354, 445 i 12000. Aby uzyskać więcej szczegółów na temat filtrowania ruchu sieciowej grupy zabezpieczeń w sieci wirtualnej, zobacz artykuł [Filtrowanie ruchu sieciowego przy użyciu sieciowych grup zabezpieczeń](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg).
 * Skonfiguruj [zaporę systemu Windows](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access) (lub zaporę z systemem Linux), aby umożliwić dostęp do aparatu bazy danych. W przypadku serwera MySQL Zezwól na port 3306 na potrzeby łączności.
 
 > [!NOTE]
@@ -162,9 +163,9 @@ Do ukończenia tego samouczka niezbędne są następujące elementy:
 
 5. Wybierz istniejącą sieć wirtualną lub Utwórz nową.
 
-    Sieć wirtualna zapewnia Azure Database Migration Service z dostępem do źródłowego wystąpienia programu MySQL i wystąpienia docelowego Azure Database for MySQL.
+    Sieć wirtualna zapewnia Azure Database Migration Service z dostępem do źródłowego wystąpienia programu MySQL i docelowego wystąpienia Azure Database for MySQL.
 
-    Aby uzyskać więcej informacji dotyczących sposobu tworzenia sieci wirtualnej w Azure Portal, zobacz artykuł [Tworzenie sieci wirtualnych przy użyciu Azure Portal](https://aka.ms/DMSVnet).
+    Aby uzyskać więcej informacji na temat sposobu tworzenia sieci wirtualnej w Azure Portal, zobacz artykuł [Tworzenie sieci wirtualnej przy użyciu Azure Portal](https://aka.ms/DMSVnet).
 
 6. Wybierz warstwę cenową; w przypadku migracji w trybie online należy wybrać warstwę cenową Premium: 4vCores.
 

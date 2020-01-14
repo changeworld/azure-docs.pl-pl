@@ -7,12 +7,12 @@ ms.date: 07/31/2019
 ms.topic: article
 ms.service: virtual-machines-linux
 manager: gwallace
-ms.openlocfilehash: 13392644ebe5e163e946deceeec5fcab8f5085cc
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 4a411603ca5c3c79da0d596396d8fde80b568af2
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73159721"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75763083"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>Wersja zapoznawcza: Tworzenie szablonu usługi Azure Image Builder 
 
@@ -28,7 +28,7 @@ Jest to podstawowy format szablonu:
     "tags": {
         "<name": "<value>",
         "<name>": "<value>"
-             }
+             },
     "identity":{},           
     "dependsOn": [], 
     "properties": { 
@@ -139,9 +139,9 @@ Usługa Azure Image Builder obsługuje następujące obrazy w portalu Azure Mark
 * Ubuntu 18.04
 * Ubuntu 16.04
 * RHEL 7,6
-* CentOS 7,6
+* CentOS 7.6
 * Windows 2016
-* System Windows 2019
+* Windows 2019
 
 ```json
         "source": {
@@ -275,7 +275,8 @@ Dostosowywanie ponownego uruchomienia umożliwia ponowne uruchomienie maszyny wi
 
 ```json 
      "customize": [ 
-            "type{ ": "WindowsRestart", 
+         {
+            "type": "WindowsRestart", 
             "restartCommand": "shutdown /r /f /t 0 /c", 
             "restartCheckCommand": "echo Azure-Image-Builder-Restarted-the-VM  > buildArtifacts/azureImageBuilderRestart.txt",
             "restartTimeout": "5m"
@@ -317,7 +318,7 @@ Dostosuj właściwości:
 - **Type** — PowerShell.
 - **scriptUri** -URI do lokalizacji pliku skryptu programu PowerShell. 
 - **wbudowane** — polecenia śródwierszowe do uruchomienia, oddzielone przecinkami.
-- **valid_exit_codes** — opcjonalne, prawidłowe kody, które mogą być zwracane z skryptu/polecenia wbudowanego, pozwoli to uniknąć zgłaszanego błędu skryptu/polecenia wbudowanego.
+- **valid_exit_codes** — opcjonalne, prawidłowe kody, które mogą być zwracane z skryptu/polecenia wbudowanego, spowoduje to uniknięcie zgłaszanego błędu skryptu/polecenia wbudowanego.
 
 ### <a name="file-customizer"></a>Konfigurator plików
 
@@ -382,7 +383,7 @@ while($true) { $imageState = Get-ItemProperty HKLM:\\SOFTWARE\\Microsoft\\Window
 #### <a name="overriding-the-commands"></a>Zastępowanie poleceń
 Aby zastąpić polecenia, należy użyć programu PowerShell lub obsługi skryptów powłoki w celu utworzenia plików poleceń z dokładną nazwą pliku i umieścić je w prawidłowych katalogach:
 
-* System Windows: c:\DeprovisioningScript.ps1
+* Windows: c:\DeprovisioningScript.ps1
 * Linux:/tmp/DeprovisioningScript.sh
 
 Konstruktor obrazów odczyta te polecenia, są one zapisywane do dzienników AIB "Customization. log". Zobacz temat [Rozwiązywanie problemów](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#collecting-and-reviewing-aib-logs) dotyczących zbierania dzienników.

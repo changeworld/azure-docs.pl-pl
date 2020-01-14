@@ -8,12 +8,12 @@ ms.topic: include
 author: nibaccam
 ms.author: nibaccam
 ms.date: 11/04/2019
-ms.openlocfilehash: 31ce37089b5f2b64ca467c67783cbbe13fb0b507
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e526a0ceeb20ec3a1d05db800e6d936b9d33de30
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73492616"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75865121"
 ---
 > [!TIP]
-> Klienci korzystający obecnie z usługi lub oceniają Machine Learning Studio (klasyczny) mogą wypróbować program [Azure Machine Learning Designer](https://docs.microsoft.com/azure/machine-learning/service/ui-concept-visual-interface) (wersja zapoznawcza), który zapewnia __moduły przeciągania__ -n-drop ml i skalowalność, kontrolę wersji i zabezpieczenia przedsiębiorstwa.
+> Klienci korzystający obecnie z usługi lub oceniają Machine Learning Studio (klasyczny) mogą wypróbować program [Azure Machine Learning Designer](https://docs.microsoft.com/azure/machine-learning/concept-designer) (wersja zapoznawcza), który zapewnia __moduły przeciągania__ -n-drop ml i skalowalność, kontrolę wersji i zabezpieczenia przedsiębiorstwa.

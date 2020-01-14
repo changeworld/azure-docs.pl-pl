@@ -4,12 +4,12 @@ description: Dowiedz się, jak skonfigurować wstępnie utworzony kontener ASP.N
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/13/2019
-ms.openlocfilehash: d26c490ad37b25785ff1347cccf1e2be21bba277
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: cab99b9d20ce8a3190eb9aa59650dab32fca324d
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74670470"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768422"
 ---
 # <a name="configure-a-linux-aspnet-core-app-for-azure-app-service"></a>Konfigurowanie aplikacji ASP.NET Core systemu Linux dla Azure App Service
 
@@ -44,7 +44,7 @@ az webapp config set --name <app-name> --resource-group <resource-group-name> --
 W App Service można [ustawić ustawienia aplikacji](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) poza kodem aplikacji. Następnie można uzyskać do nich dostęp w dowolnej klasie przy użyciu wzorca iniekcji zależności standardowej ASP.NET Core:
 
 ```csharp
-include Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Configuration;
 
 namespace SomeNamespace 
 {
@@ -72,7 +72,7 @@ W przypadku skonfigurowania ustawienia aplikacji o tej samej nazwie w App Servic
 
 ## <a name="get-detailed-exceptions-page"></a>Strona pobierania szczegółowych wyjątków
 
-Gdy aplikacja ASP.NET generuje wyjątek w debugerze programu Visual Studio, przeglądarka wyświetla szczegółową stronę wyjątku, ale w App Service tej stronie jest zastępowany przez ogólny błąd **protokołu HTTP 500** lub **Wystąpił błąd podczas przetwarzania żądania.** Komunikat. Aby wyświetlić szczegółową stronę wyjątku w App Service, Dodaj ustawienia aplikacji `ASPNETCORE_ENVIRONMENT` do aplikacji, uruchamiając następujące polecenie w <a target="_blank" href="https://shell.azure.com" >Cloud Shell</a>.
+Gdy aplikacja ASP.NET generuje wyjątek w debugerze programu Visual Studio, przeglądarka wyświetla szczegółową stronę wyjątku, ale w App Service tej stronie jest zastępowany przez ogólny błąd **protokołu HTTP 500** lub **Wystąpił błąd podczas przetwarzania żądania.** . Aby wyświetlić szczegółową stronę wyjątku w App Service, Dodaj ustawienia aplikacji `ASPNETCORE_ENVIRONMENT` do aplikacji, uruchamiając następujące polecenie w <a target="_blank" href="https://shell.azure.com" >Cloud Shell</a>.
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings ASPNETCORE_ENVIRONMENT="Development"
@@ -113,7 +113,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 }
 ```
 
-Aby uzyskać więcej informacji, zobacz [konfigurowanie ASP.NET Core do pracy z serwerami proxy i usługami równoważenia obciążenia](https://docs.microsoft.com/aspnet/core/host-and-deploy/proxy-load-balancer).
+Aby uzyskać więcej informacji, zobacz [Konfigurowanie platformy ASP.NET Core pracować z serwerów proxy i moduły równoważenia obciążenia](https://docs.microsoft.com/aspnet/core/host-and-deploy/proxy-load-balancer).
 
 ## <a name="deploy-multi-project-solutions"></a>Wdróż rozwiązania obejmujące wiele projektów
 

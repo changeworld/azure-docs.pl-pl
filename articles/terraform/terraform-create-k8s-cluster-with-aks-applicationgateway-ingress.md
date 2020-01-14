@@ -3,12 +3,12 @@ title: Samouczek — Tworzenie Application Gatewayowego kontrolera w usłudze Az
 description: Samouczek pokazujący sposób tworzenia klastra Kubernetes za pomocą usługi Azure Kubernetes Service z usługą Application Gateway jako kontrolerem ruchu przychodzącego
 ms.topic: tutorial
 ms.date: 11/13/2019
-ms.openlocfilehash: 6d07fc6becf76453de792c69b25aea49c39775ae
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 898a2052f31965ee45ab2cc5df6956af4831b0d2
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74159096"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867398"
 ---
 # <a name="tutorial-create-an-application-gateway-ingress-controller-in-azure-kubernetes-service"></a>Samouczek: Tworzenie kontrolera Application Gateway transferu danych przychodzących w usłudze Azure Kubernetes Service
 
@@ -261,7 +261,7 @@ Utwórz plik konfiguracji narzędzia Terraform używany do utworzenia wszystkich
       name = var.resource_group_name
     }
 
-    # User Assigned Idntities 
+    # User Assigned Identities 
     resource "azurerm_user_assigned_identity" "testIdentity" {
       resource_group_name = data.azurerm_resource_group.rg.name
       location            = data.azurerm_resource_group.rg.location
@@ -543,7 +543,7 @@ Narzędzie Terraform śledzi stan lokalnie za pośrednictwem pliku `terraform.tf
 
     ![Menu konta magazynu](./media/terraform-k8s-cluster-appgw-with-tf-aks/storage-account.png)
 
-1. Zanotuj wartość **klucza** **key1**. (Wybranie ikony po prawej stronie klucza spowoduje skopiowanie wartości do schowka).
+1. Zanotuj wartość klucza **Klucz1** . (Wybranie ikony po prawej stronie klucza spowoduje skopiowanie wartości do schowka).
 
     ![Klucze dostępu konta magazynu](./media/terraform-k8s-cluster-appgw-with-tf-aks/storage-account-access-key.png)
 

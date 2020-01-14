@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 05/31/2018
 ms.author: cynthn
-ms.openlocfilehash: 7721aca9187a0faee2254bc100bce03fe34232c4
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 20017f42031e126bbdae40f66bf4c36efd12f17c
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646918"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75893468"
 ---
 # <a name="virtual-machine-vcpu-quotas"></a>Limity przydziału procesorów wirtualnych maszyny wirtualnej
 
@@ -81,7 +81,7 @@ Premium Storage Managed Disks                1 10000 Count
 ## <a name="reserved-vm-instances"></a>Wystąpienia zarezerwowane maszyn wirtualnych
 Wystąpienia zarezerwowane maszyn wirtualnych, które są objęte zakresem pojedynczej subskrypcji bez elastyczności rozmiaru maszyny wirtualnej, spowodują dodanie nowego aspektu do przydziałów vCPU. Te wartości opisują liczbę wystąpień określonego rozmiaru, które muszą być wdrożone w subskrypcji. Działają jako symbol zastępczy w systemie przydziału, aby zapewnić, że przydział jest zarezerwowany w celu zapewnienia, że zarezerwowane wystąpienia maszyn wirtualnych są wdrażane w ramach subskrypcji. Na przykład jeśli określona subskrypcja ma 10 Standard_D1 zarezerwowanych wystąpień maszyn wirtualnych limit użycia dla Standard_D1 zarezerwowane wystąpienia maszyn wirtualnych będą 10. Spowoduje to, że platforma Azure będzie mieć pewność, że w łącznej liczbie miejscowej przydziału procesorów wirtualnych vCPU będzie dostępna co najmniej 10 procesorów wirtualnych vCPU, które mają być używane dla wystąpień Standard_D1, a w przypadku wystąpień Standard_D1 będzie dostępnych co najmniej 10 procesorów wirtualnych vCPU.
 
-Jeśli do zakupu pojedynczej subskrypcji RI wymagane jest zwiększenie limitu przydziału, można [zażądać zwiększenia limitu przydziału](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) w ramach subskrypcji.
+Jeśli do zakupu pojedynczej subskrypcji RI wymagane jest zwiększenie limitu przydziału, można [zażądać zwiększenia limitu przydziału](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request) w ramach subskrypcji.
 
 ## <a name="next-steps"></a>Następne kroki
 

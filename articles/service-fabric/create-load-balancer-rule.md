@@ -1,24 +1,14 @@
 ---
 title: Tworzenie reguły Azure Load Balancer dla klastra
 description: Skonfiguruj Azure Load Balancer, aby otworzyć porty dla klastra Service Fabric platformy Azure.
-services: service-fabric
-documentationcenter: na
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 12/06/2017
-ms.author: atsenthi
-ms.openlocfilehash: 2e730ae8ecf6f1fab12aff23cab0ac3aa246233a
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 5cc392a74b8cf5ef92be8b5783b5b70289e602af
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70173359"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75351476"
 ---
 # <a name="open-ports-for-a-service-fabric-cluster"></a>Otwieranie portów dla klastra Service Fabric
 
@@ -72,7 +62,7 @@ Polecenie interfejsu wiersza polecenia platformy Azure zawiera kilka parametrów
 >[!NOTE]
 >Aby uzyskać więcej informacji na temat tworzenia modułu równoważenia obciążenia za pomocą interfejsu wiersza polecenia platformy Azure, zobacz [Tworzenie modułu równoważenia obciążenia za pomocą interfejsu wiersza polecenia platformy Azure](../load-balancer/load-balancer-get-started-internet-arm-cli.md).
 
-## <a name="powershell"></a>PowerShell
+## <a name="powershell"></a>Program PowerShell
 
 Program PowerShell jest nieco bardziej skomplikowany niż interfejs wiersza polecenia platformy Azure. Wykonaj następujące kroki koncepcyjne, aby utworzyć regułę:
 
@@ -103,7 +93,7 @@ $lb.LoadBalancingRules.Add($lbrule)
 $lb | Set-AzLoadBalancer
 ```
 
-W przypadku `New-AzLoadBalancerRuleConfig` `-FrontendPort` polecenia reprezentuje port modułu równoważenia obciążenia, który jest udostępniany dla połączeń `-BackendPort` zewnętrznych, i reprezentuje port, do którego nasłuchuje aplikacja usługi Service Fabric.
+W odniesieniu do `New-AzLoadBalancerRuleConfig` polecenie `-FrontendPort` reprezentuje port modułu równoważenia obciążenia dla połączeń zewnętrznych, a `-BackendPort` reprezentuje port, do którego nasłuchuje aplikacja usługi Service Fabric.
 
 >[!NOTE]
 >Aby uzyskać więcej informacji na temat tworzenia modułu równoważenia obciążenia za pomocą programu PowerShell, zobacz [Tworzenie modułu równoważenia obciążenia za pomocą programu PowerShell](../load-balancer/load-balancer-get-started-internet-arm-ps.md).

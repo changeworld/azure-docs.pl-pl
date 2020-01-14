@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 12/06/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 85aa1bda395240d0f11b0654ee48b9f1a0401eaa
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 561162767a48a060763510310de77767f37d4eb4
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74930590"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770190"
 ---
 # <a name="quickstart-search-for-images-with-the-bing-image-search-sdk-for-python"></a>Szybki start: wyszukiwanie obrazów za pomocą zestawu SDK wyszukiwania obrazów Bing w języku Python
 
@@ -38,7 +38,7 @@ Kod źródłowy dla tego przykładu jest dostępny [w usłudze GitHub](https://g
 1. Utwórz nowy skrypt w języku Python w ulubionym środowisku IDE lub edytorze z następującymi instrukcjami importu:
 
     ```python
-    from azure.cognitiveservices.search.imagesearch import ImageSearchAPI
+    from azure.cognitiveservices.search.imagesearch import ImageSearchClient
     from msrest.authentication import CognitiveServicesCredentials
     ```
 
@@ -46,6 +46,7 @@ Kod źródłowy dla tego przykładu jest dostępny [w usłudze GitHub](https://g
 
     ```python
     subscription_key = "Enter your key here"
+    subscription_endpoint = "Enter your endpoint here"
     search_term = "canadian rockies"
     ```
 
@@ -54,7 +55,7 @@ Kod źródłowy dla tego przykładu jest dostępny [w usłudze GitHub](https://g
 1. Utwórz wystąpienie klasy `CognitiveServicesCredentials` i użyj go do utworzenia wystąpienia klienta:
 
     ```python
-    client = ImageSearchAPI(CognitiveServicesCredentials(subscription_key))
+    client = ImageSearchClient(endpoint=subscription_endpoint, credentials=CognitiveServicesCredentials(subscription_key))
     ```
 1. Wyślij zapytanie wyszukiwania do interfejsu API wyszukiwania obrazów Bing:
     ```python
@@ -65,7 +66,7 @@ Kod źródłowy dla tego przykładu jest dostępny [w usłudze GitHub](https://g
 Analizuj wyniki obrazów zwróconych w odpowiedzi.
 
 
-Jeśli odpowiedź zawiera wyniki wyszukiwania, zapisz pierwszy wynik i wydrukuj jego szczegóły, takie jak adres URL miniatury i oryginalny adres URL, wraz z całkowitą liczbą zwróconych obrazów.  
+Jeśli odpowiedź zawiera wyniki wyszukiwania, zapisz pierwszy wynik i wyświetl jego szczegóły, takie jak adres URL miniatury i oryginalny adres URL, wraz z całkowitą liczbą zwróconych obrazów.  
 
 ```python
 if image_results.value:

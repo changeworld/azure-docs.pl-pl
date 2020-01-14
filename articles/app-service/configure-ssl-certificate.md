@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 2cba4e8223e98f95fc8d0f0472c10b2f9b67a658
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 1a9801fc0d8a2a013fa737c9d53138dc7d52b398
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74670734"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768468"
 ---
 # <a name="add-an-ssl-certificate-in-azure-app-service"></a>Dodawanie certyfikatu SSL w Azure App Service
 
@@ -113,8 +113,8 @@ Skorzystaj z poniższej tabeli, aby skonfigurować certyfikat. Po zakończeniu k
 |-|-|
 | Nazwa | Przyjazna nazwa certyfikatu App Service. |
 | Nazwa hosta z wydaną domeną | W tym miejscu określ domenę główną. Wystawiony certyfikat zabezpiecza *zarówno* domenę główną, jak i `www` poddomenę. W wystawionym certyfikacie pole Common Name (nazwa pospolita) zawiera domenę główną, a pole Alternatywna nazwa podmiotu zawiera domenę `www`. Aby zabezpieczyć tylko każdą poddomenę, określ w pełni kwalifikowaną nazwę domeny podrzędnej domeny (na przykład `mysubdomain.contoso.com`).|
-| Subskrypcja | Centrum danych, w którym hostowana jest aplikacja internetowa. |
-| Grupa zasobów | Grupa zasobów, która zawiera certyfikat. Możesz na przykład użyć nowej grupy zasobów lub wybrać tę samą grupę zasobów co App Service aplikacji. |
+| Subskrypcja | Subskrypcja, która będzie zawierać certyfikat. |
+| Grupa zasobów | Grupa zasobów, która będzie zawierać certyfikat. Możesz na przykład użyć nowej grupy zasobów lub wybrać tę samą grupę zasobów co App Service aplikacji. |
 | Jednostka SKU certyfikatu | Określa typ certyfikatu do utworzenia, czy certyfikat standardowy czy [certyfikat wieloznaczny](https://wikipedia.org/wiki/Wildcard_certificate). |
 | Postanowienia prawne | Kliknij, aby potwierdzić, że zgadzasz się z postanowieniami prawnymi. Certyfikaty są uzyskiwane z GoDaddy. |
 
@@ -128,7 +128,7 @@ Na stronie [certyfikaty App Service](https://portal.azure.com/#blade/HubsExtensi
 
 [Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) to usługa platformy Azure, która pomaga chronić klucze kryptograficzne i wpisy tajne używane przez aplikacje i usługi w chmurze. Jest to magazyn wybrany dla App Service certyfikatów.
 
-Na stronie **stan Key Vault** kliknij pozycję **Key Vault repozytorium** , aby utworzyć nowy magazyn, lub wybierz istniejący magazyn. Jeśli zdecydujesz się utworzyć nowy magazyn, Skorzystaj z poniższej tabeli, aby skonfigurować magazyn, a następnie kliknij przycisk Utwórz. Zobacz, aby utworzyć nowe Key Vault w ramach tej samej subskrypcji i grupy zasobów.
+Na stronie **stan Key Vault** kliknij pozycję **Key Vault repozytorium** , aby utworzyć nowy magazyn, lub wybierz istniejący magazyn. Jeśli zdecydujesz się utworzyć nowy magazyn, Skorzystaj z poniższej tabeli, aby skonfigurować magazyn, a następnie kliknij przycisk Utwórz. Utwórz nowy Key Vault w ramach tej samej subskrypcji i grupy zasobów co aplikacja App Service.
 
 | Ustawienie | Opis |
 |-|-|
@@ -137,9 +137,9 @@ Na stronie **stan Key Vault** kliknij pozycję **Key Vault repozytorium** , aby 
 | Lokalizacja | Wybierz tę samą lokalizację, w której znajduje się aplikacja App Service. |
 | Warstwa cenowa | Aby uzyskać więcej informacji, zobacz [Azure Key Vault szczegóły cennika](https://azure.microsoft.com/pricing/details/key-vault/). |
 | Zasady dostępu| Definiuje aplikacje i dozwolony dostęp do zasobów magazynu. Można skonfigurować ją później, wykonując czynności opisane w sekcji [Udziel kilku aplikacjom dostępu do magazynu kluczy](../key-vault/key-vault-group-permissions-for-apps.md). |
-| Dostęp Virtual Network | Ogranicz dostęp do magazynu do określonych sieci wirtualnych platformy Azure. Można skonfigurować ją później, wykonując czynności opisane w sekcji [konfigurowanie Azure Key Vault zapór i sieci wirtualnych](../key-vault/key-vault-network-security.md) |
+| Dostęp do sieci wirtualnej | Ogranicz dostęp do magazynu do określonych sieci wirtualnych platformy Azure. Można skonfigurować ją później, wykonując czynności opisane w sekcji [konfigurowanie Azure Key Vault zapór i sieci wirtualnych](../key-vault/key-vault-network-security.md) |
 
-Po wybraniu magazynu zamknij stronę **repozytorium Key Vault** . Opcja **magazynu** powinna zawierać zielony znacznik wyboru dla sukcesu. Pozostaw otwartą stronę w następnym kroku.
+Po wybraniu magazynu zamknij stronę **repozytorium Key Vault** . Opcja " **krok 1: Magazyn** " powinna zawierać zielony znacznik wyboru dla sukcesu. Pozostaw otwartą stronę w następnym kroku.
 
 ### <a name="verify-domain-ownership"></a>Weryfikuj własność domeny
 
@@ -183,7 +183,7 @@ W <a href="https://portal.azure.com" target="_blank">Azure Portal</a>z menu po l
 
 W lewym panelu nawigacyjnym aplikacji wybierz pozycję **Ustawienia protokołu TLS/SSL** > **Certyfikaty klucza prywatnego (pfx)**  > **zaimportować certyfikat Key Vault**.
 
-![Importuj certyfikat Key Vault w programie App Service](./media/configure-ssl-certificate/import-key-vault-cert.png))
+![Importuj certyfikat Key Vault w programie App Service](./media/configure-ssl-certificate/import-key-vault-cert.png)
 
 Skorzystaj z poniższej tabeli, aby wybrać certyfikat.
 
@@ -369,6 +369,6 @@ Teraz możesz usunąć certyfikat App Service. W okienku nawigacji po lewej stro
 
 * [Zabezpieczanie niestandardowej nazwy DNS przy użyciu powiązania SSL](configure-ssl-bindings.md)
 * [Wymuszanie protokołu HTTPS](configure-ssl-bindings.md#enforce-https)
-* [Wymuś protokół TLS 1.1/1.2](configure-ssl-bindings.md#enforce-tls-versions)
+* [Enforce TLS 1.1/1.2](configure-ssl-bindings.md#enforce-tls-versions)
 * [Używanie certyfikatu protokołu SSL w kodzie aplikacji](configure-ssl-certificate-in-code.md)
 * [Często zadawane pytania: certyfikaty App Service](https://docs.microsoft.com/azure/app-service/faq-configuration-and-management/)

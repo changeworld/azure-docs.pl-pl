@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 12/13/2019
 ms.author: diberry
-ms.openlocfilehash: 7683a73fd1f403847089dc722e5f6382acd948cb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2df32c20bebf4243f383a0cccd8f037721533602
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75447692"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75890390"
 ---
 # <a name="tutorial--add-sentiment-analysis-as-a-publishing-setting"></a>Samouczek: Dodawanie analizy tonacji jako ustawienia publikowania
 
@@ -128,7 +128,7 @@ Ponieważ jest to ustawienie publikowania, nie widzisz go na stronach intencji l
 
 ## <a name="related-information"></a>Informacje pokrewne
 
-* Analiza tonacji jest udostępniana za pośrednictwem funkcji [analizy tekstu](../Text-Analytics/index.yml) usługi Cognitive Service. Ta funkcja jest ograniczona do [obsługiwanych języków](luis-language-support.md##languages-supported) przez analizę tekstu.
+* Analiza tonacji jest udostępniana za pośrednictwem funkcji [analizy tekstu](../Text-Analytics/index.yml) usługi Cognitive Service. Ta funkcja jest ograniczona do [obsługiwanych języków](luis-language-support.md#languages-supported) przez analizę tekstu.
 * [Jak trenować](luis-how-to-train.md)
 * [Jak opublikować](luis-how-to-publish-app.md)
 * [Jak przeprowadzać testy w portalu usługi LUIS](luis-interactive-test.md)

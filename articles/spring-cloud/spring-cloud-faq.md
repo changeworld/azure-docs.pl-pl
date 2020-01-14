@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 10/07/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 6835132192040b4b943b156fb78ae1547522be0c
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 12786f59db9644fd54e812687d27443c250aec05
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229249"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75891853"
 ---
 # <a name="azure-spring-cloud-faq"></a>Azure Wiosenna — często zadawane pytania
 
@@ -29,7 +29,7 @@ Chmura sprężynowa platformy Azure rozszerza środowisko diagnostyki aplikacji 
 
 Chmura Wiosenna Azure oferuje jeden plan usługi w okresie zapoznawczym.  Wdrożenie z chmurą wiosenną zawiera 16 rdzeni vCPU i 32 gigabajtów (GB) pamięci.  Górna granica każdego wystąpienia mikrousług w ramach wdrożenia wynosi 4 vCPU rdzeni z 8 GB pamięci.
 
-Zasób | Kwota
+Zasób | Ilość
 ------- | -------
 Wystąpienia aplikacji na wiosnę | 20
 Łączna liczba wystąpień aplikacji na usługę Azure sprężynowego wystąpienia usługi w chmurze | 500
@@ -63,9 +63,9 @@ W wersji zapoznawczej chmura sprężynowa platformy Azure ma następujące znane
 
 ### <a name="how-can-i-provide-feedback-and-report-issues"></a>Jak mogę przekazać Opinie i zgłosić problemy?
 
-Jeśli wystąpią problemy z chmurą Azure wiosną, Utwórz [żądanie pomocy technicznej platformy Azure](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). Aby przesłać żądanie funkcji lub przekazać opinię, przejdź do obszaru [opinii na platformie Azure](https://feedback.azure.com/forums/34192--general-feedback).
+Jeśli wystąpią problemy z chmurą Azure wiosną, Utwórz [żądanie pomocy technicznej platformy Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). Aby przesłać żądanie funkcji lub przekazać opinię, przejdź do obszaru [opinii na platformie Azure](https://feedback.azure.com/forums/34192--general-feedback).
 
-## <a name="development"></a>Opracowywanie zawartości
+## <a name="development"></a>Tworzenie oprogramowania
 
 ### <a name="i-am-a-spring-cloud-developer-but-new-to-azure-what-is-the-quickest-way-for-me-to-learn-how-to-develop-an-azure-spring-cloud-application"></a>Jestem deweloperem chmury w chmurze, ale nowym na platformie Azure. Co to jest najszybszy sposób, aby dowiedzieć się, jak utworzyć aplikację w chmurze ze sprężyną Azure?
 
@@ -93,7 +93,7 @@ Obecnie są obsługiwane trzy usługi: Azure Cosmos DB, Azure Database for MySQL
 
 Tak.
 
-## <a name="deployment"></a>Wdrożenie
+## <a name="deployment"></a>Wdrażanie
 
 ### <a name="does-azure-spring-cloud-support-blue-green-deployment"></a>Czy usługa Azure Wiosenna Cloud obsługuje wdrożenie Blue-Green?
 Tak. Aby uzyskać więcej informacji, zobacz [Konfigurowanie środowiska przejściowego](spring-cloud-howto-staging-environment.md).

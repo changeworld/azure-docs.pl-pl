@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.topic: conceptual
 ms.date: 09/27/2019
-ms.openlocfilehash: 39f22cc3cb026d4bed1dbe937e0e220b7bdceec7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e386aee68696a3b56036ec2dacc19fd9c138b88c
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435559"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75887261"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>Konfigurowanie klastrów w usłudze HDInsight przy użyciu Apache Hadoop, Apache Spark, Apache Kafka i innych
 
@@ -208,7 +208,7 @@ Różne typy klastrów mają różne typy węzłów, liczby węzłów i rozmiary
 W przypadku wypróbowania usługi HDInsight zalecamy użycie jednego węzła procesu roboczego. Aby uzyskać więcej informacji na temat cennika usługi HDInsight, zobacz [Cennik usługi HDInsight](https://go.microsoft.com/fwLink/?LinkID=282635&clcid=0x409).
 
 > [!NOTE]  
-> Limit rozmiaru klastra różni się między subskrypcjami platformy Azure. Aby zwiększyć limit, skontaktuj się z [pomocą techniczną dla usługi Azure rozliczenia](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) .
+> Limit rozmiaru klastra różni się między subskrypcjami platformy Azure. Aby zwiększyć limit, skontaktuj się z [pomocą techniczną dla usługi Azure rozliczenia](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) .
 
 W przypadku konfigurowania klastra przy użyciu Azure Portal rozmiar węzła jest dostępny za pomocą karty **Konfiguracja i Cennik** . W portalu można także sprawdzić koszt związany z różnymi rozmiarami węzłów.
 

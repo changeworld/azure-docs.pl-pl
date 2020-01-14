@@ -8,18 +8,18 @@ ms.date: 10/22/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: f5aafbb22ecbff416d90aa5b98eb027c33872b35
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: e7d5438c03fa8fd61dc0d5b89bbb197092c6873e
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048537"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772078"
 ---
 # <a name="transfer-data-with-azcopy-and-blob-storage"></a>Transferowanie danych za pomocą AzCopy i magazynu obiektów BLOB
 
 AzCopy to narzędzie wiersza polecenia, za pomocą którego można kopiować dane do, z lub między kontami magazynu. Ten artykuł zawiera przykładowe polecenia, które działają z usługą BLOB Storage.
 
-## <a name="get-started"></a>Rozpoczęcie pracy
+## <a name="get-started"></a>Rozpocznij
 
 Zapoznaj się z artykułem [wprowadzenie do AzCopy](storage-use-azcopy-v10.md) w celu pobrania AzCopy i Dowiedz się więcej na temat sposobów dostarczania poświadczeń autoryzacji do usługi magazynu.
 
@@ -100,7 +100,7 @@ Zawartość katalogu można przekazać bez kopiowania samego katalogu zawierają
 
 |    |     |
 |--------|-----------|
-| **Składnia** | `azcopy copy '<local-directory-path>\*' 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>/<directory-path>` |
+| **Składnia** | `azcopy copy '<local-directory-path>\*' 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>/<directory-path>'` |
 | **Przykład** | `azcopy copy 'C:\myDirectory\*' 'https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobDirectory'` |
 | **Przykład** (hierarchiczna przestrzeń nazw) | `azcopy copy 'C:\myDirectory\*' 'https://mystorageaccount.dfs.core.windows.net/mycontainer/myBlobDirectory'` |
 
@@ -173,7 +173,7 @@ Aby uzyskać szczegółowe dokumenty referencyjne, zobacz [AzCopy Copy](storage-
 |--------|-----------|
 | **Składnia** | `azcopy copy 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>/<directory-path>' '<local-directory-path>' --recursive` |
 | **Przykład** | `azcopy copy 'https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobDirectory' 'C:\myDirectory'  --recursive` |
-| **Przykład** (hierarchiczna przestrzeń nazw) | `azcopy copy 'https://mystorageaccount.dfs.core.windows.net/mycontainer/myBlobDirectory 'C:\myDirectory'  --recursive` |
+| **Przykład** (hierarchiczna przestrzeń nazw) | `azcopy copy 'https://mystorageaccount.dfs.core.windows.net/mycontainer/myBlobDirectory' 'C:\myDirectory'  --recursive` |
 
 Ten przykład powoduje, że katalog o nazwie `C:\myDirectory\myBlobDirectory` zawiera wszystkie pobrane pliki.
 
@@ -224,7 +224,7 @@ Można również wykluczać pliki przy użyciu opcji `--exclude-pattern`. Aby do
 
 Opcje `--include-pattern` i `--exclude-pattern` mają zastosowanie tylko do nazw plików, a nie do ścieżki.  Jeśli chcesz skopiować wszystkie pliki tekstowe, które istnieją w drzewie katalogów, użyj opcji `–recursive`, aby uzyskać całe drzewo katalogów, a następnie użyj `–include-pattern` i określ `*.txt`, aby pobrać wszystkie pliki tekstowe.
 
-## <a name="copy-blobs-between-storage-accounts"></a>Kopiowanie obiektów BLOB między kontami magazynu
+## <a name="copy-blobs-between-storage-accounts"></a>Kopiowanie obiektów blob między kontami magazynu
 
 Możesz użyć AzCopy, aby skopiować obiekty blob do innych kont magazynu. Operacja kopiowania jest synchroniczna, dlatego gdy polecenie zwróci wartość, która wskazuje, że wszystkie pliki zostały skopiowane. 
 
@@ -233,7 +233,6 @@ AzCopy używa [interfejsów API](https://docs.microsoft.com/rest/api/storageserv
 > [!NOTE]
 > Ten scenariusz ma następujące ograniczenia w bieżącej wersji.
 >
-> - Obsługiwane są tylko konta, które nie mają hierarchicznej przestrzeni nazw.
 > - Musisz dołączyć token sygnatury dostępu współdzielonego do każdego źródłowego adresu URL. W przypadku podania poświadczeń autoryzacji za pomocą Azure Active Directory (AD) można pominąć token sygnatury dostępu współdzielonego tylko z docelowego adresu URL.
 >-  Konta magazynu blokowych obiektów BLOB w warstwie Premium nie obsługują warstw dostępu. Aby pominąć warstwę dostępu obiektu BLOB w operacji kopiowania, należy ustawić `s2s-preserve-access-tier` na `false` (na przykład: `--s2s-preserve-access-tier=false`).
 
@@ -250,40 +249,54 @@ Aby uzyskać szczegółowe dokumenty referencyjne, zobacz [AzCopy Copy](storage-
 > [!TIP]
 > W przykładach w tej sekcji zamieszczono argumenty Path z pojedynczymi cudzysłowami (' '). Używaj pojedynczych cudzysłowów we wszystkich powłokach poleceń z wyjątkiem powłoki poleceń systemu Windows (cmd. exe). Jeśli używasz powłoki poleceń systemu Windows (cmd. exe), ujmij argumenty ścieżki z podwójnymi cudzysłowami ("") zamiast pojedynczego cudzysłowu ("").
 
+ Te przykłady działają również z kontami, które mają hierarchiczną przestrzeń nazw. [Dostęp z użyciem protokołu wieloprotokołowego do Data Lake Storage](../blobs/data-lake-storage-multi-protocol-access.md) umożliwia korzystanie z tej samej składni adresu URL (`blob.core.windows.net`) na tych kontach. 
+
 ### <a name="copy-a-blob-to-another-storage-account"></a>Kopiowanie obiektu BLOB do innego konta magazynu
+
+Użyj tej samej składni adresu URL (`blob.core.windows.net`) dla kont, które mają hierarchiczną przestrzeń nazw.
 
 |    |     |
 |--------|-----------|
 | **Składnia** | `azcopy copy 'https://<source-storage-account-name>.blob.core.windows.net/<container-name>/<blob-path>?<SAS-token>' 'https://<destination-storage-account-name>.blob.core.windows.net/<container-name>/<blob-path>'` |
 | **Przykład** | `azcopy copy 'https://mysourceaccount.blob.core.windows.net/mycontainer/myTextFile.txt?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net/mycontainer/myTextFile.txt'` |
+| **Przykład** (hierarchiczna przestrzeń nazw) | `azcopy copy 'https://mysourceaccount.blob.core.windows.net/mycontainer/myTextFile.txt?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net/mycontainer/myTextFile.txt'` |
 
 ### <a name="copy-a-directory-to-another-storage-account"></a>Kopiowanie katalogu do innego konta magazynu
+
+Użyj tej samej składni adresu URL (`blob.core.windows.net`) dla kont, które mają hierarchiczną przestrzeń nazw.
 
 |    |     |
 |--------|-----------|
 | **Składnia** | `azcopy copy 'https://<source-storage-account-name>.blob.core.windows.net/<container-name>/<directory-path>?<SAS-token>' 'https://<destination-storage-account-name>.blob.core.windows.net/<container-name>' --recursive` |
 | **Przykład** | `azcopy copy 'https://mysourceaccount.blob.core.windows.net/mycontainer/myBlobDirectory?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net/mycontainer' --recursive` |
+| **Przykład** (hierarchiczna przestrzeń nazw)| `azcopy copy 'https://mysourceaccount.blob.core.windows.net/mycontainer/myBlobDirectory?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net/mycontainer' --recursive` |
 
 ### <a name="copy-a-container-to-another-storage-account"></a>Kopiowanie kontenera na inne konto magazynu
+
+Użyj tej samej składni adresu URL (`blob.core.windows.net`) dla kont, które mają hierarchiczną przestrzeń nazw.
 
 |    |     |
 |--------|-----------|
 | **Składnia** | `azcopy copy 'https://<source-storage-account-name>.blob.core.windows.net/<container-name>?<SAS-token>' 'https://<destination-storage-account-name>.blob.core.windows.net/<container-name>' --recursive` |
 | **Przykład** | `azcopy copy 'https://mysourceaccount.blob.core.windows.net/mycontainer?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net/mycontainer' --recursive` |
+| **Przykład** (hierarchiczna przestrzeń nazw)| `azcopy copy 'https://mysourceaccount.blob.core.windows.net/mycontainer?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net/mycontainer' --recursive` |
 
 ### <a name="copy-all-containers-directories-and-blobs-to-another-storage-account"></a>Kopiuj wszystkie kontenery, katalogi i obiekty blob na inne konto magazynu
+
+Użyj tej samej składni adresu URL (`blob.core.windows.net`) dla kont, które mają hierarchiczną przestrzeń nazw.
 
 |    |     |
 |--------|-----------|
 | **Składnia** | `azcopy copy 'https://<source-storage-account-name>.blob.core.windows.net/?<SAS-token>' 'https://<destination-storage-account-name>.blob.core.windows.net/' --recursive` |
 | **Przykład** | `azcopy copy 'https://mysourceaccount.blob.core.windows.net?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net' --recursive` |
+| **Przykład** (hierarchiczna przestrzeń nazw)| `azcopy copy 'https://mysourceaccount.blob.core.windows.net?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net' --recursive` |
 
 ## <a name="synchronize-files"></a>Synchronizuj pliki
 
-Zawartość lokalnego systemu plików można zsynchronizować z kontenerem obiektów BLOB. Możesz również synchronizować kontenery i katalogi wirtualne ze sobą. Synchronizacja jest jednokierunkowa. Innymi słowy, możesz wybrać, które z tych dwóch punktów końcowych są źródłem, a które są lokalizacją docelową. Synchronizacja używa także serwera do interfejsów API serwera.
+Zawartość lokalnego systemu plików można zsynchronizować z kontenerem obiektów BLOB. Możesz również synchronizować kontenery i katalogi wirtualne ze sobą. Synchronizacja jest jednokierunkowa. Innymi słowy, możesz wybrać, które z tych dwóch punktów końcowych są źródłem, a które są lokalizacją docelową. Synchronizacja używa także serwera do interfejsów API serwera. Przykłady przedstawione w tej sekcji działają również z kontami, które mają hierarchiczną przestrzeń nazw. 
 
 > [!NOTE]
-> Obecnie ten scenariusz jest obsługiwany tylko w przypadku kont, które nie mają hierarchicznej przestrzeni nazw. Bieżąca wersja AzCopy nie jest synchronizowana między innymi źródłami i miejscami docelowymi (na przykład: Magazyn plików lub Amazon Web Services (AWS).
+> Bieżąca wersja AzCopy nie jest synchronizowana między innymi źródłami i miejscami docelowymi (na przykład: Magazyn plików lub Amazon Web Services (AWS).
 
 Polecenie [Sync](storage-ref-azcopy-sync.md) porównuje nazwy plików i ostatnio modyfikowane sygnatury czasowe. Ustaw opcjonalną flagę `--delete-destination` na wartość `true` lub `prompt`, aby usunąć pliki w katalogu docelowym, jeśli te pliki nie istnieją już w katalogu źródłowym.
 
@@ -299,7 +312,7 @@ Aby uzyskać szczegółowe dokumenty referencyjne, zobacz [AzCopy Sync](storage-
 
 ### <a name="update-a-container-with-changes-to-a-local-file-system"></a>Aktualizowanie kontenera ze zmianami w lokalnym systemie plików
 
-W takim przypadku kontener jest miejscem docelowym, a lokalny system plików jest źródłem.
+W takim przypadku kontener jest miejscem docelowym, a lokalny system plików jest źródłem. 
 
 |    |     |
 |--------|-----------|
@@ -314,7 +327,6 @@ W takim przypadku lokalny system plików jest miejscem docelowym, a kontener jes
 |--------|-----------|
 | **Składnia** | `azcopy sync 'https://<storage-account-name>.blob.core.windows.net/<container-name>' 'C:\myDirectory' --recursive` |
 | **Przykład** | `azcopy sync 'https://mystorageaccount.blob.core.windows.net/mycontainer' 'C:\myDirectory' --recursive` |
-|
 
 ### <a name="update-a-container-with-changes-in-another-container"></a>Aktualizowanie kontenera ze zmianami w innym kontenerze
 
@@ -338,7 +350,7 @@ Pierwszym katalogiem, który pojawia się w tym poleceniu jest źródło. Drugim
 
 Więcej przykładów znajdziesz w jednym z następujących artykułów:
 
-- [Wprowadzenie do AzCopy](storage-use-azcopy-v10.md)
+- [Wprowadzenie do narzędzia AzCopy](storage-use-azcopy-v10.md)
 
 - [Samouczek: Migrowanie danych lokalnych do magazynu w chmurze za pomocą AzCopy](storage-use-azcopy-migrate-on-premises-data.md)
 

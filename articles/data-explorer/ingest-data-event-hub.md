@@ -3,16 +3,16 @@ title: pozyskiwanie danych z centrum zdarzeń do usługi Azure Data Explorer
 description: W tym artykule dowiesz się, jak pozyskiwanie (ładować) danych do usługi Azure Eksplorator danych z centrum zdarzeń.
 author: orspod
 ms.author: orspodek
-ms.reviewer: mblythe
+ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 07/17/2019
-ms.openlocfilehash: 13c0bf8d0829debaa4ae41c724aafdaf5891ce4d
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.date: 01/08/2020
+ms.openlocfilehash: a65f0918d04f77bc3076449347bb20046f73e92a
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74667433"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75779959"
 ---
 # <a name="ingest-data-from-event-hub-into-azure-data-explorer"></a>pozyskiwanie danych z centrum zdarzeń do usługi Azure Data Explorer
 
@@ -49,7 +49,7 @@ W tym artykule opisano generowanie przykładowych danych i wysyłanie ich do cen
 
 1. Wybierz subskrypcję, w której chcesz utworzyć centrum zdarzeń, i utwórz grupę zasobów o nazwie *test-hub-rg*.
 
-    ![Utwórz grupę zasobów](media/ingest-data-event-hub/create-resource-group.png)
+    ![Tworzenie grupy zasobów](media/ingest-data-event-hub/create-resource-group.png)
 
 1. Wypełnij formularz, używając poniższych informacji.
 
@@ -109,7 +109,7 @@ Teraz połączysz się z centrum zdarzeń z usługi Azure Data Explorer. Po nawi
 
     ![Połączenie centrum zdarzeń](media/ingest-data-event-hub/event-hub-connection.png)
 
-    Źródło danych:
+    **Źródło danych:**
 
     **Ustawienie** | **Sugerowana wartość** | **Opis pola**
     |---|---|---|
@@ -120,7 +120,7 @@ Teraz połączysz się z centrum zdarzeń z usługi Azure Data Explorer. Po nawi
     | Właściwości systemu zdarzeń | Wybierz odpowiednie właściwości | [Właściwości systemu centrum zdarzeń](/azure/service-bus-messaging/service-bus-amqp-protocol-guide#message-annotations). Jeśli istnieje wiele rekordów dla każdego komunikatu o zdarzeniu, właściwości systemu zostaną dodane do pierwszej z nich. Podczas dodawania właściwości systemu [Utwórz](/azure/kusto/management/tables#create-table) lub [zaktualizuj](/azure/kusto/management/tables#alter-table-and-alter-merge-table) schemat i [Mapowanie](/azure/kusto/management/mappings) tabeli w celu uwzględnienia wybranych właściwości. |
     | | |
 
-    Tabela docelowa:
+    **Tabela docelowa:**
 
     Dostępne są dwie opcje routingu pozyskiwanych danych: *statyczne* i *dynamiczne*. 
     W tym artykule należy używać routingu statycznego, w którym można określić nazwę tabeli, format danych i mapowanie. W związku z tym pozostaw pole **Moje dane zawierają informacje o routingu** niezaznaczone.
@@ -137,6 +137,8 @@ Teraz połączysz się z centrum zdarzeń z usługi Azure Data Explorer. Po nawi
     > * Zostaną pozyskane tylko zdarzenia znajdujące się w kolejce po utworzeniu połączenia danych.
     > * Włącz kompresję GZip dla routingu statycznego, otwierając [żądanie pomocy technicznej w Azure Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview). Włącz kompresję GZip dla routingu dynamicznego, jak pokazano w [przykładowej aplikacji](https://github.com/Azure-Samples/event-hubs-dotnet-ingest). 
     > * Avro format i właściwości systemu zdarzeń nie są obsługiwane w ładunku kompresji.
+
+[!INCLUDE [data-explorer-container-system-properties](../../includes/data-explorer-container-system-properties.md)]
 
 ## <a name="copy-the-connection-string"></a>Kopiowanie parametrów połączenia
 

@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 10/30/2019
 ms.author: jeconnoc
-ms.openlocfilehash: ca78a9d7eeeeccb71fea75f6ab429e76f2344bbe
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: f9d7fa5df1f7568aa357abf8b5864344d768cf75
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895456"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75891765"
 ---
 # <a name="quickstart-launch-your-spring-cloud-application-from-source-code"></a>Szybki Start: uruchamianie aplikacji w chmurze wiosny z poziomu kodu źródłowego
 
@@ -31,7 +31,7 @@ Postępując zgodnie z tym przewodnikiem Szybki Start, dowiesz się, jak:
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 >[!Note]
-> Chmura Wiosenna platformy Azure jest obecnie oferowana jako publiczna wersja zapoznawcza. Oferty publicznej wersji zapoznawczej umożliwiają klientom eksperymentowanie z nowymi funkcjami przed ich oficjalną wersją.  Funkcje i usługi publicznej wersji zapoznawczej nie są przeznaczone do użytku produkcyjnego.  Aby uzyskać więcej informacji na temat pomocy technicznej w przypadku wersji zapoznawczych, zapoznaj się z naszymi [często zadawanymi pytaniami](https://azure.microsoft.com/support/faq/) lub zapoznaj się z [support requestą](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)
+> Chmura Wiosenna platformy Azure jest obecnie oferowana jako publiczna wersja zapoznawcza. Oferty publicznej wersji zapoznawczej umożliwiają klientom eksperymentowanie z nowymi funkcjami przed ich oficjalną wersją.  Funkcje i usługi publicznej wersji zapoznawczej nie są przeznaczone do użytku produkcyjnego.  Aby uzyskać więcej informacji na temat pomocy technicznej w przypadku wersji zapoznawczych, zapoznaj się z naszymi [często zadawanymi pytaniami](https://azure.microsoft.com/support/faq/) lub zapoznaj się z [support requestą](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)
 
 Przed rozpoczęciem upewnij się, że Twoja subskrypcja platformy Azure ma wymagane zależności:
 
@@ -76,6 +76,9 @@ Ustaw domyślną nazwę grupy zasobów i nazwę klastra przy użyciu następują
 az configure --defaults group=<service group name>
 az configure --defaults spring-cloud=<service instance name>
 ```
+
+> [!div class="nextstepaction"]
+> [Wystąpił problem](https://www.research.net/r/javae2e?tutorial=asc-source-quickstart&step=provision)
 
 ## <a name="create-the-spring-cloud-application"></a>Tworzenie aplikacji w chmurze wiosny
 
@@ -137,12 +140,18 @@ az spring-cloud app show-deploy-log -n <app-name> [-d <deployment-name>]
 > [!NOTE]
 > W dziennikach kpack będzie wyświetlane tylko najnowsze wdrożenie, jeśli wdrożenie zostało skompilowane ze źródła przy użyciu kpack.
 
+> [!div class="nextstepaction"]
+> [Wystąpił problem](https://www.research.net/r/javae2e?tutorial=asc-source-quickstart&step=deploy)
+
 ## <a name="assign-a-public-endpoint-to-gateway"></a>Przypisywanie publicznego punktu końcowego do bramy
 
 1. Otwórz stronę **pulpitu nawigacyjnego aplikacji** .
 2. Wybierz aplikację `gateway`, aby wyświetlić stronę **Szczegóły aplikacji** .
 3. Wybierz pozycję **Przypisz domenę** , aby przypisać publiczny punkt końcowy do bramy. Może to potrwać kilka minut. 
 4. Wprowadź przypisany publiczny adres IP do przeglądarki, aby wyświetlić uruchomioną aplikację.
+
+> [!div class="nextstepaction"]
+> [Wystąpił problem](https://www.research.net/r/javae2e?tutorial=asc-source-quickstart&step=public-endpoint)
 
 ## <a name="next-steps"></a>Następne kroki
 
