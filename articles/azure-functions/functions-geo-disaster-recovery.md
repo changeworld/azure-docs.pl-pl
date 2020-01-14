@@ -6,12 +6,12 @@ ms.assetid: 9058fb2f-8a93-4036-a921-97a0772f503c
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: jehollan
-ms.openlocfilehash: db072d90c39b3856127925306cb1407c5837a0bb
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: bdeff0194bda620250481a215c145b1ec3b2207e
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226972"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75920792"
 ---
 # <a name="azure-functions-geo-disaster-recovery"></a>Azure Functions geograficznie — odzyskiwanie po awarii
 
@@ -34,7 +34,7 @@ Aby osiągnąć aktywne/aktywne wdrożenia funkcji, wymaga pewnego składnika, k
 
 ## <a name="activeactive-for-non-https-functions"></a>Aktywne/aktywne dla funkcji innych niż HTTPS
 
-Nadal można uzyskać aktywne/aktywne wdrożenia dla funkcji innych niż HTTPS.  Należy jednak wziąć pod uwagę, w jaki sposób dwa regiony będą współdziałać ze sobą.  Jeśli ta sama aplikacja funkcji została wdrożona w dwóch regionach, każde wyzwalane w tej samej kolejce Service Bus będzie pełnić rolę konkurujących odbiorców w odniesieniu do tej kolejki.  Chociaż oznacza to, że każdy komunikat jest przetwarzany tylko przez jedno z tych wystąpień, oznacza to, że nadal istnieje single point of failure w ramach jednej usługi Service Bus.  W przypadku wdrożenia dwóch kolejek usługi Service Bus (jednej w regionie podstawowym, jednej w regionie pomocniczym) i dwóch aplikacji funkcji wskazywanych przez kolejkę regionów, wyzwanie teraz jest dystrybuowane między dwoma regionami.  Często oznacza to, że każdy wydawca próbuje opublikować komunikat w *obu* regionach, a każdy komunikat jest przetwarzany przez obie aktywne aplikacje funkcji.  Podczas tworzenia wzorca aktywnego/aktywnego powstaje inne wyzwania dotyczące duplikowania obliczeń oraz czasu, w którym dane są konsolidowane.  Z tego powodu zaleca się, aby wyzwalacze inne niż HTTPS korzystały ze wzorca aktywnego/pasywnego.
+Nadal można uzyskać aktywne/aktywne wdrożenia dla funkcji innych niż HTTPS.  Należy jednak wziąć pod uwagę, w jaki sposób dwa regiony będą współdziałać ze sobą.  Jeśli ta sama aplikacja funkcji została wdrożona w dwóch regionach, każde wyzwalane w tej samej kolejce Service Bus będzie pełnić rolę konkurujących odbiorców w odniesieniu do tej kolejki.  Chociaż oznacza to, że każdy komunikat jest przetwarzany tylko przez jedno z wystąpień, oznacza to, że nadal istnieje single point of failure na pojedynczym Service Bus.  W przypadku wdrożenia dwóch kolejek Service Bus (jeden w regionie podstawowym, jeden w regionie pomocniczym), a dwie aplikacje funkcji wskazywane przez ich kolejkę regionów, wyzwanie teraz zawiera sposób dystrybuowania komunikatów w kolejce między tymi dwoma regionami.  Często oznacza to, że każdy wydawca próbuje opublikować komunikat w *obu* regionach, a każdy komunikat jest przetwarzany przez obie aktywne aplikacje funkcji.  Podczas tworzenia wzorca aktywnego/aktywnego powstaje inne wyzwania dotyczące duplikowania obliczeń oraz czasu, w którym dane są konsolidowane.  Z tego powodu zaleca się, aby wyzwalacze inne niż HTTPS korzystały ze wzorca aktywnego/pasywnego.
 
 ## <a name="activepassive-for-non-https-functions"></a>Aktywne/pasywne dla funkcji innych niż HTTPS
 
@@ -52,7 +52,7 @@ Użycie wyzwalaczy usługi Azure Event Hubs jako przykładu wzorzec aktywny/pasy
 
 Przed przejściem w tryb failover wydawcy wysyłający do aliasu udostępnionego będą kierować do głównego centrum zdarzeń.  Podstawowa aplikacja funkcji nasłuchuje wyłącznie na podstawowym centrum zdarzeń.  Aplikacja funkcji pomocniczej będzie pasywna i bezczynna.  Po zainicjowaniu trybu failover wydawcy wysyłający do udostępnionego aliasu będą teraz kierowani do pomocniczego centrum zdarzeń.  Aplikacja funkcji pomocniczej stanie się teraz aktywna i rozpocznie automatyczne wyzwalanie.  Efektywne przejście w tryb failover do regionu pomocniczego może być prowadzone całkowicie z centrum zdarzeń, a funkcje stają się aktywne tylko wtedy, gdy odpowiednie centrum zdarzeń jest aktywne.
 
-Przeczytaj więcej na temat informacji i zagadnień dotyczących trybu failover za pomocą [usługi Service Bus](../service-bus-messaging/service-bus-geo-dr.md) i [centrów zdarzeń](../event-hubs/event-hubs-geo-dr.md).
+Zapoznaj się z informacjami i zagadnieniami dotyczącymi trybu failover w przypadku [Service Bus](../service-bus-messaging/service-bus-geo-dr.md) i [centrów zdarzeń](../event-hubs/event-hubs-geo-dr.md).
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -10,18 +10,18 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 3cd3cef4d70ea3f78d7e135ad01e0e00b38c60b9
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.openlocfilehash: 6fc4b40e9b65f17b0af61b601826279e99410ed1
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75666282"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75920755"
 ---
 # <a name="security-alerts-in-azure-security-center"></a>Alerty zabezpieczeń w Centrum zabezpieczeń Azure
 
 W Azure Security Center istnieje wiele alertów dla wielu różnych typów zasobów. Security Center generuje alerty dotyczące zasobów wdrożonych na platformie Azure, a także dla zasobów wdrożonych w środowiskach lokalnych i hybrydowych w chmurze.
 
-Funkcje zaawansowanego wykrywania są dostępne w warstwie Standardowa usługi Azure Security Center. Dostępna jest bezpłatna wersja próbna. Uaktualnienie usługi jest możliwe po przejściu do wyboru warstwy cenowej na stronie [Zasady zabezpieczeń](security-center-pricing.md). Odwiedź [stronę usługi Security Center](https://azure.microsoft.com/pricing/details/security-center/), aby dowiedzieć się więcej na temat cen.
+Alerty zabezpieczeń są wyzwalane przez zaawansowane wykrywania i są dostępne tylko w warstwie Standardowa Azure Security Center. Dostępna jest bezpłatna wersja próbna. Uaktualnienie usługi jest możliwe po przejściu do wyboru warstwy cenowej na stronie [Zasady zabezpieczeń](security-center-pricing.md). Odwiedź [stronę usługi Security Center](https://azure.microsoft.com/pricing/details/security-center/), aby dowiedzieć się więcej na temat cen.
 
 ## Reagowanie na współczesne <a name="respond-threats"></a> zagrożenia
 

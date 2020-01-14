@@ -9,12 +9,12 @@ ms.date: 11/18/2019
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: 473f1d12188a8686748d19c8c35d4421f9477ae9
-ms.sourcegitcommit: e9776e6574c0819296f28b43c9647aa749d1f5a6
+ms.openlocfilehash: a8c19a8e88ec7fe2002a327c7e4a57874a753b9f
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/13/2020
-ms.locfileid: "75912794"
+ms.locfileid: "75921234"
 ---
 # <a name="store-business-critical-blob-data-with-immutable-storage"></a>Przechowywanie kluczowych dla działalności danych obiektów blob z niezmiennym magazynem
 
@@ -76,7 +76,7 @@ Zasady przechowywania dotyczą następujących ograniczeń:
 
 Dołączane obiekty blob składają się z bloków danych i są zoptymalizowane pod kątem operacji dołączania danych wymaganych przez scenariusze inspekcji i rejestrowania. Po zaprojektowaniu, dołączanie obiektów BLOB zezwala tylko na dodanie nowych bloków do końca obiektu BLOB. Niezależnie od niezmienności, modyfikowanie lub usuwanie istniejących bloków w dołączanym obiekcie BLOB jest zasadniczo niedozwolone. Aby dowiedzieć się więcej na temat dołączania obiektów blob, zobacz [temat Dodawanie obiektów BLOB](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs).
 
-Tylko zasady przechowywania oparte na czasie mają ustawienie `allowProtectedAppendWrites`, które umożliwia zapisywanie nowych bloków do obiektu BLOB dołączania przy zachowaniu ochrony i zgodności niezmienności. Jeśli ta funkcja jest włączona, można utworzyć obiekt BLOB dołączania bezpośrednio w kontenerze chronionym przez zasady i kontynuować dodawanie nowych bloków danych na końcu istniejących dołączanych obiektów BLOB przy użyciu interfejsu API *AppendBlock* . Można dodawać tylko nowe bloki i nie można modyfikować ani usuwać żadnych istniejących bloków. Nadal obowiązuje ochrona niezmiennościa czasu przechowywania, uniemożliwiając usuwanie dołączanego obiektu BLOB do czasu, aż upłynie okres przechowywania.  
+Tylko zasady przechowywania oparte na czasie mają ustawienie `allowProtectedAppendWrites`, które umożliwia zapisywanie nowych bloków do obiektu BLOB dołączania przy zachowaniu ochrony i zgodności niezmienności. Jeśli ta funkcja jest włączona, można utworzyć obiekt BLOB dołączania bezpośrednio w kontenerze chronionym przez zasady i kontynuować dodawanie nowych bloków danych na końcu istniejących dołączanych obiektów BLOB przy użyciu interfejsu API *AppendBlock* . Można dodawać tylko nowe bloki i nie można modyfikować ani usuwać żadnych istniejących bloków. Nadal obowiązuje ochrona niezmiennościa czasu przechowywania, uniemożliwiając usuwanie dołączanego obiektu BLOB do czasu, aż upłynie okres przechowywania. Włączenie tego ustawienia nie wpływa na zachowanie niezmienności blokowych obiektów blob lub stronicowych obiektów BLOB.
 
 Ponieważ to ustawienie jest częścią zasad przechowywania opartych na czasie, Dodawanie obiektów BLOB nadal pozostaje w niezmiennym stanie przez okres *obowiązywania obowiązującego* okresu przechowywania. Ponieważ nowe dane mogą być dołączane poza początkowym tworzeniem obiektu BLOB dołączania, istnieje niewielka różnica w sposobie określania okresu przechowywania. Efektywne przechowywanie jest różnicą między **czasem ostatniej modyfikacji** obiektu BLOB i interwałem przechowywania określonym przez użytkownika. Podobnie gdy Interwał przechowywania jest rozszerzony, niezmienny magazyn używa najnowszej wartości interwału przechowywania określonego przez użytkownika, aby obliczyć obowiązujący okres przechowywania.
 

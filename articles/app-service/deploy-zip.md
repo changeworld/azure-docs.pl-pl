@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 08/12/2019
 ms.reviewer: sisirap
 ms.custom: seodec18
-ms.openlocfilehash: 3569c6a066b09daa0c24975b9de840a844b6ba2c
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 28bd45b0e9bdaf87c29b0118c47595db9179edc5
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74670221"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75921170"
 ---
 # <a name="deploy-your-app-to-azure-app-service-with-a-zip-or-war-file"></a>Wdróż aplikację w celu Azure App Service z plikiem ZIP lub WAR
 
@@ -88,6 +88,8 @@ Więcej informacji zawiera [dokumentacja aparatu Kudu](https://github.com/projec
 ## <a name="deploy-war-file"></a>Wdróż plik WAR
 
 Aby wdrożyć plik WAR do App Service, Wyślij żądanie POST do `https://<app_name>.scm.azurewebsites.net/api/wardeploy`. Żądanie POST musi zawierać plik WAR w treści wiadomości. Poświadczenia wdrażania dla aplikacji są podawane w żądaniu za pomocą podstawowego uwierzytelniania HTTP.
+
+Podczas wdrażania plików WAR zawsze używaj `/api/wardeploy`. Ten interfejs API rozszerza plik WAR i umieszcza go na udostępnionym dysku. Korzystanie z innych interfejsów API wdrażania może spowodować niespójne zachowanie. 
 
 W przypadku uwierzytelniania podstawowego HTTP wymagane są poświadczenia wdrażania App Service. Aby dowiedzieć się, jak ustawić poświadczenia wdrożenia, zobacz [Ustawianie i resetowanie poświadczeń na poziomie użytkownika](deploy-configure-credentials.md#userscope).
 

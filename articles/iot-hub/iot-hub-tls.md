@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/10/2020
 ms.author: rezas
 ms.custom: Azure IoT Hub TLS
-ms.openlocfilehash: 62fdfc4277b44a502206eb37466e6409521186a5
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: eb6b04a476ac6100962e1103af37d75b719dd546
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75839532"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75921245"
 ---
 # <a name="tls-support-in-iot-hub"></a>Obsługa protokołu TLS w IoT Hub
 
@@ -77,6 +77,19 @@ Centra IoT, które są skonfigurowane do akceptowania tylko protokołu TLS 1,2, 
 * `TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384`
 * `TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256`
 * `TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384`
+
+
+### <a name="use-tls-12-in-your-iot-hub-sdks"></a>Korzystanie z protokołu TLS 1,2 w zestawach SDK IoT Hub
+
+Poniższe linki służą do konfigurowania protokołu TLS 1,2 i dozwolonych szyfrów w IoT Hub zestaw SDK klienta.
+
+| Język | Obsługiwane protokoły TLS 1,2 | Dokumentacja |
+|----------|-------------------|---------------|
+| C        | Tak               | [Link](https://aka.ms/Tls_C_SDK_IoT) |
+| Python   | Tak               | [Link](https://aka.ms/Tls_Python_SDK_IoT) |
+| C#       | Tak               | [Link](https://aka.ms/Tls_CSharp_SDK_IoT) |
+| Java     | Tak               | [Link](https://aka.ms/Tls_Java_SDK_IoT) |
+| NodeJS   | Tak               | [Link](https://aka.ms/Tls_Node_SDK_IoT) |
 
 
 ### <a name="use-tls-12-in-your-iot-edge-setup"></a>Korzystanie z protokołu TLS 1,2 w konfiguracji IoT Edge

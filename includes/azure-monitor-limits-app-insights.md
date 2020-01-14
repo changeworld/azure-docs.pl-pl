@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: 0185710b6255dabd61d6361ed98c658f1e8075c7
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: c68e58bb18a5dba07855234af07b0a8be767bed0
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71975329"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75927886"
 ---
 Istnieją pewne ograniczenia dotyczące liczby metryk i zdarzeń dla aplikacji, czyli według klucza Instrumentacji. Ograniczenia zależą od wybranego [planu cenowego](https://azure.microsoft.com/pricing/details/application-insights/).
 
@@ -23,7 +23,7 @@ Istnieją pewne ograniczenia dotyczące liczby metryk i zdarzeń dla aplikacji, 
 | Ograniczanie przepływności | 32 000 zdarzeń/sekundę | Limit jest mierzony przez minutę.
 | Przechowywanie danych | 90 dni | Ten zasób jest przeznaczony na potrzeby [wyszukiwania](../articles/azure-monitor/app/diagnostic-search.md), [analizy](../articles/azure-monitor/app/analytics.md) i [Eksploratora metryk](../articles/azure-monitor/app/metrics-explorer.md).
 | Przechowywanie szczegółowych wyników [wieloetapowego testu dostępności](../articles/azure-monitor/app/availability-multistep.md) | 90 dni | Ten zasób zapewnia szczegółowe wyniki każdego kroku.
-| Maksymalny rozmiar zdarzenia | 64 000 |
+| Maksymalny rozmiar zdarzenia | 64 000 000 bajtów |
 | Długość nazwy właściwości i metryki | 150 | Zobacz [schematy typów](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/EndpointSpecs/Schemas/Bond/).
 | Długość ciągu wartości właściwości | 8192 | Zobacz [schematy typów](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/EndpointSpecs/Schemas/Bond/).
 | Długość komunikatu śledzenia i wyjątku | 32 768  | Zobacz [schematy typów](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/EndpointSpecs/Schemas/Bond/).

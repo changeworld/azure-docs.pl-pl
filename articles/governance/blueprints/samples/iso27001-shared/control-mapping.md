@@ -1,14 +1,14 @@
 ---
 title: Przykładowe kontrolki planu ISO 27001
 description: Sterowanie mapowaniem przykładu usługi udostępnionej ISO 27001. Każda kontrolka jest zamapowana na co najmniej jedną zasadę platformy Azure, która pomaga w ocenie.
-ms.date: 11/18/2019
+ms.date: 01/13/2020
 ms.topic: sample
-ms.openlocfilehash: b484bdc2fdaa346e5137b31e3225dc913f43ed0c
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 6c03da7d5d4caada9ef47a828163a79a003bea93
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74546731"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75922518"
 ---
 # <a name="control-mapping-of-the-iso-27001-shared-services-blueprint-sample"></a>Sterowanie mapowaniem przykładu usługi Shared Services ISO 27001
 
@@ -53,7 +53,7 @@ Ten plan pomaga ograniczyć i kontrolować prawa dostępu uprzywilejowanego, prz
 - \[Podgląd\]: konta inspekcji z uprawnieniami do zapisu, które nie obsługują uwierzytelniania wieloskładnikowego w ramach subskrypcji
 - \[Podgląd\]: Inspekcja kont zewnętrznych z uprawnieniami właściciela w ramach subskrypcji
 - \[Podgląd\]: Inspekcja kont zewnętrznych z uprawnieniami do zapisu w ramach subskrypcji
-- Inspekcja aprowizacji Azure Active Directory administratora programu SQL Server
+- Inspekcja aprowizacji administratora usługi Azure Active Directory dla programu SQL Server
 - Inspekcja użycia Azure Active Directory na potrzeby uwierzytelniania klientów w programie Service Fabric
 - Inspekcja użycia niestandardowych reguł RBAC
 

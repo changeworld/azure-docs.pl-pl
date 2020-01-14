@@ -4,12 +4,12 @@ description: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure �
 ms.topic: sample
 ms.date: 04/20/2017
 ms.custom: mvc
-ms.openlocfilehash: 9c2a70066e673bfa164a58884891f29e220c7bd6
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 833b9223d473c8bfc62485e9e47ba662a4f0e154
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74532837"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75922686"
 ---
 # <a name="create-a-function-app-with-a-named-storage-account-connection"></a>Tworzenie aplikacji funkcji z nazwanym połączeniem konta magazynu 
 
@@ -37,7 +37,7 @@ W tym skrypcie użyto następujących poleceń. Każde polecenie w tabeli stanow
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Tworzy grupę zasobów w lokalizacji. |
 | [az storage account create](/cli/azure/storage/account#az-storage-account-create) | Tworzenie konta magazynu |
-| [az functionapp create](/cli/azure/functionapp#az-functionapp-create) | Tworzy aplikację funkcji w bezserwerowym [planie Zużycie](../functions-scale.md#consumption-plan). |
+| [az functionapp create](/cli/azure/functionapp#az-functionapp-create) | Tworzy aplikację funkcji w [planie zużycia](../functions-scale.md#consumption-plan)bezserwerowego. |
 | [AZ Storage account show-Connection-String](/cli/azure/storage/account#az-storage-account-show-connection-string) | Pobiera parametry połączenia dla konta. |
 | [AZ functionapp config AppSettings Set](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) | Ustawia parametry połączenia jako ustawienia aplikacji w aplikacji funkcji. |
 

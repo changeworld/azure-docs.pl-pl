@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 01/07/2020
-ms.openlocfilehash: 2627e4be20d80251e3753e46624c58a0c6244aba
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.date: 01/13/2020
+ms.openlocfilehash: e115316daf3673d9ad854e7ccd6d5256d729b5af
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863091"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75921010"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Co nowego w usłudze Azure Wyszukiwanie poznawcze
 
@@ -33,7 +33,11 @@ Wersje interfejsu API, pakiety NuGet, przestrzenie nazw i punkty końcowe nie s�
 
 + [Klucze szyfrowania zarządzane przez klienta](search-security-manage-encryption-keys.md) są teraz ogólnie dostępne. Jeśli używasz usługi REST, możesz uzyskać dostęp do tej funkcji przy użyciu `api-version=2019-05-06`. W przypadku kodu zarządzanego prawidłowy pakiet nadal jest [zestawem SDK .NET w wersji 8,0-Preview](search-dotnet-sdk-migration-version-9.md) , nawet jeśli ta funkcja nie jest dostępna w wersji zapoznawczej. 
 
-+ *Ograniczony dostęp do adresów IP i prywatny punkt końcowy (wersja zapoznawcza)* w punkcie końcowym usługi wyszukiwania jest teraz dostępny w **wersji API-Version = 2019-10 -01-Preview**. Bezpieczny punkt końcowy można skonfigurować przy użyciu nowych właściwości **IpRule** i **NetworkRuleSet** w interfejsie API REST usługi [Create lub Update](https://docs.microsoft.com/rest/api/searchmanagement/services/createorupdate) Management. Aby uzyskać więcej informacji na temat wersji interfejsu API i regionalnej dostępności, zobacz [jak używać interfejsu API REST zarządzania](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api).
++ Prywatny dostęp do usługi wyszukiwania jest dostępny za pomocą dwóch mechanizmów:
+
+  + Aby utworzyć usługę, można ograniczyć dostęp do określonych adresów IP przy użyciu interfejsu API REST zarządzania `api-version=2019-10-01-Preview`. Interfejs API w wersji zapoznawczej zawiera nowe właściwości **IpRule** i **NetworkRuleSet** w [interfejsie API metodę createorupdate](https://docs.microsoft.com/rest/api/searchmanagement/services/createorupdate). Ta funkcja w wersji zapoznawczej jest dostępna w wybranych regionach. Aby uzyskać więcej informacji, zobacz [jak używać interfejsu API REST zarządzania](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api).
+
+  + Obecnie dostępne w wersji zapoznawczej o ograniczonym dostępie, można zainicjować obsługę Azure Search usługi, która obsługuje prywatny punkt końcowy platformy Azure dla połączeń klientów w tej samej sieci wirtualnej. Aby uzyskać więcej informacji, zobacz [Tworzenie prywatnego punktu końcowego dla bezpiecznego połączenia](service-create-private-endpoint.md).
 
 ### <a name="december-2019"></a>Grudzień 2019 r.
 

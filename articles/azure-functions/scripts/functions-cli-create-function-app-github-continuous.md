@@ -4,16 +4,16 @@ description: Tworzenie aplikacji funkcji i wdrażanie kodu funkcji z repozytoriu
 ms.date: 07/03/2018
 ms.topic: sample
 ms.custom: mvc
-ms.openlocfilehash: 37dc0235b258f6d47f8813546fe953e92799454a
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: e424737b67be58ac0c3880ad2454c87fab803a15
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74532818"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75922731"
 ---
 # <a name="create-a-function-app-in-azure-that-is-deployed-from-github"></a>Tworzenie aplikacji funkcji wdrażanej z repozytorium GitHub na platformie Azure
 
-Ten przykładowy skrypt usługi Azure Functions tworzy aplikację funkcji korzystającą z [planu Zużycie](../functions-scale.md#consumption-plan) oraz powiązane zasoby. Konfiguruje również kod funkcji na potrzeby ciągłego wdrażania z repozytorium GitHub. 
+Ten Azure Functions przykładowy skrypt tworzy aplikację funkcji przy użyciu [planu zużycia](../functions-scale.md#consumption-plan)wraz z powiązanymi zasobami. Konfiguruje również kod funkcji na potrzeby ciągłego wdrażania z repozytorium GitHub. 
 
 Do pracy z tym przykładem potrzebne są:
 
@@ -42,7 +42,7 @@ Każde polecenie w tabeli stanowi link do dokumentacji polecenia. W tym skrypcie
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Tworzy grupę zasobów, w której są przechowywane wszystkie zasoby. |
 | [az storage account create](/cli/azure/storage/account#az-storage-account-create) | Tworzy konto magazynu wymagane przez aplikację funkcji. |
-| [az functionapp create](/cli/azure/functionapp#az-functionapp-create) | Tworzy aplikację funkcji w bezserwerowym [planie Zużycie](../functions-scale.md#consumption-plan) i kojarzy ją z repozytorium Git lub Mercurial. |
+| [az functionapp create](/cli/azure/functionapp#az-functionapp-create) | Tworzy aplikację funkcji w [planie zużycia](../functions-scale.md#consumption-plan) bezserwerowego i kojarzy ją z repozytorium Git lub Mercurial. |
 
 ## <a name="next-steps"></a>Następne kroki
 

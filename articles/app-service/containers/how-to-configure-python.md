@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 03/28/2019
 ms.reviewer: astay; kraigb
 ms.custom: seodec18
-ms.openlocfilehash: b8de6df5761baef79310062614f578a92f17b826
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 2570e3753dd93173166c6b563e9add69bed3f862
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74670477"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75922275"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>Konfigurowanie aplikacji systemu Linux w języku Python dla Azure App Service
 
@@ -50,7 +50,7 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 
 ## <a name="container-characteristics"></a>Właściwości kontenera
 
-Aplikacje języka Python wdrażane w usłudze App Service w systemie Linux działają w kontenerze Docker, który jest zdefiniowany w repozytorium GitHub — [Python 3.6](https://github.com/Azure-App-Service/python/tree/master/3.6.6) lub [Python 3.7](https://github.com/Azure-App-Service/python/tree/master/3.7.0).
+Aplikacje języka Python wdrożone w celu App Service w systemie Linux działają w kontenerze platformy Docker, który jest zdefiniowany w [repozytorium usługi GitHub App Service Python](https://github.com/Azure-App-Service/python). Konfiguracje obrazów można znaleźć w katalogach specyficznych dla danej wersji.
 
 Ten kontener ma następujące cechy:
 

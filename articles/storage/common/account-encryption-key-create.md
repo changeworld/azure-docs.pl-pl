@@ -10,12 +10,12 @@ ms.date: 01/10/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: c501dda60b65f78bb82649bed6bca4b031ad8a6b
-ms.sourcegitcommit: e9776e6574c0819296f28b43c9647aa749d1f5a6
+ms.openlocfilehash: 39568d65978592b360512db2e556cfa6b59760b6
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/13/2020
-ms.locfileid: "75913162"
+ms.locfileid: "75921217"
 ---
 # <a name="create-an-account-that-supports-customer-managed-keys-for-tables-and-queues"></a>Utwórz konto, które obsługuje klucze zarządzane przez klienta dla tabel i kolejek
 
@@ -75,7 +75,7 @@ az provider register --namespace 'Microsoft.Storage'
 
 Należy skonfigurować nowe konto magazynu do korzystania z klucza szyfrowania konta dla kolejek i tabel w momencie utworzenia konta magazynu. Nie można zmienić zakresu klucza szyfrowania po utworzeniu konta.
 
-Konto magazynu musi być kontem ogólnego przeznaczenia w wersji 2 i musi być skonfigurowane na potrzeby magazynu lokalnie nadmiarowego (LRS). Można utworzyć konto magazynu i skonfigurować je w taki sposób, aby korzystało z klucza szyfrowania konta przy użyciu interfejsu wiersza polecenia platformy Azure lub szablonu Azure Resource Manager.
+Konto magazynu musi być kontem ogólnego przeznaczenia w wersji 2. Można utworzyć konto magazynu i skonfigurować je w taki sposób, aby korzystało z klucza szyfrowania konta przy użyciu interfejsu wiersza polecenia platformy Azure lub szablonu Azure Resource Manager.
 
 > [!NOTE]
 > Opcjonalnie można skonfigurować tylko magazyn kolejek i tabel, aby szyfrować dane przy użyciu klucza szyfrowania konta podczas tworzenia konta magazynu. Magazyn obiektów blob i Azure Files zawsze używają klucza szyfrowania konta do szyfrowania danych.

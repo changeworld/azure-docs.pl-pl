@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 2e509535473fa50fd3150965e1513e056ead18a6
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 1949aca26f68f12dfb133da8ef45662294140c25
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72794346"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75922559"
 ---
 # <a name="security-and-data-privacy-in-azure-cognitive-search"></a>Bezpieczeństwo i prywatność danych na platformie Azure Wyszukiwanie poznawcze
 
@@ -41,9 +41,9 @@ Szyfrowanie rozciąga się w całym potoku indeksowania: od połączeń, transmi
 
 | Warstwa zabezpieczeń | Opis |
 |----------------|-------------|
-| Szyfrowanie podczas przesyłania <br>(HTTPS/SSL/TLS) | Usługa Azure Wyszukiwanie poznawcze nasłuchuje na porcie HTTPS 443. Na całej platformie połączenia z usługami platformy Azure są szyfrowane. <br/><br/>Wszystkie interakcje Wyszukiwanie poznawcze platformy Azure z klientem są zgodne z protokołem SSL/TLS 1,2.  Upewnij się, że używasz TLSv 1.2 dla połączeń SSL z usługą.|
+| Szyfrowanie danych przesyłanych <br>(HTTPS/SSL/TLS) | Usługa Azure Wyszukiwanie poznawcze nasłuchuje na porcie HTTPS 443. Na całej platformie połączenia z usługami platformy Azure są szyfrowane. <br/><br/>Wszystkie interakcje Wyszukiwanie poznawcze platformy Azure z klientem są zgodne z protokołem SSL/TLS 1,2.  Upewnij się, że używasz TLSv 1.2 dla połączeń SSL z usługą.|
 | Szyfrowanie w spoczynku <br>Klucze zarządzane przez firmę Microsoft | Szyfrowanie jest w pełni wewnętrzne w procesie indeksowania, bez wymiernego wpływu na indeksowanie czasu do ukończenia lub rozmiaru indeksu. Odbywa się to automatycznie na wszystkich indeksach, w tym w przypadku aktualizacji przyrostowych, do indeksu, który nie jest w pełni szyfrowany (utworzony przed stycznia 2018).<br><br>Wewnętrznie szyfrowanie jest oparte na [usłudze Azure szyfrowanie usługi Storage](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)przy użyciu 256-bitowego [szyfrowania AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard).<br><br> Szyfrowanie jest wewnętrzne dla Wyszukiwanie poznawcze platformy Azure, z certyfikatami i kluczami szyfrowania, które są zarządzane wewnętrznie przez firmę Microsoft i stosowane uniwersalnie. Nie można włączać ani wyłączać szyfrowania, zarządzać nimi ani zastępować własnych kluczy lub wyświetlać ustawienia szyfrowania w portalu lub programowo.<br><br>Szyfrowanie w spoczynku zostało ogłoszone w 24 stycznia 2018 i ma zastosowanie do wszystkich warstw usług, w tym warstwy Bezpłatna, we wszystkich regionach. Aby można było przeprowadzić pełne szyfrowanie, indeksy utworzone przed tą datą muszą zostać porzucone i ponownie skompilowane w celu zaszyfrowania. W przeciwnym razie tylko nowe dane dodane po 24 stycznia są szyfrowane.|
-| Szyfrowanie w spoczynku <br>Klucze zarządzane przez klienta | Szyfrowanie za pomocą kluczy zarządzanych przez klienta to funkcja w **wersji zapoznawczej** , która nie jest dostępna dla bezpłatnych usług. W przypadku płatnych usług jest on dostępny tylko dla usług wyszukiwania utworzonych w dniu lub po styczniu 2019 przy użyciu najnowszego interfejsu API wersji zapoznawczej (API-Version = 2019-05 -06-Preview).<br><br>Usługi Azure Wyszukiwanie poznawcze Indexes i mapy synonimów mogą teraz być szyfrowane w czasie spoczynku z kluczami zarządzanymi klucze klienta w programie Azure Key Vault. Aby dowiedzieć się więcej, zobacz [Zarządzanie kluczami szyfrowania w usłudze Azure wyszukiwanie poznawcze](search-security-manage-encryption-keys.md).<br>Ta funkcja nie zastępuje domyślnego szyfrowania w spoczynku, ale zamiast tego stosuje się do niego.<br>Włączenie tej funkcji spowoduje zwiększenie rozmiaru indeksu i spadek wydajności zapytań. Na podstawie obserwacji do daty można oczekiwać, że w czasie wykonywania zapytań zostanie wyświetlony wzrost o 30%-60%, chociaż Rzeczywista wydajność będzie się różnić w zależności od definicji indeksu i typów zapytań. Ze względu na ten wpływ na wydajność zalecamy włączenie tej funkcji tylko w przypadku indeksów, które naprawdę wymagają tego.
+| Szyfrowanie w spoczynku <br>Klucze zarządzane przez klienta | Szyfrowanie z kluczami zarządzanymi przez klienta jest teraz ogólnie dostępne.<br><br>Usługi Azure Wyszukiwanie poznawcze Indexes i mapy synonimów mogą teraz być szyfrowane w czasie spoczynku z kluczami zarządzanymi klucze klienta w programie Azure Key Vault. Aby dowiedzieć się więcej, zobacz [Zarządzanie kluczami szyfrowania w usłudze Azure wyszukiwanie poznawcze](search-security-manage-encryption-keys.md).<br>Ta funkcja nie zastępuje domyślnego szyfrowania w spoczynku, ale zamiast tego stosuje się do niego.<br>Włączenie tej funkcji spowoduje zwiększenie rozmiaru indeksu i spadek wydajności zapytań. Na podstawie obserwacji do daty można oczekiwać, że w czasie wykonywania zapytań zostanie wyświetlony wzrost o 30%-60%, chociaż Rzeczywista wydajność będzie się różnić w zależności od definicji indeksu i typów zapytań. Ze względu na ten wpływ na wydajność zalecamy włączenie tej funkcji tylko w przypadku indeksów, które naprawdę wymagają tego.
 
 ## <a name="azure-wide-user-access-controls"></a>Kontrola dostępu użytkowników w całej platformie Azure
 
@@ -91,7 +91,7 @@ Domyślnie dostęp użytkownika do indeksu jest określany przez klucz dostępu 
 
 Jeśli potrzebujesz szczegółowej kontroli nad zawartością, możesz utworzyć filtry zabezpieczeń dla zapytań, zwracając dokumenty skojarzone z daną tożsamością zabezpieczeń. Zamiast wstępnie zdefiniowanych ról i przypisań ról kontrola dostępu oparta na tożsamości jest implementowana jako *Filtr* , który przycina wyniki wyszukiwania dokumentów i zawartości na podstawie tożsamości. W poniższej tabeli opisano dwa podejścia do przycinania wyników wyszukiwania nieautoryzowanej zawartości.
 
-| Wynosi | Opis |
+| Podejście | Opis |
 |----------|-------------|
 |[Przycinanie zabezpieczeń na podstawie filtrów tożsamości](search-security-trimming-for-azure-search.md)  | Dokumentuje podstawowy przepływ pracy dotyczący implementowania kontroli dostępu do tożsamości użytkownika. Obejmuje ona Dodawanie identyfikatorów zabezpieczeń do indeksu, a następnie objaśnia filtrowanie względem tego pola, aby przyciąć wyniki zabronionej zawartości. |
 |[Przycinanie zabezpieczeń oparte na tożsamościach Azure Active Directory](search-security-trimming-for-azure-search-with-aad.md)  | Ten artykuł został rozbudowany w poprzednim artykule, co zapewnia procedurę pobierania tożsamości z usługi Azure Active Directory (AAD), jednej z [bezpłatnych usług](https://azure.microsoft.com/free/) na platformie Azure w chmurze. |

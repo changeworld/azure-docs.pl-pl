@@ -6,12 +6,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: cotresne
-ms.openlocfilehash: 0eeb9c0c938793bb13218c5407f2a3fa117880e7
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 6c946667befdf34a2ae6769b2c1bb43871111c24
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227009"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75921023"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Technologie wdrażania w Azure Functions
 
@@ -114,7 +114,7 @@ Użyj narzędzia zip Deploy, aby wypchnąć plik zip, który zawiera aplikację 
 
 Można wdrożyć obraz kontenera systemu Linux zawierający aplikację funkcji.
 
->__Jak z niej korzystać:__ Utwórz aplikację funkcji systemu Linux w planie Premium lub dedykowanym i określ, z którego obrazu kontenera chcesz korzystać. Można to zrobić na dwa sposoby:
+>__Jak z niej korzystać:__ Utwórz aplikację funkcji systemu Linux w planie Premium lub dedykowanym i określ, z którego obrazu kontenera chcesz korzystać. Możesz to zrobić na dwa sposoby:
 >
 >* Utwórz aplikację funkcji systemu Linux na planie Azure App Service w Azure Portal. W obszarze **Publikowanie**wybierz opcję **obraz platformy Docker**, a następnie skonfiguruj kontener. Wprowadź lokalizację, w której jest hostowany obraz.
 >* Tworzenie aplikacji funkcji systemu Linux w planie App Service przy użyciu interfejsu wiersza polecenia platformy Azure. Aby dowiedzieć się, jak to zrobić, zobacz [Tworzenie funkcji w systemie Linux przy użyciu obrazu niestandardowego](functions-create-function-linux-custom-image.md#create-a-premium-plan).

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seodec18
 ms.date: 12/09/2019
-ms.openlocfilehash: 125450394a829667d45479e6e0b7844a0357f009
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: ecc4d5053ef6d9194f09b8a5aa6ba1528f9d94fa
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750004"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75920714"
 ---
 # <a name="run-apache-oozie-in-hdinsight-hadoop-clusters-with-enterprise-security-package"></a>Uruchamianie platformy Apache Oozie w klastrach usługi HDInsight Hadoop przy użyciu pakiet Enterprise Security
 
@@ -214,39 +214,21 @@ Definicje przepływów pracy Oozie są zapisywane w języku definicji procesu Ap
 
 2. Po otwarciu edytora nano Użyj następującego kodu XML jako zawartości pliku:
 
-<<<<<<< HEAD
    ```bash
-       nameNode=adl://home
-       jobTracker=headnodehost:8050
-       queueName=default
-       examplesRoot=examples
-       oozie.wf.application.path=${nameNode}/user/[domainuser]/examples/apps/map-reduce/workflow.xml
-       hiveScript1=${nameNode}/user/${user.name}/countrowshive1.hql
-       hiveScript2=${nameNode}/user/${user.name}/countrowshive2.hql
-       oozie.use.system.libpath=true
-       user.name=[domainuser]
-       jdbcPrincipal=hive/<active-headnode-name>.<Domain>.com@<Domain>.COM
-       jdbcURL=[jdbcurlvalue]
-       hiveOutputDirectory1=${nameNode}/user/${user.name}/hiveresult1
-       hiveOutputDirectory2=${nameNode}/user/${user.name}/hiveresult2
+   nameNode=adl://home
+   jobTracker=headnodehost:8050
+   queueName=default
+   examplesRoot=examples
+   oozie.wf.application.path=${nameNode}/user/[domainuser]/examples/apps/map-reduce/workflow.xml
+   hiveScript1=${nameNode}/user/${user.name}/countrowshive1.hql
+   hiveScript2=${nameNode}/user/${user.name}/countrowshive2.hql
+   oozie.use.system.libpath=true
+   user.name=[domainuser]
+   jdbcPrincipal=hive/<active-headnode-name>.<Domain>.com@<Domain>.COM
+   jdbcURL=[jdbcurlvalue]
+   hiveOutputDirectory1=${nameNode}/user/${user.name}/hiveresult1
+   hiveOutputDirectory2=${nameNode}/user/${user.name}/hiveresult2
    ```
-=======
-    ```bash
-    nameNode=adl://home
-    jobTracker=headnodehost:8050
-    queueName=default
-    examplesRoot=examples
-    oozie.wf.application.path=${nameNode}/user/[domainuser]/examples/apps/map-reduce/workflow.xml
-    hiveScript1=${nameNode}/user/${user.name}/countrowshive1.hql
-    hiveScript2=${nameNode}/user/${user.name}/countrowshive2.hql
-    oozie.use.system.libpath=true
-    user.name=[domainuser]
-    jdbcPrincipal=hive/hn0-<ClusterShortName>.<Domain>.com@<Domain>.COM
-    jdbcURL=[jdbcurlvalue]
-    hiveOutputDirectory1=${nameNode}/user/${user.name}/hiveresult1
-    hiveOutputDirectory2=${nameNode}/user/${user.name}/hiveresult2
-    ```
->>>>>>> 0650d78429b6d1b43cddf90fc713eb4050d71eef
 
    - Użyj `adl://home` URI dla właściwości `nameNode`, jeśli masz Azure Data Lake Storage Gen1 jako podstawowy magazyn klastra. Jeśli używasz usługi Azure Blob Storage, Zmień ją na `wasb://home`. Jeśli używasz Azure Data Lake Storage Gen2, Zmień to na `abfs://home`.
    - Zastąp `domainuser` nazwą użytkownika domeny.  

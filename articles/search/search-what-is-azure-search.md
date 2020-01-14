@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 17cefdd5976efdd86d9f171f4eb1518f63fe043b
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 0d2fca7b46cd0392fe8e94c1371443e7fcebc2fd
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75754296"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75922499"
 ---
 # <a name="what-is-azure-cognitive-search"></a>Co to jest wyszukiwanie poznawcze na platformie Azure?
 
@@ -68,7 +68,7 @@ Wyszukiwanie poznawcze platformy Azure są odpowiednie dla następujących scena
 |-------------------|----------|
 | Narzędzia służące do tworzenia prototypów i przeprowadzania inspekcji | Portal udostępnia [**kreatora importowania danych**](search-import-data-portal.md) umożliwiającego konfigurowanie indeksatorów, projektanta indeksów służącego do wdrożenia indeksu oraz [**eksploratora wyszukiwania**](search-explorer.md), który pozwala testować zapytania i dostosowywać profile oceniania. Można również otworzyć dowolny indeks, aby wyświetlić jego schemat. |
 | Monitorowanie i diagnostyka | [**Włącz funkcje monitorowania**](search-monitor-usage.md) , aby przekroczyć metryki na pierwszy rzut oka, które są zawsze widoczne w portalu. Metryki dotyczące liczby zapytań na sekundę, opóźnienia i ograniczania są przechwytywane i udostępniane na stronach portalu bez konieczności konfigurowania dodatkowych ustawień.|
-| Szyfrowanie po stronie serwera | [**Szyfrowanie zarządzane przez firmę Microsoft — w spoczynku**](search-security-overview.md#encrypted-transmission-and-storage) jest wbudowane w wewnętrzną warstwę magazynu i jest nieodwołalne. Opcjonalnie można uzupełnić domyślne szyfrowanie za pomocą [**kluczy szyfrowania zarządzanych przez klienta (wersja zapoznawcza)** ](search-security-manage-encryption-keys.md). Klucze tworzone i zarządzane w Azure Key Vault są używane do szyfrowania indeksów i map synonimów w usłudze Azure Wyszukiwanie poznawcze. |
+| Szyfrowanie po stronie serwera | [**Szyfrowanie zarządzane przez firmę Microsoft — w spoczynku**](search-security-overview.md#encrypted-transmission-and-storage) jest wbudowane w wewnętrzną warstwę magazynu i jest nieodwołalne. Opcjonalnie można uzupełnić domyślne szyfrowanie przy użyciu [**kluczy szyfrowania zarządzanych przez klienta**](search-security-manage-encryption-keys.md). Klucze tworzone i zarządzane w Azure Key Vault są używane do szyfrowania indeksów i map synonimów w usłudze Azure Wyszukiwanie poznawcze. |
 | Infrastruktura | **Platforma o wysokiej dostępności** zapewnia niezawodne działanie usługi wyszukiwania. Po poprawnym skalowaniu [usługa Azure wyszukiwanie poznawcze oferuje umowę SLA na 99,9%](https://azure.microsoft.com/support/legal/sla/search/v1_0/).<br/><br/> W **pełni zarządzane i skalowalne** jako kompleksowe rozwiązanie usługa Azure wyszukiwanie poznawcze wymaga bezwzględnego zarządzania infrastrukturą. Skalowanie w dwóch wymiarach pozwala dostosować usługę do swoich potrzeb, na przykład zwiększyć miejsce do magazynowania dokumentów czy zapewnić obsługę większych obciążeń zapytaniami.<br/><br/>|
 
 ## <a name="how-to-use-azure-cognitive-search"></a>Jak korzystać z usługi Azure Wyszukiwanie poznawcze

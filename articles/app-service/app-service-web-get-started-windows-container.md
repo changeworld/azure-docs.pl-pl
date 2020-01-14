@@ -4,12 +4,12 @@ description: Wdróż swój pierwszy niestandardowy kontener systemu Windows w ce
 ms.topic: quickstart
 ms.date: 08/30/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0b618c4f1a24e4089cac2ddf34e61bab156aefdd
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 7901498772b8e746fb2c87a5237f06ab279e3b64
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671347"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75922312"
 ---
 # <a name="run-a-custom-windows-container-in-azure-preview"></a>Uruchamianie niestandardowego kontenera systemu Windows na platformie Azure (wersja zapoznawcza)
 
@@ -163,7 +163,7 @@ Ponownie [przejdź do aplikacji kontenera](#browse-to-the-container-app). Po od�
 
 ## <a name="use-a-different-parent-image"></a>Używanie innego obrazu nadrzędnego
 
-Możesz użyć innego niestandardowego obrazu platformy Docker, aby uruchomić aplikację. Musisz jednak wybrać właściwy [obraz nadrzędny](https://docs.docker.com/develop/develop-images/baseimages/) dla wybranej platformy:
+Możesz użyć innego niestandardowego obrazu platformy Docker, aby uruchomić aplikację. Należy jednak wybrać odpowiedni [obraz nadrzędny (obraz podstawowy)](https://docs.docker.com/develop/develop-images/baseimages/) dla potrzebnej platformy:
 
 - Aby wdrożyć aplikacje .NET Framework, Użyj obrazu nadrzędnego na podstawie wersji [LTSC (Long-Term Servicing Channel)](https://docs.microsoft.com/windows-server/get-started-19/servicing-channels-19#long-term-servicing-channel-ltsc) systemu Windows Server Core 2019. 
 - Aby wdrażać aplikacje platformy .NET Core, Użyj obrazu nadrzędnego na podstawie wersji systemu Windows Server nano 1809 [częściowo-rocznego kanału obsługi (SAC)](https://docs.microsoft.com/windows-server/get-started-19/servicing-channels-19#semi-annual-channel) . 
@@ -171,7 +171,7 @@ Możesz użyć innego niestandardowego obrazu platformy Docker, aby uruchomić a
 Pobieranie obrazu nadrzędnego podczas uruchamiania aplikacji może zająć trochę czasu. Można jednak skrócić czas uruchamiania, korzystając z jednego z następujących obrazów nadrzędnych, które już zostały zbuforowane w usłudze Azure App Service:
 
 - [MCR.Microsoft.com/dotnet/Framework/ASPNET](https://hub.docker.com/_/microsoft-dotnet-framework-aspnet/): 4.7.2-windowsservercore-ltsc2019
-- [MCR.Microsoft.com/Windows/nanoserver](https://hub.docker.com/_/microsoft-windows-nanoserver/): 1809 — ten obraz jest kontenerem bazowym używanym w obrazach Microsoft [ASP.NET Core](https://hub.docker.com/_microsoft-dotnet-cores-aspnet) Microsoft Windows nano Server.
+- [MCR.Microsoft.com/Windows/nanoserver](https://hub.docker.com/_/microsoft-windows-nanoserver/): 1809 — ten obraz jest kontenerem bazowym używanym w obrazach Microsoft [ASP.NET Core](https://hub.docker.com/_/microsoft-dotnet-core-aspnet/) Microsoft Windows nano Server.
 
 ## <a name="next-steps"></a>Następne kroki
 

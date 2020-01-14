@@ -1,19 +1,19 @@
 ---
 title: Interfejs API REST w wersji 2019-05-06 — wersja zapoznawcza
 titleSuffix: Azure Cognitive Search
-description: Interfejs API REST usługi Wyszukiwanie poznawcze platformy Azure w wersji 2019-05-06 — wersja zapoznawcza obejmuje funkcje eksperymentalne, takie jak magazyn wiedzy i klucze szyfrowania zarządzane przez klienta.
+description: Interfejs API REST usługi Wyszukiwanie poznawcze platformy Azure w wersji 2019-05-06 — wersja zapoznawcza obejmuje funkcje eksperymentalne, takie jak magazyn wiedzy i buforowanie indeksatora w celu wzbogacania przyrostowego.
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/04/2020
-ms.openlocfilehash: ee8e11670d5b3e0f0edd57e3f87566faa60d4bc4
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: eb73d614ca94bc1fa007a14f3705e50c74ab9e4f
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75754401"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75922475"
 ---
 # <a name="azure-cognitive-search-service-rest-api-version-2019-05-06-preview"></a>Interfejs API REST usługi Wyszukiwanie poznawcze platformy Azure — Wersja 2019-05-06-Preview
 
@@ -36,8 +36,6 @@ W tym artykule opisano `api-version=2019-05-06-Preview` wersja interfejsu API RE
 + [Tłumaczenie tekstu (wersja zapoznawcza)](cognitive-search-skill-text-translation.md) to umiejętność wykorzystywana podczas indeksowania, która oblicza tekst i dla każdego rekordu zwraca tekst przetłumaczony na określony język docelowy.
 
 + [Magazyn wiedzy](knowledge-store-concept-intro.md) to nowe miejsce docelowe potoku wzbogacania opartego na AI. Struktura danych fizycznych istnieje w usłudze Azure Blob Storage i Azure Table Storage oraz jest tworzona i wypełniana podczas uruchamiania indeksatora, który ma dołączony zestawu umiejętności poznawcze. Definicja samego sklepu wiedzy została określona w definicji zestawu umiejętności. W ramach definicji sklepu merytorycznego można kontrolować struktury fizyczne danych za pomocą elementów *projekcji* , które określają, jak dane są w kształcie, czy dane są przechowywane w magazynie tabel lub w magazynie obiektów blob, oraz czy istnieje wiele widoków.
-
-+ [Klucze szyfrowania zarządzane przez klienta](search-security-manage-encryption-keys.md) dla szyfrowania po stronie usługi — w trybie spoczynku są również nową funkcją w wersji zapoznawczej. Oprócz wbudowanego szyfrowania, które jest zarządzane przez firmę Microsoft, można zastosować dodatkową warstwę szyfrowania, w której jesteś jedynym właścicielem kluczy.
 
 ## <a name="earlier-preview-features"></a>Wcześniejsze funkcje w wersji zapoznawczej
 

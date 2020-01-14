@@ -3,12 +3,12 @@ title: Samouczek — Tworzenie kopii zapasowych Azure Files udziałów plików
 description: W tym samouczku dowiesz się, jak skonfigurować magazyn Recovery Services i utworzyć kopię zapasową udziałów plików platformy Azure przy użyciu Azure Portal.
 ms.date: 06/10/2019
 ms.topic: tutorial
-ms.openlocfilehash: f3c1956a0344d300fff9a745a4733b7bef45a367
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: b002d1ea092d2d0507dc761f56ca7835f1521fb3
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74171864"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75921646"
 ---
 # <a name="back-up-azure-file-shares-in-the-azure-portal"></a>Tworzenie kopii zapasowych udziałów plików platformy Azure w Azure Portal
 
@@ -28,7 +28,6 @@ Przed utworzeniem kopii zapasowej udziału plików platformy Azure sprawdź, czy
 
 Funkcja tworzenia kopii zapasowych udziałów plików platformy Azure jest dostępna w wersji zapoznawczej. Obsługiwane są udziały plików platformy Azure na kontach magazynu ogólnego przeznaczenia w wersji 1 i 2. Następujące scenariusze tworzenia kopii zapasowej nie są obsługiwane w przypadku udziałów plików platformy Azure:
 
-* Nie można chronić udziałów plików platformy Azure w ramach kont magazynu, które mają włączone sieci wirtualne lub zaporę.
 * Nie ma dostępnego interfejsu wiersza polecenia do ochrony usługi Azure Files z poziomu usługi Azure Backup.
 * Maksymalna liczba zaplanowanych kopii zapasowych to jedna dziennie.
 * Maksymalna liczba kopii zapasowych na żądanie to cztery dziennie.

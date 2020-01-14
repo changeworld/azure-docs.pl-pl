@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 11/18/2019
 ms.author: babanisa
-ms.openlocfilehash: 6a0e24ce7fa11c6373fbaada40cd9f1b1e7f55a2
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 78498f06a1ec921813d886b426d62452f850f5e5
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325472"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75922744"
 ---
 # <a name="use-cloudevents-v10-schema-with-event-grid"></a>Używanie schematu CloudEvents v 1.0 z Event Grid
 
@@ -60,7 +60,7 @@ Oto przykład zdarzenia usługi Azure Blob Storage w formacie CloudEvents:
 }
 ```
 
-Szczegółowy opis dostępnych pól, ich typów i definicji w CloudEvents v 0,1 jest [dostępny tutaj](https://github.com/cloudevents/spec/blob/v1.0/spec.md#required-attributes).
+Szczegółowy opis dostępnych pól, ich typów i definicji w CloudEvents v 1.0 jest [dostępny tutaj](https://github.com/cloudevents/spec/blob/v1.0/spec.md#required-attributes).
 
 Wartości nagłówków dla zdarzeń dostarczonych w schemacie CloudEvents i schemacie Event Grid są takie same, z wyjątkiem `content-type`. Dla schematu CloudEvents wartość tego nagłówka jest `"content-type":"application/cloudevents+json; charset=utf-8"`. Dla Event Grid schematu wartość tego nagłówka jest `"content-type":"application/json; charset=utf-8"`.
 
@@ -76,7 +76,7 @@ Można użyć Event Grid zarówno dla danych wejściowych, jak i wyjściowych zd
 | Format CloudEvents | Event Grid format
 | Event Grid format  | Event Grid format
 
-W przypadku wszystkich schematów zdarzeń Event Grid wymaga weryfikacji podczas publikowania w temacie Event Grid i podczas tworzenia subskrypcji zdarzeń. Aby uzyskać więcej informacji, zobacz [Event Grid zabezpieczenia i uwierzytelnianie](security-authentication.md).
+W przypadku wszystkich schematów zdarzeń Event Grid wymaga weryfikacji podczas publikowania w temacie Event Grid i podczas tworzenia subskrypcji zdarzeń. Aby uzyskać więcej informacji, zobacz [usługi Event Grid zabezpieczeń i uwierzytelniania](security-authentication.md).
 
 ### <a name="input-schema"></a>Schemat wejściowy
 

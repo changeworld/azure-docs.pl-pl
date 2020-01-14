@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 2e08c1c0fbd0962adee44af949be280701915a1e
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: a97490bffa16a32d17d41d3a3386b3d363f818d8
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834069"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75921106"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-2x"></a>Powiązania Azure Cosmos DB dla Azure Functions 2. x
 
@@ -1685,7 +1685,7 @@ public class DocByIdFromRouteSqlQuery {
 
 #### <a name="http-trigger-get-multiple-docs-from-route-data-using-sqlquery-java"></a>Wyzwalacz HTTP, pobieranie wielu dokumentów z danych tras przy użyciu sqlQuery (Java)
 
-Poniższy przykład pokazuje funkcję języka Java, która pobiera wiele dokumentów. Funkcja jest wyzwalana przez żądanie HTTP, które używa parametru trasy ```desc```, aby określić ciąg do wyszukania w polu ```description```. Termin wyszukiwania służy do pobrania kolekcji dokumentów z określonej bazy danych i kolekcji, przekonwertowanie zestawu wyników na ```ToDoItem[]``` i przekazanie go jako argumentu do funkcji.
+Poniższy przykład pokazuje funkcję języka Java, która pobiera wiele dokumentów. Funkcja jest wyzwalana przez żądanie HTTP, które używa ```desc``` parametru trasy, aby określić ciąg do wyszukania w polu ```description```. Termin wyszukiwania służy do pobrania kolekcji dokumentów z określonej bazy danych i kolekcji, przekonwertowanie zestawu wyników na ```ToDoItem[]``` i przekazanie go jako argumentu do funkcji.
 
 ```java
 public class DocsFromRouteSqlQuery {

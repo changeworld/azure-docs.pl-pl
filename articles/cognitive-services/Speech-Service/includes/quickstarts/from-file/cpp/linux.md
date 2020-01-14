@@ -1,21 +1,20 @@
 ---
 title: 'Szybki Start: Rozpoznawanie mowy z pliku audio C++ (Linux) — usługa mowy'
 titleSuffix: Azure Cognitive Services
-description: Dowiedz się, jak rozpoznawać mowę w języku C++ w systemie Linux przy użyciu zestawu Speech SDK
 services: cognitive-services
 author: wolfma61
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: quickstart
-ms.date: 07/05/2019
+ms.topic: include
+ms.date: 12/17/2019
 ms.author: wolfma
-ms.openlocfilehash: 2372e04ed7e20757cc0a3cbb9aae5e7597f17c3f
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 4ed76de381a98f01472d7f40897fd0523eec9fbc
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74819387"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75928048"
 ---
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -78,7 +77,7 @@ Przed rozpoczęciem upewnij się, że:
 
 1. W nowym pliku zastąp ciąg `YourSubscriptionKey` kluczem subskrypcji usługi rozpoznawania mowy.
 
-1. Zastąp ciąg `YourServiceRegion` [regionem](~/articles/cognitive-services/Speech-Service/regions.md) skojarzonym z subskrypcją (na przykład `westus` w przypadku subskrypcji bezpłatnej wersji próbnej).
+1. Zastąp ciąg `YourServiceRegion`[regionem](~/articles/cognitive-services/Speech-Service/regions.md) skojarzonym z subskrypcją (na przykład `westus` w przypadku subskrypcji bezpłatnej wersji próbnej).
 
 1. Zastąp ciąg `whatstheweatherlike.wav` własnymi nazwami.
 
@@ -108,7 +107,7 @@ Przed rozpoczęciem upewnij się, że:
   g++ helloworld.cpp -o helloworld -I "$SPEECHSDK_ROOT/include/cxx_api" -I "$SPEECHSDK_ROOT/include/c_api" --std=c++14 -lpthread -lMicrosoft.CognitiveServices.Speech.core -L "$SPEECHSDK_ROOT/lib/arm64" -l:libasound.so.2
   ```
 
-## <a name="run-the-app"></a>Uruchamianie aplikacji
+## <a name="run-the-app"></a>Uruchomienie aplikacji
 
 1. Skonfiguruj ścieżkę biblioteki modułu ładującego tak, aby wskazywała bibliotekę zestawu Speech SDK.
 

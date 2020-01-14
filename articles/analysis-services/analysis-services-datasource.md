@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: b08a124ade6e2db8ca27ef61c7f5a6b3fe839885
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4a99bfe8d8235400f9122423aa4592fc6898abc1
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442765"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75922287"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Źródła danych obsługiwane w Azure Analysis Services
 
@@ -120,7 +120,9 @@ W przypadku źródeł danych w chmurze:
 
 ## <a name="oauth-credentials"></a>Poświadczenia uwierzytelniania OAuth
 
-Dla modeli tabelarycznych na poziomie zgodności 1400 i wyższym Azure SQL Database, Azure SQL Data Warehouse, Dynamics 365 i lista programu SharePoint obsługują poświadczenia uwierzytelniania OAuth. Azure Analysis Services zarządza odświeżanie tokenów dla źródeł danych OAuth w celu uniknięcia przekroczeń limitu czasu dla długotrwałych operacji odświeżania. Aby wygenerować prawidłowe tokeny, Ustaw poświadczenia za pomocą programu SSMS.
+Dla modeli tabelarycznych na poziomie zgodności 1400 i wyższych przy użyciu trybu w pamięci, Azure SQL Database, Azure SQL Data Warehouse, Dynamics 365 i lista programu SharePoint obsługują poświadczenia uwierzytelniania OAuth. Azure Analysis Services zarządza odświeżanie tokenów dla źródeł danych OAuth w celu uniknięcia przekroczeń limitu czasu dla długotrwałych operacji odświeżania. Aby wygenerować prawidłowe tokeny, Ustaw poświadczenia za pomocą programu SSMS.
+
+Tryb zapytania bezpośredniego nie jest obsługiwany z poświadczeniami uwierzytelniania OAuth.
 
 ## <a name="next-steps"></a>Następne kroki
   [bramy lokalnej](analysis-services-gateway.md)  

@@ -15,7 +15,7 @@
   items:
     - name: Tworzenie centrum zdarzeń
       items:
-        - name: Portal Azure
+        - name: Azure Portal
           href: event-hubs-create.md
         - name: Interfejs wiersza polecenia platformy Azure
           href: event-hubs-quickstart-cli.md
@@ -65,7 +65,7 @@
     - name: Przesyłanie strumieniowe danych do usługi Azure Databricks przy użyciu usługi Event Hubs
       href: ../azure-databricks/databricks-stream-from-eventhubs.md
       maintainContext: true
-- name: Przykłady
+- name: Samples
   href: event-hubs-samples.md
 - name: Pojęcia
   items:
@@ -81,7 +81,7 @@
       items:
         - name: Geograficzne odzyskiwanie po awarii i replikacja geograficzna
           href: event-hubs-geo-dr.md
-    - name: Bezpieczeństwo
+    - name: Zabezpieczenia
       items:
         - name: Autoryzacja
           items:
@@ -164,7 +164,7 @@
           href: event-hubs-service-endpoints.md
         - name: Włączanie integracji sieci wirtualnych i zapór ogniowych w przestrzeni nazw usługi Event Hubs
           href: event-hubs-tutorial-virtual-networks-firewalls.md
-        - name: Konfigurowanie zarządzanych przez klienta kluczy na potrzeby szyfrowania danych magazynowanych (wersja zapoznawcza)
+        - name: Konfigurowanie zarządzanych przez klienta kluczy na potrzeby szyfrowania danych magazynowanych
           href: configure-customer-managed-key.md
     - name: Rozwiązywanie problemów
       items:

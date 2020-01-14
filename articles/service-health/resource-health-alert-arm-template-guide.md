@@ -3,12 +3,12 @@ title: Tworzenie alertów dotyczących usługi Azure Resource Health — szablon
 description: Programowe tworzenie alertów powiadamiających o stanie niedostępności zasobów platformy Azure.
 ms.topic: conceptual
 ms.date: 9/4/2018
-ms.openlocfilehash: c14e3c327d83e75b08f3b52b59970557ec87f5b5
-ms.sourcegitcommit: e9776e6574c0819296f28b43c9647aa749d1f5a6
+ms.openlocfilehash: d42dfdc5806fa6340cf4bb7051b53764e98c26e3
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/13/2020
-ms.locfileid: "75912829"
+ms.locfileid: "75922771"
 ---
 # <a name="configure-resource-health-alerts-using-resource-manager-templates"></a>Konfigurowanie alertów dotyczących kondycji zasobów przy użyciu szablonów Menedżer zasobów
 
@@ -16,6 +16,8 @@ W tym artykule opisano sposób tworzenia alertów dziennika aktywności Resource
 
 Azure Resource Health informuje o aktualnym i historycznym stanie kondycji zasobów platformy Azure. Alerty Azure Resource Health mogą powiadamiać niemal w czasie rzeczywistym o zmianie stanu kondycji tych zasobów. Tworzenie alertów Resource Health programowo pozwala użytkownikom na tworzenie i dostosowywanie alertów zbiorczo.
 
+> [!NOTE]
+> Alerty Resource Health są obecnie dostępne w wersji zapoznawczej.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 

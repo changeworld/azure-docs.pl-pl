@@ -3,12 +3,12 @@ title: Dokumentacja C# dla deweloperów Azure Functions
 description: Dowiedz się, jak opracowywać C#Azure Functions przy użyciu programu.
 ms.topic: reference
 ms.date: 09/12/2018
-ms.openlocfilehash: f412e5ea358fe7b97476802f432616c37b05dbd9
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 89b3ae927b14454ac3f58fb510626e315842240f
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975486"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75921042"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Dokumentacja C# dla deweloperów Azure Functions
 
@@ -378,7 +378,7 @@ public static class IBinderExample
 
 ### <a name="multiple-attribute-example"></a>Przykład wielu atrybutów
 
-Powyższy przykład pobiera ustawienie aplikacji dla głównych parametrów połączenia konta magazynu aplikacji funkcji (czyli `AzureWebJobsStorage`). Możesz określić niestandardowe ustawienie aplikacji do użycia dla konta magazynu, dodając [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) i przekazując tablicę atrybutów do `BindAsync<T>()`. Użyj `Binder` parametru, a nie `IBinder`.  Na przykład:
+Powyższy przykład pobiera ustawienie aplikacji dla głównych parametrów połączenia konta magazynu aplikacji funkcji (czyli `AzureWebJobsStorage`). Możesz określić niestandardowe ustawienie aplikacji do użycia dla konta magazynu, dodając [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) i przekazując tablicę atrybutów do `BindAsync<T>()`. Użyj `Binder` parametru, a nie `IBinder`.  Przykład:
 
 ```cs
 public static class IBinderExampleMultipleAttributes

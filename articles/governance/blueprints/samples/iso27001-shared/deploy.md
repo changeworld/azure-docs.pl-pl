@@ -1,14 +1,14 @@
 ---
 title: Przykład wdrażania planu wspólnych usług ISO 27001
 description: Wdróż kroki dla przykładu planu usług udostępnionych ISO 27001, w tym szczegóły parametru artefaktu strategii.
-ms.date: 11/18/2019
+ms.date: 01/13/2020
 ms.topic: sample
-ms.openlocfilehash: 1ef96a3ccffa705290a90caf436fe1857d9442a7
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: a9dabc99469321445006e449757a10fbc51aba87
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74546703"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75920691"
 ---
 # <a name="deploy-the-iso-27001-shared-services-blueprint-sample"></a>Wdróż przykład strategii usług udostępnionych ISO 27001
 
@@ -104,12 +104,12 @@ Poniższa tabela zawiera listę parametrów artefaktów strategii:
 |Nazwa artefaktu|Typ artefaktu|Nazwa parametru|Opis|
 |-|-|-|-|
 |\[wersji zapoznawczej\]: wdrażanie agenta Log Analytics dla systemu Linux VM Scale Sets (VMSS)|Przypisywanie zasad|Opcjonalnie: lista obrazów maszyn wirtualnych z obsługiwanym systemem operacyjnym Linux do dodania do zakresu|Obowiązkowe Wartość domyślna to _["Brak"]_ .|
-|\[wersji zapoznawczej\]: wdrażanie agenta Log Analytics dla maszyn wirtualnych z systemem Linux|Przypisywanie zasad|Opcjonalnie: lista obrazów maszyn wirtualnych z obsługiwanym systemem operacyjnym Linux do dodania do zakresu|Obowiązkowe Wartość domyślna to _["Brak"]_ .|
+|\[Podgląd\]: Wdrażanie Log Analytics Agent na maszynach wirtualnych systemu Linux|Przypisywanie zasad|Opcjonalnie: lista obrazów maszyn wirtualnych z obsługiwanym systemem operacyjnym Linux do dodania do zakresu|Obowiązkowe Wartość domyślna to _["Brak"]_ .|
 |\[wersji zapoznawczej\]: wdrażanie agenta Log Analytics dla systemu Windows VM Scale Sets (VMSS)|Przypisywanie zasad|Opcjonalnie: lista obrazów maszyn wirtualnych z obsługiwanym systemem operacyjnym Windows do dodania do zakresu|Obowiązkowe Wartość domyślna to _["Brak"]_ .|
-|\[wersji zapoznawczej\]: wdrażanie agenta Log Analytics dla maszyn wirtualnych z systemem Windows|Przypisywanie zasad|Opcjonalnie: lista obrazów maszyn wirtualnych z obsługiwanym systemem operacyjnym Windows do dodania do zakresu|Obowiązkowe Wartość domyślna to _["Brak"]_ .|
+|\[Podgląd\]: Wdrażanie Log Analytics Agent for Windows VMs|Przypisywanie zasad|Opcjonalnie: lista obrazów maszyn wirtualnych z obsługiwanym systemem operacyjnym Windows do dodania do zakresu|Obowiązkowe Wartość domyślna to _["Brak"]_ .|
 |Dozwolone typy zasobów|Przypisywanie zasad|Dozwolone typy zasobów|Lista typów zasobów, które mogą zostać wdrożone. Ta lista składa się ze wszystkich typów zasobów wdrożonych w usługach udostępnionych.|
 |Dozwolone jednostki SKU konta magazynu|Przypisywanie zasad|Dozwolone jednostki SKU magazynu|Lista dzienników diagnostycznych — dozwolone jednostki SKU konta magazynu. Wartość domyślna to _["Standard_LRS"]_ .|
-|Dozwolone jednostki SKU maszyny wirtualnej|Przypisywanie zasad|Lista jednostek SKU maszyn wirtualnych, które mogą zostać wdrożone. Wartość domyślna to _["Standard_DS1_v2", "Standard_DS2_v2"]_ .|
+|Dozwolone jednostki SKU maszyn wirtualnych|Przypisywanie zasad|Lista jednostek SKU maszyn wirtualnych, które mogą zostać wdrożone. Wartość domyślna to _["Standard_DS1_v2", "Standard_DS2_v2"]_ .|
 |Inicjatywa strategii dla ISO 27001|Przypisywanie zasad|Typy zasobów do inspekcji dzienników diagnostycznych|Lista typów zasobów do inspekcji, jeśli nie włączono ustawienia dziennika diagnostycznego. Akceptowalne wartości można znaleźć Azure Monitor w obszarze [schematy dzienników diagnostycznych](../../../../azure-monitor/platform/diagnostic-logs-schema.md#supported-log-categories-per-resource-type).|
 |Grupa zasobów Log Analytics|Grupa zasobów|Nazwa|**Zablokowany** — łączy **nazwę organizacji** z `-sharedsvsc-log-rg`, aby uczynić grupę zasobów unikatową.|
 |Grupa zasobów Log Analytics|Grupa zasobów|Lokalizacja|**Zablokowany** — używa parametru strategii.|

@@ -7,15 +7,15 @@ author: wolfma61
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: quickstart
-ms.date: 08/19/2019
+ms.topic: include
+ms.date: 12/17/2019
 ms.author: wolfma
-ms.openlocfilehash: 74bc77fbb9436983c26c572b521d96795f14cfcd
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: e1385dd17e686370508576ec0cb713820f27f6b2
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74818911"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75927867"
 ---
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -37,7 +37,7 @@ Przed rozpoczęciem:
 
 1. W tym samym pliku zastąp ciąg `YourSubscriptionKey` kluczem subskrypcji.
 
-1. Zastąp ciąg `YourServiceRegion` [regionem](~/articles/cognitive-services/Speech-Service/regions.md) skojarzonym z subskrypcją (na przykład `westus` w przypadku subskrypcji bezpłatnej wersji próbnej).
+1. Zastąp ciąg `YourServiceRegion`[regionem](~/articles/cognitive-services/Speech-Service/regions.md) skojarzonym z subskrypcją (na przykład `westus` w przypadku subskrypcji bezpłatnej wersji próbnej).
 
 1. Na pasku menu wybierz kolejno opcje **plik** > **Zapisz wszystko**.
 
@@ -50,7 +50,7 @@ Przed rozpoczęciem:
 
 1. Wybierz **debuguj** > **Rozpocznij debugowanie** (lub naciśnij klawisz **F5**), aby uruchomić aplikację **HelloWorld** .
 
-1. Wymów frazę lub zdanie w języku angielskim. Aplikacja przesyła mowę do usługi mowy, która przekształca do tekstu i wysyła ją z powrotem do aplikacji do wyświetlenia.
+1. Wypowiedz zwrot lub zdanie w języku angielskim. Aplikacja przesyła mowę do usługi mowy, która przekształca do tekstu i wysyła ją z powrotem do aplikacji do wyświetlenia.
 
    ![Dane wyjściowe konsoli po pomyślnym rozpoznaniu](~/articles/cognitive-services/Speech-Service/media/sdk/qs-cpp-windows-08-console-output-release.png)
 

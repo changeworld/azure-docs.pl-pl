@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/06/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 50dd97107296c70ba9dde162b723f49a658a3994
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 72b6c1f86b18df172994827ec78eb109fe82454e
+ms.sourcegitcommit: e9776e6574c0819296f28b43c9647aa749d1f5a6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75355916"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75913777"
 ---
 ## <a name="benefits-of-managed-disks"></a>Zalety dysków zarządzanych
 
@@ -55,7 +55,7 @@ Dyski zarządzane oferują dwa różne rodzaje szyfrowania. Pierwszy jest szyfro
 
 ### <a name="server-side-encryption"></a>Szyfrowanie po stronie serwera
 
-[Szyfrowanie po stronie serwera platformy Azure](../articles/virtual-machines/windows/disk-encryption.md) zapewnia szyfrowanie w czasie spoczynku i zabezpiecza dane zgodnie z zobowiązaniami dotyczącymi bezpieczeństwa i zgodności w organizacji. Szyfrowanie po stronie serwera jest domyślnie włączone dla wszystkich dysków zarządzanych, migawek i obrazów we wszystkich regionach, w których są dostępne usługi Managed Disks. Możesz zezwolić na platformę Azure do zarządzania kluczami, które są kluczami zarządzanymi przez platformę, lub samodzielnie nimi zarządzać. Klucze te są kluczami zarządzanymi przez klienta (wersja zapoznawcza). Aby uzyskać więcej informacji, odwiedź [stronę Managed disks często zadawanych pytań](../articles/virtual-machines/windows/faq-for-disks.md#managed-disks-and-storage-service-encryption) .
+[Szyfrowanie po stronie serwera platformy Azure](../articles/virtual-machines/windows/disk-encryption.md) zapewnia szyfrowanie w czasie spoczynku i zabezpiecza dane zgodnie z zobowiązaniami dotyczącymi bezpieczeństwa i zgodności w organizacji. Szyfrowanie po stronie serwera jest domyślnie włączone dla wszystkich dysków zarządzanych, migawek i obrazów we wszystkich regionach, w których są dostępne usługi Managed Disks. Możesz zezwolić na platformę Azure do zarządzania kluczami, które są kluczami zarządzanymi przez platformę, lub samodzielnie zarządzać kluczami. są to klucze zarządzane przez klienta. Aby uzyskać więcej informacji, odwiedź [stronę Managed disks często zadawanych pytań](../articles/virtual-machines/windows/faq-for-disks.md#managed-disks-and-storage-service-encryption) .
 
 ### <a name="azure-disk-encryption"></a>Azure Disk Encryption
 
