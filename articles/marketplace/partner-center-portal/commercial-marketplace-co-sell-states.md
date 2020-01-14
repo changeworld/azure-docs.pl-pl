@@ -1,19 +1,19 @@
 ---
 title: Kody stanu współsprzedażowego | Portal Azure Marketplace
 description: Użyj tych kodów stanu/województwa podczas udostępniania informacji kontaktowych na stronie współsprzedaży oferty.
-author: qianw211
+author: MaggiePucciEvans
 manager: evansma
-ms.author: v-qiwe
+ms.author: evansma
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/27/2019
-ms.openlocfilehash: 38dcfe04473e8d2fbd81614908adef9636c44b19
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: c64fc161108560e893ef7b207782d79b6c3c01d4
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73812860"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934365"
 ---
 # <a name="co-sell-state-codes"></a>Kody stanu współsprzedażowego
 
@@ -21,7 +21,7 @@ Jeśli ma to zastosowanie, Użyj tych kodów, aby podać informacje o stanie/pro
 
 ## <a name="stateprovince-table"></a>Tabela stanu/prowincji
 
-|   Nazwa województwa               |   Kod    |
+|   Nazwa województwa               |   Code    |
 |-------------------------------------|-----------|
 | Alabama                             | US-AL     |
 | Alaska                              | US — KLUCZA UWIERZYTELNIANIA     |
@@ -31,7 +31,7 @@ Jeśli ma to zastosowanie, Użyj tych kodów, aby podać informacje o stanie/pro
 | Kolorado                            | US — CO     |
 | Connecticut                         | US-CT     |
 | Delaware                            | US-DE     |
-| Florida                             | US-FL     |
+| Floryda                             | US-FL     |
 | Gruzja                             | US — GA     |
 | Hawaje                              | US — WITAJ     |
 | Idaho                               | US — IDENTYFIKATOR     |
@@ -45,14 +45,14 @@ Jeśli ma to zastosowanie, Użyj tych kodów, aby podać informacje o stanie/pro
 | Maryland                            | US-MD     |
 | Massachusetts                       | US — MA     |
 | Michigan                            | US-MI     |
-| Minnesoty                           | US-MN     |
-| Mississippi                         | US-MS     |
+| Minnesota                           | US-MN     |
+| Missisipi                         | US-MS     |
 | Missouri                            | US-MO     |
 | Montana                             | US-MT     |
 | Nebraska                            | US — NE     |
 | Nevada                              | US — NV     |
-| Nowy Hampshire                       | US — NH     |
-| Nowa Jersey                          | US — NJ     |
+| New Hampshire                       | US — NH     |
+| New Jersey                          | US — NJ     |
 | Nowy Meksyk                          | US – NM     |
 | Nowy Jork                            | US — POLSKA     |
 | Karolina Północna                      | US-NC     |
@@ -61,8 +61,8 @@ Jeśli ma to zastosowanie, Użyj tych kodów, aby podać informacje o stanie/pro
 | Oklahoma                            | US — OK     |
 | Oregon                              | US-LUB     |
 | Pensylwania                        | US-PA     |
-| Wyspa Rhode                        | US — RI     |
-| Karolinie południowy                      | US-SC     |
+| Rhode Island                        | US — RI     |
+| Karolina Południowa                      | US-SC     |
 | Dakota Południowa                        | US-SD     |
 | Tennessee                           | US-TN     |
 | Teksas                               | US-TX     |
@@ -70,7 +70,7 @@ Jeśli ma to zastosowanie, Użyj tych kodów, aby podać informacje o stanie/pro
 | Vermont                             | US — VT     |
 | Wirginia                            | US — VA     |
 | Waszyngton                          | US-WA     |
-| Wirginia zachodni                       | US — WV     |
+| Wirginia Zachodnia                       | US — WV     |
 | Wisconsin                           | US-WI     |
 | Wyoming                             | US — WY     |
 | Dystrykt Kolumbii                | US — DC     |

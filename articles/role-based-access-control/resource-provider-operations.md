@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 12/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: e8a3397cd8229a84103fdcbb116bf61648a6ba22
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 9d4b4134fa26fd2cb904a862ac16544873bf8bcb
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895562"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934459"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Operacje dostawcy zasobów Azure Resource Manager
 
@@ -1230,45 +1230,45 @@ Operacje dostawcy zasobów są zawsze rozwijane. Aby uzyskać najnowsze operacje
 > | Akcja dataaction | Microsoft. CognitiveServices/accounts/ContentModerator/processimage/Match/Action | Fuzzily dopasowuje obraz do jednej z niestandardowych list obrazów.<br>Możesz tworzyć niestandardowe listy obrazów i zarządzać nimi za pomocą tego interfejsu API.<br> |
 > | Akcja dataaction | Microsoft. CognitiveServices/accounts/ContentModerator/processimage/OCR/akcja | Zwraca dowolny tekst znaleziony w obrazie dla określonego języka. Jeśli w polu dane wejściowe nie określono żadnego języka, domyślnie zostanie wykrycie. |
 > | Akcja dataaction | Microsoft. CognitiveServices/accounts/ContentModerator/ProcessText/detectlanguage/Action | Ta operacja spowoduje wykrycie języka danej zawartości wejściowej.<br>Zwraca kod ISO 639-3 dla języka przeważa zawierającego przesłany tekst.<br>Obsługiwane są ponad 110 języków. |
-> | Akcja dataaction | Microsoft. CognitiveServices/accounts/ContentModerator/ProcessText/ekran/akcja | Operacja wykrywa przekleństwa w ponad 100 językach i dopasowuje je do niestandardowych i udostępnionych list pozycji zabronionych. |
+> | Akcja dataaction | Microsoft. CognitiveServices/accounts/ContentModerator/ProcessText/ekran/akcja | Operacja wykrywa przekleństwa w ponad 100 językach i dopasowuje je do niestandardowych i niestandardowych list elementów zabronionych. |
 > | Akcja dataaction | Microsoft. CognitiveServices/accounts/ContentModerator/zespoły/zadania/akcja | Identyfikator zadania zostanie zwrócony dla zawartości obrazu opublikowanej w tym punkcie końcowym.  |
 > | Akcja dataaction | Microsoft. CognitiveServices/accounts/ContentModerator/zespoły/Jobs/Read | Pobierz szczegóły zadania dla identyfikatora zadania. |
 > | Akcja dataaction | Microsoft. CognitiveServices/accounts/ContentModerator/zespoły/przeglądy/AccessKey/odczyt | Pobierz klucz dostępu do zawartości dla zespołu. |
 > | Akcja dataaction | Microsoft. CognitiveServices/accounts/ContentModerator/zespoły/przeglądy/akcja | Utworzone Recenzje będą widoczne dla recenzentów w zespole. Gdy recenzenci ukończyją przegląd, wyniki przeglądu zostaną opublikowane (tj. POST HTTP) w określonym CallBackEndpoint. |
-> | Akcja dataaction | Microsoft. CognitiveServices/accounts/ContentModerator/zespoły/przeglądy/ramki/odczyt | *NotDefined* |
-> | Akcja dataaction | Microsoft. CognitiveServices/accounts/ContentModerator/zespoły/przeglądy/ramki/zapis | Użyj tej metody, aby dodać ramki do przeglądu wideo. |
-> | Akcja dataaction | Microsoft. CognitiveServices/accounts/ContentModerator/zespoły/przeglądy/publikowanie/akcja | Przeglądy wideo są początkowo tworzone w stanie nieopublikowanym, co oznacza, że nie jest on dostępny dla recenzentów w zespole. |
-> | Akcja dataaction | Microsoft. CognitiveServices/accounts/ContentModerator/zespoły/przeglądy/odczyt | Zwraca szczegóły przeglądu dla podanego identyfikatora przeglądu. |
-> | Akcja dataaction | Microsoft. CognitiveServices/accounts/ContentModerator/zespoły/przeglądy/transkrypcja/akcja | Ten interfejs API dodaje plik transkrypcji (tekstowa wersja wszystkich wyrazów w filmie wideo) do recenzji wideo. Plik powinien być prawidłowym formatem WebVTT. |
-> | Akcja dataaction | Microsoft. CognitiveServices/accounts/ContentModerator/zespoły/przeglądy/transcriptmoderationresult/akcja | Ten interfejs API dodaje plik wyniku tekstu na ekranie transkrypcji do przeglądu wideo. Plik wyniku tekstu na ekranie transkrypcji jest wynikiem interfejsu API tekstu ekranu. W celu wygenerowania pliku z wynikami tekstu na ekranie transkrypcji plik transkrypcji musi być osłaniany pod kątem niebezpieczeństwa przy użyciu interfejsu API tekstu ekranu. |
-> | Akcja dataaction | Microsoft. CognitiveServices/accounts/ContentModerator/Teams/Settings/templates/Delete | Usuwanie szablonu w zespole |
-> | Akcja dataaction | Microsoft. CognitiveServices/accounts/ContentModerator/Teams/Settings/templates/Read | Zwraca tablicę szablonów przeglądu, które są obsługiwane w tym zespole. |
-> | Akcja dataaction | Microsoft. CognitiveServices/accounts/ContentModerator/Teams/Settings/templates/Write | Tworzy lub aktualizuje określony szablon |
-> | Akcja dataaction | Microsoft. CognitiveServices/accounts/ContentModerator/zespoły/przepływy pracy/odczyt | Pobierz szczegóły określonego przepływu pracy w zespole. Pobierz wszystkie przepływy pracy dostępne dla zespołu * |
-> | Akcja dataaction | Microsoft. CognitiveServices/accounts/ContentModerator/zespoły/przepływy pracy/zapis | Utwórz nowy przepływ pracy lub zaktualizuj istniejący. |
-> | Akcja dataaction | Microsoft. CognitiveServices/accounts/ContentModerator/termlists/Action | Utwórz listę warunków. |
-> | Akcja dataaction | Microsoft. CognitiveServices/accounts/ContentModerator/termlists/bulkupdate/Action | Listy terminów — aktualizacja zbiorcza |
-> | Akcja dataaction | Microsoft. CognitiveServices/accounts/ContentModerator/termlists/Delete | Listy terminów — usuwanie |
-> | Akcja dataaction | Microsoft. CognitiveServices/accounts/ContentModerator/termlists/Read | Listy terminów — Pobierz wszystkie listy i Pobierz szczegóły |
-> | Akcja dataaction | Microsoft. CognitiveServices/accounts/ContentModerator/termlists/refreshindex/Action | Listy terminów — Odśwież indeks wyszukiwania |
-> | Akcja dataaction | Microsoft. CognitiveServices/accounts/ContentModerator/termlists/terms/Delete | Termin — usuwanie terminu — usuwa wszystkie warunki |
-> | Akcja dataaction | Microsoft. CognitiveServices/accounts/ContentModerator/termlists/terms/Read | Termin — Pobierz wszystkie warunki |
-> | Akcja dataaction | Microsoft. CognitiveServices/accounts/ContentModerator/termlists/terms/Write | Termin — Dodawanie warunku |
-> | Akcja dataaction | Microsoft. CognitiveServices/accounts/ContentModerator/termlists/Write | Listy terminów — Szczegóły aktualizacji |
-> | Akcja dataaction | Microsoft. CognitiveServices/accounts/CustomVision. przewidywania/klasyfikowanie/iteracje/akcja | Klasyfikowanie obrazu i zapisywanie wyniku. |
-> | Akcja dataaction | Microsoft. CognitiveServices/accounts/CustomVision. przewidywania/klasyfikowanie/iteracje/obraz/NoStore/Action | Klasyfikowanie obrazu bez zapisywania wyniku. |
-> | Akcja dataaction | Microsoft. CognitiveServices/accounts/CustomVision. przewidywania/klasyfikowanie/iteracje/adres URL/akcja | Klasyfikowanie adresu URL obrazu i zapisywanie wyniku. |
-> | Akcja dataaction | Microsoft. CognitiveServices/accounts/CustomVision. przewidywania/klasyfikowanie/iteracje/URL/NoStore/Action | Klasyfikowanie adresu URL obrazu bez zapisywania wyniku. |
-> | Akcja dataaction | Microsoft. CognitiveServices/accounts/CustomVision. przewidywania/wykrywanie/iteracje/akcja | Wykryj obiekty w obrazie i Zapisz wynik. |
-> | Akcja dataaction | Microsoft. CognitiveServices/accounts/CustomVision. przewidywania/wykrywanie/iteracje/obraz/NoStore/Action | Wykrywaj obiekty w obrazie bez zapisywania wyników. |
-> | Akcja dataaction | Microsoft. CognitiveServices/accounts/CustomVision. przewidywania/wykrywanie/iteracje/adres URL/akcja | Wykryj obiekty w adresie URL obrazu i Zapisz wynik. |
-> | Akcja dataaction | Microsoft. CognitiveServices/accounts/CustomVision. przewidywania/wykrywanie/iteracje/URL/NoStore/Action | Wykryj obiekty w adresie URL obrazu bez zapisywania wyniku. |
-> | Akcja dataaction | Microsoft. CognitiveServices/accounts/CustomVision. przewidywania/domen/odczyt | Uzyskaj informacje o konkretnej domenie. Pobierz listę dostępnych domen. * |
-> | Akcja dataaction | Microsoft. CognitiveServices/accounts/CustomVision. przewidywania/labelproposals/ustawienie/akcja | Ustaw rozmiar puli dla pozycji etykieta. |
-> | Akcja dataaction | Microsoft. CognitiveServices/accounts/CustomVision. przewidywania/labelproposals/ustawienia/odczyt | Pobierz rozmiar puli dla propozycji etykiety dla tego projektu. |
-> | Akcja dataaction | Microsoft. CognitiveServices/accounts/CustomVision. przewidywania/projekt/migracja/akcja | *NotDefined* |
-> | Akcja dataaction | Microsoft. CognitiveServices/accounts/CustomVision. przewidywania/projekty/akcja | Utwórz projekt. |
-> | Akcja dataaction | Microsoft. CognitiveServices/accounts/CustomVision. przewidywania/projekty/usuwanie | Usuń określony projekt. |
+> | Akcja dataaction | Microsoft.CognitiveServices/accounts/ContentModerator/teams/reviews/frames/read | *NotDefined* |
+> | Akcja dataaction | Microsoft.CognitiveServices/accounts/ContentModerator/teams/reviews/frames/write | Use this method to add frames for a video review. |
+> | Akcja dataaction | Microsoft.CognitiveServices/accounts/ContentModerator/teams/reviews/publish/action | Video reviews are initially created in an unpublished state - which means it is not available for reviewers on your team to review yet. |
+> | Akcja dataaction | Microsoft.CognitiveServices/accounts/ContentModerator/teams/reviews/read | Returns review details for the review Id passed. |
+> | Akcja dataaction | Microsoft.CognitiveServices/accounts/ContentModerator/teams/reviews/transcript/action | This API adds a transcript file (text version of all the words spoken in a video) to a video review. The file should be a valid WebVTT format. |
+> | Akcja dataaction | Microsoft.CognitiveServices/accounts/ContentModerator/teams/reviews/transcriptmoderationresult/action | This API adds a transcript screen text result file for a video review. Transcript screen text result file is a result of Screen Text API . In order to generate transcript screen text result file , a transcript file has to be screened for profanity using Screen Text API. |
+> | Akcja dataaction | Microsoft.CognitiveServices/accounts/ContentModerator/teams/settings/templates/delete | Delete a template in your team |
+> | Akcja dataaction | Microsoft.CognitiveServices/accounts/ContentModerator/teams/settings/templates/read | Returns an array of review templates provisioned on this team. |
+> | Akcja dataaction | Microsoft.CognitiveServices/accounts/ContentModerator/teams/settings/templates/write | Creates or updates the specified template |
+> | Akcja dataaction | Microsoft.CognitiveServices/accounts/ContentModerator/teams/workflows/read | Get the details of a specific Workflow on your Team. Get all the Workflows available for you Team* |
+> | Akcja dataaction | Microsoft.CognitiveServices/accounts/ContentModerator/teams/workflows/write | Create a new workflow or update an existing one. |
+> | Akcja dataaction | Microsoft.CognitiveServices/accounts/ContentModerator/termlists/action | Create term list. |
+> | Akcja dataaction | Microsoft.CognitiveServices/accounts/ContentModerator/termlists/bulkupdate/action | Term Lists - Bulk Update |
+> | Akcja dataaction | Microsoft.CognitiveServices/accounts/ContentModerator/termlists/delete | Term Lists - Delete |
+> | Akcja dataaction | Microsoft.CognitiveServices/accounts/ContentModerator/termlists/read | Term Lists - Get All - Term Lists - Get Details |
+> | Akcja dataaction | Microsoft.CognitiveServices/accounts/ContentModerator/termlists/refreshindex/action | Term Lists - Refresh Search Index |
+> | Akcja dataaction | Microsoft.CognitiveServices/accounts/ContentModerator/termlists/terms/delete | Term - Delete - Term - Delete All Terms |
+> | Akcja dataaction | Microsoft.CognitiveServices/accounts/ContentModerator/termlists/terms/read | Term - Get All Terms |
+> | Akcja dataaction | Microsoft.CognitiveServices/accounts/ContentModerator/termlists/terms/write | Term - Add Term |
+> | Akcja dataaction | Microsoft.CognitiveServices/accounts/ContentModerator/termlists/write | Term Lists - Update Details |
+> | Akcja dataaction | Microsoft.CognitiveServices/accounts/CustomVision.Prediction/classify/iterations/image/action | Classify an image and saves the result. |
+> | Akcja dataaction | Microsoft.CognitiveServices/accounts/CustomVision.Prediction/classify/iterations/image/nostore/action | Classify an image without saving the result. |
+> | Akcja dataaction | Microsoft.CognitiveServices/accounts/CustomVision.Prediction/classify/iterations/url/action | Classify an image url and saves the result. |
+> | Akcja dataaction | Microsoft.CognitiveServices/accounts/CustomVision.Prediction/classify/iterations/url/nostore/action | Classify an image url without saving the result. |
+> | Akcja dataaction | Microsoft.CognitiveServices/accounts/CustomVision.Prediction/detect/iterations/image/action | Detect objects in an image and saves the result. |
+> | Akcja dataaction | Microsoft.CognitiveServices/accounts/CustomVision.Prediction/detect/iterations/image/nostore/action | Detect objects in an image without saving the result. |
+> | Akcja dataaction | Microsoft.CognitiveServices/accounts/CustomVision.Prediction/detect/iterations/url/action | Detect objects in an image url and saves the result. |
+> | Akcja dataaction | Microsoft.CognitiveServices/accounts/CustomVision.Prediction/detect/iterations/url/nostore/action | Detect objects in an image url without saving the result. |
+> | Akcja dataaction | Microsoft.CognitiveServices/accounts/CustomVision.Prediction/domains/read | Get information about a specific domain. Get a list of the available domains.* |
+> | Akcja dataaction | Microsoft.CognitiveServices/accounts/CustomVision.Prediction/labelproposals/setting/action | Set pool size of Label Proposal. |
+> | Akcja dataaction | Microsoft.CognitiveServices/accounts/CustomVision.Prediction/labelproposals/setting/read | Get pool size of Label Proposal for this project. |
+> | Akcja dataaction | Microsoft.CognitiveServices/accounts/CustomVision.Prediction/project/migrate/action | *NotDefined* |
+> | Akcja dataaction | Microsoft.CognitiveServices/accounts/CustomVision.Prediction/projects/action | Utwórz projekt. |
+> | Akcja dataaction | Microsoft.CognitiveServices/accounts/CustomVision.Prediction/projects/delete | Delete a specific project. |
 > | Akcja dataaction | Microsoft. CognitiveServices/accounts/CustomVision. przewidywania/projekty/obrazy/akcja | Ten interfejs API akceptuje zawartość treści jako wieloczęściowy/form-Data i application/octet-stream. W przypadku korzystania z wieloczęściowego |
 > | Akcja dataaction | Microsoft. CognitiveServices/accounts/CustomVision. przewidywania/projekty/obrazy/usuwanie | Usuń obrazy z zestawu obrazów szkoleniowych. |
 > | Akcja dataaction | Microsoft. CognitiveServices/accounts/CustomVision. przewidywania/projekty/obrazy/pliki/akcja | Ten interfejs API akceptuje partię plików i opcjonalnie Tagi do tworzenia obrazów. Istnieje limit wynoszący 64 obrazy i 20 tagów. |
@@ -2506,13 +2506,13 @@ Operacje dostawcy zasobów są zawsze rozwijane. Aby uzyskać najnowsze operacje
 > | Działanie | Microsoft.DevTestLab/labs/customImages/delete | Usuń obrazy niestandardowe. |
 > | Działanie | Microsoft.DevTestLab/labs/customImages/read | Odczytaj obrazy niestandardowe. |
 > | Działanie | Microsoft.DevTestLab/labs/customImages/write | Dodawanie lub modyfikowanie obrazów niestandardowych. |
-> | Działanie | Microsoft.DevTestLab/labs/delete | Usuwanie laboratoriów. |
+> | Działanie | Microsoft.DevTestLab/labs/delete | Delete labs. |
 > | Działanie | Microsoft.DevTestLab/labs/EnsureCurrentUserProfile/action | Upewnij się, że bieżący użytkownik ma prawidłowy profil w laboratorium. |
 > | Działanie | Microsoft.DevTestLab/labs/ExportResourceUsage/action | Eksportuje użycie zasobów laboratorium do konta magazynu |
 > | Działanie | Microsoft.DevTestLab/labs/formulas/delete | Usuń formuły. |
 > | Działanie | Microsoft.DevTestLab/labs/formulas/read | Odczytaj formuły. |
 > | Działanie | Microsoft.DevTestLab/labs/formulas/write | Dodaj lub zmodyfikuj formuły. |
-> | Działanie | Microsoft.DevTestLab/labs/galleryImages/read | Odczytuj obrazy galerii. |
+> | Działanie | Microsoft.DevTestLab/labs/galleryImages/read | Read gallery images. |
 > | Działanie | Microsoft.DevTestLab/labs/GenerateUploadUri/action | Generowanie identyfikatora URI na potrzeby przekazywania niestandardowych obrazów dysków do laboratorium. |
 > | Działanie | Microsoft.DevTestLab/labs/ImportVirtualMachine/action | Zaimportuj maszynę wirtualną do innego laboratorium. |
 > | Działanie | Microsoft.DevTestLab/labs/ListVhds/action | Wyświetlanie listy obrazów dysków dostępnych do tworzenia obrazów niestandardowych. |
@@ -2525,12 +2525,12 @@ Operacje dostawcy zasobów są zawsze rozwijane. Aby uzyskać najnowsze operacje
 > | Działanie | Microsoft.DevTestLab/labs/policySets/policies/read | Odczytaj zasady. |
 > | Działanie | Microsoft.DevTestLab/labs/policySets/policies/write | Dodawanie lub modyfikowanie zasad. |
 > | Działanie | Microsoft.DevTestLab/labs/policySets/read | Odczytaj zestawy zasad. |
-> | Działanie | Microsoft.DevTestLab/labs/read | Odczytywanie laboratoriów. |
-> | Działanie | Microsoft.DevTestLab/labs/schedules/delete | Usuwanie harmonogramów. |
+> | Działanie | Microsoft.DevTestLab/labs/read | Read labs. |
+> | Działanie | Microsoft.DevTestLab/labs/schedules/delete | Delete schedules. |
 > | Działanie | Microsoft. wspólny/Labs/harmonogramy/wykonywanie/akcja | Wykonaj harmonogram. |
 > | Działanie | Microsoft. wspólny/Labs/Schedules/ListApplicable/Action | Wyświetla wszystkie odpowiednie harmonogramy |
-> | Działanie | Microsoft.DevTestLab/labs/schedules/read | Odczytaj harmonogramy. |
-> | Działanie | Microsoft.DevTestLab/labs/schedules/write | Dodawanie lub modyfikowanie harmonogramów. |
+> | Działanie | Microsoft.DevTestLab/labs/schedules/read | Read schedules. |
+> | Działanie | Microsoft.DevTestLab/labs/schedules/write | Add or modify schedules. |
 > | Działanie | Microsoft.DevTestLab/labs/serviceRunners/delete | Usuwanie modułu uruchamiającego usługi. |
 > | Działanie | Microsoft.DevTestLab/labs/serviceRunners/read | Odczytywanie modułu uruchamiającego usługi. |
 > | Działanie | Microsoft.DevTestLab/labs/serviceRunners/write | Dodawanie lub modyfikowanie modułu uruchamiającego usługi. |
@@ -2546,9 +2546,9 @@ Operacje dostawcy zasobów są zawsze rozwijane. Aby uzyskać najnowsze operacje
 > | Działanie | Microsoft.DevTestLab/labs/users/disks/Detach/action | Odłącz i Przerwij dzierżawę dysku dołączonego do maszyny wirtualnej. |
 > | Działanie | Microsoft.DevTestLab/labs/users/disks/read | Odczytywanie dysków. |
 > | Działanie | Microsoft.DevTestLab/labs/users/disks/write | Dodawanie lub modyfikowanie dysków. |
-> | Działanie | Microsoft.DevTestLab/labs/users/environments/delete | Usuń środowiska. |
-> | Działanie | Microsoft.DevTestLab/labs/users/environments/read | Odczytuj środowiska. |
-> | Działanie | Microsoft.DevTestLab/labs/users/environments/write | Dodaj lub zmodyfikuj środowiska. |
+> | Działanie | Microsoft.DevTestLab/labs/users/environments/delete | Delete environments. |
+> | Działanie | Microsoft.DevTestLab/labs/users/environments/read | Read environments. |
+> | Działanie | Microsoft.DevTestLab/labs/users/environments/write | Add or modify environments. |
 > | Działanie | Microsoft.DevTestLab/labs/users/read | Odczytaj profile użytkowników. |
 > | Działanie | Microsoft.DevTestLab/labs/users/secrets/delete | Usuń wpisy tajne. |
 > | Działanie | Microsoft.DevTestLab/labs/users/secrets/read | Odczytaj wpisy tajne. |
@@ -2556,10 +2556,10 @@ Operacje dostawcy zasobów są zawsze rozwijane. Aby uzyskać najnowsze operacje
 > | Działanie | Microsoft.DevTestLab/labs/users/serviceFabrics/delete | Usuwanie sieci szkieletowej usług. |
 > | Działanie | Microsoft.DevTestLab/labs/users/serviceFabrics/ListApplicableSchedules/action | Wyświetla listę odpowiednich harmonogramów uruchamiania/zatrzymywania (jeśli istnieją). |
 > | Działanie | Microsoft.DevTestLab/labs/users/serviceFabrics/read | Odczytaj sieci szkieletowe usług. |
-> | Działanie | Microsoft.DevTestLab/labs/users/serviceFabrics/schedules/delete | Usuwanie harmonogramów. |
+> | Działanie | Microsoft.DevTestLab/labs/users/serviceFabrics/schedules/delete | Delete schedules. |
 > | Działanie | Microsoft. wspólny/Labs/users/servicefabrics/Schedules/Execute/Action | Wykonaj harmonogram. |
-> | Działanie | Microsoft.DevTestLab/labs/users/serviceFabrics/schedules/read | Odczytaj harmonogramy. |
-> | Działanie | Microsoft.DevTestLab/labs/users/serviceFabrics/schedules/write | Dodawanie lub modyfikowanie harmonogramów. |
+> | Działanie | Microsoft.DevTestLab/labs/users/serviceFabrics/schedules/read | Read schedules. |
+> | Działanie | Microsoft.DevTestLab/labs/users/serviceFabrics/schedules/write | Add or modify schedules. |
 > | Działanie | Microsoft.DevTestLab/labs/users/serviceFabrics/Start/action | Uruchom sieć szkieletową usług. |
 > | Działanie | Microsoft.DevTestLab/labs/users/serviceFabrics/Stop/action | Zatrzymaj sieć szkieletową usług |
 > | Działanie | Microsoft.DevTestLab/labs/users/serviceFabrics/write | Dodawanie lub modyfikowanie sieci szkieletowej usług. |
@@ -2576,10 +2576,10 @@ Operacje dostawcy zasobów są zawsze rozwijane. Aby uzyskać najnowsze operacje
 > | Działanie | Microsoft.DevTestLab/labs/virtualMachines/Redeploy/action | Ponowne wdrażanie maszyny wirtualnej |
 > | Działanie | Microsoft. wspólny/Labs/virtualMachines/Zmień rozmiar/akcję | Zmień rozmiar maszyny wirtualnej. |
 > | Działanie | Microsoft. wspólny/Labs/virtualMachines/restart/akcja | Uruchom ponownie maszynę wirtualną. |
-> | Działanie | Microsoft.DevTestLab/labs/virtualMachines/schedules/delete | Usuwanie harmonogramów. |
+> | Działanie | Microsoft.DevTestLab/labs/virtualMachines/schedules/delete | Delete schedules. |
 > | Działanie | Microsoft. wspólny/Labs/virtualMachines/Schedules/Execute/Action | Wykonaj harmonogram. |
-> | Działanie | Microsoft.DevTestLab/labs/virtualMachines/schedules/read | Odczytaj harmonogramy. |
-> | Działanie | Microsoft.DevTestLab/labs/virtualMachines/schedules/write | Dodawanie lub modyfikowanie harmonogramów. |
+> | Działanie | Microsoft.DevTestLab/labs/virtualMachines/schedules/read | Read schedules. |
+> | Działanie | Microsoft.DevTestLab/labs/virtualMachines/schedules/write | Add or modify schedules. |
 > | Działanie | Microsoft.DevTestLab/labs/virtualMachines/Start/action | Uruchom maszynę wirtualną. |
 > | Działanie | Microsoft.DevTestLab/labs/virtualMachines/Stop/action | Zatrzymaj maszynę wirtualną |
 > | Działanie | Microsoft.DevTestLab/labs/virtualMachines/TransferDisks/action | Przenosi wszystkie dyski z danymi dołączone do maszyny wirtualnej, które mają należeć do bieżącego użytkownika. |
@@ -2594,14 +2594,14 @@ Operacje dostawcy zasobów są zawsze rozwijane. Aby uzyskać najnowsze operacje
 > | Działanie | Microsoft.DevTestLab/labs/vmPools/delete | Usuń pule maszyn wirtualnych. |
 > | Działanie | Microsoft.DevTestLab/labs/vmPools/read | Odczytaj pule maszyn wirtualnych. |
 > | Działanie | Microsoft.DevTestLab/labs/vmPools/write | Dodaj lub zmodyfikuj pule maszyn wirtualnych. |
-> | Działanie | Microsoft.DevTestLab/labs/write | Dodawanie lub modyfikowanie laboratoriów. |
-> | Działanie | Microsoft.DevTestLab/locations/operations/read | Operacje odczytu. |
+> | Działanie | Microsoft.DevTestLab/labs/write | Add or modify labs. |
+> | Działanie | Microsoft.DevTestLab/locations/operations/read | Read operations. |
 > | Działanie | Microsoft.DevTestLab/register/action | Rejestruje subskrypcję |
-> | Działanie | Microsoft.DevTestLab/schedules/delete | Usuwanie harmonogramów. |
+> | Działanie | Microsoft.DevTestLab/schedules/delete | Delete schedules. |
 > | Działanie | Microsoft. wspólny/harmonogramy/wykonywanie/akcja | Wykonaj harmonogram. |
-> | Działanie | Microsoft.DevTestLab/schedules/read | Odczytaj harmonogramy. |
+> | Działanie | Microsoft.DevTestLab/schedules/read | Read schedules. |
 > | Działanie | Microsoft.DevTestLab/schedules/Retarget/action | Aktualizuje identyfikator zasobu docelowego harmonogramu. |
-> | Działanie | Microsoft.DevTestLab/schedules/write | Dodawanie lub modyfikowanie harmonogramów. |
+> | Działanie | Microsoft.DevTestLab/schedules/write | Add or modify schedules. |
 
 ## <a name="microsoftdocumentdb"></a>Microsoft.DocumentDB
 
@@ -3007,7 +3007,7 @@ Operacje dostawcy zasobów są zawsze rozwijane. Aby uzyskać najnowsze operacje
 > | Działanie | Microsoft. Insights/Components/QuotaStatus/Read | Odczytywanie stanu przydziału składników Application Insights |
 > | Działanie | Microsoft. Insights/Components/Read | Odczytywanie konfiguracji składnika usługi Application Insights |
 > | Działanie | Microsoft. Insights/Components/SyntheticMonitorLocations/Read | Odczytywanie Application Insights lokalizacji WebTest |
-> | Działanie | Microsoft. Insights/Components/webtests/Read | Odczytywanie konfiguracji WebTest |
+> | Działanie | Microsoft. Insights/Components/webtests/Read | Reading a webtest configuration |
 > | Działanie | Microsoft.Insights/Components/WorkItemConfigs/Delete | Usuwanie Application Insights ALM Integration Configuration |
 > | Działanie | Microsoft. Insights/Components/WorkItemConfigs/Read | Odczytywanie konfiguracji integracji Application Insights ALM |
 > | Działanie | Microsoft.Insights/Components/WorkItemConfigs/Write | Pisanie Application Insights ALM Integration Configuration |
@@ -3197,221 +3197,221 @@ Operacje dostawcy zasobów są zawsze rozwijane. Aby uzyskać najnowsze operacje
 > | Akcja dataaction | Microsoft. Insights/Metrics/Write | Metryki zapisu |
 > | Działanie | Microsoft. Insights/MigrateToNewpricingModel/Action | Migruj subskrypcję do nowego modelu cen |
 > | Działanie | Microsoft. Insights/Operations/Read | Operacje odczytu |
-> | Działanie | Microsoft.Insights/Register/Action | Zarejestruj dostawcę usługi Microsoft Insights |
-> | Działanie | Microsoft. Insights/RollbackToLegacyPricingModel/Action | Wycofywanie subskrypcji do starszego modelu cen |
-> | Działanie | Microsoft.Insights/ScheduledQueryRules/Delete | Usuwanie reguły zaplanowanego zapytania |
-> | Działanie | Microsoft. Insights/ScheduledQueryRules/Read | Odczytywanie reguły zaplanowanego zapytania |
-> | Działanie | Microsoft. Insights/ScheduledQueryRules/Write | Pisanie reguły zaplanowanego zapytania |
-> | Działanie | Microsoft. Insights/dzierżawcy/rejestr/akcja | Inicjuje dostawcę usługi Microsoft Insights |
-> | Działanie | Microsoft. Insights/Unregister/Action | Zarejestruj dostawcę usługi Microsoft Insights |
-> | Działanie | Microsoft. Insights/webtests/Delete | Usuwanie konfiguracji WebTest |
-> | Działanie | Microsoft. Insights/webtests/GetToken/Read | Odczytywanie tokenu WebTest |
-> | Działanie | Microsoft.Insights/Webtests/MetricDefinitions/Read | Odczytywanie definicji metryk WebTest |
-> | Działanie | Microsoft.Insights/Webtests/Metrics/Read | Odczytywanie metryk WebTest |
-> | Działanie | Microsoft. Insights/webtests/Read | Odczytywanie konfiguracji WebTest |
-> | Działanie | Microsoft. Insights/webtests/Write | Zapisywanie w konfiguracji WebTest |
-> | Działanie | Microsoft. Insights/skoroszyty/usuwanie | Usuwanie skoroszytu |
-> | Działanie | Microsoft. Insights/skoroszyty/przeczytane | Odczytaj skoroszyt |
-> | Działanie | Microsoft. Insights/skoroszyty/zapis | Utwórz lub zaktualizuj skoroszyt |
+> | Działanie | Microsoft.Insights/Register/Action | Register the Microsoft Insights provider |
+> | Działanie | Microsoft.Insights/RollbackToLegacyPricingModel/Action | Rollback subscription to legacy pricing model |
+> | Działanie | Microsoft.Insights/ScheduledQueryRules/Delete | Deleting a scheduled query rule |
+> | Działanie | Microsoft.Insights/ScheduledQueryRules/Read | Reading a scheduled query rule |
+> | Działanie | Microsoft.Insights/ScheduledQueryRules/Write | Writing a scheduled query rule |
+> | Działanie | Microsoft.Insights/Tenants/Register/Action | Initializes the Microsoft Insights provider |
+> | Działanie | Microsoft.Insights/Unregister/Action | Register the Microsoft Insights provider |
+> | Działanie | Microsoft.Insights/Webtests/Delete | Deleting a webtest configuration |
+> | Działanie | Microsoft.Insights/Webtests/GetToken/Read | Reading a webtest token |
+> | Działanie | Microsoft.Insights/Webtests/MetricDefinitions/Read | Reading a webtest metric definitions |
+> | Działanie | Microsoft.Insights/Webtests/Metrics/Read | Reading a webtest metrics |
+> | Działanie | Microsoft.Insights/Webtests/Read | Reading a webtest configuration |
+> | Działanie | Microsoft.Insights/Webtests/Write | Writing to a webtest configuration |
+> | Działanie | Microsoft.Insights/Workbooks/Delete | Usuwanie skoroszytu |
+> | Działanie | Microsoft.Insights/Workbooks/Read | Read a workbook |
+> | Działanie | Microsoft.Insights/Workbooks/Write | Create or update a workbook |
 
-## <a name="microsoftintune"></a>Microsoft. Intune
+## <a name="microsoftintune"></a>Microsoft.Intune
 
 > [!div class="mx-tdCol2BreakAll"]
 > | Typ akcji | Operacja | Opis |
 > | --- | --- | --- |
-> | Działanie | Microsoft. Intune/diagnosticsettings/Delete | Usuwanie ustawień diagnostycznych |
-> | Działanie | Microsoft. Intune/diagnosticsettings/odczyt | Odczytywanie ustawień diagnostycznych |
-> | Działanie | Microsoft. Intune/diagnosticsettings/Write | Zapisywanie ustawień diagnostycznych |
-> | Działanie | Microsoft. Intune/diagnosticsettingscategories/odczyt | Odczytywanie kategorii ustawień diagnostycznych |
+> | Działanie | Microsoft.Intune/diagnosticsettings/delete | Usuwanie ustawień diagnostycznych |
+> | Działanie | Microsoft.Intune/diagnosticsettings/read | Odczytywanie ustawień diagnostycznych |
+> | Działanie | Microsoft.Intune/diagnosticsettings/write | Zapisywanie ustawień diagnostycznych |
+> | Działanie | Microsoft.Intune/diagnosticsettingscategories/read | Odczytywanie kategorii ustawień diagnostycznych |
 
 ## <a name="microsoftiotcentral"></a>Microsoft.IoTCentral
 
 > [!div class="mx-tdCol2BreakAll"]
 > | Typ akcji | Operacja | Opis |
 > | --- | --- | --- |
-> | Działanie | Microsoft.IoTCentral/appTemplates/action | Pobiera wszystkie dostępne szablony aplikacji na platformie Azure IoT Central |
-> | Działanie | Microsoft. IoTCentral/checkNameAvailability/Action | Sprawdza, czy nazwa aplikacji IoT Central jest dostępna |
-> | Działanie | Microsoft.IoTCentral/checkSubdomainAvailability/action | Sprawdza, czy IoT Central poddomena aplikacji jest dostępna |
-> | Działanie | Microsoft.IoTCentral/IoTApps/delete | Usuwa IoT Central aplikacje |
-> | Działanie | Microsoft.IoTCentral/IoTApps/read | Pobiera pojedynczą aplikację IoT Central |
-> | Działanie | Microsoft.IoTCentral/IoTApps/write | Tworzy lub aktualizuje aplikacje IoT Central |
-> | Działanie | Microsoft.IoTCentral/operations/read | Pobiera wszystkie dostępne operacje dotyczące IoT Central aplikacji |
-> | Działanie | Microsoft. IoTCentral/Register/Action | Zarejestruj subskrypcję dostawcy zasobów usługi Azure IoT Central |
+> | Działanie | Microsoft.IoTCentral/appTemplates/action | Gets all the available application templates on Azure IoT Central |
+> | Działanie | Microsoft.IoTCentral/checkNameAvailability/action | Checks if an IoT Central Application name is available |
+> | Działanie | Microsoft.IoTCentral/checkSubdomainAvailability/action | Checks if an IoT Central Application subdomain is available |
+> | Działanie | Microsoft.IoTCentral/IoTApps/delete | Deletes an IoT Central Applications |
+> | Działanie | Microsoft.IoTCentral/IoTApps/read | Gets a single IoT Central Application |
+> | Działanie | Microsoft.IoTCentral/IoTApps/write | Creates or Updates an IoT Central Applications |
+> | Działanie | Microsoft.IoTCentral/operations/read | Gets all the available operations on IoT Central Applications |
+> | Działanie | Microsoft.IoTCentral/register/action | Register the subscription for Azure IoT Central resource provider |
 
 ## <a name="microsoftiotspaces"></a>Microsoft.IoTSpaces
 
 > [!div class="mx-tdCol2BreakAll"]
 > | Typ akcji | Operacja | Opis |
 > | --- | --- | --- |
-> | Działanie | Microsoft.IoTSpaces/Graph/delete | Usuwa zasób programu Microsoft. IoTSpaces Graph |
-> | Działanie | Microsoft.IoTSpaces/Graph/read | Pobiera zasoby programu Microsoft. IoTSpaces Graph |
-> | Działanie | Microsoft.IoTSpaces/Graph/write | Utwórz zasób programu Microsoft. IoTSpaces Graph |
-> | Działanie | Microsoft. IoTSpaces/Register/Action | Zarejestruj subskrypcję dostawcy zasobów Microsoft. IoTSpaces Graph, aby umożliwić tworzenie zasobów |
+> | Działanie | Microsoft.IoTSpaces/Graph/delete | Deletes Microsoft.IoTSpaces Graph resource |
+> | Działanie | Microsoft.IoTSpaces/Graph/read | Gets the Microsoft.IoTSpaces Graph resource(s) |
+> | Działanie | Microsoft.IoTSpaces/Graph/write | Create Microsoft.IoTSpaces Graph resource |
+> | Działanie | Microsoft.IoTSpaces/register/action | Register subscription for Microsoft.IoTSpaces Graph resource provider to enable creating of resources |
 
 ## <a name="microsoftkeyvault"></a>Microsoft.KeyVault
 
 > [!div class="mx-tdCol2BreakAll"]
 > | Typ akcji | Operacja | Opis |
 > | --- | --- | --- |
-> | Działanie | Microsoft.KeyVault/checkNameAvailability/read | Sprawdza, czy nazwa magazynu kluczy jest prawidłowa i czy nie jest używana |
-> | Działanie | Microsoft.KeyVault/deletedVaults/read | Wyświetl właściwości usuniętych nietrwałych magazynów kluczy |
-> | Działanie | Microsoft.KeyVault/hsmPools/delete | Usuwanie puli modułów HSM |
-> | Działanie | Microsoft.KeyVault/hsmPools/joinVault/action | Dołącz Magazyn kluczy do puli modułów HSM |
-> | Działanie | Microsoft.KeyVault/hsmPools/read | Wyświetlanie właściwości puli modułów HSM |
-> | Działanie | Microsoft.KeyVault/hsmPools/write | Utwórz nową pulę modułów HSM, aby zaktualizować właściwości istniejącej puli modułów HSM |
-> | Działanie | Microsoft.KeyVault/locations/deletedVaults/purge/action | Przeczyść usunięty nietrwale Magazyn kluczy |
-> | Działanie | Microsoft.KeyVault/locations/deletedVaults/read | Wyświetl właściwości usuniętego nietrwałego magazynu kluczy |
-> | Działanie | Microsoft.KeyVault/locations/deleteVirtualNetworkOrSubnets/action | Powiadamia Microsoft. kluczy, że sieć wirtualna lub podsieć jest usuwana |
-> | Działanie | Microsoft.KeyVault/locations/operationResults/read | Sprawdź wynik długotrwałej operacji uruchamiania |
-> | Działanie | Microsoft.KeyVault/operations/read | Wyświetla listę operacji dostępnych w ramach dostawcy zasobów Microsoft. |
-> | Działanie | Microsoft.KeyVault/register/action | Rejestruje subskrypcję |
-> | Działanie | Microsoft.KeyVault/unregister/action | Wyrejestrowuje subskrypcję |
-> | Działanie | Microsoft.KeyVault/vaults/accessPolicies/write | Aktualizowanie istniejących zasad dostępu przez scalanie lub zastępowanie lub Dodawanie nowych zasad dostępu do magazynu. |
+> | Działanie | Microsoft.KeyVault/checkNameAvailability/read | Checks that a key vault name is valid and is not in use |
+> | Działanie | Microsoft.KeyVault/deletedVaults/read | View the properties of soft deleted key vaults |
+> | Działanie | Microsoft.KeyVault/hsmPools/delete | Delete an HSM pool |
+> | Działanie | Microsoft.KeyVault/hsmPools/joinVault/action | Join a key vault to an HSM pool |
+> | Działanie | Microsoft.KeyVault/hsmPools/read | View the properties of an HSM pool |
+> | Działanie | Microsoft.KeyVault/hsmPools/write | Create a new HSM pool of update the properties of an existing HSM pool |
+> | Działanie | Microsoft.KeyVault/locations/deletedVaults/purge/action | Purge a soft deleted key vault |
+> | Działanie | Microsoft.KeyVault/locations/deletedVaults/read | View the properties of a soft deleted key vault |
+> | Działanie | Microsoft.KeyVault/locations/deleteVirtualNetworkOrSubnets/action | Notifies Microsoft.KeyVault that a virtual network or subnet is being deleted |
+> | Działanie | Microsoft.KeyVault/locations/operationResults/read | Check the result of a long run operation |
+> | Działanie | Microsoft.KeyVault/operations/read | Lists operations available on Microsoft.KeyVault resource provider |
+> | Działanie | Microsoft.KeyVault/register/action | Registers a subscription |
+> | Działanie | Microsoft.KeyVault/unregister/action | Unregisters a subscription |
+> | Działanie | Microsoft.KeyVault/vaults/accessPolicies/write | Update an existing access policy by merging or replacing, or add a new access policy to a vault. |
 > | Działanie | Microsoft.KeyVault/vaults/delete | Usuń magazyn kluczy |
-> | Działanie | Microsoft.KeyVault/vaults/deploy/action | Zapewnia dostęp do wpisów tajnych w magazynie kluczy podczas wdrażania zasobów platformy Azure |
-> | Działanie | Microsoft.KeyVault/vaults/eventGridFilters/delete | Powiadamia Microsoft. EventGrid, że jest usuwana subskrypcja usługi dla Key Vault |
-> | Działanie | Microsoft.KeyVault/vaults/eventGridFilters/read | Powiadamia Microsoft. EventGrid, że jest wyświetlana subskrypcja usługi dla Key Vault |
-> | Działanie | Microsoft.KeyVault/vaults/eventGridFilters/write | Powiadamia Microsoft. kluczy, że jest tworzona nowa subskrypcja EventGrid dla Key Vault |
-> | Działanie | Microsoft.KeyVault/vaults/read | Wyświetlanie właściwości magazynu kluczy |
-> | Działanie | Microsoft.KeyVault/vaults/secrets/read | Wyświetl właściwości wpisu tajnego, ale nie jego wartość. |
-> | Działanie | Microsoft.KeyVault/vaults/secrets/write | Utwórz nowy wpis tajny lub zaktualizuj wartość istniejącego klucza tajnego. |
-> | Działanie | Microsoft.KeyVault/vaults/write | Utwórz nowy magazyn kluczy lub zaktualizuj właściwości istniejącego magazynu kluczy |
+> | Działanie | Microsoft.KeyVault/vaults/deploy/action | Enables access to secrets in a key vault when deploying Azure resources |
+> | Działanie | Microsoft.KeyVault/vaults/eventGridFilters/delete | Notifies Microsoft.KeyVault that an EventGrid Subscription for Key Vault is being deleted |
+> | Działanie | Microsoft.KeyVault/vaults/eventGridFilters/read | Notifies Microsoft.KeyVault that an EventGrid Subscription for Key Vault is being viewed |
+> | Działanie | Microsoft.KeyVault/vaults/eventGridFilters/write | Notifies Microsoft.KeyVault that a new EventGrid Subscription for Key Vault is being created |
+> | Działanie | Microsoft.KeyVault/vaults/read | View the properties of a key vault |
+> | Działanie | Microsoft.KeyVault/vaults/secrets/read | View the properties of a secret, but not its value. |
+> | Działanie | Microsoft.KeyVault/vaults/secrets/write | Create a new secret or update the value of an existing secret. |
+> | Działanie | Microsoft.KeyVault/vaults/write | Create a new key vault or update the properties of an existing key vault |
 
 ## <a name="microsoftkusto"></a>Microsoft.Kusto
 
 > [!div class="mx-tdCol2BreakAll"]
 > | Typ akcji | Operacja | Opis |
 > | --- | --- | --- |
-> | Działanie | Microsoft. Kusto/klastry/aktywacja/akcja | Uruchamia klaster. |
-> | Działanie | Microsoft.Kusto/Clusters/AttachedDatabaseConfigurations/delete | Usuwa dołączoną resourceCopy konfiguracji bazy danych. |
-> | Działanie | Microsoft.Kusto/Clusters/AttachedDatabaseConfigurations/read | Odczytuje załączoną konfigurację bazy danych resourceCopy. |
-> | Działanie | Microsoft.Kusto/Clusters/AttachedDatabaseConfigurations/write | Zapisuje dołączoną resourceCopy konfiguracji bazy danych. |
-> | Działanie | Microsoft.Kusto/Clusters/CheckNameAvailability/action | Sprawdza dostępność nazwy klastra. |
-> | Działanie | Microsoft. Kusto/klastry/bazy danych/addprincipals/Action | Dodaje podmioty zabezpieczeń bazy danych. |
-> | Działanie | Microsoft.Kusto/Clusters/Databases/CheckNameAvailability/action | Sprawdza dostępność nazwy dla danego typu. |
-> | Działanie | Microsoft.Kusto/Clusters/Databases/DataConnections/delete | Usuwa resourceCopy połączeń danych. |
-> | Działanie | Microsoft.Kusto/Clusters/Databases/DataConnections/read | Odczytuje resourceCopy połączeń danych. |
-> | Działanie | Microsoft.Kusto/Clusters/Databases/DataConnections/write | Zapisuje resourceCopy połączeń danych. |
-> | Działanie | Microsoft.Kusto/Clusters/Databases/DataConnectionValidation/action | Sprawdza poprawność połączenia danych bazy danych. |
-> | Działanie | Microsoft.Kusto/Clusters/Databases/delete | Usuwa resourceCopy bazy danych. |
-> | Działanie | Microsoft. Kusto/klastry/bazy danych/EventHubConnections/usuwanie | Usuwa resourceCopy połączeń centrum zdarzeń. |
-> | Działanie | Microsoft. Kusto/klastry/bazy danych/EventHubConnections/odczyt | Odczytuje resourceCopy połączeń centrum zdarzeń. |
-> | Działanie | Microsoft. Kusto/klastry/bazy danych/EventHubConnections/zapis | Zapisuje resourceCopy połączeń centrum zdarzeń. |
-> | Działanie | Microsoft. Kusto/klastry/bazy danych/EventHubConnectionValidation/akcja | Sprawdza poprawność połączenia centrum zdarzeń bazy danych. |
-> | Działanie | Microsoft.Kusto/Clusters/Databases/ListPrincipals/action | Wyświetla listę podmiotów zabezpieczeń bazy danych. |
-> | Działanie | Microsoft. Kusto/klastry/bazy danych/PrincipalAssignments/usuwanie | Usuwa przypisania podmiotu zabezpieczeń bazy danych resourceCopy. |
-> | Działanie | Microsoft. Kusto/klastry/bazy danych/PrincipalAssignments/odczyt | Odczytuje przydziały główne bazy danych resourceCopy. |
-> | Działanie | Microsoft. Kusto/klastry/bazy danych/PrincipalAssignments/zapis | Zapisuje przydziały główne bazy danych resourceCopy. |
-> | Działanie | Microsoft.Kusto/Clusters/Databases/read | Odczytuje resourceCopy bazy danych. |
-> | Działanie | Microsoft.Kusto/Clusters/Databases/RemovePrincipals/action | Usuwa podmioty zabezpieczeń bazy danych. |
-> | Działanie | Microsoft.Kusto/Clusters/Databases/write | Zapisuje resourceCopy bazy danych. |
-> | Działanie | Microsoft. Kusto/klastry/dezaktywowanie/akcja | Zamyka klaster. |
-> | Działanie | Microsoft.Kusto/Clusters/delete | Usuwa klaster resourceCopy. |
-> | Działanie | Microsoft. Kusto/klastry/DetachFollowerDatabases/akcja | Odłącza bazy danych programu. |
-> | Działanie | Microsoft. Kusto/klastry/DiagnoseVirtualNetwork/akcja | Diagnozuje stan łączności sieciowej dla zasobów zewnętrznych, na których jest depedent usługa. |
-> | Działanie | Microsoft. Kusto/klastry/ListFollowerDatabases/akcja | Wyświetla listę baz danych programu. |
-> | Działanie | Microsoft.Kusto/Clusters/read | Odczytuje resourceCopy klastra. |
-> | Działanie | Microsoft.Kusto/Clusters/SKUs/read | Odczytuje jednostkę SKU klastra resourceCopy. |
-> | Działanie | Microsoft. Kusto/klastry/uruchamianie/akcja | Uruchamia klaster. |
-> | Działanie | Microsoft. Kusto/klastry/zatrzymanie/akcja | Zamyka klaster. |
-> | Działanie | Microsoft.Kusto/Clusters/write | Zapisuje resourceCopy klastra. |
-> | Działanie | Microsoft.Kusto/Locations/CheckNameAvailability/action | Sprawdza dostępność nazwy resourceCopy. |
-> | Działanie | Microsoft. Kusto/Locations/GetNetworkPolicies/Action | Pobiera zasady dotyczące opcji sieciowych |
-> | Działanie | Microsoft.Kusto/locations/operationresults/read | Odczytuje operacje resourceCopys |
-> | Działanie | Microsoft.Kusto/Operations/read | Odczytuje operacje resourceCopys |
-> | Działanie | Microsoft. Kusto/Register/Action | Akcja rejestracji subskrypcji |
-> | Działanie | Microsoft.Kusto/Register/action | Rejestruje subskrypcję u dostawcy zasobów Kusto. |
-> | Działanie | Microsoft.Kusto/SKUs/read | Odczytuje resourceCopy jednostki SKU. |
-> | Działanie | Microsoft.Kusto/Unregister/action | Wyrejestrowuje subskrypcję do dostawcy zasobów Kusto. |
+> | Działanie | Microsoft.Kusto/Clusters/Activate/action | Starts the cluster. |
+> | Działanie | Microsoft.Kusto/Clusters/AttachedDatabaseConfigurations/delete | Deletes an attached database configuration resourceCopy. |
+> | Działanie | Microsoft.Kusto/Clusters/AttachedDatabaseConfigurations/read | Reads an attached database configuration resourceCopy. |
+> | Działanie | Microsoft.Kusto/Clusters/AttachedDatabaseConfigurations/write | Writes an attached database configuration resourceCopy. |
+> | Działanie | Microsoft.Kusto/Clusters/CheckNameAvailability/action | Checks the cluster name availability. |
+> | Działanie | Microsoft.Kusto/Clusters/Databases/AddPrincipals/action | Adds database principals. |
+> | Działanie | Microsoft.Kusto/Clusters/Databases/CheckNameAvailability/action | Checks name availability for a given type. |
+> | Działanie | Microsoft.Kusto/Clusters/Databases/DataConnections/delete | Deletes a data connections resourceCopy. |
+> | Działanie | Microsoft.Kusto/Clusters/Databases/DataConnections/read | Reads a data connections resourceCopy. |
+> | Działanie | Microsoft.Kusto/Clusters/Databases/DataConnections/write | Writes a data connections resourceCopy. |
+> | Działanie | Microsoft.Kusto/Clusters/Databases/DataConnectionValidation/action | Validates database data connection. |
+> | Działanie | Microsoft.Kusto/Clusters/Databases/delete | Deletes a database resourceCopy. |
+> | Działanie | Microsoft.Kusto/Clusters/Databases/EventHubConnections/delete | Deletes an Event Hub connections resourceCopy. |
+> | Działanie | Microsoft.Kusto/Clusters/Databases/EventHubConnections/read | Reads an Event Hub connections resourceCopy. |
+> | Działanie | Microsoft.Kusto/Clusters/Databases/EventHubConnections/write | Writes an Event Hub connections resourceCopy. |
+> | Działanie | Microsoft.Kusto/Clusters/Databases/EventHubConnectionValidation/action | Validates database Event Hub connection. |
+> | Działanie | Microsoft.Kusto/Clusters/Databases/ListPrincipals/action | Lists database principals. |
+> | Działanie | Microsoft.Kusto/Clusters/Databases/PrincipalAssignments/delete | Deletes a database principal assignments resourceCopy. |
+> | Działanie | Microsoft.Kusto/Clusters/Databases/PrincipalAssignments/read | Reads a database principal assignments resourceCopy. |
+> | Działanie | Microsoft.Kusto/Clusters/Databases/PrincipalAssignments/write | Writes a database principal assignments resourceCopy. |
+> | Działanie | Microsoft.Kusto/Clusters/Databases/read | Reads a database resourceCopy. |
+> | Działanie | Microsoft.Kusto/Clusters/Databases/RemovePrincipals/action | Removes database principals. |
+> | Działanie | Microsoft.Kusto/Clusters/Databases/write | Writes a database resourceCopy. |
+> | Działanie | Microsoft.Kusto/Clusters/Deactivate/action | Stops the cluster. |
+> | Działanie | Microsoft.Kusto/Clusters/delete | Deletes a cluster resourceCopy. |
+> | Działanie | Microsoft.Kusto/Clusters/DetachFollowerDatabases/action | Detaches follower's databases. |
+> | Działanie | Microsoft.Kusto/Clusters/DiagnoseVirtualNetwork/action | Diagnoses network connectivity status for external resources on which the service is depedent on. |
+> | Działanie | Microsoft.Kusto/Clusters/ListFollowerDatabases/action | Lists the follower's databases. |
+> | Działanie | Microsoft.Kusto/Clusters/read | Reads a cluster resourceCopy. |
+> | Działanie | Microsoft.Kusto/Clusters/SKUs/read | Reads a cluster SKU resourceCopy. |
+> | Działanie | Microsoft.Kusto/Clusters/Start/action | Starts the cluster. |
+> | Działanie | Microsoft.Kusto/Clusters/Stop/action | Stops the cluster. |
+> | Działanie | Microsoft.Kusto/Clusters/write | Writes a cluster resourceCopy. |
+> | Działanie | Microsoft.Kusto/Locations/CheckNameAvailability/action | Checks resourceCopy name availability. |
+> | Działanie | Microsoft.Kusto/Locations/GetNetworkPolicies/action | Gets Network Intent Policies |
+> | Działanie | Microsoft.Kusto/locations/operationresults/read | Reads operations resourceCopys |
+> | Działanie | Microsoft.Kusto/Operations/read | Reads operations resourceCopys |
+> | Działanie | Microsoft.Kusto/register/action | Subscription Registration Action |
+> | Działanie | Microsoft.Kusto/Register/action | Registers the subscription to the Kusto Resource Provider. |
+> | Działanie | Microsoft.Kusto/SKUs/read | Reads a SKU resourceCopy. |
+> | Działanie | Microsoft.Kusto/Unregister/action | Unregisters the subscription to the Kusto Resource Provider. |
 
 ## <a name="microsoftlabservices"></a>Microsoft.LabServices
 
 > [!div class="mx-tdCol2BreakAll"]
 > | Typ akcji | Operacja | Opis |
 > | --- | --- | --- |
-> | Działanie | Microsoft.LabServices/labAccounts/CreateLab/action | Utwórz laboratorium na koncie laboratorium. |
-> | Działanie | Microsoft. LabServices/labAccounts/Delete | Usuń konta laboratorium. |
-> | Działanie | Microsoft.LabServices/labAccounts/galleryImages/delete | Usuń obrazy galerii. |
-> | Działanie | Microsoft.LabServices/labAccounts/galleryImages/read | Odczytuj obrazy galerii. |
-> | Działanie | Microsoft.LabServices/labAccounts/galleryImages/write | Dodawanie lub modyfikowanie obrazów galerii. |
-> | Działanie | Microsoft. LabServices/labAccounts/GetRegionalAvailability/akcja | Uzyskaj informacje o dostępności regionalnej dla każdej kategorii rozmiaru skonfigurowanej w ramach konta laboratorium |
-> | Działanie | Microsoft. LabServices/labAccounts/Labs/ADDUSERS/Action | Dodawanie użytkowników do laboratorium |
-> | Działanie | Microsoft. LabServices/labAccounts/Labs/usuwanie | Usuwanie laboratoriów. |
-> | Działanie | Microsoft.LabServices/labAccounts/labs/environmentSettings/delete | Usuń ustawienie środowiska. |
-> | Działanie | Microsoft.LabServices/labAccounts/labs/environmentSettings/environments/delete | Usuń środowiska. |
-> | Działanie | Microsoft.LabServices/labAccounts/labs/environmentSettings/environments/read | Odczytuj środowiska. |
-> | Działanie | Microsoft.LabServices/labAccounts/labs/environmentSettings/environments/ResetPassword/action | Resetuje hasło użytkownika w środowisku |
-> | Działanie | Microsoft.LabServices/labAccounts/labs/environmentSettings/environments/Start/action | Uruchamia środowisko przez uruchomienie wszystkich zasobów w środowisku. |
-> | Działanie | Microsoft.LabServices/labAccounts/labs/environmentSettings/environments/Stop/action | Zatrzymuje środowisko przez zatrzymanie wszystkich zasobów w środowisku |
-> | Działanie | Microsoft.LabServices/labAccounts/labs/environmentSettings/environments/write | Dodaj lub zmodyfikuj środowiska. |
-> | Działanie | Microsoft.LabServices/labAccounts/labs/environmentSettings/Publish/action | Rezerwy/rezerwowe zasoby wymagane dla ustawienia środowiska na podstawie bieżącego stanu ustawienia laboratorium/środowisko. |
-> | Działanie | Microsoft.LabServices/labAccounts/labs/environmentSettings/read | Odczytaj ustawienie środowiska. |
-> | Działanie | Microsoft.LabServices/labAccounts/labs/environmentSettings/ResetPassword/action | Resetuje hasło na maszynie wirtualnej szablonu. |
-> | Działanie | Microsoft.LabServices/labAccounts/labs/environmentSettings/SaveImage/action | Zapisuje bieżący obraz szablonu do udostępnionej galerii na koncie laboratorium |
-> | Działanie | Microsoft.LabServices/labAccounts/labs/environmentSettings/schedules/delete | Usuwanie harmonogramów. |
-> | Działanie | Microsoft.LabServices/labAccounts/labs/environmentSettings/schedules/read | Odczytaj harmonogramy. |
-> | Działanie | Microsoft.LabServices/labAccounts/labs/environmentSettings/schedules/write | Dodawanie lub modyfikowanie harmonogramów. |
-> | Działanie | Microsoft.LabServices/labAccounts/labs/environmentSettings/Start/action | Uruchamia szablon przez uruchomienie wszystkich zasobów w szablonie. |
-> | Działanie | Microsoft.LabServices/labAccounts/labs/environmentSettings/Stop/action | Zatrzymuje szablon przez zatrzymanie wszystkich zasobów w szablonie. |
-> | Działanie | Microsoft.LabServices/labAccounts/labs/environmentSettings/write | Dodaj lub zmodyfikuj ustawienie środowiska. |
-> | Działanie | Microsoft.LabServices/labAccounts/labs/read | Odczytywanie laboratoriów. |
-> | Działanie | Microsoft. LabServices/labAccounts/Labs/SendEmail/Action | Wyślij wiadomość e-mail z linkiem rejestracji do laboratorium |
-> | Działanie | Microsoft.LabServices/labAccounts/labs/users/delete | Usuń użytkowników. |
-> | Działanie | Microsoft.LabServices/labAccounts/labs/users/read | Odczytuj użytkowników. |
-> | Działanie | Microsoft. LabServices/labAccounts/Labs/użytkownicy/zapis | Dodawanie lub modyfikowanie użytkowników. |
-> | Działanie | Microsoft. LabServices/labAccounts/Labs/zapis | Dodawanie lub modyfikowanie laboratoriów. |
-> | Działanie | Microsoft.LabServices/labAccounts/read | Odczytuj konta laboratorium. |
-> | Działanie | Microsoft. LabServices/labAccounts/sharedGalleries/Delete | Usuń sharedgalleries. |
-> | Działanie | Microsoft.LabServices/labAccounts/sharedGalleries/read | Odczytaj sharedgalleries. |
-> | Działanie | Microsoft. LabServices/labAccounts/sharedGalleries/Write | Dodaj lub zmodyfikuj sharedgalleries. |
-> | Działanie | Microsoft.LabServices/labAccounts/sharedImages/delete | Usuń Sharedimages. |
-> | Działanie | Microsoft.LabServices/labAccounts/sharedImages/read | Odczytaj Sharedimages. |
-> | Działanie | Microsoft.LabServices/labAccounts/sharedImages/write | Dodaj lub zmodyfikuj Sharedimages. |
-> | Działanie | Microsoft. LabServices/labAccounts/Write | Dodawanie lub modyfikowanie kont laboratorium. |
-> | Działanie | Microsoft.LabServices/locations/operations/read | Operacje odczytu. |
-> | Działanie | Microsoft. LabServices/Register/Action | Rejestruje subskrypcję |
-> | Działanie | Microsoft. LabServices/users/ListAllEnvironments/akcja | Wyświetl listę wszystkich środowisk dla użytkownika |
-> | Działanie | Microsoft. LabServices/users/rejestr/akcja | Rejestrowanie użytkownika w zarządzanym laboratorium |
-> | Działanie | Microsoft.LabServices/users/ResetPassword/action | Resetuje hasło użytkownika w środowisku |
-> | Działanie | Microsoft. LabServices/users/StartEnvironment/akcja | Uruchamia środowisko przez uruchomienie wszystkich zasobów w środowisku. |
-> | Działanie | Microsoft. LabServices/users/StopEnvironment/akcja | Zatrzymuje środowisko przez zatrzymanie wszystkich zasobów w środowisku |
-> | Działanie | Microsoft. LabServices/users/UserSettings/akcja | Aktualizuje i zwraca osobiste ustawienia użytkownika. |
+> | Działanie | Microsoft.LabServices/labAccounts/CreateLab/action | Create a lab in a lab account. |
+> | Działanie | Microsoft.LabServices/labAccounts/delete | Delete lab accounts. |
+> | Działanie | Microsoft.LabServices/labAccounts/galleryImages/delete | Delete gallery images. |
+> | Działanie | Microsoft.LabServices/labAccounts/galleryImages/read | Read gallery images. |
+> | Działanie | Microsoft.LabServices/labAccounts/galleryImages/write | Add or modify gallery images. |
+> | Działanie | Microsoft.LabServices/labAccounts/GetRegionalAvailability/action | Get regional availability information for each size category configured under a lab account |
+> | Działanie | Microsoft.LabServices/labAccounts/labs/AddUsers/action | Add users to a lab |
+> | Działanie | Microsoft.LabServices/labAccounts/labs/delete | Delete labs. |
+> | Działanie | Microsoft.LabServices/labAccounts/labs/environmentSettings/delete | Delete environment setting. |
+> | Działanie | Microsoft.LabServices/labAccounts/labs/environmentSettings/environments/delete | Delete environments. |
+> | Działanie | Microsoft.LabServices/labAccounts/labs/environmentSettings/environments/read | Read environments. |
+> | Działanie | Microsoft.LabServices/labAccounts/labs/environmentSettings/environments/ResetPassword/action | Resets the user password on an environment |
+> | Działanie | Microsoft.LabServices/labAccounts/labs/environmentSettings/environments/Start/action | Starts an environment by starting all resources inside the environment. |
+> | Działanie | Microsoft.LabServices/labAccounts/labs/environmentSettings/environments/Stop/action | Stops an environment by stopping all resources inside the environment |
+> | Działanie | Microsoft.LabServices/labAccounts/labs/environmentSettings/environments/write | Add or modify environments. |
+> | Działanie | Microsoft.LabServices/labAccounts/labs/environmentSettings/Publish/action | Provisions/deprovisions required resources for an environment setting based on current state of the lab/environment setting. |
+> | Działanie | Microsoft.LabServices/labAccounts/labs/environmentSettings/read | Read environment setting. |
+> | Działanie | Microsoft.LabServices/labAccounts/labs/environmentSettings/ResetPassword/action | Resets password on the template virtual machine. |
+> | Działanie | Microsoft.LabServices/labAccounts/labs/environmentSettings/SaveImage/action | Saves current template image to the shared gallery in the lab account |
+> | Działanie | Microsoft.LabServices/labAccounts/labs/environmentSettings/schedules/delete | Delete schedules. |
+> | Działanie | Microsoft.LabServices/labAccounts/labs/environmentSettings/schedules/read | Read schedules. |
+> | Działanie | Microsoft.LabServices/labAccounts/labs/environmentSettings/schedules/write | Add or modify schedules. |
+> | Działanie | Microsoft.LabServices/labAccounts/labs/environmentSettings/Start/action | Starts a template by starting all resources inside the template. |
+> | Działanie | Microsoft.LabServices/labAccounts/labs/environmentSettings/Stop/action | Stops a template by stopping all resources inside the template. |
+> | Działanie | Microsoft.LabServices/labAccounts/labs/environmentSettings/write | Add or modify environment setting. |
+> | Działanie | Microsoft.LabServices/labAccounts/labs/read | Read labs. |
+> | Działanie | Microsoft.LabServices/labAccounts/labs/SendEmail/action | Send email with registration link to the lab |
+> | Działanie | Microsoft.LabServices/labAccounts/labs/users/delete | Delete users. |
+> | Działanie | Microsoft.LabServices/labAccounts/labs/users/read | Read users. |
+> | Działanie | Microsoft.LabServices/labAccounts/labs/users/write | Add or modify users. |
+> | Działanie | Microsoft.LabServices/labAccounts/labs/write | Add or modify labs. |
+> | Działanie | Microsoft.LabServices/labAccounts/read | Read lab accounts. |
+> | Działanie | Microsoft.LabServices/labAccounts/sharedGalleries/delete | Delete sharedgalleries. |
+> | Działanie | Microsoft.LabServices/labAccounts/sharedGalleries/read | Read sharedgalleries. |
+> | Działanie | Microsoft.LabServices/labAccounts/sharedGalleries/write | Add or modify sharedgalleries. |
+> | Działanie | Microsoft.LabServices/labAccounts/sharedImages/delete | Delete sharedimages. |
+> | Działanie | Microsoft.LabServices/labAccounts/sharedImages/read | Read sharedimages. |
+> | Działanie | Microsoft.LabServices/labAccounts/sharedImages/write | Add or modify sharedimages. |
+> | Działanie | Microsoft.LabServices/labAccounts/write | Add or modify lab accounts. |
+> | Działanie | Microsoft.LabServices/locations/operations/read | Read operations. |
+> | Działanie | Microsoft.LabServices/register/action | Rejestruje subskrypcję |
+> | Działanie | Microsoft.LabServices/users/ListAllEnvironments/action | List all Environments for the user |
+> | Działanie | Microsoft.LabServices/users/Register/action | Register a user to a managed lab |
+> | Działanie | Microsoft.LabServices/users/ResetPassword/action | Resets the user password on an environment |
+> | Działanie | Microsoft.LabServices/users/StartEnvironment/action | Starts an environment by starting all resources inside the environment. |
+> | Działanie | Microsoft.LabServices/users/StopEnvironment/action | Stops an environment by stopping all resources inside the environment |
+> | Działanie | Microsoft.LabServices/users/UserSettings/action | Updates and returns personal user settings. |
 
 ## <a name="microsoftlogic"></a>Microsoft.Logic
 
 > [!div class="mx-tdCol2BreakAll"]
 > | Typ akcji | Operacja | Opis |
 > | --- | --- | --- |
-> | Działanie | Microsoft.Logic/integrationAccounts/agreements/delete | Usuwa umowę na koncie integracji. |
-> | Działanie | Microsoft.Logic/integrationAccounts/agreements/listContentCallbackUrl/action | Pobiera adres URL wywołania zwrotnego dla zawartości umowy na koncie integracji. |
-> | Działanie | Microsoft.Logic/integrationAccounts/agreements/read | Odczytuje umowę na koncie integracji. |
-> | Działanie | Microsoft.Logic/integrationAccounts/agreements/write | Tworzy lub aktualizuje umowę na koncie integracji. |
-> | Działanie | Microsoft.Logic/integrationAccounts/assemblies/delete | Usuwa zestaw na koncie integracji. |
-> | Działanie | Microsoft.Logic/integrationAccounts/assemblies/listContentCallbackUrl/action | Pobiera adres URL wywołania zwrotnego dla zawartości zestawu na koncie integracji. |
-> | Działanie | Microsoft.Logic/integrationAccounts/assemblies/read | Odczytuje zestaw na koncie integracji. |
-> | Działanie | Microsoft.Logic/integrationAccounts/assemblies/write | Tworzy lub aktualizuje zestaw na koncie integracji. |
-> | Działanie | Microsoft. Logic/integrationAccounts/batchConfigurations/Delete | Usuwa konfigurację partii na koncie integracji. |
+> | Działanie | Microsoft.Logic/integrationAccounts/agreements/delete | Deletes the agreement in integration account. |
+> | Działanie | Microsoft.Logic/integrationAccounts/agreements/listContentCallbackUrl/action | Gets the callback URL for agreement content in integration account. |
+> | Działanie | Microsoft.Logic/integrationAccounts/agreements/read | Reads the agreement in integration account. |
+> | Działanie | Microsoft.Logic/integrationAccounts/agreements/write | Creates or updates the agreement in integration account. |
+> | Działanie | Microsoft.Logic/integrationAccounts/assemblies/delete | Deletes the assembly in integration account. |
+> | Działanie | Microsoft.Logic/integrationAccounts/assemblies/listContentCallbackUrl/action | Gets the callback URL for assembly content in integration account. |
+> | Działanie | Microsoft.Logic/integrationAccounts/assemblies/read | Reads the assembly in integration account. |
+> | Działanie | Microsoft.Logic/integrationAccounts/assemblies/write | Creates or updates the assembly in integration account. |
+> | Działanie | Microsoft.Logic/integrationAccounts/batchConfigurations/delete | Deletes the batch configuration in integration account. |
 > | Działanie | Microsoft.Logic/integrationAccounts/batchConfigurations/read | Odczytuje konfigurację partii na koncie integracji. |
-> | Działanie | Microsoft.Logic/integrationAccounts/batchConfigurations/write | Tworzy lub aktualizuje konfigurację partii na koncie integracji. |
-> | Działanie | Microsoft. Logic/integrationAccounts/Certificates/Delete | Usuwa certyfikat na koncie integracji. |
-> | Działanie | Microsoft.Logic/integrationAccounts/certificates/read | Odczytuje certyfikat na koncie integracji. |
-> | Działanie | Microsoft. Logic/integrationAccounts/Certificates/Write | Tworzy lub aktualizuje certyfikat na koncie integracji. |
-> | Działanie | Microsoft. Logic/integrationAccounts/Delete | Usuwa konto integracji. |
-> | Działanie | Microsoft. Logic/integrationAccounts/Join/Action | Umożliwia dołączenie do konta integracji. |
-> | Działanie | Microsoft.Logic/integrationAccounts/listCallbackUrl/action | Pobiera adres URL wywołania zwrotnego dla konta integracji. |
-> | Działanie | Microsoft.Logic/integrationAccounts/listKeyVaultKeys/action | Pobiera klucze w magazynie kluczy. |
-> | Działanie | Microsoft.Logic/integrationAccounts/logTrackingEvents/action | Rejestruje zdarzenia śledzenia na koncie integracji. |
-> | Działanie | Microsoft.Logic/integrationAccounts/maps/delete | Usuwa mapowanie na koncie integracji. |
-> | Działanie | Microsoft.Logic/integrationAccounts/maps/listContentCallbackUrl/action | Pobiera adres URL wywołania zwrotnego dla zawartości mapy na koncie integracji. |
-> | Działanie | Microsoft.Logic/integrationAccounts/maps/read | Odczytuje mapę na koncie integracji. |
-> | Działanie | Microsoft.Logic/integrationAccounts/maps/write | Tworzy lub aktualizuje mapę na koncie integracji. |
-> | Działanie | Microsoft.Logic/integrationAccounts/partners/delete | Usuwa partnera na koncie integracji. |
-> | Działanie | Microsoft.Logic/integrationAccounts/partners/listContentCallbackUrl/action | Pobiera adres URL wywołania zwrotnego dla zawartości partnera na koncie integracji. |
-> | Działanie | Microsoft.Logic/integrationAccounts/partners/read | Odczytuje partnera na koncie integracji. |
-> | Działanie | Microsoft.Logic/integrationAccounts/partners/write | Tworzy lub aktualizuje partnera na koncie integracji. |
-> | Działanie | Microsoft.Logic/integrationAccounts/providers/Microsoft.Insights/logDefinitions/read | Odczytuje definicje dzienników konta integracji. |
-> | Działanie | Microsoft.Logic/integrationAccounts/read | Odczytuje konto integracji. |
-> | Działanie | Microsoft. Logic/integrationAccounts/regenerateAccessKey/Action | Generuje ponownie wpisy tajne klucza dostępu. |
+> | Działanie | Microsoft.Logic/integrationAccounts/batchConfigurations/write | Creates or updates the batch configuration in integration account. |
+> | Działanie | Microsoft.Logic/integrationAccounts/certificates/delete | Deletes the certificate in integration account. |
+> | Działanie | Microsoft.Logic/integrationAccounts/certificates/read | Reads the certificate in integration account. |
+> | Działanie | Microsoft.Logic/integrationAccounts/certificates/write | Creates or updates the certificate in integration account. |
+> | Działanie | Microsoft.Logic/integrationAccounts/delete | Deletes the integration account. |
+> | Działanie | Microsoft.Logic/integrationAccounts/join/action | Joins the Integration Account. |
+> | Działanie | Microsoft.Logic/integrationAccounts/listCallbackUrl/action | Gets the callback URL for integration account. |
+> | Działanie | Microsoft.Logic/integrationAccounts/listKeyVaultKeys/action | Gets the keys in the key vault. |
+> | Działanie | Microsoft.Logic/integrationAccounts/logTrackingEvents/action | Logs the tracking events in the integration account. |
+> | Działanie | Microsoft.Logic/integrationAccounts/maps/delete | Deletes the map in integration account. |
+> | Działanie | Microsoft.Logic/integrationAccounts/maps/listContentCallbackUrl/action | Gets the callback URL for map content in integration account. |
+> | Działanie | Microsoft.Logic/integrationAccounts/maps/read | Reads the map in integration account. |
+> | Działanie | Microsoft.Logic/integrationAccounts/maps/write | Creates or updates the map in integration account. |
+> | Działanie | Microsoft.Logic/integrationAccounts/partners/delete | Deletes the partner in integration account. |
+> | Działanie | Microsoft.Logic/integrationAccounts/partners/listContentCallbackUrl/action | Gets the callback URL for partner content in integration account. |
+> | Działanie | Microsoft.Logic/integrationAccounts/partners/read | Reads the partner in integration account. |
+> | Działanie | Microsoft.Logic/integrationAccounts/partners/write | Creates or updates the partner in integration account. |
+> | Działanie | Microsoft.Logic/integrationAccounts/providers/Microsoft.Insights/logDefinitions/read | Reads the Integration Account log definitions. |
+> | Działanie | Microsoft.Logic/integrationAccounts/read | Reads the integration account. |
+> | Działanie | Microsoft.Logic/integrationAccounts/regenerateAccessKey/action | Generuje ponownie wpisy tajne klucza dostępu. |
 > | Działanie | Microsoft. Logic/integrationAccounts/rosettaNetProcessConfigurations/Delete | Usuwa konfigurację procesu RosettaNet na koncie integracji. |
 > | Działanie | Microsoft. Logic/integrationAccounts/rosettaNetProcessConfigurations/odczyt | Odczytuje konfigurację procesu RosettaNet na koncie integracji. |
 > | Działanie | Microsoft. Logic/integrationAccounts/rosettaNetProcessConfigurations/Write | Tworzy lub aktualizuje konfigurację procesu RosettaNet na koncie integracji. |
@@ -3577,338 +3577,338 @@ Operacje dostawcy zasobów są zawsze rozwijane. Aby uzyskać najnowsze operacje
 > | Akcja dataaction | Microsoft. MachineLearningServices/obszary robocze/usługi/ACI/usuwanie | Usuwa usługi ACI w obszarze roboczym Machine Learning Services |
 > | Akcja dataaction | Microsoft. MachineLearningServices/obszary robocze/usługi/ACI/ListKeys/akcja | Wyświetla listę kluczy dla usług ACI w obszarze roboczym Machine Learning Services |
 > | Akcja dataaction | Microsoft. MachineLearningServices/obszary robocze/usługi/ACI/zapis | Tworzy lub aktualizuje usługi ACI w obszarze roboczym Machine Learning Services |
-> | Akcja dataaction | Microsoft. MachineLearningServices/obszary robocze/usługi/AKS/DevTest/Delete | Usuwa usługi DevTest AKS w obszarze roboczym Machine Learning Services |
-> | Akcja dataaction | Microsoft. MachineLearningServices/obszary robocze/usługi/AKS/DevTest/ListKeys/Action | Wyświetla listę kluczy dla usług DevTest AKS w obszarze roboczym Machine Learning Services |
-> | Akcja dataaction | Microsoft. MachineLearningServices/obszary robocze/usługi/AKS/DevTest/Score/akcja | Wyniki DevTest usługi AKS w obszarze roboczym Machine Learning Services |
-> | Akcja dataaction | Microsoft. MachineLearningServices/obszary robocze/usługi/AKS/DevTest/zapis | Tworzy lub aktualizuje usługi DevTest AKS w obszarze roboczym Machine Learning Services |
-> | Akcja dataaction | Microsoft. MachineLearningServices/obszary robocze/usługi/AKS/prod/Delete | Usuwa usługi prod AKS w obszarze roboczym Machine Learning Services |
-> | Akcja dataaction | Microsoft. MachineLearningServices/obszary robocze/usługi/AKS/prod/ListKeys/akcja | Wyświetla listę kluczy dla usług produkcyjnych AKS w obszarze roboczym Machine Learning Services |
-> | Akcja dataaction | Microsoft. MachineLearningServices/obszary robocze/usługi/AKS/prod/Score/akcja | Wyniki usług AKS prod w obszarze roboczym Machine Learning Services |
-> | Akcja dataaction | Microsoft. MachineLearningServices/obszary robocze/usługi/AKS/prod/Write | Tworzy lub aktualizuje usługi prod AKS w obszarze roboczym Machine Learning Services |
-> | Akcja dataaction | Microsoft. MachineLearningServices/obszary robocze/usługi/odczyt | Pobiera usługi w Machine Learning Services obszarach roboczych |
-> | Działanie | Microsoft.MachineLearningServices/workspaces/write | Tworzy lub aktualizuje Machine Learning Services obszary robocze |
+> | Akcja dataaction | Microsoft.MachineLearningServices/workspaces/services/aks/devtest/delete | Deletes devtest AKS services in Machine Learning Services Workspace(s) |
+> | Akcja dataaction | Microsoft.MachineLearningServices/workspaces/services/aks/devtest/listkeys/action | Lists keys for devtest AKS services in Machine Learning Services Workspace(s) |
+> | Akcja dataaction | Microsoft.MachineLearningServices/workspaces/services/aks/devtest/score/action | Scores devtest AKS services in Machine Learning Services Workspace(s) |
+> | Akcja dataaction | Microsoft.MachineLearningServices/workspaces/services/aks/devtest/write | Creates or updates devtest AKS services in Machine Learning Services Workspace(s) |
+> | Akcja dataaction | Microsoft.MachineLearningServices/workspaces/services/aks/prod/delete | Deletes prod AKS services in Machine Learning Services Workspace(s) |
+> | Akcja dataaction | Microsoft.MachineLearningServices/workspaces/services/aks/prod/listkeys/action | Lists keys for prod AKS services in Machine Learning Services Workspace(s) |
+> | Akcja dataaction | Microsoft.MachineLearningServices/workspaces/services/aks/prod/score/action | Scores prod AKS services in Machine Learning Services Workspace(s) |
+> | Akcja dataaction | Microsoft.MachineLearningServices/workspaces/services/aks/prod/write | Creates or updates prod AKS services in Machine Learning Services Workspace(s) |
+> | Akcja dataaction | Microsoft.MachineLearningServices/workspaces/services/read | Gets services in Machine Learning Services Workspace(s) |
+> | Działanie | Microsoft.MachineLearningServices/workspaces/write | Creates or updates a Machine Learning Services Workspace(s) |
 
 ## <a name="microsoftmanagedidentity"></a>Microsoft.ManagedIdentity
 
 > [!div class="mx-tdCol2BreakAll"]
 > | Typ akcji | Operacja | Opis |
 > | --- | --- | --- |
-> | Działanie | Microsoft. ManagedIdentity/tożsamości/odczyt | Pobiera istniejącą tożsamość przypisaną do systemu |
-> | Działanie | Microsoft. ManagedIdentity/Operations/Read | Wyświetla listę operacji dostępnych w dostawcy zasobów Microsoft. ManagedIdentity |
-> | Działanie | Microsoft.ManagedIdentity/register/action | Rejestruje subskrypcję dostawcy zasobów tożsamości zarządzanej |
-> | Działanie | Microsoft.ManagedIdentity/userAssignedIdentities/assign/action | Akcja RBAC do przypisywania istniejącej przypisanej użytkownikowi tożsamości do zasobu |
-> | Działanie | Microsoft.ManagedIdentity/userAssignedIdentities/delete | Usuwa istniejącą tożsamość przypisanego użytkownika |
-> | Działanie | Microsoft.ManagedIdentity/userAssignedIdentities/read | Pobiera istniejącą tożsamość przypisanego użytkownika |
-> | Działanie | Microsoft.ManagedIdentity/userAssignedIdentities/write | Tworzy nową tożsamość przypisanego użytkownika lub aktualizuje Tagi skojarzone z istniejącą tożsamością przypisanego użytkownika |
+> | Działanie | Microsoft.ManagedIdentity/identities/read | Gets an existing system assigned identity |
+> | Działanie | Microsoft.ManagedIdentity/operations/read | Lists operations available on Microsoft.ManagedIdentity resource provider |
+> | Działanie | Microsoft.ManagedIdentity/register/action | Registers the subscription for the managed identity resource provider |
+> | Działanie | Microsoft.ManagedIdentity/userAssignedIdentities/assign/action | RBAC action for assigning an existing user assigned identity to a resource |
+> | Działanie | Microsoft.ManagedIdentity/userAssignedIdentities/delete | Deletes an existing user assigned identity |
+> | Działanie | Microsoft.ManagedIdentity/userAssignedIdentities/read | Gets an existing user assigned identity |
+> | Działanie | Microsoft.ManagedIdentity/userAssignedIdentities/write | Creates a new user assigned identity or updates the tags associated with an existing user assigned identity |
 
-## <a name="microsoftmanagedservices"></a>Microsoft. ManagedServices
+## <a name="microsoftmanagedservices"></a>Microsoft.ManagedServices
 
 > [!div class="mx-tdCol2BreakAll"]
 > | Typ akcji | Operacja | Opis |
 > | --- | --- | --- |
-> | Działanie | Microsoft. ManagedServices/marketplaceRegistrationDefinitions/odczyt | Pobiera listę definicji rejestracji usług zarządzanych. |
-> | Działanie | Microsoft. ManagedServices/Operations/Read | Pobiera listę operacji usług zarządzanych. |
-> | Działanie | Microsoft. ManagedServices/operationStatuses/odczyt | Odczytuje stan operacji dla zasobu. |
-> | Działanie | Microsoft. ManagedServices/Register/Action | Zarejestruj się w usłudze Managed Services. |
-> | Działanie | Microsoft. ManagedServices/registrationAssignments/Delete | Usuwa przypisanie rejestracji usług zarządzanych. |
-> | Działanie | Microsoft. ManagedServices/registrationAssignments/odczyt | Pobiera listę przypisań rejestracji usług zarządzanych. |
-> | Działanie | Microsoft. ManagedServices/registrationAssignments/Write | Dodaj lub zmodyfikuj przypisanie rejestracji usług zarządzanych. |
-> | Działanie | Microsoft. ManagedServices/registrationDefinitions/Delete | Usuwa definicję rejestracji usług zarządzanych. |
-> | Działanie | Microsoft. ManagedServices/registrationDefinitions/odczyt | Pobiera listę definicji rejestracji usług zarządzanych. |
-> | Działanie | Microsoft. ManagedServices/registrationDefinitions/Write | Dodaj lub zmodyfikuj definicję rejestracji usług zarządzanych. |
-> | Działanie | Microsoft. ManagedServices/Unregister/Action | Wyrejestruj z usług zarządzanych. |
+> | Działanie | Microsoft.ManagedServices/marketplaceRegistrationDefinitions/read | Retrieves a list of Managed Services registration definitions. |
+> | Działanie | Microsoft.ManagedServices/operations/read | Retrieves a list of Managed Services operations. |
+> | Działanie | Microsoft.ManagedServices/operationStatuses/read | Odczytuje stan operacji dla zasobu. |
+> | Działanie | Microsoft.ManagedServices/register/action | Register to Managed Services. |
+> | Działanie | Microsoft.ManagedServices/registrationAssignments/delete | Removes Managed Services registration assignment. |
+> | Działanie | Microsoft.ManagedServices/registrationAssignments/read | Retrieves a list of Managed Services registration assignments. |
+> | Działanie | Microsoft.ManagedServices/registrationAssignments/write | Add or modify Managed Services registration assignment. |
+> | Działanie | Microsoft.ManagedServices/registrationDefinitions/delete | Removes Managed Services registration definition. |
+> | Działanie | Microsoft.ManagedServices/registrationDefinitions/read | Retrieves a list of Managed Services registration definitions. |
+> | Działanie | Microsoft.ManagedServices/registrationDefinitions/write | Add or modify Managed Services registration definition. |
+> | Działanie | Microsoft.ManagedServices/unregister/action | Unregister from Managed Services. |
 
 ## <a name="microsoftmanagement"></a>Microsoft.Management
 
 > [!div class="mx-tdCol2BreakAll"]
 > | Typ akcji | Operacja | Opis |
 > | --- | --- | --- |
-> | Działanie | Microsoft. Management/checkNameAvailability/akcja | Sprawdza, czy określona nazwa grupy zarządzania jest prawidłowa i unikatowa. |
-> | Działanie | Microsoft. Management/getentities/akcja | Wyświetl listę wszystkich jednostek (Grupy zarządzania, subskrypcje itp.) dla uwierzytelnionego użytkownika. |
-> | Działanie | Microsoft. Management/managementGroups/Delete | Usuń grupę zarządzania. |
-> | Działanie | Microsoft. Management/managementGroups/Descendants/Read | Pobiera wszystkie elementy podrzędne (Grupy zarządzania, subskrypcje) grupy zarządzania. |
-> | Działanie | Microsoft.Management/managementGroups/read | Wyświetl listę grup zarządzania dla uwierzytelnionego użytkownika. |
-> | Działanie | Microsoft. Management/managementGroups/subskrypcje/usuwanie | Anuluj skojarzenie subskrypcji z grupą zarządzania. |
-> | Działanie | Microsoft. Management/managementGroups/subskrypcje/zapis | Kojarzy istniejącą subskrypcję z grupą zarządzania. |
-> | Działanie | Microsoft. Management/managementGroups/Write | Utwórz lub Zaktualizuj grupę zarządzania. |
-> | Działanie | Microsoft. Management/Register/Action | Zarejestruj określoną subskrypcję w usłudze Microsoft. Management |
+> | Działanie | Microsoft.Management/checkNameAvailability/action | Checks if the specified management group name is valid and unique. |
+> | Działanie | Microsoft.Management/getEntities/action | List all entities (Management Groups, Subscriptions, etc.) for the authenticated user. |
+> | Działanie | Microsoft.Management/managementGroups/delete | Delete management group. |
+> | Działanie | Microsoft.Management/managementGroups/descendants/read | Gets all the descendants (Management Groups, Subscriptions) of a Management Group. |
+> | Działanie | Microsoft.Management/managementGroups/read | List management groups for the authenticated user. |
+> | Działanie | Microsoft.Management/managementGroups/subscriptions/delete | De-associates subscription from the management group. |
+> | Działanie | Microsoft.Management/managementGroups/subscriptions/write | Associates existing subscription with the management group. |
+> | Działanie | Microsoft.Management/managementGroups/write | Create or update a management group. |
+> | Działanie | Microsoft.Management/register/action | Register the specified subscription with Microsoft.Management |
 
-## <a name="microsoftmaps"></a>Microsoft. Maps
+## <a name="microsoftmaps"></a>Microsoft.Maps
 
 > [!div class="mx-tdCol2BreakAll"]
 > | Typ akcji | Operacja | Opis |
 > | --- | --- | --- |
-> | Akcja dataaction | Microsoft.Maps/accounts/data/read | Przyznaje dostęp do odczytu do konta Maps. |
-> | Działanie | Microsoft. Maps/accounts/Delete | Usuń konto Maps. |
-> | Działanie | Microsoft.Maps/accounts/eventGridFilters/delete | Usuń filtr Event Grid |
-> | Działanie | Microsoft.Maps/accounts/eventGridFilters/read | Pobierz filtr Event Grid |
-> | Działanie | Microsoft.Maps/accounts/eventGridFilters/write | Utwórz lub zaktualizuj filtr Event Grid |
-> | Działanie | Microsoft.Maps/accounts/listKeys/action | Lista kluczy konta map |
-> | Działanie | Microsoft.Maps/accounts/read | Pobierz konto Maps. |
-> | Działanie | Microsoft.Maps/accounts/regenerateKey/action | Generuj nowy klucz podstawowy lub pomocniczy konta mapy |
-> | Działanie | Microsoft. Maps/accounts/Write | Utwórz lub zaktualizuj konto Maps. |
-> | Działanie | Microsoft.Maps/operations/read | Odczytaj operacje dostawcy |
-> | Działanie | Microsoft. Maps/Zarejestruj/akcja | Rejestrowanie dostawcy |
+> | Akcja dataaction | Microsoft.Maps/accounts/data/read | Grants data read access to a maps account. |
+> | Działanie | Microsoft.Maps/accounts/delete | Delete a Maps Account. |
+> | Działanie | Microsoft.Maps/accounts/eventGridFilters/delete | Delete an Event Grid filter |
+> | Działanie | Microsoft.Maps/accounts/eventGridFilters/read | Get an Event Grid filter |
+> | Działanie | Microsoft.Maps/accounts/eventGridFilters/write | Create or update an Event Grid filter |
+> | Działanie | Microsoft.Maps/accounts/listKeys/action | List Maps Account keys |
+> | Działanie | Microsoft.Maps/accounts/read | Get a Maps Account. |
+> | Działanie | Microsoft.Maps/accounts/regenerateKey/action | Generate new Maps Account primary or secondary key |
+> | Działanie | Microsoft.Maps/accounts/write | Create or update a Maps Account. |
+> | Działanie | Microsoft.Maps/operations/read | Read the provider operations |
+> | Działanie | Microsoft.Maps/register/action | Register the provider |
 
 ## <a name="microsoftmarketplace"></a>Microsoft.Marketplace
 
 > [!div class="mx-tdCol2BreakAll"]
 > | Typ akcji | Operacja | Opis |
 > | --- | --- | --- |
-> | Działanie | Microsoft.Marketplace/offerTypes/publishers/offers/plans/agreements/read | Zwraca umowę. |
-> | Działanie | Microsoft.Marketplace/offerTypes/publishers/offers/plans/agreements/write | Akceptuje umowę ze znakiem. |
-> | Działanie | Microsoft.Marketplace/offerTypes/publishers/offers/plans/configs/importImage/action | Importuje obraz do ACR użytkownika końcowego. |
-> | Działanie | Microsoft.Marketplace/offerTypes/publishers/offers/plans/configs/read | Zwraca konfigurację. |
-> | Działanie | Microsoft.Marketplace/offerTypes/publishers/offers/plans/configs/write | Zapisuje konfigurację. |
-> | Działanie | Microsoft. Marketplace/rejestr/akcja | Rejestruje dostawcę zasobów Microsoft. Marketplace w ramach subskrypcji. |
+> | Działanie | Microsoft.Marketplace/offerTypes/publishers/offers/plans/agreements/read | Returns an Agreement. |
+> | Działanie | Microsoft.Marketplace/offerTypes/publishers/offers/plans/agreements/write | Accepts a signed agreement. |
+> | Działanie | Microsoft.Marketplace/offerTypes/publishers/offers/plans/configs/importImage/action | Imports an image to the end user's ACR. |
+> | Działanie | Microsoft.Marketplace/offerTypes/publishers/offers/plans/configs/read | Returns a config. |
+> | Działanie | Microsoft.Marketplace/offerTypes/publishers/offers/plans/configs/write | Saves a config. |
+> | Działanie | Microsoft.Marketplace/register/action | Registers Microsoft.Marketplace resource provider in the subscription. |
 
 ## <a name="microsoftmarketplaceapps"></a>Microsoft.MarketplaceApps
 
 > [!div class="mx-tdCol2BreakAll"]
 > | Typ akcji | Operacja | Opis |
 > | --- | --- | --- |
-> | Działanie | Microsoft.MarketplaceApps/ClassicDevServices/delete | Wykonuje operację usuwania dla zasobu klasycznej usługi deweloperskiej. |
-> | Działanie | Microsoft.MarketplaceApps/ClassicDevServices/listSecrets/action | Pobiera klasyczne klucze zarządzania zasobami usług deweloperskich. |
-> | Działanie | Microsoft.MarketplaceApps/ClassicDevServices/listSingleSignOnToken/action | Pobiera adres URL logowania jednokrotnego dla klasycznej usługi deweloperskiej. |
-> | Działanie | Microsoft.MarketplaceApps/ClassicDevServices/read | Wykonuje operację pobierania na klasycznej usłudze deweloperskiej. |
-> | Działanie | Microsoft.MarketplaceApps/ClassicDevServices/regenerateKey/action | Generuje klucze zarządzania zasobami klasycznej usługi deweloperskiej. |
-> | Działanie | Microsoft.MarketplaceApps/Operations/read | Przeczytaj operacje dla wszystkich typów zasobów. |
+> | Działanie | Microsoft.MarketplaceApps/ClassicDevServices/delete | Does a DELETE operation on a classic dev service resource. |
+> | Działanie | Microsoft.MarketplaceApps/ClassicDevServices/listSecrets/action | Gets a classic dev service resource management keys. |
+> | Działanie | Microsoft.MarketplaceApps/ClassicDevServices/listSingleSignOnToken/action | Gets the Single Sign On URL for a classic dev service. |
+> | Działanie | Microsoft.MarketplaceApps/ClassicDevServices/read | Does a GET operation on a classic dev service. |
+> | Działanie | Microsoft.MarketplaceApps/ClassicDevServices/regenerateKey/action | Generates a classic dev service resource management keys. |
+> | Działanie | Microsoft.MarketplaceApps/Operations/read | Read the operations for all resource types. |
 
 ## <a name="microsoftmarketplaceordering"></a>Microsoft.MarketplaceOrdering
 
 > [!div class="mx-tdCol2BreakAll"]
 > | Typ akcji | Operacja | Opis |
 > | --- | --- | --- |
-> | Działanie | Microsoft. MarketplaceOrdering/umowy/oferty/plany/anulowanie/akcja | Anulowanie umowy dotyczącej danego elementu portalu Marketplace |
-> | Działanie | Microsoft.MarketplaceOrdering/agreements/offers/plans/read | Zwróć umowę dla danego elementu portalu Marketplace |
-> | Działanie | Microsoft. MarketplaceOrdering/umowy/oferty/plany/Podpisz/akcję | Podpisz umowę dotyczącą danego elementu portalu Marketplace |
-> | Działanie | Microsoft.MarketplaceOrdering/agreements/read | Zwróć wszystkie umowy w ramach danej subskrypcji |
-> | Działanie | Microsoft.MarketplaceOrdering/offertypes/publishers/offers/plans/agreements/read | Pobierz umowę dotyczącą danego elementu maszyny wirtualnej portalu Marketplace |
-> | Działanie | Microsoft.MarketplaceOrdering/offertypes/publishers/offers/plans/agreements/write | Podpisz lub Anuluj umowę dotyczącą danego elementu maszyny wirtualnej portalu Marketplace |
-> | Działanie | Microsoft.MarketplaceOrdering/operations/read | Wyświetl listę wszystkich możliwych operacji w interfejsie API |
+> | Działanie | Microsoft.MarketplaceOrdering/agreements/offers/plans/cancel/action | Cancel an agreement for a given marketplace item |
+> | Działanie | Microsoft.MarketplaceOrdering/agreements/offers/plans/read | Return an agreement for a given marketplace item |
+> | Działanie | Microsoft.MarketplaceOrdering/agreements/offers/plans/sign/action | Sign an agreement for a given marketplace item |
+> | Działanie | Microsoft.MarketplaceOrdering/agreements/read | Return all agreements under given subscription |
+> | Działanie | Microsoft.MarketplaceOrdering/offertypes/publishers/offers/plans/agreements/read | Get an agreement for a given marketplace virtual machine item |
+> | Działanie | Microsoft.MarketplaceOrdering/offertypes/publishers/offers/plans/agreements/write | Sign or Cancel an agreement for a given marketplace virtual machine item |
+> | Działanie | Microsoft.MarketplaceOrdering/operations/read | List all possible operations in the API |
 
 ## <a name="microsoftmedia"></a>Microsoft.Media
 
 > [!div class="mx-tdCol2BreakAll"]
 > | Typ akcji | Operacja | Opis |
 > | --- | --- | --- |
-> | Działanie | Microsoft. Media/checknameavailability/Action | Sprawdza, czy nazwa konta Media Services jest dostępna |
-> | Działanie | Microsoft. Media/MediaServices/accountfilters/Delete | Usuń filtr konta |
-> | Działanie | Microsoft. Media/MediaServices/accountfilters/Read | Odczytaj dowolny filtr konta |
-> | Działanie | Microsoft. Media/MediaServices/accountfilters/Write | Utwórz lub zaktualizuj dowolny filtr konta |
-> | Działanie | Microsoft. Media/MediaServices/Assets/assetfilters/Delete | Usuń dowolny filtr zasobów |
-> | Działanie | Microsoft.Media/mediaservices/assets/assetfilters/read | Odczytaj dowolny filtr zasobów |
-> | Działanie | Microsoft.Media/mediaservices/assets/assetfilters/write | Utwórz lub zaktualizuj dowolny filtr zasobów |
-> | Działanie | Microsoft. Media/MediaServices/Assets/Delete | Usuń dowolny element zawartości |
-> | Działanie | Microsoft.Media/mediaservices/assets/getEncryptionKey/action | Pobierz klucz szyfrowania zasobu |
-> | Działanie | Microsoft.Media/mediaservices/assets/listContainerSas/action | Wyświetl listę adresów URL SAS kontenera zasobów |
-> | Działanie | Microsoft.Media/mediaservices/assets/listStreamingLocators/action | Wyświetl listę lokalizatorów przesyłania strumieniowego dla elementu zawartości |
-> | Działanie | Microsoft.Media/mediaservices/assets/read | Odczytaj dowolny zasób |
-> | Działanie | Microsoft. Media/MediaServices/Assets/Write | Utwórz lub zaktualizuj dowolny element zawartości |
-> | Działanie | Microsoft.Media/mediaservices/contentKeyPolicies/delete | Usuń wszystkie zasady kluczy zawartości |
-> | Działanie | Microsoft.Media/mediaservices/contentKeyPolicies/getPolicyPropertiesWithSecrets/action | Pobieranie właściwości zasad przy użyciu wpisów tajnych |
-> | Działanie | Microsoft.Media/mediaservices/contentKeyPolicies/read | Odczytaj wszystkie zasady dotyczące klucza zawartości |
-> | Działanie | Microsoft.Media/mediaservices/contentKeyPolicies/write | Tworzenie lub aktualizowanie zasad klucza zawartości |
-> | Działanie | Microsoft. Media/MediaServices/Delete | Usuń dowolne konto Media Services |
-> | Działanie | Microsoft. Media/MediaServices/eventGridFilters/Delete | Usuń dowolny filtr Event Grid |
-> | Działanie | Microsoft.Media/mediaservices/eventGridFilters/read | Odczytaj dowolny filtr Event Grid |
-> | Działanie | Microsoft. Media/MediaServices/eventGridFilters/Write | Utwórz lub zaktualizuj dowolny filtr Event Grid |
-> | Działanie | Microsoft.Media/mediaservices/liveEventOperations/read | Odczytaj wszystkie operacje na żywo dotyczące zdarzeń |
-> | Działanie | Microsoft. Media/MediaServices/liveEvents/Delete | Usuń dowolne wydarzenie na żywo |
-> | Działanie | Microsoft. Media/MediaServices/liveEvents/liveOutputs/Delete | Usuń wszystkie dane wyjściowe na żywo |
-> | Działanie | Microsoft. Media/MediaServices/liveEvents/liveOutputs/Read | Odczytaj wszystkie dane wyjściowe na żywo |
-> | Działanie | Microsoft. Media/MediaServices/liveEvents/liveOutputs/Write | Utwórz lub zaktualizuj wszystkie dane wyjściowe na żywo |
-> | Działanie | Microsoft.Media/mediaservices/liveEvents/read | Odczytaj dowolne wydarzenie na żywo |
-> | Działanie | Microsoft. Media/MediaServices/liveEvents/Reset/Action | Zresetuj wszystkie operacje na żywo dotyczące zdarzeń |
-> | Działanie | Microsoft. Media/MediaServices/liveEvents/Start/akcja | Rozpocznij wszystkie operacje na żywo dotyczące zdarzeń |
-> | Działanie | Microsoft. Media/MediaServices/liveEvents/akcja | Zatrzymaj wszystkie operacje na żywo dotyczące zdarzeń |
-> | Działanie | Microsoft. Media/MediaServices/liveEvents/Write | Utwórz lub zaktualizuj dowolne wydarzenie na żywo |
-> | Działanie | Microsoft.Media/mediaservices/liveOutputOperations/read | Odczytaj wszystkie operacje wyjścia na żywo |
-> | Działanie | Microsoft. Media/MediaServices/Read | Odczytaj dowolne konto Media Services |
-> | Działanie | Microsoft. Media/MediaServices/streamingEndpointOperations/Read | Odczytaj wszystkie operacje punktu końcowego przesyłania strumieniowego |
-> | Działanie | Microsoft. Media/MediaServices/streamingEndpoints/Delete | Usuń wszystkie punkty końcowe przesyłania strumieniowego |
-> | Działanie | Microsoft. Media/MediaServices/streamingEndpoints/Read | Odczytaj dowolny punkt końcowy przesyłania strumieniowego |
-> | Działanie | Microsoft. Media/MediaServices/streamingEndpoints/Skala/akcja | Skaluj wszystkie operacje punktu końcowego przesyłania strumieniowego |
-> | Działanie | Microsoft. Media/MediaServices/streamingEndpoints/Start/akcja | Uruchom wszystkie operacje punktu końcowego przesyłania strumieniowego |
-> | Działanie | Microsoft. Media/MediaServices/streamingEndpoints/akcja | Zatrzymaj wszystkie operacje punktu końcowego przesyłania strumieniowego |
-> | Działanie | Microsoft. Media/MediaServices/streamingEndpoints/Write | Utwórz lub zaktualizuj dowolny punkt końcowy przesyłania strumieniowego |
-> | Działanie | Microsoft. Media/MediaServices/streamingLocators/Delete | Usuń wszystkie lokalizatory przesyłania strumieniowego |
-> | Działanie | Microsoft. Media/MediaServices/streamingLocators/listContentKeys/Action | Wyświetl listę kluczy zawartości |
-> | Działanie | Microsoft. Media/MediaServices/streamingLocators/listPaths/Action | Wyświetl ścieżki |
-> | Działanie | Microsoft. Media/MediaServices/streamingLocators/Read | Odczytaj każdy lokalizator przesyłania strumieniowego |
-> | Działanie | Microsoft. Media/MediaServices/streamingLocators/Write | Utwórz lub zaktualizuj lokalizator przesyłania strumieniowego |
-> | Działanie | Microsoft. Media/MediaServices/streamingPolicies/Delete | Usuń wszystkie zasady przesyłania strumieniowego |
-> | Działanie | Microsoft. Media/MediaServices/streamingPolicies/Read | Odczytaj wszystkie zasady przesyłania strumieniowego |
-> | Działanie | Microsoft. Media/MediaServices/streamingPolicies/Write | Tworzenie lub aktualizowanie wszelkich zasad przesyłania strumieniowego |
-> | Działanie | Microsoft. Media/MediaServices/syncStorageKeys/Action | Synchronizuj klucze magazynu dla dołączonego konta usługi Azure Storage |
-> | Działanie | Microsoft. Media/MediaServices/transformacje/usuwanie | Usuń dowolne przekształcenie |
-> | Działanie | Microsoft. Media/MediaServices/transformacje/zadania/cancelJob/akcja | Anuluj zadanie |
-> | Działanie | Microsoft. Media/MediaServices/transformacje/zadania/usuwanie | Usuń dowolne zadanie |
-> | Działanie | Microsoft.Media/mediaservices/transforms/jobs/read | Odczytaj dowolne zadanie |
-> | Działanie | Microsoft. Media/MediaServices/transformacje/zadania/zapis | Utwórz lub zaktualizuj dowolne zadanie |
-> | Działanie | Microsoft. Media/MediaServices/transformacje/odczyt | Odczytaj dowolne przekształcenia |
-> | Działanie | Microsoft. Media/MediaServices/transformacje/zapis | Utwórz lub zaktualizuj dowolne przekształcenie |
-> | Działanie | Microsoft. Media/MediaServices/Write | Utwórz lub zaktualizuj dowolne konto Media Services |
+> | Działanie | Microsoft.Media/checknameavailability/action | Checks if a Media Services account name is available |
+> | Działanie | Microsoft.Media/mediaservices/accountfilters/delete | Delete any Account Filter |
+> | Działanie | Microsoft.Media/mediaservices/accountfilters/read | Read any Account Filter |
+> | Działanie | Microsoft.Media/mediaservices/accountfilters/write | Create or Update any Account Filter |
+> | Działanie | Microsoft.Media/mediaservices/assets/assetfilters/delete | Delete any Asset Filter |
+> | Działanie | Microsoft.Media/mediaservices/assets/assetfilters/read | Read any Asset Filter |
+> | Działanie | Microsoft.Media/mediaservices/assets/assetfilters/write | Create or Update any Asset Filter |
+> | Działanie | Microsoft.Media/mediaservices/assets/delete | Delete any Asset |
+> | Działanie | Microsoft.Media/mediaservices/assets/getEncryptionKey/action | Get Asset Encryption Key |
+> | Działanie | Microsoft.Media/mediaservices/assets/listContainerSas/action | List Asset Container SAS URLs |
+> | Działanie | Microsoft.Media/mediaservices/assets/listStreamingLocators/action | List Streaming Locators for Asset |
+> | Działanie | Microsoft.Media/mediaservices/assets/read | Read any Asset |
+> | Działanie | Microsoft.Media/mediaservices/assets/write | Create or Update any Asset |
+> | Działanie | Microsoft.Media/mediaservices/contentKeyPolicies/delete | Delete any Content Key Policy |
+> | Działanie | Microsoft.Media/mediaservices/contentKeyPolicies/getPolicyPropertiesWithSecrets/action | Get Policy Properties With Secrets |
+> | Działanie | Microsoft.Media/mediaservices/contentKeyPolicies/read | Read any Content Key Policy |
+> | Działanie | Microsoft.Media/mediaservices/contentKeyPolicies/write | Create or Update any Content Key Policy |
+> | Działanie | Microsoft.Media/mediaservices/delete | Delete any Media Services Account |
+> | Działanie | Microsoft.Media/mediaservices/eventGridFilters/delete | Delete any Event Grid Filter |
+> | Działanie | Microsoft.Media/mediaservices/eventGridFilters/read | Read any Event Grid Filter |
+> | Działanie | Microsoft.Media/mediaservices/eventGridFilters/write | Create or Update any Event Grid Filter |
+> | Działanie | Microsoft.Media/mediaservices/liveEventOperations/read | Read any Live Event Operation |
+> | Działanie | Microsoft.Media/mediaservices/liveEvents/delete | Delete any Live Event |
+> | Działanie | Microsoft.Media/mediaservices/liveEvents/liveOutputs/delete | Delete any Live Output |
+> | Działanie | Microsoft.Media/mediaservices/liveEvents/liveOutputs/read | Read any Live Output |
+> | Działanie | Microsoft.Media/mediaservices/liveEvents/liveOutputs/write | Create or Update any Live Output |
+> | Działanie | Microsoft.Media/mediaservices/liveEvents/read | Read any Live Event |
+> | Działanie | Microsoft.Media/mediaservices/liveEvents/reset/action | Reset any Live Event Operation |
+> | Działanie | Microsoft.Media/mediaservices/liveEvents/start/action | Start any Live Event Operation |
+> | Działanie | Microsoft.Media/mediaservices/liveEvents/stop/action | Stop any Live Event Operation |
+> | Działanie | Microsoft.Media/mediaservices/liveEvents/write | Create or Update any Live Event |
+> | Działanie | Microsoft.Media/mediaservices/liveOutputOperations/read | Read any Live Output Operation |
+> | Działanie | Microsoft.Media/mediaservices/read | Read any Media Services Account |
+> | Działanie | Microsoft.Media/mediaservices/streamingEndpointOperations/read | Read any Streaming Endpoint Operation |
+> | Działanie | Microsoft.Media/mediaservices/streamingEndpoints/delete | Delete any Streaming Endpoint |
+> | Działanie | Microsoft.Media/mediaservices/streamingEndpoints/read | Read any Streaming Endpoint |
+> | Działanie | Microsoft.Media/mediaservices/streamingEndpoints/scale/action | Scale any Streaming Endpoint Operation |
+> | Działanie | Microsoft.Media/mediaservices/streamingEndpoints/start/action | Start any Streaming Endpoint Operation |
+> | Działanie | Microsoft.Media/mediaservices/streamingEndpoints/stop/action | Stop any Streaming Endpoint Operation |
+> | Działanie | Microsoft.Media/mediaservices/streamingEndpoints/write | Create or Update any Streaming Endpoint |
+> | Działanie | Microsoft.Media/mediaservices/streamingLocators/delete | Delete any Streaming Locator |
+> | Działanie | Microsoft.Media/mediaservices/streamingLocators/listContentKeys/action | List Content Keys |
+> | Działanie | Microsoft.Media/mediaservices/streamingLocators/listPaths/action | List Paths |
+> | Działanie | Microsoft.Media/mediaservices/streamingLocators/read | Read any Streaming Locator |
+> | Działanie | Microsoft.Media/mediaservices/streamingLocators/write | Create or Update any Streaming Locator |
+> | Działanie | Microsoft.Media/mediaservices/streamingPolicies/delete | Delete any Streaming Policy |
+> | Działanie | Microsoft.Media/mediaservices/streamingPolicies/read | Read any Streaming Policy |
+> | Działanie | Microsoft.Media/mediaservices/streamingPolicies/write | Create or Update any Streaming Policy |
+> | Działanie | Microsoft.Media/mediaservices/syncStorageKeys/action | Synchronize the Storage Keys for an attached Azure Storage account |
+> | Działanie | Microsoft.Media/mediaservices/transforms/delete | Delete any Transform |
+> | Działanie | Microsoft.Media/mediaservices/transforms/jobs/cancelJob/action | Anuluj zadanie |
+> | Działanie | Microsoft.Media/mediaservices/transforms/jobs/delete | Delete any Job |
+> | Działanie | Microsoft.Media/mediaservices/transforms/jobs/read | Read any Job |
+> | Działanie | Microsoft.Media/mediaservices/transforms/jobs/write | Create or Update any Job |
+> | Działanie | Microsoft.Media/mediaservices/transforms/read | Read any Transform |
+> | Działanie | Microsoft.Media/mediaservices/transforms/write | Create or Update any Transform |
+> | Działanie | Microsoft.Media/mediaservices/write | Create or Update any Media Services Account |
 > | Działanie | Microsoft.Media/operations/read | Pobierz dostępne operacje |
-> | Działanie | Microsoft. Media/Register/Action | Rejestruje subskrypcję dostawcy zasobów Media Services i umożliwia tworzenie kont Media Services |
-> | Działanie | Microsoft.Media/unregister/action | Wyrejestrowuje subskrypcję dla dostawcy zasobów Media Services |
+> | Działanie | Microsoft.Media/register/action | Registers the subscription for the Media Services resource provider and enables the creation of Media Services accounts |
+> | Działanie | Microsoft.Media/unregister/action | Unregisters the subscription for the Media Services resource provider |
 
 ## <a name="microsoftmigrate"></a>Microsoft.Migrate
 
 > [!div class="mx-tdCol2BreakAll"]
 > | Typ akcji | Operacja | Opis |
 > | --- | --- | --- |
-> | Działanie | Microsoft. Migrowanie/assessmentprojects/assessmentOptions/odczyt | Pobiera opcje oceny, które są dostępne w danej lokalizacji |
-> | Działanie | Microsoft. Migrowanie/assessmentprojects/oceny/odczyt | Wyświetla listę ocen w projekcie |
-> | Działanie | Microsoft. Migruj/assessmentprojects/Usuń | Usuwa projekt oceny |
-> | Działanie | Microsoft. migruje/assessmentprojects/Groups/Assessments/assessedmachines/Read | Pobierz właściwości ocenianego komputera |
-> | Działanie | Microsoft. Migrowanie/assessmentprojects/grupy/oceny/usuwanie | Usuwa ocenę |
-> | Działanie | Microsoft. Migrowanie/assessmentprojects/grupy/oceny/downloadurl/akcja | Pobiera adres URL raportu oceny |
-> | Działanie | Microsoft.Migrate/assessmentprojects/groups/assessments/read | Pobiera właściwości oceny |
-> | Działanie | Microsoft. Migruj/assessmentprojects/grupy/oceny/zapis | Tworzy nową ocenę lub aktualizuje istniejącą ocenę |
-> | Działanie | Microsoft. Migrowanie/assessmentprojects/grupy/usuwanie | Usuwa grupę |
-> | Działanie | Microsoft.Migrate/assessmentprojects/groups/read | Pobierz właściwości grupy |
-> | Działanie | Microsoft. zmigrować/assessmentprojects/Groups/updateMachines/Action | Aktualizowanie grupy przez dodawanie lub usuwanie maszyn |
-> | Działanie | Microsoft. migruje/assessmentprojects/Groups/Write | Tworzy nową grupę lub aktualizuje istniejącą grupę |
-> | Działanie | Microsoft. Migrowanie/assessmentprojects/hypervcollectors/usuwanie | Usuwa moduł zbierający HyperV |
-> | Działanie | Microsoft. Migrowanie/assessmentprojects/hypervcollectors/odczyt | Pobiera właściwości modułu zbierającego HyperV |
-> | Działanie | Microsoft. Migruj/assessmentprojects/hypervcollectors/Write | Tworzy nowy moduł zbierający HyperV lub aktualizuje istniejący moduł zbierający funkcji Hyper-v |
-> | Działanie | Microsoft. Migrowanie/assessmentprojects/importcollectors/usuwanie | Usuwa moduł zbierający importu |
-> | Działanie | Microsoft. Migrowanie/assessmentprojects/importcollectors/odczyt | Pobiera właściwości modułu zbierającego importu |
-> | Działanie | Microsoft. Migruj/assessmentprojects/importcollectors/Write | Tworzy nowy moduł zbierający importu lub aktualizuje istniejący moduł zbierający importu |
-> | Działanie | Microsoft. migruje/assessmentprojects/Machines/Read | Pobiera właściwości maszyny |
-> | Działanie | Microsoft. migrowana/assessmentprojects/Read | Pobiera właściwości projektu oceny |
-> | Działanie | Microsoft. Migrowanie/assessmentprojects/servercollectors/odczyt | Pobiera właściwości modułu zbierającego serwery |
-> | Działanie | Microsoft. Migruj/assessmentprojects/servercollectors/Write | Tworzy nowy moduł zbierający serwer lub aktualizuje istniejący moduł zbierający serwer |
-> | Działanie | Microsoft. Migrowanie/assessmentprojects/vmwarecollectors/usuwanie | Usuwa moduł zbierający VMware |
-> | Działanie | Microsoft. Migrowanie/assessmentprojects/vmwarecollectors/odczyt | Pobiera właściwości modułu zbierającego VMware |
-> | Działanie | Microsoft. Migruj/assessmentprojects/vmwarecollectors/Write | Tworzy nowy moduł zbierający VMware lub aktualizuje istniejący moduł zbierający VMware |
-> | Działanie | Microsoft. Migruj/assessmentprojects/Write | Tworzy nowy projekt oceny lub aktualizuje istniejący projekt oceny |
-> | Działanie | Microsoft.Migrate/locations/assessmentOptions/read | Pobiera opcje oceny, które są dostępne w danej lokalizacji |
-> | Działanie | Microsoft. migrowana/Locations/checknameavailability/Action | Sprawdza dostępność nazwy zasobu dla danej subskrypcji w danej lokalizacji |
-> | Działanie | Microsoft.Migrate/migrateprojects/DatabaseInstances/read | Pobiera właściwości wystąpienia bazy danych |
-> | Działanie | Microsoft. migruje/migrateprojects/Databases/Read | Pobiera właściwości bazy danych |
-> | Działanie | Microsoft. Migruj/migrateprojects/Usuń | Usuwa projekt migracji |
-> | Działanie | Microsoft. migruje/migrateprojects/Machines/Read | Pobiera właściwości maszyny |
-> | Działanie | Microsoft. Migrowanie/migrateprojects/MigrateEvents/usuwanie | Usuwa zdarzenie migracji |
-> | Działanie | Microsoft.Migrate/migrateprojects/MigrateEvents/read | Pobiera właściwości zdarzenia migracji. |
-> | Działanie | Microsoft. migrowana/migrateprojects/Read | Pobiera właściwości migracji projektu |
-> | Działanie | Microsoft. migrowana/migrateprojects/RefreshSummary/akcja | Odświeża podsumowanie migracji projektu |
-> | Działanie | Microsoft. migrowana/migrateprojects/registerTool/akcja | Rejestruje narzędzie do projektu migracji |
-> | Działanie | Microsoft. migruje/migrateprojects/Solutions/cleanupData/Action | Wyczyść dane rozwiązania migracji projektu |
-> | Działanie | Microsoft. migruje/migrateprojects/Solutions/Delete | Usuwa rozwiązanie migracji projektu |
-> | Działanie | Microsoft. zmigrować/migrateprojects/Solutions/GetConfig/Action | Pobiera konfigurację rozwiązania migracji projektu |
-> | Działanie | Microsoft. migruje/migrateprojects/Solutions/Read | Pobiera właściwości rozwiązania Migrowanie projektu |
-> | Działanie | Microsoft. migruje/migrateprojects/Solutions/Write | Tworzy nowe rozwiązanie migracji projektu lub aktualizuje istniejące rozwiązanie migracji projektu |
-> | Działanie | Microsoft. Migruj/migrateprojects/Write | Tworzy nowy projekt migracji lub aktualizuje istniejący projekt migracji |
-> | Działanie | Microsoft. migrowana/Operations/Read | Wyświetla listę operacji dostępnych w witrynie Microsoft. Migrowanie dostawcy zasobów |
-> | Działanie | Microsoft.Migrate/projects/assessments/read | Wyświetla listę ocen w projekcie |
-> | Działanie | Microsoft. Migracja/projekty/usuwanie | Usuwa projekt |
-> | Działanie | Microsoft.Migrate/projects/groups/assessments/assessedmachines/read | Pobierz właściwości ocenianego komputera |
-> | Działanie | Microsoft. Migrowanie/projekty/grupy/oceny/usuwanie | Usuwa ocenę |
-> | Działanie | Microsoft. Migracja/projekty/grupy/oceny/downloadurl/akcja | Pobiera adres URL raportu oceny |
-> | Działanie | Microsoft.Migrate/projects/groups/assessments/read | Pobiera właściwości oceny |
-> | Działanie | Microsoft. Migrowanie/projekty/grupy/oceny/zapis | Tworzy nową ocenę lub aktualizuje istniejącą ocenę |
-> | Działanie | Microsoft. Migracja/projekty/grupy/usuwanie | Usuwa grupę |
-> | Działanie | Microsoft.Migrate/projects/groups/read | Pobierz właściwości grupy |
-> | Działanie | Microsoft. Migrowanie/projekty/grupy/zapis | Tworzy nową grupę lub aktualizuje istniejącą grupę |
-> | Działanie | Microsoft. Migruj/projekty/klucze/akcja | Pobiera klucze wspólne dla projektu |
-> | Działanie | Microsoft. Migrowanie/projekty/maszyny/odczyt | Pobiera właściwości maszyny |
-> | Działanie | Microsoft. Migracja/projekty/odczyt | Pobiera właściwości projektu |
-> | Działanie | Microsoft. Migracja/projekty/zapis | Tworzy nowy projekt lub aktualizuje istniejący projekt |
-> | Działanie | Microsoft. Migrowanie/rejestrowanie/akcja | Rejestruje subskrypcję za pomocą programu Microsoft. Migrowanie dostawcy zasobów |
+> | Działanie | Microsoft.Migrate/assessmentprojects/assessmentOptions/read | Gets the assessment options which are available in the given location |
+> | Działanie | Microsoft.Migrate/assessmentprojects/assessments/read | Lists assessments within a project |
+> | Działanie | Microsoft.Migrate/assessmentprojects/delete | Deletes the assessment project |
+> | Działanie | Microsoft.Migrate/assessmentprojects/groups/assessments/assessedmachines/read | Get the properties of an assessed machine |
+> | Działanie | Microsoft.Migrate/assessmentprojects/groups/assessments/delete | Deletes an assessment |
+> | Działanie | Microsoft.Migrate/assessmentprojects/groups/assessments/downloadurl/action | Downloads an assessment report's URL |
+> | Działanie | Microsoft.Migrate/assessmentprojects/groups/assessments/read | Gets the properties of an assessment |
+> | Działanie | Microsoft.Migrate/assessmentprojects/groups/assessments/write | Creates a new assessment or updates an existing assessment |
+> | Działanie | Microsoft.Migrate/assessmentprojects/groups/delete | Deletes a group |
+> | Działanie | Microsoft.Migrate/assessmentprojects/groups/read | Get the properties of a group |
+> | Działanie | Microsoft.Migrate/assessmentprojects/groups/updateMachines/action | Update group by adding or removing machines |
+> | Działanie | Microsoft.Migrate/assessmentprojects/groups/write | Creates a new group or updates an existing group |
+> | Działanie | Microsoft.Migrate/assessmentprojects/hypervcollectors/delete | Deletes the HyperV collector |
+> | Działanie | Microsoft.Migrate/assessmentprojects/hypervcollectors/read | Gets the properties of HyperV collector |
+> | Działanie | Microsoft.Migrate/assessmentprojects/hypervcollectors/write | Creates a new HyperV collector or updates an existing HyperV collector |
+> | Działanie | Microsoft.Migrate/assessmentprojects/importcollectors/delete | Deletes the Import collector |
+> | Działanie | Microsoft.Migrate/assessmentprojects/importcollectors/read | Gets the properties of Import collector |
+> | Działanie | Microsoft.Migrate/assessmentprojects/importcollectors/write | Creates a new Import collector or updates an existing Import collector |
+> | Działanie | Microsoft.Migrate/assessmentprojects/machines/read | Gets the properties of a machine |
+> | Działanie | Microsoft.Migrate/assessmentprojects/read | Gets the properties of assessment project |
+> | Działanie | Microsoft.Migrate/assessmentprojects/servercollectors/read | Gets the properties of Server collector |
+> | Działanie | Microsoft.Migrate/assessmentprojects/servercollectors/write | Creates a new Server collector or updates an existing Server collector |
+> | Działanie | Microsoft.Migrate/assessmentprojects/vmwarecollectors/delete | Deletes the VMware collector |
+> | Działanie | Microsoft.Migrate/assessmentprojects/vmwarecollectors/read | Gets the properties of VMware collector |
+> | Działanie | Microsoft.Migrate/assessmentprojects/vmwarecollectors/write | Creates a new VMware collector or updates an existing VMware collector |
+> | Działanie | Microsoft.Migrate/assessmentprojects/write | Creates a new assessment project or updates an existing assessment project |
+> | Działanie | Microsoft.Migrate/locations/assessmentOptions/read | Gets the assessment options which are available in the given location |
+> | Działanie | Microsoft.Migrate/locations/checknameavailability/action | Checks availability of the resource name for the given subscription in the given location |
+> | Działanie | Microsoft.Migrate/migrateprojects/DatabaseInstances/read | Gets the properties of a database instance |
+> | Działanie | Microsoft.Migrate/migrateprojects/Databases/read | Gets the properties of a database |
+> | Działanie | Microsoft.Migrate/migrateprojects/delete | Deletes a migrate project |
+> | Działanie | Microsoft.Migrate/migrateprojects/machines/read | Gets the properties of a machine |
+> | Działanie | Microsoft.Migrate/migrateprojects/MigrateEvents/Delete | Deletes a migrate event |
+> | Działanie | Microsoft.Migrate/migrateprojects/MigrateEvents/read | Gets the properties of a migrate events. |
+> | Działanie | Microsoft.Migrate/migrateprojects/read | Gets the properties of migrate project |
+> | Działanie | Microsoft.Migrate/migrateprojects/RefreshSummary/action | Refreshes the migrate project summary |
+> | Działanie | Microsoft.Migrate/migrateprojects/registerTool/action | Registers tool to a migrate project |
+> | Działanie | Microsoft.Migrate/migrateprojects/solutions/cleanupData/action | Clean up the migrate project solution data |
+> | Działanie | Microsoft.Migrate/migrateprojects/solutions/Delete | Deletes a  migrate project solution |
+> | Działanie | Microsoft.Migrate/migrateprojects/solutions/getconfig/action | Gets the migrate project solution configuration |
+> | Działanie | Microsoft.Migrate/migrateprojects/solutions/read | Gets the properties of migrate project solution |
+> | Działanie | Microsoft.Migrate/migrateprojects/solutions/write | Creates a new migrate project solution or updates an existing migrate project solution |
+> | Działanie | Microsoft.Migrate/migrateprojects/write | Creates a new migrate project or updates an existing migrate project |
+> | Działanie | Microsoft.Migrate/Operations/read | Lists operations available on Microsoft.Migrate resource provider |
+> | Działanie | Microsoft.Migrate/projects/assessments/read | Lists assessments within a project |
+> | Działanie | Microsoft.Migrate/projects/delete | Deletes the project |
+> | Działanie | Microsoft.Migrate/projects/groups/assessments/assessedmachines/read | Get the properties of an assessed machine |
+> | Działanie | Microsoft.Migrate/projects/groups/assessments/delete | Deletes an assessment |
+> | Działanie | Microsoft.Migrate/projects/groups/assessments/downloadurl/action | Downloads an assessment report's URL |
+> | Działanie | Microsoft.Migrate/projects/groups/assessments/read | Gets the properties of an assessment |
+> | Działanie | Microsoft.Migrate/projects/groups/assessments/write | Creates a new assessment or updates an existing assessment |
+> | Działanie | Microsoft.Migrate/projects/groups/delete | Deletes a group |
+> | Działanie | Microsoft.Migrate/projects/groups/read | Get the properties of a group |
+> | Działanie | Microsoft.Migrate/projects/groups/write | Creates a new group or updates an existing group |
+> | Działanie | Microsoft.Migrate/projects/keys/action | Gets shared keys for the project |
+> | Działanie | Microsoft.Migrate/projects/machines/read | Gets the properties of a machine |
+> | Działanie | Microsoft.Migrate/projects/read | Gets the properties of a project |
+> | Działanie | Microsoft.Migrate/projects/write | Creates a new project or updates an existing project |
+> | Działanie | Microsoft.Migrate/register/action | Registers Subscription with Microsoft.Migrate resource provider |
 
 ## <a name="microsoftmixedreality"></a>Microsoft.MixedReality
 
 > [!div class="mx-tdCol2BreakAll"]
 > | Typ akcji | Operacja | Opis |
 > | --- | --- | --- |
-> | Działanie | Microsoft. MixedReality/Register/Action | Rejestruje subskrypcję dla dostawcy zasobów rzeczywistości mieszanej. |
-> | Akcja dataaction | Microsoft. MixedReality/SpatialAnchorsAccounts/Create/Action | Utwórz kotwice przestrzenne |
-> | Akcja dataaction | Microsoft. MixedReality/SpatialAnchorsAccounts/Delete | Usuń kotwice przestrzenne |
-> | Akcja dataaction | Microsoft. MixedReality/SpatialAnchorsAccounts/odnajdywanie/odczyt | Odkryj kotwice w pobliżu |
-> | Akcja dataaction | Microsoft. MixedReality/SpatialAnchorsAccounts/właściwości/odczyt | Pobierz właściwości kotwic przestrzennych |
-> | Działanie | Microsoft. MixedReality/spatialAnchorsAccounts/Providers/Microsoft. Insights/diagnosticSettings/Read | Pobiera ustawienie diagnostyczne dla Microsoft. MixedReality/spatialAnchorsAccounts |
-> | Działanie | Microsoft. MixedReality/spatialAnchorsAccounts/Providers/Microsoft. Insights/diagnosticSettings/Write | Tworzy lub aktualizuje ustawienie diagnostyczne dla Microsoft. MixedReality/spatialAnchorsAccounts |
-> | Działanie | Microsoft. MixedReality/spatialAnchorsAccounts/Providers/Microsoft. Insights/metricDefinitions/Read | Pobiera dostępne metryki dla elementu Microsoft. MixedReality/spatialAnchorsAccounts |
-> | Akcja dataaction | Microsoft. MixedReality/SpatialAnchorsAccounts/Query/Read | Lokalizowanie kotwic przestrzennych |
-> | Akcja dataaction | Microsoft. MixedReality/SpatialAnchorsAccounts/submitdiag/Read | Przesyłanie danych diagnostycznych w celu poprawy jakości usługi zakotwiczeń przestrzennych platformy Azure |
-> | Akcja dataaction | Microsoft. MixedReality/SpatialAnchorsAccounts/Write | Aktualizuj właściwości kotwic przestrzennych |
+> | Działanie | Microsoft.MixedReality/register/action | Registers a subscription for the Mixed Reality resource provider. |
+> | Akcja dataaction | Microsoft.MixedReality/SpatialAnchorsAccounts/create/action | Create spatial anchors |
+> | Akcja dataaction | Microsoft.MixedReality/SpatialAnchorsAccounts/delete | Delete spatial anchors |
+> | Akcja dataaction | Microsoft.MixedReality/SpatialAnchorsAccounts/discovery/read | Discover nearby spatial anchors |
+> | Akcja dataaction | Microsoft.MixedReality/SpatialAnchorsAccounts/properties/read | Get properties of spatial anchors |
+> | Działanie | Microsoft.MixedReality/spatialAnchorsAccounts/providers/Microsoft.Insights/diagnosticSettings/read | Gets the diagnostic setting for Microsoft.MixedReality/spatialAnchorsAccounts |
+> | Działanie | Microsoft.MixedReality/spatialAnchorsAccounts/providers/Microsoft.Insights/diagnosticSettings/write | Creates or updates the diagnostic setting for Microsoft.MixedReality/spatialAnchorsAccounts |
+> | Działanie | Microsoft.MixedReality/spatialAnchorsAccounts/providers/Microsoft.Insights/metricDefinitions/read | Gets the available metrics for Microsoft.MixedReality/spatialAnchorsAccounts |
+> | Akcja dataaction | Microsoft.MixedReality/SpatialAnchorsAccounts/query/read | Locate spatial anchors |
+> | Akcja dataaction | Microsoft.MixedReality/SpatialAnchorsAccounts/submitdiag/read | Submit diagnostics data to help improve the quality of the Azure Spatial Anchors service |
+> | Akcja dataaction | Microsoft.MixedReality/SpatialAnchorsAccounts/write | Update spatial anchors properties |
 
 ## <a name="microsoftnetapp"></a>Microsoft.NetApp
 
 > [!div class="mx-tdCol2BreakAll"]
 > | Typ akcji | Operacja | Opis |
 > | --- | --- | --- |
-> | Działanie | Microsoft. NetApp/Locations/checkfilepathavailability/Action | Sprawdź, czy ścieżka pliku jest dostępna |
-> | Działanie | Microsoft. NetApp/Locations/checknameavailability/Action | Sprawdź, czy nazwa zasobu jest dostępna |
-> | Działanie | Microsoft.NetApp/locations/operationresults/read | Odczytuje zasób wyniku operacji. |
-> | Działanie | Microsoft.NetApp/locations/read | Odczytuje zasób sprawdzania dostępności. |
-> | Działanie | Microsoft. NetApp/netAppAccounts/backupPolicies/Delete | Usuwa zasób zasad kopii zapasowych. |
-> | Działanie | Microsoft. NetApp/netAppAccounts/backupPolicies/Read | Odczytuje zasób zasad kopii zapasowych. |
-> | Działanie | Microsoft. NetApp/netAppAccounts/backupPolicies/Write | Zapisuje zasób zasad kopii zapasowych. |
-> | Działanie | Microsoft.NetApp/netAppAccounts/capacityPools/delete | Usuwa zasób puli. |
-> | Działanie | Microsoft.NetApp/netAppAccounts/capacityPools/read | Odczytuje zasób puli. |
-> | Działanie | Microsoft. NetApp/netAppAccounts/capacityPools/woluminy/kopie zapasowe/usuwanie | Usuwa zasób kopii zapasowej. |
-> | Działanie | Microsoft. NetApp/netAppAccounts/capacityPools/woluminy/kopie zapasowe/odczyt | Odczytuje zasób kopii zapasowej. |
-> | Działanie | Microsoft. NetApp/netAppAccounts/capacityPools/woluminy/kopie zapasowe/zapis | Zapisuje zasób kopii zapasowej. |
-> | Działanie | Microsoft. NetApp/netAppAccounts/capacityPools/Volumes/Break/Action | Relacje replikacji woluminu Break |
-> | Działanie | Microsoft.NetApp/netAppAccounts/capacityPools/volumes/delete | Usuwa zasób woluminu. |
-> | Działanie | Microsoft.NetApp/netAppAccounts/capacityPools/volumes/mountTargets/read | Odczytuje zasób docelowy instalacji. |
-> | Działanie | Microsoft.NetApp/netAppAccounts/capacityPools/volumes/read | Odczytuje zasób woluminu. |
-> | Działanie | Microsoft. NetApp/netAppAccounts/capacityPools/Volumes/ReplicationStatus/Action | Odczytuje stan replikacji woluminu. |
-> | Działanie | Microsoft. NetApp/netAppAccounts/capacityPools/Volumes/Revert/Action | Przywróć wolumin do określonej migawki |
-> | Działanie | Microsoft.NetApp/netAppAccounts/capacityPools/volumes/snapshots/delete | Usuwa zasób migawki. |
-> | Działanie | Microsoft.NetApp/netAppAccounts/capacityPools/volumes/snapshots/read | Odczytuje zasób migawki. |
-> | Działanie | Microsoft.NetApp/netAppAccounts/capacityPools/volumes/snapshots/write | Zapisuje zasób migawki. |
-> | Działanie | Microsoft.NetApp/netAppAccounts/capacityPools/volumes/write | Zapisuje zasób woluminu. |
-> | Działanie | Microsoft.NetApp/netAppAccounts/capacityPools/write | Zapisuje zasób puli. |
-> | Działanie | Microsoft.NetApp/netAppAccounts/delete | Usuwa zasób konta. |
-> | Działanie | Microsoft.NetApp/netAppAccounts/read | Odczytuje zasób konta. |
-> | Działanie | Microsoft. NetApp/netAppAccounts/magazyny/odczyt | Odczytuje zasób magazynu. |
-> | Działanie | Microsoft.NetApp/netAppAccounts/write | Zapisuje zasób konta. |
-> | Działanie | Microsoft.NetApp/Operations/read | Odczytuje zasoby operacji. |
-> | Działanie | Microsoft. NetApp/Register/Action | Rejestruje subskrypcję za pomocą dostawcy zasobów Microsoft. NetApp |
-> | Działanie | Microsoft. NetApp/Unregister/Action | Wyrejestrowuje subskrypcję za pomocą dostawcy zasobów Microsoft. NetApp |
+> | Działanie | Microsoft.NetApp/locations/checkfilepathavailability/action | Check if file path is available |
+> | Działanie | Microsoft.NetApp/locations/checknameavailability/action | Check if resource name is available |
+> | Działanie | Microsoft.NetApp/locations/operationresults/read | Reads an operation result resource. |
+> | Działanie | Microsoft.NetApp/locations/read | Reads an availability check resource. |
+> | Działanie | Microsoft.NetApp/netAppAccounts/backupPolicies/delete | Deletes a backup policy resource. |
+> | Działanie | Microsoft.NetApp/netAppAccounts/backupPolicies/read | Reads a backup policy resource. |
+> | Działanie | Microsoft.NetApp/netAppAccounts/backupPolicies/write | Writes a backup policy resource. |
+> | Działanie | Microsoft.NetApp/netAppAccounts/capacityPools/delete | Deletes a pool resource. |
+> | Działanie | Microsoft.NetApp/netAppAccounts/capacityPools/read | Reads a pool resource. |
+> | Działanie | Microsoft.NetApp/netAppAccounts/capacityPools/volumes/backups/delete | Deletes a backup resource. |
+> | Działanie | Microsoft.NetApp/netAppAccounts/capacityPools/volumes/backups/read | Reads a backup resource. |
+> | Działanie | Microsoft.NetApp/netAppAccounts/capacityPools/volumes/backups/write | Writes a backup resource. |
+> | Działanie | Microsoft.NetApp/netAppAccounts/capacityPools/volumes/break/action | Break volume replication relations |
+> | Działanie | Microsoft.NetApp/netAppAccounts/capacityPools/volumes/delete | Deletes a volume resource. |
+> | Działanie | Microsoft.NetApp/netAppAccounts/capacityPools/volumes/mountTargets/read | Reads a mount target resource. |
+> | Działanie | Microsoft.NetApp/netAppAccounts/capacityPools/volumes/read | Reads a volume resource. |
+> | Działanie | Microsoft.NetApp/netAppAccounts/capacityPools/volumes/ReplicationStatus/action | Reads the statuses of the Volume Replication. |
+> | Działanie | Microsoft.NetApp/netAppAccounts/capacityPools/volumes/revert/action | Revert volume to specific snapshot |
+> | Działanie | Microsoft.NetApp/netAppAccounts/capacityPools/volumes/snapshots/delete | Deletes a snapshot resource. |
+> | Działanie | Microsoft.NetApp/netAppAccounts/capacityPools/volumes/snapshots/read | Reads a snapshot resource. |
+> | Działanie | Microsoft.NetApp/netAppAccounts/capacityPools/volumes/snapshots/write | Writes a snapshot resource. |
+> | Działanie | Microsoft.NetApp/netAppAccounts/capacityPools/volumes/write | Writes a volume resource. |
+> | Działanie | Microsoft.NetApp/netAppAccounts/capacityPools/write | Writes a pool resource. |
+> | Działanie | Microsoft.NetApp/netAppAccounts/delete | Deletes an account resource. |
+> | Działanie | Microsoft.NetApp/netAppAccounts/read | Reads an account resource. |
+> | Działanie | Microsoft.NetApp/netAppAccounts/vaults/read | Reads a vault resource. |
+> | Działanie | Microsoft.NetApp/netAppAccounts/write | Writes an account resource. |
+> | Działanie | Microsoft.NetApp/Operations/read | Reads an operation resources. |
+> | Działanie | Microsoft.NetApp/register/action | Registers Subscription with Microsoft.NetApp resource provider |
+> | Działanie | Microsoft.NetApp/unregister/action | Unregisters Subscription with Microsoft.NetApp resource provider |
 
 ## <a name="microsoftnetwork"></a>Microsoft.Network
 
 > [!div class="mx-tdCol2BreakAll"]
 > | Typ akcji | Operacja | Opis |
 > | --- | --- | --- |
-> | Działanie | Microsoft.Network/applicationGatewayAvailableRequestHeaders/read | Pobierz Application Gateway dostępne nagłówki żądania |
-> | Działanie | Microsoft.Network/applicationGatewayAvailableResponseHeaders/read | Pobierz Application Gateway dostępny nagłówek odpowiedzi |
-> | Działanie | Microsoft.Network/applicationGatewayAvailableServerVariables/read | Pobierz Application Gateway dostępne zmienne serwera |
-> | Działanie | Microsoft.Network/applicationGatewayAvailableSslOptions/predefinedPolicies/read | Application Gateway wstępnie zdefiniowanych zasad SSL |
-> | Działanie | Microsoft.Network/applicationGatewayAvailableSslOptions/read | Application Gateway dostępne opcje protokołu SSL |
-> | Działanie | Microsoft.Network/applicationGatewayAvailableWafRuleSets/read | Pobiera Application Gateway dostępne zestawy reguł WAF |
-> | Działanie | Microsoft.Network/applicationGateways/backendAddressPools/join/action | Sprzęga pulę adresów zaplecza bramy aplikacji. Brak alertów. |
-> | Działanie | Microsoft.Network/applicationGateways/backendhealth/action | Pobiera kondycję zaplecza bramy aplikacji |
-> | Działanie | Microsoft. Network/applicationGateways/Delete | Usuwa bramę aplikacji |
-> | Działanie | Microsoft. Network/applicationGateways/getBackendHealthOnDemand/akcja | Pobiera kondycję zaplecza bramy aplikacji na żądanie dla danego ustawienia http i puli zaplecza |
-> | Działanie | Microsoft.Network/applicationGateways/read | Pobiera bramę aplikacji |
-> | Działanie | Microsoft. Network/applicationGateways/Start/akcja | Uruchamia bramę aplikacji |
-> | Działanie | Microsoft. Network/applicationGateways/Stop/akcja | Kończy działanie bramy aplikacji |
-> | Działanie | Microsoft.Network/applicationGateways/write | Tworzy bramę aplikacji lub aktualizuje bramę aplikacji |
-> | Działanie | Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/delete | Usuwa zasady WAF Application Gateway |
-> | Działanie | Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/read | Pobiera zasady WAF Application Gateway |
-> | Działanie | Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/write | Application Gateway tworzy zasady WAFymi lub aktualizuje zasady Application Gateway WAF |
-> | Działanie | Microsoft.Network/applicationSecurityGroups/delete | Usuwa grupę zabezpieczeń aplikacji |
-> | Działanie | Microsoft.Network/applicationSecurityGroups/joinIpConfiguration/action | Przyłącza konfigurację IP do grup zabezpieczeń aplikacji. Brak alertów. |
-> | Działanie | Microsoft.Network/applicationSecurityGroups/joinNetworkSecurityRule/action | Przyłączanie reguły zabezpieczeń do grup zabezpieczeń aplikacji. Brak alertów. |
-> | Działanie | Microsoft.Network/applicationSecurityGroups/listIpConfigurations/action | Wyświetla konfiguracje protokołu IP w ApplicationSecurityGroup |
-> | Działanie | Microsoft.Network/applicationSecurityGroups/read | Pobiera identyfikator grupy zabezpieczeń aplikacji. |
-> | Działanie | Microsoft.Network/applicationSecurityGroups/write | Tworzy grupę zabezpieczeń aplikacji lub aktualizuje istniejącą grupę zabezpieczeń aplikacji. |
-> | Działanie | Microsoft.Network/azureFirewallFqdnTags/read | Pobiera Tagi FQDN zapory platformy Azure |
-> | Działanie | Microsoft. Network/azurefirewalls/Delete | Usuwanie zapory platformy Azure |
-> | Działanie | Microsoft.Network/azurefirewalls/read | Uzyskiwanie zapory platformy Azure |
-> | Działanie | Microsoft. Network/azurefirewalls/Write | Tworzy lub aktualizuje zaporę platformy Azure |
-> | Działanie | Microsoft. Network/bastionHosts/createbsl/akcja | Tworzy adresy URL możliwe do udostępniania dla maszyn wirtualnych w ramach bastionu i zwraca adresy URL |
-> | Działanie | Microsoft. Network/bastionHosts/Delete | Usuwa hosta bastionu |
-> | Działanie | Microsoft. Network/bastionHosts/deletebsl/akcja | Usuwa adresy URL możliwe do udostępnienia dla podanych maszyn wirtualnych w ramach bastionu |
-> | Działanie | Microsoft. Network/bastionHosts/disconnectactivesessions/akcja | Odłączanie określonych aktywnych sesji na hoście bastionu |
-> | Działanie | Microsoft. Network/bastionHosts/getactivesessions/akcja | Pobieranie aktywnych sesji na hoście bastionu |
-> | Działanie | Microsoft. Network/bastionHosts/getbsl/akcja | Zwraca adresy URL możliwe do udostępniania dla określonych maszyn wirtualnych w podsieci bastionu pod warunkiem, że ich adresy URL są tworzone |
+> | Działanie | Microsoft.Network/applicationGatewayAvailableRequestHeaders/read | Get Application Gateway available Request Headers |
+> | Działanie | Microsoft.Network/applicationGatewayAvailableResponseHeaders/read | Get Application Gateway available Response Header |
+> | Działanie | Microsoft.Network/applicationGatewayAvailableServerVariables/read | Get Application Gateway available Server Variables |
+> | Działanie | Microsoft.Network/applicationGatewayAvailableSslOptions/predefinedPolicies/read | Application Gateway Ssl Predefined Policy |
+> | Działanie | Microsoft.Network/applicationGatewayAvailableSslOptions/read | Application Gateway available Ssl Options |
+> | Działanie | Microsoft.Network/applicationGatewayAvailableWafRuleSets/read | Gets Application Gateway Available Waf Rule Sets |
+> | Działanie | Microsoft.Network/applicationGateways/backendAddressPools/join/action | Joins an application gateway backend address pool. Brak alertów. |
+> | Działanie | Microsoft.Network/applicationGateways/backendhealth/action | Gets an application gateway backend health |
+> | Działanie | Microsoft.Network/applicationGateways/delete | Deletes an application gateway |
+> | Działanie | Microsoft.Network/applicationGateways/getBackendHealthOnDemand/action | Gets an application gateway backend health on demand for given http setting and backend pool |
+> | Działanie | Microsoft.Network/applicationGateways/read | Gets an application gateway |
+> | Działanie | Microsoft.Network/applicationGateways/start/action | Starts an application gateway |
+> | Działanie | Microsoft.Network/applicationGateways/stop/action | Stops an application gateway |
+> | Działanie | Microsoft.Network/applicationGateways/write | Creates an application gateway or updates an application gateway |
+> | Działanie | Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/delete | Deletes an Application Gateway WAF policy |
+> | Działanie | Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/read | Gets an Application Gateway WAF policy |
+> | Działanie | Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/write | Creates an Application Gateway WAF policy or updates an Application Gateway WAF policy |
+> | Działanie | Microsoft.Network/applicationSecurityGroups/delete | Deletes an Application Security Group |
+> | Działanie | Microsoft.Network/applicationSecurityGroups/joinIpConfiguration/action | Joins an IP Configuration to Application Security Groups. Brak alertów. |
+> | Działanie | Microsoft.Network/applicationSecurityGroups/joinNetworkSecurityRule/action | Joins a Security Rule to Application Security Groups. Brak alertów. |
+> | Działanie | Microsoft.Network/applicationSecurityGroups/listIpConfigurations/action | Lists IP Configurations in the ApplicationSecurityGroup |
+> | Działanie | Microsoft.Network/applicationSecurityGroups/read | Gets an Application Security Group ID. |
+> | Działanie | Microsoft.Network/applicationSecurityGroups/write | Creates an Application Security Group, or updates an existing Application Security Group. |
+> | Działanie | Microsoft.Network/azureFirewallFqdnTags/read | Gets Azure Firewall FQDN Tags |
+> | Działanie | Microsoft.Network/azurefirewalls/delete | Delete Azure Firewall |
+> | Działanie | Microsoft.Network/azurefirewalls/read | Get Azure Firewall |
+> | Działanie | Microsoft.Network/azurefirewalls/write | Creates or updates an Azure Firewall |
+> | Działanie | Microsoft.Network/bastionHosts/createbsl/action | Creates shareable urls for the VMs under a bastion and returns the urls |
+> | Działanie | Microsoft.Network/bastionHosts/delete | Deletes a Bastion Host |
+> | Działanie | Microsoft.Network/bastionHosts/deletebsl/action | Deletes shareable urls for the provided VMs under a bastion |
+> | Działanie | Microsoft.Network/bastionHosts/disconnectactivesessions/action | Disconnect given Active Sessions in the Bastion Host |
+> | Działanie | Microsoft.Network/bastionHosts/getactivesessions/action | Get Active Sessions in the Bastion Host |
+> | Działanie | Microsoft.Network/bastionHosts/getbsl/action | Zwraca adresy URL możliwe do udostępniania dla określonych maszyn wirtualnych w podsieci bastionu pod warunkiem, że ich adresy URL są tworzone |
 > | Działanie | Microsoft.Network/bastionHosts/read | Pobiera hosta bastionu |
 > | Działanie | Microsoft. Network/bastionHosts/Write | Tworzenie lub aktualizowanie hosta bastionu |
 > | Działanie | Microsoft.Network/bgpServiceCommunities/read | Pobierz społeczności usługi BGP |
@@ -4051,100 +4051,100 @@ Operacje dostawcy zasobów są zawsze rozwijane. Aby uzyskać najnowsze operacje
 > | Działanie | Microsoft.Network/loadBalancers/frontendIPConfigurations/read | Pobiera definicję konfiguracji adresu IP frontonu modułu równoważenia obciążenia |
 > | Działanie | Microsoft.Network/loadBalancers/inboundNatPools/join/action | Przyłącza do puli NAT dla ruchu przychodzącego modułu równoważenia obciążenia. Brak alertów. |
 > | Działanie | Microsoft.Network/loadBalancers/inboundNatPools/read | Pobiera definicję puli NAT dla ruchu przychodzącego modułu równoważenia obciążenia |
-> | Działanie | Microsoft.Network/loadBalancers/inboundNatRules/delete | Usuwa regułę NAT dla ruchu przychodzącego modułu równoważenia obciążenia |
-> | Działanie | Microsoft.Network/loadBalancers/inboundNatRules/join/action | Przyłącza do przychodzącej reguły NAT modułu równoważenia obciążenia. Brak alertów. |
-> | Działanie | Microsoft.Network/loadBalancers/inboundNatRules/read | Pobiera definicję reguły NAT dla ruchu przychodzącego modułu równoważenia obciążenia |
-> | Działanie | Microsoft.Network/loadBalancers/inboundNatRules/write | Tworzy regułę NAT dla ruchu przychodzącego modułu równoważenia obciążenia lub aktualizuje istniejącą regułę NAT dla ruchu przychodzącego modułu równoważenia obciążenia |
-> | Działanie | Microsoft.Network/loadBalancers/loadBalancingRules/read | Pobiera definicję reguły równoważenia obciążenia modułu równoważenia obciążenia |
-> | Działanie | Microsoft.Network/loadBalancers/networkInterfaces/read | Pobiera odwołania do wszystkich interfejsów sieciowych w ramach modułu równoważenia obciążenia |
-> | Działanie | Microsoft.Network/loadBalancers/outboundRules/read | Pobiera definicję reguły ruchu wychodzącego modułu równoważenia obciążenia |
-> | Działanie | Microsoft.Network/loadBalancers/probes/join/action | Umożliwia korzystanie z sond modułu równoważenia obciążenia. Na przykład za pomocą tej właściwości uprawnienia healthProbe zestawu skalowania maszyn wirtualnych można odwoływać się do sondy. Brak alertów. |
-> | Działanie | Microsoft.Network/loadBalancers/probes/read | Pobiera sondę modułu równoważenia obciążenia |
-> | Działanie | Microsoft.Network/loadBalancers/read | Pobiera definicję modułu równoważenia obciążenia |
-> | Działanie | Microsoft.Network/loadBalancers/virtualMachines/read | Pobiera odwołania do wszystkich maszyn wirtualnych w ramach modułu równoważenia obciążenia |
-> | Działanie | Microsoft.Network/loadBalancers/write | Tworzy moduł równoważenia obciążenia lub aktualizuje istniejący moduł równoważenia obciążenia |
-> | Działanie | Microsoft. Network/localnetworkgateways/Delete | Usuwa LocalNetworkGateway |
-> | Działanie | Microsoft.Network/localnetworkgateways/read | Pobiera LocalNetworkGateway |
-> | Działanie | Microsoft.Network/localnetworkgateways/write | Tworzy lub aktualizuje istniejący LocalNetworkGateway |
-> | Działanie | Microsoft.Network/locations/autoApprovedPrivateLinkServices/read | Pobiera usługi linków prywatnych z autozatwierdzeniem |
-> | Działanie | Microsoft.Network/locations/availableDelegations/read | Pobiera dostępne delegacje |
-> | Działanie | Microsoft.Network/locations/availablePrivateEndpointTypes/read | Pobiera dostępne zasoby prywatnego punktu końcowego |
-> | Działanie | Microsoft. Network/Locations/availableServiceAliases/Read | Pobiera dostępne aliasy usługi |
-> | Działanie | Microsoft. Network/Locations/bareMetalTenants/Action | Przydziela lub sprawdza poprawność dzierżawy systemu operacyjnego |
-> | Działanie | Microsoft.Network/locations/checkAcceleratedNetworkingSupport/action | Sprawdza obsługę przyspieszonej sieci |
-> | Działanie | Microsoft.Network/locations/checkDnsNameAvailability/read | Sprawdza, czy etykieta DNS jest dostępna w określonej lokalizacji |
-> | Działanie | Microsoft.Network/locations/checkPrivateLinkServiceVisibility/action | Sprawdza widoczność usługi link prywatny |
-> | Działanie | Microsoft.Network/locations/operationResults/read | Pobiera wynik operacji asynchronicznej operacji POST lub DELETE |
-> | Działanie | Microsoft.Network/locations/operations/read | Pobiera zasób operacji reprezentujący stan operacji asynchronicznej |
-> | Działanie | Microsoft.Network/locations/serviceTags/read | Pobierz Tagi usługi |
-> | Działanie | Microsoft.Network/locations/supportedVirtualMachineSizes/read | Pobiera obsługiwane rozmiary maszyn wirtualnych |
-> | Działanie | Microsoft.Network/locations/usages/read | Pobiera metryki użycia zasobów |
-> | Działanie | Microsoft.Network/locations/virtualNetworkAvailableEndpointServices/read | Pobiera listę dostępnych Virtual Network usług punktu końcowego |
-> | Działanie | Microsoft.Network/networkIntentPolicies/delete | Usuwa zasady dotyczące opcji sieci |
-> | Działanie | Microsoft.Network/networkIntentPolicies/read | Pobiera opis zasad przeznaczenie sieci |
-> | Działanie | Microsoft.Network/networkIntentPolicies/write | Tworzy zasady założeń sieciowych lub aktualizuje istniejące zasady założeń sieci |
-> | Działanie | Microsoft.Network/networkInterfaces/delete | Usuwa interfejs sieciowy |
-> | Działanie | Microsoft.Network/networkInterfaces/effectiveNetworkSecurityGroups/action | Pobieranie sieciowych grup zabezpieczeń skonfigurowanych dla interfejsu sieciowego maszyny wirtualnej |
-> | Działanie | Microsoft.Network/networkInterfaces/effectiveRouteTable/action | Pobieranie tabeli tras skonfigurowanych dla interfejsu sieciowego maszyny wirtualnej |
-> | Działanie | Microsoft. Network/networkInterfaces/ipconfiguration/sprzężenie/akcja | Umożliwia dołączenie do konfiguracji protokołu IP interfejsu sieciowego. Brak alertów. |
-> | Działanie | Microsoft.Network/networkInterfaces/ipconfigurations/read | Pobiera definicję konfiguracji protokołu IP interfejsu sieciowego.  |
-> | Działanie | Microsoft.Network/networkInterfaces/join/action | Przyłączanie maszyny wirtualnej do interfejsu sieciowego. Brak alertów. |
-> | Działanie | Microsoft.Network/networkInterfaces/loadBalancers/read | Pobiera wszystkie usługi równoważenia obciążenia, do których należy interfejs sieciowy |
-> | Działanie | Microsoft.Network/networkInterfaces/read | Pobiera definicję interfejsu sieciowego.  |
-> | Działanie | Microsoft.Network/networkInterfaces/tapConfigurations/delete | Usuwa konfigurację naciskania interfejsu sieciowego. |
-> | Działanie | Microsoft.Network/networkInterfaces/tapConfigurations/read | Pobiera konfigurację naciskania interfejsu sieciowego. |
-> | Działanie | Microsoft.Network/networkInterfaces/tapConfigurations/write | Tworzy interfejs sieciowy naciśnij pozycję Konfiguracja lub aktualizuje istniejący interfejs sieciowy naciśnij pozycję Konfiguracja. |
-> | Działanie | Microsoft.Network/networkInterfaces/write | Tworzy interfejs sieciowy lub aktualizuje istniejący interfejs sieciowy.  |
-> | Działanie | Microsoft.Network/networkProfiles/delete | Usuwa profil sieciowy |
-> | Działanie | Microsoft.Network/networkProfiles/read | Pobiera profil sieciowy |
-> | Działanie | Microsoft.Network/networkProfiles/removeContainers/action | Usuwa kontenery |
-> | Działanie | Microsoft.Network/networkProfiles/setContainers/action | Ustawia kontenery |
-> | Działanie | Microsoft.Network/networkProfiles/setNetworkInterfaces/action | Ustawia interfejsy sieciowe kontenerów |
-> | Działanie | Microsoft.Network/networkProfiles/write | Tworzy lub aktualizuje profil sieciowy |
-> | Działanie | Microsoft.Network/networkSecurityGroups/defaultSecurityRules/read | Pobiera domyślną definicję reguły zabezpieczeń |
-> | Działanie | Microsoft.Network/networkSecurityGroups/delete | Usuwa sieciową grupę zabezpieczeń |
-> | Działanie | Microsoft.Network/networkSecurityGroups/join/action | Przyłącza do sieciowej grupy zabezpieczeń. Brak alertów. |
-> | Działanie | Microsoft.Network/networkSecurityGroups/read | Pobiera definicję sieciowej grupy zabezpieczeń |
-> | Działanie | Microsoft.Network/networkSecurityGroups/securityRules/delete | Usuwa regułę zabezpieczeń |
-> | Działanie | Microsoft.Network/networkSecurityGroups/securityRules/read | Pobiera definicję reguły zabezpieczeń |
-> | Działanie | Microsoft.Network/networkSecurityGroups/securityRules/write | Tworzy regułę zabezpieczeń lub aktualizuje istniejącą regułę zabezpieczeń |
-> | Działanie | Microsoft.Network/networkSecurityGroups/write | Tworzy sieciową grupę zabezpieczeń lub aktualizuje istniejącą sieciową grupę zabezpieczeń |
-> | Działanie | Microsoft.Network/networkWatchers/availableProvidersList/action | Zwraca wszystkich dostępnych usługodawców internetowych dla określonego regionu świadczenia usługi Azure. |
-> | Działanie | Microsoft.Network/networkWatchers/azureReachabilityReport/action | Zwraca wynik względnego opóźnienia dla usługodawców internetowych z określonej lokalizacji do regionów świadczenia usługi Azure. |
-> | Działanie | Microsoft.Network/networkWatchers/configureFlowLog/action | Konfiguruje rejestrowanie przepływu dla zasobu docelowego. |
-> | Działanie | Microsoft.Network/networkWatchers/connectionMonitors/delete | Usuwa monitor połączeń |
-> | Działanie | Microsoft.Network/networkWatchers/connectionMonitors/query/action | Zbadaj łączność monitorowania między określonymi punktami końcowymi |
-> | Działanie | Microsoft.Network/networkWatchers/connectionMonitors/read | Pobierz szczegóły monitora połączeń |
-> | Działanie | Microsoft.Network/networkWatchers/connectionMonitors/start/action | Rozpocznij Monitorowanie łączności między określonymi punktami końcowymi |
-> | Działanie | Microsoft.Network/networkWatchers/connectionMonitors/stop/action | Zatrzymaj/Wstrzymaj Monitorowanie łączności między określonymi punktami końcowymi |
-> | Działanie | Microsoft.Network/networkWatchers/connectionMonitors/write | Tworzy monitor połączeń |
-> | Działanie | Microsoft.Network/networkWatchers/connectivityCheck/action | Weryfikuje możliwość ustanowienia bezpośredniego połączenia TCP z maszyny wirtualnej do danego punktu końcowego, w tym innej maszyny wirtualnej lub dowolnego serwera zdalnego. |
-> | Działanie | Microsoft.Network/networkWatchers/delete | Usuwa obserwatora sieciowego |
-> | Działanie | Microsoft. Network/networkWatchers/flowLogs/Delete | Usuwa dziennik przepływu |
-> | Działanie | Microsoft. Network/networkWatchers/flowLogs/odczyt | Pobierz szczegóły dziennika przepływu |
-> | Działanie | Microsoft. Network/networkWatchers/flowLogs/Write | Tworzy dziennik przepływu |
-> | Działanie | Microsoft. Network/networkWatchers/ipFlowVerify/akcja | Zwraca czy pakiet jest dozwolony, czy odrzucany do lub z określonego miejsca docelowego. |
-> | Działanie | Microsoft.Network/networkWatchers/lenses/delete | Usuwa soczewkę |
-> | Działanie | Microsoft.Network/networkWatchers/lenses/query/action | Zbadaj ruch sieciowy monitorowania w określonym punkcie końcowym |
-> | Działanie | Microsoft.Network/networkWatchers/lenses/read | Pobierz szczegóły obiektywu |
-> | Działanie | Microsoft.Network/networkWatchers/lenses/start/action | Rozpocznij monitorowanie ruchu sieciowego w określonym punkcie końcowym |
-> | Działanie | Microsoft.Network/networkWatchers/lenses/stop/action | Zatrzymaj/Wstrzymaj monitorowanie ruchu sieciowego w określonym punkcie końcowym |
-> | Działanie | Microsoft.Network/networkWatchers/lenses/write | Tworzy soczewkę |
-> | Działanie | Microsoft.Network/networkWatchers/networkConfigurationDiagnostic/action | Diagnostyka konfiguracji sieci. |
-> | Działanie | Microsoft.Network/networkWatchers/nextHop/action | W przypadku określonego docelowego i docelowego adresu IP Zwróć wartość typu następnego przeskoku i Następny adres IP. |
-> | Działanie | Microsoft.Network/networkWatchers/packetCaptures/delete | Usuwa przechwycenie pakietu |
-> | Działanie | Microsoft.Network/networkWatchers/packetCaptures/queryStatus/action | Pobiera informacje o właściwościach i stanie zasobu przechwytywania pakietów. |
-> | Działanie | Microsoft.Network/networkWatchers/packetCaptures/read | Pobierz definicję przechwytywania pakietów |
-> | Działanie | Microsoft.Network/networkWatchers/packetCaptures/stop/action | Zatrzymaj uruchomioną sesję przechwytywania pakietów. |
-> | Działanie | Microsoft.Network/networkWatchers/packetCaptures/write | Tworzy przechwycenie pakietu |
-> | Działanie | Microsoft.Network/networkWatchers/pingMeshes/delete | Usuwa element PingMesh |
-> | Działanie | Microsoft.Network/networkWatchers/pingMeshes/read | Pobierz szczegóły PingMesh |
-> | Działanie | Microsoft. Network/networkWatchers/pingMeshes/Start/akcja | Rozpocznij PingMesh między określonymi maszynami wirtualnymi |
-> | Działanie | Microsoft. Network/networkWatchers/pingMeshes/akcja | Zatrzymaj PingMesh między określonymi maszynami wirtualnymi |
-> | Działanie | Microsoft.Network/networkWatchers/pingMeshes/write | Tworzy element PingMesh |
-> | Działanie | Microsoft.Network/networkWatchers/queryConnectionMonitors/action | Połączenie wsadowe monitorowania zapytań między określonymi punktami końcowymi |
-> | Działanie | Microsoft.Network/networkWatchers/queryFlowLogStatus/action | Pobiera stan rejestrowania przepływu dla zasobu. |
-> | Działanie | Microsoft.Network/networkWatchers/queryTroubleshootResult/action | Pobiera wynik rozwiązywania problemów z wcześniej uruchomionej lub aktualnie uruchomionej operacji rozwiązywania problemów. |
+> | Działanie | Microsoft.Network/loadBalancers/inboundNatRules/delete | Deletes a load balancer inbound nat rule |
+> | Działanie | Microsoft.Network/loadBalancers/inboundNatRules/join/action | Joins a load balancer inbound nat rule. Brak alertów. |
+> | Działanie | Microsoft.Network/loadBalancers/inboundNatRules/read | Gets a load balancer inbound nat rule definition |
+> | Działanie | Microsoft.Network/loadBalancers/inboundNatRules/write | Creates a load balancer inbound nat rule or updates an existing load balancer inbound nat rule |
+> | Działanie | Microsoft.Network/loadBalancers/loadBalancingRules/read | Gets a load balancer load balancing rule definition |
+> | Działanie | Microsoft.Network/loadBalancers/networkInterfaces/read | Gets references to all the network interfaces under a load balancer |
+> | Działanie | Microsoft.Network/loadBalancers/outboundRules/read | Gets a load balancer outbound rule definition |
+> | Działanie | Microsoft.Network/loadBalancers/probes/join/action | Allows using probes of a load balancer. For example, with this permission healthProbe property of VM scale set can reference the probe. Brak alertów. |
+> | Działanie | Microsoft.Network/loadBalancers/probes/read | Gets a load balancer probe |
+> | Działanie | Microsoft.Network/loadBalancers/read | Gets a load balancer definition |
+> | Działanie | Microsoft.Network/loadBalancers/virtualMachines/read | Gets references to all the virtual machines under a load balancer |
+> | Działanie | Microsoft.Network/loadBalancers/write | Creates a load balancer or updates an existing load balancer |
+> | Działanie | Microsoft.Network/localnetworkgateways/delete | Deletes LocalNetworkGateway |
+> | Działanie | Microsoft.Network/localnetworkgateways/read | Gets LocalNetworkGateway |
+> | Działanie | Microsoft.Network/localnetworkgateways/write | Creates or updates an existing LocalNetworkGateway |
+> | Działanie | Microsoft.Network/locations/autoApprovedPrivateLinkServices/read | Gets Auto Approved Private Link Services |
+> | Działanie | Microsoft.Network/locations/availableDelegations/read | Gets Available Delegations |
+> | Działanie | Microsoft.Network/locations/availablePrivateEndpointTypes/read | Gets available Private Endpoint resources |
+> | Działanie | Microsoft.Network/locations/availableServiceAliases/read | Gets Available Service Aliases |
+> | Działanie | Microsoft.Network/locations/bareMetalTenants/action | Allocates or validates a Bare Metal Tenant |
+> | Działanie | Microsoft.Network/locations/checkAcceleratedNetworkingSupport/action | Checks Accelerated Networking support |
+> | Działanie | Microsoft.Network/locations/checkDnsNameAvailability/read | Checks if dns label is available at the specified location |
+> | Działanie | Microsoft.Network/locations/checkPrivateLinkServiceVisibility/action | Checks Private Link Service Visibility |
+> | Działanie | Microsoft.Network/locations/operationResults/read | Gets operation result of an async POST or DELETE operation |
+> | Działanie | Microsoft.Network/locations/operations/read | Gets operation resource that represents status of an asynchronous operation |
+> | Działanie | Microsoft.Network/locations/serviceTags/read | Get Service Tags |
+> | Działanie | Microsoft.Network/locations/supportedVirtualMachineSizes/read | Gets supported virtual machines sizes |
+> | Działanie | Microsoft.Network/locations/usages/read | Gets the resources usage metrics |
+> | Działanie | Microsoft.Network/locations/virtualNetworkAvailableEndpointServices/read | Gets a list of available Virtual Network Endpoint Services |
+> | Działanie | Microsoft.Network/networkIntentPolicies/delete | Deletes an Network Intent Policy |
+> | Działanie | Microsoft.Network/networkIntentPolicies/read | Gets an Network Intent Policy Description |
+> | Działanie | Microsoft.Network/networkIntentPolicies/write | Creates an Network Intent Policy or updates an existing Network Intent Policy |
+> | Działanie | Microsoft.Network/networkInterfaces/delete | Deletes a network interface |
+> | Działanie | Microsoft.Network/networkInterfaces/effectiveNetworkSecurityGroups/action | Get Network Security Groups configured On Network Interface Of The Vm |
+> | Działanie | Microsoft.Network/networkInterfaces/effectiveRouteTable/action | Get Route Table configured On Network Interface Of The Vm |
+> | Działanie | Microsoft.Network/networkInterfaces/ipconfigurations/join/action | Joins a Network Interface IP Configuration. Brak alertów. |
+> | Działanie | Microsoft.Network/networkInterfaces/ipconfigurations/read | Gets a network interface ip configuration definition.  |
+> | Działanie | Microsoft.Network/networkInterfaces/join/action | Joins a Virtual Machine to a network interface. Brak alertów. |
+> | Działanie | Microsoft.Network/networkInterfaces/loadBalancers/read | Gets all the load balancers that the network interface is part of |
+> | Działanie | Microsoft.Network/networkInterfaces/read | Gets a network interface definition.  |
+> | Działanie | Microsoft.Network/networkInterfaces/tapConfigurations/delete | Deletes a Network Interface Tap Configuration. |
+> | Działanie | Microsoft.Network/networkInterfaces/tapConfigurations/read | Gets a Network Interface Tap Configuration. |
+> | Działanie | Microsoft.Network/networkInterfaces/tapConfigurations/write | Creates a Network Interface Tap Configuration or updates an existing Network Interface Tap Configuration. |
+> | Działanie | Microsoft.Network/networkInterfaces/write | Creates a network interface or updates an existing network interface.  |
+> | Działanie | Microsoft.Network/networkProfiles/delete | Deletes a Network Profile |
+> | Działanie | Microsoft.Network/networkProfiles/read | Gets a Network Profile |
+> | Działanie | Microsoft.Network/networkProfiles/removeContainers/action | Removes Containers |
+> | Działanie | Microsoft.Network/networkProfiles/setContainers/action | Sets Containers |
+> | Działanie | Microsoft.Network/networkProfiles/setNetworkInterfaces/action | Sets Container Network Interfaces |
+> | Działanie | Microsoft.Network/networkProfiles/write | Creates or updates a Network Profile |
+> | Działanie | Microsoft.Network/networkSecurityGroups/defaultSecurityRules/read | Gets a default security rule definition |
+> | Działanie | Microsoft.Network/networkSecurityGroups/delete | Deletes a network security group |
+> | Działanie | Microsoft.Network/networkSecurityGroups/join/action | Joins a network security group. Brak alertów. |
+> | Działanie | Microsoft.Network/networkSecurityGroups/read | Gets a network security group definition |
+> | Działanie | Microsoft.Network/networkSecurityGroups/securityRules/delete | Deletes a security rule |
+> | Działanie | Microsoft.Network/networkSecurityGroups/securityRules/read | Gets a security rule definition |
+> | Działanie | Microsoft.Network/networkSecurityGroups/securityRules/write | Creates a security rule or updates an existing security rule |
+> | Działanie | Microsoft.Network/networkSecurityGroups/write | Creates a network security group or updates an existing network security group |
+> | Działanie | Microsoft.Network/networkWatchers/availableProvidersList/action | Returns all available internet service providers for a specified Azure region. |
+> | Działanie | Microsoft.Network/networkWatchers/azureReachabilityReport/action | Returns the relative latency score for internet service providers from a specified location to Azure regions. |
+> | Działanie | Microsoft.Network/networkWatchers/configureFlowLog/action | Configures flow logging for a target resource. |
+> | Działanie | Microsoft.Network/networkWatchers/connectionMonitors/delete | Deletes a Connection Monitor |
+> | Działanie | Microsoft.Network/networkWatchers/connectionMonitors/query/action | Query monitoring connectivity between specified endpoints |
+> | Działanie | Microsoft.Network/networkWatchers/connectionMonitors/read | Get Connection Monitor details |
+> | Działanie | Microsoft.Network/networkWatchers/connectionMonitors/start/action | Start monitoring connectivity between specified endpoints |
+> | Działanie | Microsoft.Network/networkWatchers/connectionMonitors/stop/action | Stop/pause monitoring connectivity between specified endpoints |
+> | Działanie | Microsoft.Network/networkWatchers/connectionMonitors/write | Creates a Connection Monitor |
+> | Działanie | Microsoft.Network/networkWatchers/connectivityCheck/action | Verifies the possibility of establishing a direct TCP connection from a virtual machine to a given endpoint including another VM or an arbitrary remote server. |
+> | Działanie | Microsoft.Network/networkWatchers/delete | Deletes a network watcher |
+> | Działanie | Microsoft.Network/networkWatchers/flowLogs/delete | Deletes a Flow Log |
+> | Działanie | Microsoft.Network/networkWatchers/flowLogs/read | Get Flow Log details |
+> | Działanie | Microsoft.Network/networkWatchers/flowLogs/write | Creates a Flow Log |
+> | Działanie | Microsoft.Network/networkWatchers/ipFlowVerify/action | Returns whether the packet is allowed or denied to or from a particular destination. |
+> | Działanie | Microsoft.Network/networkWatchers/lenses/delete | Deletes a Lens |
+> | Działanie | Microsoft.Network/networkWatchers/lenses/query/action | Query monitoring network traffic on a specified endpoint |
+> | Działanie | Microsoft.Network/networkWatchers/lenses/read | Get Lens details |
+> | Działanie | Microsoft.Network/networkWatchers/lenses/start/action | Start monitoring network traffic on a specified endpoint |
+> | Działanie | Microsoft.Network/networkWatchers/lenses/stop/action | Stop/pause monitoring network traffic on a specified endpoint |
+> | Działanie | Microsoft.Network/networkWatchers/lenses/write | Creates a Lens |
+> | Działanie | Microsoft.Network/networkWatchers/networkConfigurationDiagnostic/action | Diagnostic of network configuration. |
+> | Działanie | Microsoft.Network/networkWatchers/nextHop/action | For a specified target and destination IP address, return the next hop type and next hope IP address. |
+> | Działanie | Microsoft.Network/networkWatchers/packetCaptures/delete | Deletes a packet capture |
+> | Działanie | Microsoft.Network/networkWatchers/packetCaptures/queryStatus/action | Gets information about properties and status of a packet capture resource. |
+> | Działanie | Microsoft.Network/networkWatchers/packetCaptures/read | Get the packet capture definition |
+> | Działanie | Microsoft.Network/networkWatchers/packetCaptures/stop/action | Stop the running packet capture session. |
+> | Działanie | Microsoft.Network/networkWatchers/packetCaptures/write | Creates a packet capture |
+> | Działanie | Microsoft.Network/networkWatchers/pingMeshes/delete | Deletes a PingMesh |
+> | Działanie | Microsoft.Network/networkWatchers/pingMeshes/read | Get PingMesh details |
+> | Działanie | Microsoft.Network/networkWatchers/pingMeshes/start/action | Start PingMesh between specified VMs |
+> | Działanie | Microsoft.Network/networkWatchers/pingMeshes/stop/action | Stop PingMesh between specified VMs |
+> | Działanie | Microsoft.Network/networkWatchers/pingMeshes/write | Creates a PingMesh |
+> | Działanie | Microsoft.Network/networkWatchers/queryConnectionMonitors/action | Batch query monitoring connectivity between specified endpoints |
+> | Działanie | Microsoft.Network/networkWatchers/queryFlowLogStatus/action | Gets the status of flow logging on a resource. |
+> | Działanie | Microsoft.Network/networkWatchers/queryTroubleshootResult/action | Gets the troubleshooting result from the previously run or currently running troubleshooting operation. |
 > | Działanie | Microsoft.Network/networkWatchers/read | Pobierz definicję obserwatora sieciowego |
 > | Działanie | Microsoft.Network/networkWatchers/securityGroupView/action | Wyświetl skonfigurowane i efektywne reguły sieciowej grupy zabezpieczeń zastosowane na maszynie wirtualnej. |
 > | Działanie | Microsoft.Network/networkWatchers/topology/action | Pobiera widok poziomu sieci zasobów i ich relacje z grupą zasobów. |
@@ -5925,7 +5925,7 @@ Operacje dostawcy zasobów są zawsze rozwijane. Aby uzyskać najnowsze operacje
 > | Działanie | Microsoft.Storage/storageAccounts/privateEndpointConnections/delete | Usuń połączenie prywatnego punktu końcowego |
 > | Działanie | Microsoft.Storage/storageAccounts/privateEndpointConnections/read | Pobierz połączenie prywatnego punktu końcowego |
 > | Działanie | Microsoft.Storage/storageAccounts/privateEndpointConnections/write | Umieść połączenie prywatnego punktu końcowego |
-> | Działanie | Microsoft. Storage/storageAccounts/PrivateEndpointConnectionsApproval/akcja | Zatwierdzanie połączeń prywatnych punktów końcowych |
+> | Działanie | Microsoft. Storage/storageAccounts/PrivateEndpointConnectionsApproval/akcja | Approve Private Endpoint Connections |
 > | Działanie | Microsoft.Storage/storageAccounts/privateLinkResources/read | Pobierz StorageAccount groupids |
 > | Działanie | Microsoft. Storage/storageAccounts/queueServices/Queues/Delete | Zwraca wynik usunięcia kolejki. |
 > | Akcja dataaction | Microsoft. Storage/storageAccounts/queueServices/Queues/messages/Add/Action | Zwraca wynik dodania komunikatu |
@@ -5998,7 +5998,7 @@ Operacje dostawcy zasobów są zawsze rozwijane. Aby uzyskać najnowsze operacje
 > | Działanie | Microsoft.StorSimple/managers/accessControlRecords/read | Wyświetla lub pobiera Access Control rekordy |
 > | Działanie | Microsoft. StorSimple/kierownicy/accessControlRecords/Write | Tworzenie lub aktualizowanie rekordów Access Control |
 > | Działanie | Microsoft.StorSimple/managers/alerts/read | Wyświetla lub pobiera alerty |
-> | Działanie | Microsoft.StorSimple/managers/backups/read | Wyświetla lub Pobiera zestaw kopii zapasowych |
+> | Działanie | Microsoft.StorSimple/managers/backups/read | Lists or gets the Backup Set |
 > | Działanie | Microsoft. StorSimple/menedżerowie/bandwidthSettings/Usuń | Usuwa istniejące ustawienia przepustowości (tylko seria 8000) |
 > | Działanie | Microsoft.StorSimple/managers/bandwidthSettings/operationResults/read | Wyświetl listę wyników operacji |
 > | Działanie | Microsoft.StorSimple/managers/bandwidthSettings/read | Wyświetl listę ustawień przepustowości (tylko seria 8000) |
@@ -6013,85 +6013,85 @@ Operacje dostawcy zasobów są zawsze rozwijane. Aby uzyskać najnowsze operacje
 > | Działanie | Microsoft.StorSimple/managers/devices/alertSettings/operationResults/read | Wyświetla lub pobiera wyniki operacji |
 > | Działanie | Microsoft.StorSimple/managers/devices/alertSettings/read | Wyświetla lub pobiera ustawienia alertu |
 > | Działanie | Microsoft. StorSimple/kierownicy/urządzenia/alertSettings/zapis | Utwórz lub zaktualizuj ustawienia alertu |
-> | Działanie | Microsoft. StorSimple/kierownicy/urządzenia/authorizeForServiceEncryptionKeyRollover/akcja | Autoryzuj do przerzucania kluczy szyfrowania usługi |
-> | Działanie | Microsoft. StorSimple/menedżerowie/urządzenia/backupPolicies/kopia zapasowa/akcja | Wykonaj ręczną kopię zapasową, aby utworzyć kopię zapasową wszystkich woluminów chronionych przez zasady. |
-> | Działanie | Microsoft. StorSimple/menedżerowie/urządzenia/backupPolicies/Usuń | Usuwa istniejące zasady tworzenia kopii zapasowych (tylko seria 8000) |
+> | Działanie | Microsoft.StorSimple/managers/devices/authorizeForServiceEncryptionKeyRollover/action | Authorize for Service Encryption Key Rollover of Devices |
+> | Działanie | Microsoft.StorSimple/managers/devices/backupPolicies/backup/action | Take a manual backup to create an on-demand backup of all the volumes protected by the policy. |
+> | Działanie | Microsoft.StorSimple/managers/devices/backupPolicies/delete | Deletes an existing Backup Polices (8000 Series Only) |
 > | Działanie | Microsoft.StorSimple/managers/devices/backupPolicies/operationResults/read | Wyświetl listę wyników operacji |
-> | Działanie | Microsoft. StorSimple/menedżerowie/urządzenia/backupPolicies/odczyt | Utwórz listę zasad tworzenia kopii zapasowych (tylko seria 8000) |
-> | Działanie | Microsoft. StorSimple/menedżerowie/urządzenia/backupPolicies/harmonogramy/usuwanie | Usuwa istniejące harmonogramy |
+> | Działanie | Microsoft.StorSimple/managers/devices/backupPolicies/read | List the Backup Polices (8000 Series Only) |
+> | Działanie | Microsoft.StorSimple/managers/devices/backupPolicies/schedules/delete | Deletes an existing Schedules |
 > | Działanie | Microsoft.StorSimple/managers/devices/backupPolicies/schedules/operationResults/read | Wyświetl listę wyników operacji |
-> | Działanie | Microsoft. StorSimple/menedżerowie/urządzenia/backupPolicies/harmonogramy/odczyt | Wyświetlanie listy harmonogramów |
-> | Działanie | Microsoft. StorSimple/menedżerowie/urządzenia/backupPolicies/harmonogramy/zapis | Tworzy harmonogramy nowych lub aktualizacji |
-> | Działanie | Microsoft. StorSimple/kierownicy/urządzenia/backupPolicies/zapis | Tworzy nowe lub aktualizuje zasady tworzenia kopii zapasowych (tylko seria 8000) |
-> | Działanie | Microsoft. StorSimple/menedżerowie/urządzenia/kopie zapasowe/usuwanie | Usuwa zestaw kopii zapasowych |
-> | Działanie | Microsoft. StorSimple/menedżerowie/urządzenia/kopie zapasowe/elementy/klon/akcja | Klonowanie udziału lub woluminu przy użyciu elementu kopii zapasowej. |
+> | Działanie | Microsoft.StorSimple/managers/devices/backupPolicies/schedules/read | List the Schedules |
+> | Działanie | Microsoft.StorSimple/managers/devices/backupPolicies/schedules/write | Creates a new or updates Schedules |
+> | Działanie | Microsoft.StorSimple/managers/devices/backupPolicies/write | Creates a new or updates Backup Polices (8000 Series Only) |
+> | Działanie | Microsoft.StorSimple/managers/devices/backups/delete | Deletes the Backup Set |
+> | Działanie | Microsoft.StorSimple/managers/devices/backups/elements/clone/action | Clone a share or volume using a backup element. |
 > | Działanie | Microsoft.StorSimple/managers/devices/backups/elements/operationResults/read | Wyświetla lub pobiera wyniki operacji |
 > | Działanie | Microsoft.StorSimple/managers/devices/backups/operationResults/read | Wyświetla lub pobiera wyniki operacji |
-> | Działanie | Microsoft.StorSimple/managers/devices/backups/read | Wyświetla lub Pobiera zestaw kopii zapasowych |
-> | Działanie | Microsoft. StorSimple/menedżerowie/urządzenia/kopie zapasowe/przywracanie/akcja | Przywróć wszystkie woluminy z zestawu kopii zapasowych. |
-> | Działanie | Microsoft.StorSimple/managers/devices/backupScheduleGroups/delete | Usuwa grupy harmonogramów kopii zapasowych |
+> | Działanie | Microsoft.StorSimple/managers/devices/backups/read | Lists or gets the Backup Set |
+> | Działanie | Microsoft.StorSimple/managers/devices/backups/restore/action | Restore all the volumes from a backup set. |
+> | Działanie | Microsoft.StorSimple/managers/devices/backupScheduleGroups/delete | Deletes the Backup Schedule Groups |
 > | Działanie | Microsoft.StorSimple/managers/devices/backupScheduleGroups/operationResults/read | Wyświetla lub pobiera wyniki operacji |
-> | Działanie | Microsoft.StorSimple/managers/devices/backupScheduleGroups/read | Wyświetla lub pobiera grupy harmonogramów kopii zapasowych |
-> | Działanie | Microsoft. StorSimple/kierownicy/urządzenia/backupScheduleGroups/zapis | Tworzenie lub aktualizowanie grup harmonogramów kopii zapasowych |
-> | Działanie | Microsoft.StorSimple/managers/devices/chapSettings/delete | Usuwa ustawienia protokołu CHAP |
+> | Działanie | Microsoft.StorSimple/managers/devices/backupScheduleGroups/read | Lists or gets the Backup Schedule Groups |
+> | Działanie | Microsoft.StorSimple/managers/devices/backupScheduleGroups/write | Create or update the Backup Schedule Groups |
+> | Działanie | Microsoft.StorSimple/managers/devices/chapSettings/delete | Deletes the Chap Settings |
 > | Działanie | Microsoft.StorSimple/managers/devices/chapSettings/operationResults/read | Wyświetla lub pobiera wyniki operacji |
-> | Działanie | Microsoft.StorSimple/managers/devices/chapSettings/read | Wyświetla lub pobiera ustawienia protokołu CHAP |
-> | Działanie | Microsoft. StorSimple/kierownicy/urządzenia/chapSettings/zapis | Utwórz lub zaktualizuj ustawienia protokołu CHAP |
-> | Działanie | Microsoft. StorSimple/menedżerowie/urządzenia/dezaktywowanie/akcja | Dezaktywuje urządzenie. |
-> | Działanie | Microsoft.StorSimple/managers/devices/delete | Usuwa urządzenia |
-> | Działanie | Microsoft.StorSimple/managers/devices/disks/read | Wyświetla lub pobiera dyski |
-> | Działanie | Microsoft. StorSimple/kierownicy/urządzenia/pobieranie/akcja | Pobierz aktualizacje dla urządzenia. |
-> | Działanie | Microsoft. StorSimple/kierownicy/urządzenia/tryb failover/akcja | Przełączenie urządzenia w tryb failover. |
+> | Działanie | Microsoft.StorSimple/managers/devices/chapSettings/read | Lists or gets the Chap Settings |
+> | Działanie | Microsoft.StorSimple/managers/devices/chapSettings/write | Create or update the Chap Settings |
+> | Działanie | Microsoft.StorSimple/managers/devices/deactivate/action | Deactivates a device. |
+> | Działanie | Microsoft.StorSimple/managers/devices/delete | Deletes the Devices |
+> | Działanie | Microsoft.StorSimple/managers/devices/disks/read | Lists or gets the Disks |
+> | Działanie | Microsoft.StorSimple/managers/devices/download/action | Download updates for a device. |
+> | Działanie | Microsoft.StorSimple/managers/devices/failover/action | Failover of the device. |
 > | Działanie | Microsoft.StorSimple/managers/devices/failover/operationResults/read | Wyświetla lub pobiera wyniki operacji |
-> | Działanie | Microsoft.StorSimple/managers/devices/failoverTargets/read | Wyświetla lub Pobiera elementy docelowe trybu failover urządzeń |
-> | Działanie | Microsoft. StorSimple/menedżerowie/urządzenia/fileservers/kopia zapasowa/akcja | Utwórz kopię zapasową serwera plików. |
-> | Działanie | Microsoft.StorSimple/managers/devices/fileservers/delete | Usuwa serwery plików |
+> | Działanie | Microsoft.StorSimple/managers/devices/failoverTargets/read | Lists or gets the Failover targets of the devices |
+> | Działanie | Microsoft.StorSimple/managers/devices/fileservers/backup/action | Take backup of an File Server. |
+> | Działanie | Microsoft.StorSimple/managers/devices/fileservers/delete | Deletes the File Servers |
 > | Działanie | Microsoft.StorSimple/managers/devices/fileservers/metrics/read | Wyświetla lub pobiera metryki |
 > | Działanie | Microsoft.StorSimple/managers/devices/fileservers/metricsDefinitions/read | Wyświetla lub pobiera definicje metryk |
 > | Działanie | Microsoft.StorSimple/managers/devices/fileservers/operationResults/read | Wyświetla lub pobiera wyniki operacji |
 > | Działanie | Microsoft.StorSimple/managers/devices/fileservers/read | Wyświetla lub pobiera serwery plików |
-> | Działanie | Microsoft. StorSimple/menedżerowie/urządzenia/fileservers/udziały/usuwanie | Usuwa udziały |
+> | Działanie | Microsoft.StorSimple/managers/devices/fileservers/shares/delete | Deletes the Shares |
 > | Działanie | Microsoft.StorSimple/managers/devices/fileservers/shares/metrics/read | Wyświetla lub pobiera metryki |
 > | Działanie | Microsoft.StorSimple/managers/devices/fileservers/shares/metricsDefinitions/read | Wyświetla lub pobiera definicje metryk |
 > | Działanie | Microsoft.StorSimple/managers/devices/fileservers/shares/operationResults/read | Wyświetla lub pobiera wyniki operacji |
-> | Działanie | Microsoft. StorSimple/menedżerowie/urządzenia/fileservers/udziały/odczyt | Wyświetla lub pobiera udziały |
-> | Działanie | Microsoft. StorSimple/menedżerowie/urządzenia/fileservers/udziały/zapis | Utwórz lub zaktualizuj udziały |
-> | Działanie | Microsoft. StorSimple/kierownicy/urządzenia/fileservers/zapis | Utwórz lub zaktualizuj serwery plików |
-> | Działanie | Microsoft.StorSimple/managers/devices/hardwareComponentGroups/changeControllerPowerState/action | Zmień stan elektrowni sprzętowych grup składników |
+> | Działanie | Microsoft.StorSimple/managers/devices/fileservers/shares/read | Wyświetla lub pobiera udziały |
+> | Działanie | Microsoft.StorSimple/managers/devices/fileservers/shares/write | Create or update the Shares |
+> | Działanie | Microsoft.StorSimple/managers/devices/fileservers/write | Create or update the File Servers |
+> | Działanie | Microsoft.StorSimple/managers/devices/hardwareComponentGroups/changeControllerPowerState/action | Change controller power state of hardware component groups |
 > | Działanie | Microsoft.StorSimple/managers/devices/hardwareComponentGroups/operationResults/read | Wyświetl listę wyników operacji |
-> | Działanie | Microsoft. StorSimple/menedżerowie/urządzenia/hardwareComponentGroups/odczyt | Wyświetl listę grup składników sprzętowych |
-> | Działanie | Microsoft. StorSimple/menedżerowie/urządzenia/instalacja/akcja | Zainstaluj aktualizacje na urządzeniu. |
-> | Działanie | Microsoft. StorSimple/kierownicy/urządzenia/installUpdates/akcja | Instaluje aktualizacje na urządzeniach (tylko seria 8000). |
-> | Działanie | Microsoft. StorSimple/menedżerowie/urządzenia/iscsiservers/kopia zapasowa/akcja | Utwórz kopię zapasową serwera iSCSI. |
-> | Działanie | Microsoft. StorSimple/menedżerowie/urządzenia/iscsiservers/Usuń | Usuwa serwery iSCSI |
-> | Działanie | Microsoft. StorSimple/menedżerowie/urządzenia/iscsiservers/dyski/usuwanie | Usuwa dyski |
+> | Działanie | Microsoft.StorSimple/managers/devices/hardwareComponentGroups/read | List the Hardware Component Groups |
+> | Działanie | Microsoft.StorSimple/managers/devices/install/action | Install updates on a device. |
+> | Działanie | Microsoft.StorSimple/managers/devices/installUpdates/action | Installs updates on the devices (8000 Series Only). |
+> | Działanie | Microsoft.StorSimple/managers/devices/iscsiservers/backup/action | Take backup of an iSCSI server. |
+> | Działanie | Microsoft.StorSimple/managers/devices/iscsiservers/delete | Deletes the iSCSI Servers |
+> | Działanie | Microsoft.StorSimple/managers/devices/iscsiservers/disks/delete | Deletes the Disks |
 > | Działanie | Microsoft.StorSimple/managers/devices/iscsiservers/disks/metrics/read | Wyświetla lub pobiera metryki |
 > | Działanie | Microsoft.StorSimple/managers/devices/iscsiservers/disks/metricsDefinitions/read | Wyświetla lub pobiera definicje metryk |
 > | Działanie | Microsoft.StorSimple/managers/devices/iscsiservers/disks/operationResults/read | Wyświetla lub pobiera wyniki operacji |
-> | Działanie | Microsoft. StorSimple/kierownicy/urządzenia/iscsiservers/dyski/odczyt | Wyświetla lub pobiera dyski |
-> | Działanie | Microsoft. StorSimple/kierownicy/Devices/iscsiservers/disks/Write | Utwórz lub zaktualizuj dyski |
+> | Działanie | Microsoft.StorSimple/managers/devices/iscsiservers/disks/read | Lists or gets the Disks |
+> | Działanie | Microsoft.StorSimple/managers/devices/iscsiservers/disks/write | Create or update the Disks |
 > | Działanie | Microsoft.StorSimple/managers/devices/iscsiservers/metrics/read | Wyświetla lub pobiera metryki |
-> | Działanie | Microsoft. StorSimple/menedżerowie/urządzenia/iscsiservers/metricsDefinitions/odczyt | Wyświetla lub pobiera definicje metryk |
-> | Działanie | Microsoft. StorSimple/menedżerowie/urządzenia/iscsiservers/operationResults/odczyt | Wyświetla lub pobiera wyniki operacji |
-> | Działanie | Microsoft. StorSimple/menedżerowie/urządzenia/iscsiservers/odczyt | Wyświetla lub pobiera serwery iSCSI |
-> | Działanie | Microsoft. StorSimple/kierownicy/urządzenia/iscsiservers/zapis | Utwórz lub zaktualizuj serwery iSCSI |
-> | Działanie | Microsoft. StorSimple/menedżerowie/urządzenia/zadania/Anuluj/akcja | Anuluj uruchomione zadanie |
+> | Działanie | Microsoft.StorSimple/managers/devices/iscsiservers/metricsDefinitions/read | Wyświetla lub pobiera definicje metryk |
+> | Działanie | Microsoft.StorSimple/managers/devices/iscsiservers/operationResults/read | Wyświetla lub pobiera wyniki operacji |
+> | Działanie | Microsoft.StorSimple/managers/devices/iscsiservers/read | Wyświetla lub pobiera serwery iSCSI |
+> | Działanie | Microsoft.StorSimple/managers/devices/iscsiservers/write | Create or update the iSCSI Servers |
+> | Działanie | Microsoft.StorSimple/managers/devices/jobs/cancel/action | Cancel a running job |
 > | Działanie | Microsoft.StorSimple/managers/devices/jobs/operationResults/read | Wyświetl listę wyników operacji |
 > | Działanie | Microsoft.StorSimple/managers/devices/jobs/read | Wyświetla lub pobiera zadania |
-> | Działanie | Microsoft. StorSimple/kierownicy/urządzenia/listFailoverSets/akcja | Wyświetl listę zestawów trybu failover dla istniejącego urządzenia (tylko seria 8000). |
-> | Działanie | Microsoft. StorSimple/kierownicy/urządzenia/listFailoverTargets/akcja | Utwórz listę elementów docelowych trybu failover dla urządzeń (tylko seria 8000). |
+> | Działanie | Microsoft.StorSimple/managers/devices/listFailoverSets/action | List the failover sets for an existing device (8000 Series Only). |
+> | Działanie | Microsoft.StorSimple/managers/devices/listFailoverTargets/action | List failover targets of the devices (8000 Series Only). |
 > | Działanie | Microsoft.StorSimple/managers/devices/metrics/read | Wyświetla lub pobiera metryki |
 > | Działanie | Microsoft.StorSimple/managers/devices/metricsDefinitions/read | Wyświetla lub pobiera definicje metryk |
-> | Działanie | Microsoft.StorSimple/managers/devices/migrationSourceConfigurations/confirmMigration/action | Potwierdza pomyślną migrację i jej zatwierdzenie. |
-> | Działanie | Microsoft.StorSimple/managers/devices/migrationSourceConfigurations/confirmMigrationStatus/read | Wyświetlenie listy Potwierdź stan migracji |
-> | Działanie | Microsoft.StorSimple/managers/devices/migrationSourceConfigurations/fetchConfirmMigrationStatus/action | Pobierz potwierdzenie stanu migracji. |
-> | Działanie | Microsoft.StorSimple/managers/devices/migrationSourceConfigurations/fetchMigrationEstimate/action | Pobierz stan zadania szacowania migracji. |
-> | Działanie | Microsoft.StorSimple/managers/devices/migrationSourceConfigurations/fetchMigrationStatus/action | Pobierz stan migracji. |
-> | Działanie | Microsoft.StorSimple/managers/devices/migrationSourceConfigurations/import/action | Importuj konfiguracje źródeł do migracji |
-> | Działanie | Microsoft.StorSimple/managers/devices/migrationSourceConfigurations/migrationEstimate/read | Wystaw oszacowanie migracji |
-> | Działanie | Microsoft.StorSimple/managers/devices/migrationSourceConfigurations/migrationStatus/read | Wyświetl stan migracji |
+> | Działanie | Microsoft.StorSimple/managers/devices/migrationSourceConfigurations/confirmMigration/action | Confirms a successful migration and commit it. |
+> | Działanie | Microsoft.StorSimple/managers/devices/migrationSourceConfigurations/confirmMigrationStatus/read | List the Confirm Migration Status |
+> | Działanie | Microsoft.StorSimple/managers/devices/migrationSourceConfigurations/fetchConfirmMigrationStatus/action | Fetch the confirm status of migration. |
+> | Działanie | Microsoft.StorSimple/managers/devices/migrationSourceConfigurations/fetchMigrationEstimate/action | Fetch the status for the migration estimation job. |
+> | Działanie | Microsoft.StorSimple/managers/devices/migrationSourceConfigurations/fetchMigrationStatus/action | Fetch the status for the migration. |
+> | Działanie | Microsoft.StorSimple/managers/devices/migrationSourceConfigurations/import/action | Import source configurations for migration |
+> | Działanie | Microsoft.StorSimple/managers/devices/migrationSourceConfigurations/migrationEstimate/read | List the Migration Estimate |
+> | Działanie | Microsoft.StorSimple/managers/devices/migrationSourceConfigurations/migrationStatus/read | List the Migration Status |
 > | Działanie | Microsoft.StorSimple/managers/devices/migrationSourceConfigurations/operationResults/read | Wyświetl listę wyników operacji |
-> | Działanie | Microsoft. StorSimple/menedżerowie/urządzenia/migrationSourceConfigurations/startMigration/akcja | Rozpocznij migrację przy użyciu konfiguracji źródła |
+> | Działanie | Microsoft.StorSimple/managers/devices/migrationSourceConfigurations/startMigration/action | Start migration using source configurations |
 > | Działanie | Microsoft.StorSimple/managers/devices/migrationSourceConfigurations/startMigrationEstimate/action | Rozpocznij zadanie, aby oszacować czas trwania procesu migracji. |
 > | Działanie | Microsoft.StorSimple/managers/devices/networkSettings/operationResults/read | Wyświetl listę wyników operacji |
 > | Działanie | Microsoft.StorSimple/managers/devices/networkSettings/read | Wyświetla lub pobiera ustawienia sieci |
@@ -6143,7 +6143,7 @@ Operacje dostawcy zasobów są zawsze rozwijane. Aby uzyskać najnowsze operacje
 > | Działanie | Microsoft.StorSimple/managers/listPublicEncryptionKey/action | Wyświetl listę publicznych kluczy szyfrowania StorSimple Menedżer urządzeń. |
 > | Działanie | Microsoft.StorSimple/managers/metrics/read | Wyświetla lub pobiera metryki |
 > | Działanie | Microsoft.StorSimple/managers/metricsDefinitions/read | Wyświetla lub pobiera definicje metryk |
-> | Działanie | Microsoft.StorSimple/managers/migrateClassicToResourceManager/action | Migrowanie klasyczne do Menedżer zasobów menedżerów |
+> | Działanie | Microsoft.StorSimple/managers/migrateClassicToResourceManager/action | Migrowanie z wersji klasycznej do Menedżer zasobów |
 > | Działanie | Microsoft.StorSimple/managers/migrationSourceConfigurations/read | Wyświetl listę konfiguracji źródła migracji (tylko seria 8000) |
 > | Działanie | Microsoft.StorSimple/managers/operationResults/read | Wyświetla lub pobiera wyniki operacji |
 > | Działanie | Microsoft. StorSimple/kierownicy/provisionCloudAppliance/akcja | Utwórz nowe urządzenie w chmurze. |
@@ -6173,49 +6173,49 @@ Operacje dostawcy zasobów są zawsze rozwijane. Aby uzyskać najnowsze operacje
 > | Działanie | Microsoft. StreamAnalytics/Register/Action | Zarejestruj subskrypcję za pomocą dostawcy zasobów Stream Analytics |
 > | Działanie | Microsoft.StreamAnalytics/streamingjobs/Delete | Usuwanie zadania Stream Analytics |
 > | Działanie | Microsoft.StreamAnalytics/streamingjobs/functions/Delete | Usuwanie funkcji zadania Stream Analytics |
-> | Działanie | Microsoft. StreamAnalytics/streamingjobs/Functions/operationresults/Read | Wyniki operacji odczytu dla funkcji zadania Stream Analytics |
-> | Działanie | Microsoft. StreamAnalytics/streamingjobs/Functions/Read | Odczytaj Stream Analytics funkcji zadania |
-> | Działanie | Microsoft. StreamAnalytics/streamingjobs/Functions/RetrieveDefaultDefinition/Action | Pobieranie domyślnej definicji funkcji zadania Stream Analytics |
-> | Działanie | Microsoft. StreamAnalytics/streamingjobs/Functions/test/Action | Funkcja zadania Stream Analytics testowego |
-> | Działanie | Microsoft. StreamAnalytics/streamingjobs/Functions/Write | Zapisz funkcję zadania Stream Analytics |
-> | Działanie | Microsoft. StreamAnalytics/streamingjobs/Input/Delete | Usuń dane wejściowe zadania Stream Analytics |
-> | Działanie | Microsoft. StreamAnalytics/streamingjobs/Inputs/operationresults/Read | Wyniki operacji odczytu dla danych wejściowych zadania Stream Analytics |
-> | Działanie | Microsoft. StreamAnalytics/streamingjobs/Inputs/Read | Odczytaj Stream Analytics dane wejściowe zadania |
-> | Działanie | Microsoft. StreamAnalytics/streamingjobs/Input/Sample/Action | Przykładowe dane wejściowe zadania Stream Analytics |
-> | Działanie | Microsoft. StreamAnalytics/streamingjobs/Inputs/test/Action | Dane wejściowe zadania Stream Analytics testu |
-> | Działanie | Microsoft. StreamAnalytics/streamingjobs/Inputs/Write | Zapisz dane wejściowe zadania Stream Analytics |
-> | Działanie | Microsoft. StreamAnalytics/streamingjobs/metricdefinitions/Read | Odczytaj definicje metryk |
-> | Działanie | Microsoft. StreamAnalytics/streamingjobs/operationresults/Read | Odczytaj wyniki operacji dla zadania Stream Analytics |
-> | Działanie | Microsoft.StreamAnalytics/streamingjobs/outputs/Delete | Usuń dane wyjściowe zadania Stream Analytics |
-> | Działanie | Microsoft. StreamAnalytics/streamingjobs/Output/operationresults/Read | Wyniki operacji odczytu dla danych wyjściowych zadania Stream Analytics |
-> | Działanie | Microsoft. StreamAnalytics/streamingjobs/Output/odczyt | Odczytaj Stream Analytics dane wyjściowe zadania |
-> | Działanie | Microsoft. StreamAnalytics/streamingjobs/wyjście/test/akcja | Testowanie danych wyjściowych zadania Stream Analytics |
-> | Działanie | Microsoft. StreamAnalytics/streamingjobs/Output/Write | Zapisz dane wyjściowe zadania Stream Analytics |
-> | Działanie | Microsoft. StreamAnalytics/streamingjobs/Providers/Microsoft. Insights/diagnosticSettings/Read | Odczytaj ustawienie diagnostyczne. |
-> | Działanie | Microsoft. StreamAnalytics/streamingjobs/Providers/Microsoft. Insights/diagnosticSettings/Write | Zapisz ustawienie diagnostyczne. |
-> | Działanie | Microsoft. StreamAnalytics/streamingjobs/Providers/Microsoft. Insights/logDefinitions/Read | Pobiera dostępne dzienniki dla streamingjobs |
-> | Działanie | Microsoft. StreamAnalytics/streamingjobs/Providers/Microsoft. Insights/metricDefinitions/Read | Pobiera dostępne metryki dla streamingjobs |
-> | Działanie | Microsoft. StreamAnalytics/streamingjobs/PublishEdgePackage/akcja | Publikowanie pakietu Edge dla zadania Stream Analytics |
-> | Działanie | Microsoft. StreamAnalytics/streamingjobs/odczyt | Odczytaj Stream Analytics zadania |
-> | Działanie | Microsoft. StreamAnalytics/streamingjobs/Skala/akcja | Skalowanie zadania Stream Analytics |
-> | Działanie | Microsoft. StreamAnalytics/streamingjobs/Start/akcja | Uruchamianie zadania usługi Stream Analytics |
-> | Działanie | Microsoft. StreamAnalytics/streamingjobs/Stop/akcja | Zatrzymaj zadanie Stream Analytics |
-> | Działanie | Microsoft.StreamAnalytics/streamingjobs/transformations/Delete | Usuń transformację zadania Stream Analytics |
-> | Działanie | Microsoft. StreamAnalytics/streamingjobs/Transformations/Read | Odczytaj Stream Analytics przekształcenie zadania |
-> | Działanie | Microsoft. StreamAnalytics/streamingjobs/Transformations/Write | Zapisz transformację zadania Stream Analytics |
-> | Działanie | Microsoft. StreamAnalytics/streamingjobs/Write | Stream Analytics zadania zapisu |
+> | Działanie | Microsoft. StreamAnalytics/streamingjobs/Functions/operationresults/Read | Read operation results for Stream Analytics Job Function |
+> | Działanie | Microsoft.StreamAnalytics/streamingjobs/functions/Read | Read Stream Analytics Job Function |
+> | Działanie | Microsoft.StreamAnalytics/streamingjobs/functions/RetrieveDefaultDefinition/action | Retrieve Default Definition of a Stream Analytics Job Function |
+> | Działanie | Microsoft.StreamAnalytics/streamingjobs/functions/Test/action | Test Stream Analytics Job Function |
+> | Działanie | Microsoft.StreamAnalytics/streamingjobs/functions/Write | Write Stream Analytics Job Function |
+> | Działanie | Microsoft.StreamAnalytics/streamingjobs/inputs/Delete | Delete Stream Analytics Job Input |
+> | Działanie | Microsoft.StreamAnalytics/streamingjobs/inputs/operationresults/Read | Read operation results for Stream Analytics Job Input |
+> | Działanie | Microsoft.StreamAnalytics/streamingjobs/inputs/Read | Read Stream Analytics Job Input |
+> | Działanie | Microsoft.StreamAnalytics/streamingjobs/inputs/Sample/action | Sample Stream Analytics Job Input |
+> | Działanie | Microsoft.StreamAnalytics/streamingjobs/inputs/Test/action | Test Stream Analytics Job Input |
+> | Działanie | Microsoft.StreamAnalytics/streamingjobs/inputs/Write | Write Stream Analytics Job Input |
+> | Działanie | Microsoft.StreamAnalytics/streamingjobs/metricdefinitions/Read | Read Metric Definitions |
+> | Działanie | Microsoft.StreamAnalytics/streamingjobs/operationresults/Read | Read operation results for Stream Analytics Job |
+> | Działanie | Microsoft.StreamAnalytics/streamingjobs/outputs/Delete | Delete Stream Analytics Job Output |
+> | Działanie | Microsoft.StreamAnalytics/streamingjobs/outputs/operationresults/Read | Read operation results for Stream Analytics Job Output |
+> | Działanie | Microsoft.StreamAnalytics/streamingjobs/outputs/Read | Read Stream Analytics Job Output |
+> | Działanie | Microsoft.StreamAnalytics/streamingjobs/outputs/Test/action | Test Stream Analytics Job Output |
+> | Działanie | Microsoft.StreamAnalytics/streamingjobs/outputs/Write | Write Stream Analytics Job Output |
+> | Działanie | Microsoft.StreamAnalytics/streamingjobs/providers/Microsoft.Insights/diagnosticSettings/read | Read diagnostic setting. |
+> | Działanie | Microsoft.StreamAnalytics/streamingjobs/providers/Microsoft.Insights/diagnosticSettings/write | Write diagnostic setting. |
+> | Działanie | Microsoft.StreamAnalytics/streamingjobs/providers/Microsoft.Insights/logDefinitions/read | Gets the available logs for streamingjobs |
+> | Działanie | Microsoft.StreamAnalytics/streamingjobs/providers/Microsoft.Insights/metricDefinitions/read | Gets the available metrics for streamingjobs |
+> | Działanie | Microsoft.StreamAnalytics/streamingjobs/PublishEdgePackage/action | Publish edge package for Stream Analytics Job |
+> | Działanie | Microsoft.StreamAnalytics/streamingjobs/Read | Read Stream Analytics Job |
+> | Działanie | Microsoft.StreamAnalytics/streamingjobs/Scale/action | Scale Stream Analytics Job |
+> | Działanie | Microsoft.StreamAnalytics/streamingjobs/Start/action | Uruchamianie zadania usługi Stream Analytics |
+> | Działanie | Microsoft.StreamAnalytics/streamingjobs/Stop/action | Stop Stream Analytics Job |
+> | Działanie | Microsoft.StreamAnalytics/streamingjobs/transformations/Delete | Delete Stream Analytics Job Transformation |
+> | Działanie | Microsoft.StreamAnalytics/streamingjobs/transformations/Read | Read Stream Analytics Job Transformation |
+> | Działanie | Microsoft.StreamAnalytics/streamingjobs/transformations/Write | Write Stream Analytics Job Transformation |
+> | Działanie | Microsoft.StreamAnalytics/streamingjobs/Write | Write Stream Analytics Job |
 
 ## <a name="microsoftsubscription"></a>Microsoft.Subscription
 
 > [!div class="mx-tdCol2BreakAll"]
 > | Typ akcji | Operacja | Opis |
 > | --- | --- | --- |
-> | Działanie | Microsoft. Subscription/Anuluj/akcja | Anuluje subskrypcję |
-> | Działanie | Microsoft. subskrypcja/subskrypcja/akcja | Tworzenie subskrypcji platformy Azure |
-> | Działanie | Microsoft. Subscription/rejestr/akcja | Rejestruje subskrypcję za pomocą dostawcy zasobów Microsoft. Subscription |
-> | Działanie | Microsoft. Subscription/zmiana nazwy/akcji | Zmienia nazwę subskrypcji |
-> | Działanie | Microsoft.Subscription/SubscriptionDefinitions/read | Pobierz definicję subskrypcji platformy Azure w grupie zarządzania. |
-> | Działanie | Microsoft.Subscription/SubscriptionDefinitions/write | Tworzenie definicji subskrypcji platformy Azure |
+> | Działanie | Microsoft.Subscription/cancel/action | Cancels the Subscription |
+> | Działanie | Microsoft.Subscription/CreateSubscription/action | Tworzenie subskrypcji platformy Azure |
+> | Działanie | Microsoft.Subscription/register/action | Registers Subscription with Microsoft.Subscription resource provider |
+> | Działanie | Microsoft.Subscription/rename/action | Renames the subscription |
+> | Działanie | Microsoft.Subscription/SubscriptionDefinitions/read | Get an Azure subscription definition within a management group. |
+> | Działanie | Microsoft.Subscription/SubscriptionDefinitions/write | Create an Azure subscription definition |
 
 ## <a name="microsoftsupport"></a>Microsoft.Support
 
@@ -6231,20 +6231,20 @@ Operacje dostawcy zasobów są zawsze rozwijane. Aby uzyskać najnowsze operacje
 > [!div class="mx-tdCol2BreakAll"]
 > | Typ akcji | Operacja | Opis |
 > | --- | --- | --- |
-> | Działanie | Microsoft. TimeSeriesInsights/Environments/accesspolicies/Delete | Usuwa zasady dostępu. |
-> | Działanie | Microsoft.TimeSeriesInsights/environments/accesspolicies/read | Pobierz właściwości zasad dostępu. |
-> | Działanie | Microsoft.TimeSeriesInsights/environments/accesspolicies/write | Tworzy nowe zasady dostępu dla środowiska lub aktualizuje istniejące zasady dostępu. |
-> | Działanie | Microsoft. TimeSeriesInsights/Environments/Delete | Usuwa środowisko. |
-> | Działanie | Microsoft. TimeSeriesInsights/Environments/eventsources/Delete | Usuwa Źródło zdarzenia. |
-> | Działanie | Microsoft. TimeSeriesInsights/Environments/eventsources/Read | Pobierz właściwości źródła zdarzeń. |
-> | Działanie | Microsoft. TimeSeriesInsights/Environments/eventsources/Write | Tworzy nowe źródło zdarzenia dla środowiska lub aktualizuje istniejące źródło zdarzeń. |
-> | Działanie | Microsoft.TimeSeriesInsights/environments/read | Pobierz właściwości środowiska. |
-> | Działanie | Microsoft.TimeSeriesInsights/environments/referencedatasets/delete | Usuwa zestaw danych referencyjnych. |
-> | Działanie | Microsoft.TimeSeriesInsights/environments/referencedatasets/read | Pobierz właściwości zestawu danych referencyjnych. |
-> | Działanie | Microsoft.TimeSeriesInsights/environments/referencedatasets/write | Tworzy nowy zestaw danych referencyjnych dla środowiska lub aktualizuje istniejący zestaw danych referencyjnych. |
-> | Działanie | Microsoft.TimeSeriesInsights/environments/status/read | Pobierz stan środowiska, stan skojarzonych operacji, takich jak ruch przychodzący. |
-> | Działanie | Microsoft. TimeSeriesInsights/Environments/Write | Tworzy nowe środowisko lub aktualizuje istniejące środowisko. |
-> | Działanie | Microsoft. TimeSeriesInsights/Register/Action | Rejestruje subskrypcję dostawcy zasobów Time Series Insights i umożliwia tworzenie środowisk Time Series Insights. |
+> | Działanie | Microsoft.TimeSeriesInsights/environments/accesspolicies/delete | Deletes the access policy. |
+> | Działanie | Microsoft.TimeSeriesInsights/environments/accesspolicies/read | Get the properties of an access policy. |
+> | Działanie | Microsoft.TimeSeriesInsights/environments/accesspolicies/write | Creates a new access policy for an environment, or updates an existing access policy. |
+> | Działanie | Microsoft.TimeSeriesInsights/environments/delete | Deletes the environment. |
+> | Działanie | Microsoft.TimeSeriesInsights/environments/eventsources/delete | Deletes the event source. |
+> | Działanie | Microsoft.TimeSeriesInsights/environments/eventsources/read | Get the properties of an event source. |
+> | Działanie | Microsoft.TimeSeriesInsights/environments/eventsources/write | Creates a new event source for an environment, or updates an existing event source. |
+> | Działanie | Microsoft.TimeSeriesInsights/environments/read | Get the properties of an environment. |
+> | Działanie | Microsoft.TimeSeriesInsights/environments/referencedatasets/delete | Deletes the reference data set. |
+> | Działanie | Microsoft.TimeSeriesInsights/environments/referencedatasets/read | Get the properties of a reference data set. |
+> | Działanie | Microsoft.TimeSeriesInsights/environments/referencedatasets/write | Creates a new reference data set for an environment, or updates an existing reference data set. |
+> | Działanie | Microsoft.TimeSeriesInsights/environments/status/read | Get the status of the environment, state of its associated operations like ingress. |
+> | Działanie | Microsoft.TimeSeriesInsights/environments/write | Creates a new environment, or updates an existing environment. |
+> | Działanie | Microsoft.TimeSeriesInsights/register/action | Registers the subscription for the Time Series Insights resource provider and enables the creation of Time Series Insights environments. |
 
 ## <a name="microsoftvisualstudio"></a>Microsoft.VisualStudio
 
@@ -6252,25 +6252,25 @@ Operacje dostawcy zasobów są zawsze rozwijane. Aby uzyskać najnowsze operacje
 > | Typ akcji | Operacja | Opis |
 > | --- | --- | --- |
 > | Działanie | Microsoft.VisualStudio/Account/Delete | Usuń konto |
-> | Działanie | Microsoft. VisualStudio/Account/Extension/Read | Odczytaj konto/rozszerzenie |
-> | Działanie | Microsoft. VisualStudio/Account/Project/Read | Odczytaj konto/projekt |
-> | Działanie | Microsoft.VisualStudio/Account/Project/Write | Ustaw konto/projekt |
-> | Działanie | Microsoft. VisualStudio/Account/Read | Odczytaj konto |
-> | Działanie | Microsoft. VisualStudio/Account/Write | Ustaw konto |
-> | Działanie | Microsoft. VisualStudio/rozszerzenie/usuwanie | Usuń rozszerzenie |
-> | Działanie | Microsoft. VisualStudio/rozszerzenie/odczyt | Odczyt rozszerzenia |
-> | Działanie | Microsoft. VisualStudio/rozszerzenie/zapis | Ustaw rozszerzenie |
-> | Działanie | Microsoft.VisualStudio/Project/Delete | Usuń projekt |
-> | Działanie | Microsoft.VisualStudio/Project/Read | Odczytaj projekt |
-> | Działanie | Microsoft.VisualStudio/Project/Write | Ustaw projekt |
-> | Działanie | Microsoft. VisualStudio/Register/Action | Zarejestruj subskrypcję platformy Azure przy użyciu dostawcy Microsoft. VisualStudio |
+> | Działanie | Microsoft.VisualStudio/Account/Extension/Read | Read Account/Extension |
+> | Działanie | Microsoft.VisualStudio/Account/Project/Read | Read Account/Project |
+> | Działanie | Microsoft.VisualStudio/Account/Project/Write | Set Account/Project |
+> | Działanie | Microsoft.VisualStudio/Account/Read | Read Account |
+> | Działanie | Microsoft.VisualStudio/Account/Write | Set Account |
+> | Działanie | Microsoft.VisualStudio/Extension/Delete | Delete Extension |
+> | Działanie | Microsoft.VisualStudio/Extension/Read | Read Extension |
+> | Działanie | Microsoft.VisualStudio/Extension/Write | Set Extension |
+> | Działanie | Microsoft.VisualStudio/Project/Delete | Delete Project |
+> | Działanie | Microsoft.VisualStudio/Project/Read | Read Project |
+> | Działanie | Microsoft.VisualStudio/Project/Write | Set Project |
+> | Działanie | Microsoft.VisualStudio/Register/Action | Register Azure Subscription with Microsoft.VisualStudio provider |
 
 ## <a name="microsoftweb"></a>microsoft.web
 
 > [!div class="mx-tdCol2BreakAll"]
 > | Typ akcji | Operacja | Opis |
 > | --- | --- | --- |
-> | Działanie | microsoft.web/apimanagementaccounts/apiacls/read | Pobierz Apiacls kont usługi API Management. |
+> | Działanie | microsoft.web/apimanagementaccounts/apiacls/read | Get Api Management Accounts Apiacls. |
 > | Działanie | Microsoft. Web/apimanagementaccounts/interfejsy API/apiacls/Delete | Usuwanie interfejsów API kont usługi API Management Apiacls. |
 > | Działanie | Microsoft. Web/apimanagementaccounts/interfejsy API/apiacls/odczyt | Pobierz interfejsy API kont usługi API Management Apiacls. |
 > | Działanie | Microsoft. Web/apimanagementaccounts/interfejsy API/apiacls/Write | Aktualizowanie interfejsów API kont usługi API Management Apiacls. |
@@ -6336,7 +6336,7 @@ Operacje dostawcy zasobów są zawsze rozwijane. Aby uzyskać najnowsze operacje
 > | Działanie | Microsoft. Web/hostingEnvironments/multiRolePools/zapis | Utwórz nową pulę frontonu w App Service Environment lub zaktualizuj istniejącą |
 > | Działanie | Microsoft. Web/hostingenvironments/Operations/Read | Pobierz operacje środowiska hostingu. |
 > | Działanie | microsoft.web/hostingenvironments/outboundnetworkdependenciesendpoints/read | Pobierz punkty końcowe sieci wszystkich zależności wychodzących. |
-> | Działanie | Microsoft. Web/hostingEnvironments/PrivateEndpointConnectionsApproval/akcja | Zatwierdzanie połączeń prywatnych punktów końcowych |
+> | Działanie | Microsoft. Web/hostingEnvironments/PrivateEndpointConnectionsApproval/akcja | Approve Private Endpoint Connections |
 > | Działanie | Microsoft. Web/hostingEnvironments/odczyt | Pobierz właściwości App Service Environment |
 > | Działanie | Microsoft. Web/hostingEnvironments/ponowny rozruch/akcja | Uruchom ponownie wszystkie maszyny w App Service Environment |
 > | Działanie | Microsoft. Web/hostingenvironments/Resume/akcja | Wznów środowiska hostingu. |
@@ -6456,211 +6456,211 @@ Operacje dostawcy zasobów są zawsze rozwijane. Aby uzyskać najnowsze operacje
 > | Działanie | Microsoft. Web/Sites/eventGridFilters/Delete | Usuń filtr Event Grid w aplikacji sieci Web. |
 > | Działanie | Microsoft. Web/Sites/eventGridFilters/odczyt | Pobierz filtr Event Grid w aplikacji sieci Web. |
 > | Działanie | Microsoft. Web/Sites/eventGridFilters/Write | Umieść filtr Event Grid w aplikacji sieci Web. |
-> | Działanie | Microsoft. Web/Sites/rozszerzenia/usuwanie | Usuń rozszerzenia Web Apps lokacji. |
-> | Działanie | Microsoft. Web/Sites/rozszerzenia/odczyt | Pobierz rozszerzenia witryny Web Apps. |
-> | Działanie | Microsoft. Web/Sites/rozszerzenia/zapis | Aktualizowanie rozszerzeń lokacji Web Apps. |
+> | Działanie | Microsoft. Web/Sites/rozszerzenia/usuwanie | Delete Web Apps Site Extensions. |
+> | Działanie | Microsoft. Web/Sites/rozszerzenia/odczyt | Get Web Apps Site Extensions. |
+> | Działanie | Microsoft. Web/Sites/rozszerzenia/zapis | Update Web Apps Site Extensions. |
 > | Działanie | Microsoft. Web/Sites/Functions/Action | Web Apps funkcji. |
 > | Działanie | Microsoft. Web/Sites/Functions/Delete | Usuń funkcje Web Apps. |
 > | Działanie | Microsoft. Web/Sites/funkcje/klucze/usuwanie | Usuń klucze funkcji. |
 > | Działanie | Microsoft. Web/Sites/Functions/Keys/Write | Zaktualizuj klucze funkcji. |
-> | Działanie | Microsoft. Web/Sites/Functions/ListKeys/Action | Wyświetl klucze funkcji. |
-> | Działanie | Microsoft. Web/Sites/Functions/listsecrets/Action | Utwórz listę wpisów tajnych funkcji. |
-> | Działanie | Microsoft. Web/Sites/Functions/MasterKey/Read | Pobierz funkcje Web Apps MasterKey. |
-> | Działanie | Microsoft. Web/Sites/Functions/Properties/Read | Odczytywanie właściwości Web Apps funkcji. |
-> | Działanie | Microsoft. Web/Sites/Functions/Properties/Write | Aktualizowanie właściwości funkcji Web Apps. |
-> | Działanie | Microsoft. Web/Sites/Functions/Read | Pobierz funkcje Web Apps. |
-> | Działanie | Microsoft. Web/Sites/Functions/token/Read | Pobierz token funkcji Web Apps. |
-> | Działanie | Microsoft. Web/Sites/Functions/Write | Aktualizowanie funkcji Web Apps. |
-> | Działanie | Microsoft. Web/Sites/Host/functionkeys/Delete | Usuń klucze funkcji hosta funkcji. |
-> | Działanie | Microsoft. Web/Sites/Host/functionkeys/Write | Aktualizowanie kluczy funkcji hosta funkcji. |
-> | Działanie | Microsoft. Web/Sites/Host/ListKeys/akcja | Lista kluczy hosta funkcji. |
-> | Działanie | Microsoft. Web/Sites/Host/listsyncstatus/akcja | Lista Stanów wyzwalaczy funkcji synchronizacji. |
-> | Działanie | Microsoft. Web/Sites/Host/właściwości/odczyt | Odczytywanie właściwości hosta funkcji Web Apps Functions. |
-> | Działanie | Microsoft. Web/Sites/Host/synchronizacja/akcja | Wyzwalacze funkcji synchronizacji. |
-> | Działanie | Microsoft. Web/Sites/Host/systemkeys/Delete | Usuwanie funkcji klucze systemowe hosta. |
-> | Działanie | Microsoft. Web/Sites/Host/systemkeys/Write | Aktualizowanie kluczy systemu hosta funkcji. |
-> | Działanie | Microsoft. Web/Sites/hostnamebindings/Delete | Usuń powiązania Web Apps nazwy hosta. |
-> | Działanie | Microsoft. Web/Sites/hostnamebindings/odczyt | Pobierz powiązania Web Apps nazwy hosta. |
-> | Działanie | Microsoft. Web/Sites/hostnamebindings/Write | Aktualizowanie powiązań nazwy hosta Web Apps. |
-> | Działanie | Microsoft. Web/Sites/hostruntime/Functions/Keys/odczyt | Pobierz Web Apps klucze funkcji Hostruntime. |
-> | Działanie | Microsoft. Web/Sites/hostruntime/Host/_master/Read | Pobierz klucz główny aplikacja funkcji dla operacji administracyjnych |
-> | Działanie | Microsoft. Web/Sites/hostruntime/Host/akcja | Wykonywanie akcji środowiska uruchomieniowego aplikacja funkcji, takich jak wyzwalacze synchronizacji, Dodawanie funkcji, wywoływanie funkcji, funkcje Delete itd. |
-> | Działanie | Microsoft. Web/Sites/hostruntime/Host/odczyt | Pobierz Web Apps hosta Hostruntime. |
-> | Działanie | Microsoft. Web/Sites/hybridconnection/Delete | Usuń połączenie hybrydowe Web Apps. |
-> | Działanie | Microsoft. Web/Sites/hybridconnection/odczyt | Pobierz Web Apps połączenie hybrydowe. |
-> | Działanie | Microsoft. Web/Sites/hybridconnection/Write | Aktualizacja Web Apps połączenie hybrydowe. |
-> | Działanie | Microsoft. Web/Sites/hybridconnectionnamespaces/Relay/usuwanie | Usuń Web Apps przekaźników przestrzeni nazw połączenia hybrydowego. |
-> | Działanie | Microsoft. Web/Sites/hybridconnectionnamespaces/Relay/ListKeys/Action | Klucze List Web Apps przekaźników przestrzeni nazw połączeń hybrydowych. |
-> | Działanie | Microsoft. Web/Sites/hybridconnectionnamespaces/Relay/odczyt | Uzyskaj Web Apps przekaźników przestrzeni nazw połączenia hybrydowego. |
-> | Działanie | Microsoft. Web/Sites/hybridconnectionnamespaces/Relay/Write | Aktualizacja Web Apps przekaźników przestrzeni nazw połączenia hybrydowego. |
-> | Działanie | Microsoft. Web/Sites/hybridconnectionrelays/odczyt | Pobierz Web Apps przekaźników połączeń hybrydowych. |
-> | Działanie | Microsoft. Web/Sites/Instances/Deployments/Delete | Usuń wdrożenia wystąpień Web Apps. |
-> | Działanie | Microsoft. Web/Sites/Instances/Deployments/Read | Pobierz wdrożenia wystąpień Web Apps. |
-> | Działanie | Microsoft. Web/Sites/Instances/Extensions/log/Read | Pobierz dziennik rozszerzeń wystąpień Web Apps. |
-> | Działanie | Microsoft. Web/Sites/Instances/Extensions/processs/Read | Pobierz procesy rozszerzenia Web Apps Instances. |
-> | Działanie | Microsoft. Web/Sites/Instances/Extensions/Read | Pobierz rozszerzenia wystąpień Web Apps. |
-> | Działanie | Microsoft. Web/Sites/Instances/processs/Delete | Usuwanie procesów wystąpień Web Apps. |
-> | Działanie | Microsoft. Web/Sites/Instances/processs/modules/Read | Pobierz wystąpienia Web Apps procesy przetwarzają moduły. |
-> | Działanie | Microsoft. Web/Sites/Instances/processs/Read | Pobierz procesy Web Apps wystąpień. |
-> | Działanie | Microsoft. Web/Sites/Instances/processs/Threads/Read | Pobierz wystąpienia Web Apps przetwarza wątki. |
-> | Działanie | Microsoft. Web/Sites/Instances/Read | Pobierz wystąpienia Web Apps. |
-> | Działanie | Microsoft. Web/Sites/listsyncfunctiontriggerstatus/akcja | Wyświetl stan wyzwalacza funkcji synchronizacji. |
-> | Działanie | Microsoft. Web/Sites/metricdefinitions/odczyt | Pobierz definicje metryk Web Apps. |
-> | Działanie | microsoft.web/sites/metrics/read | Pobierz metryki Web Apps. |
-> | Działanie | Microsoft. Web/Sites/metricsdefinitions/odczyt | Pobierz definicje metryk Web Apps. |
-> | Działanie | Microsoft. Web/Sites/migratemysql/akcja | Migrowanie Web Apps MySql. |
-> | Działanie | Microsoft. Web/Sites/migratemysql/odczyt | Get Web Apps Migrate MySql. |
-> | Działanie | microsoft.web/sites/networktrace/action | Web Apps śledzenia sieci. |
-> | Działanie | microsoft.web/sites/networktraces/operationresults/read | Pobierz wyniki operacji śledzenia sieci Web Apps. |
-> | Działanie | Microsoft. Web/Sites/NoweHasło/akcja | NoweHasło Web Apps. |
-> | Działanie | Microsoft. Web/Sites/operationresults/odczyt | Pobierz wyniki operacji Web Apps. |
-> | Działanie | Microsoft. Web/Sites/Operations/Read | Pobierz Web Apps operacji. |
-> | Działanie | Microsoft. Web/Sites/perfcounters/odczyt | Pobierz Web Apps liczniki wydajności. |
-> | Działanie | microsoft.web/sites/premieraddons/delete | Usuń Web Apps Dodatki Premier. |
-> | Działanie | microsoft.web/sites/premieraddons/read | Uzyskaj Web Apps Dodatki Premier. |
-> | Działanie | microsoft.web/sites/premieraddons/write | Aktualizacja dodatków do Web Apps Premier. |
-> | Działanie | microsoft.web/sites/privateaccess/read | Uzyskaj dane dotyczące włączania dostępu do lokacji prywatnej i autoryzowanych sieci wirtualnych, które mogą uzyskać dostęp do witryny. |
-> | Działanie | Microsoft. Web/Sites/PrivateEndpointConnectionsApproval/akcja | Zatwierdzanie połączeń prywatnych punktów końcowych |
-> | Działanie | Microsoft. Web/Sites/processs/modules/Read | Pobierz moduły Web Apps procesów. |
-> | Działanie | microsoft.web/sites/processes/read | Pobierz Web Apps procesy. |
-> | Działanie | Microsoft. Web/Sites/processs/Threads/Read | Pobierz wątki procesów Web Apps. |
-> | Działanie | Microsoft. Web/Sites/publiccertificates/Delete | Usuń Web Apps certyfikaty publiczne. |
-> | Działanie | Microsoft. Web/Sites/publiccertificates/odczyt | Pobierz Web Apps certyfikaty publiczne. |
-> | Działanie | Microsoft. Web/Sites/publiccertificates/Write | Aktualizowanie Web Apps certyfikatów publicznych. |
-> | Działanie | Microsoft. Web/Sites/Publikuj/akcja | Publikowanie aplikacji sieci Web |
-> | Działanie | Microsoft. Web/Sites/publishxml/akcja | Pobieranie pliku XML profilu publikowania dla aplikacji sieci Web |
-> | Działanie | microsoft.web/sites/publishxml/read | Pobierz Web Apps publikowania XML. |
-> | Działanie | Microsoft. Web/Sites/odczyt | Pobieranie właściwości aplikacji sieci Web |
-> | Działanie | Microsoft. Web/Sites/recommendationhistory/odczyt | Pobierz historię rekomendacji Web Apps. |
-> | Działanie | Microsoft. Web/witryny/zalecenia/Wyłącz/akcję | Wyłącz zalecenia dotyczące Web Apps. |
-> | Działanie | Microsoft. Web/Sites/zalecenia/odczyt | Pobierz listę zaleceń dotyczących aplikacji sieci Web. |
-> | Działanie | Microsoft. Web/Sites/odzyskiwanie/akcja | Odzyskaj Web Apps. |
-> | Działanie | Microsoft. Web/Sites/resetSlotConfig/akcja | Zresetuj konfigurację aplikacji sieci Web |
-> | Działanie | Microsoft. Web/Sites/resourcehealthmetadata/odczyt | Pobierz metadane Resource Health Web Apps. |
-> | Działanie | Microsoft. Web/Sites/restart/akcja | Ponowne uruchamianie aplikacji sieci Web |
-> | Działanie | Microsoft. Web/Sites/Restore/Read | Pobierz Web Apps przywracanie. |
-> | Działanie | Microsoft. Web/Sites/Restore/Write | Przywracanie Web Apps. |
-> | Działanie | Microsoft. Web/Sites/restorefrombackupblob/akcja | Przywróć aplikację internetową z obiektu BLOB kopii zapasowej. |
-> | Działanie | Microsoft. Web/Sites/restorefromdeletedapp/akcja | Przywracanie Web Apps z usuniętej aplikacji. |
-> | Działanie | Microsoft. Web/Sites/restoresnapshot/akcja | Przywracanie migawek Web Apps. |
-> | Działanie | Microsoft. Web/Sites/siteextensions/Delete | Usuń rozszerzenia Web Apps lokacji. |
-> | Działanie | Microsoft. Web/Sites/siteextensions/odczyt | Pobierz rozszerzenia witryny Web Apps. |
-> | Działanie | Microsoft. Web/Sites/siteextensions/Write | Aktualizowanie rozszerzeń lokacji Web Apps. |
-> | Działanie | Microsoft. Web/Sites/Slots/analyzecustomhostname/Read | Uzyskaj Web Apps gniazda analizują niestandardową nazwę hosta. |
-> | Działanie | Microsoft. Web/Sites/szczeliny/applySlotConfig/akcja | Zastosuj konfigurację miejsca aplikacji sieci Web z gniazda docelowego do bieżącego gniazda. |
-> | Działanie | Microsoft. Web/Sites/gniazda/kopia zapasowa/akcja | Utwórz nową kopię zapasową miejsca aplikacji sieci Web. |
-> | Działanie | Microsoft. Web/Sites/gniazda/kopia zapasowa/odczyt | Pobierz kopie zapasowe Web Apps miejsc. |
-> | Działanie | Microsoft. Web/Sites/gniazda/kopia zapasowa/zapis | Aktualizacja kopii zapasowej Web Apps miejsc. |
-> | Działanie | Microsoft. Web/Sites/gniazda/kopie zapasowe/akcja | Odkryj kopie zapasowe Web Apps miejsc. |
-> | Działanie | Microsoft. Web/Sites/gniazda/kopie zapasowe/usuwanie | Usuń kopie zapasowe miejsc Web Apps. |
-> | Działanie | Microsoft. Web/Sites/szczeliny/kopie zapasowe/lista/akcja | Utwórz listę kopii zapasowych miejsc Web Apps. |
-> | Działanie | Microsoft. Web/Sites/gniazda/kopie zapasowe/odczyt | Pobierz właściwości kopii zapasowej miejsc aplikacji sieci Web |
-> | Działanie | Microsoft. Web/Sites/gniazda/kopie zapasowe/przywracanie/akcja | Przywracanie kopii zapasowych miejsc Web Apps. |
-> | Działanie | Microsoft. Web/Sites/szczeliny/konfiguracja/usuwanie | Usuń konfigurację gniazd Web Apps. |
-> | Działanie | Microsoft. Web/Sites/szczeliny/konfiguracja/lista/akcja | Wyświetlanie ustawień poufnych informacji o zabezpieczeniach miejsca aplikacji sieci Web, takich jak poświadczenia publikowania, ustawienia aplikacji i parametry połączenia |
-> | Działanie | Microsoft. Web/Sites/szczeliny/konfiguracja/odczyt | Pobierz ustawienia konfiguracji miejsca aplikacji sieci Web |
-> | Działanie | Microsoft. Web/Sites/Slots/config/Write | Zaktualizuj ustawienia konfiguracji miejsca aplikacji sieci Web |
-> | Działanie | Microsoft. Web/Sites/szczeliny/containerlogs/akcja | Pobierz spakowane dzienniki kontenerów dla miejsca aplikacji sieci Web. |
-> | Działanie | Microsoft. Web/Sites/szczeliny/containerlogs/pobieranie/akcja | Pobierz dzienniki kontenerów Web Apps gniazda. |
-> | Działanie | Microsoft. Web/Sites/Slots/continuouswebjobs/Delete | Usuń Web Apps miejsca ciągłe zadania w sieci Web. |
-> | Działanie | Microsoft. Web/Sites/Slots/continuouswebjobs/Read | Uzyskaj miejsca na Web Apps ciągłe zadania w sieci Web. |
-> | Działanie | Microsoft. Web/Sites/szczeliny/continuouswebjobs/Start/akcja | Rozpocznij Web Apps miejsca na ciągłe zadania w sieci Web. |
-> | Działanie | Microsoft. Web/Sites/szczeliny/continuouswebjobs/akcja | Zatrzymaj Web Apps miejsca na ciągłe zadania w sieci Web. |
-> | Działanie | Microsoft. Web/Sites/Slots/Delete | Usuń istniejące miejsce aplikacji sieci Web |
-> | Działanie | Microsoft. Web/Sites/Slots/Deployments/Delete | Usuń wdrożenia Web Apps miejsc. |
-> | Działanie | Microsoft. Web/Sites/Slots/Deployments/log/Read | Pobierz dziennik wdrożeń Web Apps miejsc. |
-> | Działanie | Microsoft. Web/Sites/Slots/Deployments/Read | Pobierz wdrożenia z Web Apps miejsc. |
-> | Działanie | Microsoft. Web/Sites/Slots/Deployments/Write | Aktualizowanie wdrożeń na Web Apps gniazda. |
-> | Działanie | Microsoft. Web/Sites/gniazda/detektory/odczyt | Pobierz Web Apps wykrywaczy gniazd. |
-> | Działanie | Microsoft. Web/Sites/Slots/Diagnostics/analiza/wykonywanie/akcja | Uruchom analizę diagnostyki gniazd Web Apps. |
-> | Działanie | microsoft.web/sites/slots/diagnostics/analyses/read | Pobierz analizę diagnostyki miejsc Web Apps. |
-> | Działanie | Microsoft. Web/Sites/Slots/Diagnostics/aspnetcore/Read | Pobierz diagnostykę Web Appsych miejsc dla aplikacji ASP.NET Core. |
-> | Działanie | Microsoft. Web/Sites/szczeliny/Diagnostyka/autozabliźnione/odczyt | Pobierz Web Apps autozabliźnione diagnostyki miejsc. |
-> | Działanie | Microsoft. Web/Sites/Slots/Diagnostics/Deployment/Read | Pobierz wdrożenie diagnostyki miejsc Web Apps. |
-> | Działanie | microsoft.web/sites/slots/diagnostics/deployments/read | Pobierz Web Apps wdrożenia diagnostyczne. |
-> | Działanie | Microsoft. Web/Sites/szczeliny/Diagnostyka/detektory/wykonaj/akcję | Uruchom detektor diagnostyki Web Appsych gniazd. |
-> | Działanie | Microsoft. Web/Sites/szczeliny/Diagnostyka/detektory/odczyt | Pobierz detektor diagnostyki Web Apps miejsc. |
-> | Działanie | microsoft.web/sites/slots/diagnostics/frebanalysis/read | Pobierz Web Apps FREB analiza diagnostyki gniazd. |
-> | Działanie | Microsoft. Web/Sites/Slots/Diagnostics/loganalyzer/Read | Pobierz Analizator dziennika diagnostyki gniazd Web Apps. |
-> | Działanie | microsoft.web/sites/slots/diagnostics/read | Pobierz diagnostykę Web Apps miejsc. |
-> | Działanie | Microsoft. Web/Sites/Slots/Diagnostics/runtimeavailability/Read | Pobierz dostępność w czasie wykonywania diagnostyki Web Apps gniazd. |
-> | Działanie | Microsoft. Web/Sites/Slots/Diagnostics/servicehealth/Read | Pobierz Service Health Web Apps diagnostyki miejsc. |
-> | Działanie | Microsoft. Web/Sites/Slots/Diagnostics/sitecpuanalysis/Read | Pobierz przeanalizowanie procesora CPU lokacji diagnostyki Web Apps gniazd. |
-> | Działanie | Microsoft. Web/Sites/Slots/Diagnostics/sitecrashes/Read | Pobierz awarie lokacji diagnostyki Web Apps miejsc. |
-> | Działanie | microsoft.web/sites/slots/diagnostics/sitelatency/read | Pobierz opóźnienie witryny diagnostyki Web Apps miejsc. |
-> | Działanie | Microsoft. Web/Sites/Slots/Diagnostics/sitememoryanalysis/Read | Pobierz analizę pamięci lokacji diagnostyki Web Apps miejsc. |
-> | Działanie | Microsoft. Web/Sites/Slots/Diagnostics/siterestartsettingupdate/Read | Pobierz aktualizację ustawień ponownego uruchamiania lokacji diagnostyki Web Apps miejsc. |
-> | Działanie | Microsoft. Web/Sites/Slots/Diagnostics/siterestartuserinitiated/Read | Pobierz lokację diagnostyki Web Apps miejsc ponownie zainicjowane przez użytkownika. |
-> | Działanie | Microsoft. Web/Sites/Slots/Diagnostics/siteswap/Read | Pobierz zamianę lokacji diagnostyki Web Apps miejsc. |
-> | Działanie | Microsoft. Web/Sites/Slots/Diagnostics/ThreadCount/Read | Pobierz liczbę wątków diagnostyki Web Apps gniazd. |
-> | Działanie | microsoft.web/sites/slots/diagnostics/workeravailability/read | Pobierz Web Apps diagnostyki Workeravailability miejsc. |
-> | Działanie | Microsoft. Web/Sites/Slots/Diagnostics/workerprocessrecycle/Read | Pobierz procedurę odzyskiwania procesu roboczego diagnostyki gniazd Web Apps. |
-> | Działanie | Microsoft. Web/Sites/Slots/domainownershipidentifiers/Read | Pobierz identyfikatory własności domeny miejsc Web Apps. |
-> | Działanie | Microsoft. Web/Sites/Slots/Functions/listsecrets/Action | Wyświetl klucze tajne Web Apps funkcji miejsc. |
-> | Działanie | Microsoft. Web/Sites/Slots/Functions/Read | Pobierz funkcje Web Apps miejsc. |
-> | Działanie | Microsoft. Web/Sites/Slots/hostnamebindings/Delete | Usuń powiązania nazwy hosta Web Apps miejsc. |
-> | Działanie | microsoft.web/sites/slots/hostnamebindings/read | Pobierz powiązania nazwy hosta Web Apps miejsc. |
-> | Działanie | microsoft.web/sites/slots/hostnamebindings/write | Aktualizowanie powiązań nazwy hosta Web Apps miejsc. |
-> | Działanie | Microsoft. Web/Sites/Slots/hybridconnection/Delete | Usuń połączenie hybrydowe miejsc Web Apps. |
-> | Działanie | Microsoft. Web/Sites/Slots/hybridconnection/Read | Pobierz połączenie hybrydowe miejsc Web Apps. |
-> | Działanie | Microsoft. Web/Sites/Slots/hybridconnection/Write | Aktualizowanie połączenia hybrydowego dla gniazd Web Apps. |
-> | Działanie | Microsoft. Web/Sites/Slots/hybridconnectionnamespaces/Relay/Delete | Usuń Web Apps gniazda przestrzenie nazw połączenia hybrydowego. |
-> | Działanie | Microsoft. Web/Sites/Slots/hybridconnectionnamespaces/Relay/Write | Aktualizacja funkcji przekazywania przestrzeni nazw połączeń hybrydowych na Web Apps gniazda. |
-> | Działanie | Microsoft. Web/Sites/Slots/hybridconnectionrelays/Read | Pobierz Web Apps gniazda połączeń hybrydowych. |
-> | Działanie | Microsoft. Web/Sites/Slots/Instances/Deployments/Read | Pobierz wystąpienia Web Apps wystąpień. |
-> | Działanie | Microsoft. Web/Sites/Slots/Instances/processs/Delete | Usuwanie procesów wystąpień Web Apps. |
-> | Działanie | Microsoft. Web/Sites/Slots/Instances/processs/Read | Pobierz procesy Web Apps wystąpieniach gniazd. |
-> | Działanie | Microsoft. Web/Sites/Slots/Instances/Read | Pobierz wystąpienia Web Apps miejsc. |
-> | Działanie | Microsoft. Web/Sites/Slots/metricdefinitions/Read | Pobierz definicje metryk Web Apps miejsc. |
-> | Działanie | microsoft.web/sites/slots/metrics/read | Pobierz metryki Web Apps gniazd. |
-> | Działanie | microsoft.web/sites/slots/migratemysql/read | Pobierz Web Apps gniazda migracji bazy danych MySql. |
-> | Działanie | microsoft.web/sites/slots/networktrace/action | Gniazda Web Apps śledzenia sieci. |
-> | Działanie | microsoft.web/sites/slots/networktraces/operationresults/read | Pobierz wyniki operacji śledzenia sieci Web Apps gniazd. |
-> | Działanie | Microsoft. Web/Sites/szczeliny/NoweHasło/akcja | NoweHasło Web Apps gniazda. |
-> | Działanie | Microsoft. Web/Sites/Slots/operationresults/Read | Pobierz wyniki operacji dla miejsc Web Apps. |
-> | Działanie | Microsoft. Web/Sites/Slots/Operations/Read | Pobierz operacje na Web Apps gniazda. |
-> | Działanie | Microsoft. Web/Sites/Slots/perfcounters/Read | Pobierz liczniki wydajności Web Apps miejsc. |
-> | Działanie | Microsoft. Web/Sites/Slots/phplogging/Read | Pobierz Web Apps Phplogging miejsc. |
-> | Działanie | microsoft.web/sites/slots/premieraddons/delete | Usuń dodatki Web Apps miejsc premier. |
-> | Działanie | microsoft.web/sites/slots/premieraddons/read | Uzyskaj Web Apps miejsca na dodatki Premier. |
-> | Działanie | microsoft.web/sites/slots/premieraddons/write | Aktualizowanie dodatków do Web Apps miejsc premier. |
-> | Działanie | microsoft.web/sites/slots/processes/read | Pobierz procesy Web Apps gniazda. |
-> | Działanie | Microsoft. Web/Sites/Slots/publiccertificates/Delete | Usuwanie Web Apps miejscowych certyfikatów publicznych. |
-> | Działanie | Microsoft. Web/Sites/Slots/publiccertificates/Read | Pobierz Web Apps gniazda certyfikatów publicznych. |
-> | Działanie | Microsoft. Web/Sites/Slots/publiccertificates/Write | Utwórz lub zaktualizuj certyfikaty publiczne na Web Apps gniazda. |
-> | Działanie | Microsoft. Web/Sites/szczeliny/publikowanie/akcja | Publikowanie miejsca aplikacji sieci Web |
-> | Działanie | Microsoft.Web/sites/slots/publishxml/Action | Pobierz plik XML profilu publikowania dla miejsca aplikacji sieci Web |
-> | Działanie | Microsoft. Web/Sites/gniazda/odczyt | Pobierz właściwości miejsca wdrożenia aplikacji sieci Web |
-> | Działanie | Microsoft. Web/Sites/gniazda/odzyskiwanie/akcja | Odzyskaj Web Apps gniazda. |
-> | Działanie | Microsoft. Web/Sites/szczeliny/resetSlotConfig/akcja | Resetuj konfigurację miejsca aplikacji sieci Web |
-> | Działanie | Microsoft. Web/Sites/Slots/resourcehealthmetadata/Read | Pobierz Web Apps miejsca Resource Health metadanych. |
-> | Działanie | Microsoft. Web/Sites/szczeliny/ponowne uruchomienie/akcja | Uruchom ponownie miejsce aplikacji sieci Web |
-> | Działanie | Microsoft. Web/Sites/Slots/Restore/Read | Pobierz Web Apps miejsc przywracania. |
-> | Działanie | Microsoft. Web/Sites/Slots/Restore/Write | Przywracanie Web Apps miejsc. |
-> | Działanie | Microsoft. Web/Sites/szczeliny/restorefrombackupblob/akcja | Przywróć miejsce Web Apps z obiektu BLOB kopii zapasowej. |
-> | Działanie | Microsoft. Web/Sites/szczeliny/restorefromdeletedapp/akcja | Przywróć miejsca aplikacji sieci Web z usuniętej aplikacji. |
-> | Działanie | Microsoft. Web/Sites/szczeliny/restoresnapshot/akcja | Przywracanie migawek miejsc Web Apps. |
-> | Działanie | Microsoft. Web/Sites/Slots/siteextensions/Delete | Usuwanie rozszerzeń lokacji Web Apps miejsc. |
-> | Działanie | Microsoft. Web/Sites/Slots/siteextensions/Read | Pobierz rozszerzenia witryny Web Apps miejsc. |
-> | Działanie | Microsoft. Web/Sites/Slots/siteextensions/Write | Aktualizowanie rozszerzeń lokacji Web Apps miejsc. |
-> | Działanie | Microsoft. Web/Sites/szczeliny/slotsdiffs/akcja | Poznaj różnice między konfiguracją aplikacji sieci Web i miejsc |
-> | Działanie | Microsoft. Web/Sites/szczeliny/slotsswap/akcja | Wymiana miejsc wdrożenia aplikacji sieci Web |
-> | Działanie | Microsoft. Web/Sites/Slots/snapshots/Read | Pobierz migawki Web Apps miejsc. |
-> | Działanie | Microsoft.Web/sites/slots/sourcecontrols/Delete | Usuń ustawienia konfiguracji kontroli źródła miejsca aplikacji sieci Web |
-> | Działanie | Microsoft. Web/Sites/Slots/sourcecontrols/Read | Pobierz ustawienia konfiguracji kontroli źródła miejsca aplikacji sieci Web |
-> | Działanie | Microsoft.Web/sites/slots/sourcecontrols/Write | Zaktualizuj ustawienia konfiguracji kontroli źródła miejsca aplikacji sieci Web |
-> | Działanie | Microsoft. Web/Sites/szczeliny/uruchomienie/akcja | Uruchom miejsce aplikacji sieci Web |
-> | Działanie | Microsoft. Web/Sites/Slots/akcja | Zatrzymaj miejsce aplikacji sieci Web |
-> | Działanie | Microsoft. Web/Sites/szczeliny/synchronizacja/akcja | Zsynchronizuj Web Apps gniazda. |
-> | Działanie | Microsoft. Web/Sites/Slots/triggeredwebjobs/Delete | Usuwanie Web Appsych gniazd wyzwalanych przez Zadania WebJob. |
-> | Działanie | Microsoft. Web/Sites/Slots/triggeredwebjobs/Read | Pobierz Web Apps gniazda wyzwolone Zadania WebJob. |
-> | Działanie | Microsoft. Web/Sites/Slots/triggeredwebjobs/Run/Action | Uruchom uruchomione Web Apps gniazda wyzwalane przez Zadania WebJob. |
-> | Działanie | Microsoft. Web/Sites/Slots/Usages/Read | Uzyskaj Web Apps użycia miejsc. |
-> | Działanie | microsoft.web/sites/slots/virtualnetworkconnections/delete | Usuwanie Web Apps miejsc Virtual Network połączeń. |
-> | Działanie | microsoft.web/sites/slots/virtualnetworkconnections/gateways/write | Aktualizowanie Web Apps miejsc Virtual Network połączeń bram. |
-> | Działanie | microsoft.web/sites/slots/virtualnetworkconnections/read | Pobierz Web Apps gniazda Virtual Network połączeń. |
-> | Działanie | microsoft.web/sites/slots/virtualnetworkconnections/write | Aktualizacja Virtual Network połączeń Web Apps. |
-> | Działanie | Microsoft. Web/Sites/szczeliny/Zadania WebJob/odczyt | Pobierz Zadania WebJob na Web Apps gniazda. |
+> | Działanie | Microsoft. Web/Sites/Functions/ListKeys/Action | List Function keys. |
+> | Działanie | microsoft.web/sites/functions/listsecrets/action | List Function secrets. |
+> | Działanie | microsoft.web/sites/functions/masterkey/read | Get Web Apps Functions Masterkey. |
+> | Działanie | microsoft.web/sites/functions/properties/read | Read Web Apps Functions Properties. |
+> | Działanie | microsoft.web/sites/functions/properties/write | Update Web Apps Functions Properties. |
+> | Działanie | microsoft.web/sites/functions/read | Get Web Apps Functions. |
+> | Działanie | microsoft.web/sites/functions/token/read | Get Web Apps Functions Token. |
+> | Działanie | microsoft.web/sites/functions/write | Update Web Apps Functions. |
+> | Działanie | microsoft.web/sites/host/functionkeys/delete | Delete Functions Host Function keys. |
+> | Działanie | microsoft.web/sites/host/functionkeys/write | Update Functions Host Function keys. |
+> | Działanie | microsoft.web/sites/host/listkeys/action | List Functions Host keys. |
+> | Działanie | microsoft.web/sites/host/listsyncstatus/action | List Sync Function Triggers Status. |
+> | Działanie | microsoft.web/sites/host/properties/read | Read Web Apps Functions Host Properties. |
+> | Działanie | microsoft.web/sites/host/sync/action | Wyzwalacze funkcji synchronizacji. |
+> | Działanie | microsoft.web/sites/host/systemkeys/delete | Delete Functions Host System keys. |
+> | Działanie | microsoft.web/sites/host/systemkeys/write | Update Functions Host System keys. |
+> | Działanie | microsoft.web/sites/hostnamebindings/delete | Delete Web Apps Hostname Bindings. |
+> | Działanie | microsoft.web/sites/hostnamebindings/read | Get Web Apps Hostname Bindings. |
+> | Działanie | microsoft.web/sites/hostnamebindings/write | Update Web Apps Hostname Bindings. |
+> | Działanie | microsoft.web/sites/hostruntime/functions/keys/read | Get Web Apps Hostruntime Functions Keys. |
+> | Działanie | Microsoft.Web/sites/hostruntime/host/_master/read | Get Function App's master key for admin operations |
+> | Działanie | Microsoft.Web/sites/hostruntime/host/action | Perform Function App runtime action like sync triggers, add functions, invoke functions, delete functions etc. |
+> | Działanie | microsoft.web/sites/hostruntime/host/read | Get Web Apps Hostruntime Host. |
+> | Działanie | microsoft.web/sites/hybridconnection/delete | Delete Web Apps Hybrid Connection. |
+> | Działanie | microsoft.web/sites/hybridconnection/read | Get Web Apps Hybrid Connection. |
+> | Działanie | microsoft.web/sites/hybridconnection/write | Update Web Apps Hybrid Connection. |
+> | Działanie | microsoft.web/sites/hybridconnectionnamespaces/relays/delete | Delete Web Apps Hybrid Connection Namespaces Relays. |
+> | Działanie | microsoft.web/sites/hybridconnectionnamespaces/relays/listkeys/action | List Keys Web Apps Hybrid Connection Namespaces Relays. |
+> | Działanie | microsoft.web/sites/hybridconnectionnamespaces/relays/read | Get Web Apps Hybrid Connection Namespaces Relays. |
+> | Działanie | microsoft.web/sites/hybridconnectionnamespaces/relays/write | Update Web Apps Hybrid Connection Namespaces Relays. |
+> | Działanie | microsoft.web/sites/hybridconnectionrelays/read | Get Web Apps Hybrid Connection Relays. |
+> | Działanie | microsoft.web/sites/instances/deployments/delete | Delete Web Apps Instances Deployments. |
+> | Działanie | microsoft.web/sites/instances/deployments/read | Get Web Apps Instances Deployments. |
+> | Działanie | microsoft.web/sites/instances/extensions/log/read | Get Web Apps Instances Extensions Log. |
+> | Działanie | microsoft.web/sites/instances/extensions/processes/read | Get Web Apps Instances Extensions Processes. |
+> | Działanie | microsoft.web/sites/instances/extensions/read | Get Web Apps Instances Extensions. |
+> | Działanie | microsoft.web/sites/instances/processes/delete | Delete Web Apps Instances Processes. |
+> | Działanie | microsoft.web/sites/instances/processes/modules/read | Get Web Apps Instances Processes Modules. |
+> | Działanie | microsoft.web/sites/instances/processes/read | Get Web Apps Instances Processes. |
+> | Działanie | microsoft.web/sites/instances/processes/threads/read | Get Web Apps Instances Processes Threads. |
+> | Działanie | microsoft.web/sites/instances/read | Get Web Apps Instances. |
+> | Działanie | microsoft.web/sites/listsyncfunctiontriggerstatus/action | List Sync Function Trigger Status. |
+> | Działanie | microsoft.web/sites/metricdefinitions/read | Get Web Apps Metric Definitions. |
+> | Działanie | microsoft.web/sites/metrics/read | Get Web Apps Metrics. |
+> | Działanie | microsoft.web/sites/metricsdefinitions/read | Get Web Apps Metrics Definitions. |
+> | Działanie | microsoft.web/sites/migratemysql/action | Migrate MySql Web Apps. |
+> | Działanie | microsoft.web/sites/migratemysql/read | Get Web Apps Migrate MySql. |
+> | Działanie | microsoft.web/sites/networktrace/action | Network Trace Web Apps. |
+> | Działanie | microsoft.web/sites/networktraces/operationresults/read | Get Web Apps Network Trace Operation Results. |
+> | Działanie | microsoft.web/sites/newpassword/action | Newpassword Web Apps. |
+> | Działanie | microsoft.web/sites/operationresults/read | Get Web Apps Operation Results. |
+> | Działanie | microsoft.web/sites/operations/read | Get Web Apps Operations. |
+> | Działanie | microsoft.web/sites/perfcounters/read | Get Web Apps Performance Counters. |
+> | Działanie | microsoft.web/sites/premieraddons/delete | Delete Web Apps Premier Addons. |
+> | Działanie | microsoft.web/sites/premieraddons/read | Get Web Apps Premier Addons. |
+> | Działanie | microsoft.web/sites/premieraddons/write | Update Web Apps Premier Addons. |
+> | Działanie | microsoft.web/sites/privateaccess/read | Get data around private site access enablement and authorized Virtual Networks that can access the site. |
+> | Działanie | Microsoft.Web/sites/PrivateEndpointConnectionsApproval/action | Approve Private Endpoint Connections |
+> | Działanie | microsoft.web/sites/processes/modules/read | Get Web Apps Processes Modules. |
+> | Działanie | microsoft.web/sites/processes/read | Get Web Apps Processes. |
+> | Działanie | microsoft.web/sites/processes/threads/read | Get Web Apps Processes Threads. |
+> | Działanie | microsoft.web/sites/publiccertificates/delete | Delete Web Apps Public Certificates. |
+> | Działanie | microsoft.web/sites/publiccertificates/read | Get Web Apps Public Certificates. |
+> | Działanie | microsoft.web/sites/publiccertificates/write | Update Web Apps Public Certificates. |
+> | Działanie | Microsoft.Web/sites/publish/Action | Publish a Web App |
+> | Działanie | Microsoft.Web/sites/publishxml/Action | Get publishing profile xml for a Web App |
+> | Działanie | microsoft.web/sites/publishxml/read | Get Web Apps Publishing XML. |
+> | Działanie | Microsoft.Web/sites/Read | Get the properties of a Web App |
+> | Działanie | microsoft.web/sites/recommendationhistory/read | Get Web Apps Recommendation History. |
+> | Działanie | microsoft.web/sites/recommendations/disable/action | Disable Web Apps Recommendations. |
+> | Działanie | Microsoft.Web/sites/recommendations/Read | Get the list of recommendations for web app. |
+> | Działanie | microsoft.web/sites/recover/action | Recover Web Apps. |
+> | Działanie | Microsoft.Web/sites/resetSlotConfig/Action | Reset web app configuration |
+> | Działanie | microsoft.web/sites/resourcehealthmetadata/read | Get Web Apps Resource Health Metadata. |
+> | Działanie | Microsoft.Web/sites/restart/Action | Restart a Web App |
+> | Działanie | microsoft.web/sites/restore/read | Get Web Apps Restore. |
+> | Działanie | microsoft.web/sites/restore/write | Restore Web Apps. |
+> | Działanie | microsoft.web/sites/restorefrombackupblob/action | Restore Web App From Backup Blob. |
+> | Działanie | microsoft.web/sites/restorefromdeletedapp/action | Restore Web Apps From Deleted App. |
+> | Działanie | microsoft.web/sites/restoresnapshot/action | Restore Web Apps Snapshots. |
+> | Działanie | microsoft.web/sites/siteextensions/delete | Delete Web Apps Site Extensions. |
+> | Działanie | microsoft.web/sites/siteextensions/read | Get Web Apps Site Extensions. |
+> | Działanie | microsoft.web/sites/siteextensions/write | Update Web Apps Site Extensions. |
+> | Działanie | microsoft.web/sites/slots/analyzecustomhostname/read | Get Web Apps Slots Analyze Custom Hostname. |
+> | Działanie | Microsoft.Web/sites/slots/applySlotConfig/Action | Apply web app slot configuration from target slot to the current slot. |
+> | Działanie | Microsoft.Web/sites/slots/backup/Action | Create new Web App Slot backup. |
+> | Działanie | microsoft.web/sites/slots/backup/read | Get Web Apps Slots Backup. |
+> | Działanie | microsoft.web/sites/slots/backup/write | Update Web Apps Slots Backup. |
+> | Działanie | microsoft.web/sites/slots/backups/action | Discover Web Apps Slots Backups. |
+> | Działanie | microsoft.web/sites/slots/backups/delete | Delete Web Apps Slots Backups. |
+> | Działanie | microsoft.web/sites/slots/backups/list/action | List Web Apps Slots Backups. |
+> | Działanie | Microsoft.Web/sites/slots/backups/Read | Get the properties of a web app slots' backup |
+> | Działanie | microsoft.web/sites/slots/backups/restore/action | Restore Web Apps Slots Backups. |
+> | Działanie | microsoft.web/sites/slots/config/delete | Delete Web Apps Slots Config. |
+> | Działanie | Microsoft.Web/sites/slots/config/list/Action | List Web App Slot's security sensitive settings, such as publishing credentials, app settings and connection strings |
+> | Działanie | Microsoft.Web/sites/slots/config/Read | Get Web App Slot's configuration settings |
+> | Działanie | Microsoft.Web/sites/slots/config/Write | Update Web App Slot's configuration settings |
+> | Działanie | microsoft.web/sites/slots/containerlogs/action | Get Zipped Container Logs for Web App Slot. |
+> | Działanie | microsoft.web/sites/slots/containerlogs/download/action | Download Web Apps Slots Container Logs. |
+> | Działanie | microsoft.web/sites/slots/continuouswebjobs/delete | Delete Web Apps Slots Continuous Web Jobs. |
+> | Działanie | microsoft.web/sites/slots/continuouswebjobs/read | Get Web Apps Slots Continuous Web Jobs. |
+> | Działanie | microsoft.web/sites/slots/continuouswebjobs/start/action | Start Web Apps Slots Continuous Web Jobs. |
+> | Działanie | microsoft.web/sites/slots/continuouswebjobs/stop/action | Stop Web Apps Slots Continuous Web Jobs. |
+> | Działanie | Microsoft.Web/sites/slots/Delete | Delete an existing Web App Slot |
+> | Działanie | microsoft.web/sites/slots/deployments/delete | Delete Web Apps Slots Deployments. |
+> | Działanie | microsoft.web/sites/slots/deployments/log/read | Get Web Apps Slots Deployments Log. |
+> | Działanie | microsoft.web/sites/slots/deployments/read | Get Web Apps Slots Deployments. |
+> | Działanie | microsoft.web/sites/slots/deployments/write | Update Web Apps Slots Deployments. |
+> | Działanie | microsoft.web/sites/slots/detectors/read | Get Web Apps Slots Detectors. |
+> | Działanie | microsoft.web/sites/slots/diagnostics/analyses/execute/Action | Run Web Apps Slots Diagnostics Analysis. |
+> | Działanie | microsoft.web/sites/slots/diagnostics/analyses/read | Get Web Apps Slots Diagnostics Analysis. |
+> | Działanie | microsoft.web/sites/slots/diagnostics/aspnetcore/read | Get Web Apps Slots Diagnostics for ASP.NET Core app. |
+> | Działanie | microsoft.web/sites/slots/diagnostics/autoheal/read | Get Web Apps Slots Diagnostics Autoheal. |
+> | Działanie | microsoft.web/sites/slots/diagnostics/deployment/read | Get Web Apps Slots Diagnostics Deployment. |
+> | Działanie | microsoft.web/sites/slots/diagnostics/deployments/read | Get Web Apps Slots Diagnostics Deployments. |
+> | Działanie | microsoft.web/sites/slots/diagnostics/detectors/execute/Action | Run Web Apps Slots Diagnostics Detector. |
+> | Działanie | microsoft.web/sites/slots/diagnostics/detectors/read | Get Web Apps Slots Diagnostics Detector. |
+> | Działanie | microsoft.web/sites/slots/diagnostics/frebanalysis/read | Get Web Apps Slots Diagnostics FREB Analysis. |
+> | Działanie | microsoft.web/sites/slots/diagnostics/loganalyzer/read | Get Web Apps Slots Diagnostics Log Analyzer. |
+> | Działanie | microsoft.web/sites/slots/diagnostics/read | Get Web Apps Slots Diagnostics. |
+> | Działanie | microsoft.web/sites/slots/diagnostics/runtimeavailability/read | Get Web Apps Slots Diagnostics Runtime Availability. |
+> | Działanie | microsoft.web/sites/slots/diagnostics/servicehealth/read | Get Web Apps Slots Diagnostics Service Health. |
+> | Działanie | microsoft.web/sites/slots/diagnostics/sitecpuanalysis/read | Get Web Apps Slots Diagnostics Site CPU Analysis. |
+> | Działanie | microsoft.web/sites/slots/diagnostics/sitecrashes/read | Get Web Apps Slots Diagnostics Site Crashes. |
+> | Działanie | microsoft.web/sites/slots/diagnostics/sitelatency/read | Get Web Apps Slots Diagnostics Site Latency. |
+> | Działanie | microsoft.web/sites/slots/diagnostics/sitememoryanalysis/read | Get Web Apps Slots Diagnostics Site Memory Analysis. |
+> | Działanie | microsoft.web/sites/slots/diagnostics/siterestartsettingupdate/read | Get Web Apps Slots Diagnostics Site Restart Setting Update. |
+> | Działanie | microsoft.web/sites/slots/diagnostics/siterestartuserinitiated/read | Get Web Apps Slots Diagnostics Site Restart User Initiated. |
+> | Działanie | microsoft.web/sites/slots/diagnostics/siteswap/read | Get Web Apps Slots Diagnostics Site Swap. |
+> | Działanie | microsoft.web/sites/slots/diagnostics/threadcount/read | Get Web Apps Slots Diagnostics Thread Count. |
+> | Działanie | microsoft.web/sites/slots/diagnostics/workeravailability/read | Get Web Apps Slots Diagnostics Workeravailability. |
+> | Działanie | microsoft.web/sites/slots/diagnostics/workerprocessrecycle/read | Get Web Apps Slots Diagnostics Worker Process Recycle. |
+> | Działanie | microsoft.web/sites/slots/domainownershipidentifiers/read | Get Web Apps Slots Domain Ownership Identifiers. |
+> | Działanie | microsoft.web/sites/slots/functions/listsecrets/action | List Secrets Web Apps Slots Functions. |
+> | Działanie | microsoft.web/sites/slots/functions/read | Get Web Apps Slots Functions. |
+> | Działanie | microsoft.web/sites/slots/hostnamebindings/delete | Delete Web Apps Slots Hostname Bindings. |
+> | Działanie | microsoft.web/sites/slots/hostnamebindings/read | Get Web Apps Slots Hostname Bindings. |
+> | Działanie | microsoft.web/sites/slots/hostnamebindings/write | Update Web Apps Slots Hostname Bindings. |
+> | Działanie | microsoft.web/sites/slots/hybridconnection/delete | Delete Web Apps Slots Hybrid Connection. |
+> | Działanie | microsoft.web/sites/slots/hybridconnection/read | Get Web Apps Slots Hybrid Connection. |
+> | Działanie | microsoft.web/sites/slots/hybridconnection/write | Update Web Apps Slots Hybrid Connection. |
+> | Działanie | microsoft.web/sites/slots/hybridconnectionnamespaces/relays/delete | Delete Web Apps Slots Hybrid Connection Namespaces Relays. |
+> | Działanie | microsoft.web/sites/slots/hybridconnectionnamespaces/relays/write | Update Web Apps Slots Hybrid Connection Namespaces Relays. |
+> | Działanie | microsoft.web/sites/slots/hybridconnectionrelays/read | Get Web Apps Slots Hybrid Connection Relays. |
+> | Działanie | microsoft.web/sites/slots/instances/deployments/read | Get Web Apps Slots Instances Deployments. |
+> | Działanie | microsoft.web/sites/slots/instances/processes/delete | Delete Web Apps Slots Instances Processes. |
+> | Działanie | microsoft.web/sites/slots/instances/processes/read | Get Web Apps Slots Instances Processes. |
+> | Działanie | microsoft.web/sites/slots/instances/read | Get Web Apps Slots Instances. |
+> | Działanie | microsoft.web/sites/slots/metricdefinitions/read | Get Web Apps Slots Metric Definitions. |
+> | Działanie | microsoft.web/sites/slots/metrics/read | Get Web Apps Slots Metrics. |
+> | Działanie | microsoft.web/sites/slots/migratemysql/read | Get Web Apps Slots Migrate MySql. |
+> | Działanie | microsoft.web/sites/slots/networktrace/action | Network Trace Web Apps Slots. |
+> | Działanie | microsoft.web/sites/slots/networktraces/operationresults/read | Get Web Apps Slots Network Trace Operation Results. |
+> | Działanie | microsoft.web/sites/slots/newpassword/action | Newpassword Web Apps Slots. |
+> | Działanie | microsoft.web/sites/slots/operationresults/read | Get Web Apps Slots Operation Results. |
+> | Działanie | microsoft.web/sites/slots/operations/read | Get Web Apps Slots Operations. |
+> | Działanie | microsoft.web/sites/slots/perfcounters/read | Get Web Apps Slots Performance Counters. |
+> | Działanie | microsoft.web/sites/slots/phplogging/read | Get Web Apps Slots Phplogging. |
+> | Działanie | microsoft.web/sites/slots/premieraddons/delete | Delete Web Apps Slots Premier Addons. |
+> | Działanie | microsoft.web/sites/slots/premieraddons/read | Get Web Apps Slots Premier Addons. |
+> | Działanie | microsoft.web/sites/slots/premieraddons/write | Update Web Apps Slots Premier Addons. |
+> | Działanie | microsoft.web/sites/slots/processes/read | Get Web Apps Slots Processes. |
+> | Działanie | microsoft.web/sites/slots/publiccertificates/delete | Delete Web Apps Slots Public Certificates. |
+> | Działanie | microsoft.web/sites/slots/publiccertificates/read | Get Web Apps Slots Public Certificates. |
+> | Działanie | microsoft.web/sites/slots/publiccertificates/write | Create or Update Web Apps Slots Public Certificates. |
+> | Działanie | Microsoft.Web/sites/slots/publish/Action | Publish a Web App Slot |
+> | Działanie | Microsoft.Web/sites/slots/publishxml/Action | Get publishing profile xml for Web App Slot |
+> | Działanie | Microsoft.Web/sites/slots/Read | Get the properties of a Web App deployment slot |
+> | Działanie | microsoft.web/sites/slots/recover/action | Recover Web Apps Slots. |
+> | Działanie | Microsoft.Web/sites/slots/resetSlotConfig/Action | Reset web app slot configuration |
+> | Działanie | microsoft.web/sites/slots/resourcehealthmetadata/read | Get Web Apps Slots Resource Health Metadata. |
+> | Działanie | Microsoft.Web/sites/slots/restart/Action | Restart a Web App Slot |
+> | Działanie | microsoft.web/sites/slots/restore/read | Get Web Apps Slots Restore. |
+> | Działanie | microsoft.web/sites/slots/restore/write | Restore Web Apps Slots. |
+> | Działanie | microsoft.web/sites/slots/restorefrombackupblob/action | Restore Web Apps Slot From Backup Blob. |
+> | Działanie | microsoft.web/sites/slots/restorefromdeletedapp/action | Restore Web App Slots From Deleted App. |
+> | Działanie | microsoft.web/sites/slots/restoresnapshot/action | Restore Web Apps Slots Snapshots. |
+> | Działanie | microsoft.web/sites/slots/siteextensions/delete | Delete Web Apps Slots Site Extensions. |
+> | Działanie | microsoft.web/sites/slots/siteextensions/read | Get Web Apps Slots Site Extensions. |
+> | Działanie | microsoft.web/sites/slots/siteextensions/write | Update Web Apps Slots Site Extensions. |
+> | Działanie | Microsoft.Web/sites/slots/slotsdiffs/Action | Poznaj różnice między konfiguracją aplikacji sieci Web i miejsc |
+> | Działanie | Microsoft.Web/sites/slots/slotsswap/Action | Wymiana miejsc wdrożenia aplikacji sieci Web |
+> | Działanie | microsoft.web/sites/slots/snapshots/read | Get Web Apps Slots Snapshots. |
+> | Działanie | Microsoft.Web/sites/slots/sourcecontrols/Delete | Delete Web App Slot's source control configuration settings |
+> | Działanie | Microsoft.Web/sites/slots/sourcecontrols/Read | Get Web App Slot's source control configuration settings |
+> | Działanie | Microsoft.Web/sites/slots/sourcecontrols/Write | Update Web App Slot's source control configuration settings |
+> | Działanie | Microsoft.Web/sites/slots/start/Action | Start a Web App Slot |
+> | Działanie | Microsoft.Web/sites/slots/stop/Action | Stop a Web App Slot |
+> | Działanie | microsoft.web/sites/slots/sync/action | Sync Web Apps Slots. |
+> | Działanie | microsoft.web/sites/slots/triggeredwebjobs/delete | Delete Web Apps Slots Triggered WebJobs. |
+> | Działanie | microsoft.web/sites/slots/triggeredwebjobs/read | Get Web Apps Slots Triggered WebJobs. |
+> | Działanie | microsoft.web/sites/slots/triggeredwebjobs/run/action | Run Web Apps Slots Triggered WebJobs. |
+> | Działanie | microsoft.web/sites/slots/usages/read | Get Web Apps Slots Usages. |
+> | Działanie | microsoft.web/sites/slots/virtualnetworkconnections/delete | Delete Web Apps Slots Virtual Network Connections. |
+> | Działanie | microsoft.web/sites/slots/virtualnetworkconnections/gateways/write | Update Web Apps Slots Virtual Network Connections Gateways. |
+> | Działanie | microsoft.web/sites/slots/virtualnetworkconnections/read | Get Web Apps Slots Virtual Network Connections. |
+> | Działanie | microsoft.web/sites/slots/virtualnetworkconnections/write | Update Web Apps Slots Virtual Network Connections. |
+> | Działanie | microsoft.web/sites/slots/webjobs/read | Get Web Apps Slots WebJobs. |
 > | Działanie | Microsoft. Web/Sites/szczeliny/zapis | Utwórz nowe miejsce aplikacji sieci Web lub zaktualizuj istniejące |
 > | Działanie | Microsoft. Web/Sites/slotsdiffs/akcja | Poznaj różnice między konfiguracją aplikacji sieci Web i miejsc |
 > | Działanie | Microsoft. Web/Sites/slotsswap/akcja | Wymiana miejsc wdrożenia aplikacji sieci Web |

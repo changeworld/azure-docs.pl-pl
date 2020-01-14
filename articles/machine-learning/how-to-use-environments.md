@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: af6848e85db5d2a557835b063a499e3439557eb6
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: 93a70bf0d9189368135b8007e95627fc64064c51
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75690430"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75932182"
 ---
 # <a name="reuse-environments-for-training--deployment-with-azure-machine-learning"></a>Ponownie Użyj środowisk do szkolenia & wdrożenia z Azure Machine Learning.
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -344,6 +344,34 @@ service = Model.deploy(
 ## <a name="example-notebooks"></a>Przykład notesów
 
 Ten [przykładowy Notes](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training/using-environments) rozwija się wraz z pojęciami i metodami pokazanymi w tym artykule.
+
+## <a name="create-and-manage-environments-with-the-cli"></a>Tworzenie środowisk i zarządzanie nimi za pomocą interfejsu wiersza polecenia
+
+[Interfejs wiersza polecenia Azure Machine Learning](reference-azure-machine-learning-cli.md) odzwierciedla większość funkcji zestawu SDK języka Python i może służyć do tworzenia środowiska i zarządzania nim. W poniższych poleceniach przedstawiono podstawowe funkcje.
+
+Następujące polecenie tworzy szkielet plików dla domyślnej definicji środowiska w określonym katalogu. Te pliki są plikami JSON podobnymi do odpowiedniej klasy w zestawie SDK i mogą być używane do tworzenia nowych środowisk z ustawieniami niestandardowymi. 
+
+```azurecli-interactive
+az ml environment scaffold -n myenv -d myenvdir
+```
+
+Uruchom następujące polecenie, aby zarejestrować środowisko z określonego katalogu.
+
+```azurecli-interactive
+az ml environment register -d myenvdir
+```
+
+Po uruchomieniu poniższego polecenia zostaną wymienione wszystkie zarejestrowane środowiska.
+
+```azurecli-interactive
+az ml environment list
+```
+
+Pobierz zarejestrowane środowisko przy użyciu poniższego polecenia.
+
+```azurecli-interactive
+az ml environment download -n myenv -d downloaddir
+```
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/30/2019
 ms.author: mbaldwin
 ms.custom: security-recommendations
-ms.openlocfilehash: 95c1834e997caae13e650df5b588df898a1e361d
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 2f24012a69a7673426644a8ded6162cd1021938e
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75564181"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75930058"
 ---
 # <a name="security-control-inventory-and-asset-management"></a>Kontrola zabezpieczeń: Zarządzanie zapasami i zasobami
 
@@ -37,7 +37,7 @@ Jak wyświetlić subskrypcje platformy Azure:
 
 https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
 
-Informacje o kontroli RBAC platformy Azure:
+Opis kontroli RBAC platformy Azure:
 
 https://docs.microsoft.com/azure/role-based-access-control/overview
 
@@ -123,7 +123,7 @@ Jak używać monitorowania integralności plików:
 
 https://docs.microsoft.com/azure/security-center/security-center-file-integrity-monitoring#using-file-integrity-monitoring
 
-Informacje na temat Change Tracking platformy Azure:
+Opis Change Tracking platformy Azure:
 
 https://docs.microsoft.com/azure/automation/change-tracking
 
@@ -193,7 +193,9 @@ https://docs.microsoft.com/azure/role-based-access-control/conditional-access-az
 
 Użyj określonych konfiguracji systemu operacyjnego lub zasobów innych firm, aby ograniczyć możliwość wykonywania skryptów w ramach zasobów obliczeniowych platformy Azure.
 
-Na przykład Sterowanie wykonywaniem skryptu programu PowerShell w środowiskach systemu Windows: https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6
+Na przykład Sterowanie wykonywaniem skryptu programu PowerShell w środowiskach systemu Windows:
+
+https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6
 
 ## <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6,13: fizyczne lub logiczne rozdzielenie aplikacji wysokiego ryzyka
 

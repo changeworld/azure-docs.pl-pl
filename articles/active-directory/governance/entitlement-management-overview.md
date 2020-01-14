@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 10/24/2019
+ms.date: 01/10/2020
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0a99b9089e568351cf736310e778ba477441407
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1d1faf501aff8960a4b1961b34164be07b1d685d
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422572"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75932472"
 ---
 # <a name="what-is-azure-ad-entitlement-management"></a>Co to jest zarządzanie upoważnieniami w usłudze Azure AD?
 
@@ -134,17 +134,32 @@ Aby lepiej zrozumieć Zarządzanie uprawnieniami i jej dokumentację, można odw
 
 Wyspecjalizowane chmury, takie jak Azure Government, Azure (Niemcy) i Azure (Chiny), nie są obecnie dostępne do użycia.
 
-### <a name="which-users-must-have-licenses"></a>Którzy użytkownicy muszą mieć licencje?
+### <a name="how-many-licenses-must-you-have"></a>Ile licencji musi mieć?
 
-Dzierżawa musi mieć co najmniej tyle Azure AD — wersja Premium licencji P2, ponieważ użytkownicy będą aktywni w usłudze zarządzania uprawnieniami. Aktywni użytkownicy należący do zarządzania prawami obejmują:
+Upewnij się, że katalog ma co najmniej tyle licencji na Azure AD — wersja Premium P2, ponieważ masz pracowników, którzy będą wykonywać następujące zadania:
 
-- Użytkownik inicjujący lub zatwierdził żądanie dotyczące pakietu dostępu.
-- Użytkownik, któremu przypisano pakiet dostępu.
-- Użytkownik zarządzający pakietami dostępu.
+- Użytkownicy będący członkami, którzy **mogą** zażądać pakietu dostępu.
+- Użytkownicy i Goście, którzy żądają pakietu dostępu.
+- Użytkownicy i Goście, którzy zatwierdzają żądania dla pakietu dostępu.
 
-W ramach licencji dla użytkowników należących do członków, można również zezwolić wielu użytkownikom-Gościom na współpracujące z zarządzaniem prawami. Aby uzyskać informacje o tym, jak obliczyć liczbę użytkowników-Gości, których można uwzględnić, zobacz [Azure Active Directory wskazówki dotyczące licencjonowania współpracy B2B](../b2b/licensing-guidance.md).
+Licencje na Azure AD — wersja Premium P2 **nie** są wymagane dla następujących zadań:
 
-Aby uzyskać informacje na temat sposobu przypisywania licencji do użytkowników, zobacz [przypisywanie lub usuwanie licencji przy użyciu portalu Azure Active Directory](../fundamentals/license-users-groups.md). Należy zauważyć, że zarządzanie uprawnieniami obecnie nie wymusza przypisania licencji dla użytkowników.
+- Dla użytkowników z rolą administratora globalnego, którzy konfigurują wykazy początkowe, pakiety dostępu i zasady, nie są wymagane żadne licencje i delegowanie zadań administracyjnych do innych użytkowników.
+- Nie są wymagane żadne licencje dla użytkowników, którzy zostali delegowane zadania administracyjne, takie jak twórca katalogu, właściciel katalogu i Menedżer pakietów dostępu.
+- Dla Gości, którzy **mogą** żądać pakietów dostępu, nie są wymagane żadne licencje, ale **nie** żądają pakietu dostępu.
+
+Dla każdej płatnej licencji na Azure AD — wersja Premium P2, która została zakupiona dla użytkowników należących do członków (pracowników), możesz użyć usługi Azure AD B2B, aby zaprosić do 5 użytkowników-Gości. Ci użytkownicy-Goście mogą również korzystać z funkcji Azure AD — wersja Premium P2. Aby uzyskać więcej informacji, zobacz [wskazówki dotyczące licencjonowania współpracy B2B usługi Azure AD](../b2b/licensing-guidance.md).
+
+Aby uzyskać więcej informacji na temat licencji, zobacz [przypisywanie lub usuwanie licencji przy użyciu portalu Azure Active Directory](../fundamentals/license-users-groups.md).
+
+### <a name="example-license-scenarios"></a>Przykładowe scenariusze licencji
+
+Poniżej przedstawiono kilka przykładowych scenariuszy licencjonowania, które mogą pomóc w ustaleniu liczby posiadanych licencji.
+
+| Scenariusz | Obliczenia | Liczba licencji |
+| --- | --- | --- |
+| Administrator globalny w banku Woodgrove Bank tworzy katalogi początkowe i deleguje zadania administracyjne do 6 innych użytkowników. Jedna z zasad określa, że **Wszyscy pracownicy** (2 000 pracownicy) mogą zażądać określonego zestawu pakietów dostępu. 150 pracownicy żądają pakietów dostępu. | 2 000 pracowników, którzy **mogą** żądać pakietów dostępu | 2000 |
+| Administrator globalny w banku Woodgrove Bank tworzy katalogi początkowe i deleguje zadania administracyjne do 6 innych użytkowników. Jedna z zasad określa, że **Wszyscy pracownicy** (2 000 pracownicy) mogą zażądać określonego zestawu pakietów dostępu. Inne zasady określają, że niektórzy użytkownicy z **partnerów firmy Contoso** (Goście) mogą zażądać tych samych pakietów dostępu, które podlegają zatwierdzeniu. Firma Contoso ma 30 000 użytkowników. 150 pracownicy żądają pakietów dostępu i 10 500 użytkowników z żądania dostępu firmy Contoso. | 2 000 pracowników + 500 użytkowników-Gości z firmy Contoso, którzy przekraczają współczynnik 1:5 (10 500-(2 000 * 5)) | 2,500 |
 
 ## <a name="next-steps"></a>Następne kroki
 

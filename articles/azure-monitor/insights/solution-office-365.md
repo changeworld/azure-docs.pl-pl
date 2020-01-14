@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/08/2019
-ms.openlocfilehash: c3251cb26f5ab6dc211c61bc0a6d02b283de6ae5
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: aaa083ef52dcf18fade3315f598b5f57e791cbe0
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770343"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75932974"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Rozwiązanie do zarządzania pakietem Office 365 na platformie Azure (wersja zapoznawcza)
 
@@ -30,7 +30,7 @@ ms.locfileid: "75770343"
 > W kolekcji dzienników usługi Azure AD podlegają cenniki Azure Monitor.  Aby uzyskać więcej informacji, zobacz [cennik Azure monitor](https://azure.microsoft.com/pricing/details/monitor/) .
 >
 > Aby korzystać z rozwiązania Azure wskaźnikowego dla pakietu Office 365:
-> 1. Użycie tego łącznika ma wpływ na ceny obszaru roboczego. Aby uzyskać więcej informacji, zobacz [Cennik usługi Azure wskaźnikowej](https://azure.microsoft.com/pricing/details/azure-sentinel/).
+> 1. Korzystanie z łącznika pakietu Office 365 na platformie Azure wskaźnikowej wpływa na ceny obszaru roboczego. Aby uzyskać więcej informacji, zobacz [Cennik usługi Azure wskaźnikowej](https://azure.microsoft.com/pricing/details/azure-sentinel/).
 > 2. Jeśli korzystasz już z rozwiązania Azure Monitor Office 365, najpierw należy je odinstalować za pomocą skryptu w [poniższej sekcji odinstalowywania](#uninstall).
 > 3. [Włącz rozwiązanie Azure](../../sentinel/quickstart-onboard.md) nazwa_obszaru_roboczego w Twoim obszarze roboczym.
 > 4. Przejdź do strony **Łączniki danych** na platformie Azure, a następnie Włącz łącznik **pakietu Office 365** .

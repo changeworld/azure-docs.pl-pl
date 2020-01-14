@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: mjbrown
-ms.openlocfilehash: 5cae2bdd7d1f2f26e626c81ea95d2cee3cc8ae13
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fc5c875f4ae54ed334318efc5a1d5610b89bdda5
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75444789"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75929582"
 ---
 # <a name="order-by-clause-in-azure-cosmos-db"></a>Klauzula ORDER BY w Azure Cosmos DB
 
@@ -52,7 +52,7 @@ ORDER BY <sort_specification>
    Klauzula ORDER BY wymaga, aby zasady indeksowania zawierały indeks dla sortowanych pól. Środowisko uruchomieniowe zapytań Azure Cosmos DB obsługuje sortowanie względem nazwy właściwości, a nie do właściwości obliczanych. Azure Cosmos DB obsługuje wiele właściwości ORDER BY. Aby uruchomić zapytanie z wieloma właściwościami ORDER BY, należy zdefiniować [indeks złożony](index-policy.md#composite-indexes) dla sortowanych pól.
    
 > [!Note] 
-> W przypadku korzystania z zestawu .NET SDK 3.4.0 lub nowszego, jeśli sortowane właściwości dla niektórych dokumentów mogą być niezdefiniowane, należy jawnie utworzyć indeks dla tych właściwości. Domyślne zasady indeksowania nie będą zezwalać na pobieranie dokumentów, w których nie jest zdefiniowana właściwość Sort.
+> Jeśli właściwości sortowane względem programu mogą być niezdefiniowane w niektórych dokumentach i chcesz je pobrać w kwerendzie ORDER BY, musisz jawnie utworzyć indeks dla tych właściwości. Domyślne zasady indeksowania nie będą zezwalać na pobieranie dokumentów, w których właściwość Sort jest niezdefiniowana.
 
 ## <a name="examples"></a>Przykłady
 

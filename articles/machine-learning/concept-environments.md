@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: trbye
 author: trevorbye
 ms.date: 01/06/2020
-ms.openlocfilehash: ad520c7e6503f28de0bd5538662c223575a078fa
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: 3216248943ccc0dba788816cdba38732f9e43e14
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75692734"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75930767"
 ---
 # <a name="what-are-azure-machine-learning-environments"></a>Co to są środowiska Azure Machine Learning?
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -44,6 +44,7 @@ W przypadku środowiska zarządzanego przez użytkownika użytkownik jest odpowi
 * Definiowanie nowych obiektów `Environment` przy użyciu nadzorowanego środowiska lub przez Definiowanie własnych zależności
 * Używanie istniejących obiektów `Environment` w obszarze roboczym. Pozwala to na spójność i odtwarzalność z zależnościami
 * Importowanie z istniejącej definicji środowiska Anaconda.
+* Korzystanie z interfejsu wiersza polecenia Azure Machine Learning
 
 Zobacz [instrukcje](how-to-use-environments.md#create-an-environment) dla konkretnych przykładów kodu. Środowiska są również łatwo zarządzane za pomocą obszaru roboczego i obejmują następujące funkcje:
 

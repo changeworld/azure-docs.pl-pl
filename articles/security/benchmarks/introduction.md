@@ -8,27 +8,27 @@ ms.topic: conceptual
 ms.date: 12/16/2019
 ms.author: mbaldwin
 ms.custom: security-baselines
-ms.openlocfilehash: 2d0cceca841a2aff2538dcf8763d245ca8cfd13d
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 3169959250eb45346456c64e606f25efb0ea44f0
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75564363"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934227"
 ---
-# <a name="azure-security-benchmarks-introduction"></a>Wprowadzenie do usługi Azure Security Tests
+# <a name="azure-security-benchmark-introduction"></a>Wprowadzenie do usługi Azure Security test
 
-Użytkownik może mieć kilka lat lub nawet dekadę doświadczenia z lokalnym przetwarzaniem danych. Wiesz już, jak zabezpieczyć te wdrożenia. Jednak chmura jest inna. Jak wiadomo, czy wdrożenia w chmurze są bezpieczne? Jakie są różnice między praktykami dotyczącymi zabezpieczeń systemów lokalnych i praktykami dotyczącymi zabezpieczeń w przypadku wdrożeń w chmurze?
+Użytkownik może mieć kilka lat lub nawet dekadę doświadczenia z lokalnym przetwarzaniem danych. Wiesz już, jak zabezpieczyć te wdrożenia; jednak chmura jest inna. Jak wiadomo, czy wdrożenia w chmurze są bezpieczne? Jakie są różnice między praktykami zabezpieczeń dla systemów lokalnych i wdrożeń w chmurze?
 
-Istnieje obszerna kolekcja oficjalnych dokumentów, najlepszych rozwiązań, architektury referencyjnej, wskazówek dotyczących sieci Web, narzędzi typu "open source", roztworów komercyjnych, źródeł danych analizy i innych, których można użyć do zabezpieczenia chmury. Której opcji użyć? Co możesz zrobić, aby uzyskać akceptowalny poziom zabezpieczeń w chmurze? 
+Istnieje obszerna kolekcja oficjalnych dokumentów, najlepszych rozwiązań, architektury referencyjnej, wskazówek dotyczących sieci Web, narzędzi typu "open source", roztworów komercyjnych, źródeł danych analizy i innych, które mogą pomóc w zabezpieczeniu chmury. Której opcji użyć? Co możesz zrobić, aby uzyskać akceptowalny poziom zabezpieczeń w chmurze? 
 
-Jednym z najlepszych sposobów zabezpieczania wdrożeń w chmurze jest skoncentrowanie się na zaleceniach dotyczących usługi Cloud Security test. Zalecenia dotyczące testów porównawczych dotyczących zabezpieczania każdej usługi zaczynają fundamentalne zrozumienie ryzyka cyberbezpieczeństwa i sposobu zarządzania nim. Następnie można użyć tego rozwiązania, przyjmując zalecenia dotyczące zabezpieczeń porównawczych od dostawcy usług w chmurze, aby ułatwić wybór określonych ustawień konfiguracji zabezpieczeń w danym środowisku. 
+Jednym z najlepszych sposobów zabezpieczania wdrożeń w chmurze jest skoncentrowanie się na zaleceniach dotyczących usługi Cloud Security test. Zalecenia dotyczące testów porównawczych, na potrzeby zabezpieczania każdej usługi, należy zacząć od podstawowej wiedzy o ryzyku cyberbezpieczeństwa i sposobach zarządzania nimi. Następnie można użyć tego rozwiązania, przyjmując zalecenia dotyczące zabezpieczeń porównawczych od dostawcy usług w chmurze, aby ułatwić wybór określonych ustawień konfiguracji zabezpieczeń w danym środowisku. 
 
 Test porównawczy zabezpieczeń platformy Azure obejmuje zbiór zaleceń dotyczących zabezpieczeń o dużym wpływie, których można użyć w celu zabezpieczenia większości usług używanych na platformie Azure. Te zalecenia można traktować jako "ogólne" lub "organizacyjne", które mają zastosowanie do większości usług platformy Azure. Zalecenia dotyczące testów porównawczych zabezpieczeń platformy Azure są następnie dostosowywane dla każdej usługi platformy Azure i dostosowane wskazówki są zawarte w artykułach zalecenia dotyczące usługi. 
 
-W dokumentacji usługi Azure Security Tests należy określić mechanizmy kontroli zabezpieczeń i zalecenia dotyczące usług.
+W dokumentacji usługi Azure Security Tests określono mechanizmy kontroli zabezpieczeń i zalecenia dotyczące usług.
 
-- **Kontrolki zabezpieczeń**: zalecenia dotyczące usługi Azure Security test zostały podzielone na kategorie według kontroli zabezpieczeń. Mechanizmy kontroli zabezpieczeń reprezentują wymagania dotyczące zabezpieczeń niezależny od wysokiego poziomu, takie jak zabezpieczenia sieci i ochrona danych. Każda kontrola zabezpieczeń ma zestaw zaleceń dotyczących zabezpieczeń i instrukcje, które ułatwiają włączenie tych zaleceń. 
-- **Zalecenia dotyczące usługi**: Jeśli są dostępne, zalecenia dotyczące testów porównawczych dla usług platformy Azure obejmują zalecenia dotyczące zabezpieczeń platformy Azure, które są dostosowane do usługi, a także dodatkowe zalecenia, które są unikatowe dla danej usługi. 
+- **Kontrolki zabezpieczeń**: zalecenia dotyczące usługi Azure Security test zostały podzielone na kategorie według kontroli zabezpieczeń. Mechanizmy kontroli zabezpieczeń reprezentują wymagania dotyczące zabezpieczeń niezależny od wysokiego poziomu, takie jak zabezpieczenia sieci i ochrona danych. Każda kontrola zabezpieczeń ma zestaw zaleceń dotyczących zabezpieczeń i instrukcje, które pomogą implment te zalecenia. 
+- **Zalecenia dotyczące usługi**: Jeśli są dostępne, zalecenia dotyczące testów porównawczych dla usług platformy Azure obejmują zalecenia dotyczące zabezpieczeń platformy Azure, które są dostosowane specjalnie do tej usługi. 
 
 Warunki "kontrola", "wzorzec" i "linia bazowa" są często używane w dokumentacji usługi Azure Security test i ważne jest, aby zrozumieć, w jaki sposób platforma Azure korzysta z tych warunków. 
 

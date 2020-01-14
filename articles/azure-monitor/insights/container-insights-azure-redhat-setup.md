@@ -1,14 +1,14 @@
 ---
 title: Konfigurowanie klastrów usługi Azure Red Hat OpenShift za pomocą Azure Monitor dla kontenerów | Microsoft Docs
-description: W tym artykule opisano sposób konfigurowania Azure Monitor kontenerów do monitorowania klastrów Kubernetes hostowanych na platformie Azure Red Hat OpenShift.
+description: W tym artykule opisano sposób konfigurowania monitorowania klastra Kubernetes przy użyciu Azure Monitor hostowanego na platformie Azure Red Hat OpenShift.
 ms.topic: conceptual
-ms.date: 11/21/2019
-ms.openlocfilehash: 6922cb7b143989ba329df972a06825629c4c5020
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/13/2020
+ms.openlocfilehash: cb68d08f86efa395f9d4567a00e74632a293ea3f
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75405576"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75930361"
 ---
 # <a name="configure-azure-red-hat-openshift-clusters-with-azure-monitor-for-containers"></a>Konfigurowanie klastrów usługi Azure Red Hat OpenShift za pomocą Azure Monitor dla kontenerów
 
@@ -27,10 +27,8 @@ Azure Monitor dla kontenerów można włączyć dla nowych lub jednego lub kilku
 
 Azure Monitor for Containers obsługuje monitorowanie usługi Azure Red Hat OpenShift zgodnie z opisem w artykule [Omówienie](container-insights-overview.md) , z wyjątkiem następujących funkcji:
 
-- Dane dynamiczne
-- OdPrometheusość metryk
+- Dane dynamiczne (wersja zapoznawcza)
 - [Zbieranie metryk](container-insights-update-metrics.md) z węzłów klastra i z magazynów oraz przechowywanie ich w bazie danych metryk Azure monitor
-- Funkcja kondycji
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

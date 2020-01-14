@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/25/2017
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1d396de57a12285fb6cc682510fa6f95585465d0
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 0201c0947c2f6052182721294e8972e29479825d
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74949861"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75930642"
 ---
 # <a name="secure-your-restful-service-by-using-client-certificates"></a>Zabezpieczanie usługi RESTful przy użyciu certyfikatów klienta
 
@@ -100,17 +100,19 @@ Aby zapewnić obsługę uwierzytelniania certyfikatu klienta w zasadach niestand
 
 ## <a name="step-4-upload-the-policy-to-your-tenant"></a>Krok 4. przekazywanie zasad do dzierżawy
 
-1. W [Azure Portal](https://portal.azure.com)przejdź do [kontekstu Azure AD B2C dzierżawy](active-directory-b2c-navigate-to-b2c-context.md), a następnie wybierz pozycję **Azure AD B2C**.
+1. Na [Azure Portal](https://portal.azure.com)wybierz ikonę katalogów i **subskrypcji** na pasku narzędzi portalu, a następnie wybierz katalog zawierający dzierżawcę Azure AD B2C.
 
-2. Wybierz pozycję **platforma obsługi tożsamości**.
+1. W Azure Portal Wyszukaj i wybierz pozycję **Azure AD B2C**.
 
-3. Wybierz pozycję **wszystkie zasady**.
+1. Wybierz pozycję **platforma obsługi tożsamości**.
 
-4. Wybierz pozycję **Przekaż zasady**.
+1. Wybierz pozycję **wszystkie zasady**.
 
-5. Zaznacz pole wyboru **Zastąp zasady, jeśli istnieje** .
+1. Wybierz pozycję **Przekaż zasady**.
 
-6. Przekaż plik *TrustFrameworkExtensions. XML* , a następnie upewnij się, że przeszedł sprawdzanie poprawności.
+1. Zaznacz pole wyboru **Zastąp zasady, jeśli istnieje** .
+
+1. Przekaż plik *TrustFrameworkExtensions. XML* , a następnie upewnij się, że przeszedł sprawdzanie poprawności.
 
 ## <a name="step-5-test-the-custom-policy-by-using-run-now"></a>Krok 5. Testowanie zasad niestandardowych za pomocą polecenia Uruchom teraz
 1. Otwórz **Azure AD B2C ustawienia**, a następnie wybierz pozycję **platforma obsługi tożsamości**.

@@ -13,45 +13,50 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: pim
-ms.date: 10/23/2019
+ms.date: 01/10/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6e336ec40ba2b9f6d3018e6a4f5b2ac721077aa
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 70696cdb95fffc1e5faa46ca1b5f2180633ed63a
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72895114"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75932318"
 ---
 # <a name="license-requirements-to-use-privileged-identity-management"></a>Wymagania licencyjne dotyczące używania Privileged Identity Management
 
 Aby można było użyć usługi Azure Active Directory (Azure AD) Privileged Identity Management (PIM), katalog musi mieć ważną licencję. Ponadto licencje muszą być przypisane do administratorów i odpowiednich użytkowników. W tym artykule opisano wymagania licencyjne dotyczące korzystania z Privileged Identity Management.
 
-## <a name="prerequisites"></a>Wymagania wstępne
+## <a name="valid-licenses"></a>Prawidłowe licencje
 
-Aby można było korzystać z Privileged Identity Management, katalog musi mieć jedną z następujących licencji płatnych lub wersji próbnej:
+[!INCLUDE [Azure AD Premium P2 license](../../../includes/active-directory-p2-license.md)]
 
-- Usługa Azure AD — warstwa Premium P2
-- Enterprise Mobility + Security (EMS) E5
-- Microsoft 365 M5
+## <a name="how-many-licenses-must-you-have"></a>Ile licencji musi mieć?
 
-Aby uzyskać więcej informacji, zobacz [Co to jest usługa Azure Active Directory?](../fundamentals/active-directory-whatis.md).
+Upewnij się, że katalog ma co najmniej tyle licencji na Azure AD — wersja Premium P2, ponieważ masz pracowników, którzy będą wykonywać następujące zadania:
 
-## <a name="which-users-must-have-licenses"></a>Którzy użytkownicy muszą mieć licencje?
-
-Każdy administrator lub użytkownik, który współdziała z programem lub otrzymuje korzyść z Privileged Identity Management musi mieć licencję. Przykłady obejmują:
-
-- Administratorzy z rolami usługi Azure AD zarządzanymi przy użyciu programu PIM
-- Administratorzy z rolami zasobów platformy Azure zarządzanymi przy użyciu usług PIM
-- Administratorzy przypisani do roli administrator ról uprzywilejowanych
 - Użytkownicy przypisani jako uprawnieni do ról usługi Azure AD zarządzanych przy użyciu programu PIM
-- Użytkownicy z możliwością zatwierdzania/odrzucania żądań w usłudze PIM
+- Użytkownicy mogli zatwierdzać lub odrzucać żądania aktywacji w usłudze PIM
 - Użytkownicy przypisani do roli zasobów platformy Azure za pomocą przypisań just-in-Time lub Direct (opartych na czasie)  
 - Użytkownicy przypisani do przeglądu dostępu
 - Użytkownicy, którzy wykonują przeglądy dostępu
 
-Aby uzyskać informacje na temat sposobu przypisywania licencji do użycia, zobacz [przypisywanie lub usuwanie licencji przy użyciu portalu Azure Active Directory](../fundamentals/license-users-groups.md).
+Licencje na Azure AD — wersja Premium P2 **nie** są wymagane dla następujących zadań:
+
+- Nie są wymagane żadne licencje dla użytkowników z rolami administratora globalnego lub administratora ról uprzywilejowanych, które konfigurują usługę PIM, konfigurują zasady, odbierają alerty i konfigurują przeglądy dostępu.
+
+Aby uzyskać więcej informacji na temat licencji, zobacz [przypisywanie lub usuwanie licencji przy użyciu portalu Azure Active Directory](../fundamentals/license-users-groups.md).
+
+## <a name="example-license-scenarios"></a>Przykładowe scenariusze licencji
+
+Poniżej przedstawiono kilka przykładowych scenariuszy licencjonowania, które mogą pomóc w ustaleniu liczby posiadanych licencji.
+
+| Scenariusz | Obliczenia | Liczba licencji |
+| --- | --- | --- |
+| Bank Woodgrove ma 10 administratorów dla różnych działów i 2 administratorów globalnych, którzy konfigurują PIM i zarządzają nimi. Mogą oni mieć pięciu administratorów. | Pięć licencji dla administratorów, którzy są uprawnieni | 5 |
+| Instytut projektowania grafiki ma 25 administratorów, których 14 są zarządzane za poorednictwem programu PIM. Aktywacja roli wymaga zatwierdzenia, a w organizacji znajdują się trzy różne użytkowników, którzy mogą zatwierdzać aktywacje. | 14 licencji dla kwalifikujących się ról + trzy osoby zatwierdzające | 17 |
+| Firma Contoso ma 50 administratorów, których 42 są zarządzane za poorednictwem programu PIM. Aktywacja roli wymaga zatwierdzenia, a w organizacji istnieje pięciu różnych użytkowników, którzy mogą zatwierdzać aktywacje. Firma Contoso wykonuje także comiesięczne przeglądy użytkowników przypisanych do ról administratorów i recenzentów. są to kierownicy użytkowników, których sześć nie znajduje się w rolach administratora zarządzanych przez program PIM. | 42 licencji dla kwalifikujących się ról + pięciu osób zatwierdzających i sześciu recenzentów | 53 |
 
 ## <a name="what-happens-when-a-license-expires"></a>Co się stanie po wygaśnięciu licencji?
 

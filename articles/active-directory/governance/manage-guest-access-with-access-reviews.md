@@ -16,12 +16,12 @@ ms.date: 12/13/2018
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 562a94bbbd1999b9ca9cf0c65cdb816848648133
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8bf2f9503ae704110786a1e73aec3da18c17e4ea
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422475"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75932423"
 ---
 # <a name="manage-guest-access-with-azure-ad-access-reviews"></a>Zarządzanie dostępem gościa za pomocą przeglądów dostępu w usłudze Azure AD
 
@@ -37,7 +37,7 @@ Można również łatwo upewnić się, że użytkownicy-Goście mają odpowiedni
 
 - Usługa Azure AD — warstwa Premium P2
 
-Aby uzyskać więcej informacji, zobacz, [którzy użytkownicy muszą mieć licencje?](access-reviews-overview.md#which-users-must-have-licenses).
+Aby uzyskać więcej informacji, [wymagania dotyczące licencji](access-reviews-overview.md#license-requirements).
 
 ## <a name="create-and-perform-an-access-review-for-guests"></a>Tworzenie i przeprowadzanie przeglądu dostępu dla Gości
 

@@ -1,9 +1,9 @@
 ---
-title: Rozwiązywanie problemów z wdrożonym urządzenia StorSimple | Dokumentacja firmy Microsoft
-description: Opisano, jak diagnozować i rozwiązywać błędy występujące na urządzeniu StorSimple, która jest obecnie wdrożona i operacyjnej.
+title: Rozwiązywanie problemów ze wdrożonym urządzeniem StorSimple | Microsoft Docs
+description: Opisuje, jak diagnozować i naprawiać błędy występujące na urządzeniu StorSimple, które jest obecnie wdrożone i działa.
 services: storsimple
 documentationcenter: NA
-author: SharS
+author: twooley
 manager: carmonm
 editor: ''
 ms.assetid: ea5d89ae-e379-423f-b68b-53785941d9d0
@@ -13,58 +13,58 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 11/03/2017
-ms.author: v-sharos
-ms.openlocfilehash: 8ad3f09bf46caf426b2008b583ebd2ff78522462
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: twooley
+ms.openlocfilehash: ca79e4240c1a82e46bea44a9d018a3c681920480
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64713065"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933293"
 ---
-# <a name="troubleshoot-an-operational-storsimple-device"></a>Rozwiązywanie problemów operacyjnych urządzenia StorSimple
+# <a name="troubleshoot-an-operational-storsimple-device"></a>Rozwiązywanie problemów z działającym urządzeniem StorSimple
 > [!NOTE]
-> Klasyczny portal dla urządzeń StorSimple jest przestarzały. Menedżerowie urządzeń StorSimple dokonają automatycznego przeniesienia do nowej witryny Azure Portal zgodnie z ustalonym harmonogramem wycofywania przestarzałych produktów. Powiadomienie o przeniesieniu otrzymasz pocztą e-mail i za pośrednictwem portalu. Ten dokument zostanie wkrótce usunięty. W razie jakichkolwiek pytań dotyczących przeniesienia, zobacz [— często zadawane pytania: Przenieś do witryny Azure portal](storsimple-8000-move-azure-portal-faq.md).
+> Klasyczny portal dla urządzeń StorSimple jest przestarzały. Menedżerowie urządzeń StorSimple dokonają automatycznego przeniesienia do nowej witryny Azure Portal zgodnie z ustalonym harmonogramem wycofywania przestarzałych produktów. Powiadomienie o przeniesieniu otrzymasz pocztą e-mail i za pośrednictwem portalu. Ten dokument zostanie wkrótce usunięty. W razie jakichkolwiek pytań dotyczących przeniesienia, zobacz [FAQ: Move to Azure portal (Często zadawane pytania — przeniesienie do witryny Azure Portal)](storsimple-8000-move-azure-portal-faq.md).
 
-## <a name="overview"></a>Omówienie
-Ten artykuł zawiera przydatne wskazówki dotyczące rozwiązywania problemów w celu rozwiązywania problemów z konfiguracją, mogą wystąpić po urządzenia StorSimple jest wdrożone i działa. Opisano w nim typowe problemy, możliwe przyczyny i zalecane kroki, aby pomóc w rozwiązywaniu problemów, które mogą wystąpić, gdy uruchamiane jest Microsoft Azure StorSimple. Te informacje dotyczą zarówno w przypadku urządzenia fizycznego StorSimple w środowisku lokalnym, jak i urządzenia wirtualnego StorSimple.
+## <a name="overview"></a>Przegląd
+Ten artykuł zawiera pomocne wskazówki dotyczące rozwiązywania problemów z konfiguracją, które mogą wystąpić po wdrożeniu i uruchomieniu urządzenia StorSimple. Opisano w nim typowe problemy, możliwe przyczyny i zalecane kroki ułatwiające rozwiązywanie problemów, które mogą wystąpić podczas uruchamiania Microsoft Azure StorSimple. Te informacje dotyczą zarówno StorSimple lokalnego urządzenia fizycznego, jak i urządzenia wirtualnego StorSimple.
 
-Na końcu tego artykułu, który można znaleźć listę kodów błędów, które można napotkać podczas operacji programu Microsoft Azure StorSimple a także kroki można wykonać, aby naprawić błędy. 
+Na końcu tego artykułu można znaleźć listę kodów błędów, które mogą wystąpić podczas Microsoft Azure StorSimple operacji, a także kroki, które należy wykonać, aby rozwiązać te błędy. 
 
-## <a name="setup-wizard-process-for-operational-devices"></a>Proces Kreatora instalacji operacyjnej urządzeń
-Użyj Kreatora konfiguracji ([polecenie Invoke-HcsSetupWizard][1]) Sprawdź konfigurację urządzenia i podejmij działania naprawcze, jeśli to konieczne.
+## <a name="setup-wizard-process-for-operational-devices"></a>Proces Kreatora instalacji dla urządzeń operacyjnych
+Aby sprawdzić konfigurację urządzenia i podjąć działania naprawcze w razie potrzeby, należy użyć Kreatora instalacji programu ([Invoke-HcsSetupWizard][1]).
 
-Po uruchomieniu Kreatora konfiguracji na urządzeniu wcześniej skonfigurowane i operacyjnych, przepływ procesu jest inny. Można zmienić tylko następujące wpisy:
+Po uruchomieniu Kreatora instalacji na wcześniej skonfigurowanym i działającym urządzeniu, przepływ procesu jest inny. Można zmienić tylko następujące wpisy:
 
-* Adres IP, maskę podsieci i bramę
+* Adres IP, maska podsieci i Brama
 * Podstawowy serwer DNS
 * Podstawowy serwer NTP
-* Konfiguracja serwera proxy sieci web opcjonalne
+* Opcjonalna konfiguracja serwera proxy sieci Web
 
-Kreator instalacji nie wykonuje operacje związane z kolekcji i urządzenia rejestracji haseł.
+Kreator instalacji nie wykonuje operacji związanych z zbieraniem haseł i rejestracją urządzenia.
 
-## <a name="errors-that-occur-during-subsequent-runs-of-the-setup-wizard"></a>Błędy występujące podczas kolejnych przebiegów Kreatora konfiguracji
-W poniższej tabeli opisano błędy mogą wystąpić po uruchomieniu Kreatora instalacji na urządzeniu z systemem operacyjnej, możliwe przyczyny błędów i rekomendowanych działań umożliwiających ich rozwiązywania. 
+## <a name="errors-that-occur-during-subsequent-runs-of-the-setup-wizard"></a>Błędy występujące podczas kolejnych uruchomień Kreatora instalacji
+W poniższej tabeli opisano błędy, które można napotkać podczas uruchamiania Kreatora instalacji na urządzeniu operacyjnym, możliwe przyczyny błędów oraz zalecane działania umożliwiające ich rozwiązanie. 
 
-| Nie. | Komunikat o błędzie lub warunku | Możliwe przyczyny | Zalecana akcja |
+| Nie. | Komunikat lub warunek błędu | Możliwe przyczyny | Zalecana akcja |
 |:--- |:--- |:--- |:--- |
-| 1 |Błąd 350032: To urządzenie zostało już zdezaktywowane. |Po uruchomieniu Kreatora konfiguracji na urządzeniu, które jest dezaktywowany, zostanie wyświetlony ten błąd. |[Skontaktuj się z pomocą techniczną firmy Microsoft](storsimple-contact-microsoft-support.md), aby uzyskać informacje o kolejnych krokach. Dezaktywowanego urządzenia nie można umieścić w usłudze. Reset do ustawień fabrycznych może być wymagane w celu aktywowania urządzenie ponownie. |
-| 2 |Polecenie Invoke-HcsSetupWizard: ERROR_INVALID_FUNCTION (wyjątek od HRESULT: 0x80070001) |Aktualizacja serwera DNS kończy się niepowodzeniem. Ustawienia DNS są ustawieniami globalnymi i są stosowane do wszystkich interfejsów sieciowych włączone. |Włącz interfejs, a następnie ponownie Zastosuj ustawienia DNS. Może to spowodować zakłócenia sieci dla innych interfejsów włączone, ponieważ te ustawienia są globalne. |
-| 3 |Urządzenie wydaje się być w trybie online w portalu usługi StorSimple Manager, ale gdy spróbujesz przeprowadzić minimalną konfigurację i zapisać konfigurację, kończy się niepowodzeniem. |Podczas początkowej konfiguracji serwera proxy sieci web nie została skonfigurowana, nawet jeśli została serwer proxy rzeczywiste. |Użyj [polecenia cmdlet Test-HcsmConnection] [ 2] zlokalizować błędu. [Skontaktuj się z Microsoft Support](storsimple-contact-microsoft-support.md) Jeśli nie możesz rozwiązać ten problem. |
-| 4 |Polecenie Invoke-HcsSetupWizard: Wartość nie należy do oczekiwanego zakresu. |Niepoprawna maska podsieci generuje ten błąd. Możliwe przyczyny to: <ul><li> Maska podsieci jest brakującym lub pustym.</li><li>W formacie prefiksu Ipv6 jest nieprawidłowy.</li><li>Interfejs jest włączone w chmurze, ale brama jest brakujące lub nieprawidłowe.</li></ul>Należy pamiętać, że interfejs DATA 0 ma automatycznie włączoną obsługę chmury Jeśli skonfigurowane za pomocą Kreatora instalacji. |Aby ustalić problem, użyj podsieci 0.0.0.0 lub 256.256.256.256, a następnie Przyjrzyj się dane wyjściowe. Wprowadź poprawne wartości maski podsieci, bramy i prefiks Ipv6, zgodnie z potrzebami. |
+| 1 |Błąd 350032: to urządzenie zostało już zdezaktywowane. |Ten błąd zostanie wyświetlony w przypadku uruchomienia Kreatora instalacji programu na urządzeniu, które zostało zdezaktywowane. |[Skontaktuj się z pomocą techniczną firmy Microsoft](storsimple-contact-microsoft-support.md), aby uzyskać informacje o kolejnych krokach. Zdezaktywowane urządzenie nie może zostać wprowadzone do usługi. Przed ponownym aktywowaniem urządzenia może być konieczne zresetowanie do ustawień fabrycznych. |
+| 2 |Invoke-HcsSetupWizard: ERROR_INVALID_FUNCTION (wyjątek z HRESULT: 0x80070001) |Aktualizacja serwera DNS kończy się niepowodzeniem. Ustawienia DNS są ustawieniami globalnymi i są stosowane do wszystkich włączonych interfejsów sieciowych. |Włącz interfejs i ponownie Zastosuj ustawienia DNS. Może to zakłócać działanie sieci dla innych włączonych interfejsów, ponieważ te ustawienia są globalne. |
+| 3 |Urządzenie jest w trybie online w portalu usługi StorSimple Manager, ale podczas próby przeprowadzenia minimalnej instalacji i zapisania konfiguracji nie powiedzie się. |Podczas początkowej konfiguracji serwer proxy sieci Web nie został skonfigurowany, nawet jeśli w miejscu istnieje rzeczywisty serwer proxy. |Aby zlokalizować ten błąd, użyj [polecenia cmdlet Test-HcsmConnection][2] . [Skontaktuj się z firmą pomoc techniczna firmy Microsoft](storsimple-contact-microsoft-support.md) , jeśli nie możesz rozwiązać problemu. |
+| 4 |Invoke-HcsSetupWizard: wartość nie należy do oczekiwanego zakresu. |Nieprawidłowa maska podsieci powoduje wystąpienie tego błędu. Możliwe przyczyny są następujące: <ul><li> Brak maski podsieci lub jest ona pusta.</li><li>Format prefiksu IPv6 jest nieprawidłowy.</li><li>Interfejs jest włączony w chmurze, ale brak bramy lub jest ona nieprawidłowa.</li></ul>Należy pamiętać, że w przypadku konfigurowania za pomocą Kreatora instalacji usługa DATA 0 jest automatycznie włączona w chmurze. |Aby określić problem, użyj podsieci 0.0.0.0 lub 256.256.256.256, a następnie poszukaj danych wyjściowych. Wprowadź poprawne wartości w polu Maska podsieci, Brama i prefiks IPv6, zgodnie z wymaganiami. |
 
 ## <a name="error-codes"></a>Kody błędów
-Błędy są wyświetlane w kolejności numerycznej.
+Błędy są wymienione w kolejności liczbowej.
 
-| Numer błędu | Tekst błędu lub opisu | Akcja zalecana użytkownika |
+| Numer błędu | Tekst lub opis błędu | Zalecana akcja użytkownika |
 |:--- |:--- |:--- |
-| 10502 |Napotkano błąd podczas uzyskiwania dostępu do konta magazynu. |Poczekaj kilka minut, a następnie spróbuj ponownie. Jeśli błąd będzie się powtarzać, skontaktuj się z skontaktuj się z pomocą techniczną firmy Microsoft dla następnych kroków. |
-| 40017 |Wykonywanie kopii zapasowej nie powiodło się, ponieważ nie można odnaleźć woluminu, określonym w zasadach tworzenia kopii zapasowej na urządzeniu. |Ponów próbę wykonania kopii zapasowej operacji, jeśli błąd będzie się powtarzać, skontaktuj się z Microsoft Support. dalsze czynności. |
-| 40018 |Wykonywanie kopii zapasowej nie powiodło się, ponieważ znaleziono żadnych z określonych w zasadach kopii zapasowych woluminów na urządzeniu. |Ponów próbę wykonania kopii zapasowej operacji, jeśli błąd będzie się powtarzać, skontaktuj się z Microsoft Support. dalsze czynności. |
-| 390061 |System jest zajęty lub niedostępny. |Poczekaj kilka minut, a następnie spróbuj ponownie. Jeśli błąd będzie się powtarzać, skontaktuj się z skontaktuj się z pomocą techniczną firmy Microsoft dla następnych kroków. |
-| 390143 |Wystąpił błąd z kodem błędu 390143. (Nieznany błąd.) |Jeśli błąd będzie się powtarzać, skontaktuj się z pomocą firmy Microsoft Support dla następnych kroków. |
+| 10502 |Wystąpił błąd podczas uzyskiwania dostępu do konta magazynu. |Poczekaj kilka minut i spróbuj ponownie. Jeśli błąd będzie się powtarzać, skontaktuj się z pomoc techniczna firmy Microsoft w celu wykonania następnych kroków. |
+| 40017 |Operacja tworzenia kopii zapasowej nie powiodła się, ponieważ na urządzeniu nie znaleziono woluminu określonego w zasadach tworzenia kopii zapasowych. |Spróbuj ponownie wykonać operację tworzenia kopii zapasowej, jeśli błąd będzie nadal występować, skontaktuj się z pomoc techniczna firmy Microsoft. na potrzeby następnych kroków. |
+| 40018 |Operacja tworzenia kopii zapasowej nie powiodła się, ponieważ nie znaleziono żadnych woluminów określonych w zasadach tworzenia kopii zapasowych na urządzeniu. |Spróbuj ponownie wykonać operację tworzenia kopii zapasowej, jeśli błąd będzie nadal występować, skontaktuj się z pomoc techniczna firmy Microsoft. na potrzeby następnych kroków. |
+| 390061 |System jest zajęty lub niedostępny. |Poczekaj kilka minut i spróbuj ponownie. Jeśli błąd będzie się powtarzać, skontaktuj się z pomoc techniczna firmy Microsoft w celu wykonania następnych kroków. |
+| 390143 |Wystąpił błąd z kodem błędu 390143. (Nieznany błąd). |Jeśli błąd będzie się powtarzać, skontaktuj się z pomoc techniczna firmy Microsoft w celu wykonania następnych kroków. |
 
-## <a name="next-steps"></a>Kolejne kroki
-Jeśli nie możesz rozwiązać ten problem, [skontaktuj się z Microsoft Support](storsimple-contact-microsoft-support.md) uzyskać pomoc. 
+## <a name="next-steps"></a>Następne kroki
+Jeśli nie możesz rozwiązać tego problemu, [skontaktuj się z pomoc techniczna firmy Microsoft](storsimple-contact-microsoft-support.md) w celu uzyskania pomocy. 
 
 [1]: https://technet.microsoft.com/%5Clibrary/Dn688135(v=WPS.630).aspx
 [2]: https://technet.microsoft.com/%5Clibrary/Dn715782(v=WPS.630).aspx

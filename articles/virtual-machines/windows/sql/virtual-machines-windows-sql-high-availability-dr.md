@@ -14,14 +14,14 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/27/2017
 ms.author: mikeray
-ms.openlocfilehash: ac62ec49803bf55bbe61e08e60b648dd6c268510
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f58bb534728660b85f7d16910dde7a37914fd571
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75358003"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933958"
 ---
-# <a name="high-availability-and-disaster-recovery-for-sql-server-in-azure-virtual-machines"></a>Wysoka dostępność i odzyskiwanie po awarii dla SQL Server na platformie Azure Virtual Machines
+# <a name="high-availability-and-disaster-recovery-for-sql-server-in-azure-virtual-machines"></a>Wysoka dostępność i odzyskiwanie awaryjne na potrzeby programu SQL Server na maszynach wirtualnych platformy Azure
 
 Microsoft Azure maszyny wirtualne z SQL Server mogą pomóc obniżyć koszty rozwiązania bazy danych o wysokiej dostępności i odzyskiwania po awarii (HADR cluster). Większość SQL Server rozwiązań HADR Cluster są obsługiwane na maszynach wirtualnych platformy Azure, zarówno jako rozwiązania platformy Azure, jak i w postaci rozwiązań hybrydowych. W rozwiązaniu opartym na platformie Azure cały system HADR Cluster jest uruchamiany na platformie Azure. W konfiguracji hybrydowej część rozwiązania działa na platformie Azure, a druga część działa lokalnie w organizacji. Elastyczność środowiska platformy Azure umożliwia przechodzenie częściowo lub całkowicie na platformę Azure w celu spełnienia wymagań budżetowych i HADR Cluster w zakresie systemów baz danych SQL Server.
 
@@ -77,7 +77,7 @@ Możesz mieć rozwiązanie do odzyskiwania po awarii dla baz danych SQL Server w
 
 ## <a name="free-dr-replica-in-azure"></a>Bezpłatna replika DR na platformie Azure
 
-Jeśli masz program [Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?rtc=1&activetab=software-assurance-default-pivot:primaryr3), możesz zaimplementować plany hybrydowego odzyskiwania po awarii za pomocą usługi SQL Server przy użyciu zawsze włączonych grup dostępności lub wystąpień klastra trybu failover bez ponoszenia dodatkowych kosztów licencjonowania dla pasywnego wystąpienia usługi Dr.
+Jeśli masz program [Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?rtc=1&activetab=software-assurance-default-pivot:primaryr3), możesz zaimplementować plany hybrydowego odzyskiwania po awarii za pomocą SQL Server bez ponoszenia dodatkowych kosztów licencjonowania dla pasywnego wystąpienia usługi Dr.
 
 Na poniższej ilustracji Instalator używa SQL Server uruchomionego na maszynie wirtualnej platformy Azure korzystającej z 12 rdzeni jako repliki odzyskiwania po awarii dla lokalnego wdrożenia SQL Server przy użyciu 12 rdzeni. W przeszłości należy uzyskać licencję na 12 rdzeni SQL Server lokalnego i wdrożenia maszyny wirtualnej platformy Azure. Nowe korzyści oferują zalety pasywnej repliki działającej na maszynie wirtualnej platformy Azure. Teraz należy uzyskać licencję na 12 rdzeni SQL Server działających lokalnie, o ile określono kryteria odzyskiwania po awarii dla repliki pasywnej na maszynie wirtualnej platformy Azure.
 

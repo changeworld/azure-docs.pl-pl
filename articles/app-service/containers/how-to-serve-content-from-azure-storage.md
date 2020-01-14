@@ -5,21 +5,20 @@ author: msangapu-msft
 ms.topic: article
 ms.date: 01/02/2020
 ms.author: msangapu
-ms.openlocfilehash: 0a1e811787a43be76f94b13a6ec9886510c47d1d
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 752c9dfd1ae67397713cdffce9ba530ad6a2c159
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75866971"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75930009"
 ---
 # <a name="serve-content-from-azure-storage-in-app-service-on-linux"></a>Obsługuj zawartość z usługi Azure Storage w App Service w systemie Linux
 
-W tym przewodniku przedstawiono sposób dołączania usługi Azure Storage do App Service w systemie Linux. Korzyści obejmują bezpieczną zawartość, przenośność zawartości, magazyn trwały, dostęp do wielu aplikacji i wiele metod transferu.
-
-
-> [!IMPORTANT]
-> Usługa Azure Storage w App Service w systemie Linux jest funkcją w **wersji zapoznawczej** . Ta funkcja **nie jest obsługiwana w scenariuszach produkcyjnych**.
+> [!NOTE]
+> Ten artykuł ma zastosowanie do kontenerów systemu Linux. Aby wdrożyć niestandardowe kontenery systemu Windows, zobacz [konfigurowanie Azure Files w kontenerze systemu Windows na App Service](../configure-connect-to-azure-storage.md). Usługa Azure Storage w App Service w systemie Linux jest funkcją w **wersji zapoznawczej** . Ta funkcja **nie jest obsługiwana w scenariuszach produkcyjnych**.
 >
+
+W tym przewodniku przedstawiono sposób dołączania usługi Azure Storage do App Service w systemie Linux. Korzyści obejmują bezpieczną zawartość, przenośność zawartości, magazyn trwały, dostęp do wielu aplikacji i wiele metod transferu.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 09/06/2016
 ms.author: rclaus
 ms.subservice: disks
-ms.openlocfilehash: ea0d284b8220e4f8bc7bc1b91684654b32da7065
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: a042e768ef6693d2ced6d679947a6fe321d259bf
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035387"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934720"
 ---
 # <a name="optimize-your-linux-vm-on-azure"></a>Optymalizowanie maszyny wirtualnej systemu Linux na platformie Azure
 Tworzenie maszyny wirtualnej z systemem Linux jest proste z poziomu wiersza polecenia lub portalu. W tym samouczku pokazano, jak upewnić się, że został skonfigurowany, aby zoptymalizować jego wydajność na platformie Microsoft Azure. W tym temacie jest używana maszyna wirtualna serwera Ubuntu, ale można również utworzyć maszynę wirtualną z systemem Linux przy użyciu [własnych obrazów jako szablonów](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).  
@@ -33,7 +33,7 @@ W tym temacie przyjęto założenie, że masz już działającą subskrypcję pl
 Po utworzeniu maszyny wirtualnej z systemem Linux na platformie Azure są z nią skojarzone dwa dyski. **/dev/SDA** to dysk systemu operacyjnego, a **/dev/sdb** to dysk tymczasowy.  Nie należy używać głównego dysku systemu operacyjnego ( **/dev/SDA**) dla wszystkich elementów oprócz systemu operacyjnego, ponieważ jest zoptymalizowany pod kątem szybkiego rozruchu maszyn wirtualnych i nie zapewnia dobrej wydajności obciążeń. Chcesz dołączyć co najmniej jeden dysk do maszyny wirtualnej w celu uzyskania trwałego i zoptymalizowanego magazynu dla danych. 
 
 ## <a name="adding-disks-for-size-and-performance-targets"></a>Dodawanie dysków dla celów rozmiaru i wydajności
-Na podstawie rozmiaru maszyny wirtualnej można dołączyć do 16 dodatkowych dysków na dyskach serii A, 32 na dyskach serii D i 64 na maszynie z serii G — każdy do maksymalnie 1 TB. Dodatkowe dyski należy dodać odpowiednio do wymagań dotyczących miejsca i liczby operacji we/wy na sekundę. Każdy dysk ma cel wydajności 500 operacji we/wy na sekundę w przypadku magazynu w warstwie Standardowa oraz do 5000 liczby operacji we/wy na sekundę na dysk dla Premium Storage.
+Na podstawie rozmiaru maszyny wirtualnej można dołączyć do 16 dodatkowych dysków na dyskach serii A, 32 na dyskach serii D i 64 na maszynie z serii G — każdy do 32 TB. Dodatkowe dyski należy dodać odpowiednio do wymagań dotyczących miejsca i liczby operacji we/wy na sekundę. Każdy dysk ma cel wydajności 500 operacji we/wy na sekundę w przypadku magazynu w warstwie Standardowa oraz do 20 000 liczby operacji we/wy na sekundę na dysk dla Premium Storage.
 
 Aby osiągnąć największą liczbę operacji we/wy na dyskach Premium Storage, w których ustawienia pamięci podręcznej zostały ustawione na wartość **ReadOnly** lub **Brak**, należy wyłączyć **bariery** podczas instalowania systemu plików w systemie Linux. Nie jest wymagana żadna bariera, ponieważ zapisy do Premium Storage dysków z kopią zapasową są trwałe dla tych ustawień pamięci podręcznej.
 

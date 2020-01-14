@@ -1,9 +1,9 @@
 ---
-title: Przystawki StorSimple Snapshot Manager i woluminów | Dokumentacja firmy Microsoft
-description: Opisuje sposób używania przystawki MMC przystawki StorSimple Snapshot Manager, wyświetlanie i zarządzanie woluminami i konfigurowanie kopii zapasowych.
+title: StorSimple Snapshot Manager i woluminy | Microsoft Docs
+description: Opisuje sposób używania przystawki StorSimple Snapshot Manager MMC do wyświetlania woluminów i zarządzania nimi oraz do konfigurowania kopii zapasowych.
 services: storsimple
 documentationcenter: NA
-author: SharS
+author: twooley
 manager: carmonm
 editor: ''
 ms.assetid: 78896323-e57c-431e-bbe2-0cbde1cf43a2
@@ -13,201 +13,201 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 04/18/2016
-ms.author: v-sharos
-ms.openlocfilehash: 260dfdd4b8fe7c277358fa5773029ea9a532740a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: twooley
+ms.openlocfilehash: f09d4dd46a50f1794e51342a939b8919c5c523ef
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61078302"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75931625"
 ---
-# <a name="use-storsimple-snapshot-manager-to-view-and-manage-volumes"></a>Do wyświetlania i zarządzanie woluminami za pomocą Menedżera migawek StorSimple
-## <a name="overview"></a>Omówienie
-Można użyć programu StorSimple Snapshot Manager **woluminów** węzła (na **zakres** okienko) wybierz wolumin i wyświetlania informacji o nich. Woluminy są uporządkowane jako dyski, które odnoszą się do woluminów zainstalowanych w wyniku hosta. **Woluminów** węzeł zawiera woluminy lokalne i typów woluminów, które są obsługiwane przez rozwiązanie StorSimple, w tym woluminy odnalezione za pomocą interfejsu iSCSI i urządzeń. 
+# <a name="use-storsimple-snapshot-manager-to-view-and-manage-volumes"></a>Używanie Snapshot Manager StorSimple do wyświetlania woluminów i zarządzania nimi
+## <a name="overview"></a>Przegląd
+Aby wybrać woluminy i wyświetlić informacje o nich, można użyć węzła StorSimple **woluminy** Snapshot Manager (w okienku **zakres** ). Woluminy są przedstawiane jako dyski odpowiadające woluminom zainstalowanym przez hosta. Węzeł **woluminy** zawiera woluminy lokalne i typy woluminów obsługiwane przez StorSimple, w tym woluminy wykryte za pomocą interfejsu iSCSI i urządzenia. 
 
-Aby uzyskać więcej informacji o obsługiwanych woluminów, przejdź do [obsługi wielu typów woluminów](storsimple-what-is-snapshot-manager.md#support-for-multiple-volume-types).
+Aby uzyskać więcej informacji o obsługiwanych woluminach, przejdź do [pomocy technicznej dla wielu typów woluminów](storsimple-what-is-snapshot-manager.md#support-for-multiple-volume-types).
 
-![Lista woluminu w okienku wyników](./media/storsimple-snapshot-manager-manage-volumes/HCS_SSM_Volume_node.png)
+![Lista woluminów w okienku wyników](./media/storsimple-snapshot-manager-manage-volumes/HCS_SSM_Volume_node.png)
 
-**Woluminów** węzeł pozwala także w ponownie przeskanuj lub Usuń woluminy, po przystawki StorSimple Snapshot Manager odnajduje je. 
+Węzeł **woluminy** umożliwia także ponowne skanowanie lub usuwanie woluminów po StorSimple Snapshot Manager je odnajduje. 
 
-W tym samouczku wyjaśniono, jak można zainstalować, zainicjować i sformatować woluminy i następnie za pomocą Menedżera migawek StorSimple do:
+W tym samouczku wyjaśniono, jak można instalować, inicjować i formatować woluminy, a następnie używać StorSimple Snapshot Manager do:
 
-* Wyświetlanie informacji o woluminach 
+* Wyświetl informacje o woluminach 
 * Usuń woluminy
-* Skanuj ponownie woluminów 
-* Skonfiguruj wolumin podstawowy i wykonać ich kopię zapasową
-* Konfigurowanie dynamicznego wolumin dublowany i wykonać ich kopię zapasową
+* Skanuj ponownie woluminy 
+* Skonfiguruj wolumin podstawowy i wykonaj jego kopię zapasową
+* Skonfiguruj dynamiczny wolumin dublowany i wykonaj jego kopię zapasową
 
 > [!NOTE]
-> Wszystkie **woluminu** są również dostępne w węźle akcji **akcje** okienka.
+> Wszystkie akcje węzła **woluminu** są również dostępne w okienku **Akcje** .
 > 
 > 
 
-## <a name="mount-volumes"></a>Woluminy instalacji
-Poniższa procedura umożliwia instalowanie, inicjowanie i formatowanie woluminów StorSimple. Ta procedura wykorzystuje Zarządzanie dyskami systemu narzędzie służące do zarządzania dyskami twardymi i odpowiednie woluminów lub partycji. Aby uzyskać więcej informacji na temat przystawki Zarządzanie dyskami, przejdź do [przystawki Zarządzanie dyskami](https://technet.microsoft.com/library/cc770943.aspx) w witrynie Microsoft TechNet.
+## <a name="mount-volumes"></a>Zainstaluj woluminy
+Użyj następującej procedury, aby zainstalować, zainicjować i sformatować woluminy StorSimple. Ta procedura obejmuje zarządzanie dyskami, Narzędzie systemowe do zarządzania dyskami twardymi oraz odpowiednie woluminy lub partycje. Aby uzyskać więcej informacji na temat zarządzania dyskami, przejdź do obszaru [Zarządzanie dyskami](https://technet.microsoft.com/library/cc770943.aspx) w witrynie sieci Web Microsoft TechNet.
 
-#### <a name="to-mount-volumes"></a>Aby zainstalować woluminów
-1. Uruchom inicjatora iSCSI firmy Microsoft na komputerze hosta.
-2. Podaj jeden z adresów IP interfejsu jako portal obiektu docelowego lub adres IP odnajdywania i połączyć się z urządzeniem. Po podłączeniu urządzenia woluminy będą dostępne do systemu Windows. Aby uzyskać więcej informacji o korzystaniu z inicjatora iSCSI firmy Microsoft, przejdź do sekcji "Łączenie z urządzeniem docelowym iSCSI" w [Instalowanie i konfigurowanie programu Microsoft iSCSI Initiator][1].
-3. Rozpocznij zarządzanie dyskami przy użyciu jednej z następujących opcji:
+#### <a name="to-mount-volumes"></a>Aby zainstalować woluminy
+1. Na komputerze hosta Uruchom inicjatora iSCSI firmy Microsoft.
+2. Podaj jeden z adresów IP interfejsu jako portal docelowy lub adres IP odnajdywania, a następnie połącz się z urządzeniem. Po nawiązaniu połączenia z urządzeniem woluminy będą dostępne dla systemu Windows. Aby uzyskać więcej informacji o korzystaniu z inicjatora iSCSI firmy Microsoft, przejdź do sekcji "łączenie się z urządzeniem docelowym iSCSI" w artykule [Instalowanie i Konfigurowanie inicjatora iSCSI firmy Microsoft][1].
+3. Aby uruchomić Zarządzanie dyskami, użyj dowolnej z następujących opcji:
    
-   * Wpisz Diskmgmt.msc w **Uruchom** pole.
-   * Uruchom Menedżera serwera, rozwiń **magazynu** węzeł, a następnie wybierz **przystawki Zarządzanie dyskami**.
-   * Rozpocznij **narzędzia administracyjne**, rozwiń węzeł **Zarządzanie komputerem** węzeł, a następnie wybierz **przystawki Zarządzanie dyskami**. 
+   * Wpisz diskmgmt. msc w polu **Run (uruchamianie** ).
+   * Rozpocznij Menedżer serwera, rozwiń węzeł **Magazyn** , a następnie wybierz pozycję **Zarządzanie dyskami**.
+   * Uruchom **Narzędzia administracyjne**, rozwiń węzeł **Zarządzanie komputerem** , a następnie wybierz pozycję **Zarządzanie dyskami**. 
      
      > [!NOTE]
-     > Aby uruchomić przystawkę Zarządzanie dyskami, należy użyć uprawnień administratora.
+     > Aby uruchomić Zarządzanie dyskami, należy użyć uprawnień administratora.
      > 
      > 
-4. Wykonaj woluminy w tryb online:
+4. Przełącz woluminy w tryb online:
    
-   1. W przystawce Zarządzanie dyskami, kliknij prawym przyciskiem myszy każdy wolumin oznaczone **Offline**.
-   2. Kliknij przycisk **Uaktywnij ponownie dysk**. Dysk powinien być oznaczony **Online** po ponownym uaktywnieniu.
-5. Inicjuj woluminy:
+   1. W przystawce Zarządzanie dyskami kliknij prawym przyciskiem myszy dowolny wolumin oznaczony jako **offline**.
+   2. Kliknij pozycję **Uaktywnij ponownie dysk**. Dysk należy oznaczyć jako **online** po ponownym uaktywnieniu dysku.
+5. Zainicjuj woluminy:
    
-   1. Kliknij prawym przyciskiem myszy odnalezionych woluminów.
-   2. W menu, wybierz **Zainicjuj dysk**.
-   3. W **Zainicjuj dysk** okno dialogowe, wybierz dyski, które chcesz zainicjować, a następnie kliknij przycisk **OK**.
-6. Formatowanie woluminów prostych:
+   1. Kliknij prawym przyciskiem myszy odnalezione woluminy.
+   2. W menu wybierz opcję **zainicjuj dysk**.
+   3. W oknie dialogowym **Inicjowanie dysku** Wybierz dyski, które chcesz zainicjować, a następnie kliknij przycisk **OK**.
+6. Formatowanie prostych woluminów:
    
    1. Kliknij prawym przyciskiem myszy wolumin, który chcesz sformatować.
-   2. W menu, wybierz **nowy wolumin prosty**.
-   3. Sformatuj wolumin za pomocą Kreatora nowy wolumin prosty:
+   2. Z menu wybierz pozycję **Nowy wolumin prosty**.
+   3. Użyj Kreatora nowego woluminu prostego do sformatowania woluminu:
       
       * Określ rozmiar woluminu.
-      * Należy podać literę dysku.
+      * Podaj literę dysku.
       * Wybierz system plików NTFS.
       * Określ rozmiar jednostki alokacji 64 KB.
       * Przeprowadź szybkie formatowanie.
-7. Formatowanie woluminów wielu partycji. Aby uzyskać instrukcje, przejdź do sekcji "Woluminów i partycje" [Implementowanie przystawki Zarządzanie dyskami](https://msdn.microsoft.com/library/dd163556.aspx).
+7. Sformatuj woluminy wielopartycjowe. Aby uzyskać instrukcje, przejdź do sekcji "partycje i woluminy" podczas [implementowania zarządzania dyskami](https://msdn.microsoft.com/library/dd163556.aspx).
 
 ## <a name="view-information-about-your-volumes"></a>Wyświetlanie informacji o woluminach
-Aby wyświetlić informacje o lokalnych i woluminów StorSimple systemu Azure, należy użyć następującej procedury.
+Poniższa procedura umożliwia wyświetlenie informacji na temat lokalnych i StorSimple woluminów platformy Azure.
 
 #### <a name="to-view-volume-information"></a>Aby wyświetlić informacje o woluminie
-1. Kliknij ikony pulpitu, które można uruchomić programu StorSimple Snapshot Manager. 
-2. W **zakres** okienku kliknij **woluminów** węzła. Zostanie wyświetlona lista woluminów lokalnych i zainstalowanych, w tym wszystkich woluminów StorSimple systemu Azure, w **wyniki** okienka. Kolumny w **wyniki** okienku są konfigurowane. (Kliknij prawym przyciskiem myszy **woluminów** węzeł **widoku**, a następnie wybierz pozycję **Dodaj/Usuń kolumny**.)
+1. Kliknij ikonę pulpitu, aby rozpocząć StorSimple Snapshot Manager. 
+2. W okienku **zakres** kliknij węzeł **woluminy** . W okienku **wyników** zostanie wyświetlona lista woluminów lokalnych i zainstalowanych, w tym wszystkich woluminów StorSimple platformy Azure. Kolumny w okienku **wyników** można konfigurować. (Kliknij prawym przyciskiem myszy węzeł **woluminy** , wybierz pozycję **Widok**, a następnie wybierz polecenie **Dodaj/Usuń kolumny**).
    
-    ![Konfigurowania kolumn](./media/storsimple-snapshot-manager-manage-volumes/HCS_SSM_View_volumes.png)
+    ![Konfiguruj kolumny](./media/storsimple-snapshot-manager-manage-volumes/HCS_SSM_View_volumes.png)
    
-   | Kolumny wyników | Opis |
+   | Kolumna wyników | Opis |
    |:--- |:--- |
-   |  Name (Nazwa) |**Nazwa** kolumna zawiera literę dysku przypisaną do każdej odnaleziony wolumin. |
-   |  Urządzenie |**Urządzenia** kolumna zawiera adres IP urządzenia, podłączane do komputera hosta. |
-   |  Nazwa woluminu urządzenia |**Nazwa woluminu w urządzeniu** kolumna zawiera nazwę woluminu urządzenia, do której należy wybranego woluminu. Jest to nazwa woluminu, zdefiniowane w witrynie Azure portal dla tego określonego woluminu. |
-   |  Dostęp do ścieżki |**Ścieżek dostępu** kolumnie jest wyświetlana ścieżka dostępu do woluminu. Jest to dysk litery lub punktu instalacji co wolumin jest dostępny na komputerze-hoście. |
+   |  Nazwa |Kolumna **name** zawiera literę dysku przypisaną do każdego wykrytego woluminu. |
+   |  Urządzenie |Kolumna **Device** zawiera adres IP urządzenia podłączonego do komputera hosta. |
+   |  Nazwa woluminu urządzenia |Kolumna **Nazwa woluminu urządzenia** zawiera nazwę woluminu urządzenia, do którego należy wybrany wolumin. Jest to nazwa woluminu zdefiniowana w Azure Portal dla tego określonego woluminu. |
+   |  Ścieżki dostępu |W kolumnie **ścieżki dostępu** jest wyświetlana ścieżka dostępu do woluminu. Jest to litera dysku lub punkt instalacji, w którym wolumin jest dostępny na komputerze-hoście. |
 
 ## <a name="delete-a-volume"></a>Usuwanie woluminu
-Użyj poniższej procedury, aby usunąć wolumin z programu StorSimple Snapshot Manager.
+Aby usunąć wolumin z StorSimple Snapshot Manager, należy wykonać czynności opisane w poniższej procedurze.
 
 > [!NOTE]
-> Nie można usunąć woluminu, ponieważ jest częścią żadnej grupy woluminu. (Opcja Usuń nie jest dostępne dla woluminów, które są elementami członkowskimi grupy woluminu). Należy usunąć grupę całego woluminu, aby usunąć wolumin.
+> Woluminu nie można usunąć, jeśli jest częścią dowolnej grupy woluminów. (Opcja usuwania jest niedostępna dla woluminów, które są elementami członkowskimi grupy woluminów). Aby usunąć wolumin, należy usunąć całą grupę woluminów.
 
 #### <a name="to-delete-a-volume"></a>Aby usunąć wolumin
-1. Kliknij ikony pulpitu, które można uruchomić programu StorSimple Snapshot Manager.
-2. W **zakres** okienku kliknij **woluminów** węzła. 
-3. W **wyniki** okienku kliknij prawym przyciskiem myszy wolumin, który chcesz usunąć.
-4. W menu, kliknij polecenie **Usuń**. 
+1. Kliknij ikonę pulpitu, aby rozpocząć StorSimple Snapshot Manager.
+2. W okienku **zakres** kliknij węzeł **woluminy** . 
+3. W okienku **wyników** kliknij prawym przyciskiem myszy wolumin, który chcesz usunąć.
+4. W menu kliknij pozycję **Usuń**. 
    
     ![Usuwanie woluminu](./media/storsimple-snapshot-manager-manage-volumes/HCS_SSM_Delete_volume.png) 
-5. **Usuń wolumin** pojawi się okno dialogowe. Typ **Potwierdź** w polu tekstowym, a następnie kliknij przycisk **OK**.
-6. Domyślnie przystawki StorSimple Snapshot Manager tworzy kopię zapasową woluminu przed jego usunięciem. W ten sposób można chronić klientów przed przed utratą danych jeśli niezamierzone został usunięty. Wyświetla programu StorSimple Snapshot Manager **automatycznych migawek** komunikat o postępie, podczas gdy tworzy kopię zapasową woluminu. 
+5. Zostanie wyświetlone okno dialogowe **Usuwanie woluminu** . W polu tekstowym wpisz **potwierdzenie** , a następnie kliknij przycisk **OK**.
+6. Domyślnie program StorSimple Snapshot Manager kopię zapasową woluminu przed jego usunięciem. Dzięki temu można ochronić się przed utratą danych w przypadku niezamierzonego usunięcia. StorSimple Snapshot Manager wyświetla komunikat **automatycznego postępu migawki** podczas tworzenia kopii zapasowej woluminu. 
    
-    ![Komunikat o automatycznych migawek](./media/storsimple-snapshot-manager-manage-volumes/HCS_SSM_Automatic_snap.png) 
+    ![Automatyczny komunikat migawki](./media/storsimple-snapshot-manager-manage-volumes/HCS_SSM_Automatic_snap.png) 
 
-## <a name="rescan-volumes"></a>Skanuj ponownie woluminów
-Przeskanuj woluminy połączone do programu StorSimple Snapshot Manager, należy użyć następującej procedury.
+## <a name="rescan-volumes"></a>Skanuj ponownie woluminy
+Aby ponownie przeskanować woluminy połączone z StorSimple Snapshot Manager, wykonaj czynności opisane w poniższej procedurze.
 
-#### <a name="to-rescan-the-volumes"></a>Aby ponownie przeskanować woluminów
-1. Kliknij ikony pulpitu, które można uruchomić programu StorSimple Snapshot Manager.
-2. W **zakres** okienku kliknij prawym przyciskiem myszy **woluminów**, a następnie kliknij przycisk **Skanuj ponownie woluminy**.
+#### <a name="to-rescan-the-volumes"></a>Aby ponownie przeskanować woluminy
+1. Kliknij ikonę pulpitu, aby rozpocząć StorSimple Snapshot Manager.
+2. W okienku **zakres** kliknij prawym przyciskiem myszy pozycję **woluminy**, a następnie kliknij polecenie **Skanuj woluminy**ponownie.
    
-    ![Skanuj ponownie woluminów](./media/storsimple-snapshot-manager-manage-volumes/HCS_SSM_Rescan_volumes.png)
+    ![Skanuj ponownie woluminy](./media/storsimple-snapshot-manager-manage-volumes/HCS_SSM_Rescan_volumes.png)
    
-    Ta procedura synchronizuje listę woluminów za pomocą przystawki StorSimple Snapshot Manager. Wszelkie zmiany, takie jak nowe woluminy lub usunięte, zostaną odzwierciedlone w wynikach.
+    Ta procedura służy do synchronizowania listy woluminów z StorSimple Snapshot Manager. Wszelkie zmiany, takie jak nowe woluminy lub usunięte woluminy, zostaną odzwierciedlone w wynikach.
 
 ## <a name="configure-and-back-up-a-basic-volume"></a>Konfigurowanie i tworzenie kopii zapasowej woluminu podstawowego
-Poniższa procedura umożliwia skonfigurowanie kopii zapasowej woluminu podstawowego, a następnie natychmiast rozpocząć tworzenie kopii zapasowej lub utworzyć zasady dla zaplanowanych kopii zapasowych.
+Poniższa procedura służy do konfigurowania kopii zapasowej woluminu podstawowego, a następnie natychmiastowego rozpoczęcia tworzenia kopii zapasowej lub tworzenia zasad dla zaplanowanych kopii zapasowych.
 
 ### <a name="prerequisites"></a>Wymagania wstępne
 Przed rozpoczęciem:
 
-* Upewnij się, że komputer StorSimple urządzeń i hostów są prawidłowo skonfigurowane. Aby uzyskać więcej informacji, przejdź do [wdrażanie urządzenia StorSimple w środowisku lokalnym](storsimple-deployment-walkthrough-u2.md).
-* Instalowanie i konfigurowanie programu StorSimple Snapshot Manager. Aby uzyskać więcej informacji, przejdź do [wdrażanie programu StorSimple Snapshot Manager](storsimple-snapshot-manager-deployment.md).
+* Upewnij się, że urządzenie StorSimple i komputer hosta są prawidłowo skonfigurowane. Aby uzyskać więcej informacji, przejdź do obszaru [wdrażanie lokalnego urządzenia StorSimple](storsimple-deployment-walkthrough-u2.md).
+* Zainstaluj i skonfiguruj Snapshot Manager StorSimple. Aby uzyskać więcej informacji, przejdź do pozycji [Wdróż StorSimple Snapshot Manager](storsimple-snapshot-manager-deployment.md).
 
-#### <a name="to-configure-backup-of-a-basic-volume"></a>Aby skonfigurować tworzenie kopii zapasowej woluminu podstawowego
-1. Tworzenie woluminu podstawowego na urządzeniu StorSimple.
-2. Instalowanie, inicjowanie i formatowanie woluminu, zgodnie z opisem w [zainstalować woluminów](#mount-volumes). 
-3. Kliknij ikonę programu StorSimple Snapshot Manager na pulpicie. Zostanie wyświetlone okno programu StorSimple Snapshot Manager. 
-4. W **zakres** okienku kliknij prawym przyciskiem myszy **woluminów** węzeł, a następnie wybierz **Skanuj ponownie woluminy**. Po zakończeniu skanowania listę woluminów powinna zostać wyświetlona w **wyniki** okienka. 
-5. W **wyniki** okienku kliknij prawym przyciskiem myszy wolumin, a następnie wybierz **Utwórz grupę woluminu**. 
+#### <a name="to-configure-backup-of-a-basic-volume"></a>Aby skonfigurować kopię zapasową woluminu podstawowego
+1. Utwórz wolumin podstawowy na urządzeniu StorSimple.
+2. Instalowanie, inicjowanie i formatowanie woluminu zgodnie z opisem w artykule [woluminy instalacji](#mount-volumes). 
+3. Kliknij ikonę Snapshot Manager StorSimple na pulpicie. Zostanie wyświetlone okno StorSimple Snapshot Manager. 
+4. W okienku **zakres** kliknij prawym przyciskiem myszy węzeł **woluminy** , a następnie wybierz polecenie **Skanuj woluminy**ponownie. Po zakończeniu skanowania w okienku **wyników** powinna zostać wyświetlona lista woluminów. 
+5. W okienku **wyników** kliknij prawym przyciskiem myszy wolumin, a następnie wybierz polecenie **Utwórz grupę woluminów**. 
    
-    ![Tworzenie grupy woluminów](./media/storsimple-snapshot-manager-manage-volumes/HCS_SSM_Create_volume_group.png) 
-6. W **Utwórz grupę woluminu** okno dialogowe wpisz nazwę grupy woluminów, przypisać woluminy do niego, a następnie kliknij przycisk **OK**.
-7. W **zakres** okienku rozwiń **grupami woluminów** węzła. Nowa grupa woluminu powinna zostać wyświetlona w obszarze **grupami woluminów** węzła. 
-8. Kliknij prawym przyciskiem myszy nazwę grupy woluminu.
+    ![Utwórz grupę woluminów](./media/storsimple-snapshot-manager-manage-volumes/HCS_SSM_Create_volume_group.png) 
+6. W oknie dialogowym **Utwórz grupę woluminów** wpisz nazwę grupy woluminów, przypisz do niej woluminy, a następnie kliknij przycisk **OK**.
+7. W okienku **zakres** rozwiń węzeł **grupy woluminów** . Nowa grupa woluminów powinna zostać wyświetlona w węźle **grupy woluminów** . 
+8. Kliknij prawym przyciskiem myszy nazwę grupy woluminów.
    
-   * Aby uruchomić interakcyjne zadania tworzenia kopii zapasowej (na żądanie), kliknij przycisk **wykonać kopii zapasowej**. 
-   * Aby zaplanować automatyczne wykonywanie kopii zapasowej, kliknij przycisk **Tworzenie zasad kopii zapasowych**. Na **ogólne** wybierz grupę woluminu z listy. Na **harmonogram** wpisz szczegóły harmonogramu. Gdy skończysz, kliknij przycisk **OK**. 
-9. Aby upewnić się, że zadanie tworzenia kopii zapasowej została uruchomiona, rozwiń **zadania** w węźle **zakres** okienku, a następnie kliknij przycisk **systemem** węzła. Zostanie wyświetlona lista aktualnie uruchomionych zadań w **wyniki** okienka. 
+   * Aby uruchomić interaktywne zadanie tworzenia kopii zapasowej (na żądanie), kliknij przycisk **Utwórz kopię zapasową**. 
+   * Aby zaplanować automatyczne tworzenie kopii zapasowej, kliknij pozycję **Utwórz zasady tworzenia kopii zapasowych**. Na stronie **Ogólne** wybierz grupę woluminów z listy. Na stronie **harmonogram** wprowadź szczegóły harmonogramu. Po zakończeniu kliknij przycisk **OK**. 
+9. Aby upewnić się, że zadanie tworzenia kopii zapasowej zostało uruchomione, rozwiń węzeł **zadania** w okienku **zakres** , a następnie kliknij **uruchomiony** węzeł. Lista aktualnie uruchomionych zadań pojawia się w okienku **wyników** . 
 
-## <a name="configure-and-back-up-a-dynamic-mirrored-volume"></a>Konfigurowanie i tworzenie kopii zapasowej woluminu dublowanego dynamiczne
-Wykonaj poniższe kroki, aby skonfigurować tworzenie kopii zapasowej woluminu dublowanego dynamicznej:
+## <a name="configure-and-back-up-a-dynamic-mirrored-volume"></a>Konfigurowanie i tworzenie kopii zapasowej dynamicznego woluminu dublowanego
+Wykonaj następujące kroki, aby skonfigurować kopię zapasową dynamicznego woluminu dublowanego:
 
-* Krok 1: Użyj przystawki Zarządzanie dyskami, aby utworzyć dynamiczny wolumin dublowany. 
-* Krok 2: Użyj Menedżera migawek StorSimple do skonfigurowania kopii zapasowej.
+* Krok 1. Tworzenie dynamicznego woluminu dublowanego za pomocą przystawki Zarządzanie dyskami. 
+* Krok 2. Aby skonfigurować kopię zapasową, użyj Snapshot Manager StorSimple.
 
 ### <a name="prerequisites"></a>Wymagania wstępne
 Przed rozpoczęciem:
 
-* Upewnij się, że komputer StorSimple urządzeń i hostów są prawidłowo skonfigurowane. Aby uzyskać więcej informacji, przejdź do [wdrażanie urządzenia StorSimple w środowisku lokalnym](storsimple-8000-deployment-walkthrough-u2.md).
-* Instalowanie i konfigurowanie programu StorSimple Snapshot Manager. Aby uzyskać więcej informacji, przejdź do [wdrażanie programu StorSimple Snapshot Manager](storsimple-snapshot-manager-deployment.md).
-* Skonfiguruj dwa woluminy na urządzeniu StorSimple. (W przykładach są dostępne woluminy **dysk 1** i **Disk 2**.) 
+* Upewnij się, że urządzenie StorSimple i komputer hosta są prawidłowo skonfigurowane. Aby uzyskać więcej informacji, przejdź do obszaru [wdrażanie lokalnego urządzenia StorSimple](storsimple-8000-deployment-walkthrough-u2.md).
+* Zainstaluj i skonfiguruj Snapshot Manager StorSimple. Aby uzyskać więcej informacji, przejdź do pozycji [Wdróż StorSimple Snapshot Manager](storsimple-snapshot-manager-deployment.md).
+* Skonfiguruj dwa woluminy na urządzeniu StorSimple. (W przykładach dostępne woluminy to **dysk 1** i **dysk 2**). 
 
-### <a name="step-1-use-disk-management-to-create-a-dynamic-mirrored-volume"></a>Krok 1: Użyj przystawki Zarządzanie dyskami, aby utworzyć dynamiczny wolumin dublowany
-Zarządzanie dyskami jest narzędziem do systemu zarządzania dyskami twardymi i woluminy lub partycje, które zawierają. Aby uzyskać więcej informacji na temat przystawki Zarządzanie dyskami, przejdź do [przystawki Zarządzanie dyskami](https://technet.microsoft.com/library/cc770943.aspx) w witrynie Microsoft TechNet.
+### <a name="step-1-use-disk-management-to-create-a-dynamic-mirrored-volume"></a>Krok 1. Tworzenie dynamicznego woluminu dublowanego za pomocą przystawki Zarządzanie dyskami
+Zarządzanie dyskami to narzędzie systemowe do zarządzania dyskami twardymi oraz woluminy lub partycje, które zawierają. Aby uzyskać więcej informacji na temat zarządzania dyskami, przejdź do obszaru [Zarządzanie dyskami](https://technet.microsoft.com/library/cc770943.aspx) w witrynie sieci Web Microsoft TechNet.
 
 #### <a name="to-create-a-dynamic-mirrored-volume"></a>Aby utworzyć dynamiczny wolumin dublowany
-1. Rozpocznij zarządzanie dyskami przy użyciu jednej z następujących opcji: 
+1. Aby uruchomić Zarządzanie dyskami, użyj dowolnej z następujących opcji: 
    
-   * Otwórz **Uruchom** wpisz **Diskmgmt.msc**, i naciśnij klawisz Enter.
-   * Uruchom Menedżera serwera, rozwiń **magazynu** węzeł, a następnie wybierz **przystawki Zarządzanie dyskami**. 
-   * Rozpocznij **narzędzia administracyjne**, rozwiń węzeł **Zarządzanie komputerem** węzeł, a następnie wybierz **przystawki Zarządzanie dyskami**. 
-2. Upewnij się, że dostępne dwa woluminy na urządzeniu StorSimple. (W tym przykładzie są dostępne woluminy **dysk 1** i **Disk 2**.) 
-3. W oknie Zarządzanie dyskami w prawej kolumnie w dolnym okienku kliknij prawym przyciskiem myszy **dysk 1** i wybierz **nowy wolumin dublowany**. 
+   * Otwórz pole **Run** , wpisz **diskmgmt. msc**, a następnie naciśnij klawisz ENTER.
+   * Rozpocznij Menedżer serwera, rozwiń węzeł **Magazyn** , a następnie wybierz pozycję **Zarządzanie dyskami**. 
+   * Uruchom **Narzędzia administracyjne**, rozwiń węzeł **Zarządzanie komputerem** , a następnie wybierz pozycję **Zarządzanie dyskami**. 
+2. Upewnij się, że na urządzeniu StorSimple są dostępne dwa woluminy. (W tym przykładzie dostępne woluminy to **dysk 1** i **dysk 2**). 
+3. W oknie Zarządzanie dyskami w prawej kolumnie dolnego okienka kliknij prawym przyciskiem myszy **dysk 1** i wybierz polecenie **Nowy wolumin dublowany**. 
    
     ![Nowy wolumin dublowany](./media/storsimple-snapshot-manager-manage-volumes/HCS_SSM_New_mirrored_volume.png) 
-4. Na **nowy wolumin dublowany** strona kreatora, kliknij przycisk **dalej**.
-5. Na **Wybierz dyski** wybierz **Disk 2** w **wybrane** okienku kliknij **Dodaj**, a następnie kliknij przycisk **dalej**. 
-6. Na **Przypisz literę dysku lub ścieżki** strony, zaakceptuj wartości domyślne, a następnie kliknij przycisk **dalej**. 
-7. Na **formatowanie woluminu** stronie **rozmiar jednostki alokacji** wybierz opcję **64 KB**. Wybierz **wykonać szybkie formatowanie** pole wyboru, a następnie kliknij przycisk **dalej**. 
-8. Na **Kończenie pracy Kreatora nowych woluminów dublowanych** strony, przejrzyj ustawienia, a następnie kliknij przycisk **Zakończ**. 
-9. Pojawi się komunikat, aby wskazać, że dysk podstawowy zostaną przekonwertowane na dysk dynamiczny. Kliknij przycisk **Yes** (Tak).
+4. Na stronie Kreator **nowej woluminu dublowanego** kliknij przycisk **dalej**.
+5. Na stronie **Wybierz dyski** wybierz pozycję **dysk 2** w **wybranym** okienku, kliknij przycisk **Dodaj**, a następnie kliknij przycisk **dalej**. 
+6. Na stronie **Przypisz literę dysku lub ścieżkę** zaakceptuj wartości domyślne, a następnie kliknij przycisk **dalej**. 
+7. Na stronie **Format woluminu** w polu **rozmiar jednostki alokacji** wybierz pozycję **64 KB**. Zaznacz pole wyboru **Wykonaj szybkie formatowanie** , a następnie kliknij przycisk **dalej**. 
+8. Na stronie **Kończenie nowego woluminu dublowanego** przejrzyj ustawienia, a następnie kliknij przycisk **Zakończ**. 
+9. Zostanie wyświetlony komunikat informujący o tym, że dysk podstawowy zostanie przekonwertowany na dysk dynamiczny. Kliknij przycisk **Tak**.
    
-    ![Komunikat o konwersji dysku dynamicznego](./media/storsimple-snapshot-manager-manage-volumes/HCS_SSM_Disk_management_msg.png) 
-10. W przystawce Zarządzanie dyskami sprawdź, czy dysk 1 i 2 dysków są wyświetlane jako dynamiczne woluminy dublowane. (**Dynamiczne** powinien pojawić się w kolumnie Stan, a kolor paska pojemności należy zmienić na czerwony, wskazując wolumin dublowany.) 
+    ![Komunikat dotyczący konwersji dysku dynamicznego](./media/storsimple-snapshot-manager-manage-volumes/HCS_SSM_Disk_management_msg.png) 
+10. W przystawce Zarządzanie dyskami Sprawdź, czy dysk 1 i dysk 2 są wyświetlane jako woluminy dynamiczne dublowane. (**Dynamiczny** powinien pojawić się w kolumnie Stan, a kolor paska dyspozycyjności powinien zmienić na czerwony, wskazując wolumin dublowany). 
     
-    ![Dyski dynamiczne zarządzanie zdublowany dysk](./media/storsimple-snapshot-manager-manage-volumes/HCS_SSM_Verify_dynamic_disks_2.png) 
+    ![Woluminy dublowane zarządzania dyskami dynamicznymi](./media/storsimple-snapshot-manager-manage-volumes/HCS_SSM_Verify_dynamic_disks_2.png) 
 
-### <a name="step-2-use-storsimple-snapshot-manager-to-configure-backup"></a>Krok 2: Użyj StorSimple Snapshot Manager w celu skonfigurowania kopii zapasowej
-Poniższa procedura umożliwia konfigurowanie dynamicznego woluminu dublowanego, a następnie od razu rozpocząć tworzenie kopii zapasowej lub utworzyć zasady dla zaplanowanych kopii zapasowych.
+### <a name="step-2-use-storsimple-snapshot-manager-to-configure-backup"></a>Krok 2. Konfigurowanie kopii zapasowej za pomocą Snapshot Manager StorSimple
+Aby skonfigurować dynamiczny wolumin dublowany, należy wykonać czynności opisane w poniższej procedurze lub utworzyć zasady dla zaplanowanych kopii zapasowych.
 
-#### <a name="to-configure-backup-of-a-dynamic-mirrored-volume"></a>Aby skonfigurować tworzenie kopii zapasowej woluminu dublowanego dynamiczne
-1. Kliknij ikonę programu StorSimple Snapshot Manager na pulpicie. Zostanie wyświetlone okno programu StorSimple Snapshot Manager. 
-2. W **zakres** okienku kliknij prawym przyciskiem myszy **woluminów** a następnie wybierz węzeł **Skanuj ponownie woluminy**. Po zakończeniu skanowania listę woluminów powinna zostać wyświetlona w **wyniki** okienka. Dynamiczny wolumin dublowany jest wymieniony jako jeden wolumin. 
-3. W **wyniki** , kliknij prawym przyciskiem myszy wolumin dublowany dynamiczne, a potem kliknij **Utwórz grupę woluminu**. 
-4. W **Utwórz grupę woluminu** okno dialogowe, wpisz nazwę grupy woluminów, przypisać dynamiczny wolumin dublowany do tej grupy i kliknij przycisk **OK**. 
-5. W **zakres** okienku rozwiń **grupami woluminów** węzła. Nowa grupa woluminu powinna zostać wyświetlona w obszarze **grupami woluminów** węzła. 
-6. Kliknij prawym przyciskiem myszy nazwę grupy woluminu. 
+#### <a name="to-configure-backup-of-a-dynamic-mirrored-volume"></a>Aby skonfigurować kopię zapasową dynamicznego woluminu dublowanego
+1. Kliknij ikonę Snapshot Manager StorSimple na pulpicie. Zostanie wyświetlone okno StorSimple Snapshot Manager. 
+2. W okienku **zakres** kliknij prawym przyciskiem myszy węzeł **woluminy** , a następnie wybierz polecenie **Skanuj woluminy**ponownie. Po zakończeniu skanowania w okienku **wyników** powinna zostać wyświetlona lista woluminów. Dynamiczny wolumin dublowany jest wymieniony jako pojedynczy wolumin. 
+3. W okienku **wyników** kliknij prawym przyciskiem myszy dynamiczny wolumin dublowany, a następnie kliknij polecenie **Utwórz grupę woluminów**. 
+4. W oknie dialogowym **Utwórz grupę woluminów** wpisz nazwę grupy woluminów, przypisz dynamiczny wolumin dublowany do tej grupy, a następnie kliknij przycisk **OK**. 
+5. W okienku **zakres** rozwiń węzeł **grupy woluminów** . Nowa grupa woluminów powinna zostać wyświetlona w węźle **grupy woluminów** . 
+6. Kliknij prawym przyciskiem myszy nazwę grupy woluminów. 
    
-   * Aby uruchomić interakcyjne zadania tworzenia kopii zapasowej (na żądanie), kliknij przycisk **wykonać kopii zapasowej**. 
-   * Aby zaplanować automatyczne wykonywanie kopii zapasowej, kliknij przycisk **Tworzenie zasad kopii zapasowych**. Na **ogólne** stronie, wybierz grupę woluminu z listy. Na **harmonogram** wpisz szczegóły harmonogramu. Gdy skończysz, kliknij przycisk **OK**. 
-7. Możesz monitorować zadania tworzenia kopii zapasowej, podczas jego wykonywania. W **zakres** okienku rozwiń **zadania** węzłem, a następnie kliknij przycisk **systemem**, szczegóły zadania są wyświetlane w **wyniki** okienka. Po zakończeniu zadania tworzenia kopii zapasowej, szczegółowe informacje są przekazywane do **ostatnie 24** godzin zadań listy. 
+   * Aby uruchomić interaktywne zadanie tworzenia kopii zapasowej (na żądanie), kliknij przycisk **Utwórz kopię zapasową**. 
+   * Aby zaplanować automatyczne tworzenie kopii zapasowej, kliknij pozycję **Utwórz zasady tworzenia kopii zapasowych**. Na stronie **Ogólne** wybierz grupę woluminów z listy. Na stronie **harmonogram** wprowadź szczegóły harmonogramu. Po zakończeniu kliknij przycisk **OK**. 
+7. Zadanie tworzenia kopii zapasowej można monitorować w trakcie jego działania. W okienku **zakres** rozwiń węzeł **zadania** , a następnie kliknij przycisk **uruchomione**. Szczegóły zadania są wyświetlane w okienku **wyników** . Po zakończeniu zadania tworzenia kopii zapasowej szczegóły są przesyłane do listy zadań z **ostatnich 24** godzin. 
 
-## <a name="next-steps"></a>Kolejne kroki
-* Dowiedz się, jak [za pomocą Menedżera migawek StorSimple do administrowania rozwiązania StorSimple](storsimple-snapshot-manager-admin.md).
-* Dowiedz się, jak [tworzenie i zarządzanie grupami woluminów za pomocą Menedżera migawek StorSimple](storsimple-snapshot-manager-manage-volume-groups.md).
+## <a name="next-steps"></a>Następne kroki
+* Dowiedz się, jak [używać Snapshot Manager StorSimple do administrowania rozwiązaniem StorSimple](storsimple-snapshot-manager-admin.md).
+* Dowiedz się [, jak tworzyć grupy woluminów i zarządzać nimi za pomocą Snapshot Manager StorSimple](storsimple-snapshot-manager-manage-volume-groups.md).
 
 <!--Reference links-->
 [1]: https://msdn.microsoft.com/library/ee338480(v=ws.10).aspx

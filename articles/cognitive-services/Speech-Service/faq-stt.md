@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/4/2019
 ms.author: panosper
-ms.openlocfilehash: 575dda47b5e6fc0d70ef80dfd7a1baba0f63be2d
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: a96a3de7c8ad309986417e21a13d5e18f56cbd24
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74814858"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934125"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Zamiana mowy na tekst często zadawanych pytań
 
@@ -79,7 +79,7 @@ Odp **.: interfejs**API REST ogranicza liczbę żądań do 25 na 5 sekund. Szcze
 
 **P: jak opłaty są naliczane za dwa kanały audio?**
 
-Odp.: **w**przypadku przesłania każdego kanału osobno (każdego kanału w osobnym pliku) opłata zostanie naliczona za okres istnienia pliku. Jeśli przesyłasz pojedynczy plik z każdym kanałem, który zostanie przyładowany, zostanie naliczona opłata za czas trwania pojedynczego pliku.
+Odp **.: Jeśli**przesyłasz każdy kanał osobno (każdy kanał w osobnym pliku), zostanie naliczona opłata za cały plik. Jeśli przesyłasz pojedynczy plik z każdym kanałem, który zostanie przyładowany, zostanie naliczona opłata za czas trwania pojedynczego pliku. Szczegółowe informacje o cenach można znaleźć na [stronie cennika usługi Azure Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/).
 
 > [!IMPORTANT]
 > Jeśli masz jeszcze inne problemy z ochroną prywatności, które uniemożliwiają korzystanie z usługi Custom Speech Service, skontaktuj się z jednym z kanałów pomocy technicznej.

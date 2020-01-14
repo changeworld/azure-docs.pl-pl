@@ -5,15 +5,15 @@ author: harelbr
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 12/5/2019
+ms.date: 1/13/2020
 ms.author: harelbr
 ms.subservice: alerts
-ms.openlocfilehash: 7b2751957bf341b37527697f92931bacfb425c09
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9f8ed6be825470504b5e7b45a15c4faa9cf5ccfc
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75397337"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75932877"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Tworzenie alertu metryki za pomocą szablonu usługi Resource Manager
 
@@ -555,7 +555,12 @@ az group deployment create \
 
 Nowsze alerty metryk obsługują alerty dotyczące wielowymiarowych metryk, a także obsługują wiele kryteriów. Przy użyciu następującego szablonu można utworzyć bardziej zaawansowaną regułę alertu metryki dla metryk wymiarowych i określić wiele kryteriów.
 
-Należy pamiętać, że jeśli reguła alertu zawiera wiele kryteriów, użycie wymiarów jest ograniczone do jednej wartości na wymiar w ramach każdego kryterium.
+Należy pamiętać o następujących ograniczeniach w przypadku używania wymiarów w regule alertu, która zawiera wiele kryteriów:
+- W każdym kryterium można wybrać tylko jedną wartość dla każdego wymiaru.
+- Nie można użyć "\*" jako wartości wymiaru.
+- Gdy metryki, które są skonfigurowane w różnych kryterium obsługują ten sam wymiar, skonfigurowana wartość wymiaru musi być jawnie ustawiona w taki sam sposób dla wszystkich metryk (w odpowiednich kryteriach).
+    - W poniższym przykładzie, ponieważ metryki **transakcji** i **SuccessE2ELatency** mają wymiar **nazwy interfejsu API** , a *criterion1* określa wartość *"GetBlob"* dla wymiaru **nazwa interfejsu API** , a następnie *Criterion2* musi także ustawiać wartość *"GetBlob* " dla wymiaru **nazwy interfejsu API** .
+
 
 Zapisz Poniższy kod JSON jako advancedstaticmetricalert. JSON na potrzeby tego przewodnika.
 
@@ -784,9 +789,6 @@ az group deployment create \
     --parameters @advancedstaticmetricalert.parameters.json
 ```
 
->[!NOTE]
->
-> Gdy reguła alertu zawiera wiele kryteriów, użycie wymiarów jest ograniczone do jednej wartości na wymiar w ramach każdego kryterium.
 
 ## <a name="template-for-a-static-metric-alert-that-monitors-multiple-dimensions"></a>Szablon alertu metryki statycznej, który monitoruje wiele wymiarów
 

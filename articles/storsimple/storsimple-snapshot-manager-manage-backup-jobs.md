@@ -1,9 +1,9 @@
 ---
-title: Zadania tworzenia kopii zapasowej programu StorSimple Snapshot Manager | Dokumentacja firmy Microsoft
-description: Opisuje sposób używania przystawki MMC przystawki StorSimple Snapshot Manager do wyświetlania i zarządzania zaplanowane, aktualnie uruchomione i ukończone zadania tworzenia kopii zapasowej.
+title: Zadania tworzenia kopii zapasowych StorSimple Snapshot Manager | Microsoft Docs
+description: Opisuje sposób używania przystawki StorSimple Snapshot Manager MMC do wyświetlania zaplanowanych, aktualnie uruchomionych i zakończonych zadań tworzenia kopii zapasowych oraz zarządzania nimi.
 services: storsimple
 documentationcenter: NA
-author: SharS
+author: twooley
 manager: timlt
 editor: ''
 ms.assetid: bf4dcff6-c819-4766-b9d9-9922831cb200
@@ -13,78 +13,78 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2017
-ms.author: v-sharos
-ms.openlocfilehash: c34ff487f03d90b16b6660fbad77c3a16699e165
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: twooley
+ms.openlocfilehash: 094b996cd3227903995c7a74ef14ed8c0561f59d
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64719878"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933350"
 ---
-# <a name="use-storsimple-snapshot-manager-to-view-and-manage-backup-jobs"></a>Do przeglądania i zarządzania zadania tworzenia kopii zapasowej za pomocą Menedżera migawek StorSimple
+# <a name="use-storsimple-snapshot-manager-to-view-and-manage-backup-jobs"></a>Używanie Snapshot Manager StorSimple do wyświetlania zadań tworzenia kopii zapasowych i zarządzania nimi
 
-## <a name="overview"></a>Omówienie
-**Zadania** w węźle **zakres** pokazuje **zaplanowane**, **ostatnie 24 godziny**, i **systemem** zadania tworzenia kopii zapasowych, które inicjowane interaktywnie lub przy użyciu skonfigurowanych zasad. 
+## <a name="overview"></a>Przegląd
+W węźle **zadania** w okienku **zakres** wyświetlane są **zaplanowane**, **ostatnie 24 godziny**i **uruchomione** zadania tworzenia kopii zapasowej zainicjowane interaktywnie lub przez skonfigurowane zasady. 
 
-W tym samouczku wyjaśniono, jak można użyć **zadań** węzeł, aby wyświetlić informacje o zaplanowanych, ostatnie i aktualnie uruchomionych zadań tworzenia kopii zapasowej. (Lista zadań i informacji jest wyświetlana w **wyniki** okienka.) Ponadto możesz kliknij prawym przyciskiem myszy na liście zadań i wyświetlić menu kontekstowe, który zawiera listę dostępnych akcji.
+W tym samouczku wyjaśniono, jak można użyć węzła **zadania** do wyświetlania informacji o zaplanowanych, ostatnich i aktualnie uruchomionych zadaniach tworzenia kopii zapasowej. (Lista zadań i odpowiadające im informacje są wyświetlane w okienku **wyników** ). Ponadto można kliknąć prawym przyciskiem myszy wyświetlone zadanie i wyświetlić menu kontekstowe zawierające listę dostępnych akcji.
 
-## <a name="view-scheduled-jobs"></a>Wyświetl zaplanowane zadania
-Poniższa procedura umożliwia wyświetlanie zaplanowanych zadań kopii zapasowej.
+## <a name="view-scheduled-jobs"></a>Wyświetlanie zaplanowanych zadań
+Aby wyświetlić zaplanowane zadania tworzenia kopii zapasowej, należy wykonać poniższą procedurę.
 
-#### <a name="to-view-scheduled-jobs"></a>Aby wyświetlić zadania zaplanowane
-1. Kliknij ikony pulpitu, które można uruchomić programu StorSimple Snapshot Manager. 
-2. W **zakres** okienku rozwiń **zadania** węzeł, a następnie kliknij przycisk **zaplanowane**. Zostaną wyświetlone następujące informacje w **wyniki** okienka:
+#### <a name="to-view-scheduled-jobs"></a>Aby wyświetlić zaplanowane zadania
+1. Kliknij ikonę pulpitu, aby rozpocząć StorSimple Snapshot Manager. 
+2. W okienku **zakres** rozwiń węzeł **zadania** , a następnie kliknij pozycję **zaplanowane**. W okienku **wyników** zostaną wyświetlone następujące informacje:
    
-   * **Nazwa** — nazwa zaplanowaną migawkę
-   * **Następne uruchomienie** — Data i godzina następną zaplanowaną migawkę
-   * **Ostatnie uruchomienie** — Data i godzina najnowszych zaplanowaną migawkę
+   * **Name** — nazwa zaplanowanej migawki
+   * **Następne uruchomienie** — Data i godzina następnej zaplanowanej migawki
+   * **Ostatnie uruchomienie** — Data i godzina ostatniej zaplanowanej migawki
      
      > [!NOTE]
-     > Dla jednorazowej migawki tylko **następnego uruchomienia** i **ostatnie uruchomienie** będą takie same.
+     > W przypadku migawek jednorazowych **następne uruchomienie** i **ostatni przebieg** będą takie same.
      
-     ![Zaplanowanych zadań kopii zapasowej](./media/storsimple-snapshot-manager-manage-backup-jobs/HCS_SSM_Jobs_scheduled.png) 
-3. Aby wykonać dodatkowe akcje dla określonego zadania, kliknij prawym przyciskiem myszy nazwę zadania w **wyniki** okienka, a następnie zaznacz opcje menu.
+     ![Zaplanowane zadania tworzenia kopii zapasowej](./media/storsimple-snapshot-manager-manage-backup-jobs/HCS_SSM_Jobs_scheduled.png) 
+3. Aby wykonać dodatkowe akcje w określonym zadaniu, kliknij prawym przyciskiem myszy nazwę zadania w okienku **wyników** , a następnie wybierz jedną z opcji menu.
 
 ## <a name="view-recent-jobs"></a>Wyświetl ostatnie zadania
-Poniższa procedura umożliwia wyświetlanie kopii zapasowych i przywracanie zadania, które zostały ukończone w ciągu ostatnich 24 godzin.
+Aby wyświetlić zadania tworzenia kopii zapasowej i przywracania wykonane w ciągu ostatnich 24 godzin, wykonaj czynności opisane w poniższej procedurze.
 
 #### <a name="to-view-recent-jobs"></a>Aby wyświetlić ostatnie zadania
-1. Kliknij ikony pulpitu, które można uruchomić programu StorSimple Snapshot Manager.
-2. W **zakres** okienku rozwiń **zadania** węzeł, a następnie kliknij przycisk **ostatnie 24 godziny**. **Wyniki** zadania tworzenia kopii zapasowej w okienku są wyświetlane w ciągu ostatnich 24 godzin (maksymalnie 64 zadań). Zostaną wyświetlone następujące informacje w **wyniki** okienko, w zależności od **widoku** opcji, należy określić:
+1. Kliknij ikonę pulpitu, aby rozpocząć StorSimple Snapshot Manager.
+2. W okienku **zakres** rozwiń węzeł **zadania** , a następnie kliknij pozycję **ostatnie 24 godziny**. W okienku **wyników** wyświetlane są zadania tworzenia kopii zapasowej dla ostatnich 24 godzin (maksymalnie 64 zadań). Poniższe informacje są wyświetlane w okienku **wyników** w zależności od wybranych opcji **widoku** :
    
-   * **Nazwa** — nazwa zaplanowaną migawkę.
-   * **Pracę** — Data i godzina rozpoczęcia migawki.
-   * **Zatrzymano** — Data i godzina, kiedy migawki zostało zakończone lub został zakończony.
-   * **Upłynęło** — ilość czasu między **uruchomiono** i **zatrzymane** razy.
-   * **Stan** — stan niedawno ukończone zadania. **Powodzenie** wskazuje, czy kopia zapasowa została utworzona pomyślnie. **Nie powiodło się** wskazuje, że zadanie nie zostało uruchomione pomyślnie.
-   * **Informacje o** — przyczyny niepowodzenia.
-   * **Bajty przetwarzane (MB)** — ilość danych z grupy woluminów, która została przetworzona (w MB). 
+   * **Name** — nazwa zaplanowanej migawki.
+   * **Rozpoczęte** — Data i godzina rozpoczęcia migawki.
+   * **Zatrzymane** — Data i godzina zakończenia lub zakończenia migawki.
+   * **Upłynęło** — ilość czasu między **rozpoczęciem** i **zatrzymaniem** .
+   * **Status** — stan ostatnio wykonanego zadania. **Sukces** wskazuje, że tworzenie kopii zapasowej zostało pomyślnie utworzone. **Niepowodzenie** oznacza, że zadanie nie zostało wykonane pomyślnie.
+   * **Informacje** — Przyczyna błędu.
+   * **Przetworzone bajty (MB)** — ilość danych z grupy woluminów przetworzonych (w MB). 
      
-     ![Zadań uruchomionych w ostatnich 24 godzinach](./media/storsimple-snapshot-manager-manage-backup-jobs/HCS_SSM_Jobs_Last_24_hours.png) 
-3. Aby wykonać dodatkowe akcje dla określonego zadania, kliknij prawym przyciskiem myszy nazwę zadania w **wyniki** okienka, a następnie zaznacz opcje menu.
+     ![Zadania uruchomione w ciągu ostatnich 24 godzin](./media/storsimple-snapshot-manager-manage-backup-jobs/HCS_SSM_Jobs_Last_24_hours.png) 
+3. Aby wykonać dodatkowe akcje w określonym zadaniu, kliknij prawym przyciskiem myszy nazwę zadania w okienku **wyników** , a następnie wybierz jedną z opcji menu.
    
-    ![Usuń zadanie](./media/storsimple-snapshot-manager-manage-backup-catalog/HCS_SSM_Delete_backup.png)
+    ![Usuwanie zadania](./media/storsimple-snapshot-manager-manage-backup-catalog/HCS_SSM_Delete_backup.png)
 
-## <a name="view-currently-running-jobs"></a>Wyświetl uruchomione zadania
-Użyj poniższej procedury do widoku zadania, które są aktualnie uruchomione.
+## <a name="view-currently-running-jobs"></a>Wyświetl aktualnie uruchomione zadania
+Aby wyświetlić aktualnie uruchomione zadania, należy wykonać poniższą procedurę.
 
-#### <a name="to-view-currently-running-jobs"></a>Aby wyświetlić aktualnie uruchomionych zadań
-1. Kliknij ikony pulpitu, które można uruchomić programu StorSimple Snapshot Manager.
-2. W **zakres** okienku rozwiń **zadania** węzeł, a następnie kliknij przycisk **systemem**. W zależności od **widoku** opcji, należy określić następujące informacje są wyświetlane w **wyniki** okienka:
+#### <a name="to-view-currently-running-jobs"></a>Aby wyświetlić aktualnie uruchomione zadania
+1. Kliknij ikonę pulpitu, aby rozpocząć StorSimple Snapshot Manager.
+2. W okienku **zakres** rozwiń węzeł **zadania** , a następnie kliknij przycisk **uruchomione**. W zależności od określonych opcji **widoku** w okienku **wyników** zostaną wyświetlone następujące informacje:
    
-   * **Nazwa** — nazwa zaplanowaną migawkę.
-   * **Pracę** — Data i godzina rozpoczęcia migawki.
-   * **Punkt kontrolny** — bieżącej akcji tworzenia kopii zapasowej.
-   * **Stan** — procentu ukończenia.
-   * **Upłynęło** — ilość czasu, jaki upłynął od chwili rozpoczęcia tworzenia kopii zapasowej. 
-   * **Średnia przepustowość (MB)** — współczynnik całkowita liczba bajtów danych przetworzonych w tym całkowity czas poświęcony na przetwarzanie (MB).
-   * **Bajty przetwarzane (MB)** — łączna liczba bajtów dane przetworzone (w MB).
-   * **Bajty zapisane (MB)** — łączna liczba bajtów danych zapisanych (w MB). Ona zawiera dane, a także metadanych i dlatego jest zwykle większy niż przetwarzane bajtów.
+   * **Name** — nazwa zaplanowanej migawki.
+   * **Rozpoczęte** — Data i godzina rozpoczęcia migawki.
+   * **Checkpoint** — Bieżąca akcja kopii zapasowej.
+   * **Status** — procent ukończenia.
+   * **Upłynęło** — ilość czasu, która upłynęła od momentu rozpoczęcia tworzenia kopii zapasowej. 
+   * **Średnia przepływność (MB)** — stosunek całkowitej liczby bajtów przetworzonych na ten łączny czas przetwarzania (MB).
+   * **Przetworzone bajty (MB)** — łączne bajty przetworzonych danych (w MB).
+   * **Bajty zapisywane (MB)** — całkowita liczba bajtów zapisanych (w MB). Obejmuje to zarówno dane, jak i metadane, a więc jest zazwyczaj większa niż liczba przetworzonych bajtów.
      
-     ![Obecnie uruchomionych zadań](./media/storsimple-snapshot-manager-manage-backup-jobs/HCS_SSM_Jobs_running.png)
-3. Aby wykonać dodatkowe akcje dla określonego zadania, kliknij prawym przyciskiem myszy nazwę zadania w **wyniki** okienka, a następnie zaznacz opcje menu.
+     ![Aktualnie uruchomione zadania](./media/storsimple-snapshot-manager-manage-backup-jobs/HCS_SSM_Jobs_running.png)
+3. Aby wykonać dodatkowe akcje w określonym zadaniu, kliknij prawym przyciskiem myszy nazwę zadania w okienku **wyników** , a następnie wybierz jedną z opcji menu.
 
-## <a name="next-steps"></a>Kolejne kroki
-* Dowiedz się, jak [za pomocą Menedżera migawek StorSimple do administrowania rozwiązania StorSimple](storsimple-snapshot-manager-admin.md).
-* Dowiedz się, jak [Zarządzanie wykazem kopii zapasowych za pomocą Menedżera migawek StorSimple](storsimple-snapshot-manager-manage-backup-catalog.md).
+## <a name="next-steps"></a>Następne kroki
+* Dowiedz się, jak [używać Snapshot Manager StorSimple do administrowania rozwiązaniem StorSimple](storsimple-snapshot-manager-admin.md).
+* Dowiedz się, jak [za pomocą Snapshot Manager StorSimple zarządzać katalogiem kopii zapasowych](storsimple-snapshot-manager-manage-backup-catalog.md).
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 11/28/2019
-ms.openlocfilehash: 8a644beede4089133f88b824fd8d34dddec3b15e
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 69acfd4f2edab9be1b1dcfbb52eafbd00aec712f
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75751113"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934563"
 ---
 # <a name="install-and-use-hue-on-hdinsight-hadoop-clusters"></a>Instalowanie i używanie odcienia w klastrach usługi HDInsight Hadoop
 
@@ -127,6 +127,4 @@ Tunelowanie SSH jest jedynym sposobem, aby uzyskać dostęp do odcienia w klastr
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Zainstaluj program Apache Giraph w klastrach usługi HDInsight](hdinsight-hadoop-giraph-install-linux.md). Użyj dostosowywania klastra, aby zainstalować Giraph w klastrach usługi HDInsight Hadoop. Giraph umożliwia przetwarzanie grafów przy użyciu usługi Hadoop i może być używane z usługą Azure HDInsight.
-
-* [Zainstaluj język R w klastrach usługi HDInsight](hdinsight-hadoop-r-scripts-linux.md). Użyj dostosowywania klastra, aby zainstalować język R w klastrach Hadoop usługi HDInsight. R to język i środowisko "open source" do obliczeń statystycznych. Zapewnia setki wbudowanych funkcji statystycznych i własnego języka programowania, który łączy aspekty funkcjonalne i programowanie zorientowane obiektowo. Zapewnia również szerokie możliwości graficzne.
+[Zainstaluj język R w klastrach usługi HDInsight](hdinsight-hadoop-r-scripts-linux.md). Użyj dostosowywania klastra, aby zainstalować język R w klastrach Hadoop usługi HDInsight. R to język i środowisko "open source" do obliczeń statystycznych. Zapewnia setki wbudowanych funkcji statystycznych i własnego języka programowania, który łączy aspekty funkcjonalne i programowanie zorientowane obiektowo. Zapewnia również szerokie możliwości graficzne.

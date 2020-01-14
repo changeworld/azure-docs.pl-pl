@@ -1,19 +1,19 @@
 ---
 title: Migracja konta z portal Cloud Partner do Centrum partnerskiego — komercyjna witryna Marketplace na platformie Azure
 description: Jak migrować konto z przeglądarki CPP do Centrum partnerskiego. — Komercyjne witryny Marketplace na platformie Azure
-author: ChJenk
+author: MaggiePucciEvans
 manager: evansma
-ms.author: v-qiwe
+ms.author: evansma
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/23/2019
-ms.openlocfilehash: f8644a2aa989b7013cbbd64e8a8194bc08f40251
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 076250444989d4edb3ec86039ab25887ff1e206b
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73813101"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75931314"
 ---
 # <a name="account-migration-from-cloud-partner-portal-to-partner-center"></a>Migracja konta z portal Cloud Partner do Centrum partnerskiego
 
@@ -72,7 +72,7 @@ Aby uzyskać szczegółowe informacje na temat tego, co należy wykonać w dniu 
     * Certyfikacja lub Recertyfikacja wymaga, aby Twoja aplikacja obsługiwała najnowszą wersję naszej platformy Business Applications.
     * Po zatwierdzeniu aplikacji otrzymasz wiadomość e-mail z powiadomieniem, aby wrócić do oferty i wybrać pozycję "przejdź na żywo", aby umożliwić korzystanie z oferty na żywo na Microsoft AppSource.
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 Dołącz do tygodniowego [wywołania społecznościowego programu Dynamics niezależnych dostawców oprogramowania](https://aka.ms/DynamicsISV-CommunityCall) , aby uzyskać pomoc techniczną i aktualizacje.
 

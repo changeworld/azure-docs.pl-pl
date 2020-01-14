@@ -1,19 +1,19 @@
 ---
 title: Naliczanie opłat za pomocą usługi pomiaru Marketplace | Portal Azure Marketplace
 description: Ta dokumentacja zawiera Przewodnik po opublikowaniu ofert SaaS z elastycznymi modelami rozliczeń.
-author: qianw211
+author: MaggiePucciEvans
 manager: evansma
-ms.author: v-qiwe
+ms.author: evansma
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 54b59cfecbbba6b71cf301aa4872892825d4b675
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: f1b60831e08383ee455cd3afbfbc21ed27445ffc
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827930"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934184"
 ---
 # <a name="metered-billing-using-the-marketplace-metering-service"></a>Naliczanie opłat za pomocą usługi pomiaru Marketplace
 
@@ -51,7 +51,7 @@ Przykładowo firma Contoso jest wydawcą z usługą SaaS o nazwie contoso Notifi
     * Wysyłaj 10000 wiadomości e-mail i 1000 dla USD/miesiąc
     * W przypadku wiadomości e-mail z 10000, płatność $1 dla każdej 100 wiadomości e-mail
     * Oprócz 1000 tekstów, płatność $0,02 dla każdego tekstu
-* Plan Premium
+* Plan w warstwie Premium
     * Wyślij 50000 wiadomości e-mail i 10000 dla $350 miesięcznie
     * W przypadku wiadomości e-mail z 50000, płatność $0,5 dla każdej 100 wiadomości e-mail
     * Oprócz 10000 tekstów, płatność $0,01 dla każdego tekstu
@@ -73,7 +73,7 @@ Wymiary rozliczeń są współużytkowane przez wszystkie plany oferty.  Niektó
 
 Atrybuty definiujące sam wymiar są współużytkowane przez wszystkie plany oferty.  Przed opublikowaniem oferty zmiany wprowadzone do tych atrybutów z kontekstu dowolnego planu wpłyną na definicję wymiaru we wszystkich planach.  Po opublikowaniu oferty te atrybuty nie będą już edytowalne.  Te atrybuty są następujące:
 
-* Identyfikatora
+* Identyfikator
 * Nazwa
 * Jednostka miary
 
@@ -103,7 +103,7 @@ Ponieważ wymiar używany z usługą pomiaru w portalu Marketplace reprezentuje 
   
 Po opublikowaniu oferty z wymiarem nie można już zmieniać szczegółów na poziomie oferty dla tego wymiaru:
 
-* Identyfikatora
+* Identyfikator
 * Nazwa
 * Jednostka miary
 
@@ -118,7 +118,7 @@ Po opublikowaniu planu nie można już zmieniać szczegółów na poziomie planu
 
 Maksymalna liczba wymiarów, które można skonfigurować dla jednej oferty, to 18 unikatowych wymiarów.
 
-## <a name="get-support"></a>Uzyskiwanie pomocy technicznej
+## <a name="get-support"></a>Uzyskaj pomoc techniczną
 
 Jeśli masz jedną z następujących czynności, możesz otworzyć bilet pomocy technicznej.
 

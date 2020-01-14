@@ -1,9 +1,9 @@
 ---
-title: Zasady tworzenia kopii zapasowych programu StorSimple Snapshot Manager | Dokumentacja firmy Microsoft
-description: Opisuje sposób używania przystawki MMC przystawki StorSimple Snapshot Manager do tworzenia i zarządzania zasadami tworzenia kopii zapasowych, które kontrolują zaplanowanych kopii zapasowych.
+title: Zasady tworzenia kopii zapasowych StorSimple Snapshot Manager | Microsoft Docs
+description: Zawiera opis sposobu korzystania z przystawki StorSimple Snapshot Manager MMC do tworzenia zasad tworzenia kopii zapasowych, które kontrolują zaplanowanymi zapasami i zarządzania nimi.
 services: storsimple
 documentationcenter: NA
-author: SharS
+author: twooley
 manager: timlt
 editor: ''
 ms.assetid: 04415d0b-42f0-4737-8afa-257fb2dbe5d0
@@ -13,84 +13,84 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2017
-ms.author: v-sharos
-ms.openlocfilehash: 7dac26b058b959011e38b4373369b8a1115d2705
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: twooley
+ms.openlocfilehash: 7b2df6c8384e78094d80a17d8982b0db9edf73e1
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64687278"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933359"
 ---
-# <a name="use-storsimple-snapshot-manager-to-create-and-manage-backup-policies"></a>Tworzenie i zarządzanie zasadami kopii zapasowych za pomocą Menedżera migawek StorSimple
-## <a name="overview"></a>Omówienie
-Zasady tworzenia kopii zapasowej tworzy harmonogram tworzenia kopii zapasowych danych woluminu, lokalnie lub w chmurze. Po utworzeniu zasad tworzenia kopii zapasowej, można również określić zasady przechowywania. (Można przechowywać maksymalnie 64 migawki). Aby uzyskać więcej informacji na temat zasad tworzenia kopii zapasowych, zobacz [kopii zapasowej typy](storsimple-what-is-snapshot-manager.md#backup-types-and-backup-policies) w [serii StorSimple 8000: hybrydowe rozwiązanie w chmurze](storsimple-overview.md).
+# <a name="use-storsimple-snapshot-manager-to-create-and-manage-backup-policies"></a>Tworzenie zasad tworzenia kopii zapasowych i zarządzanie nimi za pomocą StorSimple Snapshot Manager
+## <a name="overview"></a>Przegląd
+Zasady tworzenia kopii zapasowych tworzą harmonogram tworzenia kopii zapasowych danych woluminu lokalnie lub w chmurze. Podczas tworzenia zasad tworzenia kopii zapasowych można także określić zasady przechowywania. (Można zachować maksymalnie 64 migawek). Aby uzyskać więcej informacji na temat zasad tworzenia kopii zapasowych, zobacz [typy kopii zapasowych](storsimple-what-is-snapshot-manager.md#backup-types-and-backup-policies) w [serii StorSimple 8000: rozwiązanie w chmurze hybrydowej](storsimple-overview.md).
 
 W tym samouczku wyjaśniono:
 
 * Tworzenie zasad kopii zapasowych
-* Edytowanie zasad tworzenia kopii zapasowej
+* Edytowanie zasad kopii zapasowych
 * Usuwanie zasad kopii zapasowych
 
 ## <a name="create-a-backup-policy"></a>Tworzenie zasad kopii zapasowych
-Poniższa procedura umożliwia utworzenie nowych zasad tworzenia kopii zapasowej.
+Aby utworzyć nowe zasady tworzenia kopii zapasowych, wykonaj czynności opisane w poniższej procedurze.
 
-#### <a name="to-create-a-backup-policy"></a>Aby utworzyć zasady kopii zapasowych
-1. Kliknij ikony pulpitu, które można uruchomić programu StorSimple Snapshot Manager.
-2. W **zakres** okienku kliknij prawym przyciskiem myszy **zasady tworzenia kopii zapasowych**i kliknij przycisk **zasady tworzenia kopii zapasowej**.
+#### <a name="to-create-a-backup-policy"></a>Aby utworzyć zasady tworzenia kopii zapasowych
+1. Kliknij ikonę pulpitu, aby rozpocząć StorSimple Snapshot Manager.
+2. W okienku **zakres** kliknij prawym przyciskiem myszy pozycję **zasady tworzenia kopii zapasowych**, a następnie kliknij pozycję **Utwórz zasady tworzenia kopii zapasowych**.
 
     ![Tworzenie zasad kopii zapasowych](./media/storsimple-snapshot-manager-manage-backup-policies/HCS_SSM_Create_BU_policy.png)
 
-    **Utwórz zasadę** pojawi się okno dialogowe.
+    Zostanie wyświetlone okno dialogowe **Tworzenie zasad** .
 
     ![Tworzenie zasad — karta Ogólne](./media/storsimple-snapshot-manager-manage-backup-policies/HCS_SSM_Create_policy_general.png)
-3. Na **ogólne** karcie, wykonaj następujące informacje:
+3. Na karcie **Ogólne** wykonaj następujące informacje:
 
-   1. W **nazwa** polu tekstowym wpisz nazwę zasad.
-   2. W **grupy woluminów** pole tekstowe, wpisz nazwę grupy woluminów skojarzonych z zasadami.
-   3. Wybierz opcję **migawka lokalna** lub **migawki w chmurze**.
-   4. Wybierz liczbę migawek do zachowania. Jeśli wybierzesz **wszystkich**, 64 migawki staną się przechowywane (maksymalna).
-4. Kliknij przycisk **harmonogram** kartę.
+   1. W polu tekstowym **Nazwa** wpisz nazwę zasady.
+   2. W polu tekstowym **Grupa woluminów** wpisz nazwę grupy woluminów skojarzonej z zasadami.
+   3. Wybierz **migawkę lokalną** lub **migawkę w chmurze**.
+   4. Wybierz liczbę migawek do zachowania. W przypadku wybrania opcji **wszystkie**migawki 64 będą zachowywane (wartość maksymalna).
+4. Kliknij przycisk **Harmonogram** kartę.
 
-    ![Tworzenie zasad — karta harmonogram](./media/storsimple-snapshot-manager-manage-backup-policies/HCS_SSM_Create_policy_schedule.png)
-5. Na **harmonogram** karcie, wykonaj następujące informacje:
+    ![Tworzenie karty harmonogram zasad](./media/storsimple-snapshot-manager-manage-backup-policies/HCS_SSM_Create_policy_schedule.png)
+5. Na karcie **harmonogram** wykonaj następujące informacje:
 
-   1. Kliknij przycisk **Włącz** pole wyboru, aby zaplanować następną kopią zapasową.
-   2. W obszarze **ustawienia**, wybierz opcję **jeden raz**, **codzienne**, **tygodniowy**, lub **miesięczne**.
-   3. W **Start** pola tekstowego, kliknij ikonę kalendarza i wybierz datę rozpoczęcia.
-   4. W obszarze **Zaawansowane ustawienia**, można ustawić opcjonalny powtórzeń harmonogramów oraz datę zakończenia.
+   1. Kliknij pole wyboru **Włącz** , aby zaplanować następną kopię zapasową.
+   2. W obszarze **Ustawienia**wybierz **jeden raz**, **codziennie**, **co tydzień**lub **co miesiąc**.
+   3. W polu tekstowym **Start** kliknij ikonę kalendarza i wybierz datę rozpoczęcia.
+   4. W obszarze **Ustawienia zaawansowane**można ustawić opcjonalne harmonogramy powtarzania i datę końcową.
    5. Kliknij przycisk **OK**.
 
-Po utworzeniu zasad tworzenia kopii zapasowej, zostaną wyświetlone następujące informacje w **wyniki** okienka:
+Po utworzeniu zasad tworzenia kopii zapasowych w okienku **wyników** zostaną wyświetlone następujące informacje:
 
-* **Nazwa** — Nazwa zasad kopii zapasowych.
-* **Typ** — migawka lokalna i migawka w chmurze.
-* **Grupa woluminów** — grupa woluminów skojarzonych z zasadami.
-* **Przechowywanie** — liczby migawek zachowywany; maksymalna liczba to 64.
-* **Utworzone** — datę, która zasada została utworzona.
-* **Włączone** — Określa, czy zasada jest obecnie w efekcie: **Wartość true,** wskazuje, że jest obowiązywały; **False** wskazuje, że nie będzie obowiązywać.
+* **Nazwa** — Nazwa zasad tworzenia kopii zapasowych.
+* **Typ** — migawka lokalna lub migawka w chmurze.
+* **Grupa woluminów** — Grupa woluminów skojarzona z zasadami.
+* **Przechowywanie** — Liczba zachowanych migawek; wartość maksymalna to 64.
+* **Utworzone** — Data utworzenia tych zasad.
+* **Włączone** — określa, czy zasady są obecnie aktywne: **wartość true** wskazuje, że jest ona aktywna. **Wartość false** wskazuje, że nie jest ona aktywna.
 
-## <a name="edit-a-backup-policy"></a>Edytowanie zasad tworzenia kopii zapasowej
-Poniższa procedura umożliwia Edytuj istniejące zasady tworzenia kopii zapasowej.
+## <a name="edit-a-backup-policy"></a>Edytowanie zasad kopii zapasowych
+Aby edytować istniejące zasady tworzenia kopii zapasowych, wykonaj czynności opisane w poniższej procedurze.
 
-#### <a name="to-edit-a-backup-policy"></a>Aby edytować zasady tworzenia kopii zapasowej
-1. Kliknij ikony pulpitu, które można uruchomić programu StorSimple Snapshot Manager.
-2. W **zakres** okienku kliknij **zasady tworzenia kopii zapasowych** węzła. Zasady tworzenia kopii zapasowych są wyświetlane w **wyniki** okienka.
-3. Kliknij prawym przyciskiem myszy zasady, które chcesz edytować, a następnie kliknij przycisk **Edytuj**.
+#### <a name="to-edit-a-backup-policy"></a>Aby edytować zasady tworzenia kopii zapasowych
+1. Kliknij ikonę pulpitu, aby rozpocząć StorSimple Snapshot Manager.
+2. W okienku **zakres** kliknij węzeł **zasady tworzenia kopii zapasowych** . Wszystkie zasady tworzenia kopii zapasowych są wyświetlane w okienku **wyników** .
+3. Kliknij prawym przyciskiem myszy zasady, które chcesz edytować, a następnie kliknij przycisk **edytować**.
 
-    ![Edytowanie zasad tworzenia kopii zapasowej](./media/storsimple-snapshot-manager-manage-backup-policies/HCS_SSM_Edit_BU_policy.png)
-4. Gdy **Utwórz zasadę** zostanie wyświetlone okno, wprowadź zmiany, a następnie kliknij przycisk **OK**.
+    ![Edytowanie zasad kopii zapasowych](./media/storsimple-snapshot-manager-manage-backup-policies/HCS_SSM_Edit_BU_policy.png)
+4. Po wyświetleniu okna **Utwórz zasady** wprowadź zmiany, a następnie kliknij przycisk **OK**.
 
 ## <a name="delete-a-backup-policy"></a>Usuwanie zasad kopii zapasowych
-Użyj poniższej procedury można usunąć zasad tworzenia kopii zapasowej.
+Aby usunąć zasady tworzenia kopii zapasowych, wykonaj czynności opisane w poniższej procedurze.
 
-#### <a name="to-delete-a-backup-policy"></a>Aby usunąć zasady kopii zapasowych
-1. Kliknij ikony pulpitu, które można uruchomić programu StorSimple Snapshot Manager.
-2. W **zakres** okienku kliknij **zasady tworzenia kopii zapasowych** węzła. Zasady tworzenia kopii zapasowych są wyświetlane w **wyniki** okienka.
-3. Kliknij prawym przyciskiem myszy zasady kopii zapasowych, który chcesz usunąć, a następnie kliknij przycisk **Usuń**.
-4. Po wyświetleniu komunikatu potwierdzenia kliknij **tak**.
+#### <a name="to-delete-a-backup-policy"></a>Aby usunąć zasady tworzenia kopii zapasowych
+1. Kliknij ikonę pulpitu, aby rozpocząć StorSimple Snapshot Manager.
+2. W okienku **zakres** kliknij węzeł **zasady tworzenia kopii zapasowych** . Wszystkie zasady tworzenia kopii zapasowych są wyświetlane w okienku **wyników** .
+3. Kliknij prawym przyciskiem myszy zasady tworzenia kopii zapasowych, które chcesz usunąć, a następnie kliknij przycisk **Usuń**.
+4. Po wyświetleniu komunikatu potwierdzenia kliknij przycisk **tak**.
 
-    ![Zasady tworzenia kopii zapasowej potwierdzenie usunięcia](./media/storsimple-snapshot-manager-manage-backup-policies/HCS_SSM_Delete_BU_policy.png)
+    ![Potwierdzenie usunięcia zasad kopii zapasowych](./media/storsimple-snapshot-manager-manage-backup-policies/HCS_SSM_Delete_BU_policy.png)
 
-## <a name="next-steps"></a>Kolejne kroki
-* Dowiedz się, jak [za pomocą Menedżera migawek StorSimple do administrowania rozwiązania StorSimple](storsimple-snapshot-manager-admin.md).
-* Dowiedz się, jak [do przeglądania i zarządzania zadania tworzenia kopii zapasowej za pomocą Menedżera migawek StorSimple](storsimple-snapshot-manager-manage-backup-jobs.md).
+## <a name="next-steps"></a>Następne kroki
+* Dowiedz się, jak [używać Snapshot Manager StorSimple do administrowania rozwiązaniem StorSimple](storsimple-snapshot-manager-admin.md).
+* Dowiedz się, jak [używać Snapshot Manager StorSimple do wyświetlania zadań tworzenia kopii zapasowych i zarządzania nimi](storsimple-snapshot-manager-manage-backup-jobs.md).

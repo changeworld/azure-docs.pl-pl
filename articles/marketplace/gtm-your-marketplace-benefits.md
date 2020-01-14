@@ -2,18 +2,18 @@
 title: Usługi platformy "przejdź do rynku" — Twoje komercyjne korzyści z witryny Marketplace | Azure
 description: Usługi na rynku — w tej sekcji opisano zasoby firmy Microsoft, których mogą używać wydawcy.
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security, Partner Center
-author: qianw211
+author: MaggiePucciEvans
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 09/10/2019
-ms.author: v-qiwe
-ms.openlocfilehash: 7b563cd90ec3e46dfd2d4420b728cd6f69df40eb
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: evansma
+ms.openlocfilehash: b8c1034b047e0c72db41bbbbff06feb0bdf06517
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818649"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933925"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>Twoje komercyjne korzyści z witryny Marketplace
 
@@ -103,7 +103,7 @@ Firma Microsoft zastrzega sobie prawo do odwoływania i kończenia korzyści z t
 
 Ta oferta jest przeprowadzana w języku angielskim dla wszystkich partnerów z ofertą na żywo w witrynie Azure Marketplace lub Microsoft AppSource.
 
-Transakcje, które są udowodnione jako fałszywe, nie będą wliczane do [warstwy programu sprzedaży naliczanej](https://aka.ms/marketplacepublisherrewards)przez wydawcę, jak wspomniano na [liście, w wersji próbnej](#list-trial-and-consulting-benefits) , w sekcji konsultingowej usługi [Transact partner](#marketplace-rewards-for-transact-partners) i [szczegółowej części programu ](https://aka.ms/marketplacepublisherrewards). Firma Microsoft będzie przydzielać partnerów do warstw kwalifikujących się na podstawie ich rzeczywistej sprzedaży rozliczanej po usunięciu oszustwa. 
+Transakcje, które są udowodnione jako fałszywe, nie będą wliczane do [warstwy programu sprzedaży naliczanej](https://aka.ms/marketplacepublisherrewards)przez wydawcę, zgodnie z opisem w sekcji [Lista, wersja próbna, konsultacje](#list-trial-and-consulting-benefits) dotyczące usługi [Transact partner](#marketplace-rewards-for-transact-partners) i [szczegółowego pokładu programu](https://aka.ms/marketplacepublisherrewards). Firma Microsoft będzie przydzielać partnerów do warstw kwalifikujących się na podstawie ich rzeczywistej sprzedaży rozliczanej po usunięciu oszustwa. 
 
 ## <a name="next-steps"></a>Następne kroki
 

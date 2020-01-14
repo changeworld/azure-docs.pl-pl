@@ -8,12 +8,12 @@ ms.author: magottei
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: d1efd44614cc2384043b32da20f38c91f006459c
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 5f646b4cef782b569910bdf881208c9984194589
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863108"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75931122"
 ---
 # <a name="troubleshooting-common-indexer-issues-in-azure-cognitive-search"></a>Rozwiązywanie typowych problemów indeksatora na platformie Azure Wyszukiwanie poznawcze
 
@@ -30,7 +30,7 @@ Indeksatory mogą być uruchamiane w ramach wielu problemów podczas indeksowani
 >
 > Adres IP usługi wyszukiwania można sprawdzić, wysyłając polecenie ping do jego w pełni kwalifikowanej nazwy domeny (np., `<your-search-service-name>.search.windows.net`).
 >
-> Zakres adresów IP `AzureCognitiveSearch` [znacznika usługi](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) dla określonego regionu, w którym znajduje się usługa Azure wyszukiwanie poznawcze, można uzyskać przy użyciu [plików JSON do pobrania](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files) lub za pośrednictwem [interfejsu API odnajdywania tagów usługi](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#use-the-service-tag-discovery-api-public-preview). Zakres adresów IP jest aktualizowany co tydzień.
+> Zakres adresów IP `AzureCognitiveSearch` [znacznika usługi](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) można sprawdzić przy użyciu [plików JSON do pobrania](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files) lub za pośrednictwem [interfejsu API odnajdywania tagów usługi](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#use-the-service-tag-discovery-api-public-preview). Zakres adresów IP jest aktualizowany co tydzień.
 
 ### <a name="configure-firewall-rules"></a>Konfigurowanie reguł zapory
 

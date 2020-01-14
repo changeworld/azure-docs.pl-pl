@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/28/2019
-ms.openlocfilehash: 23d2c771c8918099c0db2b68c290e7d90077932a
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: ad9b4b69b0be34c89d03b677c1889e486aae0379
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74687740"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75931696"
 ---
 # <a name="script-action-development-with-hdinsight"></a>Tworzenie akcji skryptu za pomocą usługi HDInsight
 
@@ -26,7 +26,7 @@ Akcje skryptu można stosować przy użyciu następujących metod:
 
 | Użyj tej metody, aby zastosować skrypt... | Podczas tworzenia klastra... | Na uruchomionym klastrze... |
 | --- |:---:|:---:|
-| Azure Portal |✓ |✓ |
+| Portal Azure |✓ |✓ |
 | Program Azure PowerShell |✓ |✓ |
 | Klasyczny interfejs wiersza polecenia platformy Azure |&nbsp; |✓ |
 | Zestaw SDK dla platformy .NET usługi HDInsight |✓ |✓ |
@@ -161,13 +161,13 @@ Usługa HDInsight rejestruje dane wyjściowe skryptu zapisane w strumieniach STD
 > [!NOTE]  
 > Apache Ambari jest dostępny tylko wtedy, gdy klaster został utworzony pomyślnie. Jeśli podczas tworzenia klastra używasz akcji skryptu, a tworzenie nie powiedzie się, zobacz sekcję Rozwiązywanie problemów [Dostosowywanie klastrów usługi HDInsight za pomocą akcji skryptu](hdinsight-hadoop-customize-cluster-linux.md#troubleshooting) , aby poznać inne sposoby uzyskiwania dostępu do zarejestrowanych informacji.
 
-Większość narzędzi i pakietów instalacyjnych już zapisują informacje w strumieniach STDOUT i STDERR, jednak możesz chcieć dodać dodatkowe rejestrowanie. Aby wysłać tekst do STDOUT, użyj `echo`. Na przykład:
+Większość narzędzi i pakietów instalacyjnych już zapisują informacje w strumieniach STDOUT i STDERR, jednak możesz chcieć dodać dodatkowe rejestrowanie. Aby wysłać tekst do STDOUT, użyj `echo`. Przykład:
 
 ```bash
 echo "Getting ready to install Foo"
 ```
 
-Domyślnie `echo` wysyła ciąg do STDOUT. Aby skierować go do STDERR, Dodaj `>&2` przed `echo`. Na przykład:
+Domyślnie `echo` wysyła ciąg do STDOUT. Aby skierować go do STDERR, Dodaj `>&2` przed `echo`. Przykład:
 
 ```bash
 >&2 echo "An error occurred installing Foo"
@@ -313,7 +313,7 @@ Poniżej przedstawiono kroki, które należy wykonać podczas przygotowywania do
 
 Za pomocą akcji skryptu można dostosować klastry usługi HDInsight przy użyciu następujących metod:
 
-* Azure Portal
+* Portal Azure
 * Program Azure PowerShell
 * Szablony usługi Azure Resource Manager
 * Zestaw SDK usługi HDInsight dla platformy .NET.
@@ -322,10 +322,7 @@ Aby uzyskać więcej informacji na temat korzystania z każdej z tych metod, zob
 
 ## <a name="sampleScripts"></a>Przykłady skryptów niestandardowych
 
-Firma Microsoft oferuje przykładowe skrypty do instalowania składników w klastrze usługi HDInsight. Zobacz poniższe linki, aby uzyskać więcej przykładowych akcji skryptu.
-
-* [Instalowanie i używanie odcienia w klastrach usługi HDInsight](hdinsight-hadoop-hue-linux.md)
-* [Instalowanie i używanie oprogramowania Apache Giraph w klastrach usługi HDInsight](hdinsight-hadoop-giraph-install-linux.md)
+Firma Microsoft oferuje przykładowe skrypty do instalowania składników w klastrze usługi HDInsight. Zobacz [Instalowanie i używanie odcienia w klastrach usługi HDInsight](hdinsight-hadoop-hue-linux.md) jako przykładowej akcji skryptu.
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 

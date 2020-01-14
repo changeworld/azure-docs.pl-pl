@@ -7,14 +7,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 11/13/2019
+ms.date: 01/10/2020
 ms.custom: seodec18
-ms.openlocfilehash: 6ab9d0ae07978e69bebb0fc24c8965cce971cfd5
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: c85db05e6feeea43023c2391998f837348caed4e
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082330"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75929622"
 ---
 # <a name="add-blobs-to-objects-in-azure-digital-twins"></a>Dodaj obiekty blob do obiektów w usłudze Azure Digital bliźniaczych reprezentacji
 
@@ -36,7 +36,7 @@ Oprócz tworzenia zawartości **i** **usuwania zawartości**, żądania wielocz�
 
 Cztery główne schematy JSON:
 
-[![schematy JSON](media/how-to-add-blobs/blob-models-img.png)](media/how-to-add-blobs/blob-models-img.png#lightbox)
+[![schematy JSON](media/how-to-add-blobs/blob-models-swagger-img.png)](media/how-to-add-blobs/blob-models-swagger-img.png#lightbox)
 
 Metadane obiektu BLOB JSON są zgodne z następującym modelem:
 
@@ -54,7 +54,7 @@ Metadane obiektu BLOB JSON są zgodne z następującym modelem:
 | Atrybut | Typ | Opis |
 | --- | --- | --- |
 | **parentId** | Ciąg | Jednostka nadrzędna, z którą ma zostać skojarzony obiekt BLOB (miejsca, urządzenia lub Użytkownicy) |
-| **name** |Ciąg | Przyjazna dla człowieka nazwa obiektu BLOB |
+| **Nazwa** |Ciąg | Przyjazna dla człowieka nazwa obiektu BLOB |
 | **type** | Ciąg | Typ obiektu BLOB — nie można używać *typu* i elementu *typeId*  |
 | **typeId** | Liczba całkowita | Identyfikator typu obiektu BLOB — nie można używać *typu* i elementu *typeId* |
 | **Podtyp** | Ciąg | Podtyp obiektu BLOB — nie można użyć *podtypu* i elementu *subtypeid* |
@@ -109,7 +109,7 @@ Pojedyncze zwrócone obiekty blob są zgodne z następującym schematem JSON:
 | Atrybut | Typ | Opis |
 | --- | --- | --- |
 | **id** | Ciąg | Unikatowy identyfikator obiektu BLOB |
-| **name** |Ciąg | Przyjazna dla człowieka nazwa obiektu BLOB |
+| **Nazwa** |Ciąg | Przyjazna dla człowieka nazwa obiektu BLOB |
 | **parentId** | Ciąg | Jednostka nadrzędna, z którą ma zostać skojarzony obiekt BLOB (miejsca, urządzenia lub Użytkownicy) |
 | **type** | Ciąg | Typ obiektu BLOB — nie można używać *typu* i elementu *typeId*  |
 | **typeId** | Liczba całkowita | Identyfikator typu obiektu BLOB — nie można używać *typu* i elementu *typeId* |
@@ -196,7 +196,7 @@ curl -X POST "YOUR_MANAGEMENT_API_URL/spaces/blobs" \
 | YOUR_SPACE_ID | Identyfikator przestrzeni, z którą ma zostać skojarzony obiekt BLOB |
 | PATH_TO_FILE | Ścieżka do pliku tekstowego |
 
-[przykład za![ki](media/how-to-add-blobs/curl-img.png)](media/how-to-add-blobs/curl-img.png#lightbox)
+[przykład za![ki](media/how-to-add-blobs/http-blob-post-through-curl-img.png)](media/how-to-add-blobs/http-blob-post-through-curl-img.png#lightbox)
 
 Pomyślne ogłoszenie zwraca identyfikator nowego obiektu BLOB.
 
@@ -208,7 +208,7 @@ W poniższych sekcjach opisano podstawowe punkty końcowe interfejsu API powiąz
 
 Obiekty blob można dołączać do urządzeń. Na poniższej ilustracji przedstawiono dokumentację referencyjną struktury Swagger dla interfejsów API zarządzania. Określa punkty końcowe interfejsu API związane z urządzeniami do użycia obiektów blob i wszystkie wymagane parametry ścieżki do przekazania do nich.
 
-[![obiekty blob urządzenia](media/how-to-add-blobs/blobs-device-api-img.png)](media/how-to-add-blobs/blobs-device-api-img.png#lightbox)
+[![obiekty blob urządzenia](media/how-to-add-blobs/blobs-device-api-swagger-img.png)](media/how-to-add-blobs/blobs-device-api-swagger-img.png#lightbox)
 
 Na przykład aby zaktualizować lub utworzyć obiekt BLOB i dołączyć obiekt BLOB do urządzenia, wykonaj uwierzytelnione żądanie HTTP PATCH:
 
@@ -226,7 +226,7 @@ Pomyślne żądania zwracają obiekt JSON zgodnie z [wcześniejszym opisem](#blo
 
 Możesz również dołączyć obiekty blob do obszarów. Na poniższej ilustracji przedstawiono punkty końcowe interfejsu API obszaru, które są odpowiedzialne za obsługę obiektów BLOB. Wyświetla również wszystkie parametry ścieżki do przekazania do tych punktów końcowych.
 
-[![przestrzenie obiektów BLOB](media/how-to-add-blobs/blobs-space-api-img.png)](media/how-to-add-blobs/blobs-space-api-img.png#lightbox)
+[![przestrzenie obiektów BLOB](media/how-to-add-blobs/blobs-space-api-swagger-img.png)](media/how-to-add-blobs/blobs-space-api-swagger-img.png#lightbox)
 
 Aby na przykład zwrócić obiekt BLOB dołączony do spacji, należy wykonać uwierzytelnione żądanie HTTP GET:
 
@@ -246,7 +246,7 @@ Pomyślne żądania zwracają obiekt JSON zgodnie z [wcześniejszym opisem](#blo
 
 Obiekty blob można dołączać do modeli użytkowników (na przykład w celu skojarzenia obrazu profilu). Na poniższej ilustracji przedstawiono odpowiednie punkty końcowe interfejsu API użytkownika i wszystkie wymagane parametry ścieżki, takie jak `id`:
 
-[![obiektów BLOB użytkownika](media/how-to-add-blobs/blobs-users-api-img.png)](media/how-to-add-blobs/blobs-users-api-img.png#lightbox)
+[![obiektów BLOB użytkownika](media/how-to-add-blobs/blobs-users-api-swagger-img.png)](media/how-to-add-blobs/blobs-users-api-swagger-img.png#lightbox)
 
 Na przykład aby pobrać obiekt BLOB dołączony do użytkownika, należy wykonać uwierzytelnione żądanie HTTP GET przy użyciu wymaganych danych formularza, aby:
 
@@ -262,23 +262,41 @@ Pomyślne żądania zwracają obiekt JSON zgodnie z [wcześniejszym opisem](#blo
 
 ## <a name="common-errors"></a>Typowe błędy
 
-Typowy błąd nie obejmuje dostarczania informacji o prawidłowym nagłówku:
+* Typowy błąd nie obejmuje dostarczania informacji o prawidłowym nagłówku:
 
-```JSON
-{
-    "error": {
-        "code": "400.600.000.000",
-        "message": "Invalid media type in first section."
-    }
-}
-```
+  ```JSON
+  {
+      "error": {
+          "code": "400.600.000.000",
+          "message": "Invalid media type in first section."
+      }
+  }
+  ```
 
-Aby rozwiązać ten problem, sprawdź, czy ogólne żądanie ma odpowiedni nagłówek **Content-Type** :
+  Aby rozwiązać ten problem, sprawdź, czy ogólne żądanie ma odpowiedni nagłówek **Content-Type** :
 
-* `multipart/mixed`
-* `multipart/form-data`
+     * `multipart/mixed`
+     * `multipart/form-data`
 
-Upewnij się również, że każdy fragment wieloczęściowy ma odpowiadający mu **Typ zawartości** .
+  Upewnij się również, że każdy *fragment wieloczęściowy* ma odpowiedni odpowiedni **Typ zawartości**.
+
+* Drugi typowy błąd występuje, gdy wiele obiektów BLOB jest przypisanych do tego samego zasobu na [grafie analizy przestrzennej](concepts-objectmodel-spatialgraph.md):
+
+  ```JSON
+  {
+      "error": {
+          "code": "400.600.000.000",
+          "message": "SpaceBlobMetadata already exists."
+      }
+  }
+  ```
+
+  > [!NOTE]
+  > Atrybut **Message** będzie różny w zależności od zasobu. 
+
+  Tylko jeden obiekt BLOB (dowolnego rodzaju) może być dołączony do każdego zasobu w grafie przestrzennym. 
+
+  Aby rozwiązać ten problem, zaktualizuj istniejący obiekt BLOB przy użyciu odpowiedniej operacji API HTTP PATCH. Spowoduje to zamianę istniejących danych obiektów BLOB na żądane dane.
 
 ## <a name="next-steps"></a>Następne kroki
 

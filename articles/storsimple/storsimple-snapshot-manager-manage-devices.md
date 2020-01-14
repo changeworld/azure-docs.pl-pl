@@ -1,9 +1,9 @@
 ---
-title: Zarządzanie urządzeniami za pomocą Menedżera migawek StorSimple | Dokumentacja firmy Microsoft
-description: Opisuje sposób używania przystawki MMC przystawki StorSimple Snapshot Manager, aby nawiązać połączenie i zarządzanie urządzeniami StorSimple.
+title: Zarządzanie urządzeniami za pomocą StorSimple Snapshot Manager | Microsoft Docs
+description: Opisuje sposób używania przystawki StorSimple Snapshot Manager MMC do łączenia urządzeń StorSimple i zarządzania nimi.
 services: storsimple
 documentationcenter: ''
-author: SharS
+author: twooley
 manager: timlt
 editor: ''
 ms.assetid: 966ecbe3-a7fa-4752-825f-6694dd949946
@@ -13,202 +13,202 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/05/2017
-ms.author: v-sharos
-ms.openlocfilehash: 51632b8b68640814fc113a94925b6d6deaca4c5c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: twooley
+ms.openlocfilehash: a037ddc5a43b288349b17dc7d954991a2c634aa3
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64682492"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75931726"
 ---
-# <a name="use-storsimple-snapshot-manager-to-connect-and-manage-storsimple-devices"></a>Aby nawiązać połączenie i zarządzanie urządzeniami StorSimple za pomocą Menedżera migawek StorSimple
-## <a name="overview"></a>Omówienie
-Węzły można użyć w programie StorSimple Snapshot Manager **zakres** okienko w celu sprawdzenia importowanych danych urządzenia StorSimple i Odśwież urządzenia magazynujące połączone. Ponadto po kliknięciu **urządzeń** węzła, można wyświetlić listę połączonych urządzeń i odpowiednie informacje o stanie w **wyniki** okienka.
+# <a name="use-storsimple-snapshot-manager-to-connect-and-manage-storsimple-devices"></a>Używanie Snapshot Manager StorSimple do nawiązywania połączeń z urządzeniami StorSimple i zarządzania nimi
+## <a name="overview"></a>Przegląd
+Za pomocą węzłów w okienku StorSimple Snapshot Manager **SCOPE** można sprawdzić zaimportowane dane urządzenia StorSimple i odświeżyć połączone urządzenia magazynujące. Ponadto po kliknięciu węzła **urządzenia** można wyświetlić listę połączonych urządzeń i odpowiednie informacje o stanie w okienku **wyników** .
 
 ![Połączone urządzenia](./media/storsimple-snapshot-manager-manage-devices/HCS_SSM_connect_devices.png)
 
-**Rysunek 1: Podłączone urządzenie StorSimple Snapshot Manager** 
+**Rysunek 1: StorSimple Snapshot Manager podłączonym urządzeniu** 
 
-W zależności od Twojego **widoku** wybory, **wyniki** okienku są wyświetlane następujące informacje na temat każdego urządzenia. (Aby uzyskać więcej informacji o konfigurowaniu widok, przejdź do [menu Widok](storsimple-use-snapshot-manager.md#view-menu).
+W zależności **od wybranych opcji** w okienku **wyników** zostaną wyświetlone następujące informacje dotyczące poszczególnych urządzeń. (Aby uzyskać więcej informacji na temat konfigurowania widoku, przejdź do [menu Widok](storsimple-use-snapshot-manager.md#view-menu).
 
-| Kolumny wyników | Opis |
+| Kolumna wyników | Opis |
 |:--- |:--- |
-| Name (Nazwa) |Nazwa urządzenia, zgodnie z konfiguracją w klasycznej witrynie Azure portal |
-| Modelowanie |Numer modelu urządzenia |
-| Version |Wersja oprogramowania zainstalowanego na urządzeniu |
+| Nazwa |Nazwa urządzenia zgodnie z konfiguracją w klasycznym portalu Azure |
+| Model |Numer modelu urządzenia |
+| Wersja |Wersja oprogramowania zainstalowanego na urządzeniu |
 | Stan |Czy urządzenie jest dostępne |
-| Ostatnia synchronizacja |Data i godzina, kiedy ostatniej synchronizacji urządzenia |
+| Ostatnia synchronizacja |Data i godzina ostatniej synchronizacji urządzenia |
 | Numer seryjny |Numer seryjny urządzenia |
 
-Kliknięcie prawym przyciskiem myszy **urządzeń** w węźle **zakres** okienku możesz wybrać spośród następujących czynności:
+Jeśli klikniesz prawym przyciskiem myszy węzeł **urządzenia** w okienku **zakres** , możesz wybrać jedną z następujących akcji:
 
 * Dodawanie lub zastępowanie urządzenia
-* Podłącz urządzenie i sprawdź Importy
-* Odśwież połączone urządzenia
+* Podłącz urządzenie i sprawdź, czy Importy
+* Odśwież podłączone urządzenia
 
-Jeśli klikniesz **urządzeń** nazw węzła i klikając prawym przyciskiem myszy urządzenie w **wyniki** okienku możesz wybrać spośród następujących czynności:
+Jeśli klikniesz węzeł **urządzenia** , a następnie klikniesz prawym przyciskiem myszy nazwę urządzenia w okienku **wyników** , możesz wybrać jedną z następujących akcji:
 
-* Uwierzytelnienia urządzenia
+* Uwierzytelnianie urządzenia
 * Wyświetlanie szczegółów urządzenia
-* Odśwież urządzenie
-* Usuwanie konfiguracji urządzenia
-* Zmień hasło urządzenia
+* Odświeżanie urządzenia
+* Usuń konfigurację urządzenia
+* Zmiana hasła urządzenia
 
 > [!NOTE]
-> Wszystkie te działania są także dostępne w **akcje** okienka.
+> Wszystkie te akcje są również dostępne w okienku **Akcje** .
 
 
-W tym samouczku wyjaśniono, jak za pomocą przystawki StorSimple Snapshot Manager połączenia i zarządzać urządzeniami i wykonywać następujące zadania:
+W tym samouczku wyjaśniono, jak używać Snapshot Manager StorSimple do łączenia urządzeń i zarządzania nimi oraz wykonywania następujących zadań:
 
 * Dodawanie lub zastępowanie urządzenia
-* Podłącz urządzenie i sprawdź Importy
-* Odśwież połączone urządzenia
-* Uwierzytelnienia urządzenia
+* Podłącz urządzenie i sprawdź, czy Importy
+* Odśwież podłączone urządzenia
+* Uwierzytelnianie urządzenia
 * Wyświetlanie szczegółów urządzenia
-* Odśwież poszczególnych urządzeń
-* Usuwanie konfiguracji urządzenia
-* Zmień hasło urządzenia wygasłe
-* Zamień urządzenia nie powiodło się
+* Odświeżanie poszczególnych urządzeń
+* Usuń konfigurację urządzenia
+* Zmienianie wygasłego hasła urządzenia
+* Zastępowanie urządzenia zakończonego niepowodzeniem
 
 > [!NOTE]
-> Aby uzyskać ogólne informacje o interfejsie programu StorSimple Snapshot Manager, przejdź do [interfejsu użytkownika programu StorSimple Snapshot Manager](storsimple-use-snapshot-manager.md).
+> Aby uzyskać ogólne informacje na temat korzystania z interfejsu StorSimple Snapshot Manager, przejdź do [StorSimple Snapshot Manager interfejs użytkownika](storsimple-use-snapshot-manager.md).
 
 
 ## <a name="add-or-replace-a-device"></a>Dodawanie lub zastępowanie urządzenia
-Użyj poniższej procedury do dodania lub zamiany na urządzeniu StorSimple.
+Aby dodać lub zastąpić urządzenie StorSimple, należy wykonać poniższą procedurę.
 
-#### <a name="to-add-or-replace-a-device"></a>Do dodania lub zamiany urządzenia
-1. Kliknij ikony pulpitu, które można uruchomić programu StorSimple Snapshot Manager.
-2. W **zakres** okienku kliknij prawym przyciskiem myszy **urządzeń** węzłem, a następnie kliknij przycisk **skonfigurować urządzenie**. **Skonfigurować urządzenie** pojawi się okno dialogowe.
+#### <a name="to-add-or-replace-a-device"></a>Aby dodać lub zamienić urządzenie
+1. Kliknij ikonę pulpitu, aby rozpocząć StorSimple Snapshot Manager.
+2. W okienku **zakres** kliknij prawym przyciskiem myszy węzeł **urządzenia** , a następnie kliknij polecenie **Konfiguruj urządzenie**. Zostanie wyświetlone okno dialogowe **Konfigurowanie urządzenia** .
    
     ![Konfigurowanie urządzenia StorSimple](./media/storsimple-snapshot-manager-manage-devices/HCS_SSM_config_device.png) 
-3. W **urządzenia** listy rozwijanej wybierz adres IP urządzenia lub urządzenia wirtualnego. 
-4. W **hasło** tekstu wpisz hasło programu StorSimple Snapshot Manager utworzone dla urządzenia w klasycznej witrynie Azure portal. Kliknij przycisk **OK**. Wyszukuje programu StorSimple Snapshot Manager dla urządzenia, który został zidentyfikowany. 
+3. W polu listy rozwijanej **urządzenie** wybierz adres IP urządzenia lub urządzenia wirtualnego. 
+4. W polu tekstowym **hasło** wpisz hasło StorSimple Snapshot Manager utworzone dla urządzenia w klasycznym portalu Azure. Kliknij przycisk **OK**. StorSimple Snapshot Manager wyszukuje zidentyfikowane urządzenie. 
    
-   * Jeśli urządzenie jest dostępne, przystawki StorSimple Snapshot Manager dodaje połączenie.
-   * Jeśli urządzenie jest niedostępne z jakiegokolwiek powodu, przystawki StorSimple Snapshot Manager zwraca komunikat o błędzie. Kliknij przycisk **OK** Zamknij komunikat o błędzie, a następnie kliknij przycisk **anulować** zamknąć **skonfigurować urządzenie** okno dialogowe.
+   * Jeśli urządzenie jest dostępne, StorSimple Snapshot Manager dodaje połączenie.
+   * Jeśli urządzenie jest niedostępne z jakiegokolwiek powodu, StorSimple Snapshot Manager zwraca komunikat o błędzie. Kliknij przycisk **OK** , aby zamknąć komunikat o błędzie, a następnie kliknij przycisk **Anuluj** , aby zamknąć okno dialogowe **Konfigurowanie urządzenia** .
 
-## <a name="connect-a-device-and-verify-imports"></a>Podłącz urządzenie i sprawdź Importy
-Użyj poniższej procedury do podłączenia urządzenia StorSimple i sprawdź, czy żadnych istniejących grup woluminu, które mają skojarzone kopie zapasowe są importowane.
+## <a name="connect-a-device-and-verify-imports"></a>Podłącz urządzenie i sprawdź, czy Importy
+Aby połączyć urządzenie z systemem StorSimple i sprawdzić, czy są importowane wszystkie istniejące grupy woluminów, które mają skojarzone kopie zapasowe, należy wykonać poniższą procedurę.
 
-#### <a name="to-connect-a-device-and-verify-imports"></a>Podłącz urządzenie i sprawdź Importy
-1. Podłącz urządzenie do programu StorSimple Snapshot Manager, postępuj zgodnie z instrukcjami w Dodaj lub Zastąp urządzenia. Podczas łączenia się z urządzeniem, przystawki StorSimple Snapshot Manager działa w następujący sposób:
+#### <a name="to-connect-a-device-and-verify-imports"></a>Aby połączyć urządzenie i zweryfikować Importy
+1. Aby podłączyć urządzenie do StorSimple Snapshot Manager, postępuj zgodnie z instrukcjami w temacie Dodawanie lub zastępowanie urządzenia. Po nawiązaniu połączenia z urządzeniem StorSimple Snapshot Manager reaguje w następujący sposób:
    
-   * Jeśli urządzenie jest niedostępne z jakiegokolwiek powodu, przystawki StorSimple Snapshot Manager zwraca komunikat o błędzie. 
+   * Jeśli urządzenie jest niedostępne z jakiegokolwiek powodu, StorSimple Snapshot Manager zwraca komunikat o błędzie. 
    
-   * Jeśli urządzenie jest dostępne, przystawki StorSimple Snapshot Manager dodaje połączenie. Po wybraniu urządzenia, pojawia się w **wyniki** okienku, a w polu stanu wskazuje, czy urządzenie jest **dostępne**. Przystawki StorSimple Snapshot Manager importuje wszystkie grupy woluminu skonfigurowany na tym urządzeniu, pod warunkiem, że grupy woluminu są skojarzone kopie zapasowe. Zasady tworzenia kopii zapasowych nie są importowane. Grupami woluminów, które nie mają skojarzonych kopii zapasowych nie są importowane.
-2. Kliknij ikony pulpitu, które można uruchomić programu StorSimple Snapshot Manager.
-3. Kliknij prawym przyciskiem myszy najwyższy węzeł w **zakres** okienku, a następnie kliknij przycisk **Przełącz wyświetlanie Importy**.
+   * Jeśli urządzenie jest dostępne, StorSimple Snapshot Manager dodaje połączenie. Po wybraniu urządzenia pojawia się ono w okienku **wyników** , a pole Stan wskazuje, że urządzenie jest **dostępne**. StorSimple Snapshot Manager importuje wszystkie grupy woluminów skonfigurowane dla urządzenia, pod warunkiem, że grupy woluminów mają skojarzone kopie zapasowe. Zasady tworzenia kopii zapasowych nie są importowane. Grupy woluminów, które nie mają skojarzonych kopii zapasowych, nie są importowane.
+2. Kliknij ikonę pulpitu, aby rozpocząć StorSimple Snapshot Manager.
+3. Kliknij prawym przyciskiem myszy górny węzeł w okienku **zakres** , a następnie kliknij pozycję **Przełącz Importy**.
    
-    ![Przełącz zaznacz Importy wyświetlanie](./media/storsimple-snapshot-manager-manage-devices/HCS_SSM_Toggle_Imports_Display.png) 
-4. **Przełącz wyświetlanie Importy** pojawi się okno dialogowe, wyświetlanie stanu grupy importowane woluminu i kopii zapasowych. Kliknij przycisk **OK**.
+    ![Wybierz pozycję Przełącz Importy](./media/storsimple-snapshot-manager-manage-devices/HCS_SSM_Toggle_Imports_Display.png) 
+4. Wyświetlane jest okno dialogowe **Przełącz Importy** , pokazujące stan zaimportowanych grup woluminów i kopii zapasowych. Kliknij przycisk **OK**.
 
-Po grupami woluminów i kopii zapasowych zostaną pomyślnie zaimportowane, można użyć przystawki StorSimple Snapshot Manager do zarządzania nimi, tak samo, jak będą zarządzać grupami woluminów i kopii zapasowych, które zostały utworzone i skonfigurowane za pomocą przystawki StorSimple Snapshot Manager. 
+Po pomyślnym zaimportowaniu grup woluminów i kopii zapasowych możesz zarządzać nimi za pomocą StorSimple Snapshot Manager, tak jak w przypadku zarządzania grupami woluminów i kopiami zapasowymi utworzonymi i skonfigurowanymi przy użyciu StorSimple Snapshot Manager. 
 
-## <a name="refresh-connected-devices"></a>Odśwież połączone urządzenia
-Poniższa procedura umożliwia synchronizację połączonych urządzeń StorSimple z programu StorSimple Snapshot Manager.
+## <a name="refresh-connected-devices"></a>Odśwież podłączone urządzenia
+Poniższa procedura umożliwia zsynchronizowanie podłączonych urządzeń StorSimple z usługą StorSimple Snapshot Manager.
 
-#### <a name="to-refresh-connected-devices"></a>Aby odświeżyć połączonych urządzeń
-1. Kliknij ikony pulpitu, które można uruchomić programu StorSimple Snapshot Manager.
-2. W **zakres** okienku kliknij prawym przyciskiem myszy **urządzeń**, a następnie kliknij przycisk **Odśwież urządzeń**. Synchronizuje połączonych urządzeń, za pomocą przystawki StorSimple Snapshot Manager tak, aby wyświetlić grupami woluminów i kopii zapasowych, w tym wszystkie ostatnio dodane elementy. 
+#### <a name="to-refresh-connected-devices"></a>Aby odświeżyć połączone urządzenia
+1. Kliknij ikonę pulpitu, aby rozpocząć StorSimple Snapshot Manager.
+2. W okienku **zakres** kliknij prawym przyciskiem myszy pozycję **urządzenia**, a następnie kliknij polecenie **Odśwież urządzenia**. Spowoduje to zsynchronizowanie połączonych urządzeń z StorSimple Snapshot Manager, aby można było wyświetlić grupy woluminów i kopie zapasowe, w tym wszystkie najnowsze dodatki. 
    
-    ![Odśwież urządzenia StorSimple](./media/storsimple-snapshot-manager-manage-devices/HCS_SSM_Refresh_devices.png)
+    ![Odświeżanie urządzeń StorSimple](./media/storsimple-snapshot-manager-manage-devices/HCS_SSM_Refresh_devices.png)
 
-**Odśwież urządzeń** działanie powoduje pobranie wszystkich nowych grup woluminu i wszelkich skojarzonych kopii zapasowych z połączonych urządzeń. W odróżnieniu od **Skanuj ponownie woluminy** akcji dotyczących **woluminów** węzła, **Odśwież urządzeń** nie powoduje przywrócenia kopii zapasowej rejestru.
+Akcja **Odśwież urządzenia** pobiera wszystkie nowe grupy woluminów i wszystkie skojarzone z nimi kopie zapasowe z połączonych urządzeń. W przeciwieństwie do akcji **Skanuj woluminy** dostępne dla węzła **woluminy** , **odświeżanie urządzenia** nie przywraca rejestru kopii zapasowej.
 
-## <a name="authenticate-a-device"></a>Uwierzytelnienia urządzenia
-Użyj poniższej procedury do uwierzytelniania urządzenia StorSimple przy użyciu programu StorSimple Snapshot Manager.
+## <a name="authenticate-a-device"></a>Uwierzytelnianie urządzenia
+Poniższa procedura umożliwia uwierzytelnienie urządzenia StorSimple przy użyciu StorSimple Snapshot Manager.
 
-#### <a name="to-authenticate-a-device"></a>Do uwierzytelniania urządzenia
-1. Kliknij ikony pulpitu, które można uruchomić programu StorSimple Snapshot Manager.
-2. W **zakres** okienku kliknij **urządzeń**.
-3. W **wyniki** okienku kliknij prawym przyciskiem myszy nazwę urządzenia, a następnie kliknij przycisk **Uwierzytelnij**.
-4. **Uwierzytelnij** pojawi się okno dialogowe. Wpisz hasło urządzenia, a następnie kliknij przycisk **OK**.
+#### <a name="to-authenticate-a-device"></a>Aby uwierzytelnić urządzenie
+1. Kliknij ikonę pulpitu, aby rozpocząć StorSimple Snapshot Manager.
+2. W okienku **zakres** kliknij pozycję **urządzenia**.
+3. W okienku **wyników** kliknij prawym przyciskiem myszy nazwę urządzenia, a następnie kliknij pozycję **Uwierzytelnij**.
+4. Zostanie wyświetlone okno dialogowe **uwierzytelnianie** . Wpisz hasło urządzenia, a następnie kliknij przycisk **OK**.
    
-    ![Okno dialogowe uwierzytelniania](./media/storsimple-snapshot-manager-manage-devices/HCS_SSM_Authenticate.png) 
+    ![Uwierzytelnianie — okno dialogowe](./media/storsimple-snapshot-manager-manage-devices/HCS_SSM_Authenticate.png) 
 
 ## <a name="view-device-details"></a>Wyświetlanie szczegółów urządzenia
-Użyj poniższej procedury, aby wyświetlić szczegóły dotyczące urządzenia StorSimple i, jeśli to konieczne, należy ponownie zsynchronizować urządzenia za pomocą przystawki StorSimple Snapshot Manager.
+Użyj następującej procedury, aby wyświetlić szczegóły urządzenia StorSimple i, w razie potrzeby, ponownie zsynchronizuj urządzenie z StorSimple Snapshot Manager.
 
-#### <a name="to-view-and-resynchronize-device-details"></a>Aby wyświetlić i wykonaj ponowną synchronizację szczegóły urządzenia
-1. Kliknij ikony pulpitu, które można uruchomić programu StorSimple Snapshot Manager.
-2. W **zakres** okienku kliknij **urządzeń**.
-3. W **wyniki** okienku kliknij prawym przyciskiem myszy nazwę urządzenia, a następnie kliknij przycisk **szczegóły**.
+#### <a name="to-view-and-resynchronize-device-details"></a>Aby wyświetlić i ponownie zsynchronizować szczegóły urządzenia
+1. Kliknij ikonę pulpitu, aby rozpocząć StorSimple Snapshot Manager.
+2. W okienku **zakres** kliknij pozycję **urządzenia**.
+3. W okienku **wyników** kliknij prawym przyciskiem myszy nazwę urządzenia, a następnie kliknij pozycję **szczegóły**.
 
-4 **szczegóły urządzenia** pojawi się okno dialogowe. To pole zawiera nazwę, modelu, wersji, numer seryjny, stan, obiektów docelowych iSCSI kwalifikowana nazwa (IQN) i ostatniej synchronizacji daty i godziny.
+4. pojawi się okno dialogowe **szczegóły urządzenia** . W tym polu jest wyświetlana nazwa, model, wersja, numer seryjny, stan, docelowa kwalifikowana nazwa iSCSI (IQN) oraz Data i godzina ostatniej synchronizacji.
 
-* Kliknij przycisk **ponowna synchronizacja** do synchronizowania urządzenia.
-* Kliknij przycisk **OK** lub **anulować** aby zamknąć okno dialogowe.
+* Kliknij pozycję **ponowna synchronizacja** , aby zsynchronizować urządzenie.
+* Kliknij przycisk **OK** lub **Anuluj** , aby zamknąć okno dialogowe.
   
   ![Szczegóły urządzenia](./media/storsimple-snapshot-manager-manage-devices/HCS_SSM_Device_details.png) 
 
-## <a name="refresh-an-individual-device"></a>Odśwież poszczególnych urządzeń
-Użyj poniższej procedury do ponownej synchronizacji poszczególnych urządzeń StorSimple z programu StorSimple Snapshot Manager.
+## <a name="refresh-an-individual-device"></a>Odświeżanie poszczególnych urządzeń
+Użyj poniższej procedury, aby ponownie synchronizować pojedyncze urządzenie StorSimple z usługą StorSimple Snapshot Manager.
 
-#### <a name="to-refresh-a-device"></a>Aby odświeżyć urządzenia
-1. Kliknij ikony pulpitu, które można uruchomić programu StorSimple Snapshot Manager. 
-2. W **zakres** okienku kliknij **urządzeń**. 
-3. W **wyniki** okienku kliknij prawym przyciskiem myszy nazwę urządzenia, a następnie kliknij przycisk **Odśwież urządzenie**. Synchronizacja urządzenia za pomocą przystawki StorSimple Snapshot Manager.
+#### <a name="to-refresh-a-device"></a>Aby odświeżyć urządzenie
+1. Kliknij ikonę pulpitu, aby rozpocząć StorSimple Snapshot Manager. 
+2. W okienku **zakres** kliknij pozycję **urządzenia**. 
+3. W okienku **wyników** kliknij prawym przyciskiem myszy nazwę urządzenia, a następnie kliknij polecenie **Odśwież urządzenie**. Spowoduje to zsynchronizowanie urządzenia z StorSimple Snapshot Manager.
 
-## <a name="delete-a-device-configuration"></a>Usuwanie konfiguracji urządzenia
-Użyj poniższej procedury można usunąć poszczególnych konfiguracji urządzenia StorSimple z programu StorSimple Snapshot Manager.
+## <a name="delete-a-device-configuration"></a>Usuń konfigurację urządzenia
+Aby usunąć pojedynczą konfigurację urządzenia StorSimple z usługi StorSimple Snapshot Manager, należy wykonać czynności opisane w poniższej procedurze.
 
 #### <a name="to-delete-a-device-configuration"></a>Aby usunąć konfigurację urządzenia
-1. Kliknij ikony pulpitu, które można uruchomić programu StorSimple Snapshot Manager.
-2. W **zakres** okienku kliknij **urządzeń**. 
-3. W **wyniki** okienku kliknij prawym przyciskiem myszy nazwę urządzenia, a następnie kliknij przycisk **Usuń**. 
-4. Zostanie wyświetlony następujący komunikat. Kliknij przycisk **tak** Aby usunąć konfigurację, lub kliknij przycisk **nie** Aby anulować usunięcie.
+1. Kliknij ikonę pulpitu, aby rozpocząć StorSimple Snapshot Manager.
+2. W okienku **zakres** kliknij pozycję **urządzenia**. 
+3. W okienku **wyników** kliknij prawym przyciskiem myszy nazwę urządzenia, a następnie kliknij polecenie **Usuń**. 
+4. Zostanie wyświetlony następujący komunikat. Kliknij przycisk **tak** , aby usunąć konfigurację, lub kliknij przycisk **nie** , aby anulować usunięcie.
    
     ![Usuwanie konfiguracji urządzenia](./media/storsimple-snapshot-manager-manage-devices/HCS_SSM_DeleteDevice.png)
 
-## <a name="change-an-expired-device-password"></a>Zmień hasło urządzenia wygasłe
-Wprowadź hasło do uwierzytelniania urządzenia StorSimple przy użyciu programu StorSimple Snapshot Manager. To hasło należy skonfigurować, korzystając z interfejsu programu Windows PowerShell do konfigurowania urządzenia. Jednak można unieważnić hasła. W takim przypadku można użyć klasycznego portalu Azure, aby zmienić hasło. Następnie ponieważ urządzenie zostało skonfigurowane w programie StorSimple Snapshot Manager przed wygaśnięciem hasła, użytkownik musi zostać ponownie uwierzytelniony urządzeń programu StorSimple Snapshot Manager.
+## <a name="change-an-expired-device-password"></a>Zmienianie wygasłego hasła urządzenia
+Należy wprowadzić hasło w celu uwierzytelnienia urządzenia z systemem StorSimple za pomocą StorSimple Snapshot Manager. To hasło należy skonfigurować podczas konfigurowania urządzenia za pomocą interfejsu programu Windows PowerShell. Hasło może jednak wygasnąć. W takim przypadku można zmienić hasło przy użyciu klasycznego portalu Azure. Następnie, ponieważ urządzenie zostało skonfigurowane w StorSimple Snapshot Manager przed wygaśnięciem hasła, należy ponownie uwierzytelnić urządzenie w usłudze StorSimple Snapshot Manager.
 
-#### <a name="to-change-the-expired-password"></a>Aby zmienić hasła
-1. W klasycznym portalu Azure Uruchom usługę Menedżer StorSimple.
-2. Kliknij przycisk **urządzeń** > **Konfiguruj** dla tego urządzenia.
-3. Przewiń w dół do sekcji przystawki StorSimple Snapshot Manager. Wprowadź hasło składające się z 14 do 15 znaków. Upewnij się, że hasło zawiera wielkie litery, małe litery, cyfry i znaki specjalne.
-4. Wprowadź ponownie hasło w celu potwierdzenia.
+#### <a name="to-change-the-expired-password"></a>Aby zmienić wygasłe hasło
+1. W klasycznym portalu Azure Uruchom usługę StorSimple Manager.
+2. Kliknij pozycję **urządzenia** > **Skonfiguruj** dla urządzenia.
+3. Przewiń w dół do sekcji StorSimple Snapshot Manager. Wprowadź hasło o długości 14-15 znaków. Upewnij się, że hasło zawiera kombinację wielkich, małych liter, cyfr i znaków specjalnych.
+4. Wprowadź ponownie hasło, aby je potwierdzić.
 5. Kliknij przycisk **Zapisz** w dolnej części strony.
 
-#### <a name="to-re-authenticate-the-device"></a>Konieczność ponownego uwierzytelnienia urządzenia
-1. Uruchom Menedżera migawek StorSimple.
-2. W **zakres** okienku kliknij **urządzeń**. Zostanie wyświetlona lista skonfigurowanych urządzeń w **wyniki** okienka.
-3. Wybierz urządzenie, kliknij prawym przyciskiem myszy, a następnie kliknij **Uwierzytelnij**.
-4. W **Uwierzytelnij** okna, wprowadź nowe hasło.
-5. Wybierz urządzenie, kliknij prawym przyciskiem myszy i wybierz **urządzenia odświeżania**. Synchronizacja urządzenia za pomocą przystawki StorSimple Snapshot Manager.
+#### <a name="to-re-authenticate-the-device"></a>Aby ponownie uwierzytelnić urządzenie
+1. Uruchom StorSimple Snapshot Manager.
+2. W okienku **zakres** kliknij pozycję **urządzenia**. W okienku **wyników** zostanie wyświetlona lista skonfigurowanych urządzeń.
+3. Wybierz urządzenie, kliknij prawym przyciskiem myszy, a następnie kliknij przycisk **Uwierzytelnij**.
+4. W oknie **uwierzytelnianie** wprowadź nowe hasło.
+5. Wybierz urządzenie, kliknij prawym przyciskiem myszy, a następnie wybierz polecenie **Odśwież urządzenie**. Spowoduje to zsynchronizowanie urządzenia z StorSimple Snapshot Manager.
 
-## <a name="replace-a-failed-device"></a>Zamień urządzenia nie powiodło się
-Jeśli na urządzeniu StorSimple nie powiedzie się i są zastępowane przez urządzenie (tryb failover) w stanie wstrzymania, skorzystaj z poniższych wskazówek w celu nawiązywania nowego urządzenia i wyświetlania skojarzonych kopii zapasowych.
+## <a name="replace-a-failed-device"></a>Zastępowanie urządzenia zakończonego niepowodzeniem
+Jeśli urządzenie StorSimple ulegnie awarii i zostanie zastąpione przez urządzenie w trybie failover (praca awaryjna), wykonaj następujące kroki, aby nawiązać połączenie z nowym urządzeniem i wyświetlić skojarzone kopie zapasowe.
 
-#### <a name="to-connect-to-a-new-device-after-failover"></a>Aby nawiązać nowe urządzenie, po włączeniu trybu failover
-1. Zmień konfigurację połączenia iSCSI, aby nowe urządzenie. Aby uzyskać instrukcje, przejdź do "krok 7: Instalowanie, inicjowanie i formatowanie woluminu"w [wdrażanie urządzenia StorSimple w środowisku lokalnym](storsimple-8000-deployment-walkthrough-u2.md).
+#### <a name="to-connect-to-a-new-device-after-failover"></a>Aby nawiązać połączenie z nowym urządzeniem po przejściu w tryb failover
+1. Skonfiguruj ponownie połączenie iSCSI z nowym urządzeniem. Aby uzyskać instrukcje, przejdź do lokalizacji "krok 7. Instalowanie, inicjowanie i formatowanie woluminu" w [sekcji Wdrażanie lokalnego urządzenia StorSimple](storsimple-8000-deployment-walkthrough-u2.md).
 
 > [!NOTE]
-> Nowe urządzenie StorSimple ma ten sam adres IP, jak stary, może być możliwe nawiązanie połączenia starej konfiguracji.
+> Jeśli nowe urządzenie StorSimple ma taki sam adres IP jak stary, może być możliwe połączenie starej konfiguracji.
 
 
-1. Zatrzymaj usługę zarządzania Microsoft StorSimple:
+1. Zatrzymaj usługę Microsoft StorSimple Management:
    
    1. Uruchom Menedżera serwera.
-   2. Na pulpicie nawigacyjnym Menedżera serwera na **narzędzia** menu, wybierz opcję **usług**.
-   3. Na **usług** wybierz **Microsoft StorSimple Management Service**.
-   4. W okienku po prawej stronie w obszarze **Microsoft StorSimple Management Service**, kliknij przycisk **Zatrzymaj usługę**.
-2. Usuń informacje o konfiguracji związane ze starym urządzeniem:
+   2. Na pulpicie nawigacyjnym Menedżer serwera w menu **Narzędzia** wybierz pozycję **usługi**.
+   3. W oknie **usługi** wybierz **usługę Microsoft StorSimple Management**.
+   4. W prawym okienku w obszarze **usługi Microsoft StorSimple Management**kliknij pozycję **Zatrzymaj usługę**.
+2. Usuń informacje o konfiguracji dotyczące starego urządzenia:
    
    1. W Eksploratorze plików przejdź do C:\ProgramData\Microsoft\StorSimple\BACatalog.
    2. Usuń pliki w folderze BACatalog.
-3. Uruchom ponownie usługę zarządzania Microsoft StorSimple:
+3. Uruchom ponownie usługę Microsoft StorSimple Management:
    
-   1. Na pulpicie nawigacyjnym Menedżera serwera na **narzędzia** menu, wybierz opcję **usług**.
-   2. Na **usług** wybierz **Microsoft StorSimple Management Service**.
-   3. W okienku po prawej stronie w obszarze **Microsoft StorSimple Management Service**, kliknij przycisk **Uruchom ponownie usługę**.
-4. Uruchom Menedżera migawek StorSimple.
-5. Aby skonfigurować nowe urządzenie StorSimple, wykonaj kroki opisane w kroku 2: Podłącz urządzenie StorSimple w [wdrażanie programu StorSimple Snapshot Manager](storsimple-snapshot-manager-deployment.md).
-6. Kliknij prawym przyciskiem myszy węzeł najwyższego poziomu w **zakres** okienku (programu StorSimple Snapshot Manager w przykładzie), a następnie kliknij przycisk **Przełącz wyświetlanie Importy**. 
-7. Pojawi się komunikat, gdy grupy importowane woluminu i kopii zapasowych są widoczne w programie StorSimple Snapshot Manager. Kliknij przycisk **OK**.
+   1. Na pulpicie nawigacyjnym Menedżer serwera w menu **Narzędzia** wybierz pozycję **usługi**.
+   2. W oknie **usługi** wybierz **usługę Microsoft StorSimple Management**.
+   3. W prawym okienku w obszarze **usługi Microsoft StorSimple Management**kliknij pozycję **Uruchom ponownie usługę**.
+4. Uruchom StorSimple Snapshot Manager.
+5. Aby skonfigurować nowe urządzenie StorSimple, wykonaj kroki opisane w sekcji Krok 2. Łączenie urządzenia StorSimple w programie [Deploy StorSimple Snapshot Manager](storsimple-snapshot-manager-deployment.md).
+6. Kliknij prawym przyciskiem myszy węzeł najwyższego poziomu w okienku **zakres** (StorSimple Snapshot Manager w przykładzie), a następnie kliknij pozycję **Przełącz Importy**. 
+7. Komunikat pojawia się, gdy zaimportowane grupy woluminów i kopie zapasowe są widoczne w StorSimple Snapshot Manager. Kliknij przycisk **OK**.
 
-## <a name="next-steps"></a>Kolejne kroki
-* Dowiedz się, jak [za pomocą Menedżera migawek StorSimple do administrowania rozwiązania StorSimple](storsimple-snapshot-manager-admin.md).
-* Dowiedz się, jak [Menedżera migawek StorSimple umożliwia wyświetlanie i zarządzanie woluminami](storsimple-snapshot-manager-manage-volumes.md).
+## <a name="next-steps"></a>Następne kroki
+* Dowiedz się, jak [używać Snapshot Manager StorSimple do administrowania rozwiązaniem StorSimple](storsimple-snapshot-manager-admin.md).
+* Dowiedz się, jak [używać Snapshot Manager StorSimple do wyświetlania woluminów i zarządzania nimi](storsimple-snapshot-manager-manage-volumes.md).
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/30/2019
 ms.author: mbaldwin
 ms.custom: security-recommendations
-ms.openlocfilehash: 914d1af9793107031af9797cb965420443e80c4a
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 5482495f87e87e5d05d8adca6b053810a62dcb4e
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75564337"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934516"
 ---
 # <a name="security-control-data-protection"></a>Kontrola zabezpieczeń: Ochrona danych
 
@@ -117,7 +117,7 @@ https://docs.microsoft.com/azure/information-protection/deployment-roadmap
 
 Funkcja RBAC usługi Azure AD pozwala kontrolować dostęp do danych i zasobów, w przeciwnym razie używać metod kontroli dostępu specyficznych dla usługi.
 
-Informacje o kontroli RBAC platformy Azure:
+Opis kontroli RBAC platformy Azure:
 
 https://docs.microsoft.com/azure/role-based-access-control/overview
 
@@ -164,4 +164,3 @@ https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 ## <a name="next-steps"></a>Następne kroki
 
 Zobacz następną kontrolę zabezpieczeń: [Zarządzanie](security-control-vulnerability-management.md) lukami w zabezpieczeniach
-

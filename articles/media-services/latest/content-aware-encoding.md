@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 04/05/2019
 ms.author: juliako
 ms.custom: ''
-ms.openlocfilehash: 9389466b6291542563c068706479bf981c5880da
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: c2846759a8daa04fc5c1d3b7f69e2c061bacb272
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75692760"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933480"
 ---
 # <a name="experimental-preset-for-content-aware-encoding"></a>Eksperymentalne ustawienie wstępne dla kodowania obsługującego zawartość
 
@@ -29,7 +29,9 @@ Zainteresowanie przenoszonym poza wstępnie ustawionym podejściem do wszystkich
 
 Na początku 2017 firma Microsoft udostępniła [adaptacyjne ustawienie wstępne przesyłania strumieniowego](autogen-bitrate-ladder.md) w celu rozwiązania problemu zmienności jakości i rozdzielczości źródłowych filmów wideo. Nasi klienci mają zróżnicowaną zawartość, kilka o godzinie 1080p, inne w firmie 720, a kilka w SD i niższych rozdzielczościach. Ponadto nie cała zawartość źródłowa była wysoka jakość Mezzanine z filmu lub Studios TV. Adaptacyjne ustawienie wstępne przesyłania strumieniowego eliminuje te problemy, upewniając się, że Drabinka szybkości transmisji nigdy nie przekracza rozdzielczości ani średniej szybkości transmisji bitów danych wejściowych Mezzanine.
 
-Eksperymentalne ustawienia wstępne kodowania obsługujące zawartość rozszerzają ten mechanizm przez włączenie logiki niestandardowej, która umożliwia koderowi wyszukiwanie optymalnej szybkości transmisji bitów dla danego rozwiązania, ale bez konieczności przeprowadzania obszernej analizy obliczeniowej. Wynikiem tego jest to, że nowe ustawienie wstępne generuje dane wyjściowe, które mają mniejszą szybkość transmisji bitów niż adaptacyjne ustawienie wstępne przesyłania strumieniowego, ale przy wyższej jakości. Zapoznaj się z poniższymi przykładowymi wykresami pokazującymi porównanie przy użyciu metryk jakości, takich jak [PSNR](https://en.wikipedia.org/wiki/Peak_signal-to-noise_ratio) i [VMAF](https://en.wikipedia.org/wiki/Video_Multimethod_Assessment_Fusion). Źródło zostało utworzone przez połączenie krótkich klipów o wysokiej złożoności z filmów i programów telewizyjnych, które są przeznaczone do podkreślania kodera. Zgodnie z definicją, to ustawienie wstępne daje wyniki, które różnią się w zależności od zawartości — oznacza to również, że w przypadku niektórych zawartości może nie być znacząca Redukcja szybkości transmisji bitów lub poprawy jakości.
+Nowe ustawienie wstępne kodowania obsługujące zawartość rozszerza ten mechanizm przez włączenie logiki niestandardowej, która umożliwia koderowi wyszukiwanie optymalnej szybkości transmisji bitów dla danego rozwiązania, ale bez konieczności przeprowadzania obszernej analizy obliczeniowej. To ustawienie wstępne tworzy zestaw grupę GOP wyrównanych pliki MP4. Mając daną zawartość wejściową, usługa wykonuje wstępną lekkie analizy zawartości wejściowej i używa wyników do określenia optymalnej liczby warstw, odpowiedniej szybkości transmisji bitów i ustawień rozdzielczości do dostarczenia przez adaptacyjne przesyłanie strumieniowe. To ustawienie wstępne jest szczególnie przydatne w przypadku wideo z niską i średnią złożonością, gdzie pliki wyjściowe będą mieć mniejszą szybkość transmisji bitów niż adaptacyjne ustawienie wstępne przesyłania strumieniowego, ale z jakością, która nadal zapewnia dobre doświadczenie dla osób przeglądających. Dane wyjściowe będą zawierać pliki MP4 z przeplotem wideo i audio
+
+Zapoznaj się z poniższymi przykładowymi wykresami pokazującymi porównanie przy użyciu metryk jakości, takich jak [PSNR](https://en.wikipedia.org/wiki/Peak_signal-to-noise_ratio) i [VMAF](https://en.wikipedia.org/wiki/Video_Multimethod_Assessment_Fusion). Źródło zostało utworzone przez połączenie krótkich klipów o wysokiej złożoności z filmów i programów telewizyjnych, które są przeznaczone do podkreślania kodera. Zgodnie z definicją, to ustawienie wstępne daje wyniki, które różnią się w zależności od zawartości — oznacza to również, że w przypadku niektórych zawartości może nie być znacząca Redukcja szybkości transmisji bitów lub poprawy jakości.
 
 ![Krzywa stopnia zniekształcenia (RD) przy użyciu PSNR](media/cae-experimental/msrv1.png)
 
@@ -39,7 +41,7 @@ Eksperymentalne ustawienia wstępne kodowania obsługujące zawartość rozszerz
 
 **Rysunek 2: Krzywa stopnia zniekształcenia (RD) używająca metryki VMAF dla źródła o dużej złożoności**
 
-Ustawienie wstępne jest obecnie dostrojone w celu uzyskania wysokiej złożoności wideo ze źródła wysokiej jakości (filmy, programy telewizyjne). Pracuj w toku, aby dostosowywać do zawartości o niskiej złożoności (na przykład prezentacji programu PowerPoint), a także słabych filmów wideo. To ustawienie wstępne używa tego samego zestawu rozwiązań co ustawienia wstępnego przesyłania strumieniowego. Firma Microsoft pracuje nad metodami, aby wybrać minimalny zestaw rozwiązań opartych na zawartości. Poniżej przedstawiono wyniki dla innej kategorii zawartości źródłowej, w której koder był w stanie stwierdzić, że dane wejściowe były niskiej jakości (wiele artefaktów kompresji z powodu niskiej szybkości transmisji bitów). Należy zauważyć, że w przypadku eksperymentalnego ustawienia wstępnego koder zdecydował się utworzyć tylko jedną warstwę wyjściową — z niską szybkością transmisji bitów, dzięki czemu większość klientów będzie mogła odtworzyć strumień bez parkingów.
+Poniżej znajdują się wyniki dla innej kategorii zawartości źródłowej, w której koder był w stanie stwierdzić, że dane wejściowe były słabej jakości (wiele artefaktów kompresji z powodu niskiej szybkości transmisji bitów). Należy pamiętać, że w przypadku ustawienia wstępnego z uwzględnieniem zawartości koder zdecydował się utworzyć tylko jedną warstwę wyjściową — z niską szybkością transmisji bitów, dzięki czemu większość klientów będzie mogła odtworzyć strumień bez zawieszania się.
 
 ![Krzywa usług pulpitu zdalnego przy użyciu PSNR](media/cae-experimental/msrv3.png)
 
@@ -62,16 +64,16 @@ TransformOutput[] output = new TransformOutput[]
       // You can customize the encoding settings by changing this to use "StandardEncoderPreset" class.
       Preset = new BuiltInStandardEncoderPreset()
       {
-         // This sample uses the new experimental preset for content-aware encoding
-         PresetName = EncoderNamedPreset.ContentAwareEncodingExperimental
+         // This sample uses the new preset for content-aware encoding
+         PresetName = EncoderNamedPreset.ContentAwareEncoding
       }
    }
 };
 ```
 
 > [!NOTE]
-> Prefiks "eksperymentalny" jest używany w tym miejscu do sygnalizowania, że nadal trwa rozwój podstawowych algorytmów. W miarę upływu czasu do logiki używanej do generowania drabin szybkości transmisji bitów można wprowadzać zmiany, a celem jest zbieżność algorytmu, który jest niezawodny i który dostosowuje się do szerokiej gamy warunków wprowadzania. Zadania kodowania korzystające z tego ustawienia wstępnego będą nadal rozliczane na podstawie minut danych wyjściowych, a element zawartości wyjściowej można dostarczyć z naszych punktów końcowych przesyłania strumieniowego w protokołach, takich jak ŁĄCZNIKi i HLS.
+> Algorytmy bazowe podlegają dodatkowym ulepszeniom. W miarę upływu czasu do logiki używanej do generowania drabin o szybkości transmisji bitów można wprowadzać zmiany, które mają na celu zapewnienie niezawodnego algorytmu i dostosowuje się do szerokiej gamy warunków wprowadzania. Zadania kodowania korzystające z tego ustawienia wstępnego będą nadal rozliczane na podstawie minut danych wyjściowych, a element zawartości wyjściowej można dostarczyć z naszych punktów końcowych przesyłania strumieniowego w protokołach, takich jak ŁĄCZNIKi i HLS.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Po poznaniu tej nowej opcji optymalizacji filmów wideo Zapraszamy Cię do wypróbowania. Możesz wysłać nam swoją opinię przy użyciu linków na końcu tego artykułu lub zaangażować nas bezpośrednio w <amsved@microsoft.com>.
+Po poznaniu tej nowej opcji optymalizacji filmów wideo Zapraszamy Cię do wypróbowania. Możesz wysłać nam swoją opinię za pomocą linków na końcu tego artykułu.

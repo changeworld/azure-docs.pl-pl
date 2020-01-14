@@ -2,18 +2,18 @@
 title: Replikowanie maszyn wirtualnych platformy Azure z systemem Bezpośrednie miejsca do magazynowania przy użyciu Azure Site Recovery
 description: W tym artykule opisano sposób replikowania maszyn wirtualnych platformy Azure z systemem Bezpośrednie miejsca do magazynowania przy użyciu Azure Site Recovery.
 services: site-recovery
-author: asgang
+author: carmonmills
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
 ms.date: 01/29/2019
-ms.author: asgang
-ms.openlocfilehash: 25ac7fa577aa33eda036c0f8544cc5ab03b12cd7
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.author: carmonm
+ms.openlocfilehash: 49a4f59e68a409696480f89ee4b606fbed2b77ed
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954462"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75929837"
 ---
 # <a name="replicate-azure-vms-running-storage-spaces-direct-to-another-region"></a>Replikowanie maszyn wirtualnych platformy Azure z systemem Bezpośrednie miejsca do magazynowania do innego regionu
 

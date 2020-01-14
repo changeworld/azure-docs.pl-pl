@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 09/21/2018
 ms.author: akjosh
-ms.openlocfilehash: 2b69a17c7f9de62187d9dc99f7c1d5c5b74c25ad
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 8a5b54131210d243015b37bf234408fd9d2b4c12
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073201"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933623"
 ---
 # <a name="chef-vm-extension-for-linux-and-windows"></a>Rozszerzenie maszyny wirtualnej Chef dla systemów Linux i Windows
 
@@ -70,8 +70,8 @@ Poniższy kod JSON przedstawia schemat rozszerzenia maszyny wirtualnej Chef. Roz
 | Nazwa | Wartość / przykład | Typ danych
 | ---- | ---- | ----
 | apiVersion | `2017-12-01` | string (date) |
-| publisher | `Chef.Bootstrap.WindowsAzure` | ciąg |
-| type | `LinuxChefClient` (Linux), `ChefClient` (system Windows) | ciąg |
+| publisher | `Chef.Bootstrap.WindowsAzure` | string |
+| type | `LinuxChefClient` (Linux), `ChefClient` (system Windows) | string |
 | typeHandlerVersion | `1210.12` | string (double) |
 
 ### <a name="settings"></a>Ustawienia
@@ -79,14 +79,14 @@ Poniższy kod JSON przedstawia schemat rozszerzenia maszyny wirtualnej Chef. Roz
 | Nazwa | Wartość / przykład | Typ danych | Wymagana?
 | ---- | ---- | ---- | ----
 | settings/bootstrap_options/chef_server_url | `https://api.chef.io/organizations/myorg` | string (url) | Tak |
-| settings/bootstrap_options/validation_client_name | `myorg-validator` | ciąg | Tak |
-| Ustawienia/runlist | `recipe[mycookbook::default]` | ciąg | Tak |
+| settings/bootstrap_options/validation_client_name | `myorg-validator` | string | Tak |
+| Ustawienia/runlist | `recipe[mycookbook::default]` | string | Tak |
 
 ### <a name="protected-settings"></a>Ustawienia chronione
 
 | Nazwa | Przykład | Typ danych | Wymagana?
 | ---- | ---- | ---- | ---- |
-| protectedSettings/validation_key | `-----BEGIN RSA PRIVATE KEY-----\nKEYDATA\n-----END RSA PRIVATE KEY-----` | ciąg | Tak |
+| protectedSettings/validation_key | `-----BEGIN RSA PRIVATE KEY-----\nKEYDATA\n-----END RSA PRIVATE KEY-----` | string | Tak |
 
 <!--
 ### Linux-specific settings
@@ -151,6 +151,9 @@ C:\Packages\Plugins\Chef.Bootstrap.WindowsAzure.ChefClient\
 | 51 | To rozszerzenie nie jest obsługiwane w systemie operacyjnym maszyny wirtualnej. | |
 
 Dodatkowe informacje dotyczące rozwiązywania problemów można znaleźć w [pliku Readme rozszerzenia maszyny wirtualnej Chef](https://github.com/chef-partners/azure-chef-extension).
+
+> [!NOTE]
+> W przypadku wszystkich innych elementów bezpośrednio związanych z Chef skontaktuj się z [pomocą techniczną Chef](https://www.chef.io/support/).
 
 ## <a name="next-steps"></a>Następne kroki
 

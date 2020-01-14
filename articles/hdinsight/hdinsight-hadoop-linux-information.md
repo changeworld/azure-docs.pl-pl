@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2019
-ms.openlocfilehash: 21acbde147d5c1751480332e5cd9c89cdb43f8e8
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 3d9dec0065bb62821fcedcbc4f6e5b578c061caf
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75644957"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934558"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Informacje dotyczące korzystania z usługi HDInsight w systemie Linux
 
@@ -254,11 +254,7 @@ HDInsight jest usługą zarządzaną. Jeśli platforma Azure wykryje problem z k
 * Zainstaluj i skonfiguruj usługę lub witrynę sieci Web.
 * Zainstaluj i Skonfiguruj składnik, który wymaga zmian konfiguracji w wielu węzłach w klastrze.
 
-Akcje skryptu są skryptami bash. Skrypty są uruchamiane podczas tworzenia klastra i służą do instalowania i konfigurowania dodatkowych składników. Przykładowe skrypty są dostępne do zainstalowania następujących składników:
-
-* [Apache Giraph](hdinsight-hadoop-giraph-install-linux.md)
-
-Informacje na temat tworzenia własnych akcji skryptu można znaleźć w temacie [Script Action development with HDInsight](hdinsight-hadoop-script-actions-linux.md) (Tworzenie akcji skryptu za pomocą usługi HDInsight).
+Akcje skryptu są skryptami bash. Skrypty są uruchamiane podczas tworzenia klastra i służą do instalowania i konfigurowania dodatkowych składników. Informacje na temat tworzenia własnych akcji skryptu można znaleźć w temacie [Script Action development with HDInsight](hdinsight-hadoop-script-actions-linux.md) (Tworzenie akcji skryptu za pomocą usługi HDInsight).
 
 ### <a name="jar-files"></a>Pliki JAR
 

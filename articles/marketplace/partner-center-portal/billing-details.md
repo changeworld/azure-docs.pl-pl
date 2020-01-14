@@ -1,18 +1,18 @@
 ---
 title: Komercyjne rozliczenia w portalu Marketplace | Portal Azure Marketplace
 description: W tym artykule omówiono tematy związane z handlem przeznaczone dla komercyjnych rynków marketingowych.
-author: qianw211
+author: MaggiePucciEvans
 manager: evansma
-ms.author: v-qiwe
+ms.author: evansma
 ms.service: marketplace
 ms.topic: guide
 ms.date: 12/12/2019
-ms.openlocfilehash: 3f610dbc2c5cf052729857c09de1d437e52ac20a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0fda04bbfa632f429539ddc0ad90941cb645226b
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75480582"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934642"
 ---
 # <a name="commercial-marketplace-billing"></a>Komercyjne rozliczenia w portalu Marketplace 
 

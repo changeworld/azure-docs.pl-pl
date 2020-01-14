@@ -2,19 +2,19 @@
 title: Obsługa usług Azure Marketplace i AppSource | Azure
 description: Informacje o pomocy technicznej i linki dla witryny Azure Marketplace i AppSource
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-author: qianw211
+author: MaggiePucciEvans
 manager: evansma
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 7/25/2019
-ms.author: v-qiwe
-ms.openlocfilehash: b036f7f7455d265849db3c0b82a21471ed1a902c
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: evansma
+ms.openlocfilehash: 40d466bd4e5959453f8c3042c4b14f6c3ef605bf
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822618"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933459"
 ---
 # <a name="support-for-the-marketplace"></a>Obsługa portalu Marketplace  
 Poniżej znajduje się lista opcji pomocy technicznej dla portalu Marketplace.  
@@ -31,7 +31,7 @@ Otwórz bilet z [obsługą wydawcy portalu Microsoft Marketplace](https://suppor
 |:--- |:--- |:--- |  
 | Aby uzyskać pomoc, odwiedź stronę Tworzenie zdarzenia znajdującą się w [pomocy technicznej portalu Marketplace](https://go.microsoft.com/fwlink/?linkid=844975)</li> </ul> | Obsługa Centrum partnerskiego lub portal Cloud Partner. | Pomoc techniczna jest świadczona między 6:00 18:00 PST. |  
 
-## <a name="technical"></a>Naukow  
+## <a name="technical"></a>Techniczne  
 
 | Kanał pomocy technicznej | Opis |  
 |:--- |:--- |  

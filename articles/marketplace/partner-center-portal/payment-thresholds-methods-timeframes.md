@@ -3,18 +3,18 @@ Description: Szacowany czas na przeniesienie płatności, odpowiednie progi pła
 title: Progi płatności, metody i ramy czasowe w komercyjnej witrynie Marketplace | Portal Azure Marketplace
 ms.date: 12/10/2019
 ms.topic: article
-author: qianw211
+author: MaggiePucciEvans
 manager: evansma
-ms.author: v-qiwe
+ms.author: evansma
 ms.service: marketplace
-ms.openlocfilehash: 8854d5e336dd5aa539bb810f55a45281362500bd
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 6bb05513d59870b7fa0d997eb31510494a9938e0
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74980298"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75931874"
 ---
-# <a name="payment-thresholds-methods-and-time-frames"></a>Progi płatności, metody i ramki czasu
+# <a name="payment-thresholds-methods-and-time-frames"></a>Progi, metody i horyzonty czasowe płatności
 
 Szacowany czas na przeniesienie płatności i portale firmy Microsoft, z których można otrzymywać płatności, mogą się różnić w zależności od typu konta kraju/regionu i wypłaty. W tym temacie opisano formy płatności obsługiwane w poszczególnych krajach/regionach.
 
@@ -125,7 +125,7 @@ Aby zobaczyć kraje/regiony, w których te metody płatności są używane dla p
 | Liechtenstein                    | Tak               | Tak                                      | Tak    | Tak             |
 | Litwa                        | Tak               | Tak                                      | Tak    | Nie              |
 | Luksemburg                       | Tak               | Tak                                      | Tak    | Tak             |
-| Macedonia                        | Nie                | Tak                                      | Tak    | Nie              |
+| Macedonia Północna                        | Nie                | Tak                                      | Tak    | Nie              |
 | Madagaskar                       | Tak               | Tak                                      | Tak    | Nie              |
 | Malawi                           | Tak               | Tak                                      | Tak    | Tak             |
 | Malezja                         | Tak               | Tak                                      | Tak    | Tak             |

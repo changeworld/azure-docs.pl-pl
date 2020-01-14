@@ -1,18 +1,18 @@
 ---
 title: Często zadawane pytania dotyczące odzyskiwania po awarii maszyny wirtualnej platformy Azure za pomocą Azure Site Recovery
 description: Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące odzyskiwania po awarii maszyn wirtualnych platformy Azure do innego regionu platformy Azure przy użyciu Azure Site Recovery
-author: asgang
+author: carmonmills
 manager: rochakm
 ms.service: site-recovery
 ms.date: 04/29/2019
 ms.topic: conceptual
-ms.author: asgang
-ms.openlocfilehash: 5ed501a9f11e790bcc2196d57c6479beb54f1a17
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.author: carmonm
+ms.openlocfilehash: 2e1689a4f6d3a2271da868350263bef098562127
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73621064"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75929916"
 ---
 # <a name="common-questions-azure-to-azure-disaster-recovery"></a>Często zadawane pytania: odzyskiwanie po awarii z platformy Azure do platformy Azure
 
@@ -244,10 +244,10 @@ Po włączeniu ochrony czas powrotu po awarii jest zwykle podobny do czasu, któ
 Zespół Site Recovery współpracuje z zespołem zarządzania pojemnością platformy Azure w celu zaplanowania wystarczającej pojemności infrastruktury, aby zapewnić, że maszyny wirtualne z włączonym odzyskiwaniem po awarii zostaną pomyślnie wdrożone w regionie docelowym po zainicjowaniu trybu failover.
 
 ### <a name="does-site-recovery-work-with-reserved-instances"></a>Czy Site Recovery współpracuje z wystąpieniami zarezerwowanymi?
-Tak. w regionie odzyskiwania po awarii można zakupić [wystąpienia rezerwowe](https://azure.microsoft.com/pricing/reserved-vm-instances/) , a Site Recovery będą z nich korzystać operacje trybu failover. </br> Nie jest wymagana dodatkowa konfiguracja.
+Tak. w regionie odzyskiwania po awarii można zakupić [wystąpienia rezerwowe](https://azure.microsoft.com/pricing/reserved-vm-instances/) , a Site Recovery będą z nich korzystać operacje trybu failover. </br> Dodatkowa konfiguracja nie jest potrzebna.
 
 
-## <a name="security"></a>Bezpieczeństwo
+## <a name="security"></a>Zabezpieczenia
 
 ### <a name="is-replication-data-sent-to-the-site-recovery-service"></a>Czy dane replikacji są wysyłane do usługi Site Recovery?
 Nie, Site Recovery nie przechwytuje replikowanych danych i nie zawiera żadnych informacji o działaniach na maszynach wirtualnych. Do usługi Site Recovery są wysyłane jedynie metadane wymagane do organizowania replikacji i trybu failover.  

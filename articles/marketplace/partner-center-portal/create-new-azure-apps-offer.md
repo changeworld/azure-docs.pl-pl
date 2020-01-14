@@ -1,19 +1,19 @@
 ---
 title: Utwórz nową ofertę usługi Azure Apps w komercyjnej witrynie Marketplace
 description: Jak utworzyć nową ofertę usługi Azure Apps do wystawiania lub sprzedawania w witrynie Azure Marketplace, AppSource lub za pośrednictwem programu Cloud Solution Provider (CSP) przy użyciu portalu Marketplace w witrynie Microsoft Partner Center.
-author: qianw211
+author: MaggiePucciEvans
 manager: evansma
-ms.author: v-qiwe
+ms.author: evansma
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.openlocfilehash: d7e05f12c04136c8394dbcb27b7a950fc5ce85d9
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 60a3392474d11c306d28b9d95668a1e783cdfbb0
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74281274"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75930705"
 ---
 # <a name="create-an-azure-application-offer"></a>Tworzenie oferty aplikacji platformy Azure
 
@@ -244,7 +244,7 @@ Obraz Hero jest opcjonalny. Jeśli postanowisz jeden, musi on mierzyć 815 x 290
 
 Dodaj zrzuty ekranu pokazujące, jak działa Twoja oferta. Można dodać maksymalnie pięć zrzutów ekranu. Wszystkie zrzuty ekranu muszą mieć 1280 x 720 pikseli.
 
-#### <a name="videos"></a>Filmy wideo
+#### <a name="videos"></a>Filmy
 
 Opcjonalnie możesz dodać maksymalnie pięć filmów wideo, które demonstrują Twoją ofertę. Te filmy wideo powinny być hostowane w usłudze YouTube i/lub Vimeo. Dla każdej z nich wprowadź nazwę filmu wideo, jego adres URL i obraz miniatury filmu wideo (1280 x 720 pikseli).
 
@@ -352,7 +352,7 @@ Istnieje możliwość skonfigurowania każdego planu, który będzie widoczny dl
 
 Jeśli szablon rozwiązania jest przeznaczony do wdrożenia tylko pośrednio, gdy istnieje odwołanie do innego szablonu rozwiązania lub aplikacji zarządzanej, zaznacz to pole wyboru, aby opublikować szablon rozwiązania, ale ukryć go od klientów wyszukiwania bezpośrednio i przeglądania.
 
-## <a name="pricing-and-availability"></a>Cennik i dostępność
+## <a name="pricing-and-availability"></a>Ceny i dostępność
 
 Karta **ceny i dostępność** jest widoczna tylko dla zarządzanych planów aplikacji.  Można skonfigurować rynki, w których będzie dostępny ten plan, cenę za miesiąc zarządzania rozwiązaniem oraz zdecydować, czy plan ma być widoczny dla wszystkich, czy tylko dla określonych klientów (odbiorców prywatnych).
 
@@ -461,7 +461,7 @@ Dla każdego podmiotu zabezpieczeń wybierz jedną z wbudowanych ról usługi Az
 
 Zastosuj [Zasady platformy Azure](https://docs.microsoft.com/azure/governance/policy/overview) do aplikacji zarządzanej, aby określić wymagania dotyczące zgodności dla wdrożonego rozwiązania.  Definicje zasad i format wartości parametrów podano w artykule [Przykłady dla usługi Azure Policy](https://docs.microsoft.com/azure/governance/policy/samples/index).  Można skonfigurować maksymalnie pięć zasad i tylko jedno wystąpienie poszczególnych zasad.  Niektóre zasady wymagają dodatkowych parametrów.  Dla zasad inspekcji wymagana jest standardowa jednostka SKU.  Nazwa zasad jest ograniczona do 50 znaków.
 
-## <a name="co-sell"></a>Sprzedawanie
+## <a name="co-sell"></a>Wspólna sprzedaż
 
 Przekazywanie informacji na karcie sprzedaż jest całkowicie opcjonalne w przypadku publikowania oferty. Jest to wymagane do osiągnięcia gotowej do rozsprzedażu i gotowego do zakupu stanu do współdziałania. Te informacje będą używane przez zespoły sprzedaży firmy Microsoft, aby dowiedzieć się więcej na temat rozwiązania podczas oceny jego dopasowania do potrzeb klientów. Nie jest on dostępny bezpośrednio dla klientów.
 
@@ -508,7 +508,7 @@ Opcja **aukcje na dysku testowym** znajduje się na karcie **dysk testowy** zawi
 
 Po zakończeniu tych pól wybierz pozycję **Zapisz** .
 
-## <a name="publish"></a>Publikowanie
+## <a name="publish"></a>Publikuj
 
 ### <a name="submit-offer-to-preview"></a>Prześlij ofertę do wersji zapoznawczej
 

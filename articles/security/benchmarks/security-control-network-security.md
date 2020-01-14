@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/30/2019
 ms.author: mbaldwin
 ms.custom: security-recommendations
-ms.openlocfilehash: d052226470042d374544de0b7e1ced4ca0f48a14
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 376d7c1a9d2fe2ebce857362fd216e2047eb1f7b
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75564155"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934333"
 ---
 # <a name="security-control-network-security"></a>Kontrola zabezpieczeń: zabezpieczenia sieci
 
@@ -29,7 +29,9 @@ Upewnij się, że wszystkie wdrożenia podsieci Virtual Network mają grupę zab
 
 Alternatywnie, jeśli masz określony przypadek użycia, wymagania mogą być spełnione przez zaimplementowanie zapory platformy Azure.
 
-Informacje ogólne o łączu prywatnym: https://docs.microsoft.com/azure/private-link/private-link-overview
+Informacje ogólne o łączu prywatnym:
+
+https://docs.microsoft.com/azure/private-link/private-link-overview
 
 Jak utworzyć Virtual Network:
 
@@ -97,11 +99,11 @@ Opis Azure Security Center zintegrowanej analizy zagrożeń:
 
 https://docs.microsoft.com/azure/security-center/security-center-alerts-service-layer
 
-Informacje o Azure Security Center adaptacyjnej ograniczania przepustowości sieci
+Informacje o Azure Security Center adaptacyjnej ograniczania przepustowości sieci:
 
 https://docs.microsoft.com/azure/security-center/security-center-adaptive-network-hardening
 
-Informacje o Azure Security Center Access Control sieci w czasie
+Informacje o tym, Azure Security Center Access Control sieci w czasie:
 
 https://docs.microsoft.com/azure/security-center/security-center-just-in-time
 
@@ -113,9 +115,13 @@ https://docs.microsoft.com/azure/security-center/security-center-just-in-time
 
 Zarejestruj dzienniki przepływu sieciowej grupy zabezpieczeń na koncie magazynu w celu wygenerowania rekordów przepływu. Jeśli jest to wymagane do badania nietypowego działania, Włącz funkcję przechwytywania pakietów Network Watcher.
 
-Jak włączyć dzienniki przepływu sieciowej grupy zabezpieczeń: https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal
+Jak włączyć dzienniki przepływu sieciowej grupy zabezpieczeń:
 
-Jak włączyć Network Watcher: https://docs.microsoft.com/azure/network-watcher/network-watcher-create
+https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal
+
+Jak włączyć Network Watcher:
+
+https://docs.microsoft.com/azure/network-watcher/network-watcher-create
 
 ## <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1,6: Wdróż systemy zapobiegania wykrywaniu dostępu do sieci/dostępu intruzów (identyfikatory/adresy IP)
 
@@ -137,11 +143,17 @@ Jak skonfigurować alerty za pomocą zapory platformy Azure: https://docs.micros
 
 Wdróż Application Gateway platformy Azure dla aplikacji sieci Web z włączonym protokołem HTTPS/SSL dla zaufanych certyfikatów.
 
-Jak wdrożyć Application Gateway: https://docs.microsoft.com/azure/application-gateway/quick-create-portal
+Jak wdrożyć Application Gateway:
 
-Jak skonfigurować Application Gateway do korzystania z protokołu HTTPS: https://docs.microsoft.com/azure/application-gateway/create-ssl-portal
+https://docs.microsoft.com/azure/application-gateway/quick-create-portal
 
-Omówienie równoważenia obciążenia warstwy 7 za pomocą bram aplikacji sieci Web platformy Azure: https://docs.microsoft.com/azure/application-gateway/overview
+Jak skonfigurować Application Gateway do korzystania z protokołu HTTPS:
+
+https://docs.microsoft.com/azure/application-gateway/create-ssl-portal
+
+Informacje na temat równoważenia obciążenia warstwy 7 za pomocą bram aplikacji sieci Web platformy Azure:
+
+https://docs.microsoft.com/azure/application-gateway/overview
 
 ## <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1,8: Minimalizacja złożoności i kosztów administracyjnych reguł zabezpieczeń sieci
 
@@ -149,9 +161,11 @@ Omówienie równoważenia obciążenia warstwy 7 za pomocą bram aplikacji sieci
 |--|--|--|
 | 1.8 | 1.5 | Klient |
 
-Użyj Virtual Network tagów usługi &nbsp;do definiowania kontroli dostępu do sieci w grupach zabezpieczeń sieci lub w zaporze platformy Azure. Podczas tworzenia reguł zabezpieczeń można użyć tagów usługi zamiast konkretnych adresów IP. Określając nazwę tagu usługi (np. ApiManagement) w odpowiednim polu źródłowym lub docelowym reguły, można zezwolić na ruch dla odpowiedniej usługi lub go odrzucić. Firma Microsoft zarządza prefiksami adresów, które obejmują tag usługi, i automatycznie aktualizuje tag usługi jako adresy.
+Użyj tagów usługi Virtual Network, aby zdefiniować kontrolę dostępu do sieci dla sieciowych grup zabezpieczeń lub zapory platformy Azure. Podczas tworzenia reguł zabezpieczeń można użyć tagów usługi zamiast konkretnych adresów IP. Określając nazwę tagu usługi (np. ApiManagement) w odpowiednim polu źródłowym lub docelowym reguły, można zezwolić na ruch dla odpowiedniej usługi lub go odrzucić. Firma Microsoft zarządza prefiksami adresów, które obejmują tag usługi, i automatycznie aktualizuje tag usługi jako adresy.
 
-Zrozumienie i używanie tagów usługi: https://docs.microsoft.com/azure/virtual-network/service-tags-overview
+Zrozumienie i używanie tagów usługi:
+
+https://docs.microsoft.com/azure/virtual-network/service-tags-overview
 
 ## <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1,9: Obsługa standardowych konfiguracji zabezpieczeń dla urządzeń sieciowych
 
@@ -161,7 +175,7 @@ Zrozumienie i używanie tagów usługi: https://docs.microsoft.com/azure/virtual
 
 Zdefiniuj i Implementuj standardowe konfiguracje zabezpieczeń dla zasobów sieciowych za pomocą Azure Policy.
 
-Możesz również użyć planów platformy Azure, aby uprościć duże wdrożenia platformy Azure przez spakowanie kluczowych artefaktów środowiska, takich jak szablony Azure Resource Manager, kontrolki RBAC i zasady, w ramach jednej definicji planu. Można zastosować plan do nowych subskrypcji i środowisk oraz dostosować kontrolę i zarządzanie przy użyciu wersji.
+Możesz również użyć planów platformy Azure, aby uprościć duże wdrożenia platformy Azure przez spakowanie kluczowych artefaktów środowiska, takich jak szablony Azure Resource Manager, kontrolki RBAC i zasady, w ramach jednej definicji planu. Możesz zastosować plan do nowych subskrypcji i dostosować kontrolę i zarządzanie przy użyciu wersji.
 
 Jak skonfigurować Azure Policy i zarządzać nimi:
 

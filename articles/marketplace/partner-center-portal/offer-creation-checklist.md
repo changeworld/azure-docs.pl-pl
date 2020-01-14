@@ -1,19 +1,19 @@
 ---
 title: Lista kontrolna tworzenia oferty SaaS — Marketing komercyjny dla platformy Azure
 description: Szczegóły, jakie można podać w procesie tworzenia oferty SaaS. — Komercyjne witryny Marketplace na platformie Azure
-author: qianw211
+author: MaggiePucciEvans
 manager: evansma
-ms.author: v-qiwe
+ms.author: evansma
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: 1643a1e309ecc2bcfc440e3553fcffef54cfb038
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 8b01f15673f68bcc3fb0b205b9dd85a276c9b972
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824623"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75930304"
 ---
 # <a name="saas-offer-creation-checklist"></a>Lista kontrolna tworzenia oferty SaaS
 
@@ -56,8 +56,8 @@ Na stronie Konfiguracja oferty możesz wybrać różne kanały i sprzedawać ruc
 | Jak chcesz, aby potencjalni klienci mogli współdziałać z listą ofert? (Wywołanie do akcji)  | Wymagane, jeśli nie sprzedajesz przez firmę Microsoft. Domyślnie: bezpłatna wersja próbna, opcje: "Pobierz teraz", "bezpłatna wersja próbna", "kontakt ze mną". |
 | Adres URL wersji próbnej  | Wymagany, jeśli wybrano opcję "bezpłatna wersja próbna", ponieważ sposób, w jaki klienci powinni korzystać z listy ofert. |
 | Adres URL oferty  | Wymagane, jeśli wybrano opcję "Pobierz teraz", ponieważ sposób, w jaki klienci powinni korzystać z listy ofert |
-| Kanały  | Opcjonalny. Wartość domyślna: nie została wybrana w kanale CSP (odsprzedawcy).  |
-| Wersja testowa | Opcjonalny. Wartość domyślna: brak włączonego dysku testowego.  |
+| Kanały  | Element opcjonalny. Wartość domyślna: nie została wybrana w kanale CSP (odsprzedawcy).  |
+| Wersja testowa | Element opcjonalny. Wartość domyślna: brak włączonego dysku testowego.  |
 | Typ dysku testowego | Wymagane, jeśli włączono dysk testowy. Wartość domyślna: Brak zaznaczenia. Opcje: Azure Resource Manager, Dynamics 365 dla firm Central, Dynamics 365 do zaangażowania klienta, Dynamics 365 for Operations, Logic App Power BI.  |
 | Zarządzanie potencjalnymi klientami — nawiązywanie połączenia z systemem CRM | Wymagane, jeśli sprzedajesz przez firmę Microsoft lub jeśli lista zawiera oferty "kontakt ze mną". Wartość domyślna: brak połączonego systemu CRM. Opcje programu CRM: tabela Azure, obiekt blob platformy Azure, Dynamics CRM Online, HTTPs, punkt końcowy, Marketo, Salesforce  |
 
@@ -67,10 +67,10 @@ Na stronie właściwości można zdefiniować kategorie i branże używane do gr
 
 | **Nazwa pola**    | **Uwagi**   | 
 | :---------------- | :-----------|  
-| Kategoria i Podkategoria | Wymagane wartości 1 i maks. 3. Wartość domyślna: Brak zaznaczenia. |
-| Branże i podbranże | Opcjonalny. maksymalnie 2 branże L1 i 2 podbranże w ramach każdej branży L1, domyślnie: brak wybranych |
-| Wersja aplikacji  | Opcjonalny. Wartość domyślna: Brak. |
-| Użyj kontraktu standardowego  | Opcjonalny. Domyślnie: nie wybrano.  | |
+| Kategoria i podkategoria | Wymagane wartości 1 i maks. 3. Wartość domyślna: Brak zaznaczenia. |
+| Branże i podbranże | Element opcjonalny. maksymalnie 2 branże L1 i 2 podbranże w ramach każdej branży L1, domyślnie: brak wybranych |
+| Wersja aplikacji  | Element opcjonalny. Wartość domyślna: Brak. |
+| Użyj kontraktu standardowego  | Element opcjonalny. Domyślnie: nie wybrano.  | |
 | Warunki użytkowania  | Wymagane, jeśli nie wybrano kontraktu standardowego.  |
 
 ## <a name="offer-listing-page"></a>Strona z listą ofert
@@ -86,8 +86,8 @@ Na stronie lista znajduje się tekst i obrazy widoczne dla klientów podczas wy�
 | Instrukcje Wprowadzenie  | Wymagane, maks. 3000 znaków. |
 | Wyszukaj słowa kluczowe  | Opcjonalne, zalecane, maksymalnie 3 słowa kluczowe. |
 | Adres URL zasad ochrony prywatności  | Wymagany. |
-| Adres URL materiałów marketingowych programu CSP  | Opcjonalny. |
-| Przydatne linki tytuł + adres URL  | Opcjonalny. |
+| Adres URL materiałów marketingowych programu CSP  | Element opcjonalny. |
+| Przydatne linki tytuł + adres URL  | Element opcjonalny. |
 | Dokument pomocniczy tytuł + plik  | Wymagane, minimum 1 i 3. Musi być formatem pliku PDF. |
 | Zrzuty ekranu  | Wymagany, minimalny 1 zrzut ekranu i maksymalnie 5; co najmniej cztery zalecane. Musi mieć 1280 X 720 w formacie PNG. |
 | Logo Sklepu (małe, średnie, duże, szerokie, Hero)  | Małe (48 X 48) i duże (216 X 216) wymagane; inne rozmiary opcjonalne, ale zalecane: Średni (90 x 90), szeroki (255 x 115), Hero (815 x 290). Musi być w formacie PNG. |
@@ -142,7 +142,7 @@ Na stronie planowanie cen i dostępności można zdefiniować charakterystykę b
 | Minimalna i Maksymalna liczba stanowisk  | Opcjonalne, dostępne tylko wtedy, gdy wybrano model cenowy oparty na miejscu. |
 | Okres rozliczeniowy  | Wymagany. Wartość domyślna: co miesiąc. Opcje: co miesiąc, roczna. |
 | Cena  | Wymagany USD miesięcznie, w przypadku wybrania miesięcznego okresu rozliczeniowego; lub USD na rok, jeśli wybrano roczny okres rozliczeniowy. |
-| Planowanie odbiorców  | Opcjonalny. Domyślne: plan publiczny. Opcje: publiczne, prywatne według identyfikatora dzierżawy |
+| Planowanie odbiorców  | Element opcjonalny. Domyślne: plan publiczny. Opcje: publiczne, prywatne według identyfikatora dzierżawy |
 | Odbiorcy planu z ograniczeniami (identyfikator dzierżawy + opis)  | Wymagane, jeśli wybrano plan prywatny. Minimalna 1 i maksymalna 10 identyfikatorów dzierżawy, jeśli wprowadzono ją ręcznie. Max 20000, jeśli Importuj plik CSV. |
 
 ## <a name="test-drive-listing-page"></a>Strona listy dysków testowych
@@ -159,8 +159,8 @@ Dostępne tylko wtedy, gdy wybrano opcję zaoferowania dysku testowego dla ofert
 
 | **Nazwa pola**    | **Uwagi**   | 
 | :---------------- | :-----------| 
-| Uwagi dotyczące certyfikacji  | Opcjonalny. |
+| Uwagi dotyczące certyfikacji  | Element opcjonalny. |
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Utwórz nową ofertę SaaS](./create-new-saas-offer.md)
+- [Tworzenie nowej oferty SaaS](./create-new-saas-offer.md)

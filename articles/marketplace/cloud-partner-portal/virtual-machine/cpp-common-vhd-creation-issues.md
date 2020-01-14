@@ -2,19 +2,19 @@
 title: Typowe problemy związane z tworzeniem wirtualnych dysków twardych (FAQ) dla portalu Azure Marketplace
 description: Często zadawane pytania dotyczące tworzenia dysków VHD i związanych z nimi problemów.
 services: Azure Marketplace
-author: HannibalSII
+author: MaggiePucciEvans
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 10/02/2018
-ms.author: hascipio
+ms.author: evansma
 ms.reviewer: v-divte; v-miclar
-ms.openlocfilehash: 1d4224d8f1f735ecef3d4551e3032b916e81dc3c
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 152a2f6fda081b2612197cc4848207b336adf8dc
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826616"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934263"
 ---
 # <a name="common-issues-during-vhd-creation-faq"></a>Typowe problemy podczas tworzenia dysku VHD (FAQ)
 
@@ -73,7 +73,7 @@ W poniższym artykule szczegółowo opisano sposób używania niestandardowego r
 
 ## <a name="are-32-bit-applications-or-services-supported-in-the-azure-marketplace"></a>Czy obsługiwane są 32-bitowe aplikacje lub usługi w portalu Azure Marketplace?
 
-Ogólnie rzecz biorąc, nie.  Obsługiwane systemy operacyjne i standardowe usługi dla maszyn wirtualnych platformy Azure to wszystkie 64-bitowe.  Jednak z punktu widzenia technicznej większość 64-bitowych systemów operacyjnych obsługuje uruchamianie 32-bitowych wersji aplikacji w celu zapewnienia zgodności z poprzednimi wersjami.  Jednak korzystanie z aplikacji 32-bitowych jako części rozwiązania maszyny wirtualnej nie jest obsługiwane i dlatego jest *zdecydowanie odradzane*.  Zamiast tego należy ponownie skompilować aplikację jako projekt 64-bitowy.
+Ogólnie rzecz biorąc — nie.  Obsługiwane systemy operacyjne i standardowe usługi dla maszyn wirtualnych platformy Azure to wszystkie 64-bitowe.  Jednak z punktu widzenia technicznej większość 64-bitowych systemów operacyjnych obsługuje uruchamianie 32-bitowych wersji aplikacji w celu zapewnienia zgodności z poprzednimi wersjami.  Jednak korzystanie z aplikacji 32-bitowych jako części rozwiązania maszyny wirtualnej nie jest obsługiwane i dlatego jest *zdecydowanie odradzane*.  Zamiast tego należy ponownie skompilować aplikację jako projekt 64-bitowy.
 
 Aby uzyskać więcej informacji zobacz następujące artykuły:
 - [Uruchamianie aplikacji 32-bitowych](https://docs.microsoft.com/windows/desktop/WinProg64/running-32-bit-applications)

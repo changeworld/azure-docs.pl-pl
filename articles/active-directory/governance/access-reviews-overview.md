@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 08/05/2019
+ms.date: 01/10/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d9922f1c4cbb0afca74c911d9b2bc9f0eab0714
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7e77f507f2a3bd89069f25bf984cf4059009faa6
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422770"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75932640"
 ---
 # <a name="what-are-azure-ad-access-reviews"></a>Co to są przeglądy dostępu w usłudze Azure AD?
 
@@ -97,27 +97,34 @@ Jeśli wszystko jest gotowe do wdrożenia przeglądów dostępu w organizacji, w
 
 [!INCLUDE [Azure AD Premium P2 license](../../../includes/active-directory-p2-license.md)]
 
-### <a name="which-users-must-have-licenses"></a>Którzy użytkownicy muszą mieć licencje?
+### <a name="how-many-licenses-must-you-have"></a>Ile licencji musi mieć?
 
-Każdy użytkownik, który współdziała z przeglądami dostępu, musi mieć płatną licencję Azure AD — wersja Premium P2. Przykłady:
+Upewnij się, że katalog ma co najmniej tyle licencji na Azure AD — wersja Premium P2, ponieważ masz pracowników, którzy będą wykonywać następujące zadania:
 
-- Administratorzy, którzy tworzą przegląd dostępu
+- Użytkownicy i Goście przypisani jako recenzenci
+- Użytkownicy i Goście, którzy wykonują własne przeglądy
 - Właściciele grup, którzy wykonują przegląd dostępu
-- Użytkownicy przypisani jako recenzenci
-- Użytkownicy, którzy wykonują własne przeglądy
+- Właściciele aplikacji, którzy wykonują przegląd dostępu
 
-Możesz również polecić użytkownikom-Gościom przeglądanie własnych praw dostępu. W przypadku każdej płatnej Azure AD — wersja Premiumej licencji P2 przypisanej do jednej z użytkowników Twojej organizacji możesz użyć usługi Azure AD Business-to-Business (B2B), aby zaprosić do pięciu użytkowników-Gości w ramach doliczenia użytkowników zewnętrznych. Ci użytkownicy-Goście mogą również korzystać z funkcji Azure AD — wersja Premium P2. Aby uzyskać więcej informacji, zobacz [wskazówki dotyczące licencjonowania współpracy B2B usługi Azure AD](../b2b/licensing-guidance.md).
+Licencje na Azure AD — wersja Premium P2 **nie** są wymagane dla następujących zadań:
 
-Poniżej przedstawiono kilka przykładowych scenariuszy, które ułatwiają określenie liczby posiadanych licencji.
+- Dla użytkowników z rolami administratora globalnego lub administratora użytkownika nie są wymagane żadne licencje, które konfigurują przeglądy dostępu, konfigurują ustawienia lub stosują decyzje z przeglądu.
 
-| Scenariusz | Obliczenia | Wymagana liczba licencji |
+W przypadku każdej płatnej Azure AD — wersja Premiumej licencji P2 przypisanej do jednej z użytkowników Twojej organizacji możesz użyć usługi Azure AD Business-to-Business (B2B), aby zaprosić do pięciu użytkowników-Gości w ramach doliczenia użytkowników zewnętrznych. Ci użytkownicy-Goście mogą również korzystać z funkcji Azure AD — wersja Premium P2. Aby uzyskać więcej informacji, zobacz [wskazówki dotyczące licencjonowania współpracy B2B usługi Azure AD](../b2b/licensing-guidance.md).
+
+Aby uzyskać więcej informacji na temat licencji, zobacz [przypisywanie lub usuwanie licencji przy użyciu portalu Azure Active Directory](../fundamentals/license-users-groups.md).
+
+### <a name="example-license-scenarios"></a>Przykładowe scenariusze licencji
+
+Poniżej przedstawiono kilka przykładowych scenariuszy licencjonowania, które mogą pomóc w ustaleniu liczby posiadanych licencji.
+
+| Scenariusz | Obliczenia | Liczba licencji |
 | --- | --- | --- |
-| Administrator tworzy przegląd dostępu grupy A z użytkownikami 500. Przypisuje 3 właścicieli grup jako recenzentów. | 1 Licencja dla administratorów + 3 licencji dla każdego właściciela grupy jako recenzentów. | 4 |
-| Administrator tworzy przegląd dostępu grupy A z użytkownikami 500. Sprawia, że jest to samodzielna przegląd. | 1 Licencja na licencje administrator + 500 dla każdego użytkownika jako samoprzeglądający. | 501 |
-| Administrator tworzy przegląd dostępu grupy B z 5 użytkownikami i 25 użytkownikami-Gości. Sprawia, że jest to samodzielna przegląd. | 1 Licencja na licencje administratora + 5 dla każdego użytkownika jako samoprzeglądający.<br/>(Goście są objęci wymaganym wskaźnikiem 1:5) | 6 |
-| Administrator tworzy przegląd dostępu grupy C z 5 użytkownikami i 108 użytkowników-Gości. Sprawia, że jest to samodzielna przegląd. | 1 Licencja na licencje administratora + 5 dla każdego użytkownika jako samorecenzentów + 16 dodatkowych licencji obejmujących wszystkich użytkowników-Gości 108 w wymaganym wskaźniku 1:5.<br/>1 + 5 = 6 licencji, które obejmują 5\*6 = 30 użytkowników-Gości. Pozostałe (108-5\*6) = 78 użytkowników-Gości, 78/5 = 16 dodatkowych licencji są wymagane. W tym przypadku wymagane są 6 + 16 = 22 licencje. | 22 |
-
-Aby uzyskać informacje na temat sposobu przypisywania licencji do użycia, zobacz [przypisywanie lub usuwanie licencji przy użyciu portalu Azure Active Directory](../fundamentals/license-users-groups.md).
+| Administrator tworzy przegląd dostępu grupy A o 75 użytkowników i 1 właściciela grupy i przypisuje właściciela grupy jako recenzenta. | 1 Licencja dla właściciela grupy jako recenzent | 1 |
+| Administrator tworzy przegląd dostępu grupy B z 500 użytkowników i 3 grup właścicieli, a także przypisuje trzech właścicieli grup jako recenzentów. | 3 licencje dla każdego właściciela grupy jako recenzentów | 3 |
+| Administrator tworzy przegląd dostępu grupy B z 500 użytkowników. Sprawia, że jest to samodzielna przegląd. | 500 licencji dla każdego użytkownika jako samoprzeglądający | 500 |
+| Administrator tworzy przegląd dostępu grupy C z 50 użytkowników-członków i 25 użytkowników-Gości. Sprawia, że jest to samodzielna przegląd. | 50 licencji dla każdego użytkownika jako samoprzeglądający.<br/>(Goście są objęci wymaganym wskaźnikiem 1:5) | 50 |
+| Administrator tworzy przegląd dostępu grupy D z 6 użytkownikami-członkami i 108 użytkowników-Gości. Sprawia, że jest to samodzielna przegląd. | 6 licencji dla każdego użytkownika jako samorecenzentów + 16 dodatkowych licencji obejmujących wszystkich użytkowników-Gości 108 w wymaganym wskaźniku 1:5. 6 licencji, które obejmują 6\*5 = 30 użytkowników-Gości. Pozostałe (108-6\*5) = 78 użytkowników-Gości, 78/5 = 16 dodatkowych licencji są wymagane. W tym przypadku wymagane są 6 + 16 = 22 licencje. | 22 |
 
 ## <a name="next-steps"></a>Następne kroki
 

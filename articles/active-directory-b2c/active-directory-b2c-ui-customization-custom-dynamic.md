@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/20/2017
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: dbc932bd7a68212ce94f2ad07de6e625d26c0918
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: ae29a068ef29898c3fa27d3620d1e6be0be4bf3b
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74950242"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75931201"
 ---
 # <a name="azure-active-directory-b2c-configure-the-ui-with-dynamic-content-by-using-custom-policies"></a>Azure Active Directory B2C: Skonfiguruj interfejs użytkownika z zawartością dynamiczną przy użyciu zasad niestandardowych
 
@@ -217,17 +217,19 @@ Aby skonfigurować `ContentDefinition`, wykonaj następujące czynności:
     ![Przykład fragmentu kodu XML z wyróżnionym elementem LoadUri](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-content-definition.png)
 
 ## <a name="step-6-upload-the-policy-to-your-tenant"></a>Krok 6. przekazywanie zasad do dzierżawy
-1. W [Azure Portal](https://portal.azure.com)przejdź do [kontekstu Azure AD B2C dzierżawy](active-directory-b2c-navigate-to-b2c-context.md), a następnie wybierz pozycję **Azure AD B2C**.
+1. Na [Azure Portal](https://portal.azure.com)wybierz ikonę katalogów i **subskrypcji** na pasku narzędzi portalu, a następnie wybierz katalog zawierający dzierżawcę Azure AD B2C.
 
-2. Wybierz pozycję **platforma obsługi tożsamości**.
+1. W Azure Portal Wyszukaj i wybierz pozycję **Azure AD B2C**.
 
-3. Wybierz pozycję **wszystkie zasady**.
+1. Wybierz pozycję **platforma obsługi tożsamości**.
 
-4. Wybierz pozycję **Przekaż zasady**.
+1. Wybierz pozycję **wszystkie zasady**.
 
-5. Zaznacz pole wyboru **Zastąp zasady, jeśli istnieje** .
+1. Wybierz pozycję **Przekaż zasady**.
 
-6. Przekaż plik *TrustFrameworkExtensions. XML* i upewnij się, że przeszedł sprawdzanie poprawności.
+1. Zaznacz pole wyboru **Zastąp zasady, jeśli istnieje** .
+
+1. Przekaż plik *TrustFrameworkExtensions. XML* i upewnij się, że przeszedł sprawdzanie poprawności.
 
 ## <a name="step-7-test-the-custom-policy-by-using-run-now"></a>Krok 7. Testowanie zasad niestandardowych za pomocą polecenia Uruchom teraz
 1. Wybierz pozycję **Azure AD B2C ustawienia**, a następnie wybierz pozycję **platforma obsługi tożsamości**.
@@ -345,7 +347,3 @@ W przypadku wybrania linku **Utwórz konto teraz** na stronie logowania w przegl
 ## <a name="optional-download-the-complete-policy-files-and-code"></a>Obowiązkowe Pobieranie kompletnych plików zasad i kodu
 * Po ukończeniu przewodnika [wprowadzenie do zasad niestandardowych](active-directory-b2c-get-started-custom.md) zalecamy utworzenie scenariusza przy użyciu własnych niestandardowych plików zasad. W odniesieniu do Twojej dokumentacji udostępniono [przykładowe pliki zasad](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-ui-customization).
 * Możesz pobrać kompletny kod z [przykładowego rozwiązania programu Visual Studio, aby uzyskać odwołanie](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-ui-customization).
-
-
-
-
