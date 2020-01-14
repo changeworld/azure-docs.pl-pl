@@ -144,9 +144,9 @@
                   href: ../common/storage-rest-api-auth.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
             - name: Zarządzanie szyfrowaniem w usłudze Azure Storage
               items:
-                - name: Sprawdzanie modelu klucza szyfrowania dla konta
-                  href: ../common/storage-encryption-key-model-get.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-                - name: Konfigurowanie zarządzanych przez klienta kluczy szyfrowania
+                - name: 'Tworzenie konta, które obsługuje klucze zarządzane przez klienta'
+                  href: ../common/account-encryption-key-create.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+                - name: Konfigurowanie kluczy zarządzanych przez klienta
                   items:
                     - name: Portal
                       href: ../common/storage-encryption-keys-portal.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
@@ -154,6 +154,8 @@
                       href: ../common/storage-encryption-keys-powershell.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
                     - name: Interfejs wiersza polecenia platformy Azure
                       href: ../common/storage-encryption-keys-cli.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+                - name: Sprawdzanie modelu klucza szyfrowania dla konta
+                  href: ../common/storage-encryption-key-model-get.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
         - name: Konfigurowanie szyfrowania po stronie klienta
           items:
             - name: .NET

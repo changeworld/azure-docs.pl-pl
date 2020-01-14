@@ -241,7 +241,7 @@
       href: 'https://azure.microsoft.com/roadmap/?category=iot'
     - name: Usługa Azure IoT Edge dla edytora VS Code
       href: 'https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge'
-    - name: Zestaw narzędzi usługi Azure IoT Hub dla programu VS Code
+    - name: Usługa Azure IoT Hub dla edytora VS Code
       href: 'https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit'
     - name: Narzędzie DeviceExplorer
       href: 'https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer'

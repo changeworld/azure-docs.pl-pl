@@ -617,6 +617,8 @@
           href: solution-template-copy-new-files-lastmodifieddate.md
         - name: Kopiowanie zbiorcze z bazy danych
           href: solution-template-bulk-copy-with-control-table.md
+        - name: Kopiowanie zbiorcze z plików do bazy danych
+          href: solution-template-bulk-copy-from-files-to-database.md
         - name: Kopiowanie różnicowe z bazy danych
           href: solution-template-delta-copy-with-control-table.md
         - name: Migrowanie danych z usługi Amazon S3 do usługi Azure Storage

@@ -21,7 +21,7 @@
       href: tutorial-process-mailing-list-subscriptions-workflow.md
     - name: Tworzenie przepływu pracy usług Azure Storage i Azure Functions
       href: tutorial-process-email-attachments-workflow.md
-- name: Przykłady
+- name: Samples
   items:
     - name: Przykłady kodu platformy Azure
       href: 'https://docs.microsoft.com/samples/browse/?products=azure-logic-apps'
@@ -111,6 +111,8 @@
           href: connect-virtual-network-vnet-set-up-single-ip-address.md
         - name: Dodawanie artefaktów do środowisk usługi integracji
           href: add-artifacts-integration-service-environment-ise.md
+        - name: Konfigurowanie kluczy szyfrowania zarządzanych przez klienta dla środowisk usług integracji
+          href: customer-managed-keys-integration-service-environment.md
     - name: Dostęp do danych lokalnych
       items:
         - name: Instalowanie bramy danych
@@ -273,7 +275,7 @@
           href: ../connectors/connectors-create-api-sftp.md
         - name: SFTP — SSH
           href: ../connectors/connectors-sftp-ssh.md
-        - name: Sharepoint
+        - name: SharePoint
           href: ../connectors/connectors-create-api-sharepoint.md
         - name: Slack
           href: ../connectors/connectors-create-api-slack.md
@@ -281,7 +283,7 @@
           href: ../connectors/connectors-native-sliding-window.md
         - name: SMTP
           href: ../connectors/connectors-create-api-smtp.md
-        - name: Oprogramowanie SQL Server
+        - name: SQL Server
           href: ../connectors/connectors-create-api-sqlazure.md
         - name: Przekształcanie kodu XML
           href: logic-apps-enterprise-integration-transform.md
