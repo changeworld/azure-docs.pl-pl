@@ -15,8 +15,8 @@
 - name: Przewodniki z instrukcjami
   items:
     - name: Zestawy danych w usłudze Azure Machine Learning
-      href: ../machine-learning/service/how-to-create-register-datasets.md?toc=/azure/open-datasets/toc.json&bc=/azure/open-datasets/breadcrumb/toc.json
-- name: Przykłady
+      href: ../machine-learning/how-to-create-register-datasets.md?toc=/azure/open-datasets/toc.json&bc=/azure/open-datasets/breadcrumb/toc.json
+- name: Samples
   displayName: 'example, examples, Jupyter, azure notebooks, python, notebook, GitHub'
   href: samples.md
 - name: Dokumentacja

@@ -244,7 +244,7 @@
     - name: Pojęcia
       items:
         - name: Rozszerzenie DSC programu PowerShell
-          href: /powershell/dsc/overview/overview
+          href: /powershell/scripting/dsc/overview/overview
     - name: Przewodniki Szybki start
       items:
         - name: Getting Started
@@ -315,7 +315,7 @@
     - name: Moduły programu PowerShell
       items:
         - name: Moduły
-          href: automation-integration-modules.md
+          href: shared-resources/modules.md
         - name: Korzystanie z modułów Az w usłudze Azure Automation
           href: az-modules.md
         - name: Aktualizowanie modułów programu Azure PowerShell

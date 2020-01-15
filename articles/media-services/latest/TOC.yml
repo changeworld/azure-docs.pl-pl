@@ -35,7 +35,7 @@
     - name: Dynamiczne szyfrowanie przy użyciu usługi DRM
       displayName: 'PlayReady, Widevine, FairPlay'
       href: protect-with-drm.md
-- name: Przykłady
+- name: Samples
   items:
     - name: Przykłady usług Media Services
       displayName: '.NET, Java'
@@ -77,7 +77,7 @@
         - name: Automatyczne generowanie adaptacyjnej drabiny szybkości transmisji bitów
           href: autogen-bitrate-ladder.md
         - name: Kodowanie z rozpoznawaniem zawartości
-          href: cae-experimental.md
+          href: content-aware-encoding.md
     - name: Analizowanie zawartości (Video Indexer)
       items:
         - name: Omówienie
