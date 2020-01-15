@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 11/20/2019
+ms.date: 01/14/2020
 ms.author: jingwang
-ms.openlocfilehash: 6dd0734d39237545b7a9bc2553fcd9dea75b8ee0
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 3d3a1704b75de53bf65012329fba5f8522adff3a
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75892816"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75941766"
 ---
 # <a name="copy-data-from-db2-by-using-azure-data-factory"></a>Kopiowanie danych z programu DB2 przy użyciu Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
@@ -46,11 +46,6 @@ W przypadku tego łącznika bazy danych DB2 obsługiwane są następujące platf
 * IBM DB2 dla LUW 10,5
 * IBM DB2 dla LUW 10,1
 
-> [!TIP]
-> Jeśli zostanie wyświetlony komunikat o błędzie informujący o tym, że nie znaleziono pakietu odpowiadającego żądaniu wykonania instrukcji SQL. SQLSTATE = 51002 SQLCODE =-805 ", przyczyna to wymagany pakiet nie jest tworzony dla normalnego użytkownika w tym systemie operacyjnym. Postępuj zgodnie z tymi instrukcjami według typu serwera bazy danych DB2:
-> - DB2 for i (systemu AS400): zezwól użytkownikom na tworzenie kolekcji dla użytkownika logowania przed użyciem działania kopiowania. Polecenie: `create collection <username>`
-> - DB2 dla systemu z/OS lub LUW: Użyj konta o wysokim poziomie uprawnień — Użytkownicy zaawansowani lub Administratorzy z organami urzędów i BIND, BINDADD, UDZIELą uprawnień do wykonania publicznych. Aby uruchomić działanie kopiowania raz, wymagany pakiet jest automatycznie tworzony podczas kopiowania. Następnie można wrócić do normalnego użytkownika w przypadku kolejnych przebiegów kopiowania.
-
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
@@ -75,9 +70,12 @@ Następujące właściwości są obsługiwane w przypadku usługi połączonej z
 | authenticationType |Typ uwierzytelniania używany do łączenia się z bazą danych programu DB2.<br/>Dozwolona wartość to: **podstawowa**. |Tak |
 | nazwa użytkownika |Określ nazwę użytkownika w celu nawiązania połączenia z bazą danych programu DB2. |Tak |
 | hasło |Określ hasło dla konta użytkownika określonego dla nazwy użytkownika. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). |Tak |
-| pakietcollection | Określ w miejscu, w którym mają być tworzone przez funkcję automatycznego tworzenia pakietów na podstawie zapytania w bazie danych | Nie |
+| pakietcollection | Określ w obszarze, w którym mają być tworzone pakiety do automatycznego tworzenia przez ADF podczas wykonywania zapytania dotyczącego bazy danych. | Nie |
 | certificateCommonName | Korzystając z szyfrowania SSL (SSL) lub Transport Layer Security (TLS), należy wprowadzić wartość Nazwa pospolita certyfikatu. | Nie |
 | connectVia | [Środowiska Integration Runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. Dowiedz się więcej z sekcji [wymagania wstępne](#prerequisites) . Jeśli nie zostanie określony, używa domyślnego środowiska Azure Integration Runtime. |Nie |
+
+> [!TIP]
+> Jeśli zostanie wyświetlony komunikat o błędzie z informacją `The package corresponding to an SQL statement execution request was not found. SQLSTATE=51002 SQLCODE=-805`, powód nie jest tworzony dla użytkownika. Domyślnie ADF spróbuje utworzyć pakiet w obszarze Kolekcja o nazwie jako użytkownik, który został użyty do nawiązania połączenia z bazą danych DB2. Określ właściwość kolekcji pakietów, aby wskazać miejsce, w którym ma zostać utworzony zestaw danych na potrzeby wysyłania zapytań do bazy danych.
 
 **Przykład:**
 

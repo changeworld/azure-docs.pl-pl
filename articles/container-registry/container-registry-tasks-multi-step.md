@@ -3,12 +3,12 @@ title: Zadanie wieloetapowe umożliwiające kompilację, testowanie obrazu & pop
 description: Wprowadzenie do wieloetapowych zadań, funkcji ACR zadań w Azure Container Registry, które udostępniają przepływy pracy oparte na zadaniach służące do kompilowania, testowania i poprawiania obrazów kontenerów w chmurze.
 ms.topic: article
 ms.date: 03/28/2019
-ms.openlocfilehash: 3ed071fa2027e91ee5bc6c07738dc66763454847
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: cf5f90263c75aeb96220967142d28995209f2d86
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456172"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75945663"
 ---
 # <a name="run-multi-step-build-test-and-patch-tasks-in-acr-tasks"></a>Uruchamianie wieloetapowych zadań kompilacji, testów i poprawek w zadaniach ACR
 
@@ -50,33 +50,33 @@ Zadanie wieloetapowe w zadaniach ACR jest zdefiniowane jako seria kroków w plik
 Poniższe fragmenty kodu pokazują, jak połączyć te typy kroków zadań. Zadania wieloetapowe mogą być tak proste, jak Kompilowanie pojedynczego obrazu z pliku dockerfile i wypychanie do rejestru przy użyciu pliku YAML podobnego do:
 
 ```yml
-version: v1.0.0
+version: v1.1.0
 steps:
-  - build: -t {{.Run.Registry}}/hello-world:{{.Run.ID}} .
-  - push: ["{{.Run.Registry}}/hello-world:{{.Run.ID}}"]
+  - build: -t $Registry/hello-world:$ID .
+  - push: ["$Registry/hello-world:$ID"]
 ```
 
 Lub bardziej skomplikowane, takie jak fikcyjna wieloetapowa definicja, która obejmuje kroki kompilowania, testowania, Helm pakietu i wdrożenia Helm (nie podano konfiguracji kontenera kontenerów i repozytorium Helm):
 
 ```yml
-version: v1.0.0
+version: v1.1.0
 steps:
   - id: build-web
-    build: -t {{.Run.Registry}}/hello-world:{{.Run.ID}} .
+    build: -t $Registry/hello-world:$ID .
     when: ["-"]
   - id: build-tests
-    build -t {{.Run.Registry}}/hello-world-tests ./funcTests
+    build -t $Registry/hello-world-tests ./funcTests
     when: ["-"]
   - id: push
-    push: ["{{.Run.Registry}}/helloworld:{{.Run.ID}}"]
+    push: ["$Registry/helloworld:$ID"]
     when: ["build-web", "build-tests"]
   - id: hello-world-web
-    cmd: {{.Run.Registry}}/helloworld:{{.Run.ID}}
+    cmd: $Registry/helloworld:$ID
   - id: funcTests
-    cmd: {{.Run.Registry}}/helloworld:{{.Run.ID}}
+    cmd: $Registry/helloworld:$ID
     env: ["host=helloworld:80"]
-  - cmd: {{.Run.Registry}}/functions/helm package --app-version {{.Run.ID}} -d ./helm ./helm/helloworld/
-  - cmd: {{.Run.Registry}}/functions/helm upgrade helloworld ./helm/helloworld/ --reuse-values --set helloworld.image={{.Run.Registry}}/helloworld:{{.Run.ID}}
+  - cmd: $Registry/functions/helm package --app-version $ID -d ./helm ./helm/helloworld/
+  - cmd: $Registry/functions/helm upgrade helloworld ./helm/helloworld/ --reuse-values --set helloworld.image=$Registry/helloworld:$ID
 ```
 
 Zobacz [przykłady zadań](container-registry-tasks-samples.md) dla wieloetapowych zadań YAML pliki i wieloetapowe dockerfile dla kilku scenariuszy.

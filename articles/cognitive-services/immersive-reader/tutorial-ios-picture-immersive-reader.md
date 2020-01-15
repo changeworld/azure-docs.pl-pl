@@ -9,12 +9,12 @@ ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 08/01/2019
 ms.author: metan
-ms.openlocfilehash: bdaee97c8c5d7e19076847c5f1f7c07c528c1747
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: defa49bd5ca6be6862412e3caf40295ef1d639cf
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69899372"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75945297"
 ---
 # <a name="tutorial-create-an-ios-app-that-launches-the-immersive-reader-with-content-from-a-photo-swift"></a>Samouczek: Tworzenie aplikacji dla systemu iOS, która uruchamia czytnik immersyjny z zawartością ze zdjęcia (SWIFT)
 
@@ -28,8 +28,8 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* [Xcode](https://apps.apple.com/us/app/xcode/id497799835?mt=12)
-* Zasób czytnika immersyjny skonfigurowany do uwierzytelniania Azure Active Directory (Azure AD). Postępuj zgodnie z [tymi instrukcjami](./azure-active-directory-authentication.md) , aby rozpocząć konfigurację. W przypadku konfigurowania przykładowych właściwości projektu konieczne będzie utworzenie niektórych wartości. Zapisz dane wyjściowe sesji w pliku tekstowym do użycia w przyszłości.
+* [XCode](https://apps.apple.com/us/app/xcode/id497799835?mt=12)
+* Zasób czytnika immersyjny skonfigurowany do Azure Active Directory uwierzytelniania. Postępuj zgodnie z [tymi instrukcjami](./how-to-create-immersive-reader.md) , aby rozpocząć konfigurację. W przypadku konfigurowania przykładowych właściwości projektu konieczne będzie utworzenie niektórych wartości. Zapisz dane wyjściowe sesji w pliku tekstowym do użycia w przyszłości.
 * Użycie tego przykładu wymaga subskrypcji platformy Azure w usłudze przetwarzanie obrazów poznawczej. [Utwórz zasób usługi przetwarzanie obrazów poznawczej w Azure Portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision).
 
 ## <a name="create-an-xcode-project"></a>Tworzenie projektu Xcode
@@ -56,9 +56,9 @@ Najprostszym sposobem korzystania z zestawu SDK czytnika immersyjny jest za poś
   pod 'immersive-reader-sdk', :path => 'https://github.com/microsoft/immersive-reader-sdk/tree/master/iOS/immersive-reader-sdk'
   end
 ```
-4. W terminalu, w katalogu projektu Xcode, uruchom polecenie `pod install` , aby zainstalować zestaw SDK programu immersyjny pod.
+4. W terminalu, w katalogu projektu Xcode, uruchom polecenie `pod install`, aby zainstalować zestaw SDK czytnika immersyjny pod.
 5. Dodaj `import immersive_reader_sdk` do wszystkich plików, które muszą odwoływać się do zestawu SDK.
-6. Upewnij się, że otwarto projekt, `.xcworkspace` otwierając plik, a `.xcodeproj` nie plik.
+6. Upewnij się, że otwarto projekt, otwierając plik `.xcworkspace`, a nie plik `.xcodeproj`.
 
 ## <a name="acquire-an-azure-ad-authentication-token"></a>Uzyskiwanie tokenu uwierzytelniania usługi Azure AD
 
@@ -90,8 +90,8 @@ Zmień nazwę plik viewcontroller. Swift na PictureLaunchViewController. Swift i
 ## <a name="build-and-run-the-app"></a>Kompilowanie i uruchamianie aplikacji
 
 Ustaw schemat Archiwum w Xcode, wybierając symulator lub urządzenie docelowe.
-![Schemat Archiwum](./media/ios/xcode-archive-scheme.png)<br/>
-![Wybierz element docelowy](./media/ios/xcode-select-target.png)
+![schemat archiwum](./media/ios/xcode-archive-scheme.png)<br/>
+![wybierz cel](./media/ios/xcode-select-target.png)
 
 W Xcode naciśnij klawisze CTRL + R lub kliknij przycisk Odtwórz, aby uruchomić projekt, a aplikacja powinna zostać uruchomiona w określonym symulatorze lub urządzeniu.
 
@@ -105,4 +105,4 @@ W aplikacji Zrób lub Przekaż zdjęcie tekstu, naciskając przycisk "Wypełnij 
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Zapoznaj się z [zestawem SDK programu immersyjny dla systemu iOS](https://github.com/microsoft/immersive-reader-sdk/tree/master/iOS) i [Kompendium zestawu SDK systemu iOS dla czytnika immersyjny](./ios-reference.md)
+* Poznaj [Kompendium zestawu SDK czytnika immersyjny](./reference.md)

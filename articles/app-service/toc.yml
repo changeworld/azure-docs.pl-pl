@@ -117,6 +117,8 @@
       items:
         - name: Wdrażanie aplikacji
           items:
+            - name: Uruchamianie za pomocą pakietu
+              href: deploy-run-package.md
             - name: Wdrażanie pliku ZIP lub WAR
               href: deploy-zip.md
             - name: Wdrażanie przy użyciu protokołu FTP

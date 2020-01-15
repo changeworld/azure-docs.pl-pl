@@ -8,22 +8,26 @@ ms.author: mcarter
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: cfa8db0d00f351f5ab2bda96744305ca83cccb19
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 2664b1abd4131cf1dca186c7b044e338bf1efa84
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75922451"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75945821"
 ---
 # <a name="create-a-private-endpoint-for-a-secure-connection-to-azure-cognitive-search-preview"></a>Utwórz prywatny punkt końcowy dla bezpiecznego połączenia z usługą Azure Wyszukiwanie poznawcze (wersja zapoznawcza)
 
-[Prywatne punkty końcowe](../private-link/private-endpoint-overview.md) dla systemu Azure wyszukiwanie poznawcze umożliwiają klientowi w sieci wirtualnej bezpieczne uzyskiwanie dostępu do danych w indeksie wyszukiwania za pośrednictwem [prywatnego linku](../private-link/private-link-overview.md). Prywatny punkt końcowy używa adresu IP z [przestrzeni adresowej sieci wirtualnej](../virtual-network/virtual-network-ip-addresses-overview-arm.md#private-ip-addresses) dla usługi wyszukiwania. Ruch sieciowy między klientem a usługą wyszukiwania odbywa się za pośrednictwem sieci wirtualnej i łączy prywatnych w sieci szkieletowej firmy Microsoft, eliminując ekspozycję z publicznego Internetu. Aby zapoznać się z listą innych usług PaaS, które obsługują link prywatny, należy zapoznać się z [sekcją dostępność](../private-link/private-link-overview.md#availability) w dokumentacji produktu.
+W tym artykule Użyj portalu, aby utworzyć nowe wystąpienie usługi Azure Wyszukiwanie poznawcze, do którego nie można uzyskać dostępu za pośrednictwem publicznego adresu IP. Następnie skonfiguruj maszynę wirtualną platformy Azure w tej samej sieci wirtualnej i użyj jej do uzyskiwania dostępu do usługi wyszukiwania za pośrednictwem prywatnego punktu końcowego.
 
 > [!Important]
-> Obsługa prywatnego punktu końcowego dla usługi Azure Wyszukiwanie poznawcze jest dostępna jako wersja zapoznawcza o ograniczonym dostępie i nie jest obecnie przeznaczona do użycia w środowisku produkcyjnym. Wypełnij i prześlij [formularz żądania dostępu](https://aka.ms/SearchPrivateLinkRequestAccess) , jeśli chcesz uzyskać dostęp do wersji zapoznawczej. Formularz żąda informacji o użytkowniku, firmie i ogólnej architekturze aplikacji. Po przejrzeniu Twojego żądania otrzymasz wiadomość e-mail z potwierdzeniem z dodatkowymi instrukcjami.
+> Obsługa prywatnego punktu końcowego dla platformy Azure Wyszukiwanie poznawcze jest dostępna [na żądanie](https://aka.ms/SearchPrivateLinkRequestAccess) jako wersja zapoznawcza ograniczonego dostępu. Funkcje w wersji zapoznawczej są udostępniane bez umowy dotyczącej poziomu usług i nie są zalecane w przypadku obciążeń produkcyjnych. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
 >
-> Po udzieleniu dostępu do wersji zapoznawczej można skonfigurować prywatne punkty końcowe dla usługi przy użyciu Azure Portal i interfejsu API REST w wersji [2019-10-06-Preview](search-api-preview.md).
+> Po udzieleniu dostępu do wersji zapoznawczej można skonfigurować prywatne punkty końcowe dla usługi przy użyciu Azure Portal lub [interfejsu API REST zarządzania w wersji 2019-10-06-Preview](https://docs.microsoft.com/rest/api/searchmanagement/).
 >   
+
+## <a name="why-use-private-endpoint-for-secure-access"></a>Dlaczego należy używać prywatnego punktu końcowego na potrzeby bezpiecznego dostępu?
+
+[Prywatne punkty końcowe](../private-link/private-endpoint-overview.md) dla systemu Azure wyszukiwanie poznawcze umożliwiają klientowi w sieci wirtualnej bezpieczne uzyskiwanie dostępu do danych w indeksie wyszukiwania za pośrednictwem [prywatnego linku](../private-link/private-link-overview.md). Prywatny punkt końcowy używa adresu IP z [przestrzeni adresowej sieci wirtualnej](../virtual-network/virtual-network-ip-addresses-overview-arm.md#private-ip-addresses) dla usługi wyszukiwania. Ruch sieciowy między klientem a usługą wyszukiwania odbywa się za pośrednictwem sieci wirtualnej i łączy prywatnych w sieci szkieletowej firmy Microsoft, eliminując ekspozycję z publicznego Internetu. Aby zapoznać się z listą innych usług PaaS, które obsługują link prywatny, należy zapoznać się z [sekcją dostępność](../private-link/private-link-overview.md#availability) w dokumentacji produktu.
 
 Prywatne punkty końcowe usługi wyszukiwania umożliwiają:
 
@@ -36,16 +40,18 @@ Prywatne punkty końcowe usługi wyszukiwania umożliwiają:
 > * Dostępne tylko dla usług Search Services w warstwie **podstawowa** . 
 > * Dostępne w regionach zachodnie stany USA 2, zachodnie stany USA, Wschodnie stany US, Południowo-środkowe stany USA, Australia Wschodnia i Australia Południowo-Wschodnia.
 > * Gdy punkt końcowy usługi jest prywatny, niektóre funkcje portalu są wyłączone. Będziesz mieć możliwość wyświetlania informacji o poziomie usług i zarządzania nimi, ale dostęp portalu do danych indeksu i różne składniki usługi, takie jak indeks, indeksator i definicje zestawu umiejętności, są ograniczone ze względów bezpieczeństwa.
-> * Gdy punkt końcowy usługi jest prywatny, należy użyć interfejsu API wyszukiwania do przekazywania dokumentów do indeksu.
+> * Gdy punkt końcowy usługi jest prywatny, należy użyć [interfejsu API REST wyszukiwania](https://docs.microsoft.com/rest/api/searchservice/) do przekazania dokumentów do indeksu.
 > * Aby wyświetlić opcję Obsługa prywatnego punktu końcowego w Azure Portal, należy użyć następującego linku: https://portal.azure.com/?feature.enablePrivateEndpoints=true
 
-W tym artykule dowiesz się, jak za pomocą portalu utworzyć nowe wystąpienie usługi Azure Wyszukiwanie poznawcze, do którego nie można uzyskać dostępu za pośrednictwem publicznego adresu IP, skonfigurować maszynę wirtualną platformy Azure w tej samej sieci wirtualnej i używać jej do uzyskiwania dostępu do usługi wyszukiwania za pośrednictwem prywatnej punktu końcowego.
 
 
-## <a name="create-a-vm"></a>Tworzenie maszyny wirtualnej
+## <a name="request-access"></a>Żądanie dostępu 
+
+Kliknij pozycję [Zażądaj dostępu](https://aka.ms/SearchPrivateLinkRequestAccess) , aby zarejestrować się w tej funkcji w wersji zapoznawczej. Formularz żąda informacji o użytkowniku, firmie i ogólnej topologii sieci. Po przejrzeniu Twojego żądania otrzymasz wiadomość e-mail z potwierdzeniem z dodatkowymi instrukcjami.
+
+## <a name="create-the-virtual-network"></a>Tworzenie sieci wirtualnej
+
 W tej sekcji utworzysz sieć wirtualną i podsieć do hostowania maszyny wirtualnej, która zostanie użyta w celu uzyskania dostępu do prywatnego punktu końcowego usługi wyszukiwania.
-
-### <a name="create-the-virtual-network"></a>Tworzenie sieci wirtualnej
 
 1. Na karcie Narzędzia główne Azure Portal wybierz pozycję **Utwórz zasób** > **Networking** > **sieci wirtualnej**.
 
@@ -65,7 +71,7 @@ W tej sekcji utworzysz sieć wirtualną i podsieć do hostowania maszyny wirtual
 1. Pozostaw resztę jako domyślną i wybierz pozycję **Utwórz**.
 
 
-## <a name="create-your-search-service-with-a-private-endpoint"></a>Tworzenie usługi wyszukiwania za pomocą prywatnego punktu końcowego
+## <a name="create-a-search-service-with-a-private-endpoint"></a>Tworzenie usługi wyszukiwania za pomocą prywatnego punktu końcowego
 
 W tej sekcji utworzysz nową usługę Wyszukiwanie poznawcze platformy Azure z prywatnym punktem końcowym. 
 
@@ -119,9 +125,9 @@ W tej sekcji utworzysz nową usługę Wyszukiwanie poznawcze platformy Azure z p
 
 1. Z menu po lewej stronie wybierz pozycję **klucze** .
 
-1. Skopiuj **podstawowy klucz administratora** do nowszej wersji.
+1. Skopiuj **podstawowy klucz administratora** w celu późniejszego nawiązania połączenia z usługą.
 
-### <a name="create-a-virtual-machine"></a>Tworzenie maszyny wirtualnej
+## <a name="create-a-virtual-machine"></a>Tworzenie maszyny wirtualnej
 
 1. W lewym górnym rogu ekranu w Azure Portal wybierz pozycję **Utwórz zasób** > **obliczeniowe** > **maszynę wirtualną**.
 
@@ -170,9 +176,9 @@ W tej sekcji utworzysz nową usługę Wyszukiwanie poznawcze platformy Azure z p
 1. Gdy zobaczysz komunikat o **przekazaniu walidacji** , wybierz pozycję **Utwórz**. 
 
 
-## <a name="connect-to-a-vm-from-the-internet"></a>Nawiązywanie połączenia z maszyną wirtualną z Internetu
+## <a name="connect-to-the-vm"></a>Łączenie z maszyną wirtualną
 
-Połącz się z maszyną wirtualną *myVm* z Internetu w następujący sposób:
+Pobierz *myVm* maszyny wirtualnej, a następnie połącz się z nią w następujący sposób:
 
 1. Na pasku wyszukiwania portalu wprowadź *myVm*.
 
@@ -196,9 +202,11 @@ Połącz się z maszyną wirtualną *myVm* z Internetu w następujący sposób:
 1. Po wyświetleniu pulpitu maszyny wirtualnej zminimalizuj ją i wróć z powrotem do pulpitu lokalnego.  
 
 
-## <a name="access-the-search-service-privately-from-the-vm"></a>Dostęp do prywatnej usługi wyszukiwania z maszyny wirtualnej
+## <a name="test-connections"></a>Testuj połączenia
 
 W tej sekcji będziesz weryfikować dostęp do sieci prywatnej do usługi wyszukiwania i łączyć się z prywatnymi z prywatnym punktem końcowym.
+
+Odwołaj się z wprowadzenia, że wszystkie interakcje z usługą wyszukiwania wymagają [interfejsu API REST wyszukiwania](https://docs.microsoft.com/rest/api/searchservice/). Portal i zestaw .NET SDK nie są obsługiwane w tej wersji zapoznawczej.
 
 1. W Pulpit zdalny *myVM*Otwórz program PowerShell.
 
@@ -213,14 +221,14 @@ W tej sekcji będziesz weryfikować dostęp do sieci prywatnej do usługi wyszuk
     Address:  10.0.0.5
     Aliases:  [search service name].search.windows.net
     ```
-1. Postępuj zgodnie z tym [przewodnikiem Szybki Start](search-get-started-postman.md) z maszyny wirtualnej, aby utworzyć nowy indeks wyszukiwania w usłudze na stronie post przy użyciu interfejsu API REST.  Użyj klucza skopiowanego w poprzednim kroku w celu uwierzytelnienia w usłudze.
 
-1. Wypróbuj kilka z tych samych żądań w programie Poster na lokalnej stacji roboczej.
+1. Z poziomu maszyny wirtualnej Połącz się z usługą wyszukiwania i Utwórz indeks. Możesz skorzystać z tego [przewodnika Szybki Start](search-get-started-postman.md) , aby utworzyć nowy indeks wyszukiwania w usłudze w programie Poster przy użyciu interfejsu API REST. Konfigurowanie żądań od programu Poster wymaga punktu końcowego usługi wyszukiwania (https://[Search Service Name]. Search. Windows. NET) i Admin API-Key, które zostały skopiowane w poprzednim kroku.
 
-1. Jeśli masz możliwość ukończenia szybkiego startu z poziomu maszyny wirtualnej, ale otrzymasz błąd, że serwer zdalny nie istnieje na lokalnej stacji roboczej, pomyślnie skonfigurowano prywatny punkt końcowy dla usługi wyszukiwania.
+1. Ukończenie szybkiego startu z maszyny wirtualnej to potwierdzenie, że usługa jest w pełni funkcjonalna.
 
 1. Zamknij połączenie pulpitu zdalnego z *myVM*. 
 
+1. Aby sprawdzić, czy usługa jest niedostępna w publicznym punkcie końcowym, Otwórz program Poster na lokalnej stacji roboczej i spróbuj wykonać kilka pierwszych zadań w przewodniku Szybki Start. Jeśli zostanie wyświetlony komunikat o błędzie, że serwer zdalny nie istnieje, pomyślnie skonfigurowano prywatny punkt końcowy dla usługi wyszukiwania.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów 
 Gdy skończysz korzystać z prywatnego punktu końcowego, usługi wyszukiwania i maszyny wirtualnej, Usuń grupę zasobów i wszystkie zawarte w niej zasoby:

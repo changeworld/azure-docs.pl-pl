@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 12/18/2019
 ms.author: alsin
-ms.openlocfilehash: 27cd5b775fbd2af58d93d539420262665d70ead4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 211ac68fd10cd745faf68a5efae7392345008d7b
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75486328"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75941447"
 ---
 # <a name="overview-of-red-hat-enterprise-linux-images"></a>Przegląd obrazów Red Hat Enterprise Linux
 W tym artykule opisano dostępne obrazy Red Hat Enterprise Linux (RHEL) w witrynie Azure Marketplace oraz zasady dotyczące ich nazewnictwa i przechowywania.
@@ -154,5 +154,5 @@ Nasze bieżące zasady mają na celu zachowanie wszystkich poprzednio opublikowa
 ## <a name="next-steps"></a>Następne kroki
 * Zapoznaj się z pełną listą [obrazów RHEL na platformie Azure](./redhat-imagelist.md).
 * Więcej informacji na temat infrastruktury aktualizacji Red Hat platformy Azure można znaleźć [tutaj](https://aka.ms/rhui-update).
-* Dowiedz się więcej o [ofercie BYOS RHEL](./redhat-byos.md).
+* Dowiedz się więcej o [ofercie BYOS RHEL](./byos.md).
 * Informacje o zasadach obsługi systemu Red Hat dla wszystkich wersji programu RHEL można znaleźć na stronie [cykl życia Red Hat Enterprise Linux](https://access.redhat.com/support/policy/updates/errata) .

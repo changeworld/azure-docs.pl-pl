@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 12/04/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: e05557b0391a1d698dad000aa9df54424588afe0
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: ede43e3ed939083e7b5ff94899d12f6f4795a880
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892264"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75941480"
 ---
 # <a name="acquire-a-token-from-azure-ad-for-authorizing-requests-from-a-client-application"></a>Uzyskiwanie tokenu z usługi Azure AD w celu autoryzowania żądań z aplikacji klienckiej
 
@@ -124,7 +124,7 @@ Zakończona przykładową aplikacją sieci Web, która uzyskuje token i używa j
 
 #### <a name="add-references-and-using-statements"></a>Dodaj odwołania i przy użyciu instrukcji  
 
-W programie Visual Studio Zainstaluj bibliotekę klienta usługi Azure Storage. Z **narzędzia** menu, wybierz opcję **Menedżera pakietów Nuget**, następnie **Konsola Menedżera pakietów**. Wpisz następujące polecenia w oknie konsoli, aby zainstalować wymagane pakiety z biblioteki klienta usługi Azure Storage dla platformy .NET:
+W programie Visual Studio Zainstaluj bibliotekę klienta usługi Azure Storage. Z menu **Narzędzia** wybierz pozycję **Menedżer pakietów NuGet**, a następnie pozycję **Konsola menedżera pakietów**. Wpisz następujące polecenia w oknie konsoli, aby zainstalować wymagane pakiety z biblioteki klienta usługi Azure Storage dla platformy .NET:
 
 ```console
 Install-Package Microsoft.Azure.Storage.Blob

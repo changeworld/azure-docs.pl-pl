@@ -5,15 +5,15 @@ services: networking
 author: anavinahar
 ms.service: networking
 ms.topic: include
-ms.date: 12/09/2019
+ms.date: 01/13/2020
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: cf79911c24998c3d00937937cce5c68bbb564f1e
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: 97ee10e0b286f1b007f2e807351301f2037d1754
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75751519"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75942699"
 ---
 <a name="azure-resource-manager-virtual-networking-limits"></a>Limity sieci — Azure Resource Manager następujące limity mają zastosowanie tylko w przypadku zasobów sieciowych zarządzanych za pomocą **Azure Resource Manager** na region na subskrypcję. Dowiedz się, jak [wyświetlić bieżące użycie zasobów względem limitów subskrypcji](../articles/networking/check-usage-against-limits.md).
 
@@ -65,12 +65,11 @@ Następujące limity mają zastosowanie tylko w przypadku zasobów sieciowych za
 | Moduły równoważenia obciążenia                          | 1000                         |
 | Reguły na zasób                      | 1,500                         |
 | Reguły na kartę sieciową (między wszystkimi adresami IP na karcie sieciowej) | 300                           |
-| Konfiguracje adresów IP frontonu             | 600                           |
-| Rozmiar puli zaplecza                          | wystąpienia 1 000, pojedyncza Sieć wirtualna |
-| Zasoby zaplecza na moduł równoważenia obciążenia<sup>1<sup>   | 150                 |
-| Porty wysokiej dostępności                 | 1 na wewnętrzny fronton      |
+| Konfiguracje adresów IP frontonu              | 600                           |
+| Rozmiar puli zaplecza                       | Konfiguracje protokołu IP 1 000, pojedynczej sieci wirtualnej |
+| Porty wysokiej dostępności                 | 1 na wewnętrzny fronton       |
+| Reguły ruchu wychodzącego na Load Balancer         | 20                            |
 
-<sup>1</sup> Limit wynosi do 150 zasobów w dowolnej kombinacji autonomicznych zasobów maszyny wirtualnej, zasobów zestawu dostępności i zasobów zestawu skalowania maszyn wirtualnych.
 
 **Load Balancer podstawowa**
 
@@ -79,8 +78,9 @@ Następujące limity mają zastosowanie tylko w przypadku zasobów sieciowych za
 | Moduły równoważenia obciążenia                          | 1000                        |
 | Reguły na zasób                      | 250                          |
 | Reguły na kartę sieciową (między wszystkimi adresami IP na karcie sieciowej) | 300                          |
-| Konfiguracje adresów IP frontonu             | 200                          |
-| Rozmiar puli zaplecza                           | wystąpienia 100, zestaw o pojedynczej dostępności |
+| Konfiguracje adresów IP frontonu              | 200                          |
+| Rozmiar puli zaplecza                       | Konfiguracje protokołu IP 300, zestaw o pojedynczej dostępności |
+| Zestawy dostępności na Load Balancer     | 150                          |
 
 #### <a name="virtual-networking-limits-classic"></a>Poniższe limity mają zastosowanie tylko w przypadku zasobów sieciowych zarządzanych przy użyciu **klasycznego** modelu wdrażania na subskrypcję. Dowiedz się, jak [wyświetlić bieżące użycie zasobów względem limitów subskrypcji](../articles/networking/check-usage-against-limits.md).
 

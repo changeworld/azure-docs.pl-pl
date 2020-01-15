@@ -12,12 +12,12 @@ author: ronitr
 ms.author: ronitr
 ms.reviewer: vanto
 ms.date: 03/04/2019
-ms.openlocfilehash: 2ff2dfe6384acc8a56558e6e7ba0fc5cc05f7783
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: b3f3aef66af056ca06d066c5235b0d23a2f39ecc
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819969"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75945765"
 ---
 # <a name="dynamic-data-masking-for-azure-sql-database-and-data-warehouse"></a>Dynamiczne maskowanie danych dla Azure SQL Database i magazynu danych
 
@@ -29,7 +29,7 @@ Na przykład przedstawiciel usługi w centrum telefonicznym może identyfikować
 
 ## <a name="dynamic-data-masking-basics"></a>Dynamiczne maskowanie danych — podstawy
 
-Aby skonfigurować zasady dynamicznego maskowania danych w Azure Portal, należy wybrać operację dynamicznego maskowania danych w bloku SQL Database lub ustawień konfiguracji.
+Aby skonfigurować zasady dynamicznego maskowania danych w Azure Portal, należy wybrać operację dynamicznego maskowania danych w bloku SQL Database lub ustawień konfiguracji. Nie można ustawić tej funkcji przy użyciu portalu dla programu SQL DW (Użyj programu PowerShell lub interfejsu API REST)
 
 ### <a name="dynamic-data-masking-permissions"></a>Uprawnienia Dynamiczne maskowanie danych
 
@@ -46,8 +46,8 @@ Dynamiczne maskowanie danych można skonfigurować za pomocą ról Administrator
 | **Domyślne** |**Pełne maskowanie według typów danych określonych pól**<br/><br/>• Użyj XXXX lub mniejszej wartości XS, jeśli rozmiar pola jest krótszy niż 4 znaki dla typów danych ciągu (nchar, ntext, nvarchar).<br/>• Użyj wartości zerowej dla liczbowych typów danych (bigint, bit, decimal, int, Money, numeric, smallint, smallmoney, tinyint, float, Real).<br/>• Użyj 01-01-1900 dla typów danych Data/godzina (Date, datetime2, DateTime, DateTimeOffset, smalldatetime, Time).<br/>• Dla wariantu SQL, używana jest wartość domyślna bieżącego typu.<br/>• W przypadku kodu XML jest używany \<zamaskowany/>.<br/>• Użyj pustej wartości dla specjalnych typów danych (tabela znaczników czasu, hierarchyid, GUID, Binary, Image, typy przestrzenne varbinary). |
 | **Karta kredytowa** |**Metoda maskowania, która ujawnia cztery ostatnie cyfry wydzielonych pól** i dodaje stały ciąg jako prefiks w postaci karty kredytowej.<br/><br/>XXXX-XXXX-XXXX-1234 |
 | **Wiadomość e-mail** |**Metoda maskowania, która uwidacznia pierwszą literę i zastępuje domenę xxx.com** przy użyciu stałego prefiksu ciągu w postaci adresu e-mail.<br/><br/>aXX@XXXX.com |
-| **Liczba losowa** |**Metoda maskowania, która generuje liczbę losową** zgodnie z wybranymi granicami i rzeczywistymi typami danych. Jeśli wyznaczono granice są równe, funkcja maskowania jest liczbą stałą.<br/><br/>![okienku nawigacji](./media/sql-database-dynamic-data-masking-get-started/1_DDM_Random_number.png) |
-| **Tekst niestandardowy** |**Metoda maskowania, która uwidacznia pierwsze i ostatnie znaki** i dodaje niestandardowy ciąg uzupełniania w środku. Jeśli oryginalny ciąg jest krótszy niż uwidoczniony prefiks i sufiks, zostanie użyty tylko ciąg uzupełniający. <br/>prefiks [dopełnienie] sufiks<br/><br/>![okienku nawigacji](./media/sql-database-dynamic-data-masking-get-started/2_DDM_Custom_text.png) |
+| **Liczba losowa** |**Metoda maskowania, która generuje liczbę losową** zgodnie z wybranymi granicami i rzeczywistymi typami danych. Jeśli wyznaczono granice są równe, funkcja maskowania jest liczbą stałą.<br/><br/>![Okienko nawigacji](./media/sql-database-dynamic-data-masking-get-started/1_DDM_Random_number.png) |
+| **Tekst niestandardowy** |**Metoda maskowania, która uwidacznia pierwsze i ostatnie znaki** i dodaje niestandardowy ciąg uzupełniania w środku. Jeśli oryginalny ciąg jest krótszy niż uwidoczniony prefiks i sufiks, zostanie użyty tylko ciąg uzupełniający. <br/>prefix[padding]suffix<br/><br/>![Okienko nawigacji](./media/sql-database-dynamic-data-masking-get-started/2_DDM_Custom_text.png) |
 
 <a name="Anchor1"></a>
 

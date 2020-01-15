@@ -1,26 +1,26 @@
 ---
-title: Quickstart - Use symmetric key to provision simulated device to Azure IoT Hub using C
-description: In this quickstart you will use the C device SDK to create a simulated device that uses symmetric key with the Azure IoT Hub Device Provisioning Service (DPS)
+title: Szybki Start — używanie klucza symetrycznego do aprowizacji symulowanego urządzenia na platformie Azure IoT Hub przy użyciu języka C
+description: W tym przewodniku szybki start użyjesz zestawu SDK języka C, aby utworzyć symulowane urządzenie korzystające z klucza symetrycznego w usłudze Azure IoT Hub Device Provisioning Service (DPS)
 author: wesmc7777
 ms.author: wesmc
-ms.date: 11/08/2019
+ms.date: 01/14/2020
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 4e84a43f8984e2adeac916e467a8cac693ee453d
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 6047051a36459d61bb5f02907dde9e73a70e86ec
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75912433"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75945214"
 ---
 # <a name="quickstart-provision-a-simulated-device-with-symmetric-keys"></a>Szybki start: aprowizowanie urządzenia symulowanego przy użyciu kluczy symetrycznych
 
 Z tego przewodnika Szybki start dowiesz się, jak utworzyć i uruchomić symulator urządzenia na maszynie deweloperskiej z systemem Windows. To urządzenie symulowane skonfigurujesz pod kątem używania klucza symetrycznego w celu uwierzytelnienia w wystąpieniu usługi Device Provisioning Service i przypisania do centrum IoT. W celu symulowania sekwencji uruchamiania dla tego urządzenia, które inicjuje aprowizowanie, będzie używany przykładowy kod z [zestawu SDK języka C usługi Azure IoT](https://github.com/Azure/azure-iot-sdk-c). Urządzenie zostanie rozpoznane na podstawie indywidualnej rejestracji w wystąpieniu usługi aprowizowania i przypisane do centrum IoT.
 
-Although this article demonstrates provisioning with an individual enrollment, you can use enrollment groups. There are some differences when using enrollment groups. For example, you must use a derived device key with a unique registration ID for the device. Mimo że grupy rejestracji klucza symetrycznego nie są ograniczone do starszych urządzeń, artykuł [Aprowizowanie starszych urządzeń za pomocą zaświadczenia klucza symetrycznego](how-to-legacy-device-symm-key.md) zawiera przykład grupy rejestracji. Aby uzyskać więcej informacji, zobacz [Rejestrowanie grupy dla zaświadczania klucza symetrycznego](concepts-symmetric-key-attestation.md#group-enrollments).
+Chociaż w tym artykule przedstawiono Inicjowanie obsługi przy użyciu rejestracji indywidualnej, można użyć grup rejestracji. W przypadku korzystania z grup rejestracji istnieją pewne różnice. Na przykład należy użyć pochodnego klucza urządzenia z unikatowym IDENTYFIKATORem rejestracji dla urządzenia. Mimo że grupy rejestracji klucza symetrycznego nie są ograniczone do starszych urządzeń, artykuł [Aprowizowanie starszych urządzeń za pomocą zaświadczenia klucza symetrycznego](how-to-legacy-device-symm-key.md) zawiera przykład grupy rejestracji. Aby uzyskać więcej informacji, zobacz [Rejestrowanie grupy dla zaświadczania klucza symetrycznego](concepts-symmetric-key-attestation.md#group-enrollments).
 
 Jeśli nie znasz procesu automatycznego aprowizowania, zapoznaj się z tematem [Auto-provisioning concepts (Pojęcia związane z automatycznym aprowizowaniem)](concepts-auto-provisioning.md). 
 
@@ -34,9 +34,9 @@ Ten artykuł został opracowany z myślą o stacjach roboczych z systemem Window
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-The following prerequisites are for a Windows development environment. For Linux or macOS, see the appropriate section in [Prepare your development environment](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md) in the SDK documentation.
+Poniższe wymagania wstępne dotyczą środowiska projektowego systemu Windows. W systemie Linux lub macOS zapoznaj się z odpowiednią sekcją w sekcji [Przygotowywanie środowiska deweloperskiego](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md) w dokumentacji zestawu SDK.
 
-* [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019 with the ['Desktop development with C++'](https://docs.microsoft.com/cpp/?view=vs-2019#pivot=workloads) workload enabled. Visual Studio 2015 and Visual Studio 2017 are also supported.
+* [Program Visual Studio](https://visualstudio.microsoft.com/vs/) 2019 z włączonym obciążeniem ["Programowanie aplikacji klasycznych C++"](https://docs.microsoft.com/cpp/?view=vs-2019#pivot=workloads) . Obsługiwane są również programy Visual Studio 2015 i Visual Studio 2017.
 
 * Zainstalowana najnowsza wersja usługi[Git](https://git-scm.com/download/).
 
@@ -48,15 +48,15 @@ W tej sekcji przygotujesz środowisko deweloperskie używane do opracowania [zes
 
 Zestaw SDK zawiera przykładowy kod dla urządzenia symulowanego. To urządzenie symulowane podejmie próbę aprowizacji podczas sekwencji rozruchu urządzenia.
 
-1. Download the [CMake build system](https://cmake.org/download/).
+1. Pobierz [system kompilacji CMAKE](https://cmake.org/download/).
 
     Ważne jest, aby wstępnie wymagane składniki (program Visual Studio oraz pakiet roboczy „Programowanie aplikacji klasycznych w języku C++”) były zainstalowane na tym komputerze **przed** uruchomieniem `CMake` instalacji. Gdy wymagania wstępne zostaną spełnione, a pobrane pliki zweryfikowane, zainstaluj system kompilacji CMake.
 
-    Older versions of the CMake build system fail to generate the solution file used in this article. Make sure to use a newer version of CMake.
+    Starsze wersje systemu kompilacji CMake nie generują pliku rozwiązania używanego w tym artykule. Upewnij się, że używasz nowszej wersji programu CMake.
 
-2. Click **Tags** and find the tag name for the latest release on the [Release page of the Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c/releases/latest).
+2. Kliknij pozycję **Tagi** i Znajdź nazwę tagu dla najnowszej wersji na [stronie wydanie zestawu SDK języka C usługi Azure IoT](https://github.com/Azure/azure-iot-sdk-c/releases/latest).
 
-3. Otwórz wiersz polecenia lub powłokę Git Bash. Run the following commands to clone the latest release of the [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) GitHub repository. Use the tag you found in the previous step as the value for the `-b` parameter:
+3. Otwórz wiersz polecenia lub powłokę Git Bash. Uruchom następujące polecenia, aby sklonować najnowszą wersję repozytorium [usługi Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) w witrynie GitHub. Użyj znacznika znalezionego w poprzednim kroku jako wartości parametru `-b`:
 
     ```cmd/sh
     git clone -b <release-tag> https://github.com/Azure/azure-iot-sdk-c.git
@@ -66,7 +66,7 @@ Zestaw SDK zawiera przykładowy kod dla urządzenia symulowanego. To urządzenie
 
     Należy się spodziewać, że ukończenie operacji potrwa kilka minut.
 
-4. Utwórz podkatalog `cmake` w katalogu głównym repozytorium Git, a następnie przejdź do tego folderu. Run the following commands from the `azure-iot-sdk-c` directory:
+4. Utwórz podkatalog `cmake` w katalogu głównym repozytorium Git, a następnie przejdź do tego folderu. Uruchom następujące polecenia w katalogu `azure-iot-sdk-c`:
 
     ```cmd/sh
     mkdir cmake
@@ -99,23 +99,23 @@ Zestaw SDK zawiera przykładowy kod dla urządzenia symulowanego. To urządzenie
 
 ## <a name="create-a-device-enrollment-entry-in-the-portal"></a>Tworzenie wpisu rejestracji urządzenia w portalu
 
-1. Sign in to the [Azure portal](https://portal.azure.com), select the **All resources** button on the left-hand menu and open your Device Provisioning service.
+1. Zaloguj się do [Azure Portal](https://portal.azure.com), wybierz przycisk **wszystkie zasoby** w menu po lewej stronie i Otwórz swoją usługę Device Provisioning.
 
-2. Select the **Manage enrollments** tab, and then select the **Add individual enrollment** button at the top. 
+2. Wybierz kartę **Zarządzanie rejestracjami** , a następnie wybierz przycisk **Dodaj rejestrację indywidualną** u góry. 
 
-3. In the **Add Enrollment** panel, enter the following information, and press the **Save** button.
+3. W panelu **Dodaj rejestrację** Wprowadź poniższe informacje, a następnie naciśnij przycisk **Save (Zapisz** ).
 
    - **Mechanizm:** wybierz **Klucz symetryczny** jako *Mechanizm* poświadczania tożsamości.
 
-   - **Auto-generate keys**: Check this box.
+   - **Automatycznie Generuj klucze**: zaznacz to pole.
 
-   - **Identyfikator rejestracji**: wprowadź identyfikator rejestracji, aby zidentyfikować rejestrację. Użyj tylko małych znaków alfanumerycznych i kresek (-). For example, **symm-key-device-007**.
+   - **Identyfikator rejestracji**: wprowadź identyfikator rejestracji, aby zidentyfikować rejestrację. Użyj tylko małych znaków alfanumerycznych i kresek (-). Na przykład **Symm-Key-Device-007**.
 
    - **Identyfikator urządzenia usługi IoT Hub:** wprowadź identyfikator urządzenia. Na przykład **device-007**.
 
      ![Dodawanie indywidualnej rejestracji dla zaświadczenia klucza symetrycznego w portalu](./media/quick-create-simulated-device-symm-key/create-individual-enrollment.png)
 
-4. Once you have saved your enrollment, the **Primary Key** and **Secondary Key** will be generated and added to the enrollment entry. Rejestracja urządzenia klucza symetrycznego jest wyświetlana jako **symm-key-device-007** w kolumnie *Identyfikator rejestracji* na karcie *Indywidualne rejestracje*. 
+4. Po zapisaniu rejestracji **klucz podstawowy** i **klucz pomocniczy** zostaną wygenerowane i dodane do wpisu rejestracji. Rejestracja urządzenia klucza symetrycznego jest wyświetlana jako **symm-key-device-007** w kolumnie *Identyfikator rejestracji* na karcie *Indywidualne rejestracje*. 
 
     Otwórz rejestrację i skopiuj wartość wygenerowanego **klucza podstawowego**.
 
@@ -129,7 +129,7 @@ W tej sekcji zaktualizujesz kod przykładowy w celu wysłania sekwencji uruchami
 
 
 
-1. In the Azure portal, select the **Overview** tab for your Device Provisioning service and note the **_ID Scope_** value.
+1. W Azure Portal wybierz kartę **Przegląd** dla swojej usługi Device Provisioning i zanotuj wartość **_Identyfikator zakresu_** .
 
     ![Wyodrębnianie informacji o punkcie końcowym usługi Device Provisioning Service z bloku portalu](./media/quick-create-simulated-device-x509/extract-dps-endpoints.png) 
 
@@ -139,7 +139,7 @@ W tej sekcji zaktualizujesz kod przykładowy w celu wysłania sekwencji uruchami
     \azure-iot-sdk-c\cmake\azure_iot_sdks.sln
     ```
 
-    If the file was not generated in your cmake directory, make sure you used a recent version of the CMake build system.
+    Jeśli plik nie został wygenerowany w katalogu cmake, upewnij się, że użyto najnowszej wersji systemu kompilacji CMake.
 
 3. W oknie *Eksplorator rozwiązań* programu Visual Studio przejdź do folderu **Provision\_Samples**. Rozwiń przykładowy projekt o nazwie **prov\_dev\_client\_sample**. Rozwiń pozycję **Pliki źródłowe**, a następnie otwórz plik **prov\_dev\_client\_sample.c**.
 
@@ -176,7 +176,7 @@ W tej sekcji zaktualizujesz kod przykładowy w celu wysłania sekwencji uruchami
 
 7. Kliknij prawym przyciskiem myszy projekt **prov\_dev\_client\_sample**, a następnie wybierz pozycję **Ustaw jako projekt startowy**. 
 
-8. Z menu programu Visual Studio wybierz pozycję **Debuguj** > **Uruchom bez debugowania**, aby uruchomić rozwiązanie. In the prompt to rebuild the project, select **Yes**, to rebuild the project before running.
+8. Z menu programu Visual Studio wybierz pozycję **Debuguj** > **Uruchom bez debugowania**, aby uruchomić rozwiązanie. W wierszu polecenia, aby ponownie skompilować projekt, wybierz opcję **tak**, aby ponownie skompilować projekt przed uruchomieniem.
 
     Następujące dane wyjściowe to przykład pomyślnego uruchomienia urządzenia symulowanego i połączenia z wystąpieniem usługi aprowizowania w celu przypisania do centrum IoT:
 
@@ -194,7 +194,7 @@ W tej sekcji zaktualizujesz kod przykładowy w celu wysłania sekwencji uruchami
     Press enter key to exit:
     ```
 
-9. In the portal, navigate to the IoT hub your simulated device was assigned to and select the **IoT devices** tab. On successful provisioning of the simulated to the hub, its device ID appears on the **IoT Devices** blade, with *STATUS* as **enabled**. You might need to press the **Refresh** button at the top. 
+9. W portalu przejdź do centrum IoT Hub, do którego została przypisana symulowane urządzenie, i wybierz kartę **urządzenia IoT** . Po pomyślnej aprowizacji symulowanego centrum jego identyfikator urządzenia jest wyświetlany w bloku **urządzenia IoT** z opcją *stan* jako **włączone**. Może być konieczne naciśnięcie przycisku **Odśwież** w górnej części ekranu. 
 
     ![Urządzenie jest rejestrowane w centrum IoT](./media/quick-create-simulated-device-symm-key/hub-registration.png) 
 

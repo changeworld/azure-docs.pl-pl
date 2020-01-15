@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: 78f8b7097060f1091bfed30722c9ea456feed384
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 39078e298093c2c2ab4835925a2ba8a70269f5f5
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74007276"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75945582"
 ---
 # <a name="a-world-without-passwords-with-azure-active-directory"></a>Świat bez hasła przy użyciu Azure Active Directory
 
@@ -208,7 +208,7 @@ Administratorzy mogą włączyć obsługę FIDO2 w usłudze Azure AD i przypisa�
 
 * Azure AD
 
-* Azure Multi-Factor Authentication
+* Usługa Azure Multi-Factor Authentication
 
 * Podgląd rejestracji połączonej
 
@@ -242,7 +242,7 @@ Oprócz wybierania tokenu sprzętowego jako domyślnej metody uwierzytelniania w
 
 #### <a name="user-using-fido2-security-key-for-sign-in"></a>Użytkownik korzystający z klucza zabezpieczeń FIDO2 do logowania
 
-FIDO2 zapewnia warstwę abstrakcji między współczynnikiem formularza używanym jako wystawcą uwierzytelnienia a kryptografią klucza publicznego/prywatnego w celu włączenia wbudowanych wystawców uwierzytelniania platformy, takich jak Windows Hello i klucze zabezpieczeń, aby rozpoznać klucz prywatny i dostarczyć klucz publiczny który może być używany jako identyfikator dostępu do zasobów zewnętrznych. Klucze zabezpieczeń FIDO2 są wyposażone w własne wbudowane bezpieczne enklawy, które przechowują klucz prywatny i wymagają, aby kod biometryczny lub numer PIN został odblokowany. Poświadczenia nie mogą być ponownie używane, odtwarzane lub udostępniane między usługami i nie podlegają wyłudzaniu informacji ani atakom MiTM ani naruszeniom serwerów.
+FIDO2 zapewnia warstwę abstrakcji między współczynnikiem formularza używanym jako wystawca uwierzytelniania i Kryptografia klucza publicznego/prywatnego w celu włączenia wbudowanych wystawców uwierzytelniania platformy, takich jak Windows Hello i klucze zabezpieczeń, do rozpoznawania klucza prywatnego i dostarczania klucza publicznego, który może być używany jako identyfikator dostępu do zasobów zewnętrznych. Klucze zabezpieczeń FIDO2 są wyposażone w własne wbudowane bezpieczne enklawy, które przechowują klucz prywatny i wymagają, aby kod biometryczny lub numer PIN został odblokowany. Poświadczenia nie mogą być ponownie używane, odtwarzane lub udostępniane między usługami i nie podlegają wyłudzaniu informacji ani atakom MiTM ani naruszeniom serwerów.
 
 ![Logowanie FIDO2](./media/ad-passwordless/azure-ad-pwdless-image6.png)
 
@@ -283,8 +283,8 @@ Oto kilka czynników, które należy wziąć pod uwagę podczas wybierania techn
 
 ||**Windows Hello dla firm**|**Logowanie bez hasła przy użyciu aplikacji Microsoft Authenticator**|**FIDO2 klucze zabezpieczeń**|
 |:-|:-|:-|:-|
-|**Wymagania wstępne**| Windows 10, wersja 1809 lub nowsza<br>Usługa Azure Active Directory| Aplikacja Microsoft Authenticator<br>Telefon (urządzenia z systemem iOS i Android z systemem Android 6,0 lub nowszym)|Windows 10, wersja 1809 lub nowsza<br>Usługa Azure Active Directory|
-|**Wyst**|Platforma|Oprogramowanie|Sprzęt|
+|**Wymagania wstępne**| Windows 10, wersja 1809 lub nowsza<br>Usługa Active Directory systemu Azure| Aplikacja Microsoft Authenticator<br>Telefon (urządzenia z systemem iOS i Android z systemem Android 6,0 lub nowszym)|Windows 10, wersja 1809 lub nowsza<br>Usługa Active Directory systemu Azure|
+|**Tryb**|Platforma|Oprogramowanie|Sprzęt|
 |**Systemy i urządzenia**|KOMPUTER z wbudowaną moduł TPM (TPM)<br>Rozpoznawanie kodu PIN i biometrii |Rozpoznawanie kodu PIN i biometrii na telefonie|FIDO2 urządzenia zabezpieczające zgodne z firmą Microsoft|
 |**Środowisko użytkownika**|Zaloguj się przy użyciu kodu PIN lub rozpoznawania biometrycznego (twarzy, Iris lub odcisku palca) z urządzeniami z systemem Windows.<br>Uwierzytelnianie przy użyciu systemu Windows Hello jest powiązane z urządzeniem; Aby uzyskać dostęp do zasobów firmy, użytkownik potrzebuje zarówno urządzenia, jak i składnika logowania, takiego jak kod PIN lub czynnik biometryczny.|Zaloguj się przy użyciu telefonu komórkowego z funkcją skanowania odcisków palców, rozpoznawania twarzy lub tęczówki lub numeru PIN.<br>Użytkownicy logują się do konta służbowego lub osobistego z komputera lub telefonu komórkowego.|Zaloguj się przy użyciu urządzenia zabezpieczeń FIDO2 (biometrii, kod PIN i NFC)<br>Użytkownik może uzyskać dostęp do urządzenia w oparciu o kontrolki organizacji i uwierzytelniać się na podstawie kodu PIN, biometrii przy użyciu urządzeń, takich jak klucze zabezpieczeń USB i karty inteligentne obsługujące NFC, klucze lub noszenia.|
 |**Włączone scenariusze**| Korzystanie z urządzenia z systemem Windows bez hasła.<br>Dotyczy dedykowanego komputera służbowego z możliwością logowania jednokrotnego do urządzenia i aplikacji.|Rozwiązanie z obsługą hasła bez miejsca przy użyciu telefonu komórkowego.<br>Dotyczy uzyskiwania dostępu do służbowych aplikacji w sieci Web z dowolnego urządzenia.|Środowisko pracy bez hasła dla pracowników korzystających z biometrii, numeru PIN i NFC.<br>Dotyczy komputerów udostępnionych i lokalizacji, w których telefon komórkowy nie jest żywotną opcją (na przykład dla personelu pomocy technicznej, kiosku publicznego lub zespołu szpitalowego)|
@@ -311,7 +311,7 @@ Uwierzytelnianie bez hasła to fala przyszłości i ścieżka do bardziej bezpie
 
 * Wdróż aplikację Microsoft Authenticator na potrzeby mobilności.
 
-* Wdróż usługę Windows Hello dla firm (1903: Zostań aktualną).
+* Wdróż usługę Windows Hello dla firm (1909: Zostań aktualną).
 
 * Wdróż urządzenia FIDO2 dla użytkowników, którzy nie mogą korzystać z telefonów.
 

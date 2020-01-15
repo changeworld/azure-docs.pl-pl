@@ -1,54 +1,54 @@
 ---
-title: Połączyć z usługą Azure Cosmos DB przy użyciu Compass
-description: Dowiedz się, jak używać Compass bazy danych MongoDB do przechowywania danych i zarządzanie nimi w usłudze Azure Cosmos DB.
+title: Nawiązywanie połączenia z Azure Cosmos DB przy użyciu kompasu
+description: Dowiedz się, jak używać kompasu MongoDB do przechowywania danych i zarządzania nimi w Azure Cosmos DB.
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: overview
 ms.date: 06/24/2019
-author: roaror
-ms.author: roaror
-ms.openlocfilehash: 102d3fdc2e36f812e9a86286383a06f9930a1947
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+author: LuisBosquez
+ms.author: lbosq
+ms.openlocfilehash: 5c01bd02b1fef7c7b27a3119465cad53155b9bbf
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67665931"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75940963"
 ---
-# <a name="use-mongodb-compass-to-connect-to-azure-cosmos-dbs-api-for-mongodb"></a>Nawiązywanie połączenia z interfejsem API usługi Azure Cosmos DB dla bazy danych MongoDB za pomocą Compass bazy danych MongoDB 
+# <a name="use-mongodb-compass-to-connect-to-azure-cosmos-dbs-api-for-mongodb"></a>Użyj MongoDB kompas do nawiązywania połączenia z interfejsem API usługi Azure Cosmos DB dla MongoDB 
 
-W tym samouczku przedstawiono sposób użycia [Compass bazy danych MongoDB](https://www.mongodb.com/products/compass) podczas przechowywania i/lub zarządzanie danymi w usłudze Cosmos DB. Używamy interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB na potrzeby tego przewodnika. Dla osób, nieznane Compass to graficzny interfejs użytkownika dla bazy danych MongoDB. Często służy do wizualizacji danych, uruchamianie zapytań ad hoc, oraz zarządzanie danymi. 
+W tym samouczku pokazano, jak używać [kompasu MongoDB](https://www.mongodb.com/products/compass) podczas przechowywania i/lub zarządzania danymi w Cosmos DB. Dla tego przewodnika korzystamy z interfejsu API Azure Cosmos DB dla MongoDB. Dla osób z nieznajomym, kompas jest graficznym interfejsem użytkownika dla MongoDB. Jest on często używany do wizualizacji danych, uruchamiania zapytań ad hoc oraz zarządzania danymi. 
 
-Usługa cosmos DB to usługa globalnie dystrybuowana, wielomodelowa baza danych firmy Microsoft. Dzięki dystrybucji globalnej i możliwości skalowania poziomego w usłudze Cosmos DB możesz szybko tworzyć i za pomocą zapytań badać bazy danych dokumentów, par klucz/wartość oraz grafów.
+Cosmos DB to globalnie dystrybuowana wielomodelowa usługa bazy danych firmy Microsoft. Dzięki dystrybucji globalnej i możliwości skalowania poziomego w usłudze Cosmos DB możesz szybko tworzyć i za pomocą zapytań badać bazy danych dokumentów, par klucz/wartość oraz grafów.
 
 
 ## <a name="pre-requisites"></a>Wymagania wstępne 
-Aby nawiązać połączenie z kontem usługi Cosmos DB, za pomocą Robo z programu 3T, musisz mieć:
+Aby nawiązać połączenie z kontem usługi Cosmos DB za pomocą Robo 3T, musisz:
 
-* Pobierz i zainstaluj [Compass](https://www.mongodb.com/download-center/compass?jmp=hero)
-* Masz usługi Cosmos DB [parametry połączenia](connect-mongodb-account.md) informacji
+* Pobierz i zainstaluj [kompas](https://www.mongodb.com/download-center/compass?jmp=hero)
+* Cosmos DB informacje o [parametrach połączenia](connect-mongodb-account.md)
 
-## <a name="connect-to-cosmos-dbs-api-for-mongodb"></a>Łączenie do interfejsu API usługi Cosmos DB dla bazy danych MongoDB 
-Aby połączyć konto usługi Cosmos DB Compass, wykonaj następujące czynności:
+## <a name="connect-to-cosmos-dbs-api-for-mongodb"></a>Nawiązywanie połączenia z interfejsem API Cosmos DB MongoDB 
+Aby połączyć konto Cosmos DB z kompasem, możesz wykonać poniższe czynności:
 
-1. Pobierz informacje o połączeniu dla konta usługi Cosmos skonfigurowane za pomocą usługi Azure Cosmos DB interfejsu API MongoDB przy użyciu instrukcji [tutaj](connect-mongodb-account.md).
+1. Pobierz informacje o połączeniu dla konta usługi Cosmos, które skonfigurowano za pomocą interfejsu API usługi Azure Cosmos DB MongoDB przy użyciu instrukcji znajdujących się [tutaj](connect-mongodb-account.md).
 
-    ![Zrzut ekranu przedstawiający blok parametrów połączenia](./media/mongodb-compass/mongodb-compass-connection.png)
+    ![Zrzut ekranu przedstawiający Blok parametrów połączenia](./media/mongodb-compass/mongodb-compass-connection.png)
 
-2. Kliknij przycisk z napisem **Kopiuj do Schowka** obok Twojej **podstawowe i pomocnicze parametry połączenia** w usłudze Cosmos DB. Kliknięcie tego przycisku skopiuj parametry połączenia całego do Schowka. 
+2. Kliknij przycisk informujący **o skopiowaniu do schowka** obok **podstawowego/pomocniczego ciągu połączenia** w Cosmos DB. Kliknięcie tego przycisku spowoduje skopiowanie całego ciągu połączenia do Schowka. 
 
-    ![Zrzut ekranu przedstawiający Kopiuj do Schowka, przycisk](./media/mongodb-compass/mongodb-connection-copy.png)
+    ![Zrzut ekranu przedstawiający przycisk Kopiuj do schowka](./media/mongodb-compass/mongodb-connection-copy.png)
 
-3. Otwórz Compass na pulpicie/maszynie i kliknij **Connect** i następnie **nawiązać połączenie...** . 
+3. Otwórz kompas na pulpicie/komputerze i kliknij przycisk **Połącz** , a następnie **Połącz z...** . 
 
-4. Compass automatycznie wykryje połączenie ciągów w Schowku i będzie monitować o zapytaj, czy chcesz go użyć do połączenia. Kliknij pozycję **tak** jak pokazano na poniższym zrzucie ekranu.
+4. Kompas automatycznie wykryje parametry połączenia w schowku i wyświetli monit o podanie, czy chcesz użyć tego do nawiązania połączenia. Kliknij przycisk **tak** , tak jak pokazano na poniższym zrzucie ekranu.
 
-    ![Zrzut ekranu przedstawiający monit dotyczący Compass połączyć](./media/mongodb-compass/mongodb-compass-detect.png)
+    ![Zrzut ekranu przedstawiający monit o podanie poziomu kompasu do nawiązania połączenia](./media/mongodb-compass/mongodb-compass-detect.png)
 
-5. Po kliknięciu **tak** w kroku powyżej swoje dane z parametrów połączenia zostaną wypełnione automatycznie. Usuń wartość automatycznie wypełnione w **Nazwa zestawu replik** pole, aby upewnić się, to znaczy pozostać puste. 
+5. Po kliknięciu przycisku **tak** w powyższym kroku zostaną automatycznie wypełnione szczegóły z parametrów połączenia. Usuń wartość automatycznie wypełnianą w polu **Nazwa zestawu replik** , aby upewnić się, że pole pozostanie puste. 
 
-    ![Zrzut ekranu przedstawiający monit dotyczący Compass połączyć](./media/mongodb-compass/mongodb-compass-replica.png)
+    ![Zrzut ekranu przedstawiający monit o podanie poziomu kompasu do nawiązania połączenia](./media/mongodb-compass/mongodb-compass-replica.png)
 
-6. Kliknij pozycję **Connect** w dolnej części strony. Twoje konto usługi Cosmos DB i bazy danych powinno być teraz widoczny w obrębie Compass bazy danych MongoDB.
+6. Kliknij pozycję **Połącz** w dolnej części strony. Twoje konto Cosmos DB i bazy danych powinny teraz być widoczne w MongoDB kompasu.
 
 ## <a name="next-steps"></a>Następne kroki
 

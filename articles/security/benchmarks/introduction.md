@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/16/2019
 ms.author: mbaldwin
 ms.custom: security-baselines
-ms.openlocfilehash: 3169959250eb45346456c64e606f25efb0ea44f0
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 8f65eb008d5df6ea3f2f85778d538023e6ce98eb
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/14/2020
-ms.locfileid: "75934227"
+ms.locfileid: "75945331"
 ---
 # <a name="azure-security-benchmark-introduction"></a>Wprowadzenie do usługi Azure Security test
 
@@ -27,7 +27,7 @@ Test porównawczy zabezpieczeń platformy Azure obejmuje zbiór zaleceń dotycz�
 
 W dokumentacji usługi Azure Security Tests określono mechanizmy kontroli zabezpieczeń i zalecenia dotyczące usług.
 
-- **Kontrolki zabezpieczeń**: zalecenia dotyczące usługi Azure Security test zostały podzielone na kategorie według kontroli zabezpieczeń. Mechanizmy kontroli zabezpieczeń reprezentują wymagania dotyczące zabezpieczeń niezależny od wysokiego poziomu, takie jak zabezpieczenia sieci i ochrona danych. Każda kontrola zabezpieczeń ma zestaw zaleceń dotyczących zabezpieczeń i instrukcje, które pomogą implment te zalecenia. 
+- **Kontrolki zabezpieczeń**: zalecenia dotyczące usługi Azure Security test zostały podzielone na kategorie według kontroli zabezpieczeń. Mechanizmy kontroli zabezpieczeń reprezentują wymagania dotyczące zabezpieczeń niezależny od wysokiego poziomu, takie jak zabezpieczenia sieci i ochrona danych. Każda kontrola zabezpieczeń ma zestaw zaleceń dotyczących zabezpieczeń i instrukcje, które ułatwiają zaimplementowanie tych zaleceń. 
 - **Zalecenia dotyczące usługi**: Jeśli są dostępne, zalecenia dotyczące testów porównawczych dla usług platformy Azure obejmują zalecenia dotyczące zabezpieczeń platformy Azure, które są dostosowane specjalnie do tej usługi. 
 
 Warunki "kontrola", "wzorzec" i "linia bazowa" są często używane w dokumentacji usługi Azure Security test i ważne jest, aby zrozumieć, w jaki sposób platforma Azure korzysta z tych warunków. 

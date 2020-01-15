@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 05/17/2019
 ms.author: mimckitt
-ms.openlocfilehash: 77334e3e807776e9072bb4ad9674bf7ba5a8f915
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: 6adb800b0c56866aa76f98fc078fdc3d8f1ffbff
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75732522"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75941439"
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure"></a>Przygotowywanie maszyny wirtualnej systemu Red Hat dla platformy Azure
 W tym artykule dowiesz się, jak przygotować maszynę wirtualną Red Hat Enterprise Linux (RHEL) do użycia na platformie Azure. Wersje RHEL omówione w tym artykule to 6.7 + i 7.1 +. Funkcja hypervisor dla przygotowania, która jest omówiona w tym artykule, to funkcja Hyper-V, maszyna wirtualna oparta na jądrze (KVM) i oprogramowanie VMware. Aby uzyskać więcej informacji na temat wymagań dotyczących uprawnień dla uczestnictwa w programie w ramach programu dostępu do chmury Red Hat, zobacz [witrynę sieci Web dostępu do chmury w systemie Red Hat](https://www.redhat.com/en/technologies/cloud-computing/cloud-access) i [RHEL na platformie Azure](https://access.redhat.com/ecosystem/ccsp/microsoft-azure). Aby poznać sposoby automatyzowania tworzenia obrazów RHEL, zobacz [Azure Image Builder](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-overview).
@@ -928,6 +928,6 @@ Initramfs ponownego kompilowania:
 Aby uzyskać więcej informacji, zobacz informacje o [odbudowywaniu initramfs](https://access.redhat.com/solutions/1958).
 
 ## <a name="next-steps"></a>Następne kroki
-Teraz możesz przystąpić do korzystania z Red Hat Enterprise Linux wirtualnego dysku twardego w celu utworzenia nowych maszyn wirtualnych na platformie Azure. Jeśli przekazujesz plik VHD na platformę Azure po raz pierwszy, zobacz [Tworzenie maszyny wirtualnej z systemem Linux z dysku niestandardowego](upload-vhd.md#option-1-upload-a-vhd).
-
-Aby uzyskać więcej informacji na temat funkcji hypervisor certyfikowanych do uruchamiania Red Hat Enterprise Linux, zobacz [witrynę sieci Web Red Hat](https://access.redhat.com/certified-hypervisors).
+* Teraz możesz przystąpić do korzystania z Red Hat Enterprise Linux wirtualnego dysku twardego w celu utworzenia nowych maszyn wirtualnych na platformie Azure. Jeśli przekazujesz plik VHD na platformę Azure po raz pierwszy, zobacz [Tworzenie maszyny wirtualnej z systemem Linux z dysku niestandardowego](upload-vhd.md#option-1-upload-a-vhd).
+* Aby uzyskać więcej informacji na temat funkcji hypervisor certyfikowanych do uruchamiania Red Hat Enterprise Linux, zobacz [witrynę sieci Web Red Hat](https://access.redhat.com/certified-hypervisors).
+* Aby dowiedzieć się więcej o korzystaniu z gotowych do produkcji obrazów RHEL BYOS, przejdź do strony dokumentacji dla [BYOS](../workloads/redhat/byos.md).

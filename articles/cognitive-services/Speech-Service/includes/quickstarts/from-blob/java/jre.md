@@ -1,32 +1,26 @@
 ---
-title: 'Szybki Start: Rozpoznawanie mowy przechowywanej w usłudze BLOB Storage, Java-Speech Service'
-titleSuffix: Azure Cognitive Services
-description: do ustalenia
-services: cognitive-services
-author: erhopf
-manager: nitinme
+author: IEvangelist
 ms.service: cognitive-services
-ms.subservice: speech-service
 ms.topic: include
-ms.date: 10/28/2019
-ms.author: erhopf
-zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: e110c87835cdf517bdd54adda0ef6d9168a44d52
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/13/2020
+ms.author: dapine
+ms.openlocfilehash: 1225a1e528b32401f350374fb9393c52225c49e8
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75467785"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75942844"
 ---
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Przed rozpoczęciem upewnij się, że:
 
 > [!div class="checklist"]
+> * [Konfigurowanie środowiska deweloperskiego](../../../../quickstarts/setup-platform.md?tabs=jre&pivots=programmming-language-java)
+> * [Tworzenie pustego przykładowego projektu](../../../../quickstarts/create-project.md?pivots=programmming-language-java)
 > * [Tworzenie zasobu usługi Azure Speech](../../../../get-started.md)
 > * [Przekazywanie pliku źródłowego do obiektu blob platformy Azure](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
-> * [Konfigurowanie środowiska deweloperskiego](../../../../quickstarts/setup-platform.md?tabs=dotnet)
-> * [Tworzenie pustego przykładowego projektu](../../../../quickstarts/create-project.md?tabs=dotnet)
+
 
 ## <a name="open-your-project-in-eclipse"></a>Otwórz projekt w programie zaćmienie
 
@@ -45,7 +39,8 @@ Otwórz plik pliku pom. XML i Dodaj następujące odwołanie: [!code-xml[](~/sam
 Dodajmy kod, który działa jako szkielet dla projektu.
 
 [!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-blob/src/quickstart/Main.java?range=1-13,95-105,206-207)]
-(Należy zastąpić wartości `YourSubscriptionKey`, `YourServiceRegion`i `YourFileUrl` własnymi wartościami).
+
+[!INCLUDE [placeholder-replacements](../placeholder-replacement.md)]
 
 ## <a name="json-wrappers"></a>Otoki JSON
 

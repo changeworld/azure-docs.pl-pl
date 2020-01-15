@@ -1,20 +1,18 @@
 ---
-title: Rozwiązywanie problemów z agentami Azure Site Recovery | Microsoft Docs "
-description: Zawiera informacje dotyczące objawów, przyczyn i rozwiązań niepowodzeń Azure Site Recovery agenta.
-author: carmonmills
+title: Rozwiązywanie problemów z rozszerzeniem maszyny wirtualnej platformy Azure na potrzeby odzyskiwania po awarii przy użyciu Azure Site Recovery
+description: Rozwiązywanie problemów z rozszerzeniem maszyny wirtualnej platformy Azure na potrzeby odzyskiwania po awarii przy użyciu Azure Site Recovery.
+author: sideeksh
 manager: rochakm
-ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 11/27/2018
-ms.author: carmonm
-ms.openlocfilehash: 0de5a9843b8029c1e1926ae296f43fc95b48106c
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 7f9ae32b95d629ef79f085ed590d9057b0414911
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/14/2020
-ms.locfileid: "75930126"
+ms.locfileid: "75941536"
 ---
-# <a name="troubleshoot-issues-with-the-azure-site-recovery-agent"></a>Rozwiązywanie problemów z agentem Azure Site Recovery
+# <a name="troubleshoot-azure-vm-extension-issues"></a>Rozwiązywanie problemów z rozszerzeniem maszyny wirtualnej platformy Azure
 
 W tym artykule opisano kroki rozwiązywania problemów, które mogą pomóc w rozwiązywaniu Azure Site Recovery błędów związanych z agentem maszyny wirtualnej i rozszerzeniem.
 
@@ -30,7 +28,7 @@ Kod błędu: "151076"
 **Przyczyna 2: [Agent zainstalowany na maszynie wirtualnej jest nieaktualny (dla maszyn wirtualnych z systemem Linux)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
 **Przyczyna 3: [Aktualizacja lub załadowanie rozszerzenia Site Recovery nie powiodło](#the-site-recovery-extension-fails-to-update-or-load) się**  
 
-Komunikat o błędzie: "Poprzednia operacja rozszerzenia odzyskiwania lokacji trwa dłużej niż oczekiwano".<br>
+Komunikat o błędzie: "Poprzednia operacja rozszerzenia Site Recovery trwa dłużej niż oczekiwano".<br>
 Kod błędu: "150066"<br>
 
 **Przyczyna 1: [Agent jest zainstalowany na maszynie wirtualnej, ale nie odpowiada (dla maszyn wirtualnych z systemem Windows)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**     

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/25/2018
 ms.author: mimckitt
-ms.openlocfilehash: da7ade4b4724f8d155deb1c109587a311d03375c
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: dcc9e63eba605e87a14ba4f09c61a00e9629bd23
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/14/2020
-ms.locfileid: "75931014"
+ms.locfileid: "75941209"
 ---
 # <a name="use-the-azure-custom-script-extension-version-2-with-linux-virtual-machines"></a>Korzystanie z rozszerzenia niestandardowego skryptu platformy Azure w wersji 2 z maszynami wirtualnymi z systemem Linux
 Rozszerzenie skryptu niestandardowego wersja 2 pobiera i uruchamia skrypty na maszynach wirtualnych platformy Azure. To rozszerzenie jest przydatne w przypadku konfiguracji po wdrożeniu, instalacji oprogramowania lub innych zadań związanych z konfiguracją/zarządzaniem. Skrypty można pobrać z usługi Azure Storage lub innej dostępnej lokalizacji w Internecie lub można je udostępnić do środowiska uruchomieniowego rozszerzenia. 
@@ -87,7 +87,7 @@ Te elementy powinny być traktowane jako dane poufne i określone w konfiguracji
   "properties": {
     "publisher": "Microsoft.Azure.Extensions",
     "type": "CustomScript",
-    "typeHandlerVersion": "2.0",
+    "typeHandlerVersion": "2.1",
     "autoUpgradeMinorVersion": true,
     "settings": {
       "skipDos2Unix":false,
@@ -98,11 +98,15 @@ Te elementy powinny być traktowane jako dane poufne i określone w konfiguracji
        "script": "<base64-script-to-execute>",
        "storageAccountName": "<storage-account-name>",
        "storageAccountKey": "<storage-account-key>",
-       "fileUris": ["https://.."]  
+       "fileUris": ["https://.."],
+        "managedIdentity" : "<managed-identity-identifier>"
     }
   }
 }
 ```
+
+>[!NOTE]
+> Właściwość managedIdentity **nie może** być używana w połączeniu z właściwościami StorageAccountName lub storageAccountKey
 
 ### <a name="property-values"></a>Wartości właściwości
 
@@ -111,7 +115,7 @@ Te elementy powinny być traktowane jako dane poufne i określone w konfiguracji
 | apiVersion | 2019-03-01 | date |
 | publisher | Microsoft. COMPUTE. Extensions | string |
 | type | CustomScript | string |
-| typeHandlerVersion | 2.0 | int |
+| typeHandlerVersion | 2.1 | int |
 | fileUris (np.) | https://github.com/MyProject/Archive/MyPythonScript.py | tablica |
 | Sekcji commandtoexecute (np.) | środowisko Python MyPythonScript.py \<my-param1 > | string |
 | script | IyEvYmluL3NoCmVjaG8gIlVwZGF0aW5nIHBhY2thZ2VzIC4uLiIKYXB0IHVwZGF0ZQphcHQgdXBncmFkZSAteQo= | string |
@@ -119,6 +123,7 @@ Te elementy powinny być traktowane jako dane poufne i określone w konfiguracji
 | timestamp (np.) | 123456789 | 32-bitowa liczba całkowita |
 | storageAccountName (np.) | examplestorageacct | string |
 | storageAccountKey (np.) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | string |
+| managedIdentity (np.) | {} lub {"clientId": "31b403aa-c364-4240-a7ff-d85fb6cd7232"} lub {"objectId": "12dd289c-0583-46e5-b9b4-115d5c19ef4b"} | Obiekt JSON |
 
 ### <a name="property-value-details"></a>Szczegóły wartości właściwości
 * `apiVersion`: najbardziej aktualne apiVersion można znaleźć za pomocą [Eksplorator zasobów](https://resources.azure.com/) lub z interfejsu wiersza polecenia platformy Azure, korzystając z następujących poleceń `az provider list -o json`
@@ -129,6 +134,9 @@ Te elementy powinny być traktowane jako dane poufne i określone w konfiguracji
 * `fileUris`: (opcjonalnie tablica ciągów) adresy URL dla plików do pobrania.
 * `storageAccountName`: (opcjonalnie, String) nazwa konta magazynu. W przypadku określenia poświadczeń magazynu wszystkie `fileUris` muszą być adresami URL dla obiektów blob platformy Azure.
 * `storageAccountKey`: (opcjonalnie, String) klucz dostępu konta magazynu
+* `managedIdentity`: (opcjonalnie obiekt JSON) [zarządzana tożsamość](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) do pobierania plików
+  * `clientId`: (opcjonalnie, String) identyfikator klienta zarządzanej tożsamości
+  * `objectId`: (Optional, String) identyfikator obiektu tożsamości zarządzanej
 
 
 Następujące wartości można ustawić w ustawieniach publicznych lub chronionych, rozszerzenie odrzuci każdą konfigurację, w której poniższe wartości są ustawione zarówno w ustawieniach publicznych, jak i chronionych.
@@ -200,6 +208,45 @@ CustomScript używa następującego algorytmu do wykonania skryptu.
  1. Napisz zdekodowaną (i opcjonalnie nieskompresowaną) wartość na dysk (/var/lib/waagent/Custom-Script/#/Script.sh)
  1. Wykonaj skrypt przy użyciu _/bin/sh-c/var/lib/waagent/Custom-Script/#/Script.sh.
 
+####  <a name="property-managedidentity"></a>Właściwość: managedIdentity
+
+CustomScript (wersja 2.1.2 lub nowszy) obsługuje funkcję RBAC opartą na [tożsamościach zarządzanych](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) na potrzeby pobierania plików z adresów URL określonych w ustawieniu "fileUris". Umożliwia CustomScript dostęp do prywatnych obiektów BLOB/kontenerów usługi Azure Storage bez konieczności przekazywania wpisów tajnych, takich jak tokeny SAS lub klucze kont magazynu.
+
+Aby można było użyć tej funkcji, użytkownik musi dodać tożsamość przypisaną przez [system](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#adding-a-system-assigned-identity) lub [przypisanej do użytkownika](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#adding-a-user-assigned-identity) do maszyny wirtualnej lub VMSS, gdzie oczekiwano CustomScript, i [przyznać zarządzanej tożsamości dostęp do kontenera lub obiektu BLOB usługi Azure Storage](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/tutorial-vm-windows-access-storage#grant-access).
+
+Aby użyć tożsamości przypisanej do systemu na docelowej maszynie wirtualnej/VMSS, ustaw wartość pola "managedidentity" na pusty obiekt JSON. 
+
+> Przykład:
+>
+> ```json
+> {
+>   "fileUris": ["https://mystorage.blob.core.windows.net/privatecontainer/script1.sh"],
+>   "commandToExecute": "sh script1.sh",
+>   "managedIdentity" : {}
+> }
+> ```
+
+Aby użyć tożsamości przypisanej przez użytkownika na docelowej maszynie wirtualnej/VMSS, należy skonfigurować pole "managedidentity" z IDENTYFIKATORem klienta lub IDENTYFIKATORem obiektu tożsamości zarządzanej.
+
+> Przykłady:
+>
+> ```json
+> {
+>   "fileUris": ["https://mystorage.blob.core.windows.net/privatecontainer/script1.sh"],
+>   "commandToExecute": "sh script1.sh",
+>   "managedIdentity" : { "clientId": "31b403aa-c364-4240-a7ff-d85fb6cd7232" }
+> }
+> ```
+> ```json
+> {
+>   "fileUris": ["https://mystorage.blob.core.windows.net/privatecontainer/script1.sh"],
+>   "commandToExecute": "sh script1.sh",
+>   "managedIdentity" : { "objectId": "12dd289c-0583-46e5-b9b4-115d5c19ef4b" }
+> }
+> ```
+
+> [!NOTE]
+> Właściwość managedIdentity **nie może** być używana w połączeniu z właściwościami StorageAccountName lub storageAccountKey
 
 ## <a name="template-deployment"></a>Wdrażanie na podstawie szablonu
 Rozszerzenia maszyn wirtualnych platformy Azure można wdrażać przy użyciu szablonów usługi Azure Resource Manager. Schemat JSON opisany w poprzedniej sekcji można użyć w szablonie Azure Resource Manager, aby uruchomić rozszerzenie niestandardowego skryptu podczas wdrażania szablonu Azure Resource Manager. Przykładowy szablon, który zawiera rozszerzenie niestandardowego skryptu, można znaleźć w witrynie [GitHub](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-linux).
@@ -220,7 +267,7 @@ Rozszerzenia maszyn wirtualnych platformy Azure można wdrażać przy użyciu sz
   "properties": {
     "publisher": "Microsoft.Azure.Extensions",
     "type": "CustomScript",
-    "typeHandlerVersion": "2.0",
+    "typeHandlerVersion": "2.1",
     "autoUpgradeMinorVersion": true,
     "settings": {
       },

@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 804eb63406b33b94e70ef56e0066fa213be04708
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 2cbe5066974734093e440e64eb0b47542e569765
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74997058"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75940905"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Dostosowywanie mapowania atrybutów aprowizacji użytkowników dla aplikacji SaaS w Azure Active Directory
 
@@ -71,6 +71,7 @@ Wraz z tą właściwością mapowania atrybutów obsługują również następuj
 
 - **Atrybut źródłowy** — atrybut użytkownika z systemu źródłowego (przykład: Azure Active Directory).
 - **Attribute** — atrybut użytkownika w systemie docelowym (przykład: usługi ServiceNow).
+- **Wartość domyślna w przypadku wartości null (opcjonalnie)** — wartość, która zostanie przeniesiona do systemu docelowego, jeśli atrybut źródłowy ma wartość null. Ta wartość zostanie zainicjowana tylko wtedy, gdy użytkownik zostanie utworzony. "Wartość domyślna, gdy wartość null" nie zostanie zainicjowana podczas aktualizowania istniejącego użytkownika. Jeśli na przykład chcesz zainicjować obsługę administracyjną wszystkich istniejących użytkowników w systemie docelowym przy użyciu określonego tytułu zadania (gdy ma on wartość null w systemie źródłowym), możesz użyć następującego [wyrażenia](https://docs.microsoft.com/azure/active-directory/manage-apps/functions-for-customizing-application-data): Switch (isexist ([stanowiska]), "DefaultValue", "true", [stanowiska]). Pamiętaj o zamianie "wartości domyślnej" na to, co chcesz udostępnić, gdy wartość jest równa null w systemie źródłowym. 
 - **Dopasowywanie obiektów przy użyciu tego atrybutu** — określa, czy mapowanie ma być używane do unikatowego identyfikowania użytkowników między systemami źródłowymi i docelowymi. Zwykle jest ona ustawiana w atrybucie userPrincipalName lub mail w usłudze Azure AD, która jest zwykle mapowana na pole username w aplikacji docelowej.
 - **Priorytet dopasowania** — można ustawić wiele pasujących atrybutów. Jeśli istnieje wiele, są one oceniane w kolejności zdefiniowanej przez to pole. Po znalezieniu dopasowania nie są oceniane żadne dalsze pasujące atrybuty.
 - **Zastosuj to mapowanie**

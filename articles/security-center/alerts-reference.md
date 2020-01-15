@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2020
 ms.author: memildin
-ms.openlocfilehash: 696bba195ac3902a3a90a82bcc7665591eba643f
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 4ef2987ee72348fb4353ba735d6da76fb218f01e
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75922343"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75942155"
 ---
 # <a name="security-alerts---a-reference-guide"></a>Alerty zabezpieczeń — Podręcznik referencyjny
 
@@ -97,6 +97,7 @@ Poniżej tabeli alertów znajduje się tabela opisująca łańcuch kasowania Azu
 |**Nietypowa ilość danych wyodrębnionych z konta magazynu**|Wskazuje, że nietypowo duża ilość danych została wyodrębniona w porównaniu do ostatnich działań w tym kontenerze magazynu. Potencjalną przyczyną jest to, że atakujący wyodrębnił dużą ilość danych z kontenera, który przechowuje magazyn obiektów BLOB.|Wyprowadzanie|
 |**Nietypowe usuwanie na koncie magazynu**|Wskazuje, że co najmniej jedna Nieoczekiwana operacja usuwania została wystąpiła na koncie magazynu w porównaniu z ostatnią aktywnością na tym koncie. Potencjalną przyczyną jest to, że osoba atakująca usunęła dane z konta magazynu.|Wyprowadzanie|
 |**Nietypowe przekazywanie elementu. cspkg do konta magazynu**|Wskazuje, że pakiet Cloud Services platformy Azure (plik. cspkg) został przekazany do konta magazynu w nietypowy sposób w porównaniu z ostatnią aktywnością na tym koncie. Potencjalną przyczyną jest to, że osoba atakująca przygotowuje się do wdrożenia złośliwego kodu z konta magazynu w usłudze w chmurze platformy Azure.|LateralMovement/wykonywanie|
+|**Nietypowe przekazywanie pliku exe do konta magazynu**|Wskazuje, że plik exe został przekazany do konta magazynu w nietypowy sposób w porównaniu z ostatnią aktywnością na tym koncie. Potencjalną przyczyną jest to, że osoba atakująca przekazała złośliwy plik wykonywalny na konto magazynu lub że uprawniony użytkownik przesłał plik wykonywalny.|LateralMovement/wykonywanie|
 |**Nietypowa zmiana uprawnień dostępu na koncie magazynu**|Wskazuje, że uprawnienia dostępu do tego kontenera magazynu zostały zmienione w nietypowy sposób. Potencjalną przyczyną jest to, że osoba atakująca zmieniła uprawnienia kontenera, aby osłabić stan zabezpieczeń lub uzyskać trwałość.|Trwałość|
 |**Nietypowa Inspekcja dostępu na koncie magazynu**|Wskazuje, że uprawnienia dostępu do konta magazynu zostały sprawdzone w nietypowy sposób w porównaniu z ostatnią aktywnością na tym koncie. Potencjalną przyczyną jest to, że atakujący wykonał rekonesans w celu przyszłego ataku.|Collection|
 |**Nietypowa Eksploracja danych na koncie magazynu**|Wskazuje, że obiekty blob lub kontenery na koncie magazynu zostały wyliczone w nietypowy sposób, w porównaniu do ostatnich działań na tym koncie. Potencjalną przyczyną jest to, że atakujący wykonał rekonesans w celu przyszłego ataku.|Collection|

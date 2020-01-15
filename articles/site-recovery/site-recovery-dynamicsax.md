@@ -1,18 +1,16 @@
 ---
-title: Odzyskiwanie po awarii dla wielowarstwowego wdrożenia programu Dynamics AX z Azure Site Recovery | Microsoft Docs
-description: W tym artykule opisano sposób konfigurowania odzyskiwania po awarii dla systemu Dynamics AX przy użyciu Azure Site Recovery
-author: carmonmills
+title: Odzyskiwanie po awarii systemu Dynamics AX z Azure Site Recovery
+description: Dowiedz się, jak skonfigurować odzyskiwanie po awarii dla systemu Dynamics AX przy użyciu Azure Site Recovery
+author: sideeksh
 manager: rochakm
-ms.service: site-recovery
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/27/2018
-ms.author: carmonm
-ms.openlocfilehash: 089edd1f408494f59c8f0042b57d2d79c7faffae
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 0b32f00374aa8ce6c41415e28f319e3e7d5abddb
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/14/2020
-ms.locfileid: "75930188"
+ms.locfileid: "75941590"
 ---
 # <a name="set-up-disaster-recovery-for-a-multitier-dynamics-ax-application"></a>Konfigurowanie odzyskiwania po awarii dla wielowarstwowej aplikacji Dynamics AX   
 
@@ -39,7 +37,7 @@ Implementacja odzyskiwania po awarii dla aplikacji Dynamics AX przy użyciu Site
 
 ## <a name="site-recovery-support"></a>Obsługa usługi Site Recovery
 
-Na potrzeby tworzenia tego artykułu korzystamy z maszyn wirtualnych VMware z systemem Dynamics AX 2012 R3 w systemie Windows Server 2012 R2 Enterprise. Ponieważ replikacja usługi Site Recovery to niezależny od aplikacji, oczekuje się, że zalecenia podane w tym miejscu są przechowywane w następujących scenariuszach.
+Na potrzeby tworzenia tego artykułu korzystamy z maszyn wirtualnych VMware z systemem Dynamics AX 2012 R3 w systemie Windows Server 2012 R2 Enterprise. Ponieważ Site Recovery replikacji jest niezależny od aplikacji, oczekujemy, że zalecenia podane w tym miejscu są przechowywane w następujących scenariuszach.
 
 ### <a name="source-and-target"></a>Źródło i cel
 

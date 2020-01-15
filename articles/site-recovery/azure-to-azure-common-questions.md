@@ -1,18 +1,16 @@
 ---
 title: Często zadawane pytania dotyczące odzyskiwania po awarii maszyny wirtualnej platformy Azure za pomocą Azure Site Recovery
-description: Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące odzyskiwania po awarii maszyn wirtualnych platformy Azure do innego regionu platformy Azure przy użyciu Azure Site Recovery
-author: carmonmills
+description: Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące odzyskiwania po awarii maszyny wirtualnej platformy Azure przy użyciu Azure Site Recovery.
+author: sideeksh
 manager: rochakm
-ms.service: site-recovery
 ms.date: 04/29/2019
 ms.topic: conceptual
-ms.author: carmonm
-ms.openlocfilehash: 2e1689a4f6d3a2271da868350263bef098562127
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 8ed5df15b8ae8e9836c5b8ac8e7d6ad0111f63e1
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/14/2020
-ms.locfileid: "75929916"
+ms.locfileid: "75941892"
 ---
 # <a name="common-questions-azure-to-azure-disaster-recovery"></a>Często zadawane pytania: odzyskiwanie po awarii z platformy Azure do platformy Azure
 
@@ -45,7 +43,7 @@ Zespół Site Recovery współpracuje z zespołem zarządzania pojemnością pla
 Tak, Site Recovery obsługuje odzyskiwanie po awarii maszyn wirtualnych z włączonym usługą Azure Disk Encryption (ADE). Po włączeniu replikacji wszystkie wymagane klucze szyfrowania dysków i wpisy tajne są kopiowane z regionu źródłowego do regionu docelowego w kontekście użytkownika. Jeśli nie masz odpowiednich uprawnień, gotowy do użycia skrypt może być przekazywany do administratora zabezpieczeń, aby skopiować klucze i wpisy tajne.
 
 - Site Recovery obsługuje ADE dla maszyn wirtualnych platformy Azure z systemem Windows.
-- W ramach usługi Site Recovery jest dostępna wersja 0,1 ze schematem korzystającym z Azure Active Directory (AAD), a wersja 1,1, bez usługi AAD. [Dowiedz się więcej](../virtual-machines/extensions/azure-disk-enc-windows.md#extension-schemata).
+- Site Recovery obsługuje ADE w wersji 0,1 ze schematem przy użyciu usługi Azure Active Directory (AAD) i wersji 1,1 bez usługi AAD. [Dowiedz się więcej](../virtual-machines/extensions/azure-disk-enc-windows.md#extension-schemata).
 - W wersji 1,1, maszyny wirtualne z systemem Windows muszą używać dysków zarządzanych.
 - [Dowiedz się więcej](azure-to-azure-how-to-enable-replication-ade-vms.md) na temat włączania replikacji szyfrowanych maszyn wirtualnych.
 

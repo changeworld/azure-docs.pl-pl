@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/04/2019
+ms.date: 01/14/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 8cb644495d99b331ec95eb0a9759be45a65e97a6
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: bab95f6494fad86c9fdfc0b8fb044c22a7c5a628
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895335"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75945449"
 ---
 # <a name="designing-highly-available-applications-using-read-access-geo-redundant-storage"></a>Projektowanie aplikacji o wysokiej dostępności przy użyciu magazynu geograficznie nadmiarowego do odczytu
 
@@ -99,7 +99,7 @@ Istnieje wiele sposobów obsługi żądań aktualizacji podczas działania w try
 
 ## <a name="handling-retries"></a>Obsługa ponownych prób
 
-Biblioteka klienta usługi Azure Storage pomaga określić, które błędy mogą być ponawiane. Na przykład błąd 404 (nie znaleziono zasobu), ponieważ jego próba nie powiedzie się. Z drugiej strony błąd 500 nie może zostać ponowiony, ponieważ jest to błąd serwera i może być po prostu problemem przejściowym. Aby uzyskać więcej informacji, zapoznaj się z [kodem Open Source klasy ExponentialRetry](https://github.com/Azure/azure-storage-net/blob/87b84b3d5ee884c7adc10e494e2c7060956515d0/Lib/Common/RetryPolicies/ExponentialRetry.cs) w bibliotece klienta usługi Storage. (Poszukaj metody ShouldRetry).
+Biblioteka klienta usługi Azure Storage pomaga określić, które błędy mogą być ponawiane. Na przykład błąd 404 (nie znaleziono zasobu), ponieważ jego próba nie powiedzie się. Z drugiej strony można ponowić próbę 500, ponieważ jest to błąd serwera, a problem może po prostu być przejściowym problemem. Aby uzyskać więcej informacji, zapoznaj się z [kodem Open Source klasy ExponentialRetry](https://github.com/Azure/azure-storage-net/blob/87b84b3d5ee884c7adc10e494e2c7060956515d0/Lib/Common/RetryPolicies/ExponentialRetry.cs) w bibliotece klienta usługi Storage. (Poszukaj metody ShouldRetry).
 
 ### <a name="read-requests"></a>Żądania odczytu
 

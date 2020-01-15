@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: Uruchamianie czytnika immersyjny przy użyciu środowiska Node. js'
+title: 'Samouczek: uruchamianie czytnika immersyjny przy użyciu środowiska Node. js'
 titleSuffix: Azure Cognitive Services
 description: W tym samouczku utworzysz aplikację Node. js, która uruchamia czytnik immersyjny.
 services: cognitive-services
@@ -10,16 +10,16 @@ ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: 2a07e392170fb9e6993f4c560a4896a468d90820
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: 37453e1fdd8fdcfc89468731980581652027343c
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338499"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75945238"
 ---
-# <a name="tutorial-launch-the-immersive-reader-nodejs"></a>Samouczek: Uruchamianie czytnika immersyjnego (Node.js)
+# <a name="tutorial-launch-the-immersive-reader-nodejs"></a>Samouczek: uruchamianie czytnika immersyjny (Node. js)
 
-W [przeglądzie](./overview.md)zawarto informacje na temat tego, co to jest czytnik immersyjny i w jaki sposób implementuje sprawdzone techniki w celu zwiększenia czytelności dla osób uczące się, nowych czytelników i studentów z różnicami w nauce. W tym samouczku opisano sposób tworzenia aplikacji sieci Web w języku Node. js, która uruchamia czytnik immersyjny. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+W [przeglądzie](./overview.md)zawarto informacje na temat tego, co to jest czytnik immersyjny i w jaki sposób implementuje sprawdzone techniki w celu zwiększenia czytelności dla osób uczące się, nowych czytelników i studentów z różnicami w nauce. W tym samouczku opisano sposób tworzenia aplikacji sieci Web w języku Node. js, która uruchamia czytnik immersyjny. Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Tworzenie aplikacji sieci Web w języku Node. js za pomocą języka Express
@@ -33,13 +33,13 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Zasób czytnika immersyjny skonfigurowany do uwierzytelniania Azure Active Directory (Azure AD). Postępuj zgodnie z [tymi instrukcjami](./azure-active-directory-authentication.md) , aby rozpocząć konfigurację. Podczas konfigurowania właściwości środowiska będą potrzebne pewne wartości. Zapisz dane wyjściowe sesji w pliku tekstowym do użycia w przyszłości.
+* Zasób czytnika immersyjny skonfigurowany do Azure Active Directory uwierzytelniania. Postępuj zgodnie z [tymi instrukcjami](./how-to-create-immersive-reader.md) , aby rozpocząć konfigurację. Podczas konfigurowania właściwości środowiska będą potrzebne pewne wartości. Zapisz dane wyjściowe sesji w pliku tekstowym do użycia w przyszłości.
 * [Node. js](https://nodejs.org/) i [przędza](https://yarnpkg.com)
 * IDE, takie jak [Visual Studio Code](https://code.visualstudio.com/)
 
 ## <a name="create-a-nodejs-web-app-with-express"></a>Tworzenie aplikacji sieci Web w języku Node. js za pomocą języka Express
 
-Utwórz aplikację sieci Web Node. js za pomocą `express-generator` narzędzia.
+Utwórz aplikację sieci Web Node. js za pomocą narzędzia `express-generator`.
 
 ```bash
 npm install express-generator -g
@@ -47,7 +47,7 @@ express --view=pug myapp
 cd myapp
 ```
 
-Zainstaluj zależności przędzy i Dodaj zależności `request` i `dotenv`, które będą używane w dalszej części samouczka.
+Zainstaluj zależności przędzy i Dodaj zależności `request` i `dotenv`, które będą używane w dalszej części tego samouczka.
 
 ```bash
 yarn
@@ -111,14 +111,14 @@ router.get('/getimmersivereaderlaunchparams', function(req, res) {
                 if (err) {
                     return res.status(500).send('CogSvcs IssueToken error');
                 }
-        
+
                 const token = JSON.parse(tokenResponse).access_token;
                 const subdomain = process.env.SUBDOMAIN;
                 return res.send({token: token, subdomain: subdomain});
         }
   );
 });
- 
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
@@ -132,7 +132,7 @@ Punkt końcowy interfejsu API **getimmersivereaderlaunchparams** powinien być z
 
 ## <a name="launch-the-immersive-reader-with-sample-content"></a>Uruchom czytnik immersyjny z przykładową zawartością
 
-1. Otwórz _views\layout.Pug_i Dodaj następujący kod pod `head` `body` tagiem przed tagiem. Tagi `script` te ładują [zestaw SDK programu immersyjny](https://github.com/microsoft/immersive-reader-sdk) i jQuery.
+1. Otwórz _views\layout.Pug_i Dodaj następujący kod pod tagiem `head`, przed tagiem `body`. Te `script` Tagi ładują [zestaw SDK programu immersyjny](https://github.com/microsoft/immersive-reader-sdk) i jQuery.
 
     ```pug
     script(src='https://contentstorage.onenote.office.net/onenoteltir/immersivereadersdk/immersive-reader-sdk.0.0.2.js')
@@ -149,7 +149,7 @@ Punkt końcowy interfejsu API **getimmersivereaderlaunchparams** powinien być z
           p(id='content') The study of Earth's landforms is called physical geography. Landforms can be mountains and valleys. They can also be glaciers, lakes or rivers.
           div(class='immersive-reader-button' data-button-style='iconAndText' data-locale='en-US' onclick='launchImmersiveReader()')
           script.
-        
+
             function getImmersiveReaderLaunchParamsAsync() {
                     return new Promise((resolve, reject) => {
                         $.ajax({
@@ -165,7 +165,7 @@ Punkt końcowy interfejsu API **getimmersivereaderlaunchparams** powinien być z
                         });
                     });
             }
-        
+
             async function launchImmersiveReader() {
                     const content = {
                             title: document.getElementById('title').innerText,
@@ -174,11 +174,11 @@ Punkt końcowy interfejsu API **getimmersivereaderlaunchparams** powinien być z
                                     lang: 'en'
                             }]
                     };
-            
+
                     const launchParams = await getImmersiveReaderLaunchParamsAsync();
                     const token = launchParams.token;
                     const subdomain = launchParams.subdomain;
-            
+
                     ImmersiveReader.launchAsync(token, subdomain, content);
             }
     ```
@@ -195,7 +195,7 @@ Punkt końcowy interfejsu API **getimmersivereaderlaunchparams** powinien być z
 
 Czytnik immersyjny obsługuje wiele różnych języków. Język zawartości można określić, wykonując poniższe kroki.
 
-1. Otwórz _views\index.Pug_ i Dodaj następujący kod poniżej `p(id=content)` tagu, który został dodany w poprzednim kroku. Ten kod dodaje zawartość Hiszpańska zawartości do strony.
+1. Otwórz _views\index.Pug_ i Dodaj następujący kod poniżej tagu `p(id=content)`, który został dodany w poprzednim kroku. Ten kod dodaje zawartość Hiszpańska zawartości do strony.
 
     ```pug
     p(id='content-spanish') El estudio de las formas terrestres de la Tierra se llama geografía física. Los accidentes geográficos pueden ser montañas y valles. También pueden ser glaciares, lagos o ríos.
@@ -231,7 +231,7 @@ Domyślnie język interfejsu czytnika immersyjny jest zgodny z ustawieniami jęz
 
 Możesz dołączyć zawartość matematyczną w czytniku immersyjny przy użyciu [MathML](https://developer.mozilla.org/en-US/docs/Web/MathML).
 
-1. Zmodyfikuj _views\index.Pug_ w taki sposób, aby zawierał następujący kod powyżej `ImmersiveReader.launchAsync`wywołania:
+1. Zmodyfikuj _views\index.Pug_ w celu uwzględnienia poniższego kodu powyżej wywołania do `ImmersiveReader.launchAsync`:
 
     ```javascript
     const mathML = '<math xmlns="https://www.w3.org/1998/Math/MathML" display="block"> \

@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f5be34a58d8f0416a31cd575ef0fea614b3d43e
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 8ff2ff69ca00a9ed9c48ebd6f1704fac0b16d068
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75768722"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75940992"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Reguły członkostwa dynamicznego dla grup w Azure Active Directory
 
@@ -99,8 +99,8 @@ Poniżej przedstawiono właściwości użytkownika, których można użyć do ut
 | kraj |Dowolna wartość ciągu lub wartość *null* |(User. Country-EQ "wartość") |
 | companyName | Dowolna wartość ciągu lub wartość *null* | (User. NazwaFirmy-EQ "wartość") |
 | department |Dowolna wartość ciągu lub wartość *null* |(User. Department-EQ "wartość") |
-| displayName |Dowolna wartość ciągu |(User. displayName-EQ "value") |
-| employeeId |Dowolna wartość ciągu |(User. IDPracownika-EQ "value")<br>(User. IDPracownika-ne *null*) |
+| displayName |dowolna wartość ciągu |(User. displayName-EQ "value") |
+| employeeId |dowolna wartość ciągu |(User. IDPracownika-EQ "value")<br>(User. IDPracownika-ne *null*) |
 | facsimileTelephoneNumber |Dowolna wartość ciągu lub wartość *null* |(User. facsimileTelephoneNumber-EQ "wartość") |
 | givenName |Dowolna wartość ciągu lub wartość *null* |(User. podaną wartośćname-EQ ") |
 | Stanowisko |Dowolna wartość ciągu lub wartość *null* |(User. stanowiska-EQ "wartość") |
@@ -119,14 +119,14 @@ Poniżej przedstawiono właściwości użytkownika, których można użyć do ut
 | surname |Dowolna wartość ciągu lub wartość *null* |(User. nazwisko-EQ "wartość") |
 | telephoneNumber |Dowolna wartość ciągu lub wartość *null* |(User. teletelefon-EQ "wartość") |
 | usageLocation |Dwubajtowy kod kraju |(User. usageLocation-EQ "US") |
-| userPrincipalName |Dowolna wartość ciągu |(User. userPrincipalName-EQ "alias@domain") |
+| userPrincipalName |dowolna wartość ciągu |(User. userPrincipalName-EQ "alias@domain") |
 | userType |Gość elementu członkowskiego *ma wartość null* |(User. UserType-EQ "member") |
 
 ### <a name="properties-of-type-string-collection"></a>Właściwości kolekcji ciągów typu
 
 | Właściwości | Dozwolone wartości | Użycie |
 | --- | --- | --- |
-| otherMails |Dowolna wartość ciągu |(User. otherMails-zawiera "alias@domain") |
+| otherMails |dowolna wartość ciągu |(User. otherMails-zawiera "alias@domain") |
 | proxyAddresses |SMTP: alias@domain SMTP: alias@domain |(User. proxyAddresses-zawiera "SMTP: alias@domain") |
 
 Aby uzyskać właściwości używane dla reguł urządzeń, zobacz [reguły dotyczące urządzeń](#rules-for-devices).
@@ -321,7 +321,12 @@ Można utworzyć grupę zawierającą wszystkich użytkowników w dzierżawie pr
 Reguła "Wszyscy użytkownicy" jest zbudowana przy użyciu wyrażenia pojedynczego, przy użyciu operatora-ne i wartości null. Ta zasada umożliwia dodanie użytkowników-Gości, a także użytkowników należących do grupy.
 
 ```
-user.objectid -ne null
+user.objectId -ne null
+```
+Jeśli chcesz, aby grupa wykluczać użytkowników-Gości i dołączać tylko członków dzierżawy, możesz użyć następującej składni:
+
+```
+(user.objectId -ne null) -and (user.userType -eq “Member”)
 ```
 
 ### <a name="create-an-all-devices-rule"></a>Tworzenie reguły "wszystkie urządzenia"
@@ -331,7 +336,7 @@ Można utworzyć grupę zawierającą wszystkie urządzenia w dzierżawie przy u
 Reguła "wszystkie urządzenia" jest zbudowana przy użyciu wyrażenia pojedynczego, przy użyciu operatora-ne i wartości null:
 
 ```
-device.objectid -ne null
+device.objectId -ne null
 ```
 
 ## <a name="extension-properties-and-custom-extension-properties"></a>Właściwości rozszerzenia i niestandardowe właściwości rozszerzenia

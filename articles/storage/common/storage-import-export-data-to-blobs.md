@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/06/2019
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: bd15e406cdbee57112ff8ecba158d503e908b73f
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: cab9d309d052acca493e112965c8477a325d8c88
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73178017"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75944751"
 ---
 # <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>Importowanie danych do platformy Azure Blob Storage przy użyciu usługi Azure Import/Export
 
@@ -25,7 +25,7 @@ Przed utworzeniem zadania importowania w celu przesyłania danych do usługi Azu
 
 - Mieć aktywną subskrypcję platformy Azure, która może być używana w usłudze Import/Export.
 - Mieć co najmniej jedno konto usługi Azure Storage z kontenerem magazynu. Zapoznaj się z listą [obsługiwanych kont magazynu i typów magazynów dla usługi Import/Export](storage-import-export-requirements.md). 
-    - Aby uzyskać informacje dotyczące tworzenia nowego konta magazynu, zobacz [jak utworzyć konto magazynu](storage-quickstart-create-account.md). 
+    - Aby uzyskać informacje dotyczące tworzenia nowego konta magazynu, zobacz [sposób tworzenia konta magazynu](storage-quickstart-create-account.md). 
     - Aby uzyskać informacje na temat kontenera magazynu, przejdź do obszaru [Tworzenie kontenera magazynu](../blobs/storage-quickstart-blobs-portal.md#create-a-container).
 - Ma wystarczającą liczbę dysków [obsługiwanych typów](storage-import-export-requirements.md#supported-disks). 
 - System Windows z uruchomioną [obsługiwaną wersją systemu operacyjnego](storage-import-export-requirements.md#supported-operating-systems). 
@@ -66,13 +66,13 @@ Wykonaj poniższe kroki, aby przygotować dyski.
 
     |Opcja  |Opis  |
     |---------|---------|
-    |/j     |Nazwa pliku dziennika z rozszerzeniem JRN. Plik dziennika jest generowany na dysku. Zalecamy użycie numeru seryjnego dysku jako nazwy pliku dziennika.         |
-    |/ID     |Identyfikator sesji. Użyj unikatowego numeru sesji dla każdego wystąpienia polecenia.      |
-    |/t     |Litera dysku do wysłania. Na przykład dysk `D`.         |
+    |/j:     |Nazwa pliku dziennika z rozszerzeniem JRN. Plik dziennika jest generowany na dysku. Zalecamy użycie numeru seryjnego dysku jako nazwy pliku dziennika.         |
+    |/id:     |Identyfikator sesji. Użyj unikatowego numeru sesji dla każdego wystąpienia polecenia.      |
+    |/t:     |Litera dysku do wysłania. Na przykład dysk `D`.         |
     |/bk:     |Klucz funkcji BitLocker dla dysku. Hasło liczbowe z danych wyjściowych `manage-bde -protectors -get D:`      |
     |/srcdir:     |Litera dysku do wysłania, po której następuje `:\`. Na przykład `D:\`.         |
     |/dstdir:     |Nazwa kontenera docelowego w usłudze Azure Storage.         |
-    |/blobtype:     |Ta opcja określa typ obiektów blob, do których mają zostać zaimportowane dane. W przypadku blokowych obiektów BLOB jest to `BlockBlob` i dla stronicowych obiektów BLOB jest `PagaBlob`.         |
+    |/blobtype:     |Ta opcja określa typ obiektów blob, do których mają zostać zaimportowane dane. W przypadku blokowych obiektów BLOB jest to `BlockBlob` i dla stronicowych obiektów BLOB jest `PageBlob`.         |
     |/skipwrite:     |Opcja, która określa, że nie są wymagane żadne nowe dane do skopiowania, a istniejące dane na dysku muszą zostać przygotowane.          |
     |/enablecontentmd5:     |Opcja po włączeniu zapewnia, że MD5 jest obliczany i ustawiany jako właściwość `Content-md5` dla każdego obiektu BLOB. Użyj tej opcji tylko wtedy, gdy chcesz użyć pola `Content-md5` po przekazaniu danych na platformę Azure. <br> Ta opcja nie ma wpływu na sprawdzanie integralności danych (domyślnie występuje). Ustawienie to zwiększa czas przekazywania danych do chmury.          |
 7. Powtórz poprzedni krok dla każdego dysku, który należy dostarczyć. Plik dziennika o podanej nazwie jest tworzony dla każdego przebiegu wiersza polecenia.

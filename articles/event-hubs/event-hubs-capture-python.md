@@ -13,20 +13,23 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
 ms.custom: seodec18
-ms.date: 11/05/2019
+ms.date: 01/08/2020
 ms.author: shvija
-ms.openlocfilehash: ade4aa79b2de005bfecd7a5882f06cb491ea4e6d
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: e81871e27c04f8a43f678110d7f44cc9c3be149c
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73717842"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75940754"
 ---
 # <a name="quickstart-event-hubs-capture-walkthrough-python"></a>Przewodnik Szybki Start: Event Hubs Przechwytywanie: Python
 
-Przechwytywanie jest funkcją usługi Azure Event Hubs. Możesz użyć funkcji przechwytywania, aby automatycznie dostarczać dane przesyłane strumieniowo do centrum zdarzeń na wybranym przez siebie koncie usługi Azure Blob Storage. Ta funkcja ułatwia przetwarzanie wsadowe danych przesyłanych strumieniowo w czasie rzeczywistym. W tym artykule opisano sposób korzystania z funkcji przechwytywania Event Hubs w języku Python. Aby uzyskać więcej informacji na temat funkcji przechwytywania Event Hubs, zobacz [przechwytywanie zdarzeń za pomocą usługi Azure Event Hubs][Overview of Event Hubs Capture].
+Przechwytywanie jest funkcją usługi Azure Event Hubs. Możesz użyć funkcji przechwytywania, aby automatycznie dostarczać dane przesyłane strumieniowo do centrum zdarzeń na wybranym przez siebie koncie usługi Azure Blob Storage. Ta funkcja ułatwia przetwarzanie wsadowe danych przesyłanych strumieniowo w czasie rzeczywistym. W tym artykule opisano sposób używania funkcji przechwytywania usługi Event Hubs za pomocą języka Python. Aby uzyskać więcej informacji na temat funkcji przechwytywania Event Hubs, zobacz [przechwytywanie zdarzeń za pomocą usługi Azure Event Hubs][Overview of Event Hubs Capture].
 
 W tym instruktażu do zademonstrowania funkcji przechwytywania jest wykorzystywany [zestaw Azure Python SDK](https://azure.microsoft.com/develop/python/) . Program *Sender.py* wysyła symulowane dane telemetryczne środowiska do Event Hubs w formacie JSON. Centrum zdarzeń używa funkcji przechwytywania do zapisywania tych danych w usłudze BLOB Storage w partiach. Aplikacja *capturereader.py* odczytuje te obiekty blob, tworzy plik dołączany dla każdego z urządzeń i zapisuje dane do plików *CSV* na każdym urządzeniu.
+
+> [!IMPORTANT]
+> Ten przewodnik Szybki Start używa wersji 1 zestawu SDK języka Python platformy Azure Event Hubs. Jeśli dopiero zaczynasz korzystać z usługi Azure Event Hubs, użyj wersji 5 zestawu SDK języka Python. Aby zapoznać się z przewodnikiem Szybki Start, który używa wersji 5 zestawu SDK języka Python, zobacz [ten artykuł](get-started-capture-python-v2.md). Jeśli musisz zmigrować istniejący kod z wersji 1 do wersji 5, zobacz [Przewodnik migracji](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub/migration_guide.md).
 
 W tym instruktażu zawarto następujące instrukcje: 
 
@@ -54,7 +57,7 @@ W tym instruktażu zawarto następujące instrukcje:
 
 Utwórz konto magazynu i kontener, które mają być używane do przechwytywania. 
 
-1. Zaloguj się w witrynie [Azure Portal][Azure portal].
+1. Zaloguj się do [portalu Azure][Azure portal].
 2. W lewym okienku nawigacji wybierz pozycję **konta magazynu**, a następnie na ekranie **konta magazynu** wybierz pozycję **Dodaj**.
 3. Na ekranie Tworzenie konta magazynu wybierz subskrypcję i grupę zasobów, a następnie podaj nazwę konta magazynu. Pozostałe wybory można pozostawić domyślnie. Wybierz pozycję **Przegląd + Utwórz**, przejrzyj ustawienia, a następnie wybierz pozycję **Utwórz**. 
    
@@ -74,7 +77,7 @@ Utwórz konto magazynu i kontener, które mają być używane do przechwytywania
 5. Na ekranie **przechwytywanie** wybierz pozycję **Zapisz zmiany**. 
 
 ## <a name="create-a-python-script-to-send-events-to-event-hub"></a>Tworzenie skryptu w języku Python do wysyłania zdarzeń do centrum zdarzeń
-Ten skrypt wysyła zdarzenia 200 do centrum zdarzeń. Zdarzenia to proste odczyty środowiska w formacie JSON.
+Ten skrypt wysyła 200 zdarzenia do Centrum zdarzeń. Zdarzenia to proste odczyty środowiska w formacie JSON.
 
 1. Otwórz swój ulubiony Edytor Python, taki jak [Visual Studio Code][Visual Studio Code].
 2. Utwórz nowy plik o nazwie *Sender.py*. 

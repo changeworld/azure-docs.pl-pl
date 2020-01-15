@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dfe51558cf96e77288186c2ed2b4a2773cbc5cf2
-ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
+ms.openlocfilehash: ee241c9b4d26377931e828df60db1c50a9c86b84
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75829871"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75940874"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-active-directory-azure-ad"></a>Tworzenie punktu końcowego Standard scim i Konfigurowanie aprowizacji użytkowników przy użyciu Azure Active Directory (Azure AD)
 
@@ -153,8 +153,11 @@ Ta sekcja zawiera przykładowe żądania Standard scim emitowane przez klienta u
   - [Aktualizowanie użytkownika [właściwości wielowartościowe]](#update-user-multi-valued-properties) ([żądanie](#request-4) /  [odpowiedzi](#response-4))
   - [Aktualizowanie użytkownika [właściwości pojedynczej wartości]](#update-user-single-valued-properties) ([żądanie](#request-5)
 / [odpowiedzi](#response-5)) 
+  - [Wyłącz użytkownika](#disable-user) ([żądanie](#request-14) / 
+[odpowiedzi](#response-14))
   - [Usuń użytkownika](#delete-user) ([żądanie](#request-6) / 
 [odpowiedzi](#response-6))
+
 
 [Operacje grupy](#group-operations)
   - [Utwórz grupę](#create-group) ( [żądanie](#request-7) / [odpowiedzi](#response-7))
@@ -435,6 +438,60 @@ Ta sekcja zawiera przykładowe żądania Standard scim emitowane przez klienta u
 }
 ```
 
+### <a name="disable-user"></a>Wyłączanie użytkownika
+
+##### <a name="request-14"></a>Żądając
+
+*Poprawka/users/5171a35d82074e068ce2 HTTP/1.1*
+```json
+{
+    "Operations": [
+        {
+            "op": "Replace",
+            "path": "active",
+            "value": false
+        }
+    ],
+    "schemas": [
+        "urn:ietf:params:scim:api:messages:2.0:PatchOp"
+    ]
+}
+```
+
+##### <a name="response-14"></a>Reakcji
+
+```json
+{
+    "schemas": [
+        "urn:ietf:params:scim:schemas:core:2.0:User"
+    ],
+    "id": "CEC50F275D83C4530A495FCF@834d0e1e5d8235f90a495fda",
+    "userName": "deanruiz@testuser.com",
+    "name": {
+        "familyName": "Harris",
+        "givenName": "Larry"
+    },
+    "active": false,
+    "emails": [
+        {
+            "value": "gloversuzanne@testuser.com",
+            "type": "work",
+            "primary": true
+        }
+    ],
+    "addresses": [
+        {
+            "country": "ML",
+            "type": "work",
+            "primary": true
+        }
+    ],
+    "meta": {
+        "resourceType": "Users",
+        "location": "/scim/5171a35d82074e068ce2/Users/CEC50F265D83B4530B495FCF@5171a35d82074e068ce2"
+    }
+}
+```
 #### <a name="delete-user"></a>Usuń użytkownika
 
 ##### <a name="request-6"></a>Żądając

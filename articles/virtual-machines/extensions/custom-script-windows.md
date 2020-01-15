@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/02/2019
 ms.author: robreed
-ms.openlocfilehash: b3c355219fcbebc5fda38c33d6eb7f9126b3b2b8
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 9fe0875f34745b0b5b8b1b7e8b352116b6cbf997
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073823"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75941903"
 ---
 # <a name="custom-script-extension-for-windows"></a>Niestandardowe rozszerzenie skryptu dla systemu Windows
 
@@ -81,7 +81,7 @@ Te elementy powinny być traktowane jako dane poufne i określone w konfiguracji
     "properties": {
         "publisher": "Microsoft.Compute",
         "type": "CustomScriptExtension",
-        "typeHandlerVersion": "1.9",
+        "typeHandlerVersion": "1.10",
         "autoUpgradeMinorVersion": true,
         "settings": {
             "fileUris": [
@@ -92,11 +92,15 @@ Te elementy powinny być traktowane jako dane poufne i określone w konfiguracji
         "protectedSettings": {
             "commandToExecute": "myExecutionCommand",
             "storageAccountName": "myStorageAccountName",
-            "storageAccountKey": "myStorageAccountKey"
+            "storageAccountKey": "myStorageAccountKey",
+            "managedIdentity" : {}
         }
     }
 }
 ```
+
+> [!NOTE]
+> Właściwość managedIdentity **nie może** być używana w połączeniu z właściwościami StorageAccountName lub storageAccountKey
 
 > [!NOTE]
 > Tylko jedna wersja rozszerzenia może być zainstalowana na maszynie wirtualnej w danym momencie, co oznacza, że niestandardowy skrypt dwa razy w tym samym szablonie Menedżer zasobów dla tej samej maszyny wirtualnej zakończy się niepowodzeniem.
@@ -109,14 +113,15 @@ Te elementy powinny być traktowane jako dane poufne i określone w konfiguracji
 | Nazwa | Wartość / przykład | Typ danych |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| publisher | Microsoft.Compute | ciąg |
-| type | CustomScriptExtension | ciąg |
-| typeHandlerVersion | 1.9 | int |
+| publisher | Microsoft.Compute | string |
+| type | CustomScriptExtension | string |
+| typeHandlerVersion | 1,10 | int |
 | fileUris (np.) | https://raw.githubusercontent.com/Microsoft/dotnet-core-sample-templates/master/dotnet-core-music-windows/scripts/configure-music-app.ps1 | tablica |
 | timestamp (np.) | 123456789 | 32-bitowa liczba całkowita |
-| Sekcji commandtoexecute (np.) | powershell -ExecutionPolicy Unrestricted -File configure-music-app.ps1 | ciąg |
-| storageAccountName (np.) | examplestorageacct | ciąg |
-| storageAccountKey (np.) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | ciąg |
+| Sekcji commandtoexecute (np.) | powershell -ExecutionPolicy Unrestricted -File configure-music-app.ps1 | string |
+| storageAccountName (np.) | examplestorageacct | string |
+| storageAccountKey (np.) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | string |
+| managedIdentity (np.) | {} lub {"clientId": "31b403aa-c364-4240-a7ff-d85fb6cd7232"} lub {"objectId": "12dd289c-0583-46e5-b9b4-115d5c19ef4b"} | Obiekt JSON |
 
 >[!NOTE]
 >W tych nazwach właściwości jest rozróżniana wielkość liter. Aby uniknąć problemów z wdrażaniem, użyj nazw, jak pokazano poniżej.
@@ -128,6 +133,9 @@ Te elementy powinny być traktowane jako dane poufne i określone w konfiguracji
 * `timestamp` (opcjonalnie, 32-bitową liczbę całkowitą) Użyj tego pola tylko do wyzwalania ponownego uruchomienia skryptu przez zmianę wartości tego pola.  Dopuszczalna jest dowolna wartość całkowita; musi on być inny niż Poprzednia wartość.
 * `storageAccountName`: (opcjonalnie, String) nazwa konta magazynu. W przypadku określenia poświadczeń magazynu wszystkie `fileUris` muszą być adresami URL dla obiektów blob platformy Azure.
 * `storageAccountKey`: (opcjonalnie, String) klucz dostępu konta magazynu
+* `managedIdentity`: (opcjonalnie obiekt JSON) [zarządzana tożsamość](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) do pobierania plików
+  * `clientId`: (opcjonalnie, String) identyfikator klienta zarządzanej tożsamości
+  * `objectId`: (Optional, String) identyfikator obiektu tożsamości zarządzanej
 
 Następujące wartości można ustawić w ustawieniach publicznych lub chronionych, rozszerzenie odrzuci każdą konfigurację, w której poniższe wartości są ustawione zarówno w ustawieniach publicznych, jak i chronionych.
 
@@ -136,6 +144,46 @@ Następujące wartości można ustawić w ustawieniach publicznych lub chroniony
 Korzystanie z ustawień publicznych może być przydatne w przypadku debugowania, ale zaleca się używanie ustawień chronionych.
 
 Ustawienia publiczne są wysyłane w postaci zwykłego tekstu do maszyny wirtualnej, na której skrypt zostanie wykonany.  Ustawienia chronione są szyfrowane przy użyciu klucza znanego tylko na platformie Azure i maszynie wirtualnej. Ustawienia są zapisywane na maszynie wirtualnej w miarę ich wysyłania, czyli jeśli ustawienia zostały zaszyfrowane, są one zaszyfrowane na maszynie wirtualnej. Certyfikat używany do odszyfrowywania zaszyfrowanych wartości jest przechowywany na maszynie wirtualnej i używany do odszyfrowywania ustawień (w razie potrzeby) w czasie wykonywania.
+
+####  <a name="property-managedidentity"></a>Właściwość: managedIdentity
+
+CustomScript (wersja 1.10.4) obsługuje funkcję RBAC opartą na [tożsamościach zarządzanych](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) na potrzeby pobierania plików z adresów URL określonych w ustawieniu "fileUris". Umożliwia CustomScript dostęp do prywatnych obiektów BLOB/kontenerów usługi Azure Storage bez konieczności przekazywania wpisów tajnych, takich jak tokeny SAS lub klucze kont magazynu.
+
+Aby można było użyć tej funkcji, użytkownik musi dodać tożsamość przypisaną przez [system](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#adding-a-system-assigned-identity) lub [przypisanej do użytkownika](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#adding-a-user-assigned-identity) do maszyny wirtualnej lub VMSS, gdzie oczekiwano CustomScript, i [przyznać zarządzanej tożsamości dostęp do kontenera lub obiektu BLOB usługi Azure Storage](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/tutorial-vm-windows-access-storage#grant-access).
+
+Aby użyć tożsamości przypisanej do systemu na docelowej maszynie wirtualnej/VMSS, ustaw wartość pola "managedidentity" na pusty obiekt JSON. 
+
+> Przykład:
+>
+> ```json
+> {
+>   "fileUris": ["https://mystorage.blob.core.windows.net/privatecontainer/script1.ps1"],
+>   "commandToExecute": "powershell.exe script1.ps1",
+>   "managedIdentity" : {}
+> }
+> ```
+
+Aby użyć tożsamości przypisanej przez użytkownika na docelowej maszynie wirtualnej/VMSS, należy skonfigurować pole "managedidentity" z IDENTYFIKATORem klienta lub IDENTYFIKATORem obiektu tożsamości zarządzanej.
+
+> Przykłady:
+>
+> ```json
+> {
+>   "fileUris": ["https://mystorage.blob.core.windows.net/privatecontainer/script1.ps1"],
+>   "commandToExecute": "powershell.exe script1.ps1",
+>   "managedIdentity" : { "clientId": "31b403aa-c364-4240-a7ff-d85fb6cd7232" }
+> }
+> ```
+> ```json
+> {
+>   "fileUris": ["https://mystorage.blob.core.windows.net/privatecontainer/script1.ps1"],
+>   "commandToExecute": "powershell.exe script1.ps1",
+>   "managedIdentity" : { "objectId": "12dd289c-0583-46e5-b9b4-115d5c19ef4b" }
+> }
+> ```
+
+> [!NOTE]
+> Właściwość managedIdentity **nie może** być używana w połączeniu z właściwościami StorageAccountName lub storageAccountKey
 
 ## <a name="template-deployment"></a>Wdrażanie na podstawie szablonu
 
@@ -157,7 +205,7 @@ Set-AzVMCustomScriptExtension -ResourceGroupName <resourceGroupName> `
     -Name DemoScriptExtension
 ```
 
-## <a name="additional-examples"></a>Dodatkowe przykłady
+## <a name="additional-examples"></a>Więcej przykładów
 
 ### <a name="using-multiple-scripts"></a>Korzystanie z wielu skryptów
 
@@ -181,7 +229,7 @@ Set-AzVMExtension -ResourceGroupName <resourceGroupName> `
     -Name "buildserver1" `
     -Publisher "Microsoft.Compute" `
     -ExtensionType "CustomScriptExtension" `
-    -TypeHandlerVersion "1.9" `
+    -TypeHandlerVersion "1.10" `
     -Settings $settings    `
     -ProtectedSettings $protectedSettings `
 ```
@@ -199,7 +247,7 @@ Set-AzVMExtension -ResourceGroupName <resourceGroupName> `
     -Name "serverUpdate"
     -Publisher "Microsoft.Compute" `
     -ExtensionType "CustomScriptExtension" `
-    -TypeHandlerVersion "1.9" `
+    -TypeHandlerVersion "1.10" `
     -ProtectedSettings $protectedSettings
 
 ```
@@ -225,7 +273,7 @@ The response content cannot be parsed because the Internet Explorer engine is no
 
 Aby wdrożyć rozszerzenie niestandardowego skryptu na klasycznych maszynach wirtualnych, można użyć Azure Portal lub klasycznych poleceń cmdlet Azure PowerShell.
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Portal Azure
 
 Przejdź do klasycznego zasobu maszyny wirtualnej. W obszarze **Ustawienia**wybierz pozycję **rozszerzenia** .
 
@@ -277,7 +325,7 @@ gdzie `<n>` jest dziesiętną liczbą całkowitą, która może ulec zmianie mi�
 
 Podczas wykonywania polecenia `commandToExecute` rozszerzenie ustawia ten katalog (na przykład `...\Downloads\2`) jako bieżący katalog roboczy. Ten proces umożliwia lokalizowanie plików pobranych za pośrednictwem właściwości `fileURIs` przy użyciu ścieżek względnych. Przykłady można znaleźć w poniższej tabeli.
 
-Ze względu na to, że absolutna ścieżka pobierania może się różnić w miarę upływu czasu, lepiej jest wybrać względne ścieżki skryptów/plików w ciągu `commandToExecute`, jeśli jest to możliwe. Na przykład:
+Ze względu na to, że absolutna ścieżka pobierania może się różnić w miarę upływu czasu, lepiej jest wybrać względne ścieżki skryptów/plików w ciągu `commandToExecute`, jeśli jest to możliwe. Przykład:
 
 ```json
 "commandToExecute": "powershell.exe . . . -File \"./scripts/myscript.ps1\""

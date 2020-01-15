@@ -7,16 +7,16 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
-ms.date: 11/27/2019
+ms.date: 01/13/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019
-ms.openlocfilehash: cd1d57643f9a1eb7c50d0de06d42fbbcec085f34
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 85987ca1ff7d2dd204d0a501367efffc8277f138
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75458783"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75939926"
 ---
 # <a name="sql-data-warehouse-workload-group-isolation-preview"></a>Izolacja grupy obciążeń SQL Data Warehouse (wersja zapoznawcza)
 
@@ -90,3 +90,4 @@ Dostęp do zasobów w puli udostępnionej jest przypisywany na podstawie [ważno
 - [Szybki Start: Konfigurowanie izolacji obciążenia](quickstart-configure-workload-isolation-tsql.md)
 - [UTWÓRZ GRUPĘ OBCIĄŻEŃ](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest)
 - [Przekonwertuj klasy zasobów na grupy obciążeń](sql-data-warehouse-how-to-convert-resource-classes-workload-groups.md).
+- [Monitorowanie Portal zarządzania obciążenia](sql-data-warehouse-workload-management-portal-monitor.md).  

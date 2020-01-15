@@ -6,13 +6,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 10/28/2019
-ms.openlocfilehash: 2b54dd5161312a081d439b3e10d2cb4bf9014d52
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.date: 01/14/2020
+ms.openlocfilehash: 739f97e912a33402aa7482e59dd78f5aeb005772
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75496526"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75944421"
 ---
 # <a name="delete-and-restore-azure-log-analytics-workspace"></a>Usuwanie i przywracanie obszaru roboczego usługi Azure Log Analytics
 
@@ -55,7 +55,7 @@ Obszar roboczy można usunąć przy użyciu [programu PowerShell](https://docs.m
 
 ### <a name="powershell"></a>PowerShell
 ```PowerShell
-PS C:\>Remove-AzOperationalInsightsWorkspace -ResourceGroupName "ContosResourceGroup" -Name "MyWorkspace"
+PS C:\>Remove-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-name" -Name "workspace-name"
 ```
 
 ## <a name="recover-workspace"></a>Odzyskiwanie obszaru roboczego
@@ -68,6 +68,12 @@ Obszar roboczy można odzyskać przez ponowne utworzenie go przy użyciu następ
 * Nazwa grupy zasobów
 * Nazwa obszaru roboczego
 * Region
+
+### <a name="powershell"></a>PowerShell
+```PowerShell
+PS C:\>Select-AzSubscription "subscription-name-the-workspace-was-in"
+PS C:\>New-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-name-the-workspace-was-in" -Name "deleted-workspace-name" -Location "region-name-the-workspace-was-in"
+```
 
 Obszar roboczy i wszystkie jego dane zostaną przywrócone po operacji odzyskiwania. Rozwiązania i połączone usługi zostały trwale usunięte z obszaru roboczego, gdy zostało usunięte, i należy je ponownie skonfigurować w celu przeniesienia obszaru roboczego do wcześniej skonfigurowanego stanu. Niektóre dane mogą nie być dostępne dla zapytań po odzyskaniu obszaru roboczego do momentu ponownego zainstalowania skojarzonych rozwiązań, a ich schematy zostaną dodane do obszaru roboczego.
 

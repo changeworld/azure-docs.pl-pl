@@ -1,55 +1,70 @@
 ---
-title: Problemy z nawiązywaniem połączenia i używanie do Azure SQL Database
+title: Rozwiązywanie typowych problemów z połączeniami z usługą SQL Database
 description: Zawiera instrukcje dotyczące rozwiązywania problemów z połączeniami Azure SQL Database i rozwiązywania innych problemów dotyczących SQL Database
 services: sql-database
 ms.service: sql-database
 ms.topic: troubleshooting
 ms.custom: seo-lt-2019, OKR 11/2019
-author: v-miegge
+author: ramakoni1
 ms.author: ramakoni
-ms.reviewer: carlrab
+ms.reviewer: carlrab,vanto
 ms.date: 11/14/2019
-ms.openlocfilehash: 0bd018d90f4ca2c64df56d27eebdc6c9160309ac
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 445048531826861afb13c5fff6af407348aa9c2e
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082405"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75940789"
 ---
 # <a name="troubleshooting-connectivity-issues-and-other-errors-with-microsoft-azure-sql-database"></a>Rozwiązywanie problemów z łącznością i innych błędów przy użyciu Microsoft Azure SQL Database
 
-Gdy nawiązywanie połączenia z usługą Azure SQL Database nie powiedzie się, pojawią się komunikaty o błędach. Te problemy z połączeniem mogą być spowodowane przez Azure SQL Database ponowną konfigurację, ustawienia zapory, limit czasu połączenia lub nieprawidłowe informacje logowania. Ponadto w przypadku osiągnięcia maksymalnego limitu dla niektórych zasobów Azure SQL Database nie można nawiązać połączenia z Azure SQL Database.
+Gdy nawiązywanie połączenia z usługą Azure SQL Database nie powiedzie się, pojawią się komunikaty o błędach. Te problemy z połączeniem mogą być spowodowane przez Azure SQL Database ponowną konfigurację, ustawienia zapory, przekroczenie limitu czasu połączenia, nieprawidłowe informacje logowania lub niepowodzenie zastosowania najlepszych praktyk i wytyczne dotyczące projektowania w [projektowanie aplikacji] ( sql-database-develop-overview.md). Ponadto w przypadku osiągnięcia maksymalnego limitu dla niektórych zasobów Azure SQL Database nie można nawiązać połączenia z Azure SQL Database.
 
-## <a name="transient-fault-error-messages"></a>Komunikaty o błędach przejściowych
+## <a name="transient-fault-error-messages-40197-40613-and-others"></a>Komunikaty o błędach przejściowych (40197, 40613 i inne)
 
-Infrastruktura platformy Azure ma możliwość dynamicznego ponownego konfigurowania serwerów w przypadku wystąpienia dużych obciążeń w usłudze SQL Database.  To dynamiczne zachowanie może powodować, że program kliencki utraci połączenie z usługą SQL Database. Ten rodzaj warunku błędu nazywa się *błędem przejściowym*. Zdecydowanie zaleca się, aby program kliencki miał logikę ponowień, aby można było ponownie nawiązać połączenie po podaniu błędu przejściowego.  Zalecamy opóźnienie przez 5 sekund przed pierwszym ponowieniem próby. Ponawianie próby po opóźnieniu krótszym niż 5 sekund ryzyka przeciążania usługi w chmurze. Dla każdej kolejnej ponownej próby opóźnienie powinno się zwiększyć wykładniczo, maksymalnie 60 sekund.
+Infrastruktura platformy Azure ma możliwość dynamicznego ponownego konfigurowania serwerów w przypadku wystąpienia dużych obciążeń w usłudze SQL Database.  To dynamiczne zachowanie może powodować, że program kliencki utraci połączenie z usługą SQL Database. Ten rodzaj warunku błędu nazywa się *błędem przejściowym*. Zdarzenia ponownej konfiguracji bazy danych występują ze względu na planowane zdarzenie (na przykład uaktualnienie oprogramowania) lub niezaplanowane zdarzenie (na przykład awaria procesu lub Równoważenie obciążenia). Większość zdarzeń ponownej konfiguracji jest zwykle krótkoterminowa i powinna być wykonana w mniej niż 60 sekund. Jednak te zdarzenia mogą czasami trwać dłużej, na przykład wtedy, gdy duża transakcja powoduje długotrwałe odzyskiwanie. W poniższej tabeli wymieniono różne błędy przejściowe, które aplikacje mogą odbierać podczas nawiązywania połączenia z usługą SQL Database
+
+### <a name="list-of-transient-fault-error-codes"></a>Lista kodów błędów przejściowych
+
+
+| Kod błędu | Ważność | Opis |
+| ---:| ---:|:--- |
+| 4060 |16 |Nie można otworzyć bazy danych "%.&#x2a; ls" żądanego podczas logowania. Logowanie nie powiodło się. Aby uzyskać więcej informacji, zobacz [błędy 4000 do 4999](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors#errors-4000-to-4999)|
+| 40197 |17 |Usługa napotkała błąd podczas przetwarzania żądania. Spróbuj ponownie. Kod błędu% d.<br/><br/>Ten błąd występuje, gdy usługa nie działa z powodu uaktualnień oprogramowania lub sprzętu, awarii sprzętu lub innych problemów z trybem failover. Kod błędu (% d) osadzony w komunikacie o błędzie 40197] zawiera dodatkowe informacje na temat rodzaju awarii lub przejścia w tryb failover, które wystąpiły. Niektóre przykłady kodów błędów są osadzone w komunikacie o błędzie 40197 to 40020, 40143, 40166 i 40540.<br/><br/>Ponowne nawiązywanie połączenia z serwerem SQL Database automatycznie nawiązuje połączenie z dobrą kopią bazy danych. Aplikacja musi obsłużyć błąd 40197, zarejestrować osadzony kod błędu (% d) w komunikacie w celu rozwiązywania problemów, a następnie spróbować ponownie nawiązać połączenie z SQL Database, dopóki zasoby nie będą dostępne, a połączenie zostanie nawiązane. Aby uzyskać więcej informacji, zobacz [Błędy przejściowe](sql-database-connectivity-issues.md#transient-errors-transient-faults).|
+| 40501 |20 |Usługa jest obecnie zajęta. Ponów żądanie po 10 sekundach. Identyfikator zdarzenia:% ls. Kod:% d. Aby uzyskać więcej informacji, zobacz: <br/>&bull; &nbsp;[limitów zasobów serwera bazy danych](sql-database-resource-limits-database-server.md)<br/>&bull; &nbsp;[limitów opartych na jednostkach DTU dla pojedynczych baz danych](sql-database-service-tiers-dtu.md)<br/>&bull; &nbsp;[limity jednostek DTU dla pul elastycznych](sql-database-dtu-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[limity rdzeń wirtualny dla pojedynczych baz danych](sql-database-vcore-resource-limits-single-databases.md)<br/>&bull; &nbsp;[limity rdzeń wirtualny dla pul elastycznych](sql-database-vcore-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[limitów zasobów wystąpienia zarządzanego](sql-database-managed-instance-resource-limits.md).|
+| 40613 |17 |Baza danych '%.&#x2a;ls' na serwerze '%.&#x2a;ls' nie jest obecnie dostępna. Spróbuj ponownie nawiązać połączenie później. Jeśli problem będzie się powtarzać, skontaktuj się z pomocą techniczną i podaj identyfikator śledzenia sesji '%.&#x2a;ls'.<br/><br/> Ten błąd może wystąpić, jeśli istnieje już istniejące dedykowane połączenie administratora (DAC) dla bazy danych. Aby uzyskać więcej informacji, zobacz [Błędy przejściowe](sql-database-connectivity-issues.md#transient-errors-transient-faults).|
+| 49918 |16 |Nie można przetworzyć żądania. Za mało zasobów, aby przetworzyć żądanie.<br/><br/>Usługa jest obecnie zajęta. Spróbuj ponownie wykonać żądanie później. Aby uzyskać więcej informacji, zobacz: <br/>&bull; &nbsp;[limitów zasobów serwera bazy danych](sql-database-resource-limits-database-server.md)<br/>&bull; &nbsp;[limitów opartych na jednostkach DTU dla pojedynczych baz danych](sql-database-service-tiers-dtu.md)<br/>&bull; &nbsp;[limity jednostek DTU dla pul elastycznych](sql-database-dtu-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[limity rdzeń wirtualny dla pojedynczych baz danych](sql-database-vcore-resource-limits-single-databases.md)<br/>&bull; &nbsp;[limity rdzeń wirtualny dla pul elastycznych](sql-database-vcore-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[limitów zasobów wystąpienia zarządzanego](sql-database-managed-instance-resource-limits.md). |
+| 49919 |16 |Nie można przetworzyć żądania Create lub Update. Zbyt wiele operacji tworzenia lub aktualizacji w toku dla subskrypcji "% LD".<br/><br/>Usługa jest zajęta przetwarzaniem wielu żądań utworzenia lub aktualizacji dla Twojej subskrypcji lub serwera. Żądania są obecnie blokowane na potrzeby optymalizacji zasobów. Zapytanie [sys. dm_operation_status](https://msdn.microsoft.com/library/dn270022.aspx) dla operacji oczekujących. Zaczekaj na ukończenie oczekujących żądań utworzenia lub aktualizacji lub Usuń jedno z oczekujących żądań, a następnie ponów żądanie później. Aby uzyskać więcej informacji, zobacz: <br/>&bull; &nbsp;[limitów zasobów serwera bazy danych](sql-database-resource-limits-database-server.md)<br/>&bull; &nbsp;[limitów opartych na jednostkach DTU dla pojedynczych baz danych](sql-database-service-tiers-dtu.md)<br/>&bull; &nbsp;[limity jednostek DTU dla pul elastycznych](sql-database-dtu-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[limity rdzeń wirtualny dla pojedynczych baz danych](sql-database-vcore-resource-limits-single-databases.md)<br/>&bull; &nbsp;[limity rdzeń wirtualny dla pul elastycznych](sql-database-vcore-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[limitów zasobów wystąpienia zarządzanego](sql-database-managed-instance-resource-limits.md). |
+| 49920 |16 |Nie można przetworzyć żądania. Zbyt wiele operacji w toku dla subskrypcji "% LD".<br/><br/>Usługa jest zajęta przetwarzaniem wielu żądań dla tej subskrypcji. Żądania są obecnie blokowane na potrzeby optymalizacji zasobów. Zapytanie [sys. dm_operation_status](https://msdn.microsoft.com/library/dn270022.aspx) dla stanu operacji. Zaczekaj na zakończenie oczekujących żądań lub Usuń jedno z oczekujących żądań, a następnie ponów żądanie później. Aby uzyskać więcej informacji, zobacz: <br/>&bull; &nbsp;[limitów zasobów serwera bazy danych](sql-database-resource-limits-database-server.md)<br/>&bull; &nbsp;[limitów opartych na jednostkach DTU dla pojedynczych baz danych](sql-database-service-tiers-dtu.md)<br/>&bull; &nbsp;[limity jednostek DTU dla pul elastycznych](sql-database-dtu-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[limity rdzeń wirtualny dla pojedynczych baz danych](sql-database-vcore-resource-limits-single-databases.md)<br/>&bull; &nbsp;[limity rdzeń wirtualny dla pul elastycznych](sql-database-vcore-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[limitów zasobów wystąpienia zarządzanego](sql-database-managed-instance-resource-limits.md). |
+| 4221 |16 |Logowanie do odczytu i pomocnicze nie powiodło się z powodu długiego oczekiwania na "HADR_DATABASE_WAIT_FOR_TRANSITION_TO_VERSIONING". Replika jest niedostępna do logowania, ponieważ brakuje wersji wiersza dla transakcji, które były odtwarzane podczas odtwarzania repliki. Problem można rozwiązać przez wycofanie lub zatwierdzenie aktywnych transakcji w replice podstawowej. Wystąpienia tego warunku można zminimalizować, unikając długich transakcji zapisu na serwerze podstawowym. |
+
+
+### <a name="steps-to-resolve-transient-connectivity-issues"></a>Kroki rozwiązywania przejściowych problemów z łącznością
+
+1. Sprawdź [pulpit nawigacyjny usługi Microsoft Azure](https://azure.microsoft.com/status) pod kątem znanych przestojów, które wystąpiły w czasie, w którym błędy zostały zgłoszone przez aplikację.
+2. Aplikacje łączące się z usługą w chmurze, takie jak Azure SQL Database, powinny oczekiwać okresowych zdarzeń ponownej konfiguracji i wdrożyć logikę ponawiania w celu obsługi tych błędów zamiast obsłużyć te błędy jako błędy aplikacji dla użytkowników. 
+3. Jako że baza danych zbliża się do limitów zasobów, może wydawać się przejściowy problem z łącznością. Zobacz [limity zasobów](sql-database-resource-limits-database-server.md#what-happens-when-database-resource-limits-are-reached).
+4. Jeśli problemy z łącznością będą kontynuowane lub jeśli czas, przez który aplikacja napotyka błąd, przekracza 60 sekund lub Jeśli zobaczysz wiele wystąpień błędu w danym dniu, Utwórz żądanie pomocy technicznej platformy Azure, wybierając pozycję **Uzyskaj pomoc** techniczną w witrynie [pomocy technicznej systemu Azure](https://azure.microsoft.com/support/options) .
+
+#### <a name="implementing-retry-logic"></a>Implementowanie logiki ponawiania
+Zdecydowanie zaleca się, aby program kliencki miał logikę ponowień, aby można było ponownie nawiązać połączenie po podaniu błędu przejściowego.  Zalecamy opóźnienie przez 5 sekund przed pierwszym ponowieniem próby. Ponawianie próby po opóźnieniu krótszym niż 5 sekund ryzyka przeciążania usługi w chmurze. Dla każdej kolejnej ponownej próby opóźnienie powinno się zwiększyć wykładniczo, maksymalnie 60 sekund.
 
 Przykłady kodu logiki ponowień można znaleźć w temacie:
+- [Odłączaj się do bazy danych SQL za pomocą ADO.NET](https://docs.microsoft.com/sql/connect/ado-net/step-4-connect-resiliently-sql-ado-net)
+- [Odłączanie się do bazy danych SQL za pomocą języka PHP](https://docs.microsoft.com/sql/connect/php/step-4-connect-resiliently-to-sql-with-php)
 
-* [Biblioteki połączeń dla SQL Database i SQL Server](sql-database-libraries.md)
-* [Akcje usuwania błędów połączeń i błędów przejściowych w SQL Database](sql-database-connectivity-issues.md)
+Aby uzyskać dodatkowe informacje na temat obsługi błędów przejściowych w przeglądzie aplikacji
+* [Rozwiązywanie błędów przejściowych połączeń do SQL Database](sql-database-connectivity-issues.md)
 
-> [!TIP]
-> Aby rozwiązać problemy omówione w poniższych sekcjach, spróbuj wykonać czynności opisane w sekcji [kroki rozwiązywania typowych problemów z połączeniami](#steps-to-fix-common-connection-issues) .
+Omówienie *okresu blokowania* dla klientów korzystających z usługi ADO.NET jest dostępny w [puli połączeń SQL Server (ADO.NET)](https://msdn.microsoft.com/library/8xx3tyca.aspx).
 
-### <a name="error-40613-database--x--on-server--y--is-not-currently-available"></a>Błąd 40613: baza danych < x > na serwerze < y > jest obecnie niedostępna
-
-``40613: Database <DBname> on server < server name > is not currently available. Please retry the connection later. If the problem persists, contact customer support, and provide them the session tracing ID of '< Tracing ID >'.``
-
-Aby rozwiązać ten problem:
-
-1. Sprawdź [pulpit nawigacyjny usługi Microsoft Azure](https://status.azure.com/status) pod kątem znanych awarii.
-2. Jeśli nie ma znanego przerwy w działaniu, przejdź do [witryny sieci Web pomocy technicznej Microsoft Azure](https://azure.microsoft.com/support/options) , aby otworzyć sprawę pomocy technicznej.
-
-Aby uzyskać więcej informacji, zobacz [Rozwiązywanie problemów z błędem "baza danych na serwerze jest obecnie niedostępna"](sql-database-troubleshoot-common-connection-issues.md#troubleshoot-transient-errors).
-
-### <a name="a-network-related-or-instance-specific-error-occurred-while-establishing-a-connection-to-sql-database-server"></a>Wystąpił błąd związany z siecią lub wystąpieniem podczas ustanawiania połączenia z serwerem SQL Database
+## <a name="a-network-related-or-instance-specific-error-occurred-while-establishing-a-connection-to-sql-database-server"></a>Wystąpił błąd związany z siecią lub wystąpieniem podczas ustanawiania połączenia z serwerem SQL Database
 
 Problem występuje, jeśli aplikacja nie może nawiązać połączenia z serwerem.
 
 Aby rozwiązać ten problem, spróbuj wykonać czynności opisane w sekcji [kroki rozwiązywania typowych problemów z połączeniami](#steps-to-fix-common-connection-issues) .
 
-### <a name="the-serverinstance-was-not-found-or-was-not-accessible-errors-26-40-10053"></a>Serwer/wystąpienie nie zostało odnalezione lub nie było dostępne (błędy 26, 40, 10053)
+## <a name="the-serverinstance-was-not-found-or-was-not-accessible-errors-26-40-10053"></a>Serwer/wystąpienie nie zostało odnalezione lub nie było dostępne (błędy 26, 40, 10053)
 
 #### <a name="error-26-error-locating-server-specified"></a>Błąd 26: Wystąpił błąd podczas lokalizowania określonego serwera
 
@@ -63,28 +78,9 @@ Aby rozwiązać ten problem, spróbuj wykonać czynności opisane w sekcji [krok
 
 ``10053: A transport-level error has occurred when receiving results from the server. (Provider: TCP Provider, error: 0 - An established connection was aborted by the software in your host machine)``
 
-#### <a name="cannot-connect-to-a-secondary-database"></a>Nie można nawiązać połączenia z pomocniczą bazą danych
+Te problemy występują, jeśli aplikacja nie może nawiązać połączenia z serwerem.
 
-Próba połączenia z pomocniczą bazą danych nie powiodła się, ponieważ baza danych jest w trakcie ponownej konfiguracji i jest zajęta przez zastosowanie nowych stron w trakcie aktywnej transakcji w podstawowej bazie danych.
-
-#### <a name="adonet-and-blocking-period"></a>ADO.NET i okres blokowania
-
-Omówienie *okresu blokowania* dla klientów korzystających z usługi ADO.NET jest dostępny w [puli połączeń SQL Server (ADO.NET)](https://msdn.microsoft.com/library/8xx3tyca.aspx).
-
-### <a name="list-of-transient-fault-error-codes"></a>Lista kodów błędów przejściowych
-
-Następujące błędy są przejściowe i należy ponowić próbę w logice aplikacji:
-
-| Kod błędu | Ważność | Opis |
-| ---:| ---:|:--- |
-| 4060 |16 |Nie można otworzyć bazy danych "%.&#x2a; ls" żądanego podczas logowania. Logowanie nie powiodło się. Aby uzyskać więcej informacji, zobacz [błędy 4000 do 4999](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors#errors-4000-to-4999)|
-| 40197 |17 |Usługa napotkała błąd podczas przetwarzania żądania. Spróbuj ponownie później. Kod błędu% d.<br/><br/>Ten błąd występuje, gdy usługa nie działa z powodu uaktualnień oprogramowania lub sprzętu, awarii sprzętu lub innych problemów z trybem failover. Kod błędu (% d) osadzony w komunikacie o błędzie 40197] zawiera dodatkowe informacje na temat rodzaju awarii lub przejścia w tryb failover, które wystąpiły. Niektóre przykłady kodów błędów są osadzone w komunikacie o błędzie 40197 to 40020, 40143, 40166 i 40540.<br/><br/>Ponowne nawiązywanie połączenia z serwerem SQL Database automatycznie nawiązuje połączenie z dobrą kopią bazy danych. Aplikacja musi obsłużyć błąd 40197, zarejestrować osadzony kod błędu (% d) w komunikacie w celu rozwiązywania problemów, a następnie spróbować ponownie nawiązać połączenie z SQL Database, dopóki zasoby nie będą dostępne, a połączenie zostanie nawiązane. Aby uzyskać więcej informacji, zobacz [Błędy przejściowe](sql-database-connectivity-issues.md#transient-errors-transient-faults).|
-| 40501 |20 |Usługa jest obecnie zajęta. Ponów żądanie po 10 sekundach. Identyfikator zdarzenia:% ls. Kod:% d. Aby uzyskać więcej informacji, zobacz: <br/>&bull; &nbsp;[limitów zasobów serwera bazy danych](sql-database-resource-limits-database-server.md)<br/>&bull; &nbsp;[limitów opartych na jednostkach DTU dla pojedynczych baz danych](sql-database-service-tiers-dtu.md)<br/>&bull; &nbsp;[limity jednostek DTU dla pul elastycznych](sql-database-dtu-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[limity rdzeń wirtualny dla pojedynczych baz danych](sql-database-vcore-resource-limits-single-databases.md)<br/>&bull; &nbsp;[limity rdzeń wirtualny dla pul elastycznych](sql-database-vcore-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[limitów zasobów wystąpienia zarządzanego](sql-database-managed-instance-resource-limits.md).|
-| 40613 |17 |Baza danych '%.&#x2a;ls' na serwerze '%.&#x2a;ls' nie jest obecnie dostępna. Spróbuj ponownie nawiązać połączenie później. Jeśli problem będzie się powtarzać, skontaktuj się z pomocą techniczną i podaj identyfikator śledzenia sesji '%.&#x2a;ls'.<br/><br/> Ten błąd może wystąpić, jeśli istnieje już istniejące dedykowane połączenie administratora (DAC) dla bazy danych. Aby uzyskać więcej informacji, zobacz [Błędy przejściowe](sql-database-connectivity-issues.md#transient-errors-transient-faults).|
-| 49918 |16 |Nie można przetworzyć żądania. Za mało zasobów, aby przetworzyć żądanie.<br/><br/>Usługa jest obecnie zajęta. Spróbuj ponownie wykonać żądanie później. Aby uzyskać więcej informacji, zobacz: <br/>&bull; &nbsp;[limitów zasobów serwera bazy danych](sql-database-resource-limits-database-server.md)<br/>&bull; &nbsp;[limitów opartych na jednostkach DTU dla pojedynczych baz danych](sql-database-service-tiers-dtu.md)<br/>&bull; &nbsp;[limity jednostek DTU dla pul elastycznych](sql-database-dtu-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[limity rdzeń wirtualny dla pojedynczych baz danych](sql-database-vcore-resource-limits-single-databases.md)<br/>&bull; &nbsp;[limity rdzeń wirtualny dla pul elastycznych](sql-database-vcore-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[limitów zasobów wystąpienia zarządzanego](sql-database-managed-instance-resource-limits.md). |
-| 49919 |16 |Nie można przetworzyć żądania Create lub Update. Zbyt wiele operacji tworzenia lub aktualizacji w toku dla subskrypcji "% LD".<br/><br/>Usługa jest zajęta przetwarzaniem wielu żądań utworzenia lub aktualizacji dla Twojej subskrypcji lub serwera. Żądania są obecnie blokowane na potrzeby optymalizacji zasobów. Zapytanie [sys. dm_operation_status](https://msdn.microsoft.com/library/dn270022.aspx) dla operacji oczekujących. Zaczekaj na ukończenie oczekujących żądań utworzenia lub aktualizacji lub Usuń jedno z oczekujących żądań, a następnie ponów żądanie później. Aby uzyskać więcej informacji, zobacz: <br/>&bull; &nbsp;[limitów zasobów serwera bazy danych](sql-database-resource-limits-database-server.md)<br/>&bull; &nbsp;[limitów opartych na jednostkach DTU dla pojedynczych baz danych](sql-database-service-tiers-dtu.md)<br/>&bull; &nbsp;[limity jednostek DTU dla pul elastycznych](sql-database-dtu-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[limity rdzeń wirtualny dla pojedynczych baz danych](sql-database-vcore-resource-limits-single-databases.md)<br/>&bull; &nbsp;[limity rdzeń wirtualny dla pul elastycznych](sql-database-vcore-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[limitów zasobów wystąpienia zarządzanego](sql-database-managed-instance-resource-limits.md). |
-| 49920 |16 |Nie można przetworzyć żądania. Zbyt wiele operacji w toku dla subskrypcji "% LD".<br/><br/>Usługa jest zajęta przetwarzaniem wielu żądań dla tej subskrypcji. Żądania są obecnie blokowane na potrzeby optymalizacji zasobów. Zapytanie [sys. dm_operation_status](https://msdn.microsoft.com/library/dn270022.aspx) dla stanu operacji. Zaczekaj na zakończenie oczekujących żądań lub Usuń jedno z oczekujących żądań, a następnie ponów żądanie później. Aby uzyskać więcej informacji, zobacz: <br/>&bull; &nbsp;[limitów zasobów serwera bazy danych](sql-database-resource-limits-database-server.md)<br/>&bull; &nbsp;[limitów opartych na jednostkach DTU dla pojedynczych baz danych](sql-database-service-tiers-dtu.md)<br/>&bull; &nbsp;[limity jednostek DTU dla pul elastycznych](sql-database-dtu-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[limity rdzeń wirtualny dla pojedynczych baz danych](sql-database-vcore-resource-limits-single-databases.md)<br/>&bull; &nbsp;[limity rdzeń wirtualny dla pul elastycznych](sql-database-vcore-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[limitów zasobów wystąpienia zarządzanego](sql-database-managed-instance-resource-limits.md). |
-| 4221 |16 |Logowanie do odczytu i pomocnicze nie powiodło się z powodu długiego oczekiwania na "HADR_DATABASE_WAIT_FOR_TRANSITION_TO_VERSIONING". Replika jest niedostępna do logowania, ponieważ brakuje wersji wiersza dla transakcji, które były odtwarzane podczas odtwarzania repliki. Problem można rozwiązać przez wycofanie lub zatwierdzenie aktywnych transakcji w replice podstawowej. Wystąpienia tego warunku można zminimalizować, unikając długich transakcji zapisu na serwerze podstawowym. |
+Aby rozwiązać te problemy, spróbuj wykonać czynności opisane w sekcji [kroki rozwiązywania typowych problemów z połączeniami](#steps-to-fix-common-connection-issues) .
 
 ## <a name="cannot-connect-to-server-due-to-firewall-issues"></a>Nie można nawiązać połączenia z serwerem z powodu problemów z zaporą
 
@@ -176,16 +172,6 @@ Aby uzyskać więcej informacji, zobacz [Zarządzanie bazami danych i nazwami lo
 Te wyjątki mogą wystąpić z powodu problemów z połączeniem lub zapytaniem. Aby potwierdzić, że ten błąd jest spowodowany problemami z łącznością, zobacz [potwierdzenie, czy błąd jest spowodowany problemem z łącznością](#confirm-whether-an-error-is-caused-by-a-connectivity-issue).
 
 Przekroczono limit czasu połączenia, ponieważ aplikacja nie może nawiązać połączenia z serwerem. Aby rozwiązać ten problem, spróbuj wykonać czynności opisane w sekcji [kroki rozwiązywania typowych problemów z połączeniami](#steps-to-fix-common-connection-issues) .
-
-## <a name="transient-errors-errors-40197-40545"></a>Błędy przejściowe (błędy 40197, 40545)
-
-### <a name="error-40197-the-service-has-encountered-an-error-processing-your-request-please-try-again-error-code--code-"></a>Błąd 40197: usługa napotkała błąd podczas przetwarzania żądania. Spróbuj ponownie później. Kod błędu < kod >
-
-Ten problem występuje z powodu przejściowego błędu, który wystąpił podczas ponownej konfiguracji lub przejścia w tryb failover na zapleczu.
-
-Aby rozwiązać ten problem, poczekaj chwilę, a następnie ponów próbę. Jeśli problem będzie nadal występować, nie jest wymagany żaden przypadek pomocy technicznej.
-
-Najlepszym rozwiązaniem jest upewnienie się, że logika ponowienia jest na miejscu. Aby uzyskać więcej informacji o logice ponowień, zobacz [Rozwiązywanie błędów przejściowych i błędy połączeń w SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-issues).
 
 ## <a name="resource-governance-errors"></a>Błędy ładu zasobów
 
@@ -330,7 +316,7 @@ Następujące błędy są związane z tworzeniem i używaniem pul elastycznych:
 |:--- |:--- |:--- |:--- |
 | 1132 | 17 |Osiągnięto limit magazynowania elastycznej puli. Użycie magazynu dla puli elastycznej nie może przekroczyć (% d) MB. Podjęto próbę zapisu danych w bazie danych, gdy osiągnięto limit magazynowania puli elastycznej. Aby uzyskać informacje na temat limitów zasobów, zobacz: <br/>&bull; &nbsp;[limity jednostek DTU dla pul elastycznych](sql-database-dtu-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[limity rdzeń wirtualny dla pul elastycznych](sql-database-vcore-resource-limits-elastic-pools.md). <br/> |Rozważ zwiększenie DTU i/lub dodanie magazynu do puli elastycznej, jeśli jest to możliwe, aby zwiększyć jej limit magazynowania, zmniejszyć ilość miejsca używanego przez pojedyncze bazy danych w puli elastycznej lub usunąć bazy danych z puli elastycznej. Aby uzyskać skalowanie puli elastycznej, zobacz [skalowanie zasobów w puli elastycznej](sql-database-elastic-pool-scale.md).|
 | 10929 | 16 |Minimalna gwarancja% s wynosi% d, maksymalny limit wynosi% d, a bieżące użycie bazy danych to% d. Jednak serwer jest obecnie zbyt zajęty, aby obsługiwać żądania większe niż% d dla tej bazy danych. Aby uzyskać informacje na temat limitów zasobów, zobacz: <br/>&bull; &nbsp;[limity jednostek DTU dla pul elastycznych](sql-database-dtu-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[limity rdzeń wirtualny dla pul elastycznych](sql-database-vcore-resource-limits-elastic-pools.md). <br/> W przeciwnym razie spróbuj ponownie później. Wartość DTU/rdzeń wirtualny min na bazę danych; Maksymalna liczba jednostek DTU/rdzeń wirtualny na bazę danych. Całkowita liczba współbieżnych procesów roboczych (żądań) dla wszystkich baz danych w puli elastycznej podjęła próbę przekroczenia limitu puli. |Rozważ zwiększenie DTU lub rdzeni wirtualnych puli elastycznej, jeśli jest to możliwe, aby zwiększyć jej limit procesów roboczych lub usunąć bazy danych z puli elastycznej. |
-| 40844 | 16 |Baza danych "% ls" na serwerze "% ls" jest bazą danych wersji "% ls" w puli elastycznej i nie może mieć relacji ciągłego kopiowania.  |Nie dotyczy |
+| 40844 | 16 |Baza danych "% ls" na serwerze "% ls" jest bazą danych wersji "% ls" w puli elastycznej i nie może mieć relacji ciągłego kopiowania.  |ND |
 | 40857 | 16 |Nie znaleziono puli elastycznej dla serwera: "% ls", Nazwa puli elastycznej: "% ls". Określona Pula elastyczna nie istnieje na określonym serwerze. | Podaj prawidłową nazwę puli elastycznej. |
 | 40858 | 16 |Pula elastyczna "% ls" już istnieje na serwerze: "% ls". Określona Pula elastyczna już istnieje w określonym SQL Database serwerze. | Podaj nazwę nowej puli elastycznej. |
 | 40859 | 16 |Pula elastyczna nie obsługuje warstwy usług "% ls". Określona warstwa usług nie jest obsługiwana w przypadku aprowizacji elastycznej puli. |Wprowadź poprawną wersję lub pozostaw pustą warstwę usługi, aby użyć domyślnej warstwy usług. |
@@ -347,7 +333,7 @@ Następujące błędy są związane z tworzeniem i używaniem pul elastycznych:
 | 40881 | 16 |Osiągnięto limit liczby baz danych dla puli elastycznej "%. * ls".  Limit liczby baz danych dla puli elastycznej nie może przekroczyć (% d) dla puli elastycznej z (% d) DTU. Podjęto próbę utworzenia lub dodania bazy danych do puli elastycznej, gdy osiągnięto limit liczby baz danych w puli elastycznej. | Rozważ zwiększenie DTU puli elastycznej, jeśli jest to możliwe, aby zwiększyć jej limit bazy danych, lub usuń bazy danych z puli elastycznej. |
 | 40889 | 16 |Nie można zmniejszyć DTU lub limitu magazynu dla puli elastycznej "%. * ls", ponieważ nie zapewnia ona wystarczającej ilości miejsca w magazynie dla swoich baz danych. Podjęto próbę zmniejszenia limitu magazynowania elastycznej puli poniżej użycia magazynu. | Rozważ zmniejszenie użycia magazynu dla poszczególnych baz danych w elastycznej puli lub usuń bazy danych z puli, aby zmniejszyć limit DTU lub magazynu. |
 | 40891 | 16 |Minimalna wartość DTU na bazę danych (% d) nie może przekroczyć maksymalnej wartości DTU na bazę danych (% d). Podjęto próbę ustawienia minimalnej wartości DTU na bazę danych wyższą niż maksymalna wartość DTU na bazę danych. |Upewnij się, że minimalna wartość DTU na bazy danych nie przekracza maksymalnej wartości DTU na bazę danych. |
-| TBD | 16 |Rozmiar magazynu dla pojedynczej bazy danych w puli elastycznej nie może przekroczyć maksymalnego rozmiaru dozwolonego przez pulę elastyczną warstwy usług "%. * ls". Maksymalny rozmiar bazy danych przekracza maksymalny rozmiar dozwolony przez warstwę usługi elastycznej puli. |Ustaw maksymalny rozmiar bazy danych w granicach maksymalnego rozmiaru dozwolonego przez warstwę usług Elastic Pool. |
+| do ustalenia | 16 |Rozmiar magazynu dla pojedynczej bazy danych w puli elastycznej nie może przekroczyć maksymalnego rozmiaru dozwolonego przez pulę elastyczną warstwy usług "%. * ls". Maksymalny rozmiar bazy danych przekracza maksymalny rozmiar dozwolony przez warstwę usługi elastycznej puli. |Ustaw maksymalny rozmiar bazy danych w granicach maksymalnego rozmiaru dozwolonego przez warstwę usług Elastic Pool. |
 
 ## <a name="cannot-open-database-master-requested-by-the-login-the-login-failed"></a>Nie można otworzyć bazy danych "Master" żądanej przez nazwę logowania. Logowanie nie powiodło się
 

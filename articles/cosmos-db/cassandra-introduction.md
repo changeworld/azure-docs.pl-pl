@@ -8,16 +8,16 @@ ms.topic: overview
 ms.date: 05/21/2019
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 63a85e86b1882bdaf4e5b85601a7deabe5b3bbef
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: cc6b1a2516a454c843f176e947cc3a56186b0b47
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442131"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75939939"
 ---
 # <a name="introduction-to-the-azure-cosmos-db-cassandra-api"></a>Wprowadzenie do interfejsu API Cassandra usługi Azure Cosmos DB
 
-Interfejs API Cassandra usługi Azure Cosmos DB może być używany jako magazyn danych dla aplikacji napisanych dla na potrzeby usługi [Apache Cassandra](https://cassandra.apache.org/). Oznacza to, że używając istniejących [sterowników Apache](https://cassandra.apache.org/doc/latest/getting_started/drivers.html?highlight=driver) zgodnych z językiem CQL w wersji 4, aplikacja napisana dla platformy Cassandra może teraz komunikować się z interfejsem API Cassandra usługi Azure Cosmos DB. W wielu przypadkach, aby przełączyć się z używania platformy Apache Cassandra do interfejsu API Cassandra usługi Azure Cosmos DB, wystarczy zmienić tylko parametry połączenia. 
+Interfejs API Cassandra usługi Azure Cosmos DB może być używany jako magazyn danych dla aplikacji napisanych dla na potrzeby usługi [Apache Cassandra](http://cassandra.apache.org). Oznacza to, że używając istniejących [sterowników Apache](http://cassandra.apache.org/doc/latest/getting_started/drivers.html?highlight=driver) zgodnych z językiem CQL w wersji 4, aplikacja napisana dla platformy Cassandra może teraz komunikować się z interfejsem API Cassandra usługi Azure Cosmos DB. W wielu przypadkach, aby przełączyć się z używania platformy Apache Cassandra do interfejsu API Cassandra usługi Azure Cosmos DB, wystarczy zmienić tylko parametry połączenia. 
 
 Interfejs API Cassandra pozwala na interakcję z danymi przechowywanymi w usłudze Azure Cosmos DB za pomocą języka Cassandra Query Language (CQL), narzędzi opartych na platformie Cassandra (takich jak cqlsh) i sterowników klienta platformy Cassandra, które już znasz.
 

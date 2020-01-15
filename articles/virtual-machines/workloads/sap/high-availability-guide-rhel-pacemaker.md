@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/17/2018
 ms.author: sedusch
-ms.openlocfilehash: ee67c811835d99bf2f4c00dc59b43e29f63c81d6
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 9ccbd67348a8dae7391471ccd1dcc1ba9b135ea2
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533810"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75941824"
 ---
 # <a name="setting-up-pacemaker-on-red-hat-enterprise-linux-in-azure"></a>Konfigurowanie Pacemaker Red Hat Enterprise Linux na platformie Azure
 
@@ -76,7 +76,7 @@ Przeczytaj najpierw następujące informacje i dokumenty SAP:
 > Red Hat nie obsługuje emulowanego przez oprogramowanie licznika alarmowego. Red Hat nie obsługuje SBD na platformach w chmurze. Aby uzyskać szczegółowe informacje, zobacz [zasady pomocy technicznej dotyczące klastrów RHEL o wysokiej dostępności — SBD i fence_sbd](https://access.redhat.com/articles/2800691).
 > Jedynym obsługiwanym mechanizmem ogrodzenia dla klastrów Pacemaker Red Hat Enterprise Linux na platformie Azure jest Agent usługi Azure ogrodzeni.  
 
-Następujące elementy są poprzedzone **[A]** -dotyczy wszystkie węzły, **[1]** — dotyczy tylko węzła 1 lub **[2]** — dotyczy tylko węzła 2.
+Następujące elementy mają prefiks albo **[A]** — mające zastosowanie do wszystkich węzłów, **[1]** — dotyczy to tylko węzeł 1 lub **[2]** — dotyczy to tylko węzeł 2.
 
 1. Rejestr **[A]**
 
@@ -88,7 +88,7 @@ Następujące elementy są poprzedzone **[A]** -dotyczy wszystkie węzły, **[1]
    sudo subscription-manager attach --pool=&lt;pool id&gt;
    </code></pre>
 
-   Należy pamiętać, że przez dołączenie puli do obrazu programu RHEL z witryny Azure Marketplace w witrynie PAYG, opłaty są naliczane dwukrotnie za użycie RHEL: jeden dla obrazu PAYG i jeden raz dla uprawnienia RHEL w puli, którą dołączysz. Aby rozwiązać ten problem, platforma Azure udostępnia teraz obrazy BYOS RHEL. Więcej informacji można znaleźć [tutaj](https://aka.ms/rhel-byos).
+   Należy pamiętać, że przez dołączenie puli do obrazu programu RHEL z witryny Azure Marketplace w witrynie PAYG, opłaty są naliczane dwukrotnie za użycie RHEL: jeden dla obrazu PAYG i jeden raz dla uprawnienia RHEL w puli, którą dołączysz. Aby rozwiązać ten problem, platforma Azure udostępnia teraz obrazy BYOS RHEL. Więcej informacji można znaleźć [tutaj](../redhat/byos.md).
 
 1. **[A]** Włącz RHEL dla REPOZYTORIów SAP
 
@@ -122,15 +122,15 @@ Następujące elementy są poprzedzone **[A]** -dotyczy wszystkie węzły, **[1]
    > [!IMPORTANT]
    > Jeśli trzeba zaktualizować agenta usługi Azure ogrodzenia, a jeśli jest używana rola niestandardowa, należy zaktualizować rolę niestandardową w celu uwzględnienia akcji **wyłączenie**. Aby uzyskać szczegółowe informacje, zobacz [Tworzenie roli niestandardowej dla agenta ogranicznika](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker#1-create-a-custom-role-for-the-fence-agent).  
 
-1. **[A]** rozpoznawanie nazw hostów
+1. **[A]**  Konfigurowanie rozpoznawania nazw hostów
 
-   Możesz użyć serwera DNS lub zmodyfikować/etc/hosts na wszystkich węzłach. Ten przykład pokazuje, jak używać pliku/etc/hosts.
-   Zastąp adres IP i nazwę hosta w następujących poleceniach. Zaletą korzystania z/etc/hosts jest to, że klaster będzie niezależny od systemu DNS, co może być tylko pojedynczym punktem awarii.
+   Można użyć serwera DNS lub zmodyfikować/etc/hosts na wszystkich węzłach. W tym przykładzie pokazano, jak przy użyciu pliku/etc/hosts.
+   Zastąp adres IP i nazwy hosta w poniższych poleceniach. Zaletą używania/etc/hosts będzie niezależnie od systemu DNS, co może być zbyt pojedynczy punkt awarii klastra.
 
    <pre><code>sudo vi /etc/hosts
    </code></pre>
 
-   Wstaw następujące wiersze do/etc/hosts. Zmień adres IP i nazwę hosta, aby odpowiadały Twojemu środowisku
+   Wstaw następujące wiersze do/etc/hosts. Zmienianie adresu IP i nazwy hosta do danego środowiska
 
    <pre><code># IP address of the first cluster node
    <b>10.0.0.6 prod-cl1-0</b>
@@ -138,7 +138,7 @@ Następujące elementy są poprzedzone **[A]** -dotyczy wszystkie węzły, **[1]
    <b>10.0.0.7 prod-cl1-1</b>
    </code></pre>
 
-1. **[A]** Zmień hasło hacluster na to samo hasło
+1. **[A]**  Zmień hacluster hasło do tego samego hasła
 
    <pre><code>sudo passwd hacluster
    </code></pre>
@@ -198,26 +198,26 @@ Następujące elementy są poprzedzone **[A]** -dotyczy wszystkie węzły, **[1]
 
 ## <a name="create-stonith-device"></a>Utwórz urządzenie STONITH
 
-Urządzenie STONITH używa nazwy głównej usługi do autoryzacji przed Microsoft Azure. Wykonaj następujące kroki, aby utworzyć nazwę główną usługi.
+Urządzenie pomocą metody STONITH używa nazwy głównej usługi, do autoryzacji dla Microsoft Azure. Wykonaj następujące kroki, aby utworzyć jednostkę usługi.
 
 1. Przejdź do usługi <https://portal.azure.com>
-1. Otwórz blok Azure Active Directory  
-   Przejdź do pozycji właściwości i Zapisz identyfikator katalogu. To jest **Identyfikator dzierżawy**.
-1. Kliknij Rejestracje aplikacji
+1. Otwórz blok usługi Azure Active Directory  
+   Przejdź do właściwości i zanotuj nazwę katalogu. Jest to **identyfikator dzierżawy**.
+1. Kliknij przycisk rejestracje aplikacji
 1. Kliknij pozycję Nowa rejestracja
 1. Wprowadź nazwę, wybierz pozycję "konta tylko w tym katalogu organizacji". 
 2. Wybierz pozycję typ aplikacji "sieć Web", wprowadź adres URL logowania (na przykład http:\//localhost), a następnie kliknij przycisk Dodaj.  
-   Adres URL logowania nie jest używany i może być dowolnym prawidłowym adresem URL
+   Adres URL logowania nie jest używany i może być dowolny prawidłowy adres URL
 1. Wybierz pozycję Certyfikaty i wpisy tajne, a następnie kliknij pozycję Nowy wpis tajny klienta.
 1. Wprowadź opis nowego klucza, wybierz pozycję "nigdy nie wygasa" i kliknij przycisk Dodaj.
-1. Zapisz wartość. Służy jako **hasło** dla nazwy głównej usługi
-1. Wybierz pozycję przegląd. Zapisz identyfikator aplikacji. Jest ona używana jako nazwa użytkownika (**Identyfikator logowania** w poniższych krokach) nazwy głównej usługi
+1. Zanotuj wartość. Jest ona używana jako **hasło** jednostki usługi
+1. Wybierz pozycję przegląd. Zanotuj identyfikator aplikacji. Jest ona używana jako nazwa użytkownika (**Identyfikatora logowania** w poniższych krokach) jednostki usługi
 
-### <a name="1-create-a-custom-role-for-the-fence-agent"></a>**[1]** Utwórz rolę niestandardową dla agenta ogranicznika
+### <a name="1-create-a-custom-role-for-the-fence-agent"></a>**[1]**  Utworzyć rolę niestandardową dla agenta odgradzania
 
-Jednostka usługi nie ma uprawnień dostępu do zasobów platformy Azure domyślnie. Należy nadać uprawnienia główne usługi, aby uruchomić i zatrzymać (wyłączyć) wszystkie maszyny wirtualne w klastrze. Jeśli rola niestandardowa nie została jeszcze utworzona, możesz ją utworzyć przy użyciu [programu PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell) lub [interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)
+Nazwa główna usługi nie ma uprawnień do dostępu do zasobów platformy Azure, domyślnie. Należy nadać uprawnienia główne usługi, aby uruchomić i zatrzymać (wyłączyć) wszystkie maszyny wirtualne w klastrze. Jeśli nie utworzono jeszcze niestandardowej roli, można utworzyć za pomocą [PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell) lub [wiersza polecenia platformy Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)
 
-Użyj następującej zawartości dla pliku wejściowego. Musisz dostosować zawartość do swoich subskrypcji, zastępując c276fc76-9cd4-44c9-99a7-4fd71546436e i e91d47c4-76f3-4271-a796-21b4ecfe3624 identyfikatorami subskrypcji. Jeśli masz tylko jedną subskrypcję, Usuń drugą pozycję w AssignableScopes.
+Użyj zawartości dla pliku wejściowego. Należy dostosować zawartość dla Twojej subskrypcji, Zastąp c276fc76-9cd4-44c9-99a7-4fd71546436e i e91d47c4-76f3-4271-a796-21b4ecfe3624 identyfikatory subskrypcji. Jeśli masz tylko jedną subskrypcję, należy usunąć drugi wpis w AssignableScopes.
 
 ```json
 {
@@ -241,22 +241,22 @@ Użyj następującej zawartości dla pliku wejściowego. Musisz dostosować zawa
 
 ### <a name="a-assign-the-custom-role-to-the-service-principal"></a>**[A]** Przypisz rolę niestandardową do jednostki usługi
 
-Przypisz rolę niestandardową "rola agenta ogranicznika systemu Linux" utworzoną w ostatnim rozdziale do jednostki usługi. Nie używaj już roli właściciela!
+Przypisz rolę niestandardową "Linux horyzont agenta rolę" utworzonego w rozdziale ostatniego jednostki usługi. Nie używaj roli właściciel już!
 
 1. Przejdź do usługi https://portal.azure.com
-1. Otwórz blok wszystkie zasoby
-1. Wybierz maszynę wirtualną pierwszego węzła klastra
-1. Kliknij pozycję Kontrola dostępu (IAM)
-1. Kliknij pozycję Dodaj przypisanie roli
-1. Wybierz rolę "rola agenta ogranicznika systemu Linux"
-1. Wprowadź nazwę utworzonej aplikacji
-1. Klikanie pozycji Zapisz.
+1. Otwieranie bloku wszystkie zasoby
+1. Wybierz maszynę wirtualną, w pierwszym węźle klastra
+1. Kliknij przycisk kontroli dostępu (IAM)
+1. Kliknij przycisk Dodaj przypisanie roli
+1. Wybierz rolę "Rolę agenta Odgradzania Linux"
+1. Wprowadź nazwę aplikacji, które zostały utworzone powyżej
+1. Kliknij pozycję Zapisz
 
 Powtórz powyższe kroki dla drugiego węzła klastra.
 
-### <a name="1-create-the-stonith-devices"></a>**[1]** tworzenie urządzeń STONITH
+### <a name="1-create-the-stonith-devices"></a>**[1]**  Tworzenie urządzeń pomocą metody STONITH
 
-Po edytowaniu uprawnień dla maszyn wirtualnych można skonfigurować urządzenia STONITH w klastrze.
+Po edycji uprawnień dla maszyn wirtualnych można skonfigurować urządzenia pomocą metody STONITH w klastrze.
 
 <pre><code>
 sudo pcs property set stonith-timeout=900

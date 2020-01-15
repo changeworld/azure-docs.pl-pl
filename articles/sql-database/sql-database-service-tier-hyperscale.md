@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/01/2019
-ms.openlocfilehash: 8c694cbd8d9386401b8ad26cf5ce6ce31e6b9bd9
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 9cce221946a16103e706875e179c677190f32af1
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75614929"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75940805"
 ---
 # <a name="hyperscale-service-tier"></a>Warstwa usługi Hiperskala
 
@@ -251,6 +251,7 @@ Są to bieżące ograniczenia dotyczące warstwy usług w ramach skalowania na p
 | Kopia bazy danych | Nie można jeszcze użyć kopii bazy danych w celu utworzenia nowej bazy danych w funkcji wieloskalowania SQL platformy Azure. |
 | Integracja TDE/AKV | Szyfrowanie przezroczystej bazy danych przy użyciu Azure Key Vault (nazywanego też kluczem "Przenieś jako własne-Key" lub BYOK) nie jest jeszcze obsługiwane dla Azure SQL Database funkcji TDE, ale z kluczami zarządzanymi przez usługę jest w pełni obsługiwane. |
 |Funkcje inteligentnej bazy danych | Z wyjątkiem opcji "Wymuś plan" wszystkie inne opcje dostrajania automatycznego nie są jeszcze obsługiwane w obszarze skalowanie: opcje mogą być dostępne, ale nie zostaną wykonane żadne zalecenia ani działania. |
+|Analiza wydajności zapytań | Szczegółowe informacje o wydajności zapytań nie są obecnie obsługiwane w przypadku baz danych w skali. |
 | Zmniejsz bazę danych | Polecenia DBCC SHRINKDATABASE lub DBCC SHRINKFILE nie są obecnie obsługiwane w przypadku baz danych w ramach skalowania. |
 | Sprawdzanie integralności bazy danych | Polecenie DBCC CHECKDB nie jest obecnie obsługiwane w przypadku baz danych w skali. Aby uzyskać szczegółowe informacje na temat zarządzania integralnością danych w programie Azure SQL Database, zobacz temat [integralność danych w Azure SQL Database](https://azure.microsoft.com/blog/data-integrity-in-azure-sql-database/) . |
 

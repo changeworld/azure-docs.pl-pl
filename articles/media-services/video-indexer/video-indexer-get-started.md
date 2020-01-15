@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: tutorial
-ms.date: 10/10/2019
+ms.date: 01/13/2020
 ms.author: juliako
-ms.openlocfilehash: 957acc25c3218069a20e90fe83e00e441b6303d6
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 3a5ddf5bd4614b68e97e7616173a3e0640007530
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839557"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75941552"
 ---
 # <a name="quickstart-how-to-sign-up-and-upload-your-first-video"></a>Szybki Start: jak utworzyć konto i przekazać swoje pierwsze wideo
 
@@ -32,6 +32,12 @@ Aby rozpocząć tworzenie rozwiązań za pomocą usługi Video Indexer, przejdź
 > [!NOTE]
 > Nazwa filmu wideo nie może być dłuższa niż 80 znaków.
 
+### <a name="supported-file-formats-for-video-indexer"></a>Obsługiwane formaty plików dla Video Indexer
+
+Listę formatów plików, których można używać z Video Indexer, zawiera artykuł [dane wejściowe dotyczące formatów kontenerów i plików](../latest/media-encoder-standard-formats.md#input-containerfile-formats) .
+
+### <a name="upload-a-video"></a>Przekazywanie wideo
+
 1. Zaloguj się w witrynie internetowej usługi [Video Indexer](https://www.videoindexer.ai/).
 2. Aby przekazać plik wideo, naciśnij przycisk lub link **Upload** (Przekaż).
 
@@ -45,7 +51,9 @@ Aby rozpocząć tworzenie rozwiązań za pomocą usługi Video Indexer, przejdź
 
 ## <a name="next-steps"></a>Następne kroki
 
-Teraz możesz zapoznać się ze szczegółowymi informacjami dotyczącymi tego pliku wideo za pomocą witryny internetowej usługi [Video Indexer](video-indexer-view-edit.md) lub [portalu dla deweloperów usługi Video Indexer](video-indexer-use-apis.md). 
+Aby uzyskać więcej informacji [, zobacz Przekazywanie i indeksowanie filmów wideo](upload-index-videos.md) .
+
+Po przekazaniu i poindeksowania wideo możesz zacząć korzystać z witryny sieci Web [Video Indexer](video-indexer-view-edit.md) lub [Video Indexer portalu dla deweloperów](video-indexer-use-apis.md) , aby zobaczyć szczegółowe informacje o filmie wideo. 
 
 ## <a name="see-also"></a>Zobacz także
 

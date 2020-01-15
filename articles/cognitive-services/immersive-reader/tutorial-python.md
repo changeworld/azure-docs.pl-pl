@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: Uruchamianie czytnika immersyjny przy użyciu języka Python'
+title: 'Samouczek: uruchamianie czytnika immersyjny przy użyciu języka Python'
 titleSuffix: Azure Cognitive Services
 description: W tym samouczku utworzysz aplikację w języku Python, która uruchamia czytnik immersyjny.
 services: cognitive-services
@@ -10,16 +10,16 @@ ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 08/02/2019
 ms.author: dylankil
-ms.openlocfilehash: 6404a5d49bd7af1ed5d74299f03eda8d0bb14b89
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 3293c4ea76010e5f39c793a1faee14d9a74226a0
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326449"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75945227"
 ---
-# <a name="tutorial-launch-the-immersive-reader-using-the-python-sample-project"></a>Samouczek: Uruchamianie czytnika immersyjny przy użyciu przykładowego projektu języka Python
+# <a name="tutorial-launch-the-immersive-reader-using-the-python-sample-project"></a>Samouczek: uruchamianie czytnika immersyjny przy użyciu przykładowego projektu języka Python
 
-W [przeglądzie](./overview.md)zawarto informacje na temat tego, co to jest czytnik immersyjny i w jaki sposób implementuje sprawdzone techniki w celu zwiększenia czytelności dla osób uczące się, nowych czytelników i studentów z różnicami w nauce. W tym samouczku opisano sposób tworzenia aplikacji sieci Web w języku Python, która uruchamia czytnik immersyjny. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+W [przeglądzie](./overview.md)zawarto informacje na temat tego, co to jest czytnik immersyjny i w jaki sposób implementuje sprawdzone techniki w celu zwiększenia czytelności dla osób uczące się, nowych czytelników i studentów z różnicami w nauce. W tym samouczku opisano sposób tworzenia aplikacji sieci Web w języku Python, która uruchamia czytnik immersyjny. Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Tworzenie aplikacji sieci Web w języku Python za pomocą PIP, kolby, jinja i virtualenv przy użyciu przykładowego projektu
@@ -30,8 +30,8 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Zasób czytnika immersyjny skonfigurowany do uwierzytelniania Azure Active Directory (Azure AD). Postępuj zgodnie z [tymi instrukcjami](./azure-active-directory-authentication.md) , aby rozpocząć konfigurację. Podczas konfigurowania właściwości środowiska będą potrzebne pewne wartości. Zapisz dane wyjściowe sesji w pliku tekstowym do użycia w przyszłości.
-* [Usługa Git](https://git-scm.com/)
+* Zasób czytnika immersyjny skonfigurowany do Azure Active Directory uwierzytelniania. Postępuj zgodnie z [tymi instrukcjami](./how-to-create-immersive-reader.md) , aby rozpocząć konfigurację. Podczas konfigurowania właściwości środowiska będą potrzebne pewne wartości. Zapisz dane wyjściowe sesji w pliku tekstowym do użycia w przyszłości.
+* [Git](https://git-scm.com/)
 * [Zestaw SDK czytnika immersyjny](https://github.com/microsoft/immersive-reader-sdk)
 * [Python](https://www.python.org/downloads/) i [PIP](https://docs.python.org/3/installing/index.html). Począwszy od języka Python 3,4, narzędzie PIP jest domyślnie dołączone do instalatorów binarnych języka Python.
 * [Flask](https://flask.palletsprojects.com/en/1.0.x/)
@@ -40,20 +40,9 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 * [Moduł żądań](https://pypi.org/project/requests/2.7.0/)
 * IDE, takie jak [Visual Studio Code](https://code.visualstudio.com/)
 
-## <a name="acquire-an-azure-ad-authentication-token"></a>Uzyskiwanie tokenu uwierzytelniania usługi Azure AD
+## <a name="configure-authentication-credentials"></a>Konfigurowanie poświadczeń uwierzytelniania
 
-Napisz interfejs API zaplecza, aby pobrać token uwierzytelniania usługi Azure AD.
-
-Wymagane są pewne wartości z kroku wymagań wstępnych konfiguracji uwierzytelniania usługi Azure AD powyżej dla tej części. Odwołaj się do pliku tekstowego zapisanego w tej sesji.
-
-````text
-TenantId     => Azure subscription TenantId
-ClientId     => Azure AD ApplicationId
-ClientSecret => Azure AD Application Service Principal password
-Subdomain    => Immersive Reader resource subdomain (resource 'Name' if the resource was created in the Azure portal, or 'CustomSubDomain' option if the resource was created with Azure CLI Powershell. Check the Azure portal for the subdomain on the Endpoint in the resource Overview page, for example, 'https://[SUBDOMAIN].cognitiveservices.azure.com/')
-````
-
-Po uzyskaniu tych wartości Utwórz nowy plik o nazwie _ENV_i wklej do niego następujący kod, dostarczając wartości właściwości niestandardowych z powyższych. Zastąp. _ENV._ plik w przykładowej aplikacji z nowo utworzonym plikiem.
+Utwórz nowy plik o nazwie _ENV_i wklej do niego następujący kod, dostarczając wartości podanych podczas tworzenia zasobu czytnika immersyjny.
 
 ```text
 TENANT_ID={YOUR_TENANT_ID}
@@ -70,7 +59,7 @@ Punkt końcowy interfejsu API **getimmersivereadertoken** powinien być zabezpie
 
 Utwórz aplikację sieci Web w języku Python przy użyciu `flask` w systemie Windows.
 
-[Zainstaluj oprogramowanie Git](https://git-scm.com/).
+Zainstaluj oprogramowanie [Git](https://git-scm.com/).
 
 Po zainstalowaniu usługi git Otwórz wiersz polecenia i "Klonuj" repozytorium git zestawu SDK dla czytnika immersyjny do folderu na komputerze
 
@@ -88,7 +77,7 @@ Dodaj funkcje opcjonalne, zaznaczając pola, a następnie klikając przycisk "da
 
 ![Okno dialogowe instalacji systemu Windows w języku Python — krok 2](./media/pythoninstalltwo.jpg)
 
-Wybierz pozycję "Instalacja niestandardowa" i Ustaw ścieżkę instalacji jako folder główny, np. `C:\Python37-32\`, a następnie kliknij przycisk "Zainstaluj".
+Wybierz pozycję "Instalacja niestandardowa" i Ustaw ścieżkę instalacji jako folder główny, np. `C:\Python37-32\` następnie kliknij przycisk "Zainstaluj".
 
 ![Okno dialogowe instalacji systemu Windows w języku Python — krok 3](./media/pythoninstallthree.jpg)
 
@@ -140,7 +129,7 @@ Tworzenie środowiska wirtualnego
 mkvirtualenv advanced-python
 ```
 
-`cd` do folderu głównego projektu przykładowego.
+`cd` z przykładowym folderem głównym projektu.
 
 ```cmd
 cd C:\immersive-reader-sdk\js\samples\advanced-python
@@ -188,7 +177,7 @@ Otwórz przeglądarkę i przejdź do _http://localhost:5000_ .
 
 Utwórz aplikację sieci Web w języku Python przy użyciu `flask` w OSX.
 
-[Zainstaluj oprogramowanie Git](https://git-scm.com/).
+Zainstaluj oprogramowanie [Git](https://git-scm.com/).
 
 Po zainstalowaniu usługi git Otwórz Terminal i "Klonuj" repozytorium git zestawu SDK czytnika immersyjny do folderu na komputerze
 
@@ -198,7 +187,7 @@ git clone https://github.com/microsoft/immersive-reader-sdk.git
 
 Zainstaluj język [Python](https://www.python.org/downloads/).
 
-Folder główny Python, np. `Python37-32` powinien teraz znajdować się w folderze aplikacji.
+Folder główny języka Python, np. `Python37-32` powinien teraz znajdować się w folderze aplikacji.
 
 Po zakończeniu instalacji języka Python Otwórz pozycję Terminal i `cd` w folderze skryptów języka Python.
 
@@ -227,7 +216,7 @@ sudo nano /etc/paths
 - Przejdź do dolnej części pliku, a następnie wprowadź ścieżkę, którą chcesz dodać jako ostatni element listy, np. `PATH=$PATH:/usr/local/bin`.
 - Naciśnij klawisz Control — x, aby zakończyć.
 - Wprowadź `Y`, aby zapisać zmodyfikowany bufor.
-- To wszystko! Aby go przetestować, w nowym oknie terminalu wpisz: `echo $PATH`.
+- Gotowe. Aby go przetestować, w nowym oknie terminalu wpisz: `echo $PATH`.
 
 Zainstaluj kolbę.
 

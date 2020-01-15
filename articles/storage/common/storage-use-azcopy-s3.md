@@ -5,15 +5,15 @@ services: storage
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 04/23/2019
+ms.date: 01/13/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 21f11b9175566fc020ad21e1983a9bef64ebbae3
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: a3180593eaf8c01c772fd761d88b5f5b9f7657ee
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74327860"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75941504"
 ---
 # <a name="copy-data-from-amazon-s3-to-azure-storage-by-using-azcopy"></a>Kopiowanie danych z usług Amazon S3 do usługi Azure Storage za pomocą AzCopy
 
@@ -56,12 +56,17 @@ AzCopy korzysta z interfejsu API [Put Block z adresu URL](https://docs.microsoft
 > [!TIP]
 > W przykładach w tej sekcji zamieszczono argumenty Path z pojedynczymi cudzysłowami (' '). Używaj pojedynczych cudzysłowów we wszystkich powłokach poleceń z wyjątkiem powłoki poleceń systemu Windows (cmd. exe). Jeśli używasz powłoki poleceń systemu Windows (cmd. exe), ujmij argumenty ścieżki z podwójnymi cudzysłowami ("") zamiast pojedynczego cudzysłowu ("").
 
+ Te przykłady działają również z kontami, które mają hierarchiczną przestrzeń nazw. [Dostęp z użyciem protokołu wieloprotokołowego do Data Lake Storage](../blobs/data-lake-storage-multi-protocol-access.md) umożliwia korzystanie z tej samej składni adresu URL (`blob.core.windows.net`) na tych kontach. 
+
 ### <a name="copy-an-object"></a>Kopiowanie obiektu
+
+Użyj tej samej składni adresu URL (`blob.core.windows.net`) dla kont, które mają hierarchiczną przestrzeń nazw.
 
 |    |     |
 |--------|-----------|
-| **Obowiązuje** | `azcopy copy 'https://s3.amazonaws.com/<bucket-name>/<object-name>' 'https://<storage-account-name>.blob.core.windows.net/<container-name>/<blob-name>'` |
+| **Składnia** | `azcopy copy 'https://s3.amazonaws.com/<bucket-name>/<object-name>' 'https://<storage-account-name>.blob.core.windows.net/<container-name>/<blob-name>'` |
 | **Przykład** | `azcopy copy 'https://s3.amazonaws.com/mybucket/myobject' 'https://mystorageaccount.blob.core.windows.net/mycontainer/myblob'` |
+| **Przykład** (hierarchiczna przestrzeń nazw) | `azcopy copy 'https://s3.amazonaws.com/mybucket/myobject' 'https://mystorageaccount.blob.core.windows.net/mycontainer/myblob'` |
 
 > [!NOTE]
 > Przykłady w tym artykule używają adresów URL w stylu ścieżki dla zasobników AWS S3 (na przykład: `http://s3.amazonaws.com/<bucket-name>`). 
@@ -70,33 +75,45 @@ AzCopy korzysta z interfejsu API [Put Block z adresu URL](https://docs.microsoft
 >
 > Aby dowiedzieć się więcej na temat wirtualnego hostowania zasobników, zobacz [Virtual hosting datazasobniks]] (https://docs.aws.amazon.com/AmazonS3/latest/dev/VirtualHosting.html).
 
-### <a name="copy-a-directory"></a>Kopiuj katalog
+### <a name="copy-a-directory"></a>Kopiowanie katalogu
+
+Użyj tej samej składni adresu URL (`blob.core.windows.net`) dla kont, które mają hierarchiczną przestrzeń nazw.
 
 |    |     |
 |--------|-----------|
-| **Obowiązuje** | `azcopy copy 'https://s3.amazonaws.com/<bucket-name>/<directory-name>' 'https://<storage-account-name>.blob.core.windows.net/<container-name>/<directory-name>' --recursive=true` |
+| **Składnia** | `azcopy copy 'https://s3.amazonaws.com/<bucket-name>/<directory-name>' 'https://<storage-account-name>.blob.core.windows.net/<container-name>/<directory-name>' --recursive=true` |
 | **Przykład** | `azcopy copy 'https://s3.amazonaws.com/mybucket/mydirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer/mydirectory' --recursive=true` |
+| **Przykład** (hierarchiczna przestrzeń nazw)| `azcopy copy 'https://s3.amazonaws.com/mybucket/mydirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer/mydirectory' --recursive=true` |
 
 ### <a name="copy-a-bucket"></a>Kopiowanie zasobnika
 
+Użyj tej samej składni adresu URL (`blob.core.windows.net`) dla kont, które mają hierarchiczną przestrzeń nazw.
+
 |    |     |
 |--------|-----------|
-| **Obowiązuje** | `azcopy copy 'https://s3.amazonaws.com/<bucket-name>' 'https://<storage-account-name>.blob.core.windows.net/<container-name>' --recursive=true` |
+| **Składnia** | `azcopy copy 'https://s3.amazonaws.com/<bucket-name>' 'https://<storage-account-name>.blob.core.windows.net/<container-name>' --recursive=true` |
 | **Przykład** | `azcopy copy 'https://s3.amazonaws.com/mybucket' 'https://mystorageaccount.blob.core.windows.net/mycontainer' --recursive=true` |
+| **Przykład** (hierarchiczna przestrzeń nazw)| `azcopy copy 'https://s3.amazonaws.com/mybucket/mydirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer/mydirectory' --recursive=true` |
 
 ### <a name="copy-all-buckets-in-all-regions"></a>Kopiuj wszystkie przedziały we wszystkich regionach
 
+Użyj tej samej składni adresu URL (`blob.core.windows.net`) dla kont, które mają hierarchiczną przestrzeń nazw.
+
 |    |     |
 |--------|-----------|
-| **Obowiązuje** | `azcopy copy 'https://s3.amazonaws.com/' 'https://<storage-account-name>.blob.core.windows.net' --recursive=true` |
+| **Składnia** | `azcopy copy 'https://s3.amazonaws.com/' 'https://<storage-account-name>.blob.core.windows.net' --recursive=true` |
 | **Przykład** | `azcopy copy 'https://s3.amazonaws.com' 'https://mystorageaccount.blob.core.windows.net' --recursive=true` |
+| **Przykład** (hierarchiczna przestrzeń nazw)| `azcopy copy 'https://s3.amazonaws.com/mybucket/mydirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer/mydirectory' --recursive=true` |
 
 ### <a name="copy-all-buckets-in-a-specific-s3-region"></a>Kopiuj wszystkie zasobniki w określonym regionie S3
 
+Użyj tej samej składni adresu URL (`blob.core.windows.net`) dla kont, które mają hierarchiczną przestrzeń nazw.
+
 |    |     |
 |--------|-----------|
-| **Obowiązuje** | `azcopy copy 'https://s3-<region-name>.amazonaws.com/' 'https://<storage-account-name>.blob.core.windows.net' --recursive=true` |
+| **Składnia** | `azcopy copy 'https://s3-<region-name>.amazonaws.com/' 'https://<storage-account-name>.blob.core.windows.net' --recursive=true` |
 | **Przykład** | `azcopy copy 'https://s3-rds.eu-north-1.amazonaws.com' 'https://mystorageaccount.blob.core.windows.net' --recursive=true` |
+| **Przykład** (hierarchiczna przestrzeń nazw)| `azcopy copy 'https://s3.amazonaws.com/mybucket/mydirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer/mydirectory' --recursive=true` |
 
 ## <a name="handle-differences-in-object-naming-rules"></a>Obsługa różnic w regułach nazewnictwa obiektów
 
@@ -138,7 +155,7 @@ AzCopy wykonuje następujące kroki:
 
 Więcej przykładów znajdziesz w jednym z następujących artykułów:
 
-- [Wprowadzenie do AzCopy](storage-use-azcopy-v10.md)
+- [Wprowadzenie do narzędzia AzCopy](storage-use-azcopy-v10.md)
 
 - [Transferowanie danych za pomocą AzCopy i magazynu obiektów BLOB](storage-use-azcopy-blobs.md)
 

@@ -1,21 +1,18 @@
 ---
-title: Rozwiązywanie problemów z trwającą replikacją maszyn wirtualnych Azrue za pomocą Azure Site Recovery
-description: Rozwiązywanie problemów z błędami i problemami podczas replikowania maszyn wirtualnych platformy Azure na potrzeby odzyskiwania po awarii
-services: site-recovery
-author: carmonmills
+title: Rozwiązywanie problemów z replikacją maszyn wirtualnych platformy Azure za pomocą Azure Site Recovery
+description: Rozwiązywanie problemów z replikacją w Azure Site Recovery ramach odzyskiwania po awarii maszyny wirtualnej platformy Azure
+author: sideeksh
 manager: rochakm
-ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 8/2/2019
-ms.author: carmonm
-ms.openlocfilehash: b738ffc36334fc540582ba29e803eb2790e2119e
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: fe300c1efc8f5802397a59296f8b127c321bd871
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/14/2020
-ms.locfileid: "75930741"
+ms.locfileid: "75941576"
 ---
-# <a name="troubleshoot-ongoing-problems-in-azure-to-azure-vm-replication"></a>Rozwiązywanie bieżących problemów z replikacją na platformę Azure na platformie Azure
+# <a name="troubleshoot-replication-in-azure-vm-disaster-recovery"></a>Rozwiązywanie problemów z replikacją w ramach odzyskiwania po awarii maszyny wirtualnej Azure
 
 W tym artykule opisano typowe problemy w Azure Site Recovery w przypadku replikowania i odzyskiwania maszyn wirtualnych platformy Azure z jednego regionu do innego. Wyjaśniono również, jak rozwiązywać problemy. Aby uzyskać więcej informacji o obsługiwanych konfiguracjach, zobacz [macierz obsługi do replikowania maszyn wirtualnych platformy Azure](site-recovery-support-matrix-azure-to-azure.md).
 
@@ -67,7 +64,7 @@ Jeśli skok jest z okazjonalnej serii danych, a szybkość zmiany danych jest wi
     - Przejdź do bloku dyski zagrożonej replikowanej maszyny i skopiuj nazwę dysku repliki
     - Przejdź do tego dysku zarządzanego repliki
     - W bloku przeglądu może zostać wyświetlony transparent informujący o wygenerowaniu adresu URL sygnatury dostępu współdzielonego. Kliknij ten transparent i Anuluj eksport. Zignoruj ten krok, jeśli transparent nie jest widoczny.
-    - Gdy tylko adres URL sygnatury dostępu współdzielonego zostanie odwołany, przejdź do bloku Konfiguracja dysku zarządzanego i Zwiększ rozmiar, tak aby funkcja ASR obsługiwała zaobserwowany wskaźnik zmian na dysku źródłowym
+    - Gdy tylko adres URL sygnatury dostępu współdzielonego zostanie odwołany, przejdź do bloku Konfiguracja dysku zarządzanego i Zwiększ rozmiar, tak aby Site Recovery obsługiwał częstotliwość zaobserwowanych zmian na dysku źródłowym
 
 ## <a name="Network-connectivity-problem"></a>Problemy z łącznością sieciową
 
@@ -113,12 +110,12 @@ W powyższym przykładzie **2147754994** jest kod błędu informujący o niepowo
 
 #### <a name="vss-writer-is-not-installed---error-2147221164"></a>Składnik zapisywania usługi VSS nie jest zainstalowany — błąd 2147221164 
 
-*Jak naprawić*: aby wygenerować tag spójności aplikacji, Azure Site Recovery używa usługi kopiowania woluminów w tle (VSS) firmy Microsoft. Powoduje zainstalowanie dostawcy usługi VSS w celu wykonania migawek spójności aplikacji. Ten dostawca usługi VSS jest instalowany jako usługa. Jeśli nie zainstalowano usługi dostawcy VSS, tworzenie migawki spójności aplikacji kończy się niepowodzeniem z identyfikatorem błędu 0x80040154 "Klasa nie jest zarejestrowana". </br>
+*Jak naprawić*: aby wygenerować tag spójności aplikacji, Azure Site Recovery używa usługi kopiowania woluminów w tle (VSS) firmy Microsoft. Powoduje zainstalowanie dostawcy usługi VSS w celu wykonania migawek spójności aplikacji. Ten dostawca usługi VSS jest instalowany jako usługa. Jeśli nie zainstalowano usługi dostawcy VSS, tworzenie migawki spójności aplikacji kończy się niepowodzeniem z IDENTYFIKATORem błędu 0x80040154 "Klasa nie jest zarejestrowana". </br>
 Zobacz [artykuł dotyczący rozwiązywania problemów z instalacją składnika zapisywania usługi VSS](https://docs.microsoft.com/azure/site-recovery/vmware-azure-troubleshoot-push-install#vss-installation-failures) 
 
 #### <a name="vss-writer-is-disabled---error-2147943458"></a>Składnik zapisywania usługi VSS jest wyłączony — błąd 2147943458
 
-**Jak naprawić**: aby wygenerować tag spójności aplikacji, Azure Site Recovery używa usługi kopiowania woluminów w tle (VSS) firmy Microsoft. Powoduje zainstalowanie dostawcy usługi VSS w celu wykonania migawek spójności aplikacji. Ten dostawca usługi VSS jest instalowany jako usługa. W przypadku wyłączenia usługi dostawcy VSS Tworzenie migawki spójności aplikacji kończy się niepowodzeniem z identyfikatorem błędu "określona usługa jest wyłączona i nie można jej uruchomić (0x80070422)". </br>
+**Jak naprawić**: aby wygenerować tag spójności aplikacji, Azure Site Recovery używa usługi kopiowania woluminów w tle (VSS) firmy Microsoft. Powoduje zainstalowanie dostawcy usługi VSS w celu wykonania migawek spójności aplikacji. Ten dostawca usługi VSS jest instalowany jako usługa. W przypadku wyłączenia usługi dostawcy VSS Tworzenie migawki spójności aplikacji kończy się niepowodzeniem z IDENTYFIKATORem błędu "określona usługa jest wyłączona i nie można jej uruchomić (0x80070422)". </br>
 
 - Jeśli usługa VSS jest wyłączona,
     - Sprawdź, czy typ uruchamiania usługi dostawcy VSS jest ustawiony na wartość **automatycznie**.

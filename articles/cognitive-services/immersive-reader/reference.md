@@ -10,18 +10,18 @@ ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: 09244b634fa2603a7dc92af3c78d171f8d6bd9df
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 47d10f75775c49fda0effe10c32e219b3682866d
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73903107"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75945280"
 ---
 # <a name="immersive-reader-sdk-reference-guide"></a>Przewodnik referencyjny zestawu SDK czytnika immersyjny
 
 Zestaw SDK czytnika immersyjny to biblioteka języka JavaScript, która umożliwia integrację czytnika immersyjny z aplikacją sieci Web.
 
-## <a name="functions"></a>Funkcje
+## <a name="functions"></a>Functions
 
 Zestaw SDK udostępnia funkcje:
 
@@ -43,12 +43,12 @@ launchAsync(token: string, subdomain: string, content: Content, options?: Option
 
 | Nazwa | Typ | Opis |
 | ---- | ---- |------------ |
-| `token` | ciąg | Token uwierzytelniania usługi Azure AD. Zobacz [temat uwierzytelnianie w usłudze Azure AD](./azure-active-directory-authentication.md). |
-| `subdomain` | ciąg | Niestandardowa poddomena zasobu czytnika immersyjny na platformie Azure. Zobacz [temat uwierzytelnianie w usłudze Azure AD](./azure-active-directory-authentication.md). |
+| `token` | string | Token uwierzytelniania usługi Azure AD. |
+| `subdomain` | string | Niestandardowa poddomena zasobu czytnika immersyjny na platformie Azure. |
 | `content` | [Zawartość](#content) | Obiekt zawierający zawartość, która ma zostać pokazana w czytniku immersyjny. |
-| `options` | [Opcje](#options) | Opcje konfigurowania niektórych zachowań czytnika immersyjny. Opcjonalny. |
+| `options` | [Opcje](#options) | Opcje konfigurowania niektórych zachowań czytnika immersyjny. Element opcjonalny. |
 
-### <a name="returns"></a>Typu
+### <a name="returns"></a>Zwraca
 
 Zwraca `Promise<HTMLDivElement>`, który rozwiązuje, kiedy czytnik immersyjny jest ładowany. `Promise` jest rozpoznawany jako element `div`, którego tylko element podrzędny jest `iframe` elementu, który zawiera stronę czytnika immersyjny.
 
@@ -82,7 +82,7 @@ renderButtons(options?: RenderButtonsOptions): void;
 
 | Nazwa | Typ | Opis |
 | ---- | ---- |------------ |
-| `options` | [RenderButtonsOptions](#renderbuttonsoptions) | Opcje konfigurowania niektórych zachowań funkcji renderButtons. Opcjonalny. |
+| `options` | [RenderButtonsOptions](#renderbuttonsoptions) | Opcje konfigurowania niektórych zachowań funkcji renderButtons. Element opcjonalny. |
 
 ## <a name="types"></a>Typy
 
@@ -97,7 +97,7 @@ Zawiera zawartość, która ma zostać pokazana w czytniku immersyjny.
 }
 ```
 
-### <a name="chunk"></a>Segmentu
+### <a name="chunk"></a>Fragment
 
 Pojedynczy fragment danych, który zostanie przesłany do zawartości czytnika immersyjny.
 
@@ -109,13 +109,21 @@ Pojedynczy fragment danych, który zostanie przesłany do zawartości czytnika i
 }
 ```
 
+### <a name="cookiepolicy-enum"></a>Wyliczenie CookiePolicy
+
+Wyliczenie używane do ustawiania zasad użycia plików cookie czytnika immersyjny. Zobacz [Opcje](#options).
+
+```typescript
+enum CookiePolicy { Disable, Enable }
+```
+
 #### <a name="supported-mime-types"></a>Obsługiwane typy MIME
 
 | Typ MIME | Opis |
 | --------- | ----------- |
-| tekst/zwykły | Zwykły tekst. |
-| tekst/HTML | Zawartość HTML. [Dowiedz się więcej](#html-support)|
-| Application/MathML + XML | Język matematycznych znaczników (MathML). [Dowiedz się więcej](https://developer.mozilla.org/en-US/docs/Web/MathML).
+| text/plain | Zwykły tekst. |
+| text/html | Zawartość HTML. [Dowiedz się więcej](#html-support)|
+| Application/MathML + XML | Język matematycznych znaczników (MathML). [Dowiedz się więcej](./how-to/display-math.md).
 | application/vnd. openxmlformats-officedocument. WordprocessingML. Document | Dokument formatu programu Microsoft Word. docx.
 
 ### <a name="html-support"></a>Obsługa HTML
@@ -124,7 +132,7 @@ Pojedynczy fragment danych, który zostanie przesłany do zawartości czytnika i
 | Style czcionki | Pogrubienie, kursywa, podkreślenie, kod, przekreślenie, indeks górny, dolny indeks |
 | Listy nieuporządkowane | Dysk, okrąg, kwadrat |
 | Uporządkowane listy | Dziesiętny, górny, Dolny, niższy niż alfa, wielkie litery, małe litery |
-| Hipertekst | Wkrótce |
+| Hiperłącza | Wkrótce |
 
 Nieobsługiwane Tagi będą renderowane w sposób porównywalny. Obrazy i tabele nie są obecnie obsługiwane.
 
@@ -142,6 +150,7 @@ Zawiera właściwości, które konfigurują pewne zachowania czytnika immersyjny
     customDomain?: string;     // Reserved for internal use. Custom domain where the Immersive Reader webapp is hosted (default is null).
     allowFullscreen?: boolean; // The ability to toggle fullscreen (default is true).
     hideExitButton?: boolean;  // Whether or not to hide the Immersive Reader's exit button arrow (default is false). This should only be true if there is an alternative mechanism provided to exit the Immersive Reader (e.g a mobile toolbar's back arrow).
+    cookiePolicy?: CookiePolicy; // Setting for the Immersive Reader's cookie usage (default is CookiePolicy.Disable). It's the responsibility of the host application to obtain any necessary user consent in accordance with EU Cookie Compliance Policy.
 }
 ```
 
@@ -168,10 +177,10 @@ Zawiera informacje o błędzie.
 
 #### <a name="error-codes"></a>Kody błędów
 
-| Kod | Opis |
+| Code | Opis |
 | ---- | ----------- |
 | BadArgument | Podany argument jest nieprawidłowy. Aby uzyskać szczegółowe informacje, zobacz `message`. |
-| Limit czasu | Nie można załadować czytnika immersyjny w określonym limicie czasu. |
+| limit czasu | Nie można załadować czytnika immersyjny w określonym limicie czasu. |
 | TokenExpired | Podany token wygasł. |
 | Ograniczone | Przekroczono limit liczby wywołań. |
 

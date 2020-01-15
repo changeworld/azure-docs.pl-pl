@@ -3,12 +3,12 @@ title: Odwołanie YAML — ACR zadań
 description: Dokumentacja dotycząca definiowania zadań w YAML dla zadań ACR, takich jak właściwości zadania, typy kroków, właściwości kroku i wbudowane zmienne.
 ms.topic: article
 ms.date: 10/23/2019
-ms.openlocfilehash: da1b1613d880b9edf6ec6d6018011f43a7ac69a5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d86eb0e24233afb536d27f5d0938d4748941e88a
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445690"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75945740"
 ---
 # <a name="acr-tasks-reference-yaml"></a>Informacje o zadaniach ACR: YAML
 
@@ -79,7 +79,7 @@ Właściwości zadania zwykle pojawiają się u góry pliku `acr-task.yaml` i s�
 | -------- | ---- | -------- | ----------- | ------------------ | ------------- |
 | `version` | string | Tak | Wersja pliku `acr-task.yaml`, przeanalizowana przez usługę zadań ACR. Chociaż zadania ACR dążą do zachowania zgodności z poprzednimi wersjami, ta wartość umożliwia ACR zadań w celu zachowania zgodności w ramach zdefiniowanej wersji. Jeśli nie zostanie określony, wartość domyślna to Najnowsza wersja. | Nie | Brak |
 | `stepTimeout` | int (sekundy) | Tak | Maksymalna liczba sekund, przez jaką krok może zostać uruchomiony. Jeśli właściwość jest określona w zadaniu, ustawia domyślną właściwość `timeout` wszystkich kroków. Jeśli w kroku zostanie określona właściwość `timeout`, zastępuje ona Właściwość dostarczoną przez zadanie. | Tak | 600 (10 minut) |
-| `workingDirectory` | string | Tak | Katalog roboczy kontenera w czasie wykonywania. Jeśli właściwość jest określona w zadaniu, ustawia domyślną właściwość `workingDirectory` wszystkich kroków. Jeśli określono w kroku, zastępuje on Właściwość dostarczoną przez zadanie. | Tak | `$HOME` |
+| `workingDirectory` | string | Tak | Katalog roboczy kontenera w czasie wykonywania. Jeśli właściwość jest określona w zadaniu, ustawia domyślną właściwość `workingDirectory` wszystkich kroków. Jeśli określono w kroku, zastępuje on Właściwość dostarczoną przez zadanie. | Tak | `/workspace` |
 | `env` | [ciąg, String,...] | Tak |  Tablica ciągów w formacie `key=value`, która definiuje zmienne środowiskowe dla zadania. Jeśli właściwość jest określona w zadaniu, ustawia domyślną właściwość `env` wszystkich kroków. Jeśli jest określony w kroku, zastępuje wszystkie zmienne środowiskowe dziedziczone z zadania. | Brak |
 | `secrets` | [Secret, Secret,...] | Tak | Tablica obiektów [tajnych](#secret) . | Brak |
 | `networks` | [Sieć, Sieć,...] | Tak | Tablica obiektów [sieciowych](#network) . | Brak |
@@ -379,7 +379,7 @@ Każdy typ kroku obsługuje kilka właściwości, które są odpowiednie dla teg
 | `timeout` | int (sekundy) | Tak | Maksymalna liczba sekund, przez jaką krok może zostać wykonany przed zakończeniem. | 600 |
 | [`when`](#example-when) | [ciąg, String,...] | Tak | Konfiguruje zależność kroku od jednego lub kilku innych kroków w ramach zadania. | Brak |
 | `user` | string | Tak | Nazwa użytkownika lub identyfikator UID kontenera | Brak |
-| `workingDirectory` | string | Tak | Ustawia katalog roboczy dla kroku. Domyślnie zadania ACR tworzą katalog główny jako katalog roboczy. Jeśli jednak kompilacja zawiera kilka kroków, wcześniejsze kroki mogą współużytkować artefakty z późniejszymi krokami, określając ten sam katalog roboczy. | `$HOME` |
+| `workingDirectory` | string | Tak | Ustawia katalog roboczy dla kroku. Domyślnie zadania ACR tworzą katalog główny jako katalog roboczy. Jeśli jednak kompilacja zawiera kilka kroków, wcześniejsze kroki mogą współużytkować artefakty z późniejszymi krokami, określając ten sam katalog roboczy. | `/workspace` |
 
 ### <a name="examples-task-step-properties"></a>Przykłady: właściwości kroku zadania
 

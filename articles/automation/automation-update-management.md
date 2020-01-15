@@ -3,14 +3,14 @@ title: Update Management rozwiązanie na platformie Azure
 description: W tym artykule opisano sposób korzystania z rozwiązania Update Management platformy Azure do zarządzania aktualizacjami komputerów z systemami Windows i Linux.
 services: automation
 ms.subservice: update-management
-ms.date: 12/03/2019
+ms.date: 01/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 924f5bee94544c533f3a2548d931fce292469567
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0cf47538f7db1cef629c2b58a9fbde16640a50ae
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75420351"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75945123"
 ---
 # <a name="update-management-solution-in-azure"></a>Update Management rozwiązanie na platformie Azure
 
@@ -237,7 +237,9 @@ W przypadku systemu Linux Update Management może rozróżnić aktualizacje kryt
 sudo yum -q --security check-update
 ```
 
-Obecnie nie jest obsługiwana metoda umożliwiająca natywną klasyfikację — dostępność danych w systemie CentOS. W tej chwili tylko Najlepsza pomoc techniczna jest świadczona klientom, którzy mogli ją samodzielnie włączyć.
+Obecnie nie jest obsługiwana metoda umożliwiająca natywną klasyfikację — dostępność danych w systemie CentOS. W tej chwili tylko Najlepsza pomoc techniczna jest świadczona klientom, którzy mogli ją samodzielnie włączyć. 
+
+Aby sklasyfikować aktualizacje w systemie Red Hat Enterprise w wersji 6, należy zainstalować wtyczkę yum-Security. W Red Hat Enterprise Linux 7 wtyczka jest już częścią yum, nie ma potrzeby instalowania żadnych elementów. Aby uzyskać więcej informacji, zobacz następujący [artykuł merytoryczny](https://access.redhat.com/solutions/10021)firmy Red Hat.
 
 ## <a name="integrate-with-system-center-configuration-manager"></a>Integracja z programem System Center Configuration Manager
 
@@ -251,7 +253,7 @@ Update Management opiera się na lokalnie skonfigurowanym repozytorium aktualiza
 
 ## <a name="patch-linux-machines"></a>Poprawianie maszyn z systemem Linux
 
-W poniższych sekcjach wyjaśniono potencjalne problemy z poprawkami systemu Linux.
+W poniższych sekcjach wyjaśniono potencjalne problemy związane z poprawką systemu Linux dystrybucje.
 
 ### <a name="unexpected-os-level-upgrades"></a>Nieoczekiwane uaktualnienia na poziomie systemu operacyjnego
 

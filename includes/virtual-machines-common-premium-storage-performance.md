@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/08/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 32c1ca95c01edec74f22fc051e453f2ac0dbd03f
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 88b19257a6a7d335e6a928a9eaf7526fbfd5b02e
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75564784"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75942691"
 ---
 ## <a name="application-performance-indicators"></a>Wskaźniki wydajności aplikacji
 
@@ -126,7 +126,7 @@ Aby uzyskać więcej informacji o rozmiarach maszyn wirtualnych oraz o liczbie o
 | **Rozmiar we/wy** |Mniejszy rozmiar we/wy daje większe liczby IOPS. |Większy rozmiar we/wy w celu uzyskania większej przepływności. | &nbsp;|
 | **Rozmiar maszyny wirtualnej** |Użyj rozmiaru maszyny wirtualnej, który oferuje operacje we/wy większe niż wymagania aplikacji. |Użyj rozmiaru maszyny wirtualnej z limitem przepływności większym niż wymaganie aplikacji. |Użyj rozmiaru maszyny wirtualnej, który oferuje limity skalowania większe niż wymagania aplikacji. |
 | **Rozmiar dysku** |Użyj rozmiaru dysku, który oferuje operacje we/wy większe niż wymagania aplikacji. |Użyj rozmiaru dysku z limitem przepływności większym niż wymaganie aplikacji. |Użyj rozmiaru dysku, który oferuje limity skalowania większe niż wymagania aplikacji. |
-| **Limity skalowania maszyn wirtualnych i dysków** |Limit liczby operacji we/wy wybranego rozmiaru maszyny wirtualnej powinien być większy niż łączna liczba operacji we/wy, które są dołączone do dysku Premium Storage. |Limit przepływności wybranego rozmiaru maszyny wirtualnej powinien być większy niż całkowita przepływność obsługiwana przez dyski magazynu Premium Storage. |Limity skalowania wybranego rozmiaru maszyny wirtualnej muszą być większe niż całkowite limity skali dołączonych dysków magazynu w warstwie Premium. |
+| **Limity skalowania maszyn wirtualnych i dysków** |Limit liczby operacji we/wy wybranego rozmiaru maszyny wirtualnej powinien być większy niż łączna liczba operacji we/wy, które są dołączone do dysku magazynu. |Limit przepływności wybranego rozmiaru maszyny wirtualnej powinien być większy niż całkowita przepływność obsługiwana przez dyski magazynu Premium Storage. |Limity skalowania wybranego rozmiaru maszyny wirtualnej muszą być większe niż całkowite limity skali dołączonych dysków magazynu w warstwie Premium. |
 | **Buforowanie dysku** |Włącz pamięć podręczną tylko do odczytu na dyskach magazynu w warstwie Premium, aby uzyskać większą liczbę operacji we/wy odczytu. | &nbsp; |Włącz pamięć podręczną tylko do odczytu na dyskach magazynu w warstwie Premium dzięki gotowym dużym operacjom na uzyskanie bardzo niskich opóźnień odczytu. |
 | **Rozkładanie dysku** |Użyj wielu dysków i Rozłącz je w celu uzyskania większej liczby operacji we/wy na sekundę. Łączny limit na maszynę wirtualną powinien być wyższy niż łączne limity podłączonych dysków w warstwie Premium. | &nbsp; | &nbsp; |
 | **Rozmiar paska** |Mniejszy rozmiar paska dla losowego wzorca we/wy widoczny w aplikacjach OLTP. Na przykład Użyj rozmiaru rozłożonego 64 KB dla aplikacji SQL Server OLTP. |Większy rozmiar pasków dla dużych wzorców operacji we/wy widzianych w aplikacjach magazynu danych. Na przykład dla SQL Server aplikacji magazynu danych Użyj rozmiaru woluminu 256 KB. | &nbsp; |

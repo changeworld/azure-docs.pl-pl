@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: genli
-ms.openlocfilehash: 4565eb86727e768ba894d701cbc5e0073c07ee01
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 87faea5385f5b0fd2c481c6aa7c45a9867b34163
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185525"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75942183"
 ---
 # <a name="troubleshoot-a-problem-azure-vm-by-using-nested-virtualization-in-azure"></a>Rozwiązywanie problemów z maszyną wirtualną platformy Azure przy użyciu wirtualizacji zagnieżdżonej na platformie Azure
 
@@ -29,8 +29,6 @@ W tym artykule pokazano, jak utworzyć zagnieżdżone środowisko wirtualizacji 
 Aby można było zainstalować maszynę wirtualną problemu, maszyna wirtualna musi spełniać następujące wymagania wstępne:
 
 -   Maszyna ratownicza musi znajdować się w tej samej lokalizacji co maszyna wirtualna problemu.
-
--   Ratownicza maszyna wirtualna musi znajdować się w tej samej grupie zasobów co maszyna wirtualna problemu.
 
 -   W przypadku maszyny wirtualnej z problemową maszyną wirtualną należy używać tego samego typu konta magazynu (Standard lub Premium).
 

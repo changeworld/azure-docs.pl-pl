@@ -1,6 +1,6 @@
 ---
-title: Zmienianie rozmiaru maszyny wirtualnej z systemem Windows na platformie Azure przy użyciu programu PowerShell
-description: Zmienianie rozmiaru maszyny wirtualnej z systemem Windows utworzonej w modelu wdrażania Menedżer zasobów przy użyciu programu Azure PowerShell.
+title: Zmienianie rozmiaru maszyny wirtualnej z systemem Windows na platformie Azure
+description: Zmień rozmiar maszyny wirtualnej używany przez maszynę wirtualną platformy Azure.
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -12,26 +12,34 @@ ms.service: virtual-machines-windows
 ms.workload: na
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
-ms.date: 05/30/2018
+ms.date: 01/13/2020
 ms.author: cynthn
-ms.openlocfilehash: 4b30f2fd8e095b00898e083e33c23c7c9a915b99
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 6718804d4635edb2628b53017ab9d377928afad8
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073370"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75941720"
 ---
 # <a name="resize-a-windows-vm"></a>Zmienianie rozmiaru maszyny wirtualnej z systemem Windows
 
-W tym artykule pokazano, jak przenieść maszynę wirtualną do innego [rozmiaru maszyny wirtualnej](sizes.md) przy użyciu programu Azure PowerShell.
+W tym artykule pokazano, jak przenieść maszynę wirtualną do innego [rozmiaru maszyny wirtualnej](sizes.md).
 
 Po utworzeniu maszyny wirtualnej można skalować ją w górę lub w dół, zmieniając rozmiar maszyny wirtualnej. W niektórych przypadkach należy najpierw cofnąć alokację maszyny wirtualnej. Może się tak zdarzyć, jeśli nowy rozmiar nie jest dostępny w klastrze sprzętowym hostującym maszynę wirtualną.
 
 Jeśli maszyna wirtualna używa Premium Storage, upewnij się, że wybrano wersję **s** rozmiaru do uzyskania pomocy technicznej Premium Storage. Na przykład wybierz Standard_E4**s**_v3 zamiast Standard_E4_v3.
 
- 
+## <a name="use-the-portal"></a>Używanie portalu
 
-## <a name="resize-a-windows-vm-not-in-an-availability-set"></a>Zmienianie rozmiaru maszyny wirtualnej z systemem Windows, która nie znajduje się w zestawie dostępności
+1. Otwórz [Portalu Azure](https://portal.azure.com).
+1. Otwórz stronę dla maszyny wirtualnej.
+1. W menu po lewej stronie wybierz pozycję **rozmiar**.
+1. Wybierz nowy rozmiar z listy dostępnych rozmiarów, a następnie wybierz pozycję **Zmień rozmiar**.
+
+
+Jeśli maszyna wirtualna jest aktualnie uruchomiona, zmiana jej rozmiaru spowoduje jej ponowne uruchomienie. Zatrzymywanie maszyny wirtualnej może spowodować ujawnienie dodatkowych rozmiarów.
+
+## <a name="use-powershell-to-resize-a-vm-not-in-an-availability-set"></a>Użyj programu PowerShell, aby zmienić rozmiar maszyny wirtualnej, która nie znajduje się w zestawie dostępności
 
 Ustaw pewne zmienne. Zastąp wartości własnymi informacjami.
 
@@ -69,7 +77,7 @@ Start-AzVM -ResourceGroupName $resourceGroup -Name $vmName
 > 
 > 
 
-## <a name="resize-a-windows-vm-in-an-availability-set"></a>Zmienianie rozmiaru maszyny wirtualnej z systemem Windows w zestawie dostępności
+## <a name="use-powershell-to-resize-a-vm-in-an-availability-set"></a>Zmienianie rozmiaru maszyny wirtualnej w zestawie dostępności przy użyciu programu PowerShell
 
 Jeśli nowy rozmiar maszyny wirtualnej w zestawie dostępności nie jest dostępny w klastrze sprzętowym hostującym maszynę wirtualną, wszystkie maszyny wirtualne w zestawie dostępności muszą zostać cofnięte, aby zmienić rozmiar maszyny wirtualnej. Może być też konieczne zaktualizowanie rozmiaru pozostałych maszyn wirtualnych w zestawie dostępności po zmianie rozmiaru jednej maszyny wirtualnej. Aby zmienić rozmiar maszyny wirtualnej w zestawie dostępności, wykonaj następujące czynności.
 
