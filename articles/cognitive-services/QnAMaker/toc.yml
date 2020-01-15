@@ -54,14 +54,8 @@
               href: Quickstarts/get-answer-from-knowledge-base-nodejs.md
             - name: Python
               href: Quickstarts/get-answer-from-knowledge-base-python.md
-    - name: Używanie zestawów SDK
-      items:
-        - name: 'C#'
-          href: ./Quickstarts/create-publish-kb-csharp-sdk.md
-        - name: Node.js
-          href: ./Quickstarts/create-publish-kb-nodejs-sdk.md
-        - name: Python
-          href: ./Quickstarts/python-sdk.md
+    - name: Używanie zestawu SDK
+      href: ./Quickstarts/quickstart-sdk.md
 - name: Samouczki
   items:
     - name: Tworzenie bazy wiedzy i uzyskiwanie z niej odpowiedzi

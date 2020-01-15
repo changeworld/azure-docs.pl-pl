@@ -31,9 +31,9 @@
         - name: Java
           href: event-hubs-java-get-started-send.md
         - name: Python
-          href: event-hubs-python-get-started-send.md
+          href: get-started-python-send-v2.md
         - name: Node.js
-          href: event-hubs-node-get-started-send.md
+          href: get-started-node-send-v2.md
         - name: Przejdź
           href: event-hubs-go-get-started-send.md
         - name: C (tylko wysyłanie)
@@ -49,7 +49,7 @@
         - name: Włączanie usługi Event Hubs Capture za pomocą szablonu usługi Resource Manager
           href: event-hubs-resource-manager-namespace-event-hub-enable-capture.md
         - name: Przechwytywanie danych usługi Event Hubs przy użyciu języka Python
-          href: event-hubs-capture-python.md
+          href: get-started-capture-python-v2.md
     - name: Przesyłanie strumieniowe do usługi Event Hubs dla platformy Apache Kafka
       href: event-hubs-quickstart-kafka-enabled-event-hubs.md
     - name: Tworzenie dedykowanego klastra
@@ -114,10 +114,22 @@
           href: event-hubs-get-connection-string.md
         - name: Zdarzenia wymiany między aplikacjami przy użyciu różnych protokołów
           href: event-hubs-exchange-events-different-protocols.md
-        - name: Przewodnik programowania na platformie .NET
-          href: event-hubs-programming-guide.md
-        - name: 'Wysyłanie, odbieranie i przechwytywanie zdarzeń przy użyciu języka Python'
-          href: event-hubs-python.md
+        - name: Przewodniki programowania
+          items:
+            - name: Python
+              href: 'https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub/README.md'
+            - name: JavaScript
+              href: 'https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs/README.md'
+            - name: Przewodnik programowania na platformie .NET
+              href: event-hubs-programming-guide.md
+        - name: Odczytywanie przechwyconych danych przy użyciu języka Python (starsza wersja)
+          href: event-hubs-capture-python.md
+        - name: Wysyłanie i odbieranie zdarzeń (starsza wersja)
+          items:
+            - name: Python (starsza wersja)
+              href: event-hubs-python-get-started-send.md
+            - name: Node.js (starsza wersja)
+              href: event-hubs-node-get-started-send.md
     - name: Przetwarzanie danych
       items:
         - name: Przetwarzanie danych za pomocą usługi Azure Stream Analytics
@@ -193,7 +205,15 @@
         - name: Microsoft.Azure.Management.EventHub
           href: /dotnet/api/microsoft.azure.management.eventhub
     - name: Node.js
-      href: /javascript/api/overview/azure/event-hub?view=azure-node-latest
+      items:
+        - name: Migrowanie z wersji 2 do wersji 5
+          href: 'https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/event-hubs/migrationguide.md'
+        - name: Dokumentacja interfejsu API
+          href: /javascript/api/overview/azure/event-hub?view=azure-node-latest
+    - name: Python
+      items:
+        - name: Migrowanie z wersji 1 do wersji 5
+          href: 'https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub/migration_guide.md'
     - name: REST
       href: /rest/api/eventhub
     - name: Szablon usługi Resource Manager

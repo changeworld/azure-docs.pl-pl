@@ -12,12 +12,12 @@ metadata:
   author: IEvangelist
   ms.author: dapine
   ms.date: 08/29/2019
-  ms.openlocfilehash: 50185a0bbfc3a9677ebc90f326b0c43ab2a2eb13
-  ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+  ms.openlocfilehash: 1d246396e8d6a5595cff6100ac0cae1032ce2af4
+  ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
   ms.translationtype: HT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 08/29/2019
-  ms.locfileid: "70164488"
+  ms.lasthandoff: 01/14/2020
+  ms.locfileid: "75945515"
 landingContent:
 - title: Czytnik immersyjny — informacje
   linkLists:
@@ -31,25 +31,31 @@ landingContent:
     links:
     - text: ASP.NET Core
       url: quickstart.md
+    - text: Node.js
+      url: quickstart-nodejs.md
     - text: Swift (iOS)
       url: ios-quickstart.md
   - linkListType: tutorial
     links:
-    - text: Node.js
-      url: tutorial-nodejs.md
     - text: Python
       url: tutorial-python.md
-    - text: Swift (iOS)
-      url: tutorial-ios-picture-immersive-reader.md
 - title: Eksplorowanie czytnika immersyjnego
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Uwierzytelnianie za pomocą usługi Azure Active Directory
-      url: azure-active-directory-authentication.md
+    - text: Tworzenie zasobu czytnika immersyjnego
+      url: how-to-create-immersive-reader.md
+    - text: Ustawianie zasad dotyczących plików cookie
+      url: how-to/set-cookie-policy.md
+    - text: Wyświetlanie danych matematycznych
+      url: how-to/display-math.md
+    - text: Uruchamianie czytnika immersyjnego z zawartością HTML
+      url: how-to-launch-with-html.md
+    - text: Dostosowywanie przycisku czytnika immersyjnego
+      url: how-to-customize-launch-button.md
+    - text: Buforowanie tokenu uwierzytelniania
+      url: how-to-cache-token.md
   - linkListType: reference
     links:
     - text: Zestaw SDK dla języka JavaScript
       url: reference.md
-    - text: Zestaw SDK systemu iOS
-      url: ios-reference.md

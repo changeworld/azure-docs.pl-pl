@@ -44,6 +44,8 @@
       href: openvpn-azure-ad-mfa.md
     - name: Konfigurowanie uwierzytelniania w usłudze Azure AD na potrzeby sieci VPN użytkownika (wersja zapoznawcza)
       href: virtual-wan-point-to-site-azure-ad.md
+    - name: Konfigurowanie uwierzytelniania w usłudze Azure AD dla wielu aplikacji na potrzeby sieci VPN użytkownika (wersja zapoznawcza)
+      href: openvpn-azure-ad-tenant-multi-app.md
     - name: Konfigurowanie automatyzacji (partnerzy usługi Virtual WAN)
       href: virtual-wan-configure-automation-providers.md
     - name: Configure routing (Konfigurowanie routingu)

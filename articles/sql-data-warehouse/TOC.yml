@@ -10,7 +10,7 @@
       href: what-is-a-data-warehouse-unit-dwu-cdwu.md
     - name: Ściągawka
       href: cheat-sheet.md
-    - name: Najlepsze praktyki
+    - name: Najlepsze rozwiązania
       href: sql-data-warehouse-best-practices.md
     - name: Limity pojemności
       href: sql-data-warehouse-service-capacity-limits.md
@@ -57,7 +57,7 @@
               href: quickstart-configure-workload-isolation-tsql.md
 - name: Pojęcia
   items:
-    - name: Bezpieczeństwo
+    - name: Zabezpieczenia
       items:
         - name: Omówienie
           href: sql-data-warehouse-overview-manage-security.md
@@ -111,7 +111,7 @@
       items:
         - name: Omówienie
           href: design-elt-data-loading.md
-        - name: Najlepsze praktyki
+        - name: Najlepsze rozwiązania
           href: guidance-for-loading-data.md
         - name: Kompresja magazynu kolumn
           href: sql-data-warehouse-memory-optimizations-for-columnstore-compression.md
@@ -119,7 +119,7 @@
       items:
         - name: Omówienie
           href: sql-data-warehouse-overview-develop.md
-        - name: Najlepsze praktyki
+        - name: Najlepsze rozwiązania
           href: sql-data-warehouse-best-practices-development.md
         - name: JSON
           items:
@@ -139,7 +139,7 @@
           items:
             - name: Wskazówki dotyczące dostosowywania wydajności
               href: performance-tuning-materialized-views.md
-            - name: Przycisk Utwórz
+            - name: Utwórz
               href: /sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/sql-data-warehouse/toc.json&bc=/azure/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest
             - name: Modyfikowanie
               href: /sql/t-sql/statements/alter-materialized-view-transact-sql?toc=/azure/sql-data-warehouse/toc.json&bc=/azure/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest
@@ -225,6 +225,8 @@
           href: sql-data-warehouse-workload-importance.md
         - name: Izolacja obciążeń
           href: sql-data-warehouse-workload-isolation.md
+        - name: Monitorowanie zarządzania obciążeniami
+          href: sql-data-warehouse-workload-management-portal-monitor.md
         - name: Limity pamięci i współbieżności
           href: memory-concurrency-limits.md
         - name: Klasy zasobów
@@ -273,7 +275,7 @@
           href: /azure/data-factory/load-azure-sql-data-warehouse?toc=/azure/sql-data-warehouse/toc.json&bc=/azure/sql-data-warehouse/breadcrumb/toc.json
         - name: Używanie funkcji SQL Server Integration Services (SSIS)
           href: /sql/integration-services/load-data-to-sql-data-warehouse
-        - name: Przykłady
+        - name: Samples
           items:
             - name: Nowojorska taksówka
               href: load-data-from-azure-blob-storage-using-polybase.md

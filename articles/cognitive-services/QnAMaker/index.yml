@@ -11,12 +11,12 @@ metadata:
   services: cognitive-services
   title: Dokumentacja usługi QnA Maker
   description: Usługa QnA Maker to oparta na chmurze usługa interfejsu API, która tworzy warstwę konwersacji w postaci pytań i odpowiedzi nad Twoimi danymi. Usługa QnA Maker umożliwia zasilanie usługi pytań i odpowiedzi za pomocą częściowo ustrukturyzowanej zawartości, takiej jak dokumenty z często zadawanymi pytaniami, adresy URL i podręczniki produktów. Usługa QnA Maker odpowiada na pytania użytkowników zadane w języku naturalnym, dopasowując je do najlepszej możliwej odpowiedzi spośród pytań i odpowiedzi w Twojej bazie wiedzy.
-  ms.openlocfilehash: f88336107203a166b61df98c55b680f1f11f79f6
-  ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+  ms.openlocfilehash: 03518a1d7156d57424b28980d05bb03bfef56503
+  ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
   ms.translationtype: HT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 11/23/2019
-  ms.locfileid: "74422646"
+  ms.lasthandoff: 01/14/2020
+  ms.locfileid: "75945604"
 landingContent:
 - title: Informacje o usłudze QnA Maker
   linkLists:
@@ -68,8 +68,8 @@ landingContent:
       url: quickstarts/get-answer-from-knowledge-base-using-url-tool.md
     - text: 'Szybki start: Korzystanie z usług REST i języka C#'
       url: quickstarts/get-answer-from-knowledge-base-csharp.md
-    - text: 'Szybki start: Korzystanie z narzędzia NuGet i języka C#'
-      url: quickstarts/create-publish-kb-csharp-sdk.md#generate-an-answer-from-the-knowledge-base
+    - text: 'Szybki start: Używanie zestawu SDK'
+      url: quickstarts/quickstart-sdk.md
   - linkListType: how-to-guide
     links:
     - text: Uzyskiwanie odpowiedzi z metadanymi

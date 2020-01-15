@@ -95,7 +95,7 @@
         - name: Databricks Light
           href: /azure/databricks/runtime/light
           maintainContext: true
-    - name: Obszar roboczy
+    - name: Workspace
       items:
         - name: Eksplorowanie obszaru roboczego usługi Azure Databricks
           href: /azure/databricks/workspace/index
@@ -730,6 +730,9 @@
                 - name: Biblioteka Hyperopt z interfejsem HorovodRunner
                   href: /azure/databricks/applications/machine-learning/automl/hyperopt/hyperopt-distributed-ml
                   maintainContext: true
+                - name: Najlepsze rozwiązania dotyczące biblioteki Hyperopt
+                  href: /azure/databricks/applications/machine-learning/automl/hyperopt/hyperopt-best-practices
+                  maintainContext: true
                 - name: Wyszukiwanie modeli przy użyciu rozproszonej biblioteki Hyperopt
                   href: /azure/databricks/applications/machine-learning/automl/hyperopt/hyperopt-model-selection
                   maintainContext: true
@@ -993,6 +996,12 @@
             - name: Przykład przepływu pracy wpisu tajnego
               href: /azure/databricks/security/secrets/example-secret-workflow
               maintainContext: true
+        - name: Szyfrowanie ruchu między węzłami roboczymi klastra
+          href: /azure/databricks/security/encrypt-otw
+        - name: Włączanie kluczy zarządzanych przez klienta na potrzeby notesów
+          href: /azure/databricks/security/customer-managed-key-notebook
+        - name: Włączanie kluczy zarządzanych przez klienta na potrzeby systemu plików DBFS
+          href: /azure/databricks/security/customer-managed-keys-dbfs
     - name: Administracja
       items:
         - name: Omówienie administrowania
@@ -1525,7 +1534,7 @@
             - name: Tokeny
               href: /azure/databricks/dev-tools/api/latest/tokens
               maintainContext: true
-            - name: Obszar roboczy
+            - name: Workspace
               href: /azure/databricks/dev-tools/api/latest/workspace
               maintainContext: true
             - name: Ciąg wersji środowiska uruchomieniowego dla wywołań interfejsu API REST
@@ -1566,7 +1575,7 @@
         - name: Stos
           href: /azure/databricks/dev-tools/cli/stack-cli
           maintainContext: true
-        - name: Obszar roboczy
+        - name: Workspace
           href: /azure/databricks/dev-tools/cli/workspace-cli
           maintainContext: true
     - name: Interfejs API REST usługi Azure Databricks

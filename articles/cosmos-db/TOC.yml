@@ -869,6 +869,9 @@
         - name: Znajdowanie opłaty za jednostkę żądania
           displayName: 'request units, RUs, RU, charge, consumption'
           href: find-request-unit-charge.md
+        - name: Skalowanie przy użyciu czasomierza usługi Azure Functions
+          displayName: 'request units, RUs, RU, timer'
+          href: scale-on-schedule.md
     - name: Praca z kontenerami i elementami
       items:
         - name: Praca z danymi usługi Cosmos DB

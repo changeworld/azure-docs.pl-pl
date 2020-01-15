@@ -7,7 +7,7 @@
       href: overview.md
     - name: Obsługa języków i regionów
       href: language-support.md
-      displayName: 'languages,locales,region,voice,gender,language code,locale,locale code'
+      displayName: 'languages,locales,region,voice,gender,language code,locale,locale code,neural voice,standard voice'
 - name: Zamiana mowy na tekst
   expanded: false
   items:
@@ -27,6 +27,8 @@
       items:
         - name: Zmiana języka źródłowego rozpoznawania mowy
           href: how-to-specify-source-language.md
+        - name: Wybór trybu rozpoznawania mowy
+          href: how-to-choose-recognition-mode.md
         - name: Zwiększanie dokładności za pomocą mowy niestandardowej
           href: how-to-custom-speech.md
         - name: Zwiększanie dokładności za pomocą list fraz
@@ -102,6 +104,7 @@
           href: speech-synthesis-markup.md
         - name: Ulepszanie danych wyjściowych za pomocą głosów niestandardowych
           href: how-to-custom-voice.md
+          displayName: custom voice
         - name: Syntetyzowanie mowy przy użyciu interfejsu API długich form audio
           href: long-audio-api.md
         - name: Używanie syntezy mowy w kontenerach platformy Docker
@@ -363,6 +366,7 @@
           items:
             - name: Wprowadzenie do usługi Custom Voice
               href: how-to-custom-voice.md
+              displayName: 'custom voice, neural voice'
             - name: Przygotowywanie danych
               href: how-to-custom-voice-prepare-data.md
             - name: Tworzenie i używanie modeli usługi Custom Voice

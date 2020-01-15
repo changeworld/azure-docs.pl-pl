@@ -9,26 +9,32 @@
   items:
     - name: 'Przy użyciu języka C#'
       href: Quickstart.md
+    - name: Używanie środowiska Node.js
+      href: quickstart-nodejs.md
     - name: Korzystanie z języka Swift (iOS)
       href: ios-quickstart.md
 - name: Samouczki
   items:
-    - name: Uruchamianie czytnika immersyjnego (Node.js)
-      href: tutorial-nodejs.md
     - name: Uruchamianie czytnika immersyjnego (Python)
       href: tutorial-python.md
-    - name: Obraz w czytniku immersyjnym (Swift)
-      href: tutorial-ios-picture-immersive-reader.md
 - name: Instrukcje
   items:
-    - name: Uwierzytelnianie za pomocą usługi Azure Active Directory
-      href: azure-active-directory-authentication.md
+    - name: Tworzenie zasobu czytnika immersyjnego
+      href: how-to-create-immersive-reader.md
+    - name: Ustawianie zasad dotyczących plików cookie
+      href: how-to/set-cookie-policy.md
+    - name: Wyświetlanie danych matematycznych
+      href: how-to/display-math.md
+    - name: Uruchamianie czytnika immersyjnego z zawartością HTML
+      href: how-to-launch-with-html.md
+    - name: Dostosowywanie przycisku czytnika immersyjnego
+      href: how-to-customize-launch-button.md
+    - name: Buforowanie tokenu uwierzytelniania
+      href: how-to-cache-token.md
 - name: Dokumentacja
   items:
     - name: Dokumentacja zestawu SDK
       href: reference.md
-    - name: Dokumentacja zestawu SDK systemu iOS
-      href: ios-reference.md
 - name: Zasoby
   items:
     - name: Harmonogram działania dla platformy Azure
