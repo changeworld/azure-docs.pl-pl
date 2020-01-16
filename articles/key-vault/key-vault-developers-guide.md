@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 1bfd156f9fbdb69766e4588a342a695fbd79ca3a
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 7991fcec42a81a74ead1a00784e2cec59997da57
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595298"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981531"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Przewodnik dewelopera Azure Key Vault
 
@@ -103,8 +103,8 @@ Poniższe artykuły i scenariusze zapewniają wskazówki dotyczące zadań zwią
 - [Zmiana identyfikatora dzierżawy magazynu kluczy po przeniesieniu subskrypcji](key-vault-subscription-move-fix.md) — po przeniesieniu subskrypcji platformy Azure z dzierżawy A do dzierżawy b istniejące magazyny kluczy są niedostępne dla podmiotów zabezpieczeń (użytkowników i aplikacji) w dzierżawie b. Rozwiąż ten problem, korzystając z tego przewodnika.
 - Dostęp do [Key Vault za zaporą](key-vault-access-behind-firewall.md) — Aby uzyskać dostęp do magazynu kluczy, aplikacja kliencka magazynu kluczy musi mieć dostęp do wielu punktów końcowych dla różnych funkcji.
 - [Jak generować i przesyłać klucze chronione przez moduł HSM dla Azure Key Vault](key-vault-hsm-protected-keys.md) — ułatwia to planowanie, generowanie i transferowanie własnych kluczy chronionych przez moduł HSM w celu ich użycia z Azure Key Vault.
-- [Jak przekazać bezpieczne wartości (takie jak hasła) podczas wdrażania](../azure-resource-manager/resource-manager-keyvault-parameter.md) — Jeśli chcesz przekazać bezpieczną wartość (na przykład hasło) jako parametr podczas wdrażania, możesz zapisać tę wartość jako klucz tajny w Azure Key Vault i odwołać się do wartości w innych Menedżer zasobów przystawki.
-- [Jak używać Key Vault do rozszerzonego zarządzania kluczami z SQL Server](https://msdn.microsoft.com/library/dn198405.aspx) -SQL Server Connector dla Azure Key Vault umożliwia SQL Server i SQL-in-a-VM korzystanie z usługi Azure Key Vault jako dostawcy rozszerzalnego zarządzania kluczami (EKM) w celu ochrony linki do kluczy szyfrowania dla aplikacji; Transparent Data Encryption, szyfrowanie kopii zapasowej i szyfrowanie na poziomie kolumny.
+- [Jak przekazać bezpieczne wartości (takie jak hasła) podczas wdrażania](../azure-resource-manager/templates/key-vault-parameter.md) — Jeśli chcesz przekazać bezpieczną wartość (na przykład hasło) jako parametr podczas wdrażania, możesz zapisać tę wartość jako klucz tajny w Azure Key Vault i odwołać się do wartości w innych szablonach Menedżer zasobów.
+- [Jak używać Key Vault do rozszerzonego zarządzania kluczami z SQL Server](https://msdn.microsoft.com/library/dn198405.aspx) -SQL Server Connector dla Azure Key Vault umożliwia SQL Server i SQL-in-a-VM korzystanie z usługi Azure Key Vault jako dostawcy rozszerzalnego zarządzania kluczami (EKM) w celu ochrony kluczy szyfrowania dla aplikacji. Transparent Data Encryption, szyfrowanie kopii zapasowej i szyfrowanie na poziomie kolumny.
 - [Jak wdrażać certyfikaty na maszynach wirtualnych z Key Vault](https://blogs.technet.microsoft.com/kv/2015/07/14/deploy-certificates-to-vms-from-customer-managed-key-vault/) — aplikacja w chmurze działająca na maszynie wirtualnej na platformie Azure wymaga certyfikatu. Jak uzyskać ten certyfikat na tę maszynę wirtualną dzisiaj?
 - [Jak skonfigurować Key Vault z kompleksowym rotacją i inspekcją kluczy](key-vault-key-rotation-log-monitoring.md) — w tym przewodniku opisano sposób konfigurowania rotacji kluczy i inspekcji przy użyciu Azure Key Vault.
 - [Wdrażanie certyfikatu aplikacji sieci Web platformy Azure za pomocą Key Vault]( https://blogs.msdn.microsoft.com/appserviceteam/2016/05/24/deploying-azure-web-app-certificate-through-key-vault/) zawiera instrukcje krok po kroku dotyczące wdrażania certyfikatów przechowywanych w Key Vault w ramach oferty [certyfikat usługi App Service](https://azure.microsoft.com/blog/internals-of-app-service-certificate/) .
@@ -119,7 +119,7 @@ W tych artykułach przedstawiono inne scenariusze i usługi, które korzystają 
 
 - [Azure Disk Encryption](../security/fundamentals/encryption-overview.md) korzysta z funkcji funkcji [BitLocker](https://technet.microsoft.com/library/cc732774.aspx) standardowego w branży w systemie Windows i funkcji [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt) systemu Linux, aby zapewnić szyfrowanie woluminów dla systemu operacyjnego i dysków danych. Rozwiązanie jest zintegrowane z Azure Key Vault, które ułatwiają sterowanie kluczami szyfrowania dysków i wpisami tajnymi w ramach subskrypcji magazynu kluczy oraz zarządzanie nimi, przy jednoczesnym zapewnieniu, że wszystkie dane na dyskach maszyn wirtualnych są szyfrowane w usłudze Azure Storage.
 - [Azure Data Lake Store](../data-lake-store/data-lake-store-get-started-portal.md) zapewnia opcję szyfrowania danych przechowywanych na koncie. W przypadku zarządzania kluczami Data Lake Store zapewnia dwa tryby zarządzania głównymi kluczami szyfrowania (głównymi kluczami szyfrowania), które są wymagane do odszyfrowania danych przechowywanych w Data Lake Store. Możesz pozwolić, Data Lake Store zarządzać głównymi kluczami szyfrowaniaem, lub wybrać opcję zachowania własności głównymi kluczami szyfrowania przy użyciu konta Azure Key Vault. Podczas tworzenia konta Data Lake Store należy określić tryb zarządzania kluczami.
-- [Azure Information Protection](/azure/information-protection/plan-implement-tenant-key) umożliwia kierownika własnego klucza dzierżawy. Na przykład zamiast firmy Microsoft zarządzającej kluczem dzierżawy (domyślnie) można zarządzać własnym kluczem dzierżawy w celu zapewnienia zgodności z określonymi przepisami obowiązującymi w organizacji. Zarządzanie własnym kluczem dzierżawy jest również określane jako przeprowadzenie własnego klucza lub BYOK.
+- [Azure Information Protection](/azure/information-protection/plan-implement-tenant-key) umożliwia kierownika własnego klucza dzierżawy. Na przykład zamiast firmy Microsoft zarządzającej kluczem dzierżawy (domyślnie) można zarządzać własnym kluczem dzierżawy w celu zapewnienia zgodności z określonymi przepisami obowiązującymi w organizacji. Samodzielne zarządzanie kluczem dzierżawy określa się także mianem strategii BYOK (Bring Your Own Key), czyli „Przynieś własny klucz”.
 
 ## <a name="key-vault-overviews-and-concepts"></a>Key Vault przeglądy i koncepcje
 

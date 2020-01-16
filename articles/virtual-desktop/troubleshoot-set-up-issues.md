@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 01/08/2020
 ms.author: helohr
-ms.openlocfilehash: b2209e2ada2d825714d08b6ac3237583df28272a
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 12b5b6ce84ad36d14a393b54745e530779d4ca95
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749367"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75965741"
 ---
 # <a name="tenant-and-host-pool-creation"></a>Tworzenie dzierżawy i puli hosta
 
@@ -125,7 +125,7 @@ Postępuj zgodnie z poniższymi instrukcjami, aby rozwiązywać problemy z niepo
 Przykład nieprzetworzonego błędu:
 
 ```Error
- {"code":"DeploymentFailed","message":"At least one resource deployment operation failed. Please list deployment operations for details. 
+ {"code":"DeploymentFailed","message":"At least one resource deployment operation failed. Please list deployment operations for details.
  Please see https://aka.ms/arm-debug for usage details.","details":[{"code":"Conflict","message":"{\r\n \"status\": \"Failed\",\r\n \"error\":
  {\r\n \"code\": \"ResourceDeploymentFailure\",\r\n \"message\": \"The resource operation completed with terminal provisioning state 'Failed'.
  \",\r\n \"details\": [\r\n {\r\n \"code\": \"VMExtensionProvisioningError\",\r\n \"message\": \"VM has reported a failure when processing
@@ -201,11 +201,11 @@ Przykład nieprzetworzonego błędu:
  "duration": "PT7M56.8150879S", "trackingId": "43c4f71f-557c-4abd-80c3-01f545375455", "statusCode": "Conflict",
  "statusMessage": { "status": "Failed", "error": { "code": "ResourceDeploymentFailure", "message":
  "The resource operation completed with terminal provisioning state 'Failed'.", "details": [ { "code":
- "VMExtensionProvisioningError", "message": "VM has reported a failure when processing extension 'dscextension'. 
- Error message: \"DSC Configuration 'SessionHost' completed with error(s). Following are the first few: 
- PowerShell DSC resource MSFT_ScriptResource failed to execute Set-TargetResource functionality with error message: 
- One or more errors occurred. The SendConfigurationApply function did not succeed.\"." } ] } }, "targetResource": 
- { "id": "/subscriptions/EXAMPLE/resourceGroups/demoHostD/providers/Microsoft. 
+ "VMExtensionProvisioningError", "message": "VM has reported a failure when processing extension 'dscextension'.
+ Error message: \"DSC Configuration 'SessionHost' completed with error(s). Following are the first few:
+ PowerShell DSC resource MSFT_ScriptResource failed to execute Set-TargetResource functionality with error message:
+ One or more errors occurred. The SendConfigurationApply function did not succeed.\"." } ] } }, "targetResource":
+ { "id": "/subscriptions/EXAMPLE/resourceGroups/demoHostD/providers/Microsoft.
  Compute/virtualMachines/desktop-1/extensions/dscextension",
  "resourceType": "Microsoft.Compute/virtualMachines/extensions", "resourceName": "desktop-1/dscextension" } }}
 ```
@@ -223,7 +223,7 @@ Przykład nieprzetworzonego błędu:
 ```Error
 {
     "code": "DeploymentFailed",
-   "message": "At least one resource deployment operation failed. Please list 
+   "message": "At least one resource deployment operation failed. Please list
  deployment operations for details. 4 Please see https://aka.ms/arm-debug for usage details.",
  "details": [
          { "code": "Conflict",  
@@ -324,13 +324,13 @@ the VM.\\\"
 Przykład nieprzetworzonego błędu:
 
 ```Error
-"response": { "content": { "startTime": "2019-04-01T17:45:33.3454563+00:00", "endTime": "2019-04-01T17:48:52.4392099+00:00", 
-"status": "Failed", "error": { "code": "VMExtensionProvisioningError", "message": "VM has reported a failure when processing 
-extension 'dscextension'. Error message: \"DSC Configuration 'FirstSessionHost' completed with error(s). 
+"response": { "content": { "startTime": "2019-04-01T17:45:33.3454563+00:00", "endTime": "2019-04-01T17:48:52.4392099+00:00",
+"status": "Failed", "error": { "code": "VMExtensionProvisioningError", "message": "VM has reported a failure when processing
+extension 'dscextension'. Error message: \"DSC Configuration 'FirstSessionHost' completed with error(s).
 Following are the first few: PowerShell DSC resource MSFT_ScriptResource failed to execute Set-TargetResource
  functionality with error message: User is not authorized to query the management service.
 \nActivityId: 1b4f2b37-59e9-411e-9d95-4f7ccd481233\nPowershell commands to diagnose the failure:
-\nGet-RdsDiagnosticActivities -ActivityId 1b4f2b37-59e9-411e-9d95-4f7ccd481233\n 
+\nGet-RdsDiagnosticActivities -ActivityId 1b4f2b37-59e9-411e-9d95-4f7ccd481233\n
 The SendConfigurationApply function did not succeed.\"." }, "name": "2c3272ec-d25b-47e5-8d70-a7493e9dc473" } } }}
 ```
 
@@ -379,6 +379,6 @@ Jeśli uruchamiasz szablon Azure Resource Manager GitHub, podaj wartości nastę
 - Aby rozwiązać problemy z Pulpit zdalny klientami, zobacz [Rozwiązywanie problemów z klientem pulpit zdalny](troubleshoot-client.md)
 - Aby rozwiązać problemy występujące podczas korzystania z programu PowerShell z pulpitem wirtualnym systemu Windows, zobacz [Windows Virtual Desktop PowerShell](troubleshoot-powershell.md).
 - Aby dowiedzieć się więcej na temat usługi, zobacz [Środowisko pulpitu wirtualnego systemu Windows](environment-setup.md).
-- Aby przejść przez samouczek dotyczący rozwiązywania problemów, zobacz [Samouczek: Rozwiązywanie problemów z wdrożeniami szablonów Menedżer zasobów](../azure-resource-manager/resource-manager-tutorial-troubleshoot.md).
-- Aby dowiedzieć się więcej o akcjach inspekcji, zobacz [Inspekcja operacji przy użyciu Menedżer zasobów](../azure-resource-manager/resource-group-audit.md).
-- Aby dowiedzieć się więcej o akcjach dotyczących określania błędów podczas wdrażania, zobacz [Wyświetlanie operacji wdrażania](../azure-resource-manager/resource-manager-deployment-operations.md).
+- Aby przejść przez samouczek dotyczący rozwiązywania problemów, zobacz [Samouczek: Rozwiązywanie problemów z wdrożeniami szablonów Menedżer zasobów](../azure-resource-manager/templates/template-tutorial-troubleshoot.md).
+- Aby dowiedzieć się więcej o akcjach inspekcji, zobacz [Inspekcja operacji przy użyciu Menedżer zasobów](../azure-resource-manager/management/view-activity-logs.md).
+- Aby dowiedzieć się więcej o akcjach dotyczących określania błędów podczas wdrażania, zobacz [Wyświetlanie operacji wdrażania](../azure-resource-manager/templates/deployment-history.md).

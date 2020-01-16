@@ -5,27 +5,28 @@ services: networking
 author: anavinahar
 ms.service: networking
 ms.topic: include
-ms.date: 01/13/2020
+ms.date: 01/14/2020
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: 97ee10e0b286f1b007f2e807351301f2037d1754
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 17558b44c91425ce1a06625f8fd5c1806a762ba2
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75942699"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76021159"
 ---
 <a name="azure-resource-manager-virtual-networking-limits"></a>Limity sieci — Azure Resource Manager następujące limity mają zastosowanie tylko w przypadku zasobów sieciowych zarządzanych za pomocą **Azure Resource Manager** na region na subskrypcję. Dowiedz się, jak [wyświetlić bieżące użycie zasobów względem limitów subskrypcji](../articles/networking/check-usage-against-limits.md).
 
 > [!NOTE]
-> Ostatnio zwiększono wszystkie domyślne limity do ich maksymalnych limitów. Jeśli nie ma żadnej kolumny maksymalnego limitu, zasób nie ma dopuszczalnych limitów. Jeśli te limity zostały zwiększone przez pomoc techniczną w przeszłości i nie widzisz zaktualizowanych limitów w poniższych tabelach, [Otwórz bezpłatnie żądanie pomocy technicznej w trybie online](../articles/azure-resource-manager/resource-manager-quota-errors.md) .
+> Ostatnio zwiększono wszystkie domyślne limity do ich maksymalnych limitów. Jeśli nie ma żadnej kolumny maksymalnego limitu, zasób nie ma dopuszczalnych limitów. Jeśli te limity zostały zwiększone przez pomoc techniczną w przeszłości i nie widzisz zaktualizowanych limitów w poniższych tabelach, [Otwórz bezpłatnie żądanie pomocy technicznej w trybie online](../articles/azure-resource-manager/templates/error-resource-quota.md) .
 
 | Zasób | Domyślny/maksymalny limit | 
 | --- | --- |
 | Sieci wirtualne |1000 |
 | Podsieci na sieć wirtualną |3,000 |
 | Wirtualne sieci równorzędne dla sieci wirtualnej |500 |
-| [Bramy sieci wirtualnej (bramy sieci VPN) na sieć wirtualną](../articles/vpn-gateway/vpn-gateway-about-vpngateways.md#gwsku) |30 |
+| [Bramy sieci wirtualnej (bramy sieci VPN) na sieć wirtualną](../articles/vpn-gateway/vpn-gateway-about-vpngateways.md#gwsku) |1 |
+| [Bramy sieci wirtualnej (ExpressRoute Gateway) na sieć wirtualną](../articles/expressroute/expressroute-about-virtual-network-gateways.md#gwsku) |1 |
 | Serwery DNS na sieć wirtualną |20 |
 | Prywatne adresy IP na sieć wirtualną |65 536 |
 | Prywatne adresy IP na interfejs sieciowy |256 |

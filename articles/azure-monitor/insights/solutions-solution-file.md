@@ -8,26 +8,26 @@ author: bwren
 ms.author: bwren
 ms.date: 01/09/2018
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 517b9768c1df928012c34a4dcdd2dfa6b0c94d0c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d583f47a9c83abb1119262a2a6b70292cfa4ab69
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75401599"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977690"
 ---
 # <a name="creating-a-management-solution-file-in-azure-preview"></a>Tworzenie pliku rozwiązania do zarządzania na platformie Azure (wersja zapoznawcza)
 > [!NOTE]
 > Jest to wstępna dokumentacja dotycząca tworzenia rozwiązań do zarządzania na platformie Azure, które są obecnie dostępne w wersji zapoznawczej. Każdy schemat opisany poniżej może ulec zmianie.  
 
-Rozwiązania do zarządzania na platformie Azure są implementowane jako [szablony Menedżer zasobów](../../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md).  Głównym zadaniem w nauce tworzenia rozwiązań do zarządzania jest zapoznanie się z sposobem [tworzenia szablonu](../../azure-resource-manager/templates/template-syntax.md).  Ten artykuł zawiera unikatowe szczegóły dotyczące szablonów używanych na potrzeby rozwiązań oraz sposób konfigurowania typowych zasobów rozwiązania.
+Rozwiązania do zarządzania na platformie Azure są implementowane jako [szablony Menedżer zasobów](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md).  Głównym zadaniem w nauce tworzenia rozwiązań do zarządzania jest zapoznanie się z sposobem [tworzenia szablonu](../../azure-resource-manager/templates/template-syntax.md).  Ten artykuł zawiera unikatowe szczegóły dotyczące szablonów używanych na potrzeby rozwiązań oraz sposób konfigurowania typowych zasobów rozwiązania.
 
 
 ## <a name="tools"></a>narzędzia
 
 Możesz użyć dowolnego edytora tekstu do pracy z plikami rozwiązania, ale zalecamy korzystanie z funkcji dostępnych w programie Visual Studio lub Visual Studio Code zgodnie z opisem w poniższych artykułach.
 
-- [Tworzenie i wdrażanie grup zasobów platformy Azure za pomocą programu Visual Studio](../../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)
-- [Praca z szablonami Azure Resource Manager w programie Visual Studio Code](../../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md)
+- [Tworzenie i wdrażanie grup zasobów platformy Azure za pomocą programu Visual Studio](../../azure-resource-manager/templates/create-visual-studio-deployment-project.md)
+- [Praca z szablonami Azure Resource Manager w programie Visual Studio Code](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)
 
 
 
@@ -159,7 +159,7 @@ W tym przypadku należy odwołać się do wartości zmiennych za pomocą rozwią
 
 
 ### <a name="dependencies"></a>Zależności
-Element **dependsOn** określa [zależność](../../azure-resource-manager/resource-group-define-dependencies.md) od innego zasobu.  Po zainstalowaniu rozwiązania zasób nie zostanie utworzony, dopóki nie zostaną utworzone wszystkie jego zależności.  Na przykład rozwiązanie może [uruchomić element Runbook](solutions-resources-automation.md#runbooks) , gdy zostanie on zainstalowany przy użyciu [zasobu zadania](solutions-resources-automation.md#automation-jobs).  Zasób zadania będzie zależny od zasobu elementu Runbook, aby upewnić się, że element Runbook został utworzony przed utworzeniem zadania.
+Element **dependsOn** określa [zależność](../../azure-resource-manager/templates/define-resource-dependency.md) od innego zasobu.  Po zainstalowaniu rozwiązania zasób nie zostanie utworzony, dopóki nie zostaną utworzone wszystkie jego zależności.  Na przykład rozwiązanie może [uruchomić element Runbook](solutions-resources-automation.md#runbooks) , gdy zostanie on zainstalowany przy użyciu [zasobu zadania](solutions-resources-automation.md#automation-jobs).  Zasób zadania będzie zależny od zasobu elementu Runbook, aby upewnić się, że element Runbook został utworzony przed utworzeniem zadania.
 
 ### <a name="log-analytics-workspace-and-automation-account"></a>Obszar roboczy usługi log Analytics i konto usługi Automation
 Rozwiązania do zarządzania wymagają, aby [obszar roboczy log Analytics](../../azure-monitor/platform/manage-access.md) mógł zawierać widoki i [konto usługi Automation](../../automation/automation-security-overview.md#automation-account-overview) zawierające elementy Runbook i powiązane zasoby.  Muszą one być dostępne przed utworzeniem zasobów w rozwiązaniu i nie powinny być zdefiniowane w samym rozwiązaniu.  Użytkownik [określi obszar roboczy i konto](solutions.md#log-analytics-workspace-and-automation-account) podczas wdrażania rozwiązania, ale jako autora należy wziąć pod uwagę następujące kwestie.
@@ -200,7 +200,7 @@ Każde rozwiązanie wymaga wpisu zasobu w elemencie **resources** , który defin
 
 
 ### <a name="dependencies"></a>Zależności
-Aby można było utworzyć rozwiązanie, zasób rozwiązania musi mieć [zależność](../../azure-resource-manager/resource-group-define-dependencies.md) od każdego innego zasobu w rozwiązaniu.  W tym celu Dodaj wpis dla każdego zasobu w elemencie **dependsOn** .
+Aby można było utworzyć rozwiązanie, zasób rozwiązania musi mieć [zależność](../../azure-resource-manager/templates/define-resource-dependency.md) od każdego innego zasobu w rozwiązaniu.  W tym celu Dodaj wpis dla każdego zasobu w elemencie **dependsOn** .
 
 ### <a name="properties"></a>Właściwości
 Zasób rozwiązania ma właściwości w poniższej tabeli.  Obejmuje to zasoby, do których istnieją odwołania i zawarte w rozwiązaniu, które definiują sposób zarządzania zasobem po zainstalowaniu rozwiązania.  Każdy zasób w rozwiązaniu powinien być wymieniony we właściwości **referencedResources** lub **containedResources** .

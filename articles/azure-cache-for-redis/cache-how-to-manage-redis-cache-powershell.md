@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: yegu
-ms.openlocfilehash: 6eeabb279f5bd5165ebb249651b8bc926deb92a6
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: a385d3ed7ef46389f96de72c98ffc29cebf60ec4
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75530922"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978841"
 ---
 # <a name="manage-azure-cache-for-redis-with-azure-powershell"></a>Zarządzanie usługą Azure cache for Redis za pomocą Azure PowerShell
 > [!div class="op_single_selector"]
@@ -26,7 +26,7 @@ W tym temacie pokazano, jak wykonywać typowe zadania, takie jak tworzenie, aktu
 
 [!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]
 
-Aby uzyskać więcej informacji na temat klasycznego modelu wdrażania, zobacz [Azure Resource Manager a wdrożenie klasyczne: Omówienie modeli wdrażania i stanu zasobów](../azure-resource-manager/resource-manager-deployment-model.md).
+Aby uzyskać więcej informacji na temat klasycznego modelu wdrażania, zobacz [Azure Resource Manager a wdrożenie klasyczne: Omówienie modeli wdrażania i stanu zasobów](../azure-resource-manager/management/deployment-models.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Jeśli zainstalowano już Azure PowerShell, musisz mieć Azure PowerShell w wersji 1.0.0 lub nowszej. W wierszu polecenia Azure PowerShell można sprawdzić wersję Azure PowerShell, która została zainstalowana za pomocą tego polecenia.
@@ -776,7 +776,7 @@ Aby dowiedzieć się więcej o korzystaniu z programu Windows PowerShell z platf
 
 * [Dokumentacja poleceń cmdlet usługi Azure cache for Redis w witrynie MSDN](https://docs.microsoft.com/powershell/module/az.rediscache)
 * [Polecenia cmdlet Azure Resource Manager](https://go.microsoft.com/fwlink/?LinkID=394765): informacje na temat używania poleceń cmdlet w module Azure Resource Manager.
-* [Używanie grup zasobów do zarządzania zasobami platformy Azure](../azure-resource-manager/resource-group-template-deploy-portal.md): Dowiedz się, jak tworzyć grupy zasobów i zarządzać nimi w Azure Portal.
+* [Używanie grup zasobów do zarządzania zasobami platformy Azure](../azure-resource-manager/templates/deploy-portal.md): Dowiedz się, jak tworzyć grupy zasobów i zarządzać nimi w Azure Portal.
 * [Blog platformy Azure](https://azure.microsoft.com/blog/): Poznaj nowe funkcje platformy Azure.
 * [Blog programu Windows PowerShell](https://blogs.msdn.com/powershell): informacje o nowych funkcjach w programie Windows PowerShell.
 * ["Hej, obsługa skryptów Guy!" Blog](https://blogs.technet.com/b/heyscriptingguy/): Uzyskaj rzeczywiste porady i wskazówki ze społeczności programu Windows PowerShell.

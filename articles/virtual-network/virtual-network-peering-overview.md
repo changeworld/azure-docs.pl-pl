@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/15/2019
 ms.author: anavin
-ms.openlocfilehash: 335b956701a87b6a0e5984ae50507a91d212ab67
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: e47c7d7c4e982604814b227544a98bb301a20105
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646748"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980104"
 ---
 # <a name="virtual-network-peering"></a>Wirtualne sieci równorzędne
 
@@ -34,7 +34,7 @@ Korzystanie z wirtualnych sieci równorzędnych, lokalnych lub globalnych, zapew
 * Możliwość komunikowania się zasobów w jednej sieci wirtualnej z zasobami w innej sieci wirtualnej.
 * Możliwość transferu danych między sieciami wirtualnymi w ramach subskrypcji platformy Azure, Azure Active Directory dzierżawców, modeli wdrażania i regionów świadczenia usługi Azure.
 * Możliwość komunikacji równorzędnej sieci wirtualnych utworzonych za pomocą Azure Resource Manager.
-* Możliwość komunikacji równorzędnej z siecią wirtualną utworzoną za pomocą Menedżer zasobów do jednej utworzonej za pomocą klasycznego modelu wdrażania. Aby dowiedzieć się więcej na temat modeli wdrażania platformy Azure, zapoznaj się z artykułem [Understand Azure deployment models](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (Informacje na temat modeli wdrażania platformy Azure).
+* Możliwość komunikacji równorzędnej z siecią wirtualną utworzoną za pomocą Menedżer zasobów do jednej utworzonej za pomocą klasycznego modelu wdrażania. Aby dowiedzieć się więcej na temat modeli wdrażania platformy Azure, zapoznaj się z artykułem [Understand Azure deployment models](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (Informacje na temat modeli wdrażania platformy Azure).
 * Brak przestojów zasobów w sieci wirtualnej podczas tworzenia komunikacji równorzędnej albo po utworzeniu komunikacji równorzędnej.
 
 Ruch sieciowy między wirtualnymi sieciami równorzędnymi jest prywatny. Ruch między sieciami wirtualnymi jest utrzymywany w sieci szkieletowej firmy Microsoft. Do komunikacji między sieciami wirtualnymi nie jest wymagany publiczny Internet, bramy ani szyfrowanie.

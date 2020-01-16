@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/20/2018
 ms.author: memildin
-ms.openlocfilehash: 059ca2a26e50128d6bc4313dad9f995e97c06378
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 9e4c6577f0b8b18aff343ac54b31ff292632f5d0
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686408"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979241"
 ---
 # <a name="manage-user-data-found-in-an-azure-security-center-investigation"></a>Zarządzanie danymi użytkownika w badaniu Azure Security Centernym
 Ten artykuł zawiera informacje na temat zarządzania danymi użytkownika znalezionymi w funkcji badania Azure Security Center. Dane badania są przechowywane w [Azure monitor dziennikach](../log-analytics/log-analytics-overview.md) i udostępniane w Security Center. Zarządzanie danymi użytkownika obejmuje możliwość usuwania lub eksportowania danych.
@@ -30,10 +30,10 @@ W Azure Portal można użyć [funkcji badania](../security-center/security-cente
 
 Funkcja badania pokazuje wszystkie jednostki, informacje o użytkownikach i dane na karcie **jednostki** .
 
-## <a name="securing-and-controlling-access-to-personal-information"></a>Zabezpieczanie i kontrola dostępu do danych osobowych
+## <a name="securing-and-controlling-access-to-personal-information"></a>Zabezpieczanie i kontrolowanie dostępu do informacji osobistych
 Użytkownik Security Center przypisany do roli czytelnik, właściciel, współautor lub administrator konta może uzyskać dostęp do danych klienta w ramach tego narzędzia.
 
-Zobacz [wbudowane role dla kontroli dostępu opartej na rolach na platformie Azure](../role-based-access-control/built-in-roles.md) , aby dowiedzieć się więcej na temat ról czytelnik, właściciel i współautor. Zobacz [administratorów subskrypcji platformy Azure](../billing/billing-add-change-azure-subscription-administrator.md) , aby dowiedzieć się więcej o roli administratora konta.
+Zobacz [wbudowane role dla kontroli dostępu opartej na rolach na platformie Azure](../role-based-access-control/built-in-roles.md) , aby dowiedzieć się więcej na temat ról czytelnik, właściciel i współautor. Zobacz [administratorów subskrypcji platformy Azure](../cost-management-billing/manage/add-change-subscription-administrator.md) , aby dowiedzieć się więcej o roli administratora konta.
 
 ## <a name="deleting-personal-data"></a>Usuwanie danych osobowych
 Użytkownik Security Center przypisany do roli właściciela, współautora lub administrator konta może usunąć informacje o badaniu.

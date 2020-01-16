@@ -8,18 +8,18 @@ ms.topic: article
 ms.date: 03/01/2019
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 2260dddd74d7ed64eb19158a5360ed2e4c09b4a9
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: e299821b54692327cbb7d497af0295e3b93658cf
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688339"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75966973"
 ---
 # <a name="troubleshoot-domain-and-ssl-certificate-problems-in-azure-app-service"></a>Rozwiązywanie problemów z certyfikatami domeny i protokołu SSL w Azure App Service
 
 W tym artykule wymieniono typowe problemy, które mogą wystąpić podczas konfigurowania domeny lub certyfikatu SSL dla aplikacji sieci Web w programie Azure App Service. Opisano w nim również możliwe przyczyny i rozwiązania tych problemów.
 
-Jeśli potrzebujesz więcej pomocy w dowolnym punkcie tego artykułu, możesz skontaktować się z ekspertami platformy Azure na [forach MSDN i Stack Overflow](https://azure.microsoft.com/support/forums/). Alternatywnie możesz zaplikować zdarzenie pomocy technicznej platformy Azure. Przejdź do [witryny pomocy technicznej systemu Azure](https://azure.microsoft.com/support/options/) i wybierz pozycję **Uzyskaj pomoc techniczną**.
+Jeśli potrzebujesz więcej pomocy w dowolnym punkcie tego artykułu, możesz skontaktować się z ekspertami platformy Azure na [forach MSDN i Stack Overflow](https://azure.microsoft.com/support/forums/). Alternatywnie mogą zgłaszać zdarzenia pomocy technicznej platformy Azure. Przejdź do [witryny pomocy technicznej systemu Azure](https://azure.microsoft.com/support/options/) i wybierz pozycję **Uzyskaj pomoc techniczną**.
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -110,7 +110,7 @@ W skonfigurowanej domenie niestandardowej brakuje rekordu CNAME lub A.
 
 **Rozwiązanie dla przyczyny 1**
 
-- W przypadku dodania rekordu A upewnij się, że został również dodany rekord TXT. Aby uzyskać więcej informacji, zobacz [Tworzenie rekordu A](./app-service-web-tutorial-custom-domain.md#create-the-a-record).
+- W przypadku dodania rekordu A upewnij się, że został również dodany rekord TXT. Aby uzyskać więcej informacji, zobacz [Utwórz rekord a](./app-service-web-tutorial-custom-domain.md#create-the-a-record).
 - Jeśli nie musisz używać domeny głównej dla swojej aplikacji, zalecamy użycie rekordu CNAME zamiast rekordu A.
 - Nie używaj rekordu CNAME i rekordu A dla tej samej domeny. Ten problem może spowodować konflikt i uniemożliwić rozpoznanie domeny. 
 
@@ -318,6 +318,6 @@ Możesz zarządzać domeną, nawet jeśli nie masz aplikacji sieci Web App Servi
 
 **Czy mogę przenieść aplikację sieci Web z domeną niestandardową do innej subskrypcji lub z App Service Environment V1 do wersji v2?**
 
-Tak, możesz przenieść swoją aplikację sieci Web między subskrypcjami. Postępuj zgodnie ze wskazówkami dotyczącymi [przenoszenia zasobów na platformie Azure](../azure-resource-manager/resource-group-move-resources.md). Podczas przechodzenia do aplikacji internetowej istnieje kilka ograniczeń. Aby uzyskać więcej informacji, zobacz [ograniczenia dotyczące przeniesienia App Service zasobów](../azure-resource-manager/move-limitations/app-service-move-limitations.md).
+Tak, możesz przenieść swoją aplikację sieci Web między subskrypcjami. Postępuj zgodnie ze wskazówkami dotyczącymi [przenoszenia zasobów na platformie Azure](../azure-resource-manager/management/move-resource-group-and-subscription.md). Podczas przechodzenia do aplikacji internetowej istnieje kilka ograniczeń. Aby uzyskać więcej informacji, zobacz [ograniczenia dotyczące przeniesienia App Service zasobów](../azure-resource-manager/management/move-limitations/app-service-move-limitations.md).
 
 Po przeniesieniu aplikacji sieci Web powiązania nazw hostów domen w ramach ustawienia domen niestandardowych powinny pozostać takie same. Nie są wymagane żadne dodatkowe kroki, aby skonfigurować powiązania nazw hostów.

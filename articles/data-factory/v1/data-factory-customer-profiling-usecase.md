@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 866a7fdabaf51738333d8583bea5d0fa9fabf6f2
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: c570f988dea894b8106405f4e427edb386a3e74a
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70139855"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75969285"
 ---
 # <a name="use-case---customer-profiling"></a>Przypadek użycia — profilowanie klientów
 Azure Data Factory jest jedną z wielu usług służących do implementowania Cortana Intelligence Suite akceleratorów rozwiązań.  Aby uzyskać więcej informacji na temat Cortana Intelligence, odwiedź [Cortana Intelligence Suite](https://www.microsoft.com/cortanaanalytics). W tym dokumencie opisano prosty przypadek użycia, który pomoże Ci rozpocząć zrozumienie, jak Azure Data Factory może rozwiązać typowe problemy z analizą.
@@ -29,7 +29,7 @@ Celem firmy Contoso jest zidentyfikowanie możliwości sprzedaży/sprzedaży krz
 W tym rozwiązaniu firma Contoso chce oszacować efektywność kampanii marketingowej, która została ostatnio uruchomiona. Rozpoczynamy od nieprzetworzonych dzienników gier, przetwarzają i wzbogacają je za pomocą danych geolokalizacyjnych, dołączą do nich dane referencyjne, a następnie kopiują je do Azure SQL Database, aby przeanalizować wpływ kampanii.
 
 ## <a name="deploy-solution"></a>Wdróż rozwiązanie
-Wystarczy uzyskać dostęp do tego prostego przypadku użycia i wypróbować go w [ramach subskrypcji platformy Azure](https://azure.microsoft.com/pricing/free-trial/), [konta usługi Azure Blob Storage](../../storage/common/storage-quickstart-create-account.md)i [Azure SQL Database](../../sql-database/sql-database-get-started.md). Potok profilowania klienta jest wdrażany na kafelku **potoki przykładowe** na stronie głównej fabryki danych.
+Wystarczy uzyskać dostęp do tego prostego przypadku użycia i wypróbować go w [ramach subskrypcji platformy Azure](https://azure.microsoft.com/pricing/free-trial/), [konta usługi Azure Blob Storage](../../storage/common/storage-account-create.md)i [Azure SQL Database](../../sql-database/sql-database-get-started.md). Potok profilowania klienta jest wdrażany na kafelku **potoki przykładowe** na stronie głównej fabryki danych.
 
 1. Utwórz fabrykę danych lub Otwórz istniejącą fabrykę danych. Aby utworzyć fabrykę danych, zobacz [Kopiowanie danych z BLOB Storage do SQL Database przy użyciu Data Factory](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
 2. W bloku **Fabryka danych** dla fabryki danych kliknij kafelek **przykładowe potoki** .
@@ -50,7 +50,7 @@ Wystarczy uzyskać dostęp do tego prostego przypadku użycia i wypróbować go 
 
     ![Blok Fabryka danych](./media/data-factory-samples/DataFactoryBladeAfter.png)
 
-## <a name="solution-overview"></a>Przegląd rozwiązania
+## <a name="solution-overview"></a>Omówienie rozwiązania
 Tego prostego przypadku użycia można użyć jako przykładowego sposobu użycia Azure Data Factory do pozyskiwania, przygotowywania, przekształcania, analizowania i publikowania danych.
 
 ![Kompletny przepływ pracy](./media/data-factory-customer-profiling-usecase/EndToEndWorkflow.png)

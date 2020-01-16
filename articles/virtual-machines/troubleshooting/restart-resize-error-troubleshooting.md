@@ -13,12 +13,12 @@ ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cd05f9f7db0db22759c5e19dbfb59cc377e63f4d
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: a6532558107463311c4225b9855bc4cd3f19eed9
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155466"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75965621"
 ---
 # <a name="troubleshoot-deployment-issues-with-restarting-or-resizing-an-existing-windows-vm-in-azure"></a>Rozwiązywanie problemów z wdrażaniem w przypadku ponownego uruchamiania lub zmiany rozmiarów istniejącej maszyny wirtualnej z systemem Windows na platformie Azure
 Podczas próby uruchomienia zatrzymanej maszyny wirtualnej platformy Azure lub zmiany rozmiaru istniejącej maszyny wirtualnej platformy Azure Wystąpił błąd alokacji. Ten błąd jest wynikiem sytuacji, gdy klaster lub region nie ma dostępnych zasobów lub nie obsługuje żądanego rozmiaru maszyny wirtualnej.
@@ -28,36 +28,36 @@ Podczas próby uruchomienia zatrzymanej maszyny wirtualnej platformy Azure lub z
 ## <a name="collect-activity-logs"></a>Zbieranie dzienników aktywności
 Aby rozpocząć rozwiązywanie problemów, Zbierz dzienniki aktywności w celu zidentyfikowania błędu związanego z problemem. Następujące linki zawierają szczegółowe informacje dotyczące procesu:
 
-[Wyświetlanie operacji wdrażania](../../azure-resource-manager/resource-manager-deployment-operations.md)
+[Wyświetlanie operacji wdrażania](../../azure-resource-manager/templates/deployment-history.md)
 
 [Wyświetlanie dzienników aktywności w celu zarządzania zasobami platformy Azure](../../resource-group-audit.md)
 
-## <a name="issue-error-when-starting-a-stopped-vm"></a>Problem: Błąd podczas uruchamiania zatrzymanej maszyny wirtualnej
+## <a name="issue-error-when-starting-a-stopped-vm"></a>Problem: Wystąpił błąd podczas uruchamiania zatrzymanej maszyny wirtualnej
 Podjęto próbę uruchomienia zatrzymanej maszyny wirtualnej, ale wystąpił błąd alokacji.
 
 ### <a name="cause"></a>Przyczyna
 Żądanie uruchomienia zatrzymanej maszyny wirtualnej musi być podejmowane w oryginalnym klastrze, który hostuje usługę w chmurze. Jednak w klastrze nie ma wolnego miejsca dostępnego do zrealizowania żądania.
 
-### <a name="resolution"></a>Rozwiązanie
+### <a name="resolution"></a>Rozdzielczość
 * Zatrzymaj wszystkie maszyny wirtualne w zestawie dostępności, a następnie uruchom ponownie każdą maszynę wirtualną.
   
-  1. Kliknij pozycję **grupy** > zasobów**zasoby** > grupyzasobów > *Twój zestaw dostępności*Virtual Machinesmaszyny > wirtualnej > *Zatrzymaj.*  > 
+  1. Kliknij pozycję **grupy zasobów** , > *grupę zasobów* > **zasoby** > *zestaw dostępności* > **Virtual Machines** > **zatrzymać** *maszynę wirtualną* .
   2. Po zatrzymaniu wszystkich maszyn wirtualnych zaznacz wszystkie zatrzymane maszyny wirtualne, a następnie kliknij przycisk Uruchom.
 * Ponów żądanie ponownego uruchomienia w późniejszym czasie.
 
-## <a name="issue-error-when-resizing-an-existing-vm"></a>Problem: Błąd podczas zmieniania rozmiarów istniejącej maszyny wirtualnej
+## <a name="issue-error-when-resizing-an-existing-vm"></a>Problem: Wystąpił błąd podczas zmieniania rozmiarów istniejącej maszyny wirtualnej
 Podjęto próbę zmiany rozmiaru istniejącej maszyny wirtualnej, ale wystąpił błąd alokacji.
 
 ### <a name="cause"></a>Przyczyna
 Żądanie zmiany rozmiaru maszyny wirtualnej musi być podejmowane w oryginalnym klastrze, który hostuje usługę w chmurze. Jednak klaster nie obsługuje żądanego rozmiaru maszyny wirtualnej.
 
-### <a name="resolution"></a>Rozwiązanie
+### <a name="resolution"></a>Rozdzielczość
 * Spróbuj ponownie wykonać żądanie, używając mniejszego rozmiaru maszyny wirtualnej.
 * Jeśli nie można zmienić rozmiaru żądanej maszyny wirtualnej:
   
   1. Zatrzymaj wszystkie maszyny wirtualne w zestawie dostępności.
      
-     * Kliknij pozycję **grupy** > zasobów**zasoby** > grupyzasobów > *Twój zestaw dostępności*Virtual Machinesmaszyny > wirtualnej > *Zatrzymaj.*  > 
+     * Kliknij pozycję **grupy zasobów** , > *grupę zasobów* > **zasoby** > *zestaw dostępności* > **Virtual Machines** > **zatrzymać** *maszynę wirtualną* .
   2. Po zatrzymaniu wszystkich maszyn wirtualnych Zmień rozmiar żądanej maszyny wirtualnej na większy.
   3. Wybierz maszynę wirtualną o zmienionym rozmiarze, a następnie kliknij przycisk **Start**, a następnie uruchom wszystkie zatrzymane maszyny wirtualne.
 

@@ -10,12 +10,12 @@ ms.author: mesameki
 author: mesameki
 ms.reviewer: trbye
 ms.date: 10/25/2019
-ms.openlocfilehash: 7101cef6acd7c7b321fbd31c614063a1fa8fe17a
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 339ab811969a3de6ce87d529e1bf77f325be4071
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771874"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75968488"
 ---
 # <a name="model-interpretability-in-azure-machine-learning"></a>Interpretowanie modeli w Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -77,7 +77,7 @@ Ten pakiet używa technik interpretacji opracowanych w ramach [interpretacji Com
 * **Objaśnienie śladowe**: wyjaśnienie śladów opiera się na koncepcji, w [której można wyśladować modele Blackbox](https://christophm.github.io/interpretable-ml-book/global.html) . Globalny model zastępczy jest modelem, który jest interpretowany wewnętrznie, aby przybliżyć przewidywania modelu czarnego pudełka, jak to możliwe. Analityk danych może interpretować model zastępczy, aby rysować wnioski o modelu czarnego pudełka. Można użyć jednego z następujących modeli interpretowanych jako model zastępczy: LightGBM (LGBMExplainableModel), regresja liniowa (LinearExplainableModel), Gradient stochastycznego, który jest bardziej wyjaśniony model (SGDExplainableModel) i drzewo decyzyjne ( DecisionTreeExplainableModel).
 
 
-* **Wyjaśnienie ważności funkcji permutacji**: ważność funkcji permutacji jest techniką używaną do wyjaśnienia modeli klasyfikacji i regresji, które są [sponsorowane przez papier Breiman lasów](https://www.stat.berkeley.edu/%7Ebreiman/randomforest2001.pdf) (patrz sekcja 10). Na wysokim poziomie, w jaki działa, jest to spowodowane losowo Shuffling danych jedną funkcją w danym czasie dla całego zestawu danych i obliczaniem, ile jest Metryka wydajności. Im większa zmiana, tym bardziej ważna jest funkcja.
+* **Wyjaśnienie ważności funkcji permutacji**: ważność funkcji permutacji jest techniką używaną do wyjaśnienia modeli klasyfikacji i regresji, które są [sponsorowane przez papier Breiman lasów](https://www.stat.berkeley.edu/~breiman/randomforest2001.pdf) (patrz sekcja 10). Na wysokim poziomie, w jaki działa, jest to spowodowane losowo Shuffling danych jedną funkcją w danym czasie dla całego zestawu danych i obliczaniem, ile jest Metryka wydajności. Im większa zmiana, tym bardziej ważna jest funkcja.
 
 * **Wyjaśnienie wapna** (`contrib`): w oparciu o [wapno](https://github.com/marcotcr/lime), w przypadku użycia przez program do tworzenia lokalnych modeli niezależny od (limonowego) algorytmem "% dekompozycji" można utworzyć lokalne modele. W przeciwieństwie do globalnych modeli zastępczych, WAPNo koncentruje się na lokalnych modelach dwuskładnikowych, aby wyjaśnić poszczególne przewidywania.
 * **Objaśnienie tekstu Han** (`contrib`): objaśnienie tekstu Han używa sieci o hierarchicznej uwagi do uzyskiwania wyjaśnień modelu z danych tekstowych dla danego czarnego modelu tekstu. Pociąga za niego model zastępczy HAN w przypadku danych wyjściowych przewidywanego modelu czarnego pudełka. Po rozpoczęciu szkolenia globalnie w korpus tekstowym dodaje krok szczegółowy dla określonego dokumentu w celu poprawienia dokładności wyjaśnień. HAN używa dwukierunkowej RNN z dwiema warstwami uwagi, w których należy zwrócić uwagę na zdanie i słowo. Gdy DNN jest przeszkolony na czarnym pudełku i dostrojony do określonego dokumentu, użytkownik może wyodrębnić znaczenie wyrazów z warstw uwagi. HAN jest przedstawiany jako dokładniejszy niż WAPNo lub KSZTAŁTowanie danych tekstowych, ale tańsze w zakresie czasu szkolenia. Wprowadzono ulepszenia pozwalające użytkownikowi na zainicjowanie sieci przy użyciu osadzania dokładne programu Word w celu skrócenia czasu uczenia. Czas uczenia można znacznie ulepszyć, uruchamiając HAN na zdalnej maszynie wirtualnej procesora GPU platformy Azure. Implementacja HAN jest opisana w temacie ["hierarchiczne sieci do klasyfikacji dokumentów (Yang et al., 2016)"](https://www.researchgate.net/publication/305334401_Hierarchical_Attention_Networks_for_Document_Classification).

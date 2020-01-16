@@ -4,15 +4,15 @@ description: Dowiedz się, jak zainstalować i skonfigurować lokalną bramę da
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/30/2019
+ms.date: 01/14/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 37658ea6b94d6369d282c49f79947a1f183b61c7
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 019da1810851c730ea8bfe4cf5eea0cfa900bea0
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73572855"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029885"
 ---
 # <a name="install-and-configure-an-on-premises-data-gateway"></a>Instalowanie i konfigurowanie bramy danych lokalnych
 
@@ -24,14 +24,14 @@ Aby dowiedzieć się więcej o bramie i sposobie jej użycia przez Azure Analysi
 
 **Minimalne wymagania:**
 
-* Platforma .NET 4,5
-* 64 — bitowa wersja systemu Windows 7/Windows Server 2008 R2 (lub nowszego)
+* Program .NET Framework 4.5
+* 64 — bitowa wersja systemu Windows 8/Windows Server 2012 R2 (lub nowszego)
 
-**Rekomendowane**
+**Zalecane:**
 
-* 8-rdzeniowy procesor CPU
+* Procesor 8-rdzeniowy
 * 8 GB pamięci
-* 64 — bitowa wersja systemu Windows 2012 R2 (lub nowszego)
+* 64 — bitowa wersja systemu Windows 8/Windows Server 2012 R2 (lub nowszego)
 
 **Ważne zagadnienia:**
 
@@ -56,7 +56,7 @@ Aby dowiedzieć się więcej o bramie i sposobie jej użycia przez Azure Analysi
 
 2. Wybierz pozycję **lokalna Brama danych**.
 
-   ![Wybierz pozycję](media/analysis-services-gateway-install/aas-gateway-installer-select.png)
+   ![Wybierz](media/analysis-services-gateway-install/aas-gateway-installer-select.png)
 
 2. Wybierz lokalizację, zaakceptuj warunki, a następnie kliknij przycisk **Instaluj**.
 
@@ -75,14 +75,14 @@ Aby utworzyć zasób bramy na platformie Azure, musisz zarejestrować lokalne wy
 
 1.  Wybierz pozycję **zarejestruj nową bramę na tym komputerze**.
 
-    ![Zarejestruj subskrypcję](media/analysis-services-gateway-install/aas-gateway-register-new.png)
+    ![Zarejestruj](media/analysis-services-gateway-install/aas-gateway-register-new.png)
 
 2. Wpisz nazwę i klucz odzyskiwania dla bramy. Domyślnie brama używa domyślnego regionu subskrypcji. Jeśli musisz wybrać inny region, wybierz pozycję **Zmień region**.
 
     > [!IMPORTANT]
     > Zapisz klucz odzyskiwania w bezpiecznym miejscu. Klucz odzyskiwania jest wymagany w celu przejęcia, przeprowadzenia migracji lub przywrócenia bramy. 
 
-   ![Zarejestruj subskrypcję](media/analysis-services-gateway-install/aas-gateway-register-name.png)
+   ![Zarejestruj](media/analysis-services-gateway-install/aas-gateway-register-name.png)
 
 
 ## <a name="create-resource"></a>Tworzenie zasobu bramy platformy Azure
@@ -107,7 +107,7 @@ Po zainstalowaniu i zarejestrowaniu bramy musisz utworzyć zasób bramy w ramach
 
    * **Nazwa instalacji**: Jeśli instalacja bramy nie została jeszcze wybrana, wybierz bramę zainstalowaną na komputerze i zarejestrowano. 
 
-     Gdy skończysz, kliknij przycisk **Utwórz**.
+     Gdy wszystko będzie gotowe, kliknij przycisk **Utwórz**.
 
 ## <a name="connect-servers"></a>Łączenie serwerów z zasobem bramy
 
@@ -127,7 +127,7 @@ Po zainstalowaniu i zarejestrowaniu bramy musisz utworzyć zasób bramy w ramach
 
     ![Pomyślne połączenie serwera z bramą](media/analysis-services-gateway-install/aas-gateway-connect-success.png)
 
-Gotowe. Jeśli konieczne jest otwarcie portów lub Rozwiązywanie problemów, należy sprawdzić, czy [lokalna Brama danych](analysis-services-gateway.md)jest Wyewidencjonuj.
+To już wszystko. Jeśli konieczne jest otwarcie portów lub Rozwiązywanie problemów, należy sprawdzić, czy [lokalna Brama danych](analysis-services-gateway.md)jest Wyewidencjonuj.
 
 ## <a name="next-steps"></a>Następne kroki
 

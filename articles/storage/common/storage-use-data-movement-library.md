@@ -10,14 +10,14 @@ ms.topic: how-to
 ms.date: 12/04/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 22dae518a45d5c4af20044d5f3eb88e764e92c8b
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 5fe1e45f2ff80c1a212009291ab880a57f347fdf
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895112"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978387"
 ---
-# <a name="transfer-data-with-the-data-movement-library"></a>Transferowanie danych za pomocą biblioteki przenoszenia danych
+# <a name="transfer-data-with-the-data-movement-library"></a>Przenoszenie danych za pomocą biblioteki przenoszenia danych
 
 Biblioteka przenoszenia danych usługi Azure Storage jest międzyplatformową biblioteką typu open source, która została zaprojektowana w celu zapewnienia wysokiej wydajności przekazywania, pobierania i kopiowania obiektów blob i plików. Ta biblioteka jest podstawową strukturą przenoszenia danych, która [AzCopy](../storage-use-azcopy.md). Biblioteka przenoszenia danych oferuje wygodne metody, które nie są dostępne w bibliotece klienta usługi Azure Storage dla platformy .NET. Te metody zapewniają możliwość ustawienia liczby operacji równoległych, śledzenia postępu transferu, łatwego wznowienia anulowanego transferu i wielu innych.
 
@@ -35,7 +35,7 @@ W tym dokumencie przedstawiono sposób tworzenia aplikacji konsolowej .NET Core,
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - [Visual Studio Code](https://code.visualstudio.com/)
-- [konto usługi Azure Storage](storage-quickstart-create-account.md)
+- [Konto usługi Azure Storage](storage-account-create.md)
 
 ## <a name="setup"></a>Konfiguracja
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 09/09/2016
 ms.author: cjiang
-ms.openlocfilehash: f02e1f73460140c9fe9f2cf6d7ffda26533d570d
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 98c3a6b14230e30ccbb103be741595696a20c236
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70090022"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981421"
 ---
 # <a name="troubleshoot-resource-manager-deployment-issues-with-creating-a-new-linux-virtual-machine-in-azure"></a>Rozwiązywanie problemów z wdrażaniem Menedżer zasobów przy tworzeniu nowej maszyny wirtualnej z systemem Linux na platformie Azure
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-opening](../../../includes/virtual-machines-troubleshoot-deployment-new-vm-opening-include.md)]
@@ -34,7 +34,7 @@ Inne problemy i pytania dotyczące wdrażania maszyn wirtualnych można znaleź�
 ## <a name="collect-activity-logs"></a>Zbieranie dzienników aktywności
 Aby rozpocząć rozwiązywanie problemów, Zbierz dzienniki aktywności w celu zidentyfikowania błędu związanego z problemem. Poniższe linki zawierają szczegółowe informacje dotyczące procesu do wykonania.
 
-[Wyświetlanie operacji wdrażania](../../azure-resource-manager/resource-manager-deployment-operations.md)
+[Wyświetlanie operacji wdrażania](../../azure-resource-manager/templates/deployment-history.md)
 
 [Wyświetlanie dzienników aktywności w celu zarządzania zasobami platformy Azure](../../resource-group-audit.md)
 
@@ -42,7 +42,7 @@ Aby rozpocząć rozwiązywanie problemów, Zbierz dzienniki aktywności w celu z
 
 [!INCLUDE [virtual-machines-linux-troubleshoot-deployment-new-vm-table](../../../includes/virtual-machines-linux-troubleshoot-deployment-new-vm-table.md)]
 
-**T** Jeśli system operacyjny jest uogólniony, a został przekazany i/lub przechwycony przy użyciu ustawienia uogólnionego, nie będzie żadnych błędów. Podobnie, jeśli system operacyjny jest w systemie Linux wyspecjalizowany i/lub przechwytywany przy użyciu ustawienia wyspecjalizowanego, nie będzie żadnych błędów.
+**T:** Jeśli system operacyjny jest uogólniony, a został przekazany i/lub przechwycony przy użyciu ustawienia uogólnionego, nie będzie żadnych błędów. Podobnie, jeśli system operacyjny jest w systemie Linux wyspecjalizowany i/lub przechwytywany przy użyciu ustawienia wyspecjalizowanego, nie będzie żadnych błędów.
 
 **Błędy przekazywania:**
 
@@ -50,7 +50,7 @@ Aby rozpocząć rozwiązywanie problemów, Zbierz dzienniki aktywności w celu z
 
 **N<sup>2</sup>:** Jeśli system operacyjny jest wyspecjalizowany dla systemu Linux i został przekazany jako uogólniony, zostanie wyświetlony błąd inicjowania obsługi, ponieważ nowa maszyna wirtualna jest uruchomiona z oryginalną nazwą komputera, nazwą użytkownika i hasłem.
 
-**Tłumaczenia**
+**Rozwiązanie:**
 
 Aby rozwiązać oba te błędy, należy przekazać oryginalny wirtualny dysk twardy, który jest dostępny lokalnie, przy użyciu tego samego ustawienia jak w przypadku systemu operacyjnego (uogólniony/wyspecjalizowany). Aby przekazać jako uogólniony, pamiętaj, aby najpierw uruchomić Inicjowanie obsługi administracyjnej.
 
@@ -60,11 +60,11 @@ Aby rozwiązać oba te błędy, należy przekazać oryginalny wirtualny dysk twa
 
 **N<sup>4</sup>:** Jeśli system operacyjny jest w systemie Linux wyspecjalizowany i jest przechwytywany jako uogólniony, zostanie wyświetlony błąd inicjowania obsługi, ponieważ nowa maszyna wirtualna jest uruchomiona z oryginalną nazwą komputera, nazwą użytkownika i hasłem. Ponadto oryginalna maszyna wirtualna nie jest używana, ponieważ jest oznaczona jako wyspecjalizowana.
 
-**Tłumaczenia**
+**Rozwiązanie:**
 
 Aby rozwiązać oba te błędy, Usuń bieżący obraz z portalu i [Przechwyć go ponownie z bieżącego dysku VHD](../linux/capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) z tym samym ustawieniem dla systemu operacyjnego (uogólniony/wyspecjalizowany).
 
-## <a name="issue-custom-gallery-marketplace-image-allocation-failure"></a>Problem: Obraz niestandardowy/Galeria/witryna Marketplace; Niepowodzenie alokacji
+## <a name="issue-custom-gallery-marketplace-image-allocation-failure"></a>Problem: obraz niestandardowy/Galeria/witryna Marketplace; Niepowodzenie alokacji
 Ten błąd występuje w sytuacji, gdy nowe żądanie maszyny wirtualnej jest przypięte do klastra, który nie obsługuje żądanego rozmiaru maszyny wirtualnej lub nie ma dostępnego wolnego miejsca, aby pomieścić żądanie.
 
 **Przyczyna 1:** Klaster nie obsługuje żądanego rozmiaru maszyny wirtualnej.
@@ -74,7 +74,7 @@ Ten błąd występuje w sytuacji, gdy nowe żądanie maszyny wirtualnej jest prz
 * Spróbuj ponownie wykonać żądanie, używając mniejszego rozmiaru maszyny wirtualnej.
 * Jeśli nie można zmienić rozmiaru żądanej maszyny wirtualnej:
   * Zatrzymaj wszystkie maszyny wirtualne w zestawie dostępności.
-    Kliknij pozycję **grupy** > zasobów**zasoby** > grupyzasobów > *Twój zestaw dostępności*Virtual Machinesmaszyny > wirtualnej > *Zatrzymaj.*  > 
+    Kliknij pozycję **grupy zasobów** , > *grupę zasobów* > **zasoby** > *zestaw dostępności* > **Virtual Machines** > **zatrzymać** *maszynę wirtualną* .
   * Po zatrzymaniu wszystkich maszyn wirtualnych Utwórz nową maszynę wirtualną w żądanym rozmiarze.
   * Najpierw uruchom nową maszynę wirtualną, a następnie wybierz każdą z zatrzymanych maszyn wirtualnych, a następnie kliknij przycisk **Uruchom**.
 
@@ -88,5 +88,5 @@ Ten błąd występuje w sytuacji, gdy nowe żądanie maszyny wirtualnej jest prz
   * Dodaj nową MASZYNę wirtualną do tej samej sieci wirtualnej.
 
 ## <a name="next-steps"></a>Następne kroki
-Jeśli wystąpią problemy podczas uruchamiania zatrzymanej maszyny wirtualnej z systemem Linux lub zmiany rozmiaru istniejącej maszyny wirtualnej z systemem Linux na platformie Azure, zobacz Rozwiązywanie problemów [z wdrożeniem Menedżer zasobów z ponownym uruchamianiem lub zmianami rozmiaru istniejącej maszyny wirtualnej z systemem Linux na platformie Azure](../linux/restart-resize-error-troubleshooting.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Jeśli wystąpią problemy podczas uruchamiania zatrzymanej maszyny wirtualnej z systemem Linux lub zmiany rozmiaru istniejącej maszyny wirtualnej z systemem Linux na platformie Azure, zobacz [Rozwiązywanie problemów z wdrożeniem Menedżer zasobów z ponownym uruchamianiem lub zmianami rozmiaru istniejącej maszyny wirtualnej z systemem Linux na platformie Azure](../linux/restart-resize-error-troubleshooting.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 

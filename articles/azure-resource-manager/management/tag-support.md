@@ -3,15 +3,15 @@ title: Obsługa tagów dla zasobów
 description: Pokazuje, które typy zasobów platformy Azure obsługują Tagi. Zawiera szczegółowe informacje dotyczące wszystkich usług platformy Azure.
 ms.topic: conceptual
 ms.date: 11/22/2019
-ms.openlocfilehash: 493313cbb0b43b04d3c4dde82b5ca95dd7e9ac4e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4eb163376f1a0b8d8194defed4445578975976f2
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75479776"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982219"
 ---
 # <a name="tag-support-for-azure-resources"></a>Obsługa tagów dla zasobów platformy Azure
-W tym artykule opisano, czy typ zasobu obsługuje [Tagi](tag-resources.md). Kolumna z etykietą **obsługuje znaczniki** wskazuje, czy typ zasobu ma właściwość dla tagu. Kolumna **tag z etykietą w raporcie koszt** wskazuje, czy ten typ zasobu przekazuje tag do raportu kosztów. Możesz wyświetlić koszty według tagów w [Cost Management analiza kosztów](../../cost-management/quick-acm-cost-analysis.md#understanding-grouping-and-filtering-options) oraz [dane dotyczące rozliczeń i dziennego użycia na platformie Azure](../../billing/billing-download-azure-invoice-daily-usage-date.md).
+W tym artykule opisano, czy typ zasobu obsługuje [Tagi](tag-resources.md). Kolumna z etykietą **obsługuje znaczniki** wskazuje, czy typ zasobu ma właściwość dla tagu. Kolumna **tag z etykietą w raporcie koszt** wskazuje, czy ten typ zasobu przekazuje tag do raportu kosztów. Możesz wyświetlić koszty według tagów w [Cost Management analiza kosztów](../../cost-management-billing/costs/quick-acm-cost-analysis.md#understanding-grouping-and-filtering-options) oraz [dane dotyczące rozliczeń i dziennego użycia na platformie Azure](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md).
 
 Aby uzyskać te same dane jak plik z wartościami rozdzielanymi przecinkami, Pobierz [tag-support. csv](https://github.com/tfitzmac/resource-capabilities/blob/master/tag-support.csv).
 
@@ -472,7 +472,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | botServices/kanały | Nie | Nie |
 > | botServices/połączenia | Nie | Nie |
 > | języki | Nie | Nie |
-> | szablonów | Nie | Nie |
+> | templates | Nie | Nie |
 
 ## <a name="microsoftcache"></a>Microsoft.Cache
 

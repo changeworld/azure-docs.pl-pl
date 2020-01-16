@@ -15,19 +15,19 @@ ms.date: 08/07/2017
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 8757b634b76867a2d5ccce3dcfdc9d66ef25c25e
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 24d8a0b88da44c53cb176244cd5fe7377514abda
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74032731"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978112"
 ---
 # <a name="provision-a-sql-server-virtual-machine-using-azure-powershell-classic"></a>Inicjowanie obsługi administracyjnej maszyny wirtualnej SQL Server przy użyciu Azure PowerShell (klasyczny)
 
 W tym artykule przedstawiono procedurę tworzenia SQL Server maszyny wirtualnej na platformie Azure przy użyciu poleceń cmdlet programu PowerShell.
 
 > [!IMPORTANT] 
-> Platforma Azure ma dwa różne modele wdrażania służące do tworzenia zasobów i pracy z nimi: [Menedżer zasobów i klasyczne](../../../azure-resource-manager/resource-manager-deployment-model.md). W tym artykule opisano korzystanie z klasycznego modelu wdrażania. Firma Microsoft zaleca, aby w przypadku większości nowych wdrożeń korzystać z modelu opartego na programie Resource Manager.
+> Platforma Azure ma dwa różne modele wdrażania służące do tworzenia zasobów i pracy z nimi: [Menedżer zasobów i klasyczne](../../../azure-resource-manager/management/deployment-models.md). W tym artykule opisano korzystanie z klasycznego modelu wdrażania. Firma Microsoft zaleca, aby w przypadku większości nowych wdrożeń korzystać z modelu opartego na programie Resource Manager.
 
 Aby uzyskać Menedżer zasobów wersję tego tematu, zobacz [Inicjowanie obsługi SQL Server maszyny wirtualnej przy użyciu Azure PowerShell Menedżer zasobów](../sql/virtual-machines-windows-ps-sql-create.md).
 

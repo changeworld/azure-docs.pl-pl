@@ -10,12 +10,12 @@ ms.workload: data-services
 author: djpmsft
 ms.author: daperlov
 manager: anandsub
-ms.openlocfilehash: 00d84a7f3b4a15c9278caac8c2715380dd330482
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: d143992317c77c6fc3137527bea485a98c046daa
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74930495"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75969223"
 ---
 # <a name="roles-and-permissions-for-azure-data-factory"></a>Role i uprawnienia dla Azure Data Factory
 
@@ -29,7 +29,7 @@ Aby utworzyć zasoby podrzędne — w tym zestawy danych, połączone usługi, p
 - Aby utworzyć zasoby podrzędne i nimi zarządzać, trzeba należeć do roli **Współautor w usłudze Data Factory** na poziomie grupy zasobów lub wyższej.
 - W przypadku tworzenia zasobów podrzędnych i zarządzania nimi za pomocą programu PowerShell lub zestawu SDK rola **współautora** na poziomie grupy zasobów lub wyższej jest wystarczająca.
 
-Aby uzyskać przykładowe instrukcje dotyczące dodawania użytkownika do roli, zobacz artykuł [Add roles (Dodawanie ról)](../billing/billing-add-change-azure-subscription-administrator.md).
+Aby uzyskać przykładowe instrukcje dotyczące dodawania użytkownika do roli, zobacz artykuł [Add roles (Dodawanie ról)](../cost-management-billing/manage/add-change-subscription-administrator.md).
 
 ## <a name="set-up-permissions"></a>Konfigurowanie uprawnień
 
@@ -56,7 +56,7 @@ Uprawnienia do Azure Repos i GitHub są niezależne od uprawnień Data Factory. 
 
 ### <a name="custom-scenarios-and-custom-roles"></a>Scenariusze niestandardowe i role niestandardowe
 
-Czasami może być konieczne przyznanie różnych poziomów dostępu dla różnych użytkowników usługi Data Factory. Na przykład:
+Czasami może być konieczne przyznanie różnych poziomów dostępu dla różnych użytkowników usługi Data Factory. Przykład:
 - Może być potrzebna Grupa, w której użytkownicy mają uprawnienia tylko do określonej fabryki danych.
 - Lub może być potrzebna Grupa, w której użytkownicy mogą monitorować tylko fabrykę danych (lub fabryki), ale nie mogą jej modyfikować.
 

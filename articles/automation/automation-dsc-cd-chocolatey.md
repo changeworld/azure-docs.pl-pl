@@ -5,12 +5,12 @@ services: automation
 ms.subservice: dsc
 ms.date: 08/08/2018
 ms.topic: conceptual
-ms.openlocfilehash: ad42d7c2257519c2622ba17f74f97b9521233850
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4445f6e9b72380b66f3282d50871b4283f7fc7fa
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75366434"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75966741"
 ---
 # <a name="usage-example-continuous-deployment-to-virtual-machines-using-automation-state-configuration-and-chocolatey"></a>Przykład użycia: ciągłe wdrażanie do Virtual Machines przy użyciu konfiguracji stanu automatyzacji i czekolady
 
@@ -40,7 +40,7 @@ Azure Automation konfiguracja stanu rozszerza tę możliwość automatyzacji w c
 Zasób DSC to moduł kodu, który ma określone możliwości, takie jak zarządzanie sieciami, Active Directory lub SQL Server. Zasób czekolady DSC wie, jak uzyskać dostęp do serwera NuGet (między innymi), pobrać pakiety, zainstalować pakiety i tak dalej. W [Galeria programu PowerShell](https://www.powershellgallery.com/packages?q=dsc+resources&prerelease=&sortOrder=package-title)istnieje wiele innych zasobów DSC.
 Te moduły są instalowane na serwerze ściągania konfiguracji stanu Azure Automation (przez użytkownika), dzięki czemu mogą być używane przez konfiguracje.
 
-Szablony Menedżer zasobów zapewniają deklaratywny sposób generowania infrastruktury, takich jak sieci, podsieci, zabezpieczenia sieci i routing, moduły równoważenia obciążenia, karty sieciowe, maszyny wirtualne i tak dalej. Poniżej znajduje się [artykuł](../azure-resource-manager/resource-manager-deployment-model.md) porównujący model wdrażania Menedżer zasobów (deklaracyjne) z modelem wdrażania usługi Azure Service Management (ASM lub klasycznym), a także omówiono podstawowych dostawców zasobów, obliczenia, magazyn i sieć.
+Szablony Menedżer zasobów zapewniają deklaratywny sposób generowania infrastruktury, takich jak sieci, podsieci, zabezpieczenia sieci i routing, moduły równoważenia obciążenia, karty sieciowe, maszyny wirtualne i tak dalej. Poniżej znajduje się [artykuł](../azure-resource-manager/management/deployment-models.md) porównujący model wdrażania Menedżer zasobów (deklaracyjne) z modelem wdrażania usługi Azure Service Management (ASM lub klasycznym), a także omówiono podstawowych dostawców zasobów, obliczenia, magazyn i sieć.
 
 Jedną z kluczowych funkcji szablonu Menedżer zasobów jest możliwość instalacji rozszerzenia maszyny wirtualnej na maszynie wirtualnej w ramach aprowizacji. Rozszerzenie maszyny wirtualnej ma określone funkcje, takie jak uruchamianie skryptu niestandardowego, instalowanie oprogramowania antywirusowego lub uruchamianie skryptu konfiguracji DSC. Istnieje wiele innych typów rozszerzeń maszyn wirtualnych.
 

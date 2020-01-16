@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/27/2018
 ms.author: allensu
-ms.openlocfilehash: 63f386212b0277c3b5ee383e707d4c32fa4e63fc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7ed58201fa7aa1e608cba6d64ac95740cf9a60dc
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428848"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75965915"
 ---
 # <a name="azure-monitor-logs-for-public-basic-load-balancer"></a>Dzienniki Azure Monitor dla publicznych Load Balancer podstawowych
 
->[!IMPORTANT] 
+>[!IMPORTANT]
 >Usługa Azure Load Balancer obsługuje dwie warstwy: Podstawowa i Standardowa. W tym artykule omówiono usługę Load Balancer w warstwie Podstawowa. Aby uzyskać więcej informacji na temat usługa Load Balancer w warstwie Standardowa, zobacz [omówienie usługa Load Balancer w warstwie Standardowa](load-balancer-standard-overview.md) , które udostępnia dane telemetryczne za pośrednictwem wielowymiarowych metryk w Azure monitor.
 
 Możesz użyć różnych typów dzienników na platformie Azure do zarządzania podstawowymi modułami równoważenia obciążenia i rozwiązywania problemów. Dostęp do niektórych z tych dzienników można uzyskać za pomocą portalu. Dzienniki mogą być przesyłane strumieniowo do centrum zdarzeń lub obszaru roboczego Log Analytics. Wszystkie dzienniki można wyodrębnić z usługi Azure Blob Storage i przeglądać w różnych narzędziach, takich jak Excel i Power BI.  Więcej informacji o różnych typach dzienników można znaleźć na poniższej liście.
@@ -32,7 +32,7 @@ Możesz użyć różnych typów dzienników na platformie Azure do zarządzania 
 * **Dzienniki sondowania kondycji:** Ten dziennik służy do wyświetlania problemów wykrytych przez sondę kondycji, takich jak liczba wystąpień w puli zaplecza, które nie otrzymują żądań z modułu równoważenia obciążenia z powodu błędów sondy kondycji. Ten dziennik jest zapisywana w przypadku zmiany stanu sondy kondycji.
 
 > [!IMPORTANT]
-> Dzienniki Azure Monitor są obecnie przeznaczone tylko dla publicznych usług równoważenia obciążenia. Dzienniki są dostępne tylko dla zasobów wdrożonych w modelu wdrażania Menedżer zasobów. Nie można używać dzienników dla zasobów w klasycznym modelu wdrażania. Aby uzyskać więcej informacji na temat modeli wdrażania, zobacz [opis Menedżer zasobów wdrożenia i wdrożenia klasycznego](../azure-resource-manager/resource-manager-deployment-model.md).
+> Dzienniki Azure Monitor są obecnie przeznaczone tylko dla publicznych usług równoważenia obciążenia. Dzienniki są dostępne tylko dla zasobów wdrożonych w modelu wdrażania Menedżer zasobów. Nie można używać dzienników dla zasobów w klasycznym modelu wdrażania. Aby uzyskać więcej informacji na temat modeli wdrażania, zobacz [opis Menedżer zasobów wdrożenia i wdrożenia klasycznego](../azure-resource-manager/management/deployment-models.md).
 
 ## <a name="enable-logging"></a>Włączanie rejestrowania
 
@@ -57,7 +57,7 @@ Zaloguj się do [portalu Azure](https://portal.azure.com). Jeśli nie masz jeszc
     1. Zaznacz pole wyboru obok pozycji **Archiwizowanie na koncie magazynu**.
     2. Wybierz pozycję **Konfiguruj** , aby otworzyć okienko **Wybierz konto magazynu** .
     3. Wybierz **subskrypcję** , w której konto magazynu zostało utworzone w polu ściągania.
-    4. Wybierz nazwę konta magazynu w obszarze **konto magazynu** w polu ściąganie. 
+    4. Wybierz nazwę konta magazynu w obszarze **konto magazynu** w polu ściąganie.
     5. Wybierz przycisk OK.
 
     ### <a name="stream-to-an-event-hub"></a>Przesyłaj strumieniowo do centrum zdarzeń
@@ -160,7 +160,7 @@ Dane wyjściowe JSON są wyświetlane w polu właściwości podstawowe informacj
 
 Można wyświetlać i analizować dane dziennika inspekcji przy użyciu dowolnej z następujących metod:
 
-* **Narzędzia platformy Azure:** Pobierz informacje z dzienników inspekcji za pośrednictwem Azure PowerShell, interfejsu wiersza polecenia platformy Azure, interfejsu API REST platformy Azure lub Azure Portal. Instrukcje krok po kroku dla każdej metody opisano szczegółowo w [operacjach inspekcji w Menedżer zasobów](../azure-resource-manager/resource-group-audit.md) artykule.
+* **Narzędzia platformy Azure:** Pobierz informacje z dzienników inspekcji za pośrednictwem Azure PowerShell, interfejsu wiersza polecenia platformy Azure, interfejsu API REST platformy Azure lub Azure Portal. Instrukcje krok po kroku dla każdej metody opisano szczegółowo w [operacjach inspekcji w Menedżer zasobów](../azure-resource-manager/management/view-activity-logs.md) artykule.
 * **Power BI:** Jeśli nie masz jeszcze konta [Power BI](https:// .microsoft.com/pricing) , możesz wypróbować go bezpłatnie. Za pomocą [pakietu zawartości dzienników inspekcji platformy Azure dla Power BI](https:// .microsoft.com/documentation/ -content-pack-azure-audit-logs)można analizować dane przy użyciu wstępnie skonfigurowanych pulpitów nawigacyjnych lub dostosować widoki zgodnie z wymaganiami.
 
 ### <a name="view-and-analyze-the-health-probe-and-event-log"></a>Wyświetlanie i analizowanie sondy kondycji i dziennika zdarzeń

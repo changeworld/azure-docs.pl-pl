@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: 13fbab52c16fcde72da8073b429fe6fb4665c21b
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: afa03399933bdc8bd8ff869125955cfd9e0abecb
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74763882"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981930"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-postgresql---single-server"></a>Przegląd ciągłości działania z Azure Database for PostgreSQL — pojedynczy serwer
 
@@ -23,13 +23,13 @@ Azure Database for PostgreSQL zapewnia funkcje ciągłości biznesowej, które o
 
 W poniższej tabeli porównano ERT i cel punktu odzyskiwania dla dostępnych funkcji:
 
-| **Pozwala** | **Podstawowa** | **Ogólnego przeznaczenia** | **Optymalizacja pod kątem pamięci** |
+| **Funkcja** | **Podstawowa** | **Ogólnego przeznaczenia** | **Optymalizacja pod kątem pamięci** |
 | :------------: | :-------: | :-----------------: | :------------------: |
 | Przywracanie do punktu w czasie z kopii zapasowej | Dowolny punkt przywracania w okresie przechowywania | Dowolny punkt przywracania w okresie przechowywania | Dowolny punkt przywracania w okresie przechowywania |
 | Przywracanie geograficzne z kopii zapasowych replikowanych geograficznie | Brak obsługi | ERT < 12 h<br/>Cel punktu odzyskiwania < 1 h | ERT < 12 h<br/>Cel punktu odzyskiwania < 1 h |
 
 > [!IMPORTANT]
-> **Nie** można przywrócić usuniętych serwerów. Usunięcie serwera spowoduje również usunięcie wszystkich baz danych należących do serwera, których nie można odzyskać. Użyj [blokady zasobów platformy Azure](../azure-resource-manager/resource-group-lock-resources.md) , aby zapobiec przypadkowemu usunięciu serwera.
+> **Nie** można przywrócić usuniętych serwerów. Usunięcie serwera spowoduje również usunięcie wszystkich baz danych należących do serwera, których nie można odzyskać. Użyj [blokady zasobów platformy Azure](../azure-resource-manager/management/lock-resources.md) , aby zapobiec przypadkowemu usunięciu serwera.
 
 ## <a name="recover-a-server-after-a-user-or-application-error"></a>Odzyskiwanie serwera po błędzie użytkownika lub aplikacji
 

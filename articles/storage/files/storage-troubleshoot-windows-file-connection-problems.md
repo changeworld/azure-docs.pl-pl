@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 4a5ab0b0ae76f3c646df42953c1602c63a274824
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a466601bb68e9cec72408a590f2aec3d3dbfbf93
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457393"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75968275"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Rozwiązywanie problemów z Azure Files w systemie Windows
 
@@ -185,7 +185,7 @@ Podczas próby przetransferowania plików do usługi plików platformy Azure mo�
 -   Jeśli znasz końcowy rozmiar pliku, który jest rozszerzany przy użyciu zapisu, a oprogramowanie nie ma problemów ze zgodnością, gdy niezapisany ogon w pliku zawiera zera, a następnie ustaw rozmiar pliku z góry, zamiast wprowadzać każdy zapis rozszerzający.
 -   Użyj odpowiedniej metody copy:
     -   Użyj [AzCopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) do dowolnego transferu między dwoma udziałami plików.
-    -   Użyj [Robocopy](https://blogs.msdn.microsoft.com/granth/2009/12/07/multi-threaded-robocopy-for-faster-copies/) między udziałami plików na komputerze lokalnym.
+    -   Użyj [Robocopy](/azure/storage/files/storage-files-deployment-guide#robocopy) między udziałami plików na komputerze lokalnym.
 
 ### <a name="considerations-for-windows-81-or-windows-server-2012-r2"></a>Zagadnienia dotyczące Windows 8.1 lub systemu Windows Server 2012 R2
 

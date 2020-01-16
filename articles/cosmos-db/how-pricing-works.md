@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 0e0adef2728ef75dc67f02fdf38b6638965df62f
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 7efae8fb3c00868e2740eac2d4d5bcb3c82f663a
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756867"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977536"
 ---
 # <a name="pricing-model-in-azure-cosmos-db"></a>Model cen w Azure Cosmos DB 
 
@@ -32,9 +32,9 @@ Model cen w Azure Cosmos DB jest spójny dla wszystkich interfejsów API. Aby do
 
 Obecnie minimalna cena zarówno dla bazy danych, jak i przepływności opartej na kontenerze wynosi $24 miesięcznie (zobacz [stronę z cennikiem Azure Cosmos DB](https://azure.microsoft.com/pricing/details/cosmos-db/) , aby uzyskać najnowsze informacje. Jeśli obciążenie używa wielu kontenerów, można je zoptymalizować pod kątem kosztów przy użyciu przepływności na poziomie bazy danych, ponieważ przepływność na poziomie bazy danych umożliwia korzystanie z dowolnej liczby kontenerów w bazie danych udostępniającej przepływność między kontenerami. Poniższa tabela zawiera podsumowanie przepływności i kosztów dla różnych jednostek:
 
-|**Podmiotów**  | **Minimalny koszt & przepływności** |**Przyrosty skalowania & kosztu** |**Zakres aprowizacji** |
+|**Jednostka**  | **Minimalny koszt & przepływności** |**Przyrosty skalowania & kosztu** |**Zakres aprowizacji** |
 |---------|---------|---------|-------|
-|Database (Baza danych)    | 400 RU/s (24/Miesiąc)    | 100 RU/s ($ 6/miesiąc)   |Przepływność jest zarezerwowana dla bazy danych i jest współdzielona przez kontenery w ramach bazy danych |
+|baza danych    | 400 RU/s (24/Miesiąc)    | 100 RU/s ($ 6/miesiąc)   |Przepływność jest zarezerwowana dla bazy danych i jest współdzielona przez kontenery w ramach bazy danych |
 |Kontener     | 400 RU/s (24/Miesiąc)    | 100 RU/s ($ 6/miesiąc)  |Przepływność jest zarezerwowana dla określonego kontenera |
 
 Jak pokazano w poprzedniej tabeli, minimalna przepływność w Azure Cosmos DB zaczyna się od ceny $24 miesięcznie. W przypadku rozpoczęcia od minimalnej przepływności i skalowania w górę w czasie w celu zapewnienia obsługi obciążeń produkcyjnych Twoje koszty zostaną zakłócone w przyrostach wynoszących $6/miesiąc. Model cen w Azure Cosmos DB jest elastyczny i ma płynny wzrost lub spadek ceny podczas skalowania w górę lub w dół.
@@ -43,7 +43,7 @@ Jak pokazano w poprzedniej tabeli, minimalna przepływność w Azure Cosmos DB z
 
 Azure Cosmos DB oferuje dla deweloperów kilka opcji bezpłatnych. Dostępne są następujące opcje:
 
-* **Bezpłatne konto platformy Azure**: platforma Azure oferuje [bezpłatną warstwę](https://azure.microsoft.com/free/) , która daje $200 na środki na korzystanie z platformy Azure za pierwsze 30 dni i ograniczoną liczbę bezpłatnych usług przez 12 miesięcy. Aby uzyskać więcej informacji, zobacz [Bezpłatne konto platformy Azure](../billing/billing-avoid-charges-free-account.md). Azure Cosmos DB jest częścią bezpłatnego konta platformy Azure. W odniesieniu do Azure Cosmos DB to bezpłatne konto oferuje 5 GB pamięci masowej i 400 jednostek ru przepływności dla całego roku. 
+* **Bezpłatne konto platformy Azure**: platforma Azure oferuje [bezpłatną warstwę](https://azure.microsoft.com/free/) , która daje $200 na środki na korzystanie z platformy Azure za pierwsze 30 dni i ograniczoną liczbę bezpłatnych usług przez 12 miesięcy. Aby uzyskać więcej informacji, zobacz [Bezpłatne konto platformy Azure](../cost-management-billing/manage/avoid-charges-free-account.md). Azure Cosmos DB jest częścią bezpłatnego konta platformy Azure. W odniesieniu do Azure Cosmos DB to bezpłatne konto oferuje 5 GB pamięci masowej i 400 jednostek ru przepływności dla całego roku. 
 
 * **Wypróbuj bezpłatnie usługę Azure Cosmos DB**: Azure Cosmos DB oferuje ograniczony czas środowisko, korzystając z funkcji Wypróbuj Azure Cosmos DB w przypadku bezpłatnych kont. Możesz utworzyć konto Azure Cosmos DB, utworzyć bazę danych i kolekcje oraz uruchomić przykładową aplikację przy użyciu przewodników Szybki Start i samouczków. Możesz uruchomić przykładową aplikację bez subskrybowania konta platformy Azure lub korzystania z karty kredytowej. [Wypróbuj Azure Cosmos DB bezpłatnych](https://azure.microsoft.com/try/cosmosdb/) ofert Azure Cosmos DB przez jeden miesiąc, z możliwością odnowienia konta przez dowolną liczbę razy.
 

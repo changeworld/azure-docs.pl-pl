@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.custom: fasttrack-new
 services: batch
 ms.service: batch
-ms.openlocfilehash: 7f471032d69213fc11ff748e3fa9093991ee23d6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 03e383e43cbe90ae2f59766a235f167cff623b6a
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75449801"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982712"
 ---
 # <a name="use-azure-pipelines-to-build-and-deploy-hpc-solutions"></a>Używanie Azure Pipelines do kompilowania i wdrażania rozwiązań HPC
 
@@ -192,7 +192,7 @@ Następny szablon pokazuje przykład tworzenia puli Azure Batch (maszyny zaplecz
 
 Na koniec mamy szablon, który działa podobnie do programu Orchestrator. Ten szablon jest odpowiedzialny za wdrażanie szablonów możliwości.
 
-Więcej informacji na temat [tworzenia połączonych Azure Resource Manager szablonów](../azure-resource-manager/resource-manager-tutorial-create-linked-templates.md) można znaleźć w osobnym artykule.
+Więcej informacji na temat [tworzenia połączonych Azure Resource Manager szablonów](../azure-resource-manager/templates/template-tutorial-create-linked-templates.md) można znaleźć w osobnym artykule.
 
 ```json
 {
@@ -368,7 +368,7 @@ Azure Pipelines również używany do wdrażania aplikacji i podstawowej infrast
 
 ### <a name="deploying-your-application-and-underlying-infrastructure"></a>Wdrażanie aplikacji i podstawowej infrastruktury
 
-Istnieje kilka kroków związanych z wdrażaniem infrastruktury. W przypadku używania [połączonych szablonów](../azure-resource-manager/resource-group-linked-templates.md)te szablony będą musiały być dostępne z publicznego punktu końcowego (http lub https). Może to być repozytorium w serwisie GitHub lub konto usługi Azure Blob Storage lub inną lokalizację magazynu. Przekazane artefakty szablonu mogą pozostać bezpieczne, ponieważ mogą być przechowywane w trybie prywatnym, ale dostęp przy użyciu jakiejś postaci tokenu sygnatury dostępu współdzielonego (SAS). W poniższym przykładzie pokazano, jak wdrożyć infrastrukturę z szablonami z poziomu obiektu BLOB usługi Azure Storage.
+Istnieje kilka kroków związanych z wdrażaniem infrastruktury. W przypadku używania [połączonych szablonów](../azure-resource-manager/templates/linked-templates.md)te szablony będą musiały być dostępne z publicznego punktu końcowego (http lub https). Może to być repozytorium w serwisie GitHub lub konto usługi Azure Blob Storage lub inną lokalizację magazynu. Przekazane artefakty szablonu mogą pozostać bezpieczne, ponieważ mogą być przechowywane w trybie prywatnym, ale dostęp przy użyciu jakiejś postaci tokenu sygnatury dostępu współdzielonego (SAS). W poniższym przykładzie pokazano, jak wdrożyć infrastrukturę z szablonami z poziomu obiektu BLOB usługi Azure Storage.
 
 1. Utwórz **nową definicję wydania**i wybierz pustą definicję. Następnie należy zmienić nazwę nowo utworzonego środowiska na coś istotnego dla naszego potoku.
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 4/27/2018
 ms.author: johnkem
 ms.subservice: metrics
-ms.openlocfilehash: dd02fe17d5225a63f352069b3c6c5a47b7cbcb73
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7c1cdf912f9a1e4e8ae92baa4381e9705702136f
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75397279"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977588"
 ---
 # <a name="create-a-classic-metric-alert-with-a-resource-manager-template"></a>Tworzenie klasycznego alertu metryki za pomocą szablonu usługi Resource Manager
 W tym artykule pokazano, jak można użyć [szablonu Azure Resource Manager](../../azure-resource-manager/templates/template-syntax.md) w celu skonfigurowania alertów dotyczących metryk platformy Azure. Pozwala to na automatyczne Konfigurowanie alertów dotyczących zasobów podczas ich tworzenia w celu zapewnienia poprawnego monitorowania wszystkich zasobów.
@@ -27,7 +27,7 @@ W tym artykule pokazano, jak można użyć [szablonu Azure Resource Manager](../
 Podstawowe kroki są następujące:
 
 1. Utwórz szablon jako plik JSON, który opisuje sposób tworzenia alertu.
-2. [Wdróż szablon przy użyciu dowolnej metody wdrażania](../../azure-resource-manager/resource-group-template-deploy.md).
+2. [Wdróż szablon przy użyciu dowolnej metody wdrażania](../../azure-resource-manager/templates/deploy-powershell.md).
 
 Poniżej opisano sposób tworzenia szablonu Menedżer zasobów jako pierwszego dla samego alertu, a następnie dla alertu podczas tworzenia innego zasobu.
 

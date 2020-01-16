@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2019
 ms.author: manayar
-ms.openlocfilehash: e3d8ada67b0a592df9c2dba145626836f27da631
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 52fb7c770e9f9e2570cad92a8c0dd9bc4374e708
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75459376"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980191"
 ---
 # <a name="learn-about-virtual-machine-scale-set-templates"></a>Informacje o szablonach zestawu skalowania maszyn wirtualnych
 [Szablony usługi Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/template-deployment-overview#template-deployment-process) to doskonały sposób wdrażania grup powiązanych zasobów. W tej serii samouczków pokazano, jak utworzyć podstawowy szablon zestawu skalowania i jak zmodyfikować ten szablon w celu dopasowania do różnych scenariuszy. Wszystkie przykłady pochodzą z tego [repozytorium GitHub](https://github.com/gatneil/mvss).
@@ -75,7 +75,7 @@ Wszystkie zasoby wymagają `type`, `name`, `apiVersion`i `location` właściwoś
 ```
 
 ## <a name="specify-location"></a>Określ lokalizację
-Aby określić lokalizację sieci wirtualnej, użyj [funkcji Menedżer zasobów Template](../azure-resource-manager/resource-group-template-functions.md). Ta funkcja musi być ujęta w cudzysłów i nawiasy kwadratowe, takie jak: `"[<template-function>]"`. W takim przypadku należy użyć funkcji `resourceGroup`. Nie przyjmuje żadnych argumentów i zwraca obiekt JSON z metadanymi o grupie zasobów, do której to wdrożenie jest wdrażane. Grupa zasobów jest ustawiana przez użytkownika w czasie wdrażania. Ta wartość jest następnie indeksowana do tego obiektu JSON przy użyciu `.location`, aby pobrać lokalizację z obiektu JSON.
+Aby określić lokalizację sieci wirtualnej, użyj [funkcji Menedżer zasobów Template](../azure-resource-manager/templates/template-functions.md). Ta funkcja musi być ujęta w cudzysłów i nawiasy kwadratowe, takie jak: `"[<template-function>]"`. W takim przypadku należy użyć funkcji `resourceGroup`. Nie przyjmuje żadnych argumentów i zwraca obiekt JSON z metadanymi o grupie zasobów, do której to wdrożenie jest wdrażane. Grupa zasobów jest ustawiana przez użytkownika w czasie wdrażania. Ta wartość jest następnie indeksowana do tego obiektu JSON przy użyciu `.location`, aby pobrać lokalizację z obiektu JSON.
 
 ```json
        "location": "[resourceGroup().location]",

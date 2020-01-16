@@ -3,7 +3,7 @@ title: Wybierz rozmiary maszyn wirtualnych dla pul — Azure Batch | Microsoft D
 description: Jak wybierać dostępne rozmiary maszyn wirtualnych dla węzłów obliczeniowych w pulach Azure Batch
 services: batch
 documentationcenter: ''
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 editor: ''
 ms.assetid: ''
@@ -12,14 +12,14 @@ ms.workload: ''
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 09/12/2019
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: seodec18
-ms.openlocfilehash: e3d96ad7783c43dba6b69f6b11acccf790d0d6c9
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 34ab09f7d8d47804992b8ef6864bfea60d1c9b4d
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70983747"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76026611"
 ---
 # <a name="choose-a-vm-size-for-compute-nodes-in-an-azure-batch-pool"></a>Wybieranie rozmiaru maszyny wirtualnej dla węzłów obliczeniowych w puli Azure Batch
 
@@ -40,30 +40,30 @@ Wszystkie rozmiary maszyn wirtualnych promocyjnych i w wersji zapoznawczej nie s
 
 | Seria maszyn wirtualnych  | Obsługiwane rozmiary | Tryb alokacji puli kont wsadowych<sup>1</sup> |
 |------------|---------|-----------------|
-| Podstawowa seria A | Wszystkie rozmiary *z wyjątkiem* Basic_A0 (a0) | Any |
-| Seria A | Wszystkie rozmiary *z wyjątkiem* Standard_A0 | Any |
-| Seria Av2 | Wszystkie rozmiary | Any |
-| Seria B | Brak | Niedostępny |
-| Seria DC | Brak | Niedostępny |
-| Dv2, DSv2 — seria | Wszystkie rozmiary | Any |
-| Dv3, Dsv3 — seria | Wszystkie rozmiary | Any |
-| EV3, Esv3 — seria | Wszystkie rozmiary | Any |
-| Seria Fsv2 | Wszystkie rozmiary | Any |
-| Seria H | Wszystkie rozmiary | Any |
-| HB-seria<sup>2</sup> | Wszystkie rozmiary | Any |
-| HC — seria<sup>2</sup> | Wszystkie rozmiary | Any |
-| Seria Ls | Wszystkie rozmiary | Any |
-| Seria Lsv2 | Brak | Niedostępny |
-| Seria M | Standard_M64ms (tylko niski priorytet), Standard_M128s (tylko niski priorytet) | Any |
-| Seria Mv2 | Brak | Niedostępny |
-| Seria NC | Wszystkie rozmiary | Any |
-| NCv2 — seria<sup>2</sup> | Wszystkie rozmiary | Any |
-| Seria NCV3 — seria<sup>2</sup> | Wszystkie rozmiary | Any |
-| ND — seria<sup>2</sup> | Wszystkie rozmiary | Any |
+| Podstawowa seria A | Wszystkie rozmiary *z wyjątkiem* Basic_A0 (a0) | Dowolne |
+| Seria A | Wszystkie rozmiary *z wyjątkiem* Standard_A0 | Dowolne |
+| Seria Av2 | Wszystkie rozmiary | Dowolne |
+| Seria B | Brak | Niedostępne |
+| Seria DC | Brak | Niedostępne |
+| Dv2, DSv2 — seria | Wszystkie rozmiary | Dowolne |
+| Dv3, Dsv3 — seria | Wszystkie rozmiary | Dowolne |
+| EV3, Esv3 — seria | Wszystkie rozmiary | Dowolne |
+| Seria Fsv2 | Wszystkie rozmiary | Dowolne |
+| Seria H | Wszystkie rozmiary | Dowolne |
+| HB-seria<sup>2</sup> | Wszystkie rozmiary | Dowolne |
+| HC — seria<sup>2</sup> | Wszystkie rozmiary | Dowolne |
+| Seria Ls | Wszystkie rozmiary | Dowolne |
+| Seria Lsv2 | Brak | Niedostępne |
+| Seria M | Standard_M64ms (tylko niski priorytet), Standard_M128s (tylko niski priorytet) | Dowolne |
+| Seria Mv2 | Brak | Niedostępne |
+| Seria NC | Wszystkie rozmiary | Dowolne |
+| NCv2 — seria<sup>2</sup> | Wszystkie rozmiary | Dowolne |
+| Seria NCV3 — seria<sup>2</sup> | Wszystkie rozmiary | Dowolne |
+| ND — seria<sup>2</sup> | Wszystkie rozmiary | Dowolne |
 | Seria NDv2 | Wszystkie rozmiary | Tryb subskrypcji użytkownika |
-| Seria NV | Wszystkie rozmiary | Any |
-| Seria NVv3 | Brak | Niedostępny |
-| SAP HANA | Brak | Niedostępny |
+| Seria NV | Wszystkie rozmiary | Dowolne |
+| Seria NVv3 | Brak | Niedostępne |
+| SAP HANA | Brak | Niedostępne |
 
 <sup>1</sup> niektóre nowsze serie maszyn wirtualnych są początkowo obsługiwane częściowo. Te serie maszyn wirtualnych można przydzielić przez konta usługi Batch z **trybem alokacji puli** ustawionym na **subskrypcję użytkownika**. Zobacz [Zarządzanie kontami usługi Batch](batch-account-create-portal.md#additional-configuration-for-user-subscription-mode) , aby uzyskać więcej informacji na temat konfiguracji konta usługi Batch. Zobacz [przydziały i limity](batch-quota-limit.md) , aby dowiedzieć się, jak zażądać limitu przydziału dla tych częściowo obsługiwanych serii maszyn wirtualnych dla kont usługi Batch **subskrypcji użytkowników** .  
 
@@ -78,9 +78,9 @@ Pule wsadowe w konfiguracji usługi w chmurze obsługują wszystkie [rozmiary ma
 | Seria A   | Bardzo małe       |
 | Seria Av2 | Standard_A1_v2, Standard_A2_v2, Standard_A2m_v2 |
 
-## <a name="size-considerations"></a>Zagadnienia dotyczące rozmiaru
+## <a name="size-considerations"></a>Istotne zagadnienia dotyczące rozmiaru
 
-* **Wymagania dotyczące aplikacji** — należy wziąć pod uwagę charakterystyki i wymagania aplikacji, które będą uruchamiane w węzłach. Takie czynniki jak to, czy aplikacja jest wielowątkowa oraz ile pamięci zużywa, mogą pomóc w wyborze najbardziej odpowiedniego i ekonomicznego rozmiar węzła. W przypadku [obciążeń MPI](batch-mpi.md) z obsługą wiele wystąpień lub aplikacji cuda należy [](../virtual-machines/linux/sizes-hpc.md) odpowiednio rozważyć wyspecjalizowane rozmiary maszyn wirtualnych lub maszyny wirtualne [obsługujące procesor GPU](../virtual-machines/linux/sizes-gpu.md) . (Zobacz [Używanie wystąpień obsługujących funkcję RDMA lub GPU w pulach wsadowym](batch-pool-compute-intensive-sizes.md)).
+* **Wymagania dotyczące aplikacji** — należy wziąć pod uwagę charakterystyki i wymagania aplikacji, które będą uruchamiane w węzłach. Takie czynniki jak to, czy aplikacja jest wielowątkowa oraz ile pamięci zużywa, mogą pomóc w wyborze najbardziej odpowiedniego i ekonomicznego rozmiar węzła. W przypadku [obciążeń MPI](batch-mpi.md) z obsługą wiele wystąpień lub aplikacji cuda należy odpowiednio [rozważyć wyspecjalizowane](../virtual-machines/linux/sizes-hpc.md) rozmiary maszyn wirtualnych lub maszyny wirtualne [obsługujące procesor GPU](../virtual-machines/linux/sizes-gpu.md) . (Zobacz [Używanie wystąpień obsługujących funkcję RDMA lub GPU w pulach wsadowym](batch-pool-compute-intensive-sizes.md)).
 
 * **Zadania na węzeł** — typowym zadaniem jest wybranie rozmiaru węzła, przy założeniu, że jedno zadanie jest uruchamiane w węźle w danym momencie. Jednak może być korzystne wykonywanie wielu zadań (i w związku z tym wiele wystąpień aplikacji) [równolegle](batch-parallel-node-tasks.md) w węzłach obliczeniowych podczas wykonywania zadania. W tym przypadku często należy wybrać rozmiar węzła wielordzeniowego, aby uwzględnić zwiększony popyt wykonywania zadań równoległych.
 

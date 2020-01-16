@@ -11,12 +11,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto, carlrab, emlisa
 ms.date: 05/14/2019
-ms.openlocfilehash: c9f59eb8c299eb9319694d392c2b5d1d814ed9b8
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 4aa45cc1e8b79186d3ddd5d2b2964addb3929b1a
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74997330"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978567"
 ---
 # <a name="an-overview-of-azure-sql-database-security-capabilities"></a>Przegląd możliwości zabezpieczeń Azure SQL Database
 
@@ -46,7 +46,7 @@ Reguły zapory adresów IP umożliwiają dostęp do baz danych na podstawie źr�
 > [!IMPORTANT]
 > Zarządzanie bazami danych i serwerami baz danych na platformie Azure jest kontrolowane przez przypisania roli konta użytkownika portalu. Aby uzyskać więcej informacji na temat tego artykułu, zobacz [Kontrola dostępu oparta na rolach w Azure Portal](../role-based-access-control/overview.md).
 
-### <a name="authentication"></a>Uwierzytelnianie
+### <a name="authentication"></a>Authentication
 
 Uwierzytelnianie to proces potwierdzania tożsamości użytkownika. Azure SQL Database obsługuje dwa typy uwierzytelniania:
 
@@ -104,7 +104,7 @@ Najlepszym rozwiązaniem jest zalecanie, aby w parametrach połączenia aplikacj
 Na przykład podczas korzystania z sterownika ADO.NET jest to realizowane za pośrednictwem **szyfrowania = true** i **TrustServerCertificate = false**. W przypadku uzyskania parametrów połączenia z Azure Portal będzie on miał poprawne ustawienia.
 
 > [!IMPORTANT]
-> Należy pamiętać, że niektóre sterowniki inne niż firmy Microsoft mogą nie używać protokołu TLS domyślnie lub korzystają ze starszej wersji protokołu TLS (< 1.2), aby móc działać. W takim przypadku SQL Server nadal umożliwia nawiązanie połączenia z bazą danych. Zaleca się jednak, aby oszacować zagrożenia bezpieczeństwa, które umożliwiają łączenie takich sterowników i aplikacji z SQL Database, szczególnie w przypadku przechowywania poufnych danych. 
+> Należy pamiętać, że niektóre sterowniki inne niż firmy Microsoft mogą nie używać protokołu TLS domyślnie lub korzystają ze starszej wersji protokołu TLS (< 1.2), aby móc działać. W takim przypadku SQL Server nadal umożliwia nawiązanie połączenia z bazą danych. Zaleca się jednak, aby oszacować zagrożenia bezpieczeństwa, które umożliwiają łączenie takich sterowników i aplikacji z SQL Database, szczególnie w przypadku przechowywania poufnych danych.
 >
 > Aby uzyskać więcej informacji na temat protokołu TLS i łączności, zobacz [zagadnienia dotyczące protokołu TLS](sql-database-connect-query.md#tls-considerations-for-sql-database-connectivity) .
 

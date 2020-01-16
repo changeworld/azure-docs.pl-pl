@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/09/2020
-ms.openlocfilehash: 630eeb8ec5582f2dc968a10e7cf1b5750683cf66
-ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
+ms.openlocfilehash: 21ad0c38b8901c1e33e05ab162552cb074a392a4
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75830547"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75969594"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Co jest monitorowane przez Azure Monitor?
 W tym artykule opisano różne aplikacje i usługi monitorowane przez program Azure Monitor. 
@@ -177,7 +177,7 @@ Usługi i rozwiązania w poniższej tabeli przechowują swoje dane w Log Analyti
 |:---|:---|
 | [Azure Automation](/azure/automation/) | Zarządzaj aktualizacjami systemu operacyjnego i Śledź zmiany na komputerach z systemem Windows i Linux. Zobacz [Change Tracking](../automation/change-tracking.md) i [Update Management](../automation/automation-update-management.md). |
 | [Azure Information Protection](https://docs.microsoft.com/azure/information-protection/) | Klasyfikowanie i opcjonalne chronienie dokumentów i wiadomości e-mail. Zobacz [centralne raportowanie dla Azure Information Protection](https://docs.microsoft.com/azure/information-protection/reports-aip#configure-a-log-analytics-workspace-for-the-reports). |
-| [Azure Security Center](/azure/security-center/) | Zbieraj i Analizuj zdarzenia zabezpieczeń oraz przeprowadzaj analizę zagrożeń. Zobacz [zbieranie danych w Azure Security Center](/security-center/security-center-enable-data-collection.md) |
+| [Azure Security Center](/azure/security-center/) | Zbieraj i Analizuj zdarzenia zabezpieczeń oraz przeprowadzaj analizę zagrożeń. Zobacz [zbieranie danych w Azure Security Center](/azure/security-center/security-center-enable-data-collection) |
 | [Azure Sentinel](/azure/sentinel/) | Łączy się z różnymi źródłami, w tym z pakietem Office 365 i Amazon Web Services w chmurze. Zobacz [łączenie ze źródłami danych](/azure/sentinel/connect-data-sources). |
 | [Analiza usługi Key Vault](insights/azure-key-vault.md) | Analizuj Azure Key Vault dzienniki AuditEvent. |
 | [Microsoft Intune](https://docs.microsoft.com/intune/) | Utwórz ustawienie diagnostyczne, aby wysłać dzienniki do Azure Monitor. Zobacz [wysyłanie danych dzienników do magazynu, centrów zdarzeń lub usługi log Analytics w usłudze Intune (wersja zapoznawcza)](https://docs.microsoft.com/intune/fundamentals/review-logs-using-azure-monitor).  |

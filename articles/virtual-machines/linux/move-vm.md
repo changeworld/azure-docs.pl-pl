@@ -15,22 +15,22 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: cynthn
-ms.openlocfilehash: 8fc04b4689ea8707ac2c605e3e4242a117773151
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 2ba8a8cdc324f46e25f9665cfce0aa07fc948e88
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035643"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979042"
 ---
 # <a name="move-a-linux-vm-to-another-subscription-or-resource-group"></a>Przenoszenie maszyny wirtualnej z systemem Linux do innej subskrypcji lub grupy zasobów
 W tym artykule pokazano, jak przenieść maszynę wirtualną z systemem Linux między grupami zasobów lub subskrypcjami. Przenoszenie maszyny wirtualnej między subskrypcjami może być przydatne, jeśli utworzono maszynę wirtualną w osobistej subskrypcji, a teraz chcesz przenieść ją do subskrypcji firmy.
 
 > [!IMPORTANT]
->W tej chwili nie można przenieść Managed Disks platformy Azure. 
+>W tej chwili nie można przenieść Managed Disks platformy Azure.
 >
->Nowe identyfikatory zasobów są tworzone w ramach przenoszenia. Po przeniesieniu maszyny wirtualnej należy zaktualizować narzędzia i skrypty w celu użycia nowych identyfikatorów zasobów. 
-> 
-> 
+>Nowe identyfikatory zasobów są tworzone w ramach przenoszenia. Po przeniesieniu maszyny wirtualnej należy zaktualizować narzędzia i skrypty w celu użycia nowych identyfikatorów zasobów.
+>
+>
 
 ## <a name="use-the-azure-cli-to-move-a-vm"></a>Przenoszenie maszyny wirtualnej przy użyciu interfejsu wiersza polecenia platformy Azure
 
@@ -72,5 +72,4 @@ Gdy zostanie wyświetlony monit o potwierdzenie, że chcesz przenieść określo
 [!INCLUDE [virtual-machines-common-move-vm](../../../includes/virtual-machines-common-move-vm.md)]
 
 ## <a name="next-steps"></a>Następne kroki
-Wiele różnych typów zasobów można przenosić między grupami zasobów i subskrypcjami. Aby uzyskać więcej informacji, zobacz [przenoszenie zasobów do nowej grupy zasobów lub subskrypcji](../../resource-group-move-resources.md).    
-
+Wiele różnych typów zasobów można przenosić między grupami zasobów i subskrypcjami. Aby uzyskać więcej informacji, zobacz [przenoszenie zasobów do nowej grupy zasobów lub subskrypcji](../../azure-resource-manager/management/move-resource-group-and-subscription.md).    

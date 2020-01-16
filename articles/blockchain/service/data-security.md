@@ -4,12 +4,12 @@ description: Zagadnienia dotyczące dostępu do danych i zabezpieczeń usługi A
 ms.date: 11/22/2019
 ms.topic: conceptual
 ms.reviewer: janders
-ms.openlocfilehash: e1a40acfec6b0dc5cdf21fb84b341b6b4987797a
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 06bf4e0fa4037b07505a4f816fc7af56c14576d8
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74455713"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982225"
 ---
 # <a name="azure-blockchain-service-security"></a>Zabezpieczenia usługi Azure łańcucha bloków
 
@@ -23,7 +23,7 @@ Zasoby usługi Azure łańcucha bloków są odizolowane w prywatnej sieci wirtua
 
 ## <a name="encryption"></a>Szyfrowanie
 
-Dane użytkownika są przechowywane w usłudze Azure Storage. Dane użytkownika są szyfrowane w ruchu i są przechowywane w celu zapewnienia bezpieczeństwa i poufności. Aby uzyskać więcej informacji, zobacz: [Przewodnik po zabezpieczeniach usługi Azure Storage](../../storage/common/storage-security-guide.md).
+Dane użytkownika są przechowywane w usłudze Azure Storage. Dane użytkownika są szyfrowane w ruchu i są przechowywane w celu zapewnienia bezpieczeństwa i poufności. Aby uzyskać więcej informacji, zobacz: [Przewodnik po zabezpieczeniach usługi Azure Storage](../../storage/blobs/security-recommendations.md).
 
 ## <a name="authentication"></a>Authentication
 
@@ -41,7 +41,7 @@ Uwierzytelnianie podstawowe używa nagłówka uwierzytelniania HTTP zawierające
 
 Klucze dostępu używają losowo generowanego ciągu zawartego w adresie URL punktu końcowego. Dwa klucze dostępu umożliwiają włączenie rotacji kluczy. Klucze można generować ponownie z Azure Portal i interfejsu wiersza polecenia.
 
-### <a name="azure-active-directory"></a>Usługa Azure Active Directory
+### <a name="azure-active-directory"></a>Usługa Active Directory systemu Azure
 
 Azure Active Directory (Azure AD) korzysta z mechanizmu uwierzytelniania opartego na żądaniach, w którym użytkownik jest uwierzytelniany przez usługę Azure AD przy użyciu poświadczeń użytkownika usługi Azure AD. Usługa Azure AD zapewnia oparte na chmurze zarządzanie tożsamościami i umożliwia klientom korzystanie z jednej tożsamości w całym przedsiębiorstwie i dostęp do aplikacji w chmurze. Usługa Azure łańcucha bloków integruje się z usługą Azure AD, włączając w to Federacji identyfikatora, logowania jednokrotnego i uwierzytelniania wieloskładnikowego. W organizacji można przypisywać użytkowników, grupy i role aplikacji w celu uzyskania dostępu do elementu członkowskiego łańcucha bloków i węzła.
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2016
 ms.author: allensu
-ms.openlocfilehash: 0dd57bb30a993baadac41552669a629aaaaff6df
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 4c682749de0be6329a254bda25a32954dd44e6db
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74210952"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978714"
 ---
 # <a name="create-dns-zones-and-record-sets-using-the-net-sdk"></a>Tworzenie stref DNS i zestawów rekordów przy użyciu zestawu .NET SDK
 
@@ -30,7 +30,7 @@ Można zautomatyzować operacje tworzenia, usuwania lub aktualizowania stref DNS
 Zazwyczaj dostęp programistyczny do zasobów platformy Azure uzyskuje się za pośrednictwem dedykowanego konta, a nie poświadczeń użytkownika. Te dedykowane konta są nazywane kontami podmiotu usługi. Aby użyć przykładowego projektu Azure DNS SDK, należy najpierw utworzyć konto głównej usługi i przypisać mu odpowiednie uprawnienia.
 
 1. Postępuj zgodnie z [tymi instrukcjami](../active-directory/develop/howto-authenticate-service-principal-powershell.md) , aby utworzyć konto nazwy głównej usługi (projekt Azure DNS SDK przykład zakłada uwierzytelnianie oparte na hasłach).
-2. Utwórz grupę zasobów ([jak to opisano w tym miejscu](../azure-resource-manager/resource-group-template-deploy-portal.md)).
+2. Utwórz grupę zasobów ([jak to opisano w tym miejscu](../azure-resource-manager/templates/deploy-portal.md)).
 3. Użyj usługi Azure RBAC, aby przyznać uprawnienia współautora strefy DNS konta głównego usługi do grupy zasobów ([Oto jak to zrobić](../role-based-access-control/role-assignments-portal.md)).
 4. Jeśli używasz przykładowego projektu Azure DNS zestawu SDK, edytuj plik "program. cs" w następujący sposób:
 

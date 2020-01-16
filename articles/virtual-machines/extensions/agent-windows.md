@@ -3,7 +3,7 @@ title: Omówienie agenta maszyny wirtualnej platformy Azure
 description: Omówienie agenta maszyny wirtualnej platformy Azure
 services: virtual-machines-windows
 documentationcenter: virtual-machines
-author: axayjo
+author: MicahMcKittrick-MSFT
 manager: gwallace
 editor: tysonn
 tags: azure-resource-manager
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 07/20/2019
 ms.author: akjosh
-ms.openlocfilehash: b003f2823ffceebecdb2af681a3bdbb4cf25704c
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 7185ac40cafce86c68efbf28c7e6a35fd4789bc3
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75615089"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76027641"
 ---
 # <a name="azure-virtual-machine-agent-overview"></a>Omówienie agenta maszyny wirtualnej platformy Azure
 Agent maszyny wirtualnej Microsoft Azure (Agent VM) to bezpieczny, lekki proces zarządzający interakcją maszyny wirtualnej z kontrolerem sieci szkieletowej Azure. Agent maszyny wirtualnej odgrywa podstawową rolę w procesie włączania i wykonywania rozszerzeń maszyny wirtualnej platformy Azure. Rozszerzenia maszyn wirtualnych umożliwiają konfigurację po wdrożeniu maszyny wirtualnej, taką jak instalowanie i Konfigurowanie oprogramowania. Rozszerzenia maszyn wirtualnych umożliwiają również włączenie funkcji odzyskiwania, takich jak resetowanie hasła administracyjnego maszyny wirtualnej. Bez agenta maszyny wirtualnej platformy Azure nie można uruchomić rozszerzeń maszyn wirtualnych.
 
-Ten artykuł zawiera szczegółowe informacje dotyczące instalacji, wykrywania i usuwania agenta maszyny wirtualnej platformy Azure.
+Ten artykuł zawiera szczegółowe informacje dotyczące instalacji i wykrywania agenta maszyny wirtualnej platformy Azure.
 
 ## <a name="install-the-vm-agent"></a>Zainstaluj agenta maszyny wirtualnej
 
@@ -61,8 +61,17 @@ Jeśli nie masz zainstalowanych agentów, nie możesz używać niektórych usłu
 ### <a name="manual-installation"></a>Instalacja ręczna
 Agenta maszyny wirtualnej z systemem Windows można zainstalować ręcznie przy użyciu pakietu Instalatora Windows. Jeśli tworzysz niestandardowy obraz maszyny wirtualnej wdrożony na platformie Azure, może być konieczna instalacja ręczna. Aby ręcznie zainstalować agenta maszyny wirtualnej z systemem Windows, [Pobierz instalatora agenta maszyny wirtualnej](https://go.microsoft.com/fwlink/?LinkID=394789). Agent maszyny wirtualnej jest obsługiwany w systemie Windows Server 2008 R2 lub nowszym.
 
+> [Uwaga!] Ważne jest, aby zaktualizować opcję AllowExtensionOperations po ręcznej instalacji VMAgent na maszynie wirtualnej, która została wdrożona z obrazu bez ProvisionVMAgent Enable.
+
+```powershell
+$vm.OSProfile.AllowExtensionOperations = $true
+$vm | Update-AzVM
+```
+
 ### <a name="prerequisites"></a>Wymagania wstępne
-Agent maszyny wirtualnej z systemem Windows wymaga co najmniej systemu Windows Server 2008 R2 (64-BITS) do uruchomienia przy użyciu programu .NET Framework 4,0. Zobacz [minimalną obsługę wersji dla agentów maszyny wirtualnej na platformie Azure](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)
+- Agent maszyny wirtualnej z systemem Windows wymaga co najmniej systemu Windows Server 2008 R2 (64-BITS) do uruchomienia przy użyciu programu .NET Framework 4,0. Zobacz [minimalną obsługę wersji dla agentów maszyny wirtualnej na platformie Azure](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)
+
+- Upewnij się, że maszyna wirtualna ma dostęp do adresu IP 168.63.129.16. Aby uzyskać więcej informacji, zobacz [co to jest adres IP 168.63.129.16](https://docs.microsoft.com/azure/virtual-network/what-is-ip-address-168-63-129-16).
 
 ## <a name="detect-the-vm-agent"></a>Wykrywanie agenta maszyny wirtualnej
 

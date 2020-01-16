@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 12/06/2019
+ms.date: 01/14/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 83a839d75757bcee14d7f696d2d11d1d7d8fa4cc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 589d8219681304242585c9fed33a4e3d364909ec
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422838"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978900"
 ---
 # <a name="what-are-security-defaults"></a>Co to są wartości domyślne zabezpieczeń?
 
@@ -28,7 +28,10 @@ Firma Microsoft udostępnia wartości domyślne zabezpieczeń dla wszystkich uż
 
 ![Zrzut ekranu przedstawiający Azure Portal z przełącznikiem umożliwiającym włączenie ustawień domyślnych zabezpieczeń](./media/concept-fundamentals-security-defaults/security-defaults-azure-ad-portal.png)
  
-Następujące konfiguracje zabezpieczeń zostaną włączone w dzierżawie. 
+> [!TIP]
+> Jeśli dzierżawa została utworzona w dniu lub po 22 października 2019, istnieje możliwość, że masz nowe zachowanie bezpieczne przez domyślne i masz już włączone wartości domyślne zabezpieczeń w dzierżawie. W celu ochrony wszystkich naszych użytkowników domyślnie są wdrażane wszystkie nowo utworzone dzierżawy.
+
+Więcej informacji o tym, dlaczego są udostępniane wartości domyślne zabezpieczeń, można znaleźć w wpisie w blogu Alex Weinert, [wprowadzając wartości domyślne zabezpieczeń](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/introducing-security-defaults/ba-p/1061414).
 
 ## <a name="unified-multi-factor-authentication-registration"></a>Ujednolicona Rejestracja Multi-Factor Authentication
 

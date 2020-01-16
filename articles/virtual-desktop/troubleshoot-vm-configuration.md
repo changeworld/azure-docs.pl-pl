@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 12/03/2019
 ms.author: helohr
-ms.openlocfilehash: c357e460e49ffee669f3978be7678353acfcd249
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f8400cbefc514fa01dedb1434a60989b1df0528d
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75459431"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980231"
 ---
 # <a name="session-host-virtual-machine-configuration"></a>Konfiguracja maszyny wirtualnej hosta sesji
 
@@ -209,11 +209,11 @@ Sprawdź wpisy rejestru wymienione poniżej i upewnij się, że ich wartości pa
 
 1. Użyj Remote Desktop Protocol (RDP), aby przejść bezpośrednio do maszyny wirtualnej hosta sesji jako administrator lokalny.
 2. Pobierz i zaimportuj [moduł programu PowerShell dla pulpitu wirtualnego systemu Windows](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) , który ma być używany w sesji programu PowerShell, jeśli jeszcze tego nie zrobiono, Uruchom to polecenie cmdlet, aby zalogować się do konta:
-    
+
     ```powershell
     Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
     ```
-    
+
 3. Zainstaluj stos równoległy przy użyciu polecenia [Utwórz pulę hostów za pomocą programu PowerShell](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-powershell).
 
 ## <a name="how-to-fix-a-windows-virtual-desktop-side-by-side-stack-that-malfunctions"></a>Jak naprawić stos równoległy pulpitu wirtualnego systemu Windows, który działa nieprawidłowo
@@ -322,7 +322,7 @@ Aby sprawdzić, która wersja systemu Windows 10 Enterprise ma wiele sesji:
 2. Wprowadź "informacje" na pasku wyszukiwania obok menu Start.
 3. Wybierz pozycję **Informacje o**komputerze.
 4. Sprawdź liczbę obok pozycji "wersja". Liczba powinna mieć wartość "1809" lub "1903", jak pokazano na poniższej ilustracji.
-   
+
     ![Zrzut ekranu przedstawiający okno specyfikacji systemu Windows. Numer wersji jest wyróżniony kolorem niebieskim.](media/windows-specifications.png)
 
 Teraz, gdy znasz numer wersji, przejdź do odpowiedniej sekcji.
@@ -344,6 +344,6 @@ Wdróż ponownie system operacyjny hosta z najnowszą wersją obrazu systemu Win
 - Aby rozwiązać problemy z Pulpit zdalny klientami, zobacz [Rozwiązywanie problemów z klientem pulpit zdalny](troubleshoot-client.md)
 - Aby rozwiązać problemy występujące podczas korzystania z programu PowerShell z pulpitem wirtualnym systemu Windows, zobacz [Windows Virtual Desktop PowerShell](troubleshoot-powershell.md).
 - Aby dowiedzieć się więcej na temat usługi, zobacz [Środowisko pulpitu wirtualnego systemu Windows](environment-setup.md).
-- Aby przejść przez samouczek dotyczący rozwiązywania problemów, zobacz [Samouczek: Rozwiązywanie problemów z wdrożeniami szablonów Menedżer zasobów](../azure-resource-manager/resource-manager-tutorial-troubleshoot.md).
-- Aby dowiedzieć się więcej o akcjach inspekcji, zobacz [Inspekcja operacji przy użyciu Menedżer zasobów](../azure-resource-manager/resource-group-audit.md).
-- Aby dowiedzieć się więcej o akcjach dotyczących określania błędów podczas wdrażania, zobacz [Wyświetlanie operacji wdrażania](../azure-resource-manager/resource-manager-deployment-operations.md).
+- Aby przejść przez samouczek dotyczący rozwiązywania problemów, zobacz [Samouczek: Rozwiązywanie problemów z wdrożeniami szablonów Menedżer zasobów](../azure-resource-manager/templates/template-tutorial-troubleshoot.md).
+- Aby dowiedzieć się więcej o akcjach inspekcji, zobacz [Inspekcja operacji przy użyciu Menedżer zasobów](../azure-resource-manager/management/view-activity-logs.md).
+- Aby dowiedzieć się więcej o akcjach dotyczących określania błędów podczas wdrażania, zobacz [Wyświetlanie operacji wdrażania](../azure-resource-manager/templates/deployment-history.md).

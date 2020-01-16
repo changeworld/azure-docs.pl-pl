@@ -2,7 +2,7 @@
 title: Zmienne środowiskowe środowiska uruchomieniowego zadania — Azure Batch | Microsoft Docs
 description: Wskazówki dotyczące zmiennych środowiskowych środowiska uruchomieniowego zadań i informacje dotyczące analizy Azure Batch.
 services: batch
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 ms.assetid: ''
 ms.service: batch
@@ -10,13 +10,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 09/12/2019
-ms.author: lahugh
-ms.openlocfilehash: cb087b261780ba88bd26bea3e14fc875e5c63566
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.author: jushiman
+ms.openlocfilehash: fd3c8ac9e65f7f77be070e1d1d108490e61eb248
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73177156"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76027193"
 ---
 # <a name="azure-batch-runtime-environment-variables"></a>Zmienne środowiskowe środowiska uruchomieniowego Azure Batch
 
@@ -48,7 +48,7 @@ Wiersze poleceń wykonywane przez zadania w węzłach obliczeniowych nie są uru
 |-----------------------------------|--------------------------------------------------------------------------|--------------|---------|
 | AZ_BATCH_ACCOUNT_NAME           | Nazwa konta wsadowego, do którego należy zadanie.                  | Wszystkie zadania.   | mybatchaccount |
 | AZ_BATCH_ACCOUNT_URL            | Adres URL konta wsadowego. | Wszystkie zadania. | `https://myaccount.westus.batch.azure.com` |
-| AZ_BATCH_APP_PACKAGE            | Prefiks wszystkich zmiennych środowiskowych pakietu aplikacji. Na przykład jeśli aplikacja "FOO" w wersji "1" jest zainstalowana w puli, zmienna środowiskowa to AZ_BATCH_APP_PACKAGE_FOO_1. AZ_BATCH_APP_PACKAGE_FOO_1 wskazuje lokalizację, do której pakiet został pobrany (folder). W przypadku używania domyślnej wersji pakietu aplikacji należy użyć zmiennej środowiskowej AZ_BATCH_APP_PACKAGE bez numerów wersji. | Dowolne zadanie ze skojarzonym pakietem aplikacji. Dostępne również dla wszystkich zadań, jeśli węzeł ma pakiety aplikacji. | AZ_BATCH_APP_PACKAGE_FOO_1 |
+| AZ_BATCH_APP_PACKAGE            | Prefiks wszystkich zmiennych środowiskowych pakietu aplikacji. Na przykład jeśli aplikacja "FOO" w wersji "1" jest zainstalowana w puli, zmienna środowiskowa jest AZ_BATCH_APP_PACKAGE_FOO_1. AZ_BATCH_APP_PACKAGE_FOO_1 wskazuje lokalizację, do której pakiet został pobrany (folder). W przypadku używania domyślnej wersji pakietu aplikacji należy użyć zmiennej środowiskowej AZ_BATCH_APP_PACKAGE bez numerów wersji. | Dowolne zadanie ze skojarzonym pakietem aplikacji. Dostępne również dla wszystkich zadań, jeśli węzeł ma pakiety aplikacji. | AZ_BATCH_APP_PACKAGE_FOO_1 |
 | AZ_BATCH_AUTHENTICATION_TOKEN   | Token uwierzytelniania, który udziela dostępu do ograniczonego zestawu operacji usługi Batch. Ta zmienna środowiskowa jest obecna tylko wtedy, gdy [authenticationTokenSettings](/rest/api/batchservice/task/add#authenticationtokensettings) są ustawiane podczas [dodawania zadania](/rest/api/batchservice/task/add#request-body). Wartość tokenu jest używana w interfejsie API usługi Batch jako poświadczenia do tworzenia klienta usługi Batch, takiego jak [BatchClient. Open () .NET API](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.batchclient.open#Microsoft_Azure_Batch_BatchClient_Open_Microsoft_Azure_Batch_Auth_BatchTokenCredentials_). | Wszystkie zadania. | Token dostępu OAuth2 |
 | AZ_BATCH_CERTIFICATES_DIR       | Katalog w [katalogu roboczym zadania][files_dirs] , w którym certyfikaty są przechowywane dla węzłów obliczeniowych systemu Linux. Ta zmienna środowiskowa nie ma zastosowania do węzłów obliczeniowych systemu Windows.                                                  | Wszystkie zadania.   |  /mnt/batch/tasks/workitems/batchjob001/job-1/task001/certs |
 | AZ_BATCH_HOST_LIST              | Lista węzłów, które są przydzielono do [zadania o wiele wystąpień][multi_instance] w formacie `nodeIP,nodeIP`. | Podstawowe i podrzędne podzadania. | `10.0.0.4,10.0.0.5` |
@@ -57,7 +57,7 @@ Wiersze poleceń wykonywane przez zadania w węzłach obliczeniowych nie są uru
 | AZ_BATCH_JOB_PREP_DIR           | Pełna ścieżka do [katalogu zadania][files_dirs] przygotowania zadania w węźle. | Wszystkie zadania z wyjątkiem zadania uruchamiania zadania i przygotowania zadania. Dostępne tylko wtedy, gdy zadanie zostało skonfigurowane przy użyciu zadania przygotowania zadania. | C:\user\tasks\workitems\jobprepreleasesamplejob\job-1\jobpreparation |
 | AZ_BATCH_JOB_PREP_WORKING_DIR   | Pełna ścieżka [katalogu roboczego zadania][files_dirs] przygotowania zadania w węźle. | Wszystkie zadania z wyjątkiem zadania uruchamiania zadania i przygotowania zadania. Dostępne tylko wtedy, gdy zadanie zostało skonfigurowane przy użyciu zadania przygotowania zadania. | C:\user\tasks\workitems\jobprepreleasesamplejob\job-1\jobpreparation\wd |
 | AZ_BATCH_MASTER_NODE            | Adres IP i port węzła obliczeniowego, na którym jest uruchamiane podstawowe zadanie z [wieloma wystąpieniami][multi_instance] . | Podstawowe i podrzędne podzadania. | `10.0.0.4:6000` |
-| AZ_BATCH_NODE_ID                | IDENTYFIKATOR węzła, do którego zadanie jest przypisane. | Wszystkie zadania. | TVM-1219235766_3-20160919t172711z |
+| AZ_BATCH_NODE_ID                | IDENTYFIKATOR węzła, do którego zadanie jest przypisane. | Wszystkie zadania. | tvm-1219235766_3-20160919t172711z |
 | AZ_BATCH_NODE_IS_DEDICATED      | Jeśli `true`, bieżący węzeł jest dedykowanym węzłem. Jeśli `false`, jest to [węzeł o niskim priorytecie](batch-low-pri-vms.md). | Wszystkie zadania. | `true` |
 | AZ_BATCH_NODE_LIST              | Lista węzłów, które są przydzielono do [zadania o wiele wystąpień][multi_instance] w formacie `nodeIP;nodeIP`. | Podstawowe i podrzędne podzadania. | `10.0.0.4;10.0.0.5` |
 | AZ_BATCH_NODE_MOUNTS_DIR        | Pełna ścieżka lokalizacji [instalacji systemu plików](virtual-file-mount.md) na poziomie węzła, w której znajdują się wszystkie katalogi instalacji. Udziały plików systemu Windows używają litery dysku, więc dla systemu Windows dysk instalacji jest częścią urządzeń i dysków.  |  Wszystkie zadania, w tym uruchamianie zadania, mają dostęp do użytkownika, na przykład użytkownik ma świadomość uprawnień instalacji dla zainstalowanego katalogu. | Na przykład w Ubuntu lokalizacja: `/mnt/batch/tasks/fsmounts` |
@@ -65,7 +65,7 @@ Wiersze poleceń wykonywane przez zadania w węzłach obliczeniowych nie są uru
 | AZ_BATCH_NODE_SHARED_DIR        | Pełna ścieżka [katalogu udostępnionego][files_dirs] w węźle. Wszystkie zadania wykonywane w węźle mają dostęp do odczytu i zapisu do tego katalogu. Zadania wykonywane w innych węzłach nie mają dostępu zdalnego do tego katalogu (nie jest to katalog sieciowy "udostępniony"). | Wszystkie zadania. | C:\user\tasks\shared |
 | AZ_BATCH_NODE_STARTUP_DIR       | Pełna ścieżka do [katalogu zadań początkowych][files_dirs] w węźle. | Wszystkie zadania. | C:\user\tasks\startup |
 | AZ_BATCH_POOL_ID                | Identyfikator puli, w której jest uruchamiane zadanie podrzędne. | Wszystkie zadania. | batchpool001 |
-| AZ_BATCH_TASK_DIR               | Pełna ścieżka [katalogu zadań][files_dirs] w węźle. Ten katalog zawiera `stdout.txt` i `stderr.txt` zadania oraz AZ_BATCH_TASK_WORKING_DIR. | Wszystkie zadania. | C:\user\tasks\workitems\batchjob001\job-1\task001 |
+| AZ_BATCH_TASK_DIR               | Pełna ścieżka [katalogu zadań][files_dirs] w węźle. Ten katalog zawiera `stdout.txt` i `stderr.txt` zadania, a AZ_BATCH_TASK_WORKING_DIR. | Wszystkie zadania. | C:\user\tasks\workitems\batchjob001\job-1\task001 |
 | AZ_BATCH_TASK_ID                | Identyfikator bieżącego zadania. | Wszystkie zadania poza uruchomieniem zadania. | task001 |
 | AZ_BATCH_TASK_SHARED_DIR | Ścieżka katalogu, która jest taka sama dla zadania podstawowego i każde podzadanie zadania o [wielu wystąpieniach][multi_instance]. Ścieżka istnieje w każdym węźle, w którym jest uruchamiane zadanie wielowystąpienie, i ma dostęp do odczytu/zapisu dla poleceń zadań uruchomionych w tym węźle ( [polecenie koordynacyjne][coord_cmd] i [polecenie aplikacji][app_cmd]). Podzadania lub zadanie podstawowe wykonywane na innych węzłach nie mają dostępu zdalnego do tego katalogu (nie jest to katalog sieciowy "udostępniony"). | Podstawowe i podrzędne podzadania. | C:\user\tasks\workitems\multiinstancesamplejob\job-1\multiinstancesampletask |
 | AZ_BATCH_TASK_WORKING_DIR       | Pełna ścieżka [katalogu roboczego zadania][files_dirs] w węźle. Aktualnie uruchomione zadanie ma dostęp do odczytu/zapisu do tego katalogu. | Wszystkie zadania. | C:\user\tasks\workitems\batchjob001\job-1\task001\wd |

@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2b6d9a394971e59abaeb48e058b05cd52da69626
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 84296631e35de759fbb971f5de2d918afa5d17f0
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75529732"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75967573"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Uprawnienia roli administratora w Azure Active Directory
 
@@ -425,12 +425,6 @@ Użytkownicy z tą rolą mają uprawnienia globalne w usłudze Microsoft Skype d
 > [!NOTE]
 > W Microsoft Graph interfejsie API usługi Azure AD interfejs API programu Graph i Azure AD PowerShell ta rola jest identyfikowana jako "administrator usługi Lync". Jest to "Administrator programu Skype dla firm" w [Azure Portal](https://portal.azure.com/).
 
-### <a name="teams-administratorteams-service-administrator-permissions"></a>[Administrator zespołów](#teams-service-administrator-permissions)
-
-Użytkownicy w tej roli mogą zarządzać wszystkimi aspektami obciążeń programu Microsoft Teams za pośrednictwem Centrum administracyjnego Microsoft Teams & Skype dla firm i odpowiednich modułów programu PowerShell. Obejmuje to między innymi wszystkie narzędzia do zarządzania dotyczące telefonii, wiadomości, spotkań i samych zespołów. Ta rola dodatkowo umożliwia tworzenie wszystkich grup pakietu Office 365 i zarządzanie nimi, zarządzanie biletami pomocy technicznej i monitorowanie kondycji usługi.
-> [!NOTE]
-> W Microsoft Graph interfejsie API usługi Azure AD interfejs API programu Graph i Azure AD PowerShell ta rola jest identyfikowana jako "administrator usługi Team Service". Jest to "Administrator zespołów" w [Azure Portal](https://portal.azure.com).
-
 ### <a name="teams-communications-administratorteams-communications-administrator-permissions"></a>[Administratorzy zespołu ds. komunikacji](#teams-communications-administrator-permissions)
 
 Użytkownicy w tej roli mogą zarządzać aspektami obciążeń programu Microsoft Teams związanymi z usługą telefon & Voice. Obejmuje to narzędzia do zarządzania do przypisywania numerów telefonów, zasad dotyczących głosu i spotkania oraz pełny dostęp do zestawu narzędzi do analizy wywołań.
@@ -442,6 +436,10 @@ Użytkownicy w tej roli mogą rozwiązywać problemy z komunikacją w usłudze M
 ### <a name="teams-communications-support-specialistteams-communications-support-specialist-permissions"></a>[Zespoły ds. pomocy technicznej](#teams-communications-support-specialist-permissions)
 
 Użytkownicy w tej roli mogą rozwiązywać problemy z komunikacją w usłudze Microsoft Teams & Skype dla firm przy użyciu narzędzi do rozwiązywania problemów z wywołaniem użytkownika w centrum administracyjnym usługi Microsoft Teams & Skype dla firm. Użytkownicy w tej roli mogą tylko wyświetlać szczegóły użytkownika w wywołaniu dla określonego użytkownika, który wyszukał. Ta rola nie ma dostępu do wyświetlania biletów pomocy technicznej, tworzenia ich ani zarządzania nimi.
+
+### <a name="teams-service-administratorteams-service-administrator-permissions"></a>[Administrator usługi Teams](#teams-service-administrator-permissions)
+
+Użytkownicy w tej roli mogą zarządzać wszystkimi aspektami obciążeń programu Microsoft Teams za pośrednictwem Centrum administracyjnego Microsoft Teams & Skype dla firm i odpowiednich modułów programu PowerShell. Obejmuje to między innymi wszystkie narzędzia do zarządzania dotyczące telefonii, wiadomości, spotkań i samych zespołów. Ta rola dodatkowo umożliwia tworzenie wszystkich grup pakietu Office 365 i zarządzanie nimi, zarządzanie biletami pomocy technicznej i monitorowanie kondycji usługi.
 
 ### <a name="user-administratoruser-administrator-permissions"></a>[Administrator użytkowników](#user-administrator-permissions)
 

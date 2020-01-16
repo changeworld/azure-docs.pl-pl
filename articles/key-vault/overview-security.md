@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: mbaldwin
 Customer intent: As a key vault administrator, I want to learn the options available to secure my vaults
-ms.openlocfilehash: 728398aeec4715d15ebe44ae6d4e4bfa5f295df8
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 74dac926ea67b9f6a31993a72dc6331aa48155b7
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70884793"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981569"
 ---
 # <a name="azure-key-vault-security"></a>Zabezpieczenia Azure Key Vault
 
@@ -45,16 +45,16 @@ Model jednego mechanizmu uwierzytelniania w obu płaszczyznach ma kilka zalet:
 
 ### <a name="managing-administrative-access-to-key-vault"></a>Zarządzanie dostępem administracyjnym do Key Vault
 
-Podczas tworzenia magazynu kluczy w grupie zasobów można zarządzać dostępem przy użyciu usługi Azure AD. Użytkownicy lub grupy mogą zarządzać magazynami kluczy w grupie zasobów. Można udzielić dostępu na określonym poziomie zakresu, przypisując odpowiednie role RBAC. Aby udzielić użytkownikowi dostępu do zarządzania magazynami kluczy, należy przypisać wstępnie zdefiniowaną `key vault Contributor` rolę do użytkownika w określonym zakresie. Następujące poziomy zakresów można przypisać do roli RBAC:
+Podczas tworzenia magazynu kluczy w grupie zasobów można zarządzać dostępem przy użyciu usługi Azure AD. Użytkownicy lub grupy mogą zarządzać magazynami kluczy w grupie zasobów. Można udzielić dostępu na określonym poziomie zakresu, przypisując odpowiednie role RBAC. Aby udzielić użytkownikowi dostępu do zarządzania magazynami kluczy, należy przypisać do użytkownika wstępnie zdefiniowaną rolę `key vault Contributor` w określonym zakresie. Następujące poziomy zakresów można przypisać do roli RBAC:
 
-- **Subskrypcja**: Rola RBAC przypisana na poziomie subskrypcji ma zastosowanie do wszystkich grup zasobów i zasobów w ramach tej subskrypcji.
-- **Grupa zasobów**: Rola RBAC przypisana na poziomie grupy zasobów ma zastosowanie do wszystkich zasobów w tej grupie zasobów.
-- **Określony zasób**: Rola RBAC przypisana do określonego zasobu ma zastosowanie do tego zasobu. W tym przypadku zasób jest określonym magazynem kluczy.
+- **Subskrypcja**: rola RBAC przypisana na poziomie subskrypcji ma zastosowanie do wszystkich grup zasobów i zasobów w ramach tej subskrypcji.
+- **Grupa zasobów**: rola RBAC przypisana na poziomie grupy zasobów ma zastosowanie do wszystkich zasobów w tej grupie zasobów.
+- **Określony zasób**: dla danego zasobu jest stosowana rola RBAC przypisana do określonego zasobu. W tym przypadku zasób jest określonym magazynem kluczy.
 
-Istnieje kilka wstępnie zdefiniowanych ról. Jeśli wstępnie zdefiniowana rola nie spełnia Twoich potrzeb, możesz zdefiniować własną rolę. Aby uzyskać więcej informacji, [Zobacz RBAC: Built-in roles](../role-based-access-control/built-in-roles.md) (Kontrola dostępu oparta na rolach: role wbudowane).
+Istnieje kilka wstępnie zdefiniowanych ról. Jeśli wstępnie zdefiniowana rola nie spełnia Twoich potrzeb, możesz zdefiniować własną rolę. Aby uzyskać więcej informacji, zobacz [RBAC: role wbudowane](../role-based-access-control/built-in-roles.md).
 
 > [!IMPORTANT]
-> Jeśli użytkownik ma `Contributor` uprawnienia do płaszczyzny zarządzania magazynu kluczy, użytkownik może udzielić sobie dostępu do płaszczyzny danych przez ustawienie zasad dostępu Key Vault. Należy ściśle kontrolować, kto ma `Contributor` dostęp do roli do Twoich magazynów kluczy. Upewnij się, że tylko autoryzowani osoby mają dostęp do magazynów kluczy, kluczy, wpisów tajnych i certyfikatów oraz nimi zarządzać.
+> Jeśli użytkownik ma `Contributor` uprawnienia do płaszczyzny zarządzania magazynu kluczy, użytkownik może udzielić sobie dostępu do płaszczyzny danych przez ustawienie zasad dostępu Key Vault. Należy ściśle kontrolować, kto ma `Contributor` dostęp do swoich magazynów kluczy. Upewnij się, że tylko autoryzowani osoby mają dostęp do magazynów kluczy, kluczy, wpisów tajnych i certyfikatów oraz nimi zarządzać.
 
 <a id="data-plane-access-control"></a>
 ### <a name="controlling-access-to-key-vault-data"></a>Kontrolowanie dostępu do danych Key Vault
@@ -87,15 +87,15 @@ Rejestrowanie Key Vault zapisuje informacje o działaniach wykonywanych w magazy
     - Podpisywanie, weryfikowanie, szyfrowanie, odszyfrowywanie, zawijanie i depakowanie kluczy, pobieranie wpisów tajnych i wyświetlanie listy kluczy i wpisów tajnych (oraz ich wersji).
 - Nieuwierzytelnione żądania, które powodują uzyskanie odpowiedzi 401. Przykłady to żądania, które nie mają tokenu okaziciela, które są źle sformułowane lub wygasłe lub które mają nieprawidłowy token.
 
-Dostęp do informacji o rejestrowaniu można uzyskać w ciągu 10 minut od operacji magazynu kluczy. Można zarządzać dziennikami na koncie magazynu. 
+Dostęp do informacji o rejestrowaniu można uzyskać w ciągu 10 minut od operacji magazynu kluczy. Można zarządzać dziennikami na koncie magazynu.
 
 - Użyj standardowych metod kontroli dostępu platformy Azure w celu zabezpieczenia dzienników, wprowadzając ograniczenia co do tego, kto może uzyskiwać do nich dostęp.
 - Usuń dzienniki, których nie chcesz już przechowywać na koncie magazynu.
 
-Aby uzyskać zalecenie dotyczące bezpiecznego zarządzania kontami magazynu, zobacz [Przewodnik po zabezpieczeniach usługi Azure Storage](../storage/common/storage-security-guide.md)
+Aby uzyskać zalecenie dotyczące bezpiecznego zarządzania kontami magazynu, zobacz [Przewodnik po zabezpieczeniach usługi Azure Storage](../storage/blobs/security-recommendations.md)
 
 ## <a name="next-steps"></a>Następne kroki
 
 - [Punkty końcowe usługi sieci wirtualnej dla Azure Key Vault](key-vault-overview-vnet-service-endpoints.md)
-- [RBAC Wbudowane role](../role-based-access-control/built-in-roles.md)
+- [RBAC: Wbudowane role](../role-based-access-control/built-in-roles.md)
 - [punkty końcowe usługi sieci wirtualnej dla Azure Key Vault](key-vault-overview-vnet-service-endpoints.md)

@@ -10,12 +10,12 @@ ms.date: 01/10/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 39568d65978592b360512db2e556cfa6b59760b6
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 8cf1f8ecb68e31f93c19d93d6ebc4f8ef37724e7
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75921217"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028441"
 ---
 # <a name="create-an-account-that-supports-customer-managed-keys-for-tables-and-queues"></a>Utwórz konto, które obsługuje klucze zarządzane przez klienta dla tabel i kolejek
 
@@ -149,7 +149,7 @@ Po utworzeniu konta, które opiera się na kluczu szyfrowania konta, zobacz jede
 
 ## <a name="verify-the-account-encryption-key"></a>Weryfikowanie klucza szyfrowania konta
 
-Aby sprawdzić, czy nowe konto magazynu używa klucza szyfrowania konta, wywołaj polecenie [AZ Storage account](/cli/azure/storage/account#az-storage-account-show) dla interfejsu wiersza polecenia platformy Azure. To polecenie zwraca listę właściwości konta magazynu i ich wartości. Wyszukaj Właściwość `keyType` i sprawdź, czy jest ona ustawiona na `Account`.
+Aby sprawdzić, czy usługa na koncie magazynu korzysta z klucza szyfrowania konta, wywołaj polecenie [AZ Storage account](/cli/azure/storage/account#az-storage-account-show) dla interfejsu wiersza polecenia platformy Azure. To polecenie zwraca zestaw właściwości konta magazynu i ich wartości. Poszukaj pola `keyType` dla każdej usługi we właściwości szyfrowania i sprawdź, czy jest ona ustawiona na `Account`.
 
 ```azurecli
 az storage account show /

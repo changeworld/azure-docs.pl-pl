@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: iainfou
-ms.openlocfilehash: 5c51eff77c0375491f4376f12c9ff959f033e2ad
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d8e96ffc3e2b4756a4184a9a023133f14b326ed3
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75425384"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979943"
 ---
 # <a name="enable-security-audits-for-azure-active-directory-domain-services"></a>Włącz inspekcje zabezpieczeń dla Azure Active Directory Domain Services
 
@@ -126,7 +126,7 @@ Aby włączyć zdarzenia inspekcji usługi Azure AD DS Security przy użyciu Azu
 
 1. Utwórz zasób docelowy dla zdarzeń inspekcji zabezpieczeń.
 
-    * **Usługa Azure storage** - [Tworzenie konta magazynu przy użyciu Azure PowerShell](../storage/common/storage-quickstart-create-account.md?tabs=azure-powershell)
+    * **Usługa Azure storage** - [Tworzenie konta magazynu przy użyciu Azure PowerShell](../storage/common/storage-account-create.md?tabs=azure-powershell)
     * **Usługa Azure Event hub** - [utworzyć centrum zdarzeń przy użyciu Azure PowerShell](../event-hubs/event-hubs-quickstart-powershell.md). Może być również konieczne użycie polecenia cmdlet [New-AzEventHubAuthorizationRule](/powershell/module/az.eventhub/new-azeventhubauthorizationrule) w celu utworzenia reguły autoryzacji, która przyznaje uprawnienia AD DS platformy Azure do *przestrzeni nazw*centrum zdarzeń. Reguła autoryzacji musi zawierać prawa do **zarządzania**, **nasłuchiwania**i **wysyłania** .
 
         > [!IMPORTANT]

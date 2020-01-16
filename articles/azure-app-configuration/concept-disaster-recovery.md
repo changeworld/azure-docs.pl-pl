@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 05/29/2019
-ms.openlocfilehash: f2f914ec993670b8ba7a596f873234afd9ffc8e8
-ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
+ms.openlocfilehash: cd706e42eff19ebacf92b77d2438af80dc16a5fb
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/05/2020
-ms.locfileid: "75665052"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028247"
 ---
 # <a name="resiliency-and-disaster-recovery"></a>Odporność i odzyskiwanie po awarii
 
@@ -29,6 +29,8 @@ Aplikacja ładuje swoją konfigurację zarówno ze sklepu podstawowego, jak i po
 
 Technicznie aplikacja nie wykonuje przejścia w tryb failover. Podjęto próbę pobrania tego samego zestawu danych konfiguracji z dwóch magazynów konfiguracji aplikacji jednocześnie. Rozmieść kod w taki sposób, aby został załadowany z magazynu pomocniczego jako pierwszy, a następnie do magazynu podstawowego. Takie podejście gwarantuje, że dane konfiguracyjne w magazynie podstawowym mają pierwszeństwo za każdym razem, gdy jest dostępne. Poniższy fragment kodu przedstawia sposób wdrożenia tego rozmieszczenia w interfejs wiersza polecenia platformy .NET Core:
 
+#### <a name="net-core-2xtabcore2x"></a>[.NET Core 2.x](#tab/core2x)
+
 ```csharp
 public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
     WebHost.CreateDefaultBuilder(args)
@@ -39,8 +41,24 @@ public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
                   .AddAzureAppConfiguration(settings["ConnectionString_PrimaryStore"], optional: true);
         })
         .UseStartup<Startup>();
-    }
+    
 ```
+
+#### <a name="net-core-3xtabcore3x"></a>[.NET Core 3. x](#tab/core3x)
+
+```csharp
+public static IHostBuilder CreateHostBuilder(string[] args) =>
+    Host.CreateDefaultBuilder(args)
+        .ConfigureWebHostDefaults(webBuilder =>
+            webBuilder.ConfigureAppConfiguration((hostingContext, config) =>
+            {
+                var settings = config.Build();
+                config.AddAzureAppConfiguration(settings["ConnectionString_SecondaryStore"], optional: true)
+                    .AddAzureAppConfiguration(settings["ConnectionString_PrimaryStore"], optional: true);
+            })
+            .UseStartup<Startup>());
+```
+---
 
 Zwróć uwagę, że parametr `optional` przeszedł do funkcji `AddAzureAppConfiguration`. Gdy ta wartość jest ustawiona na `true`, ten parametr zapobiega niepowodzeniu działania aplikacji w sytuacji, gdy funkcja nie może załadować danych konfiguracyjnych.
 

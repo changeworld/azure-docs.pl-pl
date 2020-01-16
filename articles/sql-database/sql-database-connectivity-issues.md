@@ -11,16 +11,16 @@ ms.topic: conceptual
 author: dalechen
 manager: dcscontentpm
 ms.author: ninarn
-ms.reviewer: carlrab
-ms.date: 11/14/2019
-ms.openlocfilehash: c25fa3f378c1e5a0f8bc26e4fb8c6f4ec752b43c
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.reviewer: carlrab, vanto
+ms.date: 01/14/2020
+ms.openlocfilehash: d2b56e259f551f7655936c975a7a864a27a1df79
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082494"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76027801"
 ---
-# <a name="working-with-sql-database-connection-issues-and-transient-errors"></a>Praca z SQL Database problemami z połączeniem i błędami przejściowymi
+# <a name="troubleshooting-transient-connection-errors-to-sql-database"></a>Rozwiązywanie błędów przejściowych połączeń do SQL Database
 
 W tym artykule opisano, jak zapobiegać, rozwiązywać problemy, diagnozować i ograniczać błędy połączenia oraz błędy przejściowe napotykane przez aplikację kliencką podczas współdziałania z Azure SQL Database. Dowiedz się, jak skonfigurować logikę ponowień, skompilować parametry połączenia i dostosować inne ustawienia połączenia.
 
@@ -444,7 +444,6 @@ public bool IsTransient(Exception ex)
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Aby uzyskać więcej informacji na temat rozwiązywania problemów z innymi typowymi SQL Database problemy z połączeniem, zobacz [Rozwiązywanie problemów z połączeniem do Azure SQL Database](sql-database-troubleshoot-common-connection-issues.md).
 - [Biblioteki połączeń dla SQL Database i SQL Server](sql-database-libraries.md)
 - [Buforowanie połączeń SQL Server (ADO.NET)](https://docs.microsoft.com/dotnet/framework/data/adonet/sql-server-connection-pooling)
 - [ *Ponawianie próby* to biblioteka Apache 2,0 z licencją ogólnego przeznaczenia, która została zastosowana w języku Python,](https://pypi.python.org/pypi/retrying) aby uprościć zadanie dodawania ponowień do wszystkiego.

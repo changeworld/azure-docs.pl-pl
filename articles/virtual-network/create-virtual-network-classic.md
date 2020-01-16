@@ -16,42 +16,42 @@ ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: ''
-ms.openlocfilehash: d934386a47c339cd3abdf72578736b44d40e7952
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 50054379a3032a368a10932e15396373a3817cff
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71059005"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978909"
 ---
 # <a name="create-a-virtual-network-classic-with-multiple-subnets"></a>Tworzenie sieci wirtualnej (klasycznej) z wieloma podsieciami
 
 > [!IMPORTANT]
-> Platforma Azure ma dwa [różne modele wdrażania](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json) służące do tworzenia zasobów i pracy z nimi: Menedżer zasobów i klasyczny. Ten artykuł dotyczy klasycznego modelu wdrożenia. Firma Microsoft zaleca tworzenie większości nowych sieci wirtualnych za pomocą modelu wdrażania [Menedżer zasobów](quick-create-portal.md) .
+> Platforma Azure ma dwa [różne modele wdrażania](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json) służące do tworzenia zasobów i pracy z nimi: Menedżer zasobów i klasyczne. Ten artykuł dotyczy klasycznego modelu wdrożenia. Firma Microsoft zaleca tworzenie większości nowych sieci wirtualnych za pomocą modelu wdrażania [Menedżer zasobów](quick-create-portal.md) .
 
 W tym samouczku dowiesz się, jak utworzyć podstawową sieć wirtualną platformy Azure (klasyczną) z oddzielnymi podsieciami publicznymi i prywatnymi. W podsieci można tworzyć zasoby platformy Azure, takie jak maszyny wirtualne i usługi w chmurze. Zasoby utworzone w sieciach wirtualnych (klasycznych) mogą komunikować się ze sobą oraz z zasobami w innych sieciach podłączonych do sieci wirtualnej.
 
 Dowiedz się więcej na temat wszystkich ustawień [sieci wirtualnej](manage-virtual-network.md) i [podsieci](virtual-network-manage-subnet.md) .
 
 > [!WARNING]
-> Sieci wirtualne (klasyczne) są natychmiast usuwane przez platformę Azure, gdy [subskrypcja jest wyłączona](../billing/billing-subscription-become-disable.md?toc=%2fazure%2fvirtual-network%2ftoc.json#you-reached-your-spending-limit). Sieci wirtualne (klasyczne) są usuwane niezależnie od tego, czy zasoby istnieją w sieci wirtualnej. Po ponownym włączeniu subskrypcji należy ponownie utworzyć zasoby, które istniały w sieci wirtualnej.
+> Sieci wirtualne (klasyczne) są natychmiast usuwane przez platformę Azure, gdy [subskrypcja jest wyłączona](../cost-management-billing/manage/subscription-disabled.md?toc=%2fazure%2fvirtual-network%2ftoc.json#you-reached-your-spending-limit). Sieci wirtualne (klasyczne) są usuwane niezależnie od tego, czy zasoby istnieją w sieci wirtualnej. Po ponownym włączeniu subskrypcji należy ponownie utworzyć zasoby, które istniały w sieci wirtualnej.
 
 Sieć wirtualną (klasyczną) można utworzyć przy użyciu [Azure Portal](#portal), [interfejsu wiersza polecenia platformy Azure (CLI) 1,0](#azure-cli)lub [programu PowerShell](#powershell).
 
 ## <a name="portal"></a>Portal
 
-1. W przeglądarce internetowej przejdź do [Azure Portal](https://portal.azure.com). Zaloguj się przy użyciu [konta platformy Azure](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#account). Jeśli nie masz konta platformy Azure, możesz zarejestrować się w celu [bezpłatna wersja próbna](https://azure.microsoft.com/offers/ms-azr-0044p).
+1. W przeglądarce internetowej przejdź do [Azure Portal](https://portal.azure.com). Zaloguj się przy użyciu [konta platformy Azure](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#account). Jeśli nie masz konta platformy Azure, możesz skorzystać z [bezpłatnej wersji próbnej](https://azure.microsoft.com/offers/ms-azr-0044p).
 2. Kliknij pozycję **Utwórz zasób** w portalu.
 3. W polu **Wyszukaj w witrynie Marketplace** w górnej części **nowego** wyświetlonego okienka wprowadź wartość *Sieć wirtualna* . Kliknij pozycję **Sieć wirtualna** , gdy zostanie wyświetlona w wynikach wyszukiwania.
-4. W wyświetlonym okienku **Virtual Network** wybierz pozycję **klasyczny** , a następnie kliknij pozycję **Utwórz**. 
+4. W wyświetlonym okienku **Virtual Network** **Wybierz pozycję** **klasyczny** , a następnie kliknij pozycję **Utwórz**. 
 5. Wprowadź następujące wartości w okienku **Tworzenie sieci wirtualnej (klasycznej)** , a następnie kliknij pozycję **Utwórz**:
 
     |Ustawienie|Wartość|
     |---|---|
-    |Name|myVnet|
+    |Nazwa|myVnet|
     |Przestrzeń adresowa|10.0.0.0/16|
-    |Nazwa podsieci|Public|
+    |Nazwa podsieci|Publiczne|
     |Zakres adresów podsieci|10.0.0.0/24|
-    |Resource group|Pozostaw opcję **Utwórz nowy** , a następnie wprowadź nazwę **zasobu**.|
+    |Grupa zasobów|Pozostaw opcję **Utwórz nowy** , a następnie wprowadź nazwę **zasobu**.|
     |Subskrypcja i lokalizacja|Wybierz swoją subskrypcję i lokalizację.
 
     Jeśli dopiero zaczynasz na platformie Azure, Dowiedz się więcej na temat [grup zasobów](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group), [subskrypcji](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription)i [lokalizacji](https://azure.microsoft.com/regions) (nazywanych również *regionami*).
@@ -60,14 +60,14 @@ Sieć wirtualną (klasyczną) można utworzyć przy użyciu [Azure Portal](#port
 6. Kliknij pozycję **+ Dodaj** w wyświetlonym okienku **myVnet-Subnets** .
 7. Wprowadź wartość **Private** dla **nazwy** w okienku **Dodaj podsieć** . Wprowadź **10.0.1.0/24** dla **zakresu adresów**.  Kliknij przycisk **OK**.
 8. W okienku **myVnet-Subnets** (podsieci) można zobaczyć utworzone przez siebie podsieci **publiczne** i **prywatne** .
-9. **Opcjonalnie**: Po zakończeniu tego samouczka możesz chcieć usunąć utworzone przez siebie zasoby, aby nie były naliczane opłaty za użycie:
+9. **Opcjonalne**: po zakończeniu tego samouczka możesz chcieć usunąć utworzone zasoby, aby nie naliczane były opłaty za użycie:
     - Kliknij pozycję **Przegląd** w okienku **myVnet** .
     - Kliknij ikonę **Usuń** w okienku **myVnet** .
     - Aby potwierdzić usunięcie, kliknij przycisk **tak** w polu **Usuń sieć wirtualną** .
 
 ## <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
 
-1. Można [zainstalować i skonfigurować interfejs wiersza polecenia platformy Azure](../cli-install-nodejs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)lub użyć interfejsu wiersza polecenia w Azure Cloud Shell. Usługa Azure Cloud Shell jest bezpłatną powłoką Bash, którą można uruchamiać bezpośrednio w witrynie Azure Portal. Ma ona wstępnie zainstalowany interfejs wiersza polecenia platformy Azure skonfigurowany do użycia z Twoim kontem. Aby uzyskać pomoc dotyczącą poleceń interfejsu wiersza `azure <command> --help`polecenia, wpisz polecenie. 
+1. Można [zainstalować i skonfigurować interfejs wiersza polecenia platformy Azure](../cli-install-nodejs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)lub użyć interfejsu wiersza polecenia w Azure Cloud Shell. Usługa Azure Cloud Shell jest bezpłatną powłoką Bash, którą można uruchamiać bezpośrednio w witrynie Azure Portal. Ma ona wstępnie zainstalowany interfejs wiersza polecenia platformy Azure skonfigurowany do użycia z Twoim kontem. Aby uzyskać pomoc dotyczącą poleceń interfejsu wiersza polecenia, wpisz `azure <command> --help`. 
 2. W sesji interfejsu wiersza polecenia Zaloguj się do platformy Azure przy użyciu poniższego polecenie. Jeśli klikniesz pozycję **Wypróbuj** w polu poniżej, zostanie otwarte Cloud Shell. Możesz zalogować się do subskrypcji platformy Azure bez wprowadzania następującego polecenia:
 
     ```azurecli-interactive
@@ -98,7 +98,7 @@ Sieć wirtualną (klasyczną) można utworzyć przy użyciu [Azure Portal](#port
     azure network vnet show --vnet myVnet
     ```
 
-7. **Opcjonalnie**: Możesz chcieć usunąć zasoby, które zostały utworzone po zakończeniu pracy z tym samouczkiem, aby nie naliczane były opłaty za użycie:
+7. **Opcjonalnie**: możesz chcieć usunąć zasoby, które zostały utworzone po zakończeniu pracy z tym samouczkiem, aby nie naliczane były opłaty za użycie:
 
     ```azurecli-interactive
     azure network vnet delete --vnet myVnet --quiet
@@ -153,7 +153,7 @@ Sieć wirtualną (klasyczną) można utworzyć przy użyciu [Azure Portal](#port
     Get-AzureVNetSite -VNetName "myVnet"
     ```
 
-8. **Opcjonalnie**: Możesz chcieć usunąć zasoby, które zostały utworzone po zakończeniu pracy z tym samouczkiem, aby nie naliczane były opłaty za użycie. Aby usunąć sieć wirtualną, należy ponownie wykonać kroki 4-6, tym razem usuwając element **VirtualNetworkSite** dodany w kroku 5.
+8. **Opcjonalnie**: możesz chcieć usunąć zasoby, które zostały utworzone po zakończeniu pracy z tym samouczkiem, aby nie naliczane były opłaty za użycie. Aby usunąć sieć wirtualną, należy ponownie wykonać kroki 4-6, tym razem usuwając element **VirtualNetworkSite** dodany w kroku 5.
  
 > [!NOTE]
 > Chociaż nie można określić grupy zasobów w celu utworzenia sieci wirtualnej (klasycznej) przy użyciu programu PowerShell, platforma Azure tworzy sieć wirtualną w grupie zasobów o nazwie *default-Networking*.

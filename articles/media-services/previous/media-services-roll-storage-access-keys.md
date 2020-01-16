@@ -15,22 +15,22 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: milanga;cenkdin
-ms.openlocfilehash: 1cebe0fda7da97933fc94082a62c671535fe689b
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 2a0d1c5af572c88dc11bed950b46706f0a2f081f
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "69015800"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981960"
 ---
 # <a name="update-media-services-after-rolling-storage-access-keys"></a>Aktualizowanie usługi Media Services po stopniowym uaktualnieniu kluczy dostępu do magazynu 
 
 Podczas tworzenia nowego konta usługi Azure Media Services (AMS) zostanie również wyświetlony monit o wybranie konta magazynu platformy Azure używanego do przechowywania zawartości multimedialnej. Do konta Media Services można dodać więcej niż jedno konto magazynu. W tym artykule pokazano, jak obrócić klucze magazynu. Przedstawiono w nim również sposób dodawania kont magazynu do konta multimediów. 
 
-Aby wykonać czynności opisane w tym artykule, należy używać [Azure Resource Manager interfejsów API](/rest/api/media/operations/azure-media-services-rest-api-reference) i [programu PowerShell](https://docs.microsoft.com/powershell/module/az.media).  Aby uzyskać więcej informacji, zobacz [jak zarządzać zasobami platformy Azure za pomocą programu PowerShell i Menedżer zasobów](../../azure-resource-manager/manage-resource-groups-powershell.md).
+Aby wykonać czynności opisane w tym artykule, należy używać [Azure Resource Manager interfejsów API](/rest/api/media/operations/azure-media-services-rest-api-reference) i [programu PowerShell](https://docs.microsoft.com/powershell/module/az.media).  Aby uzyskać więcej informacji, zobacz [jak zarządzać zasobami platformy Azure za pomocą programu PowerShell i Menedżer zasobów](../../azure-resource-manager/management/manage-resource-groups-powershell.md).
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 Po utworzeniu nowego konta magazynu platforma Azure generuje 2 512-bitowe klucze dostępu do magazynu, które są używane do uwierzytelniania dostępu do konta magazynu. Aby zapewnić lepszą ochronę połączeń magazynu, zaleca się okresowe ponowne wygenerowanie i obrócenie klucza dostępu do magazynu. Dwa klucze dostępu (podstawowa i pomocnicza) są dostarczane w celu umożliwienia utrzymania połączeń z kontem magazynu przy użyciu jednego klucza dostępu podczas ponownego generowania drugiego klucza dostępu. Ta procedura jest również nazywana "kluczami dostępu równoległego".
 
@@ -76,8 +76,8 @@ W poniższym artykule pokazano, jak dodać konta magazynu do konta AMS: [Dołąc
 ## <a name="media-services-learning-paths"></a>Ścieżki szkoleniowe dotyczące usługi Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Przekazywanie opinii
+## <a name="provide-feedback"></a>Prześlij opinię
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-### <a name="acknowledgments"></a>Potwierdzeń
-Chcemy potwierdzić następujące osoby, które współczyniły się do utworzenia tego dokumentu: Cenk Dingiloglu, Mediolan gada, Seva Titov.
+### <a name="acknowledgments"></a>Podziękowania
+Chcemy potwierdzić następujące osoby, które przyczyniają się do tworzenia tego dokumentu: Cenk Dingiloglu, Mediolan gada, Seva Titov.

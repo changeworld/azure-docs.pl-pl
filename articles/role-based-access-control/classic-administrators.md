@@ -14,16 +14,16 @@ ms.workload: identity
 ms.date: 11/26/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 340717242d642475217bbe87fd96be66ec9b2e2d
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: 40bda408731e90ab4c0c987b981a1c7f16b0de5d
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74554221"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979339"
 ---
 # <a name="azure-classic-subscription-administrators"></a>Administratorzy klasycznej subskrypcji platformy Azure
 
-Firma Microsoft zaleca, aby zarządzać dostępem do zasobów platformy Azure przy użyciu kontroli dostępu opartej na rolach (RBAC). Jeśli jednak nadal korzystasz z klasycznego modelu wdrażania, musisz użyć klasycznej roli administratora subskrypcji: administrator usługi i administrator współpracujący. Aby uzyskać więcej informacji, zobacz [Azure Resource Manager a wdrożenie klasyczne](../azure-resource-manager/resource-manager-deployment-model.md).
+Firma Microsoft zaleca, aby zarządzać dostępem do zasobów platformy Azure przy użyciu kontroli dostępu opartej na rolach (RBAC). Jeśli jednak nadal korzystasz z klasycznego modelu wdrażania, musisz użyć klasycznej roli administratora subskrypcji: administrator usługi i administrator współpracujący. Aby uzyskać więcej informacji, zobacz [Azure Resource Manager a wdrożenie klasyczne](../azure-resource-manager/management/deployment-models.md).
 
 W tym artykule opisano, jak dodać lub zmienić role administratora współadministratora i usługi oraz jak wyświetlić administratora konta.
 
@@ -101,7 +101,7 @@ Tylko administrator konta może zmienić administratora usługi dla subskrypcji.
 
 Istnieją dwa sposoby zmiany administratora usługi. Można zmienić w centrum **Azure Portal** lub **konta**.
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Portal Azure
 
 1. Upewnij się, że scenariusz jest obsługiwany, sprawdzając ograniczenia dotyczące zmiany administratorów usługi.
 
@@ -152,7 +152,7 @@ Aby uzyskać więcej informacji o kontach Microsoft i kontach usługi Azure AD, 
 
 ## <a name="view-the-account-administrator"></a>Wyświetlanie administratora konta
 
-Administrator konta jest użytkownikiem, który początkowo zarejestrował się w ramach subskrypcji platformy Azure i jest odpowiedzialny za właściciela rozliczania subskrypcji. Aby zmienić administratora konta subskrypcji, zobacz [przenoszenie własności subskrypcji platformy Azure na inne konto](../billing/billing-subscription-transfer.md).
+Administrator konta jest użytkownikiem, który początkowo zarejestrował się w ramach subskrypcji platformy Azure i jest odpowiedzialny za właściciela rozliczania subskrypcji. Aby zmienić administratora konta subskrypcji, zobacz [przenoszenie własności subskrypcji platformy Azure na inne konto](../cost-management-billing/manage/billing-subscription-transfer.md).
 
 Wykonaj następujące kroki, aby wyświetlić administratora konta.
 
@@ -170,4 +170,4 @@ Wykonaj następujące kroki, aby wyświetlić administratora konta.
 
 * [Understand the different roles in Azure (Omówienie ról na platformie Azure)](../role-based-access-control/rbac-and-directory-admin-roles.md)
 * [Zarządzanie dostępem do zasobów platformy Azure za pomocą kontroli dostępu opartej na rolach i witryny Azure Portal](../role-based-access-control/role-assignments-portal.md)
-* [Dodawanie lub zmienianie administratorów subskrypcji platformy Azure](../billing/billing-add-change-azure-subscription-administrator.md)
+* [Dodawanie lub zmienianie administratorów subskrypcji platformy Azure](../cost-management-billing/manage/add-change-subscription-administrator.md)

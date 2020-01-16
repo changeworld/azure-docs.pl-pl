@@ -3,7 +3,7 @@ title: Użyj zależności zadań do uruchamiania zadań w oparciu o zakończenie
 description: Utwórz zadania, które zależą od ukończenia innych zadań przetwarzania stylu MapReduce i podobnych obciążeń danych Big Data w Azure Batch.
 services: batch
 documentationcenter: .net
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 editor: ''
 ms.assetid: b8d12db5-ca30-4c7d-993a-a05af9257210
@@ -12,14 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 05/22/2017
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2a1378a5c00acbbce5e7ec73a75902ec55140575
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 875e0314c41a6bb277769361b6faa0345312db2b
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70094624"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76026229"
 ---
 # <a name="create-task-dependencies-to-run-tasks-that-depend-on-other-tasks"></a>Tworzenie zależności zadań w celu uruchamiania zadań zależnych od innych zadań
 
@@ -67,18 +67,18 @@ new CloudTask("Flowers", "cmd.exe /c echo Flowers")
 Ten fragment kodu tworzy zadanie zależne z IDENTYFIKATORem zadania "kwiaty". Zadanie "kwiaty" zależy od zadań "deszcz" i "Sun". Zadanie "kwiaty" zostanie zaplanowane do uruchomienia w węźle obliczeniowym dopiero po pomyślnym ukończeniu zadań "deszcz" i "Sun".
 
 > [!NOTE]
-> Domyślnie zadanie jest uznawane za zakończone pomyślnie, gdy jest w stanie **ukończone** i jego **Kod zakończenia** to `0`. W usłudze Batch .NET oznacza to [CloudTask][net_cloudtask]. [][net_taskstate] Wartość`Completed` właściwości State i [TaskExecutionInformation][net_taskexecutioninformation]CloudTask.[ ][net_exitcode]Wartość właściwości ExitCode to `0`. Aby to zmienić, zobacz sekcję [Akcje zależności](#dependency-actions) .
+> Domyślnie zadanie jest uznawane za zakończone pomyślnie, gdy jest w stanie **ukończenia** , a jego **kod zakończenia** jest `0`. W usłudze Batch .NET oznacza to [CloudTask][net_cloudtask]. Wartość właściwości [State][net_taskstate] elementu `Completed` i [TaskExecutionInformation][net_taskexecutioninformation]CloudTask. Wartość właściwości [ExitCode][net_exitcode] jest `0`. Aby to zmienić, zobacz sekcję [Akcje zależności](#dependency-actions) .
 > 
 > 
 
 ## <a name="dependency-scenarios"></a>Scenariusze zależności
 Istnieją trzy podstawowe scenariusze zależności zadań, których można użyć w Azure Batch: jeden do jednego, jeden-do-wielu i zakres identyfikatorów zadań. Można je łączyć, aby zapewnić czwarty scenariusz, wiele-do-wielu.
 
-| Scenariusz&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Przykład |  |
+| &nbsp;scenariusza &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Przykład |  |
 |:---:| --- | --- |
 |  [One-to-one](#one-to-one) |*zadaniab* zależy od *zadania* <p/> *zadaniab* nie zostanie zaplanowana do wykonania przed pomyślnym zakończeniem *zadania* |![Diagram: zależność zadania jeden do jednego][1] |
 |  [Jeden do wielu](#one-to-many) |*zadanieC* zależy od *zadaniaA* i *zadaniaB* <p/> *zadaniec* nie zostanie zaplanowana do wykonania, dopóki *zadania* i *zadaniab* nie zostaną ukończone pomyślnie |![Diagram: zależność zadania jeden-do-wielu][2] |
-|  [Zakres identyfikatorów zadań](#task-id-range) |*zadania* podrzędne są zależne od zakresu zadań <p/> *zadanie* nie zostanie zaplanowane do wykonania, dopóki zadania o identyfikatorach od *1* do *10* nie zakończą się pomyślnie |![4b Zależność zakresu identyfikatora zadania][3] |
+|  [Zakres identyfikatorów zadań](#task-id-range) |*zadania* podrzędne są zależne od zakresu zadań <p/> *zadanie* nie zostanie zaplanowane do wykonania, dopóki zadania o identyfikatorach od *1* do *10* nie zakończą się pomyślnie |![Diagram: zależność zakresu identyfikatora zadania][3] |
 
 > [!TIP]
 > Można utworzyć relacje **wiele-do-wielu** , takie jak zadania C, D, E i F, które są zależne od zadań a i B. Jest to przydatne na przykład w przypadku równoległych scenariuszy przetwarzania wstępnego, w których zadania podrzędne zależą od danych wyjściowych wielu zadań nadrzędnych.
@@ -122,7 +122,7 @@ Aby utworzyć zależność, podaj pierwsze i ostatnie identyfikatory zadań w za
 > [!IMPORTANT]
 > W przypadku korzystania z zakresów identyfikatorów zadań w zależności od zakresu będą wybierane tylko zadania z identyfikatorami reprezentującymi wartości całkowite. Dlatego zakres `1..10` będzie wybierać zadania `3` i `7`, ale nie `5flamingoes`. 
 > 
-> Zera wiodące nie są istotne podczas oceniania zależności zakresu, dlatego zadania z identyfikatorami `4` `04` ciągów i `004` wszystkie będą znajdować się *w* zakresie, a wszystkie będą traktowane jako zadania `4`, tak więc pierwszy z nich Aby ukończyć, będzie spełniał zależność.
+> Zera wiodące nie są istotne podczas oceniania zależności zakresu, dlatego zadania z identyfikatorami ciągów `4`, `04` i `004` będą wszystkie *z zakresu* , a wszystkie będą traktowane jako `4`zadania, więc pierwszy z nich będzie spełniał zależność.
 > 
 > Każde zadanie w zakresie musi spełniać zależność, przez pomyślne zakończenie lub przez zakończenie z powodu błędu zamapowanego na akcję zależności ustawioną na **spełnienie**. Aby uzyskać szczegółowe informacje, zobacz sekcję [Akcje zależności](#dependency-actions) .
 >
@@ -214,7 +214,7 @@ Przykładowy projekt [TaskDependencies][github_taskdependencies] jest jednym z [
 Funkcja [pakietów aplikacji](batch-application-packages.md) usługi Batch umożliwia łatwe wdrażanie i przechowywanie aplikacji wykonywanych przez zadania w węzłach obliczeniowych.
 
 ### <a name="installing-applications-and-staging-data"></a>Instalowanie aplikacji i danych przemieszczania
-Zapoznaj się z tematem [Instalowanie aplikacji i danych przemieszczania][forum_post] w węzłach obliczeniowych usługi Batch na forum Azure Batch, aby zapoznać się z omówieniem metod przygotowywania węzłów do uruchamiania zadań. Na podstawie jednego z członków zespołu Azure Batch ten wpis jest dobrym systemem na różne sposoby kopiowania aplikacji, danych wejściowych zadań i innych plików do węzłów obliczeniowych.
+Zapoznaj się z tematem [Instalowanie aplikacji i danych przemieszczania w węzłach obliczeniowych usługi Batch][forum_post] na forum Azure Batch, aby zapoznać się z omówieniem metod przygotowywania węzłów do uruchamiania zadań. Na podstawie jednego z członków zespołu Azure Batch ten wpis jest dobrym systemem na różne sposoby kopiowania aplikacji, danych wejściowych zadań i innych plików do węzłów obliczeniowych.
 
 [forum_post]: https://social.msdn.microsoft.com/Forums/en-US/87b19671-1bdf-427a-972c-2af7e5ba82d9/installing-applications-and-staging-data-on-batch-compute-nodes?forum=azurebatch
 [github_taskdependencies]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/TaskDependencies

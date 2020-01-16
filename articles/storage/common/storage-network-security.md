@@ -9,12 +9,12 @@ ms.date: 03/21/2019
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: b9a5e388ce6749023cff223de2376d1360ca7574
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 5e4a8afdb9bea4f528e57c914149f611b0578c63
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75895694"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75973475"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurowanie zapór usługi Azure Storage i sieci wirtualnych
 
@@ -224,7 +224,7 @@ Możesz zarządzać reguł sieci wirtualnej dla konta magazynu za pośrednictwem
 
     > [!TIP]
     > Aby dodać regułę dla podsieci w sieci wirtualnej należącej do innej dzierżawy usługi Azure AD, użyj w pełni kwalifikowanego identyfikatora podsieci w postaci "/subscriptions/\<Subscription-ID\>/resourceGroups/\<resourceName-Name\>/providers/Microsoft.Network/virtualNetworks/\<vNet-Name\>/Subnets/\<subnet-name\>".
-    > 
+    >
     > Możesz użyć parametru **subskrypcji** , aby pobrać identyfikator podsieci dla sieci wirtualnej należącej do innej dzierżawy usługi Azure AD.
 
 1. Usuń regułę sieciowej dla sieci wirtualnej i podsieci.
@@ -391,7 +391,7 @@ Ustawienie **Zezwalaj na zaufane usługi firmy Microsoft...** umożliwia równie
 | Usługa Azure Container Registry Tasks | Microsoft.ContainerRegistry/registries | Zadania ACR mogą uzyskać dostęp do kont magazynu podczas kompilowania obrazów kontenerów. |
 | Azure Data Factory             | Microsoft.DataFactory/factories        | Zezwala na dostęp do kont magazynu za pomocą środowiska uruchomieniowego ADF. |
 | Azure Logic Apps               | Microsoft.Logic/workflows              | Umożliwia aplikacjom logiki dostęp do kont magazynu. [Dowiedz się więcej](../../logic-apps/create-managed-service-identity.md#authenticate-access-with-managed-identity). |
-| Azure Machine Learning | Microsoft.MachineLearningServices      | Autoryzowane Azure Machine Learning obszary robocze zapisują dane wyjściowe eksperymentu, modele i dzienniki w usłudze BLOB Storage. [Dowiedz się więcej](/azure/machine-learning/service/how-to-enable-virtual-network#use-a-storage-account-for-your-workspace). | 
+| Azure Machine Learning | Microsoft.MachineLearningServices      | Autoryzowane Azure Machine Learning obszary robocze zapisują dane wyjściowe eksperymentu, modele i dzienniki w usłudze BLOB Storage. [Dowiedz się więcej](/azure/machine-learning/service/how-to-enable-virtual-network#use-a-storage-account-for-your-workspace). |
 | Azure SQL Data Warehouse       | Microsoft.Sql                          | Umożliwia importowanie i eksportowanie danych z określonych wystąpień SQL Database przy użyciu bazy. [Dowiedz się więcej](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview). |
 | Azure Stream Analytics         | Microsoft.StreamAnalytics             | Umożliwia zapisanie danych z zadania przesyłania strumieniowego w usłudze BLOB Storage. Ta funkcja jest obecnie dostępna w wersji zapoznawczej. [Dowiedz się więcej](/azure/stream-analytics/blob-output-managed-identity). |
 | Azure Synapse Analytics        | Microsoft. Synapse/obszary robocze          | Umożliwia dostęp do danych w usłudze Azure Storage z Synapse Analytics. |
@@ -471,4 +471,4 @@ Możesz zarządzać wyjątki od reguły sieci za pośrednictwem witryny Azure po
 
 Dowiedz się więcej na temat punktów końcowych usługi sieci platformy Azure w [punkty końcowe usługi](/azure/virtual-network/virtual-network-service-endpoints-overview).
 
-Dokładniejsze informacje dotyczące zabezpieczeń usługi Azure Storage w [Przewodnik po zabezpieczeniach usługi Azure Storage](storage-security-guide.md).
+Dokładniejsze informacje dotyczące zabezpieczeń usługi Azure Storage w [Przewodnik po zabezpieczeniach usługi Azure Storage](../blobs/security-recommendations.md).

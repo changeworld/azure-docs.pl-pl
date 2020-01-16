@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 12/16/2019
-ms.openlocfilehash: fe38e74d30f7eb4f0c025f14268f7d6ac7b7d88a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8d34a0905973a8080ee53eeac878432db0c51128
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428673"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979073"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Informacje o limitach i konfiguracji Azure Logic Apps
 
@@ -62,13 +62,13 @@ Aby zmienić domyślny limit czasu wykonywania i przechowywania magazynu, wykona
 
 1. Przejdź do witryny [Azure Portal](https://portal.azure.com). W polu wyszukiwania portalu Znajdź i wybierz pozycję **Aplikacje logiki**.
 
-1. Wybierz, a następnie otwórz aplikację logiki w Projektancie aplikacji logiki. 
+1. Wybierz, a następnie otwórz aplikację logiki w Projektancie aplikacji logiki.
 
 1. W menu aplikacji logiki wybierz pozycję **Ustawienia przepływu pracy**.
 
 1. W obszarze **Opcje środowiska uruchomieniowego**na liście **przechowywanie historii uruchamiania w dniach** wybierz pozycję **niestandardowa**.
 
-1. Wprowadź lub przeciągnij suwak, aby określić żądaną liczbę dni. 
+1. Wprowadź lub przeciągnij suwak, aby określić żądaną liczbę dni.
 
    > [!NOTE]
    > W przypadku aplikacji logiki na platformie Azure z wieloma dzierżawcami domyślny limit 90 dni jest taki sam, jak maksymalny limit. Tę wartość można zmniejszyć tylko.
@@ -84,7 +84,7 @@ Poniżej przedstawiono limity dla pojedynczego uruchomienia aplikacji logiki:
 | ---- | ----- | ----- |
 | Współbieżność wyzwalacza | * Nieograniczone, gdy kontrola współbieżności jest wyłączona <p><p>* 25 jest domyślnym limitem, gdy włączony jest formant współbieżności, którego nie można cofnąć po włączeniu formantu. Można zmienić wartość domyślną z przedziału od 1 do 50 włącznie. | Ten limit opisuje największą liczbę wystąpień aplikacji logiki, które mogą być uruchamiane w tym samym czasie lub równolegle. <p><p>**Uwaga**: po włączeniu współbieżności limit SplitOn zostaje zredukowany do 100 elementów na potrzeby tworzenia [wsadowych tablic](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch). <p><p>Aby zmienić domyślny limit na wartość z przedziału od 1 do 50 włącznie, zobacz [Zmienianie wyzwalacza współbieżności](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency) lub [wystąpień wyzwalaczy sekwencyjnie](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger). |
 | Maksymalna liczba oczekujących przebiegów | Po włączeniu kontroli współbieżności minimalna liczba oczekujących uruchomień wynosi 10 i liczbę współbieżnych uruchomień (współbieżność wyzwalacza). Można zmienić maksymalną liczbę do 100 włącznie. | Ten limit opisuje największą liczbę wystąpień aplikacji logiki, które mogą czekać na uruchomienie, gdy w aplikacji logiki jest już uruchomiona Maksymalna liczba wystąpień współbieżnych. <p><p>Aby zmienić domyślny limit, zobacz [Limit uruchamiania oczekujących zmian](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs). |
-| Elementy tablicy foreach | 100 000 | Ten limit opisuje największą liczbę elementów tablicy, które może przetworzyć pętla for each. <p><p>Aby filtrować większe tablice, można użyć [akcji zapytania](../connectors/connectors-native-query.md). |
+| Elementy tablicy foreach | 100 000 | Ten limit opisuje największą liczbę elementów tablicy, które może przetworzyć pętla for each. <p><p>Aby filtrować większe tablice, można użyć [akcji zapytania](logic-apps-perform-data-operations.md#filter-array-action). |
 | Współbieżność foreach | 20 jest domyślnym limitem, gdy kontrola współbieżności jest wyłączona. Można zmienić wartość domyślną z przedziału od 1 do 50 włącznie. | Ten limit to największą liczbę iteracji pętli "for each", które mogą być uruchamiane w tym samym czasie lub równolegle. <p><p>Aby zmienić domyślny limit na wartość z przedziału od 1 do 50 włącznie, zobacz [zmiana "dla każdego" ograniczenia współbieżności](../logic-apps/logic-apps-workflow-actions-triggers.md#change-for-each-concurrency) lub [uruchomienie "dla każdej" pętli sekwencyjnie](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-for-each). |
 | Elementy SplitOn | * 100 000 bez współbieżności wyzwalacza <p><p>* 100 z współbieżnością wyzwalacza | Dla wyzwalaczy, które zwracają tablicę, można określić wyrażenie używające właściwości "SplitOn", które [dzieli lub departia elementy tablicy w wielu wystąpieniach przepływu pracy](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch) do przetworzenia, zamiast używać pętli "foreach". To wyrażenie odwołuje się do tablicy, która ma zostać użyta do utworzenia i uruchomienia wystąpienia przepływu pracy dla każdego elementu tablicy. <p><p>**Uwaga**: po włączeniu współbieżności limit SplitOn zostanie zmniejszony do 100 elementów. |
 | Iteracje Until | 5000 | |
@@ -122,7 +122,8 @@ Poniżej przedstawiono limity przepływności dla jednostki SKU w warstwie Premi
 Aby przekroczyć te limity podczas normalnego przetwarzania lub uruchomić testy obciążenia, które mogą wykraczać ponad te limity, [skontaktuj się z zespołem Logic Apps](mailto://logicappsemail@microsoft.com) , aby uzyskać pomoc dotyczącą Twoich wymagań.
 
 > [!NOTE]
-> [Jednostka SKU dla deweloperów](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) nie ma opublikowanych limitów, ponieważ ta jednostka SKU nie ma żadnej umowy dotyczącej poziomu usług (SLA) ani możliwości skalowania w górę. Tej jednostki SKU można używać tylko na potrzeby eksperymentowania, programowania i testowania, a nie produkcji ani testowania wydajności.
+> [Jednostka SKU dla deweloperów](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) nie ma opublikowanych limitów, ponieważ ta jednostka SKU nie ma żadnej umowy dotyczącej poziomu usług (SLA) ani możliwości skalowania w górę.
+> Tej jednostki SKU można używać tylko na potrzeby eksperymentowania, programowania i testowania, a nie produkcji ani testowania wydajności.
 
 <a name="gateway-limits"></a>
 
@@ -209,7 +210,8 @@ Dodatkowe koszty dotyczą kont integracji, które są dodawane poza kontami inte
 
 ### <a name="artifact-limits-per-integration-account"></a>Limity artefaktów na konto integracji
 
-Poniżej przedstawiono limity liczby artefaktów dla każdej warstwy konta integracji. Stawki cenowe znajdują się w temacie [Logic Apps cenniku](https://azure.microsoft.com/pricing/details/logic-apps/). Aby dowiedzieć się, jak korzystać z cen i rozliczeń dla kont integracji, zobacz [model cen Logic Apps](../logic-apps/logic-apps-pricing.md#integration-accounts).
+Poniżej przedstawiono limity liczby artefaktów dla każdej warstwy konta integracji.
+Stawki cenowe znajdują się w temacie [Logic Apps cenniku](https://azure.microsoft.com/pricing/details/logic-apps/). Aby dowiedzieć się, jak korzystać z cen i rozliczeń dla kont integracji, zobacz [model cen Logic Apps](../logic-apps/logic-apps-pricing.md#integration-accounts).
 
 > [!NOTE]
 > Korzystaj z warstwy Bezpłatna tylko w scenariuszach poznawczych, a nie w scenariuszach produkcyjnych. Ta warstwa ogranicza przepływność i użycie oraz nie ma umowy dotyczącej poziomu usług (SLA).
@@ -261,9 +263,12 @@ Poniżej przedstawiono limity rozmiaru komunikatów, które dotyczą protokołó
 
 ## <a name="disabling-or-deleting-logic-apps"></a>Wyłączanie lub usuwanie aplikacji logiki
 
-Po wyłączeniu aplikacji logiki nie są tworzone żadne nowe uruchomienia. Wszystkie w toku i oczekujące przebiegi są kontynuowane do czasu zakończenia, co może zająć trochę czasu.
+Po wyłączeniu aplikacji logiki nie są tworzone żadne nowe uruchomienia.
+Wszystkie w toku i oczekujące przebiegi są kontynuowane do czasu zakończenia, co może zająć trochę czasu.
 
-Po usunięciu aplikacji logiki nie są tworzone wystąpienia nowych przebiegów. Wszystkie trwające i oczekujące przebiegi zostają anulowane. Anulowanie kilku tysięcy przebiegów może zająć dużo czasu.
+Po usunięciu aplikacji logiki nie są tworzone wystąpienia nowych przebiegów.
+Wszystkie trwające i oczekujące przebiegi zostają anulowane.
+Anulowanie kilku tysięcy przebiegów może zająć dużo czasu.
 
 <a name="configuration"></a>
 
@@ -276,7 +281,7 @@ Adresy IP używane przez Azure Logic Apps dla wywołań przychodzących i wychod
 
 * Aby zapewnić obsługę wywołań tworzonych przez aplikacje logiki bezpośrednio przy użyciu [protokołu HTTP](../connectors/connectors-native-http.md), [http + Swagger](../connectors/connectors-native-http-swagger.md)i innych żądań HTTP, należy skonfigurować zaporę ze *wszystkimi* adresami IP [przychodzącymi](#inbound) *i* [wychodzącymi](#outbound) , które są używane przez usługę Logic Apps, w zależności od regionów, w których istnieją aplikacje logiki. Te adresy są wyświetlane w obszarze nagłówki **przychodzące** i **wychodzące** w tej sekcji i są sortowane według regionów.
 
-* Aby zapewnić obsługę wywołań wywoływanych przez [Łączniki zarządzane przez firmę Microsoft](../connectors/apis-list.md) , należy skonfigurować zaporę ze *wszystkimi* [wychodzącymi](#outbound) adresami IP używanymi przez te łączniki w oparciu o regiony, w których istnieją aplikacje logiki. Te adresy są wyświetlane pod nagłówkiem **wychodzącym** w tej sekcji i są sortowane według regionów. 
+* Aby zapewnić obsługę wywołań wywoływanych przez [Łączniki zarządzane przez firmę Microsoft](../connectors/apis-list.md) , należy skonfigurować zaporę ze *wszystkimi* [wychodzącymi](#outbound) adresami IP używanymi przez te łączniki w oparciu o regiony, w których istnieją aplikacje logiki. Te adresy są wyświetlane pod nagłówkiem **wychodzącym** w tej sekcji i są sortowane według regionów.
 
 * Aby włączyć komunikację dla aplikacji logiki, które działają w środowisku usługi integracji (ISE), upewnij się, że [te porty są otwarte](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#network-ports-for-ise).
 

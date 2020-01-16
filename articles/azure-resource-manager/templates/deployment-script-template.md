@@ -7,12 +7,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 01/09/2020
 ms.author: jgao
-ms.openlocfilehash: 4dc28b8254c312836b2767c2efef52137e101777
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 6308f7832a898d97c455dc90265adea345aeb0cc
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75839441"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981215"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>Używanie skryptów wdrażania w szablonach (wersja zapoznawcza)
 
@@ -57,7 +57,7 @@ Zalety skryptu wdrażania:
   $id = (Get-AzUserAssignedIdentity -resourcegroupname $idGroup -Name idName).Id
   ```
 
-- **Azure PowerShell w wersji 2.7.0, 2.8.0 lub 3.0.0**. Te wersje nie są potrzebne do wdrażania szablonów. Jednak te wersje są zbędne do lokalnego testowania skryptów wdrażania. Zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-az-ps.md). Można użyć wstępnie skonfigurowanego obrazu platformy Docker.  Zobacz [Konfigurowanie środowiska deweloperskiego](#configure-development-environment).
+- **Azure PowerShell w wersji 2.7.0, 2.8.0 lub 3.0.0**. Te wersje nie są potrzebne do wdrażania szablonów. Jednak te wersje są zbędne do lokalnego testowania skryptów wdrażania. Zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-az-ps). Można użyć wstępnie skonfigurowanego obrazu platformy Docker.  Zobacz [Konfigurowanie środowiska deweloperskiego](#configure-development-environment).
 
 ## <a name="resource-schema"></a>Schemat zasobów
 
@@ -233,7 +233,7 @@ Aby wyświetlić zasób deploymentScripts w portalu, wybierz pozycję **Pokaż u
 
 ## <a name="clean-up-deployment-script-resources"></a>Czyszczenie zasobów skryptu wdrożenia
 
-Skrypt wdrażania tworzy konto magazynu i wystąpienie kontenera, które są używane do wykonywania skryptów wdrażania i przechowywania informacji debugowania. Te dwa zasoby są tworzone w tej samej grupie zasobów co zasoby aprowizacji i zostaną usunięte przez usługę skryptów, gdy skrypt wygaśnie. Możesz kontrolować cykl życia tych zasobów.  Dopóki nie zostaną usunięte, opłaty są naliczane za oba zasoby. Aby uzyskać informacje o cenach, zobacz [Container Instances Cennik](/pricing/details/container-instances/) i [Cennik usługi Azure Storage](/pricing/details/storage/).
+Skrypt wdrażania tworzy konto magazynu i wystąpienie kontenera, które są używane do wykonywania skryptów wdrażania i przechowywania informacji debugowania. Te dwa zasoby są tworzone w tej samej grupie zasobów co zasoby aprowizacji i zostaną usunięte przez usługę skryptów, gdy skrypt wygaśnie. Możesz kontrolować cykl życia tych zasobów.  Dopóki nie zostaną usunięte, opłaty są naliczane za oba zasoby. Aby uzyskać informacje o cenach, zobacz [Container Instances Cennik](https://azure.microsoft.com/pricing/details/container-instances/) i [Cennik usługi Azure Storage](https://azure.microsoft.com/pricing/details/storage/).
 
 Cykl życia tych zasobów jest kontrolowany przez następujące właściwości w szablonie:
 

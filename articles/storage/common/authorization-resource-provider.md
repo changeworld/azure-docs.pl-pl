@@ -9,12 +9,12 @@ ms.date: 12/12/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: d632de0a6274ebb2ede950ca610dfd5e94310d28
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: f5d42a6a0567d3949bc4b0fb1947450a9c957f18
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75613877"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75972351"
 ---
 # <a name="use-the-azure-storage-resource-provider-to-access-management-resources"></a>Korzystanie z dostawcy zasobów usługi Azure Storage w celu uzyskania dostępu do zasobów zarządzania
 
@@ -72,7 +72,7 @@ Przykłady kodu pokazujące sposób autoryzacji i wywoływania operacji zarządz
 
 Model wdrażania przy użyciu usługi Resource Manager i model klasyczny to dwa różne sposoby wdrażania rozwiązań platformy Azure i zarządzania nimi. Firma Microsoft zaleca korzystanie z modelu wdrażania Azure Resource Manager podczas tworzenia nowego konta magazynu. Jeśli to możliwe, firma Microsoft zaleca również ponowne utworzenie istniejących klasycznych kont magazynu z modelem Menedżer zasobów. Chociaż można utworzyć konto magazynu przy użyciu klasycznego modelu wdrażania, model klasyczny jest mniej elastyczny i ostatecznie będzie przestarzały.
 
-Aby uzyskać więcej informacji na temat modeli wdrażania platformy Azure, zobacz [Menedżer zasobów i wdrożenie klasyczne](../../azure-resource-manager/resource-manager-deployment-model.md).
+Aby uzyskać więcej informacji na temat modeli wdrażania platformy Azure, zobacz [Menedżer zasobów i wdrożenie klasyczne](../../azure-resource-manager/management/deployment-models.md).
 
 ## <a name="next-steps"></a>Następne kroki
 

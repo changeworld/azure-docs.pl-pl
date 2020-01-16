@@ -2,21 +2,21 @@
 title: Uruchamianie zadań na koniec do końca przy użyciu szablonów — Azure Batch | Microsoft Docs
 description: Tworzenie pul usługi Batch, zadań i zadań przy użyciu plików szablonów i interfejsu wiersza polecenia platformy Azure.
 services: batch
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 ms.assetid: ''
 ms.service: batch
 ms.topic: article
 ms.workload: big-compute
 ms.date: 12/07/2018
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: seodec18
-ms.openlocfilehash: 4733cf1a83bec472baae42f2ac29636bff5fc324
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 2612986491268651222e51646e75cdecc95dc40c
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70095310"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029733"
 ---
 # <a name="use-azure-batch-cli-templates-and-file-transfer"></a>Użyj Azure Batch szablonów interfejsu wiersza polecenia i transferu plików
 
@@ -24,7 +24,7 @@ Korzystając z rozszerzenia Azure Batch w interfejsie wiersza polecenia platform
 
 Twórz i używaj plików szablonów JSON przy użyciu interfejsu wiersza polecenia platformy Azure, aby tworzyć pule, zadania i zadania usługi Batch. Użyj poleceń rozszerzenia interfejsu wiersza polecenia, aby łatwo przekazywać pliki wejściowe zadań do konta magazynu skojarzonego z kontem wsadowym, a następnie pobierać pliki wyjściowe zadania.
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 Rozszerzenie interfejsu wiersza polecenia platformy Azure umożliwia kompleksowe przetwarzanie wsadowe przez użytkowników, którzy nie są deweloperami. Korzystając tylko z poleceń interfejsu wiersza polecenia, można utworzyć pulę, przekazać dane wejściowe, utworzyć zadania i skojarzone zadania i pobrać wynikowe dane wyjściowe. Żaden dodatkowy kod nie jest wymagany. Bezpośrednie uruchamianie poleceń interfejsu wiersza polecenia lub integrowanie ich ze skryptami.
 
@@ -143,7 +143,7 @@ Jeśli plik szablonu ma nazwę _Pool-narzędzia FFmpeg. JSON_, a następnie Wywo
 az batch pool create --template pool-ffmpeg.json
 ```
 
-Interfejs wiersza polecenia poprosi o podanie wartości `poolId` parametrów i. `nodeCount` Możesz również podać parametry w pliku JSON. Na przykład:
+Interfejs wiersza polecenia poprosi o podanie wartości parametrów `poolId` i `nodeCount`. Możesz również podać parametry w pliku JSON. Przykład:
 
 ```json
 {
@@ -260,7 +260,7 @@ Szablon interfejsu wiersza polecenia w usłudze Batch można przekazać do aplik
 
 Aby przekazać szablon:
 
-1. W Batch Explorer wybierz kolejno pozycje **Galeria** > **lokalne szablony**.
+1. W obszarze Batch Explorer wybierz pozycję **galeria** > **szablonów lokalnych**.
 
 2. Wybierz lub przeciągnij i upuść, lokalną pulę lub szablon zadania.
 

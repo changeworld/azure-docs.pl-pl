@@ -3,7 +3,7 @@ title: Uruchamianie systemu Linux na węzłach obliczeniowych maszyny wirtualnej
 description: Dowiedz się, jak przetwarzać obciążenia równoległe obliczeniowe dla pul maszyn wirtualnych z systemem Linux w Azure Batch.
 services: batch
 documentationcenter: python
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 editor: ''
 ms.assetid: dc6ba151-1718-468a-b455-2da549225ab2
@@ -12,14 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: na
 ms.date: 06/01/2018
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 18df43ebf3a20547917ddd372d922741b4cee849
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 27273fecc9d117079cfda58d537cf7342d3c5dc4
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350110"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76027064"
 ---
 # <a name="provision-linux-compute-nodes-in-batch-pools"></a>Inicjowanie obsługi węzłów obliczeniowych systemu Linux w pulach wsadowym
 
@@ -31,7 +31,7 @@ Za pomocą Azure Batch można uruchamiać obciążenia obliczeń równoległych 
 >
 
 ## <a name="virtual-machine-configuration"></a>Konfiguracja maszyny wirtualnej
-Podczas tworzenia puli węzłów obliczeniowych w usłudze Batch dostępne są dwie opcje, spośród których można wybrać rozmiar węzła i system operacyjny: Konfiguracja Cloud Services i konfiguracja maszyny wirtualnej.
+Podczas tworzenia puli węzłów obliczeniowych w usłudze Batch dostępne są dwie opcje, z których można wybrać rozmiar węzła i system operacyjny: konfigurację Cloud Services i konfigurację maszyny wirtualnej.
 
 **Konfiguracja usług Cloud Services** oferuje *tylko* węzły obliczeniowe systemu Windows. Dostępne rozmiary węzłów obliczeniowych są wymienione w obszarze [rozmiary dla Cloud Services](../cloud-services/cloud-services-sizes-specs.md), a dostępne systemy operacyjne są wymienione w temacie [wersje systemu operacyjnego gościa platformy Azure i macierz zgodności zestawu SDK](../cloud-services/cloud-services-guestos-update-matrix.md). Podczas tworzenia puli, która zawiera węzły Cloud Services platformy Azure, należy określić rozmiar węzła i rodzinę systemów operacyjnych, które opisano w wymienionych wcześniej artykułach. W przypadku pul węzłów obliczeniowych systemu Windows najczęściej używane są Cloud Services.
 
@@ -45,10 +45,10 @@ Konfigurując odwołanie do obrazu maszyny wirtualnej, należy określić właś
 
 | **Właściwości odwołania do obrazu** | **Przykład** |
 | --- | --- |
-| Wydawca |Canonical |
+| Publisher |Canonical |
 | Oferta |UbuntuServer |
-| SKU |14.04.4-LTS |
-| Version |najnowsza |
+| JSZ |14.04.4-LTS |
+| Wersja |najnowsza |
 
 > [!TIP]
 > Możesz dowiedzieć się więcej o tych właściwościach oraz jak wyświetlać obrazy z witryny Marketplace w obszarze [Nawigacja i wybierać obrazy maszyn wirtualnych z systemem Linux na platformie Azure przy użyciu interfejsu wiersza polecenia lub programu PowerShell](../virtual-machines/linux/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Należy pamiętać, że nie wszystkie obrazy z portalu Marketplace są obecnie zgodne z usługą Batch. Aby uzyskać więcej informacji, zobacz [jednostki SKU agenta węzła](#node-agent-sku).
@@ -70,7 +70,7 @@ Agent węzła usługi Batch jest programem uruchamianym w każdym węźle w puli
 ## <a name="create-a-linux-pool-batch-python"></a>Tworzenie puli systemu Linux: Batch Python
 Poniższy fragment kodu przedstawia przykład korzystania z [biblioteki klienta Microsoft Azure Batch dla języka Python][py_batch_package] w celu utworzenia puli węzłów obliczeniowych serwera Ubuntu. Dokumentacja referencyjna dla modułu usługi Batch w języku Python znajduje się w [pakiecie Azure. Batch][py_batch_docs] na stronie odczytywanie dokumentów.
 
-Ten fragment kodu tworzy [elementu imagereference][py_imagereference] jawnie i określa każdą z jej właściwości (Wydawca, oferta, jednostka SKU, wersja). Jednak w kodzie produkcyjnym zalecamy użycie metody [list_node_agent_skus][py_list_skus] w celu ustalenia i wybrania spośród dostępnych kombinacji jednostki SKU agenta węzła w czasie wykonywania.
+Ten fragment kodu tworzy [elementu imagereference][py_imagereference] jawnie i określa każdą z jej właściwości (Wydawca, oferta, jednostka SKU, wersja). Jednak w kodzie produkcyjnym zalecamy użycie metody [list_node_agent_skus][py_list_skus] do określenia i wybrania spośród dostępnych kombinacji jednostki SKU agenta węzła w czasie wykonywania.
 
 ```python
 # Import the required modules from the
@@ -126,7 +126,7 @@ new_pool.virtual_machine_configuration = vmc
 client.pool.add(new_pool)
 ```
 
-Jak wspomniano wcześniej, zaleca się, aby zamiast tworzenia [elementu imagereference][py_imagereference] jawnie użyć metody [list_node_agent_skus][py_list_skus] do dynamicznego wybierania z aktualnie obsługiwanych kombinacji węzłów/z obrazu portalu Marketplace. Poniższy fragment kodu w języku Python pokazuje, jak używać tej metody.
+Jak wspomniano wcześniej, zaleca się, aby zamiast tworzenia [elementu imagereference][py_imagereference] jawnie użyć metody [list_node_agent_skus][py_list_skus] , aby dynamicznie wybierać z aktualnie obsługiwanych kombinacji węzłów/z obrazu portalu Marketplace. Poniższy fragment kodu w języku Python pokazuje, jak używać tej metody.
 
 ```python
 # Get the list of node agents from the Batch service
@@ -215,10 +215,10 @@ W poniższej tabeli wymieniono obrazy maszyn wirtualnych portalu Marketplace, kt
 >
 >
 
-| **Publisher** | **Oferta** | **Jednostka SKU obrazu** | **Wersja** | **Identyfikator jednostki SKU agenta węzła** |
+| **Wydawca** | **Oferta** | **Jednostka SKU obrazu** | **Wersja** | **Identyfikator jednostki SKU agenta węzła** |
 | ------------- | --------- | ------------- | ----------- | --------------------- |
-| partia | rendering-centos73 | Dawania | najnowsza | Batch. Node. CentOS 7 |
-| partia | rendering-windows2016 | Dawania | najnowsza | Batch. Node. Windows amd64 |
+| batch | rendering-centos73 | renderowanie | najnowsza | Batch. Node. CentOS 7 |
+| batch | rendering-windows2016 | renderowanie | najnowsza | Batch. Node. Windows amd64 |
 | Canonical | UbuntuServer | 16.04-LTS | najnowsza | batch.node.ubuntu 16.04 |
 | Canonical | UbuntuServer | 14.04.5-LTS | najnowsza | batch.node.ubuntu 14.04 |
 | credativ | Debian | 9 | najnowsza | Batch. Node. debian 9 |
@@ -320,7 +320,7 @@ tvm-1219235766_4-20160414t192511z | ComputeNodeState.idle | 13.91.7.57 | 50001
 Zamiast hasła można określić klucz publiczny SSH podczas tworzenia użytkownika w węźle. W zestawie SDK języka Python Użyj parametru **ssh_public_key** w [ComputeNodeUser][py_computenodeuser]. W programie .NET Użyj [ComputeNodeUser][net_computenodeuser]. Właściwość [SshPublicKey][net_ssh_key] .
 
 ## <a name="pricing"></a>Cennik
-Azure Batch jest oparta na platformie Azure Cloud Services i technologii Azure Virtual Machines. Sama usługa Batch jest oferowana bez opłat, co oznacza, że opłaty są naliczone tylko za zasoby obliczeniowe zużywane przez rozwiązania usługi Batch. Po wybraniu **konfiguracji Cloud Services**zostanie naliczona opłata oparta na [Cloud Services][cloud_services_pricing] strukturze cenowej. Po wybraniu opcji **Konfiguracja maszyny wirtualnej**opłata jest naliczana na podstawie [Virtual Machinesj][vm_pricing] struktury cenowej. 
+Azure Batch jest oparta na platformie Azure Cloud Services i technologii Azure Virtual Machines. Sama usługa Batch jest oferowana bez opłat, co oznacza, że opłaty są naliczone tylko za zasoby obliczeniowe zużywane przez rozwiązania usługi Batch. Po wybraniu **konfiguracji Cloud Services**zostanie naliczona opłata oparta na [Cloud Services strukturze cenowej][cloud_services_pricing] . Po wybraniu opcji **Konfiguracja maszyny wirtualnej**opłata jest naliczana na podstawie [Virtual Machinesj struktury cenowej][vm_pricing] . 
 
 W przypadku wdrażania aplikacji w węzłach usługi Batch przy użyciu [pakietów aplikacji](batch-application-packages.md)opłaty są naliczone również za zasoby magazynu platformy Azure zużywane przez pakiety aplikacji. Ogólnie rzecz biorąc, koszt usługi Azure Storage jest minimalny. 
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf34abaf072b7b80f5831f15d86b12ad2780a920
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 42fa4dfb3e373eac4167ea1fecbd84ff3a7cca0d
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75424873"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977998"
 ---
 # <a name="conditional-access-block-access-by-location"></a>Dostęp warunkowy: Blokuj dostęp według lokalizacji
 
@@ -30,7 +30,7 @@ Z warunkiem lokalizacji w polu dostęp warunkowy można kontrolować dostęp do 
 1. Nadaj lokalizacji nazwę.
 1. Wybierz pozycję **zakresy adresów IP** , jeśli znasz określone zewnętrznie zakresy adresów IPv4, które składają się na tę lokalizację lub **kraje/regiony**.
    1. Podaj **zakresy adresów IP** lub wybierz **kraje/regiony** dla określonej lokalizacji.
-      * W przypadku wybrania opcji kraje/regiony można opcjonalnie dodać obszary nieznane.
+      * W przypadku wybrania opcji kraje/regiony można opcjonalnie wybrać opcję dołączenia nieznanych obszarów.
 1. Wybierz polecenie **Zapisz**
 
 Więcej informacji o warunku lokalizacji w dostępie warunkowym można znaleźć w artykule [co to jest warunek lokalizacji w Azure Active Directory dostęp warunkowy](location-condition.md)

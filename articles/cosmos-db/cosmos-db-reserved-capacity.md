@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: banders
 ms.reviewer: sngun
-ms.openlocfilehash: 0a956a1372ba1535b9d918333bd7411a4ca6abe4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 83ecb0ad85a02c8c05b9d7e504e578afd98ed7b6
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75441930"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75969349"
 ---
 # <a name="optimize-cost-with-reserved-capacity-in-azure-cosmos-db"></a>Optymalizacja kosztów z zarezerwowaną pojemnością w Azure Cosmos DB
 
@@ -20,9 +20,9 @@ Azure Cosmos DB zarezerwowana pojemność pomaga zaoszczędzić pieniądze poprz
 
 Azure Cosmos DB zarezerwowana pojemność może znacząco obniżyć koszty Cosmos DB&mdash;do 65% w regularnych cenach z rocznym lub trzecim zobowiązaniem z góry. Zarezerwowana pojemność zapewnia rabat na rozliczenia i nie wpływa na stan czasu wykonywania zasobów Azure Cosmos DB.
 
-Azure Cosmos DB zarezerwowana pojemność obejmuje przepływność zainicjowaną dla zasobów. Nie dotyczy opłat za magazyn i sieć. Po zakupieniu rezerwacji opłaty za przepływność, które pasują do atrybutów rezerwacji, nie są już naliczane według stawek płatności zgodnie z rzeczywistym użyciem. Aby uzyskać więcej informacji na temat rezerwacji, zobacz artykuł dotyczący [zastrzeżeń na platformie Azure](../billing/billing-save-compute-costs-reservations.md) .
+Azure Cosmos DB zarezerwowana pojemność obejmuje przepływność zainicjowaną dla zasobów. Nie dotyczy opłat za magazyn i sieć. Po zakupieniu rezerwacji opłaty za przepływność, które pasują do atrybutów rezerwacji, nie są już naliczane według stawek płatności zgodnie z rzeczywistym użyciem. Aby uzyskać więcej informacji na temat rezerwacji, zobacz artykuł dotyczący [zastrzeżeń na platformie Azure](../cost-management-billing/reservations/save-compute-costs-reservations.md) .
 
-Możesz kupić Azure Cosmos DB zarezerwowaną pojemność z [Azure Portal](https://portal.azure.com). Płatność za rezerwację jest wnoszona [z góry lub w ratach miesięcznych](../billing/billing-monthly-payments-reservations.md). Aby kupić pojemność zarezerwowaną:
+Możesz kupić Azure Cosmos DB zarezerwowaną pojemność z [Azure Portal](https://portal.azure.com). Płatność za rezerwację jest wnoszona [z góry lub w ratach miesięcznych](../cost-management-billing/reservations/monthly-payments-reservations.md). Aby kupić pojemność zarezerwowaną:
 
 * Musisz być w roli właściciela dla co najmniej jednej subskrypcji przedsiębiorstwa lub indywidualnej, która ma stawki płatność zgodnie z rzeczywistym użyciem.  
 * W przypadku subskrypcji Enterprise w witrynie [EA Portal](https://ea.azure.com) musi być włączona opcja **Dodaj wystąpienia zarezerwowane**. Jeśli to ustawienie jest wyłączone, musisz być administratorem EA w subskrypcji.
@@ -40,7 +40,7 @@ Rozmiar rezerwacji powinien opierać się na całkowitej ilości przepływności
 
 ## <a name="buy-azure-cosmos-db-reserved-capacity"></a>Kupowanie Azure Cosmos DB zarezerwowanej pojemności
 
-1. Zaloguj się do [Portalu Azure](https://portal.azure.com).  
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).  
 
 2. Wybierz pozycję **wszystkie usługi** > **rezerwacje** > **Dodaj**.  
 
@@ -74,22 +74,22 @@ Po wygaśnięciu rezerwacji Azure Cosmos DB wystąpienia będą nadal działać 
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>Anulowanie, wymiana lub zwrot rezerwacji
 
-Aby uzyskać pomoc dotyczącą identyfikacji odpowiedniej pojemności zarezerwowanej, zobacz [Opis sposobu stosowania rabatu rezerwacji do Azure Cosmos DB](../billing/billing-understand-cosmosdb-reservation-charges.md).
+Aby uzyskać pomoc dotyczącą identyfikacji odpowiedniej pojemności zarezerwowanej, zobacz [Opis sposobu stosowania rabatu rezerwacji do Azure Cosmos DB](../cost-management-billing/reservations/understand-cosmosdb-reservation-charges.md).
 
-Rezerwacje można anulować, wymieniać lub zwracać, jednak obowiązują przy tym pewne ograniczenia. Aby uzyskać więcej informacji, zobacz temat [Self-service exchanges and refunds for Azure Reservations](../billing/billing-azure-reservations-self-service-exchange-and-refund.md) (Samoobsługowe wymiany i zwroty kosztów dla rezerwacji platformy Azure).
+Rezerwacje można anulować, wymieniać lub zwracać, jednak obowiązują przy tym pewne ograniczenia. Aby uzyskać więcej informacji, zobacz temat [Self-service exchanges and refunds for Azure Reservations](../cost-management-billing/reservations/exchange-and-refund-azure-reservations.md) (Samoobsługowe wymiany i zwroty kosztów dla rezerwacji platformy Azure).
 
 ## <a name="next-steps"></a>Następne kroki
 
 Rabat rezerwacji jest automatycznie stosowany do zasobów Azure Cosmos DB, które pasują do zakresu rezerwacji i atrybutów. Zakres rezerwacji można zaktualizować za pomocą Azure Portal, programu PowerShell, interfejsu wiersza polecenia platformy Azure lub interfejsu API.
 
-*  Aby dowiedzieć się, jak zarezerwowane rabaty pojemności są stosowane do Azure Cosmos DB, zobacz [Opis rabatu rezerwacji platformy Azure](../billing/billing-understand-cosmosdb-reservation-charges.md).
+*  Aby dowiedzieć się, jak zarezerwowane rabaty pojemności są stosowane do Azure Cosmos DB, zobacz [Opis rabatu rezerwacji platformy Azure](../cost-management-billing/reservations/understand-cosmosdb-reservation-charges.md).
 
 * Aby dowiedzieć się więcej na temat rezerwacji platformy Azure, zobacz następujące artykuły:
 
-   * [Co to są rezerwacje platformy Azure?](../billing/billing-save-compute-costs-reservations.md)  
-   * [Zarządzanie rezerwacjami platformy Azure](../billing/billing-manage-reserved-vm-instance.md)  
-   * [Understand reservation usage for your Enterprise enrollment (Informacje na temat użycia wystąpień zarezerwowanych w przypadku rejestracji Enterprise)](../billing/billing-understand-reserved-instance-usage-ea.md)  
-   * [Understand reservation usage for your Pay-As-You-Go subscription (Informacje na temat użycia wystąpień zarezerwowanych w przypadku subskrypcji z płatnością zgodnie z rzeczywistym użyciem)](../billing/billing-understand-reserved-instance-usage.md)
+   * [Co to są rezerwacje platformy Azure?](../cost-management-billing/reservations/save-compute-costs-reservations.md)  
+   * [Zarządzanie rezerwacjami platformy Azure](../cost-management-billing/reservations/manage-reserved-vm-instance.md)  
+   * [Understand reservation usage for your Enterprise enrollment (Informacje na temat użycia wystąpień zarezerwowanych w przypadku rejestracji Enterprise)](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md)  
+   * [Understand reservation usage for your Pay-As-You-Go subscription (Informacje na temat użycia wystąpień zarezerwowanych w przypadku subskrypcji z płatnością zgodnie z rzeczywistym użyciem)](../cost-management-billing/reservations/understand-reserved-instance-usage.md)
    * [Rezerwacje platformy Azure w programie partnerskim programu Partner Center](https://docs.microsoft.com/partner-center/azure-reservations)
 
 ## <a name="need-help-contact-us"></a>Potrzebujesz pomocy? Skontaktuj się z nami.

@@ -9,18 +9,18 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 12/31/2019
 ms.author: evansma
-ms.openlocfilehash: f4cd5083d694cb7c463596b7b45c384e0dc8b28d
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: 8c0af3f059d1beb0e1d07d3494b31c674f15438d
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75779743"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980877"
 ---
 # <a name="azure-marketplace-listing-guidelines"></a>Wskazówki dotyczące wyświetlania w portalu Azure Marketplace
 
 Ten dokument zawiera wskazówki dotyczące wymagań oraz listę kontrolną dla recenzentów nowych ofert i usług wymienionych w witrynie Azure Marketplace.
 
-Wszystkie oferty muszą spełniać [wszystkie wymagania](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#all-listing-requirements) wymienione poniżej. Dodatkowe wymagania i listy kontrolne są dostępne dla konkretnych typów list, w tym: oferty z dołączonymi wersjami [próbnymi](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#trial-offer-requirements), [aplikacjami SaaS](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#saas-apps-requirements), [kontenerami](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#container-offer-requirements)i [ofertami konsultacji](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#consulting-offer-requirements).
+Wszystkie oferty muszą spełniać [wszystkie wymagania](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#all-listing-requirements) wymienione poniżej. Dodatkowe wymagania i listy kontrolne są dostępne dla konkretnych typów list, w tym: oferty z dołączonymi wersjami [próbnymi](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#trial-offer-requirements), [aplikacjami SaaS](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#saas-app-requirements), [kontenerami](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#container-offer-requirements)i [ofertami konsultacji](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#consulting-offer-requirements).
 
 
 ## <a name="all-listing-requirements"></a>Wszystkie wymagania dotyczące wyświetlania

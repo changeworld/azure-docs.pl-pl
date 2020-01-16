@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/03/2019
-ms.openlocfilehash: c728f3b9a4c10d52d7361ca76e9b40198a6a0dba
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: bbb2108967353b851a0fa0ee610ec30380e3fc50
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74769102"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75969267"
 ---
 # <a name="prepay-for-azure-data-explorer-markup-units-with-azure-data-explorer-reserved-capacity"></a>Przedpłata za usługę Azure Eksplorator danych Markup Unit przy użyciu zarezerwowanej pojemności platformy Azure Eksplorator danych
 
@@ -27,8 +27,8 @@ Możesz kupić zastrzeżoną pojemność platformy Azure Eksplorator danych w [A
 * W przypadku programu Cloud Solution Provider (CSP) tylko agenci administracyjni lub agenci sprzedaży mogą zakupić zastrzeżoną pojemność platformy Azure Eksplorator danych.
 
 Aby uzyskać szczegółowe informacje na temat sposobu, w jaki Klienci korporacyjni i klienci korzystający z usługi płatność zgodnie z rzeczywistym użyciem są obciążani zakupami rezerwacji, zobacz:
-* [Informacje na temat użycia usługi Azure Reservation na potrzeby rejestracji w przedsiębiorstwie](../billing/billing-understand-reserved-instance-usage-ea.md) 
-* [Informacje na temat użycia usługi Azure Reservation dla subskrypcji z opcją płatność zgodnie z rzeczywistym](../billing/billing-understand-reserved-instance-usage.md)użyciem.
+* [Informacje na temat użycia usługi Azure Reservation na potrzeby rejestracji w przedsiębiorstwie](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md) 
+* [Informacje na temat użycia usługi Azure Reservation dla subskrypcji z opcją płatność zgodnie z rzeczywistym](../cost-management-billing/reservations/understand-reserved-instance-usage.md)użyciem.
 
 ## <a name="determine-the-right-markup-usage-before-purchase"></a>Określ właściwe użycie znaczników przed zakupem
 
@@ -54,7 +54,7 @@ Jeśli zachodzi potrzeba anulowania rezerwacji zarezerwowanej na platformie Azur
 
 Jeśli zachodzi potrzeba zmiany rezerwacji zarezerwowanej na platformę Azure Eksplorator danych na inny termin, można wymienić ją na inną rezerwację o wartości równej lub wyższej. Data rozpoczęcia okresu nowej rezerwacji nie jest przenoszona z wymienionej rezerwacji. Okres 1 lub 3-letniego zaczyna się od momentu utworzenia nowej rezerwacji. Aby zażądać wymiany, przejdź do rezerwacji w Azure Portal i wybierz pozycję **Exchange** , aby utworzyć żądanie obsługi.
 
-Aby uzyskać więcej informacji na temat sposobu wymiany lub zastrzeżeń, zobacz temat [rezerwacje rezerwacji i](../billing/billing-azure-reservations-self-service-exchange-and-refund.md)zwroty.
+Aby uzyskać więcej informacji na temat sposobu wymiany lub zastrzeżeń, zobacz temat [rezerwacje rezerwacji i](../cost-management-billing/reservations/exchange-and-refund-azure-reservations.md)zwroty.
 
 ## <a name="manage-your-reserved-capacity-reservation"></a>Zarządzanie zarezerwowaną rezerwacją pojemności
 
@@ -63,17 +63,17 @@ Rabat zarezerwowany dla jednostek znaczników Eksplorator danych platformy Azure
 
 > [!NOTE]
 > * Zakres rezerwacji zarezerwowanej pojemności Eksplorator danych platformy Azure można zaktualizować za pomocą [Azure Portal](https://portal.azure.com), programu PowerShell, interfejsu wiersza polecenia lub interfejsu API.
-> * Aby dowiedzieć się, jak zarządzać rezerwacją zarezerwowaną dla platformy Azure Eksplorator danych, zobacz [Zarządzanie zastrzeżoną pojemnością platformy azure Eksplorator danych](../billing/billing-understand-kusto-azuredataexplorer-reservation-charges.md).
+> * Aby dowiedzieć się, jak zarządzać rezerwacją zarezerwowaną dla platformy Azure Eksplorator danych, zobacz [Zarządzanie zastrzeżoną pojemnością platformy azure Eksplorator danych](../cost-management-billing/reservations/understand-azure-data-explorer-reservation-charges.md).
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby dowiedzieć się więcej na temat rezerwacji platformy Azure, zobacz następujące artykuły:
+Aby dowiedzieć się więcej na temat usługi Azure Reservations, zobacz następujące artykuły:
 
-* [Czym są rezerwacje platformy Azure?](../billing/billing-save-compute-costs-reservations.md)
-* [Zarządzanie usługą Azure Reservations](../billing/billing-manage-reserved-vm-instance.md)
-* [Informacje na temat rabatu na rezerwacje platformy Azure](../billing/billing-understand-reservation-charges.md)
-* [Understand reservation usage for your Pay-As-You-Go subscription (Informacje na temat użycia wystąpień zarezerwowanych w przypadku subskrypcji z płatnością zgodnie z rzeczywistym użyciem)](../billing/billing-understand-reserved-instance-usage.md)
-* [Understand reservation usage for your Enterprise enrollment (Informacje na temat użycia wystąpień zarezerwowanych w przypadku rejestracji Enterprise)](../billing/billing-understand-reserved-instance-usage-ea.md)
+* [Co to jest Azure Reservations?](../cost-management-billing/reservations/save-compute-costs-reservations.md)
+* [Zarządzanie usługą Azure Reservations](../cost-management-billing/reservations/manage-reserved-vm-instance.md)
+* [Informacje na temat rabatu na rezerwacje platformy Azure](../cost-management-billing/reservations/understand-reservation-charges.md)
+* [Understand reservation usage for your Pay-As-You-Go subscription (Informacje na temat użycia wystąpień zarezerwowanych w przypadku subskrypcji z płatnością zgodnie z rzeczywistym użyciem)](../cost-management-billing/reservations/understand-reserved-instance-usage.md)
+* [Understand reservation usage for your Enterprise enrollment (Informacje na temat użycia wystąpień zarezerwowanych w przypadku rejestracji Enterprise)](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md)
 * [Azure Reservations in Partner Center Cloud Solution Provider (CSP) program](https://docs.microsoft.com/partner-center/azure-reservations) (Rezerwacje platformy Azure w programie Cloud Solution Provider w Centrum partnerskim)
 
 ## <a name="need-help-contact-us"></a>Potrzebujesz pomocy? Skontaktuj się z nami

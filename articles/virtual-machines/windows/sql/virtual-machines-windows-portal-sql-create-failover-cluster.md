@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/11/2018
 ms.author: mikeray
-ms.openlocfilehash: 1a69741ba3ced91b6b0d1fc4bcd4aea887452151
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 20c231e4f3052797eac79a3c97a3d8148690b8c5
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792182"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75965433"
 ---
 # <a name="configure-a-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>Konfigurowanie SQL Server wystąpienia klastra trybu failover na maszynach wirtualnych platformy Azure
 
@@ -78,7 +78,7 @@ Należy pamiętać, że w przypadku klastra trybu failover gościa maszyny wirtu
 Należy również uzyskać ogólne informacje na temat tych technologii:
 
 - [Rozwiązania z funkcją Hyper-zbieżne używające Bezpośrednie miejsca do magazynowania w systemie Windows Server 2016](https://docs.microsoft.com/windows-server/storage/storage-spaces/storage-spaces-direct-overview)
-- [Grupy zasobów platformy Azure](../../../azure-resource-manager/manage-resource-groups-portal.md)
+- [Grupy zasobów platformy Azure](../../../azure-resource-manager/management/manage-resource-groups-portal.md)
 
 > [!IMPORTANT]
 > W tej chwili SQL Server wystąpienia klastra trybu failover w usłudze Azure Virtual Machines są obsługiwane tylko w [trybie uproszczonego zarządzania](virtual-machines-windows-sql-register-with-resource-provider.md#management-modes) [rozszerzenia agenta SQL Server IaaS](virtual-machines-windows-sql-server-agent-extension.md). Aby zmienić tryb pełnego rozszerzenia na lekki, Usuń zasób **maszyny wirtualnej SQL** dla odpowiednich maszyn wirtualnych, a następnie zarejestruj je u dostawcy zasobów maszyny wirtualnej SQL w trybie uproszczonym. Podczas usuwania zasobu **maszyny wirtualnej SQL** przy użyciu Azure Portal **Wyczyść pole wyboru obok odpowiedniej maszyny wirtualnej**. Pełne rozszerzenie obsługuje takie funkcje, jak automatyczne tworzenie kopii zapasowych, stosowanie poprawek i zaawansowane zarządzanie portalem. Te funkcje nie będą działały w przypadku maszyn wirtualnych SQL po ponownym zainstalowaniu agenta w trybie uproszczonego zarządzania.
@@ -176,7 +176,7 @@ Po spełnieniu tych wymagań wstępnych można rozpocząć tworzenie klastra try
 
    | Przeznaczenie | Port TCP | Uwagi
    | ------ | ------ | ------
-   | Oprogramowanie SQL Server | 1433 | Normalny port dla domyślnych wystąpień SQL Server. Jeśli obraz został użyty z galerii, ten port zostanie automatycznie otwarty.
+   | SQL Server | 1433 | Normalny port dla domyślnych wystąpień SQL Server. Jeśli obraz został użyty z galerii, ten port zostanie automatycznie otwarty.
    | Sonda kondycji | 59999 | Dowolny otwarty port TCP. W późniejszym kroku należy skonfigurować [sondę kondycji](#probe) modułu równoważenia obciążenia oraz klaster, aby używać tego portu.  
 
 1. Dodaj magazyn do maszyny wirtualnej. Aby uzyskać szczegółowe informacje, zobacz [Dodawanie magazynu](../disks-types.md).
@@ -318,7 +318,7 @@ Dyski dla Bezpośrednie miejsca do magazynowania muszą być puste. Nie mogą za
 
    Ten zrzut ekranu przedstawia udostępniony wolumin klastra z Bezpośrednie miejsca do magazynowania:
 
-   ![udostępniony wolumin klastra](./media/virtual-machines-windows-portal-sql-create-failover-cluster/15-cluster-shared-volume.png)
+   ![Udostępniony wolumin klastra](./media/virtual-machines-windows-portal-sql-create-failover-cluster/15-cluster-shared-volume.png)
 
 ## <a name="step-3-test-failover-cluster-failover"></a>Krok 3. Testowanie trybu failover klastra trybu failover
 

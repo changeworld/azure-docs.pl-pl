@@ -8,12 +8,12 @@ author: bwren
 ms.author: bwren
 ms.date: 07/29/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 488130fbd2939fa4d98e379126ba3353a417fd72
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5ff9c45ffb636f53951a763f617c25a2e8c09088
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75401760"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977723"
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>Dodawanie Log Analytics zapisanych wyszukiwań i alertów do rozwiązania do zarządzania (wersja zapoznawcza)
 
@@ -23,7 +23,7 @@ ms.locfileid: "75401760"
 > [!NOTE]
 > Jest to wstępna dokumentacja dotycząca tworzenia rozwiązań do zarządzania, które są obecnie dostępne w wersji zapoznawczej. Każdy schemat opisany poniżej może ulec zmianie.
 
-[Rozwiązania do zarządzania](solutions.md) zwykle obejmują [zapisane wyszukiwania](../../azure-monitor/log-query/log-query-overview.md) w log Analytics do analizowania danych zebranych przez rozwiązanie. Mogą także definiować [alerty](../../azure-monitor/platform/alerts-overview.md) w celu powiadomienia użytkownika lub automatycznego podjęcia działania w odpowiedzi na problem krytyczny. W tym artykule opisano sposób definiowania Log Analytics zapisanych wyszukiwań i alertów w [szablonie zarządzania zasobami](../../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md) , aby można je było uwzględnić w [rozwiązaniach do zarządzania](solutions-creating.md).
+[Rozwiązania do zarządzania](solutions.md) zwykle obejmują [zapisane wyszukiwania](../../azure-monitor/log-query/log-query-overview.md) w log Analytics do analizowania danych zebranych przez rozwiązanie. Mogą także definiować [alerty](../../azure-monitor/platform/alerts-overview.md) w celu powiadomienia użytkownika lub automatycznego podjęcia działania w odpowiedzi na problem krytyczny. W tym artykule opisano sposób definiowania Log Analytics zapisanych wyszukiwań i alertów w [szablonie zarządzania zasobami](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md) , aby można je było uwzględnić w [rozwiązaniach do zarządzania](solutions-creating.md).
 
 > [!NOTE]
 > W przykładach w tym artykule są używane parametry i zmienne, które są wymagane lub wspólne dla rozwiązań do zarządzania, a także opisane w artykule [projektowanie i tworzenie rozwiązania do zarządzania na platformie Azure](solutions-creating.md)

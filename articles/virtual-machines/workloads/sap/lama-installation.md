@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/29/2019
 ms.author: sedusch
-ms.openlocfilehash: 6521c139463bb0de1e24783bbbdd6a2d3996be6f
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: ffe68352fed0b9c0df0cdfb971c085d1bb7f18c4
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72430092"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978073"
 ---
 # <a name="sap-lama-connector-for-azure"></a>Łącznik SAP LaMa dla platformy Azure
 
@@ -69,44 +69,74 @@ Przeczytaj także [Portal pomocy SAP dla oprogramowania SAP Lama](https://help.s
 * Jeśli zalogujesz się do hostów zarządzanych, pamiętaj, aby nie blokować odinstalowywania systemów plików  
   Jeśli zalogujesz się do maszyn wirtualnych z systemem Linux i zmienisz katalog roboczy na katalog w punkcie instalacji, na przykład/usr/sap/AH1/ASCS00/exe, nie można odinstalować woluminu, a zmiana położenia lub nieprzygotowywania zakończy się niepowodzeniem.
 
+* Upewnij się, że CLOUD_NETCONFIG_MANAGE na maszynach wirtualnych SUSE SLES Linux. Aby uzyskać więcej informacji, zobacz [SUSE KB 7023633](https://www.suse.com/support/kb/doc/?id=7023633).
+
 ## <a name="set-up-azure-connector-for-sap-lama"></a>Konfigurowanie łącznika platformy Azure dla oprogramowania SAP LaMa
 
-Łącznik platformy Azure jest dostarczany jako system SAP LaMa 3,0 SP05. Zalecamy zawsze zainstalowanie najnowszego pakietu i poprawki dla oprogramowania SAP LaMa 3,0. Łącznik platformy Azure używa nazwy głównej usługi do autoryzacji przed Microsoft Azure. Wykonaj następujące kroki, aby utworzyć jednostkę usługi dla zarządzania SAP krajobrazem (LaMa).
+Łącznik platformy Azure jest dostarczany jako system SAP LaMa 3,0 SP05. Zalecamy zawsze zainstalowanie najnowszego pakietu i poprawki dla oprogramowania SAP LaMa 3,0.
 
-1. Przejdź do strony https://portal.azure.com
+Łącznik platformy Azure używa interfejsu API Azure Resource Manager do zarządzania zasobami platformy Azure. Rozwiązanie SAP LaMa może używać jednostki usługi lub tożsamości zarządzanej do uwierzytelniania względem tego interfejsu API. Jeśli na maszynie wirtualnej platformy Azure jest uruchomione oprogramowanie SAP LaMa, zalecamy użycie tożsamości zarządzanej zgodnie z opisem w rozdziale [Korzystanie z tożsamości zarządzanej w celu uzyskania dostępu do interfejsu API platformy Azure](lama-installation.md#af65832e-6469-4d69-9db5-0ed09eac126d). Jeśli chcesz użyć nazwy głównej usługi, postępuj zgodnie z instrukcjami w rozdziale [Używanie nazwy głównej usługi do uzyskiwania dostępu do interfejsu API platformy Azure](lama-installation.md#913c222a-3754-487f-9c89-983c82da641e).
+
+### <a name="913c222a-3754-487f-9c89-983c82da641e"></a>Uzyskiwanie dostępu do interfejsu API platformy Azure przy użyciu nazwy głównej usługi
+
+Łącznik platformy Azure może użyć jednostki usługi do autoryzacji przed Microsoft Azure. Wykonaj następujące kroki, aby utworzyć jednostkę usługi dla zarządzania SAP krajobrazem (LaMa).
+
+1. Przejdź do usługi https://portal.azure.com
 1. Otwórz blok usługi Azure Active Directory
 1. Kliknij Rejestracje aplikacji
-1. Kliknij pozycję Dodaj
-1. Wprowadź nazwę, wybierz pozycję typ aplikacji "Web App/API", wprowadź adres URL logowania (na przykład http:\//localhost), a następnie kliknij pozycję Utwórz.
-1. Adres URL logowania nie jest używany i może być dowolny prawidłowy adres URL
-1. Wybierz nową aplikację i kliknij pozycję klucze na karcie Ustawienia.
-1. Wprowadź opis nowego klucza, wybierz pozycję "nigdy nie wygasa" i kliknij pozycję Zapisz.
+1. Kliknij pozycję Nowa rejestracja
+1. Wprowadź nazwę i kliknij pozycję Zarejestruj.
+1. Wybierz nową aplikację i kliknij pozycję Certyfikaty & wpisy tajne na karcie Ustawienia.
+1. Utwórz nowy klucz tajny klienta, wprowadź opis nowego klucza, wybierz, kiedy klucz tajny ma być exire, i kliknij przycisk Zapisz.
 1. Zanotuj wartość. Służy jako hasło dla nazwy głównej usługi
 1. Zanotuj identyfikator aplikacji. Jest ona używana jako nazwa główna usługi
 
 Nazwa główna usługi nie ma uprawnień do dostępu do zasobów platformy Azure, domyślnie. Aby uzyskać dostęp do nich, należy nadać uprawnienia nazwy głównej usługi.
 
-1. Przejdź do strony https://portal.azure.com
+1. Przejdź do usługi https://portal.azure.com
 1. Otwórz blok grupy zasobów
 1. Wybierz grupę zasobów, której chcesz użyć
 1. Kliknij przycisk kontroli dostępu (IAM)
 1. Kliknij pozycję Dodaj przypisanie roli
 1. Wybierz współautor roli
 1. Wprowadź nazwę aplikacji, które zostały utworzone powyżej
-1. Klikanie pozycji Zapisz.
+1. Kliknij pozycję Zapisz
 1. Powtórz kroki od 3 do 8 dla wszystkich grup zasobów, które mają być używane w oprogramowaniu SAP LaMa
+
+### <a name="af65832e-6469-4d69-9db5-0ed09eac126d"></a>Korzystanie z tożsamości zarządzanej w celu uzyskania dostępu do interfejsu API platformy Azure
+
+Aby można było korzystać z tożsamości zarządzanej, wystąpienie SAP LaMa musi działać na maszynie wirtualnej platformy Azure, która ma tożsamość przypisaną do systemu lub użytkownika. Aby uzyskać więcej informacji o tożsamościach zarządzanych, przeczytaj artykuł [co to są tożsamości zarządzane dla zasobów platformy Azure?](../../../active-directory/managed-identities-azure-resources/overview.md) i [Skonfiguruj zarządzane tożsamości dla zasobów platformy Azure na maszynie wirtualnej przy użyciu Azure Portal](../../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md).
+
+Zarządzana tożsamość nie ma uprawnień dostępu do zasobów platformy Azure domyślnie. Musisz nadać mu uprawnienia dostępu do nich.
+
+1. Przejdź do usługi https://portal.azure.com
+1. Otwórz blok grupy zasobów
+1. Wybierz grupę zasobów, której chcesz użyć
+1. Kliknij przycisk kontroli dostępu (IAM)
+1. Kliknij pozycję Dodaj > Dodaj przypisanie roli
+1. Wybierz współautor roli
+1. Wybierz opcję "maszyna wirtualna" dla opcji "Przypisz dostęp do"
+1. Wybierz maszynę wirtualną, na której działa wystąpienie oprogramowania SAP LaMa
+1. Kliknij pozycję Zapisz
+1. Powtórz kroki dla wszystkich grup zasobów, które mają być używane w oprogramowaniu SAP LaMa
+
+W konfiguracji łącznika SAP LaMa Azure wybierz opcję "Użyj tożsamości zarządzanej", aby włączyć użycie zarządzanej tożsamości. Jeśli chcesz użyć tożsamości przypisanej do systemu, upewnij się, że pole Nazwa użytkownika pozostaw puste. Jeśli chcesz użyć tożsamości przypisanej do użytkownika, wprowadź identyfikator tożsamości przypisanej do użytkownika w polu Nazwa użytkownika.
+
+### <a name="create-a-new-connector-in-sap-lama"></a>Tworzenie nowego łącznika w programie SAP LaMa
 
 Otwórz witrynę sieci Web SAP LaMa i przejdź do infrastruktury. Przejdź do karty menedżerowie chmury i kliknij przycisk Dodaj. Wybierz Adapter chmury Microsoft Azure i kliknij przycisk Dalej. Wprowadź następujące informacje:
 
 * Etykieta: wybierz nazwę wystąpienia łącznika
-* Nazwa użytkownika: Identyfikator aplikacji głównej usługi
-* Hasło: klucz główny usługi/hasło
+* Nazwa użytkownika: Identyfikator aplikacji głównej usługi lub identyfikator przypisanej do użytkownika tożsamości maszyny wirtualnej. Aby uzyskać więcej informacji, zobacz [używanie tożsamości przypisanej do systemu lub użytkownika
+* Hasło: klucz główny usługi/hasło. To pole można pozostawić puste, jeśli używasz tożsamości przypisanej do systemu lub użytkownika.
 * Adres URL: zachowaj domyślne https://management.azure.com/
 * Interwał monitorowania (w sekundach): powinien wynosić co najmniej 300
+* Użyj tożsamości zarządzanej: rozwiązanie SAP LaMa może używać tożsamości przypisanej do systemu lub użytkownika do uwierzytelniania w interfejsie API platformy Azure. [Aby uzyskać dostęp do interfejsu API platformy Azure](lama-installation.md#af65832e-6469-4d69-9db5-0ed09eac126d) w tym przewodniku, zobacz rozdział korzystanie z tożsamości zarządzanej.
 * Identyfikator subskrypcji: Identyfikator subskrypcji platformy Azure
 * Azure Active Directory identyfikator dzierżawy: Identyfikator dzierżawcy Active Directory
 * Host serwera proxy: Nazwa hosta serwera proxy, jeśli rozwiązanie SAP LaMa wymaga serwera proxy do łączenia się z Internetem
 * Port serwera proxy: port TCP serwera proxy
+* Zmień typ magazynu, aby zaoszczędzić koszty: Włącz to ustawienie, jeśli karta platformy Azure powinna zmienić typ magazynu Managed Disks, aby zmniejszyć koszty, gdy dyski nie są używane. W przypadku dysków z danymi, do których odwołuje się konfiguracja wystąpienia SAP, karta zmieni typ dysku na standardowy magazyn podczas cofania przygotowania wystąpienia i powrót do oryginalnego typu magazynu podczas przygotowywania wystąpienia. Zatrzymanie maszyny wirtualnej w programie SAP LaMa spowoduje zmianę typu magazynu wszystkich dołączonych dysków, w tym dysku systemu operacyjnego do magazynu w warstwie Standardowa. Jeśli uruchomisz maszynę wirtualną w oprogramowaniu SAP LaMa, karta zmieni typ magazynu z powrotem na oryginalny typ magazynu.
 
 Kliknij pozycję Konfiguracja testu, aby sprawdzić poprawność danych wejściowych. Powinna zostać wyświetlona
 
@@ -264,7 +294,7 @@ ANF udostępnia system plików NFS dla systemu Azure. W kontekście SAP LaMa upr
 
 Australia Wschodnia, środkowe stany USA, Wschodnie stany USA, Wschodnie stany USA 2, Europa Północna, Południowo-środkowe stany USA, Europa Zachodnia i zachodnie stany USA 2.
 
-#### <a name="network-requirements"></a>Wymagania dotyczące sieci
+#### <a name="network-requirements"></a>Wymagania sieciowe
 
 ANF wymaga delegowanej podsieci, która musi być częścią tej samej sieci wirtualnej, co serwery SAP. Oto przykład dla takiej konfiguracji.
 Ten ekran pokazuje, jak utworzyć sieć wirtualną i pierwszą podsieć:
@@ -408,7 +438,7 @@ C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h as1-as
 
 Uruchom SWPM i Użyj *AS1-ASCS* dla *nazwy hosta wystąpienia ASCS*.
 
-#### <a name="install-sql-server"></a>Zainstaluj SQL Server
+#### <a name="install-sql-server"></a>Instalacja programu SQL Server
 
 Należy dodać adres IP wirtualnej nazwy hosta bazy danych do interfejsu sieciowego. Zalecanym sposobem jest użycie sapacext. Jeśli adres IP jest instalowany przy użyciu sapacext, należy ponownie zainstalować adres IP po ponownym uruchomieniu.
 

@@ -3,12 +3,12 @@ title: Ustalanie przyczyn niezgodności
 description: Jeśli zasób nie jest zgodny, istnieje wiele możliwych przyczyn. Dowiedz się, co spowodowało niezgodność.
 ms.date: 04/26/2019
 ms.topic: how-to
-ms.openlocfilehash: 213797a1eafda10d5e97fbc60fc143de975fe221
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: c931831ddf3cc727b9861e75969eac3bf00c9e45
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873135"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75972824"
 ---
 # <a name="determine-causes-of-non-compliance"></a>Ustalanie przyczyn niezgodności
 
@@ -31,7 +31,7 @@ Jeśli zasób nie jest zgodny, szczegóły zgodności dla tego zasobu są dostę
 
 Aby wyświetlić szczegóły zgodności, wykonaj następujące kroki:
 
-1. Uruchom usługę Azure Policy w witrynie Azure Portal, klikając pozycję **Wszystkie usługi**, a następnie wyszukując i wybierając opcję **Zasady**.
+1. Uruchom usługę Azure Policy w witrynie Azure Portal, klikając opcję **Wszystkie usługi** i następnie wyszukując i wybierając opcję **Zasada**.
 
 1. Na stronie **Przegląd** lub **zgodność** wybierz zasady w **stanie zgodności** , które _nie są zgodne_.
 
@@ -111,7 +111,7 @@ W przypadku zasad _auditIfNotExistsymi_ w kategorii _Konfiguracja gościa_ może
 
 Użytkownik może również nie mieć dostępu do bezpośredniego logowania się do maszyny wirtualnej, ale należy zgłosić, dlaczego maszyna wirtualna nie jest _zgodna_.
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Portal Azure
 
 Zacznij od wykonania tych samych kroków w powyższej sekcji, aby wyświetlić szczegóły zgodności zasad.
 
@@ -190,9 +190,9 @@ Audit that an application is installed inside Windows VMs                 NonCom
 
 ## <a name="a-namechange-historychange-history-preview"></a><a name="change-history"/>historię zmian (wersja zapoznawcza)
 
-W ramach nowej **publicznej wersji zapoznawczej**historia zmian jest dostępna dla wszystkich zasobów platformy Azure, które obsługują [usuwanie w trybie pełnym](../../../azure-resource-manager/complete-mode-deletion.md). Historia zmian zawiera szczegółowe informacje o tym, kiedy wykryto zmianę i _różnicą wizualną_ dla każdej zmiany. Wykrywanie zmian jest wyzwalane po dodaniu, usunięciu lub zmianie Menedżer zasobów właściwości.
+W ramach nowej **publicznej wersji zapoznawczej**historia zmian jest dostępna dla wszystkich zasobów platformy Azure, które obsługują [usuwanie w trybie pełnym](../../../azure-resource-manager/templates/complete-mode-deletion.md). Historia zmian zawiera szczegółowe informacje o tym, kiedy wykryto zmianę i _różnicą wizualną_ dla każdej zmiany. Wykrywanie zmian jest wyzwalane po dodaniu, usunięciu lub zmianie Menedżer zasobów właściwości.
 
-1. Uruchom usługę Azure Policy w witrynie Azure Portal, klikając pozycję **Wszystkie usługi**, a następnie wyszukując i wybierając opcję **Zasady**.
+1. Uruchom usługę Azure Policy w witrynie Azure Portal, klikając opcję **Wszystkie usługi** i następnie wyszukując i wybierając opcję **Zasada**.
 
 1. Na stronie **Przegląd** lub **zgodność** wybierz zasady w dowolnym **stanie zgodności**.
 

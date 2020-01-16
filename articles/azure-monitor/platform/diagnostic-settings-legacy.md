@@ -7,12 +7,12 @@ ms.subservice: logs
 ms.topic: conceptual
 ms.author: bwren
 ms.date: 12/20/2019
-ms.openlocfilehash: e3a8048d8bcb8bb737c511a8b8bb6b57f9e81403
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 55efdfe2bb1b37e566654b8041f2cf5ed411cc3f
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750974"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977564"
 ---
 # <a name="collect-azure-activity-log-with-legacy-settings"></a>Zbierz dziennik aktywności platformy Azure ze starszymi ustawieniami
 [Dziennik aktywności platformy Azure](platform-logs-overview.md) to [Dziennik platformy](platform-logs-overview.md) , który zapewnia wgląd w zdarzenia na poziomie subskrypcji, które wystąpiły na platformie Azure. Do ostatniego utworzenia profilu dziennika w celu wysłania wpisów dziennika aktywności do [centrum zdarzeń lub konta magazynu](activity-log-export.md) i użycia łącznika w celu zebrania ich w [obszarze roboczym log Analytics](activity-log-collect.md). W tym artykule opisano różnice między metodami, sposób pracy z istniejącymi starszymi ustawieniami oraz sposób czyszczenia starszych ustawień w obszarze przygotowanie do ustawień diagnostycznych.
@@ -28,7 +28,7 @@ Korzystanie z ustawień diagnostycznych ma następujące zalety niż bieżące m
 - Filtruj kolekcję, aby zbierać dzienniki tylko dla określonych kategorii.
 - Zbierz wszystkie kategorie dziennika aktywności. Niektóre kategorie nie są zbierane przy użyciu starszej metody.
 - Szybsze opóźnienie w przypadku pozyskiwania dziennika. Poprzednia metoda ma około 15 minut opóźnienia, podczas gdy ustawienia diagnostyczne są dodawane tylko o 1 minutę.
-  
+
 ### <a name="considerations"></a>Zagadnienia do rozważenia
 Przed włączeniem tej funkcji należy wziąć pod uwagę następujące szczegóły dotyczące zbierania dzienników aktywności przy użyciu ustawień diagnostycznych.
 
@@ -44,7 +44,7 @@ Następujące właściwości zostały usunięte:
 - Element ActivityStatus
 - ActivitySubstatus
 - OperationName
-- ResourceProvider 
+- ResourceProvider
 
 Dodano następujące właściwości:
 
@@ -57,10 +57,10 @@ Starsze ustawienia zbierania dziennika aktywności będą nadal działały, jeś
 
 1. Z menu **Azure monitor** w Azure Portal wybierz pozycję **Dziennik aktywności**.
 3. Kliknij pozycję **Ustawienia diagnostyczne**.
-   
+
    ![Ustawienia diagnostyczne](media/diagnostic-settings-subscription/diagnostic-settings.png)
-   
-4. Kliknij transparent purpurowy dla starszego środowiska. 
+
+4. Kliknij transparent purpurowy dla starszego środowiska.
 
     ![Starsze środowisko](media/diagnostic-settings-subscription/legacy-experience.png)
 
@@ -84,7 +84,7 @@ Istniejące kolekcje działań należy wyłączyć przed włączeniem ich przy u
 ### <a name="disable-log-profile"></a>Wyłącz profil dziennika
 
 1. Aby otworzyć starsze ustawienia, należy użyć procedury opisanej w artykule [współpraca ze starszymi ustawieniami](#work-with-legacy-settings) .
-2. Wyłącz wszystkie bieżące kolekcje w obszarze magazynów lub centrów zdarzeń. 
+2. Wyłącz wszystkie bieżące kolekcje w obszarze magazynów lub centrów zdarzeń.
 
 
 
@@ -93,5 +93,5 @@ Rozwiązanie do monitorowania Log Analytics platformy Azure obejmuje wiele zapyt
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Dowiedz się więcej o dzienniku aktywności](../../azure-resource-manager/resource-group-audit.md)
+* [Dowiedz się więcej o dzienniku aktywności](../../azure-resource-manager/management/view-activity-logs.md)
 * [Dowiedz się więcej na temat ustawień diagnostycznych](diagnostic-settings.md)

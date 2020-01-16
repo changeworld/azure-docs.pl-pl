@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: monicar
-ms.openlocfilehash: f5e0344cb1da86661ae87b5e45bd93dd181e7bb0
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 7c80ba6b15cec08da9bcefea243493a824ef66bd
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75659563"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978754"
 ---
 # <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>Słownik Microsoft Azure: Słownik terminologii w chmurze na platformie Azure
 
@@ -31,7 +31,7 @@ Słownik Microsoft Azure jest krótkim słownikiem terminologii w chmurze dla pl
 
 ## <a name="account"></a>account
 Konto używane do uzyskiwania dostępu do subskrypcji platformy Azure i zarządzania nią. Często jest ono określane jako konto platformy Azure, chociaż może to być dowolne z nich: istniejąca, szkolna lub osobista konto Microsoft lub nazwa użytkownika i hasło pakietu Office 365. Możesz również utworzyć konto, aby zarządzać subskrypcją platformy Azure po zarejestrowaniu się w celu [korzystania z bezpłatnej wersji próbnej](https://azure.microsoft.com).  
-Zobacz [Rejestrowanie się w celu uzyskania subskrypcji platformy Azure przy użyciu konta i kont pakietu Office 365](billing/billing-use-existing-office-365-account-azure-subscription.md) , za [pomocą których można się zalogować](active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
+Zobacz [Rejestrowanie się w celu uzyskania subskrypcji platformy Azure przy użyciu konta i kont pakietu Office 365](cost-management-billing/manage/office-365-account-for-azure-subscription.md) , za [pomocą których można się zalogować](active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
 
 ## <a name="api-app"></a>Aplikacja interfejsu API
 Inna nazwa [aplikacji App Service](#app-service-app).
@@ -96,11 +96,11 @@ Zobacz [regiony platformy Azure](best-practices-availability-paired-regions.md)
 
 ## <a name="resource"></a>resource
 Element, który jest częścią rozwiązania platformy Azure. Każda usługa platformy Azure umożliwia wdrażanie różnych typów zasobów, takich jak bazy danych lub maszyny wirtualne.   
-Zobacz [przegląd Azure Resource Manager](azure-resource-manager/resource-group-overview.md)
+Zobacz [przegląd Azure Resource Manager](azure-resource-manager/management/overview.md)
 
 ## <a name="resource-group"></a>grupa zasobów
 Kontener w Menedżer zasobów, który zawiera powiązane zasoby dla aplikacji. Grupa zasobów może obejmować wszystkie zasoby aplikacji lub tylko te zasoby, które są logicznie zgrupowane razem. Zasoby mogą być przydzielane do grup na podstawie priorytetów organizacji.  
-Zobacz [przegląd Azure Resource Manager](azure-resource-manager/resource-group-overview.md)
+Zobacz [przegląd Azure Resource Manager](azure-resource-manager/management/overview.md)
 
 ## <a name="arm-template"></a>Szablon usługi Resource Manager
 Plik JSON, który deklaratywnie definiuje co najmniej jeden zasób platformy Azure i definiuje zależności między wdrożonymi zasobami. Szablon może służyć do spójnego i wielokrotnego wdrażania zasobów.  
@@ -108,7 +108,7 @@ Zobacz [Tworzenie szablonów Azure Resource Manager](resource-group-authoring-te
 
 ## <a name="resource-provider"></a>dostawca zasobów
 Usługa dostarczająca zasoby, które można wdrażać i zarządzać nimi za pomocą Menedżer zasobów. Każdy dostawca zasobów udostępnia operacje do pracy z wdrażanymi zasobami. Dostęp do dostawców zasobów można uzyskać za pomocą Azure Portal, Azure PowerShell i kilku zestawów SDK programistycznych.  
-Zobacz [przegląd Azure Resource Manager](azure-resource-manager/resource-group-overview.md)
+Zobacz [przegląd Azure Resource Manager](azure-resource-manager/management/overview.md)
 
 ## <a name="role"></a>role (rola)
 Metodę kontroli dostępu, który można przypisać do użytkowników, grup i usług. Role mogą wykonywać takie działania, jak tworzenie, zarządzanie i odczytywanie zasobów platformy Azure.  

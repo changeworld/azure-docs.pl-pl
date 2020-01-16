@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: kumud
-ms.openlocfilehash: 95ed6df3192043f33cf8d911387fc2a318153ac7
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: df2eb0886b71a2d5daaa95f33ef29a2afc7e112a
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75751160"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980713"
 ---
 # <a name="create-change-or-delete-a-network-interface"></a>Tworzenie, zmienianie lub usuwanie interfejsu sieciowego
 
@@ -90,7 +90,7 @@ Można wyświetlać i zmieniać większość ustawień interfejsu sieciowego po 
    - **Właściwości:** Wyświetla ustawienia klucza dotyczące interfejsu sieciowego, w tym jego adres MAC (puste, jeśli interfejs sieciowy nie jest dołączony do maszyny wirtualnej) i subskrypcję, w której istnieje.
    - **Obowiązujące reguły zabezpieczeń:**  Reguły zabezpieczeń są wyświetlane, jeśli interfejs sieciowy jest dołączony do uruchomionej maszyny wirtualnej, a sieciowej grupy zabezpieczeń jest skojarzony z interfejsem sieciowym, podsiecią, do której jest przypisana, lub obie. Aby dowiedzieć się więcej na temat informacji, zobacz temat [Wyświetlanie obowiązujących reguł zabezpieczeń](#view-effective-security-rules). Aby dowiedzieć się więcej na temat sieciowych grup zabezpieczeń, zobacz [Network Security Groups](security-overview.md).
    - **Efektywne trasy:** Trasy są wyświetlane, jeśli interfejs sieciowy jest podłączony do uruchomionej maszyny wirtualnej. Trasy są kombinacją domyślnych tras platformy Azure, wszelkich tras zdefiniowanych przez użytkownika i wszelkich tras BGP, które mogą istnieć dla podsieci, do której jest przypisany interfejs sieciowy. Aby dowiedzieć się więcej na temat tego, co jest wyświetlane, zobacz [Wyświetlanie efektywnych tras](#view-effective-routes). Aby dowiedzieć się więcej na temat domyślnych tras platformy Azure i tras zdefiniowanych przez użytkownika, zobacz [Omówienie routingu](virtual-networks-udr-overview.md).
-   - **Typowe ustawienia Azure Resource Manager:**  Aby dowiedzieć się więcej o typowych ustawieniach Azure Resource Manager, zobacz [Dziennik aktywności](../azure-monitor/platform/platform-logs-overview.md), [Kontrola dostępu (IAM)](../role-based-access-control/overview.md), [Tagi](../azure-resource-manager/resource-group-using-tags.md?toc=%2fazure%2fvirtual-network%2ftoc.json), [blokady](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)i [skrypt automatyzacji](../azure-resource-manager/templates/export-template-portal.md).
+   - **Typowe ustawienia Azure Resource Manager:**  Aby dowiedzieć się więcej o typowych ustawieniach Azure Resource Manager, zobacz [Dziennik aktywności](../azure-monitor/platform/platform-logs-overview.md), [Kontrola dostępu (IAM)](../role-based-access-control/overview.md), [Tagi](../azure-resource-manager/management/tag-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json), [blokady](../azure-resource-manager/management/lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)i [skrypt automatyzacji](../azure-resource-manager/templates/export-template-portal.md).
 
 <a name="view-settings-commands"></a>**Polecenia**
 

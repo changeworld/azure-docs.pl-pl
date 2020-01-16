@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2019
 ms.author: spelluru
-ms.openlocfilehash: 4e95cc6a724c17402ed1ed0cda83377492787a3a
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: afd6ded6dc027e118694078f8b8eeadfe8dd80e4
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75644923"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981477"
 ---
 # <a name="azure-devtest-labs-faq"></a>Azure DevTest Labs — często zadawane pytania
 Uzyskaj odpowiedzi na niektóre często zadawane pytania dotyczące Azure DevTest Labs.
@@ -46,13 +46,13 @@ Nasz uchwyt usługi Twitter: [@azlabservices](https://twitter.com/azlabservices)
 ### <a name="what-if-my-question-isnt-answered-here"></a>Co zrobić, jeśli w tym miejscu nie udzielono odpowiedzi na moje pytanie?
 Jeśli pytania nie ma na liście, daj nam znać, aby pomóc Ci znaleźć odpowiedź.
 
-- Opublikuj pytanie na końcu tego często zadawanych pytań. 
+- Opublikuj pytanie na końcu tego często zadawanych pytań.
 - Aby dotrzeć do szerszego grona użytkowników, Opublikuj pytanie na [forum Azure DEVTEST Labs MSDN](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureDevTestLabs). Zaangażuj się z zespołem Azure DevTest Labs i innymi członkami społeczności.
 - W przypadku żądań funkcji Prześlij swoje żądania i pomysły dotyczące [Azure DevTest Labs głosu użytkownika](https://feedback.azure.com/forums/320373-azure-devtest-labs).
 
 ### <a name="what-is-a-microsoft-account"></a>Co to jest konto Microsoft?
 Konto Microsoft to konto, którego używasz do niemal wszystkiego, czego potrzebujesz od urządzeń i usług firmy Microsoft. Jest to adres e-mail i hasło używane do logowania się do aplikacji Skype, Outlook.com, OneDrive, Windows Phone, Azure i Xbox Live. Pojedyncze konto oznacza, że pliki, zdjęcia, kontakty i ustawienia mogą się pojawić na dowolnym urządzeniu.
- 
+
 > [!NOTE]
 > Konto Microsoft używany do nazywania identyfikatora Windows Live ID.
 
@@ -145,18 +145,18 @@ W rezultacie tego samego typu ograniczenia należy zastosować w całej organiza
 ## <a name="lab-configuration"></a>Konfiguracja laboratorium
 
 ### <a name="how-do-i-create-a-lab-from-a-resource-manager-template"></a>Jak mogę utworzyć laboratorium na podstawie szablonu Menedżer zasobów?
-Oferujemy [repozytorium GitHub Azure Resource Manager szablonów](https://azure.microsoft.com/resources/templates/101-dtl-create-lab) , które można wdrożyć jako-lub zmodyfikować, aby utworzyć szablony niestandardowe dla laboratoriów. Każdy szablon zawiera link umożliwiający wdrożenie laboratorium w ramach własnej subskrypcji platformy Azure. Można też dostosować szablon i [wdrożyć go przy użyciu programu PowerShell lub interfejsu wiersza polecenia platformy Azure](../azure-resource-manager/resource-group-template-deploy.md).
+Oferujemy [repozytorium GitHub Azure Resource Manager szablonów](https://azure.microsoft.com/resources/templates/101-dtl-create-lab) , które można wdrożyć jako-lub zmodyfikować, aby utworzyć szablony niestandardowe dla laboratoriów. Każdy szablon zawiera link umożliwiający wdrożenie laboratorium w ramach własnej subskrypcji platformy Azure. Można też dostosować szablon i [wdrożyć go przy użyciu programu PowerShell lub interfejsu wiersza polecenia platformy Azure](../azure-resource-manager/templates/deploy-powershell.md).
 
 
-### <a name="can-i-have-all-virtual-machines-to-be-created-in-a-common-resource-group-instead-having-each-machine-in-its-own-resource-group"></a>Czy można utworzyć wszystkie maszyny wirtualne w ramach wspólnej grupy zasobów, a nie każdy komputer w jego własnej grupie zasobów? 
-Tak, jako właściciel laboratorium, możesz zezwolić na alokację grupy zasobów dla laboratorium lub mieć wszystkie maszyny wirtualne utworzone w ramach określonej grupy zasobów. 
+### <a name="can-i-have-all-virtual-machines-to-be-created-in-a-common-resource-group-instead-having-each-machine-in-its-own-resource-group"></a>Czy można utworzyć wszystkie maszyny wirtualne w ramach wspólnej grupy zasobów, a nie każdy komputer w jego własnej grupie zasobów?
+Tak, jako właściciel laboratorium, możesz zezwolić na alokację grupy zasobów dla laboratorium lub mieć wszystkie maszyny wirtualne utworzone w ramach określonej grupy zasobów.
 
 Scenariusz oddzielnej grupy zasobów:
 -   DevTest Labs tworzy nową grupę zasobów dla wszystkich publicznych/prywatnych maszyn wirtualnych IP, które można utworzyć
 -   DevTest Labs tworzy grupę zasobów dla udostępnionych komputerów IP, które należą do tego samego rozmiaru.
 
 Scenariusz typowej grupy zasobów:
--   Wszystkie maszyny wirtualne są w tej samej grupie zasobów, którą określisz. Dowiedz się więcej o [alokacji grupy zasobów dla laboratorium](https://aka.ms/RGControl). 
+-   Wszystkie maszyny wirtualne są w tej samej grupie zasobów, którą określisz. Dowiedz się więcej o [alokacji grupy zasobów dla laboratorium](https://aka.ms/RGControl).
 
 ### <a name="how-do-i-maintain-a-naming-convention-across-my-devtest-labs-environment"></a>Jak mogę zachować konwencję nazewnictwa w środowisku DevTest Labs?
 Możesz chcieć przyciągnąć bieżące konwencje nazewnictwa przedsiębiorstwa do operacji platformy Azure i zapewnić ich spójność w środowisku DevTest Labs. Zalecamy, aby podczas wdrażania DevTest Labs były określone zasady uruchamiania. Te zasady są wdrażane za pomocą centralnego skryptu i szablonów JSON w celu wymuszenia spójności. Zasady nazewnictwa można zaimplementować za pomocą zasad platformy Azure, które są stosowane na poziomie subskrypcji. Aby uzyskać przykłady JSON dla Azure Policy, zobacz [Azure Policy Samples](../governance/policy/samples/index.md).
@@ -196,7 +196,7 @@ Podczas tworzenia maszyny wirtualnej w DevTest Labs masz uprawnienia dostępu do
 Dostępne są dwie opcje umożliwiające jednoczesne utworzenie wielu maszyn wirtualnych na podstawie tego samego szablonu:
 
 - Możesz użyć [rozszerzenia zadań DevOps platformy Azure](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks).
-- [Szablon Menedżer zasobów można wygenerować](devtest-lab-add-vm.md#save-azure-resource-manager-template) podczas tworzenia maszyny wirtualnej i [wdrożyć szablon Menedżer zasobów z programu Windows PowerShell](../azure-resource-manager/resource-group-template-deploy.md).
+- [Szablon Menedżer zasobów można wygenerować](devtest-lab-add-vm.md#save-azure-resource-manager-template) podczas tworzenia maszyny wirtualnej i [wdrożyć szablon Menedżer zasobów z programu Windows PowerShell](../azure-resource-manager/templates/deploy-powershell.md).
 - Można również określić więcej niż jedno wystąpienie maszyny do utworzenia podczas tworzenia maszyny wirtualnej. Aby dowiedzieć się więcej o tworzeniu wielu wystąpień maszyn wirtualnych, zobacz dokument dotyczący [tworzenia maszyny wirtualnej laboratorium](devtest-lab-add-vm.md).
 
 ### <a name="how-do-i-move-my-existing-azure-vms-into-my-devtest-labs-lab"></a>Jak mogę przenieść moje istniejące maszyny wirtualne platformy Azure do mojego laboratorium DevTest Labs?
@@ -252,7 +252,7 @@ foreach($labVM in $labVMs)
 }
 ```
 
-## <a name="environments"></a>Środowiska 
+## <a name="environments"></a>Środowiska
 
 ### <a name="how-can-i-use-resource-manager-templates-in-my-devtest-labs-environment"></a>Jak mogę używać szablonów Menedżer zasobów w środowisku DevTest Labs?
 Szablony Menedżer zasobów można wdrożyć w środowisku DevTest Labs, wykonując kroki opisane w [funkcji środowiska w artykule DevTest Labs](devtest-lab-test-env.md) . Zasadniczo możesz sprawdzić szablony Menedżer zasobów w repozytorium git (Azure Repos lub GitHub) i dodać [prywatne repozytorium dla szablonów](devtest-lab-test-env.md) do laboratorium. Ten scenariusz może nie być użyteczny, jeśli używasz laboratoriów DevTest Labs do hostowania maszyn deweloperskich, ale mogą być przydatne, jeśli tworzysz środowisko przejściowe, które jest reprezentatywne dla produkcji.
@@ -264,7 +264,7 @@ Warto również zauważyć, że liczba maszyn wirtualnych na laboratorium lub dl
 ### <a name="how-can-i-set-up-an-easily-repeatable-process-to-bring-my-custom-organizational-images-into-a-devtest-labs-environment"></a>Jak mogę skonfigurować łatwy do powtórzenia proces, aby przenieść niestandardowe obrazy organizacyjne do środowiska DevTest Labs?
 Obejrzyj ten [film wideo w wzorcu fabryki obrazu](https://sec.ch9.ms/ch9/8e8a/9ea0b8d4-b803-4f23-bca4-4808d9368e8a/dtlimagefactory_mid.mp4). Ten scenariusz jest zaawansowanym scenariuszem, a udostępniane skrypty są tylko przykładowymi skryptami. Jeśli wymagane są jakiekolwiek zmiany, należy zarządzać i obsługiwać skrypty używane w danym środowisku.
 
-Aby uzyskać szczegółowe informacje na temat tworzenia fabryki obrazu, zobacz [Tworzenie niestandardowej fabryki obrazów w Azure DevTest Labs](image-factory-create.md). 
+Aby uzyskać szczegółowe informacje na temat tworzenia fabryki obrazu, zobacz [Tworzenie niestandardowej fabryki obrazów w Azure DevTest Labs](image-factory-create.md).
 
 ### <a name="what-is-the-difference-between-a-custom-image-and-a-formula"></a>Jaka jest różnica między obrazem niestandardowym a formułą?
 Obraz niestandardowy jest obrazem zarządzanym. Formuła jest obrazem, który można skonfigurować przy użyciu dodatkowych ustawień, a następnie zapisać i odtworzyć. Obraz niestandardowy może być preferowany, jeśli chcesz szybko utworzyć kilka środowisk przy użyciu tego samego podstawowego, niezmiennego obrazu. Formuła może być lepszym rozwiązaniem, jeśli chcesz odtworzyć konfigurację maszyny wirtualnej z najnowszymi bitami w ramach sieci wirtualnej lub podsieci lub jako maszynę wirtualną o określonym rozmiarze. Dokładniejsze wyjaśnienie można znaleźć w temacie [porównanie niestandardowych obrazów i formuł w DevTest Labs](devtest-lab-comparing-vm-base-image-types.md).
@@ -343,19 +343,19 @@ Poniższe wpisy w blogu oferują wskazówki i informacje dotyczące korzystania 
 - [Wdróż nową maszynę wirtualną w istniejącym środowisku DevTest Labs Lab z Azure DevOps Services](https://www.visualstudiogeeks.com/blog/DevOps/Deploy-New-VM-To-Existing-AzureDevTestLab-From-VSTS)
 - [Korzystanie z usługi Azure DevOps Services Release Management na potrzeby ciągłego wdrażania w usłudze DevTest Labs](https://www.visualstudiogeeks.com/blog/DevOps/Use-VSTS-ReleaseManagement-to-Deploy-and-Test-in-AzureDevTestLabs)
 
-W przypadku innych/Continuous dostarczanych (ciągłej integracji) łańcuchy narzędzi można osiągnąć te same scenariusze, wdrażając [szablony Azure Resource Manager](https://azure.microsoft.com/resources/templates/) przy użyciu [poleceń cmdlet Azure PowerShell](../azure-resource-manager/resource-group-template-deploy.md) i [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.DevTestLabs/). Możesz również używać [interfejsów API REST do DevTest Labs](https://aka.ms/dtlrestapis) , aby zintegrować je z łańcucha narzędzi.
+W przypadku innych/Continuous dostarczanych (ciągłej integracji) łańcuchy narzędzi można osiągnąć te same scenariusze, wdrażając [szablony Azure Resource Manager](https://azure.microsoft.com/resources/templates/) przy użyciu [poleceń cmdlet Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md) i [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.DevTestLabs/). Możesz również używać [interfejsów API REST do DevTest Labs](https://aka.ms/dtlrestapis) , aby zintegrować je z łańcucha narzędzi.
 
 ## <a name="networking"></a>Networking
 
 ### <a name="when-should-i-create-a-new-virtual-network-for-my-devtest-labs-environment-vs-using-an-existing-virtual-network"></a>Kiedy należy utworzyć nową sieć wirtualną dla środowiska DevTest Labs a przy użyciu istniejącej sieci wirtualnej?
-Jeśli maszyny wirtualne muszą współdziałać z istniejącą infrastrukturą, rozważ użycie istniejącej sieci wirtualnej w środowisku usługi DevTest Labs. Jeśli używasz ExpressRoute, możesz zminimalizować ilość sieci wirtualnych/podsieci, aby nie dzielić przestrzeni adresowej IP, która jest przypisana do użycia w subskrypcjach. 
+Jeśli maszyny wirtualne muszą współdziałać z istniejącą infrastrukturą, rozważ użycie istniejącej sieci wirtualnej w środowisku usługi DevTest Labs. Jeśli używasz ExpressRoute, możesz zminimalizować ilość sieci wirtualnych/podsieci, aby nie dzielić przestrzeni adresowej IP, która jest przypisana do użycia w subskrypcjach.
 
-Rozważ użycie wzorca komunikacji równorzędnej sieci wirtualnej tutaj ([model](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)gwiazdy). Takie podejście umożliwia komunikację sieci wirtualnej/podsieci między subskrypcjami. W przeciwnym razie każde środowisko DevTest Labs może mieć własną sieć wirtualną. 
+Rozważ użycie wzorca komunikacji równorzędnej sieci wirtualnej tutaj ([model](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)gwiazdy). Takie podejście umożliwia komunikację sieci wirtualnej/podsieci między subskrypcjami. W przeciwnym razie każde środowisko DevTest Labs może mieć własną sieć wirtualną.
 
 Istnieją [limity](../azure-resource-manager/management/azure-subscription-service-limits.md) liczby sieci wirtualnych na subskrypcję. Wartość domyślna to 50, chociaż ten limit można podwyższyć do 100.
 
 ### <a name="when-should-i-use-a-shared-ip-vs-public-ip-vs-private-ip"></a>Kiedy należy używać udostępnionego adresu IP a publicznego adresu IP a prywatny adres IP?
- 
+
 W przypadku korzystania z sieci VPN typu lokacja-lokacja lub usługi Express Route należy rozważyć użycie prywatnych adresów IP, aby umożliwić dostęp do tych maszyn za pośrednictwem sieci wewnętrznej i uzyskać dostęp za pośrednictwem publicznego Internetu.
 
 > [!NOTE]
@@ -383,15 +383,15 @@ Jedną z możliwości jest to, że nazwa sieci wirtualnej zawiera kropki. Jeśli
 ### <a name="why-do-i-get-a-parent-resource-not-found-error-when-i-provision-a-vm-from-powershell"></a>Dlaczego otrzymuję błąd "nie znaleziono zasobu nadrzędnego", gdy zastrzegasz maszynę wirtualną za pomocą programu PowerShell?
 Jeśli jeden zasób jest elementem nadrzędnym dla innego zasobu, musi istnieć zasób nadrzędny przed utworzeniem zasobu podrzędnego. Jeśli zasób nadrzędny nie istnieje, zobaczysz komunikat **ParentResourceNotFound** . Jeśli nie określisz zależności w zasobie nadrzędnym, zasób podrzędny można wdrożyć przed elementem nadrzędnym.
 
-Maszyny wirtualne są zasobami podrzędnymi w ramach laboratorium w grupie zasobów. W przypadku używania szablonów Menedżer zasobów do wdrażania maszyn wirtualnych przy użyciu programu PowerShell nazwa grupy zasobów podana w skrypcie programu PowerShell powinna być nazwą grupy zasobów laboratorium. Aby uzyskać więcej informacji, zobacz [Rozwiązywanie typowych błędów wdrażania platformy Azure](../azure-resource-manager/resource-manager-common-deployment-errors.md).
+Maszyny wirtualne są zasobami podrzędnymi w ramach laboratorium w grupie zasobów. W przypadku używania szablonów Menedżer zasobów do wdrażania maszyn wirtualnych przy użyciu programu PowerShell nazwa grupy zasobów podana w skrypcie programu PowerShell powinna być nazwą grupy zasobów laboratorium. Aby uzyskać więcej informacji, zobacz [Rozwiązywanie typowych błędów wdrażania platformy Azure](../azure-resource-manager/templates/common-deployment-errors.md).
 
 ### <a name="where-can-i-find-more-error-information-if-a-vm-deployment-fails"></a>Gdzie można znaleźć więcej informacji o błędzie w przypadku niepowodzenia wdrożenia maszyny wirtualnej?
 Błędy wdrożenia maszyny wirtualnej są przechwytywane w dziennikach aktywności. Dzienniki aktywności maszyn wirtualnych laboratorium można znaleźć w obszarze **dzienniki inspekcji** lub **diagnostyki maszyn wirtualnych** w menu zasób na stronie maszyny wirtualnej laboratorium (strona zostanie wyświetlona po wybraniu maszyny wirtualnej z listy moje maszyny wirtualne).
 
-Czasami błąd wdrażania występuje przed rozpoczęciem wdrożenia maszyny wirtualnej. Przykładem jest przekroczenie limitu subskrypcji dla zasobu, który został utworzony z maszyną wirtualną. W takim przypadku szczegóły błędu są przechwytywane w dziennikach aktywności poziomu laboratorium. Dzienniki aktywności znajdują się w dolnej części ustawień **Konfiguracja i zasady** . Aby uzyskać więcej informacji o korzystaniu z dzienników aktywności na platformie Azure, zobacz [Wyświetlanie dzienników aktywności w celu inspekcji akcji na zasobach](../azure-resource-manager/resource-group-audit.md).
+Czasami błąd wdrażania występuje przed rozpoczęciem wdrożenia maszyny wirtualnej. Przykładem jest przekroczenie limitu subskrypcji dla zasobu, który został utworzony z maszyną wirtualną. W takim przypadku szczegóły błędu są przechwytywane w dziennikach aktywności poziomu laboratorium. Dzienniki aktywności znajdują się w dolnej części ustawień **Konfiguracja i zasady** . Aby uzyskać więcej informacji o korzystaniu z dzienników aktywności na platformie Azure, zobacz [Wyświetlanie dzienników aktywności w celu inspekcji akcji na zasobach](../azure-resource-manager/management/view-activity-logs.md).
 
 ### <a name="why-do-i-get-location-is-not-available-for-resource-type-error-when-trying-to-create-a-lab"></a>Dlaczego otrzymuję komunikat o błędzie "Lokalizacja jest niedostępna dla typu zasobu" podczas próby utworzenia laboratorium?
-Podczas próby utworzenia laboratorium może zostać wyświetlony komunikat o błędzie podobny do następującego: 
+Podczas próby utworzenia laboratorium może zostać wyświetlony komunikat o błędzie podobny do następującego:
 
 ```
 The provided location 'australiacentral' is not available for resource type 'Microsoft.KeyVault/vaults'. List of available regions for the resource type is 'northcentralus,eastus,northeurope,westeurope,eastasia,southeastasia,eastus2,centralus,southcentralus,westus,japaneast,japanwest,australiaeast,australiasoutheast,brazilsouth,centralindia,southindia,westindia,canadacentral,canadaeast,uksouth,ukwest,westcentralus,westus2,koreacentral,koreasouth,francecentral,southafricanorth
@@ -400,9 +400,7 @@ The provided location 'australiacentral' is not available for resource type 'Mic
 Ten błąd można rozwiązać, wykonując jedną z następujących czynności:
 
 #### <a name="option-1"></a>Opcja 1
-Sprawdź dostępność typu zasobu w regionach świadczenia usługi Azure na stronie [dostępne produkty według regionów](https://azure.microsoft.com/global-infrastructure/services/) . Jeśli typ zasobu nie jest dostępny w określonym regionie, DevTest Labs nie obsługuje tworzenia laboratorium w tym regionie. Wybierz inny region podczas tworzenia laboratorium. 
+Sprawdź dostępność typu zasobu w regionach świadczenia usługi Azure na stronie [dostępne produkty według regionów](https://azure.microsoft.com/global-infrastructure/services/) . Jeśli typ zasobu nie jest dostępny w określonym regionie, DevTest Labs nie obsługuje tworzenia laboratorium w tym regionie. Wybierz inny region podczas tworzenia laboratorium.
 
 #### <a name="option-2"></a>Opcja 2
-Jeśli typ zasobu jest dostępny w Twoim regionie, sprawdź, czy jest on zarejestrowany w ramach subskrypcji. Można to zrobić na poziomie właściciela subskrypcji, jak pokazano w [tym artykule](../azure-resource-manager/resource-manager-supported-services.md). 
-
-
+Jeśli typ zasobu jest dostępny w Twoim regionie, sprawdź, czy jest on zarejestrowany w ramach subskrypcji. Można to zrobić na poziomie właściciela subskrypcji, jak pokazano w [tym artykule](../azure-resource-manager/management/resource-providers-and-types.md).

@@ -1,18 +1,18 @@
 ---
 title: Najlepsze rozwiązania — Azure Batch
 description: Poznaj najlepsze rozwiązania i przydatne porady dotyczące tworzenia rozwiązań Azure Batch.
-author: laurenhughes
-ms.author: lahugh
+author: ju-shim
+ms.author: jushiman
 ms.date: 11/22/2019
 ms.service: batch
 ms.topic: article
 manager: gwallace
-ms.openlocfilehash: 19c5b6acaeddb915af49cf62a884da0678075f15
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 20fc7844054fc7e05f56105e69ad6bd8a4272ed8
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74535667"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76026145"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch najlepszych praktyk
 
@@ -76,7 +76,7 @@ W przypadku awarii węzła funkcja Batch automatycznie próbuje odzyskać te wę
 - **Zależność regionu platformy Azure**  
     Zaleca się, aby nie zależeć od jednego regionu świadczenia usługi Azure, jeśli jest to obciążenie czasochłonne lub produkcyjne. Rzadko występują problemy, które mogą mieć wpływ na cały region. Na przykład jeśli przetwarzanie musi rozpocząć się o określonym czasie, rozważ skalowanie w górę puli w regionie podstawowym *przed upływem czasu rozpoczęcia*. W przypadku niepowodzenia skalowania puli można wrócić do skalowania w górę puli w regionie (lub regionach) kopii zapasowej. Pule na wielu kontach w różnych regionach zapewniają gotową, łatwą do udostępnienia kopię zapasową, jeśli coś się nie udaje z inną pulą. Aby uzyskać więcej informacji, zobacz [projektowanie aplikacji pod kątem wysokiej dostępności](high-availability-disaster-recovery.md).
 
-## <a name="jobs"></a>Stanowiska
+## <a name="jobs"></a>Zadania
 
 Zadanie jest kontenerem zaprojektowanym do przechowywania setek, tysięcy lub nawet milionów zadań.
 
@@ -109,7 +109,7 @@ Zadania są pojedynczymi jednostkami pracy, które składają się na zadanie. Z
 - **Przesyłanie dużej liczby zadań w kolekcji.**  
     Zadania mogą być przesyłane pojedynczo lub w kolekcjach. Przesyłaj zadania w [kolekcjach](https://docs.microsoft.com/rest/api/batchservice/task/addcollection) nawet do 100 w czasie wykonywania zbiorczego przesyłania zadań, aby zmniejszyć obciążenie i czas przesyłania.
 
-### <a name="task-execution"></a>Wykonywanie zadania
+### <a name="task-execution"></a>Wykonanie zadania.
 
 - **Wybieranie Maksymalna liczba zadań na węzeł**  
     Zadanie wsadowe obsługuje zadania związane z subskrypcją w węzłach (wykonywanie większej liczby zadań niż węzeł ma rdzenie). Jest to konieczne, aby upewnić się, że zadania "pasują" do węzłów w puli. Na przykład może wystąpić obniżenie wydajności w przypadku próby zaplanowania ośmiu zadań, za pomocą których każde zużywa 25% użycia procesora CPU w jednym węźle (w puli z `maxTasksPerNode = 8`).

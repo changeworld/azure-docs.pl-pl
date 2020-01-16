@@ -10,15 +10,15 @@ ms.topic: conceptual
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 11/22/2019
+ms.date: 01/14/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de64385e21604188a5c9002f2e007dad86b2674c
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 333e440fdd5f5062dda45fb12a83543c63e66c04
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420440"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978031"
 ---
 # <a name="use-the-ad-fs-application-activity-report-preview-to-migrate-applications-to-azure-ad"></a>Korzystanie z raportu działania aplikacji AD FS (wersja zapoznawcza) w celu migrowania aplikacji do usługi Azure AD
 
@@ -63,7 +63,7 @@ Raport aktywność aplikacji AD FS jest dostępny w Azure Portal w obszarze usł
 
 1. Na liście działanie aplikacji AD FS kliknij stan w kolumnie **stan migracji** , aby otworzyć Szczegóły migracji. Zobaczysz podsumowanie testów konfiguracji, które zakończono, wraz z potencjalnymi problemami migracji.
 
-   ![Szczegóły migracji](media/migrate-adfs-application-activity/migration-details.png)
+   ![Szczegóły dotyczące migracji](media/migrate-adfs-application-activity/migration-details.png)
 
 2. Kliknij komunikat, aby otworzyć dodatkowe szczegóły reguły migracji. Aby zapoznać się z pełną listą przetestowanych właściwości, zapoznaj się z tabelą [testy konfiguracji aplikacji AD FS](#ad-fs-application-configuration-tests) poniżej.
 
@@ -90,7 +90,7 @@ W poniższej tabeli wymieniono wszystkie testy konfiguracji, które są wykonywa
 |Test-ADFSRPRequestMFAFromClaimsProviders <br> Jednostka uzależniona ma RequestMFAFromClaimsProviders ustawioną wartość true.       | Przekaż/Ostrzegaj          | To ustawienie w AD FS określa zachowanie usługi MFA, gdy użytkownik pochodzi od innego dostawcy oświadczeń. W usłudze Azure AD można włączyć współpracę zewnętrzną przy użyciu usługi Azure AD B2B. Następnie można zastosować zasady dostępu warunkowego w celu ochrony dostępu gościa. Dowiedz się więcej na temat [usługi Azure AD B2B](https://docs.microsoft.com/azure/active-directory/b2b/what-is-b2b) i [dostępu warunkowego](https://docs.microsoft.com/azure/active-directory/conditional-access/overview).          |
 |Test-ADFSRPSignedSamlRequestsRequired <br> Jednostka uzależniona ma SignedSamlRequestsRequired ustawioną wartość PRAWDA       | Przebieg/niepowodzenie          | Aplikacja jest skonfigurowana w AD FS, aby zweryfikować podpis w żądaniu SAML. Usługa Azure AD akceptuje podpisane żądanie SAML. nie spowoduje to jednak zweryfikowania podpisu. Usługa Azure AD ma różne metody ochrony przed złośliwymi wywołaniami. Na przykład usługa Azure AD używa adresów URL odpowiedzi skonfigurowanych w aplikacji do sprawdzania poprawności żądania SAML. Usługa Azure AD będzie wysyłać token tylko do adresów URL skonfigurowanych dla aplikacji. Jeśli masz scenariusz, w którym ten wynik blokuje migrację, [daj nam znać](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/13394589-saml-signature).          |
 |Test-ADFSRPTokenLifetime <br> TokenLifetimeCheckResult        | Przekaż/Ostrzegaj         | Aplikacja jest skonfigurowana pod kątem niestandardowego okresu istnienia tokenu. Wartość domyślna AD FS wynosi godzinę. Usługa Azure AD obsługuje tę funkcję przy użyciu dostępu warunkowego. Aby dowiedzieć się więcej, zobacz [Konfigurowanie zarządzania sesjami uwierzytelniania przy użyciu dostępu warunkowego](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-conditional-access-session-lifetime).          |
-|Jednostka uzależniona jest ustawiona na szyfrowanie oświadczeń. Jest to obsługiwane przez usługę Azure AD       | Chodzenia          | Za pomocą usługi Azure AD można zaszyfrować token wysyłany do aplikacji. Aby dowiedzieć się więcej, zobacz [Konfigurowanie szyfrowania tokenów SAML usługi Azure AD](https://docs.microsoft.com/azure/active-directory/manage-apps/howto-saml-token-encryption).          |
+|Jednostka uzależniona jest ustawiona na szyfrowanie oświadczeń. Jest to obsługiwane przez usługę Azure AD       | Zakończony powodzeniem          | Za pomocą usługi Azure AD można zaszyfrować token wysyłany do aplikacji. Aby dowiedzieć się więcej, zobacz [Konfigurowanie szyfrowania tokenów SAML usługi Azure AD](https://docs.microsoft.com/azure/active-directory/manage-apps/howto-saml-token-encryption).          |
 |EncryptedNameIdRequiredCheckResult      | Przebieg/niepowodzenie          | Aplikacja jest skonfigurowana do szyfrowania żądania nameID w tokenie SAML. Za pomocą usługi Azure AD można zaszyfrować cały token wysłany do aplikacji. Szyfrowanie określonych oświadczeń nie jest jeszcze obsługiwane. Aby dowiedzieć się więcej, zobacz [Konfigurowanie szyfrowania tokenów SAML usługi Azure AD](https://docs.microsoft.com/azure/active-directory/manage-apps/howto-saml-token-encryption).         |
 
 ## <a name="check-the-results-of-claim-rule-tests"></a>Sprawdź wyniki testów reguł dotyczących roszczeń
@@ -124,6 +124,7 @@ W poniższej tabeli wymieniono wszystkie testy reguł dotyczących roszczeń, kt
 
 ## <a name="next-steps"></a>Następne kroki
 
+- [Wideo: jak używać raportu działania AD FS do migrowania aplikacji](https://www.youtube.com/watch?v=OThlTA239lU)
 - [Zarządzanie aplikacjami przy użyciu usługi Azure Active Directory](what-is-application-management.md)
 - [Zarządzanie dostępem do aplikacji](what-is-access-management.md)
 - [Program Azure AD Connect a federacja](../hybrid/how-to-connect-fed-whatis.md)

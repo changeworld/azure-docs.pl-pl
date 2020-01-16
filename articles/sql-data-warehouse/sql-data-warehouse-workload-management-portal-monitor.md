@@ -7,16 +7,16 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
-ms.date: 01/13/2020
+ms.date: 01/14/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f3baaab59031c4cfad036a7181318502d1969715
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: fd9bd846beba718cb305907d4d0c5a613d2ef816
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75942427"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029947"
 ---
 # <a name="azure-synapse-analytics--workload-management-portal-monitoring-preview"></a>Azure Synapse Analytics — Monitorowanie portal zarządzania obciążenia (wersja zapoznawcza)
 W tym artykule wyjaśniono, jak monitorować wykorzystanie zasobów [grupy obciążeń](sql-data-warehouse-workload-isolation.md#workload-groups) i działania zapytań. Aby uzyskać szczegółowe informacje na temat konfigurowania Eksplorator metryk platformy Azure, zobacz artykuł [wprowadzenie do usługi azure Eksplorator metryk](../azure-monitor/platform/metrics-getting-started.md) .  Aby uzyskać szczegółowe informacje na temat monitorowania zużycia zasobów systemowych, zobacz sekcję [użycie zasobów](sql-data-warehouse-concept-resource-utilization-query-activity.md#resource-utilization) w dokumentacji dotyczącej monitorowania Azure SQL Data Warehouse.
@@ -49,8 +49,11 @@ CREATE WORKLOAD CLASSIFIER wcCEOPriority
 WITH ( WORKLOAD_GROUP = 'wgPriority'
       ,MEMBERNAME = 'TheCEO');
 ```
-Poniższy wykres jest skonfigurowany w następujący sposób: Metric 1: *efektywna wartość procentowa zasobu* (średnia agregacja, `blue line`) Metryka 2: *alokacja grupy obciążeń według procentu systemowego* (średnia agregacja, `purple line`) filtr: [grupa obciążeń] = `wgPriority`
-![underutilized-wg  W takim przypadku wartość parametru `MIN_PERCENTAGE_RESOURCE` można obniżyć do zakresu od 10 do 15 i zezwolić innym obciążeniom w systemie na korzystanie z zasobów.
+Poniższy wykres jest skonfigurowany w następujący sposób:<br>
+Metric 1: *efektywny minimalny procent zasobów* (średnia agregacja, `blue line`)<br>
+Metryka 2: *alokacja grupy obciążeń według wartości procentowej systemu* (średnia agregacja, `purple line`)<br>
+Filtr: [Grupa obciążeń] = `wgPriority`<br>
+![underutilized-wg. png](media/sql-data-warehouse-workload-management-portal-monitor/underutilized-wg.png) wykres pokazuje, że z obciążeniem o 25%, tylko 10% jest używana średnio.  W takim przypadku wartość parametru `MIN_PERCENTAGE_RESOURCE` można obniżyć do zakresu od 10 do 15 i zezwolić innym obciążeniom w systemie na korzystanie z zasobów.
 
 ### <a name="workload-group-bottleneck"></a>Wąskie gardła grupy obciążeń
 Weź pod uwagę następującą konfigurację grupy obciążeń i klasyfikatora, w której jest tworzona Grupa obciążeń o nazwie `wgDataAnalyst`, a `membername` *dataanalizatorze* jest mapowany do niego przy użyciu klasyfikatora obciążeń `wcDataAnalyst`.  Grupa obciążeń `wgDataAnalyst` ma dla niej ustawioną 6% izolację obciążenia (`MIN_PERCENTAGE_RESOURCE` = 6) i limit zasobów równy 9% (`CAP_PERCENTAGE_RESOURCE` = 9).  Każde zapytanie przesłane przez *dataanalizować* ma 3% zasobów systemowych (`REQUEST_MIN_RESOURCE_GRANT_PERCENT` = 3).
@@ -65,8 +68,12 @@ CREATE WORKLOAD CLASSIFIER wcDataAnalyst
 WITH ( WORKLOAD_GROUP = 'wgDataAnalyst'
       ,MEMBERNAME = 'DataAnalyst');
 ```
-Poniższy wykres jest skonfigurowany w następujący sposób: Metric 1: *procent efektywnego zasobu zakończenia* (średnia agregacja, `blue line`) Metryka 2: *alokacja grup obciążeń według maksymalnego procentu zasobów* (średnia agregacja, `purple line`) Metryka 3: *grupy obciążeń w kolejce* (agregacja SUM, `turquoise line`) filtr: [grupa obciążeń] = `wgDataAnalyst`
-![przewężenie butelki — wg](media/sql-data-warehouse-workload-management-portal-monitor/bottle-necked-wg.png) wykres pokazuje, że w przypadku zasobów zostanie wyświetlona wartość z *przedziału 9% Metryka procentu zasobów*).  Istnieje stała kolejkowanie zapytań, jak pokazano w *kolejce metryki zapytań grupy obciążenia*.  W takim przypadku zwiększenie `CAP_PERCENTAGE_RESOURCE` do wartości większej niż 9% pozwoli na współbieżne wykonywanie większej liczby zapytań.  Zwiększenie `CAP_PERCENTAGE_RESOURCE` zakłada, że dostępne są wystarczające zasoby i nie są odizolowane od innych grup obciążeń.  Sprawdź, czy limit wzrostu został zwiększony przez sprawdzenie *metryki procentowej zasobu limitu*.  Jeśli jest wymagana większa przepływność, należy również rozważyć zwiększenie `REQUEST_MIN_RESOURCE_GRANT_PERCENT` do wartości większej niż 3.  Zwiększenie `REQUEST_MIN_RESOURCE_GRANT_PERCENT` może pozwolić na szybsze działanie zapytań.
+Poniższy wykres jest skonfigurowany w następujący sposób:<br>
+Metryka 1: *procent zasobu wartości efektywnej* (średnia agregacja, `blue line`)<br>
+Metryka 2: *alokacja grupy obciążeń według maksymalnego procentu zasobów* (średnia agregacja, `purple line`)<br>
+Metryka 3: *grupowanie zadań w kolejce* (agregacja Sum, `turquoise line`)<br>
+Filtr: [Grupa obciążeń] = `wgDataAnalyst`<br>
+![przewężenia butelek-wg](media/sql-data-warehouse-workload-management-portal-monitor/bottle-necked-wg.png) wykres pokazuje, że z 9% limitem zasobów grupa obciążenia ma 90% + wykorzystane (od *przydziału grupy obciążeń według maksymalnego procentu metryki zasobu*).  Istnieje stała kolejkowanie zapytań, jak pokazano w *kolejce metryki zapytań grupy obciążenia*.  W takim przypadku zwiększenie `CAP_PERCENTAGE_RESOURCE` do wartości większej niż 9% pozwoli na współbieżne wykonywanie większej liczby zapytań.  Zwiększenie `CAP_PERCENTAGE_RESOURCE` zakłada, że dostępne są wystarczające zasoby i nie są odizolowane od innych grup obciążeń.  Sprawdź, czy limit wzrostu został zwiększony przez sprawdzenie *metryki procentowej zasobu limitu*.  Jeśli jest wymagana większa przepływność, należy również rozważyć zwiększenie `REQUEST_MIN_RESOURCE_GRANT_PERCENT` do wartości większej niż 3.  Zwiększenie `REQUEST_MIN_RESOURCE_GRANT_PERCENT` może pozwolić na szybsze działanie zapytań.
 
 ## <a name="next-steps"></a>Następne kroki
 [Szybki Start: Konfigurowanie izolacji obciążenia przy użyciu języka T-SQL](quickstart-configure-workload-isolation-tsql.md)<br>

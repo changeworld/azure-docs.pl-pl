@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 1/15/2017
 ms.author: twooley
 ms.subservice: common
-ms.openlocfilehash: 4cd5fde2f47cca1b03efbc217d7764ac429d15fb
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: aaceee65ae91a22dc658d185a874e2040b1e0f04
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74973938"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75975668"
 ---
 # <a name="using-the-azure-importexport-tool-classic-deployment-model"></a>Korzystanie z narzędzia Azure Import/Export (klasyczny model wdrażania)
 
@@ -25,10 +25,10 @@ W poniższych artykułach pokazano, jak:
 
 - Zainstaluj i skonfiguruj narzędzie Import/Export.
 - Przygotuj dyski twarde w celu zaimportowania danych z dysków do usługi Azure Blob Storage.
-- Sprawdź stan zadania za pomocą plików dziennika kopiowania. 
-- Naprawianie zadania importu. 
-- Naprawianie zadania eksportu. 
-- Rozwiązywanie problemów z narzędziem Azure Import/Export, jeśli wystąpił problem podczas procesu. 
+- Sprawdź stan zadania za pomocą plików dziennika kopiowania.
+- Naprawianie zadania importu.
+- Naprawianie zadania eksportu.
+- Rozwiązywanie problemów z narzędziem Azure Import/Export, jeśli wystąpił problem podczas procesu.
 
 ## <a name="next-steps"></a>Następne kroki
 

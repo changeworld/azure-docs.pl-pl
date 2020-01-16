@@ -1,21 +1,24 @@
 ---
 title: Poznaj terminologię dotyczącą usługi Azure Service Fabric
-description: Przegląd terminologii Service Fabric. Omawia kluczowe pojęcia i terminy używane w pozostałej części dokumentacji.
+description: Service Fabric Poznaj terminologię i koncepcje związane z używaniem programu w pozostałej części dokumentacji.
 author: masnider
 ms.topic: conceptual
 ms.date: 09/17/2018
 ms.author: masnider
-ms.openlocfilehash: cf2cfdad10d93bb4f28345d75a86fdcd94587410
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.custom: sfrev
+ms.openlocfilehash: a9266c2a8d2ad179cfdb12e367a14f37d1abc9b3
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75465613"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76024890"
 ---
 # <a name="service-fabric-terminology-overview"></a>Przegląd terminologii Service Fabric
+
 Usługa Azure Service Fabric to platforma systemów rozproszonych ułatwiająca pakowanie i wdrażanie skalowalnych i niezawodnych mikrousług oraz zarządzanie nimi.  [Klastry Service Fabric można hostować w dowolnym miejscu](service-fabric-deploy-anywhere.md): na platformie Azure, w lokalnym centrum danych lub w dowolnym dostawcy chmury.  Service Fabric jest koordynatorem, który ma uprawnienia do [usługi Azure Service Fabric siatką](/azure/service-fabric-mesh). Możesz użyć dowolnej platformy, aby napisać usługi i wybrać miejsce uruchamiania aplikacji z wielu opcji środowiska. Ten artykuł zawiera szczegółowe informacje dotyczące terminologii używanej przez program Service Fabric do zrozumienia terminów używanych w dokumentacji.
 
 ## <a name="infrastructure-concepts"></a>Pojęcia dotyczące infrastruktury
+
 **Klaster**: połączony z siecią zestaw maszyn wirtualnych lub fizycznych, w których są wdrażane i zarządzane mikrousługi.  Klastry mogą obejmować nawet tysiące maszyn.
 
 **Węzeł**: maszyna lub maszyna wirtualna, która jest częścią klastra, nazywa się *węzłem*. Każdy węzeł ma przypisaną nazwę węzła (ciąg). Węzły mają właściwości, takie jak właściwości umieszczania. Każda maszyna lub maszyna wirtualna ma uruchomioną funkcję Autostart systemu Windows `FabricHost.exe`, która uruchamia się po rozruchu, a następnie uruchamia dwa pliki wykonywalne: `Fabric.exe` i `FabricGateway.exe`. Te dwa pliki wykonywalne składają się na węzeł. Scenariusze testowania umożliwiają hostowanie wielu węzłów na pojedynczej maszynie lub maszynie wirtualnej przez uruchomienie wielu wystąpień `Fabric.exe` i `FabricGateway.exe`.
@@ -30,7 +33,7 @@ Usługa Azure Service Fabric to platforma systemów rozproszonych ułatwiająca 
 
 **Aplikacja**: aplikacja jest jednostką wdrożenia, przechowywaniem wersji i okresem istnienia aplikacji sieci. Cykl życia każdego wystąpienia aplikacji może być zarządzany niezależnie.  Aplikacje składają się z co najmniej jednego pakietu i ustawień kodu usługi. Aplikacja jest definiowana przy użyciu schematu modelu zasobów platformy Azure (RM).  Usługi są opisane jako właściwości zasobu aplikacji w szablonie Menedżera zasobów.  Aplikacje i woluminy używane przez aplikację są przywoływane przez aplikację.  Podczas tworzenia aplikacji aplikacje, usługi, sieci i woluminy są modelowane przy użyciu modelu zasobów Service Fabric.
 
-**Usługa**: usługa w aplikacji reprezentuje mikrousługę i wykonuje pełną i autonomiczną funkcję. Każda usługa składa się z jednego lub więcej pakietów kodu, które opisują wszystko, czego potrzebujesz do uruchomienia obrazu kontenera skojarzonego z pakietem kodu.  Liczbę usług w aplikacji można skalować w górę i w dół.
+**Usługa**: usługa w aplikacji reprezentuje mikrousługę i wykonuje pełną i autonomiczną funkcję. Każda usługa składa się z co najmniej jednego pakietu kodu opisującego wszystko, co jest potrzebne do uruchomienia obrazu kontenera skojarzonego z pakietem kodu.  Liczbę usług w aplikacji można skalować w górę i w dół.
 
 **Sieć**: zasób sieciowy tworzy sieć prywatną dla aplikacji i jest niezależna od aplikacji lub usług, które mogą się do niej odwoływać. Wiele usług z różnych aplikacji może być częścią tej samej sieci. Sieci to zasoby do wdrożenia, do których odwołują się aplikacje.
 
@@ -83,15 +86,16 @@ Istnieją dwa typy usług:
 
 **Pakiet danych**: Katalog dysku, który zawiera pliki danych statycznych, tylko do odczytu typu usługi, zazwyczaj pliki zdjęć, dźwięku i wideo. Do plików w katalogu pakietu danych odwołuje się plik `ServiceManifest.xml` typu usługi. Podczas tworzenia nazwanej usługi pakiet danych jest kopiowany do węzła lub węzłów wybranych do uruchomienia nazwanej usługi. Kod zaczyna działać i teraz może uzyskiwać dostęp do plików danych.
 
-**Pakiet konfiguracyjny**: Katalog dysku, który zawiera statyczne pliki konfiguracji typu usługi, które są zwykle plikami tekstowymi. Pliki w katalogu pakietu konfiguracyjnego są przywoływane przez plik `ServiceManifest.xml` typu usługi. Podczas tworzenia nazwanej usługi pliki w pakiecie konfiguracyjnym są kopiowane co najmniej jeden węzeł wybrany do uruchomienia nazwanej usługi. Następnie kod rozpocznie pracę i teraz może uzyskiwać dostęp do plików konfiguracji.
+**Pakiet konfiguracyjny**: Katalog dysku, który zawiera statyczne pliki konfiguracji typu usługi, które są zwykle plikami tekstowymi. Pliki w katalogu pakietu konfiguracyjnego są przywoływane przez plik `ServiceManifest.xml` typu usługi. Podczas tworzenia nazwanej usługi pliki w pakiecie konfiguracyjnym są kopiowane do co najmniej jednego węzła wybranego do uruchomienia nazwanej usługi. Następnie kod rozpocznie pracę i teraz może uzyskiwać dostęp do plików konfiguracji.
 
-**Kontenery**: domyślnie Service Fabric wdraża i uaktywnia usługi jako procesy. Service Fabric może również wdrażać usługi w obrazach kontenera. Kontenery są technologią wirtualizacji, która umożliwia wirtualizację bazowego systemu operacyjnego od aplikacji. Aplikacja i jej środowisko uruchomieniowe, zależności i biblioteki systemowe działają wewnątrz kontenera. Kontener ma pełny, prywatny dostęp do własnego widoku izolowanego konstrukcji systemu operacyjnego kontenera. Service Fabric obsługuje kontenery platformy Docker w kontenerach systemu Linux i Windows Server. Aby uzyskać więcej informacji, Przeczytaj [Service Fabric i kontenery](service-fabric-containers-overview.md).
+**Kontenery**: domyślnie Service Fabric wdraża i uaktywnia usługi jako procesy. Service Fabric może również wdrażać usługi w obrazach kontenera. Kontenery są technologią wirtualizacji, która dzieli podstawowy system operacyjny na podstawie aplikacji. Aplikacja i jej środowisko uruchomieniowe, zależności i biblioteki systemowe działają wewnątrz kontenera. Kontener ma pełny, prywatny dostęp do własnego widoku izolowanego konstrukcji systemu operacyjnego kontenera. Service Fabric obsługuje kontenery systemu Windows Server i kontenerów platformy Docker w systemie Linux. Aby uzyskać więcej informacji, Przeczytaj [Service Fabric i kontenery](service-fabric-containers-overview.md).
 
 **Schemat partycji**: podczas tworzenia nazwanej usługi należy określić schemat partycji. Usługi o znacznym stanie dzielą dane między partycjami, co umożliwia rozmieszczenie stanu w węzłach klastra. Dzielenie danych między partycjami umożliwia skalowanie stanu nazwanej usługi. W ramach partycji usługi bezstanowe mają wystąpienia, a stanowe usługi mają repliki. Zwykle o nazwie usługi bezstanowe mają tylko jedną partycję, ponieważ nie mają wewnętrznego stanu. Wystąpienia partycji zapewniają dostępność. Jeśli jedno wystąpienie nie powiedzie się, inne wystąpienia nadal działają normalnie, a następnie Service Fabric tworzy nowe wystąpienie. Stanowe nazwy usług utrzymują swój stan w replikach, a każda partycja ma swój własny zestaw replik, aby zachować stan synchronizacji. Jeśli replika nie powiedzie się, Service Fabric kompiluje nową replikę z istniejących replik.
 
 Aby uzyskać więcej informacji, przeczytaj artykuł [Partition Service Fabric unniezawodny Services](service-fabric-concepts-partitioning.md) .
 
 ## <a name="system-services"></a>Usługi systemowe
+
 Istnieją usługi systemowe, które są tworzone w każdym klastrze, który zapewnia możliwości platformy Service Fabric.
 
 **Usługa nazewnictwa**: każdy klaster Service Fabric ma usługa nazewnictwa, który rozwiązuje nazwy usług do lokalizacji w klastrze. Zarządzasz nazwami i właściwościami usługi, takimi jak system DNS (Internet Name Domain) klastra. Klienci bezpiecznie komunikują się z dowolnym węzłem w klastrze za pomocą Usługa nazewnictwa w celu rozpoznania nazwy usługi i jej lokalizacji. Aplikacje są przenoszone w ramach klastra. Na przykład może to być spowodowane błędami, równoważeniem zasobów lub zmianą wielkości klastra. Można opracowywać usługi i klientów, które rozwiązują bieżącą lokalizację sieciową. Klienci uzyskują rzeczywisty adres IP i port na komputerze, na którym jest obecnie uruchomiony.
@@ -105,22 +109,26 @@ Aby uzyskać więcej informacji na temat usługi Magazyn obrazów, Przeczytaj [O
 Zapoznaj się z artykułem [wdrażanie aplikacji](service-fabric-deploy-remove-applications.md) , aby uzyskać więcej informacji na temat wdrażania aplikacji w usłudze Magazyn obrazów.
 
 **Usługa Menedżer trybu failover**: każdy klaster Service Fabric ma usługę Menedżer trybu failover odpowiedzialną za następujące działania:
-   - Wykonuje funkcje związane z wysoką dostępnością i spójnością usług.
-   - Organizuje uaktualnienia aplikacji i klastra.
-   - Współdziała z innymi składnikami systemowymi.
+
+ - Wykonuje funkcje związane z wysoką dostępnością i spójnością usług.
+ - Organizuje uaktualnienia aplikacji i klastra.
+ - Współdziała z innymi składnikami systemowymi.
 
 **Usługa Menedżer naprawy**: jest to opcjonalna usługa systemowa, która umożliwia wykonywanie akcji naprawczych w klastrze w taki sposób, który jest bezpieczny, automatyzuje i przejrzysty. Menedżer naprawy jest używany w programie:
+
    - Przeprowadzanie napraw na platformie Azure w przypadku klastrów usługi Azure Service Fabric [Silver i Gold trwałości](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster) .
    - Wykonywanie akcji naprawy dla [aplikacji aranżacji patch](service-fabric-patch-orchestration-application.md)
 
-## <a name="deployment-and-application-models"></a>Modele wdrożenia i aplikacji 
+## <a name="deployment-and-application-models"></a>Modele wdrożenia i aplikacji
 
 Aby wdrożyć usługi, należy opisać sposób ich działania. Service Fabric obsługuje trzy różne modele wdrażania:
 
 ### <a name="resource-model-preview"></a>Model zasobów (wersja zapoznawcza)
+
 Zasoby Service Fabric są dowolne, które mogą być wdrażane pojedynczo do Service Fabric; obejmuje to aplikacje, usługi, sieci i woluminy. Zasoby są definiowane przy użyciu pliku JSON, który można wdrożyć w punkcie końcowym klastra.  W przypadku Service Fabric siatki używany jest schemat modelu zasobów platformy Azure. Schemat pliku YAML może być również używany do łatwiejszego tworzenia plików definicji. Zasoby można wdrożyć w dowolnym miejscu Service Fabric uruchomienia. Model zasobów to najprostszy sposób opisywania Service Fabric aplikacji. Głównym celem jest proste wdrażanie usług kontenerowych i zarządzanie nimi. Aby dowiedzieć się więcej, Przeczytaj [wprowadzenie do modelu zasobów Service Fabric](/azure/service-fabric-mesh/service-fabric-mesh-service-fabric-resources).
 
 ### <a name="native-model"></a>Model natywny
+
 Natywny model aplikacji zapewnia aplikacjom pełny dostęp niskiego poziomu do Service Fabric. Aplikacje i usługi są zdefiniowane jako zarejestrowane typy w plikach manifestu XML.
 
 Model natywny obsługuje struktury Reliable Services i Reliable Actors, które zapewniają dostęp do interfejsów API środowiska uruchomieniowego Service Fabric oraz interfejsów API zarządzania klastrami w C# językach i Java. Model natywny obsługuje również dowolne kontenery i pliki wykonywalne. Model natywny nie jest obsługiwany w [środowisku Service Fabric siatki](/azure/service-fabric-mesh/service-fabric-mesh-overview).
@@ -138,6 +146,7 @@ Możesz również uruchomić istniejące aplikacje na Service Fabric:
 Aby uzyskać więcej informacji, zapoznaj się z artykułem [Wybieranie modelu programowania dla usługi](service-fabric-choose-framework.md) .
 
 ### <a name="docker-compose"></a>Docker Compose 
+
 [Docker Compose](https://docs.docker.com/compose/) jest częścią projektu platformy Docker. Service Fabric zapewnia ograniczoną obsługę [wdrażania aplikacji przy użyciu modelu Docker Compose](service-fabric-docker-compose.md).
 
 ## <a name="environments"></a>Środowiska
@@ -150,6 +159,7 @@ Service Fabric to technologia platformy Open Source, w której bazują kilka ró
  - **Service Fabric klaster projektowy**: Program udostępnia lokalne środowisko programistyczne w systemie Windows, Linux lub na komputerach Mac w celu opracowywania aplikacji Service Fabric.
 
 ## <a name="environment-framework-and-deployment-model-support-matrix"></a>Macierz obsługi środowiska, architektury i modelu wdrażania
+
 Różne środowiska mają różne poziomy obsługi dla struktur i modeli wdrażania. W poniższej tabeli opisano obsługiwane kombinacje platform i modeli wdrażania.
 
 | Typ aplikacji | Opisane przez | Azure Service Fabric Mesh | Klastry usługi Azure Service Fabric (każdy system operacyjny)| Klaster lokalny | Klaster autonomiczny |
@@ -164,8 +174,8 @@ W poniższej tabeli opisano różne modele aplikacji i narzędzia, które istnie
 | Aplikacje siatki Service Fabric | Model zasobów (YAML & JSON) | VS 2017 |Brak obsługi |Brak obsługi | Tylko obsługiwane środowisko siatki | Nieobsługiwane|
 |Aplikacje natywne Service Fabric | Natywny model aplikacji (XML) | VS 2017 i VS 2015| Obsługiwane|Obsługiwane|Obsługiwane|Obsługiwane|
 
-<!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## <a name="next-steps"></a>Następne kroki
+
 Aby dowiedzieć się więcej na temat Service Fabric:
 
 * [Omówienie Service Fabric](service-fabric-overview.md)

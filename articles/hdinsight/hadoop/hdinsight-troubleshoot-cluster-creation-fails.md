@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 08/26/2019
-ms.openlocfilehash: 607eacc531166d9d770f31cc64825e8ffea9ca76
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: ea60faf5b5689fa674095201d3db18422d3e0f1b
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70810682"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980500"
 ---
 # <a name="troubleshoot-cluster-creation-failures-with-azure-hdinsight"></a>Rozwiązywanie problemów z błędami tworzenia klastra za pomocą usługi Azure HDInsight
 
@@ -29,7 +29,7 @@ Następujące problemy są Najczęstszymi przyczynami głównych niepowodzeń tw
 
 ## <a name="permissions-issues"></a>Problemy z uprawnieniami
 
-Jeśli używasz Azure Data Lake Storage Gen2 i otrzymujesz błąd ```AmbariClusterCreationFailedErrorCode```, ```Internal server error occurred while processing the request. Please retry the request or contact support.```Otwórz Azure Portal, przejdź do konta magazynu i w obszarze Access Control (IAM) Upewnij się, że **współautor danych obiektów blob magazynu** lub **obiekt blob magazynu Rola właściciela danych** ma przypisany dostęp do **tożsamości zarządzanej przypisanej przez użytkownika** dla subskrypcji. Aby uzyskać szczegółowe instrukcje, zobacz [Konfigurowanie uprawnień dla tożsamości zarządzanej na koncie Data Lake Storage Gen2](../hdinsight-hadoop-use-data-lake-storage-gen2.md#set-up-permissions-for-the-managed-identity-on-the-data-lake-storage-gen2-account).
+Jeśli używasz Azure Data Lake Storage Gen2 i otrzymujesz błąd ```AmbariClusterCreationFailedErrorCode```, ```Internal server error occurred while processing the request. Please retry the request or contact support.```otworzyć Azure Portal, przejdź do konta magazynu i w obszarze Access Control (IAM), upewnij się, że **współautor danych obiektów blob magazynu** lub rola **właściciela danych obiektu blob magazynu** ma przypisany dostęp do **tożsamości zarządzanej przypisanej do użytkownika** dla subskrypcji. Aby uzyskać szczegółowe instrukcje, zobacz [Konfigurowanie uprawnień dla tożsamości zarządzanej na koncie Data Lake Storage Gen2](../hdinsight-hadoop-use-data-lake-storage-gen2.md#set-up-permissions-for-the-managed-identity-on-the-data-lake-storage-gen2-account).
 
 Jeśli używasz Azure Data Lake Storage Gen1, zobacz instrukcje dotyczące instalacji i konfiguracji w [tym miejscu](../hdinsight-hadoop-use-data-lake-store.md). Data Lake Storage Gen1 nie jest obsługiwana w przypadku klastrów HBase i nie jest obsługiwana w usłudze HDInsight w wersji 4,0.
 
@@ -51,12 +51,12 @@ Zapory w sieci wirtualnej lub koncie magazynu mogą odmówić komunikacji z adre
 
 Zezwalaj na ruch z adresów IP w poniższej tabeli.
 
-| Źródłowy adres IP | Miejsce docelowe | Direction |
+| Źródłowy adres IP | Cel | Kierunek |
 |---|---|---|
-| 168.61.49.99 | *: 443 | Przychodzący |
-| 23.99.5.239 | *: 443 | Przychodzący |
-| 168.61.48.131 | *: 443 | Przychodzący |
-| 138.91.141.162 | *: 443 | Przychodzący |
+| 168.61.49.99 | *: 443 | Przychodzące |
+| 23.99.5.239 | *: 443 | Przychodzące |
+| 168.61.48.131 | *: 443 | Przychodzące |
+| 138.91.141.162 | *: 443 | Przychodzące |
 
 Należy również dodać adresy IP specyficzne dla regionu, w którym jest tworzony klaster. Zobacz [adresy IP zarządzania usługą HDInsight](../hdinsight-management-ip-addresses.md) , aby uzyskać listę adresów dla każdego regionu świadczenia usługi Azure.
 
@@ -64,7 +64,7 @@ Jeśli używasz trasy Express lub własnego niestandardowego serwera DNS, zobacz
 
 ## <a name="resources-locks"></a>Blokady zasobów  
 
-Upewnij się, że [w sieci wirtualnej i grupie zasobów](../../azure-resource-manager/resource-group-lock-resources.md)nie ma blokad.  
+Upewnij się, że [w sieci wirtualnej i grupie zasobów](../../azure-resource-manager/management/lock-resources.md)nie ma blokad.  
 
 ## <a name="unsupported-component-versions"></a>Nieobsługiwane wersje składników
 
@@ -82,7 +82,7 @@ Sprawdź [Stan platformy Azure](https://status.azure.com/status) , aby uzyskać 
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Rozszerzenie Azure HDInsight przy użyciu sieci wirtualnej platformy Azure](../hdinsight-plan-virtual-network-deployment.md)
+* [Rozszerzanie usługi Azure HDInsight za pomocą usługi Azure Virtual Network](../hdinsight-plan-virtual-network-deployment.md)
 * [Korzystanie z usługi Azure Data Lake Storage Gen2 w połączeniu z klastrami usługi Azure HDInsight](../hdinsight-hadoop-use-data-lake-storage-gen2.md)  
 * [Korzystanie z usługi Azure Storage w połączeniu z klastrami usługi Azure HDInsight](../hdinsight-hadoop-use-blob-storage.md)
 * [Konfigurowanie klastrów w usłudze HDInsight przy użyciu technologii Apache Hadoop, Apache Spark, Apache Kafka i innych](../hdinsight-hadoop-provision-linux-clusters.md)

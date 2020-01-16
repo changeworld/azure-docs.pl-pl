@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 06/20/2019
-ms.openlocfilehash: a3fcff9f895fba3574bbce976087295018ab51c0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2e27958dd9379a26ca7e7f4d7e427e5afa216e29
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428744"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981164"
 ---
 # <a name="build-your-first-serverless-app-by-using-azure-logic-apps-and-azure-functions-in-visual-studio"></a>Tworzenie pierwszej aplikacji bezserwerowej przy użyciu Azure Logic Apps i Azure Functions w programie Visual Studio
 
@@ -56,7 +56,7 @@ Do utworzenia aplikacji bezserwerowej w programie Visual Studio potrzebne są:
 
 ## <a name="create-a-resource-group-project"></a>Tworzenie projektu grupy zasobów
 
-Aby rozpocząć, Utwórz [projekt grupy zasobów platformy Azure](../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) dla aplikacji bezserwerowej. Na platformie Azure Możesz tworzyć zasoby w *grupie zasobów*, która jest kolekcją logiczną używaną do organizowania, zarządzania i wdrażania zasobów dla całej aplikacji jako pojedynczego zasobu. W przypadku aplikacji bezserwerowej na platformie Azure Grupa zasobów zawiera zasoby dla Azure Logic Apps i Azure Functions. Dowiedz się więcej o [zasobach i grupach zasobów platformy Azure](../azure-resource-manager/management/overview.md).
+Aby rozpocząć, Utwórz [projekt grupy zasobów platformy Azure](../azure-resource-manager/templates/create-visual-studio-deployment-project.md) dla aplikacji bezserwerowej. Na platformie Azure Możesz tworzyć zasoby w *grupie zasobów*, która jest kolekcją logiczną używaną do organizowania, zarządzania i wdrażania zasobów dla całej aplikacji jako pojedynczego zasobu. W przypadku aplikacji bezserwerowej na platformie Azure Grupa zasobów zawiera zasoby dla Azure Logic Apps i Azure Functions. Dowiedz się więcej o [zasobach i grupach zasobów platformy Azure](../azure-resource-manager/management/overview.md).
 
 1. Uruchom program Visual Studio i zaloguj się przy użyciu konta platformy Azure.
 

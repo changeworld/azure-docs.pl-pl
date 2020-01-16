@@ -9,12 +9,12 @@ ms.service: storage
 custom: jenkins
 ms.date: 08/13/2019
 ms.subservice: common
-ms.openlocfilehash: 72756bd3eb12ca80f419a0d53db76e6637d884fc
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 0e426dcead5d1f315717fbc19cf7f7bdac62d563
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839129"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75970172"
 ---
 # <a name="using-azure-storage-with-a-jenkins-continuous-integration-solution"></a>Korzystanie z usługi Azure Storage z rozwiązaniem ciągłej integracji Jenkins
 
@@ -49,7 +49,7 @@ Korzyści wynikające z używania Blob service do hostowania artefaktów kompila
      
       W przypadku typowego rozwiązania CI Jenkins można skonfigurować do uruchamiania jako usługa, a w wierszu polecenia musi być wystarczająca wartość Jenkins War.
 * Konto platformy Azure. Konto platformy Azure można zarejestrować w <https://www.azure.com>.
-* Konto usługi Azure Storage. Jeśli nie masz jeszcze konta magazynu, możesz utworzyć je, wykonując czynności opisane w sekcji [Tworzenie konta magazynu](../common/storage-quickstart-create-account.md).
+* Konto usługi Azure Storage. Jeśli nie masz jeszcze konta magazynu, możesz utworzyć je, wykonując czynności opisane w sekcji [Tworzenie konta magazynu](../common/storage-account-create.md).
 * Znajomość rozwiązania Jenkins CI jest zalecana, ale nie jest wymagana, ponieważ Poniższa zawartość będzie używać przykładu podstawowego do wyświetlania kroków potrzebnych podczas korzystania z Blob service jako repozytorium dla artefaktów kompilacji Jenkins CI.
 
 ## <a name="how-to-use-the-blob-service-with-jenkins-ci"></a>Jak używać Blob service z Jenkinsą CI
@@ -104,7 +104,7 @@ W celach informacyjnych należy najpierw utworzyć zadanie, które spowoduje utw
 12. Wybierz pozycję **Zapisz** , aby zapisać ustawienia.
 13. Na pulpicie nawigacyjnym Jenkins wybierz opcję **Kompiluj teraz** , aby uruchomić **MyJob**. Przejrzyj dane wyjściowe konsoli dla stanu. Komunikaty o stanie usługi Azure Storage zostaną uwzględnione w danych wyjściowych konsoli, gdy akcja po kompilacji zacznie przekazywać artefakty kompilacji.
 14. Po pomyślnym zakończeniu zadania można przeanalizować artefakty kompilacji, otwierając publiczny obiekt BLOB.
-    1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+    1. Zaloguj się do [portalu Azure](https://portal.azure.com).
     2. Wybierz pozycję **Magazyn**.
     3. Wybierz nazwę konta magazynu, która została użyta dla Jenkins.
     4. Wybierz **kontenery**.

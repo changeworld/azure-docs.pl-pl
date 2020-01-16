@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/23/2019
-ms.openlocfilehash: c128f17a3d2c4f5461a04ae375e05336cc994b4b
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: e4e15d1c6554fc567f668b2033bff5b5664db918
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552308"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75972794"
 ---
 # <a name="create-apache-hbase-clusters-on-hdinsight-in-azure-virtual-network"></a>Tworzenie klastrów Apache HBase w usłudze HDInsight na platformie Azure Virtual Network
 
@@ -29,7 +29,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="create-apache-hbase-cluster-into-virtual-network"></a>Tworzenie klastra Apache HBase w sieci wirtualnej
 
-W tej sekcji utworzysz oparty na systemie Linux Klaster Apache HBase z zależnym kontem usługi Azure Storage w sieci wirtualnej platformy Azure przy użyciu [szablonu Azure Resource Manager](../../azure-resource-manager/resource-group-template-deploy.md). Aby poznać inne metody tworzenia klastra i zrozumieć ustawienia, zobacz [Tworzenie klastrów usługi HDInsight](../hdinsight-hadoop-provision-linux-clusters.md). Aby uzyskać więcej informacji o używaniu szablonu do tworzenia klastrów Apache Hadoop w usłudze HDInsight, zobacz [Tworzenie klastrów Apache Hadoop w usłudze HDInsight przy użyciu szablonów Azure Resource Manager](../hdinsight-hadoop-create-linux-clusters-arm-templates.md)
+W tej sekcji utworzysz oparty na systemie Linux Klaster Apache HBase z zależnym kontem usługi Azure Storage w sieci wirtualnej platformy Azure przy użyciu [szablonu Azure Resource Manager](../../azure-resource-manager/templates/deploy-powershell.md). Aby poznać inne metody tworzenia klastra i zrozumieć ustawienia, zobacz [Tworzenie klastrów usługi HDInsight](../hdinsight-hadoop-provision-linux-clusters.md). Aby uzyskać więcej informacji o używaniu szablonu do tworzenia klastrów Apache Hadoop w usłudze HDInsight, zobacz [Tworzenie klastrów Apache Hadoop w usłudze HDInsight przy użyciu szablonów Azure Resource Manager](../hdinsight-hadoop-create-linux-clusters-arm-templates.md)
 
 > [!NOTE]  
 > Niektóre właściwości są trwale kodowane w szablonie. Przykład:

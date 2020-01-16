@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 11/04/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 275eb545b431085627658eb5d8ac0a065d0cb00e
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 6cd450ac18007e31d9d8144fdb0e8554dd31c363
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867010"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75968659"
 ---
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
@@ -92,7 +92,7 @@ new-azresourcegroupdeployment -name exampledeployment `
   -templatefile .\azuredeploy.json -workspaceName "exampleworkspace" -sku "basic"
 ```
 
-Aby uzyskać więcej informacji, zobacz [wdrażanie zasobów za pomocą szablonów Menedżer zasobów i Azure PowerShell](../azure-resource-manager/resource-group-template-deploy.md) i [wdrażanie prywatnego szablonu Menedżer zasobów z tokenem SAS i Azure PowerShell](../azure-resource-manager/secure-template-with-sas-token.md).
+Aby uzyskać więcej informacji, zobacz [wdrażanie zasobów za pomocą szablonów Menedżer zasobów i Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md) i [wdrażanie prywatnego szablonu Menedżer zasobów z tokenem SAS i Azure PowerShell](../azure-resource-manager/templates/secure-template-with-sas-token.md).
 
 ## <a name="use-azure-cli"></a>Interfejs wiersza polecenia platformy Azure
 
@@ -107,7 +107,7 @@ az group deployment create \
   --parameters workspaceName=exampleworkspace location=eastus sku=basic
 ```
 
-Aby uzyskać więcej informacji, zobacz [wdrażanie zasobów za pomocą szablonów Menedżer zasobów i interfejsu wiersza polecenia platformy Azure](../azure-resource-manager/resource-group-template-deploy-cli.md) oraz [wdrażanie szablonu prywatnego Menedżer zasobów z tokenem SAS i interfejsem wiersza polecenia platformy Azure](../azure-resource-manager/secure-template-with-sas-token.md).
+Aby uzyskać więcej informacji, zobacz [wdrażanie zasobów za pomocą szablonów Menedżer zasobów i interfejsu wiersza polecenia platformy Azure](../azure-resource-manager/templates/deploy-cli.md) oraz [wdrażanie szablonu prywatnego Menedżer zasobów z tokenem SAS i interfejsem wiersza polecenia platformy Azure](../azure-resource-manager/templates/secure-template-with-sas-token.md).
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 
@@ -124,7 +124,7 @@ Większość operacji tworzenia zasobów za pomocą szablonów to idempotentne, 
 Aby uniknąć tego problemu, zalecamy zastosowanie jednej z następujących metod:
 
 * Nie Wdrażaj szablonu więcej niż raz dla tych samych parametrów. Lub Usuń istniejące zasoby przed użyciem szablonu, aby utworzyć je ponownie.
-  
+
 * Przejrzyj zasady dostępu Key Vault a następnie użyj tych zasad, aby ustawić właściwość `accessPolicies` szablonu. Aby wyświetlić zasady dostępu, użyj następującego polecenia platformy Azure:
 
     ```azurecli-interactive
@@ -165,7 +165,7 @@ Aby uniknąć tego problemu, zalecamy zastosowanie jednej z następujących meto
           }
         },
         ```
-    
+
     * **Usuń** wiersz `"[resourceId('Microsoft.KeyVault/vaults', variables('keyVaultName'))]",` z sekcji `dependsOn` obszaru roboczego. **Zmień** również wpis `keyVault` w sekcji `properties` obszaru roboczego, aby odwołać się do parametru `keyVaultId`:
 
         ```json
@@ -193,7 +193,7 @@ Aby uniknąć tego problemu, zalecamy zastosowanie jednej z następujących meto
           }
         }
         ```
-      
+
     Po wprowadzeniu tych zmian możesz określić identyfikator istniejącego zasobu Key Vault podczas uruchamiania szablonu. Następnie szablon ponownie użyje Key Vault, ustawiając właściwość `keyVault` obszaru roboczego na jego identyfikator.
 
     Aby uzyskać identyfikator Key Vault, można odwoływać się do danych wyjściowych oryginalnego szablonu lub użyć interfejsu wiersza polecenia platformy Azure. Poniższe polecenie stanowi przykład użycia interfejsu wiersza polecenia platformy Azure w celu pobrania identyfikatora zasobu Key Vault:
@@ -210,5 +210,5 @@ Aby uniknąć tego problemu, zalecamy zastosowanie jednej z następujących meto
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Wdrażanie zasobów za pomocą szablonów Menedżer zasobów i Menedżer zasobów interfejsu API REST](../azure-resource-manager/resource-group-template-deploy-rest.md).
-* [Tworzenie i wdrażanie grup zasobów platformy Azure za pomocą programu Visual Studio](../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md).
+* [Wdrażanie zasobów za pomocą szablonów Menedżer zasobów i Menedżer zasobów interfejsu API REST](../azure-resource-manager/templates/deploy-rest.md).
+* [Tworzenie i wdrażanie grup zasobów platformy Azure za pomocą programu Visual Studio](../azure-resource-manager/templates/create-visual-studio-deployment-project.md).

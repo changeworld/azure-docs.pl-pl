@@ -7,17 +7,17 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/30/2019
-ms.openlocfilehash: f4612232acfe6099c56d365e482cbc82c8436dee
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 2bf2f012e553e08a1eb829f93d9af0f0e74f638b
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75745632"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977656"
 ---
 # <a name="collect-and-analyze-azure-activity-logs-in-log-analytics-workspace-in-azure-monitor"></a>Zbieranie i analizowanie dzienników aktywności platformy Azure w obszarze roboczym Log Analytics w Azure Monitor
 
 > [!WARNING]
-> Teraz można zbierać dane dziennika aktywności w obszarze roboczym Log Analytics przy użyciu ustawienia diagnostycznego podobnego do sposobu zbierania dzienników zasobów. Zobacz [zbieranie i analizowanie dzienników aktywności platformy Azure w obszarze roboczym log Analytics w Azure monitor](diagnostic-settings-subscription.md).
+> Teraz można zbierać dane dziennika aktywności w obszarze roboczym Log Analytics przy użyciu ustawienia diagnostycznego podobnego do sposobu zbierania dzienników zasobów. Zobacz [zbieranie i analizowanie dzienników aktywności platformy Azure w obszarze roboczym log Analytics w Azure monitor](diagnostic-settings-legacy.md).
 
 [Dziennik aktywności platformy Azure](platform-logs-overview.md) zapewnia wgląd w zdarzenia na poziomie subskrypcji, które wystąpiły w ramach subskrypcji platformy Azure. W tym artykule opisano, jak zebrać dziennik aktywności do obszaru roboczego Log Analytics i jak korzystać z rozwiązania do [monitorowania](../insights/solutions.md)Activity Log Analytics, które udostępnia zapytania dziennika i widoki służące do analizowania tych danych. 
 
@@ -32,7 +32,7 @@ Połączenie dziennika aktywności z obszarem roboczym Log Analytics zapewnia na
 Pojedynczy obszar roboczy może być połączony z dziennikiem aktywności dla wielu subskrypcji w tej samej dzierżawie platformy Azure. Aby uzyskać dostęp do kolekcji dla wielu dzierżawców, zobacz [zbieranie dzienników aktywności platformy Azure w obszarze roboczym log Analytics w wielu subskrypcjach w różnych dzierżawach Azure Active Directory](activity-log-collect-tenants.md).
 
 > [!IMPORTANT]
-> Jeśli dostawcy zasobów Microsoft. OperationalInsights i Microsoft. OperationsManagement nie są zarejestrowani dla Twojej subskrypcji, może wystąpić błąd w poniższej procedurze. Zobacz [dostawcy zasobów platformy Azure i typy](../../azure-resource-manager/resource-manager-supported-services.md) , aby zarejestrować tych dostawców.
+> Jeśli dostawcy zasobów Microsoft. OperationalInsights i Microsoft. OperationsManagement nie są zarejestrowani dla Twojej subskrypcji, może wystąpić błąd w poniższej procedurze. Zobacz [dostawcy zasobów platformy Azure i typy](../../azure-resource-manager/management/resource-providers-and-types.md) , aby zarejestrować tych dostawców.
 
 Aby połączyć dziennik aktywności z obszarem roboczym Log Analytics, wykonaj czynności opisane w poniższej procedurze:
 

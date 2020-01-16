@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/31/2017
 ms.author: mikeray
 ms.custom: seo-lt-2019
-ms.openlocfilehash: d2dce6875ec39810a81bb5ae454d953a7b7ab0a9
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: ca13d5e8369d007188a17352913519172ed8744e
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74032719"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978182"
 ---
 # <a name="configure-an-external-listener-for-availability-groups-on-azure-sql-server-vms"></a>Konfigurowanie zewnętrznego odbiornika dla grup dostępności na maszynach wirtualnych platformy Azure SQL Server
 > [!div class="op_single_selector"]
@@ -32,7 +32,7 @@ ms.locfileid: "74032719"
 W tym temacie opisano sposób konfigurowania odbiornika dla zawsze włączonych grup dostępności, które są dostępne zewnętrznie w Internecie. Jest to możliwe dzięki skojarzeniu **publicznego wirtualnego adresu IP (VIP)** usługi w chmurze z odbiornikiem.
 
 > [!IMPORTANT] 
-> Platforma Azure ma dwa różne modele wdrażania służące do tworzenia zasobów i pracy z nimi: [Menedżer zasobów i klasyczne](../../../azure-resource-manager/resource-manager-deployment-model.md). W tym artykule opisano korzystanie z klasycznego modelu wdrażania. Firma Microsoft zaleca, aby w przypadku większości nowych wdrożeń korzystać z modelu opartego na programie Resource Manager.
+> Platforma Azure ma dwa różne modele wdrażania służące do tworzenia zasobów i pracy z nimi: [Menedżer zasobów i klasyczne](../../../azure-resource-manager/management/deployment-models.md). W tym artykule opisano korzystanie z klasycznego modelu wdrażania. Firma Microsoft zaleca, aby w przypadku większości nowych wdrożeń korzystać z modelu opartego na programie Resource Manager.
 
 Grupa dostępności może zawierać repliki tylko lokalnie, tylko platformę Azure lub obejmować konfiguracje hybrydowe i platformy Azure. Repliki platformy Azure mogą znajdować się w tym samym regionie lub w wielu regionach, w których jest używana wiele sieci wirtualnych (sieci wirtualnych). W poniższych krokach przyjęto, że [skonfigurowano już grupę dostępności](../classic/portal-sql-alwayson-availability-groups.md) , ale nie skonfigurowano odbiornika.
 

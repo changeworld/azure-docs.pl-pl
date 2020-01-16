@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 10/11/2019
-ms.openlocfilehash: 0e9b382b27d0bd1e4fd3a553ca468dd562eca368
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 753977ed0516e934f661d81904b60ff9935aa423
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792913"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981174"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Zabezpieczanie dostępu i danych w Azure Logic Apps
 
@@ -174,7 +174,7 @@ Można zezwolić tylko określonym użytkownikom lub grupom na uruchamianie okre
 
 * [Operator aplikacji logiki](../role-based-access-control/built-in-roles.md#logic-app-operator): umożliwia odczytywanie, Włączanie i wyłączanie aplikacji logiki, ale nie można ich edytować ani aktualizować.
 
-Aby uniemożliwić innym użytkownikom zmianę lub usunięcie aplikacji logiki, możesz użyć [blokady zasobów platformy Azure](../azure-resource-manager/resource-group-lock-resources.md). Ta funkcja uniemożliwia innym osobom zmianę lub usunięcie zasobów produkcyjnych.
+Aby uniemożliwić innym użytkownikom zmianę lub usunięcie aplikacji logiki, możesz użyć [blokady zasobów platformy Azure](../azure-resource-manager/management/lock-resources.md). Ta funkcja uniemożliwia innym osobom zmianę lub usunięcie zasobów produkcyjnych.
 
 <a name="secure-run-history"></a>
 
@@ -356,7 +356,7 @@ Poniżej przedstawiono kilka [kwestii, które](#obfuscation-considerations) nale
 
 ## <a name="access-to-parameter-inputs"></a>Dostęp do danych wejściowych parametrów
 
-W przypadku wdrażania w różnych środowiskach należy rozważyć parametryzacja wartości w definicji przepływu pracy, które różnią się w zależności od tych środowisk. Dzięki temu można uniknąć zakodowanych danych przy użyciu [szablonu Azure Resource Manager](../azure-resource-manager/template-deployment-overview.md) , aby wdrożyć aplikację logiki, chronić poufne dane przez zdefiniowanie zabezpieczonych parametrów i przekazać te dane jako osobny dane wejściowe za pomocą [parametrów szablonu](../azure-resource-manager/template-parameters.md) przy użyciu [pliku parametrów](../azure-resource-manager/resource-manager-parameter-files.md).
+W przypadku wdrażania w różnych środowiskach należy rozważyć parametryzacja wartości w definicji przepływu pracy, które różnią się w zależności od tych środowisk. Dzięki temu można uniknąć zakodowanych danych przy użyciu [szablonu Azure Resource Manager](../azure-resource-manager/templates/overview.md) , aby wdrożyć aplikację logiki, chronić poufne dane przez zdefiniowanie zabezpieczonych parametrów i przekazać te dane jako osobny dane wejściowe za pomocą [parametrów szablonu](../azure-resource-manager/templates/template-parameters.md) przy użyciu [pliku parametrów](../azure-resource-manager/templates/parameter-files.md).
 
 Na przykład jeśli uwierzytelniasz akcje HTTP za pomocą [Azure Active Directory OAuth](#azure-active-directory-oauth-authentication), możesz zdefiniować i zabezpieczyć parametry akceptujące identyfikator klienta i klucz tajny klienta, które są używane do uwierzytelniania. Aby zdefiniować te parametry w aplikacji logiki, użyj sekcji `parameters` w definicji przepływu pracy aplikacji logiki i szablonu Menedżer zasobów do wdrożenia. Aby ukryć wartości parametrów, które nie mają być wyświetlane podczas edytowania aplikacji logiki lub wyświetlania historii uruchamiania, zdefiniuj parametry przy użyciu `securestring` lub `secureobject` typu i użyj kodowania w razie potrzeby. Parametry, które mają ten typ nie są zwracane z definicją zasobu i nie są dostępne podczas wyświetlania zasobu po wdrożeniu. Aby uzyskać dostęp do tych wartości parametrów podczas wykonywania, użyj wyrażenia `@parameters('<parameter-name>')` wewnątrz definicji przepływu pracy. To wyrażenie jest oceniane tylko w czasie wykonywania i jest opisane przez [Język definicji przepływu pracy](../logic-apps/logic-apps-workflow-definition-language.md).
 
@@ -368,11 +368,11 @@ Aby uzyskać więcej informacji, zobacz następujące sekcje w tym temacie:
 * [Zabezpieczanie parametrów w definicjach przepływu pracy](#secure-parameters-workflow)
 * [Ukryj dane z historii uruchamiania przy użyciu zaciemniania](#obfuscate)
 
-W przypadku [automatyzowania wdrażania aplikacji logiki za pomocą szablonów Menedżer zasobów](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)można definiować zabezpieczone [Parametry szablonu](../azure-resource-manager/template-parameters.md), które są oceniane we wdrożeniu, przy użyciu typów `securestring` i `secureobject`. Aby zdefiniować parametry szablonu, użyj sekcji najwyższego poziomu szablonu `parameters`, która jest odrębna i inna od sekcji `parameters` definicji przepływu pracy. Aby podać wartości parametrów szablonu, użyj oddzielnego [pliku parametrów](../azure-resource-manager/resource-manager-parameter-files.md).
+W przypadku [automatyzowania wdrażania aplikacji logiki za pomocą szablonów Menedżer zasobów](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)można definiować zabezpieczone [Parametry szablonu](../azure-resource-manager/templates/template-parameters.md), które są oceniane we wdrożeniu, przy użyciu typów `securestring` i `secureobject`. Aby zdefiniować parametry szablonu, użyj sekcji najwyższego poziomu szablonu `parameters`, która jest odrębna i inna od sekcji `parameters` definicji przepływu pracy. Aby podać wartości parametrów szablonu, użyj oddzielnego [pliku parametrów](../azure-resource-manager/templates/parameter-files.md).
 
-Na przykład, jeśli używasz wpisów tajnych, możesz definiować i używać zabezpieczonych parametrów szablonu, które pobierają te wpisy tajne z [Azure Key Vault](../key-vault/key-vault-overview.md) we wdrożeniu. Następnie można odwołać się do magazynu kluczy i wpisu tajnego w pliku parametrów. Aby uzyskać więcej informacji, zobacz następujące tematy:
+Na przykład, jeśli używasz wpisów tajnych, możesz definiować i używać zabezpieczonych parametrów szablonu, które pobierają te wpisy tajne z [Azure Key Vault](../key-vault/key-vault-overview.md) we wdrożeniu. Następnie można odwołać się do magazynu kluczy i wpisu tajnego w pliku parametrów. Aby uzyskać więcej informacji zobacz następujące tematy:
 
-* [Przekaż wartości poufne podczas wdrażania przy użyciu Azure Key Vault](../azure-resource-manager/resource-manager-keyvault-parameter.md)
+* [Przekaż wartości poufne podczas wdrażania przy użyciu Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md)
 * [Zabezpieczanie parametrów w szablonach Azure Resource Manager](#secure-parameters-deployment-template) w dalszej części tego tematu
 
 <a name="secure-parameters-workflow"></a>
@@ -425,11 +425,11 @@ Aby chronić poufne informacje w definicji przepływu pracy aplikacji logiki, u�
 
 ### <a name="secure-parameters-in-azure-resource-manager-templates"></a>Zabezpieczanie parametrów w szablonach Azure Resource Manager
 
-[Szablon Menedżer zasobów](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md) dla aplikacji logiki zawiera wiele sekcji `parameters`. Aby chronić hasła, klucze, wpisy tajne i inne informacje poufne, zdefiniuj zabezpieczone parametry na poziomie szablonu i na poziomie definicji przepływu pracy przy użyciu typu `securestring` lub `secureobject`. Następnie można przechowywać te wartości w [Azure Key Vault](../key-vault/key-vault-overview.md) i używać [pliku parametrów](../azure-resource-manager/resource-manager-parameter-files.md) do odwoływania się do magazynu kluczy i wpisu tajnego. Następnie szablon pobiera te informacje we wdrożeniu. Aby uzyskać więcej informacji, zobacz [przekazywanie poufnych wartości we wdrożeniu przy użyciu Azure Key Vault](../azure-resource-manager/resource-manager-keyvault-parameter.md).
+[Szablon Menedżer zasobów](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md) dla aplikacji logiki zawiera wiele sekcji `parameters`. Aby chronić hasła, klucze, wpisy tajne i inne informacje poufne, zdefiniuj zabezpieczone parametry na poziomie szablonu i na poziomie definicji przepływu pracy przy użyciu typu `securestring` lub `secureobject`. Następnie można przechowywać te wartości w [Azure Key Vault](../key-vault/key-vault-overview.md) i używać [pliku parametrów](../azure-resource-manager/templates/parameter-files.md) do odwoływania się do magazynu kluczy i wpisu tajnego. Następnie szablon pobiera te informacje we wdrożeniu. Aby uzyskać więcej informacji, zobacz [przekazywanie poufnych wartości we wdrożeniu przy użyciu Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md).
 
 Poniżej znajduje się więcej informacji o tych `parameters` sekcjach:
 
-* Na najwyższego poziomu szablonu sekcja `parameters` definiuje parametry dla wartości używanych przez szablon podczas *wdrażania*. Na przykład te wartości mogą zawierać parametry połączenia dla określonego środowiska wdrożenia. Następnie można przechowywać te wartości w osobnym [pliku parametrów](../azure-resource-manager/resource-manager-parameter-files.md), co ułatwia zmianę tych wartości.
+* Na najwyższego poziomu szablonu sekcja `parameters` definiuje parametry dla wartości używanych przez szablon podczas *wdrażania*. Na przykład te wartości mogą zawierać parametry połączenia dla określonego środowiska wdrożenia. Następnie można przechowywać te wartości w osobnym [pliku parametrów](../azure-resource-manager/templates/parameter-files.md), co ułatwia zmianę tych wartości.
 
 * W definicji zasobu aplikacji logiki, ale poza definicją przepływu pracy, sekcja `parameters` określa wartości parametrów definicji przepływu pracy. W tej sekcji można przypisać te wartości przy użyciu wyrażeń szablonu, które odwołują się do parametrów szablonu. Wyrażenia te są oceniane podczas wdrażania.
 
@@ -604,7 +604,7 @@ Oto kilka sposobów zabezpieczania punktów końcowych, które odbierają wywoł
 
 Punkty końcowe HTTP i HTTPS obsługują różne rodzaje uwierzytelniania. Na podstawie wyzwalacza lub akcji, która służy do wykonywania wywołań wychodzących lub żądań, które uzyskują dostęp do tych punktów końcowych, można wybierać spośród różnych zakresów typów uwierzytelniania. Aby zapewnić ochronę poufnych informacji, które obsługuje aplikacja logiki, należy użyć zabezpieczonych parametrów i zakodować dane w razie potrzeby. Aby uzyskać więcej informacji o używaniu i zabezpieczaniu parametrów, zobacz [dostęp do danych wejściowych parametrów](#secure-action-parameters).
 
-| Typ uwierzytelniania | Obsługiwane przez |
+| Typ uwierzytelniania | Obsługiwane przez program |
 |---------------------|--------------|
 | [Podstawowa](#basic-authentication) | Azure API Management, Azure App Services, HTTP, HTTP + Swagger, element webhook protokołu HTTP |
 | [Certyfikat klienta](#client-certificate-authentication) | Azure API Management, Azure App Services, HTTP, HTTP + Swagger, element webhook protokołu HTTP |
@@ -748,7 +748,7 @@ W wyzwalaczu lub akcji, która obsługuje uwierzytelnianie surowe, określ nast�
 
 | Właściwość (Projektant) | Właściwość (JSON) | Wymagane | Wartość | Opis |
 |---------------------|-----------------|----------|-------|-------------|
-| **Uwierzytelnianie** | `type` | Tak | Surowców | Typ uwierzytelniania do użycia |
+| **Uwierzytelnianie** | `type` | Tak | Nieprzetworzone | Typ uwierzytelniania do użycia |
 | **Wartość** | `value` | Tak | <> *wartości nagłówka autoryzacji* | Wartość nagłówka autoryzacji do użycia na potrzeby uwierzytelniania |
 ||||||
 

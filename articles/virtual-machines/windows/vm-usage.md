@@ -15,18 +15,18 @@ ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 12/04/2017
 ms.author: memccror
-ms.openlocfilehash: d574c5eef15c21d3d490bcfe682b87bae2856f1d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2aa175d97787d82aae062a95ed519f35ff65816b
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75353719"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982259"
 ---
 # <a name="understanding-azure-virtual-machine-usage"></a>Informacje o użyciu maszyny wirtualnej platformy Azure
-Analizując dane użycia platformy Azure, można uzyskać zaawansowane informacje o zużyciu — szczegółowe informacje umożliwiające zarządzanie kosztami i alokację w całej organizacji. Ten dokument zawiera szczegółowe informacje o szczegółowe na temat użycia obliczeń na platformie Azure. Aby uzyskać więcej informacji na temat ogólnego użycia platformy Azure, przejdź do opisu [rachunku](../../billing/billing-understand-your-bill.md).
+Analizując dane użycia platformy Azure, można uzyskać zaawansowane informacje o zużyciu — szczegółowe informacje umożliwiające zarządzanie kosztami i alokację w całej organizacji. Ten dokument zawiera szczegółowe informacje o szczegółowe na temat użycia obliczeń na platformie Azure. Aby uzyskać więcej informacji na temat ogólnego użycia platformy Azure, przejdź do opisu [rachunku](../../cost-management-billing/understand/review-individual-bill.md).
 
 ## <a name="download-your-usage-details"></a>Pobierz szczegóły użycia
-Aby rozpocząć, [Pobierz szczegóły użycia](../../billing/billing-download-azure-invoice-daily-usage-date.md). Poniższa tabela zawiera definicje i przykładowe wartości użycia dla Virtual Machines wdrożonych za pośrednictwem Azure Resource Manager. Ten dokument nie zawiera szczegółowych informacji o maszynach wirtualnych wdrożonych za pośrednictwem naszego modelu klasycznego.
+Aby rozpocząć, [Pobierz szczegóły użycia](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md). Poniższa tabela zawiera definicje i przykładowe wartości użycia dla Virtual Machines wdrożonych za pośrednictwem Azure Resource Manager. Ten dokument nie zawiera szczegółowych informacji o maszynach wirtualnych wdrożonych za pośrednictwem naszego modelu klasycznego.
 
 
 | Pola             | Znaczenie                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | Przykładowe wartości                                                                                                                                                                                                                                                                                                                                                   |
@@ -132,7 +132,7 @@ ComputeHR oznacza godzinę obliczeniową, która reprezentuje zdarzenie użycia 
 ### <a name="how-do-i-know-if-i-am-charged-for-premium-software"></a>Jak mogę sprawdzić, czy opłata jest naliczana za oprogramowanie w warstwie Premium?
 Podczas analizowania obrazu maszyny wirtualnej najlepiej odpowiadającego Twoim potrzebom zapoznaj się z [portalem Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/compute). Obraz ma stawkę planu oprogramowania. Jeśli dla stawki zostanie wyświetlona wartość "bezpłatna", nie ma dodatkowych kosztów dla oprogramowania. 
 ### <a name="what-is-the-difference-between-microsoftclassiccompute-and-microsoftcompute-in-the-consumed-service"></a>Jaka jest różnica między Microsoft. ClassicCompute i Microsoft. COMPUTE w używanej usłudze?
-Microsoft. ClassicCompute reprezentuje zasoby klasyczne wdrożone za pośrednictwem Service Manager platformy Azure. W przypadku wdrażania za pośrednictwem Menedżer zasobów, firma Microsoft. COMPUTE zostanie uzupełniona o użycie usługi. Dowiedz się więcej na temat [modeli wdrażania platformy Azure](../../azure-resource-manager/resource-manager-deployment-model.md).
+Microsoft. ClassicCompute reprezentuje zasoby klasyczne wdrożone za pośrednictwem Service Manager platformy Azure. W przypadku wdrażania za pośrednictwem Menedżer zasobów, firma Microsoft. COMPUTE zostanie uzupełniona o użycie usługi. Dowiedz się więcej na temat [modeli wdrażania platformy Azure](../../azure-resource-manager/management/deployment-models.md).
 ### <a name="why-is-the-instanceid-field-blank-for-my-virtual-machine-usage"></a>Dlaczego pole InstanceID jest puste w przypadku użycia maszyny wirtualnej?
 W przypadku wdrożenia za pomocą klasycznego modelu wdrażania ciąg InstanceID nie jest dostępny.
 ### <a name="why-are-the-tags-for-my-vms-not-flowing-to-the-usage-details"></a>Dlaczego Tagi moich maszyn wirtualnych nie przepływają do szczegółów użycia?
@@ -143,5 +143,5 @@ W modelu klasycznym rozliczenia dla zasobów są agregowane na poziomie usługi 
 Maszyny wirtualne z obsługą magazynu w warstwie Premium są rozliczane w taki sam sposób, jak maszyny wirtualne z obsługą magazynu innego niż Premium. Różnią się tylko koszty związane z magazynem. Aby uzyskać więcej informacji, odwiedź [stronę z cennikiem usługi Storage](https://azure.microsoft.com/pricing/details/storage/unmanaged-disks/) .
 
 ## <a name="next-steps"></a>Następne kroki
-Aby dowiedzieć się więcej na temat szczegółowych informacji dotyczących użycia, zobacz [Opis rachunku na Microsoft Azure.](../../billing/billing-understand-your-bill.md)
+Aby dowiedzieć się więcej na temat szczegółowych informacji dotyczących użycia, zobacz [Opis rachunku na Microsoft Azure.](../../cost-management-billing/understand/review-individual-bill.md)
 

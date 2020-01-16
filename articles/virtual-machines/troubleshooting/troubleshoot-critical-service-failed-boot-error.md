@@ -12,25 +12,25 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/08/2018
 ms.author: genli
-ms.openlocfilehash: f038e56fe4b1e6ad2737217674706eef77a39fd6
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 590505d954d52ebec9f8a5c344d6e750f11ef677
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058055"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981361"
 ---
 # <a name="windows-shows-critical-service-failed-on-blue-screen-when-booting-an-azure-vm"></a>System Windows wyświetla "KRYTYCZNa usługa nie powiodła się" na niebieskim ekranie podczas uruchamiania maszyny wirtualnej platformy Azure
 W tym artykule opisano błąd "niepowodzenie usługi KRYTYCZNEj", która może wystąpić w przypadku uruchamiania maszyny wirtualnej z systemem Windows w Microsoft Azure. Zawiera kroki rozwiązywania problemów, aby pomóc w rozwiązaniu problemów. 
 
 > [!NOTE] 
-> Platforma Azure oferuje dwa różne modele wdrażania związane z tworzeniem zasobów i pracą z nimi: [model wdrażania przy użyciu usługi Resource Manager i model klasyczny](../../azure-resource-manager/resource-manager-deployment-model.md). W tym artykule opisano użycie modelu wdrażania Menedżer zasobów, którego zalecamy używanie w przypadku nowych wdrożeń zamiast klasycznego modelu wdrażania.
+> Platforma Azure ma dwa różne modele wdrażania związane z tworzeniem zasobów i pracą z nimi: [Resource Manager i model klasyczny](../../azure-resource-manager/management/deployment-models.md). W tym artykule opisano użycie modelu wdrażania Menedżer zasobów, którego zalecamy używanie w przypadku nowych wdrożeń zamiast klasycznego modelu wdrażania.
 
 ## <a name="symptom"></a>Objaw 
 
 Nie uruchomiono maszyny wirtualnej z systemem Windows. Po sprawdzeniu zrzutów ekranu rozruchowego w ramach [diagnostyki rozruchu](./boot-diagnostics.md)na niebieskim ekranie zostanie wyświetlony jeden z następujących komunikatów o błędach:
 
-- "Komputer napotkał problem i wymaga ponownego uruchomienia. Można uruchomić ponownie. Aby uzyskać więcej informacji na temat tego problemu i możliwych poprawek https://windows.com/stopcode, odwiedź stronę. Jeśli skontaktujesz się z osobą odpowiedzialną za pomoc techniczną, przekaż im następujące informacje: Kod zatrzymania: USŁUGA KRYTYCZNA NIE POWIODŁA SIĘ " 
-- "Komputer napotkał problem i wymaga ponownego uruchomienia. Właśnie zbieramy pewne informacje o błędzie, a następnie będziemy ponownie uruchamiać dane. Jeśli chcesz dowiedzieć się więcej, możesz przeszukać w trybie online w późniejszym czasie dla tego błędu: CRITICAL_SERVICE_FAILED"
+- "Komputer napotkał problem i wymaga ponownego uruchomienia. Można uruchomić ponownie. Aby uzyskać więcej informacji na temat tego problemu i możliwych poprawek, odwiedź stronę https://windows.com/stopcode. Jeśli skontaktujesz się z pomocą techniczną, przekaż im te informacje: zatrzymywanie kodu: usługa KRYTYCZNa nie powiodła się. 
+- "Komputer napotkał problem i wymaga ponownego uruchomienia. Właśnie zbieramy pewne informacje o błędzie, a następnie będziemy ponownie uruchamiać dane. Jeśli chcesz dowiedzieć się więcej, możesz przeszukać w trybie online w późniejszym czasie dla tego błędu: CRITICAL_SERVICE_FAILED "
 
 ## <a name="cause"></a>Przyczyna
 
@@ -103,21 +103,21 @@ Aby włączyć dzienniki zrzutów i konsolę seryjną, uruchom następujący skr
         bcdedit /store <OS DISK LETTER>:\boot\bcd /deletevalue {default} safeboot
 8.  Uruchom ponownie maszynę wirtualną. 
 
-### <a name="optional-analyze-the-dump-logs-in-dump-crash-mode"></a>Opcjonalnie: Analizowanie dzienników zrzutów w trybie awaryjnego zrzutu
+### <a name="optional-analyze-the-dump-logs-in-dump-crash-mode"></a>Opcjonalnie: Analizuj dzienniki zrzutów w trybie awaryjnego zrzutu
 
 Aby samodzielnie analizować dzienniki zrzutów, wykonaj następujące czynności:
 
 1. Dołącz dysk systemu operacyjnego do maszyny wirtualnej odzyskiwania.
 2. Na dołączonym dysku systemu operacyjnego przejdź do **\Windows\System32\Config**. Skopiuj wszystkie pliki jako kopię zapasową w przypadku, gdy wymagane jest wycofanie.
 3. Uruchom **Edytor rejestru** (regedit. exe).
-4. Wybierz klucz **HKEY_LOCAL_MACHINE** . Z menu wybierz opcję**Załaduj** **plik** > Hive.
-5. Przejdź do folderu **\windows\system32\config\SYSTEM** na dysku systemu operacyjnego, który został podłączony. W polu Nazwa gałęzi wpisz **BROKENSYSTEM**. Nowa gałąź rejestru zostanie wyświetlona w kluczu **HKEY_LOCAL_MACHINE** .
-6. Przejdź do **HKEY_LOCAL_MACHINE\BROKENSYSTEM\ControlSet00x\Control\CrashControl** i wprowadź następujące zmiany:
+4. Wybierz klucz **HKEY_LOCAL_MACHINE** . W menu wybierz pozycję **plik** > **Załaduj gałąź Hive**.
+5. Przejdź do folderu **\windows\system32\config\SYSTEM** na dysku systemu operacyjnego, który został podłączony. W polu Nazwa gałęzi wpisz **BROKENSYSTEM**. W kluczu **HKEY_LOCAL_MACHINE** zostanie wyświetlona nowa gałąź rejestru.
+6. Przejdź do **HKEY_LOCAL_MACHINE \brokensystem\controlset00x\control\crashcontrol** i wprowadź następujące zmiany:
 
     Autoboot = 0
 
     CrashDumpEnabled = 2
-7.  Wybierz pozycję **BROKENSYSTEM**. Z menu wybierz pozycję**Zwolnij** **plik** > Hive.
+7.  Wybierz pozycję **BROKENSYSTEM**. Z menu wybierz kolejno pozycje **plik** > **Zwolnij gałąź Hive**.
 8.  Zmodyfikuj konfigurację BCD, aby przeprowadzić rozruch w trybie debugowania. Uruchom następujące polecenia w wierszu polecenia z podwyższonym poziomem uprawnień:
 
     ```cmd
@@ -137,7 +137,7 @@ Aby samodzielnie analizować dzienniki zrzutów, wykonaj następujące czynnośc
 9. [Odłącz dysk systemu operacyjnego, a następnie ponownie Dołącz dysk systemu operacyjnego do maszyny wirtualnej, której to dotyczy](troubleshoot-recovery-disks-portal-windows.md).
 10. Uruchom maszynę wirtualną, aby sprawdzić, czy jest wyświetlana analiza zrzutów. Znajdź plik, którego nie można załadować. Należy zastąpić ten plik plikiem z działającej maszyny wirtualnej. 
 
-    Poniżej znajduje się przykład analizy zrzutu. Można zobaczyć, że **błąd** jest w filecrypt. sys: "FAILURE_BUCKET_ID: 0x5A_c0000428_IMAGE_filecrypt.sys".
+    Poniżej znajduje się przykład analizy zrzutu. Można zobaczyć, że **błąd** jest w filecrypt. sys: "FAILURE_BUCKET_ID: 0x5A_c0000428_IMAGE_filecrypt. sys".
 
     ```
     kd> !analyze -v 

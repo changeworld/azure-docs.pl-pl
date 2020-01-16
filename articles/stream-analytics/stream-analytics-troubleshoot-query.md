@@ -8,18 +8,18 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 22e542715afa8c87ffb742bec6c22f758cd16587
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5534a46ba99d1536d331b5852ef47588f03d73a4
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75354263"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980277"
 ---
 # <a name="troubleshoot-azure-stream-analytics-queries"></a>Rozwiązywanie problemów z zapytaniami Azure Stream Analytics
 
 W tym artykule opisano typowe problemy związane z tworzeniem zapytań Stream Analytics i sposobach ich rozwiązywania.
 
-## <a name="query-is-not-producing-expected-output"></a>Zapytanie nie produkuje oczekiwanych danych wyjściowych 
+## <a name="query-is-not-producing-expected-output"></a>Zapytanie nie produkuje oczekiwanych danych wyjściowych
 1.  Sprawdzanie błędów przez testowanie lokalne:
     - Na karcie **zapytanie** wybierz pozycję **test**. Aby [przetestować zapytanie,](stream-analytics-test-query.md)Użyj pobranych przykładowych danych. Przejrzyj błędy i spróbuj je poprawić.   
     - Możesz również [testować zapytanie bezpośrednio na żywo](stream-analytics-live-data-local-testing.md) przy użyciu narzędzi Stream Analytics Tools for Visual Studio.
@@ -32,10 +32,10 @@ W tym artykule opisano typowe problemy związane z tworzeniem zapytań Stream An
     - Gdy korzystasz z funkcji okna, poczekaj, aż cały czas trwania okna zobaczy dane wyjściowe zapytania.
     - Sygnatura czasowa dla zdarzeń poprzedza czas rozpoczęcia zadania, dlatego zdarzenia są usuwane.
 
-4.  Upewnij się, że zasady określania kolejności zdarzeń zostały skonfigurowane zgodnie z oczekiwaniami. Przejdź do obszaru **Ustawienia** i wybierz pozycję [**porządkowanie zdarzeń**](stream-analytics-out-of-order-and-late-events.md). Zasady *nie* są stosowane, gdy do testowania zapytania jest używany przycisk **Testuj** . Ten wynik jest jedną różnicą między testowaniem w przeglądarce a uruchomieniem zadania w środowisku produkcyjnym. 
+4.  Upewnij się, że zasady określania kolejności zdarzeń zostały skonfigurowane zgodnie z oczekiwaniami. Przejdź do obszaru **Ustawienia** i wybierz pozycję [**porządkowanie zdarzeń**](stream-analytics-out-of-order-and-late-events.md). Zasady *nie* są stosowane, gdy do testowania zapytania jest używany przycisk **Testuj** . Ten wynik jest jedną różnicą między testowaniem w przeglądarce a uruchomieniem zadania w środowisku produkcyjnym.
 
 5. Debuguj przy użyciu dzienników inspekcji i diagnostyki:
-    - Użyj [dzienników inspekcji](../azure-resource-manager/resource-group-audit.md)i przefiltruj, aby identyfikować i debugować błędy.
+    - Użyj [dzienników inspekcji](../azure-resource-manager/management/view-activity-logs.md)i przefiltruj, aby identyfikować i debugować błędy.
     - [Dzienniki diagnostyczne zadań](stream-analytics-job-diagnostic-logs.md) umożliwiają identyfikowanie i Debugowanie błędów.
 
 ## <a name="job-is-consuming-too-many-streaming-units"></a>Zadanie zużywa zbyt wiele jednostek przesyłania strumieniowego
@@ -52,7 +52,7 @@ Następujące przykładowe zapytanie w zadaniu Azure Stream Analytics ma jedno w
 Należy pamiętać, że zadanie jest uruchomione, ale żadne zdarzenia nie są generowane w danych wyjściowych. Na kafelku **monitorowanie** , widocznym tutaj, można zobaczyć, że dane wejściowe są wytwarzane, ale nie wiesz, który krok **sprzężenia** spowodował porzucenie wszystkich zdarzeń.
 
 ![Kafelek monitorowanie Stream Analytics](./media/stream-analytics-select-into/stream-analytics-select-into-monitor.png)
- 
+
 W takiej sytuacji można dodać kilka dodatkowych instrukcji SELECT INTO do "log" pośrednich wyników SPRZĘŻENIa i danych odczytywanych z danych wejściowych.
 
 W tym przykładzie dodaliśmy dwa nowe "tymczasowe dane wyjściowe". Mogą to być dowolny ujścia, którego potrzebujesz. Oto przykład użycia usługi Azure Storage:

@@ -6,15 +6,15 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/31/2017
 ms.author: yegu
-ms.openlocfilehash: e4265cf3f9c211a19fe05bc18cf47a273165c3c3
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: df8b65fcb4dd2b9622716052be2df59cbfa5424a
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122763"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75971810"
 ---
 # <a name="import-and-export-data-in-azure-cache-for-redis"></a>Importowanie i eksportowanie danych w pamięci podręcznej platformy Azure dla Redis
-Import/Export to pamięć podręczna platformy Azure do Redis operacji zarządzania danymi, która umożliwia importowanie danych do usługi Azure cache dla Redis lub eksportowanie danych z pamięci podręcznej platformy Azure dla Redis przez zaimportowanie i eksportowanie pamięci podręcznej platformy Azure dla migawki bazy danych Redis Database (RDB) z pamięci podręcznej Premium do Obiekt BLOB na koncie usługi Azure Storage. 
+Import/Export to pamięć podręczna platformy Azure do Redis operacji zarządzania danymi, która umożliwia importowanie danych do usługi Azure cache dla Redis lub eksportowanie danych z pamięci podręcznej platformy Azure dla Redis przez zaimportowanie i eksportowanie pamięci podręcznej platformy Azure dla migawki bazy danych Redis Database (RDB) z pamięci podręcznej Premium do obiektu BLOB na koncie usługi Azure Storage.
 
 - **Eksportowanie** — możesz wyeksportować pamięć podręczną platformy Azure dla Redis RDB do obiektu BLOB typu Page.
 - **Import** — możesz zaimportować pamięć podręczną platformy Azure dla Redis RDB z obiektu BLOB lub blokowego obiektu BLOB.
@@ -57,11 +57,11 @@ Import może służyć do przenoszenia zgodnych plików RDB Redis z dowolnego se
 
     ![Import](./media/cache-how-to-import-export-data/cache-import-blobs.png)
 
-    Możesz monitorować postęp operacji importowania, wykonując powiadomienia z Azure Portal lub wyświetlając zdarzenia w [dzienniku inspekcji](../azure-resource-manager/resource-group-audit.md).
+    Możesz monitorować postęp operacji importowania, wykonując powiadomienia z Azure Portal lub wyświetlając zdarzenia w [dzienniku inspekcji](../azure-resource-manager/management/view-activity-logs.md).
 
     ![Postęp importowania](./media/cache-how-to-import-export-data/cache-import-data-import-complete.png)
 
-## <a name="export"></a>Eksportowanie
+## <a name="export"></a>Eksportuj
 Eksport pozwala wyeksportować dane przechowywane w pamięci podręcznej platformy Azure dla Redis do Redis zgodnych plików RDB. Ta funkcja służy do przenoszenia danych z jednej pamięci podręcznej platformy Azure dla wystąpienia Redis do innego lub do innego serwera Redis. Podczas eksportowania plik tymczasowy jest tworzony na maszynie wirtualnej, która obsługuje wystąpienie serwera usługi Azure cache for Redis, i plik zostanie przekazany do wskazanego konta magazynu. Po zakończeniu operacji eksportowania ze stanem powodzenie lub niepowodzenie plik tymczasowy zostanie usunięty.
 
 1. Aby wyeksportować bieżącą zawartość pamięci podręcznej do magazynu, [Przejdź do pamięci podręcznej](cache-configure.md#configure-azure-cache-for-redis-settings) w Azure Portal a następnie kliknij pozycję **Eksportuj dane** w **menu zasób**.
@@ -79,9 +79,9 @@ Eksport pozwala wyeksportować dane przechowywane w pamięci podręcznej platfor
     ![Wybieranie kontenera magazynu](./media/cache-how-to-import-export-data/cache-export-data-container.png)
 4. Wpisz **prefiks nazwy obiektu BLOB** , a następnie kliknij przycisk **Eksportuj** , aby rozpocząć proces eksportowania. Prefiks nazwy obiektu BLOB jest używany do tworzenia prefiksu nazw plików wygenerowanych przez tę operację eksportowania.
 
-    ![Eksportowanie](./media/cache-how-to-import-export-data/cache-export-data.png)
+    ![Eksportuj](./media/cache-how-to-import-export-data/cache-export-data.png)
 
-    Możesz monitorować postęp operacji eksportowania, wykonując powiadomienia z Azure Portal lub wyświetlając zdarzenia w [dzienniku inspekcji](../azure-resource-manager/resource-group-audit.md).
+    Możesz monitorować postęp operacji eksportowania, wykonując powiadomienia z Azure Portal lub wyświetlając zdarzenia w [dzienniku inspekcji](../azure-resource-manager/management/view-activity-logs.md).
 
     ![Ukończono eksportowanie danych](./media/cache-how-to-import-export-data/cache-export-data-export-complete.png)
 
@@ -109,8 +109,8 @@ Tak, oprócz importowania danych wyeksportowanych z pamięci podręcznej platfor
 
 > [!IMPORTANT]
 > Aby pomyślnie zaimportować dane wyeksportowane z serwerów Redis innych niż pamięć podręczna platformy Azure dla Redis przy użyciu obiektu BLOB strony, rozmiar obiektu BLOB strony musi być wyrównany na granicy 512 bajtów. Aby uzyskać przykładowy kod do wykonania dowolnego wymaganego uzupełnienia bajtów, zobacz [przykładowe przekazywanie obiektów BLOB na stronie](https://github.com/JimRoberts-MS/SamplePageBlobUpload).
-> 
-> 
+>
+>
 
 ### <a name="what-rdb-versions-can-i-import"></a>Jakie wersje RDB mogę zaimportować?
 

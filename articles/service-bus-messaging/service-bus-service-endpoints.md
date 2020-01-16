@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/20/2019
 ms.author: aschhab
-ms.openlocfilehash: 5446ee12a6933a916444d4f64a0eb983a35a59f8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 212cd96571561362003e7dcbd89efc5d2c54ab48
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75462061"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980801"
 ---
 # <a name="use-virtual-network-service-endpoints-with-azure-service-bus"></a>Korzystanie z punktów końcowych usługi Virtual Network z Azure Service Bus
 
@@ -31,14 +31,14 @@ Wynikiem jest relacja między obciążeniami powiązanymi z podsiecią i odpowia
 > Zaufane usługi firmy Microsoft nie są obsługiwane w przypadku implementacji sieci wirtualnych.
 >
 > Typowe scenariusze platformy Azure, które nie współpracują z sieciami wirtualnymi (należy zauważyć, że lista **nie** jest wyczerpująca) —
-> - Usługa Azure Stream Analytics
+> - Azure Stream Analytics
 > - Integracja z usługą Azure Event Grid
 > - Trasy usługi Azure IoT Hub
 > - Device Explorer usługi Azure IoT
 >
 > Poniższe usługi firmy Microsoft muszą znajdować się w sieci wirtualnej
 > - Azure App Service
-> - Azure Functions
+> - Stan usługi Funkcje Azure
 
 > [!IMPORTANT]
 > Sieci wirtualne są obsługiwane tylko w [warstwie Premium](service-bus-premium-messaging.md) Service Bus przestrzenie nazw.
@@ -70,13 +70,13 @@ Poniższy szablon Menedżer zasobów umożliwia dodanie reguły sieci wirtualnej
 Parametry szablonu:
 
 * **przestrzeń nazw**: Service Bus przestrzeń nazw.
-* **virtualNetworkingSubnetId**: w pełni kwalifikowana ścieżka Menedżer zasobów dla podsieci sieci wirtualnej; na przykład `/subscriptions/{id}/resourceGroups/{rg}/providers/Microsoft.Network/virtualNetworks/{vnet}/subnets/default` dla domyślnej podsieci sieci wirtualnej.
+* **virtualNetworkingSubnetId**: pełną ścieżkę Menedżera zasobów w podsieci sieci wirtualnej; na przykład `/subscriptions/{id}/resourceGroups/{rg}/providers/Microsoft.Network/virtualNetworks/{vnet}/subnets/default` domyślne podsieci sieci wirtualnej.
 
 > [!NOTE]
 > Chociaż nie ma możliwych reguł Odmów, szablon Azure Resource Manager ma ustawioną akcję domyślną **"Zezwalaj"** , która nie ogranicza połączeń.
 > Podczas tworzenia reguł Virtual Network lub zapór należy zmienić wartość ***"DefaultAction"***
 > 
-> from
+> z
 > ```json
 > "defaultAction": "Allow"
 > ```
@@ -196,5 +196,5 @@ Aby uzyskać więcej informacji na temat sieci wirtualnych zobacz następujące 
 - [Azure Service Bus filtrowanie adresów IP][ip-filtering]
 
 [vnet-sep]: ../virtual-network/virtual-network-service-endpoints-overview.md
-[lnk-deploy]: ../azure-resource-manager/resource-group-template-deploy.md
+[lnk-deploy]: ../azure-resource-manager/templates/deploy-powershell.md
 [ip-filtering]: service-bus-ip-filtering.md

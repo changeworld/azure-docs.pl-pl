@@ -5,12 +5,12 @@ author: mumian
 ms.date: 05/21/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 999b932cc12b945c3bf6bb0a4b56c3da19bb3ca6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 895d82eb79e4674ca95b9052d2384a257b296bf5
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75472408"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980660"
 ---
 # <a name="tutorial-use-condition-in-azure-resource-manager-templates"></a>Samouczek: używanie warunków w szablonach usługi Azure Resource Manager
 
@@ -155,7 +155,7 @@ New-AzResourceGroupDeployment `
 > [!NOTE]
 > Wdrożenie zakończy się niepowodzeniem, jeśli parametr **newOrExisting** będzie mieć wartość **new**, ale konto magazynu o podanej nazwie będzie już istnieć.
 
-Spróbuj wprowadzić inne wdrożenie z **newOrExistingem** ustawionym na wartość "istniejący" i określ istniejące konto magazynu. Aby wcześniej utworzyć konto magazynu, zobacz [Tworzenie konta magazynu](../../storage/common/storage-quickstart-create-account.md).
+Spróbuj wprowadzić inne wdrożenie z **newOrExistingem** ustawionym na wartość "istniejący" i określ istniejące konto magazynu. Aby wcześniej utworzyć konto magazynu, zobacz [Tworzenie konta magazynu](../../storage/common/storage-account-create.md).
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 

@@ -8,20 +8,20 @@ ms.reviewer: jamesbak
 ms.date: 12/06/2018
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 370717e09e788faa56662c4c88e2e7c0de21eef7
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 3db039d39ef532ea51143dc9cbdb6bd5f29d6225
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933149"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75970274"
 ---
 # <a name="the-azure-blob-filesystem-driver-abfs-a-dedicated-azure-storage-driver-for-hadoop"></a>Sterownik systemu plików obiektów blob platformy Azure (ABFS): dedykowany sterownik magazynu platformy Azure dla usługi Hadoop
 
-Jedną z podstawowych metod dostępu do danych w Azure Data Lake Storage Gen2 jest za pośrednictwem systemu [plików Hadoop](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/index.html). Data Lake Storage Gen2 umożliwia użytkownikom platformy Azure Blob Storage dostęp do nowego sterownika, sterownika systemu plików obiektów blob platformy Azure lub `ABFS`. ABFS jest częścią Apache Hadoop i jest dołączany do wielu komercyjnych dystrybucji usługi Hadoop. Za pomocą tego sterownika wiele aplikacji i platform może uzyskiwać dostęp do danych na platformie Azure Blob Storage bez bezpośredniego odwoływania się do Data Lake Storage Gen2. 
+Jedną z podstawowych metod dostępu do danych w Azure Data Lake Storage Gen2 jest za pośrednictwem systemu [plików Hadoop](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/index.html). Data Lake Storage Gen2 umożliwia użytkownikom platformy Azure Blob Storage dostęp do nowego sterownika, sterownika systemu plików obiektów blob platformy Azure lub `ABFS`. ABFS jest częścią Apache Hadoop i jest dołączany do wielu komercyjnych dystrybucji usługi Hadoop. Za pomocą tego sterownika wiele aplikacji i platform może uzyskiwać dostęp do danych na platformie Azure Blob Storage bez bezpośredniego odwoływania się do Data Lake Storage Gen2.
 
 ## <a name="prior-capability-the-windows-azure-storage-blob-driver"></a>Wcześniejsza możliwość: Sterownik Azure Storage Blob systemu Windows
 
-Sterownik Azure Storage Blob systemu Windows lub [Sterownik WASB](https://hadoop.apache.org/docs/current/hadoop-azure/index.html) dostarczył oryginalnego wsparcia dla BLOB Storage platformy Azure. Ten sterownik wykonał złożone zadanie mapowania semantyki systemu plików (zgodnie z wymaganiami interfejsu system plików Hadoop) do interfejsu stylu magazynu obiektów uwidocznionego przez usługę Azure Blob Storage. Ten sterownik nadal obsługuje ten model, zapewniając wysoką wydajność dostępu do danych przechowywanych w obiektach Blob, ale zawiera znaczną ilość kodu wykonującego to mapowanie, utrudniając jego konserwację. Ponadto niektóre operacje, takie jak [FileSystem. Rename ()](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/filesystem.html#boolean_renamePath_src_Path_d) i [FileSystem. Delete ()](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/filesystem.html#boolean_deletePath_p_boolean_recursive) w przypadku zastosowania do katalogów, wymagają, aby sterownik wykonywał ogromną liczbę operacji (ze względu na to, że obiekt przechowuje brak obsługi katalogów), co często prowadzi do potencjalnych klientów w celu obniżenia wydajności. Sterownik ABFS został zaprojektowany w celu pokonania nieodłącznych wad WASB.
+Sterownik Azure Storage Blob systemu Windows lub [Sterownik WASB](https://hadoop.apache.org/docs/current/hadoop-azure/index.html) dostarczył oryginalnego wsparcia dla BLOB Storage platformy Azure. Ten sterownik wykonał złożone zadanie mapowania semantyki systemu plików (zgodnie z wymaganiami interfejsu system plików Hadoop) do interfejsu stylu magazynu obiektów uwidocznionego przez usługę Azure Blob Storage. Ten sterownik nadal obsługuje ten model, zapewniając wysoką wydajność dostępu do danych przechowywanych w obiektach Blob, ale zawiera znaczną ilość kodu wykonującego to mapowanie, utrudniając jego konserwację. Ponadto niektóre operacje, takie jak [FileSystem. Rename ()](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/filesystem.html#boolean_renamePath_src_Path_d) i [FileSystem. Delete ()](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/filesystem.html#boolean_deletePath_p_boolean_recursive) w przypadku zastosowania do katalogów, wymagają, aby sterownik wykonywał ogromną liczbę operacji (ze względu na to, że obiekt przechowuje brak obsługi katalogów), co często prowadzi do obniżenia wydajności. Sterownik ABFS został zaprojektowany w celu pokonania nieodłącznych wad WASB.
 
 ## <a name="the-azure-blob-file-system-driver"></a>Sterownik systemu plików obiektów blob platformy Azure
 
@@ -36,21 +36,21 @@ Spójne z innymi implementacjami systemu plików w ramach usługi Hadoop, sterow
 Korzystając z powyższego formatu identyfikatora URI, można użyć standardowych narzędzi i struktur usługi Hadoop do odwoływania się do tych zasobów:
 
 ```bash
-hdfs dfs -mkdir -p abfs://fileanalysis@myanalytics.dfs.core.windows.net/tutorials/flightdelays/data 
-hdfs dfs -put flight_delays.csv abfs://fileanalysis@myanalytics.dfs.core.windows.net/tutorials/flightdelays/data/ 
+hdfs dfs -mkdir -p abfs://fileanalysis@myanalytics.dfs.core.windows.net/tutorials/flightdelays/data
+hdfs dfs -put flight_delays.csv abfs://fileanalysis@myanalytics.dfs.core.windows.net/tutorials/flightdelays/data/
 ```
 
 Wewnętrznie sterownik ABFS tłumaczy zasoby określone w identyfikatorze URI na pliki i katalogi, a następnie nawiązuje Azure Data Lake Storage wywołania interfejsu API REST z tymi odwołaniami.
 
-### <a name="authentication"></a>Uwierzytelnianie
+### <a name="authentication"></a>Authentication
 
-Sterownik ABFS obsługuje dwie metody uwierzytelniania, dzięki czemu aplikacja Hadoop może bezpiecznie uzyskiwać dostęp do zasobów znajdujących się w ramach konta obsługującego Data Lake Storage Gen2. Szczegółowe informacje o dostępnych schematach uwierzytelniania znajdują się w [przewodniku po zabezpieczeniach usługi Azure Storage](../common/storage-security-guide.md). Oto one:
+Sterownik ABFS obsługuje dwie metody uwierzytelniania, dzięki czemu aplikacja Hadoop może bezpiecznie uzyskiwać dostęp do zasobów znajdujących się w ramach konta obsługującego Data Lake Storage Gen2. Szczegółowe informacje o dostępnych schematach uwierzytelniania znajdują się w [przewodniku po zabezpieczeniach usługi Azure Storage](security-recommendations.md). Oto one:
 
 - **Klucz współużytkowany:** Pozwala to użytkownikom na dostęp do wszystkich zasobów na koncie. Klucz jest szyfrowany i przechowywany w konfiguracji usługi Hadoop.
 
 - **Azure Active Directory token okaziciela OAuth:** Tokeny okaziciela usługi Azure AD są uzyskiwane i odświeżane przez sterownik przy użyciu tożsamości użytkownika końcowego lub skonfigurowanej jednostki usługi. Przy użyciu tego modelu uwierzytelniania cały dostęp jest autoryzowany dla każdego wywołania przy użyciu tożsamości skojarzonej z podanym tokenem i oceniany względem przypisanej listy Access Control POSIX (ACL).
 
-   > [!NOTE] 
+   > [!NOTE]
    > Azure Data Lake Storage Gen2 obsługuje tylko punkty końcowe usługi Azure AD v 1.0.
 
 ### <a name="configuration"></a>Konfigurowanie

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 039b514fe70da0e300e74bbc98a3a0f4e9ea342c
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: c6f7f59f7bcc93edafa3cbb47bd432b52bde985c
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848599"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979457"
 ---
 # <a name="customize-the-azure-ad-functionality-for-self-service-password-reset"></a>Dostosowywanie funkcji usługi Azure AD do samoobsługowego resetowania hasła
 
@@ -43,9 +43,9 @@ Użytkownicy samoobsługowego resetowania hasła mają dostępne dla nich link "
 
 Kontaktowy adres e-mail jest wysyłany do następujących adresatów w następującej kolejności:
 
-1. Jeśli przypisano rolę **administratora hasła** , Administratorzy z tą rolą są powiadamiani.
-2. Jeśli nie przypisano żadnych administratorów haseł, zostaną powiadomieni Administratorzy z rolą **administratora użytkownika** .
-3. Jeśli żadna z poprzednich ról nie zostanie przypisana, **administratorzy globalni** są powiadamiani.
+1. Jeśli przypisano rolę **administratora pomocy technicznej** lub **administratora hasła** , Administratorzy z tymi rolami będą powiadamiani.
+1. Jeśli nie przypisano żadnych administratorów pomocy technicznej lub administratora hasła, Administratorzy z rolą **administratora użytkownika** są powiadamiani.
+1. Jeśli żadna z poprzednich ról nie zostanie przypisana, **administratorzy globalni** są powiadamiani.
 
 We wszystkich przypadkach powiadamia się maksymalnie 100 adresatów.
 
