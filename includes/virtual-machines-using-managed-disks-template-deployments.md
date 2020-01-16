@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: jaboes
 ms.custom: include file
-ms.openlocfilehash: ba49fc72fe07378d702b8c12fcdf77d5cebee9bb
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 126b488d2bb59e2904bee646301240efe6fe71a4
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74013109"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76037999"
 ---
 Ten dokument zawiera instrukcje dotyczące różnic między dyskami zarządzanymi i niezarządzanymi przy użyciu szablonów Azure Resource Manager do obsługi maszyn wirtualnych. Przykłady ułatwiają aktualizowanie istniejących szablonów, które używają dysków niezarządzanych do dysków zarządzanych. Aby uzyskać informacje na temat programu, użyj szablonu [101-VM-Simple-Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows) jako przewodnika. Możesz wyświetlić szablon przy użyciu dysków [zarządzanych](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows/azuredeploy.json) i wcześniejszej wersji za pomocą [dysków niezarządzanych](https://github.com/Azure/azure-quickstart-templates/tree/93b5f72a9857ea9ea43e87d2373bf1b4f724c6aa/101-vm-simple-windows/azuredeploy.json) , jeśli chcesz je bezpośrednio porównać.
 
@@ -94,7 +94,16 @@ W przypadku usługi Azure Managed Disks dysk zostanie zasobem najwyższego pozio
 
 ### <a name="default-managed-disk-settings"></a>Domyślne ustawienia dysku zarządzanego
 
-Aby utworzyć maszynę wirtualną z dyskami zarządzanymi, nie trzeba już tworzyć zasobów konta magazynu i aktualizować Twojego zasobu maszyny wirtualnej w następujący sposób. Należy zauważyć, że `apiVersion` odzwierciedla `2017-03-30` i `osDisk` i `dataDisks` nie odwołują się już do określonego identyfikatora URI dla wirtualnego dysku twardego. Podczas wdrażania bez określania dodatkowych właściwości dysk będzie używał typu magazynu na podstawie rozmiaru maszyny wirtualnej. Jeśli na przykład korzystasz z rozmiaru maszyny wirtualnej obsługującej warstwy Premium (rozmiary z "s" w nazwie, takiej jak Standard_D2s_v3), system użyje Premium_LRS Storage. Użyj ustawienia SKU dysku, aby określić typ magazynu. Jeśli nazwa nie zostanie określona, pobiera format `<VMName>_OsDisk_1_<randomstring>` dla dysku systemu operacyjnego i `<VMName>_disk<#>_<randomstring>` dla każdego dysku z danymi. Domyślnie usługa Azure Disk Encryption jest wyłączona; buforowanie jest odczytywane i zapisywane dla dysku systemu operacyjnego, a nie dla dysków danych. W poniższym przykładzie możesz zauważyć, że nadal istnieje zależność konta magazynu, ale jest to tylko w przypadku przechowywania danych diagnostycznych i nie jest wymagana w przypadku magazynu dyskowego.
+Aby utworzyć maszynę wirtualną z dyskami zarządzanymi, nie musisz już tworzyć zasobów konta magazynu. Odwołuje się do poniższego przykładu szablonu, istnieją pewne różnice między poprzednimi przykładami niezarządzanego dysku, które należy zauważyć:
+
+- `apiVersion` to wersja obsługująca dyski zarządzane.
+- `osDisk` i `dataDisks` nie odwołują się już do określonego identyfikatora URI dla wirtualnego dysku twardego.
+- Podczas wdrażania bez określania dodatkowych właściwości dysk będzie używał typu magazynu na podstawie rozmiaru maszyny wirtualnej. Na przykład jeśli używasz rozmiaru maszyny wirtualnej obsługującej usługę Premium Storage (rozmiary z "s" w nazwie, takiej jak Standard_D2s_v3), dyski Premium zostaną skonfigurowane domyślnie. Można to zmienić przy użyciu ustawienia SKU dysku, aby określić typ magazynu.
+- Jeśli nie określono nazwy dysku, pobiera `<VMName>_OsDisk_1_<randomstring>` dla dysku systemu operacyjnego i `<VMName>_disk<#>_<randomstring>` dla każdego dysku z danymi.
+  - Jeśli maszyna wirtualna jest tworzona na podstawie obrazu niestandardowego, domyślne ustawienia typu konta magazynu i nazwy dysku są pobierane z właściwości dysku zdefiniowanych w zasobie obrazu niestandardowego. Można je przesłonić, określając wartości tych w szablonie.
+- Domyślnie usługa Azure Disk Encryption jest wyłączona.
+- Domyślnie buforowanie dysków jest odczytywane i zapisywane dla dysku systemu operacyjnego, a nie dla dysków danych.
+- W poniższym przykładzie nadal występuje zależność konta magazynu, ale jest to tylko w przypadku przechowywania danych diagnostycznych i nie jest wymagana w przypadku magazynu dyskowego.
 
 ```json
 {

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/05/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: cb78be4456864e28c5559febf9733d7dc9a5029f
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: eab332f102b9e39981e2d8ed6e84f73fada87a1a
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74930187"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981670"
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-using-azure-data-factory"></a>Kopiowanie danych do lub z usługi Azure Blob Storage przy użyciu Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
@@ -174,7 +174,7 @@ W tej sekcji opisano wynikowe zachowania operacji kopiowania różne kombinacje 
 Przyjrzyjmy się sposobom szybkiego kopiowania danych do/z usługi Azure Blob Storage. W tym instruktażu źródłowe i docelowe magazyny danych typu: Azure Blob Storage. Potok w tym instruktażu kopiuje dane z folderu do innego folderu w tym samym kontenerze obiektów BLOB. Ten Instruktaż jest celowo prosty, aby pokazać ustawienia lub właściwości przy użyciu Blob Storage jako źródła lub ujścia.
 
 ### <a name="prerequisites"></a>Wymagania wstępne
-1. Utwórz **konto usługi Azure Storage** ogólnego przeznaczenia, jeśli jeszcze go nie masz. Magazyn obiektów BLOB jest używany jako **źródłowy** i **docelowy** magazyn danych w tym instruktażu. Jeśli nie masz konta usługi Azure Storage, utwórz je, wykonując czynności przedstawione w artykule [Tworzenie konta magazynu](../../storage/common/storage-quickstart-create-account.md).
+1. Utwórz **konto usługi Azure Storage** ogólnego przeznaczenia, jeśli jeszcze go nie masz. Magazyn obiektów BLOB jest używany jako **źródłowy** i **docelowy** magazyn danych w tym instruktażu. Jeśli nie masz konta usługi Azure Storage, utwórz je, wykonując czynności przedstawione w artykule [Tworzenie konta magazynu](../../storage/common/storage-account-create.md).
 2. Utwórz kontener obiektów BLOB o nazwie **adfblobconnector** na koncie magazynu.
 4. Utwórz folder o nazwie **Input** w kontenerze **adfblobconnector** .
 5. Utwórz plik o nazwie **EMP. txt** z następującą zawartością i przekaż go do folderu **Input** przy użyciu narzędzi takich jak [Eksplorator usługi Azure Storage](https://azurestorageexplorer.codeplex.com/)
@@ -197,7 +197,7 @@ Przyjrzyjmy się sposobom szybkiego kopiowania danych do/z usługi Azure Blob St
 
 ### <a name="copy-wizard"></a>Kreator kopiowania
 1. Na stronie głównej Data Factory kliknij przycisk **Kopiuj dane** , aby uruchomić **Kreatora kopiowanie danych** na oddzielnej karcie.  
-    
+
     > [!NOTE]
     > Jeśli zobaczysz, że przeglądarka sieci Web jest zablokowana w "autoryzuje...", Wyłącz/Usuń zaznaczenie pola **pliki cookie innych firm i ustawienie danych lokacji** (lub) pozostaw i Utwórz wyjątek dla **login.microsoftonline.com** , a następnie spróbuj ponownie uruchomić kreatora.
 2. Na stronie **Właściwości**:

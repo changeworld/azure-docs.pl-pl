@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: TomSh
-ms.openlocfilehash: c666d718586d3e5351974da287a91f6a3a8c04ba
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 659d00c3fc7a766d800de6f1f12f410003284360
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75459174"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979272"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Izolacja w chmurze publicznej platformy Azure
 System Azure umożliwia uruchamianie aplikacji i maszyn wirtualnych w ramach udostępnionej infrastruktury fizycznej. Jedną z ekonomicznych motywacji do uruchamiania aplikacji w środowisku chmury jest możliwość dystrybucji kosztów zasobów udostępnionych między wieloma klientami. Ta metoda korzystania z wielu dzierżawców zwiększa wydajność dzięki możliwości multipleksowania zasobów między różnymi klientami przy niskich kosztach. Niestety, wprowadza również ryzyko związane z udostępnianiem serwerów fizycznych i innych zasobów infrastruktury w celu uruchamiania poufnych aplikacji i maszyn wirtualnych, które mogą należeć do dowolnego lub potencjalnie złośliwego użytkownika.
@@ -190,7 +190,7 @@ W związku z tym usługa Azure Storage działa na osobnym sprzęcie bez łączno
 Sygnatura dostępu współdzielonego oznacza, że można udzielić klientowi ograniczonych uprawnień do obiektów w naszym koncie magazynu przez określony czas i z określonym zestawem uprawnień. Firma Microsoft może przyznać te ograniczone uprawnienia bez konieczności udostępniania kluczy dostępu do konta.
 
 ### <a name="ip-level-storage-isolation"></a>Izolacja magazynu na poziomie IP
-Można nawiązywać zapory i definiować zakres adresów IP dla zaufanych klientów. Z zakresem adresów IP tylko klienci, którzy mają adres IP w zdefiniowanym zakresie, mogą łączyć się z [usługą Azure Storage](../../storage/common/storage-security-guide.md).
+Można nawiązywać zapory i definiować zakres adresów IP dla zaufanych klientów. Z zakresem adresów IP tylko klienci, którzy mają adres IP w zdefiniowanym zakresie, mogą łączyć się z [usługą Azure Storage](../../storage/blobs/security-recommendations.md).
 
 Dane magazynu IP mogą być chronione przed nieautoryzowanymi użytkownikami za pomocą mechanizmu sieciowego, który jest używany do przydzielania dedykowanego lub dedykowanego tunelu ruchu do magazynu IP.
 
@@ -203,18 +203,18 @@ Platforma Azure oferuje następujące typy szyfrowania do ochrony danych:
 #### <a name="encryption-in-transit"></a>Szyfrowanie podczas przesyłania
 Szyfrowanie podczas przesyłania jest mechanizmem ochrony danych przesyłanych między sieciami. Za pomocą usługi Azure Storage można zabezpieczyć dane przy użyciu:
 
--   [Szyfrowanie na poziomie transportu](../../storage/common/storage-security-guide.md), takie jak https, podczas transferu danych do usługi Azure Storage lub z niej.
+-   [Szyfrowanie na poziomie transportu](../../storage/blobs/security-recommendations.md), takie jak https, podczas transferu danych do usługi Azure Storage lub z niej.
 
--   [Szyfrowanie przewodowe](../../storage/common/storage-security-guide.md), takie jak szyfrowanie SMB 3,0 dla udziałów plików platformy Azure.
+-   [Szyfrowanie przewodowe](../../storage/blobs/security-recommendations.md), takie jak szyfrowanie SMB 3,0 dla udziałów plików platformy Azure.
 
--   [Szyfrowanie po stronie klienta](../../storage/common/storage-security-guide.md)umożliwia szyfrowanie danych przed ich przesłaniem do magazynu oraz odszyfrowanie danych po ich przeniesieniu poza magazyn.
+-   [Szyfrowanie po stronie klienta](../../storage/blobs/security-recommendations.md)umożliwia szyfrowanie danych przed ich przesłaniem do magazynu oraz odszyfrowanie danych po ich przeniesieniu poza magazyn.
 
 #### <a name="encryption-at-rest"></a>Szyfrowanie w spoczynku
 W przypadku wielu organizacji [szyfrowanie danych w spoczynku](isolation-choices.md) stanowi obowiązkowy krok w kierunku prywatności, zgodności i suwerenności danych. Istnieją trzy funkcje platformy Azure, które zapewniają szyfrowanie danych "w spoczynku":
 
--   [Szyfrowanie usługi Storage](../../storage/common/storage-security-guide.md) pozwala na zażądanie, aby usługa magazynu automatycznie szyfruje dane podczas ich zapisywania do usługi Azure Storage.
+-   [Szyfrowanie usługi Storage](../../storage/blobs/security-recommendations.md) pozwala na zażądanie, aby usługa magazynu automatycznie szyfruje dane podczas ich zapisywania do usługi Azure Storage.
 
--   [Szyfrowanie po stronie klienta](../../storage/common/storage-security-guide.md) udostępnia również funkcję szyfrowania w stanie spoczynku.
+-   [Szyfrowanie po stronie klienta](../../storage/blobs/security-recommendations.md) udostępnia również funkcję szyfrowania w stanie spoczynku.
 
 -   [Azure Disk Encryption](../azure-security-disk-encryption-overview.md) umożliwia szyfrowanie dysków systemu operacyjnego i dysków danych używanych przez maszynę wirtualną IaaS.
 

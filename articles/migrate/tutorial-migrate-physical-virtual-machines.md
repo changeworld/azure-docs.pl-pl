@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 28705ea8a552f4d2e6653857c69ebb8d5f87b962
-ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
+ms.openlocfilehash: 4a6e33770f93c365d5ccd034803c7c7f247d528a
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/11/2019
-ms.locfileid: "73907109"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028805"
 ---
 # <a name="migrate-physical-or-virtualized-servers-to-azure"></a>Migrowanie serwerów fizycznych lub zwirtualizowanych na platformę Azure 
 
@@ -29,7 +29,7 @@ W tym artykule pokazano, jak przeprowadzić migrację fizycznych lub zwirtualizo
 [Azure Migrate](migrate-services-overview.md) udostępnia centralne centrum do śledzenia odnajdywania, oceny i migracji lokalnych aplikacji i obciążeń oraz wystąpień maszyn wirtualnych w chmurze do platformy Azure. Centrum udostępnia Azure Migrate narzędzia do oceny i migracji, a także oferty niezależnych dostawców oprogramowania (ISV) innych firm.
 
 
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 > [!div class="checklist"]
 > * Przygotuj platformę Azure do migracji za pomocą narzędzia migracji Azure Migrate Server.
 > * Sprawdź wymagania dotyczące maszyn, które mają zostać poddane migracji, i przygotuj maszynę do Azure Migrate urządzenia do replikacji, które służy do odnajdywania i migrowania maszyn na platformę Azure.
@@ -123,9 +123,8 @@ Upewnij się, że maszyny są zgodne z wymaganiami dotyczącymi migracji na plat
 > [!NOTE]
 > Migracja oparta na agencie z migracją Azure Migrate Server jest oparta na funkcjach Azure Site Recovery usługi. Niektóre wymagania mogą być połączone z dokumentacją Site Recovery.
 
-1. [Sprawdź](migrate-support-matrix-vmware.md#agent-based-migration-vmware-server-requirements) wymagania dotyczące serwera.
-2. [Sprawdź](migrate-support-matrix-vmware.md#agent-based-migration-vmware-vm-requirements) Wymagania dotyczące migracji maszyn wirtualnych.
-3. Sprawdź ustawienia maszyny wirtualnej. Lokalne maszyny wirtualne replikowane na platformę Azure muszą być zgodne z [wymaganiami maszyny wirtualnej platformy Azure](migrate-support-matrix-vmware.md#azure-vm-requirements).
+1. [Sprawdź](migrate-support-matrix-physical-migration.md#physical-server-requirements) wymagania dotyczące serwera fizycznego.
+2. Sprawdź ustawienia maszyny wirtualnej. Maszyny lokalne replikowane na platformę Azure muszą być zgodne z [wymaganiami maszyny wirtualnej platformy Azure](migrate-support-matrix-physical-migration.md#azure-vm-requirements).
 
 
 ### <a name="prepare-a-machine-for-the-replication-appliance"></a>Przygotuj komputer do urządzenia replikacji
@@ -135,7 +134,7 @@ Migracja serwera Azure Migrate przy użyciu urządzenia replikacji umożliwia re
 - **Serwer konfiguracji**: serwer konfiguracji koordynuje komunikację między środowiskiem lokalnym i platformą Azure oraz zarządza replikacją danych.
 - **Serwer przetwarzania**: serwer przetwarzania działa jako brama replikacji. Odbiera dane replikacji; optymalizuje je przy użyciu pamięci podręcznej, kompresji i szyfrowania, a następnie wysyła je do konta magazynu pamięci podręcznej na platformie Azure. 
 
-Przed rozpoczęciem należy przygotować maszynę z systemem Windows Server 2016 do hostowania urządzenia replikacji. Komputer powinien spełniać [te wymagania](migrate-support-matrix-vmware.md#agent-based-migration-replication-appliance-requirements). Urządzenie nie powinno być zainstalowane na maszynie źródłowej, która ma być chroniona.
+Przed rozpoczęciem należy przygotować maszynę z systemem Windows Server 2016 do hostowania urządzenia replikacji. Komputer powinien spełniać [te wymagania](migrate-replication-appliance.md). Urządzenie nie powinno być zainstalowane na maszynie źródłowej, która ma być chroniona.
 
 
 ## <a name="add-the-azure-migrate-server-migration-tool"></a>Dodawanie narzędzia migracji Azure Migrate Server
@@ -206,7 +205,7 @@ Zakończenie rejestracji może potrwać do 15 minut, dopóki odnalezione maszyny
 
 ## <a name="install-the-mobility-service"></a>Instalowanie usługi mobilności
 
-Na maszynach, które mają zostać zmigrowane, należy zainstalować agenta usługi mobilności. Instalatory agentów są dostępne na urządzeniu replikacji. Możesz znaleźć odpowiedni Instalator i zainstalować agenta na każdej maszynie, która ma zostać zmigrowana. Wykonaj następujące czynności:
+Na maszynach, które mają zostać zmigrowane, należy zainstalować agenta usługi mobilności. Instalatory agentów są dostępne na urządzeniu replikacji. Możesz znaleźć odpowiedni Instalator i zainstalować agenta na każdej maszynie, która ma zostać zmigrowana. W tym celu wykonaj następujące czynności:
 
 1. Zaloguj się do urządzenia replikacji.
 2. Przejdź do **%ProgramData%\ASR\home\svsystems\pushinstallsvc\repository**.
@@ -276,7 +275,7 @@ Teraz wybierz maszyny do migracji.
 7. W **Virtual Machines**w **ustawieniach migracji importu z oceny?** pozostaw ustawienie domyślne **nie, określ ustawienia migracji ręcznie**.
 8. Sprawdź wszystkie maszyny wirtualne, które chcesz zmigrować. Następnie kliknij przycisk **Dalej: ustawienia docelowe**.
 
-    ![Wybieranie maszyn wirtualnych](./media/tutorial-migrate-physical-virtual-machines/select-vms.png)
+    ![Wybierz maszyny wirtualne](./media/tutorial-migrate-physical-virtual-machines/select-vms.png)
 
 
 9. W obszarze **Ustawienia elementu docelowego** wybierz subskrypcję i docelowy region migracji, a następnie określ grupę zasobów, w której będą znajdować się maszyny wirtualne platformy Azure po migracji.
@@ -288,7 +287,7 @@ Teraz wybierz maszyny do migracji.
 
     ![Ustawienia docelowe](./media/tutorial-migrate-physical-virtual-machines/target-settings.png)
 
-12. W obszarze **Obliczenia** sprawdź nazwę, rozmiar, typ dysku systemu operacyjnego i zestaw dostępności maszyny wirtualnej. Maszyny wirtualne muszą być zgodne z [wymaganiami platformy Azure](migrate-support-matrix-vmware.md#azure-vm-requirements).
+12. W obszarze **Obliczenia** sprawdź nazwę, rozmiar, typ dysku systemu operacyjnego i zestaw dostępności maszyny wirtualnej. Maszyny wirtualne muszą być zgodne z [wymaganiami platformy Azure](migrate-support-matrix-physical-migration.md#azure-vm-requirements).
 
     - **Rozmiar maszyny wirtualnej**: domyślnie migracja serwera Azure Migrate wybiera rozmiar na podstawie najbliższego dopasowania w subskrypcji platformy Azure. Alternatywnie możesz wybrać rozmiar ręczny w obszarze **rozmiaru maszyny wirtualnej platformy Azure**. 
     - **Dysk systemu operacyjnego**: Określ dysk systemu operacyjnego (Boot) dla maszyny wirtualnej. Dysk systemu operacyjnego to dysk, na którym jest zainstalowany program ładujący i instalator systemu operacyjnego. 

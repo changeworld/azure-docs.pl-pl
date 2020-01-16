@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 04/03/2018
 ms.author: srrengar
-ms.openlocfilehash: 104fc212dc590c1366b8dd2cd276f70bdadee5db
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: b9a448ff41c66fa3a38c124f7acde062bacbe9ba
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75614540"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980207"
 ---
 # <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>Agregacja i zbieranie zdarzeń przy użyciu Diagnostyka Azure systemu Windows
 > [!div class="op_single_selector"]
@@ -65,7 +65,7 @@ Aby utworzyć klaster przy użyciu Menedżer zasobów, musisz dodać kod JSON ko
 
 Aby wyświetlić ustawienia diagnostyki w szablonie Menedżer zasobów, Otwórz plik azuredeploy. JSON i Wyszukaj **IaaSDiagnostics**. Aby utworzyć klaster przy użyciu tego szablonu, wybierz przycisk **Wdróż na platformie Azure** dostępny przy poprzednim łączu.
 
-Alternatywnie można pobrać przykład Menedżer zasobów, wprowadzić w nim zmiany i utworzyć klaster ze zmodyfikowanym szablonem za pomocą polecenia `New-AzResourceGroupDeployment` w oknie Azure PowerShell. Zapoznaj się z poniższym kodem parametrów przekazywanych do polecenia. Aby uzyskać szczegółowe informacje na temat sposobu wdrażania grupy zasobów przy użyciu programu PowerShell, zobacz artykuł [wdrażanie grupy zasobów z szablonem Azure Resource Manager](../azure-resource-manager/resource-group-template-deploy.md).
+Alternatywnie można pobrać przykład Menedżer zasobów, wprowadzić w nim zmiany i utworzyć klaster ze zmodyfikowanym szablonem za pomocą polecenia `New-AzResourceGroupDeployment` w oknie Azure PowerShell. Zapoznaj się z poniższym kodem parametrów przekazywanych do polecenia. Aby uzyskać szczegółowe informacje na temat sposobu wdrażania grupy zasobów przy użyciu programu PowerShell, zobacz artykuł [wdrażanie grupy zasobów z szablonem Azure Resource Manager](../azure-resource-manager/templates/deploy-powershell.md).
 
 ### <a name="add-the-diagnostics-extension-to-an-existing-cluster"></a>Dodawanie rozszerzenia diagnostyki do istniejącego klastra
 Jeśli masz istniejący klaster, który nie ma wdrożonej diagnostyki, możesz go dodać lub zaktualizować za pomocą szablonu klastra. Zmodyfikuj szablon Menedżer zasobów używany do tworzenia istniejącego klastra lub Pobierz szablon z portalu zgodnie z wcześniejszym opisem. Zmodyfikuj plik Template. JSON, wykonując następujące zadania:

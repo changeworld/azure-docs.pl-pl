@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: cb21291d4beb9fbba27a56089f13bd0363604eab
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: f393ab23df49751efbbcb3d70314b2ac404a8b77
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686701"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981827"
 ---
 # <a name="optimize-costs-for-blob-storage-with-reserved-capacity"></a>Optymalizowanie kosztów magazynu obiektów BLOB przy użyciu zarezerwowanej pojemności
 
@@ -21,7 +21,7 @@ Możesz zaoszczędzić oszczędności związane z magazynowaniem danych obiektó
 
 Zarezerwowana pojemność usługi Azure Storage może znacząco obniżyć koszty pojemności dla blokowych obiektów blob i danych Azure Data Lake Storage Gen2. Uzyskane oszczędności kosztów zależą od czasu obowiązywania rezerwacji, całkowitej pojemności wybranej do zarezerwowania i warstwy dostępu oraz typu nadmiarowości wybranego dla konta magazynu. Zarezerwowana pojemność zapewnia rabat na rozliczenia i nie wpływa na stan zasobów usługi Azure Storage.
 
-Aby uzyskać informacje na temat cennika usługi Azure Storage, zobacz ceny [blokowych obiektów BLOB](https://azure.microsoft.com/pricing/details/storage/blobs/) i [Azure Data Lake Storage ceny generacji 2](https://azure.microsoft.com/pricing/details/storage/data-lake/).
+Aby uzyskać informacje na temat cen rezerwacji usługi Azure Storage, zobacz [Ceny blokowych obiektów blob](https://azure.microsoft.com/pricing/details/storage/blobs/) i [Cennik usługi Azure Data Lake Storage Gen 2](https://azure.microsoft.com/pricing/details/storage/data-lake/).
 
 ## <a name="reservation-terms-for-azure-storage"></a>Warunki rezerwacji usługi Azure Storage
 
@@ -66,7 +66,7 @@ Rezerwacje są obecnie dostępne dla bloków 100 TB lub 1 PB z wyższymi rabatam
 
 Możesz zakupić zarezerwowaną pojemność usługi Azure Storage za pomocą [Azure Portal](https://portal.azure.com). Płatność za rezerwację z góry lub miesięczna płatność. Aby uzyskać więcej informacji na temat kupowania miesięcznych płatności, zobacz [kupowanie rezerwacji platformy Azure z góry lub miesięcznymi opłatami](/azure/billing/billing-monthly-payments-reservations).
 
-Aby uzyskać pomoc dotyczącą określania warunków rezerwacji odpowiednich dla danego scenariusza, zobacz [Opis rabatu zarezerwowanej pojemności usługi Azure Storage](../../billing/billing-understand-storage-charges.md).
+Aby uzyskać pomoc dotyczącą określania warunków rezerwacji odpowiednich dla danego scenariusza, zobacz [Opis rabatu zarezerwowanej pojemności usługi Azure Storage](../../cost-management-billing/reservations/understand-storage-charges.md).
 
 Wykonaj następujące kroki, aby zakupić zastrzeżoną pojemność:
 
@@ -85,7 +85,7 @@ Wykonaj następujące kroki, aby zakupić zastrzeżoną pojemność:
    | **Nadmiarowości** | Opcja nadmiarowości dla rezerwacji. Dostępne opcje to *LRS*, *ZRS*, *GRS*i *RA-GZRS*. Aby uzyskać więcej informacji na temat opcji nadmiarowości, zobacz [nadmiarowość usługi Azure Storage](../common/storage-redundancy.md). |
    | **Częstotliwość rozliczeń** | Wskazuje, jak często konto jest rozliczane dla rezerwacji. Opcje obejmują *co miesiąc* lub z *góry*. |
    | **Rozmiar** | Region, w którym rezerwacja jest obowiązująca. |
-   |**Mandat**  | Jeden rok lub trzy lata.   |
+   |**Termin**  | Jeden rok lub trzy lata.   |
 
 1. Po wybraniu parametrów dla rezerwacji Azure Portal zostanie wyświetlony koszt. W portalu jest również pokazywana wartość procentowa rabatu w porównaniu z płatnościami zgodnie z rzeczywistym użyciem.
 
@@ -101,7 +101,7 @@ Możesz wymienić lub refundować rezerwację z pewnymi ograniczeniami. Te ogran
 
 Aby wymienić lub zwrócić zastrzeżenie, przejdź do szczegółów rezerwacji w Azure Portal. Wybierz pozycję **Exchange** lub **refunda**i postępuj zgodnie z instrukcjami, aby przesłać żądanie pomocy technicznej. Gdy żądanie zostało przetworzone, firma Microsoft wyśle do Ciebie wiadomość e-mail w celu potwierdzenia zakończenia żądania.
 
-Aby uzyskać więcej informacji na temat zasad Azure Reservations, zobacz samoobsługowe [wymianę i zwroty za Azure Reservations](../../billing/billing-azure-reservations-self-service-exchange-and-refund.md).
+Aby uzyskać więcej informacji na temat zasad Azure Reservations, zobacz samoobsługowe [wymianę i zwroty za Azure Reservations](../../cost-management-billing/reservations/exchange-and-refund-azure-reservations.md).
 
 ### <a name="exchange-a-reservation"></a>Wymiana rezerwacji
 
@@ -127,5 +127,5 @@ Jeśli masz pytania lub potrzebujesz pomocy, [utwórz wniosek o pomoc techniczn�
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Co to są rezerwacje platformy Azure?](../../billing/billing-save-compute-costs-reservations.md)
-- [Informacje o sposobie zastosowania rabatu rezerwacji do usługi Azure Storage](../../billing/billing-understand-storage-charges.md)
+- [Co to jest Azure Reservations?](../../cost-management-billing/reservations/save-compute-costs-reservations.md)
+- [Informacje o sposobie zastosowania rabatu rezerwacji do usługi Azure Storage](../../cost-management-billing/reservations/understand-storage-charges.md)

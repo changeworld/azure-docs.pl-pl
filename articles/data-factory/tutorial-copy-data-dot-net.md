@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.date: 11/08/2019
 ms.author: jingwang
-ms.openlocfilehash: 7f3fdf1b723158db873bc2635de34d878c464201
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 93c4f71c762cff3e3f5a01f0e2595f3498f9d38d
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75439434"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977311"
 ---
 # <a name="copy-data-from-azure-blob-to-azure-sql-database-using-azure-data-factory"></a>Kopiowanie danych z obiektu blob platformy Azure do bazy danych Azure SQL Database przy użyciu usługi Azure Data Factory
 
@@ -38,7 +38,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* *Konto usługi Azure Storage*. Magazyn obiektów blob jest używany jako *źródłowy* magazyn danych. Jeśli nie masz konta usługi Azure Storage, zobacz [Tworzenie konta magazynu ogólnego przeznaczenia](../storage/common/storage-quickstart-create-account.md).
+* *Konto usługi Azure Storage*. Magazyn obiektów blob jest używany jako *źródłowy* magazyn danych. Jeśli nie masz konta usługi Azure Storage, zobacz [Tworzenie konta magazynu ogólnego przeznaczenia](../storage/common/storage-account-create.md).
 * *Usługa Azure SQL Database*. Baza danych jest używana jako magazyn danych *ujścia*. Jeśli nie masz Azure SQL Database, zobacz [Tworzenie bazy danych Azure SQL Database](../sql-database/sql-database-single-database-get-started.md).
 * Program *Visual Studio*. W przewodniku w tym artykule jest wykorzystywany program Visual Studio 2019.
 * *[Zestaw Azure SDK dla platformy .NET](/dotnet/azure/dotnet-tools)* .
@@ -84,7 +84,7 @@ Następnie utwórz tabelę programu SQL dla ujścia:
     1. Przejdź do [Azure Portal](https://portal.azure.com) , aby zarządzać programem SQL Server. Wyszukaj i wybierz pozycję **serwery SQL**.
 
     2. Wybierz serwer.
-    
+
     3. W obszarze menu programu SQL Server **Wybierz pozycję** **zapory i sieci wirtualne**.
 
     4. Na stronie **Zapora i sieci wirtualne** w obszarze **Zezwól usługom i zasobom platformy Azure na dostęp do tego serwera**wybierz pozycję **włączone**.
@@ -154,7 +154,7 @@ Wykonaj następujące kroki, aby utworzyć klienta fabryki danych.
     string inputBlobName = "inputEmp.txt";
 
     // Specify the sink Azure SQL Database information
-    string azureSqlConnString = 
+    string azureSqlConnString =
         "Server=tcp:<your server name>.database.windows.net,1433;" +
         "Database=<your database name>;" +
         "User ID=<your username>@<your server name>;" +
@@ -265,7 +265,7 @@ Console.WriteLine(
 
 ## <a name="create-datasets"></a>Utwórz zestawy danych
 
-W tej sekcji utworzysz dwa zestawy danych: jeden dla źródła, drugi dla ujścia. 
+W tej sekcji utworzysz dwa zestawy danych: jeden dla źródła, drugi dla ujścia.
 
 ### <a name="create-a-dataset-for-source-azure-blob"></a>Tworzenie zestawu danych źródłowego obiektu blob platformy Azure
 
@@ -283,8 +283,8 @@ Console.WriteLine("Creating dataset " + blobDatasetName + "...");
 DatasetResource blobDataset = new DatasetResource(
     new AzureBlobDataset
     {
-        LinkedServiceName = new LinkedServiceReference { 
-            ReferenceName = storageLinkedServiceName 
+        LinkedServiceName = new LinkedServiceReference {
+            ReferenceName = storageLinkedServiceName
         },
         FolderPath = inputBlobPath,
         FileName = inputBlobName,
@@ -309,7 +309,7 @@ Console.WriteLine(
 
 Dodaj następujący kod do metody `Main`, która tworzy *Azure SQL Database zestaw danych*. Aby uzyskać informacje o obsługiwanych właściwościach i szczegółach, zobacz [Azure SQL Database właściwości zestawu danych](connector-azure-sql-database.md#dataset-properties).
 
-Zdefiniuj zestaw danych reprezentujący ujście danych w bazie danych Azure SQL Database. Ten zestaw danych odwołuje się do Azure SQL Database połączonej usługi utworzonej w poprzednim kroku. Określa on również tabelę SQL, która przechowuje skopiowane dane. 
+Zdefiniuj zestaw danych reprezentujący ujście danych w bazie danych Azure SQL Database. Ten zestaw danych odwołuje się do Azure SQL Database połączonej usługi utworzonej w poprzednim kroku. Określa on również tabelę SQL, która przechowuje skopiowane dane.
 
 ```csharp
 // Create an Azure SQL Database dataset
@@ -416,14 +416,14 @@ Teraz Wstaw kod, aby sprawdzić Stany przebiegu potoku i uzyskać szczegółowe 
     ActivityRunsQueryResponse queryResponse = client.ActivityRuns.QueryByPipelineRun(
         resourceGroup, dataFactoryName, runResponse.RunId, filterParams
     );
- 
+
     if (pipelineRun.Status == "Succeeded")
     {
         Console.WriteLine(queryResponse.Value.First().Output);
     }
     else
         Console.WriteLine(queryResponse.Value.First().Error);
-    
+
     Console.WriteLine("\nPress any key to exit...");
     Console.ReadKey();
     ```
@@ -564,7 +564,7 @@ Press any key to exit...
 
 ## <a name="next-steps"></a>Następne kroki
 
-Potok w tym przykładzie kopiuje dane z jednej lokalizacji do innej lokalizacji w usłudze Azure Blob Storage. W tym samouczku omówiono: 
+Potok w tym przykładzie kopiuje dane z jednej lokalizacji do innej lokalizacji w usłudze Azure Blob Storage. W tym samouczku omówiono:
 
 > [!div class="checklist"]
 > * Tworzenie fabryki danych.
@@ -574,7 +574,7 @@ Potok w tym przykładzie kopiuje dane z jednej lokalizacji do innej lokalizacji 
 > * Uruchom potok.
 > * Monitorowanie uruchomień potoku i działań.
 
-Przejdź do następującego samouczka, aby dowiedzieć się więcej o kopiowaniu danych lokalnych do chmury: 
+Przejdź do następującego samouczka, aby dowiedzieć się więcej o kopiowaniu danych lokalnych do chmury:
 
 > [!div class="nextstepaction"]
 >[Kopiowanie danych ze środowiska lokalnego do chmury](tutorial-hybrid-copy-powershell.md)

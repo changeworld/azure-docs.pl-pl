@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 02/06/2019
-ms.openlocfilehash: 6cde620b4949da8a6cff4ad89a863c80f0514f1c
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: ade29318fdd1510d03ddd208534258a30b256e98
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792400"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979378"
 ---
 # <a name="validate-xml-with-schemas-in-azure-logic-apps-with-enterprise-integration-pack"></a>Sprawdź poprawność kodu XML ze schematami w Azure Logic Apps z Pakiet integracyjny dla przedsiębiorstw
 
@@ -31,7 +31,7 @@ Aby uzyskać ograniczenia dotyczące kont integracji i artefaktów, takich jak s
   Aby dodać ten schemat do konta integracji, możesz połączyć się z kontem magazynu z konta integracji. 
   Oto elementy, które są potrzebne w przypadku tego zadania: 
 
-  * [Konto usługi Azure Storage](../storage/common/storage-account-overview.md) , na którym tworzysz kontener obiektów BLOB dla schematu. Dowiedz się, jak [utworzyć konto magazynu](../storage/common/storage-quickstart-create-account.md). 
+  * [Konto usługi Azure Storage](../storage/common/storage-account-overview.md) , na którym tworzysz kontener obiektów BLOB dla schematu. Dowiedz się, jak [utworzyć konto magazynu](../storage/common/storage-account-create.md). 
 
   * Kontener obiektów BLOB do przechowywania schematu. Dowiedz się, jak [utworzyć kontener obiektów BLOB](../storage/blobs/storage-quickstart-blobs-portal.md). 
   Identyfikator URI zawartości kontenera jest potrzebny później, gdy dodasz schemat do konta integracji.

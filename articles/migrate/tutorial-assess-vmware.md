@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: hamusa
-ms.openlocfilehash: 31af4ad9c6985202555dbcbe86c52e45d5c4154a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 58e6e7b3cdf749909165d7ff071a2f3885d7e8b9
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453298"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028731"
 ---
 # <a name="assess-vmware-vms-by-using-azure-migrate-server-assessment"></a>Ocenianie maszyn wirtualnych VMware za pomocą oceny serwera Azure Migrate
 
@@ -41,11 +41,11 @@ Oto co należy zrobić w pierwszym samouczku:
 
 - [Skonfiguruj uprawnienia platformy Azure](tutorial-prepare-vmware.md#prepare-azure) dla Azure Migrate.
 - [Przygotuj oprogramowanie VMware](tutorial-prepare-vmware.md#prepare-for-vmware-vm-assessment) do oceny:
-   - Sprawdź ustawienia programu VMware.
-   - Skonfiguruj uprawnienia do tworzenia maszyny wirtualnej VMware przy użyciu szablonu komórki jajowe.
-   - Skonfiguruj konto do odnajdywania maszyn wirtualnych. 
-   - Udostępnienie wymaganych portów.
-   - Należy pamiętać o adresach URL wymaganych do uzyskania dostępu do platformy Azure.
+   - [Sprawdź](migrate-support-matrix-vmware.md#vmware-requirements) Ustawienia programu VMware.
+   - Skonfiguruj uprawnienia w oprogramowaniu VMware, aby utworzyć maszynę wirtualną VMware z szablonem komórki jajowe.
+   - Skonfiguruj [konto do odnajdywania maszyn wirtualnych](migrate-support-matrix-vmware.md#vmware-requirements). 
+   - Udostępnienie [wymaganych portów](migrate-support-matrix-vmware.md#port-access) .
+   - Należy pamiętać o [adresach URL wymaganych](migrate-replication-appliance.md#url-access) do uzyskania dostępu do platformy Azure.
 
 ## <a name="set-up-an-azure-migrate-project"></a>Konfigurowanie projektu Azure Migrate
 
@@ -130,7 +130,7 @@ Zaimportuj pobrany plik i Utwórz maszynę wirtualną:
 
 ### <a name="verify-appliance-access-to-azure"></a>Weryfikowanie dostępu urządzenia do platformy Azure
 
-Upewnij się, że maszyna wirtualna urządzenia może połączyć się z [adresami URL platformy Azure](migrate-support-matrix-vmware.md#assessment-url-access-requirements).
+Upewnij się, że maszyna wirtualna urządzenia może połączyć się z [adresami URL platformy Azure](migrate-appliance.md#url-access).
 
 ### <a name="configure-the-appliance"></a>Konfigurowanie urządzenia
 
@@ -172,7 +172,7 @@ Urządzenie musi połączyć się z vCenter Server, aby odnaleźć dane dotyczą
 1. W obszarze **określ vCenter Server Szczegóły**Określ nazwę (FQDN) lub adres IP wystąpienia vCenter Server. Można pozostawić port domyślny lub określić port niestandardowy, dla którego vCenter Server nasłuchuje.
 1. W polu **Nazwa użytkownika** i **hasło**określ poświadczenia konta vCenter Server, które będą używane przez urządzenie do odnajdywania maszyn wirtualnych w wystąpieniu vCenter Server. 
 
-   Upewnij się, że konto ma [wymagane uprawnienia do odnajdywania](migrate-support-matrix-vmware.md#assessment-vcenter-server-permissions). [Zakres odnajdywania](tutorial-assess-vmware.md#set-the-scope-of-discovery) można ograniczyć, ograniczając dostęp do konta vCenter.
+   Upewnij się, że konto ma [wymagane uprawnienia do odnajdywania](migrate-support-matrix-vmware.md#vmware-requirements). [Zakres odnajdywania](tutorial-assess-vmware.md#set-the-scope-of-discovery) można ograniczyć, ograniczając dostęp do konta vCenter.
 1. Wybierz pozycję **Weryfikuj połączenie** , aby upewnić się, że urządzenie może połączyć się z vCenter Server.
 
 ### <a name="specify-vm-credentials"></a>Określ poświadczenia maszyny wirtualnej

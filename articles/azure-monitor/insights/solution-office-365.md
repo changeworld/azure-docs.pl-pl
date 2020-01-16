@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/08/2019
-ms.openlocfilehash: aaa083ef52dcf18fade3315f598b5f57e791cbe0
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: b026ef7dbbe850f0d2d1cb67ec8ca93b14ef879a
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75932974"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76044897"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Rozwiązanie do zarządzania pakietem Office 365 na platformie Azure (wersja zapoznawcza)
 
@@ -106,7 +106,7 @@ ms.locfileid: "75932974"
 > 
 > ###   <a name="q-what-will-happen-on-march-30-do-i-need-to-offboard-beforehand"></a>P: co się stanie w dniu 30 marca? Czy muszę odłączania wcześniej?
 > 
-> - Nie będzie można odbierać danych z rozwiązania usługi **Office 365** i zostanie on usunięty z obszarów roboczych, w których jest zainstalowany. Rozwiązanie nie będzie już dostępne w witrynie Marketplace
+> - Nie będzie można odbierać danych z rozwiązania usługi **Office 365** . Rozwiązanie nie będzie już dostępne w witrynie Marketplace
 > - W przypadku klientów z wskaźnikiem na platformie Azure — rozwiązanie obszaru roboczego Log Analytics w usłudze **Office 365** zostanie uwzględnione w rozwiązaniu usługi Azure **SecurityInsights** .
 > - Jeśli rozwiązanie nie zostanie odłączania ręcznie, dane zostaną rozłączone automatycznie 30 marca.
 > 

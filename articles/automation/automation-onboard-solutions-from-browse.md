@@ -5,12 +5,12 @@ services: automation
 ms.date: 04/11/2019
 ms.topic: article
 ms.custom: mvc
-ms.openlocfilehash: 188306ca02cee05f17514826ae6d973a17e6bb97
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 385806dca7dcac9fd0aac4c1bf9e1072e7fe5ecb
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75421857"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979472"
 ---
 # <a name="enable-update-management-change-tracking-and-inventory-solutions-on-multiple-vms"></a>Włączanie rozwiązań Update Management, Change Tracking i spisu na wielu maszynach wirtualnych
 
@@ -41,7 +41,7 @@ Lista maszyn wirtualnych jest filtrowana w celu wyświetlania tylko maszyn wirtu
 
 ### <a name="resource-group-limit"></a>Ograniczenia dotyczące dołączania
 
-Liczba grup zasobów, których można użyć do dołączenia, jest ograniczona przez [Menedżer zasobów limity wdrożenia](../azure-resource-manager/resource-manager-cross-resource-group-deployment.md). Menedżer zasobów wdrożeń nie należy mylić z wdrożeniami aktualizacji, są ograniczone do 5 grup zasobów na wdrożenie. Aby zapewnić integralność dołączania, 2 z tych grup zasobów są zastrzeżone do konfigurowania obszaru roboczego Log Analytics, konta usługi Automation i powiązanych zasobów. Spowoduje to pozostawienie 3 grup zasobów do wybrania do wdrożenia. Ten limit dotyczy tylko jednoczesnego dołączania, a nie liczby grup zasobów, które mogą być zarządzane przez rozwiązanie automatyzacji.
+Liczba grup zasobów, których można użyć do dołączenia, jest ograniczona przez [Menedżer zasobów limity wdrożenia](../azure-resource-manager/templates/cross-resource-group-deployment.md). Menedżer zasobów wdrożeń nie należy mylić z wdrożeniami aktualizacji, są ograniczone do 5 grup zasobów na wdrożenie. Aby zapewnić integralność dołączania, 2 z tych grup zasobów są zastrzeżone do konfigurowania obszaru roboczego Log Analytics, konta usługi Automation i powiązanych zasobów. Spowoduje to pozostawienie 3 grup zasobów do wybrania do wdrożenia. Ten limit dotyczy tylko jednoczesnego dołączania, a nie liczby grup zasobów, które mogą być zarządzane przez rozwiązanie automatyzacji.
 
 Możesz również użyć elementu Runbook do dołączenia, aby uzyskać więcej informacji, zobacz Dołączanie [rozwiązań aktualizacji i śledzenia zmian do Azure Automation](automation-onboard-solutions.md).
 

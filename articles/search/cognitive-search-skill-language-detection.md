@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: e3ec9ea9cfbae314297c5b59f6a07bcebaef6a5c
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 8439788c63ec1b9feaea148ab52aba498791dc12
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791956"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045023"
 ---
 #   <a name="language-detection-cognitive-skill"></a>Umiejętność wykrywania języka
 
@@ -30,14 +30,14 @@ Wykrywanie języka korzysta z bibliotek przetwarzania języka naturalnego Bing, 
 
 
 ## <a name="odatatype"></a>@odata.type  
-Microsoft. umiejętności. Text. LanguageDetectionSkill
+Microsoft.Skills.Text.LanguageDetectionSkill
 
 ## <a name="data-limits"></a>Limity danych
-Maksymalny rozmiar rekordu powinien składać się z 50 000 znaków mierzonych przez [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length). Jeśli musisz podzielić dane przed wysłaniem ich do analizatora tonacji, możesz użyć [umiejętności podziału tekstu](cognitive-search-skill-textsplit.md).
+Maksymalny rozmiar rekordu powinien składać się z 50 000 znaków mierzonych przez [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length). Jeśli musisz podzielić dane przed wysłaniem ich do umiejętności wykrywania języka, możesz użyć [umiejętności podziału tekstu](cognitive-search-skill-textsplit.md).
 
 ## <a name="skill-inputs"></a>Dane wejściowe kwalifikacji
 
-W parametrach jest rozróżniana wielkość liter.
+W nazwach parametrów jest rozróżniana wielkość liter.
 
 | Dane wejściowe     | Opis |
 |--------------------|-------------|
@@ -49,7 +49,7 @@ W parametrach jest rozróżniana wielkość liter.
 |--------------------|-------------|
 | languageCode | Kod języka ISO 6391 dla zidentyfikowanego języka. Na przykład "en". |
 | język | Nazwa języka. Na przykład "angielski". |
-| dały | Wartość z zakresu od 0 do 1. Prawdopodobieństwo poprawnego zidentyfikowania języka. Wynik może być mniejszy niż 1, jeśli zdanie ma Języki mieszane.  |
+| wynik | Wartość z zakresu od 0 do 1. Prawdopodobieństwo poprawnego zidentyfikowania języka. Wynik może być mniejszy niż 1, jeśli zdanie ma Języki mieszane.  |
 
 ##  <a name="sample-definition"></a>Definicja Przykładowa
 

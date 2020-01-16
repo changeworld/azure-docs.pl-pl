@@ -8,20 +8,20 @@ services: iot-accelerators
 ms.topic: tutorial
 ms.date: 11/29/2018
 ms.author: adugar
-ms.openlocfilehash: 8a5c74c76662a089675fcbdcd8d5a7ea54b58fd1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8ba2d4eca3287efc746c0d4902b6bcc4bd0c796e
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61448914"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980544"
 ---
-# <a name="tutorial-manage-your-connected-devices-in-bulk"></a>Samouczek: Zarządzanie zbiorczo połączonych urządzeń
+# <a name="tutorial-manage-your-connected-devices-in-bulk"></a>Samouczek: zarządzanie połączonymi urządzeniami w trybie zbiorczym
 
 W tym samouczku użyjesz akceleratora rozwiązania do monitorowania zdalnego, aby zarządzać konfiguracją podłączonych urządzeń w trybie zbiorczym.
 
 Jako operator w firmie Contoso musisz skonfigurować grupę urządzeń przy użyciu nowej wersji oprogramowania układowego. Wolisz uniknąć konieczności aktualizowania oprogramowania układowego na każdym urządzeniu osobno. Aby zaktualizować oprogramowanie układowe w grupie urządzeń, możesz skorzystać z grup urządzeń i funkcji automatycznego zarządzania urządzeniami w akceleratorze rozwiązania do monitorowania zdalnego. Każde urządzenia dodawane do grupy urządzeń otrzyma najnowsze oprogramowanie układowe, gdy tylko będzie online.
 
-W tym samouczku zostaną wykonane następujące czynności:
+W tym samouczku zostały wykonane następujące czynności:
 
 >[!div class="checklist"]
 > * Tworzenie grupy urządzeń
@@ -45,7 +45,7 @@ Aby wykonać kroki tego samouczka, należy wdrożyć wystąpienie akceleratora r
 
 Jeśli jeszcze nie wdrożono akceleratora rozwiązania do monitorowania zdalnego, należy ukończyć przewodnik Szybki start [Wdrażanie rozwiązania do monitorowania zdalnego opartego na chmurze](quickstart-remote-monitoring-deploy.md).
 
-Potrzebujesz konta usługi Azure Storage do hostowania plików oprogramowania układowego. Możesz użyć istniejącego konta magazynu lub [utworzyć nowe konto magazynu](../storage/common/storage-quickstart-create-account.md) w ramach subskrypcji.
+Potrzebujesz konta usługi Azure Storage do hostowania plików oprogramowania układowego. Możesz użyć istniejącego konta magazynu lub [utworzyć nowe konto magazynu](../storage/common/storage-account-create.md) w ramach subskrypcji.
 
 W tym samouczku jako urządzenia przykładowego użyto urządzenia [IoT DevKit](https://microsoft.github.io/azure-iot-developer-kit/).
 
@@ -57,7 +57,7 @@ Na komputerze lokalnym musisz mieć zainstalowane następujące oprogramowanie:
 Przed rozpoczęciem:
 
 * Upewnij się, że [program inicjujący na urządzeniu IoT DevKit jest w wersji 1.4.0 lub nowszej](https://microsoft.github.io/azure-iot-developer-kit/docs/firmware-upgrading/).
-* Upewnij się, że zestaw SDK urządzenia IoT DevKit jest w tej samej wersji co program inicjujący. Zestaw SDK urządzenia IoT DevKit możesz zaktualizować za pomocą rozszerzenia Azure IoT Workbench w programie VS Code. Otwórz paletę poleceń, a następnie wprowadź **Arduino: Menedżer tablicy**. Aby uzyskać więcej informacji, zobacz [Przygotowywanie środowiska deweloperskiego](../iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started.md#prepare-the-development-environment).
+* Upewnij się, że zestaw SDK urządzenia IoT DevKit jest w tej samej wersji co program inicjujący. Zestaw SDK urządzenia IoT DevKit możesz zaktualizować za pomocą rozszerzenia Azure IoT Workbench w programie VS Code. Otwórz paletę poleceń i wprowadź polecenie **Arduino: Board Manager**. Aby uzyskać więcej informacji, zobacz [Przygotowywanie środowiska deweloperskiego](../iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started.md#prepare-the-development-environment).
 
 Musisz również połączyć co najmniej jedno urządzenie IoT DevKit z akceleratorem rozwiązania do monitorowania zdalnego. Jeśli nie połączono jeszcze urządzenia IoT DevKit, zobacz [Łączenie urządzenia MXChip IoT DevKit AZ3166 z akceleratorem rozwiązania do monitorowania zdalnego IoT](iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringV2.md).
 
@@ -73,7 +73,7 @@ Aby oprogramowanie układowe było automatycznie aktualizowane w grupie urządze
 
 1. Na stronie **Urządzenia** wybierz wszystkie urządzenia **IoT DevKit**, które zostały połączone z akceleratorem rozwiązań. Następnie kliknij pozycję **Zadania**.
 
-1. Na panelu **Zadania** wybierz pozycję **Tagi**, ustaw nazwę zadania **AddDevKitTag**, a następnie dodaj tag tekstowy o nazwie **IsDevKitDevice** z wartością **Y**. Następnie kliknij pozycję **Zastosuj**.
+1. W panelu **zadania** wybierz pozycję **Tagi**, Ustaw nazwę zadania na **AddDevKitTag**, a następnie Dodaj tag tekstowy o nazwie **IsDevKitDevice** z wartością **Y**. Następnie kliknij przycisk **Zastosuj**.
 
 1. Teraz możesz użyć wartości tagów do utworzenia grupy urządzeń. Na stronie **Urządzenia** kliknij pozycję **Zarządzaj grupami urządzeń**.
 
@@ -89,7 +89,7 @@ Rozszerzenie [Azure IoT Workbench](https://marketplace.visualstudio.com/items?it
 
 1. Upewnij się, że urządzenie IoT DevKit nie jest podłączone do komputera. Uruchom program VS Code, a następnie podłącz urządzenie DevKit do komputera.
 
-1. Naciśnij klawisz **F1** , aby otworzyć paletę poleceń, wpisz i wybierz **IoT Workbench: Przykłady**. Następnie jako kartę wybierz pozycję **IoT DevKit**.
+1. Naciśnij klawisz **F1** aby otworzyć paletę poleceń, wpisz i wybierz polecenie **IoT Workbench: Examples**. Następnie jako kartę wybierz pozycję **IoT DevKit**.
 
 1. Znajdź przykład **Firmware OTA** i kliknij przycisk **Open Sample** (Otwórz przykład). Zostanie otwarte nowe okno programu VS Code z wyświetlonym folderem projektu **firmware_ota**:
 
@@ -103,7 +103,7 @@ Początkową wersją oprogramowania układowego urządzenia jest wersja 1.0.0. N
 
     ![Zmiana wersji oprogramowania układowego](media/iot-accelerators-remote-monitoring-bulk-configuration-update/version-1-0-1.png)
 
-1. Otwórz paletę poleceń, a następnie wpisz i wybierz pozycję **IoT Workbench: Urządzenie**. Wybierz pozycję **Device Compile** (Kompilacja urządzenia), aby skompilować kod:
+1. Otwórz paletę poleceń, a następnie wpisz i wybierz polecenie **IoT Workbench: Device**. Wybierz pozycję **Device Compile** (Kompilacja urządzenia), aby skompilować kod:
 
     ![Kompilacja urządzenia](media/iot-accelerators-remote-monitoring-bulk-configuration-update/iot-workbench-device-compile.png)
 
@@ -111,7 +111,7 @@ Początkową wersją oprogramowania układowego urządzenia jest wersja 1.0.0. N
 
 ### <a name="generate-the-crc-value-and-calculate-the-firmware-file-size"></a>Generowanie wartości CRC i obliczanie rozmiaru pliku oprogramowania układowego
 
-1. Otwórz paletę poleceń, a następnie wpisz i wybierz pozycję **IoT Workbench: Urządzenie**. Wybierz pozycję **Generate CRC** (Generuj CRC):
+1. Otwórz paletę poleceń, a następnie wpisz i wybierz polecenie **IoT Workbench: Device**. Wybierz pozycję **Generate CRC** (Generuj CRC):
 
     ![Generowanie CRC](media/iot-accelerators-remote-monitoring-bulk-configuration-update/iot-workbench-device-crc.png)
 
@@ -139,13 +139,13 @@ Użyj swojego konta usługi Azure Storage do hostowania nowego pliku oprogramowa
 
     ![Wersja 1.0.0](media/iot-accelerators-remote-monitoring-bulk-configuration-update/version-1-0-1.png)
 
-1. Otwórz paletę poleceń, a następnie wpisz i wybierz pozycję **IoT Workbench: Urządzenie**. Wybierz pozycję **Device Upload** (Przekazywanie do urządzenia):
+1. Otwórz paletę poleceń, a następnie wpisz i wybierz polecenie **IoT Workbench: Device**. Wybierz pozycję **Device Upload** (Przekazywanie do urządzenia):
 
     ![Przekazywanie do urządzenia](media/iot-accelerators-remote-monitoring-bulk-configuration-update/device-upload.png)
 
 1. Program VS Code sprawdza i przekazuje kod do urządzenia IoT DevKit.
 
-1. Po zakończeniu przekazywania następuje ponowne uruchomienie urządzenia IoT DevKit. Po zakończeniu ponownego uruchamiania ekranu mxchip IoT DevKit pokazuje **wersji środowiska .NET Framework: 1.0.0**, oraz że sprawdzania nowego oprogramowania układowego:
+1. Po zakończeniu przekazywania następuje ponowne uruchomienie urządzenia IoT DevKit. Po zakończeniu ponownego uruchamiania na ekranie urządzenia IoT DevKit widać komunikat **FW version: 1.0.0** (Oprogramowanie układowe — wersja: 1.0.0) oraz komunikat o sprawdzaniu dostępności nowego oprogramowania układowego:
 
     ![ota-1](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-1.jpg)
 
@@ -228,7 +228,7 @@ W tej sekcji utworzysz i wykonasz wdrożenie, które zastosuje konfigurację urz
 
     |Opcja|Wartość|
     |---|---|
-    |Name (Nazwa)|Wdrażanie aktualizacji oprogramowania układowego|
+    |Nazwa|Wdrażanie aktualizacji oprogramowania układowego|
     |Typ pakietu|Konfiguracja urządzenia|
     |Typ konfiguracji|Oprogramowanie układowe|
     |Pakiet|firmware-update.json|

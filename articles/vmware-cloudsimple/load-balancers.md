@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: d26eb0160316737c9ad31d98c8cf23bdcad42d32
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 6c98b699b1d3aba15ce69c519d35d7ce3e90d123
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74206497"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045738"
 ---
 # <a name="choose-a-load-balancing-solution-for-cloudsimple-private-clouds"></a>Wybierz rozwiązanie do równoważenia obciążenia dla chmur prywatnych CloudSimple
 
@@ -37,7 +37,7 @@ Aby dowiedzieć się więcej o konfigurowaniu tego rozwiązania, zapoznaj się z
 
 Jeśli zdecydujesz się uruchomić aplikację w ramach wdrożenia hybrydowego, w którym warstwa frontonu internetowego jest uruchomiona w sieci wirtualnej platformy Azure w ramach subskrypcji platformy Azure, a warstwa bazy danych aplikacji jest uruchomiona na maszynach wirtualnych programu VMware w chmurze prywatnej CloudSimple, możesz użyć wewnętrznego ładowania platformy Azure Moduł równoważenia obciążenia (P4) przed maszynami wirtualnymi warstwy bazy danych na potrzeby zarządzania ruchem.
 
-Aby dowiedzieć się więcej, zobacz Dokumentacja [wewnętrzna Load Balancer](../load-balancer/load-balancer-overview.md#internalloadbalancer) platformy Azure.
+Aby dowiedzieć się więcej, zobacz Dokumentacja [wewnętrzna Load Balancer](../load-balancer/concepts-limitations.md#internalloadbalancer) platformy Azure.
 
 ## <a name="global-server-load-balancer"></a>Moduł równoważenia obciążenia serwera globalnego
 

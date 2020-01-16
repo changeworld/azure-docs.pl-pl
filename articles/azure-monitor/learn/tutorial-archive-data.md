@@ -9,19 +9,19 @@ ms.date: 09/25/2017
 ms.author: johnkem
 ms.custom: mvc
 ms.subservice: metrics
-ms.openlocfilehash: 86f042a451583759aa15e886b3261700335a5285
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 87b05256103790c706f3ba0df7ea72c169b79f16
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75748550"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979819"
 ---
 # <a name="archive-azure-metric-and-log-data-using-azure-storage"></a>Archiwizowanie metryk platformy Azure i zapisywanie danych w dzienniku przy użyciu usługi Azure Storage
 
-Dane dzienników i metryk, tworzone w kilku warstwach środowiska platformy Azure, można zarchiwizować na koncie usługi Azure Storage. Pozwala to zachować historię danych monitorowania w niedrogim magazynie, który nie zapewnia możliwości wyszukiwania, po upływie okresu przechowywania tych danych. 
+Dane dzienników i metryk, tworzone w kilku warstwach środowiska platformy Azure, można zarchiwizować na koncie usługi Azure Storage. Pozwala to zachować historię danych monitorowania w niedrogim magazynie, który nie zapewnia możliwości wyszukiwania, po upływie okresu przechowywania tych danych.
 
-- Metryki platformy usługi Azure Monitor są przechowywane przez 93 dni. 
-- Dzienniki diagnostyczne zasobów są wyświetlane tylko wtedy, gdy są kierowane do usługi Log Analytics, w której mogą być przechowywane przez co najmniej 30 dni (ten okres można skonfigurować). 
+- Metryki platformy usługi Azure Monitor są przechowywane przez 93 dni.
+- Dzienniki diagnostyczne zasobów są wyświetlane tylko wtedy, gdy są kierowane do usługi Log Analytics, w której mogą być przechowywane przez co najmniej 30 dni (ten okres można skonfigurować).
 - Wpisy dziennika aktywności są przechowywane przez 90 dni.  
 
 W tym samouczku przedstawiono kroki konfigurowania środowiska platformy Azure pod kątem archiwizowania danych na koncie magazynu.
@@ -42,7 +42,7 @@ Zaloguj się do [portalu Azure](https://portal.azure.com/).
 
 ## <a name="create-a-storage-account"></a>Tworzenie konta magazynu
 
-Najpierw musisz skonfigurować konto magazynu, na którym będą archiwizowane dane monitorowania. Aby to zrobić, [wykonaj te kroki](../../storage/common/storage-quickstart-create-account.md).
+Najpierw musisz skonfigurować konto magazynu, na którym będą archiwizowane dane monitorowania. Aby to zrobić, [wykonaj te kroki](../../storage/common/storage-account-create.md).
 
 ## <a name="route-subscription-logs-to-the-storage-account"></a>Przekierowywanie dzienników subskrypcji do konta magazynu
 
@@ -144,9 +144,9 @@ Dane monitorowania z maszyn wirtualnych będą teraz przepływać do konta magaz
 ## <a name="view-the-monitoring-data-in-the-storage-account"></a>Wyświetlanie danych monitorowania na koncie magazynu
 
 > [!WARNING]
-> Od 1 listopada 2018 r. format danych dzienników na koncie magazynu zmieni się na JSON Lines. [W tym artykule znajdziesz opis skutków tej zmiany oraz instrukcje aktualizacji narzędzi w celu zapewnienia obsługi nowego formatu.](./../../azure-monitor/platform/diagnostic-logs-append-blobs.md) 
+> Od 1 listopada 2018 r. format danych dzienników na koncie magazynu zmieni się na JSON Lines. [W tym artykule znajdziesz opis skutków tej zmiany oraz instrukcje aktualizacji narzędzi w celu zapewnienia obsługi nowego formatu.](./../../azure-monitor/platform/diagnostic-logs-append-blobs.md)
 >
-> 
+>
 
 Jeśli wykonano powyższe kroki, dane zaczęły już przepływać do konta magazynu.
 
@@ -199,4 +199,3 @@ Aby uzyskać szczegółowe informacje i wykorzystać swoje dane w większym stop
 
 > [!div class="nextstepaction"]
 > [Wprowadzenie do usługi Log Analytics](../../azure-monitor/log-query/log-query-overview.md)
-

@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: tutorial
 ms.date: 10/27/2019
 ms.author: nitinme
-ms.openlocfilehash: dfbd11b97ee77d77599ead08ba58fe173b64f876
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 14affb2c2aa53fc7a2b1a5946e81ad124800f678
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75446472"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981263"
 ---
 # <a name="tutorial-use-form-recognizer-with-azure-logic-apps-to-analyze-invoices"></a>Samouczek: używanie aparatu rozpoznawania formularzy z Azure Logic Apps do analizowania faktur
 
@@ -52,7 +52,7 @@ W tym samouczku dowiesz się, jak wyodrębnić informacje z takich tabel do form
 
 Ten kontener służy do przekazywania przykładowych danych, które są wymagane do uczenia modelu.
 
-1. Postępuj zgodnie z instrukcjami w temacie [Tworzenie konta usługi Azure Storage](../../storage/common/storage-quickstart-create-account.md) , aby utworzyć konto magazynu. Użyj **formrecostorage** jako nazwy konta magazynu.
+1. Postępuj zgodnie z instrukcjami w temacie [Tworzenie konta usługi Azure Storage](../../storage/common/storage-account-create.md) , aby utworzyć konto magazynu. Użyj **formrecostorage** jako nazwy konta magazynu.
 1. Postępuj zgodnie z instrukcjami w temacie [Tworzenie kontenera obiektów blob platformy Azure](../../storage/blobs/storage-quickstart-blobs-portal.md) , aby utworzyć kontener na koncie usługi Azure Storage. Użyj **formrecocontainer** jako nazwy kontenera. Upewnij się, że ustawisz publiczny poziom dostępu do **kontenera (Anonimowy dostęp do odczytu dla kontenerów i obiektów BLOB)** .
 
     > [!div class="mx-imgBorder"]

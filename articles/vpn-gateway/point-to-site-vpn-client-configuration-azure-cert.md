@@ -6,14 +6,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 01/10/2020
+ms.date: 01/15/2020
 ms.author: cherylmc
-ms.openlocfilehash: 4df22108591fe3f80078bce050081c4953443847
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.openlocfilehash: 9342a70e539c4a2717fe45426c26595285172681
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75902998"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045784"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-native-azure-certificate-authentication-p2s-configurations"></a>Tworzenie i Instalowanie plików konfiguracji klienta sieci VPN dla natywnych konfiguracji P2S uwierzytelniania certyfikatu platformy Azure
 
@@ -99,9 +99,14 @@ Wykonaj następujące kroki, aby skonfigurować natywnego klienta sieci VPN na k
 4. W folderze **ogólnym** , w pliku **VpnSettings. XML** skopiuj wartość tagu **VpnServer** . Wklej tę wartość do pól **adres serwera** i **Identyfikator zdalny** profilu.
 
    ![Informacje o serwerze](./media/point-to-site-vpn-client-configuration-azure-cert/server.png)
-5. Kliknij pozycję **Ustawienia uwierzytelniania** i wybierz pozycję **certyfikat**. 
+5. Kliknij pozycję **Ustawienia uwierzytelniania** i wybierz pozycję **certyfikat**. W przypadku usługi **Catalina**kliknij **Brak** , a następnie pozycję **certyfikat**
 
    ![ustawienia uwierzytelniania](./media/point-to-site-vpn-client-configuration-azure-cert/authsettings.png)
+
+   * W przypadku Catalina wybierz **Brak** , a następnie **certyfikat**. **Wybierz** prawidłowy certyfikat:
+   
+   ![catalina](./media/point-to-site-vpn-client-configuration-azure-cert/catalina.png)
+
 6. Kliknij przycisk **Wybierz...** Aby wybrać certyfikat klienta, który ma być używany do uwierzytelniania. Jest to certyfikat zainstalowany w kroku 2.
 
    ![certyfikat](./media/point-to-site-vpn-client-configuration-azure-cert/certificate.png)

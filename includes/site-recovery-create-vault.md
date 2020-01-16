@@ -4,17 +4,17 @@ ms.service: site-recovery
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: raynew
-ms.openlocfilehash: 62bb01b39f33f801f1eb43d128083cff7e16830a
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: fd1a7f133c5719873133554fc2292e94e6fe26a4
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67183642"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980331"
 ---
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) > **Recovery Services**.
-2. Kliknij przycisk **Utwórz zasób** > **monitorowanie + zarządzanie** > **Backup i Site Recovery**.
+2. Kliknij pozycję **Utwórz zasób** > **monitorowanie + zarządzanie** > **kopia zapasowa i Site Recovery**.
 3. W polu **Nazwa** wprowadź przyjazną nazwę identyfikującą magazyn. Jeśli masz więcej niż jedną subskrypcję, wybierz jedną z nich.
-4. [Utwórz grupę zasobów](../articles/azure-resource-manager/resource-group-template-deploy-portal.md) lub wybierz istniejącą. Określ region platformy Azure. 
+4. [Utwórz grupę zasobów](../articles/azure-resource-manager/templates/deploy-portal.md) lub wybierz istniejącą. Określ region platformy Azure. 
 5. Aby szybko uzyskać dostęp do magazynu z pulpitu nawigacyjnego, kliknij pozycję **Przypnij do pulpitu nawigacyjnego** > **Utwórz**.
 
    ![Nowy magazyn](./media/site-recovery-create-vault/new-vault-settings.png)

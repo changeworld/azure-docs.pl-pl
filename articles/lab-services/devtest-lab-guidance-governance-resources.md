@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 11/26/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: 0be2efd3783d9a0a7992819c984c993c64000ecd
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: dc65d368eb4c1beb57099cb6c16fb33bbe5c1f79
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75644872"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981504"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---resources"></a>Zarządzanie infrastrukturą Azure DevTest Labs — zasoby
 Ten artykuł dotyczy wyrównania i zarządzania zasobami dla DevTest Labs w organizacji. 
@@ -36,7 +36,7 @@ Zanim organizacja zacznie używać platformy Azure do ogólnego opracowywania ap
 - Czy segmentacja jest wymagana do oddzielenia środowisk deweloperskich i produkcyjnych? 
 - Jakie kontrolki są wprowadzane do długoterminowej łatwości zarządzania, stabilności i wzrostu?
 
-**Pierwszym zalecanym** celem jest przejrzenie taksonomii platformy Azure w organizacji, w której znajdują się podziały między subskrypcjami produkcyjnymi i programistycznymi. Na poniższym diagramie Sugerowana Taksonomia umożliwia logiczne rozdzielenie środowiska deweloperskiego/testowego i produkcyjnego. W ramach tego podejścia organizacja może wprowadzić kody rozliczeń, aby śledzić koszty związane z każdym środowiskiem osobno. Aby uzyskać więcej informacji, zobacz [zalecenia dotyczące zarządzania subskrypcjami](/azure/architecture/cloud-adoption/appendix/azure-scaffold). Ponadto można używać [tagów platformy Azure](../azure-resource-manager/resource-group-using-tags.md) do organizowania zasobów na potrzeby śledzenia i rozliczania.
+**Pierwszym zalecanym** celem jest przejrzenie taksonomii platformy Azure w organizacji, w której znajdują się podziały między subskrypcjami produkcyjnymi i programistycznymi. Na poniższym diagramie Sugerowana Taksonomia umożliwia logiczne rozdzielenie środowiska deweloperskiego/testowego i produkcyjnego. W ramach tego podejścia organizacja może wprowadzić kody rozliczeń, aby śledzić koszty związane z każdym środowiskiem osobno. Aby uzyskać więcej informacji, zobacz [zalecenia dotyczące zarządzania subskrypcjami](/azure/architecture/cloud-adoption/appendix/azure-scaffold). Ponadto można używać [tagów platformy Azure](../azure-resource-manager/management/tag-resources.md) do organizowania zasobów na potrzeby śledzenia i rozliczania.
 
 **Drugim zalecanym sposobem** jest włączenie subskrypcji DevTest w portalu Azure Enterprise. Dzięki temu organizacja może uruchamiać systemy operacyjne klienta, które nie są zwykle dostępne w ramach subskrypcji platformy Azure Enterprise. Następnie użyj oprogramowania w przedsiębiorstwie, w przypadku którego płacisz wyłącznie za obliczenia, i nie obawiaj się o Licencjonowanie. Gwarantuje to, że opłaty za wyznaczone usługi, w tym obrazy z galerii w IaaS, takie jak Microsoft SQL Server, opierają się wyłącznie na zużyciu. Szczegółowe informacje o subskrypcji usługi Azure DevTest można znaleźć [tutaj](https://azure.microsoft.com/offers/ms-azr-0148p/) dla klientów z Umowa Enterprise (EA) i w [tym miejscu](https://azure.microsoft.com/offers/ms-azr-0023p/) dla klientów z opcją płatność zgodnie z rzeczywistym użyciem.
 

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/21/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 7bc44d8e755af3d212d616425c6a1fd925172298
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5aa9a4f0ab536c197f08cb64a5cee8280c23039f
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65602942"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982055"
 ---
 # <a name="create-features-for-data-in-sql-server-using-sql-and-python"></a>Tworzenie funkcji dla danych w programie SQL Server przy użyciu języka SQL i Python
 W tym dokumencie przedstawiono sposób generowania funkcji dla danych przechowywanych w maszynę Wirtualną programu SQL Server na platformie Azure, ułatwiającą algorytmy wydajniej informacje z danych. Można użyć bazy danych SQL lub języka programowania, takich jak Python, aby wykonać to zadanie. Oba podejścia są przedstawione w tym artykule.
@@ -31,7 +31,7 @@ To zadanie jest to krok w [Team Data Science naukowych](https://docs.microsoft.c
 ## <a name="prerequisites"></a>Wymagania wstępne
 W tym artykule założono, że masz:
 
-* Utworzone konto magazynu platformy Azure. Aby uzyskać instrukcje, zobacz [Tworzenie konta usługi Azure Storage](../../storage/common/storage-quickstart-create-account.md)
+* Utworzone konto magazynu platformy Azure. Aby uzyskać instrukcje, zobacz [Tworzenie konta usługi Azure Storage](../../storage/common/storage-account-create.md)
 * Przechowywane dane w programie SQL Server. Jeśli nie masz, zobacz [przenoszenie danych do usługi Azure SQL Database dla usługi Azure Machine Learning](move-sql-azure.md) instrukcje dotyczące przenoszenia danych istnieje.
 
 ## <a name="sql-featuregen"></a>Generowanie funkcji przy użyciu języka SQL
@@ -68,7 +68,7 @@ Poniżej przedstawiono krótki Podręcznik szerokości/długości geograficznej 
 * Znak wskazuje, czy możemy się północ lub południe, wschód lub zachód na całym świecie.
 * Wartość różną od zera setki cyfra wskazuje długość geograficzna, szerokość nie jest on używany.
 * Dziesiątki cyfrę daje możliwość około 1000 kilometrów. Daje ona przydatnych informacji o jakie kontynent lub ocean jesteśmy na.
-* Cyfra jednostki (jeden stopień dziesiętna) zapewnia pozycji do 111 kilometrów (60 mil, około 69 mil). Wskazuje, około, jakie dużych stanu lub kraju/regionu, jesteśmy w stanie.
+* Cyfra jednostki (jeden stopień dziesiętna) zapewnia pozycji do 111 kilometrów (60 mil, około 69 mil). Oznacza to, że jest to bardzo duży stan lub kraj/region, w którym się znajdują.
 * Pierwsze miejsce dziesiętne, warto maksymalnie 11.1 km: można odróżnić, pozycja jeden duży kolumny city z sąsiednich Miasto dużych.
 * Drugie miejsce dziesiętne, warto maksymalnie 1.1 km: je oddzielić wieś jednego z następnej.
 * Warto do 110 m: można zidentyfikować, duże pole rolnicze lub campus instytucjonalnych jest trzeciego miejsca dziesiętnego.

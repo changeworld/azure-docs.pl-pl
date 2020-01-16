@@ -16,20 +16,20 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cc92fb7bc5ddf451279e6c157f9e93aa7fe9a12a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9cf660cbf981079ca20111e34fcd34504d8dcbfb
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75423619"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76044117"
 ---
-# <a name="web-api-that-calls-web-apis---acquire-a-token-for-the-app"></a>Internetowy interfejs API wywołujący interfejsy API sieci Web — uzyskiwanie tokenu dla aplikacji
+# <a name="a-web-api-that-calls-web-apis-acquire-a-token-for-the-app"></a>Internetowy interfejs API, który wywołuje interfejsy API sieci Web: uzyskiwanie tokenu dla aplikacji
 
 Po skompilowaniu obiektu aplikacji klienckiej Użyj go, aby uzyskać token, którego można użyć do wywołania interfejsu API sieci Web.
 
 ## <a name="code-in-the-controller"></a>Kod w kontrolerze
 
-Oto przykład kodu, który zostanie wywołany w akcjach kontrolerów interfejsu API, wywołujący podrzędny interfejs API (o nazwie todolist).
+Oto przykład kodu, który jest wywoływany w akcjach kontrolerów interfejsu API. Wywołuje podrzędny interfejs API o nazwie *todolist*.
 
 ```csharp
 private async Task GetTodoList(bool isAppStarting)
@@ -50,9 +50,9 @@ private async Task GetTodoList(bool isAppStarting)
 }
 ```
 
-`BuildConfidentialClient()` jest podobny do przedstawionego w artykule [internetowy interfejs API, który wywołuje interfejsy API sieci Web — konfiguracja aplikacji](scenario-web-api-call-api-app-configuration.md). `BuildConfidentialClient()` tworzy wystąpienia `IConfidentialClientApplication` z pamięcią podręczną, która zawiera tylko informacje dla jednego konta. Konto jest dostarczane przez metodę `GetAccountIdentifier`.
+`BuildConfidentialClient()` przypomina scenariusz w [interfejsie API sieci Web, który wywołuje interfejsy API sieci Web: Konfiguracja aplikacji](scenario-web-api-call-api-app-configuration.md). `BuildConfidentialClient()` tworzy wystąpienia `IConfidentialClientApplication` z pamięcią podręczną zawierającą informacje tylko dla jednego konta. Konto jest dostarczane przez metodę `GetAccountIdentifier`.
 
-Metoda `GetAccountIdentifier` używa oświadczeń skojarzonych z tożsamością użytkownika, dla którego internetowy interfejs API odebrał token JWT:
+Metoda `GetAccountIdentifier` używa oświadczeń, które są skojarzone z tożsamością użytkownika, dla którego internetowy interfejs API odebrał token sieci Web JSON (JWT):
 
 ```csharp
 public static string GetMsalAccountId(this ClaimsPrincipal claimsPrincipal)
@@ -73,4 +73,4 @@ public static string GetMsalAccountId(this ClaimsPrincipal claimsPrincipal)
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Wywoływanie interfejsu API sieci Web](scenario-web-api-call-api-call-api.md)
+> [Internetowy interfejs API, który wywołuje interfejsy API sieci Web: wywoływanie interfejsu API](scenario-web-api-call-api-call-api.md)

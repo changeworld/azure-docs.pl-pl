@@ -10,12 +10,12 @@ ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
 ms.date: 11/04/2019
-ms.openlocfilehash: c13b2a24147c542e36b78e8ae17af8e85414cd74
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 93cbf8e9e60ef48e1ff3516dd4e9e123f70e0f42
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75533461"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982436"
 ---
 # <a name="tutorial-create-your-first-classification-model-with-automated-machine-learning"></a>Samouczek: Tworzenie pierwszego modelu klasyfikacji przy użyciu automatycznej uczenia maszynowego
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -138,9 +138,9 @@ Należy wykonać następujące czynności w celu skonfigurowania i uruchomienia 
         Sprawdzanie poprawności | Wybierz typ i liczbę testów.|Typ walidacji:<br>&nbsp;k — złóż&nbsp;a krzyżowego sprawdzania poprawności <br> <br> Liczba walidacji: 2
         Współbieżność| Maksymalna liczba wykonanych równoległych iteracji i użytych rdzeni na iterację| Maksymalnie&nbsp;współbieżnych&nbsp;iteracji: 5<br> Maksymalna liczba rdzeni&nbsp;&nbsp;na&nbsp;iteracja: brak
         
-        Kliknij przycisk **OK**.
+        Wybierz pozycję **Zapisz**.
 
-1. Wybierz pozycję **Utwórz** , aby uruchomić eksperyment. Zostanie otwarty ekran **szczegóły uruchamiania** ze **stanem Uruchom** jako przygotowanie eksperymentu.
+1. Wybierz pozycję **Zakończ** , aby uruchomić eksperyment. Zostanie otwarty ekran **szczegóły uruchamiania** ze **stanem Uruchom** jako przygotowanie eksperymentu.
 
 >[!IMPORTANT]
 > Przygotowanie eksperymentu trwa do **10-15 minut** .
@@ -155,7 +155,7 @@ Przejdź do karty **modele** , aby zobaczyć przetestowane algorytmy (modele). D
 
 Podczas oczekiwania na zakończenie wszystkich modeli eksperymentów wybierz **nazwę algorytmu** kompletnego modelu, aby poznać jego szczegóły wydajności. 
 
-Poniżej przedstawiono **Informacje o modelu** i kartach **wizualizacje** , aby wyświetlić właściwości wybranego modelu, metryki i wykresy wydajności. 
+Poniżej przedstawiono **Informacje o modelu** i kartach **wizualizacje** , aby wyświetlić właściwości, metryki i wykresy wydajności wybranego modelu. 
 
 ![Szczegóły przebiegu iteracji](./media/tutorial-first-experiment-automated-ml/run-detail.gif)
 

@@ -7,13 +7,13 @@ ms.author: v-chjen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 01/06/2020
-ms.openlocfilehash: 1df30b25d2029ba31525eaea232d258bbb134366
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.date: 01/13/2020
+ms.openlocfilehash: c39f41af8ed2f1e25064324c0e1da4a6603face8
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863809"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045533"
 ---
 # <a name="create-a-new-saas-offer"></a>Utwórz nową ofertę SaaS
 
@@ -167,7 +167,7 @@ Po zakończeniu tych pól wybierz pozycję **Zapisz** .
 
 ### <a name="category"></a>Kategoria
 
-Wybierz co najmniej jedną (1) i maksymalnie trzy kategorie (3) używane do grupowania oferty w odpowiednie obszary wyszukiwania w portalu Marketplace. Zapoznaj się ze sposobem, w jaki oferta obsługuje te kategorie w opisie oferty. 
+Wybierz co najmniej jedną (1) i maksymalnie trzy kategorie (3) używane do grupowania oferty w odpowiednie obszary wyszukiwania w portalu Marketplace. Dowiedz się, w jaki sposób oferta obsługuje te kategorie w opisie oferty.
 
 ### <a name="industry"></a>Branża
 
@@ -175,7 +175,7 @@ Wybierz co najmniej jedną (1) i maksymalnie trzy kategorie (3) używane do grup
 
 ### <a name="app-version"></a>Wersja aplikacji
 
-Jest to pole opcjonalne używane w witrynie AppSource Marketplace do identyfikowania numeru wersji oferty.
+To pole jest opcjonalne i używane w witrynie AppSource Marketplace do identyfikowania numeru wersji oferty.
 
 ### <a name="standard-contract-for-the-microsoft-commercial-marketplace"></a>Standardowa umowa dla komercyjnego portalu Microsoft Marketplace
 
@@ -204,12 +204,12 @@ Istnieją dwa rodzaje zmian dostępnych dla komercyjnych wydawców portalu Marke
 >[!NOTE]
 > Te dwa typy zmian stosują się między sobą. Klienci z niestandardowymi zmianami otrzymają także uniwersalną zmianę do standardowej umowy podczas zakupu.
 
-**Zasady uniwersalnej zmiany do standardowej umowy dotyczącej komercyjnego rynku firmy Microsoft**: w tym polu Wprowadź postanowienia dotyczące uniwersalnej poprawki. Możesz wprowadzić pojedynczą zmianę uniwersalną dla każdej oferty. W tym polu można wprowadzić nieograniczoną liczbę znaków. Są one wyświetlane klientom w AppSource, w witrynie Azure Marketplace i/lub Azure Portal podczas odnajdywania i przepływu zakupów.
+**Zasady uniwersalnej zmiany do standardowej umowy dotyczącej komercyjnego rynku firmy Microsoft**: w tym polu Wprowadź postanowienia dotyczące uniwersalnej poprawki. Możesz wprowadzić pojedynczą zmianę uniwersalną dla każdej oferty. W tym polu można wprowadzić nieograniczoną liczbę znaków. Te warunki są wyświetlane klientom w AppSource, w witrynie Azure Marketplace i/lub Azure Portal podczas odnajdywania i przepływu zakupów.
 
 **Niestandardowe warunki zmiany do standardowej umowy dotyczącej komercyjnego rynku firmy Microsoft**: Zacznij od wybrania pozycji **Dodaj niestandardowe warunki zmiany**. Dla każdej oferty możesz podać maksymalnie 10 niestandardowych postanowień.
 
 - **Niestandardowe warunki zmiany**: wprowadź niestandardowe warunki zmiany w polu niestandardowe warunki zmiany. W tym polu można wprowadzić nieograniczoną liczbę znaków. Tylko klienci z identyfikatorów dzierżawców, którzy określisz dla tych terminów niestandardowych, będą przedstawiani niestandardowe warunki zmiany w przepływie zakupu oferty w Azure Portal.  
-- **Identyfikatory dzierżawców** (wymagane): Każda Poprawka niestandardowa może być przeznaczona do maksymalnie 20 identyfikatorów dzierżawy. W przypadku dodania niestandardowej zmiany należy podać co najmniej jeden identyfikator dzierżawy. Identyfikator dzierżawy identyfikuje Twojego klienta na platformie Azure. Możesz polecić klienta dla tego identyfikatora i znaleźć go, przechodząc do portal.azure.com > Azure Active Directory > właściwości. Wartość identyfikatora katalogu to identyfikator dzierżawy (np. 50c464d3-4930-494c-963c-1e951d15360e). Możesz również wyszukać identyfikator dzierżawy organizacji klienta przy użyciu adresu URL nazwy domeny, co [to jest mój Microsoft Azure i identyfikator dzierżawy pakietu Office 365?](https://www.whatismytenantid.com).
+- **Identyfikatory dzierżawców** (wymagane): Każda Poprawka niestandardowa może być przeznaczona do maksymalnie 20 identyfikatorów dzierżawy. W przypadku dodania niestandardowej poprawki należy podać co najmniej jeden identyfikator dzierżawy. Identyfikator dzierżawy identyfikuje Twojego klienta na platformie Azure. Możesz polecić klienta dla tego identyfikatora i znaleźć go, przechodząc do portal.azure.com > Azure Active Directory > właściwości. Wartość identyfikatora katalogu to identyfikator dzierżawy (na przykład 50c464d3-4930-494c-963c-1e951d15360e). Możesz również wyszukać identyfikator dzierżawy organizacji klienta przy użyciu adresu URL nazwy domeny, co [to jest mój Microsoft Azure i identyfikator dzierżawy pakietu Office 365?](https://www.whatismytenantid.com).
 - **Opis** (opcjonalnie): Opcjonalnie podaj przyjazny opis identyfikatora dzierżawy, który pomaga zidentyfikować klienta, którego celem jest zmiana.
 
 #### <a name="terms-and-conditions"></a>Postanowienia
@@ -231,7 +231,7 @@ Na karcie Lista ofert są wyświetlane języki (i rynki), w których oferta jest
 
 Podaj szczegóły, które mają być wyświetlane w witrynie Marketplace, w tym opisy oferty i zasobów marketingowych.
 
-- **Nazwa** (wymagana): Nazwa zdefiniowana w tym miejscu zostanie wyświetlona jako tytuł oferty w wybranym portalu Marketplace. Nazwa jest wstępnie wypełniana na podstawie poprzedniej nowej pozycji **oferty** .  Może to być znak towarowy.  Nie może zawierać znaków emoji (chyba że są to symbole towarowe i praw autorskich) i muszą być ograniczone do 50 znaków.
+- **Nazwa** (wymagana): Nazwa zdefiniowana w tym miejscu zostanie wyświetlona jako tytuł oferty w wybranym portalu Marketplace. Nazwa jest wstępnie wypełniana na podstawie poprzedniej nowej pozycji **oferty** . Nazwa może być znakiem towarowym. Nie może zawierać znaków emoji (chyba że są to symbole towarowe i praw autorskich) i muszą być ograniczone do 50 znaków.
 - **Podsumowanie** (wymagane): Podaj krótki opis oferty, który ma być używany na potrzeby wyników wyszukiwania na liście w portalu Marketplace. W tym polu można wprowadzić do 100 znaków tekstu.
 - **Opis** (wymagane): Podaj opis oferty, która ma zostać wyświetlona na liście przeglądów portalu Marketplace. Rozważ uwzględnienie propozycji wartości, najważniejszych korzyści, wszelkich kategorii lub związków branżowych, możliwości zakupu w aplikacji, wszelkich wymaganych informacji oraz linku, aby dowiedzieć się więcej.
 W tym polu można wprowadzić do 3 000 znaków tekstu. Aby uzyskać dodatkowe wskazówki, zobacz artykuł [Napisz doskonały opis aplikacji](https://docs.microsoft.com/windows/uwp/publish/write-a-great-app-description).
@@ -240,7 +240,7 @@ W tym polu można wprowadzić do 3 000 znaków tekstu. Aby uzyskać dodatkowe ws
 
 #### <a name="description"></a>**Opis**
 
-To pole jest wymagane. Elementy do uwzględnienia w opisie:
+To pole jest wymagane. Elementy do uwzględnienia w **opisie**:
 
 * Jasno opisz swoją wartość oferty w pierwszych kilku zdaniach opisu.  
 * Należy pamiętać, że pierwsze niektóre zdania mogą być wyświetlane w wynikach wyszukiwania.  
@@ -253,76 +253,28 @@ Podstawowe składniki Twojej pozycji wartości powinny zawierać następujące i
 * Typ użytkownika, który korzysta z produktu.
 * Klienci muszą lub cierpili adresy produktów.
 
-Aby dowiedzieć się, jak będzie bardziej atrakcyjny opis oferty, możesz użyć tagów HTML do sformatowania opisu.
+Aby zwiększyć atrakcyjność **opisu** oferty, użyj edytora tekstu sformatowanego do formatowania opisu.
 
-1. Jeśli chcesz utworzyć akapity, Dodaj `<p>` w BEGGING tekstu i Dodaj `</p>` na końcu.
+![Korzystanie z edytora tekstu sformatowanego](./media/text-editor2.png)
 
-    **Przykład**:
+Skorzystaj z poniższych instrukcji, aby użyć edytora tekstu sformatowanego:
 
-    `<p>` jest to mój pierwszy akapit. `</p>` <br>
-    `<p>` to w drugim akapicie. `</p>` <br>
+- Aby zmienić format zawartości, zaznacz tekst, który chcesz sformatować, i wybierz styl tekstu, jak pokazano poniżej:
 
-    Powyższy sposób będzie wyglądać następująco:
+     ![Zmienianie formatu tekstu przy użyciu edytora tekstu sformatowanego](./media/text-editor3.png)
 
-    <p> Jest to mój pierwszy akapit. </p>
-    <p> Jest to mój drugi akapit. </p>
+- Aby dodać listę punktowaną lub numerowaną do tekstu, Użyj poniższych opcji:
 
-1. Jeśli chcesz dodać **punktowaną listę elementów**, umieść swój tekst w `<li>` tagach poniżej. Można kopiować i wklejać więcej elementów punktowanych (elementów między `<li>` i `</li>` tagów) w tagach `<ul>` i `</ul>`. Upewnij się, że dodano `<ul></ul>`.
+     ![Używanie edytora tekstu sformatowanego do dodawania list](./media/text-editor4.png)
 
-    **Przykład**:
+- Aby dodać lub usunąć wcięcie do tekstu, Użyj poniższych opcji:
 
-    ```
-    <ul> 
-        <li>add text here</li>
-        <li> add text here </li>
-        <li> add text here </li>
-    </ul>
-    ```
-
-    Powyższy sposób będzie wyglądać następująco:
-    <ul> 
-        <li>tutaj Dodaj tekst</li>
-        <li> tutaj Dodaj tekst </li>
-        <li> tutaj Dodaj tekst </li>
-    </ul> 
-
-1. Aby **pogrubić** zawartość, Dodaj `<b>` na początku tekstu, który ma być pogrubiony, i Dodaj `</b>` na końcu tekstu, który ma być pogrubiony.
-
-    **Przykład**: `<b>` bezpłatna wersja próbna `</b>`
-    
-    Powyższe spowodowałoby pogrubienie słów BEZPŁATNEj wersji PRÓBnej w opisie oferty w sklepie.
-
-    **BEZPŁATNA WERSJA PRÓBNA**
-
-1. Aby dodać **podziały wierszy** między zawartością, Dodaj `<br>` przed zawartością, którą chcesz uruchomić w nowym wierszu. Jeśli chcesz pozostawić miejsce i upewnić się, że zawartość zaczyna się w nowym wierszu, Dodaj `<br><br>` przed zawartością.
-
-    **Przykład**:
-
-    To jest wiersz tekstu. `<br>` jest to wiersz tekstu, który zostanie uruchomiony w nowym wierszu. `<br><br>` to jest wiersz, w którym rozpocznie się dwa wiersze poniżej.
-
-    Powyższy sposób będzie wyglądać następująco:
-
-    To jest wiersz tekstu. <br> To jest wiersz tekstu, który zostanie uruchomiony w nowym wierszu. <br><br> To jest wiersz, w którym rozpocznie się dwa wiersze poniżej.
-
-1. Jeśli chcesz **zwiększyć rozmiar tekstu**, najpierw wybierz, jak duży ma być tekst. Skorzystaj z poniższych przykładów. Po wybraniu rozmiaru tekstu Dodaj odpowiednie Tagi `<H*></H*>` na początku i na końcu tekstu.
-
-    **Przykład**:
-
-    `<h1>`jest to nagłówek 1`</h1>` <br>
-    `<h2>`jest to nagłówek 2`</h2>` <br>
-    `<h3>`jest to nagłówek 3`</h3>` <br>
-    `<h4>`jest to nagłówek 4`</h4>` <br>
-    `<h5>`jest to nagłówek 5`</h5>` <br>
-    `<h6>`jest to nagłówek 6`</h6>` 
-
-    Powyższy sposób będzie wyglądać następująco:
-
-    ![Przykładowe nagłówki](./media/heading.png)
+     ![Używanie edytora tekstu sformatowanego do wcięcia](./media/text-editor5.png)
 
 #### <a name="links"></a>Linki
 
 - **Zasady ochrony prywatności** (wymagane): link do zasad zachowania poufności informacji organizacji. Użytkownik jest odpowiedzialny za zapewnienie zgodności aplikacji z przepisami i przepisami dotyczącymi ochrony prywatności oraz podawanie prawidłowych zasad zachowania poufności informacji.
-- **Materiały marketingowe programu CSP** (opcjonalnie): należy podać link do materiałów marketingowych, jeśli wybierzesz opcję rozszerania oferty do programu w programie [Cloud Solution Provider (CSP)](https://docs.microsoft.com/azure/marketplace/cloud-solution-providers) . Dostawca usług kryptograficznych rozszerza ofertę na szerszego grona wykwalifikowanych klientów, umożliwiając partnerom programu CSP łączenie się z ofertą, rynku i sprzedaży. Tacy odsprzedawcy będą musieli uzyskać dostęp do materiałów marketingowych oferty. Aby uzyskać więcej informacji, zobacz [usługi przejdź do rynku](https://partner.microsoft.com/reach-customers/gtm).
+- **Materiały marketingowe programu CSP** (opcjonalnie): Podaj link do materiałów marketingowych, jeśli wybierzesz opcję rozszerania oferty do programu w programie [Cloud Solution Provider (CSP)](https://docs.microsoft.com/azure/marketplace/cloud-solution-providers) . Dostawca usług kryptograficznych rozszerza ofertę na szerszego grona wykwalifikowanych klientów, umożliwiając partnerom programu CSP łączenie się z ofertą, rynku i sprzedaży. Tacy odsprzedawcy będą musieli uzyskać dostęp do materiałów marketingowych oferty. Aby uzyskać więcej informacji, zobacz [usługi przejdź do rynku](https://partner.microsoft.com/reach-customers/gtm).
 - **Użyteczne linki** (opcjonalnie): opcjonalne uzupełniające dokumenty online dotyczące aplikacji lub powiązanych usług wymienionych przez podanie **tytułu** i **adresu URL**. Dodaj dodatkowe przydatne linki, klikając pozycję **+ Dodaj adres URL**.
 
 #### <a name="contact-information"></a>Informacje kontaktowe
@@ -353,7 +305,7 @@ Pamiętaj, aby **zapisać** przed przejściem do następnej sekcji.
 Karta **Podgląd** umożliwia zdefiniowanie ograniczonej liczby odbiorców w **wersji zapoznawczej** w celu udostępnienia oferty przed opublikowaniem oferty w szerszym gronie odbiorców w portalu Marketplace.
 
 > [!IMPORTANT]
-> Musisz wybrać pozycję **Przejdź na żywo** , aby Twoja oferta została opublikowana na żywo dla odbiorców publicznych w witrynie Marketplace po sprawdzeniu oferty w wersji zapoznawczej.
+> Po sprawdzeniu oferty w wersji zapoznawczej wybierz pozycję **Przejdź na żywo** , aby Twoja oferta mogła zostać opublikowana na żywo dla odbiorców publicznych w portalu Marketplace.
 
 - **Zdefiniuj odbiorców wersji zapoznawczej: Dodaj pojedynczą wiadomość e-mail w usłudze AAD/MSA na wiersz wraz z opcjonalnym opisem.**
 
@@ -368,11 +320,11 @@ Karta **konfiguracja techniczna** zawiera szczegółowe informacje techniczne (�
 
 - **Adres URL strony docelowej** (wymagane): Zdefiniuj adres URL witryny, po którym klienci będą mogli po uzyskaniu oferty z portalu Marketplace. Ten adres URL będzie punktem końcowym, który odbiera token, gdy klient jest kierowany do strony. Ten token może być wymieniany w celu uzyskania szczegółowych informacji o aprowizacji za pomocą rozwiązania w interfejsach API realizacji. Te szczegóły i wszelkie inne zbierane informacje mogą być używane jako część strony sieci Web interaktywnej klienta wbudowanej w środowisko użytkownika w celu ukończenia rejestracji i aktywowania zakupu.
 
-- **Element webhook połączenia** (wymagany): dla wszystkich zdarzeń asynchronicznych wymaganych przez firmę Microsoft w imieniu klienta (przykład: subskrypcja SaaS stała się nieprawidłowa) wymagane jest podanie elementu webhook połączenia. Jeśli nie masz jeszcze systemu elementu webhook, najprostszą konfiguracją jest posiadanie aplikacji logiki punktu końcowego HTTP, która będzie nasłuchiwać wszystkich zdarzeń, które są w nim ogłaszane, a następnie odpowiednio obsługiwać je (np. https:\//prod-1westus.logic.azure.com:443/work). Aby uzyskać więcej informacji, zobacz [wywoływanie, wyzwalanie lub zagnieżdżanie przepływów pracy za pomocą punktów końcowych HTTP w usłudze Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-http-endpoint).
+- **Element webhook połączenia** (wymagany): dla wszystkich zdarzeń asynchronicznych wymaganych przez firmę Microsoft w imieniu klienta (przykład: subskrypcja SaaS stała się nieprawidłowa) wymagane jest podanie elementu webhook połączenia. Jeśli nie masz jeszcze systemu elementu webhook, najprostszą konfiguracją jest posiadanie aplikacji logiki punktu końcowego protokołu HTTP, która będzie nasłuchiwać wszystkich zdarzeń, które są w nim ogłaszane, a następnie odpowiednio obsługiwać je (na przykład https:\//prod-1westus.logic.azure.com:443/work). Aby uzyskać więcej informacji, zobacz [wywoływanie, wyzwalanie lub zagnieżdżanie przepływów pracy za pomocą punktów końcowych HTTP w usłudze Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-http-endpoint).
 
-- **Identyfikator dzierżawy usługi Azure AD** (wymagany): wewnątrz Azure Portal wymagamy [utworzenia aplikacji Azure Active Directory (AD)](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) , aby umożliwić nam zweryfikowanie połączenia między naszymi dwiema usługami w ramach komunikacji uwierzytelnionej. Aby znaleźć [Identyfikator dzierżawy](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in), przejdź do Azure Active Directory i wybierz pozycję **Właściwości**, a następnie wyszukaj numer **identyfikatora katalogu** na liście (np. 50c464d3-4930-494c-963c-1e951d15360e).
+- **Identyfikator dzierżawy usługi Azure AD** (wymagany): wewnątrz Azure Portal wymagamy [utworzenia aplikacji Azure Active Directory (AD)](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) , aby umożliwić nam zweryfikowanie połączenia między naszymi dwiema usługami w ramach komunikacji uwierzytelnionej. Aby znaleźć [Identyfikator dzierżawy](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in), przejdź do Azure Active Directory i wybierz pozycję **Właściwości**, a następnie wyszukaj numer **identyfikatora katalogu** na liście (na przykład 50c464d3-4930-494c-963c-1e951d15360e).
 
-- **Identyfikator aplikacji usługi Azure AD** (wymagane): wymagany jest również [Identyfikator aplikacji](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) i klucz uwierzytelniania. Aby uzyskać te wartości, przejdź do Azure Active Directory i wybierz pozycję **rejestracje aplikacji**, a następnie wyszukaj numer **identyfikatora aplikacji** (np. 50c464d3-4930-494c-963c-1e951d15360e). Aby znaleźć klucz uwierzytelniania, przejdź do pozycji **Ustawienia** i wybierz pozycję **klucze**. Należy podać opis i czas trwania, a następnie podać wartość liczbową.
+- **Identyfikator aplikacji usługi Azure AD** (wymagane): wymagany jest również [Identyfikator aplikacji](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) i klucz uwierzytelniania. Aby uzyskać te wartości, przejdź do Azure Active Directory i wybierz pozycję **rejestracje aplikacji**, a następnie wyszukaj numer **identyfikatora aplikacji** na liście (na przykład 50c464d3-4930-494c-963c-1e951d15360e). Aby znaleźć klucz uwierzytelniania, przejdź do pozycji **Ustawienia** i wybierz pozycję **klucze**. Należy podać opis i czas trwania, a następnie podać wartość liczbową.
 
 >[!Note]
 >Identyfikator aplikacji platformy Azure jest skojarzony z IDENTYFIKATORem wydawcy, dlatego upewnij się, że ten sam identyfikator aplikacji jest używany we wszystkich ofertach.
@@ -390,8 +342,8 @@ Po utworzeniu zobaczysz nazwy planu, identyfikatory, modele cen, dostępność (
 
 **Utwórz nowy plan** (co najmniej jeden plan dla tych, którzy wybierają sprzedaż w firmie Microsoft)
 
-- **Identyfikator planu:** Utwórz unikatowy identyfikator planu dla każdego planu w tej ofercie. Ten identyfikator będzie widoczny dla klientów w adresie URL produktu i szablonach Azure Resource Manager (jeśli dotyczy). Używaj tylko małych liter, znaków alfanumerycznych, łączników lub podkreśleń. Dla tego identyfikatora planu można używać maksymalnie 50 znaków. Należy pamiętać, że nie można zmodyfikować identyfikatora po wybraniu pozycji Utwórz.
-- **Nazwa planu:** Klienci będą widzieli tę nazwę podczas wybierania planu do wyboru w ramach oferty. Utwórz unikatową nazwę oferty dla każdego planu w tej ofercie. Nazwa planu służy do rozróżniania planów oprogramowania, które mogą być częścią tej samej oferty (np. Nazwa oferty: system Windows Server; plany: Windows Server 2016, Windows Server 2019).
+- **Identyfikator planu:** Utwórz unikatowy identyfikator planu dla każdego planu w tej ofercie. Ten identyfikator będzie widoczny dla klientów w adresie URL produktu i szablonach Azure Resource Manager (jeśli dotyczy). Używaj tylko małych liter, znaków alfanumerycznych, łączników lub podkreśleń. Dla tego identyfikatora planu można używać maksymalnie 50 znaków. Nie można zmodyfikować identyfikatora po wybraniu pozycji Utwórz.
+- **Nazwa planu:** Klienci będą widzieli tę nazwę podczas wybierania planu do wyboru w ramach oferty. Utwórz unikatową nazwę oferty dla każdego planu w tej ofercie. Nazwa planu służy do rozróżniania planów oprogramowania, które mogą być częścią tej samej oferty (na przykład nazwa oferty: system Windows Server; plany: Windows Server 2016, Windows Server 2019).
 
 ### <a name="plan-listing"></a>Zaplanuj listę
 
@@ -424,7 +376,7 @@ Możliwość skonfigurowania bezpłatnej wersji próbnej jest dostępna dla każ
 >[!Note]
 >Po opublikowaniu oferty transakcyjnej z bezpłatną wersją próbną nie można jej wyłączyć dla tego planu. Upewnij się, że to ustawienie jest poprawne podczas pierwszego publikowania, aby uniknąć konieczności ponownego tworzenia planu.
 
-Aby uzyskać informacje o subskrypcjach klientów, które aktualnie uczestniczą w bezpłatnej wersji próbnej, użyj nowej właściwości interfejsu API `isFreeTrial`, która zostanie oznaczona jako true lub false. Aby uzyskać więcej informacji, zobacz [interfejs API uzyskiwania subskrypcji SaaS](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2#get-subscription) .
+Aby uzyskać informacje o subskrypcjach klientów, które aktualnie uczestniczą w bezpłatnej wersji próbnej, użyj nowej właściwości interfejsu API `isFreeTrial`, która zostanie oznaczona jako true lub false. Aby uzyskać więcej informacji, zobacz [SaaS Get Subscription API](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2#get-subscription).
 
 >[!Note]
 >Bezpłatne wersje próbne nie są obsługiwane w przypadku planów, które wykorzystują usługę pomiaru Marketplace.

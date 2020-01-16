@@ -3,12 +3,12 @@ title: Funkcje zabezpieczeń pomagające w ochronie obciążeń w chmurze
 description: Dowiedz się, jak używać funkcji zabezpieczeń w programie Azure Backup, aby tworzyć kopie zapasowe bardziej bezpieczne.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: e3da4778a82cd5eb50fbb82c7f9f00cf6c6f1a85
-ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
+ms.openlocfilehash: e4519a342e1be3244b5d4598880e9ad490f50030
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75829633"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028212"
 ---
 # <a name="security-features-to-help-protect-cloud-workloads-that-use-azure-backup"></a>Funkcje zabezpieczeń pomagające w ochronie obciążeń w chmurze korzystających z Azure Backup
 
@@ -251,7 +251,7 @@ Podczas tworzenia kopii zapasowej usługi Azure Virtual Machines istnieje równi
 
 ### <a name="backup-of-managed-disk-vm-encrypted-using-customer-managed-keys"></a>Tworzenie kopii zapasowej maszyny wirtualnej dysku zarządzanego zaszyfrowanej przy użyciu kluczy zarządzanych przez klienta
 
-Azure Backup umożliwia tworzenie kopii zapasowych Virtual Machines platformy Azure zawierających dyski zaszyfrowane przy użyciu kluczy zarządzanych przez klienta. Aby uzyskać szczegółowe informacje, zobacz [szyfrowanie dysków zarządzanych przy użyciu kluczy zarządzanych przez klienta](https://docs.microsoft.com//azure/virtual-machines/windows/disk-encryption#customer-managed-keys-public-preview).
+Azure Backup umożliwia tworzenie kopii zapasowych Virtual Machines platformy Azure zawierających dyski zaszyfrowane przy użyciu kluczy zarządzanych przez klienta. Aby uzyskać szczegółowe informacje, zobacz [szyfrowanie dysków zarządzanych przy użyciu kluczy zarządzanych przez klienta](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption#customer-managed-keys).
 
 ### <a name="backup-of-encrypted-vms"></a>Tworzenie kopii zapasowych zaszyfrowanych maszyn wirtualnych
 

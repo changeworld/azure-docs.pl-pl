@@ -2,23 +2,23 @@
 title: Równoległa symulacja języka R w usłudze Azure Batch
 description: Samouczek — Instrukcje krok po kroku umożliwiające uruchomienie symulacji finansowej Monte Carlo w usłudze Azure Batch za pomocą pakietu języka R doAzureParallel
 services: batch
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 ms.assetid: ''
 ms.service: batch
 ms.devlang: r
 ms.topic: tutorial
 ms.date: 01/23/2018
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: mvc
-ms.openlocfilehash: 7fad37af268d3dcd3d4d974d8e839ac47f171b50
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: a5422b3b3dfee548e24e989654f8cc219700e712
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68321908"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029210"
 ---
-# <a name="tutorial-run-a-parallel-r-simulation-with-azure-batch"></a>Samouczek: Uruchamianie równoległej symulacji języka R w usłudze Azure Batch 
+# <a name="tutorial-run-a-parallel-r-simulation-with-azure-batch"></a>Samouczek: równoległe uruchamianie symulacji języka R w usłudze Azure Batch 
 
 Możesz uruchamiać równoległe obciążenia języka R na dużą skalę za pomocą lekkiego pakietu języka R, [doAzureParallel](https://www.github.com/Azure/doAzureParallel), umożliwiającego używanie usługi Azure Batch bezpośrednio z poziomu sesji języka R. Pakiet doAzureParallel został zbudowany na podstawie popularnego pakietu języka R [foreach](https://cran.r-project.org/web/packages/foreach/index.html). Pakiet doAzureParallel przesyła poszczególne iteracje pętli pakietu foreach jako zadania podrzędne usługi Azure Batch.
 
@@ -38,7 +38,7 @@ Z tego samouczka dowiesz się, jak wdrożyć pulę usługi Azure Batch i uruchom
 
 * Konto usługi Azure Batch i Azure Storage. Aby utworzyć te konta, skorzystaj z przewodników Szybki start dla usługi Batch i [witryny Azure Portal](quick-create-portal.md) lub [interfejsu wiersza polecenia platformy Azure](quick-create-cli.md). 
 
-## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
+## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
 
 Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com).
 

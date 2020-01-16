@@ -13,20 +13,20 @@ ms.tgt_pltfrm: na
 ms.workload: load-balancer
 ms.date: 06/06/2018
 ms.author: allensu
-ms.openlocfilehash: b8acf1faff17f657999769216f71cfb5fa6e3181
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: b52c554617bdcbe88b65639473044eb9c5eb7fa8
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74077094"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045433"
 ---
 # <a name="create-an-azure-basic-load-balancer-using-rest-api"></a>Tworzenie usługi Azure podstawowego modułu równoważenia obciążenia przy użyciu interfejsu API REST
 
-Usługi Azure Load Balancer dystrybuuje nowych przepływów ruchu przychodzącego, przychodzące do frontonu modułu równoważenia obciążenia do wystąpień puli zaplecza, zgodnie z zasadami i sondy kondycji. Moduł równoważenia obciążenia jest dostępna w dwóch jednostkach SKU: podstawowa i standardowa. Aby zrozumieć różnicę między dwoma wersjami jednostki SKU [porównania jednostki SKU modułu równoważenia obciążenia](load-balancer-overview.md#skus).
+Usługi Azure Load Balancer dystrybuuje nowych przepływów ruchu przychodzącego, przychodzące do frontonu modułu równoważenia obciążenia do wystąpień puli zaplecza, zgodnie z zasadami i sondy kondycji. Moduł równoważenia obciążenia jest dostępna w dwóch jednostkach SKU: podstawowa i standardowa. Aby zrozumieć różnicę między dwoma wersjami jednostki SKU [porównania jednostki SKU modułu równoważenia obciążenia](concepts-limitations.md#skus).
  
 Niniejszy instruktaż pokazuje, jak utworzyć Azure podstawowego modułu równoważenia obciążenia przy użyciu [interfejsu API REST usługi Azure](/rest/api/azure/) aby ułatwić obciążenia równoważenia przychodzącego żądania na wielu maszynach wirtualnych w ramach sieci wirtualnej platformy Azure. Pełna dokumentacja i dodatkowe przykłady są dostępne w [odwołania REST modułu równoważenia obciążenia Azure](/rest/api/load-balancer/).
  
-## <a name="build-the-request"></a>Żądanie kompilacji
+## <a name="build-the-request"></a>Tworzenie żądania
 Użyj następujące żądanie HTTP PUT, aby utworzyć nowy Azure podstawowego modułu równoważenia obciążenia.
  ```HTTP
   PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}?api-version=2018-02-01
@@ -35,10 +35,10 @@ Użyj następujące żądanie HTTP PUT, aby utworzyć nowy Azure podstawowego mo
 
 |Nazwa  |W  |Wymagane |Typ |Opis |
 |---------|---------|---------|---------|--------|
-|subscriptionId   |  path       |  Prawda       |   ciąg      |  Poświadczenia subskrypcji, które jednoznacznie identyfikują subskrypcji Microsoft Azure. Identyfikator subskrypcji jest częścią identyfikatora URI, dla każdego wywołania usługi.      |
-|resourceGroupName     |     path    | Prawda        |  ciąg       |   Nazwa grupy zasobów.     |
-|loadBalancerName     |  path       |      Prawda   |    ciąg     |    Nazwa modułu równoważenia obciążenia.    |
-|api-version    |   query     |  Prawda       |     ciąg    |  Wersja interfejsu API klienta.      |
+|subscriptionId   |  Ścieżka       |  Prawda       |   string      |  Poświadczenia subskrypcji, które jednoznacznie identyfikują subskrypcji Microsoft Azure. Identyfikator subskrypcji jest częścią identyfikatora URI, dla każdego wywołania usługi.      |
+|resourceGroupName     |     Ścieżka    | Prawda        |  string       |   Nazwa grupy zasobów.     |
+|loadBalancerName     |  Ścieżka       |      Prawda   |    string     |    Nazwa modułu równoważenia obciążenia.    |
+|api-version    |   query     |  Prawda       |     string    |  Wersja interfejsu API klienta.      |
 
 
 
@@ -48,7 +48,7 @@ Wymagany jest tylko parametr `location`. Jeżeli nie zdefiniujesz *jednostki SKU
 
 | Nazwa | Typ | Opis |
 | :--- | :--- | :---------- |
-| location | ciąg | Lokalizacja zasobu. Pobierz bieżącą listę lokalizacji przy użyciu [listy lokalizacji](https://docs.microsoft.com/rest/api/resources/subscriptions/listlocations) operacji. |
+| location | string | Lokalizacja zasobu. Pobierz bieżącą listę lokalizacji przy użyciu [listy lokalizacji](https://docs.microsoft.com/rest/api/resources/subscriptions/listlocations) operacji. |
 
 
 ## <a name="example-create-and-update-a-basic-load-balancer"></a>Przykład: Tworzenie i aktualizowanie podstawowego modułu równoważenia obciążenia
