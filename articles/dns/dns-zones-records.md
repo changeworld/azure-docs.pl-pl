@@ -15,12 +15,12 @@ ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 12/18/2017
 ms.author: allensu
-ms.openlocfilehash: e80de4a3102f9fec8ad06c0facd110b51558d338
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 37e5f5ed1d877900d8ef967f83de95f056fcca0c
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74210991"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980532"
 ---
 # <a name="overview-of-dns-zones-and-records"></a>Przegląd stref i rekordów DNS
 
@@ -115,7 +115,7 @@ Nie należy mylić wielu ciągów w rekordzie DNS z wieloma rekordami TXT w zest
 
 ### <a name="tags"></a>Tagi
 
-Tagi są listą par nazwa-wartość i są używane przez Azure Resource Manager do etykietowania zasobów.  Azure Resource Manager używa tagów do włączania filtrowanych widoków rachunku na korzystanie z platformy Azure, a także umożliwia ustawienie zasad, na których Tagi są wymagane. Aby uzyskać więcej informacji na temat tagów, zobacz [Porządkowanie zasobów na platformie Azure za pomocą tagów](../azure-resource-manager/resource-group-using-tags.md).
+Tagi są listą par nazwa-wartość i są używane przez Azure Resource Manager do etykietowania zasobów.  Azure Resource Manager używa tagów do włączania filtrowanych widoków rachunku na korzystanie z platformy Azure, a także umożliwia ustawienie zasad, na których Tagi są wymagane. Aby uzyskać więcej informacji na temat tagów, zobacz [Using tags to organize your Azure resources](../azure-resource-manager/management/tag-resources.md) (Porządkowanie zasobów na platformie Azure za pomocą tagów).
 
 Azure DNS obsługuje używanie tagów Azure Resource Manager w zasobach strefy DNS.  Nie obsługuje ona tagów w zestawach rekordów DNS, chociaż jako alternatywny element "Metadata" jest obsługiwany w zestawach rekordów DNS, jak wyjaśniono poniżej.
 

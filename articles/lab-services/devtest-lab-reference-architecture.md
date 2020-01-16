@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 04/12/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: 059fd1eb5df09cd0f24763f18cbb02b34017793c
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: f079071a88d034dfd279da8656da517b934275a3
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647904"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982117"
 ---
 # <a name="azure-devtest-labs-reference-architecture-for-enterprises"></a>Architektura referencyjna Azure DevTest Labs dla przedsiębiorstw
 Ten artykuł zawiera architekturę referencyjną, która pomaga wdrożyć rozwiązanie na podstawie Azure DevTest Labs w przedsiębiorstwie. Obejmuje następujące elementy:
@@ -56,7 +56,7 @@ Mimo że DevTest Labs nie ma wbudowanych przydziałów ani limitów, inne zasoby
 - **Zasoby na grupę zasobów według typu zasobu**: domyślny limit zasobów dla [grupy zasobów dla każdego typu zasobu to 800](../azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits).  Jeśli używasz *wszystkich maszyn wirtualnych, przejdź do tej samej konfiguracji grupy zasobów* , użytkownicy trafią na tę subskrypcję, szczególnie jeśli maszyny wirtualne mają wiele dodatkowych dysków.
 - **Konta magazynu**: laboratorium w DevTest Labs jest dostarczane z kontem magazynu. Limit przydziału platformy Azure dla [liczby kont magazynu na region na subskrypcję to 250](../azure-resource-manager/management/azure-subscription-service-limits.md#storage-limits). Maksymalna liczba laboratoriów DevTest w tym samym regionie to również 250.
 - **Przypisania ról**: przypisanie roli polega na tym, jak nadawać użytkownikowi lub głównemu dostęp do zasobu (właściciel, zasób, poziom uprawnień). Na platformie Azure obowiązuje [Limit przypisań ról 2 000 na subskrypcję](../azure-resource-manager/management/azure-subscription-service-limits.md#role-based-access-control-limits). Domyślnie usługa DevTest Labs tworzy grupę zasobów dla każdej maszyny wirtualnej. Właściciel otrzymuje uprawnienie *właściciela* dla maszyny wirtualnej i *czytnika* DevTest Labs do grupy zasobów. W ten sposób każda nowa utworzona maszyna wirtualna używa dwóch przypisań ról poza przypisaniami, które są używane w przypadku udzielenia użytkownikom uprawnień do laboratorium.
-- **Operacje odczytu/zapisu interfejsu API**: istnieją różne sposoby automatyzowania platform Azure i DevTest Labs, w tym interfejsów API REST, programu PowerShell, interfejsu wiersza polecenia platformy Azure i zestawu Azure SDK. Za poorednictwem automatyzacji można napotkać inny limit dla żądań interfejsu API: Każda subskrypcja zezwala na [12 000 żądań odczytu i 1 200 żądań zapisu na godzinę](../azure-resource-manager/resource-manager-request-limits.md). Należy pamiętać o tym limicie podczas automatyzowania DevTest Labs.
+- **Operacje odczytu/zapisu interfejsu API**: istnieją różne sposoby automatyzowania platform Azure i DevTest Labs, w tym interfejsów API REST, programu PowerShell, interfejsu wiersza polecenia platformy Azure i zestawu Azure SDK. Za poorednictwem automatyzacji można napotkać inny limit dla żądań interfejsu API: Każda subskrypcja zezwala na [12 000 żądań odczytu i 1 200 żądań zapisu na godzinę](../azure-resource-manager/management/request-limits-and-throttling.md). Należy pamiętać o tym limicie podczas automatyzowania DevTest Labs.
 
 ## <a name="manageability-considerations"></a>Zagadnienia dotyczące możliwości zarządzania
 DevTest Labs ma doskonały administracyjny interfejs użytkownika do pracy z pojedynczym laboratorium. Jednak w przedsiębiorstwie jest możliwe posiadanie wielu subskrypcji platformy Azure i wielu laboratoriów. Wprowadzanie zmian w sposób ciągły we wszystkich laboratoriach wymaga obsługi skryptów/automatyzacji. Poniżej przedstawiono kilka przykładów i najlepszych praktyk związanych z zarządzaniem wdrożeniem usługi DevTest Labs:

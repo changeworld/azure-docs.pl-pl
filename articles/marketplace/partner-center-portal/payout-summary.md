@@ -7,12 +7,12 @@ ms.author: evansma
 ms.service: marketplace
 ms.topic: guide
 ms.date: 12/10/2019
-ms.openlocfilehash: 38717ae103ac72d35042ced9bf662d295ed8a29b
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 997014263f0d12e7cc16a761152870c2ee63d6ec
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75931821"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979697"
 ---
 # <a name="payout-reporting"></a>Raportowanie wypłaty
 
@@ -52,7 +52,7 @@ Jeśli sprzedajesz oferty w portalu Azure Marketplace, zobaczysz również infor
 | Transakcja nie jest gotowa do wypłaty | Rozliczanie w toku | Następna Szacowana płatność: stan wypłaty jest w stanie nieprzetworzonym.  |
 | Stan wypłaty |  | Nieprzetworzone <br> Zdobywanie oferty kwalifikuje się do płatności. Pozostaje w tym stanie przez okres chłodzenia, zgodnie z definicją w przewodniku programu dla programu zachęty. <br> <br> Nowego <br> Zamówienie płatności — generowane w trakcie weryfikacji wewnętrznej przed przetworzeniem płatności. <br> <br> Wysłana <br> Płatność została wysłana do Twojego banku. |
 
-## <a name="customer-types"></a>Typy klientów 
+## <a name="customer-types"></a>Typy klientów
 
 ### <a name="enterprise-agreement"></a>Umowa Enterprise Agreement
 
@@ -66,7 +66,7 @@ Klienci mogą również skorzystać z karty kredytowej i faktury miesięcznej. W
 
 Na przykład jeśli klient kupi przy użyciu karty kredytowej.
 
-## <a name="corelation-between-payout-and-usage"></a>Relacja między wypłatami i użyciem 
+## <a name="corelation-between-payout-and-usage"></a>Relacja między wypłatami i użyciem
 
 |Opis    |    Data  | Zamówienia/użycie  | Wypłata |
 |----------|----------|-----------|-------------|
@@ -97,33 +97,33 @@ Na przykład jeśli klient kupi przy użyciu karty kredytowej.
 
 ## <a name="transaction-history-download-export"></a>Pobieranie historii transakcji — eksport
 
-Ta opcja zapewnia pobranie każdego elementu linii zdobywania, który jest widoczny na stronie historii transakcji, typu zdobywania, daty, skojarzonej transakcji, liczby klientów, produktu i innych informacji transakcyjnych dotyczących programu zachęt. 
+Ta opcja zapewnia pobranie każdego elementu linii zdobywania, który jest widoczny na stronie historii transakcji, typu zdobywania, daty, skojarzonej transakcji, liczby klientów, produktu i innych informacji transakcyjnych dotyczących programu zachęt.
 
-| Nazwa kolumny     | Opis    | 
+| Nazwa kolumny     | Opis    |
 |-------------|-------------------------------|
 | earningId                      | Unikatowy identyfikator dla każdego zdobywania                                                                                                       |
-| participantId                  | Podstawowa tożsamość ponosząca partnera w ramach programu                                                                            | 
-| participantIdType              | Przede wszystkim IDENTYFIKATORem programu dla programów zachęt i sprzedawcy w przypadku programów do magazynowania i Azure Marketplace                                          | 
-| uczestnikname                | Nazwa partnera zdobywania                                                                                                              | 
+| participantId                  | Podstawowa tożsamość ponosząca partnera w ramach programu                                                                            |
+| participantIdType              | Przede wszystkim IDENTYFIKATORem programu dla programów zachęt i sprzedawcy w przypadku programów do magazynowania i Azure Marketplace                                          |
+| uczestnikname                | Nazwa partnera zdobywania                                                                                                              |
 | partnerCountryCode             | Lokalizacja/kraj partnera zdobywania                                                                                                  |
-| programName                    | Nazwa programu zachęty/sklepu                                                                                                             | 
-| transactionId                  | Unikatowy identyfikator transakcji                                                                                                    | 
-| transactionCurrency            | Waluta, w której wystąpiła oryginalna transakcja klienta (nie jest to waluta lokalizacji partnera)                                     | 
-| transactionDate                | Data transakcji. Przydatne w przypadku programów, w których wiele transakcji przyczynia się do jednego zdobywania                                           | 
-| transactionExchangeRate        | Kurs wymiany używany do wyświetlania odpowiedniej kwoty (USD) transakcji                                                                 | 
-| transactionAmount              | Kwota transakcji w pierwotnej walucie transakcji oparta na wygenerowanym wykorzystaniu                                              | 
-| transactionAmountUSD           | Kwota transakcji w USD                                                                                                                | 
-| górę                          | Oznacza regułę biznesową dla zdobywania                                                                                                  | 
-| earningRate                    | Stawka zachęt zastosowana do kwoty transakcji w celu wygenerowania zdobywania                                                                      | 
-| quantity                       | Różni się w zależności od programu. Wskazuje liczbę rozliczeń dla programów transakcyjnych                                                            | 
+| programName                    | Nazwa programu zachęty/sklepu                                                                                                             |
+| transactionId                  | Unikatowy identyfikator transakcji                                                                                                    |
+| transactionCurrency            | Waluta, w której wystąpiła oryginalna transakcja klienta (nie jest to waluta lokalizacji partnera)                                     |
+| transactionDate                | Data transakcji. Przydatne w przypadku programów, w których wiele transakcji przyczynia się do jednego zdobywania                                           |
+| transactionExchangeRate        | Kurs wymiany używany do wyświetlania odpowiedniej kwoty (USD) transakcji                                                                 |
+| transactionAmount              | Kwota transakcji w pierwotnej walucie transakcji oparta na wygenerowanym wykorzystaniu                                              |
+| transactionAmountUSD           | Kwota transakcji w USD                                                                                                                |
+| górę                          | Oznacza regułę biznesową dla zdobywania                                                                                                  |
+| earningRate                    | Stawka zachęt zastosowana do kwoty transakcji w celu wygenerowania zdobywania                                                                      |
+| quantity                       | Różni się w zależności od programu. Wskazuje liczbę rozliczeń dla programów transakcyjnych                                                            |
 | Liczba                   | Wskazuje typ ilości, na przykład: rozliczona ilość, MAU                                                                                     |
-| Pozostały                    | Wskazuje, czy jest to opłata, Rabat, Coop, sprzedaż itp.                                                                                          | 
+| Pozostały                    | Wskazuje, czy jest to opłata, Rabat, Coop, sprzedaż itp.                                                                                          |
 | earningAmount                  | Kwota zdobywania w pierwotnej walucie transakcji                                                                                      |
 | earningAmountUSD               | Kwota zdobywania w USD                                                                                                                    |
 | earningDate                    | Data okresu zdobywania                                                                                                                      |
 | calculationDate                | Data obliczenia okresu zdobywania w systemie                                                                                            |
 | earningExchangeRate            | Kurs wymiany używany do wyświetlania odpowiedniej ilości USD                                                                                  |
-| exchangeRateDate               | Data kursu wymiany używana do obliczania EarningAmount USD                                                                                   | 
+| exchangeRateDate               | Data kursu wymiany używana do obliczania EarningAmount USD                                                                                   |
 | paymentAmountWOTax             | Kwota zarobków (bez podatku) w ramach płatności w walucie w przypadku płatności "wysłanych"                                                                 |
 | paymentCurrency                | Płatność na walutę wybraną przez partnera w profilu płatności. Wyświetlane tylko dla wysłanych płatności                                                   |
 | paymentExchangeRate            | Kurs wymiany używany do obliczania paymentAmountWOTax w walucie płatności przy użyciu ExchangeRateDate                                            |
@@ -162,7 +162,7 @@ Ta opcja zapewnia pobranie każdego elementu linii zdobywania, który jest widoc
 | taxZipCode       | Sprzedaż do pliku zip klienta                                                                                                                  |
 | LicensingProgramName       |                                                                                                                   |
 | Kod programu       | Ciąg do mapowania przy użyciu nazwy programu                                                                                                                   |
-| earningAmountInLastPaymentCurrency       | Kwota zarobków w ostatniej walucie płatności (pole będzie puste, jeśli nie zostały uiszczone żadne wcześniejsze płatności)                                                                                                                   |
+| EarningAmountInLastPaymentCurrency       | Kwota zarobków w ostatniej walucie płatności (pole będzie puste, jeśli nie zostały uiszczone żadne wcześniejsze płatności)                                                                                                                   |
 | lastPaymentCurrency       | Waluta ostatniej płatności (pole będzie puste, jeśli nie zapłacisz żadnej wcześniejszej płatności)                                                                                                                   |
 | AssetId       | Unikatowy identyfikator zamówień klientów dla usługi w portalu Marketplace.  Reprezentuje elementy wiersza zakupu transakcji transakcyjnych. Może istnieć wiele zasobów.                                                                                                                   |
 | OrderId (Identyfikator zamówienia)       | odnosi się do faktury klienta                                                                                                                   |

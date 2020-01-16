@@ -6,12 +6,12 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: 1dbbe04818e75e41944a1c0fe54f53849cf71983
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.openlocfilehash: 854d98a4f2a1b2500bc301d2305c0dd1f27aaaa4
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75725860"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980813"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>Rozwiązywanie problemów z urządzeniem Azure Migrate i odnajdywanie
 
@@ -75,7 +75,7 @@ Jeśli wystąpi błąd połączenia, może nie być możliwe nawiązanie połąc
 
 - Błąd 60052, "urządzenie mogło nie zostać pomyślnie zarejestrowane w projekcie Azure Migrate" występuje, jeśli konto platformy Azure użyte do zarejestrowania urządzenia ma niewystarczające uprawnienia.
     - Upewnij się, że konto użytkownika platformy Azure używane do zarejestrowania urządzenia ma co najmniej uprawnienia współautora w ramach subskrypcji.
-    - [Dowiedz się więcej](https://docs.microsoft.com/azure/migrate/migrate-appliance#appliance-deployment-requirements) na temat wymaganych ról i uprawnień platformy Azure.
+    - [Dowiedz się więcej](https://docs.microsoft.com/azure/migrate/migrate-appliance#appliance---vmware) na temat wymaganych ról i uprawnień platformy Azure.
 - Błąd 60039, "urządzenie mogło nie zostać pomyślnie zarejestrowane w projekcie Azure Migrate" może wystąpić, jeśli rejestracja nie powiedzie się, ponieważ nie można odnaleźć projektu Azure Migrate użytego do rejestracji urządzenia.
     - W Azure Portal i sprawdź, czy projekt istnieje w grupie zasobów.
     - Jeśli projekt nie istnieje, Utwórz nowy projekt Azure Migrate w grupie zasobów i ponownie Zarejestruj urządzenie. [Dowiedz się, jak](https://docs.microsoft.com/azure/migrate/how-to-add-tool-first-time#create-a-project-and-add-a-tool) utworzyć nowy projekt.
@@ -86,7 +86,7 @@ Jeśli zostanie wyświetlony błąd 60030 lub 60031, "Azure Key Vault operacji z
 - Upewnij się, że konto użytkownika platformy Azure używane do zarejestrowania urządzenia ma co najmniej uprawnienia współautora w ramach subskrypcji.
 - Upewnij się, że konto ma dostęp do magazynu kluczy określonego w komunikacie o błędzie, a następnie spróbuj ponownie wykonać operację.
 - Jeśli problem będzie się powtarzał, skontaktuj się z pomocą techniczną firmy Microsoft.
-- [Dowiedz się więcej](https://docs.microsoft.com/azure/migrate/migrate-appliance#appliance-deployment-requirements) o wymaganych rolach i uprawnieniach platformy Azure.
+- [Dowiedz się więcej](https://docs.microsoft.com/azure/migrate/migrate-appliance#appliance---vmware) o wymaganych rolach i uprawnieniach platformy Azure.
 
 ## <a name="error-60028-discovery-couldnt-be-initiated"></a>Błąd 60028: nie można zainicjować odnajdywania
 
@@ -101,7 +101,7 @@ Błąd 60025: "operacja usługi Azure AD nie powiodła się. Wystąpił błąd p
 - Upewnij się, że konto użytkownika, które inicjuje odnajdywanie, jest takie samo jak użyte do zarejestrowania urządzenia.
 - Podaj Azure Active Directory uprawnienia dostępu do aplikacji dla konta użytkownika, dla którego operacja odnajdywania kończy się niepowodzeniem.
 - Usuń grupę zasobów utworzoną wcześniej dla projektu Azure Migrate. Utwórz kolejną grupę zasobów, aby ponownie uruchomić.
-- [Dowiedz się więcej](https://docs.microsoft.com/azure/migrate/migrate-appliance#appliance-deployment-requirements) o Azure Active Directory uprawnieniach aplikacji.
+- [Dowiedz się więcej](https://docs.microsoft.com/azure/migrate/migrate-appliance#appliance---vmware) o Azure Active Directory uprawnieniach aplikacji.
 
 
 ## <a name="error-50004-cant-connect-to-host-or-cluster"></a>Błąd 50004: nie można nawiązać połączenia z hostem lub klastrem

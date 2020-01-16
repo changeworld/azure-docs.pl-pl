@@ -4,12 +4,12 @@ description: Dowiedz się, jak przygotować się do oceny/migracji maszyn wirtua
 ms.topic: tutorial
 ms.date: 01/01/2020
 ms.custom: mvc
-ms.openlocfilehash: a76c249f3d179a34fbb14e6c8bfb3666816fa160
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.openlocfilehash: 6140d9689dafe8a97ae77346ea2212846e964cdc
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75720212"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028925"
 ---
 # <a name="prepare-for-assessment-and-migration-of-hyper-v-vms-to-azure"></a>Przygotowanie do oceny i migracji maszyn wirtualnych funkcji Hyper-V na platformę Azure
 
@@ -91,9 +91,9 @@ Dzierżawa/Administrator globalny może przypisać rolę dewelopera aplikacji do
 
 ## <a name="prepare-hyper-v-for-assessment"></a>Przygotowanie funkcji Hyper-V do oceny
 
-Funkcję Hyper-V do oceny maszyn wirtualnych można przygotować ręcznie lub za pomocą skryptu konfiguracji. Oto co należy przygotować:
+Funkcję Hyper-V do oceny maszyn wirtualnych można przygotować ręcznie lub za pomocą skryptu konfiguracji. Oto, co należy przygotować z skryptem lub [ręcznie](#prepare-hyper-v-manually).
 
-- Sprawdź ustawienia hosta funkcji Hyper-V i upewnij się, że wymagane porty są otwarte na hostach funkcji Hyper-V.
+- [Sprawdź](migrate-support-matrix-hyper-v.md#hyper-v-host-requirements) Ustawienia hosta funkcji Hyper-V i upewnij się, że [wymagane porty](migrate-support-matrix-hyper-v.md#port-access) są otwarte na hostach funkcji Hyper-v.
 - Skonfiguruj komunikację zdalną programu PowerShell na każdym hoście, tak aby urządzenie Azure Migrate mogły uruchamiać polecenia programu PowerShell na hoście przy użyciu połączenia usługi WinRM.
 - Delegowanie poświadczeń, jeśli dyski maszyny wirtualnej znajdują się na zdalnych udziałach SMB.
 - Skonfiguruj konto, które będzie używane przez urządzenie do odnajdywania maszyn wirtualnych na hostach funkcji Hyper-V.
@@ -171,8 +171,8 @@ Azure Migrate wymaga uprawnień do odnajdowania lokalnych maszyn wirtualnych.
 
 ### <a name="verify-hyper-v-host-settings"></a>Weryfikuj ustawienia hosta funkcji Hyper-V
 
-1. Sprawdź [wymagania dotyczące hosta funkcji Hyper-V](migrate-support-matrix-hyper-v.md#assessment-hyper-v-host-requirements) na potrzeby oceny serwera.
-2. Upewnij się, że [wymagane porty](migrate-support-matrix-hyper-v.md#assessment-port-requirements) są otwarte na hostach funkcji Hyper-V.
+1. Sprawdź [wymagania dotyczące hosta funkcji Hyper-V](migrate-support-matrix-hyper-v.md#hyper-v-host-requirements) na potrzeby oceny serwera.
+2. Upewnij się, że [wymagane porty](migrate-support-matrix-hyper-v.md#port-access) są otwarte na hostach funkcji Hyper-V.
 
 ### <a name="enable-powershell-remoting-on-hosts"></a>Włączanie komunikacji zdalnej programu PowerShell na hostach
 
@@ -214,17 +214,17 @@ Po skonfigurowaniu urządzenia należy zakończyć konfigurowanie dostawcy CredS
 
 Przed skonfigurowaniem urządzenia Azure Migrate i rozpoczęciem oceny w następnym samouczku Przygotuj się do wdrożenia urządzenia.
 
-1. [Sprawdź](migrate-support-matrix-hyper-v.md#assessment-appliance-requirements) wymagania dotyczące urządzeń.
-2. [Przejrzyj](migrate-support-matrix-hyper-v.md#assessment-appliance-url-access) adresy URL platformy Azure, do których urządzenie będzie potrzebować dostępu.
+1. [Sprawdź](migrate-appliance.md#appliance---hyper-v) wymagania dotyczące urządzeń.
+2. [Przejrzyj](migrate-appliance.md#url-access) adresy URL platformy Azure, do których urządzenie będzie potrzebować dostępu.
 3. Przejrzyj dane, które urządzenie będzie zbierać podczas odnajdywania i oceny.
-4. [Zwróć uwagę](migrate-support-matrix-hyper-v.md#assessment-port-requirements) na wymagania dotyczące dostępu do portów dla urządzenia.
+4. [Zwróć uwagę](migrate-appliance.md#collected-data---hyper-v) na wymagania dotyczące dostępu do portów dla urządzenia.
 
 
 ## <a name="prepare-for-hyper-v-migration"></a>Przygotowanie do migracji funkcji Hyper-V
 
-1. [Przegląd](migrate-support-matrix-hyper-v.md#migration-hyper-v-host-requirements) Wymagania dotyczące hosta funkcji Hyper-V na potrzeby migracji.
-2. [Zapoznaj](migrate-support-matrix-hyper-v.md#migration-hyper-v-vm-requirements) się z wymaganiami dotyczącymi maszyn wirtualnych funkcji Hyper-V, które chcesz zmigrować na platformę Azure.
-3. [Zwróć uwagę](migrate-support-matrix-hyper-v.md#migration-hyper-v-host-url-access) na adresy URL platformy Azure, do których hosty i klastry funkcji Hyper-V potrzebują dostępu do migracji maszyny wirtualnej.
+1. [Przegląd](migrate-support-matrix-hyper-v-migration.md#hyper-v-hosts) Wymagania hosta funkcji Hyper-V dotyczące migracji oraz adresy URL platformy Azure, do których hosty i klastry funkcji Hyper-V potrzebują dostępu do migracji maszyn wirtualnych.
+2. [Zapoznaj](migrate-support-matrix-hyper-v-migration.md#hyper-v-vms) się z wymaganiami dotyczącymi maszyn wirtualnych funkcji Hyper-V, które chcesz zmigrować na platformę Azure.
+
 
 ## <a name="next-steps"></a>Następne kroki
 

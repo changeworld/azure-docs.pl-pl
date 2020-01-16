@@ -2,18 +2,18 @@
 title: Użyj galerii obrazów udostępnionych, aby utworzyć niestandardową pulę-Azure Batch | Microsoft Docs
 description: Utwórz pulę usługi Batch z udostępnioną galerią obrazów, aby udostępnić niestandardowe obrazy do węzłów obliczeniowych zawierających oprogramowanie i dane potrzebne dla aplikacji. Obrazy niestandardowe są wydajnym sposobem konfigurowania węzłów obliczeniowych do uruchamiania obciążeń wsadowych.
 services: batch
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 ms.service: batch
 ms.topic: article
 ms.date: 08/28/2019
-ms.author: lahugh
-ms.openlocfilehash: fa232fb48e80e3ae3751920e4215c4b4d3ded19a
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.author: jushiman
+ms.openlocfilehash: a933d0656bb4c22e848a663757f4e5e3fa276c61
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827914"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029655"
 ---
 # <a name="use-the-shared-image-gallery-to-create-a-custom-pool"></a>Tworzenie puli niestandardowej za pomocą galerii obrazów udostępnionych
 
@@ -39,7 +39,7 @@ Używanie udostępnionego obrazu skonfigurowanego dla danego scenariusza może z
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* **Konto Azure Batch.** Aby utworzyć konto usługi Batch, zobacz Przewodnik Szybki Start w usłudze Batch przy użyciu [Azure Portal](quick-create-portal.md) lub [interfejsu wiersza polecenia platformy Azure](quick-create-cli.md).
+* **Konto usługi Azure Batch.** Aby utworzyć konto usługi Batch, zobacz Przewodnik Szybki Start w usłudze Batch przy użyciu [Azure Portal](quick-create-portal.md) lub [interfejsu wiersza polecenia platformy Azure](quick-create-cli.md).
 
 * **Obraz udostępnionej galerii obrazów**. Aby utworzyć obraz udostępniony, musisz mieć lub utworzyć zasób obrazu zarządzanego. Obraz należy utworzyć na podstawie migawek dysku systemu operacyjnego maszyny wirtualnej i opcjonalnie dołączonych dysków danych. Aby uzyskać więcej informacji, zobacz [Przygotowywanie zarządzanego obrazu](#prepare-a-managed-image).
 
@@ -61,9 +61,9 @@ Aby w sposób niezawodny skalować pule usługi Batch przy użyciu obrazu niesta
 Jeśli tworzysz nową maszynę wirtualną dla obrazu, Użyj obrazu z witryny Azure Marketplace w pierwszej kolejności jako obrazu podstawowego dla zarządzanego obrazu. Jako obrazu podstawowego można używać tylko obrazów pierwszej strony. Aby uzyskać pełną listę odwołań do obrazów w portalu Azure Marketplace obsługiwanych przez Azure Batch, zobacz część operacji [jednostek SKU agenta węzła listy](/java/api/com.microsoft.azure.batch.protocol.accounts.listnodeagentskus) .
 
 > [!NOTE]
-> Nie można użyć obrazu innej firmy, który ma dodatkową licencję i warunki zakupu jako obraz podstawowy. Aby uzyskać informacje na temat tych obrazów z portalu Marketplace, zobacz Wskazówki dotyczące maszyn wirtualnych z systemem [Linux](../virtual-machines/linux/cli-ps-findimage.md#deploy-an-image-with-marketplace-terms
-) lub [Windows](../virtual-machines/windows/cli-ps-findimage.md#deploy-an-image-with-marketplace-terms
-) .
+> Nie można użyć obrazu innej firmy, który ma dodatkową licencję i warunki zakupu jako obraz podstawowy. Aby uzyskać informacje na temat tych obrazów z portalu Marketplace, [Zobacz wskazówki](../virtual-machines/linux/cli-ps-findimage.md#deploy-an-image-with-marketplace-terms
+) [dotyczące](../virtual-machines/windows/cli-ps-findimage.md#deploy-an-image-with-marketplace-terms
+) maszyn wirtualnych z systemem Linux lub Windows.
 
 * Upewnij się, że maszyna wirtualna została utworzona przy użyciu dysku zarządzanego. Jest to domyślne ustawienie magazynu podczas tworzenia maszyny wirtualnej.
 * Na maszynie wirtualnej nie należy instalować rozszerzeń platformy Azure, takich jak rozszerzenie niestandardowego skryptu. Jeśli obraz zawiera wstępnie zainstalowane rozszerzenie, platforma Azure może napotkać problemy podczas wdrażania puli usługi Batch.
@@ -85,7 +85,7 @@ Po pomyślnym utworzeniu zarządzanego obrazu musisz utworzyć udostępnioną ga
 
 ## <a name="create-a-pool-from-a-shared-image-using-the-azure-cli"></a>Tworzenie puli na podstawie udostępnionego obrazu przy użyciu interfejsu wiersza polecenia platformy Azure
 
-Aby utworzyć pulę z udostępnionego obrazu przy użyciu interfejsu wiersza polecenia platformy Azure, użyj `az batch pool create`. Określ identyfikator obrazu udostępnionego w polu `--image`. Upewnij się, że typ systemu operacyjnego i jednostka SKU są zgodne z wersjami określonymi przez `--node-agent-sku-id`
+Aby utworzyć pulę z udostępnionego obrazu przy użyciu interfejsu wiersza polecenia platformy Azure, użyj `az batch pool create` polecenie. Określ identyfikator obrazu udostępnionego w polu `--image`. Upewnij się, że typ systemu operacyjnego i jednostka SKU są zgodne z wersjami określonymi przez `--node-agent-sku-id`
 
 ```azurecli
 az batch pool create \
@@ -133,12 +133,12 @@ private static void CreateBatchPool(BatchClient batchClient, VirtualMachineConfi
 
 Wykonaj następujące kroki, aby utworzyć pulę z udostępnionego obrazu w Azure Portal.
 
-1. Otwórz [Azure Portal](https://portal.azure.com).
+1. Otwórz [Portalu Azure](https://portal.azure.com).
 1. Przejdź do pozycji **konta wsadowe** i wybierz swoje konto.
 1. Wybierz pozycję **Pule** , a następnie **Dodaj** , aby utworzyć nową pulę.
 1. W sekcji **Typ obrazu** wybierz pozycję **Galeria obrazów udostępnionych**.
 1. Wypełnij pozostałe sekcje informacjami o zarządzanym obrazie.
-1. Wybierz **przycisk OK**.
+1. Kliknij przycisk **OK**.
 
 ![Utwórz pulę przy użyciu udostępnionego obrazu z portalem.](media/batch-sig-images/create-custom-pool.png)
 

@@ -5,15 +5,15 @@ author: harelbr
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 1/13/2020
+ms.date: 1/14/2020
 ms.author: harelbr
 ms.subservice: alerts
-ms.openlocfilehash: 9f8ed6be825470504b5e7b45a15c4faa9cf5ccfc
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: bfa5d240ba4905f79274941568933daf1425bf8b
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75932877"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75969426"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Tworzenie alertu metryki za pomocą szablonu usługi Resource Manager
 
@@ -29,7 +29,7 @@ Podstawowe kroki są następujące:
 1. Użyj jednego z poniższych szablonów jako pliku JSON, który opisuje sposób tworzenia alertu.
 2. Edytuj odpowiedni plik parametrów w formacie JSON i używaj go w celu dostosowania alertu.
 3. `metricName` parametru można znaleźć w temacie dostępne metryki w [Azure monitor obsługiwane metryki](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported).
-4. Wdróż szablon przy użyciu [dowolnej metody wdrażania](../../azure-resource-manager/resource-group-template-deploy.md).
+4. Wdróż szablon przy użyciu [dowolnej metody wdrażania](../../azure-resource-manager/templates/deploy-powershell.md).
 
 ## <a name="template-for-a-simple-static-threshold-metric-alert"></a>Szablon prostego alertu dotyczącego metryki statycznej progu
 
@@ -378,6 +378,13 @@ Zapisz Poniższy kod JSON jako simpledynamicmetricalert. JSON na potrzeby tego p
                 "description": "The number of unhealthy periods to alert on (must be lower or equal to numberOfEvaluationPeriods)."
             }
         },
+    "ignoreDataBefore": {
+            "type": "string",
+            "defaultValue": "",
+            "metadata": {
+                "description": "Use this option to set the date from which to start learning the metric historical data and calculate the dynamic thresholds (in ISO8601 format, e.g. '2019-12-31T22:00:00Z')."
+            }
+        },
         "timeAggregation": {
             "type": "string",
             "defaultValue": "Average",
@@ -455,6 +462,7 @@ Zapisz Poniższy kod JSON jako simpledynamicmetricalert. JSON na potrzeby tego p
                                 "numberOfEvaluationPeriods": "[parameters('numberOfEvaluationPeriods')]",
                                 "minFailingPeriodsToAlert": "[parameters('minFailingPeriodsToAlert')]"
                             },
+                "ignoreDataBefore": "[parameters('ignoreDataBefore')]",
                             "timeAggregation": "[parameters('timeAggregation')]"
                         }
                     ]
@@ -511,6 +519,9 @@ Zapisz Poniższy kod JSON jako simpledynamicmetricalert. Parameters. JSON i zmod
         "minFailingPeriodsToAlert": {
             "value": "3"
         },
+    "ignoreDataBefore": {
+            "value": ""
+        },
         "timeAggregation": {
             "value": "Average"
         },
@@ -559,7 +570,7 @@ Należy pamiętać o następujących ograniczeniach w przypadku używania wymiar
 - W każdym kryterium można wybrać tylko jedną wartość dla każdego wymiaru.
 - Nie można użyć "\*" jako wartości wymiaru.
 - Gdy metryki, które są skonfigurowane w różnych kryterium obsługują ten sam wymiar, skonfigurowana wartość wymiaru musi być jawnie ustawiona w taki sam sposób dla wszystkich metryk (w odpowiednich kryteriach).
-    - W poniższym przykładzie, ponieważ metryki **transakcji** i **SuccessE2ELatency** mają wymiar **nazwy interfejsu API** , a *criterion1* określa wartość *"GetBlob"* dla wymiaru **nazwa interfejsu API** , a następnie *Criterion2* musi także ustawiać wartość *"GetBlob* " dla wymiaru **nazwy interfejsu API** .
+    - W poniższym przykładzie, ponieważ metryki **transakcji** i **SuccessE2ELatency** mają wymiar **ApiName** , a *criterion1* określa wartość *"GetBlob"* dla wymiaru **ApiName** , a następnie *criterion2* musi także ustawić wartość *"GetBlob* " dla wymiaru **ApiName** .
 
 
 Zapisz Poniższy kod JSON jako advancedstaticmetricalert. JSON na potrzeby tego przewodnika.

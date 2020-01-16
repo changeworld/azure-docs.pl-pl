@@ -10,12 +10,12 @@ ms.date: 10/01/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 13e9abb2a7b79ad9355261832145766e424c3df6
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: b49b3187f9178012131d793a7762ae470b0ea540
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895175"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75965718"
 ---
 # <a name="call-rest-api-operations-with-shared-key-authorization"></a>Wywoływanie operacji interfejsu API REST przy użyciu autoryzacji klucza wspólnego
 
@@ -23,13 +23,13 @@ W tym artykule opisano sposób wywoływania interfejsów API REST usługi Azure 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Przykładowa aplikacja zawiera listę kontenerów obiektów BLOB dla konta magazynu. Aby wypróbować kod w tym artykule, potrzebne są następujące elementy: 
+Przykładowa aplikacja zawiera listę kontenerów obiektów BLOB dla konta magazynu. Aby wypróbować kod w tym artykule, potrzebne są następujące elementy:
 
 - Zainstaluj [program Visual Studio 2019](https://www.visualstudio.com/visual-studio-homepage-vs.aspx) przy użyciu obciążeń **programistycznych platformy Azure** .
 
 - Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-- Konto magazynu ogólnego przeznaczenia. Jeśli jeszcze nie masz konta magazynu, zobacz [Tworzenie konta magazynu](storage-quickstart-create-account.md).
+- Konto magazynu ogólnego przeznaczenia. Jeśli jeszcze nie masz konta magazynu, zobacz [Tworzenie konta magazynu](storage-account-create.md).
 
 - W przykładzie w tym artykule pokazano, jak wyświetlić listę kontenerów na koncie magazynu. Aby wyświetlić dane wyjściowe, przed rozpoczęciem Dodaj kontenery do magazynu obiektów BLOB na koncie magazynu.
 
@@ -43,7 +43,7 @@ Użyj narzędzia [git](https://git-scm.com/), aby pobrać kopię tej aplikacji d
 git clone https://github.com/Azure-Samples/storage-dotnet-rest-api-with-auth.git
 ```
 
-To polecenie klonuje repozytorium do lokalnego folderu git. Aby otworzyć rozwiązanie Visual Studio, poszukaj folderu Storage-dotnet-REST-API-with-auth, otwórz go, a następnie kliknij dwukrotnie plik StorageRestApiAuth. sln. 
+To polecenie klonuje repozytorium do lokalnego folderu git. Aby otworzyć rozwiązanie Visual Studio, poszukaj folderu Storage-dotnet-REST-API-with-auth, otwórz go, a następnie kliknij dwukrotnie plik StorageRestApiAuth. sln.
 
 ## <a name="about-rest"></a>REST — informacje
 
@@ -93,16 +93,16 @@ W celu zapewnienia bezpieczeństwa podczas pracy w środowisku produkcyjnym zaws
 
 W naszym przykładowym projekcie kod służący do tworzenia nagłówka autoryzacji znajduje się w osobnej klasie. Pomysłem jest to, że można przyjąć całą klasę i dodać ją do własnego rozwiązania i użyć jej "w takiej postaci, w jakiej jest". Kod nagłówka autoryzacji działa w przypadku większości wywołań interfejsu API REST do usługi Azure Storage.
 
-Aby skompilować żądanie, które jest obiektem HttpRequestMessage, przejdź do ListContainersAsyncREST w Program.cs. Poniżej przedstawiono procedurę tworzenia żądania: 
+Aby skompilować żądanie, które jest obiektem HttpRequestMessage, przejdź do ListContainersAsyncREST w Program.cs. Poniżej przedstawiono procedurę tworzenia żądania:
 
-- Utwórz identyfikator URI, który ma być używany do wywoływania usługi. 
+- Utwórz identyfikator URI, który ma być używany do wywoływania usługi.
 - Utwórz obiekt HttpRequestMessage i ustaw ładunek. Ładunek ma wartość null dla ListContainersAsyncREST, ponieważ nie są przekazywane żadne elementy w.
 - Dodaj nagłówki żądania dla x-MS-date i x-MS-Version.
 - Pobierz nagłówek autoryzacji i dodaj go.
 
-Wymagane są pewne podstawowe informacje: 
+Wymagane są pewne podstawowe informacje:
 
-- Dla ListContainers **Metoda** jest `GET`. Ta wartość jest ustawiana podczas tworzenia wystąpienia żądania. 
+- Dla ListContainers **Metoda** jest `GET`. Ta wartość jest ustawiana podczas tworzenia wystąpienia żądania.
 - **Zasób** jest częścią zapytania identyfikatora URI wskazującej, który interfejs API jest wywoływany, więc wartość jest `/?comp=list`. Jak wspomniano wcześniej, zasób znajduje się na stronie dokumentacji referencyjnej, która zawiera informacje o [interfejsie API ListContainers](/rest/api/storageservices/List-Containers2).
 - Identyfikator URI jest konstruowany przez utworzenie punktu końcowego Blob service dla tego konta magazynu i połączenie zasobu. Wartość **identyfikatora URI żądania** jest zakończona `http://contosorest.blob.core.windows.net/?comp=list`.
 - Dla ListContainers, **elemencie requestbody** ma wartość null i nie ma żadnych dodatkowych **nagłówków**.
@@ -160,7 +160,7 @@ Teraz, gdy tworzysz żądanie, możesz wywołać metodę SendAsync, aby wysłać
     using (HttpResponseMessage httpResponseMessage =
       await new HttpClient().SendAsync(httpRequestMessage, cancellationToken))
     {
-        // If successful (status code = 200), 
+        // If successful (status code = 200),
         //   parse the XML response for the container names.
         if (httpResponseMessage.StatusCode == HttpStatusCode.OK)
         {
@@ -209,7 +209,7 @@ Content-Length: 1511
 
 ```xml  
 <?xml version="1.0" encoding="utf-8"?>
-<EnumerationResults 
+<EnumerationResults
   ServiceEndpoint="http://contosorest.blob.core.windows.net/">
   <Containers>
     <Container>
@@ -308,7 +308,7 @@ Zacznijmy od tych dwóch pól kanonicznych, ponieważ są one wymagane do utworz
 
 ### <a name="canonicalized-headers"></a>Nagłówki kanoniczne
 
-Aby utworzyć tę wartość, Pobierz nagłówki, które zaczynają się od "x-ms-" i posortuj je, a następnie sformatuj je do ciągu wystąpień `[key:value\n]`, połączone w jeden ciąg. Na potrzeby tego przykładu kanoniczne nagłówki wyglądają następująco: 
+Aby utworzyć tę wartość, Pobierz nagłówki, które zaczynają się od "x-ms-" i posortuj je, a następnie sformatuj je do ciągu wystąpień `[key:value\n]`, połączone w jeden ciąg. Na potrzeby tego przykładu kanoniczne nagłówki wyglądają następująco:
 
 ```
 x-ms-date:Fri, 17 Nov 2017 00:44:48 GMT\nx-ms-version:2017-07-29\n
@@ -316,7 +316,7 @@ x-ms-date:Fri, 17 Nov 2017 00:44:48 GMT\nx-ms-version:2017-07-29\n
 
 Oto kod używany do tworzenia tych danych wyjściowych:
 
-```csharp 
+```csharp
 private static string GetCanonicalizedHeaders(HttpRequestMessage httpRequestMessage)
 {
     var headers = from kvp in httpRequestMessage.Headers
@@ -444,7 +444,7 @@ https://myaccount.blob.core.windows.net/container-1?restype=container&comp=list
 W ListContainersAsyncREST Zmień kod, który ustawia identyfikator URI interfejsu API dla ListBlobs. Nazwa kontenera to **Container-1**.
 
 ```csharp
-String uri = 
+String uri =
     string.Format("http://{0}.blob.core.windows.net/container-1?restype=container&comp=list",
       storageAccountName);
 
@@ -516,7 +516,7 @@ Date: Fri, 17 Nov 2017 05:20:21 GMT
 Content-Length: 1135
 ```
 
-**Treść odpowiedzi (XML):** Ta odpowiedź XML przedstawia listę obiektów blob i ich właściwości. 
+**Treść odpowiedzi (XML):** Ta odpowiedź XML przedstawia listę obiektów blob i ich właściwości.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>

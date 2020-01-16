@@ -12,18 +12,19 @@ ms.date: 05/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9603cdf11373891aaa3541330cb7f65c09352496
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: b621c9cbc35d0e9956f6648d870102affd84c24f
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818903"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028394"
 ---
 # <a name="migrate-from-federation-to-password-hash-synchronization-for-azure-active-directory"></a>Migruj z Federacji do synchronizacji skrótów haseł dla Azure Active Directory
 
 W tym artykule opisano sposób przenoszenia domen organizacji z Active Directory Federation Services (AD FS) do synchronizacji skrótów haseł.
 
-Możesz [pobrać ten artykuł](https://aka.ms/ADFSTOPHSDPDownload).
+> [!NOTE]
+> Zmiana metody uwierzytelniania wymaga planowania, testowania i ewentualnych przestojów. [Wdrażanie etapowe](how-to-connect-staged-rollout.md) zapewnia alternatywny sposób testowania i stopniowego migrowania z Federacji do uwierzytelniania w chmurze przy użyciu funkcji synchronizacji skrótów haseł.
 
 ## <a name="prerequisites-for-migrating-to-password-hash-synchronization"></a>Wymagania wstępne dotyczące migracji do synchronizacji skrótów haseł
 
@@ -135,10 +136,10 @@ W tej sekcji opisano zagadnienia dotyczące wdrażania i szczegółowe informacj
 
 Przed przekonwertowaniem tożsamości federacyjnej na tożsamość zarządzaną należy uważnie zapoznać się z tym, jak obecnie AD FS używasz usługi Azure AD, pakietu Office 365 i innych aplikacji (relacja zaufania jednostek zależnych). Należy wziąć pod uwagę scenariusze opisane w poniższej tabeli:
 
-| Jeśli użytkownik | Następnie |
+| Jeśli użytkownik | Następnie wybierz pozycję |
 |-|-|
 | Planujesz używać AD FS z innymi aplikacjami (innymi niż usługa Azure AD i pakietem Office 365). | Po przeprowadzeniu konwersji domen będziesz używać obu AD FS i usługi Azure AD. Weź pod uwagę środowisko użytkownika. W niektórych scenariuszach użytkownicy mogą być zobowiązani do dwukrotnego uwierzytelnienia: raz w usłudze Azure AD (w przypadku gdy użytkownik uzyskuje dostęp do logowania jednokrotnego do innych aplikacji, takich jak pakiet Office 365), i ponownie dla wszystkich aplikacji, które są nadal powiązane z AD FS jako relacja zaufania jednostki uzależnionej. |
-| Wystąpienie AD FS jest w dużym stopniu dostosowywane i opiera się na określonych ustawieniach dostosowania w pliku OnLoad. js (na przykład w przypadku zmiany środowiska logowania, tak aby użytkownicy używali tylko formatu **sAMAccountName** dla nazwy użytkownika zamiast podmiotu zabezpieczeń Nazwa (UPN) lub Twoja organizacja ma silnie oznakowane środowisko logowania. Nie można zduplikować pliku OnLoad. js w usłudze Azure AD. | Przed kontynuowaniem należy sprawdzić, czy usługa Azure AD może spełniać bieżące wymagania dotyczące dostosowywania. Aby uzyskać więcej informacji i uzyskać wskazówki, zobacz sekcję dotyczącą AD FS znakowania i AD FS dostosowywania.|
+| Wystąpienie AD FS jest w dużym stopniu dostosowywane i opiera się na określonych ustawieniach dostosowania w pliku OnLoad. js (na przykład w przypadku zmiany środowiska logowania, tak aby użytkownicy używali tylko formatu **sAMAccountName** dla nazwy użytkownika zamiast głównej nazwy użytkownika (UPN) lub jeśli organizacja ma wysoce oznakowane środowisko logowania). Nie można zduplikować pliku OnLoad. js w usłudze Azure AD. | Przed kontynuowaniem należy sprawdzić, czy usługa Azure AD może spełniać bieżące wymagania dotyczące dostosowywania. Aby uzyskać więcej informacji i uzyskać wskazówki, zobacz sekcję dotyczącą AD FS znakowania i AD FS dostosowywania.|
 | Aby zablokować wcześniejsze wersje klientów uwierzytelniania, należy użyć AD FS.| Należy rozważyć zastępowanie AD FS formantów blokujących wcześniejsze wersje klientów uwierzytelniania przy użyciu kombinacji [kontroli dostępu warunkowego](https://docs.microsoft.com/azure/active-directory/conditional-access/conditions) i [reguł dostępu klienta usługi Exchange Online](https://aka.ms/EXOCAR). |
 | Użytkownik wymaga od użytkowników przeprowadzenia uwierzytelniania wieloskładnikowego w przypadku lokalnego rozwiązania do obsługi serwera usługi wieloskładnikowego, gdy użytkownicy uwierzytelniają się do AD FS.| W zarządzanej domenie tożsamości nie można wstrzyknąć wyzwania usługi uwierzytelnianie wieloskładnikowe za pośrednictwem lokalnego rozwiązania do uwierzytelniania wieloskładnikowego do przepływu uwierzytelniania. Można jednak użyć usługi Azure Multi-Factor Authentication do uwierzytelniania wieloskładnikowego po przeprowadzeniu konwersji domeny.<br /><br /> Jeśli użytkownicy nie korzystają obecnie z usługi Azure Multi-Factor Authentication, wymagany jest krok rejestracji użytkownika jednorazowej. Należy przygotować się do planowanej rejestracji i przekazać ją do użytkowników. |
 | Obecnie używasz zasad kontroli dostępu (reguł autoryzacji) w AD FS, aby kontrolować dostęp do pakietu Office 365.| Rozważ zastąpienie zasad zasadami [dostępu warunkowego](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal) usługi Azure AD i [regułami dostępu klienta usługi Exchange Online](https://aka.ms/EXOCAR).|
@@ -167,7 +168,7 @@ W przypadku kont komputerów z systemem Windows 8 i Windows 7 sprzężenie hybry
 
 Aby uzyskać więcej informacji, zobacz [Konfigurowanie hybrydowych urządzeń przyłączonych do usługi Azure AD](https://docs.microsoft.com/azure/active-directory/device-management-hybrid-azuread-joined-devices-setup).
 
-#### <a name="branding"></a>Znakowania
+#### <a name="branding"></a>Znakowanie
 
 Jeśli Twoja organizacja [dostosował AD FS strony logowania](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/ad-fs-user-sign-in-customization) , aby wyświetlić informacje, które są bardziej przydatne dla organizacji, rozważ wprowadzenie podobnych [dostosowań na stronie logowania do usługi Azure AD](https://docs.microsoft.com/azure/active-directory/customize-branding).
 
@@ -437,7 +438,7 @@ Po sprawdzeniu, czy wszyscy użytkownicy i klienci pomyślnie uwierzytelniają s
 
 Jeśli nie używasz AD FS do innych celów (to oznacza, że w przypadku innych relacji zaufania jednostek uzależnionych), możesz bezpiecznie zlikwidować AD FS na tym etapie.
 
-### <a name="rollback"></a>Wycofywania
+### <a name="rollback"></a>Wycofuj
 
 Jeśli odkryjesz główny problem i nie można go szybko rozwiązać, możesz zdecydować się na wycofanie rozwiązania do Federacji.
 
