@@ -1,14 +1,14 @@
 ---
 title: Wyświetlanie działań dostawcy usług
 description: Klienci mogą wyświetlać zarejestrowane działanie, aby zobaczyć akcje wykonywane przez dostawców usług za pomocą funkcji zarządzania zasobami delegowanymi przez platformę Azure.
-ms.date: 12/6/2019
+ms.date: 01/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: 31a9e7ff80623cc59b0a2db5951dff95d3088b05
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: de149bddb6917a63d91b1890c0430f64465cb40c
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749180"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76046111"
 ---
 # <a name="view-service-provider-activity"></a>Wyświetlanie działań dostawcy usług
 
@@ -24,6 +24,9 @@ Klienci, którzy mają delegowane subskrypcje do zarządzania zasobami delegowan
 W dzienniku aktywności zobaczysz nazwę operacji i jej stan wraz z datą i godziną wykonania. **Zdarzenie zainicjowane przez** kolumnę pokazuje, który użytkownik wykonał operację, niezależnie od tego, czy był on użytkownikiem w dzierżawie dostawcy usług działającym przez delegowane zarządzanie zasobami platformy Azure, czy użytkownikiem w dzierżawie klienta. Należy zauważyć, że nazwa użytkownika jest wyświetlana zamiast dzierżawy lub roli, do której użytkownik został przypisany do tej subskrypcji.
 
 Zarejestrowane działanie jest dostępne w Azure Portal przez ostatnie 90 dni. Aby dowiedzieć się, jak przechowywać te dane przez dłużej niż 90 dni, zobacz [zbieranie i analizowanie dzienników aktywności platformy Azure w obszarze roboczym log Analytics w Azure monitor](../../azure-monitor/platform/activity-log-collect.md)
+
+> [!NOTE]
+> Użytkownicy dostawcy usług są wyświetlani w dzienniku aktywności, ale nie są one wyświetlane w **Access Control (IAM)** ani podczas pobierania informacji o przypisywaniu ról za pośrednictwem interfejsów API.
 
 ## <a name="set-alerts-for-critical-operations"></a>Ustawianie alertów dla operacji krytycznych
 

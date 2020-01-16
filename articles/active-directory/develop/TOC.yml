@@ -82,6 +82,8 @@
               href: tutorial-v2-windows-uwp.md
             - name: Aplikacje klasyczne Windows — .NET
               href: tutorial-v2-windows-desktop.md
+            - name: Korzystanie z trybu udostępnionego urządzenia w aplikacji dla systemu Android
+              href: tutorial-v2-shared-device-mode.md
         - name: Aplikacje demona
           items:
             - name: Aplikacja internetowa demona platformy ASP.NET
@@ -208,6 +210,8 @@
                   href: scenario-mobile-app-configuration.md
                 - name: Konfiguracja specyficzna dla platform mobilnych
                   items:
+                    - name: Tryb udostępnionego urządzenia dla urządzeń z systemem Android
+                      href: shared-device-mode.md
                     - name: Xamarin Android
                       href: msal-net-xamarin-android-considerations.md
                     - name: Przeglądarka systemu w systemie Android

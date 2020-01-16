@@ -1,0 +1,76 @@
+- name: Dokumentacja rezerwacji platformy Azure
+  href: index.yml
+  items:
+    - name: Omówienie
+      expanded: true
+      items:
+        - name: Co to jest Azure Reservations?
+          href: save-compute-costs-reservations.md
+    - name: Przewodniki z instrukcjami
+      items:
+        - name: Kupowanie rezerwacji usługi SQL Data Warehouse
+          href: prepay-sql-data-warehouse-charges.md
+        - name: Kupowanie rezerwacji maszyny wirtualnej
+          href: ../../virtual-machines/windows/prepay-reserved-vm-instances.md?toc=/azure/billing/TOC.json
+        - name: Kupowanie rezerwacji usługi Azure Storage
+          href: ../../storage/blobs/storage-blob-reserved-capacity.md?toc=/azure/billing/TOC.json
+        - name: Kupowanie rezerwacji usługi Cosmos DB
+          href: ../../cosmos-db/cosmos-db-reserved-capacity.md?toc=/azure/billing/TOC.json
+        - name: Kupowanie rezerwacji usługi SQL Database
+          href: ../../sql-database/sql-database-reserved-capacity.md?toc=/azure/billing/TOC.json
+        - name: Kupowanie rezerwacji usługi Azure Data Explorer
+          href: ../../data-explorer/pricing-reserved-capacity.md?toc=/azure/billing/TOC.json
+        - name: Kupowanie rezerwacji usługi Azure Databricks
+          href: prepay-databricks-reserved-capacity.md
+        - name: Kupowanie rezerwacji usługi App Service
+          href: prepay-app-service-isolated-stamp.md
+        - name: Kupowanie rezerwacji planu oprogramowania na platformie Azure
+          href: ../../virtual-machines/linux/prepay-suse-software-charges.md?toc=/azure/billing/TOC.json
+        - name: Kupowanie rezerwacji z płatnościami miesięcznymi
+          href: monthly-payments-reservations.md
+        - name: Odnawianie rezerwacji
+          href: reservation-renew.md
+        - name: Wymiana i zwrot rezerwacji
+          href: exchange-and-refund-azure-reservations.md
+        - name: Zarządzanie rezerwacjami
+          href: manage-reserved-vm-instance.md
+        - name: Wyświetlanie rezerwacji
+          href: view-reservations.md
+    - name: Pojęcia
+      items:
+        - name: Rabaty dla zarezerwowanego wystąpienia maszyny wirtualnej
+          href: ../manage/understand-vm-reservation-charges.md
+        - name: Rabaty dla pojemności zarezerwowanej usługi Azure Storage
+          href: understand-storage-charges.md
+        - name: Rabaty dla pojemności zarezerwowanej usługi Cosmos DB
+          href: understand-cosmosdb-reservation-charges.md
+        - name: Rabaty dla pojemności zarezerwowanej usługi SQL Database
+          href: understand-reservation-charges.md
+        - name: Rabaty dla usługi SQL Data Warehouse
+          href: reservation-discount-azure-sql-dw.md
+        - name: Rabaty dla usługi Azure Data Explorer
+          href: understand-azure-data-explorer-reservation-charges.md
+        - name: Rabaty dla usługi Azure Databricks
+          href: reservation-discount-databricks.md
+        - name: Rabaty dla usługi Azure Database for MySQL
+          href: understand-reservation-charges-mysql.md
+        - name: Rabaty dla usługi Azure Database for PostgreSQL
+          href: understand-reservation-charges-postgresql.md
+        - name: Rabaty dla systemu Red Hat Linux Enterprise
+          href: understand-rhel-reservation-charges.md
+        - name: Rabaty dla usługi Azure Database for MariaDB
+          href: understand-reservation-charges-mariadb.md
+        - name: Rabaty dla usługi App Service
+          href: reservation-discount-app-service-isolated-stamp.md
+        - name: Rabaty dla planów oprogramowania platformy Azure
+          href: understand-suse-reservation-charges.md
+        - name: Koszty systemu Windows i programu SQL nie są uwzględnione
+          href: reserved-instance-windows-software-costs.md
+        - name: Dane użycia poszczególnych subskrypcji
+          href: understand-reserved-instance-usage.md
+        - name: Dane użycia dla klientów korporacyjnych
+          href: understand-reserved-instance-usage-ea.md
+    - name: Dokumentacja
+      items:
+        - name: Interfejsy API rezerwacji platformy Azure
+          href: reservation-apis.md

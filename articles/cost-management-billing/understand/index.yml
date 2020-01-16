@@ -1,0 +1,88 @@
+### YamlMime:Landing
+title: Wprowadzenie do rozliczeń platformy Azure
+summary: Dowiedz się, jak zacząć korzystać z rozliczeń platformy Azure, przeglądając rachunek oraz wyświetlając informacje o kosztach i użyciu.
+metadata:
+  title: Wprowadzenie do rozliczeń platformy Azure
+  description: Wprowadzenie do rozliczeń platformy Azure
+  ms.service: cost-management-billing
+  ms.topic: landing-page
+  ms.collection: collection
+  author: bandersmsft
+  ms.author: banders
+  ms.manager: dougeby
+  ms.date: 12/18/2019
+  ms.openlocfilehash: bc472c68ea2a414fce81fe39e3282a43be3db829
+  ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+  ms.translationtype: HT
+  ms.contentlocale: pl-PL
+  ms.lasthandoff: 01/15/2020
+  ms.locfileid: "75983294"
+landingContent:
+- title: Przeglądanie poszczególnych kont
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Przeglądanie rachunku pojedynczego konta
+      url: review-individual-bill.md
+  - linkListType: concept
+    links:
+    - text: Objaśnienie danych użycia
+      url: understand-usage.md
+    - text: Objaśnienie faktury
+      url: understand-invoice.md
+  - linkListType: how-to-guide
+    links:
+    - text: Wyświetlanie i pobieranie faktury platformy Azure
+      url: download-azure-invoice.md
+    - text: Wyświetlanie i pobieranie danych na temat użycia i opłat na platformie Azure
+      url: download-azure-daily-usage.md
+    - text: Wyświetlanie opłat za usługi zewnętrzne
+      url: understand-azure-marketplace-charges.md
+- title: Przeglądanie kont z umową klienta firmy Microsoft
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Przeglądanie rachunku dla umowy klienta firmy Microsoft
+      url: review-customer-agreement-bill.md
+  - linkListType: concept
+    links:
+    - text: Konta rozliczeniowe dla umowy klienta firmy Microsoft
+      url: mca-overview.md
+    - text: Terminy dotyczące użycia umowy klienta firmy Microsoft
+      url: mca-understand-your-usage.md
+    - text: Terminy na fakturze dla umowy klienta firmy Microsoft
+      url: mca-understand-your-invoice.md
+  - linkListType: how-to-guide
+    links:
+    - text: Wyświetlanie i pobieranie faktury platformy Azure
+      url: download-azure-invoice.md
+    - text: Wyświetlanie i pobieranie informacji o użyciu i opłatach platformy Azure
+      url: download-azure-daily-usage.md
+    - text: Wyświetlanie i pobieranie dokumentów podatkowych
+      url: mca-download-tax-document.md
+    - text: Wyświetlanie opłat za usługi zewnętrzne
+      url: understand-azure-marketplace-charges.md
+    - text: Opłacanie rachunku za umowę klienta firmy Microsoft
+      url: pay-bill.md
+- title: Przeglądanie kont z umową Microsoft Partner Agreement
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Przeglądanie rachunku dla umowy Microsoft Partner Agreement
+      url: review-partner-agreement-bill.md
+  - linkListType: concept
+    links:
+    - text: Konta rozliczeniowe dla umowy partnera firmy Microsoft
+      url: mpa-overview.md
+    - text: Terminy na fakturze dla umowy klienta firmy Microsoft
+      url: mpa-invoice-terms.md
+- title: Przeglądanie kont z umową Enterprise Agreement
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Przeglądanie rachunku umowy Enterprise Agreement
+      url: review-enterprise-agreement-bill.md
+  - linkListType: concept
+    links:
+    - text: Rozpoczynanie pracy w portalu umowy Enterprise Agreement platformy Azure
+      url: ../manage/ea-portal-get-started.md

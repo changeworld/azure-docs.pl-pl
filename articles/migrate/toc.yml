@@ -54,22 +54,28 @@
   items:
     - name: Tabele obsługi
       items:
-        - name: Macierz obsługi dla usługi Azure Migrate
+        - name: Ogólna pomoc techniczna
           href: migrate-support-matrix.md
-        - name: Macierz obsługi dotycząca oceny i migracji środowiska VMware
+        - name: Pomoc techniczna dotycząca oceny programu VMware
           href: migrate-support-matrix-vmware.md
-        - name: Macierz obsługi dotycząca oceny i migracji środowiska funkcji Hyper-V
+        - name: Pomoc techniczna dotycząca migracji programu VMware
+          href: migrate-support-matrix-vmware-migration.md
+        - name: Pomoc techniczna dotycząca oceny funkcji Hyper-V
           href: migrate-support-matrix-hyper-v.md
-        - name: Macierz obsługi dotycząca oceny i migracji serwerów fizycznych
+        - name: Pomoc techniczna dotycząca migracji funkcji Hyper-V
+          href: migrate-support-matrix-hyper-v-migration.md
+        - name: Pomoc techniczna dotycząca oceny serwera fizycznego
           href: migrate-support-matrix-physical.md
-        - name: Macierz obsługi dla urządzenia usługi Azure Migrate
+        - name: Pomoc techniczna dotycząca migracji serwera fizycznego
+          href: migrate-support-matrix-physical-migration.md
+        - name: Wymagania urządzenia usługi Azure Migrate
           href: migrate-appliance.md
+        - name: Wymagania urządzenia replikacji
+          href: migrate-replication-appliance.md
     - name: Architektura migracji funkcji Hyper-V
       href: hyper-v-migration-architecture.md
     - name: Architektura migracji z użyciem agentów
       href: agent-based-migration-architecture.md
-    - name: Urządzenie replikacji w usłudze Azure Migrate
-      href: migrate-replication-appliance.md
     - name: Najlepsze rozwiązania dotyczące ocen
       href: best-practices-assessment.md
     - name: Omówienie ocen
@@ -112,16 +118,16 @@
       href: prepare-for-migration.md
     - name: Usuwanie projektu usługi Azure Migrate
       href: how-to-delete-project.md
-- name: Ocena i migracja skali
-  items:
-    - name: Ocena dużej liczby maszyn wirtualnych VMware
-      href: scale-vmware-assessment.md
-    - name: Ocena dużej liczby maszyn wirtualnych funkcji Hyper-V
-      href: scale-hyper-v-assessment.md
-    - name: Automatyzowanie migracji dużej liczby maszyn wirtualnych
-      href: how-to-migrate-at-scale.md
-    - name: Przykłady migracji (seria Contoso)
-      href: contoso-migration-overview.md
+    - name: Ocena i migracja skali
+      items:
+        - name: Ocena dużej liczby maszyn wirtualnych VMware
+          href: scale-vmware-assessment.md
+        - name: Ocena dużej liczby maszyn wirtualnych funkcji Hyper-V
+          href: scale-hyper-v-assessment.md
+        - name: Automatyzowanie migracji dużej liczby maszyn wirtualnych
+          href: how-to-migrate-at-scale.md
+        - name: Przykłady migracji (seria Contoso)
+          href: contoso-migration-overview.md
 - name: Rozwiązywanie problemów
   items:
     - name: Rozwiązywanie problemów z usługą Azure Migrate

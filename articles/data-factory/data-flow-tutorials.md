@@ -1,19 +1,19 @@
 ---
-title: Mapowanie samouczków wideo dotyczących przepływu danych
+title: Samouczki wideo dotyczące przepływów mapowania danych
 description: Lista samouczków wideo objaśniających koncepcje dotyczące mapowania przepływu danych
 author: djpmsft
 ms.author: daperlov
 ms.service: data-factory
 ms.topic: tutorial
-ms.date: 01/13/2020
-ms.openlocfilehash: 8350a42bc5f72adec135b2b39c5dde36e408c174
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.date: 01/14/2020
+ms.openlocfilehash: dee8c919b815c6f22b171f58be9fc6a38167056a
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75942132"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76030029"
 ---
-# <a name="mapping-data-flow-video-tutorials"></a>Mapowanie samouczków wideo dotyczących przepływu danych
+# <a name="mapping-data-flow-video-tutorials"></a>Samouczki wideo dotyczące przepływów mapowania danych
 
 Poniżej znajduje się lista map filmów dotyczących przepływu danych, które zostały utworzone przez zespół Azure Data Factory.
 
@@ -63,7 +63,7 @@ Gdy aktualizacje są stale wprowadzane do produktu, niektóre funkcje zostały d
 
 [Przekształcenie filtru](https://youtu.be/OhbKDOXSfeE)
 
-[Przekształcenie podziału warunkowego](https://youtu.be/OhbKDOXSfeE)
+[Przekształcenie podziału warunkowego](http://youtu.be/W1lQHojhKZw?hd=1)
 
 [Istnieje transformacja](http://youtu.be/GS8JVgNBMfs?hd=1)
 

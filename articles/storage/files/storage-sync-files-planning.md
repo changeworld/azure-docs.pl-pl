@@ -4,15 +4,15 @@ description: Dowiedz się, co należy wziąć pod uwagę podczas planowania wdro
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/18/2019
+ms.date: 01/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: c81f06d924a0ba871115e0ae0164d61449855263
-ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
+ms.openlocfilehash: d2dbe29c5a348363172f57da86483ccf3fd787f0
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/05/2020
-ms.locfileid: "75665260"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76046084"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Planowanie wdrażania usługi Azure File Sync
 Użyj Azure File Sync, aby scentralizować udziały plików w organizacji w Azure Files, utrzymując elastyczność, wydajność i zgodność lokalnego serwera plików. Funkcja Azure File Sync przekształca system Windows Server w szybką pamięć podręczną udziału plików platformy Azure. Możesz użyć dowolnego protokołu, który jest dostępny w systemie Windows Server, aby uzyskać dostęp do danych lokalnie, w tym SMB, NFS i FTPS. Na całym świecie możesz mieć dowolną liczbę pamięci podręcznych.
@@ -347,13 +347,13 @@ W poniższej tabeli podano zarówno rozmiar przestrzeni nazw, jak i konwersję d
 | Przestrzeń nazw — pliki & katalogów (miliony)  | Typowa pojemność (TiB)  | Rdzenie procesora  | Zalecana pamięć (GiB) |
 |---------|---------|---------|---------|
 | 3        | 1.4     | 2        | 8 (synchronizacja początkowa)/2 (typowe zmiany)      |
-| 5        | 2.3     | 2        | 16 (synchronizacja początkowa)/4 (typowe zmiany)    |
-| 10       | 4.7     | 4        | 32 (synchronizacja początkowa)/8 (typowe zmiany)   |
-| 30       | 14,0    | 8        | 48 (synchronizacja początkowa)/16 (typowe zmiany)   |
-| 50       | 23,3    | 16       | 64 (synchronizacja początkowa)/32 (typowe zmiany)  |
-| 100 *     | 46,6    | 32       | 128 (synchronizacja początkowa)/32 (typowe zmiany)  |
+| 5        | 2.4     | 2        | 16 (synchronizacja początkowa)/4 (typowe zmiany)    |
+| 10       | 4.8     | 4        | 32 (synchronizacja początkowa)/8 (typowe zmiany)   |
+| 30       | 14,3    | 8        | 48 (synchronizacja początkowa)/16 (typowe zmiany)   |
+| 50       | 23,8    | 16       | 64 (synchronizacja początkowa)/32 (typowe zmiany)  |
+| 100 *     | 47,7   | 32       | 128 (synchronizacja początkowa)/32 (typowe zmiany)  |
 
-\*więcej niż 100 000 000 plików & katalogi nie są w tej chwili obsługiwane. Jest to ograniczenie elastyczne.
+\*więcej niż 100 000 000 plików & katalogi nie zostały przetestowane. Jest to ograniczenie elastyczne.
 
 > [!TIP]
 > Początkowa synchronizacja przestrzeni nazw jest operacją intensywną, a zalecamy przydzielenie większej ilości pamięci do czasu zakończenia synchronizacji początkowej. Nie jest to wymagane, ale może przyspieszyć synchronizację początkową. 

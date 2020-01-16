@@ -29,6 +29,8 @@
   items:
     - name: Tworzenie domeny zarządzanej za pomocą programu Azure PowerShell
       href: powershell-create-instance.md
+    - name: Tworzenie domeny zarządzanej przy użyciu szablonu
+      href: template-create-instance.md
 - name: Pojęcia
   items:
     - name: Podstawy administracji

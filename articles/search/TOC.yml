@@ -85,6 +85,8 @@
   items:
     - name: Wyszukiwanie pełnotekstowe
       href: search-lucene-query-architecture.md
+    - name: Indexers (Indeksatory)
+      href: search-indexer-overview.md
     - name: Wzbogacanie sztucznej inteligencji
       href: cognitive-search-concept-intro.md
     - name: Zestawy umiejętności
@@ -179,7 +181,7 @@
           href: search-howto-complex-data-types.md
         - name: Dane relacyjne modelu
           href: index-sql-relational-data.md
-    - name: Indeksowanie dowolnych danych
+    - name: Importowanie (indeksowanie)
       items:
         - name: Omówienie importowania danych
           href: search-what-is-data-import.md
@@ -273,12 +275,16 @@
           href: search-query-lucene-examples.md
         - name: Używanie Eksploratora wyszukiwania (portal)
           href: search-explorer.md
-        - name: Prosta składnia zapytań
-          href: query-simple-syntax.md
-        - name: Pełna składnia zapytań Lucene
-          href: query-lucene-syntax.md
-        - name: Parametr zapytań moreLikeThis
-          href: search-more-like-this.md
+        - name: Znaki specjalne i częściowe terminy
+          href: search-query-partial-matching.md
+        - name: Dokumentacja składni
+          items:
+            - name: Prosta składnia zapytań
+              href: query-simple-syntax.md
+            - name: Pełna składnia zapytań Lucene
+              href: query-lucene-syntax.md
+            - name: moreLikeThis (wersja zapoznawcza)
+              href: search-more-like-this.md
     - name: Stosowanie filtrów
       items:
         - name: Omówienie filtrów

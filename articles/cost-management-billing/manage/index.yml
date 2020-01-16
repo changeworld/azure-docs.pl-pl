@@ -1,0 +1,90 @@
+### YamlMime:Landing
+title: Zarządzanie kontami i subskrypcjami przy użyciu rozliczeń platformy Azure
+summary: Dowiedz się, jak interpretować rozliczenia platformy Azure oraz jak zarządzać kontem i subskrypcjami.
+metadata:
+  title: Zarządzanie kontami i subskrypcjami przy użyciu rozliczeń platformy Azure
+  description: Dowiedz się, jak interpretować rozliczenia platformy Azure oraz jak zarządzać kontem i subskrypcjami.
+  ms.service: cost-management-billing
+  ms.topic: landing-page
+  ms.collection: collection
+  author: bandersmsft
+  ms.author: banders
+  ms.manager: dougeby
+  ms.date: 12/18/2019
+  ms.openlocfilehash: 61158d44399891f0f6293f53a11f227506fbddbe
+  ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+  ms.translationtype: HT
+  ms.contentlocale: pl-PL
+  ms.lasthandoff: 01/15/2020
+  ms.locfileid: "75983328"
+landingContent:
+- title: Zarządzanie kontami
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Role umowy klienta firmy Microsoft na platformie Azure
+      url: understand-mca-roles.md
+  - linkListType: how-to-guide
+    links:
+    - text: Edytowanie profilu
+      url: change-azure-account-profile.md
+    - text: Rozwiązywanie problemów dotyczących zaległego salda
+      url: resolve-past-due-balance.md
+    - text: Udzielanie dostępu do rozliczeń
+      url: manage-billing-access.md
+    - text: Wyświetlanie kont bilingowych
+      url: view-all-accounts.md
+    - text: Organizowanie kosztów w sekcjach faktury
+      url: mca-section-invoice.md
+- title: Zarządzanie subskrypcjami
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Ponowne aktywowanie subskrypcji
+      url: subscription-disabled.md
+    - text: Przenoszenie własności pojedynczej subskrypcji
+      url: billing-subscription-transfer.md
+    - text: Przenoszenie własności umowy klienta firmy Microsoft
+      url: mca-request-billing-ownership.md
+    - text: Przenoszenie własności umowy Microsoft Partner Agreement
+      url: mpa-request-ownership.md
+    - text: Anulowanie subskrypcji
+      url: cancel-azure-subscription.md
+    - text: Zmiana karty kredytowej
+      url: change-credit-card.md
+    - text: Zmiana administratora
+      url: add-change-subscription-administrator.md
+    - text: Płatność przy użyciu faktury
+      url: pay-by-invoice.md
+    - text: Tworzenie dodatkowej subskrypcji
+      url: create-subscription.md
+- title: Zarządzanie bezpłatnym kontem
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Tworzenie bezpłatnych usług
+      url: create-free-services.md
+    - text: Unikanie opłat
+      url: avoid-charges-free-account.md
+    - text: Sprawdzanie użycia
+      url: check-free-service-usage.md
+    - text: Uaktualnianie konta
+      url: upgrade-azure-subscription.md
+- title: Zarządzanie umową Enterprise Agreement
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Role umowy EA na platformie Azure
+      url: understand-ea-roles.md
+  - linkListType: how-to-guide
+    links:
+    - text: Rozpoczynanie pracy w portalu umowy Enterprise Agreement platformy Azure
+      url: ea-portal-get-started.md
+    - text: Administracja przy użyciu portalu umowy Enterprise Agreement platformy Azure
+      url: ea-portal-administration.md
+    - text: Rozwiązywanie problemów z dostępem do portalu Umowy Enterprise platformy Azure
+      url: ea-portal-troubleshoot.md
+  - linkListType: reference
+    links:
+    - text: Interfejsy API REST usługi Azure Enterprise
+      url: ea-portal-rest-apis.md

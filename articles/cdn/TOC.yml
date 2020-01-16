@@ -28,7 +28,7 @@
       href: cdn-caching-rules-tutorial.md
     - name: Wymuszanie protokołu HTTPS za pomocą aparatu reguł standardowych
       href: cdn-standard-rules-engine.md
-- name: Przykłady
+- name: Samples
   items:
     - name: Przykłady kodu
       href: 'https://azure.microsoft.com/resources/samples/?service=cdn'
@@ -40,7 +40,7 @@
       href: cdn-china-delivery.md
     - name: Obsługa protokołu HTTP/2
       href: cdn-http2.md
-    - name: Pobieranie listy lokalizacji POP firmy Verizon
+    - name: Pobieranie adresów IP POP
       href: cdn-pop-list-api.md
     - name: Migrowanie z warstwy Verizon — Standardowa do Verizon — Premium
       href: cdn-migrate.md
