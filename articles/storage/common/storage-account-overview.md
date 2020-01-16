@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.date: 12/20/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 30f39fc72d6a96b83f57d6553db3f348c8486ee5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8f912635fc0fb14fc54426a108af5f67d26213f4
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75460619"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75975705"
 ---
 # <a name="storage-account-overview"></a>Omówienie kont magazynu
 
 Konto usługi Azure Storage zawiera wszystkie obiekty danych usługi Azure Storage: obiektów blob, plików, kolejek, tabel i dysków. Konto magazynu zapewnia unikatową przestrzeń nazw dla danych usługi Azure Storage, która jest dostępna z dowolnego miejsca na świecie za pośrednictwem protokołu HTTP lub HTTPS. Dane na koncie usługi Azure Storage są trwałe i wysoce dostępne, bezpieczne i skalowalne.
 
-Aby dowiedzieć się, jak utworzyć konto usługi Azure Storage, zobacz [Tworzenie konta magazynu](storage-quickstart-create-account.md).
+Aby dowiedzieć się, jak utworzyć konto usługi Azure Storage, zobacz [Tworzenie konta magazynu](storage-account-create.md).
 
 ## <a name="types-of-storage-accounts"></a>Typy kont magazynu
 
@@ -72,7 +72,7 @@ Konta BlockBlobStorage nie obsługują obecnie warstw dostępu do warstwy gorąc
 
 ### <a name="filestorage-accounts"></a>Konta FileStorage
 
-Konto FileStorage to wyspecjalizowane konto magazynu używane do przechowywania i tworzenia udziałów plików w warstwie Premium. Ten rodzaj konta magazynu obsługuje pliki, ale nie blokuje obiektów blob, dołączanie obiektów blob, stronicowych obiektów blob, tabel lub kolejek. 
+Konto FileStorage to wyspecjalizowane konto magazynu używane do przechowywania i tworzenia udziałów plików w warstwie Premium. Ten rodzaj konta magazynu obsługuje pliki, ale nie blokuje obiektów blob, dołączanie obiektów blob, stronicowych obiektów blob, tabel lub kolejek.
 
 Konta FileStorage oferują unikatowe cechy charakterystyczne dla wydajności, takie jak rozerwanie operacji we/wy. Więcej informacji o tych właściwościach znajduje się w sekcji [warstwy wydajności udziału plików](../files/storage-files-planning.md#file-share-performance-tiers) w przewodniku planowania plików.
 
@@ -150,15 +150,15 @@ Dostęp do danych na koncie magazynu można udzielić przy użyciu dowolnych z n
 - **Sygnatura dostępu współdzielonego:** Użyj sygnatury dostępu współdzielonego, aby delegować dostęp do zasobów na koncie magazynu, jeśli nie korzystasz z autoryzacji usługi Azure AD. Sygnatura dostępu współdzielonego to token, który hermetyzuje wszystkie informacje konieczne do autoryzowania żądania do usługi Azure Storage przy użyciu adresu URL. Można określić zasób magazynu, przyznanych uprawnień oraz przedział czasu, w którym uprawnienia są prawidłowe w ramach sygnatury dostępu współdzielonego. Aby uzyskać więcej informacji, zobacz [Używanie sygnatur dostępu współdzielonego (SAS)](storage-sas-overview.md).
 
 > [!NOTE]
-> Uwierzytelnianie użytkowników lub aplikacji przy użyciu poświadczeń usługi Azure AD zapewnia doskonałe zabezpieczenia i łatwość użycia w innych sposobach autoryzacji. Mimo że można nadal korzystać z autoryzacji klucza współużytkowanego w aplikacjach, korzystanie z usługi Azure AD powoduje obejście konieczności przechowywania klucza dostępu do konta w kodzie. Możesz również nadal używać sygnatur dostępu współdzielonego, aby udzielać szczegółowego dostępu do zasobów na koncie magazynu, ale usługa Azure AD oferuje podobne możliwości bez konieczności zarządzania tokenami SAS ani martwić się o odwoływanie złamanych SAS. 
+> Uwierzytelnianie użytkowników lub aplikacji przy użyciu poświadczeń usługi Azure AD zapewnia doskonałe zabezpieczenia i łatwość użycia w innych sposobach autoryzacji. Mimo że można nadal korzystać z autoryzacji klucza współużytkowanego w aplikacjach, korzystanie z usługi Azure AD powoduje obejście konieczności przechowywania klucza dostępu do konta w kodzie. Możesz również nadal używać sygnatur dostępu współdzielonego, aby udzielać szczegółowego dostępu do zasobów na koncie magazynu, ale usługa Azure AD oferuje podobne możliwości bez konieczności zarządzania tokenami SAS ani martwić się o odwoływanie złamanych SAS.
 >
 > Firma Microsoft zaleca korzystanie z autoryzacji usługi Azure AD dla obiektów BLOB usługi Azure Storage i kolejkowanie aplikacji, o ile jest to możliwe.
 
 ## <a name="copying-data-into-a-storage-account"></a>Kopiowanie danych do konta magazynu
 
-Firma Microsoft udostępnia narzędzia i biblioteki do importowania danych z lokalnych urządzeń magazynujących lub dostawców magazynu w chmurze innych firm. Używane rozwiązanie zależy od ilości danych, które są transferowane. 
+Firma Microsoft udostępnia narzędzia i biblioteki do importowania danych z lokalnych urządzeń magazynujących lub dostawców magazynu w chmurze innych firm. Używane rozwiązanie zależy od ilości danych, które są transferowane.
 
-Po uaktualnieniu do konta ogólnego przeznaczenia w wersji 2 z poziomu konta ogólnego przeznaczenia w wersji 1 lub magazynu obiektów BLOB dane zostaną automatycznie zmigrowane. Firma Microsoft zaleca tej ścieżki do uaktualnienia konta. Jeśli jednak zdecydujesz się przenieść dane z konta ogólnego przeznaczenia w wersji 1 do konta usługi BLOB Storage, Przeprowadź migrację danych ręcznie przy użyciu narzędzi i bibliotek opisanych poniżej. 
+Po uaktualnieniu do konta ogólnego przeznaczenia w wersji 2 z poziomu konta ogólnego przeznaczenia w wersji 1 lub magazynu obiektów BLOB dane zostaną automatycznie zmigrowane. Firma Microsoft zaleca tej ścieżki do uaktualnienia konta. Jeśli jednak zdecydujesz się przenieść dane z konta ogólnego przeznaczenia w wersji 1 do konta usługi BLOB Storage, Przeprowadź migrację danych ręcznie przy użyciu narzędzi i bibliotek opisanych poniżej.
 
 ### <a name="azcopy"></a>Narzędzie AzCopy
 
@@ -183,5 +183,5 @@ Aby uzyskać więcej informacji na temat interfejsu API REST usługi Azure Stora
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Tworzenie konta magazynu](storage-quickstart-create-account.md)
+- [Tworzenie konta magazynu](storage-account-create.md)
 - [Tworzenie konta magazynu blokowych obiektów blob](../blobs/storage-blob-create-account-block-blob.md)

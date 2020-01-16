@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: eeaf44b9abe5c8f0343325454f599d282be6c743
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: aa71e1e6b58906953dfa22d08405c05c10c83242
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769850"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75966681"
 ---
 # <a name="troubleshoot-the-startstop-vms-during-off-hours-solution"></a>Rozwiązywanie problemów dotyczących uruchamiania/zatrzymywania maszyn wirtualnych poza godzinami
 
@@ -67,13 +67,13 @@ Wdrożenia mogą zakończyć się niepowodzeniem z jednego z następujących pow
 Zapoznaj się z poniższą listą, aby zapoznać się z potencjalnymi rozwiązaniami problemu lub miejscami, aby
 
 1. Konta usługi Automation muszą być unikatowe w obrębie regionu świadczenia usługi Azure, nawet jeśli znajdują się w różnych grupach zasobów. Sprawdź istniejące konta usługi Automation w regionie docelowym.
-2. Istniejące zasady uniemożliwiają wdrożenie zasobu, który jest wymagany dla rozwiązania uruchamiania/zatrzymywania maszyny wirtualnej. Przejdź do przypisań zasad w Azure Portal i sprawdź, czy masz przypisanie zasad, które uniemożliwia wdrożenie tego zasobu. Aby dowiedzieć się więcej na ten temat, zobacz [RequestDisallowedByPolicy](../../azure-resource-manager/resource-manager-policy-requestdisallowedbypolicy-error.md).
+2. Istniejące zasady uniemożliwiają wdrożenie zasobu, który jest wymagany dla rozwiązania uruchamiania/zatrzymywania maszyny wirtualnej. Przejdź do przypisań zasad w Azure Portal i sprawdź, czy masz przypisanie zasad, które uniemożliwia wdrożenie tego zasobu. Aby dowiedzieć się więcej na ten temat, zobacz [RequestDisallowedByPolicy](../../azure-resource-manager/templates/error-policy-requestdisallowedbypolicy.md).
 3. Aby wdrożyć rozwiązanie do uruchamiania/zatrzymywania maszyny wirtualnej, należy zarejestrować subskrypcję w następujących przestrzeniach nazw zasobów platformy Azure:
     * `Microsoft.OperationsManagement`
     * `Microsoft.Insights`
     * `Microsoft.Automation`
 
-   Zobacz, [Rozwiązywanie problemów dotyczących rejestracji dostawcy zasobów](../../azure-resource-manager/resource-manager-register-provider-errors.md) , aby dowiedzieć się więcej o błędach podczas rejestrowania dostawców.
+   Zobacz, [Rozwiązywanie problemów dotyczących rejestracji dostawcy zasobów](../../azure-resource-manager/templates/error-register-resource-provider.md) , aby dowiedzieć się więcej o błędach podczas rejestrowania dostawców.
 4. Jeśli masz blokadę obszaru roboczego Log Analytics, przejdź do obszaru roboczego w obszarze Azure Portal i Usuń wszystkie blokady zasobu.
 5. Jeśli powyższe rozwiązania nie rozwiążą problemu, postępuj zgodnie z instrukcjami w sekcji [Aktualizowanie rozwiązania](../automation-solution-vm-management.md#update-the-solution) , aby ponownie wdrożyć rozwiązanie uruchamiania/zatrzymywania.
 

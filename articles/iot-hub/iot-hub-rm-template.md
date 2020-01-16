@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/08/2017
-ms.openlocfilehash: 4d9fe58457f9a74466128273dcffee08e17aeb75
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 02e814a9da320d688fe57edf3a3fe0640b8f5a47
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457039"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75976735"
 ---
 # <a name="create-an-iot-hub-using-azure-resource-manager-template-net"></a>Tworzenie Centrum IoT Hub przy użyciu szablonu Azure Resource Manager (.NET)
 
@@ -23,7 +23,7 @@ ms.locfileid: "75457039"
 Za pomocą Azure Resource Manager można programowo tworzyć centra Azure IoT Hub i zarządzać nimi. W tym samouczku przedstawiono sposób tworzenia Centrum IoT Hub z C# programu przy użyciu szablonu Azure Resource Manager.
 
 > [!NOTE]
-> Platforma Azure ma dwa różne modele wdrażania służące do tworzenia zasobów i pracy z nimi: [Azure Resource Manager i klasyczne](../azure-resource-manager/resource-manager-deployment-model.md).  W tym artykule opisano użycie Azure Resource Manager model wdrażania.
+> Platforma Azure ma dwa różne modele wdrażania służące do tworzenia zasobów i pracy z nimi: [Azure Resource Manager i klasyczne](../azure-resource-manager/management/deployment-models.md).  W tym artykule opisano użycie Azure Resource Manager model wdrażania.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 

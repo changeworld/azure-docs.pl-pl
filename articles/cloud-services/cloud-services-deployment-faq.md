@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: f935e8fc1e5d6d64bffaeb582e8b248317f49687
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 63a219078927e9001a8eb4085c722e7ec8d2fac9
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75660600"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980628"
 ---
 # <a name="deployment-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Problemy z wdrażaniem w usłudze Azure Cloud Services: często zadawane pytania
 
@@ -56,7 +56,7 @@ Wdrożenie usługi w chmurze może zakończyć się niepowodzeniem, jeśli zasob
 
 Możesz również śledzić bieżące użycie/przydział dla subskrypcji w portalu: Azure Portal = > subskrypcje = > \<odpowiedniej subskrypcji > = > "użycie i przydział".
 
-Informacje dotyczące użycia zasobów/zużycia można także pobrać za pośrednictwem interfejsy API rozliczeń platformy Azure. Zobacz [interfejs API użycia zasobów platformy Azure (wersja zapoznawcza)](../billing/billing-usage-rate-card-overview.md#azure-resource-usage-api-preview).
+Informacje dotyczące użycia zasobów/zużycia można także pobrać za pośrednictwem interfejsy API rozliczeń platformy Azure. Zobacz [interfejs API użycia zasobów platformy Azure (wersja zapoznawcza)](../cost-management-billing/manage/usage-rate-card-overview.md#azure-resource-usage-api-preview).
 
 ## <a name="how-can-i-change-the-size-of-a-deployed-cloud-service-vm-without-redeploying-it"></a>Jak zmienić rozmiar wdrożonej maszyny wirtualnej usługi w chmurze bez jej ponownego wdrażania?
 Nie można zmienić rozmiaru maszyny wirtualnej wdrożonej usługi w chmurze bez jej ponownego wdrożenia. Rozmiar maszyny wirtualnej jest wbudowany w CSDEF, który można zaktualizować tylko przy użyciu ponownego wdrożenia.
@@ -66,17 +66,17 @@ Aby uzyskać więcej informacji, zobacz [jak zaktualizować usługę w chmurze](
 ## <a name="why-am-i-not-able-to-deploy-cloud-services-through-service-management-apis-or-powershell-when-using-azure-resource-manager-storage-account"></a>Dlaczego nie mogę wdrożyć Cloud Services za pośrednictwem interfejsów API zarządzania usługami lub programu PowerShell w przypadku korzystania z konta magazynu Azure Resource Manager? 
 
 Ponieważ usługa w chmurze jest zasobem klasycznym, który nie jest bezpośrednio zgodny z modelem Azure Resource Manager, nie można go skojarzyć z kontami magazynu Azure Resource Manager. Oto kilka opcji: 
- 
+
 - Wdrażanie przy użyciu interfejsu API REST.
 
     Podczas wdrażania za pośrednictwem interfejsu API REST usługi Service Management można obejść ograniczenie, określając adres URL sygnatury dostępu współdzielonego dla magazynu obiektów blob, który będzie działał zarówno na klasycznym, jak i Azure Resource Manager koncie magazynu. Przeczytaj więcej na temat właściwości "PackageUrl" w [tym miejscu](/previous-versions/azure/reference/ee460813(v=azure.100)).
-  
+
 - Wdrażanie za [Azure Portal](https://portal.azure.com).
 
     Będzie to [Azure Portal](https://portal.azure.com) możliwe, gdy połączenie przechodzi przez serwer proxy/podkładkę, która umożliwia komunikację między zasobami Azure Resource Manager i klasycznymi. 
- 
-## <a name="why-does-azure-portal-require-me-to-provide-a-storage-account-for-deployment"></a>Dlaczego Azure Portal wymaga podania konta magazynu na potrzeby wdrożenia? 
 
-W portalu klasycznym pakiet został przekazany bezpośrednio do warstwy interfejsu API zarządzania, a następnie warstwa interfejsu API tymczasowo umieszcza pakiet w wewnętrznym koncie magazynu.  Ten proces powoduje problemy z wydajnością i skalowalnością, ponieważ warstwa interfejsu API nie została zaprojektowana jako usługa przekazywania plików.  W Azure Portal (Menedżer zasobów model wdrażania) pomijamy tymczasowy krok pierwszego przekazania do warstwy interfejsu API, co prowadzi do szybszego i bardziej niezawodnego wdrożenia. 
+## <a name="why-does-azure-portal-require-me-to-provide-a-storage-account-for-deployment"></a>Dlaczego Azure Portal wymaga podania konta magazynu na potrzeby wdrożenia?
 
-Podobnie jak w przypadku kosztu, jest to bardzo małe i można ponownie użyć tego samego konta magazynu we wszystkich wdrożeniach. [Kalkulator kosztów magazynu](https://azure.microsoft.com/pricing/calculator/#storage1) umożliwia określenie kosztu przekazania pakietu usługi (CSPKG), pobranie CSPKG, a następnie usunięcie CSPKG. 
+W portalu klasycznym pakiet został przekazany bezpośrednio do warstwy interfejsu API zarządzania, a następnie warstwa interfejsu API tymczasowo umieszcza pakiet w wewnętrznym koncie magazynu.  Ten proces powoduje problemy z wydajnością i skalowalnością, ponieważ warstwa interfejsu API nie została zaprojektowana jako usługa przekazywania plików.  W Azure Portal (Menedżer zasobów model wdrażania) pomijamy tymczasowy krok pierwszego przekazania do warstwy interfejsu API, co prowadzi do szybszego i bardziej niezawodnego wdrożenia.
+
+Podobnie jak w przypadku kosztu, jest to bardzo małe i można ponownie użyć tego samego konta magazynu we wszystkich wdrożeniach. [Kalkulator kosztów magazynu](https://azure.microsoft.com/pricing/calculator/#storage1) umożliwia określenie kosztu przekazania pakietu usługi (CSPKG), pobranie CSPKG, a następnie usunięcie CSPKG.

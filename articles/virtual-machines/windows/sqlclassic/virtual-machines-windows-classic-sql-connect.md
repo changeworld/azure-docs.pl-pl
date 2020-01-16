@@ -14,13 +14,14 @@ ms.workload: iaas-sql-server
 ms.date: 01/31/2017
 ms.author: mathoma
 ms.reviewer: jroth
+experimental: true
 experimental_id: d51f3cc6-753b-4e
-ms.openlocfilehash: 5fef230d99b871dc54ee85e8c35189a2c745502f
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 4627d9c4fa5c87e8e80ab80892062dabd77e9229
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100447"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978209"
 ---
 # <a name="connect-to-a-sql-server-virtual-machine-on-azure-classic-deployment"></a>Łączenie z maszyną wirtualną programu SQL Server na platformie Azure (wdrażanie klasyczne)
 > [!div class="op_single_selector"]
@@ -33,7 +34,7 @@ ms.locfileid: "70100447"
 W tym temacie opisano sposób nawiązywania połączenia z wystąpieniem SQL Server uruchomionym na maszynie wirtualnej platformy Azure. Obejmuje ona niektóre [Ogólne scenariusze łączności](#connection-scenarios) , a następnie zawiera [szczegółowe instrukcje dotyczące konfigurowania łączności SQL Server na maszynie wirtualnej platformy Azure](#steps-for-configuring-sql-server-connectivity-in-an-azure-vm).
 
 > [!IMPORTANT] 
-> Platforma Azure oferuje dwa różne modele wdrażania związane z tworzeniem zasobów i pracą z nimi: [Menedżer zasobów i klasyczny](../../../azure-resource-manager/resource-manager-deployment-model.md). W tym artykule opisano korzystanie z klasycznego modelu wdrażania. Firma Microsoft zaleca, aby w przypadku większości nowych wdrożeń korzystać z modelu opartego na programie Resource Manager. Jeśli używasz maszyn wirtualnych Menedżer zasobów, zobacz [nawiązywanie połączenia z maszyną wirtualną SQL Server na platformie Azure przy użyciu Menedżer zasobów](../sql/virtual-machines-windows-sql-connect.md).
+> Platforma Azure ma dwa różne modele wdrażania służące do tworzenia zasobów i pracy z nimi: [Menedżer zasobów i klasyczne](../../../azure-resource-manager/management/deployment-models.md). W tym artykule opisano korzystanie z klasycznego modelu wdrażania. Firma Microsoft zaleca, aby w przypadku większości nowych wdrożeń korzystać z modelu opartego na programie Resource Manager. Jeśli używasz maszyn wirtualnych Menedżer zasobów, zobacz [nawiązywanie połączenia z maszyną wirtualną SQL Server na platformie Azure przy użyciu Menedżer zasobów](../sql/virtual-machines-windows-sql-connect.md).
 
 ## <a name="connection-scenarios"></a>Scenariusze połączeń
 Sposób, w jaki klient nawiązuje połączenie z SQL Server uruchomionym na maszynie wirtualnej, różni się w zależności od lokalizacji klienta i konfiguracji komputera/sieci. Scenariusze obejmują:
@@ -50,7 +51,7 @@ Sposób, w jaki klient nawiązuje połączenie z SQL Server uruchomionym na masz
 ### <a name="connect-to-sql-server-in-the-same-cloud-service"></a>Połącz z SQL Server w tej samej usłudze w chmurze
 W tej samej usłudze w chmurze można utworzyć wiele maszyn wirtualnych. Aby zrozumieć ten scenariusz maszyn wirtualnych, zobacz [jak połączyć maszyny wirtualne z siecią wirtualną lub usługą w chmurze](/previous-versions/azure/virtual-machines/windows/classic/connect-vms-classic#connect-vms-in-a-standalone-cloud-service). Ten scenariusz polega na tym, że klient programu na jednej maszynie wirtualnej próbuje nawiązać połączenie z usługą SQL Server działającą na innej maszynie wirtualnej w tej samej usłudze w chmurze.
 
-W tym scenariuszu można nawiązać połączenie przy użyciu **nazwy** maszyny wirtualnej (podanej także w portalu). Jest to nazwa podana dla maszyny wirtualnej podczas jej tworzenia. Jeśli na przykład nazwa maszyny wirtualnej SQL **mysqlvm**, maszyna wirtualna w tej samej usłudze w chmurze może użyć następujących parametrów połączenia do nawiązania połączenia:
+**W tym** scenariuszu można nawiązać połączenie przy użyciu **nazwy** maszyny wirtualnej (podanej **także w portalu** ). Jest to nazwa podana dla maszyny wirtualnej podczas jej tworzenia. Jeśli na przykład nazwa maszyny wirtualnej SQL **mysqlvm**, maszyna wirtualna w tej samej usłudze w chmurze może użyć następujących parametrów połączenia do nawiązania połączenia:
 
     "Server=mysqlvm;Integrated Security=false;User ID=<login_name>;Password=<your_password>"
 
@@ -66,7 +67,7 @@ Rozważmy na przykład klasyczną maszynę wirtualną o nazwie **mysqlvm** z naz
 Chociaż umożliwia to łączność dla klientów przez Internet, nie oznacza to, że każdy może połączyć się z SQL Server. Klienci zewnętrzni muszą mieć poprawną nazwę użytkownika i hasło. Aby uzyskać dodatkowe zabezpieczenia, nie używaj dobrze znanego portu 1433 dla punktu końcowego publicznej maszyny wirtualnej. A jeśli to możliwe, rozważ dodanie listy ACL w punkcie końcowym, aby ograniczyć ruch tylko do klientów, którym zezwalasz. Aby uzyskać instrukcje dotyczące korzystania z list ACL z punktami końcowymi, zobacz [Zarządzanie listą kontroli dostępu w punkcie końcowym](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints#manage-the-acl-on-an-endpoint).
 
 > [!NOTE]
-> Należy pamiętać, że w przypadku korzystania z tej techniki w celu komunikowania się z SQL Server wszystkie dane wychodzące z centrum [danych](https://azure.microsoft.com/pricing/details/data-transfers/)platformy Azure podlegają normalnym cennikom dotyczącym wychodzących transferów.
+> Należy pamiętać, że w przypadku korzystania z tej techniki w celu komunikowania się z SQL Server wszystkie dane wychodzące z centrum danych platformy Azure podlegają normalnym [cennikom dotyczącym wychodzących transferów](https://azure.microsoft.com/pricing/details/data-transfers/).
 > 
 > 
 

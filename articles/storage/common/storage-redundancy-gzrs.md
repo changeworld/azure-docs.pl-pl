@@ -8,12 +8,12 @@ ms.date: 08/13/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: e1789122079d5cbc6f5914a6fd6a69a38df04e45
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 2591f1846574994b878814f3b08df1de2a6e9fc1
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75748262"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75973379"
 ---
 # <a name="build-highly-available-azure-storage-applications-with-geo-zone-redundant-storage-gzrs-preview"></a>Twórz aplikacje usługi Azure Storage o wysokiej dostępności przy użyciu strefy geograficznej nadmiarowej (GZRS) (wersja zapoznawcza)
 
@@ -51,7 +51,7 @@ Gdy dane są zapisywane na koncie magazynu z włączonym GZRS lub RA-GZRS, dane 
 > [!IMPORTANT]
 > Replikacja asynchroniczna obejmuje opóźnienie między czasem zapisywania danych w regionie podstawowym a replikacją do regionu pomocniczego. W przypadku awarii regionalnej zmiany, które nie zostały jeszcze zreplikowane do regionu pomocniczego, mogą zostać utracone, jeśli nie można odzyskać tych danych z regionu podstawowego.
 
-Podczas tworzenia konta magazynu należy określić sposób replikowania danych z tego konta, a także określić region podstawowy dla tego konta. Sparowany region pomocniczy dla konta z replikacją geograficzną jest określany na podstawie regionu podstawowego i nie można go zmienić. Aby uzyskać aktualne informacje dotyczące regionów obsługiwanych przez platformę Azure, zobacz temat [ciągłość działania i odzyskiwanie po awarii (BCDR): wielosparowane regiony platformy Azure](https://docs.microsoft.com/azure/best-practices-availability-paired-regions). Aby uzyskać informacje na temat tworzenia konta magazynu za pomocą usługi GZRS lub RA-GZRS, zobacz [Tworzenie konta magazynu](storage-quickstart-create-account.md).
+Podczas tworzenia konta magazynu należy określić sposób replikowania danych z tego konta, a także określić region podstawowy dla tego konta. Sparowany region pomocniczy dla konta z replikacją geograficzną jest określany na podstawie regionu podstawowego i nie można go zmienić. Aby uzyskać aktualne informacje dotyczące regionów obsługiwanych przez platformę Azure, zobacz temat [ciągłość działania i odzyskiwanie po awarii (BCDR): wielosparowane regiony platformy Azure](https://docs.microsoft.com/azure/best-practices-availability-paired-regions). Aby uzyskać informacje na temat tworzenia konta magazynu za pomocą usługi GZRS lub RA-GZRS, zobacz [Tworzenie konta magazynu](storage-account-create.md).
 
 ### <a name="use-ra-gzrs-for-high-availability"></a>Korzystanie z usługi RA-GZRS w celu zapewnienia wysokiej dostępności
 

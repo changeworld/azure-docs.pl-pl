@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/26/2019
 ms.author: aschhab
-ms.openlocfilehash: 25b0c14fb94cba611dfa9fa9bece1b728f39a905
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 0f328651ac4422226071d2de12e9cbc787ef64be
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73585206"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978271"
 ---
 # <a name="service-bus-resource-manager-exceptions"></a>Wyjątki Menedżer zasobów Service Bus
 
@@ -54,7 +54,7 @@ Podobnie jak w przypadku protokołu HTTP "kod błędu 429" wskazuje "zbyt wiele 
 
 | Kod błędu | Kod podkodu błędu | Komunikat o błędzie | Opis | Zalecenie |
 | ---------- | ------------- | ------------- | ----------- | -------------- |
-| 429 | 50004 | Subcode = 50004. Żądanie zostało przerwane, ponieważ przestrzeń nazw *obszaru nazw jest* ograniczana. | Ten warunek błędu zostaje osiągnięty, gdy liczba żądań przychodzących przekracza ograniczenie zasobu. | Poczekaj kilka sekund i spróbuj ponownie. <br/> <br/> Dowiedz się więcej na temat [limitów](../azure-resource-manager/resource-manager-request-limits.md) [przydziałów](service-bus-quotas.md) i żądań Azure Resource Manager|
+| 429 | 50004 | Subcode = 50004. Żądanie zostało przerwane, ponieważ przestrzeń nazw *obszaru nazw jest* ograniczana. | Ten warunek błędu zostaje osiągnięty, gdy liczba żądań przychodzących przekracza ograniczenie zasobu. | Poczekaj kilka sekund i spróbuj ponownie. <br/> <br/> Dowiedz się więcej na temat [limitów](../azure-resource-manager/management/request-limits-and-throttling.md) [przydziałów](service-bus-quotas.md) i żądań Azure Resource Manager|
 | 429 | 40901 | Subcode = 40901. Inna operacja powodująca konflikt jest w toku. | Inna operacja powodująca konflikt jest w toku dla tego samego zasobu/jednostki | Poczekaj na zakończenie bieżącej operacji w toku przed ponowną próbą. |
 | 429 | 40900 | Subcode = 40900. Kolizj. Żądasz operacji, która nie jest dozwolona w bieżącym stanie zasobu. | Ten stan może być osiągnięty w przypadku wykonywania wielu żądań w celu wykonania operacji na tej samej jednostce (Kolejka, temat, subskrypcja lub reguła) w tym samym czasie. | Poczekaj kilka sekund i spróbuj ponownie |
 | 429 | 40901 | Wystąpił konflikt żądania w jednostce *"Nazwa jednostki* " z innym żądaniem | Inna operacja powodująca konflikt jest w toku dla tego samego zasobu/jednostki | Poczekaj na zakończenie poprzedniej operacji przed ponowną próbą |

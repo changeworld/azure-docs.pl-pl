@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/29/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 148d0c203248e4dcde5baaadc596d56e8b8ea17a
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 533c91bdc02425cabf5eeae93f37811144b32149
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73669395"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75976327"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-server"></a>Zespół danych dla celów naukowych w działaniu: przy użyciu programu SQL Server
 W tym samouczku opisano proces tworzenia i wdrażania modelu uczenia maszynowego, przy użyciu programu SQL Server i publicznie dostępnego zestawu danych — [rund taksówek NYC](https://www.andresmh.com/nyctaxitrips/) zestawu danych. Procedura następuje pracy do analizy danych w warstwie standardowa: pozyskiwanie i eksplorować dane, Projektuj funkcje ułatwić szkolenia, a następnie utworzyć i wdrożyć model.
@@ -66,7 +66,7 @@ W tym samouczku przedstawiony zostanie równoległy zbiorczy import danych do pr
 
 Aby skonfigurować środowisko nauki o danych platformy Azure:
 
-1. [Tworzenie konta magazynu](../../storage/common/storage-quickstart-create-account.md)
+1. [Tworzenie konta magazynu](../../storage/common/storage-account-create.md)
 2. [Tworzenie obszaru roboczego usługi Azure Machine Learning](../studio/create-workspace.md)
 3. [Aprowizowanie maszyny wirtualnej do nauki o danych](../data-science-virtual-machine/setup-sql-server-virtual-machine.md), który zapewnia programu SQL Server i serwera IPython Notebook.
    
@@ -376,7 +376,7 @@ Podobnie można sprawdzić relacje między **współczynnik\_kodu** i **podróż
 ![#8 wykreślania][8]
 
 ### <a name="sub-sampling-the-data-in-sql"></a>Podrzędne próbkowanie danych w SQL
-Podczas przygotowywania danych do kompilowania modeli w [Azure Machine Learning Studio](https://studio.azureml.net)można zdecydować, czy **zapytanie SQL ma być używane bezpośrednio w module Importuj dane** , czy utrwalać przetworzone i próbkowane dane w nowej tabeli, której można użyć podczas importowania. [ Moduł danych][import-data] z prostą opcją **SELECT * FROM <\_nową tabelę\_\_nazwa >** .
+Podczas przygotowywania danych do kompilowania modeli w [Azure Machine Learning Studio](https://studio.azureml.net)można zdecydować, czy **zapytanie SQL ma być używane bezpośrednio w module Importuj dane** , czy przechowywać i próbkowane dane w nowej tabeli, która może być używana w module [Import danych][import-data] z prostym **SELECT * FROM <\_nowej tabeli\_\_** >.
 
 W tej sekcji utworzymy nową tabelę do przechowywania danych próbkowanych i odtworzone. Przykładem bezpośrednie zapytanie SQL do tworzenia modelu znajduje się w [eksplorację danych inżynieryjnych i związanych z funkcji w programie SQL Server](#dbexplore) sekcji.
 
@@ -621,7 +621,7 @@ Podsumowanie, w tym samouczku instruktażu utworzono środowisko do nauki o dany
 ### <a name="license-information"></a>Informacje o licencji
 Ten przewodnik po przykładzie i towarzyszące jej IPython notebook(s) i skrypty są udostępniane przez firmę Microsoft na licencji MIT. Sprawdź, czy w pliku LICENSE.txt w katalogu przykładowego kodu w serwisie GitHub Aby uzyskać więcej informacji.
 
-### <a name="references"></a>Dokumentacja
+### <a name="references"></a>Informacje
 • [Andrés Monroy taksówek NYC przesłania strony pobierania](https://www.andresmh.com/nyctaxitrips/)  
 • [FOILing NYC taksówki danych podróży, Chris Whong](https://chriswhong.com/open-data/foil_nyc_taxi/)   
 • [Taksówek NYC i Limousine Komisji badań i statystyk](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page)

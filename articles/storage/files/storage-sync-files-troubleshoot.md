@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/8/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: f60d9714db71325bd9c67cae6e2f82d54f8e5eb3
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 1b24258efdd75977b5571506b3eabf952a4ae0a4
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75753913"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76027784"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Rozwiązywanie problemów z usługą Azure File Sync
 Użyj Azure File Sync, aby scentralizować udziały plików w organizacji w Azure Files, utrzymując elastyczność, wydajność i zgodność lokalnego serwera plików. Funkcja Azure File Sync przekształca system Windows Server w szybką pamięć podręczną udziału plików platformy Azure. Możesz użyć dowolnego protokołu, który jest dostępny w systemie Windows Server, aby uzyskać dostęp do danych lokalnie, w tym SMB, NFS i FTPS. Na całym świecie możesz mieć dowolną liczbę pamięci podręcznych.
@@ -182,8 +182,6 @@ Na serwerze, który jest wyświetlany jako "pojawia się w trybie offline" w por
     ```powershell
     Reset-AzStorageSyncServerCertificate -ResourceGroupName <string> -StorageSyncServiceName <string>
     ```
-
-
 <a id="endpoint-noactivity-sync"></a>**Punkt końcowy serwera ma stan kondycji "brak działania", a stan serwera w bloku zarejestrowane serwery to "online"**  
 
 Stan kondycji punktu końcowego serwera "brak działania" oznacza, że punkt końcowy serwera nie zarejestrował działania synchronizacji w ciągu ostatnich dwóch godzin.
@@ -393,6 +391,22 @@ Ten błąd występuje, ponieważ agent usługi Azure File Sync nie może uzyska�
 3. [Upewnij się, że Azure File Sync ma dostęp do konta magazynu.](#troubleshoot-rbac)
 4. [Sprawdź, czy ustawienia zapory i sieci wirtualnej na koncie magazynu są prawidłowo skonfigurowane (jeśli włączono)](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings)
 
+<a id="-2134351804"></a>**Synchronizacja nie powiodła się, ponieważ żądanie nie ma autoryzacji do wykonania tej operacji.**  
+
+| | |
+|-|-|
+| **HRESULT** | 0x80c86044 |
+| **HRESULT (dziesiętny)** | -2134351804 |
+| **Ciąg błędu** | ECS_E_AZURE_AUTHORIZATION_FAILED |
+| **Wymagana korekta** | Tak |
+
+Ten błąd występuje, ponieważ agent Azure File Sync nie ma uprawnień dostępu do udziału plików platformy Azure. Ten błąd można rozwiązać, wykonując następujące czynności:
+
+1. [Sprawdź, czy konto magazynu istnieje.](#troubleshoot-storage-account)
+2. [Upewnij się, że udział plików platformy Azure już istnieje.](#troubleshoot-azure-file-share)
+3. [Sprawdź, czy ustawienia zapory i sieci wirtualnej na koncie magazynu są prawidłowo skonfigurowane (jeśli włączono)](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings)
+4. [Upewnij się, że Azure File Sync ma dostęp do konta magazynu.](#troubleshoot-rbac)
+
 <a id="-2134364064"></a><a id="cannot-resolve-storage"></a>**Nie można rozpoznać używanej nazwy konta magazynu.**  
 
 | | |
@@ -495,7 +509,7 @@ Jeśli udział plików platformy Azure został usunięty, należy utworzyć nowy
 | **Ciąg błędu** | ECS_E_SYNC_BLOCKED_ON_SUSPENDED_SUBSCRIPTION |
 | **Wymagana korekta** | Tak |
 
-Ten błąd występuje, gdy subskrypcja platformy Azure jest zawieszona. Synchronizacja zostanie ponownie włączona po przywróceniu subskrypcji platformy Azure. Zobacz [Dlaczego moja subskrypcja platformy Azure jest wyłączona i jak ją uaktywnić?](../../billing/billing-subscription-become-disable.md) Aby uzyskać więcej informacji.
+Ten błąd występuje, gdy subskrypcja platformy Azure jest zawieszona. Synchronizacja zostanie ponownie włączona po przywróceniu subskrypcji platformy Azure. Zobacz [Dlaczego moja subskrypcja platformy Azure jest wyłączona i jak ją uaktywnić?](../../cost-management-billing/manage/subscription-disabled.md) Aby uzyskać więcej informacji.
 
 <a id="-2134364052"></a>**Konto magazynu ma skonfigurowane zaporę lub sieci wirtualne.**  
 

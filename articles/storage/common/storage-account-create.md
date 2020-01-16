@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 12/11/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 0d12f50b059bf74cc1bbc55913d4ce49b77f81fd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 203bff23b2ae1a5e5e19b4abc323c3ffeb31f367
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75486718"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75975913"
 ---
 # <a name="create-an-azure-storage-account"></a>Tworzenie konta usługi Azure Storage
 
@@ -67,7 +67,7 @@ Brak.
 
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
-Zaloguj się do [Portalu Azure](https://portal.azure.com).
+Zaloguj się do [portalu Azure](https://portal.azure.com).
 
 # <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
 
@@ -222,7 +222,7 @@ Usunięcie konta magazynu spowoduje usunięcie całego konta, w tym wszystkich d
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
 1. Przejdź do konta magazynu w [Azure Portal](https://portal.azure.com).
-1. Kliknij pozycję **Usuń**.
+1. Kliknij polecenie **Usuń**.
 
 # <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
 
@@ -260,7 +260,7 @@ az storage account delete --name storageAccountName --resource-group resourceGro
 
 ---
 
-Alternatywnie można usunąć grupę zasobów, która spowoduje usunięcie konta magazynu i innych zasobów w tej grupie zasobów. Aby uzyskać więcej informacji na temat usuwania grupy zasobów, zobacz [Usuwanie grupy zasobów i zasobów](../../azure-resource-manager/resource-group-delete.md).
+Alternatywnie można usunąć grupę zasobów, która spowoduje usunięcie konta magazynu i innych zasobów w tej grupie zasobów. Aby uzyskać więcej informacji na temat usuwania grupy zasobów, zobacz [Usuwanie grupy zasobów i zasobów](../../azure-resource-manager/management/delete-resource-group.md).
 
 > [!WARNING]
 > Nie można przywrócić usuniętego konta magazynu ani odzyskać żadnej zawartości znajdującej się na koncie przed usunięciem. Zanim usuniesz konto, wykonaj kopię zapasową wszystkich danych, które chcesz zapisać. Dotyczy to również wszystkich zasobów na koncie — po usunięciu obiektu Blob, tabeli, kolejki lub pliku elementy te są trwale usuwane.

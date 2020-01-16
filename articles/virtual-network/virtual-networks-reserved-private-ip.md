@@ -14,24 +14,24 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: c37c49d8f7e09334014af290bf3a8c8e6d35f04b
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: a13a0a54e9ded48cc5848843f4c329b2dea90f65
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058367"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75975232"
 ---
 # <a name="how-to-set-a-static-internal-private-ip-address-using-powershell-classic"></a>Jak ustawić statyczny wewnętrzny prywatny adres IP przy użyciu programu PowerShell (wersja klasyczna)
 W większości przypadków nie trzeba określać statycznego wewnętrznego adresu IP dla maszyny wirtualnej. Maszyny wirtualne w sieci wirtualnej automatycznie otrzymają wewnętrzny adres IP z określonego zakresu. Jednak w niektórych przypadkach określenie statycznego adresu IP dla określonej maszyny wirtualnej ma sens. Na przykład jeśli maszyna wirtualna ma działać w systemie DNS lub będzie kontrolerem domeny. Statyczny wewnętrzny adres IP pozostaje razem z maszyną wirtualną, nawet w stanie zatrzymania/anulowania aprowizacji. 
 
 > [!IMPORTANT]
-> Platforma Azure oferuje dwa różne modele wdrażania związane z tworzeniem zasobów i pracą z nimi:  [model wdrażania przy użyciu usługi Resource Manager i model klasyczny](../azure-resource-manager/resource-manager-deployment-model.md). Ten artykuł dotyczy klasycznego modelu wdrożenia. Firma Microsoft zaleca, aby większość nowych wdrożeń korzystała z [modelu wdrażania Menedżer zasobów](virtual-networks-static-private-ip-arm-ps.md).
+> Platforma Azure oferuje dwa różne modele wdrażania związane z tworzeniem zasobów i pracą z nimi: [model wdrażania przy użyciu usługi Azure Resource Manager i model klasyczny](../azure-resource-manager/management/deployment-models.md). Ten artykuł dotyczy klasycznego modelu wdrożenia. Firma Microsoft zaleca, aby większość nowych wdrożeń korzystała z [modelu wdrażania Menedżer zasobów](virtual-networks-static-private-ip-arm-ps.md).
 > 
 > 
 > ## <a name="install-the-azure-powershell-service-management-module"></a>Instalowanie modułu Azure PowerShell Service Management
 
-Przed uruchomieniem poniższych poleceń upewnij się, że [na komputerze jest zainstalowany moduł](https://docs.microsoft.com/powershell/azure/servicemanagement/install-azure-ps?view=azuresmps-4.0.0
-) zarządzania usługami Azure PowerShell. Aby uzyskać historię wersji Azure PowerShell modułu zarządzania usługami, zobacz [Azure module w Galeria programu PowerShell](https://www.powershellgallery.com/packages/Azure/5.3.0).
+Przed uruchomieniem poniższych poleceń upewnij się, że na komputerze jest zainstalowany [moduł zarządzania usługami Azure PowerShell](https://docs.microsoft.com/powershell/azure/servicemanagement/install-azure-ps?view=azuresmps-4.0.0
+) . Aby uzyskać historię wersji Azure PowerShell modułu zarządzania usługami, zobacz [Azure module w Galeria programu PowerShell](https://www.powershellgallery.com/packages/Azure/5.3.0).
 
 ## <a name="how-to-verify-if-a-specific-ip-address-is-available"></a>Jak sprawdzić, czy określony adres IP jest dostępny
 Aby sprawdzić, czy adres IP *10.0.0.7* jest dostępny w sieci wirtualnej o nazwie *TestVnet*, uruchom następujące polecenie programu PowerShell i sprawdź wartość parametru *IsAvailable*.
@@ -51,7 +51,7 @@ Aby sprawdzić, czy adres IP *10.0.0.7* jest dostępny w sieci wirtualnej o nazw
 > 
 
 ## <a name="how-to-specify-a-static-internal-ip-when-creating-a-vm"></a>Jak określić statyczny wewnętrzny adres IP podczas tworzenia maszyny wirtualnej
-Poniższy skrypt programu PowerShell tworzy nową usługę w chmurze o nazwie *TestService*, a następnie pobiera obraz z platformy Azure, a następnie tworzy maszynę wirtualną o nazwie *TestVM* w nowej usłudze w chmurze przy użyciu pobranego obrazu, ustawia maszynę wirtualną jako podsieć o nazwie *Subnet-1*, i ustawia *10.0.0.7* jako statyczny wewnętrzny adres IP dla maszyny wirtualnej:
+Poniższy skrypt programu PowerShell tworzy nową usługę w chmurze o nazwie *TestService*, a następnie pobiera obraz z platformy Azure, a następnie tworzy maszynę wirtualną o nazwie *TestVM* w nowej usłudze w chmurze przy użyciu pobranego obrazu, ustawia maszynę wirtualną w podsieci o nazwie *Subnet-1*i ustawia *10.0.0.7* jako statyczny wewnętrzny adres IP dla maszyny wirtualnej:
 
     New-AzureService -ServiceName TestService -Location "Central US"
     $image = Get-AzureVMImage|?{$_.ImageName -like "*RightImage-Windows-2012R2-x64*"}

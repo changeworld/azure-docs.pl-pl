@@ -10,19 +10,19 @@ ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
-ms.date: 02/08/2019
-ms.openlocfilehash: 3c03797c97a354eb06b6c3b1d76ba5c39d512c18
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 01/14/2020
+ms.openlocfilehash: 4283e1a2c92b7fe738fb57a8103cea1deb0015a0
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73811219"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76027723"
 ---
 # <a name="how-to-use-a-single-database-in-azure-sql-database"></a>Jak korzystać z pojedynczej bazy danych w Azure SQL Database
 
 W tej sekcji znajdują się różne przewodniki, skrypty i wyjaśnienia, które mogą pomóc w zarządzaniu i konfigurowaniu pojedynczej bazy danych w Azure SQL Database
 
-## <a name="migrate"></a>Migrate (Migracja)
+## <a name="migrate"></a>Migrowanie
 
 - [Migrowanie do SQL Database](sql-database-single-database-migrate.md) — informacje na temat zalecanego procesu migracji i narzędzi do migracji do wystąpienia zarządzanego.
 - Dowiedz się, jak [zarządzać usługą SQL Database po migracji](sql-database-manage-after-migration.md).
@@ -42,7 +42,7 @@ W tej sekcji znajdują się różne przewodniki, skrypty i wyjaśnienia, które 
 - [Włącz powiadomienia e-mail na potrzeby dostrajania automatycznego](sql-database-automatic-tuning-email-notifications.md) , aby uzyskać informacje o zaleceniach dostrajania.
 - [Stosuj zalecenia dotyczące wydajności](sql-database-advisor-portal.md) i Optymalizuj bazę danych.
 - [Utwórz alerty](sql-database-insights-alerts-portal.md) , aby otrzymywać powiadomienia z Azure SQL Database.
-- [Rozwiązywanie problemów z](sql-database-troubleshoot-common-connection-issues.md) łącznością, jeśli zauważysz problemy z łącznością między aplikacjami i bazą danych. Resource Health można także użyć [do problemów z łącznością](sql-database-resource-health.md).
+- [Rozwiązywanie problemów z](troubleshoot-connectivity-issues-microsoft-azure-sql-database.md) łącznością, jeśli zauważysz problemy z łącznością między aplikacjami i bazą danych. Resource Health można także użyć [do problemów z łącznością](sql-database-resource-health.md).
 - [Zarządzaj miejscem w pliku](sql-database-file-space-management.md) , aby monitorować użycie magazynu w bazie danych programu.
 
 ## <a name="query-distributed-data"></a>Wykonywanie zapytań względem danych rozproszonych

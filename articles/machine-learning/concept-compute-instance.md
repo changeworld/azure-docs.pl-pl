@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 12/13/2019
-ms.openlocfilehash: 02655a3697139ae3a9c4c36b423b874b6e5d34f9
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 6bba4414390efa6e07be6c253fe55f1638d414dc
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75541870"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75974105"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Co to jest wystąpienie obliczeniowe Azure Machine Learning?
 
@@ -54,7 +54,7 @@ Te narzędzia i środowiska są zainstalowane w wystąpieniu obliczeniowym:
 |Biblioteka Intel MPI||
 |Interfejs wiersza polecenia platformy Azure ||
 |Przykłady Azure Machine Learning ||
-|Aparat EDAT Azure Machine Learning ||            
+|Aparat EDAT Azure Machine Learning ||
 |Docker||
 |Nginx||
 |NCCL 2,0 ||
@@ -76,11 +76,26 @@ Te narzędzia i środowiska są zainstalowane w wystąpieniu obliczeniowym:
 |Inne pakiety PyPI|`jupytext`</br>`jupyterlab-git`</br>`tensorboard`</br>`nbconvert`</br>`notebook`</br>`Pillow`|
 |Pakiety Conda|`cython`</br>`numpy`</br>`ipykernel`</br>`scikit-learn`</br>`matplotlib`</br>`tqdm`</br>`joblib`</br>`nodejs`</br>`nb_conda_kernels`|
 |Pakiety uczenia głębokiego|`PyTorch`</br>`TensorFlow`</br>`Keras`</br>`Horovod`</br>`MLFlow`</br>`pandas-ml`</br>`scrapbook`|
-|Pakiety ONNX|`keras2onnx`</br>`onnx`</br>`onnxconverter-common`</br>`skl2onnx`</br>`onnxmltools`|                           
+|Pakiety ONNX|`keras2onnx`</br>`onnx`</br>`onnxconverter-common`</br>`skl2onnx`</br>`onnxmltools`|
 |Przykłady zestawu SDK języka Azure Machine Learning Python & R||
+
+Wszystkie pakiety języka Python są zainstalowane w środowisku **python 3,6-Azure** .  
 
 Wystąpienia obliczeniowe są zwykle używane jako środowiska deweloperskie.  Mogą one również służyć jako cel obliczeniowy do szkolenia i inferencing na potrzeby programowania i testowania.  W przypadku dużych zadań [klaster obliczeniowy Azure Machine Learning](how-to-set-up-training-targets.md#amlcompute) z funkcjami skalowania wielu węzłów jest lepszym rozwiązaniem docelowym obliczeń.
 
+### <a name="installing-packages"></a>Instalowanie pakietów
+
+Pakiety można instalować bezpośrednio w notesie Jupyter lub RStudio:
+
+* RStudio Użyj karty **pakiety** w prawym dolnym rogu lub karty **konsoli** w lewym górnym rogu.  
+* Python: Dodawanie kodu instalacji i wykonywanie w komórce notesu Jupyter.
+
+Możesz też uzyskać dostęp do okna terminalu w dowolny z następujących sposobów:
+
+* RStudio: Wybierz kartę **terminalu** u góry po lewej stronie.
+* Jupyter Lab: wybierz kafelek **terminalu** pod **innym** nagłówkiem na karcie Uruchamianie.
+* Jupyter: wybierz pozycję **Nowy Terminal >** w prawym górnym rogu na karcie pliki.
+* SSH z maszyną.  Następnie zainstaluj pakiety Python w środowisku **python 3,6-Azure** .  Zainstaluj pakiety języka R w środowisku **języka r** .
 
 ## <a name="accessing-files"></a>Uzyskiwanie dostępu do plików
 

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: c1a800ceb12c2e7ad69329d0391478a8e2ae268b
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: 44d5edd7b5808b6c212a832dd95de7a9cb4b7c08
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75945687"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978587"
 ---
 # <a name="security-and-data-privacy-in-azure-cognitive-search"></a>Bezpieczeństwo i prywatność danych na platformie Azure Wyszukiwanie poznawcze
 
@@ -49,7 +49,7 @@ Szyfrowanie rozciąga się w całym potoku indeksowania: od połączeń, transmi
 
 Dostępne są różne mechanizmy zabezpieczeń platformy Azure, które są automatycznie dostępne dla utworzonych zasobów Wyszukiwanie poznawcze platformy Azure.
 
-+ [Blokuje na poziomie subskrypcji lub zasobu, aby zapobiec usunięciu](../azure-resource-manager/resource-group-lock-resources.md)
++ [Blokuje na poziomie subskrypcji lub zasobu, aby zapobiec usunięciu](../azure-resource-manager/management/lock-resources.md)
 + [Access Control oparte na rolach (RBAC) do kontrolowania dostępu do informacji i operacji administracyjnych](../role-based-access-control/overview.md)
 
 Wszystkie usługi platformy Azure obsługują funkcję kontroli dostępu opartej na rolach (RBAC) na potrzeby spójnego ustawiania poziomów dostępu dla wszystkich usług. Na przykład wyświetlanie poufnych danych, takich jak klucz administratora, jest ograniczone do ról właściciela i współautora, podczas gdy wyświetlanie stanu usługi jest dostępne dla członków dowolnej roli. RBAC oferuje role właściciela, współautora i czytelnika. Domyślnie wszyscy Administratorzy usługi są członkami roli właściciela.

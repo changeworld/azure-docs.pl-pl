@@ -3,7 +3,7 @@ title: Azure Monitor rozszerzenie maszyny wirtualnej dla systemu Windows
 description: Wdróż agenta Log Analytics na maszynie wirtualnej z systemem Windows przy użyciu rozszerzenia maszyny wirtualnej.
 services: virtual-machines-windows
 documentationcenter: ''
-author: axayjo
+author: MicahMcKittrick-MSFT
 manager: gwallace
 editor: ''
 tags: azure-resource-manager
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/12/2019
 ms.author: akjosh
-ms.openlocfilehash: c9fd62e57d131fb21e657c53914f9cd5349107ec
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 072e30baa4ebb976a662019e5213f7eb26808a93
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073674"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75969948"
 ---
 # <a name="azure-monitor-virtual-machine-extension-for-windows"></a>Azure Monitor rozszerzenie maszyny wirtualnej dla systemu Windows
 
@@ -41,9 +41,9 @@ Poniższa tabela zawiera mapowanie wersji rozszerzenia maszyny wirtualnej z syst
 | 10.20.18011 | 1.0.18011 | Lipiec 2019 r. | <ul><li> Drobne poprawki błędów i ulepszenia stabilizacji </li><li> Zwiększono MaxExpressionDepth do 10000 </li></ul> |
 | 10.20.18001 | 1.0.18001 | Czerwiec 2019 r. | <ul><li> Drobne poprawki błędów i ulepszenia stabilizacji </li><li> Dodano możliwość wyłączania poświadczeń domyślnych podczas nawiązywania połączenia z serwerem proxy (obsługa WINHTTP_AUTOLOGON_SECURITY_LEVEL_HIGH) </li></ul>|
 | 10.19.13515 | 1.0.13515 | Marzec 2019 r. | <ul><li>Niewielkie poprawki stabilizacji </li></ul> |
-| 10.19.10006 | Nie dotyczy | Dec 2018 | <ul><li> Niewielkie poprawki stabilizacji </li></ul> | 
-| 8.0.11136 | Nie dotyczy | Września 2018 |  <ul><li> Dodano obsługę wykrywania zmiany identyfikatora zasobu podczas przenoszenia maszyny wirtualnej </li><li> Dodano obsługę identyfikatora zasobu raportowania podczas korzystania z instalacji niezwiązanej z rozszerzeniem </li></ul>| 
-| 8.0.11103 | Nie dotyczy |  Kwiecień 2018 r. | |
+| 10.19.10006 | nd. | Dec 2018 | <ul><li> Niewielkie poprawki stabilizacji </li></ul> | 
+| 8.0.11136 | nd. | Września 2018 |  <ul><li> Dodano obsługę wykrywania zmiany identyfikatora zasobu podczas przenoszenia maszyny wirtualnej </li><li> Dodano obsługę identyfikatora zasobu raportowania podczas korzystania z instalacji niezwiązanej z rozszerzeniem </li></ul>| 
+| 8.0.11103 | nd. |  Kwiecień 2018 r. | |
 | 8.0.11081 | 1.0.11081 | Lis 2017 | | 
 | 8.0.11072 | 1.0.11072 | Września 2017 | |
 | 8.0.11049 | 1.0.11049 | 2017 lutego | |
@@ -95,6 +95,8 @@ Poniższy kod JSON przedstawia schemat rozszerzenia agenta Log Analytics. Rozsze
 
 \* identyfikator obszaru roboczego jest nazywany consumerId w interfejsie API Log Analytics.
 
+> [Uwaga!] Aby uzyskać dodatkowe właściwości, zobacz Azure [Connect Windows Computes to Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/agent-windows).
+
 ## <a name="template-deployment"></a>Wdrażanie na podstawie szablonu
 
 Rozszerzenia maszyn wirtualnych platformy Azure można wdrażać przy użyciu szablonów usługi Azure Resource Manager. Schemat JSON opisany w poprzedniej sekcji można użyć w szablonie Azure Resource Manager, aby uruchomić rozszerzenie agenta Log Analytics podczas wdrażania szablonu Azure Resource Manager. Przykładowy szablon zawierający rozszerzenie maszyny wirtualnej agenta Log Analytics można znaleźć w [galerii szybki start platformy Azure](https://github.com/Azure/azure-quickstart-templates/tree/master/201-oms-extension-windows-vm). 
@@ -102,7 +104,7 @@ Rozszerzenia maszyn wirtualnych platformy Azure można wdrażać przy użyciu sz
 >[!NOTE]
 >Szablon nie obsługuje określania więcej niż jednego identyfikatora obszaru roboczego i klucza obszaru roboczego, jeśli chcesz skonfigurować agenta do raportowania do wielu obszarów roboczych. Aby skonfigurować agenta do raportowania do wielu obszarów roboczych, zobacz [Dodawanie lub usuwanie obszaru roboczego](../../azure-monitor/platform/agent-manage.md#adding-or-removing-a-workspace).  
 
-KOD JSON rozszerzenia maszyny wirtualnej może być zagnieżdżony w obrębie zasobu maszyny wirtualnej lub umieszczony na głównym lub najwyższym poziomie szablonu JSON Menedżer zasobów. Położenie pliku JSON wpływa na wartość nazwy zasobu i typu. Aby uzyskać więcej informacji, zobacz [Ustaw nazwę i typ zasobów podrzędnych](../../azure-resource-manager/child-resource-name-type.md). 
+KOD JSON rozszerzenia maszyny wirtualnej może być zagnieżdżony w obrębie zasobu maszyny wirtualnej lub umieszczony na głównym lub najwyższym poziomie szablonu JSON Menedżer zasobów. Położenie pliku JSON wpływa na wartość nazwy zasobu i typu. Aby uzyskać więcej informacji, zobacz [Ustaw nazwę i typ zasobów podrzędnych](../../azure-resource-manager/templates/child-resource-name-type.md). 
 
 W poniższym przykładzie założono, że rozszerzenie Azure Monitor jest zagnieżdżone w ramach zasobu maszyny wirtualnej. Zagnieżdżanie rozszerzenia zasobu, za pomocą pliku JSON jest umieszczany w `"resources": []` obiektu maszyny wirtualnej.
 

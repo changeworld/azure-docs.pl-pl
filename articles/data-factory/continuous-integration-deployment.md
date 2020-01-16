@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: 737cd9d306f01fa77dafa3d1a9a71495ff0a572e
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 0e4b2cd208e11f7696e016d3fa4353b38f3060d8
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75940772"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977517"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Ciągła integracja i dostarczanie w Azure Data Factory
 
@@ -145,7 +145,7 @@ Jeśli masz wpisy tajne do przekazania szablonu Azure Resource Manager, zalecamy
 
 Istnieją dwa sposoby obsługi wpisów tajnych:
 
--  Dodaj wpisy tajne do pliku Parameters. Aby uzyskać więcej informacji, zobacz [używanie Azure Key Vault do przekazywania bezpiecznej wartości parametru podczas wdrażania](../azure-resource-manager/resource-manager-keyvault-parameter.md).
+1.  Dodaj wpisy tajne do pliku Parameters. Aby uzyskać więcej informacji, zobacz [używanie Azure Key Vault do przekazywania zabezpieczonej wartości parametrów podczas wdrażania](../azure-resource-manager/templates/key-vault-parameter.md).
 
     Utwórz kopię pliku parametrów, który jest przekazywany do gałęzi Publikuj. Ustaw wartości parametrów, które mają zostać pobrane z Key Vault przy użyciu tego formatu:
 

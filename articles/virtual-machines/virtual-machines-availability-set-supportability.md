@@ -1,6 +1,6 @@
 ---
 title: Obsługa dodawania maszyn wirtualnych platformy Azure do istniejącego zestawu dostępności | Microsoft Docs
-description: Obsługa dodawania maszyn wirtualnych platformy Azure do istniejącego zestawu dostępności.
+description: Ten artykuł zawiera matrycę z możliwością obsługi, którą serie maszyn wirtualnych można mieszać w tym samym zestawie dostępności
 services: virtual-machines-linux
 documentationcenter: ''
 author: Deland-Han
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: 3954df389516aa7199022d713dc63d62dda961ae
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: cb0034f2b353284e94d6f1508541b31040a5b076
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155459"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028406"
 ---
 # <a name="supportability-of-adding-azure-vms-to-an-existing-availability-set"></a>Obsługa dodawania maszyn wirtualnych platformy Azure do istniejącego zestawu dostępności
 

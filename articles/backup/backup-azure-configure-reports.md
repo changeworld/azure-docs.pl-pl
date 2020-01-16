@@ -3,12 +3,12 @@ title: Konfigurowanie raportów usługi Power BI
 description: Skonfiguruj Power BI raporty dla Azure Backup przy użyciu magazynu Recovery Services.
 ms.topic: conceptual
 ms.date: 07/09/2019
-ms.openlocfilehash: 9b6ef62a924761642ef3217ff8af64ac6847c766
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4f8a2dd927f996ea09e40c7db2e43b46c17f6258
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450106"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978374"
 ---
 # <a name="configure-azure-backup-reports"></a>Konfigurowanie raportów usługi Azure Backup
 
@@ -30,7 +30,7 @@ Pobierz najnowszą aplikację (w wersji 1,8), aby uniknąć tego problemu.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Utwórz [konto usługi Azure Storage](../storage/common/storage-quickstart-create-account.md) , aby skonfigurować je do raportów. To konto magazynu służy do przechowywania danych związanych z raportami.
+- Utwórz [konto usługi Azure Storage](../storage/common/storage-account-create.md) , aby skonfigurować je do raportów. To konto magazynu służy do przechowywania danych związanych z raportami.
 - [Utwórz konto Power BI](https://powerbi.microsoft.com/landing/signin/) , aby wyświetlać, dostosowywać i tworzyć własne raporty przy użyciu portalu Power BI.
 - Zarejestruj dostawcę zasobów **Microsoft. Insights**, jeśli nie jest już zarejestrowany. Użyj subskrypcji dla konta magazynu i magazynu Recovery Services, aby dane raportowania mogły zostać przekazane do konta magazynu. Aby wykonać ten krok, przejdź do Azure Portal, wybierz pozycję **subskrypcja** > **dostawcy zasobów**i sprawdź, czy ten dostawca jest zarejestrowany.
 

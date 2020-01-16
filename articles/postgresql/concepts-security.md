@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/22/2019
-ms.openlocfilehash: a1bd9b8cbcbc785425c2d1870dc555ff91f695f7
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 02dc9e1ad9ee46b1a400e44b6ef737e70571a17a
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74485083"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75972584"
 ---
 # <a name="security-in-azure-database-for-postgresql---single-server"></a>Zabezpieczenia w Azure Database for PostgreSQL — pojedynczy serwer
 
@@ -36,6 +36,9 @@ Reguły zapory adresów IP umożliwiają dostęp do serwerów na podstawie źró
 
 ### <a name="virtual-network-firewall-rules"></a>Reguły zapory sieci wirtualnej
 Punkty końcowe usługi sieci wirtualnej zwiększają łączność sieci wirtualnej przez sieć szkieletową platformy Azure. Korzystając z reguł sieci wirtualnej, można włączyć serwer Azure Database for PostgreSQL, aby zezwalać na połączenia z wybranych podsieci w sieci wirtualnej. Aby uzyskać więcej informacji, zobacz [Omówienie punktu końcowego usługi sieci wirtualnej](concepts-data-access-and-security-vnet.md).
+
+### <a name="private-ip"></a>Prywatny adres IP
+Link prywatny umożliwia nawiązanie połączenia z Azure Database for PostgreSQL pojedynczym serwerem na platformie Azure za pośrednictwem prywatnego punktu końcowego. Link prywatny platformy Azure zasadniczo zapewnia usługi platformy Azure w ramach prywatnego Virtual Network (VNet). Dostęp do zasobów PaaS można uzyskać przy użyciu prywatnego adresu IP, podobnie jak w przypadku każdego innego zasobu w sieci wirtualnej. Aby uzyskać więcej informacji, zobacz [link prywatny — Omówienie](concepts-data-access-and-security-private-link.md)
 
 
 ## <a name="access-management"></a>Zarządzanie dostępem

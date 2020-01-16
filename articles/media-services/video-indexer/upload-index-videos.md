@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 12/03/2019
+ms.date: 01/14/2020
 ms.author: juliako
-ms.openlocfilehash: beb44c469aa8a03430cd5cb5a162966855aad448
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: c4c39dc53e492fd295cf30a7b7d75c933ebc912f
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74815400"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75972624"
 ---
 # <a name="upload-and-index-your-videos"></a>Przekazywanie i indeksowanie plików wideo  
 
@@ -40,6 +40,7 @@ Po przekazaniu wideo Video Indexer opcjonalnie koduje wideo (omówione w artykul
 - Adres URL podany w `videoURL` param musi być zakodowany.
 - Indeksowanie Media Services elementów zawartości ma takie samo ograniczenie jak indeksowanie z adresu URL.
 - W przypadku pojedynczego pliku Video Indexer ma maksymalny limit czasu trwania wynoszący 4 godziny.
+- Możesz przekazać do 60 filmów na minutę.
 
 > [!Tip]
 > Zalecane jest korzystanie z platformy .NET w wersji 4.6.2. lub nowszej, ponieważ starsze wersje platformy .NET nie obsługują domyślnie protokołu TLS 1.2.
@@ -313,7 +314,7 @@ Kody stanu wymienione w poniższej tabeli mogą być zwracane przez operację pr
 
 |Kod stanu|ErrorType (w treści odpowiedzi)|Opis|
 |---|---|---|
-|400|VIDEO_ALREADY_IN_PROGRESS|Ten sam plik wideo jest już w trakcie przetwarzania w ramach danego konta.|
+|409|VIDEO_INDEXING_IN_PROGRESS|Ten sam plik wideo jest już w trakcie przetwarzania w ramach danego konta.|
 |400|VIDEO_ALREADY_FAILED|Tego samego pliku wideo nie udało się przetworzyć w ramach danego konta mniej niż 2 godziny temu. Klienci interfejsu API powinni poczekać co najmniej 2 godziny przed ponownym przekazaniem pliku wideo.|
 
 ## <a name="next-steps"></a>Następne kroki

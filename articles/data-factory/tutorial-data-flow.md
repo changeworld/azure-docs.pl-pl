@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/07/2019
-ms.openlocfilehash: e686648680261e2d13707f1704c56f306c510397
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e6ca8007a96cc63b51b4f79b69029cbf0799e71c
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75439470"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979194"
 ---
 # <a name="transform-data-using-mapping-data-flows"></a>Przekształcanie danych przy użyciu mapowania przepływów danych
 
@@ -26,33 +26,33 @@ W tym samouczku wykonasz następujące czynności:
 > [!div class="checklist"]
 > * Tworzenie fabryki danych.
 > * Utwórz potok z działaniem przepływu danych.
-> * Kompiluj przepływ danych mapowania z czterema przekształceniami. 
+> * Kompiluj przepływ danych mapowania z czterema przekształceniami.
 > * Testowe uruchamianie potoku.
 > * Monitorowanie działania przepływu danych
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 * **Subskrypcja platformy Azure**. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto platformy Azure](https://azure.microsoft.com/free/).
-* **Konto usługi Azure Storage**. Magazyn ADLS jest używany jako magazyn danych *źródłowych* i *ujścia* . Jeśli nie masz konta magazynu, utwórz je, wykonując czynności przedstawione w artykule [Tworzenie konta magazynu platformy Azure](../storage/common/storage-quickstart-create-account.md).
+* **Konto usługi Azure Storage**. Magazyn ADLS jest używany jako magazyn danych *źródłowych* i *ujścia* . Jeśli nie masz konta magazynu, utwórz je, wykonując czynności przedstawione w artykule [Tworzenie konta magazynu platformy Azure](../storage/common/storage-account-create.md).
 
 Plik, który jest przekształcany w tym samouczku, to MoviesDB. csv, który można znaleźć [tutaj](https://raw.githubusercontent.com/djpmsft/adf-ready-demo/master/moviesDB.csv). Aby pobrać plik z usługi GitHub, skopiuj zawartość do wybranego edytora tekstu, aby zapisać ją lokalnie jako plik CSV. Aby przekazać plik do konta magazynu, zobacz [przekazywanie obiektów BLOB za pomocą witryny Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md). Przykłady odwołują się do kontenera o nazwie "przykładowe dane".
 
 ## <a name="create-a-data-factory"></a>Tworzenie fabryki danych
 
-W tym kroku utworzysz fabrykę danych i otworzysz środowisko Data Factory, aby utworzyć potok w fabryce danych. 
+W tym kroku utworzysz fabrykę danych i otworzysz środowisko Data Factory, aby utworzyć potok w fabryce danych.
 
 1. Otwórz przeglądarkę **Microsoft Edge** lub **Google Chrome**. Obecnie interfejs użytkownika Data Factory jest obsługiwany tylko w przeglądarkach sieci Web Microsoft Edge i Google Chrome.
-2. W menu po lewej stronie wybierz pozycję **Utwórz zasób** > **Analytics** > **Data Factory**: 
-  
+2. W menu po lewej stronie wybierz pozycję **Utwórz zasób** > **Analytics** > **Data Factory**:
+
    ![Wybór usługi Data Factory w okienku „Nowy”](./media/doc-common-process/new-azure-data-factory-menu.png)
 
-3. Na stronie **Nowa fabryka danych** w polu **Nazwa** wprowadź wartość **ADFTutorialDataFactory**. 
- 
+3. Na stronie **Nowa fabryka danych** w polu **Nazwa** wprowadź wartość **ADFTutorialDataFactory**.
+
    Nazwa fabryki danych platformy Azure musi być *globalnie unikatowa*. Jeśli zostanie wyświetlony komunikat o błędzie dotyczącym wartości nazwy, wprowadź inną nazwę dla fabryki danych. (na przykład Twojanazwaadftutorialdatafactory). Reguły nazewnictwa dla artefaktów usługi Data Factory można znaleźć w artykule [Data Factory — reguły nazewnictwa](naming-rules.md).
-        
+
      ![Nowa fabryka danych](./media/doc-common-process/name-not-available-error.png)
-4. Wybierz **subskrypcję** platformy Azure, w której chcesz utworzyć fabrykę danych. 
+4. Wybierz **subskrypcję** platformy Azure, w której chcesz utworzyć fabrykę danych.
 5. W obszarze **Grupa zasobów** wykonaj jedną z następujących czynności:
-     
+
     a. Wybierz pozycję **Użyj istniejącej**, a następnie wybierz istniejącą grupę zasobów z listy rozwijanej.
 
     b. Wybierz pozycję **Utwórz nową**, a następnie wprowadź nazwę grupy zasobów. 
@@ -60,7 +60,7 @@ W tym kroku utworzysz fabrykę danych i otworzysz środowisko Data Factory, aby 
     Informacje na temat grup zasobów znajdują się w artykule [Using resource groups to manage your Azure resources (Używanie grup zasobów do zarządzania zasobami platformy Azure)](../azure-resource-manager/management/overview.md). 
 6. W obszarze **Wersja** wybierz pozycję **V2**.
 7. W obszarze **Lokalizacja** wybierz lokalizację fabryki danych. Na liście rozwijanej są wyświetlane tylko obsługiwane lokalizacje. Magazyny danych (np. usługi Azure Storage i SQL Database) i obliczenia (na przykład usługa Azure HDInsight) używane przez fabrykę danych mogą znajdować się w innych regionach.
-8. Wybierz pozycję **Utwórz**. 
+8. Wybierz pozycję **Utwórz**.
 9. Po zakończeniu tworzenia zobaczysz powiadomienie w centrum powiadomień. Wybierz pozycję **Przejdź do zasobu** , aby przejść do strony Fabryka danych.
 10. Wybierz pozycję **Tworzenie i monitorowanie**, aby uruchomić interfejs użytkownika usługi Data Factory na osobnej karcie.
 
@@ -68,7 +68,7 @@ W tym kroku utworzysz fabrykę danych i otworzysz środowisko Data Factory, aby 
 
 W tym kroku utworzysz potok zawierający działanie przepływu danych.
 
-1. Na stronie **Zaczynajmy** wybierz pozycję **Utwórz potok**. 
+1. Na stronie **Zaczynajmy** wybierz pozycję **Utwórz potok**.
 
    ![Tworzenie potoku](./media/doc-common-process/get-started-page.png)
 
@@ -91,7 +91,7 @@ Po utworzeniu przepływu danych zostanie on automatycznie wysłany do kanwy prze
 
     ![Kanwa przepływu danych](media/tutorial-data-flow/dataflow2.png)
 1. Nadaj nazwę źródłową **MoviesDB**. Kliknij pozycję **Nowy** , aby utworzyć nowy źródłowy zestaw danych.
-    
+
     ![Kanwa przepływu danych](media/tutorial-data-flow/dataflow3.png)
 1. Wybierz **Azure Data Lake Storage Gen2**. Kliknij przycisk Kontynuuj.
 
@@ -109,16 +109,16 @@ Po utworzeniu przepływu danych zostanie on automatycznie wysłany do kanwy prze
 
     ![Zestawy danych](media/tutorial-data-flow/dataset4.png)
 1. Jeśli klaster debugowania został uruchomiony, przejdź do karty **Podgląd danych** transformacji źródłowej i kliknij przycisk **Odśwież** , aby uzyskać migawkę danych. Możesz użyć podglądu danych, aby sprawdzić, czy transformacja została prawidłowo skonfigurowana.
-    
+
     ![Kanwa przepływu danych](media/tutorial-data-flow/dataflow4.png)
 1. Kliknij ikonę znaku plus, aby dodać nową transformację obok węzła źródłowego na kanwie przepływu danych. Pierwszy dodawany przekształcenie to **Filtr**.
-    
+
     ![Kanwa przepływu danych](media/tutorial-data-flow/dataflow5.png)
-1. Nazwij transformację filtru **FilterYears**. Kliknij pole wyrażenia obok pola **Filtr** , aby otworzyć Konstruktora wyrażeń. W tym miejscu określisz warunek filtrowania. 
-    
+1. Nazwij transformację filtru **FilterYears**. Kliknij pole wyrażenia obok pola **Filtr** , aby otworzyć Konstruktora wyrażeń. W tym miejscu określisz warunek filtrowania.
+
     ![Filtr](media/tutorial-data-flow/filter1.png)
 1. Konstruktor wyrażeń przepływu danych umożliwia interaktywną kompilację wyrażeń do użycia w różnych przekształceniach. Wyrażenia mogą zawierać wbudowane funkcje, kolumny ze schematu wejściowego i parametry zdefiniowane przez użytkownika. Aby uzyskać więcej informacji na temat sposobu kompilowania wyrażeń, zobacz [Data Flow Expression Builder](concepts-data-flow-expression-builder.md).
-    
+
     W tym samouczku zawarto filtrowanie filmów z gatunku komedia, które zostały dostarczone między latami 1910 i 2000. Jako rok jest obecnie ciągiem, należy przekonwertować go na liczbę całkowitą przy użyciu funkcji ```toInteger()```. Użyj opcji "większe niż lub równe" (> =) i mniejszej niż lub równej operatorowi (< =) do porównania z wartościami w postaci literału Year 1910 i 200-. Sumuj te wyrażenia razem z operatorem i (& &). Wyrażenie jest dostępne jako:
 
     ```toInteger(year) >= 1910 && toInteger(year) <= 2000```
@@ -128,38 +128,38 @@ Po utworzeniu przepływu danych zostanie on automatycznie wysłany do kanwy prze
     ```toInteger(year) >= 1910 && toInteger(year) <= 2000 && rlike(genres, 'Comedy')```
 
     Jeśli klaster debugowania jest aktywny, można sprawdzić logikę, klikając przycisk **Odśwież** , aby wyświetlić dane wyjściowe wyrażenia w porównaniu z używanymi danymi wejściowymi. Istnieje więcej niż jedna odpowiedź, na którą można wykonać tę logikę przy użyciu języka wyrażeń przepływu danych.
-    
+
     ![Filtr](media/tutorial-data-flow/filter2.png)
 
     Kliknij przycisk **Zapisz i Zakończ,** gdy skończysz pracę z wyrażeniem.
 
 1. Pobierz **Podgląd danych** , aby sprawdzić, czy filtr działa poprawnie.
-    
+
     ![Filtr](media/tutorial-data-flow/filter3.png)
 1. Kolejną przekształceniem, który dodasz, jest transformacja **zagregowana** w obszarze **modyfikator schematu**.
-    
+
     ![Agregacja](media/tutorial-data-flow/agg1.png)
 1. Nazwij **AggregateComedyRatings**przekształcenia agregacji. Na karcie **Grupuj według** wybierz z listy rozwijanej pozycję **Year** , aby grupować agregacje według roku, w którym znajduje się film.
-    
+
     ![Agregacja](media/tutorial-data-flow/agg2.png)
 1. Przejdź do karty **agregaty** . W lewym polu tekstowym nadaj kolumnie agregującej **AverageComedyRating**. Kliknij pole wyrażenia z prawej strony, aby wprowadzić wyrażenie agregujące za pośrednictwem konstruktora wyrażeń.
-    
+
     ![Agregacja](media/tutorial-data-flow/agg3.png)
 1. Aby uzyskać średnią **klasyfikację**kolumn, użyj ```avg()``` funkcji agregującej. Ponieważ **Klasyfikacja** jest ciągiem, a ```avg()``` przyjmuje numeryczne dane wejściowe, należy przekonwertować wartość na liczbę za pośrednictwem funkcji ```toInteger()```. To wyrażenie wygląda następująco:
 
     ```avg(toInteger(Rating))```
-    
-    Po zakończeniu kliknij przycisk **Zapisz i Zakończ** . 
+
+    Po zakończeniu kliknij przycisk **Zapisz i Zakończ** .
 
     ![Agregacja](media/tutorial-data-flow/agg4.png)
 1. Przejdź do karty **Podgląd danych** , aby wyświetlić dane wyjściowe transformacji. Zwróć uwagę na to, że w tym miejscu są dostępne tylko dwie kolumny — **Year** i **AverageComedyRating**.
-    
+
     ![Agregacja](media/tutorial-data-flow/agg3.png)
 1. Następnie chcesz dodać transformację **ujścia** w **miejscu docelowym**.
-    
+
     ![Ujście](media/tutorial-data-flow/sink1.png)
 1. Nazwij **ujścia**ujścia. Kliknij pozycję **Nowy** , aby utworzyć zestaw danych ujścia.
-    
+
     ![Ujście](media/tutorial-data-flow/sink2.png)
 1. Wybierz **Azure Data Lake Storage Gen2**. Kliknij przycisk Kontynuuj.
 
@@ -168,7 +168,7 @@ Po utworzeniu przepływu danych zostanie on automatycznie wysłany do kanwy prze
 
     ![Zestaw danych](media/tutorial-data-flow/dataset2.png)
 1. Nazwij swój zestaw danych ujścia **MoviesSink**. W polu połączona usługa wybierz połączoną usługę ADLS Gen2 utworzoną w kroku 6. Wprowadź folder wyjściowy, w którym mają zostać zapisane dane. W tym samouczku zapisujemy do folderu "output" w kontenerze "przykładowe dane". Folder nie musi istnieć wcześniej i może być tworzony dynamicznie. Ustaw **pierwszy wiersz jako nagłówek** jako wartość true, a następnie wybierz pozycję **Brak** dla **schematu importowania**. Kliknij przycisk Zakończ.
-    
+
     ![Ujście](media/tutorial-data-flow/sink3.png)
 
 Teraz zakończono Kompilowanie przepływu danych. Wszystko jest gotowe do uruchomienia w potoku.
@@ -178,16 +178,16 @@ Teraz zakończono Kompilowanie przepływu danych. Wszystko jest gotowe do urucho
 Można debugować potok przed jego opublikowaniem. W tym kroku wywołajesz przebieg debugowania potoku przepływu danych. Gdy Podgląd danych nie zapisuje danych, uruchomienie debugowania spowoduje zapisanie danych w miejscu docelowym ujścia.
 
 1. Przejdź do kanwy potoku. Kliknij pozycję **Debuguj** , aby wyzwolić uruchomienie debugowania.
-    
+
     ![Potok](media/tutorial-data-flow/pipeline1.png)
 1. Debugowanie potoku działań przepływu danych korzysta z aktywnego klastra debugowania, ale nadal trwa co najmniej minutę. Postęp można śledzić za pomocą karty **dane wyjściowe** . Po pomyślnym uruchomieniu kliknij ikonę okularów, aby otworzyć okienko monitorowanie.
-    
+
     ![Potok](media/tutorial-data-flow/pipeline2.png)
 1. W okienku Monitorowanie można zobaczyć liczbę wierszy i czas spędzony w każdym kroku transformacji.
-    
+
     ![Monitorowanie](media/tutorial-data-flow/pipeline3.png)
 1. Kliknij transformację, aby uzyskać szczegółowe informacje na temat kolumn i partycjonowania danych.
-    
+
     ![Monitorowanie](media/tutorial-data-flow/pipeline4.png)
 
 Jeśli wykonano ten samouczek poprawnie, należy napisać 83 wierszy i 2 kolumny w folderze ujścia. Możesz sprawdzić, czy dane są poprawne, sprawdzając magazyn obiektów BLOB.
@@ -199,7 +199,7 @@ Potok w tym samouczku służy do uruchamiania przepływu danych, który agreguje
 > [!div class="checklist"]
 > * Tworzenie fabryki danych.
 > * Utwórz potok z działaniem przepływu danych.
-> * Kompiluj przepływ danych mapowania z czterema przekształceniami. 
+> * Kompiluj przepływ danych mapowania z czterema przekształceniami.
 > * Testowe uruchamianie potoku.
 > * Monitorowanie działania przepływu danych
 

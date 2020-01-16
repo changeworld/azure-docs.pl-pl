@@ -8,14 +8,14 @@ ms.topic: article
 ms.date: 01/15/2017
 ms.author: twooley
 ms.subservice: common
-ms.openlocfilehash: 19614570369e3814658f9ca6e50635507f094712
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 35236a95e691d6f7d0444a038e62116a684965a7
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977322"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978460"
 ---
-# <a name="using-the-azure-importexport-tool"></a>Korzystanie z narzędzia Azure Import/Export 
+# <a name="using-the-azure-importexport-tool"></a>Korzystanie z narzędzia Azure Import/Export
 
 Narzędzie Azure Import/Export (WAImportExport. exe) służy do tworzenia zadań i zarządzania nimi w usłudze Azure Import/Export, co umożliwia Transferowanie dużych ilości danych do i z usługi Azure Blob Storage.
 
@@ -25,10 +25,10 @@ W poniższych artykułach pokazano, jak:
 
 - Zainstaluj i skonfiguruj narzędzie Azure Import/Export.
 - Przygotuj dyski twarde w celu zaimportowania danych z dysków do usługi Azure Blob Storage.
-- Sprawdź stan zadania za pomocą plików dziennika kopiowania. 
-- Naprawianie zadania importu. 
-- Naprawianie zadania eksportu. 
-- Rozwiązywanie problemów z narzędziem Azure Import/Export. 
+- Sprawdź stan zadania za pomocą plików dziennika kopiowania.
+- Naprawianie zadania importu.
+- Naprawianie zadania eksportu.
+- Rozwiązywanie problemów z narzędziem Azure Import/Export.
 
 ## <a name="next-steps"></a>Następne kroki
 

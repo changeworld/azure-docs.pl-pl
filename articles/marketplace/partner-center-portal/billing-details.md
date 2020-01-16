@@ -7,22 +7,22 @@ ms.author: evansma
 ms.service: marketplace
 ms.topic: guide
 ms.date: 12/12/2019
-ms.openlocfilehash: 0fda04bbfa632f429539ddc0ad90941cb645226b
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: a483f143b70a4969114c078b3b0a6f960c4b6b41
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75934642"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75976079"
 ---
-# <a name="commercial-marketplace-billing"></a>Komercyjne rozliczenia w portalu Marketplace 
+# <a name="commercial-marketplace-billing"></a>Komercyjne rozliczenia w portalu Marketplace
 
 W tym artykule omówiono tematy związane z handlem dla komercyjnego portalu Marketplace:
 
-- [Opcje publikowania witryny Marketplace](#marketplace-publishing-options) 
+- [Opcje publikowania witryny Marketplace](#marketplace-publishing-options)
 - [Ogólne omówienie języka Transact](#transact-general-overview)
 - [Modele rozliczeń Transact](#transact-billing-models)
 
-## <a name="marketplace-publishing-options"></a>Opcje publikowania witryny Marketplace 
+## <a name="marketplace-publishing-options"></a>Opcje publikowania witryny Marketplace
 
 Komercyjne witryny Marketplace oferują kilka opcji publikowania dla wydawców.
 
@@ -36,9 +36,9 @@ Oprócz opcji publikowania listy i wersji próbnej opcja publikacji Transact jes
 
 ## <a name="transact-general-overview"></a>Ogólne omówienie języka Transact
 
-W przypadku korzystania z opcji publikowania Transact firma Microsoft umożliwia sprzedaż oprogramowania innych firm oraz wdrażanie niektórych typów ofert do subskrypcji platformy Azure klienta. W przypadku wybrania modelu rozliczeń i typu oferty Wydawca musi rozważyć rozliczenie opłat za infrastrukturę oraz własne opłaty za korzystanie z licencjonowania oprogramowania. 
+W przypadku korzystania z opcji publikowania Transact firma Microsoft umożliwia sprzedaż oprogramowania innych firm oraz wdrażanie niektórych typów ofert do subskrypcji platformy Azure klienta. W przypadku wybrania modelu rozliczeń i typu oferty Wydawca musi rozważyć rozliczenie opłat za infrastrukturę oraz własne opłaty za korzystanie z licencjonowania oprogramowania.
 
-Opcja publikowania Transact jest obecnie obsługiwana dla następujących typów ofert: maszyn wirtualnych, aplikacji platformy Azure i aplikacji SaaS. 
+Opcja publikowania Transact jest obecnie obsługiwana dla następujących typów ofert: maszyn wirtualnych, aplikacji platformy Azure i aplikacji SaaS.
 
 ![Język Transact w portalu Azure Marketplace](./media/transact-amp.png)
 

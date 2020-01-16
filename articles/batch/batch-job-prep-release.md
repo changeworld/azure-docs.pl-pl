@@ -3,7 +3,7 @@ title: Utwórz zadania w celu przygotowania zadań i ukończenia zadań w węzł
 description: Zadania przygotowania na poziomie zadania umożliwiają minimalizowanie transferu danych do Azure Batch węzłów obliczeniowych oraz wykonywanie zadań do wyczyszczenia węzła podczas ukończenia zadania.
 services: batch
 documentationcenter: .net
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 editor: ''
 ms.assetid: 63d9d4f1-8521-4bbb-b95a-c4cad73692d3
@@ -12,14 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 02/27/2017
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: seodec18
-ms.openlocfilehash: 2dbdbc8b13a75b72ca09a319c6925d0835a52e13
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 7c5c9dfcaa88b35e14cf5d56b01b4e364c856600
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70095131"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76027117"
 ---
 # <a name="run-job-preparation-and-job-release-tasks-on-batch-compute-nodes"></a>Uruchamianie zadań przygotowania i zwolnienia zadań w węzłach obliczeniowych wsadowych
 
@@ -80,7 +80,7 @@ Zadania wydania zadań mogą działać przez maksymalnie 15 minut, zanim zostan�
 ## <a name="job-prep-and-release-tasks-with-batch-net"></a>Zadania przygotowania i zwolnienia zadań za pomocą programu Batch .NET
 Aby użyć zadania przygotowania zadania, przypisz obiekt [JobPreparationTask][net_job_prep] do właściwości [CloudJob. JobPreparationTask][net_job_prep_cloudjob] zadania. Podobnie zainicjuj [funkcji jobreleasetask][net_job_release] i przypisz go do właściwości [CloudJob. funkcji jobreleasetask][net_job_prep_cloudjob] zadania, aby ustawić zadanie zwolnienia zadania.
 
-W tym fragmencie `myBatchClient` kodu jest wystąpienie elementu [BatchClient][net_batch_client]i `myPool` jest istniejącą pulą w ramach konta wsadowego.
+W tym fragmencie kodu `myBatchClient` jest wystąpieniem [BatchClient][net_batch_client], a `myPool` jest istniejącą pulą w ramach konta wsadowego.
 
 ```csharp
 // Create the CloudJob for CloudPool "myPool"

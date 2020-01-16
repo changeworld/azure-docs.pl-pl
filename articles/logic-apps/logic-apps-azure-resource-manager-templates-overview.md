@@ -6,18 +6,18 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 07/25/2019
-ms.openlocfilehash: 000271095530e269472fba4bc5f1c5563aa16ff9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 41410d4e534d0940050521ecc86e8a384566f439
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428818"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75972699"
 ---
 # <a name="overview-automate-deployment-for-azure-logic-apps-by-using-azure-resource-manager-templates"></a>Przegląd: Automatyzowanie wdrażania Azure Logic Apps przy użyciu szablonów Azure Resource Manager
 
 Gdy wszystko jest gotowe do automatyzowania tworzenia i wdrażania aplikacji logiki, można rozszerzyć podstawową definicję przepływu pracy aplikacji logiki do [szablonu Azure Resource Manager](../azure-resource-manager/management/overview.md). Ten szablon definiuje infrastrukturę, zasoby, parametry i inne informacje o aprowizacji i wdrażaniu aplikacji logiki. Definiując parametry dla wartości, które różnią się w zależności od wdrożenia, znanego również jako *parametryzacja*, można wielokrotnie i spójnie wdrażać aplikacje logiki na podstawie różnych potrzeb związanych z wdrażaniem.
 
-Na przykład w przypadku wdrażania w środowiskach na potrzeby programowania, testowania i produkcji można używać różnych parametrów połączenia dla każdego środowiska. Można zadeklarować parametry szablonu, które przyjmują różne parametry połączenia, a następnie przechowywać te ciągi w osobnym [pliku parametrów](../azure-resource-manager/templates/parameter-files.md). Dzięki temu można zmienić te wartości bez konieczności aktualizacji i ponownego wdrożenia szablonu. W scenariuszach, w których znajdują się wartości parametrów, które są poufne lub muszą być zabezpieczone, takie jak hasła i wpisy tajne, można przechowywać te wartości w [Azure Key Vault](../azure-resource-manager/resource-manager-keyvault-parameter.md) i mieć pliki parametrów pobierają te wartości. Jednak w tych scenariuszach wdrożenie zostanie wdrożone ponownie w celu pobrania bieżących wartości.
+Na przykład w przypadku wdrażania w środowiskach na potrzeby programowania, testowania i produkcji można używać różnych parametrów połączenia dla każdego środowiska. Można zadeklarować parametry szablonu, które przyjmują różne parametry połączenia, a następnie przechowywać te ciągi w osobnym [pliku parametrów](../azure-resource-manager/templates/parameter-files.md). Dzięki temu można zmienić te wartości bez konieczności aktualizacji i ponownego wdrożenia szablonu. W scenariuszach, w których znajdują się wartości parametrów, które są poufne lub muszą być zabezpieczone, takie jak hasła i wpisy tajne, można przechowywać te wartości w [Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md) i mieć pliki parametrów pobierają te wartości. Jednak w tych scenariuszach wdrożenie zostanie wdrożone ponownie w celu pobrania bieżących wartości.
 
 W tym omówieniu opisano atrybuty w Menedżer zasobów szablon, który zawiera definicję przepływu pracy aplikacji logiki. Zarówno szablon, jak i definicja przepływu pracy używają składni JSON, ale istnieją pewne różnice, ponieważ definicja przepływu pracy jest również zgodna ze [schematem języka definicji przepływu pracy](../logic-apps/logic-apps-workflow-definition-language.md). Na przykład wyrażenia szablonów i wyrażenia definicji przepływu pracy różnią się w [odniesieniu do parametrów](#parameter-references) i wartości, które mogą być akceptowane.
 
@@ -31,8 +31,8 @@ Przykładowa aplikacja logiki w tym temacie używa [wyzwalacza programu Outlook 
 Aby uzyskać więcej informacji na temat szablonów Menedżer zasobów, zobacz następujące tematy:
 
 * [Struktura i składnia szablonu Azure Resource Manager](../azure-resource-manager/templates/template-syntax.md)
-* [Najlepsze rozwiązania dotyczące szablonów usługi Azure Resource Manager](../azure-resource-manager/template-best-practices.md)
-* [Opracowywanie szablonów usługi Azure Resource Manager pozwalających zachować spójność w chmurze](../azure-resource-manager/templates-cloud-consistency.md)
+* [Najlepsze rozwiązania dotyczące szablonów usługi Azure Resource Manager](../azure-resource-manager/templates/template-best-practices.md)
+* [Opracowywanie szablonów usługi Azure Resource Manager pozwalających zachować spójność w chmurze](../azure-resource-manager/templates/templates-cloud-consistency.md)
 
 Przykładowe szablony aplikacji logiki można znaleźć w następujących przykładach:
 
@@ -149,7 +149,7 @@ Aby zabezpieczyć parametry szablonu, zobacz następujące tematy:
 
 * [Zalecenia dotyczące zabezpieczeń dla parametrów szablonu](../azure-resource-manager/templates/template-best-practices.md#parameters)
 * [Parametry bezpiecznego szablonu](../logic-apps/logic-apps-securing-a-logic-app.md#secure-parameters-deployment-template)
-* [Przekazywanie bezpiecznych wartości parametrów za pomocą Azure Key Vault](../azure-resource-manager/resource-manager-keyvault-parameter.md)
+* [Przekazywanie bezpiecznych wartości parametrów za pomocą Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md)
 
 Inne obiekty szablonu często odwołują się do parametrów szablonu, dzięki czemu mogą korzystać z wartości, które przechodzą przez parametry szablonu, na przykład:
 
@@ -173,7 +173,7 @@ Poniżej przedstawiono niektóre najlepsze rozwiązania dotyczące definiowania 
 
   * [Parametry bezpiecznego szablonu](../logic-apps/logic-apps-securing-a-logic-app.md#secure-parameters-deployment-template)
 
-  * [Przekazywanie bezpiecznych wartości parametrów za pomocą Azure Key Vault](../azure-resource-manager/resource-manager-keyvault-parameter.md)
+  * [Przekazywanie bezpiecznych wartości parametrów za pomocą Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md)
 
 * Aby rozróżnić nazwy parametrów szablonu od nazw parametrów definicji przepływu pracy, można użyć opisowych nazw parametrów szablonu, na przykład: `TemplateFabrikamPassword`
 
@@ -188,7 +188,7 @@ Aby podać wartości parametrów szablonu, Zapisz te wartości w [pliku parametr
 * Nazwa pliku szablonu aplikacji logiki: **<*logiki-App-Name*>. JSON**
 * Nazwa pliku parametrów: **<*Logic-App-Name*>. Parameters. JSON**
 
-Poniżej znajduje się struktura wewnątrz pliku parametrów, która zawiera odwołanie do magazynu kluczy w celu [przekazania bezpiecznej wartości parametru Azure Key Vault](../azure-resource-manager/resource-manager-keyvault-parameter.md):
+Poniżej znajduje się struktura wewnątrz pliku parametrów, która zawiera odwołanie do magazynu kluczy w celu [przekazania bezpiecznej wartości parametru Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md):
 
 ```json
 {
@@ -409,7 +409,7 @@ Ta składnia pokazuje, gdzie można zadeklarować parametry na poziomach definic
 
 Dla parametru definicji przepływu pracy, który obsługuje informacje poufne, hasła, klucze dostępu lub wpisy tajne w środowisku uruchomieniowym, należy zadeklarować lub edytować parametr, aby użyć `securestring` lub `secureobject` typu parametru. Można odwołać się do tego parametru w obrębie i w ramach definicji przepływu pracy. Na najwyższego poziomu szablonu Zadeklaruj parametr, który ma ten sam typ, aby obsłużyć te informacje podczas wdrażania.
 
-Aby ustawić wartość parametru definicji przepływu pracy, użyj obiektu `parameters`, który znajduje się *poza* definicją przepływu pracy, ale nadal *wewnątrz* definicji zasobu aplikacji logiki, aby odwołać się do parametru szablonu. Na koniec, aby przekazać wartość do parametru szablonu podczas wdrażania, należy przechowywać tę wartość w [Azure Key Vault](../azure-resource-manager/resource-manager-keyvault-parameter.md) i odwołać się do tego magazynu kluczy w [pliku parametrów](#template-parameter-files) , który jest używany przez szablon podczas wdrażania.
+Aby ustawić wartość parametru definicji przepływu pracy, użyj obiektu `parameters`, który znajduje się *poza* definicją przepływu pracy, ale nadal *wewnątrz* definicji zasobu aplikacji logiki, aby odwołać się do parametru szablonu. Na koniec, aby przekazać wartość do parametru szablonu podczas wdrażania, należy przechowywać tę wartość w [Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md) i odwołać się do tego magazynu kluczy w [pliku parametrów](#template-parameter-files) , który jest używany przez szablon podczas wdrażania.
 
 Ten przykładowy szablon pokazuje, jak można wykonać te zadania, definiując zabezpieczone parametry w razie potrzeby, aby można było przechowywać ich wartości w Azure Key Vault:
 
@@ -558,7 +558,7 @@ Aby upewnić się, że projektant aplikacji logiki może poprawnie pokazać para
 
   * [Zalecenia dotyczące zabezpieczeń parametrów w definicjach przepływu pracy](../logic-apps/logic-apps-securing-a-logic-app.md#secure-parameters-workflow)
 
-  * [Przekazywanie bezpiecznych wartości parametrów za pomocą Azure Key Vault](../azure-resource-manager/resource-manager-keyvault-parameter.md)
+  * [Przekazywanie bezpiecznych wartości parametrów za pomocą Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md)
 
 Aby uzyskać więcej informacji na temat parametrów definicji przepływu pracy, zobacz [Parameters-Workflow Definition Language](../logic-apps/logic-apps-workflow-definition-language.md#parameters).
 
@@ -652,7 +652,7 @@ Definicja zasobu aplikacji logiki działa również z definicjami zasobów poł�
 
 * *Poza* definicją przepływu pracy, ale nadal *wewnątrz* definicji zasobu aplikacji logiki, inny obiekt `parameters` ustawia wartości do użycia w czasie wykonywania dla parametru `$connections` przez odwołanie do odpowiednich parametrów szablonu. Te wartości używają wyrażeń szablonu do odwoływania się do zasobów, które bezpiecznie przechowują metadane dla połączeń w aplikacji logiki.
 
-  Na przykład metadane mogą zawierać parametry połączenia i tokeny dostępu, które można przechowywać w [Azure Key Vault](../azure-resource-manager/resource-manager-keyvault-parameter.md). Aby przekazać te wartości do parametrów szablonu, należy odwołać się do tego magazynu kluczy w [pliku parametrów](#template-parameter-files) , który jest używany przez szablon podczas wdrażania. Aby uzyskać więcej informacji na temat różnic w parametrach odwołań, zobacz [odwołania do parametrów](#parameter-references) w dalszej części tego tematu.
+  Na przykład metadane mogą zawierać parametry połączenia i tokeny dostępu, które można przechowywać w [Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md). Aby przekazać te wartości do parametrów szablonu, należy odwołać się do tego magazynu kluczy w [pliku parametrów](#template-parameter-files) , który jest używany przez szablon podczas wdrażania. Aby uzyskać więcej informacji na temat różnic w parametrach odwołań, zobacz [odwołania do parametrów](#parameter-references) w dalszej części tego tematu.
 
   Po otwarciu definicji przepływu pracy aplikacji logiki w widoku kodu za pomocą Azure Portal lub Visual Studio, obiekt `$connections` pojawia się poza definicją przepływu pracy, ale na tym samym poziomie. Takie porządkowanie w widoku kodu sprawia, że te parametry są łatwiejsze do odwołania podczas ręcznego aktualizowania definicji przepływu pracy:
 
@@ -744,7 +744,7 @@ W tym przykładzie przedstawiono interakcje między definicją zasobu aplikacji 
 
 ### <a name="secure-connection-parameters"></a>Parametry bezpiecznego połączenia
 
-Dla parametru połączenia, który obsługuje informacje poufne, hasła, klucze dostępu lub wpisy tajne, definicja zasobu połączenia zawiera obiekt `parameterValues`, który określa te wartości w formacie pary nazwa-wartość. Aby ukryć te informacje, można zadeklarować lub edytować parametry szablonu dla tych wartości przy użyciu typów parametrów `securestring` lub `secureobject`. Następnie można przechowywać te informacje w [Azure Key Vault](../azure-resource-manager/resource-manager-keyvault-parameter.md). Aby przekazać te wartości do parametrów szablonu, należy odwołać się do tego magazynu kluczy w [pliku parametrów](#template-parameter-files) , który jest używany przez szablon podczas wdrażania.
+Dla parametru połączenia, który obsługuje informacje poufne, hasła, klucze dostępu lub wpisy tajne, definicja zasobu połączenia zawiera obiekt `parameterValues`, który określa te wartości w formacie pary nazwa-wartość. Aby ukryć te informacje, można zadeklarować lub edytować parametry szablonu dla tych wartości przy użyciu typów parametrów `securestring` lub `secureobject`. Następnie można przechowywać te informacje w [Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md). Aby przekazać te wartości do parametrów szablonu, należy odwołać się do tego magazynu kluczy w [pliku parametrów](#template-parameter-files) , który jest używany przez szablon podczas wdrażania.
 
 Oto przykład, który zawiera nazwę konta i klucz dostępu dla połączenia usługi Azure Blob Storage:
 
@@ -1011,7 +1011,7 @@ Aby uzyskać więcej informacji na temat pracy z jednostkami usługi, zobacz nas
 
 ## <a name="references-to-parameters"></a>Odwołania do parametrów
 
-Aby odwołać się do parametrów szablonu, można użyć wyrażeń szablonu z [funkcjami szablonu](../azure-resource-manager/resource-group-template-functions.md), które są oceniane podczas wdrażania. Wyrażenia szablonu używają nawiasów kwadratowych ( **[]** ):
+Aby odwołać się do parametrów szablonu, można użyć wyrażeń szablonu z [funkcjami szablonu](../azure-resource-manager/templates/template-functions.md), które są oceniane podczas wdrażania. Wyrażenia szablonu używają nawiasów kwadratowych ( **[]** ):
 
 `"<attribute-name>": "[parameters('<template-parameter-name>')]"`
 

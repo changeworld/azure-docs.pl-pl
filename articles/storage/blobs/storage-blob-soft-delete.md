@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 15db96824336c92611b9e1113c42c621f6508744
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: f0db35e188aeca4de7b74d6c3e4dfc45b349279a
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978121"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75972723"
 ---
 # <a name="soft-delete-for-azure-storage-blobs"></a>Usuwanie nietrwałe dla obiektów BLOB usługi Azure Storage
 
@@ -68,7 +68,7 @@ Kiedy **obiekt BLOB Delete** jest wywoływany na bazowym obiekcie BLOB (dowolny 
 > [!NOTE]  
 > Po nadpisaniu nietrwałego usuniętego obiektu BLOB nietrwała usunięta migawka stanu obiektu BLOB przed operacją zapisu jest generowana automatycznie. Nowy obiekt BLOB dziedziczy warstwę nadpisywanego obiektu BLOB.
 
-Usuwanie nietrwałe nie zapisuje danych w przypadku usuwania kontenerów lub kont, a także gdy metadane obiektów blob i właściwości obiektu BLOB są zastępowane. Aby chronić konto magazynu przed błędnym usunięciem, można skonfigurować blokadę przy użyciu Azure Resource Manager. Zapoznaj się z artykułem Azure Resource Manager [Zablokuj zasoby, aby zapobiec nieoczekiwanym zmianom](../../azure-resource-manager/resource-group-lock-resources.md) .
+Usuwanie nietrwałe nie zapisuje danych w przypadku usuwania kontenerów lub kont, a także gdy metadane obiektów blob i właściwości obiektu BLOB są zastępowane. Aby chronić konto magazynu przed błędnym usunięciem, można skonfigurować blokadę przy użyciu Azure Resource Manager. Zapoznaj się z artykułem Azure Resource Manager [Zablokuj zasoby, aby zapobiec nieoczekiwanym zmianom](../../azure-resource-manager/management/lock-resources.md) .
 
 W poniższej tabeli przedstawiono oczekiwane zachowanie podczas włączania usuwania nietrwałego:
 
@@ -82,7 +82,7 @@ W poniższej tabeli przedstawiono oczekiwane zachowanie podczas włączania usuw
 | [Umieść blok](/rest/api/storageservices/put-block) | Obiekty BLOB typu Block | Tworzy nowy blok, który ma zostać przekazany jako część blokowego obiektu BLOB. | Jeśli używany do zatwierdzania bloku do obiektu BLOB, który jest aktywny, nie ma zmian. Jeśli jest używany do zatwierdzania bloku do obiektu BLOB, który jest usuwany nietrwale, tworzony jest nowy obiekt BLOB, a migawka jest generowana automatycznie w celu przechwycenia stanu nietrwałego usuniętego obiektu BLOB. |
 | [Umieść listę zablokowanych](/rest/api/storageservices/put-block-list) | Obiekty BLOB typu Block | Zatwierdza obiekt BLOB przez określenie zestawu identyfikatorów bloków, które składają się na blokowy obiekt BLOB. | Jeśli jest używany do zastępowania istniejącego obiektu BLOB, automatycznie generowana jest migawka stanu obiektu BLOB przed wywołaniem. Dotyczy to również poprzednio nietrwałego usuniętego obiektu BLOB, jeśli i tylko wtedy, gdy jest to blokowy obiekt BLOB. Jeśli zostanie on zastąpiony przez obiekt BLOB innego typu, wszystkie istniejące nietrwałe dane usunięte zostaną trwale wygasłe. |
 | [Umieść stronę](/rest/api/storageservices/put-page) | Page Blobs | Zapisuje zakres stron na stronie obiektu BLOB. | Bez zmian. Dane stronicowego obiektu BLOB zastępowane lub wyczyszczone przy użyciu tej operacji nie zostały zapisane i nie są możliwe do odzyskania. |
-| [Dołącz blok](/rest/api/storageservices/append-block) | Obiekty blob dołączania | Zapisuje blok danych na końcu dołączanego obiektu BLOB | Bez zmian. |
+| [Dołącz blok](/rest/api/storageservices/append-block) | Uzupełnialne obiekty Blob | Zapisuje blok danych na końcu dołączanego obiektu BLOB | Bez zmian. |
 | [Ustawianie właściwości obiektu BLOB](/rest/api/storageservices/set-blob-properties) | Blokowe, dołączanie i stronicowe obiekty blob | Ustawia wartości dla właściwości systemu zdefiniowanych dla obiektu BLOB. | Bez zmian. Nie da się odzyskać właściwości obiektu BLOB z zastępowaniem. |
 | [Ustawianie metadanych obiektu BLOB](/rest/api/storageservices/set-blob-metadata) | Blokowe, dołączanie i stronicowe obiekty blob | Ustawia metadane zdefiniowane przez użytkownika dla określonego obiektu BLOB jako jedną lub więcej par nazwa-wartość. | Bez zmian. Nie ma możliwości odzyskania nadpisanych metadanych obiektów BLOB. |
 
@@ -335,7 +335,7 @@ Tak, usuwanie nietrwałe można skonfigurować dla istniejących i nowych kont m
 
 ### <a name="if-i-delete-an-entire-account-or-container-with-soft-delete-turned-on-will-all-associated-blobs-be-saved"></a>Czy usunięcie całego konta lub kontenera z włączonym usuwaniem nietrwałego spowoduje zapisanie wszystkich skojarzonych obiektów BLOB?
 
-Nie, jeśli usuniesz całe konto lub kontener, wszystkie skojarzone obiekty blob zostaną trwale usunięte. Aby uzyskać więcej informacji na temat ochrony konta magazynu przed przypadkowym usunięciem, zobacz [blokowanie zasobów, aby zapobiec nieoczekiwanym zmianom](../../azure-resource-manager/resource-group-lock-resources.md).
+Nie, jeśli usuniesz całe konto lub kontener, wszystkie skojarzone obiekty blob zostaną trwale usunięte. Aby uzyskać więcej informacji na temat ochrony konta magazynu przed przypadkowym usunięciem, zobacz [blokowanie zasobów, aby zapobiec nieoczekiwanym zmianom](../../azure-resource-manager/management/lock-resources.md).
 
 ### <a name="can-i-view-capacity-metrics-for-deleted-data"></a>Czy można wyświetlić metryki pojemności dla usuniętych danych?
 

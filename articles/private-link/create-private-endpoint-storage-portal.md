@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 96edbd62dcb95fa8f24ea5a8a6f0716c1fefdcd8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: bb1913d77616869c889c464a41e8166b3a88b03c
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75357570"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028869"
 ---
 # <a name="connect-privately-to-a-storage-account-using-azure-private-endpoint"></a>Połącz się prywatnie z kontem magazynu przy użyciu prywatnego punktu końcowego platformy Azure
 Prywatny punkt końcowy platformy Azure to podstawowy blok konstrukcyjny dla prywatnego linku na platformie Azure. Dzięki temu zasoby platformy Azure, takie jak maszyny wirtualne, mogą komunikować się prywatnie z zasobami łączy prywatnych.
@@ -127,11 +127,11 @@ W tej sekcji utworzysz prywatne konto magazynu przy użyciu prywatnego punktu ko
     | Subskrypcja | Wybierz subskrypcję. |
     | Grupa zasobów | Wybierz pozycję **myResourceGroup**. Utworzono to w poprzedniej sekcji.|
     |Lokalizacja|Wybierz pozycję **WestCentralUS**.|
-    |Nazwa|Wprowadź *myPrivateEndpoint*.  |
+    |Nazwa|Wprowadź *myPrivateEndpoint*.  |
     |Zasób podrzędny magazynu|Pozostaw domyślny **obiekt BLOB**. |
     | **SIECI** |  |
-    | Sieć wirtualna  | Wybierz pozycję *MyVirtualNetwork* *z grupy zasobów*. |
-    | Podsieć | Wybierz pozycję Moja *podsieć*. |
+    | Sieć wirtualna  | Wybierz pozycję *MyVirtualNetwork* *z grupy zasobów*. |
+    | Podsieć | Wybierz pozycję Moja *podsieć*. |
     | **PRYWATNA INTEGRACJA Z USŁUGĄ DNS**|  |
     | Integracja z prywatną strefą DNS  | Pozostaw wartość domyślną **tak**. |
     | Prywatna strefa DNS  | Pozostaw wartość domyślną **(New) privatelink.blob.Core.Windows.NET**. |
@@ -172,8 +172,8 @@ Połącz się z maszyną wirtualną *myVm* z Internetu w następujący sposób:
 
 W tej sekcji nastąpi połączenie prywatne z kontem magazynu przy użyciu prywatnego punktu końcowego.
 
-1. W Pulpit zdalny *myVM*Otwórz program PowerShell.
-2. Wprowadź `nslookup mystorageaccount.blob.core.windows.net` zostanie wyświetlony komunikat podobny do tego:
+1. W Pulpit zdalny *myVM*Otwórz program PowerShell.
+2. Wprowadź `nslookup mystorageaccount.blob.core.windows.net` zostanie wyświetlony komunikat podobny do tego:
     ```azurepowershell
     Server:  UnKnown
     Address:  168.63.129.16
@@ -192,7 +192,7 @@ W tej sekcji nastąpi połączenie prywatne z kontem magazynu przy użyciu prywa
 10. Wybierz przycisk **Połącz**.
 11. Przeglądanie kontenerów obiektów blob z mojekontomagazynu 
 12. Zdefiniować Utwórz foldery i/lub Przekaż pliki do *mojekontomagazynu*. 
-13. Zamknij połączenie pulpitu zdalnego z *myVM*. 
+13. Zamknij połączenie pulpitu zdalnego z *myVM*. 
 
 Dodatkowe opcje uzyskiwania dostępu do konta magazynu:
 - Eksplorator usługi Microsoft Azure Storage to autonomiczna bezpłatna aplikacja oferowana przez firmę Microsoft, która umożliwia wizualne korzystanie z danych usługi Azure Storage w systemach Windows, macOS i Linux. Możesz zainstalować aplikację, aby przeglądać prywatnie zawartość konta magazynu. 
@@ -202,9 +202,9 @@ Dodatkowe opcje uzyskiwania dostępu do konta magazynu:
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów 
 Gdy skończysz korzystać z prywatnego punktu końcowego, konta magazynu i maszyny wirtualnej, Usuń grupę zasobów i wszystkie zawarte w niej zasoby: 
-1. Wprowadź * * w polu **wyszukiwania** w górnej części portalu, a następnie wybierz pozycję Lista *zasobów* z wyników wyszukiwania. 
+1. Wprowadź w polu **wyszukiwania** w górnej części portalu *i wybierz pozycję* *moja zasobów z* wyników wyszukiwania. 
 2. Wybierz pozycję **Usuń grupę zasobów**. 
-3. Wprowadź dla elementu *Webresources* , aby **wpisać nazwę grupy zasobów** , a następnie wybierz pozycję **Usuń**. 
+3. W polu **WPISZ NAZWĘ GRUPY ZASOBÓW:** wprowadź nazwę *myResourceGroup*, a następnie wybierz pozycję **Usuń**. 
 
 ## <a name="next-steps"></a>Następne kroki
-W tym przewodniku szybki start utworzono MASZYNę wirtualną w sieci wirtualnej i na koncie magazynu oraz prywatnym punkcie końcowym. Nawiązano połączenie z jedną maszyną wirtualną z Internetu i bezpieczny dostęp do konta magazynu za pomocą linku prywatnego. Aby dowiedzieć się więcej o prywatnym punkcie końcowym, zobacz [co to jest prywatny punkt końcowy platformy Azure?](private-endpoint-overview.md).
+W tym przewodniku szybki start utworzono MASZYNę wirtualną w sieci wirtualnej i na koncie magazynu oraz prywatnym punkcie końcowym. Nawiązano połączenie z jedną maszyną wirtualną z Internetu i bezpieczny dostęp do konta magazynu za pomocą linku prywatnego. Aby dowiedzieć się więcej o prywatnym punkcie końcowym, zobacz [co to jest prywatny punkt końcowy platformy Azure?](private-endpoint-overview.md).

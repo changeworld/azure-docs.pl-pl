@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/02/2019
 ms.author: spelluru
-ms.openlocfilehash: a80a54f3dc760d80f713db9857cbef0c580e66d6
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: 088913959b5850e87dc3a6a39d2907d30b7e5ade
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73621386"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75976250"
 ---
 # <a name="use-platform-as-a-service-paas-services-in-azure-devtest-labs"></a>Korzystanie z usług typu "platforma jako usługa" (PaaS) w Azure DevTest Labs
 PaaS jest obsługiwana w DevTest Labs za pośrednictwem funkcji środowiska. Środowiska w DevTest Labs są obsługiwane przez wstępnie skonfigurowane szablony Azure Resource Manager w repozytorium git. Środowiska mogą zawierać zarówno zasoby PaaS, jak i IaaS. Umożliwiają one tworzenie złożonych systemów, które mogą obejmować zasoby platformy Azure, takie jak maszyny wirtualne, bazy danych, sieci wirtualne i aplikacje sieci Web, które są dostosowane do współdziałania ze sobą. Te szablony umożliwiają spójne wdrożenie i ulepszone zarządzanie środowiskami przy użyciu kontroli kodu źródłowego. 
@@ -42,7 +42,7 @@ W dużych organizacjach zespoły programistyczne zwykle udostępniają środowis
 #### <a name="sandbox"></a>Piaskownica 
 Właściciel laboratorium może dostosować środowiska laboratoryjne, aby zmienić rolę użytkownika z **czytnika** na **współautora** w ramach grupy zasobów. Ta funkcja znajduje się na stronie **ustawień laboratorium** w obszarze **Konfiguracja i zasady** laboratorium. Ta zmiana roli umożliwia użytkownikowi dodawanie lub usuwanie zasobów w danym środowisku. Jeśli chcesz dodatkowo ograniczyć dostęp, użyj zasad platformy Azure. Ta funkcja umożliwia dostosowanie zasobów lub konfiguracji bez dostępu na poziomie subskrypcji.
 
-#### <a name="custom-tokens"></a>Tokeny niestandardowe
+#### <a name="custom-tokens"></a>{1&gt;Tokeny niestandardowe&lt;1}
 Istnieje kilka niestandardowych informacji laboratorium, które znajdują się poza grupą zasobów i są specyficzne dla środowisk, do których ten szablon może uzyskać dostęp. Oto niektóre z nich: 
 
 - Identyfikacja sieci laboratorium
@@ -53,9 +53,9 @@ Istnieje kilka niestandardowych informacji laboratorium, które znajdują się p
 W artykule [łączącym środowiska z siecią wirtualną laboratorium](connect-environment-lab-virtual-network.md) opisano, jak zmodyfikować szablon Menedżer zasobów, aby używał tokenu `$(LabSubnetId)`. Po utworzeniu środowiska `$(LabSubnetId)` token jest zastępowany pierwszym znacznikiem podsieci, gdzie opcja **tworzenia maszyny wirtualnej** jest ustawiona na **wartość true**. Pozwala naszym środowisku używać wcześniej utworzonych sieci. Jeśli chcesz używać tych samych szablonów Menedżer zasobów w środowiskach testowych jako przejściowych i produkcyjnych, użyj `$(LabSubnetId)` jako wartości domyślnej w parametrze szablonu Menedżer zasobów. 
 
 #### <a name="environment-storage-account"></a>Konto magazynu środowiska
-DevTest Labs obsługuje użycie [zagnieżdżonych szablonów Menedżer zasobów](../azure-resource-manager/resource-group-linked-templates.md). W artykule [[Deploying nested Azure Resource Manager templates for test](deploy-nested-template-environments.md) Environments wyjaśniono, jak używać tokenów `_artifactsLocation` i `_artifactsLocationSasToken` w celu utworzenia identyfikatora URI dla szablonu Menedżer zasobów w tym samym folderze co lub w zagnieżdżonym folderze szablonu głównego. Aby uzyskać więcej informacji na temat tych dwóch tokenów, zobacz sekcję **artefakty wdrożenia** w [podręczniku Azure Resource Manager – Best Practices Guide](https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md).
+DevTest Labs obsługuje użycie [zagnieżdżonych szablonów Menedżer zasobów](../azure-resource-manager/templates/linked-templates.md). W artykule [[Deploying nested Azure Resource Manager templates for test](deploy-nested-template-environments.md) Environments wyjaśniono, jak używać tokenów `_artifactsLocation` i `_artifactsLocationSasToken` w celu utworzenia identyfikatora URI dla szablonu Menedżer zasobów w tym samym folderze co lub w zagnieżdżonym folderze szablonu głównego. Aby uzyskać więcej informacji na temat tych dwóch tokenów, zobacz sekcję **artefakty wdrożenia** w [podręczniku Azure Resource Manager – Best Practices Guide](https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md).
 
-## <a name="user-experience"></a>Środowisko użytkownika
+## <a name="user-experience"></a>Czynności po stronie użytkownika
 
 ## <a name="developer"></a>Developer
 Deweloperzy używają tego samego przepływu pracy do tworzenia maszyny wirtualnej w celu utworzenia określonego środowiska. Wybierają one środowisko a obraz maszyny, a następnie wprowadzają niezbędne informacje wymagane przez szablon. Każdy deweloper ma środowisko umożliwiające wdrożenie zmian i udoskonalone debugowanie pętli wewnętrznej. Środowisko można utworzyć w dowolnym momencie przy użyciu najnowszego szablonu.  Ta funkcja pozwala zniszczyć i odtworzyć środowiska w celu skrócenia przestojów spowodowanych ręcznym tworzeniem systemu lub odzyskiwaniem po testowaniu błędów.  
@@ -68,10 +68,10 @@ Deweloperzy używają tego samego przepływu pracy do tworzenia maszyny wirtualn
 ### <a name="cost-tracking"></a>Śledzenie kosztów
 Funkcja śledzenia kosztów obejmuje zasoby platformy Azure w różnych środowiskach w ramach ogólnego trendu kosztu. Koszt według zasobów nie powoduje rozdzielenia różnych zasobów w środowisku, ale program wyświetla środowisko jako pojedynczy koszt.
 
-### <a name="security"></a>Bezpieczeństwo
+### <a name="security"></a>Zabezpieczenia
 Prawidłowo skonfigurowana subskrypcja platformy Azure z DevTest Labs może [ograniczyć dostęp do zasobów platformy Azure tylko za pomocą laboratorium](devtest-lab-add-devtest-user.md). Dzięki środowiskom właściciel laboratorium może pozwolić użytkownikom na dostęp do zasobów PaaS z zatwierdzonymi konfiguracjami bez zezwalania na dostęp do innych zasobów platformy Azure. W scenariuszu, w którym użytkownicy laboratorium dostosowują środowiska, właściciel laboratorium może zezwolić na dostęp współautora. Dostęp współautora umożliwia użytkownikowi laboratorium Dodawanie lub usuwanie zasobów platformy Azure tylko w ramach zarządzanej grupy zasobów. Pozwala to na łatwiejsze śledzenie i zarządzanie, a następnie umożliwienie użytkownikom dostępu do subskrypcji.
 
-### <a name="automation"></a>Automatyzacja
+### <a name="automation"></a>Automation
 Automatyzacja to kluczowy składnik dla dużej skali, obowiązujący ekosystem. Automatyzacja jest niezbędna do obsługi zarządzania lub śledzenia wielu środowisk w ramach subskrypcji i laboratoriów.
 
 ### <a name="cicd-pipeline"></a>Potok ciągłej integracji/ciągłego wdrażania

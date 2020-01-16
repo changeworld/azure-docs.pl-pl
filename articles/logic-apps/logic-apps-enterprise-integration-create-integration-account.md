@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 07/26/2019
-ms.openlocfilehash: 2738e7be6ae40afd5f0d94f1ad32b7b4cda0417f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3cdabbd5f527934492ce7ff37ae7d0f756d91fc1
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453412"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979431"
 ---
 # <a name="create-and-manage-integration-accounts-for-b2b-enterprise-integrations-in-azure-logic-apps"></a>Tworzenie kont integracji dla integracji z przedsiębiorstwem B2B i zarządzanie nimi w Azure Logic Apps
 
@@ -77,7 +77,7 @@ W przypadku tego zadania można użyć Azure Portal, wykonując kroki opisane w 
 
 ## <a name="link-to-logic-app"></a>Link do aplikacji logiki
 
-Aby umożliwić aplikacjom logiki dostęp do konta integracji zawierającego artefakty B2B, musisz najpierw połączyć konto integracji z aplikacją logiki. Zarówno aplikacja logiki, jak i konto integracji muszą znajdować się w tym samym regionie. Aby wykonać to zadanie, można użyć Azure Portal. Jeśli używasz programu Visual Studio, a aplikacja logiki znajduje się w [projekcie grupy zasobów platformy Azure](../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md), możesz [połączyć aplikację logiki z kontem integracji przy użyciu programu Visual Studio](../logic-apps/manage-logic-apps-with-visual-studio.md#link-integration-account).
+Aby umożliwić aplikacjom logiki dostęp do konta integracji zawierającego artefakty B2B, musisz najpierw połączyć konto integracji z aplikacją logiki. Zarówno aplikacja logiki, jak i konto integracji muszą znajdować się w tym samym regionie. Aby wykonać to zadanie, można użyć Azure Portal. Jeśli używasz programu Visual Studio, a aplikacja logiki znajduje się w [projekcie grupy zasobów platformy Azure](../azure-resource-manager/templates/create-visual-studio-deployment-project.md), możesz [połączyć aplikację logiki z kontem integracji przy użyciu programu Visual Studio](../logic-apps/manage-logic-apps-with-visual-studio.md#link-integration-account).
 
 1. W Azure Portal Znajdź i Otwórz aplikację logiki.
 

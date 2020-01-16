@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 01/10/2020
+ms.date: 01/13/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: a799339f2780c2bc372c39120a6e20b34d907326
-ms.sourcegitcommit: e9776e6574c0819296f28b43c9647aa749d1f5a6
+ms.openlocfilehash: 662b2792a2e09603425b1988138326799334f323
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75912746"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75973442"
 ---
 ### <a name="portal"></a>Portal
 
@@ -88,3 +88,27 @@ Proces wdrażania maszyn wirtualnych jest podobny do standardowego procesu wdra�
 1. Wprowadź pozostałe wybrane opcje.
 
     ![SSE-Create-VM-SELECT-CMK-Encryption-Set. png](media/virtual-machines-disk-encryption-portal/sse-create-vm-select-cmk-encryption-set.png)
+
+#### <a name="enable-on-an-existing-disk"></a>Włącz na istniejącym dysku
+
+Aby zarządzać szyfrowaniem dysków na istniejących dyskach i konfigurować je, należy użyć następującego linku: https://aka.ms/diskencryptionsets. Włączenie kluczy zarządzanych przez klienta na istniejących dyskach nie jest jeszcze dostępne w globalnym Azure Portal.
+
+> [!CAUTION]
+> Włączenie szyfrowania dysków na wszystkich dyskach dołączonych do maszyny wirtualnej wymaga zatrzymania maszyny wirtualnej.
+
+1. Przejdź do maszyny wirtualnej, która znajduje się w tym samym regionie co jeden z zestawów szyfrowania dysków.
+1. Otwórz maszynę wirtualną i wybierz pozycję **Zatrzymaj**.
+
+    ![sse-stop-VM-to-encrypt-disk. png](media/virtual-machines-disk-encryption-portal/sse-stop-VM-to-encrypt-disk.png)
+
+1. Po zakończeniu zatrzymywania maszyny wirtualnej wybierz pozycję **dyski** , a następnie wybierz dysk, który chcesz zaszyfrować.
+
+    ![SSE-Existing-Disk-SELECT. png](media/virtual-machines-disk-encryption-portal/sse-existing-disk-select.png)
+
+1. Wybierz pozycję **szyfrowanie** i wybierz pozycję **szyfrowanie w spoczynku z kluczem zarządzanym przez klienta** , a następnie na liście rozwijanej wybierz zestaw szyfrowanie dysków.
+1. Wybierz pozycję **Zapisz**.
+
+    ![SSE-Encrypt-Existing-Disk-Customer-Managed-Key. png](media/virtual-machines-disk-encryption-portal/sse-encrypt-existing-disk-customer-managed-key.png)
+
+1. Powtórz ten proces dla wszystkich innych dysków dołączonych do maszyny wirtualnej, którą chcesz zaszyfrować.
+1. Po zakończeniu przełączania dysków na klucze zarządzane przez klienta, jeśli nie ma żadnych innych dołączonych dysków, które chcesz zaszyfrować, możesz uruchomić maszynę wirtualną.

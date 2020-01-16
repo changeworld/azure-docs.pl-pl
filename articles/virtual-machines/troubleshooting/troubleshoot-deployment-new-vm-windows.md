@@ -15,12 +15,12 @@ ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: cjiang
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6dbe4c1533aecfab4a62ce3ad90b694c0c00f4b6
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 0bc363b87a9f5b2f013c0bae75a07d79a3a7a830
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70103485"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981401"
 ---
 # <a name="troubleshoot-deployment-issues-when-creating-a-new-windows-vm-in-azure"></a>Rozwiązywanie problemów z wdrażaniem podczas tworzenia nowej maszyny wirtualnej z systemem Windows na platformie Azure
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-opening](../../../includes/virtual-machines-troubleshoot-deployment-new-vm-opening-include.md)]
@@ -30,12 +30,12 @@ ms.locfileid: "70103485"
 ## <a name="top-issues"></a>Najważniejsze problemy
 [!INCLUDE [support-disclaimer](../../../includes/virtual-machines-windows-troubleshoot-deploy-vm-top.md)]
 
-Inne problemy z wdrażaniem maszyn wirtualnych i pytania można znaleźć w temacie Rozwiązywanie problemów [z wdrażaniem maszyn wirtualnych systemu Windows na platformie Azure](troubleshoot-deploy-vm-windows.md).
+Inne problemy z wdrażaniem maszyn wirtualnych i pytania można znaleźć [w temacie Rozwiązywanie problemów z wdrażaniem maszyn wirtualnych systemu Windows na platformie Azure](troubleshoot-deploy-vm-windows.md).
 
 ## <a name="collect-activity-logs"></a>Zbieranie dzienników aktywności
 Aby rozpocząć rozwiązywanie problemów, Zbierz dzienniki aktywności w celu zidentyfikowania błędu związanego z problemem. Poniższe linki zawierają szczegółowe informacje dotyczące procesu do wykonania.
 
-[Wyświetlanie operacji wdrażania](../../azure-resource-manager/resource-manager-deployment-operations.md)
+[Wyświetlanie operacji wdrażania](../../azure-resource-manager/templates/deployment-history.md)
 
 [Wyświetlanie dzienników aktywności w celu zarządzania zasobami platformy Azure](../../resource-group-audit.md)
 
@@ -43,7 +43,7 @@ Aby rozpocząć rozwiązywanie problemów, Zbierz dzienniki aktywności w celu z
 
 [!INCLUDE [virtual-machines-windows-troubleshoot-deployment-new-vm-table](../../../includes/virtual-machines-windows-troubleshoot-deployment-new-vm-table.md)]
 
-**T** Jeśli system operacyjny jest uogólniony, a został przekazany i/lub przechwycony przy użyciu ustawienia uogólnionego, nie będzie żadnych błędów. Podobnie, jeśli system operacyjny jest wyspecjalizowany dla systemu Windows i został przekazany i/lub przechwycony przy użyciu ustawienia specjalistycznego, nie będzie żadnych błędów.
+**T:** Jeśli system operacyjny jest uogólniony, a został przekazany i/lub przechwycony przy użyciu ustawienia uogólnionego, nie będzie żadnych błędów. Podobnie, jeśli system operacyjny jest wyspecjalizowany dla systemu Windows i został przekazany i/lub przechwycony przy użyciu ustawienia specjalistycznego, nie będzie żadnych błędów.
 
 **Błędy przekazywania:**
 
@@ -65,7 +65,7 @@ Aby rozwiązać oba te błędy, użyj polecenie [Add-AzVhd w celu przekazania or
 
 Aby rozwiązać oba te błędy, Usuń bieżący obraz z portalu i [Przechwyć go ponownie z bieżącego dysku VHD](../windows/create-vm-specialized.md) z tym samym ustawieniem dla systemu operacyjnego (uogólniony/wyspecjalizowany).
 
-## <a name="issue-customgallerymarketplace-image-allocation-failure"></a>Problem: Obraz niestandardowy/Galeria/witryna Marketplace; Niepowodzenie alokacji
+## <a name="issue-customgallerymarketplace-image-allocation-failure"></a>Problem: obraz niestandardowy/Galeria/witryna Marketplace; Niepowodzenie alokacji
 Ten błąd występuje w sytuacji, gdy nowe żądanie maszyny wirtualnej jest przypięte do klastra, który nie obsługuje żądanego rozmiaru maszyny wirtualnej lub nie ma dostępnego wolnego miejsca, aby pomieścić żądanie.
 
 **Przyczyna 1:** Klaster nie obsługuje żądanego rozmiaru maszyny wirtualnej.
@@ -75,7 +75,7 @@ Ten błąd występuje w sytuacji, gdy nowe żądanie maszyny wirtualnej jest prz
 * Spróbuj ponownie wykonać żądanie, używając mniejszego rozmiaru maszyny wirtualnej.
 * Jeśli nie można zmienić rozmiaru żądanej maszyny wirtualnej:
   * Zatrzymaj wszystkie maszyny wirtualne w zestawie dostępności.
-    Kliknij pozycję **grupy** > zasobów**zasoby** > grupyzasobów > *Twój zestaw dostępności*Virtual Machinesmaszyny > wirtualnej > *Zatrzymaj.*  > 
+    Kliknij pozycję **grupy zasobów** , > *grupę zasobów* > **zasoby** > *zestaw dostępności* > **Virtual Machines** > **zatrzymać** *maszynę wirtualną* .
   * Po zatrzymaniu wszystkich maszyn wirtualnych Utwórz nową maszynę wirtualną w żądanym rozmiarze.
   * Najpierw uruchom nową maszynę wirtualną, a następnie wybierz każdą z zatrzymanych maszyn wirtualnych, a następnie kliknij przycisk **Uruchom**.
 
@@ -89,6 +89,6 @@ Ten błąd występuje w sytuacji, gdy nowe żądanie maszyny wirtualnej jest prz
   * Dodaj nową MASZYNę wirtualną do tej samej sieci wirtualnej.
 
 ## <a name="next-steps"></a>Następne kroki
-Jeśli wystąpią problemy podczas uruchamiania zatrzymanej maszyny wirtualnej z systemem Windows lub zmiany rozmiaru istniejącej maszyny wirtualnej z systemem Windows na platformie Azure, zobacz Rozwiązywanie problemów [z wdrożeniem Menedżer zasobów z ponownym uruchamianiem lub zmianami rozmiaru istniejącej maszyny wirtualnej z systemem Windows na platformie Azure](restart-resize-error-troubleshooting.md).
+Jeśli wystąpią problemy podczas uruchamiania zatrzymanej maszyny wirtualnej z systemem Windows lub zmiany rozmiaru istniejącej maszyny wirtualnej z systemem Windows na platformie Azure, zobacz [Rozwiązywanie problemów z wdrożeniem Menedżer zasobów z ponownym uruchamianiem lub zmianami rozmiaru istniejącej maszyny wirtualnej z systemem Windows na platformie Azure](restart-resize-error-troubleshooting.md).
 
 

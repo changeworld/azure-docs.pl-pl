@@ -13,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/23/2018
 ms.author: memildin
-ms.openlocfilehash: 45b7b419277d338d70cf285838103f97d4eb5c3a
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 6edea1d0de53e2dc9f764de26209dc1f3110556e
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749665"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978614"
 ---
 # <a name="manage-user-data-in-azure-security-center"></a>Zarządzanie danymi użytkowników w Azure Security Center
 Ten artykuł zawiera informacje o sposobach zarządzania danymi użytkownika w programie Azure Security Center. Zarządzanie danymi użytkownika obejmuje możliwość uzyskiwania dostępu do danych, ich usuwania lub eksportowania.
 
 [!INCLUDE [gdpr-intro-sentence.md](../../includes/gdpr-intro-sentence.md)]
 
-Użytkownik Security Center przypisany do roli czytelnik, właściciel, współautor lub administrator konta może uzyskać dostęp do danych klienta w ramach tego narzędzia. Aby dowiedzieć się więcej o roli administratora konta, zobacz [wbudowane role dla kontroli dostępu opartej na rolach na platformie Azure](../role-based-access-control/built-in-roles.md) , aby dowiedzieć się więcej na temat ról czytelnik, właściciel i współautor. Zobacz [administratorzy subskrypcji platformy Azure](../billing/billing-add-change-azure-subscription-administrator.md).
+Użytkownik Security Center przypisany do roli czytelnik, właściciel, współautor lub administrator konta może uzyskać dostęp do danych klienta w ramach tego narzędzia. Aby dowiedzieć się więcej o roli administratora konta, zobacz [wbudowane role dla kontroli dostępu opartej na rolach na platformie Azure](../role-based-access-control/built-in-roles.md) , aby dowiedzieć się więcej na temat ról czytelnik, właściciel i współautor. Zobacz [administratorzy subskrypcji platformy Azure](../cost-management-billing/manage/add-change-subscription-administrator.md).
 
 ## <a name="searching-for-and-identifying-personal-data"></a>Wyszukiwanie i identyfikowanie danych osobowych
 Użytkownik Security Center może przeglądać swoje dane osobowe za pomocą Azure Portal. Security Center przechowuje wyłącznie szczegóły dotyczące kontaktu z zabezpieczeniami, takie jak adresy e-mail i numery telefonów. Aby uzyskać więcej informacji, zobacz [Podaj szczegóły kontaktu zabezpieczeń w Azure Security Center](security-center-provide-security-contact-details.md).

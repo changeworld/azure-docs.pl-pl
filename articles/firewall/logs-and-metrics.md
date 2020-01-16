@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: victorh
-ms.openlocfilehash: f233b1a60202b440abf34edd1c56eebaecba18e2
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 1267b3295762f6eb6af92b1cec909bae768886c1
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74166990"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75974505"
 ---
 # <a name="azure-firewall-logs-and-metrics"></a>Dzienniki i metryki usługi Azure Firewall
 
@@ -20,7 +20,7 @@ Usługę Azure Firewall możesz monitorować przy użyciu dzienników zapory. Po
 
 Niektóre z tych dzienników są dostępne za pośrednictwem portalu. Dzienniki mogą być wysyłane do [dzienników usługi Azure Monitor](../azure-monitor/insights/azure-networking-analytics.md), usługi Storage i Event Hubs oraz analizowane za pomocą dzienników usługi Azure Monitor lub innych narzędzi, takich jak program Excel i usługa Power BI.
 
-Metryki są lekkie i obsługują scenariusze niemal w czasie rzeczywistym, dzięki czemu mogą być używane do tworzenia alertów i szybkiego wykrywania problemów. 
+Metryki są lekkie i obsługują scenariusze niemal w czasie rzeczywistym, dzięki czemu mogą być używane do tworzenia alertów i szybkiego wykrywania problemów.
 
 ## <a name="diagnostic-logs"></a>Dzienniki diagnostyczne
 
@@ -33,7 +33,7 @@ Metryki są lekkie i obsługują scenariusze niemal w czasie rzeczywistym, dzię
    ```
    Category: application rule logs.
    Time: log timestamp.
-   Properties: currently contains the full message. 
+   Properties: currently contains the full message.
    note: this field will be parsed to specific fields in the future, while maintaining backward compatibility with the existing properties field.
    ```
 
@@ -56,7 +56,7 @@ Metryki są lekkie i obsługują scenariusze niemal w czasie rzeczywistym, dzię
    ```
    Category: network rule logs.
    Time: log timestamp.
-   Properties: currently contains the full message. 
+   Properties: currently contains the full message.
    note: this field will be parsed to specific fields in the future, while maintaining backward compatibility with the existing properties field.
    ```
 
@@ -83,7 +83,7 @@ Masz trzy opcje przechowywania dzienników:
 
    Wpisy dziennika aktywności są zbierane domyślnie i można je wyświetlać w witrynie Azure Portal.
 
-   Aby wyświetlić wszystkie operacje przesłane do subskrypcji platformy Azure, można użyć [dzienników aktywności platformy Azure](../azure-resource-manager/resource-group-audit.md) (znanych wcześniej jako dzienników operacyjnych i dzienników inspekcji).
+   Aby wyświetlić wszystkie operacje przesłane do subskrypcji platformy Azure, można użyć [dzienników aktywności platformy Azure](../azure-resource-manager/management/view-activity-logs.md) (znanych wcześniej jako dzienników operacyjnych i dzienników inspekcji).
 
 ## <a name="metrics"></a>Metryki
 

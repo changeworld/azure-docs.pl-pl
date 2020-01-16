@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 12/06/2019
 ms.author: cynthn
-ms.openlocfilehash: e7a5f9ba865ab555bde3125f40ee8675709bef40
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 7ca98723511cc7297b462747d4e1e12ca9bd38c2
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74932712"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979014"
 ---
 # <a name="preview-control-updates-with-maintenance-control-and-azure-powershell"></a>Wersja zapoznawcza: kontrolowanie aktualizacji z kontrolą konserwacji i Azure PowerShell
 
@@ -36,7 +36,7 @@ Za pomocą kontrolki konserwacji można:
 ## <a name="limitations"></a>Ograniczenia
 
 - Maszyny wirtualne muszą znajdować się na [dedykowanym hoście](./linux/dedicated-hosts.md)lub być tworzone przy użyciu [IZOLOWANEGO rozmiaru maszyny wirtualnej](./linux/isolation.md).
-- Po upływie 35 dni zostanie automatycznie zastosowana aktualizacja, a ograniczenia dostępności nie będą przestrzegane.
+- Po upływie 35 dni zostanie automatycznie zastosowana aktualizacja.
 - Użytkownik musi mieć dostęp **właściciela zasobu** .
 
 
@@ -109,7 +109,7 @@ New-AzConfigurationAssignment `
    -MaintenanceConfigurationId $config.Id
 ```
 
-### <a name="dedicate-host"></a>Dedykowany Host
+### <a name="dedicated-host"></a>Dedykowany host
 
 Aby zastosować konfigurację do dedykowanego hosta, należy również uwzględnić `-ResourceType hosts`, `-ResourceParentName` z nazwą grupy hostów i `-ResourceParentType hostGroups`. 
 
@@ -129,7 +129,9 @@ New-AzConfigurationAssignment `
 
 ## <a name="check-for-pending-updates"></a>Wyszukaj oczekujące aktualizacje
 
-Użyj [Get-AzMaintenanceUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/get-azmaintenanceupdate) , aby sprawdzić, czy istnieją oczekujące aktualizacje. Użyj `-subscription`, aby określić subskrypcję platformy Azure dla maszyny wirtualnej, jeśli jest inna niż ta, która jest zarejestrowana. 
+Użyj [Get-AzMaintenanceUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/get-azmaintenanceupdate) , aby sprawdzić, czy istnieją oczekujące aktualizacje. Użyj `-subscription`, aby określić subskrypcję platformy Azure dla maszyny wirtualnej, jeśli jest inna niż ta, która jest zarejestrowana.
+
+Jeśli nie ma żadnych aktualizacji, polecenie zwróci komunikat o błędzie: `Resource not found...StatusCode: 404`.
 
 ### <a name="isolated-vm"></a>Izolowana maszyna wirtualna
 
@@ -185,6 +187,39 @@ New-AzApplyUpdate `
    -ResourceParentName myHostGroup `
    -ResourceParentType hostGroups `
    -ProviderName Microsoft.Compute
+```
+
+## <a name="check-update-status"></a>Sprawdź stan aktualizacji
+Aby sprawdzić stan aktualizacji, użyj [Get-AzApplyUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/get-azapplyupdate) . Poniższe polecenia pokazują stan najnowszej aktualizacji za pomocą `default` dla parametru `-ApplyUpdateName`. Można zastąpić nazwę aktualizacji (zwracaną przez polecenie [New-AzApplyUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/new-azapplyupdate) ), aby uzyskać stan konkretnej aktualizacji.
+
+Jeśli nie ma żadnych aktualizacji do wyświetlenia, polecenie zwróci komunikat o błędzie: `Resource not found...StatusCode: 404`.
+
+### <a name="isolated-vm"></a>Izolowana maszyna wirtualna
+
+Sprawdź, czy są aktualizacje określonej maszyny wirtualnej.
+
+```azurepowershell-interactive
+Get-AzApplyUpdate `
+   -ResourceGroupName myResourceGroup `
+   -ResourceName myVM `
+   -ResourceType VirtualMachines `
+   -ProviderName Microsoft.Compute `
+   -ApplyUpdateName default
+```
+
+### <a name="dedicated-host"></a>Dedykowany host
+
+Sprawdź dostępność aktualizacji na dedykowanym hoście.
+
+```azurepowershell-interactive
+Get-AzApplyUpdate `
+   -ResourceGroupName myResourceGroup `
+   -ResourceName myHost `
+   -ResourceType hosts `
+   -ResourceParentName myHostGroup `
+   -ResourceParentType hostGroups `
+   -ProviderName Microsoft.Compute `
+   -ApplyUpdateName default
 ```
 
 ## <a name="remove-a-maintenance-configuration"></a>Usuń konfigurację konserwacji

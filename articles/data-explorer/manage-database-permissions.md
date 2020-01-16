@@ -1,79 +1,81 @@
 ---
-title: Zarządzanie uprawnieniami bazy danych w Eksploratorze danych platformy Azure
-description: W tym artykule opisano kontroli dostępu opartej na rolach dla bazy danych i tabele w Eksploratorze danych platformy Azure.
+title: Zarządzanie uprawnieniami bazy danych w usłudze Azure Eksplorator danych
+description: W tym artykule opisano kontrolę dostępu opartą na rolach dla baz danych i tabel w usłudze Azure Eksplorator danych.
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 36e1bb77be1e825e42f0e5d25457214a8b5f882d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b4d5e56e990c0353f44209c6b19ae2d1727de27a
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60758799"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76030087"
 ---
-# <a name="manage-azure-data-explorer-database-permissions"></a>Zarządzanie uprawnieniami bazy danych Azure Eksplorator danych
+# <a name="manage-azure-data-explorer-database-permissions"></a>Zarządzanie uprawnieniami usługi Azure Eksplorator danych Database
 
-Eksplorator danych usługi Azure pozwala na kontrolowanie dostępu do baz danych i tabel, za pomocą *kontroli dostępu opartej na rolach* modelu. W tym modelu *podmiotów* (użytkownikom, grupom i aplikacjom), które są mapowane na *role*. Podmiotów zabezpieczeń można uzyskać dostęp do zasobów zgodnie z rolami, które są przydzielone.
+Usługa Azure Eksplorator danych umożliwia kontrolowanie dostępu do baz danych i tabel przy użyciu modelu *kontroli dostępu opartej na rolach* . W tym modelu *podmioty zabezpieczeń* (Użytkownicy, grupy i aplikacje) są mapowane na *role*. Podmioty zabezpieczeń mogą uzyskać dostęp do zasobów zgodnie z przypisanymi rolami.
 
-W tym artykule opisano dostępne role i jak można przypisać jednostki do tych ról przy użyciu witryny Azure portal i poleceń zarządzania Eksploratora danych usługi Azure.
+W tym artykule opisano dostępne role i sposób przypisywania podmiotów zabezpieczeń do tych ról przy użyciu poleceń Azure Portal i zarządzania usługą Azure Eksplorator danych.
 
 ## <a name="roles-and-permissions"></a>Role i uprawnienia
 
-Eksplorator usługi Azure Data ma następujące role:
+Usługa Azure Eksplorator danych ma następujące role:
 
 |Rola                       |Uprawnienia                                                                        |
 |---------------------------|-----------------------------------------------------------------------------------|
-|Administrator bazy danych             |Można to zrobić w zakresie konkretnej bazy danych.|
-|Użytkownik bazy danych              |Może odczytywać wszystkie dane i metadane w bazie danych. Ponadto mogą utworzyć tabele (staje się administratorem tabeli dla tej tabeli) i funkcje w bazie danych.|
-|Podgląd bazy danych            |Może odczytywać wszystkie dane i metadane w bazie danych.|
-|Dużych możliwościach skalowania bazy danych          |Pozyskiwanie danych do wszystkich istniejących tabel w bazie danych, ale nie wykonywania zapytań o dane.|
-|Monitor bazy danych           |Można wykonać polecenia ".show..." w kontekście bazy danych i jego obiektów podrzędnych.|
-|Administrator tabeli                |Można to zrobić w zakresie konkretnej tabeli. |
-|Tabela dużych możliwościach skalowania             |Pozyskiwanie danych w zakresie konkretnej tabeli, ale nie wykonywania zapytań o dane.|
+|Administrator bazy danych             |Można coś zrobić w zakresie konkretnej bazy danych.|
+|Użytkownik bazy danych              |Może odczytywać wszystkie dane i metadane w bazie danych. Ponadto mogą tworzyć tabele (stać się administratorem tabeli dla tej tabeli) i funkcje w bazie danych.|
+|Przeglądarka bazy danych            |Może odczytywać wszystkie dane i metadane w bazie danych.|
+|Pozyskiwanie bazy danych          |Może pozyskać dane do wszystkich istniejących tabel w bazie danych, ale nie zapytania dotyczące danych.|
+|Monitor bazy danych           |Można wykonać polecenie ". show..." polecenia w kontekście bazy danych i jej jednostek podrzędnych.|
+|Administrator tabeli                |Może zrobić coś w zakresie konkretnej tabeli. |
+|Pozyskiwanie tabel             |Może pozyskać dane z zakresu konkretnej tabeli, ale nie wykonuje zapytania dotyczącego danych.|
 
-## <a name="manage-permissions-in-the-azure-portal"></a>Zarządzanie uprawnieniami w witrynie Azure portal
+## <a name="manage-permissions-in-the-azure-portal"></a>Zarządzanie uprawnieniami w Azure Portal
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
 
-1. Przejdź do klastra usługi Azure Eksploratora danych.
+1. Przejdź do klastra usługi Azure Eksplorator danych.
 
-1. W **Przegląd** sekcji, wybierz bazę danych, w którym chcesz zarządzać uprawnieniami.
+1. W sekcji **Przegląd** wybierz bazę danych, w której chcesz zarządzać uprawnieniami.
 
-    ![Wybierz bazę danych](media/manage-database-permissions/select-database.png)
+    ![Wybieranie bazy danych](media/manage-database-permissions/select-database.png)
 
-1. Wybierz **uprawnienia** następnie **Dodaj**.
+1. Wybierz pozycję **uprawnienia** , a następnie **Dodaj**.
 
     ![Uprawnienia bazy danych](media/manage-database-permissions/database-permissions.png)
 
-1. W obszarze **Dodaj uprawnienia bazy danych**, wybierz rolę, którą chcesz przypisać podmiot zabezpieczeń, aby następnie **wybierz jednostki**.
+1. W obszarze **Dodawanie uprawnień do bazy danych**wybierz rolę, do której chcesz przypisać podmiot zabezpieczeń, a następnie **Wybierz pozycję podmioty zabezpieczeń**.
 
-    ![Dodaj uprawnienia bazy danych](media/manage-database-permissions/add-permission.png)
+    ![Dodawanie uprawnień do bazy danych](media/manage-database-permissions/add-permission.png)
 
-1. Wyszukaj podmiot zabezpieczeń, wybierz go, a następnie **wybierz**.
+1. Wyszukaj podmiot zabezpieczeń, wybierz go, a następnie **Wybierz**.
 
-    ![Zarządzanie uprawnieniami w witrynie Azure portal](media/manage-database-permissions/new-principals.png)
+    ![Zarządzanie uprawnieniami w Azure Portal](media/manage-database-permissions/new-principals.png)
 
 1. Wybierz pozycję **Zapisz**.
 
-    ![Zarządzanie uprawnieniami w witrynie Azure portal](media/manage-database-permissions/save-permission.png)
+    ![Zarządzanie uprawnieniami w Azure Portal](media/manage-database-permissions/save-permission.png)
 
-## <a name="manage-permissions-with-management-commands"></a>Zarządzanie uprawnieniami za pomocą polecenia zarządzania
+## <a name="manage-permissions-with-management-commands"></a>Zarządzanie uprawnieniami za pomocą poleceń zarządzania
 
-1. Zaloguj się do [ https://dataexplorer.azure.com ](https://dataexplorer.azure.com)i Dodaj klaster, jeśli nie jest jeszcze dostępna.
+1. Zaloguj się do [https://dataexplorer.azure.com](https://dataexplorer.azure.com)i Dodaj swój klaster, jeśli nie jest jeszcze dostępny.
 
-1. W okienku po lewej stronie wybierz odpowiednią bazą danych.
+1. W lewym okienku wybierz odpowiednią bazę danych.
 
-1. Użyj `.add` polecenie, aby przypisać jednostki do ról: `.add database databasename rolename ('aaduser | aadgroup=user@domain.com')`. Aby dodać użytkownika do roli bazy danych, uruchom następujące polecenie, zastępując swoją nazwę bazy danych i użytkownika.
+1. Użyj `.add` polecenie, aby przypisać podmioty zabezpieczeń do ról: `.add database databasename rolename ('aaduser | aadgroup=user@domain.com')`. Aby dodać użytkownika do roli użytkownika bazy danych, uruchom następujące polecenie, zastępując nazwę bazy danych i użytkownika.
 
     ```Kusto
     .add database <TestDatabase> users ('aaduser=<user@contoso.com>')
     ```
 
-    Dane wyjściowe polecenia pokazuje listę istniejących użytkowników i ról które są przydzielone w bazie danych.
+    Dane wyjściowe polecenia przedstawia listę istniejących użytkowników i role, do których są przypisane w bazie danych.
+    
+    Przykłady dotyczące Azure Active Directory i modelu autoryzacji Kusto można znaleźć w temacie [zasady i dostawcy tożsamości](https://docs.microsoft.com/azure/kusto/management/access-control/principals-and-identity-providers)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 [Pisanie zapytań](write-queries.md)

@@ -7,12 +7,12 @@ ms.date: 08/31/2019
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.openlocfilehash: 0421f49b31eba688542adc0a5b62e1cf75028836
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 5e1fce0852a4e820d7ee0af626ce3fddf6773750
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74269470"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029927"
 ---
 # <a name="use-the-azurite-emulator-for-local-azure-storage-development-and-testing-preview"></a>Korzystanie z emulatora azurite na potrzeby programowania i testowania lokalnego magazynu platformy Azure (wersja zapoznawcza)
 
@@ -282,6 +282,20 @@ azurite --debug path/debug.log
 azurite -d path/debug.log
 ```
 
+### <a name="loose-mode"></a>Tryb luźny
+
+**Opcjonalne** Domyślnie azurite stosuje tryb ścisły do blokowania nieobsługiwanych nagłówków i parametrów żądania. Wyłącz tryb Strict przy użyciu **--luźnego** przełącznika.
+
+```console
+azurite --loose
+```
+
+Zanotuj wielkie litery "L":
+
+```console
+azurite -L
+```
+
 ## <a name="authorization-for-tools-and-sdks"></a>Autoryzacja narzędzi i zestawów SDK
 
 Łączenie się z usługą azurite z zestawów SDK lub narzędzi usługi Azure Storage, takich jak [Eksplorator usługi Azure Storage](https://azure.microsoft.com/features/storage-explorer/), przy użyciu dowolnej strategii uwierzytelniania. Wymagane jest uwierzytelnianie. Azurite obsługuje autoryzację za pomocą klucza współużytkowanego i sygnatur dostępu współdzielonego (SAS). Azurite obsługuje również dostęp anonimowy do kontenerów publicznych.
@@ -308,7 +322,34 @@ Najprostszym sposobem nawiązywania połączenia z usługą azurite z poziomu ap
 
 Aby uzyskać więcej informacji, zobacz [Konfigurowanie parametrów połączenia usługi Azure Storage](storage-configure-connection-string.md).
 
-### <a name="storage-explorer"></a>Storage Explorer
+### <a name="custom-storage-accounts-and-keys"></a>Niestandardowe konta magazynu i klucze
+
+Azurite obsługuje niestandardowe nazwy kont magazynu i klucze przez ustawienie zmiennej środowiskowej `AZURITE_ACCOUNTS` w następującym formacie: `account1:key1[:key2];account2:key1[:key2];...`.
+
+Na przykład Użyj niestandardowego konta magazynu, które ma jeden klucz:
+
+```cmd
+set AZURITE_ACCOUNTS="account1:key1"
+```
+
+Lub Użyj wielu kont magazynu z 2 kluczami każdy:
+
+```cmd
+set AZURITE_ACCOUNTS="account1:key1:key2;account2:key1:key2"
+```
+
+Azurite odświeża niestandardowe nazwy kont i klucze ze zmiennej środowiskowej co minutę domyślnie. Za pomocą tej funkcji można dynamicznie obrócić klucz konta lub dodać nowe konta magazynu bez ponownego uruchamiania azurite.
+
+> [!NOTE]
+> Domyślne konto magazynu `devstoreaccount1` jest wyłączone podczas ustawiania niestandardowych kont magazynu.
+
+> [!NOTE]
+> Należy odpowiednio zaktualizować parametry połączenia w przypadku korzystania z niestandardowych nazw kont i kluczy.
+
+> [!NOTE]
+> Użyj słowa kluczowego `export`, aby ustawić zmienne środowiskowe w środowisku systemu Linux, użyj `set` w systemie Windows.
+
+### <a name="storage-explorer"></a>Eksplorator magazynu
 
 W Eksplorator usługi Azure Storage Połącz się z usługą azurite, klikając ikonę **Dodaj konto** , a następnie wybierz pozycję **Dołącz do lokalnego emulatora** , a następnie kliknij przycisk **Połącz**.
 

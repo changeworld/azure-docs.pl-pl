@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: kumud
-ms.openlocfilehash: 87cdd3d18fe0e6a3655c8bbc940cdc00fa211e74
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 70523dc12f3f20362fcf4a2c3cb456a182038e8a
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750594"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982243"
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>Tworzenie, zmienianie i usuwanie sieci wirtualnej
 
@@ -79,7 +79,7 @@ Przed wykonaniem kroków opisanych w sekcji tego artykułu wykonaj następujące
 
      ![Omówienie interfejsu sieciowego](./media/manage-virtual-network/vnet-overview.png)
 
-     Sieć wirtualną można przenieść do innej subskrypcji lub grupy zasobów, wybierając pozycję **Zmień** obok pozycji **Grupa zasobów** lub **Nazwa subskrypcji**. Aby dowiedzieć się, jak przenieść sieć wirtualną, zobacz [przenoszenie zasobów do innej grupy zasobów lub subskrypcji](../azure-resource-manager/resource-group-move-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Artykuł zawiera listę wymagań wstępnych oraz sposób przenoszenia zasobów przy użyciu programu Azure Portal, programu PowerShell i interfejsu wiersza polecenia platformy Azure. Wszystkie zasoby połączone z siecią wirtualną muszą zostać przeniesione z siecią wirtualną.
+     Sieć wirtualną można przenieść do innej subskrypcji lub grupy zasobów, wybierając pozycję **Zmień** obok pozycji **Grupa zasobów** lub **Nazwa subskrypcji**. Aby dowiedzieć się, jak przenieść sieć wirtualną, zobacz [przenoszenie zasobów do innej grupy zasobów lub subskrypcji](../azure-resource-manager/management/move-resource-group-and-subscription.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Artykuł zawiera listę wymagań wstępnych oraz sposób przenoszenia zasobów przy użyciu programu Azure Portal, programu PowerShell i interfejsu wiersza polecenia platformy Azure. Wszystkie zasoby połączone z siecią wirtualną muszą zostać przeniesione z siecią wirtualną.
    - **Przestrzeń adresowa**: wymienione są Przestrzenie adresowe przypisane do sieci wirtualnej. Aby dowiedzieć się, jak dodać i usunąć zakres adresów do przestrzeni adresowej, wykonaj kroki opisane w sekcji [Dodawanie lub usuwanie zakresu adresów](#add-or-remove-an-address-range).
    - **Podłączone urządzenia**: wyświetlane są wszystkie zasoby połączone z siecią wirtualną. Na poprzednim zrzucie ekranu są połączone z siecią wirtualną przy użyciu trzech interfejsów sieciowych i jednego modułu równoważenia obciążenia. Zostaną wyświetlone wszystkie nowe zasoby utworzone i połączone z siecią wirtualną. W przypadku usunięcia zasobu, który został podłączony do sieci wirtualnej, nie jest już wyświetlany na liście.
    - **Podsieci**: zostanie wyświetlona lista podsieci, które znajdują się w sieci wirtualnej. Aby dowiedzieć się, jak dodać i usunąć podsieć, zobacz [Zarządzanie podsieciami](virtual-network-manage-subnet.md).
@@ -90,8 +90,8 @@ Przed wykonaniem kroków opisanych w sekcji tego artykułu wykonaj następujące
    - **Typowe ustawienia platformy Azure**: Aby dowiedzieć się więcej o typowych ustawieniach platformy Azure, zobacz następujące informacje:
      - [Dziennik aktywności](../azure-monitor/platform/platform-logs-overview.md)
      - [Kontrola dostępu (IAM)](../role-based-access-control/overview.md)
-     - [Tagi](../azure-resource-manager/resource-group-using-tags.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-     - [Zamki](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+     - [Tagi](../azure-resource-manager/management/tag-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+     - [Zamki](../azure-resource-manager/management/lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
      - [Skrypt automatyzacji](../azure-resource-manager/management/manage-resource-groups-portal.md#export-resource-groups-to-templates)
 
 **Polecenia**

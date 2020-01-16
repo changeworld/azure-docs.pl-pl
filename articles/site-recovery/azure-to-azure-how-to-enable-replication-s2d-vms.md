@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 01/29/2019
-ms.openlocfilehash: 465c0ddd91e81bb597a996637fdc2147e90464de
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 9f394fa8d618c97d74a47ff6e42a002f177cf7d9
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75942216"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75973667"
 ---
 # <a name="replicate-azure-vms-running-storage-spaces-direct-to-another-region"></a>Replikowanie maszyn wirtualnych platformy Azure z systemem Bezpośrednie miejsca do magazynowania do innego regionu
 
@@ -30,7 +30,7 @@ Poniższy diagram przedstawia klaster trybu failover maszyny wirtualnej platform
 
 ![storagespacesdirect](./media/azure-to-azure-how-to-enable-replication-s2d-vms/storagespacedirect.png)
 
- 
+
 - Dwie maszyny wirtualne platformy Azure w klastrze trybu failover systemu Windows i każda maszyna wirtualna mają co najmniej dwa dyski danych.
 - Funkcja S2D synchronizuje dane na dysku danych i przedstawia zsynchronizowany magazyn jako pulę magazynów.
 - Pula magazynów prezentuje jako udostępniony wolumin klastra (CSV) klaster trybu failover.
@@ -51,7 +51,7 @@ Poniższy diagram przedstawia klaster trybu failover maszyny wirtualnej platform
 
    ![Ochrona storagespacesdirect](./media/azure-to-azure-how-to-enable-replication-s2d-vms/multivmgroup.png)
 
-2. Przejdź do pozycji zreplikowane elementy i zobaczysz stan maszyny wirtualnej. 
+2. Przejdź do pozycji zreplikowane elementy i zobaczysz stan maszyny wirtualnej.
 3. Obie maszyny wirtualne są chronione i są również wyświetlane jako część grupy spójności z obsługą kilku maszyn wirtualnych.
 
    ![Ochrona storagespacesdirect](./media/azure-to-azure-how-to-enable-replication-s2d-vms/storagespacesdirectgroup.PNG)

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 61a2afad33aea7fa2a21135dca0995ad862a2258
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 1528bffc613d2e8ab2c0150095d90791b649198a
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848667"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979498"
 ---
 # <a name="how-to-get-azure-multi-factor-authentication"></a>Jak uzyskać Multi-Factor Authentication platformy Azure
 
@@ -32,7 +32,7 @@ W poniższej tabeli opisano różnice między wersjami usługi uwierzytelniania 
 
 | Wersja | Opis |
 | --- | --- |
-| Opcja bezpłatna | Klienci korzystający z bezpłatnych korzyści płynących z usługi Azure AD mogą używać [ustawień domyślnych zabezpieczeń](../conditional-access/concept-conditional-access-security-defaults.md) w celu włączenia uwierzytelniania wieloskładnikowego w swoich środowiskach. |
+| Opcja bezpłatna | Klienci korzystający z bezpłatnych korzyści płynących z usługi Azure AD mogą używać [ustawień domyślnych zabezpieczeń](../fundamentals/concept-fundamentals-security-defaults.md) w celu włączenia uwierzytelniania wieloskładnikowego w swoich środowiskach. |
 | Uwierzytelnianie Multi-Factor Authentication dla usługi Office 365 | Ta wersja jest zarządzana z poziomu portalu Office 365 lub Microsoft 365. Administratorzy mogą [zabezpieczać zasoby pakietu Office 365 przy użyciu weryfikacji dwuetapowej](https://support.office.com/article/Set-up-multi-factor-authentication-for-Office-365-users-8f0454b2-f51a-4d9c-bcde-2c48e41621c6). Ta wersja jest częścią subskrypcji pakietu Office 365. |
 | Multi-Factor Authentication dla administratorów usługi Azure AD | Użytkownicy przypisani do roli administratora globalnego usługi Azure AD w dzierżawach usługi Azure AD mogą włączyć weryfikację dwuetapową bez dodatkowych kosztów. |
 | Usługa Azure Multi-Factor Authentication | Usługa Azure Multi-Factor Authentication jest często określana jako wersja pełna. Zapewnia dodatkowe opcje konfiguracji w ramach [Azure Portal](https://portal.azure.com), zaawansowanego raportowania i obsługi wielu aplikacji lokalnych i w chmurze. Multi-Factor Authentication platformy Azure to funkcja [Azure Active Directory — wersja Premium](https://www.microsoft.com/cloud-platform/azure-active-directory-features) i [Microsoft 365 Business](https://www.microsoft.com/microsoft-365/business). |
@@ -48,7 +48,7 @@ Poniższa tabela zawiera listę funkcji, które są dostępne w różnych wersja
 > W tej tabeli porównawczej omówiono funkcje, które są częścią każdej wersji Multi-Factor Authentication. Jeśli masz pełną usługę Azure Multi-Factor Authentication, niektóre funkcje mogą być niedostępne w zależności od tego, czy korzystasz z [uwierzytelniania wieloskładnikowego w chmurze czy](concept-mfa-whichversion.md)w środowisku lokalnym.
 >
 
-| Funkcja | Uwierzytelnianie Multi-Factor Authentication dla usługi Office 365 | Multi-Factor Authentication dla administratorów usługi Azure AD | Usługa Azure Multi-Factor Authentication | Domyślne ustawienia zabezpieczeń | 
+| Funkcja | Uwierzytelnianie Multi-Factor Authentication dla usługi Office 365 | Multi-Factor Authentication dla administratorów usługi Azure AD | Usługa Azure Multi-Factor Authentication | Domyślne ustawienia zabezpieczeń |
 | --- |:---:|:---:|:---:|:---:|
 | Ochrona kont administratorów usługi Azure AD za pomocą uwierzytelniania wieloskładnikowego |● |● (Tylko konta administratora globalnego usługi Azure AD) |● |● |
 | Aplikacja mobilna jako drugi składnik |● |● |● |● |

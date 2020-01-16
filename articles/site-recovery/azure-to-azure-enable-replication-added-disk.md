@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 04/29/2019
-ms.openlocfilehash: fd020755ec579b2553bca42db5d050bd442bf6fc
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 6cbbe63d7968816de78256f5a8408517bb8da278
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75942301"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75973788"
 ---
 # <a name="enable-replication-for-a-disk-added-to-an-azure-vm"></a>Włącz replikację dla dysku dodanego do maszyny wirtualnej platformy Azure
 
@@ -31,9 +31,9 @@ Po dodaniu nowego dysku do maszyny wirtualnej platformy Azure, która jest repli
 
 ## <a name="before-you-start"></a>Przed rozpoczęciem
 
-W tym artykule przyjęto założenie, że już skonfigurowano odzyskiwanie po awarii dla maszyny wirtualnej, do której jest dodawany dysk. Jeśli nie, postępuj zgodnie z [samouczkiem odzyskiwania po awarii z platformy Azure do platformy Azure](azure-to-azure-tutorial-enable-replication.md). 
+W tym artykule przyjęto założenie, że już skonfigurowano odzyskiwanie po awarii dla maszyny wirtualnej, do której jest dodawany dysk. Jeśli nie, postępuj zgodnie z [samouczkiem odzyskiwania po awarii z platformy Azure do platformy Azure](azure-to-azure-tutorial-enable-replication.md).
 
-## <a name="enable-replication-for-an-added-disk"></a>Włączanie replikacji dodanego dysku 
+## <a name="enable-replication-for-an-added-disk"></a>Włączanie replikacji dodanego dysku
 
 Aby włączyć replikację dla dodanego dysku, wykonaj następujące czynności:
 
