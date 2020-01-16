@@ -9,12 +9,12 @@ ms.service: azure-databricks
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/25/2018
-ms.openlocfilehash: f4164966d1a9662a72d41fefcb7cfbb1b444d614
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: c2cb7a90f0fe57efcd8f4d75aff3b5ee375abd07
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75888997"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75971495"
 ---
 # <a name="frequently-asked-questions-about-azure-databricks"></a>Często zadawane pytania dotyczące usługi Azure Databricks
 
@@ -107,7 +107,7 @@ Kod błędu platformy Azure: MissingSubscriptionRegistration komunikat o błędz
 1. Wybierz **subskrypcje**, używaną subskrypcję, a następnie **dostawców zasobów**. 
 1. Na liście dostawców zasobów dla elementu **Microsoft. COMPUTE**wybierz pozycję **zarejestruj**. Aby zarejestrować dostawcę zasobów, musisz mieć rolę współautora lub właściciela w ramach subskrypcji.
 
-Aby uzyskać bardziej szczegółowe instrukcje, zobacz [dostawcy zasobów i ich typy](../azure-resource-manager/resource-manager-supported-services.md).
+Aby uzyskać bardziej szczegółowe instrukcje, zobacz [dostawcy zasobów i ich typy](../azure-resource-manager/management/resource-providers-and-types.md).
 
 ### <a name="issue-azure-databricks-needs-permissions-to-access-resources-in-your-organization-that-only-an-admin-can-grant"></a>Problem: Azure Databricks wymaga uprawnień dostępu do zasobów w organizacji, które mogą przyznawać tylko Administratorzy.
 

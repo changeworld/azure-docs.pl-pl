@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a4f85aeaf2fb263ba2df8f34a51f9e25c212aff
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 36dd80669c6a9495751f577748f48c02a782b920
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74379319"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029853"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Instrukcje: planowanie implementacji dołączania hybrydowego Azure Active Directory
 
@@ -77,7 +77,7 @@ Sprzężenie hybrydowe usługi Azure AD nie jest obecnie obsługiwane, jeśli ś
 
 Jeśli środowisko używa infrastruktury pulpitów wirtualnych (VDI), zobacz [tożsamość urządzenia i Wirtualizacja pulpitu](https://docs.microsoft.com/azure/active-directory/devices/howto-device-identity-virtual-desktop-infrastructure).
 
-Hybrydowe dołączanie usługi Azure AD jest obsługiwane w przypadku modułu TPM zgodnego ze standardem FIPS 2,0 i nie jest obsługiwane dla modułu TPM 1,2 Jeśli urządzenia są zgodne ze standardem FIPS 1,2, należy je wyłączyć przed przejściem do hybrydowego sprzężenia usługi Azure AD. Firma Microsoft nie udostępnia żadnych narzędzi do wyłączania trybu FIPS dla moduły TPM, ponieważ jest on zależny od producenta modułu TPM. Aby uzyskać pomoc techniczną, skontaktuj się z producentem OEM. Począwszy od wersji WIndows 10 1903, moduły TPM 1,2 nie są używane na potrzeby hybrydowego przyłączenia do usługi Azure AD, a urządzenia z tymi moduły tpmami będą uznawane za niemające modułu TPM.
+Hybrydowe dołączanie usługi Azure AD jest obsługiwane w przypadku modułu TPM zgodnego ze standardem FIPS 2,0 i nie jest obsługiwane dla modułu TPM 1,2 Jeśli urządzenia są zgodne ze standardem FIPS 1,2, należy je wyłączyć przed przejściem do hybrydowego sprzężenia usługi Azure AD. Firma Microsoft nie udostępnia żadnych narzędzi do wyłączania trybu FIPS dla moduły TPM, ponieważ jest on zależny od producenta modułu TPM. Aby uzyskać pomoc techniczną, skontaktuj się z producentem OEM. Począwszy od wersji Windows 10 1903, moduły TPM 1,2 nie są używane na potrzeby hybrydowego przyłączenia do usługi Azure AD, a urządzenia z tymi moduły tpmami będą uznawane za niemające modułu TPM.
 
 Hybrydowe dołączanie usługi Azure AD nie jest obsługiwane w przypadku systemu Windows Server z uruchomioną rolą kontrolera domeny (DC).
 
@@ -148,10 +148,10 @@ Poniższa tabela zawiera szczegółowe informacje na temat pomocy technicznej do
 
 | Typ lokalnej nazwy UPN usługi AD | Typ domeny | Wersja systemu Windows 10 | Opis |
 | ----- | ----- | ----- | ----- |
-| Wzajemn | Federacyjny | Od wersji 1703 | Ogólnie dostępna |
-| Bez obsługi routingu | Federacyjny | Od wersji 1803 | Ogólnie dostępna |
+| Wzajemn | Federacyjni | Od wersji 1703 | Ogólnie dostępna |
+| Bez obsługi routingu | Federacyjni | Od wersji 1803 | Ogólnie dostępna |
 | Wzajemn | Zarządzane | Od wersji 1803 | Ogólnie dostępna usługa Azure AD SSPR w systemie Windows ekranu blokady nie jest obsługiwana |
-| Bez obsługi routingu | Zarządzane | Nieobsługiwane | |
+| Bez obsługi routingu | Zarządzane | Brak obsługi | |
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 96adcfa4bbfc4ed0066ccfbdbe57f9840e8b07f8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 930a3f0cf629c99fc03a84c701bcf7b2807c77c1
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75438802"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75972856"
 ---
 # <a name="use-templates-to-create-azure-data-factory-entities"></a>Tworzenie jednostek Azure Data Factory przy użyciu szablonów
 > [!NOTE]
@@ -32,7 +32,7 @@ W takim przypadku należy powtórzyć zadanie w tym samym środowisku, ale z ró
 Ponadto, ponieważ organizacja chce wdrożyć te 10 fabryk danych wiele razy w różnych środowiskach, szablony mogą korzystać z tej samej **użyteczności** , wykorzystując osobne pliki parametrów do tworzenia, testowania i środowiska produkcyjnego.
 
 ## <a name="templating-with-azure-resource-manager"></a>Tworzenia szablonów z Azure Resource Manager
-[Szablony Azure Resource Manager](../../azure-resource-manager/template-deployment-overview.md) są doskonałym sposobem osiągnięcia tworzenia szablonów w Azure Data Factory. Szablony Menedżer zasobów definiują infrastrukturę i konfigurację rozwiązania platformy Azure za pomocą pliku JSON. Ponieważ szablony Azure Resource Manager współpracują ze wszystkimi/większością usług platformy Azure, może być szeroko używany do łatwego zarządzania wszystkimi zasobami zasobów platformy Azure. Zobacz [Tworzenie szablonów Azure Resource Manager](../../azure-resource-manager/templates/template-syntax.md) , aby dowiedzieć się więcej o szablonach Menedżer zasobów.
+[Szablony Azure Resource Manager](../../azure-resource-manager/templates/overview.md) są doskonałym sposobem osiągnięcia tworzenia szablonów w Azure Data Factory. Szablony Menedżer zasobów definiują infrastrukturę i konfigurację rozwiązania platformy Azure za pomocą pliku JSON. Ponieważ szablony Azure Resource Manager współpracują ze wszystkimi/większością usług platformy Azure, może być szeroko używany do łatwego zarządzania wszystkimi zasobami zasobów platformy Azure. Zobacz [Tworzenie szablonów Azure Resource Manager](../../azure-resource-manager/templates/template-syntax.md) , aby dowiedzieć się więcej o szablonach Menedżer zasobów.
 
 ## <a name="tutorials"></a>Samouczki
 Aby uzyskać instrukcje krok po kroku dotyczące tworzenia jednostek Data Factory przy użyciu szablonów Menedżer zasobów, zobacz następujące samouczki:

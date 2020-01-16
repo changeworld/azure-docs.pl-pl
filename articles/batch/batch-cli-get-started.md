@@ -3,7 +3,7 @@ title: Wprowadzenie do interfejsu wiersza polecenia platformy Azure dla usługi 
 description: Skorzystaj z szybkiego wprowadzenia do poleceń usługi Batch w interfejsie wiersza polecenia platformy Azure, aby zarządzać zasobami usługi Azure Batch
 services: batch
 documentationcenter: ''
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 editor: ''
 ms.assetid: fcd76587-1827-4bc8-a84d-bba1cd980d85
@@ -12,14 +12,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: multiple
 ms.workload: big-compute
 ms.date: 07/24/2018
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: dd4a93b9829d69d9d0262428d23d2156d732c006
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: d6d625e092618d1190c3dcdf9997b1ce35211d75
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70095423"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76027285"
 ---
 # <a name="manage-batch-resources-with-azure-cli"></a>Zarządzanie zasobami usługi Batch przy użyciu interfejsu wiersza polecenia platformy Azure
 
@@ -38,7 +38,7 @@ Możesz uruchomić najnowszy interfejs wiersza polecenia platformy Azure w usłu
 
 ## <a name="command-help"></a>Pomoc związana z poleceniami
 
-Możesz wyświetlić tekst pomocy dla każdego polecenia w interfejsie wiersza polecenia platformy Azure, dodając do polecenia opcję `-h`. Pomiń wszelkie inne opcje. Na przykład:
+Możesz wyświetlić tekst pomocy dla każdego polecenia w interfejsie wiersza polecenia platformy Azure, dodając do polecenia opcję `-h`. Pomiń wszelkie inne opcje. Przykład:
 
 * Aby uzyskać pomoc dotyczącą polecenia `az`, wprowadź: `az -h`
 * Aby uzyskać listę wszystkich poleceń usługi Batch w interfejsie wiersza polecenia, użyj: `az batch -h`
@@ -121,7 +121,7 @@ Zobacz [przykłady skryptów interfejsów wiersza polecenia](cli-samples.md) dla
 
 ## <a name="json-files-for-resource-creation"></a>Pliki JSON do tworzenia zasobów
 
-Podczas tworzenia zasobów usługi Batch, np. puli i zadań, możesz określić plik JSON zawierający konfiguracje nowego zasobu, zamiast przekazywać parametry zasobu w opcjach wiersza polecenia. Na przykład:
+Podczas tworzenia zasobów usługi Batch, np. puli i zadań, możesz określić plik JSON zawierający konfiguracje nowego zasobu, zamiast przekazywać parametry zasobu w opcjach wiersza polecenia. Przykład:
 
 ```azurecli
 az batch pool create my_batch_pool.json
@@ -161,7 +161,7 @@ Aby uzyskać przykładowy skrypt ilustrujący używanie klauzuli OData, zobacz [
 
 Aby uzyskać więcej informacji o wykonywaniu wydajnych zapytań listy przy użyciu klauzul OData, zobacz [Efektywne wysyłanie zapytań do usługi Azure Batch](batch-efficient-list-queries.md).
 
-## <a name="troubleshooting-tips"></a>Wskazówki dotyczące rozwiązywania problemów
+## <a name="troubleshooting-tips"></a>Porady dotyczące rozwiązywania problemów
 
 Poniższe porady mogą być pomocne w przypadku rozwiązywania problemów związanych z interfejsem wiersza polecenia platformy Azure:
 

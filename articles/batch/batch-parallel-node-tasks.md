@@ -3,7 +3,7 @@ title: Równoległe Uruchamianie zadań w celu wydajnego używania zasobów obli
 description: Zwiększenie wydajności i obniżenie kosztów dzięki użyciu mniejszej liczby węzłów obliczeniowych i uruchamiania współbieżnych zadań w każdym węźle w puli Azure Batch
 services: batch
 documentationcenter: .net
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 editor: ''
 ms.assetid: 538a067c-1f6e-44eb-a92b-8d51c33d3e1a
@@ -12,14 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/17/2019
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f45c35e6d9fb611ebf73c4eab8b517d8575b8e82
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 2a47cbbf11117197d6d00d532fb0321d284c56b7
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70094942"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76026815"
 ---
 # <a name="run-tasks-concurrently-to-maximize-usage-of-batch-compute-nodes"></a>Uruchom zadania współbieżnie, aby zmaksymalizować użycie węzłów obliczeniowych wsadowych 
 
@@ -33,17 +33,17 @@ Chociaż niektóre scenariusze korzystają z przydzielenia wszystkich zasobów w
 * **Replikacja lokalnego klastra obliczeniowego**, na przykład podczas pierwszego przenoszenia środowiska obliczeniowego na platformę Azure. Jeśli bieżące rozwiązanie lokalne wykonuje wiele zadań w każdym węźle obliczeniowym, można zwiększyć maksymalną liczbę zadań węzłów, aby dokładniej zdublować tę konfigurację.
 
 ## <a name="example-scenario"></a>Przykładowy scenariusz
-Przykładowo, aby zilustrować zalety równoległego wykonywania zadań, Załóżmy, że aplikacja zadania ma wymagania dotyczące [\_](../cloud-services/cloud-services-sizes-specs.md) procesora CPU i pamięci, co jest wystarczające. Jednak w celu zakończenia zadania w wymaganym czasie 1 000 z tych węzłów są potrzebne.
+Przykładowo, aby zilustrować zalety równoległego wykonywania zadań, Załóżmy, że aplikacja zadania ma wymagania dotyczące procesora CPU i pamięci, które są wystarczające dla węzłów [standardowych\_D1](../cloud-services/cloud-services-sizes-specs.md) . Jednak w celu zakończenia zadania w wymaganym czasie 1 000 z tych węzłów są potrzebne.
 
-Zamiast używać standardowych\_węzłów D1, które mają 1 rdzeń procesora CPU, można użyć [standardowych\_węzłów D14](../cloud-services/cloud-services-sizes-specs.md) o 16 rdzeniach i włączyć równoległe wykonywanie zadań. W związku z tym, można użyć *16 razy mniej węzłów* — zamiast węzłów 1 000, wymagana jest tylko 63. Ponadto jeśli w każdym węźle są wymagane duże pliki aplikacji lub dane referencyjne, czas trwania zadania i wydajność są ponownie udoskonalane, ponieważ dane są kopiowane tylko do 63 węzłów.
+Zamiast używać standardowego\_D1 węzłów, które mają 1 rdzeń procesora CPU, można użyć [standardowych\_węzłów D14](../cloud-services/cloud-services-sizes-specs.md) z 16 rdzeniami, a następnie włączyć równoległe wykonywanie zadań. W związku z tym, można użyć *16 razy mniej węzłów* — zamiast węzłów 1 000, wymagana jest tylko 63. Ponadto jeśli w każdym węźle są wymagane duże pliki aplikacji lub dane referencyjne, czas trwania zadania i wydajność są ponownie udoskonalane, ponieważ dane są kopiowane tylko do 63 węzłów.
 
 ## <a name="enable-parallel-task-execution"></a>Włącz równoległe wykonywanie zadań
 Węzły obliczeniowe można skonfigurować do równoległego wykonywania zadań na poziomie puli. Za pomocą biblioteki Batch .NET ustaw właściwość [CloudPool. MaxTasksPerComputeNode][maxtasks_net] podczas tworzenia puli. Jeśli używasz interfejsu API REST usługi Batch, Ustaw element [maxTasksPerNode][rest_addpool] w treści żądania podczas tworzenia puli.
 
-Azure Batch pozwala ustawiać zadania na węzeł do (4x) liczbę węzłów podstawowych. Na przykład, jeśli Pula jest skonfigurowana z węzłami o rozmiarze "duże" (cztery rdzenie), `maxTasksPerNode` wówczas może być ustawiona na 16. Jednak niezależnie od tego, ile rdzeni ma węzeł, nie można mieć więcej niż 256 zadań na węzeł. Aby uzyskać szczegółowe informacje o liczbie rdzeni dla każdego rozmiaru węzła, zobacz [rozmiary dla Cloud Services](../cloud-services/cloud-services-sizes-specs.md). Aby uzyskać więcej informacji na temat limitów usługi, zobacz limity [przydziału i limity dla usługi Azure Batch](batch-quota-limit.md).
+Azure Batch pozwala ustawiać zadania na węzeł do (4x) liczbę węzłów podstawowych. Na przykład jeśli Pula jest skonfigurowana z węzłami o rozmiarze "duże" (cztery rdzenie), `maxTasksPerNode` może być ustawiona na 16. Jednak niezależnie od tego, ile rdzeni ma węzeł, nie można mieć więcej niż 256 zadań na węzeł. Aby uzyskać szczegółowe informacje o liczbie rdzeni dla każdego rozmiaru węzła, zobacz [rozmiary dla Cloud Services](../cloud-services/cloud-services-sizes-specs.md). Aby uzyskać więcej informacji na temat limitów usługi, zobacz limity [przydziału i limity dla usługi Azure Batch](batch-quota-limit.md).
 
 > [!TIP]
-> Pamiętaj, `maxTasksPerNode` aby wziąć pod uwagę wartość podczas konstruowania [formuły skalowania automatycznego][enable_autoscaling] dla puli. Na przykład `$RunningTasks` można znacznie wpływać na liczbę zadań na węzeł. Aby uzyskać więcej informacji [, zobacz Automatyczne skalowanie węzłów obliczeniowych w puli Azure Batch](batch-automatic-scaling.md) .
+> Pamiętaj, aby wziąć pod uwagę wartość `maxTasksPerNode` podczas konstruowania [formuły automatycznego skalowania][enable_autoscaling] dla puli. Na przykład formuła, która oblicza `$RunningTasks` może mieć znacznie wpływ na wzrost liczby zadań na węzeł. Aby uzyskać więcej informacji [, zobacz Automatyczne skalowanie węzłów obliczeniowych w puli Azure Batch](batch-automatic-scaling.md) .
 >
 >
 
@@ -52,7 +52,7 @@ Gdy węzły obliczeniowe w puli mogą wykonywać zadania współbieżnie, ważne
 
 Za pomocą właściwości [CloudPool. TaskSchedulingPolicy][task_schedule] można określić, że zadania mają być przypisywane równomiernie we wszystkich węzłach w puli ("rozpraszanie"). Można też określić, że możliwie jak najwięcej zadań należy przypisać do każdego węzła przed przypisaniem zadań do innego węzła w puli ("pakowanie").
 
-Przykładowo, jak ta funkcja jest cenna, weź pod uwagę pulę [standardowych\_węzłów D14](../cloud-services/cloud-services-sizes-specs.md) (w powyższym przykładzie), która jest skonfigurowana z wartością [CloudPool. MaxTasksPerComputeNode][maxtasks_net] równą 16. Jeśli [CloudPool. TaskSchedulingPolicy][task_schedule] jest skonfigurowany z ComputeNodeFillTypeem [][fill_type] *Pack*, to maksymalizuje użycie wszystkich 16 rdzeni każdego węzła i zezwoli [puli skalowania](batch-automatic-scaling.md) automatycznego na oczyszczanie nieużywanych węzłów z puli (węzły bez wszystkie przypisane zadania). Pozwala to zminimalizować użycie zasobów i zaoszczędzić pieniądze.
+Przykładem tego, jak ta funkcja jest cenna, należy wziąć pod uwagę pulę [standardowych\_węzłów D14](../cloud-services/cloud-services-sizes-specs.md) (w powyższym przykładzie), która jest skonfigurowana z wartością [CloudPool. MaxTasksPerComputeNode][maxtasks_net] równą 16. Jeśli [CloudPool. TaskSchedulingPolicy][task_schedule] jest skonfigurowany przy użyciu [ComputeNodeFillType][fill_type] *pakietu*, maksymalizuje użycie wszystkich 16 rdzeni każdego węzła i zezwoli [puli skalowania](batch-automatic-scaling.md) automatycznego na oczyszczanie nieużywanych węzłów z puli (węzły bez przypisanych zadań). Pozwala to zminimalizować użycie zasobów i zaoszczędzić pieniądze.
 
 ## <a name="batch-net-example"></a>Przykład platformy .NET w usłudze Batch
 Ten fragment kodu interfejsu API usługi [Batch .NET][api_net] przedstawia żądanie utworzenia puli zawierającej cztery węzły z maksymalnie czterema zadaniami na węzeł. Określa zasady planowania zadań, które będą wypełnić każdy węzeł zadaniami przed przypisaniem zadań do innego węzła w puli. Aby uzyskać więcej informacji na temat dodawania pul przy użyciu interfejsu API usługi Batch platformy .NET, zobacz [BatchClient. PoolOperations. ispool][poolcreate_net].
@@ -89,7 +89,7 @@ Ten fragment kodu API [REST usługi Batch][api_rest] przedstawia żądanie utwor
 ```
 
 > [!NOTE]
-> Właściwość `maxTasksPerNode` element i [MaxTasksPerComputeNode][maxtasks_net] można ustawić tylko w czasie tworzenia puli. Nie można ich modyfikować po utworzeniu puli.
+> Dla elementu `maxTasksPerNode` i właściwości [MaxTasksPerComputeNode][maxtasks_net] można ustawić tylko w czasie tworzenia puli. Nie można ich modyfikować po utworzeniu puli.
 >
 >
 
@@ -119,7 +119,7 @@ Duration: 00:08:48.2423500
 Drugie uruchomienie przykładu pokazuje znaczny spadek czasu trwania zadania. Wynika to z faktu, że pula została skonfigurowana z czterema zadaniami na węzeł, co umożliwia równoległe wykonywanie zadań, aby zakończyć zadanie w prawie czwartym czasie.
 
 > [!NOTE]
-> Czasy trwania zadań w powyższych podsumowaniu nie obejmują czasu utworzenia puli. Każde z powyższych zadań zostało przesłane do wcześniej utworzonych pul, których węzły obliczeniowe były w stanie bezczynności w czasie przesyłania.
+> Czasy trwania zadań w powyższych podsumowaniu nie obejmują czasu utworzenia puli. Każde z powyższych zadań zostało przesłane do wcześniej utworzonych pul, których węzły obliczeniowe były w stanie *bezczynności* w czasie przesyłania.
 >
 >
 

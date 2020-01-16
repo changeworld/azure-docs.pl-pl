@@ -5,16 +5,16 @@ author: sideeksh
 manager: rochakm
 ms.date: 04/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: 8ed5df15b8ae8e9836c5b8ac8e7d6ad0111f63e1
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 051e8b0add7cf7ab2c4cb2f02ed4e33ea9a23c9b
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75941892"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75973805"
 ---
 # <a name="common-questions-azure-to-azure-disaster-recovery"></a>Często zadawane pytania: odzyskiwanie po awarii z platformy Azure do platformy Azure
 
-Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące odzyskiwania po awarii maszyn wirtualnych platformy Azure do innego regionu platformy Azure przy użyciu [Site Recovery](site-recovery-overview.md). 
+Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące odzyskiwania po awarii maszyn wirtualnych platformy Azure do innego regionu platformy Azure przy użyciu [Site Recovery](site-recovery-overview.md).
 
 
 ## <a name="general"></a>Ogólne
@@ -26,7 +26,7 @@ Każde wystąpienie chronione przez usługę Azure Site Recovery jest bezpłatne
 ### <a name="during-the-first-31-days-will-i-incur-any-other-azure-charges"></a>Czy podczas pierwszych 31 dni będą naliczane inne opłaty usługi Azure?
 Tak, nawet jeśli usługa Azure Site Recovery będzie bezpłatna przez pierwsze 31 dni dla chronionego wystąpienia, mogą zostać naliczone opłaty za usługę Azure Storage, transakcje magazynowe i transfer danych. Opłaty za zasoby obliczeniowe platformy Azure mogą zostać również naliczone dla odzyskanej maszyny wirtualnej. Uzyskaj pełne szczegóły [dotyczące cen](https://azure.microsoft.com/pricing/details/site-recovery)
 
-### <a name="where-can-i-find-best-practices-for-azure-vm-disaster-recovery"></a>Gdzie mogę znaleźć najlepsze rozwiązania dotyczące odzyskiwania po awarii maszyny wirtualnej platformy Azure? 
+### <a name="where-can-i-find-best-practices-for-azure-vm-disaster-recovery"></a>Gdzie mogę znaleźć najlepsze rozwiązania dotyczące odzyskiwania po awarii maszyny wirtualnej platformy Azure?
 1. [Informacje o architekturze platformy Azure do platformy Azure](azure-to-azure-architecture.md)
 2. [Przejrzyj obsługiwane i nieobsługiwane konfiguracje](azure-to-azure-support-matrix.md)
 3. [Konfigurowanie odzyskiwania po awarii dla maszyn wirtualnych platformy Azure](azure-to-azure-how-to-enable-replication.md)

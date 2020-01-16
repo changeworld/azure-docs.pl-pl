@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: e4cab8963e3083d265d0254c81b78fbabb84a269
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 3bb7a62433993f1af26b1ce8bcb4ed258c34623c
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70091538"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75973134"
 ---
 # <a name="prepay-for-azure-software-plans"></a>Opłacanie planów oprogramowania platformy Azure z góry
 
@@ -23,7 +23,7 @@ Gdy płacisz za korzystanie z oprogramowania SUSE i RedHat na platformie Azure, 
 W Azure Portal można kupić plany oprogramowania SUSE i RedHat. Aby kupić plan:
 
 - Użytkownik musi mieć rolę właściciela dla co najmniej jednego przedsiębiorstwa lub subskrypcji indywidualnej z cennikiem z opcją płatność zgodnie z rzeczywistym użyciem.
-- W przypadku subskrypcji przedsiębiorstwa w [portalu EA](https://ea.azure.com/)należy włączyć opcję **Dodaj wystąpienia zarezerwowane** . Jeśli to ustawienie jest wyłączone, musisz być administratorem EA dla subskrypcji.
+- W przypadku subskrypcji Enterprise w witrynie [EA portal](https://ea.azure.com/) musi być włączona opcja **Dodaj wystąpienia zarezerwowane**. Jeśli to ustawienie jest wyłączone, musisz być administratorem EA dla subskrypcji.
 - W przypadku programu Cloud Solution Provider (CSP) agenci administracyjni lub agenci sprzedaży mogą kupić plany oprogramowania.
 
 ## <a name="buy-a-software-plan"></a>Kup plan oprogramowania
@@ -32,7 +32,7 @@ W Azure Portal można kupić plany oprogramowania SUSE i RedHat. Aby kupić plan
 2. Kliknij przycisk **Dodaj** , a następnie wybierz plan oprogramowania, który chcesz kupić.
 Wypełnij pola wymagane. Wszystkie maszyny wirtualne lub maszyny wirtualne z systemem SUSE Linux, które pasują do posiadanych przez Ciebie atrybutów, pobierają rabat. Rzeczywista liczba wdrożeń, które pobiera rabat, zależy od wybranego zakresu i ilości.
 3. Wybierz subskrypcję. Jest on używany do płacenia za plan.
-Metoda płatności za subskrypcję jest naliczana za koszty związane z pozostałymi kosztami rezerwacji. Typ subskrypcji musi być Umowa Enterprise (numery ofert: MS-AZR-0017P lub MS-AZR-0148P) lub indywidualna umowa z cennikiem z opcją płatność zgodnie z rzeczywistym użyciem (numery ofert: MS-AZR-0003P lub MS-AZR-0023P).
+Metoda płatności za subskrypcję jest naliczana za koszty związane z pozostałymi kosztami rezerwacji. Typem subskrypcji musi być Umowa Enterprise (numery ofert: MS-AZR-0017P lub MS-AZR-0148P) lub indywidualna umowa z cenami z rabatem zgodnie z rzeczywistym użyciem (numery ofert: MS-AZR-0003P lub MS-AZR-0023P).
     - W przypadku subskrypcji Enterprise opłaty są odliczane od salda zobowiązania pieniężnego rejestracji lub naliczane jako nadwyżka.
     - W przypadku indywidualnej subskrypcji z płatnością zgodnie z rzeczywistym użyciem opłaty są naliczane za kartę kredytową lub formę płatności faktury.
 4. Wybierz zakres. Zakres może obejmować jedną subskrypcję lub wiele subskrypcji (zakres udostępniony).
@@ -47,7 +47,7 @@ Rabat związany z rezerwacją jest automatycznie stosowany do miernika oprogramo
 
 ## <a name="discount-applies-to-different-suse-vm-sizes"></a>Rabat dotyczy różnych rozmiarów maszyn wirtualnych SUSE
 
-Podobnie jak w przypadku zarezerwowanych wystąpień maszyn wirtualnych, plany systemu SUSE Linux oferują elastyczność rozmiaru wystąpienia. Zniżka obowiązuje nawet w przypadku wdrożenia maszyny wirtualnej o innym rozmiarze niż zakupiony plan SUSE. Aby uzyskać więcej informacji, zobacz [Opis sposobu stosowania rabatu planu oprogramowania](../../billing/billing-understand-suse-reservation-charges.md).
+Podobnie jak w przypadku zarezerwowanych wystąpień maszyn wirtualnych, plany systemu SUSE Linux oferują elastyczność rozmiaru wystąpienia. Zniżka obowiązuje nawet w przypadku wdrożenia maszyny wirtualnej o innym rozmiarze niż zakupiony plan SUSE. Aby uzyskać więcej informacji, zobacz [Opis sposobu stosowania rabatu planu oprogramowania](../../cost-management-billing/reservations/understand-suse-reservation-charges.md).
 
 ## <a name="redhat-plan-discount"></a>Rabat dla planu RedHat
 
@@ -58,20 +58,20 @@ Rabaty planu RedHat dotyczą tylko rozmiaru maszyny wirtualnej, który wybrano w
 
 ## <a name="cancellation-and-exchanges-not-allowed"></a>Anulowanie i zamiany są niedozwolone
 
-Nie można anulować ani wymienić zakupionego planu SUSE lub RedHat. Sprawdź użycie, aby upewnić się, że zakupiony plan jest właściwy. Aby uzyskać pomoc dotyczącą określania, co należy kupić, zobacz [Opis sposobu stosowania rabatu planu oprogramowania](../../billing/billing-understand-suse-reservation-charges.md).
+Nie można anulować ani wymienić zakupionego planu SUSE lub RedHat. Sprawdź użycie, aby upewnić się, że zakupiony plan jest właściwy. Aby uzyskać pomoc dotyczącą określania, co należy kupić, zobacz [Opis sposobu stosowania rabatu planu oprogramowania](../../cost-management-billing/reservations/understand-suse-reservation-charges.md).
 
 ## <a name="need-help-contact-us"></a>Potrzebujesz pomocy? Skontaktuj się z nami.
 
-Jeśli masz pytania lub potrzebujesz pomocy, [Utwórz żądanie obsługi](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+Jeśli masz pytania lub potrzebujesz pomocy, [utwórz wniosek o pomoc techniczną](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby dowiedzieć się, jak zarządzać rezerwacją, zobacz [Zarządzanie rezerwacjami platformy Azure](../../billing/billing-manage-reserved-vm-instance.md).
+Aby dowiedzieć się, jak zarządzać rezerwacją, zobacz [Zarządzanie rezerwacjami platformy Azure](../../cost-management-billing/reservations/manage-reserved-vm-instance.md).
 
 Aby dowiedzieć się więcej, zobacz następujące artykuły:
 
-- [Co to są Azure Reservations?](../../billing/billing-save-compute-costs-reservations.md)
-- [Zarządzanie rezerwacjami na platformie Azure](../../billing/billing-manage-reserved-vm-instance.md)
-- [Informacje o sposobie stosowania rabatu w ramach rezerwacji SUSE](../../billing/billing-understand-suse-reservation-charges.md)
-- [Informacje na temat użycia rezerwacji dla subskrypcji z opcją płatność zgodnie z rzeczywistym użyciem](../../billing/billing-understand-reserved-instance-usage.md)
-- [Informacje na temat użycia rezerwacji na potrzeby rejestracji w przedsiębiorstwie](../../billing/billing-understand-reserved-instance-usage-ea.md)
+- [Co to jest Azure Reservations?](../../cost-management-billing/reservations/save-compute-costs-reservations.md)
+- [Zarządzanie rezerwacjami na platformie Azure](../../cost-management-billing/reservations/manage-reserved-vm-instance.md)
+- [Informacje o sposobie stosowania rabatu w ramach rezerwacji SUSE](../../cost-management-billing/reservations/understand-suse-reservation-charges.md)
+- [Understand reservation usage for your Pay-As-You-Go subscription (Informacje na temat użycia wystąpień zarezerwowanych w przypadku subskrypcji z płatnością zgodnie z rzeczywistym użyciem)](../../cost-management-billing/reservations/understand-reserved-instance-usage.md)
+- [Understand reservation usage for your Enterprise enrollment (Informacje na temat użycia wystąpień zarezerwowanych w przypadku rejestracji Enterprise)](../../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md)

@@ -1,18 +1,15 @@
 ---
 title: Migrowanie maszyny wirtualnej VMware bez agenta Azure Migrate migracji serwera
 description: Dowiedz się, jak uruchomić migrację maszyn wirtualnych VMware bez wykorzystania agentów przy użyciu Azure Migrate.
-author: rayne-wiselman
-ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 11/19/2019
-ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 2b4aad83abc92170df5a7e7cfa7f7751b49b3424
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: fa77b9d730c28c21569064d05ca3a600dfb71071
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196418"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028693"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless"></a>Migrowanie maszyn wirtualnych VMware na platformę Azure (bez wykorzystania agentów)
 
@@ -20,7 +17,7 @@ W tym artykule opisano sposób migrowania lokalnych maszyn wirtualnych programu 
 
 [Azure Migrate](migrate-services-overview.md) udostępnia centralne centrum do śledzenia odnajdywania, oceny i migracji lokalnych aplikacji i obciążeń oraz wystąpień maszyn wirtualnych AWS/GCP na platformę Azure. Centrum udostępnia Azure Migrate narzędzia do oceny i migracji, a także oferty niezależnych dostawców oprogramowania (ISV) innych firm.
 
-Ten samouczek jest trzecią częścią serii, która pokazuje, jak oceniać i migrować maszyny wirtualne VMware na platformę Azure przy użyciu funkcji oceny i migracji serwera Azure Migrate. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Ten samouczek jest trzecią częścią serii, która pokazuje, jak oceniać i migrować maszyny wirtualne VMware na platformę Azure przy użyciu funkcji oceny i migracji serwera Azure Migrate. Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Przygotuj maszyny wirtualne do migracji.
@@ -92,7 +89,7 @@ Postępuj zgodnie z instrukcjami w [tym artykule](how-to-set-up-appliance-vmware
 
 Azure Migrate wymaga wprowadzenia zmian w maszynie wirtualnej w celu zapewnienia, że maszyny wirtualne można migrować do platformy Azure.
 
-- W niektórych systemach operacyjnych Azure Migrate automatycznie wprowadza te zmiany. [Dowiedz się więcej](migrate-support-matrix-vmware.md#agentless-migration-vmware-vm-requirements)
+- W niektórych systemach operacyjnych Azure Migrate automatycznie wprowadza te zmiany. [Dowiedz się więcej](migrate-support-matrix-vmware-migration.md#agentless-vmware-vms)
 - W przypadku migrowania maszyny wirtualnej, która nie ma jednego z tych systemów operacyjnych, postępuj zgodnie z instrukcjami, aby przygotować maszynę wirtualną.
 - Ważne jest, aby wprowadzić te zmiany przed rozpoczęciem migracji. W przypadku migrowania maszyny wirtualnej przed wprowadzeniem zmiany, maszyna wirtualna może nie zostać uruchomiona na platformie Azure.
 - Zmiany konfiguracji wprowadzone w lokalnych maszynach wirtualnych są replikowane na platformę Azure po włączeniu replikacji dla maszyny wirtualnej. Aby upewnić się, że zmiany są replikowane, należy się upewnić, że migrowany punkt odzyskiwania jest późniejszy niż czas, w którym zmiany konfiguracji zostały wprowadzone lokalnie.
@@ -100,7 +97,7 @@ Azure Migrate wymaga wprowadzenia zmian w maszynie wirtualnej w celu zapewnienia
 
 ### <a name="prepare-windows-server-vms"></a>Przygotowywanie maszyn wirtualnych z systemem Windows Server
 
-**Akcja** | **Szczegóły** | **Wskazówek**
+**Akcja** | **Szczegóły** | **Instrukcje**
 --- | --- | ---
 Upewnij się, że woluminy systemu Windows na maszynie wirtualnej platformy Azure używają tych samych przypisań liter dysku co lokalna maszyna wirtualna. | Skonfiguruj zasady sieci SAN jako wszystkie. | 1. Zaloguj się do maszyny wirtualnej przy użyciu konta administratora, a następnie otwórz okno polecenia.<br/> 2. Wpisz polecenie **diskpart** , aby uruchomić narzędzie Diskpart.<br/> 3. Wpisz **zasady sieci San = OnlineAll**<br/> 4. wpisz exit, aby opuścić program DiskPart, i Zamknij wiersz polecenia.
 Włączanie konsoli dostępu szeregowego platformy Azure dla maszyny wirtualnej platformy Azure | Ułatwia to rozwiązywanie problemów. Nie ma potrzeby ponownego uruchamiania maszyny wirtualnej. Maszyna wirtualna platformy Azure rozpocznie rozruch przy użyciu obrazu dysku, co jest równoznaczne z ponownym uruchomieniem nowej maszyny wirtualnej. | Postępuj zgodnie z [tymi instrukcjami](https://docs.microsoft.com/azure/virtual-machines/windows/serial-console) , aby włączyć.
@@ -151,7 +148,7 @@ Po ukończeniu odnajdywania można rozpocząć replikację maszyn wirtualnych VM
 
 5. W obszarze **Maszyny wirtualne** wyszukaj potrzebne maszyny wirtualne i sprawdź każdą maszynę wirtualną, którą chcesz migrować. Następnie kliknij przycisk **Dalej: ustawienia docelowe**.
 
-    ![Wybieranie maszyn wirtualnych](./media/tutorial-migrate-vmware/select-vms.png)
+    ![Wybierz maszyny wirtualne](./media/tutorial-migrate-vmware/select-vms.png)
 
 6. W obszarze **Ustawienia elementu docelowego** wybierz subskrypcję i docelowy region migracji, a następnie określ grupę zasobów, w której będą znajdować się maszyny wirtualne platformy Azure po migracji. W obszarze **Sieć wirtualna** wybierz sieć wirtualną/podsieć platformy Azure, do której zostaną dołączone maszyny wirtualne platformy Azure po migracji.
 7. W obszarze **Korzyść użycia hybrydowego platformy Azure**:
@@ -161,7 +158,7 @@ Po ukończeniu odnajdywania można rozpocząć replikację maszyn wirtualnych VM
 
     ![Ustawienia docelowe](./media/tutorial-migrate-vmware/target-settings.png)
 
-8. W obszarze **Obliczenia** sprawdź nazwę, rozmiar, typ dysku systemu operacyjnego i zestaw dostępności maszyny wirtualnej. Maszyny wirtualne muszą być zgodne z [wymaganiami platformy Azure](migrate-support-matrix-vmware.md#agentless-migration-vmware-vm-requirements).
+8. W obszarze **Obliczenia** sprawdź nazwę, rozmiar, typ dysku systemu operacyjnego i zestaw dostępności maszyny wirtualnej. Maszyny wirtualne muszą być zgodne z [wymaganiami platformy Azure](migrate-support-matrix-vmware-migration.md#azure-vm-requirements).
 
     - **Rozmiar maszyny wirtualnej**: Jeśli korzystasz z zaleceń dotyczących oceny, lista rozwijana rozmiaru maszyny wirtualnej będzie zawierać zalecany rozmiar. W przeciwnym razie usługa Azure Migrate wybierze rozmiar na podstawie najbliższego dopasowania w subskrypcji platformy Azure. Alternatywnie możesz wybrać rozmiar ręczny w obszarze **rozmiaru maszyny wirtualnej platformy Azure**. 
     - **Dysk systemu operacyjnego**: Określ dysk systemu operacyjnego (Boot) dla maszyny wirtualnej. Dysk systemu operacyjnego to dysk, na którym jest zainstalowany program ładujący i instalator systemu operacyjnego. 

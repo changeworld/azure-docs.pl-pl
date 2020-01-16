@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: genli
-ms.openlocfilehash: 87faea5385f5b0fd2c481c6aa7c45a9867b34163
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 4ef8bc029c63aaf297462a7b53f6daba1a7c850b
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75942183"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028427"
 ---
 # <a name="troubleshoot-a-problem-azure-vm-by-using-nested-virtualization-in-azure"></a>Rozwiązywanie problemów z maszyną wirtualną platformy Azure przy użyciu wirtualizacji zagnieżdżonej na platformie Azure
 
@@ -26,11 +26,7 @@ W tym artykule pokazano, jak utworzyć zagnieżdżone środowisko wirtualizacji 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby można było zainstalować maszynę wirtualną problemu, maszyna wirtualna musi spełniać następujące wymagania wstępne:
-
--   Maszyna ratownicza musi znajdować się w tej samej lokalizacji co maszyna wirtualna problemu.
-
--   W przypadku maszyny wirtualnej z problemową maszyną wirtualną należy używać tego samego typu konta magazynu (Standard lub Premium).
+Aby można było zainstalować maszynę wirtualną problemu, maszyna ratownicza musi używać tego samego typu konta magazynu (Standard lub Premium) jako maszyny wirtualnej problemu.
 
 ## <a name="step-1-create-a-rescue-vm-and-install-hyper-v-role"></a>Krok 1. Tworzenie ratowniczej maszyny wirtualnej i Instalowanie roli funkcji Hyper-V
 

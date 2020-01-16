@@ -10,12 +10,12 @@ author: linda33wj
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 10/31/2017
-ms.openlocfilehash: bbdc17766e6df15fe0f1f6b4107f6f910fdcceaf
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 10555defc4888af66bb88d19190b6543aa8ae0c9
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929758"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75974702"
 ---
 # <a name="use-powershell-to-create-a-data-factory-pipeline-to-copy-data-from-on-premises-to-azure"></a>Korzystanie z programu PowerShell do tworzenia potoku usługi Data Factory w celu kopiowania danych ze środowiska lokalnego na platformę Azure
 
@@ -28,11 +28,11 @@ Ten przykładowy skrypt programu PowerShell tworzy potok w Azure Data Factory, k
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - **SQL Server**. W tym przykładzie jest używana lokalna baza danych SQL Server jako **źródłowy** magazyn danych.
-- **Konto usługi Azure Storage**. W tym przykładzie używasz magazynu obiektów blob platformy Azure jako **miejsca docelowego/ujścia** danych. Jeśli nie masz konta usługi Azure Storage, utwórz je, wykonując czynności przedstawione w artykule [Tworzenie konta magazynu](../../storage/common/storage-quickstart-create-account.md).
+- **Konto usługi Azure Storage**. W tym przykładzie używasz magazynu obiektów blob platformy Azure jako **miejsca docelowego/ujścia** danych. Jeśli nie masz konta usługi Azure Storage, utwórz je, wykonując czynności przedstawione w artykule [Tworzenie konta magazynu](../../storage/common/storage-account-create.md).
 - **Własne środowisko Integration Runtime**. Pobierz plik MSI z [Centrum pobierania](https://www.microsoft.com/download/details.aspx?id=39717) i uruchom go, aby zainstalować własne środowisko Integration Runtime na komputerze.  
 
 ### <a name="create-sample-database-in-sql-server"></a>Tworzenie przykładowej bazy danych w SQL Server
-1. W lokalnej bazie danych SQL Server Utwórz tabelę o nazwie **EMP** , używając następującego skryptu SQL: 
+1. W lokalnej bazie danych SQL Server Utwórz tabelę o nazwie **EMP** , używając następującego skryptu SQL:
 
    ```sql   
      CREATE TABLE dbo.emp
@@ -67,7 +67,7 @@ Po uruchomieniu przykładowego skryptu można użyć następującego polecenia, 
 ```powershell
 Remove-AzResourceGroup -ResourceGroupName $resourceGroupName
 ```
-Aby usunąć fabrykę danych z grupy zasobów, uruchom następujące polecenie: 
+Aby usunąć fabrykę danych z grupy zasobów, uruchom następujące polecenie:
 
 ```powershell
 Remove-AzDataFactoryV2 -Name $dataFactoryName -ResourceGroupName $resourceGroupName
@@ -75,18 +75,18 @@ Remove-AzDataFactoryV2 -Name $dataFactoryName -ResourceGroupName $resourceGroupN
 
 ## <a name="script-explanation"></a>Objaśnienia dla skryptu
 
-W tym skrypcie użyto następujących poleceń: 
+W tym skrypcie użyto następujących poleceń:
 
 | Polecenie | Uwagi |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Tworzy grupę zasobów, w której są przechowywane wszystkie zasoby. |
 | [Set-AzDataFactoryV2](/powershell/module/az.datafactory/set-Azdatafactoryv2) | Tworzenie fabryki danych. |
-| [New-AzDataFactoryV2LinkedServiceEncryptCredential](/powershell/module/az.datafactory/new-Azdatafactoryv2linkedserviceencryptedcredential) | Szyfruje poświadczenia w połączonej usłudze i generuje nową definicję połączonej usługi z zaszyfrowanym poświadczeniem. 
+| [New-AzDataFactoryV2LinkedServiceEncryptCredential](/powershell/module/az.datafactory/new-Azdatafactoryv2linkedserviceencryptedcredential) | Szyfruje poświadczenia w połączonej usłudze i generuje nową definicję połączonej usługi z zaszyfrowanym poświadczeniem.
 | [Set-AzDataFactoryV2LinkedService](/powershell/module/az.datafactory/Set-Azdatafactoryv2linkedservice) | Tworzy połączoną usługę w fabryce danych. Połączona usługa łączy magazyn danych lub dane obliczeniowe z fabryką danych. |
-| [Set-AzDataFactoryV2Dataset](/powershell/module/az.datafactory/Set-Azdatafactoryv2dataset) | Tworzy zestaw danych w fabryce danych. Zestaw danych reprezentuje dane wejściowe/wyjściowe dla działania w potoku. | 
+| [Set-AzDataFactoryV2Dataset](/powershell/module/az.datafactory/Set-Azdatafactoryv2dataset) | Tworzy zestaw danych w fabryce danych. Zestaw danych reprezentuje dane wejściowe/wyjściowe dla działania w potoku. |
 | [Set-AzDataFactoryV2Pipeline](/powershell/module/az.datafactory/Set-Azdatafactoryv2pipeline) | Tworzy potok w fabryce danych. Potok zawiera jedną lub więcej działań, które wykonują określoną operację. W tym potoku działanie kopiowania kopiuje dane z jednej lokalizacji do innej lokalizacji w Blob Storage platformy Azure. |
 | [Invoke-AzDataFactoryV2Pipeline](/powershell/module/az.datafactory/Invoke-Azdatafactoryv2pipeline) | Tworzy przebieg dla potoku. Innymi słowy, uruchamia potok. |
-| [Get-AzDataFactoryV2ActivityRun](/powershell/module/az.datafactory/get-Azdatafactoryv2activityrun) | Pobiera szczegółowe informacje o przebiegu działania (przebieg działania) w potoku. 
+| [Get-AzDataFactoryV2ActivityRun](/powershell/module/az.datafactory/get-Azdatafactoryv2activityrun) | Pobiera szczegółowe informacje o przebiegu działania (przebieg działania) w potoku.
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Usuwa grupę zasobów wraz ze wszystkimi zagnieżdżonymi zasobami. |
 |||
 

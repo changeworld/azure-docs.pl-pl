@@ -1,5 +1,5 @@
 ---
-title: 'Program Azure AD Connect: Migrowanie z Federacji do PTA dla usługi Azure AD'
+title: 'Azure AD Connect: Migrowanie z Federacji do PTA dla usługi Azure AD'
 description: Ten artykuł zawiera informacje o przenoszeniu hybrydowego środowiska tożsamości z Federacji do uwierzytelniania przekazywanego.
 services: active-directory
 author: billmath
@@ -12,18 +12,19 @@ ms.date: 05/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6646217149cec48ca5fcee59b3dd9d850965c602
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 21ceacf27f92781b40a856b0c0a4d627d41a0738
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779917"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028563"
 ---
 # <a name="migrate-from-federation-to-pass-through-authentication-for-azure-active-directory"></a>Migrowanie z Federacji do uwierzytelniania przekazywanego dla Azure Active Directory
 
 W tym artykule opisano sposób przenoszenia domen organizacji z Active Directory Federation Services (AD FS) do uwierzytelniania przekazywanego.
 
-Możesz [pobrać ten artykuł](https://aka.ms/ADFSTOPTADPDownload).
+> [!NOTE]
+> Zmiana metody uwierzytelniania wymaga planowania, testowania i ewentualnych przestojów. [Wdrażanie etapowe](how-to-connect-staged-rollout.md) zapewnia alternatywny sposób testowania i stopniowego migrowania z Federacji do uwierzytelniania w chmurze przy użyciu uwierzytelniania przekazywanego.
 
 ## <a name="prerequisites-for-migrating-to-pass-through-authentication"></a>Wymagania wstępne dotyczące migracji do uwierzytelniania przekazywanego
 
@@ -42,7 +43,7 @@ Aby zaktualizować Azure AD Connect, wykonaj kroki opisane w [Azure AD Connect: 
 
 Uwierzytelnianie przekazywane wymaga wdrożenia lekkich agentów na serwerze Azure AD Connect i na komputerze lokalnym, na którym działa system Windows Server. Aby zmniejszyć opóźnienie, zainstaluj agentów jak najbliżej kontrolerów domeny Active Directory.
 
-W przypadku większości klientów dwa lub trzy agenci uwierzytelniania są wystarczające, aby zapewnić wysoką dostępność i wymaganą pojemność. Dzierżawa może mieć co najwyżej 12 agentów. Pierwszy Agent jest zawsze instalowany na samym serwerze Azure AD Connect. Aby dowiedzieć się więcej na temat ograniczeń agenta i opcji [wdrażania agentów, zobacz uwierzytelnianie przekazywane usługi Azure AD: Bieżące ograniczenia](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication-current-limitations).
+W przypadku większości klientów dwa lub trzy agenci uwierzytelniania są wystarczające, aby zapewnić wysoką dostępność i wymaganą pojemność. Dzierżawa może mieć co najwyżej 12 agentów. Pierwszy Agent jest zawsze instalowany na samym serwerze Azure AD Connect. Aby dowiedzieć się więcej o ograniczeniach agenta i opcjach wdrażania agentów, zobacz [uwierzytelnianie przekazywane przez usługę Azure AD: bieżące ograniczenia](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication-current-limitations).
 
 ### <a name="plan-the-migration-method"></a>Planowanie metody migracji
 
@@ -64,7 +65,7 @@ Aby zrozumieć, której metody należy użyć, wykonaj kroki opisane w poniższy
 1. Zaloguj się do [portalu usługi Azure AD](https://aad.portal.azure.com/) przy użyciu konta administratora globalnego.
 2. W sekcji **Logowanie użytkownika** sprawdź następujące ustawienia:
    * **Federacja** jest ustawiona na wartość **Enabled (włączone**).
-   * **Bezproblemowe logowanie** jednokrotne jest ustawione na **wyłączone**.
+   * **Bezproblemowe logowanie jednokrotne** jest ustawione na **wyłączone**.
    * **Uwierzytelnianie przekazywane** jest ustawione na **wyłączone**.
 
    ![Zrzut ekranu ustawień w sekcji Logowanie użytkownika Azure AD Connect](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image1.png)
@@ -77,8 +78,8 @@ Aby zrozumieć, której metody należy użyć, wykonaj kroki opisane w poniższy
    ![Zrzut ekranu przedstawiający opcję Wyświetl bieżącą konfigurację na stronie dodatkowe zadania](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image2.png)<br />
 3. Na stronie **Przejrzyj rozwiązanie** przewiń do **Active Directory Federation Services (AD FS)** .<br />
 
-   * Jeśli konfiguracja AD FS zostanie wyświetlona w tej sekcji, można bezpiecznie założyć, że AD FS pierwotnie skonfigurowane przy użyciu Azure AD Connect. Możesz skonwertować domeny z tożsamości federacyjnej na tożsamość zarządzaną przy użyciu opcji Zaloguj Azure AD Connect **zmienić użytkownika** . Aby uzyskać więcej informacji o tym procesie, zobacz sekcję **opcja A: Skonfiguruj uwierzytelnianie przekazywane przy użyciu Azure AD Connect**.
-   * Jeśli AD FS nie ma na liście bieżących ustawień, należy ręcznie skonwertować domeny z tożsamości federacyjnej na tożsamość zarządzaną przy użyciu programu PowerShell. Aby uzyskać więcej informacji o tym procesie, zobacz sekcję **opcja B: Przełączenie z Federacji do uwierzytelniania przekazywanego przy użyciu Azure AD Connect i**programu PowerShell.
+   * Jeśli konfiguracja AD FS zostanie wyświetlona w tej sekcji, można bezpiecznie założyć, że AD FS pierwotnie skonfigurowane przy użyciu Azure AD Connect. Możesz skonwertować domeny z tożsamości federacyjnej na tożsamość zarządzaną przy użyciu opcji Zaloguj Azure AD Connect **zmienić użytkownika** . Aby uzyskać więcej informacji o tym procesie, zobacz sekcję **Opcja A: Konfigurowanie uwierzytelniania przekazywanego przy użyciu Azure AD Connect**.
+   * Jeśli AD FS nie ma na liście bieżących ustawień, należy ręcznie skonwertować domeny z tożsamości federacyjnej na tożsamość zarządzaną przy użyciu programu PowerShell. Aby uzyskać więcej informacji o tym procesie, zobacz sekcję **Opcja B: przełączenie z Federacji do uwierzytelniania przekazywanego przy użyciu Azure AD Connect i programu PowerShell**.
 
 ### <a name="document-current-federation-settings"></a>Bieżące ustawienia Federacji dokumentu
 
@@ -104,7 +105,7 @@ Więcej informacji można znaleźć w tych artykułach:
 > [!NOTE]
 > Jeśli **SupportsMfa** ma **wartość true**, korzystasz z lokalnego rozwiązania do uwierzytelniania wieloskładnikowego, aby wstrzyknąć wyzwanie drugiego czynnika do przepływu uwierzytelniania użytkownika. Ta konfiguracja nie działa już w scenariuszach uwierzytelniania usługi Azure AD. 
 >
-> Zamiast tego należy użyć usługi Azure MFA w chmurze, aby wykonać tę samą funkcję. Przed kontynuowaniem Oceń wymagania dotyczące uwierzytelniania wieloskładnikowego. Przed przekonwertowaniem domen upewnij się, że rozumiesz, jak korzystać z usługi Azure MFA Authentication, implikacji licencjonowania i procesu rejestracji użytkownika.
+> Zamiast tego należy użyć usługi Azure Multi-Factor Authentication opartej na chmurze, aby wykonać tę samą funkcję. Przed kontynuowaniem Oceń wymagania dotyczące uwierzytelniania wieloskładnikowego. Przed przekonwertowaniem domen upewnij się, że rozumiesz, jak korzystać z usługi Azure Multi-Factor Authentication, implikacji licencjonowania i procesu rejestracji użytkownika.
 
 #### <a name="back-up-federation-settings"></a>Tworzenie kopii zapasowej ustawień federacyjnych
 
@@ -124,13 +125,13 @@ W tej sekcji opisano zagadnienia dotyczące wdrażania i szczegółowe informacj
 
 Przed przekonwertowaniem tożsamości federacyjnej na tożsamość zarządzaną należy uważnie zapoznać się z tym, jak obecnie AD FS używasz usługi Azure AD, pakietu Office 365 i innych aplikacji (relacja zaufania jednostek zależnych). Należy wziąć pod uwagę scenariusze opisane w poniższej tabeli:
 
-| Jeśli użytkownik | Następnie |
+| Jeśli użytkownik | Następnie wybierz pozycję |
 |-|-|
 | Planujesz używać AD FS z innymi aplikacjami (innymi niż usługa Azure AD i pakietem Office 365). | Po przeprowadzeniu konwersji domen będziesz używać obu AD FS i usługi Azure AD. Weź pod uwagę środowisko użytkownika. W niektórych scenariuszach użytkownicy mogą być zobowiązani do dwukrotnego uwierzytelnienia: raz w usłudze Azure AD (w przypadku gdy użytkownik uzyskuje dostęp do logowania jednokrotnego do innych aplikacji, takich jak pakiet Office 365), i ponownie dla wszystkich aplikacji, które są nadal powiązane z AD FS jako relacja zaufania jednostki uzależnionej. |
-| Wystąpienie AD FS jest w dużym stopniu dostosowywane i opiera się na określonych ustawieniach dostosowania w pliku OnLoad. js (na przykład w przypadku zmiany środowiska logowania, tak aby użytkownicy używali tylko formatu **sAMAccountName** dla nazwy użytkownika zamiast podmiotu zabezpieczeń Nazwa (UPN) lub Twoja organizacja ma silnie oznakowane środowisko logowania. Nie można zduplikować pliku OnLoad. js w usłudze Azure AD. | Przed kontynuowaniem należy sprawdzić, czy usługa Azure AD może spełniać bieżące wymagania dotyczące dostosowywania. Aby uzyskać więcej informacji i uzyskać wskazówki, zobacz sekcję dotyczącą AD FS znakowania i AD FS dostosowywania.|
+| Wystąpienie AD FS jest w dużym stopniu dostosowywane i opiera się na określonych ustawieniach dostosowania w pliku OnLoad. js (na przykład w przypadku zmiany środowiska logowania, tak aby użytkownicy używali tylko formatu **sAMAccountName** dla nazwy użytkownika zamiast głównej nazwy użytkownika (UPN) lub jeśli organizacja ma wysoce oznakowane środowisko logowania). Nie można zduplikować pliku OnLoad. js w usłudze Azure AD. | Przed kontynuowaniem należy sprawdzić, czy usługa Azure AD może spełniać bieżące wymagania dotyczące dostosowywania. Aby uzyskać więcej informacji i uzyskać wskazówki, zobacz sekcję dotyczącą AD FS znakowania i AD FS dostosowywania.|
 | Aby zablokować wcześniejsze wersje klientów uwierzytelniania, należy użyć AD FS.| Należy rozważyć zastępowanie AD FS formantów blokujących wcześniejsze wersje klientów uwierzytelniania przy użyciu kombinacji [kontroli dostępu warunkowego](https://docs.microsoft.com/azure/active-directory/conditional-access/conditions) i [reguł dostępu klienta usługi Exchange Online](https://aka.ms/EXOCAR). |
-| Użytkownik wymaga od użytkowników przeprowadzenia uwierzytelniania wieloskładnikowego w przypadku lokalnego rozwiązania do obsługi serwera usługi wieloskładnikowego, gdy użytkownicy uwierzytelniają się do AD FS.| W zarządzanej domenie tożsamości nie można wstrzyknąć wyzwania usługi uwierzytelnianie wieloskładnikowe za pośrednictwem lokalnego rozwiązania do uwierzytelniania wieloskładnikowego do przepływu uwierzytelniania. Można jednak użyć usługi Azure wieloskładnikowe Authentication do uwierzytelniania wieloskładnikowego po przeprowadzeniu konwersji domeny.<br /><br /> Jeśli użytkownicy nie korzystają obecnie z uwierzytelniania wieloskładnikowego platformy Azure, wymagany jest krok rejestracji użytkownika jednorazowej. Należy przygotować się do planowanej rejestracji i przekazać ją do użytkowników. |
-| Obecnie używasz zasad kontroli dostępu (reguł autoryzacji) w AD FS, aby kontrolować dostęp do pakietu Office 365.| Rozważ zastąpienie zasad zasadami [dostępu warunkowego](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal) usługi Azure AD i regułami [dostępu klienta usługi Exchange Online](https://aka.ms/EXOCAR).|
+| Użytkownik wymaga od użytkowników przeprowadzenia uwierzytelniania wieloskładnikowego w przypadku lokalnego rozwiązania do obsługi serwera usługi wieloskładnikowego, gdy użytkownicy uwierzytelniają się do AD FS.| W zarządzanej domenie tożsamości nie można wstrzyknąć wyzwania usługi uwierzytelnianie wieloskładnikowe za pośrednictwem lokalnego rozwiązania do uwierzytelniania wieloskładnikowego do przepływu uwierzytelniania. Można jednak użyć usługi Azure Multi-Factor Authentication do uwierzytelniania wieloskładnikowego po przeprowadzeniu konwersji domeny.<br /><br /> Jeśli użytkownicy nie korzystają obecnie z usługi Azure Multi-Factor Authentication, wymagany jest krok rejestracji użytkownika jednorazowej. Należy przygotować się do planowanej rejestracji i przekazać ją do użytkowników. |
+| Obecnie używasz zasad kontroli dostępu (reguł autoryzacji) w AD FS, aby kontrolować dostęp do pakietu Office 365.| Rozważ zastąpienie zasad zasadami [dostępu warunkowego](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal) usługi Azure AD i [regułami dostępu klienta usługi Exchange Online](https://aka.ms/EXOCAR).|
 
 ### <a name="common-ad-fs-customizations"></a>Typowe dostosowania AD FS
 
@@ -218,18 +219,18 @@ Twoje rozwiązanie zostało zaplanowane. Teraz można go zaimplementować. Imple
 * Przygotowanie do bezproblemowego logowania jednokrotnego.
 * Zmiana metody logowania na uwierzytelnianie przekazywane i włączenie bezproblemowego logowania jednokrotnego.
 
-### <a name="step-1-prepare-for-seamless-sso"></a>Krok 1: Przygotowanie do bezproblemowego logowania jednokrotnego
+### <a name="step-1-prepare-for-seamless-sso"></a>Krok 1: przygotowanie do bezproblemowego logowania jednokrotnego
 
 Aby urządzenia używały bezproblemowego logowania jednokrotnego, należy dodać adres URL usługi Azure AD do ustawień strefy intranetowej użytkowników przy użyciu zasad grupy w Active Directory.
 
-Domyślnie przeglądarki sieci Web automatycznie obliczają poprawną strefę, Internet lub intranet, z adresu URL. Na przykład **http\/:\/contoso/** mapuje do strefy intranet i **http:\/\/intranet.contoso.com** mapuje do strefy Internet (ponieważ adres URL zawiera kropkę). Przeglądarki wysyłają bilety Kerberos do punktu końcowego w chmurze, takiego jak adres URL usługi Azure AD, tylko wtedy, gdy jawnie dodasz adres URL do strefy intranetowej przeglądarki.
+Domyślnie przeglądarki sieci Web automatycznie obliczają poprawną strefę, Internet lub intranet, z adresu URL. Na przykład **http:\/\/contoso/** Maps ze strefą intranetową i **http:\/\/intranet.contoso.com** mapowania do strefy Internet (ponieważ adres URL zawiera kropkę). Przeglądarki wysyłają bilety Kerberos do punktu końcowego w chmurze, takiego jak adres URL usługi Azure AD, tylko wtedy, gdy jawnie dodasz adres URL do strefy intranetowej przeglądarki.
 
 Wykonaj kroki, aby [wdrożyć](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso-quick-start) wymagane zmiany na urządzeniach.
 
 > [!IMPORTANT]
 > Wprowadzenie tej zmiany nie modyfikuje sposobu logowania użytkowników do usługi Azure AD. Ważne jest jednak, aby zastosować tę konfigurację do wszystkich urządzeń przed kontynuowaniem. Użytkownicy logujący się na urządzeniach, które nie otrzymały tej konfiguracji po prostu, muszą wprowadzić nazwę użytkownika i hasło, aby zalogować się do usługi Azure AD.
 
-### <a name="step-2-change-the-sign-in-method-to-pass-through-authentication-and-enable-seamless-sso"></a>Krok 2: Zmiana metody logowania na uwierzytelnianie przekazywane i włączenie bezproblemowego logowania jednokrotnego
+### <a name="step-2-change-the-sign-in-method-to-pass-through-authentication-and-enable-seamless-sso"></a>Krok 2. zmiana metody logowania na uwierzytelnianie przekazywane i włączenie bezproblemowego logowania jednokrotnego
 
 Dostępne są dwie opcje zmiany metody logowania na uwierzytelnianie przekazywane i włączenie bezproblemowego logowania jednokrotnego.
 
@@ -245,8 +246,8 @@ Najpierw Zmień metodę logowania:
 1. Na serwerze Azure AD Connect Otwórz Kreatora Azure AD Connect.
 2. Wybierz pozycję **Zmień Logowanie użytkownika**, a następnie wybierz przycisk **dalej**. 
 3. Na stronie **Połącz z usługą Azure AD** wprowadź nazwę użytkownika i hasło konta administratora globalnego.
-4. Na stronie **logowania użytkownika** wybierz przycisk **uwierzytelniania przekazywanego** , wybierz opcję **Włącz logowanie**jednokrotne, a następnie wybierz przycisk **dalej**.
-5. Na stronie **Włącz logowanie** jednokrotne wprowadź poświadczenia konta administratora domeny, a następnie wybierz przycisk **dalej**.
+4. Na stronie **logowania użytkownika** wybierz przycisk **uwierzytelniania przekazywanego** , wybierz opcję **Włącz logowanie jednokrotne**, a następnie wybierz przycisk **dalej**.
+5. Na stronie **Włącz logowanie jednokrotne** wprowadź poświadczenia konta administratora domeny, a następnie wybierz przycisk **dalej**.
 
    > [!NOTE]
    > Aby umożliwić bezproblemowe logowanie jednokrotne, wymagane są poświadczenia konta administratora domeny. Proces wykonuje następujące akcje, które wymagają podniesionych uprawnień. Poświadczenia konta administratora domeny nie są przechowywane w Azure AD Connect ani w usłudze Azure AD. Poświadczenia konta administratora domeny są używane tylko w celu włączenia tej funkcji. Poświadczenia są odrzucane po pomyślnym zakończeniu procesu.
@@ -261,12 +262,12 @@ Najpierw Zmień metodę logowania:
 7. W portalu usługi Azure AD wybierz pozycję **Azure Active Directory**, a następnie wybierz pozycję **Azure AD Connect**.
 8. Sprawdź te ustawienia:
    * Wartość **federacyjna** została **wyłączona**.
-   * **Bezproblemowe logowanie** jednokrotne jest ustawione na **włączone**.
+   * **Bezproblemowe logowanie jednokrotne** jest ustawione na **włączone**.
    * **Uwierzytelnianie przekazywane** jest ustawione na **włączone**.<br />
 
    ![Zrzut ekranu pokazujący ustawienia w sekcji logowania użytkownika](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image9.png)<br />
 
-Ponown. Wdróż dodatkowe metody uwierzytelniania:
+Dalej. Wdróż dodatkowe metody uwierzytelniania:
 
 1. W Azure Portal przejdź do **Azure Active Directory** > **Azure AD Connect**, a następnie wybierz pozycję **uwierzytelnianie przekazywane**.
 2. Na stronie **uwierzytelnianie przekazywane** wybierz przycisk **Pobierz** .
@@ -288,9 +289,9 @@ Ponown. Wdróż dodatkowe metody uwierzytelniania:
 Przejdź do [testowania i następnych kroków](#testing-and-next-steps).
 
 > [!IMPORTANT]
-> Pomiń opcję sekcja **B: Przełączenie z Federacji do uwierzytelniania przekazywanego przy użyciu Azure AD Connect i**programu PowerShell. Kroki opisane w tej sekcji nie mają zastosowania w przypadku wybrania opcji A w celu zmiany metody logowania na uwierzytelnianie przekazywane i włączenia bezproblemowego logowania jednokrotnego. 
+> Pomiń opcję sekcja **B: przełączenie z Federacji do uwierzytelniania przekazywanego przy użyciu Azure AD Connect i programu PowerShell**. Kroki opisane w tej sekcji nie mają zastosowania w przypadku wybrania opcji A w celu zmiany metody logowania na uwierzytelnianie przekazywane i włączenia bezproblemowego logowania jednokrotnego. 
 
-#### <a name="option-b-switch-from-federation-to-pass-through-authentication-by-using-azure-ad-connect-and-powershell"></a>Opcja B: Przełączanie z Federacji do uwierzytelniania przekazywanego przy użyciu Azure AD Connect i programu PowerShell
+#### <a name="option-b-switch-from-federation-to-pass-through-authentication-by-using-azure-ad-connect-and-powershell"></a>Opcja B: przełączenie z Federacji do uwierzytelniania przekazywanego przy użyciu Azure AD Connect i programu PowerShell
 
 Użyj tej opcji, jeśli nie skonfigurowano wstępnie domen federacyjnych przy użyciu Azure AD Connect.
 
@@ -299,8 +300,8 @@ Najpierw Włącz uwierzytelnianie przekazywane:
 1. Na serwerze Azure AD Connect Otwórz Kreatora Azure AD Connect.
 2. Wybierz pozycję **Zmień Logowanie użytkownika**, a następnie wybierz przycisk **dalej**.
 3. Na stronie **Połącz z usługą Azure AD** wprowadź nazwę użytkownika i hasło konta administratora globalnego.
-4. Na stronie **logowania użytkownika** wybierz przycisk **uwierzytelnianie przekazywane** . Wybierz pozycję **Włącz logowanie**jednokrotne, a następnie wybierz pozycję **dalej**.
-5. Na stronie **Włącz logowanie** jednokrotne wprowadź poświadczenia konta administratora domeny, a następnie wybierz przycisk **dalej**.
+4. Na stronie **logowania użytkownika** wybierz przycisk **uwierzytelnianie przekazywane** . Wybierz pozycję **Włącz logowanie jednokrotne**, a następnie wybierz pozycję **dalej**.
+5. Na stronie **Włącz logowanie jednokrotne** wprowadź poświadczenia konta administratora domeny, a następnie wybierz przycisk **dalej**.
 
    > [!NOTE]
    > Aby umożliwić bezproblemowe logowanie jednokrotne, wymagane są poświadczenia konta administratora domeny. Proces wykonuje następujące akcje, które wymagają podniesionych uprawnień. Poświadczenia konta administratora domeny nie są przechowywane w Azure AD Connect ani w usłudze Azure AD. Poświadczenia konta administratora domeny są używane tylko w celu włączenia tej funkcji. Poświadczenia są odrzucane po pomyślnym zakończeniu procesu.
@@ -311,7 +312,7 @@ Najpierw Włącz uwierzytelnianie przekazywane:
 
 6. Na stronie **gotowy do skonfigurowania** upewnij się, że jest zaznaczone pole wyboru **Rozpocznij proces synchronizacji po zakończeniu konfiguracji** . Następnie wybierz pozycję **Konfiguruj**.<br />
 
-   ![Zrzut ekranu przedstawiający stronę gotowy do skonfigurowania i przycisk Konfiguruj](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image18.png)<br />
+   ![zrzut ekranu, który pokazuje stronę gotowy do skonfigurowania i przycisk Konfiguruj](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image18.png)<br />
    Po wybraniu opcji **Konfiguruj**należy wykonać następujące czynności:
 
    1. Zostanie zainstalowany pierwszy Agent uwierzytelniania przekazującego.
@@ -320,7 +321,7 @@ Najpierw Włącz uwierzytelnianie przekazywane:
 
 7. Sprawdź te ustawienia:
    * **Federacja** jest ustawiona na wartość **Enabled (włączone**).
-   * **Bezproblemowe logowanie** jednokrotne jest ustawione na **włączone**.
+   * **Bezproblemowe logowanie jednokrotne** jest ustawione na **włączone**.
    * **Uwierzytelnianie przekazywane** jest ustawione na **włączone**.
    
    ![Zrzut ekranu pokazujący ustawienia w sekcji logowania użytkownika](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image19.png)
@@ -341,8 +342,8 @@ Następnie wdróż dodatkowych agentów uwierzytelniania:
  
 4. Uruchom instalację agenta uwierzytelniania. Podczas instalacji należy wprowadzić poświadczenia konta administratora globalnego.<br />
 
-   ![Zrzut ekranu pokazujący przycisk Instaluj na stronie pakietu agenta uwierzytelniania Microsoft Azure AD Connect](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image23.png)<br />
-   ![Zrzut ekranu przedstawiający stronę logowania](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image24.png)<br />
+   ![zrzut ekranu, który pokazuje przycisk Instaluj na stronie pakiet agenta uwierzytelniania Microsoft Azure AD Connect](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image23.png)<br />
+   ![zrzut ekranu przedstawiający stronę logowania](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image24.png)<br />
 5. Po zainstalowaniu agenta uwierzytelniania można wrócić do strony kondycja agenta uwierzytelniania przekazywanego, aby sprawdzić stan dodatkowych agentów.
 
 W tym momencie uwierzytelnianie federacyjne jest nadal aktywne i działa dla Twoich domen. Aby kontynuować wdrażanie, należy przekonwertować każdą domenę z tożsamości federacyjnej na tożsamość zarządzaną, aby uwierzytelnianie przekazywane było obsługiwane przez żądania uwierzytelniania dla domeny.
@@ -361,7 +362,7 @@ Ukończ konwersję przy użyciu modułu Azure AD PowerShell:
 3. W portalu usługi Azure AD wybierz pozycję **Azure Active Directory** > **Azure AD Connect**.
 4. Po przeprowadzeniu konwersji wszystkich domen federacyjnych sprawdź następujące ustawienia:
    * Wartość **federacyjna** została **wyłączona**.
-   * **Bezproblemowe logowanie** jednokrotne jest ustawione na **włączone**.
+   * **Bezproblemowe logowanie jednokrotne** jest ustawione na **włączone**.
    * **Uwierzytelnianie przekazywane** jest ustawione na **włączone**.<br />
 
    ![Zrzut ekranu pokazujący ustawienia w sekcji logowania użytkownika](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image26.png)<br />
@@ -395,8 +396,8 @@ Aby przetestować bezproblemową rejestrację jednokrotną:
 1. Zaloguj się na komputerze przyłączonym do domeny, który jest połączony z siecią firmową.
 2. W programie Internet Explorer lub Chrome przejdź do jednego z następujących adresów URL (Zastąp ciąg "contoso" domeną):
 
-   * https:\/\/myapps.Microsoft.com/contoso.com
-   * https:\/\/myapps.Microsoft.com/contoso.onmicrosoft.com
+   * https:\/\/myapps.microsoft.com/contoso.com
+   * https:\/\/myapps.microsoft.com/contoso.onmicrosoft.com
 
    Użytkownik zostanie krótko przekierowany do strony logowania usługi Azure AD, która wyświetla komunikat "próba zalogowania". Użytkownik nie jest monitowany o podanie nazwy użytkownika lub hasła.<br />
 
@@ -407,7 +408,7 @@ Aby przetestować bezproblemową rejestrację jednokrotną:
    > Bezproblemowe logowanie jednokrotne działa w usługach Office 365, które obsługują wskazówkę domeny (na przykład myapps.microsoft.com/contoso.com). Obecnie portal Office 365 (portal.office.com) nie obsługuje podpowiedzi do domeny. Użytkownicy muszą wprowadzić nazwę UPN. Po wprowadzeniu nazwy UPN bezproblemowe logowanie jednokrotne pobiera bilet protokołu Kerberos w imieniu użytkownika. Użytkownik jest zalogowany bez wprowadzania hasła.
 
    > [!TIP]
-   > Rozważ wdrożenie funkcji dołączania [hybrydowego usługi Azure AD w systemie Windows 10](https://docs.microsoft.com/azure/active-directory/device-management-introduction) w celu usprawnienia logowania jednokrotnego.
+   > Rozważ wdrożenie funkcji [dołączania hybrydowego usługi Azure AD w systemie Windows 10](https://docs.microsoft.com/azure/active-directory/device-management-introduction) w celu usprawnienia logowania jednokrotnego.
 
 ### <a name="remove-the-relying-party-trust"></a>Usuń relację zaufania jednostki uzależnionej
 
@@ -415,7 +416,7 @@ Po sprawdzeniu, czy wszyscy użytkownicy i klienci pomyślnie uwierzytelniają s
 
 Jeśli nie używasz AD FS do innych celów (to oznacza, że w przypadku innych relacji zaufania jednostek uzależnionych), możesz bezpiecznie zlikwidować AD FS na tym etapie.
 
-### <a name="rollback"></a>Wycofywanie
+### <a name="rollback"></a>Wycofuj
 
 Jeśli odkryjesz główny problem i nie można go szybko rozwiązać, możesz zdecydować się na wycofanie rozwiązania do Federacji.
 
@@ -451,7 +452,7 @@ Możesz również włączyć rejestrowanie w celu rozwiązywania problemów.
 
 Aby uzyskać więcej informacji, zobacz [Rozwiązywanie problemów Azure Active Directory uwierzytelnianie przekazywane](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-troubleshoot-Pass-through-authentication).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Dowiedz się więcej na temat [pojęć związanych z projektowaniem Azure AD Connect](plan-connect-design-concepts.md).
 * Wybierz odpowiednie [uwierzytelnianie](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn).

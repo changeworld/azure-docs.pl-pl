@@ -3,12 +3,12 @@ title: Rozwiązywanie problemów z kopiami zapasowymi SQL Server Database
 description: Informacje dotyczące rozwiązywania problemów dotyczących tworzenia kopii zapasowych SQL Server baz danych działających na maszynach wirtualnych platformy Azure z Azure Backup.
 ms.topic: troubleshooting
 ms.date: 06/18/2019
-ms.openlocfilehash: d49843e8fd96df29a7359ec639e42d312ad584e2
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 57630749b53224032c763481d12e33366274f13f
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75659257"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978786"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>Rozwiązywanie problemów z kopiami zapasowymi SQL Server Database przy użyciu Azure Backup
 
@@ -52,7 +52,7 @@ Jeśli maszyna wirtualna SQL musi być zarejestrowana w nowym magazynie, należy
 | Komunikat o błędzie | Możliwe przyczyny | Zalecana akcja |
 |---|---|---|
 | Ta baza danych SQL nie obsługuje żądanego typu kopii zapasowej. | Występuje, gdy model odzyskiwania bazy danych nie zezwala na żądany typ kopii zapasowej. Ten błąd może wystąpić w następujących sytuacjach: <br/><ul><li>Baza danych, która korzysta z modelu odzyskiwania prostego, nie zezwala na wykonywanie kopii zapasowych dziennika.</li><li>Różnice w kopiach zapasowych i dziennikach nie są dozwolone dla bazy danych Master.</li></ul>Aby uzyskać więcej informacji, zobacz dokumentację dotyczącą [modeli odzyskiwania SQL Server](https://docs.microsoft.com/sql/relational-databases/backup-restore/recovery-models-sql-server) . | Jeśli nie można utworzyć kopii zapasowej dziennika bazy danych w modelu odzyskiwania prostego, wypróbuj jedną z następujących opcji:<ul><li>Jeśli baza danych działa w trybie odzyskiwania prostego, wyłącz kopie zapasowe dzienników.</li><li>Skorzystaj z [dokumentacji SQL Server](https://docs.microsoft.com/sql/relational-databases/backup-restore/view-or-change-the-recovery-model-of-a-database-sql-server) , aby zmienić model odzyskiwania bazy danych na pełny lub zbiorczo zarejestrowany. </li><li> Jeśli nie chcesz zmieniać modelu odzyskiwania i masz standardowe zasady tworzenia kopii zapasowych wielu baz danych, których nie można zmienić, zignoruj błąd. Pełne i różnicowe kopie zapasowe będą działały zgodnie z harmonogramem. Kopie zapasowe dziennika zostaną pominięte, co jest oczekiwane w tym przypadku.</li></ul>Jeśli jest to baza danych Master i została skonfigurowana różnicowa lub kopia zapasowa dziennika, wykonaj jedną z następujących czynności:<ul><li>Użyj portalu, aby zmienić harmonogram zasad tworzenia kopii zapasowej bazy danych Master na pełny.</li><li>Jeśli masz standardowe zasady tworzenia kopii zapasowych wielu baz danych, których nie można zmienić, zignoruj błąd. Pełna kopia zapasowa będzie działała zgodnie z harmonogramem. Różnicowe kopie zapasowe lub dzienniki nie będą wykonywane, co jest oczekiwane w tym przypadku.</li></ul> |
-| Operacja została anulowana, ponieważ w tej samej bazie danych była już uruchomiona operacja powodująca konflikt. | Zobacz [wpis w blogu dotyczący ograniczeń kopii zapasowych i przywracania](https://blogs.msdn.microsoft.com/arvindsh/2008/12/30/concurrency-of-full-differential-and-log-backups-on-the-same-database) , które są uruchamiane współbieżnie.| [Użyj SQL Server Management Studio (SSMS), aby monitorować zadania tworzenia kopii zapasowej](manage-monitor-sql-database-backup.md). Po niepowodzeniu operacji powodującej konflikt należy ponownie uruchomić operację.|
+| Operacja została anulowana, ponieważ w tej samej bazie danych była już uruchomiona operacja powodująca konflikt. | Zobacz [wpis w blogu dotyczący ograniczeń kopii zapasowych i przywracania](https://deep.data.blog/2008/12/30/concurrency-of-full-differential-and-log-backups-on-the-same-database/) , które są uruchamiane współbieżnie.| [Użyj SQL Server Management Studio (SSMS), aby monitorować zadania tworzenia kopii zapasowej](manage-monitor-sql-database-backup.md). Po niepowodzeniu operacji powodującej konflikt należy ponownie uruchomić operację.|
 
 ### <a name="usererrorsqlpodoesnotexist"></a>UserErrorSQLPODoesNotExist
 

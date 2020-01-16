@@ -2,17 +2,17 @@
 title: Szyfrowanie po stronie serwera Managed Disks platformy Azure — interfejs wiersza polecenia platformy Azure
 description: Usługa Azure Storage chroni dane, szyfrując je w stanie spoczynku przed utrwalaniem ich w klastrach magazynu. Możesz polegać na kluczach zarządzanych przez firmę Microsoft w celu szyfrowania dysków zarządzanych. Możesz też użyć kluczy zarządzanych przez klienta do zarządzania szyfrowaniem przy użyciu własnych kluczy.
 author: roygara
-ms.date: 01/10/2020
+ms.date: 01/13/2020
 ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-linux
 ms.subservice: disks
-ms.openlocfilehash: 61e45a5d13da7af42bbed273e5b39ce2af15d1ca
-ms.sourcegitcommit: e9776e6574c0819296f28b43c9647aa749d1f5a6
+ms.openlocfilehash: d8729e447aabfcb1c378919501ee48124e7ae27b
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75912740"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76027820"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Szyfrowanie po stronie serwera dla usługi Azure Managed disks
 
@@ -54,21 +54,18 @@ Poniższa lista zawiera bardziej szczegółowe informacje o diagramie:
 
 Aby odwołać dostęp do kluczy zarządzanych przez klienta, zobacz [Azure Key Vault PowerShell](https://docs.microsoft.com/powershell/module/azurerm.keyvault/) i [interfejs wiersza polecenia Azure Key Vault](https://docs.microsoft.com/cli/azure/keyvault). Odwoływanie dostępu skutecznie blokuje dostęp do wszystkich danych na koncie magazynu, ponieważ klucz szyfrowania jest niedostępny przez usługę Azure Storage.
 
-### <a name="supported-scenarios-and-restrictions"></a>Obsługiwane scenariusze i ograniczenia
+### <a name="supported-regions"></a>Obsługiwane regiony
 
-Obecnie obsługiwane są tylko następujące scenariusze:
+Obecnie obsługiwane są tylko następujące regiony:
 
-- Utwórz maszynę wirtualną z obrazu portalu Azure Marketplace i Zaszyfruj dysk systemu operacyjnego za pomocą szyfrowania po stronie serwera przy użyciu kluczy zarządzanych przez klienta.
-- Utwórz obraz niestandardowy zaszyfrowany za pomocą szyfrowania po stronie serwera i kluczy zarządzanych przez klienta.
-- Utwórz maszynę wirtualną na podstawie obrazu niestandardowego i Zaszyfruj dysk systemu operacyjnego przy użyciu funkcji szyfrowania po stronie serwera i kluczy zarządzanych przez klienta.
-- Twórz dyski danych szyfrowane za pomocą szyfrowania po stronie serwera i kluczy zarządzanych przez klienta.
-- (Tylko interfejs wiersza polecenia/PowerShell) Utwórz migawki, które są szyfrowane za pomocą szyfrowania po stronie serwera i kluczy zarządzanych przez klienta.
-- Utwórz zestawy skalowania maszyn wirtualnych, które są szyfrowane za pomocą szyfrowania po stronie serwera i kluczy zarządzanych przez klienta.
-
-Na razie mamy również następujące ograniczenia:
-
-- Dostępna jako nasza oferta w regionach Wschodnie stany USA, zachodnie stany USA 2 i Południowo-środkowe stany USA.
+- Dostępna jako oferta w wersji załącznej w regionach Wschodnie stany USA, zachodnie stany USA 2 i Południowo-środkowe stany USA.
 - Dostępna jako publiczna wersja zapoznawcza w regionach zachodnie stany USA, Wschodnie stany USA 2, Kanada Środkowa i Europa Północna.
+
+### <a name="restrictions"></a>Ograniczenia
+
+Na razie klucze zarządzane przez klienta mają następujące ograniczenia:
+
+- Obsługiwane są tylko [klucze RSA "Soft" i "Hard](../../key-vault/about-keys-secrets-and-certificates.md#keys-and-key-types) " o rozmiarze 2080, a nie inne klucze ani rozmiary.
 - Dyski utworzone na podstawie obrazów niestandardowych zaszyfrowanych przy użyciu szyfrowania po stronie serwera i kluczy zarządzanych przez klienta muszą być szyfrowane przy użyciu tych samych kluczy zarządzanych przez klienta i muszą znajdować się w tej samej subskrypcji.
 - Migawki utworzone na podstawie dysków zaszyfrowanych przy użyciu szyfrowania po stronie serwera i kluczy zarządzanych przez klienta muszą być szyfrowane przy użyciu tych samych kluczy zarządzanych przez klienta.
 - Obrazy niestandardowe szyfrowane za pomocą szyfrowania po stronie serwera i kluczy zarządzanych przez klienta nie mogą być używane w galerii obrazów udostępnionych.

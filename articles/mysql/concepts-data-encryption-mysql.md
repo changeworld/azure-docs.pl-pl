@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 12e9ab9066449e8928d937d9c3f9f7f1522b6c60
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 7c54b3010b42d56ffa9b701b76c7aef51095404c
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75942097"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028648"
 ---
 # <a name="azure-database-for-mysql-data-encryption-with-customer-managed-key"></a>Azure Database for MySQL szyfrowanie danych za pomocą klucza zarządzanego przez klienta
 
@@ -41,7 +41,7 @@ Szyfrowanie danych dla Azure Database for MySQL zapewnia następujące korzyści
 
 **Klucz szyfrowania klucza (KEK)** — klucz szyfrowania służący do szyfrowania kluczy szyfrowania danych. Użycie klucza szyfrowania klucza, który nigdy nie pozostawia Key Vault, pozwala na szyfrowanie kluczy szyfrowania danych i sterowanie nimi. Jednostka, która ma dostęp do elementu KEK, może być różna od jednostki, która wymaga tego elementu. Ponieważ KEK jest wymagany do odszyfrowania DEKs, KEK jest efektywnie jednym punktem, przez który DEKs może być skutecznie usunięty przez usunięcie KEK.
 
-Klucze szyfrowania danych szyfrowane za pomocą kluczy szyfrowania kluczy są przechowywane oddzielnie, a tylko jednostka mająca dostęp do klucza szyfrowania klucza może odszyfrować te klucze szyfrowania danych. Aby uzyskać więcej informacji, zobacz [zabezpieczenia w szyfrowaniu](../security/fundamentals/encryption-atrest.md)w stanie spoczynku.
+Klucze szyfrowania danych, zaszyfrowane przy użyciu kluczy szyfrowania kluczy, są przechowywane oddzielnie i tylko jednostka mająca dostęp do klucza szyfrowania klucza może odszyfrować te klucze szyfrowania danych. Aby uzyskać więcej informacji, zobacz [zabezpieczenia w szyfrowaniu](../security/fundamentals/encryption-atrest.md)w stanie spoczynku.
 
 ## <a name="how-data-encryption-with-customer-managed-key-works"></a>Jak działa szyfrowanie danych z kluczem zarządzanym przez klienta
 
@@ -50,8 +50,8 @@ Klucze szyfrowania danych szyfrowane za pomocą kluczy szyfrowania kluczy są pr
 Aby serwer MySQL mógł używać kluczy zarządzanych przez klienta przechowywanych w programie AKV do szyfrowania danych w programie, administrator Key Vault musi przyznać następujące prawa dostępu do serwera przy użyciu jego unikatowej tożsamości:
 
 * **Get** -do pobierania publicznej części i właściwości klucza w Key Vault
-* **wrapKey** — aby można było chronić (szyfrować)
-* **unwrapKey** — aby można było wyłączyć ochronę (odszyfrowywać)
+* **wrapKey** — aby można było szyfrować klucz szyfrowania danych
+* **unwrapKey** — aby można było odszyfrować klucz szyfrowania danych
 
 Key Vault administrator może również [włączyć rejestrowanie zdarzeń inspekcji Key Vault](../azure-monitor/insights/azure-key-vault.md), aby mogły być później poddane inspekcji.
 

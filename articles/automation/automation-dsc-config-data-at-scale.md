@@ -10,12 +10,12 @@ ms.author: migreene
 ms.date: 08/08/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 3e742f18e86c22b2d798eec5f6b715dfb298670a
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 1a77a366ee8e06b2d8c47eb3b47eeaf9ae809598
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231705"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028288"
 ---
 # <a name="configuration-data-at-scale"></a>Dane konfiguracji w dużej skali
 
@@ -45,7 +45,7 @@ Te informacje są zorganizowane w preferowany format pliku (JSON, YAML lub PSD1)
 Polecenia cmdlet są udostępniane do generowania plików danych konfiguracji przez [konsolidowanie informacji](https://github.com/gaelcolas/Datum#datum-tree) z każdego pliku w programie do pojedynczego widoku roli serwera lub serwera.
 
 Po wygenerowaniu plików danych można użyć ich ze [skryptami konfiguracji DSC](/powershell/scripting/dsc/configurations/write-compile-apply-configuration) w celu wygenerowania plików MOF i [przekazania plików MOF do Azure Automation](/azure/automation/tutorial-configure-servers-desired-state#create-and-upload-a-configuration-to-azure-automation).
-Następnie zarejestruj serwery [lokalnie](/azure/automation/automation-dsc-onboarding#physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azureaws) lub na [platformie Azure](/azure/automation/automation-dsc-onboarding#azure-virtual-machines) , aby przeprowadzić konfigurację ściągania.
+Następnie zarejestruj serwery [lokalnie](/azure/automation/automation-dsc-onboarding#physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azure-including-aws-ec2-instances) lub na [platformie Azure](/azure/automation/automation-dsc-onboarding#azure-virtual-machines) , aby przeprowadzić konfigurację ściągania.
 
 Aby wypróbować podstawę, odwiedź [Galeria programu PowerShell](https://www.powershellgallery.com/packages/datum/) i Pobierz rozwiązanie lub kliknij pozycję "Witryna projektu", aby wyświetlić [dokumentację](https://github.com/gaelcolas/Datum#2-getting-started--concepts).
 

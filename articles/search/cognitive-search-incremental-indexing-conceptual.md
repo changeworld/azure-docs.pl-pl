@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: a5b12a426e52c3b80c58a30b320b2f746bbe990d
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 285b3608bc57d88ca2e81ed14355923436ed9d8d
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75832193"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028513"
 ---
 # <a name="introduction-to-incremental-enrichment-and-caching-in-azure-cognitive-search"></a>Wprowadzenie do przyrostowego wzbogacania i buforowania na platformie Azure Wyszukiwanie poznawcze
 
@@ -56,14 +56,16 @@ Cykl życia pamięci podręcznej jest zarządzany przez indeksator. Jeśli wła�
 
 Chociaż przyrostowe wzbogacanie jest przeznaczone do wykrywania i reagowania na zmiany bez interwencji w Twojej części, istnieją parametry, których można użyć do przesłonięcia zachowań domyślnych:
 
-+ Wstrzymaj buforowanie
++ Ustalanie priorytetów nowych dokumentów
 + Pomiń testy zestawu umiejętności
 + Pomiń sprawdzanie źródła danych
 + Wymuś Obliczanie zestawu umiejętności
 
-### <a name="suspend-caching"></a>Wstrzymaj buforowanie
+### <a name="prioritize-new-documents"></a>Ustalanie priorytetów nowych dokumentów
 
-Można tymczasowo wstrzymać wzbogacanie przyrostowe przez ustawienie właściwości `enableReprocessing` w pamięci podręcznej na `false`, a później wznowienie przyrostowego wzbogacania i przywrócenie ostatecznej spójności przez ustawienie jej na `true`. Ten formant jest szczególnie przydatny, gdy chcesz określić priorytety indeksowania nowych dokumentów, zapewniając spójność w korpus dokumentów.
+Ustaw właściwość `enableReprocessing` na kontrolowanie przetwarzania dokumentów przychodzących, które są już reprezentowane w pamięci podręcznej. Gdy `true` (domyślnie), dokumenty znajdujące się już w pamięci podręcznej są ponownie przetwarzane po ponownym uruchomieniu indeksatora, zakładając, że aktualizacja umiejętności ma wpływ na ten dokument. 
+
+Gdy `false`, istniejące dokumenty nie są ponownie przetwarzane, skutecznie priorytetyzacja nowej, przychodzącej zawartości przez istniejącą zawartość. Należy ustawić tylko `enableReprocessing` na tymczasową `false`. Aby zapewnić spójność w korpus, `enableReprocessing` powinna być `true` większość czasu, dzięki czemu wszystkie dokumenty, zarówno nowe, jak i istniejące, są prawidłowe dla bieżącej definicji zestawu umiejętności.
 
 ### <a name="bypass-skillset-evaluation"></a>Pomiń Obliczanie zestawu umiejętności
 
@@ -93,9 +95,9 @@ PUT https://customerdemos.search.windows.net/datasources/callcenter-ds?api-versi
 
 ### <a name="force-skillset-evaluation"></a>Wymuś Obliczanie zestawu umiejętności
 
-Celem pamięci podręcznej jest uniknięcie niepotrzebnego przetwarzania, ale Załóżmy, że wprowadzono zmianę w umiejętności lub zestawu umiejętności, że indeksator nie wykrywa (na przykład zmiany w składnikach zewnętrznych, takich jak niestandardowa zestawu umiejętności). 
+Celem pamięci podręcznej jest uniknięcie niepotrzebnego przetwarzania, ale Załóżmy, że wprowadzasz zmiany w umiejętności, którą indeksator nie wykrywa (na przykład w przypadku zmiany elementu w kodzie zewnętrznym, np. z niestandardową umiejętnością).
 
-W takim przypadku można użyć interfejsu API [resetowania umiejętności](preview-api-resetskills.md) , aby wymusić ponowne przetworzenie konkretnej umiejętności, w tym wszelkich umiejętności podrzędnych, które są zależne od danych wyjściowych tego umiejętności. Ten interfejs API akceptuje żądanie POST z listą umiejętności, które powinny być unieważnione i ponownie uruchamiane. Po zresetowaniu umiejętności Uruchom indeksator, aby wykonać operację.
+W takim przypadku można użyć możliwości [resetowania](preview-api-resetskills.md) w celu wymuszenia przetworzenia konkretnej umiejętności, w tym wszelkich umiejętności podrzędnych, które są zależne od danych wyjściowych tej umiejętności. Ten interfejs API akceptuje żądanie POST z listą umiejętności, które powinny być unieważnione i oznaczone do ponownego przetworzenia. Po zresetowaniu umiejętności Uruchom indeksator w celu wywołania potoku.
 
 ## <a name="change-detection"></a>Wykrywanie zmian
 
@@ -158,7 +160,7 @@ Informacje o użyciu i przykłady można znaleźć w temacie [Konfigurowanie buf
 
 ### <a name="datasources"></a>Źródła danych
 
-+ Niektóre indeksatory pobierają dane za poorednictwem zapytań. W przypadku zapytań, które pobierają dane, [Aktualizacja źródła danych](https://docs.microsoft.com/rest/api/searchservice/update-datasource) obsługuje nowy parametr na `ignoreResetRequirement`żądania, który powinien zostać ustawiony na `true`, gdy akcja aktualizacji nie powinna unieważnić pamięci podręcznej.
++ Niektóre indeksatory pobierają dane za poorednictwem zapytań. W przypadku zapytań, które pobierają dane, [Aktualizacja źródła danych](https://docs.microsoft.com/rest/api/searchservice/update-data-source) obsługuje nowy parametr na `ignoreResetRequirement`żądania, który powinien zostać ustawiony na `true`, gdy akcja aktualizacji nie powinna unieważnić pamięci podręcznej.
 
 Używaj `ignoreResetRequirement` oszczędnie, ponieważ może to doprowadzić do niezamierzonej niespójności danych, która nie zostanie łatwo wykryta.
 

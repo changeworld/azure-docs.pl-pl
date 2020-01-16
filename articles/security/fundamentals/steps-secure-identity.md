@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/28/2019
 ms.author: martinco
-ms.openlocfilehash: d62704feaaa46f6780c302f5564b112dd1badbc1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b416b38cfac48260f3375696caa2ecabcb4d57a9
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75353232"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75973909"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>Pięć kroków związanych z zabezpieczaniem infrastruktury tożsamości
 
@@ -47,11 +47,11 @@ Zalecenia zawarte w tym dokumencie są wyrównane z [wynikiem bezpiecznego tożs
 
 Przed rozpoczęciem korzystania z tej listy kontrolnej upewnij się, że nie nastąpiło naruszenie zabezpieczeń podczas odczytywania tej listy kontrolnej. Najpierw musisz chronić Twoje konta uprzywilejowane.
 
-Osoby atakujące, które uzyskują kontrolę nad kontami uprzywilejowanymi, mogą mieć ogromne szkody, dlatego należy zapewnić ochronę tych kont jako pierwsze. Włącz i wymagaj [usługi azure Multi-Factor Authentication](../../active-directory/authentication/multi-factor-authentication.md) (MFA) dla wszystkich administratorów w organizacji przy użyciu [domyślnych ustawień zabezpieczeń usługi Azure AD](../../active-directory/conditional-access/concept-conditional-access-security-defaults.md) lub [dostępu warunkowego](../../active-directory/conditional-access/plan-conditional-access.md). Jeśli nie zaimplementowano usługi MFA, zrób to teraz! Jest to ważne.
+Osoby atakujące, które uzyskują kontrolę nad kontami uprzywilejowanymi, mogą mieć ogromne szkody, dlatego należy zapewnić ochronę tych kont jako pierwsze. Włącz i wymagaj [usługi azure Multi-Factor Authentication](../../active-directory/authentication/multi-factor-authentication.md) (MFA) dla wszystkich administratorów w organizacji przy użyciu [domyślnych ustawień zabezpieczeń usługi Azure AD](../../active-directory/fundamentals/concept-fundamentals-security-defaults.md) lub [dostępu warunkowego](../../active-directory/conditional-access/plan-conditional-access.md). Jeśli nie zaimplementowano usługi MFA, zrób to teraz! Jest to ważne.
 
 Czy wszystko jest ustawione? Zacznijmy od listy kontrolnej.
 
-## <a name="step-1---strengthen-your-credentials"></a>Krok 1. wzmocnienie poświadczeń 
+## <a name="step-1---strengthen-your-credentials"></a>Krok 1. wzmocnienie poświadczeń
 
 Większość naruszeń zabezpieczeń przedsiębiorstwa pochodzi z konta złamanego z jedną z kilku metod, takich jak rozpylanie hasła, odtworzenie naruszenia lub wyłudzanie informacji. Dowiedz się więcej na temat tych ataków w tym filmie wideo (45 min):
 > [!VIDEO https://www.youtube.com/embed/uy0j1_t5Hd4]
@@ -60,7 +60,7 @@ Większość naruszeń zabezpieczeń przedsiębiorstwa pochodzi z konta złamane
 
 Uwzględniając częstotliwość, w której hasła są zgadywanie, phishing, skradziony i złośliwe oprogramowanie, ma krytyczne znaczenie dla hasła przy użyciu jakiejś formy silnego poświadczenia — Dowiedz się więcej o [usłudze Azure Multi-Factor Authentication](../../active-directory/authentication/multi-factor-authentication.md).
 
-Aby w prosty sposób włączyć podstawowy poziom zabezpieczeń tożsamości, można użyć opcji włączenia jednego kliknięcia z [wartościami domyślnymi zabezpieczeń usługi Azure AD](../../active-directory/conditional-access/concept-conditional-access-security-defaults.md). Domyślne ustawienia zabezpieczeń wymuszają usługę Azure MFA dla wszystkich użytkowników w dzierżawie i blokują logowania ze starszych protokołów w całej dzierżawie.
+Aby w prosty sposób włączyć podstawowy poziom zabezpieczeń tożsamości, można użyć opcji włączenia jednego kliknięcia z [wartościami domyślnymi zabezpieczeń usługi Azure AD](../../active-directory/fundamentals/concept-fundamentals-security-defaults.md). Domyślne ustawienia zabezpieczeń wymuszają usługę Azure MFA dla wszystkich użytkowników w dzierżawie i blokują logowania ze starszych protokołów w całej dzierżawie.
 
 ### <a name="start-banning-commonly-attacked-passwords-and-turn-off-traditional-complexity-and-expiration-rules"></a>Zacznij zakazywanie często zaatakowane hasła i Wyłącz tradycyjną złożoność oraz reguły wygasania.
 
@@ -86,7 +86,7 @@ Jeśli Twoja organizacja korzysta z rozwiązania do obsługi tożsamości hybryd
 Dowiedz się więcej o tym, jak działa [Synchronizacja skrótów haseł](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md) .
 
 > [!NOTE]
-> W przypadku włączenia synchronizacji skrótów haseł i korzystania z usług Azure AD Domain Services skróty protokołu Kerberos (AES 256) i opcjonalnie NTLM (RC4, bez soli) również będą szyfrowane i synchronizowane z usługą Azure AD. 
+> W przypadku włączenia synchronizacji skrótów haseł i korzystania z usług Azure AD Domain Services skróty protokołu Kerberos (AES 256) i opcjonalnie NTLM (RC4, bez soli) również będą szyfrowane i synchronizowane z usługą Azure AD.
 
 ### <a name="implement-ad-fs-extranet-smart-lockout"></a>Implementowanie blokady inteligentnej AD FS ekstranetu
 
@@ -106,7 +106,7 @@ Aplikacje korzystające z własnych starszych metod do uwierzytelniania w usłud
 
 1. Blokuj [starsze uwierzytelnianie, jeśli używasz AD FS](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/access-control-policies-w2k12).
 2. Skonfiguruj [SharePoint Online i usługi Exchange Online do korzystania z nowoczesnego uwierzytelniania](../../active-directory/conditional-access/conditional-access-for-exo-and-spo.md).
-3. Jeśli masz Azure AD — wersja Premium, użyj [zasad dostępu warunkowego](../../active-directory/conditional-access/conditions.md) , aby zablokować starsze uwierzytelnianie, w przeciwnym razie użyj [domyślnych ustawień zabezpieczeń usługi Azure AD](../../active-directory/conditional-access/concept-conditional-access-security-defaults.md).
+3. Jeśli masz Azure AD — wersja Premium, użyj [zasad dostępu warunkowego](../../active-directory/conditional-access/conditions.md) , aby zablokować starsze uwierzytelnianie, w przeciwnym razie użyj [domyślnych ustawień zabezpieczeń usługi Azure AD](../../active-directory/fundamentals/concept-fundamentals-security-defaults.md).
 
 ### <a name="block-invalid-authentication-entry-points"></a>Blokuj nieprawidłowe punkty wejścia uwierzytelniania
 
@@ -123,7 +123,7 @@ Upewnij się, że użytkownicy mogą zażądać zatwierdzenia przez administrato
 
 ### <a name="implement-azure-ad-privileged-identity-management"></a>Implementowanie Azure AD Privileged Identity Management
 
-Innym wpływem "założono naruszenie" jest konieczność zminimalizowania prawdopodobieństwa, że naruszone konto może działać z rolą uprzywilejowaną. 
+Innym wpływem "założono naruszenie" jest konieczność zminimalizowania prawdopodobieństwa, że naruszone konto może działać z rolą uprzywilejowaną.
 
 [Azure AD Privileged Identity Management (PIM)](../../active-directory/privileged-identity-management/pim-configure.md) ułatwia zminimalizowanie uprawnień konta, pomagając:
 
@@ -172,13 +172,13 @@ Usługi Microsoft Azure i funkcje udostępniają konfigurowalne opcje inspekcji 
 
 Azure AD Identity Protection oferuje dwa ważne raporty, które należy monitorować codziennie:
 1. Ryzykowne raporty logowania to działania związane z logowaniem użytkownika, które należy zbadać, ale uprawniony właściciel może nie wykonać logowania.
-2. Ryzykowne raporty użytkowników to konta użytkowników, które mogły zostać naruszone, takie jak wykryto wycieki poświadczenia lub użytkownik zalogowany z różnych lokalizacji powodujących niepowodzenie podróży. 
+2. Ryzykowne raporty użytkowników to konta użytkowników, które mogły zostać naruszone, takie jak wykryto wycieki poświadczenia lub użytkownik zalogowany z różnych lokalizacji powodujących niepowodzenie podróży.
 
 ![Użytkownicy oflagowani w związku z ryzykiem](./media/steps-secure-identity/azure-ad-sec-steps3.png)
 
 ### <a name="audit-apps-and-consented-permissions"></a>Inspekcja aplikacji i przyzwoleń do nich
 
-Użytkownicy mogą dochodzić do nawigowania do witryny lub aplikacji sieci Web, które będą uzyskiwać dostęp do informacji o profilu i danych użytkownika, takich jak ich wiadomości e-mail. Złośliwy aktor może korzystać z uzyskanych uprawnień, które otrzymały w celu zaszyfrowania zawartości skrzynki pocztowej, i uzyskania dostępu do oprogramowania wymuszającego okup w celu odzyskania danych skrzynki pocztowej. [Administratorzy powinni przeglądać i przeprowadzać inspekcję](https://docs.microsoft.com/office365/securitycompliance/detect-and-remediate-illicit-consent-grants) uprawnień określonych przez użytkowników lub wyłączać możliwość udzielania zgody użytkownikom. 
+Użytkownicy mogą dochodzić do nawigowania do witryny lub aplikacji sieci Web, które będą uzyskiwać dostęp do informacji o profilu i danych użytkownika, takich jak ich wiadomości e-mail. Złośliwy aktor może korzystać z uzyskanych uprawnień, które otrzymały w celu zaszyfrowania zawartości skrzynki pocztowej, i uzyskania dostępu do oprogramowania wymuszającego okup w celu odzyskania danych skrzynki pocztowej. [Administratorzy powinni przeglądać i przeprowadzać inspekcję](https://docs.microsoft.com/office365/securitycompliance/detect-and-remediate-illicit-consent-grants) uprawnień określonych przez użytkowników lub wyłączać możliwość udzielania zgody użytkownikom.
 
 Oprócz inspekcji uprawnień określonych przez użytkowników może pomóc w próbie [zlokalizowania ryzykownych lub niechcianych aplikacji OAuth](https://docs.microsoft.com/cloud-app-security/investigate-risky-oauth), które są dostępne dla środowisk w warstwie Premium.
 

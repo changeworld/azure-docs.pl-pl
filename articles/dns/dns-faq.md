@@ -7,18 +7,18 @@ ms.service: dns
 ms.topic: article
 ms.date: 6/15/2019
 ms.author: allensu
-ms.openlocfilehash: c194d47842c927d3f8049a424dc08a34424a8a31
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 743715da51f2e8c77b81faba1bd8d6979e4f2aab
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74212029"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75974550"
 ---
 # <a name="azure-dns-faq"></a>Azure DNS często zadawane pytania
 
 ## <a name="about-azure-dns"></a>Informacje o Azure DNS
 
-### <a name="what-is-azure-dns"></a>Co to jest system DNS platformy Azure?
+### <a name="what-is-azure-dns"></a>Co to jest usługa System DNS Azure?
 
 System nazw domen (DNS) tłumaczy lub rozpoznaje nazwę witryny sieci Web lub usługi na adres IP. Azure DNS to usługa hostingu dla domen DNS. Zapewnia rozpoznawanie nazw przy użyciu infrastruktury Microsoft Azure. Dzięki hostowaniu swoich domen na platformie Azure możesz zarządzać rekordami DNS z zastosowaniem tych samych poświadczeń, interfejsów API, narzędzi i rozliczeń co w przypadku innych usług platformy Azure.
 
@@ -42,7 +42,7 @@ Aby uzyskać więcej informacji, zobacz [stronę umów SLA Azure DNS](https://az
 
 Domena jest unikatową nazwą w systemie nazw domen. Przykładowa domena to contoso.com.
 
-Strefa DNS jest używana do hostowania rekordów DNS dla określonej domeny. Na przykład domena contoso.com może zawierać kilka rekordów DNS. Rekordy mogą zawierać mail.contoso.com dla serwera poczty i www\.contoso.com dla witryny sieci Web. Te rekordy są hostowane w strefie DNS contoso.com.
+Strefa DNS służy do hostowania rekordów systemu DNS dla określonej domeny. Na przykład domena contoso.com może zawierać kilka rekordów DNS. Rekordy mogą zawierać mail.contoso.com dla serwera poczty i www\.contoso.com dla witryny sieci Web. Te rekordy są hostowane w strefie DNS contoso.com.
 
 Nazwa domeny jest *tylko nazwą*. Strefa DNS jest zasobem danych zawierającym rekordy DNS dla nazwy domeny. Usługa Azure DNS umożliwia hostowanie strefy DNS i zarządzanie rekordami DNS dla domeny na platformie Azure. Zapewnia również serwerom nazw DNS odpowiedzi na zapytania DNS z Internetu.
 
@@ -167,7 +167,7 @@ Tak. Strefy DNS można przenosić między grupami zasobów lub między subskrypc
 
 Podczas przenoszenia strefy DNS nie ma wpływu na zapytania DNS. Serwery nazw przypisane do strefy pozostają takie same. Zapytania DNS są przetwarzane w normalny sposób.
 
-Aby uzyskać więcej informacji i instrukcje dotyczące przenoszenia stref DNS, zobacz [przenoszenie zasobów do nowej grupy zasobów lub subskrypcji](../azure-resource-manager/resource-group-move-resources.md).
+Aby uzyskać więcej informacji i instrukcje dotyczące przenoszenia stref DNS, zobacz [przenoszenie zasobów do nowej grupy zasobów lub subskrypcji](../azure-resource-manager/management/move-resource-group-and-subscription.md).
 
 ### <a name="how-long-does-it-take-for-dns-changes-to-take-effect"></a>Jak długo trwa wprowadzanie zmian DNS?
 

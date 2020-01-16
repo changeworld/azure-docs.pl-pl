@@ -6,20 +6,20 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: yegu
-ms.openlocfilehash: 62e0c9bbf8b1c7cef9b1cc239810cb554b5ffa45
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c4d5716c8a31ceccbe23c1f77ad3b88030ff3065
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433531"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75972125"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Jak skonfigurować usługę Azure cache for Redis
 W tym temacie opisano konfiguracje dostępne dla usługi Azure cache dla wystąpień Redis. W tym temacie opisano również domyślną konfigurację serwera Redis dla usługi Azure cache dla wystąpień Redis.
 
 > [!NOTE]
 > Aby uzyskać więcej informacji na temat konfigurowania i korzystania z funkcji Premium pamięci podręcznej, zobacz [How to configure trwałości](cache-how-to-premium-persistence.md), [How to configure Clustering](cache-how-to-premium-clustering.md)i [How to configure Virtual Network Support](cache-how-to-premium-vnet.md).
-> 
-> 
+>
+>
 
 ## <a name="configure-azure-cache-for-redis-settings"></a>Konfigurowanie usługi Azure cache dla ustawień Redis
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-browse.md)]
@@ -68,7 +68,7 @@ Poniższe ustawienia można wyświetlać i konfigurować za pomocą **menu zasó
 
 ### <a name="activity-log"></a>Dziennik aktywności
 
-Kliknij pozycję **Dziennik aktywności** , aby wyświetlić akcje wykonywane w pamięci podręcznej. Możesz również użyć filtru, aby rozwinąć ten widok, aby uwzględnić inne zasoby. Aby uzyskać więcej informacji na temat pracy z dziennikami inspekcji, zobacz [operacje inspekcji przy użyciu Menedżer zasobów](../azure-resource-manager/resource-group-audit.md). Aby uzyskać więcej informacji o monitorowaniu pamięci podręcznej platformy Azure dla zdarzeń Redis, zobacz [operacje i alerty](cache-how-to-monitor.md#operations-and-alerts).
+Kliknij pozycję **Dziennik aktywności** , aby wyświetlić akcje wykonywane w pamięci podręcznej. Możesz również użyć filtru, aby rozwinąć ten widok, aby uwzględnić inne zasoby. Aby uzyskać więcej informacji na temat pracy z dziennikami inspekcji, zobacz [operacje inspekcji przy użyciu Menedżer zasobów](../azure-resource-manager/management/view-activity-logs.md). Aby uzyskać więcej informacji o monitorowaniu pamięci podręcznej platformy Azure dla zdarzeń Redis, zobacz [operacje i alerty](cache-how-to-monitor.md#operations-and-alerts).
 
 ### <a name="access-control-iam"></a>Kontrola dostępu (zarządzanie dostępem i tożsamościami)
 
@@ -76,7 +76,7 @@ Sekcja **Kontrola dostępu (IAM)** zapewnia obsługę kontroli dostępu opartej 
 
 ### <a name="tags"></a>Tagi
 
-Sekcja **Tagi** pomaga organizować zasoby. Aby uzyskać więcej informacji, zobacz [Porządkowanie zasobów na platformie Azure za pomocą tagów](../azure-resource-manager/resource-group-using-tags.md).
+Sekcja **Tagi** pomaga organizować zasoby. Aby uzyskać więcej informacji, zobacz [Porządkowanie zasobów na platformie Azure za pomocą tagów](../azure-resource-manager/management/tag-resources.md).
 
 
 ### <a name="diagnose-and-solve-problems"></a>Diagnozowanie i rozwiązywanie problemów
@@ -149,8 +149,8 @@ Należy wziąć pod uwagę podczas wybierania nowej wartości rezerwacji pamięc
 
 > [!IMPORTANT]
 > Ustawienia **zarezerwowane** maxmemory i maxfragmentationmemory są dostępne tylko dla pamięci podręcznej w **warstwach** standardowa i Premium.
-> 
-> 
+>
+>
 
 #### <a name="keyspace-notifications-advanced-settings"></a>Powiadomienia o przestrzeni kluczy (Ustawienia zaawansowane)
 Powiadomienia o przestrzeni kluczy Redis są konfigurowane w bloku **Ustawienia zaawansowane** . Powiadomienia o przestrzeni kluczy umożliwiają klientom otrzymywanie powiadomień o wystąpieniu pewnych zdarzeń.
@@ -159,15 +159,15 @@ Powiadomienia o przestrzeni kluczy Redis są konfigurowane w bloku **Ustawienia 
 
 > [!IMPORTANT]
 > Powiadomienia dotyczące miejsca na dysku i ustawienia **powiadamiania o przestrzeni** kluczy są dostępne tylko dla pamięci podręcznej w warstwach Standardowa i Premium.
-> 
-> 
+>
+>
 
 Aby uzyskać więcej informacji, zobacz [Redis — powiadomienia dotyczące miejsca na dysku](https://redis.io/topics/notifications). Aby zapoznać się z przykładowym kodem, zobacz plik [KeySpaceNotifications.cs](https://github.com/rustd/RedisSamples/blob/master/HelloWorld/KeySpaceNotifications.cs) w próbce [Hello World](https://github.com/rustd/RedisSamples/tree/master/HelloWorld) .
 
 
 <a name="recommendations"></a>
 ## <a name="azure-cache-for-redis-advisor"></a>Usługa Azure cache for Redis Advisor
-W bloku **Azure cache for Redis Advisor** są wyświetlane zalecenia dotyczące pamięci podręcznej. W trakcie normalnych operacji nie są wyświetlane żadne zalecenia. 
+W bloku **Azure cache for Redis Advisor** są wyświetlane zalecenia dotyczące pamięci podręcznej. W trakcie normalnych operacji nie są wyświetlane żadne zalecenia.
 
 ![Polecane elementy](./media/cache-configure/redis-cache-no-recommendations.png)
 
@@ -205,8 +205,8 @@ Kliknij pozycję **(wersja zapoznawcza) Redis rozmiar klastra** , aby zmienić r
 
 > [!NOTE]
 > Należy pamiętać, że podczas gdy pamięć podręczna platformy Azure dla usługi Redis Premium została wydana ogólnie dostępna, funkcja rozmiaru klastra Redis jest obecnie w wersji zapoznawczej.
-> 
-> 
+>
+>
 
 ![Rozmiar klastra Redis](./media/cache-configure/redis-cache-redis-cluster-size.png)
 
@@ -214,8 +214,8 @@ Aby zmienić rozmiar klastra, użyj suwaka lub wpisz liczbę z zakresu od 1 do 1
 
 > [!IMPORTANT]
 > Klastrowanie Redis jest dostępne tylko dla pamięci podręcznych w warstwie Premium. Aby uzyskać więcej informacji, zobacz [jak skonfigurować klastrowanie dla pamięci podręcznej Premium platformy Azure dla Redis](cache-how-to-premium-clustering.md).
-> 
-> 
+>
+>
 
 
 ### <a name="redis-data-persistence"></a>Trwałość danych Redis
@@ -226,16 +226,16 @@ Aby uzyskać więcej informacji, zobacz [jak skonfigurować trwałość dla pami
 
 > [!IMPORTANT]
 > Trwałość danych Redis jest dostępna tylko dla pamięci podręcznych w warstwie Premium.
-> 
-> 
+>
+>
 
 ### <a name="schedule-updates"></a>Aktualizacje harmonogramu
-Blok **harmonogram aktualizacji** umożliwia wyznaczenie okna obsługi dla aktualizacji serwera Redis w pamięci podręcznej. 
+Blok **harmonogram aktualizacji** umożliwia wyznaczenie okna obsługi dla aktualizacji serwera Redis w pamięci podręcznej.
 
 > [!IMPORTANT]
 > Okno obsługi ma zastosowanie tylko do aktualizacji serwera Redis, a nie do aktualizacji lub aktualizacji platformy Azure dla systemu operacyjnego maszyn wirtualnych, które obsługują pamięć podręczną.
-> 
-> 
+>
+>
 
 ![Aktualizacje harmonogramu](./media/cache-configure/redis-schedule-updates.png)
 
@@ -243,8 +243,8 @@ Aby określić okno obsługi, sprawdź wymagane dni i określ czas rozpoczęcia 
 
 > [!IMPORTANT]
 > Funkcja **Schedule Updates** jest dostępna tylko w przypadku pamięci podręcznych w warstwie Premium. Aby uzyskać więcej informacji i instrukcje, zobacz temat [usługa Azure cache for Redis Administration — Zaplanuj aktualizacje](cache-administration.md#schedule-updates).
-> 
-> 
+>
+>
 
 ### <a name="geo-replication"></a>Replikacja geograficzna
 
@@ -252,16 +252,16 @@ Blok **replikacji geograficznej** zawiera mechanizm łączenia dwóch pamięci p
 
 > [!IMPORTANT]
 > **Replikacja geograficzna** jest dostępna tylko w przypadku pamięci podręcznych warstwy Premium. Aby uzyskać więcej informacji i instrukcje, zobacz [jak skonfigurować replikację geograficzną dla usługi Azure cache for Redis](cache-how-to-geo-replication.md).
-> 
-> 
+>
+>
 
 ### <a name="virtual-network"></a>Sieć wirtualna
 Sekcja **Virtual Network** umożliwia skonfigurowanie ustawień sieci wirtualnej dla pamięci podręcznej. Aby uzyskać informacje na temat tworzenia pamięci podręcznej Premium z obsługą sieci wirtualnej i aktualizowania jej ustawień, zobacz [jak skonfigurować obsługę usługi Virtual Network w przypadku pamięci podręcznej systemu Azure w warstwie Premium dla Redis](cache-how-to-premium-vnet.md).
 
 > [!IMPORTANT]
-> Ustawienia sieci wirtualnej są dostępne tylko dla pamięci podręcznych w warstwie Premium, które zostały skonfigurowane za pomocą obsługi sieci wirtualnej podczas tworzenia pamięci podręcznej. 
-> 
-> 
+> Ustawienia sieci wirtualnej są dostępne tylko dla pamięci podręcznych w warstwie Premium, które zostały skonfigurowane za pomocą obsługi sieci wirtualnej podczas tworzenia pamięci podręcznej.
+>
+>
 
 ### <a name="firewall"></a>Zapora
 
@@ -275,8 +275,8 @@ Można określić reguły zapory z zakresem adresów IP początkowy i końcowy. 
 
 > [!IMPORTANT]
 > Połączenia z usługi Azure cache dla systemów monitorowania Redis są zawsze dozwolone, nawet jeśli są skonfigurowane reguły zapory.
-> 
-> 
+>
+>
 
 ### <a name="properties"></a>Właściwości
 Kliknij pozycję **Właściwości** , aby wyświetlić informacje o pamięci podręcznej, w tym punkt końcowy pamięci podręcznej i porty.
@@ -284,14 +284,14 @@ Kliknij pozycję **Właściwości** , aby wyświetlić informacje o pamięci pod
 ![Pamięć podręczna platformy Azure dla właściwości Redis](./media/cache-configure/redis-cache-properties.png)
 
 ### <a name="locks"></a>Blokady
-Sekcja **blokady** umożliwia zablokowanie subskrypcji, grupy zasobów lub zasobu, aby zapobiec przypadkowemu usunięciu lub zmodyfikowaniu zasobów krytycznych przez innych użytkowników w organizacji. Aby uzyskać więcej informacji, zobacz [Lock resources with Azure Resource Manager](../azure-resource-manager/resource-group-lock-resources.md) (Blokowanie zasobów w usłudze Azure Resource Manager).
+Sekcja **blokady** umożliwia zablokowanie subskrypcji, grupy zasobów lub zasobu, aby zapobiec przypadkowemu usunięciu lub zmodyfikowaniu zasobów krytycznych przez innych użytkowników w organizacji. Aby uzyskać więcej informacji, zobacz [Lock resources with Azure Resource Manager](../azure-resource-manager/management/lock-resources.md) (Blokowanie zasobów w usłudze Azure Resource Manager).
 
 ### <a name="automation-script"></a>Skrypt automatyzacji
 
-Kliknij pozycję **skrypt automatyzacji** , aby skompilować i wyeksportować szablon wdrożonych zasobów dla przyszłych wdrożeń. Aby uzyskać więcej informacji na temat pracy z szablonami, zobacz [wdrażanie zasobów za pomocą szablonów Azure Resource Manager](../azure-resource-manager/resource-group-template-deploy.md).
+Kliknij pozycję **skrypt automatyzacji** , aby skompilować i wyeksportować szablon wdrożonych zasobów dla przyszłych wdrożeń. Aby uzyskać więcej informacji na temat pracy z szablonami, zobacz [wdrażanie zasobów za pomocą szablonów Azure Resource Manager](../azure-resource-manager/templates/deploy-powershell.md).
 
 ## <a name="administration-settings"></a>Ustawienia administracyjne
-Ustawienia w sekcji **Administracja** umożliwiają wykonywanie następujących zadań administracyjnych dla pamięci podręcznej. 
+Ustawienia w sekcji **Administracja** umożliwiają wykonywanie następujących zadań administracyjnych dla pamięci podręcznej.
 
 ![Administracja](./media/cache-configure/redis-cache-administration.png)
 
@@ -309,8 +309,8 @@ Eksport umożliwia eksportowanie danych przechowywanych w usłudze Azure cache f
 
 > [!IMPORTANT]
 > Usługa Import/Export jest dostępna tylko w przypadku pamięci podręcznych warstwy Premium. Aby uzyskać więcej informacji i instrukcje, zobacz [Importowanie i eksportowanie danych w usłudze Azure cache for Redis](cache-how-to-import-export-data.md).
-> 
-> 
+>
+>
 
 ### <a name="reboot"></a>Ponowne uruchamianie
 Blok **ponowne uruchomienie** umożliwia ponowne uruchomienie węzłów pamięci podręcznej. Ta funkcja ponownego uruchamiania umożliwia testowanie aplikacji pod kątem odporności w przypadku awarii węzła pamięci podręcznej.
@@ -325,13 +325,14 @@ Aby ponownie uruchomić co najmniej jeden węzeł pamięci podręcznej, wybierz 
 
 > [!IMPORTANT]
 > Dla wszystkich warstw cenowych jest teraz dostępny ponowny rozruch. Aby uzyskać więcej informacji i instrukcje, zobacz [pamięć podręczna platformy Azure dla Redis Administration — ponowny rozruch](cache-administration.md#reboot).
-> 
-> 
+>
+>
 
 
 ## <a name="monitoring"></a>Monitorowanie
 
-Sekcja **monitorowanie** pozwala skonfigurować diagnostykę i monitorowanie dla swojej pamięci podręcznej platformy Azure dla Redis. Aby uzyskać więcej informacji na temat pamięci podręcznej platformy Azure na potrzeby monitorowania i diagnostyki Redis, zobacz [Jak monitorować pamięć podręczną Azure dla Redis](cache-how-to-monitor.md).
+Sekcja **monitorowanie** pozwala skonfigurować diagnostykę i monitorowanie dla swojej pamięci podręcznej platformy Azure dla Redis.
+Aby uzyskać więcej informacji na temat pamięci podręcznej platformy Azure na potrzeby monitorowania i diagnostyki Redis, zobacz [Jak monitorować pamięć podręczną Azure dla Redis](cache-how-to-monitor.md).
 
 ![Diagnostyka](./media/cache-configure/redis-cache-diagnostics.png)
 
@@ -368,8 +369,8 @@ Ustawienia w sekcji **Pomoc techniczna i rozwiązywanie problemów** zawierają 
 
 > [!NOTE]
 > Usługa Resource Health nie może obecnie zgłosić kondycji pamięci podręcznej platformy Azure dla wystąpień Redis hostowanych w sieci wirtualnej. Aby uzyskać więcej informacji, zobacz [czy wszystkie funkcje pamięci podręcznej działają w przypadku hostowania pamięci podręcznej w sieci wirtualnej?](cache-how-to-premium-vnet.md#do-all-cache-features-work-when-hosting-a-cache-in-a-vnet)
-> 
-> 
+>
+>
 
 ### <a name="new-support-request"></a>Nowe żądanie pomocy technicznej
 Kliknij pozycję **nowe żądanie obsługi** , aby otworzyć żądanie pomocy technicznej dla pamięci podręcznej.
@@ -383,12 +384,12 @@ W nowej pamięci podręcznej platformy Azure dla wystąpień Redis są skonfigur
 
 > [!NOTE]
 > Ustawień w tej sekcji nie można zmienić za pomocą metody `StackExchange.Redis.IServer.ConfigSet`. Jeśli ta metoda jest wywoływana z jednym z poleceń w tej sekcji, zostanie zgłoszony wyjątek podobny do następującego przykładu:  
-> 
+>
 > `StackExchange.Redis.RedisServerException: ERR unknown command 'CONFIG'`
-> 
+>
 > Wszystkie wartości, które można skonfigurować, takie jak **Max-Memory-Policy**, można konfigurować za pomocą Azure Portal lub narzędzi do zarządzania wiersza polecenia, takich jak Azure CLI lub PowerShell.
-> 
-> 
+>
+>
 
 | Ustawienie | Wartość domyślna | Opis |
 | --- | --- | --- |
@@ -422,8 +423,8 @@ Aby uzyskać więcej informacji na temat baz danych, zobacz [co to są bazy dany
 
 > [!NOTE]
 > Ustawienie `databases` można skonfigurować tylko podczas tworzenia pamięci podręcznej i tylko przy użyciu programu PowerShell, interfejsu wiersza polecenia lub innych klientów zarządzania. Przykład konfigurowania `databases` podczas tworzenia pamięci podręcznej przy użyciu programu PowerShell można znaleźć w temacie [New-AzRedisCache](cache-how-to-manage-redis-cache-powershell.md#databases).
-> 
-> 
+>
+>
 
 <a name="maxclients"></a>
 <sup>2</sup>`maxclients` jest różna dla każdej usługi Azure cache dla warstwy cenowej Redis.
@@ -444,15 +445,15 @@ Aby uzyskać więcej informacji na temat baz danych, zobacz [co to są bazy dany
 
 > [!NOTE]
 > Chociaż każdy rozmiar pamięci podręcznej pozwala *na* określoną liczbę połączeń, każde połączenie z usługą Redis ma powiązane z nim obciążenie. Przykładem takiego obciążenia będzie użycie procesora CPU i pamięci w wyniku szyfrowania TLS/SSL. Maksymalny limit połączeń dla danego rozmiaru pamięci podręcznej zakłada, że pamięć podręczna została załadowana w sposób jasny. Jeśli obciążenie związane z naliczeniem połączenia *i* obciążenie z operacji klienta przekroczy pojemność systemu, pamięć podręczna może mieć problemy z pojemnością, nawet jeśli nie przekroczono limitu połączenia dla bieżącego rozmiaru pamięci podręcznej.
-> 
-> 
+>
+>
 
 
 
 ## <a name="redis-commands-not-supported-in-azure-cache-for-redis"></a>Polecenia Redis nie są obsługiwane w usłudze Azure cache dla Redis
 > [!IMPORTANT]
 > Ponieważ konfiguracja i zarządzanie usługą Azure cache for Redis Instances jest zarządzana przez firmę Microsoft, następujące polecenia są wyłączone. Jeśli spróbujesz je wywołać, zostanie wyświetlony komunikat o błędzie podobny do `"(error) ERR unknown command"`.
-> 
+>
 > * BGREWRITEAOF
 > * BGSAVE
 > * SYGNATUR
@@ -462,8 +463,8 @@ Aby uzyskać więcej informacji na temat baz danych, zobacz [co to są bazy dany
 > * WYŁĄCZONY
 > * SLAVEOF
 > * Polecenia zapisu klastra klastrów są wyłączone, ale dozwolone są polecenia klastra tylko do odczytu.
-> 
-> 
+>
+>
 
 Aby uzyskać więcej informacji o poleceniach Redis, zobacz [https://redis.io/commands](https://redis.io/commands).
 
@@ -473,8 +474,8 @@ Możesz bezpiecznie wydać polecenia do pamięci podręcznej platformy Azure dla
 > [!IMPORTANT]
 > - Konsola Redis nie współpracuje z siecią [wirtualną](cache-how-to-premium-vnet.md). Gdy pamięć podręczna jest częścią sieci wirtualnej, tylko klienci w sieci wirtualnej mogą uzyskać dostęp do pamięci podręcznej. Ponieważ konsola Redis działa w przeglądarce lokalnej, która znajduje się poza siecią wirtualną, nie może nawiązać połączenia z pamięcią podręczną.
 > - Nie wszystkie polecenia Redis są obsługiwane w pamięci podręcznej platformy Azure dla Redis. Listę poleceń Redis, które są wyłączone dla usługi Azure cache for Redis, można znaleźć w sekcji poprzednie [polecenia Redis nieobsługiwane w usłudze Azure cache for Redis](#redis-commands-not-supported-in-azure-cache-for-redis) . Aby uzyskać więcej informacji o poleceniach Redis, zobacz [https://redis.io/commands](https://redis.io/commands).
-> 
-> 
+>
+>
 
 Aby uzyskać dostęp do konsoli Redis, kliknij pozycję **konsola** w bloku **Azure cache for Redis** .
 
@@ -506,8 +507,7 @@ Możesz przenieść pamięć podręczną do nowej subskrypcji, klikając przycis
 
 ![Przenoszenie pamięci podręcznej platformy Azure dla usługi Redis](./media/cache-configure/redis-cache-move.png)
 
-Aby uzyskać informacje na temat przenoszenia zasobów z jednej grupy zasobów do innej i z jednej subskrypcji do drugiej, zobacz [przenoszenie zasobów do nowej grupy zasobów lub subskrypcji](../azure-resource-manager/resource-group-move-resources.md).
+Aby uzyskać informacje na temat przenoszenia zasobów z jednej grupy zasobów do innej i z jednej subskrypcji do drugiej, zobacz [przenoszenie zasobów do nowej grupy zasobów lub subskrypcji](../azure-resource-manager/management/move-resource-group-and-subscription.md).
 
 ## <a name="next-steps"></a>Następne kroki
 * Aby uzyskać więcej informacji na temat pracy z poleceniami Redis, zobacz [jak można uruchomić polecenia Redis?](cache-faq.md#how-can-i-run-redis-commands)
-

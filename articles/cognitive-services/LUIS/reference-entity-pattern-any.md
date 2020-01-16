@@ -10,14 +10,14 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 09/29/2019
 ms.author: diberry
-ms.openlocfilehash: 2239387ffff4c30e1183721a528e666199316bed
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 5164bf55ef8233cf34a470524da3bc852678d79a
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695090"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979176"
 ---
-# <a name="patternany-entity"></a>Wzorzec. dowolna jednostka 
+# <a name="patternany-entity"></a>Jednostka Pattern.any
 
 Wzorzec. any jest symbolem zastępczym o zmiennej długości używanym tylko w szablonie wzorca wypowiedź, aby oznaczyć, gdzie rozpoczyna się i kończą.  
 
@@ -25,13 +25,13 @@ Wzorzec. wszystkie jednostki muszą być oznaczone jako przykłady szablonu [wzo
 
 **Jednostka jest dobrym dopasowaniem w przypadku:**
 
-* Koniec jednostki można pomylić z pozostałym tekstem wypowiedź. 
+* Koniec jednostki można pomylić z pozostałym tekstem wypowiedź.
 
 ## <a name="usage"></a>Użycie
 
-Dana aplikacja kliencka, która wyszukuje książki na podstawie tytułu, wzorca. wszystkie wyodrębnia pełny tytuł. Szablon wypowiedź przy użyciu wzorca. wszystkie dla tego wyszukiwania w tej książce są `Was {BookTitle} written by an American this year[?]`. 
+Dana aplikacja kliencka, która wyszukuje książki na podstawie tytułu, wzorca. wszystkie wyodrębnia pełny tytuł. Szablon wypowiedź Używanie wzorca. wszystkie dla tego wyszukiwania w tej książce są `Was {BookTitle} written by an American this year[?]`.
 
-W poniższej tabeli każdy wiersz ma dwie wersje wypowiedź. Górna wypowiedź to sposób, w jaki LUIS początkowo widzi wypowiedź. Nie jest jasne, gdzie rozpoczyna się i kończą tytuł książki. Dolna wypowiedź używa wzorca. Każda jednostka do oznaczenia początku i końca jednostki. 
+W poniższej tabeli każdy wiersz ma dwie wersje wypowiedź. Górna wypowiedź to sposób, w jaki LUIS początkowo widzi wypowiedź. Nie jest jasne, gdzie rozpoczyna się i kończą tytuł książki. Dolna wypowiedź używa wzorca. Każda jednostka do oznaczenia początku i końca jednostki.
 
 |Wypowiedź z jednostką pogrubioną|
 |--|
@@ -43,9 +43,9 @@ W poniższej tabeli każdy wiersz ma dwie wersje wypowiedź. Górna wypowiedź t
 
 
 
-## <a name="example-json"></a>Przykładowy kod JSON
+## <a name="example-json"></a>Przykładowy plik JSON
 
-Rozważ następujące zapytanie:
+Rozpatrzmy następujące zapytanie:
 
 `where is the form Understand your responsibilities as a member of the community and who needs to sign it after I read it?`
 
@@ -69,7 +69,7 @@ Z osadzoną nazwą formularza do wyodrębnienia jako wzorzec. any:
 
 #### <a name="v3-prediction-endpoint-responsetabv3"></a>[Odpowiedź punktu końcowego przewidywania v3](#tab/V3)
 
-Jest to kod JSON, jeśli w ciągu zapytania jest ustawiony `verbose=false`:
+Jest to kod JSON, jeśli `verbose=false` jest ustawiony w ciągu zapytania:
 
 ```json
 "entities": {
@@ -79,7 +79,7 @@ Jest to kod JSON, jeśli w ciągu zapytania jest ustawiony `verbose=false`:
 }
 ```
 
-Jest to kod JSON, jeśli w ciągu zapytania jest ustawiony `verbose=true`:
+Jest to kod JSON, jeśli `verbose=true` jest ustawiony w ciągu zapytania:
 
 ```json
 "entities": {
@@ -104,8 +104,8 @@ Jest to kod JSON, jeśli w ciągu zapytania jest ustawiony `verbose=true`:
 }
 ```
 
-* * * 
+* * *
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym [samouczku](luis-tutorial-pattern-any.md)Użyj **wzorca. Każda** jednostka do wyodrębnienia danych z wyrażenia długości, gdzie wyrażenia długości są dobrze sformatowane, a koniec danych można łatwo pomylić z innymi słowami wypowiedź.
+W tym [samouczku](luis-tutorial-pattern.md)Użyj **wzorca. Każda** jednostka do wyodrębnienia danych z wyrażenia długości, gdzie wyrażenia długości są dobrze sformatowane, a koniec danych można łatwo pomylić z innymi słowami wypowiedź.

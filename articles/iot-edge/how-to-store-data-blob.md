@@ -8,12 +8,12 @@ ms.date: 12/13/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 3496e0942488a881dbb376d0e53228956e10a7f3
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: 12c5bf66de966faf8dc31c7265fdfb0180a95323
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75729445"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75970842"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge"></a>Przechowuj dane na krawędzi za pomocą usługi Azure Blob Storage na IoT Edge
 
@@ -174,8 +174,8 @@ W poniższych przykładach szybkiego startu są używane Języki, które są ró
 * [Python](../storage/blobs/storage-quickstart-blobs-python.md)
   * Wersje przed V 2.1 zestawu SDK języka Python mają znany problem, w którym moduł nie zwraca czasu utworzenia obiektu BLOB. Z powodu tego problemu niektóre metody, takie jak obiekty blob list, nie działają. Aby obejść ten sposób, jawnie ustaw wersję interfejsu API na kliencie obiektów BLOB na "2017-04-17". Przykład:  `block_blob_service._X_MS_VERSION = '2017-04-17'`
   * [Dołącz przykład obiektu BLOB](https://github.com/Azure/azure-storage-python/blob/master/samples/blob/append_blob_usage.py)
-* [Node.js](../storage/blobs/storage-quickstart-blobs-nodejs-v10.md)
-* [JS/HTML](../storage/blobs/storage-quickstart-blobs-javascript-client-libraries-v10.md)
+* [Node.js](../storage/blobs/storage-quickstart-blobs-nodejs-legacy.md)
+* [JS/HTML](../storage/blobs/storage-quickstart-blobs-javascript-client-libraries-legacy.md)
 * [Ruby](../storage/blobs/storage-quickstart-blobs-ruby.md)
 * [Go](../storage/blobs/storage-quickstart-blobs-go.md)
 * [PHP](../storage/blobs/storage-quickstart-blobs-php.md)

@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: f9e60b2f1685e03a9daa7a4801f43799a21eb411
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 263fdda178752ee22997a03a11902a7bff4791dc
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75940551"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028617"
 ---
 # <a name="azure-database-for-postgresql-single-server-data-encryption-with-customer-managed-key"></a>Azure Database for PostgreSQL szyfrowanie danych na jednym serwerze z kluczem zarządzanym przez klienta
 
@@ -41,7 +41,7 @@ Szyfrowanie danych dla Azure Database for PostgreSQL pojedynczego serwera zapewn
 
 **Klucz szyfrowania klucza (KEK)** — klucz szyfrowania służący do szyfrowania kluczy szyfrowania danych. Użycie klucza szyfrowania klucza, który nigdy nie pozostawia Key Vault, pozwala na szyfrowanie kluczy szyfrowania danych i sterowanie nimi. Jednostka, która ma dostęp do elementu KEK, może być różna od jednostki, która wymaga tego elementu. Ponieważ KEK jest wymagany do odszyfrowania DEKs, KEK jest efektywnie jednym punktem, przez który DEKs może być skutecznie usunięty przez usunięcie KEK.
 
-Klucze szyfrowania danych szyfrowane za pomocą kluczy szyfrowania kluczy są przechowywane oddzielnie, a tylko jednostka mająca dostęp do klucza szyfrowania klucza może odszyfrować te klucze szyfrowania danych. Aby uzyskać więcej informacji, zobacz [zabezpieczenia w szyfrowaniu](../security/fundamentals/encryption-atrest.md)w stanie spoczynku.
+Klucze szyfrowania danych, zaszyfrowane przy użyciu kluczy szyfrowania kluczy, są przechowywane oddzielnie i tylko jednostka mająca dostęp do klucza szyfrowania klucza może odszyfrować te klucze szyfrowania danych. Aby uzyskać więcej informacji, zobacz [zabezpieczenia w szyfrowaniu](../security/fundamentals/encryption-atrest.md)w stanie spoczynku.
 
 ## <a name="how-data-encryption-with-customer-managed-key-works"></a>Jak działa szyfrowanie danych z kluczem zarządzanym przez klienta
 
@@ -50,8 +50,8 @@ Klucze szyfrowania danych szyfrowane za pomocą kluczy szyfrowania kluczy są pr
 Aby serwer PostgreSQL mógł używać kluczy zarządzanych przez klienta przechowywanych w usłudze AKV do szyfrowania danych w programie, administrator Key Vault musi udzielić następujących praw dostępu serwerowi przy użyciu unikatowej tożsamości:
 
 * **Get** -do pobierania publicznej części i właściwości klucza w Key Vault
-* **wrapKey** — aby można było chronić (szyfrować)
-* **unwrapKey** — aby można było wyłączyć ochronę (odszyfrowywać)
+* **wrapKey** — aby można było szyfrować klucz szyfrowania danych
+* **unwrapKey** — aby można było odszyfrować klucz szyfrowania danych
 
 Key Vault administrator może również [włączyć rejestrowanie zdarzeń inspekcji Key Vault](../azure-monitor/insights/azure-key-vault.md), aby mogły być później poddane inspekcji.
 

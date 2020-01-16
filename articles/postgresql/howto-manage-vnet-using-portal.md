@@ -6,18 +6,18 @@ ms.author: mbolz
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: e3146554cf9fa49e50f6ae24d3c0984bbc081760
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 413c3a7b6fdcda996d3db548fb53f358eb8c71e0
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74770258"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978291"
 ---
 # <a name="create-and-manage-vnet-service-endpoints-and-vnet-rules-in-azure-database-for-postgresql---single-server-by-using-the-azure-portal"></a>Tworzenie punktów końcowych usługi sieci wirtualnej i reguł sieci wirtualnej w ramach Azure Database for PostgreSQL-pojedynczego serwera przy użyciu Azure Portal
 Punkty końcowe usług Virtual Network (VNet) i reguły zwiększają prywatną przestrzeń adresową Virtual Network do serwera Azure Database for PostgreSQL. Omówienie punktów końcowych usługi sieci wirtualnej Azure Database for PostgreSQL, w tym ograniczeń, znajduje się w temacie [punkty końcowe usługi sieci wirtualnej Azure Database for PostgreSQL Server](concepts-data-access-and-security-vnet.md). Punkty końcowe usługi sieci wirtualnej są dostępne we wszystkich obsługiwanych regionach dla Azure Database for PostgreSQL.
 
 > [!NOTE]
-> Obsługa punktów końcowych usługi sieci wirtualnej jest obsługiwana tylko w przypadku serwerów Ogólnego przeznaczenia i zoptymalizowanych pod kątem pamięci.
+> Obsługa punktów końcowych usługi sieci wirtualnej jest tylko w przypadku serwerów ogólnego przeznaczenia i zoptymalizowana pod kątem pamięci.
 > W przypadku komunikacji równorzędnej sieci wirtualnych, jeśli ruch odbywa się za pomocą wspólnej bramy sieci wirtualnej z punktami końcowymi usługi i powinien przepływać do elementu równorzędnego, Utwórz regułę listy ACL/sieci wirtualnej, aby umożliwić usłudze Azure Virtual Machines w sieci wirtualnej bramy dostęp do serwera Azure Database for PostgreSQL.
 
 
@@ -61,4 +61,4 @@ Punkty końcowe usług Virtual Network (VNet) i reguły zwiększają prywatną p
 - Aby uzyskać pomoc w połączeniu z serwerem Azure Database for PostgreSQL, zobacz [biblioteki połączeń dla Azure Database for PostgreSQL](./concepts-connection-libraries.md)
 
 <!-- Link references, to text, Within this same GitHub repo. --> 
-[resource-manager-portal]: ../azure-resource-manager/resource-manager-supported-services.md
+[resource-manager-portal]: ../azure-resource-manager/management/resource-providers-and-types.md

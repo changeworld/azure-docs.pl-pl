@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: tagore
-ms.openlocfilehash: 096077550a426d7eb77ed0d71e720149dd103a55
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 61c794ba03934ae1828ba310f3f776bfb61b652b
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75386072"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75972939"
 ---
 # <a name="introduction-to-cloud-service-monitoring"></a>Wprowadzenie do monitorowania usługi w chmurze
 
@@ -52,7 +52,7 @@ Po utworzeniu każdej roli program Visual Studio dodaje do niej rozszerzenie Dia
 
 ## <a name="setup-diagnostics-extension"></a>Zainstaluj rozszerzenie diagnostyki
 
-Po pierwsze, jeśli nie masz **klasycznego** konta magazynu, [Utwórz je](../storage/common/storage-quickstart-create-account.md). Upewnij się, że konto magazynu zostało utworzone przy użyciu określonego **klasycznego modelu wdrażania** .
+Po pierwsze, jeśli nie masz **klasycznego** konta magazynu, [Utwórz je](../storage/common/storage-account-create.md). Upewnij się, że konto magazynu zostało utworzone przy użyciu określonego **klasycznego modelu wdrażania** .
 
 Następnie przejdź do zasobu **konta magazynu (klasycznego)** . Wybierz pozycję **ustawienia** > **klucze dostępu** i skopiuj wartość **podstawowe parametry połączenia** . Ta wartość jest potrzebna dla usługi w chmurze. 
 

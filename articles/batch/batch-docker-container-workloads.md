@@ -2,20 +2,20 @@
 title: Obciążenia kontenerów — Azure Batch | Microsoft Docs
 description: Dowiedz się, jak uruchamiać aplikacje z obrazów kontenerów na Azure Batch.
 services: batch
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 ms.service: batch
 ms.topic: article
 ms.workload: na
 ms.date: 08/09/2019
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: seodec18
-ms.openlocfilehash: c9e24924472e0bb8dbd0e529b739263469b631fb
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 097ab13ad64477274e756d8e8e93e3614dd1a4e8
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71090754"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029727"
 ---
 # <a name="run-container-applications-on-azure-batch"></a>Uruchamianie aplikacji kontenera na Azure Batch
 
@@ -23,22 +23,22 @@ Azure Batch umożliwia uruchamianie i skalowanie wielu zadań przetwarzania wsad
 
 Należy zapoznać się z pojęciami dotyczącymi kontenera i sposobami tworzenia puli i zadań wsadowych. Przykłady kodu używają zestawów SDK dla programu Batch .NET i języka Python. Można również użyć innych zestawów SDK i narzędzi partii, w tym Azure Portal, aby utworzyć pule wsadowe z obsługą kontenerów i uruchamiać zadania kontenera.
 
-## <a name="why-use-containers"></a>Dlaczego warto używać kontenerów?
+## <a name="why-use-containers"></a>Dlaczego warto korzystać z kontenerów?
 
 Używanie kontenerów zapewnia łatwy sposób uruchamiania zadań wsadowych bez konieczności zarządzania środowiskiem i zależnościami w celu uruchamiania aplikacji. Kontenery wdrażają aplikacje jako uproszczone, przenośne, samoobsługowe jednostki, które mogą działać w kilku różnych środowiskach. Na przykład Utwórz i przetestuj kontener lokalnie, a następnie Przekaż obraz kontenera do rejestru na platformie Azure lub w innym miejscu. Model wdrażania kontenerów zapewnia, że środowisko uruchomieniowe aplikacji jest zawsze prawidłowo zainstalowane i skonfigurowane wszędzie tam, gdzie hostuje aplikację. Zadania oparte na kontenerach w usłudze Batch mogą również korzystać z funkcji zadań nienależących do kontenera, w tym pakietów aplikacji i zarządzania plikami zasobów i plików wyjściowych. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* **Wersje zestawu SDK**: Zestawy SDK programu Batch obsługują obrazy kontenerów w następujących wersjach:
+* **Wersje zestawu SDK**: w usłudze Batch SDK są obsługiwane obrazy kontenerów w następujących wersjach:
     * Interfejs API REST usługi Batch w wersji 2017 -09 — 01.6.0
     * Zestaw SDK platformy .NET w wersji 8.0.0
     * Zestaw SDK języka Python w wersji 4,0
     * Zestaw SDK dla języka Java w wersji 3,0
     * Zestaw SDK w usłudze Batch Node. js w wersji 3,0
 
-* **Konta**: W ramach subskrypcji platformy Azure musisz utworzyć konto usługi Batch i opcjonalnie konto magazynu platformy Azure.
+* **Konta**: w ramach subskrypcji platformy Azure należy utworzyć konto usługi Batch i opcjonalnie konto magazynu platformy Azure.
 
-* **Obsługiwany obraz maszyny wirtualnej**: Kontenery są obsługiwane tylko w pulach utworzonych za pomocą konfiguracji maszyny wirtualnej, z obrazów szczegółowych w poniższej sekcji "obsługiwane obrazy maszyn wirtualnych". W przypadku podania obrazu niestandardowego zapoznaj się z zagadnieniami w poniższej sekcji i wymaganiami w temacie [Używanie zarządzanego obrazu niestandardowego do tworzenia puli maszyn wirtualnych](batch-custom-images.md). 
+* **Obsługiwany obraz maszyny wirtualnej**: kontenery są obsługiwane tylko w pulach utworzonych przy użyciu konfiguracji maszyny wirtualnej, od obrazów opisanych w poniższej sekcji "obsługiwane obrazy maszyn wirtualnych". W przypadku podania obrazu niestandardowego zapoznaj się z zagadnieniami w poniższej sekcji i wymaganiami w temacie [Używanie zarządzanego obrazu niestandardowego do tworzenia puli maszyn wirtualnych](batch-custom-images.md). 
 
 ### <a name="limitations"></a>Ograniczenia
 
@@ -98,7 +98,7 @@ Zaletą pobierania obrazów kontenerów jest to, że podczas pierwszego uruchami
 
 ### <a name="pool-without-prefetched-container-images"></a>Pula bez pobranych z obrazu kontenera
 
-Aby skonfigurować pulę z obsługą kontenerów bez wstępnie pobranych obrazów kontenerów, `ContainerConfiguration` Zdefiniuj `VirtualMachineConfiguration` i obiekty, jak pokazano w poniższym przykładzie języka Python. W tym przykładzie używa się serwera Ubuntu Azure Batch na potrzeby obrazu pul kontenerów z portalu Marketplace.
+Aby skonfigurować pulę z obsługą kontenerów bez wstępnie pobranych obrazów kontenerów, należy zdefiniować `ContainerConfiguration` i `VirtualMachineConfiguration` obiektów, jak pokazano w poniższym przykładzie języka Python. W tym przykładzie używa się serwera Ubuntu Azure Batch na potrzeby obrazu pul kontenerów z portalu Marketplace.
 
 
 ```python
@@ -128,7 +128,7 @@ new_pool = batch.models.PoolAddParameter(
 
 ### <a name="prefetch-images-for-container-configuration"></a>Obrazy pobierania z wyprzedzeniem dla konfiguracji kontenera
 
-Aby uzyskać pobieranie z wyprzedzeniem obrazów kontenerów w puli, Dodaj listę obrazów`container_image_names`kontenerów (, w języku `ContainerConfiguration`Python) do programu. 
+Aby uzyskać pobieranie z wyprzedzeniem obrazów kontenerów w puli, Dodaj listę obrazów kontenerów (`container_image_names`w języku Python) do `ContainerConfiguration`. 
 
 Poniższy podstawowy przykład języka Python przedstawia sposób pobierania z wyprzedzeniem standardowego obrazu kontenera Ubuntu z usługi [Docker Hub](https://hub.docker.com).
 
@@ -193,7 +193,7 @@ CloudPool pool = batchClient.PoolOperations.CreatePool(
 
 ### <a name="prefetch-images-from-a-private-container-registry"></a>Pobieranie z wyprzedzeniem obrazów z prywatnego rejestru kontenerów
 
-Można również uzyskać pobieranie z wyprzedzeniem obrazów kontenerów przez uwierzytelnienie na prywatnym serwerze rejestru kontenerów. W poniższym przykładzie `ContainerConfiguration` obiekty i `VirtualMachineConfiguration` pobierają z wyprzedzeniem prywatny obraz TensorFlow z prywatnego rejestru kontenerów platformy Azure. Odwołanie do obrazu jest takie samo jak w poprzednim przykładzie.
+Można również uzyskać pobieranie z wyprzedzeniem obrazów kontenerów przez uwierzytelnienie na prywatnym serwerze rejestru kontenerów. W poniższym przykładzie obiekty `ContainerConfiguration` i `VirtualMachineConfiguration` pobierają z wyprzedzeniem prywatny obraz TensorFlow z prywatnego rejestru kontenerów platformy Azure. Odwołanie do obrazu jest takie samo jak w poprzednim przykładzie.
 
 ```csharp
 // Specify a container registry
@@ -227,13 +227,13 @@ CloudPool pool = batchClient.PoolOperations.CreatePool(
 
 Aby uruchomić zadanie kontenera w puli z obsługą kontenerów, określ ustawienia specyficzne dla kontenera. Ustawienia obejmują obraz do użycia, rejestr i opcje przebiegu kontenera.
 
-* `ContainerSettings` Użyj właściwości klas zadań, aby skonfigurować ustawienia specyficzne dla kontenera. Te ustawienia są definiowane przez klasę [TaskContainerSettings](/dotnet/api/microsoft.azure.batch.taskcontainersettings) . Należy pamiętać, `--rm` że opcja kontenera nie wymaga dodatkowej `--runtime` opcji, ponieważ jest ona traktowana przez partię. 
+* Użyj właściwości `ContainerSettings` klas zadań, aby skonfigurować ustawienia specyficzne dla kontenera. Te ustawienia są definiowane przez klasę [TaskContainerSettings](/dotnet/api/microsoft.azure.batch.taskcontainersettings) . Należy zauważyć, że opcja kontenera `--rm` nie wymaga dodatkowej opcji `--runtime`, ponieważ jest ona traktowana przez partię. 
 
 * W przypadku uruchamiania zadań na obrazach kontenerów zadanie w [chmurze](/dotnet/api/microsoft.azure.batch.cloudtask) i [Menedżer zadań](/dotnet/api/microsoft.azure.batch.cloudjob.jobmanagertask) wymagają ustawień kontenera. Jednak zadanie [Uruchom zadanie](/dotnet/api/microsoft.azure.batch.starttask), [zadanie przygotowania zadania](/dotnet/api/microsoft.azure.batch.cloudjob.jobpreparationtask)i [zwolnienia zadania](/dotnet/api/microsoft.azure.batch.cloudjob.jobreleasetask) nie wymaga ustawień kontenera (oznacza to, że mogą być uruchamiane w ramach kontekstu kontenera lub bezpośrednio w węźle).
 
 ### <a name="container-task-command-line"></a>Wiersz polecenia zadania kontenera
 
-Po uruchomieniu zadania kontenera usługi Batch automatycznie używa polecenia Docker [Create](https://docs.docker.com/engine/reference/commandline/create/) w celu utworzenia kontenera przy użyciu obrazu określonego w zadaniu. Następnie usługa Batch kontroluje wykonywanie zadań w kontenerze. 
+Po uruchomieniu zadania kontenera usługi Batch automatycznie używa polecenia [Docker Create](https://docs.docker.com/engine/reference/commandline/create/) w celu utworzenia kontenera przy użyciu obrazu określonego w zadaniu. Następnie usługa Batch kontroluje wykonywanie zadań w kontenerze. 
 
 Podobnie jak w przypadku zadań wsadowych nienależących do kontenera, należy ustawić wiersz polecenia dla zadania kontenera. Ponieważ usługa Batch automatycznie tworzy kontener, wiersz polecenia określa tylko polecenie lub polecenia, które zostaną uruchomione w kontenerze.
 
@@ -241,19 +241,19 @@ Jeśli obraz kontenera zadania usługi Batch jest skonfigurowany za pomocą skry
 
 * Aby użyć domyślnego punktu wejścia obrazu kontenera, należy ustawić wiersz polecenia zadania na pusty ciąg `""`.
 
-* Aby zastąpić domyślny punkt wejścia lub, jeśli obraz nie ma punktu wejścia, ustaw wiersz polecenia odpowiedni dla kontenera, na przykład `/app/myapp` lub. `/bin/sh -c python myscript.py`
+* Aby zastąpić domyślny punkt wejścia lub jeśli obraz nie ma punktu wejścia, ustaw odpowiedni wiersz polecenia dla kontenera, na przykład `/app/myapp` lub `/bin/sh -c python myscript.py`.
 
-Opcjonalne [ContainerRunOptions](/dotnet/api/microsoft.azure.batch.taskcontainersettings.containerrunoptions) są dodatkowymi argumentami `docker create` , które są używane przez partię do tworzenia i uruchamiania kontenera. Na przykład aby ustawić katalog roboczy dla kontenera, należy ustawić `--workdir <directory>` opcję. Dodatkowe opcje można znaleźć w temacie The [Docker Create](https://docs.docker.com/engine/reference/commandline/create/) Reference.
+Opcjonalne [ContainerRunOptions](/dotnet/api/microsoft.azure.batch.taskcontainersettings.containerrunoptions) są dodatkowymi argumentami dostarczanymi do polecenia `docker create`, które są używane przez partię do tworzenia i uruchamiania kontenera. Na przykład, aby ustawić katalog roboczy dla kontenera, należy ustawić opcję `--workdir <directory>`. Dodatkowe opcje można znaleźć w temacie The [Docker Create](https://docs.docker.com/engine/reference/commandline/create/) Reference.
 
 ### <a name="container-task-working-directory"></a>Katalog roboczy zadania kontenera
 
-Zadanie kontenera wsadowego jest wykonywane w katalogu roboczym w kontenerze, który jest bardzo podobny do wsadowego tworzenia zadań (nie kontener). Należy zauważyć, że ten katalog roboczy różni się od [WORKDIR](https://docs.docker.com/engine/reference/builder/#workdir) , jeśli jest skonfigurowany na obrazie, lub domyślnego katalogu roboczego`C:\` kontenera (w kontenerze systemu `/` Windows lub w kontenerze Linux). 
+Zadanie kontenera wsadowego jest wykonywane w katalogu roboczym w kontenerze, który jest bardzo podobny do wsadowego tworzenia zadań (nie kontener). Należy zauważyć, że ten katalog roboczy różni się od [WORKDIR](https://docs.docker.com/engine/reference/builder/#workdir) , jeśli jest skonfigurowany na obrazie, lub domyślnego katalogu roboczego kontenera (`C:\` w kontenerze systemu Windows lub `/` w kontenerze Linux). 
 
 Zadanie kontenera usługi Batch:
 
-* Wszystkie katalogi cyklicznie poniżej `AZ_BATCH_NODE_ROOT_DIR` węzła w węźle hosta (katalogu głównego katalogów Azure Batch) są mapowane do kontenera
+* Wszystkie katalogi cyklicznie poniżej `AZ_BATCH_NODE_ROOT_DIR` w węźle hosta (katalog główny Azure Batch katalogów) są mapowane na kontener
 * Wszystkie zmienne środowiskowe zadań są mapowane do kontenera
-* Katalog `AZ_BATCH_TASK_WORKING_DIR` roboczy zadania w węźle jest ustawiany tak samo jak w przypadku zwykłego zadania i mapowany do kontenera. 
+* Katalog roboczy zadania `AZ_BATCH_TASK_WORKING_DIR` w węźle jest ustawiony tak samo jak w przypadku zwykłego zadania i mapowany do kontenera. 
 
 Mapowania te umożliwiają pracy z zadaniami kontenera w taki sam sposób, jak zadania inne niż kontenery. Na przykład zainstaluj aplikacje przy użyciu pakietów aplikacji, uzyskaj dostęp do plików zasobów z usługi Azure Storage, Użyj ustawień środowiska zadania i Utrwalaj pliki wyjściowe zadania po zatrzymaniu kontenera.
 
@@ -269,7 +269,7 @@ W razie konieczności dostosuj ustawienia zadania kontenera na podstawie obrazu:
 
 ## <a name="container-task-examples"></a>Przykłady zadań kontenera
 
-Poniższy fragment kodu w języku Python przedstawia podstawowy wiersz polecenia uruchamiany w kontenerze utworzonym na podstawie fikcyjnego obrazu pobranego z usługi Docker Hub. W tym miejscu opcja `--workdir` kontenerausuwakontenerpozakończeniuzadania,aopcjaustawiakatalogroboczy.`--rm` Wiersz polecenia zastępuje punkt wejścia kontenera za pomocą prostego polecenia powłoki, które zapisuje niewielki plik w katalogu roboczym zadania na hoście. 
+Poniższy fragment kodu w języku Python przedstawia podstawowy wiersz polecenia uruchamiany w kontenerze utworzonym na podstawie fikcyjnego obrazu pobranego z usługi Docker Hub. W tym miejscu opcja kontenera `--rm` usuwa kontener po zakończeniu zadania, a opcja `--workdir` ustawia katalog roboczy. Wiersz polecenia zastępuje punkt wejścia kontenera za pomocą prostego polecenia powłoki, które zapisuje niewielki plik w katalogu roboczym zadania na hoście. 
 
 ```python
 task_id = 'sampletask'

@@ -7,12 +7,12 @@ ms.reviewer: gabilehner
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/07/2019
-ms.openlocfilehash: 495f53bc97835c4940f7b36d23349b768a7a637f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b4e09bf84d78c88d3625b0f6b478746db09cc2d8
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75440964"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76030067"
 ---
 # <a name="use-follower-database-to-attach-databases-in-azure-data-explorer"></a>Używanie bazy danych programu do uzupełniania w celu dołączania baz danych na platformie Azure Eksplorator danych
 
@@ -127,7 +127,7 @@ poller = kusto_management_client.attached_database_configurations.create_or_upda
 
 ### <a name="attach-a-database-using-an-azure-resource-manager-template"></a>Dołączanie bazy danych przy użyciu szablonu Azure Resource Manager
 
-W tej sekcji dowiesz się, jak dołączyć bazę danych przy użyciu [szablonu Azure Resource Manager](../azure-resource-manager/management/overview.md). 
+W tej sekcji dowiesz się, jak utworzyć klaster programu z instrukcjami i dołączyć do niego bazę danych przy użyciu [szablonu Azure Resource Manager](../azure-resource-manager/management/overview.md). Jeśli masz już klaster, Usuń zasób `Microsoft.Kusto/clusters` z poniższej listy zasobów.
 
 ```json
 {
@@ -159,7 +159,7 @@ W tej sekcji dowiesz się, jak dołączyć bazę danych przy użyciu [szablonu A
             "type": "string",
             "defaultValue": "",
             "metadata": {
-                "description": "Name of the leader cluster to create."
+                "description": "The resource ID of the leader cluster."
             }
         },
         "defaultPrincipalsModificationKind": {
@@ -217,7 +217,7 @@ Szablon Azure Resource Manager można wdrożyć za [pomocą Azure Portal](https:
 
 |**Ustawienie**  |**Opis**  |
 |---------|---------|
-|Nazwa klastra z flagami     |  Nazwa klastra z flagami       |
+|Nazwa klastra z flagami     |  Nazwa klastra programu z instrukcjami. Jeśli istnieje Nazwa klastra, Usuń zasób `Microsoft.Kusto/clusters` z listy zasobów w szablonie usługi ARM. W przeciwnym razie zostanie utworzony nowy klaster.     |
 |Nazwa dołączonych konfiguracji bazy danych    |    Nazwa dołączonego obiektu konfiguracji bazy danych. Nazwa musi być unikatowa na poziomie klastra.     |
 |Nazwa bazy danych     |      Nazwa bazy danych, która ma zostać zastosowana. Jeśli chcesz postępować zgodnie z bazami danych lidera, użyj znaku "*".   |
 |Identyfikator zasobu klastra lidera    |   Identyfikator zasobu dla klastra lidera.      |
