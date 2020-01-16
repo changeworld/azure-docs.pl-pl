@@ -5,12 +5,12 @@ ms.date: 09/25/2019
 ms.topic: conceptual
 description: Znajdź odpowiedzi na niektóre często zadawane pytania dotyczące Azure Dev Spaces
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, Service siatk, Service siatk Routing, polecenia kubectl, k8s '
-ms.openlocfilehash: c904ae5809a36859ba6428bf026c9016a1a8f747
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: d5ab56edfe4799d51fb7f08642aad9e2ee01db05
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867192"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76044971"
 ---
 # <a name="frequently-asked-questions-about-azure-dev-spaces"></a>Często zadawane pytania dotyczące Azure Dev Spaces
 
@@ -34,7 +34,7 @@ Tak, możesz skonfigurować własny ruch przychodzący przy użyciu protokołu H
 
 ## <a name="can-i-use-azure-dev-spaces-on-a-cluster-that-uses-cni-rather-than-kubenet"></a>Czy mogę używać Azure Dev Spaces w klastrze korzystającym z CNI zamiast korzystającą wtyczki kubenet? 
 
-Tak, można użyć Azure Dev Spaces w klastrze AKS, który używa CNI do obsługi sieci. Na przykład można użyć Azure Dev Spaces w klastrze AKS z [istniejącymi kontenerami systemu Windows][windows-containers], które używają CNI do obsługi sieci. Więcej informacji na temat korzystania z CNI dla sieci z Azure Dev Spaces jest dostępna [tutaj](configure-networking.md#using-azure-container-networking-with-azure-dev-spaces).
+Tak, można użyć Azure Dev Spaces w klastrze AKS, który używa CNI do obsługi sieci. Na przykład można użyć Azure Dev Spaces w klastrze AKS z [istniejącymi kontenerami systemu Windows][windows-containers], które używają CNI do obsługi sieci. Więcej informacji na temat korzystania z CNI dla sieci z Azure Dev Spaces jest dostępna [tutaj](configure-networking.md#using-azure-cni).
 
 ## <a name="can-i-use-azure-dev-spaces-with-windows-containers"></a>Czy mogę używać Azure Dev Spaces z kontenerami systemu Windows?
 
@@ -42,7 +42,7 @@ Obecnie Azure Dev Spaces ma być uruchamiany tylko w przypadku systemów Linux i
 
 ## <a name="can-i-use-azure-dev-spaces-on-aks-clusters-with-api-server-authorized-ip-address-ranges-enabled"></a>Czy można używać Azure Dev Spaces w klastrach AKS z włączonymi zakresami adresów IP autoryzowanych serwerów interfejsu API?
 
-Tak, można użyć Azure Dev Spaces w klastrach AKS z włączonymi [zakresami adresów IP autoryzowanych przez serwer interfejsu API][aks-auth-range] . Więcej informacji na temat korzystania z klastrów AKS z dozwolonymi zakresami adresów IP serwera interfejsu API w Azure Dev Spaces jest dostępny [tutaj](configure-networking.md#using-api-server-authorized-ip-ranges-with-azure-dev-spaces).
+Tak, można użyć Azure Dev Spaces w klastrach AKS z włączonymi [zakresami adresów IP autoryzowanych przez serwer interfejsu API][aks-auth-range] . Więcej informacji na temat korzystania z klastrów AKS z dozwolonymi zakresami adresów IP serwera interfejsu API w Azure Dev Spaces jest dostępny [tutaj](configure-networking.md#using-api-server-authorized-ip-ranges).
 
 ### <a name="can-i-use-azure-dev-spaces-on-aks-clusters-with-restricted-egress-traffic-for-cluster-nodes"></a>Czy można używać Azure Dev Spaces w klastrach AKS z ograniczonym ruchem wychodzącym dla węzłów klastra?
 

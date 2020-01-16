@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 01/10/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 08a5c2c101b934f07ab85082e726cb8e1341e5d0
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: cd9f85e3bfd11ee655ce581c60a5b65e13f4497b
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75888718"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75971903"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-key-vault"></a>Samouczek: używanie przypisanej przez system tożsamości zarządzanej maszyny wirtualnej systemu Windows w celu uzyskania dostępu do usługi Azure Key Vault 
 
@@ -38,6 +38,13 @@ Omawiane kwestie:
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
+
+
+## <a name="enable"></a>Włączenie
+
+[!INCLUDE [msi-tut-enable](../../../includes/active-directory-msi-tut-enable.md)]
+
+
 
 ## <a name="grant-access"></a>Udzielanie dostępu  
  
@@ -66,7 +73,7 @@ Następnie dodaj wpis tajny do usługi Key Vault, aby umożliwić późniejsze p
 5. Pozostaw pustą datę aktywacji i datę wygaśnięcia oraz zostaw opcję **Włączone** ustawioną na wartość **Tak**. 
 6. Kliknij pozycję **Utwórz**, aby utworzyć wpis tajny. 
  
-## <a name="get-an-access-token"></a>Pobranie tokenu dostępu  
+## <a name="access-data"></a>Uzyskiwanie dostępu do danych  
 
 W tej sekcji pokazano, jak uzyskać token dostępu przy użyciu tożsamości maszyny wirtualnej i użyć go do pobrania klucza tajnego z Key Vault. Jeśli nie masz zainstalowanego programu PowerShell 4.3.1 (lub nowszej wersji), musisz [pobrać i zainstalować najnowszą wersję](https://docs.microsoft.com/powershell/azure/overview).
 
@@ -108,6 +115,13 @@ Najpierw użyjemy przypisanej przez system tożsamości zarządzanej maszyny wir
     ```
     
 Po pobraniu wpisu tajnego z usługi Key Vault możesz użyć go do uwierzytelnienia w usłudze wymagającej nazwy i hasła. 
+
+
+## <a name="disable"></a>Wyłączenie
+
+[!INCLUDE [msi-tut-disable](../../../includes/active-directory-msi-tut-disable.md)]
+
+
 
 ## <a name="next-steps"></a>Następne kroki
 

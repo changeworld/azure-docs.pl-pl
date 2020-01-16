@@ -5,22 +5,22 @@ services: active-directory
 documentationcenter: ''
 author: MarkusVi
 manager: daveba
-editor: daveba
+editor: ''
 ms.service: active-directory
 ms.subservice: msi
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/10/2020
+ms.date: 01/14/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c9b744ed40e2b8c360117f638bab6d10e9ae2975
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: f99859fb695281324148683fac24c9e7b8463ef5
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75888483"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977895"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-cosmos-db"></a>Samouczek: używanie przypisanej przez system tożsamości zarządzanej maszyny wirtualnej z systemem Windows do uzyskiwania dostępu do usługi Azure Cosmos DB
 
@@ -40,7 +40,17 @@ W tym samouczku przedstawiono sposób używania tożsamości zarządzanej przypi
 
 - Zainstalowanie najnowszej wersji programu [Azure PowerShell](/powershell/azure/install-az-ps)
 
-## <a name="create-a-cosmos-db-account"></a>Tworzenie konta usługi Cosmos DB 
+
+## <a name="enable"></a>Włączenie
+
+[!INCLUDE [msi-tut-enable](../../../includes/active-directory-msi-tut-enable.md)]
+
+
+
+## <a name="grant-access"></a>Udzielanie dostępu
+
+
+### <a name="create-a-cosmos-db-account"></a>Tworzenie konta usługi Cosmos DB 
 
 Jeśli jeszcze nie masz konta usługi Cosmos DB, utwórz je. Możesz pominąć ten krok i użyć istniejącego konta usługi Cosmos DB. 
 
@@ -51,7 +61,7 @@ Jeśli jeszcze nie masz konta usługi Cosmos DB, utwórz je. Możesz pominąć t
 5. Upewnij się, że **Subskrypcja** i **Grupa zasobów** pasują do wartości określonych podczas tworzenia maszyny wirtualnej w poprzednim kroku.  Wybierz **lokalizację**, w której jest dostępna usługa Cosmos DB.
 6. Kliknij przycisk **Utwórz**.
 
-## <a name="create-a-collection"></a>Tworzenie kolekcji 
+### <a name="create-a-collection"></a>Tworzenie kolekcji 
 
 Następnie na koncie usługi Cosmos DB dodaj kolekcję danych, dla której możesz utworzyć zapytania w kolejnych krokach.
 
@@ -59,7 +69,8 @@ Następnie na koncie usługi Cosmos DB dodaj kolekcję danych, dla której może
 2. Na karcie **Omówienie** kliknij przycisk **+/Dodaj kolekcję**. Zostanie wysunięty panel „Dodawanie kolekcji”.
 3. Nadaj kolekcji identyfikator bazy danych i identyfikator kolekcji, wybierz pojemność magazynu, wprowadź klucz partycji, wprowadź wartość przepływności, a następnie kliknij przycisk **OK**.  W tym samouczku wystarczy użyć identyfikatora bazy danych i identyfikatora kolekcji „Test”, a następnie wybrać stałą pojemność magazynu i najniższą przepływność (400 RU/s).  
 
-## <a name="grant-access"></a>Udzielanie dostępu
+
+### <a name="grant-access-to-the-cosmos-db-account-access-keys"></a>Udzielanie dostępu do kluczy dostępu do konta Cosmos DB
 
 W tej sekcji przedstawiono sposób udzielania dostępu tożsamości zarządzanej przez system Windows VM do kluczy dostępu do konta Cosmos DB. Usługa Cosmos DB nie zapewnia natywnej obsługi uwierzytelniania usługi Azure AD. Możesz jednak użyć przypisanej przez system tożsamości zarządzanej, aby pobrać klucz dostępu do konta usługi Cosmos DB z usługi Resource Manager, a następnie użyć klucza do uzyskania dostępu do usługi Cosmos DB. W tym kroku udzielasz przypisanej przez system tożsamości zarządzanej maszyny wirtualnej z systemem Windows dostępu do kluczy do konta usługi Cosmos DB.
 
@@ -69,11 +80,15 @@ Aby udzielić przypisanej przez system tożsamości zarządzanej maszyny wirtual
 $spID = (Get-AzVM -ResourceGroupName myRG -Name myVM).identity.principalid
 New-AzRoleAssignment -ObjectId $spID -RoleDefinitionName "Cosmos DB Account Reader Role" -Scope "/subscriptions/<mySubscriptionID>/resourceGroups/<myResourceGroup>/providers/Microsoft.DocumentDb/databaseAccounts/<COSMOS DB ACCOUNT NAME>"
 ```
-## <a name="get-an-access-token"></a>Pobranie tokenu dostępu
+## <a name="access-data"></a>Uzyskiwanie dostępu do danych
 
-W tej sekcji pokazano, jak uzyskać token dostępu przy użyciu tożsamości zarządzanej przypisanej przez system Windows VM do wywołania Azure Resource Manager. W pozostałej części tego samouczka będziemy pracować z poziomu wcześniej utworzonej maszyny wirtualnej. 
+W tej sekcji przedstawiono sposób wywoływania Azure Resource Manager przy użyciu tokenu dostępu dla tożsamości zarządzanej przypisanej przez system Windows VM. W pozostałej części tego samouczka będziemy pracować z poziomu wcześniej utworzonej maszyny wirtualnej. 
 
-Konieczne będzie zainstalowanie najnowszej wersji [interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli) na maszynie wirtualnej z systemem Windows.
+Musisz zainstalować najnowszą wersję [interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli) na maszynie wirtualnej z systemem Windows.
+
+
+
+### <a name="get-an-access-token"></a>Pobranie tokenu dostępu
 
 1. W witrynie Azure Portal przejdź do pozycji **Maszyny wirtualne**, przejdź do maszyny wirtualnej z systemem Windows, a następnie na stronie **Przegląd** kliknij opcję **Połącz** u góry. 
 2. Wprowadź **nazwę użytkownika** i **hasło** dodane podczas tworzenia maszyny wirtualnej z systemem Windows. 
@@ -98,7 +113,7 @@ Konieczne będzie zainstalowanie najnowszej wersji [interfejsu wiersza polecenia
    $ArmToken = $content.access_token
    ```
 
-## <a name="get-access-keys"></a>Uzyskiwanie dostępu do kluczy 
+### <a name="get-access-keys"></a>Uzyskiwanie dostępu do kluczy 
 
 W tej sekcji pokazano, jak uzyskać klucze dostępu z Azure Resource Manager, aby wykonać Cosmos DB wywołania. Teraz użyj programu PowerShell, aby wywołać usługę Resource Manager przy użyciu tokenu dostępu pozyskanego w poprzedniej sekcji, aby pobrać klucz dostępu do usługi Cosmos DB. Gdy będziemy już mieć klucz dostępu, będzie można wykonać zapytanie dotyczące usługi Cosmos DB. Pamiętaj, aby zastąpić parametry `<SUBSCRIPTION ID>`, `<RESOURCE GROUP>` i `<COSMOS DB ACCOUNT NAME>` własnymi wartościami. Zastąp wartość `<ACCESS TOKEN>` tokenem dostępu pobranym wcześniej.  Jeśli chcesz pobrać klucze odczytu/zapisu, użyj typu operacji klucza `listKeys`.  Jeśli chcesz pobrać klucze tylko do odczytu, użyj typu operacji klucza `readonlykeys`:
 
@@ -176,6 +191,13 @@ To polecenie interfejsu wiersza polecenia zwraca szczegółowe informacje o kole
   }
 }
 ```
+
+
+## <a name="disable"></a>Wyłączenie
+
+[!INCLUDE [msi-tut-disable](../../../includes/active-directory-msi-tut-disable.md)]
+
+
 
 ## <a name="next-steps"></a>Następne kroki
 

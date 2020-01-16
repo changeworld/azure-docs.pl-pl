@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 09/30/2019
 ms.author: tomfitz
 ms.custom: mvc
-ms.openlocfilehash: 97003699f8dbaa028ff7d4739a4f0576a8790716
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: b9595c6ce464cf9e4ab0baff9ef842e76f3d18a3
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749926"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75970134"
 ---
 # <a name="tutorial-learn-about-linux-virtual-machine-management-with-azure-cli"></a>Samouczek: informacje o zarządzaniu maszynami wirtualnymi z systemem Linux przy użyciu interfejsu wiersza polecenia platformy Azure
 
@@ -140,7 +140,7 @@ Po zakończeniu wdrażania możesz zastosować do rozwiązania więcej ustawień
 
 ## <a name="lock-resources"></a>Blokowanie zasobów
 
-[Blokady zasobów](../../azure-resource-manager/resource-group-lock-resources.md) uniemożliwiają użytkownikom w organizacji przypadkowe usunięcie lub zmodyfikowanie krytycznych zasobów. W przeciwieństwie do kontroli dostępu opartej na rolach blokady zasobów stosują ograniczenie do wszystkich użytkowników i ról. Poziom blokady można ustawić na wartość *CanNotDelete* lub *ReadOnly*.
+[Blokady zasobów](../../azure-resource-manager/management/lock-resources.md) uniemożliwiają użytkownikom w organizacji przypadkowe usunięcie lub zmodyfikowanie krytycznych zasobów. W przeciwieństwie do kontroli dostępu opartej na rolach blokady zasobów stosują ograniczenie do wszystkich użytkowników i ról. Poziom blokady można ustawić na wartość *CanNotDelete* lub *ReadOnly*.
 
 Aby móc tworzyć lub usuwać blokady zarządzania, musisz mieć dostęp do akcji `Microsoft.Authorization/locks/*`. Spośród wbudowanych ról tylko **Właściciel** i **Administrator dostępu użytkowników** mają dostęp do tych akcji.
 
@@ -172,7 +172,7 @@ Zostanie wyświetlony komunikat o błędzie informujący, że nie można zakońc
 
 ## <a name="tag-resources"></a>Tagowanie zasobów
 
-Stosowanie [tagów](../../azure-resource-manager/resource-group-using-tags.md) do zasobów platformy Azure umożliwia ich logiczne zorganizowanie według kategorii. Każdy tag składa się z nazwy i wartości. Na przykład można zastosować nazwę „Środowisko” i wartość „Produkcyjne” do wszystkich zasobów w środowisku produkcyjnym.
+Stosowanie [tagów](../../azure-resource-manager/management/tag-resources.md) do zasobów platformy Azure umożliwia ich logiczne zorganizowanie według kategorii. Każdy tag składa się z nazwy i wartości. Na przykład można zastosować nazwę „Środowisko” i wartość „Produkcyjne” do wszystkich zasobów w środowisku produkcyjnym.
 
 [!INCLUDE [Resource Manager governance tags CLI](../../../includes/resource-manager-governance-tags-cli.md)]
 

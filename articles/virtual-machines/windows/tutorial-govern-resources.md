@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 12/05/2018
 ms.author: tomfitz
 ms.custom: mvc
-ms.openlocfilehash: 6a4c02883c80b2ad7e5283c6ac33a4604ee35c75
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: fd7e7f14d076a6a9652e902c4dc0ec41665735ee
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75751366"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981762"
 ---
 # <a name="tutorial-learn-about-windows-virtual-machine-management-with-azure-powershell"></a>Samouczek: informacje o zarządzaniu maszynami wirtualnymi systemu Windows za pomocą Azure PowerShell
 
@@ -138,7 +138,7 @@ Po zakończeniu wdrażania możesz zastosować do rozwiązania więcej ustawień
 
 ## <a name="lock-resources"></a>Blokowanie zasobów
 
-[Blokady zasobów](../../azure-resource-manager/resource-group-lock-resources.md) uniemożliwiają użytkownikom w organizacji przypadkowe usunięcie lub zmodyfikowanie krytycznych zasobów. W przeciwieństwie do kontroli dostępu opartej na rolach blokady zasobów stosują ograniczenie do wszystkich użytkowników i ról. Poziom blokady można ustawić na wartość *CanNotDelete* lub *ReadOnly*.
+[Blokady zasobów](../../azure-resource-manager/management/lock-resources.md) uniemożliwiają użytkownikom w organizacji przypadkowe usunięcie lub zmodyfikowanie krytycznych zasobów. W przeciwieństwie do kontroli dostępu opartej na rolach blokady zasobów stosują ograniczenie do wszystkich użytkowników i ról. Poziom blokady można ustawić na wartość *CanNotDelete* lub *ReadOnly*.
 
 Aby zablokować maszynę wirtualną i sieciową grupę zabezpieczeń, użyj polecenia [New-AzResourceLock](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcelock):
 
@@ -168,7 +168,7 @@ Zostanie wyświetlony komunikat o błędzie informujący, że nie można zakońc
 
 ## <a name="tag-resources"></a>Tagowanie zasobów
 
-Stosowanie [tagów](../../azure-resource-manager/resource-group-using-tags.md) do zasobów platformy Azure umożliwia ich logiczne zorganizowanie według kategorii. Każdy tag składa się z nazwy i wartości. Na przykład można zastosować nazwę „Środowisko” i wartość „Produkcyjne” do wszystkich zasobów w środowisku produkcyjnym.
+Stosowanie [tagów](../../azure-resource-manager/management/tag-resources.md) do zasobów platformy Azure umożliwia ich logiczne zorganizowanie według kategorii. Każdy tag składa się z nazwy i wartości. Na przykład można zastosować nazwę „Środowisko” i wartość „Produkcyjne” do wszystkich zasobów w środowisku produkcyjnym.
 
 [!INCLUDE [Resource Manager governance tags Powershell](../../../includes/resource-manager-governance-tags-powershell.md)]
 

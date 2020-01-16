@@ -7,12 +7,12 @@ ms.author: robinsh
 ms.date: 07/07/2018
 ms.topic: article
 ms.service: iot-hub
-ms.openlocfilehash: 8774129b3a1d3c9a1095e7a7c478dd94086b5867
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 1ca7219824a00a5af0bed7d42da75fc06ce2010d
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954493"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045075"
 ---
 # <a name="manage-connectivity-and-reliable-messaging-by-using-azure-iot-hub-device-sdks"></a>Zarządzanie łącznością i niezawodną obsługą komunikatów przy użyciu zestawów SDK urządzeń IoT Hub platformy Azure
 
@@ -79,7 +79,7 @@ Zestawy SDK udostępniają trzy zasady ponawiania:
 
 * **Wycofywanie wykładnicze z wahaniem**: te domyślne zasady ponawiania nie są na początku i spowalniają działanie, dopóki nie osiągnie on maksymalnego opóźnienia. Projekt jest oparty na [wskazówkach dotyczących ponowień w centrum architektury platformy Azure](https://docs.microsoft.com/azure/architecture/best-practices/retry-service-specific). 
 
-* **Ponawianie próby niestandardowej**: w przypadku niektórych języków zestawu SDK można zaprojektować niestandardowe zasady ponawiania, które są lepiej dopasowane do danego scenariusza, a następnie wstrzyknąć je do RetryPolicy. Niestandardowa ponowna próba nie jest dostępna w zestawie C SDK.
+* **Ponawianie próby niestandardowej**: w przypadku niektórych języków zestawu SDK można zaprojektować niestandardowe zasady ponawiania, które są lepiej dopasowane do danego scenariusza, a następnie wstrzyknąć je do RetryPolicy. Niestandardowa ponowna próba nie jest dostępna w zestawie C SDK i nie jest obecnie obsługiwana w zestawie SDK języka Python. Zestaw SDK języka Python ponownie nawiązuje połączenie w razie konieczności.
 
 * **Nie ponawiaj próby**: można ustawić zasady ponawiania na "bez ponawiania", co spowoduje wyłączenie logiki ponawiania. Zestaw SDK próbuje nawiązać połączenie raz i wysłać komunikat raz, przy założeniu, że połączenie zostanie nawiązane. Te zasady są zwykle używane w scenariuszach z problemami dotyczącymi przepustowości lub kosztów. W przypadku wybrania tej opcji komunikaty, które nie są wysyłane, są tracone i nie można ich odzyskać.
 
@@ -91,7 +91,7 @@ Zestawy SDK udostępniają trzy zasady ponawiania:
    | Java| [SetRetryPolicy](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.deviceclientconfig.setretrypolicy?view=azure-java-stable)        | **Domyślnie**: [Klasa ExponentialBackoffWithJitter](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-client/src/main/java/com/microsoft/azure/sdk/iot/device/transport/NoRetry.java)<BR>**Niestandardowe:** Implementuj [interfejs RetryPolicy](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-client/src/main/java/com/microsoft/azure/sdk/iot/device/transport/RetryPolicy.java)<BR>**Nie ponowienie:** [NoRetry Klasa](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-client/src/main/java/com/microsoft/azure/sdk/iot/device/transport/NoRetry.java)  | [Implementacja języka Java](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-client/devdoc/requirement_docs/com/microsoft/azure/iothub/retryPolicy.md) |
    | .NET| [DeviceClient.SetRetryPolicy](/dotnet/api/microsoft.azure.devices.client.deviceclient.setretrypolicy?view=azure-dotnet) | **Domyślnie**: [Klasa ExponentialBackoff](/dotnet/api/microsoft.azure.devices.client.exponentialbackoff?view=azure-dotnet)<BR>**Niestandardowe:** Implementuj [interfejs IRetryPolicy](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.iretrypolicy?view=azure-dotnet)<BR>**Nie ponowienie:** [NoRetry Klasa](/dotnet/api/microsoft.azure.devices.client.noretry?view=azure-dotnet) | [C#realizacji](https://github.com/Azure/azure-iot-sdk-csharp) | |
    | Węzeł| [setRetryPolicy](/javascript/api/azure-iot-device/client?view=azure-iot-typescript-latest) | **Domyślnie**: [Klasa ExponentialBackoffWithJitter](/javascript/api/azure-iot-common/exponentialbackoffwithjitter?view=azure-iot-typescript-latest)<BR>**Niestandardowe:** Implementuj [interfejs RetryPolicy](/javascript/api/azure-iot-common/retrypolicy?view=azure-iot-typescript-latest)<BR>**Nie ponowienie:** [NoRetry Klasa](/javascript/api/azure-iot-common/noretry?view=azure-iot-typescript-latest) | [Implementacja węzła](https://github.com/Azure/azure-iot-sdk-node/wiki/Connectivity-and-Retries#types-of-errors-and-how-to-detect-them) |
-   | Python| Wkrótce | Wkrótce | Wkrótce
+   | Python| Nie jest obecnie obsługiwana. | Nie jest obecnie obsługiwana. | Nie jest obecnie obsługiwana. |
 
 Poniższy przykład kodu ilustruje ten przepływ:
 

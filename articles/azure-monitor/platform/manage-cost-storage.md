@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: e4146155915979e51a6e3a989ab57316ca643018
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 43c9ba4ff21f32ca321a62c7f11430d82dfc4ec0
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75658023"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045170"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Zarządzanie użyciem i kosztami za pomocą dzienników Azure Monitor
 
@@ -43,6 +43,8 @@ Domyślna cena dla Log Analytics jest modelem **płatności zgodnie z rzeczywist
   
 Oprócz modelu "płatność zgodnie z rzeczywistym użyciem" Log Analytics ma warstwy **rezerwacji pojemności** , które umożliwiają oszczędności o 25% w porównaniu z ceną płatność zgodnie z rzeczywistym użyciem. Cennik rezerwacji zdolności produkcyjnych umożliwia zakupienie rezerwacji rozpoczynającej się o 100 GB/dzień. Każde użycie powyżej poziomu rezerwacji będzie rozliczane według stawki płatności zgodnie z rzeczywistym użyciem. Warstwy rezerwacji pojemności mają 31-dniowy okres zobowiązania. W okresie obowiązywania zobowiązania można zmienić warstwę rezerwacji wyższego poziomu (co spowoduje ponowne uruchomienie 31-dniowego okresu zobowiązań), ale nie będzie można wrócić do warstwy płatność zgodnie z rzeczywistym użyciem lub do niższej wersji w przypadku okresu zobowiązania. zakończeniu. 
 [Dowiedz się więcej](https://azure.microsoft.com/pricing/details/monitor/) na temat log Analytics płatność zgodnie z rzeczywistym użyciem i Cennik rezerwacji zdolności produkcyjnych. 
+
+We wszystkich warstwach cenowych wolumin danych jest obliczany na podstawie ciągu reprezentującego dane, które są przygotowane do przechowywania. Niektóre [właściwości wspólne dla wszystkich typów danych](https://docs.microsoft.com/azure/azure-monitor/platform/log-standard-properties) nie są uwzględniane podczas obliczania rozmiaru zdarzenia, w tym `_ResourceId`, `_ItemId`, `_IsBillable` i `_BilledSize`.
 
 Należy również pamiętać, że niektóre rozwiązania, takie jak [Azure Security Center](https://azure.microsoft.com/pricing/details/security-center/) i [Azure](https://azure.microsoft.com/pricing/details/azure-sentinel/), mają własny model cen. 
 
@@ -164,6 +166,9 @@ Po osiągnięciu dziennego limitu kolekcję typów danych płatnych zatrzymuje s
 
 > [!NOTE]
 > Dzienny limit nie zatrzymuje zbierania danych z Azure Security Center, z wyjątkiem obszarów roboczych, w których Azure Security Center został zainstalowany przed 19 czerwca 2017. 
+
+> [!NOTE]
+> Opóźnienie związane z zastosowaniem dziennego limitu może oznaczać, że zakończenie nie jest stosowane jako dokładnie określony dzienny poziom limitu. 
 
 ### <a name="identify-what-daily-data-limit-to-define"></a>Zidentyfikować jakie dzienny limit danych, aby zdefiniować
 

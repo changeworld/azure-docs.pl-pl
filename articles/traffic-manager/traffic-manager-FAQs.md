@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: allensu
-ms.openlocfilehash: f08915c07db6759a03fc9bd0695523dead6dcb7f
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: d7feb0f7c32ab544df2b9de08daaf8cd007318b5
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72784828"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045313"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Traffic Manager często zadawane pytania
 
@@ -29,7 +29,7 @@ Zgodnie z opisem w temacie [jak działa Traffic Manager](../traffic-manager/traf
 W związku z tym Traffic Manager nie zapewnia punktu końcowego ani adresu IP, z którym klienci mogą się połączyć. Jeśli chcesz mieć statyczny adres IP dla usługi, który musi być skonfigurowany w usłudze, a nie w Traffic Manager.
 
 ### <a name="what-types-of-traffic-can-be-routed-using-traffic-manager"></a>Jakiego rodzaju ruch może być kierowany przy użyciu Traffic Manager?
-Zgodnie z opisem w temacie [jak działa Traffic Manager](../traffic-manager/traffic-manager-how-it-works.md), punkt końcowy Traffic Manager może być dowolną usługą internetową hostowaną w ramach platformy Azure lub poza nią. W związku z tym Traffic Manager może kierować ruch pochodzący z publicznej sieci Internet do zestawu punktów końcowych, które są również połączone z Internetem. Jeśli masz punkty końcowe, które znajdują się w sieci prywatnej (na przykład w wewnętrznej wersji programu [Azure Load Balancer](../load-balancer/load-balancer-overview.md#internalloadbalancer)) lub użytkownicy wprowadzają żądania DNS z takich sieci wewnętrznych, nie możesz użyć Traffic Manager do skierowania tego ruchu.
+Zgodnie z opisem w temacie [jak działa Traffic Manager](../traffic-manager/traffic-manager-how-it-works.md), punkt końcowy Traffic Manager może być dowolną usługą internetową hostowaną w ramach platformy Azure lub poza nią. W związku z tym Traffic Manager może kierować ruch pochodzący z publicznej sieci Internet do zestawu punktów końcowych, które są również połączone z Internetem. Jeśli masz punkty końcowe, które znajdują się w sieci prywatnej (na przykład w wewnętrznej wersji programu [Azure Load Balancer](../load-balancer/concepts-limitations.md#internalloadbalancer)) lub użytkownicy wprowadzają żądania DNS z takich sieci wewnętrznych, nie możesz użyć Traffic Manager do skierowania tego ruchu.
 
 ### <a name="does-traffic-manager-support-sticky-sessions"></a>Czy Traffic Manager obsługuje sesje "Sticky"?
 
@@ -384,20 +384,20 @@ W przypadku profilów z dowolną metodą routingu inną niż wielowartościowy:
 
 |Przychodzące żądanie zapytania|    Typ punktu końcowego|  Podano odpowiedź|
 |--|--|--|
-|ILE |  A/AAAA/CNAME |  Docelowy punkt końcowy| 
+|WSZELKIE |  A/AAAA/CNAME |  Docelowy punkt końcowy| 
 |A |    A/CNAME | Docelowy punkt końcowy|
 |A |    AAAA |  NoData |
 |AAAA | AAAA/CNAME |  Docelowy punkt końcowy|
 |AAAA | A | NoData |
 |CNAME |    CNAME | Docelowy punkt końcowy|
-|CNAME  |A/AAAA | NoData |
+|CNAME  |A / AAAA | NoData |
 |
 
 W przypadku profilów z metodą routingu ustawioną na wartość z wieloma wartościami:
 
 |Przychodzące żądanie zapytania|    Typ punktu końcowego | Podano odpowiedź|
 |--|--|--|
-|ILE |  Mieszanie a i AAAA | Docelowe punkty końcowe|
+|WSZELKIE |  Mieszanie a i AAAA | Docelowe punkty końcowe|
 |A |    Mieszanie a i AAAA | Tylko docelowe punkty końcowe typu A|
 |AAAA   |Mieszanie a i AAAA|     Tylko docelowe punkty końcowe typu AAAA|
 |CNAME |    Mieszanie a i AAAA | NoData |
@@ -499,9 +499,9 @@ W poniższej tabeli opisano zachowanie Traffic Manager Sprawdzanie kondycji dla 
 
 | Stan monitora podrzędnego | Stan monitora nadrzędnego punktu końcowego | Uwagi |
 | --- | --- | --- |
-| Wyłączony. Profil podrzędny został wyłączony. |Zatrzymane |Stan nadrzędnego punktu końcowego jest zatrzymany, nie jest wyłączony. Stan wyłączony jest zarezerwowany dla wskazywania, że punkt końcowy został wyłączony w profilu nadrzędnym. |
+| Disabled (Wyłączone). Profil podrzędny został wyłączony. |Zatrzymane |Stan nadrzędnego punktu końcowego jest zatrzymany, nie jest wyłączony. Stan wyłączony jest zarezerwowany dla wskazywania, że punkt końcowy został wyłączony w profilu nadrzędnym. |
 | Pogorszenie. Co najmniej jeden punkt końcowy profilu podrzędnego jest w stanie obniżonej wydajności. |Online: liczba punktów końcowych w trybie online w profilu podrzędnym jest równa co najmniej wartości MinChildEndpoints.<BR>CheckingEndpoint: liczba punktów końcowych w trybie online i CheckingEndpoint w profilu podrzędnym jest równa co najmniej wartości MinChildEndpoints.<BR>Obniżona wydajność: w przeciwnym razie. |Ruch jest kierowany do punktu końcowego stanu CheckingEndpoint. Jeśli wartość MinChildEndpoints jest zbyt wysoka, punkt końcowy ma zawsze obniżony poziom. |
-| Sieci. Co najmniej jeden punkt końcowy profilu podrzędnego jest stanem online. Brak punktu końcowego w stanie obniżonej wydajności. |Zobacz powyżej. | |
+| Online. Co najmniej jeden punkt końcowy profilu podrzędnego jest stanem online. Brak punktu końcowego w stanie obniżonej wydajności. |Zobacz powyżej. | |
 | CheckingEndpoints. Co najmniej jeden punkt końcowy profilu podrzędnego to "CheckingEndpoint". Żadne punkty końcowe nie są w trybie online ani nie zostały obniżone. |Tak samo jak powyżej. | |
 | Nieaktywne. Wszystkie punkty końcowe profilu podrzędnego są wyłączone lub zatrzymane albo ten profil nie ma punktów końcowych. |Zatrzymane | |
 

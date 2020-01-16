@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/30/2018
 ms.author: mikeray
-ms.openlocfilehash: 5c4eb5241cc5e50c11c05cac6909e37557ba106d
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: ed5fc923c82fb0d0e4004e18159d943564c6f55e
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74037513"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045826"
 ---
 # <a name="tutorial-configure-availability-group-on-azure-sql-server-vm-manually"></a>Samouczek: Ręczne konfigurowanie grupy dostępności na platformie Azure SQL Server VM
 
@@ -41,7 +41,7 @@ W poniższej tabeli wymieniono wymagania wstępne, które należy wykonać przed
 |  |Wymaganie |Opis |
 |----- |----- |----- |
 |![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png) | Dwa serwery SQL | — W zestawie dostępności platformy Azure <br/> — W pojedynczej domenie <br/> — Z zainstalowaną funkcją klaster trybu failover |
-|![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)| Oprogramowanie Windows Server | Udział plików dla monitora klastra |  
+|![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)| Windows Server | Udział plików dla monitora klastra |  
 |![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|Konto usługi SQL Server | Konto domeny |
 |![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|Konto usługi SQL Server Agent | Konto domeny |  
 |![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|Otwarte porty zapory | -SQL Server: **1433** dla domyślnego wystąpienia <br/> -Punkt końcowy dublowania bazy danych: **5022** lub dowolny dostępny port <br/> -Sonda kondycji adresu IP modułu równoważenia obciążenia grupy dostępności: **59999** lub dowolny dostępny port <br/> — Sonda kondycji adresu IP podstawowego modułu równoważenia obciążenia klastra: **58888** lub dowolny dostępny port |
@@ -74,7 +74,7 @@ Po zakończeniu wymagań wstępnych pierwszym krokiem jest utworzenie klastra tr
 
    | Strona | Ustawienia |
    | --- | --- |
-   | Przed rozpoczęciem |Użyj domyślnych |
+   | Zanim rozpoczniesz |Użyj domyślnych |
    | Wybierz serwery |Wpisz nazwę pierwszej SQL Server w polu **Wprowadź nazwę serwera** , a następnie kliknij przycisk **Dodaj**. |
    | Ostrzeżenie dotyczące walidacji |Wybierz pozycję **nie. nie wymagaj pomocy technicznej firmy Microsoft dla tego klastra i dlatego nie należy uruchamiać testów weryfikacyjnych. Po kliknięciu przycisku Dalej Kontynuuj tworzenie klastra**. |
    | Punkt dostępu do administrowania klastrem |Wpisz nazwę klastra, na przykład **SQLAGCluster1** w polu **Nazwa klastra**.|
@@ -193,7 +193,7 @@ Następnie Włącz funkcję **zawsze włączone grupy dostępności** . Wykonaj 
 
     ![Włącz Zawsze włączone grupy dostępności](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/54-enableAlwaysOn.png)
 
-4. Kliknij przycisk **zastosować**. W podręcznym oknie dialogowym kliknij przycisk **OK** .
+4. Kliknij przycisk **Zastosuj**. W podręcznym oknie dialogowym kliknij przycisk **OK** .
 
 5. Uruchom ponownie usługę SQL Server.
 
@@ -318,7 +318,7 @@ Teraz można przystąpić do konfigurowania grupy dostępności, wykonując nast
 10. Na stronie **Podsumowanie** kliknij przycisk **Zakończ**, a następnie zaczekaj, aż Kreator skonfiguruje nową grupę dostępności. Na stronie **postęp** możesz kliknąć **więcej szczegółów** , aby wyświetlić szczegółowy postęp. Po zakończeniu pracy kreatora przejrzyj **wyniki** , aby sprawdzić, czy grupa dostępności została pomyślnie utworzona.
 
      ![Kreator nowej grupy, wyniki](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/74-results.png)
-11. Kliknij przycisk **Zamknij** , aby zakończyć pracę kreatora.
+11. Kliknij przycisk **Zamknij** , aby zakończyć działanie kreatora.
 
 ### <a name="check-the-availability-group"></a>Sprawdź grupę dostępności
 
@@ -348,14 +348,14 @@ W tym momencie masz grupę dostępności z replikami w dwóch wystąpieniach SQL
 
 W przypadku usługi Azure Virtual Machines Grupa dostępności SQL Server wymaga modułu równoważenia obciążenia. Moduł równoważenia obciążenia przechowuje adresy IP dla odbiorników grupy dostępności i klastra trybu failover systemu Windows Server. Ta sekcja zawiera podsumowanie sposobu tworzenia modułu równoważenia obciążenia w Azure Portal.
 
-Azure Load Balancer może być usługa Load Balancer w warstwie Standardowa lub Load Balancer podstawowy. Usługa Load Balancer w warstwie Standardowa ma więcej funkcji niż Load Balancer podstawowa. W przypadku grupy dostępności usługa Load Balancer w warstwie Standardowa jest wymagana w przypadku używania strefy dostępności (zamiast zestawu dostępności). Aby uzyskać szczegółowe informacje na temat różnic między typami modułów równoważenia obciążenia, zobacz [Load Balancer porównanie jednostek SKU](../../../load-balancer/load-balancer-overview.md#skus).
+Azure Load Balancer może być usługa Load Balancer w warstwie Standardowa lub Load Balancer podstawowy. Usługa Load Balancer w warstwie Standardowa ma więcej funkcji niż Load Balancer podstawowa. W przypadku grupy dostępności usługa Load Balancer w warstwie Standardowa jest wymagana w przypadku używania strefy dostępności (zamiast zestawu dostępności). Aby uzyskać szczegółowe informacje na temat różnic między typami modułów równoważenia obciążenia, zobacz [Load Balancer porównanie jednostek SKU](../../../load-balancer/concepts-limitations.md#skus).
 
 1. W Azure Portal przejdź do grupy zasobów, w której znajdują się serwery SQL, a następnie kliknij pozycję **+ Dodaj**.
 1. Wyszukaj **Load Balancer**. Wybierz usługę równoważenia obciążenia opublikowaną przez firmę Microsoft.
 
    ![AG w Menedżer klastra trybu failover](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/82-azureloadbalancer.png)
 
-1. Kliknij pozycję **Utwórz**.
+1. Kliknij przycisk **Utwórz**.
 1. Skonfiguruj następujące parametry dla modułu równoważenia obciążenia.
 
    | Ustawienie | Pole |

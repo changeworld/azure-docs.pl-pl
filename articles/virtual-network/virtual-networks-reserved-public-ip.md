@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/12/2018
 ms.author: genli
-ms.openlocfilehash: c1de86c1d12109853bb5d6d1aac4143caab9199f
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 5bcbb8c6845928cf21b5b6a1c04f609305bd7983
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75638225"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979523"
 ---
 # <a name="reserved-ip-addresses-classic-deployment"></a>Adresy Zastrzeżony adres IP (wdrożenie klasyczne)
 
@@ -28,7 +28,7 @@ ms.locfileid: "75638225"
 Aby uniemożliwić zmianę adresów IP, można zarezerwować adres IP. Zastrzeżone adresy IP mogą być używane tylko jako adres VIP, co zapewnia, że adres IP usługi w chmurze pozostaje taki sam, nawet gdy zasoby są wyłączone lub zatrzymane (cofnięto przydział). Ponadto można skonwertować istniejące dynamiczne adresy IP używane jako adresy VIP do zastrzeżonego adresu.
 
 > [!IMPORTANT]
-> Platforma Azure oferuje dwa różne modele wdrażania związane z tworzeniem zasobów i pracą z nimi: [model wdrażania przy użyciu usługi Azure Resource Manager i model klasyczny](../azure-resource-manager/resource-manager-deployment-model.md). Ten artykuł dotyczy klasycznego modelu wdrożenia. Firma Microsoft zaleca, aby w przypadku większości nowych wdrożeń korzystać z modelu opartego na programie Resource Manager. Dowiedz się, jak zarezerwować statyczny publiczny adres IP przy użyciu [Menedżer zasobów model wdrażania](virtual-network-ip-addresses-overview-arm.md).
+> Platforma Azure oferuje dwa różne modele wdrażania związane z tworzeniem zasobów i pracą z nimi: [model wdrażania przy użyciu usługi Azure Resource Manager i model klasyczny](../azure-resource-manager/management/deployment-models.md). Ten artykuł dotyczy klasycznego modelu wdrożenia. Firma Microsoft zaleca, aby w przypadku większości nowych wdrożeń korzystać z modelu opartego na programie Resource Manager. Dowiedz się, jak zarezerwować statyczny publiczny adres IP przy użyciu [Menedżer zasobów model wdrażania](virtual-network-ip-addresses-overview-arm.md).
 
 Aby dowiedzieć się więcej o adresach IP na platformie Azure, przeczytaj artykuł dotyczący [adresów IP](virtual-network-ip-addresses-overview-classic.md) .
 

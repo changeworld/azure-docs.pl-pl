@@ -6,14 +6,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 07/31/2019
+ms.date: 01/15/2020
 ms.author: cherylmc
-ms.openlocfilehash: 85ea3855b13350901d85701e9bca8d87ff6632c3
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: d1693a6165aa31b221b6901e2e1c8b2955a3dfb3
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75778808"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045708"
 ---
 # <a name="create-a-vnet-with-a-site-to-site-vpn-connection-using-powershell"></a>Tworzenie sieci wirtualnej za pomocą połączenia sieci VPN typu lokacja-lokacja przy użyciu programu PowerShell
 
@@ -33,23 +33,15 @@ Połączenie bramy sieci VPN typu lokacja-lokacja umożliwia łączenie sieci lo
 
 ## <a name="before"></a>Przed rozpoczęciem
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
 Przed rozpoczęciem konfiguracji sprawdź, czy są spełnione następujące kryteria:
 
 * Upewnij się, że masz zgodne urządzenie sieci VPN i dostępna jest osoba, która umie je skonfigurować. Aby uzyskać więcej informacji o zgodnych urządzeniach sieci VPN i konfiguracji urządzeń, zobacz artykuł [Informacje o urządzeniach sieci VPN](vpn-gateway-about-vpn-devices.md).
 * Sprawdź, czy masz dostępny zewnętrznie publiczny adres IPv4 urządzenia sieci VPN.
 * Jeśli nie znasz zakresów adresów IP w konfiguracji swojej sieci lokalnej, skontaktuj się z osobą, która może podać Ci te dane. Tworząc tę konfigurację, musisz określić prefiksy zakresu adresów IP, które platforma Azure będzie kierować do Twojej lokalizacji lokalnej. Żadna z podsieci sieci lokalnej nie może się nakładać na podsieci sieci wirtualnej, z którymi chcesz nawiązać połączenie.
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+### <a name="azure-powershell"></a>Program Azure PowerShell
 
-### <a name="running-powershell-locally"></a>Uruchamianie programu PowerShell lokalnie
-
-Jeśli zdecydujesz się na zainstalowanie i korzystanie z programu PowerShell lokalnie, konieczne jest zainstalowanie najnowszej wersji poleceń cmdlet programu PowerShell usługi Azure Resource Manager. Polecenia cmdlet programu PowerShell są często aktualizowane. Ich zaktualizowanie jest zazwyczaj konieczne w celu uzyskania najnowszych wersji funkcji. Jeśli nie zaktualizujesz poleceń cmdlet programu PowerShell, mogą wystąpić błędy określonych wartości. 
-
-Aby znaleźć używaną wersję, uruchom polecenie "Get-module-ListAvailable AZ". Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu programu Azure PowerShell](/powershell/azure/install-az-ps). Aby uzyskać więcej informacji, zobacz [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/overview).
-Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie "Connect-AzAccount", aby utworzyć połączenie z platformą Azure.
-
+[!INCLUDE [powershell](../../includes/vpn-gateway-cloud-shell-powershell-about.md)]
 
 ### <a name="example"></a>Przykładowe wartości
 
@@ -257,6 +249,15 @@ Jeśli prefiksy adresów IP, które mają być kierowane do lokalizacji lokalnej
 ## <a name="modifygwipaddress"></a>Aby zmodyfikować adres IP bramy dla bramy sieci lokalnej
 
 [!INCLUDE [Modify gateway IP address](../../includes/vpn-gateway-modify-lng-gateway-ip-rm-include.md)]
+
+## <a name="deleteconnection"></a>Aby usunąć połączenie bramy
+
+Jeśli nie znasz nazwy połączenia, możesz je znaleźć przy użyciu polecenia cmdlet "Get-AzVirtualNetworkGatewayConnection".
+
+```azurepowershell-interactive
+Remove-AzVirtualNetworkGatewayConnection -Name VNet1toSite1 `
+-ResourceGroupName TestRG1
+```
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -15,16 +15,19 @@ ms.workload: infrastructure
 ms.date: 02/09/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: c84bc3633ccd25fd2206c9e6912a6b8c8d46a5f4
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 2ccddfa9834b51885d827601d348e34698928930
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974193"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981244"
 ---
 # <a name="tutorial-secure-a-web-server-on-a-windows-virtual-machine-in-azure-with-ssl-certificates-stored-in-key-vault"></a>Samouczek: zabezpieczanie serwera internetowego na maszynie wirtualnej systemu Windows na platformie Azure przy użyciu certyfikatów SSL przechowywanych w usłudze Key Vault
 
-Aby zabezpieczyć serwery sieci Web, można używać certyfikatu SSL (Secure Sockets Layer) do szyfrowania ruchu w sieci Web. Te certyfikaty SSL mogą być przechowywane w usłudze Azure Key Vault i umożliwiają bezpieczne wdrażanie certyfikatów na maszynach wirtualnych z systemem Windows na platformie Azure. Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
+> [!NOTE]
+> Obecnie ten dokument działa tylko w przypadku obrazów uogólnionych. Próba wykonania tego samouczka przy użyciu wyspecjalizowanego dysku spowoduje wystąpienie błędu. 
+
+Aby zabezpieczyć serwery sieci Web, można używać certyfikatu SSL (Secure Sockets Layer) do szyfrowania ruchu w sieci Web. Te certyfikaty SSL mogą być przechowywane w usłudze Azure Key Vault i umożliwiają bezpieczne wdrażanie certyfikatów na maszynach wirtualnych z systemem Windows na platformie Azure. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Tworzenie usługi Azure Key Vault

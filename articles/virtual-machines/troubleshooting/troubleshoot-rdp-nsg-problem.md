@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/20/2018
 ms.author: genli
-ms.openlocfilehash: 5f95b42fd17aec4e3ec6b7b8fac1965772fefa67
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.openlocfilehash: aedb9c8d178cb210efedf8ff4bcbbeca39f89e60
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71162590"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981810"
 ---
 #  <a name="cannot-connect-remotely-to-a-vm-because-rdp-port-is-not-enabled-in-nsg"></a>Nie można nawiązać zdalnego połączenia z maszyną wirtualną, ponieważ port RDP nie jest włączony w sieciowej grupy zabezpieczeń
 
@@ -25,7 +25,7 @@ W tym artykule wyjaśniono, jak rozwiązać problem polegający na tym, że nie 
 
 
 > [!NOTE] 
-> Platforma Azure ma dwa modele wdrażania służące do tworzenia zasobów i pracy z nimi: [model wdrażania przy użyciu usługi Resource Manager i model klasyczny](../../azure-resource-manager/resource-manager-deployment-model.md). Zalecamy używanie Menedżer zasobów model wdrażania zamiast klasycznego modelu wdrażania dla nowych wdrożeń. 
+> Platforma Azure ma dwa modele wdrażania służące do tworzenia zasobów i pracy z nimi: [Menedżer zasobów i klasyczne](../../azure-resource-manager/management/deployment-models.md). Zalecamy używanie Menedżer zasobów model wdrażania zamiast klasycznego modelu wdrażania dla nowych wdrożeń. 
 
 ## <a name="symptom"></a>Objaw
 
@@ -45,9 +45,9 @@ Aby włączyć port RDP w sieciowej grupy zabezpieczeń, wykonaj następujące k
     **Nazwa**: Port_3389 </br>
     **Port (miejsce docelowe)** : 3389 </br>
     **Protokół**: TCP </br>
-    **Źródło**: Any </br>
-    **Miejsca docelowe**: Any </br>
-    **Akcja**: Allow </br>
+    **Źródło**: dowolne </br>
+    **Miejsca docelowe**: dowolne </br>
+    **Akcja**: Zezwalaj </br>
 
 Jeśli określisz źródłowy adres IP, to ustawienie zezwala na ruch tylko z określonego adresu IP lub zakresu adresów IP w celu nawiązania połączenia z maszyną wirtualną. Upewnij się, że komputer, którego używasz do uruchamiania sesji RDP, znajduje się w zakresie.
 

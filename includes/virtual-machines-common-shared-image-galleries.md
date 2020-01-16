@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: akjosh
 ms.custom: include file
-ms.openlocfilehash: 5618757f4bf5eaf1afc5ef0ce1735eb4ae94e1d2
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: ef0eed330dd7a5b338cdbf36a159d1f046d3939d
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75663040"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76021171"
 ---
 Udostępniona Galeria obrazów to usługa, która ułatwia tworzenie struktury i organizacji na całym zarządzanym obrazie. Udostępnione Galerie obrazów zapewniają następujące:
 
@@ -65,7 +65,7 @@ Poniżej znajdują się inne parametry, które można ustawić w definicji obraz
 * EULA — może służyć do wskazywania umowy licencyjnej użytkownika końcowego dotyczącej definicji obrazu.
 * Zasady zachowania poufności informacji i informacje o wersji — przechowywanie informacji o wersji i zasad zachowania poufności informacji w usłudze Azure Storage oraz dostarczanie identyfikatora URI w celu uzyskania dostępu do nich w ramach definicji obrazu.
 * Data zakończenia okresu użytkowania — Dołącz datę zakończenia okresu istnienia do definicji obrazu, aby można było użyć automatyzacji do usunięcia starych definicji obrazu.
-* Tag — możesz dodać tagi podczas tworzenia definicji obrazu. Aby uzyskać więcej informacji na temat tagów, zobacz [Używanie tagów do organizowania zasobów](../articles/azure-resource-manager/resource-group-using-tags.md)
+* Tag — możesz dodać tagi podczas tworzenia definicji obrazu. Aby uzyskać więcej informacji na temat tagów, zobacz [Używanie tagów do organizowania zasobów](../articles/azure-resource-manager/management/tag-resources.md)
 * Minimalne i maksymalne zalecenia dotyczące vCPU i pamięci — Jeśli obraz ma zalecenia vCPU i pamięci, możesz dołączyć te informacje do definicji obrazu.
 * Niedozwolone typy dysków — można podać informacje o wymaganiach dotyczących magazynu dla maszyny wirtualnej. Na przykład jeśli obraz nie jest odpowiedni dla standardowych dysków DYSKowych, należy dodać je do listy nie Zezwalaj.
 

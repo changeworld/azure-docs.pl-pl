@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/08/2018
 ms.author: kumud
-ms.openlocfilehash: 421fe373c93159b81a7dd962920eb17845895925
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 4b8f91d7d9fc414ed0ae6387c25f71b1601e0b6c
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647819"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76043410"
 ---
 # <a name="create-a-virtual-machine-with-a-static-public-ip-address-using-the-azure-cli"></a>Tworzenie maszyny wirtualnej ze statycznym publicznym adresem IP przy użyciu interfejsu wiersza polecenia platformy Azure
 
@@ -50,7 +50,7 @@ Poniższe kroki można wykonać z komputera lokalnego lub przy użyciu Azure Clo
      --public-ip-address-allocation static
    ```
 
-   Jeśli publiczny adres IP musi być jednostką SKU Standard, Dodaj `--public-ip-sku Standard` do poprzedniego polecenia. Dowiedz się więcej o jednostkach [SKU publicznych adresów IP](virtual-network-ip-addresses-overview-arm.md#sku). Jeśli maszyna wirtualna zostanie dodana do puli zaplecza Azure Load Balancer publicznej, jednostka SKU publicznego adresu IP maszyny wirtualnej musi być zgodna z jednostką SKU publicznego adresu IP modułu równoważenia obciążenia. Aby uzyskać szczegółowe informacje, zobacz [Azure Load Balancer](../load-balancer/load-balancer-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#skus).
+   Jeśli publiczny adres IP musi być jednostką SKU Standard, Dodaj `--public-ip-sku Standard` do poprzedniego polecenia. Dowiedz się więcej o jednostkach [SKU publicznych adresów IP](virtual-network-ip-addresses-overview-arm.md#sku). Jeśli maszyna wirtualna zostanie dodana do puli zaplecza Azure Load Balancer publicznej, jednostka SKU publicznego adresu IP maszyny wirtualnej musi być zgodna z jednostką SKU publicznego adresu IP modułu równoważenia obciążenia. Aby uzyskać szczegółowe informacje, zobacz [Azure Load Balancer](../load-balancer/concepts-limitations.md#skus).
 
 4. Wyświetl przypisany publiczny adres IP i upewnij się, że został on utworzony jako statyczny, podstawowy adres jednostki SKU z poleceniem [AZ Network Public-IP show](/cli/azure/network/public-ip#az-network-public-ip-show):
 

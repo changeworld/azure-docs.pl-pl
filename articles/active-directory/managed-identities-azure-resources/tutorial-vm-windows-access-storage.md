@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/10/2020
+ms.date: 01/14/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4da78fbb15aea2bd0f54ffec1b0851466c799584
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 182bf02bfaad598a447304cc9f2ed42f6221176d
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75888587"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75971959"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-storage"></a>Samouczek: używanie przypisanej przez system tożsamości zarządzanej maszyny wirtualnej systemu Windows w celu uzyskania dostępu do usługi Azure Storage
 
@@ -40,7 +40,18 @@ W tym samouczku przedstawiono sposób używania tożsamości zarządzanej przypi
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
-## <a name="create-account"></a>Tworzenie konta
+
+
+## <a name="enable"></a>Włączenie
+
+[!INCLUDE [msi-tut-enable](../../../includes/active-directory-msi-tut-enable.md)]
+
+
+
+## <a name="grant-access"></a>Udzielanie dostępu
+
+
+### <a name="create-storage-account"></a>Tworzenie konta magazynu
 
 W tej sekcji utworzysz konto magazynu.
 
@@ -53,7 +64,7 @@ W tej sekcji utworzysz konto magazynu.
 
     ![Tworzenie nowego konta magazynu](./media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
 
-## <a name="create-a-blob-container-and-upload-a-file-to-the-storage-account"></a>Tworzenie kontenera obiektów blob i przekazywanie pliku na konto magazynu
+### <a name="create-a-blob-container-and-upload-a-file-to-the-storage-account"></a>Tworzenie kontenera obiektów blob i przekazywanie pliku na konto magazynu
 
 Pliki wymagają magazynu obiektów blob, dlatego musimy utworzyć kontener obiektów blob, w którym będziemy przechowywać plik. Następnie przekaż plik do kontenera obiektów blob na nowym koncie magazynu.
 
@@ -69,7 +80,7 @@ Pliki wymagają magazynu obiektów blob, dlatego musimy utworzyć kontener obiek
 7. W okienku **Przekazywanie obiektu blob** w obszarze **Pliki** kliknij ikonę folderu i przejdź do pliku **hello_world.txt** na maszynie lokalnej, wybierz plik, a następnie kliknij pozycję **Przekaż**.
     ![Przekazywanie pliku tekstowego](./media/msi-tutorial-linux-vm-access-storage/upload-text-file.png)
 
-## <a name="grant-access"></a>Udzielanie dostępu
+### <a name="grant-access"></a>Udzielanie dostępu
 
 W tej sekcji pokazano, jak udzielić dostępu do maszyny wirtualnej do kontenera usługi Azure Storage. Przypisanej przez system tożsamości zarządzanej maszyny wirtualnej można użyć do pobierania danych w obiekcie blob usługi Azure Storage.
 
@@ -83,7 +94,7 @@ W tej sekcji pokazano, jak udzielić dostępu do maszyny wirtualnej do kontenera
 
     ![Przypisywanie uprawnień](./media/tutorial-linux-vm-access-storage/access-storage-perms.png)
 
-## <a name="get-an-access-token"></a>Pobranie tokenu dostępu 
+## <a name="access-data"></a>Uzyskiwanie dostępu do danych 
 
 Usługa Azure Storage natywnie obsługuje uwierzytelnianie usługi Azure AD, więc może bezpośrednio akceptować tokeny dostępu pozyskane przy użyciu tożsamości zarządzanej. Jest to część integracji usługi Azure Storage z usługą Azure AD. Takie rozwiązanie różni się od podawania poświadczeń w parametrach połączenia.
 
@@ -160,6 +171,13 @@ namespace StorageOAuthToken
 Odpowiedź zawiera zawartość pliku:
 
 `Hello world! :)`
+
+
+## <a name="disable"></a>Wyłączenie
+
+[!INCLUDE [msi-tut-disable](../../../includes/active-directory-msi-tut-disable.md)]
+
+
 
 ## <a name="next-steps"></a>Następne kroki
 

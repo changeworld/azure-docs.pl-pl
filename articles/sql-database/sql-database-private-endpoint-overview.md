@@ -1,5 +1,5 @@
 ---
-title: Link prywatny
+title: Łącze prywatne
 description: Omówienie funkcji prywatnego punktu końcowego
 author: rohitnayakmsft
 ms.author: rohitna
@@ -8,12 +8,12 @@ ms.service: sql-database
 ms.topic: overview
 ms.reviewer: vanto
 ms.date: 09/17/2019
-ms.openlocfilehash: fcb89cbcadb5e101ab2b4bfd18d0b7b91c63c92a
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 6cc8282a5c56f8f45e8d9e5ee452089a74f0d4ed
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821290"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045627"
 ---
 # <a name="private-link-for-azure-sql-database-and-data-warehouse-preview"></a>Link prywatny dla Azure SQL Database i magazynu danych (wersja zapoznawcza)
 
@@ -57,7 +57,7 @@ Prywatne punkty końcowe można tworzyć przy użyciu portalu, programu PowerShe
 ### <a name="approval-process"></a>Proces zatwierdzania
 Po utworzeniu przez administratora sieci prywatnego punktu końcowego (PE) administrator SQL może zarządzać połączeniem prywatnego punktu końcowego (PEC) do SQL Database.
 
-1. Przejdź do zasobu programu SQL Server w Azure Portal.
+1. Przejdź do zasobu programu SQL Server w Azure Portal zgodnie z krokami podanymi na poniższym zrzucie ekranu
 
     - (1) wybierz połączenia prywatnego punktu końcowego w lewym okienku
     - (2) przedstawia listę wszystkich połączeń prywatnych punktów końcowych (PECs)
@@ -84,7 +84,7 @@ W tym scenariuszu przyjęto założenie, że utworzono maszynę wirtualną platf
 
 1. [Uruchom sesję pulpit zdalny (RDP) i Połącz się z maszyną wirtualną](../virtual-machines/windows/connect-logon.md#connect-to-the-virtual-machine). 
 1. Następnie można wykonać podstawowe testy łączności, aby upewnić się, że maszyna wirtualna nawiązuje połączenie z SQL Database za pośrednictwem prywatnego punktu końcowego przy użyciu następujących narzędzi:
-    1. Program
+    1. Protokół Telnet
     1. Psping
     1. Nmap
     1. SQL Server Management Studio (SSMS)
@@ -146,8 +146,10 @@ Wynik pokazuje, że jeden adres IP jest w użyciu. odpowiada adresowi IP dla pry
 
 
 ### <a name="check-connectivity-using-sql-server-management-studio-ssms"></a>Sprawdź łączność przy użyciu SQL Server Management Studio (SSMS)
+> [!NOTE]
+>Użyj w **pełni kwalifikowanej nazwy domeny (FQDN)** serwera w parametrach połączenia dla klientów. Wszystkie próby logowania wprowadzone bezpośrednio do adresu IP nie będą działać zgodnie z projektem.
 
-Ostatnim krokiem jest użycie narzędzia [SSMS w celu nawiązania połączenia z SQL Database](sql-database-connect-query-ssms.md). Po nawiązaniu połączenia z SQL Database przy użyciu programu SSMS Sprawdź, czy łączysz się z prywatnego adresu IP maszyny wirtualnej platformy Azure, uruchamiając następujące zapytanie:
+Wykonaj kroki opisane tutaj, aby użyć programu [SSMS do nawiązania połączenia z SQL Database](sql-database-connect-query-ssms.md). Po nawiązaniu połączenia z SQL Database przy użyciu programu SSMS Sprawdź, czy łączysz się z prywatnego adresu IP maszyny wirtualnej platformy Azure, uruchamiając następujące zapytanie:
 
 ````
 select client_net_address from sys.dm_exec_connections 

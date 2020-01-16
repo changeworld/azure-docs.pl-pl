@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/08/2018
 ms.author: kumud
-ms.openlocfilehash: 6e278172bc1c3ec4e81860c3f6d6a4b644731e2c
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 0eb4f86a2484486658171ab4b099794e4ba3e4bc
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647785"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76043392"
 ---
 # <a name="create-a-virtual-machine-with-a-static-public-ip-address-using-powershell"></a>Tworzenie maszyny wirtualnej ze statycznym publicznym adresem IP przy użyciu programu PowerShell
 
@@ -50,7 +50,7 @@ Poniższe kroki można wykonać z komputera lokalnego lub przy użyciu Azure Clo
      -AllocationMethod "Static"
    ```
 
-   Jeśli publiczny adres IP musi być jednostką SKU w warstwie Standardowa, musisz [utworzyć publiczny adres IP](virtual-network-public-ip-address.md#create-a-public-ip-address), [utworzyć interfejs sieciowy](virtual-network-network-interface.md#create-a-network-interface), [przypisać publiczny adres IP do interfejsu sieciowego](virtual-network-network-interface-addresses.md#add-ip-addresses), a następnie [utworzyć maszynę wirtualną przy użyciu interfejsu sieciowego](virtual-network-network-interface-vm.md#add-existing-network-interfaces-to-a-new-vm)w oddzielnych krokach. Dowiedz się więcej o jednostkach [SKU publicznych adresów IP](virtual-network-ip-addresses-overview-arm.md#sku). Jeśli maszyna wirtualna zostanie dodana do puli zaplecza Azure Load Balancer publicznej, jednostka SKU publicznego adresu IP maszyny wirtualnej musi być zgodna z jednostką SKU publicznego adresu IP modułu równoważenia obciążenia. Aby uzyskać szczegółowe informacje, zobacz [Azure Load Balancer](../load-balancer/load-balancer-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#skus).
+   Jeśli publiczny adres IP musi być jednostką SKU w warstwie Standardowa, musisz [utworzyć publiczny adres IP](virtual-network-public-ip-address.md#create-a-public-ip-address), [utworzyć interfejs sieciowy](virtual-network-network-interface.md#create-a-network-interface), [przypisać publiczny adres IP do interfejsu sieciowego](virtual-network-network-interface-addresses.md#add-ip-addresses), a następnie [utworzyć maszynę wirtualną przy użyciu interfejsu sieciowego](virtual-network-network-interface-vm.md#add-existing-network-interfaces-to-a-new-vm)w oddzielnych krokach. Dowiedz się więcej o jednostkach [SKU publicznych adresów IP](virtual-network-ip-addresses-overview-arm.md#sku). Jeśli maszyna wirtualna zostanie dodana do puli zaplecza Azure Load Balancer publicznej, jednostka SKU publicznego adresu IP maszyny wirtualnej musi być zgodna z jednostką SKU publicznego adresu IP modułu równoważenia obciążenia. Aby uzyskać szczegółowe informacje, zobacz [Azure Load Balancer](../load-balancer/concepts-limitations.md#skus).
 
 4. Wyświetl przypisany publiczny adres IP i upewnij się, że został on utworzony jako adres statyczny, przy użyciu elementu [Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress):
 

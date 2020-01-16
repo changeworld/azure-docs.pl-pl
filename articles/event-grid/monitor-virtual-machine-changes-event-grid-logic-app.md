@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: tutorial
 ms.date: 10/11/2019
-ms.openlocfilehash: 5d852378812d8e69480ceb2c5dcea95f1d5f3770
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: f5aac7fe63b2afc997ff69e5d976c755440c1bea
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73488622"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982567"
 ---
 # <a name="tutorial-monitor-virtual-machine-changes-by-using-azure-event-grid-and-logic-apps"></a>Samouczek: monitorowanie zmian maszyny wirtualnej przy użyciu Azure Event Grid i Logic Apps
 
@@ -34,7 +34,7 @@ W tym samouczku przedstawiono tworzenie aplikacji logiki, która monitoruje zmia
 
 ![Omówienie — monitorowanie maszyny wirtualnej za pomocą usługi Event Grid i aplikacji logiki](./media/monitor-virtual-machine-changes-event-grid-logic-app/monitor-virtual-machine-event-grid-logic-app-overview.png)
 
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Tworzenie aplikacji logiki, która monitoruje zdarzenia z usługi Event Grid.
@@ -63,11 +63,11 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
    ![Podawanie szczegółów aplikacji logiki](./media/monitor-virtual-machine-changes-event-grid-logic-app/create-logic-app-for-event-grid.png)
 
-   | Właściwość | Wymagany | Wartość | Opis |
+   | Właściwość | Wymagane | Wartość | Opis |
    |----------|----------|-------|-------------|
    | **Nazwa** | Tak | <> *logiki — nazwa aplikacji* | Podaj unikatową nazwę aplikacji logiki. |
    | **Subskrypcja** | Tak | <*Azure-subscription-name*> | Wybierz tę samą subskrypcję platformy Azure dla wszystkich usług w tym samouczku. |
-   | **Grupa zasobów** | Tak | <*platformy Azure —> grupy zasobów* | Nazwa grupy zasobów platformy Azure dla aplikacji logiki, którą można wybrać dla wszystkich usług w tym samouczku. |
+   | **Grupa zasobów** | Tak | <*Azure-resource-group*> | Nazwa grupy zasobów platformy Azure dla aplikacji logiki, którą można wybrać dla wszystkich usług w tym samouczku. |
    | **Lokalizacja** | Tak | <> *platformy Azure* | Wybierz ten sam region dla wszystkich usług w tym samouczku. |
    |||
 
@@ -98,12 +98,12 @@ Teraz Dodaj wyzwalacz Event Grid, który służy do monitorowania grupy zasobów
 
    ![Podaj szczegóły subskrypcji zdarzeń](./media/monitor-virtual-machine-changes-event-grid-logic-app/logic-app-event-grid-trigger-details.png)
 
-   | Właściwość | Wymagany | Wartość | Opis |
+   | Właściwość | Wymagane | Wartość | Opis |
    | -------- | -------- | ----- | ----------- |
-   | **Subskrypcja** | Tak | <*zdarzenia — Wydawca-Azure-Subscription-name*> | Wybierz nazwę subskrypcji platformy Azure, która jest skojarzona z *wydawcą zdarzeń*. Na potrzeby tego samouczka wybierz nazwę subskrypcji platformy Azure dla swojej maszyny wirtualnej. |
-   | **Typ zasobu** | Tak | <*Event-Publisher-Azure-Resource-type*> | Wybierz typ zasobu platformy Azure dla wydawcy zdarzeń. Aby uzyskać więcej informacji na temat typów zasobów platformy Azure, zobacz [dostawcy zasobów platformy Azure i ich typy](../azure-resource-manager/resource-manager-supported-services.md). Na potrzeby tego samouczka wybierz wartość `Microsoft.Resources.ResourceGroups`, aby monitorować grupy zasobów platformy Azure. |
-   | **Nazwa zasobu** |  Tak | <*Event-Publisher-Azure-Resource-name*> | Wybierz nazwę zasobu platformy Azure dla wydawcy zdarzeń. Ta lista różni się w zależności od wybranego typu zasobu. Na potrzeby tego samouczka wybierz nazwę grupy zasobów platformy Azure, która obejmuje daną maszynę wirtualną. |
-   | **Element typu zdarzenia** |  Nie | <*typy zdarzeń*> | Wybierz co najmniej jeden typ zdarzenia, który ma być filtrowany i wysyłany do swojej siatki zdarzeń. Można na przykład opcjonalnie dodać te typy zdarzeń do wykrywania, kiedy zasoby są zmieniane lub usuwane: <p><p>- `Microsoft.Resources.ResourceActionSuccess` <br>- `Microsoft.Resources.ResourceDeleteSuccess` <br>- `Microsoft.Resources.ResourceWriteSuccess` <p>Aby uzyskać więcej informacji, zobacz następujące tematy: <p><p>[schemat zdarzeń Azure Event Grid - dla grup zasobów](../event-grid/event-schema-resource-groups.md) <br>- [zrozumieć filtrowanie zdarzeń](../event-grid/event-filtering.md) <br>- [zdarzenia filtru dla Event Grid](../event-grid/how-to-filter-events.md) |
+   | **Subskrypcja** | Tak | <*event-publisher-Azure-subscription-name*> | Wybierz nazwę subskrypcji platformy Azure, która jest skojarzona z *wydawcą zdarzeń*. Na potrzeby tego samouczka wybierz nazwę subskrypcji platformy Azure dla swojej maszyny wirtualnej. |
+   | **Typ zasobu** | Tak | <*event-publisher-Azure-resource-type*> | Wybierz typ zasobu platformy Azure dla wydawcy zdarzeń. Aby uzyskać więcej informacji na temat typów zasobów platformy Azure, zobacz [dostawcy zasobów platformy Azure i ich typy](../azure-resource-manager/management/resource-providers-and-types.md). Na potrzeby tego samouczka wybierz wartość `Microsoft.Resources.ResourceGroups`, aby monitorować grupy zasobów platformy Azure. |
+   | **Nazwa zasobu** |  Tak | <*event-publisher-Azure-resource-name*> | Wybierz nazwę zasobu platformy Azure dla wydawcy zdarzeń. Ta lista różni się w zależności od wybranego typu zasobu. Na potrzeby tego samouczka wybierz nazwę grupy zasobów platformy Azure, która obejmuje daną maszynę wirtualną. |
+   | **Element typu zdarzenia** |  Nie | <*typy zdarzeń*> | Wybierz co najmniej jeden typ zdarzenia, który ma być filtrowany i wysyłany do swojej siatki zdarzeń. Można na przykład opcjonalnie dodać te typy zdarzeń do wykrywania, kiedy zasoby są zmieniane lub usuwane: <p><p>- `Microsoft.Resources.ResourceActionSuccess` <br>- `Microsoft.Resources.ResourceDeleteSuccess` <br>- `Microsoft.Resources.ResourceWriteSuccess` <p>Aby uzyskać więcej informacji zobacz następujące tematy: <p><p>[schemat zdarzeń Azure Event Grid - dla grup zasobów](../event-grid/event-schema-resource-groups.md) <br>- [zrozumieć filtrowanie zdarzeń](../event-grid/event-filtering.md) <br>- [zdarzenia filtru dla Event Grid](../event-grid/how-to-filter-events.md) |
    | Aby dodać właściwości opcjonalne, wybierz pozycję **Dodaj nowy parametr**, a następnie wybierz odpowiednie właściwości. | Nie | {Zobacz opisy} | * **Filtr prefiksu**: w tym samouczku pozostaw pustą właściwość. Zachowanie domyślne dopasowuje wszystkie wartości. Można jednak określić ciąg prefiksu jako filtr, na przykład ścieżkę i parametr dla konkretnego zasobu. <p>**Filtr sufiksu*** : w tym samouczku pozostaw tę właściwość pustą. Zachowanie domyślne dopasowuje wszystkie wartości. Można jednak określić ciąg sufiksu jako filtr, na przykład rozszerzenie nazwy pliku, aby uwzględniać tylko określone typy plików. <p>* **Nazwa subskrypcji**: na potrzeby tego samouczka możesz podać unikatową nazwę subskrypcji zdarzenia. |
    |||
 
@@ -115,7 +115,7 @@ Teraz Dodaj wyzwalacz Event Grid, który służy do monitorowania grupy zasobów
 
 Aplikacja logiki jest teraz aktywna i nasłuchuje zdarzeń z usługi Event Grid, ale nie robi nic, dopóki nie dodasz akcji do przepływu pracy.
 
-## <a name="add-a-condition"></a>Dodawanie warunku
+## <a name="add-a-condition"></a>Dodaj warunek
 
 Jeśli chcesz, aby aplikacja logiki działała tylko wtedy, gdy wystąpi określone zdarzenie lub operacja, Dodaj warunek, który sprawdza `Microsoft.Compute/virtualMachines/write` operacji. Jeśli ten warunek zostanie spełniony, aplikacja logiki wyśle Ci wiadomość e-mail zawierającą szczegóły zaktualizowanej maszyny wirtualnej.
 
@@ -125,7 +125,7 @@ Jeśli chcesz, aby aplikacja logiki działała tylko wtedy, gdy wystąpi określ
 
 1. W obszarze **Wybierz akcję**w polu wyszukiwania wprowadź `condition` jako filtr. Z listy Akcje wybierz akcję **warunek** .
 
-   ![Dodawanie warunku](./media/monitor-virtual-machine-changes-event-grid-logic-app/select-condition.png)
+   ![Dodaj warunek](./media/monitor-virtual-machine-changes-event-grid-logic-app/select-condition.png)
 
    Projektant aplikacji logiki dodaje pusty warunek do przepływu pracy, w tym ścieżki akcji do wykonania na podstawie tego, czy warunek jest spełniony (wartość true), czy nie (wartość false).
 
@@ -145,7 +145,7 @@ Jeśli chcesz, aby aplikacja logiki działała tylko wtedy, gdy wystąpi określ
 
       `triggerBody()?['data']['operationName']`
 
-      Na przykład:
+      Przykład:
 
       ![Wprowadź wyrażenie, aby wyodrębnić nazwę operacji](./media/monitor-virtual-machine-changes-event-grid-logic-app/condition-add-data-operation-name.png)
 
@@ -173,7 +173,7 @@ Teraz Dodaj [*akcję*](../logic-apps/logic-apps-overview.md#logic-app-concepts) 
 
    ![Dodawanie akcji do wykonania w przypadku wartości true warunku](./media/monitor-virtual-machine-changes-event-grid-logic-app/condition-true-add-action.png)
 
-1. W obszarze **Wybierz akcję**w polu wyszukiwania wprowadź `send an email` jako filtr. W oparciu o Twojego dostawcę poczty e-mail znajdź i wybierz zgodny łącznik. Następnie wybierz akcję „Wyślij wiadomość e-mail” dla Twojego łącznika. Na przykład:
+1. W obszarze **Wybierz akcję**w polu wyszukiwania wprowadź `send an email` jako filtr. W oparciu o Twojego dostawcę poczty e-mail znajdź i wybierz zgodny łącznik. Następnie wybierz akcję „Wyślij wiadomość e-mail” dla Twojego łącznika. Przykład:
 
    * Dla konta służbowego platformy Azure wybierz łącznik usługi Office 365 Outlook.
 
@@ -196,11 +196,11 @@ Teraz Dodaj [*akcję*](../logic-apps/logic-apps-overview.md#logic-app-concepts) 
    > [!TIP]
    > Aby wybrać dane wyjściowe z poprzednich kroków w przepływie pracy, kliknij wewnątrz pola edycji, aby wyświetlić listę zawartości dynamicznej, lub wybierz pozycję **Dodaj zawartość dynamiczną**. Aby uzyskać więcej wyników, wybierz pozycję **Zobacz więcej** dla każdej sekcji na liście. Aby zamknąć listę zawartości dynamicznej, ponownie wybierz pozycję **Dodaj zawartość dynamiczną** .
 
-   | Właściwość | Wymagany | Wartość | Opis |
+   | Właściwość | Wymagane | Wartość | Opis |
    | -------- | -------- | ----- | ----------- |
    | **Do** | Tak | < *\@domenę*> | Wprowadź adres e-mail adresata. Do celów testowych możesz użyć własnego adresu e-mail. |
-   | **Temat** | Tak | `Resource updated:` **Temat** | Wprowadź zawartość w polu tematu wiadomości e-mail. Na potrzeby tego samouczka wprowadź określony tekst, a następnie wybierz pole **podmiotu** zdarzenia. Tutaj temat wiadomości e-mail zawiera nazwę zaktualizowanego zasobu (maszyny wirtualnej). |
-   | **Treść** | Tak | **temat** `Resource:` <p>**Typ zdarzenia** `Event type:`<p>**identyfikator** `Event ID:`<p>**czas zdarzenia** `Time:` | Wprowadź zawartość w polu treści wiadomości e-mail. Na potrzeby tego samouczka wprowadź określony tekst i **Wybierz pozycję zdarzenie,** **Typ zdarzenia**, **Identyfikator**i **czas zdarzenia** , tak aby poczta e-mail zawierała zasób, który wygenerował zdarzenie, typ zdarzenia, sygnatura czasowa zdarzenia i identyfikator zdarzenia dla aktualizacji. W tym samouczku zasób jest grupą zasobów platformy Azure wybraną w wyzwalaczu. <p>Aby dodać puste wiersze w zawartości, naciśnij klawisze Shift + Enter. |
+   | **Temat** | Tak | `Resource updated:` **temat** | Wprowadź zawartość w polu tematu wiadomości e-mail. Na potrzeby tego samouczka wprowadź określony tekst, a następnie wybierz pole **podmiotu** zdarzenia. Tutaj temat wiadomości e-mail zawiera nazwę zaktualizowanego zasobu (maszyny wirtualnej). |
+   | **Treść** | Tak | **temat** `Resource:` <p>**Typ zdarzenia** `Event type:`<p>**identyfikator** `Event ID:`<p>**czas zdarzenia** `Time:` | Wprowadź zawartość w polu treści wiadomości e-mail. Na potrzeby tego samouczka wprowadź określony tekst i wybierz pola **temat**zdarzenia, **Typ zdarzenia**, **Identyfikator**i **czas zdarzenia** , tak aby poczta e-mail zawierała zasób, który wygenerował zdarzenie, typ zdarzenia, sygnaturę czasową zdarzenia i identyfikator zdarzenia dla aktualizacji. W tym samouczku zasób jest grupą zasobów platformy Azure wybraną w wyzwalaczu. <p>Aby dodać puste wiersze w zawartości, naciśnij klawisze Shift + Enter. |
    ||||
 
    > [!NOTE]
@@ -224,7 +224,7 @@ Teraz Dodaj [*akcję*](../logic-apps/logic-apps-overview.md#logic-app-concepts) 
 
    Możesz na przykład zmienić rozmiar maszyny wirtualnej w witrynie Azure Portal lub [zmienić rozmiar maszyny wirtualnej za pomocą programu Azure PowerShell](../virtual-machines/windows/resize-vm.md).
 
-   Po kilku chwilach powinna nadejść wiadomość e-mail. Na przykład:
+   Po kilku chwilach powinna nadejść wiadomość e-mail. Przykład:
 
    ![Wiadomość e-mail o aktualizacji maszyny wirtualnej](./media/monitor-virtual-machine-changes-event-grid-logic-app/email.png)
 

@@ -6,14 +6,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 01/15/2020
 ms.author: cherylmc
-ms.openlocfilehash: b67c77f25b14263abe7207359c00660df635df13
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 49fbdf4a4090350cc0a6a5a1b938621b3cb08632
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863795"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045083"
 ---
 # <a name="configure-a-point-to-site-vpn-connection-to-a-vnet-using-native-azure-certificate-authentication-powershell"></a>Konfigurowanie połączenia sieci VPN typu punkt-lokacja z siecią wirtualną przy użyciu natywnego uwierzytelniania certyfikatu platformy Azure: PowerShell
 
@@ -32,13 +32,15 @@ Natywne połączenia uwierzytelniania certyfikatów platformy Azure typu punkt-l
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
 Sprawdź, czy masz subskrypcję platformy Azure. Jeśli nie masz jeszcze subskrypcji platformy Azure, możesz aktywować [korzyści dla subskrybentów MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details) lub utworzyć [bezpłatne konto](https://azure.microsoft.com/pricing/free-trial).
+
+### <a name="azure-powershell"></a>Program Azure PowerShell
 
 [!INCLUDE [powershell](../../includes/vpn-gateway-cloud-shell-powershell-about.md)]
 
-W większości kroków opisanych w tym artykule można używać Cloud Shell. Aby jednak przekazać klucz publiczny certyfikatu głównego, należy użyć programu PowerShell lokalnie lub Azure Portal.
+>[!NOTE]
+> W większości kroków opisanych w tym artykule można używać Azure Cloud Shell. Aby jednak przekazać klucz publiczny certyfikatu głównego, należy użyć programu PowerShell lokalnie lub Azure Portal.
+>
 
 ### <a name="example"></a>Przykładowe wartości
 
@@ -170,7 +172,9 @@ Jeśli używasz certyfikatów z podpisem własnym, należy je utworzyć przy uż
 
 Upewnij się, że zakończono tworzenie bramy VPN Gateway. Po ukończeniu możesz przekazać plik cer (który zawiera informacje o kluczu publicznym) dla zaufanego certyfikatu głównego do platformy Azure. Po przekazaniu pliku cer platforma Azure może używać go do uwierzytelniania klientów, którzy mają zainstalowany certyfikat klienta wygenerowany na podstawie zaufanego certyfikatu głównego. Jeśli okaże się to konieczne, dodatkowe pliki zaufanego certyfikatu głównego możesz przekazać później — maksymalnie może ich być 20.
 
-Nie można przekazać tych informacji przy użyciu Azure Cloud Shell. Możesz użyć programu PowerShell lokalnie na komputerze, [Azure Portal kroków](vpn-gateway-howto-point-to-site-resource-manager-portal.md#uploadfile).
+>[!NOTE]
+> Nie można przekazać pliku CER przy użyciu Azure Cloud Shell. Możesz użyć programu PowerShell lokalnie na komputerze lub można użyć [Azure Portal kroków](vpn-gateway-howto-point-to-site-resource-manager-portal.md#uploadfile).
+>
 
 1. Zadeklaruj zmienną dla nazwy certyfikatu, zastępując wartość swoją własną.
 
@@ -185,7 +189,7 @@ Nie można przekazać tych informacji przy użyciu Azure Cloud Shell. Możesz u�
    $CertBase64 = [system.convert]::ToBase64String($cert.RawData)
    $p2srootcert = New-AzVpnClientRootCertificate -Name $P2SRootCertName -PublicCertData $CertBase64
    ```
-3. Przekaż informacje o kluczu publicznym do platformy Azure. Po przekazaniu informacji o certyfikacie platforma Azure traktuje ją jako zaufany certyfikat główny.
+3. Przekaż informacje o kluczu publicznym do platformy Azure. Po przekazaniu informacji o certyfikacie platforma Azure traktuje ją jako zaufany certyfikat główny. Podczas przekazywania upewnij się, że używasz programu PowerShell lokalnie na komputerze, lub zamiast tego możesz użyć [Azure Portal kroków](vpn-gateway-howto-point-to-site-resource-manager-portal.md#uploadfile). Nie można przekazać za pomocą Azure Cloud Shell.
 
    ```azurepowershell
    Add-AzVpnClientRootCertificate -VpnClientRootCertificateName $P2SRootCertName -VirtualNetworkGatewayname "VNet1GW" -ResourceGroupName "TestRG" -PublicCertData $CertBase64

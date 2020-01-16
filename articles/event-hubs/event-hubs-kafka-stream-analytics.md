@@ -13,12 +13,12 @@ ms.workload: na
 ms.custom: seodec18
 ms.date: 12/20/2019
 ms.author: spelluru
-ms.openlocfilehash: dd429c7e8478bb0576605bcffe3c72bde35ae41e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b0b48fea308b385fd8c66bf87d708b1c51f7f495
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75437252"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977351"
 ---
 # <a name="tutorial-process-apache-kafka-for-event-hubs-events-using-stream-analytics"></a>Samouczek: proces Apache Kafka dla zdarzeń Event Hubs za pomocą usługi Stream Analytics 
 W tym artykule przedstawiono sposób przesyłanie strumieniowe danych do komputerów z obsługą platformy Kafka z usługi Event Hubs i przetworzyć te dane za pomocą usługi Azure Stream Analytics. Przeprowadza użytkownika przez następujące kroki: 
@@ -38,7 +38,7 @@ Aby ukończyć ten przewodnik Szybki start, upewnij się, że dysponujesz nastę
 * [Zestaw Java Development Kit (JDK) 1.7+](https://aka.ms/azure-jdks)
 * [Pobierz](https://maven.apache.org/download.cgi) i [zainstaluj](https://maven.apache.org/install.html) archiwum binarne Maven.
 * [Git](https://www.git-scm.com/)
-* **Konta usługi Azure Storage**. Jeśli nie masz, [utworzyć](../storage/common/storage-quickstart-create-account.md) przed kontynuacją. Zadanie usługi Stream Analytics, w tym przewodniku przechowuje dane wyjściowe w usłudze Azure blob storage. 
+* **Konta usługi Azure Storage**. Jeśli nie masz, [utworzyć](../storage/common/storage-account-create.md) przed kontynuacją. Zadanie usługi Stream Analytics, w tym przewodniku przechowuje dane wyjściowe w usłudze Azure blob storage. 
 
 
 ## <a name="create-a-kafka-enabled-event-hubs-namespace"></a>Tworzenie przestrzeni nazw usługi Event Hubs z obsługą platformy Kafka
@@ -114,7 +114,7 @@ Teraz możesz przesyłać strumieniowo zdarzenia z aplikacji, które używają p
     ![Centrum zdarzeń — komunikaty](./media/event-hubs-kafka-stream-analytics/confirm-event-hub-messages.png)
 
 ## <a name="process-event-data-using-a-stream-analytics-job"></a>Przetwarzanie danych zdarzeń za pomocą zadania usługi Stream Analytics
-W tej sekcji opisano tworzenie zadania usługi Azure Stream Analytics. Klient platformy Kafka wysyła zdarzenia do Centrum zdarzeń. Możesz utworzyć zadanie usługi Stream Analytics, która pobiera dane zdarzeń jako dane wejściowe i wysyła go do usługi Azure blob storage. Jeśli nie masz **konta usługi Azure Storage**, [utworzyć](../storage/common/storage-quickstart-create-account.md).
+W tej sekcji opisano tworzenie zadania usługi Azure Stream Analytics. Klient platformy Kafka wysyła zdarzenia do Centrum zdarzeń. Możesz utworzyć zadanie usługi Stream Analytics, która pobiera dane zdarzeń jako dane wejściowe i wysyła go do usługi Azure blob storage. Jeśli nie masz **konta usługi Azure Storage**, [utworzyć](../storage/common/storage-account-create.md).
 
 Zapytanie zadania usługi Stream Analytics przechodzi przez dane bez przeprowadzania żadnych analizy. Można utworzyć zapytanie, które przekształca dane wejściowe, aby wygenerować dane wyjściowe w innym formacie lub za pomocą zyskały szczegółowych informacji.  
 

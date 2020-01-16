@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.openlocfilehash: bb60d22c62096725e29b9351bf304504861d9bf1
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.openlocfilehash: 1e6a21e8bf9c284c83af09885aa66b612b52ad7c
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75902517"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76044714"
 ---
 # <a name="plan-a-virtual-network-for-azure-hdinsight"></a>Planowanie sieci wirtualnej dla usługi Azure HDInsight
 
@@ -251,7 +251,7 @@ Aby uzyskać więcej informacji na temat reguł zapory dla urządzeń wirtualnyc
 
 ## <a name="load-balancing"></a>Równoważenie obciążenia
 
-Podczas tworzenia klastra usługi HDInsight jest również tworzony moduł równoważenia obciążenia. Typ tego modułu równoważenia obciążenia jest na [poziomie podstawowej jednostki SKU](../load-balancer/load-balancer-overview.md#skus) , który ma pewne ograniczenia. Jedno z tych ograniczeń polega na tym, że w przypadku dwóch sieci wirtualnych w różnych regionach nie można nawiązać połączenia z podstawowymi usługami równoważenia obciążenia. Zobacz [często zadawane pytania dotyczące usługi Virtual Networks: ograniczenia dotyczące globalnej komunikacji równorzędnej sieci](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)wirtualnej, aby uzyskać więcej informacji.
+Podczas tworzenia klastra usługi HDInsight jest również tworzony moduł równoważenia obciążenia. Typ tego modułu równoważenia obciążenia jest na [poziomie podstawowej jednostki SKU](../load-balancer/concepts-limitations.md#skus) , który ma pewne ograniczenia. Jedno z tych ograniczeń polega na tym, że w przypadku dwóch sieci wirtualnych w różnych regionach nie można nawiązać połączenia z podstawowymi usługami równoważenia obciążenia. Zobacz [często zadawane pytania dotyczące usługi Virtual Networks: ograniczenia dotyczące globalnej komunikacji równorzędnej sieci](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)wirtualnej, aby uzyskać więcej informacji.
 
 ## <a name="transport-layer-security"></a>Transport Layer Security
 

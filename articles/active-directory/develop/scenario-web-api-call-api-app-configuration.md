@@ -16,29 +16,29 @@ ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2082265b96388b4fbf860118efc3eefd4c5c67af
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1e54e26bba1618a3b5835480ed1b1fe698bc8db4
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75423590"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76043415"
 ---
-# <a name="web-api-that-calls-web-apis---code-configuration"></a>Interfejs API sieci Web, który wywołuje interfejsy API sieci Web — konfiguracja kodu
+# <a name="a-web-api-that-calls-web-apis-code-configuration"></a>Internetowy interfejs API, który wywołuje interfejsy API sieci Web: Konfiguracja kodu
 
 Po zarejestrowaniu internetowego interfejsu API można skonfigurować kod dla aplikacji.
 
-Kod służący do konfigurowania internetowego interfejsu API w taki sposób, aby wywołuje podrzędne interfejsy API sieci Web w oparciu o kod używany do ochrony internetowego interfejsu API. Aby uzyskać więcej informacji, zobacz [chroniona sieć Web API — konfiguracja aplikacji](scenario-protected-web-api-app-configuration.md).
+Kod używany do konfigurowania internetowego interfejsu API, dzięki czemu wywołuje podrzędne interfejsy API sieci Web na podstawie kodu, który jest używany do ochrony internetowego interfejsu API. Aby uzyskać więcej informacji, zobacz [chroniony internetowy interfejs API: Konfiguracja aplikacji](scenario-protected-web-api-app-configuration.md).
 
 ## <a name="code-subscribed-to-ontokenvalidated"></a>Kod subskrybowany do OnTokenValidated
 
-Na podstawie konfiguracji kodu dla wszelkich chronionych interfejsów API sieci Web należy zasubskrybować weryfikację tokenu okaziciela, który jest odbierany w przypadku wywołania interfejsu API:
+Na podstawie konfiguracji kodu dla wszelkich chronionych interfejsów API sieci Web należy zasubskrybować weryfikację tokenu okaziciela, który otrzymujesz po wywołaniu interfejsu API:
 
 ```csharp
 /// <summary>
-/// Protects the web API with Microsoft Identity Platform (a.k.k AAD v2.0)
+/// Protects the web API with the Microsoft identity platform, or Azure Active Directory (Azure AD) developer platform
 /// This supposes that the configuration files have a section named "AzureAD"
 /// </summary>
-/// <param name="services">Service collection to which to add authentication</param>
+/// <param name="services">The service collection to which to add authentication</param>
 /// <param name="configuration">Configuration</param>
 /// <returns></returns>
 public static IServiceCollection AddProtectedApiCallsWebApis(this IServiceCollection services,
@@ -49,14 +49,14 @@ public static IServiceCollection AddProtectedApiCallsWebApis(this IServiceCollec
     services.Configure<JwtBearerOptions>(AzureADDefaults.JwtBearerAuthenticationScheme, options =>
     {
         // When an access token for our own web API is validated, we add it 
-        // to MSAL.NET's cache so that it can be used from the controllers.
+        // to the MSAL.NET cache so that it can be used from the controllers.
         options.Events = new JwtBearerEvents();
 
         options.Events.OnTokenValidated = async context =>
         {
             context.Success();
 
-            // Adds the token to the cache, and also handles the incremental consent 
+            // Adds the token to the cache and handles the incremental consent 
             // and claim challenges
             AddAccountToCacheFromJwt(context, scopes);
             await Task.FromResult(0);
@@ -66,18 +66,18 @@ public static IServiceCollection AddProtectedApiCallsWebApis(this IServiceCollec
 }
 ```
 
-## <a name="on-behalf-of-flow"></a>Przepływ „w imieniu”
+## <a name="on-behalf-of-flow"></a>W imieniu przepływu
 
 Metoda AddAccountToCacheFromJwt () musi:
 
-- Tworzenie wystąpienia MSAL poufnej aplikacji klienckiej.
-- Wywołaj `AcquireTokenOnBehalf`, aby wymienić token okaziciela, który został uzyskany przez klienta dla internetowego interfejsu API, względem tokenu okaziciela dla tego samego użytkownika, ale w przypadku interfejsu API wywołującego podrzędny interfejs API.
+- Utworzenie wystąpienia biblioteki uwierzytelniania firmy Microsoft (MSAL) poufnej aplikacji klienckiej.
+- Wywołaj `AcquireTokenOnBehalf` metody. To wywołanie wymienia token okaziciela, który został uzyskany przez klienta dla internetowego interfejsu API względem tokenu okaziciela dla tego samego użytkownika, ale ma interfejs API wywołujący podrzędny interfejs API.
 
 ### <a name="instantiate-a-confidential-client-application"></a>Tworzenie wystąpienia poufnej aplikacji klienckiej
 
-Ten przepływ jest dostępny tylko w tajemnicy klienta, dlatego chroniony internetowy interfejs API udostępnia poświadczenia klienta (klucz tajny klienta lub certyfikat) do [ConfidentialClientApplicationBuilder](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.confidentialclientapplicationbuilder) przy użyciu odpowiednio metod `WithClientSecret` lub `WithCertificate`.
+Ten przepływ jest dostępny tylko w poufnej przepływie klienta, dzięki czemu chroniony internetowy interfejs API udostępnia poświadczenia klienta (klucz tajny klienta lub certyfikat) do [klasy ConfidentialClientApplicationBuilder](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.confidentialclientapplicationbuilder) za pomocą metody `WithClientSecret` lub `WithCertificate`.
 
-![image](https://user-images.githubusercontent.com/13203188/55967244-3d8e1d00-5c7a-11e9-8285-a54b05597ec9.png)
+![Lista metod IConfidentialClientApplication](https://user-images.githubusercontent.com/13203188/55967244-3d8e1d00-5c7a-11e9-8285-a54b05597ec9.png)
 
 ```csharp
 IConfidentialClientApplication app;
@@ -95,18 +95,20 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
 #endif
 ```
 
-Na koniec zamiast klucza tajnego klienta lub certyfikatu poufne aplikacje klienckie mogą również udowodnić swoją tożsamość za pomocą potwierdzeń klientów.
-Ten zaawansowany scenariusz jest szczegółowo opisany w [potwierdzeniach klienta](msal-net-client-assertions.md)
+Na koniec zamiast udowodnić swoją tożsamość za pośrednictwem klucza tajnego klienta lub certyfikatu, poufne aplikacje klienckie mogą udowodnić swoją tożsamość za pomocą potwierdzeń klientów.
+Aby uzyskać więcej informacji na temat tego zaawansowanego scenariusza, zobacz [poufne potwierdzenia klientów](msal-net-client-assertions.md).
 
 ### <a name="how-to-call-on-behalf-of"></a>Jak wywołać w imieniu
 
-Wywołanie w imieniu (OBO) jest wykonywane przez wywołanie metody [AcquireTokenOnBehalf](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.acquiretokenonbehalfofparameterbuilder) w interfejsie `IConfidentialClientApplication`.
+Należy wykonać wywołanie w imieniu (OBO), wywołując [metodę AcquireTokenOnBehalf](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.acquiretokenonbehalfofparameterbuilder) w interfejsie `IConfidentialClientApplication`.
 
-`UserAssertion` jest tworzona na podstawie tokenu okaziciela otrzymanego przez internetowy interfejs API od własnych klientów. Istnieją [dwa konstruktory](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.clientcredential.-ctor?view=azure-dotnet), jeden, który pobiera token okaziciela JWT, i jeden, który ma dowolny rodzaj potwierdzenia użytkownika (inny rodzaj tokenu zabezpieczającego, który jest następnie określony w dodatkowym parametrze o nazwie `assertionType`).
+Klasa `UserAssertion` jest tworzona na podstawie tokenu nośnego, który jest odbierany przez internetowy interfejs API od własnych klientów. Istnieją [dwa konstruktory](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.clientcredential.-ctor?view=azure-dotnet):
+* Jeden, który pobiera token okaziciela sieci Web JSON (JWT)
+* Jeden, który ma dowolny rodzaj potwierdzenia użytkownika, inny rodzaj tokenu zabezpieczającego, którego typ jest następnie określony w dodatkowym parametrze o nazwie `assertionType`
 
-![image](https://user-images.githubusercontent.com/13203188/37082180-afc4b708-21e3-11e8-8af8-a6dcbd2dfba8.png)
+![UserAssertion — właściwości i metody](https://user-images.githubusercontent.com/13203188/37082180-afc4b708-21e3-11e8-8af8-a6dcbd2dfba8.png)
 
-W rzeczywistości przepływ OBO jest często używany do uzyskiwania tokenu dla podrzędnego interfejsu API i przechowywania go w pamięci podręcznej tokenów użytkownika MSAL.NET, dzięki czemu inne części interfejsu API sieci Web mogą później wywoływać [przesłonięcia](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.clientapplicationbase.acquiretokensilent?view=azure-dotnet) ``AcquireTokenOnSilent``, aby wywołać podrzędne interfejsy API. To wywołanie ma wpływ na odświeżanie tokenów, w razie konieczności.
+W rzeczywistości przepływ OBO jest często używany do uzyskiwania tokenu dla podrzędnego interfejsu API i przechowywania go w pamięci podręcznej tokenów użytkownika MSAL.NET. Można to zrobić, tak aby inne części interfejsu API sieci Web mogły później wywołać [zastąpień](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.clientapplicationbase.acquiretokensilent?view=azure-dotnet) ``AcquireTokenOnSilent`` w celu wywołania podrzędnych interfejsów API. To wywołanie ma wpływ na odświeżanie tokenów, w razie konieczności.
 
 ```csharp
 private void AddAccountToCacheFromJwt(IEnumerable<string> scopes, JwtSecurityToken jwtToken, ClaimsPrincipal principal, HttpContext httpContext)
@@ -128,7 +130,7 @@ private void AddAccountToCacheFromJwt(IEnumerable<string> scopes, JwtSecurityTok
         // Create the application
         var application = BuildConfidentialClientApplication(httpContext, principal);
 
-        // .Result to make sure that the cache is filled-in before the controller tries to get access tokens
+        // .Result to make sure that the cache is filled in before the controller tries to get access tokens
         var result = application.AcquireTokenOnBehalfOf(requestedScopes.Except(scopesRequestedByMsalNet),
                                                         userAssertion)
                                 .ExecuteAsync()
@@ -142,13 +144,13 @@ private void AddAccountToCacheFromJwt(IEnumerable<string> scopes, JwtSecurityTok
 }
 ```
 
-Możesz również zapoznać się z przykładem dotyczącym implementacji przepływu w [NodeJS i Azure Functions](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-onbehalfof-azurefunctions/blob/master/MiddleTierAPI/MyHttpTrigger/index.js#L61).
+Można także zobaczyć przykład implementacji przepływu OBO w [Node. js i Azure Functions](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-onbehalfof-azurefunctions/blob/master/MiddleTierAPI/MyHttpTrigger/index.js#L61).
 
 ## <a name="protocol"></a>Protocol (Protokół)
 
-Aby uzyskać więcej informacji o protokole w imieniu, zobacz [Microsoft Identity platform i OAuth 2,0 w imieniu usługi Flow](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow).
+Aby uzyskać więcej informacji na temat protokołu OBO, zobacz [Microsoft Identity platform i OAuth 2,0 w imieniu usługi Flow](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow).
 
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Uzyskiwanie tokenu dla aplikacji](scenario-web-api-call-api-acquire-token.md)
+> [Internetowy interfejs API, który wywołuje interfejsy API sieci Web: uzyskiwanie tokenu dla aplikacji](scenario-web-api-call-api-acquire-token.md)

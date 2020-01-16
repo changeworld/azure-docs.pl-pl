@@ -11,26 +11,26 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/22/2018
-ms.openlocfilehash: 389125b1ce3ed43e16f2c9c481e26f1297785a6c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 61ee9e46b1c1d4c1e1ec4815c7a88de921650230
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75439347"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982609"
 ---
 # <a name="tutorial-copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage"></a>Samouczek: kopiowanie danych z lokalnej bazy danych programu SQL Server do usługi Azure Blob Storage
 
-W tym samouczku użyjesz programu Azure PowerShell, aby utworzyć potok usługi Data Factory, który kopiuje dane z lokalnej bazy danych programu SQL Server do usługi Azure Blob Storage. Utworzysz własne środowisko Integration Runtime (Self-hosted), służące do przenoszenia danych między lokalnym magazynem danych i magazynem danych w chmurze. 
+W tym samouczku użyjesz programu Azure PowerShell, aby utworzyć potok usługi Data Factory, który kopiuje dane z lokalnej bazy danych programu SQL Server do usługi Azure Blob Storage. Utworzysz własne środowisko Integration Runtime (Self-hosted), służące do przenoszenia danych między lokalnym magazynem danych i magazynem danych w chmurze.
 
 > [!NOTE]
-> Ten artykuł nie zawiera szczegółowego wprowadzenia do usługi Data Factory. Aby uzyskać więcej informacji, zobacz [Wprowadzenie do usługi Azure Data Factory](introduction.md). 
+> Ten artykuł nie zawiera szczegółowego wprowadzenia do usługi Data Factory. Aby uzyskać więcej informacji, zobacz [Wprowadzenie do usługi Azure Data Factory](introduction.md).
 
 Ten samouczek obejmuje wykonanie następujących kroków:
 
 > [!div class="checklist"]
 > * Tworzenie fabryki danych.
 > * Utwórz własne środowisko Integration Runtime.
-> * Tworzenie połączonych zestawów programu SQL Server i usługi Azure Storage. 
+> * Tworzenie połączonych zestawów programu SQL Server i usługi Azure Storage.
 > * Tworzenie zestawów danych programu SQL Server i usługi Azure Blob.
 > * Tworzenie potoku z działaniem kopiowania do przenoszenia danych.
 > * Uruchom potok.
@@ -41,20 +41,20 @@ Ten samouczek obejmuje wykonanie następujących kroków:
 Jeśli nie masz jeszcze subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/).
 
 ### <a name="azure-roles"></a>Role platformy Azure
-Aby utworzyć wystąpienia usługi Data Factory, konto użytkownika używane do logowania się na platformie Azure musi mieć przypisaną rolę *współautora* lub *właściciela* albo być *administratorem* subskrypcji platformy Azure. 
+Aby utworzyć wystąpienia usługi Data Factory, konto użytkownika używane do logowania się na platformie Azure musi mieć przypisaną rolę *współautora* lub *właściciela* albo być *administratorem* subskrypcji platformy Azure.
 
 W witrynie Azure Portal wybierz swoją nazwę użytkownika w prawym górnym rogu i wybierz pozycję **Uprawnienia**, aby wyświetlić uprawnienia, które masz w subskrypcji. Jeśli masz dostęp do wielu subskrypcji, wybierz odpowiednią subskrypcję. Przykładowe instrukcje dotyczące sposobu dodawania użytkownika do roli można znaleźć w artykule [Manage access using RBAC and the Azure portal](../role-based-access-control/role-assignments-portal.md) (Zarządzanie dostępem przy użyciu kontroli dostępu na podstawie ról i witryny Azure Portal).
 
 ### <a name="sql-server-2014-2016-and-2017"></a>Program SQL Server 2014, 2016 oraz 2017
-Podczas pracy z tym samouczkiem użyjesz lokalnej bazy danych programu SQL Server jako *źródłowego* magazynu danych. Potok usługi Data Factory tworzony w tym samouczku kopiuje dane z tej lokalnej bazy danych programu SQL Server (źródła) do usługi Azure Blob Storage (ujścia). Następnie utworzysz tabelę o nazwie **emp** w bazie danych programu SQL Server i wstawisz kilka przykładowych wpisów w tabeli. 
+Podczas pracy z tym samouczkiem użyjesz lokalnej bazy danych programu SQL Server jako *źródłowego* magazynu danych. Potok usługi Data Factory tworzony w tym samouczku kopiuje dane z tej lokalnej bazy danych programu SQL Server (źródła) do usługi Azure Blob Storage (ujścia). Następnie utworzysz tabelę o nazwie **emp** w bazie danych programu SQL Server i wstawisz kilka przykładowych wpisów w tabeli.
 
-1. Uruchom program SQL Server Management Studio. Jeśli program nie jest jeszcze zainstalowany na używanej maszynie, przejdź do strony [pobierania programu SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms). 
+1. Uruchom program SQL Server Management Studio. Jeśli program nie jest jeszcze zainstalowany na używanej maszynie, przejdź do strony [pobierania programu SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms).
 
-1. Połącz się z wystąpieniem programu SQL Server przy użyciu swoich poświadczeń. 
+1. Połącz się z wystąpieniem programu SQL Server przy użyciu swoich poświadczeń.
 
-1. Utwórz przykładową bazę danych. W widoku drzewa kliknij prawym przyciskiem myszy pozycję **Bazy danych**, a następnie wybierz pozycję **Nowa baza danych**. 
- 
-1. W oknie **Nowa baza danych** wprowadź nazwę bazy danych, a następnie wybierz przycisk **OK**. 
+1. Utwórz przykładową bazę danych. W widoku drzewa kliknij prawym przyciskiem myszy pozycję **Bazy danych**, a następnie wybierz pozycję **Nowa baza danych**.
+
+1. W oknie **Nowa baza danych** wprowadź nazwę bazy danych, a następnie wybierz przycisk **OK**.
 
 1. Aby utworzyć tabelę **emp** i wstawić do niej przykładowe dane, uruchom następujący skrypt zapytania w bazie danych. W widoku drzewa kliknij prawym przyciskiem myszy utworzoną bazę danych, a następnie wybierz pozycję **Nowe zapytanie**.
 
@@ -66,7 +66,7 @@ Podczas pracy z tym samouczkiem użyjesz lokalnej bazy danych programu SQL Serve
         LastName varchar(50)
     )
     GO
-    
+
     INSERT INTO emp (FirstName, LastName) VALUES ('John', 'Doe')
     INSERT INTO emp (FirstName, LastName) VALUES ('Jane', 'Doe')
     GO
@@ -74,33 +74,33 @@ Podczas pracy z tym samouczkiem użyjesz lokalnej bazy danych programu SQL Serve
 
 
 ### <a name="azure-storage-account"></a>Konto usługi Azure Storage
-W tym samouczku używasz konta usługi Azure Storage ogólnego przeznaczenia (a dokładniej usługi Azure Blob Storage) jako docelowego magazynu danych (ujścia). Jeśli nie masz konta usługi Azure Storage ogólnego przeznaczenia, zobacz [Tworzenie konta magazynu](../storage/common/storage-quickstart-create-account.md). Potok usługi Data Factory tworzony w tym samouczku kopiuje dane z lokalnej bazy danych programu SQL Server (źródła) do tego konta usługi Azure Blob Storage (ujścia). 
+W tym samouczku używasz konta usługi Azure Storage ogólnego przeznaczenia (a dokładniej usługi Azure Blob Storage) jako docelowego magazynu danych (ujścia). Jeśli nie masz konta usługi Azure Storage ogólnego przeznaczenia, zobacz [Tworzenie konta magazynu](../storage/common/storage-account-create.md). Potok usługi Data Factory tworzony w tym samouczku kopiuje dane z lokalnej bazy danych programu SQL Server (źródła) do tego konta usługi Azure Blob Storage (ujścia). 
 
 #### <a name="get-storage-account-name-and-account-key"></a>Pobieranie nazwy konta i klucza konta magazynu
-W tym samouczku używasz nazwy i klucza swojego konta usługi Azure Storage. Pobierz nazwę i klucz konta usługi Storage, wykonując następujące czynności: 
+W tym samouczku używasz nazwy i klucza swojego konta usługi Azure Storage. Pobierz nazwę i klucz konta usługi Storage, wykonując następujące czynności:
 
-1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) przy użyciu nazwy użytkownika i hasła do konta platformy Azure. 
+1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) przy użyciu nazwy użytkownika i hasła do konta platformy Azure.
 
 1. W okienku po lewej stronie wybierz pozycję **Więcej usług**, zastosuj filtrowanie według słowa kluczowego **magazyn**, a następnie wybierz pozycję **Konta magazynu**.
 
     ![Wyszukiwanie konta magazynu](media/doc-common-process/search-storage-account.png)
 
-1. Na liście kont magazynu znajdź swoje konto magazynu, w razie potrzeby używając filtrowania, a następnie wybierz to konto. 
+1. Na liście kont magazynu znajdź swoje konto magazynu, w razie potrzeby używając filtrowania, a następnie wybierz to konto.
 
 1. W oknie **Konto magazynu** wybierz pozycję **Klucze dostępu**.
 
-1. Skopiuj wartości z pól **Nazwa konta magazynu** i **klucz1** i wklej je do Notatnika lub innego edytora do późniejszego użycia z tym samouczkiem. 
+1. Skopiuj wartości z pól **Nazwa konta magazynu** i **klucz1** i wklej je do Notatnika lub innego edytora do późniejszego użycia z tym samouczkiem.
 
-#### <a name="create-the-adftutorial-container"></a>Tworzenie kontenera adftutorial 
-W tej sekcji utworzysz kontener obiektów blob o nazwie **adftutorial** w usłudze Azure Blob Storage. 
+#### <a name="create-the-adftutorial-container"></a>Tworzenie kontenera adftutorial
+W tej sekcji utworzysz kontener obiektów blob o nazwie **adftutorial** w usłudze Azure Blob Storage.
 
-1. W oknie **Konto magazynu** przełącz się do widoku **Przegląd**, a następnie wybierz pozycję **Obiekty blob**. 
+1. W oknie **Konto magazynu** przełącz się do widoku **Przegląd**, a następnie wybierz pozycję **Obiekty blob**.
 
     ![Wybieranie opcji Obiekty blob](media/tutorial-hybrid-copy-powershell/select-blobs.png)
 
-1. W oknie **Blob Service** wybierz pozycję **Kontener**. 
+1. W oknie **Blob Service** wybierz pozycję **Kontener**.
 
-1. W oknie **Nowy kontener** w polu **Nazwa** wpisz nazwę **adftutorial**, a następnie wybierz pozycję **OK**. 
+1. W oknie **Nowy kontener** w polu **Nazwa** wpisz nazwę **adftutorial**, a następnie wybierz pozycję **OK**.
 
     ![Wprowadzanie nazwy kontenera](media/tutorial-hybrid-copy-powershell/new-container-dialog.png)
 
@@ -115,14 +115,14 @@ W tej sekcji utworzysz kontener obiektów blob o nazwie **adftutorial** w usłud
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Zainstaluj najnowszą wersję programu Azure PowerShell, jeśli nie masz jej jeszcze na swojej maszynie. Aby uzyskać szczegółowe informacje, zobacz [How to install and configure Azure PowerShell (Jak zainstalować i skonfigurować program Azure PowerShell)](/powershell/azure/install-Az-ps). 
+Zainstaluj najnowszą wersję programu Azure PowerShell, jeśli nie masz jej jeszcze na swojej maszynie. Aby uzyskać szczegółowe informacje, zobacz [How to install and configure Azure PowerShell (Jak zainstalować i skonfigurować program Azure PowerShell)](/powershell/azure/install-Az-ps).
 
 #### <a name="log-in-to-powershell"></a>Logowanie do programu PowerShell
 
 1. Uruchom program PowerShell na maszynie i pozostaw ten program otwarty aż do zakończenia pracy z tym samouczkiem Szybki start. Jeśli go zamkniesz i otworzysz ponownie, musisz uruchomić te polecenia jeszcze raz.
 
 1. Uruchom poniższe polecenie, a następnie wprowadź nazwę użytkownika platformy Azure oraz hasło, których używasz do logowania się w witrynie Azure Portal:
-       
+
     ```powershell
     Connect-AzAccount
     ```        
@@ -141,61 +141,61 @@ Zainstaluj najnowszą wersję programu Azure PowerShell, jeśli nie masz jej jes
     $resourceGroupName = "ADFTutorialResourceGroup"
     ```
 
-1. Aby utworzyć grupę zasobów platformy Azure, uruchom następujące polecenie: 
+1. Aby utworzyć grupę zasobów platformy Azure, uruchom następujące polecenie:
 
     ```powershell
     New-AzResourceGroup $resourceGroupName -location 'East US'
-    ``` 
+    ```
 
     Jeśli grupa zasobów już istnieje, możesz zrezygnować z jej zastąpienia. Przypisz inną wartość do zmiennej `$resourceGroupName` i ponownie uruchom polecenie.
 
 1. Zdefiniuj zmienną nazwy fabryki danych, której możesz użyć później w poleceniach programu PowerShell. Nazwa musi zaczynać się od litery lub cyfry i może zawierać tylko litery, cyfry i znak łącznika (-).
 
     > [!IMPORTANT]
-    >  Zaktualizuj nazwę fabryki danych, nadając jej globalnie unikatową nazwę. Na przykład: ADFTutorialFactorySP1127. 
+    >  Zaktualizuj nazwę fabryki danych, nadając jej globalnie unikatową nazwę. Na przykład: ADFTutorialFactorySP1127.
 
     ```powershell
     $dataFactoryName = "ADFTutorialFactory"
     ```
 
-1. Zdefiniuj zmienną lokalizacji fabryki danych: 
+1. Zdefiniuj zmienną lokalizacji fabryki danych:
 
     ```powershell
     $location = "East US"
     ```  
 
-1. Aby utworzyć fabrykę danych, uruchom następujące polecenie cmdlet `Set-AzDataFactoryV2`: 
-    
+1. Aby utworzyć fabrykę danych, uruchom następujące polecenie cmdlet `Set-AzDataFactoryV2`:
+
     ```powershell       
-    Set-AzDataFactoryV2 -ResourceGroupName $resourceGroupName -Location $location -Name $dataFactoryName 
+    Set-AzDataFactoryV2 -ResourceGroupName $resourceGroupName -Location $location -Name $dataFactoryName
     ```
 
 > [!NOTE]
-> 
+>
 > * Nazwa fabryki danych musi być globalnie unikatowa. Jeśli zostanie wyświetlony następujący błąd, zmień nazwę i spróbuj ponownie.
 >    ```
 >    The specified data factory name 'ADFv2TutorialDataFactory' is already in use. Data factory names must be globally unique.
 >    ```
 > * Aby utworzyć wystąpienia usługi Data Factory, konto użytkownika używane do logowania się na platformie Azure musi mieć przypisaną rolę *współautora* lub *właściciela* albo być *administratorem* subskrypcji platformy Azure.
 > * Aby uzyskać listę regionów platformy Azure, w których obecnie jest dostępna usługa Data Factory, wybierz dane regiony na poniższej stronie, a następnie rozwiń węzeł **Analiza**, aby zlokalizować pozycję **Data Factory**: [Produkty dostępne według regionu](https://azure.microsoft.com/global-infrastructure/services/). Magazyny danych (Azure Storage, Azure SQL Database itd.) i jednostki obliczeniowe (Azure HDInsight itd.) używane przez fabrykę danych mogą mieścić się w innych regionach.
-> 
-> 
+>
+>
 
 ## <a name="create-a-self-hosted-integration-runtime"></a>Tworzenie własnego środowiska Integration Runtime
 
-W tej sekcji utworzysz własne środowisko Integration Runtime i skojarzysz je z maszyną lokalną za pomocą bazy danych programu SQL Server. Własne środowisko Integration Runtime jest składnikiem, który kopiuje dane z bazy danych programu SQL Server na Twojej maszynie do usługi Azure Blob Storage. 
+W tej sekcji utworzysz własne środowisko Integration Runtime i skojarzysz je z maszyną lokalną za pomocą bazy danych programu SQL Server. Własne środowisko Integration Runtime jest składnikiem, który kopiuje dane z bazy danych programu SQL Server na Twojej maszynie do usługi Azure Blob Storage.
 
-1. Utwórz zmienną dla nazwy środowiska Integration Runtime. Użyj unikatowej nazwy i zanotuj ją. Będziesz jej używać w dalszej części tego samouczka. 
+1. Utwórz zmienną dla nazwy środowiska Integration Runtime. Użyj unikatowej nazwy i zanotuj ją. Będziesz jej używać w dalszej części tego samouczka.
 
     ```powershell
    $integrationRuntimeName = "ADFTutorialIR"
     ```
 
-1. Utwórz własne środowisko Integration Runtime. 
+1. Utwórz własne środowisko Integration Runtime.
 
     ```powershell
     Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $integrationRuntimeName -Type SelfHosted -Description "selfhosted IR description"
-    ``` 
+    ```
 
     Oto przykładowe dane wyjściowe:
 
@@ -215,16 +215,16 @@ W tej sekcji utworzysz własne środowisko Integration Runtime i skojarzysz je z
     ```
 
     Oto przykładowe dane wyjściowe:
-    
+
     ```json
     State                     : NeedRegistration
-    Version                   : 
+    Version                   :
     CreateTime                : 9/10/2019 3:24:09 AM
     AutoUpdate                : On
-    ScheduledUpdateDate       : 
-    UpdateDelayOffset         : 
-    LocalTimeZoneOffset       : 
-    InternalChannelEncryption : 
+    ScheduledUpdateDate       :
+    UpdateDelayOffset         :
+    LocalTimeZoneOffset       :
+    InternalChannelEncryption :
     Capabilities              : {}
     ServiceUrls               : {eu.frontend.clouddatahub.net}
     Nodes                     : {}
@@ -237,14 +237,14 @@ W tej sekcji utworzysz własne środowisko Integration Runtime i skojarzysz je z
     Id                        : /subscriptions/<subscription ID>/resourceGroups/<resourceGroupName>/providers/Microsoft.DataFactory/factories/<dataFactoryName>/integrationruntimes/<integrationRuntimeName>
     ```
 
-1. Uruchom następujące polecenie, aby pobrać *klucze uwierzytelniania* w celu zarejestrowania własnego środowiska Integration Runtime za pomocą usługi Data Factory w chmurze. Skopiuj jeden z kluczy (pomijając cudzysłowy) na potrzeby rejestracji własnego środowiska Integration Runtime, które zainstalujesz na swojej maszynie w następnym kroku. 
+1. Uruchom następujące polecenie, aby pobrać *klucze uwierzytelniania* w celu zarejestrowania własnego środowiska Integration Runtime za pomocą usługi Data Factory w chmurze. Skopiuj jeden z kluczy (pomijając cudzysłowy) na potrzeby rejestracji własnego środowiska Integration Runtime, które zainstalujesz na swojej maszynie w następnym kroku.
 
     ```powershell
     Get-AzDataFactoryV2IntegrationRuntimeKey -Name $integrationRuntimeName -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName | ConvertTo-Json
     ```
-    
+
     Oto przykładowe dane wyjściowe:
-    
+
     ```json
     {
         "AuthKey1":  "IR@0000000000-0000-0000-0000-000000000000@xy0@xy@xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=",
@@ -253,31 +253,31 @@ W tej sekcji utworzysz własne środowisko Integration Runtime i skojarzysz je z
     ```
 
 ## <a name="install-the-integration-runtime"></a>Instalowanie środowiska Integration Runtime
-1. Pobierz [środowisko Integration Runtime usługi Azure Data Factory](https://www.microsoft.com/download/details.aspx?id=39717) na lokalną maszynę z systemem Windows, a następnie uruchom instalację. 
+1. Pobierz [środowisko Integration Runtime usługi Azure Data Factory](https://www.microsoft.com/download/details.aspx?id=39717) na lokalną maszynę z systemem Windows, a następnie uruchom instalację.
 
 1. Na **stronie powitalnej Kreatora instalacji środowiska Microsoft Integration Runtime** wybierz przycisk **Dalej**.  
 
-1. W oknie **Umowa Licencyjna Użytkownika Oprogramowania** zaakceptuj warunki i umowę licencyjną, a następnie wybierz przycisk **Dalej**. 
+1. W oknie **Umowa Licencyjna Użytkownika Oprogramowania** zaakceptuj warunki i umowę licencyjną, a następnie wybierz przycisk **Dalej**.
 
-1. W oknie **Folder docelowy** wybierz przycisk **Dalej**. 
+1. W oknie **Folder docelowy** wybierz przycisk **Dalej**.
 
-1. W oknie **Gotowe do zainstalowania środowiska Microsoft Integration Runtime** wybierz pozycję **Zainstaluj**. 
+1. W oknie **Gotowe do zainstalowania środowiska Microsoft Integration Runtime** wybierz pozycję **Zainstaluj**.
 
 1. W oknie **zakończenia pracy z Kreatorem instalacji środowiska Microsoft Integration Runtime** wybierz pozycję **Zakończ**.
 
-1. W oknie **Rejestrowanie środowiska Integration Runtime (Self-hosted)** wklej klucz zapisany w poprzedniej sekcji i wybierz pozycję **Zarejestruj**. 
+1. W oknie **Rejestrowanie środowiska Integration Runtime (Self-hosted)** wklej klucz zapisany w poprzedniej sekcji i wybierz pozycję **Zarejestruj**.
 
     ![Rejestrowanie środowiska Integration Runtime](media/tutorial-hybrid-copy-powershell/register-integration-runtime.png)
 
-1. W oknie **nowy węzeł Integration Runtime (Self-Hosted)** wybierz pozycję **Zakończ**. 
+1. W oknie **nowy węzeł Integration Runtime (Self-Hosted)** wybierz pozycję **Zakończ**.
 
     ![Okno Nowy węzeł Integration Runtime (Self-hosted)](media/tutorial-hybrid-copy-powershell/new-integration-runtime-node-page.png)
 
- 1. Gdy własne środowisko Integration Runtime zostanie pomyślnie zarejestrowane, zostanie wyświetlony następujący komunikat: 
+ 1. Gdy własne środowisko Integration Runtime zostanie pomyślnie zarejestrowane, zostanie wyświetlony następujący komunikat:
 
     ![Pomyślnie zarejestrowano](media/tutorial-hybrid-copy-powershell/registered-successfully.png)
 
-1. W oknie **Rejestrowanie produktu Integration Runtime (Self-hosted)** kliknij pozycję **Uruchom program Configuration Manager**. 
+1. W oknie **Rejestrowanie produktu Integration Runtime (Self-hosted)** kliknij pozycję **Uruchom program Configuration Manager**.
 
 1. Gdy węzeł zostanie połączony z usługą w chmurze, zostanie wyświetlony następujący komunikat:
 
@@ -291,23 +291,23 @@ W tej sekcji utworzysz własne środowisko Integration Runtime i skojarzysz je z
 
     d. Wprowadź nazwę serwera.
 
-    d. Wprowadź nazwę bazy danych. 
+    d. Wprowadź nazwę bazy danych.
 
-    e. Wybierz tryb uwierzytelniania. 
+    e. Wybierz tryb uwierzytelniania.
 
-    f. Wprowadź nazwę użytkownika. 
+    f. Wprowadź nazwę użytkownika.
 
     g. Wprowadź hasło powiązane z tą nazwą użytkownika.
 
     h. Wybierz przycisk **Testuj**, aby upewnić się, że środowisko Integration Runtime może połączyć się z wystąpieniem programu SQL Server.  
-    ![połączenie powiodło się](media/tutorial-hybrid-copy-powershell/config-manager-diagnostics-tab.png) 
-  
+    ![połączenie powiodło się](media/tutorial-hybrid-copy-powershell/config-manager-diagnostics-tab.png)
+
     Jeśli połączenie zostanie pomyślnie nawiązane, zostanie wyświetlona ikona zielonego znacznika wyboru. W przeciwnym razie zostanie wyświetlony komunikat o błędzie skojarzony z określonym błędem. Rozwiąż wszelkie problemy i upewnij się, że środowisko Integration Runtime może połączyć się z wystąpieniem programu SQL Server.
 
     Zanotuj wszystkie powyższe wartości do późniejszego użycia z tym samouczkiem.
-    
+
 ## <a name="create-linked-services"></a>Tworzenie połączonych usług
-Utwórz połączone usługi w fabryce danych w celu połączenia swoich magazynów danych i usług obliczeniowych z fabryką danych. W tym samouczku połączysz swoje konto usługi Azure Storage i lokalne wystąpienie programu SQL Server z magazynem danych. Połączone usługi mają informacje o połączeniu, których usługa Data Factory używa w środowisku uruchomieniowym do łączenia się z nimi. 
+Utwórz połączone usługi w fabryce danych w celu połączenia swoich magazynów danych i usług obliczeniowych z fabryką danych. W tym samouczku połączysz swoje konto usługi Azure Storage i lokalne wystąpienie programu SQL Server z magazynem danych. Połączone usługi mają informacje o połączeniu, których usługa Data Factory używa w środowisku uruchomieniowym do łączenia się z nimi.
 
 ### <a name="create-an-azure-storage-linked-service-destinationsink"></a>Tworzenie połączonej usługi Azure Storage (obiektu docelowego/ujścia)
 W tym kroku opisano łączenie konta usługi Azure Storage z fabryką danych.
@@ -335,7 +335,7 @@ W tym kroku opisano łączenie konta usługi Azure Storage z fabryką danych.
    Set-Location 'C:\ADFv2Tutorial'    
    ```
 
-1. Aby utworzyć połączoną usługę o nazwie AzureStorageLinkedService, uruchom następujące polecenie cmdlet `Set-AzDataFactoryV2LinkedService`: 
+1. Aby utworzyć połączoną usługę o nazwie AzureStorageLinkedService, uruchom następujące polecenie cmdlet `Set-AzDataFactoryV2LinkedService`:
 
    ```powershell
    Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $ResourceGroupName -Name "AzureStorageLinkedService" -File ".\AzureStorageLinkedService.json"
@@ -350,7 +350,7 @@ W tym kroku opisano łączenie konta usługi Azure Storage z fabryką danych.
     Properties        : Microsoft.Azure.Management.DataFactory.Models.AzureBlobStorageLinkedService
     ```
 
-    Jeśli zostanie zwrócony błąd „nie znaleziono pliku”, sprawdź, czy plik istnieje, uruchamiając polecenie `dir`. Jeśli nazwa pliku ma rozszerzenie *txt* (na przykład AzureStorageLinkedService.json.txt), usuń je, a następnie ponownie uruchom polecenie programu PowerShell. 
+    Jeśli zostanie zwrócony błąd „nie znaleziono pliku”, sprawdź, czy plik istnieje, uruchamiając polecenie `dir`. Jeśli nazwa pliku ma rozszerzenie *txt* (na przykład AzureStorageLinkedService.json.txt), usuń je, a następnie ponownie uruchom polecenie programu PowerShell.
 
 ### <a name="create-and-encrypt-a-sql-server-linked-service-source"></a>Tworzenie i szyfrowanie połączonej usługi SQL Server (źródło)
 W tym kroku połączysz lokalne wystąpienie programu SQL Server z fabryką danych.
@@ -368,7 +368,7 @@ W tym kroku połączysz lokalne wystąpienie programu SQL Server z fabryką dany
         "type":"Microsoft.DataFactory/factories/linkedservices",
         "properties":{  
             "annotations":[  
-    
+
             ],
             "type":"SqlServer",
             "typeProperties":{  
@@ -390,7 +390,7 @@ W tym kroku połączysz lokalne wystąpienie programu SQL Server z fabryką dany
         "type":"Microsoft.DataFactory/factories/linkedservices",
         "properties":{  
             "annotations":[  
-    
+
             ],
             "type":"SqlServer",
             "typeProperties":{  
@@ -406,18 +406,18 @@ W tym kroku połączysz lokalne wystąpienie programu SQL Server z fabryką dany
                 "type":"IntegrationRuntimeReference"
             }
         }
-    } 
+    }
     ```
 
     > [!IMPORTANT]
     > - Wybierz właściwą sekcję na podstawie metody uwierzytelniania używanej do nawiązywania połączenia z wystąpieniem programu SQL Server.
     > - Zastąp wartość **\<integration runtime name>** nazwą Twojego środowiska Integration Runtime.
     > - Przed zapisaniem pliku zastąp wartości **\<servername>** , **\<databasename>** , **\<username>** i **\<password** wartościami odpowiednimi dla wystąpienia programu SQL Server.
-    > - Jeśli musisz użyć znaku ukośnika (\\) w nazwie konta użytkownika lub nazwie serwera, poprzedź go znakiem ucieczki (\\). Na przykład: *mydomain\\\\myuser*. 
+    > - Jeśli musisz użyć znaku ukośnika (\\) w nazwie konta użytkownika lub nazwie serwera, poprzedź go znakiem ucieczki (\\). Na przykład: *mydomain\\\\myuser*.
 
 1. Aby zaszyfrować dane poufne (nazwę użytkownika, hasło itp.), uruchom polecenie cmdlet `New-AzDataFactoryV2LinkedServiceEncryptedCredential`.  
     To zapewnia szyfrowanie poświadczeń za pomocą interfejsu API ochrony danych (DPAPI). Zaszyfrowane poświadczenia są przechowywane lokalnie w węźle środowiska Integration Runtime (Self-hosted) (maszyna lokalna). Ładunek danych wyjściowych może zostać przekierowany do innego pliku JSON (w tym przypadku *encryptedLinkedService.json*), który zawiera zaszyfrowane poświadczenia.
-    
+
    ```powershell
    New-AzDataFactoryV2LinkedServiceEncryptedCredential -DataFactoryName $dataFactoryName -ResourceGroupName $ResourceGroupName -IntegrationRuntimeName $integrationRuntimeName -File ".\SQLServerLinkedService.json" > encryptedSQLServerLinkedService.json
    ```
@@ -433,7 +433,7 @@ W tym kroku połączysz lokalne wystąpienie programu SQL Server z fabryką dany
 W tym kroku utworzysz zestawy danych wejściowych i wyjściowych. Reprezentują one dane wejściowe i wyjściowe operacji kopiowania, która kopiuje dane z lokalnej bazy danych programu SQL Server do usługi Azure Blob Storage.
 
 ### <a name="create-a-dataset-for-the-source-sql-server-database"></a>Tworzenie zestawu danych źródłowej bazy danych programu SQL Server
-W tym kroku zdefiniujesz zestaw danych, który reprezentuje dane w wystąpieniu bazy danych programu SQL Server. Typ zestawu danych to SqlServerTable. Odwołuje się on do połączonej usługi programu SQL Server utworzonej w poprzednim kroku. Połączona usługa ma informacje o połączeniu, których usługa Data Factory używa do nawiązywania połączenia z wystąpieniem programu SQL Server w środowisku uruchomieniowym. Ten zestaw danych określa tabelę SQL w bazie danych, która zawiera dane. W tym samouczku dane źródłowe zawiera tabela **emp**. 
+W tym kroku zdefiniujesz zestaw danych, który reprezentuje dane w wystąpieniu bazy danych programu SQL Server. Typ zestawu danych to SqlServerTable. Odwołuje się on do połączonej usługi programu SQL Server utworzonej w poprzednim kroku. Połączona usługa ma informacje o połączeniu, których usługa Data Factory używa do nawiązywania połączenia z wystąpieniem programu SQL Server w środowisku uruchomieniowym. Ten zestaw danych określa tabelę SQL w bazie danych, która zawiera dane. W tym samouczku dane źródłowe zawiera tabela **emp**.
 
 1. Utwórz plik JSON o nazwie *SqlServerDataset.json* w folderze *C:\ADFv2Tutorial*, używając następującego kodu:  
     ```json
@@ -445,11 +445,11 @@ W tym kroku zdefiniujesz zestaw danych, który reprezentuje dane w wystąpieniu 
                 "type":"LinkedServiceReference"
             },
             "annotations":[  
-    
+
             ],
             "type":"SqlServerTable",
             "schema":[  
-    
+
             ],
             "typeProperties":{  
                 "schema":"dbo",
@@ -471,14 +471,14 @@ W tym kroku zdefiniujesz zestaw danych, który reprezentuje dane w wystąpieniu 
     DatasetName       : SqlServerDataset
     ResourceGroupName : <resourceGroupName>
     DataFactoryName   : <dataFactoryName>
-    Structure         : 
+    Structure         :
     Properties        : Microsoft.Azure.Management.DataFactory.Models.SqlServerTableDataset
     ```
 
 ### <a name="create-a-dataset-for-azure-blob-storage-sink"></a>Tworzenie zestawu danych usługi Azure Blob Storage (ujścia)
-W tym kroku zdefiniujesz zestaw danych reprezentujący dane, które mają zostać skopiowane do usługi Azure Blob Storage. Typ tego zestawu danych to AzureBlob. Odwołuje się on do połączonej usługi Azure Storage utworzonej wcześniej w tym samouczku. 
+W tym kroku zdefiniujesz zestaw danych reprezentujący dane, które mają zostać skopiowane do usługi Azure Blob Storage. Typ tego zestawu danych to AzureBlob. Odwołuje się on do połączonej usługi Azure Storage utworzonej wcześniej w tym samouczku.
 
-Połączona usługa ma informacje o połączeniu, których usługa Data Factory używa w środowisku uruchomieniowym do nawiązania połączenia z kontem usługi Azure Storage. Ten zestaw danych określa folder w usłudze Azure Storage, do którego kopiowane są dane z bazy danych programu SQL Server. W tym samouczku jest to folder *adftutorial/fromonprem*, gdzie `adftutorial` to kontener obiektów blob, a `fromonprem` to folder. 
+Połączona usługa ma informacje o połączeniu, których usługa Data Factory używa w środowisku uruchomieniowym do nawiązania połączenia z kontem usługi Azure Storage. Ten zestaw danych określa folder w usłudze Azure Storage, do którego kopiowane są dane z bazy danych programu SQL Server. W tym samouczku jest to folder *adftutorial/fromonprem*, gdzie `adftutorial` to kontener obiektów blob, a `fromonprem` to folder.
 
 1. Utwórz plik JSON o nazwie *AzureBlobDataset.json* w folderze *C:\ADFv2Tutorial*, używając następującego kodu:
 
@@ -491,7 +491,7 @@ Połączona usługa ma informacje o połączeniu, których usługa Data Factory 
                 "type":"LinkedServiceReference"
             },
             "annotations":[  
-    
+
             ],
             "type":"DelimitedText",
             "typeProperties":{  
@@ -505,7 +505,7 @@ Połączona usługa ma informacje o połączeniu, których usługa Data Factory 
                 "quoteChar":"\""
             },
             "schema":[  
-    
+
             ]
         },
         "type":"Microsoft.DataFactory/factories/datasets"
@@ -542,7 +542,7 @@ W tym samouczku jest tworzony potok za pomocą działania kopiowania. Działanie
                     "name":"CopySqlServerToAzureBlobActivity",
                     "type":"Copy",
                     "dependsOn":[  
-    
+
                     ],
                     "policy":{  
                         "timeout":"7.00:00:00",
@@ -552,7 +552,7 @@ W tym samouczku jest tworzony potok za pomocą działania kopiowania. Działanie
                         "secureInput":false
                     },
                     "userProperties":[  
-    
+
                     ],
                     "typeProperties":{  
                         "source":{  
@@ -586,7 +586,7 @@ W tym samouczku jest tworzony potok za pomocą działania kopiowania. Działanie
                 }
             ],
             "annotations":[  
-    
+
             ]
         }
     }
@@ -647,7 +647,7 @@ $runId = Invoke-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -Resou
     PipelineName         : SQLServerToBlobPipeline
     Input                : {source, sink, enableStaging}
     Output               : {dataRead, dataWritten, filesWritten, sourcePeakConnections...}
-    LinkedServiceName    : 
+    LinkedServiceName    :
     ActivityRunStart     : 9/11/2019 7:10:37 AM
     ActivityRunEnd       : 9/11/2019 7:10:58 AM
     DurationInMs         : 21094
@@ -656,7 +656,7 @@ $runId = Invoke-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -Resou
     AdditionalProperties : {[retryAttempt, ], [iterationHash, ], [userProperties, {}], [recoveryStatus, None]...}
     ```
 
-1. Aby uzyskać identyfikator działania potoku SQLServerToBlobPipeline i sprawdzić szczegółowe wyniki uruchomienia działania, uruchom następujące polecenie: 
+1. Aby uzyskać identyfikator działania potoku SQLServerToBlobPipeline i sprawdzić szczegółowe wyniki uruchomienia działania, uruchom następujące polecenie:
 
     ```powershell
     Write-Host "Pipeline 'SQLServerToBlobPipeline' run result:" -foregroundcolor "Yellow"
@@ -677,7 +677,7 @@ $runId = Invoke-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -Resou
         "copyDuration":18,
         "throughput":0.01,
         "errors":[  
-    
+
         ],
         "effectiveIntegrationRuntime":"ADFTutorialIR",
         "usedParallelCopies":1,
@@ -705,10 +705,10 @@ $runId = Invoke-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -Resou
     ```
 
 ## <a name="verify-the-output"></a>Sprawdzanie danych wyjściowych
-Potok automatycznie tworzy folder wyjściowy o nazwie *fromonprem* w kontenerze obiektów blob `adftutorial`. Upewnij się, że plik *dbo.emp.txt* jest widoczny w folderze wyjściowym. 
+Potok automatycznie tworzy folder wyjściowy o nazwie *fromonprem* w kontenerze obiektów blob `adftutorial`. Upewnij się, że plik *dbo.emp.txt* jest widoczny w folderze wyjściowym.
 
 1. W witrynie Azure Portal w oknie kontenera **adftutorial** kliknij przycisk **Odśwież**, aby wyświetlić folder wyjściowy.
-1. Wybierz pozycję `fromonprem` na liście folderów. 
+1. Wybierz pozycję `fromonprem` na liście folderów.
 1. Upewnij się, że jest wyświetlany plik o nazwie `dbo.emp.txt`.
 
     ![Plik wyjściowy](media/tutorial-hybrid-copy-powershell/fromonprem-file.png)
@@ -720,7 +720,7 @@ Potok w tym przykładzie kopiuje dane z jednej lokalizacji do innej lokalizacji 
 > [!div class="checklist"]
 > * Tworzenie fabryki danych.
 > * Utwórz własne środowisko Integration Runtime.
-> * Tworzenie połączonych zestawów programu SQL Server i usługi Azure Storage. 
+> * Tworzenie połączonych zestawów programu SQL Server i usługi Azure Storage.
 > * Tworzenie zestawów danych programu SQL Server i usługi Azure Blob.
 > * Tworzenie potoku z działaniem kopiowania do przenoszenia danych.
 > * Uruchom potok.

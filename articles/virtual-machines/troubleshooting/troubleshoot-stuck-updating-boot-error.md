@@ -12,19 +12,19 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/09/2018
 ms.author: genli
-ms.openlocfilehash: 226151d81319dc4e6f132e76ce2d310f88a484e8
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: e8e4bed052ec5b70c441a3ae76f3409c307299e5
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71087018"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981432"
 ---
 # <a name="azure-vm-startup-is-stuck-at-windows-update"></a>Uruchamianie maszyny wirtualnej platformy Azure jest zablokowane w usłudze Windows Update
 
 Ten artykuł pomaga w rozwiązaniu problemu, gdy maszyna wirtualna (VM) jest zablokowana na Windows Update etapie podczas uruchamiania. 
 
 > [!NOTE] 
-> Platforma Azure oferuje dwa różne modele wdrażania związane z tworzeniem zasobów i pracą z nimi: [model wdrażania przy użyciu usługi Resource Manager i model klasyczny](../../azure-resource-manager/resource-manager-deployment-model.md). W tym artykule opisano użycie Menedżer zasobów model wdrażania. Zalecamy używanie tego modelu w przypadku nowych wdrożeń zamiast korzystania z klasycznego modelu wdrażania.
+> Platforma Azure ma dwa różne modele wdrażania związane z tworzeniem zasobów i pracą z nimi: [Resource Manager i model klasyczny](../../azure-resource-manager/management/deployment-models.md). W tym artykule opisano użycie Menedżer zasobów model wdrażania. Zalecamy używanie tego modelu w przypadku nowych wdrożeń zamiast korzystania z klasycznego modelu wdrażania.
 
 ## <a name="symptom"></a>Objaw
 
@@ -55,7 +55,7 @@ W zależności od liczby aktualizacji, które są instalowane lub wycofywane, pr
     Na przykład jeśli dołączony dysk systemu operacyjnego to dysk F, uruchom następujące polecenie:
 
         dism /image:F:\ /get-packages > c:\temp\Patch_level.txt
-5. Otwórz plik C:\temp\Patch_level.txt, a następnie przeczytaj go od dołu. Znajdź aktualizację, która jest w stanie oczekiwania na **instalację** lub **odinstalowanie** .  Poniżej znajduje się przykład stanu aktualizacji:
+5. Otwórz plik lokalizacji c:\Temp\ Patch_level. txt, a następnie przeczytaj go od dołu. Znajdź aktualizację, która jest w stanie oczekiwania na **instalację** lub **odinstalowanie** .  Poniżej znajduje się przykład stanu aktualizacji:
 
      ```
     Package Identity : Package_for_RollupFix~31bf3856ad364e35~amd64~~17134.345.1.5

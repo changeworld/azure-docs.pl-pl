@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/27/2018
 ms.author: mimckitt
 ms.subservice: disks
-ms.openlocfilehash: 38e460138fde1de6d8fd57dcab5a88238f0981fe
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 4fdb3af0433cc32aa7cdbee3c8ca9bdb85031135
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75751029"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045347"
 ---
 # <a name="configure-lvm-on-a-linux-vm-in-azure"></a>Konfigurowanie LVM na maszynie wirtualnej z systemem Linux na platformie Azure
 W tym dokumencie omówiono sposób konfigurowania Menedżera woluminów logicznych (LVM) na maszynie wirtualnej platformy Azure. LVM mogą być używane na dysku systemu operacyjnego lub na dyskach z danymi na maszynach wirtualnych platformy Azure, jednak domyślnie większość obrazów w chmurze nie ma skonfigurowanych LVM na dysku systemu operacyjnego. Poniższe kroki zakoncentrują się na konfigurowaniu LVM dla dysków z danymi.
@@ -172,7 +172,7 @@ Istnieją dwa sposoby włączania obsługi przycinania na maszynie wirtualnej z 
     # sudo fstrim /datadrive
     ```
 
-    **RHEL/CentOS**
+    **RHEL, CentOS & Oracle Linux**
 
     ```bash 
     # sudo yum install util-linux

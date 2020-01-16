@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: d131e0112070dcc60e601b2859e8c9df8d40764a
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: b48c43f90be3f43b05dcb4028c774836ffd196b7
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084345"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045981"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-c-proxy-application-preview"></a>Szybki Start: Włączanie protokołu SSH i RDP przez strumień urządzeń IoT Hub przy użyciu C# aplikacji serwera proxy (wersja zapoznawcza)
 
@@ -26,7 +26,7 @@ Microsoft Azure IoT Hub obecnie obsługuje strumienie urządzeń jako [funkcję 
 
 W tym artykule przedstawiono najpierw Instalatora protokołu SSH (przy użyciu portu 22), a następnie opisano sposób modyfikowania portu Instalatora dla protokołu RDP. Ponieważ strumienie urządzeń są typu Application-i Protocol-niezależny od, ten sam przykład można zmodyfikować, aby pomieścić inne typy ruchu aplikacji. Ta modyfikacja zwykle polega wyłącznie na zmianie portu komunikacyjnego na ten, który jest używany przez zamierzoną aplikację.
 
-## <a name="how-it-works"></a>Jak to działa
+## <a name="how-it-works"></a>Zasady działania
 
 Na poniższej ilustracji przedstawiono, w jaki sposób lokalne i lokalne aplikacje serwera proxy w tym przykładzie umożliwiają kompleksową łączność między procesami klienta SSH i demonów SSH. Załóżmy, że demon jest uruchomiony na tym samym urządzeniu co aplikacja lokalnego serwera proxy.
 
@@ -76,7 +76,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 * Prawidłowe konto użytkownika i poświadczenie na urządzeniu (Windows lub Linux) używane do uwierzytelniania użytkownika.
 
-## <a name="create-an-iot-hub"></a>Tworzenie centrum IoT Hub
+## <a name="create-an-iot-hub"></a>Tworzenie centrum IoT
 
 [!INCLUDE [iot-hub-include-create-hub-device-streams](../../includes/iot-hub-include-create-hub-device-streams.md)]
 
@@ -152,7 +152,7 @@ dotnet run {DeviceConnectionString} localhost 22
 
 ### <a name="run-the-service-local-proxy-application"></a>Uruchamianie aplikacji serwera proxy usługi lokalnej
 
-W innym lokalnym oknie terminalu przejdź do `device-streams-proxy/service` w folderze niespakowanym projektu. Należy pamiętać o następujących kwestiach:
+W innym lokalnym oknie terminalu przejdź do `iot-hub/quickstarts/device-streams-proxy/service` w folderze niespakowanym projektu. Należy pamiętać o następujących kwestiach:
 
 | Nazwa parametru | Wartość parametru |
 |----------------|-----------------|

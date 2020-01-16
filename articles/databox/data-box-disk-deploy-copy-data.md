@@ -10,12 +10,12 @@ ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: c309a7cb18086526b23c875b41d9d4f4db4bc213
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: be2bda4e1bfd6a679076f79969e4829aa1a847c9
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70231379"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75895965"
 ---
 ::: zone target="docs"
 
@@ -46,7 +46,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 Przed rozpoczęciem upewnij się, że:
 - Ukończono [Samouczek: instalowanie i konfigurowanie urządzenia Azure Data Box Disk](data-box-disk-deploy-set-up.md).
 - Twoje dyski są odblokowane i podłączone do komputera klienckiego.
-- Na komputerze klienckim używanym do kopiowania danych na dyski musi być uruchomiony [obsługiwany system operacyjny](data-box-disk-system-requirements.md##supported-operating-systems-for-clients).
+- Na komputerze klienckim używanym do kopiowania danych na dyski musi być uruchomiony [obsługiwany system operacyjny](data-box-disk-system-requirements.md#supported-operating-systems-for-clients).
 - Upewnij się, że typ magazynu wybrany na potrzeby danych jest jednym z [obsługiwanych typów magazynu](data-box-disk-system-requirements.md#supported-storage-types-for-upload).
 - Przejrzyj rozdział [Limity dotyczące dysków zarządzanych w ramach limitów rozmiarów obiektów na platformie Azure](data-box-disk-limits.md#azure-object-size-limits).
 

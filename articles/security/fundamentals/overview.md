@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2019
 ms.author: TomSh
-ms.openlocfilehash: 8301dc779799ff67a348403e661fc7e66b9e721f
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: a1dbabafe32e013d526ed88a83e446ee765cdb7b
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750132"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045863"
 ---
 # <a name="introduction-to-azure-security"></a>Wprowadzenie do zabezpieczeń platformy Azure
 ## <a name="overview"></a>Przegląd
@@ -69,7 +69,7 @@ Ta sekcja zawiera dodatkowe informacje dotyczące najważniejszych funkcji zabez
 Ponadto można skonfigurować Security & Compliance, aby [automatycznie wykonywały określone działania](https://blogs.technet.microsoft.com/robdavies/2016/04/20/simple-look-at-oms-alert-remediation-with-runbooks-part-1/) w przypadku wykrycia określonego zdarzenia.
 
 ### <a name="azure-resource-manager"></a>Azure Resource Manager
-[Azure Resource Manager](../../azure-resource-manager/resource-manager-deployment-model.md) umożliwia współpracę z zasobami w rozwiązaniu jako Grupa. Wszystkie zasoby danego rozwiązania można wdrożyć, zaktualizować lub usunąć w ramach jednej skoordynowanej operacji. Do wdrożenia należy używać [szablonu Azure Resource Manager](https://blogs.technet.microsoft.com/canitpro/2015/06/29/devops-basics-infrastructure-as-code-arm-templates/) i ten szablon może współpracować z różnymi środowiskami, takimi jak testowanie, przemieszczanie i produkcja. Usługa Resource Manager zapewnia funkcje zabezpieczeń, inspekcji i tagowania ułatwiające zarządzanie zasobami po wdrożeniu.
+[Azure Resource Manager](../../azure-resource-manager/management/deployment-models.md) umożliwia współpracę z zasobami w rozwiązaniu jako Grupa. Wszystkie zasoby danego rozwiązania można wdrożyć, zaktualizować lub usunąć w ramach jednej skoordynowanej operacji. Do wdrożenia należy używać [szablonu Azure Resource Manager](https://blogs.technet.microsoft.com/canitpro/2015/06/29/devops-basics-infrastructure-as-code-arm-templates/) i ten szablon może współpracować z różnymi środowiskami, takimi jak testowanie, przemieszczanie i produkcja. Usługa Resource Manager zapewnia funkcje zabezpieczeń, inspekcji i tagowania ułatwiające zarządzanie zasobami po wdrożeniu.
 
 Azure Resource Manager wdrożenia oparte na szablonach pomagają ulepszyć zabezpieczenia rozwiązań wdrożonych na platformie Azure ze względu na standardowe ustawienia kontroli zabezpieczeń i można je zintegrować w ustandaryzowanych wdrożeniach opartych na szablonach. Zmniejsza to ryzyko błędów konfiguracji zabezpieczeń, które mogą wystąpić podczas wdrożeń ręcznych.
 
@@ -142,16 +142,16 @@ W diagnostyce aplikacji można wyświetlać zdarzenia pogrupowane w następując
 Sekcja zawiera dodatkowe informacje dotyczące najważniejszych funkcji zabezpieczeń usługi Azure Storage oraz informacje podsumowujące dotyczące tych możliwości.
 
 ### <a name="role-based-access-control-rbac"></a>Kontrola dostępu oparta na rolach (RBAC)
-Konto magazynu można zabezpieczyć za pomocą Access Control opartego na rolach (RBAC). Ograniczanie dostępu na podstawie [konieczności znajomości](https://en.wikipedia.org/wiki/Need_to_know) i [najniższych](https://en.wikipedia.org/wiki/Principle_of_least_privilege) zasad zabezpieczeń jest niezbędne dla organizacji, które chcą wymuszać zasady zabezpieczeń dostępu do danych. Te prawa dostępu są przyznawane przez przypisanie odpowiedniej roli RBAC do grup i aplikacji w określonym zakresie. Do przypisywania uprawnień użytkownikom można używać [wbudowanych ról RBAC](../../role-based-access-control/built-in-roles.md), takich jak współautor konta magazynu. Dostęp do kluczy magazynu dla konta magazynu przy użyciu modelu [Azure Resource Manager](../../storage/common/storage-security-guide.md) można kontrolować za pośrednictwem Access Control opartych na ROLACH (RBAC).
+Konto magazynu można zabezpieczyć za pomocą Access Control opartego na rolach (RBAC). Ograniczanie dostępu na podstawie [konieczności znajomości](https://en.wikipedia.org/wiki/Need_to_know) i [najniższych](https://en.wikipedia.org/wiki/Principle_of_least_privilege) zasad zabezpieczeń jest niezbędne dla organizacji, które chcą wymuszać zasady zabezpieczeń dostępu do danych. Te prawa dostępu są przyznawane przez przypisanie odpowiedniej roli RBAC do grup i aplikacji w określonym zakresie. Do przypisywania uprawnień użytkownikom można używać [wbudowanych ról RBAC](../../role-based-access-control/built-in-roles.md), takich jak współautor konta magazynu. Dostęp do kluczy magazynu dla konta magazynu przy użyciu modelu [Azure Resource Manager](../../storage/blobs/security-recommendations.md) można kontrolować za pośrednictwem Access Control opartych na ROLACH (RBAC).
 
 ### <a name="shared-access-signature"></a>Sygnatura dostępu współdzielonego
 [Sygnatura dostępu współdzielonego (SAS, shared access signature)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md) zapewnia delegowany dostęp do zasobów w ramach konta magazynu. Sygnatura dostępu współdzielonego oznacza, że można udzielić klientowi ograniczonych uprawnień do obiektów na koncie magazynu przez określony czas i z określonym zestawem uprawnień. Można przyznać te ograniczone uprawnienia bez konieczności udostępniania kluczy dostępu do konta.
 
 ### <a name="encryption-in-transit"></a>Szyfrowanie podczas przesyłania
 Szyfrowanie podczas przesyłania jest mechanizmem ochrony danych przesyłanych między sieciami. Za pomocą usługi Azure Storage można zabezpieczyć dane przy użyciu:
--   [Szyfrowanie na poziomie transportu](../../storage/common/storage-security-guide.md), takie jak https, podczas transferu danych do usługi Azure Storage lub z niej.
+-   [Szyfrowanie na poziomie transportu](../../storage/blobs/security-recommendations.md), takie jak https, podczas transferu danych do usługi Azure Storage lub z niej.
 
--   [Szyfrowanie przewodowe](../../storage/common/storage-security-guide.md), takie jak [Szyfrowanie SMB 3,0](../../storage/common/storage-security-guide.md) dla [udziałów plików platformy Azure](../../storage/files/storage-dotnet-how-to-use-files.md).
+-   [Szyfrowanie przewodowe](../../storage/blobs/security-recommendations.md), takie jak [Szyfrowanie SMB 3,0](../../storage/blobs/security-recommendations.md) dla [udziałów plików platformy Azure](../../storage/files/storage-dotnet-how-to-use-files.md).
 
 -   Szyfrowanie po stronie klienta umożliwia szyfrowanie danych przed ich przesłaniem do magazynu oraz odszyfrowanie danych po ich przeniesieniu poza magazyn.
 
@@ -266,9 +266,9 @@ Traffic Manager zapewnia szereg metod routingu ruchu w celu dopasowania do róż
 ### <a name="azure-load-balancer"></a>Azure Load Balancer
 Usługa [Azure Load Balancer](../../load-balancer/load-balancer-overview.md) zapewnia aplikacjom wysoką dostępność i wydajność sieci. Jest to moduł równoważenia obciążenia warstwy 4 (TCP, UDP), który dystrybuuje ruch przychodzący między prawidłowymi wystąpieniami usług zdefiniowanymi w zestawie o zrównoważonym obciążeniu. Azure Load Balancer można skonfigurować w taki sposób, aby:
 
--   Równoważenie obciążenia przychodzącego ruchu internetowego do maszyn wirtualnych. Ta konfiguracja jest znana jako [Usługa równoważenia obciążenia](../../load-balancer/load-balancer-overview.md#publicloadbalancer)dostępnego z Internetu.
+-   Równoważenie obciążenia przychodzącego ruchu internetowego do maszyn wirtualnych. Ta konfiguracja jest znana jako [Usługa równoważenia obciążenia](../../load-balancer/concepts-limitations.md#publicloadbalancer)dostępnego z Internetu.
 
--   Równoważyć obciążenie ruchu między maszynami wirtualnymi w sieci wirtualnej, między maszynami wirtualnymi w usługach w chmurze lub między komputerami lokalnymi i maszynami wirtualnymi w sieci wirtualnej obejmującej wiele lokalizacji. Ta konfiguracja jest znana jako [wewnętrzna usługa równoważenia obciążenia](../../load-balancer/load-balancer-overview.md#internalloadbalancer).
+-   Równoważyć obciążenie ruchu między maszynami wirtualnymi w sieci wirtualnej, między maszynami wirtualnymi w usługach w chmurze lub między komputerami lokalnymi i maszynami wirtualnymi w sieci wirtualnej obejmującej wiele lokalizacji. Ta konfiguracja jest znana jako [wewnętrzna usługa równoważenia obciążenia](../../load-balancer/concepts-limitations.md#internalloadbalancer).
 
 - Przekazywanie ruchu zewnętrznego do określonej maszyny wirtualnej
 

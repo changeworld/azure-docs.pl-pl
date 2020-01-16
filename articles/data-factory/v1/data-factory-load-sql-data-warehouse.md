@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: b5fec342cf9f228edce80e3f0e8fb5243196973d
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 68afc782e13f967bc1b455434c3ae952baff81b9
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74924166"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980921"
 ---
 # <a name="load-1-tb-into-azure-sql-data-warehouse-under-15-minutes-with-data-factory"></a>Załaduj 1 TB do Azure SQL Data Warehouse poniżej 15 minut z Data Factory
 > [!NOTE]
@@ -45,7 +45,7 @@ Ten artykuł zawiera instrukcje krok po kroku dotyczące przeniesienia danych do
 >
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-* Azure Blob Storage: ten eksperyment używa platformy Azure Blob Storage (GRS) do przechowywania zestawu danych testów TPC-H.  Jeśli nie masz konta usługi Azure Storage, Dowiedz się, [jak utworzyć konto magazynu](../../storage/common/storage-quickstart-create-account.md).
+* Azure Blob Storage: ten eksperyment używa platformy Azure Blob Storage (GRS) do przechowywania zestawu danych testów TPC-H.  Jeśli nie masz konta usługi Azure Storage, Dowiedz się, [jak utworzyć konto magazynu](../../storage/common/storage-account-create.md).
 * Dane [TPC-h](http://www.tpc.org/tpch/) : będziemy używać TPC-h jako zestawu danych testowych.  Aby to zrobić, należy użyć `dbgen` z zestawu narzędzi TPC-H, który pomaga wygenerować zestaw danych.  Możesz pobrać kod źródłowy dla `dbgen` z [narzędzi TPC](http://www.tpc.org/tpc_documents_current_versions/current_specifications.asp) i skompilować go samodzielnie lub pobrać skompilowany plik binarny z usługi [GitHub](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TPCHTools).  Uruchom program dbgen. exe z poniższymi poleceniami, aby wygenerować plik prosty o pojemności 1 TB dla `lineitem` tabeli rozproszonej w 10 plikach:
 
   * `Dbgen -s 1000 -S **1** -C 10 -T L -v`
@@ -202,7 +202,7 @@ Opcja **Zezwalaj na bazę wielobazową** jest domyślnie zaznaczona.  Kliknij pr
 
     ![Kreator kopiowania — okno dialogowe powiodło się](media/data-factory-load-sql-data-warehouse/succeeded-info.png)
 
-## <a name="best-practices"></a>Najlepsze praktyki
+## <a name="best-practices"></a>Najlepsze rozwiązania
 Oto kilka najlepszych rozwiązań dotyczących uruchamiania bazy danych Azure SQL Data Warehouse:
 
 * Użycie większej klasy zasobów podczas ładowania do KLASTROWAnego indeksu magazynu kolumn.

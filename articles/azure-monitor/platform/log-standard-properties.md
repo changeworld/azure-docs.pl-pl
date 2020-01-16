@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/18/2019
-ms.openlocfilehash: d765422957392a5cdb170208b809c24bf5aec2a3
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 31a6c53ec269c512ad641fcdc10469ccf16a1fe9
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932192"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979742"
 ---
 # <a name="standard-properties-in-azure-monitor-logs"></a>Standardowe właściwości w dziennikach Azure Monitor
 Dane w dziennikach Azure Monitor są [przechowywane jako zestaw rekordów w obszarze roboczym log Analytics lub w aplikacji Application Insights](../log-query/logs-structure.md), z których każdy ma określony typ danych, który ma unikatowy zestaw właściwości. Wiele typów danych będzie zawierać standardowe właściwości, które są wspólne dla wielu typów. W tym artykule opisano te właściwości i przedstawiono przykłady korzystania z nich w zapytaniach.
@@ -79,10 +79,10 @@ Właściwość **ItemId\_** posiada unikatowy identyfikator rekordu.
 ## <a name="_resourceid"></a>\_ResourceId
 Właściwość **ResourceId\_** posiada unikatowy identyfikator zasobu, z którym jest skojarzony rekord. Zapewnia to standardową Właściwość służącą do określania zakresu zapytania tylko do rekordów z określonego zasobu lub do łączenia się z danymi powiązanymi między wieloma tabelami.
 
-W przypadku zasobów platformy Azure wartość **_ResourceId** jest [adresem URL identyfikatora zasobu platformy Azure](../../azure-resource-manager/resource-group-template-functions-resource.md). Właściwość jest obecnie ograniczona do zasobów platformy Azure, ale zostanie rozszerzona o zasoby spoza platformy Azure, takie jak komputery lokalne.
+W przypadku zasobów platformy Azure wartość **_ResourceId** jest [adresem URL identyfikatora zasobu platformy Azure](../../azure-resource-manager/templates/template-functions-resource.md). Właściwość jest obecnie ograniczona do zasobów platformy Azure, ale zostanie rozszerzona o zasoby spoza platformy Azure, takie jak komputery lokalne.
 
 > [!NOTE]
-> Niektóre typy danych mają już pola zawierające identyfikator zasobu platformy Azure lub co najmniej te elementy, takie jak identyfikator subskrypcji. Chociaż te pola są przechowywane na potrzeby zgodności z poprzednimi wersjami, zaleca się użycie _ResourceId do wykonania korelacji krzyżowej, ponieważ będzie ona bardziej spójna.
+> Niektóre typy danych mają już pola zawierające identyfikator zasobu platformy Azure lub co najmniej te elementy, takie jak identyfikator subskrypcji. Chociaż te pola są utrzymywane w celu zapewnienia zgodności z poprzednimi wersjami, zaleca się używanie _ResourceId do wykonywania wzajemnej korelacji, ponieważ będzie ona bardziej spójna.
 
 ### <a name="examples"></a>Przykłady
 Poniższe zapytanie dołącza dane dotyczące wydajności i zdarzeń dla każdego komputera. Pokazuje wszystkie zdarzenia o IDENTYFIKATORze _101_ i użycia procesora przekraczającym 50%.
@@ -110,7 +110,7 @@ AzureActivity
 ) on _ResourceId  
 ```
 
-Następujące zapytanie analizuje **_ResourceId** i agreguje rozliczane woluminy danych na subskrypcję platformy Azure.
+Poniższe zapytanie analizuje **_ResourceId** i agreguje rozliczane woluminy danych na subskrypcję platformy Azure.
 
 ```Kusto
 union withsource = tt * 
@@ -120,7 +120,7 @@ union withsource = tt *
 | summarize Bytes=sum(_BilledSize) by subscriptionId | sort by Bytes nulls last 
 ```
 
-Te kwerendy `union withsource = tt *` są bardzo zróżnicowane w miarę wykonywania skanów dla różnych typów danych.
+Te `union withsource = tt *` zapytania są oszczędne, ponieważ wykonywanie skanowania między typami danych jest kosztowne.
 
 ## <a name="_isbillable"></a>\_isobciążany
 Właściwość **\_Isbilld** określa, czy są naliczane opłaty za pobrane dane. Dane z **\_Ismiliarded** równa _false_ są zbierane bezpłatnie i nie są naliczane za Twoje konto platformy Azure.

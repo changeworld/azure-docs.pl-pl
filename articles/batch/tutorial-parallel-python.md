@@ -2,20 +2,20 @@
 title: Uruchamianie równoległego obciążenia — usługa Azure Batch dla środowiska Python
 description: Samouczek — Równoległe przetwarzanie plików multimedialnych przy użyciu narzędzia ffmpeg w usłudze Azure Batch z zastosowaniem biblioteki klienta Batch Python
 services: batch
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 ms.service: batch
 ms.devlang: python
 ms.topic: tutorial
 ms.date: 11/29/2018
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: mvc
-ms.openlocfilehash: d06cf74b2a29af3fea2c24facac2899d09a0a84f
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: bc73c3c40754d1c3eeb6c86f6c9578047a22d73e
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71090786"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029252"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-python-api"></a>Samouczek: uruchamianie równoległego obciążenia w usłudze Azure Batch przy użyciu interfejsu API Python
 
@@ -41,7 +41,7 @@ W tym samouczku przekonwertujesz równolegle pliki multimedialne w formacie MP4 
 
 * Konto usługi Azure Batch i połączone konto usługi Azure Storage. Aby utworzyć te konta, skorzystaj z przewodników Szybki start dla usługi Batch i [witryny Azure Portal](quick-create-portal.md) lub [interfejsu wiersza polecenia platformy Azure](quick-create-cli.md).
 
-## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
+## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
 
 Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com).
 
@@ -65,7 +65,7 @@ W środowisku Python zainstaluj wymagane pakiety przy użyciu menedżera `pip`.
 pip install -r requirements.txt
 ```
 
-Otwórz plik `config.py`. Zaktualizuj ciągi poświadczeń konta usługi Batch i konta magazynu, podając wartości unikatowe dla Twoich kont. Na przykład:
+Otwórz plik `config.py`. Zaktualizuj ciągi poświadczeń konta usługi Batch i konta magazynu, podając wartości unikatowe dla Twoich kont. Przykład:
 
 
 ```Python
@@ -76,7 +76,7 @@ _STORAGE_ACCOUNT_NAME = 'mystorageaccount'
 _STORAGE_ACCOUNT_KEY = 'xxxxxxxxxxxxxxxxy4/xxxxxxxxxxxxxxxxfwpbIC5aAWA8wDu+AFXZB827Mt9lybZB1nUcQbQiUrkPtilK5BQ=='
 ```
 
-### <a name="run-the-app"></a>Uruchamianie aplikacji
+### <a name="run-the-app"></a>Uruchomienie aplikacji
 
 Aby uruchomić skrypt:
 
@@ -144,7 +144,7 @@ batch_client = batch.BatchServiceClient(
 
 ### <a name="upload-input-files"></a>Przekazywanie plików wejściowych
 
-W aplikacji odwołanie `blob_client` jest używane do utworzenia kontenera magazynu dla plików wejściowych w formacie MP4 oraz kontenera dla danych wyjściowych zadań podrzędnych. Następnie wywoływana jest funkcja `upload_file_to_container` w celu przekazania plików MP4 z lokalnego katalogu `InputFiles` do kontenera. Pliki w magazynie są definiowane jako obiekty [ResourceFile](/python/api/azure-batch/azure.batch.models.resourcefile) usługi Batch, które następnie mogą być pobierane przez tę usługę do węzłów obliczeniowych.
+W aplikacji odwołanie `blob_client` jest używane do utworzenia kontenera magazynu dla plików wejściowych w formacie MP4 oraz kontenera dla danych wyjściowych zadań podrzędnych. Następnie wywoływana jest funkcja `upload_file_to_container` w celu przekazania plików MP4 z lokalnego katalogu `InputFiles` do kontenera. Pliki w magazynie są zdefiniowane jako obiekty [ResourceFile](/python/api/azure-batch/azure.batch.models.resourcefile) usługi Batch, które następnie mogą zostać pobrane przez tę usługę do węzłów obliczeniowych.
 
 ```python
 blob_client.create_container(input_container_name, fail_on_exist=False)

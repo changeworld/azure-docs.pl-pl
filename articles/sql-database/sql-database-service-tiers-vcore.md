@@ -9,12 +9,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 11/27/2019
-ms.openlocfilehash: c01e5c508644214c078dfc42ae8c77964933a277
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 7c4d6a01ccaeffb4042753dc0a904d970631383f
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75895992"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045213"
 ---
 # <a name="vcore-model-overview"></a>Omówienie modelu rdzeni wirtualnych
 
@@ -142,6 +142,16 @@ Na karcie **podstawowe** wybierz łącze **Konfiguruj bazę danych** w sekcji **
   
 **Aby zmienić generowanie sprzętu istniejącego wystąpienia zarządzanego**
 
+# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+
+Na stronie wystąpienie zarządzane wybierz pozycję **warstwa cenowa** link do sekcji Ustawienia.
+
+![Zmień sprzęt wystąpienia zarządzanego](media/sql-database-service-tiers-vcore/change-managed-instance-hardware.png)
+
+Na stronie **warstwa cenowa** będzie można zmienić generowanie sprzętu zgodnie z opisem w poprzednich krokach.
+
+# <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
+
 Użyj poniższego skryptu programu PowerShell:
 
 ```powershell-interactive
@@ -178,6 +188,8 @@ Set-AzResource -Properties $properties -ResourceName $instanceName -ResourceType
 
 Upewnij się, że wprowadzono identyfikator subskrypcji, nazwę i grupę zasobów wystąpienia zarządzanego.
 
+---
+
 ### <a name="hardware-availability"></a>Dostępność sprzętu
 
 #### <a name="gen4gen5-1"></a>Obliczenia/5 rdzeń
@@ -213,9 +225,9 @@ Na stronie **podstawowe** podaj następujące informacje:
 
 Na stronie **szczegóły** podaj następujące informacje:
 
-5. W sekcji **Szczegóły problemu** wybierz łącze **Podaj szczegóły** . 
-6. W obszarze **typ przydziału SQL Database** wybierz pozycję **Seria M**.
-7. W polu **region**wybierz region, w którym ma zostać włączona Seria M.
+1. W sekcji **Szczegóły problemu** wybierz łącze **Podaj szczegóły** . 
+2. W obszarze **typ przydziału SQL Database** wybierz pozycję **Seria M**.
+3. W polu **region**wybierz region, w którym ma zostać włączona Seria M.
     W przypadku regionów, w których jest dostępna Seria M, zobacz [dostępność serii m](#m-series).
 
 Zatwierdzone żądania pomocy technicznej są zwykle spełnione w ciągu 5 dni roboczych.

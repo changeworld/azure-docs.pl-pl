@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek Azure Active Directory: integracja z logowaniem jednokrotnym (SSO) w ramach usługi Citrix datascaleer (uwierzytelnianie oparte na protokole Kerberos) | Microsoft Docs'
-description: Dowiedz się, jak skonfigurować Logowanie jednokrotne między Azure Active Directory i Citrix.
+title: 'Samouczek: Azure Active Directory integracji z logowaniem jednokrotnym przy użyciu narzędzia Citrix datascaleer (uwierzytelnianie oparte na protokole Kerberos) | Microsoft Docs'
+description: Dowiedz się, jak skonfigurować Logowanie jednokrotne (SSO) między Azure Active Directory i Citrix, korzystając z uwierzytelniania opartego na protokole Kerberos.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,22 +16,22 @@ ms.topic: tutorial
 ms.date: 12/13/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 75e825f55a890be49000e209859670caa2c1c875
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 785242a2cf51571a6d13b2b4691d33e46369bf94
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75431319"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977910"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-citrix-netscaler-kerberos-based-authentication"></a>Samouczek Azure Active Directory: integracja z logowaniem jednokrotnym (SSO) w ramach usługi Citrix datascaleer (uwierzytelnianie oparte na protokole Kerberos)
+# <a name="tutorial-azure-active-directory-single-sign-on-integration-with-citrix-netscaler-kerberos-based-authentication"></a>Samouczek Azure Active Directory: integracja z logowaniem jednokrotnym przy użyciu usługi Citrix datascaleer (uwierzytelnianie oparte na protokole Kerberos)
 
 W tym samouczku dowiesz się, jak zintegrować program Citrixow z Azure Active Directory (Azure AD). Po zintegrowaniu usługi Citrix datascaleer z usługą Azure AD można:
 
 * Kontrolka w usłudze Azure AD, która ma dostęp do programu Citrix.
-* Zezwól użytkownikom na automatyczne logowanie do usługi Citrixow przy użyciu kont w usłudze Azure AD.
+* Umożliwienie użytkownikom automatycznego logowania się do programu Citrixow przy użyciu kont usługi Azure AD.
 * Zarządzaj kontami w jednej centralnej lokalizacji — Azure Portal.
 
-Aby dowiedzieć się więcej o integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne przy użyciu Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Aby dowiedzieć się więcej o integracji aplikacji oprogramowania jako usługi (SaaS) z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne przy użyciu Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -42,71 +42,81 @@ Aby rozpocząć, potrzebne są następujące elementy:
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
-W tym samouczku skonfigurujesz i testujesz Logowanie jednokrotne usługi Azure AD w środowisku testowym.
+W tym samouczku skonfigurujesz i testujesz Logowanie jednokrotne usługi Azure AD w środowisku testowym. Samouczek obejmuje następujące scenariusze:
 
-* Program citrixow obsługuje zainicjowanie rejestracji jednokrotnej w programie **SP**
+* **Zainicjowane przez program SP** Logowanie jednokrotne dla platformy Citrix
 
-* Program citrixow obsługuje Inicjowanie obsługi użytkowników **just in Time**
+* Inicjowanie obsługi użytkowników **just in Time** dla programu Citrix
 
-- [Konfigurowanie logowania jednokrotnego dla platformy Citrix dla uwierzytelniania opartego na protokole Kerberos](#configure-citrix-netscaler-single-sign-on-for-kerberos-based-authentication)
+* [Uwierzytelnianie oparte na protokole Kerberos dla skalowania firmy Citrix](#publish-the-web-server)
 
-- [Konfigurowanie logowania jednokrotnego platformy Citrix dla uwierzytelniania opartego na nagłówku](header-citrix-netscaler-tutorial.md)
+* [Uwierzytelnianie oparte na nagłówkach dla skalowania firmy Citrix](header-citrix-netscaler-tutorial.md#publish-the-web-server)
 
-## <a name="adding-citrix-netscaler-from-the-gallery"></a>Dodawanie programu Citrix datascaleer z galerii
+## <a name="add-citrix-netscaler-from-the-gallery"></a>Dodawanie programu citrixow z galerii
 
-Aby skonfigurować integrację programu Citrix Cordova z usługą Azure AD, musisz dodać program Citrix Cordova z galerii do listy zarządzanych aplikacji SaaS.
+Aby zintegrować program Citrix Cordova z usługą Azure AD, najpierw Dodaj aplikację Citrix Cordova do listy zarządzanych aplikacji SaaS z galerii:
 
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) przy użyciu służbowego lub osobistego konta Microsoft.
-1. W okienku nawigacji po lewej stronie wybierz usługę **Azure Active Directory** .
-1. Przejdź do **aplikacji przedsiębiorstwa** , a następnie wybierz pozycję **wszystkie aplikacje**.
+
+1. W menu po lewej stronie wybierz pozycję **Azure Active Directory**.
+
+1. Przejdź do pozycji **Aplikacje dla przedsiębiorstw** i wybierz pozycję **Wszystkie aplikacje**.
+
 1. Aby dodać nową aplikację, wybierz pozycję **Nowa aplikacja**.
-1. W sekcji **Dodaj z galerii** w polu wyszukiwania wpisz ciąg **Citrix** .
-1. Wybierz pozycję **Citrix Datascaleer** z panelu wyników, a następnie Dodaj aplikację. Poczekaj kilka sekund, gdy aplikacja zostanie dodana do dzierżawy.
+
+1. W sekcji **Dodaj z galerii** w polu wyszukiwania wprowadź ciąg **Citrix** .
+
+1. W wynikach wybierz pozycję **Citrix**Cordova, a następnie Dodaj aplikację. Poczekaj kilka sekund, gdy aplikacja zostanie dodana do dzierżawy.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-citrix-netscaler"></a>Skonfiguruj i przetestuj Logowanie jednokrotne usługi Azure AD dla programu Citrix
 
-Skonfiguruj i przetestuj Logowanie jednokrotne usługi Azure AD za pomocą programu Citrix BI przy użyciu użytkownika testowego o nazwie **B. Simon**. Aby logowanie jednokrotne działało, należy ustanowić relację linku między użytkownikiem usługi Azure AD i powiązanym użytkownikiem w programie Citrix Work.
+Skonfiguruj i przetestuj Logowanie jednokrotne w usłudze Azure AD za pomocą narzędzia Citrix Bier przy użyciu użytkownika testowego o nazwie **B. Simon**. Aby logowanie jednokrotne działało, należy ustanowić relację linku między użytkownikiem usługi Azure AD i powiązanym użytkownikiem w programie Citrix Work.
 
 Aby skonfigurować i przetestować Logowanie jednokrotne usługi Azure AD za pomocą programu Citrix, wykonaj następujące bloki konstrukcyjne:
 
-1. **[Skonfiguruj Logowanie jednokrotne usługi Azure AD](#configure-azure-ad-sso)** , aby umożliwić użytkownikom korzystanie z tej funkcji.
-    1. **[Utwórz użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować Logowanie jednokrotne w usłudze Azure AD za pomocą usługi B. Simon.
-    1. **[Przypisz użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić usłudze B. Simon korzystanie z logowania jednokrotnego w usłudze Azure AD.
-1. **[Skonfiguruj Logowanie jednokrotne](#configure-citrix-netscaler-sso)** w usłudze Citrix, aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
-    1. **[Utwórz użytkownika testowego](#create-citrix-netscaler-test-user)** dla programu Citrix BI, aby dysponować odpowiednikiem B. Simon w usłudze Citrix BI, która jest połączona z reprezentacją użytkownika w usłudze Azure AD.
-1. **[Przetestuj Logowanie jednokrotne](#test-sso)** — aby sprawdzić, czy konfiguracja działa.
+1. [Skonfiguruj Logowanie jednokrotne usługi Azure AD](#configure-azure-ad-sso) , aby umożliwić użytkownikom korzystanie z tej funkcji.
+
+    1. [Utwórz użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user) , aby przetestować Logowanie jednokrotne usługi Azure AD za pomocą B. Simon.
+
+    1. [Przypisz użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user) — aby umożliwić usłudze B. Simon korzystanie z logowania jednokrotnego w usłudze Azure AD.
+
+1. [Skonfiguruj Logowanie jednokrotne](#configure-citrix-netscaler-sso) w usłudze Citrix, aby skonfigurować ustawienia logowania jednokrotnego po stronie aplikacji.
+
+    * [Utwórz użytkownika testowego platformy Citrix](#create-a-citrix-netscaler-test-user) , aby dysponować odpowiednikiem B. Simon w usłudze Citrix, która jest połączona z reprezentacją usługi Azure AD.
+
+1. [Przetestuj Logowanie jednokrotne](#test-sso) — aby sprawdzić, czy konfiguracja działa.
 
 ## <a name="configure-azure-ad-sso"></a>Konfigurowanie logowania jednokrotnego w usłudze Azure AD
 
-Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure AD w Azure Portal.
+Aby włączyć logowanie jednokrotne w usłudze Azure AD przy użyciu Azure Portal, wykonaj następujące czynności:
 
-1. W [Azure Portal](https://portal.azure.com/)na stronie integracja aplikacji **Citrix** , Znajdź sekcję **Zarządzanie** i wybierz pozycję **Logowanie jednokrotne**.
-1. Na stronie **Wybierz metodę logowania jednokrotnego** wybierz pozycję **SAML**.
-1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu języka SAML** kliknij ikonę Edytuj/pióro, aby określić **podstawową konfigurację języka SAML** , aby edytować ustawienia.
+1. W [Azure Portal](https://portal.azure.com/)w okienku integracja aplikacji **Citrix** , w obszarze **Zarządzaj**wybierz pozycję **Logowanie jednokrotne**.
+
+1. W okienku **Wybierz metodę logowania** jednokrotnego wybierz pozycję **SAML**.
+
+1. W okienku **Konfigurowanie logowania jednokrotnego przy użyciu języka SAML** wybierz ikonę **edycji** pióra dla **podstawowej konfiguracji SAML** , aby edytować ustawienia.
 
    ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
-1. Jeśli chcesz skonfigurować aplikację w trybie inicjalizacji **dostawcy tożsamości** , w sekcji **Podstawowa konfiguracja SAML** wprowadź wartości dla następujących pól:
+1. W sekcji **Podstawowa konfiguracja języka SAML** w celu skonfigurowania aplikacji w trybie **inicjowanym przez dostawcy tożsamości** :
 
-    a. W polu **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `https://<<Your FQDN>>`
+    1. W polu tekstowym **Identyfikator** wprowadź adres URL, który ma następujący wzorzec: `https://<Your FQDN>`
 
-    b. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://<<Your FQDN>>/CitrixAuthService/AuthService.asmx`
+    1. W polu tekstowym **adres URL odpowiedzi** wprowadź adres URL, który ma następujący wzorzec: `https://<Your FQDN>/CitrixAuthService/AuthService.asmx`
 
-1. Kliknij przycisk **Ustaw dodatkowe adresy URL** i wykonaj następujący krok, jeśli chcesz skonfigurować aplikację w trybie inicjowania przez **dostawcę usług**:
+1. Aby skonfigurować aplikację w trybie **inicjowania programu Sp** , wybierz opcję **Ustaw dodatkowe adresy URL** i wykonaj następujące czynności:
 
-    W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://<<Your FQDN>>/CitrixAuthService/AuthService.asmx`
-
-    > [!NOTE]
-    > Te wartości nie są prawdziwe. Zastąp je rzeczywistymi wartościami adresu URL logowania, identyfikatora i adresu URL odpowiedzi. Skontaktuj się z [zespołem obsługi klienta Citrix](https://www.citrix.com/contact/technical-support.html) , aby uzyskać te wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
+    * W polu tekstowym **adres URL logowania** wprowadź adres URL, który ma następujący wzorzec: `https://<Your FQDN>/CitrixAuthService/AuthService.asmx`
 
     > [!NOTE]
-    > Aby można było korzystać z logowania jednokrotnego, te adresy URL powinny być dostępne z witryn publicznych. Aby enble usługę Azure AD w celu opublikowania tokenu na skonfigurowanym adresie URL usług ACS, należy włączyć zaporę lub inne ustawienia zabezpieczeń w obszarze usługi.
+    > * Adresy URL używane w tej sekcji nie są wartościami rzeczywistymi. Zaktualizuj te wartości przy użyciu wartości rzeczywistych dla identyfikatora, adresu URL odpowiedzi i adresu URL logowania. Aby uzyskać te wartości, skontaktuj się z [zespołem obsługi klienta Citrix](https://www.citrix.com/contact/technical-support.html) . Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
+    > * Aby skonfigurować Logowanie jednokrotne, adresy URL muszą być dostępne z publicznych witryn sieci Web. Aby enble usługę Azure AD w celu opublikowania tokenu pod skonfigurowanym adresem URL, należy włączyć zaporę lub inne ustawienia zabezpieczeń na stronie Citrix.
 
-1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu protokołu SAML** w sekcji **certyfikat podpisywania SAML** Znajdź **adres URL metadanych federacji aplikacji**, skopiuj adres URL i Zapisz go w Notatniku.
+1. W okienku **Skonfiguruj Logowanie jednokrotne przy użyciu protokołu SAML** w sekcji **certyfikat podpisywania SAML** dla **adresu URL metadanych federacji aplikacji**Skopiuj adres URL i Zapisz go w Notatniku.
 
     ![Link do pobierania certyfikatu](common/certificatebase64.png)
 
-1. W sekcji **Konfigurowanie platformy Citrix** , skopiuj odpowiednie adresy URL na podstawie wymagań.
+1. W sekcji **Konfigurowanie platformy Citrix** , skopiuj odpowiednie adresy URL zgodnie z wymaganiami.
 
     ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
@@ -114,310 +124,342 @@ Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure 
 
 W tej sekcji utworzysz użytkownika testowego w Azure Portal o nazwie B. Simon.
 
-1. W lewym okienku w Azure Portal wybierz pozycję **Azure Active Directory**, wybierz pozycję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
-1. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
-1. We właściwościach **użytkownika** wykonaj następujące kroki:
-   1. W polu **Nazwa** wprowadź wartość `B.Simon`.  
-   1. W polu **Nazwa użytkownika** wprowadź username@companydomain.extension. Na przykład `B.Simon@contoso.com`.
-   1. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu **Hasło**.
-   1. Kliknij przycisk **Utwórz**.
+1. W menu po lewej stronie Azure Portal wybierz pozycję **Azure Active Directory**, wybierz pozycję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
+
+1. Wybierz pozycję **nowy użytkownik** w górnej części okienka.
+
+1. We właściwościach **użytkownika** wykonaj następujące czynności:
+
+   1. W obszarze **Nazwa**wprowadź `B.Simon`.  
+
+   1. W obszarze **Nazwa użytkownika**wprowadź _username@companydomain.extension_ . Na przykład `B.Simon@contoso.com`.
+
+   1. Zaznacz pole wyboru **Pokaż hasło** , a następnie napisz lub skopiuj wartość wyświetlaną w polu **hasło**.
+
+   1. Wybierz pozycję **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotnego na platformie Azure przez przyznanie dostępu do usługi Citrix BI.
+W tej sekcji można umożliwić użytkownikowi B. Simon korzystanie z logowania jednokrotnego na platformie Azure przez przyznanie użytkownikowi dostępu do programu Citrix.
 
 1. W Azure Portal wybierz pozycję **aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **wszystkie aplikacje**.
+
 1. Na liście Aplikacje wybierz pozycję **Citrix**.
-1. Na stronie Przegląd aplikacji Znajdź sekcję **Zarządzanie** i wybierz pozycję **Użytkownicy i grupy**.
+
+1. Na stronie Przegląd aplikacji w obszarze **Zarządzanie**wybierz pozycję **Użytkownicy i grupy**.
 
    ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
 
-1. Wybierz pozycję **Dodaj użytkownika**, a następnie w oknie dialogowym **Dodawanie przypisania** wybierz pozycję **Użytkownicy i grupy** .
+1. Wybierz przycisk **Dodaj użytkownika**. Następnie w oknie dialogowym **Dodawanie przypisania** wybierz pozycję **Użytkownicy i grupy**.
 
     ![Link Dodaj użytkownika](common/add-assign-user.png)
 
-1. W oknie dialogowym **Użytkownicy i grupy** wybierz pozycję **B. Simon** z listy Użytkownicy, a następnie kliknij przycisk **Wybierz** w dolnej części ekranu.
-1. Jeśli oczekujesz dowolnej wartości roli w potwierdzeniu SAML, w oknie dialogowym **Wybierz rolę** wybierz odpowiednią rolę dla użytkownika z listy, a następnie kliknij przycisk **Wybierz** w dolnej części ekranu.
-1. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
+1. W oknie dialogowym **Użytkownicy i grupy** wybierz pozycję **B. Simon** z listy **Użytkownicy** . Wybierz pozycję **Wybierz**.
+
+1. Jeśli oczekujesz, że jakakolwiek wartość roli w potwierdzeniu SAML, w oknie dialogowym **Wybierz rolę** wybierz odpowiednią rolę dla użytkownika z listy, a następnie wybierz **pozycję Wybierz**.
+
+1. W oknie dialogowym **Dodawanie przypisania** wybierz pozycję **Przypisz**.
 
 ## <a name="configure-citrix-netscaler-sso"></a>Konfigurowanie logowania jednokrotnego dla platformy Citrix
 
-- [Konfigurowanie logowania jednokrotnego dla platformy Citrix dla uwierzytelniania opartego na protokole Kerberos](#configure-citrix-netscaler-single-sign-on-for-kerberos-based-authentication)
+Wybierz łącze dla rodzaju uwierzytelniania, które chcesz skonfigurować:
 
-- [Konfigurowanie logowania jednokrotnego platformy Citrix dla uwierzytelniania opartego na nagłówku](header-citrix-netscaler-tutorial.md)
+- [Konfigurowanie logowania jednokrotnego dla platformy Citrix dla uwierzytelniania opartego na protokole Kerberos](#publish-the-web-server)
 
-### <a name="publishing-web-server"></a>Publikowanie serwera sieci Web 
+- [Konfigurowanie logowania jednokrotnego dla usługi Citrix dataskalować na potrzeby uwierzytelniania opartego na nagłówkach](header-citrix-netscaler-tutorial.md#publish-the-web-server)
 
-1. Utwórz **serwer wirtualny**.
+### <a name="publish-the-web-server"></a>Publikowanie serwera sieci Web 
 
-    a. Przejdź do obszaru **Zarządzanie ruchem > równoważenia obciążenia > usługi**.
+Aby utworzyć serwer wirtualny:
+
+1. Wybierz pozycję **Zarządzanie ruchem** >  > **usługi** **równoważenia obciążenia** .
     
-    b. Kliknij pozycję **Dodaj**.
+1. Wybierz pozycję **Dodaj**.
 
-    ![Konfiguracja platformy Citrix](./media/citrix-netscaler-tutorial/web01.png)
+    ![Konfiguracja platformy Citrix — panel usług](./media/citrix-netscaler-tutorial/web01.png)
 
-    d. Określ szczegóły serwera sieci Web, na którym są uruchomione następujące aplikacje:
-    * **Nazwa usługi**
-    * **Adres IP serwera/istniejący serwer**
-    * **Protokół**
-    * **Port**
+1. Ustaw następujące wartości dla serwera sieci Web, na którym są uruchomione aplikacje:
 
-     ![Konfiguracja platformy Citrix](./media/citrix-netscaler-tutorial/web01.png)
+   * **Nazwa usługi**
+   * **Adres IP serwera/istniejący serwer**
+   * **Protokół**
+   * **Port**
 
-### <a name="configuring-load-balancer"></a>Konfigurowanie Load Balancer
+### <a name="configure-the-load-balancer"></a>Konfigurowanie usługi równoważenia obciążenia
 
-1. Aby skonfigurować Load Balancer, wykonaj następujące czynności:
+Aby skonfigurować moduł równoważenia obciążenia:
 
-    ![Konfiguracja platformy Citrix](./media/citrix-netscaler-tutorial/load01.png)
+1. Przejdź do obszaru **Zarządzanie ruchem** > **równoważenia obciążenia** > **serwery wirtualne**.
 
-    a. Przejdź do obszaru **Zarządzanie ruchem > równoważenia obciążenia > serwery wirtualne**.
+1. Wybierz pozycję **Dodaj**.
 
-    b. Kliknij pozycję **Dodaj**.
-
-    d. Określ szczegóły poniżej:
+1. Ustaw następujące wartości zgodnie z opisem w poniższym zrzucie ekranu:
 
     * **Nazwa**
     * **Protokół**
     * **Adres IP**
     * **Port**
-    * Kliknij przycisk **OK** .
 
-### <a name="bind-virtual-server"></a>Powiązywanie serwera wirtualnego
+1. Kliknij przycisk **OK**.
 
-Powiąż Load Balancer z utworzonym wcześniej serwerem wirtualnym.
+    ![Konfiguracja serwera Citrix — podstawowe okienko ustawień](./media/citrix-netscaler-tutorial/load01.png)
 
-![Konfiguracja platformy Citrix](./media/citrix-netscaler-tutorial/bind01.png)
+### <a name="bind-the-virtual-server"></a>Powiąż serwer wirtualny
 
-![Konfiguracja platformy Citrix](./media/citrix-netscaler-tutorial/bind02.png)
+Aby powiązać moduł równoważenia obciążenia z serwerem wirtualnym:
 
-### <a name="bind-certificate"></a>Powiąż certyfikat
+1. W okienku **usługi i grupy usług** wybierz pozycję **Brak powiązania usługi serwera wirtualnego równoważenia obciążenia**.
 
-Ponieważ będziemy publikować tę usługę jako powiązanie protokołu SSL z certyfikatem serwera, Przetestuj aplikację.
+   ![Konfiguracja programu Citrix teleskaler — okienko powiązania usługi serwera wirtualnego równoważenia obciążenia](./media/citrix-netscaler-tutorial/bind01.png)
 
-![Konfiguracja platformy Citrix](./media/citrix-netscaler-tutorial/bind03.png)
+1. Sprawdź ustawienia, jak pokazano na poniższym zrzucie ekranu, a następnie wybierz przycisk **Zamknij**.
 
-![Konfiguracja platformy Citrix](./media/citrix-netscaler-tutorial/bind04.png)
+   ![Konfiguracja programu Citrix DataScale — Sprawdź powiązanie usług serwera wirtualnego](./media/citrix-netscaler-tutorial/bind02.png)
+
+### <a name="bind-the-certificate"></a>Powiąż certyfikat
+
+Aby opublikować tę usługę jako protokół SSL, powiąż certyfikat serwera, a następnie przetestuj aplikację:
+
+1. W obszarze **certyfikat**wybierz pozycję **Brak certyfikatu serwera**.
+
+   ![Konfiguracja programu Citrix webscalec — okienko certyfikatu serwera](./media/citrix-netscaler-tutorial/bind03.png)
+
+1. Sprawdź ustawienia, jak pokazano na poniższym zrzucie ekranu, a następnie wybierz przycisk **Zamknij**.
+
+   ![Konfiguracja programu Citrix The](./media/citrix-netscaler-tutorial/bind04.png)
 
 ## <a name="citrix-adc-saml-profile"></a>Profil protokołu SAML Citrix ADC
 
-### <a name="create-authentication-policy"></a>Utwórz zasady uwierzytelniania
+Aby skonfigurować profil protokołu SAML programu Citrix ADC, wykonaj następujące sekcje.
 
-1. Przejdź do pozycji **zabezpieczenia > AAA — ruch aplikacji > zasady > uwierzytelnianie > zasady uwierzytelniania**.
+### <a name="create-an-authentication-policy"></a>Tworzenie zasad uwierzytelniania
 
-2. Kliknij przycisk **Dodaj** , a następnie określ szczegóły.
+Aby utworzyć zasady uwierzytelniania:
 
-    ![Konfiguracja platformy Citrix](./media/citrix-netscaler-tutorial/policy01.png)
+1. Przejdź do pozycji **zabezpieczenia** > **AAA — ruch aplikacji** > **zasady** > **uwierzytelnianie** > **zasady uwierzytelniania**.
 
-    a. Nazwa **zasad uwierzytelniania**.
+1. Wybierz pozycję **Dodaj**.
 
-    b. Wyrażenie: **true**.
+1. W okienku **Tworzenie zasad uwierzytelniania** wprowadź lub wybierz następujące wartości:
 
-    d. Typ akcji **SAML**.
-
-    d. Akcja = kliknij przycisk **Dodaj** (postępuj zgodnie z instrukcjami Kreatora tworzenia serwera SAML uwierzytelniania).
+    * **Nazwa**: Wprowadź nazwę zasad uwierzytelniania.
+    * **Akcja**: wprowadź **SAML**, a następnie wybierz pozycję **Dodaj**.
+    * **Wyrażenie**: wprowadź **wartość true**.     
     
-    e. Kliknij pozycję Utwórz w **zasadach uwierzytelniania**.
+    ![Konfiguracja serwera Citrix — Tworzenie zasad uwierzytelniania — okienko](./media/citrix-netscaler-tutorial/policy01.png)
 
-### <a name="create-authentication-saml-server"></a>Tworzenie serwera SAML uwierzytelniania
+1. Wybierz pozycję **Utwórz**.
 
-1. Wykonaj poniższe czynności:
+### <a name="create-an-authentication-saml-server"></a>Tworzenie serwera SAML uwierzytelniania
 
-    ![Konfiguracja platformy Citrix](./media/citrix-netscaler-tutorial/server01.png)
+Aby utworzyć serwer uwierzytelniania SAML, przejdź do okienka **Tworzenie uwierzytelniania SAML Server** , a następnie wykonaj następujące czynności:
 
-    a. Określ **nazwę**.
+1. W polu **Nazwa**wprowadź nazwę serwera SAML uwierzytelniania.
 
-    b. Zaimportuj metadane (Określ adres URL metadanych Federacji z interfejsu użytkownika usługi Azure SAML, który został skopiowany z powyższych danych).
+1. W obszarze **Eksportowanie metadanych SAML**:
+
+   1. Zaznacz pole wyboru **Importuj metadane** .
+
+   1. Wprowadź adres URL metadanych Federacji z wcześniej skopiowanego interfejsu użytkownika usługi Azure SAML.
     
-    d. Określ **nazwę wystawcy**.
+1. W polu **Nazwa wystawcy**wprowadź odpowiedni adres URL.
 
-    d. Kliknij przycisk **Utwórz**.
+1. Wybierz pozycję **Utwórz**.
 
-### <a name="create-authentication-virtual-server"></a>Utwórz serwer wirtualny uwierzytelniania
+![Konfiguracja programu Citrix webscalenia — tworzenie okienka uwierzytelniania serwera SAML](./media/citrix-netscaler-tutorial/server01.png)
 
-1.  Przejdź do pozycji **zabezpieczenia > AAA-ruch aplikacji > > serwery wirtualne uwierzytelniania**.
+### <a name="create-an-authentication-virtual-server"></a>Tworzenie serwera wirtualnego uwierzytelniania
 
-2.  Kliknij przycisk **Dodaj** i wykonaj następujące czynności:
+Aby utworzyć serwer wirtualny uwierzytelniania:
 
-    ![Konfiguracja platformy Citrix](./media/citrix-netscaler-tutorial/server02.png)
+1.  Przejdź do pozycji **zabezpieczenia** > **AAA-ruch aplikacji** > **zasady** > **uwierzytelnianie** > **uwierzytelniania serwerów wirtualnych**.
 
-    a.  Podaj **nazwa**.
+1.  Wybierz pozycję **Dodaj**, a następnie wykonaj następujące czynności:
 
-    b.  Wybierz opcję **bez adresu**.
+    1. W polu **Nazwa**wprowadź nazwę wirtualnego serwera uwierzytelniania.
 
-    d.  Protokół **SSL**.
+    1. Zaznacz pole wyboru **nieadresowane** .
 
-    d.  Kliknij przycisk **OK**.
+    1. W obszarze **Protokół**wybierz pozycję **SSL**.
 
-    e.  Kliknij pozycję **Kontynuuj**.
+    1. Kliknij przycisk **OK**.
+    
+1. Wybierz przycisk **Kontynuuj**.
 
 ### <a name="configure-the-authentication-virtual-server-to-use-azure-ad"></a>Konfigurowanie serwera wirtualnego uwierzytelniania do korzystania z usługi Azure AD
 
-Należy zmodyfikować 2 sekcje wirtualnego serwera uwierzytelniania.
+Zmodyfikuj dwie sekcje dla wirtualnego serwera uwierzytelniania:
 
-1.  **Zaawansowane zasady uwierzytelniania**
+1.  W okienku **Zaawansowane zasady uwierzytelniania** wybierz pozycję **brak zasad uwierzytelniania**.
 
-    ![Konfiguracja platformy Citrix](./media/citrix-netscaler-tutorial/virtual01.png)
+    ![Konfiguracja serwera Citrix — zaawansowane zasady uwierzytelniania — okienko](./media/citrix-netscaler-tutorial/virtual01.png)
 
-    a. Wybierz utworzone wcześniej **zasady uwierzytelniania** .
+1. W okienku **powiązanie zasad** wybierz zasady uwierzytelniania, a następnie wybierz pozycję **bind**.
 
-    b. Kliknij pozycję **bind**.
+    ![Konfiguracja platformy Citrix — okienko powiązania zasad](./media/citrix-netscaler-tutorial/virtual02.png)
 
-      ![Konfiguracja platformy Citrix](./media/citrix-netscaler-tutorial/virtual02.png)
+1. W okienku **serwery wirtualne oparte na formularzach** wybierz pozycję **Brak serwera wirtualnego równoważenia obciążenia**.
 
-2. **Oparte na formularzach serwery wirtualne**
+    ![Konfiguracja platformy Citrix — formularz z serwerami wirtualnymi](./media/citrix-netscaler-tutorial/virtual03.png)
 
-    ![Konfiguracja platformy Citrix](./media/citrix-netscaler-tutorial/virtual03.png)
+1. W obszarze Nazwa **FQDN uwierzytelniania**wprowadź w pełni kwalifikowaną nazwę domeny (FQDN) (wymagane).
 
-    a.  Musisz podać **nazwę FQDN** , ponieważ jest ona wymuszana przez interfejs użytkownika.
+1. Wybierz serwer wirtualny równoważenia obciążenia, który ma być chroniony za pomocą uwierzytelniania usługi Azure AD.
 
-    b.  Wybierz **Load Balancer serwera wirtualnego** , który chcesz chronić za pomocą uwierzytelniania usługi Azure AD.
+1. Wybierz pozycję **bind**.
 
-    d.  Kliknij pozycję **bind**.
+    ![Konfiguracja programu Citrix webscalenia — okienko powiązania serwera wirtualnego równoważenia obciążenia](./media/citrix-netscaler-tutorial/virtual04.png)
 
-    ![Konfiguracja platformy Citrix](./media/citrix-netscaler-tutorial/virtual04.png)
+    > [!NOTE]
+    > Upewnij się, że wybrano opcję **gotowe** w okienku **Konfiguracja serwera wirtualnego uwierzytelniania** .
 
-    >[!NOTE]
-    >Upewnij się, że klikniesz pozycję **gotowe** na stronie Konfiguracja wirtualnego serwera uwierzytelniania.
+1. Aby zweryfikować zmiany, w przeglądarce przejdź do adresu URL aplikacji. Powinna zostać wyświetlona strona logowania dzierżawy zamiast nieuwierzytelnionego dostępu, który był wcześniej widoczny.
 
-3. Sprawdź zmiany. Przejdź do adresu URL aplikacji. Powinna zostać wyświetlona strona logowania dzierżawy zamiast wcześniej nieuwierzytelnionego dostępu.
+    ![Konfiguracja Citrix Hook — Strona logowania w przeglądarce sieci Web](./media/citrix-netscaler-tutorial/virtual05.png)
 
-    ![Konfiguracja platformy Citrix](./media/citrix-netscaler-tutorial/virtual05.png)
-
-## <a name="configure-citrix-netscaler-single-sign-on-for-kerberos-based-authentication"></a>Konfigurowanie logowania jednokrotnego dla platformy Citrix dla uwierzytelniania opartego na protokole Kerberos
+## <a name="configure-citrix-netscaler-sso-for-kerberos-based-authentication"></a>Konfigurowanie logowania jednokrotnego dla platformy Citrix dla uwierzytelniania opartego na protokole Kerberos
 
 ### <a name="create-a-kerberos-delegation-account-for-citrix-adc"></a>Tworzenie konta delegowania protokołu Kerberos dla programu Citrix ADC
 
-1. Utwórz konto użytkownika (w tym przykładzie AppDelegation).
+1. Utwórz konto użytkownika (w tym przykładzie korzystamy z _AppDelegation_).
 
     ![Konfiguracja platformy Citrix](./media/citrix-netscaler-tutorial/kerberos01.png)
 
-2. Skonfiguruj nazwę SPN hosta na tych kontach.
+1. Skonfiguruj nazwę SPN hosta dla tego konta. 
 
-    * Setspn-S HOST/AppDelegation. IDENTT. WORK identt\appdelegation
+    Przykład: `setspn -S HOST/AppDelegation.IDENTT.WORK identt\appdelegation`
     
-        W powyższym przykładzie
+    W tym przykładzie:
 
-        a. Identt. Work (nazwa FQDN domeny)
+    * `IDENTT.WORK` to nazwa FQDN domeny.
+    * `identt` jest nazwą NetBIOS domeny.
+    * `appdelegation` to nazwa konta użytkownika delegowania.
 
-        b. Identt (nazwa NetBIOS domeny)
-
-        d. AppDelegation (nazwa konta użytkownika delegowania)
-
-3. Konfigurowanie delegowania dla serwera 
+1. Skonfiguruj delegowanie dla serwera sieci Web, jak pokazano na poniższym zrzucie ekranu:
  
-    ![Konfiguracja platformy Citrix](./media/citrix-netscaler-tutorial/kerberos02.png)
+    ![Konfiguracja serwera Citrix dla skalowania — delegowanie w obszarze właściwości](./media/citrix-netscaler-tutorial/kerberos02.png)
 
-    >[!NOTE]
-    >W przykładzie powyżej wewnętrznej nazwy serwera WebServer z uruchomioną witryną WIA jest cweb2
+    > [!NOTE]
+    > W przykładzie zrzutu ekranu wewnętrzna nazwa serwera sieci Web z uruchomioną witryną uwierzytelniania zintegrowanego systemu Windows (WIA) to _CWEB2_.
 
-### <a name="citrix-aaa-kcd--kerberos-delegation-accounts"></a>Citrix AAA KCD (konta delegowania protokołu Kerberos)
+### <a name="citrix-netscaler-aaa-kcd-kerberos-delegation-accounts"></a>Citrix KCD AAA (konta delegowania protokołu Kerberos)
 
-1.  Przejdź do usługi **Citrix Gateway > kontami AAA KCD (ograniczone delegowanie protokołu Kerberos)** .
+Aby skonfigurować konto KCD AAA platformy Citrix, należy:
 
-2.  Kliknij przycisk Dodaj i określ poniższe szczegóły:
+1.  Przejdź do usługi **Citrix Gateway** > **kontami AAA KCD (ograniczone delegowanie protokołu Kerberos)** .
 
-    a.  Określ **nazwę**.
+1.  Wybierz pozycję **Dodaj**, a następnie wprowadź lub wybierz następujące wartości:
 
-    b.  **Obszar**.
+    * **Nazwa**: Wprowadź nazwę dla konta KCD.
 
-    d.  **Nazwa SPN usługi**`http/<host/fqdn>@DOMAIN.COM`.
+    * **Obszar**: Wprowadź nazwę domeny i rozszerzenie na wielką literę.
+
+    * **Nazwa SPN usługi**: `http/<host/fqdn>@<DOMAIN.COM>`.
     
-    >[!NOTE]
-    >@DOMAIN.com jest obowiązkowy i pisany wielkimi literami.
+        > [!NOTE]
+        > `@DOMAIN.COM` jest wymagana i musi być wielką literą. Przykład: `http/cweb2@IDENTT.WORK`.
 
-    d.  Określ **delegowane konto użytkownika**.
+    * **Delegowany użytkownik**: Wprowadź nazwę delegowanego użytkownika.
 
-    e.  Sprawdź hasło delegowanego użytkownika i określ **hasło**.
+    * Zaznacz pole wyboru **hasło dla delegowanego użytkownika** , a następnie wprowadź i Potwierdź hasło.
 
-    f.  Kliknij przycisk **OK**.
+1. Kliknij przycisk **OK**.
  
-    ![Konfiguracja platformy Citrix](./media/citrix-netscaler-tutorial/kerberos03.png)
+    ![Konfiguracja Citrix KCD — Konfigurowanie okienka konta](./media/citrix-netscaler-tutorial/kerberos03.png)
 
 ### <a name="citrix-traffic-policy-and-traffic-profile"></a>Zasady ruchu Citrix i profil ruchu
 
-1.  Przejdź do pozycji **zabezpieczenia > AAA-ruch aplikacji > zasady > zasady ruchu, profile i formularz rejestracji jednokrotnej ProfilesTraffic**.
+Aby skonfigurować zasady ruchu Citrix i profil ruchu:
 
-2.  Wybierz pozycję **profile ruchu**.
+1.  Przejdź do pozycji **zabezpieczenia** > **AAA-ruch aplikacji** > **zasady** > **zasady ruchu, profile i formularz rejestracji jednokrotnej ProfilesTraffic**.
 
-3.  Kliknij pozycję **Dodaj**.
+1.  Wybierz pozycję **profile ruchu**.
 
-4.  Skonfiguruj profil ruchu.
+1.  Wybierz pozycję **Dodaj**.
 
-    a.  Określ **nazwę**.
+1.  Aby skonfigurować profil ruchu, wprowadź lub wybierz następujące wartości.
 
-    b.  Określ **Logowanie jednokrotne**.
+    * **Nazwa**: Wprowadź nazwę profilu ruchu.
 
-    d.  Określ **konto KCD** utworzone w poprzednim kroku z listy rozwijanej.
+    * **Logowanie jednokrotne**: wybierz pozycję **włączone**.
 
-    d.  Kliknij przycisk **OK**.
+    * **Konto KCD**: wybierz konto KCD utworzone w poprzedniej sekcji.
 
-    ![Konfiguracja platformy Citrix](./media/citrix-netscaler-tutorial/kerberos04.png)
+1. Kliknij przycisk **OK**.
+
+    ![Konfiguracja rozwiązania Citrix Trafficer — Konfigurowanie okienka profilu ruchu](./media/citrix-netscaler-tutorial/kerberos04.png)
  
-5.  Wybierz pozycję **zasady ruchu**.
+1.  Wybierz pozycję **zasady ruchu**.
 
-6.  Kliknij pozycję **Dodaj**.
+1.  Wybierz pozycję **Dodaj**.
 
-7.  Skonfiguruj zasady ruchu.
+1.  Aby skonfigurować zasady ruchu, wprowadź lub wybierz następujące wartości:
 
-    a.  Określ **nazwę**.
+    * **Nazwa**: Wprowadź nazwę zasady ruchu.
 
-    b.  Wybierz wcześniej utworzony **profil ruchu** z listy rozwijanej.
+    * **Profil**: Wybierz profil ruchu utworzony w poprzedniej sekcji.
 
-    d.  Ustaw wyrażenie na **wartość true**.
+    * **Wyrażenie**: wprowadź **wartość true**.
 
-    d.  Kliknij przycisk **OK**.
+1. Kliknij przycisk **OK**.
 
-    ![Konfiguracja platformy Citrix](./media/citrix-netscaler-tutorial/kerberos05.png)
+    ![Konfiguracja rozwiązania Citrix Trafficer — Konfigurowanie okienka zasad ruchu](./media/citrix-netscaler-tutorial/kerberos05.png)
 
-### <a name="citrix-bind-traffic-policy-to-virtual-servers"></a>Zasady wiązania ruchu Citrix z serwerami wirtualnymi
+### <a name="bind-a-traffic-policy-to-a-virtual-server-in-citrix"></a>Powiązywanie zasad ruchu z serwerem wirtualnym w programie Citrix
 
-Aby powiązać zasady ruchu z określonym serwerem wirtualnym przy użyciu graficznego interfejsu użytkownika.
+Aby powiązać zasady ruchu z serwerem wirtualnym przy użyciu graficznego interfejsu użytkownika:
 
-* Przejdź do **zarządzania ruchem > równoważenia obciążenia > serwerów wirtualnych**.
+1. Przejdź do obszaru **Zarządzanie ruchem** > **równoważenia obciążenia** > **serwery wirtualne**.
 
-* W okienku szczegółów listy serwerów wirtualnych wybierz **serwer wirtualny** , do którego chcesz powiązać zasady ponownego zapisu, a następnie kliknij przycisk **Otwórz**.
+1. Z listy serwerów wirtualnych wybierz serwer wirtualny, do którego chcesz powiązać zasady ponownego zapisu, a następnie wybierz pozycję **Otwórz**.
 
-* W oknie dialogowym Konfigurowanie serwera wirtualnego (równoważenia obciążenia) wybierz **kartę Zasady**. Wszystkie zasady skonfigurowane w ramach skalowania w sieci są widoczne na liście.
+1. W okienku **serwer wirtualny równoważenia obciążenia** w obszarze **Ustawienia zaawansowane**wybierz pozycję **zasady**. Wszystkie zasady, które są skonfigurowane dla Twojego wystąpienia programu, zostaną wyświetlone na liście.
  
-    ![Konfiguracja platformy Citrix](./media/citrix-netscaler-tutorial/kerberos06.png)
+    ![Konfiguracja programu Citrix dla modułu równoważenia obciążenia — okienko serwera wirtualnego](./media/citrix-netscaler-tutorial/kerberos06.png)
 
-    ![Konfiguracja platformy Citrix](./media/citrix-netscaler-tutorial/kerberos07.png)
+    ![Konfiguracja platformy Citrix — okno dialogowe zasady](./media/citrix-netscaler-tutorial/kerberos07.png)
 
-1.  Zaznacz **pole wyboru** obok nazwy zasad, które chcesz powiązać z tym serwerem wirtualnym.
+1.  Zaznacz pole wyboru obok nazwy zasad, które chcesz powiązać z tym serwerem wirtualnym.
  
-    ![Konfiguracja platformy Citrix](./media/citrix-netscaler-tutorial/kerberos08.png)
+    ![Konfiguracja programu Citrix The Trafficer — okienko powiązania zasad ruchu wirtualnego serwera równoważenia obciążenia](./media/citrix-netscaler-tutorial/kerberos09.png)
 
-    ![Konfiguracja platformy Citrix](./media/citrix-netscaler-tutorial/kerberos09.png)
+1. W oknie dialogowym **Wybierz typ** :
 
-1. Tylko zasady są powiązane, kliknij przycisk **gotowe**.
+    1. W obszarze **Wybieranie zasad**wybierz pozycję **ruch**.
+
+    1. W obszarze **Wybierz typ**wybierz pozycję **żądanie**.
+
+    ![Konfiguracja Citrix skaler — Wybierz okienko Type](./media/citrix-netscaler-tutorial/kerberos08.png)
+
+1. Gdy zasady są powiązane, wybierz pozycję **gotowe**.
  
     ![Konfiguracja platformy Citrix](./media/citrix-netscaler-tutorial/kerberos10.png)
 
-1. Przetestuj przy użyciu zintegrowanej witryny sieci Web systemu Windows.
+1. Przetestuj powiązanie przy użyciu witryny sieci Web WIA.
 
-    ![Konfiguracja platformy Citrix](./media/citrix-netscaler-tutorial/kerberos11.png)    
+    ![Konfiguracja programu Citrix Hook — Strona testowa w przeglądarce internetowej](./media/citrix-netscaler-tutorial/kerberos11.png)    
 
-### <a name="create-citrix-netscaler-test-user"></a>Utwórz użytkownika testowego platformy Citrix
+### <a name="create-a-citrix-netscaler-test-user"></a>Tworzenie użytkownika testowego platformy Citrix
 
-W tej sekcji użytkownik o nazwie B. Simon został utworzony w programie Citrix. Program citrixow obsługuje Inicjowanie obsługi użytkowników just-in-Time, która jest domyślnie włączona. W tej sekcji nie musisz niczego robić. Jeśli użytkownik nie istnieje jeszcze w usłudze Citrix, zostanie utworzony nowy po uwierzytelnieniu.
+W tej sekcji użytkownik o nazwie B. Simon został utworzony w programie Citrix. Program citrixow obsługuje Inicjowanie obsługi użytkowników just-in-Time, która jest domyślnie włączona. Nie ma żadnych akcji, które należy wykonać w tej sekcji. Jeśli użytkownik nie istnieje jeszcze w usłudze Citrix, zostanie utworzony nowy po uwierzytelnieniu.
 
 > [!NOTE]
-> Jeśli musisz ręcznie utworzyć użytkownika, musisz skontaktować się z [zespołem obsługi klienta Citrix](https://www.citrix.com/contact/technical-support.html).
+> Jeśli musisz ręcznie utworzyć użytkownika, skontaktuj się z [zespołem obsługi klienta Citrix](https://www.citrix.com/contact/technical-support.html).
 
 ## <a name="test-sso"></a>Testuj Logowanie jednokrotne 
 
-W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
+W tej sekcji przetestujesz konfigurację rejestracji jednokrotnej usługi Azure AD za pomocą panelu dostępu.
 
-Po kliknięciu kafelka Citrix datascalenia w panelu dostępu należy automatycznie zalogować się do usługi Citrix, w której skonfigurowano Logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
+Po wybraniu kafelka Citrix datascaleer w panelu dostępu należy automatycznie zalogować się do usługi Citrix, w której skonfigurowano Logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
-- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lista samouczków dotyczących integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Wypróbuj program Citrixow w usłudze Azure AD](https://aad.portal.azure.com/)
 
-- [Konfigurowanie logowania jednokrotnego platformy Citrix dla uwierzytelniania opartego na nagłówku](header-citrix-netscaler-tutorial.md)
+- [Konfigurowanie logowania jednokrotnego platformy Citrix dla uwierzytelniania opartego na nagłówkach](header-citrix-netscaler-tutorial.md)

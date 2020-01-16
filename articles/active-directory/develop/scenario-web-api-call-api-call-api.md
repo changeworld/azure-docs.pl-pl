@@ -15,20 +15,20 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5829ca41aaa4bd61f8878657e5eedbf6351b5df4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 701f1f7c26731f3e9653955907f5f16d2688cdb2
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75423578"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76043441"
 ---
-# <a name="web-api-that-calls-web-apis---call-an-api"></a>Internetowy interfejs API, który wywołuje interfejsy API sieci Web — wywołuje interfejs API
+# <a name="a-web-api-that-calls-web-apis-call-an-api"></a>Internetowy interfejs API, który wywołuje interfejsy API sieci Web: wywoływanie interfejsu API
 
-Po uzyskaniu tokenu można wywołać chroniony internetowy interfejs API. Jest to realizowane z kontrolera interfejsu API sieci Web ASP.NET/ASP.NET Core.
+Po uzyskaniu tokenu można wywołać chroniony internetowy interfejs API. Można to zrobić na kontrolerze internetowego interfejsu API usługi ASP.NET lub ASP.NET Core.
 
 ## <a name="controller-code"></a>Kod kontrolera
 
-Oto kontynuacja przykładowego kodu podanego w obszarze [chronione interfejsy API sieci Web wywołania interfejsów API sieci Web — uzyskiwanie tokenu](scenario-web-api-call-api-acquire-token.md), który jest wywoływany w akcjach kontrolerów interfejsu użytkownika, wywoływanie podrzędnego interfejsu API (o nazwie todolist).
+Poniższy kod kontynuuje przykładowy kod, który jest wyświetlany w [interfejsie API sieci Web, który wywołuje interfejsy API sieci Web: uzyskuje token dla aplikacji](scenario-web-api-call-api-acquire-token.md). Kod jest wywoływany w akcjach kontrolerów interfejsu API. Wywołuje podrzędny interfejs API o nazwie *todolist*.
 
 Po uzyskaniu tokenu Użyj go jako tokenu okaziciela, aby wywołać podrzędny interfejs API.
 
@@ -49,7 +49,7 @@ private async Task GetTodoList(bool isAppStarting)
  }
 ...
 
-// Once the token has been returned by MSAL, add it to the http authorization header, before making the call to access the To Do list service.
+// After the token has been returned by Microsoft Authentication Library (MSAL), add it to the HTTP authorization header before making the call to access the To Do list service.
 _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", result.AccessToken);
 
 // Call the To Do list service.
@@ -61,4 +61,4 @@ HttpResponseMessage response = await _httpClient.GetAsync(TodoListBaseAddress + 
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Przenieś do środowiska produkcyjnego](scenario-web-api-call-api-production.md)
+> [Internetowy interfejs API, który wywołuje interfejsy API sieci Web: Przenieś do środowiska produkcyjnego](scenario-web-api-call-api-production.md)

@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 12/15/2019
 tags: connectors
-ms.openlocfilehash: 71f768506d7cec575c6bd765447397d8d0406859
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0314dceb23f02b723854dfc406e9440bbc14ccf6
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75446122"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76044288"
 ---
 # <a name="create-monitor-and-manage-ftp-files-by-using-azure-logic-apps"></a>Tworzenie i monitorowanie plików FTP oraz zarządzanie nimi za pomocą Azure Logic Apps
 
@@ -25,7 +25,7 @@ Za pomocą Azure Logic Apps i łącznika FTP można tworzyć automatyczne zadani
 
 Można użyć wyzwalaczy, które odbierają odpowiedzi z serwera FTP i udostępniają dane wyjściowe innym akcjom. W aplikacjach logiki można używać akcji Run do zarządzania plikami na serwerze FTP. Możesz również mieć inne akcje, które używają danych wyjściowych z akcji FTP. Na przykład w przypadku regularnego pobierania plików z serwera FTP można wysyłać wiadomości e-mail dotyczące tych plików i ich zawartości przy użyciu łącznika programu Office 365 Outlook lub łącznika Outlook.com. Jeśli dopiero zaczynasz w usłudze Logic Apps, zapoznaj [się z tematem Azure Logic Apps](../logic-apps/logic-apps-overview.md).
 
-## <a name="limits"></a>Limity
+## <a name="limitations"></a>Ograniczenia
 
 * Łącznik FTP obsługuje tylko jawne FTP za pośrednictwem protokołu SSL (FTPS) i nie jest zgodny z niejawnym FTPS.
 
@@ -36,6 +36,8 @@ Można użyć wyzwalaczy, które odbierają odpowiedzi z serwera FTP i udostępn
   * Użyj wyzwalacza FTP, który zwraca właściwości pliku, na przykład **gdy plik jest dodawany lub modyfikowany (tylko właściwości)** .
 
   * Śledź wyzwalacz z akcją **Pobierz zawartość pliku** FTP, która odczytuje kompletny plik i niejawnie używa podziału.
+
+* Jeśli masz lokalny serwer FTP, rozważ utworzenie [środowiska usługi integracji (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) lub [Azure App Service połączenia hybrydowe](../app-service/app-service-hybrid-connections.md), które umożliwiają dostęp do lokalnych źródeł danych bez korzystania z lokalnej bramy danych.
 
 ## <a name="how-ftp-triggers-work"></a>Jak działają wyzwalacze FTP
 

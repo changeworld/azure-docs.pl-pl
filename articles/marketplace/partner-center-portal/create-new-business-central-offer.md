@@ -7,13 +7,13 @@ ms.author: v-chjen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 10/04/2019
-ms.openlocfilehash: b3d66cab8cf43d862bbf17d5783f0469e3e1a5f8
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 01/13/2020
+ms.openlocfilehash: 22a5b86c8b3df4da5fe338a8ba1230d0247a5826
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825649"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76046008"
 ---
 # <a name="create-a-new-dynamics-365-business-central-offer"></a>Utwórz nową ofertę Dynamics 365 Business Central
 
@@ -151,8 +151,26 @@ Niektóre porady dotyczące pisania opisu:
   - Klienci muszą lub cierpią adresy produktów
 - Należy pamiętać, że pierwsze niektóre zdania mogą być wyświetlane w wynikach wyszukiwania.  
 - Nie należy polegać na funkcjach i funkcjach, aby sprzedawać produkt. Zamiast tego należy skoncentrować się na dostarczanej wartości.  
-- Korzystaj z specyficznych dla branży słownictwa lub takich słów, jak to możliwe. 
+- Korzystaj z specyficznych dla branży słownictwa lub takich słów, jak to możliwe.
 - Rozważ użycie tagów HTML, aby sformatować swój opis i zwiększyć jego atrakcyjność.
+
+Aby zwiększyć atrakcyjność opisu oferty, użyj edytora tekstu sformatowanego do formatowania opisu.
+
+![Korzystanie z edytora tekstu sformatowanego](./media/text-editor2.png)
+
+Skorzystaj z poniższych instrukcji, aby użyć edytora tekstu sformatowanego:
+
+- Aby zmienić format zawartości, zaznacz tekst, który chcesz sformatować, i wybierz styl tekstu, jak pokazano poniżej:
+
+     ![Zmienianie formatu tekstu przy użyciu edytora tekstu sformatowanego](./media/text-editor3.png)
+
+- Aby dodać listę punktowaną lub numerowaną do tekstu, Użyj poniższych opcji:
+
+     ![Używanie edytora tekstu sformatowanego do dodawania list](./media/text-editor4.png)
+
+- Aby dodać lub usunąć wcięcie do tekstu, Użyj poniższych opcji:
+
+     ![Używanie edytora tekstu sformatowanego do wcięcia](./media/text-editor5.png)
 
 ### <a name="search-keywords"></a>Wyszukaj słowa kluczowe
 
@@ -200,7 +218,7 @@ Obraz Hero jest opcjonalny. Jeśli postanowisz jeden, musi on mierzyć 815 x 290
 
 Dodaj zrzuty ekranu pokazujące, jak działa Twoja oferta. Wymagane są co najmniej trzy zrzuty ekranu i można dodać maksymalnie pięć. Wszystkie zrzuty ekranu muszą mieć 1280 x 720 pikseli.
 
-#### <a name="videos"></a>Filmy wideo
+#### <a name="videos"></a>Filmy
 
 Opcjonalnie możesz dodać maksymalnie pięć filmów wideo, które demonstrują Twoją ofertę. Te filmy wideo powinny być hostowane w usłudze YouTube i/lub Vimeo. Dla każdej z nich wprowadź nazwę filmu wideo, jego adres URL i obraz miniatury filmu wideo (1280 x 720 pikseli)
 
@@ -283,13 +301,13 @@ Szablon wdrożenia zawierający wszystkie zasoby platformy Azure, które składa
 
 - **Wystąpienia**: Wybierz typ (gorąca lub zimna) oraz liczbę dostępnych wystąpień, które zostaną pomnożone przez liczbę regionów, w których oferta jest dostępna.
 
-**Gorąca**: ten typ wystąpienia jest wdrożony i oczekuje na dostęp w wybranym regionie. Klienci mogą natychmiast uzyskać dostęp do *gorącego* wystąpienia dysku testowego, a nie muszą czekać na wdrożenie. Jest to, że te wystąpienia są zawsze uruchamiane w ramach subskrypcji platformy Azure, dzięki czemu będą one miały większy koszt przestoju. Zdecydowanie zaleca się, aby miało co najmniej jedno *aktywne* wystąpienie, ponieważ większość *klientów nie chce* czekać na pełne wdrożenia, co powoduje odrzucanie w przypadku użycia klienta w przypadku braku dostępnego wystąpienia.
+**Gorąca**: ten typ wystąpienia jest wdrożony i oczekuje na dostęp w wybranym regionie. Klienci mogą natychmiast uzyskać dostęp do *gorącego* wystąpienia dysku testowego, a nie muszą czekać na wdrożenie. Jego wadą jest to, że te wystąpienia są zawsze uruchamiane na Twojej subskrypcji platformy Azure, spowoduje naliczenie opłaty za większych przestojów, koszt. Zdecydowanie zaleca się, aby miało co najmniej jedno *aktywne* wystąpienie, ponieważ większość *klientów nie chce* czekać na pełne wdrożenia, co powoduje odrzucanie w przypadku użycia klienta w przypadku braku dostępnego wystąpienia.
 
 **Zimne**: ten typ wystąpienia reprezentuje łączną liczbę wystąpień, które mogą być wdrożone w poszczególnych regionach. Zimne wystąpienia wymagają, aby cały dysk testowy Menedżer zasobów szablon do wdrożenia, gdy klient zażąda dysku testowego, więc *zimne* wystąpienia są znacznie wolniejsze, aby można było ładować je od *aktywnych* wystąpień. Wadą jest to, że musisz tylko uregulować czas trwania testu, ale *nie* zawsze działa w ramach subskrypcji platformy Azure, tak jak w przypadku wystąpienia *aktywnego* .
 
 - **Test Azure Resource Manager szablonu**: Przekaż plik zip zawierający szablon Azure Resource Manager.  Dowiedz się więcej o tworzeniu szablonu Azure Resource Manager w artykule Szybki Start [Tworzenie i wdrażanie szablonów Azure Resource Manager przy użyciu Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal).
 
-- **Czas trwania dysku testowego** (wymagane): Wprowadź czas aktywności dysku testowego w ciągu kilku godzin. Po upływie tego czasu test kończy się automatycznie. Ten czas trwania może być ustawiony tylko przez całą liczbę godzin (na przykład "2" godzin, "1,5" jest nieprawidłowy).
+- **Czas trwania dysku testowego** (wymagane): Wprowadź czas aktywności dysku testowego w ciągu kilku godzin. Wersji testowej kończy się automatycznie po zakończeniu tego okresu. Ten czas trwania może być ustawiony tylko przez całą liczbę godzin (na przykład "2" godzin, "1,5" jest nieprawidłowy).
 
 ### <a name="technical-configuration-for-dynamics-365-test-drive"></a>Konfiguracja techniczna dla systemu Dynamics 365 Test Drive
 
@@ -370,7 +388,7 @@ Jeśli oferta wymaga wersji Premium systemu Microsoft Dynamics 365 Business Cent
 
 ### <a name="key-usage-scenario"></a>Scenariusz użycia klucza
 
-Musisz diagnostycznyc plik `.pdf`, który zawiera listę scenariuszy użycia klucza oferty wystawionych w dokumencie (format PDF). Wszystkie scenariusze wymienione w tym miejscu mogą być weryfikowane przez nasz zespół ds. weryfikacji przed zatwierdzeniem oferty dla portalu Marketplace.
+Musisz przekazać plik `.pdf`, który zawiera listę scenariuszy użycia klucza oferty wymienionych w dokumencie (format PDF). Wszystkie scenariusze wymienione w tym miejscu mogą być weryfikowane przez nasz zespół ds. weryfikacji przed zatwierdzeniem oferty dla portalu Marketplace.
 
 ### <a name="app-tests-automation"></a>Automatyzacja testów aplikacji
 
@@ -380,7 +398,7 @@ Opcjonalnie możesz przekazać plik **automatyzacji testów aplikacji** tutaj (.
 
 Jeśli konto testowe jest konieczne, aby nasz zespół certyfikacji mógł prawidłowo przejrzeć Twoją ofertę, Przekaż plik PDF, doc lub docx do informacji o **kontach testowych** .
 
-## <a name="publish"></a>Publikowanie
+## <a name="publish"></a>Publikuj
 
 ### <a name="submit-offer-to-preview"></a>Prześlij ofertę do wersji zapoznawczej
 
@@ -397,4 +415,4 @@ Jeśli po raz pierwszy publikujesz tę ofertę, możesz:
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Aktualizowanie istniejącej oferty w komercyjnej witrynie Marketplace](./update-existing-offer.md)
+- [Aktualizowanie istniejącej oferty w witrynie Marketplace dla zastosowań komercyjnych](./update-existing-offer.md)

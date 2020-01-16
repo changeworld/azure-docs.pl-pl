@@ -10,12 +10,12 @@ ms.author: vaidyas
 author: vaidyas
 ms.reviewer: larryfr
 ms.date: 11/22/2019
-ms.openlocfilehash: 77e23467551df8d72fd999049c490600eff11825
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 00a62e970e27d689eb639a62938376f73410c270
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75763644"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76024914"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-functions-preview"></a>Wdróż model uczenia maszynowego w Azure Functions (wersja zapoznawcza)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -156,27 +156,35 @@ Gdy `show_output=True`, zostanie wyświetlony wynik procesu kompilacji platformy
     > [!IMPORTANT]
     > Obrazy utworzone przez Azure Machine Learning używają systemu Linux, dlatego należy użyć parametru `--is-linux`.
 
-1. Aby utworzyć aplikację funkcji, użyj następującego polecenia. Zastąp `<app-name>` nazwą, której chcesz użyć. Zastąp `<acrinstance>` i `<imagename>` wartościami ze zwracanych `package.location` wcześniej:
-
-    ```azurecli-interactive
-    az storage account create --name 
-    az functionapp create --resource-group myresourcegroup --plan myplanname --name <app-name> --deployment-container-image-name <acrinstance>.azurecr.io/package:<imagename>
-    ```
-
-    > [!IMPORTANT]
-    > W tym momencie aplikacja funkcji została utworzona. Jednak ponieważ nie podano parametrów połączenia dla wyzwalacza obiektu BLOB lub poświadczeń do Azure Container Registry zawierającego obraz, aplikacja funkcji jest nieaktywna. W następnych krokach podano parametry połączenia oraz informacje o uwierzytelnianiu dla rejestru kontenerów. 
-
-1. Utwórz konto magazynu, które będzie używane jako wyzwalacz i Pobierz jego parametry połączenia.
+1. Utwórz konto magazynu, które ma być używane na potrzeby magazynu zadań sieci Web, i Pobierz jego parametry połączenia. Zastąp `<webjobStorage>` nazwą, której chcesz użyć.
 
     ```azurecli-interactive
     az storage account create --name triggerStorage --location westeurope --resource-group myresourcegroup --sku Standard_LRS
     ```
     ```azurecli-interactive
-    az storage account show-connection-string --resource-group myresourcegroup --name triggerStorage --query connectionString --output tsv
+    az storage account show-connection-string --resource-group myresourcegroup --name <webJobStorage> --query connectionString --output tsv
+    ```
+
+1. Aby utworzyć aplikację funkcji, użyj następującego polecenia. Zastąp `<app-name>` nazwą, której chcesz użyć. Zastąp `<acrinstance>` i `<imagename>` wartościami zwracanymi `package.location` wcześniej. Zastąp wartość Zamień `<webjobStorage>` nazwą konta magazynu z poprzedniego kroku:
+
+    ```azurecli-interactive
+    az functionapp create --resource-group myresourcegroup --plan myplanname --name <app-name> --deployment-container-image-name <acrinstance>.azurecr.io/package:<imagename> --storage-account <webjobStorage>
+    ```
+
+    > [!IMPORTANT]
+    > W tym momencie aplikacja funkcji została utworzona. Jednak ponieważ nie podano parametrów połączenia dla wyzwalacza obiektu BLOB lub poświadczeń do Azure Container Registry zawierającego obraz, aplikacja funkcji jest nieaktywna. W następnych krokach podano parametry połączenia oraz informacje o uwierzytelnianiu dla rejestru kontenerów. 
+
+1. Utwórz konto magazynu, które ma być używane na potrzeby magazynu wyzwalacza obiektów blob, i Pobierz jego parametry połączenia. Zastąp `<triggerStorage>` nazwą, której chcesz użyć.
+
+    ```azurecli-interactive
+    az storage account create --name triggerStorage --location westeurope --resource-group myresourcegroup --sku Standard_LRS
+    ```
+    ```azurecli-interactive
+    az storage account show-connection-string --resource-group myresourcegroup --name <triggerStorage> --query connectionString --output tsv
     ```
     Zarejestruj te parametry połączenia, aby udostępnić aplikację funkcji. Będziemy używać go później, gdy podasz pytania o `<triggerConnectionString>`
 
-1. Utwórz kontenery dla danych wejściowych i wyjściowych na koncie magazynu. 
+1. Utwórz kontenery dla danych wejściowych i wyjściowych na koncie magazynu. Zastąp `<triggerConnectionString>` ciągiem połączenia zwróconym wcześniej:
 
     ```azurecli-interactive
     az storage container create -n input --connection-string <triggerConnectionString>
@@ -185,12 +193,17 @@ Gdy `show_output=True`, zostanie wyświetlony wynik procesu kompilacji platformy
     az storage container create -n output --connection-string <triggerConnectionString>
     ```
 
-1. Musisz pobrać tag skojarzony z utworzonym kontenerem przy użyciu następującego polecenia:
+1. Aby skojarzyć parametry połączenia wyzwalacza z aplikacją funkcji, użyj następującego polecenia. Zastąp `<app-name>` nazwą aplikacji funkcji. Zastąp `<triggerConnectionString>` ciągiem połączenia zwróconym wcześniej:
+
+    ```azurecli-interactive
+    az functionapp config appsettings set --name <app-name> --resource-group myresourcegroup --settings "TriggerConnectionString=<triggerConnectionString>"
+    ```
+1. Musisz pobrać tag skojarzony z utworzonym kontenerem przy użyciu poniższego polecenia. Zastąp `<username>` nazwą użytkownika zwróconą wcześniej z rejestru kontenerów:
 
     ```azurecli-interactive
     az acr repository show-tags --repository package --name <username> --output tsv
     ```
-    Ostatnio wyświetlany tag będzie `imagetag` poniżej.
+    Zapisz zwracaną wartość, która zostanie użyta jako `imagetag` w następnym kroku.
 
 1. Aby zapewnić aplikacji funkcji z poświadczeniami, które są potrzebne do uzyskania dostępu do rejestru kontenerów, użyj następującego polecenia. Zastąp `<app-name>` nazwą, której chcesz użyć. Zastąp `<acrinstance>` i `<imagetag>` wartościami z polecenia AZ CLI Call w poprzednim kroku. Zamień `<username>` i `<password>` na pobrane wcześniej informacje logowania ACR:
 

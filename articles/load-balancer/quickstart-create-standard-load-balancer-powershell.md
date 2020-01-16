@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 05/07/2019
 ms.author: allensu
 ms:custom: seodec18
-ms.openlocfilehash: b387df5049fff2cb17e8d0758f1cf5fd8f0d0853
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: 21488fbc8a5a9354db74d5b93719d100bce8878c
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74049109"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045672"
 ---
 # <a name="quickstart-create-a-standard-load-balancer-using-azure-powershell"></a>Szybki Start: Tworzenie usługa Load Balancer w warstwie Standardowa przy użyciu Azure PowerShell
 
@@ -105,7 +105,7 @@ $rule = New-AzLoadBalancerRuleConfig `
 
 ### <a name="create-the-nat-rules"></a>Tworzenie reguł NAT
 
-Utwórz reguły NAT przy użyciu polecenia [Add-AzLoadBalancerRuleConfig](/powershell/module/az.network/new-azloadbalancerinboundnatruleconfig). Poniższy przykład obejmuje tworzenie reguł NAT o nazwie *myLoadBalancerRDP1* i *myLoadBalancerRDP2* w celu zezwolenia na nawiązywanie połączeń protokołu RDP z serwerami zaplecza przy użyciu portów 4221 i 4222:
+Utwórz reguły NAT za pomocą [New-AzLoadBalancerInboundNatRuleConfig](/powershell/module/az.network/new-azloadbalancerinboundnatruleconfig). Poniższy przykład obejmuje tworzenie reguł NAT o nazwie *myLoadBalancerRDP1* i *myLoadBalancerRDP2* w celu zezwolenia na nawiązywanie połączeń protokołu RDP z serwerami zaplecza przy użyciu portów 4221 i 4222:
 
 ```azurepowershell
 $natrule1 = New-AzLoadBalancerInboundNatRuleConfig `

@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 2a749e9345fec0e91751641cd15805d7f7d62d95
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: a48edda31f19ef4ce1ba23664eef1f51ba9cf8d1
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961413"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75970499"
 ---
 # <a name="move-azure-vms-between-azure-government-and-public-regions"></a>Przenoszenie maszyn wirtualnych platformy Azure między Azure Government i regionami publicznymi 
 
@@ -20,7 +20,7 @@ Możesz chcieć przenieść maszyny wirtualne IaaS między Azure Governmentami i
 
 Oprócz używania usługi [Azure Site Recovery](site-recovery-overview.md) do zarządzania odzyskiwaniem maszyn lokalnych i maszyn wirtualnych platformy Azure po awarii oraz ich organizowania dla celów zapewniania ciągłości działania i odzyskiwania po awarii (BCDR, business continuity and disaster recovery) można ją stosować również do zarządzania przenoszeniem maszyn wirtualnych platformy Azure do regionu pomocniczego.       
 
-W tym samouczku pokazano, jak przenieść maszyny wirtualne platformy Azure między Azure Government a publicznymi regionami przy użyciu Azure Site Recovery. Ten sam można rozszerzyć, aby przenieść maszyny wirtualne między parami regionów, które nie znajdują się w tym samym klastrze geograficznym. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+W tym samouczku pokazano, jak przenieść maszyny wirtualne platformy Azure między Azure Government a publicznymi regionami przy użyciu Azure Site Recovery. Ten sam można rozszerzyć, aby przenieść maszyny wirtualne między parami regionów, które nie znajdują się w tym samym klastrze geograficznym. Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Weryfikowanie wymagań wstępnych
@@ -65,7 +65,7 @@ Skonfiguruj docelową [Sieć platformy Azure](../virtual-network/quick-create-po
 
 ### <a name="set-up-an-azure-storage-account"></a>Konfigurowanie konta usługi Azure Storage
 
-Skonfiguruj [konto usługi Azure Storage](../storage/common/storage-quickstart-create-account.md).
+Skonfiguruj [konto usługi Azure Storage](../storage/common/storage-account-create.md).
 
 - Site Recovery replikuje maszyny lokalne do usługi Azure Storage. Maszyny wirtualne platformy Azure są tworzone na podstawie magazynu po przejściu do trybu failover.
 - Konto magazynu musi znajdować się w tym samym regionie, co magazyn usługi Recovery Services.
@@ -115,7 +115,7 @@ Poniżej przedstawiono procedurę kopiowania danych do regionu docelowego przy u
 4. Utwórz grupę zasobów **ContosoRG**.
 5. Określ region platformy Azure. Aby sprawdzić obsługiwane regiony, zobacz sekcję dotyczącą dostępności geograficznej w temacie [Szczegóły cennika usługi Azure Site Recovery](https://azure.microsoft.com/pricing/details/site-recovery/).
 6. W obszarze magazyny Recovery Services kliknij pozycję **przegląd** > **ConsotoVMVault** >  **+ replikacja**
-7. wybierz kolejno pozycje **Na platformę Azure** > **Niezwirtualizowane/inne**.
+7. Wybierz pozycję **na platformie Azure,**  > **nie Zwirtualizowana/inna**.
 
 ### <a name="set-up-the-configuration-server-to-discover-vms"></a>Skonfiguruj serwer konfiguracji w celu odnajdywania maszyn wirtualnych.
 
@@ -163,7 +163,7 @@ Wybierz i zweryfikuj zasoby docelowe.
 2. Określ docelowy model wdrażania.
 3. Usługa Site Recovery sprawdza, czy masz co najmniej jedno zgodne konto magazynu Azure i co najmniej jedną sieć platformy Azure.
 
-   ![Środowisko docelowe](./media/physical-azure-disaster-recovery/network-storage.png)
+   ![Cel](./media/physical-azure-disaster-recovery/network-storage.png)
 
 
 ### <a name="create-a-replication-policy"></a>Tworzenie zasad replikacji
@@ -197,7 +197,7 @@ Zasady zostaną automatycznie skojarzone z serwerem konfiguracji. Domyślnie są
    > [!WARNING]
    > Należy wprowadzić adres IP maszyny wirtualnej platformy Azure, która ma zostać przeniesiona
 
-10. W oknie **właściwości** > **Konfiguruj właściwości**, wybierz konto, które będzie używane przez serwer przetwarzania w celu automatycznego zainstalowania usługi mobilności na komputerze.
+10. W obszarze **Właściwości** > **Konfigurowanie właściwości** wybierz konto, które będzie używane przez serwer przetwarzania w celu automatycznego zainstalowania usługi Mobility na maszynie.
 11. W obszarze **Ustawienia replikacji** > **Konfigurowanie ustawień replikacji** sprawdź, czy wybrano właściwe zasady replikacji. 
 12. Kliknij pozycję **Włącz replikację**. Możesz śledzić postęp zadania **Włącz ochronę** w pozycji **Ustawienia** > **Zadania** > **Zadania usługi Site Recovery**. Po uruchomieniu zadania **Sfinalizuj ochronę** maszyna jest gotowa do przejścia w tryb failover.
 

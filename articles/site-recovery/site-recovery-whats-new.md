@@ -1,18 +1,14 @@
 ---
 title: Co nowego w Azure Site Recovery
 description: Zawiera podsumowanie nowych funkcji i najnowszych aktualizacji usługi Azure Site Recovery.
-services: site-recovery
-author: rayne-wiselman
-ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/14/2019
-ms.author: raynew
-ms.openlocfilehash: aa98509ba71ec0797d4b59be9e4df1dea064c933
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/07/2020
+ms.openlocfilehash: 4a9feff3b0bc98b5d9853268d033e60de55ea5ea
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75351458"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76024831"
 ---
 # <a name="whats-new-in-site-recovery"></a>Co nowego w usłudze Site Recovery
 
@@ -28,14 +24,26 @@ W przypadku składników Site Recovery obsługiwane są wersje N-4, gdzie N to n
 
 **Aktualizacja** |  **Ujednolicona konfiguracja** | **Komórki jajowe serwera konfiguracji** | **Agent usługi mobilności** | **Dostawca Site Recovery** | **Agent Recovery Services**
 --- | --- | --- | --- | --- | ---
+[Pakiet zbiorczy 43](https://support.microsoft.com/help/4531426/) | 9.31.5449.1 | 5.1.5300.0 | 9.31.5449.1 | 5.1.5300.0 | 2.0.9165.0
 [Pakiet zbiorczy 42](https://support.microsoft.com/help/4531426/) | 9.30.5407.1 | 5.1.5200.0 | 9.30.5407.1 | 5.1.5200.0 | 2.0.9165.0
 [Pakiet zbiorczy 41](https://support.microsoft.com/help/4528026/) | 9.29.5367.1 | 5.1.5000.0 | 9.29.5367.1 | 5.1.5000.0 | 2.0.9165.0
 [Pakiet zbiorczy 40](https://support.microsoft.com/help/4521530/) | 9.28.5345.1 | 5.1.4800.0 | 9.28.5345.1 | 5.1.4800.0 | 2.0.9165.0
 [Pakiet zbiorczy 39](https://support.microsoft.com/help/4517283/) | 9.27.5308.1 | 5.1.4600.0 | 9.27.5308.1 | 5.1.4600.0 | 2.0.9165.0
-[Pakiet zbiorczy 38](https://support.microsoft.com/help/4513507/) | 9.26.5269.1 | 5.1.4500.0 | 9.26.5269.1 | 5.1.4500.0 | 2.0.9165.0
+
         
 
 [Dowiedz się więcej](service-updates-how-to.md) na temat instalacji i obsługi aktualizacji.
+
+## <a name="updates-january-2020"></a>Aktualizacje (styczeń 2020)
+
+### <a name="update-rollup-43"></a>Pakiet zbiorczy aktualizacji 43
+
+[Pakiet zbiorczy aktualizacji 43](https://support.microsoft.com/help/4537047/update-rollup-43-for-azure-site-recovery) udostępnia następujące aktualizacje.
+
+**Aktualizacja** | **Szczegóły**
+--- | ---
+**Dostawcy i agenci** | Aktualizacje Site Recovery agentów i dostawców (zgodnie z opisem w pakiecie zbiorczym)
+**Rozwiązywanie poprawek/ulepszeń** | Szereg poprawek i ulepszeń (zgodnie z opisem w pakiecie zbiorczym)
 
 
 ## <a name="updates-november-2019"></a>Aktualizacje (listopad 2019)

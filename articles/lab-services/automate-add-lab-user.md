@@ -1,6 +1,6 @@
 ---
-title: Automatyzacja dodawania użytkownika laboratorium w usłudze Azure DevTest Labs | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak zautomatyzować Dodawanie użytkownika laboratorium do laboratorium Azure DevTest Labs.
+title: Automatyzowanie dodawania użytkownika laboratorium w Azure DevTest Labs | Microsoft Docs
+description: Dowiedz się, jak zautomatyzować Dodawanie użytkownika laboratorium do laboratorium w Azure DevTest Labs.
 services: devtest-lab,lab-services
 documentationcenter: na
 author: spelluru
@@ -12,24 +12,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/02/2019
 ms.author: spelluru
-ms.openlocfilehash: 2ad81ae97414abbf3266cc5728febf9abe836151
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: deec67a2c64a57bbb380b3fd87bf820499e6efed
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65522960"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980046"
 ---
-# <a name="automate-adding-a-lab-user-to-a-lab-in-azure-devtest-labs"></a>Automatyzacja dodawania użytkownika laboratorium do laboratorium Azure DevTest Labs
-Usługa Azure DevTest Labs umożliwia szybkie tworzenie środowisk dewelopersko testowe samoobsługowego przy użyciu witryny Azure portal. Jednak jeśli masz kilka zespołów i kilka wystąpień usługi DevTest Labs, Automatyzowanie procesu tworzenia zaoszczędzić czas. [Szablony usługi Azure Resource Manager](https://github.com/Azure/azure-devtestlab/tree/master/ARMTemplates) umożliwiają tworzenie laboratoriów, laboratorium, maszyny wirtualne, niestandardowe obrazy, formuły i dodawanie użytkowników w zautomatyzowany sposób. Ten artykuł skupia się na temat dodawania użytkowników do wystąpienia usługi DevTest Labs.
+# <a name="automate-adding-a-lab-user-to-a-lab-in-azure-devtest-labs"></a>Automatyzuj Dodawanie użytkownika laboratorium do laboratorium w Azure DevTest Labs
+Azure DevTest Labs umożliwia szybkie tworzenie samoobsługowych środowisk deweloperskich i testowych przy użyciu Azure Portal. Jeśli jednak masz kilka zespołów i kilka wystąpień DevTest Labs, Automatyzacja procesu tworzenia może zaoszczędzić czas. [Szablony Azure Resource Manager](https://github.com/Azure/azure-devtestlab/tree/master/ARMTemplates) umożliwiają tworzenie laboratoriów, maszyn wirtualnych w laboratorium, obrazów niestandardowych, formuł i Dodawanie użytkowników w zautomatyzowany sposób. W tym artykule opisano sposób dodawania użytkowników do wystąpienia DevTest Labs.
 
-Aby dodać użytkownika do laboratorium, należy dodać użytkownika do **użytkownik usługi DevTest Labs** roli dla laboratorium. W tym artykule pokazano, jak zautomatyzować Dodawanie użytkownika do laboratorium przy użyciu jednej z następujących sposobów:
+Aby dodać użytkownika do laboratorium, należy dodać użytkownika do roli **użytkownika DevTest Labs** dla laboratorium. W tym artykule pokazano, jak zautomatyzować Dodawanie użytkownika do laboratorium przy użyciu jednego z następujących sposobów:
 
 - Szablony usługi Azure Resource Manager
-- Polecenia cmdlet programu Azure PowerShell 
+- Polecenia cmdlet programu PowerShell systemu Azure 
 - Interfejs wiersza polecenia platformy Azure.
 
 ## <a name="use-azure-resource-manager-templates"></a>Korzystanie z szablonów usługi Azure Resource Manager
-Poniższy przykładowy szablon usługi Resource Manager Określa użytkownika mają zostać dodane do **użytkownik usługi DevTest Labs** Rola laboratorium. 
+Następujący przykładowy szablon Menedżer zasobów określa użytkownika, który ma zostać dodany do roli **użytkownika laboratorium DevTest Labs** . 
 
 ```json
 {
@@ -85,16 +85,16 @@ Poniższy przykładowy szablon usługi Resource Manager Określa użytkownika ma
 
 ```
 
-Jeśli masz przypisanie roli w tym samym szablonie, który jest utworzenie laboratorium, pamiętaj, aby dodać zależność od zasobu przypisania roli i laboratorium. Aby uzyskać więcej informacji, zobacz [Definiowanie zależności w szablonach usługi Resource Manager platformy Azure](../azure-resource-manager/resource-group-define-dependencies.md) artykułu.
+Jeśli przypiszesz rolę w tym samym szablonie, który tworzy laboratorium, pamiętaj, aby dodać zależność między zasobem przypisania roli a laboratorium. Aby uzyskać więcej informacji, zobacz [Definiowanie zależności w artykule szablony Azure Resource Manager](../azure-resource-manager/templates/define-resource-dependency.md) .
 
 ### <a name="role-assignment-resource-information"></a>Informacje o zasobach przypisania roli
-Zasób przypisania roli należy określić typ i nazwę.
+Zasób przypisania roli musi określać typ i nazwę.
 
-Pierwszą rzeczą, należy pamiętać, jest, że nie jest typem zasobu `Microsoft.Authorization/roleAssignments` tak jak grupy zasobów.  Zamiast tego typu zasobu jest zgodny ze wzorcem `{provider-namespace}/{resource-type}/providers/roleAssignments`. W tym przypadku będzie typ zasobu `Microsoft.DevTestLab/labs/providers/roleAssignments`.
+Najpierw należy zwrócić uwagę, że typ zasobu nie jest `Microsoft.Authorization/roleAssignments` tak jak dla grupy zasobów.  Zamiast tego typ zasobu jest zgodny ze wzorcem `{provider-namespace}/{resource-type}/providers/roleAssignments`. W takim przypadku typ zasobu zostanie `Microsoft.DevTestLab/labs/providers/roleAssignments`.
 
-Sama nazwa przypisania roli musi być globalnie unikatowa.  Nazwa przypisania używa wzorca `{labName}/Microsoft.Authorization/{newGuid}`. `newGuid` Jest wartość parametru szablonu. Zapewnia, że nazwa przypisania roli jest unikatowa. Ponieważ nie ma żadnych funkcji szablonu do tworzenia identyfikatorów GUID, należy wygenerować identyfikatora GUID, samodzielnie przy użyciu dowolnego narzędzia generator GUID.  
+Sama nazwa przypisania roli musi być globalnie unikatowa.  Nazwa przypisania używa wzorca `{labName}/Microsoft.Authorization/{newGuid}`. `newGuid` jest wartością parametru szablonu. Gwarantuje to, że nazwa przypisania roli jest unikatowa. Ponieważ nie ma żadnych funkcji szablonu do tworzenia identyfikatorów GUID, musisz samodzielnie wygenerować identyfikator GUID przy użyciu dowolnego narzędzia generatora GUID.  
 
-W szablonie, nazwa przypisania roli jest zdefiniowana `fullDevTestLabUserRoleName` zmiennej. Dokładny wiersz z szablonu jest:
+W szablonie nazwa przypisania roli jest definiowana przez zmienną `fullDevTestLabUserRoleName`. Dokładny wiersz z szablonu to:
 
 ```json
 "fullDevTestLabUserRoleName": "[concat(parameters('labName'), '/Microsoft.Authorization/', parameters('roleAssignmentGuid'))]"
@@ -102,38 +102,38 @@ W szablonie, nazwa przypisania roli jest zdefiniowana `fullDevTestLabUserRoleNam
 
 
 ### <a name="role-assignment-resource-properties"></a>Właściwości zasobów przypisania roli
-Przypisanie roli, sama definiuje trzy właściwości. Potrzebuje `roleDefinitionId`, `principalId`, i `scope`.
+Samo przypisanie roli definiuje trzy właściwości. Potrzebuje `roleDefinitionId`, `principalId`i `scope`.
 
 ### <a name="role-definition"></a>Definicja roli
-Identyfikator definicji roli jest identyfikator ciągu dla istniejącej definicji roli. Rola identyfikator znajduje się w formularzu `/subscriptions/{subscription-id}/providers/Microsoft.Authorization/roleDefinitions/{role-definition-id}`. 
+Identyfikator definicji roli jest identyfikatorem ciągu dla istniejącej definicji roli. Identyfikator roli ma postać `/subscriptions/{subscription-id}/providers/Microsoft.Authorization/roleDefinitions/{role-definition-id}`. 
 
-Identyfikatora subskrypcji przy użyciu `subscription().subscriptionId` funkcji szablonu.  
+Identyfikator subskrypcji uzyskuje się za pomocą funkcji `subscription().subscriptionId` Template.  
 
-Musisz pobrać definicji roli `DevTest Labs User` wbudowana rola. Aby uzyskać identyfikator GUID dla [użytkownik usługi DevTest Labs](../role-based-access-control/built-in-roles.md#devtest-labs-user) roli, można użyć [interfejsu API REST przypisania roli](/rest/api/authorization/roleassignments) lub [Get AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition?view=azps-1.8.0) polecenia cmdlet.
+Musisz uzyskać definicję roli dla `DevTest Labs User` wbudowanej roli. Aby uzyskać identyfikator GUID dla roli [użytkownika DevTest Labs](../role-based-access-control/built-in-roles.md#devtest-labs-user) , można użyć [interfejsu API REST przypisania roli](/rest/api/authorization/roleassignments) lub polecenia cmdlet [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition?view=azps-1.8.0) .
 
 ```powershell
 $dtlUserRoleDefId = (Get-AzRoleDefinition -Name "DevTest Labs User").Id
 ```
 
-Identyfikator roli jest zdefiniowane w sekcji zmiennych i nosi nazwę `devTestLabUserRoleId`. W szablonie identyfikator roli jest ustawiony na: 111111111-0000-0000-11111111111111111. 
+Identyfikator roli jest zdefiniowany w sekcji zmienne i o nazwie `devTestLabUserRoleId`. W szablonie identyfikator roli jest ustawiony na: 111111111-0000-0000-11111111111111111. 
 
 ```json
 "devTestLabUserRoleId": "[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Authorization/roleDefinitions/111111111-0000-0000-11111111111111111')]",
 ```
 
 ### <a name="principal-id"></a>Identyfikator podmiotu zabezpieczeń
-Identyfikator podmiotu zabezpieczeń jest identyfikator obiektu użytkownika usługi Active Directory, grupy lub jednostki usługi, który chcesz dodać jako użytkownika laboratorium do laboratorium. Szablon używa `ObjectId` jako parametr.
+Identyfikator podmiotu zabezpieczeń jest IDENTYFIKATORem obiektu Active Directory użytkownika, grupy lub jednostki usługi, który ma zostać dodany jako użytkownik laboratorium do laboratorium. Szablon używa `ObjectId` jako parametru.
 
-Identyfikator obiektu można uzyskać za pomocą [Get AzureRMADUser](/powershell/module/azurerm.resources/get-azurermaduser?view=azurermps-6.13.0), [Get-AzureRMADGroup lub [Get AzureRMADServicePrincipal](/powershell/module/azurerm.resources/get-azurermadserviceprincipal?view=azurermps-6.13.0) poleceń cmdlet programu PowerShell. Te polecenia cmdlet zwraca jednego środowiska lub listę obiektów usługi Active Directory, które mają właściwość ID, który jest identyfikator obiektu, które są potrzebne. Poniższy przykład pokazuje, jak uzyskać identyfikator obiektu jeden użytkownik w firmie.
+Identyfikator ObjectId można uzyskać przy użyciu poleceń cmdlet [Get-AzureRMADUser](/powershell/module/azurerm.resources/get-azurermaduser?view=azurermps-6.13.0), [Get-AzureRMADGroup lub [Get-AzureRMADServicePrincipal](/powershell/module/azurerm.resources/get-azurermadserviceprincipal?view=azurermps-6.13.0) programu PowerShell. Te polecenia cmdlet zwracają pojedyncze lub listy obiektów Active Directory, które mają Właściwość ID, która jest wymaganym IDENTYFIKATORem obiektu. Poniższy przykład pokazuje, jak uzyskać identyfikator obiektu pojedynczego użytkownika w firmie.
 
 ```powershell
 $userObjectId = (Get-AzureRmADUser -UserPrincipalName ‘email@company.com').Id
 ```
 
-Możesz również użyć poleceń cmdlet programu PowerShell usługi Azure Active Directory, które obejmują [Get-MsolUser](/powershell/module/msonline/get-msoluser?view=azureadps-1.0), [Get-MsolGroup](/powershell/module/msonline/get-msolgroup?view=azureadps-1.0), i [Get-MsolServicePrincipal](/powershell/module/msonline/get-msolserviceprincipal?view=azureadps-1.0).
+Można również użyć Azure Active Directory poleceń cmdlet programu PowerShell, które obejmują polecenia [Get-MsolUser](/powershell/module/msonline/get-msoluser?view=azureadps-1.0), [Get-MsolGroup](/powershell/module/msonline/get-msolgroup?view=azureadps-1.0)i [Get-MsolServicePrincipal](/powershell/module/msonline/get-msolserviceprincipal?view=azureadps-1.0).
 
-### <a name="scope"></a>Scope
-Zakres Określa zasób lub grupa zasobów, dla którego stosuje się przypisanie roli. W przypadku zasobów zakres ma postać: `/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{provider-namespace}/{resource-type}/{resource-name}`. Szablon używa `subscription().subscriptionId` funkcję, aby wypełnić `subscription-id` części i `resourceGroup().name` funkcji szablonu, aby wypełnić `resource-group-name` części. Korzystanie z tych funkcji oznacza, że laboratorium, do którego jest przypisanie roli musi istnieć w bieżącej subskrypcji i tej samej grupie zasobów, do której wykonano wdrożenie szablonu. Ostatnia część `resource-name`, nazywa się laboratorium. Ta wartość jest odbierany przez parametr szablonu, w tym przykładzie. 
+### <a name="scope"></a>Zakres
+Zakres określa zasób lub grupę zasobów, dla której ma być stosowane przypisanie roli. W przypadku zasobów zakres ma postać: `/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{provider-namespace}/{resource-type}/{resource-name}`. Szablon używa funkcji `subscription().subscriptionId`, aby wypełnić część `subscription-id` i funkcję szablonu `resourceGroup().name`, aby wypełnić część `resource-group-name`. Korzystanie z tych funkcji oznacza, że laboratorium, do którego przypiszesz rolę, musi istnieć w bieżącej subskrypcji i tej samej grupie zasobów, w której nastąpi wdrożenie szablonu. Ostatnia część, `resource-name`, jest nazwą laboratorium. Ta wartość jest odbierana za pośrednictwem parametru szablonu w tym przykładzie. 
 
 Zakres roli w szablonie: 
 
@@ -142,7 +142,7 @@ Zakres roli w szablonie:
 ```
 
 ### <a name="deploying-the-template"></a>Wdrażanie szablonu
-Najpierw należy utworzyć plik parametrów (na przykład: azuredeploy.parameters.json) który przekazuje wartości parametrów w szablonie usługi Resource Manager. 
+Najpierw utwórz plik parametrów (na przykład: azuredeploy. Parameters. JSON), który przekazuje wartości parametrów w szablonie Menedżer zasobów. 
 
 ```json
 {
@@ -162,46 +162,46 @@ Najpierw należy utworzyć plik parametrów (na przykład: azuredeploy.parameter
 }
 ```
 
-Następnie należy użyć [New-AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/new-azurermresourcegroupdeployment?view=azurermps-6.13.0) polecenia cmdlet programu PowerShell do wdrożenia szablonu usługi Resource Manager. Następujące przykładowe polecenie przypisuje osoby, grupy lub jednostki usługi rola użytkownik usługi DevTest Labs w środowisku laboratoryjnym.
+Następnie użyj polecenia cmdlet [New-AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/new-azurermresourcegroupdeployment?view=azurermps-6.13.0) programu PowerShell, aby wdrożyć szablon Menedżer zasobów. Następujące przykładowe polecenie przypisuje osobę, grupę lub jednostkę usługi do roli użytkownika DevTest Labs dla laboratorium.
 
 ```powershell
 New-AzureRmResourceGroupDeployment -Name "MyLabResourceGroup-$(New-Guid)" -ResourceGroupName 'MyLabResourceGroup' -TemplateParameterFile .\azuredeploy.parameters.json -TemplateFile .\azuredeploy.json
 ```
 
-Należy pamiętać, grupy wdrożenia nazwy i przypisanie roli identyfikatora GUID musi być unikatowa. Jeśli spróbujesz wdrożyć przydziału zasobu z identyfikatorem GUID nie jest unikatowa, a następnie otrzymasz `RoleAssignmentUpdateNotPermitted` błędu.
+Należy pamiętać, że nazwa wdrożenia grupy i identyfikator GUID przypisania roli muszą być unikatowe. W przypadku próby wdrożenia przypisania zasobu z nieunikatowym identyfikatorem GUID zostanie wyświetlony komunikat o błędzie `RoleAssignmentUpdateNotPermitted`.
 
-Jeśli planujesz użyć szablonu kilka razy, można dodać kilka obiektów usługi Active Directory do roli Użytkownik usługi DevTest Labs dla swojego laboratorium, należy wziąć pod uwagę przy użyciu obiektów dynamicznych polecenia programu PowerShell. W poniższym przykładzie użyto [nowy Guid](/powershell/module/Microsoft.PowerShell.Utility/New-Guid?view=powershell-5.0) polecenia cmdlet, aby określić dynamicznie zasobu wdrożenia nazwa i rola przypisania grupy identyfikator GUID.
+Jeśli planujesz użyć szablonu kilka razy, aby dodać kilka Active Directory obiektów do roli użytkownika DevTest Labs dla laboratorium, rozważ użycie obiektów dynamicznych w poleceniu programu PowerShell. W poniższym przykładzie za pomocą polecenia cmdlet [New-GUID](/powershell/module/Microsoft.PowerShell.Utility/New-Guid?view=powershell-5.0) można dynamicznie określić nazwę wdrożenia grupy zasobów i identyfikator GUID przypisania roli.
 
 ```powershell
 New-AzureRmResourceGroupDeployment -Name "MyLabResourceGroup-$(New-Guid)" -ResourceGroupName 'MyLabResourceGroup' -TemplateFile .\azuredeploy.json -roleAssignmentGuid "$(New-Guid)" -labName "MyLab" -principalId "11111111-1111-1111-1111-111111111111"
 ```
 
 ## <a name="use-azure-powershell"></a>Korzystanie z programu Azure PowerShell
-Jak wspomniano we wprowadzeniu, utworzyć nowe przypisanie roli platformy Azure można dodać użytkownika do **użytkownik usługi DevTest Labs** roli dla laboratorium. W programie PowerShell, możesz zrobić za pomocą [New-AzureRMRoleAssignment](/powershell/module/azurerm.resources/new-azurermroleassignment?view=azurermps-6.13.0) polecenia cmdlet. To polecenie cmdlet ma wiele parametrów opcjonalnych, aby umożliwić elastyczne. `ObjectId`, `SigninName`, Lub `ServicePrincipalName` może być określony jako obiekt udzielenia uprawnień.  
+Zgodnie z opisem we wprowadzeniu, tworzysz nowe przypisanie roli platformy Azure, aby dodać użytkownika do roli **użytkownika DevTest Labs** dla laboratorium. W programie PowerShell można to zrobić za pomocą polecenia cmdlet [New-AzureRMRoleAssignment](/powershell/module/azurerm.resources/new-azurermroleassignment?view=azurermps-6.13.0) . To polecenie cmdlet ma wiele opcjonalnych parametrów umożliwiających elastyczność. `ObjectId`, `SigninName`lub `ServicePrincipalName` można określić jako obiekt otrzymujący uprawnienia.  
 
-Oto przykład polecenia programu Azure PowerShell dodaje użytkownika do roli Użytkownik usługi DevTest Labs w określonym środowisku laboratoryjnym.
+Oto przykładowe Azure PowerShell polecenie, które dodaje użytkownika do roli użytkownika DevTest Labs w określonym laboratorium.
 
 ```powershell
 New-AzureRmRoleAssignment -UserPrincipalName <email@company.com> -RoleDefinitionName 'DevTest Labs User' -ResourceName '<Lab Name>' -ResourceGroupName '<Resource Group Name>' -ResourceType 'Microsoft.DevTestLab/labs'
 ```
 
-Aby określić, zasobów, do której są uprawnienia przyznane można określić przy użyciu kombinacji `ResourceName`, `ResourceType`, `ResourceGroup` lub `scope` parametru. Niezależnie od kombinacji parametrów jest używany, zawierać informacje wystarczające do polecenia cmdlet do unikatowego identyfikowania obiektu usługi Active Directory (użytkownika, grupy lub jednostki usługi), zakres (grupy zasobów lub zasobu) i definicji roli.
+Aby określić zasób, do którego przyznano uprawnienia, można określić za pomocą kombinacji `ResourceName`, `ResourceType`, `ResourceGroup` lub przez `scope` parametru. Niezależnie od używanej kombinacji parametrów Podaj do polecenia cmdlet wystarczające informacje umożliwiające jednoznaczną identyfikację obiektu Active Directory (użytkownika, grupy lub nazwy głównej usługi), zakresu (grupy zasobów lub zasobu) i definicji roli.
 
-## <a name="use-azure-command-line-interface-cli"></a>Użyj interfejsu wiersza polecenia platformy Azure (CLI)
-W interfejsie wiersza polecenia platformy Azure, Dodawanie użytkownika labs do laboratorium jest wykonywane przy użyciu `az role assignment create` polecenia. Aby uzyskać więcej informacji na temat poleceń cmdlet narzędzia wiersza polecenia platformy Azure, zobacz [zarządzanie dostępem do zasobów platformy Azure przy użyciu RBAC i wiersza polecenia platformy Azure](../role-based-access-control/role-assignments-cli.md).
+## <a name="use-azure-command-line-interface-cli"></a>Korzystanie z interfejsu wiersza polecenia platformy Azure (CLI)
+W interfejsie wiersza polecenia platformy Azure dodanie użytkownika Labs do laboratorium odbywa się przy użyciu `az role assignment create` polecenie. Aby uzyskać więcej informacji na temat poleceń cmdlet interfejsu wiersza polecenia platformy Azure, zobacz [Zarządzanie dostępem do zasobów platformy Azure przy użyciu RBAC i interfejsu wiersza polecenia platformy Azure](../role-based-access-control/role-assignments-cli.md).
 
-Obiekt, który jest udzielany jest dostęp, może zostać określony przez `objectId`, `signInName`, `spn` parametrów. Laboratorium, do której obiekt jest zostanie im przyznany dostęp można zidentyfikować przez `scope` adres url lub jako kombinację `resource-name`, `resource-type`, i `resource-group` parametrów.
+Obiekt, do którego uzyskuje się dostęp, może być określony przez `objectId`, `signInName``spn` parametrów. Laboratorium, do którego uzyskuje się dostęp do obiektu, może być identyfikowane za pomocą adresu URL `scope` lub kombinacji `resource-name`, `resource-type`i `resource-group` parametrów.
 
-Poniższy przykład wiersza polecenia platformy Azure pokazuje, jak dodać osoby do roli Użytkownik usługi DevTest Labs w określonym środowisku laboratoryjnym.  
+Poniższy przykład interfejsu wiersza polecenia platformy Azure pokazuje, jak dodać osobę do roli użytkownika DevTest Labs dla określonego laboratorium.  
 
 ```azurecli
 az role assignment create --roleName "DevTest Labs User" --signInName <email@company.com> -–resource-name "<Lab Name>" --resource-type “Microsoft.DevTestLab/labs" --resource-group "<Resource Group Name>"
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Zobacz następujące artykuły:
 
-- [Tworzenie i zarządzanie maszynami wirtualnymi za pomocą usługi DevTest Labs przy użyciu wiersza polecenia platformy Azure](devtest-lab-vmcli.md)
-- [Utwórz maszynę wirtualną z usługą DevTest Labs przy użyciu programu Azure PowerShell](devtest-lab-vm-powershell.md)
-- [Użyj narzędzia wiersza polecenia do uruchamiania i zatrzymywania maszyn wirtualnych w usłudze Azure DevTest Labs](use-command-line-start-stop-virtual-machines.md)
+- [Tworzenie maszyn wirtualnych i zarządzanie nimi za pomocą DevTest Labs przy użyciu interfejsu wiersza polecenia platformy Azure](devtest-lab-vmcli.md)
+- [Tworzenie maszyny wirtualnej za pomocą DevTest Labs przy użyciu Azure PowerShell](devtest-lab-vm-powershell.md)
+- [Uruchamianie i zatrzymywanie Azure DevTest Labs maszyn wirtualnych przy użyciu narzędzi wiersza polecenia](use-command-line-start-stop-virtual-machines.md)
 

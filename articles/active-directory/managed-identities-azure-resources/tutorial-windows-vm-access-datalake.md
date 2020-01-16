@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/13/2018
+ms.date: 11/14/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f3909e80ea36ed7aab638d717ecf8404d80beb59
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: c03f78341b7521267f8aaf72d58ebd4c912949ce
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74181901"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977881"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-data-lake-store"></a>Samouczek: używanie przypisanej przez system tożsamości zarządzanej na maszynie wirtualnej z systemem Windows do uzyskiwania dostępu do usługi Azure Data Lake Store
 
@@ -36,7 +36,15 @@ W tym samouczku przedstawiono sposób używania tożsamości zarządzanej przypi
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
-## <a name="grant-your-vm-access-to-azure-data-lake-store"></a>Udzielanie maszynie wirtualnej praw dostępu do usługi Azure Data Lake Store
+
+
+## <a name="enable"></a>Włączenie
+
+[!INCLUDE [msi-tut-enable](../../../includes/active-directory-msi-tut-enable.md)]
+
+
+
+## <a name="grant-access"></a>Udzielanie dostępu
 
 Teraz możesz udzielić maszynie wirtualnej praw dostępu do plików i folderów w usłudze Azure Data Lake Store.  W tym kroku możesz użyć istniejącej usługi Data Lake Store lub utworzyć nową.  Aby utworzyć nową usługę Data Lake Store przy użyciu witryny Azure Portal, wykonaj czynności opisane w [przewodniku Szybki start dotyczącym usługi Azure Data Lake Store](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal). W [dokumentacji usługi Azure Data Lake Store](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-overview) są również dostępne przewodniki Szybki start, które używają interfejsu wiersza polecenia platformy Azure oraz programu Azure PowerShell.
 
@@ -46,7 +54,7 @@ W usłudze Data Lake Store utwórz nowy folder, a następnie przyznaj przypisane
 2. Kliknij usługę Data Lake Store, której chcesz użyć na potrzeby tego samouczka.
 3. Kliknij pozycję **Eksplorator danych** na pasku poleceń.
 4. Zostanie zaznaczony folder główny usługi Data Lake Store.  Kliknij pozycję **Dostęp** na pasku poleceń.
-5. Kliknij pozycję **Add** (Dodaj).  W polu **Wybierz** wprowadź nazwę maszyny wirtualnej, na przykład **DevTestVM**.  Kliknij, aby wybrać maszynę wirtualną spośród wyników wyszukiwania, a następnie kliknij pozycję **Wybierz**.
+5. Kliknij pozycję **Dodaj**.  W polu **Wybierz** wprowadź nazwę maszyny wirtualnej, na przykład **DevTestVM**.  Kliknij, aby wybrać maszynę wirtualną spośród wyników wyszukiwania, a następnie kliknij pozycję **Wybierz**.
 6. Kliknij pozycję **Wybierz uprawnienia**.  Wybierz pozycje **Odczyt** i **Wykonywanie**, dodaj do pozycji **Ten folder** i dodaj jako **Tylko uprawnienie dostępu**.  Kliknij przycisk **OK**.  Dodawanie uprawnienia powinno zakończyć się pomyślnie.
 7. Zamknij blok **Dostęp**.
 8. W tym samouczku utworzymy nowy folder.  Kliknij pozycję **Nowy folder** na pasku poleceń i nadaj folderowi nową nazwę, na przykład **TestFolder**.  Kliknij przycisk **OK**.
@@ -56,7 +64,7 @@ W usłudze Data Lake Store utwórz nowy folder, a następnie przyznaj przypisane
 
 Przypisana przez system tożsamość usługi zarządzanej maszyny wirtualnej może teraz wykonywać wszystkie operacje na plikach w utworzonym folderze.  Aby uzyskać więcej informacji na temat zarządzania dostępem do usługi Data Lake Store, przeczytaj ten artykuł w sekcji [Kontrola dostępu w usłudze Data Lake Store](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-access-control).
 
-## <a name="get-an-access-token-using-the-vms-system-assigned-managed-identity-and-use-it-to-call-the-azure-data-lake-store-filesystem"></a>Uzyskiwanie tokenu dostępu przy użyciu przypisanej przez system tożsamości zarządzanej maszyny wirtualnej oraz używanie go do wywoływania systemu plików usługi Azure Data Lake Store
+## <a name="access-data"></a>Uzyskiwanie dostępu do danych
 
 Usługa Azure Data Lake Store natywnie obsługuje uwierzytelnianie usługi Azure AD, więc może bezpośrednio akceptować tokeny dostępu pozyskane przy użyciu tożsamości zarządzanych dla zasobów platformy Azure.  Aby przeprowadzić uwierzytelnianie w systemie plików usługi Data Lake Store, musisz wysłać token dostępu wydany przez usługę Azure AD do punktu końcowego systemu plików Data Lake Store w nagłówku autoryzacji w formacie „Bearer <WARTOŚĆ_TOKENU_DOSTĘPU>”.  Aby dowiedzieć się więcej na temat obsługi usługi Data Lake Store na potrzeby uwierzytelniania usługi Azure AD, przeczytaj [Authentication with Data Lake Store using Azure Active Directory (Uwierzytelnianie w usłudze Data Lake Store za pomocą usługi Azure Active Directory)](https://docs.microsoft.com/azure/data-lake-store/data-lakes-store-authentication-using-azure-active-directory)
 
@@ -173,6 +181,12 @@ W tym samouczku uwierzytelniasz się w interfejsie REST API dla systemu plików 
    ```
 
 Za pomocą innych interfejsów API systemu plików usługi Data Lake Store można dołączać dane do plików, pobierać pliki i wykonywać inne operacje.
+
+
+## <a name="disable"></a>Wyłączenie
+
+[!INCLUDE [msi-tut-disable](../../../includes/active-directory-msi-tut-disable.md)]
+
 
 ## <a name="next-steps"></a>Następne kroki
 

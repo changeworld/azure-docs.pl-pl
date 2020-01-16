@@ -1,18 +1,18 @@
 ---
-title: Usługa Azure Application Insights dla aplikacji internetowych w języku JavaScript | Microsoft Docs
-description: Pobieranie liczników wyświetleń stron i sesji, danych klienta sieci Web oraz śledzenie wzorców użycia. Wykrywanie wyjątków i problemów z wydajnością na stronach sieci Web w języku JavaScript.
+title: Application Insights platformy Azure dla aplikacji sieci Web w języku JavaScript
+description: Pobierz liczbę wyświetlanych stron i sesji, dane klienta sieci Web, aplikacje jednostronicowe (SPA) i śledź wzorce użycia. Wykrywanie wyjątków i problemów z wydajnością na stronach sieci Web w języku JavaScript.
 ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/20/2019
-ms.openlocfilehash: 6bb61f419f4c6d277a9b1c666db92595642cb0e6
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 38f9872fb73f2c680264c2c0b84445db858cf203
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706598"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045836"
 ---
 # <a name="application-insights-for-web-pages"></a>Usługa Application Insights dla stron sieci Web
 
@@ -99,7 +99,7 @@ Większość pól konfiguracji ma takie nazwy, że można je domyślnie określi
 
 | Nazwa | Domyślne | Opis |
 |------|---------|-------------|
-| instrumentationKey | null | **Wymagane**<br>Klucz Instrumentacji uzyskany w Azure Portal. |
+| InstrumentationKey | null | **Wymagane**<br>Klucz Instrumentacji uzyskany w Azure Portal. |
 | accountId | null | Opcjonalny identyfikator konta, jeśli aplikacja grupuje użytkowników na kontach. Bez spacji, przecinków, średników, równości lub pionowych słupków |
 | sessionRenewalMs | 1800000 | Sesja jest rejestrowana, jeśli użytkownik jest nieaktywny przez ten czas w milisekundach. Wartość domyślna to 30 minut |
 | sessionExpirationMs | 86400000 | Sesja jest rejestrowana, jeśli będzie trwać przez ten czas w milisekundach. Wartość domyślna to 24 godziny |
@@ -149,7 +149,7 @@ Obecnie oferujemy osobne wtyczki do [reagowania](#react-extensions) , które mo�
 
 | Rozszerzenia |
 |---------------|
-| [Biern](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-js/README.md)|
+| [React](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-js/README.md)|
 | [Zareaguj na natywny](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-native/README.md)|
 
 ## <a name="explore-browserclient-side-data"></a>Eksplorowanie danych po stronie przeglądarki i klienta
@@ -242,7 +242,7 @@ Po zaledwie 25 KB formacie gzip i zainicjowaniu tylko ~ 15 MS, Application Insig
 
 Podczas pobierania skryptu z usługi CDN wszystkie śledzenie strony jest umieszczane w kolejce. Gdy pobrany skrypt zakończy asynchroniczne inicjowanie, wszystkie zdarzenia, które zostały dodane do kolejki, są śledzone. W związku z tym nie utracisz żadnych danych telemetrycznych w całym cyklu życia strony. Ten proces instalacji zapewnia użytkownikom niezauważalny system, niewidoczny dla użytkowników.
 
-> Podsumowanie
+> Podsumowanie:
 > - **25 KB** formacie gzip
 > - Całkowity czas inicjowania ( **15 MS** )
 > - Brak śledzenia **zerowej** w cyklu życia strony
