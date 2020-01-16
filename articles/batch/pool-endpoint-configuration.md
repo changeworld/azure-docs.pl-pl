@@ -2,18 +2,18 @@
 title: Konfigurowanie punktów końcowych węzła w puli Azure Batch | Microsoft Docs
 description: Jak skonfigurować lub wyłączyć dostęp do portów SSH lub RDP w węzłach obliczeniowych w puli Azure Batch.
 services: batch
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 ms.service: batch
 ms.topic: article
 ms.date: 02/13/2018
-ms.author: lahugh
-ms.openlocfilehash: e6c7f2762a6742a1aff7a2c3aff977b5e3657349
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.author: jushiman
+ms.openlocfilehash: 1ac4c7647125cd6164235e98a4a828f6b072cbee
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68322473"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029463"
 ---
 # <a name="configure-or-disable-remote-access-to-compute-nodes-in-an-azure-batch-pool"></a>Konfigurowanie lub wyłączanie dostępu zdalnego do węzłów obliczeniowych w puli Azure Batch
 
@@ -31,7 +31,7 @@ Każda konfiguracja puli NAT zawiera co najmniej jedną [regułę sieciowej grup
 * Podczas konfigurowania puli NAT można skonfigurować wiele reguł sieciowej grupy zabezpieczeń. Reguły są sprawdzane w kolejności priorytetów. Gdy reguła ma zastosowanie, żadne inne reguły nie są sprawdzane pod kątem dopasowania.
 
 
-## <a name="example-deny-all-rdp-traffic"></a>Przykład: Odrzuć cały ruch RDP
+## <a name="example-deny-all-rdp-traffic"></a>Przykład: Odmów całego ruchu RDP
 
 Poniższy C# fragment kodu przedstawia sposób konfigurowania punktu końcowego protokołu RDP w węzłach obliczeniowych w puli systemu Windows w celu odblokowania całego ruchu sieciowego. Punkt końcowy używa puli frontonu portów w zakresie *60000 – 60099*. 
 

@@ -10,21 +10,24 @@ editor: ''
 ms.service: api-management
 ms.workload: integration
 ms.topic: article
-ms.date: 08/12/2019
+ms.date: 01/13/2020
 ms.author: apimpm
-ms.openlocfilehash: 8fe07318d33980ad3ec9fc3d6e8749c6c9aed42e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3c2cc3c280ba0da474898bed93bb8533a42ab07f
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442546"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75967346"
 ---
 # <a name="configure-a-custom-domain-name"></a>Konfigurowanie niestandardowej nazwy domeny
 
-Gdy tworzysz wystąpienie usługi Azure API Management, platforma Azure przypisze ją poddomenie azure-api.net (na przykład `apim-service-name.azure-api.net`). Można jednak uwidocznić API Management punkty końcowe przy użyciu własnej niestandardowej nazwy domeny, takiej jak **contoso.com**. W tym samouczku przedstawiono sposób mapowania istniejącej niestandardowej nazwy DNS na punkty końcowe udostępniane przez wystąpienie API Management.
+Gdy tworzysz wystąpienie usługi Azure API Management, platforma Azure przypisze ją poddomenie `azure-api.net` (na przykład `apim-service-name.azure-api.net`). Można jednak uwidocznić API Management punkty końcowe przy użyciu własnej niestandardowej nazwy domeny, takiej jak **contoso.com**. W tym samouczku przedstawiono sposób mapowania istniejącej niestandardowej nazwy DNS na punkty końcowe udostępniane przez wystąpienie API Management.
+
+> [!IMPORTANT]
+> API Management akceptuje tylko żądania zawierające wartości [nagłówka hosta](https://tools.ietf.org/html/rfc2616#section-14.23) zgodne z domyślną nazwą domeny lub dowolnymi skonfigurowanymi niestandardowymi nazwami domen.
 
 > [!WARNING]
-> Klienci, którzy chcą korzystać z przypinania certyfikatów w celu poprawy bezpieczeństwa aplikacji, muszą używać niestandardowej nazwy domeny > i certyfikatu, którym zarządzają, a nie z domyślnym certyfikatem. Klienci, którzy zamiast niego przypinają certyfikat domyślny, będą > podjęcia twardej zależności od właściwości niekontrolowanego certyfikatu, co nie jest zalecanym postępowaniem.
+> Klienci, którzy chcą korzystać z przypinania certyfikatów w celu poprawy bezpieczeństwa aplikacji, muszą używać niestandardowej nazwy domeny > i certyfikatu, którym zarządzają, a nie z domyślnym certyfikatem. Klienci, którzy przystosują domyślnie certyfikat domyślny, będą korzystać z twardej zależności od właściwości niekontrolowanego certyfikatu, co nie jest zalecanym postępowaniem.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

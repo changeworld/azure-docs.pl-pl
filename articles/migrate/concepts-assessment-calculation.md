@@ -3,12 +3,12 @@ title: Oceny w Azure Migrate
 description: Dowiedz się więcej na temat ocen w Azure Migrate.
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 6950050be3c6fb812a6ade47e98f2d1ed479e61f
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.openlocfilehash: a8912263432bc0e9cd7172c4b6c9b118132863d3
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75720246"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029103"
 ---
 # <a name="about-assessments-in-azure-migrate"></a>Informacje o ocenach w Azure Migrate
 
@@ -23,7 +23,7 @@ Dane dotyczące wydajności dla ustawień obliczeń są zbierane w następujący
 
 1. [Urządzenie Azure Migrate](migrate-appliance.md) zbiera punkt próbkowania w czasie rzeczywistym:
 
-    - **maszyn wirtualnych VMware*: w przypadku maszyn wirtualnych vmware urządzenie Azure Migrate zbiera punkt próbkowania w czasie rzeczywistym co 20 sekund.
+    - **Maszyny wirtualne VMware**: w przypadku maszyn wirtualnych vmware urządzenie Azure Migrate zbiera punkt próbkowania w czasie rzeczywistym co 20 sekund.
     - **Maszyny wirtualne funkcji Hyper-v**: w przypadku maszyn wirtualnych funkcji Hyper-v punkt próbkowania w czasie rzeczywistym jest zbierany co 30 sekund.
     - **Serwery fizyczne**: w przypadku serwerów fizycznych, punkt próbkowania w czasie rzeczywistym jest zbierany co pięć minut. 
     
@@ -58,7 +58,7 @@ Dane dotyczące wydajności są zbierane w następujący sposób:
 
 1. [Urządzenie Azure Migrate](migrate-appliance.md) zbiera punkt próbkowania w czasie rzeczywistym:
 
-    - **maszyn wirtualnych VMware*: w przypadku maszyn wirtualnych vmware urządzenie Azure Migrate zbiera punkt próbkowania w czasie rzeczywistym co 20 sekund.
+    - **Maszyny wirtualne VMware**: w przypadku maszyn wirtualnych vmware urządzenie Azure Migrate zbiera punkt próbkowania w czasie rzeczywistym co 20 sekund.
     - **Maszyny wirtualne funkcji Hyper-v**: w przypadku maszyn wirtualnych funkcji Hyper-v punkt próbkowania w czasie rzeczywistym jest zbierany co 30 sekund.
     - **Serwery fizyczne**: w przypadku serwerów fizycznych, punkt próbkowania w czasie rzeczywistym jest zbierany co pięć minut. 
     
@@ -73,20 +73,19 @@ Dane dotyczące wydajności są zbierane w następujący sposób:
 5. Ta wartość jest mnożona przez współczynnik komfortu, aby uzyskać efektywne dane użycia wydajności dla każdej metryki (użycie procesora CPU, użycie pamięci, operacje we/wy dysku (odczyt i zapis), przepływność dysku (odczyt i zapis) oraz przepływność sieci (w i wychodząca) zbieranie informacji o urządzeniu.
 ## <a name="whats-in-an-assessment"></a>Co obejmuje ocena?
 
-Oto co obejmuje Ocena w Azure Migrate: Ocena serwera
+Oto co obejmuje Ocena w Azure Migrate: Ocena serwera.
 
 **Właściwość** | **Szczegóły**
 --- | ---
-**Lokalizacja docelowa** | Lokalizacja, do której chcesz przeprowadzić migrację.<br/><br/>Ocena serwera obsługuje obecnie następujące docelowe regiony platformy Azure: Australia Wschodnia, Australia Południowo-Zachodnia, Brazylia Południowa, Kanada środkowa, Kanada Wschodnia, Indie Środkowe, środkowe stany USA, Chiny Wschodnie, Chiny Północne, Azja Wschodnia, Wschodnie stany USA, Wschodnie stany USA 2, Niemcy środkowe, Niemcy Północny, Japonia Wschodnia, Japonia Zachodnia, Korea środkowa, Korea Południowa, Północno-środkowe stany USA, Europa Północna, Południowo-środkowe stany USA, Azja Południowo-Wschodnia, Indie Południowo-Wschodnia, Południowe Zjednoczone Królestwo, Zachodnie Zjednoczone Królestwo, US Gov Arizona, US Gov Teksas, US Gov Wirginia, zachodnio-środkowe stany USA, Europa Zachodnia, Indie Zachodnie, zachodnie stany USA i zachodnie Stany USA 2.
-**Docelowy dysk magazynujący: ustalanie wielkości liter** | Typ dysków, które mają być używane na potrzeby magazynu na platformie Azure. <br/><br/> Określ docelowy dysk pamięci masowej w postaci zarządzanej, standardowej dysku SSD zarządzanej lub standardowej zarządzanej przestrzeni DYSKowej.<br/><br/> 
-**Docelowy dysk magazynujący: ustalanie wielkości na podstawie wydajności** | Określ typ docelowego dysku magazynującego w postaci automatycznej, zarządzanej w warstwie Premium, standardowej zarządzanej pamięci DYSKowej lub standardowej zarządzanej pamięci SSD.<br/><br/> **Automatyczne**: zalecenie dysku opiera się na danych wydajności dysków (operacji wejścia/wyjścia na sekundę (IOPS) i przepływności. <br/><br/>**Premium/Standard**: Ocena zaleca użycie jednostki SKU dysku w wybranym typie magazynu.<br/><br/> Jeśli chcesz uzyskać umowę SLA dotyczącą pojedynczej instancji na maszynę wirtualną o 99,9%, rozważ użycie dysków zarządzanych w warstwie Premium. Gwarantuje to, że wszystkie dyski w ocenie są zalecane jako dyski zarządzane w warstwie Premium.<br/><br/> Usługa Azure Migrate obsługuje tylko dyski zarządzane na potrzeby oceny migracji.
+**Lokalizacja docelowa** | Lokalizacja, do której chcesz przeprowadzić migrację. Ocena serwera obsługuje obecnie następujące docelowe regiony platformy Azure:<br/><br/> Australia Wschodnia, Australia Południowo-Wschodnia, Brazylia Południowa, Kanada środkowa, Kanada Wschodnia, Indie Środkowe, środkowe stany USA, Chiny Wschodnie, Chiny Północne, Azja Wschodnia, Wschodnie stany USA, Wschodnie stany USA 2, Niemcy środkowe, Niemcy Południowe, Japonia Wschodnia, Japonia Zachodnia, Korea środkowa Środkowe stany USA, Europa Północna, Południowo-środkowe stany USA, Azja Południowo-Wschodnia, Indie Południowe, Południowe Zjednoczone Królestwo, Zachodnie Zjednoczone Królestwo, US Gov Arizona, US Gov Teksas, US Gov Wirginia, zachodnio-środkowe stany USA, Europa Zachodnia, Indie Zachodnie, zachodnie stany USA i zachodnie stany USA 2.
+*Docelowy dysk pamięci masowej (w postaci wielkości liter)* * | Typ dysków, które mają być używane na potrzeby magazynu na platformie Azure. <br/><br/> Określ docelowy dysk pamięci masowej w postaci zarządzanej, standardowej dysku SSD zarządzanej lub standardowej zarządzanej przestrzeni DYSKowej.
+**Docelowy dysk magazynujący (ustalanie wielkości na podstawie wydajności)** | Określ typ docelowego dysku magazynującego w postaci automatycznej, zarządzanej w warstwie Premium, standardowej zarządzanej pamięci DYSKowej lub standardowej zarządzanej pamięci SSD.<br/><br/> **Automatyczne**: zalecenie dysku opiera się na danych wydajności dysków (operacji wejścia/wyjścia na sekundę (IOPS) i przepływności.<br/><br/>**Premium/Standard**: Ocena zaleca użycie jednostki SKU dysku w wybranym typie magazynu.<br/><br/> Jeśli chcesz uzyskać umowę SLA dotyczącą pojedynczej instancji na maszynę wirtualną o 99,9%, rozważ użycie dysków zarządzanych w warstwie Premium. Gwarantuje to, że wszystkie dyski w ocenie są zalecane jako dyski zarządzane w warstwie Premium.<br/><br/> Usługa Azure Migrate obsługuje tylko dyski zarządzane na potrzeby oceny migracji.
 **Wystąpienia zarezerwowane (RIs)** | Określ [wystąpienia zarezerwowane](https://azure.microsoft.com/pricing/reserved-vm-instances/) na platformie Azure, dzięki czemu szacunki kosztów w ramach oceny są uwzględniane w ramach rabatu.<br/><br/> Usługi RIs są obecnie obsługiwane tylko w przypadku ofert z opcją płatność zgodnie z rzeczywistym użyciem w Azure Migrate.
 **Kryteria ustalania wielkości** | Służy do odpowiedniego rozmiaru maszyny wirtualnej na platformie Azure.<br/><br/> Używaj wielkości liter lub wielkości na podstawie wydajności.
 **Historia wydajności** | Używane z rozmiarem opartym na wydajności. Określ czas trwania używany podczas oceny danych wydajności.
 **Użycie percentyla** | Używane z rozmiarem opartym na wydajności. Określa wartość percentylu przykładu wydajności, która ma być używana w przypadku zmiany wielkości liter. 
 **Serie maszyn wirtualnych** | Określ serię maszyn wirtualnych platformy Azure, którą chcesz wziąć pod uwagę w przypadku zmiany rozmiarów. Na przykład jeśli nie masz środowiska produkcyjnego wymagającego maszyn wirtualnych serii A na platformie Azure, możesz wykluczyć serię z listy lub serii.
-**Współczynnik komfortu** | Bufor używany podczas oceny. Stosowane na podstawie danych użycia maszyny dla maszyn wirtualnych (procesor CPU, pamięć, dysk i sieć). 
-W przypadku problemów takich jak użycie sezonowe, krótka historia wydajności i prawdopodobnie rośnie w przyszłości.<br/><br/> Na przykład 10-rdzeniowa maszyna wirtualna z wykorzystaniem 20% zwykle skutkuje dwurdzeniową maszyną wirtualną. W przypadku współczynnika komfortu wynoszącego 2,0 x w zamian powstaje wielordzeniowa maszyna wirtualna.
+**Współczynnik komfortu** | Bufor używany podczas oceny. Stosowane na podstawie danych użycia maszyny dla maszyn wirtualnych (procesor CPU, pamięć, dysk i sieć). W przypadku problemów takich jak użycie sezonowe, krótka historia wydajności i prawdopodobnie rośnie w przyszłości.<br/><br/> Na przykład 10-rdzeniowa maszyna wirtualna z wykorzystaniem 20% zwykle skutkuje dwurdzeniową maszyną wirtualną. W przypadku współczynnika komfortu wynoszącego 2,0 x w zamian powstaje wielordzeniowa maszyna wirtualna.
 **Oferta** | Wyświetla [ofertę platformy Azure](https://azure.microsoft.com/support/legal/offer-details/) , w której zarejestrowano. Ocena serwera szacuje odpowiednio koszt.
 **Waluta** | Waluta rozliczeniowa dla Twojego konta.
 **Rabat (%)** | Wyświetla wszystkie zniżki związane z subskrypcją, które otrzymujesz w ramach oferty platformy Azure. Ustawienie domyślne to 0%.

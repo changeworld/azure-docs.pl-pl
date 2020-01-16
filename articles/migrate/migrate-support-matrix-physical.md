@@ -1,64 +1,39 @@
 ---
-title: Obsługa fizycznej oceny i migracji serwera przy użyciu Azure Migrate
-description: Podsumowuje obsługę fizycznej oceny serwera/migracji przy użyciu Azure Migrate.
-author: rayne-wiselman
-manager: carmonm
-ms.service: azure-migrate
+title: Obsługa oceny serwera fizycznego przy użyciu Azure Migrate
+description: Dowiedz się więcej o obsłudze oceny serwera fizycznego za pomocą Azure Migrate.
 ms.topic: conceptual
-ms.date: 11/19/2019
-ms.author: raynew
-ms.openlocfilehash: 9e749297d831aeae7d785a9a9a29bea1f8c6d5e3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/08/2020
+ms.openlocfilehash: 32080605217cde78bd648ca6192f73d1025dea4c
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75454613"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028766"
 ---
-# <a name="support-matrix-for-physical-server-assessment-and-migration"></a>Macierz obsługi dotycząca oceny i migracji serwerów fizycznych
+# <a name="support-matrix-for-physical-server-assessment"></a>Macierz obsługi dla oceny serwera fizycznego 
 
 Za pomocą [usługi Azure Migrate](migrate-overview.md) można oceniać i migrować maszyny do chmury Microsoft Azure. Ten artykuł podsumowuje ustawienia i ograniczenia dotyczące obsługi oceniania i migrowania lokalnych serwerów fizycznych.
 
 
+## <a name="overview"></a>Przegląd
 
-## <a name="physical-server-scenarios"></a>Scenariusze dotyczące serwera fizycznego
+Aby ocenić maszyny lokalne na potrzeby migracji na platformę Azure z tego artykułu, należy dodać Azure Migrate: Narzędzie do oceny serwera do projektu Azure Migrate. Należy wdrożyć [urządzenie Azure Migrate](migrate-appliance.md). Urządzenie stale odnajduje maszyny lokalne i wysyła dane dotyczące konfiguracji i wydajności na platformę Azure. Po odnajdywaniu maszyn można zebrać odnalezione maszyny do grup i uruchomić ocenę dla grupy
 
-W tabeli zestawiono obsługiwane scenariusze dla serwerów fizycznych.
-
-**Wdrożenie** | **Szczegóły***
---- | ---
-**Ocenianie lokalnych serwerów fizycznych** | [Skonfiguruj](tutorial-prepare-physical.md) swoją pierwszą ocenę.<br/><br/> [Uruchom](tutorial-assess-physical.md) ocenę.
-**Migrowanie serwerów fizycznych na platformę Azure** | [Wypróbuj](tutorial-migrate-physical-virtual-machines.md) migrację do platformy Azure.
-
-
-## <a name="azure-migrate-projects"></a>Projekty Azure Migrate
+## <a name="limitations"></a>Ograniczenia
 
 **Pomoc techniczna** | **Szczegóły**
 --- | ---
-**Uprawnienia platformy Azure** | Aby utworzyć projekt Azure Migrate, musisz mieć uprawnienia współautora lub właściciela w ramach subskrypcji.
-**Serwery fizyczne** | Oceń do 35 000 serwerów fizycznych w jednym projekcie. W ramach subskrypcji platformy Azure można mieć wiele projektów. Projekt może obejmować serwery fizyczne, maszyny wirtualne VMware i maszyny wirtualne funkcji Hyper-V, a także limity oceny.
-**Lokalizacja geograficzna** | Możesz tworzyć Azure Migrate projekty w wielu lokalizacje geograficzneach. Chociaż można tworzyć projekty w określonych lokalizacje geograficzne, można ocenić lub migrować maszyny pod kątem innych lokalizacji docelowych. Lokalizacja geograficzna projektu służy tylko do przechowywania odnalezionych metadanych.
+**Limity oceny**| Odnajdź i Oceń maksymalnie 35 000 serwerów fizycznych w jednym [projekcie](migrate-support-matrix.md#azure-migrate-projects).
+**Limity projektu** | Możesz utworzyć wiele projektów w ramach subskrypcji platformy Azure. Projekt może obejmować maszyny wirtualne VMware, maszyny wirtualne funkcji Hyper-V i serwery fizyczne oraz limity oceny.
+**Discovery** (Odnajdywanie) | Urządzenie Azure Migrate może odnajdywać maksymalnie 250 serwerów fizycznych.
+**Ocena** | Można dodać do 35 000 maszyn w jednej grupie.<br/><br/> W ramach jednej oceny można ocenić do 35 000 maszyn.
 
-  **Lokalizacja geograficzna** | **Lokalizacja magazynu metadanych**
-  --- | ---
-  Platforma Azure dla instytucji rządowych | US Gov Wirginia
-  Azja i Pacyfik | Azja Wschodnia lub Azja Południowo-Wschodnia
-  Australia | Australia Wschodnia lub Australia Południowo-Wschodnia
-  Brazylia | Brazylia Południowa
-  Kanada | Kanada środkowa lub Kanada Wschodnia
-  Europa | Europa Północna lub Europa Zachodnia
-  Francja | Francja Środkowa
-  Indie | Indie Środkowe lub Indie Południowe
-  Japonia |  Japonia Wschodnia lub Japonia Zachodnia
-  Korea Południowa | Korea środkowa lub Korea Południowa
-  Zjednoczone Królestwo | Południowe Zjednoczone Królestwo lub Zachodnie Zjednoczone Królestwo
-  Stany Zjednoczone | Środkowe stany USA lub zachodnie stany USA 2
+[Dowiedz się więcej](concepts-assessment-calculation.md) na temat ocen.
 
 
- > [!NOTE]
- > Obsługa Azure Government jest obecnie dostępna tylko dla [starszej wersji](https://docs.microsoft.com/azure/migrate/migrate-services-overview#azure-migrate-versions) programu Azure Migrate.
 
 
-## <a name="assessment-physical-server-requirements"></a>Ocena — wymagania dotyczące serwera fizycznego
+## <a name="physical-server-requirements"></a>Wymagania dotyczące serwera fizycznego
 
 | **Pomoc techniczna**                | **Szczegóły**               
 | :-------------------       | :------------------- |
@@ -67,42 +42,14 @@ W tabeli zestawiono obsługiwane scenariusze dla serwerów fizycznych.
 | **System operacyjny** | Wszystkie systemy operacyjne [Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines) i [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) są obsługiwane z wyjątkiem następujących:<br/> Windows Server 2003 <br/> SUSE Linux|
 
 
-## <a name="assessment-appliance-requirements"></a>Ocena — wymagania dotyczące urządzenia
+## <a name="azure-migrate-appliance-requirements"></a>Wymagania dotyczące urządzenia Azure Migrate
 
-W celu oceny Azure Migrate uruchamia lekkie urządzenie w celu odnajdywania serwerów fizycznych oraz wysyłania metadanych serwera i danych wydajności do Azure Migrate. Urządzenie można uruchomić na serwerze fizycznym lub maszynie wirtualnej i skonfigurować je przy użyciu skryptu programu PowerShell pobranego z Azure Portal. Poniższa tabela zawiera podsumowanie wymagań dotyczących urządzeń.
+Azure Migrate używa [urządzenia Azure Migrate](migrate-appliance.md) do odnajdowania i oceny. Urządzenie dla serwerów fizycznych można uruchomić na maszynie wirtualnej lub na komputerze fizycznym. Skonfigurujesz go przy użyciu skryptu programu PowerShell pobranego z Azure Portal.
 
-| **Pomoc techniczna**                | **Szczegóły**               
-| :-------------------       | :------------------- |
-| **Wdrażanie urządzenia**   |  Skrypt Instalatora urządzenia można pobrać z portalu (w folderze spakowanym). <br/> Można rozpakować folder i uruchomić skrypt programu PowerShell (AzureMigrateInstaller. ps1) na dedykowanym serwerze fizycznym lub maszynie wirtualnej w celu skonfigurowania urządzenia.<br/>  Na maszynie wybranej do zainstalowania urządzenia musi działać system Windows Server 2016.<br/> Maszyna wymaga wystarczającej ilości miejsca, aby przydzielić 16 GB pamięci RAM, 8 procesorów wirtualnych vCPU, około 80 GB miejsca do magazynowania oraz przełącznik zewnętrzny dla maszyny wirtualnej urządzenia.<br/> Urządzenie musi mieć statyczny lub dynamiczny adres IP oraz dostęp do Internetu.
-| **Projekt Azure Migrate**  |  Urządzenie może być skojarzone z pojedynczym projektem.<br/> Dowolna liczba urządzeń może być skojarzona z pojedynczym projektem.<br/> Można ocenić do 35 000 maszyn w projekcie.
-| **Discovery** (Odnajdywanie)              | Pojedyncze urządzenie może wykryć do 250 serwerów.
-| **Grupa oceny**       | Można dodać do 35 000 maszyn w jednej grupie.
-| **Ocena**             | W ramach jednej oceny można ocenić do 35 000 maszyn.
+- Dowiedz się więcej o [wymaganiach dotyczących urządzeń](migrate-appliance.md#appliance---physical) dla serwerów fizycznych.
+- Informacje o [adresach URL](migrate-appliance.md#url-access) , do których urządzenie musi uzyskać dostęp.
 
-
-## <a name="assessment-appliance-url-access"></a>Ocena — dostęp do adresu URL urządzenia
-
-Do oceny maszyn wirtualnych urządzenie Azure Migrate musi mieć łączność z Internetem.
-
-- Podczas wdrażania urządzenia Azure Migrate sprawdza połączenie adresów URL, które zostały podsumowane w poniższej tabeli.
-- Jeśli używasz serwera proxy opartego na adresie URL, Zezwól na dostęp do adresów URL w tabeli, upewniając się, że serwer proxy rozpoznaje wszystkie rekordy CNAME otrzymane podczas wyszukiwania adresów URL.
-- W przypadku przechwycenia serwera proxy może zaistnieć konieczność zaimportowania certyfikatu serwera z serwera proxy do urządzenia.
-
-
-**Adres URL** | **Szczegóły**  
---- | ---
-*.portal.azure.com | Nawigacja do Azure Portal
-*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *.microsoft.com <br/> *.live.com  | Zaloguj się do Twojej subskrypcji platformy Azure.
-*.microsoftonline.com <br/> *.microsoftonline-p.com | Tworzenie aplikacji Azure Active Directory na potrzeby komunikacji urządzeń z usługą.
-management.azure.com | Tworzenie aplikacji Azure Active Directory na potrzeby komunikacji urządzeń z usługą.
-dc.services.visualstudio.com | Rejestrowanie i monitorowanie
-*.vault.azure.net | Zarządzaj wpisami tajnymi w Azure Key Vault podczas komunikacji między urządzeniem i usługą.
-aka.ms/* | Zezwalaj na dostęp do linków aliasów.
-https://download.microsoft.com/download/* | Zezwala na pobieranie z witryny pobierania firmy Microsoft.
-
-
-
-## <a name="assessment-port-requirements"></a>Ocena — wymagania dotyczące portów
+## <a name="port-access"></a>Dostęp do portu
 
 Poniższa tabela zawiera podsumowanie wymagań dotyczących portów dla oceny.
 
@@ -114,4 +61,4 @@ Poniższa tabela zawiera podsumowanie wymagań dotyczących portów dla oceny.
 
 ## <a name="next-steps"></a>Następne kroki
 
-[Przygotuj się do oceny serwera fizycznego](tutorial-prepare-physical.md) na potrzeby oceny i migracji serwera fizycznego.
+[Przygotuj się do oceny serwera fizycznego](tutorial-prepare-physical.md).

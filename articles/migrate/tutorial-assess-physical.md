@@ -1,18 +1,14 @@
 ---
 title: Ocenianie serwerów fizycznych na potrzeby migracji na platformę Azure za pomocą oceny serwera Azure Migrate
 description: Opisuje, jak oceniać lokalne serwery fizyczne do migracji na platformę Azure przy użyciu oceny serwera Azure Migrate.
-author: rayne-wiselman
-manager: carmonm
-ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 11/18/2019
-ms.author: raynew
-ms.openlocfilehash: 56b7cc6e95cb85b5508199287cc77aedeebc8b81
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 10cd13831fe6cb6b843f0a79a5d5ba56814bcde0
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74280547"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028994"
 ---
 # <a name="assess-physical-servers-with-azure-migrate-server-assessment"></a>Ocenianie serwerów fizycznych za pomocą Azure Migrate: Ocena serwera
 
@@ -20,7 +16,7 @@ W tym artykule pokazano, jak oceniać lokalne serwery fizyczne przy użyciu Azur
 
 [Azure Migrate](migrate-services-overview.md) udostępnia centrum narzędzi, które ułatwiają odnajdywanie, ocenianie i Migrowanie aplikacji, infrastruktury i obciążeń do Microsoft Azure. Centrum obejmuje narzędzia Azure Migrate i oferty niezależnych dostawców oprogramowania (ISV) innych firm.
 
-Ten samouczek jest drugą częścią serii, która pokazuje, jak oceniać i migrować serwery fizyczne na platformę Azure. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Ten samouczek jest drugą częścią serii, która pokazuje, jak oceniać i migrować serwery fizyczne na platformę Azure. Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 > [!div class="checklist"]
 > * Skonfiguruj projekt Azure Migrate.
 > * Skonfiguruj urządzenie Azure Migrate uruchamiane lokalnie, aby ocenić serwery fizyczne.
@@ -54,7 +50,7 @@ Skonfiguruj nowy projekt usługi Azure Migrate w następujący sposób.
 
 4. W obszarze **Wprowadzenie** kliknij pozycję **Dodaj narzędzia**.
 5. W obszarze **Projekt migracji**wybierz subskrypcję platformy Azure i utwórz grupę zasobów, jeśli jej nie masz.     
-6. W obszarze **szczegóły projektu**Określ nazwę projektu i lokalizację geograficzną, w której chcesz utworzyć projekt. Azja, Europa, Zjednoczone Królestwo i Stany Zjednoczone są obsługiwane.
+6. W obszarze **szczegóły projektu**Określ nazwę projektu i lokalizację geograficzną, w której chcesz utworzyć projekt. Azja, Europa, Wielka Brytania i Stany Zjednoczone są obsługiwane.
 
     - Lokalizacja geograficzna projektu służy tylko do przechowywania metadanych zebranych z serwerów lokalnych.
     - Podczas przeprowadzania migracji można wybrać dowolny region docelowy.
@@ -141,7 +137,7 @@ W razie jakichkolwiek problemów możesz uzyskać dostęp do dzienników skrypt�
 
 ### <a name="verify-appliance-access-to-azure"></a>Weryfikowanie dostępu urządzenia do platformy Azure
 
-Upewnij się, że urządzenie może połączyć się z [adresami URL platformy Azure](migrate-support-matrix-physical.md#assessment-appliance-url-access).
+Upewnij się, że urządzenie może połączyć się z [adresami URL platformy Azure](migrate-appliance.md#url-access).
 
 
 ### <a name="configure-the-appliance"></a>Konfigurowanie urządzenia
@@ -296,7 +292,7 @@ Klasyfikacje zaufania dla oceny są następujące.
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku zostaną wykonane następujące czynności:
+W tym samouczku zostały wykonane następujące czynności:
 
 > [!div class="checklist"]
 > * Konfigurowanie urządzenia Azure Migrate

@@ -8,12 +8,12 @@ ms.author: deli
 ms.reviewer: klam, estfan, logicappspm
 ms.date: 01/11/2020
 ms.topic: article
-ms.openlocfilehash: a5cfb79626370ab9f8493038ac1583993a154b59
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 21314d3c80832c14538130ce373ccf6d2dd19f18
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75912111"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75965935"
 ---
 # <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>Obsługa błędów i wyjątków w Azure Logic Apps
 
@@ -249,7 +249,7 @@ Można dostosować działanie "Uruchom po" akcji, aby akcja była uruchamiana, g
 
 ## <a name="evaluate-actions-with-scopes-and-their-results"></a>Oceń akcje z zakresami i ich wynikami
 
-Podobnie jak w przypadku wykonywania pojedynczych akcji z właściwością `runAfter` można grupować akcje w obrębie [zakresu](../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md). Zakresy można używać w celu logicznego grupowania akcji, oceny stanu zagregowanego zakresu i wykonywania akcji na podstawie tego stanu. Po zakończeniu wszystkich akcji w zakresie, sam zakres uzyskuje własny stan. 
+Podobnie jak w przypadku wykonywania pojedynczych akcji z właściwością `runAfter` można grupować akcje w obrębie [zakresu](../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md). Zakresy można używać w celu logicznego grupowania akcji, oceny stanu zagregowanego zakresu i wykonywania akcji na podstawie tego stanu. Po zakończeniu wszystkich akcji w zakresie, sam zakres uzyskuje własny stan.
 
 Aby sprawdzić stan zakresu, można użyć tych samych kryteriów, które są używane do sprawdzania stanu uruchomienia aplikacji logiki, takiej jak `Succeeded`, `Failed`i tak dalej.
 
@@ -267,7 +267,7 @@ Chociaż przechwytywanie błędów z zakresu jest przydatne, można również za
 
 Funkcja [`result()`](../logic-apps/workflow-definition-language-functions-reference.md#result) zapewnia kontekst dotyczący wyników wszystkich akcji w zakresie. Funkcja `result()` akceptuje pojedynczy parametr, który jest nazwą zakresu i zwraca tablicę zawierającą wszystkie wyniki akcji z tego zakresu. Te obiekty akcji zawierają te same atrybuty co obiekt `actions()`, takie jak godzina rozpoczęcia akcji, godzina zakończenia, stan, dane wejściowe, identyfikatory korelacji i wyjścia. Aby wysłać kontekst dla wszystkich akcji, które zakończyły się niepowodzeniem w zakresie, można łatwo sparować wyrażenie `@result()` z właściwością `runAfter`.
 
-Aby uruchomić akcję dla każdej akcji w zakresie, który ma `Failed` wynik i filtrować tablicę wyników w dół do akcji zakończonych niepowodzeniem, można sparować wyrażenie `@result()` z akcją [**filtru Array**](../connectors/connectors-native-query.md) i pętlą [**for each**](../logic-apps/logic-apps-control-flow-loops.md) . Można zastosować przefiltrowaną tablicę wyników i wykonać akcję dla każdej awarii przy użyciu pętli `For_each`.
+Aby uruchomić akcję dla każdej akcji w zakresie, który ma `Failed` wynik i filtrować tablicę wyników w dół do akcji zakończonych niepowodzeniem, można sparować wyrażenie `@result()` z akcją [**filtru Array**](logic-apps-perform-data-operations.md#filter-array-action) i pętlą [**for each**](../logic-apps/logic-apps-control-flow-loops.md) . Można zastosować przefiltrowaną tablicę wyników i wykonać akcję dla każdej awarii przy użyciu pętli `For_each`.
 
 Oto przykład, a następnie szczegółowy opis, który wysyła żądanie HTTP POST z treścią odpowiedzi dla wszystkich akcji, które zakończyły się niepowodzeniem w zakresie "My_Scope":
 

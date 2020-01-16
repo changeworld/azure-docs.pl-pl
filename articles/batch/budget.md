@@ -2,20 +2,20 @@
 title: Analiza kosztów i budżet — Azure Batch
 description: Dowiedz się, jak uzyskać analizę kosztów i ustawić budżet dla obciążenia usługi Batch.
 services: batch
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 ms.service: batch
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 07/19/2019
-ms.author: lahugh
-ms.openlocfilehash: 6ccf530fe2164b3d9b1936648ffe9057c334efd6
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.author: jushiman
+ms.openlocfilehash: 7707d966049e9eced1add1104441af8fee356ef0
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "70094204"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029570"
 ---
 # <a name="cost-analysis-and-budgets-for-azure-batch"></a>Analiza kosztów i budżety dla Azure Batch
 
@@ -23,7 +23,7 @@ Nie jest naliczana opłata za Azure Batch, tylko bazowe zasoby obliczeniowe i li
 
 ## <a name="batch-resources"></a>Zasoby w usłudze Batch
 
-Maszyny wirtualne są najbardziej znaczącym zasobem używanym do przetwarzania wsadowego. Koszt korzystania z maszyn wirtualnych na potrzeby usługi Batch jest obliczany na podstawie typu, ilości i okresu użytkowania. Opcje rozliczeń maszyn wirtualnych to [płatność zgodnie z rzeczywistym](https://azure.microsoft.com/offers/ms-azr-0003p/) użyciem lub [rezerwacja](../billing/billing-save-compute-costs-reservations.md) (płatność z góry). Obie opcje płatności mają różne zalety, w zależności od obciążenia obliczeń, a oba modele płatności wpłyną na rozliczenia w różny sposób.
+Maszyny wirtualne są najbardziej znaczącym zasobem używanym do przetwarzania wsadowego. Koszt korzystania z maszyn wirtualnych na potrzeby usługi Batch jest obliczany na podstawie typu, ilości i okresu użytkowania. Opcje rozliczeń maszyn wirtualnych to [płatność zgodnie z rzeczywistym](https://azure.microsoft.com/offers/ms-azr-0003p/) użyciem lub [rezerwacja](../cost-management-billing/reservations/save-compute-costs-reservations.md) (płatność z góry). Obie opcje płatności mają różne zalety, w zależności od obciążenia obliczeń, a oba modele płatności wpłyną na rozliczenia w różny sposób.
 
 Gdy aplikacje są wdrażane w węzłach usługi Batch (VM) przy użyciu [pakietów aplikacji](batch-application-packages.md), opłaty są naliczane za zasoby magazynu platformy Azure zużywane przez pakiety aplikacji. Są również naliczane opłaty za magazyn wszystkich plików wejściowych lub wyjściowych, takich jak pliki zasobów i inne dane dziennika. Ogólnie rzecz biorąc, koszt danych magazynu związanych z usługą Batch jest znacznie niższy niż koszt zasobów obliczeniowych. Każda maszyna wirtualna w puli utworzonej za pomocą **VirtualMachineConfiguration** ma skojarzony dysk systemu operacyjnego, który korzysta z dysków zarządzanych przez platformę Azure. Dyski zarządzane przez platformę Azure mają dodatkowe koszty, a inne warstwy wydajności dysków mają również inne koszty.
 
@@ -50,15 +50,15 @@ Za pomocą Azure Portal można tworzyć budżety i wydawania alertów dla pul lu
 1. W Azure Portal wybierz pozycję **Cost Management + rozliczanie** na lewym pasku nawigacyjnym.
 1. Wybierz subskrypcję z sekcji **My subscriptions (Moje subskrypcje** )
 1. Przejdź do **analizy kosztów** poniżej sekcji **Cost Management** lewego paska nawigacyjnego, która będzie zawierać następujący widok:
-1. Wybierz pozycję **Dodaj filtr**. Z pierwszej listy rozwijanej wybierz pozycję **zasób** ![Select filtr zasobów ](./media/batch-budget/resource-filter.png)
+1. Wybierz pozycję **Dodaj filtr**. Z pierwszej listy rozwijanej wybierz pozycję **zasób** ![wybierz filtr zasobów](./media/batch-budget/resource-filter.png)
 1. Z drugiej listy rozwijanej wybierz pulę wsadową. Po wybraniu puli analiza kosztów będzie wyglądać podobnie do poniższej analizy.
-    ![Cost analizy puli ](./media/batch-budget/pool-cost-analysis.png)
+    ![analizę kosztów puli](./media/batch-budget/pool-cost-analysis.png)
 
 Uzyskana analiza kosztów pokazuje koszt puli, a także zasoby, które przyczyniają się do tego kosztu. W tym przykładzie maszyny wirtualne używane w puli to najbardziej kosztowne zasoby.
 
 Aby utworzyć budżet dla puli wybierz pozycję **budżet: brak**, a następnie wybierz pozycję **utwórz nowy budżet >** . Teraz Użyj tego okna, aby skonfigurować budżet przeznaczony dla puli.
 
-Aby uzyskać więcej informacji na temat konfigurowania budżetu, zobacz [Tworzenie budżetów platformy Azure i zarządzanie nimi](../cost-management/tutorial-acm-create-budgets.md).
+Aby uzyskać więcej informacji na temat konfigurowania budżetu, zobacz [Tworzenie budżetów platformy Azure i zarządzanie nimi](../cost-management-billing/costs/tutorial-acm-create-budgets.md).
 
 > [!NOTE]
 > Azure Batch jest oparta na platformie Azure Cloud Services i technologii Azure Virtual Machines. Po wybraniu **konfiguracji Cloud Services**zostanie naliczona opłata oparta na Cloud Services strukturze cenowej. Po wybraniu opcji **Konfiguracja maszyny wirtualnej**opłata jest naliczana na podstawie Virtual Machinesj struktury cenowej. Przykład na tej stronie używa **konfiguracji maszyny wirtualnej**.
@@ -81,9 +81,9 @@ SSD w warstwie Premium dyski systemu operacyjnego są droższe, ale większa wyd
 
 ### <a name="reserved-virtual-machine-instances"></a>Zarezerwowane wystąpienia maszyn wirtualnych
 
-Jeśli zamierzasz używać usługi Batch przez długi czas, możesz zaoszczędzić na kosztach maszyn wirtualnych, korzystając z [Azure Reservations](../billing/billing-save-compute-costs-reservations.md) dla obciążeń. Stawka rezerwacji jest znacznie niższa od stawki płatność zgodnie z rzeczywistym użyciem. Wystąpienia maszyn wirtualnych używane bez rezerwacji są obciążane opłatami według stawki płatność zgodnie z rzeczywistym użyciem. W przypadku zakupienia rezerwacji rabat zostanie zastosowany i nie będą już naliczane opłaty według stawek płatność zgodnie z rzeczywistym użyciem.
+Jeśli zamierzasz używać usługi Batch przez długi czas, możesz zaoszczędzić na kosztach maszyn wirtualnych, korzystając z [Azure Reservations](../cost-management-billing/reservations/save-compute-costs-reservations.md) dla obciążeń. Stawka rezerwacji jest znacznie niższa od stawki płatność zgodnie z rzeczywistym użyciem. Wystąpienia maszyn wirtualnych używane bez rezerwacji są obciążane opłatami według stawki płatność zgodnie z rzeczywistym użyciem. W przypadku zakupienia rezerwacji rabat zostanie zastosowany i nie będą już naliczane opłaty według stawek płatność zgodnie z rzeczywistym użyciem.
 
-### <a name="automatic-scaling"></a>Skalowanie automatyczne
+### <a name="automatic-scaling"></a>Automatyczne skalowanie
 
 [Automatyczne skalowanie](batch-automatic-scaling.md) dynamicznie skaluje liczbę maszyn wirtualnych w puli wsadowej na podstawie wymagań bieżącego zadania. Dzięki skalowaniu puli na podstawie okresu istnienia zadania automatyczne skalowanie zapewnia, że maszyny wirtualne są skalowane i używane tylko wtedy, gdy istnieje zadanie do wykonania. Gdy zadanie zostało ukończone lub nie ma żadnych zadań, maszyny wirtualne są automatycznie skalowane w celu zapisania zasobów obliczeniowych. Skalowanie umożliwia obniżenie całkowitego kosztu rozwiązania usługi Batch przy użyciu tylko potrzebnych zasobów.
 

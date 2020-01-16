@@ -1,44 +1,38 @@
 ---
-title: Obsługa oceny/migracji funkcji Hyper-V w Azure Migrate
-description: Dowiedz się więcej o obsłudze oceny/migracji funkcji Hyper-V za pomocą Azure Migrate.
-author: rayne-wiselman
-manager: carmonm
-ms.service: azure-migrate
+title: Obsługa oceny funkcji Hyper-V w Azure Migrate
+description: Dowiedz się więcej o obsłudze oceny funkcji Hyper-V za pomocą Azure Migrate.
 ms.topic: conceptual
-ms.date: 11/19/2019
-ms.author: raynew
-ms.openlocfilehash: 6562d3f15d080a3bbc54a9985c12eae5908a9980
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.date: 01/08/2020
+ms.openlocfilehash: 20bdbb16d2f0610f6519424141b09190eae3cc42
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186654"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028786"
 ---
-# <a name="support-matrix-for-hyper-v-assessment-and-migration"></a>Macierz obsługi dotycząca oceny i migracji środowiska funkcji Hyper-V
+# <a name="support-matrix-for-hyper-v-assessment"></a>Macierz obsługi dla oceny funkcji Hyper-V
 
-Za pomocą [usługi Azure Migrate](migrate-overview.md) można oceniać i migrować maszyny do chmury Microsoft Azure. W tym artykule opisano ustawienia i ograniczenia dotyczące oceny i migracji lokalnych maszyn wirtualnych funkcji Hyper-V.
+W tym artykule opisano ustawienia i ograniczenia dotyczące oceny maszyn wirtualnych funkcji Hyper-V za pomocą [Azure Migrate: Ocena serwera](migrate-services-overview.md#azure-migrate-server-assessment-tool) . Jeśli szukasz informacji na temat migrowania maszyn wirtualnych funkcji Hyper-V do platformy Azure, zapoznaj się z [matrycą obsługi migracji](migrate-support-matrix-hyper-v-migration.md).
+
+## <a name="overview"></a>Przegląd
+
+Aby ocenić maszyny lokalne na potrzeby migracji na platformę Azure z tego artykułu, należy dodać Azure Migrate: Narzędzie do oceny serwera do projektu Azure Migrate. Należy wdrożyć [urządzenie Azure Migrate](migrate-appliance.md). Urządzenie stale odnajduje maszyny lokalne i wysyła dane dotyczące konfiguracji i wydajności na platformę Azure. Po odnajdywaniu maszyn można zebrać odnalezione maszyny do grup i uruchomić ocenę dla grupy.
 
 
-
-## <a name="hyper-v-scenarios"></a>Scenariusze funkcji Hyper-V
-
-W tabeli zestawiono obsługiwane scenariusze dotyczące maszyn wirtualnych funkcji Hyper-V.
-
-**Wdrożenie** | **Szczegóły***
---- | ---
-**Ocenianie lokalnych maszyn wirtualnych funkcji Hyper-V** | [Skonfiguruj](tutorial-prepare-hyper-v.md) swoją pierwszą ocenę.<br/><br/> [Uruchom](scale-hyper-v-assessment.md) ocenę na dużą skalę.
-**Migrowanie maszyn wirtualnych funkcji Hyper-V na platformę Azure** | [Wypróbuj](tutorial-migrate-hyper-v.md) migrację do platformy Azure.
-
-## <a name="azure-migrate-projects"></a>Projekty Azure Migrate
+## <a name="limitations"></a>Ograniczenia
 
 **Pomoc techniczna** | **Szczegóły**
 --- | ---
-Uprawnienia platformy Azure | Aby utworzyć projekt Azure Migrate, musisz mieć uprawnienia współautora lub właściciela w ramach subskrypcji.
-Maszyny wirtualne funkcji Hyper-V | Oceń do 35 000 maszyn wirtualnych funkcji Hyper-V w jednym projekcie. W ramach subskrypcji platformy Azure można mieć wiele projektów. Projekt może zawierać zarówno maszyny wirtualne VMware, jak i maszyny wirtualne funkcji Hyper-V, a także limity oceny.
-Geograficzne | [Przejrzyj](migrate-support-matrix.md#supported-geographies) obsługiwane lokalizacje geograficzne.
+**Limity oceny**| Odkrywaj i oceniaj do 35 000 maszyn wirtualnych funkcji Hyper-V w jednym [projekcie](migrate-support-matrix.md#azure-migrate-projects).
+**Limity projektu** | Możesz utworzyć wiele projektów w ramach subskrypcji platformy Azure. Projekt może obejmować maszyny wirtualne VMware, maszyny wirtualne funkcji Hyper-V i serwery fizyczne oraz limity oceny.
+**Discovery** (Odnajdywanie) | Urządzenie Azure Migrate może odnajdywać maksymalnie 5000 maszyn wirtualnych funkcji Hyper-V.<br/><br/> Urządzenie może połączyć się z maksymalnie 300 hostami funkcji Hyper-V.
+**Ocena** | Można dodać do 35 000 maszyn w jednej grupie.<br/><br/> W ramach jednej oceny można ocenić do 35 000 maszyn wirtualnych.
+
+[Dowiedz się więcej](concepts-assessment-calculation.md) na temat ocen.
 
 
-## <a name="assessment-hyper-v-host-requirements"></a>Ocena — wymagania dotyczące hosta funkcji Hyper-V
+
+## <a name="hyper-v-host-requirements"></a>Wymagania dotyczące hosta funkcji Hyper-V
 
 | **Pomoc techniczna**                | **Szczegóły**               
 | :-------------------       | :------------------- |
@@ -49,7 +43,7 @@ Geograficzne | [Przejrzyj](migrate-support-matrix.md#supported-geographies) obs�
 | **Funkcja Hyper-V Replica**       | W przypadku korzystania z funkcji Hyper-V Replica (lub korzystania z wielu maszyn wirtualnych z tymi samymi identyfikatorami maszyn wirtualnych) i odnajdywania zarówno oryginalnej, jak i zreplikowanej maszyny wirtualnej przy użyciu Azure Migrate, Ocena wygenerowana przez Azure Migrate może być niedokładna. |
 
 
-## <a name="assessment-hyper-v-vm-requirements"></a>Ocena — wymagania dotyczące maszyny wirtualnej funkcji Hyper-V
+## <a name="hyper-v-vm-requirements"></a>Wymagania dotyczące maszyn wirtualnych funkcji Hyper-V
 
 | **Pomoc techniczna**                  | **Szczegóły**               
 | :----------------------------- | :------------------- |
@@ -57,115 +51,24 @@ Geograficzne | [Przejrzyj](migrate-support-matrix.md#supported-geographies) obs�
 | **Usługi integracji**       | [Usługi integracji funkcji Hyper-V](https://docs.microsoft.com/virtualization/hyper-v-on-windows/reference/integration-services) muszą być uruchomione na maszynach wirtualnych, które oceniasz, aby przechwycić informacje o systemie operacyjnym. |
 
 
+## <a name="azure-migrate-appliance-requirements"></a>Wymagania dotyczące urządzenia Azure Migrate
 
-## <a name="assessment-appliance-requirements"></a>Ocena — wymagania dotyczące urządzenia
+Azure Migrate używa [urządzenia Azure Migrate](migrate-appliance.md) do odnajdowania i oceny. Urządzenie dla funkcji Hyper-V działa na maszynie wirtualnej funkcji Hyper-V i wdrożone przy użyciu skompresowanego wirtualnego dysku twardego funkcji Hyper-V pobranego z Azure Portal. 
 
-W celu oceny Azure Migrate uruchamia lekkie urządzenie w celu odnajdywania maszyn wirtualnych funkcji Hyper-V oraz wysyłania metadanych maszyn wirtualnych i danych wydajności do Azure Migrate. Urządzenie jest uruchamiane na maszynie wirtualnej funkcji Hyper-V i konfigurowane przy użyciu skompresowanego wirtualnego dysku twardego funkcji Hyper-V pobranego z Azure Portal. Poniższa tabela zawiera podsumowanie wymagań dotyczących urządzeń.
+- Dowiedz się więcej o [wymaganiach dotyczących urządzeń](migrate-appliance.md#appliance---hyper-v) dla funkcji Hyper-V.
+- Informacje o [adresach URL](migrate-appliance.md#url-access) , do których urządzenie musi uzyskać dostęp.
 
-| **Pomoc techniczna**                | **Szczegóły**               
-| :-------------------       | :------------------- |
-| **Wdrażanie urządzenia**   |  Urządzenie jest wdrażane jako maszyna wirtualna funkcji Hyper-V.<br/> Maszyna wirtualna z urządzeniem Azure Migrate jest maszyną wirtualną funkcji Hyper-V w wersji 5,0.<br/> Na hoście funkcji Hyper-V musi być uruchomiony system Windows Server 2012 R2 lub nowszy.<br/> Host wymaga wystarczającej ilości miejsca, aby przydzielić 16 GB pamięci RAM, 8 procesorów wirtualnych vCPU, około 80 GB miejsca do magazynowania oraz przełącznik zewnętrzny dla maszyny wirtualnej urządzenia.<br/> Urządzenie musi mieć statyczny lub dynamiczny adres IP oraz dostęp do Internetu.
-| **Projekt Azure Migrate**  |  Urządzenie może być skojarzone z pojedynczym projektem.<br/> Dowolna liczba urządzeń może być skojarzona z pojedynczym projektem.<br/> Można ocenić do 35 000 maszyn wirtualnych w projekcie.
-| **Hosty funkcji Hyper-V**          | Urządzenie może połączyć się z maksymalnie 300 hostami funkcji Hyper-V.
-| **Odnajdowa**              | Pojedyncze urządzenie może wykryć do 5000 maszyn wirtualnych.
-| **Grupa oceny**       | Można dodać do 35 000 maszyn w jednej grupie.
-| **Ocena**             | W ramach jednej oceny można ocenić do 35 000 maszyn wirtualnych.
-
-
-
-## <a name="assessment-appliance-url-access"></a>Ocena — dostęp do adresu URL urządzenia
-
-Do oceny maszyn wirtualnych urządzenie Azure Migrate musi mieć łączność z Internetem.
-
-- Podczas wdrażania urządzenia Azure Migrate sprawdza połączenie adresów URL, które zostały podsumowane w poniższej tabeli.
-- Jeśli używasz serwera proxy opartego na adresie URL, Zezwól na dostęp do adresów URL w tabeli, upewniając się, że serwer proxy rozpoznaje wszystkie rekordy CNAME otrzymane podczas wyszukiwania adresów URL.
-- W przypadku przechwycenia serwera proxy może zaistnieć konieczność zaimportowania certyfikatu serwera z serwera proxy do urządzenia.
-
-
-**Adres URL** | **Szczegóły**  
---- | ---
-*.portal.azure.com | Nawigacja do Azure Portal
-*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *. microsoft.com <br/> *. live.com  | Zaloguj się do Twojej subskrypcji platformy Azure.
-*.microsoftonline.com <br/> *.microsoftonline-p.com | Tworzenie aplikacji Azure Active Directory na potrzeby komunikacji urządzeń z usługą.
-management.azure.com | Tworzenie aplikacji Azure Active Directory na potrzeby komunikacji urządzeń z usługą.
-dc.services.visualstudio.com | Rejestrowanie i monitorowanie
-*.vault.azure.net | Zarządzaj wpisami tajnymi w Azure Key Vault podczas komunikacji między urządzeniem i usługą.
-aka.ms/* | Zezwalaj na dostęp do linków aliasów.
-https://download.microsoft.com/download/* | Zezwala na pobieranie z witryny pobierania firmy Microsoft.
-
-
-
-## <a name="assessment-port-requirements"></a>Ocena — wymagania dotyczące portów
+## <a name="port-access"></a>Dostęp do portu
 
 Poniższa tabela zawiera podsumowanie wymagań dotyczących portów dla oceny.
 
-**Pliku** | **Połączenie**
+**urządzenia** | **Połączenie**
 --- | ---
 **Wprowadzony** | Połączenia przychodzące na porcie TCP 3389, aby zezwolić na połączenia pulpitu zdalnego z urządzeniem.<br/> Połączenia przychodzące na porcie 44368 do zdalnego dostępu do aplikacji do zarządzania urządzeniami przy użyciu adresu URL: ``` https://<appliance-ip-or-name>:44368 ```<br/> Połączenia wychodzące na portach 443, 5671 i 5672 do wysyłania metadanych odnajdywania i wydajności do Azure Migrate.
 **Host/klaster funkcji Hyper-V** | Połączenia przychodzące na portach usługi WinRM 5985 (HTTP) i 5986 (HTTPS) do ściągania metadanych konfiguracji i wydajności maszyn wirtualnych funkcji Hyper-V przy użyciu sesji model wspólnych informacji (CIM).
-
-## <a name="migration-limitations"></a>Migracja — ograniczenia
-Można wybrać maksymalnie 10 maszyn wirtualnych na potrzeby replikacji. Jeśli chcesz migrować więcej maszyn, wykonaj replikację w grupach o wartości 10.
-
-## <a name="migration-hyper-v-host-requirements"></a>Migracja — wymagania dotyczące hosta funkcji Hyper-V
-
-| **Pomoc techniczna**                | **Szczegóły**               
-| :-------------------       | :------------------- |
-| **Wdrożenie hosta**       | Host funkcji Hyper-V może być autonomiczny lub wdrożony w klastrze. |
-| **Uprawnienia**           | Wymagane są uprawnienia administratora na hoście funkcji Hyper-V. |
-| **System operacyjny hosta** | Windows Server 2019, Windows Server 2016 lub Windows Server 2012 R2. |
-
-## <a name="migration-hyper-v-vm-requirements"></a>Migracja — wymagania dotyczące maszyn wirtualnych funkcji Hyper-V
-
-| **Pomoc techniczna**                  | **Szczegóły**               
-| :----------------------------- | :------------------- |
-| **System operacyjny** | Wszystkie systemy operacyjne [Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines) i [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) , które są obsługiwane przez platformę Azure. |
-| **Uprawnienia**           | Musisz mieć uprawnienia administratora na wszystkich maszynach wirtualnych funkcji Hyper-V, które chcesz ocenić. |
-| **Usługi integracji**       | [Usługi integracji funkcji Hyper-V](https://docs.microsoft.com/virtualization/hyper-v-on-windows/reference/integration-services) muszą być uruchomione na maszynach wirtualnych, które oceniasz, aby przechwycić informacje o systemie operacyjnym. |
-| **Wymagane zmiany dotyczące platformy Azure** | Niektóre maszyny wirtualne mogą wymagać zmian, aby mogły być uruchamiane na platformie Azure. Azure Migrate automatycznie wprowadza te zmiany w następujących systemach operacyjnych:<br/> -Red Hat Enterprise Linux 6.5 +, 7.0 +<br/> - CentOS 6.5+, 7.0+</br> -SUSE Linux Enterprise Server 12 SP1 +<br/> -Ubuntu 14.04 LTS, 16.04 LTS, 18.04 LTS<br/> -Debian 7, 8<br/><br/> W przypadku innych systemów operacyjnych należy ręcznie wprowadzić zmiany przed migracją. Odpowiednie artykuły zawierają instrukcje, jak to zrobić. |
-| **Rozruch systemu Linux**                 | Jeśli/Boot znajduje się na dedykowanej partycji, powinien znajdować się na dysku systemu operacyjnego i nie można go rozłożyć na wiele dysków.<br/> Jeśli/boot jest częścią partycji głównej (/), partycja "/" powinna znajdować się na dysku systemu operacyjnego i nie może obejmować innych dysków. |
-| **Rozruch z interfejsem UEFI**                  | Migrowana maszyna wirtualna na platformie Azure zostanie automatycznie przekonwertowana na maszynę wirtualną rozruchową w systemie BIOS. Na maszynie wirtualnej powinien działać system Windows Server 2012 lub nowszy. Dysk systemu operacyjnego powinien mieć maksymalnie pięć partycji lub mniej, a rozmiar dysku systemu operacyjnego musi być mniejszy niż 300 GB.
-  |
-| **Rozmiar dysku**                  | 2 TB dla dysku systemu operacyjnego, 4 TB dla dysków z danymi.
-| **Numer dysku** | Maksymalnie 16 dysków na maszynę wirtualną.
-| **Zaszyfrowane dyski/woluminy**    | Migracja nie jest obsługiwana. |
-| **RDM/przekazywanie dysków**      | Migracja nie jest obsługiwana. |
-| **Dysk udostępniony** | Maszyny wirtualne korzystające z dysków udostępnionych nie są obsługiwane na potrzeby migracji.
-| **NFS**                        | Woluminy NFS zainstalowane jako woluminy na maszynach wirtualnych nie zostaną zreplikowane. |
-| **MAGAZYNU**                      | Maszyny wirtualne z obiektami docelowymi iSCSI nie są obsługiwane na potrzeby migracji.
-| **Dysk docelowy**                | Można przeprowadzić migrację do maszyn wirtualnych platformy Azure tylko z dyskami zarządzanymi. |
-| **If** | Nieobsługiwane.
-| **Tworzenie zespołu kart interfejsu sieciowego** | Nieobsługiwane.
-| **Azure Site Recovery** | Nie można przeprowadzić replikacji przy użyciu migracji serwera Azure Migrate, jeśli maszyna wirtualna ma włączoną replikację z Azure Site Recovery.
-
-
-
-
-
-## <a name="migration-hyper-v-host-url-access"></a>Migracja — dostęp do adresu URL hosta funkcji Hyper-V
-
-Poniższa tabela zawiera podsumowanie wymagań dostępu do adresów URL dla hostów funkcji Hyper-V.
-
-**Adres URL** | **Szczegóły**  
---- | ---
-login.microsoftonline.com | Kontrola dostępu i zarządzanie tożsamościami przy użyciu Active Directory.
-*.backup.windowsazure.com | Transfer i koordynacja danych replikacji.
-*.hypervrecoverymanager.windowsazure.com | Połącz się z adresami URL usługi Azure Migrate.
-*.blob.core.windows.net | Przekazywanie danych do kont magazynu.
-dc.services.visualstudio.com | Przekaż Dzienniki aplikacji używane do wewnętrznego monitorowania.
-time.windows.com | Weryfikuje synchronizację czasu między systemem i czasem globalnym.
-
-## <a name="migration-port-access"></a>Migracja — dostęp do portu
-
-W poniższej tabeli zestawiono wymagania dotyczące portów na hostach i maszynach wirtualnych funkcji Hyper-V na potrzeby migracji maszyn wirtualnych.
-
-**Pliku** | **Połączenie**
---- | ---
-Hosty/maszyny wirtualne funkcji Hyper-V | Połączenia wychodzące na porcie HTTPS 443 do wysyłania danych replikacji maszyny wirtualnej do Azure Migrate.
-
 
 
 
 ## <a name="next-steps"></a>Następne kroki
 
-[Przygotuj się do oceny maszyn wirtualnych funkcji Hyper-V](tutorial-prepare-hyper-v.md) na potrzeby migracji.
+[Przygotowanie do oceny maszyn wirtualnych funkcji Hyper-V](tutorial-prepare-hyper-v.md)

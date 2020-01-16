@@ -1,6 +1,6 @@
 ---
-title: Wskazówki dotyczące odzyskiwania po awarii dla usługi Azure Data Lake Storage Gen1 | Dokumentacja firmy Microsoft
-description: Wskazówki dotyczące odzyskiwania po awarii dla usługi Azure Data Lake Storage Gen1
+title: Wskazówki dotyczące odzyskiwania po awarii dla Azure Data Lake Storage Gen1 | Microsoft Docs
+description: Wskazówki dotyczące odzyskiwania po awarii dla Azure Data Lake Storage Gen1
 services: data-lake-store
 documentationcenter: ''
 author: twooley
@@ -11,37 +11,37 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: twooley
-ms.openlocfilehash: b3f1888a73baf2b7f9efa9f5e7cdb3305aa9f90d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b33977ca5184ea07b5651be18e3a132d30ce4b39
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60878294"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75966054"
 ---
-# <a name="disaster-recovery-guidance-for-data-in-azure-data-lake-storage-gen1"></a>Wskazówki dotyczące odzyskiwania po awarii dla danych w usłudze Azure Data Lake magazynu Gen1
+# <a name="disaster-recovery-guidance-for-data-in-azure-data-lake-storage-gen1"></a>Wskazówki dotyczące odzyskiwania po awarii dla danych w Azure Data Lake Storage Gen1
 
-Azure Data Lake Storage Gen1 udostępnia magazyn lokalnie nadmiarowy (LRS). Dzięki temu dane na koncie usługi Data Lake Storage Gen1 są odporne na przejściowe awarie sprzętowe w centrum danych dzięki zautomatyzowanym replikom. Dzięki temu trwałości i wysokiej dostępności, spełniające umowę SLA do Gen1 magazynu usługi Data Lake. Ten artykuł zawiera wskazówki na temat jeszcze lepiej chronić swoje dane z rzadko awariami lub przypadkowymi usunięciami.
+Azure Data Lake Storage Gen1 zapewnia Magazyn lokalnie nadmiarowy (LRS). W związku z tym dane na koncie Data Lake Storage Gen1 są odporne na przejściowe awarie sprzętowe w centrum danych za pomocą automatycznych replik. Zapewnia to trwałość i wysoką dostępność, spełniając Data Lake Storage Gen1 umowy SLA. Ten artykuł zawiera wskazówki dotyczące dalszej ochrony danych przed rzadkimi przypadkami wypadków obejmującymi cały region lub przypadkowe usunięcie.
 
 ## <a name="disaster-recovery-guidance"></a>Wskazówki dotyczące odzyskiwania po awarii
-Jest to bardzo ważne, aby każdy klient przygotował własny plan odzyskiwania po awarii. Przeczytaj informacje w tym artykule, aby utworzyć plan odzyskiwania po awarii. Poniżej przedstawiono niektóre zasoby, które mogą pomóc w tworzeniu własnego planu.
+Jest to bardzo ważne, aby każdy klient przygotował własny plan odzyskiwania po awarii. Przeczytaj informacje przedstawione w tym artykule, aby skompilować plan odzyskiwania po awarii. Poniżej przedstawiono niektóre zasoby, które mogą pomóc w tworzeniu własnego planu.
 
 * [Odzyskiwanie aplikacji platformy Azure po awarii i ich wysoka dostępność](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md)
 * [Odporność platformy Azure — wskazówki techniczne](../resiliency/resiliency-technical-guidance.md)
 
-### <a name="best-practices"></a>Najlepsze praktyki
-Zaleca się, że kopiujesz danych o kluczowym znaczeniu do innego konta Data Lake Storage Gen1 w innym regionie z częstotliwością dostosowaną do potrzeb planu odzyskiwania po awarii. Istnieją różne metody kopiowania danych, takie jak [ADLCopy](data-lake-store-copy-data-azure-storage-blob.md), [Azure PowerShell](data-lake-store-get-started-powershell.md) lub [Azure Data Factory](../data-factory/connector-azure-data-lake-store.md). Azure Data Factory to usługa przydatna w przypadku cyklicznego tworzenia i wdrażania potoków przepływu danych.
+### <a name="best-practices"></a>Najlepsze rozwiązania
+Zalecamy skopiowanie danych o kluczowym znaczeniu do innego konta Data Lake Storage Gen1 w innym regionie o częstotliwości dopasowanej do potrzeb planu odzyskiwania po awarii. Istnieją różne metody kopiowania danych, takie jak [ADLCopy](data-lake-store-copy-data-azure-storage-blob.md), [Azure PowerShell](data-lake-store-get-started-powershell.md) lub [Azure Data Factory](../data-factory/connector-azure-data-lake-store.md). Azure Data Factory to usługa przydatna w przypadku cyklicznego tworzenia i wdrażania potoków przepływu danych.
 
-Jeśli wystąpi awaria regionalna, można następnie uzyskać dostęp do danych w regionie, w których dane zostały skopiowane. Możesz monitorować [pulpit nawigacyjny kondycji usługi platformy Azure](https://azure.microsoft.com/status/) do określenia stanu usługi platformy Azure na całym świecie.
+Jeśli wystąpi awaria regionalna, można uzyskać dostęp do danych w regionie, w którym dane zostały skopiowane. [Pulpit nawigacyjny Azure Service Health](https://azure.microsoft.com/status/) można monitorować, aby określić stan usługi platformy Azure na całym świecie.
 
 ## <a name="data-corruption-or-accidental-deletion-recovery-guidance"></a>Uszkodzenie lub przypadkowe usunięcie danych — wskazówki
-Data Lake Storage Gen1 zapewnia odporność danych za pośrednictwem automatycznych replik, jednocześnie nie ogranicza aplikację (lub deweloperów/użytkowników) z uszkodzenia danych ani przypadkowemu usunięciu.
+Chociaż Data Lake Storage Gen1 zapewnia odporność danych za pośrednictwem zautomatyzowanych replik, nie uniemożliwia to aplikacji (lub deweloperów/użytkowników) uszkadzania danych ani ich przypadkowego usunięcia.
 
-### <a name="best-practices"></a>Najlepsze praktyki
-Aby zapobiec przypadkowemu usunięciu, zalecamy ustawienie najpierw prawidłowych zasad dostępu dla konta usługi Data Lake Storage Gen1.  Obejmuje to stosowanie [blokad zasobów platformy Azure](../azure-resource-manager/resource-group-lock-resources.md) do blokowania ważnych zasobów oraz stosowanie konta i pliku kontroli dostępu na poziomie przy użyciu dostępnych [funkcje zabezpieczeń Data Lake Storage Gen1](data-lake-store-security-overview.md). Zalecamy również regularne tworzenie kopii kluczowych danych [ADLCopy](data-lake-store-copy-data-azure-storage-blob.md), [programu Azure PowerShell](data-lake-store-get-started-powershell.md) lub [usługi Azure Data Factory](../data-factory/connector-azure-data-lake-store.md) w innej Data Lake Storage Gen1 konto, folder lub subskrypcji platformy Azure.  Umożliwi to odzyskanie danych po ich uszkodzeniu lub usunięciu. Azure Data Factory to usługa przydatna w przypadku cyklicznego tworzenia i wdrażania potoków przepływu danych.
+### <a name="best-practices"></a>Najlepsze rozwiązania
+Aby zapobiec przypadkowemu usunięciu, zalecamy najpierw ustawić odpowiednie zasady dostępu dla konta usługi Data Lake Storage Gen1.  Obejmuje to zastosowanie [blokad zasobów platformy Azure](../azure-resource-manager/management/lock-resources.md) w celu zablokowania ważnych zasobów oraz stosowania kontroli dostępu na poziomie konta i pliku przy użyciu dostępnych [funkcji zabezpieczeń Data Lake Storage Gen1](data-lake-store-security-overview.md). Zalecamy również, aby regularnie tworzyć kopie krytycznych danych przy użyciu [ADLCopy](data-lake-store-copy-data-azure-storage-blob.md), [Azure PowerShell](data-lake-store-get-started-powershell.md) lub [Azure Data Factory](../data-factory/connector-azure-data-lake-store.md) w innym Data Lake Storage Gen1 koncie, folderze lub subskrypcji platformy Azure.  Umożliwi to odzyskanie danych po ich uszkodzeniu lub usunięciu. Azure Data Factory to usługa przydatna w przypadku cyklicznego tworzenia i wdrażania potoków przepływu danych.
 
-Organizacje mogą włączyć [rejestrowania diagnostycznego](data-lake-store-diagnostic-logs.md) dla swojego konta Data Lake Storage Gen1 zbierać ślady inspekcji dostępu do danych, który zawiera informacje o który mógł zostać usunięty lub zaktualizowany plik.
+Organizacje mogą również włączyć [rejestrowanie diagnostyczne](data-lake-store-diagnostic-logs.md) dla swojego konta Data Lake Storage Gen1, aby zebrać ślady inspekcji dostępu do danych, które zawierają informacje o tym, kto może usunąć lub zaktualizować plik.
 
-## <a name="next-steps"></a>Kolejne kroki
-* [Rozpoczynanie pracy z usługą Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md)
+## <a name="next-steps"></a>Następne kroki
+* [Wprowadzenie do Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md)
 * [Zabezpieczanie danych w usłudze Data Lake Storage 1. generacji](data-lake-store-secure-data.md)
 

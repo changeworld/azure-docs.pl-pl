@@ -4,16 +4,19 @@ description: Jak wdrożyć i skonfigurować szablon rozwiązania sieciowego kons
 ms.date: 05/09/2019
 ms.topic: article
 ms.reviewer: caleteet
-ms.openlocfilehash: be35cfa26204b36ad65da91252144b9167cb9e54
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 3e7dcd3cdcfa636c0b23ac6643bd7732e7f8ada0
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325133"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029165"
 ---
 # <a name="hyperledger-fabric-consortium-network"></a>Sieć szkieletowa
 
 Za pomocą szablonu rozwiązania do tworzenia i konfigurowania sieci szkieletowej w ramach usługi sieci szkieletowej w systemie Azure można wdrożyć i skonfigurować sieć konsorcjum Fabric.
+
+> [!IMPORTANT]
+> [Sieć szkieletowa tworzenia w szablonie platformy Azure](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft-azure-blockchain.azure-blockchain-hyperledger-fabric) zostanie wycofana. Zamiast tego użyj [sieci szkieletowej w usłudze Azure Kubernetes Service](hyperledger-fabric-consortium-azure-kubernetes-service.md) .  
 
 Zapoznanie się z tym artykułem umożliwi:
 
@@ -58,7 +61,7 @@ Po utworzeniu subskrypcji przejdź do [Azure Portal](https://portal.azure.com). 
 
 ![Szablon witryny Marketplace z jednym członkiem sieci szkieletowej łańcucha bloków](./media/hyperledger-fabric-consortium-blockchain/marketplace-template.png)
 
-## <a name="deployment"></a>Wdrożenie
+## <a name="deployment"></a>Wdrażanie
 
 W szablonie **konsorcjum sieci szkieletowej w ramach księgi głównej** wybierz pozycję **Utwórz**.
 
@@ -93,8 +96,8 @@ W obszarze **Ustawienia sieci**Określ dane wejściowe do utworzenia lub przył�
 |---|---|---|
 **Konfiguracja sieci** |Można utworzyć nową sieć lub dołączyć do istniejącej sieci. W przypadku wybrania opcji *Dołącz do istniejących*należy podać dodatkowe wartości. |Nowa sieć <br/> Dołącz do istniejącej |
 **HLF — hasło urzędu certyfikacji** |Hasło używane dla certyfikatów generowanych przez urzędy certyfikacji, które są tworzone w ramach wdrożenia. Hasło musi zawierać trzy z następujących typów znaków: 1 wielkie litery, 1 małe litery, 1 cyfra i 1 znak specjalny.<br /><br />Mimo że wszystkie maszyny wirtualne mają początkowo to samo hasło, można zmienić hasło po zainicjowaniu obsługi administracyjnej.|1-25 znaków |
-**Konfiguracja organizacji** |Można dostosować nazwę i certyfikat organizacji lub użyć wartości domyślnych.|Domyślny <br/> Zaawansowane |
-**Ustawienia sieci VPN** | Inicjowanie obsługi administracyjnej bramy tunelu sieci VPN w celu uzyskania dostępu do maszyn wirtualnych | Yes <br/> Nie |
+**Konfiguracja organizacji** |Można dostosować nazwę i certyfikat organizacji lub użyć wartości domyślnych.|Domyślne <br/> Advanced |
+**Ustawienia sieci VPN** | Inicjowanie obsługi administracyjnej bramy tunelu sieci VPN w celu uzyskania dostępu do maszyn wirtualnych | Tak <br/> Nie |
 
 Kliknij przycisk **OK**.
 
@@ -129,7 +132,7 @@ Ten szablon umożliwia wybranie aparatu trwałości dla węzła równorzędnego.
 
 Kliknij przycisk **OK**.
 
-### <a name="deploy"></a>Wdrażanie
+### <a name="deploy"></a>Implementacja
 
 W obszarze **Podsumowanie**Przejrzyj określone dane wejściowe i uruchom podstawową weryfikację przed wdrożeniem.
 

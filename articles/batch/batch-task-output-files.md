@@ -2,7 +2,7 @@
 title: Utrwalaj dane wyjściowe zadania i zadania w usłudze Azure Storage za pomocą interfejsu API usługi Batch Azure Batch | Microsoft Docs
 description: Dowiedz się, jak używać interfejsu API usługi Batch do utrwalania zadań wsadowych i danych wyjściowych zadań w usłudze Azure Storage.
 services: batch
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 editor: ''
 ms.service: batch
@@ -10,14 +10,14 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 03/05/2019
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: seodec18
-ms.openlocfilehash: e4a2af09b432961211a5f38ecd2d9dacd89d3868
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 8d77da2a0298758dad3eff1a61aff45796bfb6c5
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70094454"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029632"
 ---
 # <a name="persist-task-data-to-azure-storage-with-the-batch-service-api"></a>Utrwalanie danych zadań w usłudze Azure Storage za pomocą interfejsu API usługi Batch
 
@@ -36,7 +36,7 @@ Azure Batch zapewnia więcej niż jeden sposób utrwalania danych wyjściowych z
 - Chcesz utrwalać dane wyjściowe do kontenera usługi Azure Storage przy użyciu dowolnej nazwy.
 - Chcesz utrwalać dane wyjściowe do kontenera usługi Azure Storage o nazwie zgodnej ze [standardem Konwencji plików wsadowych](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/Batch/Support/FileConventions#conventions). 
 
-Jeśli Twój Scenariusz różni się od wymienionych powyżej, może być konieczne rozważenie innego podejścia. Na przykład interfejs API usługi Batch nie obsługuje obecnie przesyłania strumieniowego do usługi Azure Storage, gdy zadanie jest uruchomione. Aby przesłać strumieniowo dane wyjściowe, należy rozważyć użycie biblioteki Konwencji plików wsadowych dostępnej dla platformy .NET. W przypadku innych języków należy wdrożyć własne rozwiązanie. Aby uzyskać więcej informacji na temat innych opcji utrwalania danych wyjściowych zadania, zobacz Utrwalanie zadań [i zadań wyjściowych w usłudze Azure Storage](batch-task-output.md).
+Jeśli Twój Scenariusz różni się od wymienionych powyżej, może być konieczne rozważenie innego podejścia. Na przykład interfejs API usługi Batch nie obsługuje obecnie przesyłania strumieniowego do usługi Azure Storage, gdy zadanie jest uruchomione. Aby przesłać strumieniowo dane wyjściowe, należy rozważyć użycie biblioteki Konwencji plików wsadowych dostępnej dla platformy .NET. W przypadku innych języków należy wdrożyć własne rozwiązanie. Aby uzyskać więcej informacji na temat innych opcji utrwalania danych wyjściowych zadania, zobacz [utrwalanie zadań i zadań wyjściowych w usłudze Azure Storage](batch-task-output.md).
 
 ## <a name="create-a-container-in-azure-storage"></a>Tworzenie kontenera w usłudze Azure Storage
 
@@ -51,7 +51,7 @@ await container.CreateIfNotExists();
 
 ## <a name="get-a-shared-access-signature-for-the-container"></a>Uzyskaj sygnaturę dostępu współdzielonego dla kontenera
 
-Po utworzeniu kontenera Uzyskaj sygnaturę dostępu współdzielonego (SAS) z dostępem do zapisu do kontenera. Sygnatura dostępu współdzielonego zapewnia delegowany dostęp do kontenera. Sygnatura dostępu współdzielonego przyznaje dostęp z określonym zestawem uprawnień i w określonym przedziale czasu. Usługa Batch potrzebuje sygnatury dostępu współdzielonego z uprawnieniami do zapisu, aby zapisywać dane wyjściowe zadania do kontenera. Aby uzyskać więcej informacji na temat sygnatury dostępu współdzielonego, zobacz [using SAS \(\) Access Signatures w usłudze Azure Storage](../storage/common/storage-dotnet-shared-access-signature-part-1.md).
+Po utworzeniu kontenera Uzyskaj sygnaturę dostępu współdzielonego (SAS) z dostępem do zapisu do kontenera. Sygnatura dostępu współdzielonego zapewnia delegowany dostęp do kontenera. Sygnatura dostępu współdzielonego przyznaje dostęp z określonym zestawem uprawnień i w określonym przedziale czasu. Usługa Batch potrzebuje sygnatury dostępu współdzielonego z uprawnieniami do zapisu, aby zapisywać dane wyjściowe zadania do kontenera. Aby uzyskać więcej informacji na temat SYGNATURy dostępu współdzielonego, zobacz [using Shared Access signatures \(SAS\) w usłudze Azure Storage](../storage/common/storage-dotnet-shared-access-signature-part-1.md).
 
 Gdy otrzymasz sygnaturę dostępu współdzielonego przy użyciu interfejsów API usługi Azure Storage, interfejs API zwraca ciąg tokenu SAS. Ten ciąg tokenu zawiera wszystkie parametry sygnatury dostępu współdzielonego, w tym uprawnienia i interwał, w jakim SYGNATURa czasowa jest prawidłowa. Aby uzyskać dostęp do kontenera w usłudze Azure Storage za pomocą sygnatury dostępu współdzielonego, należy dołączyć ciąg tokenu sygnatury dostępu współdzielonego do identyfikatora URI zasobu. Identyfikator URI zasobu, wraz z dołączonym tokenem SAS, zapewnia uwierzytelniony dostęp do usługi Azure Storage.
 
@@ -71,7 +71,7 @@ string containerSasUrl = container.Uri.AbsoluteUri + containerSasToken;
 
 Aby określić pliki wyjściowe dla zadania, Utwórz kolekcję obiektów [plik_wyjściowy](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.outputfile) i przypisz ją do właściwości [CloudTask. OutputFiles](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudtask.outputfiles#Microsoft_Azure_Batch_CloudTask_OutputFiles) podczas tworzenia zadania.
 
-Poniższy C# przykład kodu tworzy zadanie, które zapisuje liczby losowe do pliku o nazwie `output.txt`. Przykład tworzy plik `output.txt` wyjściowy do zapisu w kontenerze. Przykład tworzy również pliki wyjściowe dla plików dziennika, `std*.txt` które pasują do wzorca pliku ( `stdout.txt` np. i `stderr.txt`). Adres URL kontenera wymaga sygnatury dostępu współdzielonego, która została wcześniej utworzona dla kontenera. Usługa Batch używa sygnatury dostępu współdzielonego, aby uwierzytelniać dostęp do kontenera:
+Poniższy C# przykład kodu tworzy zadanie, które zapisuje liczby losowe do pliku o nazwie `output.txt`. Przykład tworzy plik wyjściowy dla `output.txt` być zapisany w kontenerze. Przykład tworzy również pliki wyjściowe dla plików dziennika, które pasują do wzorca pliku `std*.txt` (_np._ `stdout.txt` i `stderr.txt`). Adres URL kontenera wymaga sygnatury dostępu współdzielonego, która została wcześniej utworzona dla kontenera. Usługa Batch używa sygnatury dostępu współdzielonego, aby uwierzytelniać dostęp do kontenera:
 
 ```csharp
 new CloudTask(taskId, "cmd /v:ON /c \"echo off && set && (FOR /L %i IN (1,1,100000) DO (ECHO !RANDOM!)) > output.txt\"")
@@ -101,11 +101,11 @@ new CloudTask(taskId, "cmd /v:ON /c \"echo off && set && (FOR /L %i IN (1,1,1000
 
 Po określeniu pliku wyjściowego można użyć właściwości [plik_wyjściowy. FilePattern](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.outputfile.filepattern#Microsoft_Azure_Batch_OutputFile_FilePattern) , aby określić wzorzec pliku do dopasowania. Wzorzec pliku może być zgodny z zerowymi plikami, pojedynczym plikiem lub zestawem plików, które są tworzone przez zadanie.
 
-Właściwość **FilePattern** obsługuje standardowe symbole wieloznaczne systemu plików, `*` takie jak (dla dopasowań niecyklicznych) i `**` (dla dopasowań cyklicznych). Na przykład przykładowy kod określa wzorzec pliku do dopasowania `std*.txt` niecyklicznie:
+Właściwość **FilePattern** obsługuje standardowe symbole wieloznaczne systemu plików, takie jak `*` (dla dopasowań niecyklicznych) i `**` (dla dopasowań cyklicznych). Na przykład przykładowy kod określa wzorzec pliku do dopasowania `std*.txt` niecyklicznie:
 
 `filePattern: @"..\std*.txt"`
 
-Aby przekazać pojedynczy plik, określ wzorzec pliku bez symboli wieloznacznych. Na przykład przykładowy kod określa wzorzec pliku do dopasowania `output.txt`:
+Aby przekazać pojedynczy plik, określ wzorzec pliku bez symboli wieloznacznych. Na przykład przykładowy kod określa wzorzec pliku, aby dopasować `output.txt`:
 
 `filePattern: @"output.txt"`
 
@@ -125,7 +125,7 @@ Zadania w zadaniu mogą generować pliki o tej samej nazwie. Na przykład `stdou
 
 Właściwość [OutputFileBlobContainerDestination. Path](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.outputfileblobcontainerdestination.path#Microsoft_Azure_Batch_OutputFileBlobContainerDestination_Path) określa docelowy obiekt BLOB lub katalog wirtualny dla plików wyjściowych. Możesz użyć właściwości **Path** , aby nazwać obiekt BLOB lub katalog wirtualny w taki sposób, że pliki wyjściowe o tej samej nazwie są jednoznacznie nazwane w usłudze Azure Storage. Użycie identyfikatora zadania w ścieżce jest dobrym sposobem na zapewnienie unikatowych nazw i łatwe identyfikowanie plików.
 
-Jeśli właściwość **FilePattern** jest ustawiona na wyrażenie symbolu wieloznacznego, wszystkie pliki zgodne ze wzorcem są przekazywane do katalogu wirtualnego określonego przez właściwość **Path** . Na przykład, jeśli kontener to `mycontainer`, identyfikator zadania to `mytask`, a wzorzec pliku to `..\std*.txt`, bezwzględne identyfikatory URI plików wyjściowych w usłudze Azure Storage będą podobne do następujących:
+Jeśli właściwość **FilePattern** jest ustawiona na wyrażenie symbolu wieloznacznego, wszystkie pliki zgodne ze wzorcem są przekazywane do katalogu wirtualnego określonego przez właściwość **Path** . Na przykład jeśli kontener jest `mycontainer`, identyfikator zadania jest `mytask`, a wzorzec pliku jest `..\std*.txt`, bezwzględne identyfikatory URI dla plików wyjściowych w usłudze Azure Storage będą podobne do następujących:
 
 ```
 https://myaccount.blob.core.windows.net/mycontainer/mytask/stderr.txt
@@ -155,15 +155,15 @@ Code: FileUploadContainerNotFound
 Message: One of the specified Azure container(s) was not found while attempting to upload an output file
 ```
 
-W przypadku każdego przekazywania plików Batch zapisuje dwa pliki dziennika w węźle `fileuploadout.txt` COMPUTE i. `fileuploaderr.txt` Możesz sprawdzić te pliki dziennika, aby dowiedzieć się więcej na temat konkretnego błędu. W przypadkach, gdy nigdy nie podjęto próby przekazania pliku, na przykład ponieważ nie można uruchomić samego zadania, te pliki dziennika nie będą istnieć.
+W przypadku każdego przekazywania plików Batch zapisuje dwa pliki dziennika do węzła obliczeniowego, `fileuploadout.txt` i `fileuploaderr.txt`. Możesz sprawdzić te pliki dziennika, aby dowiedzieć się więcej na temat konkretnego błędu. W przypadkach, gdy nigdy nie podjęto próby przekazania pliku, na przykład ponieważ nie można uruchomić samego zadania, te pliki dziennika nie będą istnieć.
 
 ## <a name="diagnose-file-upload-performance"></a>Diagnozowanie wydajności przekazywania plików
 
-Postęp ładowania dzienników plików. `fileuploadout.txt` Możesz sprawdzić ten plik, aby dowiedzieć się więcej o tym, jak długo trwa przekazywanie plików. Należy pamiętać, że istnieje wiele współczynników przyczyniających się do przekazywania wydajności, w tym rozmiar węzła, inne działanie w węźle w czasie przekazywania, niezależnie od tego, czy kontener docelowy znajduje się w tym samym regionie co Pula partii, ile węzłów jest przekazywanych do Stora konto GE w tym samym czasie itd.
+Postęp ładowania dzienników plików `fileuploadout.txt`. Możesz sprawdzić ten plik, aby dowiedzieć się więcej o tym, jak długo trwa przekazywanie plików. Należy pamiętać, że istnieje wiele współczynników przyczyniających się do przekazywania wydajności, w tym rozmiar węzła, inne działanie w węźle w czasie przekazywania, niezależnie od tego, czy kontener docelowy znajduje się w tym samym regionie co Pula partii, ile węzłów jest przekazywanych do Stora konto GE w tym samym czasie itd.
 
 ## <a name="use-the-batch-service-api-with-the-batch-file-conventions-standard"></a>Korzystanie z interfejsu API usługi Batch w standardzie Konwencji plików wsadowych
 
-W przypadku utrwalania danych wyjściowych zadania za pomocą interfejsu API usługi Batch można zmienić nazwę kontenera docelowego i obiektów BLOB. Można również nawiązać z nimi nazwy zgodnie ze standardem [Konwencji plików wsadowych](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/Batch/Support/FileConventions#conventions). Standard Konwencji plików określa nazwy kontenera docelowego i obiektu BLOB w usłudze Azure Storage dla danego pliku wyjściowego na podstawie nazw zadania i zadania podrzędnego. Jeśli używasz standardu Konwencji plików do nazewnictwa plików wyjściowych, pliki wyjściowe są dostępne do wyświetlania w [Azure Portal](https://portal.azure.com).
+W przypadku utrwalania danych wyjściowych zadania za pomocą interfejsu API usługi Batch można zmienić nazwę kontenera docelowego i obiektów BLOB. Można również nawiązać z nimi nazwy zgodnie ze [standardem Konwencji plików wsadowych](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/Batch/Support/FileConventions#conventions). Standard Konwencji plików określa nazwy kontenera docelowego i obiektu BLOB w usłudze Azure Storage dla danego pliku wyjściowego na podstawie nazw zadania i zadania podrzędnego. Jeśli używasz standardu Konwencji plików do nazewnictwa plików wyjściowych, pliki wyjściowe są dostępne do wyświetlania w [Azure Portal](https://portal.azure.com).
 
 W przypadku programowania w programie C#można użyć metod wbudowanych w [bibliotece Konwencji plików wsadowych dla platformy .NET](https://www.nuget.org/packages/Microsoft.Azure.Batch.Conventions.Files). Ta biblioteka tworzy prawidłowo nazwane kontenery i ścieżki obiektów BLOB. Można na przykład wywołać interfejs API w celu uzyskania poprawnej nazwy dla kontenera na podstawie nazwy zadania:
 
@@ -181,9 +181,9 @@ Przykładowy projekt [PersistOutputs][github_persistoutputs] jest jednym z [przy
 
 1. Otwórz projekt w programie **Visual Studio 2019**.
 2. Dodaj **poświadczenia konta** usługi Batch i Storage do **AccountSettings. Settings** w projekcie Microsoft. Azure. Batch. Samples. Common.
-3. **Kompilacja** (ale nie są uruchamiane) rozwiązanie. Jeśli zostanie wyświetlony monit, Przywróć wszystkie pakiety NuGet.
+3. **Kompiluj** (ale nie uruchamiaj) rozwiązanie. Jeśli zostanie wyświetlony monit, Przywróć wszystkie pakiety NuGet.
 4. Użyj Azure Portal, aby przekazać [pakiet aplikacji](batch-application-packages.md) dla **PersistOutputsTask**. Uwzględnij `PersistOutputsTask.exe` i jej zestawy zależne w pakiecie. zip, ustaw identyfikator aplikacji na "PersistOutputsTask" i wersję pakietu aplikacji na "1,0".
-5. **Rozpocznij** (Uruchom) projekt **PersistOutputs** .
+5. **Uruchom** (Uruchom) projekt **PersistOutputs** .
 6. Po wyświetleniu monitu o wybranie technologii trwałości do uruchomienia przykładu wprowadź wartość **2** , aby uruchomić przykład za pomocą interfejsu API usługi Batch, aby utrzymać dane wyjściowe zadania.
 7. W razie potrzeby uruchom ponownie próbkę, wprowadzając wartość **3** w celu utrwalenia danych wyjściowych za pomocą interfejsu API usługi Batch, a także Nadaj nazwę kontenerowi docelowemu i ścieżce obiektu BLOB zgodnie z standardem Konwencji plików.
 
