@@ -9,12 +9,12 @@ ms.topic: reference
 author: peterclu
 ms.author: peterlu
 ms.date: 12/17/2019
-ms.openlocfilehash: df2e73138cec6c684d612543280871eb2d49b207
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 659c205bd12d7ca27bfc28e3ab6e62f58d9743ac
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75456357"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978652"
 ---
 # <a name="algorithm--module-reference-for-azure-machine-learning-designer"></a>Informacje o algorytmach & module dla projektanta Azure Machine Learning
 
@@ -50,4 +50,4 @@ Moduły są zorganizowane według funkcjonalności:
 
 ## <a name="error-messages"></a>Komunikaty o błędach
 
-Dowiedz się więcej o [komunikatach o błędach i kodach wyjątków](machine-learning-module-error-codes.md) , które mogą wystąpić przy użyciu modułów w programie Azure Machine Learning Designer.
+Dowiedz się więcej o [komunikatach o błędach i kodach wyjątków](designer-error-codes.md) , które mogą wystąpić przy użyciu modułów w programie Azure Machine Learning Designer.

@@ -3,16 +3,16 @@ title: 'Samouczek: zarządzanie tagami tagów'
 description: W tym samouczku użyjesz efektu Modyfikuj Azure Policy, aby utworzyć i wymusić model ładu znacznika dla nowych i istniejących zasobów.
 ms.date: 11/25/2019
 ms.topic: tutorial
-ms.openlocfilehash: e3d6e279b293ea8063c690f9fb69a6f183b2838d
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 5e9cb9a4acb930c117374281a3debaeecce47110
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74482256"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75965996"
 ---
 # <a name="tutorial-manage-tag-governance-with-azure-policy"></a>Samouczek: Zarządzanie zarządzaniem tagów przy użyciu Azure Policy
 
-[Tagi](../../../azure-resource-manager/resource-group-using-tags.md) są kluczową częścią organizowania zasobów platformy Azure w taksonomię. Po zastosowaniu [najlepszych rozwiązań w zakresie zarządzania tagami](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#naming-and-tagging-resources)Tagi mogą być podstawą stosowania zasad firmowych z Azure Policy lub [śledzeniem kosztów z Cost Management](../../../cost-management/cost-mgt-best-practices.md#organize-and-tag-your-resources).
+[Tagi](../../../azure-resource-manager/management/tag-resources.md) są kluczową częścią organizowania zasobów platformy Azure w taksonomię. Po zastosowaniu [najlepszych rozwiązań w zakresie zarządzania tagami](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#naming-and-tagging-resources)Tagi mogą być podstawą stosowania zasad firmowych z Azure Policy lub [śledzeniem kosztów z Cost Management](../../../cost-management-billing/costs/cost-mgt-best-practices.md#organize-and-tag-your-resources).
 Niezależnie od tego, jak i dlaczego używasz tagów, ważne jest, aby można je szybko dodawać, zmieniać i usuwać z zasobów platformy Azure.
 
 Efekt [modyfikacji](../concepts/effects.md#modify) Azure Policy został zaprojektowany w celu ułatwienia zarządzania tagami niezależnie od tego, jaki etap nadzoru zasobów należy do Ciebie. **Modyfikuj** ułatwia:
