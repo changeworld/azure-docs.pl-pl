@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 04/29/2018
-ms.openlocfilehash: 471a7f288cec980e73ab10c8233ea38511acdd8b
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 1c6b7cfbf193f02598052b6922efec17fb16ec83
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75942320"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75973686"
 ---
 # <a name="replicate-azure-vms-to-another-azure-region"></a>Replikowanie maszyn wirtualnych platformy Azure do innego regionu platformy Azure
 
@@ -62,7 +62,7 @@ Włącz replikację. W tej procedurze przyjęto założenie, że podstawowy regi
      >[!NOTE]
      >Nie można zmienić typu dostępności — pojedyncze wystąpienie, zestaw dostępności, strefa dostępności — po włączeniu replikacji. W celu zmiany typu dostępności należy wyłączyć i włączyć replikację.
      >
-    
+
    - **Zasady replikacji**: definiuje ustawienia dla historii przechowywania punktów odzyskiwania i częstotliwości migawek spójnej na poziomie aplikacji. Domyślnie Azure Site Recovery tworzy nowe zasady replikacji z ustawieniami domyślnymi "24 godziny" dla przechowywania punktów odzyskiwania i "4 godzin" dla częstotliwości migawek spójnej na poziomie aplikacji.
 
      ![Włączanie replikacji](./media/site-recovery-replicate-azure-to-azure/enabledrwizard3.PNG)
@@ -74,7 +74,7 @@ Po dodaniu dysków do maszyny wirtualnej platformy Azure, dla której włączono
 -   Jeśli włączysz ochronę dla dodanych dysków, ostrzeżenie zniknie po początkowej replikacji dysku.
 -   Jeśli nie zdecydujesz się na włączenie replikacji dla dysku, możesz wybrać opcję odrzucania ostrzeżenia.
 
-    
+
     ![Dodano nowy dysk](./media/azure-to-azure-how-to-enable-replication/newdisk.png)
 
 Aby włączyć replikację dla dodanego dysku, wykonaj następujące czynności:
@@ -88,7 +88,7 @@ Aby włączyć replikację dla dodanego dysku, wykonaj następujące czynności:
 Po uruchomieniu zadania włączania replikacji i zakończeniu początkowej replikacji zostanie usunięte ostrzeżenie o kondycji replikacji dla problemu z dyskiem.
 
 
-  
+
 ## <a name="customize-target-resources"></a>Dostosowywanie zasobów docelowych
 
 Można modyfikować domyślne ustawienia docelowe używane przez Site Recovery.
@@ -112,7 +112,7 @@ Można modyfikować domyślne ustawienia docelowe używane przez Site Recovery.
     - Upewnij się, że urządzenie zapory nie blokuje komunikacji wewnętrznej między maszynami wirtualnymi przez port 20004.
     - Jeśli chcesz, aby maszyny wirtualne z systemem Linux były częścią grupy replikacji, upewnij się, że ruch wychodzący na porcie 20004 został ręcznie otwarty zgodnie ze wskazówkami dotyczącymi konkretnej wersji systemu Linux.
 ![Włączanie replikacji](./media/site-recovery-replicate-azure-to-azure/multivmsettings.PNG)
-    
+
 5. Kliknij pozycję **Utwórz zasób docelowy** > **Włącz replikację**.
 6. Po włączeniu maszyn wirtualnych do replikacji można sprawdzić stan kondycji maszyny wirtualnej w obszarze **zreplikowane elementy**
 

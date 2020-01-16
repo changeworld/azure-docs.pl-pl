@@ -5,18 +5,18 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 06/22/2017
 ms.author: vturecek
-ms.openlocfilehash: 656bb6d400461c93540b77d871502b738c679f47
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2a331715d4e4538cfdda8d958ff549a81b627b79
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75378114"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028554"
 ---
 # <a name="service-fabric-with-azure-api-management-overview"></a>Service Fabric z usługą Azure API Management — Omówienie
 
 Aplikacje w chmurze zwykle potrzebują bramy frontonu, aby udostępniać pojedynczy punkt danych przychodzących dla użytkowników, urządzeń lub innych aplikacji. W Service Fabric Brama może być dowolną usługą bezstanową, taką jak [aplikacja ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md)lub inna usługa zaprojektowana na potrzeby ruchu przychodzącego, na przykład [Event Hubs](https://docs.microsoft.com/azure/event-hubs/), [IoT Hub](https://docs.microsoft.com/azure/iot-hub/)lub [Azure API Management](https://docs.microsoft.com/azure/api-management/).
 
-Ten artykuł zawiera wprowadzenie do korzystania z usługi Azure API Management jako bramy do aplikacji Service Fabric. API Management integruje się bezpośrednio z Service Fabric, co pozwala na publikowanie interfejsów API z bogatym zestawem reguł routingu do usług Service Fabric zaplecza. 
+Ten artykuł zawiera wprowadzenie do korzystania z usługi Azure API Management jako bramy do aplikacji Service Fabric. API Management integruje się bezpośrednio z Service Fabric, co pozwala na publikowanie interfejsów API z bogatym zestawem reguł routingu do usług Service Fabric zaplecza.
 
 ## <a name="availability"></a>Dostępność
 
@@ -47,7 +47,8 @@ Usługa Azure API Management może być używana z dowolną kombinacją usług b
 
 W najprostszym przypadku ruch jest przekazywany do wystąpienia usługi bezstanowej. Aby to osiągnąć, API Management operacja zawiera zasady przetwarzania przychodzącego z Service Fabric zaplecza, które mapuje do określonego wystąpienia usługi bezstanowej w Service Fabric zaplecza. Żądania wysyłane do tej usługi są wysyłane do losowego wystąpienia usługi.
 
-#### <a name="example"></a>Przykład
+**Przykład**
+
 W poniższym scenariuszu aplikacja Service Fabric zawiera usługę bezstanową o nazwie `fabric:/app/fooservice`, która uwidacznia wewnętrzny interfejs API protokołu HTTP. Nazwa wystąpienia usługi jest dobrze znana i może być zakodowana bezpośrednio w API Management zasad przetwarzania przychodzącego. 
 
 ![Service Fabric z usługą Azure API Management Topology — Omówienie][sf-apim-static-stateless]
@@ -56,7 +57,7 @@ W poniższym scenariuszu aplikacja Service Fabric zawiera usługę bezstanową o
 
 Podobnie jak w przypadku scenariusza usługi bezstanowej, ruch może być przekazywany do wystąpienia usługi stanowej. W takim przypadku operacja API Management zawiera zasady przetwarzania przychodzącego z Service Fabric zaplecza, które mapuje żądanie na określoną partycję określonego wystąpienia usługi *stanowej* . Partycja, do której są mapowane każde żądanie, jest obliczana za pośrednictwem metody lambda przy użyciu danych wejściowych z przychodzącego żądania HTTP, takiego jak wartość w ścieżce URL. Zasady można skonfigurować do wysyłania żądań tylko do repliki podstawowej lub do losowej repliki dla operacji odczytu.
 
-#### <a name="example"></a>Przykład
+**Przykład**
 
 W poniższym scenariuszu aplikacja Service Fabric zawiera podzielonej usługi stanowej o nazwie `fabric:/app/userservice`, która uwidacznia wewnętrzny interfejs API protokołu HTTP. Nazwa wystąpienia usługi jest dobrze znana i może być zakodowana bezpośrednio w API Management zasad przetwarzania przychodzącego.  
 
@@ -66,14 +67,14 @@ Usługa jest partycjonowana przy użyciu schematu partycji Int64 z dwiema partyc
 
 ## <a name="send-traffic-to-multiple-stateless-services"></a>Wysyłanie ruchu do wielu usług bezstanowych
 
-W bardziej zaawansowanych scenariuszach można zdefiniować operację API Management, która mapuje żądania do więcej niż jednego wystąpienia usługi. W takim przypadku każda operacja zawiera zasady, które mapują żądania do określonego wystąpienia usługi na podstawie wartości z przychodzącego żądania HTTP, takiego jak ścieżka URL lub ciąg zapytania, a w przypadku usług stanowych, partycji w ramach wystąpienia usługi. 
+W bardziej zaawansowanych scenariuszach można zdefiniować operację API Management, która mapuje żądania do więcej niż jednego wystąpienia usługi. W takim przypadku każda operacja zawiera zasady, które mapują żądania do określonego wystąpienia usługi na podstawie wartości z przychodzącego żądania HTTP, takiego jak ścieżka URL lub ciąg zapytania, a w przypadku usług stanowych, partycji w ramach wystąpienia usługi.
 
 Aby to osiągnąć, API Management operacja zawiera zasady przetwarzania przychodzącego z Service Fabric zaplecza, które mapuje do bezstanowego wystąpienia usługi w Service Fabric zaplecza na podstawie wartości pobranych z przychodzącego żądania HTTP. Żądania do usługi są wysyłane do przypadkowego wystąpienia usługi.
 
-#### <a name="example"></a>Przykład
+**Przykład**
 
 W tym przykładzie nowe wystąpienie usługi bezstanowej jest tworzone dla każdego użytkownika aplikacji z dynamicznie wygenerowaną nazwą przy użyciu następującej formuły:
- 
+
 - `fabric:/app/users/<username>`
 
   Każda usługa ma unikatową nazwę, ale nazwy nie są znane z góry, ponieważ usługi są tworzone w odpowiedzi na dane wejściowe użytkownika lub administratora i dlatego nie mogą być zakodowane w zasadach APIM lub regułach routingu. Zamiast tego nazwa usługi, do której należy wysłać żądanie, jest generowana w definicji zasad zaplecza z wartości `name` podanej w ścieżce żądania adresu URL. Przykład:
@@ -89,10 +90,10 @@ Podobnie jak w przypadku przykładowej usługi bezstanowej, operacja API Managem
 
 Aby to osiągnąć, API Management operacja zawiera zasady przetwarzania przychodzącego z Service Fabric zaplecza, które mapuje do wystąpienia usługi stanowej w Service Fabric zaplecza na podstawie wartości pobranych z przychodzącego żądania HTTP. Oprócz mapowania żądania do określonego wystąpienia usługi żądanie może być również mapowane na określoną partycję w ramach wystąpienia usługi i opcjonalnie na replikę podstawową lub losowo replikę pomocniczą w ramach partycji.
 
-#### <a name="example"></a>Przykład
+**Przykład**
 
 W tym przykładzie tworzone jest nowe wystąpienie usługi stanowej dla każdego użytkownika aplikacji z dynamicznie wygenerowaną nazwą przy użyciu następującej formuły:
- 
+
 - `fabric:/app/users/<username>`
 
   Każda usługa ma unikatową nazwę, ale nazwy nie są znane z góry, ponieważ usługi są tworzone w odpowiedzi na dane wejściowe użytkownika lub administratora i dlatego nie mogą być zakodowane w zasadach APIM lub regułach routingu. Zamiast tego nazwa usługi, do której należy wysłać żądanie, jest generowana w definicji zasad zaplecza z wartości `name` podanej w ścieżce żądania adresu URL. Przykład:

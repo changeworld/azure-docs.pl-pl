@@ -1,5 +1,5 @@
 ---
-title: 'Python: Operacje zarządzania kontem na Azure Data Lake Storage Gen1 | Microsoft Docs'
+title: 'Python: operacje zarządzania kontem na Azure Data Lake Storage Gen1 | Microsoft Docs'
 description: Dowiedz się, jak używać zestawu SDK języka Python do pracy z Azure Data Lake Storage Gen1 operacji zarządzania kontami.
 services: data-lake-store
 documentationcenter: ''
@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 494959e071fb5777f9a815b5bde4bd093cf10bd6
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: fad832ba7b16e8dbb37043d971368062fcbd842f
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71088795"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75966042"
 ---
 # <a name="account-management-operations-on-azure-data-lake-storage-gen1-using-python"></a>Operacje zarządzania kontem na Azure Data Lake Storage Gen1 przy użyciu języka Python
 > [!div class="op_single_selector"]
 > * [Zestaw SDK platformy .NET](data-lake-store-get-started-net-sdk.md)
-> * [REST API](data-lake-store-get-started-rest-api.md)
+> * [Interfejs API REST](data-lake-store-get-started-rest-api.md)
 > * [Python](data-lake-store-get-started-python.md)
 >
 >
@@ -35,15 +35,15 @@ Dowiedz się, jak używać zestawu SDK języka Python do Azure Data Lake Storage
 
 * **Subskrypcja platformy Azure**. Zobacz temat [Uzyskiwanie bezpłatnej wersji próbnej platformy Azure](https://azure.microsoft.com/pricing/free-trial/).
 
-* **Grupa zasobów platformy Azure**. Aby uzyskać instrukcje, zobacz [Tworzenie grupy zasobów platformy Azure](../azure-resource-manager/manage-resource-groups-portal.md).
+* **Grupa zasobów platformy Azure**. Aby uzyskać instrukcje, zobacz [Tworzenie grupy zasobów platformy Azure](../azure-resource-manager/management/manage-resource-groups-portal.md).
 
 ## <a name="install-the-modules"></a>Instalacja modułów
 
 Aby można było korzystać z Data Lake Storage Gen1 przy użyciu języka Python, należy zainstalować trzy moduły.
 
 * Moduł `azure-mgmt-resource`, który obejmuje moduły platformy Azure dla usługi Active Directory itp.
-* `azure-mgmt-datalake-store` Moduł, który obejmuje operacje zarządzania kontem Azure Data Lake Storage Gen1. Aby uzyskać więcej informacji na temat tego modułu, zobacz [Azure Data Lake Storage Gen1 informacje dotyczące modułu zarządzania](/python/api/azure-mgmt-datalake-store/).
-* `azure-datalake-store` Moduł, który obejmuje operacje systemu plików Azure Data Lake Storage Gen1. Aby uzyskać więcej informacji na temat tego modułu, zobacz artykuł dotyczący [modułu systemu plików Azure-datalake-Store](https://azure-datalake-store.readthedocs.io/en/latest/).
+* Moduł `azure-mgmt-datalake-store`, który obejmuje operacje zarządzania kontami Azure Data Lake Storage Gen1. Aby uzyskać więcej informacji na temat tego modułu, zobacz [Azure Data Lake Storage Gen1 informacje dotyczące modułu zarządzania](/python/api/azure-mgmt-datalake-store/).
+* Moduł `azure-datalake-store`, który obejmuje operacje Azure Data Lake Storage Gen1 systemu plików. Aby uzyskać więcej informacji na temat tego modułu, zobacz artykuł dotyczący [modułu systemu plików Azure-datalake-Store](https://azure-datalake-store.readthedocs.io/en/latest/).
 
 Użyj następujących poleceń, aby zainstalować moduły.
 

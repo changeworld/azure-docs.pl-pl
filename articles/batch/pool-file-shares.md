@@ -3,7 +3,7 @@ title: Udział plików platformy Azure dla pul Azure Batch | Microsoft Docs
 description: Jak zainstalować udział Azure Files z węzłów obliczeniowych w puli systemu Linux lub Windows w Azure Batch.
 services: batch
 documentationcenter: ''
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 editor: ''
 ms.assetid: ''
@@ -12,14 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: big-compute
 ms.date: 05/24/2018
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: ''
-ms.openlocfilehash: cd185035640bf0beaa54fa6a0f4d92a33837442b
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: d84fdd4635a7a9227e29fe3cd8c43a1fc4cbeb5b
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70093966"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029453"
 ---
 # <a name="use-an-azure-file-share-with-a-batch-pool"></a>Korzystanie z udziału plików platformy Azure z pulą usługi Batch
 
@@ -31,11 +31,11 @@ Usługa Batch oferuje natywną obsługę interfejsu API, która umożliwia odczy
 
 * Rozważ użycie udziału plików platformy Azure, gdy masz pule, w których jest uruchamiana stosunkowo niska liczba zadań równoległych. Przejrzyj [elementy docelowe wydajności i skalowania](../storage/files/storage-files-scale-targets.md) , aby określić, czy należy używać Azure Files (używających konta usługi Azure Storage), uwzględniając rozmiar oczekiwanej puli i liczbę plików zasobów. 
 
-* Udziały plików platformy [](https://azure.microsoft.com/pricing/details/storage/files/) Azure są opłacalne i można je skonfigurować za pomocą replikacji danych w innym regionie, tak aby były globalnie nadmiarowe. 
+* Udziały plików platformy Azure są [opłacalne](https://azure.microsoft.com/pricing/details/storage/files/) i można je skonfigurować za pomocą replikacji danych w innym regionie, tak aby były globalnie nadmiarowe. 
 
 * Udział plików platformy Azure można zainstalować jednocześnie na komputerze lokalnym.
 
-* Zobacz również ogólne zagadnienia dotyczące [planowania](../storage/files/storage-files-planning.md) udziałów plików platformy Azure.
+* Zobacz również ogólne [zagadnienia dotyczące planowania](../storage/files/storage-files-planning.md) udziałów plików platformy Azure.
 
 
 ## <a name="create-a-file-share"></a>Tworzenie udziału plików
@@ -48,9 +48,9 @@ Ta sekcja zawiera kroki i przykłady kodu służące do instalowania udziału pl
 
 W usłudze Batch należy zainstalować udział za każdym razem, gdy zadanie jest uruchamiane w węźle systemu Windows. Obecnie nie jest możliwe utrzymywanie połączenia sieciowego między zadaniami w węzłach systemu Windows.
 
-Na przykład Dołącz `net use` polecenie, aby zainstalować udział plików w ramach każdego wiersza polecenia zadania. Aby można było zainstalować udział plików, potrzebne są następujące poświadczenia:
+Na przykład Uwzględnij `net use` polecenie, aby zainstalować udział plików jako część każdego wiersza polecenia zadania. Aby można było zainstalować udział plików, potrzebne są następujące poświadczenia:
 
-* **Nazwa użytkownika**: Azure\\ storageaccountname, na przykładAzure\\mystorageaccountname\>\<
+* **Nazwa użytkownika**: usługa azure\\\<storageaccountname\>, na przykład Azure\\*mystorageaccountname*
 * **Hasło**: \<StorageAccountKeyWhichEnds w = = >, na przykład *XXXXXXXXXXXXXXXXXXXXX = =*
 
 Następujące polecenie instaluje udział plików *myfileshare* na koncie magazynu *mystorageaccountname* jako dysk *S:*
@@ -63,14 +63,14 @@ W przypadku uproszczenia poniższe przykłady przekazują poświadczenia bezpoś
 
 Aby uprościć operację instalacji, opcjonalnie Utrwalaj poświadczenia w węzłach. Następnie można zainstalować udział bez poświadczeń. Wykonaj następujące dwa kroki:
 
-1. Uruchom narzędzie wiersza polecenia przy użyciu zadania uruchamiania w konfiguracji puli. `cmdkey` Dzięki temu poświadczenia są utrwalane w każdym węźle systemu Windows. Wiersz polecenia Uruchom zadanie jest podobny do:
+1. Uruchom narzędzie wiersza polecenia `cmdkey` przy użyciu zadania uruchamiania w konfiguracji puli. Dzięki temu poświadczenia są utrwalane w każdym węźle systemu Windows. Wiersz polecenia Uruchom zadanie jest podobny do:
 
    ```
    cmd /c "cmdkey /add:mystorageaccountname.file.core.windows.net /user:AZURE\mystorageaccountname /pass:XXXXXXXXXXXXXXXXXXXXX=="
 
    ```
 
-2. Zainstaluj udział w każdym węźle w ramach każdego zadania przy użyciu polecenia `net use`. Na przykład poniższy wiersz polecenia zadania instaluje udział plików jako dysk *S:* . Następnie następuje polecenie lub skrypt, który odwołuje się do udziału. Poświadczenia w pamięci podręcznej są używane `net use`w wywołaniu metody. W tym kroku przyjęto założenie, że używasz tej samej tożsamości użytkownika do zadań, które zostały użyte w zadania podrzędnego uruchamiania w puli, co nie jest odpowiednie dla wszystkich scenariuszy.
+2. Zainstaluj udział w każdym węźle w ramach każdego zadania przy użyciu `net use`. Na przykład poniższy wiersz polecenia zadania instaluje udział plików jako dysk *S:* . Następnie następuje polecenie lub skrypt, który odwołuje się do udziału. W wywołaniu `net use`są używane poświadczenia w pamięci podręcznej. W tym kroku przyjęto założenie, że używasz tej samej tożsamości użytkownika do zadań, które zostały użyte w zadania podrzędnego uruchamiania w puli, co nie jest odpowiednie dla wszystkich scenariuszy.
 
    ```
    cmd /c "net use S: \\mystorageaccountname.file.core.windows.net\myfileshare" 
@@ -101,7 +101,7 @@ pool.StartTask = new StartTask
 pool.Commit();
 ```
 
-Po zapisaniu poświadczeń Użyj linii poleceń zadań, aby zainstalować udział i odwołać się do udziału w operacjach odczytu lub zapisu. Jako podstawowy przykład wiersz polecenia zadania w poniższym fragmencie kodu używa `dir` polecenia, aby wyświetlić listę plików w udziale plików. Upewnij się, że uruchomiono każde zadanie zadania przy użyciu [tożsamości użytkownika](batch-user-accounts.md) użytej do uruchomienia zadania uruchamiania w puli. 
+Po zapisaniu poświadczeń Użyj linii poleceń zadań, aby zainstalować udział i odwołać się do udziału w operacjach odczytu lub zapisu. Jako podstawowy przykład wiersz polecenia zadania w poniższym fragmencie kodu używa polecenia `dir`, aby wyświetlić listę plików w udziale plików. Upewnij się, że uruchomiono każde zadanie zadania przy użyciu [tożsamości użytkownika](batch-user-accounts.md) użytej do uruchomienia zadania uruchamiania w puli. 
 
 ```csharp
 ...
@@ -119,13 +119,13 @@ tasks.Add(task);
 
 Udziały plików platformy Azure można instalować w dystrybucjach systemu Linux przy użyciu [klienta jądra CIFS](https://wiki.samba.org/index.php/LinuxCIFS). Poniższy przykład pokazuje, jak zainstalować udział plików w puli węzłów obliczeniowych Ubuntu 16,04 LTS. Jeśli używasz innej dystrybucji systemu Linux, ogólne kroki są podobne, ale Użyj Menedżera pakietów odpowiedniego do dystrybucji. Aby uzyskać szczegółowe informacje i dodatkowe przykłady, zobacz [używanie Azure Files z systemem Linux](../storage/files/storage-how-to-use-files-linux.md).
 
-Najpierw w obszarze tożsamość użytkownika Administrator zainstaluj `cifs-utils` pakiet i Utwórz punkt instalacji (na przykład */mnt/MyAzureFileShare*) w lokalnym systemie plików. Folder dla punktu instalacji można utworzyć w dowolnym miejscu w systemie plików, ale jest to typowa Konwencja do utworzenia tego folderu w `/mnt` folderze. Nie należy tworzyć punktu instalacji bezpośrednio w `/mnt` (na Ubuntu) lub `/mnt/resource` (w innych dystrybucjach).
+Najpierw w obszarze tożsamość użytkownika Administrator Zainstaluj pakiet `cifs-utils` i Utwórz punkt instalacji (na przykład */mnt/MyAzureFileShare*) w lokalnym systemie plików. Folder dla punktu instalacji można utworzyć w dowolnym miejscu w systemie plików, ale jest to typowa Konwencja do utworzenia tego elementu w folderze `/mnt`. Nie należy tworzyć punktu instalacji bezpośrednio w `/mnt` (na Ubuntu) lub `/mnt/resource` (w innych dystrybucjach).
 
 ```
 apt-get update && apt-get install cifs-utils && sudo mkdir -p /mnt/MyAzureFileShare
 ```
 
-Następnie uruchom `mount` polecenie, aby zainstalować udział plików, podając następujące poświadczenia:
+Następnie uruchom `mount` polecenie, aby zainstalować udział plików, dostarczając następujące poświadczenia:
 
 * **Nazwa użytkownika**: \<storageaccountname\>, na przykład *mystorageaccountname*
 * **Hasło**: \<StorageAccountKeyWhichEnds w = = >, na przykład *XXXXXXXXXXXXXXXXXXXXX = =*
@@ -169,7 +169,7 @@ pool = batch.models.PoolAddParameter(
 batch_service_client.pool.add(pool)
 ```
 
-Po zainstalowaniu udziału i zdefiniowaniu zadania użyj udziału w wierszach poleceń zadań. Na przykład następujące podstawowe polecenie używa `ls` do wyświetlania listy plików w udziale plików.
+Po zainstalowaniu udziału i zdefiniowaniu zadania użyj udziału w wierszach poleceń zadań. Na przykład następujące polecenie podstawowe używa `ls` do wyświetlania listy plików w udziale plików.
 
 ```python
 ...

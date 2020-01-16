@@ -1,34 +1,39 @@
 ---
 title: Typy węzłów i zestawy skalowania maszyn wirtualnych
-description: Dowiedz się, jak typy węzłów usługi Azure Service Fabric są powiązane z zestawami skalowania maszyn wirtualnych oraz jak zdalnie łączyć się z wystąpieniem zestawu skalowania lub węzłem klastra.
+description: Dowiedz się, jak typy węzłów usługi Azure Service Fabric są powiązane z zestawami skalowania maszyn wirtualnych i jak zdalnie łączyć się z wystąpieniem zestawu skalowania lub węzłem klastra.
 ms.topic: conceptual
 ms.date: 03/23/2018
 ms.author: pepogors
-ms.openlocfilehash: d67a99be7b55cfa75980688ee30edc4fce7c0946
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.custom: sfrev
+ms.openlocfilehash: 4175dfe4ed5b7aa1064e8ba25c5b44243e4c79b0
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75610169"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028489"
 ---
 # <a name="azure-service-fabric-node-types-and-virtual-machine-scale-sets"></a>Typy węzłów usługi Azure Service Fabric i zestawy skalowania maszyn wirtualnych
-[Zestawy skalowania maszyn wirtualnych](/azure/virtual-machine-scale-sets) to zasób obliczeniowy platformy Azure. Zestawy skalowania umożliwiają wdrażanie kolekcji maszyn wirtualnych jako zestawu i zarządzanie nimi. Każdy typ węzła zdefiniowany w klastrze Service Fabric platformy Azure konfiguruje oddzielną skalę.  Środowisko uruchomieniowe Service Fabric zainstalowane na każdej maszynie wirtualnej w zestawie skalowania za pomocą rozszerzenia maszyny wirtualnej Microsoft. Azure. servicefabric. Można niezależnie skalować każdy typ węzła w górę lub w dół, zmieniać jednostkę SKU systemu operacyjnego działającą w każdym węźle klastra, mieć otwarte różne zestawy portów i korzystać z różnych metryk pojemności.
 
-Na poniższej ilustracji przedstawiono klaster, który ma dwa typy węzłów o nazwie fronton i zaplecze. Każdy typ węzła ma pięć węzłów.
+[Zestawy skalowania maszyn wirtualnych](/azure/virtual-machine-scale-sets) to zasób obliczeniowy platformy Azure. Zestawy skalowania umożliwiają wdrażanie kolekcji maszyn wirtualnych jako zestawu i zarządzanie nimi. Każdy typ węzła zdefiniowany w klastrze Service Fabric platformy Azure konfiguruje oddzielną skalę. Środowisko uruchomieniowe Service Fabric jest instalowane na każdej maszynie wirtualnej w zestawie skalowania za pomocą rozszerzenia maszyny wirtualnej *Microsoft. Azure. servicefabric* . Można niezależnie skalować każdy typ węzła w górę lub w dół, zmieniać jednostkę SKU systemu operacyjnego działającą w każdym węźle klastra, mieć otwarte różne zestawy portów i korzystać z różnych metryk pojemności.
+
+Na poniższej ilustracji przedstawiono klaster, który ma dwa typy węzłów o nazwie *fronton* i *zaplecze*. Każdy typ węzła ma pięć węzłów.
 
 ![Klaster, który ma dwa typy węzłów][NodeTypes]
 
 ## <a name="map-virtual-machine-scale-set-instances-to-nodes"></a>Mapuj wystąpienia zestawu skalowania maszyn wirtualnych na węzły
+
 Jak pokazano na powyższym rysunku, wystąpienia zestawu skalowania rozpoczynają się w wystąpieniu 0, a następnie zwiększają się o 1. Numerowanie jest odzwierciedlone w nazwach węzłów. Na przykład węzeł BackEnd_0 jest wystąpieniem 0 zestawu skalowania zaplecza. Ten konkretny zestaw skalowania ma pięć wystąpień o nazwie BackEnd_0, BackEnd_1, BackEnd_2, BackEnd_3 i BackEnd_4.
 
 W przypadku skalowania w górę zestawu skalowania jest tworzone nowe wystąpienie. Nowa nazwa wystąpienia zestawu skalowania jest zwykle nazwą zestawu skalowania i kolejnym numerem wystąpienia. W naszym przykładzie jest BackEnd_5.
 
 ## <a name="map-scale-set-load-balancers-to-node-types-and-scale-sets"></a>Moduły równoważenia obciążenia zestawu skalowania mapy z typami węzłów i zestawami skalowania
+
 Jeśli klaster został wdrożony w Azure Portal lub użyto przykładowego szablonu Azure Resource Manager, zostanie wyświetlona lista wszystkich zasobów w grupie zasobów. Moduły równoważenia obciążenia są widoczne dla każdego zestawu skalowania lub typu węzła. Nazwa usługi równoważenia obciążenia używa następującego formatu: **&lt;nazwa typu węzła LB&gt;** . Przykładem jest LB-sfcluster4doc-0, jak pokazano na poniższym rysunku:
 
 ![Zasoby][Resources]
 
 ## <a name="service-fabric-virtual-machine-extension"></a>Service Fabric rozszerzenie maszyny wirtualnej
+
 Service Fabric rozszerzenie maszyny wirtualnej jest używane do ładowania początkowego Service Fabric do Virtual Machines platformy Azure i konfigurowania zabezpieczeń węzła.
 
 Poniżej znajduje się fragment Service Fabric rozszerzenia maszyny wirtualnej:
@@ -65,23 +70,24 @@ Poniżej znajduje się fragment Service Fabric rozszerzenia maszyny wirtualnej:
 
 Poniżej przedstawiono opisy właściwości:
 
-| **Nazwa** | **Dozwolone wartości** | ** --- ** | **Wskazówki lub Krótki opis** |
+| **Nazwa** | **Dozwolone wartości** | **Wskazówki lub Krótki opis** |
 | --- | --- | --- | --- |
-| name | string | --- | Unikatowa nazwa rozszerzenia |
-| type | "ServiceFabricLinuxNode" lub "ServiceFabricWindowsNode" | --- | Identyfikuje Service Fabric systemu operacyjnego |
-| autoUpgradeMinorVersion | true lub false | --- | Włącz autouaktualnienie wersji pomocniczych w środowisku uruchomieniowym SF |
-| publisher | Microsoft.Azure.ServiceFabric | --- | Nazwa wydawcy Service Fabricego w zakresie |
-| clusterEndpont | string | --- | URI: PORT do punktu końcowego zarządzania |
-| nodeTypeRef | string | --- | Nazwa nodeType |
-| durabilityLevel | bronze, silver, gold, platinum | --- | czas, w którym można wstrzymać niezmienne infrastruktury platformy Azure |
-| enableParallelJobs | true lub false | --- | Włącz funkcję COMPUTE ParallelJobs, na przykład Usuń maszynę wirtualną i ponownie uruchom maszynę wirtualną w zestawie skalowania równoległego |
-| nicPrefixOverride | string | --- | Prefiks podsieci, taki jak "10.0.0.0/24" |
-| commonNames | string[] | --- | Typowe nazwy zainstalowanych certyfikatów klastra |
-| x509StoreName | string | --- | Nazwa magazynu, w którym znajduje się zainstalowany certyfikat klastra |
-| typeHandlerVersion | 1.1 | --- | Wersja rozszerzenia. 1,0 klasycznej wersji rozszerzenia zaleca się uaktualnienie do 1,1 |
-| dataPath | string | --- | Ścieżka do dysku używanego do zapisywania stanu Service Fabric usług systemowych i danych aplikacji. 
+| name | string | Unikatowa nazwa rozszerzenia |
+| type | "ServiceFabricLinuxNode" lub "ServiceFabricWindowsNode" | Identyfikuje Service Fabric systemu operacyjnego |
+| autoUpgradeMinorVersion | true lub false | Włącz autouaktualnienie wersji pomocniczych w środowisku uruchomieniowym SF |
+| publisher | Microsoft.Azure.ServiceFabric | Nazwa wydawcy Service Fabricego w zakresie |
+| clusterEndpont | string | URI: PORT do punktu końcowego zarządzania |
+| nodeTypeRef | string | Nazwa nodeType |
+| durabilityLevel | bronze, silver, gold, platinum | czas, w którym można wstrzymać niezmienne infrastruktury platformy Azure |
+| enableParallelJobs | true lub false | Włącz funkcję COMPUTE ParallelJobs, na przykład Usuń maszynę wirtualną i ponownie uruchom maszynę wirtualną w zestawie skalowania równoległego |
+| nicPrefixOverride | string | Prefiks podsieci, taki jak "10.0.0.0/24" |
+| commonNames | string[] | Typowe nazwy zainstalowanych certyfikatów klastra |
+| x509StoreName | string | Nazwa magazynu, w którym znajduje się zainstalowany certyfikat klastra |
+| typeHandlerVersion | 1.1 | Wersja rozszerzenia. 1,0 klasycznej wersji rozszerzenia zaleca się uaktualnienie do 1,1 |
+| dataPath | string | Ścieżka do dysku używanego do zapisywania stanu Service Fabric usług systemowych i danych aplikacji.
 
 ## <a name="next-steps"></a>Następne kroki
+
 * Zobacz [Omówienie funkcji "wdróż gdziekolwiek" i porównanie z klastrami zarządzanymi przez platformę Azure](service-fabric-deploy-anywhere.md).
 * Dowiedz się więcej o [zabezpieczeniach klastra](service-fabric-cluster-security.md).
 * [Połączenie zdalne](service-fabric-cluster-remote-connect-to-azure-cluster-node.md) z określonym wystąpieniem zestawu skalowania

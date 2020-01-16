@@ -3,12 +3,12 @@ title: Często zadawane pytania dotyczące urządzenia Azure Migrate
 description: Uzyskaj odpowiedzi na często zadawane pytania dotyczące urządzenia Azure Migrate
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.openlocfilehash: 29cb390f509a2a4ebf44c1f9aacef99b507aebb8
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.openlocfilehash: c8bcebeee58401cb3d2b65ae82e51d31ab4dad0b
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75720331"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029127"
 ---
 # <a name="azure-migrate-appliance-common-questions"></a>Urządzenie Azure Migrate: typowe pytania
 
@@ -40,9 +40,9 @@ Podczas tworzenia maszyny wirtualnej z urządzeniem przy użyciu pobranego szabl
 ## <a name="what-network-connectivity-is-needed"></a>Jaka jest łączność sieciowa?
 
 Zapoznaj się z następującymi tematami:
-- Ocena VMware urządzenia: wymagania dostępu do [adresów URL](migrate-support-matrix-vmware.md#assessment-url-access-requirements) i [portów](migrate-support-matrix-vmware.md#assessment-port-requirements) .
-- Migracja VMware bezagentowego urządzenia: wymagania dostępu do [adresów URL](migrate-support-matrix-vmware.md#agentless-migration-url-access-requirements) i [portów](migrate-support-matrix-vmware.md#agentless-migration-port-requirements) .
-- Ocena funkcji Hyper-V na urządzeniu: wymagania dostępu do [adresów URL](migrate-support-matrix-hyper-v.md#assessment-appliance-url-access) i [portów](migrate-support-matrix-hyper-v.md#assessment-port-requirements) .
+- Ocena VMware przy użyciu urządzenia Azure Migrate: wymagania dostępu do [adresów URL](migrate-appliance.md#url-access) i [portów](migrate-support-matrix-vmware.md#port-access) .
+- Migracja bez agenta VMware za pomocą urządzenia Azure Migrate: wymagania dostępu do [adresów URL](migrate-appliance.md#url-access) i [portów](migrate-support-matrix-vmware-migration.md#agentless-ports) .
+- Ocena funkcji Hyper-V przy użyciu urządzenia Azure Migrate: wymagania dostępu do [adresów URL](migrate-appliance.md#url-access) i [portów](migrate-support-matrix-hyper-v.md#port-access) .
 
 
 ## <a name="what-data-does-the-appliance-collect"></a>Jakie dane są zbierane przez urządzenie?

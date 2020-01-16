@@ -1,17 +1,14 @@
 ---
-title: Odkryj aplikacje, role i funkcje zainstalowane na serwerach lokalnych przy użyciu funkcji oceny serwera Azure Migrate
-description: Opisuje sposób odnajdywania aplikacji, ról i funkcji na serwerach lokalnych przy użyciu oceny serwera Azure Migrate.
-author: snehaamicrosoft
-ms.service: azure-migrate
+title: Odnajdywanie aplikacji, ról i funkcji na serwerach lokalnych przy użyciu Azure Migrate
+description: Informacje na temat odnajdywania aplikacji, ról i funkcji na serwerach lokalnych przy użyciu narzędzia do oceny Azure Migrate Server.
 ms.topic: article
 ms.date: 11/20/2019
-ms.author: snehaa
-ms.openlocfilehash: 279e326ace308b354d7bcb8366d3286980e7b8c6
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: adc22925d1152639babe2377a1eae440e0ce418e
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278474"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029077"
 ---
 # <a name="discover-machine-apps-roles-and-features"></a>Odkryj aplikacje maszynowe, role i funkcje
 
@@ -30,14 +27,14 @@ Odnajdywanie aplikacji przy użyciu Azure Migrate: Ocena serwera jest bez wykorz
 1. Zapoznaj się z tematem [ograniczenia dotyczące obsługi](migrate-support-matrix-vmware.md#application-discovery) odnajdywania na poziomie aplikacji.
 2. Upewnij się, że [utworzono](how-to-add-tool-first-time.md) projekt Azure Migrate.
 3. Jeśli projekt został już utworzony, upewnij się, że [dodano](how-to-assess.md) Azure Migrate: Narzędzie do oceny serwera.
-4. Sprawdź [wymagania programu VMware](migrate-support-matrix-vmware.md#assessment-vcenter-server-requirements) dotyczące odnajdywania i oceniania maszyn wirtualnych VMware przy użyciu urządzenia Azure Migrate.
-4. Sprawdź [wymagania](migrate-support-matrix-vmware.md#assessment-appliance-requirements) dotyczące wdrażania urządzenia Azure Migrate.
+4. Sprawdź [wymagania programu VMware](migrate-support-matrix-vmware.md#vmware-requirements) dotyczące odnajdywania i oceniania maszyn wirtualnych VMware przy użyciu urządzenia Azure Migrate.
+4. Sprawdź [wymagania](migrate-appliance.md) dotyczące wdrażania urządzenia Azure Migrate.
 
 ## <a name="prepare-for-app-discovery"></a>Przygotowanie do odnajdywania aplikacji
 
-1. [Przygotowanie do wdrożenia urządzenia](https://docs.microsoft.com/azure/migrate/tutorial-prepare-vmware). Przygotowanie obejmuje sprawdzenie ustawień urządzenia oraz skonfigurowanie konta, które będzie używane przez urządzenie w celu uzyskania dostępu do vCenter Server.
+1. [Przygotowanie do wdrożenia urządzenia](tutorial-prepare-vmware.md). Przygotowanie obejmuje sprawdzenie ustawień urządzenia oraz skonfigurowanie konta, które będzie używane przez urządzenie w celu uzyskania dostępu do vCenter Server.
 2. Upewnij się, że masz konto użytkownika (jeden z nich dla serwerów z systemem Windows i Linux) z uprawnieniami administratora dla maszyn, na których mają być odnajdywane aplikacje, role i funkcje.
-3. [Wdróż urządzenie VMware,](how-to-set-up-appliance-vmware.md) aby rozpocząć odnajdywanie. Aby wdrożyć urządzenie, należy pobrać i zaimportować szablon komórki jajowe do programu VMware w celu utworzenia urządzenia jako maszyny wirtualnej VMware. Należy skonfigurować urządzenie, a następnie zarejestrować je w Azure Migrate.
+3. [Wdróż urządzenie Azure Migrate,](how-to-set-up-appliance-vmware.md) aby rozpocząć odnajdywanie. Aby wdrożyć urządzenie, należy pobrać i zaimportować szablon komórki jajowe do programu VMware w celu utworzenia urządzenia jako maszyny wirtualnej VMware. Należy skonfigurować urządzenie, a następnie zarejestrować je w Azure Migrate.
 2. Podczas wdrażania urządzenia w celu rozpoczęcia wykrywania ciągłego należy określić następujące elementy:
     - Nazwa vCenter Server, z którą chcesz nawiązać połączenie.
     - Poświadczenia utworzone dla urządzenia w celu nawiązania połączenia z vCenter Server.

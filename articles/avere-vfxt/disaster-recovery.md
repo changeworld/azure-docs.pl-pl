@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: rohogue
-ms.openlocfilehash: 19f31a2fafc112f499ff87eed23843915cab32a2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 28278f76497d6e9d0fee221bb4ef32fe6d369db0
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75414219"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75966650"
 ---
 # <a name="disaster-recovery-guidance-for-avere-vfxt-for-azure"></a>Wskazówki dotyczące odzyskiwania po awarii dla avere vFXT dla platformy Azure
 
@@ -60,7 +60,7 @@ W tej sekcji podano wskazówki dotyczące dalszej ochrony danych w usłudze BLOB
 Najlepsze rozwiązania dotyczące ochrony danych w usłudze Azure Blob Storage obejmują:
 
 * Często Kopiuj krytyczne dane do innego konta magazynu w innym regionie (tak często, jak to jest określone w planie odzyskiwania po awarii).
-* Kontroluj dostęp do danych we wszystkich systemach docelowych, aby zapobiec przypadkowemu usunięciu lub uszkodzeniu. Rozważ użycie [blokad zasobów](../azure-resource-manager/resource-group-lock-resources.md) w magazynie danych.
+* Kontroluj dostęp do danych we wszystkich systemach docelowych, aby zapobiec przypadkowemu usunięciu lub uszkodzeniu. Rozważ użycie [blokad zasobów](../azure-resource-manager/management/lock-resources.md) w magazynie danych.
 * Włącz funkcję avere vFXT dla usługi Azure [Cloud Snapshot](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_cloud_snapshot_policies.html>) dla plików podstawowych obiektów BLOB.
 
 ### <a name="copy-avere-vfxt-core-filer-data-to-a-backup-account"></a>Skopiuj dane podstawowego pliku avere vFXT do konta kopii zapasowej

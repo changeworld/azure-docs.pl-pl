@@ -3,12 +3,12 @@ title: 'Samouczek: Tworzenie definicji zasad niestandardowych'
 description: W tym samouczku utworzysz niestandardową definicję zasad Azure Policy, aby wymusić niestandardowe reguły biznesowe dla zasobów platformy Azure.
 ms.date: 11/25/2019
 ms.topic: tutorial
-ms.openlocfilehash: 51899491d7a75dc41bdab94d17769393ab4a6659
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: f7c303956b209b88ce3c697b5b66243e37071c83
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74885453"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75966026"
 ---
 # <a name="tutorial-create-a-custom-policy-definition"></a>Samouczek: Tworzenie definicji zasad niestandardowych
 
@@ -66,7 +66,7 @@ Istnieje wiele sposobów określania właściwości zasobu platformy Azure. Omó
 
 ### <a name="resource-manager-templates"></a>Szablony Menedżera zasobów
 
-[Szablon usługi Resource Manager](../../../azure-resource-manager/resource-manager-tutorial-create-encrypted-storage-accounts.md) zawierający szukaną właściwość w celu zarządzania nią można sprawdzić na kilka sposobów.
+[Szablon usługi Resource Manager](../../../azure-resource-manager/templates/template-tutorial-create-encrypted-storage-accounts.md) zawierający szukaną właściwość w celu zarządzania nią można sprawdzić na kilka sposobów.
 
 #### <a name="existing-resource-in-the-portal"></a>Istniejący zasób w portalu
 
@@ -386,7 +386,7 @@ Utworzenie [reguły zasad](../concepts/definition-structure.md#policy-rule) to o
 - Właściwość **type** konta magazynu to **Microsoft.Storage/storageAccounts**
 - Właściwość **supportsHttpsTrafficOnly** konta magazynu nie ma wartości **true**
 
-Ponieważ oba te warunki muszą być spełnione, użyjemy opcji **allOf** (wszystkie) jako [operatora logicznego](../concepts/definition-structure.md#logical-operators). Przekażemy parametr **effectType** (typEfektu) do efektu zamiast określania deklaracji statycznej. Ukończona reguła wygląda podobnie do następującego przykładu:
+Ponieważ obie te instrukcje muszą być prawdziwe, użyjemy [operatora logicznego](../concepts/definition-structure.md#logical-operators) **allOf** . Przekażemy parametr **effectType** (typEfektu) do efektu zamiast określania deklaracji statycznej. Ukończona reguła wygląda podobnie do następującego przykładu:
 
 ```json
 "if": {

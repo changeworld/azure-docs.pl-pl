@@ -3,12 +3,12 @@ title: Programowe tworzenie zasad
 description: W tym artykule opisano sposób programowego tworzenia zasad i zarządzania nimi dla Azure Policy za pomocą interfejsu wiersza polecenia platformy Azure, Azure PowerShell i API REST.
 ms.date: 01/31/2019
 ms.topic: how-to
-ms.openlocfilehash: e81f0ca43788d8f36dde0a58d2ecd4b1604fd77e
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 08ed43a464d1dd7de8220428dbc1c61ce9fc3ad6
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873067"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982467"
 ---
 # <a name="programmatically-create-policies"></a>Programowe tworzenie zasad
 
@@ -30,7 +30,7 @@ Przed rozpoczęciem upewnij się, że są spełnione następujące wymagania wst
    Register-AzResourceProvider -ProviderNamespace 'Microsoft.PolicyInsights'
    ```
 
-   Aby uzyskać więcej informacji na temat rejestrowania i przeglądania dostawców zasobów, zobacz [Dostawcy zasobów i ich typy](../../../azure-resource-manager/resource-manager-supported-services.md).
+   Aby uzyskać więcej informacji na temat rejestrowania i przeglądania dostawców zasobów, zobacz [Dostawcy zasobów i ich typy](../../../azure-resource-manager/management/resource-providers-and-types.md).
 
 1. Jeśli jeszcze nie, zainstaluj wiersza polecenia platformy Azure. Można uzyskać najnowszą wersję w [zainstalować interfejs wiersza polecenia w usłudze Azure na Windows](/cli/azure/install-azure-cli-windows).
 

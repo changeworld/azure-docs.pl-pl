@@ -15,19 +15,19 @@ ms.workload: NA
 ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ccdd234f951327aeb5baa6aabcac4314b9de7b34
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 0b938de0fec099b3f964eae60dc94d059e05a1c6
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68517104"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75973488"
 ---
 # <a name="deploy-storsimple-virtual-array---prepare-the-azure-portal"></a>Wdróż wirtualną macierz StorSimple — Przygotuj Azure Portal
 
 ![](./media/storsimple-virtual-array-deploy1-portal-prep/getstarted4.png)
 
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 [!INCLUDE [storsimple-virtual-array-eol-banner](../../includes/storsimple-virtual-array-eol-banner.md)]
 
@@ -37,7 +37,7 @@ Do ukończenia procesu instalacji i konfiguracji niezbędne są uprawnienia admi
 
 Informacje publikowane w tym artykule dotyczą wdrażania tablic wirtualnych StorSimple w chmurze Azure Portal i Microsoft Azure Government.
 
-### <a name="get-started"></a>Wprowadzenie
+### <a name="get-started"></a>Rozpocznij
 Przepływ pracy wdrożenia polega na przygotowaniu portalu, aprowizacji macierzy wirtualnej w środowisku zwirtualizowanym i zakończeniu instalacji. Aby rozpocząć pracę z wdrożeniem macierzy wirtualnej StorSimple jako serwerem plików lub serwerem iSCSI, należy zapoznać się z poniższymi zasobami.
 
 #### <a name="deployment-articles"></a>Artykuły dotyczące wdrażania
@@ -94,9 +94,9 @@ Przed rozpoczęciem upewnij się, że:
 
 Wykonaj następujące instrukcje krok po kroku, aby przygotować Portal dla usługi StorSimple Menedżer urządzeń.
 
-## <a name="step-1-create-a-new-service"></a>Krok 1: Tworzenie nowej usługi
+## <a name="step-1-create-a-new-service"></a>Krok 1. Tworzenie nowej usługi
 
-Pojedyncze wystąpienie usługi StorSimple Menedżer urządzeń może zarządzać wieloma StorSimple wirtualnymi. Wykonaj poniższe kroki, aby utworzyć wystąpienie usługi Menedżer urządzeń StorSimple. Jeśli masz istniejącą usługę StorSimple Menedżer urządzeń do zarządzania macierzami wirtualnymi, Pomiń ten krok i przejdź do [kroku 2: Pobierz klucz](#step-2-get-the-service-registration-key)rejestracji usługi.
+Pojedyncze wystąpienie usługi StorSimple Menedżer urządzeń może zarządzać wieloma StorSimple wirtualnymi. Wykonaj poniższe kroki, aby utworzyć wystąpienie usługi Menedżer urządzeń StorSimple. Jeśli masz istniejącą usługę StorSimple Menedżer urządzeń do zarządzania macierzami wirtualnymi, Pomiń ten krok i przejdź do [kroku 2: Pobieranie klucza rejestracji usługi](#step-2-get-the-service-registration-key).
 
 [!INCLUDE [storsimple-virtual-array-create-new-service](../../includes/storsimple-virtual-array-create-new-service.md)]
 
@@ -104,11 +104,11 @@ Pojedyncze wystąpienie usługi StorSimple Menedżer urządzeń może zarządza�
 > Jeśli nie włączono automatycznego tworzenia konta magazynu przy użyciu usługi, po pomyślnym utworzeniu usługi musisz utworzyć co najmniej jedno konto magazynu.
 > 
 > * Jeśli nie utworzono automatycznie konta magazynu, przejdź do kroku [Konfigurowanie nowego konta magazynu dla usługi](#optional-step-configure-a-new-storage-account-for-the-service) w celu uzyskania szczegółowych informacji.
-> * Jeśli włączono automatyczne tworzenie konta magazynu, przejdź do [kroku 2: Pobierz klucz](#step-2-get-the-service-registration-key)rejestracji usługi.
+> * Jeśli włączono automatyczne tworzenie konta magazynu, przejdź do części [Krok 2. Pobieranie klucza rejestracji usługi](#step-2-get-the-service-registration-key).
 > 
 > 
 
-## <a name="step-2-get-the-service-registration-key"></a>Krok 2: Pobieranie klucza rejestracji usługi
+## <a name="step-2-get-the-service-registration-key"></a>Krok 2. Pobieranie klucza rejestracji usługi
 
 Po skonfigurowaniu i uruchomieniu usługi Menedżer urządzeń StorSimple musisz pobrać klucz rejestracji usługi. Ten klucz służy do rejestrowania urządzenia StorSimple i łączenia go z usługą.
 
@@ -121,7 +121,7 @@ Wykonaj poniższe czynności w witrynie [Azure Portal](https://portal.azure.com/
 > 
 > 
 
-## <a name="step-3-download-the-virtual-array-image"></a>Krok 3: Pobierz obraz macierzy wirtualnej
+## <a name="step-3-download-the-virtual-array-image"></a>Krok 3. Pobieranie obrazu macierzy wirtualnej
 
 Po skonfigurowaniu klucza rejestracji usługi należy pobrać odpowiedni obraz macierzy wirtualnej, aby zainicjować obsługę macierzy wirtualnej w systemie hosta. Obrazy macierzy wirtualnych są specyficzne dla systemu operacyjnego i można je pobrać ze strony Szybki start w Azure Portal.
 
@@ -134,7 +134,7 @@ Wykonaj poniższe czynności w witrynie [Azure Portal](https://portal.azure.com/
 
 #### <a name="to-get-the-virtual-array-image"></a>Aby uzyskać obraz macierzy wirtualnej
 
-1. Zaloguj się do [Azure Portal](https://portal.azure.com/). 
+1. Zaloguj się do [Portalu Azure](https://portal.azure.com/). 
 2. W Azure Portal kliknij pozycję **przeglądaj > menedżerów urządzeń StorSimple**.
 3. Wybierz istniejącą usługę StorSimple Menedżer urządzeń. W bloku **StorSimple Menedżer urządzeń** kliknij pozycję **Szybki Start**. 
 4. Kliknij link odpowiadający obrazowi, który chcesz pobrać z centrum pobierania Microsoft. Pliki obrazów mają rozmiar około 4,8 GB.
@@ -148,7 +148,7 @@ Wykonaj poniższe czynności w witrynie [Azure Portal](https://portal.azure.com/
 
 Ten krok jest opcjonalny i należy go wykonać tylko wtedy, gdy nie włączono automatycznego tworzenia konta magazynu przy użyciu usługi.
 
-Jeśli musisz utworzyć konto usługi Azure Storage w innym regionie, zobacz [temat jak utworzyć konto magazynu](../storage/common/storage-quickstart-create-account.md) , aby uzyskać instrukcje krok po kroku.
+Jeśli musisz utworzyć konto usługi Azure Storage w innym regionie, zobacz [temat jak utworzyć konto magazynu](../storage/common/storage-account-create.md) , aby uzyskać instrukcje krok po kroku.
 
 Aby dodać istniejące konto magazynu Microsoft Azure, wykonaj następujące czynności w [Azure Portal](https://ms.portal.azure.com/) na stronie usługi StorSimple Menedżer urządzeń.
 
@@ -156,7 +156,7 @@ Aby dodać istniejące konto magazynu Microsoft Azure, wykonaj następujące czy
 
 1. Przejdź do usługi Menedżer urządzeń, wybierz i kliknij ją dwukrotnie. Spowoduje to otwarcie bloku **Przegląd** .
 2. Wybierz pozycję **poświadczenia konta magazynu** w sekcji **Konfiguracja** .
-3. Kliknij przycisk **Dodaj**.
+3. Kliknij pozycję **Dodaj**.
 4. W bloku **Dodawanie konta magazynu** wykonaj następujące czynności:
    
    1. W obszarze **subskrypcja**wybierz pozycję **bieżące**.
@@ -165,7 +165,7 @@ Aby dodać istniejące konto magazynu Microsoft Azure, wykonaj następujące czy
    
    3. Wybierz pozycję **Włącz** , aby utworzyć bezpieczny kanał na potrzeby komunikacji sieciowej między urządzeniem StorSimple a chmurą. Wybierz opcję **Wyłącz** tylko wtedy, gdy Pracujesz w chmurze prywatnej.
    
-   4. Kliknij przycisk **Dodaj**. Po pomyślnym utworzeniu konta magazynu otrzymasz powiadomienie.<br></br>
+   4. Kliknij pozycję **Dodaj**. Po pomyślnym utworzeniu konta magazynu otrzymasz powiadomienie.<br></br>
    
       ![Dodawanie istniejącego poświadczenia konta magazynu](./media/storsimple-virtual-array-manage-storage-accounts/ova-add-storageacct.png)
 

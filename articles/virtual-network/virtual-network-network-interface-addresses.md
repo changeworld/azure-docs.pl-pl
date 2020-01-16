@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: kumud
-ms.openlocfilehash: 1a6fb5d2b27996d67e0bf27eb57d16f4d2fb2797
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: dc5b1f2f8e8b529149184ce173bcdd315311bad4
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647258"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75975326"
 ---
 # <a name="add-change-or-remove-ip-addresses-for-an-azure-network-interface"></a>Dodawanie, zmienianie lub usuwanie adresów IP dla interfejsu sieciowego platformy Azure
 
@@ -146,7 +146,7 @@ Istnieją scenariusze, w których konieczne jest ręczne ustawienie adresu IP in
 4. Uruchom maszynę wirtualną.
 5. [Ręcznie skonfiguruj](virtual-network-multiple-ip-addresses-portal.md#os-config) pomocnicze adresy IP w ramach systemu operacyjnego (a także podstawowy adres IP w systemie Windows), aby dopasować je do wartości ustawionej na platformie Azure.
 
-Zgodnie z powyższymi krokami prywatny adres IP przypisany do interfejsu sieciowego na platformie Azure i w systemie operacyjnym maszyny wirtualnej pozostaje taki sam. Aby śledzić, które maszyny wirtualne w ramach subskrypcji ręcznie ustawili adresy IP w ramach systemu operacyjnego, należy rozważyć dodanie [znacznika](../azure-resource-manager/resource-group-using-tags.md) platformy Azure do maszyn wirtualnych. Możesz użyć "przypisywania adresów IP: static", na przykład. W ten sposób można łatwo znaleźć maszyny wirtualne w ramach subskrypcji, które ręcznie ustawili adres IP w ramach systemu operacyjnego.
+Zgodnie z powyższymi krokami prywatny adres IP przypisany do interfejsu sieciowego na platformie Azure i w systemie operacyjnym maszyny wirtualnej pozostaje taki sam. Aby śledzić, które maszyny wirtualne w ramach subskrypcji ręcznie ustawili adresy IP w ramach systemu operacyjnego, należy rozważyć dodanie [znacznika](../azure-resource-manager/management/tag-resources.md) platformy Azure do maszyn wirtualnych. Możesz użyć "przypisywania adresów IP: static", na przykład. W ten sposób można łatwo znaleźć maszyny wirtualne w ramach subskrypcji, które ręcznie ustawili adres IP w ramach systemu operacyjnego.
 
 Poza umożliwieniem, aby maszyna wirtualna mogła komunikować się z innymi zasobami w ramach tych samych lub połączonych sieci wirtualnych, prywatny adres IP również umożliwia maszynie wirtualnej komunikację wychodzącą z Internetem. Połączenia wychodzące to adresy sieci źródłowej tłumaczone przez platformę Azure na nieprzewidywalny publiczny adres IP. Aby dowiedzieć się więcej na temat wychodzącej łączności z Internetem na platformie Azure, przeczytaj artykuł dotyczący [wychodzącego połączenia z Internetem](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json) Nie można przekazać komunikacji przychodzącej do prywatnego adresu IP maszyny wirtualnej z Internetu. Jeśli połączenia wychodzące wymagają przewidywalnego publicznego adresu IP, skojarz zasób publicznego adresu IP z interfejsem sieciowym.
 

@@ -5,12 +5,12 @@ ms.assetid: 70fb0e6e-8727-4cca-ba82-98a4d21586ff
 ms.topic: article
 ms.date: 11/24/2017
 ms.custom: seodec18
-ms.openlocfilehash: 0723a3b0c96339ba86b98ab851c44d2a65e6f34b
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 6bc6f1ca29343e027730cbbd99d210f911fcb492
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672380"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75967296"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-app-service"></a>Kup niestandardową nazwę domeny dla Azure App Service
 
@@ -23,7 +23,7 @@ W przypadku maszyny wirtualnej platformy Azure lub usługi Azure Storage, zobacz
 W celu ukończenia tego samouczka:
 
 * [Utwórz aplikację usługi App Service](/azure/app-service/) lub użyj aplikacji utworzonej w innym samouczku.
-* [Usuń limit wydatków dla subskrypcji](../billing/billing-spending-limit.md#remove). Nie można kupować App Service domen z bezpłatnymi środkami subskrypcji.
+* [Usuń limit wydatków dla subskrypcji](../cost-management-billing/manage/spending-limit.md#remove). Nie można kupować App Service domen z bezpłatnymi środkami subskrypcji.
 
 ## <a name="prepare-the-app"></a>Przygotowywanie aplikacji
 
@@ -168,7 +168,7 @@ Upewnij się, że zakupiona domena znajduje się na liście w sekcji **domeny Ap
 Wybierz przycisk **Dodaj nazwę hosta**.
 
 ### <a name="configure-hostname"></a>Konfigurowanie nazwy hosta
-W oknie dialogowym **Dodawanie nazwy hosta** wpisz w pełni kwalifikowaną nazwę domeny domeny App Service lub dowolna poddomena. Na przykład:
+W oknie dialogowym **Dodawanie nazwy hosta** wpisz w pełni kwalifikowaną nazwę domeny domeny App Service lub dowolna poddomena. Przykład:
 
 - kontoso.net
 - kontoso.net www\.
