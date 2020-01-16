@@ -8,12 +8,12 @@ ms.service: azure
 ms.topic: overview
 ms.workload: infrastructure
 ms.date: 08/24/2018
-ms.openlocfilehash: 9b23e3b69b4970e765ea1cd5af690cf074bad774
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: e6ef4cc825d40615fa8a6aee7dff8d4542407974
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693445"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75970856"
 ---
 # <a name="get-started-for-azure-it-operators"></a>Wprowadzenie do operatorów IT platformy Azure
 
@@ -48,7 +48,7 @@ Aby uzyskać więcej informacji na temat dostępnych regionów świadczenia usł
 ### <a name="cloud-computing-model"></a>Model przetwarzania w chmurze
 
 Platforma Azure korzysta z modelu przetwarzania w chmurze w oparciu o kategorie usługi udostępniane klientom. Trzy kategorie usługi obejmują infrastrukturę jako usługę (IaaS), platformę jako usługę (PaaS) i oprogramowanie jako usługa (SaaS). Dostawcy udostępniają część lub całość odpowiedzialności za składniki w stosie obliczeniowym w każdej z tych kategorii. Przyjrzyjmy się każdej kategorii w chmurze obliczeniowej.
-![Cloud obliczania stosu ](./media/cloud-computing-comparison.png)
+Porównanie stosu ![w chmurze](./media/cloud-computing-comparison.png)
 
 #### <a name="iaas-infrastructure-as-a-service"></a>IaaS: infrastruktura jako usługa
 
@@ -94,7 +94,7 @@ Usługi do przechowywania danych i zarządzania nimi:
 
 - Usługa Azure Storage (obejmuje obiekty blob platformy Azure, kolejki, tabele i usługi plików)
 
-- Azure SQL Database
+- Baza danych SQL Azure
 
 - Azure Cosmos DB
 
@@ -128,7 +128,7 @@ Usługi dla sieci zarówno na platformie Azure, jak i na platformie Azure i loka
 
 - Azure Traffic Manager
 
-- Content Delivery Network platformy Azure
+- Azure Content Delivery Network
 
 Aby uzyskać szczegółową dokumentację dotyczącą usług platformy Azure, zobacz [dokumentację usługi platformy Azure](https://docs.microsoft.com/azure).
 
@@ -140,7 +140,7 @@ Azure to globalna platforma w chmurze, która jest ogólnie dostępna w wielu re
 
 Jedną z zalet korzystania z platformy Azure jest możliwość wdrażania aplikacji w różnych centrach danych na całym świecie. Wybrany region może mieć wpływ na wydajność aplikacji. Najlepiej wybrać region, który jest bliżej większości klientów, aby zmniejszyć opóźnienia w żądaniach sieciowych. Możesz również wybrać region spełniający wymagania prawne dotyczące dystrybucji aplikacji w określonych krajach/regionach.
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Portal Azure
 
 Azure Portal jest aplikacją opartą na sieci Web, która może służyć do tworzenia i usuwania zasobów i usług platformy Azure oraz zarządzania nimi. Azure Portal znajduje się w [Portal.Azure.com](https://portal.azure.com). Obejmuje to dostosowywalny pulpit nawigacyjny i narzędzia służące do zarządzania zasobami platformy Azure. Zawiera również informacje dotyczące rozliczeń i subskrypcji. Aby uzyskać więcej informacji, zobacz [Microsoft Azure Portal Omówienie](https://azure.microsoft.com/documentation/articles/azure-portal-overview/) i [Zarządzanie zasobami platformy Azure za pomocą portalu](https://docs.microsoft.com/azure/azure-portal/resource-group-portal).
 
@@ -178,7 +178,7 @@ Administratorzy mogą uzyskać dostęp do Azure PowerShell i interfejsu wiersza 
 
 ## <a name="azure-subscriptions"></a>Subskrypcje platformy Azure
 
-Subskrypcja to logiczna Grupa usług platformy Azure, która jest połączona z kontem platformy Azure. Pojedyncze konto platformy Azure może zawierać wiele subskrypcji. Rozliczanie usług platformy Azure odbywa się na podstawie subskrypcji. Subskrypcje platformy Azure mają administratora konta, który ma pełną kontrolę nad subskrypcją, oraz administratora usługi, który ma kontrolę nad wszystkimi usługami w ramach subskrypcji. Aby uzyskać informacje na temat klasycznych administratorów subskrypcji, zobacz [Dodawanie lub zmienianie administratorów subskrypcji platformy Azure](../../billing/billing-add-change-azure-subscription-administrator.md). Oprócz administratorów do poszczególnych kont można udzielić szczegółowej kontroli nad zasobami platformy Azure przy użyciu [kontroli dostępu opartej na rolach (RBAC)](../../role-based-access-control/overview.md).
+Subskrypcja to logiczna Grupa usług platformy Azure, która jest połączona z kontem platformy Azure. Pojedyncze konto platformy Azure może zawierać wiele subskrypcji. Rozliczanie usług platformy Azure odbywa się na podstawie subskrypcji. Subskrypcje platformy Azure mają administratora konta, który ma pełną kontrolę nad subskrypcją, oraz administratora usługi, który ma kontrolę nad wszystkimi usługami w ramach subskrypcji. Aby uzyskać informacje na temat klasycznych administratorów subskrypcji, zobacz [Dodawanie lub zmienianie administratorów subskrypcji platformy Azure](../../cost-management-billing/manage/add-change-subscription-administrator.md). Oprócz administratorów do poszczególnych kont można udzielić szczegółowej kontroli nad zasobami platformy Azure przy użyciu [kontroli dostępu opartej na rolach (RBAC)](../../role-based-access-control/overview.md).
 
 ### <a name="select-and-enable-an-azure-subscription"></a>Wybieranie i włączanie subskrypcji platformy Azure
 
@@ -206,7 +206,7 @@ Aby uzyskać więcej informacji, zobacz temat [Zarządzanie dostępem przy użyc
 
 Ważnym składnikiem korzystania z platformy Azure jest możliwość wyświetlania informacji dotyczących rozliczeń. Azure Portal zapewnia szczegółowy wgląd w informacje dotyczące rozliczeń platformy Azure.
 
-Aby uzyskać więcej informacji, zobacz [jak pobrać fakturę rozliczeń platformy Azure i dane dziennego użycia](../../billing/billing-download-azure-invoice-daily-usage-date.md).
+Aby uzyskać więcej informacji, zobacz [jak pobrać fakturę rozliczeń platformy Azure i dane dziennego użycia](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md).
 
 ### <a name="get-billing-information-from-billing-apis"></a>Uzyskaj informacje dotyczące rozliczeń z interfejsów API rozliczeń
 
@@ -216,7 +216,7 @@ Oprócz wyświetlania rozliczeń w portalu możesz uzyskać dostęp do informacj
 
 - Korzystając z interfejsu API usługi Azure rate Card, można wyświetlić listę wszystkich dostępnych zasobów wraz z informacjami dotyczącymi metadanych i cen poszczególnych zasobów.
 
-Aby uzyskać więcej informacji, zobacz [Uzyskiwanie szczegółowych informacji o użyciu zasobów platformy Microsoft Azure](../../billing/billing-usage-rate-card-overview.md).
+Aby uzyskać więcej informacji, zobacz [Uzyskiwanie szczegółowych informacji o użyciu zasobów platformy Microsoft Azure](../../cost-management-billing/manage/usage-rate-card-overview.md).
 
 ### <a name="forecast-cost-with-the-pricing-calculator"></a>Prognoza kosztów za pomocą kalkulatora cen
 
@@ -328,19 +328,19 @@ Maszyny wirtualne platformy Azure można wdrażać przy użyciu Azure Portal prz
 
 Wdrożenie maszyny wirtualnej przy użyciu Azure Portal wymaga tylko aktywnej subskrypcji platformy Azure i dostępu do przeglądarki sieci Web. Można wybrać wiele różnych obrazów systemu operacyjnego z różnymi konfiguracjami. Wszystkie wymagania dotyczące magazynu i sieci są konfigurowane podczas wdrażania. Aby uzyskać więcej informacji, zobacz "Tworzenie maszyny wirtualnej w Azure Portal" dla [systemów Windows](../../virtual-machines/windows/quick-create-portal.md) i [Linux](../../virtual-machines/linux/quick-create-portal.md).
 
-Oprócz wdrożenia maszyny wirtualnej na podstawie Azure Portal można wdrożyć szablon Azure Resource Manager z poziomu portalu. Spowoduje to wdrożenie i skonfigurowanie wszystkich zasobów zgodnie z definicją w szablonie. Aby uzyskać więcej informacji, zobacz [wdrażanie zasobów za pomocą szablonów Menedżer zasobów i Azure Portal](../../azure-resource-manager/resource-group-template-deploy-portal.md).
+Oprócz wdrożenia maszyny wirtualnej na podstawie Azure Portal można wdrożyć szablon Azure Resource Manager z poziomu portalu. Spowoduje to wdrożenie i skonfigurowanie wszystkich zasobów zgodnie z definicją w szablonie. Aby uzyskać więcej informacji, zobacz [wdrażanie zasobów za pomocą szablonów Menedżer zasobów i Azure Portal](../../azure-resource-manager/templates/deploy-portal.md).
 
 #### <a name="powershell"></a>PowerShell
 
 Wdrażanie maszyny wirtualnej platformy Azure za pomocą programu PowerShell pozwala na pełną automatyzację wdrożenia wszystkich powiązanych zasobów maszyny wirtualnej, w tym magazynu i sieci. Aby uzyskać więcej informacji, zobacz [Tworzenie maszyny wirtualnej z systemem Windows przy użyciu Menedżer zasobów i programu PowerShell](../../virtual-machines/windows/quick-create-powershell.md).
 
-Oprócz wdrażania zasobów obliczeniowych platformy Azure osobno można użyć modułu Azure PowerShell, aby wdrożyć szablon Azure Resource Manager. Aby uzyskać więcej informacji, zobacz [wdrażanie zasobów za pomocą szablonów Menedżer zasobów i Azure PowerShell](../../azure-resource-manager/resource-group-template-deploy.md).
+Oprócz wdrażania zasobów obliczeniowych platformy Azure osobno można użyć modułu Azure PowerShell, aby wdrożyć szablon Azure Resource Manager. Aby uzyskać więcej informacji, zobacz [wdrażanie zasobów za pomocą szablonów Menedżer zasobów i Azure PowerShell](../../azure-resource-manager/templates/deploy-powershell.md).
 
-#### <a name="command-line-interface-cli"></a>Interfejs wiersza polecenia (CLI)
+#### <a name="command-line-interface-cli"></a>Interfejs wiersza polecenia
 
 Podobnie jak w przypadku modułu programu PowerShell, interfejs wiersza polecenia platformy Azure zapewnia automatyzację wdrażania i może być używany w systemach Windows, OS X lub Linux. W przypadku korzystania z polecenia **szybkiego tworzenia maszyny** wirtualnej platformy Azure można wdrożyć wszystkie powiązane zasoby maszyn wirtualnych (w tym magazyn i sieć) oraz maszynę wirtualną. Aby uzyskać więcej informacji, zobacz [Tworzenie maszyny wirtualnej z systemem Linux na platformie Azure przy użyciu interfejsu wiersza polecenia](../../virtual-machines/linux/quick-create-cli.md).
 
-Podobnie można użyć interfejsu wiersza polecenia platformy Azure, aby wdrożyć szablon Azure Resource Manager. Aby uzyskać więcej informacji, zobacz [wdrażanie zasobów za pomocą szablonów Menedżer zasobów i interfejsu wiersza polecenia platformy Azure](../../azure-resource-manager/resource-group-template-deploy-cli.md).
+Podobnie można użyć interfejsu wiersza polecenia platformy Azure, aby wdrożyć szablon Azure Resource Manager. Aby uzyskać więcej informacji, zobacz [wdrażanie zasobów za pomocą szablonów Menedżer zasobów i interfejsu wiersza polecenia platformy Azure](../../azure-resource-manager/templates/deploy-cli.md).
 
 ### <a name="access-and-security-for-virtual-machines"></a>Dostęp i zabezpieczenia dla maszyn wirtualnych
 
@@ -370,13 +370,13 @@ Każdy typ magazynu ma inny przypadek użycia.
 
 Obiekt *BLOB* słowa jest akronimem dla *dużego obiektu binarnego*. Obiekty blob są plikami bez struktury, takimi jak te, które są przechowywane na komputerze. Magazyn obiektów blob umożliwia przechowywanie dowolnego typu danych tekstowych lub binarnych, takich jak dokumenty, pliki multimedialne lub instalatory aplikacji. Magazyn obiektów blob jest również nazywany magazynem obiektów. Usługa Azure Blob Storage zawiera również dyski danych Virtual Machines platformy Azure.
 
-Usługa Azure Storage obsługuje trzy rodzaje obiektów blob:
+Usługa Azure Storage obsługuje trzy typy obiektów blob:
 
-- **Blokowe obiekty blob** są używane do przechowywania zwykłych plików o rozmiarze do 195 GB (4 MB × 50 000 bloków). Podstawowym przypadkiem użycia dla blokowych obiektów BLOB jest przechowywanie plików odczytywanych od początku do końca, takich jak pliki multimedialne lub pliki obrazów dla witryn sieci Web. Są one nazwanymi blokami BLOB, ponieważ pliki o rozmiarze większym niż 64 MB muszą zostać przekazane jako małe bloki. Te bloki są następnie konsolidowane (lub zatwierdzane) do końcowego obiektu BLOB.
+- **Blokowe obiekty blob** są używane do przechowywania zwykłych plików o rozmiarze do 195 GB (4 MB × 50 000 bloków). Głównym zastosowaniem dla blokowych obiektów blob jest przechowywanie plików, które są odczytywane od początku do końca, np. plików multimedialnych lub plików obrazów na potrzeby witryn internetowych. Są one nazwanymi blokami BLOB, ponieważ pliki o rozmiarze większym niż 64 MB muszą zostać przekazane jako małe bloki. Te bloki są następnie konsolidowane (lub zatwierdzane) do końcowego obiektu BLOB.
 
-- **Stronicowe obiekty blob** są używane do przechowywania plików o dostępie losowym o rozmiarze do 1 TB. Stronicowe obiekty blob są używane głównie jako zapasowe magazyny dla wirtualnych dysków twardych, które zapewniają trwałe dyski dla Virtual Machines platformy Azure, usługi obliczeniowej IaaS na platformie Azure. Są one nazywane stronicowymi obiektami BLOB, ponieważ zapewniają losowy dostęp do odczytu i zapisu do stron 512-bajtowych.
+- **Stronicowe obiekty blob** są używane do przechowywania plików o dostępie losowym o rozmiarze do 1 TB. Stronicowe obiekty blob są używane głównie jako zapasowe magazyny dla wirtualnych dysków twardych, które zapewniają trwałe dyski dla Virtual Machines platformy Azure, usługi obliczeniowej IaaS na platformie Azure. Stronicowe obiekty blob są tak nazywane, ponieważ zapewniają swobodny dostęp do odczytu/zapisu do 512-bajtowych stron.
 
-- **Dołącz obiekty blob** składają się z bloków takich jak blokowe obiekty blob, ale są one zoptymalizowane pod kątem operacji dołączania. Są one często używane do rejestrowania informacji z jednego lub kilku źródeł do tego samego obiektu BLOB. Można na przykład napisać wszystkie dzienniki śledzenia do tego samego obiektu BLOB dołączania dla aplikacji uruchomionej na wielu maszynach wirtualnych. Pojedynczy obiekt BLOB dołączania może mieć wartość do 195 GB.
+- **Dołącz obiekty blob** składają się z bloków takich jak blokowe obiekty blob, ale są one zoptymalizowane pod kątem operacji dołączania. Są one często używane do rejestrowania informacji z jednego lub kilku źródeł do tego samego obiektu BLOB. Można na przykład napisać wszystkie dzienniki śledzenia do tego samego obiektu BLOB dołączania dla aplikacji uruchomionej na wielu maszynach wirtualnych. Pojedynczy uzupełniany obiekt blob może mieć rozmiar do 195 GB.
 
 Aby uzyskać więcej informacji, zobacz Rozpoczynanie [pracy z usługą Azure Blob Storage przy użyciu platformy .NET](../../storage/blobs/storage-dotnet-how-to-use-blobs.md).
 
@@ -408,17 +408,17 @@ Istnieje kilka opcji wdrażania konta magazynu.
 
 #### <a name="portal"></a>Portal
 
-Wdrożenie konta magazynu przy użyciu Azure Portal wymaga tylko aktywnej subskrypcji platformy Azure i dostępu do przeglądarki sieci Web. Nowe konto magazynu można wdrożyć w nowej lub istniejącej grupie zasobów. Po utworzeniu konta magazynu można utworzyć kontener obiektów blob lub udział plików przy użyciu portalu. Jednostki magazynu tabeli i kolejki można tworzyć programowo. Aby uzyskać więcej informacji, zobacz temat [Tworzenie konta](../../storage/common/storage-quickstart-create-account.md).
+Wdrożenie konta magazynu przy użyciu Azure Portal wymaga tylko aktywnej subskrypcji platformy Azure i dostępu do przeglądarki sieci Web. Nowe konto magazynu można wdrożyć w nowej lub istniejącej grupie zasobów. Po utworzeniu konta magazynu można utworzyć kontener obiektów blob lub udział plików przy użyciu portalu. Jednostki magazynu tabeli i kolejki można tworzyć programowo. Aby uzyskać więcej informacji, zobacz temat [Tworzenie konta](../../storage/common/storage-account-create.md).
 
-Oprócz wdrażania konta magazynu na podstawie Azure Portal można wdrożyć szablon Azure Resource Manager z poziomu portalu. Spowoduje to wdrożenie i skonfigurowanie wszystkich zasobów zgodnie z definicją w szablonie, w tym wszystkich kont magazynu. Aby uzyskać więcej informacji, zobacz [wdrażanie zasobów za pomocą szablonów Menedżer zasobów i Azure Portal](../../azure-resource-manager/resource-group-template-deploy-portal.md).
+Oprócz wdrażania konta magazynu na podstawie Azure Portal można wdrożyć szablon Azure Resource Manager z poziomu portalu. Spowoduje to wdrożenie i skonfigurowanie wszystkich zasobów zgodnie z definicją w szablonie, w tym wszystkich kont magazynu. Aby uzyskać więcej informacji, zobacz [wdrażanie zasobów za pomocą szablonów Menedżer zasobów i Azure Portal](../../azure-resource-manager/templates/deploy-portal.md).
 
 #### <a name="powershell"></a>PowerShell
 
 Wdrożenie konta usługi Azure Storage za pomocą programu PowerShell umożliwia pełne automatyzację wdrożenia konta magazynu. Aby uzyskać więcej informacji, zobacz [używanie Azure PowerShell z usługą Azure Storage](../../storage/common/storage-powershell-guide-full.md).
 
-Oprócz wdrażania zasobów platformy Azure za pomocą modułu Azure PowerShell można wdrożyć szablon Azure Resource Manager. Aby uzyskać więcej informacji, zobacz [wdrażanie zasobów za pomocą szablonów Menedżer zasobów i Azure PowerShell](../../azure-resource-manager/resource-group-template-deploy.md).
+Oprócz wdrażania zasobów platformy Azure za pomocą modułu Azure PowerShell można wdrożyć szablon Azure Resource Manager. Aby uzyskać więcej informacji, zobacz [wdrażanie zasobów za pomocą szablonów Menedżer zasobów i Azure PowerShell](../../azure-resource-manager/templates/deploy-powershell.md).
 
-#### <a name="command-line-interface-cli"></a>Interfejs wiersza polecenia (CLI)
+#### <a name="command-line-interface-cli"></a>Interfejs wiersza polecenia
 
 Podobnie jak w przypadku modułu programu PowerShell, interfejs wiersza polecenia platformy Azure zapewnia automatyzację wdrażania i może być używany w systemach Windows, OS X lub Linux. Aby utworzyć konto magazynu, można użyć polecenia **Create Account Storage** CLI dla systemu Azure. Aby uzyskać więcej informacji, zobacz [Używanie interfejsu wiersza polecenia platformy Azure z usługą Azure Storage.](../../storage/common/storage-azure-cli.md)
 
@@ -474,7 +474,7 @@ Istnieje kilka opcji wdrażania sieci wirtualnej.
 - Szablony Azure Resource Manager
 
 > **Kiedy używać**: wszędzie, gdzie pracujesz z maszynami wirtualnymi na platformie Azure, będziesz korzystać z sieci wirtualnych. Pozwala to na segmentację maszyn wirtualnych do publicznych i prywatnych podsieci podobnych do lokalnych centrów danych.
-> 
+>
 > **Wprowadzenie**: wdrażanie sieci wirtualnej platformy Azure przy użyciu Azure Portal wymaga tylko aktywnej subskrypcji platformy Azure i dostępu do przeglądarki sieci Web. Nową sieć wirtualną można wdrożyć w nowej lub istniejącej grupie zasobów. Podczas tworzenia nowej maszyny wirtualnej z poziomu portalu można wybrać istniejącą sieć wirtualną lub utworzyć nową. Rozpocznij pracę i [Utwórz sieć wirtualną przy użyciu Azure Portal](../../virtual-network/quick-create-portal.md).
 
 ### <a name="access-and-security-for-virtual-networks"></a>Dostęp i zabezpieczenia dla sieci wirtualnych

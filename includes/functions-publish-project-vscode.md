@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 04/16/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: abb8b6bed6766ff0ea85eab1434014a057af4ca3
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 66c100ecd40e9f0899f7686397339ab849315c3e
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68843286"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76021110"
 ---
 ## <a name="publish-the-project-to-azure"></a>Publikowanie projektu na platformie Azure
 
@@ -37,13 +37,13 @@ W tej sekcji założono, że tworzysz nową aplikację funkcji na platformie Azu
 
     Naciśnięcie klawisza ENTER powoduje utworzenie następujących zasobów platformy Azure w ramach subskrypcji:
 
-    * **[Grupa zasobów](../articles/azure-resource-manager/resource-group-overview.md)** : Zawiera wszystkie utworzone zasoby platformy Azure. Nazwa jest oparta na nazwie aplikacji funkcji.
-    * **[Konto magazynu](../articles/storage/common/storage-quickstart-create-account.md)** : Konto magazynu w warstwie Standardowa jest tworzone z unikatową nazwą, która jest oparta na nazwie aplikacji funkcji.
-    * **[Plan hostingu](../articles/azure-functions/functions-scale.md)** : Plan zużycia jest tworzony w regionie zachodnie stany USA w celu hostowania aplikacji funkcji bezserwerowej.
-    * **Aplikacja funkcji**: Projekt zostanie wdrożony do i uruchomiony w tej nowej aplikacji funkcji.
+    * **[Grupa zasobów](../articles/azure-resource-manager/management/overview.md)** : zawiera wszystkie utworzone zasoby platformy Azure. Nazwa jest oparta na nazwie aplikacji funkcji.
+    * **[Konto magazynu](../articles/storage/common/storage-account-create.md)** : konto magazynu w warstwie Standardowa jest tworzone z unikatową nazwą, która jest oparta na nazwie aplikacji funkcji.
+    * **[Plan hostingu](../articles/azure-functions/functions-scale.md)** : plan zużycia jest tworzony w regionie zachodnie stany USA w celu hostowania aplikacji funkcji bezserwerowej.
+    * **Aplikacja funkcji**: projekt jest wdrażany do i uruchamiany w tej nowej aplikacji funkcji.
 
     Po utworzeniu aplikacji funkcji i zastosowaniu pakietu wdrożeniowego zostanie wyświetlone powiadomienie. Wybierz pozycję **Wyświetl dane wyjściowe** w tym powiadomieniu, aby wyświetlić wyniki tworzenia i wdrażania, w tym utworzone zasoby platformy Azure.
 
-1. Z powrotem na **platformie Azure: Obszar** funkcje, rozwiń nową aplikację funkcji w ramach subskrypcji. Rozwiń węzeł **funkcje**, kliknij prawym przyciskiem myszy pozycję **HttpTrigger**, a następnie wybierz polecenie **Kopiuj adres URL funkcji**.
+1. Wróć do obszaru **Azure: Functions** , a następnie rozwiń nową aplikację funkcji w ramach subskrypcji. Rozwiń węzeł **funkcje**, kliknij prawym przyciskiem myszy pozycję **HttpTrigger**, a następnie wybierz polecenie **Kopiuj adres URL funkcji**.
 
     ![Skopiuj adres URL funkcji dla nowego wyzwalacza HTTP](./media/functions-publish-project-vscode/function-copy-endpoint-url.png)

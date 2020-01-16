@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: rkarlin
-ms.openlocfilehash: a76f149b8ab9ca8515a7475cd7954b6d4862a92d
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: cbd452fcf4056c1bcf4d5b8d6debb9d8f4a6f11c
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75746878"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75976100"
 ---
 # <a name="connect-data-sources"></a>Łączenie ze źródłami danych
 
@@ -105,7 +105,7 @@ Alternatywnie można wdrożyć agenta ręcznie na istniejącej maszynie wirtualn
 | AzureNetworkAnalytics_CL  | [Analiza ruchu](../network-watcher/traffic-analytics.md) [schematu analitycznego ruchu](../network-watcher/traffic-analytics.md)  | | |
 | CommonSecurityLog  | [Połącz CEF](connect-common-event-format.md)  | V | |
 | OfficeActivity | [Łączenie usługi Office 365](connect-office-365.md) | V | |
-| SecurityEvents | [Łączenie zdarzeń zabezpieczeń systemu Windows](connect-windows-security-events.md)  | V | W przypadku skoroszytów z niezabezpieczonymi protokołami zobacz [Ustawienia skoroszytu niezabezpieczonych protokołów](https://blogs.technet.microsoft.com/jonsh/azure-sentinel-insecure-protocols-dashboard-setup/)  |
+| SecurityEvents | [Łączenie zdarzeń zabezpieczeń systemu Windows](connect-windows-security-events.md)  | V | W przypadku skoroszytów z niezabezpieczonymi protokołami zobacz [Ustawienia skoroszytu niezabezpieczonych protokołów](/azure/sentinel/quickstart-get-visibility#use-built-in-workbooks)  |
 | Dziennik systemu | [Połącz dziennik systemowy](connect-syslog.md) | V | |
 | Zapora aplikacji sieci Web firmy Microsoft (WAF) — (AzureDiagnostics) |[Połącz zaporę aplikacji sieci Web firmy Microsoft](connect-microsoft-waf.md) | V | |
 | SymantecICDx_CL | [Połącz firmę Symantec](connect-symantec.md) | V | |

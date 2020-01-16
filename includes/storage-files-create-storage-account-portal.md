@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/28/2018
 ms.author: wgries
 ms.custom: include file
-ms.openlocfilehash: a09e9206b3ecd23a6208572a88c16b149033f123
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: d4054760c77a7a70b7ed84a9f95b88a3bcf2bda3
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "68699436"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76020819"
 ---
 Konto magazynu to udostępniona pula magazynu, w której można wdrażać udziały plików platformy Azure lub inne zasoby magazynu, takie jak obiekty blob i kolejki. Konto magazynu może zawierać nieograniczoną liczbę udziałów. W udziale można przechowywać nieograniczoną liczbę plików, aż do osiągnięcia limitów pojemności konta magazynu.
 
@@ -24,7 +24,7 @@ Aby utworzyć konto magazynu:
     ![Zrzut ekranu przedstawiający pozycję konta magazynu w oknie dialogowym wyszukiwania zasobów](../articles/storage/files/media/storage-how-to-use-files-portal/create-storage-account-1.png)
 
 3. W polu **Nazwa** wprowadź ciąg *mystorageacct*, a po nim kilka losowo wybranych liczb, dopóki nie zostanie wyświetlony zielony znacznik wyboru wskazujący, że nazwa jest unikatowa. Nazwa konta magazynu może zawierać tylko małe litery i musi być globalnie unikatowa. Zanotuj nazwę konta magazynu. Użyjesz jej później. 
-4. W polu **Model wdrażania** pozostaw wartość domyślną **Resource Manager**. Aby dowiedzieć się więcej na temat różnic między usługą Azure Resource Manager a klasycznym modelem wdrożenia, zobacz [Understand deployment models and the state of your resources (Omówienie modeli wdrażania i stanu zasobów)](../articles/azure-resource-manager/resource-manager-deployment-model.md).
+4. W polu **Model wdrażania** pozostaw wartość domyślną **Resource Manager**. Aby dowiedzieć się więcej na temat różnic między usługą Azure Resource Manager a klasycznym modelem wdrożenia, zobacz [Understand deployment models and the state of your resources (Omówienie modeli wdrażania i stanu zasobów)](../articles/azure-resource-manager/management/deployment-models.md).
 5. W polu **Rodzaj konta** wybierz wartość **StorageV2**. Aby dowiedzieć się więcej na temat różnych rodzajów kont magazynu, zobacz [Understand Azure storage accounts (Omówienie kont usługi Azure Storage)](../articles/storage/common/storage-account-options.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 6. W polu **Wydajność** zachowaj wartość domyślną **Standard Storage**. Usługa Azure Files aktualnie obsługuje tylko magazyn w wersji Standardowa. Nawet w przypadku wybrania magazynu Azure Premium Storage udział plików będzie przechowywany w magazynie Standard Storage.
 7. W polu **Replikacja** wybierz wartość **Magazyn lokalnie nadmiarowy (LRS)** . 

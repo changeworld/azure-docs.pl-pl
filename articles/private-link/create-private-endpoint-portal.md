@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: quickstart
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: bc8141b951dbc27972dc2efb6819a7c0137ea7fc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 491ba986c6ca71be0bc5b13e2f9f0717ffec99a4
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75459935"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028882"
 ---
 # <a name="quickstart-create-a-private-endpoint-using-azure-portal"></a>Szybki Start: Tworzenie prywatnego punktu końcowego przy użyciu Azure Portal
 
@@ -162,7 +162,7 @@ W tej sekcji utworzysz program SQL Server i dodasz do niego prywatny punkt końc
     | ------- | ----- |
     |**SIECI**| |
     | Sieć wirtualna| Wybierz pozycję *MyVirtualNetwork*. |
-    | Podsieć | Wybierz pozycję Moja *podsieć*. |
+    | Podsieć | Wybierz pozycję Moja *podsieć*. |
     |**PRYWATNA INTEGRACJA Z USŁUGĄ DNS**||
     |Integracja z prywatną strefą DNS |Wybierz pozycję **Tak**. |
     |Strefa Prywatna strefa DNS |SELECT *(New) privatelink. Database. Windows. NET* |
@@ -199,9 +199,9 @@ Po utworzeniu **myVm**Połącz się z nim za pośrednictwem Internetu w następu
 
 ## <a name="access-the-sql-database-server-privately-from-the-vm"></a>Dostęp do serwera SQL Database z maszyny wirtualnej
 
-1. W Pulpit zdalny *myVM*Otwórz program PowerShell.
+1. W Pulpit zdalny *myVM*Otwórz program PowerShell.
 
-2. Wprowadź `nslookup myserver.database.windows.net`. 
+2. Wprowadź polecenie `nslookup myserver.database.windows.net`. 
 
     Zostanie wyświetlony komunikat podobny do tego:
     ```azurepowershell
@@ -227,11 +227,11 @@ Po utworzeniu **myVm**Połącz się z nim za pośrednictwem Internetu w następu
 1. Wybierz przycisk **Połącz**.
 2. Przeglądaj bazy danych z menu po lewej stronie.
 3. Zdefiniować Utwórz lub zapytaj informacje z bazy danych.
-4. Zamknij połączenie pulpitu zdalnego z *myVm*. 
+4. Zamknij połączenie pulpitu zdalnego z *myVm*. 
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów 
 Gdy skończysz korzystać z prywatnego punktu końcowego, programu SQL Server i maszyny wirtualnej, Usuń grupę zasobów i wszystkie zawarte w niej zasoby: 
-1. Wprowadź * * w polu **wyszukiwania** w górnej części portalu, a następnie wybierz pozycję Lista *zasobów* z wyników wyszukiwania. 
+1. Wprowadź w polu **wyszukiwania** w górnej części portalu *i wybierz pozycję* *moja zasobów z* wyników wyszukiwania. 
 2. Wybierz pozycję **Usuń grupę zasobów**. 
 3. Wprowadź wartość webresourcename **, aby wpisać nazwę grupy zasobów** , a następnie wybierz pozycję **Usuń**.
 

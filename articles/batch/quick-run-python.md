@@ -2,22 +2,22 @@
 title: 'Szybki Start: uruchamianie zadania Azure Batch — interfejs API języka Python'
 description: Szybkie uruchamianie Azure Batch przykładowego zadania i zadań przy użyciu biblioteki klienckiej języka Python w usłudze Batch. Poznaj kluczowe pojęcia związane z usługą Batch.
 services: batch
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 ms.service: batch
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 11/27/2018
-ms.author: lahugh
+ms.author: jushiman
 ms.custom:
 - seo-python-october2019
 - mvc
-ms.openlocfilehash: ab628ebe81592e7d5b2e6c79de5a62b368ee772d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3e87649e82bba295d8baaf06a71ace222ceeb0be
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75390240"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029380"
 ---
 # <a name="quickstart-run-your-first-batch-job-with-the-python-api"></a>Szybki start: uruchamianie pierwszego zadania usługi Batch za pomocą interfejsu API języka Python
 

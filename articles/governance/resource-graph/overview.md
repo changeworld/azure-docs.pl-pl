@@ -3,12 +3,12 @@ title: Omówienie usługi Azure Resource Graph
 description: Dowiedz się, w jaki sposób usługa Azure Resource Graph umożliwia tworzenie złożonych zapytań dotyczących zasobów na dużą skalę między subskrypcjami i dzierżawcami.
 ms.date: 10/21/2019
 ms.topic: overview
-ms.openlocfilehash: 7a96faa8502fca6fc501985cd677ac28454f1ba1
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: 301543075d587079af0f53b6200890a75bfbb768
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406697"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75965979"
 ---
 # <a name="what-is-azure-resource-graph"></a>Co to jest usługa Azure Resource Graph?
 
@@ -31,7 +31,7 @@ W tej dokumentacji każda funkcja zostanie szczegółowo omówiona.
 
 Azure Resource Manager obecnie obsługuje zapytania dotyczące podstawowych pól zasobów, w tym w odniesieniu do nazwy zasobu, identyfikatora, typu, grupy zasobów, subskrypcji i lokalizacji. Menedżer zasobów również udostępnia funkcje do wywoływania poszczególnych dostawców zasobów w celu uzyskania szczegółowych właściwości jednego zasobu naraz.
 
-Za pomocą usługi Azure Resource Graph możesz uzyskać dostęp do tych właściwości, które zwracają dostawców zasobów, bez konieczności wykonywania poszczególnych wywołań do każdego dostawcy zasobów. Aby zapoznać się z listą obsługiwanych typów zasobów, Wyszukaj wartość **tak** w obszarze [zasoby dla wdrożeń trybu pełnego](../../azure-resource-manager/complete-mode-deletion.md) . Dodatkowe typy zasobów można znaleźć w powiązanych [tabelach grafu zasobów](./concepts/query-language.md#resource-graph-tables). Alternatywny sposób wyświetlania obsługiwanych typów zasobów znajduje się w [przeglądarce schematów programu Graph zasobów platformy Azure](./first-query-portal.md#schema-browser).
+Za pomocą usługi Azure Resource Graph możesz uzyskać dostęp do tych właściwości, które zwracają dostawców zasobów, bez konieczności wykonywania poszczególnych wywołań do każdego dostawcy zasobów. Aby zapoznać się z listą obsługiwanych typów zasobów, Wyszukaj wartość **tak** w obszarze [zasoby dla wdrożeń trybu pełnego](../../azure-resource-manager/templates/complete-mode-deletion.md) . Dodatkowe typy zasobów można znaleźć w powiązanych [tabelach grafu zasobów](./concepts/query-language.md#resource-graph-tables). Alternatywny sposób wyświetlania obsługiwanych typów zasobów znajduje się w [przeglądarce schematów programu Graph zasobów platformy Azure](./first-query-portal.md#schema-browser).
 
 Za pomocą usługi Azure Resource Graph można:
 
