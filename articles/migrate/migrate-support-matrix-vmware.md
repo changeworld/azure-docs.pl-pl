@@ -1,127 +1,73 @@
 ---
-title: Obsługa oprogramowania VMware w Azure Migrate
-description: Dowiedz się więcej o obsłudze oceny oprogramowania VMware/migracji w Azure Migrate.
+title: Obsługa oceny VMware w Azure Migrate
+description: Dowiedz się więcej o obsłudze oceny VMware w Azure Migrate.
 ms.topic: conceptual
-ms.date: 01/02/2020
-ms.openlocfilehash: b4d498b869bafe579e2539a049aae58ac6f26575
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.date: 01/08/2020
+ms.openlocfilehash: 2a9c5504d99f439723a250b619b9f9b660ea9c59
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75719447"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029000"
 ---
-# <a name="support-matrix-for-vmware-assessment-and-migration"></a>Macierz obsługi dotycząca oceny i migracji środowiska VMware
+# <a name="support-matrix-for-vmware-assessment"></a>Macierz obsługi dla oceny oprogramowania VMware 
 
-Za pomocą [Azure Migrate](migrate-overview.md) można oceniać i migrować maszyny do chmury Microsoft Azure. Ten artykuł podsumowuje ustawienia i ograniczenia dotyczące obsługi oceniania i migrowania lokalnych maszyn wirtualnych VMware.
+Ten artykuł podsumowuje ustawienia i ograniczenia dotyczące oceny maszyn wirtualnych VMware za pomocą [Azure Migrate: Ocena serwera](migrate-services-overview.md#azure-migrate-server-migration-tool). Jeśli szukasz informacji na temat migrowania maszyn wirtualnych VMware na platformę Azure, zapoznaj się z [macierzą obsługi migracji](migrate-support-matrix-vmware-migration.md).
 
+## <a name="overview"></a>Przegląd
 
-## <a name="vmware-scenarios"></a>Scenariusze dotyczące programu VMware
-
-W tabeli zestawiono obsługiwane scenariusze dotyczące maszyn wirtualnych VMware.
-
-**Wdrożenie** | **Szczegóły**
---- | ---
-**Ocenianie lokalnych maszyn wirtualnych VMware** | [Skonfiguruj](tutorial-prepare-vmware.md) swoją pierwszą ocenę.<br/><br/> [Uruchom](scale-vmware-assessment.md) ocenę na dużą skalę.
-**Migrowanie maszyn wirtualnych VMware** | Można przeprowadzić migrację za pomocą migracji bez wykorzystania agentów lub migracji opartej na agentach. [Dowiedz się więcej](server-migrate-overview.md)
+Aby ocenić maszyny lokalne na potrzeby migracji na platformę Azure z tego artykułu, należy dodać Azure Migrate: Narzędzie do oceny serwera do projektu Azure Migrate. Należy wdrożyć [urządzenie Azure Migrate](migrate-appliance.md). Urządzenie stale odnajduje maszyny lokalne i wysyła dane dotyczące konfiguracji i wydajności na platformę Azure. Po odnajdywaniu maszyn można zebrać odnalezione maszyny do grup i uruchomić ocenę dla grupy.
 
 
-## <a name="azure-migrate-projects"></a>Projekty Azure Migrate
+## <a name="limitations"></a>Ograniczenia
 
 **Pomoc techniczna** | **Szczegóły**
 --- | ---
-**Uprawnienia platformy Azure** | Aby utworzyć projekt Azure Migrate, musisz mieć uprawnienia współautora lub właściciela w ramach subskrypcji.
-**Ograniczenia dotyczące oprogramowania VMware**  | Oceń do 35 000 maszyn wirtualnych VMware w jednym projekcie. Możesz utworzyć wiele projektów w ramach subskrypcji platformy Azure. Projekt może zawierać zarówno maszyny wirtualne VMware, jak i maszyny wirtualne funkcji Hyper-V, a także limity oceny.
-**Lokalizacja geograficzna** | [Przejrzyj](migrate-support-matrix.md#supported-geographies) obsługiwane lokalizacje geograficzne.
+**Limity oceny**| Odkrywaj i oceniaj do 35 000 maszyn wirtualnych VMware w jednym [projekcie](migrate-support-matrix.md#azure-migrate-projects).
+**Limity projektu** | Możesz utworzyć wiele projektów w ramach subskrypcji platformy Azure. Projekt może obejmować maszyny wirtualne VMware, maszyny wirtualne funkcji Hyper-V i serwery fizyczne oraz limity oceny.
+**Discovery** (Odnajdywanie) | Urządzenie Azure Migrate może wykryć do 10 000 maszyn wirtualnych VMware na vCenter Server.
+**Ocena** | Można dodać do 35 000 maszyn w jednej grupie.<br/><br/> W ramach jednej oceny można ocenić do 35 000 maszyn wirtualnych.
 
-**Lokalizacja geograficzna** | **Lokalizacja magazynu metadanych**
---- | ---
-Platforma Azure dla instytucji rządowych | US Gov Wirginia
-Azja i Pacyfik | Azja Wschodnia lub Azja Południowo-Wschodnia
-Australia | Australia Wschodnia lub Australia Południowo-Wschodnia
-Brazylia | Brazylia Południowa
-Kanada | Kanada środkowa lub Kanada Wschodnia
-Europa | Europa Północna lub Europa Zachodnia
-Francja | Francja Środkowa
-Indie | Indie Środkowe lub Indie Południowe
-Japonia |  Japonia Wschodnia lub Japonia Zachodnia
-Korea Południowa | Korea środkowa lub Korea Południowa
-Zjednoczone Królestwo | Południowe Zjednoczone Królestwo lub Zachodnie Zjednoczone Królestwo
-Stany Zjednoczone | Środkowe stany USA lub zachodnie stany USA 2
-
-
- > [!NOTE]
- > Obsługa Azure Government jest obecnie dostępna tylko dla [starszej wersji](https://docs.microsoft.com/azure/migrate/migrate-services-overview#azure-migrate-versions) programu Azure Migrate.
+[Dowiedz się więcej](concepts-assessment-calculation.md) na temat ocen.
 
 
 ## <a name="application-discovery"></a>Odnajdywanie aplikacji
 
-Azure Migrate: Ocena serwera umożliwia odnajdywanie aplikacji, ról i funkcji. Odnajdywanie spisu aplikacji umożliwia zidentyfikowanie i zaplanowanie ścieżki migracji dopasowanej do obciążeń lokalnych. Azure Migrate: Ocena serwera zapewnia odnajdywanie bez agenta, przy użyciu poświadczeń gościa komputera, zdalnie uzyskując dostęp do maszyn za pomocą usługi WMI i wywołań SSH.
+Oprócz odnajdywania maszyn Azure Migrate: Ocena serwera może wykrywać aplikacje, role i funkcje działające na maszynach. Odnajdywanie spisu aplikacji umożliwia zidentyfikowanie i zaplanowanie ścieżki migracji dopasowanej do obciążeń lokalnych. 
 
 **Pomoc techniczna** | **Szczegóły**
 --- | ---
-Obsługiwane maszyny | Lokalne maszyny wirtualne VMware
+Odnajdywanie | Odnajdywanie jest bezagentem, przy użyciu poświadczeń gościa komputera i zdalnie uzyskuje dostęp do maszyn przy użyciu usług WMI i wywołań SSH.
+Obsługiwane maszyny | Lokalne maszyny wirtualne programu VMware.
 System operacyjny maszyny | Wszystkie wersje systemów Windows i Linux
-Poświadczenia | Obecnie obsługuje użycie jednego poświadczenia dla wszystkich serwerów z systemem Windows i jedno poświadczenie dla wszystkich serwerów z systemem Linux. Tworzysz konto użytkownika-gościa dla maszyn wirtualnych z systemem Windows oraz normalne/normalne konto użytkownika (dostęp sudo) dla wszystkich maszyn wirtualnych z systemem Linux.
-Limity maszyn na potrzeby odnajdywania aplikacji | 10000 na urządzenie. 35000 na projekt
+Poświadczenia | Obecnie obsługuje użycie jednego poświadczenia dla wszystkich serwerów z systemem Windows i jedno poświadczenie dla wszystkich serwerów z systemem Linux.<br/><br/> Tworzysz konto użytkownika-gościa dla maszyn wirtualnych z systemem Windows oraz normalne/normalne konto użytkownika (dostęp sudo) dla wszystkich maszyn wirtualnych z systemem Linux.
+Limity | W przypadku odnajdywania aplikacji można odkryć do 10000 na urządzenie. 
 
-## <a name="assessment-vcenter-server-requirements"></a>Ocena — wymagania dotyczące vCenter Server
+## <a name="vmware-requirements"></a>Wymagania dotyczące oprogramowania VMware
 
-W tej tabeli zestawiono wsparcie oceny i ograniczenia dotyczące serwerów wirtualizacji VMware.
-
-**Pomoc techniczna** | **Szczegóły**
+**VMware** | **Szczegóły**
 --- | ---
-**Serwer vCenter** | Maszyny wirtualne VMware, które chcesz ocenić, muszą być zarządzane przez co najmniej jeden serwer vCenter z systemem 5,5, 6,0, 6,5 lub 6,7.
-
-## <a name="assessment-vcenter-server-permissions"></a>Ocena — uprawnienia vCenter Server
-
-Azure Migrate musi uzyskać dostęp do vCenter Server w celu odnalezienia maszyn wirtualnych na potrzeby oceny i migracji bez wykorzystania agentów.
-
-**Zadanie podrzędne** | **Uprawnienia są odpowiednie**
---- | ---
-Tylko Ocena | vCenter Server konto tylko do odczytu.
-Ocena przy użyciu funkcji [odnajdywania aplikacji](how-to-discover-applications.md) lub [wizualizacji zależności bez wykorzystania agentów](how-to-create-group-machine-dependencies-agentless.md) | konto vCenter Server z dostępem tylko do odczytu i przywileje włączone dla **maszyn wirtualnych** > **operacji gościa**.
-
-## <a name="assessment-appliance-requirements"></a>Ocena — wymagania dotyczące urządzenia
-
-Azure Migrate uruchamia lekkie urządzenie w celu odnalezienia maszyn wirtualnych VMware i wysłanie metadanych maszyny wirtualnej i danych wydajności do Azure Migrate. Urządzenie dla oprogramowania VMware jest wdrażane przy użyciu szablonu komórki jajowe zaimportowanego do vCenter Server. Poniższa tabela zawiera podsumowanie wymagań dotyczących urządzeń.
-
-**Pomoc techniczna** | **Szczegóły**
---- | ---
-**Wdrażanie urządzenia** | Urządzenie jest wdrażane jako maszyna wirtualna VMware. Musisz mieć wystarczającą ilość zasobów na vCenter Server, aby przydzielić maszynę wirtualną z 32 GB pamięci RAM, 8 procesorów wirtualnych vCPU, około 80 GB miejsca na dysku i zewnętrznym przełączniku wirtualnym.<br/><br/> Urządzenie wymaga dostępu do Internetu, bezpośrednio lub za pomocą serwera proxy.<br/> Maszynę wirtualną urządzenia należy wdrożyć na hoście ESXi z systemem w wersji 5,5 lub nowszej.
-**Projekt Azure Migrate** | Urządzenie może być skojarzone z pojedynczym projektem. <br/> Dowolna liczba urządzeń może być skojarzona z pojedynczym projektem.<br/> Można ocenić do 35 000 maszyn wirtualnych w projekcie.
-**Discovery** (Odnajdywanie) | Urządzenie może wykryć do 10 000 maszyn wirtualnych VMware na vCenter Server.<br/> Urządzenie może połączyć się z pojedynczym vCenter Server.
-**Grupa oceny** | Można dodać do 35 000 maszyn w jednej grupie.
-**Ocena** | W ramach jednej oceny można ocenić do 35 000 maszyn wirtualnych.
+**vCenter Server** | Komputery, które mają być odnajdywane i oceniane, muszą być zarządzane przez vCenter Server w wersji 5,5, 6,0, 6,5 lub 6,7.
+**Uprawnienia (ocena)** | vCenter Server konto tylko do odczytu.
+**Uprawnienia (Odnajdywanie aplikacji)** | konto vCenter Server z dostępem tylko do odczytu i przywileje włączone dla maszyn wirtualnych > operacji gościa.
+**Uprawnienia (Wizualizacja zależności)** | Konto serwera centrum z dostępem tylko do odczytu oraz uprawnienia włączone dla **maszyn wirtualnych** > **operacji gościa**.
 
 
-## <a name="assessment-url-access-requirements"></a>Ocena — wymagania dotyczące dostępu do adresów URL
+## <a name="azure-migrate-appliance-requirements"></a>Wymagania dotyczące urządzenia Azure Migrate
 
-Urządzenie Azure Migrate wymaga połączenia z Internetem.
+Azure Migrate używa [urządzenia Azure Migrate](migrate-appliance.md) do odnajdowania i oceny. Urządzenie dla oprogramowania VMware jest wdrażane przy użyciu szablonu komórki jajowe zaimportowanego do vCenter Server. 
 
-- Podczas wdrażania urządzenia Azure Migrate sprawdza połączenie adresów URL, które zostały podsumowane w poniższej tabeli.
-- Jeśli używasz serwera proxy opartego na adresie URL do łączenia się z Internetem, Zezwól na dostęp do tych adresów URL, upewniając się, że serwer proxy rozpoznaje wszystkie rekordy CNAME otrzymane podczas wyszukiwania adresów URL.
+- Dowiedz się więcej o [wymaganiach dotyczących urządzeń](migrate-appliance.md#appliance---vmware) w oprogramowaniu VMware.
+- Informacje o [adresach URL](migrate-appliance.md#url-access) , do których urządzenie musi uzyskać dostęp.
 
-**Adres URL** | **Szczegóły**  
---- | --- |
-*.portal.azure.com  | Przejdź do Azure Migrate w Azure Portal.
-*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *.microsoft.com <br/> *.live.com | Zaloguj się do subskrypcji platformy Azure.
-*.microsoftonline.com <br/> *.microsoftonline-p.com | Utwórz Active Directory aplikacje dla urządzenia, aby komunikować się z usługą Azure Migrate.
-management.azure.com | Utwórz Active Directory aplikacje dla urządzenia, aby komunikować się z usługą Azure Migrate.
-dc.services.visualstudio.com | Przekaż Dzienniki aplikacji używane do wewnętrznego monitorowania.
-*.vault.azure.net | Zarządzanie wpisami tajnymi w Azure Key Vault.
-*.servicebus.windows.net | Komunikacja między urządzeniem a usługą Azure Migrate.
-*.discoverysrv.windowsazure.com <br/> *.migration.windowsazure.com <br/> *.hypervrecoverymanager.windowsazure.com | Połącz się z adresami URL usługi Azure Migrate.
-*.blob.core.windows.net | Przekazywanie danych do kont magazynu.
-https://aka.ms/latestapplianceservices<br/><br/> https://download.microsoft.com/download | Używany do Azure Migrate aktualizacji urządzenia.
-
-## <a name="assessment-port-requirements"></a>Ocena — wymagania dotyczące portów
+## <a name="port-access"></a>Dostęp do portu
 
 **urządzenia** | **Połączenie**
 --- | ---
 Wprowadzony | Połączenia przychodzące na porcie TCP 3389, aby zezwolić na połączenia pulpitu zdalnego z urządzeniem.<br/><br/> Połączenia przychodzące na porcie 44368 do zdalnego dostępu do aplikacji do zarządzania urządzeniami przy użyciu adresu URL: ```https://<appliance-ip-or-name>:44368``` <br/><br/>Połączenia wychodzące na porcie 443, 5671 i 5672 do wysyłania metadanych odnajdywania i wydajności do Azure Migrate.
 Serwer vCenter | Połączenia przychodzące na porcie TCP 443 umożliwiające urządzeniu zbieranie metadanych dotyczących konfiguracji i wydajności dla ocen. <br/><br/> Urządzenie domyślnie łączy się z programem vCenter na porcie 443. Jeśli serwer vCenter nasłuchuje na innym porcie, można zmodyfikować port podczas konfigurowania odnajdywania.
 
-## <a name="assessment-dependency-visualization"></a>Wizualizacja zależności
+## <a name="dependency-visualization"></a>Wizualizacja zależności
 
 Wizualizacja zależności ułatwia wizualizację zależności między maszynami, które mają zostać poddane ocenie i przeprowadzeniem migracji. Mapowanie zależności zazwyczaj jest stosowane, gdy chcesz ocenić komputery z wyższym poziomem zaufania. W przypadku maszyn wirtualnych VMware, Wizualizacja zależności jest obsługiwana w następujący sposób:
 
@@ -137,250 +83,8 @@ Wizualizacja zależności ułatwia wizualizację zależności między maszynami,
     - Zainstaluj agenta zależności na każdym komputerze. [Dowiedz się więcej](how-to-create-group-machine-dependencies.md#install-the-dependency-agent) na temat sposobu instalowania agenta zależności.
     - Ponadto w przypadku maszyn, które nie są połączone z Internetem, należy pobrać i zainstalować na nich bramę usługi Log Analytics.
 
-## <a name="migration---limitations"></a>Migracja — ograniczenia
-Można wybrać maksymalnie 10 maszyn wirtualnych na potrzeby replikacji. Jeśli chcesz migrować więcej maszyn, wykonaj replikację w grupach o wartości 10. W przypadku migracji programu VMware bez agenta można jednocześnie uruchomić do 100 replikacji.
-
-## <a name="agentless-migration-vmware-server-requirements"></a>Migracja bez agentów — wymagania dotyczące serwera VMware
-
-W tej tabeli zestawiono wsparcie oceny i ograniczenia dotyczące serwerów wirtualizacji VMware.
-
-**Pomoc techniczna** | **Szczegóły**
---- | ---
-Program vCenter Server | Wersja 5,5, 6,0, 6,5 lub 6,7.
-VMware vSphere | W wersji 5,5, 6,0, 6,5 lub 6,7,
-
-## <a name="agentless-migration-vcenter-server-permissions"></a>Migracja bez agentów — uprawnienia vCenter Server
-
-**Uprawnienia** | **Szczegóły**
---- | ---
-Datastore.Browse | Zezwalaj na przeglądanie plików dzienników maszyn wirtualnych w celu rozwiązywania problemów z tworzeniem i usuwaniem migawek.
-Datastore.LowLevelFileOperations | Zezwalaj na operacje odczytu/zapisu/usuwania/zmiany nazwy w przeglądarce magazynu danych, aby rozwiązywać problemy z tworzeniem i usuwaniem migawki.
-VirtualMachine.Configuration.DiskChangeTracking | Zezwalaj na włączanie lub wyłączanie śledzenia zmian dysków maszyn wirtualnych w celu ściągania zmienionych bloków danych między migawkami
-VirtualMachine.Configuration.DiskLease | Zezwalaj na operacje dzierżawy dysku dla maszyny wirtualnej w celu odczytania dysku przy użyciu VMware vSphere wirtualnego zestawu SDK (VDDK).
-VirtualMachine.Provisioning.AllowReadOnlyDiskAccess | Zezwól na otwieranie dysku na maszynie wirtualnej w celu odczytania dysku przy użyciu VDDK.
-VirtualMachine.Provisioning.AllowVirtualMachineDownload  | Zezwala na operacje odczytu plików skojarzonych z maszyną wirtualną, pobieranie dzienników i rozwiązywanie problemów w przypadku wystąpienia błędu.
-VirtualMachine.SnapshotManagement.* | Umożliwia tworzenie migawek maszyn wirtualnych i zarządzanie nimi na potrzeby replikacji.
-Maszyna wirtualna. Interaction. Zasilanie wyłączone | Zezwalaj na wyłączenie maszyny wirtualnej podczas migracji na platformę Azure.
-
-
-## <a name="agentless-migration-vmware-vm-requirements"></a>Migracja bez agentów — wymagania dotyczące maszyny wirtualnej VMware
-
-**Pomoc techniczna** | **Szczegóły**
---- | ---
-**Obsługiwane systemy operacyjne** | Systemy operacyjne [Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines) i [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) , które są obsługiwane przez platformę Azure, można migrować za pomocą migracji bez wykorzystania agentów.
-**Wymagane zmiany dotyczące platformy Azure** | Niektóre maszyny wirtualne mogą wymagać zmian, aby mogły być uruchamiane na platformie Azure. Azure Migrate automatycznie wprowadza te zmiany w następujących systemach operacyjnych:<br/> -Red Hat Enterprise Linux 6.5 +, 7.0 +<br/> - CentOS 6.5+, 7.0+</br> -SUSE Linux Enterprise Server 12 SP1 +<br/> -Ubuntu 14.04 LTS, 16.04 LTS, 18.04 LTS<br/> -Debian 7, 8<br/><br/> W przypadku innych systemów operacyjnych należy ręcznie wprowadzić zmiany przed migracją. Odpowiednie artykuły zawierają instrukcje, jak to zrobić.
-**Rozruch systemu Linux** | Jeśli/Boot znajduje się na dedykowanej partycji, powinien znajdować się na dysku systemu operacyjnego i nie można go rozłożyć na wiele dysków.<br/> Jeśli/boot jest częścią partycji głównej (/), partycja "/" powinna znajdować się na dysku systemu operacyjnego i nie może obejmować innych dysków.
-**Rozruch z interfejsem UEFI** | Maszyny wirtualne z rozruchem UEFI nie są obsługiwane w przypadku migracji.
-**Rozmiar dysku** | dysk systemu operacyjnego o pojemności 2 TB; 4 TB dla dysków z danymi.
-**Limity dysku** |  Do 60 dysków na maszynę wirtualną.
-**Zaszyfrowane dyski/woluminy** | Maszyny wirtualne z szyfrowanymi dyskami/woluminami nie są obsługiwane na potrzeby migracji.
-**Udostępniony klaster dysków** | Bez pomocy technicznej.
-**Dyski niezależne** | Bez pomocy technicznej.
-**RDM/przekazywanie dysków** | Jeśli maszyny wirtualne mają dyski RDM lub przekazujących, te dyski nie będą replikowane do platformy Azure.
-**NFS** | Woluminy NFS zainstalowane jako woluminy na maszynach wirtualnych nie zostaną zreplikowane.
-**obiekty docelowe iSCSI** | Maszyny wirtualne z obiektami docelowymi iSCSI nie są obsługiwane w przypadku migracji bez wykorzystania agentów.
-**Wielościeżkowe we/wy** | Bez pomocy technicznej.
-**VMotion magazynu** | Bez pomocy technicznej. Replikacja nie będzie działała, jeśli maszyna wirtualna korzysta z vMotion magazynu.
-**Zespoły kart sieciowych** | Bez pomocy technicznej.
-**If** | Bez pomocy technicznej.
-**Dysk docelowy** | Maszyny wirtualne można migrować tylko do dysków zarządzanych (dysk twardy w warstwie Standardowa) na platformie Azure.
-**Równoczesna replikacja** | 100 maszyn wirtualnych na vCenter Server. Jeśli masz więcej, Migruj je w partiach 100.
-
-
-## <a name="agentless-migration-appliance-requirements"></a>Migracja bez wykorzystania agentów — wymagania dotyczące urządzeń
-
-
-**Pomoc techniczna** | **Szczegóły**
---- | ---
-**ESXi** | Maszynę wirtualną urządzenia należy wdrożyć na hoście ESXi z systemem w wersji 5,5 lub nowszej.
-**Projekt Azure Migrate** | Urządzenie może być skojarzone z pojedynczym projektem.
-**vCenter Server** | Urządzenie może wykryć do 10 000 maszyn wirtualnych VMware na vCenter Server.<br/> Urządzenie może połączyć się z jednym vCenter Server.
-**VDDK** | W przypadku korzystania z migracji bez agenta z migracją Azure Migrate Server należy zainstalować na maszynie wirtualnej urządzenia VMware vSphere VDDK.
-
-## <a name="agentless-migration-url-access-requirements"></a>Migracja bez agentów — wymagania dotyczące dostępu do adresów URL
-
-Urządzenie Azure Migrate wymaga połączenia z Internetem za pośrednictwem Internetu.
-
-- Podczas wdrażania urządzenia Azure Migrate sprawdza połączenie adresów URL, które zostały podsumowane w poniższej tabeli.
-- Jeśli używasz serwera proxy opartego na adresie URL, Zezwól na dostęp do tych adresów URL, upewniając się, że serwer proxy rozpoznaje wszystkie rekordy CNAME otrzymane podczas wyszukiwania adresów URL.
-
-**Adres URL** | **Szczegóły**  
---- | ---
-*.portal.azure.com | Przejdź do Azure Migrate w Azure Portal.
-*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *.microsoft.com <br/> *.live.com  | Zaloguj się do subskrypcji platformy Azure.
-*.microsoftonline.com <br/> *.microsoftonline-p.com | Utwórz Active Directory aplikacje dla urządzenia, aby komunikować się z usługą Azure Migrate.
-management.azure.com | Utwórz Active Directory aplikacje dla urządzenia, aby komunikować się z usługą Azure Migrate.
-dc.services.visualstudio.com | Przekaż Dzienniki aplikacji używane do wewnętrznego monitorowania.
-*.vault.azure.net | Zarządzanie wpisami tajnymi w Azure Key Vault.
-*.servicebus.windows.net | Komunikacja między urządzeniem a usługą Azure Migrate.
-*.discoverysrv.windowsazure.com <br/> *.migration.windowsazure.com <br/> *.hypervrecoverymanager.windowsazure.com | Połącz się z adresami URL usługi Azure Migrate.
-*.blob.core.windows.net | Przekazywanie danych do kont magazynu.
-https://aka.ms/latestapplianceservices<br/><br/> https://download.microsoft.com/download | Używany do Azure Migrate aktualizacji urządzenia.
-
-
-## <a name="agentless-migration-port-requirements"></a>Migracja bez agentów — wymagania dotyczące portów
-
-**urządzenia** | **Połączenie**
---- | ---
-Wprowadzony | Połączenia wychodzące na porcie 443 do przekazywania replikowanych danych na platformę Azure oraz do komunikowania się z usługami Azure Migrate organizowanie replikacji i migracji.
-Serwer vCenter | Połączenia przychodzące na porcie 443, aby umożliwić organizowanie replikacji — tworzenie migawek, kopiowanie danych i migawki wersji
-Host vSphere/EXSI | Ruch przychodzący na porcie TCP 902 dla urządzenia do replikowania danych z migawek.
-
-
-## <a name="agent-based-migration-vmware-server-requirements"></a>Migracja oparta na agencie — wymagania dotyczące serwera VMware
-
-W tej tabeli zestawiono wsparcie oceny i ograniczenia dotyczące serwerów wirtualizacji VMware.
-
-**Pomoc techniczna** | **Szczegóły**
---- | ---
-Program vCenter Server | Wersja 5,5, 6,0, 6,5 lub 6,7.
-VMware vSphere | Wersja 5,5, 6,0, 6,5 lub 6,7.
-
-### <a name="agent-based-migration-vcenter-server-permissions"></a>Migracja oparta na agencie — uprawnienia vCenter Server
-
-Konto tylko do odczytu dla vCenter Server.
-
-## <a name="agent-based-migration-replication-appliance-requirements"></a>Migracja oparta na agencie — wymagania dotyczące urządzenia replikacji
-
-W tabeli zestawiono wymagania dotyczące [urządzenia replikacji](migrate-replication-appliance.md) używanego do migracji maszyn wirtualnych VMware i serwerów fizycznych z systemem Azure Migrate migracji.
-
-> [!NOTE]
-> Po skonfigurowaniu urządzenia do replikacji przy użyciu szablonu komórki jajowe dostarczonego w centrum Azure Migrate na urządzeniu jest uruchomiony system Windows Server 2016 i jest zgodny z wymaganiami dotyczącymi obsługi. Jeśli urządzenie replikacji zostanie skonfigurowane ręcznie na serwerze fizycznym, upewnij się, że jest ono zgodne z wymaganiami.
-
-
-
-**Składnik** | **Wymaganie**
---- | ---
- | **Ustawienia programu VMware** (urządzenie maszyny wirtualnej VMware)
-PowerCLI | Jeśli urządzenie replikacji jest uruchomione na maszynie wirtualnej VMware, należy zainstalować [PowerCLI w wersji 6,0](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1) .
-Typ karty sieciowej | VMXNET3 (Jeśli urządzenie jest maszyną wirtualną VMware)
- | **Ustawienia sprzętu**
-Rdzenie procesora CPU | 8
-Pamięć RAM | 16 GB
-Liczba dysków | Trzy: dysk systemu operacyjnego, dysk pamięci podręcznej serwera przetwarzania i dysk przechowywania.
-Wolne miejsce na dysku (pamięć podręczna) | 600 GB
-Wolne miejsce na dysku (dysk przechowywania) | 600 GB
-**Ustawienia oprogramowania** |
-System operacyjny | Windows Server 2016 lub Windows Server 2012 R2
-Ustawienia regionalne systemu operacyjnego | Angielski (en-us)
-TLS | Protokół TLS 1,2 powinien być włączony.
-.NET Framework | Na maszynie należy zainstalować .NET Framework 4,6 lub nowszą (z włączonym silnym kryptografią.
-MySQL | Baza danych MySQL powinna być zainstalowana na urządzeniu.<br/> Należy zainstalować MySQL. Można zainstalować go ręcznie lub Site Recovery można go zainstalować podczas wdrażania urządzenia.
-Inne aplikacje | Nie uruchamiaj innych aplikacji na urządzeniu replikacji.
-Role systemu Windows Server | Nie należy włączać tych ról: <br> - Active Directory Domain Services <br>- Internet Information Services <br> - Hyper-V
-Zasady grupy | Nie włączaj tych zasad grupy: <br> -Zapobiegaj dostępowi do wiersza polecenia. <br> — Uniemożliwia dostęp do narzędzi do edytowania rejestru. <br> — Logika zaufania dla plików załączników. <br> — Włącz wykonywanie skryptu. <br> [Dowiedz się więcej](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)
-IIS | -Brak istniejącej domyślnej witryny sieci Web <br> — Żadna istniejąca witryna sieci Web/aplikacja nasłuchu na porcie 443 <br>-Włącz [uwierzytelnianie anonimowe](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br> -Włącz ustawienie [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx)
-**Ustawienia sieci** |
-Typ adresu IP | Statyczny
-Porty | 443 (organizowanie kanału sterowania)<br>9443 (transport danych)
-Typ karty sieciowej | VMXNET3
-
-### <a name="replication-appliance-url-access"></a>Dostęp do adresu URL urządzenia replikacji
-
-Urządzenie replikacji musi mieć dostęp do tych adresów URL.
-
-**Adres URL** | **Szczegóły**
---- | ---
-\*.backup.windowsazure.com | Używany do transferu i koordynacji replikowanych danych
-\*.store.core.windows.net | Używany do transferu i koordynacji replikowanych danych
-\*.blob.core.windows.net | Służy do uzyskiwania dostępu do konta magazynu przechowującego zreplikowane dane
-\*.hypervrecoverymanager.windowsazure.com | Używany do operacji zarządzania replikacją i koordynacji
-https:\//management.azure.com | Używany do operacji zarządzania replikacją i koordynacji
-*.services.visualstudio.com | Używane na potrzeby telemetrii (jest opcjonalne)
-time.nist.gov | Służą do sprawdzania synchronizacji czasu między systemem i czasem globalnym.
-time.windows.com | Służą do sprawdzania synchronizacji czasu między systemem i czasem globalnym.
-https:\//login.microsoftonline.com <br/> https:\//secure.aadcdn.microsoftonline-p.com <br/> https:\//login.live.com <br/> https:\//graph.windows.net <br/> https:\//login.windows.net <br/> https:\//www.live.com <br/> https:\//www.microsoft.com  | Instalator OVF potrzebuje dostępu do tych adresów URL. Są one używane do kontroli dostępu i zarządzania tożsamościami przez Azure Active Directory
-https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi | Aby ukończyć pobieranie bazy danych MySQL
-
-
-#### <a name="mysql-installation-options"></a>Opcje instalacji MySQL
-
-Program MySQL można zainstalować na urządzeniu replikacji przy użyciu jednej z tych metod.
-
-**Metoda** | **Szczegóły**
---- | ---
-Pobierz i zainstaluj ręcznie | Pobierz aplikację MySQL & Umieść ją w folderze C:\Temp\ASRSetup, a następnie zainstaluj ręcznie.<br/> Po skonfigurowaniu urządzenia MySQL będą wyświetlane jako już zainstalowane.
-Bez pobierania online | Umieść aplikację instalatora MySQL w folderze C:\Temp\ASRSetup. Po zainstalowaniu urządzenia i kliknięciu w celu pobrania i zainstalowania programu MySQL Instalator użyje dodanego Instalatora.
-Pobierz i zainstaluj w Azure Migrate | Po zainstalowaniu urządzenia i wyświetleniu monitu o wprowadzenie do bazy danych MySQL wybierz pozycję **Pobierz i zainstaluj**.
-
-
-
-## <a name="agent-based-migration-vmware-vm-requirements"></a>Migracja oparta na agencie — wymagania dotyczące maszyn wirtualnych VMware
-
-**Pomoc techniczna** | **Szczegóły**
---- | ---
-**Obciążenie maszyny** | Azure Migrate obsługuje migrację dowolnego obciążenia (Powiedz Active Directory, SQL Server itp.) uruchomionego na obsługiwanej maszynie.
-**Systemy operacyjne** | Aby uzyskać najnowsze informacje, zapoznaj się z tematem [Obsługa systemu operacyjnego](../site-recovery/vmware-physical-azure-support-matrix.md#replicated-machines) Site Recovery. Azure Migrate zapewnia identyczną obsługę systemu operacyjnego maszyny wirtualnej.
-**System plików Linux/magazyn gościa** | Aby uzyskać najnowsze informacje, zapoznaj się z tematem [Obsługa systemu plików Linux](../site-recovery/vmware-physical-azure-support-matrix.md#linux-file-systemsguest-storage) dla Site Recovery. Azure Migrate ma identyczną obsługę systemu plików Linux.
-**Sieć/magazyn** | Aby uzyskać najnowsze informacje, zapoznaj się z wymaganiami wstępnymi dotyczącymi [sieci](../site-recovery/vmware-physical-azure-support-matrix.md#network) i [magazynu](../site-recovery/vmware-physical-azure-support-matrix.md#storage) Site Recovery. Azure Migrate zapewnia identyczne wymagania dotyczące sieci/magazynu.
-**Wymagania platformy Azure** | Aby uzyskać najnowsze informacje, zapoznaj się z wymaganiami dotyczącymi sieci, [magazynu](../site-recovery/vmware-physical-azure-support-matrix.md#azure-storage)i [mocy obliczeniowej](../site-recovery/vmware-physical-azure-support-matrix.md#azure-compute) [platformy Azure](../site-recovery/vmware-physical-azure-support-matrix.md#azure-vm-network-after-failover)dla Site Recovery. Azure Migrate ma identyczne wymagania dotyczące migracji oprogramowania VMware.
-**Usługa mobilności** | Agent usługi mobilności musi być zainstalowany na każdej maszynie wirtualnej, która ma zostać poddana migracji.
-**Rozruch z interfejsem UEFI** | Migrowana maszyna wirtualna na platformie Azure zostanie automatycznie przekonwertowana na maszynę wirtualną rozruchową w systemie BIOS.<br/><br/> Dysk systemu operacyjnego powinien mieć maksymalnie cztery partycje, a woluminy powinny być sformatowane w systemie plików NTFS.
-**Dysk docelowy** | Maszyny wirtualne można migrować tylko do dysków zarządzanych (dysk twardy w warstwie Standardowa) na platformie Azure.
-**Rozmiar dysku** | dysk systemu operacyjnego o pojemności 2 TB; 8 TB dla dysków z danymi.
-**Limity dysku** |  Do 63 dysków na maszynę wirtualną.
-**Zaszyfrowane dyski/woluminy** | Maszyny wirtualne z szyfrowanymi dyskami/woluminami nie są obsługiwane na potrzeby migracji.
-**Udostępniony klaster dysków** | Bez pomocy technicznej.
-**Dyski niezależne** | Obsługiwane.
-**Przekazywanie dysków** | Obsługiwane.
-**NFS** | Woluminy NFS zainstalowane jako woluminy na maszynach wirtualnych nie zostaną zreplikowane.
-**obiekty docelowe iSCSI** | Maszyny wirtualne z obiektami docelowymi iSCSI nie są obsługiwane w przypadku migracji bez wykorzystania agentów.
-**Wielościeżkowe we/wy** | Bez pomocy technicznej.
-**VMotion magazynu** | Obsługiwane
-**Zespoły kart sieciowych** | Bez pomocy technicznej.
-**If** | Bez pomocy technicznej.
-
-
-
-
-## <a name="agent-based-migration-url-access-requirements"></a>Migracja oparta na agencie — wymagania dotyczące dostępu do adresów URL
-
-Usługa mobilności działająca na maszynach wirtualnych VMware wymaga połączenia z Internetem.
-
-Podczas wdrażania usługi mobilności jest ona sprawdzana pod kątem adresów URL, które zostały podsumowane w poniższej tabeli.
-
-
-**Adres URL** | **Szczegóły**  
---- | ---
-*.portal.azure.com | Przejdź do Azure Migrate w Azure Portal.
-*.windows.net | Zaloguj się do subskrypcji platformy Azure.
-*.microsoftonline.com | Utwórz Active Directory aplikacje dla urządzenia, aby komunikować się z usługą Azure Migrate.
-management.azure.com | Utwórz Active Directory aplikacje dla urządzenia, aby komunikować się z usługą Azure Migrate.
-dc.services.visualstudio.com | Przekaż Dzienniki aplikacji używane do wewnętrznego monitorowania.
-*.vault.azure.net | Zarządzanie wpisami tajnymi w Azure Key Vault.
-*.servicebus.windows.net | Komunikacja między urządzeniem a usługą Azure Migrate.
-*.discoverysrv.windowsazure.com <br/> *.migration.windowsazure.com <br/> *.hypervrecoverymanager.windowsazure.com | Połącz się z adresami URL usługi Azure Migrate.
-*.blob.core.windows.net | Przekazywanie danych do kont magazynu.
-
-## <a name="agent-based-migration-port-requirements"></a>Migracja oparta na agencie — wymagania dotyczące portów
-
-**urządzenia** | **Połączenie**
---- | ---
-Maszyny wirtualne | Usługa mobilności działająca na maszynach wirtualnych komunikuje się z lokalnym urządzeniem replikacji (serwer konfiguracji) na porcie HTTPS 443 przychodzącego na potrzeby zarządzania replikacją.<br/><br/> Maszyny wirtualne wysyłają dane replikacji do serwera przetwarzania (uruchomionego na komputerze serwera konfiguracji) na porcie HTTPS 9443 w ruchu przychodzącym. Ten port może być modyfikowany.
-Urządzenie replikacji | Urządzenie replikacji organizuje replikację za pomocą platformy Azure przez port HTTPS 443.
-Serwer przetwarzania | Serwer przetwarzania odbiera dane replikacji, optymalizuje je i szyfruje oraz wysyła do usługi Azure Storage przez port 443 wychodzące.<br/> Domyślnie serwer przetwarzania jest uruchamiany na urządzeniu replikacji.
-
-## <a name="azure-vm-requirements"></a>Wymagania dotyczące maszyny wirtualnej platformy Azure
-
-Wszystkie lokalne maszyny wirtualne replikowane na platformę Azure muszą spełniać wymagania dotyczące maszyny wirtualnej platformy Azure podsumowane w tej tabeli. Gdy Site Recovery uruchamia sprawdzanie wymagań wstępnych dotyczących replikacji, sprawdzenie zakończy się niepowodzeniem, jeśli niektóre wymagania nie zostaną spełnione.
-
-**Składnik** | **Wymagania** | **Szczegóły**
---- | --- | ---
-System operacyjny gościa | Sprawdź Obsługiwane systemy operacyjne dla [maszyn wirtualnych VMware przy użyciu replikacji bez wykorzystania agentów](#agentless-migration-vmware-vm-requirements)oraz [maszyn wirtualnych VMware korzystających z replikacji opartej na agentach](#agent-based-migration-vmware-vm-requirements).<br/> Możliwe jest Migrowanie dowolnego obciążenia działającego w obsługiwanym systemie operacyjnym. | Sprawdzanie kończy się niepowodzeniem, jeśli nie jest obsługiwane.
-Architektura systemu operacyjnego gościa | 64-bitowa. | Sprawdzanie kończy się niepowodzeniem, jeśli nie jest obsługiwane.
-Rozmiar dysku systemu operacyjnego | Do 2 048 GB. | Sprawdzanie kończy się niepowodzeniem, jeśli nie jest obsługiwane.
-Liczba dysków systemu operacyjnego | 1 | Sprawdzanie kończy się niepowodzeniem, jeśli nie jest obsługiwane.
-Liczba dysków danych | 64 lub mniej. | Sprawdzanie kończy się niepowodzeniem, jeśli nie jest obsługiwane.
-Rozmiar dysku danych | Do 4 095 GB | Sprawdzanie kończy się niepowodzeniem, jeśli nie jest obsługiwane.
-Karty sieciowe | Obsługiwane są wiele kart. |
-Udostępniony wirtualny dysk twardy | Bez pomocy technicznej. | Sprawdzanie kończy się niepowodzeniem, jeśli nie jest obsługiwane.
-Dysk FC | Bez pomocy technicznej. | Sprawdzanie kończy się niepowodzeniem, jeśli nie jest obsługiwane.
-BitLocker | Bez pomocy technicznej. | Aby włączyć replikację dla maszyny, należy wyłączyć funkcję BitLocker.
-Nazwa maszyny wirtualnej | Od 1 do 63 znaków.<br/> Ograniczone do liter, cyfr i łączników.<br/><br/> Nazwa maszyny musi rozpoczynać się i kończyć literą lub cyfrą. |  Zaktualizuj wartość we właściwościach komputera w Site Recovery.
-Połącz po migracji — Windows | Aby nawiązać połączenie z maszynami wirtualnymi platformy Azure z systemem Windows po migracji:<br/> -Przed migracją włącza protokół RDP na lokalnej maszynie wirtualnej. Upewnij się, że reguły TCP i UDP zostały dodane do profilu **publicznego** oraz że w pozycji **Zapora systemu Windows** > **Dozwolone aplikacje** zezwolono na użycie protokołu RDP we wszystkich profilach.<br/> W przypadku dostępu do sieci VPN typu lokacja-lokacja Włącz protokół RDP i Zezwalaj na używanie protokołu RDP w **zaporze systemu Windows** -> **dozwolonych aplikacji i funkcji** dla sieci **,** w których są dozwolone. Ponadto sprawdź, czy zasady sieci SAN systemu operacyjnego są ustawione na **OnlineAll**. [Dowiedz się więcej](prepare-for-migration.md). |
-Połącz po migracji — system Linux | Aby nawiązać połączenie z maszynami wirtualnymi platformy Azure po migracji przy użyciu protokołu SSH:<br/> Przed migracją na maszynie lokalnej Sprawdź, czy usługa Secure Shell jest ustawiona do uruchamiania, oraz czy reguły zapory zezwalają na połączenie SSH.<br/> Po przejściu w tryb failover na maszynie wirtualnej platformy Azure Zezwól na połączenia przychodzące do portu SSH dla reguł sieciowej grupy zabezpieczeń na maszynie wirtualnej w trybie failover oraz dla podsieci platformy Azure, do której jest podłączona. Dodatkowo Dodaj publiczny adres IP dla maszyny wirtualnej. |  
-
 
 ## <a name="next-steps"></a>Następne kroki
 
-[Przygotuj się do](tutorial-prepare-vmware.md) oceny oprogramowania VMware i migracji.
+- [Zapoznaj](best-practices-assessment.md) się z najlepszymi rozwiązaniami dotyczącymi tworzenia ocen.
+- [Przygotowanie do](tutorial-prepare-vmware.md) oceny oprogramowania VMware.

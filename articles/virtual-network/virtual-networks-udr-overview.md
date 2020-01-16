@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 10/26/2017
 ms.author: malop
 ms.reviewer: kumud
-ms.openlocfilehash: 4132dacbb628051e674952806cb6b606ee915525
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: c6ea57ac30a1b4d228a19c3be6a794b3d2175171
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75644618"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75973033"
 ---
 # <a name="virtual-network-traffic-routing"></a>Routing ruchu w sieci wirtualnej
 
@@ -69,7 +69,7 @@ Platforma Azure dodaje dodatkowe domyślne trasy systemowe dla różnych funkcji
 * **VirtualNetworkServiceEndpoint**: publiczne adresy IP dla niektórych usług są dodawane do tabeli tras przez platformę Azure po włączeniu punktu końcowego usługi do usługi. Punkty końcowe usługi są włączane dla poszczególnych podsieci w sieci wirtualnej, więc trasa jest dodawana tylko do tabeli tras podsieci, dla której jest włączony punkt końcowy usługi. Publiczne adresy IP usług platformy Azure są okresowo zmieniane. Platforma Azure zarządza adresami w tabeli tras automatycznie po zmianie adresów. Dowiedz się więcej o [punktach końcowych usługi dla sieci wirtualnej](virtual-network-service-endpoints-overview.md) i usługach, dla których można utworzyć punkty końcowe usługi.<br>
 
     > [!NOTE]
-    > Typy następnego przeskoku **Komunikacja równorzędna sieci wirtualnej** i **VirtualNetworkServiceEndpoint** są dodawane tylko do tabel tras podsieci w sieciach wirtualnych utworzonych za pośrednictwem modelu wdrażania przy użyciu usługi Azure Resource Manager. Typy następnych przeskoków nie są dodawane do tabel tras, które są skojarzone z podsieciami sieci wirtualnej utworzonymi za pośrednictwem klasycznego modelu wdrażania. Dowiedz się więcej o [modelach wdrażania](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json) platformy Azure.
+    > Typy następnego przeskoku **Komunikacja równorzędna sieci wirtualnej** i **VirtualNetworkServiceEndpoint** są dodawane tylko do tabel tras podsieci w sieciach wirtualnych utworzonych za pośrednictwem modelu wdrażania przy użyciu usługi Azure Resource Manager. Typy następnych przeskoków nie są dodawane do tabel tras, które są skojarzone z podsieciami sieci wirtualnej utworzonymi za pośrednictwem klasycznego modelu wdrażania. Dowiedz się więcej o [modelach wdrażania](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json) platformy Azure.
 
 ## <a name="custom-routes"></a>Trasy niestandardowe
 
@@ -101,7 +101,7 @@ Typu **Komunikacja równorzędna sieci wirtualnej** lub **VirtualNetworkServiceE
 
 ## <a name="next-hop-types-across-azure-tools"></a>Typy następnych przeskoków w narzędziach platformy Azure
 
-Nazwa wyświetlana i przywoływana dla typów następnego przeskoku jest różna dla witryny Azure Portal i narzędzi wiersza polecenia oraz usługi Azure Resource Manager i klasycznych modeli wdrażania. W poniższej tabeli wymieniono nazwy używane w odwołaniu do każdego typu następnego przeskoku dla różnych narzędzi i [modeli wdrażania](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json):
+Nazwa wyświetlana i przywoływana dla typów następnego przeskoku jest różna dla witryny Azure Portal i narzędzi wiersza polecenia oraz usługi Azure Resource Manager i klasycznych modeli wdrażania. W poniższej tabeli wymieniono nazwy używane w odwołaniu do każdego typu następnego przeskoku dla różnych narzędzi i [modeli wdrażania](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json):
 
 |Typ następnego skoku                   |Interfejs wiersza polecenia platformy Azure 2.0 i program PowerShell (Resource Manager) |Klasyczny interfejs wiersza polecenia platformy Azure i program PowerShell (wersja klasyczna)|
 |-------------                   |---------                                       |-----|

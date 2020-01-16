@@ -9,12 +9,12 @@ ms.date: 11/18/2019
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: a8c19a8e88ec7fe2002a327c7e4a57874a753b9f
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: b8b5de910195b14c279fe395cc35c12768536728
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75921234"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981840"
 ---
 # <a name="store-business-critical-blob-data-with-immutable-storage"></a>Przechowywanie kluczowych dla działalności danych obiektów blob z niezmiennym magazynem
 
@@ -156,7 +156,7 @@ Operacja usuwania kontenera zakończy się niepowodzeniem, jeśli w kontenerze i
 
 **Co się stanie w przypadku próby usunięcia konta magazynu z kontenerem z zasadami przechowywania opartymi na czasie lub blokadą prawną?**
 
-Usunięcie konta magazynu zakończy się niepowodzeniem, jeśli istnieje co najmniej jeden kontener z dozwolonym lub **zablokowanymi** zasadami czasu. Kontener z odblokowanymi zasadami czasu nie chroni przed usunięciem konta magazynu. Aby można było usunąć konto magazynu, należy usunąć wszystkie blokady prawne i usunąć wszystkie **zablokowane** kontenery. Aby uzyskać informacje na temat usuwania kontenera, zobacz poprzednie pytanie. Możesz również zastosować dalsze zabezpieczenia dotyczące usuwania dla konta magazynu, korzystając z [Azure Resource Manager blokad](../../azure-resource-manager/resource-group-lock-resources.md).
+Usunięcie konta magazynu zakończy się niepowodzeniem, jeśli istnieje co najmniej jeden kontener z dozwolonym lub **zablokowanymi** zasadami czasu. Kontener z odblokowanymi zasadami czasu nie chroni przed usunięciem konta magazynu. Aby można było usunąć konto magazynu, należy usunąć wszystkie blokady prawne i usunąć wszystkie **zablokowane** kontenery. Aby uzyskać informacje na temat usuwania kontenera, zobacz poprzednie pytanie. Możesz również zastosować dalsze zabezpieczenia dotyczące usuwania dla konta magazynu, korzystając z [Azure Resource Manager blokad](../../azure-resource-manager/management/lock-resources.md).
 
 **Czy mogę przenieść dane między różnymi warstwami obiektów BLOB (gorąca, chłodna, archiwalna), gdy obiekt BLOB jest w niezmiennym stanie?**
 
@@ -179,4 +179,4 @@ Tak, jeśli wymagania dotyczące zgodności umożliwiają włączenie usuwania n
 - [Ustawianie zasad niezmienności dla usługi BLOB Storage i zarządzanie nimi](storage-blob-immutability-policies-manage.md)
 - [Ustaw reguły automatycznej warstwy i Usuń dane obiektów BLOB za pomocą zarządzania cyklem życia](storage-lifecycle-management-concepts.md)
 - [Soft delete for Azure Storage blobs](../blobs/storage-blob-soft-delete.md) (Usuwanie nietrwałe dla obiektów blob usługi Azure Storage)
-- [Ochrona subskrypcji, grup zasobów i zasobów przy użyciu blokad Azure Resource Manager](../../azure-resource-manager/resource-group-lock-resources.md).
+- [Ochrona subskrypcji, grup zasobów i zasobów przy użyciu blokad Azure Resource Manager](../../azure-resource-manager/management/lock-resources.md).

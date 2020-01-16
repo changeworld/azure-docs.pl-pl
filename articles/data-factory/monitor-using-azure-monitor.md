@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/11/2018
-ms.openlocfilehash: aaa67c5e48c6246e94410bdbf2eb8509b6810001
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 8325b4ef6b89a76eeec418386cec4922cb5916b1
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75645195"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979147"
 ---
 # <a name="alert-and-monitor-data-factories-by-using-azure-monitor"></a>Generowanie alertów i monitorowanie fabryk danych przy użyciu Azure Monitor
 
@@ -67,7 +67,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 ##### <a name="headers"></a>Nagłówki
 
 * Zastąp element `{api-version}` pytaniem `2016-09-01`.
-* Zastąp `{resource-id}` IDENTYFIKATORem zasobu, dla którego chcesz edytować ustawienia diagnostyczne. Więcej informacji można znaleźć w temacie [Używanie grup zasobów do zarządzania zasobami platformy Azure](../azure-resource-manager/manage-resource-groups-portal.md).
+* Zastąp `{resource-id}` IDENTYFIKATORem zasobu, dla którego chcesz edytować ustawienia diagnostyczne. Więcej informacji można znaleźć w temacie [Używanie grup zasobów do zarządzania zasobami platformy Azure](../azure-resource-manager/management/manage-resource-groups-portal.md).
 * Ustaw `Content-Type` nagłówek, aby `application/json`.
 * Ustaw nagłówek autoryzacji na token sieci Web JSON uzyskany z Azure Active Directory (Azure AD). Aby uzyskać więcej informacji, zobacz [uwierzytelnianie żądań](../active-directory/develop/authentication-scenarios.md).
 
@@ -188,7 +188,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 ##### <a name="headers"></a>Nagłówki
 
 * Zastąp element `{api-version}` pytaniem `2016-09-01`.
-* Zastąp `{resource-id}` IDENTYFIKATORem zasobu, dla którego chcesz edytować ustawienia diagnostyczne. Więcej informacji można znaleźć w temacie [Używanie grup zasobów do zarządzania zasobami platformy Azure](../azure-resource-manager/manage-resource-groups-portal.md).
+* Zastąp `{resource-id}` IDENTYFIKATORem zasobu, dla którego chcesz edytować ustawienia diagnostyczne. Więcej informacji można znaleźć w temacie [Używanie grup zasobów do zarządzania zasobami platformy Azure](../azure-resource-manager/management/manage-resource-groups-portal.md).
 * Ustaw `Content-Type` nagłówek, aby `application/json`.
 * Ustaw nagłówek autoryzacji na token sieci Web JSON uzyskany z usługi Azure AD. Aby uzyskać więcej informacji, zobacz [uwierzytelnianie żądań](../active-directory/develop/authentication-scenarios.md).
 

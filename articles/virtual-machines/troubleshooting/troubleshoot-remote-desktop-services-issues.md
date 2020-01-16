@@ -12,21 +12,21 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/23/2018
 ms.author: genli
-ms.openlocfilehash: 7949bedec2d304cd87fb512b44cd61d6f0894638
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 92c4a40de7e35d0580fe407e36305a50ad68094c
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72168949"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981783"
 ---
 # <a name="remote-desktop-services-isnt-starting-on-an-azure-vm"></a>Usługi pulpitu zdalnego nie jest uruchamiane na maszynie wirtualnej platformy Azure
 
 W tym artykule opisano sposób rozwiązywania problemów związanych z nawiązywaniem połączenia z maszyną wirtualną platformy Azure i Usługi pulpitu zdalnego, lub TermService, nie uruchamia się lub nie można uruchomić usługi.
 
 > [!NOTE]  
-> Platforma Azure ma dwa różne modele wdrażania do tworzenia zasobów i pracy z nimi: [Azure Resource Manager i klasyczne](../../azure-resource-manager/resource-manager-deployment-model.md). W tym artykule opisano użycie Menedżer zasobów model wdrażania. Zalecamy używanie tego modelu w przypadku nowych wdrożeń zamiast klasycznego modelu wdrażania.
+> Platforma Azure ma dwa różne modele wdrażania do tworzenia zasobów i pracy z nimi: [Azure Resource Manager i klasyczne](../../azure-resource-manager/management/deployment-models.md). W tym artykule opisano użycie Menedżer zasobów model wdrażania. Zalecamy używanie tego modelu w przypadku nowych wdrożeń zamiast klasycznego modelu wdrażania.
 
-## <a name="symptoms"></a>Symptomy
+## <a name="symptoms"></a>Objawy
 
 Podczas próby nawiązania połączenia z maszyną wirtualną występują następujące scenariusze:
 
@@ -34,13 +34,13 @@ Podczas próby nawiązania połączenia z maszyną wirtualną występują nastę
 
     ![Zrzut ekranu przedstawiający stan maszyny wirtualnej](./media/troubleshoot-remote-desktop-services-issues/login-page.png)
 
-- Dzienniki zdarzeń w maszynie wirtualnej można wyświetlić zdalnie przy użyciu Podgląd zdarzeń. Zobaczysz, że Usługi pulpitu zdalnego, TermService, nie rozpoczyna się lub nie można uruchomić. Następujący dziennik jest przykładem:
+- Zdalne wyświetlanie dzienników zdarzeń maszyny wirtualnej za pomocą Podglądu zdarzeń. Zobaczysz, że Usługi pulpitu zdalnego, TermService, nie rozpoczyna się lub nie można uruchomić. Następujący dziennik jest przykładem:
 
     **Nazwa dziennika**: system </br>
     **Źródło**: Menedżer sterowania usługami </br>
     **Data**: 12/16/2017 11:19:36 am</br>
     **Identyfikator zdarzenia**: 7022</br>
-    **Kategoria zadania**: brak</br>
+    **Zadanie kategorii**: Brak</br>
     **Poziom**: błąd</br>
     **Słowa kluczowe**: klasyczne</br>
     **Użytkownik**: nie dotyczy</br>
@@ -99,20 +99,20 @@ Aby rozwiązać ten problem, użyj konsoli szeregowej. Lub w przeciwnym razie [n
     |  Błąd |  Sugestia |
     |---|---|
     |5 — ODMOWA DOSTĘPU |Zobacz, [że Usługa TermService została zatrzymana z powodu błędu odmowy dostępu](#termservice-service-is-stopped-because-of-an-access-denied-problem). |
-    |1053 – ERROR_SERVICE_REQUEST_TIMEOUT  |Zobacz [Usługa TermService jest wyłączona](#termservice-service-is-disabled).  |  
-    |1058 – ERROR_SERVICE_DISABLED  |Zobacz [awarie usługi TermService lub zawiesza](#termservice-service-crashes-or-hangs)się.  |
-    |1059 – ERROR_CIRCULAR_DEPENDENCY |[Skontaktuj się z pomocą techniczną](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) , aby szybko rozwiązać swój problem.|
-    |1067 – ERROR_PROCESS_ABORTED  |Zobacz [awarie usługi TermService lub zawiesza](#termservice-service-crashes-or-hangs)się.  |
-    |1068 – ERROR_SERVICE_DEPENDENCY_FAIL|[Skontaktuj się z pomocą techniczną](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) , aby szybko rozwiązać swój problem.|
-    |1069 – ERROR_SERVICE_LOGON_FAILED  |Zobacz [Niepowodzenie usługi TermService z powodu niepowodzenia logowania](#termservice-service-fails-because-of-logon-failure) |
-    |1070 – ERROR_SERVICE_START_HANG   | Zobacz [awarie usługi TermService lub zawiesza](#termservice-service-crashes-or-hangs)się. |
-    |1077 – ERROR_SERVICE_NEVER_STARTED   | Zobacz [Usługa TermService jest wyłączona](#termservice-service-is-disabled).  |
-    |1079 – ERROR_DIFERENCE_SERVICE_ACCOUNT   |[Skontaktuj się z pomocą techniczną](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) , aby szybko rozwiązać swój problem. |
+    |1053 - ERROR_SERVICE_REQUEST_TIMEOUT  |Zobacz [Usługa TermService jest wyłączona](#termservice-service-is-disabled).  |  
+    |1058 - ERROR_SERVICE_DISABLED  |Zobacz [awarie usługi TermService lub zawiesza](#termservice-service-crashes-or-hangs)się.  |
+    |1059 - ERROR_CIRCULAR_DEPENDENCY |[Skontaktuj się z pomocą techniczną](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) , aby szybko rozwiązać swój problem.|
+    |1067 - ERROR_PROCESS_ABORTED  |Zobacz [awarie usługi TermService lub zawiesza](#termservice-service-crashes-or-hangs)się.  |
+    |1068 - ERROR_SERVICE_DEPENDENCY_FAIL|[Skontaktuj się z pomocą techniczną](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) , aby szybko rozwiązać swój problem.|
+    |1069 - ERROR_SERVICE_LOGON_FAILED  |Zobacz [Niepowodzenie usługi TermService z powodu niepowodzenia logowania](#termservice-service-fails-because-of-logon-failure) |
+    |1070 - ERROR_SERVICE_START_HANG   | Zobacz [awarie usługi TermService lub zawiesza](#termservice-service-crashes-or-hangs)się. |
+    |1077 - ERROR_SERVICE_NEVER_STARTED   | Zobacz [Usługa TermService jest wyłączona](#termservice-service-is-disabled).  |
+    |1079 - ERROR_DIFERENCE_SERVICE_ACCOUNT   |[Skontaktuj się z pomocą techniczną](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) , aby szybko rozwiązać swój problem. |
     |1753   |[Skontaktuj się z pomocą techniczną](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) , aby szybko rozwiązać swój problem.   |
     
 #### <a name="termservice-service-is-stopped-because-of-an-access-denied-problem"></a>Usługa TermService została zatrzymana z powodu problemu z odmową dostępu
 
-1. Połącz się z [konsolą szeregową](serial-console-windows.md) i Otwórz wystąpienie programu PowerShell.
+1. Połączyć się z [konsoli szeregowej](serial-console-windows.md) , a następnie otwórz wystąpienie programu PowerShell.
 2. Pobierz narzędzie Monitor procesu, uruchamiając następujący skrypt:
 
    ```
@@ -123,7 +123,7 @@ Aby rozwiązać ten problem, użyj konsoli szeregowej. Lub w przeciwnym razie [n
    $wc.DownloadFile($source,$destination) 
    ```
 
-3. Teraz uruchom śledzenie **ProcMon** :
+3. Teraz rozpocząć **procmon** śledzenia:
 
    ```
    procmon /Quiet /Minimized /BackingFile c:\temp\ProcMonTrace.PML 
@@ -135,7 +135,7 @@ Aby rozwiązać ten problem, użyj konsoli szeregowej. Lub w przeciwnym razie [n
    sc start TermService 
    ```
 
-   Gdy to się nie powiedzie, Zakończ śledzenie monitora procesu:
+   Jeśli nie powiedzie się, zakończenia śledzenia procesu monitora:
 
    ```   
    procmon /Terminate 
@@ -143,9 +143,9 @@ Aby rozwiązać ten problem, użyj konsoli szeregowej. Lub w przeciwnym razie [n
 
 5. Zbierz **c:\temp\ProcMonTrace.PML**pliku:
 
-    1. [Dołącz dysk z danymi do maszyny wirtualnej](../windows/attach-managed-disk-portal.md
+    1. [Dołączanie dysku danych do maszyny Wirtualnej](../windows/attach-managed-disk-portal.md
 ).
-    2. Użyj konsoli szeregowej można skopiować plik na nowy dysk. Na przykład `copy C:\temp\ProcMonTrace.PML F:\`. W tym poleceniu F jest literą sterownika dołączonego dysku danych.
+    2. Użyj konsoli szeregowej, możesz skopiować go na nowy dysk. Na przykład `copy C:\temp\ProcMonTrace.PML F:\`. W tym poleceniu F jest literą sterownika dołączonego dysku danych.
     3. Odłącz dysk danych i dołącz go do działającej maszyny wirtualnej z zainstalowanym monitorem procesu ubstakke.
 
 6. Otwórz **ProcMonTrace. PML** przy użyciu monitorowania procesów działającej maszyny wirtualnej. Następnie filtrowanie według **wyniku jest odmowa dostępu**, jak pokazano na poniższym zrzucie ekranu:
@@ -153,11 +153,11 @@ Aby rozwiązać ten problem, użyj konsoli szeregowej. Lub w przeciwnym razie [n
     ![Filtruj według wyniku w monitorze procesu](./media/troubleshoot-remote-desktop-services-issues/process-monitor-access-denined.png)
 
  
-6. Naprawianie kluczy rejestru, folderów lub plików, które znajdują się w danych wyjściowych. Zazwyczaj ten problem jest spowodowany tym, że konto logowania używane w usłudze nie ma uprawnienia ACL do uzyskiwania dostępu do tych obiektów. Aby uzyskać informacje na temat poprawnego uprawnienia ACL dla konta logowania, można zaewidencjonować odpowiednią maszynę wirtualną. 
+6. Usuń klucze rejestru, foldery lub pliki, które znajdują się w danych wyjściowych. Zazwyczaj ten problem występuje po konto logowania, która jest używana w usłudze nie ma uprawnienia listy ACL dostępu do tych obiektów. Aby uzyskać informacje na temat poprawnego uprawnienia ACL dla konta logowania, można zaewidencjonować odpowiednią maszynę wirtualną. 
 
 #### <a name="termservice-service-is-disabled"></a>Usługa TermService jest wyłączona
 
-1. Przywróć domyślną wartość uruchamiania usługi:
+1. Przywróć usługi do wartości domyślnej uruchamiania:
 
    ```
    sc config TermService start= demand 
@@ -191,7 +191,7 @@ Aby rozwiązać ten problem, użyj konsoli szeregowej. Lub w przeciwnym razie [n
 1. Jeśli stan usługi jest zablokowany w trakcie **uruchamiania** lub **zatrzymywania**, spróbuj zatrzymać usługę: 
 
         sc stop TermService
-2. Wyodrębnij usługę do własnego kontenera "svchost":
+2. Izoluj usługę na własnym kontenerze "svchost":
 
         sc config TermService type= own
 3. Uruchom usługę:
@@ -199,13 +199,13 @@ Aby rozwiązać ten problem, użyj konsoli szeregowej. Lub w przeciwnym razie [n
         sc start TermService
 4. Jeśli uruchomienie usługi nadal kończy się niepowodzeniem, [skontaktuj się z pomocą techniczną](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
-### <a name="repair-the-vm-offline"></a>Naprawianie maszyny wirtualnej w trybie offline
+### <a name="repair-the-vm-offline"></a>Napraw maszynę Wirtualną w tryb offline
 
-#### <a name="attach-the-os-disk-to-a-recovery-vm"></a>Dołączanie dysku systemu operacyjnego do maszyny wirtualnej odzyskiwania
+#### <a name="attach-the-os-disk-to-a-recovery-vm"></a>Dołącz dysk systemu operacyjnego do maszyny Wirtualnej odzyskiwania
 
-1. [Dołącz dysk systemu operacyjnego do maszyny wirtualnej odzyskiwania](../windows/troubleshoot-recovery-disks-portal.md).
-2. Uruchom Pulpit zdalny połączenie z maszyną wirtualną odzyskiwania. Upewnij się, że dołączony dysk jest oznaczony jako **online** w konsoli Zarządzanie dyskami. Zanotuj literę dysku przypisaną do dołączonego dysku systemu operacyjnego.
-3. Otwórz wystąpienie wiersza polecenia z podwyższonym poziomem uprawnień (**Uruchom jako administrator**). Następnie uruchom poniższy skrypt. Załóżmy, że litera dysku przypisana do dołączonego dysku systemu operacyjnego to **F**. Zastąp ją odpowiednią wartością na maszynie wirtualnej. 
+1. [Dołącz dysk systemu operacyjnego do maszyny Wirtualnej odzyskiwania](../windows/troubleshoot-recovery-disks-portal.md).
+2. Rozpocznij połączenie pulpitu zdalnego do maszyny Wirtualnej odzyskiwania. Upewnij się, że dysk dołączony jest oznaczone jako **Online** w konsoli Zarządzanie dyskami. Zanotuj literę dysku, która jest przypisana do dołączonym dysku systemu operacyjnego.
+3. Otwórz wiersz polecenia z podwyższonym wystąpienie (**Uruchom jako administrator**). Następnie uruchom następujący skrypt. Załóżmy, że litera dysku przypisana do dołączonego dysku systemu operacyjnego to **F**. Zastąp ją odpowiednią wartością na maszynie wirtualnej. 
 
    ```
    reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM.hiv
@@ -219,8 +219,8 @@ Aby rozwiązać ten problem, użyj konsoli szeregowej. Lub w przeciwnym razie [n
    reg add "HKLM\BROKENSYSTEM\ControlSet002\services\TermService" /v type /t REG_DWORD /d 16 /f
    ```
 
-4. [Odłącz dysk systemu operacyjnego i Utwórz ponownie maszynę wirtualną](../windows/troubleshoot-recovery-disks-portal.md). Następnie sprawdź, czy problem został rozwiązany.
+4. [Odłącz dysk systemu operacyjnego i ponowne utworzenie maszyny Wirtualnej](../windows/troubleshoot-recovery-disks-portal.md). Następnie sprawdź, czy problem został rozwiązany.
 
-## <a name="need-help-contact-support"></a>Czy potrzebujesz pomocy? Skontaktuj się z pomocą techniczną
+## <a name="need-help-contact-support"></a>Potrzebujesz pomocy? Kontakt z pomocą techniczną
 
 Jeśli nadal potrzebujesz pomocy, [skontaktuj się z pomocą techniczną](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) , aby rozwiązać problem.

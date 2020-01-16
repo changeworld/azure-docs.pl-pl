@@ -14,12 +14,12 @@ ms.subservice: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 12391df7e3b8540b775d8c56b5d5c4e648722faf
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: c5f36e82c2ff95800a058f56f9cc6b80ddf02dbf
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75889601"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75967707"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Zabezpieczanie uprzywilejowanego dostępu dla wdrożeń hybrydowych i w chmurze w usłudze Azure AD
 
@@ -362,7 +362,7 @@ Aby ulepszyć plan, firma Microsoft zaleca regularne Weryfikowanie, czy plan dzi
 
 ### <a name="additional-steps-for-organizations-managing-access-to-azure"></a>Dodatkowe kroki dla organizacji zarządzających dostępem do platformy Azure 
 
-Ustal, czy musisz [przenieść własność subskrypcji platformy Azure na inne konto](../../billing/billing-subscription-transfer.md).
+Ustal, czy musisz [przenieść własność subskrypcji platformy Azure na inne konto](../../cost-management-billing/manage/billing-subscription-transfer.md).
 ‎
 
 ## <a name="break-glass-what-to-do-in-an-emergency"></a>"Szkło ze znakami": co zrobić w przypadku awarii

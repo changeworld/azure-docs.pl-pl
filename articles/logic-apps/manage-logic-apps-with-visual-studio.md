@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.custom: mvc
 ms.date: 10/29/2019
-ms.openlocfilehash: ed48082c52a5b4f79fd2030303dbe2bb7bedafe6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6319d2d72df69cc9633bd2b2ff8e777c2a48966a
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75456585"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982536"
 ---
 # <a name="manage-logic-apps-with-visual-studio"></a>Zarządzanie aplikacjami logiki za pomocą programu Visual Studio
 
@@ -90,13 +90,13 @@ W programie Visual Studio można otwierać aplikacje logiki wcześniej utworzone
 
    ![Otwórz wdrożoną aplikację logiki z Azure Portal](./media/manage-logic-apps-with-visual-studio/open-logic-app-in-editor.png)
 
-   Po otwarciu aplikacji logiki w programie Logic Apps Designer u dołu projektanta można wybrać **Widok kod** , aby można było przejrzeć podstawową strukturę definicji aplikacji logiki. Jeśli chcesz utworzyć szablon wdrożenia dla aplikacji logiki, Dowiedz się, [jak pobrać szablon Azure Resource Manager](#download-logic-app) dla tej aplikacji logiki. Dowiedz się więcej o [szablonach Menedżer zasobów](../azure-resource-manager/template-deployment-overview.md).
+   Po otwarciu aplikacji logiki w programie Logic Apps Designer u dołu projektanta można wybrać **Widok kod** , aby można było przejrzeć podstawową strukturę definicji aplikacji logiki. Jeśli chcesz utworzyć szablon wdrożenia dla aplikacji logiki, Dowiedz się, [jak pobrać szablon Azure Resource Manager](#download-logic-app) dla tej aplikacji logiki. Dowiedz się więcej o [szablonach Menedżer zasobów](../azure-resource-manager/templates/overview.md).
 
 <a name="download-logic-app"></a>
 
 ## <a name="download-from-azure"></a>Pobierz z platformy Azure
 
-Aplikacje logiki można pobrać z [Azure Portal](https://portal.azure.com) i zapisać je jako szablony [Azure Resource Manager](../azure-resource-manager/management/overview.md) . Następnie można edytować szablony lokalnie za pomocą programu Visual Studio i dostosowywać Aplikacje logiki do różnych środowisk wdrażania.  Pobieranie aplikacji logiki automatycznie *parameterizes* ich definicje w [szablonach Menedżer zasobów](../azure-resource-manager/template-deployment-overview.md), które również używają JavaScript Object Notation (JSON).
+Aplikacje logiki można pobrać z [Azure Portal](https://portal.azure.com) i zapisać je jako szablony [Azure Resource Manager](../azure-resource-manager/management/overview.md) . Następnie można edytować szablony lokalnie za pomocą programu Visual Studio i dostosowywać Aplikacje logiki do różnych środowisk wdrażania.  Pobieranie aplikacji logiki automatycznie *parameterizes* ich definicje w [szablonach Menedżer zasobów](../azure-resource-manager/templates/overview.md), które również używają JavaScript Object Notation (JSON).
 
 1. W programie Visual Studio Otwórz program Cloud Explorer. Znajdź i wybierz aplikację logiki, którą chcesz pobrać z platformy Azure.
 
@@ -113,13 +113,13 @@ Aplikacje logiki można pobrać z [Azure Portal](https://portal.azure.com) i zap
 
 1. Po wyświetleniu monitu o lokalizację przejdź do tej lokalizacji i Zapisz szablon Menedżer zasobów dla definicji aplikacji logiki w formacie pliku JSON (JSON).
 
-   Definicja aplikacji logiki zostanie wyświetlona w podsekcji `resources` wewnątrz szablonu Menedżer zasobów. Teraz można edytować definicję aplikacji logiki i szablon Menedżer zasobów za pomocą programu Visual Studio. Możesz również dodać szablon jako [projekt grupy zasobów platformy Azure](../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) do rozwiązania programu Visual Studio. Dowiedz się więcej o [projektach grup zasobów platformy Azure dla aplikacji logiki w programie Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md).
+   Definicja aplikacji logiki zostanie wyświetlona w podsekcji `resources` wewnątrz szablonu Menedżer zasobów. Teraz można edytować definicję aplikacji logiki i szablon Menedżer zasobów za pomocą programu Visual Studio. Możesz również dodać szablon jako [projekt grupy zasobów platformy Azure](../azure-resource-manager/templates/create-visual-studio-deployment-project.md) do rozwiązania programu Visual Studio. Dowiedz się więcej o [projektach grup zasobów platformy Azure dla aplikacji logiki w programie Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md).
 
 <a name="link-integration-account"></a>
 
 ## <a name="link-to-integration-account"></a>Link do konta integracji
 
-Aby tworzyć aplikacje logiki dla scenariuszy integracji z przedsiębiorstwem B2B (Business-to-Business), możesz połączyć aplikację logiki z wcześniej utworzonym [kontem integracji](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) , które istnieje w tym samym regionie, w którym znajduje się aplikacja logiki. Konto integracji zawiera artefakty B2B, takie jak partnerzy handlowi, umowy, schematy i mapy, a także umożliwia aplikacji logiki używanie łączników B2B do sprawdzania poprawności kodu XML i prostego kodowania plików lub dekodowania. Chociaż można [utworzyć ten link za pomocą Azure Portal](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md#link-account), można również użyć programu Visual Studio po spełnieniu [wymagań wstępnych](#requirements), a aplikacja LOGIKI istnieje jako plik JSON (JSON) w [projekcie grupy zasobów platformy Azure](../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md). Dowiedz się więcej o [projektach grup zasobów platformy Azure dla aplikacji logiki w programie Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md#create-resource-group-project).
+Aby tworzyć aplikacje logiki dla scenariuszy integracji z przedsiębiorstwem B2B (Business-to-Business), możesz połączyć aplikację logiki z wcześniej utworzonym [kontem integracji](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) , które istnieje w tym samym regionie, w którym znajduje się aplikacja logiki. Konto integracji zawiera artefakty B2B, takie jak partnerzy handlowi, umowy, schematy i mapy, a także umożliwia aplikacji logiki używanie łączników B2B do sprawdzania poprawności kodu XML i prostego kodowania plików lub dekodowania. Chociaż można [utworzyć ten link za pomocą Azure Portal](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md#link-account), można również użyć programu Visual Studio po spełnieniu [wymagań wstępnych](#requirements), a aplikacja LOGIKI istnieje jako plik JSON (JSON) w [projekcie grupy zasobów platformy Azure](../azure-resource-manager/templates/create-visual-studio-deployment-project.md). Dowiedz się więcej o [projektach grup zasobów platformy Azure dla aplikacji logiki w programie Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md#create-resource-group-project).
 
 1. W programie Visual Studio Otwórz projekt grupy zasobów platformy Azure, który zawiera aplikację logiki.
 
@@ -149,7 +149,7 @@ Po ustawieniu właściwości **konto integracji** w programie Visual Studio i za
 
 ## <a name="change-deployment-location"></a>Zmień lokalizację wdrożenia
 
-W programie Visual Studio, jeśli aplikacja logiki istnieje jako plik JSON (JSON) w [projekcie grupy zasobów platformy Azure](../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) , który jest używany do automatyzowania wdrożenia, ta aplikacja logiki jest ustawiona na typ lokalizacji i określoną lokalizację. Ta lokalizacja jest regionem platformy Azure lub istniejącym [środowiskiem usługi integracji (ISE)](connect-virtual-network-vnet-isolated-environment.md).
+W programie Visual Studio, jeśli aplikacja logiki istnieje jako plik JSON (JSON) w [projekcie grupy zasobów platformy Azure](../azure-resource-manager/templates/create-visual-studio-deployment-project.md) , który jest używany do automatyzowania wdrożenia, ta aplikacja logiki jest ustawiona na typ lokalizacji i określoną lokalizację. Ta lokalizacja jest regionem platformy Azure lub istniejącym [środowiskiem usługi integracji (ISE)](connect-virtual-network-vnet-isolated-environment.md).
 
 Aby zmienić typ lokalizacji lub lokalizację aplikacji logiki, należy otworzyć plik definicji przepływu pracy aplikacji logiki (JSON) z Eksplorator rozwiązań przy użyciu projektanta aplikacji logiki. Nie można zmienić tych właściwości przy użyciu programu Cloud Explorer.
 

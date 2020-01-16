@@ -13,25 +13,25 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 0255787ac90e63aff02ea65912ffa37c8ecc09fa
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: cc2f0a513219a671dd8a75ee00af4fc9d4c6a68a
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929749"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979723"
 ---
 # <a name="tutorial-copy-data-from-blob-storage-to-sql-database-using-data-factory"></a>Samouczek: kopiowanie danych z Blob Storage do SQL Database przy użyciu Data Factory
 > [!div class="op_single_selector"]
 > * [Przegląd i wymagania wstępne](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Kreator kopiowania](data-factory-copy-data-wizard-tutorial.md)
-> * [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
+> * [Program Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
 > * [Program PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
 > * [Szablon usługi Azure Resource Manager](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
 > * [Interfejs API REST](data-factory-copy-activity-tutorial-using-rest-api.md)
-> * [Interfejs API programu .NET](data-factory-copy-activity-tutorial-using-dotnet-api.md)
+> * [Interfejs API .NET](data-factory-copy-activity-tutorial-using-dotnet-api.md)
 
 > [!NOTE]
-> Ten artykuł dotyczy wersji 1 usługi Data Factory. Jeśli korzystasz z bieżącej wersji usługi Data Factory, zobacz [samouczek dotyczący działania kopiowania](../quickstart-create-data-factory-dot-net.md). 
+> Ten artykuł dotyczy wersji 1 usługi Data Factory. Jeśli korzystasz z bieżącej wersji usługi Data Factory, zobacz [samouczek dotyczący działania kopiowania](../quickstart-create-data-factory-dot-net.md).
 
 W tym samouczku utworzysz fabrykę danych z potokiem służącym do kopiowania danych z usługi BLOB Storage do usługi SQL Database.
 
@@ -46,7 +46,7 @@ Działanie kopiowania wykonuje operację przenoszenia danych w usłudze Azure Da
 Przed rozpoczęciem pracy z tym samouczkiem należy spełnić następujące wymagania wstępne:
 
 * **Subskrypcja platformy Azure**.  Jeśli nie masz subskrypcji, możesz utworzyć konto bezpłatnej wersji próbnej w zaledwie kilka minut. Szczegółowe informacje można znaleźć w artykule dotyczącym [bezpłatnej wersji próbnej](https://azure.microsoft.com/pricing/free-trial/) .
-* **Konto usługi Azure Storage**. Magazyn obiektów BLOB jest używany jako magazyn danych **źródłowych** w tym samouczku. Jeśli nie masz konta usługi Azure Storage, utwórz je, wykonując czynności przedstawione w artykule [Tworzenie konta magazynu](../../storage/common/storage-quickstart-create-account.md).
+* **Konto usługi Azure Storage**. Magazyn obiektów BLOB jest używany jako magazyn danych **źródłowych** w tym samouczku. Jeśli nie masz konta usługi Azure Storage, utwórz je, wykonując czynności przedstawione w artykule [Tworzenie konta magazynu](../../storage/common/storage-account-create.md).
 * **Usługa Azure SQL Database**. W tym samouczku używasz bazy danych Azure SQL Database jako **docelowego** magazynu danych. Jeśli nie masz bazy danych SQL Azure, której można użyć w samouczku, zobacz [jak utworzyć i skonfigurować Azure SQL Database](../../sql-database/sql-database-get-started.md) , aby go utworzyć.
 * **SQL Server 2012/2014 lub Visual Studio 2013**. Za pomocą SQL Server Management Studio lub Visual Studio można utworzyć przykładową bazę danych i wyświetlić dane wynikowe w bazie danych.  
 
@@ -107,7 +107,7 @@ Teraz możesz przygotować usługę Azure Blob Storage i bazę danych SQL Azure 
     CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
     ```
 
-    **Jeśli na komputerze zainstalowano SQL Server 2012/2014:** postępuj zgodnie z instrukcjami [zarządzania Azure SQL Database przy użyciu SQL Server Management Studio](../../sql-database/sql-database-manage-azure-ssms.md) , aby nawiązać połączenie z serwerem Azure SQL i uruchomić skrypt SQL. 
+    **Jeśli na komputerze zainstalowano SQL Server 2012/2014:** postępuj zgodnie z instrukcjami [zarządzania Azure SQL Database przy użyciu SQL Server Management Studio](../../sql-database/sql-database-manage-azure-ssms.md) , aby nawiązać połączenie z serwerem Azure SQL i uruchomić skrypt SQL.
 
     Jeśli klient nie ma dostępu do serwera SQL Azure, musisz skonfigurować zaporę serwera SQL Azure tak, aby dostęp z Twojego komputera (adresu IP) był dozwolony. W [tym artykule](../../sql-database/sql-database-configure-firewall-settings.md) opisano kroki konfigurowania zapory dla serwera SQL Azure.
 
@@ -115,13 +115,13 @@ Teraz możesz przygotować usługę Azure Blob Storage i bazę danych SQL Azure 
 Wymagania wstępne zostały spełnione. Fabrykę danych można utworzyć, korzystając z jednego z następujących sposobów. Kliknij jedną z opcji na liście rozwijanej u góry lub poniższe linki, aby wykonać samouczek.     
 
 * [Kreator kopiowania](data-factory-copy-data-wizard-tutorial.md)
-* [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
+* [Program Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
 * [Program PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
 * [Szablon usługi Azure Resource Manager](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
 * [Interfejs API REST](data-factory-copy-activity-tutorial-using-rest-api.md)
-* [Interfejs API programu .NET](data-factory-copy-activity-tutorial-using-dotnet-api.md)
+* [Interfejs API .NET](data-factory-copy-activity-tutorial-using-dotnet-api.md)
 
 > [!NOTE]
 > Potok danych przedstawiony w tym samouczku kopiuje dane ze źródłowego do docelowego magazynu danych. Nie przekształca on danych wejściowych w celu wygenerowania danych wyjściowych. Aby zapoznać się z samouczkiem dotyczącym przekształcania danych za pomocą usługi Azure Data Factory, zobacz [Tutorial: Build your first pipeline to transform data using Hadoop cluster](data-factory-build-your-first-pipeline.md) (Samouczek: Tworzenie pierwszego potoku przekształcającego dane przy użyciu klastra Hadoop).
-> 
-> Dwa działania można połączyć w łańcuch (uruchomić jedno działanie po drugim), ustawiając wyjściowy zestaw danych jednego działania jako zestaw wejściowy drugiego. Szczegółowe informacje znajdują się w artykule [Scheduling and execution in Data Factory](data-factory-scheduling-and-execution.md) (Planowanie i wykonywanie w usłudze Data Factory). 
+>
+> Dwa działania można połączyć w łańcuch (uruchomić jedno działanie po drugim), ustawiając wyjściowy zestaw danych jednego działania jako zestaw wejściowy drugiego. Szczegółowe informacje znajdują się w artykule [Scheduling and execution in Data Factory](data-factory-scheduling-and-execution.md) (Planowanie i wykonywanie w usłudze Data Factory).

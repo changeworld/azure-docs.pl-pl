@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 9c16ec978a0689059c60903182337936960c7a4b
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 0ee996e39950d38b10f8df78fe47f7087c4a2ed1
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707852"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981059"
 ---
 # <a name="add-or-remove-role-assignments-using-azure-rbac-and-azure-powershell"></a>Dodawanie lub usuwanie przypisań ról przy użyciu funkcji RBAC platformy Azure i Azure PowerShell
 
@@ -65,7 +65,7 @@ Get-AzADServicePrincipal -SearchString <service_name_in_quotes>
 (Get-AzADServicePrincipal -DisplayName <service_name_in_quotes>).id
 ```
 
-## <a name="add-a-role-assignment"></a>Dodawanie przypisania roli
+## <a name="add-a-role-assignment"></a>Dodaj przypisanie roli
 
 W celu udzielenia dostępu w ramach RBAC należy dodać przypisanie roli.
 
@@ -232,4 +232,4 @@ Jeśli zostanie wyświetlony komunikat o błędzie: "podane informacje nie są m
 - [Wyświetlanie listy przypisań ról przy użyciu funkcji RBAC platformy Azure i Azure PowerShell](role-assignments-list-powershell.md)
 - [Samouczek: udzielanie grupie dostępu do zasobów platformy Azure przy użyciu RBAC i Azure PowerShell](tutorial-role-assignments-group-powershell.md)
 - [Samouczek: tworzenie roli niestandardowej dla zasobów platformy Azure przy użyciu Azure PowerShell](tutorial-custom-role-powershell.md)
-- [Zarządzanie zasobami za pomocą Azure PowerShell](../azure-resource-manager/manage-resources-powershell.md)
+- [Zarządzanie zasobami za pomocą Azure PowerShell](../azure-resource-manager/management/manage-resources-powershell.md)

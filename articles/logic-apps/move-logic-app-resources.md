@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 07/31/2019
-ms.openlocfilehash: 2d09484fcb5211003aeec0ec10bfc9892b4e6f31
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d6250238edd15126e7a56bd821fbd1c736ebda07
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75456543"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75965886"
 ---
 # <a name="move-logic-app-resources-to-other-azure-subscriptions-resource-groups-or-regions"></a>Przenoszenie zasobów aplikacji logiki do innych subskrypcji platformy Azure, grup zasobów lub regionów
 
@@ -33,7 +33,7 @@ Aby przenieść aplikację logiki lub powiązane zasoby na inną subskrypcję pl
 
 ## <a name="move-resources-between-subscriptions"></a>Przenoszenie zasobów między subskrypcjami
 
-Aby przenieść zasób, taki jak aplikacja logiki lub konto integracji, do innej subskrypcji platformy Azure, można użyć Azure Portal, Azure PowerShell, interfejsu wiersza polecenia platformy Azure lub API REST. Te kroki obejmują Azure Portal, których można użyć, gdy region zasobu pozostaje taki sam. Aby poznać inne kroki i ogólne przygotowania, zobacz [przenoszenie zasobów do nowej grupy zasobów lub subskrypcji](../azure-resource-manager/resource-group-move-resources.md).
+Aby przenieść zasób, taki jak aplikacja logiki lub konto integracji, do innej subskrypcji platformy Azure, można użyć Azure Portal, Azure PowerShell, interfejsu wiersza polecenia platformy Azure lub API REST. Te kroki obejmują Azure Portal, których można użyć, gdy region zasobu pozostaje taki sam. Aby poznać inne kroki i ogólne przygotowania, zobacz [przenoszenie zasobów do nowej grupy zasobów lub subskrypcji](../azure-resource-manager/management/move-resource-group-and-subscription.md).
 
 1. W [Azure Portal](https://portal.azure.com)Znajdź i wybierz zasób aplikacji logiki, który chcesz przenieść.
 
@@ -51,7 +51,7 @@ Aby przenieść zasób, taki jak aplikacja logiki lub konto integracji, do innej
 
 ## <a name="move-resources-between-resource-groups"></a>Przenoszenie zasobów między grupami zasobów
 
-Aby przenieść zasób, taki jak aplikacja logiki lub konto integracji, do innej grupy zasobów platformy Azure, można użyć Azure Portal, Azure PowerShell, interfejsu wiersza polecenia platformy Azure lub API REST. Te kroki obejmują Azure Portal, których można użyć, gdy region zasobu pozostaje taki sam. Aby poznać inne kroki i ogólne przygotowania, zobacz [przenoszenie zasobów do nowej grupy zasobów lub subskrypcji](../azure-resource-manager/resource-group-move-resources.md).
+Aby przenieść zasób, taki jak aplikacja logiki lub konto integracji, do innej grupy zasobów platformy Azure, można użyć Azure Portal, Azure PowerShell, interfejsu wiersza polecenia platformy Azure lub API REST. Te kroki obejmują Azure Portal, których można użyć, gdy region zasobu pozostaje taki sam. Aby poznać inne kroki i ogólne przygotowania, zobacz [przenoszenie zasobów do nowej grupy zasobów lub subskrypcji](../azure-resource-manager/management/move-resource-group-and-subscription.md).
 
 Przed rzeczywistym przeniesieniem zasobów między grupami można sprawdzić, czy można pomyślnie przenieść zasób do innej grupy. Aby uzyskać więcej informacji, zobacz [Weryfikowanie przenoszenia](../azure-resource-manager/management/move-resource-group-and-subscription.md#validate-move).
 
@@ -106,4 +106,4 @@ Szablon pobrany z programu Visual Studio zawiera tylko definicje zasobów dla ap
 
 ## <a name="next-steps"></a>Następne kroki
 
-[Przenoszenie zasobów platformy Azure do nowych grup zasobów lub subskrypcji](../azure-resource-manager/resource-group-move-resources.md)
+[Przenoszenie zasobów platformy Azure do nowych grup zasobów lub subskrypcji](../azure-resource-manager/management/move-resource-group-and-subscription.md)

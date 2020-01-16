@@ -1,6 +1,6 @@
 ---
-title: Zarządzanie kontami v3 usługi Azure Media Services | Dokumentacja firmy Microsoft
-description: Aby rozpocząć zarządzanie, szyfrowanie, kodowanie, analizowanie i przesyłanie strumieniowe zawartości multimedialnej na platformie Azure, musisz utworzyć konto usługi Media Services. W tym artykule opisano sposób zarządzania usługi Azure Media Services v3 kont.
+title: Zarządzanie kontami Azure Media Services v3 | Microsoft Docs
+description: Aby rozpocząć zarządzanie, szyfrowanie, kodowanie, analizowanie i przesyłanie strumieniowe zawartości multimedialnej na platformie Azure, musisz utworzyć konto Media Services. W tym artykule wyjaśniono, jak zarządzać kontami Azure Media Services v3.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -11,35 +11,35 @@ ms.workload: ''
 ms.topic: article
 ms.date: 07/08/2019
 ms.author: juliako
-ms.openlocfilehash: fa9720c2c29af184016d2903e60520e701b4cf79
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 08579f7ba952bb4ebcba1595508612affb852528
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67670684"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980385"
 ---
-# <a name="manage-azure-media-services-v3-accounts"></a>Zarządzanie kontami v3 usługi Azure Media Services
+# <a name="manage-azure-media-services-v3-accounts"></a>Zarządzaj kontami Azure Media Services v3
 
-Aby rozpocząć zarządzanie, szyfrowanie, kodowanie, analizowanie i przesyłanie strumieniowe zawartości multimedialnej na platformie Azure, musisz utworzyć konto usługi Media Services. Podczas tworzenia konta usługi Media Services musisz podać nazwę zasobu konta usługi Azure Storage. Podane konto magazynu jest dołączane do konta usługi Media Services. Konto usług Media Services i wszystkie skojarzone konta magazynu muszą być w tej samej subskrypcji platformy Azure. Aby uzyskać więcej informacji, zobacz [kont magazynu](storage-account-concept.md).
+Aby rozpocząć zarządzanie, szyfrowanie, kodowanie, analizowanie i przesyłanie strumieniowe zawartości multimedialnej na platformie Azure, musisz utworzyć konto Media Services. Podczas tworzenia konta usługi Media Services musisz podać nazwę zasobu konta usługi Azure Storage. Podane konto magazynu jest dołączane do konta usługi Media Services. Konto usług Media Services i wszystkie skojarzone konta magazynu muszą być w tej samej subskrypcji platformy Azure. Aby uzyskać więcej informacji, zobacz [konta magazynu](storage-account-concept.md).
 
-## <a name="moving-a-media-services-account-between-subscriptions"></a>Przenoszenie konta usługi Media Services między subskrypcjami 
+## <a name="moving-a-media-services-account-between-subscriptions"></a>Przeniesienie konta Media Services między subskrypcjami 
 
-Jeśli musisz przenieść konto usługi Media Services do nowej subskrypcji, musisz najpierw przenieść całą grupę zasobów zawierającą konto usługi Media Services do nowej subskrypcji. Musisz przenieść wszystkie dołączone zasoby: Konta usługi Azure Storage, profile Azure CDN, itp. Aby uzyskać więcej informacji, zobacz [Move resources to new resource group or subscription](../../azure-resource-manager/resource-group-move-resources.md) (Przenoszenie zasobów do nowej grupy lub subskrypcji). Podobnie jak w przypadku wszelkich zasobów na platformie Azure, przenosi grupy zasobów może potrwać trochę czasu.
+Jeśli musisz przenieść konto Media Services do nowej subskrypcji, musisz najpierw przenieść całą grupę zasobów, która zawiera konto Media Services do nowej subskrypcji. Należy przenieść wszystkie dołączone zasoby: konta usługi Azure Storage, profile Azure CDN itd. Aby uzyskać więcej informacji, zobacz [przenoszenie zasobów do nowej grupy zasobów lub subskrypcji](../../azure-resource-manager/management/move-resource-group-and-subscription.md). Podobnie jak w przypadku wszystkich zasobów platformy Azure przenoszenie grup zasobów może zająć trochę czasu.
 
 > [!NOTE]
-> Usługa Media Services v3 obsługuje model obsługi wielu dzierżawców.
+> Media Services v3 obsługuje model z obsługą wielu dzierżawców.
 
 ### <a name="considerations"></a>Zagadnienia do rozważenia
 
-* Tworzenie kopii zapasowych wszystkich danych na swoim koncie, przed migracją do innej subskrypcji.
-* Należy zatrzymać wszystkie punkty końcowe przesyłania strumieniowego i przesyłania strumieniowego zasobów na żywo. Usługi Użytkownicy nie będą mogli korzystać z zawartości w czasie trwania operacji przenoszenia grupy zasobów. 
+* Utwórz kopie zapasowe wszystkich danych na koncie przed migracją do innej subskrypcji.
+* Należy zatrzymać wszystkie punkty końcowe przesyłania strumieniowego i zasoby przesyłania strumieniowego na żywo. Użytkownicy nie będą mogli uzyskać dostępu do zawartości na czas trwania przenoszenia grupy zasobów. 
 
 > [!IMPORTANT]
-> Punkt końcowy przesyłania strumieniowego nie należy uruchamiać, aż przeniesienie zakończy się pomyślnie.
+> Nie uruchamiaj punktu końcowego przesyłania strumieniowego, dopóki przeniesienie nie zakończy się pomyślnie.
 
 ### <a name="troubleshoot"></a>Rozwiązywanie problemów 
 
-Jeśli konto usługi Media Services i skojarzone konto usługi Azure Storage "rozłączają" po przeniesienie grupy zasobów, spróbuj rotacji kluczy konta magazynu. Jeśli rotacji kluczy konta magazynu nie rozwiąże "odłączonego" stan konta usługi Media Services, zgłoś żądanie pomocy technicznej z "Pomoc techniczna i rozwiązywanie problemów" menu w ramach konta usługi Media Services.  
+Jeśli konto Media Services lub skojarzone konto usługi Azure Storage stanie się "Rozłączono" po przeniesieniu grupy zasobów, spróbuj obrócić klucze konta magazynu. Jeśli rotacja kluczy konta magazynu nie rozwiązuje stanu "odłączono" konta Media Services, należy wysłać nowe żądanie pomocy technicznej z menu "Pomoc techniczna i rozwiązywanie problemów" na koncie Media Services.  
 
 ## <a name="next-steps"></a>Następne kroki
 

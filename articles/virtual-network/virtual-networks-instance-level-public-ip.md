@@ -14,24 +14,24 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/03/2018
 ms.author: genli
-ms.openlocfilehash: d92832d1eee995e8883dc6c8ed0f58c9755e40f8
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 74d10c8fbe2f82d6148f5e13cb57c46dd645f76f
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058407"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979536"
 ---
 # <a name="instance-level-public-ip-classic-overview"></a>Publiczny adres IP na poziomie wystąpienia (klasyczny) — Omówienie
 Publiczny adres IP na poziomie wystąpienia (ILPIP) jest publicznym adresem IP, który można przypisać bezpośrednio do maszyny wirtualnej lub Cloud Services wystąpienia roli, a nie do usługi w chmurze, w której znajduje się maszyna wirtualna lub wystąpienie roli. ILPIP nie ma miejsca na wirtualny adres IP (VIP) przypisany do usługi w chmurze. Jest to dodatkowy adres IP, którego można użyć do nawiązania bezpośredniego połączenia z maszyną wirtualną lub wystąpieniem roli.
 
 > [!IMPORTANT]
-> Platforma Azure oferuje dwa różne modele wdrażania związane z tworzeniem zasobów i pracą z nimi:  [model wdrażania przy użyciu usługi Resource Manager i model klasyczny](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Ten artykuł dotyczy klasycznego modelu wdrożenia. Firma Microsoft zaleca Tworzenie maszyn wirtualnych za pośrednictwem Menedżer zasobów. Zapoznaj się ze sposobem działania [adresów IP](virtual-network-ip-addresses-overview-classic.md) na platformie Azure.
+> Platforma Azure oferuje dwa różne modele wdrażania związane z tworzeniem zasobów i pracą z nimi: [model wdrażania przy użyciu usługi Azure Resource Manager i model klasyczny](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Ten artykuł dotyczy klasycznego modelu wdrożenia. Firma Microsoft zaleca Tworzenie maszyn wirtualnych za pośrednictwem Menedżer zasobów. Zapoznaj się ze sposobem działania [adresów IP](virtual-network-ip-addresses-overview-classic.md) na platformie Azure.
 
 ![Różnica między ILPIP i VIP](./media/virtual-networks-instance-level-public-ip/Figure1.png)
 
-Jak pokazano na rysunku 1, usługa w chmurze jest dostępna przy użyciu adresu VIP, podczas gdy pojedyncze maszyny wirtualne są zwykle dostępne przy&lt;użyciu adresu&gt;VIP: numer portu. Przypisanie ILPIP do określonej maszyny wirtualnej może uzyskać dostęp do tej maszyny wirtualnej bezpośrednio przy użyciu tego adresu IP.
+Jak pokazano na rysunku 1, usługa w chmurze jest dostępna przy użyciu adresu VIP, podczas gdy pojedyncze maszyny wirtualne są zwykle dostępne przy użyciu adresu VIP: numer portu&lt;&gt;. Przypisanie ILPIP do określonej maszyny wirtualnej może uzyskać dostęp do tej maszyny wirtualnej bezpośrednio przy użyciu tego adresu IP.
 
-Podczas tworzenia usługi w chmurze na platformie Azure odpowiednie rekordy A DNS są tworzone automatycznie, aby zezwolić na dostęp do usługi za pośrednictwem w pełni kwalifikowanej nazwy domeny (FQDN), zamiast korzystać z rzeczywistego adresu VIP. Ten sam proces występuje dla elementu ILPIP, co pozwala na dostęp do maszyny wirtualnej lub wystąpienia roli przy użyciu nazwy FQDN, a nie ILPIP. Na przykład jeśli utworzysz usługę w chmurze o nazwie *contosoadservice*i skonfigurujesz rolę sieci Web o nazwie *contosoweb* z dwoma wystąpieniami, a w pliku. `domainNameLabel` cscfg zostanie ustawiona wartość *WebPublicIP*, platforma Azure rejestruje następujące rekordy a dla Liczba
+Podczas tworzenia usługi w chmurze na platformie Azure odpowiednie rekordy A DNS są tworzone automatycznie, aby zezwolić na dostęp do usługi za pośrednictwem w pełni kwalifikowanej nazwy domeny (FQDN), zamiast korzystać z rzeczywistego adresu VIP. Ten sam proces występuje dla elementu ILPIP, co pozwala na dostęp do maszyny wirtualnej lub wystąpienia roli przy użyciu nazwy FQDN, a nie ILPIP. Na przykład jeśli utworzysz usługę w chmurze o nazwie *contosoadservice*i skonfigurujesz rolę sieci Web o nazwie *contosoweb* z dwoma wystąpieniami, a w `domainNameLabel` cscfg zostanie ustawiona wartość *WebPublicIP*, platforma Azure rejestruje następujące rekordy a dla wystąpień:
 
 
 * WebPublicIP.0.contosoadservice.cloudapp.net
@@ -45,7 +45,7 @@ Podczas tworzenia usługi w chmurze na platformie Azure odpowiednie rekordy A DN
 > 
 
 ## <a name="why-would-i-request-an-ilpip"></a>Dlaczego mam zażądać ILPIP?
-Jeśli chcesz mieć możliwość nawiązywania połączenia z maszyną wirtualną lub wystąpieniem roli za pomocą przypisanego do niego adresu IP, zamiast korzystać z adresów VIP usługi w&lt;chmurze:&gt;numer portu, zażądaj ILPIP dla maszyny wirtualnej lub wystąpienia roli.
+Jeśli chcesz mieć możliwość nawiązywania połączenia z maszyną wirtualną lub wystąpieniem roli za pomocą przypisanego do niego adresu IP, zamiast korzystać z adresów VIP usługi w chmurze:&lt;numer portu&gt;, zażądaj ILPIP dla maszyny wirtualnej lub wystąpienia roli.
 
 * **Aktywne FTP** — przypisanie ILPIP do maszyny wirtualnej może odbierać ruch na dowolnym porcie. Punkty końcowe nie są wymagane do odbierania ruchu przez maszynę wirtualną.  Szczegółowe informacje na temat protokołu FTP można znaleźć w temacie [Omówienie protokołu FTP](https://en.wikipedia.org/wiki/File_Transfer_Protocol#Protocol_overview) .
 * **Wychodzący** ruch wychodzący IP pochodzący z maszyny wirtualnej jest mapowany na ILPIP, ponieważ źródło i ILPIP jednoznacznie IDENTYFIKUJą maszynę wirtualną do jednostek zewnętrznych.
@@ -140,7 +140,7 @@ Get-AzureVM -ServiceName FTPService -Name FTPInstance | Set-AzurePublicIP -Publi
 Aby dodać ILPIP do wystąpienia roli Cloud Services, wykonaj następujące czynności:
 
 1. Pobierz plik cscfg dla usługi w chmurze, wykonując czynności opisane w artykule [jak skonfigurować Cloud Services](../cloud-services/cloud-services-how-to-configure-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#reconfigure-your-cscfg) .
-2. Zaktualizuj plik. cscfg przez dodanie `InstanceAddress` elementu. Poniższy przykład dodaje ILPIP o nazwie *MyPublicIP* do wystąpienia roli o nazwie *WebRole1*: 
+2. Zaktualizuj plik. cscfg przez dodanie elementu `InstanceAddress`. Poniższy przykład dodaje ILPIP o nazwie *MyPublicIP* do wystąpienia roli o nazwie *WebRole1*: 
 
     ```xml
     <?xml version="1.0" encoding="utf-8"?>
@@ -176,7 +176,7 @@ $roles[0].PublicIPAddress
 $roles[1].PublicIPAddress
 ```
 
-Można również użyć `nslookup` do kwerendy rekordu podrzędnego poddomeny:
+Możesz również użyć `nslookup`, aby wysłać zapytanie do rekordu poddomeny podrzędnej:
 
 ```batch
 nslookup WebPublicIP.0.<Cloud Service Name>.cloudapp.net

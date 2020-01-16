@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 039a19f38da4e651ee35fe60ba2b95a40cf890b0
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: be797f76988c924503e11b6f66cce899b515e3a2
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931904"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982201"
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>Przenoszenie danych między źródłami lokalnymi i chmurą przy użyciu bramy Zarządzanie danymi
 > [!NOTE]
@@ -29,15 +29,15 @@ Ten artykuł zawiera Omówienie integracji danych między lokalnymi magazynami d
 Aby umożliwić przeniesienie danych do/z lokalnego magazynu danych, należy zainstalować bramę Zarządzanie danymi na maszynie lokalnej. Bramę można zainstalować na tym samym komputerze, na którym znajduje się magazyn danych lub na innym komputerze, o ile Brama może połączyć się z magazynem danych.
 
 > [!IMPORTANT]
-> Szczegółowe informacje o bramie Zarządzanie danymi można znaleźć w artykule [Zarządzanie danymi Gateway](data-factory-data-management-gateway.md) . 
+> Szczegółowe informacje o bramie Zarządzanie danymi można znaleźć w artykule [Zarządzanie danymi Gateway](data-factory-data-management-gateway.md) .
 
 W poniższym przewodniku pokazano, jak utworzyć fabrykę danych z potokiem, który przenosi dane z lokalnej bazy danych **SQL Server** do magazynu obiektów blob platformy Azure. W ramach tego przewodnika zainstalujesz i skonfigurujesz bramę zarządzania danymi na tym komputerze.
 
 ## <a name="walkthrough-copy-on-premises-data-to-cloud"></a>Przewodnik: kopiowanie danych lokalnych do chmury
-W tym instruktażu wykonasz następujące czynności: 
+W tym instruktażu wykonasz następujące czynności:
 
 1. Tworzenie fabryki danych.
-2. Utwórz bramę zarządzania danymi. 
+2. Utwórz bramę zarządzania danymi.
 3. Tworzenie połączonych usług dla magazynów danych źródłowych i ujścia.
 4. Utwórz zestawy danych, aby reprezentować dane wejściowe i wyjściowe.
 5. Tworzenie potoku z działaniem kopiowania do przenoszenia danych.
@@ -46,8 +46,8 @@ W tym instruktażu wykonasz następujące czynności:
 Przed rozpoczęciem tego instruktażu należy spełnić następujące wymagania wstępne:
 
 * **Subskrypcja platformy Azure**.  Jeśli nie masz subskrypcji, możesz utworzyć konto bezpłatnej wersji próbnej w zaledwie kilka minut. Szczegółowe informacje można znaleźć w artykule dotyczącym [bezpłatnej wersji próbnej](https://azure.microsoft.com/pricing/free-trial/) .
-* **Konto usługi Azure Storage**. Magazyn obiektów BLOB jest używany jako magazyn danych **docelowych/ujścia** w tym samouczku. Jeśli nie masz konta usługi Azure Storage, utwórz je, wykonując czynności przedstawione w artykule [Tworzenie konta magazynu](../../storage/common/storage-quickstart-create-account.md).
-* **SQL Server**. Użyj lokalnej bazy danych programu SQL Server jako **źródła** magazynu danych w tym samouczku. 
+* **Konto usługi Azure Storage**. Magazyn obiektów BLOB jest używany jako magazyn danych **docelowych/ujścia** w tym samouczku. Jeśli nie masz konta usługi Azure Storage, utwórz je, wykonując czynności przedstawione w artykule [Tworzenie konta magazynu](../../storage/common/storage-account-create.md).
+* **SQL Server**. Użyj lokalnej bazy danych programu SQL Server jako **źródła** magazynu danych w tym samouczku.
 
 ## <a name="create-data-factory"></a>Tworzenie fabryki danych
 W tym kroku użyjesz Azure Portal, aby utworzyć wystąpienie Azure Data Factory o nazwie **ADFTutorialOnPremDF**.
@@ -350,7 +350,7 @@ W tym kroku utworzysz **potok** z jednym **działaniem kopiowania** , który uż
      }
     ```   
    > [!IMPORTANT]
-   > Zastąp wartość właściwości **start** bieżącym dniem, a wartość właściwości **end** następnym dniem.
+   > Zastąp wartość właściwości **start** datą bieżącą, a wartość **end** datą jutrzejszą.
    >
    >
 
@@ -408,7 +408,7 @@ W tym kroku opisano użycie witryny Azure Portal do monitorowania tego, co dziej
 8. obowiązkowe Kliknij pozycję **potoki**, kliknij pozycję **ADFTutorialOnPremDF**, a następnie przejdź do szczegółów w tabeli wejściowej (**zużyty**) lub wyjściowe zestawy danych (**utworzone**).
 9. Użyj narzędzi, takich jak [Microsoft Eksplorator usługi Storage](https://storageexplorer.com/) , aby sprawdzić, czy obiekt BLOB/plik jest tworzony przez każdą godzinę.
 
-   ![Eksplorator magazynu Azure](./media/data-factory-move-data-between-onprem-and-cloud/OnPremAzureStorageExplorer.png)
+   ![Eksplorator usługi Azure Storage](./media/data-factory-move-data-between-onprem-and-cloud/OnPremAzureStorageExplorer.png)
 
 ## <a name="next-steps"></a>Następne kroki
 * Aby uzyskać szczegółowe informacje o bramie Zarządzanie danymi, zobacz artykuł dotyczący [bramy usługi Zarządzanie danymi](data-factory-data-management-gateway.md) .

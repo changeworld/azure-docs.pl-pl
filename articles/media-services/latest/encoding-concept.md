@@ -13,16 +13,16 @@ ms.topic: article
 ms.date: 09/10/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: e9a0a8c8709e41bb7778878f76024263cdc32481
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 6a134d2bdfe7f370503b80703933ff646970d976
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74896085"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981104"
 ---
 # <a name="encoding-video-and-audio-with-media-services"></a>Kodowanie wideo i audio przy użyciu Media Services
 
-Termin kodowanie w Media Services ma zastosowanie do procesu konwertowania plików zawierających cyfrowe wideo i/lub dźwięk z jednego formatu standardowego na inny, w celu zmniejszenia rozmiaru plików i/lub (b) w celu wyprodukowania formatu zgodnego z Szeroka gama urządzeń i aplikacji. Ten proces jest również nazywany kompresją wideo lub transkodowaniem. Zapoznaj się z [kompresją danych](https://en.wikipedia.org/wiki/Data_compression) i [kodowaniem i transkodowaniem?](https://www.streamingmedia.com/Articles/Editorial/What-Is-/What-Is-Encoding-and-Transcoding-75025.aspx) , aby uzyskać więcej informacji na temat pojęć.
+Termin kodowanie w Media Services ma zastosowanie do procesu konwertowania plików zawierających cyfrowe wideo i/lub dźwięk z jednego formatu standardowego na inny, w celu zmniejszenia rozmiaru plików i/lub (b) tworzenia formatu zgodnego z szeroką gamą urządzeń i aplikacji. Ten proces jest również nazywany kompresją wideo lub transkodowaniem. Zapoznaj się z [kompresją danych](https://en.wikipedia.org/wiki/Data_compression) i [kodowaniem i transkodowaniem?](https://www.streamingmedia.com/Articles/Editorial/What-Is-/What-Is-Encoding-and-Transcoding-75025.aspx) , aby uzyskać więcej informacji na temat pojęć.
 
 Wideo są zwykle dostarczane do urządzeń i aplikacji przez [pobieranie progresywne](https://en.wikipedia.org/wiki/Progressive_download) lub [przesyłanie strumieniowe z adaptacyjną szybkością transmisji bitów](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming).
 
@@ -95,7 +95,7 @@ Obecnie obsługiwane są następujące ustawienia:
 
 - **EncoderNamedPreset. AACGoodQualityAudio**: tworzy pojedynczy plik MP4 zawierający tylko dźwięk stereo zakodowany przy 192 kb/s.
 - **EncoderNamedPreset. AdaptiveStreaming** (zalecane): Aby uzyskać więcej informacji, zobacz [Autogenerowanie drabiny szybkości transmisji bitów](autogen-bitrate-ladder.md).
-- **EncoderNamedPreset. ContentAwareEncodingExperimental**: uwidacznia eksperymentalne ustawienie wstępne dla kodowania obsługującego zawartość. Mając daną zawartość wejściową, usługa próbuje automatycznie określić optymalną liczbę warstw oraz odpowiednie ustawienia szybkości transmisji bitów i rozdzielczości do dostarczenia przez adaptacyjne przesyłanie strumieniowe. Algorytmy bazowe będą nadal rozwijane z upływem czasu. Dane wyjściowe będą zawierać pliki MP4 z przeplotem wideo i audio. Aby uzyskać więcej informacji, zobacz [eksperymentalne ustawienie wstępne dla kodowania z obsługą zawartości](cae-experimental.md).
+- **EncoderNamedPreset. ContentAwareEncodingExperimental**: uwidacznia eksperymentalne ustawienie wstępne dla kodowania obsługującego zawartość. Mając daną zawartość wejściową, usługa próbuje automatycznie określić optymalną liczbę warstw oraz odpowiednie ustawienia szybkości transmisji bitów i rozdzielczości do dostarczenia przez adaptacyjne przesyłanie strumieniowe. Algorytmy bazowe będą nadal rozwijane z upływem czasu. Dane wyjściowe będą zawierać pliki MP4 z przeplotem wideo i audio. Aby uzyskać więcej informacji, zobacz [eksperymentalne ustawienie wstępne dla kodowania z obsługą zawartości](content-aware-encoding.md).
 - **EncoderNamedPreset. H264MultipleBitrate1080p**: tworzy zestaw OŚMIU plików MP4 wyrównanych do grupę GOP, od 6000 KB/s do 400 KB/s oraz stereo AAC audio. Rozdzielczość rozpoczyna się od 1080p i prowadzi w dół do 360 p.
 - **EncoderNamedPreset. H264MultipleBitrate720p**: tworzy zestaw sześciu grupę GOP wyrównanych plików MP4, od 3400 KB/s do 400 KB/s oraz stereo AAC audio. Rozdzielczość rozpoczyna się od 720p i prowadzi w dół do 360 p.
 - **EncoderNamedPreset. H264MultipleBitrateSD**: tworzy zestaw pięciu plików MP4 wyrównanych do grupę GOP, od 1600 KB/s do 400 KB/s oraz stereo AAC audio. Rozdzielczość rozpoczyna się od 480p i prowadzi w dół do 360 p.

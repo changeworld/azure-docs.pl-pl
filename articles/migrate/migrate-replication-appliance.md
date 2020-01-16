@@ -1,28 +1,24 @@
 ---
-title: Architektura urządzenia replikacji Azure Migrate
-description: Zawiera omówienie urządzenia replikacji Azure Migrate na potrzeby migracji opartej na agentach.
-author: rayne-wiselman
-ms.service: azure-migrate
+title: Urządzenie replikacji w usłudze Azure Migrate
+description: Dowiedz się więcej o urządzeniu replikacji Azure Migrate na potrzeby migracji oprogramowania VMWare opartego na agentach.
 ms.topic: conceptual
-ms.date: 11/19/2019
-ms.author: raynew
-ms.openlocfilehash: ba14767bde5d6cdca3a82dbe4e8a115ec25cc911
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.date: 01/08/2020
+ms.openlocfilehash: 574877c6a0a5ade068cff08041b29d2465430ed1
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186551"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029041"
 ---
 # <a name="replication-appliance"></a>Urządzenie replikacji
 
-W tym artykule opisano urządzenie replikacji używane przez Azure Migrate: Ocena serwera podczas migrowania maszyn wirtualnych VMware, maszyn fizycznych i prywatnych/publicznych maszyn wirtualnych do platformy Azure przy użyciu migracji opartej na agentach. 
-
-Narzędzie jest dostępne w centrum [Azure Migrate](migrate-overview.md) . Centrum udostępnia natywne narzędzia do oceny i migracji, a także narzędzia z innych usług platformy Azure oraz niezależnych dostawców oprogramowania (ISV) innych firm.
+W tym artykule opisano urządzenie do replikacji używane przez [Azure Migrate: Narzędzie do migracji serwera](migrate-services-overview.md#azure-migrate-server-migration-tool) podczas migrowania maszyn wirtualnych VMware, maszyn fizycznych i prywatnych/publicznych maszyn wirtualnych do platformy Azure przy użyciu migracji opartej na agentach. 
 
 
-## <a name="appliance-overview"></a>Przegląd urządzenia
+## <a name="overview"></a>Przegląd
 
-Urządzenie replikacji jest wdrażane jako pojedyncza maszyna lokalna jako maszyna wirtualna VMware lub serwer fizyczny. Działa:
+Urządzenie replikacji jest wdrażane podczas konfigurowania migracji opartej na agentach maszyn wirtualnych VMware lub serwerów fizycznych. Jest ona wdrażana jako pojedyncza maszyna lokalna jako maszyna wirtualna VMware lub serwer fizyczny. Działa:
+
 - **Urządzenie replikacji**: urządzenie replikacji koordynuje komunikację i zarządza replikacją danych dla lokalnych maszyn wirtualnych VMware i serwerów fizycznych replikowanych do platformy Azure.
 - **Serwer przetwarzania**: serwer przetwarzania, który jest instalowany domyślnie na urządzeniu replikacji, i wykonuje następujące czynności:
     - **Brama replikacji**: działa jako brama replikacji. Odbiera dane replikacji z maszyn, na których włączono replikację. Optymalizuje dane replikacji za pomocą buforowania, kompresji i szyfrowania, a następnie wysyła je do platformy Azure.
@@ -30,19 +26,77 @@ Urządzenie replikacji jest wdrażane jako pojedyncza maszyna lokalna jako maszy
 
 ## <a name="appliance-deployment"></a>Wdrażanie urządzenia
 
-**Wdróż jako** | **Używane dla** | **Szczegóły**
---- | --- |  ---
-Maszyna wirtualna VMware | Zwykle używany podczas migrowania maszyn wirtualnych VMware przy użyciu narzędzia migracji Azure Migrate z migracją opartą na agentach. | Szablon komórki jajowe można pobrać z centrum Azure Migrate i zaimportować do vCenter Server, aby utworzyć maszynę wirtualną urządzenia.
-Maszyna fizyczna | Używane podczas migrowania lokalnych serwerów fizycznych, jeśli nie masz infrastruktury VMware lub nie można utworzyć maszyny wirtualnej VMware przy użyciu szablonu komórki jajowe. | Należy pobrać Instalatora oprogramowania z centrum Azure Migrate i uruchomić go w celu skonfigurowania komputera.
+**Używane dla** | **Szczegóły**
+--- |  ---
+Migracja oparta na agentach maszyn wirtualnych VMware | Szablon komórki jajowe można pobrać z centrum Azure Migrate i zaimportować do vCenter Server, aby utworzyć maszynę wirtualną urządzenia.
+Migracja oparta na agencie maszyn fizycznych | Jeśli nie masz infrastruktury VMware lub nie można utworzyć maszyny wirtualnej VMware przy użyciu szablonu komórki jajowe, pobierz instalator oprogramowania z centrum Azure Migrate i uruchom go, aby skonfigurować maszynę.
 
-## <a name="appliance-deployment-requirements"></a>Wymagania dotyczące wdrażania urządzeń
+## <a name="appliance-requirements"></a>Wymagania dotyczące urządzeń
 
-[Zapoznaj](migrate-support-matrix-vmware.md#agent-based-migration-replication-appliance-requirements) się z wymaganiami dotyczącymi wdrażania.
+Po skonfigurowaniu urządzenia do replikacji przy użyciu szablonu komórki jajowe dostarczonego w centrum Azure Migrate na urządzeniu jest uruchomiony system Windows Server 2016 i jest zgodny z wymaganiami dotyczącymi obsługi. Jeśli urządzenie replikacji zostanie skonfigurowane ręcznie na serwerze fizycznym, upewnij się, że jest ono zgodne z wymaganiami.
 
+**Składnik** | **Wymaganie**
+--- | ---
+ | **Urządzenie maszyny wirtualnej VMware**
+PowerCLI | Jeśli urządzenie replikacji jest uruchomione na maszynie wirtualnej VMware, należy zainstalować [PowerCLI w wersji 6,0](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1) .
+Typ karty sieciowej | VMXNET3 (Jeśli urządzenie jest maszyną wirtualną VMware)
+ | **Ustawienia sprzętu**
+Rdzenie procesora CPU | 8
+Pamięć RAM | 16 GB
+Liczba dysków | Trzy: dysk systemu operacyjnego, dysk pamięci podręcznej serwera przetwarzania i dysk przechowywania.
+Wolne miejsce na dysku (pamięć podręczna) | 600 GB
+Wolne miejsce na dysku (dysk przechowywania) | 600 GB
+**Ustawienia oprogramowania** |
+System operacyjny | Windows Server 2016 lub Windows Server 2012 R2
+Licencja | Urządzenie jest dostarczane z licencją ewaluacyjną systemu Windows Server 2016, która jest ważna przez 180 dni.<br/><br/> Jeśli okres próbny zbliża się do wygaśnięcia, zalecamy pobranie i wdrożenie nowego urządzenia albo Aktywowanie licencji na maszynę wirtualną urządzenia.
+Ustawienia regionalne systemu operacyjnego | Angielski (en-us)
+TLS | Protokół TLS 1,2 powinien być włączony.
+.NET Framework | Na maszynie należy zainstalować .NET Framework 4,6 lub nowszą (z włączonym silnym kryptografią.
+MySQL | Baza danych MySQL powinna być zainstalowana na urządzeniu.<br/> Należy zainstalować MySQL. Można zainstalować go ręcznie lub Site Recovery można go zainstalować podczas wdrażania urządzenia.
+Inne aplikacje | Nie uruchamiaj innych aplikacji na urządzeniu replikacji.
+Role systemu Windows Server | Nie należy włączać tych ról: <br> - Active Directory Domain Services <br>- Internet Information Services <br> - Hyper-V
+Zasady grupy | Nie włączaj tych zasad grupy: <br> -Zapobiegaj dostępowi do wiersza polecenia. <br> — Uniemożliwia dostęp do narzędzi do edytowania rejestru. <br> — Logika zaufania dla plików załączników. <br> — Włącz wykonywanie skryptu. <br> [Dowiedz się więcej](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)
+IIS | -Brak istniejącej domyślnej witryny sieci Web <br> — Żadna istniejąca witryna sieci Web/aplikacja nasłuchu na porcie 443 <br>-Włącz [uwierzytelnianie anonimowe](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br> -Włącz ustawienie [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx)
+**Ustawienia sieci** |
+Typ adresu IP | Statyczny
+Porty | 443 (organizowanie kanału sterowania)<br>9443 (transport danych)
+Typ karty sieciowej | VMXNET3
 
+## <a name="mysql-installation"></a>Instalacja MySQL 
 
-## <a name="appliance-license"></a>Licencja urządzenia
-Urządzenie jest dostarczane z licencją ewaluacyjną systemu Windows Server 2016, która jest ważna przez 180 dni. Jeśli okres próbny zbliża się do wygaśnięcia, zalecamy pobranie i wdrożenie nowego urządzenia albo Aktywowanie licencji na maszynę wirtualną urządzenia.
+Pakiet MySQL musi być zainstalowany na komputerze z urządzeniem replikacji. Można go zainstalować przy użyciu jednej z tych metod.
+
+**Metoda** | **Szczegóły**
+--- | ---
+Pobierz i zainstaluj ręcznie | Pobierz aplikację MySQL & Umieść ją w folderze C:\Temp\ASRSetup, a następnie zainstaluj ręcznie.<br/> Po skonfigurowaniu urządzenia MySQL będą wyświetlane jako już zainstalowane.
+Bez pobierania online | Umieść aplikację instalatora MySQL w folderze C:\Temp\ASRSetup. Po zainstalowaniu urządzenia i kliknięciu w celu pobrania i zainstalowania programu MySQL Instalator użyje dodanego Instalatora.
+Pobierz i zainstaluj w Azure Migrate | Po zainstalowaniu urządzenia i wyświetleniu monitu o wprowadzenie do bazy danych MySQL wybierz pozycję **Pobierz i zainstaluj**.
+
+## <a name="url-access"></a>Dostęp do adresu URL
+
+Urządzenie replikacji musi mieć dostęp do tych adresów URL.
+
+**Adres URL** | **Szczegóły**
+--- | ---
+\*.backup.windowsazure.com | Używany do transferu i koordynacji replikowanych danych
+\*.store.core.windows.net | Używany do transferu i koordynacji replikowanych danych
+\*.blob.core.windows.net | Służy do uzyskiwania dostępu do konta magazynu przechowującego zreplikowane dane
+\*.hypervrecoverymanager.windowsazure.com | Używany do operacji zarządzania replikacją i koordynacji
+https:\//management.azure.com | Używany do operacji zarządzania replikacją i koordynacji
+*.services.visualstudio.com | Używane na potrzeby telemetrii (jest opcjonalne)
+time.nist.gov | Służą do sprawdzania synchronizacji czasu między systemem i czasem globalnym.
+time.windows.com | Służą do sprawdzania synchronizacji czasu między systemem i czasem globalnym.
+https:\//login.microsoftonline.com <br/> https:\//secure.aadcdn.microsoftonline-p.com <br/> https:\//login.live.com <br/> https:\//graph.windows.net <br/> https:\//login.windows.net <br/> https:\//www.live.com <br/> https:\//www.microsoft.com  | Instalator OVF potrzebuje dostępu do tych adresów URL. Są one używane do kontroli dostępu i zarządzania tożsamościami przez Azure Active Directory
+https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi | Aby ukończyć pobieranie bazy danych MySQL
+
+## <a name="port-access"></a>Dostęp do portu
+
+**urządzenia** | **Połączenie**
+--- | ---
+Maszyny wirtualne | Usługa mobilności działająca na maszynach wirtualnych komunikuje się z lokalnym urządzeniem replikacji (serwer konfiguracji) na porcie HTTPS 443 przychodzącego na potrzeby zarządzania replikacją.<br/><br/> Maszyny wirtualne wysyłają dane replikacji do serwera przetwarzania (uruchomionego na komputerze serwera konfiguracji) na porcie HTTPS 9443 w ruchu przychodzącym. Ten port może być modyfikowany.
+Urządzenie replikacji | Urządzenie replikacji organizuje replikację za pomocą platformy Azure przez port HTTPS 443.
+Serwer przetwarzania | Serwer przetwarzania odbiera dane replikacji, optymalizuje je i szyfruje oraz wysyła do usługi Azure Storage przez port 443 wychodzące.<br/> Domyślnie serwer przetwarzania jest uruchamiany na urządzeniu replikacji.
+
 
 ## <a name="replication-process"></a>Proces replikacji
 
@@ -68,6 +122,5 @@ Urządzenie jest uaktualniane ręcznie z centrum Azure Migrate. Zalecamy, aby za
  
 ## <a name="next-steps"></a>Następne kroki
 
-[Dowiedz się, jak](tutorial-assess-vmware.md#set-up-the-appliance-vm) skonfigurować urządzenie dla programu VMware.
-[Dowiedz się, jak](tutorial-assess-hyper-v.md#set-up-the-appliance-vm) skonfigurować urządzenie dla funkcji Hyper-V.
-
+- [Dowiedz się, jak](tutorial-migrate-vmware-agent.md#set-up-the-replication-appliance) skonfigurować urządzenie do replikacji na potrzeby migracji maszyn wirtualnych VMware opartych na agentach.
+- [Dowiedz się, jak](tutorial-migrate-physical-virtual-machines.md#set-up-the-replication-appliance) skonfigurować urządzenie do replikacji dla serwerów fizycznych.

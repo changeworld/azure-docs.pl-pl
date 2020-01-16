@@ -8,12 +8,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/18/2019
-ms.openlocfilehash: 54d1b640a4067cf65fc28501840b4926455ec259
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.openlocfilehash: aa8bd6e89dd47c4e972a860691d1bc3779ba5bc7
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75903458"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982310"
 ---
 # <a name="common-query-patterns-in-azure-stream-analytics"></a>Typowe wzorce zapytań w Azure Stream Analytics
 
@@ -836,7 +836,7 @@ From
 
 Funkcja zdefiniowana przez użytkownika będzie obliczać wartość *bigint* z HexValue przy każdym wykorzystanym zdarzeniu.
 
-Aby uzyskać więcej informacji, zobacz [JavaScript](/stream-analytics/stream-analytics-javascript-user-defined-functions) i [C#](/stream-analytics/stream-analytics-edge-csharp-udf).
+Aby uzyskać więcej informacji, zobacz [JavaScript](/azure/stream-analytics/stream-analytics-javascript-user-defined-functions) i [C#](/azure/stream-analytics/stream-analytics-edge-csharp-udf).
 
 ## <a name="advanced-pattern-matching-with-match_recognize"></a>Zaawansowane dopasowywanie do wzorca przy użyciu MATCH_RECOGNIZE
 

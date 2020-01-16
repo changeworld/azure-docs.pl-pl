@@ -13,19 +13,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/15/2019
 ms.author: spelluru
-ms.openlocfilehash: ff410d3767e90f92a946b72354b39f87e4f37b9e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 28ab6ca9b87bb00cbb7b5e329b7ff08972ba370a
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75429010"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979138"
 ---
 # <a name="add-an-artifact-repository-to-your-lab-in-devtest-labs"></a>Dodawanie repozytorium artefaktów do laboratorium w DevTest Labs
-DevTest Labs pozwala określić artefakt, który ma zostać dodany do maszyny wirtualnej podczas tworzenia maszyny wirtualnej lub po utworzeniu maszyny wirtualnej. Ten artefakt może być narzędziem lub aplikacją, która ma zostać zainstalowana na maszynie wirtualnej. Artefakty są zdefiniowane w pliku JSON załadowanym z repozytorium GitHub lub Azure DevOps git. 
+DevTest Labs pozwala określić artefakt, który ma zostać dodany do maszyny wirtualnej podczas tworzenia maszyny wirtualnej lub po utworzeniu maszyny wirtualnej. Ten artefakt może być narzędziem lub aplikacją, która ma zostać zainstalowana na maszynie wirtualnej. Artefakty są zdefiniowane w pliku JSON załadowanym z repozytorium GitHub lub Azure DevOps git.
 
 [Publiczne repozytorium artefaktów](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts), obsługiwane przez DevTest Labs, udostępnia wiele popularnych narzędzi dla systemów Windows i Linux. Link do tego repozytorium jest automatycznie dodawany do laboratorium. Możesz utworzyć własne repozytorium artefaktów z określonymi narzędziami, które nie są dostępne w publicznym repozytorium artefaktów. Aby dowiedzieć się więcej na temat tworzenia artefaktów niestandardowych, zobacz [Tworzenie niestandardowych artefaktów](devtest-lab-artifact-author.md).
 
-Ten artykuł zawiera informacje dotyczące sposobu dodawania niestandardowego repozytorium artefaktów przy użyciu Azure Portal, szablonów zarządzania zasobami platformy Azure i Azure PowerShell. Możesz zautomatyzować Dodawanie repozytorium artefaktów do laboratorium, pisząc skrypty programu PowerShell lub interfejsu wiersza polecenia. 
+Ten artykuł zawiera informacje dotyczące sposobu dodawania niestandardowego repozytorium artefaktów przy użyciu Azure Portal, szablonów zarządzania zasobami platformy Azure i Azure PowerShell. Możesz zautomatyzować Dodawanie repozytorium artefaktów do laboratorium, pisząc skrypty programu PowerShell lub interfejsu wiersza polecenia.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -63,11 +63,11 @@ Aby dodać repozytorium do laboratorium, najpierw Pobierz informacje o kluczu z 
 10. Przejdź do sekcji Łączenie laboratorium z repozytorium.
 
 ## <a name="use-azure-portal"></a>Korzystanie z witryny Azure Portal
-Ta sekcja zawiera kroki umożliwiające dodanie repozytorium artefaktów do laboratorium w Azure Portal. 
+Ta sekcja zawiera kroki umożliwiające dodanie repozytorium artefaktów do laboratorium w Azure Portal.
 
 1. Zaloguj się do [portalu Azure](https://portal.azure.com).
 2. Wybierz pozycję **więcej usług**, a następnie wybierz pozycję **DevTest Labs** z listy usług.
-3. Z listy laboratoriów wybierz laboratorium. 
+3. Z listy laboratoriów wybierz laboratorium.
 4. W menu po lewej stronie wybierz pozycję **Konfiguracja i zasady** .
 5. Wybierz pozycję **repozytoria** w sekcji **Zasoby zewnętrzne** w menu po lewej stronie.
 6. Wybierz pozycję **+ Dodaj** na pasku narzędzi.
@@ -86,10 +86,10 @@ Ta sekcja zawiera kroki umożliwiające dodanie repozytorium artefaktów do labo
 ## <a name="use-azure-resource-manager-template"></a>Korzystanie z szablonu usługi Azure Resource Manager
 Szablony zarządzania zasobami platformy Azure (Azure Resource Manager) to pliki JSON opisujące zasoby na platformie Azure, które mają zostać utworzone. Aby uzyskać więcej informacji na temat tych szablonów, zobacz [Tworzenie szablonów Azure Resource Manager](../azure-resource-manager/templates/template-syntax.md).
 
-Ta sekcja zawiera kroki umożliwiające dodanie repozytorium artefaktów do laboratorium przy użyciu szablonu Azure Resource Manager.  Szablon tworzy laboratorium, jeśli jeszcze nie istnieje. 
+Ta sekcja zawiera kroki umożliwiające dodanie repozytorium artefaktów do laboratorium przy użyciu szablonu Azure Resource Manager.  Szablon tworzy laboratorium, jeśli jeszcze nie istnieje.
 
 ### <a name="template"></a>Szablon
-Przykładowy szablon używany w tym artykule zbiera następujące informacje za pośrednictwem parametrów. Większość parametrów ma inteligentne wartości domyślne, ale istnieje kilka wartości, które muszą zostać określone. Należy określić nazwę laboratorium, identyfikator URI repozytorium artefaktu i token zabezpieczający dla repozytorium. 
+Przykładowy szablon używany w tym artykule zbiera następujące informacje za pośrednictwem parametrów. Większość parametrów ma inteligentne wartości domyślne, ale istnieje kilka wartości, które muszą zostać określone. Należy określić nazwę laboratorium, identyfikator URI repozytorium artefaktu i token zabezpieczający dla repozytorium.
 
 - Nazwa laboratorium.
 - Nazwa wyświetlana repozytorium artefaktów w interfejsie użytkownika (UI) DevTest Labs. Wartość domyślna to: `Team Repository`.
@@ -97,11 +97,11 @@ Przykładowy szablon używany w tym artykule zbiera następujące informacje za 
 - Gałąź w repozytorium, która zawiera artefakty. Wartość domyślna to: `master`.
 - Nazwa folderu zawierającego artefakty. Wartość domyślna to: `/Artifacts`.
 - Typ repozytorium. Dozwolone wartości to `VsoGit` lub `GitHub`.
-- Token dostępu dla repozytorium. 
+- Token dostępu dla repozytorium.
 
     ```json
     {
-    
+
         "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
         "contentVersion": "1.0.0.0",
         "parameters": {
@@ -167,10 +167,10 @@ Przykładowy szablon używany w tym artykule zbiera następujące informacje za 
 ### <a name="deploy-the-template"></a>Wdrożenie szablonu
 Istnieje kilka sposobów na wdrożenie szablonu na platformie Azure i utworzenie zasobu (jeśli nie istnieje) lub aktualizacji, jeśli istnieje. Aby uzyskać szczegółowe informacje, zobacz następujące artykuły:
 
-- [Deploy resources with Resource Manager templates and Azure PowerShell (Wdrażanie zasobów za pomocą szablonów usługi Resource Manager i programu Azure PowerShell)](../azure-resource-manager/resource-group-template-deploy.md)
-- [Deploy resources with Resource Manager templates and Azure CLI (Wdrażanie zasobów za pomocą szablonów usługi Resource Manager i interfejsu wiersza polecenia platformy Azure)](../azure-resource-manager/resource-group-template-deploy-cli.md)
-- [Deploy resources with Resource Manager templates and Azure portal (Wdrażanie zasobów za pomocą szablonów usługi Resource Manager i witryny Azure Portal)](../azure-resource-manager/resource-group-template-deploy-portal.md)
-- [Deploy resources with Resource Manager templates and Resource Manager REST API (Wdrażanie zasobów za pomocą szablonów usługi Resource Manager i interfejsu API REST usługi Resource Manager)](../azure-resource-manager/resource-group-template-deploy-rest.md)
+- [Deploy resources with Resource Manager templates and Azure PowerShell (Wdrażanie zasobów za pomocą szablonów usługi Resource Manager i programu Azure PowerShell)](../azure-resource-manager/templates/deploy-powershell.md)
+- [Deploy resources with Resource Manager templates and Azure CLI (Wdrażanie zasobów za pomocą szablonów usługi Resource Manager i interfejsu wiersza polecenia platformy Azure)](../azure-resource-manager/templates/deploy-cli.md)
+- [Deploy resources with Resource Manager templates and Azure portal (Wdrażanie zasobów za pomocą szablonów usługi Resource Manager i witryny Azure Portal)](../azure-resource-manager/templates/deploy-portal.md)
+- [Deploy resources with Resource Manager templates and Resource Manager REST API (Wdrażanie zasobów za pomocą szablonów usługi Resource Manager i interfejsu API REST usługi Resource Manager)](../azure-resource-manager/templates/deploy-rest.md)
 
 Przejdźmy dalej i zobacz, jak wdrożyć szablon w programie PowerShell. Polecenia cmdlet służące do wdrażania szablonu są specyficzne dla kontekstu, więc używane są bieżące dzierżawy i bieżące subskrypcje. Użyj [Set-AzContext](/powershell/module/az.accounts/set-azcontext) przed wdrożeniem szablonu, jeśli jest to konieczne, aby zmienić kontekst.
 
@@ -191,8 +191,8 @@ New-AzResourceGroupDeployment `
 ```
 
 Po pomyślnym wykonaniu polecenia New-AzResourceGroupDeployment polecenie generuje ważne informacje, takie jak stan aprowizacji (powinno być zakończone powodzeniem) i wszelkie dane wyjściowe szablonu.
- 
-## <a name="use-azure-powershell"></a>Korzystanie z programu Azure PowerShell 
+
+## <a name="use-azure-powershell"></a>Korzystanie z programu Azure PowerShell
 Ta sekcja zawiera przykładowy skrypt programu PowerShell, który może służyć do dodawania repozytorium artefaktów do laboratorium. Jeśli nie masz Azure PowerShell, zobacz [jak zainstalować i skonfigurować Azure PowerShell](/powershell/azure/overview?view=azps-1.2.0) , aby uzyskać szczegółowe instrukcje dotyczące instalacji.
 
 ### <a name="full-script"></a>Pełny skrypt
@@ -211,7 +211,7 @@ This script creates a new custom repository and adds it to an existing DevTest L
 The name of the lab.
 
 .PARAMETER LabResourceGroupName
-The name of the resource group that contains the lab. 
+The name of the resource group that contains the lab.
 
 .PARAMETER ArtifactRepositoryName
 Name for the new artifact repository.
@@ -246,7 +246,7 @@ Script uses the current Az context. To set the context, use the Set-AzContext cm
 
 #>
 
- 
+
 [CmdletBinding()]
 Param(
 
@@ -262,10 +262,10 @@ Param(
     $RepositoryUri,
     $RepositoryBranch = 'master',
     $FolderPath = '/Artifacts',
-    
+
     [Parameter(Mandatory=$true)]
     $PersonalAccessToken ,
-    
+
     [Parameter(Mandatory=$true)]
     [ValidateSet('VsoGit', 'GitHub')]
     $SourceType
@@ -310,7 +310,7 @@ $resourcetype = 'Microsoft.DevTestLab/labs/artifactSources'
 $resourceName = $LabName + '/' + $ArtifactRepositoryName
 Write-Verbose "Az ResourceType: $resourcetype"
 Write-Verbose "Az ResourceName: $resourceName"
- 
+
 Write-Verbose "Creating artifact repository '$ArtifactRepositoryDisplayName'..."
 $result = New-AzResource -Location $LabResource.Location -ResourceGroupName $LabResource.ResourceGroupName -properties $propertiesObject -ResourceType $resourcetype -ResourceName $resourceName -ApiVersion 2016-05-15 -Force
 
@@ -336,7 +336,7 @@ return $result
 ```
 
 ### <a name="run-the-powershell-script"></a>Uruchom skrypt programu PowerShell
-Poniższy przykład pokazuje, jak uruchomić skrypt: 
+Poniższy przykład pokazuje, jak uruchomić skrypt:
 
 ```powershell
 Set-AzContext -SubscriptionId <Your Azure subscription ID>
@@ -348,13 +348,13 @@ Set-AzContext -SubscriptionId <Your Azure subscription ID>
 ### <a name="parameters"></a>Parametry
 Przykładowy skrypt programu PowerShell w tym artykule przyjmuje następujące parametry:
 
-| Parametr | Opis | 
-| --------- | ----------- | 
+| Parametr | Opis |
+| --------- | ----------- |
 | LabName | Nazwa laboratorium. |
 | ArtifactRepositoryName | Nazwa nowego repozytorium artefaktów. Skrypt tworzy losowo nazwę repozytorium, jeśli nie została określona. |
 | ArtifactRepositoryDisplayName | Nazwa wyświetlana repozytorium artefaktów. Jest to nazwa, która jest wyświetlana w Azure Portal (https://portal.azure.com) podczas wyświetlania wszystkich repozytoriów artefaktów dla laboratorium. |
-| RepositoryUri | Identyfikator URI repozytorium. Przykłady: `https://github.com/<myteam>/<nameofrepo>.git` lub `"https://MyProject1.visualstudio.com/DefaultCollection/_git/TeamArtifacts"`.| 
-| RepositoryBranch | Gałąź, w której można znaleźć pliki artefaktów. Wartość domyślna to "Master". | 
+| RepositoryUri | Identyfikator URI repozytorium. Przykłady: `https://github.com/<myteam>/<nameofrepo>.git` lub `"https://MyProject1.visualstudio.com/DefaultCollection/_git/TeamArtifacts"`.|
+| RepositoryBranch | Gałąź, w której można znaleźć pliki artefaktów. Wartość domyślna to "Master". |
 | FolderPath | Folder, w którym można znaleźć artefakty. Wartość domyślna to "/Artifacts" |
 | PersonalAccessToken | Token zabezpieczający służący do uzyskiwania dostępu do repozytorium GitHub lub VSOGit. Zapoznaj się z sekcją wymagania wstępne, aby uzyskać instrukcje dotyczące uzyskiwania osobistego tokenu dostępu |
 | sourceType | Czy artefakt jest VSOGit lub repozytorium GitHub. |
@@ -377,13 +377,13 @@ if ($ArtifactRepositoryName -eq $null){
 
 Skrypt dodaje nowy zasób do bieżącej subskrypcji. Aby wyświetlić te informacje, użyj [Get-AzContext](/powershell/module/az.accounts/get-azcontext) . Użyj [Set-AzContext](/powershell/module/az.accounts/set-azcontext) , aby ustawić bieżącą dzierżawę i subskrypcję.
 
-Najlepszym sposobem odnajdywania informacji o nazwie zasobu i typie zasobu jest użycie witryny sieci Web [interfejsu API REST platformy Azure](https://azure.github.io/projects/apis/) . Zapoznaj się z dostawcą [DevTest Labs – 2016-05-15](https://aka.ms/dtlrestapis) , aby wyświetlić dostępne interfejsy API REST dla dostawcy DevTest Labs. Skrypt ma następujący identyfikator zasobu. 
+Najlepszym sposobem odnajdywania informacji o nazwie zasobu i typie zasobu jest użycie witryny sieci Web [interfejsu API REST platformy Azure](https://azure.github.io/projects/apis/) . Zapoznaj się z dostawcą [DevTest Labs – 2016-05-15](https://aka.ms/dtlrestapis) , aby wyświetlić dostępne interfejsy API REST dla dostawcy DevTest Labs. Skrypt ma następujący identyfikator zasobu.
 
 ```powershell
 "/subscriptions/$SubscriptionId/resourceGroups/$($LabResource.ResourceGroupName)/providers/Microsoft.DevTestLab/labs/$LabName/artifactSources/$ArtifactRepositoryName"
 ```
- 
-Typ zasobu to wszystko wymienione po elemencie "Providers" w identyfikatorze URI, z wyjątkiem elementów wymienionych w nawiasach klamrowych. Nazwa zasobu to wszystko widoczne w nawiasach klamrowych. Jeśli dla nazwy zasobu oczekiwano więcej niż jednego elementu, oddziel każdy element ukośnikiem. 
+
+Typ zasobu to wszystko wymienione po elemencie "Providers" w identyfikatorze URI, z wyjątkiem elementów wymienionych w nawiasach klamrowych. Nazwa zasobu to wszystko widoczne w nawiasach klamrowych. Jeśli dla nazwy zasobu oczekiwano więcej niż jednego elementu, oddziel każdy element ukośnikiem.
 
 ```powershell
 $resourcetype = 'Microsoft.DevTestLab/labs/artifactSources'
@@ -395,4 +395,3 @@ $resourceName = $LabName + '/' + $ArtifactRepositoryName
 - [Określ obowiązkowe artefakty dla laboratorium w Azure DevTest Labs](devtest-lab-mandatory-artifacts.md)
 - [Tworzenie niestandardowych artefaktów dla maszyny wirtualnej DevTest Labs](devtest-lab-artifact-author.md)
 - [Diagnozowanie błędów artefaktów w laboratorium](devtest-lab-troubleshoot-artifact-failure.md)
-

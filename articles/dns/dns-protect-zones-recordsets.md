@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 12/4/2018
 ms.author: allensu
-ms.openlocfilehash: b84ba055dd8214ae18e76004671e3922e6f3b878
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: c87f9d51c69c4f4d330862e83e5cc8e8e849a988
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74211446"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75969023"
 ---
 # <a name="how-to-protect-dns-zones-and-records"></a>Jak chronić strefy i rekordy DNS
 
@@ -20,7 +20,7 @@ ms.locfileid: "74211446"
 
 Strefy i rekordy DNS są istotnymi zasobami. Usunięcie strefy DNS lub nawet pojedynczego rekordu DNS może spowodować całkowitą awarię usługi.  Należy zatem pamiętać, że krytyczne strefy i rekordy DNS są chronione przed nieautoryzowanymi lub przypadkowymi zmianami.
 
-W tym artykule wyjaśniono, jak Azure DNS pozwala chronić strefy i rekordy DNS przed takimi zmianami.  Stosujemy dwie zaawansowane funkcje zabezpieczeń zapewniane przez Azure Resource Manager: [kontroli dostępu opartej na rolach](../role-based-access-control/overview.md) i [blokad zasobów](../azure-resource-manager/resource-group-lock-resources.md).
+W tym artykule wyjaśniono, jak Azure DNS pozwala chronić strefy i rekordy DNS przed takimi zmianami.  Stosujemy dwie zaawansowane funkcje zabezpieczeń zapewniane przez Azure Resource Manager: [kontroli dostępu opartej na rolach](../role-based-access-control/overview.md) i [blokad zasobów](../azure-resource-manager/management/lock-resources.md).
 
 ## <a name="role-based-access-control"></a>Kontrola dostępu oparta na rolach
 
@@ -158,7 +158,7 @@ Aby uzyskać więcej informacji na temat tworzenia i przypisywania ról niestand
 
 ## <a name="resource-locks"></a>Blokady zasobów
 
-Oprócz RBAC, Azure Resource Manager obsługuje inny typ kontroli zabezpieczeń, a mianowicie możliwość blokowania zasobów. W przypadku, gdy reguły RBAC umożliwiają sterowanie akcjami określonych użytkowników i grup, blokady zasobów są stosowane do zasobu i obowiązują dla wszystkich użytkowników i ról. Aby uzyskać więcej informacji, zobacz [Lock resources with Azure Resource Manager](../azure-resource-manager/resource-group-lock-resources.md) (Blokowanie zasobów w usłudze Azure Resource Manager).
+Oprócz RBAC, Azure Resource Manager obsługuje inny typ kontroli zabezpieczeń, a mianowicie możliwość blokowania zasobów. W przypadku, gdy reguły RBAC umożliwiają sterowanie akcjami określonych użytkowników i grup, blokady zasobów są stosowane do zasobu i obowiązują dla wszystkich użytkowników i ról. Aby uzyskać więcej informacji, zobacz [Lock resources with Azure Resource Manager](../azure-resource-manager/management/lock-resources.md) (Blokowanie zasobów w usłudze Azure Resource Manager).
 
 Istnieją dwa typy blokad zasobów: **CanNotDelete** i **ReadOnly**. Można je zastosować do strefy DNS lub do pojedynczego zestawu rekordów.  W poniższych sekcjach opisano kilka typowych scenariuszy oraz sposób ich obsługi przy użyciu blokad zasobów.
 
@@ -217,4 +217,4 @@ Można użyć obu metod — blokad zasobów i ról niestandardowych — w tym sa
 ## <a name="next-steps"></a>Następne kroki
 
 * Aby uzyskać więcej informacji na temat pracy z usługą RBAC, zobacz Wprowadzenie do [zarządzania dostępem w Azure Portal](../role-based-access-control/overview.md).
-* Aby uzyskać więcej informacji na temat pracy z blokadami zasobów, zobacz [blokowanie zasobów przy użyciu Azure Resource Manager](../azure-resource-manager/resource-group-lock-resources.md).
+* Aby uzyskać więcej informacji na temat pracy z blokadami zasobów, zobacz [blokowanie zasobów przy użyciu Azure Resource Manager](../azure-resource-manager/management/lock-resources.md).

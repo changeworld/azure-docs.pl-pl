@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 03/19/2018
 ms.author: liydu
-ms.openlocfilehash: 23607b52f866bb7b0be760e49be7d62d1732d43c
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 6bebe8ac6b9869466938600d6267fd0062c84477
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954749"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977297"
 ---
 # <a name="door-monitor----using-azure-functions-and-sendgrid-send-email-when-a-door-is-opened"></a>Monitor drzwi — używanie Azure Functions i SendGrid, wysyłanie wiadomości e-mail po otwarciu drzwi           
 
@@ -65,7 +65,7 @@ Zobaczysz teraz formularz rejestracji w usłudze SendGrid.
 
 Wypełnij formularz rejestracji:
 
-   * **Grupa zasobów**: Utwórz grupę zasobów, aby hostować usługę SendGrid, lub Użyj istniejącej. Zobacz [Używanie grup zasobów do zarządzania zasobami platformy Azure](../azure-resource-manager/manage-resource-groups-portal.md).
+   * **Grupa zasobów**: Utwórz grupę zasobów, aby hostować usługę SendGrid, lub Użyj istniejącej. Zobacz [Używanie grup zasobów do zarządzania zasobami platformy Azure](../azure-resource-manager/management/manage-resource-groups-portal.md).
 
    * **Name**: nazwa usługi SendGrid. Wybierz unikatową nazwę, która różni się od innych usług, które mogą mieć.
 
@@ -105,7 +105,7 @@ Zostanie wyświetlony formularz rejestracji.
 
 Wypełnij pola w formularzu rejestracji.
 
-   * **Grupa zasobów**: Utwórz grupę zasobów, aby hostować usługę SendGrid, lub Użyj istniejącej. Zobacz [Używanie grup zasobów do zarządzania zasobami platformy Azure](../azure-resource-manager/manage-resource-groups-portal.md).
+   * **Grupa zasobów**: Utwórz grupę zasobów, aby hostować usługę SendGrid, lub Użyj istniejącej. Zobacz [Używanie grup zasobów do zarządzania zasobami platformy Azure](../azure-resource-manager/management/manage-resource-groups-portal.md).
 
    * **Nazwa Centrum IoT**: Nazwa Centrum IoT. Wybierz unikatową nazwę, która różni się od innych usług, które mogą mieć.
 
@@ -122,7 +122,7 @@ Następnie załaduj przykładowy kod w VS Code i Zainicjuj obsługę wymaganych 
 ### <a name="start-vs-code"></a>Rozpocznij VS Code
 
 - Upewnij się, że DevKit **nie** jest podłączony do komputera.
-- Rozpocznij VS Code.
+- Uruchom program VS Code.
 - Połącz DevKit z komputerem.
 
 > [!NOTE]

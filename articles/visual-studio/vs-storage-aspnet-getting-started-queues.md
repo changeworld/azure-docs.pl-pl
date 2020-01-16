@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 12/23/2016
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 5b57f171a9407acea8231d796a80c3a1cc1d9474
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: f229661ca78dc75adbc0b49073dc6f0feaf2ba22
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300115"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980756"
 ---
 # <a name="get-started-with-azure-queue-storage-and-visual-studio-connected-services-aspnet"></a>Rozpoczynanie pracy z usługą Azure queue storage i usługami połączonymi programu Visual Studio (ASP.NET)
 
@@ -26,14 +26,14 @@ ms.locfileid: "72300115"
 
 ## <a name="overview"></a>Przegląd
 
-Usługa Azure queue storage udostępnia komunikaty w chmurze między składnikami aplikacji. W przypadku projektowania aplikacji pod kątem skalowania składniki aplikacji są często rozłączane, dzięki czemu mogą być skalowane niezależnie. Usługa Queue Storage zapewnia asynchroniczne przesyłanie komunikatów na potrzeby komunikacji między składnikami aplikacji niezależnie od tego, czy działają w chmurze, na komputerze, serwerze lokalnym czy urządzeniu przenośnym. Usługa Queue Storage obsługuje również zarządzanie asynchronicznymi zadaniami oraz przepływy pracy procesu kompilacji.
+Usługa Azure queue storage udostępnia komunikaty w chmurze między składnikami aplikacji. W przypadku projektowania aplikacji pod kątem skalowania składniki aplikacji są często rozłączane, dzięki czemu mogą być skalowane niezależnie. Usługa Queue Storage zapewnia asynchroniczne przesyłanie komunikatów na potrzeby komunikacji między składnikami aplikacji niezależnie od tego, czy działają w chmurze, na komputerze, serwerze lokalnym czy urządzeniu przenośnym. Magazyn kolejek obsługuje również zarządzanie asynchronicznymi zadaniami oraz przepływy pracy procesu kompilacji.
 
 W tym samouczku pokazano, jak napisać kod ASP.NET dla niektórych typowych scenariuszy przy użyciu jednostek usługi Azure queue storage. Te scenariusze obejmują typowe zadania, takie jak Tworzenie kolejki platformy Azure oraz dodawanie, modyfikowanie, odczytywanie i usuwanie komunikatów w kolejce.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * [Program Microsoft Visual Studio](https://www.visualstudio.com/downloads/)
-* [Konto usługi Azure Storage](../storage/common/storage-quickstart-create-account.md)
+* [Konto usługi Azure Storage](../storage/common/storage-account-create.md)
 
 [!INCLUDE [storage-queue-concepts-include](../../includes/storage-queue-concepts-include.md)]
 
@@ -84,7 +84,7 @@ Poniższe kroki ilustrują sposób tworzenia kolejki:
     }
     ```
 
-1. W metodzie w **kolejce** Pobierz obiekt **CloudStorageAccount** , który reprezentuje informacje o koncie magazynu. Użyj poniższego kodu, aby uzyskać parametry połączenia magazynu i informacje o koncie magazynu z konfiguracji usługi platformy Azure: (Zmień *&lt;storage-account-name >* na nazwę konta usługi Azure Storage, do którego uzyskujesz dostęp).
+1. W metodzie w **kolejce** Pobierz obiekt **CloudStorageAccount** , który reprezentuje informacje o koncie magazynu. Użyj poniższego kodu, aby uzyskać parametry połączenia magazynu i informacje o koncie magazynu z konfiguracji usługi platformy Azure: (Zmień *&lt;Storage-account-name >* na nazwę konta usługi Azure Storage, do którego uzyskujesz dostęp).
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -118,7 +118,7 @@ Poniższe kroki ilustrują sposób tworzenia kolejki:
 
 1. W oknie dialogowym **Dodawanie widoku** , w polu Nazwa widoku wprowadź wartość w **kolejce** , a następnie wybierz pozycję **Dodaj**.
 
-1. Otwórz `CreateQueue.cshtml` i zmodyfikuj go tak, aby wyglądał następująco:
+1. Otwórz `CreateQueue.cshtml`i zmodyfikuj go tak, aby wyglądał następująco:
 
     ```csharp
     @{
@@ -140,7 +140,7 @@ Poniższe kroki ilustrują sposób tworzenia kolejki:
 
 1. Uruchom aplikację, a następnie wybierz pozycję **Utwórz kolejkę** , aby zobaczyć wyniki podobne do poniższego zrzutu ekranu:
   
-    ![Utwórz kolejkę](./media/vs-storage-aspnet-getting-started-queues/create-queue-results.png)
+    ![Tworzenie kolejki](./media/vs-storage-aspnet-getting-started-queues/create-queue-results.png)
 
     Jak wspomniano wcześniej, Metoda **CloudQueue. metodę createifnotexists** zwraca **wartość true** tylko wtedy, gdy kolejka nie istnieje i została utworzona. W związku z tym, jeśli aplikacja zostanie uruchomiona, gdy istnieje kolejka, metoda zwraca **wartość false**. Aby uruchomić aplikację wielokrotnie, należy ją usunąć przed ponownym uruchomieniem aplikacji. Usuwanie kolejki można wykonać za pomocą metody **CloudQueue. Delete** . Możesz również usunąć kolejkę za pomocą [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) lub [Eksplorator usługi Microsoft Azure Storage](../vs-azure-tools-storage-manage-with-storage-explorer.md).  
 
@@ -165,7 +165,7 @@ Po [utworzeniu kolejki](#create-a-queue)można dodać do niej komunikaty. Ta sek
     }
     ```
  
-1. W metodzie **AddMessage** Pobierz obiekt **CloudStorageAccount** , który reprezentuje informacje o koncie magazynu. Użyj poniższego kodu, aby uzyskać parametry połączenia magazynu i informacje o koncie magazynu z konfiguracji usługi platformy Azure: (Zmień *&lt;storage-account-name >* na nazwę konta usługi Azure Storage, do którego uzyskujesz dostęp).
+1. W metodzie **AddMessage** Pobierz obiekt **CloudStorageAccount** , który reprezentuje informacje o koncie magazynu. Użyj poniższego kodu, aby uzyskać parametry połączenia magazynu i informacje o koncie magazynu z konfiguracji usługi platformy Azure: (Zmień *&lt;Storage-account-name >* na nazwę konta usługi Azure Storage, do którego uzyskujesz dostęp).
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -207,7 +207,7 @@ Po [utworzeniu kolejki](#create-a-queue)można dodać do niej komunikaty. Ta sek
 
 1. W oknie dialogowym **Dodawanie widoku** wprowadź wartość **AddMessage** dla nazwy widoku, a następnie wybierz pozycję **Dodaj**.
 
-1. Otwórz `AddMessage.cshtml` i zmodyfikuj go tak, aby wyglądał następująco:
+1. Otwórz `AddMessage.cshtml`i zmodyfikuj go tak, aby wyglądał następująco:
 
     ```csharp
     @{
@@ -254,7 +254,7 @@ W tej sekcji pokazano, jak uzyskać wgląd w komunikat w kolejce (Przeczytaj pie
     }
     ```
  
-1. W metodzie **PeekMessage** Pobierz obiekt **CloudStorageAccount** , który reprezentuje informacje o koncie magazynu. Użyj poniższego kodu, aby uzyskać parametry połączenia magazynu i informacje o koncie magazynu z konfiguracji usługi platformy Azure: (Zmień *&lt;storage-account-name >* na nazwę konta usługi Azure Storage, do którego uzyskujesz dostęp).
+1. W metodzie **PeekMessage** Pobierz obiekt **CloudStorageAccount** , który reprezentuje informacje o koncie magazynu. Użyj poniższego kodu, aby uzyskać parametry połączenia magazynu i informacje o koncie magazynu z konfiguracji usługi platformy Azure: (Zmień *&lt;Storage-account-name >* na nazwę konta usługi Azure Storage, do którego uzyskujesz dostęp).
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -290,7 +290,7 @@ W tej sekcji pokazano, jak uzyskać wgląd w komunikat w kolejce (Przeczytaj pie
 
 1. W oknie dialogowym **Dodawanie widoku** wprowadź **PeekMessage** w polu Nazwa widoku, a następnie wybierz pozycję **Dodaj**.
 
-1. Otwórz `PeekMessage.cshtml` i zmodyfikuj go tak, aby wyglądał następująco:
+1. Otwórz `PeekMessage.cshtml`i zmodyfikuj go tak, aby wyglądał następująco:
 
     ```csharp
     @{
@@ -338,7 +338,7 @@ W tej sekcji dowiesz się, jak odczytywać i usuwać wiadomości z kolejki.
     }
     ```
  
-1. W metodzie **ReadMessage** Pobierz obiekt **CloudStorageAccount** , który reprezentuje informacje o koncie magazynu. Użyj poniższego kodu, aby uzyskać parametry połączenia magazynu i informacje o koncie magazynu z konfiguracji usługi platformy Azure: (Zmień *&lt;storage-account-name >* na nazwę konta usługi Azure Storage, do którego uzyskujesz dostęp).
+1. W metodzie **ReadMessage** Pobierz obiekt **CloudStorageAccount** , który reprezentuje informacje o koncie magazynu. Użyj poniższego kodu, aby uzyskać parametry połączenia magazynu i informacje o koncie magazynu z konfiguracji usługi platformy Azure: (Zmień *&lt;Storage-account-name >* na nazwę konta usługi Azure Storage, do którego uzyskujesz dostęp).
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -381,7 +381,7 @@ W tej sekcji dowiesz się, jak odczytywać i usuwać wiadomości z kolejki.
 
 1. W oknie dialogowym **Dodawanie widoku** wprowadź **ReadMessage** w polu Nazwa widoku, a następnie wybierz pozycję **Dodaj**.
 
-1. Otwórz `ReadMessage.cshtml` i zmodyfikuj go tak, aby wyglądał następująco:
+1. Otwórz `ReadMessage.cshtml`i zmodyfikuj go tak, aby wyglądał następująco:
 
     ```csharp
     @{
@@ -429,7 +429,7 @@ W tej sekcji pokazano, jak uzyskać długość kolejki (liczbę komunikatów).
     }
     ```
  
-1. W metodzie **ReadMessage** Pobierz obiekt **CloudStorageAccount** , który reprezentuje informacje o koncie magazynu. Użyj poniższego kodu, aby uzyskać parametry połączenia magazynu i informacje o koncie magazynu z konfiguracji usługi platformy Azure: (Zmień *&lt;storage-account-name >* na nazwę konta usługi Azure Storage, do którego uzyskujesz dostęp).
+1. W metodzie **ReadMessage** Pobierz obiekt **CloudStorageAccount** , który reprezentuje informacje o koncie magazynu. Użyj poniższego kodu, aby uzyskać parametry połączenia magazynu i informacje o koncie magazynu z konfiguracji usługi platformy Azure: (Zmień *&lt;Storage-account-name >* na nazwę konta usługi Azure Storage, do którego uzyskujesz dostęp).
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -471,7 +471,7 @@ W tej sekcji pokazano, jak uzyskać długość kolejki (liczbę komunikatów).
 
 1. W oknie dialogowym **Dodawanie widoku** wprowadź **GetQueueLength** w polu Nazwa widoku, a następnie wybierz pozycję **Dodaj**.
 
-1. Otwórz `GetQueueLengthMessage.cshtml` i zmodyfikuj go tak, aby wyglądał następująco:
+1. Otwórz `GetQueueLengthMessage.cshtml`i zmodyfikuj go tak, aby wyglądał następująco:
 
     ```csharp
     @{
@@ -516,7 +516,7 @@ W tej sekcji przedstawiono sposób usuwania kolejki.
     }
     ```
  
-1. W metodzie **DeleteQueue** Pobierz obiekt **CloudStorageAccount** , który reprezentuje informacje o koncie magazynu. Użyj poniższego kodu, aby uzyskać parametry połączenia magazynu i informacje o koncie magazynu z konfiguracji usługi platformy Azure: (Zmień *&lt;storage-account-name >* na nazwę konta usługi Azure Storage, do którego uzyskujesz dostęp).
+1. W metodzie **DeleteQueue** Pobierz obiekt **CloudStorageAccount** , który reprezentuje informacje o koncie magazynu. Użyj poniższego kodu, aby uzyskać parametry połączenia magazynu i informacje o koncie magazynu z konfiguracji usługi platformy Azure: (Zmień *&lt;Storage-account-name >* na nazwę konta usługi Azure Storage, do którego uzyskujesz dostęp).
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -551,7 +551,7 @@ W tej sekcji przedstawiono sposób usuwania kolejki.
 
 1. W oknie dialogowym **Dodawanie widoku** wprowadź **DeleteQueue** w polu Nazwa widoku, a następnie wybierz pozycję **Dodaj**.
 
-1. Otwórz `DeleteQueue.cshtml` i zmodyfikuj go tak, aby wyglądał następująco:
+1. Otwórz `DeleteQueue.cshtml`i zmodyfikuj go tak, aby wyglądał następująco:
 
     ```csharp
     @{

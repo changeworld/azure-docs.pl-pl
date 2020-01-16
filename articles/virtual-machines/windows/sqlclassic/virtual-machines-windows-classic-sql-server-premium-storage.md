@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 06/01/2017
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: f40b479b66f2fa9a60e084fc0e29f40cef052e99
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 479f9abc667e20a136da5f6231e78a1e4052f087
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162528"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75965669"
 ---
 # <a name="use-azure-premium-storage-with-sql-server-on-virtual-machines"></a>Korzystanie z usługi Azure Premium Storage z programem SQL Server na maszynach wirtualnych
 
@@ -29,7 +29,7 @@ ms.locfileid: "73162528"
 [Azure Premium dysków SSD](../disks-types.md) to Kolejna generacja magazynu, która zapewnia małe opóźnienia i wysoką przepływność we/wy. Najlepiej sprawdza się w przypadku obciążeń intensywnie korzystających z operacji we/wy, takich jak SQL Server na [Virtual Machines](https://azure.microsoft.com/services/virtual-machines/)IaaS.
 
 > [!IMPORTANT]
-> Platforma Azure ma dwa różne modele wdrażania służące do tworzenia zasobów i pracy z nimi: [Menedżer zasobów i klasyczne](../../../azure-resource-manager/resource-manager-deployment-model.md). W tym artykule opisano korzystanie z klasycznego modelu wdrażania. Firma Microsoft zaleca, aby w przypadku większości nowych wdrożeń korzystać z modelu opartego na programie Resource Manager.
+> Platforma Azure ma dwa różne modele wdrażania służące do tworzenia zasobów i pracy z nimi: [Menedżer zasobów i klasyczne](../../../azure-resource-manager/management/deployment-models.md). W tym artykule opisano korzystanie z klasycznego modelu wdrażania. Firma Microsoft zaleca, aby w przypadku większości nowych wdrożeń korzystać z modelu opartego na programie Resource Manager.
 
 Ten artykuł zawiera informacje o planowaniu i wskazówkach dotyczących migracji maszyny wirtualnej z systemem SQL Server w celu użycia Premium Storage. Obejmuje to tworzenie infrastruktury platformy Azure (sieci, magazynu) i maszyn wirtualnych z systemem Windows gościa. Przykład w [dodatku](#appendix-migrating-a-multisite-always-on-cluster-to-premium-storage) przedstawia pełną kompleksową migrację sposobu przenoszenia większych maszyn wirtualnych w celu wykorzystania ulepszonego lokalnego magazynu SSD przy użyciu programu PowerShell.
 
@@ -403,7 +403,7 @@ $vmConfigsl2 | New-AzureVM –ServiceName $destcloudsvc -VNetName $vnet
 > [!NOTE]
 > W przypadku istniejących wdrożeń należy najpierw zapoznać się z sekcją [wymagania wstępne](#prerequisites-for-premium-storage) w tym artykule.
 
-Istnieją różne zagadnienia dotyczące wdrożeń SQL Server, które nie korzystają z zawsze zainstalowanych grup dostępności i tych, które to są. Jeśli nie używasz opcji zawsze włączone i masz istniejące autonomiczne SQL Server, możesz przeprowadzić uaktualnienie do Premium Storage przy użyciu nowej usługi w chmurze i konta magazynu. należy wziąć pod uwagę następujące opcje:
+Istnieją różne zagadnienia dotyczące wdrożeń SQL Server, które nie korzystają z zawsze zainstalowanych grup dostępności i tych, które to są. Jeśli nie używasz opcji zawsze włączone i masz istniejące autonomiczne SQL Server, możesz przeprowadzić uaktualnienie do Premium Storage przy użyciu nowej usługi w chmurze i konta magazynu. Należy wziąć pod uwagę następujące opcje:
 
 * **Utwórz nową maszynę wirtualną SQL Server**. Można utworzyć nową maszynę wirtualną SQL Server, która używa konta Premium Storage, zgodnie z opisem w nowych wdrożeniach. Następnie wykonaj kopię zapasową i Przywróć konfigurację SQL Server i bazy danych użytkowników. Aplikacja musi zostać zaktualizowana, aby można było odwoływać się do nowego SQL Server, jeśli dostęp do niego odbywa się wewnętrznie lub zewnętrznie. Należy skopiować wszystkie obiekty "poza bazą danych" tak, jakby była wykonywana w ramach migracji SQL Serverej obok siebie (SxS). Obejmuje to takie obiekty jak logowania, certyfikaty i połączone serwery.
 * **Migrowanie istniejącej maszyny wirtualnej SQL Server**. Wymaga to przełączenia SQL Server maszyny wirtualnej w tryb offline, a następnie przeniesienia jej do nowej usługi w chmurze, która obejmuje skopiowanie wszystkich dołączonych dysków VHD na konto Premium Storage. Gdy maszyna wirtualna przejdzie w tryb online, aplikacja odwołuje się do nazwy hosta serwera tak jak wcześniej. Należy pamiętać, że rozmiar istniejącego dysku wpływa na charakterystykę wydajności. Na przykład dysk 400 GB jest zaokrąglany do P20. Jeśli wiesz, że nie wymagasz wydajności dysku, możesz ponownie utworzyć maszynę wirtualną jako maszynę wirtualną z serii DS i dołączyć Premium Storage dysków VHD o wymaganej wielkości/specyfikacji wydajności. Następnie można odłączyć i ponownie dołączyć pliki bazy danych SQL.
@@ -456,7 +456,7 @@ Należy przewidzieć czas, w którym można przeprowadzić ręczne przełączeni
 > [!NOTE]
 > Należy zatrzymać wszystkie wystąpienia SQL Server, w których pule magazynu są używane przed uruchomieniem walidacji.
 >
-> ##### <a name="high-level-steps"></a>Ogólne kroki
+> ##### <a name="high-level-steps"></a>Kroki ogólne
 >
 
 1. Utwórz dwa nowe serwery SQL w nowej usłudze w chmurze z dołączonymi Premium Storage.
@@ -552,7 +552,7 @@ Jedną z strategii minimalnej przestoju jest skorzystanie z istniejącej pomocni
   * Uruchom migrację poza zaplanowaną konserwacją platformy Azure.
   * Upewnij się, że kworum klastra zostało prawidłowo skonfigurowane.  
 
-##### <a name="high-level-steps"></a>Ogólne kroki
+##### <a name="high-level-steps"></a>Kroki ogólne
 
 Ten dokument nie pokazuje kompletnego kompleksowego przykładu, ale [dodatek](#appendix-migrating-a-multisite-always-on-cluster-to-premium-storage) zawiera szczegółowe informacje, które mogą zostać użyte do wykonania tej czynności.
 
@@ -602,7 +602,7 @@ Rozważmy następujący przykład konfiguracji hybrydowej:
 
 W tym scenariuszu przyjęto założenie, że zawarto udokumentowaną instalację i dowiesz się, jak magazyn jest zamapowany, aby wprowadzić zmiany w celu zapewnienia optymalnego ustawienia pamięci podręcznej.
 
-##### <a name="high-level-steps"></a>Ogólne kroki
+##### <a name="high-level-steps"></a>Kroki ogólne
 
 ![Multisite2][10]
 
@@ -629,7 +629,7 @@ Pozostała część tego artykułu zawiera szczegółowy przykład konwersji wie
 
 ![Appendix1][11]
 
-### <a name="vm"></a>MASZYN
+### <a name="vm"></a>VM:
 
 W tym przykładzie przedstawimy przechodzenie z ELB do ILB. ELB był dostępny przed ILB, więc pokazuje, jak przełączyć się do ILB podczas migracji.
 

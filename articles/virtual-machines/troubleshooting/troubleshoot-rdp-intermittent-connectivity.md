@@ -12,19 +12,19 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/24/2018
 ms.author: genli
-ms.openlocfilehash: be563e39ed1bfa405830999a96d8630b6f8254bb
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 636973110e11770e33c635e312c86b25110705da
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71057969"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981349"
 ---
 # <a name="remote-desktop-disconnects-frequently-in-azure-vm"></a>Pulpit zdalny rozłącza często z maszyną wirtualną platformy Azure
 
 W tym artykule wyjaśniono, jak rozwiązywać problemy z częstymi połączeniami z maszyną wirtualną platformy Azure za pomocą protokołu Remote Desktop Protocol RDP).
 
 > [!NOTE] 
-> Platforma Azure oferuje dwa różne modele wdrażania związane z tworzeniem zasobów i pracą z nimi: [model wdrażania przy użyciu usługi Resource Manager i model klasyczny](../../azure-resource-manager/resource-manager-deployment-model.md). W tym artykule opisano użycie Menedżer zasobów model wdrażania. Zalecamy używanie tego modelu w przypadku nowych wdrożeń zamiast korzystania z klasycznego modelu wdrażania.
+> Platforma Azure ma dwa różne modele wdrażania związane z tworzeniem zasobów i pracą z nimi: [Resource Manager i model klasyczny](../../azure-resource-manager/management/deployment-models.md). W tym artykule opisano użycie Menedżer zasobów model wdrażania. Zalecamy używanie tego modelu w przypadku nowych wdrożeń zamiast korzystania z klasycznego modelu wdrażania.
 
 ## <a name="symptom"></a>Objaw
 
@@ -93,8 +93,8 @@ Aby rozwiązać ten problem, należy użyć kontrolki serial lub [naprawić masz
 2. Po dołączeniu dysku systemu operacyjnego do maszyny Wirtualnej odzyskiwania, upewnij się, że dysk jest oznaczone jako **Online** w konsoli Zarządzanie dyskami. Zanotuj literę dysku, która jest przypisana do dołączonym dysku systemu operacyjnego.
 3. Na dołączonym dysku systemu operacyjnego przejdź do folderu **\Windows\System32\Config** . Skopiuj wszystkie pliki w tym folderze jako kopię zapasową, w przypadku gdy wymagane jest wycofanie.
 4. Uruchom Edytor rejestru (regedit. exe).
-5. Wybierz klucz **HKEY_LOCAL_MACHINE** . Z menu wybierz pozycję**Załaduj** **plik** > Hive:
-6. Przejdź do folderu **\windows\system32\config\SYSTEM** na dysku systemu operacyjnego, który został podłączony. W polu Nazwa gałęzi wpisz **BROKENSYSTEM**. Nowa gałąź rejestru zostanie wyświetlona w kluczu **HKEY_LOCAL_MACHINE** . Następnie załaduj **\windows\system32\config\SOFTWARE** Hive oprogramowania w kluczu **HKEY_LOCAL_MACHINE** . W polu Nazwa oprogramowania Hive wprowadź **BROKENSOFTWARE**. 
+5. Wybierz klucz **HKEY_LOCAL_MACHINE** . W menu wybierz kolejno pozycje **plik** > **ładowanie Hive**:
+6. Przejdź do folderu **\windows\system32\config\SYSTEM** na dysku systemu operacyjnego, który został podłączony. W polu Nazwa gałęzi wpisz **BROKENSYSTEM**. W kluczu **HKEY_LOCAL_MACHINE** zostanie wyświetlona nowa gałąź rejestru. Następnie załaduj **\windows\system32\config\SOFTWARE** Hive oprogramowania w kluczu **HKEY_LOCAL_MACHINE** . W polu Nazwa oprogramowania Hive wprowadź **BROKENSOFTWARE**. 
 7. Otwórz okno wiersza polecenia z podwyższonym poziomem uprawnień (**Uruchom jako administrator**) i uruchom polecenia w pozostałych krokach, aby zresetować konfiguracje protokołu RDP. 
 8. Obniż poziom warstwy zabezpieczeń protokołu RDP do wartości 0, aby komunikacja między serwerem a klientem była używana przez natywne szyfrowanie RDP:
 
@@ -151,7 +151,7 @@ Aby rozwiązać ten problem, należy użyć kontrolki serial lub [naprawić masz
         REG ADD "HKLM\BROKENSYSTEM\ControlSet001\control\Terminal Server\Winstations\RDP-Tcp" /v 'MaxConnectionTime' /t REG_DWORD /d 0 /f
 
         REG ADD "HKLM\BROKENSYSTEM\ControlSet002\control\Terminal Server\Winstations\RDP-Tcp" /v 'MaxConnectionTime' /t REG_DWORD /d 0 /f
-16. Ustaw kontrolę czasu bezczynności sesji RDP:     REG ADD "HKLM\BROKENSYSTEM\ControlSet001\control\Terminal Server\Winstations\RDP-Tcp"/v "fInheritMaxIdleTime"/t REG_DWORD/d 1/f 
+16. Ustaw kontrolę czasu bezczynności sesji RDP: REG ADD "HKLM\BROKENSYSTEM\ControlSet001\control\Terminal Server\Winstations\RDP-Tcp"/v "fInheritMaxIdleTime"/t REG_DWORD/d 1/f 
 
         REG ADD "HKLM\BROKENSYSTEM\ControlSet001\control\Terminal Server\Winstations\RDP-Tcp" /v ' MaxIdleTime' /t REG_DWORD /d 0 /f
 
@@ -166,7 +166,7 @@ Aby rozwiązać ten problem, należy użyć kontrolki serial lub [naprawić masz
 18. Uruchom ponownie maszynę wirtualną, a następnie spróbuj ponownie nawiązać połączenie za pomocą protokołu RDP.
 
 ## <a name="need-help"></a>Potrzebujesz pomocy? 
-Skontaktuj się z pomocą techniczną. Jeśli nadal potrzebujesz pomocy, [skontaktuj się z pomocą techniczną](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) , aby szybko rozwiązać problem.
+Skontaktuj się z pomocą techniczną. Jeśli nadal potrzebujesz pomocy, [skontaktuj się z pomocą techniczną](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), aby szybko rozwiązać problem.
 
 
 

@@ -3,12 +3,12 @@ title: Funkcje szablonu — zasoby
 description: Opisuje funkcje, aby użyć w szablonie usługi Azure Resource Manager można pobrać wartości dotyczące zasobów.
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 2dd55be9f9daa25662903fbb1bd0c2c6666974b3
-ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
+ms.openlocfilehash: 85e421d4d4e53d275613ff8848abd405fdf175c2
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75708569"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979440"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Funkcje zasobów dla szablonów usługi Azure Resource Manager
 
@@ -233,7 +233,7 @@ W poniższej tabeli przedstawiono możliwe zastosowania list *.
 | Microsoft. Web/apimanagementaccounts/interfejsy API/połączenia | listsecrets |
 | Microsoft. Web/Sites/kopie zapasowe | [list](/rest/api/appservice/webapps/listbackups) |
 | Microsoft. Web/Sites/config | [list](/rest/api/appservice/webapps/listconfigurations) |
-| Microsoft. Web/Sites/Functions | [listkeys]()
+| Microsoft. Web/Sites/Functions | [listkeys](/rest/api/appservice/webapps/listfunctionkeys)
 | Microsoft. Web/Sites/Functions | [listsecrets](/rest/api/appservice/webapps/listfunctionsecrets) |
 | Microsoft. Web/Sites/hybridconnectionnamespaces/Przekaźniki | [listkeys](/rest/api/appservice/appserviceplans/listhybridconnectionkeys) |
 | Microsoft. Web/witryny | [listsyncfunctiontriggerstatus](/rest/api/appservice/webapps/listsyncfunctiontriggers) |

@@ -10,12 +10,12 @@ ms.date: 06/02/2017
 ms.author: tamram
 ms.reviewer: seguler
 ms.subservice: common
-ms.openlocfilehash: f8e745b214ced865ac41d72bdfd5e44ca36b803a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b80c29788bd2f8d5172795aa2c92a80e460ff81f
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75460459"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978527"
 ---
 # <a name="using-the-azure-cli-with-azure-storage"></a>Używanie interfejsu wiersza polecenia platformy Azure z usługą Azure Storage
 
@@ -23,7 +23,7 @@ Międzyplatformowy interfejs wiersza polecenia platformy Azure typu open source 
 
 W tym przewodniku pokazano, jak za pomocą [interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2) wykonywać kilka zadań pracujących z zasobami na koncie usługi Azure Storage. Zalecamy pobranie i zainstalowanie lub uaktualnienie do najnowszej wersji interfejsu wiersza polecenia przed rozpoczęciem korzystania z tego przewodnika.
 
-W przykładach w przewodniku założono użycie powłoki bash w Ubuntu, ale inne platformy powinny działać podobnie. 
+W przykładach w przewodniku założono użycie powłoki bash w Ubuntu, ale inne platformy powinny działać podobnie.
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
@@ -34,7 +34,7 @@ W tym przewodniku założono, że rozumiesz podstawowe pojęcia związane z usł
 
 ### <a name="accounts"></a>Konta
 * **Konto platformy Azure**: Jeśli nie masz jeszcze subskrypcji platformy Azure, [Utwórz bezpłatne konto platformy Azure](https://azure.microsoft.com/free/).
-* **Konto magazynu**: zobacz sekcję [Tworzenie konta magazynu](storage-quickstart-create-account.md) w temacie [Informacje o kontach magazynu Azure](storage-create-storage-account.md).
+* **Konto magazynu**: zobacz sekcję [Tworzenie konta magazynu](storage-account-create.md) w temacie [Informacje o kontach magazynu Azure](storage-account-overview.md).
 
 ### <a name="install-the-azure-cli"></a>Zainstaluj interfejs wiersza polecenia platformy Azure
 
@@ -335,7 +335,7 @@ Typ zawartości, określany też jako typ MIME, identyfikuje format danych w obi
 
 ```azurecli
 az storage blob update
-    --container-name <container_name> 
+    --container-name <container_name>
     --name <blob_name>
     --content-type <content_type>
 ```
@@ -390,7 +390,7 @@ az storage file list --share-name myshare --path myDir/mySubDir/MySubDir2 --outp
 
 ### <a name="copy-files"></a>Kopiowanie plików      
 Można skopiować plik do innego pliku, pliku do obiektu BLOB lub obiektu BLOB do pliku. Na przykład, aby skopiować plik do katalogu w innym udziale:        
-        
+
 ```azurecli
 az storage file copy start \
 --source-share share1 --source-path dir1/file.txt \
@@ -524,7 +524,7 @@ az storage file download --path IMG_0966.JPG --share-name sharesnapshotdefs --sn
 Migawkę udziału można usunąć za pomocą polecenia `az storage share delete`, dostarczając parametr `--snapshot` z sygnaturą czasową migawki udziału:
 
 ```cli
-az storage share delete -n <share name> --snapshot '2017-10-04T23:28:35.0000000Z' 
+az storage share delete -n <share name> --snapshot '2017-10-04T23:28:35.0000000Z'
 ```
 
 Przykładowe dane wyjściowe
@@ -535,7 +535,7 @@ Przykładowe dane wyjściowe
 ```
 
 ## <a name="next-steps"></a>Następne kroki
-Oto kilka dodatkowych zasobów, aby dowiedzieć się więcej o pracy z interfejsem wiersza polecenia platformy Azure. 
+Oto kilka dodatkowych zasobów, aby dowiedzieć się więcej o pracy z interfejsem wiersza polecenia platformy Azure.
 
 * [Rozpoczynanie pracy z interfejsem wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)
 * [Dokumentacja poleceń interfejsu wiersza polecenia platformy Azure](/cli/azure)

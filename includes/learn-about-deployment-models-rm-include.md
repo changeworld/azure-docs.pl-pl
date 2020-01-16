@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 11/25/2018
 ms.author: cynthn
-ms.openlocfilehash: cef2eb2cde2a26239b774729fa72b4f3ba367df7
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 0f9535e915ef940e097b7ab6f74848e59635327b
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67183042"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978824"
 ---
 > [!NOTE]
-> Platforma Azure ma dwa różne modele wdrażania, których można użyć do tworzenia zasobów i pracy z nimi: [Azure Resource Manager i klasyczny](../articles/azure-resource-manager/resource-manager-deployment-model.md). W tym artykule opisano sposób korzystania z Menedżer zasobówgo modelu wdrażania. Zalecamy model wdrażania Menedżer zasobów dla nowych wdrożeń zamiast klasycznego modelu wdrażania.
+> Platforma Azure ma dwa różne modele wdrażania, których można użyć do tworzenia zasobów i pracy z nimi: [Azure Resource Manager i klasyczne](../articles/azure-resource-manager/management/deployment-models.md). W tym artykule opisano sposób korzystania z Menedżer zasobówgo modelu wdrażania. Zalecamy model wdrażania Menedżer zasobów dla nowych wdrożeń zamiast klasycznego modelu wdrażania.

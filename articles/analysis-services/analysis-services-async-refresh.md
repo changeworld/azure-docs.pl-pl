@@ -4,15 +4,15 @@ description: Opisuje sposób używania interfejsu API REST Azure Analysis Servic
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/28/2019
+ms.date: 01/14/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 7c6fba10264939335cdef26f288973f8217f340b
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 2281f9d493edf955881772ec174c82b527f1b6fa
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73573391"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029880"
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>Odświeżanie asynchroniczne za pomocą interfejsu API REST
 
@@ -30,7 +30,7 @@ Podstawowy adres URL jest następujący:
 https://<rollout>.asazure.windows.net/servers/<serverName>/models/<resource>/
 ```
 
-Na przykład rozważmy model o nazwie AdventureWorks na serwerze o nazwie "serwer", który znajduje się w regionie platformy Azure zachodnie stany USA. Nazwa serwera:
+Rozważmy na przykład model o nazwie AdventureWorks na serwerze o nazwie `myserver`, który znajduje się w regionie usługi Azure zachodnie stany USA. Nazwa serwera:
 
 ```
 asazure://westus.asazure.windows.net/myserver 
@@ -99,7 +99,7 @@ Określanie parametrów nie jest wymagane. Ustawienie domyślne jest stosowane.
 
 | Nazwa             | Typ  | Opis  |Domyślne  |
 |------------------|-------|--------------|---------|
-| `Type`           | Wyliczenie  | Typ przetwarzania do wykonania. Typy są wyrównane z typami [poleceń Refresh](https://docs.microsoft.com/bi-reference/tmsl/refresh-command-tmsl) TMSL: Full, clearValues, Oblicz, dataonly, Automatic i defragmentowania. Dodawanie typu nie jest obsługiwane.      |   Automatyczne      |
+| `Type`           | Wyliczenie  | Typ przetwarzania do wykonania. Typy są wyrównane z typami [poleceń Refresh](https://docs.microsoft.com/bi-reference/tmsl/refresh-command-tmsl) TMSL: Full, clearValues, Oblicz, dataonly, Automatic i defragmentowania. Dodawanie typu nie jest obsługiwane.      |   automatycznie      |
 | `CommitMode`     | Wyliczenie  | Określa, czy obiekty będą zatwierdzane w partiach, czy tylko po zakończeniu. Tryby to: default, transakcyjna, partialBatch.  |  transakcyjna       |
 | `MaxParallelism` | Int   | Ta wartość określa maksymalną liczbę wątków, w których uruchamianie poleceń przetwarzania jest równoległe. Ta wartość jest wyrównana z właściwością MaxParallelism, którą można ustawić w TMSL [Sequence polecenia](https://docs.microsoft.com/bi-reference/tmsl/sequence-command-tmsl) lub przy użyciu innych metod.       | 10        |
 | `RetryCount`     | Int   | Wskazuje liczbę ponownych prób wykonania operacji przed zakończeniem się niepowodzeniem.      |     0    |
@@ -110,9 +110,20 @@ Wartość CommitMode jest równa partialBatch. Jest on używany podczas wstępne
 > [!NOTE]
 > W czasie pisania rozmiar wsadu jest wartością MaxParallelism, ale można zmienić tę wartość.
 
+### <a name="status-values"></a>Wartości stanu
+
+|Wartość stanu  |Opis  |
+|---------|---------|
+|`notStarted`    |   Operacja nie została jeszcze uruchomiona.      |
+|`inProgress`     |   Operacja w toku.      |
+|`timedOut`     |    Przekroczono limit czasu operacji na podstawie określonego przez użytkownika limitu czasu.     |
+|`cancelled`     |   Operacja została anulowana przez użytkownika lub system.      |
+|`failed`     |   Operacja nie powiodła się.      |
+|`succeeded`      |   Operacja zakończyła się pomyślnie.      |
+
 ## <a name="get-refreshesrefreshid"></a>Pobierz/refreshes/\<refreshId >
 
-Aby sprawdzić stan operacji odświeżania, użyj zlecenia GET dla identyfikatora odświeżania. Oto przykład treści odpowiedzi. Jeśli operacja jest w toku, w stanie zostanie zwrócona wartość **trwa** .
+Aby sprawdzić stan operacji odświeżania, użyj zlecenia GET dla identyfikatora odświeżania. Oto przykład treści odpowiedzi. Jeśli operacja jest w toku, `inProgress` jest zwracana w stanie.
 
 ```
 {
@@ -202,7 +213,7 @@ Oto przykład C# kodu, aby rozpocząć pracę, [RestApiSample w witrynie GitHub]
 
 Przykładowy kod używa uwierzytelniania [nazwy głównej usługi](#service-principal) .
 
-### <a name="service-principal"></a>Nazwa główna usługi
+### <a name="service-principal"></a>Jednostka usługi
 
 Aby uzyskać więcej informacji na temat konfigurowania nazwy głównej usługi i przypisywania do niej wymaganych uprawnień na platformie Azure, zobacz [Tworzenie jednostki usługi — Azure Portal](../active-directory/develop/howto-create-service-principal-portal.md) i [Dodawanie jednostki usługi do roli administratora serwera](analysis-services-addservprinc-admins.md) . Po wykonaniu kroków wykonaj następujące dodatkowe czynności:
 

@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: 421604bcec5277d337b7e7f73a869f40fa73158a
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: fb0a71a650a8c36d4da962adaf3f1f314c30d4c2
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74764971"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980010"
 ---
 # <a name="security-in-azure-database-for-mysql"></a>Zabezpieczenia w usłudze Azure Database for MySQL
 
@@ -37,6 +37,8 @@ Reguły zapory adresów IP umożliwiają dostęp do serwerów na podstawie źró
 ### <a name="virtual-network-firewall-rules"></a>Reguły zapory sieci wirtualnej
 Punkty końcowe usługi sieci wirtualnej zwiększają łączność sieci wirtualnej przez sieć szkieletową platformy Azure. Korzystając z reguł sieci wirtualnej, można włączyć serwer Azure Database for MySQL, aby zezwalać na połączenia z wybranych podsieci w sieci wirtualnej. Aby uzyskać więcej informacji, zobacz [Omówienie punktu końcowego usługi sieci wirtualnej](concepts-data-access-and-security-vnet.md).
 
+### <a name="private-ip"></a>Prywatny adres IP
+Link prywatny umożliwia nawiązanie połączenia z Azure Database for MySQL na platformie Azure za pośrednictwem prywatnego punktu końcowego. Link prywatny platformy Azure zasadniczo zapewnia usługi platformy Azure w ramach prywatnego Virtual Network (VNet). Dostęp do zasobów PaaS można uzyskać przy użyciu prywatnego adresu IP, podobnie jak w przypadku każdego innego zasobu w sieci wirtualnej. Aby uzyskać więcej informacji, zobacz [link prywatny — Omówienie](concepts-data-access-security-private-link.md)
 
 ## <a name="access-management"></a>Zarządzanie dostępem
 

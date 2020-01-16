@@ -15,12 +15,12 @@ ms.date: 11/22/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: 5429ebb611f852f7672d89de190ddd68dbcb01cf
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 67d624bb81105b8219030c57460b6d7bf7458671
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707778"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980985"
 ---
 # <a name="troubleshoot-rbac-for-azure-resources"></a>Rozwiązywanie problemów z funkcją RBAC dla zasobów platformy Azure
 
@@ -41,13 +41,13 @@ Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące kontroli 
 
 ## <a name="recover-rbac-when-subscriptions-are-moved-across-tenants"></a>Odzyskiwanie kontroli dostępu opartej na rolach po przeniesieniu subskrypcji między dzierżawami
 
-- Jeśli potrzebujesz kroków dotyczących sposobu transferowania subskrypcji do innej dzierżawy usługi Azure AD, zobacz [przenoszenie własności subskrypcji platformy Azure na inne konto](../billing/billing-subscription-transfer.md).
+- Jeśli potrzebujesz kroków dotyczących sposobu transferowania subskrypcji do innej dzierżawy usługi Azure AD, zobacz [przenoszenie własności subskrypcji platformy Azure na inne konto](../cost-management-billing/manage/billing-subscription-transfer.md).
 - Jeśli przeniesiesz subskrypcję do innej dzierżawy usługi Azure AD, wszystkie przypisania ról zostaną trwale usunięte ze źródłowej dzierżawy usługi Azure AD i nie zostaną zmigrowane do docelowej dzierżawy usługi Azure AD. Należy ponownie utworzyć swoje przypisania ról w dzierżawie docelowej. Należy również ręcznie odtworzyć zarządzane tożsamości dla zasobów platformy Azure. Aby uzyskać więcej informacji, zobacz [często zadawane pytania i znane problemy związane z tożsamościami zarządzanymi](../active-directory/managed-identities-azure-resources/known-issues.md).
 - Jeśli jesteś administratorem globalnym usługi Azure AD i nie masz dostępu do subskrypcji po przeniesieniu między dzierżawcami, użyj przełącznika **Zarządzanie dostępem do zasobów platformy Azure** , aby tymczasowo [podnieść dostęp](elevate-access-global-admin.md) do subskrypcji.
 
 ## <a name="issues-with-service-admins-or-co-admins"></a>Problemy z administratorami usług lub współadministratorami
 
-- Jeśli masz problemy z administratorem usługi lub współadministratorem, zobacz [Dodawanie lub zmienianie administratorów subskrypcji platformy Azure](../billing/billing-add-change-azure-subscription-administrator.md) i [ról administratora klasycznej subskrypcji, ról RBAC platformy Azure i ról administratorów usługi Azure AD](rbac-and-directory-admin-roles.md).
+- Jeśli masz problemy z administratorem usługi lub współadministratorem, zobacz [Dodawanie lub zmienianie administratorów subskrypcji platformy Azure](../cost-management-billing/manage/add-change-subscription-administrator.md) i [ról administratora klasycznej subskrypcji, ról RBAC platformy Azure i ról administratorów usługi Azure AD](rbac-and-directory-admin-roles.md).
 
 ## <a name="access-denied-or-permission-errors"></a>Odmowa dostępu lub błędy uprawnień
 
@@ -56,7 +56,7 @@ Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące kontroli 
 
 ## <a name="role-assignments-with-unknown-security-principal"></a>Przypisania ról z nieznanym podmiotem zabezpieczeń
 
-Jeśli przypiszesz rolę do podmiotu zabezpieczeń (użytkownik, Grupa, nazwa główna usługi lub tożsamość zarządzana), a następnie usuniesz ten podmiot zabezpieczeń bez usuwania przypisania roli, typ podmiotu zabezpieczeń dla przypisania roli będzie wyświetlany jako **nieznany**. Poniższy zrzut ekranu przedstawia przykład w Azure Portal. Nazwa podmiotu zabezpieczeń jest wyświetlana jako **tożsamość usunięta** i **tożsamość już nie istnieje**. 
+Jeśli przypiszesz rolę do podmiotu zabezpieczeń (użytkownik, Grupa, nazwa główna usługi lub tożsamość zarządzana), a następnie usuniesz ten podmiot zabezpieczeń bez usuwania przypisania roli, typ podmiotu zabezpieczeń dla przypisania roli będzie wyświetlany jako **nieznany**. Poniższy zrzut ekranu przedstawia przykład w witrynie Azure Portal. Nazwa podmiotu zabezpieczeń jest wyświetlana jako **tożsamość usunięta** i **tożsamość już nie istnieje**. 
 
 ![Grupa zasobów aplikacji sieci Web](./media/troubleshooting/unknown-security-principal.png)
 
@@ -150,7 +150,7 @@ Te elementy wymagają dostępu do **zapisu** w całej **grupie zasobów** zawier
 
 * Certyfikaty i powiązania SSL (certyfikaty SSL mogą być współużytkowane między lokacjami w tej samej grupie zasobów i lokalizacji geograficznej)  
 * Reguły alertów  
-* Ustawienia skalowania automatycznego  
+* ustawienia skalowania automatycznego  
 * Składniki usługi Application Insights  
 * Testy sieci Web  
 

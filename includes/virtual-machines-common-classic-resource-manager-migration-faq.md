@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/18/2018
 ms.author: kasing
 ms.custom: include file
-ms.openlocfilehash: c8629975d375dda32fdd9aee42b4ae09069a2049
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: a7a3c6edbbeca96a90f8003fda1b92fc8bf99fec
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74005411"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76021308"
 ---
 ## <a name="does-this-migration-plan-affect-any-of-my-existing-services-or-applications-that-run-on-azure-virtual-machines"></a>Czy ten plan migracji wpływa na moje istniejące usługi lub aplikacje uruchomione na maszynach wirtualnych platformy Azure? 
 
@@ -21,7 +21,7 @@ Nie. Maszyny wirtualne (klasyczne) to w pełni obsługiwane usługi w ramach og�
 
 ## <a name="what-happens-to-my-vms-if-i-dont-plan-on-migrating-in-the-near-future"></a>Co stanie się z moimi maszynami wirtualnymi, jeśli nie planuję migracji w najbliższej przyszłości? 
 
-Istniejące klasyczne interfejsy API i model zasobów nie są przestarzałe. Chcemy ułatwić migrację, biorąc pod uwagę zaawansowane funkcje, które są dostępne w modelu wdrażania usługi Resource Manager. Zdecydowanie zalecamy przejrzenie [niektórych udoskonaleń](../articles/azure-resource-manager/resource-manager-deployment-model.md), które są częścią infrastruktury IaaS w ramach usługi Resource Manager.
+Istniejące klasyczne interfejsy API i model zasobów nie są przestarzałe. Chcemy ułatwić migrację, biorąc pod uwagę zaawansowane funkcje, które są dostępne w modelu wdrażania usługi Resource Manager. Zdecydowanie zalecamy przejrzenie [niektórych udoskonaleń](../articles/azure-resource-manager/management/deployment-models.md), które są częścią infrastruktury IaaS w ramach usługi Resource Manager.
 
 ## <a name="what-does-this-migration-plan-mean-for-my-existing-tooling"></a>Co oznacza ten plan migracji dla moich istniejących narzędzi? 
 
@@ -52,7 +52,7 @@ Podczas migracji zasoby są przekształcane z klasycznych na zasoby usługi Reso
 <a name="vault">Po</a> przeniesieniu maszyny wirtualnej z klasycznej do Menedżer zasobów trybu kopie zapasowe wykonane przed migracją nie zostaną zmigrowane do nowo zmigrowanej Menedżer zasobów maszyny wirtualnej. Jeśli jednak chcesz zachować kopie zapasowe klasycznych maszyn wirtualnych, wykonaj następujące kroki przed migracją. 
 
 1. W magazynie Recovery Services przejdź do karty **elementy chronione** i wybierz maszynę wirtualną. 
-2. Kliknij przycisk Zatrzymaj ochronę. Pozostaw opcję *Usuń powiązane dane kopii zapasowych* **niezaznaczoną**.
+2. Kliknij polecenie Zatrzymaj ochronę. Pozostaw opcję *Usuń powiązane dane kopii zapasowych***niezaznaczoną**.
 
 > [!NOTE]
 > Podczas zachowywania danych będzie naliczana opłata za wystąpienie kopii zapasowej. Kopie zapasowe będą oczyszczane zgodnie z zakresem przechowywania. Jednakże Ostatnia kopia zapasowa jest zawsze zachowywana do momentu, gdy jawnie usuniesz dane kopii zapasowej. Zalecane jest sprawdzenie zakresu przechowywania maszyny wirtualnej i wyzwolenie "Usuń dane kopii zapasowej" z chronionego elementu w magazynie po przekroczeniu zakresu przechowywania. 

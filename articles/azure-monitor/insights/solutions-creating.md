@@ -8,12 +8,12 @@ author: bwren
 ms.author: bwren
 ms.date: 03/20/2017
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8c08dc5091e7ab0eec5d4e6dd455e6adb3caa35f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5465c177cf174ebf8d6b7d4f43c5387bce3adb70
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75402050"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75969696"
 ---
 # <a name="design-and-build-a-management-solution-in-azure-preview"></a>Projektowanie i tworzenie rozwiązania do zarządzania na platformie Azure (wersja zapoznawcza)
 > [!NOTE]
@@ -23,7 +23,7 @@ ms.locfileid: "75402050"
 
 ## <a name="what-is-a-management-solution"></a>Co to jest rozwiązanie do zarządzania?
 
-Rozwiązania do zarządzania zawierają zasoby platformy Azure, które współpracują ze sobą w celu osiągnięcia określonego scenariusza zarządzania.  Są one implementowane jako [Szablony zarządzania zasobami](../../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md) , które zawierają szczegółowe informacje o sposobie instalowania i konfigurowania zawartych w nich zasobów po zainstalowaniu rozwiązania.
+Rozwiązania do zarządzania zawierają zasoby platformy Azure, które współpracują ze sobą w celu osiągnięcia określonego scenariusza zarządzania.  Są one implementowane jako [Szablony zarządzania zasobami](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md) , które zawierają szczegółowe informacje o sposobie instalowania i konfigurowania zawartych w nich zasobów po zainstalowaniu rozwiązania.
 
 Podstawową strategią jest rozpoczęcie rozwiązania do zarządzania przez utworzenie poszczególnych składników w środowisku platformy Azure.  Po poprawnym działaniu funkcji można rozpocząć pakowanie ich do [pliku rozwiązania do zarządzania]( solutions-solution-file.md). 
 
@@ -64,7 +64,7 @@ Po skonfigurowaniu i przetestowaniu składników, które będą częścią rozwi
 
 
 ## <a name="test-your-solution"></a>Testowanie rozwiązania
-Podczas opracowywania rozwiązania należy zainstalować i przetestować go w obszarze roboczym.  Można to zrobić za pomocą dowolnej z dostępnych metod [testowania i instalowania Menedżer zasobów szablonów](../../azure-resource-manager/resource-group-template-deploy.md).
+Podczas opracowywania rozwiązania należy zainstalować i przetestować go w obszarze roboczym.  Można to zrobić za pomocą dowolnej z dostępnych metod [testowania i instalowania Menedżer zasobów szablonów](../../azure-resource-manager/templates/deploy-powershell.md).
 
 ## <a name="publish-your-solution"></a>Publikowanie rozwiązania
 Po zakończeniu i przetestowaniu rozwiązania można je udostępnić klientom za pomocą następujących źródeł.

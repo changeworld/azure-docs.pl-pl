@@ -4,12 +4,12 @@ description: Dowiedz się, jak utworzyć szablon Azure Resource Manager, który 
 ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: 6d5b7b33bfb2645128a545bb371c70188a724c40
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 650997cfddc71a8bfe347e29c8992b78d1828034
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75920620"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978801"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>Automatyzowanie wdrażania zasobów dla aplikacji funkcji w Azure Functions
 
@@ -372,7 +372,7 @@ Aplikacja funkcji w planie Premium musi mieć Właściwość `serverFarmId` usta
 ```
 
 
-<a name="app-service-plan"></a> 
+<a name="app-service-plan"></a>
 
 ## <a name="deploy-on-app-service-plan"></a>Wdróż w planie App Service
 
@@ -419,7 +419,7 @@ Aby uruchomić aplikację w systemie Linux, należy również ustawić `kind` na
 }
 ```
 
-### <a name="create-a-function-app"></a>Tworzenie aplikacji funkcji 
+### <a name="create-a-function-app"></a>Tworzenie aplikacji funkcji
 
 Aplikacja funkcji w planie App Service musi mieć Właściwość `serverFarmId` ustawioną na identyfikator zasobu utworzonego wcześniej planu.
 
@@ -637,10 +637,10 @@ Aplikacja funkcji ma wiele zasobów podrzędnych, których można użyć we wdro
 
 Aby wdrożyć szablon, można użyć dowolnego z poniższych sposobów:
 
-* [Program PowerShell](../azure-resource-manager/resource-group-template-deploy.md)
-* [Interfejs wiersza polecenia platformy Azure](../azure-resource-manager/resource-group-template-deploy-cli.md)
-* [Azure Portal](../azure-resource-manager/resource-group-template-deploy-portal.md)
-* [Interfejs API REST](../azure-resource-manager/resource-group-template-deploy-rest.md)
+* [Program PowerShell](../azure-resource-manager/templates/deploy-powershell.md)
+* [Interfejs wiersza polecenia platformy Azure](../azure-resource-manager/templates/deploy-cli.md)
+* [Azure Portal](../azure-resource-manager/templates/deploy-portal.md)
+* [Interfejs API REST](../azure-resource-manager/templates/deploy-rest.md)
 
 ### <a name="deploy-to-azure-button"></a>Przycisk Wdróż na platformie Azure
 

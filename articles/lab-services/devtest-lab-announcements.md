@@ -1,6 +1,6 @@
 ---
-title: Opublikuj announcment do laboratorium Azure DevTest Labs | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak dodać zawiadomienia do laboratorium Azure DevTest Labs
+title: Opublikuj ogłoszenie w laboratorium w Azure DevTest Labs | Microsoft Docs
+description: Dowiedz się, jak dodać anons do laboratorium w Azure DevTest Labs
 services: devtest-lab,virtual-machines
 documentationcenter: na
 author: spelluru
@@ -14,76 +14,76 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 2fe31271fa84bc4170bd431a4aadbcafc0df9086
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 84120b07de3a03a049493eb973b6dc46f8668387
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60311528"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75976446"
 ---
-# <a name="post-an-announcement-to-a-lab-in-azure-devtest-labs"></a>Publikowanie anonsu do laboratorium w usłudze Azure DevTest Labs
+# <a name="post-an-announcement-to-a-lab-in-azure-devtest-labs"></a>Opublikuj anons w laboratorium w Azure DevTest Labs
 
-Będąc administratorem laboratorium możesz zadać niestandardowe ogłoszenie na istniejącego laboratorium w celu powiadomienia użytkowników o najnowsze zmiany i dodatki w laboratorium. Na przykład możesz chcieć poinformować użytkowników o:
+Jako administrator laboratorium możesz ogłosić niestandardowy anons w istniejącym laboratorium, aby poinformować użytkowników o najnowszych zmianach lub dodatkach do laboratorium. Na przykład możesz chcieć poinformować użytkowników o:
 
-- Nowe rozmiary maszyn wirtualnych, które są dostępne
-- Obrazy, które są aktualnie bezużyteczne
+- Nowe dostępne rozmiary maszyn wirtualnych
+- Obrazy, które są obecnie bezużyteczne
 - Aktualizacje zasad laboratorium
 
-Gdy opublikowana, anons jest wyświetlana na stronie Przegląd laboratorium, a użytkownik może wybrać ją Aby uzyskać więcej informacji.
+Po opublikowaniu anons zostanie wyświetlony na stronie Przegląd laboratorium, a użytkownik może wybrać go, aby uzyskać więcej szczegółów.
 
-Funkcja ogłoszenie jest przeznaczona do użycia na potrzeby powiadomień tymczasowych.  Po nie jest już potrzebny, można łatwo Wyłącz powiadomienia.
+Funkcja anonsu jest przeznaczona do użycia na potrzeby tymczasowych powiadomień.  Możesz łatwo wyłączyć anons, gdy nie jest już potrzebne.
 
-## <a name="steps-to-post-an-announcement-in-an-existing-lab"></a>Kroki umożliwiające publikowanie anonsu w laboratorium istniejące
+## <a name="steps-to-post-an-announcement-in-an-existing-lab"></a>Kroki umożliwiające opublikowanie anonsu w istniejącym laboratorium
 
-1. Zaloguj się w witrynie [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
-1. W razie potrzeby zaznacz **wszystkich usług**, a następnie wybierz pozycję **DevTest Labs** z listy. (Laboratorium może być już wyświetlane na pulpicie nawigacyjnym w obszarze **wszystkie zasoby**).
-1. Zaznacz na liście laboratoriów laboratorium, w której chcesz publikować anonsu.
-1. W laboratorium **Przegląd** wybierz opcję **konfiguracji i zasad**.
+1. Zaloguj się do [portalu Azure](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. W razie potrzeby wybierz pozycję **wszystkie usługi**, a następnie z listy wybierz pozycję **DevTest Labs** . (Laboratorium może być już wyświetlane na pulpicie nawigacyjnym w obszarze **wszystkie zasoby**).
+1. Z listy laboratoriów wybierz laboratorium, w którym chcesz ogłosić ogłoszenie.
+1. W obszarze **Przegląd** laboratorium wybierz pozycję **Konfiguracja i zasady**.
 
     ![Przycisk konfiguracji i zasad](./media/devtest-lab-announcements/devtestlab-config-and-policies.png)
 
-1. Po lewej stronie w obszarze **ustawienia**, wybierz opcję **anonsu w laboratorium**.
+1. W obszarze **Ustawienia**wybierz pozycję **ogłoszenie laboratorium**.
 
-    ![Przycisk anonsu w laboratorium](./media/devtest-lab-announcements/devtestlab-announcements.png)
+    ![Przycisk anons Lab](./media/devtest-lab-announcements/devtestlab-announcements.png)
 
-1. Aby utworzyć wiadomość dla użytkowników, w tym środowisku laboratoryjnym, ustaw **włączone** do **tak**.
+1. Aby utworzyć komunikat dla użytkowników w tym laboratorium, ustaw wartość **włączone** na **tak**.
 
-1. Możesz wprowadzić **datę wygaśnięcia** określić datę i godzinę, po którym anons nie jest już widocznym dla użytkowników. Jeśli nie zostanie wprowadzony datę wygaśnięcia, anons pozostaje, dopóki nie zostanie wyłączone.
+1. Możesz wprowadzić **datę wygaśnięcia** , aby określić datę i godzinę, po upływie których anons nie jest już pokazywany użytkownikom. Jeśli nie wprowadzisz daty wygaśnięcia, ogłoszenie pozostanie do momentu jej wyłączenia.
 
    > [!NOTE]
-   > Po wygaśnięciu anonsu ona już nie jest wyświetlana dla użytkowników, ale nadal istnieje w **anonsu w laboratorium** okienka. Można wprowadzić zmiany, a następnie ponownie włącz go, aby ją uaktywnić ponownie.
+   > Po wygaśnięciu anonsu nie jest on już pokazywany użytkownikom, ale nadal istnieje w okienku **anons laboratorium** . Można wprowadzić w nim zmiany i ponownie je włączyć, aby ponownie aktywować.
    >
    >
 
-1. Wprowadź **Tytuł anonsu** i **tekst anonsu**.
+1. Wprowadź **tytuł anonsu** i **tekst anonsu**.
 
-   Tytuł może zawierać maksymalnie 100 znaków i jest wyświetlany na stronie Przegląd laboratorium. Jeśli użytkownik wybierze tytuł, jest wyświetlany tekst anonsu.
+   Tytuł może składać się z maksymalnie 100 znaków i jest widoczny dla użytkownika na stronie przeglądu laboratorium. Jeśli użytkownik wybierze tytuł, zostanie wyświetlony tekst anonsu.
 
-   Tekst anonsu akceptuje języka znaczników markdown. Podczas wprowadzania tekstu anons można wyświetlić komunikat w obszarze podglądu w dolnej części ekranu.
+   W tekście anonsu jest akceptowana wartość promocji. Po wprowadzeniu tekstu powiadomienia możesz wyświetlić komunikat w obszarze podglądu u dołu ekranu.
 
-    ![Ekran ogłoszenie laboratorium do tworzenia komunikatu.](./media/devtest-lab-announcements/devtestlab-post-announcement.png)
+    ![Ekran anonsowania laboratorium do tworzenia wiadomości.](./media/devtest-lab-announcements/devtestlab-post-announcement.png)
 
 
-1. Wybierz **Zapisz** po anonsu jest gotowy do opublikowania.
+1. Wybierz pozycję **Zapisz** , gdy ogłoszenie jest gotowe do opublikowania.
 
-Nie jest już do wyświetlenia tego anonsu użytkownikom laboratorium, należy powrócić do **anonsu w laboratorium** strony, a następnie ustaw **włączone** do **nie**. Jeśli określono datę wygaśnięcia anonsu jest wyłączona automatycznie na, daty i godziny.
+Gdy nie chcesz już wyświetlać tego anonsu dla użytkowników laboratorium, Wróć do strony **anons Lab** **i ustaw wartość** **nie**. W przypadku określenia daty wygaśnięcia anons zostanie automatycznie wyłączony w tym dniu i o tej godzinie.
 
-## <a name="steps-for-users-to-view-an-announcement"></a>Kroki dla użytkowników wyświetlić anonsu
+## <a name="steps-for-users-to-view-an-announcement"></a>Kroki dla użytkowników dotyczące wyświetlania anonsu
 
-1. Z [witryny Azure portal](https://go.microsoft.com/fwlink/p/?LinkID=525040), wybierz laboratorium.
+1. Z [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040)wybierz laboratorium.
 
-1. Jeśli laboratorium ma anonsu opublikowane dla niego, informacje o uznaniu informacji jest wyświetlany w górnej części strony Przegląd laboratorium. To ogłoszenie jest tytuł anonsu, który został określony podczas tworzenia anonsu.
+1. Jeśli laboratorium ma ogłoszone powiadomienie, w górnej części strony Przegląd laboratorium zostanie wyświetlone powiadomienie z informacjami. Ten komunikat informacyjny jest tytułem anonsu, który został określony podczas tworzenia anonsu.
 
-    ![Ogłoszenie laboratorium na stronie przeglądu](./media/devtest-lab-announcements/devtestlab-user-announcement.png)
+    ![Powiadomienie laboratorium na stronie przeglądu](./media/devtest-lab-announcements/devtestlab-user-announcement.png)
 
-1. Użytkownik może wybrać komunikat, aby wyświetlić całą anonsu.
+1. Użytkownik może wybrać komunikat, aby wyświetlić cały anons.
 
-    ![Więcej informacji na anonsu w laboratorium](./media/devtest-lab-announcements/devtestlab-user-announcement-text.png)
+    ![Więcej informacji na temat anonsu laboratorium](./media/devtest-lab-announcements/devtestlab-user-announcement-text.png)
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
 ## <a name="azure-resource-manager-template"></a>Szablon usługi Azure Resource Manager
-Anons można określić jako część szablonu usługi Azure Resource Manager, jak pokazano w poniższym przykładzie:
+Możesz określić anons jako część szablonu Azure Resource Manager, jak pokazano w następującym przykładzie:
 
 ```json
 {
@@ -158,13 +158,13 @@ Anons można określić jako część szablonu usługi Azure Resource Manager, j
 }
 ```
 
-Szablon usługi Azure Resource Manager można wdrożyć przy użyciu jednej z następujących sposobów:
+Szablon Azure Resource Manager można wdrożyć przy użyciu jednego z następujących sposobów:
 
-- [Azure Portal](../azure-resource-manager/resource-group-template-deploy-portal.md)
-- [Azure PowerShell](../azure-resource-manager/resource-group-template-deploy.md)
-- [Interfejs wiersza polecenia platformy Azure](../azure-resource-manager/resource-group-template-deploy-cli.md)
-- [Interfejs API REST](../azure-resource-manager/resource-group-template-deploy-rest.md)
+- [Azure Portal](../azure-resource-manager/templates/deploy-portal.md)
+- [Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md)
+- [Interfejs wiersza polecenia platformy Azure](../azure-resource-manager/templates/deploy-cli.md)
+- [Interfejs API REST](../azure-resource-manager/templates/deploy-rest.md)
 
-## <a name="next-steps"></a>Kolejne kroki
-* Jeśli zmienisz lub ustawianie zasad laboratorium warto publikowanie anonsu, aby informować użytkowników. [Ustawianie zasad i harmonogramów](devtest-lab-set-lab-policy.md) dostarcza informacji na temat stosowania ograniczeń i konwencje w ramach subskrypcji za pomocą zasad niestandardowych.
-* Zapoznaj się z [galerii szablonów DevTest Labs Azure Resource Manager QuickStart](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates).
+## <a name="next-steps"></a>Następne kroki
+* Jeśli zmienisz lub ustawisz zasady laboratorium, możesz chcieć ogłosić anons w celu informowania użytkowników. [Ustawianie zasad i harmonogramów](devtest-lab-set-lab-policy.md) zawiera informacje dotyczące stosowania ograniczeń i Konwencji w ramach subskrypcji przy użyciu zasad niestandardowych.
+* Zapoznaj się z [galerią szablonów DevTest Labs Azure Resource Manager — szybki start](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates).

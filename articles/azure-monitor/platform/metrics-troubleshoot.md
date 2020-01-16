@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: d31b046bf02893affff84069ee92b3bd7735b904
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 072e62d89e8febc4837c10874398daea3b8114ed
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72243218"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75974867"
 ---
 # <a name="troubleshooting-metrics-charts"></a>Rozwiązywanie problemów z wykresami metryk
 
@@ -29,7 +29,7 @@ Po kliknięciu przycisku **Wybierz zasób** nie widzisz żądanego zasobu w okni
 
 1. Upewnij się, że wybrano właściwą grupę zasobów.
     > [!WARNING]
-    > Aby zapewnić najlepszą wydajność, przy pierwszym otwarciu Eksploratora metryk na liście rozwijanej **Grupa zasobów** nie ma żadnych wstępnie wybranych grup zasobów. Aby wyświetlić jakiekolwiek zasoby, musisz wybrać co najmniej jedną grupę.
+    > W celu uzyskania najlepszej wydajności podczas pierwszego otwarcia Eksploratora metryk lista rozwijana **Grupa zasobów** nie ma wstępnie wybranych grup zasobów. Aby wyświetlić jakiekolwiek zasoby, musisz wybrać co najmniej jedną grupę.
 
 ## <a name="chart-shows-no-data"></a>Wykres nie zawiera żadnych danych
 
@@ -37,7 +37,7 @@ Czasami wykresy mogą nie zawierać żadnych danych po wybraniu prawidłowych za
 
 ### <a name="microsoftinsights-resource-provider-isnt-registered-for-your-subscription"></a>Dostawca zasobów Microsoft. Insights nie jest zarejestrowany dla Twojej subskrypcji
 
-Eksplorowanie metryk wymaga dostawcy zasobów *Microsoft.Insights* zarejestrowanego w Twojej subskrypcji. W wielu przypadkach jest on rejestrowany automatycznie (tj. po skonfigurowaniu reguły alertu, dostosowaniu ustawień diagnostyki dla dowolnego zasobu lub skonfigurowaniu reguły skalowania automatycznego). Jeśli dostawca zasobów Microsoft. Insights nie jest zarejestrowany, należy go zarejestrować ręcznie, wykonując czynności opisane w temacie [dostawcy zasobów platformy Azure i typy](../../azure-resource-manager/resource-manager-supported-services.md).
+Eksplorowanie metryk wymaga dostawcy zasobów *Microsoft.Insights* zarejestrowanego w Twojej subskrypcji. W wielu przypadkach jest on rejestrowany automatycznie (tj. po skonfigurowaniu reguły alertu, dostosowaniu ustawień diagnostyki dla dowolnego zasobu lub skonfigurowaniu reguły skalowania automatycznego). Jeśli dostawca zasobów Microsoft. Insights nie jest zarejestrowany, należy go zarejestrować ręcznie, wykonując czynności opisane w temacie [dostawcy zasobów platformy Azure i typy](../../azure-resource-manager/management/resource-providers-and-types.md).
 
 **Rozwiązanie:** Otwórz pozycję **subskrypcje**, kartę **dostawcy zasobów** i sprawdź, czy w ramach subskrypcji zarejestrowano *Microsoft. Insights* .
 

@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: 40aa35e9f9d40a8a021797a0a2a4af9216d90618
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 92d7522c8382ded182c5f482df3f3d917b4b3a14
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75898172"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982381"
 ---
 # <a name="private-link-for-azure-database-for-mariadb-preview"></a>Prywatny link do Azure Database for MariaDB (wersja zapoznawcza)
 
@@ -28,7 +28,7 @@ Filtrowanie danych w Azure Database for MariaDB jest możliwe, gdy autoryzowany 
 
 Rozważmy scenariusz z użytkownikiem z systemem MariaDB Workbench wewnątrz maszyny wirtualnej platformy Azure łączącej się z wystąpieniem Azure Database for MariaDB. To wystąpienie MariaDB znajduje się w centrum danych w zachodnich stanach USA. W poniższym przykładzie pokazano, jak ograniczyć dostęp za pomocą publicznych punktów końcowych w Azure Database for MariaDB przy użyciu funkcji kontroli dostępu do sieci.
 
-* Wyłącz cały ruch usługi platformy Azure do Azure Database for MariaDB za pośrednictwem publicznego punktu końcowego przez ustawienie opcji Zezwalaj na wyłączanie usług platformy Azure. Upewnij się, że żadne adresy IP lub zakresy nie mogą uzyskać dostępu do serwera za pośrednictwem [reguł zapory](https://docs.microsoft.com/azure/mariadb/concepts-firewall-rules) lub [punktów końcowych usługi sieci wirtualnej](https://docs.microsoft.com/azure/mariadb/concepts-data-access-and-security-vnet).
+* Wyłącz cały ruch usługi platformy Azure do Azure Database for MariaDB za pośrednictwem publicznego punktu końcowego przez ustawienie opcji Zezwalaj na wyłączanie usług platformy Azure. Upewnij się, że żadne adresy IP lub zakresy nie mogą uzyskać dostępu do serwera za pośrednictwem [reguł zapory](https://docs.microsoft.com/azure/mariadb/concepts-firewall-rules) lub [punktów końcowych usługi sieci wirtualnej](https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-vnet).
 
 * Zezwalaj tylko na ruch do Azure Database for MariaDB przy użyciu prywatnego adresu IP maszyny wirtualnej. Aby uzyskać więcej informacji, zobacz artykuły na temat [punktów końcowych usługi](concepts-data-access-security-vnet.md) i [reguł zapory sieci wirtualnej](howto-manage-vnet-portal.md).
 

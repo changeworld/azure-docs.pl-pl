@@ -1,0 +1,275 @@
+---
+title: Umowy EA platformy Azure i poprawki
+description: W tym artykule wyjaśniono, w jaki sposób umowy EA platformy Azure i ich poprawki wpływają na Twoje korzystanie z witryny Azure EA Portal.
+keywords: ''
+author: bandersmsft
+ms.author: banders
+ms.date: 01/02/2020
+ms.topic: conceptual
+ms.service: cost-management-billing
+manager: boalcsva
+ms.openlocfilehash: d748be3a304222831a55bb9319a04fba1e28e955
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75992363"
+---
+# <a name="azure-ea-agreements-and-amendments"></a>Umowy EA platformy Azure i poprawki
+
+W tym artykule opisano możliwy wpływ umów EA platformy Azure i ich poprawek na sposób, w jaki uzyskujesz dostęp do usług platformy Azure, korzystasz z nich i za nie płacisz.
+
+## <a name="amendment-status"></a>Stan poprawek
+
+Wszelkie poprawki dotyczące klientów platformy Azure muszą zostać przekazane do ich partnera lub zespołu obsługi klientów firmy Microsoft, a następnie przetworzone w regionalnym centrum operacyjnym. Jeśli sądzisz, że poprawka nie została przetworzona, skontaktuj się z partnerem, doradcą ds. oprogramowania lub zespołem obsługi klientów firmy Microsoft.
+
+## <a name="enrollment-provisioning-status"></a>Stan aprowizacji rejestracji
+
+Data rozpoczęcia nowego zobowiązania pieniężnego zależy od daty przetworzenia go w regionalnym centrum operacyjnym. Ponieważ zobowiązania finansowe wynikające z zamówień składanych za pośrednictwem witryny Azure EA Portal są przetwarzane w strefie czasowej UTC, może wystąpić pewne opóźnienie, jeśli Twoje zobowiązanie pieniężne wynikające z zamówień zakupów zostało przetworzone w innym regionie. Data rozpoczęcia obsługi w zamówieniu dostępnym pod adresem https://www.explore.ms wskazuje datę rozpoczęcia zobowiązania pieniężnego. Data rozpoczęcia obsługi odpowiada momentowi wyświetlenia zobowiązania pieniężnego w witrynie Azure EA Portal.
+
+## <a name="special-pricing-and-azure-commitment-discount-amendments"></a>Specjalne ceny i rabat za zobowiązanie dotyczące platformy Azure Commitment Discount
+
+Jeśli wymagane są poprawki dotyczące specjalnych cen i rabatu za zobowiązanie dotyczące platformy Azure (ACD), skontaktuj się z zespołem obsługi klientów. Zespół operacyjny platformy Azure może zastosować rabat ACD po przetworzeniu poprawki przez dział obsługi klientów biznesowych i przekazaniu odpowiedniego żądania do zespołu operacyjnego. Rabat ACD jest stosowany tylko w bieżącym miesiącu. Za wszystkie poprzednie miesiące przyznawane są środki z datą wsteczną. 
+
+## <a name="support-offer-not-provisioned"></a>Brak aprowizacji oferty pomocy technicznej
+
+Możesz zamówić usługę pomocy technicznej w wariancie Standard lub Pro-Direct, kupując odpowiednie jednostki SKU. Ten proces jest podobny do zamówienia jednostki SKU zobowiązania pieniężnego platformy Azure z umową EA. Na przykład 6QK-00001. Numery jednostek SKU pomocy technicznej to W6T-00002 (Pro-Direct) i W6T-00003 (Standard). Zapoznaj się z bieżącymi ofertami pomocy technicznej przed zakupem jednostek SKU pomocy technicznej.
+
+Aby oferta pomocy technicznej została aprowizowana, w rejestracji musi istnieć co najmniej jedno aktywne konto.
+
+ Dla niektórych klientów jest dostępna [Oferta planu pomocy technicznej dla umów Enterprise Agreement](https://azure.microsoft.com/offers/enterprise-agreement-support/) platformy Azure.
+
+## <a name="enrollment-status"></a>Stan rejestracji
+
+Rejestracja może mieć jedną z następujących wartości stanu. Każda wartość określa, w jaki sposób można używać rejestracji i uzyskiwać do niej dostęp. Stan rejestracji określa etap, na którym znajduje się rejestracja. Informuje na przykład, czy trzeba aktywować rejestrację przed jej użyciem. Może też informować o upłynięciu okresu początkowego i rozpoczęciu naliczania opłat za nadwyżkę użycia.
+
+**Oczekująca** — administrator rejestracji musi zalogować się w witrynie Azure EA Portal. Po zalogowaniu rejestracja przejdzie w stan **Aktywna**.
+
+**Aktywna** — rejestracja jest dostępna i można jej używać. W witrynie Azure EA Portal można tworzyć konta i subskrypcje. Rejestracja pozostanie aktywna do daty zakończenia umowy Enterprise Agreement.
+
+**Przedłużenie na czas nieokreślony** — ten stan występuje po terminie zakończenia umowy Enterprise Agreement. Przed upływem terminu zakończenia umowy Enterprise Agreement związanej z rejestracją administrator rejestracji powinien:
+
+- Odnowić rejestrację przez dodanie kolejnego zobowiązania pieniężnego.
+- Przenieść istniejącą rejestrację do nowej rejestracji.
+- Przeprowadzić migrację do programu subskrypcji online firmy Microsoft (MOSP).
+- Potwierdzić wyłączenie wszystkich usług skojarzonych z rejestracją.
+
+**Wygasły** — rejestracja EA wygasa w dniu zakończenia umowy Enterprise Agreement. Klient z umową EA zrezygnował z przedłużenia umowy i wszystkie usługi zostały wyłączone.
+
+Od 1 sierpnia 2019 r. nowe formularze rezygnacji nie są akceptowane w przypadku komercyjnych klientów platformy Azure. Zamiast tego wszystkie rejestracje są przedłużane na czas nieokreślony. Jeśli chcesz zakończyć korzystanie z usług platformy Azure, zamknij subskrypcję w [witrynie Azure EA Portal](https://portal.azure.com). Innym sposobem jest przesłanie żądania zakończenia przez Twojego partnera pod adresem https://www.explore.ms. Klienci z umowami dla instytucji rządowych nie zostaną obciążeni żadną opłatą.
+
+**Przeniesiona** — ten stan jest stosowany do rejestracji, z których konta i usługi zostały przeniesione do nowej rejestracji. Rejestracje nie są przenoszone automatycznie w przypadku wygenerowania nowego numeru rejestracji podczas odnawiania. Aby nastąpiło automatyczne przeniesienie, należy uwzględnić poprzedni numer rejestracji w żądaniu odnowienia klienta.
+
+## <a name="partner-markup"></a>Marża partnera
+
+Marża partnera dostępna w witrynie Azure EA Portal zapewnia lepsze raportowanie kosztów dla klientów. W witrynie Azure EA Portal można wyświetlić użycie oraz ceny skonfigurowane przez partnerów dla ich klientów.
+
+Funkcja narzutu umożliwia administratorom partnerów dodanie określonego procentowo narzutu do umów Enterprise Agreement zawieranych za ich pośrednictwem. Narzut procentowy jest stosowany do wszystkich informacji o usługach firmy Microsoft w witrynie Azure EA Portal, takich jak stawki mierników, zobowiązania pieniężne i zamówienia. Po opublikowaniu narzutu przez partnera klient zobaczy koszty platformy Azure w witrynie Azure EA Portal. Na przykład w podsumowaniu użycia,cennikach i pobranych raportach użycia.
+
+Od września 2019 r. partnerzy mogą dodać marżę w dowolnym czasie w danym okresie. Nie muszą czekać do kolejnej rocznicy umowy w celu dodania marży.
+
+Firma Microsoft nie będzie mieć dostępu do podanego narzutu ani skojarzonych cen w żadnym celu, chyba że zostanie jawnie autoryzowana przez partnera kanału.
+
+### <a name="how-the-calculation-works"></a>W jaki sposób są wykonywane obliczenia
+
+Dostawca rozwiązań licencjonowania udostępnia pojedynczą procentową liczbę w witrynie EA Portal.  Wszystkie informacje komercyjne w portalu zostaną podniesione przez wartość procentową zapewnioną przez dostawcę. Przykład:
+
+- Klient podpisuje umowę EA z zobowiązaniami pieniężnymi w kwocie 100 000 USD.
+- Stawka miernika dla usługi A wynosi 10 USD/godzinę.
+- W witrynie EA Portal dostawca rozwiązań licencjonowania ustawia narzut w wysokości 10%.
+- W poniższym przykładzie przedstawiono sposób, w jaki klient zobaczy informacje handlowe:
+    - Saldo pieniężne: USD 110 000.
+    - Stawka miernika dla usługi A: 11 USD/godzinę.
+    - Informacje o użyciu/hostingu usługi A używane przez 100 godzin: USD 1 100.
+    - Saldo pieniężne dostępne dla klienta po rozliczeniu za usługę w wysokości: USD 108 900.
+
+### <a name="when-to-use-a-markup"></a>Kiedy korzystać z narzutu
+
+Ta funkcja jest przydatna w przypadku ustawiania tej samej wartości procentowej narzutu na WSZYSTKIE transakcje handlowe zawierane w ramach umowy EA. Oznacza to, że narzut powinien zostać ustawiony na informacje dotyczące zobowiązań pieniężnych, stawki miernika, informacje o zamówieniach itd.
+
+Nie używaj funkcji narzutu, jeśli:
+- Korzystasz z różnych stawek na zobowiązania pieniężne i stawki miernika.
+- Korzystasz z różnych stawek dla różnych mierników.
+
+Jeśli korzystasz z różnych stawek dla różnych mierników, zalecamy utworzenie niestandardowego rozwiązania bazującego na kluczu interfejsu API, który po wprowadzeniu przez klienta spowoduje ściągnięcie danych dotyczących zużycia i udostępnienie raportów.
+
+### <a name="other-important-information"></a>Inne istotne informacje
+
+Ta funkcja jest przeznaczona do oceny kosztów platformy Azure dla klienta końcowego. Dostawca rozwiązań licencjonowania jest odpowiedzialny za wszystkie transakcje finansowe z klientem w ramach umowy EA.
+
+Pamiętaj, aby przejrzeć informacje handlowe — informacje o saldzie środków pieniężnych, cennik itp. przed opublikowaniem cen z narzutem dla klientów końcowych.
+
+### <a name="how-to-add-a-price-markup"></a>Jak dodać narzut na cenę
+
+**Krok jeden: Dodawanie znaczników cen**
+
+1. W witrynie Enterprise Portal kliknij pozycję **Raporty** w obszarze nawigacji po lewej.
+1. W obszarze _Podsumowanie użycia_ kliknij niebieskie słowo **Narzut**.
+1. Wprowadź wartość procentową narzutu (od -100 do 100), a następnie kliknij pozycję **Podgląd**.
+
+
+**Krok 2: przegląd i weryfikacja**
+
+Przejrzyj ceny z narzutem w obszarze _Podsumowanie użycia_ dla terminu zobowiązania w widoku klienta. Cena firmy Microsoft będzie nadal dostępna w widoku partnera. Widoki można przełączać za pomocą przełącznika „osoby” narzutu partnera w prawym górnym rogu.
+
+1. Przejrzyj ceny w arkuszu cen.
+1. Przed opublikowaniem można wprowadzać zmiany, wybierając pozycję **Edytuj** na karcie _Wyświetl podsumowanie użycia > Widok klienta_.  
+  Ta sama wartość procentowa narzutu zostanie naliczona zarówno dla cen usług, jak i salda zobowiązań. Nie używaj tej funkcji, jeśli masz różne wartości procentowe dla salda środków pieniężnych i stawek mierników lub różne wartości procentowe dla różnych usług.
+
+**Krok 3. publikowanie**
+
+Po przejrzeniu i sprawdzeniu poprawności cen kliknij pozycję **Publikuj**.
+  
+Cennik z narzutem będzie dostępny dla administratorów przedsiębiorstw natychmiast po wybraniu opcji publikowania. Nie można wprowadzać zmian w narzucie. Jeśli chcesz coś zmodyfikować, musisz wyłączyć funkcję narzutu i zacząć od pierwszego kroku.
+
+### <a name="which-enrollments-have-a-markup-enabled"></a>Które rejestracje mają włączoną funkcję narzutu?
+
+Aby sprawdzić, czy rejestracja ma opublikowaną adiustację, kliknij przycisk **Zarządzaj** w lewym obszarze nawigacji, a następnie kliknij kartę **rejestracja** . Wybierz pole Rejestracja do sprawdzenia i Wyświetl stan znacznika w obszarze _szczegóły rejestracji_. Spowoduje to wyświetlenie bieżącego stanu funkcji narzutu dla tej umowy EA. Możliwe wartości to Wyłączone, Podgląd i Opublikowane.
+
+### <a name="how-can-the-customer-download-usage-estimates"></a>Jak klient może pobrać szacunkowe wartości użycia?
+
+Po opublikowaniu narzutu partnera klient pośredni będzie miał dostęp do tworzonych co miesiąc plików CSV zawierających informacje o saldzie i opłatach oraz do plików CSV zawierających szczegóły użycia. Pliki ze szczegółami użycia będą obejmować stawki zasobu i rozszerzony koszt.
+
+### <a name="how-can-i-as-partner-apply-markup-to-existing-ea-customers-that-was-earlier-with-another-partner"></a>Jak mogę jako partner stosować narzut dla istniejących klientów z umową EA, którzy byli wcześniej obsługiwani przez innego partnera?
+Partnerzy mogą korzystać z funkcji narzutu (w witrynie Azure EA) po przetworzeniu zmiany partnera handlowego. Nie trzeba czekać do następnego cyklu rocznego.
+
+
+## <a name="resource-commitment-and-requesting-quota-increases"></a>Zwiększanie zobowiązania dostarczenia zasobów i limitu przydziału
+
+**System wymusza następujące domyślne przydziały dla każdej subskrypcji:**
+
+| **Zasób** | **Domyślny limit przydziału** | **Komentarze** |
+| --- | --- | --- |
+| Wystąpienia obliczeniowe platformy Microsoft Azure | 20 współbieżnych małych wystąpień obliczeniowych lub równoważna ich liczba w przypadku innych rozmiarów wystąpień obliczeniowych. | W poniższej tabeli przedstawiono sposób obliczania równoważnej liczby małych wystąpień:<ul><li> Bardzo małe — odpowiednik 1 małego wystąpienia </li><li> Małe — odpowiednik 1 małego wystąpienia </li><li> Średnie — odpowiednik 2 małych wystąpień </li><li> Duże — odpowiednik 4 małych wystąpień </li><li> Bardzo duże — odpowiednik 8 małych wystąpień </li> </ul>|
+| Wystąpienia obliczeniowe platformy Microsoft Azure — maszyny wirtualne w wersji 2 | EA: 350 rdzeni | Ogólnie dostępne maszyny wirtualne IaaS w wersji 2:<ul><li> Rodzina A0\_A7 — 350 rdzeni </li><li> Rodzina B\_A0\_A4 — 350 rdzeni </li><li> Rodzina A8\_A9 — 350 rdzeni </li><li> Rodzina DF — 350 rdzeni</li><li> GF — 350 rdzeni </li></ul>|
+| Usługi hostowane na platformie Microsoft Azure | 6 hostowanych usług | Tego limitu usług hostowanych nie można zwiększyć powyżej sześciu w przypadku pojedynczej subskrypcji. Jeśli potrzebujesz dodatkowych usług hostowanych, dodaj kolejne subskrypcje. |
+| Microsoft Azure Storage | 5 kont magazynu, każde o maksymalnym rozmiarze 100 TB. | Można zwiększyć liczbę kont magazynu do maksymalnie 20 na subskrypcję. Jeśli potrzebujesz dodatkowych kont magazynu, dodaj kolejne subskrypcje. |
+| SQL Azure | 149 baz danych dowolnego typu (tj. Web Edition lub Business Edition). |   |
+| Kontrola dostępu | 50 przestrzeni nazw na konto. 100 milionów transakcji kontroli dostępu na miesiąc |   |
+| Service Bus | 50 przestrzeni nazw na konto. 40 połączeń usługi Service Bus | Klienci, którzy kupują połączenia usługi Service Bus za pośrednictwem pakietów połączeń, będą mieć limity przydziału równe punktowi środkowemu między zakupionym pakietem połączeń a następną najwyższą wartością pakietu połączeń. Klienci, którzy wybiorą pakiet 500, będą mieli limit przydziału równy 750. |
+
+## <a name="resource-commitment"></a>Zobowiązanie dostarczenia zasobów
+
+Firma Microsoft będzie zapewniać usługi co najmniej na poziomie powiązanego użycia, które obejmują zakupione zobowiązanie miesięczne (zobowiązanie do świadczenia usług), ale każde zwiększenie poziomu użycia zasobów usługi (np. zwiększenie liczby uruchomionych wystąpień obliczeniowych lub ilości używanego miejsca) jest zależne od dostępności tych zasobów usługi.
+
+Opisane powyżej przydziały nie są zobowiązaniami usługi. W celu określenia liczby jednoczesnych małych wystąpień obliczeniowych (lub ich odpowiednika) zapewnianych w ramach zobowiązania do świadczenia usług zatwierdzona liczba godzin małego wystąpienia obliczeniowego w miesiącu jest dzielona przez liczbę godzin w najkrótszym miesiącu roku (tj. lutym — 672 godziny).
+
+## <a name="requesting-a-quota-increase"></a>Żądanie zwiększenia limitu przydziału
+
+W dowolnym momencie możesz poprosić o zwiększenie limitu przydziału przez przesłanie [żądania online](https://g.microsoftonline.com/0WAEP00en/6). Aby przetworzyć żądanie, podaj następujące informacje:
+
+- Konto Microsoft lub konto służbowe skojarzone z właścicielem konta Twojej subskrypcji. Jest to adres e-mail używany do logowania się w witrynie Microsoft Azure Portal w celu zarządzania subskrypcjami. Upewnij się, że jest to konto skojarzone z rejestracją w ramach umowy EA.
+- Zasoby, dla których chcesz zwiększyć limit przydziału, i ich ilość.
+- Identyfikator subskrypcji portalu deweloperów platformy Azure skojarzony z Twoją usługą.
+  - Aby uzyskać informacje na temat sposobu uzyskiwania identyfikatora subskrypcji, [skontaktuj się z pomocą techniczną](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).
+
+## <a name="azure-compute-pre-purchase-plan-cpp"></a>Plan zakupu z góry usługi Azure Compute (CPP)
+
+Plan zakupu z góry usługi Azure Compute (CPP — wcześniej znany jako Promocja usługi Azure Compute) to oferta, która zapewnia klientom stały stan, przewidywalne obciążenia i możliwość uzyskania znacznego rabatu na usługi obliczeniowe przez zakup obliczeń na platformie Azure z góry na 12 miesięcy. Jest ona dostępna dla klientów z umową EA i widoczna w witrynie EA Portal.
+
+Jeśli zamówiono jednostkę SKU CPP, jest ona przeznaczona dla konkretnego typu maszyny w określonym centrum danych. Na chwilę obecną dla tej usługi nie udostępniamy listy wszystkich zakupów CPP dokonanych przez klienta, dlatego nie ma listy oczekujących środków. Jednak w przypadku skonfigurowania zakupionych typów maszyn w centrum danych w witrynie EA Portal w raporcie Podsumowanie użycia zostanie wyświetlona miesięczna alokacja.
+
+Kwota zakupów dokonanych z góry będzie wyświetlana jako środki w kolumnie „Uwzględnione jednostki”. Rozliczane użycie nie spowoduje naliczania opłat za użycie, dopóki nie zostaną zużyte „Uwzględnione jednostki”. Po ich wykorzystaniu za dodatkowe użycie będą naliczane opłaty według wynegocjowanych stawek w normalnym arkuszu cen klienta umowy EA.
+
+Sposób zakupu środków jest oparty na liczbie maszyn danej klasy miesięcznie. Na przykład jeśli zakupiono 70 maszyn wirtualnych A2 na rok w regionie Wschodnie stany USA 2, ten zakup nie będzie tak samo widoczny w witrynie EA Portal.
+
+Na potrzeby obliczeń przyjmuje się, że przez miesiąc maszyny działają przez 744 godziny. Po konwersji na godziny otrzymamy 70 razy 744, czyli 52 080 zakupionych godzin maszyn wirtualnych A2 miesięcznie. W obszarze podsumowania użycia w witrynie EA Portal maszyny wirtualne A2 są uwidocznione w 100-godzinnych przyrostach, co przekłada się na środki w liczbie 520,8 (52 080/100) uwzględnionych jednostek na miesiąc. Są tam też wyświetlane zużyte do tej pory jednostki w miesiącu. Opłaty za użycie powinny wynosić zero do czasu, kiedy liczba użytych przez miesiąc jednostek przekroczy liczbę uwzględnionych jednostek miesięcznie.
+
+Różne typy maszyn używają różnych jednostek miary. Na przykład maszyny wirtualne D3 i D4 używają 10-godzinnej jednostki miary w naszym raporcie podsumowania użycia, w związku z czym zakup 70 z nich będzie obejmował 5208 uwzględnionych jednostek na miesiąc (52 080/10).
+
+Ogólnie poniższa formuła pozwoli obliczyć liczbę zakupionych maszyn wirtualnych w oparciu o jednostki miary:
+
+<center><b> („Uwzględniona ilość” * „Jednostki miary”) / 744 </b></center>
+
+## <a name="plan-skus"></a>Jednostki SKU planu
+
+Jednostki SKU planu oferują możliwość zakupu zestawu zintegrowanych usług po obniżonej stawce. Jednostki SKU planu są zaprojektowane tak, aby uzupełniać się wzajemnie w ramach dalszych zintegrowanych ofert i tworzyć zestaw w celu zwiększenia oszczędności.
+
+Przykładem może być subskrypcja pakietu Operations Management Suite (OMS). Pakiet OMS oferuje prosty sposób uzyskania dostępu do pełnego zestawu opartych na chmurze funkcji zarządzania, takich jak analiza, konfiguracja, automatyzacja, zabezpieczenia, tworzenie kopii zapasowych i odzyskiwanie po awarii. Subskrypcje pakietu OMS obejmują prawa do składników programu System Center w celu zapewnienia kompletnego rozwiązania dla środowisk chmury hybrydowej.
+
+Administratorzy przedsiębiorstwa mogą nadawać właścicielom kont prawa do aprowizowania wcześniej zakupionych jednostek SKU planu w witrynie Enterprise Portal, wykonując następujące czynności:
+
+### <a name="view-the-price-sheet-to-check-included-quantity"></a>Wyświetlanie arkusza cen w celu sprawdzenia uwzględnionej ilości
+
+1. Zaloguj się jako administrator przedsiębiorstwa.
+1. Kliknij pozycję **Raporty** w obszarze nawigacji po lewej.
+1. Kliknij kartę **Arkusz cen**.
+1. Kliknij ikonę „Pobierz” w prawym górnym rogu.
+1. Znajdź odpowiednie numery części jednostek SKU planu, korzystając z filtru w kolumnie „Uwzględniona ilość”, i wybierz wartości większe niż „0”.
+
+### <a name="provision-the-plan-skus"></a>Aprowizowanie jednostek SKU planu
+
+Administratorzy przedsiębiorstwa mogą dodawać nowych właścicieli kont, kojarzyć istniejącego właściciela konta lub żądać istniejących właścicieli kont mogących logować się do witryny Azure EA Portal w celu aprowizowania zakupionych wcześniej w witrynie Azure EA Portal jednostek SKU planu, wykonując poniższe kroki.  
+
+**Dodawanie nowego właściciela konta (czynność wykonana przez administratora witryny EA):**
+
+1. W witrynie Azure EA Portal wybierz pozycję **Zarządzanie** w obszarze nawigacji po lewej stronie.
+1. Kliknij kartę **Konto**.
+1. Na stronie Konto kliknij pozycję **+ Dodaj konto**.
+1. Wybierz dział lub pozostaw jako nieprzypisane.
+1. Wybierz odpowiedni typ uwierzytelniania.
+1. Podaj przyjazną nazwę, której chcesz używać do identyfikowania tego konta na potrzeby raportowania.
+1. Wprowadź adres e-mail właściciela konta, który ma zostać skojarzony z nowym kontem.
+1. Potwierdź adres e-mail, który ma zostać skojarzony z nowym kontem.
+1. Kliknij pozycję **Dodaj**.
+1. Możesz dodać kolejne konto, klikając pozycję **Dodaj kolejne konto** lub klikając przycisk **Dodaj** w prawym dolnym rogu na lewym pasku narzędzi.
+1. Teraz właściciel konta może się zalogować, aby dodać odpowiednie subskrypcje w celu aprowizacji jednostek SKU planu
+
+**Kojarzenie istniejącego właściciela konta:**
+
+1. W witrynie Enterprise Portal kliknij pozycję **Zarządzanie**.
+1. Kliknij kartę **Konto**.
+1. Kliknij pozycję **+ Dodaj konto**. Wprowadź konto Microsoft lub konto służbowe skojarzone z istniejącym kontem.
+1. Potwierdź konto Microsoft lub konto służbowe skojarzone z istniejącym kontem.
+1. Podaj nazwę, której chcesz używać do identyfikowania tego konta na potrzeby raportowania.
+1. Kliknij pozycję **Dodaj**.
+1. Możesz dodać kolejne konto, wybierając ponownie opcję **+ Dodaj konto**, lub wrócić do strony głównej, wybierając przycisk **Administrator**.  
+1. Jeśli klikniesz, aby wyświetlić stronę konta, nowo dodane konto zostanie wyświetlone w stanie „Oczekiwanie”. Jego stan zmieni się na „Aktywny” po pierwszym zalogowaniu się właściciela konta do witryny EA Portal.
+
+### <a name="existingnew-account-owners-to-create-new-subscriptions"></a>Tworzenie nowych subskrypcji przez istniejących lub nowych właścicieli kont
+
+**Krok 1: Logowanie do konta**
+1. W witrynie EA Portal wybierz kartę **Zarządzanie** i przejdź do pozycji **Subskrypcja** w górnym menu.
+1. Sprawdź fakt zalogowania jako właściciel konta.
+1. Kliknij pozycję **+Dodaj subskrypcję**.
+1. Kliknij pozycję **Kup**.
+
+Przy pierwszym dodawaniu subskrypcji do konta konieczne będzie podanie swoich informacji kontaktowych. Podczas dodawania kolejnych subskrypcji Twoje informacje kontaktowe będą automatycznie dodawane.
+
+Przy pierwszym dodawaniu subskrypcji do konta zostanie wyświetlona prośba o zaakceptowanie umowy MOSA oraz planu taryfowego. Te sekcje NIE mają zastosowania do klientów posiadających umowę Enterprise Agreement, ale są obecnie niezbędne do aprowizacji Twojej subskrypcji. Poprawka do rejestracji umowy Microsoft Azure Enterprise zastępuje powyższe elementy, a Twoja relacja umowna nie ulegnie zmianie. Zaznacz pole wyboru oznaczające zaakceptowanie warunków.
+
+**Krok 2: Aktualizacja nazwy subskrypcji**
+
+Wszystkie nowe subskrypcje zostaną dodane z domyślną nazwą subskrypcji „Microsoft Azure Enterprise”. Ważne jest, aby zaktualizować nazwę subskrypcji w celu odróżnienia jej od innych subskrypcji w ramach rejestracji przedsiębiorstwa i upewnić się, że można ją rozpoznać w raportach na poziomie przedsiębiorstwa.
+
+Kliknij pozycję **Subskrypcje**, wybierz utworzoną subskrypcję, a następnie kliknij pozycję **Edytuj szczegóły subskrypcji**.
+
+Zaktualizuj nazwę subskrypcji i administratora usługi, a następnie kliknij znacznik wyboru. Ta nazwa subskrypcji będzie wyświetlana w raportach i będzie też nazwą projektu skojarzonego z subskrypcją w portalu dla deweloperów.
+Propagowanie nowych subskrypcji na liście subskrypcji może zająć do 24 godzin.
+
+Tylko właściciele kont mogą wyświetlać subskrypcje i zarządzać nimi.
+
+### <a name="troubleshooting"></a>Rozwiązywanie problemów
+
+**Właściciel konta ma stan oczekiwania**
+
+Gdy nowi właściciele konta są po raz pierwszy dodawani do rejestracji, ich stan jest wyświetlany jako „oczekujące”. Po otrzymaniu powitalnej wiadomości e-mail z informacjami o aktywacji właściciel konta może się zalogować, aby aktywować swoje konto. Aktywacja spowoduje zaktualizowanie stanu konta z „oczekujące” na „aktywne”.
+
+**Naliczanie opłat za użycie po zakupieniu jednostek SKU planu**
+
+Ten scenariusz występuje, gdy klient wdrożył usługi, korzystając z niewłaściwego numeru rejestracji, lub wybrał niewłaściwe usługi.
+
+Aby się upewnić, czy wdrożenie nastąpiło w ramach właściwej rejestracji, możesz sprawdzić informacje o uwzględnionych jednostkach za pośrednictwem arkusza cen. Zaloguj się jako administrator przedsiębiorstwa, a następnie kliknij pozycję **raporty** na lewym pasku nawigacyjnym, a następnie wybierz pozycję Karta **arkusza cen** . Kliknij ikonę pobierania w prawym górnym rogu i Znajdź odpowiednie numery części planu jednostki SKU z filtrem w kolumnie "uwzględniona ilość" i wybierz wartości większe niż "0".
+
+Upewnij się, że plan pakietu OMS jest wyświetlany w arkuszu cen w obszarze uwzględnionych jednostek. Jeśli w rejestracji nie ma uwzględnionych jednostek dla planu pakietu OMS, być może Twój plan znajduje się w innej rejestracji. Skontaktuj się z pomocą techniczną witryny Azure Enterprise Portal pod adresem [https://aka.ms/AzureEntSupport](https://aka.ms/AzureEntSupport).
+
+Jeśli uwzględnione jednostki usług w arkuszu cen nie pasują do wdrożonych elementów, np. Operational Insights dane w warstwie Premium przeanalizowane i Operational Insights dane standardowe przeanalizowane, oznacza to, że możesz mieć wdrożone usługi, które nie są objęte planem. Skontaktuj się z pomocą techniczną platformy Azure Enterprise Portal w [https://aka.ms/AzureEntSupport](https://aka.ms/AzureEntSupport) , aby pomóc nam dalej.
+
+**Aprowizowane usługi w ramach jednostek SKU planu znajdują się w niewłaściwej rejestracji**
+
+Jeśli masz wiele rejestracji i wdrożono usługi, korzystając z niewłaściwego numeru rejestracji, który nie ma planu pakietu OMS, skontaktuj się z pomocą techniczną witryny Azure Enterprise Portal pod adresem [https://aka.ms/AzureEntSupport](https://aka.ms/AzureEntSupport).
+
+## <a name="next-steps"></a>Następne kroki
+
+- Aby dowiedzieć się, jak rozpocząć korzystanie z witryny Azure EA Portal, zobacz [Wprowadzenie do witryny Azure EA Portal](ea-portal-get-started.md).
+- Administratorzy portalu EA platformy Azure powinni przeczytać artykuł [Administracja portalu Azure EA](ea-portal-administration.md), aby poznać typowe zadania administracyjne.

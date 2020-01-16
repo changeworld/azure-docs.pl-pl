@@ -7,16 +7,16 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/13/2019
-ms.openlocfilehash: f6e1af2fdf43eb4351e996297f7dba775b7ffcef
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 4baa65ca5dda6b266cd6c739225ebd01d011268c
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278794"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980083"
 ---
 # <a name="move-a-log-analytics-workspace-to-different-subscription-or-resource-group"></a>Przenoszenie obszaru roboczego Log Analytics do innej subskrypcji lub grupy zasobów
 
-W tym artykule omówiono procedurę przenoszenia obszaru roboczego Log Analytics do innej grupy zasobów lub subskrypcji w tym samym regionie. Aby dowiedzieć się więcej o przenoszeniu zasobów platformy Azure za pomocą Azure Portal, programu PowerShell, interfejsu wiersza polecenia platformy Azure lub interfejsu API REST. [przenoszenie zasobów do nowej grupy zasobów lub subskrypcji](../../azure-resource-manager/resource-group-move-resources.md). 
+W tym artykule omówiono procedurę przenoszenia obszaru roboczego Log Analytics do innej grupy zasobów lub subskrypcji w tym samym regionie. Aby dowiedzieć się więcej o przenoszeniu zasobów platformy Azure za pomocą Azure Portal, programu PowerShell, interfejsu wiersza polecenia platformy Azure lub interfejsu API REST. [przenoszenie zasobów do nowej grupy zasobów lub subskrypcji](../../azure-resource-manager/management/move-resource-group-and-subscription.md). 
 
 > [!IMPORTANT]
 > Nie można przenieść obszaru roboczego do innego regionu.
@@ -82,7 +82,7 @@ Aby odłączyć konto usługi Automation od obszaru roboczego przy użyciu Azure
 
 ## <a name="move-your-workspace"></a>Przenoszenie obszaru roboczego
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Portal Azure
 Aby przenieść obszar roboczy przy użyciu Azure Portal, wykonaj czynności opisane w poniższej procedurze:
 
 1. Otwórz menu **log Analytics obszary robocze** , a następnie wybierz obszar roboczy.
@@ -107,4 +107,4 @@ Move-AzResource -ResourceId "/subscriptions/00000000-0000-0000-0000-000000000000
 
 
 ## <a name="next-steps"></a>Następne kroki
-- Aby zapoznać się z listą obsługiwanych zasobów, zobacz [przenoszenie obsługi zasobów](../../azure-resource-manager/move-support-resources.md).
+- Aby zapoznać się z listą obsługiwanych zasobów, zobacz [przenoszenie obsługi zasobów](../../azure-resource-manager/management/move-support-resources.md).

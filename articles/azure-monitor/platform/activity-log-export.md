@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: b71f5590f120e15bd4ea027bcf6132795dac3cb6
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 0e5780561df121d3d5af3a9b754d774cc7d6cf76
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750575"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75969657"
 ---
 # <a name="export-azure-activity-log-to-storage-or-azure-event-hubs"></a>Eksportowanie dziennika aktywności platformy Azure do magazynu lub Event Hubs platformy Azure
 
 > [!WARNING]
-> Teraz można zbierać dane dziennika aktywności w obszarze roboczym Log Analytics przy użyciu ustawienia diagnostycznego podobnego do sposobu zbierania dzienników zasobów. Zobacz [zbieranie i analizowanie dzienników aktywności platformy Azure w obszarze roboczym log Analytics w Azure monitor](diagnostic-settings-subscription.md).
+> Teraz można zbierać dane dziennika aktywności w obszarze roboczym Log Analytics przy użyciu ustawienia diagnostycznego podobnego do sposobu zbierania dzienników zasobów. Zobacz [zbieranie i analizowanie dzienników aktywności platformy Azure w obszarze roboczym log Analytics w Azure monitor](diagnostic-settings-legacy.md).
 
 [Dziennik aktywności platformy Azure](platform-logs-overview.md) zapewnia wgląd w zdarzenia na poziomie subskrypcji, które wystąpiły w ramach subskrypcji platformy Azure. Oprócz wyświetlania dziennika aktywności w Azure Portal lub kopiowania go do Log Analytics obszaru roboczego, gdzie można analizować z innymi danymi zebranymi przez Azure Monitor, można utworzyć profil dziennika w celu zarchiwizowania dziennika aktywności na koncie usługi Azure Storage lub przesyłania strumienia do niego  Centrum zdarzeń.
 
@@ -28,12 +28,12 @@ Archiwizowanie dziennika aktywności na koncie magazynu jest przydatne, jeśli c
 ## <a name="stream-activity-log-to-event-hub"></a>Przesyłanie strumieniowe dziennika aktywności do centrum zdarzeń
 [Azure Event Hubs](/azure/event-hubs/) to usługa przesyłania strumieniowego danych i usługi pozyskiwania zdarzeń, które mogą odbierać i przetwarzać miliony zdarzeń na sekundę. Dane wysłane do centrum zdarzeń mogą zostać przekształcone i zmagazynowane przy użyciu dowolnego dostawcy analityki czasu rzeczywistego lub adapterów przetwarzania wsadowego/magazynowania. W przypadku dziennika aktywności można użyć funkcji przesyłania strumieniowego na dwa sposoby:
 * **Przesyłaj strumieniowo systemy rejestrowania i telemetrii innych firm**: w czasie usługa Azure Event Hubs Streaming stanie się mechanizmem potokowym dziennika aktywności w rozwiązaniach rozwiązań Siem i log Analytics innych firm.
-* **Utwórz niestandardową platformę telemetrii i rejestrowania**: Jeśli masz już wbudowaną niestandardową platformę telemetrii lub zastanawiasz się, że tworzysz ten, wysoce skalowalny charakter publikowania/subskrybowania Event Hubs umożliwia elastyczne pozyskiwanie dziennika aktywności. 
+* **Utwórz niestandardową platformę telemetrii i rejestrowania**: Jeśli masz już wbudowaną niestandardową platformę telemetrii lub zastanawiasz się, że tworzysz ten, wysoce skalowalny charakter publikowania/subskrybowania Event Hubs umożliwia elastyczne pozyskiwanie dziennika aktywności.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 ### <a name="storage-account"></a>Konto magazynu
-W przypadku archiwizowania dziennika aktywności należy [utworzyć konto magazynu](../../storage/common/storage-quickstart-create-account.md) , jeśli jeszcze go nie masz. Nie należy używać istniejącego konta magazynu, które ma inne niemonitorowane dane, które są w nim przechowywane, dzięki czemu można lepiej kontrolować dostęp do danych monitorowania. Jeśli dzienniki i metryki są również archiwizowane na koncie magazynu, możesz użyć tego samego konta magazynu, aby zachować wszystkie dane monitorowania w centralnej lokalizacji.
+W przypadku archiwizowania dziennika aktywności należy [utworzyć konto magazynu](../../storage/common/storage-account-create.md) , jeśli jeszcze go nie masz. Nie należy używać istniejącego konta magazynu, które ma inne niemonitorowane dane, które są w nim przechowywane, dzięki czemu można lepiej kontrolować dostęp do danych monitorowania. Jeśli dzienniki i metryki są również archiwizowane na koncie magazynu, możesz użyć tego samego konta magazynu, aby zachować wszystkie dane monitorowania w centralnej lokalizacji.
 
 Konto magazynu nie musi znajdować się w tej samej subskrypcji co subskrypcja emitująca dzienniki, dopóki użytkownik, który konfiguruje ustawienie, ma dostęp do obu subskrypcji.
 > [!NOTE]
@@ -65,7 +65,7 @@ Jeśli zasady przechowywania są ustawione, ale przechowywanie dzienników na ko
 
 
 > [!IMPORTANT]
-> Jeśli nie zarejestrowano dostawcy zasobów Microsoft. Insights, podczas tworzenia profilu dziennika może zostać wyświetlony komunikat o błędzie. Zobacz [dostawcy zasobów platformy Azure i typy](../../azure-resource-manager/resource-manager-supported-services.md) , aby zarejestrować tego dostawcę.
+> Jeśli nie zarejestrowano dostawcy zasobów Microsoft. Insights, podczas tworzenia profilu dziennika może zostać wyświetlony komunikat o błędzie. Zobacz [dostawcy zasobów platformy Azure i typy](../../azure-resource-manager/management/resource-providers-and-types.md) , aby zarejestrować tego dostawcę.
 
 
 ### <a name="create-log-profile-using-the-azure-portal"></a>Utwórz profil dziennika przy użyciu Azure Portal
@@ -77,7 +77,7 @@ Utwórz lub Edytuj profil dziennika za pomocą opcji **Eksportuj do centrum zdar
     ![Przycisk Eksportuj w portalu](media/activity-log-export/portal-export.png)
 
 3. W wyświetlonym bloku określ następujące elementy:
-   * Regiony ze zdarzeniami do eksportowania. Należy zaznaczyć wszystkie regiony, aby upewnić się, że nie zostaną pominięte najważniejsze zdarzenia, ponieważ dziennik aktywności jest dziennikiem globalnym (nieregionalnym), dlatego większość zdarzeń nie ma skojarzonego regionu. 
+   * Regiony ze zdarzeniami do eksportowania. Należy zaznaczyć wszystkie regiony, aby upewnić się, że nie zostaną pominięte najważniejsze zdarzenia, ponieważ dziennik aktywności jest dziennikiem globalnym (nieregionalnym), dlatego większość zdarzeń nie ma skojarzonego regionu.
    * Jeśli chcesz zapisać na koncie magazynu:
        * Konto magazynu, do którego chcesz zapisać zdarzenia.
        * Liczba dni, przez jaką te zdarzenia mają być przechowywane w magazynie. Ustawienie 0 dni zachowuje dzienniki w nieskończoność.
@@ -167,5 +167,5 @@ Jeśli profil dziennika już istnieje, należy najpierw usunąć istniejący pro
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Dowiedz się więcej o dzienniku aktywności](../../azure-resource-manager/resource-group-audit.md)
+* [Dowiedz się więcej o dzienniku aktywności](../../azure-resource-manager/management/view-activity-logs.md)
 * [Zbierz dziennik aktywności do dzienników Azure Monitor](activity-log-collect.md)

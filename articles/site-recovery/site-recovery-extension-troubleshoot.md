@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: troubleshooting
 ms.date: 11/27/2018
-ms.openlocfilehash: 7f9ae32b95d629ef79f085ed590d9057b0414911
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: a9d28a12f5f1fa32d2bc3bcf590134930503f2ac
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75941536"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75970382"
 ---
 # <a name="troubleshoot-azure-vm-extension-issues"></a>Rozwiązywanie problemów z rozszerzeniem maszyny wirtualnej platformy Azure
 
@@ -105,8 +105,6 @@ Aby odinstalować rozszerzenie:
 4. Wybierz **Site Recovery rozszerzenie**.
 5. Wybierz opcję **Odinstaluj**.
 
-W przypadku maszyny wirtualnej z systemem Linux, jeśli rozszerzenie VMSnapshot nie jest wyświetlane w Azure Portal, [zaktualizuj agenta systemu Azure Linux](../virtual-machines/linux/update-agent.md), a następnie uruchom ochronę. 
+W przypadku maszyny wirtualnej z systemem Linux, jeśli rozszerzenie VMSnapshot nie jest wyświetlane w Azure Portal, [zaktualizuj agenta systemu Azure Linux](../virtual-machines/linux/update-agent.md), a następnie uruchom ochronę.
 
 Wykonanie tych kroków powoduje ponowne zainstalowanie rozszerzenia podczas ochrony.
-
-

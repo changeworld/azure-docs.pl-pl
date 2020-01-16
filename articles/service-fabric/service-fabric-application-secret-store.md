@@ -1,20 +1,20 @@
 ---
-title: Magazyn danych tajnych Service Fabric
-description: W tym artykule opisano sposób korzystania z magazynu wpisów tajnych Service Fabric.
+title: Magazyn centralnych wpisów tajnych usługi Azure Service Fabric
+description: W tym artykule opisano sposób korzystania z magazynu centralnych wpisów tajnych w usłudze Azure Service Fabric.
 ms.topic: conceptual
 ms.date: 07/25/2019
-ms.openlocfilehash: 16608d9eaf12fc9abc535ef316d7b5e8b74a8b37
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: bc6ea6260bf50d5b4f8e294e0a3827426f90bee3
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457506"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980937"
 ---
-#  <a name="service-fabric-secrets-store"></a>Magazyn danych tajnych Service Fabric
-W tym artykule opisano sposób tworzenia i używania wpisów tajnych w aplikacjach Service Fabric przy użyciu magazynu Service Fabric Secret (CSS). CSS to lokalna pamięć podręczna magazynu lokalnych wpisów tajnych, używana do przechowywania poufnych danych, takich jak hasło, tokeny i klucze szyfrowane w pamięci.
+# <a name="central-secrets-store-in-azure-service-fabric"></a>Magazyn centralnych wpisów tajnych na platformie Azure Service Fabric 
+W tym artykule opisano sposób korzystania z magazynu centralnych wpisów tajnych (CSS) w usłudze Azure Service Fabric do tworzenia wpisów tajnych w aplikacjach Service Fabric. CSS to lokalna pamięć podręczna magazynu lokalnego wpisu tajnego, która przechowuje dane poufne, takie jak hasło, tokeny i klucze, szyfrowane w pamięci.
 
-## <a name="enabling-secrets-store"></a>Włączanie magazynu wpisów tajnych
- Dodaj poniższy kod do konfiguracji klastra w obszarze `fabricSettings`, aby włączyć CSS. Zalecane jest użycie certyfikatu innego niż certyfikat klastra dla CSS. Upewnij się, że certyfikat szyfrowania został zainstalowany we wszystkich węzłach, a `NetworkService` ma uprawnienia do odczytu klucza prywatnego certyfikatu.
+## <a name="enable-central-secrets-store"></a>Włącz magazyn centralnych wpisów tajnych
+Dodaj następujący skrypt do konfiguracji klastra w obszarze `fabricSettings`, aby włączyć CSS. Zalecamy użycie certyfikatu innego niż certyfikat klastra dla CSS. Upewnij się, że certyfikat szyfrowania został zainstalowany we wszystkich węzłach, a `NetworkService` ma uprawnienia do odczytu klucza prywatnego certyfikatu.
   ```json
     "fabricSettings": 
     [
@@ -46,10 +46,14 @@ W tym artykule opisano sposób tworzenia i używania wpisów tajnych w aplikacja
         ...
      ]
 ```
-## <a name="declare-secret-resource"></a>Zadeklaruj zasób tajny
-Zasób tajny można utworzyć przy użyciu szablonu Menedżer zasobów lub interfejsu API REST.
+## <a name="declare-a-secret-resource"></a>Deklarowanie tajnego zasobu
+Zasób tajny można utworzyć przy użyciu szablonu Azure Resource Manager lub interfejsu API REST.
 
-* Korzystanie z szablonu usługi Resource Manager
+### <a name="use-resource-manager"></a>Użyj Menedżer zasobów
+
+Użyj następującego szablonu, aby użyć Menedżer zasobów do utworzenia tajnego zasobu. Szablon tworzy `supersecret` tajny zasób, ale nie ustawiono jeszcze żadnej wartości dla zasobu tajnego.
+
+
 ```json
    "resources": [
       {
@@ -66,20 +70,20 @@ Zasób tajny można utworzyć przy użyciu szablonu Menedżer zasobów lub inter
         }
       ]
 ```
-Powyższy szablon tworzy `supersecret` tajny zasób, ale nie ustawiono jeszcze żadnej wartości dla zasobu tajnego.
 
-* Korzystanie z interfejsu API REST
+### <a name="use-the-rest-api"></a>Używanie interfejsu API REST
 
-Aby utworzyć zasób tajny, `supersecret` wprowadź żądanie PUT `https://<clusterfqdn>:19080/Resources/Secrets/supersecret?api-version=6.4-preview`. Do utworzenia wpisu tajnego potrzebny jest certyfikat klastra lub administrator.
+Aby utworzyć `supersecret` zasób tajny przy użyciu interfejsu API REST, wprowadź żądanie PUT do `https://<clusterfqdn>:19080/Resources/Secrets/supersecret?api-version=6.4-preview`. Do utworzenia tajnego zasobu potrzebny jest certyfikat klastra lub certyfikat klienta administratora.
 
 ```powershell
 Invoke-WebRequest  -Uri https://<clusterfqdn>:19080/Resources/Secrets/supersecret?api-version=6.4-preview -Method PUT -CertificateThumbprint <CertThumbprint>
 ```
 
-## <a name="set-secret-value"></a>Ustaw wartość klucza tajnego
-* Korzystanie z szablonu usługi Resource Manager
+## <a name="set-the-secret-value"></a>Ustaw wartość klucza tajnego
 
-Poniższy szablon Menedżer zasobów tworzy i ustawia wartość wpisu tajnego `supersecret` z wersją `ver1`.
+### <a name="use-the-resource-manager-template"></a>Korzystanie z szablonu Menedżer zasobów
+
+Użyj następującego szablonu Menedżer zasobów, aby utworzyć i ustawić wartość klucza tajnego. Ten szablon ustawia wartość wpisu tajnego dla zasobu `supersecret` tajnego jako wersji `ver1`.
 ```json
   {
   "parameters": {
@@ -117,67 +121,68 @@ Poniższy szablon Menedżer zasobów tworzy i ustawia wartość wpisu tajnego `s
     }
   ],
   ```
-* Korzystanie z interfejsu API REST
+### <a name="use-the-rest-api"></a>Używanie interfejsu API REST
 
+Użyj poniższego skryptu, aby użyć interfejsu API REST w celu ustawienia wartości klucza tajnego.
 ```powershell
 $Params = @{"properties": {"value": "mysecretpassword"}}
 Invoke-WebRequest -Uri https://<clusterfqdn>:19080/Resources/Secrets/supersecret/values/ver1?api-version=6.4-preview -Method PUT -Body $Params -CertificateThumbprint <ClusterCertThumbprint>
 ```
-## <a name="using-the-secret-in-your-application"></a>Używanie wpisu tajnego w aplikacji
+## <a name="use-the-secret-in-your-application"></a>Używanie wpisu tajnego w aplikacji
 
-1.  Dodaj sekcję w pliku Settings. XML z poniższą zawartością. Zwróć uwagę, że wartość jest w formacie {`secretname:version`}
+Wykonaj następujące kroki, aby użyć wpisu tajnego w aplikacji Service Fabric.
 
-```xml
-  <Section Name="testsecrets">
-   <Parameter Name="TopSecret" Type="SecretsStoreRef" Value="supersecret:ver1"/
-  </Section>
-```
-2. Teraz zaimportuj sekcję w ApplicationManifest. XML
-```xml
-  <ServiceManifestImport>
-    <ServiceManifestRef ServiceManifestName="testservicePkg" ServiceManifestVersion="1.0.0" />
-    <ConfigOverrides />
-    <Policies>
-      <ConfigPackagePolicies CodePackageRef="Code">
-        <ConfigPackage Name="Config" SectionName="testsecrets" EnvironmentVariableName="SecretPath" />
-        </ConfigPackagePolicies>
-    </Policies>
-  </ServiceManifestImport>
-```
+1. Dodaj sekcję w pliku **Settings. XML** z następującym fragmentem kodu. Zwróć uwagę, że wartość jest w formacie {`secretname:version`}.
 
-Zmienna środowiskowa "SecretPath" wskazuje katalog, w którym są przechowywane wszystkie wpisy tajne. Każdy parametr wymieniony w sekcji `testsecrets` zostanie zapisany w osobnym pliku. Aplikacja może teraz używać wpisu tajnego, jak pokazano poniżej
-```C#
-secretValue = IO.ReadFile(Path.Join(Environment.GetEnvironmentVariable("SecretPath"),  "TopSecret"))
-```
-3. Instalowanie wpisów tajnych w kontenerze
+   ```xml
+     <Section Name="testsecrets">
+      <Parameter Name="TopSecret" Type="SecretsStoreRef" Value="supersecret:ver1"/
+     </Section>
+   ```
 
-Tylko zmiana wymagana do udostępnienia wpisów tajnych wewnątrz kontenera polega na określeniu MountPoint w `<ConfigPackage>`.
-Oto zmodyfikowana ApplicationManifest. XML  
+1. Zaimportuj sekcję w **ApplicationManifest. XML**.
+   ```xml
+     <ServiceManifestImport>
+       <ServiceManifestRef ServiceManifestName="testservicePkg" ServiceManifestVersion="1.0.0" />
+       <ConfigOverrides />
+       <Policies>
+         <ConfigPackagePolicies CodePackageRef="Code">
+           <ConfigPackage Name="Config" SectionName="testsecrets" EnvironmentVariableName="SecretPath" />
+           </ConfigPackagePolicies>
+       </Policies>
+     </ServiceManifestImport>
+   ```
 
-```xml
-<ServiceManifestImport>
-    <ServiceManifestRef ServiceManifestName="testservicePkg" ServiceManifestVersion="1.0.0" />
-    <ConfigOverrides />
-    <Policies>
-      <ConfigPackagePolicies CodePackageRef="Code">
-        <ConfigPackage Name="Config" SectionName="testsecrets" MountPoint="C:\secrets" EnvironmentVariableName="SecretPath" />
-        <!-- Linux Container
-         <ConfigPackage Name="Config" SectionName="testsecrets" MountPoint="/mnt/secrets" EnvironmentVariableName="SecretPath" />
-        -->
-      </ConfigPackagePolicies>
-    </Policies>
-  </ServiceManifestImport>
-```
-Wpisy tajne będą dostępne w punkcie instalacji wewnątrz kontenera.
+   Zmienna środowiskowa `SecretPath` będzie wskazywała katalog, w którym są przechowywane wszystkie wpisy tajne. Każdy parametr wymieniony w sekcji `testsecrets` jest przechowywany w osobnym pliku. Aplikacja może teraz używać klucza tajnego w następujący sposób:
+   ```C#
+   secretValue = IO.ReadFile(Path.Join(Environment.GetEnvironmentVariable("SecretPath"),  "TopSecret"))
+   ```
+1. Zainstaluj wpisy tajne w kontenerze. Jedyną zmianą wymaganą do udostępnienia wpisów tajnych wewnątrz kontenera jest `specify` punktu instalacji w `<ConfigPackage>`.
+Poniższy fragment kodu jest zmodyfikowany **ApplicationManifest. XML**.  
 
-4. Powiązanie klucza tajnego ze zmienną środowiskową 
+   ```xml
+   <ServiceManifestImport>
+       <ServiceManifestRef ServiceManifestName="testservicePkg" ServiceManifestVersion="1.0.0" />
+       <ConfigOverrides />
+       <Policies>
+         <ConfigPackagePolicies CodePackageRef="Code">
+           <ConfigPackage Name="Config" SectionName="testsecrets" MountPoint="C:\secrets" EnvironmentVariableName="SecretPath" />
+           <!-- Linux Container
+            <ConfigPackage Name="Config" SectionName="testsecrets" MountPoint="/mnt/secrets" EnvironmentVariableName="SecretPath" />
+           -->
+         </ConfigPackagePolicies>
+       </Policies>
+     </ServiceManifestImport>
+   ```
+   Wpisy tajne są dostępne w punkcie instalacji wewnątrz kontenera.
 
-Można powiązać klucz tajny ze zmienną środowiskową procesu przez określenie typu Type = "SecretsStoreRef". Poniżej przedstawiono przykład powiązania `supersecret` wersji `ver1` ze zmienną środowiskową `MySuperSecret` pliku servicemanifest. XML.
+1. Wpis tajny można powiązać ze zmienną środowiskową procesu, określając `Type='SecretsStoreRef`. Poniższy fragment kodu stanowi przykład powiązania `ver1` wersji `supersecret` ze zmienną środowiskową `MySuperSecret` w **pliku servicemanifest. XML**.
 
-```xml
-<EnvironmentVariables>
-  <EnvironmentVariable Name="MySuperSecret" Type="SecretsStoreRef" Value="supersecret:ver1"/>
-</EnvironmentVariables>
-```
+   ```xml
+   <EnvironmentVariables>
+     <EnvironmentVariable Name="MySuperSecret" Type="SecretsStoreRef" Value="supersecret:ver1"/>
+   </EnvironmentVariables>
+   ```
+
 ## <a name="next-steps"></a>Następne kroki
-Dowiedz się więcej o [zabezpieczeniach aplikacji i usługi](service-fabric-application-and-service-security.md)
+Dowiedz się więcej o [zabezpieczeniach aplikacji i usług](service-fabric-application-and-service-security.md).

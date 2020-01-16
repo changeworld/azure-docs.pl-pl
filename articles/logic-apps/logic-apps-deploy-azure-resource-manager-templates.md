@@ -6,22 +6,22 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 08/01/2019
-ms.openlocfilehash: 73c4c8839bd1d9e37f3dc4f0802ad5a648b1026b
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 506c518e8bdd889c585feb92f2a6baee8ba0147c
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793052"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979077"
 ---
 # <a name="deploy-azure-resource-manager-templates-for-azure-logic-apps"></a>Wdróż szablony Azure Resource Manager dla Azure Logic Apps
 
 Po utworzeniu szablonu Azure Resource Manager dla aplikacji logiki można wdrożyć szablon w następujący sposób:
 
 * [Azure Portal](#portal)
-* [Visual Studio](#visual-studio)
+* [Program Visual Studio](#visual-studio)
 * [Azure PowerShell](#powershell)
 * [Interfejs wiersza polecenia platformy Azure](#cli)
-* [Interfejs API REST Azure Resource Manager](../azure-resource-manager/resource-group-template-deploy-rest.md)
+* [Interfejs API REST Azure Resource Manager](../azure-resource-manager/templates/deploy-rest.md)
 * [Azure Pipelines platformy Azure DevOps](#azure-pipelines)
 
 <a name="portal"></a>
@@ -41,10 +41,10 @@ Na przykład po zalogowaniu się do Azure Portal zostanie wyświetlony monit o p
 * Identyfikator URI testu
 * Akceptacja określonych warunków i postanowień
 
-Aby uzyskać więcej informacji, zobacz następujące tematy:
+Aby uzyskać więcej informacji zobacz następujące tematy:
 
 * [Przegląd: Automatyzowanie wdrażania aplikacji logiki za pomocą szablonów Azure Resource Manager](logic-apps-azure-resource-manager-templates-overview.md)
-* [Wdrażanie zasobów za pomocą szablonów Azure Resource Manager i Azure Portal](../azure-resource-manager/resource-group-template-deploy-portal.md)
+* [Wdrażanie zasobów za pomocą szablonów Azure Resource Manager i Azure Portal](../azure-resource-manager/templates/deploy-portal.md)
 
 <a name="visual-studio"></a>
 
@@ -62,7 +62,7 @@ Aby wdrożyć w określonej *grupie zasobów platformy Azure*, użyj następują
 New-AzResourceGroupDeployment -ResourceGroupName <Azure-resource-group-name> -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-logic-app-create/azuredeploy.json
 ```
 
-Aby uzyskać więcej informacji, zobacz następujące tematy:
+Aby uzyskać więcej informacji zobacz następujące tematy:
 
 * [Deploy resources with Resource Manager templates and Azure PowerShell (Wdrażanie zasobów za pomocą szablonów usługi Resource Manager i programu Azure PowerShell)](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy)
 * [`New-AzResourceGroupDeployment`](https://docs.microsoft.com/powershell/module/azurerm.resources/new-azurermresourcegroupdeployment)
@@ -77,9 +77,9 @@ Aby wdrożyć w określonej *grupie zasobów platformy Azure*, użyj następują
 az group deployment create -g <Azure-resource-group-name> --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-logic-app-create/azuredeploy.json
 ```
 
-Aby uzyskać więcej informacji, zobacz następujące tematy:
+Aby uzyskać więcej informacji zobacz następujące tematy:
 
-* [Deploy resources with Resource Manager templates and Azure CLI (Wdrażanie zasobów za pomocą szablonów usługi Resource Manager i interfejsu wiersza polecenia platformy Azure)](../azure-resource-manager/resource-group-template-deploy-cli.md) 
+* [Deploy resources with Resource Manager templates and Azure CLI (Wdrażanie zasobów za pomocą szablonów usługi Resource Manager i interfejsu wiersza polecenia platformy Azure)](../azure-resource-manager/templates/deploy-cli.md) 
 * [`az group deployment create`](https://docs.microsoft.com/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create)
 
 <a name="azure-pipelines"></a>
@@ -90,8 +90,8 @@ W celu wdrożenia szablonów aplikacji logiki i zarządzania środowiskami zespo
 
 Aby uzyskać więcej informacji na temat ciągłej integracji i ciągłego wdrażania (CI/CD) dla Azure Resource Manager szablonów z Azure Pipelines, zobacz następujące tematy i przykłady:
 
-* [Integrowanie szablonów Menedżer zasobów z Azure Pipelines](../azure-resource-manager/vs-resource-groups-project-devops-pipelines.md)
-* [Samouczek: Ciągła integracja szablonów Azure Resource Manager z Azure Pipelines](../azure-resource-manager/resource-manager-tutorial-use-azure-pipelines.md)
+* [Integrowanie szablonów Menedżer zasobów z Azure Pipelines](../azure-resource-manager/templates/add-template-to-azure-pipelines.md)
+* [Samouczek: Ciągła integracja szablonów Azure Resource Manager z Azure Pipelines](../azure-resource-manager/templates/template-tutorial-use-azure-pipelines.md)
 * [Przykład: łączenie z kolejkami Azure Service Bus z Azure Logic Apps i wdrażania przy użyciu Azure Pipelines na platformie Azure DevOps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-service-bus-queues-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
 * [Przykład: łączenie z kontami usługi Azure Storage z Azure Logic Apps i wdrażanie za pomocą Azure Pipelines na platformie Azure DevOps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-storage-accounts-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
 * [Przykład: Konfigurowanie akcji aplikacji funkcji dla Azure Logic Apps i wdrażanie za pomocą Azure Pipelines na platformie Azure DevOps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/set-up-an-azure-function-app-action-for-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
@@ -111,11 +111,11 @@ Poniżej przedstawiono ogólne kroki wysokiego poziomu dotyczące korzystania z 
 
 1. Dodaj odwołania do szablonów aplikacji logiki i plików parametrów szablonu.
 
-1. Kontynuuj Kompilowanie etapów procesu wydania dla dowolnego innego środowiska, test automatyczny lub osoby zatwierdzające zgodnie z wymaganiami.
+1. Nadal nad kroki procesu tworzenia wersji dla dowolnego środowiska, testów automatycznych lub osób zatwierdzających, zgodnie z potrzebami.
 
 <a name="authorize-oauth-connections"></a>
 
-## <a name="authorize-oauth-connections"></a>Autoryzuj połączenia OAuth
+## <a name="authorize-oauth-connections"></a>Autoryzowania połączeń protokołu OAuth
 
 Po wdrożeniu aplikacja logiki działa na całym końcu z prawidłowymi parametrami. Należy jednak nadal autoryzować wszystkie połączenia OAuth w celu wygenerowania prawidłowych tokenów dostępu do [uwierzytelniania poświadczeń](../active-directory/develop/authentication-scenarios.md). Poniżej przedstawiono sposoby autoryzacji połączeń uwierzytelniania OAuth:
 

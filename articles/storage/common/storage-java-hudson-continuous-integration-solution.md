@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 08/13/2019
 ms.author: tarcher
 ms.subservice: common
-ms.openlocfilehash: 75b0ea106be04cd77b18bfed8487edb6a7b7f65b
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: f8cdd7b950a11045f795ac93d4a0904f2dc526fa
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839183"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75970191"
 ---
 # <a name="using-azure-storage-with-a-hudson-continuous-integration-solution"></a>Korzystanie z usługi Azure Storage z rozwiązaniem ciągłej integracji Hudson
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 Poniższe informacje pokazują, jak używać magazynu obiektów BLOB jako repozytorium artefaktów kompilacji utworzonych przez rozwiązanie Hudson ciągłej integracji (CI) lub jako źródło plików do pobrania, które mają być używane w procesie kompilacji. Jednym z scenariuszy, w których warto się znaleźć, jest to, że w przypadku kodowania w środowisku deweloperskim Agile (przy użyciu języka Java lub innych języków) kompilacje są uruchamiane w oparciu o ciągłą integrację i potrzebne jest repozytorium dla artefaktów kompilacji, dzięki czemu można można na przykład udostępniać je innym członkom organizacji, Twoim klientom lub obsłudze archiwum.  Innym scenariuszem jest to, że zadanie kompilacji wymaga innych plików, na przykład zależności do pobrania w ramach danych wejściowych kompilacji.
 
 W tym samouczku będziesz używać wtyczki usługi Azure Storage dla Hudson CI udostępnionej przez firmę Microsoft.
@@ -53,7 +53,7 @@ Aby użyć Blob service z rozwiązaniem Hudson CI, potrzebne są następujące e
      
       W przypadku typowego rozwiązania CI Hudson można skonfigurować do uruchamiania jako usługa, a w wierszu polecenia musi być wystarczająca wartość Hudson War.
 * Konto platformy Azure. Konto platformy Azure można zarejestrować w <https://www.azure.com>.
-* Konto usługi Azure Storage. Jeśli nie masz jeszcze konta magazynu, możesz utworzyć je, wykonując czynności opisane w sekcji [Tworzenie konta magazynu](../common/storage-quickstart-create-account.md).
+* Konto usługi Azure Storage. Jeśli nie masz jeszcze konta magazynu, możesz utworzyć je, wykonując czynności opisane w sekcji [Tworzenie konta magazynu](../common/storage-account-create.md).
 * Znajomość rozwiązania Hudson CI jest zalecana, ale nie jest wymagana, ponieważ Poniższa zawartość będzie używać przykładu podstawowego do wyświetlania kroków potrzebnych podczas korzystania z Blob service jako repozytorium dla artefaktów kompilacji Hudson CI.
 
 ## <a name="how-to-use-the-blob-service-with-hudson-ci"></a>Jak używać Blob service z Hudsoną CI
@@ -83,7 +83,7 @@ Aby użyć Blob service z Hudson, należy zainstalować wtyczkę usługi Azure S
    
     e. Obowiązkowe Jeśli masz dodatkowe konta magazynu, które chcesz udostępnić Hudson CI, kliknij pozycję **Dodaj więcej kont magazynu**.
    
-    f. Kliknij przycisk **Zapisz** , aby zapisać ustawienia.
+    f. Kliknij przycisk **Zapisz** można zapisać ustawień.
 
 ## <a name="how-to-create-a-post-build-action-that-uploads-your-build-artifacts-to-your-storage-account"></a>Jak utworzyć akcję po kompilacji, która przekazuje artefakty kompilacji do konta magazynu
 Aby uzyskać instrukcje, najpierw należy utworzyć zadanie, które spowoduje utworzenie kilku plików, a następnie dodanie go do akcji po kompilacji w celu przekazania plików na konto magazynu.
@@ -112,11 +112,11 @@ Aby uzyskać instrukcje, najpierw należy utworzyć zadanie, które spowoduje ut
 9. Obowiązkowe Kliknij przycisk **Oczyść kontener przed przekazaniem** , jeśli chcesz, aby kontener został usunięty z zawartości przed przekazaniem artefaktów kompilacji (pozostaw to pole niezaznaczone, jeśli nie chcesz czyścić zawartości kontenera).
 10. Aby uzyskać **listę artefaktów do przekazania**, wprowadź **tekst/*. txt**.
 11. W przypadku **wspólnej ścieżki wirtualnej dla przekazanych artefaktów**wprowadź **$ {Build\_ID}/$ {Build\_Number}** .
-12. Kliknij przycisk **Zapisz** , aby zapisać ustawienia.
+12. Kliknij przycisk **Zapisz** można zapisać ustawień.
 13. Na pulpicie nawigacyjnym Hudson kliknij pozycję **Kompiluj teraz** , aby uruchomić **MyJob**. Przejrzyj dane wyjściowe konsoli dla stanu. Komunikaty o stanie usługi Azure Storage zostaną uwzględnione w danych wyjściowych konsoli, gdy akcja po kompilacji zacznie przekazywać artefakty kompilacji.
 14. Po pomyślnym zakończeniu zadania można przeanalizować artefakty kompilacji, otwierając publiczny obiekt BLOB.
     
-    a. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+    a. Zaloguj się do [portalu Azure](https://portal.azure.com).
     
     b. Kliknij pozycję **Magazyn**.
     
@@ -158,7 +158,7 @@ Poniżej przedstawiono omówienie składników Blob service.
     `http://example.blob.core.windows.net/myjob/2014-05-01_11-56-22/1/hello.txt`
 
 ## <a name="next-steps"></a>Następne kroki
-* [Poznaj Hudson](https://wiki.eclipse.org/Hudson-ci/Meet_Hudson)
+* [Meet Hudson](https://wiki.eclipse.org/Hudson-ci/Meet_Hudson)
 * [Zestaw SDK usługi Azure Storage dla języka Java](https://github.com/azure/azure-storage-java)
 * [Dokumentacja zestawu SDK klienta usługi Azure Storage](https://javadoc.io/doc/com.microsoft.azure/azure-core/0.8.0/index.html)
 * [Interfejs API REST usług Azure Storage](https://msdn.microsoft.com/library/azure/dd179355.aspx)

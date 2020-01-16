@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 11/06/2019
-ms.openlocfilehash: 8d2dccc1543512ead4b0ff6475ace20045bb1b8c
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: bbc62aa153e6ecb5d9ae65c37392c2697b9beaa2
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75762777"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979720"
 ---
 # <a name="azure-machine-learning-monitoring-data-reference"></a>Informacje o monitorowaniu usługi Azure Machine Learning
 
@@ -42,7 +42,7 @@ W poniższej tabeli wymieniono właściwości dzienników zasobów Azure Machine
 | ResourceGroupName | Nazwa grupy zasobów |
 | JobName | Nazwa zadania |
 | ClusterId | Identyfikator klastra |
-| Klasę | Typ zdarzenia zadania, np., JobSubmitted, JobRunning, JobFailed, JobSucceeded itd. |
+| Typ zdarzenia | Typ zdarzenia zadania, np., JobSubmitted, JobRunning, JobFailed, JobSucceeded itd. |
 | ExecutionState | Stan zadania (przebieg), np., w kolejce, uruchomione, zakończone powodzeniem, zakończone niepowodzeniem |
 | ErrorDetails | Szczegóły błędu zadania |
 | CreationApiVersion | Wersja interfejsu API użyta do utworzenia zadania |
@@ -73,15 +73,15 @@ W poniższej tabeli wymieniono właściwości dzienników zasobów Azure Machine
 | MinimumNodeCount | Minimalna liczba węzłów klastra |
 | MaximumNodeCount | Maksymalna liczba węzłów klastra |
 | NodeDeallocationOption | Jak ma zostać cofnięty przydział węzła |
-| Wydawca | Wydawca typu klastra |
+| Publisher | Wydawca typu klastra |
 | Oferta | Oferta, w której tworzony jest klaster |
-| SKU | Jednostka SKU utworzonego węzła/maszyny wirtualnej w klastrze |
+| Jednostka SKU | Jednostka SKU utworzonego węzła/maszyny wirtualnej w klastrze |
 | Wersja | Wersja obrazu używana podczas tworzenia węzła/maszyny wirtualnej |
 | SubnetId | SubnetId klastra |
 | AllocationState | Stan alokacji klastra |
 | CurrentNodeCount | Bieżąca liczba węzłów klastra |
 | TargetNodeCount | Liczba węzłów docelowych klastra podczas skalowania w górę/w dół |
-| Klasę | Typ zdarzenia podczas tworzenia klastra. |
+| Typ zdarzenia | Typ zdarzenia podczas tworzenia klastra. |
 | NodeIdleTimeSecondsBeforeScaleDown | Czas bezczynności (w sekundach), po którym klaster będzie skalowany w dół |
 | PreemptedNodeCount | Liczba przeniesiona węzłów klastra |
 | IsResizeGrow | Flaga oznaczająca, że klaster jest skalowany w górę |
@@ -109,9 +109,9 @@ W poniższej tabeli wymieniono właściwości dzienników zasobów Azure Machine
 | VmSize | Rozmiar maszyny wirtualnej węzła |
 | VmFamilyName | Rodzina maszyn wirtualnych, do której należy węzeł |
 | VmPriority | Priorytet utworzonego węzła/LowPriority |
-| Wydawca | Wydawca obrazu maszyny wirtualnej, np. Microsoft-dsvm |
+| Publisher | Wydawca obrazu maszyny wirtualnej, np. Microsoft-dsvm |
 | Oferta | Oferta skojarzona z tworzeniem maszyny wirtualnej |
-| SKU | Utworzono jednostkę SKU węzła/maszyny wirtualnej |
+| Jednostka SKU | Utworzono jednostkę SKU węzła/maszyny wirtualnej |
 | Wersja | Wersja obrazu używana podczas tworzenia węzła/maszyny wirtualnej |
 | ClusterCreationTime | Czas utworzenia klastra |
 | ResizeStartTime | Czas rozpoczęcia skalowania klastra w górę/w dół |
@@ -126,15 +126,15 @@ W poniższej tabeli wymieniono właściwości dzienników zasobów Azure Machine
 
 W poniższych tabelach przedstawiono metryki platformy zebrane dla Azure Machine Learning wszystkie metryki są przechowywane w **obszar roboczy usługi Azure Machine Learning**przestrzeni nazw.
 
-**Wzorów**
+**Model**
 
 | Metryka | Jednostka | Opis |
 | ----- | ----- | ----- |
-| Nie można wdrożyć modelu | Licznik | Liczba wdrożeń modelu zakończonych niepowodzeniem. |
-| Rozpoczęto Wdrażanie modelu | Licznik | Liczba uruchomionych wdrożeń modelu. |
-| Wdrażanie modelu powiodło się | Licznik | Liczba wdrożeń modelu, które zakończyły się powodzeniem. |
-| Nie można zarejestrować modelu | Licznik | Liczba rejestracji modelu zakończonych niepowodzeniem. |
-| Rejestrowanie modelu powiodło się | Licznik | Liczba rejestracji modelu zakończonych powodzeniem. |
+| Nie można wdrożyć modelu | Liczba | Liczba wdrożeń modelu zakończonych niepowodzeniem. |
+| Rozpoczęto Wdrażanie modelu | Liczba | Liczba uruchomionych wdrożeń modelu. |
+| Wdrażanie modelu powiodło się | Liczba | Liczba wdrożeń modelu, które zakończyły się powodzeniem. |
+| Nie można zarejestrować modelu | Liczba | Liczba rejestracji modelu zakończonych niepowodzeniem. |
+| Rejestrowanie modelu powiodło się | Liczba | Liczba rejestracji modelu zakończonych powodzeniem. |
 
 **Limit przydziału**
 
@@ -142,23 +142,23 @@ Informacje o limicie przydziału są przeznaczone tylko dla Azure Machine Learni
 
 | Metryka | Jednostka | Opis |
 | ----- | ----- | ----- |
-| Aktywne rdzenie | Licznik | Liczba aktywnych rdzeni obliczeniowych. |
-| Aktywne węzły | Licznik | Liczba aktywnych węzłów. |
-| Rdzenie bezczynne | Licznik | Liczba rdzeni obliczeniowych w bezczynnym stanie. |
-| Węzły bezczynne | Licznik | Liczba bezczynnych węzłów obliczeniowych. |
-| Opuszczanie rdzeni | Licznik | Liczba rdzeni opuszczających. |
-| Opuszczanie węzłów | Licznik | Liczba pozostałych węzłów. |
-| Występujące rdzenie | Licznik | Liczba przeniesiona rdzeni. |
-| Zastępujące węzły | Licznik | Liczba przeniesiona węzłów. |
+| Aktywne rdzenie | Liczba | Liczba aktywnych rdzeni obliczeniowych. |
+| Aktywne węzły | Liczba | Liczba aktywnych węzłów. |
+| Rdzenie bezczynne | Liczba | Liczba rdzeni obliczeniowych w bezczynnym stanie. |
+| Węzły bezczynne | Liczba | Liczba bezczynnych węzłów obliczeniowych. |
+| Opuszczanie rdzeni | Liczba | Liczba rdzeni opuszczających. |
+| Opuszczanie węzłów | Liczba | Liczba pozostałych węzłów. |
+| Występujące rdzenie | Liczba | Liczba przeniesiona rdzeni. |
+| Zastępujące węzły | Liczba | Liczba przeniesiona węzłów. |
 | Procent wykorzystania przydziałów | Procent | Procent użytego przydziału. |
-| Łączna liczba rdzeni | Licznik | Łączna liczba rdzeni. |
-| Łączna liczba węzłów | Licznik | Łączna liczba węzłów. |
-| Rdzenie, których nie można używać | Licznik | Liczba rdzeni, których nie można używać. |
-| Węzły niezdatne do użytku | Licznik | Liczba węzłów, które nie są używane. |
+| Całkowita liczba rdzeni | Liczba | Łączna liczba rdzeni. |
+| Łączna liczba węzłów | Liczba | Łączna liczba węzłów. |
+| Rdzenie, których nie można używać | Liczba | Liczba rdzeni, których nie można używać. |
+| Węzły niezdatne do użytku | Liczba | Liczba węzłów, które nie są używane. |
 
 Poniżej znajdują się wymiary, których można użyć do filtrowania metryk przydziału:
 
-| Elementów | Metryki dostępne z | Opis |
+| Wymiar | Metryki dostępne z | Opis |
 | ---- | ---- | ---- |
 | Nazwa klastra | Wszystkie metryki przydziału | Nazwa wystąpienia obliczeniowego. |
 | Nazwa rodziny maszyn wirtualnych | Procent wykorzystania przydziałów | Nazwa rodziny maszyn wirtualnych używanej przez klaster. |
@@ -170,13 +170,13 @@ Informacje o przebiegach szkoleniowych.
 
 | Metryka | Jednostka | Opis |
 | ----- | ----- | ----- |
-| Ukończone uruchomienia | Licznik | Liczba ukończonych uruchomień. |
-| Nieudane uruchomienia | Licznik | Liczba nieudanych uruchomień. |
-| Uruchomione uruchomienia | Licznik | Liczba rozpoczętych uruchomień. |
+| Ukończone uruchomienia | Liczba | Liczba ukończonych uruchomień. |
+| Nieudane uruchomienia | Liczba | Liczba nieudanych uruchomień. |
+| Uruchomione uruchomienia | Liczba | Liczba rozpoczętych uruchomień. |
 
 Poniżej znajdują się wymiary, których można użyć do filtrowania metryk przebiegu:
 
-| Elementów | Opis |
+| Wymiar | Opis |
 | ---- | ---- |
 | Computetype | Typ obliczeń używany do uruchomienia. |
 | PipelineStepType | Typ [PipelineStep](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinestep?view=azure-ml-py) używany w przebiegu. |
@@ -194,5 +194,5 @@ Prawidłowe wartości dla wymiaru RunType są następujące:
 
 ## <a name="see-also"></a>Zobacz też
 
-- Aby uzyskać opis Azure Machine Learning monitorowania, zobacz [Azure Machine Learning monitorowania](service/monitor-azure-machine-learning.md) .
+- Aby uzyskać opis Azure Machine Learning monitorowania, zobacz [Azure Machine Learning monitorowania](monitor-azure-machine-learning.md) .
 - Aby uzyskać szczegółowe informacje na temat monitorowania zasobów platformy Azure, zobacz [monitorowanie zasobów platformy Azure za pomocą Azure monitor](/azure/azure-monitor/insights/monitor-azure-resource) .

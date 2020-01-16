@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 10/20/2019
-ms.openlocfilehash: ef0445727c100b7262ebffc69be5e00a7956520a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9f25486aba9549855939b06ea5b8dfc14db0af95
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428773"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75969121"
 ---
 # <a name="tutorial-automate-tasks-to-process-emails-by-using-azure-logic-apps-azure-functions-and-azure-storage"></a>Samouczek: Automatyzowanie zadań do przetwarzania wiadomości e-mail przy użyciu Azure Logic Apps, Azure Functions i usługi Azure Storage
 
@@ -52,7 +52,7 @@ Zaloguj się do [witryny Azure Portal](https://portal.azure.com) przy użyciu po
 
 Możesz zapisywać przychodzące wiadomości e-mail i załączniki jako obiekty blob w [kontenerze magazynu platformy Azure](../storage/common/storage-introduction.md).
 
-1. Przed utworzeniem kontenera magazynu [Utwórz konto magazynu](../storage/common/storage-quickstart-create-account.md) z tymi ustawieniami na karcie **podstawowe** w Azure Portal:
+1. Przed utworzeniem kontenera magazynu [Utwórz konto magazynu](../storage/common/storage-account-create.md) z tymi ustawieniami na karcie **podstawowe** w Azure Portal:
 
    | Ustawienie | Wartość | Opis |
    |---------|-------|-------------|
@@ -159,7 +159,7 @@ Teraz użyj fragmentu kodu zapewnionego przez te kroki, aby utworzyć funkcję p
 
    ![Utworzona aplikacja funkcji](./media/tutorial-process-email-attachments-workflow/function-app-created.png)
 
-   Aby utworzyć aplikację funkcji, możesz również użyć [interfejsu wiersza polecenia platformy Azure](../azure-functions/functions-create-first-azure-function-azure-cli.md)lub [szablonów programu PowerShell i Menedżer zasobów](../azure-resource-manager/resource-group-template-deploy.md).
+   Aby utworzyć aplikację funkcji, możesz również użyć [interfejsu wiersza polecenia platformy Azure](../azure-functions/functions-create-first-azure-function-azure-cli.md)lub [szablonów programu PowerShell i Menedżer zasobów](../azure-resource-manager/templates/deploy-powershell.md).
 
 1. Na liście **aplikacje funkcji** Rozwiń swoją aplikację funkcji, jeśli nie została jeszcze rozwinięta. W aplikacji funkcji wybierz pozycję **funkcje**. Na pasku narzędzi funkcji wybierz pozycję **Nowa funkcja**.
 
@@ -282,7 +282,7 @@ Następnie dodaj [wyzwalacz](../logic-apps/logic-apps-overview.md#logic-app-conc
       | **Interwał** | 1 | Liczba interwałów do odczekania między sprawdzaniami |
       | **Częstotliwość** | Minuta | Jednostka czasu dla każdego interwału między sprawdzaniami |
       ||||
-  
+
    1. Z listy **Dodaj nowy parametr** wybierz opcję **Filtr podmiotu**.
 
    1. Po pojawieniu się pola **filtru podmiotu** w akcji Określ temat wymieniony tutaj:
@@ -377,7 +377,8 @@ Teraz należy sprawdzić, czy warunek działa prawidłowo:
 Następnie zdefiniuj akcje do wykonania w przypadku gałęzi **W przypadku wartości true**. Aby zapisać wiadomość e-mail wraz z załącznikami, usuń kod HTML z treści wiadomości e-mail, a następnie utwórz obiekty blob w kontenerze magazynu dla wiadomości e-mail i załączników.
 
 > [!NOTE]
-> Twoja aplikacja logiki nie musi podejmować żadnych działań dla gałęzi **W przypadku wartości false**, jeśli wiadomość e-mail nie ma załączników. W ramach dodatkowego ćwiczenia po zakończeniu tego samouczka możesz dodać wszelkie odpowiednie akcje, które powinny zostać wykonane dla gałęzi **W przypadku wartości false**.
+> Twoja aplikacja logiki nie musi podejmować żadnych działań dla gałęzi **W przypadku wartości false**, jeśli wiadomość e-mail nie ma załączników.
+> W ramach dodatkowego ćwiczenia po zakończeniu tego samouczka możesz dodać wszelkie odpowiednie akcje, które powinny zostać wykonane dla gałęzi **W przypadku wartości false**.
 
 ## <a name="call-removehtmlfunction"></a>Wywoływanie funkcji RemoveHTMLFunction
 
@@ -605,7 +606,9 @@ Następnie dodaj akcję, dzięki której aplikacja logiki będzie wysyłać wiad
    ||||
 
    > [!NOTE]
-   > Jeśli wybierzesz pole zawierające tablicę, takie jak **Zawartość**, które jest tablicą zawierającą załączniki, projektant automatycznie doda pętlę „For each” wokół akcji, która odwołuje się do tego pola. Dzięki temu Twoja aplikacja logiki może wykonać tę akcję dla każdego elementu tablicy. Aby usunąć pętlę, Usuń pole dla tablicy, przenieś akcję odwołującą do spoza pętli, wybierz wielokropek ( **...** ) na pasku tytułu pętli, a następnie wybierz pozycję **Usuń**.
+   > Jeśli wybierzesz pole zawierające tablicę, takie jak **Zawartość**, które jest tablicą zawierającą załączniki, projektant automatycznie doda pętlę „For each” wokół akcji, która odwołuje się do tego pola.
+   > Dzięki temu Twoja aplikacja logiki może wykonać tę akcję dla każdego elementu tablicy.
+   > Aby usunąć pętlę, Usuń pole dla tablicy, przenieś akcję odwołującą do spoza pętli, wybierz wielokropek ( **...** ) na pasku tytułu pętli, a następnie wybierz pozycję **Usuń**.
 
 1. Zapisz aplikację logiki.
 

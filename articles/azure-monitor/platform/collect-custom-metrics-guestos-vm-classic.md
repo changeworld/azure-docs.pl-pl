@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: ''
-ms.openlocfilehash: af99bd8ea619d17bdc40ea025f0bfcb1c095db52
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: d911a6b65ba0d63bca09437f6451019addcbc0b3
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74286147"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977624"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metrics-database-for-a-windows-virtual-machine-classic"></a>Wysyłanie metryk systemu operacyjnego gościa do bazy danych metryk Azure Monitor dla maszyny wirtualnej z systemem Windows (wersja klasyczna)
 
@@ -29,7 +29,7 @@ Proces przedstawiony w tym artykule działa tylko w przypadku klasycznych maszyn
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Musisz być [administratorem usługi lub współadministratorem](../../billing/billing-add-change-azure-subscription-administrator.md) w ramach subskrypcji platformy Azure. 
+- Musisz być [administratorem usługi lub współadministratorem](../../cost-management-billing/manage/add-change-subscription-administrator.md) w ramach subskrypcji platformy Azure. 
 
 - Twoja subskrypcja musi być zarejestrowana w usłudze [Microsoft. Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services). 
 

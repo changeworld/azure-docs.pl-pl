@@ -15,12 +15,12 @@ ms.date: 09/11/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: 1cd5325be7def4bc631d994f8811734e6c3cf545
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 3ff4b2cb6a59a35dc6da4748a7c7fbb4758a4fcf
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70996435"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981001"
 ---
 # <a name="understand-role-definitions-for-azure-resources"></a>Opis definicji ról dla zasobów platformy Azure
 
@@ -28,7 +28,7 @@ Jeśli próbujesz zrozumieć, jak działa rola, lub jeśli tworzysz własną [ro
 
 ## <a name="role-definition-structure"></a>Struktura definicji roli
 
-*Definicja roli* to zbiór uprawnień. Czasami jest nazywana po prostu *rolą*. Definicja roli określa dozwolone operacje, na przykład odczyt, zapis, czy usuwanie. Może również zawierać listę operacji, które nie mogą być wykonywane lub operacje związane z danymi źródłowymi. Definicja roli ma następującą strukturę:
+*Definicja roli* to zbiór uprawnień. Czasami jest nazywana po prostu *rolą*. Definicja roli określa dozwolone operacje, na przykład odczyt, zapis, czy usuwanie. Może ona również zawierać listę operacji, których nie można wykonywać, lub operacji związanych z danymi źródłowymi. Definicja roli ma następującą strukturę:
 
 ```
 Name
@@ -46,7 +46,7 @@ Operacje są określone za pomocą ciągów, które mają następujący format:
 
 - `{Company}.{ProviderName}/{resourceType}/{action}`
 
-`{action}` Część ciągu operacji określa typ operacji, które można wykonać dla typu zasobu. Na przykład następujące podciągi będą widoczne w `{action}`:
+Część `{action}` ciągu operacji określa typ operacji, które można wykonać dla typu zasobu. Na przykład następujące podciągi będą widoczne w `{action}`:
 
 | Podciąg akcji    | Opis         |
 | ------------------- | ------------------- |
@@ -56,7 +56,7 @@ Operacje są określone za pomocą ciągów, które mają następujący format:
 | `action` | Włącza niestandardowe operacje, takie jak ponowne uruchamianie maszyn wirtualnych (POST). |
 | `delete` | Włącza operacje usuwania (usuwania). |
 
-Oto definicja roli [współautor](built-in-roles.md#contributor) w formacie JSON. Symbol wieloznaczny (`*`) `Actions` w obszarze wskazuje, że podmiot zabezpieczeń przypisany do tej roli może wykonywać wszystkie akcje, lub innymi słowy, może zarządzać wszystko. Obejmuje to akcje zdefiniowane w przyszłości, ponieważ platforma Azure dodaje nowe typy zasobów. Operacje objęte `NotActions` są odejmowane od `Actions`. W przypadku roli [współautor](built-in-roles.md#contributor) program `NotActions` usuwa możliwość zarządzania dostępem do zasobów, a także przydziela dostęp do zasobów.
+Oto definicja roli [współautor](built-in-roles.md#contributor) w formacie JSON. Symbol wieloznaczny (`*`) w obszarze `Actions` oznacza, że podmiot zabezpieczeń przypisany do tej roli może wykonywać wszystkie akcje, czyli może zarządzać wszystkim. Dotyczy to również akcji, które zostaną zdefiniowane, gdy do platformy Azure zostaną dodane nowe typy zasobów. Operacje w obszarze `NotActions` są odejmowane od zestawu operacji w obszarze `Actions`. W przypadku roli [Współautor](built-in-roles.md#contributor) zawartość właściwości `NotActions` uniemożliwia tej roli zarządzanie dostępem do zasobów oraz przypisywanie dostępu do zasobów.
 
 ```json
 {
@@ -82,23 +82,23 @@ Oto definicja roli [współautor](built-in-roles.md#contributor) w formacie JSON
 
 ## <a name="management-and-data-operations"></a>Zarządzanie i operacje na danych
 
-Kontrola dostępu oparta na rolach dla operacji zarządzania jest określona we `Actions` właściwościach i `NotActions` definicji roli. Poniżej przedstawiono kilka przykładów operacji zarządzania na platformie Azure:
+Kontrola dostępu oparta na rolach dla operacji zarządzania jest określona we właściwościach `Actions` i `NotActions` definicji roli. Poniżej przedstawiono kilka przykładów operacji zarządzania na platformie Azure:
 
 - Zarządzanie dostępem do konta magazynu
 - Tworzenie, aktualizowanie lub usuwanie kontenera obiektów BLOB
 - Usuwanie grupy zasobów i wszystkich jej zasobów
 
-Dostęp do zarządzania nie jest dziedziczony do danych, pod warunkiem, że metoda uwierzytelniania kontenera jest ustawiona na "konto użytkownika usługi Azure AD", a nie "klucz dostępu". Ta separacja zapobiega nieograniczonemu dostępowi do danych w rolach z symbolami wieloznacznymi (`*`). Na przykład jeśli użytkownik ma rolę czytelnika [](built-in-roles.md#reader) w ramach subskrypcji, może wyświetlić konto magazynu, ale domyślnie nie może wyświetlić danych źródłowych.
+Dostęp do zarządzania nie jest dziedziczony do danych, pod warunkiem, że metoda uwierzytelniania kontenera jest ustawiona na "konto użytkownika usługi Azure AD", a nie "klucz dostępu". Ta separacja zapobiega nieograniczonemu dostępowi do danych w rolach z symbolami wieloznacznymi (`*`). Na przykład jeśli użytkownik ma rolę [czytelnika](built-in-roles.md#reader) w ramach subskrypcji, może wyświetlić konto magazynu, ale domyślnie nie może wyświetlić danych źródłowych.
 
 Wcześniej kontrola dostępu oparta na rolach nie była używana do wykonywania operacji na danych. Autoryzacja dla operacji na danych, które są różne dla różnych dostawców zasobów. Ten sam model autoryzacji kontroli dostępu oparty na rolach używany na potrzeby operacji zarządzania został rozszerzony do operacji na danych.
 
-Aby obsługiwać operacje na danych, nowe właściwości danych zostały dodane do struktury definicji roli. Operacje na danych są określone we `DataActions` właściwościach i `NotDataActions` . Po dodaniu tych właściwości danych jest zachowywane rozdzielenie między zarządzaniem i danymi. Zapobiega to nieoczekiwanemu dostępowi do danych`*`przy użyciu symboli wieloznacznych (). Poniżej przedstawiono niektóre operacje na danych, które można określić `DataActions` w `NotDataActions`i:
+Aby obsługiwać operacje na danych, nowe właściwości danych zostały dodane do struktury definicji roli. Operacje na danych są definiowane za pomocą właściwości `DataActions` i `NotDataActions`. Po dodaniu tych właściwości danych jest zachowywane rozdzielenie między zarządzaniem i danymi. Zapobiega to nieoczekiwanemu uzyskiwaniu dostępu do danych za pośrednictwem bieżących przypisań ról z symbolami wieloznacznymi (`*`). Poniżej przedstawiono niektóre operacje na danych, określane za pomocą właściwości `DataActions` i `NotDataActions`:
 
-- Odczytaj listę obiektów BLOB w kontenerze
-- Zapisywanie obiektu blob magazynu w kontenerze
-- Usuwanie komunikatu w kolejce
+- Odczyt listy obiektów blob w kontenerze
+- Zapis obiektu blob magazynu w kontenerze
+- Usuwanie komunikatu z kolejki
 
-Oto definicja roli [czytnika danych obiektów blob magazynu](built-in-roles.md#storage-blob-data-reader) , która obejmuje operacje we `Actions` właściwościach i. `DataActions` Ta rola umożliwia odczytywanie kontenera obiektów blob, a także bazowe dane obiektów BLOB.
+Oto definicja roli [czytnika danych obiektów blob magazynu](built-in-roles.md#storage-blob-data-reader) , która obejmuje operacje we właściwościach `Actions` i `DataActions`. Ta rola umożliwia odczytywanie kontenera obiektów blob, a także bazowe dane obiektów BLOB.
 
 ```json
 {
@@ -120,7 +120,7 @@ Oto definicja roli [czytnika danych obiektów blob magazynu](built-in-roles.md#s
 }
 ```
 
-Do `DataActions` właściwości i `NotDataActions` można dodawać tylko operacje danych. Dostawcy zasobów identyfikują, które operacje są operacjami danych, `isDataAction` ustawiając właściwość `true`na. Aby wyświetlić listę operacji, gdzie `isDataAction` is `true`, zobacz [operacje dostawcy zasobów](resource-provider-operations.md). Role, które nie mają operacji na danych, nie muszą mieć `DataActions` ani `NotDataActions` właściwości w ramach definicji roli.
+Do właściwości `DataActions` i `NotDataActions` można dodawać tylko operacje na danych. Dostawcy zasobów identyfikują, które operacje są operacjami danych, ustawiając właściwość `isDataAction` na `true`. Aby wyświetlić listę operacji, w których `isDataAction` jest `true`, zobacz [operacje dostawcy zasobów](resource-provider-operations.md). Role, które nie mają operacji na danych, nie muszą mieć właściwości `DataActions` i `NotDataActions` w ramach definicji roli.
 
 Autoryzacja wszystkich wywołań interfejsu API operacji zarządzania jest obsługiwana przez Azure Resource Manager. Autoryzacja wywołań interfejsu API operacji danych jest obsługiwana przez dostawcę zasobów lub Azure Resource Manager.
 
@@ -134,31 +134,31 @@ Rola [właściciela](built-in-roles.md#owner) dla Alicja i rola [współautor da
 
 Właściciel
 
-&nbsp;&nbsp;&nbsp;&nbsp;Wykonane<br>
+&nbsp;&nbsp;&nbsp;działania &nbsp;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`*`
 
-Współautor danych obiektu blob usługi Storage
+Współautor danych obiektu blob magazynu
 
-&nbsp;&nbsp;&nbsp;&nbsp;Wykonane<br>
+&nbsp;&nbsp;&nbsp;działania &nbsp;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`Microsoft.Storage/storageAccounts/blobServices/containers/delete`<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`Microsoft.Storage/storageAccounts/blobServices/containers/read`<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`Microsoft.Storage/storageAccounts/blobServices/containers/write`<br>
-&nbsp;&nbsp;&nbsp;&nbsp;Akcje dataactions<br>
+&nbsp;&nbsp;&nbsp;&nbsp;akcjami<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete`<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read`<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write`
 
-Ponieważ Alicja ma akcję symbol wieloznaczny (`*`) w zakresie subskrypcji, ich uprawnienia dziedziczą, aby umożliwić im wykonywanie wszystkich akcji zarządzania. Alicja może odczytywać, zapisywać i usuwać kontenery. Jednak Alicja nie może wykonywać operacji na danych bez podejmowania dodatkowych kroków. Na przykład domyślnie Alicja nie może odczytać obiektów BLOB w kontenerze. Aby odczytać obiekty blob, Alicja musiałaby pobrać klucze dostępu do magazynu i korzystać z nich w celu uzyskania dostępu do obiektów BLOB.
+Ponieważ Alicja ma akcję z symbolami wieloznacznymi (`*`) w zakresie subskrypcji, ich uprawnienia dziedziczą, aby umożliwić im wykonywanie wszystkich akcji zarządzania. Alicja może odczytywać, zapisywać i usuwać kontenery. Jednak Alicja nie może wykonywać operacji na danych bez podejmowania dodatkowych kroków. Na przykład domyślnie Alicja nie może odczytać obiektów BLOB w kontenerze. Aby odczytać obiekty blob, Alicja musiałaby pobrać klucze dostępu do magazynu i korzystać z nich w celu uzyskania dostępu do obiektów BLOB.
 
-Uprawnienia Roberta są ograniczone tylko `Actions` `DataActions` do określonych w roli [współautor danych obiektu blob magazynu](built-in-roles.md#storage-blob-data-contributor) . W oparciu o rolę Robert może wykonywać operacje związane z zarządzaniem i danymi. Na przykład Robert może odczytywać, zapisywać i usuwać kontenery na określonym koncie magazynu, a także odczytywać, zapisywać i usuwać obiekty blob.
+Uprawnienia Roberta są ograniczone tylko do `Actions` i `DataActions` określonych w roli [współautor danych obiektu blob magazynu](built-in-roles.md#storage-blob-data-contributor) . W oparciu o rolę Robert może wykonywać operacje związane z zarządzaniem i danymi. Na przykład Robert może odczytywać, zapisywać i usuwać kontenery na określonym koncie magazynu, a także odczytywać, zapisywać i usuwać obiekty blob.
 
-Aby uzyskać więcej informacji na temat zarządzania i zabezpieczeń płaszczyzny danych dla magazynu, zobacz [Przewodnik po zabezpieczeniach usługi Azure Storage](../storage/common/storage-security-guide.md).
+Aby uzyskać więcej informacji na temat zarządzania i zabezpieczeń płaszczyzny danych dla magazynu, zobacz [Przewodnik po zabezpieczeniach usługi Azure Storage](../storage/blobs/security-recommendations.md).
 
 ### <a name="what-tools-support-using-rbac-for-data-operations"></a>Jakie narzędzia obsługują korzystanie z funkcji RBAC dla operacji na danych?
 
 Aby wyświetlać operacje na danych i korzystać z nich, należy dysponować prawidłowymi wersjami narzędzi lub zestawów SDK:
 
-| Tool  | Version  |
+| Narzędzie  | Wersja  |
 |---------|---------|
 | [Azure PowerShell](/powershell/azure/install-az-ps) | 1.1.0 lub nowszy |
 | [Interfejs wiersza polecenia platformy Azure](/cli/azure/install-azure-cli) | 2.0.30 lub nowszy |
@@ -174,7 +174,7 @@ Aby wyświetlić operacje na danych w interfejsie API REST i korzystać z nich, 
 
 ## <a name="actions"></a>Akcje
 
-`Actions` Uprawnienie określa operacje zarządzania, które mogą być wykonywane przez rolę. Jest to kolekcja ciągów operacji, która identyfikuje zabezpieczone operacje dostawców zasobów platformy Azure. Poniżej przedstawiono kilka przykładów operacji zarządzania, które mogą być używane w `Actions`programie.
+Uprawnienie `Actions` określa operacje zarządzania, które mogą być wykonywane przez rolę. Jest to kolekcja ciągów operacji, która identyfikuje zabezpieczone operacje dostawców zasobów platformy Azure. Poniżej przedstawiono kilka przykładów operacji zarządzania, które mogą być używane w `Actions`.
 
 | Ciąg operacji    | Opis         |
 | ------------------- | ------------------- |
@@ -186,15 +186,15 @@ Aby wyświetlić operacje na danych w interfejsie API REST i korzystać z nich, 
 
 ## <a name="notactions"></a>NotActions
 
-Uprawnienie określa operacje zarządzania, które są wykluczone z dozwolonej `Actions`. `NotActions` Użyj uprawnienia `NotActions` , jeśli zestaw operacji, do których chcesz zezwolić, jest łatwiejszy w użyciu, wykluczając operacje ograniczone. Dostęp udzielony przez rolę (czynne uprawnienia) jest obliczany przez odjęcie `NotActions` operacji `Actions` od operacji.
+Uprawnienie `NotActions` określa operacje zarządzania, które są wykluczone z dozwolonej `Actions`. Użyj uprawnienia `NotActions`, jeśli zestaw operacji, do których chcesz zezwolić, jest łatwiej definiowany przez wykluczenie operacji ograniczonej. Dostęp udzielony przez rolę (czynne uprawnienia) jest obliczany przez odjęcie operacji `NotActions` z operacji `Actions`.
 
 > [!NOTE]
-> Jeśli użytkownik ma przypisaną rolę, która wyklucza operację w programie `NotActions`, i ma przypisaną drugą rolę, która przyznaje dostęp do tej samej operacji, użytkownik może wykonać tę operację. `NotActions`nie jest regułą odmowy — jest to po prostu wygodny sposób tworzenia zestawu dozwolonych operacji, gdy wymagane jest wykluczenie określonych operacji.
+> Jeśli użytkownik ma przypisaną rolę, która wyklucza operację w `NotActions`i ma przypisaną drugą rolę, która przyznaje dostęp do tej samej operacji, użytkownik może wykonać tę operację. `NotActions` nie jest regułą odmowy — jest to po prostu wygodny sposób utworzenia zestawu dozwolonych operacji, gdy wymagane jest wykluczenie określonych operacji.
 >
 
-## <a name="dataactions"></a>DataActions
+## <a name="dataactions"></a>Akcje dataactions
 
-`DataActions` Uprawnienie określa operacje na danych, które mogą być wykonywane na danych w tym obiekcie. Na przykład jeśli użytkownik odczytał dostęp do danych obiektów BLOB do konta magazynu, może odczytać obiekty blob w ramach tego konta magazynu. Poniżej przedstawiono kilka przykładów operacji na danych, które mogą być używane `DataActions`w programie.
+Uprawnienie `DataActions` określa operacje na danych, które mogą być wykonywane na danych w tym obiekcie. Na przykład jeśli użytkownik odczytał dostęp do danych obiektów BLOB do konta magazynu, może odczytać obiekty blob w ramach tego konta magazynu. Poniżej przedstawiono kilka przykładów operacji na danych, które mogą być używane w `DataActions`.
 
 | Ciąg operacji    | Opis         |
 | ------------------- | ------------------- |
@@ -205,17 +205,17 @@ Uprawnienie określa operacje zarządzania, które są wykluczone z dozwolonej `
 
 ## <a name="notdataactions"></a>NotDataActions
 
-Uprawnienie określa operacje na danych, które są wykluczone z dozwolonej `DataActions`. `NotDataActions` Dostęp udzielony przez rolę (czynne uprawnienia) jest obliczany przez odjęcie `NotDataActions` operacji `DataActions` od operacji. Każdy dostawca zasobów udostępnia swój odpowiedni zestaw interfejsów API do realizacji operacji na danych.
+Uprawnienie `NotDataActions` określa operacje na danych, które są wykluczone z dozwolonych `DataActions`. Dostęp udzielony przez rolę (czynne uprawnienia) jest obliczany przez odjęcie operacji `NotDataActions` z operacji `DataActions`. Każdy dostawca zasobów udostępnia swój odpowiedni zestaw interfejsów API do realizacji operacji na danych.
 
 > [!NOTE]
-> Jeśli użytkownik ma przypisaną rolę, która wyklucza operację danych w programie `NotDataActions`, i przypisuje drugą rolę, która przyznaje dostęp do tej samej operacji danych, użytkownik może wykonać tę operację. `NotDataActions`nie jest regułą odmowy — jest to po prostu wygodny sposób tworzenia zestawu dozwolonych operacji na danych, gdy wymagane jest wykluczenie określonych operacji na danych.
+> Jeśli użytkownik ma przypisaną rolę, która wyklucza operację danych w `NotDataActions`i ma przypisaną drugą rolę, która przyznaje dostęp do tej samej operacji danych, użytkownik może wykonać tę operację na danych. `NotDataActions` nie jest regułą odmowy — jest to po prostu wygodny sposób tworzenia zestawu dozwolonych operacji na danych, gdy wymagane jest wykluczenie określonych operacji na danych.
 >
 
 ## <a name="assignablescopes"></a>AssignableScopes
 
-`AssignableScopes` Właściwość określa zakresy (grupy zarządzania, subskrypcje, grupy zasobów lub zasoby), dla których ta definicja roli jest dostępna. Rolę można przypisać do przypisania tylko do grup zarządzania, subskrypcji lub grup zasobów, które go wymagają. Należy użyć co najmniej jednej grupy zarządzania, subskrypcji, grupy zasobów lub identyfikatora zasobu.
+Właściwość `AssignableScopes` określa zakresy (grupy zarządzania, subskrypcje, grupy zasobów lub zasoby), dla których ta definicja roli jest dostępna. Rolę można przypisać do przypisania tylko do grup zarządzania, subskrypcji lub grup zasobów, które go wymagają. Należy użyć co najmniej jednej grupy zarządzania, subskrypcji, grupy zasobów lub identyfikatora zasobu.
 
-Wbudowane role mają `AssignableScopes` ustawiony zakres główny (`"/"`). Zakres główny wskazuje, że rola jest dostępna do przypisania we wszystkich zakresach. Przykłady prawidłowych zakresów do przypisania to:
+Wbudowane role mają ustawioną `AssignableScopes` zakresem głównym (`"/"`). Zakres główny wskazuje, że rola jest dostępna do przypisania we wszystkich zakresach. Przykłady prawidłowych zakresów do przypisania to:
 
 | Rola jest dostępna do przypisania | Przykład |
 |----------|---------|
@@ -226,7 +226,7 @@ Wbudowane role mają `AssignableScopes` ustawiony zakres główny (`"/"`). Zakre
 | Grupa zarządzania i subskrypcja | `"/providers/Microsoft.Management/managementGroups/{groupId1}", /subscriptions/{subscriptionId1}",` |
 | Wszystkie zakresy (dotyczy tylko ról wbudowanych) | `"/"` |
 
-Informacje o `AssignableScopes` rolach niestandardowych można znaleźć w temacie [role niestandardowe dla zasobów platformy Azure](custom-roles.md).
+Aby uzyskać informacje na temat `AssignableScopes` ról niestandardowych, zobacz [role niestandardowe dla zasobów platformy Azure](custom-roles.md).
 
 ## <a name="next-steps"></a>Następne kroki
 

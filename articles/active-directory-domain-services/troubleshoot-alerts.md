@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 09/20/2019
 ms.author: iainfou
-ms.openlocfilehash: 459aeaefc07e3f55b0829f0ad378992104982941
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 26ae70f9283ac7be847a59753130dd8ba8c11c18
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74703954"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979903"
 ---
 # <a name="known-issues-common-alerts-and-resolutions-in-azure-active-directory-domain-services"></a>Znane problemy: typowe alerty i rozwiązania w Azure Active Directory Domain Services
 
@@ -92,7 +92,7 @@ Kondycja domeny zarządzanej na platformie Azure AD DS automatycznie aktualizuje
 
 Usługa Azure AD DS wymaga aktywnej subskrypcji i nie można jej przenieść do innej subskrypcji. Jeśli subskrypcja platformy Azure, z którą skojarzona jest domena zarządzana przez usługę Azure AD DS, zostanie usunięta, należy ponownie utworzyć subskrypcję platformy Azure i domenę zarządzaną platformy Azure AD DS.
 
-1. [Utwórz subskrypcję platformy Azure](../billing/billing-create-subscription.md).
+1. [Utwórz subskrypcję platformy Azure](../cost-management-billing/manage/create-subscription.md).
 1. [Usuń domenę zarządzaną AD DS platformy Azure](delete-aadds.md) z istniejącego katalogu usługi Azure AD.
 1. [Utwórz zastępczą domenę zarządzaną platformy Azure AD DS](tutorial-create-instance.md).
 

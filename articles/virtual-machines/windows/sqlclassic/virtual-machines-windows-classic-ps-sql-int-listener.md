@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mikeray
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 29aaedeafb3995cc09e221d2e049dd538808904a
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: f26c5a6c6fc2774d19beaa021015357a1991f0ed
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74032672"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978166"
 ---
 # <a name="configure-an-ilb-listener-for-availability-groups-on-azure-sql-server-vms"></a>Konfigurowanie odbiornika ILB dla grup dostępności na maszynach wirtualnych platformy Azure SQL Server
 > [!div class="op_single_selector"]
@@ -29,10 +29,10 @@ ms.locfileid: "74032672"
 >
 >
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 > [!IMPORTANT]
-> Platforma Azure ma dwa różne modele wdrażania służące do tworzenia zasobów i pracy z nimi: [Azure Resource Manager i klasyczne](../../../azure-resource-manager/resource-manager-deployment-model.md). W tym artykule opisano sposób korzystania z klasycznego modelu wdrażania. Zalecamy, aby większość nowych wdrożeń korzystała z modelu Menedżer zasobów.
+> Platforma Azure ma dwa różne modele wdrażania służące do tworzenia zasobów i pracy z nimi: [Azure Resource Manager i klasyczne](../../../azure-resource-manager/management/deployment-models.md). W tym artykule opisano sposób korzystania z klasycznego modelu wdrażania. Zalecamy, aby większość nowych wdrożeń korzystała z modelu Menedżer zasobów.
 
 Aby skonfigurować odbiornik dla grupy dostępności zawsze włączone w modelu Menedżer zasobów, zobacz sekcję [Konfigurowanie modułu równoważenia obciążenia dla zawsze włączonej grupy dostępności na platformie Azure](../sql/virtual-machines-windows-portal-sql-alwayson-int-listener.md).
 
