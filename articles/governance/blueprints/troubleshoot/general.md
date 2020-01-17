@@ -1,18 +1,18 @@
 ---
 title: Rozwiązywanie typowych problemów
 description: Dowiedz się, jak rozwiązywać problemy z tworzeniem, przypisywaniem i usuwaniem planów, takich jak naruszenia zasad i funkcje parametrów planu.
-ms.date: 11/22/2019
+ms.date: 01/15/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 5b8a20b0757934bbd356ab037a22521a248a7eb2
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 7306e344a479008a87164a954c4444d375950b0b
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75982491"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76157087"
 ---
 # <a name="troubleshoot-errors-using-azure-blueprints"></a>Rozwiązywanie problemów z błędami przy użyciu planów platformy Azure
 
-Podczas tworzenia lub przypisywania planów mogą wystąpić błędy. W tym artykule opisano różne błędy, które mogą wystąpić i sposoby ich rozwiązywania.
+Podczas tworzenia, przypisywania lub usuwania planów mogą wystąpić błędy. W tym artykule opisano różne błędy, które mogą wystąpić i sposoby ich rozwiązywania.
 
 ## <a name="finding-error-details"></a>Znajdowanie szczegółów błędu
 
@@ -60,6 +60,22 @@ Przekazywanie parametru planu, który używa funkcji, takiej jak `[resourceGroup
 #### <a name="resolution"></a>Rozdzielczość
 
 Aby przekazać funkcję przez parametr, należy wypróbować cały ciąg z `[` w taki sposób, aby parametr strategii wyglądał jak `[[resourceGroup().tags.myTag]`. Znak ucieczki powoduje, że plany traktują wartość jako ciąg podczas przetwarzania planu. Plany następnie umieszczają funkcję na artefaktie, umożliwiając jej dynamiczne działanie zgodnie z oczekiwaniami. Aby uzyskać więcej informacji, zobacz [składnia i wyrażenia w szablonach Azure Resource Manager](../../../azure-resource-manager/templates/template-expressions.md).
+
+## <a name="delete-errors"></a>Usuń błędy
+
+### <a name="assign-delete-timeout"></a>Scenariusz: limit czasu usuwania przydziału
+
+#### <a name="issue"></a>Problem
+
+Usuwanie przypisania strategii nie zostało ukończone.
+
+#### <a name="cause"></a>Przyczyna
+
+Przypisanie planu może zostać zablokowane w stanie innym niż terminal po usunięciu. Ten stan jest spowodowany tym, że zasoby utworzone przez przypisanie strategii nadal oczekują na usunięcie lub nie zwracają kodu stanu do planów platformy Azure.
+
+#### <a name="resolution"></a>Rozdzielczość
+
+Przypisania strategii w stanie innym niż Terminal są automatycznie oznaczane jako **Niepowodzenie** po upływie _6 godzin_ . Po przekroczeniu limitu czasu podczas przypisywania stanu przypisania planu można ponowić próbę usunięcia.
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -1,14 +1,14 @@
 ---
 title: Etapy wdrażania strategii
-description: Zapoznaj się z tematami dotyczącymi zabezpieczeń i artefaktów, które są wykonywane przez usługi Azure Blueprint podczas tworzenia przypisania planu.
+description: Zapoznaj się z tematami dotyczącymi zabezpieczeń i artefaktów, które są wykonywane przez usługi platformy Azure podczas tworzenia przypisania planu.
 ms.date: 11/13/2019
 ms.topic: conceptual
-ms.openlocfilehash: 4c1d0cd47e0f43b73e3178e18a4ba5d705048a72
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: daa7722fa37547929aa21b76b870f70143ae71ab
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74463553"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156628"
 ---
 # <a name="stages-of-a-blueprint-deployment"></a>Etapy wdrażania strategii
 
@@ -27,7 +27,7 @@ Wdrożenie planu jest wyzwalane przez przypisanie planu do subskrypcji lub [zakt
 
 Nazwa główna usługi planów platformy Azure ma uprawnienia właściciela przypisanej subskrypcji lub subskrypcji, gdy zostanie użyta tożsamość zarządzana [tożsamości zarządzanej przez system](../../../active-directory/managed-identities-azure-resources/overview.md) . Przyznana rola pozwala na tworzenie i późniejsze odwoływanie się do tożsamości zarządzanej **przypisanej do systemu** . Jeśli jest używana tożsamość zarządzana **przypisana przez użytkownika** , jednostka usługi Azure Planes nie jest pobierana i nie wymaga praw właściciela subskrypcji.
 
-Prawa są przyznawane automatycznie, jeśli przypisanie odbywa się za pomocą portalu. Jednak jeśli przypisanie odbywa się za pomocą interfejsu API REST, przyznanie praw musi zostać wykonane przy użyciu oddzielnego wywołania interfejsu API. Identyfikator AppId Azure Blueprint jest `f71766dc-90d9-4b7d-bd9d-4499c4331c3f`, ale jednostka usługi różni się w zależności od dzierżawy. Aby uzyskać nazwę główną usługi, użyj [Azure Active Directory interfejs API programu Graph](../../../active-directory/develop/active-directory-graph-api.md) i [serviceprincipals](/graph/api/resources/serviceprincipal) punktu końcowego. Następnie należy przydzielić roli _właściciela_ na platformę Azure za pomocą [portalu](../../../role-based-access-control/role-assignments-portal.md), [interfejsu](../../../role-based-access-control/role-assignments-rest.md) [wiersza polecenia platformy Azure](../../../role-based-access-control/role-assignments-cli.md), [Azure PowerShell](../../../role-based-access-control/role-assignments-powershell.md)lub [szablonu Menedżer zasobów](../../../role-based-access-control/role-assignments-template.md).
+Prawa są przyznawane automatycznie, jeśli przypisanie odbywa się za pomocą portalu. Jednak jeśli przypisanie odbywa się za pomocą interfejsu API REST, przyznanie praw musi zostać wykonane przy użyciu oddzielnego wywołania interfejsu API. Identyfikator AppId platformy Azure planuje się `f71766dc-90d9-4b7d-bd9d-4499c4331c3f`, ale jednostka usługi zależy od dzierżawy. Aby uzyskać nazwę główną usługi, użyj [Azure Active Directory interfejs API programu Graph](../../../active-directory/develop/active-directory-graph-api.md) i [serviceprincipals](/graph/api/resources/serviceprincipal) punktu końcowego. Następnie należy przydzielić roli _właściciela_ na platformę Azure za pomocą [portalu](../../../role-based-access-control/role-assignments-portal.md), [interfejsu](../../../role-based-access-control/role-assignments-rest.md) [wiersza polecenia platformy Azure](../../../role-based-access-control/role-assignments-cli.md), [Azure PowerShell](../../../role-based-access-control/role-assignments-powershell.md)lub [szablonu Menedżer zasobów](../../../role-based-access-control/role-assignments-template.md).
 
 Usługa plany nie wdraża bezpośrednio zasobów.
 

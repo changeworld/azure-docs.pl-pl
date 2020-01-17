@@ -11,19 +11,19 @@ ms.author: trbye
 author: trevorbye
 ms.date: 11/19/2019
 ms.custom: Ignite2019
-ms.openlocfilehash: 8d80282044adfa723940aa6f68efc1e719e713c0
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 1e346d2542193ec1880ad0a56bd6afa1b0a46890
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75533167"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122631"
 ---
 # <a name="run-batch-predictions-using-azure-machine-learning-designer"></a>Uruchamianie prognoz wsadowych za pomocą narzędzia Azure Machine Learning Designer
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 W tym instruktażu dowiesz się, jak używać projektanta do uczenia modelu i konfigurowania potoku prognozowania partii i usługi sieci Web. Funkcja przewidywania wsadowe umożliwia ciągłe i na żądanie ocenianie modeli w dużych zestawach danych, opcjonalnie skonfigurowanych jako usługa sieci Web, która może być wyzwalana z dowolnej biblioteki HTTP. 
 
-Aby skonfigurować usługi wsadowych oceniania przy użyciu zestawu SDK, zobacz towarzyszące [instrukcje](how-to-run-batch-predictions.md).
+Aby skonfigurować usługi wsadowych oceniania przy użyciu zestawu SDK, zobacz towarzyszące [instrukcje](how-to-use-parallel-run-step.md).
 
 W tym instruktażu przedstawiono następujące zadania:
 

@@ -16,14 +16,17 @@ ms.topic: tutorial
 ms.date: 10/21/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 815cffab118f6900c1c9d42a7e44821f8af62532
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 25dd638c15fecbef787e4ceabea9ae7cb4359582
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74081985"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76120370"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-adobe-creative-cloud"></a>Samouczek: integracja logowania jednokrotnego (SSO) Azure Active Directory z usługą Adobe Creative Cloud
+
+> [!NOTE]
+> W tym artykule opisano niestandardową konfigurację opartą na protokole SAML programu Adobe administrator konsoli administracyjnej dla Azure Active Directory (Azure AD). W przypadku nowych konfiguracji marki zalecamy korzystanie z [łącznika usługi Azure AD](https://helpx.adobe.com/enterprise/using/sso-setup-azure.html). Łącznik usługi Azure AD można skonfigurować w ciągu kilku minut i skrócić proces żądania domen, logowania jednokrotnego i synchronizacji użytkowników.
 
 W tym samouczku dowiesz się, jak zintegrować Adobe Creative Cloud z usługą Azure Active Directory (Azure AD). Podczas integrowania Adobe Creative Cloud z usługą Azure AD można:
 
@@ -92,7 +95,7 @@ Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure 
     b. W polu tekstowym **Identyfikator (identyfikator jednostki)** wpisz adres URL, korzystając z następującego wzorca: `https://www.okta.com/saml2/service-provider/<token>`
 
     > [!NOTE]
-    > Wartość identyfikatora nie jest prawdziwe. Zaktualizuj tę wartość za pomocą rzeczywistego identyfikatora. W celu uzyskania tej wartości skontaktuj się z [zespołem pomocy technicznej klienta rozwiązania Adobe Creative Cloud](https://www.adobe.com/au/creativecloud/business/teams/plans.html). Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
+    > Wartość identyfikatora nie jest prawdziwa. Zaktualizuj tę wartość za pomocą rzeczywistego identyfikatora. W celu uzyskania tej wartości skontaktuj się z [zespołem pomocy technicznej klienta rozwiązania Adobe Creative Cloud](https://www.adobe.com/au/creativecloud/business/teams/plans.html). Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
 1. Aplikacja Adobe Creative Cloud oczekuje potwierdzeń SAML w określonym formacie, co wymaga dodania niestandardowych mapowań atrybutów do konfiguracji atrybutów tokenu SAML. Poniższy zrzut ekranu przedstawia listę atrybutów domyślnych.
 
@@ -109,7 +112,7 @@ Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure 
     > [!NOTE]
     > Aby wartość oświadczenia e-mail była wypełniana w odpowiedzi SAML, użytkownicy muszą mieć ważną licencję usługi Office 365 ExO.
 
-1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu języka SAML** w sekcji **certyfikat podpisywania SAML** Znajdź **certyfikat (base64)** i wybierz pozycję **Pobierz** , aby pobrać certyfikat i zapisać go na komputerze.
+1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu protokołu SAML** w sekcji **certyfikat podpisywania SAML** Znajdź **dane XML Federacji**, a następnie wybierz pozycję **Pobierz** , aby pobrać plik metadanych XML i zapisać go na komputerze.
 
     ![Link do pobierania certyfikatu](common/certificatebase64.png)
 
@@ -122,12 +125,12 @@ Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure 
 W tej sekcji utworzysz użytkownika testowego w Azure Portal o nazwie B. Simon.
 
 1. W lewym okienku w Azure Portal wybierz pozycję **Azure Active Directory**, wybierz pozycję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
-1. Wybierz **nowego użytkownika** w górnej części ekranu.
+1. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
 1. We właściwościach **użytkownika** wykonaj następujące kroki:
    1. W polu **Nazwa** wprowadź wartość `B.Simon`.  
    1. W polu **Nazwa użytkownika** wprowadź username@companydomain.extension. Na przykład `B.Simon@contoso.com`.
    1. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu **Hasło**.
-   1. Kliknij pozycję **Utwórz**.
+   1. Kliknij przycisk **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
@@ -137,7 +140,7 @@ W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotn
 1. Na liście aplikacji wybierz pozycję **Adobe Creative Cloud**.
 1. Na stronie Przegląd aplikacji Znajdź sekcję **Zarządzanie** i wybierz pozycję **Użytkownicy i grupy**.
 
-   ![Link "Użytkownicy i grupy"](common/users-groups-blade.png)
+   ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
 
 1. Wybierz pozycję **Dodaj użytkownika**, a następnie w oknie dialogowym **Dodawanie przypisania** wybierz pozycję **Użytkownicy i grupy** .
 
@@ -149,31 +152,26 @@ W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotn
 
 ## <a name="configure-adobe-creative-cloud-sso"></a>Skonfiguruj Adobe Creative Cloud Logowanie jednokrotne
 
-1. W innym oknie przeglądarki zaloguj się jako administrator do konsoli administracyjnej [Adobe Admin Console](https://adminconsole.adobe.com).
+1. W innym oknie przeglądarki sieci Web Zaloguj się do [konsoli administracyjnej programu Adobe](https://adminconsole.adobe.com) jako administrator systemu.
 
-2. Wybierz pozycję **Ustawienia** na górnym pasku nawigacyjnym, a następnie wybierz pozycję **Tożsamość**. Zostanie otwarta lista domen. Kliknij link **Konfiguruj** dla Twojej domeny. Następnie wykonaj następujące czynności w sekcji **Single Sign On Configuration Required** (Wymagana konfiguracja logowania jednokrotnego). Aby uzyskać więcej informacji, zobacz [Konfigurowanie domeny](https://helpx.adobe.com/enterprise/using/set-up-domain.html)
+1. Przejdź do pozycji **Ustawienia** na górnym pasku nawigacyjnym, a następnie wybierz pozycję **tożsamość**. Zostanie otwarta lista katalogów. Wybierz żądany katalog federacyjny.
 
-    ![Ustawienia](https://helpx.adobe.com/content/dam/help/en/enterprise/using/configure-microsoft-azure-with-adobe-sso/_jcr_content/main-pars/procedure_719391630/proc_par/step_3/step_par/image/edit-sso-configuration.png "Ustawienia")
+1. Na stronie **szczegóły katalogu** wybierz pozycję **Konfiguruj**.
 
-    a. Kliknij przycisk **Browse** (Przeglądaj), aby przekazać certyfikat pobrany z usługi Azure AD w polu **IDP Certificate** (Certyfikat IDP).
+1. Skopiuj identyfikator jednostki i adres URL ACS (adres URL usługi Konsumenckej potwierdzenia lub adres URL odpowiedzi). Wprowadź adresy URL w odpowiednich polach Azure Portal.
 
-    b. W polu tekstowym **wystawcy dostawcy tożsamości** wklej wartość **identyfikatora usługi Azure AD** skopiowaną z Azure Portal.
+    ![Skonfiguruj Logowanie jednokrotne po stronie aplikacji](./media/adobe-creative-cloud-tutorial/tutorial_adobe-creative-cloud_003.png)
 
-    d. W polu tekstowym **adres URL logowania dostawcy tożsamości** wklej wartość **adresu URL logowania** skopiowanego z Azure Portal.
+    a. W oknie dialogowym **Konfigurowanie ustawień aplikacji** należy użyć wartości **identyfikatora jednostki** firmy Adobe dostarczonej przez użytkownika.
 
-    d. Wybierz wartość **HTTP — Redirect** w polu **IDP Binding** (Powiązanie IDP).
+    b. Użyj adresu URL usług ACS (adresu URL usługi Konsumenckej potwierdzenia) firmy Adobe pod warunkiem, że **adres URL odpowiedzi** jest dostępny w oknie dialogowym **Konfigurowanie ustawień aplikacji** .
 
-    e. Wybierz wartość **Email Address** (Adres e-mail) w polu **User Login Setting** (Ustawienie logowania użytkownika).
+1. W dolnej części strony Przekaż plik **XML danych federacyjnych** pobrany z Azure Portal. 
 
-    f. Kliknij przycisk **Zapisz** przycisku.
+    ![Plik XML danych federacyjnych](https://helpx.adobe.com/content/dam/help/en/enterprise/kb/configure-microsoft-azure-with-adobe-sso/jcr_content/main-pars/procedure/proc_par/step_228106403/step_par/image_copy/saml_signinig_certificate.png "Plik XML metadanych dostawcy tożsamości")
 
-3. Na pulpicie nawigacyjnym będzie teraz widoczny plik XML **„Pobierz metadane”** . Zawiera on adresy URL EntityDescriptor i AssertionConsumerService firmy Adobe. Otwórz ten plik i skonfiguruj te adresy w aplikacji usługi Azure AD.
+1. Wybierz pozycję **Zapisz**.
 
-    ![Konfigurowanie logowania jednokrotnego po stronie aplikacji](./media/adobe-creative-cloud-tutorial/tutorial_adobe-creative-cloud_003.png)
-
-    a. Użyj wartości EntityDescriptor dostarczonej przez firmę Adobe w polu **Identyfikator** okna dialogowego **Konfigurowanie ustawień aplikacji**.
-
-    b. Użyj wartości AssertionConsumerService dostarczonej przez firmę Adobe w polu **Adres URL odpowiedzi** okna dialogowego **Konfigurowanie ustawień aplikacji**.
 
 ### <a name="create-adobe-creative-cloud-test-user"></a>Tworzenie użytkownika testowego rozwiązania Adobe Creative Cloud
 
@@ -192,11 +190,11 @@ Aby umożliwić użytkownikom usługi Azure AD logowanie się do Adobe Creative 
 
 ## <a name="test-sso"></a>Testuj Logowanie jednokrotne 
 
-W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
+W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
 Po kliknięciu kafelka Adobe Creative Cloud w panelu dostępu powinno nastąpić automatyczne zalogowanie do rozwiązania Adobe Creative Cloud, dla którego skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 - [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
@@ -206,7 +204,7 @@ Po kliknięciu kafelka Adobe Creative Cloud w panelu dostępu powinno nastąpić
 
 - [Wypróbuj Adobe Creative Cloud z usługą Azure AD](https://aad.portal.azure.com/)
 
-- [Konfigurowanie domeny (adobe.com)](https://helpx.adobe.com/enterprise/using/set-up-domain.html)
+- [Konfigurowanie tożsamości (adobe.com)](https://helpx.adobe.com/enterprise/using/set-up-identity.html)
   
 - [Konfiguracja oprogramowania Microsoft Azure do użytku z funkcją Adobe SSO (adobe.com)](https://helpx.adobe.com/enterprise/kb/configure-microsoft-azure-with-adobe-sso.html)
 

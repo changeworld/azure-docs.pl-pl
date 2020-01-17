@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 12/17/2019
+ms.date: 12/27/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 48ecaea82e8874ff521abafaa075b41367f8fbf1
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 1560b5d60ae3c6de3ecb6d50859e24ebb7bc2d28
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75754003"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156917"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Wdrażanie modeli przy użyciu Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -38,7 +38,7 @@ Aby uzyskać więcej informacji na temat pojęć związanych z przepływem pracy
 
 - Model. Jeśli nie masz przeszkolonego modelu, możesz użyć modelu i plików zależności, które są dostępne w [tym samouczku](https://aka.ms/azml-deploy-cloud).
 
-- [Rozszerzenie interfejsu wiersza polecenia platformy Azure dla usługi Machine Learning](reference-azure-machine-learning-cli.md), [zestawu Azure Machine Learning SDK dla języka Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)lub [rozszerzenia Azure Machine Learning Visual Studio Code](how-to-vscode-tools.md).
+- [Rozszerzenie interfejsu wiersza polecenia platformy Azure dla usługi Machine Learning](reference-azure-machine-learning-cli.md), [zestawu Azure Machine Learning SDK dla języka Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)lub [rozszerzenia Azure Machine Learning Visual Studio Code](tutorial-setup-vscode-extension.md).
 
 ## <a name="connect-to-your-workspace"></a>Nawiązywanie połączenia z obszarem roboczym
 
@@ -59,7 +59,7 @@ Poniższy kod przedstawia sposób nawiązywania połączenia z obszarem roboczym
 
 + **Używanie VS Code**
 
-   Gdy używasz VS Code, wybierz obszar roboczy przy użyciu interfejsu graficznego. Aby uzyskać więcej informacji, zobacz [Wdrażanie modeli i zarządzanie nimi](how-to-vscode-tools.md#deploy-and-manage-models) w dokumentacji rozszerzenia vs Code.
+   Gdy używasz VS Code, wybierz obszar roboczy przy użyciu interfejsu graficznego. Aby uzyskać więcej informacji, zobacz [Wdrażanie modeli i zarządzanie nimi](tutorial-train-deploy-image-classification-model-vscode.md#deploy-the-model) w dokumentacji rozszerzenia vs Code.
 
 ## <a id="registermodel"></a>Zarejestruj model
 
@@ -115,7 +115,7 @@ Fragmenty kodu w tej sekcji pokazują, jak zarejestrować model z poziomu przebi
 
 + **Używanie VS Code**
 
-  Zarejestruj modele przy użyciu dowolnych plików lub folderów modelu przy użyciu rozszerzenia [vs Code](how-to-vscode-tools.md#deploy-and-manage-models) .
+  Zarejestruj modele przy użyciu dowolnych plików lub folderów modelu przy użyciu rozszerzenia [vs Code](tutorial-train-deploy-image-classification-model-vscode.md#deploy-the-model) .
 
 ### <a name="register-a-model-from-a-local-file"></a>Rejestrowanie modelu z pliku lokalnego
 
@@ -185,7 +185,7 @@ Aby wdrożyć model, potrzebujesz następujących elementów:
     >
     > * Zestaw SDK Azure Machine Learning nie umożliwia usługom sieci Web ani IoT Edge wdrożeń w celu uzyskania dostępu do magazynu danych lub zestawów. Jeśli wdrożony model musi uzyskać dostęp do danych przechowywanych poza wdrożeniem, takich jak dane na koncie usługi Azure Storage, należy opracować niestandardowe rozwiązanie kodu przy użyciu odpowiedniego zestawu SDK. Na przykład [zestaw SDK usługi Azure Storage dla języka Python](https://github.com/Azure/azure-storage-python).
     >
-    >   Alternatywą, która może obsłużyć twój scenariusz, jest [Prognoza wsadowa](how-to-run-batch-predictions.md), która zapewnia dostęp do magazynów danych podczas oceniania.
+    >   Alternatywą, która może obsłużyć twój scenariusz, jest [Prognoza wsadowa](how-to-use-parallel-run-step.md), która zapewnia dostęp do magazynów danych podczas oceniania.
 
 * **Zależności** takie jak skrypty pomocnicze lub pakiety środowiska Python/Conda wymagane do uruchomienia skryptu wejściowego lub modelu.
 

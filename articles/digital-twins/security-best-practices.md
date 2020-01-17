@@ -7,13 +7,13 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 11/19/2019
-ms.openlocfilehash: 5d2fe5a00d131af54862551991cf984d8576b57e
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.date: 01/15/2020
+ms.openlocfilehash: 5fc5ba447557aa89e8f0870c576d6d4c439f3353
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75860949"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122563"
 ---
 # <a name="azure-digital-twins-security-best-practices"></a>Najlepsze rozwiązania dotyczące zabezpieczeń usługi Azure Digital bliźniaczych reprezentacji
 
@@ -40,6 +40,7 @@ Niektóre kluczowe metody bezpiecznego zabezpieczania urządzeń IoT obejmują:
 > * Ogranicz przepustowość operacji we/wy i urządzenia, aby zwiększyć wydajność. Ograniczanie szybkości może zwiększyć bezpieczeństwo, zapobiegając atakom typu "odmowa usługi".
 > * Dbaj o aktualizowanie oprogramowania układowego urządzenia, systemu operacyjnego i oprogramowania.
 > * Okresowe inspekcje i przeglądanie najlepszych rozwiązań w zakresie zabezpieczeń urządzeń, oprogramowania, sieci i bramy w miarę ich dalszego ulepszania i rozwijania.
+> * Używaj zaufanych, certyfikowanych i zgodnych systemów zabezpieczeń, oprogramowania i urządzeń. Na przykład zapoznaj [się z ofertami zgodności](https://azure.microsoft.com/overview/trusted-cloud/compliance/) dla chmury platformy Azure.
 
 Oto kilka najważniejszych metod bezpiecznego zabezpieczania przestrzeni IoT:
 
@@ -67,8 +68,8 @@ Usługa Azure Digital bliźniaczych reprezentacji używa [Azure Active Directory
 > * Użyj certyfikatu wystawionego przez zaufany [urząd certyfikacji](../active-directory/authentication/active-directory-certificate-based-authentication-get-started.md) zamiast kluczy tajnych aplikacji do uwierzytelnienia.
 > * Ogranicz zakres dostępu OAuth 2,0 dla tokenu.
 > * Sprawdź, jak długo token jest prawidłowy i czy token pozostaje ważny.
-> * Ustaw odpowiednie długości ważności tokenów.
-> * Odśwież wygasłe tokeny.
+> * Ustaw odpowiednie długości ważności tokenów. Odśwież wygasłe tokeny.
+> * Usuń nieużywane **identyfikatory URI przekierowań** i uprawnienia na [podstawie najlepszych rozwiązań kontroli dostępu opartej na rolach](#role-based-access-control-best-practices).
 
 ## <a name="role-based-access-control-best-practices"></a>Najlepsze rozwiązania dotyczące kontroli dostępu opartej na rolach
 

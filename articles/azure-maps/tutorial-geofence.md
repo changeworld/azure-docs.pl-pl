@@ -1,28 +1,28 @@
 ---
 title: 'Samouczek: Tworzenie geoogrodzenia i śledzenie urządzeń na mapie | Mapy Microsoft Azure'
-description: W tym samouczku dowiesz się, jak skonfigurować geoogrodzenie i śledzić urządzenia względem geoogrodzenia przy użyciu usługi Microsoft Azure Maps.
+description: Dowiedz się, jak skonfigurować geoogrodzenie i śledzić urządzenia względem geofencingu przy użyciu usługi Microsoft Azure Maps.
 author: walsehgal
 ms.author: v-musehg
-ms.date: 11/12/2019
+ms.date: 1/15/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 0e408adfe1daed402ef690224368e846bd0a97c8
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: a88f03adab3beaea75ec2fa9a1c6f59b09739025
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910942"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76153150"
 ---
 # <a name="tutorial-set-up-a-geofence-by-using-azure-maps"></a>Samouczek: Konfigurowanie geoogrodzenia przy użyciu Azure Maps
 
-Ten samouczek przeprowadzi Cię przez podstawowe kroki konfigurowania geofencingu przy użyciu usługi Azure Maps. Scenariusz, który omawiamy w tym samouczku, ma pomóc kierownikom budowy w monitorowaniu potencjalnie niebezpiecznych wyjazdów sprzętu poza wyznaczone tereny budowy. Na terenie budowy znajduje się kosztowny sprzęt i obowiązują pewne przepisy. Zazwyczaj wymagają one, aby urządzenia znajdowały się na terenie budowy i nie opuszczały go bez zezwolenia.
+Ten samouczek przeprowadzi Cię przez podstawowe kroki konfigurowania geofencingu przy użyciu usługi Azure Maps. Rozważmy ten scenariusz, Site Manager konstrukcja musi monitorować potencjalne niebezpieczne urządzenia. Menedżer musi zapewnić, że urządzenie pozostanie w wybranych ogólnych obszarach konstrukcyjnych. Ten ogólny obszar konstrukcyjny jest twardym parametrem. Regulacje wymagają sprzętu do pozostania w tym parametrze, a naruszenia są zgłaszane do Operations Manager.  
 
-Za pomocą interfejsu API przekazywania danych usługi Azure Maps zapiszemy geofencing, natomiast interfejs API geofencingu usługi Azure Maps pomoże nam sprawdzić położenie sprzętu względem geofencingu. Użyjemy usługi Azure Event Grid, aby przesłać strumieniowo wyniki geofencingu i na ich podstawie skonfigurować powiadomienie.
-Aby dowiedzieć się więcej na temat usługi Event Grid, zobacz [Azure Event Grid](https://docs.microsoft.com/azure/event-grid/overview).
-Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
+Używamy interfejsu API przekazywania danych do przechowywania geoogrodzenia i używania interfejsu API geoogrodzenia do sprawdzenia lokalizacji sprzętu względem geoogrodzenia. Interfejs API przekazywania danych i interfejs API geoogrodzenia są z Azure Maps. Używamy również Azure Event Grid do przesyłania strumieniowego wyników geoogrodzenia i konfigurowania powiadomienia na podstawie wyników geoogrodzenia. Aby dowiedzieć się więcej na temat usługi Event Grid, zobacz [Azure Event Grid](https://docs.microsoft.com/azure/event-grid/overview).
+
+W tym samouczku omówiono sposób wykonywania tych zadań:
 
 > [!div class="checklist"]
 > * Przekazywanie obszaru geofencingu w usłudze Azure Maps — usłudze danych przy użyciu interfejsu API przekazywania danych.
@@ -36,13 +36,15 @@ Niniejszy samouczek zawiera informacje na temat wykonywania następujących czyn
 
 ### <a name="create-an-azure-maps-account"></a>Tworzenie konta usługi Azure Maps 
 
-Aby wykonać kroki opisane w tym samouczku, postępuj zgodnie z instrukcjami podanymi w temacie [Tworzenie konta](quick-demo-map-app.md#create-an-account-with-azure-maps) w celu utworzenia subskrypcji konta Azure Maps przy użyciu warstwy cenowej S1 i postępuj zgodnie z instrukcjami w sekcji [Pobieranie klucza podstawowego](quick-demo-map-app.md#get-the-primary-key-for-your-account) , aby pobrać klucz podstawowy dla konta. Aby uzyskać więcej informacji na temat uwierzytelniania w Azure Maps, zobacz [Zarządzanie uwierzytelnianiem w programie Azure Maps](./how-to-manage-authentication.md).
+Postępuj zgodnie z instrukcjami w temacie [Tworzenie konta](quick-demo-map-app.md#create-an-account-with-azure-maps) , aby utworzyć subskrypcję konta Azure Maps przy użyciu warstwy cenowej S1. Kroki przedstawione w sekcji [Pobieranie klucza podstawowego](quick-demo-map-app.md#get-the-primary-key-for-your-account) pokazują, jak pobrać klucz podstawowy konta. Aby uzyskać więcej informacji na temat uwierzytelniania w Azure Maps, zobacz [Zarządzanie uwierzytelnianiem w programie Azure Maps](./how-to-manage-authentication.md).
 
 ## <a name="upload-geofences"></a>Przekazywanie geofencingu
 
-Aby przekazać geofencing terenu budowy przy użyciu interfejsu API przekazywania danych, skorzystamy z aplikacji Postman. Dla celów tego samouczka przyjęliśmy założenie, że istnieje ogólny teren budowy będący niezmiennym parametrem, którego sprzęt budowlany nie powinien naruszać. Naruszenia tego ogrodzenia stanowią poważne zagrożenie i są zgłaszane do programu Operations Manager. Za pomocą zoptymalizowanego zestawu dodatkowych ogrodzeń można zgodnie z harmonogramem śledzić różne obszary w obrębie ogólnego terenu budowy. Przyjęliśmy założenie, że główne wirtualne ogrodzenie zawiera teren podrzędny subsite1, który ma ustawiony czas wygaśnięcia i wygaśnie po upływie tego czasu. W zależności od potrzeb możesz utworzyć więcej zagnieżdżonych wirtualnych ogrodzeń. Na przykład w obszarze subsite1 praca może odbywać się w tygodniach 1–4 harmonogramu, a w obszarze subsite2 praca może odbywać się w tygodniach 5–7. Wszystkie tego rodzaju ogrodzenia można załadować jako pojedynczy zestaw danych na początku projektu, aby używać ich do śledzenia reguł opartych na czasie i miejscu. Aby uzyskać więcej informacji na temat formatu danych geofencingu, zobacz [Geofence GeoJSON data (Geofencing danych GeoJSON)](https://docs.microsoft.com/azure/azure-maps/geofence-geojson). Aby uzyskać więcej informacji na temat przekazywania danych do usługi Azure Maps, zobacz [Dokumentacja interfejsu API przekazywania danych](https://docs.microsoft.com/rest/api/maps/data/uploadpreview).
+Przyjęto założenie, że główny element geoogrodzenia jest subsite1, który ma ustawiony czas wygaśnięcia. W zależności od potrzeb możesz utworzyć więcej zagnieżdżonych wirtualnych ogrodzeń. Te zestawy ograniczników mogą służyć do śledzenia różnych obszarów konstrukcyjnych w ramach ogólnego obszaru budowy. Na przykład subsite1 może być miejscem pracy w tygodniu od 1 do 4 harmonogramu. subsite2 może być miejscem pracy w tygodniu od 5 do 7. Wszystkie takie horyzonty mogą być ładowane jako jeden zestaw danych na początku projektu. Te horyzonty są używane do śledzenia reguł na podstawie czasu i miejsca. 
 
-Otwórz aplikację Postman i wykonaj poniższe kroki, aby przekazać geofencing terenu budowy przy użyciu interfejsu API przekazywania danych usługi Azure Maps.
+Aby przekazać geoogrodzenie dla lokacji budownictwa przy użyciu interfejsu API przekazywania danych, używamy aplikacji do publikowania. Zainstaluj [aplikację Poster](https://www.getpostman.com/) i utwórz bezpłatne konto. 
+
+Po zainstalowaniu aplikacji Poster wykonaj następujące kroki, aby przekazać wartość geoogrodzenia konstrukcji, korzystając z Azure Maps, interfejsu API przekazywania danych.
 
 1. Otwórz aplikację Postman i kliknij pozycję New | Create new (Nowe | Utwórz nowe), a następnie wybierz pozycję Request (Żądanie). Wprowadź nazwę żądania na potrzeby przekazywania danych geofencing, wybierz docelową kolekcję lub folder zapisywania, a następnie kliknij pozycję Save (Zapisz).
 
@@ -56,11 +58,11 @@ Otwórz aplikację Postman i wykonaj poniższe kroki, aby przekazać geofencing 
     
     Parametr GEOJSON w ścieżce adresu URL reprezentuje format przekazywanych danych.
 
-3. Kliknij pozycję **Params** (Parametry), a następnie wprowadź poniższą parę klucz-wartość, która będzie używana w przypadku adresu URL żądania POST. Zastąp wartość klucza subskrypcji kluczem Azure Maps.
+3. Kliknij pozycję **Params** (Parametry), a następnie wprowadź poniższą parę klucz-wartość, która będzie używana w przypadku adresu URL żądania POST. Zastąp ciąg {Subscription-Key} kluczem subskrypcji Azure Maps, znanym również jako klucz podstawowy.
    
     ![Parametry przekazywania danych (geoogrodzenia) w programie Poster](./media/tutorial-geofence/postman-key-vals.png)
 
-4. Kliknij pozycję **Body** (Treść), a następnie wybierz nieprzetworzony format danych wejściowych i z listy rozwijanej wybierz format danych wejściowych JSON. Jako dane do przekazania podaj następujące dane JSON:
+4. Kliknij pozycję **treść** , a następnie wybierz format danych wejściowych RAW i wybierz pozycję JSON jako format danych wejściowych z listy rozwijanej. Jako dane do przekazania podaj następujące dane JSON:
 
    ```JSON
    {
@@ -148,19 +150,19 @@ Otwórz aplikację Postman i wykonaj poniższe kroki, aby przekazać geofencing 
    }
    ```
 
-5. Kliknij przycisk wysyłania i przejrzyj nagłówek odpowiedzi. Po pomyślnym żądaniu nagłówek **lokalizacji** będzie zawierać identyfikator URI stanu, aby sprawdzić bieżący stan żądania przekazywania. Identyfikator URI stanu będzie mieć następujący format. 
+5. Kliknij przycisk wysyłania i przejrzyj nagłówek odpowiedzi. Po pomyślnym żądaniu nagłówek **lokalizacji** będzie zawierać identyfikator URI stanu. Identyfikator URI stanu ma następujący format. 
 
    ```HTTP
    https://atlas.microsoft.com/mapData/{uploadStatusId}/status?api-version=1.0
    ```
 
-6. Skopiuj identyfikator URI stanu i Dołącz do niego parametr `subscription-key`, podając jego wartość klucza subskrypcji konta usługi Azure Maps. Format identyfikatora URI stanu powinien wyglądać podobnie do przedstawionego poniżej:
+6. Skopiuj identyfikator URI stanu i Dołącz klucz subskrypcji. Format identyfikatora URI stanu powinien wyglądać podobnie do przedstawionego poniżej. Zwróć uwagę, że w formacie poniżej można zmienić klucz {Subscription-Key}, w tym {}, z kluczem subskrypcji.
 
    ```HTTP
    https://atlas.microsoft.com/mapData/{uploadStatusId}/status?api-version=1.0&subscription-key={Subscription-key}
    ```
 
-7. Aby uzyskać `udId` Otwórz nową kartę w aplikacji Poster i wybierz pozycję Pobierz metodę HTTP na karcie Konstruktor i wprowadź żądanie GET w identyfikatorze URI stanu. Jeśli przekazywanie danych zakończyło się pomyślnie, otrzymasz udId w treści odpowiedzi. Skopiuj udId do późniejszego użycia.
+7. Aby uzyskać `udId`, Otwórz nową kartę w aplikacji Poster i wybierz pozycję Pobierz metodę HTTP na karcie Konstruktor. Wprowadź żądanie GET w identyfikatorze URI stanu z poprzedniego kroku. Jeśli przekazywanie danych zakończyło się pomyślnie, otrzymasz udId w treści odpowiedzi. Skopiuj udId do późniejszego użycia.
 
    ```JSON
    {
@@ -170,31 +172,33 @@ Otwórz aplikację Postman i wykonaj poniższe kroki, aby przekazać geofencing 
 
 ## <a name="set-up-an-event-handler"></a>Konfigurowanie programu obsługi zdarzeń
 
-W celu powiadamiania programu Operations Manager o zdarzeniach wjazdu i wyjazdu powinniśmy utworzyć program obsługi zdarzeń odbierający powiadomienia.
+W tej sekcji utworzymy procedurę obsługi zdarzeń, która odbiera powiadomienia. Ta procedura obsługi zdarzeń powinna powiadamiać Operations Manager o zdarzeniach wejścia i wyjścia dowolnego sprzętu.
 
-Utworzymy dwie usługi [Logic Apps](https://docs.microsoft.com/azure/event-grid/event-handlers#logic-apps) do obsługi zdarzeń wjazdu i wyjazdu. Zostaną także utworzone wyzwalacze zdarzeń w usłudze Logic Apps, które będą wyzwalane przez te zdarzenia. Chodzi o to, aby wysyłać alerty, w tym przypadku wiadomości e-mail do programu Operations Manager, za każdym razem, gdy sprzęt wjeżdża na teren budowy lub wyjeżdża z terenu budowy. Poniższa ilustracja przedstawia tworzenie aplikacji logiki na potrzeby zdarzenia wjazdu na obszar wirtualnego ogrodzenia. W podobny sposób można utworzyć zdarzenie wyjazdu.
-Aby uzyskać więcej informacji, możesz wyświetlić wszystkie [obsługiwane programy obsługi zdarzeń](https://docs.microsoft.com/azure/event-grid/event-handlers).
+Firma Microsoft udostępnia dwie [Logic Apps](https://docs.microsoft.com/azure/event-grid/event-handlers#logic-apps) usług do obsługi, wprowadzania i kończenia zdarzeń. Gdy zdarzenia w wyzwalaczu Logic Apps, więcej zdarzeń wyzwalacza w sekwencji. Pomysłem jest wysłanie alertów, w tym przypadku wiadomości e-mail do Operations Manager. Poniższa ilustracja przedstawia tworzenie aplikacji logiki na potrzeby zdarzenia wjazdu na obszar wirtualnego ogrodzenia. W podobny sposób można utworzyć zdarzenie wyjazdu. Aby uzyskać więcej informacji, możesz wyświetlić wszystkie [obsługiwane programy obsługi zdarzeń](https://docs.microsoft.com/azure/event-grid/event-handlers).
 
 1. Tworzenie aplikacji logiki w witrynie Azure Portal
 
    ![Tworzenie Azure Logic Apps do obsługi zdarzeń geoogrodzenia](./media/tutorial-geofence/logic-app.png)
 
-2. Wybierz wyzwalacz żądania HTTP, a następnie wybierz pozycję „Wyślij wiadomość e-mail” jako akcję w łączniku programu Outlook
+2. W menu Ustawienia aplikacji logiki przejdź do **projektanta aplikacji logiki**
+
+3. Wybierz wyzwalacz żądania HTTP, a następnie wybierz pozycję "nowy krok". W łączniku programu Outlook wybierz pozycję "Wyślij wiadomość e-mail" jako akcję
   
    ![Schemat usługi Logic Apps](./media/tutorial-geofence/logic-app-schema.png)
 
-3. Zapisz aplikację logiki, aby wygenerować punkt końcowy adresu URL HTTP i skopiuj adres URL HTTP.
+4. Wypełnij pola do wysyłania wiadomości e-mail. Pozostaw adres URL HTTP, który zostanie wygenerowany automatycznie po kliknięciu przycisku "Zapisz"
 
    ![Generowanie punktu końcowego Logic Apps](./media/tutorial-geofence/logic-app-endpoint.png)
 
+5. Zapisz aplikację logiki, aby wygenerować punkt końcowy adresu URL HTTP i skopiuj adres URL HTTP.
 
 ## <a name="create-an-azure-maps-events-subscription"></a>Tworzenie subskrypcji zdarzeń usługi Azure Maps
 
-Usługa Azure Maps obsługuje trzy typy zdarzeń. Obsługiwanym typom zdarzeń usługi Azure Maps można przyjrzeć się [tutaj](https://docs.microsoft.com/azure/event-grid/event-schema-azure-maps). Utworzymy dwie różne subskrypcje — jedną dla zdarzeń wjazdu i jedną dla zdarzeń wyjazdu.
+Usługa Azure Maps obsługuje trzy typy zdarzeń. Możesz przyjrzeć się Azure Maps obsługiwanym typom zdarzeń [tutaj] (https://docs.microsoft.com/azure/event-grid/event-schema-azure-maps. Potrzebujemy dwóch różnych subskrypcji zdarzeń, jednej dla zdarzenia Enter i jednego dla zdarzeń zakończenia.
 
 Wykonaj poniższe kroki, aby utworzyć subskrypcję dla zdarzeń wjazdu wirtualnego ogrodzenia. Zdarzenia wyjazdu wirtualnego ogrodzenia możesz subskrybować w podobny sposób.
 
-1. Przejdź do swojego konta usługi Azure Maps za pomocą [tego linku do portalu](https://ms.portal.azure.com/#@microsoft.onmicrosoft.com/dashboard/) i wybierz kartę zdarzeń.
+1. Przejdź do konta Azure Maps. Na pulpicie nawigacyjnym wybierz pozycję subskrypcje. Kliknij nazwę subskrypcji i wybierz pozycję **zdarzenia** z menu Ustawienia.
 
    ![Przejdź do Azure Maps zdarzeń konta](./media/tutorial-geofence/events-tab.png)
 
@@ -202,23 +206,27 @@ Wykonaj poniższe kroki, aby utworzyć subskrypcję dla zdarzeń wjazdu wirtualn
 
    ![Tworzenie subskrypcji zdarzeń usługi Azure Maps](./media/tutorial-geofence/create-event-subscription.png)
 
-3. Nadaj nazwę subskrypcji zdarzeń i rozpocznij subskrypcję typu zdarzenia Wjazd. Teraz jako „Typ punktu końcowego” wybierz element webhook i skopiuj punkt końcowy adresu URL HTTP aplikacji logiki do pola „Punkt końcowy”
+3. Nadaj nazwę subskrypcji zdarzeń i rozpocznij subskrypcję typu zdarzenia Wjazd. Teraz wybierz element webhook jako "typ punktu końcowego". Kliknij pozycję "Wybierz punkt końcowy" i skopiuj punkt końcowy adresu HTTP aplikacji logiki do "{Endpoint}"
 
    ![Szczegóły subskrypcji zdarzeń Azure Maps](./media/tutorial-geofence/events-subscription.png)
 
 
 ## <a name="use-geofence-api"></a>Używanie interfejsu API wirtualnego ogrodzenia
 
-Interfejs API geofencingu umożliwia sprawdzanie, czy **urządzenie** (sprzęt jest częścią stanu) znajduje się wewnątrz, czy na zewnątrz geofencingu. Aby lepiej zrozumieć interfejs API GET geofencingu. Wysyłamy zapytania do różnych lokalizacji, w których określony sprzęt poruszał się na przestrzeni czasu. Poniższa ilustracja przedstawia pięć lokalizacji określonego sprzętu budowlanego o unikatowym **identyfikatorze urządzenia** obserwowanych w porządku chronologicznym. Każda z tych pięciu lokalizacji służy do oceny stanu wjazdów i wyjazdów na terenie geofencingu względem ogrodzenia. W przypadku zmiany stanu usługa geofencingu wyzwala zdarzenie, które jest wysyłane do aplikacji logiki przez usługę Event Grid. W wyniku tego program Operations Manager otrzymuje odpowiednie powiadomienie pocztą e-mail o wjeździe lub wyjeździe.
+Za pomocą interfejsu API geoogrodzenia można sprawdzić, czy **urządzenie**, w tym przypadku, znajduje się wewnątrz lub poza ogrodzeniem. Umożliwia wykonywanie zapytań dotyczących interfejsu API GET ogrodzenia w różnych lokalizacjach, w których konkretny sprzęt przemieszcza się w czasie. Na poniższej ilustracji przedstawiono pięć lokalizacji z pięcioma urządzeniami konstrukcyjnymi. 
 
 > [!Note]
-> Powyższy scenariusz i zachowanie są oparte na tym samym **identyfikatorze urządzenia**, dzięki czemu odzwierciedlają one pięć różnych lokalizacji, jak na poniższej ilustracji.
+> Scenariusz i zachowanie są oparte na tym samym **identyfikatorze urządzenia** , tak aby odzwierciedlały pięć różnych lokalizacji, jak pokazano na poniższej ilustracji.
+
+"DeviceId" jest unikatowym IDENTYFIKATORem dostarczanym dla urządzenia w żądaniu GET podczas wykonywania zapytania dotyczącego jego lokalizacji. Po wprowadzeniu żądania asynchronicznego do **interfejsu API wyszukiwania geoogrodzenia —** "deviceId" pomaga w publikowaniu zdarzeń geoogrodzenia dla tego urządzenia względem określonego geoogrodzenia. W tym samouczku wprowadziliśmy asynchroniczne żądania do interfejsu API z unikatowym identyfikatorem "deviceId". Żądania w samouczku są wykonywane w kolejności chronologicznej, jak na diagramie. Właściwość "isEventPublished" w odpowiedzi jest publikowana za każdym razem, gdy urządzenie wejdzie lub opuszcza geoogrodzenie. Nie musisz rejestrować urządzenia, aby wykonać czynności opisane w tym samouczku.
+
+Umożliwia powracanie do diagramu. Każda z tych pięciu lokalizacji służy do oceny stanu wjazdów i wyjazdów na terenie geofencingu względem ogrodzenia. W przypadku zmiany stanu usługa geofencingu wyzwala zdarzenie, które jest wysyłane do aplikacji logiki przez usługę Event Grid. W związku z tym Menedżer operacji otrzyma odpowiednie powiadomienie o wprowadzeniu lub wyjściu za pośrednictwem wiadomości e-mail.
 
 ![Mapa geoogrodzenia w Azure Maps](./media/tutorial-geofence/geofence.png)
 
 W aplikacji Postman otwórz nową kartę w tej samej kolekcji, która została utworzona powyżej. Na karcie konstruktora wybierz metodę GET HTTP:
 
-Poniżej przedstawiono pięć żądań interfejsu API wirtualnego ogrodzenia GET HTTP z różnymi odpowiadającymi im współrzędnymi położenia sprzętu zaobserwowanymi w porządku chronologicznym. Po każdym żądaniu następuje treść odpowiedzi.
+Poniżej znajdują się pięć żądań interfejsu API do rozróżnienia HTTP GET, z różnymi współrzędnymi lokalizacji sprzętu. Współrzędne są obserwowane w kolejności chronologicznej. Po każdym żądaniu następuje treść odpowiedzi.
  
 1. Lokalizacja 1:
     
@@ -227,7 +235,7 @@ Poniżej przedstawiono pięć żądań interfejsu API wirtualnego ogrodzenia GET
    ```
    ![Zapytanie geofencingu 1](./media/tutorial-geofence/geofence-query1.png)
 
-   Jeśli przyjrzysz się powyższej odpowiedzi, ujemna odległość od głównego wirtualnego ogrodzenia oznacza, że sprzęt znajduje się w obrębie wirtualnego ogrodzenia, a dodatnia odległość od wirtualnego ogrodzenia terenu podrzędnego oznacza, że sprzęt znajduje się poza wirtualnym ogrodzeniem terenu podrzędnego. 
+   W powyższej odpowiedzi odległość ujemna od głównego ogrodzenia oznacza, że sprzęt znajduje się wewnątrz ogrodzenia. Dodatnia odległość od ogrodzenia podrzędnego oznacza, że urządzenie znajduje się poza ogrodzeniem geograficznym. 
 
 2. Lokalizacja 2: 
    
@@ -237,7 +245,7 @@ Poniżej przedstawiono pięć żądań interfejsu API wirtualnego ogrodzenia GET
     
    ![Zapytanie geofencingu 2](./media/tutorial-geofence/geofence-query2.png)
 
-   Jeśli dokładnie przyjrzysz się poprzedniej odpowiedzi w formacie JSON, sprzęt znajduje się poza terenem podrzędnym, ale w obrębie głównego ogrodzenia. Nie powoduje to wyzwolenia zdarzenia ani wysłania wiadomości e-mail.
+   Jeśli zobaczysz uważnie poprzednią odpowiedź JSON, sprzęt znajduje się poza podwitryną, ale znajduje się w głównym ogrodzeniu. Żadne zdarzenie nie jest wyzwalane i nie jest wysyłany żaden adres e-mail.
 
 3. Lokalizacja 3: 
   
@@ -247,7 +255,7 @@ Poniżej przedstawiono pięć żądań interfejsu API wirtualnego ogrodzenia GET
 
    ![Zapytanie geofencingu 3](./media/tutorial-geofence/geofence-query3.png)
 
-   Nastąpiła zmiana stanu i sprzęt znajduje się teraz zarówno w obrębie głównego wirtualnego ogrodzenia, jak i wirtualnego ogrodzenia terenu podrzędnego. Powoduje to opublikowanie zdarzenia i wysłanie powiadomienia e-mail do programu Operations Manager.
+   Nastąpiła zmiana stanu i sprzęt znajduje się teraz zarówno w obrębie głównego wirtualnego ogrodzenia, jak i wirtualnego ogrodzenia terenu podrzędnego. Ta zmiana powoduje wystąpienie zdarzenia do opublikowania, a do Operations Manager zostanie wysłana wiadomość e-mail z powiadomieniem.
 
 4. Lokalizacja 4: 
 
@@ -257,7 +265,7 @@ Poniżej przedstawiono pięć żądań interfejsu API wirtualnego ogrodzenia GET
   
    ![Zapytanie geofencingu 4](./media/tutorial-geofence/geofence-query4.png)
 
-   Obserwując dokładnie odpowiednią odpowiedź, możesz zauważyć, że w tym miejscu nie jest publikowane żadne zdarzenie, chociaż sprzęt wyjechał poza wirtualne ogrodzenie terenu podrzędnego. Jeśli przyjrzysz się czasowi określonemu przez użytkownika w żądaniu GET, możesz zobaczyć, że wirtualne ogrodzenie terenu podrzędnego wygasło względem tego czasu i sprzęt nadal znajduje się w obrębie głównego wirtualnego ogrodzenia. W obszarze `expiredGeofenceGeometryId` w treści odpowiedzi możesz również sprawdzić identyfikator geometrii wirtualnego ogrodzenia terenu podrzędnego.
+   Obserwując dokładnie odpowiednią odpowiedź, możesz zauważyć, że w tym miejscu nie jest publikowane żadne zdarzenie, chociaż sprzęt wyjechał poza wirtualne ogrodzenie terenu podrzędnego. Jeśli zobaczysz określony czas użytkownika w żądaniu GET, zobaczysz, że w tym momencie nie wygasło geofencingu. Sprzęt nadal znajduje się w głównym ogrodzeniu. W obszarze `expiredGeofenceGeometryId` w treści odpowiedzi możesz również sprawdzić identyfikator geometrii wirtualnego ogrodzenia terenu podrzędnego.
 
 
 5. Lokalizacja 5:
@@ -268,11 +276,11 @@ Poniżej przedstawiono pięć żądań interfejsu API wirtualnego ogrodzenia GET
 
    ![Zapytanie geofencingu 5](./media/tutorial-geofence/geofence-query5.png)
 
-   Możesz zobaczyć, że sprzęt wyjechał poza wirtualne ogrodzenie głównego terenu budowy. Powoduje to opublikowanie zdarzenia (jest to poważne naruszenie), a do programu Operations Manager jest wysyłana wiadomość e-mail z alertem krytycznym.
+   Możesz zobaczyć, że sprzęt wyjechał poza wirtualne ogrodzenie głównego terenu budowy. Zostanie opublikowane zdarzenie, a do Operations Manager jest wysyłana wiadomość e-mail z alertami.
 
 ## <a name="next-steps"></a>Następne kroki
 
-W ramach tego samouczka nauczyliśmy się, jak skonfigurować geofencing przez przekazanie w usłudze Azure Maps — usłudze danych przy użyciu interfejsu API przekazywania danych. Nauczyliśmy się również, jak za pomocą usługi Azure Maps Events Grid subskrybować i obsługiwać zdarzenia geofencingu. 
+W tym samouczku przedstawiono sposób konfigurowania geoogrodzenia poprzez przekazanie go do Azure Maps i usługi danych przy użyciu interfejsu API przekazywania danych. Nauczyliśmy się również, jak za pomocą usługi Azure Maps Events Grid subskrybować i obsługiwać zdarzenia geofencingu. 
 
 * Zobacz temat [Handle content types in Azure Logic Apps (Obsługa typów zawartości w usłudze Azure Logic Apps)](https://docs.microsoft.com/azure/logic-apps/logic-apps-content-type), aby dowiedzieć się, jak za pomocą aplikacji logiki analizować dane JSON w celu tworzenia bardziej złożonej logiki.
 * Aby dowiedzieć się więcej na temat programów obsługi zdarzeń w usłudze Event Grid, zobacz [Supported Events Handlers in Event Grid (Obsługiwane programy obsługi zdarzeń w usłudze Event Grid)](https://docs.microsoft.com/azure/event-grid/event-handlers).

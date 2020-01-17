@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1bc721f4521c9ac9b8ed8fed2d6b41f6a1b8bd72
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 68474738aabde1b14752aa33789d7e40c3831908
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74846406"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76154843"
 ---
 # <a name="tutorial-complete-an-azure-multi-factor-authentication-pilot-roll-out"></a>Samouczek: przeprowadzanie pilotażowego wdrożenia usługi Azure Multi-Factor Authentication
 
@@ -36,10 +36,10 @@ W tym samouczku opisano konfigurowanie zasad dostępu warunkowego włączania us
 ## <a name="enable-azure-multi-factor-authentication"></a>Włączanie usługi Azure Multi-Factor Authentication
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com) przy użyciu konta administratora globalnego.
-1. Przejdź do **Azure Active Directory**, **dostęp warunkowy**
+1. Przejdź do **Azure Active Directory** > **zabezpieczenia** > **dostęp warunkowy**
 1. Wybierz pozycję **Nowe zasady**
 1. Nadaj swoim zasadom nazwę **Pilotaż MFA**
-1. W obszarze **użytkownicy i grupy** wybierz przycisk radiowy **Wybieranie użytkowników i grup**
+1. W obszarze **Użytkownicy i grupy**wybierz przycisk radiowy **Wybierz użytkowników i grupy**
     * Wybierz grupę pilotażową utworzoną w sekcji dotyczącej wymagań wstępnych w tym artykule
     * Kliknij przycisk **Gotowe**
 1. W obszarze **Aplikacje w chmurze** wybierz przycisk radiowy **Wybierz aplikacje**
@@ -69,10 +69,10 @@ Aby udowodnić, że zasady dostępu warunkowego działają, należy przetestowa�
 
 Jeśli zdecydujesz, że nie chcesz już korzystać z funkcji skonfigurowanych w ramach tego samouczka, wprowadź następujące zmiany.
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
-1. Przejdź do **Azure Active Directory**, **dostęp warunkowy**.
+1. Zaloguj się do [Portalu Azure](https://portal.azure.com).
+1. Przejdź do **Azure Active Directory** > **zabezpieczenia** > **dostęp warunkowy**.
 1. Wybierz utworzone zasady dostępu warunkowego.
-1. Kliknij polecenie **Usuń**.
+1. Kliknij pozycję **Usuń**.
 
 ## <a name="next-steps"></a>Następne kroki
 

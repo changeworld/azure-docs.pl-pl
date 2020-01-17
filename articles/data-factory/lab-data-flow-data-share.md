@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 01/08/2020
-ms.openlocfilehash: f5e36095c506918298404758523642073dfd19c7
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 6c501205812ac72da8cd970b61b71e493888cef1
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75864544"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156730"
 ---
 # <a name="data-integration-using-azure-data-factory-and-azure-data-share"></a>Integracja danych przy użyciu Azure Data Factory i udziału danych platformy Azure
 
@@ -99,7 +99,7 @@ Aby włączyć debugowanie, kliknij suwak **debugowania przepływu danych** na g
 
 ![Portal](media/lab-data-flow-data-share/configure10.png)
 
-## <a name="ingest-data-from-azure-sql-db-into-adls-gen2-using-the-copy-activity"></a>Pozyskiwanie danych z usługi Azure SQL DB do ADLS Gen2 przy użyciu działania kopiowania
+## <a name="ingest-data-using-the-copy-activity"></a>Pozyskiwanie danych przy użyciu działania kopiowania
 
 W tej sekcji utworzysz potok z działaniem kopiowania, które pozyskuje jedną tabelę z bazy danych SQL Azure na konto magazynu ADLS Gen2. Dowiesz się, jak dodać potok, skonfigurować zestaw danych i debugować potok za pośrednictwem środowiska ADF. Wzorzec konfiguracji używany w tej sekcji może dotyczyć kopiowania z magazynu danych relacyjnych do magazynu danych opartego na plikach.
 

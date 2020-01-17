@@ -8,12 +8,12 @@ ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 0738e56cf6760a356b6e2b6db76f2dc3f6f157ee
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 74d209adf745d1a3c319ef6567b2a7818a5fd514
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75763168"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76152260"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>Rozwiązywanie problemów z typowymi błędami indeksatora i ostrzeżeniami w usłudze Azure Wyszukiwanie poznawcze
 
@@ -171,6 +171,18 @@ We wszystkich tych przypadkach należy zapoznać się z [obsługiwanymi typami d
 ## <a name="error-could-not-process-document-within-indexer-max-run-time"></a>Błąd: nie można przetworzyć dokumentu w maksymalnym czasie wykonywania indeksatora
 
 Ten błąd występuje, gdy indeksator nie może zakończyć przetwarzania pojedynczego dokumentu ze źródła danych w dozwolonym czasie wykonywania. [Maksymalny czas działania](search-limits-quotas-capacity.md#indexer-limits) jest krótszy, gdy są używane umiejętności. W przypadku wystąpienia tego błędu, jeśli maxFailedItems ustawiono wartość inną niż 0, Indeksator pomija dokument w przyszłych uruchomieniach, tak aby indeksowanie mogło postępować. Jeśli nie możesz mieć możliwości pominięcia jakiegokolwiek dokumentu lub jeśli ten błąd występuje w sposób ciągły, rozważ przerwanie dokumentów w mniejszych dokumentach, aby można było wykonać częściowe postępy w ramach jednego wykonywania indeksatora.
+
+<a name="could-not-project-document"/>
+
+## <a name="error-could-not-project-document"></a>Błąd: nie można projektować dokumentu
+
+Ten błąd występuje, gdy indeksator próbuje [projektować dane w sklepie z wiedzą](knowledge-store-projection-overview.md) i wystąpił błąd w naszej próbie.  Ten błąd może być spójny i fixable. może to być błąd przejściowy, który może wymagać poczekania i ponowienia próby w celu rozwiązania problemu.  Poniżej przedstawiono zestaw znanych Stanów niepowodzeń i możliwych rozwiązań.
+
+| Przyczyna | Szczegóły/przykład | Rozdzielczość |
+| --- | --- | --- |
+| Nie można zaktualizować `'blobUri'` projekcji BLOB w kontenerze `'containerName'` |Określony kontener nie istnieje. | Indeksator sprawdzi, czy określony kontener został wcześniej utworzony i utworzy go w razie potrzeby, ale wykonuje to sprawdzenie tylko raz dla indeksatora. Ten błąd oznacza, że element usunięty z kontenera jest usuwany po tym kroku.  Aby rozwiązać ten problem, wypróbuj: pozostaw same informacje o koncie magazynu, poczekaj na zakończenie indeksatora, a następnie ponownie uruchom indeksator. |
+| Nie można zaktualizować `'blobUri'` projekcji BLOB w kontenerze `'containerName'` |Nie można zapisać danych do połączenia transportowego: wykryto, że istniejące połączenie zostało wymuszone przez hosta zdalnego. | Jest to oczekiwany błąd przejściowy usługi Azure Storage, dlatego należy rozwiązać ten problem przez ponowne uruchomienie indeksatora. Jeśli ten błąd wystąpi konsekwentnie, Utwórz [bilet pomocy technicznej](https://ms.portal.azure.com/#create/Microsoft.Support) , aby można było go dokładniej zbadać.  |
+| Nie można zaktualizować `'projectionRow'` wierszy w tabeli `'tableName'` | Serwer jest zajęty. | Jest to oczekiwany błąd przejściowy usługi Azure Storage, dlatego należy rozwiązać ten problem przez ponowne uruchomienie indeksatora. Jeśli ten błąd wystąpi konsekwentnie, Utwórz [bilet pomocy technicznej](https://ms.portal.azure.com/#create/Microsoft.Support) , aby można było go dokładniej zbadać.  |
 
 <a name="could-not-execute-skill-because-a-skill-input-was-invalid"/>
 

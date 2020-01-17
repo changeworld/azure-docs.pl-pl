@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: 268973f27336e97fe85e493da18714df46171f8a
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.openlocfilehash: 591233154ab79b9493d77030727462bae68ea7d5
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75497690"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76152361"
 ---
 # <a name="data-modeling-in-azure-time-series-insights-preview"></a>Modelowanie danych w wersji zapoznawczej Azure Time Series Insights
 
@@ -64,9 +64,9 @@ Aby rozpocząć, wybierz widok **modelu** w widoku **analizy** Time Series Insig
 
 ### <a name="delete-an-instance"></a>Usuwanie wystąpienia
 
-1. Wybierz typ, a następnie wybierz ikonę **usuwanie** lub **odpady z pojemników**.
+1. Wybierz wystąpienie, a następnie wybierz ikonę **Usuń** lub **odlotowy pojemnik**.
 
-   [![usunąć typ, wybierając pozycję Usuń.](media/v2-update-how-to-tsm/how-to-tsm-delete-instance.png)](media/v2-update-how-to-tsm/how-to-tsm-delete-instance.png#lightbox)
+   [![usunąć wystąpienie, wybierając pozycję Usuń.](media/v2-update-how-to-tsm/how-to-tsm-delete-instance.png)](media/v2-update-how-to-tsm/how-to-tsm-delete-instance.png#lightbox)
 
 1. Potwierdź usunięcie, wybierając pozycję **Usuń**.
 

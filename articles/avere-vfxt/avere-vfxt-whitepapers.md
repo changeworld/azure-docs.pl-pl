@@ -1,21 +1,21 @@
 ---
-title: Oficjalne dokumenty i analizy przypadków — avere vFTX dla platformy Azure
+title: Oficjalne dokumenty i analizy przypadków — avere vFXT dla platformy Azure
 description: Linki do dokumentów do pobrania, analizy przypadków i inne artykuły, które ilustrują avere vFXT dla platformy Azure i jak mogą być używane.
 ms.service: avere-vfxt
 author: ekpgh
 ms.author: rohogue
 ms.topic: conceptual
-ms.date: 02/13/2019
-ms.openlocfilehash: a85b939eb222fa459d33ba4eb79b4937baf9056f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/06/2020
+ms.openlocfilehash: 66df6a2018960d83c4aaa9129dad067732a8b3cf
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75414279"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76152973"
 ---
-# <a name="azure-vftx-for-azure-whitepapers-and-other-resources"></a>Dokumentacja platformy Azure vFTX na platformie Azure i inne zasoby
+# <a name="azure-vfxt-for-azure-whitepapers-and-other-resources"></a>Dokumentacja platformy Azure vFXT na platformie Azure i inne zasoby
 
-Zasoby w tej tabeli obejmują analizy przypadków, oficjalne dokumenty dotyczące technologii, grafiki informacyjne i inne artykuły, które mogą pomóc zrozumieć, jak avere vFXT for Azure pasuje do przepływu pracy.
+W tym artykule wymieniono analizy przypadków, dokumenty dotyczące technologii, grafiki informacyjne i inne zasoby, które mogą pomóc zrozumieć, jak avere vFXT for Azure pasuje do przepływu pracy.
 
 ## <a name="deploy-agisoft-photoscan-on-azure"></a>Wdrażanie skanowania Agisoft na platformie Azure
 
@@ -34,12 +34,6 @@ Ten dwustronicowy krótki zawiera podstawowe informacje i diagramy, które wyja�
 **Link:** [Grafika informacyjna: Tworzenie chmury hybrydowej dla obciążeń opartych na plikach](https://azure.microsoft.com/resources/building-a-hybrid-cloud-for-file-based-hpc-workloads/)
 
 Ta ilustracja przedstawia składniki i układy do korzystania z avere vFXT dla platformy Azure w celu dodania infrastruktury chmurowej do istniejącego systemu. Użyj avere vFXT dla platformy Azure, aby rozszerzyć możliwości obliczeniowe z istniejącą infrastrukturą lokalną lub przenieść dane i przetwarzanie do chmury w sposób tymczasowy lub stały.
-
-## <a name="cloud-bursting"></a>Przenoszenie w chmurze
-
-**Link: łączenie** [w chmurze w celu uzyskania wysokiej wydajności, skalowalnego serwera nas](https://microsoft.sharepoint.com/sites/Infopedia_G01KC/KCDOCs2/Avere%20customer%20resources/Solution%20Brief%20Cloud%20Bursting.pdf)
-
- To rozwiązanie do obsługi rozwiązań w chmurze pokazuje, jak szybko udostępnić dane dla zasobów obliczeniowych w chmurze nondisruptively przy użyciu avere vFXT dla platformy Azure.
 
 ## <a name="next-steps"></a>Następne kroki
 

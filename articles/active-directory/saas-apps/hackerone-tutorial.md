@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e03aa99e53f4aa2c646dc425a18d848539d537b0
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: effd0593384190eb1a1cf261305dd61818c3d0b0
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75768337"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76120801"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hackerone"></a>Samouczek: integracja Azure Active Directory z usługą HackerOne
 
@@ -107,7 +107,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji HackerOne,
 
     ![Informacje o domenie i adresach URL logowania jednokrotnego aplikacji HackerOne](common/sp-identifier.png)
 
-    a. W polu tekstowym **adres URL logowania** wpisz następujące polecenie: `https://hackerone.com/users/saml/auth`
+    a. W polu tekstowym **adres URL logowania** wpisz następujące polecenie: `https://hackerone.com/users/saml/sign_in?email=<configured domain>`
 
     b. W polu tekstowym **Identyfikator (identyfikator jednostki)** wprowadź następujące polecenie: `hackerone.com`
 
@@ -155,7 +155,13 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji HackerOne,
 
     a. Kliknij pozycję **Run test** (Uruchom test).
 
-    b. Jeśli wartość pola **Status** (Stan) wynosi **Last test status: created** (Ostatni stan testu: utworzono), skontaktuj się z [zespołem pomocy technicznej aplikacji HackerOne](mailto:support@hackerone.com), aby poprosić o przegląd konfiguracji.
+6. Gdy test zakończy się pomyślnie, a w polu **stan** zostanie wyświetlony stan **ostatni test: sukces**, wybierz przycisk **Weryfikacja żądania** , aby przesłać do HackerOne do zatwierdzenia.
+
+    ![Prześlij do HackerOne w celu zatwierdzenia](./media/hackerone-tutorial/tutorial-hackerone-006.png)
+
+7. Po zatwierdzeniu ustawień przez HackerOne można wybrać przycisk **Migrowanie użytkowników** , aby wymagać uwierzytelniania jednokrotnego dla wszystkich użytkowników.
+
+    ![Włącz SAML](./media/hackerone-tutorial/tutorial-hackerone-007.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
@@ -174,7 +180,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
     ![Okno dialogowe Użytkownik](common/user-properties.png)
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
-  
+
     b. W polu **Nazwa użytkownika** wpisz **brittasimon\@yourcompanydomain. Extension**  
     Na przykład: BrittaSimon@contoso.com
 

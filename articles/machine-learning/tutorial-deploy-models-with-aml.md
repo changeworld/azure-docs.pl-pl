@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 08/26/2019
 ms.custom: seodec18
-ms.openlocfilehash: c1a749570fe2320be18c98bb6267656cf2687aa1
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 3c0ff63a360d96d0e9db18d430e755e567197de1
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75533265"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122087"
 ---
 # <a name="tutorial-deploy-an-image-classification-model-in-azure-container-instances"></a>Samouczek: Wdrażanie modelu klasyfikacji obrazów w Azure Container Instances
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -389,6 +389,6 @@ service.delete()
 
 + Dowiedz się więcej o wszystkich [opcjach wdrażania dla Azure Machine Learning](how-to-deploy-and-where.md).
 + Dowiedz się, jak [tworzyć klientów na potrzeby usługi internetowej](how-to-consume-web-service.md).
-+  Asynchronicznie [twórz prognozy dotyczące dużych ilości danych](how-to-run-batch-predictions.md).
++  Asynchronicznie [twórz prognozy dotyczące dużych ilości danych](how-to-use-parallel-run-step.md).
 + Monitoruj swoje modele usługi Azure Machine Learning przy użyciu usługi [Application Insights](how-to-enable-app-insights.md).
 + Wypróbuj samouczek dotyczący [algorytmu automatycznego wyboru](tutorial-auto-train-models.md). 

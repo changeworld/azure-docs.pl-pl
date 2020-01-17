@@ -8,12 +8,12 @@ ms.date: 05/20/2019
 author: rboucher
 ms.author: robb
 ms.subservice: metrics
-ms.openlocfilehash: 1bab6a990ba38bc32c2b7350bb1d4eac15a7b95e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5d38786d3c7b852d3a9b65cd366eed68ebbb01e3
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75479035"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76152956"
 ---
 # <a name="azure-monitor-platform-metrics-exportable-via-diagnostic-settings"></a>Metryki platformy Azure Monitor eksportowane za pośrednictwem ustawień diagnostycznych
 
@@ -689,10 +689,10 @@ Tak | Microsoft.Devices/IotHubs | d2c.endpoints.latency.eventHubs | Routing: op�
 Tak | Microsoft.Devices/IotHubs | d2c.endpoints.latency.serviceBusQueues | Routing: opóźnienie komunikatu dla kolejki usługi Service Bus | MS | Średnia
 Tak | Microsoft.Devices/IotHubs | d2c.endpoints.latency.serviceBusTopics | Routing: opóźnienie komunikatu dla Service Bus tematu | MS | Średnia
 Tak | Microsoft.Devices/IotHubs | d2c.endpoints.latency.storage | Routing: opóźnienie komunikatu dla magazynu | MS | Średnia
-Tak | Microsoft.Devices/IotHubs | d2c.telemetry.egress.dropped | Routing: porzucone komunikaty telemetryczne | Liczba | Łącznie
+Tak | Microsoft.Devices/IotHubs | d2c.telemetry.egress.dropped | Routing: porzucone komunikaty telemetryczne  | Liczba | Łącznie
 Tak | Microsoft.Devices/IotHubs | d2c.telemetry.egress.fallback | Routing: komunikaty dostarczane do powrotu | Liczba | Łącznie
 Tak | Microsoft.Devices/IotHubs | d2c.telemetry.egress.invalid | Routing: komunikaty telemetryczne są niezgodne | Liczba | Łącznie
-Tak | Microsoft.Devices/IotHubs | d2c.telemetry.egress.orphaned | Routing: oddzielone komunikaty telemetryczne | Liczba | Łącznie
+Tak | Microsoft.Devices/IotHubs | d2c.telemetry.egress.orphaned | Routing: oddzielone komunikaty telemetryczne  | Liczba | Łącznie
 Tak | Microsoft.Devices/IotHubs | d2c.telemetry.egress.success | Routing: dostarczono komunikaty telemetryczne | Liczba | Łącznie
 Tak | Microsoft.Devices/IotHubs | d2c.telemetry.ingress.allProtocol | Próby wysłania komunikatów telemetrycznych | Liczba | Łącznie
 Tak | Microsoft.Devices/IotHubs | d2c.telemetry.ingress.sendThrottle | Liczba błędów ograniczania przepustowości | Liczba | Łącznie

@@ -4,14 +4,14 @@ description: Wymagania wstępne dotyczące programu avere vFXT for Azure
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 02/20/2019
+ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: 0dafef7cf262153ccdb3b490aa0c7bd039b4a89b
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 7f89ea553bc7198c1faee5ba3549f88da5ec2b2c
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75889185"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76152990"
 ---
 # <a name="prepare-to-create-the-avere-vfxt"></a>Przygotowanie do utworzenia systemu Avere vFXT
 
@@ -19,7 +19,7 @@ W tym artykule opisano wstępnie wymagane zadania tworzenia klastra avere vFXT.
 
 ## <a name="create-a-new-subscription"></a>Utwórz nową subskrypcję
 
-Zacznij od utworzenia nowej subskrypcji platformy Azure. Użyj oddzielnej subskrypcji dla każdego projektu avere vFXT, aby można było łatwo śledzić wszystkie zasoby projektu i wydatki, chronić inne projekty przed możliwymi ograniczeniami zasobów podczas aprowizacji i uprościć czyszczenie.
+Zacznij od utworzenia nowej subskrypcji platformy Azure. Użyj oddzielnej subskrypcji dla każdego projektu avere vFXT, aby uprościć śledzenie i czyszczenie wydatków oraz upewnić się, że nie ma to wpływu na inne projekty, przydziały lub ograniczanie zasobów podczas aprowizacji przepływu pracy klastra.
 
 Aby utworzyć nową subskrypcję platformy Azure w Azure Portal:
 
@@ -30,37 +30,41 @@ Aby utworzyć nową subskrypcję platformy Azure w Azure Portal:
 
 ## <a name="configure-subscription-owner-permissions"></a>Konfigurowanie uprawnień właściciela subskrypcji
 
-Użytkownik z uprawnieniami właściciela dla subskrypcji powinien utworzyć klaster vFXT. Uprawnienia właściciela subskrypcji są konieczne, aby zaakceptować warunki użytkowania oprogramowania i wykonać inne czynności.
+Użytkownik z uprawnieniami właściciela dla subskrypcji powinien utworzyć klaster vFXT. Tworzenie klastra wymaga od właściciela zaakceptowania warunków użytkowania oprogramowania i autoryzacji zmian w zasobach sieciowych i pamięci masowej.
 
-Istnieją pewne scenariusze obejścia, które umożliwiają innym firmom tworzenie avere vFTX dla klastra platformy Azure. Te scenariusze obejmują ograniczanie zasobów i przypisywanie dodatkowych ról do twórcy. W obu tych przypadkach właściciel subskrypcji również musi [zaakceptować warunki oprogramowania avere vFXT](#accept-software-terms) przed czasem.
+Istnieją pewne obejścia, aby umożliwić innym firmom tworzenie avere vFXT dla klastra platformy Azure. Te scenariusze obejmują ograniczanie zasobów i przypisywanie dodatkowych ról kontroli dostępu opartej na rolach (RBAC) do twórcy. We wszystkich tych przypadkach właściciel subskrypcji również musi [zaakceptować warunki oprogramowania avere vFXT](#accept-software-terms) przed czasem.
 
 | Scenariusz | Ograniczenia | Role dostępu wymagane do utworzenia klastra avere vFXT |
 |----------|--------|-------|
-| Administrator grupy zasobów | Sieć wirtualna, kontroler klastra i węzły klastra muszą zostać utworzone w obrębie grupy zasobów. | Rola [administratora dostępu użytkowników](../role-based-access-control/built-in-roles.md#user-access-administrator) i [współautorów](../role-based-access-control/built-in-roles.md#contributor) , należących do zakresu docelowej grupy zasobów |
-| Zewnętrzna Sieć wirtualna | Kontroler klastra i węzły klastra są tworzone w grupie zasobów, ale używana jest istniejąca sieć wirtualna w innej grupie zasobów | (1) [administrator dostępu użytkowników](../role-based-access-control/built-in-roles.md#user-access-administrator) i role [współautor](../role-based-access-control/built-in-roles.md#contributor) zakresu do grupy zasobów vFXT; i (2) [współautor maszyny wirtualnej](../role-based-access-control/built-in-roles.md#virtual-machine-contributor), [administrator dostępu użytkowników](../role-based-access-control/built-in-roles.md#user-access-administrator)i role [współautor avere](../role-based-access-control/built-in-roles.md#avere-contributor) należące do grupy zasobów sieci wirtualnej. |
-
-Alternatywą jest utworzenie niestandardowej roli kontroli dostępu opartej na rolach (RBAC) przed czasem i przypisanie uprawnień użytkownikowi, zgodnie z opisem w [tym artykule](avere-vfxt-non-owner.md). Ta metoda zapewnia znaczące uprawnienia dla tych użytkowników.
+| Administrator grupy zasobów tworzy vFXT | Sieć wirtualna, kontroler klastra i węzły klastra muszą być tworzone w obrębie grupy zasobów. | Rola [administrator dostępu użytkowników](../role-based-access-control/built-in-roles.md#user-access-administrator) i [współautor](../role-based-access-control/built-in-roles.md#contributor) — zarówno w zakresie docelowej grupy zasobów. |
+| Użyj istniejącej, zewnętrznej sieci wirtualnej | Kontroler klastra i węzły klastra są tworzone w ramach grupy zasobów vFXT, ale używają istniejącej sieci wirtualnej w innej grupie zasobów. | (1) [administrator dostępu użytkowników](../role-based-access-control/built-in-roles.md#user-access-administrator) i role [współautor](../role-based-access-control/built-in-roles.md#contributor) zakresu do grupy zasobów vFXT; i (2) [współautor maszyny wirtualnej](../role-based-access-control/built-in-roles.md#virtual-machine-contributor), [administrator dostępu użytkowników](../role-based-access-control/built-in-roles.md#user-access-administrator)i role [współautor avere](../role-based-access-control/built-in-roles.md#avere-contributor) należące do grupy zasobów sieci wirtualnej. |
+| Rola niestandardowa dla twórców klastrów | Brak ograniczeń umieszczania zasobów. Ta metoda daje znaczące uprawnienia niebędące właścicielami. | Właściciel subskrypcji tworzy niestandardową rolę RBAC, jak wyjaśniono w [tym artykule](avere-vfxt-non-owner.md). |
 
 ## <a name="quota-for-the-vfxt-cluster"></a>Przydział dla klastra vFXT
 
-Musisz mieć wystarczający przydział dla następujących składników platformy Azure. W razie konieczności [Poproś o zwiększenie limitu przydziału](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request).
+Sprawdź, czy masz wystarczający przydział dla następujących składników platformy Azure. W razie konieczności [Poproś o zwiększenie limitu przydziału](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request).
 
 > [!NOTE]
-> Maszyny wirtualne i składniki SSD wymienione w tym miejscu są przeznaczone dla samego klastra vFXT. Wymagany jest dodatkowy przydział dla maszyn wirtualnych i dysku SSD, które mają być używane w farmie obliczeniowej.  Upewnij się, że przydział jest włączony dla regionu, w którym zamierzasz uruchomić przepływ pracy.
+> Maszyny wirtualne i składniki SSD wymienione w tym miejscu są przeznaczone dla samego klastra vFXT. Należy pamiętać, że wymagany jest również przydział dla maszyn wirtualnych i dysków SSD, które będą używane dla farmy obliczeniowej.
+>
+> Upewnij się, że przydział jest włączony dla regionu, w którym zamierzasz uruchomić przepływ pracy.
 
 |Składnik platformy Azure|Przydział|
 |----------|-----------|
-|Maszyny wirtualne|3 lub więcej E32s_v3|
+|Maszyny wirtualne|3 lub więcej E32s_v3 (jeden na węzeł klastra) |
 |Magazyn SSD w warstwie Premium|200 GB na system operacyjny i od 1 TB do 4 TB miejsca obszaru pamięci podręcznej na węzeł |
 |Konto magazynu (opcjonalnie) |v2|
 |Magazyn zaplecza danych (opcjonalnie) |Jeden nowy kontener obiektów BLOB LRS |
+<!-- this table also appears in the overview - update it there if updating here -->
 
 ## <a name="accept-software-terms"></a>Zaakceptuj warunki użytkowania oprogramowania
 
-> [!NOTE]
-> Ten krok nie jest wymagany, jeśli właściciel subskrypcji tworzy klaster avere vFXT.
+> [!TIP]
+> Pomiń ten krok, jeśli właściciel subskrypcji utworzy klaster avere vFXT.
 
-Podczas tworzenia klastra należy zaakceptować warunki użytkowania oprogramowania avere vFXT. Jeśli nie jesteś właścicielem subskrypcji, mieć właściciela subskrypcji, który wcześniej akceptuje warunki. Ten krok należy wykonać tylko raz dla każdej subskrypcji.
+Podczas tworzenia klastra należy zaakceptować warunki użytkowania oprogramowania avere vFXT. Jeśli nie jesteś właścicielem subskrypcji, mieć właściciela subskrypcji, który wcześniej akceptuje warunki.
+
+Ten krok należy wykonać tylko raz dla każdej subskrypcji.
 
 Aby zaakceptować z góry warunki oprogramowania:
 
@@ -68,7 +72,7 @@ Aby zaakceptować z góry warunki oprogramowania:
 
    ```azurecli
     az login
-    az account set --subscription abc123de-f456-abc7-89de-f01234567890
+    az account set --subscription <subscription ID>
    ```
 
 1. Wydaj to polecenie, aby akceptować warunki korzystania z usługi i włączyć dostęp programistyczny dla obrazu oprogramowania avere vFXT for Azure:
@@ -81,14 +85,12 @@ Aby zaakceptować z góry warunki oprogramowania:
 
 [Punkt końcowy usługi](../virtual-network/virtual-network-service-endpoints-overview.md) utrzymuje ruch obiektów blob platformy Azure jako lokalny zamiast routingu poza siecią wirtualną. Jest to zalecane w przypadku wszystkich avere vFXT dla klastra platformy Azure, które używają obiektów blob platformy Azure do przechowywania danych zaplecza.
 
-Jeśli udostępniasz istniejącą sieć wirtualną i utworzysz nowy kontener obiektów blob platformy Azure dla magazynu zaplecza w ramach tworzenia klastra, musisz mieć punkt końcowy usługi w sieci dla magazynu Microsoft Storage. Ten punkt końcowy musi istnieć przed utworzeniem klastra lub utworzenie nie powiedzie się.
-
-Punkt końcowy usługi magazynu jest zalecany dla dowolnego avere vFXT dla klastra platformy Azure korzystającego z usługi Azure Blob Storage, nawet jeśli później zostanie dodany magazyn.
+Jeśli podczas tworzenia klastra zostanie utworzona nowa sieć wirtualna, punkt końcowy zostanie utworzony automatycznie. Jeśli postanowisz istniejącą sieć wirtualną, musi ona mieć punkt końcowy usługi magazynu firmy Microsoft, jeśli chcesz utworzyć nowy kontener magazynu obiektów BLOB podczas tworzenia klastra.<!-- if there is no endpoint in that situation, the cluster creation will fail -->
 
 > [!TIP]
 >
 >* Pomiń ten krok, jeśli tworzysz nową sieć wirtualną w ramach tworzenia klastra.
->* Ten krok jest opcjonalny, jeśli nie tworzysz magazynu obiektów BLOB podczas tworzenia klastra. W takim przypadku można utworzyć punkt końcowy usługi później, jeśli zdecydujesz się użyć obiektu blob platformy Azure.
+>* Punkt końcowy jest opcjonalny, jeśli nie tworzysz magazynu obiektów BLOB podczas tworzenia klastra. W takim przypadku można utworzyć punkt końcowy usługi później, jeśli zdecydujesz się użyć obiektu blob platformy Azure.
 
 Utwórz punkt końcowy usługi magazynu na podstawie Azure Portal.
 
@@ -104,4 +106,4 @@ Utwórz punkt końcowy usługi magazynu na podstawie Azure Portal.
 
 ## <a name="next-step-create-the-vfxt-cluster"></a>Następny krok: Tworzenie klastra vFXT
 
-Po wykonaniu tych wymagań wstępnych możesz przejść do tworzenia klastra. Aby uzyskać instrukcje, zapoznaj [się z artykułem wdrażanie klastra vFXT](avere-vfxt-deploy.md) .
+Po wykonaniu tych wymagań wstępnych można utworzyć klaster. Aby uzyskać instrukcje, zapoznaj [się z artykułem wdrażanie klastra vFXT](avere-vfxt-deploy.md) .

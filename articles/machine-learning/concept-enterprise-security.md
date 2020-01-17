@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 01/09/2020
-ms.openlocfilehash: 9dad936e2e6cc7a9b0cdde78a9557a51d3074e71
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 277b22498066542deaa080845cb816df493d7e13
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75930876"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122359"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Zabezpieczenia przedsiębiorstwa dla Azure Machine Learning
 
@@ -88,7 +88,7 @@ Aby uzyskać więcej informacji o tożsamościach zarządzanych, zobacz [zarząd
 
 | Zasób | Uprawnienia |
 | ----- | ----- |
-| Obszar roboczy | Współautor |
+| Workspace | Współautor |
 | Konto magazynu | Współautor danych obiektu blob magazynu |
 | Key Vault | Dostęp do wszystkich kluczy, wpisów tajnych, certyfikatów |
 | Azure Container Registry | Współautor |
@@ -335,7 +335,7 @@ Oto szczegółowe informacje:
 
 * [Zabezpieczania usług sieci web Azure Machine Learning przy użyciu protokołu SSL](how-to-secure-web-service.md)
 * [Korzystanie z modelu Machine Learning wdrożonego jako usługa sieci Web](how-to-consume-web-service.md)
-* [Jak uruchomić prognoz usługi batch](how-to-run-batch-predictions.md)
+* [Jak uruchomić prognoz usługi batch](how-to-use-parallel-run-step.md)
 * [Monitoruj modele Azure Machine Learning przy użyciu Application Insights](how-to-enable-app-insights.md)
 * [Zbieranie danych dla modeli w środowisku produkcyjnym](how-to-enable-data-collection.md)
 * [Zestaw SDK Azure Machine Learning](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)

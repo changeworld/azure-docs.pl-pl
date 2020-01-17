@@ -3,12 +3,12 @@ title: Tworzenie kopii zapasowych maszyn wirtualnych VMware przy użyciu Azure B
 description: W tym artykule dowiesz się, jak używać Azure Backup Server do tworzenia kopii zapasowych maszyn wirtualnych VMware działających na serwerze VMware vCenter/ESXi.
 ms.topic: conceptual
 ms.date: 12/11/2018
-ms.openlocfilehash: d1c8ec249e010d75bbe96f5c70072f41b9738370
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: df85cba42118a2e814a4a1c8338f3927e4d75f36
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173355"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76152871"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>Tworzenie kopii zapasowych maszyn wirtualnych VMware przy użyciu Azure Backup Server
 
@@ -24,7 +24,7 @@ W tym artykule wyjaśniono, jak:
 
 ## <a name="before-you-start"></a>Przed rozpoczęciem
 
-- Sprawdź, czy korzystasz z wersji programu vCenter/ESXi, która jest obsługiwana w przypadku kopii zapasowych w wersji 6,5, 6,0 i 5,5.
+- Sprawdź, czy korzystasz z wersji programu vCenter/ESXi, która jest obsługiwana na potrzeby tworzenia kopii zapasowych. Zapoznaj się z macierzą pomocy technicznej [tutaj](https://docs.microsoft.com/azure/backup/backup-mabs-protection-matrix).
 - Upewnij się, że skonfigurowano Azure Backup Server. Jeśli jeszcze tego nie zrobiono, [zrób to](backup-azure-microsoft-azure-backup.md) przed rozpoczęciem. Należy uruchomić Azure Backup Server z najnowszymi aktualizacjami.
 
 ## <a name="create-a-secure-connection-to-the-vcenter-server"></a>Utwórz bezpieczne połączenie z vCenter Server
@@ -96,9 +96,11 @@ Jeśli w organizacji znajdują się bezpieczne granice i nie chcesz używać pro
 
 1. Skopiuj i wklej następujący tekst do pliku txt.
 
-       ```text
-      Edytor rejestru systemu Windows w wersji 5,00 [HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\Microsoft Data Protection Manager\VMWare] "IgnoreCertificateValidation" = DWORD: 00000001
-       ```
+```text
+Windows Registry Editor Version 5.00
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft Data Protection Manager\VMWare]
+"IgnoreCertificateValidation"=dword:00000001
+```
 
 2. Zapisz plik na maszynie Azure Backup Server przy użyciu nazwy **DisableSecureAuthentication. reg**.
 
@@ -128,26 +130,41 @@ Azure Backup Server musi mieć konto użytkownika z uprawnieniami dostępu do ho
 
 ### <a name="role-permissions"></a>Uprawnienia roli
 
-**6.5/6.0** | **5.5**
---- | ---
-Magazyn danych. AllocateSpace | Magazyn danych. AllocateSpace
-Global.ManageCustomFields | Global.ManageCustomFields
-Global.SetCustomField |
-Host. local. CreateVM | Network. Assign
-Network. Assign |
-Resource. AssignVMToPool |
-VirtualMachine.Config.AddNewDisk  | VirtualMachine.Config.AddNewDisk
-VirtualMachine.Config.AdvancedConfig| VirtualMachine.Config.AdvancedConfig
-VirtualMachine.Config.ChangeTracking| VirtualMachine.Config.ChangeTracking
-VirtualMachine.Config.HostUSBDevice |
-VirtualMachine.Config.QueryUnownedFiles |
-VirtualMachine. config. SwapPlacement| VirtualMachine. config. SwapPlacement
-VirtualMachine.Interact.PowerOff| VirtualMachine.Interact.PowerOff
-VirtualMachine. Inventory. Create| VirtualMachine. Inventory. Create
-VirtualMachine.Provisioning.DiskRandomAccess |
-VirtualMachine.Provisioning.DiskRandomRead | VirtualMachine.Provisioning.DiskRandomRead
-VirtualMachine.State.CreateSnapshot | VirtualMachine.State.CreateSnapshot
-VirtualMachine.State.RemoveSnapshot | VirtualMachine.State.RemoveSnapshot
+| **Uprawnienia dla programu vCenter 6,5 i nowszego konta użytkownika**        | **Uprawnienia dla konta użytkownika vCenter 6,0**               | **Uprawnienia dla konta użytkownika vCenter 5,5** |
+| ------------------------------------------------------------ | --------------------------------------------------------- | ------------------------------------------- |
+| Magazyn danych. AllocateSpace                                      |                                                           |                                             |
+| Magazyn danych. Przeglądaj magazyn danych                                   | Magazyn danych. AllocateSpace                                   | Network. Assign                              |
+| Magazyn danych. operacje na plikach niskiego poziomu                          | Global. Zarządzaj atrybutami niestandardowymi                           | Magazyn danych. AllocateSpace                     |
+| Klaster magazynu danych. Konfigurowanie klastra datatstore             | Global. Set — atrybut niestandardowy                               | VirtualMachine.Config.ChangeTracking        |
+| Global. Disable, metody                                       | Operacje hosta. local. Utwórz maszynę wirtualną              | VirtualMachine.State.RemoveSnapshot         |
+| Global. Enable — metody                                        | Sieć — Przypisywanie sieci                                   | VirtualMachine.State.CreateSnapshot         |
+| Globalne. licencje                                              | Zasoby. Przypisz maszynę wirtualną do puli zasobów         | VirtualMachine.Provisioning.DiskRandomRead  |
+| Zdarzenie globalne. log                                             | Maszyna wirtualna. Konfiguracja. Dodaj nowy dysk                | VirtualMachine.Interact.PowerOff            |
+| Global. Zarządzaj atrybutami niestandardowymi                              | Maszyna wirtualna. Konfiguracja. Advanced                    | VirtualMachine. Inventory. Create             |
+| Global. Set — atrybut niestandardowy                                  | Maszyna wirtualna. Konfiguracja. śledzenie zmian dysku        | VirtualMachine.Config.AddNewDisk            |
+| Sieć. Przypisywanie sieci                                       | Maszyna wirtualna. Konfiguracja. host USB Device             | VirtualMachine.Config.HostUSBDevice         |
+| Zasoby. Przypisz maszynę wirtualną do puli zasobów            | Maszyna wirtualna. Configuration. Query — pliki nienależące         | VirtualMachine.Config.AdvancedConfig        |
+| Maszyna wirtualna. Konfiguracja. Dodaj nowy dysk                   | Maszyna wirtualna. Swapfile          | VirtualMachine. config. SwapPlacement         |
+| Maszyna wirtualna. Konfiguracja. Advanced                       | Maszyna wirtualna. Interakcja. Zasilanie wyłączone                     | Global.ManageCustomFields                   |
+| Maszyna wirtualna. Konfiguracja. śledzenie zmian dysku           | Maszyna wirtualna. Towar. Tworzenie nowego elementu                     |                                             |
+| Maszyna wirtualna. Konfiguracja. dzierżawa dysku                     | Maszyna wirtualna. Inicjowanie obsługi administracyjnej. Zezwalaj na dostęp do dysku            |                                             |
+| Maszyna wirtualna. Konfiguracja. zwiększanie dysku wirtualnego            | Maszyna wirtualna. Aprowizacji. Zezwalaj na dostęp do dysku tylko do odczytu |                                             |
+| Maszyna wirtualna. Operacje gościa. modyfikacje operacji gościa | Maszyna wirtualna. Zarządzanie migawkami. Utwórz migawkę       |                                             |
+| Maszyna wirtualna. Operacje gościa. wykonywanie programu operacji gościa | Maszyna wirtualna. Zarządzanie migawkami. Usuń migawkę       |                                             |
+| Maszyna wirtualna. Operacje gościa. zapytania dotyczące operacji gościa     |                                                           |                                             |
+| Maszyna wirtualna. Udziału. Połączenie z urządzeniem              |                                                           |                                             |
+| Maszyna wirtualna. Udziału. Zarządzanie systemem operacyjnym gościa za pomocą interfejsu API VIX |                                                           |                                             |
+| Maszyna wirtualna. Spis. Rejestr                          |                                                           |                                             |
+| Maszyna wirtualna. Spis. Remove                            |                                                           |                                             |
+| Maszyna wirtualna. Inicjowanie obsługi administracyjnej. Zezwalaj na dostęp do dysku              |                                                           |                                             |
+| Maszyna wirtualna. Inicjowanie obsługi administracyjnej. Zezwalaj na dostęp do dysku tylko do odczytu    |                                                           |                                             |
+| Maszyna wirtualna. Inicjowanie obsługi administracyjnej. Zezwalaj na pobieranie maszyny wirtualnej |                                                           |                                             |
+| Maszyna wirtualna. Zarządzanie migawkami. Tworzenie migawki        |                                                           |                                             |
+| Maszyna wirtualna. Zarządzanie migawkami. Usuń migawkę         |                                                           |                                             |
+| Maszyna wirtualna. Zarządzanie migawkami. Przywróć migawkę      |                                                           |                                             |
+| vApp. Dodaj maszynę wirtualną                                     |                                                           |                                             |
+| vApp. Przypisz pulę zasobów                                    |                                                           |                                             |
+| vApp. Unregister                                              |                                                           |                                             |
 
 ## <a name="create-a-vmware-account"></a>Utwórz konto VMware
 
@@ -264,7 +281,7 @@ Dodaj maszyny wirtualne VMware na potrzeby tworzenia kopii zapasowych. Grupy och
 
 1. Na stronie **Wybierz metodę ochrony danych** wprowadź nazwę grupy ochrony i ustawienia ochrony. Aby utworzyć kopię zapasową na platformie Azure, ustaw krótkoterminową ochronę na **dysku** i Włącz ochronę w trybie online. Następnie kliknij przycisk **Next** (Dalej).
 
-    ![Wybierz metodę ochrony danych](./media/backup-azure-backup-server-vmware/name-protection-group.png)
+    ![Wybieranie metody ochrony danych](./media/backup-azure-backup-server-vmware/name-protection-group.png)
 
 1. W obszarze **Określ cele krótkoterminowe**Określ, jak długo mają być przechowywane kopie zapasowe danych na dysku.
    - W obszarze **Zakres przechowywania**Określ, ile dni mają być przechowywane punkty odzyskiwania dysków.
@@ -273,7 +290,7 @@ Dodaj maszyny wirtualne VMware na potrzeby tworzenia kopii zapasowych. Grupy och
        - Krótkoterminowe kopie zapasowe są pełnymi kopiami zapasowymi i nie są przyrostowe.
        - Kliknij przycisk **Modyfikuj** , aby zmienić czasy/daty w przypadku wystąpienia krótkoterminowych kopii zapasowych.
 
-         ![Określ cele krótkoterminowe](./media/backup-azure-backup-server-vmware/short-term-goals.png)
+         ![Określanie celów krótkoterminowych](./media/backup-azure-backup-server-vmware/short-term-goals.png)
 
 1. Na stronie **Przejrzyj przydział dysku**Przejrzyj miejsce na dysku udostępnione dla kopii zapasowych maszyn wirtualnych. dla maszyn wirtualnych.
 
@@ -324,31 +341,31 @@ Dodaj maszyny wirtualne VMware na potrzeby tworzenia kopii zapasowych. Grupy och
 Aby utworzyć kopię zapasową vSphere 6,7, wykonaj następujące czynności:
 
 - Włącz protokół TLS 1,2 na serwerze DPM
-  >[!Note]
-  >Oprogramowanie VMWare 6,7 z włączoną obsługą protokołu TLS jako protokół komunikacyjny.
+
+>[!NOTE]
+>W przypadku oprogramowania VMWare 6,7 włączono protokół TLS.
 
 - Ustaw klucze rejestru w następujący sposób:
 
-       ```text
+```text
+Windows Registry Editor Version 5.00
 
-        Windows Registry Editor Version 5.00
+[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\.NETFramework\v2.0.50727]
+"SystemDefaultTlsVersions"=dword:00000001
+"SchUseStrongCrypto"=dword:00000001
 
-        [HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\.NETFramework\v2.0.50727]
-       "SystemDefaultTlsVersions"=dword:00000001
-       "SchUseStrongCrypto"=dword:00000001
+[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\.NETFramework\v4.0.30319]
+"SystemDefaultTlsVersions"=dword:00000001
+"SchUseStrongCrypto"=dword:00000001
 
-       [HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\.NETFramework\v4.0.30319]
-       "SystemDefaultTlsVersions"=dword:00000001
-       "SchUseStrongCrypto"=dword:00000001
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v2.0.50727]
+"SystemDefaultTlsVersions"=dword:00000001
+"SchUseStrongCrypto"=dword:00000001
 
-       [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v2.0.50727]
-       "SystemDefaultTlsVersions"=dword:00000001
-       "SchUseStrongCrypto"=dword:00000001
-
-       [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319]
-       "SystemDefaultTlsVersions"=dword:00000001
-       "SchUseStrongCrypto"=dword:00000001
-       ```
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319]
+"SystemDefaultTlsVersions"=dword:00000001
+"SchUseStrongCrypto"=dword:00000001
+```
 
 ## <a name="next-steps"></a>Następne kroki
 

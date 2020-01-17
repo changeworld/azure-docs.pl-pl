@@ -1,20 +1,20 @@
 ---
 title: 'Samouczek: wyszukiwanie lokalizacji w pobliżu mapy | Mapy Microsoft Azure'
-description: W tym samouczku dowiesz się, jak wyszukiwać lokalizacje w pobliżu (punkty orientacyjne) na mapie przy użyciu Microsoft Azure Maps.
+description: W tym samouczku dowiesz się, jak wyszukiwać punkty orientacyjne na mapie przy użyciu Microsoft Azure Maps.
 author: walsehgal
 ms.author: v-musehg
-ms.date: 11/12/2019
+ms.date: 1/15/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 65a091dbe935967d63a11c3c40dd834207f34782
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 974a60bafb3e9be56618824d6205d21c364d6601
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910825"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76153024"
 ---
 # <a name="tutorial-search-nearby-points-of-interest-using-azure-maps"></a>Samouczek: Wyszukiwanie punktów orientacyjnych w pobliżu za pomocą Azure Maps
 
@@ -30,7 +30,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
 
-Zaloguj się do [portalu Azure](https://portal.azure.com).
+Zaloguj się do [Portalu Azure](https://portal.azure.com).
 
 <a id="createaccount"></a>
 
@@ -69,7 +69,7 @@ Aby uzyskać więcej informacji na temat uwierzytelniania w Azure Maps, zobacz [
 
 ## <a name="create-a-new-map"></a>Tworzenie nowej mapy
 
-Interfejs API kontrolki mapy to wygodna biblioteka klienta, która ułatwia integrowanie usługi Maps z aplikacją internetową. Zmniejsza ona złożoność podstawowych wywołań usługi REST i zwiększa produktywność dzięki składnikom z możliwością definiowania stylu i dostosowywania. Poniższe kroki pokazują, jak utworzyć statyczną stronę HTML osadzoną przy użyciu interfejsu API kontrolki mapy.
+Interfejs API kontrolka mapy jest wygodną biblioteką klienta. Ten interfejs API pozwala łatwo zintegrować mapy z aplikacją sieci Web. Powoduje to ukrycie złożoności wywołań usługi REST i zwiększa produktywność dzięki dostosowywanym składnikom. Poniższe kroki pokazują, jak utworzyć statyczną stronę HTML osadzoną przy użyciu interfejsu API kontrolki mapy.
 
 1. Na maszynie lokalnej utwórz nowy plik i nadaj mu nazwę **MapSearch.html**.
 2. Dodaj następujące składniki HTML do pliku:
@@ -133,7 +133,7 @@ Interfejs API kontrolki mapy to wygodna biblioteka klienta, która ułatwia inte
 
    Ten segment inicjuje interfejs API kontrolki mapy dla klucza konta usługi Azure Maps. `atlas` jest przestrzenią nazw, która zawiera interfejs API i powiązane składniki wizualne. `atlas.Map` udostępnia formant wizualizacji i interaktywnej mapy sieci Web.
 
-4. Zapisz zmiany w pliku i otwórz stronę HTML w przeglądarce. Jest to najbardziej podstawowa mapa, którą można wykonać, wywołując `atlas.Map` przy użyciu klucza konta.
+4. Zapisz zmiany w pliku i otwórz stronę HTML w przeglądarce. Pokazana mapa to najbardziej podstawowa mapa, którą można wprowadzić, wywołując `atlas.Map` przy użyciu klucza konta.
 
    ![Wyświetlanie mapy](./media/tutorial-search-location/basic-map.png)
 
@@ -163,7 +163,7 @@ Interfejs API kontrolki mapy to wygodna biblioteka klienta, która ułatwia inte
     });
     ```
 
-   W tym segmencie kodu do mapy zostanie dodane zdarzenie `ready`, które zostanie wywołane po załadowaniu zasobów mapy, a mapa jest gotowa do uzyskania dostępu. W programie obsługi zdarzeń Mapuj `ready` źródło danych jest tworzone w celu przechowywania danych wynikowych. Tworzona jest warstwa symboli, która jest następnie dołączana do źródła danych. Ta warstwa określa, jak powinny być renderowane dane wyników w źródle danych. W tym przypadku jest ona oznaczona ciemnoniebieską ikoną okrągłej pinezki wyśrodkowaną nad współrzędnymi wyników i umożliwiającą nakładanie się na inne ikony. Warstwa wynikowa zostanie dodana do warstw mapy.
+   W tym segmencie kodu do mapy zostanie dodane zdarzenie `ready`, które zostanie wywołane po załadowaniu zasobów mapy, a mapa jest gotowa do uzyskania dostępu. W programie obsługi zdarzeń Mapuj `ready` źródło danych jest tworzone w celu przechowywania danych wynikowych. Tworzona jest warstwa symboli, która jest następnie dołączana do źródła danych. Ta warstwa określa, w jaki sposób mają być renderowane dane wynikowe w źródle danych. W takim przypadku wynik jest renderowany przy użyciu ciemnej niebieskiej ikony pinezki, wyśrodkowany przez współrzędne wyniki i zezwala na nakładanie się innych ikon. Warstwa wynikowa zostanie dodana do warstw mapy.
 
 <a id="usesearch"></a>
 
@@ -215,7 +215,7 @@ W tej sekcji pokazano, jak używać [interfejsu API wyszukiwania](https://docs.m
     });
     ```
 
-3. Zapisz plik **MapSearch.html** i odśwież przeglądarkę. Powinieneś teraz zobaczyć, że mapa jest wyśrodkowana w Seattle z okrągłym pinezką, oznaczając lokalizacje stacji benzyny w danym regionie.
+3. Zapisz plik **MapSearch.html** i odśwież przeglądarkę. Powinna zostać wyświetlona mapa wyśrodkowana w Seattle z okrągłymi numerami PIN dla lokalizacji stacji benzyny w danym regionie.
 
    ![Wyświetlanie mapy z wynikami wyszukiwania](./media/tutorial-search-location/pins-map.png)
 
@@ -229,9 +229,9 @@ Na stronie MapSearch można teraz wyświetlić lokalizacje punktów orientacyjny
 
 ## <a name="add-interactive-data"></a>Dodawanie interaktywnych danych
 
-W wynikach wyszukiwania na utworzonej mapie są używane tylko dane o długości i szerokości geograficznej. Widać jednak, że nieprzetworzone dane JSON zwracane przez usługę Search Service w usłudze Maps zawierają dodatkowe informacje o każdej stacji paliw, takie jak nazwa i adres. Dane te można zintegrować z mapą za pomocą interaktywnych wyskakujących okienek.
+W wynikach wyszukiwania na utworzonej mapie są używane tylko dane o długości i szerokości geograficznej. Jednak nieprzetworzony kod JSON, który zwraca usługa Maps Search, zawiera dodatkowe informacje o każdej stacji gazowej. Dołączenie nazwy i ulica adresu. Dane te można zintegrować z mapą za pomocą interaktywnych wyskakujących okienek.
 
-1. Dodaj następujące wiersze kodu do programu obsługi zdarzeń `ready` map po kodzie, aby wykonać zapytanie do usługi wyszukiwania rozmytego. Spowoduje to utworzenie wystąpienia wyskakującego okienka i dodanie zdarzenia mouseover do warstwy symboli.
+1. Dodaj następujące wiersze kodu do programu obsługi zdarzeń `ready` map po kodzie, aby wykonać zapytanie do usługi wyszukiwania rozmytego. Ten kod spowoduje utworzenie wystąpienia okna podręcznego i dodanie zdarzenia mouseOver do warstwy symboli.
 
     ```JavaScript
    //Create a popup but leave it closed so we can update it and display it later.

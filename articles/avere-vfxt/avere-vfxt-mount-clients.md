@@ -4,14 +4,14 @@ description: Jak zainstalować klientów z programem avere vFXT dla platformy Az
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 10/31/2018
+ms.date: 12/16/2019
 ms.author: rohogue
-ms.openlocfilehash: 39c4d6a77121e0b52a1da827ebb9e1976f609b30
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b8486b5a33226b1faa5e3874144129dbe7a1a2f2
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75415278"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76153415"
 ---
 # <a name="mount-the-avere-vfxt-cluster"></a>Instalowanie klastra Avere vFXT
 
@@ -47,7 +47,7 @@ function mount_round_robin() {
 
     # no need to write again if it is already there
     if ! grep --quiet "${DEFAULT_MOUNT_POINT}" /etc/fstab; then
-        echo "${ROUND_ROBIN_IP}:${NFS_PATH}    ${DEFAULT_MOUNT_POINT}    nfs hard,nointr,proto=tcp,mountproto=tcp,retry=30 0 0" >> /etc/fstab
+        echo "${ROUND_ROBIN_IP}:${NFS_PATH}    ${DEFAULT_MOUNT_POINT}    nfs hard,proto=tcp,mountproto=tcp,retry=30 0 0" >> /etc/fstab
         mkdir -p "${DEFAULT_MOUNT_POINT}"
         chown nfsnobody:nfsnobody "${DEFAULT_MOUNT_POINT}"
     fi
@@ -62,27 +62,27 @@ Powyższa funkcja jest częścią przykładu partii dostępnego w witrynie [przy
 ## <a name="create-the-mount-command"></a>Utwórz polecenie instalacji
 
 > [!NOTE]
-> Jeśli nie utworzono nowego kontenera obiektów BLOB podczas tworzenia klastra avere vFXT, wykonaj kroki opisane w sekcji [Konfigurowanie magazynu](avere-vfxt-add-storage.md) przed podjęciem próby zainstalowania klientów.
+> Jeśli nie utworzono nowego kontenera obiektów BLOB podczas tworzenia klastra avere vFXT, Dodaj systemy magazynów zgodnie z opisem w sekcji [Konfigurowanie magazynu](avere-vfxt-add-storage.md) przed próbą instalacji klientów.
 
 Z poziomu klienta polecenie ``mount`` mapuje serwer wirtualny (vserver) w klastrze vFXT na ścieżkę w lokalnym systemie plików. Format jest ``mount <vFXT path> <local path> {options}``
 
-Istnieją trzy elementy polecenia instalacji:
+Polecenie instalacji ma trzy elementy:
 
-* ścieżka vFXT — (kombinację adresu IP i ścieżki rozgałęzienia przestrzeni nazw opisane poniżej)
+* ścieżka vFXT-kombinacja adresu IP i ścieżki rozgałęzienia przestrzeni nazw w klastrze 9described poniżej)
 * ścieżka lokalna — ścieżka na kliencie
-* Opcje polecenia instalacji — (wymienione w [argumentach polecenia instalacji](#mount-command-arguments))
+* Opcje polecenia instalacji — wymienione w [argumentach polecenia instalacji](#mount-command-arguments)
 
 ### <a name="junction-and-ip"></a>Połączenie i adres IP
 
 Ścieżka vserver jest kombinacją jego *adresu IP* oraz ścieżki do *rozgałęzienia przestrzeni nazw*. Rozgałęzienie przestrzeni nazw jest ścieżką wirtualną, która została zdefiniowana podczas dodawania systemu magazynu.
 
-Jeśli klaster został utworzony przy użyciu magazynu obiektów blob, ścieżka przestrzeni nazw jest `/msazure`
+Jeśli klaster został utworzony przy użyciu magazynu obiektów blob, ścieżka przestrzeni nazw do tego kontenera jest `/msazure`
 
 Przykład: ``mount 10.0.0.12:/msazure /mnt/vfxt``
 
-Po dodaniu magazynu po utworzeniu klastra ścieżka rozgałęzienia przestrzeni nazw odpowiada wartości ustawionej w polu **ścieżka przestrzeni nazw** podczas tworzenia połączenia. Na przykład jeśli użyto ``/avere/files`` jako ścieżki przestrzeni nazw, klienci instalują *IP_address*:/avere/Files do ich lokalnego punktu instalacji.
+Po dodaniu magazynu po utworzeniu klastra, ścieżka rozgałęzienia przestrzeni nazw jest wartością ustawioną w polu **ścieżka przestrzeni nazw** podczas tworzenia połączenia. Na przykład jeśli użyto ``/avere/files`` jako ścieżki przestrzeni nazw, klienci instalują *IP_address*:/avere/Files do ich lokalnego punktu instalacji.
 
-![Okno dialogowe "Dodawanie nowego połączenia" z/avere/Files w polu Ścieżka przestrzeni nazw](media/avere-vfxt-create-junction-example.png)
+![Okno dialogowe "Dodawanie nowego połączenia" z/avere/Files w polu Ścieżka przestrzeni nazw](media/avere-vfxt-create-junction-example.png) <!-- to do - change example and screenshot to vfxt/files instead of avere -->
 
 Adres IP jest jednym z adresów IP skierowanych do klienta zdefiniowanych dla vserver. Zakres adresów IP dostępnych dla klientów można znaleźć w dwóch miejscach w panelu sterowania avere:
 
@@ -100,7 +100,7 @@ Oprócz ścieżek należy uwzględnić [argumenty polecenia instalacji](#mount-c
 
 Aby zapewnić bezproblemowe Instalowanie klienta, należy przekazać te ustawienia i argumenty w poleceniu instalacji:
 
-``mount -o hard,nointr,proto=tcp,mountproto=tcp,retry=30 ${VSERVER_IP_ADDRESS}:/${NAMESPACE_PATH} ${LOCAL_FILESYSTEM_MOUNT_POINT}``
+``mount -o hard,proto=tcp,mountproto=tcp,retry=30 ${VSERVER_IP_ADDRESS}:/${NAMESPACE_PATH} ${LOCAL_FILESYSTEM_MOUNT_POINT}``
 
 | Wymagane ustawienia | |
 --- | ---
@@ -109,14 +109,10 @@ Aby zapewnić bezproblemowe Instalowanie klienta, należy przekazać te ustawien
 ``mountproto=netid`` | Ta opcja obsługuje odpowiednią obsługę błędów sieci dla operacji instalacji.
 ``retry=n`` | Ustaw ``retry=30``, aby uniknąć błędów instalacji przejściowej. (W instalacjach na pierwszym planie zalecana jest inna wartość).
 
-| Ustawienia preferowane  | |
---- | ---
-``nointr``            | Opcja "nointr" jest preferowana dla klientów ze starszymi jądrami (przed 2008 kwietnia), które obsługują tę opcję. Należy pamiętać, że opcja "intr" jest wartością domyślną.
-
 ## <a name="next-steps"></a>Następne kroki
 
-Po zainstalowaniu klientów można użyć ich do wypełniania magazynu danych zaplecza (podstawowego pliku). Zapoznaj się z tymi dokumentami, aby dowiedzieć się więcej o dodatkowych zadaniach konfiguracyjnych:
+Po zainstalowaniu klientów programu można używać ich do kopiowania danych do nowego kontenera magazynu obiektów BLOB w klastrze. Jeśli nie musisz wypełniać nowego magazynu, zapoznaj się z innymi linkami, aby dowiedzieć się więcej o dodatkowych zadaniach konfiguracyjnych:
 
-* [Przenoszenie danych do podstawowego pliku klastra](avere-vfxt-data-ingest.md) — jak używać wielu klientów i wątków do wydajnego przekazywania danych
+* [Przenoszenie danych do podstawowego pliku klastra](avere-vfxt-data-ingest.md) — jak używać wielu klientów i wątków do wydajnego przekazywania danych do nowego podstawowego pliku
 * [Dostosowywanie dostrajania klastra](avere-vfxt-tuning.md) — dostosowanie ustawień klastra do własnych obciążeń
 * [Zarządzanie klastrem](avere-vfxt-manage-cluster.md) — jak uruchomić lub zatrzymać klaster i zarządzać węzłami

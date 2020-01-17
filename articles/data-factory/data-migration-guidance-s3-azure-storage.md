@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 8/04/2019
-ms.openlocfilehash: 30990c3d1e3f885e8984227425d3e8e5c44b9286
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 6f2db91a35573bc2cbdd0df2cb1ac09914cc956b
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927478"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122648"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-amazon-s3-to-azure-storage"></a>Używanie Azure Data Factory do migrowania danych z usługi Amazon S3 do magazynu Azure 
 
@@ -47,7 +47,7 @@ Na powyższym obrazie przedstawiono sposób osiągnięcia doskonałej szybkości
 
 W ramach pojedynczego uruchomienia działania kopiowania moduł ADF ma wbudowany mechanizm ponawiania prób, dlatego może obsłużyć określony poziom przejściowych błędów w magazynach danych lub w sieci źródłowej. 
 
-Podczas kopiowania binarnego z S3 do obiektów blob i z S3 do ADLS Gen2, funkcja ADF automatycznie wykonuje punkty kontrolne.  Jeśli uruchomienie działania kopiowania nie powiodło się lub upłynął limit czasu przy kolejnej ponowieniu próby (Pamiętaj o ponowieniu liczby > 1), kopiowanie zostanie wznowione od ostatniego punktu awarii zamiast od początku. 
+Podczas kopiowania binarnego z S3 do obiektów blob i z S3 do ADLS Gen2, funkcja ADF automatycznie wykonuje punkty kontrolne.  Jeśli uruchomienie działania kopiowania nie powiodło się lub upłynął limit czasu przy kolejnej ponowieniu próby, kopiowanie zostanie wznowione od ostatniego punktu awarii zamiast od początku. 
 
 ## <a name="network-security"></a>Bezpieczeństwo sieci 
 
@@ -86,7 +86,7 @@ Migruj dane za pośrednictwem prywatnego linku:
 
 ### <a name="initial-snapshot-data-migration"></a>Migracja początkowej danych migawek 
 
-Partycja danych jest zalecana szczególnie w przypadku migrowania więcej niż 10 TB danych.  Aby podzielić dane na partycje, Skorzystaj z ustawienia "prefiks" w celu odfiltrowania folderów i plików w usłudze Amazon S3 według nazwy, a następnie każde zadanie kopiowania ADF może skopiować jedną partycję w danym momencie.  Aby zapewnić lepszą przepływność, można uruchomić wiele zadań kopiowania ADF współbieżnie. 
+Partycja danych jest zalecana szczególnie w przypadku migrowania więcej niż 100 TB danych.  Aby podzielić dane na partycje, Skorzystaj z ustawienia "prefiks" w celu odfiltrowania folderów i plików w usłudze Amazon S3 według nazwy, a następnie każde zadanie kopiowania ADF może skopiować jedną partycję w danym momencie.  Aby zapewnić lepszą przepływność, można uruchomić wiele zadań kopiowania ADF współbieżnie. 
 
 Jeśli którekolwiek z zadań kopiowania zakończy się niepowodzeniem z powodu przejściowego problemu z siecią lub magazynem danych, można ponownie uruchomić zadanie kopiowania zakończonego niepowodzeniem, aby ponownie załadować tę konkretną partycję z AWS S3.  Nie wpłynie to na wszystkie inne zadania kopiowania ładujące inne partycje. 
 

@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/24/2019
 ms.author: banders
-ms.openlocfilehash: 2a15ad41850fdf574262c396bf70e43b3b08399c
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 13ac51fc4cefa4d66cf9d8310dce80704454bd93
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75989685"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122155"
 ---
 # <a name="get-started-with-your-microsoft-partner-agreement-billing-account"></a>Wprowadzenie do konta rozliczeniowego w ramach Umowy partnerskiej firmy Microsoft
 
@@ -53,7 +53,7 @@ Zastosuj zasady, aby kontrolować, czy użytkownicy w organizacji klienta mogą 
 
 Aby włączyć zasady:
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się do [Portalu Azure](https://portal.azure.com).
 
 1. Wyszukaj pozycję **Zarządzanie kosztami i rozliczenia**.
 
@@ -71,7 +71,7 @@ Aby włączyć zasady:
 
 ## <a name="resellers"></a>Odsprzedawcy
 
-Dostawcy pośredni w [modelu dwuwarstwowym](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview#azure-csp-direct-and-azure-csp-indirect) dostawców usług w chmurze mogą wybrać odsprzedawcę podczas tworzenia subskrypcji dla klientów w witrynie Azure Portal. Po utworzeniu mogą wyświetlić listę subskrypcji z możliwością filtrowania według odsprzedawców i analizować koszt dla klienta zależnie od odsprzedawcy w ramach analizy kosztów platformy Azure.
+Dostawcy pośredni w [modelu dwuwarstwowym](https://docs.microsoft.com/partner-center) dostawców usług w chmurze mogą wybrać odsprzedawcę podczas tworzenia subskrypcji dla klientów w witrynie Azure Portal. Po utworzeniu mogą wyświetlić listę subskrypcji z możliwością filtrowania według odsprzedawców i analizować koszt dla klienta zależnie od odsprzedawcy w ramach analizy kosztów platformy Azure.
 
 ## <a name="check-access-to-a-microsoft-partner-agreement"></a>Sprawdzanie dostępu do umowy partnerskiej firmy Microsoft
 [!INCLUDE [billing-check-mpa](../../../includes/billing-check-mpa.md)]

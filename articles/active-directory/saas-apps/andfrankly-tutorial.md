@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c097c1f08bd72ed5795e4274c41e4eb48dbe34ad
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 736cca668057f38431f91e36ff8fa97840274a38
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73152949"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76120659"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-frankly"></a>Samouczek: integracja Azure Active Directory z & Piotr
 
@@ -123,19 +123,15 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji &frankly, 
 
     ![Link do pobierania certyfikatu](common/metadataxml.png)
 
-7. W sekcji **Konfigurowanie aplikacji &frankly** skopiuj odpowiednie adresy URL zgodnie z wymaganiami.
 
-    ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
+### <a name="configure-frankly-single-sign-on"></a>Konfigurowanie & logowania jednokrotnego
 
-    a. Adres URL logowania
+Aby włączyć logowanie jednokrotne w & Piotr:
 
-    b. Identyfikator usługi Azure AD
-
-    d. Adres URL wylogowywania
-
-### <a name="configure-frankly-single-sign-on"></a>Konfigurowanie logowania jednokrotnego w usłudze &frankly
-
-Aby skonfigurować logowanie jednokrotne po stronie aplikacji **&frankly**, należy wysłać **adres URL metadanych federacyjnych aplikacji** do [zespołu pomocy technicznej aplikacji &frankly](mailto:help@andfrankly.com). Ustawią oni to ustawienie tak, aby połączenie logowania jednokrotnego SAML było ustawione właściwie po obu stronach.
+1. Zaloguj się do & Piotr. Przejdź do pozycji **konto** > **Zarządzanie użytkownikami**.
+1. Zmień mechanizm uwierzytelniania z domyślnego na **Logowanie w przedsiębiorstwie (SAML)** .
+1. Przekaż **plik XML metadanych Federacji** pobrany w kroku 6 w poprzedniej sekcji.
+1. Wybierz pozycję **Zapisz**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
@@ -204,4 +200,4 @@ Po kliknięciu kafelka &frankly w panelu dostępu powinno nastąpić automatyczn
 
 - [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co to jest dostęp warunkowy w Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

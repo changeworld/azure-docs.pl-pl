@@ -1,6 +1,6 @@
 ---
-title: Samouczek dotyczący przy użyciu flag funkcji w aplikacji platformy .NET Core | Dokumentacja firmy Microsoft
-description: W tym samouczku dowiesz się, jak zaimplementować flagi funkcji w aplikacjach platformy .NET Core.
+title: Samouczek dotyczący używania flag funkcji w aplikacji .NET Core | Microsoft Docs
+description: W tym samouczku dowiesz się, jak zaimplementować flagi funkcji w aplikacjach .NET Core.
 services: azure-app-configuration
 documentationcenter: ''
 author: yegu-ms
@@ -14,30 +14,30 @@ ms.topic: tutorial
 ms.date: 04/19/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 99559c0c77c3e4b29badec1c0be2d741df1f0621
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 4fe49c25ad71c48103f044915d187099b75b3d04
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67798372"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76121254"
 ---
-# <a name="tutorial-use-feature-flags-in-an-aspnet-core-app"></a>Samouczek: Użyj flagi funkcji w aplikacji ASP.NET Core
+# <a name="tutorial-use-feature-flags-in-an-aspnet-core-app"></a>Samouczek: używanie flag funkcji w aplikacji ASP.NET Core
 
-Biblioteki .NET Core funkcja zarządzania umożliwiają idiomatyczną Implementowanie flagi funkcji w aplikacji .NET lub ASP.NET Core. Te biblioteki pozwalają na deklaratywne dodać flag funkcji w kodzie, dzięki czemu nie trzeba napisać cały `if` instrukcje dla nich ręcznie.
+Biblioteki zarządzania funkcjami platformy .NET Core zapewniają obsługę idiomatyczne dla implementacji flag funkcji w aplikacji .NET lub ASP.NET Core. Te biblioteki umożliwiają deklaratywne Dodawanie flag funkcji do kodu, dzięki czemu nie trzeba ręcznie pisać wszystkich instrukcji `if`.
 
-Biblioteki zarządzania funkcji również zarządzać cyklów flagi funkcji w tle. Na przykład biblioteki Odśwież stany flagi w pamięci podręcznej i zagwarantować stanu flagi, mają być niezmienialne podczas wywołania żądania. Ponadto biblioteka ASP.NET Core oferuje integracji poza pole, a w tym akcji kontrolera MVC, widoki, trasy i oprogramowania pośredniczącego.
+Biblioteki zarządzania funkcjami również zarządzają cyklami życia flagi funkcji w tle. Na przykład biblioteki odświeżają i buforują Stany flag i gwarantują, że stan flagi będzie niezmienny podczas wywołania żądania. Ponadto biblioteka ASP.NET Core oferuje wbudowaną integrację, w tym akcje kontrolera MVC, widoki, trasy i oprogramowanie pośredniczące.
 
-[Dodawanie flag funkcji do aplikacji platformy ASP.NET Core Przewodnik Szybki Start](./quickstart-feature-flag-aspnet-core.md) pokazano kilka sposobów, aby dodać flag funkcji w aplikacji ASP.NET Core. W tym samouczku wyjaśniono tych metod, które bardziej szczegółowo. Aby uzyskać pełną dokumentację, zobacz [dokumentacją dotyczącą zarządzania funkcji platformy ASP.NET Core](https://go.microsoft.com/fwlink/?linkid=2091410).
+[Dodawanie flag funkcji do aplikacji ASP.NET Core szybkiego startu](./quickstart-feature-flag-aspnet-core.md) pokazuje kilka sposobów dodawania flag funkcji w aplikacji ASP.NET Core. Ten samouczek wyjaśnia te metody bardziej szczegółowo. Aby uzyskać pełne informacje, zobacz [dokumentację dotyczącą zarządzania funkcjami ASP.NET Core](https://go.microsoft.com/fwlink/?linkid=2091410).
 
 Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
-> * W części klucza aplikacji do sterowania dostępności funkcji, należy dodać flag funkcji.
-> * Integracja z konfiguracji aplikacji, gdy jest używany do zarządzania flag funkcji.
+> * Dodaj flagi funkcji w kluczowych częściach aplikacji, aby kontrolować dostępność funkcji.
+> * Integruj z konfiguracją aplikacji, gdy jest używana do zarządzania flagami funkcji.
 
-## <a name="set-up-feature-management"></a>Konfigurowanie funkcji zarządzania
+## <a name="set-up-feature-management"></a>Konfigurowanie zarządzania funkcjami
 
-Menedżer funkcji platformy .NET Core `IFeatureManager` pobiera flagi funkcji z systemu macierzystego konfiguracji struktury. Co w efekcie można zdefiniować flag funkcji aplikacji przy użyciu dowolnego źródła konfiguracji, które obsługuje platformy .NET Core, w tym lokalnym *appsettings.json* pliku zmienne lub zmienne środowiskowe. `IFeatureManager` opiera się na iniekcji zależności platformy .NET Core. Funkcja usług zarządzania można zarejestrować za pomocą standardowych konwencji:
+Program .NET Core Feature Manager `IFeatureManager` pobiera flagi funkcji z natywnego systemu konfiguracji struktury. W związku z tym można zdefiniować flagi funkcji aplikacji przy użyciu dowolnego źródła konfiguracji obsługiwanego przez platformę .NET Core, w tym lokalnego pliku *appSettings. JSON* lub zmiennych środowiskowych. `IFeatureManager` opiera się na iniekcji zależności .NET Core. Usługi zarządzania funkcjami można zarejestrować przy użyciu standardowych konwencji:
 
 ```csharp
 using Microsoft.FeatureManagement;
@@ -51,7 +51,7 @@ public class Startup
 }
 ```
 
-Domyślnie Menedżer funkcja pobiera flagi funkcji z `"FeatureManagement"` części danych konfiguracji platformy .NET Core. Poniższy przykład informuje Menedżera funkcji, które można odczytać z innej sekcji o nazwie `"MyFeatureFlags"` zamiast tego:
+Domyślnie program Feature Manager pobiera flagi funkcji z sekcji `"FeatureManagement"` danych konfiguracyjnych platformy .NET Core. Poniższy przykład informuje Menedżera funkcji o odczytaniu z innej sekcji o nazwie `"MyFeatureFlags"` zamiast:
 
 ```csharp
 using Microsoft.FeatureManagement;
@@ -68,7 +68,7 @@ public class Startup
 }
 ```
 
-Użyj filtrów w swojej flag funkcji, należy uwzględnić dodatkowe biblioteki i zarejestrowanie go. Poniższy przykład pokazuje, jak zastosować filtr wbudowanej funkcji o nazwie `PercentageFilter`:
+Jeśli używasz filtrów w flagach funkcji, musisz dołączyć dodatkową bibliotekę i zarejestrować ją. Poniższy przykład pokazuje, jak używać wbudowanego filtru funkcji o nazwie `PercentageFilter`:
 
 ```csharp
 using Microsoft.FeatureManagement;
@@ -84,11 +84,11 @@ public class Startup
 }
 ```
 
-Zaleca się zachować flag funkcji spoza aplikacji i zarządzaj nimi osobno. Dzięki temu można zmodyfikować stany flagi w dowolnym momencie i te zmiany zaczną obowiązywać w aplikacji, następnie od razu. Konfiguracja aplikacji zapewnia scentralizowanym miejscem do organizowania i kontrolowanie swoje flag funkcji za pośrednictwem dedykowanego interfejsu użytkownika portalu. Konfiguracja aplikacji również możliwość flagi do aplikacji bezpośrednio za pomocą klienta platformy .NET Core bibliotek.
+Firma Microsoft zaleca, aby zachować flagi funkcji poza aplikacją i osobno zarządzać nimi. Dzięki temu można w dowolnym momencie zmodyfikować Stany flag i wprowadzić zmiany w aplikacji od razu. Konfiguracja aplikacji zapewnia scentralizowane miejsce do organizowania i kontrolowania wszystkich flag funkcji za pomocą dedykowanego interfejsu użytkownika portalu. Konfiguracja aplikacji udostępnia również flagi bezpośrednio do aplikacji za pomocą bibliotek klienckich platformy .NET Core.
 
-Najprostszym sposobem łączenia aplikacji platformy ASP.NET Core z konfiguracji aplikacji jest za pośrednictwem dostawcy konfiguracji `Microsoft.Azure.AppConfiguration.AspNetCore`. Wykonaj następujące kroki, aby użyć tego pakietu NuGet.
+Najprostszym sposobem łączenia aplikacji ASP.NET Core z konfiguracją aplikacji jest użycie `Microsoft.Azure.AppConfiguration.AspNetCore`dostawcy konfiguracji. Wykonaj następujące kroki, aby użyć tego pakietu NuGet.
 
-1. Otwórz *Program.cs* pliku i Dodaj następujący kod.
+1. Otwórz plik *program.cs* i Dodaj następujący kod.
 
    ```csharp
    using Microsoft.Extensions.Configuration.AzureAppConfiguration;
@@ -105,7 +105,7 @@ Najprostszym sposobem łączenia aplikacji platformy ASP.NET Core z konfiguracji
               .UseStartup<Startup>();
    ```
 
-2. Otwórz *Startup.cs* i zaktualizuj `Configure` metody w celu dodania oprogramowaniu pośredniczącym, aby umożliwić wartości flag funkcji, należy odświeżyć interwałem cykliczne podczas platformy ASP.NET Core z aplikacji sieci web w dalszym ciągu otrzymywać żądania.
+2. Otwórz *Startup.cs* i zaktualizuj metodę `Configure`, aby dodać oprogramowanie pośredniczące, aby umożliwić odświeżanie wartości flag funkcji w cyklicznym interwale, podczas gdy aplikacja sieci Web ASP.NET Core nadal otrzymuje żądania.
 
    ```csharp
    public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -115,7 +115,7 @@ Najprostszym sposobem łączenia aplikacji platformy ASP.NET Core z konfiguracji
    }
    ```
 
-Wartości z flag funkcji powinny ulegać zmianie. Domyślnie wartości flagi funkcji są buforowane na okres 30 sekund, więc operacja odświeżania, wyzwalane, gdy oprogramowanie pośredniczące odbiera żądanie nie uaktualni wartość czasu wygaśnięcia wartość w pamięci podręcznej. Poniższy kod pokazuje, jak zmienić czas wygaśnięcia pamięci podręcznej lub interwał sondowania na 5 minut w `options.UseFeatureFlags()` wywołania.
+Oczekiwane wartości flagi funkcji są zmieniane z upływem czasu. Domyślnie wartości flagi funkcji są buforowane przez okres 30 sekund, więc operacja odświeżania wyzwalana, gdy oprogramowanie pośredniczące odbiera żądanie nie aktualizuje wartości do momentu wygaśnięcia wartości w pamięci podręcznej. Poniższy kod przedstawia sposób zmiany czasu wygaśnięcia pamięci podręcznej lub interwału sondowania na 5 minut w wywołaniu `options.UseFeatureFlags()`.
 
 ```csharp
 config.AddAzureAppConfiguration(options => {
@@ -128,11 +128,11 @@ config.AddAzureAppConfiguration(options => {
 
 ## <a name="feature-flag-declaration"></a>Deklaracja flagi funkcji
 
-Każdy flagi funkcji ma dwie części: nazwy i listy jeden lub więcej filtrów, które są używane do oceny, czy stan funkcji jest *na* (oznacza to, gdy jej wartość jest `True`). Filtr definiuje przypadek użycia, gdy powinna być włączona funkcja.
+Każda flaga funkcji ma dwie części: nazwę i listę co najmniej jednego filtru, który jest używany do obliczenia, czy stan funkcji jest *włączony* (to znaczy, gdy wartość jest `True`). Filtr definiuje przypadek użycia, gdy funkcja powinna być włączona.
 
-Jeśli flaga funkcji ma wiele filtrów, lista filtrów, o ile w kolejności, dopóki jeden z filtrów okaże się, że funkcja powinna być włączona. W tym momencie Flaga funkcji jest *na*, a wszystkie pozostałe wyniki zastosowania filtru są pomijane. Jeśli żaden filtr wskazuje, funkcja powinna być włączona, Flaga funkcji jest *poza*.
+Gdy flaga funkcji ma wiele filtrów, lista filtrów jest przesunięta w kolejności, aż jeden z filtrów określi, że funkcja powinna być włączona. W tym momencie flaga funkcji jest *włączona*, a wszystkie pozostałe wyniki filtru są pomijane. Jeśli żaden filtr nie wskazuje, że funkcja powinna być włączona, flaga funkcji jest *wyłączona*.
 
-Funkcja obsługuje Menedżera *appsettings.json* jako źródło konfiguracji dla flag funkcji. Poniższy przykład pokazuje, jak skonfigurować flagi funkcji w pliku JSON:
+Program Feature Manager obsługuje plik *appSettings. JSON* jako źródło konfiguracji dla flag funkcji. Poniższy przykład pokazuje, jak skonfigurować flagi funkcji w pliku JSON:
 
 ```JSON
 "FeatureManagement": {
@@ -151,15 +151,15 @@ Funkcja obsługuje Menedżera *appsettings.json* jako źródło konfiguracji dla
 }
 ```
 
-Zgodnie z Konwencją `FeatureManagement` część niniejszego dokumentu JSON jest używana do ustawienia flagi funkcji. Poprzedni przykład przedstawia trzy flagi funkcji z ich filtrami zdefiniowanymi w `EnabledFor` właściwości:
+Zgodnie z Konwencją sekcja `FeatureManagement` tego dokumentu JSON jest używana dla ustawień flagi funkcji. W poprzednim przykładzie przedstawiono trzy flagi funkcji z filtrami zdefiniowanymi we właściwości `EnabledFor`:
 
-* `FeatureA` jest *na*.
-* `FeatureB` jest *poza*.
-* `FeatureC` Określa filtr o nazwie `Percentage` z `Parameters` właściwości. `Percentage` Czy można skonfigurować filtr. W tym przykładzie `Percentage` określa prawdopodobieństwo 50 procent `FeatureC` flagę, aby być *na*.
+* `FeatureA` jest *włączona*.
+* `FeatureB` jest *wyłączona*.
+* `FeatureC` określa filtr o nazwie `Percentage` z właściwością `Parameters`. `Percentage` to konfigurowalny filtr. W tym przykładzie `Percentage` określa prawdopodobieństwo 50 procent dla flagi *`FeatureC`.*
 
-## <a name="feature-flag-references"></a>Odwołania flagi funkcji
+## <a name="feature-flag-references"></a>Odwołania do flag funkcji
 
-Tak, aby łatwo można odwoływać się flagi funkcji w kodzie, należy zdefiniować je jako `enum` zmiennych:
+Aby można było łatwo odwoływać się do flag funkcji w kodzie, należy zdefiniować je jako zmienne `enum`:
 
 ```csharp
 public enum MyFeatureFlags
@@ -172,12 +172,12 @@ public enum MyFeatureFlags
 
 ## <a name="feature-flag-checks"></a>Sprawdzanie flag funkcji
 
-Podstawowy wzorzec funkcji zarządzania jest najpierw sprawdzić, jeśli jest ustawiona flaga funkcji *na*. Jeśli tak, Menedżer funkcji następnie uruchamia akcje, zawiera tę funkcję. Przykład:
+Podstawowym wzorcem zarządzania funkcjami jest najpierw sprawdzenie, czy flaga funkcji jest ustawiona na wartość *włączone*. Jeśli tak, Menedżer funkcji uruchamia następnie akcje, które zawiera funkcja. Przykład:
 
 ```csharp
 IFeatureManager featureManager;
 ...
-if (featureManager.IsEnabled(nameof(MyFeatureFlags.FeatureA)))
+if (await featureManager.IsEnabledAsync(nameof(MyFeatureFlags.FeatureA)))
 {
     // Run the following code
 }
@@ -185,7 +185,7 @@ if (featureManager.IsEnabled(nameof(MyFeatureFlags.FeatureA)))
 
 ## <a name="dependency-injection"></a>Wstrzykiwanie zależności
 
-W programie ASP.NET Core MVC uzyskujesz dostęp do Menedżera funkcji `IFeatureManager` za pomocą iniekcji zależności:
+W ASP.NET Core MVC można uzyskać dostęp do programu Feature Manager `IFeatureManager` za pomocą iniekcji zależności:
 
 ```csharp
 public class HomeController : Controller
@@ -199,9 +199,9 @@ public class HomeController : Controller
 }
 ```
 
-## <a name="controller-actions"></a>Akcji kontrolera
+## <a name="controller-actions"></a>Akcje kontrolera
 
-W kontrolerów MVC `FeatureGate` atrybutów do kontroli, czy klasa całego kontrolera lub konkretnej akcji jest włączony. Następujące `HomeController` wymaga kontrolera `FeatureA` jako *na* przed można wykonać żadnych działań, które zawiera klasy kontrolera:
+W kontrolerach MVC Użyj atrybutu `FeatureGate`, aby określić, czy jest włączona cała klasa kontrolera lub określona akcja. Poniższy kontroler `HomeController` wymaga, aby `FeatureA` przed akcją, która zawiera klasy kontrolera, *może być wykonywana* :
 
 ```csharp
 [FeatureGate(MyFeatureFlags.FeatureA)]
@@ -211,7 +211,7 @@ public class HomeController : Controller
 }
 ```
 
-Następujące `Index` akcja wymaga `FeatureA` jako *na* zanim będzie można go uruchomić:
+Aby można było uruchomić następujące akcje `Index`, `FeatureA` musi ono być *włączone* :
 
 ```csharp
 [FeatureGate(MyFeatureFlags.FeatureA)]
@@ -221,11 +221,11 @@ public IActionResult Index()
 }
 ```
 
-Gdy MVC kontroler lub akcję jest zablokowane, ponieważ jest flagi funkcji kontrolowania *poza*, zarejestrowany `IDisabledFeaturesHandler` nosi nazwę interfejsu. Wartość domyślna `IDisabledFeaturesHandler` interfejsu zwraca kod stanu 404 do klienta bez treści odpowiedzi.
+Gdy kontroler MVC lub akcja jest blokowana, ponieważ flaga funkcji kontrolującej jest *wyłączona*, zostanie wywołany zarejestrowany interfejs `IDisabledFeaturesHandler`. Domyślny interfejs `IDisabledFeaturesHandler` zwraca kod stanu 404 do klienta bez treści odpowiedzi.
 
-## <a name="mvc-views"></a>Widoków MVC
+## <a name="mvc-views"></a>Widoki MVC
 
-W widokach MVC, można użyć `<feature>` tag do renderowania zawartości oparte na włączenie flagi funkcji:
+W widokach MVC można użyć znacznika `<feature>`, aby renderować zawartość w zależności od tego, czy flaga funkcji jest włączona:
 
 ```html
 <feature name="FeatureA">
@@ -233,7 +233,7 @@ W widokach MVC, można użyć `<feature>` tag do renderowania zawartości oparte
 </feature>
 ```
 
-Aby wyświetlić alternatywne zawartości, gdy nie są spełnione wymagania `negate` atrybut może być używany.
+Aby wyświetlić alternatywną zawartość, gdy wymagania nie są spełnione, można użyć atrybutu `negate`.
 
 ```html
 <feature name="FeatureA" negate="true">
@@ -241,7 +241,7 @@ Aby wyświetlić alternatywne zawartości, gdy nie są spełnione wymagania `neg
 </feature>
 ```
 
-Funkcja `<feature>` tagów można również do wyświetlenia zawartości, jeśli istnieje, lub wszystkie funkcje na liście są włączone.
+Tag `<feature>` funkcji może również służyć do wyświetlania zawartości, jeśli jest włączona jakakolwiek lub wszystkie funkcje na liście.
 
 ```html
 <feature name="FeatureA, FeatureB" requirement="All">
@@ -254,7 +254,7 @@ Funkcja `<feature>` tagów można również do wyświetlenia zawartości, jeśli
 
 ## <a name="mvc-filters"></a>Filtry MVC
 
-Filtry MVC można skonfigurować tak, aby zostały aktywowane, na podstawie stanu flagi funkcji. Poniższy kod dodaje filtr MVC o nazwie `SomeMvcFilter`. Ten filtr jest wyzwalany w MVC potoku tylko wtedy, gdy `FeatureA` jest włączona.
+Filtry MVC można skonfigurować tak, aby były aktywowane na podstawie stanu flagi funkcji. Poniższy kod dodaje filtr MVC o nazwie `SomeMvcFilter`. Ten filtr jest wyzwalany w ramach potoku MVC tylko wtedy, gdy `FeatureA` jest włączona. Ta funkcja jest ograniczona do `IAsyncActionFilter`. 
 
 ```csharp
 using Microsoft.FeatureManagement.FeatureFilters;
@@ -269,25 +269,15 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-## <a name="routes"></a>Trasy
-
-Flagi funkcji umożliwia dynamiczne udostępnianie trasy. Poniższy kod dodaje trasy, który ustawia `Beta` jako domyślny kontroler tylko wtedy, gdy `FeatureA` jest włączona:
-
-```csharp
-app.UseMvc(routes => {
-    routes.MapRouteForFeature(nameof(MyFeatureFlags.FeatureA), "betaDefault", "{controller=Beta}/{action=Index}/{id?}");
-});
-```
-
 ## <a name="middleware"></a>Oprogramowanie pośredniczące
 
-Flagi funkcji umożliwia również warunkowo Dodaj gałęzie aplikacji i oprogramowania pośredniczącego. Poniższej wstawki kodu składnik oprogramowania pośredniczącego w żądaniu potoku tylko wtedy, gdy `FeatureA` jest włączona:
+Możesz również użyć flag funkcji, aby warunkowo dodawać gałęzie aplikacji i oprogramowanie pośredniczące. Poniższy kod wstawia składnik pośredniczący w potoku żądania tylko wtedy, gdy `FeatureA` jest włączona:
 
 ```csharp
 app.UseMiddlewareForFeature<ThirdPartyMiddleware>(nameof(MyFeatureFlags.FeatureA));
 ```
 
-Ten kod tworzy wyłączyć możliwość bardziej ogólny gałęzi całej aplikacji, w oparciu o flagi funkcji:
+Ten kod kompiluje bardziej ogólną funkcję w celu rozgałęzienia całej aplikacji na podstawie flagi funkcji:
 
 ```csharp
 app.UseForFeature(featureName, appBuilder => {
@@ -297,8 +287,8 @@ app.UseForFeature(featureName, appBuilder => {
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku przedstawiono sposób wdrożyć flagi funkcji w aplikacji ASP.NET Core przy użyciu `Microsoft.FeatureManagement` bibliotek. Aby uzyskać więcej informacji dotyczących obsługi różnych funkcji zarządzania w ASP.NET Core i konfiguracji aplikacji zobacz następujące zasoby:
+W tym samouczku przedstawiono sposób implementacji flag funkcji w aplikacji ASP.NET Core przy użyciu bibliotek `Microsoft.FeatureManagement`. Aby uzyskać więcej informacji na temat obsługi zarządzania funkcjami w ASP.NET Core i konfiguracji aplikacji, zobacz następujące zasoby:
 
-* [Flagi funkcji platformy ASP.NET Core przykładowego kodu](/azure/azure-app-configuration/quickstart-feature-flag-aspnet-core)
-* [Dokumentacja Microsoft.FeatureManagement](https://docs.microsoft.com/dotnet/api/microsoft.featuremanagement)
+* [Przykładowy kod flagi funkcji ASP.NET Core](/azure/azure-app-configuration/quickstart-feature-flag-aspnet-core)
+* [Dokumentacja programu Microsoft. FeatureManagement](https://docs.microsoft.com/dotnet/api/microsoft.featuremanagement)
 * [Zarządzanie flagami funkcji](./manage-feature-flags.md)

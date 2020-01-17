@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/19/2019
+ms.date: 01/16/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 manager: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: a320a446bf6a2ff5d5d923961b2614970ffa70f9
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: b337c1d57d253f55f3171e1de78a81b6de13ba31
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75988411"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76157171"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>Wprowadzenie do Azure Cost Management dla partnerów
 
@@ -213,7 +213,7 @@ Następujące pola danych znajdują się w plikach szczegółów użycia i inter
 | Lokalizacja | Znormalizowana lokalizacja zasobu. | ND |
 | effectivePrice | Obowiązująca cena jednostkowa usługi w walucie cenowej. Unikatowy dla produktu, rodziny usług, miernika i oferty. Używany z cenami w arkuszu cen dla konta rozliczeniowego. W przypadku cen warstwowych lub uwzględnionych ilości zostanie wyświetlona połączona cena zużycia. | Cena jednostkowa po dokonaniu korekt. |
 | Ilość | Zmierzona ilość zakupione lub zużyte. Ilość licznika użyta w okresie rozliczeniowym. | Liczba jednostek. Upewnij się, że jest ona zgodna z informacjami w systemie rozliczeniowym podczas uzgadniania. |
-| unitOfMeasure | Identyfikuje jednostkę, w której jest naliczana opłata za usługę. Na przykład GB i godziny. | Identyfikuje jednostkę, w której jest naliczana opłata za usługę. Na przykład GB, godzin i 10, 000. |
+| unitOfMeasure | Identyfikuje jednostkę, w której jest naliczana opłata za usługę. Na przykład GB i godziny. | Identyfikuje jednostkę, w której jest naliczana opłata za usługę. Na przykład GB, godz. i 10 000 s. |
 | pricingCurrency | Waluta określająca cenę jednostkową. | Waluta na liście cen.|
 | billingCurrency | Waluta definiująca koszt naliczany. | Waluta regionu geograficznego klienta. |
 | chargeType | Określa typ opłaty reprezentowanej przez koszt Azure Cost Management, na przykład zakup i zwrot. | Typ opłaty lub korekty. Niedostępne dla bieżącego działania. |
@@ -228,7 +228,7 @@ Następujące pola danych znajdują się w plikach szczegółów użycia i inter
 | serviceInfo1 | Starsze pole, które przechwytuje opcjonalne metadane specyficzne dla usługi. | Wewnętrzne metadane usługi platformy Azure. |
 | serviceInfo2 | Starsze pole, które przechwytuje opcjonalne metadane specyficzne dla usługi. | Informacje o usłudze. Na przykład typ obrazu dla maszyny wirtualnej i nazwy usługodawcy internetowego dla ExpressRoute.|
 | additionalInfo | Metadane dotyczące konkretnej usługi. Na przykład typ obrazu dla maszyny wirtualnej. | Wszelkie dodatkowe informacje, które nie są objęte innymi kolumnami. Metadane specyficzne dla usługi. Na przykład typ obrazu dla maszyny wirtualnej.|
-| tagów | Tag przypisany do miernika. Grupowanie rekordów rozliczeń przy użyciu tagów. Można na przykład użyć tagów do dystrybucji kosztów według działu, który używa miernika. | Tagi dodane przez klienta.|
+| tags | Tag przypisany do miernika. Grupowanie rekordów rozliczeń przy użyciu tagów. Można na przykład użyć tagów do dystrybucji kosztów według działu, który używa miernika. | Tagi dodane przez klienta.|
 | **partnerEarnedCreditRate** | Kwota rabatu stosowana w przypadku, gdy Partner uzyskał kredyt (PEC) w oparciu o dostęp do linku administratora partnera. | Stawka w wysokości (PEC) uzyskana przez partnera. Na przykład 0% lub 15%. |
 | **partnerEarnedCreditApplied** | Wskazuje, czy jest stosowany kredyt uzyskany przez partnera. | ND |
 
@@ -257,7 +257,7 @@ Można również grupować i filtrować według właściwości **PartnerEarnedCr
 
 ## <a name="export-cost-data-to-azure-storage"></a>Eksportowanie danych kosztów do usługi Azure Storage
 
-Partnerzy z dostępem do zakresów rozliczeń w dzierżawie partnerskim mogą eksportować dane dotyczące kosztów i użycia do obiektu BLOB usługi Azure Storage. Obiekt BLOB musi znajdować się w subskrypcji dzierżawcy partnera, która nie jest subskrypcją usługi udostępnionej ani subskrypcją klienta. Aby włączyć eksportowanie danych kosztów, zalecamy skonfigurowanie niezależnej subskrypcji płatnej zgodnie z rzeczywistym użyciem w dzierżawie partnera w celu hostowania wyeksportowanych danych kosztów. Konto eksportu magazynu jest tworzone w usłudze Azure Storage BLOB hostowanej w ramach subskrypcji z opcją płatność zgodnie z rzeczywistym użyciem. Na podstawie zakresu, w którym partner tworzy eksport, skojarzone dane są automatycznie eksportowane do konta magazynu cyklicznie.
+Partnerzy z dostępem do zakresów rozliczeń w dzierżawie partnerskim mogą eksportować dane dotyczące kosztów i użycia do obiektu BLOB usługi Azure Storage. Obiekt BLOB musi znajdować się w subskrypcji dzierżawcy partnera, która nie jest subskrypcją usługi udostępnionej ani subskrypcją klienta. Aby włączyć eksportowanie danych kosztów, zalecamy skonfigurowanie niezależnej subskrypcji płatnej zgodnie z rzeczywistym użyciem w dzierżawie partnera w celu hostowania wyeksportowanych danych kosztów. Konto eksportu magazynu jest tworzone w usłudze Azure Storage BLOB hostowanej w ramach subskrypcji z opcją płatność zgodnie z rzeczywistym użyciem. Na podstawie zakresu, w którym partner tworzy eksport, skojarzone dane są automatycznie eksportowane do konta magazynu.
 
 Użytkownicy z dostępem RBAC do subskrypcji mogą również eksportować dane kosztów do obiektu BLOB usługi Azure Storage hostowanego w dowolnej subskrypcji w dzierżawie klienta.
 
@@ -265,7 +265,11 @@ Użytkownicy z dostępem RBAC do subskrypcji mogą również eksportować dane k
 
 W Azure Portal Zaloguj się do dzierżawcy partnera lub dzierżawy klienta i wybierz pozycję **Cost Management + rozliczanie**. Wybierz odpowiedni zakres, na przykład konto rozliczeniowe, a następnie wybierz pozycję **Analiza kosztów**. Po załadowaniu strony wybierz pozycję **Eksportuj**. Wybierz pozycję **Wyświetl wszystkie eksporty** w obszarze Zaplanuj eksport.
 
+![Wybierz opcję Eksportuj i Wyświetl wszystkie eksporty](./media/get-started-partners/export01.png)
+
 Następnie wybierz pozycję **Dodaj** i wpisz nazwę i wybierz typ eksportu. Wybierz kartę **Magazyn** i wprowadź wymagane informacje.
+
+![Karta Dodawanie nowego eksportu i wybieranie magazynu](./media/get-started-partners/export02.png)
 
 Po utworzeniu eksportu w dzierżawie partnera wybierz subskrypcję z płatność zgodnie z rzeczywistym użyciem w dzierżawie partnera. Utwórz konto usługi Azure Storage przy użyciu tej subskrypcji.
 
@@ -274,6 +278,8 @@ W przypadku użytkowników RBAC w dzierżawie klienta wybierz subskrypcję w dzi
 Przejrzyj zawartość, a następnie wybierz pozycję **Utwórz** , aby zaplanować eksport.
 
 Aby sprawdzić dane na liście eksportu, wybierz nazwę konta magazynu. Na stronie konto magazynu wybierz pozycję **kontenery** , a następnie wybierz kontener. Przejdź do odpowiedniego folderu i wybierz plik CSV. Wybierz pozycję **Pobierz** , aby pobrać plik CSV i otworzyć go. Eksportowane dane eksportowane przypominają dane dotyczące kosztów podobne do szczegółów użycia z Azure Portal.
+
+![Przykład wyeksportowanych danych](./media/get-started-partners/example-export-data.png)
 
 ## <a name="cost-management-rest-apis"></a>Interfejsy API REST Cost Management
 

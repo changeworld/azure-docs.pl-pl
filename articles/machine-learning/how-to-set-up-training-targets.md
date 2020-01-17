@@ -9,14 +9,14 @@ ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 11/21/2019
+ms.date: 01/16/2020
 ms.custom: seodec18
-ms.openlocfilehash: 730436c7437d2ed77f9066f486d9716ec6d5681f
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: c7fd70ca32054b3b25e717c8c7169cf2d30ef9be
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771840"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156356"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>Skonfiguruj cele obliczeń i używaj ich do szkolenia modelu 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -54,7 +54,7 @@ Dowiedz się więcej o [przesyłaniu eksperymentów](#submit) na końcu tego art
 
 ## <a name="whats-an-estimator"></a>Co to jest szacowania?
 
-Aby ułatwić uczenie modeli przy użyciu popularnych platform, zestaw SDK języka Python, Azure Machine Learning, zawiera alternatywne abstrakcyjne streszczenie, klasy szacowania.  Ta klasa umożliwia łatwe konstruowanie konfiguracji uruchomieniowych. Można utworzyć i użyć generycznej [szacowania](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py) do przesyłania skryptów szkoleniowych, które korzystają z wybranej platformy szkoleniowej (na przykład scikit-Learning). Zalecamy użycie szacowania do szkolenia, ponieważ automatycznie contructs obiektów osadzonych, takich jak środowisko lub obiekty RunConfiguration. Jeśli chcesz mieć większą kontrolę nad sposobem tworzenia tych obiektów i specfify, jakie pakiety mają być instalowane w ramach przebiegu experiement, wykonaj [następujące kroki](#amlcompute) , aby przesłać eksperymenty szkoleniowe przy użyciu obiektu RunConfiguration na Azure Machine Learning obliczeń.
+Aby ułatwić uczenie modeli przy użyciu popularnych platform, zestaw SDK języka Python, Azure Machine Learning, zawiera alternatywne abstrakcyjne streszczenie, klasy szacowania.  Ta klasa umożliwia łatwe konstruowanie konfiguracji uruchomieniowych. Można utworzyć i użyć generycznej [szacowania](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py) do przesyłania skryptów szkoleniowych, które korzystają z wybranej platformy szkoleniowej (na przykład scikit-Learning). Zalecamy użycie szacowania do szkolenia, ponieważ automatycznie konstruuje obiekty osadzone, takie jak środowisko lub obiekty RunConfiguration. Jeśli chcesz mieć większą kontrolę nad sposobem tworzenia tych obiektów i określać pakiety do zainstalowania w ramach eksperymentu, wykonaj [następujące kroki](#amlcompute) , aby przesłać eksperymenty szkoleniowe przy użyciu obiektu RunConfiguration w ramach obliczeń Azure Machine Learning.
 
 W przypadku zadań PyTorch, TensorFlow i łańcucha, Azure Machine Learning również udostępnia odpowiednie [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py), [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py)i [łańcucha](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py) szacowania, aby uprościć korzystanie z tych platform.
 
@@ -364,7 +364,7 @@ Aby uzyskać więcej informacji, zobacz [Zarządzanie zasobami](reference-azure-
 
 ## <a name="set-up-with-vs-code"></a>Konfiguracja przy użyciu VS Code
 
-Możesz uzyskiwać dostęp do obiektów docelowych obliczeń skojarzonych z obszarem roboczym, tworzyć je i zarządzać nimi, korzystając z [rozszerzenia VS Code](how-to-vscode-tools.md#create-and-manage-compute-targets) Azure Machine Learning.
+Możesz uzyskiwać dostęp do obiektów docelowych obliczeń skojarzonych z obszarem roboczym, tworzyć je i zarządzać nimi, korzystając z [rozszerzenia VS Code](tutorial-train-deploy-image-classification-model-vscode.md#configure-compute-targets) Azure Machine Learning.
 
 ## <a id="submit"></a>Prześlij uruchomienie szkolenia przy użyciu zestawu SDK Azure Machine Learning
 
@@ -414,7 +414,7 @@ Możesz też:
 
 * Prześlij eksperyment z obiektem `Estimator`, jak pokazano w [pouczeniu modeli ml z szacowania](how-to-train-ml-models.md).
 * Prześlij przebieg dla [strojenia parametru](how-to-tune-hyperparameters.md).
-* Prześlij eksperyment za pośrednictwem [rozszerzenia vs Code](how-to-vscode-tools.md#train-and-tune-models).
+* Prześlij eksperyment za pośrednictwem [rozszerzenia vs Code](tutorial-train-deploy-image-classification-model-vscode.md#train-the-model).
 
 Aby uzyskać więcej informacji, zobacz dokumentację [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py) i [RunConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py) .
 

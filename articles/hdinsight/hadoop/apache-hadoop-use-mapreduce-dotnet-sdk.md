@@ -1,48 +1,48 @@
 ---
-title: Przesyłanie zadań MapReduce, przy użyciu zestawu SDK usługi .NET HDInsight — Azure
-description: Dowiedz się, jak przesyłać zadania MapReduce do usługi Azure HDInsight Apache Hadoop przy użyciu zestawu .NET SDK HDInsight.
-ms.reviewer: jasonh
+title: Przesyłanie zadań MapReduce przy użyciu zestawu .NET SDK usługi HDInsight — Azure
+description: Dowiedz się, jak przesyłać zadania MapReduce do usługi Azure HDInsight Apache Hadoop przy użyciu zestawu .NET SDK w usłudze HDInsight.
 author: hrasheed-msft
-ms.service: hdinsight
-ms.custom: hdinsightactive
-ms.topic: conceptual
-ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 1ac2dda20ba1219c9f62e834b5cd2cfba8a50086
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.reviewer: jasonh
+ms.service: hdinsight
+ms.topic: conceptual
+ms.custom: hdinsightactive
+ms.date: 01/15/2020
+ms.openlocfilehash: e50510f2420d69be37af584a2648a794e1561ee3
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64718954"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76157055"
 ---
-# <a name="run-mapreduce-jobs-using-hdinsight-net-sdk"></a>Uruchomienie zadania MapReduce, przy użyciu zestawu .NET SDK HDInsight
+# <a name="run-mapreduce-jobs-using-hdinsight-net-sdk"></a>Uruchamianie zadań MapReduce przy użyciu zestawu .NET SDK usługi HDInsight
+
 [!INCLUDE [mapreduce-selector](../../../includes/hdinsight-selector-use-mapreduce.md)]
 
-Dowiedz się, jak przesyłać zadania MapReduce, przy użyciu zestawu .NET SDK HDInsight. HDInsight klastrów pochodzą z pliku jar z niektórych przykładów technologii MapReduce. Plik jar jest */example/jars/hadoop-mapreduce-examples.jar*.  Jednym z przykładów jest *wordcount*. Utworzysz aplikację konsolową C#, w celu przesłania zadania wordcount.  Zadanie odczytuje */example/data/gutenberg/davinci.txt* pliku i generuje wyjściowe wyniki do */example/data/davinciwordcount*.  Jeśli chcesz ponownie uruchomić aplikację, należy wyczyścić folder wyjściowy.
+Dowiedz się, jak przesyłać zadania MapReduce przy użyciu zestawu .NET SDK usługi HDInsight. Klastry usługi HDInsight są dostarczane z plikiem jar z niektórymi przykładami MapReduce. Plik JAR jest `/example/jars/hadoop-mapreduce-examples.jar`.  Jednym z przykładów jest **WORDCOUNT**. Tworzysz aplikację C# konsolową w celu przesłania zadania WORDCOUNT.  Zadanie odczytuje plik `/example/data/gutenberg/davinci.txt` i wyświetla wyniki do `/example/data/davinciwordcount`.  Jeśli chcesz ponownie uruchomić aplikację, musisz wyczyścić folder wyjściowy.
 
 > [!NOTE]  
-> Kroki opisane w tym artykule, należy wykonać w kliencie Windows. Instrukcje dotyczące używania systemu Linux, OS X lub klienta systemu Unix do pracy z programu Hive selektor karty wyświetlane w górnej części tego artykułu.
-> 
-> 
+> Kroki opisane w tym artykule należy wykonać z poziomu klienta systemu Windows. Aby uzyskać informacje na temat używania klienta z systemem Linux, OS X lub UNIX do pracy z usługą Hive, użyj selektora kart wyświetlanego w górnej części artykułu.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Przed przystąpieniem do wykonywania w tym artykule, musi mieć następujące elementy:
 
-* **Klaster Hadoop w HDInsight**. Zobacz [rozpoczęcie korzystania z opartą na systemie Linux Apache Hadoop w HDInsight](apache-hadoop-linux-tutorial-get-started.md).
-* **Visual Studio 2013/2015/2017**.
+* Klaster Apache Hadoop w usłudze HDInsight. Zobacz [Tworzenie klastrów Apache Hadoop przy użyciu Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md).
 
-## <a name="submit-mapreduce-jobs-using-hdinsight-net-sdk"></a>Przesyłanie zadań MapReduce, przy użyciu zestawu .NET SDK HDInsight
-Zestaw .NET SDK HDInsight zawiera biblioteki klienckie programu .NET, dzięki czemu łatwiej jest pracować z klastrami HDInsight za pomocą platformy .NET. 
+* Program [Visual Studio](https://visualstudio.microsoft.com/vs/community/).
 
-**Aby przesłać zadania**
+## <a name="submit-mapreduce-jobs-using-hdinsight-net-sdk"></a>Przesyłanie zadań MapReduce przy użyciu zestawu .NET SDK usługi HDInsight
 
-1. Tworzenie aplikacji konsolowej C# w programie Visual Studio.
-2. Z poziomu konsoli Menedżera pakietów NuGet uruchom następujące polecenie:
+Zestaw SDK platformy .NET dla usługi HDInsight zawiera biblioteki klienckie platformy .NET, które ułatwiają pracę z klastrami usługi HDInsight z poziomu platformy .NET.
+
+1. Uruchom program Visual Studio i Utwórz C# aplikację konsolową.
+
+1. Przejdź do **narzędzi** > **menedżer pakietów NuGet** > **konsola Menedżera pakietów** i wprowadź następujące polecenie:
 
     ```   
     Install-Package Microsoft.Azure.Management.HDInsight.Job
     ```
-3. Użyj następującego kodu:
+
+1. Skopiuj poniższy kod do **program.cs**. Następnie Edytuj kod, ustawiając wartości dla: `existingClusterName`, `existingClusterPassword`, `defaultStorageAccountName`, `defaultStorageAccountKey`i `defaultStorageContainerName`.
 
     ```csharp
     using System.Collections.Generic;
@@ -54,57 +54,56 @@ Zestaw .NET SDK HDInsight zawiera biblioteki klienckie programu .NET, dzięki cz
     using Hyak.Common;
     using Microsoft.WindowsAzure.Storage;
     using Microsoft.WindowsAzure.Storage.Blob;
-
+    
     namespace SubmitHDInsightJobDotNet
     {
         class Program
         {
             private static HDInsightJobManagementClient _hdiJobManagementClient;
-
+    
             private const string existingClusterName = "<Your HDInsight Cluster Name>";
-            private const string existingClusterUri = existingClusterName + ".azurehdinsight.net";
-            private const string existingClusterUsername = "<Cluster Username>";
             private const string existingClusterPassword = "<Cluster User Password>";
-
-            private const string defaultStorageAccountName = "<Default Storage Account Name>"; //<StorageAccountName>.blob.core.windows.net
+            private const string defaultStorageAccountName = "<Default Storage Account Name>"; 
             private const string defaultStorageAccountKey = "<Default Storage Account Key>";
             private const string defaultStorageContainerName = "<Default Blob Container Name>";
-
-            private const string sourceFile = "/example/data/gutenberg/davinci.txt";  
+    
+            private const string existingClusterUsername = "admin";
+            private const string existingClusterUri = existingClusterName + ".azurehdinsight.net";
+            private const string sourceFile = "/example/data/gutenberg/davinci.txt";
             private const string outputFolder = "/example/data/davinciwordcount";
-
+    
             static void Main(string[] args)
             {
                 System.Console.WriteLine("The application is running ...");
-
+    
                 var clusterCredentials = new BasicAuthenticationCloudCredentials { Username = existingClusterUsername, Password = existingClusterPassword };
                 _hdiJobManagementClient = new HDInsightJobManagementClient(existingClusterUri, clusterCredentials);
-
+    
                 SubmitMRJob();
-
+    
                 System.Console.WriteLine("Press ENTER to continue ...");
                 System.Console.ReadLine();
             }
-
+    
             private static void SubmitMRJob()
             {
                 List<string> args = new List<string> { { "/example/data/gutenberg/davinci.txt" }, { "/example/data/davinciwordcount" } };
-
+    
                 var paras = new MapReduceJobSubmissionParameters
                 {
                     JarFile = @"/example/jars/hadoop-mapreduce-examples.jar",
                     JarClass = "wordcount",
                     Arguments = args
                 };
-
+    
                 System.Console.WriteLine("Submitting the MR job to the cluster...");
                 var jobResponse = _hdiJobManagementClient.JobManagement.SubmitMapReduceJob(paras);
                 var jobId = jobResponse.JobSubmissionJsonResponse.Id;
                 System.Console.WriteLine("Response status code is " + jobResponse.StatusCode);
                 System.Console.WriteLine("JobId is " + jobId);
-
+    
                 System.Console.WriteLine("Waiting for the job completion ...");
-
+    
                 // Wait for job completion
                 var jobDetail = _hdiJobManagementClient.JobManagement.GetJob(jobId).JobDetail;
                 while (!jobDetail.Status.JobComplete)
@@ -112,7 +111,7 @@ Zestaw .NET SDK HDInsight zawiera biblioteki klienckie programu .NET, dzięki cz
                     Thread.Sleep(1000);
                     jobDetail = _hdiJobManagementClient.JobManagement.GetJob(jobId).JobDetail;
                 }
-
+    
                 // Get job output
                 System.Console.WriteLine("Job output is: ");
                 var storageAccess = new AzureStorageAccess(defaultStorageAccountName, defaultStorageAccountKey,
@@ -121,8 +120,8 @@ Zestaw .NET SDK HDInsight zawiera biblioteki klienckie programu .NET, dzięki cz
                 if (jobDetail.ExitValue == 0)
                 {
                     // Create the storage account object
-                    CloudStorageAccount storageAccount = CloudStorageAccount.Parse("DefaultEndpointsProtocol=https;AccountName=" + 
-                        defaultStorageAccountName + 
+                    CloudStorageAccount storageAccount = CloudStorageAccount.Parse("DefaultEndpointsProtocol=https;AccountName=" +
+                        defaultStorageAccountName +
                         ";AccountKey=" + defaultStorageAccountKey);
     
                     // Create the blob client.
@@ -147,7 +146,7 @@ Zestaw .NET SDK HDInsight zawiera biblioteki klienckie programu .NET, dzięki cz
                 else
                 {
                     // fetch stderr output in case of failure
-                    var output = _hdiJobManagementClient.JobManagement.GetJobErrorLogs(jobId, storageAccess); 
+                    var output = _hdiJobManagementClient.JobManagement.GetJobErrorLogs(jobId, storageAccess);
     
                     using (var reader = new StreamReader(output, Encoding.UTF8))
                     {
@@ -159,20 +158,21 @@ Zestaw .NET SDK HDInsight zawiera biblioteki klienckie programu .NET, dzięki cz
             }
         }
     }
+
     ```
 
-4. Naciśnij klawisz **F5**, aby uruchomić aplikację.
+1. Naciśnij klawisz **F5**, aby uruchomić aplikację.
 
-Aby ponownie uruchomić zadanie, należy zmienić nazwę folderu danych wyjściowych zadania, w tym przykładzie jest "/ przykład/data/davinciwordcount".
+Aby ponownie uruchomić zadanie, należy zmienić nazwę folderu danych wyjściowych zadania w przykładowej `/example/data/davinciwordcount`.
 
-Jeśli zadanie zostało ukończone pomyślnie, aplikacja wyświetla zawartość pliku wyjściowego "część r-00000".
+Po pomyślnym zakończeniu zadania aplikacja drukuje zawartość pliku wyjściowego `part-r-00000`.
 
-## <a name="next-steps"></a>Kolejne kroki
-W tym artykule mają przedstawiono kilka sposobów, aby utworzyć klaster usługi HDInsight. Aby dowiedzieć się więcej, zobacz następujące artykuły:
+## <a name="next-steps"></a>Następne kroki
 
-* Aby przesyłanie zadania Hive, zobacz [uruchamianie Apache zapytań Hive przy użyciu zestawu .NET SDK HDInsight](apache-hadoop-use-hive-dotnet-sdk.md).
-* W celu tworzenia klastrów HDInsight, zobacz [klastrów opartych na systemie Linux z tworzenia Apache Hadoop w HDInsight](../hdinsight-hadoop-provision-linux-clusters.md).
-* Aby zarządzać klastrami HDInsight, zobacz [klastrów zarządzania Apache Hadoop w HDInsight](../hdinsight-administer-use-portal-linux.md).
-* Do nauki zestawu .NET SDK HDInsight, zobacz [dokumentacji zestawu .NET SDK HDInsight](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight).
-* Dla nieinterakcyjnych uwierzytelniania na platformie Azure, zobacz [tworzenie aplikacji HDInsight platformy .NET z uwierzytelnianiem nieinterakcyjnym](../hdinsight-create-non-interactive-authentication-dotnet-applications.md).
+W tym artykule przedstawiono kilka sposobów tworzenia klastra usługi HDInsight. Aby dowiedzieć się więcej, zobacz następujące artykuły:
 
+* Aby przesłać zadanie programu Hive, zobacz [uruchamianie Apache Hive zapytań przy użyciu zestawu .NET SDK usługi HDInsight](apache-hadoop-use-hive-dotnet-sdk.md).
+* Aby utworzyć klastry usługi HDInsight, zobacz [Tworzenie klastrów Apache Hadoop opartych na systemie Linux w usłudze HDInsight](../hdinsight-hadoop-provision-linux-clusters.md).
+* Aby zarządzać klastrami usługi HDInsight, zobacz [Zarządzanie klastrami Apache Hadoop w usłudze HDInsight](../hdinsight-administer-use-portal-linux.md).
+* Aby uzyskać informacje na temat usługi HDInsight SDK dla platformy .NET, zobacz [Dokumentacja zestawu SDK usługi HDInsight dla platformy .NET](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight).
+* W przypadku nieinterakcyjnego uwierzytelniania na platformie Azure zobacz [Tworzenie aplikacji nieinterakcyjnego uwierzytelniania .NET HDInsight](../hdinsight-create-non-interactive-authentication-dotnet-applications.md).
