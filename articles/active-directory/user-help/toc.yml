@@ -2,44 +2,36 @@
   href: index.yml
 - name: Pomoc dotycząca weryfikacji dwuetapowej
   items:
-    - name: Omówienie
-      href: user-help-two-step-verification-overview.md
-    - name: Konfigurowanie metod weryfikacji dwuskładnikowej
-      items:
-        - name: Omówienie
-          href: multi-factor-authentication-end-user-first-time.md
-        - name: Konfigurowanie aplikacji Authenticator
-          href: multi-factor-authentication-setup-auth-app.md
-        - name: Konfigurowanie urządzenia przenośnego
-          href: multi-factor-authentication-setup-phone-number.md
-        - name: Konfigurowanie telefonu biurowego
-          href: multi-factor-authentication-setup-office-phone.md
+    - name: Co to jest strona Dodatkowa weryfikacja?
+      href: multi-factor-authentication-end-user-first-time.md
+    - name: Konfigurowanie aplikacji Authenticator
+      href: multi-factor-authentication-setup-auth-app.md
+    - name: Konfigurowanie urządzenia przenośnego
+      href: multi-factor-authentication-setup-phone-number.md
+    - name: Konfigurowanie telefonu biurowego
+      href: multi-factor-authentication-setup-office-phone.md
     - name: Zarządzanie ustawieniami
       href: multi-factor-authentication-end-user-manage-settings.md
-    - name: Uzyskiwanie pomocy
-      href: multi-factor-authentication-end-user-troubleshoot.md
     - name: Zarządzanie hasłami aplikacji
       href: multi-factor-authentication-end-user-app-passwords.md
     - name: Jak się zalogować
       href: user-help-sign-in.md?toc=./toc.json
+    - name: Uzyskiwanie pomocy
+      href: multi-factor-authentication-end-user-troubleshoot.md
 - name: Pomoc dotycząca resetowania hasła
   items:
-    - name: Omówienie
-      href: user-help-password-reset-overview.md
     - name: Rejestrowanie się w celu zresetowania hasła
       href: active-directory-passwords-reset-register.md
     - name: Resetowanie hasła
       href: active-directory-passwords-update-your-own-password.md
 - name: Pomoc dotycząca aplikacji Microsoft Authenticator
   items:
-    - name: Omówienie
+    - name: Czym jest aplikacja Microsoft Authenticator?
       href: user-help-auth-app-overview.md
     - name: Pobieranie i instalowanie aplikacji
       href: user-help-auth-app-download-install.md
     - name: Dodawanie kont
       items:
-        - name: Omówienie
-          href: user-help-auth-app-add-account-overview.md
         - name: Dodawanie konta służbowego
           href: user-help-auth-app-add-work-school-account.md
         - name: Dodawanie osobistego konta Microsoft
@@ -56,10 +48,10 @@
       href: user-help-auth-app-faq.md
 - name: Pomoc dotycząca portalu Moje konto
   items:
-    - name: Omówienie
+    - name: Co to jest portal Moje konto?
       href: my-account-portal-overview.md
     - name: Zarządzanie informacjami zabezpieczającymi
-      href: user-help-security-info-overview.md
+      href: security-info-setup-signin.md
     - name: Zarządzanie swoimi połączonymi urządzeniami
       href: my-account-portal-devices-page.md
     - name: Zmienianie hasła
@@ -72,14 +64,10 @@
       href: my-account-portal-sign-ins-page.md
 - name: Pomoc dotycząca informacji zabezpieczających (wersja zapoznawcza)
   items:
-    - name: Omówienie
-      href: user-help-security-info-overview.md
     - name: Dodawanie informacji zabezpieczających podczas logowania
       href: security-info-setup-signin.md
     - name: Metody dodawania lub aktualizowania informacji zabezpieczających
       items:
-        - name: Omówienie
-          href: security-info-add-update-methods-overview.md
         - name: Konfigurowanie aplikacji Authenticator
           href: security-info-setup-auth-app.md
         - name: Konfigurowanie wiadomości SMS
@@ -98,8 +86,6 @@
       href: user-help-sign-in.md?toc=./toc.json
 - name: Pomoc dotycząca zarządzania urządzeniami
   items:
-    - name: Omówienie
-      href: user-help-device-mgmt-overview.md
     - name: Dołączanie urządzenia służbowego
       href: user-help-join-device-on-network.md
     - name: Rejestrowanie urządzenia osobistego do pracy
@@ -108,8 +94,6 @@
       href: user-help-device-remediation.md
 - name: Pomoc dotycząca portalu Moje aplikacje
   items:
-    - name: Omówienie
-      href: my-apps-portal-end-user-overview.md
     - name: Uzyskiwanie dostępu do portalu Moje aplikacje i korzystanie z niego
       href: my-apps-portal-end-user-access.md
     - name: Aktualizowanie informacji o profilu i koncie
@@ -122,8 +106,6 @@
       href: my-apps-portal-end-user-troubleshoot.md
 - name: Pomoc do portalu Moje aplikacje (wersja zapoznawcza)
   items:
-    - name: Omówienie
-      href: my-applications-portal-overview.md
     - name: Uzyskiwanie dostępu do portalu Moje aplikacje i korzystanie z niego
       href: my-applications-portal-access.md
     - name: Dostęp do obszarów roboczych i korzystanie z nich

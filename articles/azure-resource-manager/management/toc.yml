@@ -8,6 +8,8 @@
   items:
     - name: Limity usług i subskrypcji
       href: azure-subscription-service-limits.md
+    - name: Reguły nazw zasobów
+      href: resource-name-rules.md
     - name: Wdrażanie za pomocą usługi Resource Manager i klasyczne
       href: deployment-models.md
     - name: Wspólne atrybuty zabezpieczeń platformy Azure

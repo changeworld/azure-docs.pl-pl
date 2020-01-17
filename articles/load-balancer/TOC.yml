@@ -50,6 +50,8 @@
       href: powershell-samples.md
 - name: Pojęcia
   items:
+    - name: Składniki i ograniczenia
+      href: concepts-limitations.md
     - name: Monitorowanie kondycji
       items:
         - name: Sondy kondycji

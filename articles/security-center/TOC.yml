@@ -29,6 +29,10 @@
       href: security-center-compliance-dashboard.md
 - name: Pojęcia
   items:
+    - name: Wskaźnik bezpieczeństwa w usłudze Security Center
+      href: security-center-secure-score.md
+    - name: Ulepszony wskaźnik bezpieczeństwa
+      href: secure-score-security-controls.md
     - name: Uprawnienia
       href: security-center-permissions.md
     - name: Bezpieczeństwo danych
@@ -73,8 +77,6 @@
           href: security-center-alert-validation.md
 - name: Przewodniki z instrukcjami
   items:
-    - name: Poprawianie oceny bezpieczeństwa
-      href: security-center-secure-score.md
     - name: Przechodzenie na zabezpieczenia zaawansowane
       href: security-center-onboarding.md
     - name: Skanowanie maszyn wirtualnych pod kątem luk w zabezpieczeniach

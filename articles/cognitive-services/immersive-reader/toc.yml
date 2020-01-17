@@ -17,6 +17,8 @@
   items:
     - name: Uruchamianie czytnika immersyjnego (Python)
       href: tutorial-python.md
+    - name: Korzystanie z wielu zasobów czytnika immersyjnego
+      href: tutorial-multiple-resources.md
 - name: Instrukcje
   items:
     - name: Tworzenie zasobu czytnika immersyjnego

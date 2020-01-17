@@ -8,7 +8,7 @@ metadata:
   author: ekpgh
   ms.service: avere-vfxt
   ms.topic: landing-page
-  ms.date: 10/09/2019
+  ms.date: 12/19/2019
   ms.author: rohogue
 abstract:
   description: "System Avere vFXT for Azure zapewnia warstwę pamięci podręcznej opartej na chmurze dla zadań obliczeń o wysokiej wydajności (HPC) intensywnie korzystających z danych. System Avere vFXT umożliwia buforowanie plików blisko węzłów obliczeniowych, co pozwala skrócić czas odczytu i pracować sprawniej nawet przy szczytowym obciążeniu. System Avere vFXT działa najlepiej z systemami obejmującymi od 1000 do 40\_000 rdzeni klientów. <p>System Avere vFXT współdziała z istniejącym magazynem danych, aby pliki były blisko zasobów obliczeniowych opartych na platformie Azure. Aktywne pliki są nadal przechowywane długoterminowo w centrum danych."
