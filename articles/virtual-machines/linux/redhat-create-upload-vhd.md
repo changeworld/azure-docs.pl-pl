@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 05/17/2019
 ms.author: mimckitt
-ms.openlocfilehash: 6adb800b0c56866aa76f98fc078fdc3d8f1ffbff
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 75b06145ce5328f02cf384753745ef4866c63c64
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75941439"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76155404"
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure"></a>Przygotowywanie maszyny wirtualnej systemu Red Hat dla platformy Azure
 W tym artykule dowiesz się, jak przygotować maszynę wirtualną Red Hat Enterprise Linux (RHEL) do użycia na platformie Azure. Wersje RHEL omówione w tym artykule to 6.7 + i 7.1 +. Funkcja hypervisor dla przygotowania, która jest omówiona w tym artykule, to funkcja Hyper-V, maszyna wirtualna oparta na jądrze (KVM) i oprogramowanie VMware. Aby uzyskać więcej informacji na temat wymagań dotyczących uprawnień dla uczestnictwa w programie w ramach programu dostępu do chmury Red Hat, zobacz [witrynę sieci Web dostępu do chmury w systemie Red Hat](https://www.redhat.com/en/technologies/cloud-computing/cloud-access) i [RHEL na platformie Azure](https://access.redhat.com/ecosystem/ccsp/microsoft-azure). Aby poznać sposoby automatyzowania tworzenia obrazów RHEL, zobacz [Azure Image Builder](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-overview).
@@ -32,7 +32,7 @@ W tej sekcji założono, że plik ISO został już pobrany z witryny sieci Web f
 **RHEL uwagi dotyczące instalacji**
 
 * Platforma Azure nie obsługuje formatu VHDX. Platforma Azure obsługuje tylko stały dysk VHD. Można użyć Menedżera funkcji Hyper-V do przekonwertowania dysku na format VHD lub można użyć polecenia cmdlet Convert-VHD. Jeśli używasz VirtualBox, wybierz **ustalony rozmiar** w przeciwieństwie do domyślnej opcji przydzielanej dynamicznie podczas tworzenia dysku.
-* Platforma Azure obsługuje tylko maszyny wirtualne generacji 1. Maszynę wirtualną 1. generacji można przekonwertować z formatu VHDX na format pliku VHD i dynamicznie powiększający się na dysk o stałym rozmiarze. Nie można zmienić generacji maszyny wirtualnej. Aby uzyskać więcej informacji, zobacz [jak utworzyć maszynę wirtualną generacji 1 lub 2 w funkcji Hyper-V?](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v).
+* Platforma Azure obsługuje Gen1 (BIOS Boot) & Gen2 (UEFI boot) maszyn wirtualnych.
 * Maksymalny rozmiar dozwolony dla wirtualnego dysku twardego to 1 023 GB.
 * Menedżer woluminów logicznych (LVM) jest obsługiwany i może być używany na dysku systemu operacyjnego lub dyskach z danymi w usłudze Azure Virtual Machines. Jednak ogólnie zaleca się używanie partycji standardowych na dysku systemu operacyjnego, a nie LVM. Ta metoda pozwala uniknąć konfliktów nazw LVM z sklonowanymi maszynami wirtualnymi, szczególnie jeśli kiedykolwiek konieczna jest dołączenie dysku systemu operacyjnego do innej identycznej maszyny wirtualnej w celu rozwiązywania problemów. Zobacz również dokumentację [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) i [macierz RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) .
 * Wymagana jest obsługa jądra na potrzeby instalowania systemów plików (UDF) w formacie dysków uniwersalnych. Podczas pierwszego rozruchu na platformie Azure nośnik sformatowany w formacie UDF, który jest dołączony do gościa, przekazuje konfigurację aprowizacji do maszyny wirtualnej z systemem Linux. Agent systemu Azure Linux musi być w stanie zainstalować system plików UDF, aby odczytać jego konfigurację i zainicjować obsługę administracyjną maszyny wirtualnej.

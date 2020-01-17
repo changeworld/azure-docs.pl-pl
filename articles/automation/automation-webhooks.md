@@ -3,14 +3,14 @@ title: Uruchamianie Azure Automation elementu Runbook za pomocą elementu webhoo
 description: Element webhook, który umożliwia klientowi uruchomienie elementu Runbook w Azure Automation z wywołania HTTP.  W tym artykule opisano sposób tworzenia elementu webhook oraz wywoływania go w celu uruchomienia elementu Runbook.
 services: automation
 ms.subservice: process-automation
-ms.date: 03/19/2019
+ms.date: 01/16/2020
 ms.topic: conceptual
-ms.openlocfilehash: fbf3a48d1e7cb3dd80b6c418d7c916184756b6fa
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f86193e818a91132f9bbca447acadd7e81747522
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75418970"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76155829"
 ---
 # <a name="starting-an-azure-automation-runbook-with-a-webhook"></a>Uruchamianie Azure Automation elementu Runbook za pomocą elementu webhook
 
@@ -126,7 +126,7 @@ Klient nie może określić momentu zakończenia zadania elementu Runbook lub je
 
 ## <a name="renew-webhook"></a>Odnawianie elementu webhook
 
-Po utworzeniu elementu webhook obowiązuje okres ważności wynoszący jeden rok. Po upływie tego czasu element webhook automatycznie wygaśnie. Po wygaśnięciu elementu webhook nie można go ponownie uaktywnić, musi zostać usunięty i utworzony ponownie. Jeśli element webhook nie osiągnął czasu wygaśnięcia, można go rozszerzyć.
+Po utworzeniu elementu webhook obowiązuje okres ważności wynoszący dziesięć lat. Po upływie tego czasu element webhook zostanie automatycznie wygaśnie. Po wygaśnięciu elementu webhook nie można go ponownie uaktywnić, musi zostać usunięty i utworzony ponownie. Jeśli element webhook nie osiągnął czasu wygaśnięcia, można go rozszerzyć.
 
 Aby rozwinąć element webhook, przejdź do elementu Runbook, który zawiera element webhook. Wybierz pozycję elementy **webhook** w obszarze **zasoby**. Kliknij element webhook, który chcesz zwiększyć, ta akcja spowoduje otwarcie strony **elementu webhook** .  Wybierz nową datę i godzinę wygaśnięcia, a następnie kliknij przycisk **Zapisz**.
 

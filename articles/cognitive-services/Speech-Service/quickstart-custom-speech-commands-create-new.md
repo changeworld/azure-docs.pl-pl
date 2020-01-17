@@ -3,19 +3,19 @@ title: 'Szybki Start: Tworzenie polecenia niestandardowego (wersja zapoznawcza) 
 titleSuffix: Azure Cognitive Services
 description: W tym artykule opisano tworzenie i testowanie aplikacji hostowanych poleceń niestandardowych.
 services: cognitive-services
-author: donkim
+author: don-d-kim
 manager: yetian
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: donkim
-ms.openlocfilehash: d8e28b88757fa7557b04ee471ede17012094bb9e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4ae8f13b4887bbc41b17defa3f9a20c07ed0cb45
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75446873"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76155591"
 ---
 # <a name="quickstart-create-a-custom-command-preview"></a>Szybki Start: Tworzenie polecenia niestandardowego (wersja zapoznawcza)
 
@@ -24,7 +24,7 @@ Aplikacja rozpozna wypowiedź, na przykład "Włącz telewizor" i odpowie przy u
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Subskrypcja mowy. 
+- Subskrypcja mowy.
 
 Jeśli nie masz subskrypcji mowy, możesz ją utworzyć, przechodząc do programu [Speech Studio](https://speech.microsoft.com/) i wybierając pozycję **Utwórz zasób mowy**.
 
@@ -73,7 +73,7 @@ Widok powinien teraz być przeglądem aplikacji poleceń niestandardowych.
 
 ## <a name="update-luis-resources-optional"></a>Aktualizowanie zasobów LUIS (opcjonalnie)
 
-Można zaktualizować zestaw zasobów tworzenie w oknie Nowy projekt i ustawić zasób predykcyjny używany do rozpoznawania danych wejściowych w czasie wykonywania. 
+Można zaktualizować zestaw zasobów tworzenie w oknie Nowy projekt i ustawić zasób predykcyjny używany do rozpoznawania danych wejściowych w czasie wykonywania.
 
 > [!NOTE]
 > Należy ustawić zasób predykcyjny, zanim aplikacja zażąda prognoz wykraczających poza żądania 1 000 dostarczone przez zasób tworzenia.

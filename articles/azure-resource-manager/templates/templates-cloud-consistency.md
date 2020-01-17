@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/09/2018
 ms.author: mavane
 ms.custom: seodec18
-ms.openlocfilehash: 7065d5e9cae9e0a06eab82bd982693a1ad1d8fba
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0c69c90410aab7fa37ab87e82314c53e4459ca25
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75483780"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76155659"
 ---
 # <a name="develop-azure-resource-manager-templates-for-cloud-consistency"></a>Tworzenie szablonów usługi Azure Resource Manager w celu zachowania spójności w chmurze
 
@@ -22,7 +22,7 @@ Najważniejszą korzyścią z platformy Azure jest spójność. Programowanie in
 Firma Microsoft oferuje usługi w chmurze inteligentną i w przedsiębiorstwach w wielu lokalizacjach, w tym:
 
 * Globalne platformy Azure, obsługiwana przez rozrastającą się sieć zarządzanych przez firmę Microsoft centrów danych w regionach na całym świecie.
-* Izolowane chmur suwerennych, takich jak Azure (Niemcy), Azure Government i Azure — Chiny (platforma Azure, obsługiwana przez firmę 21Vianet). Suwerenne chmury zapewnić spójną platformę z większością te same atrakcyjne funkcje, które globalnych klientów platformy Azure mają dostęp do.
+* Izolowane suwerenne chmury, takie jak Azure (Niemcy, Azure Government i Chiny). Suwerenne chmury zapewnić spójną platformę z większością te same atrakcyjne funkcje, które globalnych klientów platformy Azure mają dostęp do.
 * Usługi Azure Stack to platforma chmury hybrydowej, która umożliwia dostarczanie usług platformy Azure z centrum danych Twojej organizacji. Przedsiębiorstwa można skonfigurować usługi Azure Stack w centrach danych na ich własnych lub korzystanie z usług platformy Azure od dostawców usług, uruchamianie usługi Azure Stack w ich urządzenia (czasem nazywane obsługiwanych regionach).
 
 Sercem te chmury usługi Azure Resource Manager zapewnia interfejs API, który umożliwia szeroką gamę interfejsy użytkownika do komunikowania się z platformą Azure. Ten interfejs API zapewnia zaawansowane możliwości infrastruktury jako kodu. Dowolnego typu zasobu, który jest dostępny na platformie Azure w chmurze można wdrożyć i konfigurować za pomocą usługi Azure Resource Manager. Pojedynczy szablon można wdrożyć i skonfigurować pełną aplikacji do stanu końcowego operacyjnej.
@@ -47,9 +47,9 @@ Wprowadzenie do szablonów usługi Azure Resource Manager, zobacz [wdrożenie sz
 
 Podstawowa składnia szablonu usługi Resource Manager jest JSON. Szablony korzystać z nadzbioru JSON, rozszerzając składnię, używając wyrażeń i funkcji. Procesor języka szablonu jest często aktualizowana do obsługi funkcji dodatkowe szablony. Aby uzyskać szczegółowy opis funkcji dostępnych szablonów, zobacz [funkcje szablonu usługi Azure Resource Manager](template-functions.md).
 
-Nowe funkcje szablonu, które zostały wprowadzone do usługi Azure Resource Manager nie są natychmiast dostępne w chmurach suwerennych lub usługi Azure Stack. Aby pomyślnie wdrożyć szablon, wszystkie funkcje, do którego odwołuje się szablonu musi być dostępny w chmurę docelową. 
+Nowe funkcje szablonu, które zostały wprowadzone do usługi Azure Resource Manager nie są natychmiast dostępne w chmurach suwerennych lub usługi Azure Stack. Aby pomyślnie wdrożyć szablon, wszystkie funkcje, do którego odwołuje się szablonu musi być dostępny w chmurę docelową.
 
-Możliwości usługi Azure Resource Manager będzie zawsze wprowadzane do globalnej platformy Azure najpierw. Poniższy skrypt programu PowerShell służy do Sprawdź, czy nowo wprowadzonych template — funkcje są również dostępne w usłudze Azure Stack: 
+Możliwości usługi Azure Resource Manager będzie zawsze wprowadzane do globalnej platformy Azure najpierw. Poniższy skrypt programu PowerShell służy do Sprawdź, czy nowo wprowadzonych template — funkcje są również dostępne w usłudze Azure Stack:
 
 1. Wprowadzić klona repozytorium GitHub: [ https://github.com/marcvaneijk/arm-template-functions ](https://github.com/marcvaneijk/arm-template-functions).
 
@@ -69,7 +69,7 @@ Skrypt wdroży wiele szablonów, z których każdy zawiera tylko unikatowe templ
 
 ## <a name="working-with-linked-artifacts"></a>Praca z połączonych artefaktów
 
-Szablon może zawierać odwołania do połączonych artefaktów i zawiera zasobu wdrożenia, który stanowi łącze do innego szablonu. Połączone szablony (nazywane również zagnieżdżonych szablonów) są pobierane przez usługę Resource Manager w środowisku uruchomieniowym. Szablon może również zawierać odwołania do artefaktów dla rozszerzeń maszyny wirtualnej (VM). Te artefakty są pobierane przez rozszerzenie maszyny Wirtualnej działają w ramach maszyny Wirtualnej na potrzeby konfiguracji rozszerzenia maszyn wirtualnych podczas wdrażania szablonu. 
+Szablon może zawierać odwołania do połączonych artefaktów i zawiera zasobu wdrożenia, który stanowi łącze do innego szablonu. Połączone szablony (nazywane również zagnieżdżonych szablonów) są pobierane przez usługę Resource Manager w środowisku uruchomieniowym. Szablon może również zawierać odwołania do artefaktów dla rozszerzeń maszyny wirtualnej (VM). Te artefakty są pobierane przez rozszerzenie maszyny Wirtualnej działają w ramach maszyny Wirtualnej na potrzeby konfiguracji rozszerzenia maszyn wirtualnych podczas wdrażania szablonu.
 
 W poniższych sekcjach opisano zagadnienia dotyczące spójności chmury podczas tworzenia szablonów obejmujących artefaktów, które są zewnętrzne w stosunku do szablonu wdrożenia głównego.
 
@@ -82,9 +82,9 @@ Poniższy kod pokazuje, jak parametr templateLink odwołuje się do zagnieżdżo
 ```json
 "resources": [
   {
+     "type": "Microsoft.Resources/deployments",
      "apiVersion": "2017-05-10",
      "name": "linkedTemplate",
-     "type": "Microsoft.Resources/deployments",
      "properties": {
        "mode": "incremental",
        "templateLink": {
@@ -100,9 +100,9 @@ Usługa Azure Resource Manager ocenia głównego szablonu w czasie wykonywania i
 
 ### <a name="make-linked-templates-accessible-across-clouds"></a>Udostępnienie chmurach połączonymi szablonami
 
-Należy wziąć pod uwagę, gdzie i jak do przechowywania wszelkich połączone szablony, można użyć. W czasie wykonywania, usługi Azure Resource Manager pobiera — i dlatego wymaga bezpośredniego dostępu do — wszystkie połączone szablony. Powszechną praktyką jest usługa GitHub umożliwia przechowywanie zagnieżdżonych szablonów. Repozytorium GitHub może zawierać pliki, które są dostępne publicznie przy użyciu adresu URL. Mimo że ta technika działa dobrze w przypadku chmury publicznej i suwerennych chmur, środowiska Azure Stack może być umieszczona w sieci firmowej lub w odłączonej lokalizacji zdalnej, bez żadnych ruch wychodzący do Internetu. W takich przypadkach usługi Azure Resource Manager zakończy się niepowodzeniem, można pobrać zagnieżdżonych szablonów. 
+Należy wziąć pod uwagę, gdzie i jak do przechowywania wszelkich połączone szablony, można użyć. W czasie wykonywania, usługi Azure Resource Manager pobiera — i dlatego wymaga bezpośredniego dostępu do — wszystkie połączone szablony. Powszechną praktyką jest usługa GitHub umożliwia przechowywanie zagnieżdżonych szablonów. Repozytorium GitHub może zawierać pliki, które są dostępne publicznie przy użyciu adresu URL. Mimo że ta technika działa dobrze w przypadku chmury publicznej i suwerennych chmur, środowiska Azure Stack może być umieszczona w sieci firmowej lub w odłączonej lokalizacji zdalnej, bez żadnych ruch wychodzący do Internetu. W takich przypadkach usługi Azure Resource Manager zakończy się niepowodzeniem, można pobrać zagnieżdżonych szablonów.
 
-Lepsze rozwiązanie w przypadku wdrożeń w wielu chmur, jest połączone szablony są przechowywane w lokalizacji dostępnej dla docelowej chmury. W idealnym wszystkich artefaktów wdrożenia są obsługiwane w i wdrażanych za pomocą potoku ciągłej integracji/ciągłego rozwoju (CI/CD). Alternatywnie szablonów zagnieżdżonych można przechowywać w kontenera magazynu obiektów blob, w którym usługi Azure Resource Manager można je pobrać. 
+Lepsze rozwiązanie w przypadku wdrożeń w wielu chmur, jest połączone szablony są przechowywane w lokalizacji dostępnej dla docelowej chmury. W idealnym wszystkich artefaktów wdrożenia są obsługiwane w i wdrażanych za pomocą potoku ciągłej integracji/ciągłego rozwoju (CI/CD). Alternatywnie szablonów zagnieżdżonych można przechowywać w kontenera magazynu obiektów blob, w którym usługi Azure Resource Manager można je pobrać.
 
 Ponieważ magazynu obiektów blob na każdej z nich korzysta z innym punktem końcowym pełni kwalifikowaną nazwę domeny (FQDN), należy skonfigurować szablon z lokalizacji połączonymi szablonami z dwoma parametrami. Parametry mogą akceptować dane wejściowe użytkownika w czasie wdrażania. Szablony są zazwyczaj tworzone i współużytkowane przez wiele osób, dlatego najlepszym rozwiązaniem jest użycie standardowej nazwy dla tych parametrów. Konwencje nazewnictwa sprawić, że szablony bardziej wielokrotnego użytku różnych regionach, chmur i autora.
 
@@ -132,9 +132,9 @@ W szablonie, łącza są generowane, łącząc podstawowy identyfikator URI (z `
 ```json
 "resources": [
   {
-    "name": "shared",
     "type": "Microsoft.Resources/deployments",
     "apiVersion": "2015-01-01",
+    "name": "shared",
     "properties": {
       "mode": "Incremental",
       "templateLink": {
@@ -150,7 +150,7 @@ Za pomocą tej metody, wartość domyślna `_artifactsLocation` parametr jest u�
 
 ### <a name="use-_artifactslocation-instead-of-hardcoding-links"></a>Użyj _artifactsLocation zamiast hardcoding łącza
 
-Oprócz pełnienia dla zagnieżdżonych szablonów, adres URL w `_artifactsLocation` parametr jest używany jako podstawa dla wszystkich powiązanych artefaktów Szablon wdrożenia. Niektóre rozszerzenia maszyny Wirtualnej zawiera łącza do skryptu przechowywane poza szablonu. Aby zainstalować te rozszerzenia należy nie umieszczaj łącza. Na przykład rozszerzeń niestandardowych skryptów i programu PowerShell DSC może połączyć skryptu zewnętrznego w serwisie GitHub, jak pokazano: 
+Oprócz pełnienia dla zagnieżdżonych szablonów, adres URL w `_artifactsLocation` parametr jest używany jako podstawa dla wszystkich powiązanych artefaktów Szablon wdrożenia. Niektóre rozszerzenia maszyny Wirtualnej zawiera łącza do skryptu przechowywane poza szablonu. Aby zainstalować te rozszerzenia należy nie umieszczaj łącza. Na przykład rozszerzeń niestandardowych skryptów i programu PowerShell DSC może połączyć skryptu zewnętrznego w serwisie GitHub, jak pokazano:
 
 ```json
 "properties": {
@@ -215,7 +215,7 @@ Wiedząc, że regiony platformy Azure i chmury może różnić się w ich dostę
 
 Szablon wdraża i konfiguruje zasoby. Typ zasobu jest dostarczana przez dostawcę zasobów. Na przykład dostawcy zasobów obliczeniowych (Microsoft.Compute) zawiera wiele typów zasobów, takich jak maszyn wirtualnych i availabilitySets. Każdy dostawca zasobów udostępnia interfejs API do usługi Azure Resource Manager zdefiniowane przez typowe umowy, umożliwiając spójny, jednolity środowisko tworzenia we wszystkich dostawców zasobów. Jednak dostawca zasobów, który jest dostępny w global Azure może nie być dostępne w regionie usługi Azure Stack lub należących do suwerennej chmury.
 
-![Dostawcy zasobów](./media/templates-cloud-consistency/resource-providers.png) 
+![Dostawcy zasobów](./media/templates-cloud-consistency/resource-providers.png)
 
 Aby sprawdzić dostawców zasobów, które są dostępne w danej chmury, uruchom następujący skrypt w interfejsie wiersza polecenia platformy Azure ([interfejsu wiersza polecenia](/cli/azure/install-azure-cli)):
 
@@ -253,7 +253,7 @@ Szablon zawsze jest wdrażana w grupie zasobów, która znajduje się w regionie
 
 Mimo, że możesz zakodować nazwy regionów podczas określania właściwości zasobów w szablonie, to podejście nie gwarantuje, że szablonu można wdrożyć w innych środowiskach Azure Stack, ponieważ nazwa regionu najprawdopodobniej nie istnieje istnieje.
 
-Aby uwzględnić różnych regionach, należy dodać lokalizacją parametru wejściowego do szablonu z wartością domyślną. Jeśli nie określono wartości podczas wdrażania, zostanie użyta wartość domyślna. 
+Aby uwzględnić różnych regionach, należy dodać lokalizacją parametru wejściowego do szablonu z wartością domyślną. Jeśli nie określono wartości podczas wdrażania, zostanie użyta wartość domyślna.
 
 Funkcja szablonu `[resourceGroup()]` zwraca obiekt, który zawiera następujące pary klucz/wartość:
 
@@ -284,9 +284,9 @@ Odwołując się do klucza lokalizacji obiektu w defaultValue parametru wejścio
 },
 "resources": [
   {
-    "name": "storageaccount1",
     "type": "Microsoft.Storage/storageAccounts",
     "apiVersion": "2015-06-15",
+    "name": "storageaccount1",
     "location": "[parameters('location')]",
     ...
 ```
@@ -301,40 +301,40 @@ Z tego powodu usługi Resource Manager wprowadzono koncepcję profilami interfej
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "location": {
-            "type": "string",
-            "metadata": {
-                "description": "Location the resources will be deployed to."
-            },
-            "defaultValue": "[resourceGroup().location]"
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "location": {
+      "type": "string",
+      "metadata": {
+          "description": "Location the resources will be deployed to."
+      },
+      "defaultValue": "[resourceGroup().location]"
+    }
+  },
+  "variables": {},
+  "resources": [
+    {
+      "type": "Microsoft.Storage/storageAccounts",
+      "apiVersion": "2016-01-01",
+      "name": "mystorageaccount",
+      "location": "[parameters('location')]",
+      "properties": {
+        "accountType": "Standard_LRS"
+      }
     },
-    "variables": {},
-    "resources": [
-        {
-            "name": "mystorageaccount",
-            "type": "Microsoft.Storage/storageAccounts",
-            "apiVersion": "2016-01-01",
-            "location": "[parameters('location')]",
-            "properties": {
-                "accountType": "Standard_LRS"
-            }
-        },
-        {
-            "name": "myavailabilityset",
-            "type": "Microsoft.Compute/availabilitySets",
-            "apiVersion": "2016-03-30",
-            "location": "[parameters('location')]",
-            "properties": {
-                "platformFaultDomainCount": 2,
-                "platformUpdateDomainCount": 2
-            }
-        }
-    ],
-    "outputs": {}
+    {
+      "type": "Microsoft.Compute/availabilitySets",
+      "apiVersion": "2016-03-30",
+      "name": "myavailabilityset",
+      "location": "[parameters('location')]",
+      "properties": {
+        "platformFaultDomainCount": 2,
+        "platformUpdateDomainCount": 2
+      }
+    }
+  ],
+  "outputs": {}
 }
 ```
 
@@ -357,16 +357,16 @@ Wersja profilu interfejsu API działa jako alias dla jednej wersji interfejsu AP
     "variables": {},
     "resources": [
         {
-            "name": "mystorageaccount",
             "type": "Microsoft.Storage/storageAccounts",
+            "name": "mystorageaccount",
             "location": "[parameters('location')]",
             "properties": {
                 "accountType": "Standard_LRS"
             }
         },
         {
-            "name": "myavailabilityset",
             "type": "Microsoft.Compute/availabilitySets",
+            "name": "myavailabilityset",
             "location": "[parameters('location')]",
             "properties": {
                 "platformFaultDomainCount": 2,
@@ -399,17 +399,17 @@ Profil interfejsu API, który nie jest wymagany element w szablonie. Nawet jeśl
     "variables": {},
     "resources": [
         {
-            "name": "mystorageaccount",
             "type": "Microsoft.Storage/storageAccounts",
             "apiVersion": "2016-01-01",
+            "name": "mystorageaccount",
             "location": "[parameters('location')]",
             "properties": {
                 "accountType": "Standard_LRS"
             }
         },
         {
-            "name": "myavailabilityset",
             "type": "Microsoft.Compute/availabilitySets",
+            "name": "myavailabilityset",
             "location": "[parameters('location')]",
             "properties": {
                 "platformFaultDomainCount": 2,
@@ -423,7 +423,7 @@ Profil interfejsu API, który nie jest wymagany element w szablonie. Nawet jeśl
 
 ## <a name="check-endpoint-references"></a>Sprawdź odwołania do punktu końcowego
 
-Zasoby mogą mieć odwołania do innych usług na platformie. Na przykład publiczny adres IP może mieć publicznej nazwy DNS do niej przypisany. Chmura publiczna, suwerenne chmury i rozwiązań usługi Azure Stack mają własne przestrzenie nazw unikatowych punktu końcowego. W większości przypadków zasobu wymaga tylko prefiks jako dane wejściowe w szablonie. Podczas wykonywania usługi Azure Resource Manager dołącza wartość punktu końcowego do niego. Niektóre wartości punktu końcowego muszą być jawnie określone w szablonie. 
+Zasoby mogą mieć odwołania do innych usług na platformie. Na przykład publiczny adres IP może mieć publicznej nazwy DNS do niej przypisany. Chmura publiczna, suwerenne chmury i rozwiązań usługi Azure Stack mają własne przestrzenie nazw unikatowych punktu końcowego. W większości przypadków zasobu wymaga tylko prefiks jako dane wejściowe w szablonie. Podczas wykonywania usługi Azure Resource Manager dołącza wartość punktu końcowego do niego. Niektóre wartości punktu końcowego muszą być jawnie określone w szablonie.
 
 > [!NOTE]
 > Tworzenie szablonów w celu zachowania spójności w chmurze, nie umieszczaj punktu końcowego w przestrzeni nazw.
@@ -444,7 +444,7 @@ Punkt końcowy w przestrzeni nazw można również w danych wyjściowych szablon
 Ogólnie rzecz biorąc Unikaj endpoints zapisane na stałe w szablonie. Najlepszym rozwiązaniem jest używanie funkcji szablonu odwołania do dynamicznego pobierania punktów końcowych. Na przykład punkt końcowy najczęściej zapisane na stałe jest przestrzenią nazw punktu końcowego dla kont magazynu. Każde konto magazynu ma unikatową nazwę FQDN, który jest konstruowany, łącząc nazwę konta magazynu z przestrzenią nazw punktu końcowego. Konto magazynu obiektów blob o nazwie mystorageaccount1 wyników w różne nazwy FQDN, w zależności od tego, w chmurze:
 
 * **mystorageaccount1.blob.Core.Windows.NET** podczas tworzenia w chmurze Azure, globalne.
-* **mystorageaccount1.blob.Core.chinacloudapi.CN** podczas tworzenia w chmurze Azure (Chiny).
+* **mystorageaccount1.blob.Core.chinacloudapi.CN** utworzone w chmurze 21Vianet platformy Azure w Chinach.
 
 Następujące odwołanie do funkcji szablonu pobiera przestrzeń nazw punktu końcowego z dostawcę zasobów magazynowych:
 
@@ -456,7 +456,7 @@ Przez zastąpienie wartości zapisane na stałe punktu końcowego konta magazynu
 
 ### <a name="refer-to-existing-resources-by-unique-id"></a>Zapoznaj się z istniejącymi zasobami przez unikatowy identyfikator
 
-Można się również odwoływać do istniejącego zasobu z tego samego lub innego zasobu, grupy i w ramach tej samej subskrypcji lub innej subskrypcji w ramach tej samej dzierżawy w tej samej chmurze. Aby pobrać właściwości zasobu, należy użyć Unikatowy identyfikator dla samego zasobu. `resourceId` Funkcji szablonu pobiera unikatowy identyfikator zasobów takich jak SQL Server, co ilustruje poniższy kod: 
+Można się również odwoływać do istniejącego zasobu z tego samego lub innego zasobu, grupy i w ramach tej samej subskrypcji lub innej subskrypcji w ramach tej samej dzierżawy w tej samej chmurze. Aby pobrać właściwości zasobu, należy użyć Unikatowy identyfikator dla samego zasobu. `resourceId` Funkcji szablonu pobiera unikatowy identyfikator zasobów takich jak SQL Server, co ilustruje poniższy kod:
 
 ```json
 "outputs": {
@@ -602,8 +602,8 @@ Ponieważ rozszerzenia maszyn wirtualnych są zasobami usługi Resource Manager 
 
 ```json
 {
-    "apiVersion": "2015-06-15",
     "type": "Microsoft.Compute/virtualMachines/extensions",
+    "apiVersion": "2015-06-15",
     "name": "myExtension",
     "location": "[parameters('location')]",
     ...
@@ -627,9 +627,9 @@ Każde rozszerzenie określonych jest także numerów wersji. Ta wersja jest wy�
 
 ```json
 {
-    "name": "MyCustomScriptExtension",
     "type": "extensions",
     "apiVersion": "2016-03-30",
+    "name": "MyCustomScriptExtension",
     "location": "[parameters('location')]",
     "dependsOn": [
         "[concat('Microsoft.Compute/virtualMachines/myVM', copyindex())]"
@@ -638,7 +638,7 @@ Każde rozszerzenie określonych jest także numerów wersji. Ta wersja jest wy�
         "publisher": "Microsoft.Compute",
         "type": "CustomScriptExtension",
         "typeHandlerVersion": "1.7",
-        ...   
+        ...
 ```
 
 Aby pobrać listę dostępnych wersji dla określonego rozszerzenia maszyny Wirtualnej, użyj [Get AzureRmVMExtensionImage](/powershell/module/az.compute/get-azvmextensionimage) polecenia cmdlet. Poniższy przykład pobiera dostępnych wersji dla rozszerzenia maszyny Wirtualnej w programie PowerShell DSC (Desired State Configuration) z **myLocation**:
@@ -655,12 +655,12 @@ To żądanie, aby śledzić wszystkie powiązane ustawienia, możliwości i ogra
 
 Na poniższej ilustracji przedstawiono typowy przykład procesu projektowania dla zespołu za pomocą zintegrowanym środowisku programistycznym (IDE). Na różnych etapach na osi czasu testu różne typy są wykonywane. W tym miejscu dwóch deweloperów pracuje na tym samym rozwiązaniu, ale w tym scenariuszu, stosuje się jednakowo do jednego dewelopera lub duży zespół. Każdy deweloper zazwyczaj tworzy kopię lokalną repozytorium centralnym, włączania każdej z nich do pracy nad lokalną kopię bez wywierania wpływu na pozostałe kto pracuje tych samych plików.
 
-![Przepływ pracy](./media/templates-cloud-consistency/workflow.png) 
+![Przepływ pracy](./media/templates-cloud-consistency/workflow.png)
 
 Należy wziąć pod uwagę na poniższe porady dotyczące testowania i automatyzacji:
 
 * Wprowadzić korzystanie z narzędzia do testowania. Na przykład programu Visual Studio Code i Visual Studio obejmują funkcję IntelliSense i inne funkcje, które mogą pomóc Ci sprawdzanie poprawności szablonów.
-* Aby poprawić jakość kodu podczas programowania w lokalnym środowisku IDE, należy wykonać statycznej analizy kodu za pomocą testów jednostkowych i testów integracji. 
+* Aby poprawić jakość kodu podczas programowania w lokalnym środowisku IDE, należy wykonać statycznej analizy kodu za pomocą testów jednostkowych i testów integracji.
 * Jeszcze lepsze środowisko pracy podczas tworzenia początkowej, testy jednostkowe i testy integracji tylko ostrzega, gdy problem zostanie znaleziony i kontynuować wykonywanie testów. W ten sposób można zidentyfikować problemy, które zostały rozwiązane i ustalić ich priorytety kolejność zmiany, zwaną także wdrożenia oparte na testach (TDD).
 * Należy pamiętać, że niektóre testy mogą być wykonywane bez połączenia do usługi Azure Resource Manager. Inne, takie jak testowanie wdrożenia szablonu wymagają usługi Resource Manager do wykonywania pewnych działań, które nie mogą być wykonywane w trybie offline.
 * Testowanie Szablon wdrożenia względem walidacji interfejsu API nie jest równa rzeczywiste wdrożenie. Ponadto nawet wtedy, gdy należy wdrożyć szablon z pliku lokalnego, wszelkie odwołania do szablonów zagnieżdżonych w szablonie są pobierane przez usługę Resource Manager bezpośrednio i artefakty przywoływane przez rozszerzenia maszyny Wirtualnej są pobierane przez agenta maszyny Wirtualnej uruchomionej w wdrożonej maszyny Wirtualnej.

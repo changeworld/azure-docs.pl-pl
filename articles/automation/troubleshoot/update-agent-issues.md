@@ -4,17 +4,17 @@ description: Dowiedz się, jak rozwiązywać problemy z Azure Automation hybrydo
 services: automation
 author: mgoedtel
 ms.author: magoedte
-ms.date: 12/03/2019
+ms.date: 01/16/2020
 ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: bfc2c4a660afa4341a676fc79ab447c8cb86d5e1
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: ec35d11eba59ea21947e2c3cd5286bababa4eabb
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769816"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76153858"
 ---
 # <a name="understand-and-resolve-windows-hybrid-runbook-worker-health-in-update-management"></a>Poznaj i rozwiązuj kondycję hybrydowego procesu roboczego elementu Runbook systemu Windows w Update Management
 
@@ -54,8 +54,7 @@ Sprawdzenie systemu operacyjnego weryfikuje, czy hybrydowy proces roboczy elemen
 
 |System operacyjny  |Uwagi  |
 |---------|---------|
-|Windows Server 2008 R2 RTM, Windows Server 2008 | Obsługuje tylko oceny aktualizacji.         |
-|Windows Server 2008 R2 z dodatkiem SP1 lub nowszym |Wymagany jest .NET Framework 4,6 lub nowszy. ([Pobierz .NET Framework](/dotnet/framework/install/guide-for-developers))<br/> Wymagany jest program Windows PowerShell 5,1.  ([Pobierz system Windows Management Framework 5,1](https://www.microsoft.com/download/details.aspx?id=54616))        |
+|System Windows Server 2012 lub nowszy |Wymagany jest .NET Framework 4,6 lub nowszy. ([Pobierz .NET Framework](/dotnet/framework/install/guide-for-developers))<br/> Wymagany jest program Windows PowerShell 5,1.  ([Pobierz system Windows Management Framework 5,1](https://www.microsoft.com/download/details.aspx?id=54616))        |
 
 ### <a name="net-462"></a>4\.6.2 .NET
 
@@ -116,7 +115,7 @@ RuleId                      : OperatingSystemCheck
 RuleGroupId                 : prerequisites
 RuleName                    : Operating System
 RuleGroupName               : Prerequisite Checks
-RuleDescription             : The Windows Operating system must be version 6.1.7601 (Windows Server 2008 R2 SP1) or higher
+RuleDescription             : The Windows Operating system must be version 6.2.9200 (Windows Server 2012) or higher
 CheckResult                 : Passed
 CheckResultMessage          : Operating System version is supported
 CheckResultMessageId        : OperatingSystemCheck.Passed

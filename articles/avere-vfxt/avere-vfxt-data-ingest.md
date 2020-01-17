@@ -4,20 +4,20 @@ description: Jak dodać dane do nowego woluminu magazynu do użycia z avere vFXT
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 11/21/2019
+ms.date: 12/16/2019
 ms.author: rohogue
-ms.openlocfilehash: 183ed719eb5396fe0e442e6b774d962d1ba48386
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: c2a38b20fff789faf370e3161a92a31ed5f04c57
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74480596"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76153722"
 ---
 # <a name="moving-data-to-the-vfxt-cluster---parallel-data-ingest"></a>Przeniesienie danych do klastra vFXT — pozyskiwanie danych równoległych
 
-Po utworzeniu nowego klastra vFXT pierwsze zadanie może polegać na przeniesieniu danych do nowego woluminu magazynu. Jeśli jednak zwykła Metoda przeniesienia danych jest wydawana proste polecenie kopiowania z jednego klienta, prawdopodobnie zostanie wyświetlona powolna wydajność kopiowania. Kopiowanie jednowątkowe nie jest dobrym rozwiązaniem w przypadku kopiowania danych do magazynu zaplecza avere vFXT klastra.
+Po utworzeniu nowego klastra vFXT pierwsze zadanie może być przeniesienie danych na nowy wolumin magazynu na platformie Azure. Jeśli jednak zwykła Metoda przeniesienia danych jest wydawana proste polecenie kopiowania z jednego klienta, prawdopodobnie zostanie wyświetlona powolna wydajność kopiowania. Kopiowanie jednowątkowe nie jest dobrą opcją do kopiowania danych do magazynu zaplecza avere vFXT klastra.
 
-Ponieważ klaster avere vFXT to skalowalna pamięć podręczna z wieloma klientami, najszybszą i najbardziej wydajną metodą kopiowania danych do niej jest wiele klientów. Ta technika parallelizes pozyskiwanie plików i obiektów.
+Ponieważ avere vFXT for Azure Cluster to skalowalna pamięć podręczna z wieloma klientami, najszybszą i najbardziej wydajną metodą kopiowania danych do niej jest wiele klientów. Ta technika parallelizes pozyskiwanie plików i obiektów.
 
 ![Diagram przedstawiający wiele klientów, przenoszenie danych wielowątkowych: w lewym górnym rogu ikona lokalnego magazynu sprzętu ma wiele strzałek. Strzałki wskazują cztery komputery klienckie. Z każdego komputera klienckiego trzy strzałki wskazują na avere vFXT. Z avere vFXT, wiele strzałek wskazuje na usługi BLOB Storage.](media/avere-vfxt-parallel-ingest.png)
 
@@ -44,12 +44,12 @@ Maszyna wirtualna pozyskiwania danych jest częścią samouczka, w którym nowo 
 
 ## <a name="strategic-planning"></a>Planowanie strategiczne
 
-Podczas kompilowania strategii w celu równoległego kopiowania danych należy zrozumieć wady dotyczące wielkości plików, liczby plików i głębokości katalogów.
+Podczas projektowania strategii w celu równoległego kopiowania danych należy zrozumieć wady dotyczące wielkości plików, liczby plików i głębokości katalogów.
 
 * Gdy pliki są małe, Metryka jest równa plików na sekundę.
 * Gdy pliki są duże (10MiBi lub większe), Metryka jest równa bajty na sekundę.
 
-Każdy proces kopiowania ma stawkę przepływności i szybkość transferu plików, która może być mierzona przez chronometraż czasu polecenia kopiowania i współczynnik rozmiaru pliku i liczby plików. Wyjaśnienie, jak zmierzyć stawki, wykracza poza zakres tego dokumentu, ale jest to konieczne, aby zrozumieć, czy będziesz mieć do czynienia z małymi lub dużymi plikami.
+Każdy proces kopiowania ma stawkę przepływności i szybkość transferu plików, która może być mierzona przez chronometraż czasu polecenia kopiowania i współczynnik rozmiaru pliku i liczby plików. Wyjaśnienie, jak zmierzyć stawki, wykracza poza zakres tego dokumentu, ale ważne jest, aby zrozumieć, czy będziesz mieć do czynienia z małymi lub dużymi plikami.
 
 ## <a name="manual-copy-example"></a>Przykład kopiowania ręcznego
 
@@ -278,7 +278,7 @@ Ta metoda to prosta i bezterminowa Metoda dla zestawów danych do liczby plików
 
 ## <a name="use-the-msrsync-utility"></a>Korzystanie z narzędzia msrsync
 
-Narzędzia ``msrsync`` można również użyć do przenoszenia danych do podstawowego pliku datazaplecza dla klastra avere. To narzędzie służy do optymalizowania użycia przepustowości przez uruchomienie wielu równoległych procesów ``rsync``. Jest on dostępny w witrynie GitHub w <https://github.com/jbd/msrsync>.
+Narzędzia ``msrsync`` można również użyć do przenoszenia danych do podstawowego pliku dla klastra avere. To narzędzie służy do optymalizowania użycia przepustowości przez uruchomienie wielu równoległych procesów ``rsync``. Jest on dostępny w witrynie GitHub w <https://github.com/jbd/msrsync>.
 
 ``msrsync`` dzieli Katalog źródłowy na oddzielne "zasobniki", a następnie uruchamia poszczególne procesy ``rsync`` w każdym przedziale.
 

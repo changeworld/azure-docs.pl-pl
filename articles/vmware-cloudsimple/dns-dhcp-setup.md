@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: ce2394805bfc302179da807c798445c30ce9daff
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: ef1266b783034cf18dc2b3ea4be5ebc01bc12c70
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69619549"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76121866"
 ---
 # <a name="set-up-dns-and-dhcp-applications-and-workloads-in-your-cloudsimple-private-cloud"></a>Konfigurowanie aplikacji DNS i DHCP oraz obciążeń w prywatnej chmurze CloudSimple
 
@@ -27,7 +27,7 @@ Aplikacje i obciążenia działające w środowisku chmury prywatnej wymagają r
 
 ## <a name="linux-based-dns-server-setup"></a>Konfiguracja serwera DNS z systemem Linux
 
-System Linux oferuje różne pakiety do konfigurowania serwerów DNS.  Oto przykładowa [Konfiguracja z DigitalOcean](https://www.digitalocean.com/community/tutorials/how-to-configure-bind-as-a-private-network-dns-server-on-centos-7) z instrukcjami dotyczącymi KONFIGUROWANIA serwera DNS bind "open source".
+System Linux oferuje różne pakiety do konfigurowania serwerów DNS.  Oto [Przykładowa konfiguracja z DigitalOcean](https://www.digitalocean.com/community/tutorials/how-to-configure-bind-as-a-private-network-dns-server-on-ubuntu-18-04) z instrukcjami dotyczącymi KONFIGUROWANIA serwera DNS bind "open source".
 
 ## <a name="windows-based-setup"></a>Konfiguracja oparta na systemie Windows
 

@@ -3,16 +3,16 @@ title: Wdrażanie zasobów za pomocą interfejsu API REST i szablonu
 description: Użyj Azure Resource Manager i Menedżer zasobów interfejsu API REST do wdrażania zasobów na platformie Azure. Zasoby są zdefiniowane w szablonie usługi Resource Manager.
 ms.topic: conceptual
 ms.date: 06/04/2019
-ms.openlocfilehash: 3a3447746b3e7cbdfeeddd296ce78068e120a134
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fc386f51073c256fd083a04bbed39316784827b1
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75484963"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76152514"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-resource-manager-rest-api"></a>Deploy resources with Resource Manager templates and Resource Manager REST API (Wdrażanie zasobów za pomocą szablonów usługi Resource Manager i interfejsu API REST usługi Resource Manager)
 
-W tym artykule wyjaśniono, jak używać interfejsu API REST Menedżer zasobów z szablonami Menedżer zasobów do wdrażania zasobów na platformie Azure.  
+W tym artykule wyjaśniono, jak używać interfejsu API REST Menedżer zasobów z szablonami Menedżer zasobów do wdrażania zasobów na platformie Azure.
 
 Możesz dołączyć szablon do treści żądania lub połączyć się z plikiem. Plik może być plikiem lokalnym lub zewnętrznym, który jest dostępny za pośrednictwem identyfikatora URI. Jeśli szablon znajduje się na koncie magazynu, możesz ograniczyć dostęp do szablonu i udostępnić token sygnatury dostępu współdzielonego (SAS) podczas wdrażania.
 
@@ -67,7 +67,7 @@ W przykładach w tym artykule są używane wdrożenia grup zasobów.
 
 1. Sprawdź poprawność wdrożenia przed jego wykonaniem, uruchamiając operację [walidacji wdrożenia szablonu](/rest/api/resources/deployments/validate) . Podczas testowania wdrożenia podaj parametry dokładnie tak, jak podczas wykonywania wdrożenia (pokazane w następnym kroku).
 
-1. Aby wdrożyć szablon, podaj identyfikator subskrypcji, nazwę grupy zasobów, nazwę wdrożenia w identyfikatorze URI żądania. 
+1. Aby wdrożyć szablon, podaj identyfikator subskrypcji, nazwę grupy zasobów, nazwę wdrożenia w identyfikatorze URI żądania.
 
    ```HTTP
    PUT https://management.azure.com/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>/providers/Microsoft.Resources/deployments/<YourDeploymentName>?api-version=2019-05-01
@@ -116,7 +116,7 @@ W przykładach w tym artykule są używane wdrożenia grup zasobów.
 
     Konto magazynu można skonfigurować tak, aby korzystało z tokenu sygnatury dostępu współdzielonego (SAS). Aby uzyskać więcej informacji, zobacz [delegowanie dostępu za pomocą sygnatury dostępu współdzielonego](/rest/api/storageservices/delegating-access-with-a-shared-access-signature).
 
-    Jeśli musisz podać wartość poufną dla parametru (na przykład hasła), Dodaj tę wartość do magazynu kluczy. Pobierz Magazyn kluczy podczas wdrażania, jak pokazano w poprzednim przykładzie. Aby uzyskać więcej informacji, zobacz [Przekazywanie bezpiecznych wartości podczas wdrażania](key-vault-parameter.md). 
+    Jeśli musisz podać wartość poufną dla parametru (na przykład hasła), Dodaj tę wartość do magazynu kluczy. Pobierz Magazyn kluczy podczas wdrażania, jak pokazano w poprzednim przykładzie. Aby uzyskać więcej informacji, zobacz [Przekazywanie bezpiecznych wartości podczas wdrażania](key-vault-parameter.md).
 
 1. Zamiast łączyć się z plikami szablonu i parametrów, można je uwzględnić w treści żądania. Poniższy przykład pokazuje treść żądania z szablonem i parametrem wbudowanym:
 
@@ -155,8 +155,8 @@ W przykładach w tym artykule są używane wdrożenia grup zasobów.
         "resources": [
           {
             "type": "Microsoft.Storage/storageAccounts",
-            "name": "[variables('storageAccountName')]",
             "apiVersion": "2018-02-01",
+            "name": "[variables('storageAccountName')]",
             "location": "[parameters('location')]",
             "sku": {
               "name": "[parameters('storageAccountType')]"

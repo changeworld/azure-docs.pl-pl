@@ -1,5 +1,5 @@
 ---
-title: Omówienie aplikacji Microsoft Authenticator — Azure Active Directory | Microsoft Docs
+title: Czym jest aplikacja Microsoft Authenticator? — Azure Active Directory | Microsoft Docs
 description: Informacje o aplikacji Microsoft Authenticator, w tym wyjaśnienie czym ona jest oraz jak działa, a także jakie informacje zawarto w tej sekcji zawartości.
 services: active-directory
 author: eross-msft
@@ -9,20 +9,17 @@ ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: overview
-ms.date: 01/24/2019
+ms.date: 01/15/2020
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d3766436851cb2f31fa7bb070402191e03ad9ad1
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 468005094ab8a9c42d7eacdfefa990565a3297f3
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68382333"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76155812"
 ---
 # <a name="what-is-the-microsoft-authenticator-app"></a>Czym jest aplikacja Microsoft Authenticator?
-
->[!Important]
->Ta zawartość jest przeznaczona dla użytkowników. Jeśli jesteś administratorem, więcej informacji na temat konfigurowania i zarządzania środowiskiem usługi Azure Active Directory (Azure AD) możesz znaleźć w [dokumentacji usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory).
 
 Aplikacja Microsoft Authenticator pomaga w logowaniu się do kont, jeśli używana jest weryfikacja dwuskładnikowa. Weryfikacja dwuskładnikowa zapewnia bezpieczniejszy dostęp do kont, szczególnie podczas wyświetlania informacji poufnych. Ponieważ hasła mogą zostać zapomniane, skradzione lub ujawnione, weryfikacja dwuskładnikowa zapewnia dodatkowy poziom zabezpieczeń, który pomaga chronić konto, utrudniając włamanie się na nie innym osobom.
 
@@ -37,16 +34,14 @@ Aplikacji Microsoft Authenticator można używać na wiele sposobów, na przykł
 > [!Important]
 > Aplikacja Microsoft Authenticator współpracuje z dowolnym kontem korzystającym z weryfikacji dwuskładnikowej i obsługuje standardy hasła jednorazowego (TOTP) oparte na czasie.
 >
-> Twoja organizacja może wymagać korzystania z aplikacji uwierzytelnienia do logowania się i uzyskiwania dostępu do danych organizacji i dokumentów. Mimo iż Twoja nazwa użytkownika może być wyświetlana w aplikacji, konto nie będzie skonfigurowane jako metoda weryfikacji, dopóki nie ukończysz procesu rejestracji. Aby uzyskać więcej informacji, zobacz [Dodawanie konta służbowego](user-help-auth-app-add-work-school-account.md).
-> 
-> Jeśli masz problemy z zalogowaniem się do swojego konta, zobacz temat [Kiedy nie możesz zalogować się na swoje konto Microsoft](https://support.microsoft.com/help/12429). Uzyskaj więcej informacji o tym, co zrobić, gdy podczas próby zalogowania się do konta Microsoft pojawia się komunikat [„To konto Microsoft nie istnieje”](https://support.microsoft.com/help/13811).
+>Ten artykuł jest przeznaczony dla użytkowników próbujących pobrać i użyć aplikacji Microsoft Authenticator jako metody weryfikacji zabezpieczeń. Jeśli jesteś administratorem, który szuka informacji o sposobie włączania logowania bez hasła przy użyciu aplikacji uwierzytelniania dla pracowników i innych funkcji, zobacz [Włączanie logowania bezhasłem przy użyciu aplikacji Microsoft Authenticator (wersja zapoznawcza)](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-passwordless-phone).
 
 ## <a name="terminology"></a>Terminologia
 
-| Termin|Opis|
+| Okres obowiązywania Umowy|Opis|
 | ----|-----------|
 | Weryfikacja dwuskładnikowa | Proces weryfikacji, który wymaga specjalnego użycia tylko dwóch rodzajów informacji o weryfikacji, takich jak hasło i numer PIN. Aplikacja Microsoft Authenticator obsługuje zarówno standardową weryfikację dwuskładnikową, jak i logowanie bez hasła. |
-| Multi-factor authentication (MFA) | Wszystkie weryfikacje dwuskładnikowe są odmianami uwierzytelniania wieloskładnikowego, które wymaga użycia *co najmniej* dwóch rodzajów informacji o weryfikacji, w zależności od wymagań organizacji. |
+| Multi-Factor Authentication (MFA) | Wszystkie weryfikacje dwuskładnikowe są odmianami uwierzytelniania wieloskładnikowego, które wymaga użycia *co najmniej* dwóch rodzajów informacji o weryfikacji, w zależności od wymagań organizacji. |
 | Konto Microsoft (nazywane też kontem MSA) | Tworzone własnoręcznie konta osobiste zapewniają dostęp do produktów i usług w chmurze firmy Microsoft przeznaczonych dla konsumentów, takich jak Outlook, OneDrive, Xbox LIVE i Office 365. Konto Microsoft jest tworzone i przechowywane w systemie kont tożsamości konsumentów firmy Microsoft. |
 | Konto służbowe | Twoja organizacja tworzy konto służbowe (takie jak alain@contoso.com), aby umożliwić Ci dostęp do wewnętrznych i potencjalnie ograniczonych zasobów, takich jak platforma Microsoft Azure, usługa Windows Intune i Office 365. |
 | Kod weryfikacyjny | Sześciocyfrowy kod, który jest wyświetlany w aplikacji wystawcy uwierzytelnienia, w obszarze każdego dodanego konta. Kod weryfikacyjny zmienia się co 30 sekund, uniemożliwiając wielokrotne użycie kodu. Jest to również nazywany jednorazowym kodem dostępu (OTP). |

@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: conceptual
-ms.date: 01/31/2019
+ms.date: 01/16/2020
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d6fe6744c2af22f8891d2f3b3a6eb30ec9d3904
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: dc68b34ce10957d8c025d4767cc4f8d04c6a72c3
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045273"
+ms.locfileid: "76155863"
 ---
 # <a name="frequently-asked-questions-faqs-about-the-microsoft-authenticator-app"></a>Często zadawane pytania dotyczące aplikacji Microsoft Authenticator
 
@@ -52,6 +52,7 @@ Aplikacja Microsoft Authenticator została zastąpiona aplikacją Azure Authenti
 | Co to jest funkcja blokady aplikacji i jak pomaga lepiej chronić? | Aby zapewnić bezpieczeństwo jednorazowych kodów dostępu, informacji o aplikacji i ustawień aplikacji, możesz włączyć funkcję blokowania aplikacji w aplikacji Microsoft Authenticator. Włączenie blokady aplikacji na ekranie **Ustawienia** aplikacji Microsoft Authenticator oznacza, że użytkownik zostanie poproszony o uwierzytelnienie przy użyciu kodu PIN lub biometrycznego przy każdym otwarciu aplikacji Microsoft Authenticator. Ta funkcja oferuje dodatkową ochronę, w jaki sposób zatwierdzania powiadomień w aplikacji Microsoft Authenticator nie ulegnie zmianie.<br><br>**Uwaga**<br>Ponieważ Rejestracja urządzenia może wystąpić w innych lokalizacjach poza aplikacją Microsoft Authenticator, na przykład w aplikacji Portal firmy lub w ustawieniach konta systemu Android, nie ma gwarancji, że blokada aplikacji uniemożliwi użytkownikowi uzyskanie dostępu do firmy Microsoft. Aplikacja uwierzytelniania. |
 | Dlaczego otrzymuję powiadomienia o aktywności mojego konta? | Aby pomóc Ci uzyskać więcej informacji na temat tego, co się dzieje z osobistym konto Microsoft, wysyłamy powiadomienia o działaniach do aplikacji Microsoft Authenticator. Te powiadomienia są wyświetlane natychmiast po wprowadzeniu zmian, co pomaga zapewnić bezpieczniejsze zabezpieczenia. Te powiadomienia zostały wcześniej wysłane za pośrednictwem poczty e-mail i wiadomości SMS i zostały już rozwinięte w celu uwzględnienia aplikacji. Aby uzyskać więcej informacji o tych powiadomieniach dotyczących działań, zobacz [co się stanie w przypadku nietypowego logowania do konta](https://support.microsoft.com/help/13967/microsoft-account-unusual-sign-in). Aby zmienić miejsce otrzymywania powiadomień, zaloguj się do miejsca, w [którym można się skontaktować z alertami konta niekrytycznego](https://account.live.com/SecurityNotifications/Update) na koncie. |
 | Podczas logowania się do konta służbowego przy użyciu domyślnej aplikacji poczty dołączonej do systemu iOS otrzymuję monit o zaoferowanie przez aplikację Microsoft Authenticator informacji o weryfikacji zabezpieczeń. Po wprowadzeniu tych informacji i powrocie do aplikacji poczty zostanie wyświetlony komunikat o błędzie. Co mogę zrobić? | Najbardziej prawdopodobną przyczyną jest to, że logowanie i aplikacja poczty odbywają się w dwóch różnych aplikacjach, co powoduje, że proces logowania w tle nie działa i kończy się niepowodzeniem. Aby spróbować rozwiązać ten problem, zalecamy wybranie ikony **Safari** w prawym dolnym rogu ekranu podczas logowania się do aplikacji poczty e-mail. Przechodzenie do przeglądarki Safari powoduje, że cały proces logowania odbywa się w jednej aplikacji, co umożliwia pomyślne zalogowanie się do aplikacji. |
+| Moje kody haseł jednorazowych (OTP) nie działają. Co mamy zrobić? | Upewnij się, że data i godzina na urządzeniu są poprawne i są automatycznie synchronizowane. Jeśli data i godzina są błędne lub nie są zsynchronizowane, kod nie będzie działał. |
 
 ## <a name="next-steps"></a>Następne kroki
 

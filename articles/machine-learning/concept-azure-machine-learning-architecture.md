@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: larryfr
 author: Blackmist
-ms.date: 10/16/2019
+ms.date: 12/27/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8b78c04d6e0ba2f87a5ff99098f689949cf7aa5e
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: c9ed7ddc6287239c90cc074f1c171f2d28206732
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771959"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76154606"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Jak działa Azure Machine Learning: architektura i koncepcje
 
@@ -46,8 +46,8 @@ Użyj tych narzędzi dla Azure Machine Learning:
 
 +  Korzystanie z usługi w dowolnym środowisku języka Python z [zestawem SDK Azure Machine Learning dla języka Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).
 + Korzystanie z usługi w dowolnym środowisku R z [zestawem SDK Azure Machine Learning dla języka r](https://azure.github.io/azureml-sdk-for-r/reference/index.html).
-+ Automatyzuj działania uczenia maszynowego za pomocą [interfejsu wiersza polecenia Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/reference-azure-machine-learning-cli).
-+ Napisz kod w Visual Studio Code z [rozszerzeniem Azure Machine Learning vs Code](how-to-vscode-tools.md)
++ Automatyzuj działania uczenia maszynowego za pomocą [interfejsu wiersza polecenia Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/reference-azure-machine-learning-cli).
++ Napisz kod w Visual Studio Code z [rozszerzeniem Azure Machine Learning vs Code](tutorial-setup-vscode-extension.md)
 + Użyj programu [Azure Machine Learning Designer (wersja zapoznawcza)](concept-designer.md) , aby wykonać etapy przepływu pracy bez pisania kodu.
 
 
@@ -93,7 +93,7 @@ Działania mogą udostępniać powiadomienia za pomocą zestawu SDK lub internet
 
 Dowiedz się więcej o [wystąpieniach obliczeniowych](concept-compute-instance.md).
 
-### <a name="compute-targets"></a>Celów obliczeń
+### <a name="compute-targets"></a>Docelowe obiekty obliczeniowe
 
 [Obiekt docelowy obliczeń](concept-compute-target.md) pozwala określić zasób obliczeniowy służący do uruchamiania skryptu szkoleniowego lub hostowania wdrożenia usługi. Ta lokalizacja może być maszyną lokalną lub zasobem obliczeniowym opartym na chmurze.
 

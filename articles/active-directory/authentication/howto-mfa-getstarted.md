@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ccffe8d104792d9723c1541466067de3ea2c2e66
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: b6da67589b15b4ab043510c0375c26c12f645adb
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848395"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76155150"
 ---
 # <a name="planning-a-cloud-based-azure-multi-factor-authentication-deployment"></a>Planowanie wdrożenia usługi Azure Multi-Factor Authentication opartej na chmurze
 
@@ -85,18 +85,18 @@ Zalecamy, aby organizacje używały dostępu warunkowego do definiowania sieci p
 ### <a name="configuring-a-named-location"></a>Konfigurowanie lokalizacji nazwanej
 
 1. Otwórz **Azure Active Directory** w Azure Portal
-2. Kliknij pozycję **dostęp warunkowy**
-3. Kliknij pozycję **nazwane lokalizacje**
-4. Kliknij pozycję **Nowa lokalizacja**
+2. Wybierz **zabezpieczenia**
+3. W obszarze **Zarządzanie**wybierz pozycję **nazwane lokalizacje** .
+4. Wybierz **nową lokalizację**
 5. W polu **Nazwa** Podaj opisową nazwę
-6. Wybierz, czy chcesz definiować lokalizację przy użyciu zakresów adresów IP, krajów/regionów
-   1. W przypadku korzystania z zakresów adresów IP
-      1. Zdecyduj, czy chcesz oznaczyć lokalizację jako zaufaną. Logowanie z zaufanej lokalizacji obniża ryzyko użytkownika związane z logowaniem. Oznacz tę lokalizację jako zaufaną, Jeśli wiesz, że wprowadzone zakresy adresów IP są ustalone i wiarygodne w organizacji.
+6. Wybierz, czy chcesz definiować lokalizację przy użyciu *zakresów adresów IP* , *krajów/regionów*
+   1. W przypadku korzystania z *zakresów adresów IP*
+      1. Zdecyduj, czy chcesz *oznaczyć jako zaufaną lokalizację*. Logowanie z zaufanej lokalizacji obniża ryzyko użytkownika związane z logowaniem. Oznacz tę lokalizację jako zaufaną, Jeśli wiesz, że wprowadzone zakresy adresów IP są ustalone i wiarygodne w organizacji.
       2. Określ zakresy adresów IP
-   2. Jeśli są używane kraje/regiony
+   2. Jeśli są używane *kraje/regiony*
       1. Rozwiń menu rozwijane i wybierz kraje lub regiony, które chcesz zdefiniować dla tej nazwanej lokalizacji.
-      2. Zdecyduj, czy mają być uwzględniane nieznane obszary. Nieznane obszary to adresy IP, których nie można zamapować na kraj/region.
-7. Kliknij przycisk **Utwórz**
+      2. Zdecyduj, czy mają być *uwzględniane nieznane obszary*. Nieznane obszary to adresy IP, których nie można zamapować na kraj/region.
+7. Wybierz pozycję **Utwórz**
 
 ## <a name="plan-authentication-methods"></a>Zaplanuj metody uwierzytelniania
 
@@ -221,7 +221,7 @@ Ważne jest, aby zapobiec przypadkowemu zablokowaniu dzierżawy usługi Azure AD
 ### <a name="create-conditional-access-policy"></a>Tworzenie zasad dostępu warunkowego
 
 1. Zaloguj się do [Azure Portal](https://portal.azure.com) przy użyciu konta administratora globalnego.
-1. Przejdź do **Azure Active Directory**, **dostęp warunkowy**.
+1. Przejdź do **Azure Active Directory** > **zabezpieczenia** > **dostęp warunkowy**.
 1. Wybierz pozycję **nowe zasady**.
    ![utworzyć zasady dostępu warunkowego, aby włączyć usługę MFA dla Azure Portal użytkowników w grupie pilotażowej](media/howto-mfa-getstarted/conditionalaccess-newpolicy.png)
 1. Podaj opisową nazwę zasad.

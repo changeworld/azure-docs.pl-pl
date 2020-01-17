@@ -1,6 +1,6 @@
 ---
-title: Omówienie portalu mojego konta — Azure Active Directory | Microsoft Docs
-description: Ogólne omówienie i linki do dodatkowych informacji na temat portalu My Account i jego funkcji.
+title: Co to jest portal Moje konto? — Azure AD
+description: Jak uzyskać dostęp do portalu My Account i jego funkcji, w tym konfigurowania i zarządzania informacjami zabezpieczeń, urządzeniami, hasłami, organizacjami, ochroną prywatności i moimi logowaniem.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -9,26 +9,19 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: overview
-ms.date: 10/28/2019
+ms.date: 01/15/2020
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d831add42f60df2688b5c846d556f5dea8cef556
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 58e73061406bc1be3f224e5726bdfca5a7553be1
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73586656"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156137"
 ---
-# <a name="my-account-portal-overview"></a>Omówienie portalu mojego konta
+# <a name="what-is-the-my-account-portal"></a>Co to jest portal Moje konto?
 
 Portal **My Account** ułatwia zarządzanie kontem służbowym przez skonfigurowanie i zarządzanie informacjami o zabezpieczeniach, Zarządzanie połączonymi organizacjami i urządzeniami, a także wyświetlanie sposobu korzystania z danych przez organizację.
-
->[!Important]
->Ta zawartość jest przeznaczona dla użytkowników. Jeśli jesteś administratorem, więcej informacji na temat konfigurowania i zarządzania środowiskiem usługi Azure Active Directory (Azure AD) możesz znaleźć w [dokumentacji usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory).
-
-![Portal mojego konta, Strona przeglądu](media/my-account-portal/my-account-portal-overview.png)
-
-## <a name="go-to-the-my-account-portal"></a>Przejdź do portalu My Account
 
 Możesz przejść do portalu **My Account** (https://myprofile.microsoft.com), z bieżącej wersji dowolnej z następujących przeglądarek:
 
@@ -38,20 +31,24 @@ Możesz przejść do portalu **My Account** (https://myprofile.microsoft.com), z
 - Firefox
 - Internet Explorer 11
 
-## <a name="my-account-portal-articles"></a>Moje artykuły w portalu mojego konta
+![Portal mojego konta, Strona przeglądu](media/my-account-portal/my-account-portal-overview.png)
 
-Aby uzyskać szczegółowe informacje i instrukcje dotyczące tego, co jest dostępne w portalu **My Account** , zobacz następujące artykuły:
+>[!Important]
+>Ten artykuł jest przeznaczony dla użytkowników próbujących uzyskać dostęp do portalu My Account, aby zaktualizować informacje zabezpieczające, informacje o urządzeniu, hasło, połączone organizacje, prywatność lub poprzednie informacje logowania. Jeśli jesteś administratorem, który szuka informacji o sposobie włączania uwierzytelniania i innych funkcji Azure Active Directory (Azure AD) dla pracowników i innych usług, zobacz [dokumentację usługi Azure AD dla administratorów](https://docs.microsoft.com/azure/active-directory/).
 
-|Artykuł |Opis |
-|------|------------|
-| [Dodawanie informacji zabezpieczających](user-help-security-info-overview.md) | Kilka artykułów z instrukcjami dotyczącymi sposobu konfigurowania aplikacji Microsoft Authenticator, wiadomości SMS lub połączeń telefonicznych jako metody weryfikacji. Zawiera również artykuły dotyczące sposobu dodawania adresu e-mail lub wstępnie zdefiniowanych pytań zabezpieczających, aby można było zresetować własne zapomniane hasło.|
-| [Wyświetlanie lub wyłączanie podłączonych urządzeń](my-account-portal-devices-page.md) | Instrukcje dotyczące wyświetlania lub wyłączania urządzeń podłączonych do konta służbowego lub szkolnego.|
-| [Zmień hasło konta służbowego](my-account-change-password-page.md) | Instrukcje dotyczące zmiany hasła dla konta służbowego. |
-| [Wyświetlanie lub opuszczanie połączonych organizacji](my-account-portal-organizations-page.md) | Instrukcje dotyczące sposobu wyświetlania i opuszczania organizacji podłączonych do konta służbowego.|
-| [Wyświetlanie swoich informacji związanych z prywatnością](my-account-portal-privacy-page.md) | Instrukcje dotyczące sposobu wyświetlania, które Usługi online są połączone z kontem służbowym, oraz z zasadami użytkowania w organizacji.|
-| [Wyświetlanie ostatnich aktywności logowania](my-account-portal-sign-ins-page.md) | Instrukcje dotyczące sposobu wyświetlania aktywności związanej z logowaniem dla konta służbowego. |
+## <a name="next-steps"></a>Następne kroki
 
-## <a name="related-office-content"></a>Powiązana zawartość pakietu Office
+- Wybierz, aby wyświetlić [informacje zabezpieczające](user-help-security-info-overview.md) lub zarządzać nimi
+
+- Wyświetlanie podłączonych [urządzeń](my-account-portal-devices-page.md) lub zarządzanie nimi
+
+- Wyświetlanie [organizacji](my-account-portal-organizations-page.md) i zarządzanie nimi
+
+- Wyświetlanie [działania związanego z logowaniem](my-account-portal-sign-ins-page.md)
+
+- Zobacz, jak Twoja organizacja [używa danych związanych z prywatnością](my-account-portal-privacy-page.md)
+
+## <a name="related-microsoft-office-content"></a>Powiązana zawartość Microsoft Office
 
 - [Zaloguj się, aby zarządzać produktem pakietu Office](https://support.office.com/article/sign-in-to-manage-your-office-product-959ac957-8d37-4ae4-b1b6-d6e4874e013f)
 

@@ -8,14 +8,14 @@ editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 04/08/2019
+ms.date: 01/16/2020
 ms.author: jingwang
-ms.openlocfilehash: ede1e56384c75c64765962b7db196973a30c605b
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 45699680ad2003c034bce588857f8b102a0b6d26
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928445"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76121781"
 ---
 # <a name="managed-identity-for-data-factory"></a>Tożsamość zarządzana dla usługi Data Factory
 
@@ -155,17 +155,19 @@ Tożsamość zarządzaną można pobrać z Azure Portal lub programowo. W poniż
 
 ### <a name="retrieve-managed-identity-using-azure-portal"></a>Pobierz tożsamość zarządzaną za pomocą Azure Portal
 
-Informacje o tożsamości zarządzanej można znaleźć na stronie Azure Portal — > Właściwości > fabryki danych:
+Informacje o tożsamości zarządzanej można znaleźć na stronie Azure Portal — > Właściwości > fabryki danych.
 
 - Identyfikator obiektu tożsamości zarządzanej
 - Zarządzana dzierżawa tożsamości
-- **Identyfikator aplikacji tożsamości zarządzanej** > Skopiuj tę wartość
+- Identyfikator zarządzanej aplikacji tożsamości
 
-![Pobierz tożsamość zarządzaną](media/data-factory-service-identity/retrieve-service-identity-portal.png)
+Informacje o tożsamości zarządzanej również zostaną wyświetlone podczas tworzenia połączonej usługi, która obsługuje uwierzytelnianie tożsamości zarządzanej, takie jak obiekt blob platformy Azure, Azure Data Lake Storage, Azure Key Vault itd.
+
+Podczas udzielania uprawnień Użyj identyfikatora obiektu lub nazwy fabryki danych (jako nazwy tożsamości zarządzanej), aby znaleźć tę tożsamość.
 
 ### <a name="retrieve-managed-identity-using-powershell"></a>Pobieranie tożsamości zarządzanej przy użyciu programu PowerShell
 
-Identyfikator podmiotu zabezpieczeń tożsamości zarządzanej i identyfikator dzierżawy zostaną zwrócone, gdy zostanie uzyskana określona Fabryka danych w następujący sposób:
+Identyfikator podmiotu zabezpieczeń tożsamości zarządzanej i identyfikator dzierżawy zostaną zwrócone, gdy uzyskasz określoną fabrykę danych w następujący sposób. Użyj **PrincipalId** , aby udzielić dostępu:
 
 ```powershell
 PS C:\WINDOWS\system32> (Get-AzDataFactoryV2 -ResourceGroupName <resourceGroupName> -Name <dataFactoryName>).Identity
@@ -175,7 +177,7 @@ PrincipalId                          TenantId
 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc 72f988bf-XXXX-XXXX-XXXX-2d7cd011db47
 ```
 
-Skopiuj identyfikator podmiotu zabezpieczeń, a następnie uruchom poniższy Azure Active Directory polecenie z identyfikatorem podmiotu zabezpieczeń jako parametr w celu uzyskania identyfikatora **aplikacji**, którego używasz do udzielania dostępu:
+Identyfikator aplikacji można uzyskać, kopiując powyżej identyfikatora podmiotu zabezpieczeń, a następnie uruchamiając polecenie Azure Active Directory z IDENTYFIKATORem podmiotu zabezpieczeń jako parametr.
 
 ```powershell
 PS C:\WINDOWS\system32> Get-AzADServicePrincipal -ObjectId 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc

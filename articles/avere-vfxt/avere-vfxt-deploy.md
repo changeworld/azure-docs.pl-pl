@@ -4,14 +4,14 @@ description: Procedura wdrażania klastra avere vFXT na platformie Azure
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 12/14/2019
+ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: ad5b0ecd9e7e6326c5b91844b6f7b557972b4852
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d1058125d5bb3912b9561027bbe0a977637d3379
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75415464"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76153597"
 ---
 # <a name="deploy-the-vfxt-cluster"></a>Wdrażanie klastra vFXT
 
@@ -22,7 +22,7 @@ Ta procedura przeprowadzi Cię przez użytkownika za pomocą Kreatora wdrażania
 * Tworzy maszyny wirtualne węzła klastra i konfiguruje je jako klaster avere.
 * Jeśli jest to wymagane, program tworzy nowy kontener obiektów blob platformy Azure i konfiguruje go jako podstawowy plik klastra.
 
-Po wykonaniu instrukcji przedstawionych w tym dokumencie będzie dostępna sieć wirtualna, podsieć, kontroler i klaster vFXT, jak pokazano na poniższym diagramie. Ten diagram przedstawia opcjonalny plik usługi Azure Blob Core, który obejmuje nowy kontener usługi BLOB Storage (na nowym koncie magazynu, niepokazywany) i punkt końcowy usług magazynu Microsoft Storage w podsieci.
+Po wykonaniu instrukcji przedstawionych w tym dokumencie będzie dostępna sieć wirtualna, podsieć, kontroler klastra i klaster vFXT, jak pokazano na poniższym diagramie. Ten diagram przedstawia opcjonalny plik usługi Azure Blob Core, który obejmuje nowy kontener usługi BLOB Storage (na nowym koncie magazynu, niepokazywany) i punkt końcowy usług magazynu Microsoft Storage w podsieci.
 
 ![Diagram przedstawiający trzy prostokąty koncentryczne ze składnikami klastra avere. Zewnętrzny prostokąt ma etykietę "Grupa zasobów" i zawiera sześciokąt oznaczony etykietą "BLOB Storage (opcjonalnie)". Następny prostokąt w jest oznaczony etykietą "Sieć wirtualna: 10.0.0.0/16" i nie zawiera żadnych unikatowych składników. Wewnętrzny prostokąt ma etykietę "Subnet: 10.0.0.0/24" i zawiera maszynę wirtualną o nazwie "kontroler klastra", stos trzech maszyn wirtualnych z etykietą "vFXT nodes (vFXT cluster)" i "punkt końcowy usługi". Istnieje strzałka łącząca punkt końcowy usługi (znajdujący się wewnątrz podsieci) i magazyn obiektów BLOB (znajdujący się poza podsiecią i siecią wirtualną w grupie zasobów). Strzałka przechodzi przez granice podsieci i sieci wirtualnej.](media/avere-vfxt-deployment.png)
 
@@ -31,7 +31,7 @@ Przed użyciem szablonu tworzenia upewnij się, że zostały spełnione następu
 1. [Nowa subskrypcja](avere-vfxt-prereqs.md#create-a-new-subscription)
 1. [Uprawnienia właściciela subskrypcji](avere-vfxt-prereqs.md#configure-subscription-owner-permissions)
 1. [Przydział dla klastra vFXT](avere-vfxt-prereqs.md#quota-for-the-vfxt-cluster)
-1. [Punkt końcowy usługi magazynu (w razie potrzeby)](avere-vfxt-prereqs.md#create-a-storage-service-endpoint-in-your-virtual-network-if-needed) — wymagany do wdrożenia przy użyciu istniejącej sieci wirtualnej i tworzenia magazynu obiektów BLOB
+1. [Punkt końcowy usługi magazynu (w razie potrzeby)](avere-vfxt-prereqs.md#create-a-storage-service-endpoint-in-your-virtual-network-if-needed) — jest to wymagane w przypadku wdrożeń korzystających z istniejącej sieci wirtualnej i tworzenia magazynu obiektów BLOB
 
 Aby uzyskać więcej informacji o krokach i planowaniu wdrożenia klastra, przeczytaj artykuł Planowanie systemu i [wdrożenia](avere-vfxt-deploy-overview.md) [programu avere vFXT](avere-vfxt-deploy-plan.md) .
 
@@ -41,7 +41,7 @@ Aby uzyskać dostęp do szablonu tworzenia w Azure Portal, należy wyszukać ave
 
 ![Okno przeglądarki zawierające Azure Portal z chleb Crumbs "nowe > Marketplace > wszystko". Na stronie wszystko, w polu wyszukiwania znajduje się termin "avere" i drugi wynik, "avere vFXT for Azure ARM template" został wyróżniony kolorem czerwonym, aby go zaznaczyć.](media/avere-vfxt-template-choose.png)
 
-Po przeczytaniu szczegółów na stronie szablon avere vFXT for Azure ARM kliknij pozycję **Utwórz** , aby rozpocząć.
+Po zapoznaniu się ze szczegółowymi informacjami na stronie szablon avere vFXT for Azure ARM kliknij przycisk **Utwórz** , aby rozpocząć.
 
 ![Portal Azure Marketplace z pierwszą stroną szablonu wdrożenia](media/avere-vfxt-deploy-first.png)
 
@@ -149,11 +149,11 @@ Aby znaleźć informacje:
 
 1. Po lewej stronie kliknij pozycje **wdrożenia**, a następnie pozycję **Microsoft-avere. vfxt-Template**.
 
-   ![Strona portalu grupy zasobów z wdrożeniami wybranymi po lewej stronie i Microsoft-avere. vfxt-Template pokazanych w tabeli pod nazwą wdrożenia](media/avere-vfxt-outputs-deployments.png) <!-- update image for new portal GUI -->
+   ![Strona portalu grupy zasobów z wdrożeniami wybranymi po lewej stronie i Microsoft-avere. vfxt-Template pokazanych w tabeli pod nazwą wdrożenia](media/avere-vfxt-outputs-deployments.png)
 
 1. Po lewej stronie kliknij pozycję dane **wyjściowe**. Skopiuj wartości w każdym z pól.
 
-   ![Strona danych wyjściowych pokazująca wartości SSHSTRING, RESOURCE_GROUP, LOCATION, NETWORK_RESOURCE_GROUP, NETWORK, SUBNET, SUBNET_ID, VSERVER_IPs i MGMT_IP w polach z prawej strony etykiet](media/avere-vfxt-outputs-values.png)<!-- update image for new portal GUI -->
+   ![Strona danych wyjściowych pokazująca wartości SSHSTRING, RESOURCE_GROUP, LOCATION, NETWORK_RESOURCE_GROUP, NETWORK, SUBNET, SUBNET_ID, VSERVER_IPs i MGMT_IP w polach z prawej strony etykiet](media/avere-vfxt-outputs-values.png)
 
 ## <a name="next-steps"></a>Następne kroki
 

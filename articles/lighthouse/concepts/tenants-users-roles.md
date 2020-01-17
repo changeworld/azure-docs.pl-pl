@@ -1,14 +1,14 @@
 ---
 title: Dzierżawy, role i użytkownicy w scenariuszach usługi Azure Lighthouse
 description: Zapoznaj się z pojęciami Azure Active Directory dzierżawców, użytkowników i ról, a także, jak mogą one być używane w scenariuszach usługi Azure Lighthouse.
-ms.date: 11/05/2019
+ms.date: 01/16/2020
 ms.topic: conceptual
-ms.openlocfilehash: 77a247c86765f25539833a6ba70f80e737c6846d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 344e104201a83b3589dae6dbd3b02e49e4575e00
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453568"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156339"
 ---
 # <a name="tenants-roles-and-users-in-azure-lighthouse-scenarios"></a>Dzierżawy, role i użytkownicy w scenariuszach usługi Azure Lighthouse
 
@@ -29,6 +29,9 @@ Wszystkie [wbudowane role](../../role-based-access-control/built-in-roles.md) s�
 - Rola [właściciela](../../role-based-access-control/built-in-roles.md#owner) nie jest obsługiwana.
 - Wszystkie wbudowane role z uprawnieniami [Dataactions](../../role-based-access-control/role-definitions.md#dataactions) nie są obsługiwane.
 - Wbudowana rola [administratora dostępu użytkowników](../../role-based-access-control/built-in-roles.md#user-access-administrator) jest obsługiwana, ale tylko w ograniczonym celu [przypisywania ról do tożsamości zarządzanej w dzierżawie klienta](../how-to/deploy-policy-remediation.md#create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant). Ta rola nie ma żadnych innych uprawnień zwykle przyznanych przez tę rolę. W przypadku zdefiniowania użytkownika z tą rolą należy również określić wbudowane role, które ten użytkownik może przypisać do zarządzanych tożsamości.
+
+> [!NOTE]
+> Po dodaniu nowej wbudowanej roli do platformy Azure można ją przypisać podczas dołączania [klienta przy użyciu szablonów Azure Resource Manager](../how-to/onboard-customer.md). Po [opublikowaniu oferty usługi zarządzanej](../how-to/publish-managed-services-offers.md)można uzyskać dostęp do nowo dodanej roli w Portal Cloud partner.
 
 ## <a name="best-practices-for-defining-users-and-roles"></a>Najlepsze rozwiązania dotyczące definiowania użytkowników i ról
 

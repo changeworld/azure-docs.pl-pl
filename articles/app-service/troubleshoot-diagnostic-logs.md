@@ -5,12 +5,12 @@ ms.assetid: c9da27b2-47d4-4c33-a3cb-1819955ee43b
 ms.topic: article
 ms.date: 09/17/2019
 ms.custom: seodec18
-ms.openlocfilehash: 54435dd21fccdd43f17d13674b324b989a00f7a1
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 777fa7caa80371592f93ee6f7458a7669fe6698f
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74684249"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76121362"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Włączanie rejestrowania diagnostycznego dla aplikacji w Azure App Service
 ## <a name="overview"></a>Przegląd
@@ -27,8 +27,8 @@ W tym artykule są wykorzystywane [Azure Portal](https://portal.azure.com) i int
 |-|-|-|-|
 | Rejestrowanie aplikacji | Windows, Linux | App Service system plików i/lub obiekty blob usługi Azure Storage | Rejestruje komunikaty generowane przez kod aplikacji. Komunikaty mogą być generowane przez wybrany przez siebie platformę sieci Web lub z kodu aplikacji bezpośrednio przy użyciu standardowego wzorca rejestrowania języka. Każdy komunikat ma przypisaną jedną z następujących kategorii: **krytyczny**, **błąd**, **Ostrzeżenie**, **informacje**, **debugowanie**i **śledzenie**. Aby określić, jak ma być pełne rejestrowanie, należy ustawić poziom ważności po włączeniu rejestrowania aplikacji.|
 | Rejestrowanie serwera sieci Web| Windows | App Service systemu plików lub obiektów BLOB usługi Azure Storage| Nieprzetworzone dane żądania HTTP w [rozszerzonym formacie W3C plików dziennika](/windows/desktop/Http/w3c-logging). Każdy komunikat dziennika zawiera dane, takie jak metoda HTTP, identyfikator URI zasobu, adres IP klienta, Port klienta, agent użytkownika, kod odpowiedzi itd. |
-| Szczegółowe rejestrowanie błędów | Windows | System plików App Service | Kopie stron błędów *. htm* , które zostałyby wysłane do przeglądarki klienta. Ze względów bezpieczeństwa szczegółowe strony błędów nie powinny być wysyłane do klientów w środowisku produkcyjnym, ale App Service mogą zapisać stronę błędu za każdym razem, gdy wystąpi błąd aplikacji, który ma kod HTTP 400 lub nowszy. Strona może zawierać informacje, które mogą pomóc w ustaleniu, dlaczego serwer zwraca kod błędu. |
-| Śledzenie nieudanych żądań | Windows | System plików App Service | Szczegółowe informacje o śledzeniu żądań zakończonych niepowodzeniem, w tym śledzenia składników usług IIS używanych do przetwarzania żądania oraz czasu wykonywanego w poszczególnych składnikach. Jest to przydatne, jeśli chcesz zwiększyć wydajność lokacji lub odizolować określony błąd HTTP. Dla każdego żądania zakończonego niepowodzeniem jest generowany jeden folder, który zawiera plik dziennika XML, i arkusz stylów XSL, w którym ma być wyświetlany plik dziennika. |
+| Szczegółowe komunikaty o błędach| Windows | System plików App Service | Kopie stron błędów *. htm* , które zostałyby wysłane do przeglądarki klienta. Ze względów bezpieczeństwa szczegółowe strony błędów nie powinny być wysyłane do klientów w środowisku produkcyjnym, ale App Service mogą zapisać stronę błędu za każdym razem, gdy wystąpi błąd aplikacji, który ma kod HTTP 400 lub nowszy. Strona może zawierać informacje, które mogą pomóc w ustaleniu, dlaczego serwer zwraca kod błędu. |
+| Śledzenie żądań nie powiodło się | Windows | System plików App Service | Szczegółowe informacje o śledzeniu żądań zakończonych niepowodzeniem, w tym śledzenia składników usług IIS używanych do przetwarzania żądania oraz czasu wykonywanego w poszczególnych składnikach. Jest to przydatne, jeśli chcesz zwiększyć wydajność lokacji lub odizolować określony błąd HTTP. Dla każdego żądania zakończonego niepowodzeniem jest generowany jeden folder, który zawiera plik dziennika XML, i arkusz stylów XSL, w którym ma być wyświetlany plik dziennika. |
 | Rejestrowanie wdrożenia | Windows, Linux | System plików App Service | Rejestruje informacje o publikowaniu zawartości w aplikacji. Rejestrowanie wdrożenia odbywa się automatycznie i nie ma konfigurowalnych ustawień rejestrowania wdrożenia. Pomaga określić przyczynę niepowodzenia wdrożenia. Na przykład jeśli używasz [niestandardowego skryptu wdrożenia](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script), możesz użyć rejestrowania wdrożenia, aby określić, dlaczego skrypt kończy się niepowodzeniem. |
 
 > [!NOTE]
@@ -60,9 +60,9 @@ Wybierz **poziom**lub poziom szczegółów do zarejestrowania. W poniższej tabe
 | Poziom | Uwzględnione kategorie |
 |-|-|
 |**Disabled (Wyłączone)** | Brak |
-|**Porn** | Błąd, krytyczny |
-|**Wyświetlania** | Ostrzeżenie, błąd, krytyczny|
-|**Zawartych** | Informacje, ostrzeżenie, błąd, krytyczne|
+|**Error** | Błąd, krytyczny |
+|**Ostrzeżenie** | Ostrzeżenie, błąd, krytyczny|
+|**Informacje o** | Informacje, ostrzeżenie, błąd, krytyczne|
 |**Pełne** | Trace, Debug, info, Warning, Error, krytyczny (wszystkie kategorie) |
 
 Po zakończeniu wybierz pozycję **Zapisz**.
@@ -105,9 +105,9 @@ Oba typy dzienników są przechowywane w systemie plików App Service. Błędy d
 
 ## <a name="add-log-messages-in-code"></a>Dodawanie komunikatów dziennika w kodzie
 
-W kodzie aplikacji należy używać zwykłych funkcji rejestrowania do wysyłania komunikatów dziennika do dzienników aplikacji. Na przykład:
+W kodzie aplikacji należy używać zwykłych funkcji rejestrowania do wysyłania komunikatów dziennika do dzienników aplikacji. Przykład:
 
-- Aplikacje ASP.NET mogą używać klasy [System. Diagnostics. Trace](/dotnet/api/system.diagnostics.trace) do rejestrowania informacji w dzienniku diagnostyki aplikacji. Na przykład:
+- Aplikacje ASP.NET mogą używać klasy [System. Diagnostics. Trace](/dotnet/api/system.diagnostics.trace) do rejestrowania informacji w dzienniku diagnostyki aplikacji. Przykład:
 
     ```csharp
     System.Diagnostics.Trace.TraceError("If you're seeing this, something bad happened");
@@ -135,12 +135,12 @@ Aby przesłać strumieniowo dzienniki na żywo w [Cloud Shell](../cloud-shell/ov
 az webapp log tail --name appname --resource-group myResourceGroup
 ```
 
-Aby odfiltrować określone zdarzenia, takie jak błędy, użyj parametru **--Filter** . Na przykład:
+Aby odfiltrować określone zdarzenia, takie jak błędy, użyj parametru **--Filter** . Przykład:
 
 ```azurecli-interactive
 az webapp log tail --name appname --resource-group myResourceGroup --filter Error
 ```
-Aby filtrować określone typy dzienników, takie jak HTTP, użyj parametru **--Path** . Na przykład:
+Aby filtrować określone typy dzienników, takie jak HTTP, użyj parametru **--Path** . Przykład:
 
 ```azurecli-interactive
 az webapp log tail --name appname --resource-group myResourceGroup --path http

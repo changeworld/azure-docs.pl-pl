@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d6001dc47d19665184bf44114ab36744f0287264
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 53428039055005693f30f63a709105b77fe65f8f
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75608758"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76155234"
 ---
 # <a name="getting-started-with-the-azure-multi-factor-authentication-server"></a>Wprowadzenie do serwera Azure Multi-Factor Authentication
 
@@ -96,8 +96,8 @@ Jeśli nie używasz funkcji potwierdzania zdarzeń i użytkownicy nie korzystaj�
 Aby pobrać serwer Azure Multi-Factor Authentication z witryny Azure Portal, wykonaj następujące czynności:
 
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) jako administrator.
-2. Wyszukaj i wybierz *Azure Active Directory*. Wybierz opcję **serwer usługi MFA**.
-3. Wybierz pozycję **Ustawienia serwera**.
+2. Wyszukaj i wybierz pozycję *Azure Active Directory*. Wybierz pozycję **Security** > **MFA**.
+3. W obszarze **Menedżer usługi MFA**wybierz pozycję **Ustawienia serwera**.
 4. Wybierz pozycję **Pobierz** i postępuj zgodnie z instrukcjami wyświetlanymi na stronie pobierania, aby zapisać instalator. 
 
    ![Pobierz serwer usługi MFA z Azure Portal](./media/howto-mfaserver-deploy/downloadportal.png)

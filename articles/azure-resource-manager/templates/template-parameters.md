@@ -3,12 +3,12 @@ title: Parametry w szablonach
 description: Opisuje sposób definiowania parametrów w szablonie Azure Resource Manager.
 ms.topic: conceptual
 ms.date: 09/05/2019
-ms.openlocfilehash: 3c0c40d5ddb47144fb42c99a9377d1b6e66854b9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 89c6984c587e8dae59c1825a99d4f8da1c06dafb
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75483910"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122427"
 ---
 # <a name="parameters-in-azure-resource-manager-templates"></a>Parametry w szablonach Azure Resource Manager
 
@@ -119,8 +119,8 @@ Odwoływanie się do właściwości obiektu za pomocą operatora kropki.
 ```json
 "resources": [
   {
-    "apiVersion": "2015-06-15",
     "type": "Microsoft.Network/virtualNetworks",
+    "apiVersion": "2015-06-15",
     "name": "[parameters('VNetSettings').name]",
     "location": "[parameters('VNetSettings').location]",
     "properties": {

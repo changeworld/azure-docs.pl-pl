@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/28/2019
 ms.author: cshoe
-ms.openlocfilehash: cbc45036497547b78514b1d175d67c6ed437ee2d
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: d5ded7200c438fc734e1af0a42ca6071196bd41c
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769493"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76120341"
 ---
 # <a name="signalr-service-bindings-for-azure-functions"></a>Powiązania usługi SignalR Service dla usługi Azure Functions
 
@@ -1011,9 +1011,9 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 
 |Właściwość Function.JSON | Właściwość atrybutu |Opis|
 |---------|---------|----------------------|
-|**type**|| Musi być równa `signalRConnectionInfo`.|
-|**direction**|| Musi być równa `in`.|
-|**Nazwa**|| Nazwa zmiennej używana w kodzie funkcji dla obiektu informacji o połączeniu. |
+|**type**| nd. | Musi być równa `signalRConnectionInfo`.|
+|**direction**| nd. | Musi być równa `in`.|
+|**Nazwa**| nd. | Nazwa zmiennej używana w kodzie funkcji dla obiektu informacji o połączeniu. |
 |**hubName**|**HubName**| Ta wartość musi być ustawiona na nazwę centrum sygnałów, dla którego są generowane informacje o połączeniu.|
 |**userId**|**UserId**| Opcjonalnie: wartość żądania identyfikatora użytkownika do ustawienia w tokenie klucza dostępu. |
 |**connectionStringSetting**|**ConnectionStringSetting**| Nazwa ustawienia aplikacji zawierającego parametry połączenia usługi sygnalizującego (wartość domyślna to "AzureSignalRConnectionString"). |
@@ -1024,9 +1024,9 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 
 |Właściwość Function.JSON | Właściwość atrybutu |Opis|
 |---------|---------|----------------------|
-|**type**|| Musi być równa `signalR`.|
-|**direction**|| Musi być równa `out`.|
-|**Nazwa**|| Nazwa zmiennej używana w kodzie funkcji dla obiektu informacji o połączeniu. |
+|**type**| nd. | Musi być równa `signalR`.|
+|**direction**| nd. | Musi być równa `out`.|
+|**Nazwa**| nd. | Nazwa zmiennej używana w kodzie funkcji dla obiektu informacji o połączeniu. |
 |**hubName**|**HubName**| Ta wartość musi być ustawiona na nazwę centrum sygnałów, dla którego są generowane informacje o połączeniu.|
 |**connectionStringSetting**|**ConnectionStringSetting**| Nazwa ustawienia aplikacji zawierającego parametry połączenia usługi sygnalizującego (wartość domyślna to "AzureSignalRConnectionString"). |
 

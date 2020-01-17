@@ -12,25 +12,23 @@ ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 510f1ca441ef9645cff7f577bbad39991cebc285
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 3981c152ba836a01daca16cd486623a9a26d86f2
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231876"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156237"
 ---
-# <a name="change-your-work-or-school-account-password-from-the-my-account-portal"></a>Zmień hasło konta służbowego z poziomu portalu My Account
+# <a name="change-your-work-or-school-account-password-from-the-change-password-page"></a>Zmień hasło konta służbowego ze strony Zmień hasło
 
-Na stronie **zmiana hasła** w portalu **My Account (Moje konto** ) możesz zaktualizować swoje hasło do konta służbowego. Będzie to możliwe tylko wtedy, gdy znasz istniejące hasło i jeśli nie masz zablokowanego konta użytkownika.
+Strona **zmiana hasła** w portalu **My Account** umożliwia zaktualizowanie istniejącego hasła do konta służbowego, przy założeniu, że hasło nie jest zablokowane. Jeśli nie pamiętasz hasła, jeśli użytkownik jest zablokowany z konta lub jeśli nie masz hasła z Twojej organizacji, możesz użyć informacji zabezpieczających i urządzenia przenośnego, aby zresetować hasło.
 
-Jeśli nie pamiętasz hasła, jeśli konto zostało zablokowane lub nigdy nie masz hasła od zespołu pomocy technicznej Twojej firmy, możesz użyć informacji zabezpieczających i urządzenia przenośnego, aby zresetować hasło. Aby uzyskać więcej informacji, zobacz [Resetowanie hasła](https://docs.microsoft.com/azure/active-directory/user-help/user-help-reset-password)służbowego.
+>[!Important]
+>Ten artykuł jest przeznaczony dla użytkowników próbujących zaktualizować znane hasło dla istniejącego konta służbowego. Jeśli jesteś użytkownikiem próbującym uzyskać dostęp do konta osobistego, takiego jak Xbox, Hotmail lub Outlook.com, wypróbuj sugestie w temacie, [gdy nie możesz zalogować się do konto Microsoft](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) artykułu. Jeśli jesteś administratorem próbującym znaleźć więcej informacji na temat testowania samoobsługowego resetowania hasła dla pracowników lub innych użytkowników, zobacz samoobsługowe [Resetowanie hasła](https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr).
 
->[!Note]
->Jeśli próbujesz wrócić do konta osobistego, takiego jak Xbox, hotmail.com lub outlook.com, wypróbuj sugestie w programie, [gdy nie możesz zalogować się do konto Microsoft](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) artykułu.
+## <a name="update-a-password-from-the-change-password-page"></a>Aktualizowanie hasła na stronie Zmienianie hasła
 
-## <a name="to-change-your-password-from-the-my-account-portal"></a>Aby zmienić hasło w portalu My Account
-
-1. Zaloguj się do swojego konta służbowego, korzystając z istniejącego hasła, a następnie przejdź do strony https://myprofile.microsoft.com/.
+1. Zaloguj się do swojego konta służbowego, korzystając z istniejącego hasła, a następnie przejdź do strony **Moje konto** (https://myprofile.microsoft.com/).
 
 2. Wybierz pozycję **hasło** w okienku nawigacji po lewej stronie lub wybierz łącze **Zmień hasło** z bloku **hasła** .
 

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2fe8610d7551b63ed613153ba1ee0e6f8e73b5a5
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 6e8e8b20fc9b8e19b2f7c5f9c1b9e926580c9dbb
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278919"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156067"
 ---
 # <a name="set-up-text-messaging-as-your-verification-method"></a>Konfigurowanie wiadomości tekstowych jako metody weryfikacji
 
@@ -28,7 +28,7 @@ Jeśli zostanie wyświetlony monit o ustawienie tej opcji natychmiast po zalogow
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
 
 >[!Note]
->Jeśli nie widzisz opcji telefon, być może Twoja organizacja nie zezwala na używanie numeru telefonu do weryfikacji. W takim przypadku należy wybrać inną metodę lub skontaktować się z administratorem w celu uzyskania dodatkowej pomocy.
+>Jeśli nie widzisz opcji telefon, być może Twoja organizacja nie zezwala na korzystanie z tej opcji w celu weryfikacji. W takim przypadku należy wybrać inną metodę lub skontaktować się z działem pomocy technicznej w organizacji, aby uzyskać pomoc.
 
 ## <a name="set-up-text-messages-from-the-security-info-page"></a>Konfigurowanie wiadomości tekstowych na stronie z informacjami o zabezpieczeniach
 

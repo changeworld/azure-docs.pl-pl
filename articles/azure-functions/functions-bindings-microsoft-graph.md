@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 12/20/2017
 ms.author: cshoe
-ms.openlocfilehash: ef65904b19c5f42548c7b98cb37f6609124e0541
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 1923e26ba0ada7dcf5b8b333150b7cd5b775398b
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75922422"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76121203"
 ---
 # <a name="microsoft-graph-bindings-for-azure-functions"></a>Microsoft Graph powiązania Azure Functions
 
@@ -207,9 +207,9 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 
 |Właściwość Function.JSON | Właściwość atrybutu |Opis|
 |---------|---------|----------------------|
-|**Nazwa**||Wymagane — nazwa zmiennej używana w kodzie funkcji dla tokenu uwierzytelniania. Zobacz [Używanie powiązania danych wejściowych tokenu uwierzytelniania z kodu](#token-input-code).|
-|**type**||Wymagane — musi być ustawiony na `token`.|
-|**direction**||Wymagane — musi być ustawiony na `in`.|
+|**Nazwa**| nd. |Wymagane — nazwa zmiennej używana w kodzie funkcji dla tokenu uwierzytelniania. Zobacz [Używanie powiązania danych wejściowych tokenu uwierzytelniania z kodu](#token-input-code).|
+|**type**| nd. |Wymagane — musi być ustawiony na `token`.|
+|**direction**| nd. |Wymagane — musi być ustawiony na `in`.|
 |**Identity**|**Tożsamość**|Wymagane — tożsamość, która zostanie użyta do wykonania akcji. Może być jedną z następujących wartości:<ul><li><code>userFromRequest</code> — prawidłowy tylko z [Wyzwalacz HTTP]. Używa tożsamości użytkownika wywołującego.</li><li><code>userFromId</code> — używa tożsamości wcześniej zalogowanego użytkownika o określonym IDENTYFIKATORze. Zobacz Właściwość <code>userId</code>.</li><li><code>userFromToken</code> — używa tożsamości reprezentowanej przez określony token. Zobacz Właściwość <code>userToken</code>.</li><li><code>clientCredentials</code> — używa tożsamości aplikacji funkcji.</li></ul>|
 |**userId**|**UserId**  |Wymagana, jeśli i tylko wtedy, gdy _tożsamość_ jest ustawiona na `userFromId`. Identyfikator podmiotu zabezpieczeń użytkownika skojarzony z wcześniej zalogowanym użytkownikiem.|
 |**userToken**|**UserToken**|Wymagana, jeśli i tylko wtedy, gdy _tożsamość_ jest ustawiona na `userFromToken`. Token ważny dla aplikacji funkcji. |
@@ -342,9 +342,9 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 
 |Właściwość Function.JSON | Właściwość atrybutu |Opis|
 |---------|---------|----------------------|
-|**Nazwa**||Wymagane — nazwa zmiennej używana w kodzie funkcji dla tabeli programu Excel. Zobacz [Używanie powiązania danych wejściowych tabeli programu Excel z kodu](#excel-input-code).|
-|**type**||Wymagane — musi być ustawiony na `excel`.|
-|**direction**||Wymagane — musi być ustawiony na `in`.|
+|**Nazwa**| nd. |Wymagane — nazwa zmiennej używana w kodzie funkcji dla tabeli programu Excel. Zobacz [Używanie powiązania danych wejściowych tabeli programu Excel z kodu](#excel-input-code).|
+|**type**| nd. |Wymagane — musi być ustawiony na `excel`.|
+|**direction**| nd. |Wymagane — musi być ustawiony na `in`.|
 |**Identity**|**Tożsamość**|Wymagane — tożsamość, która zostanie użyta do wykonania akcji. Może być jedną z następujących wartości:<ul><li><code>userFromRequest</code> — prawidłowy tylko z [Wyzwalacz HTTP]. Używa tożsamości użytkownika wywołującego.</li><li><code>userFromId</code> — używa tożsamości wcześniej zalogowanego użytkownika o określonym IDENTYFIKATORze. Zobacz Właściwość <code>userId</code>.</li><li><code>userFromToken</code> — używa tożsamości reprezentowanej przez określony token. Zobacz Właściwość <code>userToken</code>.</li><li><code>clientCredentials</code> — używa tożsamości aplikacji funkcji.</li></ul>|
 |**userId**|**UserId**  |Wymagana, jeśli i tylko wtedy, gdy _tożsamość_ jest ustawiona na `userFromId`. Identyfikator podmiotu zabezpieczeń użytkownika skojarzony z wcześniej zalogowanym użytkownikiem.|
 |**userToken**|**UserToken**|Wymagana, jeśli i tylko wtedy, gdy _tożsamość_ jest ustawiona na `userFromToken`. Token ważny dla aplikacji funkcji. |
@@ -504,9 +504,9 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 
 |Właściwość Function.JSON | Właściwość atrybutu |Opis|
 |---------|---------|----------------------|
-|**Nazwa**||Wymagane — nazwa zmiennej używana w kodzie funkcji dla tokenu uwierzytelniania. Zobacz [Używanie powiązania danych wyjściowych tabeli programu Excel z kodu](#excel-output-code).|
-|**type**||Wymagane — musi być ustawiony na `excel`.|
-|**direction**||Wymagane — musi być ustawiony na `out`.|
+|**Nazwa**| nd. |Wymagane — nazwa zmiennej używana w kodzie funkcji dla tokenu uwierzytelniania. Zobacz [Używanie powiązania danych wyjściowych tabeli programu Excel z kodu](#excel-output-code).|
+|**type**| nd. |Wymagane — musi być ustawiony na `excel`.|
+|**direction**| nd. |Wymagane — musi być ustawiony na `out`.|
 |**Identity**|**Tożsamość**|Wymagane — tożsamość, która zostanie użyta do wykonania akcji. Może być jedną z następujących wartości:<ul><li><code>userFromRequest</code> — prawidłowy tylko z [Wyzwalacz HTTP]. Używa tożsamości użytkownika wywołującego.</li><li><code>userFromId</code> — używa tożsamości wcześniej zalogowanego użytkownika o określonym IDENTYFIKATORze. Zobacz Właściwość <code>userId</code>.</li><li><code>userFromToken</code> — używa tożsamości reprezentowanej przez określony token. Zobacz Właściwość <code>userToken</code>.</li><li><code>clientCredentials</code> — używa tożsamości aplikacji funkcji.</li></ul>|
 |**UserId** |**userId** |Wymagana, jeśli i tylko wtedy, gdy _tożsamość_ jest ustawiona na `userFromId`. Identyfikator podmiotu zabezpieczeń użytkownika skojarzony z wcześniej zalogowanym użytkownikiem.|
 |**userToken**|**UserToken**|Wymagana, jeśli i tylko wtedy, gdy _tożsamość_ jest ustawiona na `userFromToken`. Token ważny dla aplikacji funkcji. |
@@ -650,9 +650,9 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 
 |Właściwość Function.JSON | Właściwość atrybutu |Opis|
 |---------|---------|----------------------|
-|**Nazwa**||Wymagane — nazwa zmiennej używana w kodzie funkcji dla pliku. Zobacz [Używanie powiązania danych wejściowych pliku w usłudze OneDrive z kodu](#onedrive-input-code).|
-|**type**||Wymagane — musi być ustawiony na `onedrive`.|
-|**direction**||Wymagane — musi być ustawiony na `in`.|
+|**Nazwa**| nd. |Wymagane — nazwa zmiennej używana w kodzie funkcji dla pliku. Zobacz [Używanie powiązania danych wejściowych pliku w usłudze OneDrive z kodu](#onedrive-input-code).|
+|**type**| nd. |Wymagane — musi być ustawiony na `onedrive`.|
+|**direction**| nd. |Wymagane — musi być ustawiony na `in`.|
 |**Identity**|**Tożsamość**|Wymagane — tożsamość, która zostanie użyta do wykonania akcji. Może być jedną z następujących wartości:<ul><li><code>userFromRequest</code> — prawidłowy tylko z [Wyzwalacz HTTP]. Używa tożsamości użytkownika wywołującego.</li><li><code>userFromId</code> — używa tożsamości wcześniej zalogowanego użytkownika o określonym IDENTYFIKATORze. Zobacz Właściwość <code>userId</code>.</li><li><code>userFromToken</code> — używa tożsamości reprezentowanej przez określony token. Zobacz Właściwość <code>userToken</code>.</li><li><code>clientCredentials</code> — używa tożsamości aplikacji funkcji.</li></ul>|
 |**userId**|**UserId**  |Wymagana, jeśli i tylko wtedy, gdy _tożsamość_ jest ustawiona na `userFromId`. Identyfikator podmiotu zabezpieczeń użytkownika skojarzony z wcześniej zalogowanym użytkownikiem.|
 |**userToken**|**UserToken**|Wymagana, jeśli i tylko wtedy, gdy _tożsamość_ jest ustawiona na `userFromToken`. Token ważny dla aplikacji funkcji. |
@@ -798,9 +798,9 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 
 |Właściwość Function.JSON | Właściwość atrybutu |Opis|
 |---------|---------|----------------------|
-|**Nazwa**||Wymagane — nazwa zmiennej używana w kodzie funkcji dla pliku. Zobacz [Używanie powiązania danych wyjściowych pliku usługi OneDrive z kodu](#onedrive-output-code).|
-|**type**||Wymagane — musi być ustawiony na `onedrive`.|
-|**direction**||Wymagane — musi być ustawiony na `out`.|
+|**Nazwa**| nd. |Wymagane — nazwa zmiennej używana w kodzie funkcji dla pliku. Zobacz [Używanie powiązania danych wyjściowych pliku usługi OneDrive z kodu](#onedrive-output-code).|
+|**type**| nd. |Wymagane — musi być ustawiony na `onedrive`.|
+|**direction**| nd. |Wymagane — musi być ustawiony na `out`.|
 |**Identity**|**Tożsamość**|Wymagane — tożsamość, która zostanie użyta do wykonania akcji. Może być jedną z następujących wartości:<ul><li><code>userFromRequest</code> — prawidłowy tylko z [Wyzwalacz HTTP]. Używa tożsamości użytkownika wywołującego.</li><li><code>userFromId</code> — używa tożsamości wcześniej zalogowanego użytkownika o określonym IDENTYFIKATORze. Zobacz Właściwość <code>userId</code>.</li><li><code>userFromToken</code> — używa tożsamości reprezentowanej przez określony token. Zobacz Właściwość <code>userToken</code>.</li><li><code>clientCredentials</code> — używa tożsamości aplikacji funkcji.</li></ul>|
 |**UserId** |**userId** |Wymagana, jeśli i tylko wtedy, gdy _tożsamość_ jest ustawiona na `userFromId`. Identyfikator podmiotu zabezpieczeń użytkownika skojarzony z wcześniej zalogowanym użytkownikiem.|
 |**userToken**|**UserToken**|Wymagana, jeśli i tylko wtedy, gdy _tożsamość_ jest ustawiona na `userFromToken`. Token ważny dla aplikacji funkcji. |
@@ -949,9 +949,9 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 
 |Właściwość Function.JSON | Właściwość atrybutu |Opis|
 |---------|---------|----------------------|
-|**Nazwa**||Wymagane — nazwa zmiennej używana w kodzie funkcji dla wiadomości e-mail. Zobacz [Używanie powiązania danych wyjściowych wiadomości programu Outlook z kodu](#outlook-output-code).|
-|**type**||Wymagane — musi być ustawiony na `outlook`.|
-|**direction**||Wymagane — musi być ustawiony na `out`.|
+|**Nazwa**| nd. |Wymagane — nazwa zmiennej używana w kodzie funkcji dla wiadomości e-mail. Zobacz [Używanie powiązania danych wyjściowych wiadomości programu Outlook z kodu](#outlook-output-code).|
+|**type**| nd. |Wymagane — musi być ustawiony na `outlook`.|
+|**direction**| nd. |Wymagane — musi być ustawiony na `out`.|
 |**Identity**|**Tożsamość**|Wymagane — tożsamość, która zostanie użyta do wykonania akcji. Może być jedną z następujących wartości:<ul><li><code>userFromRequest</code> — prawidłowy tylko z [Wyzwalacz HTTP]. Używa tożsamości użytkownika wywołującego.</li><li><code>userFromId</code> — używa tożsamości wcześniej zalogowanego użytkownika o określonym IDENTYFIKATORze. Zobacz Właściwość <code>userId</code>.</li><li><code>userFromToken</code> — używa tożsamości reprezentowanej przez określony token. Zobacz Właściwość <code>userToken</code>.</li><li><code>clientCredentials</code> — używa tożsamości aplikacji funkcji.</li></ul>|
 |**userId**|**UserId**  |Wymagana, jeśli i tylko wtedy, gdy _tożsamość_ jest ustawiona na `userFromId`. Identyfikator podmiotu zabezpieczeń użytkownika skojarzony z wcześniej zalogowanym użytkownikiem.|
 |**userToken**|**UserToken**|Wymagana, jeśli i tylko wtedy, gdy _tożsamość_ jest ustawiona na `userFromToken`. Token ważny dla aplikacji funkcji. |
@@ -1092,9 +1092,9 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 
 |Właściwość Function.JSON | Właściwość atrybutu |Opis|
 |---------|---------|----------------------|
-|**Nazwa**||Wymagane — nazwa zmiennej używana w kodzie funkcji dla wiadomości e-mail. Zobacz [Używanie powiązania danych wyjściowych wiadomości programu Outlook z kodu](#outlook-output-code).|
-|**type**||Wymagane — musi być ustawiony na `graphWebhook`.|
-|**direction**||Wymagane — musi być ustawiony na `trigger`.|
+|**Nazwa**| nd. |Wymagane — nazwa zmiennej używana w kodzie funkcji dla wiadomości e-mail. Zobacz [Używanie powiązania danych wyjściowych wiadomości programu Outlook z kodu](#outlook-output-code).|
+|**type**| nd. |Wymagane — musi być ustawiony na `graphWebhook`.|
+|**direction**| nd. |Wymagane — musi być ustawiony na `trigger`.|
 |**resourceType**|**ResourceType**|Wymagane — zasób grafu, dla którego ta funkcja powinna reagować na elementy webhook. Może być jedną z następujących wartości:<ul><li><code>#Microsoft.Graph.Message</code> — zmiany wprowadzone w komunikatach programu Outlook.</li><li><code>#Microsoft.Graph.DriveItem</code> — zmiany wprowadzone do elementów głównych usługi OneDrive.</li><li><code>#Microsoft.Graph.Contact</code> — zmiany kontaktów osobistych w programie Outlook.</li><li><code>#Microsoft.Graph.Event</code> — zmiany wprowadzane do elementów kalendarza programu Outlook.</li></ul>|
 
 > [!Note]
@@ -1244,9 +1244,9 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 
 |Właściwość Function.JSON | Właściwość atrybutu |Opis|
 |---------|---------|----------------------|
-|**Nazwa**||Wymagane — nazwa zmiennej używana w kodzie funkcji dla wiadomości e-mail. Zobacz [Używanie powiązania danych wyjściowych wiadomości programu Outlook z kodu](#outlook-output-code).|
-|**type**||Wymagane — musi być ustawiony na `graphWebhookSubscription`.|
-|**direction**||Wymagane — musi być ustawiony na `in`.|
+|**Nazwa**| nd. |Wymagane — nazwa zmiennej używana w kodzie funkcji dla wiadomości e-mail. Zobacz [Używanie powiązania danych wyjściowych wiadomości programu Outlook z kodu](#outlook-output-code).|
+|**type**| nd. |Wymagane — musi być ustawiony na `graphWebhookSubscription`.|
+|**direction**| nd. |Wymagane — musi być ustawiony na `in`.|
 |**filter (filtrowanie)**|**Filtr**| Jeśli zostanie ustawiona na `userFromRequest`, powiązanie będzie pobierać tylko subskrypcje należące do użytkownika wywołującego (prawidłowe tylko przy użyciu [Wyzwalacz HTTP]).| 
 
 ### <a name="webhook-input---usage"></a>Dane wejściowe elementu webhook
@@ -1385,9 +1385,9 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 
 |Właściwość Function.JSON | Właściwość atrybutu |Opis|
 |---------|---------|----------------------|
-|**Nazwa**||Wymagane — nazwa zmiennej używana w kodzie funkcji dla wiadomości e-mail. Zobacz [Używanie powiązania danych wyjściowych wiadomości programu Outlook z kodu](#outlook-output-code).|
-|**type**||Wymagane — musi być ustawiony na `graphWebhookSubscription`.|
-|**direction**||Wymagane — musi być ustawiony na `out`.|
+|**Nazwa**| nd. |Wymagane — nazwa zmiennej używana w kodzie funkcji dla wiadomości e-mail. Zobacz [Używanie powiązania danych wyjściowych wiadomości programu Outlook z kodu](#outlook-output-code).|
+|**type**| nd. |Wymagane — musi być ustawiony na `graphWebhookSubscription`.|
+|**direction**| nd. |Wymagane — musi być ustawiony na `out`.|
 |**Identity**|**Tożsamość**|Wymagane — tożsamość, która zostanie użyta do wykonania akcji. Może być jedną z następujących wartości:<ul><li><code>userFromRequest</code> — prawidłowy tylko z [Wyzwalacz HTTP]. Używa tożsamości użytkownika wywołującego.</li><li><code>userFromId</code> — używa tożsamości wcześniej zalogowanego użytkownika o określonym IDENTYFIKATORze. Zobacz Właściwość <code>userId</code>.</li><li><code>userFromToken</code> — używa tożsamości reprezentowanej przez określony token. Zobacz Właściwość <code>userToken</code>.</li><li><code>clientCredentials</code> — używa tożsamości aplikacji funkcji.</li></ul>|
 |**userId**|**UserId**  |Wymagana, jeśli i tylko wtedy, gdy _tożsamość_ jest ustawiona na `userFromId`. Identyfikator podmiotu zabezpieczeń użytkownika skojarzony z wcześniej zalogowanym użytkownikiem.|
 |**userToken**|**UserToken**|Wymagana, jeśli i tylko wtedy, gdy _tożsamość_ jest ustawiona na `userFromToken`. Token ważny dla aplikacji funkcji. |

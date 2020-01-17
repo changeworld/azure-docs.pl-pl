@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 051b8780a102a8a1ec4d3979cc53b686e2823dc8
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 952a94797e01a3931fdd151461250af0c2590c11
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928591"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76120545"
 ---
 # <a name="mobile-apps-bindings-for-azure-functions"></a>Mobile Apps powiązania Azure Functions 
 
@@ -136,9 +136,9 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 
 |Właściwość Function.JSON | Właściwość atrybutu |Opis|
 |---------|---------|----------------------|
-| **type**|| Musi być ustawiony na "mobilny"|
-| **direction**||Musi być ustawiona na wartość "in"|
-| **Nazwa**|| Nazwa parametru wejściowego w sygnaturze funkcji.|
+| **type**| nd. | Musi być ustawiony na "mobilny"|
+| **direction**| nd. |Musi być ustawiona na wartość "in"|
+| **Nazwa**| nd. | Nazwa parametru wejściowego w sygnaturze funkcji.|
 |**tableName** |**TableName**|Nazwa tabeli danych aplikacji mobilnej|
 | **id**| **Identyfikator** | Identyfikator rekordu do pobrania. Może być statyczny lub oparty na wyzwalaczu, który wywołuje funkcję. Na przykład jeśli używasz wyzwalacza kolejki dla funkcji, `"id": "{queueTrigger}"` używa wartości ciągu komunikatu w kolejce jako identyfikatora rekordu do pobrania.|
 |**połączenia**|**Połączenie**|Nazwa ustawienia aplikacji z adresem URL aplikacji mobilnej. Funkcja używa tego adresu URL do konstruowania wymaganych operacji REST dla aplikacji mobilnej. Utwórz ustawienie aplikacji w aplikacji funkcji, która zawiera adres URL aplikacji mobilnej, a następnie określ nazwę ustawienia aplikacji we właściwości `connection` w powiązaniu wejściowym. Adres URL wygląda jak `http://<appname>.azurewebsites.net`.
@@ -294,9 +294,9 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 
 |Właściwość Function.JSON | Właściwość atrybutu |Opis|
 |---------|---------|----------------------|
-| **type**|| Musi być ustawiony na "mobilny"|
-| **direction**||Musi być ustawiona na wartość "out"|
-| **Nazwa**|| Nazwa parametru wyjściowego w sygnaturze funkcji.|
+| **type**| nd. | Musi być ustawiony na "mobilny"|
+| **direction**| nd. |Musi być ustawiona na wartość "out"|
+| **Nazwa**| nd. | Nazwa parametru wyjściowego w sygnaturze funkcji.|
 |**tableName** |**TableName**|Nazwa tabeli danych aplikacji mobilnej|
 |**połączenia**|**MobileAppUriSetting**|Nazwa ustawienia aplikacji z adresem URL aplikacji mobilnej. Funkcja używa tego adresu URL do konstruowania wymaganych operacji REST dla aplikacji mobilnej. Utwórz ustawienie aplikacji w aplikacji funkcji, która zawiera adres URL aplikacji mobilnej, a następnie określ nazwę ustawienia aplikacji we właściwości `connection` w powiązaniu wejściowym. Adres URL wygląda jak `http://<appname>.azurewebsites.net`.
 |**apiKey**|**ApiKeySetting**|Nazwa ustawienia aplikacji z kluczem interfejsu API aplikacji mobilnej. Podaj klucz interfejsu API w przypadku [zaimplementowania klucza interfejsu API w zapleczu aplikacji mobilnej Node. js](https://github.com/Azure/azure-mobile-apps-node/tree/master/samples/api-key)lub [ZAIMPLEMENTUJ klucz interfejsu API w zapleczu aplikacji mobilnej platformy .NET](https://github.com/Azure/azure-mobile-apps-net-server/wiki/Implementing-Application-Key). Aby podać klucz, Utwórz ustawienie aplikacji w aplikacji funkcji, która zawiera klucz interfejsu API, a następnie Dodaj właściwość `apiKey` w powiązaniu wejściowym przy użyciu nazwy ustawienia aplikacji. |

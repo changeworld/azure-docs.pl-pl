@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c58371edffa4400c2c2b3efd37c3ce6d7c3cad95
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: eb47b9df51803c76662b5fb4ca1fe23740e7af9a
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74847919"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76155064"
 ---
 # <a name="configuring-the-custom-banned-password-list"></a>Konfigurowanie listy niestandardowo zakazanych haseł
 
@@ -26,7 +26,7 @@ W wielu organizacjach użytkownicy mogą tworzyć hasła przy użyciu wspólnych
 
 Skonfigurowanie niestandardowej listy haseł zabronionych wymaga licencji na Azure Active Directory — wersja Premium P1 lub P2. Aby uzyskać szczegółowe informacje na temat licencjonowania Azure Active Directory, zobacz [stronę cennika Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory/).
 
-1. Zaloguj się do [Azure Portal](https://portal.azure.com) i przejdź do **Azure Active Directory**, **metody uwierzytelniania**, a następnie **Ochrona hasłem**.
+1. Zaloguj się do [Azure Portal](https://portal.azure.com) i przejdź do **Azure Active Directory** > **zabezpieczenia** > **metody uwierzytelniania** > **ochronę hasłem**.
 1. Ustaw opcję **Wymuszaj listę niestandardową**na **wartość tak**.
 1. Dodawanie ciągów do **listy niestandardowych zakazanych haseł**, jeden ciąg na wiersz
    * Niestandardowa lista wykluczonych haseł może zawierać do 1000 warunków.

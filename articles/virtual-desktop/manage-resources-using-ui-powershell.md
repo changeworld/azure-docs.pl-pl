@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 01/10/2020
 ms.author: helohr
-ms.openlocfilehash: 5049c32e06967cc123a24f07f601c1698bea3351
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: d7304c1267c4a4f5548bb57ffb3e6016fac21d99
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75896430"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122512"
 ---
 # <a name="deploy-a-management-tool-with-powershell"></a>Wdrażanie narzędzia do zarządzania przy użyciu programu PowerShell
 
@@ -135,7 +135,7 @@ Aby sprawdzić konfigurację aplikacji usługi Azure AD i zapewnić zgodę:
    
    [![stronie Uwierzytelnianie z wprowadzonym identyfikatorem URI przekierowania](media/management-ui-redirect-uri-inline.png)](media/management-ui-redirect-uri-expanded.png#lightbox)
 
-5. W lewym panelu wybierz pozycję **uprawnienia interfejsu API** , aby potwierdzić, że uprawnienia zostały dodane. Jeśli jesteś administratorem globalnym, wybierz przycisk **`tenantname`zgoda administratora** , a następnie postępuj zgodnie z instrukcjami wyświetlanymi w oknie dialogowym, aby zapewnić zgodę administratora na swoją organizację.
+5. W lewym panelu wybierz pozycję **uprawnienia interfejsu API** , aby potwierdzić, że uprawnienia zostały dodane. Jeśli jesteś administratorem globalnym, wybierz przycisk **Udziel zgody administratorowi na `tenantname`** i postępuj zgodnie z instrukcjami wyświetlanymi w oknie dialogowym, aby zapewnić zgodę administratora na swoją organizację.
     
     [![stronę uprawnień interfejsu API](media/management-ui-permissions-inline.png)](media/management-ui-permissions-expanded.png#lightbox)
 

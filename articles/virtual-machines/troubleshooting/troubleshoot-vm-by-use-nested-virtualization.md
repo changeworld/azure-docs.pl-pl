@@ -1,5 +1,5 @@
 ---
-title: Rozwiązywanie problemów z maszyną wirtualną platformy Azure przy użyciu wirtualizacji zagnieżdżonej na platformie Azure | Microsoft Docs
+title: Rozwiązywanie problemów z wadliwą maszyną wirtualną platformy Azure przy użyciu wirtualizacji zagnieżdżonej na platformie Azure | Microsoft Docs
 description: Jak rozwiązywać problemy z maszyną wirtualną platformy Azure przy użyciu wirtualizacji zagnieżdżonej na platformie Azure
 services: virtual-machines-windows
 documentationcenter: ''
@@ -13,20 +13,20 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: genli
-ms.openlocfilehash: 4ef8bc029c63aaf297462a7b53f6daba1a7c850b
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: e1acfc3216ccfaeac035f1ff31e82c7b67c17daf
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028427"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76119622"
 ---
-# <a name="troubleshoot-a-problem-azure-vm-by-using-nested-virtualization-in-azure"></a>Rozwiązywanie problemów z maszyną wirtualną platformy Azure przy użyciu wirtualizacji zagnieżdżonej na platformie Azure
+# <a name="troubleshoot-a-faulty-azure-vm-by-using-nested-virtualization-in-azure"></a>Rozwiązywanie problemów z wadliwą maszyną wirtualną platformy Azure przy użyciu wirtualizacji zagnieżdżonej na platformie Azure
 
-W tym artykule pokazano, jak utworzyć zagnieżdżone środowisko wirtualizacji w Microsoft Azure, aby można było zainstalować dysk maszyny wirtualnej z problemami na hoście funkcji Hyper-V (ratowniczej maszyny wirtualnej) na potrzeby rozwiązywania problemów.
+W tym artykule pokazano, jak utworzyć zagnieżdżone środowisko wirtualizacji w Microsoft Azure, aby można było zainstalować dysk uszkodzonej maszyny wirtualnej na hoście funkcji Hyper-V (maszyna ratownicza) na potrzeby rozwiązywania problemów.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby można było zainstalować maszynę wirtualną problemu, maszyna ratownicza musi używać tego samego typu konta magazynu (Standard lub Premium) jako maszyny wirtualnej problemu.
+Aby można było zainstalować wadliwą maszynę wirtualną, maszyna ratownicza musi używać tego samego typu konta magazynu (warstwy Standardowa lub Premium) jako uszkodzonej maszyny wirtualnej.
 
 ## <a name="step-1-create-a-rescue-vm-and-install-hyper-v-role"></a>Krok 1. Tworzenie ratowniczej maszyny wirtualnej i Instalowanie roli funkcji Hyper-V
 
@@ -36,9 +36,9 @@ Aby można było zainstalować maszynę wirtualną problemu, maszyna ratownicza 
 
     -  Rozmiar: Każda seria v3 z co najmniej dwoma rdzeniami obsługującymi wirtualizację zagnieżdżoną. Aby uzyskać więcej informacji, zobacz [wprowadzenie nowych rozmiarów maszyn wirtualnych Dv3 i EV3](https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/).
 
-    -  Ta sama lokalizacja, konto magazynu i Grupa zasobów jest taka sama jak maszyna wirtualna problemu.
+    -  Ta sama lokalizacja, konto magazynu i Grupa zasobów działa jako uszkodzona maszyna wirtualna.
 
-    -  Wybierz ten sam typ magazynu co maszyna wirtualna o problemach (standardowa lub Premium).
+    -  Wybierz ten sam typ magazynu co wadliwa maszyna wirtualna (standardowa lub Premium).
 
 2.  Po utworzeniu łodziowej maszyny wirtualnej do ratowniczej maszyny wirtualnej.
 
@@ -64,13 +64,13 @@ Aby można było zainstalować maszynę wirtualną problemu, maszyna ratownicza 
 
 13. Zezwól serwerowi na zainstalowanie roli funkcji Hyper-V. Trwa to kilka minut, a serwer zostanie automatycznie uruchomiony ponownie.
 
-## <a name="step-2-create-the-problem-vm-on-the-rescue-vms-hyper-v-server"></a>Krok 2. Tworzenie maszyny wirtualnej problemu na serwerze funkcji Hyper-V z systemem ratowniczej maszyny wirtualnej
+## <a name="step-2-create-the-faulty-vm-on-the-rescue-vms-hyper-v-server"></a>Krok 2. utworzenie uszkodzonej maszyny wirtualnej na serwerze funkcji Hyper-V z systemem ratowniczej maszyny wirtualnej
 
 1.  [Utwórz dysk migawki](troubleshoot-recovery-disks-portal-windows.md#take-a-snapshot-of-the-os-disk) dla dysku systemu operacyjnego maszyny wirtualnej, który ma problem, a następnie Dołącz dysk migawki do maszyny wirtualnej recuse.
 
 2.  Pulpit zdalny na ratowniczą maszynę wirtualną.
 
-3.  Otwórz przystawkę Zarządzanie dyskami (diskmgmt. msc). Upewnij się, że dysk maszyny wirtualnej problemu jest ustawiony na **tryb offline**.
+3.  Otwórz przystawkę Zarządzanie dyskami (diskmgmt. msc). Upewnij się, że dysk uszkodzonej maszyny wirtualnej jest ustawiony na **tryb offline**.
 
 4.  Otwórz Menedżera funkcji Hyper-V: w **Menedżer serwera**wybierz **rolę funkcji Hyper-v**. Kliknij prawym przyciskiem myszy serwer, a następnie wybierz **Menedżera funkcji Hyper-V**.
 
@@ -96,7 +96,7 @@ Aby można było zainstalować maszynę wirtualną problemu, maszyna ratownicza 
 
     ![obraz przedstawiający Dodawanie nowego dysku twardego](media/troubleshoot-vm-by-use-nested-virtualization/create-new-drive.png)    
 
-14. Na stronie **fizyczny dysk twardy**wybierz dysk maszyny wirtualnej problemu dołączonej do maszyny wirtualnej platformy Azure. Jeśli nie widzisz żadnych dysków na liście, sprawdź, czy dysk jest ustawiony do trybu offline przy użyciu przystawki Zarządzanie dyskami.
+14. Na stronie **fizyczny dysk twardy**wybierz dysk USZKODZONEJ maszyny wirtualnej, która została podłączona do maszyny wirtualnej platformy Azure. Jeśli nie widzisz żadnych dysków na liście, sprawdź, czy dysk jest ustawiony do trybu offline przy użyciu przystawki Zarządzanie dyskami.
 
     ![obraz dotyczący instalowania dysku](media/troubleshoot-vm-by-use-nested-virtualization/mount-disk.png)  
 
@@ -107,7 +107,7 @@ Aby można było zainstalować maszynę wirtualną problemu, maszyna ratownicza 
 
 17. Teraz możesz współpracować z maszyną wirtualną jako lokalną maszynę wirtualną. Można wykonać dowolne kroki rozwiązywania problemów.
 
-## <a name="step-3-replace-the-os-disk-used-by-the-problem-vm"></a>Krok 3. zastępowanie dysku systemu operacyjnego używanego przez maszynę wirtualną problemu
+## <a name="step-3-replace-the-os-disk-used-by-the-faulty-vm"></a>Krok 3. zastępowanie dysku systemu operacyjnego używanego przez wadliwą maszynę wirtualną
 
 1.  Po przejściu maszyny wirtualnej w tryb online Zamknij maszynę wirtualną w Menedżerze funkcji Hyper-V.
 

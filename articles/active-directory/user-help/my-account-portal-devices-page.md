@@ -12,24 +12,27 @@ ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 37994125f7f1a7119a8878c7edec401328fd75ca
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 9cd2d712dfcc6d3f01cbdb1f4886dd64a6d299d4
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74233214"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156220"
 ---
-# <a name="manage-devices-connected-to-your-work-or-school-account-from-the-devices-page"></a>Zarządzanie urządzeniami połączonymi z kontem służbowym ze strony urządzenia
+# <a name="manage-your-connected-devices-from-the-devices-page"></a>Zarządzanie urządzeniami połączonymi ze strony urządzenia
 
-Na stronie **urządzenia** w portalu **My Account** można:
+Strona **urządzenia** w portalu **My Account** umożliwia zarządzanie urządzeniami połączonymi z kontem służbowym. Na stronie **urządzenia** można:
 
 - Wyświetl urządzenia połączone z kontem służbowym.
 
 - Wyłącz wszystkie urządzenia, które nie są już używane, zostały utracone lub skradzione.
 
+>[!Important]
+>Ten artykuł jest przeznaczony dla użytkowników próbujących zaktualizować informacje o urządzeniu połączone z kontem służbowym. Jeśli jesteś administratorem, który szuka informacji o zarządzaniu urządzeniami dla pracowników i innych użycia, zobacz [dokumentację dotyczącą tożsamości urządzeń](https://docs.microsoft.com/azure/active-directory/devices/index).
+
 ## <a name="view-your-connected-devices"></a>Wyświetlanie podłączonych urządzeń
 
-1. Zaloguj się do swojego konta służbowego, a następnie przejdź na stronę https://myprofile.microsoft.com/.
+1. Zaloguj się do konta służbowego, a następnie przejdź do strony **Moje konto** (https://myprofile.microsoft.com/).
 
 2. Wybierz pozycję **urządzenia** w okienku nawigacji po lewej stronie lub wybierz łącze **Zarządzaj urządzeniami** w bloku **urządzenia** .
 
@@ -73,3 +76,13 @@ Po wyświetleniu połączonych urządzeń można:
 - Wyświetlanie [działania związanego z logowaniem](my-account-portal-sign-ins-page.md).
 
 - Zobacz, w jaki sposób organizacja [używa danych związanych z prywatnością](my-account-portal-privacy-page.md).
+
+## <a name="related-office-content"></a>Powiązana zawartość pakietu Office
+
+- [Zaloguj się, aby zarządzać produktem pakietu Office](https://support.office.com/article/sign-in-to-manage-your-office-product-959ac957-8d37-4ae4-b1b6-d6e4874e013f)
+
+- [Przejdź do strony **Moje konto** pakietu Office](https://portal.office.com/account/#home)
+
+- [Przejdź do strony **Moje instalacje** pakietu Office](https://portal.office.com/account/#installs)
+
+- [Przejdź do strony **subskrypcji** pakietu Office](https://portal.office.com/account/#subscriptions)

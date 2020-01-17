@@ -10,14 +10,14 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 1/8/2020
+ms.date: 1/15/2020
 ms.author: raiye
-ms.openlocfilehash: dd148a4dd454e2ebebcb6b9befc576570ecb0352
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: 1139e2b26cdc1dee524b1d3b6a942c735c43aec7
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75778213"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122249"
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Wersje systemu operacyjnego gościa platformy Azure i macierz zgodności zestawu SDK
 Program udostępnia aktualne informacje o najnowszych wersjach systemu operacyjnego gościa platformy Azure dla Cloud Services. Te informacje ułatwiają zaplanowanie ścieżki uaktualnienia przed wyłączeniem systemu operacyjnego gościa. Jeśli skonfigurujesz role do korzystania z *automatycznych* aktualizacji systemu operacyjnego gościa zgodnie z opisem w [ustawieniach aktualizacji systemu operacyjnego gościa platformy Azure][Azure Guest OS Update Settings], nie trzeba przeczytywać tej strony.
@@ -214,9 +214,9 @@ Wydano system operacyjny gościa w trybie gościnnym.
 
 | Ciąg konfiguracji | Data wydania | Data wyłączenia |
 | --- | --- | --- |
-| WA-GOŚĆ-OS-2.94 _201912-01 | 8 stycznia 2020 | Wpis 2,95 |  
-| WA-GOŚĆ-OS-2.93 _201911-01 | 5 grudnia 2019 | Wpis 2,94 |  
-|~-GUEST-OS-2.91 _201910-01 ~| 1 listopada 2019 r. | 8 stycznia 2020 |  
+| WA-GOŚĆ-OS-2.93 _201912-01 | 8 stycznia 2020 | Wpis 2,95 |  
+| WA-GOŚĆ-OS-2.92 _201911-01 | 5 grudnia 2019 | Wpis 2,94 |  
+|~~WA-GOŚĆ-OS-2.91 _201910-01~~| 1 listopada 2019 r. | 8 stycznia 2020 |  
 |~~WA-GOŚĆ-OS-2.90 _201909-01~~| 7 października 2019 | 5 grudnia 2019 |  
 |~~WA-GOŚĆ-OS-2.89 _201908-01~~| 4 sierpnia 2019 | 1 listopada 2019 r. |  
 |~~WA-GOŚĆ-OS-2,88 _201907-01~~| 26 lipca 2019 | 7 października 2019 |

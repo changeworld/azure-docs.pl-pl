@@ -4,14 +4,14 @@ description: Linki do dodatkowych informacji na temat avere vFXT dla platformy A
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 01/09/2019
+ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: fbd763827383c5ded2bb4ef0047ea3c5f650d78e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 78e0500057baf407f1d26afe29d9df1e525cbf3d
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75416326"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76153772"
 ---
 # <a name="additional-documentation"></a>Dodatkowa dokumentacja
 
@@ -33,4 +33,4 @@ Dodatkową dokumentację dotyczącą klastrów avere można znaleźć w witrynie
 
 ## <a name="vfxt-creation-and-management-documentation"></a>Dokumentacja tworzenia i zarządzania vFXT
 
-Pełny przewodnik po użyciu narzędzia vfxt.py, tworzenia i zarządzania klastrem w chmurze znajduje się w witrynie GitHub: [Zarządzanie klastrem w chmurze za pomocą usługi vfxt.py](https://github.com/Azure/AvereSDK/blob/master/docs/README.md).
+Pełny przewodnik dotyczący korzystania z vfxt.py, narzędzia do tworzenia i zarządzania klastrem w chmurze opartym na skrypcie znajduje się w witrynie GitHub: [Zarządzanie klastrem w chmurze za pomocą usługi vfxt.py](https://github.com/Azure/AvereSDK/blob/master/docs/README.md).

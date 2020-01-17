@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: f8acf499d4d82c49096e4e5beff8209d0970b421
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 1ce564767fe9664604687d8cbaced58507e6b8b3
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71064332"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76119656"
 ---
 # <a name="contentdefinitions"></a>ContentDefinitions
 
@@ -37,13 +37,13 @@ Poniższy przykład pokazuje identyfikator definicji zawartości i definicję zl
   <Metadata>
     <Item Key="DisplayName">Local account sign up page</Item>
   </Metadata>
-  <LoalizedResourcesReferences MergeBehavior="Prepend">
+  <LocalizedResourcesReferences MergeBehavior="Prepend">
     <LocalizedResourcesReference Language="en" LocalizedResourcesReferenceId="api.localaccountsignup.en" />
     <LocalizedResourcesReference Language="es" LocalizedResourcesReferenceId="api.localaccountsignup.es" />
     ...
 ```
 
-Metadane **LocalAccountSignUpWithLogonEmail** z własnym profilem technicznym zawiera identyfikator definicji zawartości **ContentDefinitionReferenceId** ustawiony na`api.localaccountsignup`
+Metadane **LocalAccountSignUpWithLogonEmail** z własnym profilem technicznym zawiera identyfikator definicji zawartości **ContentDefinitionReferenceId** ustawiony na `api.localaccountsignup`
 
 ```XML
 <TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">
@@ -63,23 +63,23 @@ Element **ContentDefinition** zawiera następujący atrybut:
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| Id | Tak | Identyfikator definicji zawartości. Wartość jest określona w sekcji **identyfikatorów definicji zawartości** w dalszej części tej strony. |
+| Identyfikator | Tak | Identyfikator definicji zawartości. Wartość jest określona w sekcji **identyfikatorów definicji zawartości** w dalszej części tej strony. |
 
 Element **ContentDefinition** zawiera następujące elementy:
 
-| Element | Wystąpienia | Opis |
+| Element | Wystąpień | Opis |
 | ------- | ----------- | ----------- |
 | LoadUri | 1:1 | Ciąg, który zawiera adres URL strony HTML5 dla definicji zawartości. |
 | RecoveryUri | 0:1 | Ciąg, który zawiera adres URL strony HTML służącej do wyświetlania błędu związanego z definicją zawartości. |
-| dataUri | 1:1 | Ciąg zawierający względny adres URL pliku HTML, który udostępnia środowisko użytkownika do wywołania dla kroku. |
+| DataUri | 1:1 | Ciąg zawierający względny adres URL pliku HTML, który udostępnia środowisko użytkownika do wywołania dla kroku. |
 | Metadane | 1:1 | Kolekcja par klucz/wartość, które zawierają metadane wykorzystane w definicji zawartości. |
 | LocalizedResourcesReferences | 0:1 | Kolekcja zlokalizowanych zasobów. Użyj tego elementu, aby dostosować lokalizację interfejsu użytkownika i atrybutu oświadczeń. |
 
-### <a name="datauri"></a>dataUri
+### <a name="datauri"></a>DataUri
 
-Element **DataUri** jest używany do określania identyfikatora strony. Azure AD B2C używa identyfikatora strony do ładowania i inicjowania elementów interfejsu użytkownika oraz języka JavaScript po stronie klienta. Format wartości to `urn:com:microsoft:aad:b2c:elements:page-name:version`.  Poniższa tabela zawiera listę identyfikatorów stron, których można użyć.
+Element **DataUri** jest używany do określania identyfikatora strony. Azure AD B2C używa identyfikatora strony do ładowania i inicjowania elementów interfejsu użytkownika oraz języka JavaScript po stronie klienta. Format wartości jest `urn:com:microsoft:aad:b2c:elements:page-name:version`.  Poniższa tabela zawiera listę identyfikatorów stron, których można użyć.
 
-| Value |   Opis |
+| Wartość |   Opis |
 | ----- | ----------- |
 | `urn:com:microsoft:aad:b2c:elements:globalexception:1.1.0` | Wyświetla stronę błędu w przypadku napotkania wyjątku lub błędu. |
 | `urn:com:microsoft:aad:b2c:elements:idpselection:1.0.0` | Wyświetla listę dostawców tożsamości, spośród których użytkownicy mogą wybierać podczas logowania. |
@@ -93,7 +93,7 @@ Element **DataUri** jest używany do określania identyfikatora strony. Azure AD
 
 Element **LocalizedResourcesReferences** zawiera następujące elementy:
 
-| Element | Wystąpienia | Opis |
+| Element | Wystąpień | Opis |
 | ------- | ----------- | ----------- |
 | LocalizedResourcesReference | 1: n | Lista zlokalizowanych odwołań do zasobów dla definicji zawartości. |
 
@@ -141,7 +141,7 @@ Aby dowiedzieć się, jak dodać obsługę lokalizacji do definicji zawartości,
 
 Atrybut ID elementu **ContentDefinition** określa typ strony, która odnosi się do definicji zawartości. Element definiuje kontekst, który ma zostać zastosowany do niestandardowego szablonu HTML5/CSS. W poniższej tabeli opisano zbiór identyfikatorów definicji zawartości rozpoznawanych przez platformę obsługi tożsamości oraz typy stron, które odnoszą się do nich. Możesz tworzyć własne definicje zawartości przy użyciu dowolnego identyfikatora.
 
-| id | Szablon domyślny | Opis |
+| ID | Szablon domyślny | Opis |
 | -- | ---------------- | ----------- |
 | **api.error** | [exception.cshtml](https://login.microsoftonline.com/static/tenant/default/exception.cshtml) | **Strona błędu** — wyświetla stronę błędu w przypadku napotkania wyjątku lub błędu. |
 | **API. idpselections** | [idpSelector.cshtml](https://login.microsoftonline.com/static/tenant/default/idpSelector.cshtml) | **Strona wyboru dostawcy tożsamości** — wyświetla listę dostawców tożsamości, spośród których użytkownicy mogą wybierać podczas logowania. Te opcje są zwykle dostawcami tożsamości przedsiębiorstwa, dostawcami tożsamości społecznościowych, takimi jak Facebook, Google + lub kontami lokalnymi. |

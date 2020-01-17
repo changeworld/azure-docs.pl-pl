@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/21/2019
 ms.author: kumud
-ms.openlocfilehash: 907a6de2ff89ddd3c2cb5bdab67e1deb984141dc
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: d08ce1c382d173ac98a0e61e6117ed50b958ba44
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965236"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76119843"
 ---
 # <a name="upgrade-an-ipv4-application-to-ipv6-in-azure-virtual-network---powershell-preview"></a>Uaktualnianie aplikacji IPv4 do protokołu IPv6 w usłudze Azure Virtual Network — PowerShell (wersja zapoznawcza)
 
@@ -26,7 +26,7 @@ W tym artykule opisano sposób dodawania łączności IPv6 do istniejącej aplik
 - Przestrzeń adresowa IPv6 dla sieci wirtualnej i podsieci
 - usługa Load Balancer w warstwie Standardowa z konfiguracjami frontonu IPv4 i IPV6
 - Maszyny wirtualne z kartami sieciowymi z konfiguracją IPv4 + IPv6
-- IPv publiczny adres IP, aby moduł równoważenia obciążenia miał łączność z Internetem za pośrednictwem Internetu
+- Publiczny adres IP IPv6, dzięki czemu moduł równoważenia obciążenia ma łączność z Internetem za pośrednictwem Internetu
 
 > [!Important]
 > Obsługa protokołu IPv6 dla usługi Azure Virtual Network jest obecnie w publicznej wersji zapoznawczej. Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać szczegółowe informacje, zobacz [Dodatkowe warunki użytkowania wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).

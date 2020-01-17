@@ -3,18 +3,18 @@ title: 'Szybki Start: interakcyjne wyszukiwanie map przy użyciu Azure Maps | Ma
 description: Dowiedz się, jak utworzyć pokazową aplikację sieci Web dla interakcyjnego wyszukiwania mapy za pomocą Microsoft Azure Maps Web SDK.
 author: walsehgal
 ms.author: v-musehg
-ms.date: 11/08/2019
+ms.date: 1/14/2020
 ms.topic: quickstart
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 5f11fa4fce38b125e21564b4cfbe4582e55a7b64
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 4081dd383fc0e7378bc8c8438781c13e6a34e075
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910691"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156441"
 ---
 # <a name="quickstart-create-an-interactive-search-map-by-using-azure-maps"></a>Szybki Start: Tworzenie mapy wyszukiwania interaktywnego za pomocą Azure Maps
 
@@ -26,7 +26,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
 
-Zaloguj się do [portalu Azure](https://portal.azure.com).
+Zaloguj się do [Portalu Azure](https://portal.azure.com).
 
 <a id="createaccount"></a>
 
@@ -61,7 +61,7 @@ Po pomyślnym utworzeniu konta usługi Maps pobierz klucz, który umożliwia wys
 
 ## <a name="download-the-application"></a>Pobieranie aplikacji
 
-1. Pobierz lub skopiuj zawartość pliku [interactiveSearch.html](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/interactiveSearch.html).
+1. Przejdź do [interactiveSearch. html](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/interactiveSearch.html) i kliknij go, aby wyświetlić zawartość w interfejsie użytkownika usługi GitHub. Kliknij prawym przyciskiem myszy **pierwotny** przycisk i skopiuj zawartość pliku lub Zapisz jako, aby pobrać plik.
 2. Zapisz lokalnie zawartość tego pliku jako **AzureMapDemo.html**. Otwórz ten plik w edytorze tekstów.
 3. Wyszukaj ciąg `<Your Azure Maps Key>`. Zastąp go wartością pola **Klucz podstawowy** z poprzedniej sekcji.
 

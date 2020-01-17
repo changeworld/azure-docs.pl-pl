@@ -3,12 +3,12 @@ title: Obsługa oceny funkcji Hyper-V w Azure Migrate
 description: Dowiedz się więcej o obsłudze oceny funkcji Hyper-V za pomocą Azure Migrate.
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: 20bdbb16d2f0610f6519424141b09190eae3cc42
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 1a036e2f22bb1fd9dac65a3cc643224ecbea3c69
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028786"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76154809"
 ---
 # <a name="support-matrix-for-hyper-v-assessment"></a>Macierz obsługi dla oceny funkcji Hyper-V
 
@@ -67,6 +67,19 @@ Poniższa tabela zawiera podsumowanie wymagań dotyczących portów dla oceny.
 **Wprowadzony** | Połączenia przychodzące na porcie TCP 3389, aby zezwolić na połączenia pulpitu zdalnego z urządzeniem.<br/> Połączenia przychodzące na porcie 44368 do zdalnego dostępu do aplikacji do zarządzania urządzeniami przy użyciu adresu URL: ``` https://<appliance-ip-or-name>:44368 ```<br/> Połączenia wychodzące na portach 443, 5671 i 5672 do wysyłania metadanych odnajdywania i wydajności do Azure Migrate.
 **Host/klaster funkcji Hyper-V** | Połączenia przychodzące na portach usługi WinRM 5985 (HTTP) i 5986 (HTTPS) do ściągania metadanych konfiguracji i wydajności maszyn wirtualnych funkcji Hyper-V przy użyciu sesji model wspólnych informacji (CIM).
 
+## <a name="agent-based-dependency-visualization"></a>Wizualizacja zależności oparta na agencie
+
+[Wizualizacja zależności](concepts-dependency-visualization.md) ułatwia wizualizację zależności między maszynami, które mają zostać poddane ocenie i przeprowadzeniem migracji. W przypadku wizualizacji opartej na agencie, wymagania i ograniczenia są podsumowane w poniższej tabeli.
+
+
+**Wymaganie** | **Szczegóły**
+--- | ---
+**Wdrożenie** | Przed wdrożeniem wizualizacji zależności należy mieć projekt Azure Migrate na miejscu, z Azure Migrate: Narzędzie do oceny serwera dodane do projektu. Wizualizacja zależności jest wdrażana po skonfigurowaniu urządzenia Azure Migrate w celu odnalezienia maszyn lokalnych.<br/><br/> Wizualizacja zależności nie jest dostępna w Azure Government.
+**Mapa usługi** | Wizualizacja zależności oparta na agentach używa rozwiązania [Service map](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-service-map) w [dziennikach Azure monitor](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview).<br/><br/> Aby wdrożyć program, należy skojarzyć nowy lub istniejący obszar roboczy Log Analytics z projektem Azure Migrate.
+**Obszar roboczy usługi Log Analytics** | Obszar roboczy musi znajdować się w tej samej subskrypcji co projekt Azure Migrate.<br/><br/> Azure Migrate obsługuje obszary robocze znajdujące się w regionach Wschodnie stany USA, Azja Południowo-Wschodnia i Europa Zachodnia.<br/><br/>  Obszar roboczy musi znajdować się w regionie, w którym [jest obsługiwana Service map](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-enable-overview#prerequisites).<br/><br/> Obszaru roboczego dla projektu Azure Migrate nie można modyfikować po jego dodaniu.
+**Charges** (Opłaty) | Service Map rozwiązanie nie wiąże się z żadnymi opłatami za pierwsze 180 dni (od dnia skojarzonego Log Analytics obszaru roboczego z projektem Azure Migrate).<br/><br/> Po 180 dniach opłaty zostaną naliczone według standardowych Log Analytics.<br/><br/> Użycie dowolnego rozwiązania innego niż Service Map w skojarzonym Log Analytics obszarze roboczym spowoduje naliczenie standardowych Log Analytics opłat.<br/><br/> Jeśli usuniesz projekt Azure Migrate, obszar roboczy nie zostanie usunięty z nim. Po usunięciu projektu Service Map nie jest bezpłatny, a każdy węzeł będzie obciążany zgodnie z warstwą płatną Log Analytics obszarze roboczym.
+**Pracownicy** | Wizualizacja zależności oparta na agentach wymaga zainstalowania dwóch agentów na każdej maszynie, która ma zostać przeanalizowana.<br/><br/> - [Microsoft Monitoring Agent (MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows)<br/><br/> [Agent zależności](https://docs.microsoft.com/azure/azure-monitor/platform/agents-overview#dependency-agent)- . 
+**Łączność z Internetem** | Jeśli maszyny nie są połączone z Internetem, należy zainstalować na nich bramę Log Analytics.
 
 
 ## <a name="next-steps"></a>Następne kroki

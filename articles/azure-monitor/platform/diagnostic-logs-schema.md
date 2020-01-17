@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 10/22/2019
 author: rboucher
 ms.author: robb
-ms.openlocfilehash: e744cdde298054de3631adb96b56bbc808f36a38
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 044c453152d44420d5e78855751a2680698e89f3
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750940"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76120149"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-resource-logs"></a>Obsługiwane usługi, schematy i kategorie dla dzienników zasobów platformy Azure
 
@@ -86,6 +86,9 @@ Schemat dzienników diagnostycznych zasobów różni się w zależności od kate
 | Bramy sieci wirtualnej | Schemat jest niedostępny. |
 
 ## <a name="supported-log-categories-per-resource-type"></a>Obsługiwane kategorie dzienników według typu zasobu
+
+Niektóre kategorie mogą być obsługiwane tylko dla określonych typów zasobów. Jest to lista wszystkich, które są dostępne w pewnym formularzu.  Na przykład kategorie Microsoft. SQL/serwery/bazy danych nie są dostępne dla wszystkich typów baz danych. Aby uzyskać więcej informacji, zobacz [Informacje o rejestrowaniu diagnostyki SQL Database](../../sql-database/sql-database-metrics-diag-logging.md). 
+
 |Typ zasobu|Kategoria|Nazwa wyświetlana kategorii|
 |---|---|---|
 |Microsoft. AAD/domainServices|SystemSecurity|SystemSecurity|

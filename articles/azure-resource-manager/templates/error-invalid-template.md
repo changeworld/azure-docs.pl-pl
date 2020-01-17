@@ -3,12 +3,12 @@ title: Nieprawidłowe błędy szablonu
 description: Opisuje sposób rozwiązywania nieprawidłowych błędów szablonów podczas wdrażania szablonów Azure Resource Manager.
 ms.topic: troubleshooting
 ms.date: 03/08/2018
-ms.openlocfilehash: 9337812152dac7948afc7471760f3dc14443f549
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 65cd69d67933d117b51f37b587b276aec2bd635a
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75484573"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76154061"
 ---
 # <a name="resolve-errors-for-invalid-template"></a>Rozwiązywanie błędów dla nieprawidłowego szablonu
 
@@ -86,18 +86,18 @@ W przypadku zasobów podrzędnych typ i nazwa mają tę samą liczbę segmentów
 
 ```json
 "resources": [
-    {
-        "type": "Microsoft.KeyVault/vaults",
-        "name": "contosokeyvault",
+  {
+    "type": "Microsoft.KeyVault/vaults",
+    "name": "contosokeyvault",
+    ...
+    "resources": [
+      {
+        "type": "secrets",
+        "name": "appPassword",
         ...
-        "resources": [
-            {
-                "type": "secrets",
-                "name": "appPassword",
-                ...
-            }
-        ]
-    }
+      }
+    ]
+  }
 ]
 ```
 
@@ -105,9 +105,9 @@ Uzyskanie segmentów bezpośrednio może być trudne w przypadku Menedżer zasob
 
 ```json
 {
-    "type": "Microsoft.Web/sites/providers/locks",
-    "name": "[concat(variables('siteName'),'/Microsoft.Authorization/MySiteLock')]",
-    ...
+  "type": "Microsoft.Web/sites/providers/locks",
+  "name": "[concat(variables('siteName'),'/Microsoft.Authorization/MySiteLock')]",
+  ...
 }
 ```
 
@@ -140,13 +140,13 @@ Ten błąd występuje, gdy zasoby są zależne od siebie w sposób uniemożliwia
 
 Aby rozwiązać zależność cykliczną:
 
-1. W szablonie Znajdź zasób zidentyfikowany w zależności cyklicznej. 
-2. W przypadku tego zasobu Sprawdź Właściwość **dependsOn** i wszelkie zastosowania funkcji **Reference** , aby zobaczyć, które zasoby są od niego zależne. 
+1. W szablonie Znajdź zasób zidentyfikowany w zależności cyklicznej.
+2. W przypadku tego zasobu Sprawdź Właściwość **dependsOn** i wszelkie zastosowania funkcji **Reference** , aby zobaczyć, które zasoby są od niego zależne.
 3. Sprawdź te zasoby, aby zobaczyć, które zasoby są od nich zależne. Obserwuj zależności do momentu zauważenia zasobu, który zależy od oryginalnego zasobu.
-5. W przypadku zasobów związanych z zależnością cykliczną należy uważnie sprawdzić wszystkie zastosowania właściwości **dependsOn** , aby zidentyfikować wszelkie zależności, które nie są potrzebne. Usuń te zależności. Jeśli nie masz pewności, że jest wymagana zależność, spróbuj ją usunąć. 
+5. W przypadku zasobów związanych z zależnością cykliczną należy uważnie sprawdzić wszystkie zastosowania właściwości **dependsOn** , aby zidentyfikować wszelkie zależności, które nie są potrzebne. Usuń te zależności. Jeśli nie masz pewności, że jest wymagana zależność, spróbuj ją usunąć.
 6. Wdróż ponownie szablon.
 
-Usunięcie wartości z właściwości **dependsOn** może spowodować błędy podczas wdrażania szablonu. Jeśli wystąpi błąd, Dodaj zależność z powrotem do szablonu. 
+Usunięcie wartości z właściwości **dependsOn** może spowodować błędy podczas wdrażania szablonu. Jeśli wystąpi błąd, Dodaj zależność z powrotem do szablonu.
 
 Jeśli takie podejście nie rozwiąże zależności cyklicznej, rozważ przeniesienie części logiki wdrażania do zasobów podrzędnych (takich jak rozszerzenia lub ustawienia konfiguracji). Skonfiguruj te zasoby podrzędne do wdrożenia po zasobach występujących w zależności cyklicznej. Załóżmy na przykład, że wdrażasz dwie maszyny wirtualne, ale musisz ustawić właściwości dla każdej z nich, która odwołuje się do drugiego. Można je wdrożyć w następującej kolejności:
 

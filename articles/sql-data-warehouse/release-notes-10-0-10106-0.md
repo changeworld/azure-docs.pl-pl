@@ -5,18 +5,18 @@ services: sql-data-warehouse
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: ''
-ms.date: 11/12/2019
+ms.date: 1/14/2020
 author: anumjs
 ms.author: anjangsh
 ms.reviewer: jrasnick
 manager: craigg
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 468a61c83948033905b3727add528520611b8bd4
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 6d51213402f852daee8fe4a6b5dbbd473afda659
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74092230"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122461"
 ---
 # <a name="azure-sql-data-warehouse-release-notes"></a>Informacje o wersji Azure SQL Data Warehouse
 
@@ -31,6 +31,13 @@ Przykładowe dane wyjściowe:
 ![Wersja SQL Data Warehouse](./media/release-notes/t47-1-version.png)
 
 Użyj wskazanej wersji, aby potwierdzić, która wersja została zastosowana do magazynu danych SQL Azure.
+
+## <a name="january-2020"></a>Styczeń 2020 r.
+
+| Ulepszenia usługi | Szczegóły |
+| --- | --- |
+|**Metryki portal zarządzania obciążenia (wersja zapoznawcza)**|Dzięki wykorzystaniu [izolacji obciążeń](/azure/sql-data-warehouse/sql-data-warehouse-workload-isolation) w przypadku wersji zapoznawczej w tej ostatniej październiku użytkownicy mogą utworzyć własne [grupy obciążeń](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest) w celu wydajnego zarządzania zasobami systemu i upewnić się, że umowy SLA biznesowe są spełnione.  W ramach ogólnych ulepszeń [zarządzania obciążeniami](/azure/sql-data-warehouse/sql-data-warehouse-workload-management) dla usługi Azure Synapse Analytics dostępne są nowe [metryki monitorowania zarządzania obciążeniami](/azure/sql-data-warehouse/sql-data-warehouse-workload-management-portal-monitor) .</br> </br> Monitorowanie obciążenia ma teraz więcej szczegółowych informacji o następujących metrykach: </br> — Procent zasobu zakończenia  </br> -Efektywny minimalny procent zasobów </br> — Aktywne zapytania grupy obciążenia </br> -Alokacja grupy obciążeń według maksymalnego procentu zasobów </br> -Alokacja grup obciążeń według procentu systemu </br> -Limity czasu zapytania grupy obciążeń </br> — Zakolejkowane zapytania grupy obciążenia </br></br> Te metryki służą do identyfikowania [wąskich gardeł grup obciążeń](/azure/sql-data-warehouse/sql-data-warehouse-workload-management-portal-monitor#workload-group-bottleneck) lub grup obciążeń, które są skonfigurowane z [izolacją niewykorzystywanego obciążenia](/azure/sql-data-warehouse/sql-data-warehouse-workload-management-portal-monitor#underutilized-workload-isolation).  Te metryki mogą być używane w witrynie Azure Portal, które umożliwiają dzielenie według grupy obciążeń.  Przefiltruj i przypnij ulubione wykresy do pulpitu nawigacyjnego, aby szybko uzyskać dostęp do szczegółowych informacji.|
+|**Metryki monitorowania portalu**| Następujące metryki zostały dodane do portalu w celu monitorowania ogólnej aktywności zapytania: </br> -Aktywne zapytania </br> — Kolejkowane zapytania </br> </br>Te metryki są opisane wraz z istniejącymi metrykami w [dokumentacji monitorowania użycia zasobów i działania zapytań](/azure/sql-data-warehouse/sql-data-warehouse-concept-resource-utilization-query-activity).|
 
 ## <a name="october-2019"></a>Październik 2019 r.
 
@@ -95,7 +102,7 @@ Użyj wskazanej wersji, aby potwierdzić, która wersja została zastosowana do 
 | --- | --- |
 | | |
 
-## <a name="january-2019"></a>Styczeń 2019 r.
+## <a name="january-2019"></a>Styczeń 2019
 
 ### <a name="service-improvements"></a>Ulepszenia usługi
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: mimckitt
-ms.openlocfilehash: d98efd46e3c2fbc11be2cde6a0c4f2b37acc8d7c
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: ffa99c6ba0157eca133dc36ecbbb159b076b8bc0
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75934011"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76155557"
 ---
 # <a name="information-for-non-endorsed-distributions"></a>Informacje dotyczące dystrybucji niepotwierdzonych
 
@@ -43,7 +43,7 @@ Ten artykuł koncentruje się na ogólnych wskazówkach dotyczących uruchamiani
 
 ## <a name="general-linux-installation-notes"></a>Ogólne informacje o instalacji systemu Linux
 * Format wirtualnego dysku twardego funkcji Hyper-V (VHDX) nie jest obsługiwany na platformie Azure, tylko *stałego dysku VHD*.  Dysk można przekonwertować na format VHD przy użyciu Menedżera funkcji Hyper-V lub polecenia cmdlet [convert-VHD](https://docs.microsoft.com/powershell/module/hyper-v/convert-vhd) . Jeśli używasz VirtualBox, wybierz opcję **stały rozmiar** , a nie wartość domyślną (przydzieloną dynamicznie) podczas tworzenia dysku.
-* Platforma Azure obsługuje tylko maszyny wirtualne generacji 1. Maszynę wirtualną 1. generacji można przekonwertować z formatu VHDX na format pliku VHD i dynamicznie powiększający się na dysk o stałym rozmiarze. Nie można zmienić generacji maszyny wirtualnej. Aby uzyskać więcej informacji, zobacz temat czy [należy utworzyć maszynę wirtualną generacji 1 lub 2 w funkcji Hyper-V?](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v)
+* Platforma Azure obsługuje Gen1 (BIOS Boot) & Gen2 (UEFI boot) maszyn wirtualnych.
 * Maksymalny dozwolony rozmiar dysku VHD to 1 023 GB.
 * W przypadku instalowania systemu Linux zaleca się używanie partycji standardowych zamiast Menedżera woluminów logicznych (LVM), który jest wartością domyślną dla wielu instalacji. Użycie partycji standardowych spowoduje uniknięcie konfliktów nazw LVM z sklonowanymi maszynami wirtualnymi, szczególnie jeśli dysk systemu operacyjnego jest kiedykolwiek podłączony do innej identycznej maszyny wirtualnej w celu rozwiązywania problemów. Na dyskach danych można używać [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) lub [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) .
 * Konieczna jest obsługa jądra do instalowania systemów plików UDF. Podczas pierwszego rozruchu na platformie Azure konfiguracja aprowizacji jest przesyłana do maszyny wirtualnej z systemem Linux przy użyciu nośnika sformatowanego w formacie UDF, który jest dołączony do gościa. Aby można było odczytać konfigurację i zainicjować obsługę administracyjną maszyny wirtualnej, Agent systemu Azure Linux musi zainstalować system plików UDF.

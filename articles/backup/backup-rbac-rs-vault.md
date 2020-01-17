@@ -4,12 +4,12 @@ description: Access Control oparte na rolach umożliwiają zarządzanie dostępe
 ms.reviewer: utraghuv
 ms.topic: conceptual
 ms.date: 06/24/2019
-ms.openlocfilehash: afb8067f2547e3a26a505bb5ec8063dd340e8500
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: e2e32ac6981635e3b9885119fdf397783ac32cc9
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172188"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156390"
 ---
 # <a name="use-role-based-access-control-to-manage-azure-backup-recovery-points"></a>Zarządzanie Azure Backup punktów odzyskiwania przy użyciu Access Control opartych na rolach
 
@@ -35,25 +35,25 @@ W poniższej tabeli przedstawiono akcje zarządzania kopiami zapasowymi i odpowi
 | Tworzenie magazynu usługi Recovery Services | Współautor kopii zapasowej | Grupa zasobów zawierająca magazyn |
 | Włącz tworzenie kopii zapasowych maszyn wirtualnych platformy Azure | Operator kopii zapasowych | Grupa zasobów zawierająca magazyn |
 | | Współautor maszyny wirtualnej | Zasób maszyny wirtualnej |
-| Tworzenie kopii zapasowej maszyny wirtualnej na żądanie | Operator kopii zapasowych | Zasób magazynu odzyskiwania |
-| Przywróć maszynę wirtualną | Operator kopii zapasowych | Magazyn usługi Recovery Services |
+| Tworzenie kopii zapasowej maszyny wirtualnej na żądanie | Operator kopii zapasowych | Magazyn usługi Recovery Services |
+| Przywracanie maszyny wirtualnej | Operator kopii zapasowych | Magazyn usługi Recovery Services |
 | | Współautor | Grupa zasobów, w której zostanie wdrożona maszyna wirtualna |
 | | Współautor maszyny wirtualnej | Źródłowa maszyna wirtualna, której kopię zapasową utworzono |
-| Przywróć dyski niezarządzane kopia zapasowa maszyny wirtualnej | Operator kopii zapasowych | Zasób magazynu odzyskiwania |
+| Przywróć dyski niezarządzane kopia zapasowa maszyny wirtualnej | Operator kopii zapasowych | Magazyn usługi Recovery Services |
 | | Współautor maszyny wirtualnej | Źródłowa maszyna wirtualna, której kopię zapasową utworzono |
 | | Współautor konta magazynu | Zasób konta magazynu, w którym mają zostać przywrócone dyski |
-| Przywróć dyski zarządzane z kopii zapasowej maszyny wirtualnej | Operator kopii zapasowych | Zasób magazynu odzyskiwania |
+| Przywróć dyski zarządzane z kopii zapasowej maszyny wirtualnej | Operator kopii zapasowych | Magazyn usługi Recovery Services |
 | | Współautor maszyny wirtualnej | Źródłowa maszyna wirtualna, której kopię zapasową utworzono |
 | | Współautor konta magazynu | Konto magazynu tymczasowego wybrane w ramach przywracania do przechowywania danych z magazynu przed przekonwertowaniem ich na dyski zarządzane |
 | | Współautor | Grupa zasobów, do której zostaną przywrócone dyski zarządzane |
-| Przywróć pojedyncze pliki z kopii zapasowej maszyny wirtualnej | Operator kopii zapasowych | Zasób magazynu odzyskiwania |
+| Przywróć pojedyncze pliki z kopii zapasowej maszyny wirtualnej | Operator kopii zapasowych | Magazyn usługi Recovery Services |
 | | Współautor maszyny wirtualnej | Źródłowa maszyna wirtualna, której kopię zapasową utworzono |
-| Tworzenie zasad kopii zapasowych dla kopii zapasowej maszyny wirtualnej platformy Azure | Współautor kopii zapasowej | Zasób magazynu odzyskiwania |
-| Modyfikowanie zasad tworzenia kopii zapasowej maszyny wirtualnej platformy Azure | Współautor kopii zapasowej | Zasób magazynu odzyskiwania |
-| Usuwanie zasad tworzenia kopii zapasowej maszyny wirtualnej platformy Azure | Współautor kopii zapasowej | Zasób magazynu odzyskiwania |
-| Zatrzymaj kopię zapasową (z zachowaniem Zachowaj dane lub Usuń dane) na kopii zapasowej maszyny wirtualnej | Współautor kopii zapasowej | Zasób magazynu odzyskiwania |
-| Rejestrowanie lokalnego systemu Windows Server/Client/SCDPM lub Azure Backup Server | Operator kopii zapasowych | Zasób magazynu odzyskiwania |
-| Usuń zarejestrowane lokalne serwery z systemem Windows/Client/SCDPM lub Azure Backup Server | Współautor kopii zapasowej | Zasób magazynu odzyskiwania |
+| Tworzenie zasad kopii zapasowych dla kopii zapasowej maszyny wirtualnej platformy Azure | Współautor kopii zapasowej | Magazyn usługi Recovery Services |
+| Modyfikowanie zasad tworzenia kopii zapasowej maszyny wirtualnej platformy Azure | Współautor kopii zapasowej | Magazyn usługi Recovery Services |
+| Usuwanie zasad tworzenia kopii zapasowej maszyny wirtualnej platformy Azure | Współautor kopii zapasowej | Magazyn usługi Recovery Services |
+| Zatrzymaj kopię zapasową (z zachowaniem Zachowaj dane lub Usuń dane) na kopii zapasowej maszyny wirtualnej | Współautor kopii zapasowej | Magazyn usługi Recovery Services |
+| Rejestrowanie lokalnego systemu Windows Server/Client/SCDPM lub Azure Backup Server | Operator kopii zapasowych | Magazyn usługi Recovery Services |
+| Usuń zarejestrowane lokalne serwery z systemem Windows/Client/SCDPM lub Azure Backup Server | Współautor kopii zapasowej | Magazyn usługi Recovery Services |
 
 > [!IMPORTANT]
 > Jeśli określisz współautor maszyny wirtualnej w zakresie zasobów maszyny wirtualnej i klikniesz pozycję Utwórz kopię zapasową w ramach ustawień maszyny wirtualnej, zostanie otwarty ekran "Włącz kopię zapasową", nawet jeśli maszyna wirtualna została już utworzona jako wywołanie weryfikacji stanu kopii zapasowej działa tylko na poziomie subskrypcji. Aby tego uniknąć, należy przejść do magazynu i otworzyć widok elementu kopii zapasowej maszyny wirtualnej lub określić rolę współautor maszyny wirtualnej na poziomie subskrypcji.
@@ -71,7 +71,7 @@ W poniższej tabeli przedstawiono akcje zarządzania kopiami zapasowymi i odpowi
 | | Współautor konta magazynu | Zasoby konta magazynu, w których znajdują się źródła przywracania i docelowe udziały plików |
 | Przywróć pojedyncze pliki | Operator kopii zapasowych | Magazyn usługi Recovery Services |
 | |Współautor konta magazynu|Zasoby konta magazynu, w których znajdują się źródła przywracania i docelowe udziały plików |
-| Zatrzymaj ochronę |Współautor kopii zapasowej | Magazyn usługi Recovery Services |
+| Zatrzymywanie ochrony |Współautor kopii zapasowej | Magazyn usługi Recovery Services |
 | Wyrejestrowywanie konta magazynu z magazynu |Współautor kopii zapasowej | Magazyn usługi Recovery Services |
 | |Współautor konta magazynu | Zasób konta magazynu|
 

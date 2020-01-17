@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 14e7a4389c192dde8d086a69a35114f3b8b33e96
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 15ccbc568a2986fbb2a547eb958b5e853c8c9f77
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562178"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76154826"
 ---
 # <a name="how-sso-to-on-premises-resources-works-on-azure-ad-joined-devices"></a>Jak działa Logowanie jednokrotne do zasobów lokalnych na urządzeniach przyłączonych do usługi Azure AD
 
@@ -24,12 +24,17 @@ Prawdopodobnie nie jest to nieoczekiwane, że urządzenie dołączone do usługi
 
 W tym artykule wyjaśniono, jak to działa.
 
-## <a name="how-it-works"></a>Jak to działa 
+## <a name="prerequisites"></a>Wymagania wstępne
+
+ Jeśli maszyny przyłączone do usługi Azure AD nie są połączone z siecią organizacji, wymagana jest sieć VPN lub inna infrastruktura sieciowa. Lokalne Logowanie jednokrotne wymaga komunikacji liniowej z lokalnymi kontrolerami domeny AD DS.
+
+## <a name="how-it-works"></a>Zasady działania 
 
 Ponieważ musisz pamiętać tylko jedną nazwę użytkownika i hasło, logowanie jednokrotne upraszcza dostęp do zasobów i zwiększa bezpieczeństwo środowiska. W przypadku urządzenia dołączonego do usługi Azure AD użytkownicy mają już środowisko logowania jednokrotnego w aplikacjach w chmurze w Twoim środowisku. Jeśli środowisko ma usługę Azure AD i lokalną usługi AD, prawdopodobnie chcesz rozszerzyć zakres środowiska logowania jednokrotnego do lokalnych aplikacji biznesowych, udziałów plików i drukarek.  
 
 Urządzenia przyłączone do usługi Azure AD nie mają znajomości lokalnego środowiska usługi AD, ponieważ nie są do niego dołączone. Można jednak podać dodatkowe informacje o lokalnej usłudze AD na tych urządzeniach przy użyciu Azure AD Connect.
-Środowisko, które ma zarówno usługi Azure AD, jak i lokalna usługa AD, jest również znane w środowisku hybrydowym. Jeśli masz środowisko hybrydowe, prawdopodobnie masz już Azure AD Connect wdrożone w celu zsynchronizowania informacji o tożsamości lokalnej z chmurą. W ramach procesu synchronizacji Azure AD Connect synchronizuje informacje o domenie lokalnej do usługi Azure AD. Gdy użytkownik loguje się do urządzenia dołączonego do usługi Azure AD w środowisku hybrydowym:
+
+Środowisko, które ma zarówno usługi Azure AD, jak i lokalna usługa AD, jest również znane w środowisku hybrydowym. Jeśli masz środowisko hybrydowe, prawdopodobnie masz już Azure AD Connect wdrożone w celu zsynchronizowania informacji o tożsamości lokalnej z chmurą. W ramach procesu synchronizacji Azure AD Connect synchronizuje informacje o użytkowniku lokalnym z usługą Azure AD. Gdy użytkownik loguje się do urządzenia dołączonego do usługi Azure AD w środowisku hybrydowym:
 
 1. Usługa Azure AD wysyła nazwę domeny lokalnej, do której użytkownik jest członkiem z powrotem do urządzenia. 
 1. Usługa urząd zabezpieczeń lokalnych (LSA) umożliwia uwierzytelnianie Kerberos na urządzeniu.
@@ -44,7 +49,7 @@ Wszystkie aplikacje, które są skonfigurowane pod kątem **uwierzytelniania zin
 
 Funkcja Windows Hello dla firm wymaga dodatkowej konfiguracji umożliwiającej lokalne Logowanie jednokrotne z urządzenia dołączonego do usługi Azure AD. Aby uzyskać więcej informacji, zobacz [Konfigurowanie urządzeń przyłączonych do usługi Azure AD dla lokalnego logowania jednokrotnego przy użyciu funkcji Windows Hello dla firm](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-hybrid-aadj-sso-base). 
 
-## <a name="what-you-get"></a>Efekty
+## <a name="what-you-get"></a>Co otrzymujesz
 
 Logowanie jednokrotne na urządzeniu dołączonym do usługi Azure AD można: 
 

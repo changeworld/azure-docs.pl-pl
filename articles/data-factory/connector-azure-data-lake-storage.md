@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 01/08/2020
-ms.openlocfilehash: c32fbef3db0c0df2af1e07c062eb178e5516d736
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.date: 01/16/2020
+ms.openlocfilehash: 7845e381c5a8851683edf6b955d40070bd4e0c30
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75893207"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122274"
 ---
 # <a name="copy-and-transform-data-in-azure-data-lake-storage-gen2-using-azure-data-factory"></a>Kopiowanie i Przekształcanie danych w Azure Data Lake Storage Gen2 przy użyciu Azure Data Factory
 
@@ -162,7 +162,7 @@ Fabrykę danych mogą być skojarzone z [tożsamości zarządzanej dla zasobów 
 
 Aby używać tożsamości zarządzanych do uwierzytelniania zasobów platformy Azure, wykonaj następujące kroki.
 
-1. [Pobierz Data Factory Informacje o zarządzanej tożsamości](data-factory-service-identity.md#retrieve-managed-identity) , kopiując wartość **identyfikatora aplikacji tożsamości usługi** wygenerowanego wraz z fabryką.
+1. [Pobierz Data Factory Informacje o tożsamości zarządzane](data-factory-service-identity.md#retrieve-managed-identity) przez skopiowanie wartości **identyfikatora obiektu tożsamości zarządzanej** , który został wygenerowany wraz z fabryką.
 
 2. Przyznaj prawidłowe uprawnienia tożsamości zarządzanej. Zapoznaj się z przykładami dotyczącymi działania uprawnień w Data Lake Storage Gen2 z [list kontroli dostępu do plików i katalogów](../storage/blobs/data-lake-storage-access-control.md#access-control-lists-on-files-and-directories).
 

@@ -4,12 +4,12 @@ description: W tym artykule dowiesz się, jak utworzyć kopię zapasową SQL Ser
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 52a7e98702299e790ee097cca871332ebb6a52c5
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: fc0c3127594fe3ca90b0a66ce548f471c55f4e5f
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75611393"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156475"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>Tworzenie kopii zapasowych baz danych programu SQL Server na maszynach wirtualnych platformy Azure
 
@@ -29,7 +29,7 @@ W tym artykule dowiesz się, jak:
 
 Przed wykonaniem kopii zapasowej bazy danych SQL Server należy sprawdzić następujące kryteria:
 
-1. Zidentyfikuj lub Utwórz [magazyn Recovery Services](backup-sql-server-database-azure-vms.md#create-a-recovery-services-vault) w tym samym regionie lub ustawieniach regionalnych co maszyna wirtualna hostującym wystąpienie SQL Server.
+1. Zidentyfikuj lub Utwórz [magazyn Recovery Services](backup-sql-server-database-azure-vms.md#create-a-recovery-services-vault) w tym samym regionie i w ramach subskrypcji co maszyna wirtualna hostującym wystąpienie SQL Server.
 2. Sprawdź, czy maszyna wirtualna ma [łączność sieciową](backup-sql-server-database-azure-vms.md#establish-network-connectivity).
 3. Upewnij się, że bazy danych SQL Server są zgodne z [wytycznymi nazewnictwa bazy danych dla Azure Backup](#database-naming-guidelines-for-azure-backup).
 4. Sprawdź, czy nie masz włączonych rozwiązań do tworzenia kopii zapasowych dla bazy danych. Przed utworzeniem kopii zapasowej bazy danych Wyłącz wszystkie inne SQL Server kopie zapasowe.

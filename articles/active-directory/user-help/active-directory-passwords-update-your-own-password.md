@@ -9,23 +9,24 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: conceptual
-ms.date: 07/30/2018
+ms.date: 01/15/2020
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c0d0fdf4e7df0401692eb026d55fe1a7c9322f1
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: d8b46dbc0cc3c61396acdc7d21517c13d4650bf3
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73160788"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156288"
 ---
-# <a name="reset-your-work-or-school-password"></a>Zresetuj hasło służbowe
+# <a name="reset-your-work-or-school-password-using-security-info"></a>Zresetuj hasło służbowe przy użyciu informacji zabezpieczających
 
-Jeśli nie pamiętasz hasła, dział pomocy technicznej firmy nie przekazała Ci go lub Twoje konto zostało zablokowane, możesz zresetować hasło przy użyciu informacji zabezpieczających i urządzenia przenośnego.
+Jeśli nie pamiętasz hasła służbowego, nigdy nie otrzymasz hasła z Twojej organizacji lub nie masz zablokowanego konta, możesz użyć informacji zabezpieczających i urządzenia przenośnego, aby zresetować hasło służbowe. Administrator musi włączyć tę funkcję, aby móc skonfigurować informacje i zresetować własne hasło.
 
->[!NOTE]
->Jeśli znasz swoje hasło i chcesz je zmienić, możesz przejść do sekcji [zmiana hasła](#how-to-change-your-password) w tym artykule.<br><br>
->Jeśli próbujesz wrócić do konta osobistego, takiego jak Xbox, hotmail.com lub outlook.com, wypróbuj sugestie w programie, [gdy nie możesz zalogować się do konto Microsoft](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) artykułu.
+Jeśli znasz hasło, ale chcesz je zmienić, zapoznaj się z sekcjami [zmiana hasła](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-passwords-update-your-own-password#how-to-change-your-password) w tym artykule.
+
+>[!Important]
+>Ten artykuł jest przeznaczony dla użytkowników próbujących zresetować zapomniane lub nieznane hasło konta służbowego. Jeśli jesteś administratorem, aby uzyskać informacje na temat włączania samoobsługowego resetowania haseł dla pracowników lub innych użytkowników, zobacz Wdrażanie funkcji samoobsługowego [resetowania haseł w usłudze Azure AD i innych artykułów](https://docs.microsoft.com/azure/active-directory/authentication/howto-sspr-deployment).
 
 ## <a name="how-to-reset-or-unlock-your-password-for-a-work-or-school-account"></a>Jak zresetować lub odblokować hasło dla konta służbowego
 
@@ -58,7 +59,7 @@ Jeśli nie możesz uzyskać dostępu do konta usługi Azure Active Directory (Az
     1. Wybierz pozycję **Wyślij pocztą e-mail mój alternatywny adres e-mail**, a następnie wybierz pozycję **poczta e-mail**.
 
     2. Wpisz kod weryfikacyjny z wiadomości e-mail w polu, a następnie wybierz przycisk **dalej**.
-    
+
     3. Wpisz i Potwierdź nowe hasło, a następnie wybierz pozycję **Zakończ**.
 
 - **Zresetuj hasło przy użyciu wiadomości tekstowej.** Wysyła wiadomość SMS na numer telefonu, który został wcześniej skonfigurowany w informacjach zabezpieczających. Jeśli administrator włączył środowisko informacje zabezpieczające, można znaleźć więcej informacji na temat konfigurowania wiadomości tekstowych w artykule [Konfigurowanie informacji zabezpieczających do korzystania z wiadomości tekstowych (wersja zapoznawcza)](security-info-setup-text-msg.md) . Jeśli jeszcze nie korzystasz z informacji zabezpieczających, możesz znaleźć więcej informacji na temat konfigurowania wiadomości tekstowych w artykule [Konfigurowanie mojego konta na potrzeby weryfikacji dwuetapowej](multi-factor-authentication-end-user-first-time.md) .
@@ -100,10 +101,10 @@ Jeśli nie możesz uzyskać dostępu do konta usługi Azure Active Directory (Az
   3. Wpisz i Potwierdź nowe hasło, a następnie wybierz pozycję **Zakończ**.
 
   4. Po otrzymaniu komunikatu z informacją, że hasło zostało zresetowane, możesz zalogować się do swojego konta przy użyciu nowego hasła.
-        
+
      Jeśli nadal nie możesz uzyskać dostępu do konta, skontaktuj się z administratorem organizacji, aby uzyskać pomoc.
 
-Po zresetowaniu hasła może zostać wykorzystana wiadomość e-mail z potwierdzeniem, która pochodzi z konta takiego jak "Microsoft w imieniu \<*your_organization*>". Jeśli otrzymasz podobną wiadomość e-mail, ale ostatnio nie zresetujesz hasła, musisz natychmiast skontaktować się z administratorem w organizacji.
+Po zresetowaniu hasła może zostać wykorzystana wiadomość e-mail z potwierdzeniem, która pochodzi z konta, takiego jak "Firma Microsoft w imieniu \<*your_organization*>". Jeśli otrzymasz podobną wiadomość e-mail, ale ostatnio nie zresetujesz hasła, musisz natychmiast skontaktować się z administratorem w organizacji.
 
 ## <a name="how-to-change-your-password"></a>Jak zmienić hasło
 
@@ -160,13 +161,10 @@ Poniżej przedstawiono kilka typowych przypadków błędów i ich rozwiązań:
 |Gdy próbuję zmienić moje hasło, otrzymuję komunikat o błędzie. |Hasło zawiera słowo, frazę lub wzorzec, które ułatwiają odgadnięcie hasła.| Spróbuj ponownie, używając silniejszego hasła.|
 |Po wprowadzeniu identyfikatora użytkownika przejdź na stronę o nazwie "Skontaktuj się z administratorem".|Firma Microsoft ustaliła, że hasło konta użytkownika jest zarządzane przez administratora w środowisku lokalnym. W związku z tym nie można zresetować hasła z linku "nie można uzyskać dostępu do konta". |Aby uzyskać pomoc, skontaktuj się z administratorem.|
 |Po wprowadzeniu identyfikatora użytkownika otrzymuję komunikat o błędzie "Twoje konto nie jest włączone do resetowania hasła".|Administrator nie skonfigurował Twojego konta, aby można było zresetować własne hasło.|Administrator nie włączył resetowania hasła dla Twojej organizacji z poziomu linku "nie można uzyskać dostępu do konta" lub nie ma licencji na korzystanie z tej funkcji.<br><br> Aby zresetować hasło, musisz wybrać link "Skontaktuj się z administratorem", aby wysłać wiadomość e-mail do administratora firmy i poinformować o konieczności zresetowania hasła.|
-|Po wprowadzeniu identyfikatora użytkownika otrzymuję komunikat o błędzie "nie można zweryfikować Twojego konta".|Proces logowania nie może zweryfikować informacji o koncie.|Istnieją dwa powody, dla których zobaczysz ten komunikat.<br><br>1. administrator włączył Resetowanie hasła dla Twojej organizacji, ale nie zarejestrowano go do korzystania z usługi. Aby zarejestrować się w celu zresetowania hasła, zobacz jeden z następujących artykułów na podstawie metody weryfikacji: [Skonfiguruj informacje zabezpieczające, aby korzystać z aplikacji uwierzytelniania (wersja zapoznawcza)](security-info-setup-auth-app.md), [skonfigurować informacje zabezpieczające do korzystania z połączenia telefonicznego (wersja zapoznawcza)](security-info-setup-phone-number.md), [skonfigurować informacje zabezpieczające do użycia wiadomość SMS (wersja zapoznawcza)](security-info-setup-text-msg.md), [Skonfiguruj informacje zabezpieczające do korzystania z poczty e-mail (wersja zapoznawcza)](security-info-setup-email.md)lub [Skonfiguruj informacje zabezpieczające do korzystania z pytań zabezpieczających (wersja zapoznawcza)](security-info-setup-questions.md).<br><br>2. Administrator nie włączył resetowania hasła dla Twojej organizacji. W takiej sytuacji należy wybrać opcję "Skontaktuj się z administratorem", aby wysłać wiadomość e-mail do administratora, z prośbą o zresetowanie hasła.|
+|Po wprowadzeniu identyfikatora użytkownika otrzymuję komunikat o błędzie "nie można zweryfikować Twojego konta".|Proces logowania nie może zweryfikować informacji o koncie.|Istnieją dwa powody, dla których zobaczysz ten komunikat.<br><br>1. administrator włączył Resetowanie hasła dla Twojej organizacji, ale nie zarejestrowano go do korzystania z usługi. Aby zarejestrować się w celu zresetowania hasła, zapoznaj się z jednym z poniższych artykułów w oparciu o metodę weryfikacji: [Skonfiguruj informacje zabezpieczające, aby użyć aplikacji Authenticator (wersja zapoznawcza)](security-info-setup-auth-app.md), [skonfigurować informacje zabezpieczające do korzystania z połączenia telefonicznego (wersja zapoznawcza)](security-info-setup-phone-number.md), [skonfigurować informacje zabezpieczające do korzystania z wiadomości SMS (wersja](security-info-setup-text-msg.md)zapoznawcza), [skonfigurować informacje zabezpieczające do korzystania z poczty e-mail (wersja zapoznawcza)](security-info-setup-email.md)lub [skonfigurować informacje zabezpieczające w celu](security-info-setup-questions.md)<br><br>2. Administrator nie włączył resetowania hasła dla Twojej organizacji. W takiej sytuacji należy wybrać opcję "Skontaktuj się z administratorem", aby wysłać wiadomość e-mail do administratora, z prośbą o zresetowanie hasła.|
 
 ## <a name="next-steps"></a>Następne kroki
+
 - Informacje o zabezpieczeniach w artykule [Przegląd informacji zabezpieczających (wersja zapoznawcza)](user-help-security-info-overview.md) .
 
-- Więcej informacji na temat weryfikacji dwuetapowej w artykule [Przegląd weryfikacji dwuetapowej](user-help-two-step-verification-overview.md) . 
-
-- Zresetuj hasło, jeśli zostało zgubione lub zapomniane, z poziomu [portalu resetowania haseł](https://passwordreset.microsoftonline.com/)
-
-- Wskazówki i pomoc dotyczące rozwiązywania problemów z logowaniem znajdują się w artykule [Nie można zalogować się na konto Microsoft](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant).
+- Jeśli próbujesz wrócić do konta osobistego, takiego jak Xbox, hotmail.com lub outlook.com, wypróbuj sugestie w programie, [gdy nie możesz zalogować się do konto Microsoft artykułu](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant).

@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 3680de5d8e0e761047e1263c2679da87b1fa2d0b
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 70254e42b5964c7c7a3bf15c396f4c118f68a5ed
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769459"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76121237"
 ---
 # <a name="azure-queue-storage-bindings-for-azure-functions"></a>Powiązania usługi Azure queue storage dla Azure Functions
 
@@ -249,7 +249,7 @@ W [ C# bibliotekach klas](functions-dotnet-class-library.md)Użyj następującyc
   }
   ```
 
-  Możesz ustawić właściwość `Connection`, aby określić konto magazynu, które ma być używane, jak pokazano w następującym przykładzie:
+  Można ustawić właściwość `Connection`, aby określić ustawienie aplikacji, które zawiera parametry połączenia konta magazynu do użycia, jak pokazano w następującym przykładzie:
 
   ```csharp
   [FunctionName("QueueTrigger")]
@@ -312,7 +312,7 @@ W C# skryptach i C# Uzyskuj dostęp do danych komunikatów przy użyciu parametr
 
 Jeśli próbujesz powiązać z `CloudQueueMessage` i otrzymać komunikat o błędzie, upewnij się, że masz odwołanie do [odpowiedniej wersji zestawu SDK magazynu](#azure-storage-sdk-version-in-functions-1x).
 
-W języku JavaScript Użyj `context.bindings.<name>`, aby uzyskać dostęp do ładunku elementu kolejki. Jeśli ładunek jest w formacie JSON, jest deserializowany do obiektu.
+W języku JavaScript Użyj `context.bindings.<name>`, aby uzyskać dostęp do ładunku elementu kolejki. Jeśli ładunek jest w formacie JSON, jest deserializowany do obiektu. Ten ładunek jest również przenoszona jako drugi parametr do funkcji.
 
 ## <a name="trigger---message-metadata"></a>Wyzwalacz — komunikat metadanych
 
@@ -320,7 +320,7 @@ Wyzwalacz kolejki zawiera kilka [właściwości metadanych](./functions-bindings
 
 |Właściwość|Typ|Opis|
 |--------|----|-----------|
-|`QueueTrigger`|`string`|Ładunek kolejki (w przypadku prawidłowego ciągu). Jeśli ładunek komunikatu w kolejce jako ciąg, `QueueTrigger` ma taką samą wartość jak zmienna o nazwie `name` w *funkcji Function. JSON*.|
+|`QueueTrigger`|`string`|Ładunek kolejki (w przypadku prawidłowego ciągu). Jeśli ładunek komunikatu w kolejce jest ciągiem, `QueueTrigger` ma taką samą wartość jak zmienna o nazwie `name` w *funkcji Function. JSON*.|
 |`DequeueCount`|`int`|Liczba przypadków, w których ten komunikat został usunięty z kolejki.|
 |`ExpirationTime`|`DateTimeOffset`|Godzina wygaśnięcia komunikatu.|
 |`Id`|`string`|Identyfikator komunikatu kolejki.|
@@ -411,7 +411,7 @@ Oto *function.json* pliku:
     {
       "type": "http",
       "direction": "out",
-      "name": "return"
+      "name": "$return"
     },
     {
       "type": "queue",
@@ -472,7 +472,7 @@ Oto *function.json* pliku:
     {
       "type": "http",
       "direction": "out",
-      "name": "return"
+      "name": "$return"
     },
     {
       "type": "queue",
@@ -506,7 +506,7 @@ module.exports = function(context) {
 
 ### <a name="output---java-example"></a>Dane wyjściowe — przykładzie w języku Java
 
- Poniższy przykład pokazuje funkcję języka Java, która tworzy komunikat w kolejce dla wyzwalane przez żądanie HTTP.
+ Poniższy przykład pokazuje funkcję języka Java, która tworzy komunikat w kolejce, gdy jest wyzwalany przez żądanie HTTP.
 
 ```java
 @FunctionName("httpToQueue")
@@ -514,7 +514,7 @@ module.exports = function(context) {
  public String pushToQueue(
      @HttpTrigger(name = "request", methods = {HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS)
      final String message,
-     @HttpOutput(name = "response") final OutputBinding&lt;String&gt; result) {
+     @HttpOutput(name = "response") final OutputBinding<String> result) {
        result.setValue(message + " has been added.");
        return message;
  }

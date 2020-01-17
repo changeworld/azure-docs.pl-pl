@@ -4,14 +4,14 @@ description: Jak dodać system przechowywania zaplecza do avere vFXT dla platfor
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 12/14/2019
+ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: 3f7d7b5091b6439f17455b5ea66a3a23ebf79811
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: dfffef90201ba4bbb5a912df6101e8338012df44
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75416500"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76153993"
 ---
 # <a name="configure-storage"></a>Konfigurowanie magazynu
 
@@ -32,7 +32,7 @@ W tych krokach użyto panelu sterowania avere. Aby dowiedzieć się, jak z niej 
 
 ## <a name="create-a-core-filer"></a>Tworzenie podstawowego pliku
 
-"Podstawowy system plików" to vFXT termin dla systemu magazynu wewnętrznej bazy danych. Magazyn może być sprzętowym urządzeniem NAS, takim jak NetApp lub Isilon, lub może być magazynem obiektów w chmurze. Więcej informacji na temat plików podstawowych można znaleźć w [podręczniku ustawień klastra avere](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/settings_overview.html#managing-core-filers).
+"Podstawowy system plików" to vFXT termin dla systemu magazynu zaplecza. Magazyn może być sprzętowym urządzeniem NAS, takim jak NetApp lub Isilon, lub może być magazynem obiektów w chmurze. Więcej informacji na temat plików podstawowych można znaleźć w [podręczniku ustawień klastra avere](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/settings_overview.html#managing-core-filers).
 
 Aby dodać podstawowy plik, wybierz jeden z dwóch głównych typów plików podstawowych:
 
@@ -69,7 +69,7 @@ Następnie przejdź do [tworzenia rozgałęzienia](#create-a-junction).
 
 ### <a name="azure-blob-storage-cloud-core-filer"></a>Podstawowy plik usługi Azure Blob Storage Cloud
 
-Aby można było używać usługi Azure Blob Storage jako magazynu zaplecza klastra vFXT, potrzebny jest pusty kontener do dodania jako podstawowy plik.
+Aby korzystać z usługi Azure Blob Storage jako magazynu zaplecza klastra vFXT, potrzebny jest pusty kontener do dodania jako podstawowy plik.
 
 Dodanie magazynu obiektów BLOB do klastra wymaga następujących zadań:
 

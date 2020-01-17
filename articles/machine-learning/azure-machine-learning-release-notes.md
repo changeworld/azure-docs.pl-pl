@@ -10,12 +10,12 @@ ms.author: jmartens
 author: j-martens
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: b413fd7efe865f1dc2062a8f2dcfae983ec2f27a
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 0e613dd1c47a9942d95bd668f1e9f85e42649b5c
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771925"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122376"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Informacje o wersji Azure Machine Learning
 
@@ -125,7 +125,7 @@ Zobacz [listę znanych problemów](resource-known-issues.md) informacje na temat
     + Poprawka do ładowania RunConfigurations ze ścieżek względnych.
     + Podczas wywoływania `keep_columns` lub `drop_columns`, w wyniku których zostanie usunięta kolumna szeregów czasowych, odpowiednie możliwości zostaną również porzucone dla zestawu danych.
   + **Azure — interpretowanie**
-    + zaktualizowana wersja interpretera — społeczność 0.2.0
+    + Zaktualizowana wersja interpretera — społeczność 0.2.0
   + **azureml-pipeline-steps**
     + Udokumentowane obsługiwane wartości `runconfig_pipeline_params` dla kroków potoku usługi Azure Machine Learning.
   + **azureml-pipeline-core**
@@ -220,7 +220,7 @@ Zestaw Azure Machine Learning SDK dla języka R używa pakietu `reticulate` do p
 
 Główne możliwości zestawu SDK obejmują:
 
-+   Zarządzaj zasobami w chmurze, aby monitorować, rejestrować i organizować eksperymenty uczenia maszynowego.
++   Zarządzanie zasobami w chmurze na potrzeby monitorowania, rejestrowania i organizowania eksperymentów uczenia maszynowego.
 +   Uczenie modeli przy użyciu zasobów w chmurze, w tym szkoleń modelu procesora GPU.
 +   Wdróż modele jako usługi WebService na Azure Container Instances (ACI) i Azure Kubernetes Service (AKS).
 
@@ -1488,7 +1488,7 @@ Usługa Azure obliczeniowego usługi Machine Learning można tworzyć w języku 
 + Potokach uczenia Maszynowego
   + Nowe i zaktualizowane notesów dla klientów zaczynających się od potoki, określania zakresu usługi batch i styl transferu przykłady: https://aka.ms/aml-pipeline-notebooks
   + Dowiedz się, jak [Tworzenie pierwszego potoku](how-to-create-your-first-pipeline.md)
-  + Dowiedz się, jak [Uruchom prognozy usługi batch przy użyciu potoków](how-to-run-batch-predictions.md)
+  + Dowiedz się, jak [Uruchom prognozy usługi batch przy użyciu potoków](how-to-use-parallel-run-step.md)
 + Azure Machine Learning cel obliczeń
   + [Przykładowe notesy](https://aka.ms/aml-notebooks) zostały zaktualizowane w celu korzystania z nowych zarządzanych obliczeń.
   + [Dowiedz się więcej o tym obliczeń](how-to-set-up-training-targets.md#amlcompute)

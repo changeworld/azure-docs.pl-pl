@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: 0e4b2cd208e11f7696e016d3fa4353b38f3060d8
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: fb049b5af5c700cdb72f0319019cfd6eee952d9f
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75977517"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156968"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Ciągła integracja i dostarczanie w Azure Data Factory
 
@@ -330,7 +330,7 @@ Jeśli korzystasz z trybu GIT, możesz zastąpić domyślne właściwości w sza
 * Używasz zautomatyzowanej ciągłej integracji/ciągłego dostarczania i chcesz zmienić niektóre właściwości podczas wdrażania Menedżer zasobów, ale właściwości nie są domyślnie sparametryzowane.
 * Fabryka jest tak duża, że domyślny szablon Menedżer zasobów jest nieprawidłowy, ponieważ ma więcej niż maksymalna dozwolona liczba parametrów (256).
 
-W tych warunkach, aby zastąpić domyślny szablon parametryzacja, Utwórz plik o nazwie ARM-template-parameters-Definition. JSON w folderze głównym repozytorium. Należy użyć tej dokładnej nazwy pliku. Data Factory odczytuje ten plik z niezależnej gałęzi, która jest obecnie dostępna w portalu Azure Data Factory, a nie tylko z gałęzi współpracy. Można utworzyć lub edytować plik z gałęzi prywatnej, gdzie można testować zmiany, wybierając pozycję **Eksportuj szablon ARM** w interfejsie użytkownika. Następnie można scalić plik z gałęzią współpracy. Jeśli plik nie zostanie znaleziony, zostanie użyty szablon domyślny.
+W tych warunkach, aby zastąpić domyślny szablon parametryzacja, Utwórz plik o nazwie ARM-template-parameters-Definition. JSON w folderze wskazanym jako folder główny integracji narzędzia Git usługi Fabryka danych. Należy użyć tej dokładnej nazwy pliku. Data Factory odczytuje ten plik z niezależnej gałęzi, która jest obecnie dostępna w portalu Azure Data Factory, a nie tylko z gałęzi współpracy. Można utworzyć lub edytować plik z gałęzi prywatnej, gdzie można testować zmiany, wybierając pozycję **Eksportuj szablon ARM** w interfejsie użytkownika. Następnie można scalić plik z gałęzią współpracy. Jeśli plik nie zostanie znaleziony, zostanie użyty szablon domyślny.
 
 ### <a name="syntax-of-a-custom-parameters-file"></a>Składnia pliku parametrów niestandardowych
 

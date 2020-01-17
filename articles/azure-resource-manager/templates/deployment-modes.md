@@ -3,12 +3,12 @@ title: Tryby wdrażania
 description: Opisuje, w jaki sposób należy określić, czy ma być używany pełny czy przyrostowy tryb wdrażania z Azure Resource Manager.
 ms.topic: conceptual
 ms.date: 12/23/2019
-ms.openlocfilehash: f5a6f6416240ce512167e779c086d2665771c3f1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: dc5446c56c92b61016563995ebc4c884d48e2419
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75484755"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76152395"
 ---
 # <a name="azure-resource-manager-deployment-modes"></a>Azure Resource Manager tryby wdrażania
 
@@ -26,16 +26,16 @@ Należy zachować ostrożność przy użyciu trybu kompletnego z [pętlami kopio
 
 W przypadku wdrożenia w [więcej niż jednej grupie zasobów w szablonie](cross-resource-group-deployment.md)zasoby w grupie zasobów określonej w operacji wdrażania mogą zostać usunięte. Zasoby w dodatkowych grupach zasobów nie są usuwane.
 
-Istnieją pewne różnice w sposobie, w jaki typy zasobów obsługują operacje usuwania w trybie pełnym. Zasoby nadrzędne są automatycznie usuwane, gdy nie znajdują się w szablonie, który został wdrożony w trybie kompletnym. Niektóre zasoby podrzędne nie są automatycznie usuwane, gdy nie znajdują się w szablonie. Jednak te zasoby podrzędne zostaną usunięte, jeśli zasób nadrzędny zostanie usunięty. 
+Istnieją pewne różnice w sposobie, w jaki typy zasobów obsługują operacje usuwania w trybie pełnym. Zasoby nadrzędne są automatycznie usuwane, gdy nie znajdują się w szablonie, który został wdrożony w trybie kompletnym. Niektóre zasoby podrzędne nie są automatycznie usuwane, gdy nie znajdują się w szablonie. Jednak te zasoby podrzędne zostaną usunięte, jeśli zasób nadrzędny zostanie usunięty.
 
-Na przykład, jeśli grupa zasobów zawiera strefę DNS (typ zasobu Microsoft. Network/dnsZones) i rekord CNAME (typ zasobu Microsoft. Network/dnsZones/CNAME), strefa DNS jest zasobem nadrzędnym rekordu CNAME. W przypadku wdrożenia z trybem kompletnym i nie dołączania strefy DNS do szablonu strefa DNS i rekord CNAME są usuwane. Jeśli w szablonie zostanie uwzględniona strefa DNS, ale nie zostanie uwzględniony rekord CNAME, rekord CNAME nie zostanie usunięty. 
+Na przykład, jeśli grupa zasobów zawiera strefę DNS (typ zasobu Microsoft. Network/dnsZones) i rekord CNAME (typ zasobu Microsoft. Network/dnsZones/CNAME), strefa DNS jest zasobem nadrzędnym rekordu CNAME. W przypadku wdrożenia z trybem kompletnym i nie dołączania strefy DNS do szablonu strefa DNS i rekord CNAME są usuwane. Jeśli w szablonie zostanie uwzględniona strefa DNS, ale nie zostanie uwzględniony rekord CNAME, rekord CNAME nie zostanie usunięty.
 
 Aby uzyskać listę sposobu, w jaki typy zasobów obsługują usuwanie, zobacz [usuwanie zasobów platformy Azure na potrzeby wdrożeń w trybie pełnym](complete-mode-deletion.md).
 
 Jeśli grupa zasobów jest [zablokowana](../management/lock-resources.md), tryb kompletny nie usuwa zasobów.
 
 > [!NOTE]
-> Tylko szablony na poziomie głównym obsługują pełny tryb wdrażania. W przypadku [szablonów połączonych lub zagnieżdżonych](linked-templates.md)należy użyć trybu przyrostowego. 
+> Tylko szablony na poziomie głównym obsługują pełny tryb wdrażania. W przypadku [szablonów połączonych lub zagnieżdżonych](linked-templates.md)należy użyć trybu przyrostowego.
 >
 > [Wdrożenia na poziomie subskrypcji](deploy-to-subscription.md) nie obsługują trybu pełnego.
 >
@@ -105,9 +105,9 @@ Poniższy przykład pokazuje połączony szablon z trybem wdrożenia przyrostowe
 ```json
 "resources": [
   {
+      "type": "Microsoft.Resources/deployments",
       "apiVersion": "2017-05-10",
       "name": "linkedTemplate",
-      "type": "Microsoft.Resources/deployments",
       "properties": {
           "mode": "Incremental",
           <nested-template-or-external-template>

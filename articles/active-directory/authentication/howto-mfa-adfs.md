@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f1cc696e6351281ec9bd84cc6611d81d9148cda1
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 00200436784eca970f736c4a7f2afebd652c9577
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848429"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76155217"
 ---
 # <a name="securing-cloud-resources-with-azure-multi-factor-authentication-and-ad-fs"></a>Zabezpieczanie zasobów w chmurze przy użyciu usługi Azure Multi-Factor Authentication i usług AD FS
 
@@ -44,7 +44,7 @@ Aby zabezpieczyć zasób w chmurze, skonfiguruj regułę oświadczeń, tak aby u
 7. Wybierz wartość **Odwołania metod uwierzytelniania** jako typ oświadczenia przychodzącego.
 8. Wybierz pozycję **Przekazuj wszystkie wartości oświadczeń**.
     ![Kreator dodawania reguły przekształcania dotyczącej oświadczeń](./media/howto-mfa-adfs/configurewizard.png)
-9. Kliknij przycisk **Finish** (Zakończ). Zamknij konsolę zarządzania usługami AD FS.
+9. Kliknij przycisk **Zakończ**. Zamknij konsolę zarządzania usługami AD FS.
 
 ## <a name="trusted-ips-for-federated-users"></a>Zaufane adresy IP dla użytkowników federacyjnych
 
@@ -67,7 +67,7 @@ W pierwszej kolejności należy skonfigurować oświadczenia usług AD FS. Utwó
 6. W polu Nazwa reguły oświadczenia wpisz nazwę reguły, np. WewnSiećFirm.
 7. Dla pola Typ oświadczenia przychodzącego wybierz z listy rozwijanej pozycję **Wewnątrz sieci firmowej**.
    ![Dodawanie wewnątrz](./media/howto-mfa-adfs/trustedip4.png)a do sieci firmowej
-8. Kliknij przycisk **Finish** (Zakończ).
+8. Kliknij przycisk **Zakończ**.
 9. Na karcie Reguły przekształcania wystawiania kliknij pozycję **Dodaj regułę**.
 10. W Kreatorze dodawania reguły przekształcania oświadczeń wybierz z listy rozwijanej pozycję **Wysyłanie oświadczeń przy użyciu reguły niestandardowej**, a następnie kliknij przycisk **Dalej**.
 11. W polu Nazwa reguły oświadczenia wprowadź tekst *Nie wylogowuj użytkowników*.
@@ -76,7 +76,7 @@ W pierwszej kolejności należy skonfigurować oświadczenia usług AD FS. Utwó
         c:[Type == "http://schemas.microsoft.com/2014/03/psso"]
             => issue(claim = c);
     ![Utwórz niestandardową, aby uniemożliwić Logowanie użytkowników](./media/howto-mfa-adfs/trustedip5.png)
-13. Kliknij przycisk **Finish** (Zakończ).
+13. Kliknij przycisk **Zakończ**.
 14. Kliknij przycisk **Zastosuj**.
 15. Kliknij przycisk **OK**.
 16. Zamknij przystawkę zarządzania usługami AD FS.
@@ -85,8 +85,8 @@ W pierwszej kolejności należy skonfigurować oświadczenia usług AD FS. Utwó
 
 Po skonfigurowaniu oświadczeń można przystąpić do konfigurowania zaufanych adresów IP.
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
-2. Wybierz pozycję **Azure Active Directory** > **dostęp warunkowy** > **nazwanych lokalizacji**.
+1. Zaloguj się do [Portalu Azure](https://portal.azure.com).
+2. Wybierz pozycję **Azure Active Directory** > **zabezpieczenia** > **dostęp warunkowy** > **nazwanych lokalizacji**.
 3. W bloku **dostęp warunkowy — lokalizacje z nazwą** wybierz opcję **Konfiguruj Zaufane adresy IP usługi MFA**
 
    ![Dostęp warunkowy usługi Azure AD nazwane lokalizacje Konfigurowanie zaufanych adresów IP MFA](./media/howto-mfa-adfs/trustedip6.png)

@@ -12,29 +12,30 @@ ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d0b8a5a8ac4132c998567f956f3171db06a9ca53
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 1ab01f5427401bd129fa84f9a5dd1a4d3f8dc77d
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231860"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156203"
 ---
-# <a name="manage-organizations-connected-to-your-work-or-school-account-from-the-organizations-page"></a>Zarządzanie organizacjami połączonymi z kontem służbowym ze strony organizacji
+# <a name="manage-your-connected-organizations-from-the-organizations-page"></a>Zarządzaj połączonymi organizacjami ze strony organizacji
 
-Organizacjami możesz zarządzać na stronie **organizacji** portalu **My Account** .
-
-Na stronie **organizacje** są wyświetlane dwa typy organizacji:
+Strona **organizacje** w portalu **My Account** ułatwia zarządzanie organizacjami (zazwyczaj nazwą organizacji) połączoną z kontem służbowym. Na stronie **organizacje** są wyświetlane dwa typy organizacji:
 
 - **Organizacja główna.** Organizacja główna jest organizacją, która jest właścicielem Twojego konta służbowego. Nie możesz opuścić swojej organizacji.
-
-- **Inne organizacje.** Inne organizacje to wszystkie grupy, do których użytkownik zalogował się wcześniej przy użyciu konta służbowego. W każdej chwili możesz opuścić każdą z tych organizacji.
 
     >[!NOTE]
     > Jeśli nie masz przypisanej organizacji domowej, zobaczysz tylko jeden nagłówek z listą skojarzonych organizacji.
 
+- **Inne organizacje.** Inne organizacje to wszystkie grupy, do których użytkownik zalogował się wcześniej przy użyciu konta służbowego. W każdej chwili możesz opuścić każdą z tych organizacji.
+
+>[!Important]
+>Ten artykuł jest przeznaczony dla użytkowników próbujących zaktualizować informacje o organizacji połączone z kontem służbowym. Jeśli jesteś administratorem, który szuka informacji o zarządzaniu grupami i użytkownikami dla pracowników i innych użycia, zobacz [dokumentację dotyczącą zarządzania użytkownikami przedsiębiorstwa](https://docs.microsoft.com/azure/active-directory/users-groups-roles/index).
+
 ## <a name="view-your-organizations"></a>Wyświetlanie organizacji
 
-1. Zaloguj się do swojego konta służbowego, a następnie przejdź na stronę https://myprofile.microsoft.com/.
+1. Zaloguj się do konta służbowego, a następnie przejdź do strony **Moje konto** (https://myprofile.microsoft.com/).
 
 2. W okienku nawigacji po lewej stronie wybierz pozycję **organizacje** lub wybierz łącze **Zarządzaj organizacjami** w bloku **organizacje** .
 
@@ -53,7 +54,7 @@ Możesz opuścić każdą organizację, która nie jest Twoją organizacją domo
 >[!Important]
 >Jeśli pozostawisz organizację przez pomyłkę, nie ma możliwości jej cofnięcia. Musisz poczekać, aż administrator tej organizacji zaprosił Cię ponownie.
 
-1. Wybierz pozycję **Opuść organizację** obok organizacji, którą chcesz opuścić, a następnie wybierz pozycję **Pozostaw** , aby potwierdzić, że chcesz opuścić.
+- Wybierz pozycję **Opuść organizację** obok organizacji, którą chcesz opuścić, a następnie wybierz pozycję **Pozostaw** , aby potwierdzić, że chcesz opuścić.
 
     ![Strona organizacje z wyróżnionym łączem Opuść organizację](media/my-account-portal/my-account-portal-organizations-leave.png)
 

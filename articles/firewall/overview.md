@@ -6,15 +6,15 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc
-ms.date: 01/13/2020
+ms.date: 01/15/2020
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: c78ac615d2a93865721152442461d40925dc088d
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: def954395c0f4f83afe28443ba63c89c41e07eba
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75922597"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156747"
 ---
 # <a name="what-is-azure-firewall"></a>Co to jest usługa Azure Firewall?
 
@@ -90,11 +90,10 @@ Dzięki temu można wykonać następujące scenariusze:
 
 Wszystkie zdarzenia są zintegrowane z usługą Azure Monitor, co umożliwia archiwizowanie dzienników na koncie magazynu, przesyłanie strumieniowe zdarzeń do centrum Event Hub lub wysyłanie ich do dzienników usługi Azure Monitor.
 
-## <a name="pci-soc-and-iso-compliant"></a>Zgodne ze standardami PCI, SOC i ISO
+## <a name="compliance-certifications"></a>Certyfikaty zgodności
 
-Zapora platformy Azure to usługa Payment Card Industry (PCI), kontrolki organizacji usług (SOC) i Międzynarodowa Organizacja Normalizacyjna (ISO). Obsługuje ona obecnie SOC 1 typu 2, SOC 2 typu 2, SOC 3, PCI DSS i ISO 27001, 27018, 20000-1, 22301, 9001, 27017.
+Zapora platformy Azure to usługa Payment Card Industry (PCI), kontrolki organizacji usług (SOC) i Międzynarodowa Organizacja Normalizacyjna (ISO). Aby uzyskać więcej informacji, zobacz [certyfikaty zgodności zapory platformy Azure](compliance-certifications.md).
 
-Aby uzyskać więcej informacji, zobacz [Przewodnik zgodności firmy Microsoft](https://servicetrust.microsoft.com/ViewPage/MSComplianceGuide).
 
 ## <a name="known-issues"></a>Znane problemy
 

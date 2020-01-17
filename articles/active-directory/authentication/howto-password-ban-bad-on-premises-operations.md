@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d8602a9c5b69c47c2f663dab461394ef5e1a9bed
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 2440d373b726b4f97cd5d9ba162daaa0714f79e0
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75762862"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76155052"
 ---
 # <a name="azure-ad-password-protection-operational-procedures"></a>Procedury operacyjne ochrony hasłem usługi Azure AD
 
@@ -28,7 +28,7 @@ Postępuj zgodnie ze wskazówkami zawartymi w artykule [Konfigurowanie listy nie
 
 ## <a name="enable-password-protection"></a>Włącz ochronę hasłem
 
-1. Zaloguj się do [Azure Portal](https://portal.azure.com) i przejdź do **Azure Active Directory**, **zabezpieczenia**,**metody uwierzytelniania**, a następnie **Ochrona hasłem**.
+1. Zaloguj się do [Azure Portal](https://portal.azure.com) i przejdź do **Azure Active Directory** > **zabezpieczenia** > **metody uwierzytelniania** > **ochronę hasłem**.
 1. Ustaw **opcję Włącz ochronę hasłem w systemie Windows Server Active Directory** na **wartość tak**
 1. Jak wspomniano w [Podręczniku wdrażania](howto-password-ban-bad-on-premises-deploy.md#deployment-strategy)zaleca się wstępne ustawienie **trybu** **inspekcji**
    * Po dodaniu tej funkcji możesz przełączyć **tryb** na **wymuszony**

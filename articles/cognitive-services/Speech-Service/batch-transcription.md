@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: panosper
-ms.openlocfilehash: 6b23ae21366699162b900ae420afae640aa20613
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 4c2985f35621ff3120217cbe38705ad2c228d6f7
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75921470"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122104"
 ---
 # <a name="how-to-use-batch-transcription"></a>Jak korzystać z transkrypcji partii
 
@@ -88,18 +88,13 @@ Parametry konfiguracji są podane jako dane JSON:
 Użyj tych opcjonalnych właściwości, aby skonfigurować transkrypcję:
 
 | Parametr | Opis |
-|-----------|------------|
-|`ProfanityFilterMode`|Określa sposób obsługi niezbyt wulgarności w wynikach rozpoznawania
-||**`Masked`** — wartość domyślna. Zastępuje wulgarność gwiazdkami<br>`None` — wyłącza filtrowanie niepotrzebnych<br>`Removed` — usuwa z wyniku wszystkie niewulgarności<br>`Tags` — dodaje Tagi o niewulgarności
-|`PunctuationMode`|Określa, aby obsłużyć interpunkcję w wynikach rozpoznawania
-||`Automatic` — usługa wstawia interpunkcję<br>`Dictated` (wymawiane) interpunkcja<br>**`DictatedAndAutomatic`** — wartość domyślna. Podyktowane i automatyczne interpunkcja<br>`None` — wyłącza interpunkcję
-|`AddWordLevelTimestamps`|Określa, czy sygnatury czasowe poziomu słowa mają być dodawane do danych wyjściowych
-||`True` — Włącza znaczniki czasu na poziomie słowa<br>**`False`** — wartość domyślna. Wyłącz sygnatury czasowe poziomu wyrazu
-|`AddSentiment`|Określa, czy analiza tonacji jest dodawana do wypowiedź
-||`True` — włącza tonacji na wypowiedź<br>**`False`** — wartość domyślna. Wyłącz tonacji
-|`AddDiarization`|Określa, czy analiza diarization jest przeprowadzana. Jeśli `true`, dane wejściowe powinny być audio mono, zawierające maksymalnie dwa głosy. `AddWordLevelTimestamps` należy ustawić na `true`
-||`True` — włącza diarization<br>**`False`** — wartość domyślna. Wyłącz diarization
-|`TranscriptionResultsContainerUrl`|Opcjonalny token sygnatury dostępu współdzielonego do zapisywalnego kontenera na platformie Azure. Wynik zostanie zapisany w tym kontenerze
+|-----------|-------------|
+| `ProfanityFilterMode` | Określa sposób obsługi wulgaryzmów w wyniki rozpoznawania. Akceptowane wartości to `None` która wyłącza filtrowanie wulgaryzmów `Masked` gwiazdek, która zastępuje wulgaryzmów `Removed` z wyników, które powoduje usunięcie wszystkich wulgaryzmów lub `Tags` dodaje tagi "wulgaryzmów". Ustawieniem domyślnym jest `Masked`. |
+| `PunctuationMode` | Określa sposób obsługi znaków interpunkcyjnych w wyniki rozpoznawania. Akceptowane wartości to `None` która wyłącza znak interpunkcyjny, `Dictated` co oznacza jawne znak interpunkcyjny, `Automatic` umożliwiającą dekodera przeciwdziałania znak interpunkcyjny, lub `DictatedAndAutomatic` co oznacza definiowane znaków interpunkcyjnych lub automatyczny. |
+| `AddWordLevelTimestamps` | Określa, czy sygnatury czasowe poziomu słowa mają być dodawane do danych wyjściowych. Akceptowane wartości to `true`, które umożliwiają wyłączanie sygnatur czasowych na poziomie programu Word i `false` (wartość domyślna). |
+| `AddSentiment` | Należy dodać tonacji do wypowiedź. Akceptowane wartości to `true`, które umożliwiają wyłączenie opcji tonacji na wypowiedź i `false` (wartość domyślna). |
+| `AddDiarization` | Określa, że analiza diarization powinna zostać przeprowadzona na wejściu, który powinien być kanałem mono zawierającym dwa głosy. Akceptowane wartości to `true`, które umożliwiają wyłączenie programu diarization i `false` (wartość domyślna). Wymaga również, aby `AddWordLevelTimestamps` mieć wartość true.|
+|`TranscriptionResultsContainerUrl`|Opcjonalny token sygnatury dostępu współdzielonego do zapisywalnego kontenera na platformie Azure. Wynik zostanie zapisany w tym kontenerze.
 
 ### <a name="storage"></a>Usługa Storage
 

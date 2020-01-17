@@ -8,12 +8,12 @@ ms.author: normesta
 ms.topic: article
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
-ms.openlocfilehash: dbfee5d897d54d68ea6471f0001793a905c95e62
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: cb2e1c16c1419d9925bd837bb4e12119f08d56c4
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75835072"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76119537"
 ---
 # <a name="use-python-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2-preview"></a>Używanie języka Python do zarządzania katalogami, plikami i listami ACL w Azure Data Lake Storage Gen2 (wersja zapoznawcza)
 
@@ -64,7 +64,7 @@ except Exception as e:
  
 - Zastąp wartość symbolu zastępczego `storage_account_name` nazwą konta magazynu.
 
-- Zastąp wartość symbolu zastępczego `storage-account-key` kluczem dostępu do konta magazynu.
+- Zastąp wartość symbolu zastępczego `storage_account_key` kluczem dostępu do konta magazynu.
 
 ## <a name="create-a-file-system"></a>Tworzenie systemu plików
 

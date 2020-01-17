@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/20/2019
 ms.author: aschhab
-ms.openlocfilehash: 15b7dab7de2affb67fa080d69b4895a31bf9ba3b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c381d9413c4003bc2ab9a9357ff2769e84d14c3e
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75462082"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76121747"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>Service Bus kontroli dostępu z sygnaturami dostępu współdzielonego
 
@@ -82,7 +82,7 @@ SharedAccessSignature sig=<signature-string>&se=<expiry>&skn=<keyName>&sr=<URL-e
 * **`sr`** -identyfikator URI zasobu, do którego uzyskuje się dostęp.
 * **`sig`** -Signature.
 
-`signature-string` to skrót SHA-256 obliczany na podstawie identyfikatora URI zasobu (**zakres** zgodnie z opisem w poprzedniej sekcji) oraz ciąg reprezentacji tokenu wygasa natychmiast, oddzielony znakiem CRLF.
+`signature-string` to skrót SHA-256 obliczany na podstawie identyfikatora URI zasobu (**zakres** zgodnie z opisem w poprzedniej sekcji) oraz ciąg reprezentacji tokenu wygasa natychmiast, oddzielony znakami LF.
 
 Obliczenia skrótu wyglądają podobnie jak w poniższym pseudo kodzie i zwracają 256-bitową/32-bajtową wartość skrótu.
 

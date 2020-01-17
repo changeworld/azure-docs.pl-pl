@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: TomSh
-ms.openlocfilehash: 659d00c3fc7a766d800de6f1f12f410003284360
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 8fab85b6f1d876cc65ceb44acd60b53c379e59e8
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979272"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76121951"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Izolacja w chmurze publicznej platformy Azure
 System Azure umożliwia uruchamianie aplikacji i maszyn wirtualnych w ramach udostępnionej infrastruktury fizycznej. Jedną z ekonomicznych motywacji do uruchamiania aplikacji w środowisku chmury jest możliwość dystrybucji kosztów zasobów udostępnionych między wieloma klientami. Ta metoda korzystania z wielu dzierżawców zwiększa wydajność dzięki możliwości multipleksowania zasobów między różnymi klientami przy niskich kosztach. Niestety, wprowadza również ryzyko związane z udostępnianiem serwerów fizycznych i innych zasobów infrastruktury w celu uruchamiania poufnych aplikacji i maszyn wirtualnych, które mogą należeć do dowolnego lub potencjalnie złośliwego użytkownika.
@@ -179,7 +179,7 @@ Komunikacja jest dozwolona z sieci VLAN FC do głównej sieci VLAN, ale nie moż
 ### <a name="logical-isolation-between-compute-and-storage"></a>Izolacja logiczna między COMPUTE i magazynem
 W ramach podstawowego projektu, Microsoft Azure oddziela obliczenia oparte na maszynach wirtualnych z magazynu. Takie Separacja umożliwia niezależne skalowanie i przechowywanie danych, co ułatwia zapewnienie wielu dzierżawców i izolację.
 
-W związku z tym usługa Azure Storage działa na osobnym sprzęcie bez łączności sieciowej z usługą Azure COMPUTE, z wyjątkiem logicznego. Oznacza [to](https://msenterprise.global.ssl.fastly.net/vnext/PDFs/A01_AzureSecurityWhitepaper20160415c.pdf) , że po utworzeniu dysku wirtualnego miejsce na dysku nie jest przydzielono do całej pojemności. Zamiast tego tworzona jest tabela, która mapuje adresy na dysku wirtualnym do obszarów na dysku fizycznym, a ta tabela jest początkowo pusta. **Po raz pierwszy klient zapisuje dane na dysku wirtualnym, przydzieli miejsce na dysku fizycznym, a wskaźnik do niego jest umieszczany w tabeli.**
+W związku z tym usługa Azure Storage działa na osobnym sprzęcie bez łączności sieciowej z usługą Azure COMPUTE, z wyjątkiem logicznego. Oznacza to, że po utworzeniu dysku wirtualnego miejsce na dysku nie jest przydzielono do całej pojemności. Zamiast tego tworzona jest tabela, która mapuje adresy na dysku wirtualnym do obszarów na dysku fizycznym, a ta tabela jest początkowo pusta. **Po raz pierwszy klient zapisuje dane na dysku wirtualnym, przydzieli miejsce na dysku fizycznym, a wskaźnik do niego jest umieszczany w tabeli.**
 ### <a name="isolation-using-storage-access-control"></a>Izolacja przy użyciu kontroli dostępu do magazynu
 **Access Control w usłudze Azure Storage** ma prosty model kontroli dostępu. Każda subskrypcja platformy Azure może utworzyć co najmniej jedno konto magazynu. Każde konto magazynu ma jeden klucz tajny, który służy do kontrolowania dostępu do wszystkich danych na tym koncie magazynu.
 
@@ -320,14 +320,6 @@ Wdrożenie platformy Azure ma wiele warstw izolacji sieci. Na poniższym diagram
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Opcje izolacji sieci dla maszyn w sieciach wirtualnych platformy Microsoft Azure](https://azure.microsoft.com/blog/network-isolation-options-for-machines-in-windows-azure-virtual-networks/)
+- Informacje [na temat opcji izolacji sieciowej dla maszyn w sieciach wirtualnych platformy Microsoft Azure](https://azure.microsoft.com/blog/network-isolation-options-for-machines-in-windows-azure-virtual-networks/). Obejmuje to klasyczny scenariusz frontonu i zaplecza, w którym maszyny w określonej sieci wewnętrznej lub podsieci mogą zezwalać tylko określonym klientom lub innym komputerom na łączenie się z konkretnym punktem końcowym na podstawie listy dozwolonych adresów IP.
 
-Obejmuje to klasyczny scenariusz frontonu i zaplecza, w którym maszyny w określonej sieci wewnętrznej lub podsieci mogą zezwalać tylko określonym klientom lub innym komputerom na łączenie się z konkretnym punktem końcowym na podstawie listy dozwolonych adresów IP.
-
-- [Izolacja obliczeniowa](https://msenterprise.global.ssl.fastly.net/vnext/PDFs/A01_AzureSecurityWhitepaper20160415c.pdf)
-
-Microsoft Azure oferuje różne usługi obliczeniowe oparte na chmurze, które obejmują szeroki wybór wystąpień obliczeniowych & usług, które mogą być automatycznie skalowane w górę i w dół w celu spełnienia potrzeb aplikacji lub przedsiębiorstwa.
-
-- [Izolacja magazynu](https://msenterprise.global.ssl.fastly.net/vnext/PDFs/A01_AzureSecurityWhitepaper20160415c.pdf)
-
-Microsoft Azure oddziela z magazynu obliczenia oparte na maszynach wirtualnych klienta. Takie Separacja umożliwia niezależne skalowanie i przechowywanie danych, co ułatwia zapewnienie wielu dzierżawców i izolację. W związku z tym usługa Azure Storage działa na osobnym sprzęcie bez łączności sieciowej z usługą Azure COMPUTE, z wyjątkiem logicznego. Wszystkie żądania są wykonywane za pośrednictwem protokołu HTTP lub HTTPS na podstawie wyboru klienta.
+- Dowiedz się więcej o [izolacji maszyny wirtualnej na platformie Azure](../../virtual-machines/windows/isolation.md). Usługa Azure COMPUTE oferuje rozmiary maszyn wirtualnych, które są odizolowane od określonego typu sprzętu i przeznaczone dla jednego klienta.
