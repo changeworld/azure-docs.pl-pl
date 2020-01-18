@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą Spotinst | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i Spotinst.
+title: 'Samouczek: Azure Active Directory integrację logowania jednokrotnego (SSO) z usługą Spotinst | Microsoft Docs'
+description: Dowiedz się, jak skonfigurować Logowanie jednokrotne między Azure Active Directory i Spotinst.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -11,265 +11,198 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 04/10/2019
+ms.date: 01/03/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 817eecce6c2c1be273b47494e8ecc14180394796
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 5490ff6c6143dff258d74e013bb9d4c821aab625
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67705340"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263289"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-spotinst"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Spotinst
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-spotinst"></a>Samouczek: Azure Active Directory integracji logowania jednokrotnego (SSO) z usługą Spotinst
 
-W tym samouczku dowiesz się, jak zintegrować Spotinst w usłudze Azure Active Directory (Azure AD).
-Integrowanie Spotinst z usługą Azure AD zapewnia następujące korzyści:
+W tym samouczku dowiesz się, jak zintegrować usługę Spotinst z usługą Azure Active Directory (Azure AD). Po zintegrowaniu usługi Spotinst z usługą Azure AD można:
 
-* Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do Spotinst.
-* Aby umożliwić użytkownikom można automatycznie zalogowany do Spotinst (logowanie jednokrotne) przy użyciu konta usługi Azure AD.
-* Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
+* Kontrolka w usłudze Azure AD, która ma dostęp do Spotinst.
+* Zezwól użytkownikom na automatyczne logowanie się do usługi Spotinst przy użyciu kont w usłudze Azure AD.
+* Zarządzaj kontami w jednej centralnej lokalizacji — Azure Portal.
 
-Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
+Aby dowiedzieć się więcej o integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne przy użyciu Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD za pomocą Spotinst, potrzebne są następujące elementy:
+Aby rozpocząć, potrzebne są następujące elementy:
 
-* Subskrypcja usługi Azure AD. Jeśli nie ma środowiska usługi Azure AD, możesz pobrać [bezpłatne konto](https://azure.microsoft.com/free/)
-* Spotinst logowanie jednokrotne włączone subskrypcji
+* Subskrypcja usługi Azure AD. Jeśli nie masz subskrypcji, możesz uzyskać [bezpłatne konto](https://azure.microsoft.com/free/).
+* Subskrypcja z włączonym logowaniem jednokrotnym (SSO) Spotinst.
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
-W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
+W tym samouczku skonfigurujesz i testujesz Logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
-* Obsługuje Spotinst **dodatkiem SP oraz dostawców tożsamości** jednokrotne logowanie inicjowane przez
+* Spotinst obsługuje usługę **SP i dostawcy tożsamości** zainicjowano Logowanie jednokrotne
 
 ## <a name="adding-spotinst-from-the-gallery"></a>Dodawanie Spotinst z galerii
 
-Aby skonfigurować integrację Spotinst w usłudze Azure AD, należy dodać Spotinst z galerii z listą zarządzanych aplikacji SaaS.
+Aby skonfigurować integrację programu Spotinst z usługą Azure AD, musisz dodać Spotinst z galerii do listy zarządzanych aplikacji SaaS.
 
-**Aby dodać Spotinst z galerii, wykonaj następujące czynności:**
+1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) przy użyciu służbowego lub osobistego konta Microsoft.
+1. W okienku nawigacji po lewej stronie wybierz usługę **Azure Active Directory** .
+1. Przejdź do **aplikacji przedsiębiorstwa** , a następnie wybierz pozycję **wszystkie aplikacje**.
+1. Aby dodać nową aplikację, wybierz pozycję **Nowa aplikacja**.
+1. W sekcji **Dodaj z galerii** wpisz **Spotinst** w polu wyszukiwania.
+1. Wybierz pozycję **Spotinst** from panel wyników, a następnie Dodaj aplikację. Poczekaj kilka sekund, gdy aplikacja zostanie dodana do dzierżawy.
 
-1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+## <a name="configure-and-test-azure-ad-single-sign-on-for-spotinst"></a>Skonfiguruj i przetestuj Logowanie jednokrotne w usłudze Azure AD dla Spotinst
 
-    ![Przycisk Azure Active Directory](common/select-azuread.png)
+Skonfiguruj i przetestuj Logowanie jednokrotne usługi Azure AD za pomocą Spotinst przy użyciu użytkownika testowego o nazwie **B. Simon**. Aby logowanie jednokrotne działało, należy ustanowić relację linku między użytkownikiem usługi Azure AD i powiązanym użytkownikiem w Spotinst.
 
-2. Przejdź do grupy **Aplikacje dla przedsiębiorstw** i wybierz opcję **Wszystkie aplikacje**.
+Aby skonfigurować i przetestować Logowanie jednokrotne usługi Azure AD za pomocą Spotinst, wykonaj następujące bloki konstrukcyjne:
 
-    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
+1. **[Skonfiguruj Logowanie jednokrotne usługi Azure AD](#configure-azure-ad-sso)** , aby umożliwić użytkownikom korzystanie z tej funkcji.
+    * **[Utwórz użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować Logowanie jednokrotne w usłudze Azure AD za pomocą usługi B. Simon.
+    * **[Przypisz użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić usłudze B. Simon korzystanie z logowania jednokrotnego w usłudze Azure AD.
+1. **[Skonfiguruj Logowanie jednokrotne](#configure-spotinst-sso)** w usłudze Spotinst, aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
+    * **[Utwórz użytkownika testowego Spotinst](#create-spotinst-test-user)** , aby dysponować odpowiednikiem B. Simon w Spotinst, która jest połączona z reprezentacją użytkownika w usłudze Azure AD.
+1. **[Przetestuj Logowanie jednokrotne](#test-sso)** — aby sprawdzić, czy konfiguracja działa.
 
-3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+## <a name="configure-azure-ad-sso"></a>Konfigurowanie logowania jednokrotnego w usłudze Azure AD
 
-    ![Nowy przycisk aplikacji](common/add-new-app.png)
+Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure AD w Azure Portal.
 
-4. W polu wyszukiwania wpisz **Spotinst**, wybierz opcję **Spotinst** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
+1. W [Azure Portal](https://portal.azure.com/)na stronie integracja aplikacji **Spotinst** Znajdź sekcję **Zarządzanie** i wybierz pozycję **Logowanie jednokrotne**.
+1. Na stronie **Wybierz metodę logowania jednokrotnego** wybierz pozycję **SAML**.
+1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu języka SAML** kliknij ikonę Edytuj/pióro, aby określić **podstawową konfigurację języka SAML** , aby edytować ustawienia.
 
-    ![Spotinst na liście wyników](common/search-new-app.png)
+   ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+1. Jeśli chcesz skonfigurować aplikację w trybie inicjowanym przez **dostawcę tożsamości**, w sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące kroki:
 
-W tej sekcji, konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne za pomocą Spotinst w oparciu o użytkownika testu o nazwie **Britta Simon**.
-Dla logowania jednokrotnego do pracy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w Spotinst musi zostać ustanowione.
+    a. Zaznacz **opcję Ustaw dodatkowe adresy URL**.
 
-Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą Spotinst, należy wykonać poniższe bloki konstrukcyjne:
+    b. W polu tekstowym **Stan przekazywania** wpisz wartość: `<ID>`
 
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Konfigurowanie Spotinst logowania jednokrotnego](#configure-spotinst-single-sign-on)**  — Aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
-3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Tworzenie użytkownika testowego Spotinst](#create-spotinst-test-user)**  — aby odpowiednikiem Britta Simon w Spotinst połączonego z usługi Azure AD reprezentacja użytkownika.
-6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
-
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
-
-W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
-
-Aby skonfigurować usługę Azure AD logowanie jednokrotne z Spotinst, wykonaj następujące czynności:
-
-1. W [witryny Azure portal](https://portal.azure.com/)na **Spotinst** strona integracji aplikacji, wybierz opcję **logowanie jednokrotne**.
-
-    ![Skonfigurować łącze rejestracji jednokrotnej](common/select-sso.png)
-
-2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
-
-    ![Wybieranie trybu logowania jednokrotnego](common/select-saml-option.png)
-
-3. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij ikonę **Edytuj**, aby otworzyć okno dialogowe **Podstawowa konfiguracja protokołu SAML**.
-
-    ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
-
-4. Jeśli chcesz skonfigurować aplikację w trybie inicjowanym przez **dostawcę tożsamości**, w sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące kroki:
-
-    ![Spotinst domena i adresy URL pojedynczego logowania jednokrotnego informacji](common/idp-preintegrated-relay.png)
-
-    a. Sprawdź **Ustaw dodatkowe adresy URL**.
-
-    b. W **tan przekaźnika** pole tekstowe, wpisz wartość: `<ID>`
-
-5. Kliknij przycisk **Ustaw dodatkowe adresy URL** i wykonaj następujący krok, jeśli chcesz skonfigurować aplikację w trybie inicjowania przez **dostawcę usług**:
-
-    ![Spotinst domena i adresy URL pojedynczego logowania jednokrotnego informacji](common/metadata-upload-additional-signon.png)
+1. Kliknij przycisk **Ustaw dodatkowe adresy URL** i wykonaj następujące kroki, jeśli chcesz skonfigurować aplikację w trybie inicjowania przez **dostawcę usług**:
 
     W polu tekstowym **Adres URL logowania** wpisz adres URL: `https://console.spotinst.com/auth/saml`
 
     > [!NOTE]
-    > Wartość stanu przekazywania nie jest prawdziwe. Wartość stanu przekazywania zostaną zaktualizowane o wartość tan przekaźnika rzeczywistą zostało wyjaśnione w dalszej części tego samouczka.
+    > Wartość stanu przekazywania nie jest prawdziwa. Wartość stanu przekazywania zostanie zaktualizowana o rzeczywistą wartość stanu przekazywania, która została omówiona w dalszej części tego samouczka.
 
-6. Aplikacja Spotinst oczekuje twierdzenia SAML w określonym formacie. Skonfiguruj następujące oświadczenia dla tej aplikacji. Wartościami tych atrybutów możesz zarządzać w sekcji **Atrybuty użytkownika** na stronie integracji aplikacji. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij przycisk **Edytuj**, aby otworzyć okno dialogowe **Atrybuty użytkownika**.
+1. Kliknij pozycję **Zapisz**.
 
-    ![image](common/edit-attribute.png)
+1. Aplikacja Spotinst oczekuje potwierdzeń SAML w określonym formacie, co wymaga dodania niestandardowych mapowań atrybutów do konfiguracji atrybutów tokenu SAML. Poniższy zrzut ekranu przedstawia listę atrybutów domyślnych.
 
-7. W sekcji **Oświadczenia użytkownika** w oknie dialogowym **Atrybuty użytkownika** edytuj oświadczenia, korzystając z **ikony edycji**, lub dodaj je za pomocą opcji **Dodaj nowe oświadczenie**, aby skonfigurować atrybut tokenu języka SAML, jak pokazano na ilustracji powyżej, a następnie wykonaj następujące czynności: 
+    ![image](common/default-attributes.png)
 
-    | Name (Nazwa) | Atrybut źródłowy|
+1. Oprócz powyższych, aplikacja Spotinst oczekuje kilku atrybutów do przekazania z powrotem w odpowiedzi SAML, które przedstawiono poniżej. Te atrybuty są również wstępnie wypełnione, ale można je sprawdzić zgodnie z wymaganiami.
+
+    | Nazwa | Atrybut źródłowy|
     | -----| --------------- |
-    | Email | user.mail |
+    | Adres e-mail | user.mail |
     | FirstName | user.givenname |
     | LastName | user.surname |
 
-    a. Kliknij przycisk **Dodaj nowe oświadczenie**, aby otworzyć okno dialogowe **Zarządzanie oświadczeniami użytkownika**.
+1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu protokołu SAML** w sekcji **certyfikat podpisywania SAML** Znajdź **plik XML metadanych Federacji** i wybierz pozycję **Pobierz** , aby pobrać certyfikat i zapisać go na komputerze.
 
-    ![image](common/new-save-attribute.png)
+    ![Link do pobierania certyfikatu](common/metadataxml.png)
 
-    ![image](common/new-attribute-details.png)
-
-    b. W polu tekstowym **Nazwa** wpisz nazwę atrybutu pokazaną dla tego wiersza.
-
-    d. Pozostaw pole **Przestrzeń nazw** puste.
-
-    d. Dla opcji Źródło wybierz wartość **Atrybut**.
-
-    e. Na liście **Atrybut źródłowy** wpisz wartość atrybutu pokazaną dla tego wiersza.
-
-    f. Kliknij przycisk **OK**.
-
-    g. Kliknij pozycję **Zapisz**.
-
-8. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **kod XML metadanych federacji** na podstawie podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
-
-    ![Link pobierania certyfikatu](common/metadataxml.png)
-
-9. Na **Konfigurowanie Spotinst** sekcji, skopiuj odpowiednie adresy URL, zgodnie z wymaganiami.
+1. W sekcji **Konfigurowanie Spotinst** skopiuj odpowiednie adresy URL na podstawie wymagania.
 
     ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
-    a. Adres URL logowania
-
-    b. Identyfikator usługi Azure AD
-
-    c. Adres URL wylogowywania
-
-### <a name="configure-spotinst-single-sign-on"></a>Konfigurowanie Spotinst logowanie jednokrotne
-
-1. W oknie przeglądarki internetowej innej Zaloguj się do Spotinst jako Administrator zabezpieczeń.
-
-2. Kliknij pozycję **ikony użytkownika** w prawej górnej części ekranu i kliknij przycisk **ustawienia**.
-
-    ![Ustawienia Spotinst](./media/spotinst-tutorial/tutorial_spotinst_settings.png)
-
-3. Kliknij pozycję **zabezpieczeń** u góry, a następnie wybierz pozycję **dostawców tożsamości** i wykonaj następujące czynności:
-
-    ![Spotinst zabezpieczeń](./media/spotinst-tutorial/tutorial_spotinst_security.png)
-
-    a. Kopiuj **tan przekaźnika** wartości dla swojego wystąpienia, a następnie wklej je **tan przekaźnika** polu tekstowym w **podstawową konfigurację protokołu SAML** sekcji w witrynie Azure portal.
-
-    b. Kliknij przycisk **PRZEGLĄDAJ** można przekazać pliku xml metadanych, który został pobrany z witryny Azure portal
-
-    c. Kliknij przycisk **SAVE** (Zapisz).
-
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
-W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie Britta Simon.
+W tej sekcji utworzysz użytkownika testowego w Azure Portal o nazwie B. Simon.
 
-1. W witrynie Azure Portal w okienku po lewej stronie wybierz pozycję **Azure Active Directory**, wybierz opcję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
-
-    ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
-
-2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
-
-    ![Przycisk Nowy użytkownik](common/new-user.png)
-
-3. We właściwościach użytkownika wykonaj następujące kroki.
-
-    ![Okno dialogowe Użytkownik](common/user-properties.png)
-
-    a. W polu **Nazwa** wprowadź **BrittaSimon**.
-  
-    b. W **nazwa_użytkownika** typ pola `brittasimon@yourcompanydomain.extension`. Na przykład: BrittaSimon@contoso.com
-
-    d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
-
-    d. Kliknij pozycję **Utwórz**.
+1. W lewym okienku w Azure Portal wybierz pozycję **Azure Active Directory**, wybierz pozycję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
+1. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
+1. We właściwościach **użytkownika** wykonaj następujące kroki:
+   1. W polu **Nazwa** wprowadź wartość `B.Simon`.  
+   1. W polu **Nazwa użytkownika** wprowadź username@companydomain.extension. Na przykład `B.Simon@contoso.com`.
+   1. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu **Hasło**.
+   1. Kliknij przycisk **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowanie jednokrotne za udzielanie dostępu do Spotinst.
+W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotnego na platformie Azure przez przyznanie dostępu do usługi Spotinst.
 
-1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw**, wybierz opcję **wszystkie aplikacje**, a następnie wybierz **Spotinst**.
+1. W Azure Portal wybierz pozycję **aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **wszystkie aplikacje**.
+1. Na liście Aplikacje wybierz pozycję **Spotinst**.
+1. Na stronie Przegląd aplikacji Znajdź sekcję **Zarządzanie** i wybierz pozycję **Użytkownicy i grupy**.
 
-    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
+   ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
 
-2. Na liście aplikacji wybierz **Spotinst**.
+1. Wybierz pozycję **Dodaj użytkownika**, a następnie w oknie dialogowym **Dodawanie przypisania** wybierz pozycję **Użytkownicy i grupy** .
 
-    ![Link Spotinst na liście aplikacji](common/all-applications.png)
+    ![Link Dodaj użytkownika](common/add-assign-user.png)
 
-3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
+1. W oknie dialogowym **Użytkownicy i grupy** wybierz pozycję **B. Simon** z listy Użytkownicy, a następnie kliknij przycisk **Wybierz** w dolnej części ekranu.
+1. Jeśli oczekujesz dowolnej wartości roli w potwierdzeniu SAML, w oknie dialogowym **Wybierz rolę** wybierz odpowiednią rolę dla użytkownika z listy, a następnie kliknij przycisk **Wybierz** w dolnej części ekranu.
+1. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
-    ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
+## <a name="configure-spotinst-sso"></a>Konfigurowanie logowania jednokrotnego Spotinst
 
-4. Kliknij przycisk **Dodaj użytkownika**, a następnie wybierz pozycję **Użytkownicy i grupy** w oknie dialogowym **Dodawanie przypisania**.
+1. W innym oknie przeglądarki sieci Web Zaloguj się, aby Spotinst jako administrator zabezpieczeń.
 
-    ![Okienko Dodawanie przypisania](common/add-assign-user.png)
-
-5. W oknie dialogowym **Użytkownicy i grupy** wybierz użytkownika **Britta Simon** na liście użytkowników, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
-
-6. Jeśli oczekujesz wartości roli w asercji SAML, w oknie dialogowym **Wybieranie roli** wybierz z listy odpowiednią rolę dla użytkownika, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
-
-7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
-
-### <a name="create-spotinst-test-user"></a>Tworzenie użytkownika testowego Spotinst
-
-Celem tej sekcji jest, aby utworzyć użytkownika o nazwie Britta Simon w Spotinst.
-
-1. Po skonfigurowaniu aplikacji w **SP** zainicjowano tryb, wykonaj następujące czynności:
-
-   a. W oknie przeglądarki internetowej innej Zaloguj się do Spotinst jako Administrator zabezpieczeń.
-
-   b. Kliknij pozycję **ikony użytkownika** w prawej górnej części ekranu i kliknij przycisk **ustawienia**.
+2. Kliknij **ikonę użytkownika** w prawym górnym rogu ekranu, a następnie kliknij pozycję **Ustawienia**.
 
     ![Ustawienia Spotinst](./media/spotinst-tutorial/tutorial_spotinst_settings.png)
 
-    c. Kliknij przycisk **użytkowników** i wybierz **Dodaj użytkownika**.
+3. Kliknij kartę **zabezpieczenia** u góry, a następnie wybierz pozycję **dostawcy tożsamości** i wykonaj następujące czynności:
+
+    ![Zabezpieczenia Spotinst](./media/spotinst-tutorial/tutorial_spotinst_security.png)
+
+    a. Skopiuj wartość **stanu przekaźnika** dla swojego wystąpienia i wklej ją w polu tekstowym **Stan przekazywania** w sekcji **Podstawowa konfiguracja SAML** w Azure Portal.
+
+    b. Kliknij przycisk **Przeglądaj** , aby przesłać plik XML metadanych pobrany z Azure Portal
+
+    d. Kliknij przycisk **SAVE** (Zapisz).
+
+### <a name="create-spotinst-test-user"></a>Utwórz użytkownika testowego Spotinst
+
+Celem tej sekcji jest utworzenie użytkownika o nazwie Britta Simon w Spotinst.
+
+1. Jeśli aplikacja została skonfigurowana w trybie zainicjowania programu **SP** , wykonaj następujące czynności:
+
+   a. W innym oknie przeglądarki sieci Web Zaloguj się, aby Spotinst jako administrator zabezpieczeń.
+
+   b. Kliknij **ikonę użytkownika** w prawym górnym rogu ekranu, a następnie kliknij pozycję **Ustawienia**.
+
+    ![Ustawienia Spotinst](./media/spotinst-tutorial/tutorial_spotinst_settings.png)
+
+    d. Kliknij pozycję **Użytkownicy** i wybierz pozycję **Dodaj użytkownika**.
 
     ![Ustawienia Spotinst](./media/spotinst-tutorial/adduser1.png)
 
-    d. W sekcji Dodaj użytkownika wykonaj następujące czynności:
+    d. W sekcji Dodawanie użytkownika wykonaj następujące czynności:
 
     ![Ustawienia Spotinst](./media/spotinst-tutorial/adduser2.png)
 
-    * W **imię i nazwisko** polu tekstowym Wprowadź pełną nazwę użytkownika, takich jak **BrittaSimon**.
+    * W polu tekstowym **pełna nazwa** wprowadź pełną nazwę użytkownika, np. **BrittaSimon**.
 
-    * W **E-mail** polu tekstowym wprowadź adres e-mail użytkownika, takich jak `brittasimon\@contoso.com`.
+    * W polu tekstowym **adres e-mail** wprowadź adres e-mail użytkownika, np. `brittasimon\@contoso.com`.
 
-    * Wybierz swoje szczegóły specyficzne dla organizacji **kont, roli konta i roli organizacji**.
+    * Wybierz szczegóły dotyczące organizacji **, roli konta i kont**.
 
-2. Po skonfigurowaniu aplikacji w **tożsamości** zainicjowano tryb, miejsca jest nie czynność do wykonania dla Ciebie w tej sekcji. Spotinst obsługę just-in-time, który jest domyślnie włączona. Nowy użytkownik jest tworzony podczas próby dostępu Spotinst, jeśli go jeszcze nie istnieje.
+2. Jeśli aplikacja została skonfigurowana w trybie inicjowania **dostawcy tożsamości** , w tej sekcji nie ma elementu Action. Spotinst obsługuje obsługę just-in-Time, która jest domyślnie włączona. Nowy użytkownik zostanie utworzony podczas próby uzyskania dostępu do Spotinst, jeśli jeszcze nie istnieje.
 
-### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
+## <a name="test-sso"></a>Testuj Logowanie jednokrotne 
 
-W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
+W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
-Po kliknięciu kafelka Spotinst w panelu dostępu, powinien zostać automatycznie zarejestrowaniu w usłudze Spotinst, dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
+Po kliknięciu kafelka Spotinst w panelu dostępu należy automatycznie zalogować się do Spotinst, dla którego skonfigurowano Logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
-- [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [Wypróbuj Spotinst z usługą Azure AD](https://aad.portal.azure.com/)
 

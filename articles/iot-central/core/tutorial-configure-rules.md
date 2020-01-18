@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 9c2c8c1bacf4abfa775747a03d2a4a6121b67714
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 9140114e7d31f24770bdcce9aae849b01aae9996
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74106595"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263655"
 ---
 # <a name="tutorial-configure-rules-and-actions-for-your-device-in-azure-iot-central"></a>Samouczek: Konfigurowanie reguł i akcji dla urządzenia w usłudze Azure IoT Central
 
@@ -22,11 +22,12 @@ ms.locfileid: "74106595"
 
 [!INCLUDE [iot-central-original-pnp](../../../includes/iot-central-original-pnp-note.md)]
 
-W ramach tego samouczka jest tworzona reguła, która powoduje wysyłanie wiadomości e-mail, gdy temperatura w połączonym klimatyzatorze przekroczy 90&deg; F.
+W tym samouczku utworzysz regułę, która wysyła wiadomość e-mail, gdy temperatura w podłączonym urządzeniu warunkowego stanu powietrza przekracza 70&deg; F.
 
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
+>
 > * Tworzenie reguły opartej na danych telemetrycznych
 > * Dodawanie akcji
 
@@ -48,13 +49,13 @@ Przed rozpoczęciem należy ukończyć samouczek [Definiowanie nowego typu urzą
 
     ![Widok Reguły](media/tutorial-configure-rules/newrule.png)
 
-5. Aby zdefiniować regułę, użyj informacji w poniższej tabeli:
+4. Aby zdefiniować regułę, użyj informacji w poniższej tabeli:
 
     | Ustawienie                                      | Wartość                             |
     | -------------------------------------------- | ------------------------------    |
     | Nazwa                                         | Alert temperatury klimatyzatora |
     | Włącz regułę dla wszystkich urządzeń z tego szablonu | Włączone                                |
-    | Warunek                                    | Temperatura jest wyższa niż 90    |
+    | Warunek                                    | Temperatura jest większa niż 70    |
     | Agregacja                                  | Brak                              |
 
     ![Warunek reguły temperatury](media/tutorial-configure-rules/temperaturerule.png)
@@ -71,10 +72,11 @@ W ramach definiowania reguły definiuje się także akcję uruchamianą, gdy war
 
 2. Aby zdefiniować akcję, użyj informacji w poniższej tabeli:
 
-    | Ustawienie   | Wartość                          |
-    | --------- | ------------------------------ |
-    | Do        | Twój adres e-mail             |
-    | Uwagi     | Temperatura klimatyzatora przekracza wartość progową. |
+    | Ustawienie      | Wartość                                               |
+    | ------------ | --------------------------------------------------- |
+    | Nazwa wyświetlana | Alert temperatury wiadomości e-mail                             |
+    | Do           | Twój adres e-mail                                  |
+    | Uwagi        | Temperatura klimatyzatora przekracza wartość progową. |
 
     > [!NOTE]
     > Aby użytkownik mógł otrzymywać wiadomości e-mail z powiadomieniem, adres e-mail musi być [identyfikatorem użytkownika w aplikacji](howto-administer.md), a użytkownik musiał zalogować się do aplikacji co najmniej raz.
@@ -96,12 +98,14 @@ W niniejszym samouczku zawarto informacje na temat wykonywania następujących c
 
 <!-- Repeat task list from intro -->
 > [!div class="nextstepaction"]
+>
 > * Tworzenie reguły opartej na danych telemetrycznych
 > * Dodawanie akcji
 
 Teraz, gdy zdefiniowano regułę opartą na wartości progowej, sugerowanym następnym krokiem jest [dostosowanie widoków operatora](tutorial-customize-operator.md).
 
 Aby dowiedzieć się więcej na temat różnych typów reguł w usłudze Azure IoT Central i parametryzowania definicji reguły, zobacz:
+
 * [Tworzenie reguły telemetrii i konfigurowanie powiadomień](howto-create-telemetry-rules.md).
 * [Tworzenie reguły zdarzeń i konfigurowanie powiadomień](howto-create-event-rules.md).
 

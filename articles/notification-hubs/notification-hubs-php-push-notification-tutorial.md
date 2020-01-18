@@ -1,6 +1,6 @@
 ---
-title: Jak używać Notification Hubs z językiem PHP
-description: Dowiedz się, jak korzystać z usługi Azure Notification Hubs z zaplecza PHP.
+title: Jak korzystać z usługi Azure Notification Hubs przy użyciu języka PHP
+description: Dowiedz się, jak używać platformy Azure Notification Hubs z zaplecza PHP.
 services: notification-hubs
 documentationcenter: ''
 author: sethmanheim
@@ -16,12 +16,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 4df48475af4b140e4446dde9069eafcc95d9d3b2
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 9a77a9d9c8b2d71197089f66d81e07d56c780e11
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213177"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263850"
 ---
 # <a name="how-to-use-notification-hubs-from-php"></a>Jak używać Notification Hubs w języku PHP
 
@@ -32,11 +32,11 @@ Możesz uzyskać dostęp do wszystkich funkcji Notification Hubs z poziomu zaple
 W tym temacie pokazano, jak:
 
 * Tworzenie klienta REST dla funkcji Notification Hubs w języku PHP;
-* Postępuj [](notification-hubs-ios-apple-push-notification-apns-get-started.md) zgodnie z samouczkiem wprowadzenie do wybranej platformy mobilnej, implementując część zaplecza w języku PHP.
+* Postępuj zgodnie z [samouczkiem](notification-hubs-ios-apple-push-notification-apns-get-started.md) wprowadzenie do wybranej platformy mobilnej, implementując część zaplecza w języku PHP.
 
 ## <a name="client-interface"></a>Interfejs klienta
 
-Główny interfejs klienta może zapewniać te same metody, które są dostępne w [zestawie SDK programu .net Notification Hubs](https://msdn.microsoft.com/library/jj933431.aspx), co umożliwia bezpośrednią translację wszystkich samouczków i przykładów dostępnych w tej witrynie oraz współtworzenie przez społeczność w Internet.
+Główny interfejs klienta może zapewniać te same metody, które są dostępne w [zestawie SDK programu .net Notification Hubs](https://msdn.microsoft.com/library/jj933431.aspx), co pozwala na bezpośrednie przetłumaczenie wszystkich samouczków i przykładów dostępnych w tej witrynie oraz współtworzenie przez społeczność Internetu.
 
 Możesz znaleźć cały kod dostępny w [Przykład otoki REST języka PHP].
 
@@ -106,7 +106,7 @@ Oto główna Klasa implementująca klienta, którego Konstruktor analizuje param
 
 Zapoznaj się z dokumentacją platformy Azure, aby uzyskać informacje na temat [tworzenia tokenu zabezpieczającego SAS](https://docs.microsoft.com/previous-versions/azure/reference/dn495627(v=azure.100)#create-sas-security-token).
 
-Dodaj metodę do klasy, `NotificationHub` aby utworzyć token oparty na identyfikatorze URI bieżącego żądania, a poświadczenia wyodrębnione z parametrów połączenia. `generateSasToken`
+Dodaj metodę `generateSasToken` do klasy `NotificationHub`, aby utworzyć token oparty na identyfikatorze URI bieżącego żądania, a poświadczenia wyodrębnione z parametrów połączenia.
 
     ```php
     private function generateSasToken($uri) {
@@ -155,7 +155,7 @@ Ta klasa jest kontenerem dla natywnej treści powiadomienia lub zestawem właśc
 
 Zapoznaj się z [dokumentacją interfejsów API REST Notification Hubs](https://msdn.microsoft.com/library/dn495827.aspx) i format określonych platform powiadomień dla wszystkich dostępnych opcji.
 
-Za pomocą tej klasy możemy teraz napisać metody wysyłania powiadomień w obrębie `NotificationHub` klasy:
+Za pomocą tej klasy możemy teraz napisać metody wysyłania powiadomień w ramach klasy `NotificationHub`:
 
     ```php
     public function sendNotification($notification, $tagsOrTagExpression="") {
@@ -216,7 +216,7 @@ Za pomocą tej klasy możemy teraz napisać metody wysyłania powiadomień w obr
     } 
     ```
 
-Powyższe metody wysyłają żądanie HTTP POST do `/messages` punktu końcowego centrum powiadomień z prawidłową treścią i nagłówkami, aby wysłać powiadomienie.
+Powyższe metody wysyłają żądanie HTTP POST do punktu końcowego `/messages` centrum powiadomień z prawidłową treścią i nagłówkami, aby wysłać powiadomienie.
 
 ## <a name="complete-tutorial"></a>Ukończ samouczek
 
@@ -282,7 +282,7 @@ Uruchomienie kodu w języku PHP powinno teraz spowodować powiadomienie wyświet
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym temacie pokazano, jak utworzyć prosty klient protokołu Java REST dla Notification Hubs. W tym miejscu możesz:
+W tym temacie pokazano, jak utworzyć prosty klient protokołu Java REST dla Notification Hubs. W tym miejscu można wykonać następujące czynności:
 
 * Pobierz pełny [przykład otoki REST języka PHP], który zawiera cały kod.
 * Kontynuuj uczenie się Notification Hubs funkcji tagowania w [samouczek z najświeższymi wiadomościami]

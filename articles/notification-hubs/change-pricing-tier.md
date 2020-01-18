@@ -13,12 +13,12 @@ ms.date: 01/28/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/28/2019
-ms.openlocfilehash: 679e8b58e5876d5460b426e694df85ded992a36d
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 51d0880b7f56d523a01fbc993993b3caf7328134
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212570"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76261079"
 ---
 # <a name="change-pricing-tier-of-an-azure-notification-hubs-namespace"></a>Zmień warstwę cenową przestrzeni nazw centrów powiadomień platformy Azure
 Notification Hubs jest oferowana w trzech warstwach: **bezpłatna**, **podstawowa**i **standardowa**. W tym artykule opisano sposób zmiany warstwy cenowej dla przestrzeni nazw platformy Azure Notification Hubs. 
@@ -36,9 +36,9 @@ W przypadku korzystania z Azure Portal można zmienić warstwę cenową dla prze
 ### <a name="change-tier-on-the-namespace-page"></a>Zmień warstwę na stronie przestrzeni nazw
 Poniższa procedura zawiera kroki umożliwiające zmianę warstwy cenowej dla przestrzeni nazw na stronie przestrzeni nazw. Zmiana warstwy dla przestrzeni nazw ma zastosowanie do wszystkich centrów w przestrzeni nazw.
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [Portalu Azure](https://portal.azure.com).
 2. W menu po lewej stronie wybierz pozycję **wszystkie usługi** . 
-3. W sekcji **Internet rzeczy** wybierz pozycję **przestrzenie nazw centrum powiadomień** . Jeśli wybierzesz gwiazdkę`*`() obok tekstu, zostanie ona dodana na lewym pasku nawigacyjnym w obszarze **Ulubione**. Ułatwia ona szybkie uzyskiwanie dostępu do strony przestrzeni nazw. Po dodaniu go do ulubionych wybierz pozycję **przestrzenie nazw centrum powiadomień**. 
+3. W sekcji **Internet rzeczy** wybierz pozycję **przestrzenie nazw centrum powiadomień** . Jeśli wybierzesz gwiazdkę (`*`) obok tekstu, zostanie ona dodana na lewym pasku nawigacyjnym w obszarze **Ulubione**. Ułatwia ona szybkie uzyskiwanie dostępu do strony przestrzeni nazw. Po dodaniu go do ulubionych wybierz pozycję **przestrzenie nazw centrum powiadomień**. 
 
     ![Wszystkie usługi — > przestrzenie nazw centrum powiadomień](./media/change-pricing-tier/all-services-nhub.png)
 1. Na stronie **przestrzenie nazw centrum powiadomień** wybierz przestrzeń nazw, dla której chcesz zmienić warstwę cenową. 
@@ -56,14 +56,14 @@ Poniższa procedura zawiera kroki umożliwiające zmianę warstwy cenowej dla pr
 ### <a name="change-tier-on-the-hub-page"></a>Zmień warstwę na stronie centrum
 Poniższa procedura zawiera kroki umożliwiające zmianę warstwy cenowej dla przestrzeni nazw na stronie centrum. Mimo że te kroki są wykonywane począwszy od strony centrum, w rzeczywistości zmienisz warstwę cenową dla przestrzeni nazw i wszystkich centrów w przestrzeni nazw. 
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [Portalu Azure](https://portal.azure.com).
 2. W menu po lewej stronie wybierz pozycję **wszystkie usługi** .
 3. Wybierz **Notification Hubs** w sekcji **Internet rzeczy** . 
 4. Wybierz **centrum**powiadomień. 
 5. W menu po lewej stronie wybierz pozycję **warstwa cenowa** . 
 6. Zmień warstwę cenową, a następnie kliknij przycisk **Wybierz** . Ta akcja powoduje zmianę ustawienia warstwy cenowej dla przestrzeni nazw zawierającej centrum. Na stronie przestrzeń nazw zostanie wyświetlona nowa warstwa cenowa i wszystkie strony centrów. 
 
-## <a name="use-rest-api"></a>Korzystanie z interfejsu API REST
+## <a name="use-rest-api"></a>Używanie interfejsu API REST
 Aby uzyskać bieżącą warstwę cenową i zaktualizować ją, można użyć następujących interfejsów API REST dostawcy zasobów. 
 
 ### <a name="get-current-pricing-tier-for-a-namespace"></a>Pobierz bieżącą warstwę cenową dla przestrzeni nazw

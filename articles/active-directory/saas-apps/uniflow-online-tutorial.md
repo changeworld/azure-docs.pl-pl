@@ -16,19 +16,19 @@ ms.topic: tutorial
 ms.date: 12/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9eb369047574ef76dd31996fd16399380ea027c8
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: f26af813fcd4032aabce2305ac8845307d1fca65
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74823305"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76262133"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-uniflow-online"></a>Samouczek: Azure Active Directory integrację logowania jednokrotnego (SSO) z usługą uniFLOW online
 
 W tym samouczku dowiesz się, jak zintegrować usługę uniFLOW online z usługą Azure Active Directory (Azure AD). Po zintegrowaniu usługi uniFLOW w trybie online z usługą Azure AD można:
 
 * Kontrolka w usłudze Azure AD, która ma dostęp do usługi uniFLOW online.
-* Zezwól użytkownikom na automatyczne logowanie do uniFLOW online przy użyciu kont usługi Azure AD.
+* Zezwól użytkownikom na logowanie się w usłudze uniFLOW online przy użyciu kont usługi Azure AD.
 * Zarządzaj kontami w jednej centralnej lokalizacji — Azure Portal.
 
 Aby dowiedzieć się więcej o integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne przy użyciu Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
@@ -38,7 +38,7 @@ Aby dowiedzieć się więcej o integracji aplikacji SaaS z usługą Azure AD, zo
 Aby rozpocząć, potrzebne są następujące elementy:
 
 * Subskrypcja usługi Azure AD. Jeśli nie masz subskrypcji, możesz uzyskać [bezpłatne konto](https://azure.microsoft.com/free/).
-* subskrypcja z włączonym logowaniem jednokrotnym w usłudze uniFLOW online.
+* uniFLOW dzierżawy online.
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
@@ -64,11 +64,10 @@ Skonfiguruj i przetestuj Logowanie jednokrotne usługi Azure AD za pomocą uniFL
 Aby skonfigurować i przetestować Logowanie jednokrotne usługi Azure AD w usłudze uniFLOW online, wykonaj następujące bloki konstrukcyjne:
 
 1. **[Skonfiguruj Logowanie jednokrotne usługi Azure AD](#configure-azure-ad-sso)** , aby umożliwić użytkownikom korzystanie z tej funkcji.
-    * **[Utwórz użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować Logowanie jednokrotne w usłudze Azure AD za pomocą usługi B. Simon.
-    * **[Przypisz użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić usłudze B. Simon korzystanie z logowania jednokrotnego w usłudze Azure AD.
+   1. **[Utwórz użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować Logowanie jednokrotne w usłudze Azure AD za pomocą usługi B. Simon.
+   1. **[Przypisz użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić usłudze B. Simon korzystanie z logowania jednokrotnego w usłudze Azure AD.
 1. **[Skonfiguruj Logowanie jednokrotne w usłudze UniFLOW online](#configure-uniflow-online-sso)** — aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
-    * **[Utwórz użytkownika testowego usługi UniFLOW online](#create-uniflow-online-test-user)** , aby uzyskać odpowiednik B. Simon w usłudze uniFLOW online, która jest połączona z reprezentacją użytkownika w usłudze Azure AD.
-1. **[Przetestuj Logowanie jednokrotne](#test-sso)** — aby sprawdzić, czy konfiguracja działa.
+    * **[Zaloguj się do usługi UniFLOW online przy użyciu utworzonego użytkownika testowego,](#sign-in-to-uniflow-online-using-the-created-test-user)** aby przetestować Logowanie użytkownika po stronie aplikacji.
 
 ## <a name="configure-azure-ad-sso"></a>Konfigurowanie logowania jednokrotnego w usłudze Azure AD
 
@@ -86,24 +85,24 @@ Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure 
 
     | | |
     |-|-|
-    | `https://<tenant_domain_name>.eu.uniFLOWonline.com`|
-    | `https://<tenant_domain_name>.us.uniFLOWonline.com`|
-    | `https://<tenant_domain_name>.sg.uniFLOWonline.com`|
-    | `https://<tenant_domain_name>.jp.uniFLOWonline.com`|
-    | `https://<tenant_domain_name>.au.uniFLOWonline.com`|
+    | `https://<tenant_domain_name>.eu.uniflowonline.com`|
+    | `https://<tenant_domain_name>.us.uniflowonline.com`|
+    | `https://<tenant_domain_name>.sg.uniflowonline.com`|
+    | `https://<tenant_domain_name>.jp.uniflowonline.com`|
+    | `https://<tenant_domain_name>.au.uniflowonline.com`|
 
     b. W polu tekstowym **Identyfikator (identyfikator jednostki)** wpisz adres URL, korzystając z następującego wzorca:
 
     | | |
     |-|-|
-    | `https://<tenant_domain_name>.eu.uniFLOWonline.com`|
-    | `https://<tenant_domain_name>.us.uniFLOWonline.com`|
-    | `https://<tenant_domain_name>.sg.uniFLOWonline.com`|
-    | `https://<tenant_domain_name>.jp.uniFLOWonline.com`|
-    | `https://<tenant_domain_name>.au.uniFLOWonline.com`|
+    | `https://<tenant_domain_name>.eu.uniflowonline.com`|
+    | `https://<tenant_domain_name>.us.uniflowonline.com`|
+    | `https://<tenant_domain_name>.sg.uniflowonline.com`|
+    | `https://<tenant_domain_name>.jp.uniflowonline.com`|
+    | `https://<tenant_domain_name>.au.uniflowonline.com`|
 
     > [!NOTE]
-    > Te wartości nie są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego identyfikatora i adresu URL logowania. Skontaktuj się z [zespołem pomocy technicznej usługi UniFLOW online](mailto:support@nt-ware.com) , aby uzyskać te wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
+    > Te wartości nie są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego identyfikatora i adresu URL logowania. Skontaktuj się z [zespołem pomocy technicznej usługi UniFLOW online](mailto:support@nt-ware.com) , aby uzyskać te wartości. Można również odwołać się do wzorców przedstawionych w sekcji podstawowe informacje o **konfiguracji SAML** w Azure Portal lub zajrzeć do adresu URL odpowiedzi wyświetlanego w dzierżawie usługi uniFLOW online.
 
 1. aplikacja online uniFLOW oczekuje potwierdzeń SAML w określonym formacie, co wymaga dodania niestandardowych mapowań atrybutów do konfiguracji atrybutów tokenu SAML. Poniższy zrzut ekranu przedstawia listę atrybutów domyślnych.
 
@@ -115,6 +114,9 @@ Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure 
     | -----------| --------------- |
     | displayname | user.displayname |
     | pseudonim | User. nazwy pospolitej onpremisessamaccountname |
+
+   > [!NOTE]
+   > Atrybut `user.onpremisessamaccountname` będzie zawierać wartość tylko wtedy, gdy użytkownicy usługi Azure AD są synchronizowani z lokalnego Active Directory systemu Windows.
 
 1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu protokołu SAML** w sekcji **certyfikat podpisywania SAML** kliknij przycisk Kopiuj, aby skopiować **adres URL metadanych federacji aplikacji** i zapisać go na komputerze.
 
@@ -138,17 +140,20 @@ W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotn
 
 1. W Azure Portal wybierz pozycję **aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **wszystkie aplikacje**.
 1. Na liście Aplikacje wybierz pozycję **UniFLOW online**.
-1. Na stronie Przegląd aplikacji Znajdź sekcję **Zarządzanie** i wybierz pozycję **Użytkownicy i grupy**.
+1. Na stronie Przegląd aplikacji przejdź do sekcji **Zarządzanie** i wybierz pozycję **Użytkownicy i grupy**.
 
    ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
 
 1. Wybierz pozycję **Dodaj użytkownika**, a następnie w oknie dialogowym **Dodawanie przypisania** wybierz pozycję **Użytkownicy i grupy** .
 
-    ![Link Dodaj użytkownika](common/add-assign-user.png)
+   ![Link Dodaj użytkownika](common/add-assign-user.png)
 
 1. W oknie dialogowym **Użytkownicy i grupy** wybierz pozycję **B. Simon** z listy Użytkownicy, a następnie kliknij przycisk **Wybierz** w dolnej części ekranu.
 1. Jeśli oczekujesz dowolnej wartości roli w potwierdzeniu SAML, w oknie dialogowym **Wybierz rolę** wybierz odpowiednią rolę dla użytkownika z listy, a następnie kliknij przycisk **Wybierz** w dolnej części ekranu.
 1. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
+
+> [!NOTE]
+> Aby zezwolić wszystkim użytkownikom na dostęp do aplikacji bez przypisywania ręcznego, przejdź do sekcji **Zarządzanie** i wybierz pozycję **Właściwości**. Następnie zmień parametr **wymagany przez przypisanie użytkownika** na wartość **nie**.
 
 ## <a name="configure-uniflow-online-sso"></a>Konfigurowanie logowania jednokrotnego w usłudze uniFLOW online
 
@@ -177,7 +182,7 @@ W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotn
 
     d. Dla **typu protokołu WS-karmionego**wybierz opcję **Azure Active Directory** z listy rozwijanej.
 
-    d. Kliknij przycisk **Save** (Zapisz).
+    d. Kliknij pozycję **Zapisz**.
 
 1. Na karcie **Ogólne** wykonaj następujące czynności:
 
@@ -185,7 +190,7 @@ W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotn
 
     a. Wprowadź nazwę wyświetlaną ex: *AZUREAD SSO*.
 
-    b. Wybierz opcję **z adresu URL** dla **metadanych Federacji ADGS**.
+    b. Wybierz opcję **adres URL** dla **metadanych Federacji usług ADFS**.
 
     d. W polu tekstowym **adres URL metadanych Federacji** wklej wartość **adresu URL metadanych federacji aplikacji** , która została skopiowana z Azure Portal.
 
@@ -193,33 +198,15 @@ W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotn
 
     e. Wybierz pozycję **Automatyczna rejestracja użytkowników** jako **aktywowana**.
 
-    f. Kliknij przycisk **Save** (Zapisz).
+    f. Kliknij pozycję **Zapisz**.
 
-### <a name="create-uniflow-online-test-user"></a>Utwórz użytkownika testowego usługi uniFLOW online
+### <a name="sign-in-to-uniflow-online-using-the-created-test-user"></a>Zaloguj się do usługi uniFLOW online za pomocą utworzonego użytkownika testowego
 
-1. W innym oknie przeglądarki sieci Web Zaloguj się, aby uniFLOW witrynę internetową online jako administrator.
+1. W innym oknie przeglądarki sieci Web przejdź do adresu URL usługi uniFLOW online dla Twojej dzierżawy.
 
-1. W okienku nawigacji po lewej stronie wybierz pozycję Karta **użytkownika** .
+1. Wybierz wcześniej utworzonego dostawcę tożsamości, aby zalogować się za pomocą swojego wystąpienia usługi Azure AD.
 
-    ![uniFLOW konfiguracja online](./media/uniflow-online-tutorial/configure1.png)
-
-1. Kliknij przycisk **Dodaj użytkownika**.
-
-    ![uniFLOW konfiguracja online](./media/uniflow-online-tutorial/user1.png)
-
-1. Kliknij pozycję **Utwórz użytkownika ręcznie**.
-
-    ![uniFLOW konfiguracja online](./media/uniflow-online-tutorial/user2.png)
-
-1. Na karcie **Tworzenie użytkownika ręcznie** podaj wymagane wartości zgodnie z wymaganiami organizacji.
-
-    ![uniFLOW konfiguracja online](./media/uniflow-online-tutorial/user3.png)
-
-## <a name="test-sso"></a>Testuj Logowanie jednokrotne
-
-W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
-
-Po kliknięciu kafelka uniFLOW online w panelu dostępu należy automatycznie zalogować się do uniFLOW online, dla którego skonfigurowano Logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
+1. Zaloguj się przy użyciu użytkownika testowego.
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 

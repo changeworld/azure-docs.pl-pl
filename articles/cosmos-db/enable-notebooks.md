@@ -1,38 +1,38 @@
 ---
-title: Włącz Notesy na koncie Azure Cosmos DB
+title: Włącz Notesy na koncie Azure Cosmos DB (wersja zapoznawcza)
 description: Wbudowane notesy Azure Cosmos DB umożliwiają analizowanie i wizualizowanie danych z poziomu portalu. W tym artykule opisano sposób włączania tej funkcji dla kont usługi Cosmos.
 author: deborahc
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/22/2019
 ms.author: dech
-ms.openlocfilehash: 22bad3b31b8cbe54900b96bd4b327f18916e81a3
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 8c65b7d010e521ec78322de9807f741c856a2381
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71677143"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264852"
 ---
 # <a name="enable-notebooks-for-azure-cosmos-db-accounts"></a>Włącz notesy dla kont Azure Cosmos DB
 
 > [!IMPORTANT]
 > Wbudowane notesy dla Azure Cosmos DB są obecnie dostępne w następujących regionach platformy Azure: Australia Wschodnia, Wschodnie stany USA, Wschodnie stany USA 2, Europa Północna, Południowo-środkowe stany USA, Azja Południowo-Wschodnia Południowe Zjednoczone Królestwo, Europa Zachodnia i zachodnie stany USA 2. Aby korzystać z notesów, [Utwórz nowe konto z notesami](#enable-notebooks-in-a-new-cosmos-account) lub [Włącz Notesy na istniejącym koncie](#enable-notebooks-in-an-existing-cosmos-account) w jednym z tych regionów.
 
-Wbudowane notesy Jupyter w Azure Cosmos DB umożliwiają analizowanie i wizualizowanie danych z Azure Portal. W tym artykule opisano, jak włączyć tę funkcję dla konta Azure Cosmos DB.
+Wbudowane notesy Jupyter w Azure Cosmos DB umożliwiają analizowanie i wizualizowanie danych z Azure Portal. W tym artykule opisano sposób włączania tej funkcji dla konta usługi Azure Cosmos DB.
 
 ## <a name="enable-notebooks-in-a-new-cosmos-account"></a>Włącz Notesy na nowym koncie Cosmos
-1. Zaloguj się do [Azure Portal](https://portal.azure.com/).
+1. Zaloguj się do [Portalu Azure](https://portal.azure.com/).
 1. Wybierz kolejno pozycje **Utwórz zasób** > **Bazy danych** > **Azure Cosmos DB**.
 1. Na stronie **Tworzenie konta Azure Cosmos DB** wybierz pozycję **notesy**. 
  
     ![Opcja Wybierz notesy w Azure Cosmos DB Utwórz blok](media/enable-notebooks/create-new-account-with-notebooks.png)
 1. Wybierz pozycję **Przegląd + utwórz**. Możesz pominąć opcję **Sieć** i **Tagi** . 
-1. Przejrzyj ustawienia konta, a następnie wybierz pozycję **Utwórz**. Utworzenie konta może potrwać kilka minut. Poczekaj, aż Strona portalu **zostanie**wyświetlona. 
+1. Przejrzyj ustawienia konta, a następnie wybierz pozycję **Utwórz**. Utworzenie konta trwa kilka minut. Poczekaj na wyświetlenie komunikatu **Wdrożenie zostało ukończone** na stronie portalu. 
 
     ![Okienko Powiadomienia w witrynie Azure Portal](media/enable-notebooks/create-new-account-with-notebooks-complete.png)
-1. Wybierz pozycję **Przejdź do zasobu** , aby przejść do strony konta Azure Cosmos DB. 
+1. Wybierz pozycję **Przejdź do zasobu**, aby przejść do strony konta usługi Azure Cosmos DB. 
 
-    ![Strona konta Azure Cosmos DB](../../includes/media/cosmos-db-create-dbaccount/azure-cosmos-db-account-created-3.png)
+    ![Strona konta usługi Azure Cosmos DB](../../includes/media/cosmos-db-create-dbaccount/azure-cosmos-db-account-created-3.png)
 
 1. Przejdź do okienka **Eksplorator danych** . Zobaczysz teraz obszar roboczy notesy.
 

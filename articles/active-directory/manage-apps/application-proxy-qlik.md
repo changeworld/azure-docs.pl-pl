@@ -14,12 +14,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f54e08e6c3b7b673541f124a90f32dbc860fa44
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 45bf71274d8eb1039254cafe48a34587199be724
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65859536"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263510"
 ---
 # <a name="application-proxy-and-qlik-sense"></a>Serwer Proxy aplikacji i usługa Qlik Sense 
 Usługa Azure Active Directory serwera Proxy aplikacji i usługa Qlik Sense wspólnie opracowały razem upewnij się, że możesz łatwo udostępnić dostępu zdalnego we wdrożeniu usługa Qlik Sense za pomocą serwera Proxy aplikacji.  
@@ -43,7 +43,7 @@ Wykonaj następujące kroki, aby opublikować aplikację. Bardziej szczegółowy
 4. Wybierz **aplikacje lokalne**. 
 5. Wypełnij wymagane pola informacji o nowej aplikacji. Użyj poniższych wskazówek, aby ustawienia: 
    - **Wewnętrzny adres URL**: Ta aplikacja powinna mieć wewnętrzny adres URL, który jest adresem URL QlikSense, sam. Na przykład **https&#58;//demo.qlikemm.com:4244** 
-   - **Metoda wstępnego uwierzytelnienia**: Usługa Azure Active Directory (zalecane, ale nie wymagane) 
+   - **Metoda wstępnego uwierzytelnienia**: Azure Active Directory (zalecane, ale nie wymagane) 
 1. Wybierz **Dodaj** w dolnej części bloku. Aplikacja zostanie dodany, a zostanie otwarte menu skrócone. 
 2. Wybierz z menu skrócone **przypisać użytkownika do testowania**, i Dodaj co najmniej jednego użytkownika do aplikacji. Upewnij się, że to konto testu ma dostęp do aplikacji w środowisku lokalnym. 
 3. Wybierz **przypisać** można zapisać przypisania użytkownika testowego. 
@@ -52,19 +52,19 @@ Wykonaj następujące kroki, aby opublikować aplikację. Bardziej szczegółowy
 ### <a name="application-2"></a>Aplikacja #2: 
 Te same czynności jak w przypadku aplikacji nr 1, z następującymi wyjątkami: 
 
-**Krok #5**: Wewnętrzny adres URL powinien być teraz do adresu URL QlikSense port uwierzytelniania używany przez aplikację. Wartość domyślna to **4244** dla protokołu HTTPS i 4248 dla protokołu HTTP. Ex: **https&#58;//demo.qlik.com:4244**</br></br> 
-**Krok #10** Nie skonfigurować logowanie Jednokrotne i pozostawić **logowanie jednokrotne wyłączone**
+**Krok #5**: wewnętrzny adres URL powinien być teraz do adresu URL QlikSense port uwierzytelniania używany przez aplikację. Wartość domyślna to **4244** dla protokołów HTTPS i **4248** dla protokołu HTTP dla wersji QlikSense wcześniejszych niż kwiecień 2018. Domyślne wersje QlikSense po kwietnia 2018 to **443** dla protokołów HTTPS i **80** dla protokołu HTTP.  Ex: **https&#58;//demo.qlik.com:4244**</br></br> 
+**Krok #10:** nie skonfigurować logowanie Jednokrotne i pozostawić **logowanie jednokrotne wyłączone**
  
  
 ## <a name="testing"></a>Testowanie 
 Twoja aplikacja jest teraz gotowe do testu. Dostęp do zewnętrznego adresu URL używany do publikowania QlikSense w aplikacji nr 1, a następnie zaloguj się jako użytkownik przypisany do obydwu aplikacji.  
 
 ## <a name="additional-references"></a>Dodatkowa dokumentacja
-Aby uzyskać więcej informacji na temat publikowania usługa Qlik Sense przy użyciu serwera Proxy aplikacji można znaleźć następujące artykuły społeczności Qlik: 
-- [Usługa Azure AD przy użyciu zintegrowanego uwierzytelniania Windows przy użyciu ograniczonego delegowania protokołu Kerberos za pomocą usługa Qlik Sense](https://community.qlik.com/docs/DOC-20183)
-- [Usługa Qlik Sense integracji z usługą serwera Proxy aplikacji usługi Azure AD](https://community.qlik.com/t5/Technology-Partners-Ecosystem/Azure-AD-Application-Proxy/ta-p/1528396)
+Aby uzyskać więcej informacji na temat publikowania Qlik z serwerem proxy aplikacji, zapoznaj się z następującymi artykułami społeczności Qlik: 
+- [Usługa Azure AD z zintegrowanym uwierzytelnianiem systemu Windows przy użyciu ograniczonego delegowania protokołu Kerberos z Qlik sensem](https://community.qlik.com/docs/DOC-20183)
+- [Integracja Qlik z platformą Azure serwer proxy aplikacji usługi Azure AD](https://community.qlik.com/t5/Technology-Partners-Ecosystem/Azure-AD-Application-Proxy/ta-p/1528396)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Publikowanie aplikacji przy użyciu serwera Proxy aplikacji](application-proxy-add-on-premises-application.md)
 - [Praca z łącznikami serwera Proxy aplikacji](application-proxy-connector-groups.md)

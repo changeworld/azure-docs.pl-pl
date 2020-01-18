@@ -1,5 +1,5 @@
 ---
-title: Skonfiguruj laboratorium do używania bramy Pulpit zdalny w Azure DevTest Labs | Microsoft Docs
+title: Konfigurowanie laboratorium do korzystania z bramy Pulpit zdalny w programie Azure DevTest Labs
 description: Dowiedz się, jak skonfigurować laboratorium w Azure DevTest Labs przy użyciu bramy usług pulpitu zdalnego w celu zapewnienia bezpiecznego dostępu do maszyn wirtualnych laboratorium bez konieczności ujawniania portu RDP.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -10,14 +10,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/25/2019
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 0f879a6389c7a77708e8041dd8b82dc3785679fa
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 88daecdf4490ffd4eef45e6cd664a16f86bad113
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162637"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76170282"
 ---
 # <a name="configure-your-lab-in-azure-devtest-labs-to-use-a-remote-desktop-gateway"></a>Konfigurowanie laboratorium w Azure DevTest Labs, aby można było korzystać z bramy usług pulpitu zdalnego
 W Azure DevTest Labs można skonfigurować bramę usług pulpitu zdalnego dla laboratorium, aby zapewnić bezpieczny dostęp do maszyn wirtualnych laboratorium (VM) bez konieczności ujawniania portu RDP. Laboratorium to centralne miejsce, w którym użytkownicy laboratorium mogą wyświetlać i łączyć się ze wszystkimi maszynami wirtualnymi, do których mają dostęp. Przycisk **Połącz** na stronie **maszyny wirtualnej** tworzy plik RDP specyficzny dla komputera, który można otworzyć w celu nawiązania połączenia z maszyną. Możesz bardziej dostosować i zabezpieczyć połączenie RDP, łącząc laboratorium z bramą usług pulpitu zdalnego. 
@@ -74,7 +74,7 @@ az resource show --name {lab-name} --resource-type 'Microsoft.DevTestLab/labs' -
 
 Skonfiguruj laboratorium do używania uwierzytelniania przy użyciu następujących kroków:
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się do [Portalu Azure](https://portal.azure.com).
 1. Wybierz pozycję **wszystkie usługi**, a następnie z listy wybierz pozycję **DevTest Labs** .
 1. Z listy laboratoriów wybierz **laboratorium**.
 1. Na stronie laboratorium wybierz pozycję **Konfiguracja i zasady**.
@@ -110,7 +110,7 @@ Oto przykład sieciowej grupy zabezpieczeń, który zezwala tylko na ruch, któr
 Wykonaj następujące kroki, aby skonfigurować przykładowe rozwiązanie dla farmy bramy usług pulpitu zdalnego.
 
 1. Utwórz certyfikat podpisywania.  Uruchom [Create-SigningCertificate. ps1](https://github.com/Azure/azure-devtestlab/blob/master/samples/DevTestLabs/GatewaySample/tools/Create-SigningCertificate.ps1). Zapisz odcisk palca, hasło i kodowanie Base64 utworzonego certyfikatu.
-2. Pobierz certyfikat SSL. Nazwa FQDN skojarzona z certyfikatem SSL musi być dla kontrolowanej domeny. Zapisz odcisk palca, hasło i kodowanie Base64 dla tego certyfikatu. Aby uzyskać odcisk palca przy użyciu programu PowerShell, użyj następujących poleceń.
+2. Uzyskaj certyfikat protokołu SSL. Nazwa FQDN skojarzona z certyfikatem SSL musi być dla kontrolowanej domeny. Zapisz odcisk palca, hasło i kodowanie Base64 dla tego certyfikatu. Aby uzyskać odcisk palca przy użyciu programu PowerShell, użyj następujących poleceń.
 
     ```powershell
     $cer = New-Object System.Security.Cryptography.X509Certificates.X509Certificate;

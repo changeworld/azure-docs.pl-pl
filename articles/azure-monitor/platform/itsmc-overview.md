@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: JYOTHIRMAISURI
 ms.author: v-jysur
 ms.date: 05/24/2018
-ms.openlocfilehash: 094454123a945072bfb6d7fb81cf515816c4f6cb
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: efb4e4f68935898c083c1dbca6a6c64512544095
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73936206"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263476"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Łączenie platformy Azure z narzędziami narzędzia ITSM przy użyciu łącznik zarządzania usługami IT
 
@@ -58,7 +58,7 @@ Aby można było utworzyć połączenie, należy dodać rozwiązanie łącznik I
 3. W sekcji **obszar roboczy pakietu OMS** wybierz obszar roboczy usługi Azure log Analytics, w którym chcesz zainstalować rozwiązanie.
    >[!NOTE]
    > * W ramach trwającego przejścia z Microsoft Operations Management Suite (OMS) do Azure Monitor, obszary robocze OMS są teraz określane jako Log Analytics obszary robocze.
-   > * Łącznik ITSM można zainstalować tylko w Log Analytics obszarach roboczych w następujących regionach: Wschodnie stany USA, Europa Zachodnia, Azja Południowo-Wschodnia, Australia Południowo-Wschodnia, zachodnie stany USA, Japonia Wschodnia, Południowe Zjednoczone Królestwo, Indie Środkowe, Kanada środkowa.
+   > * Łącznik ITSM można zainstalować tylko w Log Analytics obszarach roboczych w następujących regionach: Wschodnie stany USA, Europa Zachodnia, Azja Południowo-Wschodnia, Australia Południowo-Wschodnia, zachodnio-środkowe stany USA, Japonia Wschodnia, Południowe Zjednoczone Królestwo, Indie Środkowe, Kanada środkowa, zachodnie stany USA 2, Południowo-środkowe stany USA.
 
 4. W sekcji **Ustawienia obszaru roboczego pakietu OMS** wybierz pozycję zasoby, w której chcesz utworzyć zasób rozwiązania.
 
@@ -66,7 +66,7 @@ Aby można było utworzyć połączenie, należy dodać rozwiązanie łącznik I
    >[!NOTE]
    >W ramach trwającego przejścia z Microsoft Operations Management Suite (OMS) do Azure Monitor, obszary robocze OMS są teraz określane jako Log Analytics obszary robocze.
 
-5. Kliknij pozycję **Utwórz**.
+5. Kliknij przycisk **Utwórz**.
 
 Gdy zasób rozwiązania zostanie wdrożony, w prawym górnym rogu okna pojawi się powiadomienie.
 
@@ -152,7 +152,7 @@ Pulpit nawigacyjny zawiera również informacje o stanie łącznika, który moż
 
 Możesz również wizualizować zdarzenia zsynchronizowane z komputerami, na których ma to wpływ, w ramach rozwiązania Service Map.
 
-Service Map automatycznie odnajduje składniki aplikacji w systemach Windows i Linux oraz mapuje komunikację między usługami. Pozwala to na wyświetlanie Twoich serwerów w miarę ich działania — jako połączone systemy, które dostarczają usługi krytyczne. Service Map przedstawia połączenia między serwerami, procesami i portami w ramach dowolnej architektury połączonej z protokołem TCP bez konieczności konfiguracji innej niż Instalacja agenta. [Dowiedz się więcej](../../azure-monitor/insights/service-map.md).
+Service Map automatycznie odnajduje składniki aplikacji w systemach Windows i Linux oraz mapuje komunikację między usługami. Umożliwia ona wyświetlenie Twoich serwerów tak, jak o nich myślisz — jako wzajemnie połączonych systemów dostarczających krytycznych usług. Usługa Service Map pokazuje połączenia między serwerami, procesami i portami w dowolnej architekturze połączeń TCP bez konieczności konfiguracji innej niż instalacja agenta. [Dowiedz się więcej](../../azure-monitor/insights/service-map.md).
 
 Jeśli używasz rozwiązania Service Map, możesz wyświetlić elementy pomocy technicznej utworzone w rozwiązaniach narzędzia ITSM, jak pokazano w następującym przykładzie:
 
@@ -184,11 +184,11 @@ ServiceDeskWorkItemType_s="Incident"
 - Wpływ
 - Priorytet
 - Eskalacja
-- Utworzone przez
-- Rozwiązane przez
+- Utworzony przez
+- Rozwiązany przez
 - Zamknięte przez
-- Element źródłowy
-- Przypisano do
+- Źródło
+- Przypisane do
 - Kategoria
 - Tytuł
 - Opis
@@ -206,10 +206,10 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 **Pola**
 - ServiceDeskConnectionName
 - Identyfikator działu obsługi
-- Utworzone przez
+- Utworzony przez
 - Zamknięte przez
-- Element źródłowy
-- Przypisano do
+- Źródło
+- Przypisane do
 - Tytuł
 - Typ
 - Kategoria
@@ -220,7 +220,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 - Priorytet
 - Ryzyko
 - Wpływ
-- Przypisano do
+- Przypisane do
 - Data utworzenia
 - Data zamknięcia
 - Data ostatniej modyfikacji
@@ -249,9 +249,9 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | Category_s | Kategoria |
 | Title_s|  Krótki opis |
 | Description_s|  Uwagi |
-| CreatedDate_t|  Otworzyć |
+| CreatedDate_t|  Otwarte |
 | ClosedDate_t| Zamknięte|
-| ResolvedDate_t|Klienta|
+| ResolvedDate_t|Rozwiązane|
 | Computer (Komputer)  | Element konfiguracji |
 
 ## <a name="output-data-for-a-servicenow-change-request"></a>Dane wyjściowe żądania zmiany usługi ServiceNow

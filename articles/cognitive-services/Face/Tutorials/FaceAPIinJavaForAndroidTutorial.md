@@ -1,7 +1,7 @@
 ---
 title: 'Samouczek: wykrywanie i oznaczanie ramką twarzy na obrazie za pomocą zestawu Android SDK'
 titleSuffix: Azure Cognitive Services
-description: W tym samouczku utworzysz prostą aplikację dla systemu Android, która korzysta z interfejsu API rozpoznawania twarzy do wykrywania i oznaczania ramką twarzy na obrazie.
+description: W ramach tego samouczka utworzysz prostą aplikację dla systemu Android, która korzysta z usługi twarzy do wykrywania i tworzenia klatek w obrazie.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,22 +10,22 @@ ms.subservice: face-api
 ms.topic: tutorial
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: ce0b308077505d5af1d757f1684c50505b11831e
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 8d5bef141f83eedaa996bb63c1fb814aeb6af197
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977798"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76165965"
 ---
 # <a name="tutorial-create-an-android-app-to-detect-and-frame-faces-in-an-image"></a>Samouczek: tworzenie aplikacji dla systemu Android wykrywającej i oznaczającej ramką twarze na obrazie
 
-W tym samouczku utworzysz aplikację dla systemu Android, która używa interfejs API rozpoznawania twarzy platformy Azure za pośrednictwem zestawu Java SDK w celu wykrywania twarzy na obrazie. Aplikacja wyświetla wybrany obraz i rysuje ramkę wokół każdej wykrytej twarzy.
+W tym samouczku utworzysz aplikację dla systemu Android, która korzysta z usługi Azure twarzy za pośrednictwem zestawu Java SDK w celu wykrywania twarzy na obrazie. Aplikacja wyświetla wybrany obraz i rysuje ramkę wokół każdej wykrytej twarzy.
 
 Ten samouczek przedstawia sposób wykonania następujących czynności:
 
 > [!div class="checklist"]
 > - Tworzenie aplikacji systemu Android
-> - Instalowanie biblioteki klienta interfejsu API rozpoznawania twarzy
+> - Instalowanie biblioteki klienta programu Front
 > - Korzystanie z biblioteki klienta do wykrywania twarzy na obrazie
 > - Rysowanie ramki wokół każdej wykrytej twarzy
 
@@ -37,7 +37,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Klucz subskrypcji interfejsu API rozpoznawania twarzy. Klucz subskrypcji bezpłatnej wersji próbnej możesz uzyskać na stronie [Wypróbuj usługi Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Możesz też wykonać instrukcje z tematu [Create a Cognitive Services account](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) (Tworzenie konta usług Cognitive Services), aby subskrybować usługę interfejsu API rozpoznawania twarzy i uzyskać klucz. Następnie [Utwórz zmienne środowiskowe](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) dla ciągu punktu końcowego klucza i usługi, odpowiednio nazwane `FACE_SUBSCRIPTION_KEY` i `FACE_ENDPOINT`.
+- Klucz subskrypcji programu Marketo. Klucz subskrypcji bezpłatnej wersji próbnej możesz uzyskać na stronie [Wypróbuj usługi Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Lub postępuj zgodnie z instrukcjami w temacie [Tworzenie konta Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) , aby subskrybować usługę i uzyskać klucz. Następnie [Utwórz zmienne środowiskowe](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) dla ciągu punktu końcowego klucza i usługi, odpowiednio nazwane `FACE_SUBSCRIPTION_KEY` i `FACE_ENDPOINT`.
 - Dowolna wersja programu [Visual Studio 2015 lub 2017](https://www.visualstudio.com/downloads/).
 - Program [Android Studio](https://developer.android.com/studio/) z poziomem interfejsu API 22 lub nowszym (wymagane przez bibliotekę klienta rozpoznawania twarzy).
 
@@ -115,7 +115,7 @@ Wstaw następującą metodę pomocniczą do klasy **MainActivity**. Ta metoda ry
 
 Na koniec usuń znaczniki komentarza z wywołania metody **detectAndFrame** w metodzie **onActivityResult**.
 
-## <a name="run-the-app"></a>Uruchamianie aplikacji
+## <a name="run-the-app"></a>Uruchomienie aplikacji
 
 Uruchom aplikację i znajdź obraz z twarzą. Zaczekaj kilka sekund, aby umożliwić usłudze rozpoznawania twarzy udzielenie odpowiedzi. Wokół każdej twarzy na obrazie powinien pojawić się czerwony prostokąt.
 
@@ -123,7 +123,7 @@ Uruchom aplikację i znajdź obraz z twarzą. Zaczekaj kilka sekund, aby umożli
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku przedstawiono podstawowy proces korzystania z zestawu SDK języka Java interfejsu API rozpoznawania twarzy dla usługi rozpoznawania twarzy oraz utworzono aplikację do wykrywania i oznaczania ramkami twarzy na obrazie. Teraz dowiedz się więcej o szczegółach wykrywania twarzy.
+W tym samouczku przedstawiono podstawowy proces używania zestawu SDK języka Java i tworzenia aplikacji w celu wykrywania i przetwarzania twarzy na obrazie. Teraz dowiedz się więcej o szczegółach wykrywania twarzy.
 
 > [!div class="nextstepaction"]
 > [Jak wykrywać twarze na obrazie](../Face-API-How-to-Topics/HowtoDetectFacesinImage.md)

@@ -1,7 +1,7 @@
 ---
-title: 'Przykład: Dodawanie twarzy do elementu Person-interfejs API rozpoznawania twarzy'
+title: 'Przykład: Dodawanie twarzy do danej osoby'
 titleSuffix: Azure Cognitive Services
-description: W tym przewodniku pokazano, jak dodać dużą liczbę osób i twarzy do obiektu osoby tworzącej usługę Azure Cognitive Services interfejs API rozpoznawania twarzy.
+description: W tym przewodniku pokazano, jak dodać dużą liczbę osób i twarzy do obiektu osoby tworzącej usługę Azure Cognitive Services twarzy.
 services: cognitive-services
 author: SteveMSFT
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: face-api
 ms.topic: sample
 ms.date: 04/10/2019
 ms.author: sbowles
-ms.openlocfilehash: 891614caddf729acb58bc363df977031ad62fb07
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 240905d538afc5c0f4b7f0e0bf400fac23c3183f
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76156713"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169826"
 ---
 # <a name="add-faces-to-a-persongroup"></a>Dodawanie twarzy do osoby
 
-W tym przewodniku pokazano, jak dodać dużą liczbę osób i twarzy do obiektu. Ta sama strategia dotyczy również obiektów LargePersonGroup, FaceList i LargeFaceList. Ten przykład jest zapisywana C# przy użyciu usługi Azure Cognitive Services interfejs API rozpoznawania twarzy bibliotece klienckiej platformy .NET.
+W tym przewodniku pokazano, jak dodać dużą liczbę osób i twarzy do obiektu. Ta sama strategia dotyczy również obiektów LargePersonGroup, FaceList i LargeFaceList. Ten przykład jest zapisywana C# przy użyciu biblioteki klienckiej .NET usługi Azure Cognitive Services.
 
 ## <a name="step-1-initialization"></a>Krok 1: Inicjowanie
 

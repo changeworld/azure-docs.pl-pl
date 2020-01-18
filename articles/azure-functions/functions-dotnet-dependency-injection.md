@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 09/05/2019
 ms.author: cshoe
 ms.reviewer: jehollan
-ms.openlocfilehash: 4c6ccf9dce0fc119bd666871489a42a3ef734f81
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: a17ff15e71251e781cd30c33a5616af85e4f4eb9
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769204"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76260087"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>Używanie iniekcji zależności w programie .NET Azure Functions
 
@@ -25,7 +25,7 @@ Azure Functions obsługuje wzorzec projektowania oprogramowania dla iniekcji zal
 
 Aby można było użyć iniekcji zależności, należy zainstalować następujące pakiety NuGet:
 
-- [Microsoft. Azure. Functions. Extensions](https://www.nuget.org/packages/Microsoft.Azure.Functions.Extensions/)
+- [Microsoft.Azure.Functions.Extensions](https://www.nuget.org/packages/Microsoft.Azure.Functions.Extensions/)
 
 - [Pakiet Microsoft. NET. Sdk. Functions](https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions/) w wersji 1.0.28 lub nowszej
 
@@ -153,12 +153,22 @@ Wartości zdefiniowane w [ustawieniach aplikacji](./functions-how-to-use-azure-f
 
 Można wyodrębnić wartości z wystąpienia `IConfiguration` do typu niestandardowego. Kopiowanie wartości ustawień aplikacji do typu niestandardowego ułatwia testowanie usług dzięki wprowadzeniu tych wartości do dodania. Ustawienia odczytywane w wystąpieniu konfiguracji muszą być prostymi parami klucz/wartość.
 
-Rozważmy następującą klasę, która zawiera właściwość o nazwie spójne z ustawieniem aplikacji.
+Rozważmy następującą klasę, która zawiera właściwość o nazwie zgodnej z ustawieniem aplikacji:
 
 ```csharp
 public class MyOptions
 {
     public string MyCustomSetting { get; set; }
+}
+```
+
+I plik `local.settings.json`, który może być strukturą niestandardowego ustawienia w następujący sposób:
+```json
+{
+  "IsEncrypted": false,
+  "Values": {
+    "MyOptions:MyCustomSetting": "Foobar"
+  }
 }
 ```
 
@@ -168,7 +178,7 @@ Wewnątrz metody `Startup.Configure` można wyodrębnić wartości z wystąpieni
 builder.Services.AddOptions<MyOptions>()
                 .Configure<IConfiguration>((settings, configuration) =>
                                            {
-                                                configuration.Bind(settings);
+                                                configuration.GetSection("MyOptions").Bind(settings);
                                            });
 ```
 

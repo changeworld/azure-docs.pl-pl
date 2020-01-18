@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 3b2fff84b70c5c5e37d14faa87143e5dacc82bce
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 0b24c064424b00fa9acb96b03c0a3c5ca69f67f2
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73930186"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264398"
 ---
 # <a name="create-a-telemetry-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Tworzenie reguły telemetrii i Konfigurowanie powiadomień w aplikacji IoT Central platformy Azure
 
@@ -27,13 +27,13 @@ Aby wysyłać dane liczbowe z urządzenia, urządzenia mogą używać pomiarów 
 
 ## <a name="create-a-telemetry-rule"></a>Tworzenie reguły telemetrii
 
-Aby utworzyć regułę telemetrii, szablon urządzenia musi mieć zdefiniowany co najmniej jeden pomiar telemetrii. W tym przykładzie jest używane urządzenie maszyny z systemem chłodzenia w systemie, które wysyła dane telemetryczne temperatury i wilgotności. Reguła monitoruje temperaturę zgłoszoną przez urządzenie i wysyła wiadomość e-mail, gdy znajdzie się ona powyżej 80 stopni.
+Aby utworzyć regułę telemetrii, szablon urządzenia musi mieć zdefiniowany co najmniej jeden pomiar telemetrii. W tym przykładzie jest używane urządzenie maszyny z systemem chłodzenia w systemie, które wysyła dane telemetryczne temperatury i wilgotności. Reguła monitoruje temperaturę zgłoszoną przez urządzenie i wysyła wiadomość e-mail, gdy znajdzie się ona powyżej 70&deg; F.
 
 1. Korzystając ze strony **Szablony urządzeń** , przejdź do szablonu urządzenia, dla którego chcesz dodać regułę.
 
 1. Jeśli nie utworzono jeszcze żadnych reguł, zobaczysz następujący ekran:
 
-    ![Nie ma jeszcze reguł](media/howto-create-telemetry-rules/rules_landing_page1.png)
+    ![Jeszcze nie ma reguł](media/howto-create-telemetry-rules/rules_landing_page1.png)
 
 1. Na karcie **reguły** wybierz pozycję **+ Nowa reguła** , aby wyświetlić typy reguł, które możesz utworzyć.
 
@@ -43,7 +43,7 @@ Aby utworzyć regułę telemetrii, szablon urządzenia musi mieć zdefiniowany c
 
 1. Wprowadź nazwę, która pomoże zidentyfikować regułę w tym szablonie urządzenia.
 
-1. Aby natychmiast włączyć regułę dla wszystkich urządzeń utworzonych dla tego szablonu, przełącz **regułę włączania dla wszystkich urządzeń dla tego szablonu**.
+1. Aby natychmiast włączyć regułę dla wszystkich urządzeń utworzonych dla tego szablonu, przełącz **regułę włączania dla wszystkich urządzeń tego szablonu**.
 
    ![Szczegóły reguły](media/howto-create-telemetry-rules/rule_detail1.png)
 
@@ -58,8 +58,8 @@ Warunek definiuje kryteria, które są monitorowane przez regułę.
 1. Wybierz dane telemetryczne, które chcesz monitorować, z listy rozwijanej **miara** .
 
 1. Następnie wybierz **agregację**, **operator**i podaj wartość **progową** .
-   - Agregacja jest opcjonalna. Bez agregacji reguła wyzwala dla każdego punktu danych telemetrii, który spełnia warunek. Na przykład, jeśli reguła jest skonfigurowana do wyzwalania, gdy temperatura jest większa niż 80, reguła jest wyzwalana niemal natychmiast, gdy urządzenie zgłosi temperaturę > 80.
-   - Jeśli funkcja agregująca, taka jak Average, min, Max, jest wybierana, użytkownik musi podać **zagregowany przedział czasu** , w którym należy oszacować warunek. Na przykład jeśli ustawisz okres jako "5 minut", a Twoja reguła szuka średniej temperatury powyżej 80, reguła jest wyzwalana, gdy średnia temperatura przekroczy 80 przez co najmniej 5 minut. Częstotliwość oceny reguł jest taka sama jak w **przedziale czasu zagregowanym**, co oznacza, że w tym przykładzie reguła jest szacowana co 5 minut.
+   - Agregacja jest opcjonalna. Bez agregacji reguła wyzwala dla każdego punktu danych telemetrii, który spełnia warunek. Jeśli na przykład zasada jest skonfigurowana do wyzwalania, gdy temperatura jest większa niż 70&deg; F, reguła jest wyzwalana niemal natychmiast, gdy urządzenie zgłosi temperaturę > 70.
+   - Jeśli funkcja agregująca, taka jak Average, min, Max, jest wybierana, użytkownik musi podać **zagregowany przedział czasu** , w którym należy oszacować warunek. Na przykład jeśli ustawisz okres jako "5 minut", a Twoja reguła szuka średniej temperatury powyżej 70, reguła jest wyzwalana, gdy średnia temperatura jest powyżej 70&deg; F przez co najmniej 5 minut. Częstotliwość oceny reguł jest taka sama jak w **przedziale czasu zagregowanym**, co oznacza, że w tym przykładzie reguła jest szacowana co 5 minut.
 
      ![Warunek](media/howto-create-telemetry-rules/aggregate_condition_filled_out1.png)
 
@@ -90,7 +90,7 @@ Do reguły można dodać inne akcje, takie jak Microsoft Flow i elementy webhook
 
 ## <a name="parameterize-the-rule"></a>Sparametryzuj regułę
 
-Reguły mogą wyprowadzać pewne geograficznej z **Właściwości urządzenia** jako parametry. Używanie parametrów jest przydatne w scenariuszach, w których progi telemetrii różnią się w zależności od różnych urządzeń. Podczas tworzenia reguły wybierz właściwość urządzenia, która określa próg, taki jak **Maksymalny idealny próg**, zamiast podać wartość bezwzględną, na przykład 80 stopni. Gdy reguła jest wykonywana, dopasowuje dane telemetryczne urządzenia z wartością ustawioną we właściwości urządzenia.
+Reguły mogą wyprowadzać pewne geograficznej z **Właściwości urządzenia** jako parametry. Używanie parametrów jest przydatne w scenariuszach, w których progi telemetrii różnią się w zależności od różnych urządzeń. Podczas tworzenia reguły wybierz właściwość urządzenia, która określa próg, taki jak **Maksymalny idealny próg**, zamiast podać wartość bezwzględną, na przykład 70&deg; F. Gdy reguła jest wykonywana, dopasowuje dane telemetryczne urządzenia z wartością ustawioną we właściwości urządzenia.
 
 Używanie parametrów jest efektywnym sposobem na zmniejszenie liczby reguł do zarządzania dla każdego szablonu urządzenia.
 

@@ -1,5 +1,5 @@
 ---
-title: Jak usunąć i wyeksportować dane osobowe z Azure DevTest Labs | Microsoft Docs
+title: Jak usunąć i wyeksportować dane osobowe z Azure DevTest Labs
 description: Dowiedz się, jak usuwać i eksportować dane osobowe z usługi Azure DevLast Labs, aby wspierać zobowiązania w ramach Ogólne rozporządzenie o ochronie danych (Rodo).
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -10,14 +10,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/19/2019
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 82ab8ef2e444b71f41fbbd87e4e9f8669e83e508
-ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
+ms.openlocfilehash: c87e2fb534480bbf9bbe625d67782e5a11eda18c
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68371171"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169698"
 ---
 # <a name="export-or-delete-personal-data-from-azure-devtest-labs"></a>Eksportowanie lub usuwanie danych osobowych z Azure DevTest Labs
 Ten artykuł zawiera instrukcje dotyczące usuwania i eksportowania danych osobowych z usługi Azure DevTest Labs. 
@@ -40,10 +40,10 @@ DevTest Labs używa adresu e-mail użytkownika do wysyłania powiadomień e-mail
 DevTest Labs używa identyfikatora obiektu użytkownika do wyświetlania trendów kosztów miesięcznych i kosztów według informacji o zasobach do administratorów laboratorium. Umożliwia im śledzenie kosztów i zarządzanie progami dla laboratorium. 
 
 **Szacowany trend kosztów dla bieżącego miesiąca kalendarzowego:** 
-![szacowany trend kosztów dla bieżącego miesiąca kalendarzowego](./media/personal-data-delete-export/estimated-cost-trend-per-month.png)
+![szacowanego trendu kosztów dla bieżącego miesiąca kalendarzowego](./media/personal-data-delete-export/estimated-cost-trend-per-month.png)
 
 **Szacowany koszt od początku do dnia według zasobu:** 
-![szacowany koszt dla danego miesiąca według zasobu](./media/personal-data-delete-export/estimated-month-to-date-cost-by-resource.png)
+![szacowanego miesięcznego kosztu według zasobów](./media/personal-data-delete-export/estimated-month-to-date-cost-by-resource.png)
 
 
 ## <a name="why-do-we-need-this-personal-data"></a>Dlaczego dane osobowe są potrzebne?
@@ -60,7 +60,7 @@ Dane dotyczące użycia osobistego i laboratorium można eksportować za pomocą
 - **Disks. csv** — zawiera informacje o dyskach używanych przez różne maszyny wirtualne
 - **virtualmachines. csv** — zawiera informacje o maszynach wirtualnych w laboratorium.
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Portal Azure
 Jako użytkownik laboratorium możesz zażądać eksportu danych osobowych, które są przechowywane w usłudze DevTest Labs. Aby zażądać eksportu, przejdź do opcji **dane osobowe** na stronie **Przegląd** w laboratorium. Wybierz przycisk **Zażądaj eksportu** umożliwia rozpoczęcie tworzenia pliku programu Excel do pobrania na koncie magazynu administratora laboratorium. Następnie można skontaktować się z administratorem laboratorium, aby wyświetlić te dane.
 
 1. W menu po lewej stronie wybierz pozycję **dane osobowe** . 
@@ -68,19 +68,19 @@ Jako użytkownik laboratorium możesz zażądać eksportu danych osobowych, któ
     ![Strona danych osobowych](./media/personal-data-delete-export/personal-data-page.png)
 2. Wybierz **grupę zasobów** , która zawiera laboratorium.
 
-    ![Wybierz grupę zasobów](./media/personal-data-delete-export/select-resource-group.png)
+    ![Wybieranie grupy zasobów](./media/personal-data-delete-export/select-resource-group.png)
 3. Wybierz **konto magazynu** w grupie zasobów.
 4. Na stronie **konto magazynu** wybierz pozycję **obiekty blob**.
 
     ![Wybierz kafelek obiektów BLOB](./media/personal-data-delete-export/select-blobs-tile.png)
 5. Wybierz kontener o nazwie **labresourceusage** na liście kontenerów.
 
-    ![Wybierz kontener obiektów blob](./media/personal-data-delete-export/select-blob-container.png)
+    ![Wybieranie kontenera obiektów BLOB](./media/personal-data-delete-export/select-blob-container.png)
 6. Wybierz **folder** o nazwie po Twoim laboratorium. W tym folderze znajdują się pliki **CSV** dla **dysków** i **maszyn wirtualnych** w laboratorium. Możesz pobrać te pliki CSV, odfiltrować zawartość dla użytkownika laboratorium żądającego dostępu i udostępnić je z nimi.
 
     ![Pobierz plik CSV](./media/personal-data-delete-export/download-csv-file.png)
 
-### <a name="azure-powershell"></a>Azure PowerShell
+### <a name="azure-powershell"></a>Program Azure PowerShell
 
 ```powershell
 Param (
@@ -169,11 +169,11 @@ Teraz przyjrzyjmy się bliżej wyeksportowanych danych. Jak wspomniano wcześnie
 | ResourceGroupName | Nazwa grupy zasobów zawierającej maszynę wirtualną | 
 | ResourceId | W pełni kwalifikowany identyfikator zasobu dla maszyny wirtualnej. |
 | ResourceUId | Identyfikator GUID dla maszyny wirtualnej |
-| Name (Nazwa) | Nazwa maszyny wirtualnej. |
+| Nazwa | Nazwa maszyny wirtualnej. |
 | CreatedTime | Data i godzina utworzenia maszyny wirtualnej. |
 | DeletedDate | Data i godzina usunięcia maszyny wirtualnej. Jeśli jest pusty, usuwanie nie nastąpiło jeszcze. |
 | ResourceOwner | Właściciel maszyny wirtualnej. Jeśli wartość jest pusta, jest to albo maszyna wirtualna z obsługą lub utworzona przez jednostkę usługi. |
-| PricingTier | Warstwa cenowa maszyny wirtualnej |
+| pricingTier | Warstwa cenowa maszyny wirtualnej |
 | ResourceStatus | Stan dostępności maszyny wirtualnej. Aktywny, jeśli nadal istnieje lub nieaktywny, jeśli maszyna wirtualna została usunięta. |
 | ComputeResourceId | W pełni kwalifikowany identyfikator zasobu obliczeniowego maszyny wirtualnej. |
 | Losową | Ustaw wartość true, jeśli maszyna wirtualna jest maszyną wirtualną | 
@@ -197,13 +197,13 @@ Poniżej znajdują się kolumny danych zawarte w **dyskach. csv** :
 | ResourceGroupName | Nazwa grupy zasobów zawierającej laboratorium | 
 | ResourceId | W pełni kwalifikowany identyfikator zasobu dla maszyny wirtualnej. |
 | ResourceUId | Identyfikator GUID dla maszyny wirtualnej |
- |Name (Nazwa) | Nazwa dołączonego dysku |
+ |Nazwa | Nazwa dołączonego dysku |
 | CreatedTime |Data i godzina utworzenia dysku z danymi. |
 | DeletedDate | Data i godzina usunięcia dysku z danymi. |
 | ResourceStatus | Stan zasobu. Aktywny, jeśli istnieje zasób. Nieaktywny, po usunięciu. |
 | DiskBlobName | Nazwa obiektu BLOB dla dysku danych. |
 | DiskSizeGB | Rozmiar dysku z danymi. |
-| Nr dysku | Typ dysku z danymi. 0 w przypadku wersji Standard, 1 dla warstwy Premium. |
+| DiskType | Typ dysku z danymi. 0 w przypadku wersji Standard, 1 dla warstwy Premium. |
 | LeasedByVmId | Identyfikator zasobu maszyny wirtualnej, do której został dołączony dysk z danymi. |
 
 

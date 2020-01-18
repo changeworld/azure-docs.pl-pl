@@ -1,5 +1,5 @@
 ---
-title: Tworzenie środowiska z klastrem Service Fabric w Azure DevTest Labs | Microsoft Docs
+title: Tworzenie środowiska klastra Service Fabric w programie Azure DevTest Labs
 description: Dowiedz się, jak utworzyć środowisko z niezależnym klastrem Service Fabric i uruchomić i zatrzymać klaster przy użyciu harmonogramów.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -12,25 +12,25 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/01/2019
+ms.date: 01/16/2020
 ms.author: enewman
-ms.openlocfilehash: 1e192a2b27c9d617e43a56766431a0f40e87a752
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 71793b81d8735c80881fc25a9b7ec31bc4fc6762
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325253"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76170337"
 ---
 # <a name="create-an-environment-with-self-contained-service-fabric-cluster-in-azure-devtest-labs"></a>Tworzenie środowiska z niezależnym klastrem Service Fabric w programie Azure DevTest Labs
 Ten artykuł zawiera informacje dotyczące sposobu tworzenia środowiska z niezależnym klastrem Service Fabric w programie Azure DevTest Labs. 
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 DevTest Labs mogą tworzyć własne środowiska testowe zdefiniowane przez szablony zarządzania zasobami platformy Azure. Te środowiska zawierają zarówno zasoby IaaS, jak maszyny wirtualne, jak i zasoby PaaS, takie jak Service Fabric. DevTest Labs umożliwia zarządzanie maszynami wirtualnymi w środowisku przez dostarczanie poleceń do sterowania maszynami wirtualnymi. Te polecenia umożliwiają uruchamianie lub zatrzymywanie maszyny wirtualnej zgodnie z harmonogramem. Podobnie DevTest Labs mogą także ułatwić zarządzanie klastrami Service Fabric w środowisku. Klaster Service Fabric można uruchomić lub zatrzymać w środowisku ręcznie lub za pomocą harmonogramu.
 
 ## <a name="create-a-service-fabric-cluster"></a>Tworzenie klastra usługi Service Fabric
-Klastry Service Fabric są tworzone przy użyciu środowisk w DevTest Labs. Każde środowisko jest definiowane przez szablon Azure Resource Manager w repozytorium git. [Publiczne repozytorium git](https://github.com/Azure/azure-devtestlab/tree/master/Environments/) dla DevTest Labs zawiera szablon Menedżer zasobów, aby utworzyć klaster Service Fabric w folderze servicefabric [-cluster](https://github.com/Azure/azure-devtestlab/tree/master/Environments/ServiceFabric-LabCluster) . 
+Klastry Service Fabric są tworzone przy użyciu środowisk w DevTest Labs. Każde środowisko jest definiowane przez szablon Azure Resource Manager w repozytorium git. [Publiczne repozytorium git](https://github.com/Azure/azure-devtestlab/tree/master/Environments/) dla DevTest Labs zawiera szablon Menedżer zasobów, aby utworzyć klaster Service Fabric w folderze [servicefabric-Cluster](https://github.com/Azure/azure-devtestlab/tree/master/Environments/ServiceFabric-LabCluster) . 
 
-1. Najpierw utwórz laboratorium w Azure DevTest Labs przy użyciu instrukcji przedstawionych w następującym artykule: [Utwórz laboratorium](devtest-lab-create-lab.md). Należy zauważyć, że opcja **środowiska publiczne** jest domyślnie **włączona** . 
+1. Najpierw utwórz laboratorium w Azure DevTest Labs przy użyciu instrukcji przedstawionych w następującym artykule: [Tworzenie laboratorium](devtest-lab-create-lab.md). Należy zauważyć, że opcja **środowiska publiczne** jest domyślnie **włączona** . 
 2. Upewnij się, że dostawca Service Fabric został zarejestrowany dla Twojej subskrypcji, wykonując następujące czynności:
     1. Wybierz pozycję **subskrypcje** w menu nawigacji po lewej stronie i wybierz swoją **subskrypcję**
     2. Na stronie **subskrypcja** wybierz pozycję **dostawcy zasobów** w sekcji **Ustawienia** w menu po lewej stronie. 
@@ -71,7 +71,7 @@ Możesz uruchomić lub zatrzymać klaster na stronie laboratorium DevTest dla la
 
     ![Uruchamianie i zatrzymywanie poleceń klastra](./media/create-environment-service-fabric-cluster/start-stop-on-devtest-lab-page.png)
 
-2. Do **uruchamiania** i zatrzymywania klastra są widoczne dwa polecenia w  menu kontekstowym. Polecenie Uruchom uruchamia wszystkie węzły w klastrze. Polecenie Stop zatrzymuje wszystkie węzły w klastrze. Gdy klaster zostanie zatrzymany, klaster Service Fabric pozostaje w stanie gotowości, ale nie są dostępne żadne węzły, dopóki polecenie Uruchom nie zostanie ponownie wystawione w klastrze w środowisku laboratoryjnym.
+2. Do **uruchamiania** i **zatrzymywania** klastra są widoczne dwa polecenia w menu kontekstowym. Polecenie Uruchom uruchamia wszystkie węzły w klastrze. Polecenie Stop zatrzymuje wszystkie węzły w klastrze. Gdy klaster zostanie zatrzymany, klaster Service Fabric pozostaje w stanie gotowości, ale nie są dostępne żadne węzły, dopóki polecenie Uruchom nie zostanie ponownie wystawione w klastrze w środowisku laboratoryjnym.
 
     Istnieje kilka kwestii, które należy wziąć pod uwagę podczas korzystania z klastra Service Fabric w środowisku testowym. Może upłynąć trochę czasu, zanim klaster Service Fabric będzie w pełni liofilizowany po ponownym uruchomieniu węzłów. Aby zachować dane z zamykania do uruchamiania, dane muszą zostać zapisane na dysku zarządzanym dołączonym do maszyny wirtualnej. Istnieją konsekwencje dotyczące wydajności podczas korzystania z dołączonego dysku zarządzanego, więc jest to zalecane tylko w środowiskach testowych. Jeśli dysk używany do przechowywania danych nie jest objęty kopią zapasową, dane zostaną utracone po wydaniu polecenia zatrzymania w klastrze.
 
@@ -95,7 +95,7 @@ Klastry Service Fabric można także uruchamiać lub zatrzymywać zgodnie z harm
 Aby zrezygnować z harmonogramu uruchamiania, wykonaj następujące czynności:
 
 1. Wybierz pozycję **Uruchom ponownie** w menu po lewej stronie
-2. Wybierz  opcję włączone **, aby zezwolić na planowanie automatycznego uruchamiania tego klastra usługi Service Fabric**. Ta strona jest włączona tylko wtedy, gdy właściciel laboratorium zezwoli użytkownikom na Autouruchamianie ich maszyn wirtualnych lub klastrów Service Fabric.
+2. Wybierz opcję włączone **, aby zezwolić na planowanie automatycznego uruchamiania tego klastra usługi Service Fabric**. Ta strona jest włączona tylko wtedy, gdy właściciel laboratorium zezwoli użytkownikom na Autouruchamianie ich maszyn wirtualnych lub klastrów Service Fabric.
 3. Wybierz pozycję **Zapisz** na pasku narzędzi. 
 
     ![Strona Autotekstu](./media/create-environment-service-fabric-cluster/set-auto-start-settings.png)
@@ -104,8 +104,8 @@ Aby zrezygnować z harmonogramu uruchamiania, wykonaj następujące czynności:
 Aby zmienić ustawienia dotyczące zamykania, wykonaj następujące czynności:
 
 1. W menu po lewej stronie wybierz pozycję **automatyczne zamykanie** . 
-2. Na tej stronie możesz zrezygnować z automatycznego zamykania, wybierając pozycję **wyłączone** . 
-3. Jeśli wybrano opcję  **włączone**, wykonaj następujące kroki:
+2. **Na tej**stronie możesz zrezygnować z automatycznego zamykania, wybierając pozycję **wyłączone** . 
+3. Jeśli **wybrano opcję** **włączone**, wykonaj następujące kroki:
     1. Określ **godzinę** zamknięcia.
     2. Określ **strefę** czasową. 
     3. Określ, czy DevTest Labs mają wysyłać **powiadomienia** przed automatycznym zamknięciem. 

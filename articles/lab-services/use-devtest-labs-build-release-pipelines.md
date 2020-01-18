@@ -1,5 +1,5 @@
 ---
-title: Korzystanie z DevTest Labs w Azure Pipelines potoków kompilacji i wydania | Microsoft Docs
+title: Używanie usługi DevTest Labs w potokach kompilacji i wydań usługi Azure Pipelines
 description: Dowiedz się, jak używać Azure DevTest Labs w Azure Pipelines kompilacjach i wydaniach.
 services: devtest-lab, lab-services
 documentationcenter: na
@@ -10,20 +10,20 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/29/2019
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 032f598fed765b281d4a6a124f8855abc201ee94
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: e16f3c5a0c0b2b86d6a893f541cefb275a8e7d07
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774495"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169238"
 ---
-# <a name="use-devtest-labs-in-azure-pipelines-build-and-release-pipelines"></a>Korzystanie z DevTest Labs w Azure Pipelines potoków kompilowania i wydawania
+# <a name="use-devtest-labs-in-azure-pipelines-build-and-release-pipelines"></a>Używanie usługi DevTest Labs w potokach kompilacji i wydań usługi Azure Pipelines
 Ten artykuł zawiera informacje dotyczące sposobu używania DevTest Labs w Azure Pipelines potoków kompilowania i wydawania. 
 
 ## <a name="overall-flow"></a>Przepływ ogólny
-Podstawowym przepływem jest utworzenie potoku **kompilacji** , który wykonuje następujące zadania:
+Podstawowym przepływem jest utworzenie **potoku kompilacji** , który wykonuje następujące zadania:
 
 1. Skompiluj kod aplikacji.
 1. Utwórz środowisko podstawowe w DevTest Labs.
@@ -35,7 +35,7 @@ Po pomyślnym zakończeniu kompilacji **potok wersji** użyje artefaktów kompil
 
 Jednym z niezbędnych miejsc jest to, że wszystkie informacje potrzebne do odtworzenia testowanego ekosystemu są dostępne w ramach artefaktów kompilacji, w tym konfiguracji zasobów platformy Azure. Ponieważ zasoby platformy Azure ponoszą koszt w przypadku użycia, firmy chcą kontrolować lub śledzić użycie tych zasobów. W niektórych sytuacjach Azure Resource Manager szablony służące do tworzenia i konfigurowania zasobów mogą być zarządzane przez inny dział, taki jak. Szablony te mogą być przechowywane w innym repozytorium. Prowadzi do interesującej sytuacji, w której kompilacja zostanie utworzona i przetestowana, a zarówno kod, jak i konfiguracja muszą być przechowywane w artefaktach kompilacji, aby prawidłowo odtworzyć system w środowisku produkcyjnym. 
 
-Korzystając z DevTest Labs w fazie kompilowania/testowania, można dodać szablony Azure Resource Manager i pliki pomocnicze do źródeł kompilacji, aby w fazie wydania dokładna konfiguracja użyta do przetestowania została wdrożona w środowisku produkcyjnym. Zadanie **tworzenia środowiska Azure DevTest Labs** z odpowiednią konfiguracją spowoduje zapisanie Menedżer zasobów szablonów w ramach artefaktów kompilacji. Na potrzeby tego przykładu będziesz używać kodu z [samouczka: Utwórz aplikację sieci Web platformy .NET Core i SQL Database w](../app-service/app-service-web-tutorial-dotnetcore-sqldb.md)usłudze Azure App Service, aby wdrożyć i przetestować aplikację sieci Web na platformie Azure.
+Korzystając z DevTest Labs w fazie kompilowania/testowania, można dodać szablony Azure Resource Manager i pliki pomocnicze do źródeł kompilacji, aby w fazie wydania dokładna konfiguracja użyta do przetestowania została wdrożona w środowisku produkcyjnym. Zadanie **tworzenia środowiska Azure DevTest Labs** z odpowiednią konfiguracją spowoduje zapisanie Menedżer zasobów szablonów w ramach artefaktów kompilacji. Na potrzeby tego przykładu będziesz używać kodu z [samouczka: Tworzenie aplikacji sieci Web platformy .NET Core i SQL Database w usłudze Azure App Service](../app-service/app-service-web-tutorial-dotnetcore-sqldb.md), aby wdrożyć i przetestować aplikację sieci Web na platformie Azure.
 
 ![Przepływ ogólny](./media/use-devtest-labs-build-release-pipelines/overall-flow.png)
 
@@ -86,7 +86,7 @@ Trzecim zadaniem jest zadanie **Azure App Service Deploy** . Typ aplikacji to **
 ![Zadanie wdrażania App Service](./media/use-devtest-labs-build-release-pipelines/app-service-deploy.png)
 
 ## <a name="set-up-release-pipeline"></a>Konfigurowanie potoku wydania
-Tworzysz potok wydania z dwoma zadaniami: **Wdrażanie na platformie Azure: Utwórz lub Zaktualizuj grupę** zasobów i **Wdróż Azure App Service**. 
+Tworzysz potok wersji z dwoma zadaniami: **Azure Deployment: Utwórz lub Zaktualizuj grupę zasobów** i **Wdróż Azure App Service**. 
 
 Dla pierwszego zadania Określ nazwę i lokalizację grupy zasobów. Lokalizacja szablonu to połączony artefakt. Jeśli szablon Menedżer zasobów obejmuje połączone szablony, należy zaimplementować wdrożenie niestandardowej grupy zasobów. Szablon znajduje się w opublikowanym artefaktie drop. Przesłoń parametry szablonu dla szablonu Menedżer zasobów. Pozostałe ustawienia można pozostawić z wartościami domyślnymi. 
 
@@ -95,7 +95,7 @@ W przypadku drugiego zadania **wdrażania Azure App Service**Określ subskrypcj�
 ## <a name="test-run"></a>Przebieg testowy
 Teraz, gdy oba potoki zostały skonfigurowane, należy ręcznie utworzyć w kolejce kompilację i zobaczyć jej działanie. Następnym krokiem jest ustawienie odpowiedniego wyzwalacza dla kompilacji i połączenie kompilacji z potokiem wersji.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Zobacz następujące artykuły:
 
 - [Integracja Azure DevTest Labs z Azure Pipelines ciągłą integracją i potoku dostarczania](devtest-lab-integrate-ci-cd-vsts.md)

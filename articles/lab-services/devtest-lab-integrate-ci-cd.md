@@ -1,5 +1,5 @@
 ---
-title: Integrowanie usługi Azure DevTest Labs z potokiem Azure potoków ciągłej integracji i dostarczania | Dokumentacja firmy Microsoft
+title: Integruj Azure DevTest Labs z Azure Pipelines
 description: Dowiedz się, jak zintegrować usługi Azure DevTest Labs w sieci Web Azure potoków ciągłej integracji i potoku dostaw
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -12,21 +12,21 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/02/2019
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 20ba297d22e26aa8c7e20db300173f12582d257e
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 54b4e6e6a283f46e03f7b94ce96ba79a03f75523
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "71224480"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76170397"
 ---
 # <a name="integrate-azure-devtest-labs-into-your-azure-pipelines-cicd-pipeline"></a>Integracja Azure DevTest Labs Azure Pipelines z potokiem ciągłej integracji/ciągłego wdrażania
 
 Za pomocą rozszerzenia *Azure DevTest Labs Tasks* można zintegrować kompilację Azure Pipelines ciągłej integracji i ciągłego dostarczania (Ci/CD) oraz potoków wydań z programem Azure DevTest Labs. Rozszerzenie instaluje kilka zadań, w tym: 
 
 - Tworzenie maszyny wirtualnej
-- Tworzenie niestandardowego obrazu maszyny wirtualnej
+- Tworzenie obrazu niestandardowego z poziomu maszyny wirtualnej
 - Usuwanie maszyny wirtualnej 
 
 Te zadania ułatwiają, na przykład, szybko wdrażać maszynę wirtualną z *obrazem złota* dla określonego zadania testowego, a następnie usunąć maszynę wirtualną po zakończeniu testu.
@@ -106,7 +106,7 @@ Aby utworzyć plik skryptu:
 
 Aby utworzyć nowy potok wydania:
 
-1. Na stronie projektu usługi Azure DevOps wybierz pozycję**wersje** **potoków** > w okienku nawigacji po lewej stronie.
+1. Na stronie projektu usługi Azure DevOps wybierz pozycję **potoki** > **wersje** w lewym okienku nawigacji.
 1. Wybierz pozycję **Nowy potok**.
 1. W obszarze **Wybierz szablon**przewiń w dół i wybierz pozycję **puste zadanie**, a następnie wybierz pozycję **Zastosuj**.
 
@@ -120,7 +120,7 @@ Aby dodać zmienne dla wartości:
    
 1. Dla każdej zmiennej wybierz pozycję **Dodaj** , a następnie wprowadź nazwę i wartość:
    
-   |Name|Value|
+   |Nazwa|Wartość|
    |---|---|
    |*vmName*|Nazwa maszyny wirtualnej, która została przypisana w szablonie Menedżer zasobów|
    |*Uż*|Nazwa użytkownika do uzyskiwania dostępu do maszyny wirtualnej|
@@ -130,7 +130,7 @@ Aby dodać zmienne dla wartości:
 
 Następnym krokiem jest utworzenie maszyny wirtualnej z obrazem złota do użycia w przyszłych wdrożeniach. Możesz utworzyć maszynę wirtualną w wystąpieniu Azure DevTest Labs przy użyciu zadania *Azure DevTest Labs Utwórz maszynę wirtualną* .
 
-1. Na karcie **potok** potoku wydania wybierz hiperłącze w obszarze **etap 1** , aby **wyświetlić zadania etapów**, a **+** następnie wybierz znak plus obok pozycji **zadanie agenta**. 
+1. Na karcie **potok** potoku wydania wybierz hiperłącze w obszarze **etap 1** , aby **wyświetlić zadania etapów**, a następnie wybierz znak plus **+** obok **zadania agenta**. 
    
 1. W obszarze **Dodaj zadania**wybierz pozycję **Azure DevTest Labs Utwórz maszynę wirtualną**, a następnie wybierz pozycję **Dodaj**. 
    
@@ -138,27 +138,27 @@ Następnym krokiem jest utworzenie maszyny wirtualnej z obrazem złota do użyci
 
 1. W okienku po prawej stronie wypełnij formularz w następujący sposób:
    
-   |Pole|Value|
+   |Pole|Wartość|
    |---|---|
    |**Subskrypcja usługi Azure RM**|Wybierz połączenie z usługą lub subskrypcję z **dostępnych połączeń usługi platformy Azure** lub **dostępne subskrypcje platformy Azure** na liście rozwijanej, a następnie w razie potrzeby wybierz pozycję **Autoryzuj** .<br /><br />**Uwaga:** Aby uzyskać informacje na temat tworzenia bardziej ograniczonego połączenia z subskrypcją platformy Azure, zobacz [punkt końcowy usługi Azure Resource Manager](/azure/devops/pipelines/library/service-endpoints#sep-azure-rm).|
    |**Nazwa laboratorium**|Wybierz nazwę istniejącego laboratorium, w którym zostanie utworzona maszyna wirtualna laboratorium.|
    |**Nazwa szablonu**|Wprowadź pełną ścieżkę i nazwę pliku szablonu zapisanego w repozytorium kodu źródłowego. Można używać wbudowanych właściwości do uproszczenia ścieżki, na przykład:<br /><br />`$(System.DefaultWorkingDirectory)/Templates/CreateVMTemplate.json`|
    |**Parametry szablonu**|Wprowadź parametry dla zdefiniowanych wcześniej zmiennych:<br /><br />`-newVMName '$(vmName)' -userName '$(userName)' -password (ConvertTo-SecureString -String '$(password)' -AsPlainText -Force)`|
-   |**Zmienne wyjściowe —** **Identyfikator maszyny wirtualnej laboratorium**  > |Wprowadź zmienną dla utworzonego identyfikatora maszyny wirtualnej laboratorium. W przypadku użycia domyślnej **labVMId**można odwołać się do zmiennej w kolejnych zadaniach jako *$ (labVMId)* .<br /><br />Można utworzyć nazwę inną niż domyślna, ale pamiętaj, aby użyć poprawnej nazwy w kolejnych zadaniach. Identyfikator maszyny wirtualnej laboratorium można napisać w następującej postaci:<br /><br />`/subscriptions/{subscription Id}/resourceGroups/{resource group Name}/providers/Microsoft.DevTestLab/labs/{lab name}/virtualMachines/{vmName}`|
+   |**Zmienne wyjściowe** > **Identyfikator maszyny wirtualnej laboratorium**|Wprowadź zmienną dla utworzonego identyfikatora maszyny wirtualnej laboratorium. W przypadku użycia domyślnej **labVMId**można odwołać się do zmiennej w kolejnych zadaniach jako *$ (labVMId)* .<br /><br />Można utworzyć nazwę inną niż domyślna, ale pamiętaj, aby użyć poprawnej nazwy w kolejnych zadaniach. Identyfikator maszyny wirtualnej laboratorium można napisać w następującej postaci:<br /><br />`/subscriptions/{subscription Id}/resourceGroups/{resource group Name}/providers/Microsoft.DevTestLab/labs/{lab name}/virtualMachines/{vmName}`|
 
 ### <a name="collect-the-details-of-the-devtest-labs-vm"></a>Zbierz szczegóły maszyny wirtualnej z DevTest Labs
 
 Uruchom skrypt został utworzony wcześniej, aby zbierać szczegółowe informacje o maszynie Wirtualnej DevTest Labs. 
 
-1. Na karcie **potok** potoku wydania wybierz hiperłącze w obszarze **etap 1** , aby **wyświetlić zadania etapów**, a **+** następnie wybierz znak plus obok pozycji **zadanie agenta**. 
+1. Na karcie **potok** potoku wydania wybierz hiperłącze w obszarze **etap 1** , aby **wyświetlić zadania etapów**, a następnie wybierz znak plus **+** obok **zadania agenta**. 
    
 1. W obszarze **Dodaj zadania**wybierz pozycję **Azure PowerShell**, a następnie wybierz pozycję **Dodaj**. 
    
-1. Wybierz **Azure PowerShell skrypt: FilePath** w lewym okienku. 
+1. Wybierz pozycję **Azure PowerShell skrypt: FilePath** w lewym okienku. 
    
 1. W okienku po prawej stronie wypełnij formularz w następujący sposób:
    
-   |Pole|Value|
+   |Pole|Wartość|
    |---|---|
    |**Typ połączenia platformy Azure**|Wybierz **Azure Resource Manager**.|
    |**Subskrypcja platformy Azure**|Wybierz połączenie lub subskrypcję usługi.| 
@@ -172,20 +172,20 @@ Skrypt zbiera wymagane wartości i zapisuje je w zmiennych środowiskowych w pot
 
 Następnym zadaniem jest utworzenie obrazu nowo wdrożonej maszyny wirtualnej w wystąpieniu Azure DevTest Labs. Obrazu można następnie użyć do tworzenia kopii maszyny wirtualnej na żądanie, w każdym przypadku, gdy chcesz wykonać zadanie deweloperów lub niektóre testy. 
 
-1. Na karcie **potok** potoku wydania wybierz hiperłącze w obszarze **etap 1** , aby **wyświetlić zadania etapów**, a **+** następnie wybierz znak plus obok pozycji **zadanie agenta**. 
+1. Na karcie **potok** potoku wydania wybierz hiperłącze w obszarze **etap 1** , aby **wyświetlić zadania etapów**, a następnie wybierz znak plus **+** obok **zadania agenta**. 
    
 1. W obszarze **Dodaj zadania**wybierz pozycję **Azure DevTest Labs Utwórz obraz niestandardowy**, a następnie wybierz pozycję **Dodaj**. 
    
 1. Skonfiguruj zadania w następujący sposób:
    
-   |Pole|Value|
+   |Pole|Wartość|
    |---|---|
    |**Subskrypcja usługi Azure RM**|Wybierz połączenie lub subskrypcję usługi.|
    |**Nazwa laboratorium**|Wybierz nazwę istniejącego laboratorium, w którym zostanie utworzony obraz.|
    |**Nazwa obrazu niestandardowego**|Wprowadź nazwę obrazu niestandardowego.|
-   |**Opis** obowiązkowe|Wprowadź opis, aby ułatwić wybranie poprawnego obrazu później.|
-   | > **Identyfikator maszyny wirtualnej laboratorium źródłowego** dla laboratorium źródłowego|Jeśli zmieniono nazwę domyślną zmiennej LabVMId, wprowadź ją w tym miejscu. Wartość domyślna to **$(labVMId)** .|
-   | > **Identyfikator obrazu niestandardowego** dla zmiennych wyjściowych|W razie potrzeby można edytować domyślną nazwę zmiennej.|
+   |**Opis** (opcjonalnie)|Wprowadź opis, aby ułatwić wybranie poprawnego obrazu później.|
+   |**Identyfikator maszyny** wirtualnej laboratorium **źródłowego laboratorium źródłowego > **|Jeśli zmieniono nazwę domyślną zmiennej LabVMId, wprowadź ją w tym miejscu. Wartość domyślna to **$(labVMId)** .|
+   |**Zmienne wyjściowe** > **niestandardowego identyfikatora obrazu**|W razie potrzeby można edytować domyślną nazwę zmiennej.|
    
 ### <a name="deploy-your-app-to-the-devtest-labs-vm-optional"></a>Wdróż aplikację na maszynie wirtualnej z DevTest Labs (opcjonalnie)
 
@@ -197,7 +197,7 @@ Informacje o maszynie wirtualnej potrzebne do parametrów tych zadań są przech
 
 Ostatnim zadaniem jest usunięcie maszyny wirtualnej wdrożonej w wystąpieniu Azure DevTest Labs. Zazwyczaj można usuwać maszyny Wirtualnej po wykonywanie zadań deweloperskich lub uruchomić testy, które należy wdrożonej maszyny Wirtualnej. 
 
-1. Na karcie **potok** potoku wydania wybierz hiperłącze w obszarze **etap 1** , aby **wyświetlić zadania etapów**, a **+** następnie wybierz znak plus obok pozycji **zadanie agenta**. 
+1. Na karcie **potok** potoku wydania wybierz hiperłącze w obszarze **etap 1** , aby **wyświetlić zadania etapów**, a następnie wybierz znak plus **+** obok **zadania agenta**. 
    
 1. W obszarze **Dodaj zadania**wybierz pozycję **Azure DevTest Labs Usuń maszynę wirtualną**, a następnie wybierz pozycję **Dodaj**. 
    

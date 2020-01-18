@@ -1,7 +1,7 @@
 ---
-title: 'Samouczek: interfejs API rozpoznawania twarzy, C#'
+title: 'Samouczek: połączona usługa czołowa'
 titleSuffix: Azure Cognitive Services
-description: Utwórz aplikację systemu Windows, która używa interfejs API rozpoznawania twarzy Cognitive Services do wykrywania funkcji twarzy w obrazie.
+description: Utwórz aplikację systemu Windows, która korzysta z usługi Cognitive Services twarzy, aby wykrywać funkcje twarze w obrazie.
 services: cognitive-services
 author: ghogen
 manager: nitinme
@@ -10,18 +10,18 @@ ms.subservice: face-api
 ms.topic: tutorial
 ms.date: 12/05/2019
 ms.author: ghogen
-ms.openlocfilehash: 4b204b9895a2afea4c78d1d92f2cca68f77ae708
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: e0fe92fc7f19c3c899bcccfa9f9cc18029af049c
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74970299"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76170235"
 ---
-# <a name="connecting-to-cognitive-services-face-api-by-using-connected-services-in-visual-studio"></a>Łączenie z interfejsem API rozpoznawania twarzy usług Cognitive Services za pomocą usług połączonych w programie Visual Studio
+# <a name="connect-to-the-face-service-by-using-connected-services-in-visual-studio"></a>Nawiązywanie połączenia z usługą kroju przy użyciu usług połączonych w programie Visual Studio
 
-Za pomocą interfejsu API rozpoznawania twarzy usług Cognitive Services możesz wykrywać, analizować i organizować twarze na zdjęciach oraz oznaczać je tagami.
+Za pomocą usługi Azure twarzy możesz wykrywać, analizować, organizować i oznakować twarze na zdjęciach.
 
-W tym artykule i artykułach towarzyszących podano szczegółowe informacje na temat używania funkcji usługi połączonej programu Visual Studio na potrzeby interfejsu API rozpoznawania twarzy usług Cognitive Services. Ta funkcja jest dostępna w programie Visual Studio 2017 15.7 lub nowszym z zainstalowanym rozszerzeniem usługi Cognitive Services.
+Ten artykuł i jego artykuły towarzyszące zawierają szczegółowe informacje dotyczące korzystania z funkcji usługi połączonej programu Visual Studio dla usługi. Ta funkcja jest dostępna w programie Visual Studio 2017 15.7 lub nowszym z zainstalowanym rozszerzeniem usługi Cognitive Services.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -30,7 +30,7 @@ W tym artykule i artykułach towarzyszących podano szczegółowe informacje na 
 
 [!INCLUDE [vs-install-cognitive-services-vsix](../../../includes/vs-install-cognitive-services-vsix.md)]
 
-## <a name="create-a-project-and-add-support-for-cognitive-services-face-api"></a>Tworzenie projektu i dodawanie obsługi interfejsu API rozpoznawania twarzy usług Cognitive Services
+## <a name="create-a-project-and-add-support-for-face"></a>Tworzenie projektu i Dodawanie obsługi funkcji rozpoznawania
 
 1. Utwórz nowy projekt internetowy ASP.NET Core. Użyj szablonu Pusty projekt. 
 
@@ -47,16 +47,16 @@ W tym artykule i artykułach towarzyszących podano szczegółowe informacje na 
 
    ![Wybierz swoją subskrypcję](media/vs-face-connected-service/Cog-Face-Connected-Service-1.PNG)
 
-1. Wybierz subskrypcję, której chcesz użyć, i nazwę interfejsu API rozpoznawania twarzy albo link Edytuj, aby zmodyfikować nazwę wygenerowaną automatycznie oraz wybrać grupę zasobów i warstwę cenową.
+1. Wybierz subskrypcję, której chcesz użyć, a następnie wybierz nazwę usługi kroju lub wybierz łącze Edytuj, aby zmodyfikować automatycznie wygenerowaną nazwę, wybierz grupę zasobów i warstwę cenową.
 
    ![Edytowanie szczegółów usługi połączonej](media/vs-face-connected-service/Cog-Face-Connected-Service-2.PNG)
 
    Skorzystaj z linku, aby wyświetlić szczegóły warstw cenowych.
 
 1. Wybierz przycisk Dodaj, aby dodać obsługę usługi połączonej.
-   Program Visual Studio zmodyfikuje projekt, dodając pakiety NuGet i wpisy pliku konfiguracji oraz wprowadzając inne zmiany na potrzeby obsługi połączenia z interfejsem API rozpoznawania twarzy.
+   Program Visual Studio modyfikuje projekt, aby dodać pakiety NuGet, wpisy pliku konfiguracji i inne zmiany w celu obsługi połączenia z usługą kroju.
 
-## <a name="use-the-face-api-to-detect-attributes-of-faces-in-an-image"></a>Wykrywanie atrybutów twarzy na obrazie za pomocą interfejsu API rozpoznawania twarzy
+## <a name="use-the-face-service-to-detect-attributes-of-faces-in-an-image"></a>Korzystanie z usługi twarzy do wykrywania atrybutów powierzchni w obrazie
 
 1. Dodaj następujące instrukcje using w pliku Startup.cs.
  
@@ -79,7 +79,7 @@ W tym artykule i artykułach towarzyszących podano szczegółowe informacje na 
       }
    ```
 
-1. W folderze wwwroot projektu dodaj folder images i dodaj plik obrazu do folderu wwwroot. Na potrzeby przykładu możesz użyć jednego z obrazów na tej [stronie interfejsu API rozpoznawania twarzy](https://azure.microsoft.com/services/cognitive-services/face/). Kliknij prawym przyciskiem myszy jeden z obrazów, Zapisz na lokalnym dysku twardym, a następnie w Eksplorator rozwiązań kliknij prawym przyciskiem myszy folder obrazy, a następnie wybierz polecenie **dodaj** > **istniejący element** , aby dodać go do projektu. Twój projekt w Eksploratorze rozwiązań powinien wyglądać podobnie do następującego:
+1. W folderze wwwroot projektu dodaj folder images i dodaj plik obrazu do folderu wwwroot. Przykładowo można użyć jednego z obrazów na [stronie do](https://azure.microsoft.com/services/cognitive-services/face/) Azure Portal. Kliknij prawym przyciskiem myszy jeden z obrazów, Zapisz na lokalnym dysku twardym, a następnie w Eksplorator rozwiązań kliknij prawym przyciskiem myszy folder obrazy, a następnie wybierz polecenie **dodaj** > **istniejący element** , aby dodać go do projektu. Twój projekt w Eksploratorze rozwiązań powinien wyglądać podobnie do następującego:
  
    ![Folder images z plikiem obrazu](media/vs-face-connected-service/Cog-Face-Connected-Service-6.PNG)
 
@@ -87,7 +87,7 @@ W tym artykule i artykułach towarzyszących podano szczegółowe informacje na 
 
    ![Kopiuj, jeśli nowszy](media/vs-face-connected-service/Cog-Face-Connected-Service-5.PNG)
  
-1. Zastąp metodę Configure następującym kodem, aby uzyskać dostęp do interfejsu API rozpoznawania twarzy i przetestować obraz. Zmień ciąg imagePath tak, aby wskazywał poprawną ścieżkę i nazwę pliku obrazu twarzy.
+1. Zastąp metodę Configure następującym kodem, aby uzyskać dostęp do usługi kroju i przetestować obraz. Zmień ciąg imagePath tak, aby wskazywał poprawną ścieżkę i nazwę pliku obrazu twarzy.
 
    ```csharp
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -231,9 +231,9 @@ W tym artykule i artykułach towarzyszących podano szczegółowe informacje na 
         }
    ```
 
-1. Uruchom aplikację internetową i zobacz, co interfejs API rozpoznawania twarzy znalazł na obrazie.
+1. Uruchom aplikację sieci Web i zobacz, co znajduje się w obrazie.
  
-   ![Obraz interfejsu API rozpoznawania twarzy oraz sformatowane wyniki](media/vs-face-connected-service/Cog-Face-Connected-Service-4.PNG)
+   ![Obraz usługi kroju i sformatowane wyniki](media/vs-face-connected-service/Cog-Face-Connected-Service-4.PNG)
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
@@ -245,4 +245,4 @@ Gdy grupa zasobów nie jest już potrzebna, usuń ją. Spowoduje to usunięcie u
 
 ## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się więcej na temat interfejsu API rozpoznawania twarzy, czytając [dokumentację interfejsu API rozpoznawania twarzy](Overview.md).
+Dowiedz się więcej na temat usługi kroju, odczytując [dokumentację dotyczącą](Overview.md)programu.

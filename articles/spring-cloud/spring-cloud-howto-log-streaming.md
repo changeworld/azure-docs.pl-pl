@@ -6,12 +6,12 @@ ms.author: barbkess
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 01/14/2019
-ms.openlocfilehash: fa2e7af51ff681da0bfdac928cc08bf75126a3b8
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 27978d367ded7a31d73949cd675ae9e6f8cb887c
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76156424"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264003"
 ---
 # <a name="stream-azure-spring-cloud-app-logs-in-real-time"></a>Przesyłanie strumieniowe dzienników aplikacji w chmurze Azure wiosny w czasie rzeczywistym
 Chmura sprężynowa Azure umożliwia przesyłanie strumieniowe dzienników w interfejsie wiersza polecenia platformy Azure w czasie rzeczywistym w celu rozwiązywania problemów. Możesz również [analizować dzienniki i metryki przy użyciu ustawień diagnostycznych](./diagnostic-services.md).
@@ -47,16 +47,29 @@ Spowoduje to zwrócenie dzienników:
 ```
 
 ### <a name="tail-log-for-app-with-multiple-instances"></a>Dziennik końcowy aplikacji z wieloma wystąpieniami
-Jeśli istnieje wiele wystąpień dla aplikacji o nazwie `auth-service`, dziennik wystąpienia można wyświetlić przy użyciu opcji `-i/--instance`. Na przykład można przesłać strumieniowo dziennik wystąpienia jednej aplikacji, określając nazwę aplikacji i nazwę wystąpienia:
+Jeśli istnieje wiele wystąpień dla aplikacji o nazwie `auth-service`, dziennik wystąpienia można wyświetlić przy użyciu opcji `-i/--instance`. 
+
+Najpierw można pobrać nazwy wystąpienia aplikacji za pomocą następującego polecenia.
+
+```
+az spring-cloud app show -n auth-service --query properties.activeDeployment.properties.instances -o table
+```
+Z wynikami:
+
+```
+Name                                         Status    DiscoveryStatus
+-------------------------------------------  --------  -----------------
+auth-service-default-12-75cc4577fc-pw7hb  Running   UP
+auth-service-default-12-75cc4577fc-8nt4m  Running   UP
+auth-service-default-12-75cc4577fc-n25mh  Running   UP
+``` 
+Następnie można przesłać strumieniowo dzienniki wystąpienia aplikacji z opcją `-i/--instance` opcji:
 
 ```
 az spring-cloud app log tail -n auth-service -i auth-service-default-12-75cc4577fc-pw7hb
 ```
-Możesz również pobrać wystąpienia aplikacji z Azure Portal. 
-1. Przejdź do grupy zasobów i wybierz swoje wystąpienie chmury Azure wiosennej.
-1. W oknie Omówienie wystąpienia chmury wiosennej na platformie Azure wybierz pozycję **aplikacje** w lewym okienku nawigacji.
-1. Wybierz aplikację, a następnie kliknij pozycję **wystąpienia aplikacji** w okienku nawigacji po lewej stronie. 
-1. Zostaną wyświetlone wystąpienia aplikacji.
+
+Możesz również uzyskać szczegółowe informacje o wystąpieniach aplikacji z Azure Portal.  Po wybraniu **aplikacji** w okienku nawigacji po lewej stronie usługi w chmurze Azure wiosny wybierz pozycję **wystąpienia aplikacji**.
 
 ### <a name="continuously-stream-new-logs"></a>Ciągle Przesyłaj strumieniowo nowe dzienniki
 Domyślnie program `az spring-cloud ap log tail` drukuje tylko istniejące dzienniki przesyłane strumieniowo do konsoli aplikacji, a następnie kończy pracę. Jeśli chcesz przesyłać strumieniowo nowe dzienniki, Dodaj polecenie-f (--Obserwuj):  

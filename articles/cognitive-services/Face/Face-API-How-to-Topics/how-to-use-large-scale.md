@@ -1,5 +1,5 @@
 ---
-title: 'Przykład: Użyj funkcji o dużej skali interfejs API rozpoznawania twarzy'
+title: 'Przykład: korzystanie z funkcji dużej skali'
 titleSuffix: Azure Cognitive Services
 description: Ten przewodnik to artykuł dotyczący sposobu skalowania w górę od istniejącej osoby i FaceList obiektów do obiektów LargePersonGroup i LargeFaceList.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: sample
 ms.date: 05/01/2019
 ms.author: sbowles
-ms.openlocfilehash: 976baaef11251715218ecea71986f08ec5f72996
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: dc0964e40e9214e414d865c06006f1d36e97eeb2
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73743729"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169780"
 ---
 # <a name="example-use-the-large-scale-feature"></a>Przykład: korzystanie z funkcji dużej skali
 
@@ -23,14 +23,14 @@ Ten przewodnik to zaawansowany artykuł dotyczący sposobu skalowania w górę o
 
 LargePersonGroup i LargeFaceList są określane zbiorczo jako operacje na dużą skalę. LargePersonGroup może zawierać do 1 000 000 osób, z których każdy ma maksymalnie 248 twarzy. LargeFaceList może zawierać do 1 000 000 twarzy. Operacje na dużą skalę są podobne do konwencjonalnych osób i FaceList, ale mają pewne różnice ze względu na nową architekturę. 
 
-Przykłady są zapisywane C# przy użyciu biblioteki klienckiej usługi Azure Cognitive Services interfejs API rozpoznawania twarzy.
+Przykłady są zapisywane C# przy użyciu biblioteki klienckiej usługi Azure Cognitive Services
 
 > [!NOTE]
 > Aby włączyć wydajność wyszukiwania czołowego na potrzeby identyfikacji i FindSimilar w dużej skali, należy wprowadzić operację uczenia w celu wstępnego przetworzenia LargeFaceList i LargePersonGroup. Czas uczenia różni się od sekund do około pół godziny na podstawie rzeczywistej wydajności. W trakcie okresu szkoleniowego możliwe jest przeprowadzenie identyfikacji i FindSimilar, jeśli zakończono pomyślne szkolenia. Wadą jest to, że nowe dodane osoby i powierzchnie nie pojawiają się w wyniku do momentu ukończenia nowej migracji po przekształceniu na dużą skalę.
 
 ## <a name="step-1-initialize-the-client-object"></a>Krok 1. inicjowanie obiektu klienta
 
-W przypadku korzystania z biblioteki klienta interfejs API rozpoznawania twarzy klucz subskrypcji i punkt końcowy subskrypcji są przesyłane za pomocą konstruktora klasy FaceClient. Na przykład:
+W przypadku korzystania z biblioteki klienta programu Front Key i punkt końcowy subskrypcji są przesyłane za pomocą konstruktora klasy FaceClient. Przykład:
 
 ```csharp
 string SubscriptionKey = "<Subscription Key>";
@@ -63,12 +63,12 @@ Dodaj wszystkie powierzchnie i osoby z tej osoby do nowego LargePersonGroup. Aby
 
 | Interfejsy API listy FaceList | Interfejsy API listy LargeFaceList |
 |:---:|:---:|
-| Tworzenie | Tworzenie |
-| Usuwanie | Usuwanie |
-| Get | Get |
-| List | List |
+| Create | Create |
+| Usuń | Usuń |
+| Pobierz | Pobierz |
+| Lista | Lista |
 | Aktualizacja | Aktualizacja |
-| - | Szkolenie |
+| - | Uczenie |
 | - | Pobieranie stanu szkolenia |
 
 W powyższej tabeli znajduje się porównanie z operacji na poziomie listy dla kolekcji FaceList i LargeFaceList. Jak widać, LargeFaceList zawiera nowe operacje, uczenie i pobieranie stanu szkoleń w porównaniu z FaceList. Szkolenie LargeFaceList jest warunkiem wstępnym operacji [FindSimilar](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237) . Szkolenie nie jest wymagane w przypadku FaceList. Poniższy fragment kodu jest funkcją pomocnika, która oczekuje na szkolenie LargeFaceList:

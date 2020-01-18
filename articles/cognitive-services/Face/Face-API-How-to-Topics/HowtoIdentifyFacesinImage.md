@@ -1,5 +1,5 @@
 ---
-title: 'Przykład: identyfikowanie twarzy na obrazach — interfejs API rozpoznawania twarzy'
+title: 'Przykład: Zidentyfikuj twarze na obrazach — twarz'
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku pokazano, jak identyfikować nieznane twarze za pomocą obiektów osób, które są tworzone z góry.
 services: cognitive-services
@@ -10,16 +10,16 @@ ms.subservice: face-api
 ms.topic: sample
 ms.date: 04/10/2019
 ms.author: sbowles
-ms.openlocfilehash: ec209eb2c60efcb1363c177aad0fe5a72ad2a239
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 0b1cf99fe6e2aa4d7fcb12c3fb96b10b42c7c0b7
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977186"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169914"
 ---
 # <a name="example-identify-faces-in-images"></a>Przykład: Zidentyfikuj twarze na obrazach
 
-W tym przewodniku pokazano, jak identyfikować nieznane twarze za pomocą obiektów osób, które są tworzone z góry. Przykłady są zapisywane C# przy użyciu biblioteki klienckiej usługi Azure Cognitive Services interfejs API rozpoznawania twarzy.
+W tym przewodniku pokazano, jak identyfikować nieznane twarze za pomocą obiektów osób, które są tworzone z góry. Przykłady są zapisywane C# przy użyciu biblioteki klienckiej usługi Azure Cognitive Services
 
 ## <a name="preparation"></a>Przygotowywanie
 
@@ -33,7 +33,7 @@ Aby przeprowadzić pokaz tego przykładu, Przygotuj:
 - Kilka zdjęć twarzy danej osoby. [Pobierz przykładowe zdjęcia](https://github.com/Microsoft/Cognitive-Face-Windows/tree/master/Data) dla Anna, rachunku i Clare.
 - Seria zdjęć testowych. Zdjęcia mogą lub nie mogą zawierać twarzy Anna, Bill lub Clare. Są one używane do testowania identyfikacji. Wybierz także przykładowe obrazy z poprzedniego linku.
 
-## <a name="step-1-authorize-the-api-call"></a>Krok 1. Autoryzowanie wywołania interfejsu API
+## <a name="step-1-authorize-the-api-call"></a>Krok 1: Autoryzowanie wywołania interfejsu API
 
 Każde wywołanie do interfejsu API rozpoznawania twarzy wymaga klucza subskrypcji. Ten klucz może być przesłany przez parametr ciągu zapytania lub określony w nagłówku żądania. Aby przekazać klucz subskrypcji za pomocą ciągu zapytania, zapoznaj się z adresem URL żądania w celu [wykrycia](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) wskaźnika na przykład:
 ```
@@ -42,7 +42,7 @@ https://westus.api.cognitive.microsoft.com/face/v1.0/detect[?returnFaceId][&retu
 ```
 
 Alternatywnie należy określić klucz subskrypcji w nagłówku żądania HTTP **OCP-APIM-Subscription-Key: &lt;klucz subskrypcji&gt;** .
-W przypadku korzystania z biblioteki klienta klucz subskrypcji jest przenoszona przez Konstruktor klasy FaceClient. Na przykład:
+W przypadku korzystania z biblioteki klienta klucz subskrypcji jest przenoszona przez Konstruktor klasy FaceClient. Przykład:
  
 ```csharp 
 private readonly IFaceClient faceClient = new FaceClient(
@@ -131,7 +131,7 @@ while(true)
 
 ## <a name="step-4-identify-a-face-against-a-defined-persongroup"></a>Krok 4: Identyfikowanie twarzy przy użyciu zdefiniowanego elementu PersonGroup
 
-Gdy interfejs API rozpoznawania twarzy wykonuje identyfikację, obliczy podobieństwo testu do wszystkich twarzy w grupie. Zwraca najbardziej porównywalne osoby do testowania. Ten proces odbywa się za pomocą interfejsu API rozpoznawania [twarz](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239) lub metody IdentifyAsync biblioteki klienta.
+Gdy usługa twarzy wykonuje identyfikatory, oblicza podobieństwo testu do wszystkich twarzy w grupie. Zwraca najbardziej porównywalne osoby do testowania. Ten proces odbywa się za pomocą interfejsu API rozpoznawania [twarz](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239) lub metody IdentifyAsync biblioteki klienta.
 
 Przede wszystkim należy wykryć test, wykonując czynności opisane w poprzednich krokach. Następnie identyfikator kroju jest przenoszona do identyfikatora API identyfikacji jako drugi argument. Jednocześnie można zidentyfikować wiele identyfikatorów. Wynik zawiera wszystkie zidentyfikowane wyniki. Domyślnie proces identyfikacji zwraca tylko jedną osobę, która pasuje do najwyższej jakości testu. Jeśli wolisz, określ opcjonalny parametr maxNumOfCandidatesReturned, aby proces identyfikacji zwracał więcej kandydatów.
 

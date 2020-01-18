@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 04/02/2019
 ms.author: anroth
-ms.openlocfilehash: 50325b75280160a3fefa5b5487df29a25e53bddd
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: dcb12da680d70e1f0ce4cd763bee340bb3416c6b
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70966945"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169949"
 ---
 # <a name="use-your-model-with-the-prediction-api"></a>Korzystanie z modelu za pomocą interfejsu API przewidywania
 
@@ -109,9 +109,9 @@ W tym przewodniku użyjesz lokalnego obrazu, więc Skopiuj adres URL w obszarze 
     ```
 
 1. Zmień następujące informacje:
-   * `namespace` Ustaw pole na nazwę projektu.
-   * Zastąp symbol `<Your prediction key>` zastępczy wcześniej pobraną wartością klucza.
-   * Zamień symbol zastępczy `<Your prediction URL>` na pobrany wcześniej adres URL.
+   * Ustaw pole `namespace` na nazwę projektu.
+   * Zastąp symbol zastępczy `<Your prediction key>` wartością klucza, która została pobrana wcześniej.
+   * Zastąp symbol zastępczy `<Your prediction URL>` adresem URL pobranym wcześniej.
 
 ## <a name="run-the-application"></a>Uruchamianie aplikacji
 
@@ -135,7 +135,7 @@ Po uruchomieniu aplikacji zostanie wyświetlony monit o wprowadzenie ścieżki d
 W tym przewodniku przedstawiono sposób przesyłania obrazów do niestandardowego klasyfikatora i detektora obrazu oraz do programistycznego otrzymywania odpowiedzi z C# zestawu SDK. Następnie dowiesz się, jak ukończyć kompleksowe scenariusze z programem, lub C#Zacznij korzystać z innego zestawu SDK języka.
 
 * [Szybki Start: zestaw SDK platformy .NET](csharp-tutorial.md)
-* [Szybki start: Zestaw SDK języka Python](python-tutorial.md)
-* [Szybki start: Zestaw Java SDK](java-tutorial.md)
-* [Szybki start: Zestaw SDK węzła](node-tutorial.md)
-* [Szybki start: Zestaw SDK języka go](go-tutorial.md)
+* [Szybki Start: zestaw SDK języka Python](python-tutorial.md)
+* [Szybki Start: zestaw Java SDK](java-tutorial.md)
+* [Szybki Start: zestaw SDK węzła](node-tutorial.md)
+* [Przewodnik Szybki Start: Przejdź do zestawu SDK](go-tutorial.md)

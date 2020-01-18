@@ -4,15 +4,15 @@ description: Replikowanie Azure Analysis Services serwerów z skalowaniem w pozi
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/30/2019
+ms.date: 01/16/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 1b40238dfc579e42d0389ae14fdea4b5692ede06
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 56a3d4f172cde70bdd1a875c76213c43184cbbc3
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73572590"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76167943"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Skalowanie w poziomie usług Azure Analysis Services
 
@@ -30,13 +30,13 @@ Bez względu na liczbę replik zapytań używanych w puli zapytań przetwarzanie
 
 Skalowanie w górę może potrwać do 5 minut, aby nowe repliki zapytań były przyrostowo dodawane do puli zapytań. Gdy wszystkie nowe repliki zapytań są uruchomione, nowe połączenia klientów są zrównoważone dla zasobów w puli zapytań. Istniejące połączenia klientów nie są zmieniane z zasobu, z którym są obecnie połączone. Podczas skalowania w programie wszystkie istniejące połączenia klientów z pulą zapytań, które są usuwane z puli zapytań, są przerywane. Klienci mogą ponownie połączyć się z innym zasobem puli zapytań.
 
-## <a name="how-it-works"></a>Jak to działa
+## <a name="how-it-works"></a>Zasady działania
 
 Podczas konfigurowania skalowania w poziomie po raz pierwszy bazy danych modelu na serwerze podstawowym są *automatycznie* synchronizowane z nowymi replikami w nowej puli zapytań. Automatyczna synchronizacja odbywa się tylko raz. Podczas automatycznej synchronizacji pliki danych serwera podstawowego (szyfrowane przy użyciu magazynu obiektów BLOB) są kopiowane do drugiej lokalizacji, również szyfrowane w usłudze BLOB Storage. Repliki w puli zapytań są następnie *odwodnione* danymi z drugiego zestawu plików. 
 
 Gdy automatyczna synchronizacja jest przeprowadzana tylko w przypadku skalowania serwera po raz pierwszy, można także przeprowadzić synchronizację ręczną. Synchronizacja gwarantuje, że dane w replikach w puli zapytań są zgodne z serwerem podstawowym. Podczas przetwarzania (odświeżania) modeli na serwerze podstawowym należy wykonać synchronizację *po* zakończeniu operacji przetwarzania. Ta synchronizacja kopiuje zaktualizowane dane z plików serwera podstawowego w usłudze BLOB Storage do drugiego zestawu plików. Repliki w puli zapytań są następnie oznaczane przy użyciu zaktualizowanych danych z drugiego zestawu plików w usłudze BLOB Storage. 
 
-Podczas kolejnej operacji skalowania w poziomie, na przykład zwiększając liczbę replik w puli zapytań z dwóch do pięciu, nowe repliki są przechowywane przy użyciu danych z drugiego zestawu plików w usłudze BLOB Storage. Brak synchronizacji. Jeśli przeprowadzono synchronizację po skalowaniu w poziomie, nowe repliki w puli zapytań byłyby dwukrotnie odwodnione — nadmiarowe odwodnienie. Podczas wykonywania kolejnej operacji skalowania w poziomie należy pamiętać o następujących kwestiach:
+Podczas kolejnej operacji skalowania w poziomie, na przykład zwiększając liczbę replik w puli zapytań z dwóch do pięciu, nowe repliki są przechowywane przy użyciu danych z drugiego zestawu plików w usłudze BLOB Storage. Brak synchronizacji. Jeśli po przeskalowaniu zostanie przeprowadzona synchronizacja, nowe repliki w puli zapytań byłyby dwukrotnie odwodnione — nadmiarowe odwodnienie. Podczas wykonywania kolejnej operacji skalowania w poziomie należy pamiętać o następujących kwestiach:
 
 * Wykonaj synchronizację *przed operacją skalowania w poziomie* , aby uniknąć nadmiarowego uzupełniania dodanych replik. Współbieżne synchronizowanie i operacje skalowania w poziomie uruchomione w tym samym czasie są niedozwolone.
 
@@ -48,6 +48,26 @@ Podczas kolejnej operacji skalowania w poziomie, na przykład zwiększając licz
 
 * W przypadku zmiany nazwy bazy danych na serwerze podstawowym należy wykonać dodatkowy krok, aby upewnić się, że baza danych jest prawidłowo synchronizowana z dowolnymi replikami. Po zmianie nazwy Wykonaj synchronizację przy użyciu polecenia [Sync-AzAnalysisServicesInstance](https://docs.microsoft.com/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance) określającego parametr `-Database` o starej nazwie bazy danych. Ta Synchronizacja powoduje usunięcie bazy danych i plików ze starą nazwą z dowolnych replik. Następnie wykonaj kolejną synchronizację określającą parametr `-Database` o nowej nazwie bazy danych. Druga synchronizacja kopiuje nowo nazwaną bazę danych do drugiego zestawu plików i odwodnione wszystkie repliki. Tych synchronizacji nie można wykonać za pomocą polecenia Synchronizuj model w portalu.
 
+### <a name="synchronization-mode"></a>Tryb synchronizacji
+
+Domyślnie repliki zapytań są podwodne w całości, a nie przyrostowo. Uzupełnianie odbywa się na etapach. Są one odłączone i dołączane dwa jednocześnie (przy założeniu, że istnieją co najmniej trzy repliki), aby upewnić się, że co najmniej jedna replika jest w trybie online w przypadku zapytań w danym momencie. W niektórych przypadkach klienci mogą wymagać ponownego nawiązania połączenia z jedną z replik w trybie online w trakcie tego procesu. Za pomocą ustawienia **ReplicaSyncMode** można teraz określić, że synchronizacja repliki zapytań odbywa się równolegle. Synchronizacja równoległa zapewnia następujące korzyści: 
+
+- Znaczna redukcja czasu synchronizacji. 
+- Dane między replikami mogą być spójne podczas procesu synchronizacji. 
+- Ponieważ bazy danych są przechowywane w trybie online na wszystkich replikach w procesie synchronizacji, klienci nie muszą ponownie nawiązać połączenia. 
+- Pamięć podręczna w pamięci jest aktualizowana przyrostowo przy użyciu tylko zmienionych danych, co może być szybsze niż w pełni ponownego wypełniania model. 
+
+#### <a name="setting-replicasyncmode"></a>Ustawianie ReplicaSyncMode
+
+Użyj programu SSMS, aby ustawić ReplicaSyncMode w zaawansowanych właściwościach. Możliwe wartości to: 
+
+- `1` (wartość domyślna): pełna replika w fazie (przyrostowej). 
+- `2`: zoptymalizowana synchronizacja równolegle. 
+
+![Ustawienie RelicaSyncMode](media/analysis-services-scale-out/aas-scale-out-sync-mode.png)
+
+Podczas ustawiania **ReplicaSyncMode = 2**, w zależności od tego, jaka część pamięci podręcznej wymaga aktualizacji, może być używana przez repliki zapytań. Aby zapewnić, że baza danych jest w trybie online i dostępna dla zapytań, w zależności od ilości danych, operacja może wymagać do *podwójnej ilości pamięci* w replice, ponieważ zarówno stary, jak i nowy segmenty są przechowywane w pamięci jednocześnie. Węzły repliki mają takie same alokacje pamięci co węzeł podstawowy, a zwykle dodatkowa pamięć w węźle podstawowym dla operacji odświeżania, dlatego może być mało prawdopodobne, że w przypadku braku pamięci w replikach. Typowy scenariusz polega na tym, że baza danych jest przyrostowo aktualizowana w węźle podstawowym, dlatego wymaganie podwójnej pamięci powinno być nietypowe. Jeśli operacja synchronizacji napotkała błąd braku pamięci, ponowi próbę przy użyciu domyślnej techniki (Dołącz/Odłącz dwa jednocześnie). 
+
 ### <a name="separate-processing-from-query-pool"></a>Oddzielne przetwarzanie od puli zapytań
 
 W celu uzyskania maksymalnej wydajności operacji przetwarzania i wykonywania zapytań można wybrać opcję oddzielenia serwera przetwarzania od puli zapytań. Po oddzieleniu nowe połączenia klientów są przypisywane do replik zapytań tylko w puli zapytań. Jeśli operacje przetwarzania są wykonywane tylko przez krótki czas, można wybrać opcję oddzielenia serwera przetwarzania od puli zapytań tylko przez czas potrzebny do wykonania operacji przetwarzania i synchronizacji, a następnie dołączyć ją z powrotem do puli zapytań. W przypadku oddzielenia serwera przetwarzania od puli zapytań lub dodania go z powrotem do puli zapytań ukończenie operacji może potrwać do 5 minut.
@@ -56,7 +76,7 @@ W celu uzyskania maksymalnej wydajności operacji przetwarzania i wykonywania za
 
 Aby ustalić, czy skalowanie w poziomie serwera jest konieczne, Monitoruj serwer w Azure Portal przy użyciu metryk. Jeśli QPU regularnie maxes, oznacza to, że liczba zapytań względem Twoich modeli przekracza limit QPU dla Twojego planu. Metryka długości kolejki zadań puli zapytań zwiększa się także wtedy, gdy liczba zapytań w kolejce puli wątków zapytań przekracza dostępne QPU. 
 
-Kolejną dobrą metryką dla oglądania jest średnia QPU przez ServerResourceType. Ta Metryka porównuje średnią QPU dla serwera podstawowego z serwerem puli zapytań. 
+Kolejną dobrą metryką dla oglądania jest średnia QPU przez ServerResourceType. Ta Metryka porównuje średnią QPU dla serwera podstawowego z pulą zapytań. 
 
 ![Metryki skalowania zapytania w poziomie](media/analysis-services-scale-out/aas-scale-out-monitor.png)
 
@@ -82,7 +102,7 @@ Aby dowiedzieć się więcej, zobacz [monitorowanie metryk serwera](analysis-ser
 
 Podczas pierwszego konfigurowania skalowania w poziomie dla serwera modele na serwerze podstawowym są automatycznie synchronizowane z replikami w puli zapytań. Automatyczna synchronizacja odbywa się tylko raz, podczas pierwszej konfiguracji skalowania w poziomie do co najmniej jednej repliki. Kolejne zmiany liczby replik na tym samym serwerze *nie spowodują wyzwolenia innej automatycznej synchronizacji*. Automatyczna synchronizacja nie zostanie wykonana ponownie, nawet jeśli ustawisz serwer na wartość zero replik, a następnie ponownie skalujesz do dowolnej liczby replik. 
 
-## <a name="synchronize"></a>Zsynchronizuj 
+## <a name="synchronize"></a>Synchronizuj 
 
 Operacje synchronizacji należy wykonać ręcznie lub przy użyciu interfejsu API REST.
 
@@ -107,9 +127,9 @@ Użyj operacji **synchronizacji** .
 Kody stanu powrotu:
 
 
-|Kod  |Opis  |
+|Code  |Opis  |
 |---------|---------|
-|-1     |  Nieprawidłowy       |
+|-1     |  Nieprawidłowe       |
 |0     | Replikacji        |
 |1     |  Ponownego wypełniania       |
 |2     |   Zakończone       |

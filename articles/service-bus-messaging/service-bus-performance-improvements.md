@@ -1,5 +1,5 @@
 ---
-title: Najlepsze rozwiązania dotyczące poprawy wydajności przy użyciu Azure Service Bus | Microsoft Docs
+title: Najlepsze rozwiązania dotyczące poprawy wydajności przy użyciu Azure Service Bus
 description: Opisuje, w jaki sposób używać Service Bus do optymalizowania wydajności podczas wymiany komunikatów obsługiwanych przez brokera.
 services: service-bus-messaging
 documentationcenter: na
@@ -8,14 +8,14 @@ manager: timlt
 editor: spelluru
 ms.service: service-bus-messaging
 ms.topic: article
-ms.date: 09/14/2018
+ms.date: 01/16/2020
 ms.author: aschhab
-ms.openlocfilehash: 3d2d26e8cb8a3b1ee7720424aea701ca063ecc9f
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 683a28ca3cdabd5a7ffbf6e9ffdc3ed0c58d3247
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596455"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264699"
 ---
 # <a name="best-practices-for-performance-improvements-using-service-bus-messaging"></a>Najlepsze rozwiązania dotyczące ulepszeń wydajności przy użyciu Service Bus obsługi komunikatów
 
@@ -29,7 +29,7 @@ W tych sekcjach wprowadzono kilka koncepcji, których Service Bus używa w celu 
 
 Service Bus umożliwia klientom wysyłanie i odbieranie komunikatów za pośrednictwem jednego z trzech protokołów:
 
-1. Advanced Message Queuing Protocol (AMQP)
+1. Zaawansowane usługi kolejkowania Protocol (AMQP)
 2. Service Bus Messaging Protocol (SBMP)
 3. HTTP
 
@@ -41,7 +41,7 @@ Service Bus obiektów klienta, takich jak [QueueClient][QueueClient] lub [Messag
 
 ## <a name="concurrent-operations"></a>Operacje współbieżne
 
-Wykonywanie operacji (wysyłanie, odbieranie, usuwanie itp.) zajmuje trochę czasu. Ta godzina obejmuje przetwarzanie operacji przez usługę Service Bus, a także opóźnienia żądania i odpowiedzi. Aby zwiększyć liczbę operacji na czas, operacje muszą być wykonywane współbieżnie. 
+Wykonywanie operacji (wysyłanie, odbieranie, usuwanie itp.) zajmuje trochę czasu. Teraz obejmuje przetwarzanie operacji w usłudze Service Bus, poza tym zwiększa opóźnienia żądania i odpowiedzi. Aby zwiększyć liczbę operacji na czas, jednocześnie muszą wykonać operacje. 
 
 Klient planuje współbieżne operacje przez wykonywanie operacji asynchronicznych. Następne żądanie zostało uruchomione przed ukończeniem poprzedniego żądania. Poniższy fragment kodu jest przykładem asynchronicznej operacji wysyłania:
   
@@ -84,7 +84,7 @@ Tworzenie wsadowe po stronie klienta umożliwia klientowi kolejki lub tematu op�
 
 Domyślnie klient używa interwału partii 20 ms. Możesz zmienić interwał partii, ustawiając właściwość [BatchFlushInterval][BatchFlushInterval] przed utworzeniem fabryki komunikatów. To ustawienie ma wpływ na wszystkich klientów utworzonych przez tę fabrykę.
 
-Aby wyłączyć tworzenie partii, ustaw właściwość [BatchFlushInterval][BatchFlushInterval] na **TimeSpan. zero**. Na przykład:
+Aby wyłączyć tworzenie partii, ustaw właściwość [BatchFlushInterval][BatchFlushInterval] na **TimeSpan. zero**. Przykład:
 
 ```csharp
 MessagingFactorySettings mfs = new MessagingFactorySettings();
@@ -113,7 +113,7 @@ Aby zwiększyć przepływność kolejki, tematu lub subskrypcji, Service Bus prz
 
 Dodatkowe operacje magazynu występujące w tym interwale są dodawane do zadania wsadowego. Dostęp do magazynu wsadowego ma wpływ tylko na operacje **wysyłania** i **kończenia** . nie ma to żadnego oddziaływania na operacje odbierania. Dostęp do magazynu wsadowego jest właściwością obiektu. Przetwarzanie wsadowe odbywa się we wszystkich jednostkach, które umożliwiają dostęp do magazynu wsadowego.
 
-Podczas tworzenia nowej kolejki, tematu lub subskrypcji dostęp do magazynu wsadowego jest domyślnie włączony. Aby wyłączyć dostęp do magazynu wsadowego, przed utworzeniem jednostki ustaw właściwość [EnableBatchedOperations][EnableBatchedOperations] na **wartość false** . Na przykład:
+Podczas tworzenia nowej kolejki, tematu lub subskrypcji dostęp do magazynu wsadowego jest domyślnie włączony. Aby wyłączyć dostęp do magazynu wsadowego, przed utworzeniem jednostki ustaw właściwość [EnableBatchedOperations][EnableBatchedOperations] na **wartość false** . Przykład:
 
 ```csharp
 QueueDescription qd = new QueueDescription();

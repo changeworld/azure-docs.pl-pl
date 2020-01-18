@@ -1,5 +1,5 @@
 ---
-title: Wykrywaj twarze w obrazie interfejs API rozpoznawania twarzy
+title: Wykrywaj twarze na obrazie
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku przedstawiono sposób korzystania z wykrywania czołowego w celu wyodrębnienia atrybutów, takich jak płeć, wiek lub ułożenie z danego obrazu.
 services: cognitive-services
@@ -10,16 +10,16 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: sbowles
-ms.openlocfilehash: 9b66231d995ffb6980ce36852115c571cd102681
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 7070cb3bcd1b519828a750cf4ba6caf7ecb34bbb
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73744283"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169874"
 ---
 # <a name="get-face-detection-data"></a>Pobieranie danych wykrywania kroju
 
-W tym przewodniku przedstawiono sposób korzystania z wykrywania czołowego w celu wyodrębnienia atrybutów, takich jak płeć, wiek lub ułożenie z danego obrazu. Fragmenty kodu w tym przewodniku są zapisywane C# przy użyciu biblioteki klienta usługi Azure Cognitive Services interfejs API rozpoznawania twarzy. Ta sama funkcja jest dostępna za pomocą [interfejsu API REST](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).
+W tym przewodniku przedstawiono sposób korzystania z wykrywania czołowego w celu wyodrębnienia atrybutów, takich jak płeć, wiek lub ułożenie z danego obrazu. Fragmenty kodu w tym przewodniku są zapisywane C# przy użyciu biblioteki klienckiej usługi Azure Cognitive Services Ta sama funkcja jest dostępna za pomocą [interfejsu API REST](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).
 
 W tym przewodniku pokazano, jak:
 
@@ -27,7 +27,7 @@ W tym przewodniku pokazano, jak:
 - Zapoznaj się z lokalizacjami różnych punktów orientacyjnych, na przykład uczniów, nos i jamy ustnej.
 - Odgadnięcie płci, wieku, rozpoznawania emocji i innych atrybutów wykrytej czołowej.
 
-## <a name="setup"></a>Konfigurowanie
+## <a name="setup"></a>Konfiguracja
 
 W tym przewodniku przyjęto założenie, że został już skonstruowany obiekt [FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet) o nazwie `faceClient`z kluczem subskrypcji i adresem URL punktu końcowego. W tym miejscu możesz użyć funkcji wykrywania kroju przez wywołanie [DetectWithUrlAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithurlasync?view=azure-dotnet), która jest używana w tym przewodniku, lub [DetectWithStreamAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithstreamasync?view=azure-dotnet). Aby uzyskać instrukcje dotyczące sposobu konfigurowania tej funkcji, wykonaj jedną z przewodników Szybki Start.
 

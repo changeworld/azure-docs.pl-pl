@@ -1,6 +1,6 @@
 ---
-title: Uruchomienie maszyn za pomocą elementów runbook usługi Automation w usłudze Azure DevTest Labs | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak można uruchomić maszyny wirtualne w laboratorium Azure DevTest Labs przy użyciu elementów runbook usługi Azure Automation.
+title: Uruchamianie maszyn przy użyciu elementów Runbook usługi Automation w programie Azure DevTest Labs
+description: Dowiedz się, jak uruchamiać maszyny wirtualne w laboratorium w Azure DevTest Labs przy użyciu Azure Automation elementów Runbook.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -10,29 +10,29 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/01/2019
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 8d3885ba25e479316f97ecbb0681a1680650fc09
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9bb97a73b7ca570ca122323e8e9c5a70c9348b15
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61083622"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76166311"
 ---
-# <a name="start-virtual-machines-in-a-lab-in-order-by-using-azure-automation-runbooks"></a>Uruchom maszyny wirtualne w laboratorium w kolejności przy użyciu elementów runbook usługi Azure Automation
-[Autostart](devtest-lab-set-lab-policy.md#set-autostart) funkcja DevTest Labs umożliwia konfigurowanie maszyn wirtualnych do automatycznego uruchamiania o określonej godzinie. Jednak ta funkcja nie obsługuje maszyn do uruchamiania w określonej kolejności. Istnieje kilka scenariuszy, w którym ten typ automatyzacji byłoby.  Jeden scenariusz polega na tym, gdzie serwer Przesiadkowy maszyny Wirtualnej w ramach laboratorium musi być uruchomiona najpierw przed innymi maszynami wirtualnymi, ponieważ serwer Przesiadkowy jest używany jako punkt dostępu do innych maszyn wirtualnych.  W tym artykule pokazano, jak skonfigurować konto usługi Azure Automation za pomocą elementu runbook programu PowerShell, który jest wykonywany skrypt. Skrypt używa tagów na maszynach wirtualnych w środowisku laboratoryjnym pozwala kontrolować kolejność uruchamiania bez konieczności zmiany skryptu.
+# <a name="start-virtual-machines-in-a-lab-in-order-by-using-azure-automation-runbooks"></a>Uruchamianie maszyn wirtualnych w laboratorium w kolejności przy użyciu Azure Automation elementów Runbook
+Funkcja [Autostart](devtest-lab-set-lab-policy.md#set-autostart) programu DevTest Labs umożliwia skonfigurowanie maszyn wirtualnych do automatycznego uruchamiania w określonym czasie. Jednak ta funkcja nie obsługuje maszyn do uruchomienia w określonej kolejności. Istnieje kilka scenariuszy, w których ten typ automatyzacji będzie przydatny.  Jeden scenariusz polega na tym, że przed innymi maszynami wirtualnymi serwera przesiadkowego maszynę wirtualną w środowisku laboratoryjnym, jako punkt dostępu do innych maszyn wirtualnych.  W tym artykule opisano sposób konfigurowania konta Azure Automation za pomocą elementu Runbook programu PowerShell, który wykonuje skrypt. Skrypt używa tagów na maszynach wirtualnych w laboratorium, aby umożliwić sterowanie kolejnością uruchamiania bez konieczności zmiany skryptu.
 
 ## <a name="setup"></a>Konfiguracja
-W tym przykładzie, musisz mieć tag maszyny wirtualne w laboratorium **StartupOrder** dodane z odpowiednią wartością (0,1,2, itp.). Wyznaczanie dowolnym komputerze, który nie musi zostać uruchomiona jako wartość -1.
+W tym przykładzie maszyny wirtualne w laboratorium muszą mieć dodany tag **StartupOrder** z odpowiednią wartością (0, 1, 2 itd.). Wyznaczanie wszystkich maszyn, które nie muszą być uruchamiane jako-1.
 
 ## <a name="create-an-azure-automation-account"></a>Tworzenie konta usługi Azure Automation
-Tworzenie konta usługi Azure Automation, postępując zgodnie z instrukcjami opisanymi w [w tym artykule](../automation/automation-create-standalone-account.md). Wybierz **konta Uruchom jako** opcji podczas tworzenia konta. Po utworzeniu konta usługi automation, otwórz **modułów** strony i wybierz **aktualizowania modułów platformy Azure** na pasku menu. Domyślne moduły są różne wersje starych i bez skryptu aktualizacji mogą nie działać.
+Utwórz konto Azure Automation, wykonując instrukcje przedstawione w [tym artykule](../automation/automation-create-standalone-account.md). Wybierz opcję **konta Uruchom jako** podczas tworzenia konta. Po utworzeniu konta usługi Automation Otwórz stronę **moduły** , a następnie wybierz pozycję **Aktualizuj moduły platformy Azure** na pasku menu. Domyślne moduły mają kilka wersji starych i bez aktualizacji skrypt może nie działać.
 
-## <a name="add-a-runbook"></a>Dodaj element runbook
-Teraz, aby dodać element runbook do konta usługi automation, należy wybrać **elementów Runbook** w menu po lewej stronie. Wybierz **Dodaj element runbook** na pasku menu, a następnie postępuj zgodnie z instrukcjami, aby [Tworzenie elementu runbook programu PowerShell](../automation/automation-first-runbook-textual-powershell.md).
+## <a name="add-a-runbook"></a>Dodawanie elementu Runbook
+Teraz, aby dodać element Runbook do konta usługi Automation, wybierz pozycję **elementy Runbook** w menu po lewej stronie. Wybierz pozycję **Dodaj element Runbook** w menu i postępuj zgodnie z instrukcjami, aby [utworzyć element Runbook programu PowerShell](../automation/automation-first-runbook-textual-powershell.md).
 
 ## <a name="powershell-script"></a>Skrypt programu PowerShell
-Poniższy skrypt ma nazwę subskrypcji, nazwę laboratorium jako parametry. Przepływ skryptu jest rozpoczynanie wszystkich maszyn wirtualnych w laboratorium, a następnie Przeanalizuj informacje tag, aby utworzyć listę nazw maszyn wirtualnych i ich kolejność uruchamiania. Skrypt przeprowadzi maszyn wirtualnych w kolejności i uruchamia maszyny wirtualne. W przypadku wielu maszyn wirtualnych w liczbie określonej kolejności, zostaną uruchomione asynchronicznie przy użyciu zadań programu PowerShell. Dla tych maszyn wirtualnych, które nie mają tag, ustaw wartość uruchamiania za ostatnie 10, ich zostanie uruchomiony ostatniego, domyślnie.  Jeśli laboratorium nie chcesz, aby maszyna wirtualna może być uruchamiana automatycznie, ustaw wartość tagu 11 i zostaną zignorowane.
+Następujący skrypt przyjmuje nazwę subskrypcji, nazwę laboratorium jako parametry. Przepływ skryptu pozwala uzyskać wszystkie maszyny wirtualne w laboratorium, a następnie analizować informacje o znacznikach w celu utworzenia listy nazw maszyn wirtualnych i ich kolejności uruchamiania. Skrypt przechodzi przez maszyny wirtualne w kolejności i uruchamia maszyny wirtualne. Jeśli istnieje wiele maszyn wirtualnych o określonym numerze zamówienia, są one uruchamiane asynchronicznie przy użyciu zadań programu PowerShell. Dla tych maszyn wirtualnych, które nie mają znacznika, ustaw wartość startową jako ostatnią (10), zostaną one domyślnie uruchomione jako ostatnie.  Jeśli laboratorium nie chce, aby maszyna wirtualna była uruchamiana jako Autostart, ustaw wartość tagu na 11 i zostanie ona zignorowana.
 
 ```powershell
 #Requires -Version 3.0
@@ -133,9 +133,9 @@ While ($current -le 10) {
 ```
 
 ## <a name="create-a-schedule"></a>Utwórz harmonogram
-Aby ten skrypt, codziennie, wykonaj [Utwórz harmonogram](../automation/shared-resources/schedules.md#creating-a-schedule) na koncie usługi automation. Po utworzeniu harmonogramu [połączyć elementu runbook](../automation/shared-resources/schedules.md#linking-a-schedule-to-a-runbook). 
+Aby ten skrypt był wykonywany codziennie, należy [utworzyć harmonogram](../automation/shared-resources/schedules.md#creating-a-schedule) na koncie usługi Automation. Po utworzeniu harmonogramu [Połącz go z elementem Runbook](../automation/shared-resources/schedules.md#linking-a-schedule-to-a-runbook). 
 
-W dużej skali sytuacji, w których istnieje wiele subskrypcji za pomocą wielu labs przechowują informacje o parametrach w pliku do innego laboratoriów i przekazać plik do skryptu zamiast poszczególne parametry. Skrypt musi być modyfikowane, ale wykonywanie podstawowych będą takie same. W tym przykładzie jest używana usługa Azure Automation do uruchomienia skryptu programu PowerShell, istnieją inne opcje, takie jak przy użyciu zadań w potoku kompilacji/wydania.
+W sytuacji dużej skali, w której istnieje wiele subskrypcji z wieloma laboratoriami, Zapisz informacje o parametrach w pliku dla różnych laboratoriów i Przekaż plik do skryptu zamiast poszczególnych parametrów. Należy zmodyfikować skrypt, ale jego wykonanie będzie takie samo. Chociaż w tym przykładzie użyto Azure Automation do wykonania skryptu programu PowerShell, dostępne są inne opcje, takie jak użycie zadania w potoku kompilacji/wydania.
 
-## <a name="next-steps"></a>Kolejne kroki
-Zobacz następujący artykuł, aby dowiedzieć się więcej o usłudze Azure Automation: [Wprowadzenie do usługi Azure Automation](../automation/automation-intro.md).
+## <a name="next-steps"></a>Następne kroki
+Zapoznaj się z następującym artykułem, aby dowiedzieć się więcej na temat Azure Automation: [wprowadzenie do Azure Automation](../automation/automation-intro.md).

@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 10/17/2019
 ms.author: diberry
-ms.openlocfilehash: a99dbc594b53d00ae02b2581d149fe7b4573ab7d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2ca0f9faf1623df9212072abbc960cba41a6414b
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495218"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76165743"
 ---
 # <a name="quickstart-get-intent-with-a-browser"></a>Szybki Start: pobieranie zamierzeń za pomocą przeglądarki
 
@@ -26,13 +26,13 @@ Aby zrozumieć, co zwraca punkt końcowy przewidywania usługi LUIS, wyświetl w
 
 Aby można było wykonywać zapytania dotyczące aplikacji publicznej, potrzebne są:
 
-* Własny klucz Language Understanding (LUIS). Jeśli nie masz jeszcze subskrypcji, aby utworzyć klucz, możesz zarejestrować się w celu uzyskania [bezpłatnego konta](https://azure.microsoft.com/free/). Klucz autorstwa LUIS nie będzie działał. 
+* Własny Language Understanding (LUIS) do tworzenia i prognozowania, który można uzyskać z [portalu Luis (wersja zapoznawcza)](https://preview.luis.ai/). Jeśli nie masz jeszcze subskrypcji, aby utworzyć klucz, możesz zarejestrować się w celu uzyskania [bezpłatnego konta](https://azure.microsoft.com/free/). 
 * Identyfikator aplikacji publicznej: `df67dcdb-c37d-46af-88e1-8b97951ca1c2`. 
 
 ## <a name="use-the-browser-to-see-predictions"></a>Używanie przeglądarki do wyświetlania prognoz
 
 1. Otwórz przeglądarkę internetową. 
-1. Użyj pełnych adresów URL poniżej, zastępując `YOUR-KEY` własnym kluczem LUIS. Żądania ODBIERAją żądania i obejmują autoryzację z kluczem LUIS jako parametr ciągu zapytania.
+1. Użyj pełnych adresów URL poniżej, zastępując `YOUR-KEY` własnymi procesami tworzenia lub przewidywania. Żądania ODBIERAją żądania i obejmują autoryzację, za pomocą LUIS tworzenia lub klucza przewidywania, jako parametru ciągu zapytania.
 
     #### <a name="v3-prediction-requesttabv3-1-1"></a>[Żądanie prognozowania v3](#tab/V3-1-1)
     

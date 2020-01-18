@@ -4,15 +4,15 @@ description: Pobierz liczbę wyświetlanych stron i sesji, dane klienta sieci We
 ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
+author: Dawgfan
+ms.author: mmcc
 ms.date: 09/20/2019
-ms.openlocfilehash: 38f9872fb73f2c680264c2c0b84445db858cf203
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 83b167baa29a54e53f7fe8bdb7b7e5c88bc3eddf
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045836"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264088"
 ---
 # <a name="application-insights-for-web-pages"></a>Usługa Application Insights dla stron sieci Web
 
@@ -29,7 +29,10 @@ Usługi Application Insights można używać z dowolnymi stronami sieci Web — 
     * [Fragment kodu JavaScript](#snippet-based-setup)
 
 > [!IMPORTANT]
-> Musisz użyć jednej z poniższych metod, aby dodać do aplikacji Application Insights zestaw SDK języka JavaScript. W przypadku korzystania z konfiguracji opartej na npm nie należy używać Instalatora opartego na fragmentach kodu. Ten sam przebiega w odniesieniu do scenariusza zwrotnego przy użyciu podejścia opartego na fragmentach kodu. nie należy również używać konfiguracji opartej na npm. 
+> > Użyj tylko jednej metody, aby dodać zestaw SDK języka JavaScript do aplikacji. Jeśli używasz instalatora NPM, nie używaj fragmentu kodu i odwrotnie.
+
+> [!NOTE]
+> Instalator NPM instaluje zestaw JavaScript SDK jako zależność do projektu, włączając IntelliSense, podczas gdy fragment kodu pobiera zestaw SDK w czasie wykonywania. Obie obsługują te same funkcje. Jednak deweloperzy, którzy chcą uzyskać więcej niestandardowych zdarzeń i konfiguracji, zwykle wybierają ustawienia NPM, którzy użytkownicy poszukują szybkiego włączania dla tego fragmentu kodu.
 
 ### <a name="npm-based-setup"></a>Konfiguracja oparta na npm
 
@@ -261,4 +264,3 @@ Application Insights zestawu SDK języka JavaScript jest otwartym źródłem do 
 * [Śledzenie użycia](usage-overview.md)
 * [Niestandardowe zdarzenia i metryki](api-custom-events-metrics.md)
 * [Tworzenie — pomiar— nauka](usage-overview.md)
-

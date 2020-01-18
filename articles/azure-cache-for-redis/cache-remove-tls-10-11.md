@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: yegu
-ms.openlocfilehash: 2f6203deb5e06ba69a3b4d06297d5e702992c79d
-ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
+ms.openlocfilehash: 77f526470204204ef2a801575bb4e8d7e364ffed
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75708060"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76260160"
 ---
 # <a name="remove-tls-10-and-11-from-use-with-azure-cache-for-redis"></a>Usuń protokoły TLS 1,0 i 1,1 z używania z usługą Azure cache for Redis
 
@@ -19,8 +19,8 @@ Na wyłączne korzystanie z Transport Layer Security (TLS) w wersji 1,2 lub nows
 
 W ramach tego wysiłku wprowadzamy następujące zmiany w usłudze Azure cache dla Redis:
 
-* Od 13 stycznia 2020 skonfigurujemy domyślną minimalną wersję protokołu TLS równą 1,2 dla nowo utworzonych wystąpień pamięci podręcznej.  Istniejące wystąpienia pamięci podręcznej nie zostaną zaktualizowane w tym momencie.  W razie potrzeby będziesz mieć możliwość [zmiany minimalnej wersji protokołu TLS](cache-configure.md#access-ports) z powrotem do 1,0 lub 1,1 w celu zapewnienia zgodności z poprzednimi wersjami.  Tę zmianę można wykonać za pomocą Azure Portal lub innych interfejsów API zarządzania.
-* Od 31 marca 2020 zaprzestanie obsługi protokołu TLS w wersji 1,0 i 1,1. Po tej zmianie aplikacja będzie musiała korzystać z protokołu TLS 1,2 lub nowszego do komunikowania się z pamięcią podręczną.
+* **Faza 1:** Skonfigurujemy domyślną minimalną wersję protokołu TLS do 1,2 dla nowo utworzonych wystąpień pamięci podręcznej.  Istniejące wystąpienia pamięci podręcznej nie zostaną zaktualizowane w tym momencie.  W razie potrzeby będziesz mieć możliwość [zmiany minimalnej wersji protokołu TLS](cache-configure.md#access-ports) z powrotem do 1,0 lub 1,1 w celu zapewnienia zgodności z poprzednimi wersjami.  Tę zmianę można wykonać za pomocą Azure Portal lub innych interfejsów API zarządzania.
+* **Faza 2:** Zatrzymamy obsługę protokołu TLS w wersji 1,0 i 1,1. Po tej zmianie aplikacja będzie musiała korzystać z protokołu TLS 1,2 lub nowszego do komunikowania się z pamięcią podręczną.
 
 Ponadto w ramach tej zmiany zostanie usunięta pomoc techniczna dla starszych, niezabezpieczonych pakietów szyfr.  Nasze obsługiwane pakiety szyfr zostaną ograniczone do następujących, gdy pamięć podręczna zostanie skonfigurowana z minimalną wersją protokołu TLS 1,2.
 
@@ -28,6 +28,15 @@ Ponadto w ramach tej zmiany zostanie usunięta pomoc techniczna dla starszych, n
 * TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256
 
 Ten artykuł zawiera ogólne wskazówki dotyczące wykrywania zależności od wcześniejszych wersji protokołu TLS i usuwania ich z aplikacji.
+
+Daty wprowadzenia tych zmian są następujące:
+
+| Chmura               | Data rozpoczęcia fazy 1 | Data rozpoczęcia fazy 2 |
+|---------------------|--------------------|--------------------|
+| Azure (globalny)      |  13 stycznia 2020  | 31 marca 2020     |
+| Platforma Azure dla instytucji rządowych    |  13 marca 2020    | 11 maja 2020       |
+| Azure (Niemcy)       |  13 marca 2020    | 11 maja 2020       |
+| Azure (Chiny)         |  13 marca 2020    | 11 maja 2020       |
 
 ## <a name="check-whether-your-application-is-already-compliant"></a>Sprawdź, czy aplikacja jest już zgodna
 

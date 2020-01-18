@@ -1,5 +1,5 @@
 ---
-title: Diagnozowanie błędów artefaktów na maszynie wirtualnej Azure DevTest Labs | Microsoft Docs
+title: Diagnozowanie błędów artefaktów na Azure DevTest Labs maszynie wirtualnej
 description: Dowiedz się, jak rozwiązywać błędy artefaktów w Azure DevTest Labs.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/22/2019
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 8b7a72c03d41d54aa80505e781b6f6d32cd2a2c0
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: 50cb3138b8d79c4d60c94513d931996d667d9c01
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991363"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76170329"
 ---
 # <a name="diagnose-artifact-failures-in-the-lab"></a>Diagnozowanie błędów artefaktów w laboratorium 
 Po utworzeniu artefaktu możesz sprawdzić, czy zakończyło się powodzeniem, czy niepowodzeniem. Dzienniki artefaktów w Azure DevTest Labs zawierają informacje, których można użyć do diagnozowania błędu artefaktu. Istnieje kilka opcji wyświetlania informacji o dzienniku artefaktów dla maszyny wirtualnej z systemem Windows:
@@ -46,7 +46,7 @@ Po utworzeniu artefaktu możesz sprawdzić, czy zakończyło się powodzeniem, c
 ## <a name="troubleshoot-artifact-failures-from-within-the-virtual-machine"></a>Rozwiązywanie problemów z błędami artefaktów z poziomu maszyny wirtualnej
 
 1. Zaloguj się do maszyny wirtualnej zawierającej artefakt, który chcesz zdiagnozować.
-2. Przejdź do C:\Packages\Plugins\Microsoft.COMPUTE.CustomScriptExtension\\*1,9*\Status, gdzie *1,9* to numer wersji rozszerzenia niestandardowego skryptu platformy Azure.
+2. Przejdź do C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\\*1,9*\Status, gdzie *1,9* jest numerem wersji rozszerzenia niestandardowego skryptu platformy Azure.
 
    ![Plik stanu](./media/devtest-lab-troubleshoot-artifact-failure/devtest-lab-artifact-error-vm-status.png)
 

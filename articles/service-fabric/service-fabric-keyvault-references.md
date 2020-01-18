@@ -3,12 +3,12 @@ title: Service Fabric platformy Azure — korzystanie z Service Fabric odwołań
 description: W tym artykule wyjaśniono, jak używać obsługi KeyVaultReference usługi Service-Fabric dla wpisów tajnych aplikacji.
 ms.topic: article
 ms.date: 09/20/2019
-ms.openlocfilehash: b0e882c2b39c06a3040d22fc6694599966ceeb39
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3f4c4979d0ce1329ac8ba49b236dae20a4e88b53
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75463035"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76167123"
 ---
 #  <a name="keyvaultreference-support-for-service-fabric-applications-preview"></a>Obsługa KeyVaultReference dla aplikacji Service Fabric (wersja zapoznawcza)
 
@@ -61,6 +61,7 @@ Typowym wyzwaniem podczas kompilowania aplikacji w chmurze jest sposób bezpiecz
 
     > [!NOTE] 
     > Zaleca się użycie oddzielnego certyfikatu szyfrowania dla CSS. Można go dodać w sekcji "CentralSecretService".
+    
 
     ```json
         {
@@ -68,7 +69,18 @@ Typowym wyzwaniem podczas kompilowania aplikacji w chmurze jest sposób bezpiecz
             "value": "<EncryptionCertificateThumbprint for CSS>"
         }
     ```
-
+Aby zmiany zaczęły obowiązywać, należy również zmienić zasady uaktualniania, aby określić wymuszenie ponownego uruchomienia Service Fabric środowiska uruchomieniowego na każdym węźle w miarę postępu uaktualniania przez klaster. To ponowne uruchomienie zapewnia, że nowo włączona usługa systemu zostanie uruchomiona i uruchomiona w każdym węźle. W poniższym fragmencie kodu forceRestart jest podstawowym ustawieniem. Użyj istniejących wartości dla pozostałej części ustawień.
+```json
+"upgradeDescription": {
+    "forceRestart": true,
+    "healthCheckRetryTimeout": "00:45:00",
+    "healthCheckStableDuration": "00:05:00",
+    "healthCheckWaitDuration": "00:05:00",
+    "upgradeDomainTimeout": "02:00:00",
+    "upgradeReplicaSetCheckTimeout": "1.00:00:00",
+    "upgradeTimeout": "12:00:00"
+}
+```
 - Przyznawanie uprawnień dostępu do tożsamości zarządzanej aplikacji do magazynu kluczy
 
     Odwołuje się do tego [dokumentu](how-to-grant-access-other-resources.md) , aby dowiedzieć się, jak udzielić zarządzanej tożsamości dostępu do magazynu kluczy. Należy również pamiętać, że jeśli używasz tożsamości zarządzanej przypisanej przez system, tożsamość zarządzana jest tworzona dopiero po wdrożeniu aplikacji.

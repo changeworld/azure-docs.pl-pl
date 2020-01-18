@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 10/04/2019
 ms.author: aahi
-ms.openlocfilehash: d715252f16a34f2261c108ebd3ff5d1f6f3424d8
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 5d3aba2f6010ba16656be96433c521d2adae4c58
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73887909"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169161"
 ---
 # <a name="create-a-cognitive-services-resource-using-the-azure-command-line-interfacecli"></a>Tworzenie zasobu Cognitive Services przy użyciu interfejsu wiersza polecenia platformy Azure (CLI)
 
@@ -76,7 +76,7 @@ Podczas tworzenia nowego zasobu należy znać "rodzaj" usługi, która ma być u
 
 ### <a name="multi-service"></a>Wiele usług
 
-| Usługa                    | Natur                      |
+| Usługa                    | rodzaj                      |
 |----------------------------|---------------------------|
 | Wiele usług. Aby uzyskać więcej informacji, zobacz stronę z [cennikiem](https://azure.microsoft.com/pricing/details/cognitive-services/) .            | `CognitiveServices`     |
 
@@ -86,35 +86,35 @@ Podczas tworzenia nowego zasobu należy znać "rodzaj" usługi, która ma być u
 
 ### <a name="vision"></a>Obraz
 
-| Usługa                    | Natur                      |
+| Usługa                    | rodzaj                      |
 |----------------------------|---------------------------|
 | Przetwarzanie obrazów            | `ComputerVision`          |
 | Custom Vision — przewidywanie | `CustomVision.Prediction` |
 | Custom Vision — szkolenie   | `CustomVision.Training`   |
-| Interfejs API rozpoznawania twarzy                   | `Face`                    |
+| Rozpoznawanie twarzy                       | `Face`                    |
 | Rozpoznawanie formularzy            | `FormRecognizer`          |
 | Rozpoznawanie pisma odręcznego             | `InkRecognizer`           |
 
-### <a name="search"></a>Wyszukiwanie
+### <a name="search"></a>Search
 
-| Usługa            | Natur                  |
+| Usługa            | rodzaj                  |
 |--------------------|-----------------------|
 | Automatyczne sugerowanie Bing   | `Bing.Autosuggest.v7` |
-| Wyszukiwanie niestandardowe Bing | `Bing.CustomSearch`   |
+| Bing Custom Search | `Bing.CustomSearch`   |
 | Wyszukiwanie jednostek Bing | `Bing.EntitySearch`   |
 | Wyszukiwanie Bing        | `Bing.Search.v7`      |
 | Sprawdzanie pisowni Bing   | `Bing.SpellCheck.v7`  |
 
 ### <a name="speech"></a>Mowa
 
-| Usługa            | Natur                 |
+| Usługa            | rodzaj                 |
 |--------------------|----------------------|
 | Usługi mowy    | `SpeechServices`     |
 | Rozpoznawanie mowy | `SpeakerRecognition` |
 
 ### <a name="language"></a>Język
 
-| Usługa            | Natur                |
+| Usługa            | rodzaj                |
 |--------------------|---------------------|
 | Zrozumienie formularza | `FormUnderstanding` |
 | LUIS               | `LUIS`              |
@@ -124,7 +124,7 @@ Podczas tworzenia nowego zasobu należy znać "rodzaj" usługi, która ma być u
 
 ### <a name="decision"></a>Decyzja
 
-| Usługa           | Natur               |
+| Usługa           | rodzaj               |
 |-------------------|--------------------|
 | Narzędzie do wykrywania anomalii  | `AnomalyDetector`  |
 | Content Moderator | `ContentModerator` |
@@ -198,7 +198,7 @@ Aby usunąć grupę zasobów i skojarzone z nią zasoby, użyj polecenia AZ Grou
 az group delete --name storage-resource-group
 ```
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 
 * [Uwierzytelnianie żądań w usłudze Azure Cognitive Services](authentication.md)
 * [Co to jest platforma Azure Cognitive Services?](Welcome.md)

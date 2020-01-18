@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/21/2018
+ms.date: 01/17/2020
 ms.author: aschhab
-ms.openlocfilehash: eebbef25f2cd4539a5092f271c3944c24503f287
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: a795aa536e6e72b487abd18e60cfa52d6ab633ee
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76156815"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264886"
 ---
 # <a name="troubleshooting-guide-for-azure-service-bus"></a>Przewodnik rozwiązywania problemów Azure Service Bus
 W tym artykule przedstawiono niektóre wyjątki platformy .NET wygenerowane przez Service Bus .NET Framework interfejsy API, a także inne wskazówki dotyczące rozwiązywania problemów. 
@@ -109,25 +109,25 @@ W przypadku kolejek i tematów limit czasu jest określony we właściwości [Me
 ## <a name="connectivity-certificate-or-timeout-issues"></a>Problemy z łącznością, certyfikatem lub limitem czasu
 Poniższe kroki mogą pomóc w rozwiązywaniu problemów z łącznością/certyfikatem/przekroczeniem limitu czasu dla wszystkich usług w programie *. servicebus.windows.net. 
 
-- Przejdź do programu lub [wget](https://www.gnu.org/software/wget/) `https://sbwagn2.servicebus.windows.net/`. Pomaga sprawdzić, czy masz problemy z filtrowaniem adresów IP lub siecią wirtualną lub łańcuchem certyfikatów (najbardziej typowe w przypadku korzystania z zestawu Java SDK).
-- Uruchom następujące polecenie, aby sprawdzić, czy dowolny port jest zablokowany przez zaporę. W zależności od używanej biblioteki używane są również inne porty. Na przykład: 443, 5672, 9354.
+- Przejdź do programu lub [wget](https://www.gnu.org/software/wget/) `https://<yournamespace>.servicebus.windows.net/`. Pomaga sprawdzić, czy masz problemy z filtrowaniem adresów IP lub siecią wirtualną lub łańcuchem certyfikatów (najbardziej typowe w przypadku korzystania z zestawu Java SDK).
+- Uruchom następujące polecenie, aby sprawdzić, czy dowolny port jest zablokowany przez zaporę. Używane porty to 443 (HTTPS), 5671 (AMQP) i 9354 (NET Messaging/SBMP). W zależności od używanej biblioteki używane są również inne porty. Oto przykładowe polecenie, które sprawdza, czy port 5671 jest zablokowany. 
 
     ```powershell
-    tnc sbwagn2.servicebus.windows.net -port 5671
+    tnc <yournamespacename>.servicebus.windows.net -port 5671
     ```
 
     W systemie Linux:
 
     ```shell
-    telnet sbwagn2.servicebus.windows.net 5671
+    telnet <yournamespacename>.servicebus.windows.net 5671
     ```
-- Gdy występują sporadyczne problemy z łącznością, uruchom następujące polecenie, aby sprawdzić, czy pakiety pozostaną usunięte. To polecenie podejmie próbę nawiązania 25 różnych połączeń TCP co 1 sekundę z usługą, a następnie sprawdzić liczbę zakończonych powodzeniem/niepowodzeniem, a także zobaczyć opóźnienie połączenia TCP. Narzędzie `psping` można pobrać z tego [miejsca](/sysinternals/downloads/psping).
+- Gdy występują sporadyczne problemy z łącznością, uruchom następujące polecenie, aby sprawdzić, czy pakiety pozostaną usunięte. To polecenie próbuje nawiązać 25 różnych połączeń TCP co 1 sekundę z usługą. Następnie można sprawdzić, ile z nich zakończyło się powodzeniem/niepowodzeniem, i zobaczyć także opóźnienia połączeń TCP. Narzędzie `psping` można pobrać z tego [miejsca](/sysinternals/downloads/psping).
 
     ```shell
-    .\psping.exe -n 25 -i 1 -q yournamespace.servicebus.windows.net:5671 -nobanner     
+    .\psping.exe -n 25 -i 1 -q <yournamespace>.servicebus.windows.net:5671 -nobanner     
     ```
     Możesz użyć równoważnych poleceń, jeśli używasz innych narzędzi, takich jak `tnc`, `ping`i tak dalej. 
-- Uzyskaj ślad sieci, jeśli poprzednie kroki nie pomagają i nie analizują go ani nie mogą kontaktować się z [Pomoc techniczna firmy Microsoft](https://support.microsoft.com/).
+- Uzyskaj ślad sieci, jeśli poprzednie kroki nie pomagają i nie analizują go przy użyciu narzędzi, takich jak [Wireshark](https://www.wireshark.org/). W razie konieczności skontaktuj się z [Pomoc techniczna firmy Microsoft](https://support.microsoft.com/) . 
 
 
 ## <a name="next-steps"></a>Następne kroki

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/28/2019
-ms.openlocfilehash: e3e399e99dca453a84c4daef782027b2b1ad6da1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 23b1391033713fc8eeccf2d0872c49a4291b8292
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75401030"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76168892"
 ---
 # <a name="optimize-your-sql-environment-with-the-sql-server-health-check-solution-in-azure-monitor"></a>Zoptymalizuj środowisko SQL za pomocą rozwiązania do sprawdzania kondycji SQL Server w Azure Monitor
 
@@ -196,6 +196,19 @@ Jeśli masz zalecenia, które chcesz zignorować, możesz utworzyć plik tekstow
 3. Jeśli zdecydujesz się później, aby zobaczyć zignorowane zalecenia, Usuń wszystkie pliki IgnoreRecommendations. txt lub Usuń z nich RecommendationIDs.
 
 ## <a name="sql-health-check-solution-faq"></a>Sprawdzanie kondycji rozwiązania SQL — często zadawane pytania
+
+*Jakie testy są wykonywane przez rozwiązanie SQL Assessment?*
+
+* Następujące zapytanie zawiera opis wszystkich aktualnie wykonanych testów:
+
+```Kusto
+SQLAssessmentRecommendation
+| distinct RecommendationId, FocusArea, ActionArea, Recommendation, Description
+| sort by FocusArea,ActionArea, Recommendation
+```
+Następnie można wyeksportować wyniki do programu Excel w celu dalszego przeglądu.
+
+
 *Jak często jest uruchamiane Sprawdzanie kondycji?*
 
 * Sprawdzanie jest przeprowadzane co siedem dni.

@@ -1,6 +1,6 @@
 ---
 title: Przykłady Notification Hubs platformy Azure
-description: Lista dostępnych zestawów SDK Notification Hubs platformy Azure
+description: Lista dostępnych przykładów Notification Hubs platformy Azure.
 services: notification-hubs
 documentationcenter: ''
 author: sethmanheim
@@ -9,21 +9,22 @@ editor: jwargo
 ms.service: notification-hubs
 ms.workload: mobile
 ms.topic: article
-ms.date: 03/28/2019
+ms.date: 01/17/2020
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 03/28/2019
-ms.openlocfilehash: 5c7c2b073d0684d908b677d3dda1586f6baa8f61
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: eb382a66ac901853d28b4d63d31a30ed2f65b96c
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213306"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263935"
 ---
 # <a name="azure-notification-hubs-samples"></a>Przykłady Notification Hubs platformy Azure
+
 Ten artykuł zawiera linki do przykładów demonstrujących kluczowe funkcje platformy Azure Notification Hubs.
 
-## <a name="samples"></a>Przykłady
+## <a name="samples"></a>Samples
 
 - [.NET](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples)
 - [Android](https://github.com/Azure/azure-notificationhubs-android/tree/master/samples)
@@ -32,4 +33,5 @@ Ten artykuł zawiera linki do przykładów demonstrujących kluczowe funkcje pla
 - [iOS](https://github.com/Azure/azure-notificationhubs-ios/tree/master/Samples)
 
 ## <a name="next-steps"></a>Następne kroki
-Zobacz samouczki w sekcji samouczki spisu treści.
+
+Zobacz samouczki w sekcji **samouczki** spisu treści.

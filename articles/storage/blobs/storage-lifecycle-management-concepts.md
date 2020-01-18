@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
-ms.openlocfilehash: 012ff33bb31c78b26791e6337ae434acfe4bc865
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6bf391f22843991bf224539b82037c0e29251e7b
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75351338"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76260957"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>Zarządzanie cyklem życia magazynu usługi Azure Blob Storage
 
@@ -246,6 +246,9 @@ Każda definicja reguły zawiera zestaw filtrów i ustawioną akcję. [Ustawieni
 ### <a name="sample-rule"></a>Przykładowa reguła
 
 Poniższa reguła Przykładowa filtruje konto, aby uruchomić akcje na obiektach, które znajdują się w `container1` i rozpocząć od `foo`.  
+
+>[!NOTE]
+>Zarządzanie cyklem życia obsługuje tylko typ bloku obiektów BLOB.  
 
 - Warstwa BLOB warstwy do warstwy chłodna 30 dni po ostatniej modyfikacji
 - Warstwa BLOB warstwy do archiwum 90 dni po ostatniej modyfikacji

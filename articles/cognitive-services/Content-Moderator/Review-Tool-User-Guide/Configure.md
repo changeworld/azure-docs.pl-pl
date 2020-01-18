@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.author: pafarley
-ms.openlocfilehash: 2ba314c814bdc92f62a607e28aefa30372bf297f
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 2d685683bdc359b31a5a6c550c19e8c0d858f12a
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72757432"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169587"
 ---
 # <a name="configure-the-review-tool"></a>Konfigurowanie narzędzia do przeglądu
 
@@ -25,7 +25,7 @@ ms.locfileid: "72757432"
 
 ## <a name="manage-team-and-subteams"></a>Zarządzanie zespołem i podzespołów
 
-Karta **zespół** umożliwia zarządzanie zespołem i podzespołów &mdash;groups użytkowników, którzy mogą otrzymywać powiadomienia po rozpoczęciu niektórych [recenzji ludzkich](../review-api.md#reviews) . Możesz mieć tylko jeden zespół (tworzony podczas tworzenia konta za pomocą narzędzia do przeglądu), ale można utworzyć wiele podzespołów. Administrator zespołu może zapraszać członków, ustawiać ich uprawnienia i przypisywać je do różnych zespołów.
+Karta **zespół** umożliwia zarządzanie zespołem i podzespołów&mdash;grupy użytkowników, którzy mogą otrzymywać powiadomienia o rozpoczęciu niektórych [recenzji ludzkich](../review-api.md#reviews) . Możesz mieć tylko jeden zespół (tworzony podczas tworzenia konta za pomocą narzędzia do przeglądu), ale można utworzyć wiele podzespołów. Administrator zespołu może zapraszać członków, ustawiać ich uprawnienia i przypisywać je do różnych zespołów.
 
 ![Przegląd ustawień zespołu narzędzi](images/settings-2-team.png)
 
@@ -66,7 +66,7 @@ Jeśli jesteś członkiem więcej niż jednego podzespołu, możesz przełącza�
 
 ## <a name="tags"></a>Tagi
 
-Karta **Tagi** pozwala definiować niestandardowe znaczniki moderowania oprócz dwóch domyślnych tagów moderowania &mdash;**isdorosły** (**a**) i **isracy** (**r**). Gdy tworzysz tag niestandardowy, będzie on dostępny w przeglądach obok znaczników domyślnych. Możesz zmienić, które Tagi będą widoczne w przeglądach, przełączając ich ustawienia widoczności.
+**Tagi** kartę umożliwia definiowanie tagów niestandardowych Moderowanie oprócz tagów Moderowanie dwóch domyślnych&mdash;**isadult** (**a**) i **isracy**  (**r**). Gdy tworzysz tag niestandardowy, będzie on dostępny w przeglądach obok znaczników domyślnych. Możesz zmienić, które Tagi będą widoczne w przeglądach, przełączając ich ustawienia widoczności.
 
 ![Widok tagów, w tym pola wyboru "jest widoczne"](images/tags-4-disable.png)
 
@@ -90,14 +90,14 @@ Tagi niestandardowe można usunąć, wybierając ikonę kosza obok pozycji na li
 
 Karta **Łączniki** umożliwia zarządzanie łącznikami, które są wtyczkami specyficznymi dla usług, które mogą przetwarzać zawartość na różne sposoby w ramach [przepływów pracy](../review-api.md#workflows)zawartości.
 
-Domyślnym łącznikiem podczas tworzenia przepływu pracy jest łącznik Content Moderator, który może oznaczać zawartość jako dorosłą lub **erotycznej**, znaleźć **niepełnoletni** itd. Można jednak użyć innych łączników, o ile masz poświadczenia dla odpowiednich usług (aby użyć łącznika interfejs API rozpoznawania twarzy, na przykład należy uzyskać klucz subskrypcji [interfejs API rozpoznawania twarzy](https://docs.microsoft.com/azure/cognitive-services/face/overview) ).
+Domyślnym łącznikiem podczas tworzenia przepływu pracy jest łącznik Content Moderator, który może oznaczać zawartość jako dorosłą lub **erotycznej**, znaleźć **niepełnoletni** itd. Można jednak użyć innych łączników, wymienionych tutaj, jeśli masz poświadczenia dla odpowiednich usług (aby użyć łącznika czołowego, na przykład musisz uzyskać klucz subskrypcji [frontu](https://docs.microsoft.com/azure/cognitive-services/face/overview) ).
 
 [Narzędzie do przeglądu](./human-in-the-loop.md) obejmuje następujące łączniki:
 
-- Interfejs API rozpoznawania emocji
-- Interfejs API twarzy
+- Emocje
+- Rozpoznawanie twarzy
 - Usługa w chmurze PhotoDNA
-- Interfejs API analizy tekstu
+- Analiza tekstu
 
 ### <a name="add-a-connector"></a>Dodawanie łącznika
 

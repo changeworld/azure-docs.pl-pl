@@ -2,14 +2,14 @@
 title: Zabezpieczenia dla wystąpień kontenerów
 description: Zalecenia dotyczące zabezpieczania obrazów i wpisów tajnych Azure Container Instances i ogólne zagadnienia dotyczące zabezpieczeń dla dowolnej platformy kontenera
 ms.topic: article
-ms.date: 04/29/2019
+ms.date: 01/10/2020
 ms.custom: ''
-ms.openlocfilehash: b25cb4178ba211ff819ba512c9820165e0efbbf1
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: b5f2c4d9ca80318574e288110fd4ce7f490af00d
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74481694"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76260501"
 ---
 # <a name="security-considerations-for-azure-container-instances"></a>Zagadnienia dotyczące zabezpieczeń Azure Container Instances
 
@@ -23,13 +23,17 @@ W tym artykule przedstawiono zagadnienia dotyczące zabezpieczeń związane z u�
 
 ### <a name="use-a-private-registry"></a>Korzystanie z rejestru prywatnego
 
-Kontenery są kompilowane na podstawie obrazów przechowywanych w co najmniej jednym repozytorium. Te repozytoria mogą należeć do rejestru publicznego, takiego jak [Docker Hub](https://hub.docker.com)lub do rejestru prywatnego. Przykładem rejestru prywatnego jest rejestr [Docker Trusted Registry](https://docs.docker.com/datacenter/dtr/2.0/), który można zainstalować w środowisku lokalnym lub w wirtualnej chmurze prywatnej. Można również korzystać z usług rejestru prywatnego kontenerów opartych na chmurze, w tym [Azure Container Registry](../container-registry/container-registry-intro.md). 
+Kontenery są kompilowane na podstawie obrazów przechowywanych w co najmniej jednym repozytorium. Te repozytoria mogą należeć do rejestru publicznego, takiego jak [Docker Hub](https://hub.docker.com)lub do rejestru prywatnego. Przykładem rejestru prywatnego jest rejestr [Docker Trusted Registry](https://docs.docker.com/datacenter/dtr/), który można zainstalować w środowisku lokalnym lub w wirtualnej chmurze prywatnej. Można również korzystać z usług rejestru prywatnego kontenerów opartych na chmurze, w tym [Azure Container Registry](../container-registry/container-registry-intro.md). 
 
-Publicznie dostępny obraz kontenera nie gwarantuje zabezpieczeń. Obrazy kontenerów składają się z wielu warstw oprogramowania, a każda warstwa oprogramowania może mieć luki w zabezpieczeniach. Aby pomóc w zmniejszeniu zagrożenia atakami, należy przechowywać i pobierać obrazy z rejestru prywatnego, takich jak Azure Container Registry lub zaufany rejestr platformy Docker. Oprócz udostępniania rejestru prywatnego, Azure Container Registry obsługuje [uwierzytelnianie oparte na jednostce usługi](../container-registry/container-registry-authentication.md) za pośrednictwem Azure Active Directory na potrzeby przepływów uwierzytelniania podstawowego. To uwierzytelnianie obejmuje dostęp oparty na rolach dla uprawnień tylko do odczytu (ściąganie), zapis (wypychanie) i właściciela.
+Publicznie dostępny obraz kontenera nie gwarantuje zabezpieczeń. Obrazy kontenerów składają się z wielu warstw oprogramowania, a każda warstwa oprogramowania może mieć luki w zabezpieczeniach. Aby pomóc w zmniejszeniu zagrożenia atakami, należy przechowywać i pobierać obrazy z rejestru prywatnego, takich jak Azure Container Registry lub zaufany rejestr platformy Docker. Oprócz udostępniania rejestru prywatnego, Azure Container Registry obsługuje [uwierzytelnianie oparte na jednostce usługi](../container-registry/container-registry-authentication.md) za pośrednictwem Azure Active Directory na potrzeby przepływów uwierzytelniania podstawowego. To uwierzytelnianie obejmuje dostęp oparty na rolach na potrzeby uprawnień tylko do odczytu (ściągania), zapisu (wypychania) i innych.
 
 ### <a name="monitor-and-scan-container-images"></a>Monitorowanie i skanowanie obrazów kontenerów
 
-Rozwiązania do monitorowania i skanowania zabezpieczeń, takie jak [zabezpieczenia](https://azuremarketplace.microsoft.com/marketplace/apps/aqua-security.aqua-security?tab=Overview) [TwistLock](https://azuremarketplace.microsoft.com/marketplace/apps/twistlock.twistlock?tab=Overview) i akwamaryna, są dostępne w portalu Azure Marketplace. Można ich użyć do skanowania obrazów kontenerów w rejestrze prywatnym i identyfikowania potencjalnych luk w zabezpieczeniach. Ważne jest zapoznanie się z głębokością skanowania, które oferuje różne rozwiązania. 
+Skorzystaj z rozwiązań, aby skanować obrazy kontenerów w rejestrze prywatnym i identyfikować potencjalne luki w zabezpieczeniach. Ważne jest, aby zrozumieć głębokość wykrywania zagrożeń, które są dostępne w różnych rozwiązaniach.
+
+Na przykład, Azure Container Registry opcjonalnie [integruje się z Azure Security Center](../security-center/azure-container-registry-integration.md) , aby automatycznie skanować wszystkie obrazy systemu Linux wypchnięte do rejestru. Azure Security Center zintegrowany skaner Qualys wykrywa luki w zabezpieczeniach obrazu, klasyfikuje je i udostępnia wskazówki dotyczące korygowania.
+
+Rozwiązania do monitorowania zabezpieczeń i skanowania obrazów, takie jak [zabezpieczenia](https://azuremarketplace.microsoft.com/marketplace/apps/aqua-security.aqua-security?tab=Overview) [TwistLock](https://azuremarketplace.microsoft.com/marketplace/apps/twistlock.twistlock?tab=Overview) i akwamaryna, są również dostępne w witrynie Azure Marketplace.  
 
 ### <a name="protect-credentials"></a>Ochrona poświadczeń
 
@@ -90,13 +94,13 @@ Pojęcie najniższych uprawnień to podstawowe najlepsze rozwiązanie w zakresie
 
 Możesz również zminimalizować potencjalną podatność na ataki, usuwając wszystkie nieużywane lub niepotrzebne procesy lub uprawnienia z środowiska uruchomieniowego kontenera. Kontenery uprzywilejowane są uruchamiane jako główne. Jeśli złośliwy użytkownik lub obciążenie będzie wyjść z uprzywilejowanego kontenera, kontener zostanie uruchomiony jako element główny w tym systemie.
 
-### <a name="whitelist-files-and-executables-that-the-container-is-allowed-to-access-or-run"></a>Dozwolonych i pliki wykonywalne, do których kontener może uzyskać dostęp lub 
+### <a name="preapprove-files-and-executables-that-the-container-is-allowed-to-access-or-run"></a>Pretwierdź pliki i elementy wykonywalne, do których kontener może uzyskać dostęp 
 
-Zmniejszenie liczby zmiennych lub nieznanych ułatwia zachowanie stabilnego, niezawodnego środowiska. Ograniczanie kontenerów, dzięki czemu mogą uzyskać dostęp do lub uruchamiać tylko pliki, które są zatwierdzone lub listy dozwolonych, oraz plików wykonywalnych jest sprawdzoną metodą ograniczania narażenia na ryzyko.  
+Zmniejszenie liczby zmiennych lub nieznanych ułatwia zachowanie stabilnego, niezawodnego środowiska. Ograniczanie kontenerów, dzięki czemu mogą uzyskać dostęp do lub uruchamiać tylko pliki, które są zatwierdzone lub safelisted, oraz plików wykonywalnych jest sprawdzoną metodą ograniczania narażenia na ryzyko.  
 
-Jest to znacznie prostsze zarządzanie dozwolonych, gdy jest on zaimplementowany od początku. Dozwolonych zapewnia miarę kontroli i możliwości zarządzania, ponieważ dowiesz się, jakie pliki i elementy wykonywalne są wymagane do poprawnego działania aplikacji. 
+Jest to znacznie prostsze zarządzanie Safelist, gdy jest on zaimplementowany od początku. Safelist zapewnia miarę kontroli i możliwości zarządzania, ponieważ dowiesz się, jakie pliki i elementy wykonywalne są wymagane do poprawnego działania aplikacji. 
 
-Dozwolonych nie tylko zmniejsza powierzchnię ataku, ale może także zapewnić podstawę dla anomalii i uniemożliwiać użycie przypadków użycia "sąsiadów" i scenariuszy kontenerów zagadnień. 
+Safelist nie tylko zmniejsza powierzchnię ataku, ale może także zapewnić podstawę dla anomalii i uniemożliwiać użycie przypadków użycia "sąsiadów" i scenariuszy kontenerów zagadnień. 
 
 ### <a name="enforce-network-segmentation-on-running-containers"></a>Wymuś segmentację sieci na uruchomionych kontenerach  
 
@@ -108,13 +112,13 @@ Na przykład narzędzie partnerskie [akwamaryna](https://azuremarketplace.micros
 
 Podobnie jak w przypadku każdego środowiska IT, należy spójnie monitorować aktywność i dostęp użytkowników do ekosystemu kontenerów, aby szybko identyfikować podejrzane lub złośliwe działania. Platforma Azure oferuje rozwiązania do monitorowania kontenerów, w tym:
 
-* [Azure monitor kontenerów](../azure-monitor/insights/container-insights-overview.md) do monitorowania wydajności obciążeń wdrożonych w środowiskach Kubernetes hostowanych w usłudze Azure Kubernetes Service (AKS). Usługa Azure Monitor dla kontenerów zapewnia widoczność wydajności na zbieranie pamięci i procesora metryk z kontrolerów, węzły i kontenerów, które są dostępne w usłudze Kubernetes za pomocą interfejsu API metryki. 
+* [Azure monitor dla kontenerów](../azure-monitor/insights/container-insights-overview.md) monitoruje wydajność obciążeń wdrożonych w środowiskach Kubernetes hostowanych w usłudze Azure Kubernetes Service (AKS). Usługa Azure Monitor dla kontenerów zapewnia widoczność wydajności na zbieranie pamięci i procesora metryk z kontrolerów, węzły i kontenerów, które są dostępne w usłudze Kubernetes za pomocą interfejsu API metryki. 
 
-* [Rozwiązanie do monitorowania kontenerów platformy Azure](../azure-monitor/insights/containers.md) ułatwia wyświetlanie innych hostów platformy Docker i kontenera systemu Windows oraz zarządzanie nimi w jednej lokalizacji. Na przykład:
+* [Rozwiązanie do monitorowania kontenerów platformy Azure](../azure-monitor/insights/containers.md) ułatwia wyświetlanie innych hostów platformy Docker i kontenera systemu Windows oraz zarządzanie nimi w jednej lokalizacji. Przykład:
 
   * Wyświetlanie szczegółowych informacji o inspekcji, w których są wyświetlane polecenia używane z kontenerami. 
   * Rozwiązywanie problemów z kontenerami przez wyświetlanie i wyszukiwanie scentralizowanych dzienników bez konieczności zdalnego wyświetlania hostów platformy Docker lub Windows.  
-  * Znajdź kontenery, które mogą być zakłóceniami i zużywać nadmierne zasoby na hoście.
+  * Znajdowanie kontenerów, które mogą być zakłóceniami i zużywać nadmierne zasoby na hoście.
   * Wyświetlanie informacji o scentralizowanym użyciu procesora CPU, pamięci, magazynu i sieci oraz wydajności dla kontenerów.  
 
   Rozwiązanie obsługuje koordynatorów kontenerów, w tym Docker Swarm, DC/OS, niezarządzane Kubernetes, Service Fabric i Red Hat OpenShift. 
@@ -125,14 +129,18 @@ Monitoruj aktywność zasobów, na przykład pliki, sieci i inne zasoby, do któ
 
 [Azure monitor](../azure-monitor/overview.md) umożliwia podstawowe monitorowanie usług platformy Azure, umożliwiając zbieranie metryk, dzienników aktywności i dzienników diagnostycznych. Na przykład dziennik aktywności informuje o utworzeniu lub zmodyfikowaniu nowych zasobów. 
 
-Są dostępne metryki, które dostarczają statystyki wydajności dla różnych zasobów, a nawet systemu operacyjnego w maszynie wirtualnej. Można wyświetlić te dane za pomocą jednego z eksploratorów w witrynie Azure Portal i utworzyć alerty na podstawie tych metryk. Azure Monitor zapewnia najszybszy potok metryk (5 minut w dół do 1 minuty), dlatego należy go używać do alertów i powiadomień o krytycznym czasie. 
+  Są dostępne metryki, które dostarczają statystyki wydajności dla różnych zasobów, a nawet systemu operacyjnego w maszynie wirtualnej. Można wyświetlić te dane za pomocą jednego z eksploratorów w witrynie Azure Portal i utworzyć alerty na podstawie tych metryk. Usługa Azure Monitor dostarcza najszybszy potok metryk (w zakresie od 5 minut do 1 minuty), dlatego należy jej używać do krytycznych czasowo alertów i powiadomień. 
 
 ### <a name="log-all-container-administrative-user-access-for-auditing"></a>Rejestruj wszystkich użytkowników administracyjnych kontenera do inspekcji 
 
-Należy zachować dokładną historię inspekcji dostępu administracyjnego do ekosystemu kontenerów, rejestru kontenerów i obrazów kontenerów. Te dzienniki mogą być niezbędne do celów inspekcji i będą przydatne jako dowód śledczej po każdym zdarzeniu zabezpieczeń. Aby osiągnąć ten cel, możesz użyć [rozwiązania do monitorowania kontenerów platformy Azure](../azure-monitor/insights/containers.md) . 
+Należy zachować dokładną historię inspekcji dostępu administracyjnego do ekosystemu kontenera, w tym klaster Kubernetes, rejestr kontenerów i obrazy kontenerów. Te dzienniki mogą być niezbędne do celów inspekcji i będą przydatne jako dowód śledczej po każdym zdarzeniu zabezpieczeń. Rozwiązania platformy Azure obejmują:
+
+* [Integracja usługi Azure Kubernetes z usługą Azure Security Center](../security-center/azure-kubernetes-service-integration.md) , aby monitorować konfigurację zabezpieczeń środowiska klastra i generować zalecenia dotyczące zabezpieczeń
+* [Rozwiązanie do monitorowania kontenerów platformy Azure](../azure-monitor/insights/containers.md)
+* Dzienniki zasobów dla [Azure Container Instances](container-instances-log-analytics.md) i [Azure Container Registry](../container-registry/container-registry-diagnostics-audit-logs.md)
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Dowiedz się więcej o zarządzaniu usterkami kontenera przy użyciu rozwiązań z [TwistLock](https://www.twistlock.com/solutions/microsoft-azure-container-security/) i [akwamaryna Security](https://www.aquasec.com/solutions/azure-container-security/).
+* Dowiedz się więcej o korzystaniu z [Azure Security Center](../security-center/container-security.md) na potrzeby wykrywania zagrożeń w czasie rzeczywistym w środowiskach kontenerów.
 
-* Dowiedz się więcej o [zabezpieczeniach kontenerów na platformie Azure](https://azure.microsoft.com/resources/container-security-in-microsoft-azure/).
+* Dowiedz się więcej o zarządzaniu usterkami kontenera przy użyciu rozwiązań z [TwistLock](https://www.twistlock.com/solutions/microsoft-azure-container-security/) i [akwamaryna Security](https://www.aquasec.com/solutions/azure-container-security/).

@@ -1,5 +1,5 @@
 ---
-title: Rozwiązywanie problemów dotyczących maszyn wirtualnych i błędów tworzenia środowiska Azure DevTest Labs | Microsoft Docs
+title: Rozwiązywanie problemów z awariami maszyn wirtualnych i środowiska Azure DevTest Labs
 description: Dowiedz się, jak rozwiązywać problemy dotyczące maszyn wirtualnych i błędów tworzenia środowiska w Azure DevTest Labs.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -10,17 +10,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/02/2019
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 945afd4f0a5049985955bbc71bbf6b2250f68d2a
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 155a359608cf6d846578306545f5ce0b4003949c
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70129035"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76166342"
 ---
 # <a name="troubleshoot-virtual-machine-vm-and-environment-creation-failures-in-azure-devtest-labs"></a>Rozwiązywanie problemów dotyczących maszyn wirtualnych i błędów tworzenia środowiska w Azure DevTest Labs
-DevTest Labs zawiera ostrzeżenia, jeśli nazwa komputera jest nieprawidłowa lub jeśli zamierzasz naruszać zasady laboratorium. Czasami zobaczysz czerwoną `X` pozycję na maszynie wirtualnej laboratorium lub w stanie środowiska, która informuje o niepowodzeniu.  Ten artykuł zawiera kilka lew, których można użyć w celu znalezienia podstawowego problemu i miejmy nadzieję, aby uniknąć problemu w przyszłości.
+DevTest Labs zawiera ostrzeżenia, jeśli nazwa komputera jest nieprawidłowa lub jeśli zamierzasz naruszać zasady laboratorium. Czasami zobaczysz czerwoną `X` obok maszyny wirtualnej lub stanu środowiska programu Lab informującej o niepowodzeniu.  Ten artykuł zawiera kilka lew, których można użyć w celu znalezienia podstawowego problemu i miejmy nadzieję, aby uniknąć problemu w przyszłości.
 
 ## <a name="portal-notifications"></a>Powiadomienia portalu
 Jeśli używasz Azure Portal, pierwsze miejsce, do którego chcesz się zapoznać, jest **panel powiadomień**.  Panel powiadomień, dostępny na głównym pasku poleceń, klikając **ikonę dzwonka**, poinformuje użytkownika o tym, czy maszyna wirtualna lub Tworzenie środowiska laboratorium zakończyło się powodzeniem.  Jeśli wystąpił błąd, zostanie wyświetlony komunikat o błędzie skojarzony z błędem tworzenia. Szczegóły często zawierają dodatkowe informacje pomocne w rozwiązaniu problemu. W poniższym przykładzie Tworzenie maszyny wirtualnej nie powiodło się z powodu braku rdzeni. Szczegółowy komunikat informuje, jak rozwiązać problem i zażądać wzrostu przydziału rdzeni.
@@ -41,11 +41,11 @@ Sprawdź dzienniki aktywności, jeśli badasz awarię jakiś czas po próbie utw
 
 1. Na stronie głównej laboratorium wybierz MASZYNę wirtualną, aby uruchomić stronę **maszyny wirtualnej** .
 2. Na stronie **maszyna wirtualna** w sekcji **monitorowanie** w menu po lewej stronie wybierz pozycję **Dziennik aktywności** , aby wyświetlić wszystkie dzienniki skojarzone z maszyną wirtualną.
-3. W obszarze elementy dziennika aktywności wybierz operację, która nie powiodła się. Zazwyczaj operacja zakończona niepowodzeniem jest wywoływana `Write Virtualmachines`.
+3. W obszarze elementy dziennika aktywności wybierz operację, która nie powiodła się. Zazwyczaj operacja zakończona niepowodzeniem jest nazywana `Write Virtualmachines`.
 4. W okienku po prawej stronie przejdź do karty JSON. Szczegóły znajdują się w widoku JSON dziennika.
 
     ![Dziennik aktywności dla maszyny wirtualnej](./media/troubleshoot-vm-environment-creation-failures/vm-activity-log.png)
-5. Zapoznaj się z dziennikiem JSON, dopóki `statusMessage` nie znajdziesz właściwości. Zawiera on główny komunikat o błędzie i szczegółowe informacje, jeśli ma to zastosowanie. Poniższy kod JSON jest przykładem błędu, który został wyświetlony we wcześniejszej części tego artykułu.
+5. Zapoznaj się z dziennikiem JSON, dopóki nie znajdziesz właściwości `statusMessage`. Zawiera on główny komunikat o błędzie i szczegółowe informacje, jeśli ma to zastosowanie. Poniższy kod JSON jest przykładem błędu, który został wyświetlony we wcześniejszej części tego artykułu.
 
     ```json
     "properties": {
@@ -66,7 +66,7 @@ Aby wyświetlić dziennik aktywności dla tworzenia środowiska, wykonaj następ
     ![Dziennik aktywności środowiska](./media/troubleshoot-vm-environment-creation-failures/envirionment-activity-log.png)
 
 ## <a name="resource-manager-template-deployment-logs"></a>Dzienniki wdrożenia szablonu Menedżer zasobów
-Jeśli środowisko lub maszyna wirtualna została utworzona za poorednictwem usługi Automation, w ostatnim miejscu można znaleźć informacje o błędzie. To jest dziennik wdrożenia szablonu Azure Resource Manager. Gdy zasób laboratoryjny zostanie utworzony za pomocą automatyzacji, często odbywa się to za pomocą wdrożenia szablonu Azure Resource Manager. Zapoznaj[https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates) się z przykładowymi szablonami Azure Resource Manager, które tworzą zasoby usługi DevTest Labs.
+Jeśli środowisko lub maszyna wirtualna została utworzona za poorednictwem usługi Automation, w ostatnim miejscu można znaleźć informacje o błędzie. To jest dziennik wdrożenia szablonu Azure Resource Manager. Gdy zasób laboratoryjny zostanie utworzony za pomocą automatyzacji, często odbywa się to za pomocą wdrożenia szablonu Azure Resource Manager. Zobacz[https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates) dla przykładowych szablonów Azure Resource Manager, które tworzą zasoby usługi DevTest Labs.
 
 Aby wyświetlić dzienniki wdrożenia szablonu laboratorium, wykonaj następujące kroki:
 

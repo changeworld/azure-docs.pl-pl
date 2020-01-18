@@ -851,8 +851,6 @@
         - name: Zarządzanie poziomami spójności
           displayName: 'session, consistency prefix, strong, eventual, bounded staleness'
           href: how-to-manage-consistency.md
-        - name: Implementowanie synchronizacji niestandardowej
-          href: how-to-custom-synchronization.md
         - name: Konfigurowanie zasad rozwiązywania konfliktów
           href: how-to-manage-conflicts.md
     - name: Aprowizowana przepływność

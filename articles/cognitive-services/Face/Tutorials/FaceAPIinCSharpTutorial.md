@@ -1,7 +1,7 @@
 ---
 title: 'Samouczek: wykrywanie i wyświetlanie danych twarzy na obrazie za pomocą zestawu SDK platformy .NET'
 titleSuffix: Azure Cognitive Services
-description: W tym samouczku utworzysz aplikację dla systemu Windows, która będzie używać interfejsu API rozpoznawania twarzy do wykrywania i oznaczania ramką twarzy na obrazie.
+description: W ramach tego samouczka utworzysz aplikację systemu Windows, która korzysta z usługi twarzy do wykrywania i tworzenia klatek na obrazie.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,22 +10,22 @@ ms.subservice: face-api
 ms.topic: tutorial
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: a444294497b82f316e7407999f5203cd13878928
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: ab0ed56b953cf2c0d96fd2d91d9a3b09fddace72
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977968"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76165916"
 ---
 # <a name="tutorial-create-a-windows-presentation-framework-wpf-app-to-display-face-data-in-an-image"></a>Samouczek: Tworzenie aplikacji platformy Windows Presentation Framework (WPF) w celu wyświetlania danych o kroju w obrazie
 
-W ramach tego samouczka nauczysz się używać interfejs API rozpoznawania twarzy platformy Azure za pomocą zestawu SDK klienta platformy .NET, aby wykrywać twarze w obrazie, a następnie przedstawić te dane w interfejsie użytkownika. Utworzysz aplikację WPF, która wykrywa twarze, Rysuje ramkę dookoła każdej twarzy i wyświetla opis twarzy na pasku stanu. 
+W tym samouczku dowiesz się, jak korzystać z usługi Azure twarzy przy użyciu zestawu SDK klienta platformy .NET, aby wykrywać twarze w obrazie, a następnie przedstawić te dane w interfejsie użytkownika. Utworzysz aplikację WPF, która wykrywa twarze, Rysuje ramkę dookoła każdej twarzy i wyświetla opis twarzy na pasku stanu. 
 
 Ten samouczek przedstawia sposób wykonania następujących czynności:
 
 > [!div class="checklist"]
 > - Tworzenie aplikacji WPF
-> - Instalowanie biblioteki klienta interfejsu API rozpoznawania twarzy
+> - Instalowanie biblioteki klienta programu Front
 > - Korzystanie z biblioteki klienta do wykrywania twarzy na obrazie
 > - Rysowanie ramki wokół każdej wykrytej twarzy
 > - Wyświetlanie opisu wyróżnionej twarzy na pasku stanu
@@ -39,7 +39,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Klucz subskrypcji interfejsu API rozpoznawania twarzy. Klucz subskrypcji bezpłatnej wersji próbnej możesz uzyskać na stronie [Wypróbuj usługi Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Możesz też wykonać instrukcje z tematu [Create a Cognitive Services account](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) (Tworzenie konta usług Cognitive Services), aby subskrybować usługę interfejsu API rozpoznawania twarzy i uzyskać klucz. Następnie [Utwórz zmienne środowiskowe](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) dla ciągu punktu końcowego klucza i usługi, odpowiednio nazwane `FACE_SUBSCRIPTION_KEY` i `FACE_ENDPOINT`.
+- Klucz subskrypcji programu Marketo. Klucz subskrypcji bezpłatnej wersji próbnej możesz uzyskać na stronie [Wypróbuj usługi Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Lub postępuj zgodnie z instrukcjami w temacie [Tworzenie konta Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) , aby subskrybować usługę i uzyskać klucz. Następnie [Utwórz zmienne środowiskowe](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) dla ciągu punktu końcowego klucza i usługi, odpowiednio nazwane `FACE_SUBSCRIPTION_KEY` i `FACE_ENDPOINT`.
 - Dowolna wersja programu [Visual Studio 2015 lub 2017](https://www.visualstudio.com/downloads/).
 
 ## <a name="create-the-visual-studio-project"></a>Tworzenie projektu programu Visual Studio
@@ -75,7 +75,7 @@ Następnie Dodaj Konstruktor **MainWindow** . Sprawdza ciąg adresu URL punktu k
 
 [!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?name=snippet_mainwindow_constructor)]
 
-Na koniec dodaj do klasy metody **BrowseButton_Click** i **FacePhoto_MouseMove**. Metody te odpowiadają procedurom obsługi zdarzeń zadeklarowanym w *MainWindow. XAML*. Metoda **BrowseButton_Click** tworzy element **OpenFileDialog**, który pozwala użytkownikowi wybrać obraz jpg. Następnie wyświetla ona obraz w głównym oknie. Wstawisz pozostały kod metod **BrowseButton_Click** i **FacePhoto_MouseMove** w kolejnych krokach. Zwróć też uwagę na odwołanie `faceList` &mdash; listę obiektów **DetectedFace**. To odwołanie polega na tym, że aplikacja będzie przechowywać i wywoływać rzeczywiste dane dotyczące kroju.
+Na koniec dodaj do klasy metody **BrowseButton_Click** i **FacePhoto_MouseMove**. Metody te odpowiadają procedurom obsługi zdarzeń zadeklarowanym w *MainWindow. XAML*. Metoda **BrowseButton_Click** tworzy element **OpenFileDialog**, który pozwala użytkownikowi wybrać obraz jpg. Następnie wyświetla ona obraz w głównym oknie. Wstawisz pozostały kod metod **BrowseButton_Click** i **FacePhoto_MouseMove** w kolejnych krokach. Zwróć też uwagę na odwołanie `faceList`&mdash; listę obiektów **DetectedFace**. To odwołanie polega na tym, że aplikacja będzie przechowywać i wywoływać rzeczywiste dane dotyczące kroju.
 
 [!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?name=snippet_browsebuttonclick_start)]
 
@@ -117,7 +117,7 @@ Dodaj następujący kod do metody **FacePhoto_MouseMove**. Ta procedura obsługi
 
 [!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?name=snippet_mousemove_mid)]
 
-## <a name="run-the-app"></a>Uruchamianie aplikacji
+## <a name="run-the-app"></a>Uruchomienie aplikacji
 
 Uruchom aplikację i przejdź do obrazu zawierającego twarz. Zaczekaj kilka sekund, aby umożliwić usłudze rozpoznawania twarzy udzielenie odpowiedzi. Wokół każdej twarzy na obrazie powinien pojawić się czerwony prostokąt. Gdy przesuniesz wskaźnik myszy na prostokąt otaczający twarz, powinien pojawić się opis tej twarzy na pasku stanu.
 

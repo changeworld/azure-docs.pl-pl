@@ -1,28 +1,28 @@
 ---
-title: Samouczek, aby zainstalować - Rozpakowywanie, stojak, kabel urządzenia fizycznego usługi Azure Data Box Edge | Dokumentacja firmy Microsoft
+title: Samouczek dotyczący instalowania-rozpakowywania, stojaka, Azure Data Box Edge urządzenia fizycznego | Microsoft Docs
 description: Drugi samouczek na temat instalacji usługi Azure Data Box Edge dotyczy rozpakowywania, umieszczania na stojaku i podłączania kabli urządzenia fizycznego.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 05/31/2019
+ms.date: 01/17/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to install Data Box Edge in datacenter so I can use it to transfer data to Azure.
-ms.openlocfilehash: 0a9939155d92897019dc1ad5651d249cda11b993
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: fe74db34e62a80935954c6cfc2e591d49a84b0b7
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66476944"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263952"
 ---
-# <a name="tutorial-install-azure-data-box-edge"></a>Samouczek: Instalowanie usługi Azure Data Box krawędzi
+# <a name="tutorial-install-azure-data-box-edge"></a>Samouczek: Instalowanie Azure Data Box Edge
 
 W tym samouczku opisano sposób instalowania urządzenia fizycznego Data Box Edge. Procedura instalacji obejmuje rozpakowywanie, montowanie na stojaku i podłączanie kabli urządzenia. 
 
 Instalacja może potrwać około dwóch godzin.
 
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Rozpakowywanie urządzenia
@@ -37,7 +37,7 @@ Wymagania wstępne dotyczące instalacji urządzenia fizycznego są następując
 
 Przed rozpoczęciem upewnij się, że:
 
-* Wszystkie kroki Ukończono [przygotowanie do wdrożenia usługi Azure Data Box Edge](data-box-edge-deploy-prep.md).
+* Wykonano wszystkie kroki z sekcji [przygotowanie do wdrożenia Azure Data Box Edge](data-box-edge-deploy-prep.md).
     * Utworzono zasób usługi Data Box Edge, aby wdrożyć urządzenie.
     * Wygenerowano klucz aktywacji w celu aktywowania urządzenia przy użyciu zasobu usługi Data Box Edge.
 
@@ -50,7 +50,7 @@ Przed wdrożeniem urządzenia:
 - Sprawdź, czy lokacja, w której chcesz zamontować urządzenie, ma:
     - standardowe zasilanie prądem przemiennym z niezależnego źródła
 
-        -LUB-
+        — Lub —
     - jednostkę dystrybucji zasilania na stojaku (PDU, rack power distribution unit) z zasilaczem UPS
     - Dostępne gniazdo 1U w stojaku, na którym zamierzasz zainstalować urządzenie
 
@@ -70,17 +70,17 @@ To urządzenie jest dostarczane w jednym pudełku. Aby rozpakować urządzenie, 
 1. Umieść pudełko na płaskiej, poziomej powierzchni.
 2. Sprawdź, czy na pudełku i na piance opakowaniowej znajdują się naderwania, zarysowania, przecięcia, uszkodzenia od wody lub inne widoczne uszkodzenia. Jeśli pudełko lub opakowanie jest poważnie uszkodzone, nie należy go otwierać. Skontaktuj się z pomocą techniczną firmy Microsoft, która pomoże Ci ustalić, czy urządzenie znajduje się w dobrym stanie umożliwiającym prawidłowe działanie.
 3. Rozpakuj zawartość pudełka. Po rozpakowaniu upewnij się, że masz:
-    - Jedno urządzenie krawędź pola danych pojedynczego obudowy
+    - Jedno urządzenie Data Box Edge jednego załącznika
     - dwa przewody zasilania,
-    - Szyny jeden zestaw zestawu
-    - Broszury bezpieczeństwa, środowiska i informacje prawne
+    - Jeden zestaw szyn
+    - Książeczka bezpieczeństwa, środowiska i informacji prawnych
 
 Jeśli nie otrzymasz wszystkich elementów wymienionych tutaj, skontaktuj się z pomocą techniczną usługi Data Box Edge. Następnym krokiem jest zamontowanie urządzenia na stojaku.
 
 
 ## <a name="rack-the-device"></a>Montowanie urządzenia na stojaku
 
-Urządzenie należy zainstalować na standardowym, 19-calowym stojaku. Użyj poniższej procedury w stojaku instalacji urządzenia w stojaku 19-calowy standardowy.
+Urządzenie należy zainstalować na standardowym, 19-calowym stojaku. Użyj poniższej procedury, aby zainstalować urządzenie w standardowym stojaku z 19 cala.
 
 > [!IMPORTANT]
 > Aby urządzenie Data Box Edge działało poprawnie, należy je zamontować na stojaku.
@@ -88,141 +88,130 @@ Urządzenie należy zainstalować na standardowym, 19-calowym stojaku. Użyj pon
 
 ### <a name="prerequisites"></a>Wymagania wstępne
 
-- Przed rozpoczęciem przeczytaj instrukcje dotyczące bezpieczeństwa w książeczki bezpieczeństwa, środowiska i informacji prawnych. Niniejszy podręcznik zostało wysłane do urządzenia.
-- Rozpoczęta szyny w wyznaczonym miejscu, znajdujący się najbliżej dolnej części obudowy stojaka.
-- Dla konfiguracji instalowania tooled szyny:
-    -  Należy podać osiem śruby: #10-32 "," #12 – 24 "," #M5 "lub" #M6. Główny średnica śruby musi być mniejsza niż 10 mm (0,4").
-    -  Potrzebny śrubokręt przebijaka.
+- Przed rozpoczęciem zapoznaj się z instrukcjami dotyczącymi bezpieczeństwa, środowiska i karnetu informacyjnego. Ta broszura została dostarczona z urządzeniem.
+- Zacznij instalować szyny w wyznaczonym miejscu znajdującym się najbliżej dolnej części obudowy stojaka.
+- Dla konfiguracji zamontowania szyny narzędziowej:
+    -  Musisz dostarczyć osiem wkrętów: #10-32, #12-24, #M5 lub #M6. Średnica głowy ramion musi być mniejsza niż 10 mm (0,4 ").
+    -  Potrzebny jest śrubokręt o płaskim wykorzystaniu.
 
-### <a name="identify-the-rail-kit-contents"></a>Zidentyfikować jej zawartość zestawu szyny
+### <a name="identify-the-rail-kit-contents"></a>Zidentyfikuj zawartość zestawu szyn
 
-Znajdź składniki do zainstalowania zestawu kit szyny:
-1. II ReadyRails Dell A7 w dwóch przedłużanie zestawy szyny
-2. Dwa taśm hook i pętli
+Znajdź składniki służące do instalowania zestawu szyny:
+1. Dwa zestawy szyn firmy Dell ReadyRails II z przesuwaniem
+2. Dwa taśmy punktu zaczepienia i pętli
 
-    ![Identyfikacji zawartości zestawu szyny](./media/data-box-edge-deploy-install/identify-rail-kit-contents.png)
+    ![Zidentyfikuj zawartość zestawu szyn](./media/data-box-edge-deploy-install/identify-rail-kit-contents.png)
 
-### <a name="install-and-remove-tool-less-rails-square-hole-or-round-hole-racks"></a>Instalowanie i usuwanie narzędzi rails (dziura kwadratowy lub stojakami round dziura)
-
-> [!TIP]
-> Ta opcja jest niewymagająca, ponieważ nie wymaga narzędzia do instalowania i Usuń platformy rails do kwadratu niegwintowana zaokrąglanie luki w stojakach.
-
-1. Umieść elementy end szyny lewy i prawy etykietą **FRONT** skierowany do wewnątrz i poznaniu każdego z nich zakończenia stanowisko w otwory na przedniej stronie stopka stelażu pionowym.
-2. Wyrównaj do każdego elementu end otworów dołu i od góry żądaną U miejsca do magazynowania.
-3. Angażowanie zaplecza szyny dopóki nie jest w pełni stanowisk na listwie stelażu pionowym i kliknięć zatrzaśnięcia w miejscu. Powtórz te kroki, aby ustawić położenie i stanowisko frontonu fragmentu na listwie stelażu pionowym.
-4. Aby usunąć rails, ściągnięcia zatrzaśnięcia przycisku wydania w środkowym element end i Wyjmij urządzenie każdego szyny.
-
-    ![Instalowanie i usuwanie narzędzi platformy rails](./media/data-box-edge-deploy-install/installing-removing-tool-less-rails.png)
-
-### <a name="install-and-remove-tooled-rails-threaded-hole-racks"></a>Instalowanie i usuwanie tooled rails (Zhierarchizowany dziura stojakami)
+### <a name="install-and-remove-tool-less-rails-square-hole-or-round-hole-racks"></a>Instaluj i usuwaj szyny bez narzędzi (Stojaki kwadratowe lub okrągłe otwory)
 
 > [!TIP]
-> Ta opcja jest tooled, ponieważ wymaga to narzędzie (_śrubokręta przebijaka_) zainstalować lub usunąć platformy rails do wątków otworów round w stojakach.
+> Ta opcja jest mniejsza niż narzędzie, ponieważ nie wymaga narzędzi do instalacji i usuwania szyn do kwadratu niewielowątkowych lub okrągłych otworów w stojakach.
 
-1. Usuń numery PIN z przodu i do tyłu instalowania nawiasy kwadratowe przy użyciu śrubokręta przebijaka.
-2. Ściąganie i Obróć podzespołów zatrzaśnięcia kolei, aby usunąć je z nawiasów instalowania.
-3. Dołączanie po lewej stronie i bezpośrednio instalowanie platformy rails, aby przy użyciu dwóch par śruby stopka frontonu stojak pionowy.
-4. Przesuń wstecz lewy i prawy nawiasy kwadratowe przekazywania względem stopka tylnej stojak pionowych i dołącz je przy użyciu dwóch par śruby.
+1. Umieść części z lewej i prawej szyny oznaczone jako **przód** na zewnątrz i orientuje każdy element końcowy do siedzenia w dziurach znajdujących się po lewej stronie wierzchołków w pionie.
+2. Wyrównaj każdy element końcowy w dolnej i górnej dziurie pożądanej spacji U.
+3. Zaangażuj wewnętrzną końcówkę szyny do momentu, w którym w pełni nastąpi montaż w pionie i zamknie. Powtórz te kroki, aby pomieścić i umieścić element frontonu na kołnierzu pionowym.
+4. Aby usunąć szyny, należy ściągnąć przycisk Zwolnij do końca częściowego punktu środkowego i odłączać każdą kolejkę.
 
-    ![Instalowanie i usuwanie tooled rails](./media/data-box-edge-deploy-install/installing-removing-tooled-rails.png)
+    ![Zainstaluj i Usuń szyny bez narzędzia](./media/data-box-edge-deploy-install/installing-removing-tool-less-rails.png)
 
-### <a name="install-the-system-in-a-rack"></a>Zainstaluj system w stojaku
+### <a name="install-and-remove-tooled-rails-threaded-hole-racks"></a>Instalowanie i usuwanie szyn z narzędziami (Stojaki z gwintowanym otworem)
 
-1. Ściągnij rails wewnętrzny slajdów ze stojaka, do momentu ich blokowanie w miejscu.
-2. Znajdź standoff tylnej szyny na każdej stronie systemu i zmniejszyć ich do tyłu gniazd "j" zestawów slajdów. Obróć system w dół, aż wszystkie standoffs szyny są umieszczone w gnieździe "j".
-3. Wypychanie systemu do wewnątrz do momentu dźwigni blokady kliknij w miejscu.
-4. Naciśnij przycisk blokady wersji slajdów zarówno platformy rails, jak i slajdów system w stojaku.
+> [!TIP]
+> Ta opcja jest narzędziem, ponieważ wymaga narzędzia (_płaskiego śrubokrętu_) do zainstalowania i usunięcia szyn do okrągłych otworów w stojakach.
 
-    ![Zainstaluj system w stojaku](./media/data-box-edge-deploy-install/installing-system-rack.png)
+1. Usuń numery PIN z wsporników z przodu i z tyłu przy użyciu płasko wychylonego śrubokrętu.
+2. Pobierz i obróć podzestawy zamków szyny, aby usunąć je z nawiasów montażowych.
+3. Dołącz do lewej i prawej szynę montażową do czołowych pionowych kołnierzy stojaków przy użyciu dwóch par wkrętów.
+4. Przesuń w lewo i w prawo nawiasy klamrowe w przód do tylnej krawędzi pionowej i Dołącz je przy użyciu dwóch par wkrętów.
 
-### <a name="remove-the-system-from-the-rack"></a>Usuwanie systemu stojaku
+    ![Zainstaluj i Usuń szyny narzędzia](./media/data-box-edge-deploy-install/installing-removing-tooled-rails.png)
 
-1. Znajdź dźwigni blokadę na stronach wewnętrzny platformy rails.
-2. Uzyskaj dostęp do każdego suwaka obracając do pozycji jego wersji.
-3. Mocno niejasny boki systemu, a następnie przeciągnij ją do przodu, aż standoffs szyny znajdują się na początku gniazd "j". Przenoszenie system w górę i w kierunku od stojaku i umieść go na poziomie powierzchni.
+### <a name="install-the-system-in-a-rack"></a>Instalowanie systemu w stojaku
 
-    ![Usuń system z stojaku](./media/data-box-edge-deploy-install/removing-system-rack.png)
+1. Ciągnij wewnętrzne slajdy z stojaka do momentu zablokowania ich na miejscu.
+2. Znajdź Standoff szyny tylnej z każdej strony systemu i Obniż ją do tylnych gniazd J na zestawach slajdów. Obróć system w dół do momentu, w którym wszystkie standoffs szyny są umiejscowione w gniazdach J.
+3. Wypchnij system do wewnątrz do momentu kliknięcia dźwigni blokady.
+4. Naciśnij przycisk Zablokuj suwak — zwolnij na szynach i przesuń system do stojaka.
 
-### <a name="engage-and-release-the-slam-latch"></a>Angażowanie i zwolnij zatrzaśnięcia slam
+    ![Instaluj system w stojaku](./media/data-box-edge-deploy-install/installing-system-rack.png)
+
+### <a name="remove-the-system-from-the-rack"></a>Usuń system z stojaka
+
+1. Znajdź dźwignie blokady po bokach wewnętrznych szyn.
+2. Odblokuj każdą dźwignię, obracając ją w jej pozycji wydania.
+3. Opanujesz boki systemu i ściągaj je do przodu, aż do momentu, gdy kolejka standoffs nie znajduje się na wierzchu miejsc J. Unieś system z stojakiem i umieść go na powierzchni poziomej.
+
+    ![Usuń system z stojaka](./media/data-box-edge-deploy-install/removing-system-rack.png)
+
+### <a name="engage-and-release-the-slam-latch"></a>Angażowanie i zwolnienie zamka Slam
 
 > [!NOTE]
-> Systemy nie wyposażone zamków slam należy zabezpieczyć systemu przy użyciu śrub, zgodnie z opisem w kroku 3 tej procedury.
+> W przypadku systemów, które nie są wyposażone w zatrzaśnięcia Slam, Zabezpiecz system za pomocą wkrętów zgodnie z opisem w kroku 3 tej procedury.
 
-1. Połączonego z przodu, zlokalizuj zatrzaśnięcia slam po obu stronach systemu.
-2. Zamków angażować się automatycznie jako system jest równoznaczne z wypchnięciem w stojaku i są wydawane przez pobieranie na zatrzaśnięcia.
-3. Do zabezpieczenia systemu do wydania w stojaku lub w innych środowiskach niestabilny, zlokalizuj gwintowanym twarde instalacji w ramach każdego zatrzaśnięcia i podwyższenie poziomu każdego gwintowanym z #2 krzyżakowy.
+1. Po lewej stronie Znajdź zatrzask Slam po obu stronach systemu.
+2. Zatrzaśnięcia odbywa się automatycznie, gdy system jest wypychany do stojaka i są uwalniane przez ściąganie do zamków.
+3. Aby zabezpieczyć system do celów wysyłki w stojaku lub w przypadku innych niestabilnych środowisk, należy odszukać w każdym zatrzasku i zamontować każdy Wkręt z #2 śrubokręt Phillips.
 
-    ![Angażowanie i zwolnij slam zatrzaśnięcie](./media/data-box-edge-deploy-install/engaging-releasing-slam-latch.png)
+    ![Angażowanie i wydawanie Slam zamka](./media/data-box-edge-deploy-install/engaging-releasing-slam-latch.png)
 
-### <a name="route-the-cables"></a>Kable
-
-> [!NOTE]
->  Jeśli opcjonalny ramię zarządzania kablowe (CMA) nie kolejność, użyj dwóch punktów zaczepienia i pętli taśm podane w zestawie szyny kierować kable tyłu systemu.
-
-1. Znajdź zewnętrzne nawiasy CMA na stronach posługiwanie się nimi zarówno kołnierze stojaka.
-2. Pakietu kable delikatnie, pobierając je wyczyść łączników systemu do lewej i prawej stronie.
-3. Wątek punktu zaczepienia i pętla taśm za pośrednictwem gniazd na zewnętrzne nawiasy CMA po każdej stronie systemu, aby zabezpieczyć pakiety kabel.
-
-
-    ![Kable](./media/data-box-edge-deploy-install/routing-cables.png)
 
 ## <a name="cable-the-device"></a>Podłączanie kabli urządzenia
 
-Poniższe procedury dotyczą sposobu podłączanie kabli do urządzenia krawędź pola danych do zasilania i sieci.
+Roześlij kable, a następnie podłącz urządzenie. Poniższe procedury wyjaśniają, jak podłączyć urządzenie Data Box Edge do urządzeń i sieci.
 
 Aby można było rozpocząć podłączanie kabli urządzenia, potrzebne są następujące elementy:
 
-- Urządzenie fizyczne krawędź pola danych, dopiero i stojaku.
+- Urządzenie fizyczne Data Box Edge, rozpakowane i stelażowe.
 - Dwa kable zasilające.
 - Co najmniej jeden kabel sieciowy 1-GbE RJ-45 służący do łączenia z interfejsem zarządzania. Istnieją dwa interfejsy sieciowe 1-GbE: jeden do zarządzania i drugi stanowiący interfejs danych w urządzeniu.
 - Jeden miedziany kabel 25-GbE SFP+ dla każdego interfejsu sieciowego danych do skonfigurowania. Co najmniej jeden sieciowy interfejs danych — PORT 2, PORT 3, PORT 4, PORT 5 lub PORT 6 — musi być połączony z Internetem (umożliwiając łączność z platformą Azure).  
 - Dostęp do dwóch jednostek dystrybucji zasilania (zalecane).
 
 > [!NOTE]
-> - Jeśli łączysz tylko jeden interfejs sieciowy danych zaleca się korzystanie z interfejsu sieciowych/25 10 GbE, takie jak PORT 3, 4 portu, portu 5 lub 6 portu do wysyłania danych do platformy Azure. 
+> - Jeśli łączysz tylko jeden interfejs sieciowy danych, zalecamy użycie interfejsu sieciowego 25/10 GbE, takiego jak PORT 3, PORT 4, PORT 5 lub PORT 6 do wysyłania danych do platformy Azure. 
 > - Aby uzyskiwać najlepszą wydajność i obsługiwać duże ilości danych, rozważ połączenie wszystkich portów danych.
-> - Urządzenie brzegowe pole danych powinny być połączone z siecią centrum danych, tak, aby go mogą pozyskiwać dane z serwerów źródłowych danych.
+> - Urządzenie Data Box Edge powinno być połączone z siecią centrów danych, aby można było pozyskać dane z serwerów z danymi źródłowymi.
 
-Na urządzeniu z systemem krawędź pola danych:
+Na urządzeniu Data Box Edge:
 
-- Panelu przedniego ma stacji dysków i przycisk zasilania.
+- Panel przedni ma stacje dysków i przycisk potęgi.
 
-    - Brak 10 miejsca na dysku uzyskać urządzenia.
-    - Gniazda 0 ma dysk SATA 240 GB używany jako dysk systemu operacyjnego. Gniazda 1 jest pusta i gniazda 2 do 9 są dyski SSD NVMe używanych jako dyski z danymi.
-- Płaszczyzna wstecz zawiera nadmiarowe zasilanie dostaw jednostki (PSUs).
-- Płaszczyzna wstecz ma sześć interfejsów sieciowych:
+    - Na początku urządzenia dostępne są 10 miejsc dyskowych.
+    - Gniazdo 0 ma dysk SATA 240 GB używany jako dysk systemu operacyjnego. Gniazdo 1 jest puste i gniazda od 2 do 9 są dysków SSD interfejsu NVMe używane jako dyski danych.
+- Płaszczyzna tylna obejmuje nadmiarowe jednostki zasilacza (PSUs).
+- Płaszczyzna tylna ma sześć interfejsów sieciowych:
 
     - Dwa interfejsy 1 GB/s.
-    - Cztery 25 GB interfejsy, które może również służyć jako interfejsy 10 GB/s.
+    - Interfejsy 4 25 GB/s, które mogą również działać jako interfejsy 10 GB/s.
     - Kontroler zarządzania płytą główną (BMC).
 
-- Płaszczyzna wstecz ma dwie karty sieciowe, odpowiadający 6 portów:
+- Płaszczyzna tylna ma dwie karty sieciowe odpowiadające 6 portom:
 
     - QLogic FastLinQ 41264
     - QLogic FastLinQ 41262
 
-Aby uzyskać pełną listę obsługiwanych kable, przełączniki i należy w tych kartach sieciowych, przejdź do [Cavium FastlinQ 41000 serii współdziałanie macierzy](https://www.marvell.com/documents/xalflardzafh32cfvi0z/).
+Aby zapoznać się z pełną listą obsługiwanych kabli, przełączników i urządzeń nadawczych dla tych kart sieciowych, przejdź do [macierzy zgodności serii Cavium FastlinQ 41000](https://www.marvell.com/documents/xalflardzafh32cfvi0z/).
  
 Wykonaj poniższe kroki, aby podłączyć kable urządzenia do sieci i zasilania.
 
-1. Określ różne porty na płaszczyźnie wstecz urządzenia.
+1. Zidentyfikuj różne porty na płaszczyźnie tylnej urządzenia.
 
-    ![Tworzenie kopii płaszczyzny okablowana między urządzeniami](./media/data-box-edge-deploy-install/backplane-cabled.png)
+    ![Płaszczyzna tylna urządzenia z kablem](./media/data-box-edge-deploy-install/backplane-cabled.png)
 
-2. Znajdź miejsc dysku i przycisk zasilania na pierwszej stronie urządzenia.
+2. Znajdź miejsca na dysku i przycisk energia na przedniej urządzeniu.
 
-    ![Płaszczyzna frontonu urządzenia](./media/data-box-edge-deploy-install/device-front-plane-labeled-1.png)
+    ![Przedsunięta płaszczyzna urządzenia](./media/data-box-edge-deploy-install/device-front-plane-labeled-1.png)
 
 3. Podłącz kable zasilające do poszczególnych zasilaczy w obudowie. Aby zapewnić wysoką dostępność, zainstaluj i podłącz oba zasilacze do różnych źródeł zasilania.
 4. Podłącz kable zasilające do jednostek dystrybucji zasilania stojaka. Upewnij się, że dwa zasilacze korzystają z oddzielnych źródeł zasilania.
-5. Naciśnij przycisk zasilania, aby włączyć w urządzeniu.
+5. Naciśnij przycisk energia, aby włączyć urządzenie.
 6. Połącz interfejs sieciowy 1 GbE PORT 1 z komputerem używanym do konfigurowania urządzenia fizycznego. PORT 1 jest dedykowanym interfejsem zarządzania.
 7. Co najmniej jeden PORT 2, PORT 3, PORT 4, PORT 5 lub PORT 6 łączący z Internetem/siecią centrum danych.
 
     - W przypadku łączenia za pomocą portu PORT 2 użyj kabla sieciowego RJ-45.
-    - W przypadku interfejsów sieciowych 10/25 GbE Użyj kable SFP + miedzianego.
+    - W przypadku interfejsów sieciowych 10/25 GbE należy użyć kabli SFP + miedzianych.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku przedstawiono zagadnienia dotyczące usługi Data Box Edge, takie jak:
 

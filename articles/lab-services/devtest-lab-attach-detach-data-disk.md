@@ -1,6 +1,6 @@
 ---
-title: Dołączanie lub odłączanie dysku danych do maszyny wirtualnej w usłudze Azure DevTest Labs | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak dołączanie lub odłączanie dysku danych do maszyny wirtualnej w usłudze Azure DevTest Labs
+title: Dołączanie lub odłączanie dysku danych do maszyny wirtualnej w Azure DevTest Labs
+description: Dołączanie lub odłączanie dysku danych do maszyny wirtualnej w Azure DevTest Labs
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -12,99 +12,99 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/05/2018
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 2e168867ed342fb0b0545b5fdc330ba790f78de0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e6b470c55815255c50a42821b0bf52219d890206
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60304517"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76170078"
 ---
-# <a name="attach-or-detach-a-data-disk-to-a-virtual-machine-in-azure-devtest-labs"></a>Dołączanie lub odłączanie dysku danych do maszyny wirtualnej w usłudze Azure DevTest Labs
-[Usługa Azure Managed Disks](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview) zarządza kontami magazynu, skojarzonymi z dyskami danych maszyny wirtualnej. Dołącza użytkownika, nowe dane na dysku do maszyny Wirtualnej, określa typ i rozmiar dysku, która jest potrzebna, a platforma Azure utworzy i automatycznie zarządza dysku. Dysk z danymi następnie może zostać odłączona od maszyny Wirtualnej i albo ponownie dołączyć do tej samej maszyny Wirtualnej lub dołączone do innej maszyny Wirtualnej, który należy do tego samego użytkownika.
+# <a name="attach-or-detach-a-data-disk-to-a-virtual-machine-in-azure-devtest-labs"></a>Dołączanie lub odłączanie dysku danych do maszyny wirtualnej w Azure DevTest Labs
+[Usługa Azure Managed disks](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview) zarządza kontami magazynu skojarzonymi z dyskami danych maszyny wirtualnej. Użytkownik dołącza nowy dysk danych do maszyny wirtualnej, określa wymagany typ i rozmiar dysku, a platforma Azure automatycznie tworzy dysk i zarządza nim. Dysk danych może zostać następnie odłączony od maszyny wirtualnej i ponownie dołączony do tej samej maszyny wirtualnej lub dołączony do innej maszyny wirtualnej, która należy do tego samego użytkownika.
 
-Ta funkcja jest przydatna do zarządzania magazynu lub oprogramowania poza poszczególnych maszyn wirtualnych. Jeśli magazynu lub oprogramowania już istnieje wewnątrz dysk z danymi, jego może można łatwo dołączone, odłączone i ponownie dołączyć do dowolnej maszyny Wirtualnej, którego właścicielem jest użytkownik, który jest właścicielem tego dysku danych.
+Ta funkcja jest przydatna do zarządzania magazynem lub oprogramowaniem poza każdą indywidualną maszyną wirtualną. Jeśli magazyn lub oprogramowanie już istnieje na dysku z danymi, można je łatwo dołączać, odłączać i dołączać do dowolnej maszyny wirtualnej, która należy do użytkownika, który jest właścicielem tego dysku danych.
 
 ## <a name="attach-a-data-disk"></a>Dołączanie dysku danych
-Przed dołączeniem dysk danych do maszyny Wirtualnej, przejrzyj te wskazówki:
+Przed dołączeniem dysku danych do maszyny wirtualnej zapoznaj się z następującymi wskazówkami:
 
-- Liczba dysków z danymi można dołączać jest kontrolowana przez rozmiar maszyny Wirtualnej. Aby uzyskać więcej informacji, zobacz [rozmiary maszyn wirtualnych](https://docs.microsoft.com/azure/virtual-machines/windows/sizes).
-- Dysk z danymi można dołączać tylko do maszyny Wirtualnej, która jest uruchomiona. Upewnij się, że maszyna wirtualna jest uruchomiona, przed podjęciem próby dołączyć dysk danych.
+- Rozmiar maszyny wirtualnej kontroluje liczbę dysków z danymi, które można dołączyć. Aby uzyskać szczegółowe informacje, zobacz [rozmiary maszyn wirtualnych](https://docs.microsoft.com/azure/virtual-machines/windows/sizes).
+- Dysk danych można dołączyć tylko do maszyny wirtualnej, na której jest uruchomiony program. Przed podjęciem próby dołączenia dysku danych upewnij się, że maszyna wirtualna jest uruchomiona.
 
-### <a name="attach-a-new-disk"></a>Dołączyć nowy dysk
-Wykonaj następujące kroki, aby utworzyć i dołączyć nowy dysk danych zarządzanych do maszyny Wirtualnej w usłudze Azure DevTest Labs.
+### <a name="attach-a-new-disk"></a>Dołącz nowy dysk
+Wykonaj następujące kroki, aby utworzyć i dołączyć nowy dysk danych zarządzanych do maszyny wirtualnej w Azure DevTest Labs.
 
-1. Zaloguj się w witrynie [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
-1. Wybierz **wszystkich usług**, a następnie wybierz pozycję **DevTest Labs** z listy.
-1. Z listy labs wybierz żądane laboratorium. 
-1. Z listy **Moje maszyny wirtualne**, wybierz uruchomionej maszyny Wirtualnej.
-1. W menu po lewej stronie wybierz **dysków**.
+1. Zaloguj się do [Portalu Azure](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Wybierz pozycję **wszystkie usługi**, a następnie z listy wybierz pozycję **DevTest Labs** .
+1. Z listy laboratoriów wybierz odpowiednie laboratorium. 
+1. Z listy **moich maszyn wirtualnych**wybierz DZIAŁAJĄCą maszynę wirtualną.
+1. Z menu po lewej stronie wybierz pozycję **dyski**.
 
-    ![Wybierz dyski z danymi dla maszyny wirtualnej](./media/devtest-lab-attach-detach-data-disk/devtest-lab-attach-data-disk.png)
-1. Wybierz **Dołącz nowy** Aby utworzyć nowy dysk danych i dołączyć go do maszyny Wirtualnej.
+    ![Wybierz dyski danych dla maszyny wirtualnej](./media/devtest-lab-attach-detach-data-disk/devtest-lab-attach-data-disk.png)
+1. Wybierz pozycję **Dołącz nowy** , aby utworzyć nowy dysk danych i dołączyć go do maszyny wirtualnej.
 
-    ![Dołącz nowy dysk danych do maszyny wirtualnej](./media/devtest-lab-attach-detach-data-disk/devtest-lab-attach-new.png)
-1. Wykonaj **Dołącz nowy dysk** okienko, wprowadzając nazwę dysku danych, typ i rozmiar.
+    ![Dołącz nowy dysk z danymi do maszyny wirtualnej](./media/devtest-lab-attach-detach-data-disk/devtest-lab-attach-new.png)
+1. Wypełnij okienko **Dołącz nowy dysk** , wprowadzając dane w polu Nazwa dysku, typ i rozmiar.
 
-    ![Wypełnij formularz "Dołączanie nowego dysku"](./media/devtest-lab-attach-detach-data-disk/devtest-lab-attach-new-form.png)
+    ![Ukończ formularz "Dołączanie nowego dysku"](./media/devtest-lab-attach-detach-data-disk/devtest-lab-attach-new-form.png)
 1. Kliknij przycisk **OK**.
 
-Po kilku chwilach nowy dysk danych jest utworzone i dołączone do maszyny Wirtualnej i pojawia się na liście **dysków z danymi** dla tej maszyny Wirtualnej.
+Po kilku chwilach nowy dysk danych zostanie utworzony i dołączony do maszyny wirtualnej i wyświetlony na liście **dysków danych** dla tej maszyny wirtualnej.
 
 ### <a name="attach-an-existing-disk"></a>Dołączanie istniejącego dysku
-Wykonaj następujące kroki, aby ponownie dołączyć istniejący dysk danych dostępnych do uruchomionej maszyny Wirtualnej. 
+Wykonaj następujące kroki, aby ponownie dołączyć istniejący dostępny dysk danych do uruchomionej maszyny wirtualnej. 
 
-1. Wybierz uruchomionej maszyny Wirtualnej, dla którego chcesz ponownie dołączyć dysk danych.
-1. W menu po lewej stronie wybierz **dysków**.
-1. Wybierz **Dołącz istniejące** dołączyć dysk danych do maszyny Wirtualnej.
+1. Wybierz działającą maszynę wirtualną, dla której chcesz ponownie dołączyć dysk danych.
+1. Z menu po lewej stronie wybierz pozycję **dyski**.
+1. Wybierz pozycję **Dołącz istniejący** , aby dołączyć dostępny dysk z danymi do maszyny wirtualnej.
 
-    ![Dołącz istniejący dysk danych do maszyny wirtualnej](./media/devtest-lab-attach-detach-data-disk/devtest-lab-attach-existing2.png)
+    ![Dołącz istniejący dysk z danymi do maszyny wirtualnej](./media/devtest-lab-attach-detach-data-disk/devtest-lab-attach-existing2.png)
 
-1. Z **dołączyć istniejącego dysku** okienko, a następnie naciśnij przycisk OK.
+1. W okienku **Dołącz istniejący dysk** wybierz przycisk OK.
 
-    ![Dołącz istniejący dysk danych do maszyny wirtualnej](./media/devtest-lab-attach-detach-data-disk/devtest-lab-attach-existing.png)
+    ![Dołącz istniejący dysk z danymi do maszyny wirtualnej](./media/devtest-lab-attach-detach-data-disk/devtest-lab-attach-existing.png)
 
-Po kilku chwilach dysku danych dołączonego do maszyny Wirtualnej i pojawia się na liście **dysków z danymi** dla tej maszyny Wirtualnej.
+Po kilku chwilach dysk danych jest dołączany do maszyny wirtualnej i pojawia się na liście **dysków danych** dla tej maszyny wirtualnej.
 
 ## <a name="detach-a-data-disk"></a>Odłączanie dysku danych
-Gdy już nie potrzebujesz dysku danych, który jest dołączony do maszyny Wirtualnej, możesz go łatwo odłączyć. Trwa odłączanie Usuwa dysk od maszyny Wirtualnej, ale utrzymuje je w magazynie do użycia w przyszłości.
+Gdy nie potrzebujesz już dysku danych dołączonego do maszyny wirtualnej, możesz go łatwo odłączyć. Odłączenie usuwa dysk z maszyny wirtualnej, ale utrzymuje go w magazynie do późniejszego użycia.
 
-Jeśli chcesz ponownie wykorzystać istniejące dane na dysku, możesz dołączyć go do tej samej maszyny wirtualnej lub innej.
+Jeśli chcesz ponownie użyć istniejących danych na dysku, możesz dołączyć go do tej samej maszyny wirtualnej lub do innej.
 
-### <a name="detach-from-the-vms-management-pane"></a>Odłącz od maszyny Wirtualnej zarządzania okienko
-1. Na liście maszyn wirtualnych wybierz maszynę Wirtualną, która ma podłączony dysk danych.
-1. W menu po lewej stronie wybierz **dysków**.
+### <a name="detach-from-the-vms-management-pane"></a>Odłączanie od okienka zarządzania maszyny wirtualnej
+1. Z listy maszyn wirtualnych wybierz MASZYNę wirtualną z dołączonym dyskiem danych.
+1. Z menu po lewej stronie wybierz pozycję **dyski**.
 
-    ![Wybierz dyski z danymi dla maszyny wirtualnej](./media/devtest-lab-attach-detach-data-disk/devtest-lab-attach-data-disk.png) 
-1. Z listy **dysków z danymi**, wybierz dysk danych, który chcesz odłączyć.
-1. Wybierz **Odłącz** w górnej części okienka szczegółów dysku.
+    ![Wybierz dyski danych dla maszyny wirtualnej](./media/devtest-lab-attach-detach-data-disk/devtest-lab-attach-data-disk.png) 
+1. Z listy **dysków danych**wybierz dysk danych, który chcesz odłączyć.
+1. Wybierz opcję **Odłącz** od góry okienka szczegółów dysku.
 
     ![Odłączanie dysku danych](./media/devtest-lab-attach-detach-data-disk/devtest-lab-detach-data-disk2.png)
-1. Wybierz **tak** aby upewnić się, że chcesz odłączyć dysk z danymi.
+1. Wybierz pozycję **tak** , aby potwierdzić, że chcesz odłączyć dysk z danymi.
 
-Dysk jest odłączony i jest dostępne do dołączenia do innej maszyny Wirtualnej. 
-### <a name="detach-from-the-labs-main-pane"></a>Odłączanie od laboratorium w okienku głównym
-1. W okienku głównym środowiska laboratoryjnego, wybierz **dysków z danymi**.
+Dysk jest odłączony i jest dostępny do dołączenia do innej maszyny wirtualnej. 
+### <a name="detach-from-the-labs-main-pane"></a>Odłącz od głównego okienka laboratorium
+1. W okienku głównym laboratorium wybierz pozycję **Moje dyski danych**.
 
-    ![Dostęp do dysków z danymi w laboratorium](./media/devtest-lab-attach-detach-data-disk/devtest-lab-my-data-disks.png)
-1. Kliknij prawym przyciskiem myszy dysk danych, które chcesz odłączyć — lub wybierz jego przycisk wielokropka (...) — i wybierz pozycję **Odłącz**.
+    ![Dostęp do dysków danych laboratorium](./media/devtest-lab-attach-detach-data-disk/devtest-lab-my-data-disks.png)
+1. Kliknij prawym przyciskiem myszy dysk danych, który chcesz odłączyć, lub wybierz jego wielokropek (...), a następnie wybierz polecenie **Odłącz**.
 
     ![Odłączanie dysku danych](./media/devtest-lab-attach-detach-data-disk/devtest-lab-detach-data-disk.png)
-1. Wybierz **tak** aby upewnić się, że chcesz go odłączyć.
+1. Wybierz pozycję **tak** , aby potwierdzić, że chcesz ją odłączyć.
 
    > [!NOTE]
-   > Jeśli dysk danych jest już odłączona, możesz usunąć go z listy dysków danych o dostępności, zaznaczając **Usuń**.
+   > Jeśli dysk danych został już odłączony, można go usunąć z listy dostępnych dysków danych, wybierając pozycję **Usuń**.
    >
    >
 
-## <a name="upgrade-an-unmanaged-data-disk"></a>Uaktualnij niezarządzanego dysku danych
-Jeśli masz istniejącej maszyny Wirtualnej, która korzysta z niezarządzanych dysków danych, można z łatwością przekształcić maszynę Wirtualną i użyj usługi managed disks. Ten proces konwertuje dysk systemu operacyjnego i wszelkich dołączonych dysków danych.
+## <a name="upgrade-an-unmanaged-data-disk"></a>Uaktualnianie niezarządzanego dysku danych
+Jeśli masz istniejącą maszynę wirtualną, która używa niezarządzanych dysków danych, możesz łatwo skonwertować maszynę wirtualną w taki sposób, aby korzystała z dysków zarządzanych. Ten proces powoduje przekonwertowanie dysku systemu operacyjnego i dołączonych dysków danych.
 
-Aby uaktualnić niezarządzanego dysku danych, wykonaj kroki opisane w tym artykule, aby [dołączanie dysku danych](#detach-a-data-disk) z niezarządzanej maszyny Wirtualnej. Następnie [ponownie podłącz dysk](#attach-an-existing-disk) na zarządzanej maszynie Wirtualnej, aby automatycznie uaktualnić dane dysk z niezarządzanych do zarządzanych.
+Aby uaktualnić niezarządzany dysk danych, wykonaj kroki opisane w tym artykule, aby [odłączyć dysk danych](#detach-a-data-disk) z niezarządzanej maszyny wirtualnej. Następnie ponownie [Podłącz dysk](#attach-an-existing-disk) do ZARZĄDZANEJ maszyny wirtualnej, aby automatycznie uaktualnić dysk danych z niezarządzanego do zarządzanego.
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
-Dowiedz się, jak zarządzać dyskami danych dla [przejęcia maszyn wirtualnych](devtest-lab-add-claimable-vm.md#unclaim-a-vm).
+## <a name="next-steps"></a>Następne kroki
+Dowiedz się, jak zarządzać dyskami danych dla maszyn wirtualnych z możliwością [domagania](devtest-lab-add-claimable-vm.md#unclaim-a-vm).
 

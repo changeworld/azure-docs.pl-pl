@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/05/2019
 ms.author: spelluru
-ms.openlocfilehash: 91c5c1480669829bad7f8d89ce360bb806d6c997
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 3bc58e9545f38508a9e08e9ae1aa9cf8713cc520
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73646849"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264750"
 ---
 # <a name="classroom-labs-in-azure-lab-services--frequently-asked-questions-faq"></a>Pracowni Labs w Azure Lab Services — często zadawane pytania
 Uzyskaj odpowiedzi na kilka typowych pytań dotyczących laboratoriów stacjonarnych w Azure Lab Services. 
@@ -46,6 +46,11 @@ Porty to: 49152 – 65535. W laboratoriach stacjonarnych znajduje się za moduł
 
 ### <a name="what-public-ip-address-range-should-i-open-on-my-organizations-firewall-settings-to-connect-to-lab-virtual-machines-via-rdpssh"></a>Jaki zakres publicznych adresów IP należy otworzyć w ustawieniach zapory organizacji w celu połączenia z maszynami wirtualnymi laboratorium za pośrednictwem protokołu RDP/SSH?
 Zobacz [zakresy adresów IP i Tagi usług platformy Azure — chmura publiczna](https://www.microsoft.com/download/details.aspx?id=56519), która udostępnia publiczny zakres adresów IP dla centrów danych na platformie Azure. Możesz otworzyć adresy IP dla regionów, w których znajdują się konta w laboratorium.
+
+## <a name="users"></a>Użytkownicy
+
+### <a name="how-many-users-can-be-in-a-classroom-lab"></a>Ilu użytkowników może być w laboratorium zajęć?
+Do laboratorium zajęć można dodać maksymalnie 400 użytkowników. 
 
 ## <a name="blog-post"></a>Wpis w blogu
 Zasubskrybuj [blog Azure Lab Services](https://azure.microsoft.com/blog/tag/azure-lab-services/).

@@ -1,21 +1,21 @@
 ---
-title: Szybki start — używanie witryny Azure Portal do tworzenia kolejki usługi Service Bus | Microsoft Docs
+title: Tworzenie kolejki Service Bus za pomocą Azure Portal
 description: W tym samouczku szybkiego startu dowiesz się, jak utworzyć kolejkę usługi Service Bus przy użyciu witryny Azure Portal. Następnie użyjesz przykładowej aplikacji klienckiej, aby wysyłać komunikaty do kolejki i odbierać komunikaty z kolejki.
 services: service-bus-messaging
 author: spelluru
 ms.service: service-bus-messaging
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 09/03/2019
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: dc9b8260a8ddde6633bc9215d9efff7aaaa71ad3
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 0c88db652efe54a497af094160fb426be7c43d16
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70242378"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76260841"
 ---
-# <a name="quickstart-use-azure-portal-to-create-a-service-bus-queue"></a>Szybki start: używanie witryny Azure Portal do tworzenia kolejki usługi Service Bus
+# <a name="quickstart-use-azure-portal-to-create-a-service-bus-queue"></a>Szybki Start: Tworzenie kolejki Service Bus za pomocą Azure Portal
 W tym przewodniku szybki start opisano, jak wysyłać i odbierać komunikaty do i z kolejki Service Bus przy użyciu [Azure Portal][Azure portal] do tworzenia przestrzeni nazw komunikatów i kolejki w tej przestrzeni nazw oraz do uzyskiwania poświadczeń autoryzacji w tej przestrzeni nazw. Następnie w procedurze przedstawiono, jak wysyłać i odbierać komunikaty z tej kolejki przy użyciu [biblioteki platformy .NET Standard](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus).
 
 [!INCLUDE [howto-service-bus-queues](../../includes/howto-service-bus-queues.md)]
@@ -46,7 +46,7 @@ Aby ukończyć kroki tego samouczka, upewnij się, że zainstalowano następują
 > - [Python](service-bus-python-how-to-use-queues.md)
 > - [Ruby](service-bus-ruby-how-to-use-queues.md)
 
-Po aprowizowaniu przestrzeni nazw i kolejki i w przypadku posiadania niezbędnych poświadczeń można już wysyłać i odbierać komunikaty. Kod można zbadać w [tym folderze przykładów usługi GitHub](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/TopicFilters).
+Po aprowizowaniu przestrzeni nazw i kolejki i w przypadku posiadania niezbędnych poświadczeń można już wysyłać i odbierać komunikaty. Kod można analizować w [tym folderze przykładów usługi GitHub](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/TopicFilters).
 
 Aby uruchomić kod, wykonaj następujące czynności:
 
@@ -82,7 +82,7 @@ Ta sekcja zawiera więcej szczegółów na temat operacji wykonywanych przez prz
 
 ### <a name="get-connection-string-and-queue"></a>Pobieranie kolejki i parametrów połączenia
 
-Parametry połączenia i nazwa kolejki są przekazane do `Main()` metody jako argumenty wiersza polecenia. Element `Main()` deklaruje dwie zmienne ciągu do przechowywania tych wartości:
+Parametry połączenia i nazwa kolejki są przekazane do metody `Main()` jako argumenty wiersza polecenia. Element `Main()` deklaruje dwie zmienne ciągu do przechowywania tych wartości:
 
 ```csharp
 static void Main(string[] args)
@@ -119,7 +119,7 @@ Metoda `Main()` następnie rozpoczyna asynchroniczną pętlę komunikatów, `Mai
 
 ### <a name="message-loop"></a>Pętla komunikatów
 
-Metoda MainAsync () tworzy klienta kolejki z argumentami wiersza polecenia, wywołuje procedurę obsługi komunikatów odebranych o nazwie `RegisterOnMessageHandlerAndReceiveMessages()`i wysyła zestaw komunikatów:
+Metoda MainAsync () tworzy klienta kolejki z argumentami wiersza polecenia, wywołuje procedurę obsługi komunikatów o nazwie `RegisterOnMessageHandlerAndReceiveMessages()`i wysyła zestaw komunikatów:
 
 ```csharp
 static async Task MainAsync(string ServiceBusConnectionString, string QueueName)

@@ -8,12 +8,12 @@ ms.date: 01/14/2020
 ms.author: girobins
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: c004031ec40bedcf83d77d08a34ce1d0e28fecd8
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 5f4728c4b604c606d12edcc7a00879b31e54bc85
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76157030"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264275"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>Rozwiązywanie problemów z kwerendą podczas korzystania z Azure Cosmos DB
 
@@ -39,13 +39,11 @@ Możesz odwoływać się do poniższej sekcji, aby poznać odpowiednie optymaliz
 
 #### <a name="retrieved-document-count-is-significantly-greater-than-output-document-count"></a>Liczba pobranych dokumentów jest znacznie większa niż liczba dokumentów wyjściowych
 
-- [Upewnij się, że zasady indeksowania zawierają wymagane ścieżki](#ensure-that-the-indexing-policy-includes-necessary-paths)
+- [Dołącz wymagane ścieżki do zasad indeksowania](#include-necessary-paths-in-the-indexing-policy)
 
 - [Informacje o tym, które funkcje systemowe wykorzystują indeks](#understand-which-system-functions-utilize-the-index)
 
-- [Optymalizuj zapytania z klauzulą Filter i ORDER BY](#optimize-queries-with-both-a-filter-and-an-order-by-clause)
-
-- [Optymalizowanie zapytań używających ODRĘBNych](#optimize-queries-that-use-distinct)
+- [Zapytania z klauzulą Filter i ORDER BY](#queries-with-both-a-filter-and-an-order-by-clause)
 
 - [Optymalizowanie wyrażeń SPRZĘŻENIa przy użyciu podzapytania](#optimize-join-expressions-by-using-a-subquery)
 
@@ -55,23 +53,23 @@ Możesz odwoływać się do poniższej sekcji, aby poznać odpowiednie optymaliz
 
 - [Unikaj zapytań między partycjami](#avoid-cross-partition-queries)
 
-- [Optymalizowanie zapytań, które mają filtr dla wielu właściwości](#optimize-queries-that-have-a-filter-on-multiple-properties)
+- [Filtry dla wielu właściwości](#filters-on-multiple-properties)
 
-- [Optymalizuj zapytania z klauzulą Filter i ORDER BY](#optimize-queries-with-both-a-filter-and-an-order-by-clause)
+- [Zapytania z klauzulą Filter i ORDER BY](#queries-with-both-a-filter-and-an-order-by-clause)
 
 <br>
 
 ### <a name="querys-ru-charge-is-acceptable-but-latency-is-still-too-high"></a>Opłata za usługę RU dla zapytania jest akceptowalna, ale opóźnienie jest wciąż zbyt wysokie
 
-- [Ulepszanie sąsiedztwa między aplikacją i Azure Cosmos DB](#improving-proximity-between-your-app-and-azure-cosmos-db)
+- [Zwiększ bliskość](#improve-proximity)
 
-- [Zwiększenie przepływności aprowizacji](#increasing-provisioned-throughput)
+- [Zwiększ przepływność aprowizacji](#increase-provisioned-throughput)
 
-- [Zwiększanie MaxConcurrency](#increasing-maxconcurrency)
+- [Zwiększ MaxConcurrency](#increase-maxconcurrency)
 
-- [Zwiększanie MaxBufferedItemCount](#increasing-maxbuffereditemcount)
+- [Zwiększ MaxBufferedItemCount](#increase-maxbuffereditemcount)
 
-## <a name="optimizations-for-queries-where-retrieved-document-count-significantly-exceeds-output-document-count"></a>Optymalizacje dla zapytań, w przypadku których liczba pobranych dokumentów znacznie przekracza liczbę dokumentów wyjściowych:
+## <a name="queries-where-retrieved-document-count-exceeds-output-document-count"></a>Zapytania, w przypadku których liczba pobranych dokumentów przekracza liczbę dokumentów wyjściowych
 
  Liczba pobranych dokumentów to liczba dokumentów wymaganych do załadowania zapytania. Liczba dokumentów wyjściowych to liczba dokumentów, które były zbędne dla wyników zapytania. Jeśli liczba pobieranych dokumentów jest znacznie wyższa niż liczba dokumentów wyjściowych, wówczas była co najmniej jedna część zapytania, która nie mogła użyć indeksu i jest wymagana do skanowania.
 
@@ -113,7 +111,7 @@ Client Side Metrics
 
 Liczba pobranych dokumentów (60 951) jest znacznie większa niż liczba dokumentów wyjściowych (7), więc to zapytanie jest konieczne do przeprowadzenia skanowania. W takim przypadku Funkcja systemowa [Upper ()](sql-query-upper.md) nie korzysta z indeksu.
 
-## <a name="ensure-that-the-indexing-policy-includes-necessary-paths"></a>Upewnij się, że zasady indeksowania zawierają wymagane ścieżki
+## <a name="include-necessary-paths-in-the-indexing-policy"></a>Dołącz wymagane ścieżki do zasad indeksowania
 
 Zasady indeksowania powinny obejmować wszystkie właściwości zawarte w `WHERE` klauzule, klauzule `ORDER BY`, `JOIN`i większość funkcji systemowych. Ścieżka określona w zasadach indeksu powinna być taka sama jak właściwość w dokumentach JSON (z uwzględnieniem wielkości liter).
 
@@ -191,7 +189,7 @@ Niektóre typowe funkcje systemowe, które nie używają indeksu i muszą ładow
 
 Inne części zapytania nadal mogą używać indeksu pomimo funkcji systemowych, które nie używają indeksu.
 
-## <a name="optimize-queries-with-both-a-filter-and-an-order-by-clause"></a>Optymalizuj zapytania z klauzulą Filter i ORDER BY
+## <a name="queries-with-both-a-filter-and-an-order-by-clause"></a>Zapytania z klauzulą Filter i ORDER BY
 
 Zapytania z filtrem i klauzulą `ORDER BY` zwykle wykorzystują indeks zakresu, ale będą bardziej wydajne, jeśli będą mogły być obsługiwane z indeksu złożonego. Oprócz modyfikowania zasad indeksowania należy dodać wszystkie właściwości w indeksie złożonym do klauzuli `ORDER BY`. Ta modyfikacja zapytania zapewni użycie indeksu złożonego.  Można obserwować wpływ przez uruchomienie zapytania na zestawie danych [odżywiania](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json) .
 
@@ -261,33 +259,6 @@ Zaktualizowane zasady indeksowania:
 
 **Opłata za ru:** 8,86 ru
 
-## <a name="optimize-queries-that-use-distinct"></a>Optymalizowanie zapytań używających ODRĘBNych
-
-Znalezienie `DISTINCT` zestawu wyników będzie bardziej wydajne, jeśli zduplikowane wyniki są kolejne. Dodanie klauzuli `ORDER BY` do zapytania i indeksu złożonego spowoduje, że zduplikowane wyniki będą powtarzane. Jeśli musisz `ORDER BY` wiele właściwości, Dodaj indeks złożony. Można obserwować wpływ przez uruchomienie zapytania na zestawie danych [odżywiania](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json) .
-
-### <a name="original"></a>Oryginał
-
-Zapytanie:
-
-```sql
-SELECT DISTINCT c.foodGroup 
-FROM c
-```
-
-**Opłata za ru:** 32,39 ru
-
-### <a name="optimized"></a>Optymalizacja
-
-Zaktualizowane zapytanie:
-
-```sql
-SELECT DISTINCT c.foodGroup 
-FROM c 
-ORDER BY c.foodGroup
-```
-
-**Opłata za ru:** 3,38 ru
-
 ## <a name="optimize-join-expressions-by-using-a-subquery"></a>Optymalizowanie wyrażeń SPRZĘŻENIa przy użyciu podzapytania
 Podzapytania z wieloma wartościami mogą optymalizować wyrażenia `JOIN` przez wypychanie predykatów po każdym wyrażeniu SELECT-wielu, a nie po wszystkich sprzężeniach krzyżowych w klauzuli `WHERE`.
 
@@ -323,7 +294,7 @@ JOIN (SELECT VALUE s FROM s IN c.servings WHERE s.amount > 1)
 
 Załóżmy, że tylko jeden element w tablicy tagów pasuje do filtru i istnieje pięć elementów dla obydwu składników pokarmowych i obsługujących tablice. Wyrażenia `JOIN` będą następnie rozszerzane na 1 x 1 x 5 x 5 = 25 elementów, w przeciwieństwie do 1 000 elementów w pierwszym zapytaniu.
 
-## <a name="optimizations-for-queries-where-retrieved-document-count-is-approximately-equal-to-output-document-count"></a>Optymalizacje dla zapytań, w których liczba pobranych dokumentów jest w przybliżeniu równa liczbie dokumentów wyjściowych:
+## <a name="queries-where-retrieved-document-count-is-equal-to-output-document-count"></a>Zapytania, w przypadku których liczba pobranych dokumentów jest równa liczbie dokumentów wyjściowych
 
 Jeśli liczba pobranych dokumentów jest w przybliżeniu równa liczbie dokumentów wyjściowych, oznacza to, że zapytanie nie było wymagane do skanowania wielu zbędnych dokumentów. W przypadku wielu zapytań, takich jak te, które używają słowa kluczowego TOP, liczba pobranych dokumentów może przekroczyć liczbę dokumentów wyjściowych o 1. Nie powinno to być przyczyną problemu.
 
@@ -359,7 +330,7 @@ SELECT * FROM c
 WHERE c.foodGroup > “Soups, Sauces, and Gravies” and c.description = "Mushroom, oyster, raw"
 ```
 
-## <a name="optimize-queries-that-have-a-filter-on-multiple-properties"></a>Optymalizowanie zapytań, które mają filtr dla wielu właściwości
+## <a name="filters-on-multiple-properties"></a>Filtry dla wielu właściwości
 
 Zapytania z filtrami dla wielu właściwości zwykle wykorzystują indeks zakresu, ale będą bardziej wydajne, jeśli będą mogły być obsługiwane z indeksu złożonego. W przypadku małych ilości danych Ta optymalizacja nie będzie miała znaczącego wpływu. Mogą jednak okazać się przydatne w przypadku dużych ilości danych. Można zoptymalizować maksymalnie jeden filtr nierówności na indeks złożony. Jeśli zapytanie ma wiele filtrów bez równości, należy wybrać jedną z nich, która będzie korzystać z indeksu złożonego. Reszta będzie nadal korzystać z indeksów zakresów. Filtr bez równości musi być zdefiniowany jako ostatni w indeksie złożonym. [Dowiedz się więcej na temat indeksów złożonych](index-policy.md#composite-indexes)
 
@@ -402,23 +373,23 @@ Oto odpowiedni indeks złożony:
 }
 ```
 
-## <a name="common-optimizations-that-reduce-query-latency-no-impact-on-ru-charge"></a>Typowe optymalizacje, które zmniejszają opóźnienia zapytań (bez wpływu na opłaty za RU):
+## <a name="optimizations-that-reduce-query-latency"></a>Optymalizacje, które zmniejszają opóźnienie zapytania:
 
 W wielu przypadkach opłata za usługę RU może być akceptowalna, ale opóźnienie zapytania jest wciąż zbyt wysokie. Poniższe sekcje zawierają omówienie wskazówek dotyczących skracania opóźnień zapytań. W przypadku uruchomienia tego samego zapytania wiele razy w tym samym zestawie danych będzie on miał te same opłaty RU za każdym razem. Opóźnienia zapytań mogą jednak różnić się między wykonaniami zapytań.
 
-## <a name="improving-proximity-between-your-app-and-azure-cosmos-db"></a>Ulepszanie sąsiedztwa między aplikacją i Azure Cosmos DB
+## <a name="improve-proximity"></a>Zwiększ bliskość
 
 Zapytania uruchamiane z innego regionu niż konto Azure Cosmos DB będą miały wyższy czas oczekiwania niż w przypadku uruchomienia w tym samym regionie. Na przykład jeśli uruchomiono kod na komputerze stacjonarnym, należy oczekiwać opóźnienia na dziesiątki lub setki (lub więcej) milisekund, jeśli zapytanie pochodzi z maszyny wirtualnej w tym samym regionie platformy Azure co Azure Cosmos DB. Ogólnie [rozpowszechniać dane w Azure Cosmos DB](distribute-data-globally.md) , aby zapewnić, że dane będą widoczne bliżej Twojej aplikacji.
 
-## <a name="increasing-provisioned-throughput"></a>Zwiększenie przepływności aprowizacji
+## <a name="increase-provisioned-throughput"></a>Zwiększ przepływność aprowizacji
 
 W Azure Cosmos DB zainicjowana przepływność jest mierzona w jednostkach żądania (RU). Załóżmy, że masz zapytanie, które zużywa 5 jednostek przepływności. Na przykład jeśli zainicjujesz 1 000 RU, będzie można uruchamiać zapytanie 200 razy na sekundę. Jeśli podjęto próbę uruchomienia zapytania, gdy nie jest dostępna wystarczająca przepływność, Azure Cosmos DB zwróci błąd HTTP 429. Wszystkie bieżące zestawy SDK interfejsu API (SQL) na początku zostaną automatycznie ponowić próbę wykonania tego zapytania po upływie krótkiego okresu. Żądania ograniczone przez dłuższy czas mogą zwiększyć ilość czasu oczekiwania na zainicjowaną przepływność zapytań. Można obserwować [łączną liczbę żądań ograniczających](use-metrics.md#understand-how-many-requests-are-succeeding-or-causing-errors) żądania w bloku metryk Azure Portal.
 
-## <a name="increasing-maxconcurrency"></a>Zwiększanie MaxConcurrency
+## <a name="increase-maxconcurrency"></a>Zwiększ MaxConcurrency
 
 Zapytania równoległe działają przez wykonywanie zapytań na wielu partycjach równolegle. Jednak dane z pojedynczej kolekcji partycjonowanej są pobierane sekwencyjnie w odniesieniu do zapytania. Dlatego dostosowanie MaxConcurrency do liczby partycji ma największą szansę na osiągnięcie najbardziej wydajnego zapytania, pod warunkiem, że wszystkie inne warunki systemu pozostają takie same. Jeśli nie znasz liczby partycji, możesz ustawić dużą liczbę MaxConcurrency (lub MaxDegreesOfParallelism w starszych wersjach SDK), a system wybierze minimalną (liczbę partycji, dane wejściowe podane przez użytkownika) jako maksymalny stopień równoległości.
 
-## <a name="increasing-maxbuffereditemcount"></a>Zwiększanie MaxBufferedItemCount
+## <a name="increase-maxbuffereditemcount"></a>Zwiększ MaxBufferedItemCount
 
 Zapytania są zaprojektowane w celu wstępnego pobrania wyników, podczas gdy bieżąca partia wyników jest przetwarzana przez klienta. Wstępne pobieranie pomaga w ogólnym ulepszaniu opóźnienia zapytania. Ustawienie MaxBufferedItemCount ogranicza liczbę wstępnie pobranych wyników. Ustawiając tę wartość na oczekiwaną liczbę zwracanych wyników (lub wyższą liczbę), zapytanie może otrzymywać maksymalne korzyści wynikające z wstępnego pobierania. Ustawienie wartości-1 umożliwia systemowi automatyczne decydowanie o liczbie elementów do buforowania.
 

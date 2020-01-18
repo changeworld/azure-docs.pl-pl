@@ -5,106 +5,142 @@ description: Dowiedz się, jak szkolić model i skonfigurować potok prognozowan
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: tutorial
-ms.reviewer: trbye
-ms.author: trbye
-author: trevorbye
-ms.date: 11/19/2019
+ms.topic: how-to
+ms.author: peterlu
+author: peterclu
+ms.date: 01/13/2020
 ms.custom: Ignite2019
-ms.openlocfilehash: 1e346d2542193ec1880ad0a56bd6afa1b0a46890
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 7a4801e46477165232e7f03184152b6c277c05b6
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122631"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76167245"
 ---
 # <a name="run-batch-predictions-using-azure-machine-learning-designer"></a>Uruchamianie prognoz wsadowych za pomocą narzędzia Azure Machine Learning Designer
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-W tym instruktażu dowiesz się, jak używać projektanta do uczenia modelu i konfigurowania potoku prognozowania partii i usługi sieci Web. Funkcja przewidywania wsadowe umożliwia ciągłe i na żądanie ocenianie modeli w dużych zestawach danych, opcjonalnie skonfigurowanych jako usługa sieci Web, która może być wyzwalana z dowolnej biblioteki HTTP. 
+W tym artykule dowiesz się, jak utworzyć potok prognozowania wsadowego za pomocą projektanta. Funkcja prognozowanie wsadowe umożliwia ciągłe tworzenie dużych zestawów danych na żądanie przy użyciu usługi sieci Web, która może być wyzwalana z dowolnej biblioteki HTTP.
 
-Aby skonfigurować usługi wsadowych oceniania przy użyciu zestawu SDK, zobacz towarzyszące [instrukcje](how-to-use-parallel-run-step.md).
-
-W tym instruktażu przedstawiono następujące zadania:
+W tym instruktażu pouczysz się wykonywać następujące zadania:
 
 > [!div class="checklist"]
-> * Tworzenie eksperymentu Basic ML w potoku
-> * Tworzenie potoku wnioskowania o sparametryzowanym zbiorze
-> * Ręczne zarządzanie potokami i ich uruchamianie z poziomu punktu końcowego REST
+> * Tworzenie i publikowanie potoku wnioskowania partii
+> * Korzystanie z punktu końcowego potoku
+> * Zarządzanie wersjami punktów końcowych
+
+Aby dowiedzieć się, jak skonfigurować usługi wsadowe oceniania przy użyciu zestawu SDK, zobacz towarzyszące [instrukcje](how-to-run-batch-predictions.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-1. Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję Azure Machine Learning](https://aka.ms/AMLFree).
-
-1. Utwórz [obszar roboczy](tutorial-1st-experiment-sdk-setup.md).
-
-1. Zaloguj się do [Azure Machine Learning Studio](https://ml.azure.com/).
-
-Ta procedura polega na założeniu podstawowej znajomości tworzenia prostego potoku w projektancie. Aby zapoznać się z przewodnikiem po wprowadzeniu do projektanta, Ukończ [samouczek](tutorial-designer-automobile-price-train-score.md). 
-
-## <a name="create-a-pipeline"></a>Tworzenie potoku
-
-Aby utworzyć potok wnioskowania o partie, musisz najpierw wykonać eksperyment uczenia maszynowego. Aby go utworzyć, przejdź do karty **Projektant** w obszarze roboczym i Utwórz nowy potok, wybierając opcję **łatwe do użycia prekompilowane moduły** .
-
-![Strona główna projektanta](./media/how-to-run-batch-predictions-designer/designer-batch-scoring-1.png)
-
-Poniżej znajduje się prosty model uczenia maszynowego w celach demonstracyjnych. Dane są zarejestrowanym zestawem danych utworzonym na podstawie otwartych zestawów danych cukrzycą na platformie Azure. Zapoznaj się z [sekcją instrukcje](how-to-create-register-datasets.md#create-datasets-with-azure-open-datasets) dotyczące rejestrowania zestawów danych z platformy Azure Otwórz zestawy danych. Dane są podzielone na zestawy szkoleń i walidacji, a wzmocnione drzewo decyzyjne jest przeszkolone i oceniane. Potok musi być uruchamiany co najmniej raz, aby można było utworzyć potok inferencing. Kliknij przycisk **Uruchom** , aby uruchomić potok.
-
-![Tworzenie prostego eksperymentu](./media/how-to-run-batch-predictions-designer/designer-batch-scoring-2.png)
+Ta procedura polega na tym, że masz już potok szkoleniowy. Aby zapoznać się z przewodnikiem po stronie projektanta, wykonaj [jedną z części samouczka projektanta](tutorial-designer-automobile-price-train-score.md). 
 
 ## <a name="create-a-batch-inference-pipeline"></a>Tworzenie potoku wnioskowania partii
 
-Teraz, gdy potok został uruchomiony, dostępna jest nowa opcja obok opcji **Uruchom** i **Opublikuj** o nazwie **Utwórz potok wnioskowania**. Kliknij listę rozwijaną i wybierz pozycję **potok wnioskowania partii**.
+Potok szkoleniowy musi być uruchamiany co najmniej raz, aby można było utworzyć potok inferencing.
 
-![Tworzenie potoku wnioskowania partii](./media/how-to-run-batch-predictions-designer/designer-batch-scoring-5.png)
+1. Przejdź do karty **Projektant** w obszarze roboczym.
 
-Wynik to domyślny potok wnioskowania o partię. Obejmuje to węzeł instalacji oryginalnego eksperymentu potoku, węzeł danych pierwotnych do oceniania, a także węzeł do oceny danych pierwotnych względem oryginalnego potoku.
+1. Wybierz potok szkoleniowy łączący model, którego chcesz użyć do prognozowania.
 
-![Domyślny potok wnioskowania o partie](./media/how-to-run-batch-predictions-designer/designer-batch-scoring-6.png)
+1. **Uruchamianie** potoku.
 
-Możesz dodać inne węzły, aby zmienić zachowanie procesu wsadowego inferencing. W tym przykładzie dodasz węzeł do próbkowania losowo z danych wejściowych przed rozpoczęciem oceniania. Utwórz **partycję i przykładowy** węzeł i umieść go między węzłami nieprzetworzone dane i ocenianie. Następnie kliknij **partycję i węzeł przykładu** , aby uzyskać dostęp do ustawień i parametrów.
+    ![Uruchamianie potoku](./media/how-to-run-batch-predictions-designer/run-training-pipeline.png)
 
-![Nowy węzeł](./media/how-to-run-batch-predictions-designer/designer-batch-scoring-7.png)
+Teraz, gdy potok szkoleniowy został uruchomiony, można utworzyć potok wnioskowania o partie.
 
-*Częstotliwość próbkowania* określa, jaki procent oryginalnego zestawu danych ma pobrać losowy przykład z. Jest to parametr, który będzie przydatny do częstego dopasowywania, dlatego należy go włączyć jako parametr potoku. Parametry potoku można zmienić w czasie wykonywania i można je określić w obiekcie ładunku podczas uruchamiania potoku z punktu końcowego REST. 
+1. Obok pozycji **Uruchom**wybierz nową listę rozwijaną **Utwórz potok wnioskowania**.
 
-Aby włączyć to pole jako parametr potoku, kliknij wielokropek powyżej pola, a następnie kliknij przycisk **Dodaj do parametru potoku**. 
+1. Wybierz **potok wnioskowania partii**.
 
-![Ustawienia przykładowe](./media/how-to-run-batch-predictions-designer/designer-batch-scoring-8.png)
+    ![Tworzenie potoku wnioskowania partii](./media/how-to-run-batch-predictions-designer/create-batch-inference.png)
+    
+Wynik to domyślny potok wnioskowania o partię. 
 
-Następnie nadaj parametrowi nazwę i wartość domyślną. Nazwa będzie używana do identyfikowania parametru i określana w wywołaniu REST.
+### <a name="add-a-pipeline-parameter"></a>Dodaj parametr potoku
 
-![Parametr potoku](./media/how-to-run-batch-predictions-designer/designer-batch-scoring-9.png)
+Aby utworzyć prognozy dotyczące nowych danych, można ręcznie połączyć inny zestaw danych w tym widoku roboczym potoku lub utworzyć parametr dla zestawu danych. Parametry umożliwiają zmianę zachowania procesu wsadowego inferencing w czasie wykonywania.
 
-## <a name="deploy-batch-inferencing-pipeline"></a>Wdróż potok inferencing Batch
+W tej sekcji utworzysz parametr dataset, aby określić inny zestaw danych do tworzenia prognoz.
 
-Teraz możesz przystąpić do wdrożenia potoku. Kliknij przycisk **Wdróż** , który powoduje otwarcie interfejsu w celu skonfigurowania punktu końcowego. Kliknij listę rozwijaną i wybierz pozycję **Nowy PipelineEndpoint**.
+1. Wybierz moduł DataSet.
 
-![Wdrażanie potoku](./media/how-to-run-batch-predictions-designer/designer-batch-scoring-10.png)
+1. Zostanie wyświetlone okienko po prawej stronie kanwy. W dolnej części okienka wybierz pozycję **Ustaw jako parametr potoku**.
+   
+    Wprowadź nazwę parametru lub Zaakceptuj wartość domyślną.
 
-Podaj nazwę i opcjonalny opis punktu końcowego. W dolnej części zobaczysz parametr `sample-rate` skonfigurowany z wartością domyślną 0,8. Gdy wszystko będzie gotowe, kliknij przycisk **Wdróż**.
+## <a name="publish-your-batch-inferencing-pipeline"></a>Publikowanie potoku programu Batch inferencing
 
-![Punkt końcowy konfiguracji](./media/how-to-run-batch-predictions-designer/designer-batch-scoring-11.png)
+Teraz wszystko jest gotowe do wdrożenia potoku inferencing. Spowoduje to wdrożenie potoku i udostępnienie go innym osobom.
 
-## <a name="manage-endpoints"></a>Zarządzanie punktami końcowymi 
+1. Wybierz przycisk **Publikuj**.
 
-Po zakończeniu wdrażania przejdź do karty **punkty końcowe** i kliknij nazwę właśnie utworzonego punktu końcowego.
+1. W wyświetlonym oknie dialogowym Rozwiń listę rozwijaną dla **PipelineEndpoint**i wybierz pozycję **Nowy PipelineEndpoint**.
 
-![Łącze punktu końcowego](./media/how-to-run-batch-predictions-designer/designer-batch-scoring-12.png)
+1. Podaj nazwę punktu końcowego i opcjonalny opis.
 
-Na tym ekranie są wyświetlane wszystkie opublikowane potoki w określonym punkcie końcowym. Kliknij potok inferencing.
+    W dolnej części okna dialogowego można zobaczyć skonfigurowany parametr z wartością domyślną identyfikatora zestawu danych używanego podczas szkolenia.
 
-![Potok wnioskowania](./media/how-to-run-batch-predictions-designer/designer-batch-scoring-13.png)
+1. Wybierz pozycję **Publikuj**.
 
-Na stronie Szczegóły potoku zostanie wyświetlona Szczegółowa historia uruchamiania i informacje o parametrach połączenia dla potoku. Kliknij przycisk **Uruchom** , aby utworzyć ręczny przebieg potoku.
+![Publikowanie potoku](./media/how-to-run-batch-predictions-designer/publish-inference-pipeline.png)
 
-![Szczegóły potoku](./media/how-to-run-batch-predictions-designer/designer-batch-scoring-14.png)
 
-W instalatorze uruchomienia można podać opis przebiegu i zmienić wartość parametrów potoku. Tym razem należy ponownie uruchomić potok inferencing z próbką częstotliwości 0,9. Kliknij przycisk **Uruchom** , aby uruchomić potok.
+## <a name="consume-an-endpoint"></a>Korzystanie z punktu końcowego
 
-![Uruchomienie potoku](./media/how-to-run-batch-predictions-designer/designer-batch-scoring-15.png)
+Teraz masz opublikowany potok z parametrem DataSet. Potok będzie używać nauczonego modelu utworzonego w potoku szkoleniowego do oceny zestawu danych, który jest udostępniany jako parametr.
 
-Karta **Używanie** zawiera punkt końcowy REST do uruchomienia potoku. Aby można było wywołać metodę REST, potrzebny jest nagłówek uwierzytelniania OAuth 2,0 typu okaziciela. Zapoznaj się z poniższą [sekcją samouczka](tutorial-pipeline-batch-scoring-classification.md#publish-and-run-from-a-rest-endpoint) , aby uzyskać więcej szczegółów na temat konfigurowania uwierzytelniania do obszaru roboczego i wykonywania sparametryzowanych wywołań REST.
+### <a name="submit-a-pipeline-run"></a>Przesyłanie uruchomienia potoku 
+
+W tej sekcji skonfigurujesz ręczny przebieg potoku i zmieniasz parametr potoku w celu oceny nowych danych. 
+
+1. Po zakończeniu wdrażania przejdź do sekcji **punkty końcowe** .
+
+1. Wybierz **punkty końcowe potoku**.
+
+1. Wybierz nazwę utworzonego punktu końcowego.
+
+![Łącze punktu końcowego](./media/how-to-run-batch-predictions-designer/manage-endpoints.png)
+
+1. Wybierz pozycję **opublikowane potoki**.
+
+    Na tym ekranie są wyświetlane wszystkie opublikowane potoki opublikowane w tym punkcie końcowym.
+
+1. Wybierz opublikowany potok.
+
+    Na stronie Szczegóły potoku zostanie wyświetlona Szczegółowa historia uruchamiania i informacje o parametrach połączenia dla potoku. 
+    
+1. Wybierz pozycję **Uruchom** , aby utworzyć ręczny przebieg potoku.
+
+    ![Szczegóły potoku](./media/how-to-run-batch-predictions-designer/submit-manual-run.png)
+    
+1. Zmień parametr, aby użyć innego zestawu danych.
+    
+1. Wybierz pozycję **Uruchom** , aby uruchomić potok.
+
+### <a name="use-the-rest-endpoint"></a>Korzystanie z punktu końcowego REST
+
+Informacje o sposobach korzystania z punktów końcowych potoku i opublikowanego potoku znajdują się w sekcji **punkty końcowe** .
+
+Punkt końcowy REST punktu końcowego potoku można znaleźć w panelu przegląd przebiegu. Wywołując punkt końcowy, korzystasz z domyślnego opublikowanego potoku.
+
+Możesz również wykorzystać opublikowany potok na stronie **opublikowane potoki** . Wybierz opublikowany potok i Znajdź punkt końcowy REST. 
+
+![Szczegóły punktu końcowego REST](./media/how-to-run-batch-predictions-designer/rest-endpoint-details.png)
+
+Aby można było wywołać metodę REST, potrzebny jest nagłówek uwierzytelniania OAuth 2,0 typu okaziciela. Zapoznaj się z poniższą [sekcją samouczka](tutorial-pipeline-batch-scoring-classification.md#publish-and-run-from-a-rest-endpoint) , aby uzyskać więcej szczegółów na temat konfigurowania uwierzytelniania do obszaru roboczego i wykonywania sparametryzowanych wywołań REST.
+
+## <a name="versioning-endpoints"></a>Punkty końcowe wersji
+
+Projektant przypisuje wersję do każdego kolejnego potoku, który publikuje w punkcie końcowym. Możesz określić wersję potoku, która ma zostać wykonana jako parametr w wywołaniu REST. Jeśli nie określisz numeru wersji, Projektant użyje domyślnego potoku.
+
+Podczas publikowania potoku możesz wybrać opcję nowego domyślnego potoku dla tego punktu końcowego.
+
+![Ustawianie potoku domyślnego](./media/how-to-run-batch-predictions-designer/set-default-pipeline.png)
+
+Możesz również ustawić nowy potok domyślny na karcie **opublikowane potoki** w punkcie końcowym.
+
+![Ustawianie potoku domyślnego](./media/how-to-run-batch-predictions-designer/set-new-default-pipeline.png)
 
 ## <a name="next-steps"></a>Następne kroki
 

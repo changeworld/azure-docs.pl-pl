@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: ab407ffbc0e22a2f65436741ce5c7019ac7fc540
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 95e5754c440cc591444df8960fde34de6fc384f0
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75533454"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76261368"
 ---
 # <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn-using-azure-machine-learning"></a>Samouczek: uczenie modeli klasyfikacji obrazów przy użyciu MNIST ręcznie danych i scikit — uczenie się przy użyciu Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -105,7 +105,9 @@ exp = Experiment(workspace=ws, name=experiment_name)
 
 ### <a name="create-or-attach-an-existing-compute-target"></a>Utwórz lub Dołącz istniejący obiekt docelowy obliczeń
 
-Za pomocą usługi zarządzanej Azure Machine Learning Compute analitycy danych mogą szkolić modele uczenia maszynowego w klastrach maszyn wirtualnych platformy Azure. Przykłady obejmują maszyny wirtualne z obsługą procesorów GPU. W tym samouczku utworzysz usługę Azure Machine Learning Compute jako środowisko uczenia. Poniższy kod utworzy za Ciebie klastry obliczeniowe, jeśli nie istnieją one jeszcze w Twoim obszarze roboczym.
+Za pomocą usługi zarządzanej Azure Machine Learning Compute analitycy danych mogą szkolić modele uczenia maszynowego w klastrach maszyn wirtualnych platformy Azure. Przykłady obejmują maszyny wirtualne z obsługą procesorów GPU. W tym samouczku utworzysz usługę Azure Machine Learning Compute jako środowisko uczenia. Kod języka Python do uruchomienia na tej maszynie wirtualnej zostanie przesłany później w samouczku. 
+
+Poniższy kod utworzy za Ciebie klastry obliczeniowe, jeśli nie istnieją one jeszcze w Twoim obszarze roboczym.
 
  **Tworzenie obiektu docelowego obliczeń trwa około 5 minut.** Jeśli zasób obliczeniowy znajduje się już w obszarze roboczym, kod używa go i pomija proces tworzenia.
 
@@ -146,7 +148,7 @@ else:
     print(compute_target.get_status().serialize())
 ```
 
-Teraz masz pakiety i zasoby obliczeniowe niezbędne do przeprowadzenia uczenia modelu w chmurze.
+Teraz masz pakiety i zasoby obliczeniowe niezbędne do przeprowadzenia uczenia modelu w chmurze. 
 
 ## <a name="explore-data"></a>Eksplorowanie danych
 
@@ -215,7 +217,7 @@ Teraz wiesz już, jak wyglądają te obrazy i jakie są oczekiwane wyniki przewi
 
 ## <a name="train-on-a-remote-cluster"></a>Uczenie w klastrze zdalnym
 
-Na potrzeby tego samouczka prześlij zadanie do skonfigurowanego wcześniej zdalnego klastra uczenia.  W celu przesłania zadania wykonywane są następujące czynności:
+W przypadku tego zadania można przesłać zadanie do uruchomienia na wcześniej skonfigurowanym klastrze szkoleniowym.  W celu przesłania zadania wykonywane są następujące czynności:
 * Tworzenie katalogu
 * Tworzenie skryptu uczenia
 * Tworzenie obiektu narzędzia do szacowania

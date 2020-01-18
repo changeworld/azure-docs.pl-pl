@@ -1,6 +1,6 @@
 ---
-title: Rozproszone programowanie zespołowe zasobów usługi Azure DevTest Labs | Dokumentacja firmy Microsoft
-description: Przedstawiono najlepsze rozwiązania dotyczące konfigurowania środowiska deweloperskiego rozproszone i współpracy, do tworzenia zasobów usługi DevTest Labs.
+title: Rozdystrybuowane programowanie do współpracy Azure DevTest Labs zasobów
+description: Zapewnia najlepsze rozwiązania dotyczące konfigurowania rozproszonego i współpracy środowiska programistycznego w celu opracowywania zasobów DevTest Labs.
 services: devtest-lab,lab-services
 documentationcenter: na
 author: spelluru
@@ -11,55 +11,55 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/10/2019
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 8ffc8ed3f84284ff69e9515cba0982790b823a37
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: 9469591b1945adaffca973828d619d5d06655262
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67543764"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76170119"
 ---
-# <a name="best-practices-for-distributed-and-collaborative-development-of-azure-devtest-labs-resources"></a>Najlepsze rozwiązania dotyczące rozproszonego współpracy rozwoju i zasoby usługi Azure DevTest Labs
-Programowanie zespołowe rozproszonych umożliwia różne zespoły lub inne osoby, rozwijania i utrzymywania podstawowy kod. Się powodzeniem, proces tworzenia aplikacji zależy od możliwości tworzenia, udostępniania i integrować informacje. Ta zasada tworzenia kluczy może służyć w usłudze Azure DevTest Labs. Istnieją różne typy zasobów w ramach laboratorium, które często są rozkładane między różnych labs w obrębie przedsiębiorstwa. Różnych typów zasobów koncentrują się na dwa obszary:
+# <a name="best-practices-for-distributed-and-collaborative-development-of-azure-devtest-labs-resources"></a>Najlepsze rozwiązania dotyczące rozbudowanych i rozwijających się zasobów Azure DevTest Labs
+Rozdystrybuowane programowanie do współpracy umożliwia różnym zespołom i innym osobom programowanie i konserwację kodu. Aby się powieść, proces programowania zależy od możliwości tworzenia, udostępniania i integrowania informacji. Ta zasada tworzenia klucza może być używana w Azure DevTest Labs. Istnieje kilka rodzajów zasobów w środowisku laboratoryjnym, które są powszechnie dystrybuowane między różnymi laboratoriami w przedsiębiorstwie. Różne typy zasobów koncentrują się na dwóch obszarach:
 
-- Zasoby, które wewnętrznie są przechowywane w laboratorium (w oparciu o laboratorium)
-- Zasoby, które są przechowywane w [zewnętrznych repozytoriów, które są podłączone do laboratorium](devtest-lab-add-artifact-repo.md) (na podstawie repozytorium kodu). 
+- Zasoby, które są wewnętrznie przechowywane w laboratorium (oparte na laboratorium)
+- Zasoby przechowywane w [zewnętrznych repozytoriach, które są połączone z laboratorium](devtest-lab-add-artifact-repo.md) (oparte na repozytorium kodu). 
 
-W tym dokumencie opisano niektóre najlepsze rozwiązania, które umożliwiają współpracę i dystrybucję w wielu zespołach przy jednoczesnym zapewnieniu dostosowywania i jakość na wszystkich poziomach.
+W tym dokumencie opisano niektóre najlepsze rozwiązania, które pozwalają na współpracę i dystrybucję w wielu zespołach przy jednoczesnym zapewnieniu dostosowania i jakości na wszystkich poziomach.
 
 ## <a name="lab-based-resources"></a>Zasoby oparte na laboratorium
 
-### <a name="custom-virtual-machine-images"></a>Obrazy niestandardowych maszyn wirtualnych
-Możesz mieć za wspólne źródło obrazów niestandardowych, które są wdrażane do laboratoriów w nocy. Aby uzyskać szczegółowe informacje, zobacz [fabrycznie obrazu](image-factory-create.md).    
+### <a name="custom-virtual-machine-images"></a>Niestandardowe obrazy maszyn wirtualnych
+Możesz mieć wspólne źródło obrazów niestandardowych, które są wdrażane w laboratoriach w nocy. Aby uzyskać szczegółowe informacje, zobacz [Image Factory](image-factory-create.md).    
 
-### <a name="formulas"></a>Formuły
-[Formuły](devtest-lab-manage-formulas.md) są specyficzne dla laboratorium i nie ma mechanizmu dystrybucji. Elementy członkowskie laboratorium do tworzenia formuł. 
+### <a name="formulas"></a>formuły
+[Formuły](devtest-lab-manage-formulas.md) są specyficzne dla laboratorium i nie mają mechanizmu dystrybucji. Członkowie laboratorium wykonują wszystkie czynności w zakresie tworzenia formuł. 
 
 ## <a name="code-repository-based-resources"></a>Zasoby oparte na repozytorium kodu
-Istnieją dwie różne funkcje, które zależą od repozytoriów kodu, artefakty i środowisk. W tym artykule pokazano, funkcje i jak najbardziej efektywny sposób skonfigurować repozytoriów i przepływ pracy umożliwia możliwość dostosowania dostępne artefaktów i środowisk na poziomie organizacji lub zespołu.  Ten przepływ pracy jest oparty na standardzie [strategii rozgałęziania Kontrola kodu źródłowego](/azure/devops/repos/tfvc/branching-strategies-with-tfvc?view=azure-devops). 
+Istnieją dwie różne funkcje, które są oparte na repozytoriach kodu, artefaktach i środowiskach. W tym artykule opisano funkcje i sposób najwydajniejszego konfigurowania repozytoriów i przepływu pracy w celu umożliwienia dostosowywania dostępnych artefaktów i środowisk na poziomie organizacji lub na szczeblu zespołu.  Ten przepływ pracy jest oparty na standardowej [strategii rozgałęziania kontroli kodu źródłowego](/azure/devops/repos/tfvc/branching-strategies-with-tfvc?view=azure-devops). 
 
 ### <a name="key-concepts"></a>Kluczowe pojęcia
-Źródła artefaktów informacje metadanych i skryptów. Informacje o źródle w środowiskach zawiera metadane i szablonów usługi Resource Manager za pomocą wszelkie pliki pomocnicze, takie jak skrypty programu PowerShell, DSC, skrypty, pliki Zip i tak dalej.  
+Informacje o źródle artefaktów obejmują metadane i skrypty. Informacje źródłowe dla środowisk obejmują metadane i szablony Menedżer zasobów z dowolnymi plikami pomocniczymi, takimi jak skrypty programu PowerShell, skrypty DSC, pliki zip itd.  
 
 ### <a name="repository-structure"></a>Struktura repozytorium  
-Najbardziej typowe konfiguracji kontroli kodu źródłowego (SCC) jest konfigurowanie struktury obejmujące wiele warstw, do przechowywania plików kodu (szablonów usługi Resource Manager, metadanych i skryptów), które są używane do w laboratorium. W szczególności utworzyć różnych repozytoriach, do przechowywania zasobów, które są zarządzane przez różne poziomy firmy:   
+Najbardziej typową konfiguracją kontroli kodu źródłowego (SCC) jest skonfigurowanie struktury wielowarstwowej do przechowywania plików kodu (Menedżer zasobów szablonów, metadanych i skryptów) używanych w laboratoriach. W tym celu należy utworzyć różne repozytoria do przechowywania zasobów zarządzanych przez różne poziomy działalności:   
 
-- Zasoby dla całej firmy.
-- Business jednostkę/dzielenia-zasobów
+- Zasoby w całej firmie.
+- Zasoby jednostkowe/działy dla całej firmy
 - Zasoby specyficzne dla zespołu.
 
-Każda z tych poziomów połączyć się z innym repozytorium, gdzie gałąź główna musi być jakości produkcji. [Gałęzie](/azure/devops/repos/git/git-branching-guidance?view=azure-devops) byłoby w każdym repozytorium do tworzenia tych określonych zasobów (artefaktów i szablonów). Ta struktura jest optymalnie wyrównana z usługi DevTest Labs, jak można łatwo połączyć wiele repozytoriów i wielu oddziałów, w tym samym czasie do laboratoriów w organizacji. Nazwa repozytorium są objęte interfejsu użytkownika (UI), aby uniknąć nieporozumień, gdy istnieją identyczne nazwy, opisu i wydawcy.
+Każdy z tych poziomów łączy się z innym repozytorium, w którym główna gałąź musi być jakością produkcyjną. [Gałęzie](/azure/devops/repos/git/git-branching-guidance?view=azure-devops) w każdym repozytorium są przeznaczone do tworzenia tych konkretnych zasobów (artefaktów lub szablonów). Ta struktura jest dobrze dopasowana do DevTest Labs, ponieważ w tym samym czasie można łatwo połączyć wiele repozytoriów i wiele gałęzi z laboratoriami organizacji. Nazwa repozytorium jest zawarta w interfejsie użytkownika, aby uniknąć pomyłek w przypadku, gdy istnieją identyczne nazwy, opis i Wydawca.
      
-Na poniższym diagramie przedstawiono dwa repozytoriów: repozytorium firmy, które jest konserwowane przez dział IT i repozytorium dzielenia utrzymywane przez zespół R & D.
+Na poniższym diagramie przedstawiono dwa repozytoria: repozytorium firmy utrzymywane przez dział IT oraz repozytorium dzielenia utrzymywane przez dział R & D.
 
-![Przykładowe środowiska deweloperskiego podziału i współpracy](./media/best-practices-distributive-collaborative-dev-env/distributive-collaborative-dev-env.png)
+![Przykładowe rozdzielne i wspólne środowisko programistyczne](./media/best-practices-distributive-collaborative-dev-env/distributive-collaborative-dev-env.png)
    
-Ta struktura warstwowej umożliwia tworzenie rozwiązań przy jednoczesnym zachowaniu wyższy poziom jakości w gałęzi głównej, gdy masz wiele repozytoriów podłączony do laboratorium umożliwia większą elastyczność.
+Ta struktura warstwowa umożliwia programowanie z zachowaniem wyższego poziomu jakości w gałęzi głównej, przy czym wiele repozytoriów podłączonych do laboratorium zapewnia większą elastyczność.
 
-## <a name="next-steps"></a>Kolejne kroki    
+## <a name="next-steps"></a>Następne kroki    
 Zobacz następujące artykuły:
 
-- Dodawanie repozytorium do laboratorium przy użyciu [witryny Azure portal](devtest-lab-add-artifact-repo.md) lub za pośrednictwem [szablonu usługi Azure Resource Management](add-artifact-repository.md)
+- Dodawanie repozytorium do laboratorium przy użyciu [Azure Portal](devtest-lab-add-artifact-repo.md) lub [szablonu usługi Azure Resource Management](add-artifact-repository.md)
 - [Artefakty DevTest Labs](devtest-lab-artifact-author.md)
-- [Środowiska usługi DevTest Labs](devtest-lab-create-environment-from-arm.md).
+- [Środowiska DevTest Labs](devtest-lab-create-environment-from-arm.md).

@@ -1,5 +1,5 @@
 ---
-title: Tworzenie środowisk z obsługą wielu maszyn wirtualnych i zasobów PaaS za pomocą szablonów Azure Resource Manager | Microsoft Docs
+title: Tworzenie środowisk z obsługą wielu maszyn wirtualnych i zasobów PaaS za pomocą szablonów
 description: Dowiedz się, jak tworzyć środowiska wielu maszyn wirtualnych i PaaS zasoby w Azure DevTest Labs z szablonu Azure Resource Manager
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/07/2019
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 900973a7370bbed61953f8d1ee83d56670fad756
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 1385b20847cf90c212a13591389dfb6cda08432a
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981546"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169648"
 ---
 # <a name="create-multi-vm-environments-and-paas-resources-with-azure-resource-manager-templates"></a>Tworzenie środowisk z obsługą wielu maszyn wirtualnych i zasobów PaaS za pomocą szablonów Azure Resource Manager
 
@@ -73,7 +73,7 @@ Istnieje kilka reguł, które należy wykonać, aby zorganizować szablony Azure
 
 Po utworzeniu i skonfigurowaniu repozytorium możesz dodać je do laboratorium przy użyciu Azure Portal:
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się do [Portalu Azure](https://portal.azure.com).
 1. Wybierz pozycję **wszystkie usługi**, a następnie z listy wybierz pozycję **DevTest Labs** .
 1. Z listy laboratoriów wybierz odpowiednie laboratorium.
 1. W okienku **Przegląd** laboratorium wybierz pozycję **Konfiguracja i zasady**.
@@ -120,7 +120,7 @@ Następna sekcja przeprowadzi Cię przez proces tworzenia środowisk z szablonu 
 
 Po dodaniu szablonu Azure Resource Manager do laboratorium użytkownicy laboratorium mogą tworzyć środowiska w Azure Portal, wykonując następujące czynności:
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się do [Portalu Azure](https://portal.azure.com).
 
 1. Wybierz pozycję **wszystkie usługi**, a następnie z listy wybierz pozycję **DevTest Labs** .
 

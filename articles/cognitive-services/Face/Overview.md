@@ -1,7 +1,7 @@
 ---
-title: Co to jest interfejs API rozpoznawania twarzy?
+title: Co to jest usługa frontu?
 titleSuffix: Azure Cognitive Services
-description: Usługa Azure Cognitive Services interfejs API rozpoznawania twarzy udostępnia algorytmy, które są używane do wykrywania, rozpoznawania i analizowania ludzkich twarzy na obrazach.
+description: Usługa Azure Cognitive Services twarzy zapewnia algorytmy, które są używane do wykrywania, rozpoznawania i analizowania ludzkich twarzy na obrazach.
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
@@ -9,25 +9,25 @@ ms.subservice: face-api
 ms.topic: overview
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 75f2969562dd2de041ffaa146c394f1a18c7756b
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: c4e2253229f4461bcb6a2a9fe3e561f3cde29760
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74961543"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76170253"
 ---
-# <a name="what-is-the-azure-face-api"></a>Co to jest interfejs API rozpoznawania twarzy na platformie Azure?
+# <a name="what-is-the-azure-face-service"></a>Co to jest usługa Azure Front?
 
-Usługa Azure Cognitive Services interfejs API rozpoznawania twarzy udostępnia algorytmy, które są używane do wykrywania, rozpoznawania i analizowania ludzkich twarzy na obrazach. Możliwość przetwarzania informacji o człowieku jest ważna w wielu różnych scenariuszach oprogramowania. Przykładowe scenariusze to zabezpieczenia, interfejs użytkownika naturalnego, analiza zawartości obrazów oraz zarządzanie, aplikacje mobilne i programowe.
+Usługa Azure Cognitive Services twarzy zapewnia algorytmy, które są używane do wykrywania, rozpoznawania i analizowania ludzkich twarzy na obrazach. Możliwość przetwarzania informacji o człowieku jest ważna w wielu różnych scenariuszach oprogramowania. Przykładowe scenariusze to zabezpieczenia, interfejs użytkownika naturalnego, analiza zawartości obrazów oraz zarządzanie, aplikacje mobilne i programowe.
 
-Interfejs API rozpoznawania twarzy udostępnia kilka różnych funkcji. Każda funkcja jest przedkreślona w poniższych sekcjach. Przeczytaj, aby dowiedzieć się więcej o nich.
+Usługa kroju usługi oferuje kilka różnych funkcji. Każda funkcja jest przedkreślona w poniższych sekcjach. Przeczytaj, aby dowiedzieć się więcej o nich.
 
 ## <a name="face-detection"></a>Wykrywanie twarzy
 
-Interfejs API rozpoznawania twarzy wykrywa ludzkie twarze w obrazie i zwraca współrzędne ich lokalizacji. Opcjonalnie wykrywanie czołowe może wyodrębnić szereg atrybutów związanych ze stroną. Przykłady to ułożenia głowy, płeć, wiek, rozpoznawania emocji, twarzy i okulary.
+Usługa twarzy wykrywa ludzkie twarze na obrazie i zwraca współrzędne ich lokalizacji. Opcjonalnie wykrywanie czołowe może wyodrębnić szereg atrybutów związanych ze stroną. Przykłady to ułożenia głowy, płeć, wiek, rozpoznawania emocji, twarzy i okulary.
 
 > [!NOTE]
-> Funkcja wykrywania kroju jest również dostępna za pomocą [interfejs API przetwarzania obrazów](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home). Jeśli chcesz wykonać dalsze operacje z danymi o kroju, użyj interfejs API rozpoznawania twarzy, która jest usługą omówioną w tym artykule.
+> Funkcja wykrywania kroju jest również dostępna za pomocą [interfejs API przetwarzania obrazów](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home). Jeśli chcesz wykonać dalsze operacje z danymi o kroju, Użyj usługi Front Service, która jest usługą omówioną w tym artykule.
 
 ![Obraz kobieta i Man, z prostokątami rysowanymi wokół ich powierzchni i wieku oraz wyświetlanych płci](./Images/Face.detection.jpg)
 
@@ -73,9 +73,9 @@ Aby uzyskać więcej informacji na temat identyfikacji osób, zobacz Przewodnik 
 
 ## <a name="sample-apps"></a>Przykładowe aplikacje
 
-Następujące przykładowe aplikacje pokazują kilka sposobów korzystania z interfejs API rozpoznawania twarzy:
+Następujące przykładowe aplikacje pokazują kilka sposobów korzystania z usługi kroju:
 
-- [Microsoft interfejs API rozpoznawania twarzy: Biblioteka klienta systemu Windows i Przykładowa](https://github.com/Microsoft/Cognitive-Face-Windows) aplikacja platformy WPF, która ilustruje kilka scenariuszy wykrywania, analizy i identyfikacji.
+- [Interfejs API rozpoznawania twarzy: Biblioteka kliencka systemu Windows i przykład](https://github.com/Microsoft/Cognitive-Face-Windows) to aplikacja WPF, która ilustruje kilka scenariuszy wykrywania, analizy i identyfikacji na platformie.
 - [FAMILYNOTES platformy UWP App](https://github.com/Microsoft/Windows-appsample-familynotes) to aplikacja platforma uniwersalna systemu Windows (platformy UWP), która korzysta z identyfikacji czołowej oraz mowy, Cortany, atramentu i kamery w scenariuszu udostępniania notatek z rodziny.
 
 ## <a name="data-privacy-and-security"></a>Prywatność i zabezpieczenia danych

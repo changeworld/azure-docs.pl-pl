@@ -1,7 +1,7 @@
 ---
-title: Jak określić model rozpoznawania — interfejs API rozpoznawania twarzy
+title: Jak określić model rozpoznawania — kroju
 titleSuffix: Azure Cognitive Services
-description: W tym artykule opisano sposób wybierania modelu rozpoznawania, który będzie używany w aplikacji interfejs API rozpoznawania twarzy platformy Azure.
+description: W tym artykule opisano sposób wybierania modelu rozpoznawania, który ma być używany z aplikacją platformy Azure.
 services: cognitive-services
 author: longli0
 manager: nitinme
@@ -10,18 +10,18 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: longl
-ms.openlocfilehash: 5b84e078e3b674a539b61c07c4bb4370719e4799
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 44392b807659ff8f13511b48d0afd33db080e4f6
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74771023"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76166457"
 ---
 # <a name="specify-a-face-recognition-model"></a>Określanie modelu rozpoznawania twarzy
 
-W tym przewodniku pokazano, jak określić model rozpoznawania kroju na potrzeby wykrywania i identyfikowania kroju oraz wyszukiwania podobieństw przy użyciu interfejs API rozpoznawania twarzy platformy Azure.
+W tym przewodniku pokazano, jak określić model rozpoznawania kroju na potrzeby wykrywania i identyfikowania kroju oraz wyszukiwania podobieństw przy użyciu usługi Azure Search.
 
-Interfejs API rozpoznawania twarzy używa modeli uczenia maszynowego do wykonywania operacji na ludzkich twarzy na obrazach. Kontynuujemy ulepszanie dokładności naszych modeli w oparciu o opinie klientów i postępy w badaniach, a firma Microsoft zapewnia te udoskonalenia jako aktualizacje modelu. Deweloperzy mogą określić, która wersja modelu rozpoznawania kroju ma być używana; mogą wybrać model, który najlepiej pasuje do swojego przypadku użycia.
+Usługa twarzy używa modeli uczenia maszynowego do wykonywania operacji na ludzkich twarzy na obrazach. Kontynuujemy ulepszanie dokładności naszych modeli w oparciu o opinie klientów i postępy w badaniach, a firma Microsoft zapewnia te udoskonalenia jako aktualizacje modelu. Deweloperzy mogą określić, która wersja modelu rozpoznawania kroju ma być używana; mogą wybrać model, który najlepiej pasuje do swojego przypadku użycia.
 
 Jeśli jesteś nowym użytkownikiem, zalecamy użycie najnowszego modelu. Przeczytaj, aby dowiedzieć się, jak określić ją w różnych operacjach związanych z działaniem, unikając konfliktów między modelami. Jeśli jesteś użytkownikiem zaawansowanym i nie wiesz, czy chcesz przełączyć się do najnowszego modelu, przejdź do sekcji [Oceń różne modele](#evaluate-different-models) , aby obliczyć nowy model i porównać wyniki przy użyciu bieżącego zestawu danych.
 
@@ -57,7 +57,7 @@ var faces = await faceClient.Face.DetectWithUrlAsync(imageUrl, true, true, recog
 
 ## <a name="identify-faces-with-specified-model"></a>Identyfikowanie twarzy z określonym modelem
 
-Interfejs API rozpoznawania twarzy może wyodrębnić dane dotyczące kroju z obrazu i skojarzyć go z obiektem **osoby** (za pośrednictwem wywołania interfejsu API [dodawania](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) , na przykład), a wiele obiektów **osób** może być przechowywanych razem w danej **osobie**. Następnie można porównać nową miarę z grupą **osób** (z wywołaniem o [Twarz — identyfikacja] ) i można zidentyfikować osobę pasującą w tej grupie.
+Usługa kroju może wyodrębnić dane z obrazu i skojarzyć je z obiektem **osoby** (za pośrednictwem wywołania interfejsu API [dodawania](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) , na przykład), a wiele obiektów **osób** może być przechowywanych razem w danej **osobie**. Następnie można porównać nową miarę z grupą **osób** (z wywołaniem o [Twarz — identyfikacja] ) i można zidentyfikować osobę pasującą w tej grupie.
 
 Grupa **osób** powinna mieć jeden unikatowy model rozpoznawania dla wszystkich **osób**i można ją określić przy użyciu `recognitionModel` parametru podczas tworzenia grupy ([Element PersonGroup — tworzenie] lub [Element LargePersonGroup — tworzenie]). Jeśli ten parametr nie jest określony, używany jest oryginalny model `recognition_01`. Grupa zawsze będzie używać modelu rozpoznawania, który został utworzony za pomocą programu, a nowe twarze zostaną skojarzone z tym modelem po ich dodaniu. nie można go zmienić po utworzeniu grupy. Aby sprawdzić model, za pomocą którego jest konfigurowana dana **osoba** , użyj interfejsu API [Osoba — Pobierz] z parametrem _returnRecognitionModel_ ustawionym jako **true**.
 

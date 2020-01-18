@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 01/14/2020
+ms.date: 01/13/2020
 ms.author: juliako
-ms.openlocfilehash: c4c39dc53e492fd295cf30a7b7d75c933ebc912f
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: e457fbe5b8dd23c93110fb8ccc7d8857128de82c
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75972624"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169372"
 ---
 # <a name="upload-and-index-your-videos"></a>Przekazywanie i indeksowanie plików wideo  
 
@@ -25,9 +25,12 @@ Podczas przekazywania filmów wideo za pomocą interfejsu API Video Indexer dost
 * wysyłanie pliku wideo w postaci tablicy bajtów w treści żądania,
 * Użyj istniejącego elementu zawartości Azure Media Services, podając [Identyfikator elementu zawartości](https://docs.microsoft.com/azure/media-services/latest/assets-concept) (obsługiwane tylko w przypadku płatnych kont).
 
-W tym artykule pokazano, jak za pomocą interfejsu API [przekazywania pliku wideo](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) przekazywać i indeksować pliki wideo na podstawie adresów URL. Przykładowy kod podany w artykule zawiera oznaczony jako komentarz kod, w którym pokazano, jak przekazać tablicę bajtów. <br/>W artykule omówiono też niektóre parametry, które można ustawić w interfejsie API, aby zmieniać przetwarzanie i dane wyjściowe interfejsu API.
+Po przekazaniu wideo Video Indexer (opcjonalnie) koduje wideo (omówione w artykule). Podczas tworzenia konta w usłudze Video Indexer można wybrać konto bezpłatnej wersji próbnej (w ramach którego otrzymuje się określoną liczbę bezpłatnych minut indeksowania) lub opcję płatną (w przypadku której nie ma ograniczeń przydziału). Usługa Video Indexer w bezpłatnej wersji próbnej udostępnia do 600 minut bezpłatnego indeksowania u użytkowników witryn internetowych oraz do 2400 minut bezpłatnego indeksowania u użytkowników interfejsów API. Opcja with płatna umożliwia utworzenie konta Video Indexer, które jest [połączone z subskrypcją platformy Azure i kontem Azure Media Services](connect-to-azure.md). Naliczane są opłaty za minuty indeksowania, a także opłaty powiązane z kontem usługi Media. 
 
-Po przekazaniu wideo Video Indexer opcjonalnie koduje wideo (omówione w artykule). Podczas tworzenia konta w usłudze Video Indexer można wybrać konto bezpłatnej wersji próbnej (w ramach którego otrzymuje się określoną liczbę bezpłatnych minut indeksowania) lub opcję płatną (w przypadku której nie ma ograniczeń przydziału). Usługa Video Indexer w bezpłatnej wersji próbnej udostępnia do 600 minut bezpłatnego indeksowania u użytkowników witryn internetowych oraz do 2400 minut bezpłatnego indeksowania u użytkowników interfejsów API. Opcja with płatna umożliwia utworzenie konta Video Indexer, które jest [połączone z subskrypcją platformy Azure i kontem Azure Media Services](connect-to-azure.md). Naliczane są opłaty za minuty indeksowania, a także opłaty powiązane z kontem usługi Media. 
+W tym artykule przedstawiono sposób przekazywania i indeksowania wideo przy użyciu następujących opcji:
+
+* [Witryna sieci Web Video Indexer](#website) 
+* [Interfejsy API Video Indexer](#apis)
 
 ## <a name="uploading-considerations-and-limitations"></a>Przekazywanie zagadnień i ograniczeń
  
@@ -40,6 +43,10 @@ Po przekazaniu wideo Video Indexer opcjonalnie koduje wideo (omówione w artykul
 - Adres URL podany w `videoURL` param musi być zakodowany.
 - Indeksowanie Media Services elementów zawartości ma takie samo ograniczenie jak indeksowanie z adresu URL.
 - W przypadku pojedynczego pliku Video Indexer ma maksymalny limit czasu trwania wynoszący 4 godziny.
+- Adres URL musi być dostępny (na przykład publiczny adres URL). 
+
+    Jeśli jest to prywatny adres URL, token dostępu musi być podany w żądaniu.
+- Adres URL musi wskazywać prawidłowy plik multimedialny, a nie stronę sieci Web, na przykład łącze do strony `www.youtube.com`.
 - Możesz przekazać do 60 filmów na minutę.
 
 > [!Tip]
@@ -47,15 +54,39 @@ Po przekazaniu wideo Video Indexer opcjonalnie koduje wideo (omówione w artykul
 >
 > Jeśli musisz użyć starszej platformy .NET, dodaj jeden wiersz do swojego kodu przed wprowadzeniem wywołania interfejsu API REST:  <br/> System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
 
-## <a name="configurations-and-params"></a>Konfiguracje i parametry
+## <a name="supported-file-formats-for-video-indexer"></a>Obsługiwane formaty plików dla Video Indexer
+
+Listę formatów plików, których można używać z Video Indexer, zawiera artykuł [dane wejściowe dotyczące formatów kontenerów i plików](../latest/media-encoder-standard-formats.md#input-containerfile-formats) .
+
+## <a name="a-idwebsiteupload-and-index-a-video-using-the-video-indexer-website"></a><a id="website"/>przekazywanie i indeksowanie wideo przy użyciu witryny sieci Web Video Indexer
+
+> [!NOTE]
+> Nazwa filmu wideo nie może być dłuższa niż 80 znaków.
+
+1. Zaloguj się w witrynie internetowej usługi [Video Indexer](https://www.videoindexer.ai/).
+2. Aby przekazać plik wideo, naciśnij przycisk lub link **Upload** (Przekaż).
+
+    ![Przekazywanie](./media/video-indexer-get-started/video-indexer-upload.png)
+
+    Po przekazaniu pliku wideo usługa Video Indexer rozpocznie jego indeksowanie i analizowanie.
+
+    ![Przekazano](./media/video-indexer-get-started/video-indexer-uploaded.png) 
+
+    Po zakończeniu analizowania przez usługę Video Indexer otrzymasz powiadomienie z linkiem do tego pliku wideo i krótki opis tego, co znaleziono w tym nagraniu. Na przykład: osoby, tematy i wyniki przetwarzania OCR.
+
+## <a name="a-idapisupload-and-index-with-api"></a><a id="apis"/>przekazywanie i indeksowanie za pomocą interfejsu API
+
+Użyj interfejsu API [przekazywania wideo](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) do przekazywania i indeksowania wideo na podstawie adresu URL. Poniższy przykład kodu zawiera komentarz w kodzie, który pokazuje, jak przekazać tablicę bajtów. 
+
+### <a name="configurations-and-params"></a>Konfiguracje i parametry
 
 W tej sekcji opisano niektóre parametry opcjonalne i wyjaśniono, kiedy należy je ustawić.
 
-### <a name="externalid"></a>externalID 
+#### <a name="externalid"></a>externalID 
 
 Ten parametr umożliwia określenie identyfikatora, który zostanie skojarzony z plikiem wideo. Ten identyfikator można zastosować do integracji z zewnętrznym systemem zarządzania zawartością wideo (VCM, Video Content Management). Pliki wideo znajdujące się w portalu usługi Video Indexer można wyszukiwać za pomocą tego określonego identyfikatora zewnętrznego.
 
-### <a name="callbackurl"></a>callbackUrl
+#### <a name="callbackurl"></a>callbackUrl
 
 Adres URL używany do powiadamiania klienta (za pomocą żądania POST) o następujących zdarzeniach:
 
@@ -79,12 +110,12 @@ Adres URL używany do powiadamiania klienta (za pomocą żądania POST) o nastę
         
     - Przykład: https:\//test.com/notifyme?projectName=MyProject&id=1234abcd&faceid=12&knownPersonId=CCA84350-89B7-4262-861C-3CAC796542A5&personName=Inigo_Montoya 
 
-#### <a name="notes"></a>Uwagi
+##### <a name="notes"></a>Uwagi
 
 - Usługa Video Indexer zwraca wszelkie istniejące parametry podane w oryginalnym adresie URL.
 - Podany adres URL musi być zakodowany.
 
-### <a name="indexingpreset"></a>indexingPreset
+#### <a name="indexingpreset"></a>indexingPreset
 
 Tego parametru należy użyć, jeśli nagrania nieprzetworzone lub zewnętrzne zawierają hałas w tle. Parametr ten służy do konfigurowania procesu indeksowania. Można określić następujące wartości:
 
@@ -95,13 +126,13 @@ Tego parametru należy użyć, jeśli nagrania nieprzetworzone lub zewnętrzne z
 
 Cena zależy od wybranej opcji indeksowania.  
 
-### <a name="priority"></a>priority
+#### <a name="priority"></a>priority
 
 Usługa Video Indexer indeksuje filmy wideo zgodnie z ich priorytetem. Użyj parametru **priority**, aby określić priorytet indeksu. Prawidłowe są następujące wartości: **Low** (niski), **Normal** (normalny — wartość domyślna), **High** (wysoki).
 
 Parametr **priority** jest obsługiwany tylko w przypadku płatnych kont.
 
-### <a name="streamingpreset"></a>streamingPreset
+#### <a name="streamingpreset"></a>streamingPreset
 
 Po przekazaniu pliku wideo usługa Video Indexer opcjonalnie koduje ten plik. Następnie przechodzi do indeksowania i analizowania pliku wideo. Po zakończeniu analizowania przez usługę Video Indexer otrzymasz powiadomienie z identyfikatorem pliku wideo.  
 
@@ -111,17 +142,17 @@ Aby można było uruchomić zadania indeksowania i kodowania, dla [konta usługi
 
 Jeśli chcesz tylko zaindeksować plik wideo bez kodowania go, ustaw dla parametru `streamingPreset` wartość `NoStreaming`.
 
-### <a name="videourl"></a>videoUrl
+#### <a name="videourl"></a>videoUrl
 
 Adres URL pliku wideo/audio do zaindeksowania. Ten adres URL musi wskazywać plik multimedialny (strony HTML nie są obsługiwane). Plik może być chroniony przez token dostępu podany w ramach identyfikatora URI, a punkt końcowy obsługujący plik musi być zabezpieczony za pomocą protokołu TLS 1.2 lub nowszej wersji. Adres URL musi być zakodowany. 
 
 Jeśli parametr `videoUrl` nie zostanie określony, usługa Video Indexer oczekuje przekazania pliku jako zawartości treści wieloczęściowej/formularza.
 
-## <a name="code-sample"></a>Przykład kodu
+### <a name="code-sample"></a>Przykład kodu
 
 W poniższym fragmencie kodu języka C# pokazano używanie wszystkich interfejsów API usługi Video Indexer razem.
 
-### <a name="instructions-for-running-this-code-sample"></a>Instrukcje dotyczące uruchamiania tego przykładu kodu
+#### <a name="instructions-for-running-this-code-sample"></a>Instrukcje dotyczące uruchamiania tego przykładu kodu
 
 Po skopiowaniu tego kodu na platformę programistyczną należy podać dwa parametry: API Management klucz uwierzytelniania i adres URL wideo.
 
@@ -308,7 +339,8 @@ public class AccountContractSlim
     public string AccessToken { get; set; }
 }
 ```
-## <a name="common-errors"></a>Typowe błędy
+
+### <a name="common-errors"></a>Typowe błędy
 
 Kody stanu wymienione w poniższej tabeli mogą być zwracane przez operację przekazywania.
 

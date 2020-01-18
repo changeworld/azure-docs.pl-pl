@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/24/2019
-ms.openlocfilehash: d4fd443959604f1a50dffbcb646bbe66fa159f8d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0f2181a388a5329dbc16ce8968da79529b22ea85
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75402596"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76168172"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Korzystanie z rozwiązania Service Map na platformie Azure
 
@@ -27,7 +27,7 @@ W tym artykule opisano szczegóły dotyczące dołączania i korzystania z Servi
 * Agent zależności zainstalowany na komputerze z systemem Windows lub Linux.
 
 >[!NOTE]
->Jeśli wdrożono już Service Map, można teraz również przeglądać mapy w Azure Monitor dla maszyn wirtualnych, co obejmuje dodatkowe funkcje monitorowania kondycji i wydajności maszyn wirtualnych. Aby dowiedzieć się więcej, zobacz [Azure monitor dla maszyn wirtualnych Omówienie](../../azure-monitor/insights/vminsights-overview.md). Aby dowiedzieć się więcej o różnicach między rozwiązaniem Service Map i funkcją mapy Azure Monitor dla maszyn wirtualnych, zobacz poniższe [często zadawane pytania](vminsights-faq.md#how-is-azure-monitor-for-vms-map-feature-different-from-service-map).
+>Jeśli wdrożono już Service Map, można teraz również przeglądać mapy w Azure Monitor dla maszyn wirtualnych, co obejmuje dodatkowe funkcje monitorowania kondycji i wydajności maszyn wirtualnych. Aby dowiedzieć się więcej, zobacz [Azure monitor dla maszyn wirtualnych Omówienie](../../azure-monitor/insights/vminsights-overview.md). Aby dowiedzieć się więcej o różnicach między rozwiązaniem Service Map i funkcją mapy Azure Monitor dla maszyn wirtualnych, zobacz poniższe [często zadawane pytania](../faq.md#azure-monitor-for-vms-preview).
 
 ## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
 
@@ -190,7 +190,7 @@ Grupy portów serwera to pola reprezentujące porty serwera na serwerach, na kt�
 
 ![Grupy portów serwera](media/service-map/server-port-groups.png)
 
-## <a name="context-menu"></a>Menu Kontekst
+## <a name="context-menu"></a>Menu kontekstowe
 
 Kliknięcie wielokropka (...) w prawym górnym rogu dowolnego serwera powoduje wyświetlenie menu kontekstowego dla tego serwera.
 
@@ -321,7 +321,7 @@ Ponieważ wiele rekordów może istnieć dla określonego procesu i komputera w 
 
 ### <a name="connections"></a>Połączenia
 
-Metryki połączeń są zapisywane w nowej tabeli w Log Analytics-VMConnection. Ta tabela zawiera informacje o połączeniach dla komputera (przychodzący i wychodzący). Metryki połączeń są również udostępniane interfejsom API, które udostępniają metodę uzyskiwania określonej metryki w przedziale czasu.  Połączenia TCP wynikające z "*Akceptuję*" w gnieździe nasłuchiwania są przychodzące, podczas gdy są one tworzone przez *połączenie z*danym adresem IP i portem. Kierunek połączenia jest reprezentowany przez Właściwość Direction, która może być ustawiona na wartość **przychodzące** lub **wychodzące**. 
+Metryki połączeń są zapisywane w nowej tabeli w Log Analytics-VMConnection. Ta tabela zawiera informacje o połączeniach dla komputera (przychodzący i wychodzący). Metryki połączeń są również udostępniane interfejsom API, które udostępniają metodę uzyskiwania określonej metryki w przedziale czasu.  Połączenia TCP wynikające z zaakceptowania w gnieździe nasłuchiwania są przychodzące, podczas gdy te utworzone przez połączenie z danym adresem IP i portem są wychodzące. Kierunek połączenia jest reprezentowany przez Właściwość Direction, która może być ustawiona na wartość **przychodzące** lub **wychodzące**. 
 
 Rekordy w tych tabelach są generowane na podstawie danych zgłaszanych przez agenta zależności. Każdy rekord reprezentuje obserwację w przedziale czasowym co minutę. Właściwość TimeGenerated wskazuje początek interwału czasu. Każdy rekord zawiera informacje służące do identyfikacji odpowiedniej jednostki, czyli połączenia lub portu, a także metryk skojarzonych z tą jednostką. Obecnie zgłaszane jest tylko działanie sieciowe, które odbywa się przy użyciu protokołu TCP przez IPv4.
 

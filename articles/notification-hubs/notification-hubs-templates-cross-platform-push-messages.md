@@ -1,6 +1,6 @@
 ---
-title: Szablony
-description: W tym temacie objaśniono szablony centrów powiadomień platformy Azure.
+title: Szablony Notification Hubs platformy Azure
+description: Dowiedz się więcej o korzystaniu z szablonów dla usługi Azure Notification Hubs.
 services: notification-hubs
 documentationcenter: .net
 author: sethmanheim
@@ -16,12 +16,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 54c53fee260062960d6bce9c1822971c935d88d1
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 7d88f57fe92b9da62cc9f90d64bdec4c27642fb0
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212991"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263748"
 ---
 # <a name="templates"></a>Szablony
 
@@ -139,13 +139,13 @@ W poniższej tabeli przedstawiono język dozwolony w szablonach:
 | $ (prop, n)       | Jak powyżej, ale tekst jest jawnie przycięty do n znaków, na przykład $ (title, 20) przycina zawartość Właściwości title do 20 znaków. |
 | . (prop, n)       | Jak powyżej, ale tekst jest sufiksem z trzema kropkami, gdy jest obcinany. Łączny rozmiar ciągu przycinanego i sufiksu nie przekracza n znaków. . (tytuł, 20) z właściwością wejściową "jest to wiersz tytułu" w wyniku **tego jest to tytuł...** |
 | % (PROP)          | Podobne do $ (Name), z tą różnicą, że dane wyjściowe są kodowane przy użyciu identyfikatora URI. |
-| # (PROP)          | Używane w szablonach JSON (na przykład w przypadku szablonów dla systemów iOS i Android).<br><br>Ta funkcja działa dokładnie tak samo jak wartość $ (PROP), z wyjątkiem sytuacji, gdy są używane w szablonach JSON (na przykład szablony firmy Apple). W tym przypadku, jeśli ta funkcja nie jest ujęta w nawiasy "{", "}" (na przykład "myJsonProperty": "# (nazwa)"), a jej wartość jest równa liczbie w formacie JavaScript, na przykład RegExp: (0&#124;(&#91;1-9&#93;&#91;0-9&#93;*)) (\.&#91;0-9&#93;+)? ((e&#124;e) (+&#124;-)? &#91;0-9&#93;+)?, a następnie wyjściowy kod JSON jest liczbą.<br><br>Na przykład "znaczek: ' # (nazwa) ' zmieni się na" znaczek ": 40 (i nie "40"). |
+| # (PROP)          | Używane w szablonach JSON (na przykład w przypadku szablonów dla systemów iOS i Android).<br><br>Ta funkcja działa dokładnie tak samo jak wartość $ (PROP), z wyjątkiem sytuacji, gdy są używane w szablonach JSON (na przykład szablony firmy Apple). W tym przypadku, jeśli ta funkcja nie jest ujęta w nawiasy "{", "}" (na przykład "myJsonProperty": "# (nazwa)"), a jej wartość jest równa liczbie w formacie JavaScript, na przykład RegExp: (&#124;0&#91;(&#93;&#91;1-9&#93;0-9 *)) ( &#91;\.&#93;0-9 +)? ((e&#124;e) (+&#124;-)? &#91;0-9&#93;+)?, a następnie wyjściowy kod JSON jest liczbą.<br><br>Na przykład "znaczek: ' # (nazwa) ' zmieni się na" znaczek ": 40 (a nie" 40 "). |
 | "text" lub "text" | Literał. Literały zawierają dowolny tekst w pojedynczym lub podwójnym cudzysłowie. |
 | Wyr1 + expr2    | Operator łączenia łączący dwa wyrażenia w jeden ciąg. |
 
 Wyrażenia mogą być dowolnym z powyższych formularzy.
 
-W przypadku korzystania z łączenia, całe wyrażenie musi być ujęte w `{}`nawias. Na przykład `{$(prop) + ‘ - ’ + $(prop2)}`.
+W przypadku korzystania z łączenia całe wyrażenie musi być otoczone `{}`. Na przykład `{$(prop) + ‘ - ’ + $(prop2)}`.
 
 Na przykład następujący szablon nie jest prawidłowym szablonem XML:
 
@@ -159,7 +159,7 @@ Na przykład następujący szablon nie jest prawidłowym szablonem XML:
 </tile>
 ```
 
-Jak wyjaśniono wcześniej, w przypadku korzystania z łączenia wyrażenia muszą być opakowane w nawiasy klamrowe. Na przykład:
+Jak wyjaśniono wcześniej, w przypadku korzystania z łączenia wyrażenia muszą być opakowane w nawiasy klamrowe. Przykład:
 
 ```xml
 <tile>
@@ -170,3 +170,7 @@ Jak wyjaśniono wcześniej, w przypadku korzystania z łączenia wyrażenia musz
   </visual>
 </tile>
 ```
+
+## <a name="next-steps"></a>Następne kroki
+
+[Dowiedz się więcej o usłudze Azure Notification Hubs](notification-hubs-push-notification-overview.md)

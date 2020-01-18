@@ -1,123 +1,127 @@
 ---
-title: Tworzenie Centrum IoT za pomocą witryny Azure portal | Dokumentacja firmy Microsoft
-description: Sposób tworzenia, zarządzania i usuwania usługi Azure IoT hubs za pomocą witryny Azure portal. Zawiera informacje na temat warstw cenowych, skalowanie, zabezpieczeń i komunikatów konfiguracji.
+title: Użyj Azure Portal, aby utworzyć IoT Hub | Microsoft Docs
+description: Sposób tworzenia i usuwania centrów Azure IoT Hub oraz zarządzania nimi za pomocą Azure Portal. Zawiera informacje o warstwach cenowych, skalowaniu, zabezpieczeniach i konfiguracji obsługi komunikatów.
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 09/06/2018
 ms.author: robinsh
-ms.openlocfilehash: 6f070462dca6e835504a33014a7ed48e9949f874
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: c43c142b22709d42416b2dd14dfc78812970916a
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67432628"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169611"
 ---
-# <a name="create-an-iot-hub-using-the-azure-portal"></a>Tworzenie Centrum IoT przy użyciu witryny Azure portal
+# <a name="create-an-iot-hub-using-the-azure-portal"></a>Tworzenie Centrum IoT Hub przy użyciu Azure Portal
 
 [!INCLUDE [iot-hub-resource-manager-selector](../../includes/iot-hub-resource-manager-selector.md)]
 
-W tym artykule opisano sposób tworzenia i zarządzanie centrami IoT Hub przy użyciu [witryny Azure portal](https://portal.azure.com).
+W tym artykule opisano sposób tworzenia centrów IoT i zarządzania nimi przy użyciu [Azure Portal](https://portal.azure.com).
 
-Aby skorzystać z instrukcji w tym samouczku, musisz mieć subskrypcję platformy Azure. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Aby skorzystać z kroków opisanych w tym samouczku, potrzebna jest subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="create-an-iot-hub"></a>Tworzenie centrum IoT Hub
+## <a name="create-an-iot-hub"></a>Tworzenie centrum IoT
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
-## <a name="change-the-settings-of-the-iot-hub"></a>Zmień ustawienia usługi IoT hub
+## <a name="change-the-settings-of-the-iot-hub"></a>Zmień ustawienia Centrum IoT Hub
 
-Po utworzeniu jest ono w okienku usługi IoT Hub, możesz zmienić ustawienia już istniejące Centrum IoT.
+Ustawienia istniejącego Centrum IoT można zmienić po jego utworzeniu w okienku IoT Hub.
 
-![Zrzut ekranu przedstawiający ustawienia dla usługi IoT hub](./media/iot-hub-create-through-portal/iot-hub-settings-panel.png)
+![Zrzut ekranu przedstawiający Ustawienia Centrum IoT](./media/iot-hub-create-through-portal/iot-hub-settings-panel.png)
 
-Oto niektóre właściwości, które można ustawić dla Centrum IoT:
+Poniżej przedstawiono niektóre właściwości, które można ustawić dla Centrum IoT Hub:
 
-**Ceny i Skala**: Ta właściwość służy do migracji do innej warstwy lub ustawić liczbę usługi IoT Hub jednostki. 
+**Cennik i skala**: można użyć tej właściwości do migracji do innej warstwy lub ustawienia liczby jednostek IoT Hub. 
 
-**Monitorowanie operacji**: Włącz lub wyłącz, różne kategorie monitorowania takich jak rejestrowanie zdarzeń związanych z komunikatów z urządzenia do chmury lub komunikatów z chmury do urządzeń.
+**Monitorowanie operacji**: Włącz lub Wyłącz różne kategorie monitorowania, takie jak rejestrowanie zdarzeń związanych z komunikatami z urządzenia do chmury lub komunikatami z chmury do urządzenia.
 
-**Filtr adresów IP**: Określ zakres adresów IP, które zostanie zaakceptowany lub odrzucony przez usługę IoT hub.
+**Filtr IP**: Określ zakres adresów IP, które zostaną zaakceptowane lub odrzucone przez Centrum IoT.
 
-**Właściwości**: Zawiera listę właściwości, można skopiować i używane w innych miejscach, takie jak identyfikator zasobu, grupy zasobów, lokalizację i tak dalej.
+**Właściwości**: zawiera listę właściwości, które można kopiować i używać w innym miejscu, takich jak identyfikator zasobu, Grupa zasobów, lokalizacja itd.
 
 ### <a name="shared-access-policies"></a>Zasady dostępu współużytkowanego
 
-Można również wyświetlić lub zmodyfikować listę zasady dostępu współdzielonego, klikając **zasady dostępu współdzielonego** w **ustawienia** sekcji. Te zasady zdefiniować uprawnienia dla urządzeń i usług do łączenia z usługą IoT Hub. 
+Możesz również wyświetlić lub zmodyfikować listę zasad dostępu współdzielonego, klikając pozycję **zasady dostępu współużytkowanego** w sekcji **Ustawienia** . Te zasady definiują uprawnienia dla urządzeń i usług w celu nawiązania połączenia z usługą IoT Hub. 
 
-Kliknij przycisk **Dodaj** otworzyć **Dodawanie zasad dostępu współdzielonego** bloku.  Można wprowadzić nową nazwę zasady i uprawnienia, które chcesz skojarzyć z zasadami, jak pokazano na poniższej ilustracji:
+Kliknij przycisk **Dodaj** , aby otworzyć blok **Dodawanie zasad dostępu współdzielonego** .  Możesz wprowadzić nową nazwę zasad i uprawnienia, które mają być skojarzone z tymi zasadami, jak pokazano na poniższej ilustracji:
 
-![Zrzut ekranu przedstawiający dodawanie zasad dostępu współdzielonego](./media/iot-hub-create-through-portal/iot-hub-add-shared-access-policy.png)
+![Zrzut ekranu przedstawiający Dodawanie zasad dostępu współdzielonego](./media/iot-hub-create-through-portal/iot-hub-add-shared-access-policy.png)
 
-* **Odczyt rejestru** i **zapis w rejestrze** zasady przyznają uprawnienia dostępu odczytu i zapisu w rejestrze tożsamości. Te uprawnienia są używane przez serwer zaplecza w chmurze usługi do zarządzania tożsamościami urządzeń. Wybranie opcji zapisu automatycznie wybiera wybranie opcji odczytu.
+* Zasady **zapisu** **Odczytaj** i Zapisz rejestru przyznają prawa dostępu do odczytu i zapisu w rejestrze tożsamości. Te uprawnienia są używane przez usługi zaplecza w chmurze do zarządzania tożsamościami urządzeń. Wybranie opcji zapisu powoduje automatyczne wybranie opcji odczytu.
 
-* **Połączenie z usługą** zasad udziela uprawnień do dostępu do punktów końcowych usługi. To uprawnienie jest używane przez serwer zaplecza w chmurze usługi do wysyłania i odbierania komunikatów z urządzeń, jak również do aktualizacji i odczytu danych bliźniaczej reprezentacji modułu i bliźniaczej reprezentacji urządzenia.
+* Zasady **łączenia usług** przyznają uprawnienia dostępu do punktów końcowych usługi. To uprawnienie jest używane przez usługi w chmurze zaplecza do wysyłania i odbierania komunikatów z urządzeń oraz do aktualizowania i odczytywania danych z sznurka i modułu.
 
-* **Połączenie urządzenia** zasad przyznaje uprawnienia do wysyłania i odbierania komunikatów za pomocą punktów końcowych po stronie urządzenia usługi IoT Hub. To uprawnienie jest używany przez urządzenia do wysyłania oraz odbierać komunikaty z Centrum IoT hub, aktualizacji i odczytu danych bliźniaczej reprezentacji modułu i bliźniaczej reprezentacji urządzenia i wykonywać operacje przekazywania plików.
+* Zasady **łączenia urządzeń** przyznają uprawnienia do wysyłania i otrzymywania komunikatów przy użyciu IoT Hub punktów końcowych po stronie urządzenia. To uprawnienie jest używane przez urządzenia do wysyłania i odbierania komunikatów z usługi IoT Hub, aktualizowania i odczytywania danych z sznurka i modułu, a następnie wykonywania operacji przekazywania plików.
 
-Kliknij przycisk **Utwórz** można dodać tę nowo utworzoną zasad do istniejącej listy.
+Kliknij przycisk **Utwórz** , aby dodać nowo utworzone zasady do istniejącej listy.
 
-Aby uzyskać szczegółowe informacje dotyczące dostępu przyznane przez określonych uprawnień, zobacz [uprawnienia usługi IoT Hub](./iot-hub-devguide-security.md#iot-hub-permissions).
+Aby uzyskać bardziej szczegółowe informacje o dostępie udzielonym przez określone uprawnienia, zobacz [IoT Hub uprawnienia](./iot-hub-devguide-security.md#iot-hub-permissions).
 
-## <a name="message-routing-for-an-iot-hub"></a>Routing komunikatów usługi IoT hub
+## <a name="register-a-new-device-in-the-iot-hub"></a>Rejestrowanie nowego urządzenia w usłudze IoT Hub
 
-Kliknij przycisk **Routing komunikatów** w obszarze **komunikatów** do można znaleźć w okienku przesyłanie wiadomości, gdzie należy zdefiniować trasy i niestandardowe punkty końcowe dla koncentratora. [Routing komunikatów](iot-hub-devguide-messages-d2c.md) pozwala na zarządzanie, jak dane są wysyłane z urządzeń do punktów końcowych. Pierwszym krokiem jest, aby dodać nową trasę. Następnie możesz dodać istniejący punkt końcowy do trasy lub Utwórz nowe typy obsługiwane, takie jak magazyn obiektów blob. 
+[!INCLUDE [iot-hub-include-create-device](../../includes/iot-hub-include-create-device.md)]
 
-![Okienko routing wiadomości](./media/iot-hub-create-through-portal/iot-hub-message-routing.png)
+## <a name="message-routing-for-an-iot-hub"></a>Routing komunikatów dla Centrum IoT
+
+Kliknij pozycję **Routing komunikatów** w obszarze **Obsługa** komunikatów, aby wyświetlić okienko routing wiadomości, w którym można definiować trasy i niestandardowe punkty końcowe dla centrum. [Routing komunikatów](iot-hub-devguide-messages-d2c.md) umożliwia zarządzanie sposobem wysyłania danych z urządzeń do punktów końcowych. Pierwszym krokiem jest dodanie nowej trasy. Następnie można dodać istniejący punkt końcowy do trasy lub utworzyć nowy jeden z obsługiwanych typów, takich jak usługa BLOB Storage. 
+
+![Okienko routingu wiadomości](./media/iot-hub-create-through-portal/iot-hub-message-routing.png)
 
 ### <a name="routes"></a>Trasy
 
-Trasy jest pierwsza karta w okienku przesyłanie wiadomości. Aby dodać nową trasę, kliknij pozycję +**Dodaj**. Zostanie wyświetlony następujący ekran. 
+Trasy to pierwsza karta w okienku routing wiadomości. Aby dodać nową trasę, kliknij pozycję +**Dodaj**. Zobaczysz poniższy ekran. 
 
-![Zrzut ekranu przedstawiający dodawanie nowego trasy](./media/iot-hub-create-through-portal/iot-hub-add-route-storage-endpoint.png)
+![Zrzut ekranu przedstawiający Dodawanie nowej trasy](./media/iot-hub-create-through-portal/iot-hub-add-route-storage-endpoint.png)
 
-Nazwij Centrum. Nazwa musi być unikatowa w obrębie listy trasy dla koncentratora. 
+Nadaj nazwę centrum. Nazwa musi być unikatowa na liście tras dla tego centrum. 
 
-Aby uzyskać **punktu końcowego**, wybierz ją z listy rozwijanej lub dodać nowy. W tym przykładzie konto magazynu i kontener są już dostępne. Aby dodać je jako punkt końcowy, kliknij pozycję +**Dodaj** obok listy rozwijanej punktu końcowego, a następnie wybierz pozycję **magazynu obiektów Blob**. Poniższy ekran przedstawia gdzie określone konto magazynu i kontener.
+W przypadku **punktu końcowego**można wybrać jeden z listy rozwijanej lub dodać nowy. W tym przykładzie konto magazynu i kontener są już dostępne. Aby dodać je jako punkt końcowy, kliknij przycisk +**Dodaj** obok listy rozwijanej punkt końcowy i wybierz pozycję **BLOB Storage**. Na poniższym ekranie przedstawiono, gdzie określono konto magazynu i kontener.
 
-![Zrzut ekranu przedstawiający dodawanie punktu końcowego magazynu dla reguły routingu](./media/iot-hub-create-through-portal/iot-hub-routing-add-storage-endpoint.png)
+![Zrzut ekranu przedstawiający Dodawanie punktu końcowego magazynu dla reguły routingu](./media/iot-hub-create-through-portal/iot-hub-routing-add-storage-endpoint.png)
 
-Kliknij przycisk **Wybierz kontener** wybrać konto magazynu i kontener. Po wybraniu tych pól, zwraca do okienka punktu końcowego. Użyj wartości domyślnych dla pozostałych pól i **Utwórz** do tworzenia punktu końcowego konta magazynu i dodaj go do reguły routingu.
+Kliknij pozycję **Wybierz kontener** , aby wybrać konto magazynu i kontener. Po wybraniu tych pól wraca do okienka punktów końcowych. Użyj wartości domyślnych dla pozostałych pól i **Utwórz** , aby utworzyć punkt końcowy dla konta magazynu i dodać go do reguł routingu.
 
-Aby uzyskać **źródła danych**, wybierz komunikaty telemetryczne urządzenia. 
+W obszarze **Źródło danych**wybierz pozycję komunikaty telemetryczne urządzenia. 
 
-Następnie dodaj routing zapytań. W tym przykładzie, wiadomości, które mają właściwość aplikacji o nazwie `level` o wartości równej `critical` są kierowane do konta magazynu.
+Następnie Dodaj zapytanie routingu. W tym przykładzie komunikaty mające właściwość aplikacji o nazwie `level` o wartości równej `critical` są kierowane do konta magazynu.
 
-![Zrzut ekranu przedstawiający zapisywanie nową regułę routingu](./media/iot-hub-create-through-portal/iot-hub-add-route.png)
+![Zrzut ekranu przedstawiający zapisywanie nowej reguły routingu](./media/iot-hub-create-through-portal/iot-hub-add-route.png)
 
-Kliknij przycisk **Zapisz** można zapisać reguły routingu. Wróć do okienka Routing komunikatów i nową regułę routingu jest wyświetlana.
+Kliknij przycisk **Zapisz** , aby zapisać regułę routingu. Powrócisz do okienka routing wiadomości i zostanie wyświetlona Nowa reguła routingu.
 
 ### <a name="custom-endpoints"></a>Niestandardowe punkty końcowe
 
-Kliknij przycisk **niestandardowe punkty końcowe** kartę. Zobaczysz wszystkie niestandardowe punkty końcowe już utworzony. W tym miejscu możesz dodać nowe punkty końcowe lub usuń istniejące punkty końcowe. 
+Kliknij kartę **niestandardowe punkty końcowe** . Zobaczysz już utworzone niestandardowe punkty końcowe. W tym miejscu możesz dodać nowe punkty końcowe lub usunąć istniejące punkty końcowe. 
 
 > [!NOTE]
-> Jeśli usuniesz trasy, nie powoduje usunięcia punktów końcowych, przypisany do tej trasy. Aby usunąć punkt końcowy, kliknij kartę niestandardowa punktów końcowych, wybierz punkt końcowy, który chcesz usunąć i kliknij przycisk Usuń.
+> Po usunięciu trasy nie są usuwane punkty końcowe przypisane do tej trasy. Aby usunąć punkt końcowy, kliknij kartę niestandardowe punkty końcowe, wybierz punkt końcowy, który chcesz usunąć, a następnie kliknij przycisk Usuń.
 >
 
-Możesz dowiedzieć się więcej o niestandardowych punktach końcowych w [odwołanie — punkty końcowe IoT hub](iot-hub-devguide-endpoints.md).
+Więcej informacji na temat niestandardowych punktów końcowych można znaleźć w [punktach końcowych programu Reference — IoT Hub](iot-hub-devguide-endpoints.md).
 
-Można zdefiniować maksymalnie 10 niestandardowych punktów końcowych usługi IoT hub. 
+Można zdefiniować maksymalnie 10 niestandardowych punktów końcowych dla Centrum IoT Hub. 
 
-Aby zobaczyć pełny przykład sposobu użycia niestandardowych punktów końcowych przy użyciu routingu, zobacz [routing za pomocą usługi IoT Hub komunikatów](tutorial-routing.md).
+Aby zobaczyć pełny przykład korzystania z niestandardowych punktów końcowych z routingiem, zobacz [Routing komunikatów z IoT Hub](tutorial-routing.md).
 
-## <a name="find-a-specific-iot-hub"></a>Odnaleźć określonej usługi IoT hub
+## <a name="find-a-specific-iot-hub"></a>Znajdowanie określonego Centrum IoT Hub
 
-Poniżej przedstawiono dwa sposoby znajdowania określonej usługi IoT hub w ramach subskrypcji:
+Poniżej przedstawiono dwa sposoby znajdowania określonego Centrum IoT Hub w ramach subskrypcji:
 
-1. Jeśli wiesz, zasobów, do którego należy Centrum IoT kliknij pozycję **grup zasobów**, następnie wybierz grupę zasobów z listy. Ekran grupa zasobów zawiera wszystkie zasoby w tej grupie, w tym centra IoT Hub. Kliknij Centrum, dla których potrzebujesz.
+1. Jeśli znasz grupę zasobów, do której należy Centrum IoT, kliknij pozycję **grupy zasobów**, a następnie wybierz z listy grupę zasobów. Na ekranie Grupa zasobów są wyświetlane wszystkie zasoby z tej grupy, w tym centra IoT Hub. Kliknij centrum, którego szukasz.
 
-2. Kliknij przycisk **wszystkie zasoby**. Na **wszystkie zasoby** okienku istnieje na liście rozwijanej, która domyślnie `All types`. Kliknij listę rozwijaną, usuń zaznaczenie pola wyboru `Select all`. Znajdź `IoT Hub` i sprawdzaj ją. Kliknij w polu listy rozwijanej, aby go zamknąć, a można filtrować wpisów, przedstawiający usługi IoT Hub.
+2. Kliknij pozycję **Wszystkie zasoby**. W okienku **wszystkie zasoby** znajduje się lista rozwijana, która ma wartość domyślną `All types`. Kliknij listę rozwijaną, a następnie usuń zaznaczenie pola `Select all`. Znajdź `IoT Hub` i sprawdź go. Kliknij pole listy rozwijanej, aby je zamknąć, a wpisy zostaną przefiltrowane, pokazując tylko centra IoT.
 
-## <a name="delete-the-iot-hub"></a>Usuwanie IoT hub
+## <a name="delete-the-iot-hub"></a>Usuwanie Centrum IoT Hub
 
-Aby usunąć Centrum Iot hub, można znaleźć w Centrum IoT, które chcesz usunąć, a następnie kliknij przycisk **Usuń** znajdujący się poniżej nazwę Centrum IoT.
+Aby usunąć Centrum IoT Hub, Znajdź Centrum IoT, które chcesz usunąć, a następnie kliknij przycisk **Usuń** poniżej nazwy Centrum IoT.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Skorzystaj z poniższych linków, aby dowiedzieć się więcej na temat zarządzania usługi Azure IoT Hub:
+Skorzystaj z poniższych linków, aby dowiedzieć się więcej o zarządzaniu usługą Azure IoT Hub:
 
-* [Routing komunikatów usługi IoT Hub](tutorial-routing.md)
-* [Metryki usługi IoT Hub](iot-hub-metrics.md)
+* [Routing komunikatów za pomocą IoT Hub](tutorial-routing.md)
+* [Metryki IoT Hub](iot-hub-metrics.md)
 * [Monitorowanie operacji](iot-hub-operations-monitoring.md)

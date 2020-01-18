@@ -1,6 +1,6 @@
 ---
-title: Dostarczanie zawartości dla klientów | Dokumentacja firmy Microsoft
-description: Ten temat zawiera omówienie co to jest zaangażowane w dostarczanie zawartości przy użyciu usługi Azure Media Services.
+title: Dostarczanie zawartości klientom | Microsoft Docs
+description: Ten temat zawiera omówienie tego, co jest związane z dostarczaniem zawartości przy użyciu Azure Media Services.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,148 +14,148 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 5db2cb983c0c3cd0e2194f7686964d9ec3828d6f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 22d98656f42f52f2fba0845fac6f1d210d2cf0bd
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61232279"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264682"
 ---
-# <a name="deliver-content-to-customers"></a>Dostarczanie zawartości do klientów
-Podczas przesyłania strumieniowego lub wideo na żądanie zawartość dostarczać klientom, celem jest dostarczanie wideo wysokiej jakości do różnych urządzeń warunki panujące w sieci.
+# <a name="deliver-content-to-customers"></a>Dostarczanie zawartości klientom
+Gdy dostarczasz klientom zawartość przesyłania strumieniowego lub wideo na żądanie, celem jest dostarczanie wysokiej jakości wideo do różnych urządzeń w różnych warunkach sieciowych.
 
-Aby osiągnąć ten cel, możesz wykonywać następujące czynności:
+Aby osiągnąć ten cel, możesz:
 
-* Kodowanie strumienia do strumienia wideo wielokrotnej szybkości transmisji bitów (adaptacyjnej szybkości transmisji bitów). To zajmie się jakość i warunki sieciowe.
-* Użyj usługi Microsoft Azure Media Services [funkcję dynamicznego tworzenia pakietów](media-services-dynamic-packaging-overview.md) do dynamicznego ponownego skompilowania pakietów strumienia do różnych protokołów. Ten proces obsłuży przesyłania strumieniowego na różnych urządzeniach. Usługa Media Services obsługuje dostarczanie następujących technologii przesyłania strumieniowego adaptacyjną szybkością transmisji bitów: <br/>
-    * **HTTP Live Streaming** (HLS) — Dodaj "(format = m3u8-aapl)" Ścieżka "/ Manifest" część adresu URL, które nakazuje przesyłania strumieniowego server pochodzenia zwraca wstecz zawartości HLS do użycia na **systemu Apple iOS** urządzenia z natywnym (Aby uzyskać szczegółowe informacje, zobacz [lokalizatory](#locators) i [adresy URL](#URLs)),
-    * **MPEG-DASH** — Dodaj "(format = mpd-time-csf)" Ścieżka "/ Manifest" części adresu URL, aby poinformować serwer pochodzenia przesyłania strumieniowego do zwrócenia kopię standardu MPEG-DASH (Aby uzyskać więcej informacji, zobacz [lokalizatory](#locators) i [adresy URL](#URLs)),
+* Koduj strumień do strumienia wideo o wysokiej szybkości transmisji bitów (adaptacyjnej szybkości transmisji bitów). Zajmie to jakość i warunki sieciowe.
+* Użyj Microsoft Azure Media Services [pakietów dynamicznych](media-services-dynamic-packaging-overview.md) , aby dynamicznie ponownie spakować strumień do różnych protokołów. Zajmie to przesyłanie strumieniowe na różnych urządzeniach. Media Services obsługuje dostarczanie następujących technologii przesyłania strumieniowego z adaptacyjną szybkością transmisji bitów: <br/>
+    * **Http Live Streaming** (HLS) — Dodaj ścieżkę "(format = M3U8-AAPL)" do części "/manifest" adresu URL, aby poinformować serwer pochodzenia przesyłania strumieniowego o konieczności przywrócenia zawartości HLS do użycia na urządzeniach natywnych **Apple iOS** (Aby uzyskać szczegółowe informacje, zobacz [lokalizatory](#locators) i [adresy URL](#URLs)).
+    * **MPEG-kreska** — Dodaj ścieżkę "(format = MPD-Time-CSF)" do części "/manifest" adresu URL, aby poinformować serwer pochodzenia przesyłania strumieniowego o zwrotnym formacie MPEG-kreski (Aby uzyskać szczegółowe informacje, zobacz [lokalizatory](#locators) i [adresy URL](#URLs)).
     * **Smooth Streaming**.
 
 >[!NOTE]
 >Po utworzeniu konta usługi AMS zostanie do niego dodany **domyślny** punkt końcowy przesyłania strumieniowego mający stan **Zatrzymany**. Aby rozpocząć przesyłanie strumieniowe zawartości oraz korzystać z dynamicznego tworzenia pakietów i szyfrowania dynamicznego, punkt końcowy przesyłania strumieniowego, z którego chcesz strumieniowo przesyłać zawartość, musi mieć stan **Uruchomiony**. 
 
-Ten artykuł zawiera omówienie koncepcji ważne dostarczania zawartości.
+Ten artykuł zawiera omówienie ważnych pojęć związanych z dostarczaniem zawartości.
 
-Aby sprawdzić znanych problemów, zobacz [znane problemy dotyczące](media-services-deliver-content-overview.md#known-issues).
+Aby sprawdzić znane problemy, zobacz [znane problemy](media-services-deliver-content-overview.md#known-issues).
 
 ## <a name="dynamic-packaging"></a>Dynamiczne tworzenie pakietów
-Za pomocą funkcji dynamicznego tworzenia pakietów tej usługi Media Services udostępnia, można dostarczać zawartość z adaptacyjną szybkością transmisji bitów w formacie MP4 lub Smooth Streaming, kodowane, w formatach transmisji strumieniowej obsługiwanych przez usługę Media Services (MPEG-DASH, HLS, Smooth Streaming) bez konieczności ponownego tworzenia pakietów w tych formatów przesyłania strumieniowego. Firma Microsoft zaleca dostarczanie zawartości za pomocą funkcji dynamicznego tworzenia pakietów.
+Dzięki pakietowi dynamicznemu, który Media Services zapewnia, można dostarczać zawartość w formacie MP4 lub Smooth Streaming z możliwością transmisji bitów w formatach transmisji strumieniowej obsługiwanych przez Media Services (MPEG-KRESKa, HLS, Smooth Streaming) bez konieczności ponownego tworzenia pakietów w tych formaty przesyłania strumieniowego. Zalecamy dostarczanie zawartości przy użyciu dynamicznego tworzenia pakietów.
 
-Aby móc korzystać z dynamicznego tworzenia pakietów, musisz zakodować plik (źródłowy) mezzanine do zestawu plików MP4 z adaptacyjną szybkością transmisji bitów lub pliki Smooth Streaming adaptacyjną szybkością transmisji bitów.
+Aby skorzystać z funkcji dynamicznego tworzenia pakietów, musisz zakodować plik Mezzanine (Source) do zestawu plików MP4 z adaptacyjną szybkością transmisji bitów lub plików Smooth Streaming z adaptacyjną szybkością transmisji bitów.
 
-Za pomocą funkcji dynamicznego tworzenia pakietów, możesz przechowywać i opłacać pliki w jednym formacie magazynu. Media Services skompiluje oraz udostępni właściwą odpowiedź na podstawie Twojej żądań.
+Dzięki pakietowi dynamicznemu można przechowywać i regulować pliki w jednym formacie magazynu. Media Services będzie kompilować i obsłużyć odpowiednią odpowiedź w oparciu o Twoje żądania.
 
-Funkcję dynamicznego tworzenia pakietów jest dostępna dla standardowej i premium, punkty końcowe przesyłania strumieniowego. 
+Dynamiczne pakowanie jest dostępne dla punktów końcowych przesyłania strumieniowego w warstwach Standardowa i Premium. 
 
-Aby uzyskać więcej informacji, zobacz [funkcję dynamicznego tworzenia pakietów](media-services-dynamic-packaging-overview.md).
+Aby uzyskać więcej informacji, zobacz [dynamiczne pakowanie](media-services-dynamic-packaging-overview.md).
 
-## <a name="filters-and-dynamic-manifests"></a>Filtrów i manifestów dynamicznych
-Można zdefiniować filtry dla zasoby za pomocą usługi Media Services. Te filtry są reguły po stronie serwera, które pomogą klientom wykonywania czynności takich jak odtworzyć określonej sekcji filmu wideo lub wskazać ich podzbiór odwzorowaniami audio i wideo, które może obsłużyć Twojego klienta urządzenia, (a nie wszystkie wersje, które są skojarzone z elementem zawartości). Filtrowanie odbywa się za pośrednictwem *o nazwie manifesty dynamiczne* które są tworzone, gdy klient żąda do przesyłania strumieniowego wideo na podstawie jednej lub większej liczby określonych filtrów.
+## <a name="filters-and-dynamic-manifests"></a>Filtry i manifesty dynamiczne
+Filtry dla zasobów można definiować za pomocą Media Services. Te filtry są reguł po stronie serwera, które ułatwiają klientom wykonywanie takich czynności jak odtwarzanie konkretnej sekcji filmu wideo lub określanie podzestawu plików audio i wideo, które może obsłużyć urządzenie klienta (zamiast wszystkich oddziałów, które są skojarzone z zasobem). To filtrowanie jest realizowane za pośrednictwem *manifestów dynamicznych* , które są tworzone, gdy klient zażąda strumieniowego przesyłania wideo na podstawie jednego lub większej liczby określonych filtrów.
 
 Aby uzyskać więcej informacji, zobacz [filtrów i manifestów dynamicznych](media-services-dynamic-manifest-overview.md).
 
-## <a name="a-idlocatorslocators"></a><a id="locators"/>Lokalizatory
-Aby podać użytkownikowi adres URL, który może służyć do przesyłania strumieniowego lub pobierania zawartości, najpierw musisz opublikować swój element zawartości przez utworzenie lokalizatora. Lokalizator zapewnia punkt wejścia, dostępu do plików znajdujących się w zasobie. Usługa Media Services obsługuje dwa typy lokalizatorów:
+## <a name="a-idlocatorslocators"></a><a id="locators"/>lokalizatory
+Aby podać użytkownikowi adres URL, który może służyć do przesyłania strumieniowego lub pobierania zawartości, musisz najpierw opublikować swój zasób przez utworzenie lokalizatora. Lokalizator zapewnia punkt wejścia, aby uzyskać dostęp do plików znajdujących się w elemencie zawartości. Usługa Media Services obsługuje dwa typy lokalizatorów:
 
-* Lokalizatory OnDemandOrigin. Te są używane do przesyłania strumieniowego multimediów (na przykład MPEG-DASH, HLS lub Smooth Streaming) lub pobrać progresywnie pliki.
-* Lokalizatory adresu URL (SAS) sygnatury dostępu współdzielonego. Są one używane do pobierania plików multimedialnych na komputerze lokalnym.
+* Lokalizatory OnDemandOrigin. Są one używane do przesyłania strumieniowego multimediów (na przykład MPEG-KRESKowego, HLS lub Smooth Streaming) lub progresywnego pobierania plików.
+* Lokalizatory adresów URL sygnatury dostępu współdzielonego (SAS). Są one używane do pobierania plików multimedialnych na komputer lokalny.
 
-*Zasady dostępu* służy do definiowania uprawnienia (na przykład odczytu, zapisu i listy) i czasu trwania, dla którego klient ma dostęp do określonego zasobu. Należy pamiętać, że uprawnienia listy (AccessPermissions.List) nie powinien być używany w tworzeniu Lokalizator OnDemandOrigin.
+*Zasady dostępu* są używane do definiowania uprawnień (takich jak Odczyt, zapis i lista) oraz czasu trwania, dla którego klient ma dostęp do określonego zasobu. Należy pamiętać, że uprawnienia listy (AccessPermissions. list) nie należy używać podczas tworzenia lokalizatora OnDemandOrigin.
 
-Lokalizatory mają datę wygaśnięcia. Witryna Azure portal ustawia datę wygaśnięcia w przyszłości 100 lat dla lokalizatorów.
+Lokalizatory mają daty wygaśnięcia. Azure Portal ustawia datę wygaśnięcia 100 lat w przyszłości dla lokalizatorów.
 
 > [!NOTE]
-> Jeśli używasz witryny Azure portal do utworzenia lokalizatorów przed marcem 2015 tych lokalizatorów ustawiono wygaśnie po upływie dwóch lat.
+> Jeśli użyto Azure Portal do utworzenia lokalizatorów przed 2015 marca, te lokalizatory zostały ustawione na wygasają po upływie dwóch lat.
 > 
 > 
 
 Do aktualizacji daty wygaśnięcia na lokalizatorze użyj interfejsu API [REST](https://docs.microsoft.com/rest/api/media/operations/locator#update_a_locator) lub [.NET](https://go.microsoft.com/fwlink/?LinkID=533259). Należy pamiętać, że po zaktualizowaniu daty wygaśnięcia lokalizatora SAS następuje zmiana adresu URL.
 
-Lokalizatory nie są przeznaczone do zarządzania kontroli dostępu poszczególnych użytkowników. Za pomocą rozwiązania Digital Rights Management (DRM), można nadać różne uprawnienia poszczególnym użytkownikom. Aby uzyskać więcej informacji, zobacz [zabezpieczania nośnika](https://msdn.microsoft.com/library/azure/dn282272.aspx).
+Lokalizatory nie są przeznaczone do zarządzania kontrolą dostępu dla poszczególnych użytkowników. Różne prawa dostępu można nadać indywidualnym użytkownikom przy użyciu rozwiązań Digital Rights Management (DRM). Aby uzyskać więcej informacji, zobacz [Zabezpieczanie nośnika](https://msdn.microsoft.com/library/azure/dn282272.aspx).
 
-Podczas tworzenia lokalizatora może być 30-sekundowe opóźnienie z powodu wymaganego do magazynowania i procesy propagacji w usłudze Azure Storage.
+Podczas tworzenia lokalizatora może wystąpić opóźnienie z 30 sekund wynikające z wymaganych procesów magazynu i propagacji w usłudze Azure Storage.
 
-## <a name="adaptive-streaming"></a>Adaptacyjną przesyłania strumieniowego
-Technologie adaptacyjną szybkością transmisji bitów umożliwia aplikacji odtwarzacza wideo określić warunki w sieci, a następnie wybierz z kilku różnych. Podczas komunikacji sieciowej spadku, klient może wybrać niższe szybkości transmisji bitów, więc odtwarzania można kontynuować niższa jakość wideo. Jak poprawić wydajność się warunków sieciowych, klient może przełączyć do wyższej szybkości transmisji bitów przy użyciu poprawy jakości wideo. Usługa Azure Media Services obsługuje następujące technologie adaptacyjną szybkością transmisji bitów: HTTP na żywo, przesyłania strumieniowego (HLS), Smooth Streaming i MPEG-DASH.
+## <a name="adaptive-streaming"></a>Adaptacyjne przesyłanie strumieniowe
+Technologie z adaptacyjną szybkością transmisji bitów umożliwiają aplikacjom odtwarzacza wideo Określanie warunków sieciowych i wybór spośród kilku szybkości transmisji bitów. W przypadku obniżenia poziomu komunikacji sieciowej klient może wybrać niższą szybkość transmisji bitów, aby odtwarzanie było kontynuowane z niższą jakością wideo. W miarę poprawy warunków sieci klient może przełączyć się na wyższą szybkość transmisji bitów z lepszą jakością wideo. Azure Media Services obsługuje następujące technologie z adaptacyjną szybkością transmisji bitów: HTTP Live Streaming (HLS), Smooth Streaming i MPEG-KRESKa.
 
-Aby zapewnić użytkownikom adresów URL przesyłania strumieniowego, trzeba najpierw utworzyć Lokalizator OnDemandOrigin. Tworzenie lokalizatora daje Ci ścieżki podstawowej z zawartością, który ma być przesyłana strumieniowo element zawartości. Jednak aby można było przesyłać strumieniowo zawartość, musisz zmodyfikować tę ścieżkę do dalszych. Do konstruowania pełny adres URL do pliku manifestu przesyłania strumieniowego, należy połączyć wartość ścieżki lokalizatora i manifest (filename.ism) Nazwa pliku. Następnie dołącz **/Manifest** i odpowiedni format (jeśli jest to konieczne), do ścieżki lokalizatora.
+Aby zapewnić użytkownikom adresy URL przesyłania strumieniowego, należy najpierw utworzyć lokalizator OnDemandOrigin. Utworzenie lokalizatora zapewnia podstawową ścieżkę do elementu zawartości zawierającego zawartość, którą chcesz przesłać strumieniowo. Aby jednak można było przesłać strumieniowo tę zawartość, należy zmodyfikować tę ścieżkę. Aby utworzyć pełny adres URL pliku manifestu przesyłania strumieniowego, należy połączyć wartość ścieżki lokalizatora i nazwę pliku manifestu (filename. ISM). Następnie Dołącz **/manifest** i odpowiedni format (w razie potrzeby) do ścieżki lokalizatora.
 
 > [!NOTE]
-> Można również przesyłać strumieniowo zawartość, za pośrednictwem połączenia SSL. Aby to zrobić, upewnij się, że Twoje adresy URL przesyłania strumieniowego uruchomić przy użyciu protokołu HTTPS. Należy pamiętać, że obecnie usługi AMS nie obsługuje protokołu SSL z zastosowaniem domen niestandardowych.  
+> Możesz również przesłać strumieniowo zawartość za pośrednictwem połączenia SSL. Aby to zrobić, upewnij się, że adresy URL przesyłania strumieniowego zaczynają się od protokołu HTTPS. Należy pamiętać, że obecnie nie obsługuje protokołu SSL z domenami niestandardowymi.  
 > 
 
-Można tylko przesyłanie strumieniowe za pośrednictwem protokołu SSL Jeśli utworzono punkt końcowy przesyłania strumieniowego, z którego umożliwia dostarczanie zawartości po 10 września 2014 r. Jeśli Twoje adresy URL przesyłania strumieniowego są oparte na punkty końcowe przesyłania strumieniowego utworzonych po 10 września 2014 r. adres URL zawiera "streaming.mediaservices.windows.net." Adresy URL przesyłania strumieniowego, które zawierają "origin.mediaservices.windows.net" (stary format) nie obsługują protokołu SSL. Jeśli adres URL jest w starym formacie i chcesz mieć możliwość przesyłania strumieniowego za pośrednictwem protokołu SSL, należy utworzyć nowy punkt końcowy przesyłania strumieniowego. Adresy URL, w oparciu o nowy punkt końcowy przesyłania strumieniowego umożliwiają przesyłanie strumieniowe zawartości za pośrednictwem protokołu SSL.
+Można przesyłać strumieniowo tylko za pośrednictwem protokołu SSL, jeśli punkt końcowy przesyłania strumieniowego, z którego dostarczasz zawartość, został utworzony po 10 września 2014. Jeśli adresy URL przesyłania strumieniowego są oparte na punktach końcowych przesyłania strumieniowego utworzonych po 10 września, 2014, adres URL zawiera "streaming.mediaservices.windows.net". Adresy URL przesyłania strumieniowego zawierające "origin.mediaservices.windows.net" (stary format) nie obsługują protokołu SSL. Jeśli adres URL ma stary format i chcesz mieć możliwość przesyłania strumieniowego za pośrednictwem protokołu SSL, Utwórz nowy punkt końcowy przesyłania strumieniowego. Użyj adresów URL opartych na nowym punkcie końcowym przesyłania strumieniowego do przesyłania strumieniowego zawartości za pośrednictwem protokołu SSL.
 
-## <a name="a-idurlsstreaming-url-formats"></a><a id="URLs"/>Przesyłanie strumieniowe formatów adresów URL
+## <a name="a-idurlsstreaming-url-formats"></a><a id="URLs"/>formatów adresów URL przesyłania strumieniowego
 
-### <a name="mpeg-dash-format"></a>Format MPEG-DASH
-{przesyłania strumieniowego punktu końcowego nazwie pobicia konta name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=mpd-time-csf)
+### <a name="mpeg-dash-format"></a>Format MPEG-KRESKOWANY
+{Nazwa punktu końcowego przesyłania strumieniowego — nazwa konta usługi Media Services}. Streaming. MediaServices. Windows. NET/{Locator ID}/{Nazwa pliku (format = MPD-Time-CSF)
 
 http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=mpd-time-csf)
 
-### <a name="apple-http-live-streaming-hls-v4-format"></a>Format V4 Apple HTTP Live Streaming (HLS)
-{przesyłania strumieniowego punktu końcowego nazwie pobicia konta name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=m3u8-aapl)
+### <a name="apple-http-live-streaming-hls-v4-format"></a>Format Apple HTTP Live Streaming (HLS) v4
+{Nazwa punktu końcowego przesyłania strumieniowego — nazwa konta usługi Media Services}. Streaming. MediaServices. Windows. NET/{Locator ID}/{Nazwa pliku (format = M3U8-AAPL)
 
 http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl)
 
-### <a name="apple-http-live-streaming-hls-v3-format"></a>Format V3 Apple HTTP Live Streaming (HLS)
-{przesyłania strumieniowego punktu końcowego nazwie pobicia konta name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=m3u8-aapl-v3)
+### <a name="apple-http-live-streaming-hls-v3-format"></a>Format firmy Apple HTTP Live Streaming (HLS) v3
+{Nazwa punktu końcowego przesyłania strumieniowego — nazwa konta usługi Media Services}. Streaming. MediaServices. Windows. NET/{Locator ID}/{Nazwa pliku (format = M3U8-AAPL-v3)
 
 http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl-v3)
 
-### <a name="apple-http-live-streaming-hls-format-with-audio-only-filter"></a>Format Apple HTTP Live Streaming (HLS), za pomocą filtru tylko dane audio
-Domyślnie ścieżek zawierających tylko dane audio są objęte HLS manifestu. Jest to wymagane do certyfikacji firmy Apple Store sieci komórkowej. W takim przypadku klient nie ma wystarczającą przepustowością lub jest połączony za pośrednictwem połączenia 2G, odtwarzania przechodzi do tylko dane audio. Pomaga to zachować strumieniowania zawartości, bez buforowania, ale nie ma żadnego obrazu. W niektórych scenariuszach odtwarzacza, buforowanie może mieć pierwszeństwo tylko dane audio. Jeśli chcesz usunąć tylko dane audio śledzenie, Dodaj **tylko dane audio = false** do adresu URL.
+### <a name="apple-http-live-streaming-hls-format-with-audio-only-filter"></a>Format Apple HTTP Live Streaming (HLS) z filtrem tylko audio
+Domyślnie ścieżki tylko audio są uwzględniane w manifeście HLS. Jest to wymagane w przypadku certyfikacji sklepu Apple dla sieci komórkowych. W takim przypadku, jeśli klient nie ma wystarczającej przepustowości lub jest połączony za pośrednictwem połączenia 2G, odtwarzanie jest włączane tylko do audio. Pomaga to w zachowaniu przesyłania strumieniowego zawartości bez buforowania, ale nie ma wideo. W niektórych scenariuszach buforowanie odtwarzacza może być preferowane wyłącznie przez audio. Jeśli chcesz usunąć śledzenie tylko audio, Dodaj **tylko audio = false** do adresu URL.
 
 http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl-v3,audio-only=false)
 
-Aby uzyskać więcej informacji, zobacz [dodatkowe funkcje wyjściowe obsługę tworzenia manifestów dynamicznych i HLS](https://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support/).
+Aby uzyskać więcej informacji, zobacz [Obsługa dynamicznego tworzenia składowych manifestu i HLS danych wyjściowych](https://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support/).
 
-### <a name="smooth-streaming-format"></a>Zestaw Smooth Streaming formatu
+### <a name="smooth-streaming-format"></a>Smooth Streaming format
 {nazwa punktu końcowego przesyłania strumieniowego-nazwa konta usługi Media Services}.streaming.mediaservices.windows.net/{identyfikator lokalizatora}/{nazwa pliku}.ism/Manifest
 
 Przykład:
 
 http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest
 
-### <a id="fmp4_v20"></a>Smooth Streaming 2.0 manifestu (starszej wersji manifestu)
-Domyślnie Smooth Streaming format manifestu zawiera tag powtórzeń (r-tag). Jednak niektóre odtwarzacze nie obsługują tagu języka r. Klientów za pomocą tych odtwarzaczy można użyć formatu, który wyłącza r-tag:
+### <a id="fmp4_v20"></a>Manifest Smooth Streaming 2,0 (stary manifest)
+Domyślnie Smooth Streaming format manifestu zawiera tag Repeat (tag języka r). Jednak niektórzy gracze nie obsługują znacznika języka r. Klienci z tymi graczami mogą używać formatu, który wyłącza tag języka r:
 
-{przesyłania strumieniowego punktu końcowego nazwie pobicia konta name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=fmp4-v20)
+{Nazwa punktu końcowego przesyłania strumieniowego — nazwa konta usługi Media Services}. Streaming. MediaServices. Windows. NET/{Locator ID}/{Nazwa pliku (format = FMP4-V20)
 
-    http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=fmp4-v20)
+    http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=fmp4-v20)
 
-## <a name="progressive-download"></a>Pobierania progresywnego
-Przy użyciu pobierania progresywnego możesz rozpocząć odtwarzanie multimediów, zanim cały plik został pobrany. Nie można pobrać progresywnie ISM * (ismv isma, ismt pliki lub ismc).
+## <a name="progressive-download"></a>Pobieranie progresywne
+Dzięki pobieraniu progresywnemu można rozpocząć odtwarzanie multimediów przed pobraniem całego pliku. Nie można stopniowo pobierać plików. ISM * (ISMV, ISMA, ISMT lub ISMC).
 
-Aby pobrać progresywnie zawartość, należy użyć typu OnDemandOrigin lokalizatora. Adres URL, który jest oparty na typie OnDemandOrigin lokalizatora można znaleźć w poniższym przykładzie:
+Aby stopniowo pobierać zawartość, użyj typu OnDemandOrigin lokalizatora. Poniższy przykład pokazuje adres URL, który jest oparty na OnDemandOrigin typie lokalizatora:
 
     http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_650kbps_AAC_und_ch2_96kbps.mp4
 
-Należy odszyfrować wszystkie zasoby szyfrowany magazyn, które mają być przesyłane strumieniowo z usługi punkt początkowy dla pobierania progresywnego.
+Należy odszyfrować wszystkie zasoby zaszyfrowane magazynem, które mają być przesyłane z usługi pochodzenia na potrzeby pobierania progresywnego.
 
-## <a name="download"></a>Do pobrania
-Aby pobrać zawartość do urządzenia klienckiego, należy utworzyć lokalizatora sygnatury dostępu Współdzielonego. Lokalizatora sygnatury dostępu Współdzielonego zapewnia dostęp do kontenera usługi Azure Storage, gdzie znajduje się plik. Aby utworzyć adres URL pobierania, należy osadzić nazwę pliku między hostem a sygnatura dostępu Współdzielonego.
+## <a name="download"></a>Pobierz
+Aby pobrać zawartość na urządzenie klienckie, należy utworzyć lokalizator sygnatury dostępu współdzielonego. Lokalizator SAS zapewnia dostęp do kontenera usługi Azure Storage, w którym znajduje się plik. Aby utworzyć adres URL pobierania, należy osadzić nazwę pliku między hostem a podpisem sygnatury dostępu współdzielonego.
 
-Adres URL, który jest oparty na lokalizatora sygnatury dostępu Współdzielonego można znaleźć w poniższym przykładzie:
+Poniższy przykład pokazuje adres URL, który jest oparty na lokalizacji sygnatury dostępu współdzielonego:
 
     https://test001.blob.core.windows.net/asset-ca7a4c3f-9eb5-4fd8-a898-459cb17761bd/BigBuckBunny.mp4?sv=2012-02-12&se=2014-05-03T01%3A23%3A50Z&sr=c&si=7c093e7c-7dab-45b4-beb4-2bfdff764bb5&sig=msEHP90c6JHXEOtTyIWqD7xio91GtVg0UIzjdpFscHk%3D
 
-Mają zastosowanie następujące kwestie:
+Obowiązują następujące zastrzeżenia:
 
-* Należy odszyfrować wszystkie zasoby szyfrowany magazyn, które mają być przesyłane strumieniowo z usługi punkt początkowy dla pobierania progresywnego.
-* Pobieranie, które nie zostało zakończone w ciągu 12 godzin zakończy się niepowodzeniem.
+* Należy odszyfrować wszystkie zasoby zaszyfrowane magazynem, które mają być przesyłane z usługi pochodzenia na potrzeby pobierania progresywnego.
+* Pobieranie, które nie zostało zakończone w ciągu 12 godzin, zakończy się niepowodzeniem.
 
 ## <a name="streaming-endpoints"></a>Punkty końcowe przesyłania strumieniowego
 
-Punkt końcowy przesyłania strumieniowego reprezentuje usługę przesyłania strumieniowego, która umożliwia dostarczanie zawartości bezpośrednio do aplikacji odtwarzacza klienta lub sieci dostarczania zawartości (CDN) w celu dalszego rozpowszechniania. Strumień wychodzący usługi punktu końcowego przesyłania strumieniowego może być strumień na żywo lub zawartości wideo na żądanie, w ramach konta usługi Media Services. Istnieją dwa typy punktów końcowych, przesyłania strumieniowego **standardowa** i **premium**. Aby uzyskać więcej informacji, zobacz [Streaming endpoints overview (Omówienie punktów końcowych przesyłania strumieniowego)](media-services-streaming-endpoints-overview.md).
+Punkt końcowy przesyłania strumieniowego reprezentuje usługę przesyłania strumieniowego, która umożliwia dostarczanie zawartości bezpośrednio do aplikacji odtwarzacza klienta lub do usługi Content Delivery Network (CDN) w celu dalszej dystrybucji. Strumień wychodzący z usługi punktu końcowego przesyłania strumieniowego może być strumieniem na żywo lub zasobem wideo na żądanie na koncie Media Services. Istnieją dwa typy punktów końcowych przesyłania strumieniowego, **Standard** i **Premium**. Aby uzyskać więcej informacji, zobacz [Streaming endpoints overview (Omówienie punktów końcowych przesyłania strumieniowego)](media-services-streaming-endpoints-overview.md).
 
 >[!NOTE]
 >Po utworzeniu konta usługi AMS zostanie do niego dodany **domyślny** punkt końcowy przesyłania strumieniowego mający stan **Zatrzymany**. Aby rozpocząć przesyłanie strumieniowe zawartości oraz korzystać z dynamicznego tworzenia pakietów i szyfrowania dynamicznego, punkt końcowy przesyłania strumieniowego, z którego chcesz strumieniowo przesyłać zawartość, musi mieć stan **Uruchomiony**. 
 
 ## <a name="known-issues"></a>Znane problemy
-### <a name="changes-to-smooth-streaming-manifest-version"></a>Wersja manifestu zmiany Smooth Streaming
-Przed wydaniem usługa lipca 2016 r. — gdy zasoby są tworzone przez usługi Media Encoder Standard, Media Encoder Premium Workflow lub starszej usługi Azure Media Encoder były przesyłane strumieniowo przy użyciu funkcji dynamicznego tworzenia pakietów — Smooth Streaming manifest zwracana będzie zgodne z wersji w wersji 2.0. W wersji 2.0 czas trwania fragmentu nie należy używać tagów tak zwane Powtórz ("r"). Na przykład:
+### <a name="changes-to-smooth-streaming-manifest-version"></a>Zmiany w wersji manifestu Smooth Streaming
+Przed wydaniem usługi 2016 lipca, gdy zasoby utworzone przez Media Encoder Standard, Media Encoder Premium Workflow lub wcześniejszy Azure Media Encoder były przesyłane strumieniowo przy użyciu dynamicznego tworzenia pakietów — zwracany manifest Smooth Streaming będzie zgodny z wersją 2,0. W wersji 2,0, czasy trwania fragmentacji nie są używane jako Tagi Repeat ("r"). Przykład:
 
 
     <?xml version="1.0" encoding="UTF-8"?>
@@ -169,7 +169,7 @@ Przed wydaniem usługa lipca 2016 r. — gdy zasoby są tworzone przez usługi M
         </StreamIndex>
     </SmoothStreamingMedia>
 
-W wersji usługi lipca 2016 r. wygenerowanego manifestu Smooth Streaming odpowiada wersji 2.2, o czasie trwania fragmentu, za pomocą tagów Powtórz tę procedurę. Na przykład:
+W wersji 2016 usługi, wygenerowany manifest Smooth Streaming jest zgodny z wersją 2,2, z fragmentacjami powtarzania przy użyciu tagów REPEAT. Przykład:
 
     <?xml version="1.0" encoding="UTF-8"?>
     <SmoothStreamingMedia MajorVersion="2" MinorVersion="2" Duration="8000" TimeScale="1000">
@@ -179,14 +179,14 @@ W wersji usługi lipca 2016 r. wygenerowanego manifestu Smooth Streaming odpowia
         </StreamIndex>
     </SmoothStreamingMedia>
 
-Niektórych starszych klientów Smooth Streaming mogą nie obsługiwać powtórzeń tagów i nie będzie można załadować manifestu. Aby rozwiązać ten problem, można użyć parametru starszy format manifestu **(format = fmp4 v20)** lub zaktualizuj klienta do najnowszej wersji, obsługuje tagi Powtórz tę procedurę. Aby uzyskać więcej informacji, zobacz [Smooth Streaming 2.0](media-services-deliver-content-overview.md#fmp4_v20).
+Niektóre starsze klienci Smooth Streaming mogą nie obsługiwać tagów powtarzających i nie będą ładowały manifestu. Aby rozwiązać ten problem, można użyć starszego parametru formatu manifestu **(format = FMP4-V20)** lub zaktualizować klienta do najnowszej wersji, która obsługuje powtarzające się Tagi. Aby uzyskać więcej informacji, zobacz [Smooth Streaming 2,0](media-services-deliver-content-overview.md#fmp4_v20).
 
 ## <a name="media-services-learning-paths"></a>Ścieżki szkoleniowe dotyczące usługi Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Przekazywanie opinii
+## <a name="provide-feedback"></a>Prześlij opinię
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="related-topics"></a>Tematy pokrewne
-[Aktualizowanie lokalizatorów usługi Media Services po stopniowym uaktualnieniu kluczy magazynu](media-services-roll-storage-access-keys.md)
+## <a name="related-topics"></a>Powiązane tematy
+[Aktualizowanie lokalizatorów Media Services po przeprowadzeniu wycofywania kluczy magazynu](media-services-roll-storage-access-keys.md)
 

@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.topic: conceptual
 ms.date: 12/04/2019
-ms.openlocfilehash: b7dd11c3a71c46bbc06b205c6b4300337683305a
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 8d118170de01c7685ac9dba65c7e22cefb6d4829
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75889008"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263163"
 ---
 # <a name="quickstart-create-an-azure-databricks-workspace-in-your-own-virtual-network"></a>Szybki Start: Tworzenie obszaru roboczego Azure Databricks we własnym Virtual Network
 
@@ -25,7 +25,7 @@ Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
 
-Zaloguj się do [portalu Azure](https://portal.azure.com/).
+Zaloguj się do [Portalu Azure](https://portal.azure.com/).
 
 > [!Note]
 > Tego samouczka nie można przeprowadzić za pomocą **subskrypcji bezpłatnej wersji próbnej platformy Azure**.
@@ -33,7 +33,7 @@ Zaloguj się do [portalu Azure](https://portal.azure.com/).
 
 ## <a name="create-a-virtual-network"></a>Tworzenie sieci wirtualnej
 
-1. Z menu Azure Portal wybierz pozycję **Utwórz zasób**. Następnie wybierz pozycję **sieć > Sieć wirtualna**.
+1. W menu witryny Azure Portal wybierz pozycję **Utwórz zasób**. Następnie wybierz pozycję **sieć > Sieć wirtualna**.
 
     ![Tworzenie sieci wirtualnej w Azure Portal](./media/quickstart-create-databricks-workspace-vnet-injection/create-virtual-network-portal.png)
 
@@ -41,23 +41,30 @@ Zaloguj się do [portalu Azure](https://portal.azure.com/).
 
     |Ustawienie|Sugerowana wartość|Opis|
     |-------|---------------|-----------|
-    |Nazwa|datakostki — Szybki Start|Wybierz nazwę sieci wirtualnej.|
-    |Przestrzeń adresowa|10.1.0.0/16|Zakres adresów sieci wirtualnej w notacji CIDR. Zakres CIDR musi należeć do zakresu od/16 do/24|
     |Subskrypcja|\<Twoja subskrypcja\>|Wybierz subskrypcję platformy Azure, której chcesz użyć.|
     |Grupa zasobów|datakostki — Szybki Start|Wybierz pozycję **Utwórz nową** , a następnie wprowadź nową nazwę grupy zasobów dla swojego konta.|
-    |Lokalizacja|\<Wybierz region, który jest najbliżej Twoich użytkowników\>|Wybierz lokalizację geograficzną, w której będzie można hostować sieć wirtualną. Użyj lokalizacji znajdującej się najbliżej użytkowników.|
+    |Nazwa|datakostki — Szybki Start|Wybierz nazwę sieci wirtualnej.|
+    |Region|\<Wybierz region, który jest najbliżej Twoich użytkowników\>|Wybierz lokalizację geograficzną, w której będzie można hostować sieć wirtualną. Użyj lokalizacji znajdującej się najbliżej użytkowników.|
+
+    ![Podstawy dla sieci wirtualnej w Azure Portal](./media/quickstart-create-databricks-workspace-vnet-injection/create-virtual-network.png)
+
+3. Wybierz pozycję **Dalej: adresy IP >** i Zastosuj następujące ustawienia. Następnie wybierz pozycję **Przegląd + Utwórz**.
+    
+    |Ustawienie|Sugerowana wartość|Opis|
+    |-------|---------------|-----------|
+    |Przestrzeń adresów IPv4|10.2.0.0/16|Zakres adresów sieci wirtualnej w notacji CIDR. Zakres CIDR musi należeć do zakresu od/16 do/24|
     |Nazwa podsieci|default|Wybierz nazwę domyślnej podsieci w sieci wirtualnej.|
-    |Zakres adresów podsieci|10.1.0.0/24|Zakres adresów podsieci w notacji CIDR. Musi ona być zawarta w przestrzeni adresowej sieci wirtualnej. Nie można edytować zakresu adresów podsieci, która jest używana.|
+    |Zakres adresów podsieci|10.2.0.0/24|Zakres adresów podsieci w notacji CIDR. Musi ona być zawarta w przestrzeni adresowej sieci wirtualnej. Nie można edytować zakresu adresów podsieci, która jest używana.|
 
-    ![Tworzenie sieci wirtualnej w Azure Portal](./media/quickstart-create-databricks-workspace-vnet-injection/create-virtual-network.png)
+    ![Ustaw konfiguracje IP dla sieci wirtualnej w Azure Portal](./media/quickstart-create-databricks-workspace-vnet-injection/create-virtual-network-ip-config.png)
 
-3. Po zakończeniu wdrażania przejdź do sieci wirtualnej i wybierz pozycję **przestrzeń adresowa** w obszarze **Ustawienia**. W polu " *Dodaj dodatkowy zakres adresów*" Wstaw `10.179.0.0/16` i wybierz pozycję **Zapisz**.
+4. Na karcie **Recenzja i tworzenie** wybierz pozycję **Utwórz** , aby wdrożyć sieć wirtualną. Po zakończeniu wdrażania przejdź do sieci wirtualnej i wybierz pozycję **przestrzeń adresowa** w obszarze **Ustawienia**. W polu " *Dodaj dodatkowy zakres adresów*" Wstaw `10.179.0.0/16` i wybierz pozycję **Zapisz**.
 
     ![Przestrzeń adresowa sieci wirtualnej platformy Azure](./media/quickstart-create-databricks-workspace-vnet-injection/add-address-space.png)
 
 ## <a name="create-an-azure-databricks-workspace"></a>Tworzenie obszaru roboczego usługi Azure Databricks
 
-1. Z menu Azure Portal wybierz pozycję **Utwórz zasób**. Następnie wybierz pozycję **analiza > datakostki**.
+1. W menu witryny Azure Portal wybierz pozycję **Utwórz zasób**. Następnie wybierz pozycję **analiza > datakostki**.
 
     ![Utwórz obszar roboczy Azure Databricks na Azure Portal](./media/quickstart-create-databricks-workspace-vnet-injection/create-databricks-workspace-portal.png)
 
@@ -70,6 +77,13 @@ Zaloguj się do [portalu Azure](https://portal.azure.com/).
     |Grupa zasobów|datakostki — Szybki Start|Wybierz tę samą grupę zasobów, która została użyta dla sieci wirtualnej.|
     |Lokalizacja|\<Wybierz region, który jest najbliżej Twoich użytkowników\>|Wybierz tę samą lokalizację, w której znajduje się Twoja sieć wirtualna.|
     |Warstwa cenowa|Wybierz warstwę Standardowa lub Premium.|Więcej informacji o warstwach cenowych znajduje się na [stronie cennika usługi datacegłs](https://azure.microsoft.com/pricing/details/databricks/).|
+
+    ![Tworzenie Azure Databricksego obszaru roboczego](./media/quickstart-create-databricks-workspace-vnet-injection/create-databricks-workspace.png)
+
+3. Po zakończeniu wprowadzania ustawień na stronie **podstawowe** wybierz pozycję **dalej: Sieć >** i Zastosuj następujące ustawienia:
+
+    |Ustawienie|Sugerowana wartość|Opis|
+    |-------|---------------|-----------|
     |Wdróż Azure Databricks obszar roboczy w Virtual Network (VNet)|Tak|To ustawienie umożliwia wdrożenie obszaru roboczego Azure Databricks w sieci wirtualnej.|
     |Sieć wirtualna|datakostki — Szybki Start|Wybierz sieć wirtualną utworzoną w poprzedniej sekcji.|
     |Nazwa podsieci publicznej|public-subnet|Użyj domyślnej nazwy podsieci publicznej.|
@@ -77,7 +91,7 @@ Zaloguj się do [portalu Azure](https://portal.azure.com/).
     |Nazwa podsieci prywatnej|private-subnet|Użyj domyślnej nazwy podsieci prywatnej.|
     |Zakres CIDR podsieci prywatnej|10.179.0.0/18|Użyj zakresu CIDR do, włącznie z/26.|
 
-    ![Utwórz obszar roboczy Azure Databricks na Azure Portal](./media/quickstart-create-databricks-workspace-vnet-injection/create-databricks-workspace.png)
+    ![Dodaj informacje o sieci wirtualnej do obszaru roboczego Azure Databricks na Azure Portal](./media/quickstart-create-databricks-workspace-vnet-injection/create-databricks-workspace-vnet-config.png)
 
 3. Po zakończeniu wdrażania przejdź do zasobu Azure Databricks. Zwróć uwagę, że Komunikacja równorzędna sieci wirtualnych jest wyłączona. Zwróć uwagę na grupę zasobów i grupę zasobów zarządzanych na stronie Przegląd. 
 

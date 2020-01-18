@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/03/2019
-ms.openlocfilehash: 7e63afee87d69a80a656ba7c5923b6f313268e2f
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.date: 01/16/2020
+ms.openlocfilehash: 41b5d7519776ca84cf002d463048eb7a8dec2410
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790431"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169150"
 ---
 # <a name="read-replicas-in-azure-database-for-mariadb"></a>Repliki do odczytu w usłudze Azure Database for MariaDB
 
@@ -88,7 +88,7 @@ mysql -h myreplica.mariadb.database.azure.com -u myadmin@myreplica -p
 
 W wierszu polecenia wprowadź hasło dla konta użytkownika.
 
-## <a name="monitor-replication"></a>Monitoruj replikację
+## <a name="monitor-replication"></a>Monitorowanie replikacji
 
 Azure Database for MariaDB zapewnia wartość **opóźnienia replikacji w sekundach** w Azure monitor. Ta Metryka jest dostępna tylko dla replik.
 
@@ -108,7 +108,7 @@ Gdy zdecydujesz się zatrzymać replikację do repliki, utraci ona wszystkie lin
 
 Dowiedz się, jak [zatrzymać replikację do repliki](howto-read-replicas-portal.md).
 
-## <a name="considerations-and-limitations"></a>Zagadnienia i ograniczenia
+## <a name="considerations-and-limitations"></a>Istotne kwestie i ograniczenia
 
 ### <a name="pricing-tiers"></a>Warstwy cenowe
 
@@ -137,7 +137,7 @@ Jeśli zatrzymasz replikację między serwerem głównym a repliką odczytu, zat
 
 ### <a name="deleted-master-and-standalone-servers"></a>Usunięto serwery główne i autonomiczne
 
-Po usunięciu serwera głównego replikacja zostaje zatrzymana dla wszystkich replik odczytu. Te repliki stają się serwerami autonomicznymi. Sam serwer główny jest usuwany.
+Po usunięciu serwera głównego replikacja zostaje zatrzymana dla wszystkich replik odczytu. Te repliki automatycznie stają się serwerami autonomicznymi i mogą akceptować zarówno operacje odczytu, jak i zapisu. Sam serwer główny jest usuwany.
 
 ### <a name="user-accounts"></a>Konta użytkowników
 

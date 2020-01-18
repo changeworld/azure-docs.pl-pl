@@ -1,5 +1,5 @@
 ---
-title: Tworzenie maszyn wirtualnych w programie DevTest Labs i zarządzanie nimi za pomocą interfejsu wiersza polecenia platformy Azure | Microsoft Docs
+title: Tworzenie maszyn wirtualnych w programie DevTest Labs i zarządzanie nimi przy użyciu interfejsu wiersza polecenia platformy Azure
 description: Dowiedz się, jak używać Azure DevTest Labs do tworzenia maszyn wirtualnych i zarządzania nimi za pomocą interfejsu wiersza polecenia platformy Azure
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/06/2019
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 7a089eae935fe5ecbf3dd2836d86912d0c63ef84
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: d3cd104e36cb407e9b1b833335869cac2c69d0ec
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70773099"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76167053"
 ---
 # <a name="create-and-manage-virtual-machines-with-devtest-labs-using-the-azure-cli"></a>Tworzenie maszyn wirtualnych i zarządzanie nimi za pomocą DevTest Labs przy użyciu interfejsu wiersza polecenia platformy Azure
 Ten przewodnik Szybki Start przeprowadzi Cię przez proces tworzenia, uruchamiania, łączenia, aktualizowania i czyszczenia maszyny deweloperskiej w laboratorium. 
@@ -30,7 +30,7 @@ Przed rozpoczęciem:
 * [Zainstaluj interfejs wiersza polecenia platformy Azure](/cli/azure/install-azure-cli). Aby rozpocząć, uruchom polecenie AZ login, aby utworzyć połączenie z platformą Azure. 
 
 ## <a name="create-and-verify-the-virtual-machine"></a>Utwórz i sprawdź maszynę wirtualną 
-Przed wykonaniem poleceń związanych z usługą DevTest Labs ustaw odpowiedni kontekst platformy Azure przy użyciu `az account set` polecenia:
+Przed wykonaniem poleceń związanych z DevTest Labs ustaw odpowiedni kontekst platformy Azure przy użyciu polecenia `az account set`:
 
 ```azurecli
 az account set --subscription 11111111-1111-1111-1111-111111111111
@@ -61,7 +61,7 @@ az lab vm create --lab-name sampleLabName --resource-group sampleLabResourceGrou
 Można również tworzyć maszyny wirtualne na podstawie formuł, ustawiając parametr **typu obrazu** na **formułę**. Jeśli musisz wybrać konkretną sieć wirtualną dla swojej maszyny wirtualnej, użyj parametrów nazwa sieci **wirtualnej** i **podsieci** . Aby uzyskać więcej informacji, zobacz [AZ Lab VM Create](/cli/azure/lab/vm#az-lab-vm-create).
 
 ## <a name="verify-that-the-vm-is-available"></a>Sprawdź, czy maszyna wirtualna jest dostępna.
-`az lab vm show` Użyj polecenia, aby sprawdzić, czy maszyna wirtualna jest dostępna przed rozpoczęciem i nawiązać z nią połączenia. 
+Użyj `az lab vm show` polecenia, aby sprawdzić, czy maszyna wirtualna jest dostępna przed rozpoczęciem i nawiązać z nią połączenia. 
 
 ```azurecli
 az lab vm show --lab-name sampleLabName --name sampleVMName --resource-group sampleResourceGroup --expand 'properties($expand=ComputeVm,NetworkInterface)' --query '{status: computeVm.statuses[0].displayStatus, fqdn: fqdn, ipAddress: networkInterface.publicIpAddress}'
@@ -81,7 +81,7 @@ Następujące przykładowe polecenie uruchamia maszynę wirtualną:
 az lab vm start --lab-name sampleLabName --name sampleVMName --resource-group sampleLabResourceGroup
 ```
 
-Nawiązywanie połączenia z maszyną wirtualną: [SSH](../virtual-machines/linux/mac-create-ssh-keys.md) lub [pulpit zdalny](../virtual-machines/windows/connect-logon.md).
+Połącz się z maszyną wirtualną: [SSH](../virtual-machines/linux/mac-create-ssh-keys.md) lub [pulpit zdalny](../virtual-machines/windows/connect-logon.md).
 ```bash
 ssh userName@ipAddressOrfqdn 
 ```
@@ -127,13 +127,13 @@ az lab vm apply-artifacts --lab-name  sampleLabName --name sampleVMName  --resou
 
 Aby wyświetlić listę artefaktów dostępnych na maszynie wirtualnej w laboratorium, uruchom następujące polecenia.
 
-**Cloud Shell — PowerShell**: Zwróć uwagę na użycie znacznika sprzed (\`) przed $ in $expand (tj. "$expand):
+**Cloud Shell — PowerShell**: Zwróć uwagę na użycie znacznika sprzed (\`) przed $expand $ in (tj. "$expand):
 
 ```azurecli-interactive
 az lab vm show --resource-group <resourcegroupname> --lab-name <labname> --name <vmname> --expand "properties(`$expand=artifacts)" --query "artifacts[].{artifactId: artifactId, status: status}"
 ```
 
-**Cloud Shell-bash**: Zwróć uwagę na użycie znaku ukośnika\\() przed $ w poleceniu. 
+**Cloud Shell-bash**: Zauważ użycie znaku ukośnika (\\) przed $ w poleceniu. 
 
 ```azurecli-interactive
 az lab vm show --resource-group <resourcegroupname> --lab-name <labname> --name <vmname> --expand "properties(\$expand=artifacts)" --query "artifacts[].{artifactId: artifactId, status: status}"

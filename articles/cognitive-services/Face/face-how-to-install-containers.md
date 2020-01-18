@@ -1,5 +1,5 @@
 ---
-title: Instalowanie i uruchamianie kontenerów — interfejs API rozpoznawania
+title: Instalowanie i uruchamianie kontenerów — Front
 titleSuffix: Azure Cognitive Services
 description: W tym artykule pokazano, jak pobrać, zainstalować i uruchomić kontenery do zaprezentowania w tym samouczku instruktażu.
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.author: dapine
-ms.openlocfilehash: 574f6bead9cac384c72d2d0cd35353eb571a9490
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: e467b195ab1e2124286bfef74d7d1b71a4d99dd6
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74327039"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76165993"
 ---
 # <a name="install-and-run-face-containers-preview"></a>Instalowanie i uruchamianie kontenerów z systemem (wersja zapoznawcza)
 
@@ -26,11 +26,11 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Przed użyciem kontenerów interfejs API rozpoznawania twarzy należy spełnić następujące wymagania wstępne.
+Przed użyciem kontenerów usługi Front Service należy spełnić następujące wymagania wstępne.
 
-|Wymagany|Przeznaczenie|
+|Wymagane|Przeznaczenie|
 |--|--|
-|Aparat platformy Docker| Aparat platformy Docker musi być zainstalowany na [komputerze-hoście](#the-host-computer). Platforma Docker zawiera pakiety, które konfigurują środowisko platformy Docker w systemach [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/)i [Linux](https://docs.docker.com/engine/installation/#supported-platforms). Podstawowe informacje dotyczące platformy Docker i kontenera można znaleźć w temacie [Omówienie platformy Docker](https://docs.docker.com/engine/docker-overview/).<br><br> Docker należy skonfigurować w taki sposób, aby umożliwić kontenerów, aby nawiązać połączenie z, a następnie wysyłać danych dotyczących rozliczeń do platformy Azure. <br><br> W systemie Windows program Docker musi być również skonfigurowany do obsługi kontenerów systemu Linux.<br><br>|
+|Aparat platformy Docker| Aparat platformy Docker musi być zainstalowany na [komputerze-hoście](#the-host-computer). Platforma Docker zawiera pakiety, które konfigurują środowisko platformy Docker w systemach [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/)i [Linux](https://docs.docker.com/engine/installation/#supported-platforms). Aby uzyskać podstawowe informacje na temat platformy Docker i kontenerów, zobacz [Docker — omówienie](https://docs.docker.com/engine/docker-overview/).<br><br> Docker należy skonfigurować w taki sposób, aby umożliwić kontenerów, aby nawiązać połączenie z, a następnie wysyłać danych dotyczących rozliczeń do platformy Azure. <br><br> W systemie Windows program Docker musi być również skonfigurowany do obsługi kontenerów systemu Linux.<br><br>|
 |Znajomość platformy Docker | Potrzebna jest podstawowa znajomość pojęć platformy Docker, takich jak rejestry, repozytoria, kontenery i obrazy kontenerów. Potrzebna jest również znajomość podstawowych poleceń `docker`.| 
 |Zasób czołowy |Aby używać kontenera, musisz mieć:<br><br>**Zasób platformy** Azure i skojarzony klucz interfejsu API oraz identyfikator URI punktu końcowego. Obie wartości są dostępne na stronach **Przegląd** i **klucze** dla zasobu. Są one wymagane do uruchomienia kontenera.<br><br>**{API_KEY}** : jeden z dwóch dostępnych kluczy zasobów na stronie **kluczy**<br><br>**{ENDPOINT_URI}** : punkt końcowy określony na stronie **Przegląd**
 
@@ -46,7 +46,7 @@ Przed użyciem kontenerów interfejs API rozpoznawania twarzy należy spełnić 
 
 ### <a name="container-requirements-and-recommendations"></a>Kontener wymagania i zalecenia
 
-W poniższej tabeli opisano minimalną i zalecaną liczbę rdzeni procesora CPU oraz ilość pamięci do przydzielenia dla każdego kontenera interfejs API rozpoznawania twarzy.
+W poniższej tabeli opisano minimalną i zalecaną liczbę rdzeni procesora CPU oraz ilość pamięci do przydzielenia dla każdego kontenera usługi.
 
 | Kontener | Minimalne | Zalecane | Transakcje na sekundę<br>(Minimum, maksimum)|
 |-----------|---------|-------------|--|
@@ -59,7 +59,7 @@ Rdzeń i pamięć odpowiadają ustawieniom `--cpus` i `--memory`, które są uż
 
 ## <a name="get-the-container-image-with-docker-pull"></a>Pobierz obraz kontenera za pomocą docker pull
 
-Dostępne są obrazy kontenerów dla interfejs API rozpoznawania twarzy. 
+Dostępne są obrazy kontenerów dla usługi. 
 
 | Kontener | Repozytorium |
 |-----------|------------|
@@ -84,7 +84,7 @@ Gdy kontener znajduje się na [komputerze hosta](#the-host-computer), użyj nast
 
 Użyj polecenia [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) , aby uruchomić kontener. Zapoznaj się z tematem [zbieranie wymaganych parametrów](#gathering-required-parameters) , aby uzyskać szczegółowe informacje na temat pobierania wartości `{ENDPOINT_URI}` i `{API_KEY}`.
 
-[Przykłady](face-resource-container-config.md#example-docker-run-commands) polecenia `docker run` są dostępne.
+[Przykłady](face-resource-container-config.md#example-docker-run-commands) polecenia są dostępne. `docker run`
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
@@ -104,7 +104,7 @@ To polecenie:
 Więcej [przykładów](./face-resource-container-config.md#example-docker-run-commands) polecenia `docker run` są dostępne. 
 
 > [!IMPORTANT]
-> Aby można było uruchomić kontener lub nie można uruchomić kontenera, należy określić opcje `Eula`, `Billing`i `ApiKey`. Aby uzyskać więcej informacji, zobacz [rozliczenia](#billing).
+> Aby można było uruchomić kontener lub nie można uruchomić kontenera, należy określić opcje `Eula`, `Billing`i `ApiKey`. Aby uzyskać więcej informacji, zobacz [rozliczeń](#billing).
 
 [!INCLUDE [Running multiple containers on the same host](../../../includes/cognitive-services-containers-run-multiple-same-host.md)]
 
@@ -120,7 +120,7 @@ Użyj hosta `http://localhost:5000`w przypadku interfejsów API kontenerów.
 
 [!INCLUDE [Container's API documentation](../../../includes/cognitive-services-containers-api-documentation.md)]
 
-## <a name="stop-the-container"></a>Zatrzymaj kontener
+## <a name="stop-the-container"></a>Zatrzymywanie kontenera
 
 [!INCLUDE [How to stop the container](../../../includes/cognitive-services-containers-stop.md)]
 
@@ -132,11 +132,11 @@ W przypadku uruchomienia kontenera z [instalacją wyjściową](./face-resource-c
 
 ## <a name="billing"></a>Rozliczenia
 
-Kontenery interfejs API rozpoznawania twarzy wysyłają informacje o rozliczeniach do platformy Azure przy użyciu zasobu interfejs API rozpoznawania twarzy na koncie platformy Azure. 
+Kontenery usługi kroju umożliwiają wysyłanie informacji dotyczących rozliczeń na platformę Azure przy użyciu zasobu kroju na koncie platformy Azure. 
 
 [!INCLUDE [Container's Billing Settings](../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 
-Aby uzyskać więcej informacji na temat tych opcji, zobacz [Konfigurowanie kontenerów](./face-resource-container-config.md).
+Aby uzyskać więcej informacji o tych opcjach, zobacz [skonfigurować kontenery](./face-resource-container-config.md).
 
 <!--blogs/samples/video coures -->
 
@@ -144,11 +144,11 @@ Aby uzyskać więcej informacji na temat tych opcji, zobacz [Konfigurowanie kont
 
 ## <a name="summary"></a>Podsumowanie
 
-W tym artykule przedstawiono koncepcje i przepływ pracy dotyczące pobierania, instalowania i uruchamiania kontenerów interfejs API rozpoznawania twarzy. Podsumowanie:
+W tym artykule przedstawiono koncepcje i przepływ pracy związane z pobieraniem, instalowaniem i uruchamianiem kontenerów usług. Podsumowanie:
 
 * Obrazy kontenerów są pobierane z Azure Container Registry.
 * Obrazy kontenera Uruchom na platformie Docker.
-* Można użyć interfejsu API REST lub zestawu SDK do wywoływania operacji w kontenerach interfejs API rozpoznawania twarzy, określając identyfikator URI hosta kontenera.
+* Możesz użyć interfejsu API REST lub zestawu SDK, aby wywoływać operacje w kontenerach usługi "Front Service", określając identyfikator URI hosta kontenera.
 * Podczas tworzenia wystąpienia kontenera należy określić informacje o rozliczeniach.
 
 > [!IMPORTANT]

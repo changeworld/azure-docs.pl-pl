@@ -1,5 +1,5 @@
 ---
-title: Jak używać Notification Hubs z językiem Java
+title: Jak korzystać z usługi Azure Notification Hubs w języku Java
 description: Dowiedz się, jak używać platformy Azure Notification Hubs z zaplecza języka Java.
 services: notification-hubs
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 532ffc7a7393f016f27264b67b4ee5d3e6e5888f
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: d48973cc7c5ed1fc7ae3f96128d488f3f1df3a05
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213211"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263867"
 ---
 # <a name="how-to-use-notification-hubs-from-java"></a>Jak używać Notification Hubs języka Java
 
@@ -41,11 +41,11 @@ Zestaw SDK obecnie obsługuje:
 * Regularne wysyłanie
 * Zaplanowane wysyłanie
 * Operacje asynchroniczne za pośrednictwem języka Java NIO
-* Obsługiwane platformy: APNS (iOS), FCM (Android), WNS (aplikacje do sklepu Windows), usługi MPNS (Windows Phone), ADM (Amazon Kindle Fire), Baidu (Android bez usług Google)
+* Obsługiwane platformy: APNS (iOS), FCM (Android), WNS (aplikacje do sklepu Windows), usługi MPNS (Windows Phone), ADM (Amazon Kindle Fire), Baidu (Android bez usług Google Services)
 
 ## <a name="sdk-usage"></a>Użycie zestawu SDK
 
-### <a name="compile-and-build"></a>Kompiluj i Kompiluj
+### <a name="compile-and-build"></a>Kompilowanie i tworzenie kompilacji
 
 Użyj [Maven]
 
@@ -53,7 +53,7 @@ Do kompilacji:
 
     mvn package
 
-## <a name="code"></a>Kod
+## <a name="code"></a>Code
 
 ### <a name="notification-hub-cruds"></a>CRUDs centrum powiadomień
 
@@ -188,7 +188,7 @@ Interfejs API instalacji to alternatywny mechanizm zarządzania rejestracją. Za
 
 Instalacja zawiera wszystko, czego potrzebujesz: kanał wypychania (token urządzenia), Tagi, szablony, kafelki pomocnicze (dla WNS i APN). Nie musisz wywoływać usługi, aby uzyskać już identyfikator GUID lub dowolny inny identyfikator, przechowuj go na urządzeniu i wysyłaj do zaplecza przy użyciu kanału push (token urządzenia).
 
-W zapleczu należy wykonać tylko jedno wywołanie, które `CreateOrUpdateInstallation`jest w pełni idempotentne, więc możesz ponowić próbę, jeśli będzie to konieczne.
+W zapleczu należy wykonać tylko jedno wywołanie do `CreateOrUpdateInstallation`; jest on w pełni idempotentne, więc możesz ponowić próbę w razie potrzeby.
 
 Przykład dotyczący usługi Amazon Kindle Fire:
 
@@ -221,7 +221,7 @@ Usuń instalację:
     hub.deleteInstallation(installation.getInstallationId());
     ```
 
-`CreateOrUpdate`, `Patch`, i `Delete` są ostatecznie spójne z `Get`. Żądana operacja właśnie przechodzi do kolejki systemowej w trakcie wywołania i jest wykonywana w tle. Pobieranie nie jest przeznaczone do głównego scenariusza środowiska uruchomieniowego, ale tylko w celu debugowania i rozwiązywania problemów, jest ściśle ograniczone przez usługę.
+`CreateOrUpdate`, `Patch`i `Delete` są ostatecznie spójne z `Get`. Żądana operacja właśnie przechodzi do kolejki systemowej w trakcie wywołania i jest wykonywana w tle. Pobieranie nie jest przeznaczone do głównego scenariusza środowiska uruchomieniowego, ale tylko w celu debugowania i rozwiązywania problemów, jest ściśle ograniczone przez usługę.
 
 Wysyłanie przepływu dla instalacji jest takie samo jak w przypadku rejestracji. Aby określić docelowe powiadomienie do określonej instalacji — po prostu Użyj tagu "Identyfikator InstallationID: {żądana-ID}". W tym przypadku kod jest następujący:
 
@@ -294,7 +294,7 @@ Może być konieczne wykonanie operacji zbiorczej w odniesieniu do rejestracji. 
 
 **Identyfikator URI z podpisem SAS:**
 
- Ten adres URL to adres URL pliku obiektu BLOB lub kontenera obiektów blob oraz zestaw parametrów, takich jak uprawnienia i czas wygaśnięcia, oraz sygnatura wszystkich tych elementów przy użyciu klucza SAS konta. Zestaw SDK Java usługi Azure Storage oferuje bogate możliwości, w tym tworzenie tych identyfikatorów URI. Jako alternatywę zapoznaj się z klasą `ImportExportE2E` testową (z lokalizacji GitHub), która ma podstawową i kompaktową implementację algorytmu podpisywania.
+ Ten adres URL to adres URL pliku obiektu BLOB lub kontenera obiektów blob oraz zestaw parametrów, takich jak uprawnienia i czas wygaśnięcia, oraz sygnatura wszystkich tych elementów przy użyciu klucza SAS konta. Zestaw SDK Java usługi Azure Storage oferuje bogate możliwości, w tym tworzenie tych identyfikatorów URI. Jako alternatywę zapoznaj się z klasą testu `ImportExportE2E` (z lokalizacji GitHub), która ma podstawową i kompaktową implementację algorytmu podpisywania.
 
 ### <a name="send-notifications"></a>Wysyłanie powiadomień
 
@@ -374,7 +374,7 @@ Uruchomienie kodu Java powinno teraz generować powiadomienie na urządzeniu doc
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym temacie pokazano, jak utworzyć prosty klient protokołu Java REST dla Notification Hubs. W tym miejscu możesz:
+W tym temacie pokazano, jak utworzyć prosty klient protokołu Java REST dla Notification Hubs. W tym miejscu można wykonać następujące czynności:
 
 * Pobierz pełny [Zestaw SDK Java], który zawiera cały kod zestawu SDK.
 * Odtwórz z przykładami:

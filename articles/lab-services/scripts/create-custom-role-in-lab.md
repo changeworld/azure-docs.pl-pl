@@ -1,6 +1,6 @@
 ---
-title: 'Skrypt programu PowerShell: Utworzyć rolę niestandardową, w laboratorium Azure DevTest Labs | Dokumentacja firmy Microsoft'
-description: Ten skrypt programu PowerShell dodaje użytkownika zewnętrznego do laboratorium Azure DevTest Labs.
+title: PowerShell — tworzenie roli niestandardowej w laboratorium w Azure DevTest Labs
+description: Ten skrypt programu PowerShell umożliwia dodanie użytkownika zewnętrznego do laboratorium w Azure DevTest Labs.
 services: lab-services
 author: spelluru
 manager: ''
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/11/2018
 ms.author: spelluru
-ms.openlocfilehash: 4d0c795dffb40ab7efec9005660439f9baef9f3f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bcad4e02105bff2dc78a4adc3ca614f997794d52
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66160576"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76166424"
 ---
-# <a name="use-powershell-to-create-a-custom-role-in-a-lab-in-azure-devtest-labs"></a>Aby utworzyć rolę niestandardową, w laboratorium Azure DevTest Labs przy użyciu programu PowerShell
+# <a name="use-powershell-to-create-a-custom-role-in-a-lab-in-azure-devtest-labs"></a>Używanie programu PowerShell do tworzenia roli niestandardowej w laboratorium w Azure DevTest Labs
 
-Ten przykładowy skrypt programu PowerShell tworzy niestandardową rolę do użycia w laboratorium Azure DevTest Labs. 
+Ten przykładowy skrypt programu PowerShell tworzy rolę niestandardową do użycia w laboratorium w Azure DevTest Labs. 
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -40,12 +40,12 @@ W tym skrypcie użyto następujących poleceń:
 
 | Polecenie | Uwagi |
 |---|---|
-| [Get-AzProviderOperation](/powershell/module/az.resources/get-azprovideroperation) | Pobiera operacje dla dostawcy zasobów platformy Azure, które są zabezpieczane przy użyciu RBAC platformy Azure. |
-| [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) | Wyświetla listę wszystkich ról RBAC platformy Azure, które są dostępne do przypisania. |
+| [Get-AzProviderOperation](/powershell/module/az.resources/get-azprovideroperation) | Pobiera operacje dla dostawcy zasobów platformy Azure, które są zabezpieczane za pomocą funkcji RBAC platformy Azure. |
+| [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) | Wyświetla wszystkie role RBAC platformy Azure, które są dostępne do przypisania. |
 | [New-AzRoleDefinition](/powershell/module/az.resources/new-azroledefinition) | Tworzy rolę niestandardową. |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji na temat programu Azure PowerShell, zobacz [dokumentację programu Azure PowerShell](https://docs.microsoft.com/powershell/).
 
-Więcej przykładowych skryptów programu PowerShell usługi laboratorium Azure można znaleźć w [przykładów programu Azure Lab Services PowerShell](../samples-powershell.md).
+Dodatkowe przykłady skryptów programu Azure Lab Services PowerShell można znaleźć w [przykładach Azure Lab Services programu PowerShell](../samples-powershell.md).

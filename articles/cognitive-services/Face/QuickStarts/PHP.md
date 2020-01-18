@@ -1,7 +1,7 @@
 ---
 title: 'Szybki start: wykrywanie twarzy na obrazie przy użyciu interfejsu API REST i języka PHP'
 titleSuffix: Azure Cognitive Services
-description: W tym przewodniku Szybki start omówiono wykrywanie twarzy na obrazie przy użyciu interfejsu API rozpoznawania twarzy z językiem PHP.
+description: W tym przewodniku szybki start wykryjesz twarze z obrazu za pomocą interfejsu API REST twarzy przy użyciu języka PHP.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: fb9539c8aa0477cbfbf11ce08635e4e9ccebb2ce
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 0f76ec4ce1072b247be7f46610d37190cd282a22
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977934"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169742"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-php"></a>Szybki start: wykrywanie twarzy na obrazie przy użyciu interfejsu API REST i języka PHP
 
@@ -23,7 +23,7 @@ W tym przewodniku Szybki start użyjesz interfejsu API REST rozpoznawania twarzy
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Klucz subskrypcji interfejsu API rozpoznawania twarzy. Klucz subskrypcji bezpłatnej wersji próbnej możesz uzyskać na stronie [Wypróbuj usługi Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Możesz też wykonać instrukcje z tematu [Create a Cognitive Services account](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) (Tworzenie konta usług Cognitive Services), aby subskrybować usługę interfejsu API rozpoznawania twarzy i uzyskać klucz.
+- Klucz subskrypcji programu Marketo. Klucz subskrypcji bezpłatnej wersji próbnej możesz uzyskać na stronie [Wypróbuj usługi Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Lub postępuj zgodnie z instrukcjami w temacie [Tworzenie konta Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) , aby subskrybować usługę i uzyskać klucz.
 - Edytor kodu, taki jak [Visual Studio Code](https://code.visualstudio.com/download).
 - Pakiet [HTTP_REQUEST2](https://pear.php.net/package/HTTP_Request2) php.
 - Przeglądarka sieci Web obsługująca język PHP. Jeśli nie zostało to jeszcze zrobione, możesz to zrobić przez zainstalowanie i skonfigurowanie [XAMPP](https://www.apachefriends.org/) na komputerze.
@@ -288,7 +288,7 @@ Otwórz plik w przeglądarce internetowej z obsługą języka PHP. Powinien zost
 
 ## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się więcej na temat interfejsów API rozpoznawania twarzy używanych do wykrywania ludzkich twarzy na obrazach, rozpoznawania ich obrysów i zwracania atrybutów, takich jak wiek i płeć.
+Eksplorowanie interfejs API rozpoznawania twarzy używanych do wykrywania ludzkich twarzy w obrazie, rozgraniczania twarzy z prostokątami i zwracania atrybutów, takich jak wiek i płeć.
 
 > [!div class="nextstepaction"]
 > [Interfejsy API rozpoznawania twarzy](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)

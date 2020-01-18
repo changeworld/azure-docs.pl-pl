@@ -1,5 +1,5 @@
 ---
-title: Korzystanie z usług typu "platforma jako usługa" (PaaS, Platform-as-a-Service) w Azure DevTest Labs | Microsoft Docs
+title: Korzystanie z usług typu "platforma jako usługa" (PaaS) w Azure DevTest Labs
 description: Dowiedz się, jak korzystać z usług typu "platforma jako usługa" (pass) w Azure DevTest Labs.
 services: devtest-lab,lab-services
 documentationcenter: na
@@ -10,14 +10,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/02/2019
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 088913959b5850e87dc3a6a39d2907d30b7e5ade
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 88bbf921fedae4bcdba2b6386ce6e08105206cd2
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75976250"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169207"
 ---
 # <a name="use-platform-as-a-service-paas-services-in-azure-devtest-labs"></a>Korzystanie z usług typu "platforma jako usługa" (PaaS) w Azure DevTest Labs
 PaaS jest obsługiwana w DevTest Labs za pośrednictwem funkcji środowiska. Środowiska w DevTest Labs są obsługiwane przez wstępnie skonfigurowane szablony Azure Resource Manager w repozytorium git. Środowiska mogą zawierać zarówno zasoby PaaS, jak i IaaS. Umożliwiają one tworzenie złożonych systemów, które mogą obejmować zasoby platformy Azure, takie jak maszyny wirtualne, bazy danych, sieci wirtualne i aplikacje sieci Web, które są dostosowane do współdziałania ze sobą. Te szablony umożliwiają spójne wdrożenie i ulepszone zarządzanie środowiskami przy użyciu kontroli kodu źródłowego. 

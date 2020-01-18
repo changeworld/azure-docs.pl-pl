@@ -1,5 +1,5 @@
 ---
-title: Utwórz zasób czytnika immersyjny
+title: Tworzenie zasobu czytnika immersyjnego
 titleSuffix: Azure Cognitive Services
 description: W tym artykule pokazano, jak utworzyć nowy zasób czytnika immersyjny z niestandardową domeną poddomeny, a następnie skonfigurować usługę Azure AD w dzierżawie platformy Azure.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: rwaller
-ms.openlocfilehash: a806e6eeecc6976286566d05a0f19dac684b2c0b
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: a2a404a03c06dde59edc88436afdc9dba3d74797
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75946090"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76170161"
 ---
 # <a name="create-an-immersive-reader-resource-and-configure-azure-active-directory-authentication"></a>Utwórz zasób czytnika immersyjny i Skonfiguruj uwierzytelnianie Azure Active Directory
 
@@ -153,7 +153,7 @@ Skrypt został zaprojektowany jako elastyczny. Najpierw szuka istniejącego czyt
     | SubscriptionName |Nazwa subskrypcji platformy Azure, która ma być używana dla zasobu czytnika danych. Aby można było utworzyć zasób, trzeba mieć subskrypcję. |
     | ResourceName |  Musi być alfanumeryczne i może zawierać znak "-", tak długo, jak "-" nie jest pierwszy ani ostatni. Długość nie może przekraczać 63 znaków.|
     | ResourceSubdomain |Niestandardowa poddomena jest wymagana dla zasobu czytnika danych. Poddomena jest używana przez zestaw SDK podczas wywoływania usługi czytnika immersyjny w celu uruchomienia czytnika. Poddomena musi być unikatowa w skali globalnej. Poddomena musi być alfanumeryczna i może zawierać znaki "-", o ile nie jest to pierwszy ani ostatni znak. Długość nie może przekraczać 63 znaków. Ten parametr jest opcjonalny, jeśli zasób już istnieje. |
-    | ResourceSKU |Opcje: `S0` lub `S1`. Odwiedź [stronę cennika Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/immersive-reader/) , aby dowiedzieć się więcej na temat każdej dostępnej jednostki SKU. Ten parametr jest opcjonalny, jeśli zasób już istnieje. |
+    | ResourceSKU |Opcje: `S0`. Odwiedź [stronę cennika Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/immersive-reader/) , aby dowiedzieć się więcej na temat każdej dostępnej jednostki SKU. Ten parametr jest opcjonalny, jeśli zasób już istnieje. |
     | ResourceLocation |Opcje: `eastus`, `eastus2`, `southcentralus`, `westus`, `westus2`, `australiaeast`, `southeastasia`, `centralindia`, `japaneast`, `northeurope`, `uksouth`, `westeurope`. Ten parametr jest opcjonalny, jeśli zasób już istnieje. |
     | ResourceGroupName |Zasoby są tworzone w grupach zasobów w ramach subskrypcji. Podaj nazwę istniejącej grupy zasobów. Jeśli grupa zasobów jeszcze nie istnieje, zostanie utworzona nowa nazwa o tej nazwie. |
     | ResourceGroupLocation |Jeśli grupa zasobów nie istnieje, należy podać lokalizację, w której ma zostać utworzona grupa. Aby znaleźć listę lokalizacji, uruchom `az account list-locations`. Użyj właściwości *name* (bez spacji) zwracanego wyniku. Ten parametr jest opcjonalny, jeśli grupa zasobów już istnieje. |

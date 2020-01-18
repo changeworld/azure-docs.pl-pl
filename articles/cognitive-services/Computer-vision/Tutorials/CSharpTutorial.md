@@ -1,7 +1,7 @@
 ---
-title: 'Przykład: Zapoznanie z aplikacją do przetwarzania obrazów w języku C#'
+title: 'Przykład: Eksplorowanie aplikacji do przetwarzania obrazów wC#'
 titleSuffix: Azure Cognitive Services
-description: Poznaj podstawową aplikację systemu Windows, która używa interfejs API przetwarzania obrazów w usłudze Azure Cognitive Services. Wykonaj optyczne rozpoznawanie znaków (OCR), twórz miniatury i korzystaj z funkcji wizualnych na obrazie.
+description: Poznaj podstawową aplikację systemu Windows, która używa interfejs API przetwarzania obrazów w usłudze Azure Cognitive Services. Przeprowadź proces optycznego rozpoznawania znaków (OCR), twórz miniatury i wykorzystuj funkcje wizualizacji w obrazie.
 services: cognitive-services
 author: PatrickFarley
 manager: nolachar
@@ -11,14 +11,14 @@ ms.topic: sample
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 01e932caf5edc91d5556b60d33e4d100574f93f5
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: b492d8e3bdcf6d9a41df3eb79ef159985cc715cf
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71170035"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76168880"
 ---
-# <a name="sample-explore-an-image-processing-app-with-c"></a>Przykład: Zapoznanie z aplikacją do przetwarzania obrazów z językiem C#
+# <a name="sample-explore-an-image-processing-app-with-c"></a>Przykład: Eksplorowanie aplikacji do przetwarzania obrazówC#
 
 Zapoznaj się z podstawową aplikacją dla systemu Windows, w której zastosowano przetwarzanie obrazów do optycznego rozpoznawania znaków (OCR), inteligentnego przycinania miniatur oraz wykrywania, kategoryzowania, tagowania i opisywania elementów wizualnych, w tym twarzy, na obrazie. Poniższy przykład umożliwia przesłanie adresu URL obrazu lub lokalnego pliku. Ten przykład typu „open source” może służyć jako szablon do tworzenia własnej aplikacji systemu Windows korzystającej z interfejsu API przetwarzania obrazów i platformy WPF (Windows Presentation Foundation), która jest częścią programu .NET Framework.
 
@@ -80,7 +80,7 @@ Możesz uruchomić przykładową aplikację, aby zobaczyć sposób jej interakcj
    ![Strona Zarządzanie kluczami subskrypcji](../Images/Vision_UI_Subscription.PNG)  
 1. Wprowadź swój klucz subskrypcji w polu **Klucz subskrypcji**.
 1. Wprowadź adres URL punktu końcowego w **punkcie końcowym**.  
-   Jeśli na przykład używasz klucza subskrypcji z przetwarzanie obrazów bezpłatnej wersji próbnej, wprowadź następujący adres URL punktu końcowego:`https://westcentralus.api.cognitive.microsoft.com`  
+   Jeśli na przykład używasz klucza subskrypcji z przetwarzanie obrazów bezpłatnej wersji próbnej, wprowadź następujący adres URL punktu końcowego: `https://westcentralus.api.cognitive.microsoft.com`  
    [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 1. Jeśli nie chcesz wprowadzać klucza subskrypcji ani adresu URL punktu końcowego przy następnym uruchomieniu przykładowej aplikacji, wybierz pozycję **Zapisz ustawienie**, aby zapisać klucz subskrypcji i adres URL punktu końcowego na komputerze. Jeśli chcesz usunąć uprzednio zapisany klucz subskrypcji i adres URL punktu końcowego, wybierz pozycję **Usuń ustawienie**.
 
@@ -311,4 +311,4 @@ Gdy nie jest już potrzebny, usuń folder, do którego zostało sklonowane repoz
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Wprowadzenie do interfejsu API rozpoznawania twarzy](../../Face/Tutorials/FaceAPIinCSharpTutorial.md)
+> [Wprowadzenie do usługi Front Service](../../Face/Tutorials/FaceAPIinCSharpTutorial.md)

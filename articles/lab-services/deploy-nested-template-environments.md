@@ -1,5 +1,5 @@
 ---
-title: Wdrażanie zagnieżdżonych środowisk szablonów Menedżer zasobów w programie Azure DevTest Labs | Microsoft Docs
+title: Wdróż zagnieżdżone środowiska szablonów w Azure DevTest Labs
 description: Dowiedz się, jak wdrożyć zagnieżdżone szablony Azure Resource Manager, aby zapewnić środowiska z Azure DevTest Labs.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -10,14 +10,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/16/2019
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 675d2c670f5bc11c1d8b61bc96313e408f788dc3
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: e83bc4e77a44f20d55fa3b56bc81aefd1d25bb03
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75976550"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76168818"
 ---
 # <a name="deploy-nested-azure-resource-manager-templates-for-testing-environments"></a>Wdróż zagnieżdżone szablony Azure Resource Manager dla środowisk testowych
 Wdrożenie zagnieżdżone umożliwia wykonywanie innych szablonów Azure Resource Manager z poziomu szablonu Menedżer zasobów głównego. Pozwala to na rozmieszczenie wdrożenia w zestaw szablonów przeznaczonych dla konkretnych celów. Zapewnia ona korzyści z testowania, ponownego użycia i czytelności. W [przypadku wdrażania zasobów platformy Azure za pomocą połączonych szablonów](../azure-resource-manager/templates/linked-templates.md) znajduje się dobry przegląd tego rozwiązania z kilkoma przykładami kodu. W tym artykule przedstawiono przykład, który jest specyficzny dla Azure DevTest Labs. 

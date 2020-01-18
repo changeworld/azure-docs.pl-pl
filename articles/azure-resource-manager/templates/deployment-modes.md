@@ -2,19 +2,21 @@
 title: Tryby wdrażania
 description: Opisuje, w jaki sposób należy określić, czy ma być używany pełny czy przyrostowy tryb wdrażania z Azure Resource Manager.
 ms.topic: conceptual
-ms.date: 12/23/2019
-ms.openlocfilehash: dc5446c56c92b61016563995ebc4c884d48e2419
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.date: 01/17/2020
+ms.openlocfilehash: e53b8c58bf0919e64079e62c687b76ada1db7ff0
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76152395"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76261028"
 ---
 # <a name="azure-resource-manager-deployment-modes"></a>Azure Resource Manager tryby wdrażania
 
-Podczas wdrażania zasobów należy określić, że wdrożenie jest aktualizacją przyrostową, albo pełną aktualizacją.  Różnica między tymi dwoma trybami polega na tym, że Menedżer zasobów obsługuje istniejące zasoby w grupie zasobów, która nie znajduje się w szablonie. Domyślnym trybem jest przyrostowy.
+Podczas wdrażania zasobów należy określić, że wdrożenie jest aktualizacją przyrostową, albo pełną aktualizacją. Różnica między tymi dwoma trybami polega na tym, że Menedżer zasobów obsługuje istniejące zasoby w grupie zasobów, która nie znajduje się w szablonie.
 
 W przypadku obu trybów Menedżer zasobów próbuje utworzyć wszystkie zasoby określone w szablonie. Jeśli zasób już istnieje w grupie zasobów, a jego ustawienia nie są zmieniane, nie jest wykonywana żadna operacja dla tego zasobu. W przypadku zmiany wartości właściwości zasobu zasób zostanie zaktualizowany o te nowe wartości. Jeśli spróbujesz zaktualizować lokalizację lub typ istniejącego zasobu, wdrożenie nie powiedzie się z powodu błędu. Zamiast tego należy wdrożyć nowy zasób z wymaganą lokalizacją lub typem.
+
+Domyślnym trybem jest przyrostowy.
 
 ## <a name="complete-mode"></a>Tryb kompletny
 
@@ -46,7 +48,8 @@ Jeśli grupa zasobów jest [zablokowana](../management/lock-resources.md), tryb 
 
 W trybie przyrostowym Menedżer zasobów **opuszcza niezmienione** zasoby, które istnieją w grupie zasobów, ale nie są określone w szablonie. Zasoby w szablonie **są dodawane** do grupy zasobów.
 
-Należy zauważyć, że tryb przyrostowy dotyczy całego zasobu, a nie do poszczególnych właściwości w istniejącym zasobie. Po ponownym wdrożeniu istniejącego zasobu w trybie przyrostowym zostaną ponownie zastosowane wszystkie właściwości. **Właściwości nie są dodawane przyrostowo**. Typowy nieporozumienia polega na tym, że właściwości, które nie są określone w szablonie, pozostaną bez zmian. Jeśli nie określisz pewnych właściwości, Menedżer zasobów interpretuje wdrożenie, zastępując te wartości. Właściwości, które nie znajdują się w szablonie, są resetowane do wartości domyślnych ustawionych przez dostawcę zasobów. Określ wszystkie wartości inne niż domyślne dla zasobu, a nie tylko te, które są aktualizowane. Definicja zasobu w szablonie zawsze zawiera końcowy stan zasobu. Nie może reprezentować częściowej aktualizacji istniejącego zasobu.
+> [!NOTE]
+> Po ponownym wdrożeniu istniejącego zasobu w trybie przyrostowym zostaną ponownie zastosowane wszystkie właściwości. **Właściwości nie są dodawane przyrostowo**. Typowy nieporozumienia polega na tym, że właściwości, które nie są określone w szablonie, pozostaną bez zmian. Jeśli nie określisz pewnych właściwości, Menedżer zasobów interpretuje wdrożenie, zastępując te wartości. Właściwości, które nie znajdują się w szablonie, są resetowane do wartości domyślnych. Określ wszystkie wartości inne niż domyślne dla zasobu, a nie tylko te, które są aktualizowane. Definicja zasobu w szablonie zawsze zawiera końcowy stan zasobu. Nie może reprezentować częściowej aktualizacji istniejącego zasobu.
 
 ## <a name="example-result"></a>Przykładowy wynik
 

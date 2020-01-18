@@ -1,6 +1,6 @@
 ---
-title: Zabezpieczenia Notification Hubs
-description: W tym temacie opisano zabezpieczenia Notification Hubs platformy Azure.
+title: Model zabezpieczeń Notification Hubs
+description: Dowiedz się więcej na temat modelu zabezpieczeń dla usługi Azure Notification Hubs.
 services: notification-hubs
 documentationcenter: .net
 author: sethmanheim
@@ -16,12 +16,12 @@ ms.date: 09/23/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 09/23/2019
-ms.openlocfilehash: a9598f6a01e5536351fb20b7c352a5eaf5746042
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.openlocfilehash: b871775bc7a6d795e86147ae9cffa27bdd2f3348
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71273620"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263765"
 ---
 # <a name="notification-hubs-security"></a>Zabezpieczenia Notification Hubs
 
@@ -46,13 +46,13 @@ Klucz z dostępem do **nasłuchiwania** umożliwia aplikacji klienckiej rejestra
 
 ## <a name="security-claims"></a>Oświadczenia zabezpieczeń
 
-Podobnie jak w przypadku innych jednostek, operacje centrum powiadomień są dozwolone dla trzech oświadczeń zabezpieczeń: **Słuchaj**, **wysyłania**i **zarządzania**.
+Podobnie jak w przypadku innych jednostek, operacje centrum powiadomień są dozwolone dla trzech oświadczeń zabezpieczeń: **nasłuchiwanie**, **wysyłanie**i **Zarządzanie**.
 
-| Oświadczenie   | Opis                                          | Dozwolone operacje |
+| Claim   | Opis                                          | Dozwolone operacje |
 | ------- | ---------------------------------------------------- | ------------------ |
-| Nasłuchuj  | Tworzenie/aktualizowanie, odczytywanie i usuwanie pojedynczych rejestracji | Utwórz/zaktualizuj rejestrację<br><br>Odczytaj rejestrację<br><br>Odczytaj wszystkie rejestracje dla dojścia<br><br>Usuń rejestrację |
+| Nasłuchiwanie  | Tworzenie/aktualizowanie, odczytywanie i usuwanie pojedynczych rejestracji | Utwórz/zaktualizuj rejestrację<br><br>Odczytaj rejestrację<br><br>Odczytaj wszystkie rejestracje dla dojścia<br><br>Usuń rejestrację |
 | Wyślij    | Wysyłanie komunikatów do centrum powiadomień                | Wyślij wiadomość |
-| Zarządzanie  | CRUDs na Notification Hubs (w tym aktualizowanie poświadczeń PNS i kluczy zabezpieczeń) oraz odczytywanie rejestracji w oparciu o Tagi |Tworzenie/aktualizowanie/odczytywanie/usuwanie centrów<br><br>Odczytaj rejestracje według tagu |
+| Zarządzaj  | CRUDs na Notification Hubs (w tym aktualizowanie poświadczeń PNS i kluczy zabezpieczeń) oraz odczytywanie rejestracji w oparciu o Tagi |Tworzenie/aktualizowanie/odczytywanie/usuwanie centrów<br><br>Odczytaj rejestracje według tagu |
 
 Notification Hubs akceptuje tokeny SYGNATURy dostępu współdzielonego z kluczami udostępnionymi skonfigurowanymi bezpośrednio w centrum.
 

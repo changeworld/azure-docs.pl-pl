@@ -11,14 +11,14 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 166fb9320672e63b8c53717133dc61aa93f57a62
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 305108e576ad4e60089c929c9b780e8cee559540
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74868647"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76167629"
 ---
-# <a name="what-is-identity-provisioning"></a>Co to jest inicjowanie obsługi tożsamości?
+# <a name="what-is-identity-provisioning"></a>Co to jest aprowizacja tożsamości?
 
 Obecnie małe i duże firmy w coraz większym stopniu korzystają zarówno z aplikacji lokalnych, jak i aplikacji w chmurze.  Użytkownicy potrzebują dostępu do aplikacji zarówno lokalnie, jak i w chmurze. Konieczne jest posiadanie jednej tożsamości między tymi różnymi aplikacjami (lokalnie i w chmurze).
 
@@ -50,9 +50,7 @@ Najbardziej typowym scenariuszem jest to, że w przypadku dołączenia nowego pr
 
 ![Inicjowanie obsługi chmury](media/what-is-provisioning/cloud3.png)
 
-Inicjowanie obsługi aplikacji obejmuje Inicjowanie obsługi użytkowników i ról w aplikacjach, do których użytkownik musi mieć dostęp.  
-
-Najbardziej typowym scenariuszem jest to, że użytkownik w usłudze Azure AD jest obsługiwany w usłudze O365 lub Salesforce.
+W Azure Active Directory (Azure AD) termin **[aprowizacji aplikacji](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)** dotyczy automatycznego tworzenia tożsamości i ról użytkowników w aplikacjach w chmurze, do których użytkownicy potrzebują dostępu. Oprócz tworzenia tożsamości użytkowników automatyczne Inicjowanie obsługi obejmuje konserwację i usuwanie tożsamości użytkowników jako zmiany stanu lub ról. Typowe scenariusze obejmują Inicjowanie obsługi użytkownika usługi Azure AD w aplikacjach takich jak [Dropbox](https://docs.microsoft.com/azure/active-directory/saas-apps/dropboxforbusiness-provisioning-tutorial), [Salesforce](https://docs.microsoft.com/azure/active-directory/saas-apps/salesforce-provisioning-tutorial), [usługi ServiceNow](https://docs.microsoft.com/azure/active-directory/saas-apps/servicenow-provisioning-tutorial)i inne.
 
 ## <a name="directory-provisioning"></a>Inicjowanie obsługi administracyjnej katalogów
 

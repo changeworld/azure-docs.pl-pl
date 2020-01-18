@@ -4,19 +4,21 @@ description: Brama lokalna jest wymagana, jeśli serwer Analysis Services na pla
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/29/2019
+ms.date: 01/17/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: a896c98040773179f9a0911162bbfdc5689b1a2e
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: f1fc00ced0d933884ca0fe6dce91fed4602eb825
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75768558"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263442"
 ---
 # <a name="connecting-to-on-premises-data-sources-with-on-premises-data-gateway"></a>Łączenie z lokalnymi źródłami danych za pomocą lokalnej bramy danych
 
-Lokalna Brama danych zapewnia bezpieczny transfer danych między lokalnymi źródłami danych i serwerami Azure Analysis Services w chmurze. Oprócz pracy z wieloma serwerami Azure Analysis Services w tym samym regionie, Najnowsza wersja bramy działa również z Azure Logic Apps, Power BI, aplikacjami zaawansowanymi i automatyzacją. Można skojarzyć wiele usług w tej samej subskrypcji i w tym samym regionie z pojedynczą bramą. Podczas gdy instalowana Brama jest taka sama we wszystkich tych usługach, Azure Analysis Services i Logic Apps mają kilka dodatkowych kroków.
+Lokalna Brama danych zapewnia bezpieczny transfer danych między lokalnymi źródłami danych i serwerami Azure Analysis Services w chmurze. Oprócz pracy z wieloma serwerami Azure Analysis Services w tym samym regionie, Najnowsza wersja bramy działa również z Azure Logic Apps, Power BI, aplikacjami zaawansowanymi i automatyzacją. Podczas gdy instalowana Brama jest taka sama we wszystkich tych usługach, Azure Analysis Services i Logic Apps mają kilka dodatkowych kroków.
+
+Informacje podane w tym miejscu dotyczą sposobu, w jaki Azure Analysis Services współpracuje z lokalną bramą danych. Aby dowiedzieć się więcej na temat bramy ogólnie i jak współpracuje z innymi usługami, zobacz [co to jest lokalna Brama danych?](/data-integration/gateway/service-gateway-onprem).
 
 Aby uzyskać Azure Analysis Services, należy pobrać Instalatora z bramą po raz pierwszy jest to proces składający się z czterech części:
 
@@ -24,9 +26,11 @@ Aby uzyskać Azure Analysis Services, należy pobrać Instalatora z bramą po ra
 
 - **Rejestrowanie bramy** — w tym kroku należy określić nazwę i klucz odzyskiwania dla bramy i wybrać region, zarejestrować bramę w usłudze bramy w chmurze. Zasób bramy można zarejestrować w dowolnym regionie, ale zalecamy, aby znajdował się w tym samym regionie co serwery Analysis Services. 
 
-- **Tworzenie zasobu bramy na platformie Azure** — w tym kroku utworzysz zasób bramy w ramach subskrypcji platformy Azure.
+- **Tworzenie zasobu bramy na platformie Azure** — w tym kroku utworzysz zasób bramy na platformie Azure.
 
-- **Połącz serwery z zasobem bramy** — gdy masz zasób bramy w ramach subskrypcji, możesz rozpocząć połączenie z serwerem. Można połączyć wiele serwerów i innych zasobów, pod warunkiem, że znajdują się one w tej samej subskrypcji i w tym samym regionie.
+- **Połącz serwery z zasobem bramy** — gdy masz zasób bramy, możesz rozpocząć połączenie z serwerem. Można połączyć wiele serwerów i innych zasobów, pod warunkiem, że znajdują się one w tym samym regionie.
+
+
 
 ## <a name="how-it-works"> </a>Jak to działa
 Brama zainstalowana na komputerze w organizacji działa jako usługa systemu Windows, **lokalna Brama danych**. Ta usługa lokalna jest rejestrowana w usłudze w chmurze dla bramy za pośrednictwem usługi Azure Service Bus. Następnie utworzysz zasób lokalnej bramy danych dla Twojej subskrypcji platformy Azure. Serwery Azure Analysis Services są następnie połączone z zasobem bramy platformy Azure. Gdy modele na serwerze muszą łączyć się z lokalnymi źródłami danych w celu wykonywania zapytań lub przetwarzania, przepływy zapytań i danych przechodzą przez zasób bramy, Azure Service Bus, lokalna usługa lokalnej bramy danych i źródła danych. 
@@ -48,7 +52,7 @@ W przypadku instalowania środowiska Azure Analysis Services należy wykonać kr
 
 ## <a name="ports-and-communication-settings"></a>Ustawienia portów i komunikacji
 
-Brama tworzy połączenie wychodzące do usługi Azure Service Bus. Komunikuje się ona na portach wychodzących: TCP 443 (domyślnie), 5671, 5672, 9350 do 9354.  Brama nie wymaga portów przychodzących.
+Brama tworzy wychodzące połączenie do magistrali usług platformy Azure. Komunikuje się ona na portach wychodzących: TCP 443 (domyślnie), 5671, 5672, 9350 do 9354.  Brama nie wymaga portów przychodzących.
 
 Może być konieczne dołączenie adresów IP do obszaru danych w zaporze. Możesz pobrać [listę adresów IP centrów danych platformy Microsoft Azure](https://www.microsoft.com/download/details.aspx?id=41653). Ta lista jest aktualizowana co tydzień. Na liście adresów IP centrów danych platformy Azure adresy są wymienione w notacji CIDR. Aby dowiedzieć się więcej, zobacz [Routing bezklasowy między domenami](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing).
 

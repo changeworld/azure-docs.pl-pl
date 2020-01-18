@@ -1,6 +1,6 @@
 ---
-title: 'Azure Notification Hubs: często zadawane pytania (FAQ) | Microsoft Docs'
-description: Często zadawane pytania dotyczące projektowania/implementowania rozwiązań na Notification Hubs
+title: Azure Notification Hubs często zadawane pytania (FAQ) | Microsoft Docs
+description: Często zadawane pytania dotyczące projektowania i implementowania rozwiązań na platformie Azure Notification Hubs.
 services: notification-hubs
 documentationcenter: mobile
 author: sethmanheim
@@ -17,12 +17,12 @@ ms.date: 11/13/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 11/13/2019
-ms.openlocfilehash: c84a4472789430524cbf5ff3f1ae24ea10d342b9
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 3212520f37d33a2d8fb1b071506f688b9f75f15c
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74066874"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263833"
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>Powiadomienia wypychane za pomocą usługi Azure Notification Hubs: często zadawane pytania
 
@@ -153,7 +153,7 @@ Wszystkie połączenia, od nadawcy do usługi Azure Notification Hubs do PNS, u�
 
 Aby wysyłać poufne ładunki, zalecamy użycie bezpiecznego wzorca wypychania. Nadawca dostarcza powiadomienie ping z identyfikatorem komunikatu do urządzenia bez poufnego ładunku. Gdy aplikacja na urządzeniu odbiera ładunek, aplikacja wywołuje bezpieczny interfejs API bezpośrednio, aby pobrać szczegóły komunikatu. Aby zapoznać się z przewodnikiem dotyczącym implementowania tego wzorca, przejdź do strony [Samouczek bezpiecznego wypychania Notification Hubs] .
 
-## <a name="operations"></a>Operacje
+## <a name="operations"></a>Operations
 
 ### <a name="what-support-is-provided-for-disaster-recovery"></a>Jaka pomoc techniczna jest świadczona w przypadku odzyskiwania po awarii?
 

@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.author: dapine
-ms.openlocfilehash: 2dc5bfb7459e28a4d118c5d1629133bae3a5637f
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 2cdf34bb7df121665548be98f9f2098cc5cfe99b
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533693"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169079"
 ---
 # <a name="azure-cognitive-services-support-and-help-options"></a>Obsługa Cognitive Services platformy Azure i opcje pomocy
 
@@ -28,7 +28,7 @@ Czy dopiero zaczynasz Eksplorowanie funkcjonalności platformy Azure Cognitive S
 > * Jeśli znajdziesz problem z jednym z przykładów w witrynie GitHub, zgłoś problem w usłudze *GitHub* .
 > * Wyszukaj rozwiązanie na *forum UserVoice*.
 
-## <a name="create-an-azure-support-request"></a>Utwórz żądanie pomocy technicznej platformy Azure
+## <a name="create-an-azure-support-request"></a>Tworzenie wniosku o pomoc techniczną platformy Azure
 
 <div class='icon is-large'>
     <img alt='Azure support' src='https://docs.microsoft.com/media/logos/logo_azure.svg'>
@@ -73,7 +73,7 @@ Aby zażądać nowych funkcji, Opublikuj je w usłudze UserVoice. Podziel się s
 | Content Moderator             | https://cognitive.uservoice.com/forums/559960-content-moderator |
 | Niestandardowe przetwarzanie obrazów                 | https://cognitive.uservoice.com/forums/598141-custom-vision-service |
 | Rozpoznawanie twarzy                          | https://cognitive.uservoice.com/forums/430315-face |
-| Seryjn                          | https://cognitive.uservoice.com/forums/921556-form-recognizer |
+| Formularz                          | https://cognitive.uservoice.com/forums/921556-form-recognizer |
 | Wciągające                     | https://feedback.azure.com/forums/34192--general-feedback |
 | Usługa interpretacji języka (LUIS) | https://cognitive.uservoice.com/forums/551524-luis |
 | Personalizacja                  | https://cognitive.uservoice.com/forums/921562-personalizer |
@@ -91,8 +91,8 @@ Aby zażądać nowych funkcji, Opublikuj je w usłudze UserVoice. Podziel się s
 
 Informacje o wersji są aktualizowane w miarę udostępnienia nowych wersji. Notatki zawierają informacje dotyczące nowych funkcji, ulepszeń i poprawek błędów.
 
- - [Custom Vision Service](custom-vision-service/release-notes.md)
- - [Interfejs API rozpoznawania twarzy](face/releasenotes.md)
+ - [Custom Vision](custom-vision-service/release-notes.md)
+ - [Twarzy](face/releasenotes.md)
  - [Language Understanding (LUIS)](luis/whats-new.md)
  - [Usługi mowy](speech-service/releasenotes.md)
  - [Zestaw SDK usługi Speech Services](speech-service/devices-sdk-release-notes.md)

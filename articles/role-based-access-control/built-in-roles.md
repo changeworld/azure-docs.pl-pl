@@ -11,16 +11,16 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 12/02/2019
+ms.date: 01/17/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 17a1f2c245e19afbf4d8c5092a0ddf0562a7cb0e
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: b2a49528ca3c2b55c02f3bda89b3722ee8fef535
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979323"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264258"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Wbudowane role dla zasobów platformy Azure
 
@@ -48,6 +48,8 @@ W poniższej tabeli przedstawiono krótki opis każdej wbudowanej roli. Kliknij 
 > | [Współautor usługi API Management](#api-management-service-contributor) | Może zarządzać usługą i interfejsami API | 312a565d-c81f-4fd8-895a-4e21e48d571c |
 > | [Rola operatora usługi API Management](#api-management-service-operator-role) | Może zarządzać usługą, ale nie z interfejsów API | e022efe7-f5ba-4159-bbe4-b44f577e9b61 |
 > | [Rola czytnika usługi API Management](#api-management-service-reader-role) | Dostęp tylko do odczytu do usługi i interfejsów API | 71522526-b88f-4d52-b57f-d31fc3546d0d |
+> | [Właściciel danych konfiguracji aplikacji](#app-configuration-data-owner) | Umożliwia pełny dostęp do danych konfiguracji aplikacji. | 5ae67dd6-50cb-40e7-96ff-dc2bfa4b606b |
+> | [Czytnik danych konfiguracji aplikacji](#app-configuration-data-reader) | Zezwala na dostęp do odczytu do danych konfiguracji aplikacji. | 516239f1-63e1-4d78-a4de-a74fb236a071 |
 > | [Współautor składnika Application Insights](#application-insights-component-contributor) | Może zarządzać składnikami Application Insights | ae349356-3a1b-4a5e-921d-050484c6347e |
 > | [Application Insights Snapshot Debugger](#application-insights-snapshot-debugger) | Daje użytkownikowi uprawnienia do wyświetlania i pobierania migawek debugowania zebranych za pomocą Snapshot Debugger Application Insights. Należy zauważyć, że te uprawnienia nie są uwzględnione w rolach [właściciel](#owner) lub [współautor](#contributor) . | 08954f03-6346-4c2e-81c0-ec3a5cfae23b |
 > | [Operator zadania automatyzacji](#automation-job-operator) | Twórz zadania i zarządzaj nimi za pomocą elementów Runbook usługi Automation. | 4fe576fe-1146-4730-92eb-48519fa6bf9f |
@@ -55,6 +57,8 @@ W poniższej tabeli przedstawiono krótki opis każdej wbudowanej roli. Kliknij 
 > | [Operator elementu Runbook usługi Automation](#automation-runbook-operator) | Odczytywanie właściwości elementu Runbook — aby można było tworzyć zadania elementu Runbook. | 5fb5aef8-1081-4b8e-bb16-9d5d0385bab5 |
 > | [Współautor avere](#avere-contributor) | Można utworzyć klaster avere vFXT i zarządzać nim. | 4f8fab4f-1852-4a58-a46a-8eaf358af14a |
 > | [Operator avere](#avere-operator) | Używane przez klaster avere vFXT do zarządzania klastrem | c025889f-8102-4ebf-b32c-fc0c6f0c6bd9 |
+> | [Dołączanie maszyny połączonej z platformą Azure](#azure-connected-machine-onboarding) | Można dołączyć maszyny połączone z platformą Azure. | b64e21ea-ac4e-4cdf-9dc9-5b892992bee7 |
+> | [Administrator zasobów maszyny połączonej z platformą Azure](#azure-connected-machine-resource-administrator) | Może odczytywać, zapisywać, usuwać i ponownie dołączać maszyny wirtualne platformy Azure. | cd570a14-e51a-42ad-bac8-bafd67325302 |
 > | [Właściciel danych Event Hubs platformy Azure](#azure-event-hubs-data-owner) | Umożliwia pełny dostęp do zasobów usługi Azure Event Hubs. | f526a384-b230-433a-b45c-95f59c4a2dec |
 > | [Usługa Azure Event Hubs Data Receiver](#azure-event-hubs-data-receiver) | Zezwala na odbieranie dostępu do zasobów usługi Azure Event Hubs. | a638d3c7-ab3a-418d-83e6-5f17a39d4fde |
 > | [Nadawca danych Event Hubs platformy Azure](#azure-event-hubs-data-sender) | Zezwala na wysyłanie dostępu do zasobów Event Hubs platformy Azure. | 2b629674-e913-4c01-ae53-ef4638d8f975 |
@@ -378,6 +382,38 @@ W poniższej tabeli przedstawiono krótki opis każdej wbudowanej roli. Kliknij 
 > | **NotDataActions** |  |
 > | *dawaj* |  |
 
+## <a name="app-configuration-data-owner"></a>Właściciel danych konfiguracji aplikacji
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Opis** | Umożliwia pełny dostęp do danych konfiguracji aplikacji. |
+> | **Identyfikator** | 5ae67dd6-50cb-40e7-96ff-dc2bfa4b606b |
+> | **Akcje** |  |
+> | *dawaj* |  |
+> | **Nonaruszone** |  |
+> | *dawaj* |  |
+> | **Akcje dataactions** |  |
+> | Microsoft. AppConfiguration/configurationStores/*/Read |  |
+> | Microsoft. AppConfiguration/configurationStores/*/Write |  |
+> | Microsoft. AppConfiguration/configurationStores/*/Delete |  |
+> | **NotDataActions** |  |
+> | *dawaj* |  |
+
+## <a name="app-configuration-data-reader"></a>Czytnik danych konfiguracji aplikacji
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Opis** | Zezwala na dostęp do odczytu do danych konfiguracji aplikacji. |
+> | **Identyfikator** | 516239f1-63e1-4d78-a4de-a74fb236a071 |
+> | **Akcje** |  |
+> | *dawaj* |  |
+> | **Nonaruszone** |  |
+> | *dawaj* |  |
+> | **Akcje dataactions** |  |
+> | Microsoft. AppConfiguration/configurationStores/*/Read |  |
+> | **NotDataActions** |  |
+> | *dawaj* |  |
+
 ## <a name="application-insights-component-contributor"></a>Współautor składnika Application Insights
 > [!div class="mx-tableFixed"]
 > | | |
@@ -561,6 +597,42 @@ W poniższej tabeli przedstawiono krótki opis każdej wbudowanej roli. Kliknij 
 > | Microsoft. Storage/storageAccounts/blobServices/kontenery/obiekty blob/usuwanie | Zwraca wynik usunięcia obiektu BLOB |
 > | Microsoft. Storage/storageAccounts/blobServices/kontenery/obiekty blob/odczyt | Zwraca obiekt BLOB lub listę obiektów BLOB |
 > | Microsoft. Storage/storageAccounts/blobServices/kontenery/obiekty blob/zapis | Zwraca wynik zapisania obiektu BLOB |
+> | **NotDataActions** |  |
+> | *dawaj* |  |
+
+## <a name="azure-connected-machine-onboarding"></a>Dołączanie maszyny połączonej z platformą Azure
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Opis** | Można dołączyć maszyny połączone z platformą Azure. |
+> | **Identyfikator** | b64e21ea-ac4e-4cdf-9dc9-5b892992bee7 |
+> | **Akcje** |  |
+> | Microsoft. HybridCompute/Machines/Read | Odczytaj wszystkie maszyny usługi Azure Arc |
+> | Microsoft. HybridCompute/Machines/Write | Napisz maszyny usługi Azure Arc |
+> | Microsoft.GuestConfiguration/guestConfigurationAssignments/read | Pobierz przypisanie konfiguracji gościa. |
+> | **Nonaruszone** |  |
+> | *dawaj* |  |
+> | **Akcje dataactions** |  |
+> | *dawaj* |  |
+> | **NotDataActions** |  |
+> | *dawaj* |  |
+
+## <a name="azure-connected-machine-resource-administrator"></a>Administrator zasobów maszyny połączonej z platformą Azure
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Opis** | Może odczytywać, zapisywać, usuwać i ponownie dołączać maszyny wirtualne platformy Azure. |
+> | **Identyfikator** | cd570a14-e51a-42ad-bac8-bafd67325302 |
+> | **Akcje** |  |
+> | Microsoft. HybridCompute/Machines/Read | Odczytaj wszystkie maszyny usługi Azure Arc |
+> | Microsoft. HybridCompute/Machines/Write | Napisz maszyny usługi Azure Arc |
+> | Microsoft. HybridCompute/Machines/Delete | Usuwanie maszyn usługi Azure Arc |
+> | Microsoft. HybridCompute/Machines/reconnect/Action | Połącz ponownie maszyny usługi Azure Arc |
+> | Microsoft. HybridCompute/*/Read |  |
+> | **Nonaruszone** |  |
+> | *dawaj* |  |
+> | **Akcje dataactions** |  |
+> | *dawaj* |  |
 > | **NotDataActions** |  |
 > | *dawaj* |  |
 
@@ -821,7 +893,6 @@ W poniższej tabeli przedstawiono krótki opis każdej wbudowanej roli. Kliknij 
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/refreshContainers/action | Odświeża listę kontenerów |
 > | Microsoft.RecoveryServices/Vaults/backupJobs/* | Tworzenie zadań tworzenia kopii zapasowych i zarządzanie nimi |
 > | Microsoft.RecoveryServices/Vaults/backupJobsExport/action | Eksportuj zadania |
-> | Microsoft.RecoveryServices/Vaults/backupManagementMetaData/* | Tworzenie metadanych związanych z zarządzaniem kopiami zapasowymi i zarządzanie nimi |
 > | Microsoft.RecoveryServices/Vaults/backupOperationResults/* | Twórz wyniki operacji zarządzania kopiami zapasowymi i zarządzaj nimi |
 > | Microsoft.RecoveryServices/Vaults/backupPolicies/* | Tworzenie zasad tworzenia kopii zapasowych i zarządzanie nimi |
 > | Microsoft.RecoveryServices/Vaults/backupProtectableItems/* | Utwórz elementy, których kopię zapasową można utworzyć, i zarządzaj nimi |
@@ -886,7 +957,6 @@ W poniższej tabeli przedstawiono krótki opis każdej wbudowanej roli. Kliknij 
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/refreshContainers/action | Odświeża listę kontenerów |
 > | Microsoft.RecoveryServices/Vaults/backupJobs/* | Tworzenie zadań tworzenia kopii zapasowych i zarządzanie nimi |
 > | Microsoft.RecoveryServices/Vaults/backupJobsExport/action | Eksportuj zadania |
-> | Microsoft.RecoveryServices/Vaults/backupManagementMetaData/read |  |
 > | Microsoft.RecoveryServices/Vaults/backupOperationResults/* | Twórz wyniki operacji zarządzania kopiami zapasowymi i zarządzaj nimi |
 > | Microsoft.RecoveryServices/Vaults/backupPolicies/operationResults/read | Pobierz wyniki operacji zasad. |
 > | Microsoft.RecoveryServices/Vaults/backupPolicies/read | Zwraca wszystkie zasady ochrony |
@@ -952,7 +1022,6 @@ W poniższej tabeli przedstawiono krótki opis każdej wbudowanej roli. Kliknij 
 > | Microsoft.RecoveryServices/Vaults/backupJobs/operationResults/read | Zwraca wynik operacji zadania. |
 > | Microsoft.RecoveryServices/Vaults/backupJobs/read | Zwraca wszystkie obiekty zadań |
 > | Microsoft.RecoveryServices/Vaults/backupJobsExport/action | Eksportuj zadania |
-> | Microsoft.RecoveryServices/Vaults/backupManagementMetaData/read |  |
 > | Microsoft.RecoveryServices/Vaults/backupOperationResults/read | Zwraca wynik operacji tworzenia kopii zapasowej dla magazynu Recovery Services. |
 > | Microsoft.RecoveryServices/Vaults/backupPolicies/operationResults/read | Pobierz wyniki operacji zasad. |
 > | Microsoft.RecoveryServices/Vaults/backupPolicies/read | Zwraca wszystkie zasady ochrony |

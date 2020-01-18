@@ -1,17 +1,17 @@
 ---
-title: Wprowadzenie do wbudowanych notesów Jupyter w Azure Cosmos DB
+title: Wprowadzenie do wbudowanych notesów Jupyter w Azure Cosmos DB (wersja zapoznawcza)
 description: Dowiedz się, jak używać wbudowanych notesów Jupyter w Azure Cosmos DB interaktywnie uruchamiać zapytania.
 ms.service: cosmos-db
 ms.topic: overview
 ms.date: 09/22/2019
 author: markjbrown
 ms.author: mjbrown
-ms.openlocfilehash: 8026140a07ce8ed03a7bec57f03a1ca1708f85ac
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 5c6d7ae458c30d462c599042e254f4243daf474c
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756977"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76260875"
 ---
 # <a name="built-in-jupyter-notebooks-support-in-azure-cosmos-db"></a>Wbudowana obsługa notesów Jupyter w Azure Cosmos DB
 

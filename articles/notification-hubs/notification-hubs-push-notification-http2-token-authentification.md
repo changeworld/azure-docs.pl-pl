@@ -1,6 +1,6 @@
 ---
 title: Uwierzytelnianie oparte na tokenach (HTTP/2) dla usług APNS na platformie Azure Notification Hubs | Microsoft Docs
-description: W tym temacie wyjaśniono, jak używać nowego uwierzytelniania tokenu dla usługi APNS
+description: Dowiedz się, jak używać nowego uwierzytelniania tokenów dla usługi APNS.
 services: notification-hubs
 documentationcenter: .net
 author: sethmanheim
@@ -15,16 +15,16 @@ ms.date: 11/14/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 02/13/2019
-ms.openlocfilehash: 56689981d6c85c844fefbec6a4ec4aeb041dbc7f
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 448b5c38371024c2eae900f4f87b343ee0a3b36a
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111959"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263816"
 ---
 # <a name="token-based-http2-authentication-for-apns"></a>Uwierzytelnianie oparte na tokenach (HTTP/2) dla usługi APNS
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 W tym artykule wyjaśniono, jak używać nowego protokołu HTTP/2 APNS z uwierzytelnianiem opartym na tokenach.
 

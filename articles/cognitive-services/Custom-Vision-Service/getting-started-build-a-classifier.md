@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: anroth
-ms.openlocfilehash: e7aa4a557821ee49867a8ea82f92ef04dfbef689
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: b664a586398e297a00ea9cd8fe68dc65e6ade5c8
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978683"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76170011"
 ---
 # <a name="quickstart-how-to-build-a-classifier-with-custom-vision"></a>Szybki Start: jak utworzyć klasyfikator przy użyciu Custom Vision
 
@@ -110,6 +110,8 @@ Po zakończeniu szkolenia jest szacowany i wyświetlany jego wydajność. W Cust
 ## <a name="manage-training-iterations"></a>Zarządzanie iteracjami szkoleń
 
 Za każdym razem, gdy nauczysz klasyfikator, tworzysz nową _iterację_ ze swoimi zaktualizowanymi metrykami wydajności. Wszystkie iteracje można wyświetlić w lewym okienku na karcie **wydajność** . Znajdziesz również przycisk **Usuń** , którego można użyć, aby usunąć iterację, jeśli jest ona przestarzała. Po usunięciu iteracji usuwane są wszystkie obrazy, które są w unikatowy sposób skojarzone.
+
+Zobacz [Używanie modelu z interfejsem API przewidywania,](./use-prediction-api.md) aby dowiedzieć się, jak programistycznie uzyskiwać dostęp do przeszkolonych modeli.
 
 ## <a name="next-steps"></a>Następne kroki
 

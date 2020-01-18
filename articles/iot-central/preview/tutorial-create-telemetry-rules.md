@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 793bb46e14725b14c766569e8b0fc2aa0246858e
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 3889378f34d66f54ea408da4aa43b12f86e7c586
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74979057"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76262664"
 ---
 # <a name="tutorial-create-a-rule-and-set-up-notifications-in-your-azure-iot-central-application-preview-features"></a>Samouczek: Tworzenie reguły i Konfigurowanie powiadomień w aplikacji Azure IoT Central (funkcje w wersji zapoznawczej)
 
@@ -25,11 +25,12 @@ Za pomocą usługi Azure IoT Central można zdalnie monitorować połączone urz
 
 Urządzenia używają telemetrii do wysyłania danych liczbowych z urządzenia. Reguła jest wyzwalana, gdy wybrana wartość telemetrii urządzenia przekroczy określony próg.
 
-W tym samouczku utworzysz regułę wysyłania wiadomości e-mail, gdy temperatura na urządzeniu czujnika środowiska przekroczy 80&deg; F.
+W tym samouczku utworzysz regułę wysyłania wiadomości e-mail, gdy temperatura na urządzeniu czujnika środowiska przekroczy 70&deg; F.
 
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
+>
 > * Tworzenie reguły
 > * Dodaj akcję poczty e-mail
 
@@ -39,7 +40,7 @@ Przed rozpoczęciem należy ukończyć [Tworzenie aplikacji IoT Central platform
 
 ## <a name="create-a-rule"></a>Tworzenie reguły
 
-Aby utworzyć regułę telemetrii, szablon urządzenia musi mieć zdefiniowany co najmniej jeden pomiar telemetrii. W tym samouczku jest używane urządzenie czujnika środowiska, które wysyła dane telemetryczne temperatury i wilgotności. Dodano ten szablon urządzenia i utworzono symulowane urządzenie na stronie [Dodawanie symulowanego urządzenia do aplikacji do IoT Central](./quick-create-pnp-device.md) przewodnika Szybki Start. Reguła monitoruje temperaturę zgłoszoną przez urządzenie i wysyła wiadomość e-mail, gdy znajdzie się ona powyżej 80 stopni.
+Aby utworzyć regułę telemetrii, szablon urządzenia musi mieć zdefiniowany co najmniej jeden pomiar telemetrii. W tym samouczku jest używane urządzenie czujnika środowiska, które wysyła dane telemetryczne temperatury i wilgotności. Dodano ten szablon urządzenia i utworzono symulowane urządzenie na stronie [Dodawanie symulowanego urządzenia do aplikacji do IoT Central](./quick-create-pnp-device.md) przewodnika Szybki Start. Reguła monitoruje temperaturę zgłoszoną przez urządzenie i wysyła wiadomość e-mail, gdy znajdzie się ona powyżej 70 stopni.
 
 1. W lewym okienku wybierz pozycję **reguły**.
 
@@ -57,18 +58,18 @@ Aby utworzyć regułę telemetrii, szablon urządzenia musi mieć zdefiniowany c
 
 ### <a name="configure-the-rule-conditions"></a>Skonfiguruj warunki reguły
 
-Warunki określają kryteria monitorowane przez regułę. W tym samouczku skonfigurujesz regułę do uruchamiania, gdy temperatura przekracza 80&deg; F.
+Warunki określają kryteria monitorowane przez regułę. W tym samouczku skonfigurujesz regułę do uruchamiania, gdy temperatura przekracza 70&deg; F.
 
 1. Wybierz pozycję **temperatura** na liście rozwijanej **telemetrii** .
 
-1. Następnie wybierz pozycję **jest większy niż** **Operator** i wprowadź _80_ jako **wartość**.
+1. Następnie wybierz pozycję **jest większy niż** **Operator** i wprowadź _70_ jako **wartość**.
 
     ![Warunek](media/tutorial-create-telemetry-rules/condition-filled-out1.png)
 
 1. Opcjonalnie można ustawić **agregację czasu**. Po wybraniu agregacji czasu należy również wybrać typ agregacji, taki jak Average lub sum z listy rozwijanej agregacji.
 
-    * Bez agregacji reguła wyzwala dla każdego punktu danych telemetrii, który spełnia warunek. Na przykład, jeśli reguła jest skonfigurowana do wyzwalania, gdy temperatura jest większa niż 80, reguła jest wyzwalana niemal natychmiast, gdy urządzenie zgłosi temperaturę > 80.
-    * Przy agregacji reguła jest wyzwalana, gdy wartość zagregowana punktów danych telemetrii w przedziale czasu spełnia warunek. Jeśli na przykład zasada jest skonfigurowana do wyzwalania, gdy temperatura jest większa niż 80, agregacja czasu jest ustawiona na 10 minut, a typ agregacji to średnia, reguła wyzwala, gdy urządzenie zgłosi średnią temperaturę > 80, obliczoną w ciągu 10 minut dat.
+    * Bez agregacji reguła wyzwala dla każdego punktu danych telemetrii, który spełnia warunek. Na przykład, jeśli reguła jest skonfigurowana do wyzwalania, gdy temperatura jest większa niż 70, reguła jest wyzwalana niemal natychmiast, gdy urządzenie zgłosi temperaturę > 70.
+    * Przy agregacji reguła jest wyzwalana, gdy wartość zagregowana punktów danych telemetrii w przedziale czasu spełnia warunek. Jeśli na przykład zasada jest skonfigurowana do wyzwalania, gdy temperatura jest większa niż 70, agregacja czasu jest ustawiona na 10 minut, a typ agregacji to średnia, reguła wyzwala, gdy urządzenie zgłosi średnią temperaturę > 70, obliczoną w ciągu 10 minut dat.
 
      ![Warunek agregacji](media/tutorial-create-telemetry-rules/aggregate-condition-filled-out1.png)
 

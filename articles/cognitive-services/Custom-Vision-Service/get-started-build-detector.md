@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: anroth
-ms.openlocfilehash: 0d9c175db1370fe07b3278a46d910c59d81df860
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 8aef46f0b9c3dc526f1fbed3d9bc59f97771b509
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74969925"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76170001"
 ---
 # <a name="quickstart-how-to-build-an-object-detector-with-custom-vision"></a>Szybki Start: jak utworzyć detektor obiektów przy użyciu Custom Vision
 
@@ -107,6 +107,8 @@ Po zakończeniu szkolenia model jest obliczany i wyświetlany. Usługa Custom Vi
 ## <a name="manage-training-iterations"></a>Zarządzanie iteracjami szkoleń
 
 Za każdym razem, gdy nauczysz detektor, tworzysz nową _iterację_ ze swoimi zaktualizowanymi metrykami wydajności. Wszystkie iteracje można wyświetlić w lewym okienku na karcie **wydajność** . W lewym okienku znajdziesz również przycisk **Usuń** , którego można użyć, aby usunąć iterację, jeśli jest ona przestarzała. Po usunięciu iteracji usuwane są wszystkie obrazy, które są w unikatowy sposób skojarzone.
+
+Zobacz [Używanie modelu z interfejsem API przewidywania,](./use-prediction-api.md) aby dowiedzieć się, jak programistycznie uzyskiwać dostęp do przeszkolonych modeli.
 
 ## <a name="next-steps"></a>Następne kroki
 

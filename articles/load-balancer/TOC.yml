@@ -4,8 +4,6 @@
   items:
     - name: Co to jest moduł równoważenia obciążenia?
       href: load-balancer-overview.md
-    - name: Co to jest usługa Load Balancer w warstwie Standardowa?
-      href: load-balancer-standard-overview.md
 - name: Szybki start
   items:
     - name: Tworzenie usługi Load Balancer w warstwie Standardowa

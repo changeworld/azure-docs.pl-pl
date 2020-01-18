@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: d1d94e07fc38ae5de62793666df5a73dbf8b79eb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f2eaaf2ec2f3dad1da345d0cfeadf1cae223a592
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75480569"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264020"
 ---
 # <a name="customer-dashboard-in-commercial-marketplace-analytics"></a>Pulpit nawigacyjny klienta w komercyjnej analizie Marketplace
 
@@ -24,7 +24,7 @@ Aby uzyskać dostęp do **pulpitu nawigacyjnego klienta**, Otwórz pulpit nawiga
 >[!NOTE]
 > Aby uzyskać szczegółowe definicje terminologii dotyczącej analizy, zobacz [często zadawane pytania i terminologię dotyczącą komercyjnej analizy portalu Marketplace](./faq-terminology.md).
 
-## <a name="customer-dashboard"></a>Pulpit nawigacyjny klienta
+## <a name="customer-dashboard"></a>Pulpit nawigacyjny Klient
 
 **Pulpit nawigacyjny klienta** menu **Analizuj** zawiera dane dla klientów, którzy uzyskali oferty. Można wyświetlić graficzne reprezentacje następujących elementów:
 
@@ -72,7 +72,7 @@ Na wykresie **trendów dla klientów** jest wyświetlana liczba wszystkich klien
 
 Wykres **klienci według zamówień/użycia** ma trzy karty, "zamówienia", "znormalizowane użycie" i "surowe użycie". **Najwyższy percentyl klienta** jest wyświetlany wzdłuż osi x, zgodnie z ich liczbą zamówień. Oś y Wyświetla liczbę zamówień klienta. Pomocnicza oś y (wykres liniowy) zawiera łączny procent łącznej liczby zamówień. Możesz wyświetlić szczegóły, umieszczając kursor nad punktami wzdłuż wykresu liniowego.
 
-Przykładowo zapoznaj się z wykresem poniżej w celu znormalizowania użycia: pierwsze 30 percentylu klientów ma udział w 87% normalnego użycia. 30 percentylu klientów przyczynia się tylko do 1.57ów czasu użytkowania.
+Przykładowo zapoznaj się z wykresem poniżej w celu znormalizowania użycia: pierwsze 30 percentylu klientów ma udział w 87% normalnego użycia. 30 percentyl klientów ma udział tylko w 1 570 000 godzinach użytkowania.
 
 ### <a name="customers-by-skus"></a>Klienci według jednostek SKU
 

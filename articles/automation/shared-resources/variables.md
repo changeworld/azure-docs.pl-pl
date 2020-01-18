@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 05/14/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: e56a1c9a158974266b810d31a0e9bb898262761a
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: ac2c276f051155d7ba18ee91e4ca27acb0b35192
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849432"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76167986"
 ---
 # <a name="variable-assets-in-azure-automation"></a>Zmienne zasoby w Azure Automation
 
@@ -28,7 +28,7 @@ Zmienne zasoby to wartości, które są dostępne dla wszystkich elementów Runb
 
 Ponieważ zmienne automatyzacji są utrwalane, są dostępne nawet wtedy, gdy konfiguracja elementu Runbook lub konfiguracji DSC zakończy się niepowodzeniem. Takie zachowanie umożliwia ustawienie wartości przez jeden element Runbook, który jest następnie używany przez inny lub jest używany przez ten sam element Runbook lub Konfiguracja DSC przy następnym uruchomieniu.
 
-Po utworzeniu zmiennej można określić, że jest ona zaszyfrowana. Zaszyfrowane zmienne są bezpiecznie przechowywane w Azure Automation i nie można pobrać jego wartości z polecenia cmdlet [Get-AzureRmAutomationVariable](/powershell/module/AzureRM.Automation/Get-AzureRmAutomationVariable) , które jest dostarczane jako część modułu Azure PowerShell. Jedynym sposobem pobrania zaszyfrowanej wartości jest działanie **Get-AutomationVariable** w elemencie Runbook lub konfiguracji DSC. Jeśli chcesz zmienić zaszyfrowaną zmienną na niezaszyfrowaną, możesz usunąć i ponownie utworzyć zmienną jako niezaszyfrowaną.
+Po utworzeniu zmiennej można określić, że jest ona zaszyfrowana. Zaszyfrowane zmienne są bezpiecznie przechowywane w Azure Automation i nie można pobrać jego wartości z polecenia cmdlet [Get-AzureRmAutomationVariable](/powershell/module/AzureRM.Automation/Get-AzureRmAutomationVariable) , które jest dostarczane jako część modułu Azure PowerShell. Jedynym sposobem pobrania zaszyfrowanej wartości jest działanie **Get-AutomationVariable** w elemencie Runbook lub konfiguracji DSC. Jeśli chcesz zmienić zaszyfrowaną zmienną na niezaszyfrowaną, należy usunąć i ponownie utworzyć zmienną jako niezaszyfrowaną.
 
 >[!NOTE]
 >Zabezpieczanie zasobów w Azure Automation obejmuje poświadczenia, certyfikaty, połączenia i zmienne zaszyfrowane. Te zasoby są szyfrowane i przechowywane w Azure Automation przy użyciu unikatowego klucza wygenerowanego dla każdego konta usługi Automation. Ten klucz jest przechowywany w Key Vault zarządzanym przez system. Przed zapisaniem bezpiecznego elementu zawartości klucz jest ładowany z Key Vault a następnie używany do szyfrowania elementu zawartości. Ten proces jest zarządzany przez Azure Automation.

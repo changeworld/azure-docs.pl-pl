@@ -1,6 +1,6 @@
 ---
-title: Tworzenie lub modyfikowanie laboratoriów automatycznie przy użyciu szablonów usługi Azure Resource Manager przy użyciu programu PowerShell | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak za pomocą szablonów usługi Azure Resource Manager przy użyciu programu PowerShell Tworzenie lub modyfikowanie laboratoriów automatycznie w laboratorium DevTest lab
+title: Tworzenie lub modyfikowanie laboratoriów przy użyciu szablonów Azure Resource Manager
+description: Dowiedz się, jak korzystać z szablonów Azure Resource Manager za pomocą programu PowerShell, aby automatycznie tworzyć lub modyfikować laboratoria w laboratorium DevTest
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -12,41 +12,41 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: cb5a08730b47cb5df3116aa4a54554ef0ee6f260
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 180081829387afeb7e63defe7a22378aa8d417d6
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60622461"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76170308"
 ---
-# <a name="create-or-modify-labs-automatically-using-azure-resource-manager-templates-and-powershell"></a>Tworzenie lub modyfikowanie laboratoriów automatycznie przy użyciu szablonów usługi Azure Resource Manager i programu PowerShell
+# <a name="create-or-modify-labs-automatically-using-azure-resource-manager-templates-and-powershell"></a>Automatyczne tworzenie lub modyfikowanie laboratoriów przy użyciu szablonów Azure Resource Manager i programu PowerShell
 
-DevTest Labs oferuje wiele szablonów usługi Azure Resource Manager i skryptów programu PowerShell, które pomagają w szybkim i automatyczne tworzenie nowych labs lub modyfikowanie laboratoriów istniejących i następnie wdrażania tych zasobów.
+DevTest Labs udostępnia wiele szablonów Azure Resource Manager i skryptów programu PowerShell, które mogą pomóc szybko i automatycznie tworzyć nowe laboratoria oraz modyfikować istniejące laboratoria, a następnie wdrażać te zasoby.
 
-W tym artykule opisano proces użycia tych szablonów i skrypty, aby zautomatyzować tworzenie, modyfikowanie i wdrożenia laboratoriów. W tym artykule także dowiesz się, gdzie można znaleźć więcej informacji o tym, jak wykonywać niektóre typowe zadania w usłudze DevTest Labs przy użyciu programu PowerShell.
+Ten artykuł ułatwia przeprowadzenie procesu korzystania z tych szablonów i skryptów w celu zautomatyzowania tworzenia, modyfikowania i wdrażania laboratoriów. W tym artykule pokazano również, gdzie można znaleźć więcej informacji na temat sposobu korzystania z programu PowerShell w celu wykonywania niektórych typowych zadań w DevTest Labs.
 
-## <a name="step-1-gather-your-templates-and-scripts"></a>Krok 1: Zbieranie Szablony skryptów
-Można znaleźć wstępnie utworzonych [szablonów usługi Azure Resource Manager](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates) i [skryptów programu PowerShell](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Scripts) u naszego publicznego [repozytorium GitHub](https://github.com/Azure/azure-devtestlab). Używać ich jako —, lub je dostosować do własnych potrzeb i przechowywać je w ramach własnego [prywatnym repozytorium Git](devtest-lab-add-artifact-repo.md).
+## <a name="step-1-gather-your-templates-and-scripts"></a>Krok 1. zbieranie szablonów i skryptów
+Wstępnie utworzone [szablony Azure Resource Manager](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates) i [skrypty programu PowerShell](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Scripts) można znaleźć w naszym publicznym [repozytorium GitHub](https://github.com/Azure/azure-devtestlab). Użyj ich jako-lub dostosuj je do swoich potrzeb i Zapisz je w swoim [prywatnym repozytorium git](devtest-lab-add-artifact-repo.md).
 
-## <a name="step-2-modify-your-azure-resource-manager-template"></a>Krok 2: Zmodyfikowanie szablonu usługi Azure Resource Manager
-Możesz wykonać kroki opisane w temacie [Tworzenie pierwszego szablonu usługi Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-create-first-template) Jeśli nigdy nie utworzono szablonu przed.
+## <a name="step-2-modify-your-azure-resource-manager-template"></a>Krok 2. modyfikowanie szablonu Azure Resource Manager
+Możesz wykonać kroki opisane w sekcji [Tworzenie pierwszego szablonu Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-create-first-template) , jeśli wcześniej nie utworzono szablonu.
 
-Ponadto [najlepsze rozwiązania dotyczące tworzenia szablonów usługi Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-template-best-practices) oferuje wiele wytycznych i sugestie ułatwiające tworzenie szablonów usługi Azure Resource Manager, które jest niezawodne i łatwe w użyciu. Zazwyczaj będzie używane odmiany jednej z metod lub podanych przykładów i zmodyfikuj swój szablon do własnych potrzeb.
+Ponadto [najlepsze rozwiązania dotyczące tworzenia szablonów Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-template-best-practices) oferują wiele wytycznych i sugestii ułatwiających tworzenie Azure Resource Manager szablonów, które są niezawodne i łatwe w użyciu. Zazwyczaj należy użyć odmiany jednego z podejść lub przykładów, a także zmodyfikować szablon do własnych potrzeb.
 
-## <a name="step-3-deploy-resources-with-powershell"></a>Krok 3: Wdrażanie zasobów za pomocą programu PowerShell
-Po dostosowaniu swoje szablony i skrypty, wykonaj kroki, które są niezbędne do [wdrażanie zasobów przy użyciu szablonów usługi Resource Manager i programu Azure PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy). Artykuł zawiera ogólne informacje o używaniu programu Azure PowerShell przy użyciu szablonów usługi Azure Resource Manager do wdrażania zasobów na platformie Azure.
+## <a name="step-3-deploy-resources-with-powershell"></a>Krok 3. wdrażanie zasobów przy użyciu programu PowerShell
+Po dostosowaniu szablonów i skryptów wykonaj kroki niezbędne do [wdrożenia zasobów przy użyciu szablonów Menedżer zasobów i Azure PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy). Artykuł zawiera ogólne informacje dotyczące używania Azure PowerShell z szablonami Azure Resource Manager do wdrażania zasobów na platformie Azure.
 
 
-## <a name="common-tasks-you-can-perform-in-devtest-labs-using-powershell"></a>Typowe zadania, które można wykonywać w usłudze DevTest labs przy użyciu programu PowerShell
-Istnieje wiele innych typowych zadań, które można zautomatyzować przy użyciu programu PowerShell. W kolejnych sekcjach dokumentacji opisano kroki wymagane do wykonywania tych zadań.
+## <a name="common-tasks-you-can-perform-in-devtest-labs-using-powershell"></a>Typowe zadania, które można wykonywać w DevTest Labs przy użyciu programu PowerShell
+Istnieje wiele innych typowych zadań, które można zautomatyzować za pomocą programu PowerShell. W poniższych sekcjach dokumentacji przedstawiono kroki wymagane do wykonania tych zadań.
 
-* [Tworzenie obrazu niestandardowego z pliku VHD za pomocą programu PowerShell](devtest-lab-create-custom-image-from-vhd-using-powershell.md)
-* [Przekazywanie pliku VHD do laboratorium konta magazynu przy użyciu programu PowerShell](devtest-lab-upload-vhd-using-powershell.md)
+* [Tworzenie obrazu niestandardowego z pliku VHD przy użyciu programu PowerShell](devtest-lab-create-custom-image-from-vhd-using-powershell.md)
+* [Przekazywanie pliku VHD do konta magazynu laboratorium przy użyciu programu PowerShell](devtest-lab-upload-vhd-using-powershell.md)
 * [Dodawanie użytkownika zewnętrznego do laboratorium przy użyciu programu PowerShell](devtest-lab-add-devtest-user.md#add-an-external-user-to-a-lab-using-powershell)
-* [Tworzenie roli niestandardowej laboratorium przy użyciu programu PowerShell](devtest-lab-grant-user-permissions-to-specific-lab-policies.md#creating-a-lab-custom-role-using-powershell)
+* [Tworzenie niestandardowej roli laboratorium przy użyciu programu PowerShell](devtest-lab-grant-user-permissions-to-specific-lab-policies.md#creating-a-lab-custom-role-using-powershell)
 
-### <a name="next-steps"></a>Kolejne kroki
-* Dowiedz się, jak utworzyć [prywatnego repozytorium Git](devtest-lab-add-artifact-repo.md) której będzie przechowywać swoje niestandardowe szablony lub skryptów.
-* Zapoznaj się z [szablony usługi Azure Resource Manager z galerii szablonów szybkiego startu platformy Azure](https://github.com/Azure/azure-quickstart-templates).
+### <a name="next-steps"></a>Następne kroki
+* Dowiedz się, jak utworzyć [prywatne repozytorium git](devtest-lab-add-artifact-repo.md) , w którym będą przechowywane dostosowane szablony lub skrypty.
+* Poznaj [szablony Azure Resource Manager z galerii szablonów szybkiego startu platformy Azure](https://github.com/Azure/azure-quickstart-templates).

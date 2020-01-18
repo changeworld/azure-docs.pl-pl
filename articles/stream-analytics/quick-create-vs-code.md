@@ -7,12 +7,12 @@ ms.author: mamccrea
 ms.date: 09/16/2019
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: 236d29d2c50a792bc4dc11916964db47ca092807
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: d95a3334fe5a7767446c92f8f8668e4da09fca42
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75659597"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169854"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-in-visual-studio-code-preview"></a>Szybki Start: Tworzenie zadania Azure Stream Analytics w Visual Studio Code (wersja zapoznawcza)
 
@@ -22,7 +22,7 @@ W tym przewodniku szybki start pokazano, jak utworzyć i uruchomić zadanie Azur
 
 * Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/).
 
-* Zaloguj się do [portalu Azure](https://portal.azure.com/).
+* Zaloguj się do [Portalu Azure](https://portal.azure.com/).
 
 * Zainstaluj narzędzie [Visual Studio Code](https://code.visualstudio.com/).
 
@@ -52,7 +52,7 @@ W tym przewodniku szybki start pokazano, jak utworzyć i uruchomić zadanie Azur
 
 Przed zdefiniowaniem zadania Stream Analytics należy przygotować dane, które później są skonfigurowane jako dane wejściowe zadania. Aby przygotować dane wejściowe wymagane przez zadanie, wykonaj następujące czynności:
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
+1. Zaloguj się do [Portalu Azure](https://portal.azure.com/).
 
 2. Wybierz pozycję **Utwórz zasób** > **Internet rzeczy** > **IoT Hub**.
 
@@ -179,9 +179,11 @@ Aby uzyskać więcej informacji, postępuj zgodnie z instrukcjami zawartymi w [t
    |IotHubNamespace|MyASAIoTHub|Wybierz lub wprowadź nazwę Centrum IoT. Nazwy centrów IoT są wykrywane automatycznie, jeśli są tworzone w tej samej subskrypcji.|
    |SharedAccessPolicyName|iothubowner| |
 
-   Możesz użyć funkcji CodeLens, aby pomóc wprowadzić ciąg, wybrać z listy rozwijanej lub zmienić tekst bezpośrednio w pliku. Poniższy zrzut ekranu przedstawia **wybór z subskrypcji** jako przykładu.
+   Możesz użyć funkcji CodeLens, aby pomóc wprowadzić ciąg, wybrać z listy rozwijanej lub zmienić tekst bezpośrednio w pliku. Poniższy zrzut ekranu przedstawia **wybór z subskrypcji** jako przykładu. Poświadczenia są wyświetlane na liście i zapisywane w lokalnym programie Credential Manager.
 
    ![Konfigurowanie danych wejściowych w Visual Studio Code](./media/quick-create-vs-code/configure-input.png)
+
+   ![Skonfiguruj wartość wejściową w Visual Studio Code](./media/quick-create-vs-code/configure-input-value.png)
 
 ## <a name="preview-input"></a>Podgląd danych wejściowych
 

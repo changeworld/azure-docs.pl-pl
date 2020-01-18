@@ -1,5 +1,5 @@
 ---
-title: Skonfiguruj ustawienia użycia w obszarze laboratoria Azure Lab Services | Microsoft Docs
+title: Skonfiguruj ustawienia użycia w obszarze laboratoria Azure Lab Services
 description: Dowiedz się, jak skonfigurować liczbę użytkowników dla laboratorium, pobrać je z laboratorium, określić liczbę godzin, przez które mogą korzystać z maszyny wirtualnej, i nie tylko.
 services: lab-services
 documentationcenter: na
@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/12/2019
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 0ab8d8688c7856eeae7d75527620c2b77ae78029
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 80e8bc47f6e6293d70bbc9fae888abdf5527fe93
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73584147"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169221"
 ---
 # <a name="add-and-manage-lab-users"></a>Dodawanie użytkowników laboratorium i zarządzanie nimi
 W tym artykule opisano sposób dodawania użytkowników do laboratorium, uzyskiwania ich zarejestrowanych w laboratorium, kontrolowania liczby godzin, w których mogą korzystać z maszyny wirtualnej, i nie tylko. 

@@ -33,7 +33,7 @@
         - name: Moduł równoważenia obciążenia
           items:
             - name: Co to jest moduł równoważenia obciążenia?
-              href: ../load-balancer/load-balancer-standard-overview.md
+              href: ../load-balancer/load-balancer-overview.md
             - name: Usługa Load Balancer w warstwie Standardowa i strefy dostępności
               href: ../load-balancer/load-balancer-standard-availability-zones.md
             - name: Tworzenie strefowo nadmiarowej publicznej usługi Load Balancer w warstwie Standardowa
@@ -57,7 +57,7 @@
                   href: ../load-balancer/load-balancer-standard-public-zone-redundant-cli.md
         - name: Publiczny adres IP
           href: '../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address'
-        - name: SQL Database
+        - name: Baza danych SQL
           items:
             - name: Strefy dostępności z usługą SQL Database
               href: '../sql-database/sql-database-high-availability.md#zone-redundant-configuration'

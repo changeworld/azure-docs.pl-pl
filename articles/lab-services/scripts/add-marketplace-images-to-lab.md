@@ -1,6 +1,6 @@
 ---
-title: 'Skrypt programu PowerShell: Dodawanie obrazu z witryny marketplace do laboratorium Azure DevTest Labs | Dokumentacja firmy Microsoft'
-description: Ten skrypt programu PowerShell dodaje obrazu z witryny marketplace do laboratorium Azure DevTest Labs.
+title: PowerShell — Dodawanie obrazu z portalu Marketplace do laboratorium w Azure DevTest Labs
+description: Ten skrypt programu PowerShell umożliwia dodanie obrazu z portalu Marketplace do laboratorium w Azure DevTest Labs.
 services: lab-services
 author: spelluru
 manager: ''
@@ -10,18 +10,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/11/2018
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: e099a29a198d43bf8d00487ab45e2648479aedbe
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3d699a22ed06022c6d9df12ade7f202fb304648c
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66160596"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76166447"
 ---
-# <a name="use-powershell-to-add-a-marketplace-image-to-a-lab-in-azure-devtest-labs"></a>Dodawanie obrazu z witryny marketplace do laboratorium Azure DevTest Labs przy użyciu programu PowerShell
+# <a name="use-powershell-to-add-a-marketplace-image-to-a-lab-in-azure-devtest-labs"></a>Dodawanie obrazu z portalu Marketplace do laboratorium w Azure DevTest Labs przy użyciu programu PowerShell
 
-Ten przykładowy skrypt programu PowerShell dodaje obrazu z witryny marketplace do laboratorium Azure DevTest Labs. 
+Ten przykładowy skrypt programu PowerShell umożliwia dodanie obrazu z portalu Marketplace do laboratorium w Azure DevTest Labs. 
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -40,13 +40,13 @@ W tym skrypcie użyto następujących poleceń:
 
 | Polecenie | Uwagi |
 |---|---|
-| Find-AzResource | Wyszukiwanie zasobów, w oparciu o określonych parametrów. |
+| Find-AzResource | Wyszukuje zasoby na podstawie określonych parametrów. |
 | [Get-AzResource](/powershell/module/az.resources/get-azresource) | Pobiera zasoby. |
 | [Set-AzResource](/powershell/module/az.resources/set-azresource) | Modyfikuje zasób. |
-| [Nowe AzResource](/powershell/module/az.resources/new-azresource) | Utwórz zasób. |
+| [New-AzResource](/powershell/module/az.resources/new-azresource) | Utworzyć zasób |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji na temat programu Azure PowerShell, zobacz [dokumentację programu Azure PowerShell](https://docs.microsoft.com/powershell/).
 
-Więcej przykładowych skryptów programu PowerShell usługi laboratorium Azure można znaleźć w [przykładów programu Azure Lab Services PowerShell](../samples-powershell.md).
+Dodatkowe przykłady skryptów programu Azure Lab Services PowerShell można znaleźć w [przykładach Azure Lab Services programu PowerShell](../samples-powershell.md).

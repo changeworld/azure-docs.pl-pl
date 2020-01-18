@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.author: alzam
-ms.openlocfilehash: 7f05b850a0d886ac0df5c542de647f91fe62eb05
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: b22581d012b2c69081bc7b4eee093227c060b4c2
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74382210"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169709"
 ---
 # <a name="enable-azure-multi-factor-authentication-mfa-for-vpn-users"></a>Włącz usługę Azure Multi-Factor Authentication (MFA) dla użytkowników sieci VPN
 
@@ -22,27 +22,7 @@ Jeśli chcesz, aby użytkownicy otrzymali monit o drugi czynnik uwierzytelniania
 
 Wymaganie wstępne dla tej konfiguracji jest skonfigurowanym dzierżawcą usługi Azure AD przy użyciu kroków opisanych w temacie [Konfigurowanie dzierżawy](openvpn-azure-ad-tenant.md).
 
-## <a name="mfa"></a>Otwieranie strony MFA
-
-1. Zaloguj się do Portalu Azure.
-2. Przejdź do **Azure Active Directory — > wszystkich użytkowników**.
-3. Wybierz pozycję **Multi-Factor Authentication** , aby otworzyć stronę uwierzytelnianie wieloskładnikowe.
-
-   ![Logowanie](./media/openvpn-azure-ad-mfa/mfa1.jpg)
-
-## <a name="users"></a>Wybieranie użytkowników
-
-1. Na stronie **uwierzytelnianie wieloskładnikowe** wybierz użytkowników, dla których chcesz włączyć usługę MFA.
-2. Wybierz pozycję **Włącz**.
-
-   ![Wybierz pozycję](./media/openvpn-azure-ad-mfa/mfa2.jpg)
-
-## <a name="enableauth"></a>Włącz uwierzytelnianie
-
-1. Przejdź do **aplikacji Azure Active Directory-> Enterprise — > wszystkich aplikacji**.
-2. Na stronie **aplikacje dla przedsiębiorstw — wszystkie aplikacje** wybierz pozycję **Sieć VPN platformy Azure**.
-
-   ![Identyfikator katalogu](./media/openvpn-azure-ad-mfa/user1.jpg)
+[!INCLUDE [MFA steps](../../includes/vpn-gateway-vwan-openvpn-azure-ad-mfa.md)]
 
 ## <a name="enablesign"></a>Konfigurowanie ustawień logowania
 
