@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 11/02/2019
+ms.date: 01/18/2020
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: 4a4fd2f89bc662f394b59aa6295c3a909cb8552b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b0847cda78c2e6d1df87eeaedc35850103840151
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73468463"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264733"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-the-azure-portal"></a>Samouczek: wdrażanie i Konfigurowanie zapory platformy Azure w sieci hybrydowej przy użyciu Azure Portal
 
@@ -29,7 +29,7 @@ W tym samouczku zostaną utworzone trzy sieci wirtualne:
 
 ![Zapora w sieci hybrydowej](media/tutorial-hybrid-ps/hybrid-network-firewall.png)
 
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Deklarowanie zmiennych
@@ -47,13 +47,15 @@ Jeśli chcesz użyć Azure PowerShell zamiast tego wykonać tę procedurę, zoba
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby ten scenariusz przebiegał prawidłowo, muszą zostać spełnione trzy podstawowe wymagania:
+Sieć hybrydowa używa modelu architektury Hub i szprych do kierowania ruchu między usługą Azure sieci wirtualnych i sieciami lokalnymi. Architektura gwiazdy i szprych ma następujące wymagania:
 
-- Trasa zdefiniowana przez użytkownika w podsieci będącej szprychą, która wskazuje adres IP usługi Azure Firewall jako bramę domyślną. Propagacja trasy protokołu BGP musi być **wyłączona** w przypadku tej tabeli tras.
-- Trasa zdefiniowana przez użytkownika w podsieci bramy koncentratora musi wskazywać adres IP zapory jako następny przeskok do sieci będącej szprychą.
+- Ustaw **AllowGatewayTransit** podczas komunikacji równorzędnej między koncentratorem a siecią wirtualną-szprych. W architekturze sieci typu Hub i szprych, tranzyt bramy umożliwia sieciom wirtualnym współużytkowanie bramy sieci VPN w centrum, a nie wdrażanie bram sieci VPN w każdej sieci wirtualnej szprych. 
 
-   W podsieci usługi Azure Firewall nie jest wymagana trasa zdefiniowana przez użytkownika, ponieważ uzyskuje ona informacje o trasach na podstawie protokołu BGP.
-- Ustaw wartość **AllowGatewayTransit** na potrzeby komunikacji równorzędnej między sieciami VNet-Hub i VNet-Spoke oraz **UseRemoteGateways** na potrzeby komunikacji równorzędnej VNet-Spoke i VNet-Hub.
+   Ponadto trasy do sieci wirtualnych podłączonych do bramy lub sieci lokalnych będą automatycznie propagowane do tabel routingu dla równorzędnych sieci wirtualnych przy użyciu tranzytu bramy. Aby uzyskać więcej informacji, zobacz [Konfigurowanie tranzytu bramy sieci VPN dla komunikacji równorzędnej sieci wirtualnych](../vpn-gateway/vpn-gateway-peering-gateway-transit.md).
+
+- Ustaw **useremotegateways o wartości** podczas komunikacji równorzędnej między sieciami wirtualnymi i koncentratorem. Jeśli ustawiono opcję **useremotegateways o wartości** i **AllowGatewayTransit** na zdalnej komunikacji równorzędnej, Sieć wirtualna szprych używa bram zdalnej sieci wirtualnej do tranzytu.
+- Aby skierować ruch podsieci szprych przez zaporę centrum, potrzebna jest trasa zdefiniowana przez użytkownika (UDR), która wskazuje zaporę z ustawioną opcją **wyłączania propagacji tras BGP** . Opcja **wyłączania propagacji trasy BGP** uniemożliwia dystrybucję tras do podsieci szprych. Zapobiega to wyznaniom tras spowodowanych konfliktami z UDR.
+- Skonfiguruj UDR w podsieci bramy centrum, która wskazuje adres IP zapory w następnym przeskoku do sieci szprych. W podsieci usługi Azure Firewall nie jest wymagana trasa zdefiniowana przez użytkownika, ponieważ uzyskuje ona informacje o trasach na podstawie protokołu BGP.
 
 Zapoznaj się z sekcją [Tworzenie tras](#create-the-routes) w tym samouczku, aby poznać sposób tworzenia tych tras.
 
@@ -398,7 +400,7 @@ Jest to maszyna wirtualna, która jest używana do nawiązywania połączenia pr
 2. W obszarze **popularne**wybierz pozycję **Windows Server 2016 Datacenter**.
 3. Wprowadź poniższe wartości dla maszyny wirtualnej:
     - **Grupa zasobów** — wybierz pozycję istniejące, a następnie wybierz pozycję **PD-hybrydowy-test**.
-    - **Nazwa maszyny wirtualnej** - *VM-lokalnego*.
+    - **Nazwa maszyny wirtualnej** *VM-lokalnego.*  - 
     - **Region — w** tym samym regionie, który jest używany wcześniej.
     - **Nazwa użytkownika**: *azureuser*.
     - **Hasło**: *Azure123456!* .

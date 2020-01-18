@@ -5,16 +5,16 @@ services: iot-edge
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 10/15/2019
+ms.date: 01/15/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 41a2fac48980cf376c833b022b833cfcf1e99821
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 07350ffe4a57bfe4a79bfce5d821b51535867935
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74701875"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76167008"
 ---
 # <a name="tutorial-perform-image-classification-at-the-edge-with-custom-vision-service"></a>Samouczek: wykonywanie klasyfikacji obrazów na urządzeniach brzegowych za pomocą usługi Custom Vision
 
@@ -22,7 +22,7 @@ Usługa Azure IoT Edge może usprawnić Twoje rozwiązanie IoT przez przeniesien
 
 Na przykład usługa Custom Vision na urządzeniu usługi IoT Edge może określić, czy ruch na autostradzie jest większy, czy mniejszy niż zwykle, albo czy w hali garażowej są dostępne miejsca parkingowe w jednym rzędzie. Te informacje można udostępnić innej usłudze w celu wykonania akcji.
 
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 >
@@ -42,7 +42,7 @@ Diagram ![— architektura samouczka, etap i wdrażanie klasyfikatora](./media/t
 >[!TIP]
 >Ten samouczek to uproszczona wersja [Custom Vision i Azure IoT Edge w projekcie przykładowym Raspberry Pi 3](https://github.com/Azure-Samples/Custom-vision-service-iot-edge-raspberry-pi) . Ten samouczek został zaprojektowany do uruchamiania na maszynie wirtualnej w chmurze i używa statycznych obrazów do uczenia i przetestowania klasyfikatora obrazu, który jest przydatny dla kogoś, co jest przydatne w celu ocenienia Custom Vision w IoT Edge. Przykładowy projekt korzysta z sprzętu fizycznego i konfiguruje kanał fotograficzny na żywo w celu uczenia się i przetestowania klasyfikatora obrazu, który jest przydatny dla kogoś, kto chce próbować bardziej szczegółowy scenariusz w czasie rzeczywistym.
 
-Przed rozpoczęciem pracy z tym samouczkiem należy zapoznać się z poprzednim samouczkiem dotyczącym konfigurowania środowiska do tworzenia kontenerów systemu Linux: [Tworzenie modułów IoT Edge dla urządzeń z systemem Linux](tutorial-develop-for-linux.md). Wykonując ten samouczek, należy spełnić następujące wymagania wstępne: 
+Przed rozpoczęciem pracy z tym samouczkiem należy zapoznać się z poprzednim samouczkiem dotyczącym konfigurowania środowiska do tworzenia kontenerów systemu Linux: [Tworzenie modułów IoT Edge dla urządzeń z systemem Linux](tutorial-develop-for-linux.md). Wykonując ten samouczek, należy spełnić następujące wymagania wstępne:
 
 * Usługa [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) w warstwie Bezpłatna lub Standardowa na platformie Azure.
 * [Urządzenie z systemem Linux Azure IoT Edge](quickstart-linux.md)
@@ -50,23 +50,23 @@ Przed rozpoczęciem pracy z tym samouczkiem należy zapoznać się z poprzednim 
 * [Visual Studio Code](https://code.visualstudio.com/) skonfigurowany przy użyciu [narzędzi Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools).
 * Platforma [Docker ce](https://docs.docker.com/install/) skonfigurowana do uruchamiania kontenerów systemu Linux.
 
-Aby utworzyć moduł IoT Edge przy użyciu usługi Custom Vision, Zainstaluj następujące dodatkowe wymagania wstępne na komputerze deweloperskim: 
+Aby utworzyć moduł IoT Edge przy użyciu usługi Custom Vision, Zainstaluj następujące dodatkowe wymagania wstępne na komputerze deweloperskim:
 
 * [Python](https://www.python.org/downloads/)
-* [Usługa Git](https://git-scm.com/downloads)
-* [Rozszerzenie języka Python dla Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-python.python) 
+* [Git](https://git-scm.com/downloads)
+* [Rozszerzenie języka Python dla Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
 
 ## <a name="build-an-image-classifier-with-custom-vision"></a>Tworzenie klasyfikatora obrazów za pomocą usługi Custom Vision
 
 W celu utworzenia klasyfikatora obrazów musisz utworzyć projekt usługi Custom Vision i dostarczyć obrazy szkoleniowe. Aby uzyskać więcej informacji na temat kroków, które wykonasz w tej sekcji, zobacz [Sposób tworzenia klasyfikatora za pomocą usługi Custom Vision](../cognitive-services/custom-vision-service/getting-started-build-a-classifier.md).
 
-Po utworzeniu i wyszkoleniu klasyfikatora obrazów możesz wyeksportować go w postaci kontenera platformy Docker i wdrożyć na urządzeniu usługi IoT Edge. 
+Po utworzeniu i wyszkoleniu klasyfikatora obrazów możesz wyeksportować go w postaci kontenera platformy Docker i wdrożyć na urządzeniu usługi IoT Edge.
 
 ### <a name="create-a-new-project"></a>Tworzenie nowego projektu
 
 1. W przeglądarce internetowej przejdź do [strony internetowej usługi Custom Vision](https://customvision.ai/).
 
-2. Wybierz pozycję **Sign in** (Zaloguj się) i zaloguj się za pomocą tego samego konta, którego używasz, aby uzyskać dostęp do zasobów platformy Azure. 
+2. Wybierz pozycję **Sign in** (Zaloguj się) i zaloguj się za pomocą tego samego konta, którego używasz, aby uzyskać dostęp do zasobów platformy Azure.
 
 3. Wybierz pozycję **New project** (Nowy projekt).
 
@@ -86,21 +86,21 @@ Po utworzeniu i wyszkoleniu klasyfikatora obrazów możesz wyeksportować go w p
 
 ### <a name="upload-images-and-train-your-classifier"></a>Przekazywanie obrazów i szkolenie klasyfikatora
 
-Do utworzenia klasyfikatora obrazów jest potrzebny zestaw obrazów szkoleniowych, a także obrazy testowe. 
+Do utworzenia klasyfikatora obrazów jest potrzebny zestaw obrazów szkoleniowych, a także obrazy testowe.
 
-1. Sklonuj lub pobierz przykładowe obrazy z repozytorium [Cognitive-CustomVision-Windows](https://github.com/Microsoft/Cognitive-CustomVision-Windows) na lokalnej maszynie deweloperskiej. 
+1. Sklonuj lub pobierz przykładowe obrazy z repozytorium [Cognitive-CustomVision-Windows](https://github.com/Microsoft/Cognitive-CustomVision-Windows) na lokalnej maszynie deweloperskiej.
 
    ```cmd/sh
    git clone https://github.com/Microsoft/Cognitive-CustomVision-Windows.git
    ```
 
-2. Wróć do projektu usługi Custom Vision i wybierz pozycję **Add images** (Dodaj obrazy). 
+2. Wróć do projektu usługi Custom Vision i wybierz pozycję **Add images** (Dodaj obrazy).
 
-3. Przejdź do sklonowanego lokalnie repozytorium git, a następnie przejdź do pierwszego folderu obrazów **Cognitive-CustomVision-Windows / Samples / Images / Hemlock**. Zaznacz wszystkie 10 obrazów w tym folderze, a następnie wybierz pozycję **Open** (Otwórz). 
+3. Przejdź do sklonowanego lokalnie repozytorium git, a następnie przejdź do pierwszego folderu obrazów **Cognitive-CustomVision-Windows / Samples / Images / Hemlock**. Zaznacz wszystkie 10 obrazów w tym folderze, a następnie wybierz pozycję **Open** (Otwórz).
 
-4. Dodaj do tej grupy obrazów tag **cykuta**, a następnie naciśnij klawisz **Enter**, aby zastosować ten tag. 
+4. Dodaj do tej grupy obrazów tag **cykuta**, a następnie naciśnij klawisz **Enter**, aby zastosować ten tag.
 
-5. Wybierz pozycję **Upload 10 files** (Przekaż 10 plików). 
+5. Wybierz pozycję **Upload 10 files** (Przekaż 10 plików).
 
    ![Przekazywanie plików oznaczonych tagiem choina do usługi Custom Vision](./media/tutorial-deploy-custom-vision/upload-hemlock.png)
 
@@ -108,17 +108,17 @@ Do utworzenia klasyfikatora obrazów jest potrzebny zestaw obrazów szkoleniowyc
 
 7. Wybierz ponownie pozycję **Add images** (Dodaj obrazy).
 
-8. Przejdź do drugiego folderu obrazów **Cognitive-CustomVision-Windows / Samples / Images / Japanese Cherry**. Zaznacz wszystkie 10 obrazów w tym folderze, a następnie wybierz pozycję **Open** (Otwórz). 
+8. Przejdź do drugiego folderu obrazów **Cognitive-CustomVision-Windows / Samples / Images / Japanese Cherry**. Zaznacz wszystkie 10 obrazów w tym folderze, a następnie wybierz pozycję **Open** (Otwórz).
 
-9. Dodaj do tej grupy obrazów tag **wiśnia japońska**, a następnie naciśnij klawisz **Enter**, aby zastosować ten tag. 
+9. Dodaj do tej grupy obrazów tag **wiśnia japońska**, a następnie naciśnij klawisz **Enter**, aby zastosować ten tag.
 
-10. Wybierz pozycję **Upload 10 files** (Przekaż 10 plików). Po pomyślnym przekazaniu obrazów wybierz pozycję **Done** (Gotowe). 
+10. Wybierz pozycję **Upload 10 files** (Przekaż 10 plików). Po pomyślnym przekazaniu obrazów wybierz pozycję **Done** (Gotowe).
 
-11. Po oznakowaniu i przekazaniu obu zestawów obrazów wybierz pozycję **Train** (Szkolenie), aby wyszkolić klasyfikator. 
+11. Po oznakowaniu i przekazaniu obu zestawów obrazów wybierz pozycję **Train** (Szkolenie), aby wyszkolić klasyfikator.
 
 ### <a name="export-your-classifier"></a>Eksportowanie klasyfikatora
 
-1. Po wyszkoleniu klasyfikatora wybierz pozycję **Eksport** (Eksportuj) na stronie Performance (Wydajność) klasyfikatora. 
+1. Po wyszkoleniu klasyfikatora wybierz pozycję **Eksport** (Eksportuj) na stronie Performance (Wydajność) klasyfikatora.
 
    ![Eksportowanie wytrenowanego klasyfikatora obrazów](./media/tutorial-deploy-custom-vision/export.png)
 
@@ -263,7 +263,8 @@ W tej sekcji dodasz nowy moduł do tego samego rozwiązania CustomVisionSolution
                 print("Response from classification service: (" + str(response.status_code) + ") " + json.dumps(response.json()) + "\n")
             except Exception as e:
                 print(e)
-                print("Response from classification service: (" + str(response.status_code))
+                print("No response from classification service")
+                return None
 
         return json.dumps(response.json())
 
@@ -282,7 +283,8 @@ W tej sekcji dodasz nowy moduł do tego samego rozwiązania CustomVisionSolution
 
             while True:
                 classification = sendFrameForProcessing(imagePath, imageProcessingEndpoint)
-                send_to_hub(classification)
+                if classification:
+                    send_to_hub(classification)
                 time.sleep(10)
 
         except KeyboardInterrupt:
@@ -326,15 +328,15 @@ Zamiast dostarczać źródło obrazów dla tego scenariusza przy użyciu prawdzi
 
 3. Przejdź do katalogu rozwiązania usługi IoT Edge i wklej obraz testowy w folderze **modules** / **cameraCapture**. Obraz powinien znajdować się w tym samym folderze co plik main.py, który był edytowany w poprzedniej sekcji. 
 
-3. W programie Visual Studio Code otwórz plik **Dockerfile.amd64** modułu cameraCapture. 
+4. W programie Visual Studio Code otwórz plik **Dockerfile.amd64** modułu cameraCapture.
 
-4. Po wierszu określającym katalog roboczy `WORKDIR /app` dodaj następujący wiersz kodu: 
+5. Po wierszu określającym katalog roboczy `WORKDIR /app` dodaj następujący wiersz kodu:
 
    ```Dockerfile
    ADD ./test_image.jpg .
    ```
 
-5. Zapisz plik Dockerfile. 
+6. Zapisz plik Dockerfile.
 
 ### <a name="prepare-a-deployment-manifest"></a>Przygotowanie manifestu wdrożenia
 
@@ -358,7 +360,7 @@ Rozszerzenie usługi IoT Edge dla programu Visual Studio Code zawiera w każdym 
 
     Jeśli moduł usługi Custom Vision został nazwany inaczej niż *classifier*, zaktualizuj odpowiednio wartość punktu końcowego przetwarzania obrazów. 
 
-5. W dolnej części pliku zaktualizuj parametr **routes** modułu $edgeHub. Chcesz rozesłać wyniki prognozowania z modułu cameraCapture do usługi IoT Hub. 
+6. W dolnej części pliku zaktualizuj parametr **routes** modułu $edgeHub. Chcesz rozesłać wyniki prognozowania z modułu cameraCapture do usługi IoT Hub.
 
     ```json
         "routes": {
@@ -410,7 +412,6 @@ W Visual Studio Code kliknij prawym przyciskiem myszy nazwę urządzenia IoT Edg
 
 Wyniki z modułu usługi Custom Vision, które są wysyłane jako komunikaty z modułu cameraCapture, uwzględniają prawdopodobieństwo, że obraz przedstawia cykutę lub drzewo wiśni. Ponieważ obraz przedstawia cykutę, powinno być widoczne prawdopodobieństwo 1.0. 
 
-
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
 Jeśli zamierzasz przejść do kolejnego zalecanego artykułu, możesz zachować utworzone zasoby oraz konfiguracje i użyć ich ponownie. Możesz także nadal używać tego samego urządzenia usługi IoT Edge jako urządzenia testowego. 
@@ -418,7 +419,6 @@ Jeśli zamierzasz przejść do kolejnego zalecanego artykułu, możesz zachować
 W przeciwnym razie możesz usunąć konfiguracje lokalne i zasoby platformy Azure, które zostały użyte w tym artykule, aby uniknąć naliczania opłat. 
 
 [!INCLUDE [iot-edge-clean-up-cloud-resources](../../includes/iot-edge-clean-up-cloud-resources.md)]
-
 
 ## <a name="next-steps"></a>Następne kroki
 
