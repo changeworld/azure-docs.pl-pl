@@ -1,27 +1,21 @@
 ---
-title: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — tworzenie klastra Kubernetes usługi ACS w systemie Windows | Microsoft Docs
+title: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — tworzenie klastra Kubernetes usługi ACS w systemie Windows
 description: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — tworzenie klastra Kubernetes usługi ACS w systemie Windows
-services: container-service
-documentationcenter: ''
 author: iainfoulds
-manager: jeconnoc
-editor: ''
 tags: acs, azure-container-service
 keywords: Docker, kontenery, mikrousługi, Kubernetes, DC/OS, Azure
 ms.assetid: ''
 ms.service: container-service
 ms.devlang: azurecli
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 05/30/2017
 ms.author: iainfou
-ms.openlocfilehash: 1f24f036858f9c77ed6b07af27617d3e3706bba2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bc940f09a98eb4ee42290dcfd11d0800f6c3b9e4
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60901974"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76270685"
 ---
 # <a name="deprecated-create-an-azure-container-service-kubernetes-windows-cluster"></a>(PRZESTARZAŁE) Tworzenie klastra Kubernetes usługi Azure Container Service w systemie Windows
 
@@ -65,7 +59,7 @@ Ten skrypt używa następujących poleceń w celu utworzenia wdrożenia. Każda 
 | [az group create](https://docs.microsoft.com/cli/azure/group#az-group-create) | Tworzy grupę zasobów, w której są przechowywane wszystkie zasoby. |
 | [az acs create](https://docs.microsoft.com/cli/azure/acs#az-acs-create) | Tworzy klaster usługi ACS. |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia platformy Azure, zobacz [dokumentację interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure).
 

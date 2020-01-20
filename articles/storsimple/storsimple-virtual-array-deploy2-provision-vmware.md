@@ -1,26 +1,19 @@
 ---
-title: Inicjowanie obsługi administracyjnej macierzy wirtualnej StorSimple w oprogramowaniu VMware | Microsoft Docs
+title: Inicjowanie obsługi administracyjnej macierzy wirtualnej StorSimple w oprogramowaniu VMware
 description: Ten drugi samouczek w serii StorSimple Virtual Array Deployment obejmuje Inicjowanie obsługi urządzenia wirtualnego w oprogramowaniu VMware.
-services: storsimple
-documentationcenter: NA
 author: alkohli
-manager: jeconnoc
-editor: ''
 ms.assetid: 0425b2a9-d36f-433d-8131-ee0cacef95f8
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
+ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ab5ad8acc5d0769a19a4022c55e0461e7ce42762
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 5f5ded3faec3a080022eea70de2cca5d27529c4d
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516822"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76272094"
 ---
 # <a name="deploy-storsimple-virtual-array---provision-in-vmware"></a>Wdrażanie wirtualnej macierzy StorSimple — Inicjowanie obsługi administracyjnej w oprogramowaniu VMware
 ![](./media/storsimple-virtual-array-deploy2-provision-vmware/vmware4.png)
@@ -40,7 +33,7 @@ Wymagania wstępne dotyczące aprowizacji urządzenia wirtualnego w systemie hos
 Przed rozpoczęciem upewnij się, że:
 
 * Wykonano wszystkie kroki z sekcji [przygotowanie portalu do macierzy wirtualnej StorSimple](storsimple-virtual-array-deploy1-portal-prep.md).
-* Pobrano obraz urządzenia wirtualnego dla programu VMware z Azure Portal. Aby uzyskać więcej informacji, **Zobacz Krok 3. Pobierz obraz** urządzenia wirtualnego [Przygotuj Portal for StorSimple Virtual Array Guide](storsimple-virtual-array-deploy1-portal-prep.md).
+* Pobrano obraz urządzenia wirtualnego dla programu VMware z Azure Portal. Aby uzyskać więcej informacji, zobacz **krok 3. Pobieranie obrazu urządzenia wirtualnego** [Przygotuj Portal for StorSimple Virtual Array Guide](storsimple-virtual-array-deploy1-portal-prep.md).
 
 ### <a name="for-the-storsimple-virtual-device"></a>Dla urządzenia wirtualnego StorSimple
 Przed wdrożeniem urządzenia wirtualnego upewnij się, że są spełnione następujące warunki:
@@ -65,7 +58,7 @@ Aby zapewnić obsługę administracyjną urządzenia wirtualnego i nawiązać z 
 2. Inicjowanie obsługi administracyjnej urządzenia wirtualnego w funkcji hypervisor.
 3. Uruchom urządzenie wirtualne i uzyskaj adres IP.
 
-## <a name="step-1-ensure-host-system-meets-minimum-virtual-device-requirements"></a>Krok 1: Upewnij się, że system hosta spełnia minimalne wymagania dotyczące urządzenia wirtualnego
+## <a name="step-1-ensure-host-system-meets-minimum-virtual-device-requirements"></a>Krok 1. Upewnij się, że system hosta spełnia minimalne wymagania dotyczące urządzenia wirtualnego
 Aby utworzyć urządzenie wirtualne, potrzebne są:
 
 * Dostęp do systemu hosta z systemem VMware ESXi Server 5,0, 5,5, 6,0 lub 6,5.
@@ -76,7 +69,7 @@ Aby utworzyć urządzenie wirtualne, potrzebne są:
   * Jeden interfejs sieciowy połączony z siecią umożliwiającą kierowanie ruchu do Internetu. Minimalna przepustowość internetowa powinna wynosić 5 MB/s, aby zapewnić optymalną pracę z urządzeniem.
   * Dysk wirtualny 500 GB dla danych.
 
-## <a name="step-2-provision-a-virtual-device-in-hypervisor"></a>Krok 2: Aprowizowanie urządzenia wirtualnego w funkcji hypervisor
+## <a name="step-2-provision-a-virtual-device-in-hypervisor"></a>Krok 2. Inicjowanie obsługi urządzenia wirtualnego w funkcji hypervisor
 Wykonaj następujące czynności, aby aprowizować urządzenie wirtualne w funkcji hypervisor.
 
 1. Skopiuj obraz urządzenia wirtualnego do swojego systemu. Ten obraz wirtualny został pobrany za pomocą Azure Portal.
@@ -102,13 +95,13 @@ Wykonaj następujące czynności, aby aprowizować urządzenie wirtualne w funkc
 7. Zostanie wyświetlone okno **Datastore Browser** (Przeglądarka magazynu danych).
 
    ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image6.png)
-8. Na pasku narzędzi kliknij ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image7.png) ikonę, aby utworzyć nowy folder. Określ nazwę folderu i zanotuj ją. Ta nazwa folderu będzie używana później, podczas tworzenia maszyny wirtualnej (zalecane najlepsze rozwiązanie). Kliknij przycisk **OK**.
+8. Na pasku narzędzi kliknij ikonę ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image7.png), aby utworzyć nowy folder. Określ nazwę folderu i zanotuj ją. Ta nazwa folderu będzie używana później, podczas tworzenia maszyny wirtualnej (zalecane najlepsze rozwiązanie). Kliknij przycisk **OK**.
 
    ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image8.png)
 9. Nowy folder zostanie wyświetlony w okienku po lewej stronie okna **Datastore Browser** (Przeglądarka magazynu danych).
 
    ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image9.png)
-10. Kliknij ikonę ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image10.png) Przekaż i wybierz pozycję **Przekaż plik**.
+10. Kliknij ikonę Przekaż ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image10.png) a następnie wybierz pozycję **Przekaż plik**.
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image11.png)
 11. Wskaż pobrane pliki VMDK. Pliki są dwa. Wybierz plik do przekazania.
@@ -123,7 +116,7 @@ Wykonaj następujące czynności, aby aprowizować urządzenie wirtualne w funkc
 14. Wróć do okna klienta vSphere. Po wybraniu serwera ESXi kliknij prawym przyciskiem myszy i wybierz pozycję **Nowa maszyna wirtualna**.
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image15.png)
-15. Zostanie wyświetlone okno **Utwórz nową maszynę wirtualną** . Na stronie **Konfiguracja** wybierz opcję Niestandardowa. Kliknij przycisk **Dalej**.
+15. Zostanie wyświetlone okno **Utwórz nową maszynę wirtualną** . Na stronie **Konfiguracja** wybierz opcję **niestandardowa** . Kliknij przycisk **Dalej**.
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image16.png)
 16. Na stronie **Nazwa i lokalizacja** Określ nazwę swojej maszyny wirtualnej. Ta nazwa powinna być zgodna z nazwą folderu (zalecane najlepsze rozwiązanie) określoną wcześniej w kroku 8.
 
@@ -161,7 +154,7 @@ Wykonaj następujące czynności, aby aprowizować urządzenie wirtualne w funkc
 27. Na stronie **Ready to Complete** (Gotowe do ukończenia) przejrzyj wszystkie ustawienia skojarzone z nową maszyną wirtualną. **Przed ukończeniem Sprawdź ustawienia maszyny wirtualnej**. Kliknij pozycję **Kontynuuj**.
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image28.png)
-28. Na stronie **właściwości Virtual Machines** na karcie **sprzęt** zlokalizuj sprzęt urządzenia. Wybierz pozycję **nowy dysk twardy**. Kliknij przycisk **Dodaj**.
+28. Na stronie **właściwości Virtual Machines** na karcie **sprzęt** zlokalizuj sprzęt urządzenia. Wybierz pozycję **nowy dysk twardy**. Kliknij pozycję **Dodaj**.
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image29.png)
 29. Zobaczysz okno **Dodaj sprzęt** . Na stronie **Typ urządzenia** w obszarze **Wybierz typ urządzenia, które chcesz dodać**wybierz pozycję **dysk twardy**, a następnie kliknij przycisk **dalej**.
@@ -182,7 +175,7 @@ Wykonaj następujące czynności, aby aprowizować urządzenie wirtualne w funkc
 34. Wróć do strony właściwości maszyny wirtualnej. Do maszyny wirtualnej zostanie dodany nowy dysk twardy. Kliknij przycisk **Zakończ**.
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image35.png)
-35. Po wybraniu maszyny wirtualnej w okienku po prawej stronie przejdź do karty **Podsumowanie** . Przejrzyj ustawienia dla swojej maszyny wirtualnej.
+35. Po wybraniu maszyny wirtualnej w okienku po prawej stronie przejdź do karty **Podsumowanie** . Przejrzyj ustawienia maszyny wirtualnej.
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image36.png)
 
@@ -191,14 +184,14 @@ Maszyna wirtualna jest teraz aprowizowana. Następnym krokiem jest uruchomienie 
 > [!NOTE]
 > Firma Microsoft zaleca, aby nie instalować narzędzi VMware w macierzy wirtualnej (zgodnie z powyższym przydziałem). Zainstalowanie narzędzi VMware spowoduje powstanie nieobsługiwanej konfiguracji.
 
-## <a name="step-3-start-the-virtual-device-and-get-the-ip"></a>Krok 3: Uruchamianie urządzenia wirtualnego i uzyskiwanie adresu IP
+## <a name="step-3-start-the-virtual-device-and-get-the-ip"></a>Krok 3. uruchomienie urządzenia wirtualnego i pobieranie adresu IP
 Wykonaj poniższe kroki, aby uruchomić urządzenie wirtualne i nawiązać z nim połączenie.
 
 #### <a name="to-start-the-virtual-device"></a>Aby uruchomić urządzenie wirtualne
 1. Uruchom urządzenie wirtualne. W vSphere Configuration Manager w lewym okienku wybierz urządzenie i kliknij prawym przyciskiem myszy, aby wyświetlić menu kontekstowe. Wybierz pozycję **Power** (Zasilanie), a następnie pozycję **Power on** (Włącz). Maszyna wirtualna powinna zostać włączona. Stan można wyświetlić w okienku **ostatnie zadania** w dolnej części klienta vSphere.
 
    ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image37.png)
-2. Ukończenie zadań instalacyjnych potrwa kilka minut. Po uruchomieniu urządzenia przejdź do karty **konsola** . Wyślij klawisze CTRL + ALT + DELETE, aby zalogować się na urządzeniu. Alternatywnie możesz wskazać kursor w oknie konsoli i nacisnąć klawisze CTRL + ALT + INSERT. Domyślny użytkownik to *StorSimpleAdmin* , a hasło domyślne to *Password1*.
+2. Ukończenie zadań instalacyjnych potrwa kilka minut. Gdy urządzenie jest uruchomione, przejdź do karty **konsoli** . Aby zalogować się do urządzenia, naciśnij klawisze CTRL + ALT + DELETE. Alternatywnie możesz wskazać kursor w oknie konsoli i nacisnąć klawisze CTRL + ALT + INSERT. Domyślny użytkownik to *StorSimpleAdmin* , a hasło domyślne to *Password1*.
 
    ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image38.png)
 3. Ze względów bezpieczeństwa hasło administratora urządzenia wygasa przy pierwszym logowaniu. Zostanie wyświetlony monit informujący o konieczności zmiany hasła.
@@ -215,7 +208,7 @@ Wykonaj poniższe kroki, aby uruchomić urządzenie wirtualne i nawiązać z nim
    ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image42m.png)
 
    Następnie skonfiguruj sieć.
-7. `Get-HcsIpAddress` Użyj polecenia, aby wyświetlić listę interfejsów sieciowych włączonych na urządzeniu wirtualnym. Jeśli urządzenie ma włączony jeden interfejs sieciowy, jego domyślną nazwą jest `Ethernet`.
+7. Użyj polecenia `Get-HcsIpAddress`, aby wyświetlić listę interfejsów sieciowych włączonych na urządzeniu wirtualnym. Jeśli urządzenie ma włączony jeden interfejs sieciowy, jego domyślną nazwą jest `Ethernet`.
 
    ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image43m.png)
 8. Skonfiguruj sieć za pomocą polecenia cmdlet `Set-HcsIpAddress`. Przykład przedstawiono poniżej:
@@ -238,7 +231,7 @@ Wykonaj poniższe kroki, aby uruchomić urządzenie wirtualne i nawiązać z nim
        >
        >
 
-Jeśli urządzenie nie spełnia minimalnych wymagań dotyczących konfiguracji, w tekście baneru zostanie wyświetlony błąd (widoczny poniżej). Trzeba zmodyfikować konfigurację urządzenia tak, aby zapewnić zasoby spełniające minimalne wymagania. Następnie możesz ponownie uruchomić urządzenie i połączyć się z nim. Zapoznaj się z minimalnymi wymaganiami [dotyczącymi konfiguracji w kroku 1: Upewnij się, że system hosta spełnia minimalne wymagania dotyczące](#step-1-ensure-host-system-meets-minimum-virtual-device-requirements)urządzenia wirtualnego.
+Jeśli urządzenie nie spełnia minimalnych wymagań dotyczących konfiguracji, w tekście baneru zostanie wyświetlony błąd (widoczny poniżej). Trzeba zmodyfikować konfigurację urządzenia tak, aby zapewnić zasoby spełniające minimalne wymagania. Następnie możesz ponownie uruchomić urządzenie i połączyć się z nim. Minimalne wymagania konfiguracji opisano w sekcji [Krok 1. Sprawdzanie, czy system hosta spełnia minimalne wymagania dotyczące urządzenia wirtualnego](#step-1-ensure-host-system-meets-minimum-virtual-device-requirements).
 
 ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image46.png)
 

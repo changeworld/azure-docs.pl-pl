@@ -1,38 +1,30 @@
 ---
-title: Użyj zestawu SDK platformy .NET dla Microsoft Azure StorSimple Data Manager zadań | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak używać zestawu SDK .NET można uruchomić zadania usługi StorSimple Data Manager
-services: storsimple
-documentationcenter: NA
+title: Korzystanie z zestawu SDK platformy .NET na potrzeby zadań Data Manager Microsoft Azure StorSimple
+description: Dowiedz się, jak uruchamiać zadania StorSimple Data Manager przy użyciu zestawu SDK platformy .NET
 author: alkohli
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
+ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: 80f01a926b94deebab59f8ef91bfc36a4600b5f0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b7cf1d3b9d4a9d751348c4792f904062b00ac104
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60632404"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76270724"
 ---
-# <a name="use-the-net-sdk-to-initiate-data-transformation"></a>Zainicjuj przekształcania danych przy użyciu zestawu SDK platformy .NET
+# <a name="use-the-net-sdk-to-initiate-data-transformation"></a>Inicjowanie transformacji danych przy użyciu zestawu SDK platformy .NET
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
-W tym artykule wyjaśniono, jak funkcja transformacji danych w ramach usługi StorSimple Data Manager można użyć do przekształcania danych urządzenia StorSimple. Przekształcone dane są następnie używane przez inne usługi platformy Azure w chmurze.
+W tym artykule wyjaśniono, jak można użyć funkcji przekształcania danych w ramach usługi StorSimple Data Manager do przekształcania danych urządzenia StorSimple. Przekształcone dane są następnie zużywane przez inne usługi platformy Azure w chmurze.
 
-Można uruchomić zadania przekształcania danych na dwa sposoby:
+Zadanie przekształcania danych można uruchomić na dwa sposoby:
 
-- Korzystanie z zestawu SDK dla platformy .NET
-- Użyj elementu runbook usługi Azure Automation
+- Zastosowanie zestawu SDK dla platformy .NET
+- Użyj Azure Automation elementu Runbook
  
-  W tym artykule opisano, jak utworzyć aplikację konsolową .NET próbki, aby zainicjować zadanie przekształcania danych i śledzić go na ukończenie. Aby dowiedzieć się więcej o tym, jak zainicjować przekształcania danych za pomocą usługi Automation, przejdź do [użycia usługi Azure Automation runbook wyzwalanie zadań przekształcania danych](storsimple-data-manager-job-using-automation.md).
+  W tym artykule szczegółowo opisano sposób tworzenia przykładowej aplikacji konsolowej platformy .NET w celu zainicjowania zadania transformacji danych, a następnie śledzenia jej pod kątem ukończenia. Aby dowiedzieć się więcej o tym, jak zainicjować transformację danych za pośrednictwem automatyzacji, przejdź do pozycji [użyj Azure Automation elementu Runbook, aby wyzwolić zadania przekształcania danych](storsimple-data-manager-job-using-automation.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -41,53 +33,53 @@ Przed rozpoczęciem upewnij się, że masz:
 
     - Program Visual Studio 2012, 2013, 2015 lub 2017.
 
-    - Azure Powershell. [Pobieranie programu Azure Powershell](https://azure.microsoft.com/documentation/articles/powershell-install-configure/).
-*   Definicja zadania poprawnie skonfigurowana usługa StorSimple Data Manager w grupie zasobów.
-*   Wszystkie wymagane biblioteki dll. Pobierz te biblioteki dll z [repozytorium GitHub](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/tree/master/Data_Manager_Job_Run/dlls).
-*   [`Get-ConfigurationParams.ps1`](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/blob/master/Data_Manager_Job_Run/Get-ConfigurationParams.ps1) skrypt z repozytorium GitHub.
+    - Azure Powershell. [Pobierz program Azure PowerShell](https://azure.microsoft.com/documentation/articles/powershell-install-configure/).
+*   Prawidłowo skonfigurowana Definicja zadania w StorSimple Data Manager w grupie zasobów.
+*   Wszystkie wymagane biblioteki DLL. Pobierz te biblioteki DLL z [repozytorium GitHub](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/tree/master/Data_Manager_Job_Run/dlls).
+*   [`Get-ConfigurationParams.ps1`](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/blob/master/Data_Manager_Job_Run/Get-ConfigurationParams.ps1) skryptu z repozytorium GitHub.
 
 ## <a name="step-by-step-procedure"></a>Procedura krok po kroku
 
-Wykonaj poniższe kroki, aby uruchomić zadanie przekształcania danych za pomocą platformy .NET.
+Wykonaj następujące kroki, aby użyć programu .NET do uruchomienia zadania transformacji danych.
 
 1. Aby pobrać parametry konfiguracji, wykonaj następujące czynności:
-    1. Pobierz `Get-ConfigurationParams.ps1` ze skryptu repozytorium GitHub w `C:\DataTransformation` lokalizacji.
-    1. Uruchom `Get-ConfigurationParams.ps1` skryptu z repozytorium GitHub. Wpisz następujące polecenie:
+    1. Pobierz `Get-ConfigurationParams.ps1` ze skryptu repozytorium GitHub w lokalizacji `C:\DataTransformation`.
+    1. Uruchom skrypt `Get-ConfigurationParams.ps1` z repozytorium GitHub. Wpisz następujące polecenie:
 
         ```
         C:\DataTransformation\Get-ConfigurationParams.ps1 -SubscriptionName "AzureSubscriptionName" -ActiveDirectoryKey "AnyRandomPassword" -AppName "ApplicationName"
          ```
-        Możesz przekazać wszystkie wartości ActiveDirectoryKey i nazwa aplikacji.
+        Można przekazać wszystkie wartości dla ActiveDirectoryKey i nazwa_aplikacji.
 
-2. Ten skrypt generuje następujące wartości:
+2. Ten skrypt wyprowadza następujące wartości:
     * Identyfikator klienta
     * Identyfikator dzierżawy
-    * Aktywnego klucza katalogu (taki sam jak podanymi powyżej)
+    * Klucz Active Directory (taki sam jak podany powyżej)
     * Identyfikator subskrypcji
 
-        ![Dane wyjściowe skryptu parametry konfiguracji](media/storsimple-data-manager-dotnet-jobs/get-config-parameters.png)
+        ![Parametry konfiguracji dane wyjściowe skryptu](media/storsimple-data-manager-dotnet-jobs/get-config-parameters.png)
 
-3. Za pomocą programu Visual Studio 2012, 2013 lub 2015 Utwórz C# aplikacji konsolowej programu .NET.
+3. Za pomocą programu Visual Studio 2012, 2013 lub 2015 należy C# utworzyć aplikację konsolową programu .NET.
 
-    1. Uruchom **Visual Studio 2012/2013/2015**.
+    1. Uruchom **program Visual Studio 2012/2013/2015**.
     1. Wybierz pozycję **Plik > Nowy > Projekt**.
 
-        ![Utwórz projekt 1](media/storsimple-data-manager-dotnet-jobs/create-new-project-7.png)        
-    2. Wybierz **zainstalowane > Szablony > Visual C# > aplikacji konsolowej programu**.
-    3. Wprowadź **DataTransformationApp** dla **nazwa**.
-    4. Wybierz **C:\DataTransformation** dla **lokalizacji**.
+        ![Tworzenie projektu 1](media/storsimple-data-manager-dotnet-jobs/create-new-project-7.png)        
+    2. Wybierz pozycję **zainstalowane > szablony > C# aplikacji konsolowej Visual >** .
+    3. Wprowadź **DataTransformationApp** dla **nazwy**.
+    4. Dla **lokalizacji**wybierz pozycję **C:\DataTransformation** .
     6. Kliknij przycisk **OK**, aby utworzyć projekt.
 
-        ![Utwórz projekt 2](media/storsimple-data-manager-dotnet-jobs/create-new-project-1.png)
+        ![Tworzenie projektu 2](media/storsimple-data-manager-dotnet-jobs/create-new-project-1.png)
 
-4. Teraz Dodaj wszystkie biblioteki dll, które są obecne w [folder biblioteki dll](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/tree/master/Data_Manager_Job_Run/dlls) jako **odwołania** w projekcie, który został utworzony. Aby dodać pliki dll, należy wykonać następujące czynności:
+4. Teraz Dodaj wszystkie biblioteki DLL znajdujące się w [folderze dll](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/tree/master/Data_Manager_Job_Run/dlls) jako **odwołania** w projekcie, który został utworzony. Aby dodać pliki dll, wykonaj następujące czynności:
 
-   1. W programie Visual Studio, przejdź do **Widok > Eksploratorze rozwiązań**.
-   2. Kliknij strzałkę po lewej stronie projektu aplikacji przekształcania danych. Kliknij przycisk **odwołania** , a następnie kliknij prawym przyciskiem myszy, aby **Dodaj odwołanie**.
+   1. W programie Visual Studio przejdź do **widoku > Eksplorator rozwiązań**.
+   2. Kliknij strzałkę po lewej stronie projektu przekształcania danych aplikacji. Kliknij pozycję **odwołania** , a następnie kliknij prawym przyciskiem myszy, aby **dodać odwołanie**.
     
        ![Dodawanie bibliotek DLL 1](media/storsimple-data-manager-dotnet-jobs/create-new-project-4.png)
 
-   3. Przejdź do lokalizacji folderu pakietów, wybierz wszystkie biblioteki dll i kliknij **Dodaj**, a następnie kliknij przycisk **OK**.
+   3. Przejdź do lokalizacji folderu Packages, zaznacz wszystkie biblioteki DLL i kliknij przycisk **Dodaj**, a następnie kliknij przycisk **OK**.
 
        ![Dodawanie bibliotek DLL 2](media/storsimple-data-manager-dotnet-jobs/create-new-project-6.png)
 
@@ -102,7 +94,7 @@ Wykonaj poniższe kroki, aby uruchomić zadanie przekształcania danych za pomoc
     using Microsoft.Internal.Dms.DmsWebJob.Contracts;
     ```
     
-6. Poniższy kod inicjuje wystąpienie zadania przekształcania danych. Dodaj ją w **metody Main**. Zastąp wartości parametrów konfiguracji zgodnie z uzyskanymi wcześniej. Podłącz w wartościach **nazwy grupy zasobów** i **ResourceName**. **ResourceGroupName** jest skojarzony z usługi StorSimple Data Manager w której została skonfigurowana definicji zadania. **ResourceName** to nazwa usługi StorSimple Data Manager.
+6. Poniższy kod Inicjuje wystąpienie zadania transformacji danych. Dodaj tę wartość w **metodzie Main**. Zastąp wartości parametrów konfiguracyjnych jako pobrane wcześniej. Podłącz wartości **Nazwa grupy zasobów** i **resourceName**. **ResourceGroupName** jest skojarzona z StorSimple Data Manager, na którym skonfigurowano definicję zadania. **ResourceName** to nazwa usługi StorSimple Data Manager.
 
     ```
     // Setup the configuration parameters.
@@ -120,7 +112,7 @@ Wykonaj poniższe kroki, aby uruchomić zadanie przekształcania danych za pomoc
     DataTransformationJob dataTransformationJob = new DataTransformationJob(configParams);
     ```
    
-7. Określ parametry, z którymi musi zostać uruchomione definicję zadania
+7. Określ parametry, dla których należy uruchomić definicję zadania
 
     ```
     string jobDefinitionName = "job-definition-name";
@@ -130,7 +122,7 @@ Wykonaj poniższe kroki, aby uruchomić zadanie przekształcania danych za pomoc
 
     (OR)
 
-    Jeśli chcesz zmienić parametrów definicji zadania w czasie wykonywania, Dodaj następujący kod:
+    Jeśli chcesz zmienić parametry definicji zadania w czasie wykonywania, Dodaj następujący kod:
 
     ```
     string jobDefinitionName = "job-definition-name";
@@ -157,7 +149,7 @@ Wykonaj poniższe kroki, aby uruchomić zadanie przekształcania danych za pomoc
     };
     ```
 
-8. Po zainicjowaniu Dodaj następujący kod do wyzwalania zadania przekształcania danych w definicji zadania. Podłącz odpowiednie **Nazwa definicji zadania**.
+8. Po zainicjowaniu Dodaj następujący kod, aby wyzwolić zadanie przekształcenia danych w definicji zadania. Podłącz odpowiednią **nazwę definicji zadania**.
 
     ```
     // Trigger a job, retrieve the jobId and the retry interval for polling.
@@ -168,13 +160,13 @@ Wykonaj poniższe kroki, aby uruchomić zadanie przekształcania danych za pomoc
     Console.ReadLine();
 
     ```
-    Po wklejeniu kodu, Skompiluj rozwiązanie. Poniżej przedstawiono zrzut ekranu przedstawiający fragmentu kodu można zainicjować wystąpienia zadania przekształcania danych.
+    Po wklejeniu kodu Skompiluj rozwiązanie. Oto zrzut ekranu przedstawiający fragment kodu, w którym można zainicjować wystąpienie zadania transformacji danych.
 
-   ![Fragment kodu, aby zainicjować zadanie przekształcania danych](media/storsimple-data-manager-dotnet-jobs/start-dotnet-job-code-snippet-1.png)
+   ![Fragment kodu dotyczący zadania przekształcania danych](media/storsimple-data-manager-dotnet-jobs/start-dotnet-job-code-snippet-1.png)
 
-9. To zadanie przekształcenia danych, odpowiadający katalog główny i pliku filtrów w obrębie woluminu StorSimple i umieszcza go do udziału określonego kontenerów/plików. Gdy plik jest przekształcana, komunikat zostanie dodany do kolejki magazynu (w tym samym koncie magazynu jako udział kontenerów/plików) o nazwie identycznej z nazwą definicji zadania. Ten komunikat może służyć jako wyzwalacz do zainicjowania dalszego przetwarzania pliku.
+9. To zadanie przekształca dane, które pasują do katalogu głównego i filtrów plików w woluminie StorSimple i umieszcza je w określonym kontenerze/udziale plików. Gdy plik zostanie przekształcony, zostanie dodany komunikat do kolejki magazynu (na tym samym koncie magazynu co kontener/udział plików) o takiej samej nazwie jak definicja zadania. Ten komunikat może służyć jako wyzwalacz, który inicjuje dalsze przetwarzanie pliku.
 
-10. Po wyzwoleniu zadania można użyć poniższego kodu do śledzenia zadań na zakończenie. Nie jest wymagane, aby dodać tego kodu w celu uruchomienia zadania.
+10. Po wyzwoleniu zadania można użyć poniższego kodu do śledzenia zadania do ukończenia. Dodanie tego kodu do uruchomienia zadania nie jest obowiązkowe.
 
     ```
     Job jobDetails = null;
@@ -196,10 +188,10 @@ Wykonaj poniższe kroki, aby uruchomić zadanie przekształcania danych za pomoc
     Console.Read();
 
     ```
-    Poniżej przedstawiono zrzut ekranu przedstawiający przykładowy cały kod, używane do wyzwalania zadania za pomocą platformy .NET.
+    Oto zrzut ekranu przedstawiający cały przykładowy kod używany do wyzwalania zadania przy użyciu platformy .NET.
 
-    ![Pełną fragment kodu do wyzwalania zadania platformy .NET](media/storsimple-data-manager-dotnet-jobs/start-dotnet-job-code-snippet.png)
+    ![Pełny fragment kodu służący do wyzwalania zadania programu .NET](media/storsimple-data-manager-dotnet-jobs/start-dotnet-job-code-snippet.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-[Użyj usługi StorSimple Data Manager interfejsu użytkownika w celu przekształcania danych](storsimple-data-manager-ui.md).
+[Użyj StorSimple Data Manager interfejsu użytkownika do przekształcania danych](storsimple-data-manager-ui.md).

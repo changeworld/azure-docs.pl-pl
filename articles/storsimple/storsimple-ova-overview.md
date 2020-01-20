@@ -1,31 +1,24 @@
 ---
-title: Microsoft Azure StorSimple omówienie macierzy wirtualnej | Microsoft Docs
+title: Omówienie Microsoft Azure StorSimple macierzy wirtualnej
 description: Opisuje macierz wirtualną StorSimple, zintegrowane rozwiązanie magazynu, które zarządza zadaniami magazynu między lokalną tablicą wirtualną a Microsoft Azure magazynem w chmurze.
-services: storsimple
-documentationcenter: NA
 author: alkohli
-manager: jeconnoc
-editor: ''
 ms.assetid: 169c639b-1124-46a5-ae69-ba9695525b77
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
+ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: alkohli
-ms.openlocfilehash: cbfc69c7d8d9354ae4e727b9eb0180583165abab
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 32781a83aec996b23f161f5fe695f39a0de38685
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516706"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76273865"
 ---
 # <a name="introduction-to-the-storsimple-virtual-array"></a>Wprowadzenie do macierzy wirtualnej StorSimple
 
 [!INCLUDE [storsimple-virtual-array-eol-banner](../../includes/storsimple-virtual-array-eol-banner.md)]
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 Wirtualna macierz Microsoft Azure StorSimple to zintegrowane rozwiązanie magazynu, które zarządza zadaniami magazynu między lokalną tablicą wirtualną działającą w funkcji hypervisor i Microsoft Azure magazynu w chmurze. Wirtualna macierz to wydajne, ekonomiczne i łatwe w użyciu rozwiązanie serwera plików lub serwera iSCSI, które eliminuje wiele problemów i wydatków związanych z magazynem przedsiębiorstwa i ochroną danych. Macierz wirtualna jest szczególnie przydatna do przechowywania rzadko używanych danych archiwalnych.
 
@@ -39,7 +32,7 @@ Macierz wirtualna obsługuje protokół iSCSI lub SMB (Server Message Block). Je
 
 Poniższa tabela zawiera podsumowanie ważnych funkcji macierzy wirtualnej StorSimple.
 
-| Cecha | Macierz wirtualna usługi StorSimple |
+| Funkcja | Macierz wirtualna StorSimple |
 | --- | --- |
 | Wymagania dotyczące instalacji |Używa infrastruktury wirtualizacji (Hyper-V lub VMware) |
 | Dostępność |Jeden węzeł |
@@ -54,7 +47,7 @@ Poniższa tabela zawiera podsumowanie ważnych funkcji macierzy wirtualnej StorS
 | Mobilność danych |Można przywrócić na to samo urządzenie lub odzyskiwanie na poziomie elementu (serwer plików) |
 | Warstwy magazynowania |Lokalny magazyn funkcji hypervisor i chmura |
 | Rozmiar udziału |Warstwowy: do 20 TB; przypięty lokalnie: do 2 TB |
-| Rozmiar woluminu |Warstwowego 500 GB do 5 TB; przypięty lokalnie: 50 GB do 200 GB <br> Maksymalna rezerwacja lokalna dla woluminów warstwowych wynosi 200 GB. |
+| Rozmiar woluminu |Warstwowy: 500 GB do 5 TB; przypięty lokalnie: 50 GB do 200 GB <br> Maksymalna rezerwacja lokalna dla woluminów warstwowych wynosi 200 GB. |
 | Migawki |Spójna awaria |
 | Odzyskiwanie na poziomie elementu |Opcję Użytkownicy mogą przywracać z udziałów |
 
@@ -64,7 +57,7 @@ StorSimple łączy użytkowników i serwery z usługą Azure Storage w kilka min
 
 W poniższej tabeli opisano niektóre z najważniejszych korzyści oferowanych przez rozwiązanie StorSimple Virtual Array.
 
-| Cecha | Korzyść |
+| Funkcja | Dostęp do korzyści |
 | --- | --- |
 | Integracja przezroczysta |Macierz wirtualna obsługuje protokół iSCSI lub SMB. Przenoszenie danych między warstwą lokalną a warstwą chmury jest bezproblemowe i niewidoczne dla użytkownika. |
 | Zmniejszone koszty magazynowania |W przypadku usługi StorSimple należy zapewnić wystarczającą ilość miejsca w magazynie lokalnym, aby zaspokoić bieżące wymagania dotyczące najczęściej używanych danych. W miarę wzrostu potrzeb magazynu StorSimple warstwy zimne dane do ekonomicznego magazynu w chmurze. Dane są deduplikowane i kompresowane przed wysłaniem do chmury, aby jeszcze bardziej ograniczyć wymagania i koszty magazynu. |
@@ -89,7 +82,7 @@ Gdy wielu współbieżnych użytkowników uzyskują dostęp do macierzy wirtualn
 
 StorSimple Virtual Array nie jest odpowiednia dla obciążeń wymagających wysokiej dostępności. Macierz wirtualna to urządzenie z jednym węzłem, które powoduje przestoje podczas instalowania aktualizacji oprogramowania. Administratorzy powinni zaplanować okno obsługi o 30 minut 3-4 razy na rok.
 
-## <a name="workflows"></a>Workflows
+## <a name="workflows"></a>Przepływy
 
 Wirtualna macierz StorSimple jest szczególnie odpowiednia dla następujących przepływów pracy:
 
@@ -139,7 +132,7 @@ Macierz wirtualna ma następujące funkcje:
 > [!NOTE]
 > Nie można rozwinąć macierzy wirtualnej. W związku z tym ważne jest, aby zapewnić odpowiednią ilość miejsca podczas tworzenia macierzy wirtualnej.
 
-### <a name="storsimple-device-manager-service"></a>Usługa menedżera urządzeń StorSimple
+### <a name="storsimple-device-manager-service"></a>Usługa Menedżer urządzeń StorSimple
 
 Microsoft Azure StorSimple udostępnia interfejs użytkownika oparty na sieci Web, usługę StorSimple Menedżer urządzeń, która umożliwia centralne zarządzanie magazynem StorSimple. Za pomocą usługi StorSimple Menedżer urządzeń można wykonywać następujące zadania:
 
@@ -217,6 +210,6 @@ StorSimple Menedżer urządzeń dla serii wirtualnej zbiera dane osobowe w dwóc
 
 Aby uzyskać więcej informacji, zapoznaj się z [zasadami ochrony prywatności firmy Microsoft w centrum zaufania](https://www.microsoft.com/trustcenter).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Dowiedz się [, jak przygotować Portal macierzy wirtualnej](storsimple-virtual-array-deploy1-portal-prep.md).

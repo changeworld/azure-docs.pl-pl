@@ -1,49 +1,47 @@
 ---
-title: (PRZESTARZAŁE) Pule agentów platformy DC/OS usługi kontenera platformy Azure
-description: Jak działają pul agentów publicznych i prywatnych przy użyciu klastra usługi Azure Container Service DC/OS
-services: container-service
+title: PRZESTARZAŁE Pule agentów DC/OS dla Azure Container Service
+description: Jak publiczne i prywatne pule agentów współpracują z Azure Container Service klastrem DC/OS
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/04/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 03cacda1aa405cb2d0ded579c8ddb5f6011ce3bb
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: bb9b33bf537ebd5a563f8e8a8afd45cd2e5b292d
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60478450"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278382"
 ---
-# <a name="deprecated-dcos-agent-pools-for-azure-container-service"></a>(PRZESTARZAŁE) Pule agentów platformy DC/OS usługi kontenera platformy Azure
+# <a name="deprecated-dcos-agent-pools-for-azure-container-service"></a>PRZESTARZAŁE Pule agentów DC/OS dla Azure Container Service
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
-Klastry DC/OS w usłudze Azure Container Service zawiera węzły agenta w dwie pule, pulę publicznych i prywatnych puli. Aplikację można wdrożyć do jednej puli wpływu na dostępność między komputerami w usłudze kontenera. Maszyny można połączenie z Internetem (publicznego) lub przechowywane wewnętrzny (prywatny). Ten artykuł zawiera krótkie omówienie, dlatego istnieją pule prywatnych i publicznych.
+Klastry DC/OS w Azure Container Service zawierają węzły agentów w dwóch pulach, pulę publiczną i pulę prywatną. Aplikację można wdrożyć w jednej puli, co wpływa na dostępność między maszynami w usłudze kontenera. Komputery można uwidocznić w Internecie (Public) lub utrzymywać wewnętrznie (prywatne). Ten artykuł zawiera krótkie omówienie Dlaczego istnieją pule publiczne i prywatne.
 
 
-* **Agenci prywatni**: Węzły agenta prywatnego uruchamiać za pośrednictwem sieci bez obsługi routingu. Ta sieć jest dostępny tylko w przypadku, ze strefy administratora lub za pośrednictwem routera brzegowego strefy publicznej. Domyślnie DC/OS spowoduje uruchomienie aplikacji w węzłach agenta prywatnego. 
+* **Agenci prywatni**: prywatne węzły agenta działają za pomocą sieci bez obsługi routingu. Ta sieć jest dostępna tylko ze strefy administratora lub przez router brzegowy strefy publicznej. Domyślnie system DC/OS uruchamia aplikacje w prywatnych węzłach agenta. 
 
-* **Agentów publicznych**: Uruchamianie aplikacji platformy DC/OS i usługi za pośrednictwem publicznie dostępnej sieci węzły agenta publicznego. 
+* **Agenci publiczni**: publiczne węzły agenta uruchamiają aplikacje i usługi platformy DC/OS za pomocą publicznie dostępnej sieci. 
 
-Aby uzyskać więcej informacji na temat zabezpieczeń sieciowych DC/OS, zobacz [dokumentacji rozwiązania DC/OS](https://docs.mesosphere.com/).
+Więcej informacji o zabezpieczeniach sieci DC/OS znajduje się w [dokumentacji platformy DC/OS](https://docs.mesosphere.com/).
 
-## <a name="deploy-agent-pools"></a>Pule agentów wdrażania
+## <a name="deploy-agent-pools"></a>Wdróż pule agentów
 
-Pule agentów platformy DC/OS w usłudze Azure Container Service są tworzone w następujący sposób:
+Pule agentów DC/OS w Azure Container Service są tworzone w następujący sposób:
 
-* **Prywatnej puli** zawiera liczbę węzłów agenta, możesz określić, kiedy użytkownik [wdrażanie klastra DC/OS](container-service-deployment.md). 
+* **Pula prywatna** zawiera liczbę węzłów agentów, które można określić podczas [wdrażania klastra DC/OS](container-service-deployment.md). 
 
-* **Puli publicznych** początkowo zawiera wstępnie określoną liczbę węzłów agenta. Ta pula zostanie dodana automatycznie po zainicjowaniu obsługi klastra DC/OS.
+* **Pula publiczna** początkowo zawiera wstępnie określoną liczbę węzłów agentów. Ta pula jest dodawana automatycznie po zainicjowaniu obsługi administracyjnej klastra DC/OS.
 
-Pula prywatnych i publicznych puli są zestawy skalowania maszyn wirtualnych platformy Azure. Po wdrożeniu, można zmienić rozmiar tych pul.
+Pula prywatna i Pula publiczna są zestawami skalowania maszyn wirtualnych platformy Azure. Po wdrożeniu można zmienić rozmiar tych pul.
 
-## <a name="use-agent-pools"></a>Pule agenta
-Domyślnie **Marathon** służy do wdrażania dowolnej nowej aplikacji do *prywatnej* węzłów agentów. Musisz jawnie wdrożenia aplikacji na *publicznych* węzły podczas tworzenia aplikacji. Wybierz **opcjonalnie** kartę, a następnie wprowadź **slave_public** dla **zaakceptowane role zasobów** wartość. Ten proces jest udokumentowany [tutaj](container-service-mesos-marathon-ui.md#deploy-a-docker-formatted-container) i [DC/OS](https://docs.mesosphere.com/1.7/administration/installing/oss/custom/create-public-agent/) dokumentacji.
+## <a name="use-agent-pools"></a>Korzystanie z pul agentów
+Domyślnie **Marathon** wdraża każdą nową aplikację w węzłach agenta *prywatnego* . Musisz jawnie wdrożyć aplikację w węzłach *publicznych* podczas tworzenia aplikacji. Wybierz **opcjonalną** kartę i wprowadź **slave_public** dla wartości **zaakceptowanych ról zasobów** . Ten proces jest udokumentowany w [tym miejscu](container-service-mesos-marathon-ui.md#deploy-a-docker-formatted-container) oraz w dokumentacji [DC/OS](https://docs.mesosphere.com/1.7/administration/installing/oss/custom/create-public-agent/) .
 
-## <a name="next-steps"></a>Kolejne kroki
-* Przeczytaj więcej na temat [Zarządzanie kontenerów DC/OS](container-service-mesos-marathon-ui.md).
+## <a name="next-steps"></a>Następne kroki
+* Przeczytaj więcej [na temat zarządzania kontenerami DC/OS](container-service-mesos-marathon-ui.md).
 
-* Dowiedz się, jak [otwierająca zaporę](container-service-enable-public-access.md) udostępnianych przez platformę Azure, aby zezwolić na publiczny dostęp do kontenerów DC/OS.
+* Dowiedz się [, jak otworzyć Zaporę](container-service-enable-public-access.md) dostarczoną przez platformę Azure, aby umożliwić publiczny dostęp do kontenerów DC/OS.
 

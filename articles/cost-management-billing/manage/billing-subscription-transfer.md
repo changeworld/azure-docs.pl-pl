@@ -10,15 +10,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/18/2019
+ms.date: 01/17/2020
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6f43f7424cddae8659301be0ddc4842412a62952
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: d2bbfd7f4ddc5fc34c0bec3612783dfef5074d83
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75993546"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76270870"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>Przeniesienie własności rozliczeń subskrypcji platformy Azure na inne konto
 
@@ -52,7 +52,7 @@ Jeśli jesteś klientem z Umową Enterprise (EA), administratorzy w Twoim przeds
 
     ![Strona wysyłania przeniesienia](./media/billing-subscription-transfer/billing-send-transfer-request.PNG)
 
-1. Wybierz opcję **Wyślij żądanie przeniesienia**.
+1. Wybierz pozycję **Wyślij żądanie przeniesienia**.
 
 1. Użytkownik otrzymuje wiadomość e-mail z instrukcjami dotyczącymi przeglądania żądania transferu.
 
@@ -86,7 +86,7 @@ Subskrypcje programu Visual Studio i Microsoft Partner Network zawierają comies
 
 ## <a name="transfer-billing-ownership-of-enterprise-agreement-ea-subscriptions"></a>Przenoszenie własności rozliczeń subskrypcji w ramach Umowy Enterprise (EA)
 
-Administrator przedsiębiorstwa może przenieść własność subskrypcji między kontami w ramach rejestracji. Więcej informacji — zobacz [Przenoszenie własności konta](https://ea.azure.com/helpdocs/changeAccountOwnerForASubscription) w portalu EA.
+Administrator przedsiębiorstwa może przenieść własność subskrypcji między kontami w ramach rejestracji. Aby uzyskać więcej informacji, zobacz [zmiana właściciela konta](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-get-started#change-account-owner) w portalu EA.
 
 ## <a name="next-steps-after-accepting-billing-ownership"></a>Kroki po zaakceptowaniu własności rozliczeń
 
@@ -117,7 +117,7 @@ Przenoszenie subskrypcji w witrynie Azure Portal jest dostępne dla typów subsk
 - [Visual Studio Test Professional](https://azure.microsoft.com/offers/ms-azr-0060p/)
 - [Plan platformy Microsoft Azure](https://azure.microsoft.com/offers/ms-azr-0017g/)\*\*
 
-\* [za pośrednictwem portalu EA](#EA).
+\* [Za pośrednictwem portalu EA](#EA).
 
 \*\* Obsługiwane tylko w przypadku kont utworzonych podczas tworzenia konta w witrynie sieci Web platformy Azure.
 
@@ -163,7 +163,7 @@ Jedyne informacje dostępne dla użytkowników na nowym koncie to koszt subskryp
 
 ### <a name="how-do-i-migrate-data-and-services-for-my-azure-subscription-to-new-subscription"></a>Jak mogę przeprowadzić migrację danych i usług mojej subskrypcji platformy Azure do nowej subskrypcji?
 
-Jeśli nie możesz przenieść własności subskrypcji, możesz ręcznie migrować zasoby. Zobacz artykuł [Przenoszenie zasobów do nowej grupy zasobów lub subskrypcji](../../azure-resource-manager/management/move-resource-group-and-subscription.md).
+Jeśli nie możesz przenieść własności subskrypcji, możesz ręcznie migrować zasoby. Zobacz [Przenoszenie zasobów do nowej grupy zasobów lub subskrypcji](../../azure-resource-manager/management/move-resource-group-and-subscription.md).
 
 ### <a name="if-i-transfer-a-visual-studio-or-microsoft-partner-network-subscription-does-my-credit-carry-forward-with-the-subscription-in-the-new-account"></a>Czy jeśli przeniosę subskrypcję programu Visual Studio lub Microsoft Partner Network, moje środki są przenoszone wraz z subskrypcją na nowe konto?
 
@@ -190,7 +190,7 @@ Nawet jeśli [przypisania kontroli dostępu opartej na rolach (RBAC)](../../role
 
 Jeśli odbiorca musi ograniczyć dostęp do swoich zasobów platformy Azure, powinien rozważyć zaktualizowanie wszystkich wpisów tajnych skojarzonych z usługą. Większość zasobów można zaktualizować, wykonując następujące czynności:
 
-  1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+  1. Zaloguj się do [Portalu Azure](https://portal.azure.com).
   2. W menu Centrum wybierz pozycję **Wszystkie zasoby**.
   3. Wybierz zasób.
   4. Na stronie zasobu kliknij opcję **Ustawienia**. Możesz tu wyświetlać i aktualizować istniejące wpisy tajne.

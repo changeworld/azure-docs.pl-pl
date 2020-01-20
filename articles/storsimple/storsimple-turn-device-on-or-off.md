@@ -1,177 +1,170 @@
 ---
-title: Włączanie urządzenia serii StorSimple 8000 lub wyłączanie | Dokumentacja firmy Microsoft
-description: Wyjaśnia, jak włączyć nowe urządzenie StorSimple, Włącz urządzeń, który został zamknięty lub utraty zasilania i wyłączyć urządzenie uruchomione.
-services: storsimple
-documentationcenter: ''
+title: Włącz lub Wyłącz urządzenie z serii StorSimple 8000
+description: Wyjaśnia, jak włączyć nowe urządzenie StorSimple, włączyć urządzenie, które zostało wyłączone lub zgubione, i wyłączyć uruchomione urządzenie.
 author: alkohli
-manager: jeconnoc
-editor: ''
 ms.assetid: 8e9c6e6c-965c-4a81-81bd-e1c523a14c82
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
+ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 29a45c0d32e35b5d321670bf25334a2976b93e56
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1319583569a8abc619ad902a87ee551b476f88eb
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64693674"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76276876"
 ---
-# <a name="turn-on-or-turn-off-your-storsimple-8000-series-device"></a>Włącz lub wyłącz urządzenie StorSimple 8000 series
+# <a name="turn-on-or-turn-off-your-storsimple-8000-series-device"></a>Włączanie lub wyłączanie urządzenia z serii StorSimple 8000
 
-## <a name="overview"></a>Omówienie
-Wyłączanie urządzenia Microsoft Azure StorSimple nie jest wymagane jako część normalnego działania. Jednak należy włączyć nowe urządzenie lub urządzenia, który ma zostać wyłączony. Ogólnie rzecz biorąc zamknięcie jest wymagany w przypadkach, w których musisz wymienić sprzęt nie powiodło się, fizycznie przenieść jednostka lub wykonać urządzenia z usługi. W tym samouczku opisano procedury wymagane włączanie i wyłączanie urządzenia StorSimple w różnych scenariuszach.
+## <a name="overview"></a>Przegląd
+Zamykanie urządzenia Microsoft Azure StorSimple nie jest wymagane jako część normalnej operacji systemowej. Może być jednak konieczne włączenie nowego urządzenia lub urządzenia, które musiały zostać zamknięte. Ogólnie rzecz biorąc, w przypadkach, w których należy zastąpić sprzęt zakończony niepowodzeniem, należy fizycznie przenieść jednostkę lub przełączyć urządzenie poza usługę. W tym samouczku opisano wymaganą procedurę włączania i wyłączania urządzenia z systemem StorSimple w różnych scenariuszach.
 
 ## <a name="turn-on-a-new-device"></a>Włącz nowe urządzenie
-Kroki do włączania na urządzeniu StorSimple po raz pierwszy różnią się w zależności od tego, czy urządzenie jest 8100 lub 8600 modelu. 8100 ma jednej obudowie głównej 8600 jest podwójnego Obudowa urządzenia przy użyciu podstawowego obudowy i obudowy EBOD. W poniższych sekcjach znajdują się szczegółowe instrukcje zostały podane w przypadku obu modeli.
+Kroki związane z włączaniem urządzenia StorSimple po raz pierwszy różnią się w zależności od tego, czy urządzenie jest modelem 8100 czy 8600. 8100 ma jedną obudowę podstawową, a 8600 to urządzenie z dwoma obudowami z obudową podstawową i obudową EBOD. Szczegółowe kroki dla obu modeli zostały omówione w poniższych sekcjach.
 
-* [Nowe urządzenie przy użyciu tylko podstawowy obudowy](#new-device-with-primary-enclosure-only)
-* [Nowe urządzenie przy użyciu obudowy EBOD](#new-device-with-ebod-enclosure)
+* [Nowe urządzenie z tylko podstawową obudową](#new-device-with-primary-enclosure-only)
+* [Nowe urządzenie z obudową EBOD](#new-device-with-ebod-enclosure)
 
-### <a name="new-device-with-primary-enclosure-only"></a>Nowe urządzenie przy użyciu tylko podstawowy obudowy
-Model StorSimple 8100 jest obudowy pojedynczego urządzenia. Urządzenia zawiera nadmiarowe zasilania i chłodzenia modułów (PCMs). Zarówno PCMs musi być zainstalowane i połączone z różnymi źródłami zasilania aby zapewnić wysoką dostępność.
+### <a name="new-device-with-primary-enclosure-only"></a>Nowe urządzenie z tylko podstawową obudową
+Model StorSimple 8100 to pojedyncze urządzenie obudowy. Urządzenie obejmuje nadmiarowe moduły mocy i chłodzenia (PCMs). Aby zapewnić wysoką dostępność, muszą być zainstalowane i połączone z różnymi źródłami zasilanymi przez PCMs.
 
-Wykonaj poniższe kroki, aby Podłączanie kabli do urządzenia zasilania.
+Wykonaj następujące kroki, aby podłączyć urządzenie do urządzeń.
 
 [!INCLUDE [storsimple-cable-8100-for-power](../../includes/storsimple-cable-8100-for-power.md)]
 
 > [!NOTE]
-> Aby uzyskać przeprowadzenie konfiguracji urządzenia i okablowanie instrukcje, przejdź do [instalowania urządzenia StorSimple 8100](storsimple-8100-hardware-installation.md). Upewnij się, że dokładnie wykonaj instrukcje.
+> Aby uzyskać pełne instrukcje dotyczące konfiguracji i okablowania urządzenia, przejdź do pozycji [Instalowanie urządzenia z usługą StorSimple 8100](storsimple-8100-hardware-installation.md). Upewnij się, że dokładnie postępuj zgodnie z instrukcjami.
 > 
 > 
 
-### <a name="new-device-with-ebod-enclosure"></a>Nowe urządzenie przy użyciu obudowy EBOD
-Model StorSimple 8600 ma podstawowy obudowy i obudowy EBOD. Wymaga to jednostki, które można ze sobą rozpakowane Serial Attached SCSI (SAS) łączność i zasilania.
+### <a name="new-device-with-ebod-enclosure"></a>Nowe urządzenie z obudową EBOD
+Model StorSimple 8600 ma zarówno obudowę podstawowy, jak i obudowę EBOD. Wymaga to okablowania połączonego z łącznością SAS (Serial Attached SCSI) i mocą.
 
-Podczas konfigurowania tego urządzenia po raz pierwszy, sygnatury dostępu Współdzielonego okablowania najpierw wykonaj kroki, a następnie wykonaj kroki odpowiednie dla przewody zasilania.
+Konfigurując to urządzenie po raz pierwszy, najpierw wykonaj kroki dla okablowania SAS, a następnie wykonaj kroki dla okablowania.
 
 [!INCLUDE [storsimple-sas-cable-8600](../../includes/storsimple-sas-cable-8600.md)]
 
 [!INCLUDE [storsimple-cable-8600-for-power](../../includes/storsimple-cable-8600-for-power.md)]
 
 > [!NOTE]
-> Aby uzyskać przeprowadzenie konfiguracji urządzenia i okablowanie instrukcje, przejdź do [instalowania urządzenia StorSimple 8600](storsimple-8600-hardware-installation.md). Upewnij się, że dokładnie wykonaj instrukcje.
+> Aby uzyskać pełne instrukcje dotyczące konfiguracji i okablowania urządzenia, przejdź do pozycji [Instalowanie urządzenia z usługą StorSimple 8600](storsimple-8600-hardware-installation.md). Upewnij się, że dokładnie postępuj zgodnie z instrukcjami.
 
-## <a name="turn-on-a-device-after-shutdown"></a>Włącz urządzenie po zamknięciu systemu
-Włączanie urządzenia StorSimple, po jego zamknięciu kroki są różne w zależności od tego, czy urządzenie jest 8100 lub 8600 modelu. 8100 ma jednej obudowie głównej 8600 jest podwójnego Obudowa urządzenia przy użyciu podstawowego obudowy i obudowy EBOD.
+## <a name="turn-on-a-device-after-shutdown"></a>Włącz urządzenie po zamknięciu
+Kroki związane z włączaniem urządzenia StorSimple po jego zamknięciu są różne w zależności od tego, czy urządzenie jest modelem 8100 czy 8600. 8100 ma jedną obudowę podstawową, a 8600 to urządzenie z dwoma obudowami z obudową podstawową i obudową EBOD.
 
-* [Urządzenia przy użyciu tylko podstawowy obudowy](#device-with-primary-enclosure-only)
-* [Urządzenia przy użyciu obudowy EBOD](#device-with-ebod-enclosure)
+* [Tylko urządzenie z podstawową obudową](#device-with-primary-enclosure-only)
+* [Urządzenie z obudową EBOD](#device-with-ebod-enclosure)
 
-### <a name="device-with-primary-enclosure-only"></a>Urządzenia przy użyciu tylko podstawowy obudowy
-Po zamknięciu należy użyć poniższej procedury do włączenia urządzenia StorSimple przy użyciu podstawowego obudowy i obudowy nie EBOD.
+### <a name="device-with-primary-enclosure-only"></a>Tylko urządzenie z podstawową obudową
+Po zamknięciu programu wykonaj poniższą procedurę, aby włączyć urządzenie StorSimple z obudową podstawową i bez obudowy EBOD.
 
-#### <a name="to-turn-on-a-device-with-a-primary-enclosure-only"></a>Aby włączyć urządzenia przy użyciu tylko podstawowy obudowy
-1. Upewnij się, że możliwości zmienia się na obu zasilania i chłodzenia modułów (PCMs) znajdują się w pozycji wył. Jeśli przełączniki nie znajdują się w pozycji WYŁĄCZONY, przerzucić pozycji Wył i poczekaj, aż światła go.
-2. Włącz urządzenie, przestawiając wyłączniki zasilania na obu PCMs pozycji dalej. Włącz urządzenie.
-3. Sprawdź następujące polecenie, aby sprawdzić, czy urządzenie jest w pełni na:
+#### <a name="to-turn-on-a-device-with-a-primary-enclosure-only"></a>Aby włączyć urządzenie tylko przy użyciu podstawowej obudowy
+1. Upewnij się, że przełączniki zasilające w modułach zasilanie i chłodzące (PCMs) są wyłączone. Jeśli przełączniki nie znajdują się poza pozycją, przewróć je do pozycji wyłączone i poczekaj na wyłączenie świateł.
+2. Włącz urządzenie, przerzucając przełączniki w obu PCMs na pozycji włączone. Urządzenie powinno włączyć.
+3. Sprawdź następujące, aby sprawdzić, czy urządzenie jest w pełni włączone:
    
-   1. Diod LED OK na obu modułów PCM są zielone.
-   2. Stan diod LED oba kontrolery są zielony.
-   3. Diody LED w jeden z kontrolerów jest migające, co oznacza, że kontroler jest aktywna.
+   1. Poprawne diody LED dla obu modułów PCM są zielone.
+   2. Diody LED stanu na obu kontrolerach są pełnymi kolorami zielonymi.
+   3. Niebieskie diody LED na jednym z kontrolerów migają, co oznacza, że kontroler jest aktywny.
       
-      Jeśli którykolwiek z tych warunków nie zostanie spełniony, urządzenie nie jest dobra. Proszę [skontaktuj się z Microsoft Support](storsimple-8000-contact-microsoft-support.md).
+      Jeśli którykolwiek z tych warunków nie zostanie spełniony, urządzenie nie jest w dobrej kondycji. [Skontaktuj się z pomoc techniczna firmy Microsoft](storsimple-8000-contact-microsoft-support.md).
 
-### <a name="device-with-ebod-enclosure"></a>Urządzenia przy użyciu obudowy EBOD
-Po zamknięciu systemu należy użyć poniższej procedury do włączenia urządzenia StorSimple przy użyciu podstawowego obudowy i obudowy EBOD. Dokładnie zgodnie z opisem wykonywania każdego kroku w sekwencji. Niewykonanie tej czynności może spowodować utratę danych.
+### <a name="device-with-ebod-enclosure"></a>Urządzenie z obudową EBOD
+Po zamknięciu programu wykonaj poniższą procedurę, aby włączyć urządzenie z systemem StorSimple przy użyciu obudowy podstawowej i obudowy EBOD. Wykonaj każdy krok w sekwencji dokładnie zgodnie z opisem. Niewykonanie tej czynności może spowodować utratę danych.
 
-#### <a name="to-turn-on-a-device-with-a-primary-and-an-ebod-enclosure"></a>Aby włączyć urządzenia przy użyciu podstawowego i obudowy EBOD
-1. Upewnij się, że obudowa EBOD jest podłączony do głównej obudowy. Aby uzyskać więcej informacji, zobacz [instalowania urządzenia StorSimple 8600](storsimple-8600-hardware-installation.md).
-2. Upewnij się, że zasilania i chłodzenia modułów (PCMs) EBOD i obudowy głównej znajdują się w pozycji wył. Jeśli przełączniki nie znajdują się w pozycji WYŁĄCZONY, przerzucić pozycji Wył i poczekaj, aż światła go.
-3. Obudowa EBOD najpierw włączyć przestawiając wyłączniki zasilania na obu PCMs pozycji dalej. Diod LED PCM powinna być zielona. Zielony kontrolera EBOD LED w tej jednostce wskazuje, czy obudowa EBOD jest włączona.
-4. Włącz głównej obudowy przestawiając wyłączniki zasilania na obu PCMs pozycji dalej. Cały system będą znajdować się na.
-5. Sprawdź, czy diod LED sygnatury dostępu Współdzielonego są zielone, zapewnia, że połączenie między obudowy EBOD i obudowy podstawowy jest dobra.
+#### <a name="to-turn-on-a-device-with-a-primary-and-an-ebod-enclosure"></a>Aby włączyć urządzenie przy użyciu podstawowej i EBOD obudowy
+1. Upewnij się, że obudowa EBOD jest połączona z obudową podstawową. Aby uzyskać więcej informacji, zobacz [Instalowanie urządzenia z StorSimple 8600](storsimple-8600-hardware-installation.md).
+2. Upewnij się, że moduły energetyczne i chłodzące (PCMs) zarówno dla obudowy EBOD, jak i podstawowych znajdują się na pozycji OFF. Jeśli przełączniki nie znajdują się poza pozycją, przewróć je do pozycji wyłączone i poczekaj na wyłączenie świateł.
+3. Najpierw włącz obudowę EBOD, przełączając przełączniki w obu PCMsach do pozycji włączone. Diody LED PCM powinny mieć kolor zielony. W tej jednostce zostanie przekierowany zielony kontroler EBOD wskazujący, że obudowa EBOD jest włączona.
+4. Włącz obudowę podstawową, przełączając przełączniki w obu PCMs do pozycji włączone. Cały system powinien być teraz włączony.
+5. Sprawdź, czy diody LED sygnatury dostępu współdzielonego są zielone, co gwarantuje, że połączenie między obudową EBOD a podstawową obudową jest dobre.
 
-## <a name="turn-on-a-device-after-a-power-loss"></a>Włącz urządzenie po utracie zasilania
-Awarii zasilania lub przerwania można wyłączyć urządzenie StorSimple. Awaria zasilania może się zdarzyć na jeden z źródła zasilania lub obu zasilacze. Kroki odzyskiwania są różne w zależności od tego, czy urządzenie jest model 8100 lub 8600. 8100 ma jednej obudowie głównej 8600 jest podwójnego Obudowa urządzenia przy użyciu podstawowego obudowy i obudowy EBOD. W tej sekcji opisano procedury odzyskiwania dla każdego scenariusza.
+## <a name="turn-on-a-device-after-a-power-loss"></a>Włącz urządzenie po utracie mocy
+Awaria lub przerwy w zasilaniu mogą wyłączyć urządzenie StorSimple. Awaria w zasilaniu może wystąpić na jednym z zasilaczy lub w obu zasilaczach. Kroki odzyskiwania różnią się w zależności od tego, czy urządzenie jest modelem 8100 czy 8600. 8100 ma jedną obudowę podstawową, a 8600 to urządzenie z dwoma obudowami z obudową podstawową i obudową EBOD. W tej sekcji opisano procedurę odzyskiwania dla każdego scenariusza.
 
-* [Urządzenia przy użyciu tylko podstawowy obudowy](#8100)
-* [Urządzenia przy użyciu obudowy EBOD](#8600)
+* [Tylko urządzenie z podstawową obudową](#8100)
+* [Urządzenie z obudową EBOD](#8600)
 
-### <a name="device-with-primary-enclosure-only-a-name8100"></a>Urządzenia przy użyciu tylko podstawowy obudowy <a name="8100">
-System może nadal jego normalnej pracy, w przypadku utraty zasilania do jednej z jego zasilacze. Jednak w celu zapewnienia wysokiej dostępności urządzenia, przywrócenie moc zasilania tak szybko, jak to możliwe.
+### <a name="device-with-primary-enclosure-only-a-name8100"></a>Urządzenie z tylko podstawową obudową <a name="8100">
+System może kontynuować swoją normalną operację, jeśli nastąpi utrata mocy do jednego z jego zasilaczy. Aby jednak zapewnić wysoką dostępność urządzenia, należy przywrócić zasilanie do zasilacza najszybciej, jak to możliwe.
 
-Jeśli istnieje, awarii zasilania lub awarii zasilania na obu zasilacze, system zostanie zamknięty w sposób uporządkowany i kontrolowany. Po przywróceniu możliwości, system automatycznie spowoduje włączenie.
+W przypadku awarii lub przerwy w zasilaniu obu zasilaczach system zostanie zamknięty w sposób uporządkowany i kontrolowany. Po przywróceniu napięcia system zostanie automatycznie włączony.
 
-### <a name="device-with-ebod-enclosure-a-name8600"></a>Urządzenia przy użyciu obudowy EBOD <a name="8600">
-#### <a name="power-loss-on-one-power-supply"></a>Podaj utraty zasilania jednego zasilania
-System może nadal jej normalnej pracy, w przypadku utraty zasilania do jednej z jego zasilacze w głównej obudowy lub obudowy EBOD. Jednak w celu zapewnienia wysokiej dostępności urządzenia, Przywróć zasilania na zasilanie tak szybko, jak to możliwe.
+### <a name="device-with-ebod-enclosure-a-name8600"></a>Urządzenie z EBOD obudów <a name="8600">
+#### <a name="power-loss-on-one-power-supply"></a>Utrata mocy w jednym zasilaczu
+System może kontynuować swoją normalną operację, jeśli nastąpi utrata mocy do jednej z jej zasilaczy podstawowego lub obudowy EBOD. Aby zapewnić wysoką dostępność urządzenia, Przywróć zasilanie do zasilacza tak szybko, jak to możliwe.
 
-#### <a name="power-loss-on-both-power-supplies-on-primary-and-ebod-enclosures"></a>Utraty zasilania zasilacze, zarówno na podstawowej i obudów EBOD
-Jeśli istnieje, awarii zasilania lub awarii zasilania na obu zasilacze, obudowy EBOD natychmiast zamknie i głównej obudowy zostanie zamknięty w sposób uporządkowany i kontrolowany. Po przywróceniu zasilania urządzenia zostanie uruchomiony automatycznie.
+#### <a name="power-loss-on-both-power-supplies-on-primary-and-ebod-enclosures"></a>Utrata mocy na zasilaczach podstawowych i EBOD
+Jeśli nastąpi awaria lub przerwa w zasilaniu obu zasilacza, Obudowa EBOD zostanie natychmiast ZAMKNIĘTA, a Podstawowa obudowa zostanie zamknięta w sposób uporządkowany i kontrolowany. Gdy przywrócona jest energia, urządzenie zostanie uruchomione automatycznie.
 
-Jeśli jest włączone zasilanie ręcznie, następnie podjąć poniższe kroki, aby przywrócić zasilania w systemie.
+Jeśli zasilanie jest wyłączone ręcznie, wykonaj następujące kroki, aby przywrócić zasilanie do systemu.
 
-1. Włącz obudowy EBOD.
-2. Po obudowy EBOD jest włączona, należy włączyć głównej obudowy.
+1. Włącz obudowę EBOD.
+2. Po włączeniu obudowy EBOD Włącz obudowę obudowy podstawowej.
 
-### <a name="power-loss-on-both-power-supplies-on-ebod-enclosure"></a>Utraty zasilania na obu zasilacze w obudowie EBOD
-Po skonfigurowaniu kable upewnij się, czy EBOD jest nigdy nie nawiązano połączenia samodzielnie oddzielne PDU. Jeśli EBOD i obudowy podstawowego nie powiedzie się w tym samym czasie, zostanie przywrócona do działania systemu.
+### <a name="power-loss-on-both-power-supplies-on-ebod-enclosure"></a>Utrata mocy dla obu zasilaczy w obudowie EBOD
+Podczas konfigurowania kabli należy upewnić się, że EBOD nigdy nie są połączone z osobną PDU. Jeśli EBOD i podstawowa obudowa nie powiedzie się w tym samym czasie, system zostanie odzyskany.
 
-Jeśli tylko obudowy EBOD w obu zasilacze kończy się niepowodzeniem, system nie zostanie automatycznie odzyskana. Wykonaj poniższe kroki, aby włączyć system i przywracania go w dobrej kondycji:
+Jeśli tylko obudowa EBOD nie powiedzie się w obu zasilaczach, system nie odzyska automatycznie sprawności. Wykonaj następujące kroki, aby włączyć system i przywrócić go do stanu dobrej kondycji:
 
-1. Jeśli włączono obudowy głównej wyłączyć zasilania i chłodzenia modułów (PCMs).
-2. Poczekaj kilka minut, zanim system zamknąć.
-3. Włącz obudowy EBOD.
-4. Po obudowy EBOD jest włączona, należy włączyć głównej obudowy.
+1. Jeśli obudowa podstawowa jest włączona, wyłącz zarówno Moduły zasilające, jak i chłodzenia (PCMs).
+2. Zaczekaj kilka minut, aż system zostanie zamknięty.
+3. Włącz obudowę EBOD.
+4. Po włączeniu obudowy EBOD Włącz obudowę obudowy podstawowej.
 
-## <a name="turn-on-a-device-after-the-primary-and-ebod-enclosure-connection-is-lost"></a>Włącz urządzenie po podstawowej i EBOD obudowy połączenie zostanie przerwane
-Jeśli połączenie zostanie przerwane między kontroler zapasowy i odpowiedniego kontrolera EBOD, urządzenie w dalszym ciągu działać. W przypadku utraty połączenia między aktywny kontroler systemu i odpowiedniego kontrolera EBOD trybu failover powinny być wykonywane i urządzenia będą nadal działać w zwykły sposób.
+## <a name="turn-on-a-device-after-the-primary-and-ebod-enclosure-connection-is-lost"></a>Włącz urządzenie po utracie połączenia obudowy podstawowe i EBOD
+Jeśli połączenie zostanie utracone między kontrolerem gotowości i odpowiednim kontrolerem EBOD, urządzenie nadal działa. Jeśli połączenie między aktywnym kontrolerem systemu i odpowiednim kontrolerem EBOD zostanie utracone, tryb failover powinien wystąpić, a urządzenie powinno nadal działać normalnie.
 
-Gdy zarówno kable Serial Attached SCSI (SAS) są usuwane lub połączenie między obudowy EBOD i obudowy podstawowy jest oddzielone, urządzenie przestanie działać. W tym momencie wykonaj następujące czynności.
+Gdy dyski SAS (Serial Attached SCSI) są usuwane lub połączenie między obudową EBOD a podstawową obudową jest poważniejsze, urządzenie przestanie działać. W tym momencie wykonaj następujące czynności.
 
-### <a name="to-turn-on-the-device-after-connection-is-lost"></a>Aby włączyć na urządzeniu po połączenie zostanie przerwane
+### <a name="to-turn-on-the-device-after-connection-is-lost"></a>Aby włączyć urządzenie po utracie połączenia
 1. Dostęp do tyłu urządzenia.
-2. Jeśli połączenie kablowe sygnatury dostępu Współdzielonego między obudowy EBOD i obudowy podstawowy został przerwany, wszystkie sygnatury dostępu Współdzielonego lane diod LED na obudowę EBOD będzie wyłączona.
-3. Zamknij zasilania i chłodzenia modułów (PCMs) na obudowę EBOD i obudowy podstawowego.
-4. Poczekaj, aż wszystkich świateł na odwrocie podkładki zarówno obudowach wyłączyć.
-5. Włóż kabli SAS i upewnij się, że istnieje połączenie między obudowy EBOD i obudowy podstawowego.
-6. Obudowa EBOD najpierw włączyć przestawiając oba przełączniki PCM pozycji dalej.
-7. Upewnij się, że obudowa EBOD w, sprawdzając, czy zielona LED ma wartość ON.
-8. Włącz funkcję podstawowego obudowy.
-9. Upewnij się, że obudowa głównej w, sprawdzając LED kontrolera zielony ma wartość ON.
-10. Sprawdź połączenie obudowy EBOD z podstawowego obudowy dobre, sprawdzając, czy za pomocą sygnatury dostępu Współdzielonego lane diod LED, (cztery na kontrolera EBOD) na wszystkich.
+2. Jeśli połączenie kablowe SYGNATURy dostępu współdzielonego między obudową EBOD a podstawową obudowa jest przerwane, wszystkie diody LED ścieżki SAS w obudowie EBOD będą wyłączone.
+3. Zamknij zarówno moduły energetyczne, jak i chłodzące (PCMs) w obudowie EBOD i podstawowej obudowie.
+4. Poczekaj, aż wszystkie sygnalizatory z tyłu obu obudów wyłączają się.
+5. Włóż ponownie kable SAS i upewnij się, że istnieje dobre połączenie między obudową EBOD a podstawową obudową.
+6. Najpierw włącz obudowę EBOD, przerzucając oba przełączniki PCM do pozycji włączone.
+7. Upewnij się, że obudowa EBOD jest włączona, sprawdzając, czy zielona dioda LED jest włączona.
+8. Włącz obudowę obudowy podstawowej.
+9. Upewnij się, że podstawowy załącznik jest włączony, sprawdzając, czy jest włączona zielona dioda LED kontrolera.
+10. Sprawdź, czy połączenie obudowy EBOD z obudową podstawową jest dobre, sprawdzając, czy wszystkie diody LED ścieżki sygnatury dostępu współdzielonego (cztery na kontroler EBOD) są włączone.
 
 > [!IMPORTANT]
-> Jeśli kabli SAS jest uszkodzony lub połączenie między obudowy EBOD i obudowy podstawowego jest nie są odpowiednie, po włączeniu w systemie, przejdzie do trybu odzyskiwania. Proszę [skontaktuj się z Microsoft Support](storsimple-8000-contact-microsoft-support.md) w takiej sytuacji.
+> Jeśli kable SAS są uszkodzone lub połączenie między obudową EBOD a podstawową obudową nie jest dobrym warunkiem, po włączeniu systemu zostanie ono przełączone w tryb odzyskiwania. Jeśli tak się stanie, [skontaktuj się z pomoc techniczna firmy Microsoft](storsimple-8000-contact-microsoft-support.md) .
 
 
-## <a name="turn-off-a-running-device"></a>Wyłącz uruchamianie urządzenia
-Uruchamianie urządzenia StorSimple może być konieczne zamknięcie Jeśli przenoszenia, podjęte poza usługi lub został nieprawidłowo działający składnik, który musi zostać zastąpiony. Kroki różnią się w zależności od tego, czy urządzenia StorSimple to 8100 lub 8600 model. 8100 ma jednej obudowie głównej 8600 jest podwójnego Obudowa urządzenia przy użyciu podstawowego obudowy i obudowy EBOD. W tej sekcji przedstawiono kroki, aby wyłączyć uruchamianie urządzenie.
+## <a name="turn-off-a-running-device"></a>Wyłączanie uruchomionego urządzenia
+Uruchomienie urządzenia StorSimple może być konieczne w przypadku jego przeniesienia, wypróbowania usługi lub nieprawidłowego składnika, który musi zostać zastąpiony. Kroki różnią się w zależności od tego, czy urządzenie StorSimple jest modelem 8100 czy 8600. 8100 ma jedną obudowę podstawową, a 8600 to urządzenie z dwoma obudowami z obudową podstawową i obudową EBOD. Ta sekcja zawiera szczegółowe instrukcje dotyczące zamykania uruchomionego urządzenia.
 
-* [Urządzenia przy użyciu podstawowego obudowy](#8100a)
-* [Urządzenia przy użyciu obudowy EBOD](#8600a)
+* [Urządzenie z obudową podstawową](#8100a)
+* [Urządzenie z obudową EBOD](#8600a)
 
-### <a name="device-with-primary-enclosure-a-name8100a"></a>Urządzenia przy użyciu podstawowego obudowy <a name="8100a">
-Wyłączenie urządzenia w sposób uporządkowany i kontrolowany, możesz zrobić to za pośrednictwem witryny Azure portal lub za pośrednictwem programu Windows PowerShell dla usługi StorSimple. 
+### <a name="device-with-primary-enclosure-a-name8100a"></a>Urządzenie z podstawową obudową <a name="8100a">
+Aby wyłączyć urządzenie w sposób uporządkowany i kontrolowany, można to zrobić za pośrednictwem Azure Portal lub za pośrednictwem program Windows PowerShell dla usługi StorSimple. 
 
 > [!IMPORTANT]
-> Nie zamykaj uruchamianie urządzeń za pomocą przycisku zasilania na odwrocie podkładki urządzenia.
+> Nie zamykaj uruchomionego urządzenia przy użyciu przycisku energia z tyłu urządzenia.
 > 
-> Przed zamknięciem urządzenie, upewnij się, że wszystkie składniki urządzenia są w dobrej kondycji. W witrynie Azure portal przejdź do **urządzeń** > **Monitor** > **kondycja sprzętu**i sprawdź, czy stan wszystkich składników jest zielony. Jest to istotne tylko w przypadku dobrej kondycji systemu. Jeśli system jest wyłączone w celu wymienić nieprawidłowo działający składnik, zobaczą nie powiodło się (czerwony) lub uszkodzenie stanu (żółty) dla odpowiednich składnika w **stan sprzętu**.
+> Przed zamknięciem urządzenia upewnij się, że wszystkie składniki urządzenia są w dobrej kondycji. W Azure Portal przejdź do obszaru **urządzenia** > **Monitoruj** > **kondycji sprzętu**i sprawdź, czy stan wszystkich składników jest zielony. Jest to prawdziwe tylko w przypadku systemu w dobrej kondycji. Jeśli system jest zamykany w celu zastąpienia nieprawidłowego składnika, w **stanie sprzętu**zostanie wyświetlony stan "Niepowodzenie" (czerwony) lub zdegradowany (żółty) dla odpowiedniego składnika.
 > 
 > 
 
-Po uzyskujesz dostęp do programu Windows PowerShell dla usługi StorSimple lub witryny Azure portal, wykonaj kroki opisane w [wyłączyć urządzenie StorSimple](storsimple-8000-manage-device-controller.md#shut-down-a-storsimple-device). 
+Po uzyskaniu dostępu do program Windows PowerShell dla usługi StorSimple lub Azure Portal, wykonaj kroki opisane w [sekcji wyłączanie urządzenia StorSimple](storsimple-8000-manage-device-controller.md#shut-down-a-storsimple-device). 
 
-### <a name="device-with-ebod-enclosure-a-name8600a"></a>Urządzenia przy użyciu obudowy EBOD <a name="8600a">
+### <a name="device-with-ebod-enclosure-a-name8600a"></a>Urządzenie z EBOD obudów <a name="8600a">
 > [!IMPORTANT]
-> Przed wyłączeniem głównej obudowy i obudowy EBOD, upewnij się, że wszystkie składniki urządzenia są w dobrej kondycji. W witrynie Azure portal przejdź do **urządzeń** > **Monitor** > **kondycja sprzętu**i sprawdź, czy wszystkie składniki są w dobrej kondycji.
+> Przed zamknięciem obudowy podstawowej i obudowy EBOD upewnij się, że wszystkie składniki urządzenia są w dobrej kondycji. W Azure Portal przejdź do **urządzeń** > **Monitoruj** > **kondycji sprzętu**i sprawdź, czy wszystkie składniki są w dobrej kondycji.
 
 
-#### <a name="to-shut-down-a-running-device-with-ebod-enclosure"></a>Aby wyłączyć uruchamianie urządzenia przy użyciu obudowy EBOD
-1. Wykonaj wszystkie kroki opisane w [wyłączyć urządzenie StorSimple](storsimple-8000-manage-device-controller.md#shut-down-a-storsimple-device) dla podstawowego obudowy.
-2. Po obudowy podstawowy jest zamknięta, należy zamknąć EBOD przestawiając wyłączanie zasilania i chłodzenia modułu (PCM) przełączników.
-3. Aby sprawdzić, czy EBOD został zamknięty, sprawdź, czy wszystkie światła na odwrocie podkładki obudowy EBOD wyłączyć.
+#### <a name="to-shut-down-a-running-device-with-ebod-enclosure"></a>Aby zamknąć uruchomione urządzenie przy użyciu obudowy EBOD
+1. Wykonaj wszystkie czynności opisane w [sekcji wyłączanie urządzenia StorSimple](storsimple-8000-manage-device-controller.md#shut-down-a-storsimple-device) dla obudowy podstawowej.
+2. Po wyłączeniu obudowy podstawowej należy wyłączyć EBOD, przełączając oba przełączniki zasilanie i chłodzenie (PCM).
+3. Aby sprawdzić, czy EBOD został zamknięty, sprawdź, czy wszystkie sygnalizatory z tyłu obudowy EBOD są wyłączone.
 
 > [!NOTE]
-> Kable sygnatury dostępu Współdzielonego, które są używane do łączenia obudowy EBOD głównej obudową nie powinny być usuwane do momentu, po zamknięciu systemu.
+> Kable sygnatury dostępu współdzielonego, które są używane do łączenia obudowy EBOD z obudową podstawową nie należy usuwać do momentu wyłączenia systemu.
 
-## <a name="next-steps"></a>Kolejne kroki
-[Skontaktuj się z Microsoft Support](storsimple-8000-contact-microsoft-support.md) w razie wystąpienia problemów podczas Włączanie lub wyłączanie urządzenia StorSimple.
+## <a name="next-steps"></a>Następne kroki
+[Skontaktuj się z pomoc techniczna firmy Microsoft](storsimple-8000-contact-microsoft-support.md) , jeśli wystąpią problemy podczas włączania lub wyłączania urządzenia StorSimple.
 

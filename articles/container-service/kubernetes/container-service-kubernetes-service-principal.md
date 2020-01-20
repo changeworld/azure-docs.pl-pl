@@ -1,20 +1,18 @@
 ---
 title: (PRZESTARZAŁE) Jednostka usługi klastra Azure Kubernetes
 description: Tworzenie jednostki usługi Azure Active Directory dla klastra Kubernetes w usłudze Azure Container Service i zarządzanie nią
-services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 52ed101199126818abaddef47892e1f033eb3968
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3126339a1eb8ff9c0ef34a330333635d3d0f6433
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60609121"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76274370"
 ---
 # <a name="deprecated-set-up-an-azure-ad-service-principal-for-a-kubernetes-cluster-in-container-service"></a>(PRZESTARZAŁE) Konfigurowanie jednostki usługi Azure AD dla klastra Kubernetes w usłudze Container Service
 
@@ -33,11 +31,11 @@ W tym artykule przedstawiono różne sposoby konfigurowania jednostki usługi dl
 
 Możesz użyć istniejącej jednostki usługi Azure AD, która spełnia następujące wymagania, albo utworzyć nową.
 
-* **Zakres**: Grupa zasobów
+* **Zakres**: grupa zasobów
 
-* **Rola**: Współautor
+* **Rola**: współautor
 
-* **Klucz tajny klienta**: Musi to być hasło. Obecnie nie można używać nazwy głównej usługi do uwierzytelniania certyfikatu.
+* **Klucz tajny klienta**: musi to być hasło. Obecnie nie można używać nazwy głównej usługi do uwierzytelniania certyfikatu.
 
 > [!IMPORTANT]
 > Aby utworzyć jednostkę usługi, musisz mieć uprawnienia do zarejestrowania aplikacji w swojej dzierżawie usługi Azure AD i przypisania aplikacji do roli w swojej subskrypcji. Aby sprawdzić, czy masz wymagane uprawnienia, [zajrzyj do portalu](../../active-directory/develop/howto-create-service-principal-portal.md#required-permissions).
@@ -80,7 +78,7 @@ Poniższy przykład przedstawia sposób przekazania parametrów poprzez interfej
 
 1. [Pobierz](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-acs-kubernetes/azuredeploy.parameters.json) plik parametrów szablonu `azuredeploy.parameters.json` z usługi GitHub.
 
-2. Aby określić nazwę główną usługi, wprowadź wartości dla `servicePrincipalClientId` i `servicePrincipalClientSecret` w pliku. (Należy również podać własne wartości dla `dnsNamePrefix` i `sshRSAPublicKey`. Ta ostatnia jest kluczem publicznym SSH umożliwiającym dostęp do klastra). Zapisz plik.
+2. Aby określić nazwę główną usługi, wprowadź wartości dla `servicePrincipalClientId` i `servicePrincipalClientSecret` w pliku. (Należy również podać własne wartości dla `dnsNamePrefix` i `sshRSAPublicKey`. Ten drugi jest kluczem publicznym SSH, aby uzyskać dostęp do klastra. Zapisz plik.
 
     ![Przekazywanie parametrów nazwy głównej usługi](./media/container-service-kubernetes-service-principal/service-principal-params.png)
 
@@ -168,7 +166,7 @@ Dane wyjściowe:
 
 Następnie zaktualizuj plik `/etc/kubernetes/azure.json` o nowe poświadczenia we wszystkich węzłach klastra i ponownie uruchom te węzły.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Rozpocznij pracę z klastrem Kubernetes](container-service-kubernetes-walkthrough.md) w klastrze usług kontenera.
 

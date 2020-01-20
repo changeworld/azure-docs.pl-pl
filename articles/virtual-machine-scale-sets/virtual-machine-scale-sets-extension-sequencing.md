@@ -1,66 +1,58 @@
 ---
-title: Sekwencjonowanie rozszerzenia za pomocą zestawów skalowania maszyn wirtualnych platformy Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak sekwencjonować aprowizacja rozszerzenia w przypadku wdrażania wielu rozszerzeń w zestawach skalowania maszyn wirtualnych.
-services: virtual-machine-scale-sets
-documentationcenter: ''
+title: Używanie sekwencjonowania rozszerzeń z zestawami skalowania maszyn wirtualnych platformy Azure
+description: Dowiedz się, jak sekwencjonować Inicjowanie obsługi rozszerzeń podczas wdrażania wielu rozszerzeń w zestawach skalowania maszyn wirtualnych.
 author: mayanknayar
-manager: drewm
-editor: ''
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: manayar
-ms.openlocfilehash: 2e5dfda16c4828b3113fc50d4cffc79fe6ff19e8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: cde3fb8b56d8509a45bde00dde55e3c69d015b8e
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60620176"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278053"
 ---
-# <a name="sequence-extension-provisioning-in-virtual-machine-scale-sets"></a>Ustawia sekwencji aprowizacja rozszerzenia w skali maszyny wirtualnej
-Rozszerzenia maszyny wirtualnej platformy Azure zapewniają możliwości, takie jak konfiguracji po wdrożeniu i zarządzania, monitorowania, zabezpieczeń i więcej. Wdrożenia produkcyjne zazwyczaj korzystają z kombinacją wielu rozszerzeń skonfigurowane dla wystąpień maszyn wirtualnych do osiągnięcia zakładanych wyników.
+# <a name="sequence-extension-provisioning-in-virtual-machine-scale-sets"></a>Inicjowanie obsługi rozszerzenia sekwencji w zestawach skalowania maszyn wirtualnych
+Rozszerzenia maszyny wirtualnej platformy Azure udostępniają takie funkcje, jak konfiguracja po wdrożeniu oraz zarządzanie, monitorowanie, zabezpieczenia i inne. Wdrożenia produkcyjne zwykle używają kombinacji wielu rozszerzeń skonfigurowanych dla wystąpień maszyn wirtualnych w celu uzyskania pożądanych wyników.
 
-Podczas korzystania z wielu rozszerzeń w maszynie wirtualnej jest istotne dla zapewnienia rozszerzeń wymagających tych samych zasobów systemu operacyjnego nie są próby uzyskania tych zasobów, w tym samym czasie. Niektóre rozszerzenia również są zależne od innych rozszerzeń, aby zapewnić wymagane konfiguracje, takie jak ustawienia środowiska i wpisów tajnych. Bez poprawne porządkowanie i sekwencjonowania w miejscu zależnych rozszerzenie wdrożenia może zakończyć się niepowodzeniem.
+W przypadku korzystania z wielu rozszerzeń na maszynie wirtualnej ważne jest, aby upewnić się, że rozszerzenia wymagające tego samego zasobu systemu operacyjnego nie próbują uzyskać tych zasobów w tym samym czasie. Niektóre rozszerzenia są również zależne od innych rozszerzeń w celu zapewnienia wymaganych konfiguracji, takich jak ustawienia środowiska i wpisy tajne. Bez poprawnego uporządkowania i sekwencjonowania, zależne wdrożenia rozszerzeń mogą zakończyć się niepowodzeniem.
 
-Ten artykuł szczegółowo opisuje sposób zakończeniu sekwencjonowania rozszerzeń można skonfigurować dla wystąpień maszyn wirtualnych w zestawach skalowania maszyn wirtualnych.
+W tym artykule opisano, jak można skalować rozszerzenia, które mają być skonfigurowane dla wystąpień maszyn wirtualnych w zestawach skalowania maszyn wirtualnych.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 W tym artykule założono, że znasz:
--   Maszyna wirtualna platformy Azure [rozszerzenia](../virtual-machines/extensions/overview.md)
--   [Modyfikowanie](virtual-machine-scale-sets-upgrade-scale-set.md) zestawy skalowania maszyn wirtualnych
+-   [Rozszerzenia](../virtual-machines/extensions/overview.md) maszyny wirtualnej platformy Azure
+-   [Modyfikowanie](virtual-machine-scale-sets-upgrade-scale-set.md) zestawów skalowania maszyn wirtualnych
 
-## <a name="when-to-use-extension-sequencing"></a>Kiedy należy używać sekwencjonowania rozszerzeń
-Sekwencjonowanie rozszerzeń w nie ustawia obowiązkowe w przypadku skalowania, a jeśli nie podano, rozszerzeń mogą być udostępniane na wystąpienia w zestawie skalowania w dowolnej kolejności.
+## <a name="when-to-use-extension-sequencing"></a>Kiedy używać sekwencjonowania rozszerzeń
+Sekwencjonowanie rozszerzeń w nie jest obowiązkowe dla zestawów skalowania, a jeśli nie zostanie określony, rozszerzenia mogą być obsługiwane w wystąpieniu zestawu skalowania w dowolnej kolejności.
 
-Na przykład jeśli model zestaw skalowania ma dwóch rozszerzeń — ExtensionA i ExtensionB — określone w modelu, następnie jedną z następujących sekwencji inicjowania obsługi administracyjnej może wystąpić:
--   ExtensionA -> ExtensionB
--   ExtensionB -> ExtensionA
+Na przykład jeśli model zestawu skalowania ma dwa rozszerzenia — Extension i ExtensionB — określone w modelu, mogą wystąpić następujące sekwencje aprowizacji:
+-   Extension-> ExtensionB
+-   ExtensionB > — rozszerzenie
 
-Jeśli aplikacja wymaga rozszerzenia zawsze być przygotowana przed Extension b., należy używać sekwencjonowania rozszerzeń, zgodnie z opisem w tym artykule. Za pomocą sekwencjonowania rozszerzeń teraz nastąpi tylko jednej sekwencji:
--   ExtensionA - > ExtensionB
+Jeśli aplikacja wymaga rozszerzenia A, aby zawsze była obsługiwana przed rozszerzeniem B, należy użyć sekwencjonowania rozszerzeń zgodnie z opisem w tym artykule. W przypadku sekwencjonowania rozszerzeń zostanie wykonana tylko jedna sekwencja:
+-   Extension-> ExtensionB
 
-Wszystkie rozszerzenia, które nie są określone w zdefiniowanej kolejności inicjowania obsługi administracyjnej może aprowizowane w dowolnym momencie, w tym przed i za nimi, podczas zdefiniowanej kolejności. Tylko sekwencjonowania rozszerzeń Określa, że określone rozszerzenie będą udostępniane po innego określonego rozszerzenia. Nie ma wpływu, aprowizacja dowolne inne rozszerzenie zdefiniowane w modelu.
+Wszystkie rozszerzenia, które nie są określone w zdefiniowanej sekwencji aprowizacji, mogą być obsługiwane w dowolnym momencie, w tym przed, po lub w określonej sekwencji. Sekwencjonowanie rozszerzeń określa tylko, że określone rozszerzenie będzie obsługiwane po innym określonym rozszerzeniu. Nie ma to wpływu na inicjowanie obsługi innych rozszerzeń zdefiniowanych w modelu.
 
-Na przykład jeśli z modelu zestawu skalowania ma trzy rozszerzenia — rozszerzenia A, B rozszerzenia i rozszerzenia C — określone w modelu, i rozszerzenia C jest ustawiona na można zainicjować obsługi administracyjnej po rozszerzenia, następnie jedną z następujących sekwencji inicjowania obsługi administracyjnej może wystąpić:
--   ExtensionA -> ExtensionC -> ExtensionB
--   ExtensionB -> ExtensionA -> ExtensionC
--   ExtensionA -> ExtensionB -> ExtensionC
+Na przykład jeśli model zestawu skalowania ma trzy rozszerzenia — rozszerzenie A, rozszerzenie B i rozszerzenie C — określone w modelu, a rozszerzenie C jest ustawione jako obsługiwane po rozszerzeniu A, wówczas mogą wystąpić następujące sekwencje aprowizacji:
+-   Extension-> ExtensionC-> ExtensionB
+-   ExtensionB-> Extension-> ExtensionC
+-   Extension-> ExtensionB-> ExtensionC
 
-Musisz upewnić się, że nie inne rozszerzenie zostanie zainicjowana podczas wykonywania sekwencji zdefiniowane rozszerzenia, zaleca się sekwencjonowania wszystkie rozszerzenia w modelu zestawu skalowania. W powyższym przykładzie Extension b. można ustawić na wartość aprowizowano po rozszerzenia C, tak, może wystąpić tylko jednej sekwencji:
--   ExtensionA -> ExtensionC -> ExtensionB
+Jeśli zachodzi konieczność zapewnienia, że żadne inne rozszerzenie nie jest obsługiwane podczas wykonywania zdefiniowanej sekwencji rozszerzenia, zalecamy sekwencjonowanie wszystkich rozszerzeń w modelu zestawu skalowania. W powyższym przykładzie można ustawić, aby można było zainicjować zainicjowanie rozszerzenia B po rozszerzeniu C, aby można było wykonać tylko jedną sekwencję:
+-   Extension-> ExtensionC-> ExtensionB
 
 
 ## <a name="how-to-use-extension-sequencing"></a>Jak używać sekwencjonowania rozszerzeń
-Zainicjowanie obsługi sekwencji rozszerzenie, należy zaktualizować definicję rozszerzenia w modelu zestawu skalowania, aby dołączyć właściwości "provisionAfterExtensions", który przyjmuje tablicę rozszerzenia nazw. Rozszerzenia wymienione w wartości właściwości tablicy musi być całkowicie zdefiniowany w modelu zestawu skalowania.
+Aby włączyć inicjowanie rozszerzenia, należy zaktualizować definicję rozszerzenia w modelu zestawu skalowania, aby uwzględnić Właściwość "provisionAfterExtensions", która akceptuje tablicę nazw rozszerzeń. Rozszerzenia wymienione w wartości tablicy właściwości muszą być w pełni zdefiniowane w modelu zestawu skalowania.
 
-### <a name="template-deployment"></a>Wdrażanie szablonu
-W poniższym przykładzie zdefiniowano szablon, w której zestaw skalowania ma trzy rozszerzenia — ExtensionA ExtensionB i ExtensionC — taki sposób, że rozszerzenia są aprowizowane w kolejności:
--   ExtensionA -> ExtensionB -> ExtensionC
+### <a name="template-deployment"></a>Wdrożenie szablonu
+W poniższym przykładzie zdefiniowano szablon, w którym zestaw skalowania ma trzy rozszerzenia — Extension, ExtensionB i ExtensionC — w taki sposób, że rozszerzenia są udostępniane w kolejności:
+-   Extension-> ExtensionB-> ExtensionC
 
 ```json
 "virtualMachineProfile": {
@@ -107,7 +99,7 @@ W poniższym przykładzie zdefiniowano szablon, w której zestaw skalowania ma t
 }
 ```
 
-Ponieważ właściwość "provisionAfterExtensions" przyjmuje tablicę nazwy rozszerzeń, powyższego przykładu mogą być modyfikowane w taki sposób, że ustanowiono ExtensionC po ExtensionA i ExtensionB, ale kolejność nie jest wymagany między ExtensionA i ExtensionB. Następujący szablon może służyć do realizacji tego scenariusza:
+Ponieważ właściwość "provisionAfterExtensions" akceptuje tablicę nazw rozszerzeń, powyższy przykład może być modyfikowany w taki sposób, że ExtensionC jest inicjowana po rozszerzeniu i ExtensionB, ale nie jest wymagane porządkowanie między rozszerzeniem i ExtensionB. Następujący szablon może służyć do osiągnięcia tego scenariusza:
 
 ```json
 "virtualMachineProfile": {
@@ -152,7 +144,7 @@ Ponieważ właściwość "provisionAfterExtensions" przyjmuje tablicę nazwy roz
 ```
 
 ### <a name="rest-api"></a>Interfejs API REST
-Poniższy przykład dodaje nowe rozszerzenie o nazwie ExtensionC modelu zestawu skalowania. ExtensionC ma zależności na ExtensionA i ExtensionB, które już zostały zdefiniowane w modelu zestawu skalowania.
+Poniższy przykład dodaje nowe rozszerzenie o nazwie ExtensionC do modelu zestawu skalowania. ExtensionC ma zależności od rozszerzeń i ExtensionB, które zostały już zdefiniowane w modelu zestawu skalowania.
 
 ```
 PUT on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/extensions/ExtensionC?api-version=2018-10-01`
@@ -174,7 +166,7 @@ PUT on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/
 }
 ```
 
-Jeśli ExtensionC została zdefiniowana wcześniej na zestaw skalowania modelu, a teraz chcesz, aby dodać jego zależności, można wykonać `PATCH` do edytowania właściwości już wdrożonej rozszerzeniem.
+Jeśli ExtensionC został wcześniej zdefiniowany w modelu zestawu skalowania i teraz chcesz dodać jego zależności, możesz wykonać `PATCH`, aby edytować właściwości już wdrożonego rozszerzenia.
 
 ```
 PATCH on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/extensions/ExtensionC?api-version=2018-10-01`
@@ -189,12 +181,12 @@ PATCH on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/provider
   }                  
 }
 ```
-Zmiany w istniejących wystąpieniach zestawu skalowania są stosowane na następnej [uaktualnienia](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model).
+Zmiany w istniejących wystąpieniach zestawu skalowania są stosowane podczas następnego [uaktualnienia](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model).
 
-### <a name="azure-powershell"></a>Azure PowerShell
-Użyj [AzVmssExtension Dodaj](/powershell/module/az.compute/add-azvmssextension) modelu definicji zestawu polecenia cmdlet, aby dodać rozszerzenie kondycji aplikacji do skalowania. Sekwencjonowania rozszerzeń wymaga użycia programu Az PowerShell 1.2.0 lub nowszej.
+### <a name="azure-powershell"></a>Program Azure PowerShell
+Użyj polecenia cmdlet [Add-AzVmssExtension](/powershell/module/az.compute/add-azvmssextension) , aby dodać rozszerzenie kondycja aplikacji do definicji modelu zestawu skalowania. Sekwencjonowanie rozszerzeń wymaga użycia polecenia AZ PowerShell 1.2.0 lub nowszego.
 
-W poniższym przykładzie dodano [kondycji aplikacji rozszerzenia](virtual-machine-scale-sets-health-extension.md) do `extensionProfile` w skali Ustaw modelu zestawu skalowania z systemem Windows. Rozszerzenie kondycji aplikacji, które będą udostępniane po zainicjowaniu obsługi administracyjnej [rozszerzenia niestandardowego skryptu](../virtual-machines/extensions/custom-script-windows.md), już zdefiniowany w zestawie skalowania.
+Poniższy przykład dodaje [rozszerzenie kondycja aplikacji](virtual-machine-scale-sets-health-extension.md) do `extensionProfile` w modelu zestawu skalowania zestawu skalowania z systemem Windows. Rozszerzenie kondycji aplikacji zostanie zainicjowane po zainicjowaniu obsługi [niestandardowego rozszerzenia skryptu](../virtual-machines/extensions/custom-script-windows.md), które jest już zdefiniowane w zestawie skalowania.
 
 ```azurepowershell-interactive
 # Define the scale set variables
@@ -228,10 +220,10 @@ Update-AzVmss -ResourceGroupName $vmScaleSetResourceGroup `
   -VirtualMachineScaleSet $vmScaleSet
 ```
 
-### <a name="azure-cli-20"></a>Interfejs wiersza polecenia platformy Azure 2.0
-Użyj [az vmss rozszerzenia zestawu](/cli/azure/vmss/extension#az-vmss-extension-set) można dodać rozszerzenia kondycji aplikacji do definicji modelu zestawu skalowania. Sekwencjonowania rozszerzeń wymaga użycia interfejsu wiersza polecenia Azure 2.0.55 lub powyżej.
+### <a name="azure-cli-20"></a>Interfejs wiersza polecenia platformy Azure w wersji 2.0
+Użyj [AZ VMSS Extension Set](/cli/azure/vmss/extension#az-vmss-extension-set) , aby dodać rozszerzenie kondycji aplikacji do definicji modelu zestawu skalowania. Sekwencjonowanie rozszerzeń wymaga użycia interfejsu wiersza polecenia platformy Azure 2.0.55 lub nowszego.
 
-W poniższym przykładzie dodano [kondycji aplikacji rozszerzenia](virtual-machine-scale-sets-health-extension.md) do skalowania Ustaw modelu zestawu skalowania z systemem Windows. Rozszerzenie kondycji aplikacji, które będą udostępniane po zainicjowaniu obsługi administracyjnej [rozszerzenia niestandardowego skryptu](../virtual-machines/extensions/custom-script-windows.md), już zdefiniowany w zestawie skalowania.
+Poniższy przykład dodaje [rozszerzenie kondycji aplikacji](virtual-machine-scale-sets-health-extension.md) do modelu zestawu skalowania z zestawu skalowania na podstawie systemu Windows. Rozszerzenie kondycji aplikacji zostanie zainicjowane po zainicjowaniu obsługi [niestandardowego rozszerzenia skryptu](../virtual-machines/extensions/custom-script-windows.md), które jest już zdefiniowane w zestawie skalowania.
 
 ```azurecli-interactive
 az vmss extension set \
@@ -248,12 +240,12 @@ az vmss extension set \
 ## <a name="troubleshoot"></a>Rozwiązywanie problemów
 
 ### <a name="not-able-to-add-extension-with-dependencies"></a>Nie można dodać rozszerzenia z zależnościami?
-1. Upewnij się, że określone w provisionAfterExtensions rozszerzenia są zdefiniowane w modelu zestawu skalowania.
-2. Upewnij się, nie zależności cykliczne wprowadzono. Na przykład nie jest dozwolona następująca sekwencja: ExtensionA -> ExtensionB -> ExtensionC -> ExtensionA
-3. Upewnij się, że wszystkie rozszerzenia, które należy wykonać zależności, właściwość "ustawienia" w obszarze "właściwości" rozszerzenia. Na przykład jeśli ExtentionB musi być obsługiwana po ExtensionA, ExtensionA posiadanie pole "ustawienia" w obszarze ExtensionA "properties". Jeśli rozszerzenie nie zmusza do wymaganych ustawień, można określić właściwości pusty "ustawienia".
+1. Upewnij się, że rozszerzenia określone w provisionAfterExtensions są zdefiniowane w modelu zestawu skalowania.
+2. Upewnij się, że nie są wprowadzane żadne zależności cykliczne. Na przykład następująca sekwencja nie jest dozwolona: Extension-> ExtensionB-> ExtensionC-> Extension
+3. Upewnij się, że wszystkie rozszerzenia, w których są wykonywane zależności, mają właściwość "Settings" w obszarze rozszerzenie "Properties" (właściwości). Na przykład jeśli ExtentionB musi zostać zainicjowana po rozszerzeniu, a następnie Extension musi mieć pole "Settings" w obszarze "właściwości". Możesz określić pustą właściwość "Settings" (Ustawienia), jeśli rozszerzenie nie wymaga żadnych wymaganych ustawień.
 
-### <a name="not-able-to-remove-extensions"></a>Nie można usunąć rozszerzenia?
-Upewnij się, rozszerzenia usuwany nie są wymienione w obszarze provisionAfterExtensions dla wszystkich innych rozszerzeń.
+### <a name="not-able-to-remove-extensions"></a>Nie można usunąć rozszerzeń?
+Upewnij się, że usunięte rozszerzenia nie są wymienione w obszarze provisionAfterExtensions dla innych rozszerzeń.
 
-## <a name="next-steps"></a>Kolejne kroki
-Dowiedz się, jak [wdrożyć aplikację](virtual-machine-scale-sets-deploy-app.md) ustawia skalowania maszyn wirtualnych.
+## <a name="next-steps"></a>Następne kroki
+Dowiedz się, jak [wdrożyć aplikację](virtual-machine-scale-sets-deploy-app.md) w zestawach skalowania maszyn wirtualnych.

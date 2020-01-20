@@ -1,119 +1,111 @@
 ---
-title: Utwórz bilet pomocy technicznej lub w przypadku serii StorSimple 8000 | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak rejestrowanie żądania pomocy technicznej i rozpocząć sesję pomocy technicznej na urządzeniu serii StorSimple 8000.
-services: storsimple
-documentationcenter: ''
+title: Utwórz bilet pomocy technicznej lub przypadek dla serii StorSimple 8000
+description: Dowiedz się, jak rejestrować żądania obsługi i uruchamiać sesję pomocy technicznej na urządzeniu z serii StorSimple 8000.
 author: alkohli
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storsimple
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 5394feff80c1df8b7a6cf7f6e6ea56678f575823
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 99de3a6fbbbb1c4324df1712a5e24fd334ca4977
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67612505"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277168"
 ---
 # <a name="contact-microsoft-support"></a>Kontakt z pomocą techniczną firmy Microsoft
 
-Menedżer urządzeń StorSimple zapewnia możliwość **rejestrować nowe żądanie pomocy technicznej** w bloku podsumowania usługi. Jeśli napotkasz jakiekolwiek problemy z rozwiązaniem StorSimple można utworzyć żądania obsługi, aby uzyskać pomoc techniczną. W ramach sesji online ze specjalistą pomocy technicznej może również należy rozpocząć sesję pomocy technicznej na urządzeniu StorSimple. Ten artykuł przeprowadzi Cię przez:
+StorSimple Menedżer urządzeń zapewnia możliwość **rejestrowania nowego żądania obsługi** w bloku podsumowania usługi. Jeśli wystąpią problemy z rozwiązaniem StorSimple, możesz utworzyć żądanie obsługi dla pomocy technicznej. W sesji online z inżynierem pomocy technicznej może być również konieczne rozpoczęcie sesji obsługi na urządzeniu StorSimple. W tym artykule przedstawiono następujące instrukcje:
 
-* Jak utworzyć żądanie pomocy technicznej.
-* Jak zarządzać żądanie zasady świadczenia pomocy technicznej z poziomu portalu.
-* Jak rozpocząć sesję pomocy technicznej w interfejsie programu Windows PowerShell urządzenia StorSimple.
+* Jak utworzyć żądanie obsługi.
+* Jak zarządzać cyklem życia żądania pomocy technicznej z poziomu portalu.
+* Jak uruchomić sesję obsługi w interfejsie programu Windows PowerShell urządzenia StorSimple.
 
-Przegląd [warunków umów SLA usługi StorSimple 8000 Series pomocy technicznej i informacje o](https://msdn.microsoft.com/library/mt433077.aspx) przed przystąpieniem do tworzenia żądania pomocy technicznej.
+Przed utworzeniem Support request należy zapoznać się z [tematem umowy SLA i informacjami dotyczącymi serii StorSimple 8000](https://msdn.microsoft.com/library/mt433077.aspx) .
 
 ## <a name="create-a-support-request"></a>Tworzenie żądania obsługi
 
-W zależności od Twojego [plan pomocy technicznej](https://azure.microsoft.com/support/plans/), tworzenia biletów pomocy technicznej dotyczącej problemu na urządzeniu StorSimple bezpośrednio z poziomu bloku podsumowania usługi Menedżer urządzeń StorSimple. Wykonaj poniższe kroki, aby utworzyć żądanie pomocy technicznej:
+W zależności od Twojego [planu pomocy](https://azure.microsoft.com/support/plans/)technicznej możesz utworzyć bilety dla problemu na urządzeniu z systemem StorSimple bezpośrednio z bloku podsumowania usługi StorSimple Menedżer urządzeń. Wykonaj następujące kroki, aby utworzyć żądanie obsługi:
 
 #### <a name="to-create-a-support-request"></a>Aby utworzyć żądanie pomocy technicznej
 
-1. Przejdź do usługi Menedżer urządzeń StorSimple. W ustawieniach bloku podsumowania usługi, przejdź do **pomoc techniczna i rozwiązywanie problemów** sekcji, a następnie kliknij przycisk **nowe żądanie obsługi**.
+1. Przejdź do usługi Menedżer urządzeń StorSimple. W ustawieniach bloku podsumowanie usługi przejdź do sekcji **Obsługa i rozwiązywanie problemów** , a następnie kliknij pozycję **nowe żądanie obsługi**.
      
-    ![MS skontaktuj się z pomocą techniczną za pośrednictwem nowego portalu](./media/storsimple-8000-contact-microsoft-support/contactsupport1.png)
+    ![Skontaktuj się z pomocą techniczną firmy Microsoft za pośrednictwem nowego portalu](./media/storsimple-8000-contact-microsoft-support/contactsupport1.png)
    
-2. W **nowe żądanie obsługi** bloku wybierz **podstawy**. W **podstawy** blok, wykonaj następujące czynności:
-   1. Z **typ problemu** listy rozwijanej wybierz **techniczne**.
-   2. Bieżący **subskrypcji**, **usługi** typu i **zasobów** (usługa Menedżer urządzeń StorSimple) są wybierane automatycznie. 
-   3. Wybierz **plan pomocy technicznej** z listy rozwijanej, jeśli masz wiele planów skojarzonych z Twoją subskrypcją. Musisz mieć plan płatnej pomocy technicznej, umożliwiające pomocy technicznej.
+2. W bloku **nowe żądanie obsługi** wybierz pozycję **podstawowe**. W bloku **podstawowe** wykonaj następujące czynności:
+   1. Z listy rozwijanej **typ problemu** wybierz pozycję **techniczne**.
+   2. Automatycznie wybierana jest bieżąca **subskrypcja**, typ **usługi** i **zasób** (Usługa StorSimple Menedżer urządzeń). 
+   3. Wybierz **Plan pomocy technicznej** z listy rozwijanej, jeśli masz wiele planów skojarzonych z Twoją subskrypcją. Potrzebujesz płatnego planu pomocy technicznej, aby umożliwić pomoc techniczną.
    4. Kliknij przycisk **Dalej**.
 
-       ![MS skontaktuj się z pomocą techniczną za pośrednictwem nowego portalu](./media/storsimple-8000-contact-microsoft-support/contactsupport2.png)
+       ![Skontaktuj się z pomocą techniczną firmy Microsoft za pośrednictwem nowego portalu](./media/storsimple-8000-contact-microsoft-support/contactsupport2.png)
 
-3. W **nowe żądanie obsługi** bloku wybierz **kroku 2 Problem**. W **Problem** blok, wykonaj następujące czynności:
+3. W bloku **nowe żądanie obsługi** wybierz pozycję **krok 2**. W bloku **problemu** wykonaj następujące czynności:
     
     1. Wybierz **ważność**.
-    2. Określ, czy problem jest związany do usługi Menedżer urządzeń StorSimple lub urządzenia.
-    3. Wybierz **kategorii** tego wydania i zapewnić bardziej **szczegóły** o problemie.
-    4. Podaj datę i godzinę rozpoczęcia dla problemu.
-    5. W **przekazywanie pliku**, kliknij ikonę folderu, aby przejść do swojej pakietu dla pomocy technicznej.
-    6. Sprawdź **Udostępnij informacje diagnostyczne**.
+    2. Określ, czy problem jest związany z urządzeniem, czy z usługą StorSimple Menedżer urządzeń.
+    3. Wybierz **kategorię** tego problemu i podaj więcej **szczegółowych informacji** o problemie.
+    4. Podaj datę i godzinę rozpoczęcia problemu.
+    5. W polu **przekazywanie plików**kliknij ikonę folderu, aby przejść do pakietu pomocy technicznej.
+    6. Sprawdź **udostępnianie informacji diagnostycznych**.
     7. Kliknij przycisk **Dalej**.
 
-       ![MS skontaktuj się z pomocą techniczną za pośrednictwem nowego portalu](./media/storsimple-8000-contact-microsoft-support/contactsupport3.png) 
+       ![Skontaktuj się z pomocą techniczną firmy Microsoft za pośrednictwem nowego portalu](./media/storsimple-8000-contact-microsoft-support/contactsupport3.png) 
 
-4. W **nowe żądanie obsługi** bloku kliknij **informacji skontaktuj się z kroku 3**. W **informacje kontaktowe** blok, wykonaj następujące czynności:
+4. W bloku **nowe żądanie obsługi** kliknij pozycję **krok 3. informacje kontaktowe**. W bloku **informacje kontaktowe** wykonaj następujące czynności:
 
-   1. W **opcje kontaktu**, podaj preferowaną metodę kontaktu (telefonu lub adresu e-mail) i język. Czas odpowiedzi zostanie automatycznie wybrany w oparciu o plan subskrypcji.
-   2. Informacje kontaktowe zawiera nazwę, adres e-mail, opcjonalny skontaktuj się z pomocą, kraj/region. Wybierz **Zapisz zmiany dotyczące kontaktu dla przyszłych żądań obsługi** pole wyboru.
+   1. W obszarze **Opcje kontaktu**Podaj preferowaną metodę kontaktu (telefon lub adres e-mail) i język. Czas odpowiedzi jest wybierany automatycznie na podstawie planu subskrypcji.
+   2. W informacjach kontaktowych Podaj swoją nazwę, adres e-mail, kontakt opcjonalny, kraj/region. Zaznacz pole wyboru **Zapisz zmiany kontaktu w przyszłych żądaniach obsługi** .
    3. Kliknij przycisk **Utwórz**.
    
-       ![MS skontaktuj się z pomocą techniczną za pośrednictwem nowego portalu](./media/storsimple-8000-contact-microsoft-support/contactsupport5.png)   
+       ![Skontaktuj się z pomocą techniczną firmy Microsoft za pośrednictwem nowego portalu](./media/storsimple-8000-contact-microsoft-support/contactsupport5.png)   
 
-      Informacje te są wykorzystywane do skontaktować się z Tobą dodatkowe informacje, diagnozowania i rozwiązywania Microsoft Support.
-      Gdy prześlesz żądanie inżynier pomocy technicznej się z Tobą tak szybko, jak to możliwe, aby kontynuować z żądaniem.
+      Pomoc techniczna firmy Microsoft będzie używać tych informacji w celu uzyskania dalszych informacji, diagnozowania i rozwiązywania problemów.
+      Po przesłaniu żądania inżynier pomocy technicznej skontaktuje się z Tobą najszybciej, jak to możliwe, aby kontynuować żądanie.
 
-## <a name="manage-a-support-request"></a>Zarządzaj żądaniami obsługi
+## <a name="manage-a-support-request"></a>Zarządzanie żądaniem obsługi
 
 Po utworzeniu biletu pomocy technicznej możesz zarządzać jego cyklem życia z poziomu portalu.
 
 #### <a name="to-manage-your-support-requests"></a>Aby zarządzać żądaniami pomocy technicznej
 
-1. Aby uzyskać dostęp do strony pomocy i obsługi technicznej, przejdź do **Przeglądaj > Pomoc i obsługa techniczna**.
+1. Aby przejść do strony pomoc i obsługa techniczna, przejdź do okna **przeglądaj > pomoc i obsługa techniczna**.
 
-    ![Zarządzaj żądaniami obsługi](./media/storsimple-8000-contact-microsoft-support/managesupport1.png)
+    ![Zarządzanie żądaniami obsługi](./media/storsimple-8000-contact-microsoft-support/managesupport1.png)
 
-2. Tabelarycznej liście wszystkie żądania pomocy technicznej jest wyświetlana w **Pomoc i obsługa techniczna** bloku.
+2. W bloku **Pomoc i obsługa techniczna** zostanie wyświetlona tabelaryczna lista wszystkich żądań obsługi.
 
-    ![Zarządzaj żądaniami obsługi](./media/storsimple-8000-contact-microsoft-support/managesupport2.png)
+    ![Zarządzanie żądaniami obsługi](./media/storsimple-8000-contact-microsoft-support/managesupport2.png)
 
-3. Wybierz, a następnie kliknij przycisk żądania pomocy technicznej. Można wyświetlić stan i szczegóły dotyczące tego żądania. Kliknij przycisk **+ Nowa wiadomość** Aby wykonywać dalsze czynności dla tego żądania.
+3. Wybierz i kliknij żądanie pomocy technicznej. Możesz wyświetlić stan i szczegóły tego żądania. Kliknij pozycję **+ Nowy komunikat** , jeśli chcesz kontynuować na tym żądaniu.
 
-    ![Zarządzaj żądaniami obsługi](./media/storsimple-8000-contact-microsoft-support/managesupport3.png)
+    ![Zarządzanie żądaniami obsługi](./media/storsimple-8000-contact-microsoft-support/managesupport3.png)
 
-## <a name="start-a-support-session-in-windows-powershell-for-storsimple"></a>Rozpocząć sesję pomocy technicznej w programie Windows PowerShell dla usługi StorSimple
+## <a name="start-a-support-session-in-windows-powershell-for-storsimple"></a>Rozpocznij sesję pomocy technicznej w program Windows PowerShell dla usługi StorSimple
 
-Rozwiązanie wszelkich problemów, które mogą wystąpić z urządzeniem StorSimple, konieczne będzie współpracować z zespołem Microsoft Support. Microsoft Support mogą wymagać używania sesję pomocy technicznej do logowania się na urządzeniu.
+Aby rozwiązać wszelkie problemy, które mogą wystąpić w przypadku urządzenia z systemem StorSimple, należy skontaktować się z zespołem pomoc techniczna firmy Microsoft. Aby zalogować się na urządzeniu, pomoc techniczna firmy Microsoft może być konieczne użycie sesji obsługi.
 
-Wykonaj poniższe kroki, aby rozpocząć sesję pomocy technicznej:
+Wykonaj następujące kroki, aby rozpocząć sesję obsługi:
 
 #### <a name="to-start-a-support-session"></a>Aby rozpocząć sesję pomocy technicznej
 
-1. Dostęp do urządzenia bezpośrednio za pomocą konsoli szeregowej lub za pośrednictwem sesji telnet z komputera zdalnego. Aby to zrobić, wykonaj kroki opisane w [przy użyciu programu PuTTY, aby nawiązać połączenie z konsolą szeregową urządzenia](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console).
-2. W otwartej sesji naciśnij **Enter** klawisz, aby wyświetlić wiersz polecenia.
-3. W menu konsoli szeregowej wybierz opcję 1, **Zaloguj się przy użyciu pełnego dostępu**.
+1. Uzyskaj dostęp do urządzenia bezpośrednio przy użyciu konsoli szeregowej lub za pośrednictwem sesji Telnet z komputera zdalnego. W tym celu wykonaj kroki opisane w temacie [Korzystanie z programu, aby nawiązać połączenie z konsolą szeregową urządzenia](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console).
+2. W otwartej sesji naciśnij klawisz **Enter** , aby wyświetlić wiersz polecenia.
+3. W menu konsoli szeregowej wybierz opcję 1, **Zaloguj się z pełnymi prawami dostępu**.
 4. W wierszu polecenia wpisz następujące hasło:
    
     `Password1`
 5. W wierszu polecenia wpisz następujące polecenie:
    
     `Enable-HcsSupportAccess`
-6. Zaszyfrowanego ciągu zostanie ona wyświetlona. Skopiuj następujący ciąg do edytora tekstów, takiego jak Notatnik.
-7. Zapisz ten ciąg i wyślij go w wiadomości e-mail do firmy Microsoft Support.
+6. Zostanie wyświetlony zaszyfrowany ciąg. Skopiuj ten ciąg do edytora tekstu, takiego jak Notatnik.
+7. Zapisz ten ciąg i wyślij go w wiadomości e-mail do pomoc techniczna firmy Microsoft.
 
 > [!IMPORTANT]
-> Możesz wyłączyć dostęp do pomocy technicznej, uruchamiając `Disable-HcsSupportAccess`. Urządzenie StorSimple również będzie podejmować próby wyłączyć dostęp do pomocy technicznej 8 godzin po zainicjowaniu sesji. Jest najlepszym rozwiązaniem, aby zmienić poświadczenia urządzenia StorSimple po zainicjowaniu sesji pomocy technicznej.
+> Dostęp do pomocy technicznej można wyłączyć, uruchamiając `Disable-HcsSupportAccess`. Urządzenie StorSimple podejmie również próbę wyłączenia dostępu do pomocy technicznej 8 godzin po zainicjowaniu sesji. Najlepszym rozwiązaniem jest zmiana poświadczeń urządzenia StorSimple po zainicjowaniu sesji obsługi.
 
 
 ## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się, jak [diagnozowanie i rozwiązywanie problemów związanych z Twojego urządzenia StorSimple 8000 series](storsimple-8000-troubleshoot-deployment.md)
+Dowiedz się [, jak diagnozować i rozwiązywać problemy związane z urządzeniem z serii StorSimple 8000](storsimple-8000-troubleshoot-deployment.md)

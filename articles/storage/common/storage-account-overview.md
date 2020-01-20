@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/20/2019
+ms.date: 01/17/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 8f912635fc0fb14fc54426a108af5f67d26213f4
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 5034aaaee335bbd87e7ea42b448e4e8fbf6aacca
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75975705"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76274537"
 ---
 # <a name="storage-account-overview"></a>Omówienie kont magazynu
 
@@ -64,17 +64,15 @@ W większości przypadków należy używać kont ogólnego przeznaczenia w wersj
 
 ### <a name="blockblobstorage-accounts"></a>Konta BlockBlobStorage
 
-Konto BlockBlobStorage to wyspecjalizowane konto magazynu używane do przechowywania danych obiektów bez struktury jako blokowych obiektów BLOB. Możesz również użyć konta BlockBlobStorage, aby utworzyć blokowe obiekty blob w warstwie Premium. Ten typ konta magazynu obsługuje blokowe obiekty blob i dołączanie obiektów blob, ale nie stronicowych obiektów blob, tabel lub kolejek.
+Konto BlockBlobStorage to wyspecjalizowane konto magazynu w warstwie wydajności Premium do przechowywania danych obiektów bez struktury jako blokowych obiektów blob lub dołączania obiektów BLOB. W porównaniu z kontami ogólnego przeznaczenia w wersji 2 i BlobStorage konta BlockBlobStorage zapewniają niskie, spójne opóźnienia i wyższe stawki transakcji.
 
-W porównaniu z kontami ogólnego przeznaczenia w wersji 2 i BlobStorage konta BlockBlobStorage zapewniają niskie i spójne opóźnienia oraz wyższe stawki transakcji.
-
-Konta BlockBlobStorage nie obsługują obecnie warstw dostępu do warstwy gorąca, chłodna lub archiwalna.
+Konta BlockBlobStorage nie obsługują obecnie warstw dostępu do warstwy gorąca, chłodna lub archiwalna. Ten typ konta magazynu nie obsługuje stronicowych obiektów blob, tabel lub kolejek.
 
 ### <a name="filestorage-accounts"></a>Konta FileStorage
 
 Konto FileStorage to wyspecjalizowane konto magazynu używane do przechowywania i tworzenia udziałów plików w warstwie Premium. Ten rodzaj konta magazynu obsługuje pliki, ale nie blokuje obiektów blob, dołączanie obiektów blob, stronicowych obiektów blob, tabel lub kolejek.
 
-Konta FileStorage oferują unikatowe cechy charakterystyczne dla wydajności, takie jak rozerwanie operacji we/wy. Więcej informacji o tych właściwościach znajduje się w sekcji [warstwy wydajności udziału plików](../files/storage-files-planning.md#file-share-performance-tiers) w przewodniku planowania plików.
+Konta FileStorage oferują unikatowe charakterystyki wydajności, takie jak rozerwanie operacji we/wy. Więcej informacji o tych właściwościach znajduje się w sekcji [warstwy wydajności udziału plików](../files/storage-files-planning.md#file-share-performance-tiers) w przewodniku planowania plików.
 
 ## <a name="naming-storage-accounts"></a>Nazewnictwo kont magazynu
 
@@ -85,12 +83,20 @@ Podczas określania nazwy konta magazynu należy pamiętać o następujących re
 
 ## <a name="performance-tiers"></a>Warstwy wydajności
 
+W zależności od typu tworzonego konta magazynu można wybrać warstwę wydajności warstwy Standardowa i Premium.
+
+### <a name="general-purpose-storage-accounts"></a>Konta magazynu ogólnego przeznaczenia
+
 Konta magazynu ogólnego przeznaczenia można skonfigurować dla jednej z następujących warstw wydajności:
 
 - Standardowa warstwa wydajności do przechowywania obiektów blob, plików, tabel, kolejek i dysków maszyn wirtualnych platformy Azure. Aby uzyskać więcej informacji o skalowalności dla kont magazynu w warstwie Standardowa, zobacz [elementy docelowe skalowalności dla kont magazynu w warstwie Standardowa](scalability-targets-standard-account.md).
-- Warstwa wydajności Premium do przechowywania tylko niezarządzanych dysków maszyny wirtualnej. Firma Microsoft zaleca używanie dysków zarządzanych z maszynami wirtualnymi platformy Azure zamiast dysków niezarządzanych. Aby uzyskać więcej informacji o skalowalności dla warstwy wydajności Premium, zobacz [elementy docelowe skalowalności dla kont usługi BLOB Storage na stronie Premium](../blobs/scalability-targets-premium-page-blobs.md).
+- Warstwa wydajności Premium do przechowywania niezarządzanych dysków maszyn wirtualnych. Firma Microsoft zaleca używanie dysków zarządzanych z maszynami wirtualnymi platformy Azure zamiast dysków niezarządzanych. Aby uzyskać więcej informacji o skalowalności dla warstwy wydajności Premium, zobacz [elementy docelowe skalowalności dla kont usługi BLOB Storage na stronie Premium](../blobs/scalability-targets-premium-page-blobs.md).
+
+### <a name="blockblobstorage-storage-accounts"></a>Konta magazynu BlockBlobStorage
 
 Konta magazynu BlockBlobStorage zapewniają warstwę wydajności Premium do przechowywania blokowych obiektów blob i dołączania obiektów BLOB. Aby uzyskać więcej informacji, zobacz [cele skalowalności dla kont magazynu blokowych obiektów BLOB w warstwie Premium](../blobs/scalability-targets-premium-block-blobs.md).
+
+### <a name="filestorage-storage-accounts"></a>Konta magazynu FileStorage
 
 Konta magazynu FileStorage zapewniają warstwę wydajności Premium dla udziałów plików platformy Azure. Aby uzyskać więcej informacji, zobacz [Azure Files celów skalowalności i wydajności](../files/storage-files-scale-targets.md).
 
@@ -102,7 +108,7 @@ Dostępne są następujące warstwy dostępu:
 
 - Warstwa dostępu **gorąca** . Ta warstwa jest zoptymalizowana pod kątem częstego dostępu do obiektów na koncie magazynu. Uzyskiwanie dostępu do danych w warstwie gorąca jest najbardziej opłacalne, natomiast koszty magazynu są wyższe. Nowe konta magazynu są domyślnie tworzone w warstwie gorąca.
 - Warstwa dostępu **chłodna** . Ta warstwa jest zoptymalizowana pod kątem przechowywania dużych ilości danych, które są rzadko używane i są przechowywane przez co najmniej 30 dni. Przechowywanie danych w warstwie chłodna jest tańsze, ale dostęp do tych danych może być droższy niż dostęp do danych w warstwie gorąca.
-- Warstwa **archiwum** . Ta warstwa jest dostępna tylko dla pojedynczych blokowych obiektów BLOB. Warstwa archiwum jest zoptymalizowana pod kątem danych, które mogą tolerować kilka godzin opóźnienia pobierania i które pozostaną w warstwie archiwum przez co najmniej 180 dni. Warstwa archiwum jest najtańszą opcją do przechowywania danych. Jednak dostęp do tych danych jest droższy niż dostęp do danych w warstwach gorąca lub chłodna.
+- Warstwa **archiwum** . Ta warstwa jest dostępna tylko dla pojedynczych blokowych obiektów blob i Dołącz obiekty blob. Warstwa archiwum jest zoptymalizowana pod kątem danych, które mogą tolerować kilka godzin opóźnienia pobierania i które pozostaną w warstwie archiwum przez co najmniej 180 dni. Warstwa archiwum jest najtańszą opcją do przechowywania danych. Jednak dostęp do tych danych jest droższy niż dostęp do danych w warstwach gorąca lub chłodna.
 
 W przypadku zmiany wzorca użycia danych można w dowolnym momencie przełączyć się między tymi warstwami dostępu. Aby uzyskać więcej informacji o warstwach dostępu, zobacz [Azure Blob Storage: warstwy dostępu gorąca, chłodna i archiwalna](../blobs/storage-blob-storage-tiers.md).
 

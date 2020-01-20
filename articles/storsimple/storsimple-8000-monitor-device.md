@@ -1,56 +1,48 @@
 ---
-title: Monitorowanie z urządzenia StorSimple 8000 series | Dokumentacja firmy Microsoft
-description: Opisuje sposób używania usługi Menedżer urządzeń StorSimple do monitorowania użycia, wydajności we/wy i wykorzystanie pojemności.
-services: storsimple
-documentationcenter: NA
+title: Monitorowanie urządzenia z serii StorSimple 8000
+description: Opisuje, jak używać usługi StorSimple Menedżer urządzeń do monitorowania użycia, wydajności we/wy i wykorzystania pojemności.
 author: alkohli
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
+ms.topic: conceptual
 ms.date: 10/17/2017
 ms.author: alkohli
-ms.openlocfilehash: 602514df69977891167f341db0ab20913bcacc9f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b3b77024606c5cdb02ff7bdd357c2d14a2415efa
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60634566"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277056"
 ---
-# <a name="use-the-storsimple-device-manager-service-to-monitor-your-storsimple-device"></a>Monitorować urządzenie StorSimple przy użyciu usługi Menedżer urządzeń StorSimple
+# <a name="use-the-storsimple-device-manager-service-to-monitor-your-storsimple-device"></a>Monitorowanie urządzenia StorSimple przy użyciu usługi StorSimple Menedżer urządzeń
 
-## <a name="overview"></a>Omówienie
-Usługa Menedżer urządzeń StorSimple do monitorowania określonych urządzeń w ramach rozwiązania StorSimple. Można tworzyć niestandardowe wykresy na podstawie wydajności operacji We/Wy, wykorzystanie pojemności, przepływności sieci i metryki wydajności urządzenia i przypiąć do pulpitu nawigacyjnego. Aby uzyskać więcej informacji, przejdź do [Dostosowywanie pulpitu nawigacyjnego portalu](../azure-portal/azure-portal-dashboards.md).
+## <a name="overview"></a>Przegląd
+Usługi StorSimple Menedżer urządzeń można użyć do monitorowania konkretnych urządzeń w ramach rozwiązania StorSimple. Wykresy niestandardowe można tworzyć na podstawie wydajności operacji we/wy, wykorzystania pojemności, przepustowości sieci i metryk wydajności urządzeń oraz przypinać je do pulpitu nawigacyjnego. Aby uzyskać więcej informacji, przejdź do obszaru [Dostosowywanie pulpitu nawigacyjnego portalu](../azure-portal/azure-portal-dashboards.md).
 
-Aby wyświetlić dane monitorowania dla określonego urządzenia, w witrynie Azure portal, wybierz usługę Menedżer urządzeń StorSimple. Z listy urządzeń wybierz urządzenie, a następnie przejdź do **Monitor**. Możesz sprawdzić **pojemności**, **użycia**, i **wydajności** wykresy dla wybranego urządzenia.
+Aby wyświetlić informacje o monitorowaniu dla określonego urządzenia, w Azure Portal wybierz usługę StorSimple Menedżer urządzeń. Z listy urządzeń wybierz urządzenie, a następnie przejdź do pozycji **monitorowanie**. Następnie można zobaczyć wykresy **pojemności**, **użycia**i **wydajności** dla wybranego urządzenia.
 
 ## <a name="capacity"></a>Pojemność
-**Pojemność** śledzi aprowizowane miejsce i miejsca na urządzeniu. Pozostała pojemność zostanie wyświetlona jako przypięty lokalnie lub warstwy.
+**Pojemność** śledzi miejsce zainicjowane i miejsce pozostało na urządzeniu. Pozostała pojemność jest następnie wyświetlana jako przypięty lokalnie lub w warstwach.
 
-Elastycznie i pozostałej pojemności jest dalszych rozbiciu woluminy warstwowe i przypiętego lokalnie. Dla każdego woluminu wyświetlany jest zaprowizowaną pojemnością i pozostałe zasoby na urządzeniu.
+Przydzielona i pozostała pojemność jest podzielona na woluminy przypięte warstwowo i lokalnie. Dla każdego woluminu zostanie wyświetlona pojemność zainicjowana i pozostała pojemność na urządzeniu.
 
-![Wydajność We/Wy](./media/storsimple-8000-monitor-device/device-capacity.png)
+![Wydajność we/wy](./media/storsimple-8000-monitor-device/device-capacity.png)
 
 
 
-## <a name="usage"></a>Sposób użycia
-**Użycie** śledzi metryki dotyczące ilości miejsca do magazynowania danych, używanego przez woluminy, kontenery woluminów lub urządzenia. Można utworzyć raportów na podstawie wykorzystania pojemności magazynu podstawowego, magazynem w chmurze lub magazynu urządzenia. Użycie wydajności można zmierzyć na określonego woluminu, kontener określonego woluminu lub wszystkie kontenery woluminów.
-Domyślnie jest zgłaszany użycia w ciągu ostatnich 24 godzin. Można edytować wykres, aby zmienić czas trwania, którego użycie jest zgłaszany, wybierając:
+## <a name="usage"></a>Użycie
+**Użycie** śledzi metryki dotyczące ilości miejsca do magazynowania danych używanego przez woluminy, kontenery woluminów lub urządzenie. Możesz tworzyć raporty na podstawie wykorzystania pojemności magazynu podstawowego, magazynu w chmurze lub magazynu urządzeń. Wykorzystanie pojemności można mierzyć na określonym woluminie, konkretnym kontenerze woluminów lub wszystkich kontenerach woluminów.
+Domyślnie zostanie zgłoszone użycie w ciągu ostatnich 24 godzin. Można edytować wykres, aby zmienić czas, w którym jest raportowane użycie, wybierając z:
 * Ostatnie 24 godziny
 * Ostatnie 7 dni
-* Ostatnich 30 dni
+* Ostatnie 30 dni
 * Ostatnie 90 dni
 * Ubiegły rok
 
-Dwa kluczowe metrices, rozwój i zakres są raportowane wykresy użycia. Zakres odwołuje się do wartości maksymalnej i minimalnej wartości użycia zgłoszone w wybranym okresie (wystąpienia fo, ostatnie 7 dni).
+Dla wykresów użycia są zgłaszane dwie kluczowe metryki, wzrost i zakres. Zakres odnosi się do wartości maksymalnej i minimalnej wartości użycia raportowanej w wybranym czasie (w ciągu ostatnich 7 dni).
 
-Wzrost odnosi się do wzrostu użycia od pierwszego dnia na ostatni dzień w wybranym okresie. 
+Wzrost odnosi się do wzrostu użycia od pierwszego dnia do ostatniego dnia w wybranym okresie. 
 
-Wskaźnik wzrostu i zakres również może być reprezentowany przez następujących wzorów:
+Wzrost i zakres mogą być również reprezentowane przez następujące równania:
 
 ```
 Range = {Usage(minimum), Usage(maximum)}
@@ -60,93 +52,93 @@ Growth = Usage(Last day) - Usage(first day)
 Growth (%) = [{Usage(last day) - Usage(first day)} X 100]/Usage(first day)
 ```
 
-Chmura podstawowa, a używany Magazyn lokalny można przedstawić w następujący sposób:
+Używany magazyn podstawowy, Chmura i lokalna można opisać w następujący sposób:
 
 ### <a name="primary-storage-usage"></a>Użycie magazynu podstawowego
-Te wykresy pokazują ilość danych zapisanych woluminów StorSimple, zanim dane są deduplikowane, a skompresowane. Można wyświetlić podstawowy magazyn używany przez wszystkie woluminy w kontenerze woluminów lub jednego woluminu. Podstawowym magazynem używanym jest dalszych rozbiciu użyto głównego magazynu warstwowego i głównego magazynu używane przypiętego lokalnie.
+Te wykresy przedstawiają ilość danych zapisanych do woluminów StorSimple, zanim dane zostaną deduplikowane i skompresowane. Można wyświetlić magazyn podstawowy używany przez wszystkie woluminy w kontenerze woluminów lub dla pojedynczego woluminu. Używany magazyn podstawowy został poddany dalszej rozbiciu na podstawowe użycie magazynu warstwowego i używany jest podstawowy magazyn przypięty lokalnie.
 
-Poniższe wykresy pokazują podstawowym magazynem używanym dla urządzenia StorSimple, przed i po migawki w chmurze. Jak jest to po prostu dane woluminu, migawkę w chmurze nie należy zmieniać podstawowy magazyn. Jak widać, wykres pokazuje różnicy w podstawowy magazyn warstwowy lub przypięty lokalnie używany w wyniku wykonywania migawki w chmurze. Migawka w chmurze rozpoczęło się o około 23:50:00 na tym urządzeniu.
+Poniższe wykresy przedstawiają magazyn podstawowy używany przez urządzenie StorSimple przed wykonaniem migawki w chmurze i po jej wykonaniu. Ponieważ jest to tylko dane woluminu, migawka w chmurze nie powinna zmieniać magazynu podstawowego. Jak widać, wykres nie wyświetla żadnych różnic w odniesieniu do magazynu podstawowego lub przypiętego lokalnie użytych w wyniku przetworzenia migawki w chmurze. Migawka w chmurze rozpoczęła się o około 11:50 pm na tym urządzeniu.
 
-![Wykorzystanie pojemności głównej po migawki w chmurze](./media/storsimple-8000-monitor-device/device-primary-storage-after-cloudsnapshot.png)
+![Wykorzystanie pojemności podstawowej po migawce w chmurze](./media/storsimple-8000-monitor-device/device-primary-storage-after-cloudsnapshot.png)
 
-Jeśli teraz uruchomić operacji We/Wy na hoście podłączone do urządzenia StorSimple, zostanie wyświetlony wzrost podstawowy magazyn warstwowy lub podstawowego lokalnie przypięte miejsca używanego w zależności od woluminów (warstwy lub przypięty lokalnie) zostanie zapisane dane. Poniżej przedstawiono wykresy użycia magazynu podstawowego dla urządzenia StorSimple. Na tym urządzeniu hosta StorSimple pracę, obsługująca zapisuje się na około 2:30 pm w woluminu warstwowego na urządzeniu. Możesz zobaczyć pikach Bajty zapisu/s odpowiadający operacji We/Wy uruchomiona na hoście.
+Jeśli teraz uruchamiasz operacje we/wy na hoście podłączonym do urządzenia z systemem StorSimple, zobaczysz wzrost podstawowego magazynu warstwowego lub podstawowego magazynu przypiętego lokalnie, który jest używany w zależności od tego, które woluminy (przypięte warstwowo lub lokalnie) są zapisywane do programu. Poniżej przedstawiono podstawowe wykresy użycia magazynu dla urządzenia StorSimple. Na tym urządzeniu Host StorSimple obsługuje zapisy o około 2:30 PM na woluminie warstwowym na urządzeniu. Można zobaczyć szczyt w bajtach zapisu/s odpowiadających operacji wejścia/wyjścia na hoście.
 
-![Wydajność We/Wy uruchomionych na woluminy warstwowe](./media/storsimple-8000-monitor-device/device-io-from-initiator.png)
+![Wydajność w przypadku uruchamiania operacji we/wy na woluminach warstwowych](./media/storsimple-8000-monitor-device/device-io-from-initiator.png)
 
-Jeśli analizujesz użyto głównego magazynu warstwowego, stała się natomiast przypięty lokalnie podstawowe użycie pozostaje bez zmian, ponieważ nie zapisy obsłużonych woluminy przypięte lokalnie na urządzeniu.
+Jeśli przeszukiwany jest podstawowy magazyn warstwowy, który został usunięty, a podstawowe użycie przypięty lokalnie pozostaje niezmienione, ponieważ nie ma żadnych zapisów obsłużonych lokalnie przypiętych woluminów na urządzeniu.
 
-![Wykorzystanie pojemności głównej po uruchomieniu operacji We/Wy na woluminach warstwowych](./media/storsimple-8000-monitor-device/device-primary-storage-io-from-initiator.png)
+![Podstawowe wykorzystanie pojemności podczas uruchamiania operacji we/wy na woluminach warstwowych](./media/storsimple-8000-monitor-device/device-primary-storage-io-from-initiator.png)
 
-Jeśli korzystasz z aktualizacją 3 lub wyższą od nich, można podzielić wykorzystanie pojemności magazynu podstawowego przez pojedynczy wolumin, wszystkie woluminy, wszystkie woluminy warstwowych i wszystkie woluminy przypięte lokalnie, jak pokazano poniżej. Potężne przez wszystkie woluminy przypięte lokalnie pozwoli szybko ustalić, ile warstwie lokalnej jest zużyte.
+W przypadku korzystania z aktualizacji Update 3 lub nowszej można rozbić podstawowe wykorzystanie pojemności magazynu przez pojedynczy wolumin, wszystkie woluminy, wszystkie woluminy warstwowe i wszystkie woluminy przypięte lokalnie, jak pokazano poniżej. Podział przez wszystkie woluminy przypięte lokalnie pozwala szybko ustalić, jaka część warstwy lokalnej jest używana.
 
-![Wykorzystanie pojemności podstawowy, wszystkie woluminy warstwowych](./media/storsimple-8000-monitor-device/monitor-usage3.png)
+![Podstawowe wykorzystanie pojemności dla wszystkich woluminów warstwowych](./media/storsimple-8000-monitor-device/monitor-usage3.png)
 
-![Wykorzystanie pojemności głównej dla wszystkich woluminów przypiętych lokalnie](./media/storsimple-8000-monitor-device/monitor-usage4.png)
+![Podstawowe wykorzystanie pojemności dla wszystkich przypiętych lokalnie woluminów](./media/storsimple-8000-monitor-device/monitor-usage4.png)
 
-Pozwala dodatkowo klikaj poszczególne woluminy na liście i zobacz odpowiednie użycie.
+Możesz również kliknąć poszczególne woluminy na liście i zobaczyć odpowiednie użycie.
 
-![Wykorzystanie pojemności głównej dla wszystkich woluminów przypiętych lokalnie](./media/storsimple-8000-monitor-device/device-primary-storage-usage-by-volume.png)
+![Podstawowe wykorzystanie pojemności dla wszystkich przypiętych lokalnie woluminów](./media/storsimple-8000-monitor-device/device-primary-storage-usage-by-volume.png)
 
 ### <a name="cloud-storage-usage"></a>Użycie magazynu w chmurze
-Te wykresy pokazują wielkość wykorzystanego magazynu w chmurze. Te dane są deduplikowane i skompresować. Ta wartość obejmuje migawki w chmurze, które mogą zawierać dane, które nie jest uwzględniana w dowolny wolumin podstawowy i są przechowywane na potrzeby przechowywania starszych lub wymagane. Można porównać podstawowym i w chmurze dane użycia magazynu, aby poznać częstotliwość redukcja danych, mimo że nie będzie dokładna liczba.
+Te wykresy przedstawiają ilość używanego magazynu w chmurze. Te dane są deduplikowane i kompresowane. Ta kwota zawiera migawki w chmurze, które mogą zawierać dane, które nie są odzwierciedlone w woluminie głównym i są przechowywane na potrzeby starszych lub wymaganych operacji przechowywania. Można porównać dane użycia magazynu podstawowego i w chmurze, aby uzyskać pomysł dotyczący szybkości redukcji danych, chociaż nie jest to dokładne.
 
-Następujące wykresy pokazują wykorzystanie magazynu chmurze urządzenia StorSimple, gdy została wykonana migawka w chmurze.
+Poniższe wykresy przedstawiają wykorzystanie magazynu w chmurze urządzenia StorSimple podczas tworzenia migawki w chmurze.
 
-* Migawka w chmurze rozpoczęło się o około 11:50:00 na tym urządzeniu, a zobaczysz, że przed migawki w chmurze, nie ma żadnych użycie magazynu w chmurze. 
-* Raz ukończone migawki w chmurze, wykorzystanie magazynu w chmurze zrzut się 0,89 GB. 
-* Podczas migawki w chmurze jest w toku, dostępna jest również odpowiedni szczytu w operacji We/Wy z urządzenia do chmury.
+* Migawka w chmurze rozpoczęła się o około 11:50 na tym urządzeniu i zobaczysz, że przed migawką chmury nie został użyty magazyn w chmurze. 
+* Po zakończeniu migawki w chmurze zostanie zastrzelone wykorzystanie magazynu w chmurze o 0,89 GB. 
+* Podczas gdy migawka chmury była w toku, istnieje również odpowiedni szczyt w operacji we/wy z urządzenia do chmury.
 
-    ![Wykorzystanie magazynu w chmurze przed migawki w chmurze](./media/storsimple-8000-monitor-device/device-cloud-storage-before-cloudsnapshot.png)
+    ![Wykorzystanie magazynu w chmurze przed migawką w chmurze](./media/storsimple-8000-monitor-device/device-cloud-storage-before-cloudsnapshot.png)
 
-    ![Wykorzystanie magazynu w chmurze po migawki w chmurze](./media/storsimple-8000-monitor-device/device-cloud-storage-after-cloudsnapshot.png)
+    ![Wykorzystanie magazynu w chmurze po migawce w chmurze](./media/storsimple-8000-monitor-device/device-cloud-storage-after-cloudsnapshot.png)
 
-    ![We/Wy z urządzenia do chmury podczas migawkę w chmurze](./media/storsimple-8000-monitor-device/device-io-to-cloud-during-cloudsnapshot.png)
+    ![We/wy z urządzenia do chmury podczas tworzenia migawki w chmurze](./media/storsimple-8000-monitor-device/device-io-to-cloud-during-cloudsnapshot.png)
 
 
 ### <a name="local-storage-usage"></a>Użycie magazynu lokalnego
-Te wykresy pokazują łączne użycie dla urządzenia, który będzie użycie magazynu ponad podstawowego, ponieważ zawiera ona liniowej warstwy dysków SSD. Ta warstwa zawiera ilość danych, który jest także na urządzeniu w innych warstwach. Tak, aby po nadejściu nowych danych stare dane jest przenoszony do warstwy dysków HDD (co jest deduplikowany i skompresowane), a następnie do chmury, ponownym włączeniu pojemności w warstwie dysków SSD liniowego.
+Te wykresy przedstawiają łączne wykorzystanie urządzenia, które będzie większe niż użycie magazynu podstawowego, ponieważ obejmuje warstwę liniową SSD. Ta warstwa zawiera ilość danych, które również istnieją na innych warstwach urządzenia. Pojemność w warstwie liniowej SSD jest przetwarzana w taki sposób, aby w przypadku, gdy nowe dane są dostępne, stare dane są przenoszone do warstwy dysków twardych (w których czas jest deduplikowany i kompresowany), a następnie do chmury.
 
-Nad przechowywaniem czasu, podstawowe używane i lokalny magazyn używany najprawdopodobniej zwiększyć ze sobą, aż zacznie dane umieszczane w chmurze. W tym momencie używany Magazyn lokalny prawdopodobnie rozpocznie się ustabilizowania, ale podstawowym magazynem używanym więc ceny wzrosną jako zapisywanych jest więcej danych.
+W miarę upływu czasu użycie magazynu podstawowego i używanego magazynu lokalnego najprawdopodobniej zwiększy się do momentu, aż dane staną się warstwą chmury. W tym momencie używany magazyn lokalny prawdopodobnie zacznie się Plateau, ale używany magazyn podstawowy zwiększy się, gdy zostanie zapisywana większa ilość danych.
 
-Poniższe wykresy pokazują podstawowym magazynem używanym dla urządzenia StorSimple, gdy została wykonana migawka w chmurze. Migawki w chmurze rozpoczęty o godzinie 11:50:00 i Magazyn lokalny pracę, zmniejszając w tym czasie. Używany Magazyn lokalny zakończył działanie z 1.445 GB 1,09 GB. Oznacza to, czy najprawdopodobniej nieskompresowanych danych w liniowej warstwy dysków SSD został deduplikowane, kompresowane i przeniesiony do warstwy dysków HDD. Należy pamiętać, że jeśli urządzenie ma już dużej ilości danych w warstwy dysków SSD i HDD, nie widać to zmniejszenie. W tym przykładzie urządzenie ma niewielką ilość danych.
+Poniższe wykresy przedstawiają magazyn podstawowy używany przez urządzenie StorSimple podczas tworzenia migawki w chmurze. Migawka w chmurze rozpoczęła się o godzinie 11:50, a Magazyn lokalny został uruchomiony w tym czasie. Używany magazyn lokalny został przeszedł z 1,445 GB do 1,09 GB. Oznacza to, że najprawdopodobniej nieskompresowane dane w liniowej warstwie dysków SSD zostały deduplikowane, skompresowane i przeniesione do warstwy dysków twardych. Należy pamiętać, że jeśli urządzenie ma już dużą ilość danych w warstwach SSD i dysk twardy, może to spowodować, że ten spadek nie jest widoczny. W tym przykładzie urządzenie ma niewielką ilość danych.
 
-![Wykorzystanie magazynu lokalnego po migawki w chmurze](./media/storsimple-8000-monitor-device/device-local-storage-after-cloudsnapshot.png)
+![Wykorzystanie magazynu lokalnego po migawce w chmurze](./media/storsimple-8000-monitor-device/device-local-storage-after-cloudsnapshot.png)
 
 ## <a name="performance"></a>Wydajność
-**Wydajność** śledzi metryki związane z liczbą odczytu i zapisu między albo interfejsy inicjatora iSCSI na serwerze hosta i urządzenie lub urządzenia i chmurę. Ta wydajności można zmierzyć dla określonego woluminu, kontener określonego woluminu lub wszystkie kontenery woluminów. Wydajność także wykorzystanie procesora CPU i przepustowość sieci dla różnych interfejsów sieciowych na urządzeniu.
+**Wydajność** śledzi metryki dotyczące liczby operacji odczytu i zapisu między interfejsami inicjatora iSCSI na serwerze hosta a urządzeniem lub urządzeniem oraz chmurą. Tę wydajność można mierzyć dla określonego woluminu, określonego kontenera woluminów lub wszystkich kontenerów woluminów. Wydajność obejmuje również wykorzystanie procesora CPU i przepływność sieci dla różnych interfejsów sieciowych na urządzeniu.
 
-### <a name="io-performance-for-initiator-to-device"></a>Wydajność operacji We/Wy inicjator do urządzenia
-Na wykresie poniżej przedstawiono operacji We/Wy dla inicjator do urządzenia pod kątem wszystkich woluminów na potrzeby urządzeń produkcyjnych. Metryki kreślone są Odczyt i zapis bajtów na sekundę. Można również wykresu odczytu, zapisu i oczekujących operacji We/Wy lub odczytu i zapisu opóźnienia.
+### <a name="io-performance-for-initiator-to-device"></a>Wydajność we/wy dla inicjatora dla urządzenia
+Na poniższym wykresie przedstawiono we/wy dla inicjatora urządzenia dla wszystkich woluminów dla urządzenia produkcyjnego. Wykreślane metryki to bajty odczytu i zapisu na sekundę. Można również tworzyć wykresy operacji odczytu, zapisu i oczekujące operacje odczytu i zapisu oraz opóźniać odczyt i zapis.
 
-![Wydajność We/Wy inicjator do urządzenia](./media/storsimple-8000-monitor-device/device-io-from-initiator.png)
+![Wydajność we/wy dla inicjatora dla urządzenia](./media/storsimple-8000-monitor-device/device-io-from-initiator.png)
 
-### <a name="io-performance-for-device-to-cloud"></a>Wydajność operacji We/Wy urządzenia do chmury
-Operacje We/Wy dla tego samego urządzenia, są oznaczane na wykresach dla danych z urządzenia do chmury na potrzeby wszystkie kontenery woluminów. Na tym urządzeniu dane są tylko w warstwie liniowej i nic nie ma rozlane do chmury. Nie ma żadnych operacji odczytu i zapisu, pojawiają się z urządzenia do chmury. Dlatego wartości szczytowe na wykresie są z interwałem wynoszącym 5 minut, umożliwiająca częstotliwość sprawdzania pulsu między urządzeniem a usługą.
+### <a name="io-performance-for-device-to-cloud"></a>Wydajność operacji we/wy dla urządzenia w chmurze
+Dla tego samego urządzenia operacje we/wy są kreślone dla danych z urządzenia do chmury dla wszystkich kontenerów woluminów. Na tym urządzeniu dane są tylko w warstwie liniowej, a nic nie zostało przelane do chmury. Brak operacji odczytu i zapisu z urządzenia do chmury. W związku z tym szczytów na wykresie są z przedziałem 5 minut, który odnosi się do częstotliwości sprawdzania pulsu między urządzeniem a usługą.
 
-Na tym samym urządzeniu migawkę w chmurze została wykonana dla woluminu danych, zaczynając od 11:50:00. Pozwoliło to odnotować danych napływających z urządzenia do chmury. Zapisy były obsługiwane w chmurze w tym czasie. Wykres we/wy pokazuje nagły zapisu b/s odpowiadającego do chwili, gdy migawka została utworzona.
+Dla tego samego urządzenia zrobiono migawkę w chmurze dla danych woluminu, zaczynając od 11:50 am. Spowodowało to przepływanie danych z urządzenia do chmury. Operacje zapisu zostały obsłużone w chmurze w tym czasie. Wykres we/wy przedstawia szczyt w bajtach zapisu/s odpowiadający czasowi utworzenia migawki.
 
-![We/Wy z urządzenia do chmury podczas migawkę w chmurze](./media/storsimple-8000-monitor-device/device-io-to-cloud-during-cloudsnapshot.png)
+![We/wy z urządzenia do chmury podczas tworzenia migawki w chmurze](./media/storsimple-8000-monitor-device/device-io-to-cloud-during-cloudsnapshot.png)
 
-### <a name="network-throughput-for-device-network-interfaces"></a>Przepustowość sieci dla interfejsów sieciowych urządzenia
-**Przepływność sieci** śledzi metryki dotyczące ilości danych przesyłanych z interfejsów sieciowych inicjatora iSCSI na serwerze hosta i urządzenia oraz między urządzeniem i chmurą. Ta metryka można monitorować dla poszczególnych interfejsów sieciowych iSCSI na urządzeniu.
+### <a name="network-throughput-for-device-network-interfaces"></a>Przepływność sieci dla interfejsów sieciowych urządzeń
+**Przepływność sieci** śledzi metryki związane z ilością danych transferowanych z interfejsów sieciowych inicjatora iSCSI na serwerze hosta oraz między urządzeniem a chmurą. Można monitorować tę metrykę dla każdego interfejsu sieciowego iSCSI na urządzeniu.
 
-Poniższe wykresy pokazują przepustowość sieci dla Data 0, 1, 1 GbE sieci na urządzeniu została zarówno włączoną obsługę chmury (ustawienie domyślne) i włączono interfejs iSCSI. Na tym urządzeniu 14 czerwca o około 21: 00, dane warstwowe zostało do chmury (nie znaleziono migawek w chmurze zostały pobrane w tym czasie, na które wskazuje na warstw jest mechanizm przenoszenia danych do chmury) co spowodowało we/wy obsługiwanych w chmurze. Istnieje odpowiedni szczytu na wykresie przepustowość sieci na tym samym czasie i większość ruchu sieciowego jest ruch wychodzący do chmury.
+Na poniższych wykresach przedstawiono przepływność sieci dla sieci danych 0, 1 1 GbE na urządzeniu, w przypadku których włączono obsługę chmury (domyślnie) i opcję iSCSI. Na tym urządzeniu w dniu 14 czerwca wynoszącym około 9 PM dane były podzielone na chmurę (w tym momencie nie podjęto migawek chmurowych, które wskazują na warstwowy mechanizm przenoszenia danych do chmury), co spowodowało, że operacje we/wy są obsługiwane w chmurze. Istnieje odpowiedni szczyt wykresu przepływności sieci dla tego samego czasu i większość ruchu sieciowego jest wychodząca do chmury.
 
-![Przepływność sieci interfejsu dane 0](./media/storsimple-8000-monitor-device/device-network-throughput-data0.png)
+![Przepływność sieci dla danych 0](./media/storsimple-8000-monitor-device/device-network-throughput-data0.png)
 
-Jeśli spojrzymy na wykres przepływności interfejsu Data 1, 1 GbE w innej sieci interfejs, który był tylko włączono interfejs iSCSI, a następnie wystąpił praktycznie żaden ruch sieciowy w tym czasie.
+Jeśli przejdziesz do wykresu przepływności interfejsu danych 1, inny interfejs sieciowy 1 GbE, który był obsługiwany tylko przy użyciu protokołu iSCSI, w tym czasie wystąpił praktycznie żaden ruch sieciowy.
 
-![Przepustowość sieci dla danych 1](./media/storsimple-8000-monitor-device/device-network-throughput-data1.png)
-
-
-## <a name="cpu-utilization-for-device"></a>Użycie procesora CPU dla urządzenia
-**Użycie procesora CPU** śledzi metryki związane do wykorzystania na urządzeniu z systemem Procesora. Na poniższym wykresie przedstawiono statystyki wykorzystania procesora CPU dla urządzenia w środowisku produkcyjnym.
-
-![Użycie procesora CPU dla urządzenia](./media/storsimple-8000-monitor-device/device-cpu-utilization.png)
+![Przepływność sieci dla danych 1](./media/storsimple-8000-monitor-device/device-network-throughput-data1.png)
 
 
+## <a name="cpu-utilization-for-device"></a>Użycie procesora CPU przez urządzenie
+**Użycie procesora** śledzi metryki związane z procesorem używanym na urządzeniu. Na poniższym wykresie przedstawiono statystyki użycia procesora CPU dla urządzenia w środowisku produkcyjnym.
 
-## <a name="next-steps"></a>Kolejne kroki
-* Dowiedz się, jak [korzystać z pulpitu nawigacyjnego z urządzenia usługi Menedżer urządzeń StorSimple](storsimple-device-dashboard.md).
-* Dowiedz się, jak [korzystać z usługi Menedżer urządzeń StorSimple do administrowania urządzeniem StorSimple](storsimple-manager-service-administration.md).
+![Użycie procesora CPU przez urządzenie](./media/storsimple-8000-monitor-device/device-cpu-utilization.png)
+
+
+
+## <a name="next-steps"></a>Następne kroki
+* Dowiedz się [, jak korzystać z pulpitu nawigacyjnego urządzenia usługi StorSimple Menedżer urządzeń](storsimple-device-dashboard.md).
+* Dowiedz się [, jak zarządzać urządzeniem StorSimple przy użyciu usługi StorSimple Menedżer urządzeń](storsimple-manager-service-administration.md).
 

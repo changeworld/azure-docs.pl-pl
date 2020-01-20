@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/02/2020
+ms.date: 01/17/2020
 ms.author: banders
-ms.openlocfilehash: 2beb1d3e4468ff96f629dd6ec7015376a7f3a904
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 75b6dd1b2d76d12087270e155551402d1bcd4965
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75987264"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76274026"
 ---
 # <a name="understand-your-azure-enterprise-agreement-bill"></a>Omówienie rachunku za umowę Enterprise platformy Azure
 
@@ -127,7 +127,7 @@ Zaloguj się do witryny [Enterprise Portal](https://ea.azure.com) , a następnie
 
 ![Zrzut ekranu pokazujący opcję M + C w podsumowaniu użycia.](./media/review-enterprise-agreement-bill/ea-portal-usage-sumary-cm-option.png)  
 
-Łączna kwota w polu **Azure Marketplace** powinna odpowiadać **łącznej sprzedaży** na fakturze dotyczącej platformy Marketplace. Aby uzyskać więcej informacji o opłatach za użycie, przejdź do pozycji **Pobierz zestawienie użycia**. W obszarze **Opłaty za korzystanie z witryny Marketplace** wybierz pozycję **Pobierz**. Ten raport nie uwzględnia podatków ani jednorazowych zakupów.  
+Łączna kwota w polu **Azure Marketplace** powinna odpowiadać **łącznej sprzedaży** na fakturze dotyczącej platformy Marketplace. Aby uzyskać więcej informacji o opłatach za użycie, przejdź do pozycji **Pobierz zestawienie użycia**. W obszarze **Opłaty za korzystanie z witryny Marketplace** wybierz pozycję **Pobierz**. Cena w witrynie Marketplace obejmuje podatek określony przez wydawcę. Klienci nie otrzymają oddzielnej faktury od wydawcy w celu zebrania podatku od transakcji.
 
 ![Zrzut ekranu przedstawiający opcję pobierania w obszarze opłaty dla witryny Marketplace.](./media/review-enterprise-agreement-bill/ea-portal-download-usage-marketplace.png)
 

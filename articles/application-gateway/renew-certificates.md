@@ -1,39 +1,38 @@
 ---
 title: Odnów certyfikat usługi Azure Application Gateway
-description: Dowiedz się, jak odnowić certyfikat, który został skojarzony odbiornik bramy aplikacji.
+description: Dowiedz się, jak odnowić certyfikat skojarzony z odbiornikiem bramy aplikacji.
 services: application-gateway
 author: vhorne
-manager: jpconnock
 ms.service: application-gateway
 ms.topic: article
 ms.date: 8/15/2018
 ms.author: victorh
-ms.openlocfilehash: 90200f7be6c71346441922365fc4439111dd8701
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c7c27f00b9f8b4fdcd8f735f842edb8f66803c6a
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66133693"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278001"
 ---
-# <a name="renew-application-gateway-certificates"></a>Odnów certyfikaty bramy Application Gateway
+# <a name="renew-application-gateway-certificates"></a>Odnów Application Gateway certyfikaty
 
-W pewnym momencie należy odnowić certyfikaty użytkownika, jeśli skonfigurowano bramy application gateway dla szyfrowania SSL.
+W pewnym momencie należy odnowić certyfikaty, jeśli skonfigurowano bramę aplikacji do szyfrowania SSL.
 
-Można odnowić certyfikat, który został skojarzony odbiornik, albo w witrynie Azure portal, programu Azure PowerShell lub wiersza polecenia platformy Azure:
+Certyfikat skojarzony z odbiornikiem można odnowić przy użyciu Azure Portal, Azure PowerShell lub interfejsu wiersza polecenia platformy Azure:
 
-## <a name="azure-portal"></a>Azure Portal
+## <a name="azure-portal"></a>Portal Azure
 
-Aby odnowić certyfikat odbiornika z poziomu portalu, przejdź do swojej odbiorników bramy aplikacji. Kliknij przycisk odbiornik, który ma certyfikat, który wymaga odnowienia, a następnie kliknij przycisk **Odnów lub Edytuj wybrany certyfikat**.
+Aby odnowić certyfikat odbiornika z portalu, przejdź do odbiornika usługi Application Gateway. Kliknij odbiornik z certyfikatem, który musi zostać odnowiony, a następnie kliknij pozycję **Odnów lub Edytuj wybrany certyfikat**.
 
 ![Odnów certyfikat](media/renew-certificate/ssl-cert.png)
 
-Przekaż nowy certyfikat PFX, nadaj jej nazwę, wpisz hasło, a następnie kliknij **Zapisz**.
+Przekaż nowy certyfikat PFX, nadaj mu nazwę, wpisz hasło, a następnie kliknij przycisk **Zapisz**.
 
-## <a name="azure-powershell"></a>Azure PowerShell
+## <a name="azure-powershell"></a>Program Azure PowerShell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Aby odnowić certyfikat przy użyciu programu Azure PowerShell, użyj następującego skryptu:
+Aby odnowić certyfikat przy użyciu Azure PowerShell, użyj następującego skryptu:
 
 ```azurepowershell-interactive
 $appgw = Get-AzApplicationGateway `
@@ -61,6 +60,6 @@ az network application-gateway ssl-cert update \
   --cert-password "<password>"
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Aby dowiedzieć się, jak skonfigurować odciążanie protokołu SSL za pomocą usługi Azure Application Gateway, zobacz [skonfigurować odciążanie protokołu SSL](application-gateway-ssl-portal.md)
+Aby dowiedzieć się, jak skonfigurować odciążanie protokołu SSL za pomocą usługi Azure Application Gateway, zobacz [Konfigurowanie odciążania protokołu SSL](application-gateway-ssl-portal.md)

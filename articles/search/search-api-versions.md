@@ -8,12 +8,12 @@ ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 03dbb679c25ea692d2c52f80b9493889e367823d
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: c2f774401f32ff02ced690173c418dafc4c789b5
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112151"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278807"
 ---
 # <a name="api-versions-in-azure-cognitive-search"></a>Wersje interfejsu API na platformie Azure Wyszukiwanie poznawcze
 
@@ -30,7 +30,7 @@ Ta sama reguła dotyczy aktualizacji zestawu SDK. Zestaw SDK platformy Azure Wys
 Poniżej znajduje się migawka bieżących wersji wszystkich interfejsów programowania do Wyszukiwanie poznawcze platformy Azure.
 
 
-| Interfejsów | Najnowsza wersja główna | Stan |
+| Interfejsy | Najnowsza wersja główna | Stan |
 | --- | --- | --- |
 | [Zestaw SDK platformy .NET](https://aka.ms/search-sdk) |9.0 |Ogólnie dostępne, wydane mogą 2019 |
 | [.NET SDK — wersja zapoznawcza](https://aka.ms/search-sdk-preview) |8,0 — wersja zapoznawcza |Wersja zapoznawcza, wydana kwiecień 2019 |
@@ -49,6 +49,9 @@ W przypadku interfejsów API REST, w tym `api-version` na każdym wywołaniu jes
 > Interfejsy API REST usługi i interfejs API REST zarządzania są niezależne od siebie. Wszelkie podobieństwa w numerach wersji to zdarzenie.
 
 Ogólnie dostępne interfejsy API mogą być używane w środowisku produkcyjnym i podlegają umowom dotyczącym poziomu usług platformy Azure. Wersje zapoznawcze mają funkcje eksperymentalne, które nie są zawsze migrowane do wersji GA. **Zdecydowanie zaleca się unikanie korzystania z interfejsów API w wersji zapoznawczej w aplikacjach produkcyjnych.**
+
+## <a name="update-to-the-latest-version-of-the-rest-api-by-october-15-2020"></a>Aktualizacja do najnowszej wersji interfejsu API REST do 15 października 2020
+Następujące wersje interfejsu API REST usługi Azure Wyszukiwanie poznawcze zostaną wycofane i nie będą już obsługiwane od 15 października 2020: **2014-07-31 — wersja zapoznawcza**, **2014-10-20 — wersja zapoznawcza**, **2015-02-28 — wersja zapoznawcza**i **2015-02-28**. Ponadto wersje zestawu SDK platformy Azure Wyszukiwanie poznawcze platformy .NET starsze niż **3.0.0-RC** również zostaną wycofane, ponieważ są przeznaczone dla jednej z tych wersji interfejsu API REST. Po tej dacie aplikacje używające dowolnego przestarzałego interfejsu API REST lub wersji zestawu SDK przestaną działać i muszą zostać uaktualnione. Podobnie jak w przypadku każdej zmiany tego typu, firma Microsoft może uzyskać odpowiedni czas na dostosowanie.  Aby nadal korzystać z usługi Azure Wyszukiwanie poznawcze, Przeprowadź migrację istniejącego kodu przeznaczonego dla [interfejsu API REST](search-api-migration.md) do [interfejsu API rest w wersji 2019-05-06](https://docs.microsoft.com/rest/api/searchservice/) lub nowszej lub zestawu .net SDK do [wersji 3,0](search-dotnet-sdk-migration.md) lub nowszej do 15 października 2020.  Jeśli masz pytania dotyczące aktualizowania do najnowszej wersji, Wyślij wiadomość e-mail do azuresearch_contact@microsoft.com o 15 maja 2020, aby upewnić się, że masz wystarczająco dużo czasu na zaktualizowanie kodu.
 
 ## <a name="about-preview-and-generally-available-versions"></a>Informacje o wersji zapoznawczej i ogólnie dostępne wersje
 Usługa Azure Wyszukiwanie poznawcze zawsze wstępnie zwalnia funkcje eksperymentalne za pomocą interfejsu API REST, a następnie za pomocą wersji wstępnej zestawu .NET SDK.

@@ -11,13 +11,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: quickstart
-ms.date: 12/17/2019
-ms.openlocfilehash: 64d4998e287f9981c666dee54fc3b67886791bbf
-ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
+ms.date: 01/21/2019
+ms.openlocfilehash: 81039aa4aa37f9587db887beadcdb6d263ec6a74
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75708295"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76274808"
 ---
 # <a name="quickstart-create-a-hybrid-mode-instance-with-azure-portal--azure-database-migration-service"></a>Szybki Start: Tworzenie wystąpienia trybu hybrydowego z Azure Portal & Azure Database Migration Service
 
@@ -73,7 +73,7 @@ Zarejestruj dostawcę zasobów Microsoft. datamigration przed utworzeniem pierws
     - Wybierz pozycję **Lokalizacja** położoną najbliżej Twojego serwera źródłowego lub docelowego.
     - W obszarze **tryb usługi**wybierz pozycję **hybrydowe (wersja zapoznawcza)** .
 
-           ![Create migration service - basics](media/quickstart-create-data-migration-service-hybrid-portal/dms-create-service-basics.png)
+         ![Tworzenie usługi migracji — podstawy](media/quickstart-create-data-migration-service-hybrid-portal/dms-create-service-basics.png)
 
 4. Wybierz pozycję **Przegląd + utwórz**.
 
@@ -186,7 +186,7 @@ Ten skrypt jest przeznaczony do szybkiego tworzenia prototypów, gdy użytkownik
 > [!IMPORTANT]
 > Ten skrypt zakłada, że istnieje wystąpienie Azure Database Migration Service w trybie hybrydowym oraz że używane konto platformy Azure ma uprawnienia do tworzenia AdApps w dzierżawie oraz modyfikowania kontroli RBAC w ramach subskrypcji.
 
-Po prostu wypełnij parametry w górnej części skryptu, a następnie uruchom skrypt z wystąpienia administratora programu PowerShell.
+Wypełnij parametry w górnej części skryptu, a następnie uruchom skrypt z wystąpienia administratora programu PowerShell.
 
 ## <a name="next-steps"></a>Następne kroki
 

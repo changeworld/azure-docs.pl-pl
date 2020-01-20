@@ -1,22 +1,20 @@
 ---
-title: Korzystanie z niestandardowych zasad skalowania przy użyciu zestawów skalowania maszyn wirtualnych platformy Azure | Microsoft Docs
+title: Korzystanie z niestandardowych zasad skalowania przy użyciu zestawów skalowania maszyn wirtualnych platformy Azure
 description: Dowiedz się, jak używać niestandardowych zasad skalowania przy użyciu zestawów skalowania maszyn wirtualnych platformy Azure, które używają konfiguracji skalowania automatycznego do zarządzania liczbą wystąpień
-services: virtual-machine-scale-sets
 author: avverma
-manager: vashan
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/11/2019
 ms.author: avverma
-ms.openlocfilehash: c1618c398c0f7c4f0f54647e5232fdacc17de186
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 8e51ebab36d75d1c9512446ee0370f7359a72551
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72453162"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76271764"
 ---
 # <a name="preview-use-custom-scale-in-policies-with-azure-virtual-machine-scale-sets"></a>Wersja zapoznawcza: używanie niestandardowych zasad skalowania przy użyciu zestawów skalowania maszyn wirtualnych platformy Azure
 
@@ -133,7 +131,7 @@ Zestawy skalowania maszyn wirtualnych oferują dwa typy [ochrony wystąpienia](.
 1. Ochrona przed skalowaniem w poziomie
 2. Ochrona przed akcjami zestawu skalowania
 
-Chroniona maszyna wirtualna nie jest usuwana za pomocą akcji skalowania, niezależnie od zastosowanych zasad skalowania. Na przykład jeśli VM_0 (najstarsza maszyna wirtualna w zestawie skalowania) jest chroniona przed skalowaniem w poziomie, a zestaw skalowania ma włączone zasady skalowania "OldestVM", VM_0 nie będzie brane pod uwagę w przypadku, gdy jest to najstarsza maszyna wirtualna w zestawie skalowania. 
+Chroniona maszyna wirtualna nie jest usuwana za pomocą akcji skalowania, niezależnie od zastosowanych zasad skalowania. Na przykład jeśli VM_0 (najstarsza maszyna wirtualna w zestawie skalowania) jest chroniona przed skalowaniem w poziomie, a zestaw skalowania ma włączone zasady skalowania "OldestVM", VM_0 nie będzie brana pod uwagę podczas skalowania w, mimo że jest najstarszą maszyną wirtualną w zestawie skalowania. 
 
 Chroniona maszyna wirtualna może zostać ręcznie usunięta przez użytkownika w dowolnym momencie, niezależnie od zasad skalowania w poziomie włączonych w zestawie skalowania. 
 
@@ -145,7 +143,7 @@ W poniższych przykładach pokazano, jak zestaw skalowania maszyn wirtualnych b�
 
 | Wydarzenie                 | Identyfikatory wystąpień w strefie 1  | Identyfikatory wystąpień w strefie 2  | Identyfikatory wystąpień w strefie 3  | Skalowanie w poziomie                                                                                                               |
 |-----------------------|------------------------|------------------------|------------------------|----------------------------------------------------------------------------------------------------------------------------------|
-| Początkowego               | 3, 4, 5, 10            | 2, 6, 9, 11            | 1, 7, 8                |                                                                                                                                  |
+| Wartość początkowa               | 3, 4, 5, 10            | 2, 6, 9, 11            | 1, 7, 8                |                                                                                                                                  |
 | Skalowanie w poziomie              | 3, 4, 5, 10            | ***2***, 6, 9, 11      | 1, 7, 8                | Wybierz między Strefa 1 i 2, chociaż Strefa 3 ma najstarszą maszynę wirtualną. Usuń VM2 z Strefa 2, ponieważ jest najstarszą maszyną wirtualną w tej strefie.   |
 | Skalowanie w poziomie              | ***3***, 4, 5, 10      | 6, 9, 11               | 1, 7, 8                | Wybierz Strefa 1, mimo że Strefa 3 ma najstarszą maszynę wirtualną. Usuń VM3 z Strefa 1, ponieważ jest najstarszą maszyną wirtualną w tej strefie.                  |
 | Skalowanie w poziomie              | 4, 5, 10               | 6, 9, 11               | ***1***, 7, 8          | Strefy są zrównoważone. Usuń VM1 w Strefa 3, ponieważ jest najstarszą maszyną wirtualną w zestawie skalowania.                                               |
@@ -159,7 +157,7 @@ W przypadku zestawów skalowania maszyn wirtualnych niebędących strefami zasad
 
 | Wydarzenie                 | Identyfikatory wystąpień w strefie 1  | Identyfikatory wystąpień w strefie 2  | Identyfikatory wystąpień w strefie 3  | Skalowanie w poziomie                                                                                                               |
 |-----------------------|------------------------|------------------------|------------------------|----------------------------------------------------------------------------------------------------------------------------------|
-| Początkowego               | 3, 4, 5, 10            | 2, 6, 9, 11            | 1, 7, 8                |                                                                                                                                  |
+| Wartość początkowa               | 3, 4, 5, 10            | 2, 6, 9, 11            | 1, 7, 8                |                                                                                                                                  |
 | Skalowanie w poziomie              | 3, 4, 5, 10            | 2, 6, 9, ***11***      | 1, 7, 8                | Wybierz między Strefa 1 i 2. Usuń MW11 z Strefa 2, ponieważ jest to najnowsza maszyna wirtualna w ramach obu tych stref.                                |
 | Skalowanie w poziomie              | 3, 4, 5, ***10***      | 2, 6, 9                | 1, 7, 8                | Wybierz Strefa 1, ponieważ zawiera więcej maszyn wirtualnych niż pozostałe dwie strefy. Usuń MW10 z Strefa 1, ponieważ jest to najnowsza maszyna wirtualna w tej strefie.          |
 | Skalowanie w poziomie              | 3, 4, 5                | 2, 6, ***9***          | 1, 7, 8                | Strefy są zrównoważone. Usuń VM9 w Strefa 2, ponieważ jest to najnowsza maszyna wirtualna w zestawie skalowania.                                                |
