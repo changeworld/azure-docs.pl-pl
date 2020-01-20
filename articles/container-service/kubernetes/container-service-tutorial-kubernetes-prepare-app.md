@@ -1,25 +1,23 @@
 ---
 title: (PRZESTARZAŁE) Samouczek usługi Azure Container Service — przygotowywanie aplikacji
 description: Samouczek usługi Azure Container Service — przygotowywanie aplikacji
-services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 961f09d7581a26596b03e7a2f8e97d98fe83e6aa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b67e3008bc2ad681e222af6b9edc4a08875732e4
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61217095"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76275430"
 ---
 # <a name="deprecated-create-container-images-to-be-used-with-azure-container-service"></a>(PRZESTARZAŁE) Tworzenie obrazów kontenera do użycia z usługą Azure Container Service
 
 > [!TIP]
-> Aby poznać zaktualizowaną wersję tego samouczka korzystającą z usługi Azure Kubernetes Service, zobacz [Samouczek: Przygotowywanie aplikacji na potrzeby usługi Azure Kubernetes Service (AKS)](../../aks/tutorial-kubernetes-prepare-app.md).
+> Aby uzyskać zaktualizowaną wersję tego samouczka korzystającego z usługi Azure Kubernetes, zobacz [Samouczek: przygotowywanie aplikacji dla usługi Azure Kubernetes Service (AKS)](../../aks/tutorial-kubernetes-prepare-app.md).
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
@@ -125,7 +123,7 @@ docker-compose down
 
 Po zakończeniu będzie dostępny obraz kontenera zawierający aplikację Azure Vote.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku przetestowano aplikację i obrazy kontenera utworzone dla aplikacji. Wykonano następujące czynności:
 

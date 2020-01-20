@@ -1,41 +1,39 @@
 ---
-title: Rozwiązywanie problemów z platformy Azure, Red Hat OpenShift | Dokumentacja firmy Microsoft
-description: Rozwiązywanie problemów i rozwiązywania typowych problemów z platformy Azure Red Hat OpenShift
-services: container-service
+title: Rozwiązywanie problemów z usługą Azure Red Hat OpenShift
+description: Rozwiązywanie typowych problemów z usługą Azure Red Hat OpenShift
 author: jimzim
 ms.author: jzim
-manager: jeconnoc
 ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 05/08/2019
-ms.openlocfilehash: 7f2bdf643f12671bec3d0c087d8775844099fe9a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ee032cdf4a3f72b2cd2e7da0658effe75b6fb1fa
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66306245"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76274930"
 ---
-# <a name="troubleshooting-for-azure-red-hat-openshift"></a>Rozwiązywanie problemów dla platformy Azure, Red Hat OpenShift
+# <a name="troubleshooting-for-azure-red-hat-openshift"></a>Rozwiązywanie problemów z usługą Azure Red Hat OpenShift
 
-Ten artykuł szczegółowo opisuje niektóre typowe problemy podczas tworzenia lub zarządzania klastrami Microsoft Azure Red Hat OpenShift.
+W tym artykule opisano niektóre typowe problemy występujące podczas tworzenia i zarządzania Microsoft Azure klastrów Red Hat OpenShift.
 
-## <a name="retrying-the-creation-of-a-failed-cluster"></a>Ponawianie próby utworzenia klastra nie powiodło się
+## <a name="retrying-the-creation-of-a-failed-cluster"></a>Ponawianie próby utworzenia klastra, który uległ awarii
 
-Jeśli tworzenie Azure Red Hat OpenShift klaster przy użyciu `az` interfejsu wiersza polecenia nie powiedzie się, ponawianie próby tworzenia będą w dalszym się nie powieść.
-Użyj `az openshift delete` można usunąć klastra nie powiodło się, a następnie utwórz całkowicie nowego klastra.
+Jeśli utworzenie klastra Red Hat OpenShift na platformie Azure przy użyciu polecenia interfejsu CLI `az` nie powiedzie się, ponawianie próby utworzenia będzie kończyć się niepowodzeniem.
+Użyj `az openshift delete`, aby usunąć uszkodzony klaster, a następnie utwórz zupełnie nowy klaster.
 
-## <a name="hidden-azure-red-hat-openshift-cluster-resource-group"></a>Ukryte grupa zasobów klastra Azure Red Hat OpenShift
+## <a name="hidden-azure-red-hat-openshift-cluster-resource-group"></a>Ukryta Grupa zasobów klastra usługi Azure Red Hat OpenShift
 
-Obecnie `Microsoft.ContainerService/openShiftManagedClusters` zasób, który jest automatycznie tworzona przez interfejs wiersza polecenia platformy Azure (`az openshift create` polecenie) jest ukryty w witrynie Azure portal. W **grupy zasobów** widoku wyboru **Pokaż ukryte typy** Aby wyświetlić grupę zasobów.
+Obecnie `Microsoft.ContainerService/openShiftManagedClusters` zasobów, które są tworzone automatycznie za pomocą interfejsu wiersza polecenia platformy Azure (polecenie`az openshift create`), są ukryte w Azure Portal. W widoku **grupy zasobów** zaznacz opcję **Pokaż ukryte typy** , aby wyświetlić grupę zasobów.
 
-![Zrzut ekranu przedstawiający pole wyboru typu ukryte w portalu](./media/aro-portal-hidden-type.png)
+![Zrzut ekranu przedstawiający pole wyboru typu ukrytego w portalu](./media/aro-portal-hidden-type.png)
 
-## <a name="creating-a-cluster-results-in-error-that-no-registered-resource-provider-found"></a>Tworzenie klastra wyniki w wyniku błędu, który nie znaleziono zarejestrowanego dostawcy zasobów
+## <a name="creating-a-cluster-results-in-error-that-no-registered-resource-provider-found"></a>Tworzenie klastra powoduje błąd, który nie znalazł zarejestrowanego dostawcy zasobów
 
-W przypadku tworzenia klastra wyników błąd `No registered resource provider found for location '<location>' and API version '2019-04-30' for type 'openShiftManagedClusters'. The supported api-versions are '2018-09-30-preview`, były częścią korzystania z wersji zapoznawczej, a teraz trzeba [zakup maszyny wirtualnej platformy Azure, zarezerwowane wystąpienia](https://aka.ms/openshift/buy) do korzystania z produktu jest ogólnie dostępna. Rezerwacja zmniejsza swoje wydatki wg wstępnie płacenia za w pełni zarządzanych usług platformy Azure. Zapoznaj się [ *co to jest Azure rezerwacje* ](https://docs.microsoft.com/azure/billing/billing-save-compute-costs-reservations) Aby dowiedzieć się więcej na temat rezerwacji i jak mogą zaoszczędzić pieniądze.
+W przypadku tworzenia klastra Wystąpił błąd, który `No registered resource provider found for location '<location>' and API version '2019-04-30' for type 'openShiftManagedClusters'. The supported api-versions are '2018-09-30-preview`, a następnie był częścią wersji zapoznawczej, a teraz trzeba [zakupić zarezerwowane wystąpienia maszyn wirtualnych platformy Azure](https://aka.ms/openshift/buy) , aby korzystać z ogólnie dostępnego produktu. Rezerwacja zmniejsza wydatki dzięki przedpłaceniu za w pełni zarządzane usługi platformy Azure. Zapoznaj się z tematami [*Azure Reservations*](https://docs.microsoft.com/azure/billing/billing-save-compute-costs-reservations) , aby dowiedzieć się więcej o rezerwacjach i sposobach ich oszczędności.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Spróbuj [Centrum pomocy systemu Red Hat OpenShift](https://help.openshift.com/) potrzeby więcej w OpenShift rozwiązywania problemów.
+- Wypróbuj [centrum pomocy Red Hat OpenShift](https://help.openshift.com/) , aby uzyskać więcej informacji na temat rozwiązywania problemów z OpenShift.
 
 - Znajdź odpowiedzi na [często zadawane pytania dotyczące usługi Azure Red Hat OpenShift](openshift-faq.md).

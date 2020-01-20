@@ -1,31 +1,23 @@
 ---
-title: Korzystanie z nowego uwierzytelniania dla usługi StorSimple 8000 Menedżer urządzeń na platformie Azure | Microsoft Docs
+title: Korzystanie z nowego uwierzytelniania dla usługi StorSimple 8000 Menedżer urządzeń na platformie Azure
 description: Wyjaśnia, jak używać uwierzytelniania opartego na usłudze AAD dla usługi, generować nowy klucz rejestracji i przeprowadzać ręczną rejestrację urządzeń.
-services: storsimple
-documentationcenter: ''
 author: alkohli
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storsimple
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: alkohli
-ms.openlocfilehash: 88badf6de5e7181763dd72c7a51262d16697bffd
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 798b3bf054d5ade2a441bbef5875bb014f526aee
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68963487"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76276957"
 ---
 # <a name="use-the-new-authentication-for-your-storsimple"></a>Użyj nowego uwierzytelniania StorSimple
 
 [!INCLUDE [storsimple-8000-eol-banner](../../includes/storsimple-8000-eol-banner.md)]
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 Usługa StorSimple Menedżer urządzeń działa w Microsoft Azure i łączy się z wieloma urządzeniami StorSimple. Do tej pory Usługa StorSimple Menedżer urządzeń używała usługi Access Control Service (ACS) do uwierzytelniania usługi na urządzeniu StorSimple. Mechanizm ACS zostanie wkrótce uznany za przestarzały i zastąpiony przez uwierzytelnianie Azure Active Directory (AAD). Aby uzyskać więcej informacji, przejdź do poniższych powiadomień dotyczących zaniechania usługi ACS i używania uwierzytelniania usługi AAD.
 
@@ -62,9 +54,9 @@ Jeśli korzystasz z urządzenia z serii StorSimple 8000, Skorzystaj z poniższej
 
 | Jeśli urządzenie jest uruchomione| Wykonaj następujące czynności                                    |
 |--------------------------|------------------------|
-| Aktualizacja Update 5 lub nowsza, a urządzenie jest w trybie offline. <br> Zostanie wyświetlony alert informujący o tym, że adres URL nie jest listy dozwolonych.|1. Zmodyfikuj reguły zapory w taki sposób, aby zawierały adres URL uwierzytelniania. Zobacz [adresy URL uwierzytelniania](#url-changes-for-aad-authentication).<br>2. [Pobierz klucz rejestracji w usłudze AAD z usługi](#aad-based-registration-keys).<br>3. Połącz się z interfejsem programu [Windows PowerShell dla urządzenia z serii StorSimple 8000](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console).<br>4. Użyj `Redo-DeviceRegistration` polecenia cmdlet, aby zarejestrować urządzenie za pomocą programu Windows PowerShell. Podaj klucz uzyskany w poprzednim kroku.|
+| Aktualizacja Update 5 lub nowsza, a urządzenie jest w trybie offline. <br> Zostanie wyświetlony alert informujący o tym, że adres URL nie jest listy dozwolonych.|1. zmodyfikuj reguły zapory w taki sposób, aby zawierały adres URL uwierzytelniania. Zobacz [adresy URL uwierzytelniania](#url-changes-for-aad-authentication).<br>2. [Pobierz klucz rejestracji AAD z usługi](#aad-based-registration-keys).<br>3. [Połącz się z interfejsem programu Windows PowerShell dla urządzenia z serii StorSimple 8000](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console).<br>4. Aby zarejestrować urządzenie za pomocą programu Windows PowerShell, użyj polecenia cmdlet `Redo-DeviceRegistration`. Podaj klucz uzyskany w poprzednim kroku.|
 | Aktualizacja Update 5 lub nowsza oraz urządzenie w trybie online.| Nie jest wymagana żadna akcja.                                       |
-| Aktualizacja Update 4 lub wcześniejsza, a urządzenie jest w trybie offline. |1. Zmodyfikuj reguły zapory w taki sposób, aby zawierały adres URL uwierzytelniania.<br>2. [Pobierz aktualizację Update 5 za poorednictwem serwera wykazu](storsimple-8000-install-update-5.md#download-updates-for-your-device).<br>3. [Zastosuj aktualizację Update 5 za pomocą metody hotfix](storsimple-8000-install-update-5.md#install-update-5-as-a-hotfix).<br>4. [Pobierz klucz rejestracji w usłudze AAD z usługi](#aad-based-registration-keys).<br>5. Połącz się z interfejsem programu [Windows PowerShell dla urządzenia z serii StorSimple 8000](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console). <br>6. Użyj `Redo-DeviceRegistration` polecenia cmdlet, aby zarejestrować urządzenie za pomocą programu Windows PowerShell. Podaj klucz uzyskany w poprzednim kroku.|
+| Aktualizacja Update 4 lub wcześniejsza, a urządzenie jest w trybie offline. |1. zmodyfikuj reguły zapory w taki sposób, aby zawierały adres URL uwierzytelniania.<br>2. [Pobierz aktualizację Update 5 za poorednictwem serwera wykazu](storsimple-8000-install-update-5.md#download-updates-for-your-device).<br>3. [Zastosuj aktualizację Update 5 za pomocą metody hotfix](storsimple-8000-install-update-5.md#install-update-5-as-a-hotfix).<br>4. [Pobierz klucz rejestracji AAD z usługi](#aad-based-registration-keys).<br>5. [Połącz się z interfejsem programu Windows PowerShell dla urządzenia z serii StorSimple 8000](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console). <br>6. Aby zarejestrować urządzenie za pomocą programu Windows PowerShell, użyj polecenia cmdlet `Redo-DeviceRegistration`. Podaj klucz uzyskany w poprzednim kroku.|
 | Aktualizacja Update 4 lub wcześniejsza, a urządzenie jest w trybie online. |Zmodyfikuj reguły zapory w taki sposób, aby zawierały adres URL uwierzytelniania.<br> Zainstaluj aktualizację Update 5 za pomocą Azure Portal.              |
 | Resetowanie do wersji fabrycznej przed aktualizacją Update 5.      |W portalu jest wyświetlany klucz rejestracji oparty na usłudze AAD, gdy na urządzeniu jest uruchomione starsze oprogramowanie. Wykonaj kroki opisane w poprzednim scenariuszu, jeśli na urządzeniu jest uruchomiona Aktualizacja Update 4 lub wcześniejsza wersja.              |
 
@@ -83,7 +75,7 @@ Wykonaj poniższe kroki, aby wygenerować klucz rejestracji usługi AAD.
 
 #### <a name="to-generate-the-aad-service-registration-key"></a>Aby wygenerować klucz rejestracji usługi AAD
 
-1. W **StorSimple Menedżer urządzeń**przejdź do pozycji **klucze**  **&gt; zarządzania** . Możesz również użyć paska wyszukiwania, aby wyszukać _klucze_.
+1. W **StorSimple Menedżer urządzeń**przejdź do pozycji **zarządzanie** **kluczami**&gt;. Możesz również użyć paska wyszukiwania, aby wyszukać _klucze_.
     
 2. Kliknij przycisk **Wygeneruj klucz**.
 

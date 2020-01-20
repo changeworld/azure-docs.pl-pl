@@ -1,77 +1,70 @@
 ---
-title: StorSimple 8000 Series Update 5 — informacje o wersji | Dokumentacja firmy Microsoft
-description: W tym artykule opisano nowe funkcje, problemy i rozwiązania dla usługi StorSimple 8000 Series Update 5.
-services: storsimple
-documentationcenter: NA
+title: StorSimple 8000 Series Update 5 — informacje o wersji
+description: Opisuje nowe funkcje, problemy i obejścia dla StorSimple 8000 serii Update 5.
 author: alkohli
-manager: jeconnoc
-editor: ''
 ms.assetid: ''
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
+ms.topic: conceptual
 ms.date: 11/13/2017
 ms.author: alkohli
-ms.openlocfilehash: 462cbd6261723aa91bbfd23292611e758a800ed2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4fed65e12a166c046a0c63d7c4849f86805bbe9c
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60844095"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76275167"
 ---
 # <a name="storsimple-8000-series-update-5-release-notes"></a>StorSimple 8000 Series Update 5 — informacje o wersji
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
-Poniższe informacje o wersji opisano nowe funkcje i zidentyfikować krytyczne nierozwiązane problemy dla usługi StorSimple 8000 Series Update 5. Zawierają one również listę aktualizacji oprogramowania StorSimple, które są zawarte w tej wersji.
+W poniższych informacjach o wersji opisano nowe funkcje i zidentyfikowanie krytycznych problemów otwartych dla programu StorSimple 8000 Series Update 5. Zawierają także listę StorSimple aktualizacji oprogramowania zawartych w tej wersji.
 
-Aktualizację 5 można zastosować do dowolnego urządzenia StorSimple z aktualizacją Update 0.1, za pomocą aktualizacji w wersji 4. Wersja urządzenia skojarzone z aktualizacją Update 5 jest 6.3.9600.17845.
+Aktualizację Update 5 można zastosować do dowolnego urządzenia StorSimple z aktualizacją Update 0,1 do Update 4. Wersja urządzenia skojarzona z aktualizacją Update 5 to 6.3.9600.17845.
 
-Przejrzyj informacje zawarte w informacjach o wersji przed wdrożeniem aktualizacji w rozwiązaniu StorSimple.
+Przed wdrożeniem aktualizacji w rozwiązaniu StorSimple należy zapoznać się z informacjami zawartymi w informacjach o wersji.
 
 > [!IMPORTANT]
-> * Update 5 jest obowiązkowa aktualizacja i musi być zainstalowany bezpośrednio. Aby uzyskać więcej informacji, zobacz instrukcje [zastosowania aktualizacji 5](storsimple-8000-install-update-5.md).
-> * Aktualizacja 5 ma oprogramowania urządzenia, oprogramowania układowego dysku, zabezpieczenia systemu operacyjnego i inne aktualizacje systemu operacyjnego. Trwa około 4 godziny, aby zainstalować tę aktualizację. Aktualizacja oprogramowania układowego dysku jest szkodliwe aktualizacja, która powoduje przestój dla Twojego urządzenia. Firma Microsoft zaleca się zastosowanie aktualizacji Update 5 w celu zapewnienia aktualności urządzenia.
-> * Do nowych wersji, mogą nie być widoczne aktualizacje od razu, ponieważ robimy etapowego wdrażania aktualizacji. Poczekaj kilka dni, a następnie skanowanie w poszukiwaniu aktualizacji ponownie jako aktualizacje te staną się dostępne wkrótce.
+> * Aktualizacja Update 5 to wymagana aktualizacja, która musi zostać zainstalowana natychmiast. Aby uzyskać więcej informacji, zobacz temat jak [zastosować aktualizację Update 5](storsimple-8000-install-update-5.md).
+> * Aktualizacja Update 5 zawiera oprogramowanie urządzenia, oprogramowanie układowe dysku, zabezpieczenia systemu operacyjnego i inne aktualizacje systemu operacyjnego. Zainstalowanie tej aktualizacji wymaga około 4 godzin. Aktualizacja oprogramowania układowego dysku to nieprzerwana aktualizacja i skutkuje przestojem urządzenia. Zalecamy zastosowanie aktualizacji Update 5, aby zapewnić aktualność urządzenia.
+> * W przypadku nowych wersji aktualizacje mogą nie być od razu widoczne, ponieważ przeprowadzamy stopniowe wdrażanie aktualizacji. Poczekaj kilka dni, a następnie ponownie przeprowadź skanowanie w poszukiwaniu aktualizacji, ponieważ te aktualizacje staną się wkrótce dostępne.
 
 ## <a name="whats-new-in-update-5"></a>Co nowego w aktualizacji Update 5
 
-W aktualizacji Update 5 wprowadzono następujące ulepszenia klucza i poprawek błędów oprogramowania.
+W aktualizacji Update 5 wprowadzono następujące ulepszenia dotyczące kluczy i poprawki błędów.
 
-* **Korzystanie z usługi Azure Active Directory (AAD) do uwierzytelniania za pomocą usługi Menedżer urządzeń StorSimple** — używany do uwierzytelniania w usłudze Menedżer urządzeń StorSimple z aktualizacją 5 lub nowszy, Azure Active Directory. Stary mechanizm uwierzytelniania zostanie uznana za przestarzałą grudnia 2017 r. Wszyscy użytkownicy mogą zawierać nowe adresy URL uwierzytelniania w ich reguł zapory. Aby uzyskać więcej informacji, przejdź do [uwierzytelnianie adresów URL na liście wymagań sieciowych dotyczących urządzenia StorSimple](storsimple-8000-system-requirements.md#url-patterns-for-azure-portal).
+* **Korzystanie z Azure Active Directory (AAD) do uwierzytelniania za pomocą usługi StorSimple Menedżer urządzeń** — od wersji Update 5, Azure Active Directory służy do uwierzytelniania za pomocą usługi StorSimple Menedżer urządzeń. Stary mechanizm uwierzytelniania będzie przestarzały w grudniu 2017. Wszyscy użytkownicy muszą zawierać nowe adresy URL uwierzytelniania w regułach zapory. Aby uzyskać więcej informacji, przejdź do [adresów URL uwierzytelniania wymienionych w temacie Wymagania dotyczące sieci dla urządzenia StorSimple](storsimple-8000-system-requirements.md#url-patterns-for-azure-portal).
 
-    Jeśli adres URL uwierzytelniania nie jest uwzględniony w regułach zapory, użytkownicy będą widzieć alert krytyczny, że ich urządzenia StorSimple nie mogło przeprowadzić uwierzytelniania w usłudze. Użytkownicy widzą ten alert, muszą zawierać nowy adres URL uwierzytelniania. Aby uzyskać więcej informacji, przejdź do [StorSimple sieć alerty](storsimple-8000-manage-alerts.md#networking-alerts).
+    Jeśli adres URL uwierzytelniania nie jest uwzględniony w regułach zapory, użytkownicy zobaczą alert krytyczny, że urządzenie StorSimple nie może uwierzytelnić się w usłudze. Jeśli użytkownicy zobaczą ten alert, muszą uwzględnić nowy adres URL uwierzytelniania. Aby uzyskać więcej informacji, przejdź do [StorSimple alerty sieciowe](storsimple-8000-manage-alerts.md#networking-alerts).
 
-* **Nowa wersja programu StorSimple Snapshot Manager** — nowa wersja programu StorSimple Snapshot Manager jest zwolniony z aktualizacją Update 5 i jest zgodne ze wszystkimi urządzeniami StorSimple, które są uruchomione Update 4 lub nowszym. Firma Microsoft zaleca aktualizację do tej wersji. Poprzednia wersja usługi StorSimple Snapshot Manager jest używane dla urządzeń StorSimple z uruchomioną aktualizacją Update 3 lub starszym. [Pobierz odpowiednią wersję programu StorSimple Snapshot Manager](https://www.microsoft.com/en-us/download/details.aspx?id=44220) i odnoszą się do [wdrażanie programu StorSimple Snapshot Manager](storsimple-snapshot-manager-deployment.md).
+* **Nowa wersja programu StorSimple Snapshot Manager** — Nowa wersja StorSimple Snapshot Manager zostanie wydana z aktualizacją Update 5 i jest zgodna ze wszystkimi urządzeniami StorSimple z aktualizacją Update 4 lub nowszą. Zalecamy zaktualizowanie do tej wersji. Poprzednia wersja StorSimple Snapshot Manager jest używana w przypadku urządzeń StorSimple z uruchomioną aktualizacją Update 3 lub wcześniejszą. [Pobierz odpowiednią wersję StorSimple Snapshot Manager](https://www.microsoft.com/en-us/download/details.aspx?id=44220) i zapoznaj się z tematem [wdrażanie StorSimple Snapshot Manager](storsimple-snapshot-manager-deployment.md).
 
 
 ## <a name="issues-fixed-in-update-5"></a>Problemy rozwiązane w aktualizacji Update 5
 
 Poniższa tabela zawiera podsumowanie problemów, które zostały rozwiązane w aktualizacji Update 5.
 
-| Nie | Cecha | Problem | Stosuje się do urządzenia fizycznego | Dotyczy urządzenia wirtualnego |
+| Nie | Funkcja | Problem | Dotyczy urządzenia fizycznego | Dotyczy urządzenia wirtualnego |
 | --- | --- | --- | --- | --- |
-| 1 |Komunikacji zdalnej programu Windows PowerShell |W poprzedniej wersji użytkownik otrzyma błąd podczas próby ustanowienia połączenia zdalnego na urządzenie StorSimple w chmurze za pomocą programu Windows PowerShell. Ten problem został spowodowany przez główny i rozwiązane w tej wersji. |Nie |Tak |
-| 2 |Szablony przepustowości |W starszej wersji wystąpił problem z szablonami przepustowości, które wpłynęły na mniejszej przepustowości niż co urządzenie zostało skonfigurowane dla. Ten problem został rozwiązany w tej wersji. |Yes |Tak |
-| 3 |Tryb failover |W poprzedniej wersji urządzenia z dużą liczbą woluminów przełączoną w tryb failover do innego urządzenia, uruchomić aktualizację Update 4, proces może zakończyć się niepowodzeniem podczas próby zastosowania rekordy kontroli dostępu. Ten problem jest rozwiązany w tej wersji. |Yes |Tak |
+| 1 |Zdalna obsługa środowiska Windows PowerShell. |W poprzedniej wersji użytkownik Wystąpił błąd podczas próby nawiązania połączenia zdalnego z urządzeniem w chmurze StorSimple za pośrednictwem programu Windows PowerShell. Ten problem był katalogiem głównym i został usunięty w tej wersji. |Nie |Tak |
+| 2 |Szablony przepustowości |W starszej wersji wystąpił problem z szablonami przepustowości, które spowodowały zmniejszenie przepustowości niż to, dla którego urządzenie zostało skonfigurowane. Ten problem został rozwiązany w tej wersji. |Tak |Tak |
+| 3 |Tryb failover |W poprzedniej wersji, gdy urządzenie z dużą liczbą woluminów zostało przełączone w tryb failover na inne urządzenie z aktualizacją Update 4, proces zakończy się niepowodzeniem podczas próby zastosowania rekordów kontroli dostępu. Ten problem został rozwiązany w tej wersji. |Tak |Tak |
 
 
 
-## <a name="known-issues-in-update-5-from-previous-releases"></a>Znane problemy w aktualizacji Update 5 z poprzednich wersji
+## <a name="known-issues-in-update-5-from-previous-releases"></a>Znane problemy z aktualizacją Update 5 z poprzednich wersji
 
-Nie istnieją żadne nowe znane problemy w aktualizacji Update 5. Aby uzyskać listę problemów przeniesiony na 5 aktualizacji z poprzednich wersji, przejdź do [informacje o wersji Update 3](storsimple-update3-release-notes.md#known-issues-in-update-3).
+W aktualizacji Update 5 nie ma nowych znanych problemów. Aby zapoznać się z listą problemów przeprowadzonych w ramach aktualizacji Update 5 z poprzednich wersji, przejdź do [Update 3 informacje o wersji](storsimple-update3-release-notes.md#known-issues-in-update-3).
 
-## <a name="serial-attached-scsi-sas-controller-and-firmware-updates-in-update-5"></a>Magistrali Serial attached SCSI (SAS) kontroler aktualizacje oprogramowania układowego i w aktualizacji Update 5
+## <a name="serial-attached-scsi-sas-controller-and-firmware-updates-in-update-5"></a>Aktualizacje kontrolerów SCSI (SAS) i oprogramowania układowego dołączonego do urządzeń z aktualizacją Update 5
 
-Ta wersja ma kontrolera SAS i LSI aktualizacje oprogramowania układowego i sterowników. Aby uzyskać więcej informacji na temat sposobu instalowania tych aktualizacji, zobacz [instalowanie aktualizacji Update 5](storsimple-8000-install-update-5.md) na urządzeniu StorSimple.
+Ta wersja ma kontroler SAS oraz aktualizacje oprogramowania układowego i sterownika LSI. Aby uzyskać więcej informacji na temat sposobu instalowania tych aktualizacji, zobacz [Install Update 5](storsimple-8000-install-update-5.md) na urządzeniu StorSimple.
 
-## <a name="storsimple-cloud-appliance-updates-in-update-5"></a>Aktualizacje urządzenia StorSimple w chmurze w aktualizacji Update 5
+## <a name="storsimple-cloud-appliance-updates-in-update-5"></a>Aktualizacje urządzeń w chmurze StorSimple w aktualizacji Update 5
 
-Ta aktualizacja nie można zastosować do urządzenia StorSimple w chmurze (znany także jako urządzenie wirtualne). Nowe urządzenia w chmurze muszą ma zostać utworzony przy użyciu obrazu aktualizacja Update 5. Aby uzyskać informacje na temat tworzenia urządzenia StorSimple w chmurze, przejdź do [wdrażanie i zarządzanie nimi urządzenie StorSimple w chmurze](storsimple-8000-cloud-appliance-u2.md).
+Tej aktualizacji nie można zastosować do urządzenia w chmurze StorSimple (nazywanego również urządzeniem wirtualnym). Nowe urządzenia w chmurze muszą być tworzone przy użyciu obrazu Update 5. Aby uzyskać informacje na temat tworzenia urządzenia w chmurze StorSimple, przejdź do obszaru [wdrażanie i zarządzanie urządzeniem w chmurze StorSimple](storsimple-8000-cloud-appliance-u2.md).
 
 ## <a name="next-step"></a>Następny krok
 
-Dowiedz się, jak [instalowanie aktualizacji Update 5](storsimple-8000-install-update-5.md) na urządzeniu StorSimple.
+Dowiedz się, jak [zainstalować aktualizację Update 5](storsimple-8000-install-update-5.md) na urządzeniu StorSimple.
 

@@ -1,68 +1,66 @@
 ---
-title: Obsługę zasobów Azure Red Hat OpenShift | Dokumentacja firmy Microsoft
-description: Dowiedz się, które regiony platformy Azure i rozmiary maszyn wirtualnych są obsługiwane przez program Microsoft Azure Red Hat OpenShift.
-services: container-service
+title: Obsługiwane zasoby dla systemu Azure Red Hat OpenShift
+description: Dowiedz się, które regiony platformy Azure i rozmiary maszyn wirtualnych są obsługiwane przez Microsoft Azure Red Hat OpenShift.
 author: jimzim
 ms.author: jzim
-manager: jeconnoc
 ms.service: container-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/15/2019
-ms.openlocfilehash: c226227797802ab58d1bcbaadb7e97e780b30560
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1b794852390141d31a3218a1a434c21133db914c
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66306216"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76274915"
 ---
-# <a name="azure-red-hat-openshift-resources"></a>Zasoby platformy Azure Red Hat OpenShift
+# <a name="azure-red-hat-openshift-resources"></a>Zasoby usługi Azure Red Hat OpenShift
 
-Ten temat zawiera listę regionów platformy Azure i rozmiary maszyn wirtualnych obsługiwanych przez usługę Microsoft Azure Red Hat OpenShift.
+W tym temacie wymieniono regiony platformy Azure i rozmiary maszyn wirtualnych obsługiwane przez Microsoft Azure usługi Red Hat OpenShift.
 
-## <a name="azure-regions"></a>Regiony świadczenia usługi Azure
+## <a name="azure-regions"></a>Regiony systemu Azure
 
-Zobacz [dostępność produktów według regionów](https://azure.microsoft.com/global-infrastructure/services/?products=openshift&regions=all) bieżącą listę regionów, w którym można wdrożyć Azure Red Hat OpenShift klastrów.
+Zobacz temat [produkty dostępne według regionów](https://azure.microsoft.com/global-infrastructure/services/?products=openshift&regions=all) , aby zapoznać się z bieżącą listą regionów, w których można wdrożyć klastry usługi Azure Red Hat OpenShift.
 
 ## <a name="virtual-machine-sizes"></a>Rozmiary maszyn wirtualnych
 
-Poniżej przedstawiono rozmiary obsługiwanych maszyn wirtualnych, które możesz określić dla węzłów obliczeniowych w klastrze Azure Red Hat OpenShift.
+Poniżej przedstawiono obsługiwane rozmiary maszyn wirtualnych, które można określić dla węzłów obliczeniowych w klastrze Red Hat OpenShift platformy Azure.
 
 > [!Important]
-> Każda maszyna wirtualna ma różną liczbę dysków, które mogą być dołączone. To może nie być jak od razu oczywista jako pamięci lub procesora CPU, rozmiaru.
-> Nie wszystkie rozmiary maszyn wirtualnych są dostępne we wszystkich regionach. Nawet wtedy, gdy interfejs API obsługuje rozmiar, które określisz, możesz otrzymać błąd Jeśli rozmiar nie jest dostępna w regionie, które określisz.
-> Zobacz [bieżącą listę obsługiwanych maszyn wirtualnych o rozmiarach na region](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines) Aby uzyskać więcej informacji.
+> Każda maszyna wirtualna ma inną liczbę dysków, które można dołączać. Może to nie być tak samo jasne jak rozmiar pamięci lub procesora CPU.
+> Nie wszystkie rozmiary maszyn wirtualnych są dostępne we wszystkich regionach. Nawet jeśli interfejs API obsługuje określony rozmiar, może wystąpić błąd, jeśli rozmiar nie jest dostępny w określonym regionie.
+> Aby uzyskać więcej informacji [, zobacz bieżącą listę obsługiwanych rozmiarów maszyn wirtualnych na region](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines) .
 
 ## <a name="compute-node-sizes"></a>Rozmiary węzłów obliczeniowych
 
-Następujących rozmiarów węzłów obliczeniowych są obsługiwane przez API REST platformy Azure Red Hat OpenShift:
+Następujące rozmiary węzłów obliczeniowych są obsługiwane przez interfejs API REST usługi Azure Red Hat OpenShift:
 
-|Rozmiar|Procesor wirtualny|Pamięć RAM|
+|Rozmiar|vCPU|Pamięć RAM|
 |-|-|-|
-|Standardowa D4s v3|4|16 GB|
+|Standardowa D4S v3|4|16 GB|
 |Standardowa D8s v3|8|32 GB|
-|Standardowa D16s v3|16|64 GB|
+|Standardowa D16s v3|16|64 GB|
 |Standardowa D32s v3|32|128 GB|
 |-|-|-|
 |Standardowa E4s v3|4|32 GB|
-|Standardowa E8s v3|8|64 GB|
+|Standardowa E8s v3|8|64 GB|
 |Standardowa E16s v3|16|128 GB|
 |Standardowa E32s v3|32|256 GB|
 |-|-|-|
 |Standardowa F8s v2|8|16 GB|
 |Standardowa F16s v2|16|32 GB|
-|Standardowa F32s v2|32|64 GB|
+|Standardowa F32s v2|32|64 GB|
 
-## <a name="master-node-sizes"></a>Rozmiary węzła głównego
+## <a name="master-node-sizes"></a>Rozmiary węzłów głównych
 
-Następujący wzorzec / rozmiary węzłów infrastruktury są obsługiwane w systemie Red Hat OpenShift API REST usługi Azure:
+Poniższe rozmiary węzła głównego/infrastruktury są obsługiwane przez interfejs API REST usługi Azure Red Hat OpenShift:
 
-|Rozmiar|Procesor wirtualny|Pamięć RAM|
+|Rozmiar|vCPU|Pamięć RAM|
 |-|-|-|
-|Standardowa D4s v3|4|16 GB|
+|Standardowa D4S v3|4|16 GB|
 |Standardowa D8s v3|8|32 GB|
-|Standardowa D16s v3|16|64 GB|
+|Standardowa D16s v3|16|64 GB|
 |Standardowa D32s v3|32|128 GB|
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Spróbuj [Tworzenie klastra usługi Azure Red Hat OpenShift](tutorial-create-cluster.md) samouczka.
+Wypróbuj samouczek [Tworzenie klastra usługi Azure Red Hat OpenShift](tutorial-create-cluster.md) .

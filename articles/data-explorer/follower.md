@@ -7,12 +7,12 @@ ms.reviewer: gabilehner
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/07/2019
-ms.openlocfilehash: b4e09bf84d78c88d3625b0f6b478746db09cc2d8
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 41d48bdd7cc7972536d0cf0e0cb78483f727d7f2
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76030067"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277018"
 ---
 # <a name="use-follower-database-to-attach-databases-in-azure-data-explorer"></a>Używanie bazy danych programu do uzupełniania w celu dołączania baz danych na platformie Azure Eksplorator danych
 
@@ -127,7 +127,7 @@ poller = kusto_management_client.attached_database_configurations.create_or_upda
 
 ### <a name="attach-a-database-using-an-azure-resource-manager-template"></a>Dołączanie bazy danych przy użyciu szablonu Azure Resource Manager
 
-W tej sekcji dowiesz się, jak utworzyć klaster programu z instrukcjami i dołączyć do niego bazę danych przy użyciu [szablonu Azure Resource Manager](../azure-resource-manager/management/overview.md). Jeśli masz już klaster, Usuń zasób `Microsoft.Kusto/clusters` z poniższej listy zasobów.
+W tej sekcji dowiesz się, jak dołączyć bazę danych do istniejącej klastra przy użyciu [szablonu Azure Resource Manager](../azure-resource-manager/management/overview.md). 
 
 ```json
 {
@@ -138,7 +138,7 @@ W tej sekcji dowiesz się, jak utworzyć klaster programu z instrukcjami i doł�
             "type": "string",
             "defaultValue": "",
             "metadata": {
-                "description": "Name of the follower cluster."
+                "description": "Name of the cluster to which the database will be attached."
             }
         },
         "attachedDatabaseConfigurationsName": {
@@ -180,17 +180,6 @@ W tej sekcji dowiesz się, jak utworzyć klaster programu z instrukcjami i doł�
     "variables": {},
     "resources": [
         {
-            "name": "[parameters('followerClusterName')]",
-            "type": "Microsoft.Kusto/clusters",
-            "sku": {
-                "name": "Standard_D13_v2",
-                "tier": "Standard",
-                "capacity": 2
-            },
-            "apiVersion": "2019-09-07",
-            "location": "[parameters('location')]"
-        },
-        {
             "name": "[concat(parameters('followerClusterName'), '/', parameters('attachedDatabaseConfigurationsName'))]",
             "type": "Microsoft.Kusto/clusters/attachedDatabaseConfigurations",
             "apiVersion": "2019-09-07",
@@ -217,7 +206,7 @@ Szablon Azure Resource Manager można wdrożyć za [pomocą Azure Portal](https:
 
 |**Ustawienie**  |**Opis**  |
 |---------|---------|
-|Nazwa klastra z flagami     |  Nazwa klastra programu z instrukcjami. Jeśli istnieje Nazwa klastra, Usuń zasób `Microsoft.Kusto/clusters` z listy zasobów w szablonie usługi ARM. W przeciwnym razie zostanie utworzony nowy klaster.     |
+|Nazwa klastra z flagami     |  Nazwa klastra programu z instrukcjami.  |
 |Nazwa dołączonych konfiguracji bazy danych    |    Nazwa dołączonego obiektu konfiguracji bazy danych. Nazwa musi być unikatowa na poziomie klastra.     |
 |Nazwa bazy danych     |      Nazwa bazy danych, która ma zostać zastosowana. Jeśli chcesz postępować zgodnie z bazami danych lidera, użyj znaku "*".   |
 |Identyfikator zasobu klastra lidera    |   Identyfikator zasobu dla klastra lidera.      |

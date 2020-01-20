@@ -4,15 +4,15 @@ description: Dowiedz się więcej o Azure Analysis Services — w pełni zarząd
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 10/30/2019
+ms.date: 01/17/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: ee107ffdc677a0feffbdaf1441d77a8ed05f2c94
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: f72da87ae53039e825f2102bebb12e59821706f8
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749690"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76274789"
 ---
 # <a name="what-is-azure-analysis-services"></a>Co to są usługi Azure Analysis Services?
 
@@ -34,7 +34,7 @@ Usługi Azure Analysis Services można zintegrować z wieloma usługami platform
 
 ## <a name="the-right-tier-when-you-need-it"></a>Odpowiednia warstwa dopasowana do potrzeb
 
-Usługa Azure Analysis Services jest dostępna w warstwach **Deweloper**, **Podstawowa** i **Standardowa**. W każdej warstwie cena planu zależy od mocy przetwarzania, jednostek QPU i rozmiaru pamięci. Plan w ramach warstwy wybiera się podczas tworzenia serwera. W ramach tej samej warstwy można zmieniać plany w górę lub w dół albo przejść na wyższą warstwę, ale nie można przejść z warstwy wyższej na niższą.
+Usługa Azure Analysis Services jest dostępna w warstwach **Deweloper**, **Podstawowa** i **Standardowa**. W ramach każdej warstwy planowanie kosztów różni się w zależności od mocy obliczeniowej, jednostek przetwarzania zapytań (jednostek qpu) i rozmiaru pamięci. Plan w ramach warstwy wybiera się podczas tworzenia serwera. W ramach tej samej warstwy można zmieniać plany w górę lub w dół albo przejść na wyższą warstwę, ale nie można przejść z warstwy wyższej na niższą.
 
 ### <a name="developer-tier"></a>Warstwa Deweloper
 
@@ -47,7 +47,7 @@ Ta warstwa jest zalecana w przypadku scenariuszy związanych z oceną, programow
 
 ### <a name="basic-tier"></a>Warstwa Basic
 
-Warstwa polecana w przypadku rozwiązań produkcyjnych z niewielkimi modelami tabelarycznymi, ograniczoną współbieżnością użytkowników i prostymi wymaganiami dotyczącymi odświeżania danych. Skalowanie repliki zapytania *jest niedostępne* w tej warstwie. Perspektywy, wiele partycji ani funkcje modelu tabelarycznego DirectQuery *nie są obsługiwane* w tej warstwie.  
+Warstwa polecana w przypadku rozwiązań produkcyjnych z niewielkimi modelami tabelarycznymi, ograniczoną współbieżnością użytkowników i prostymi wymaganiami dotyczącymi odświeżania danych. Skalowanie w poziomie repliki zapytań *jest niedostępne* dla tej warstwy. Perspektywy, wiele partycji ani funkcje modelu tabelarycznego DirectQuery *nie są obsługiwane* w tej warstwie.  
 
 |Plan  |QPU  |Pamięć (GB)  |
 |---------|---------|---------|
@@ -232,7 +232,7 @@ Usługa Azure Analysis Services obsługuje również [dynamiczne widoki zarządz
 
 W tej sekcji została przedstawiona dokumentacja dotycząca usługi Azure Analysis Services. Spis treści po lewej stronie ekranu przeglądarki umożliwia wyszukiwanie artykułów. 
 
-Ponieważ Azure Analysis Services modele tabelaryczne są takie same jak modele tabelaryczne w SQL Server Analysis Services, istnieje obszerna biblioteka udostępnionych artykułów koncepcyjnych, proceduralnych, deweloperskich i referencyjnych w [dokumentacji SQL Server Analysis Services](https://docs.microsoft.com/analysis-services/analysis-services-overview). Artykuły w dokumentacji usług SQL Server Analysis Services pokazują, czy mają zastosowanie również do usługi Azure Analysis Services — w tym celu pod tytułem jest dodawany baner DOTYCZY.
+Ponieważ Azure Analysis Services modele tabelaryczne są znacznie takie same jak modele tabelaryczne w SQL Server Analysis Services, istnieje obszerna biblioteka udostępnionych samouczków modelowania danych, pojęć, procedur, deweloperów i artykułów referencyjnych dostępnych w [SQL Server Analysis Services dokumentacji](https://docs.microsoft.com/analysis-services/analysis-services-overview). Artykuły w dokumentacji usług SQL Server Analysis Services pokazują, czy mają zastosowanie również do usługi Azure Analysis Services — w tym celu pod tytułem jest dodawany baner DOTYCZY.
 
 ![Dokumentacja udostępniona](./media/analysis-services-overview/aas-overview-applies-to.png)
 

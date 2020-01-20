@@ -1,26 +1,21 @@
 ---
-title: Skalowanie w pionie zestawów skalowania maszyn wirtualnych platformy Azure | Microsoft Docs
+title: Skalowanie w pionie zestawów skalowania maszyn wirtualnych platformy Azure
 description: Jak skalować w pionie maszynę wirtualną w odpowiedzi na monitorowanie alertów za pomocą Azure Automation
-services: virtual-machine-scale-sets
-documentationcenter: ''
 author: mayanknayar
-manager: jeconnoc
-editor: ''
 tags: azure-resource-manager
 ms.assetid: 16b17421-6b8f-483e-8a84-26327c44e9d3
 ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-multiple
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: manayar
-ms.openlocfilehash: 87d2b19f6143f567782778e35c8511f233d8b0e8
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: fa1dda2907e8400491c8d18897bb41fb9cff49fd
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71958140"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76274432"
 ---
 # <a name="vertical-autoscale-with-virtual-machine-scale-sets"></a>Automatyczne skalowanie w pionie za pomocą zestawów skalowania maszyn wirtualnych
 
@@ -43,7 +38,7 @@ Można skonfigurować skalowanie w pionie na podstawie alertów opartych na metr
 4. Dodaj alert do zestawu skalowania maszyn wirtualnych za pomocą powiadomienia elementu webhook.
 
 > [!NOTE]
-> Ze względu na rozmiar pierwszej maszyny wirtualnej rozmiary, do których można skalować, mogą być ograniczone ze względu na dostępność innych rozmiarów z bieżącej maszyny wirtualnej klastra wdrożonych w programie. W opublikowanym elemencie Runbook usługi Automation używanym w tym artykule zajmiemy się tym przypadkiem i skalujemy ją tylko w obrębie poniższych par rozmiaru maszyny wirtualnej. Oznacza to, że maszyna wirtualna Standard_D1v2 nie będzie nagle skalowana do Standard_G5 lub skalowana w dół do Basic_A0. Nie są obsługiwane również rozmiary maszyn wirtualnych z ograniczeniami skalowania w górę/w dół. Można wybrać skalowanie między następującymi parami rozmiarów:
+> Ze względu na rozmiar pierwszej maszyny wirtualnej rozmiary, do których można skalować, mogą być ograniczone ze względu na dostępność innych rozmiarów z bieżącej maszyny wirtualnej klastra wdrożonych w programie. W opublikowanym elemencie Runbook usługi Automation używanym w tym artykule zajmiemy się tym przypadkiem i skalujemy ją tylko w obrębie poniższych par rozmiaru maszyny wirtualnej. Oznacza to, że Standard_D1v2 maszynie wirtualnej nie można nagle skalować do Standard_G5 lub przeskalować do Basic_A0. Nie są obsługiwane również rozmiary maszyn wirtualnych z ograniczeniami skalowania w górę/w dół. Można wybrać skalowanie między następującymi parami rozmiarów:
 > 
 > | Para skalowania rozmiaru maszyny wirtualnej |  |
 > | --- | --- |
@@ -73,7 +68,7 @@ Można skonfigurować skalowanie w pionie na podstawie alertów opartych na metr
 > | Standardowa_F1s |Standardowa_F16s |
 > | Standard_F2sv2 |Standard_F72sv2 |
 > | Standardowa_G1 |Standard_G5 |
-> | Standardowa_GS1 |Standard_GS5 |
+> | Standardowa_GS1 |Standardowa_GS5 |
 > | Standardowa_H8 |Standardowa_H16 |
 > | Standardowa_H8m |Standardowa_H16m |
 > | Standardowa_L4s |Standardowa_L32s |
@@ -109,7 +104,7 @@ Wybierz opcję przeglądania galerii z menu elementy Runbook:
 
 Wyświetlane są elementy Runbook, które muszą zostać zaimportowane. Wybierz element Runbook w oparciu o to, czy chcesz skalować w pionie przy użyciu lub bez ponownego inicjowania obsługi administracyjnej:
 
-![Galeria elementów Runbook][gallery]
+![Galeria elementów runbook][gallery]
 
 ## <a name="add-a-webhook-to-your-runbook"></a>Dodawanie elementu webhook do elementu Runbook
 

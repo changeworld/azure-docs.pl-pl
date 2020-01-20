@@ -1,25 +1,17 @@
 ---
-title: Microsoft Azure StorSimple Data Manager interfejs użytkownika | Microsoft Docs
+title: Interfejs użytkownika Data Manager Microsoft Azure StorSimple
 description: Opisuje sposób używania interfejsu użytkownika usługi StorSimple Data Manager
-services: storsimple
-documentationcenter: NA
 author: alkohli
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
+ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: 3a87b4c07d2e961d9876fb44c6584f37ad9246df
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: d485a2655b569b3def6162934857b02dbe4f75ea
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73796642"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76273981"
 ---
 # <a name="manage-the-storsimple-data-manager-service-in-azure-portal"></a>Zarządzanie usługą StorSimple Data Manager w programie Azure Portal
 
@@ -141,7 +133,7 @@ Wykonaj następujące kroki, aby utworzyć definicję zadania.
 
 ### <a name="run-the-job-definition"></a>Uruchom definicję zadania
 
-Za każdym razem, gdy zachodzi potrzeba przeniesienia danych z StorSimple na konto magazynu określone w definicji zadania, należy je uruchomić. W czasie wykonywania niektóre parametry można określić inaczej. Kroki są następujące:
+Za każdym razem, gdy zachodzi potrzeba przeniesienia danych z StorSimple na konto magazynu określone w definicji zadania, należy je uruchomić. W czasie wykonywania niektóre parametry można określić inaczej. Dostępne są następujące czynności:
 
 1. Wybierz usługę StorSimple Data Manager i przejdź do pozycji **zarządzanie > Definicje zadań**. Wybierz i kliknij definicję zadania, która ma zostać uruchomiona.
      

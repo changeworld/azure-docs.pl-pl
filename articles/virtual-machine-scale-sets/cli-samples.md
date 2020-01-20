@@ -1,27 +1,20 @@
 ---
 title: Przykłady interfejsu wiersza polecenia platformy Azure
 description: Tabela zawierająca linki do przykładowych skryptów bash utworzonych przy użyciu interfejsu wiersza polecenia platformy Azure, takich jak tworzenie zestawu skalowania i zarządzanie nim.
-services: virtual-machine-scale-sets
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
-editor: ''
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machine-scale-sets
 ms.devlang: azurecli
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 540941bd2d54c5d3c8d26186e700727e8d75f501
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ca1c85224959840e4137eab68e3d089283827bb5
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75459355"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76275144"
 ---
 # <a name="azure-cli-samples-for-virtual-machine-scale-sets"></a>Przykłady interfejsu wiersza polecenia platformy Azure dla zestawów skalowania maszyn wirtualnych
 

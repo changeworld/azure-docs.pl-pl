@@ -3,15 +3,15 @@ title: Samouczek — Konfigurowanie wystąpienia serwera konfiguracji w chmurze 
 description: W tym samouczku dowiesz się, jak skonfigurować wystąpienie serwera konfiguracji chmury sprężynowej dla chmury wiosennej platformy Azure na Azure Portal
 ms.service: spring-cloud
 ms.topic: tutorial
-ms.author: jeconnoc
-author: jpconnock
+ms.author: brendm
+author: bmitchell287
 ms.date: 10/18/2019
-ms.openlocfilehash: 186ba771d2df3b08244a05e349beea8dad2af93b
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 5e0b5633a153583117cfe0d90ec5c0e7c5f2a147
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74708803"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277526"
 ---
 # <a name="tutorial-set-up-a-spring-cloud-config-server-instance-for-your-service"></a>Samouczek: Konfigurowanie dla usługi wystąpienia serwera konfiguracji w chmurze wiosny
 
@@ -124,7 +124,7 @@ Poniżej znajdują się wszystkie konfigurowalne właściwości używane do konf
 
 Teraz, gdy pliki konfiguracji są zapisywane w repozytorium, należy połączyć z nim chmurę sieciową platformy Azure.
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się do [Portalu Azure](https://portal.azure.com).
 
 1. Przejdź do strony **omówienia** chmury Azure wiosennej.
 

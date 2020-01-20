@@ -1,25 +1,23 @@
 ---
 title: (PRZESTARZAŁE) Samouczek usługi Azure Container Service — przygotowywanie usługi ACR
 description: Samouczek usługi Azure Container Service — przygotowywanie usługi ACR
-services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: d0107e09bf8706ba7d4c813814103ca109262d8d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: fbd718b62246e820bfa01353080815b62912bd00
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60641181"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76274129"
 ---
 # <a name="deprecated-deploy-and-use-azure-container-registry"></a>(PRZESTARZAŁE) Wdrażanie usługi Azure Container Registry i korzystanie z niej
 
 > [!TIP]
-> Aby poznać zaktualizowaną wersję tego samouczka korzystającą z usługi Azure Kubernetes Service, zobacz [Samouczek: Wdrażanie usługi Azure Container Registry i korzystanie z niej](../../aks/tutorial-kubernetes-prepare-acr.md).
+> Aby uzyskać zaktualizowaną wersję tego samouczka korzystającego z usługi Azure Kubernetes, zobacz [Samouczek: wdrażanie i używanie Azure Container Registry](../../aks/tutorial-kubernetes-prepare-acr.md).
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
@@ -157,7 +155,7 @@ v1
 
 Po ukończeniu tego samouczka obraz kontenera zostanie zapisany w prywatnym wystąpieniu usługi Azure Container Registry. W kolejnych samouczkach ten obraz zostanie wdrożony z rejestru Azure Container Registry do klastra Kubernetes.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku usługa Azure Container Registry została przygotowana do użycia w klastrze Kubernetes ACS. Wykonano następujące czynności:
 

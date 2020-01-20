@@ -3,16 +3,16 @@ title: Włącz Azure Disk Encryption dla Virtual Machine Scale Sets
 description: Ten artykuł zawiera instrukcje dotyczące włączania Microsoft Azure szyfrowania dysków dla Virtual Machine Scale Sets
 author: msmbaldwin
 ms.service: virtual-machine-scale-sets
-ms.topic: article
+ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0097d0e1d5ea7de092da14683d4bab3d673b2219
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 36eb83d99af299260ebbbd74fe56d69921ba389b
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73177779"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278969"
 ---
 # <a name="azure-disk-encryption-for-virtual-machine-scale-sets"></a>Azure Disk Encryption Virtual Machine Scale Sets
 
@@ -23,7 +23,7 @@ Azure Disk Encryption można również zastosować do zestawów skalowania maszy
 - System operacyjny i woluminy danych w zestawach skalowania systemu Windows.
 - Woluminy danych w zestawach skalowania systemu Linux. Szyfrowanie dysków systemu operacyjnego nie jest obsługiwane w przypadku zestawów skalowania w systemie Linux.
 
-Podstawy Azure Disk Encryption dla zestawów skalowania maszyn wirtualnych można uzyskać w zaledwie kilka minut, korzystając z [funkcji szyfrowania zestawów skalowania maszyn wirtualnych przy użyciu interfejsu wiersza polecenia platformy Azure](disk-encryption-cli.md) lub [szyfrowania zestawów skalowania maszyn wirtualnych przy użyciu Azure PowerShell](disk-encryption-powershell.md) Podręcznik.
+Podstawy Azure Disk Encryption dla zestawów skalowania maszyn wirtualnych można znaleźć w zaledwie kilka minut za pomocą [szyfrowania zestawów skalowania maszyn wirtualnych przy użyciu interfejsu wiersza polecenia platformy Azure](disk-encryption-cli.md) lub [szyfrowania zestawów skalowania maszyn wirtualnych przy użyciu](disk-encryption-powershell.md) samouczków Azure PowerShell.
 
 ## <a name="next-steps"></a>Następne kroki
 

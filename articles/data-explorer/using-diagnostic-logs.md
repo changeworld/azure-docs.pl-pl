@@ -7,12 +7,12 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/18/2019
-ms.openlocfilehash: 13f86f0156299619d8bf8d92eb92bbcf8b4cb76c
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 3e10979e26cacdc0c2071a6030c945adad21a51c
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173811"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277424"
 ---
 # <a name="monitor-azure-data-explorer-ingestion-operations-using-diagnostic-logs-preview"></a>Monitorowanie operacji pozyskiwania Eksplorator danych platformy Azure przy użyciu dzienników diagnostycznych (wersja zapoznawcza)
 
@@ -25,7 +25,7 @@ Usługa Azure Data Explorer to szybka, w pełni zarządzana usługa do analizy d
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
 
-Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
+Zaloguj się do [Portalu Azure](https://portal.azure.com/).
 
 ## <a name="set-up-diagnostic-logs-for-an-azure-data-explorer-cluster"></a>Konfigurowanie dzienników diagnostycznych dla klastra usługi Azure Eksplorator danych
 
@@ -52,7 +52,7 @@ Dzienniki diagnostyczne są domyślnie wyłączone. Aby włączyć dzienniki dia
     1. Wybierz **nazwę** dla ustawienia diagnostycznego.
     1. Wybierz co najmniej jeden obiekt docelowy: konto magazynu, centrum zdarzeń lub Log Analytics.
     1. Wybierz dzienniki do zebrania: `SucceededIngestion` lub `FailedIngestion`.
-    1. Wybierz [metryki](using-metrics.md) do zebrania (opcjonalnie).   
+    1. Wybierz [metryki](using-metrics.md#supported-azure-data-explorer-metrics) do zebrania (opcjonalnie).  
     1. Wybierz pozycję **Zapisz** , aby zapisać nowe ustawienia dzienników diagnostycznych i metryki.
     1. Utwórz **nowe żądanie obsługi** w Azure Portal, aby zażądać aktywacji dzienników diagnostycznych.
 
@@ -73,7 +73,7 @@ Ciągi JSON dziennika zawierają elementy wymienione w poniższej tabeli:
 |operationName      |Nazwa operacji: "MICROSOFT. KUSTO/KLASTRY/POZYSKIWANIE/AKCJA "
 |operationVersion   |Wersja schematu: ' 1,0 ' 
 |category           |Kategoria operacji. `SucceededIngestion` lub `FailedIngestion`. Właściwości różnią się w zależności od [operacji zakończonej powodzeniem](#successful-ingestion-operation-log) lub [nieudanej operacji](#failed-ingestion-operation-log).
-|Właściwości         |Szczegółowe informacje o operacji.
+|properties         |Szczegółowe informacje o operacji.
 
 #### <a name="successful-ingestion-operation-log"></a>Dziennik operacji pozyskiwania zakończonych powodzeniem
 

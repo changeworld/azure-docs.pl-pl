@@ -1,28 +1,26 @@
 ---
-title: (PRZESTARZAŁE) Zarządzanie klastrem Azure DC/OS za pomocą interfejsu użytkownika platformy Marathon
+title: PRZESTARZAŁE Zarządzanie klastrem DC/OS platformy Azure przy użyciu interfejsu użytkownika Marathon
 description: Wdrażanie kontenerów do klastra usługi kontenera platformy Azure przy użyciu interfejsu użytkownika sieci Web Marathon.
-services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/04/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 16c16c0217a796ffbb57e10430f90cb4a7660ac6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b251096915506c3c7a4eebf45b6a03e24779a3d8
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61468300"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277803"
 ---
-# <a name="deprecated-manage-an-azure-container-service-dcos-cluster-through-the-marathon-web-ui"></a>(PRZESTARZAŁE) Zarządzanie klastrem usługi Azure Container Service DC/OS za pośrednictwem interfejsu użytkownika sieci web platformy Marathon
+# <a name="deprecated-manage-an-azure-container-service-dcos-cluster-through-the-marathon-web-ui"></a>PRZESTARZAŁE Zarządzanie klastrem Azure Container Service DC/OS za pomocą interfejsu użytkownika sieci Web Marathon
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
 Platforma DC/OS dostarcza środowisko wdrażania i skalowania obciążeń klastrowanych, zapewniając jednocześnie abstrakcyjność sprzętu bazowego. Ponad systemem DC/OS istnieje platforma, która zarządza planowaniem i wykonywaniem obciążeń obliczeniowych.
 
-Platformy są dostępne dla wielu popularnych zadań, w tym dokumencie opisano sposób rozpocząć wdrażanie kontenerów przy użyciu platformy Marathon. 
+Chociaż struktury są dostępne dla wielu popularnych obciążeń, w tym dokumencie opisano sposób rozpoczynania wdrażania kontenerów za pomocą Marathon. 
 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
@@ -32,16 +30,16 @@ Przed przystąpieniem do pracy nad tymi przykładami będziesz potrzebować klas
 * [Łączenie z klastrem usługi Azure Container Service](../container-service-connect.md)
 
 > [!NOTE]
-> W tym artykule przyjęto założenie, że tunelowanie korzysta się z klastrem DC/OS za pośrednictwem lokalnego portu 80.
+> W tym artykule założono, że tunelowanie do klastra DC/OS odbywa się za pomocą portu lokalnego 80.
 >
 
 ## <a name="explore-the-dcos-ui"></a>Przegląd interfejsu użytkownika platformy DC/OS
-Za pomocą tunelu Secure Shell (SSH) [ustanowione](../container-service-connect.md), przejdź do protokołu http: \/ /localhost /. Spowoduje to załadowanie interfejsu użytkownika sieci Web platformy DC/OS oraz wyświetlenie informacji o klastrze, w tym dotyczących używanych zasobów, aktywnych agentów i uruchomione usługi.
+Po [ustanowieniu](../container-service-connect.md)tunelu Secure Shell (SSH) przejdź do protokołu http:\//localhost/. Spowoduje to załadowanie interfejsu użytkownika sieci Web platformy DC/OS oraz wyświetlenie informacji o klastrze, w tym dotyczących używanych zasobów, aktywnych agentów i uruchomione usługi.
 
 ![Interfejs użytkownika platformy DC/OS](./media/container-service-mesos-marathon-ui/dcos2.png)
 
 ## <a name="explore-the-marathon-ui"></a>Przegląd interfejsu użytkownika platformy Marathon
-Aby wyświetlić interfejs użytkownika platformy Marathon, przejdź do protokołu http: \/ /localhost/platformy marathon. Na tym ekranie możesz uruchomić nowy kontener lub inną aplikację w klastrze DC/OS usługi kontenera platformy Azure. Możesz również sprawdzić informacje dotyczące działających kontenerów i aplikacji.  
+Aby wyświetlić interfejs użytkownika Marathon, przejdź do strony http:\//localhost/Marathon. Na tym ekranie możesz uruchomić nowy kontener lub inną aplikację w klastrze DC/OS usługi kontenera platformy Azure. Możesz również sprawdzić informacje dotyczące działających kontenerów i aplikacji.  
 
 ![Interfejs użytkownika platformy Marathon](./media/container-service-mesos-marathon-ui/dcos3.png)
 
@@ -51,8 +49,8 @@ Aby wdrożyć nowy kontener przy użyciu platformy Marathon, kliknij przycisk **
 | Pole | Wartość |
 | --- | --- |
 | ID |nginx |
-| Memory (Pamięć) | 32 |
-| Image |nginx |
+| Pamięć | 32 |
+| Obraz |nginx |
 | Network (Sieć) |Bridged (Pomostowa) |
 | Host Port (Port hosta) |80 |
 | Protocol (Protokół) |TCP |
@@ -85,7 +83,7 @@ Po powrocie do strony głównej platformy Marathon widoczny jest stan wdrożenia
 
 ![Strona główna interfejsu użytkownika platformy Marathon — stan wdrożenia kontenera](./media/container-service-mesos-marathon-ui/dcos7.png)
 
-Po przełączeniu się do platformy DC/OS interfejs użytkownika sieci web (http:\//localhost/), zobaczysz, że zadanie (w tym przypadku kontener w formacie Docker) jest uruchomiony w klastrze DC/OS.
+Po przełączeniu się z powrotem do interfejsu użytkownika sieci Web platformy DC/OS (http:\//localhost/) zobaczysz, że zadanie (w tym przypadku kontener w formacie Docker) jest uruchomiony w klastrze DC/OS.
 
 ![Interfejs użytkownika sieci Web platformy DC/OS — zadanie uruchomione w klastrze](./media/container-service-mesos-marathon-ui/dcos8.png)
 
@@ -93,20 +91,20 @@ Aby zobaczyć węzeł klastra, w którym zadanie jest uruchomione, kliknij kart�
 
 ![Interfejs użytkownika sieci Web platformy DC/OS — węzeł klastra zadania](./media/container-service-mesos-marathon-ui/dcos9.png)
 
-## <a name="reach-the-container"></a>Dotrzeć do kontenera
+## <a name="reach-the-container"></a>Dotarcie do kontenera
 
-W tym przykładzie aplikacja jest uruchomiona w węźle agenta publicznego. Możesz uzyskać dostępu do aplikacji, z Internetu, przechodząc do agenta, nazwy FQDN klastra: `http://[DNSPREFIX]agents.[REGION].cloudapp.azure.com`, gdzie:
+W tym przykładzie aplikacja działa w węźle agenta publicznego. Możesz uzyskać dostęp do aplikacji z Internetu, przechodząc do nazwy FQDN agenta klastra: `http://[DNSPREFIX]agents.[REGION].cloudapp.azure.com`, gdzie:
 
 * **DNSPREFIX** (prefiks_DNS) to prefiks DNS podany podczas wdrażania klastra.
 * **REGION** to region, w którym znajduje się grupa zasobów.
 
-    ![Serwer Nginx z Internetu](./media/container-service-mesos-marathon-ui/nginx.png)
+    ![Nginx z Internetu](./media/container-service-mesos-marathon-ui/nginx.png)
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 * [Praca z platformą DC/OS i interfejsem API platformy Marathon](container-service-mesos-marathon-rest.md)
 
-* Pełne wykorzystanie usługi Azure Container Service dzięki rozwiązaniu Mesos
+* Szczegółowe informacje o usłudze kontenerów platformy Azure z rozwiązaniem Mesos
 
     > [!VIDEO https://channel9.msdn.com/Events/Microsoft-Azure/AzureCon-2015/ACON203/player]
     > 

@@ -1,17 +1,17 @@
 ---
 title: AZ wiosenn Cloud
 description: Zarządzanie chmurą wiosenną platformy Azure przy użyciu interfejsu wiersza polecenia platformy Azure
-author: jpconnock
+author: bmitchell287
 ms.service: spring-cloud
 ms.topic: reference
 ms.date: 10/03/2019
-ms.author: jeconnoc
-ms.openlocfilehash: a1f82d4efa7756b44ca5ed9859aa872c1f55b565
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.author: brendm
+ms.openlocfilehash: 869a47469f8e0429d3726651c28f5a58acfcb856
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607822"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76279043"
 ---
 # <a name="az-spring-cloud"></a>AZ Sprężyna — chmura
 
@@ -89,7 +89,7 @@ az spring-cloud create  --name -n
                         --no-wait
 ```
 
-| Wymagane parametry | |
+| Parametry wymagane | |
 | --- | ---: |
 | --Name-n | Nazwa dla tego wystąpienia chmury Azure wiosennej. |
 | --Resource-Group-g | Określa grupę zasobów dla tej aplikacji.  Skonfiguruj domyślną grupę przy użyciu `az configure --defaults group=<name>` |
@@ -117,7 +117,7 @@ az spring cloud --name -n
                 --no-wait
 ```
 
-| Wymagane parametry | |
+| Parametry wymagane | |
 | --- | ---: |
 | --Name-n | Nazwa wystąpienia chmury wiosennej platformy Azure do usunięcia. |
 | --Resource-Group-g | Nazwa grupy zasobów, do której należy chmura sprężynowa platformy Azure. |
@@ -142,7 +142,7 @@ Wyświetl listę wszystkich wystąpień chmury wiosennej platformy Azure skojarz
 az spring-cloud list --resource-group -g
 ```
 
-| Wymagane parametry | |
+| Parametry wymagane | |
 | --- | ---: |
 | --Resource-Group-g | Nazwa grupy zasobów. |
 
@@ -155,7 +155,7 @@ az spring-cloud show --name -n
                      -- resource-group -g
 ```
 
-| Wymagane parametry | |
+| Parametry wymagane | |
 | --- | ---: |
 | --Name-n | Nazwa wystąpienia chmury wiosennej na platformie Azure. |
 | --Resource-Group-g | Nazwa grupy zasobów, do której należy wystąpienie chmury Azure wiosennej.
@@ -175,7 +175,7 @@ az spring-cloud app create --name -n
                             --memory
 ```
 
-| Wymagane parametry | |
+| Parametry wymagane | |
 | --- | ---: |
 | --Name-n | Nazwa aplikacji. |
 | --Resource-Group-g | Nazwa grupy zasobów.  Grupę domyślną można skonfigurować przy użyciu `az configure --defaults group=<name>`. |
@@ -213,7 +213,7 @@ az spring cloud app delete  --name -n
                             --service -s
 ```
 
-| Wymagane parametry | |
+| Parametry wymagane | |
 | --- | ---: |
 | --Name-n | Nazwa aplikacji. |
 | --Resource-Group-g | Nazwa grupy zasobów.  Grupę domyślną można skonfigurować przy użyciu `az configure --defaults group=<name>`. |
@@ -240,7 +240,7 @@ az spring cloud app deploy  --name -n
                             --version
 ```
 
-| Wymagane parametry | |
+| Parametry wymagane | |
 | --- | ---: |
 | --Name-n | Nazwa aplikacji. |
 | --Resource-Group-g | Nazwa grupy zasobów.  Grupę domyślną można skonfigurować przy użyciu `az configure --defaults group=<name>`. |
@@ -289,7 +289,7 @@ az spring-cloud app list --resource-group -g
                          --service -s
 ```
 
-|Wymagane parametry | |
+|Parametry wymagane | |
 | --- | ---: |
 | --Resource-Group-g | Nazwa grupy zasobów.  Grupę domyślną można skonfigurować przy użyciu `az configure --defaults group=<name>`. |
 | --Service-s | Nazwa chmury wiosennej platformy Azure.  Usługę domyślną można skonfigurować przy użyciu `az configure --defaults spring-cloud=<name>`. |
@@ -306,7 +306,7 @@ az spring-cloud app restart --name -n
                             --no-wait
 ```
 
-| Wymagane parametry | |
+| Parametry wymagane | |
 | --- | ---: |
 | --Name-n | Nazwa aplikacji. |
 | --Resource-Group-g | Nazwa grupy zasobów.  Grupę domyślną można skonfigurować przy użyciu `az configure --defaults group=<name>`. |
@@ -332,7 +332,7 @@ az spring-cloud app scale --name -n
                           --no-wait
 ```
 
-| Wymagane parametry | |
+| Parametry wymagane | |
 | --- | ---: |
 | --Name-n | Nazwa aplikacji. |
 | --Resource-Group-g | Nazwa grupy zasobów.  Grupę domyślną można skonfigurować przy użyciu `az configure --defaults group=<name>`. |
@@ -372,7 +372,7 @@ az spring-cloud app set-deployment --deployment -d
                                    --no-wait
 ```
 
-| Wymagane parametry | |
+| Parametry wymagane | |
 | --- | ---: |
 | --Deployment-d | Nazwa istniejącego wdrożenia aplikacji. |
 | --Name-n | Nazwa aplikacji. |
@@ -401,7 +401,7 @@ az spring-cloud app show --name -n
                          --service -s
 ```
 
-| Wymagane parametry | |
+| Parametry wymagane | |
 | --- | ---: |
 | --Name-n | Nazwa aplikacji. |
 | --Resource-Group-g | Nazwa grupy zasobów.  Grupę domyślną można skonfigurować przy użyciu `az configure --defaults group=<name>`. |
@@ -418,7 +418,7 @@ az spring-cloud app show-deploy-log --name -n
                                     --deployment -d
 ```
 
-| Wymagane parametry | |
+| Parametry wymagane | |
 | --- | ---: |
 | --Name-n | Nazwa aplikacji. |
 | --Resource-Group-g | Nazwa grupy zasobów.  Grupę domyślną można skonfigurować przy użyciu `az configure --defaults group=<name>`. |
@@ -440,7 +440,7 @@ az spring-cloud app start --name -n
                           --no-wait
 ```
 
-| Wymagane parametry | |
+| Parametry wymagane | |
 | --- | ---: |
 | --Name-n | Nazwa aplikacji. |
 | --Resource-Group-g | Nazwa grupy zasobów.  Grupę domyślną można skonfigurować przy użyciu `az configure --defaults group=<name>`. |
@@ -463,7 +463,7 @@ az spring-cloud app stop --name -n
                          --no-wait
 ```
 
-| Wymagane parametry | |
+| Parametry wymagane | |
 | --- | ---: |
 | --Name-n | Nazwa aplikacji. |
 | --Resource-Group-g | Nazwa grupy zasobów.  Grupę domyślną można skonfigurować przy użyciu `az configure --defaults group=<name>`. |
@@ -491,7 +491,7 @@ az spring-cloud app update --name -n
                            --runtime-version
 ```
 
-| Wymagane parametry | |
+| Parametry wymagane | |
 | --- | ---: |
 | --Name-n | Nazwa aplikacji. |
 | --Resource-Group-g | Nazwa grupy zasobów.  Grupę domyślną można skonfigurować przy użyciu `az configure --defaults group=<name>`. |
@@ -525,7 +525,7 @@ az spring-cloud app binding list --app
                                  --service -s
 ```
 
-| Wymagane parametry | |
+| Parametry wymagane | |
 | --- | ---: |
 | --Aplikacja | Nazwa aplikacji. |
 | --Resource-Group-g | Nazwa grupy zasobów.  Grupę domyślną można skonfigurować przy użyciu `az configure --defaults group=<name>`. |
@@ -542,7 +542,7 @@ az spring-cloud app binding list --app
                                  --service -s
 ```
 
-| Wymagane parametry | |
+| Parametry wymagane | |
 | --- | ---: |
 | --Aplikacja | Nazwa aplikacji. |
 | --Name | Nazwa powiązania usługi, które ma zostać usunięte. |
@@ -560,7 +560,7 @@ az spring-cloud app binding show --app
                                  --service -s
 ```
 
-| Wymagane parametry | |
+| Parametry wymagane | |
 | --- | ---: |
 | --Aplikacja | Nazwa aplikacji. |
 | --Name | Nazwa powiązania usługi. |
@@ -590,7 +590,7 @@ az spring-cloud app binding list --app
                                  --service -s
 ```
 
-| Wymagane parametry | |
+| Parametry wymagane | |
 | --- | ---: |
 | --Typ interfejsu API | Określ typ interfejsu API przy użyciu jednej z następujących wartości: Cassandra, Gremlin, Mongo, SQL, Table. |
 | --Aplikacja | Nazwa aplikacji. |
@@ -616,7 +616,7 @@ az spring-cloud app binding cosmos update --app
                                           --key-space
 ```
 
-| Wymagane parametry | |
+| Parametry wymagane | |
 | --- | ---: |
 | --Aplikacja | Nazwa aplikacji. |
 | --Name | Nazwa powiązania usługi. |
@@ -641,7 +641,7 @@ az spring-cloud app binding mysql add --app
                                       --username
 ```
 
-| Wymagane parametry | |
+| Parametry wymagane | |
 | --- | ---: |
 | --Aplikacja | Nazwa aplikacji. |
 | --Nazwa bazy danych | Nazwa bazy danych. |
@@ -666,7 +666,7 @@ az spring-cloud app binding mysql update --add
                                          --username
 ```
 
-| Wymagane parametry | |
+| Parametry wymagane | |
 | --- | ---: |
 | --Aplikacja | Nazwa aplikacji. |
 | --Name | Nazwa powiązania usługi. |
@@ -692,7 +692,7 @@ az spring-cloud app binding redis add --app
                                       --disable-ssl
 ```
 
-| Wymagane parametry | |
+| Parametry wymagane | |
 | --- | ---: |
 | --Aplikacja | Nazwa aplikacji. |
 | --Name | Nazwa powiązania usługi. |
@@ -708,7 +708,7 @@ az spring-cloud app binding redis add --app
 
 Zaktualizuj powiązanie usługi dla pamięci podręcznej platformy Azure dla Redis.
 
-| Wymagane parametry | |
+| Parametry wymagane | |
 | --- | ---: |
 | --Aplikacja | Nazwa aplikacji. |
 | --Name | Nazwa powiązania usługi. |
@@ -725,7 +725,7 @@ Utwórz wdrożenie przejściowe dla aplikacji.
 
 Aby wdrożyć kod lub zaktualizować ustawienia do istniejącego wdrożenia, użyj `az spring-cloud app deploy --deployment <staging-deployment>` lub "AZ wiosenn-Cloud App Update--Deployment <staging deployment>.
 
-| Wymagane parametry | |
+| Parametry wymagane | |
 | --- | ---: |
 | --Aplikacja | Nazwa aplikacji. |
 | --Name | Nazwa powiązania usługi. |
@@ -771,7 +771,7 @@ az spring-cloud app deployment delete --app
                                       --service -s
 ```
 
-| Wymagane parametry | |
+| Parametry wymagane | |
 | --- | ---: |
 | --Aplikacja | Nazwa aplikacji. |
 | --Name | Nazwa wdrożenia. |
@@ -788,7 +788,7 @@ az spring-cloud app deployment list --app
                                     --service -s
 ```
 
-| Wymagane parametry | |
+| Parametry wymagane | |
 | --- | ---: |
 | --Aplikacja | Nazwa aplikacji. |
 | --Resource-Group-g | Nazwa grupy zasobów.  Grupę domyślną można skonfigurować przy użyciu `az configure --defaults group=<name>`. |
@@ -805,7 +805,7 @@ az spring-cloud app deployment show --app
                                     --service -s
 ```
 
-| Wymagane parametry | |
+| Parametry wymagane | |
 | --- | ---: |
 | --Aplikacja | Nazwa aplikacji. |
 | --Name | Nazwa wdrożenia. |
@@ -821,7 +821,7 @@ az spring-cloud config-server clear --name
                                         --resource-group -g
 ```
 
-| Wymagane parametry | |
+| Parametry wymagane | |
 | --- | ---: |
 | --Name | Nazwa chmury wiosennej platformy Azure. |
 | --Resource-Group-g | Nazwa grupy zasobów.  Grupę domyślną można skonfigurować przy użyciu `az configure --defaults group=<name>`. |
@@ -837,7 +837,7 @@ az spring-cloud config-server set --config-file
                                   --no-wait
 ```
 
-| Wymagane parametry | |
+| Parametry wymagane | |
 | --- | ---: |
 | --config-plik | Ścieżka pliku do manifestu YAML dla konfiguracji serwera konfiguracji. |
 | --Name | Nazwa chmury wiosennej platformy Azure. |
@@ -856,7 +856,7 @@ az spring-cloud config-server show --name -n
                                    --resource-group -g
 ```
 
-| Wymagane parametry | |
+| Parametry wymagane | |
 | --- | ---: |
 | --Name | Nazwa chmury wiosennej platformy Azure. |
 | --Resource-Group-g | Nazwa grupy zasobów.  Grupę domyślną można skonfigurować przy użyciu `az configure --defaults group=<name>`. |
@@ -880,7 +880,7 @@ az spring-cloud config-server git set --name -n
                                       --username
 ```
 
-| Wymagane parametry | |
+| Parametry wymagane | |
 | --- | ---: |
 | --Name | Nazwa chmury wiosennej platformy Azure. |
 | --Resource-Group-g | Nazwa grupy zasobów.  Grupę domyślną można skonfigurować przy użyciu `az configure --defaults group=<name>`. |
@@ -917,7 +917,7 @@ az spring-cloud config-server git repo add --name -n
                                            --username
 ```
 
-| Wymagane parametry | |
+| Parametry wymagane | |
 | --- | ---: |
 | --Name | Nazwa chmury wiosennej platformy Azure. |
 | --repo-Name | Identyfikator URI repozytorium. |
@@ -947,7 +947,7 @@ az spring-cloud config-server git repo list --name -n
                                        --defer
 ```
 
-| Wymagane parametry | |
+| Parametry wymagane | |
 | --- | ---: |
 | --Name | Nazwa chmury wiosennej platformy Azure. |
 | --Resource-Group-g | Nazwa grupy zasobów.  Grupę domyślną można skonfigurować przy użyciu `az configure --defaults group=<name>`. |
@@ -967,7 +967,7 @@ az spring-cloud config-server git repo remove --name -n
                                          --defer
 ```
 
-| Wymagane parametry | |
+| Parametry wymagane | |
 | --- | ---: |
 | --Name | Nazwa chmury wiosennej platformy Azure. |
 | --repo-Name | Identyfikator URI repozytorium. |
@@ -986,7 +986,7 @@ az spring-cloud test-endpoint disable --name -n
                                       --resource-group -g
 ```
 
-| Wymagane parametry | |
+| Parametry wymagane | |
 | --- | ---: |
 | --Name | Nazwa chmury wiosennej platformy Azure. |
 | --Resource-Group-g | Nazwa grupy zasobów.  Grupę domyślną można skonfigurować przy użyciu `az configure --defaults group=<name>`. |
@@ -1000,7 +1000,7 @@ az spring-cloud test-endpoint enable --name -n
                                      --resource-group -g
 ```
 
-| Wymagane parametry | |
+| Parametry wymagane | |
 | --- | ---: |
 | --Name | Nazwa chmury wiosennej platformy Azure. |
 | --Resource-Group-g | Nazwa grupy zasobów.  Grupę domyślną można skonfigurować przy użyciu `az configure --defaults group=<name>`. |
@@ -1016,7 +1016,7 @@ az spring-cloud test-endpoint list --name -n
                                    --deployment -d
 ```
 
-| Wymagane parametry | |
+| Parametry wymagane | |
 | --- | ---: |
 | --Name | Nazwa chmury wiosennej platformy Azure. |
 | --Resource-Group-g | Nazwa grupy zasobów.  Grupę domyślną można skonfigurować przy użyciu `az configure --defaults group=<name>`. |
@@ -1036,7 +1036,7 @@ az spring-cloud test-endpoint renew-key --name -n
                                         --type
 ```
 
-| Wymagane parametry | |
+| Parametry wymagane | |
 | --- | ---: |
 | --Name | Nazwa chmury wiosennej platformy Azure. |
 | --Resource-Group-g | Nazwa grupy zasobów.  Grupę domyślną można skonfigurować przy użyciu `az configure --defaults group=<name>`. |

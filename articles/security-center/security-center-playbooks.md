@@ -13,15 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/28/2018
 ms.author: memildin
-ms.openlocfilehash: faf297ef4b07b76f98bb7773c636cd8f6228bbc0
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: b4a2617bec145cf735058bc13c01bf8ebdfe6550
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71201728"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76275511"
 ---
 # <a name="security-playbook-in-azure-security-center-preview"></a>Element playbook zabezpieczeń w usłudze Azure Security Center (wersja zapoznawcza)
 Ten dokument ułatwia korzystanie z elementów playbook zabezpieczeń w usłudze Azure Security Center w celu reagowania na zdarzenia związane z zabezpieczeniami.
+
+> [!NOTE]
+> Nazwa funkcji Security element PlayBook została zmieniona na automatyzację przepływu pracy. Sprawdź stronę [Automatyzacja przepływu pracy (wersja zapoznawcza)](https://docs.microsoft.com/azure/security-center/workflow-automation) , aby uzyskać zaktualizowane informacje o zawartości. Jest to tymczasowa zarchiwizowana zawartość dostępna dla klientów, którzy wcześniej zapoznają się z nim i zostaną stopniowo usunięte. Każda funkcja w wersji zapoznawczej zawiera [dodatkowe warunki użytkowania Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)
 
 ## <a name="what-is-security-playbook-in-security-center"></a>Co to jest element playbook zabezpieczeń w usłudze Security Center?
 Element playbook zabezpieczeń to kolekcja procedur, które mogą być wykonywane w usłudze Security Center po wyzwoleniu określonego elementu playbook z poziomu wybranego alertu. Element playbook zabezpieczeń ułatwia automatyzowanie i organizowanie odpowiedzi na określony alert zabezpieczeń wykryty przez usługę Security Center. Elementy playbook zabezpieczeń w Security Center opierają się na usłudze [Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-what-are-logic-apps), co oznacza, że możesz korzystać z szablonów należących do kategorii zabezpieczeń w szablonach usługi Logic Apps, możesz modyfikować je na podstawie Twoich potrzeb lub możesz tworzyć nowe elementy playbook, korzystając z [przepływu pracy usługi Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-create-a-logic-app) i usługi Security Center jako wyzwalacza.
@@ -73,7 +76,7 @@ Element playbook zabezpieczeń możesz uruchomić w usłudze Security Center, je
 
 5. Na stronie Elementy playbook wybierz element playbook, który chcesz uruchomić, a następnie kliknij przycisk **Uruchom**. Jeśli chcesz zobaczyć element playbook przed jego wyzwoleniem, możesz go kliknąć — spowoduje to otwarcie projektanta.
 
-    ![Podręczniki](./media/security-center-playbooks/security-center-playbooks-fig13.png)
+    ![Elementy playbook](./media/security-center-playbooks/security-center-playbooks-fig13.png)
 
 ### <a name="history"></a>Historia
 

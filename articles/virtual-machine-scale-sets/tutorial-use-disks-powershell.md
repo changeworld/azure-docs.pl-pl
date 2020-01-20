@@ -1,27 +1,19 @@
 ---
-title: Samouczek — tworzenie dysków dla zestawów skalowania za pomocą programu Azure PowerShell i korzystanie z nich | Microsoft Docs
+title: Samouczek — Tworzenie i używanie dysków dla zestawów skalowania za pomocą Azure PowerShell
 description: Dowiedz się, jak za pomocą programu Azure PowerShell utworzyć dyski funkcji Dyski zarządzane i używać ich razem z zestawem skalowania maszyn wirtualnych, na przykład dodawać, przygotowywać, wyświetlać i odłączać dyski.
-services: virtual-machine-scale-sets
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
-editor: ''
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 6035a6ddd690db456edfa5777ca2d41e4be8b919
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: ba2d216b9827eeb499df40ceffca16780bdf5a02
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66728579"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278256"
 ---
 # <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-azure-powershell"></a>Samouczek: tworzenie dysków i używanie ich z zestawem skalowania maszyn wirtualnych za pośrednictwem programu Azure PowerShell
 
@@ -49,7 +41,7 @@ Podczas tworzenia lub skalowania zestawu skalowania do każdego wystąpienia mas
 **Dysk tymczasowy** — dyski tymczasowe używają dysku SSD, który znajduje się na tym samym hoście platformy Azure co wystąpienie maszyny wirtualnej. Dyski te są wysoce wydajne i można przy ich użyciu wykonywać operacje takie jak przetwarzanie danych tymczasowych. Jednak jeśli wystąpienie maszyny wirtualnej zostanie przeniesione na nowy host, wszystkie dane przechowywane na dysku tymczasowym zostaną usunięte. Rozmiar dysku tymczasowego zależy od rozmiaru wystąpienia maszyny wirtualnej. Dyski tymczasowe mają etykietę */dev/sdb* oraz punkt instalacji */mnt*.
 
 ### <a name="temporary-disk-sizes"></a>Rozmiary dysków tymczasowych
-| Type | Typowe rozmiary | Maksymalny rozmiar dysku tymczasowego (GiB) |
+| Typ | Typowe rozmiary | Maksymalny rozmiar dysku tymczasowego (GiB) |
 |----|----|----|
 | [Zastosowania ogólne](../virtual-machines/windows/sizes-general.md) | Seria A, B i D | 1600 |
 | [Optymalizacja pod kątem obliczeń](../virtual-machines/windows/sizes-compute.md) | Seria F | 576 |
@@ -63,7 +55,7 @@ Podczas tworzenia lub skalowania zestawu skalowania do każdego wystąpienia mas
 W przypadku konieczności instalowania aplikacji i przechowywania danych można dodać kolejne dyski z danymi. Dyski z danymi powinny być używane w sytuacji, gdy potrzebny jest trwały i dynamiczny magazyn danych. Każdy dysk z danymi ma maksymalną pojemność wynoszącą 4 TB. Liczba dysków z danymi, które można dołączyć, zależy od rozmiaru wystąpienia maszyny wirtualnej. Na każdy procesor wirtualny maszyny wirtualnej można dołączyć dwa dyski z danymi.
 
 ### <a name="max-data-disks-per-vm"></a>Maksymalna liczba dysków z danymi na maszynę wirtualną
-| Type | Typowe rozmiary | Maksymalna liczba dysków z danymi na maszynę wirtualną |
+| Typ | Typowe rozmiary | Maksymalna liczba dysków z danymi na maszynę wirtualną |
 |----|----|----|
 | [Zastosowania ogólne](../virtual-machines/windows/sizes-general.md) | Seria A, B i D | 64 |
 | [Optymalizacja pod kątem obliczeń](../virtual-machines/windows/sizes-compute.md) | Seria F | 64 |
@@ -85,8 +77,8 @@ W warstwie Premium są używane dyski o wysokiej wydajności i niskim opóźnien
 ### <a name="premium-disk-performance"></a>Wydajność dysku w warstwie Premium
 |Typ dysku magazynu Premium Storage | P4 | P6 | P10 | P20 | P30 | P40 | P50 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| Rozmiar dysku (zaokrąglony w górę) | 32 GB | 64 GB | 128 GB | 512 GB | 1024 GB (1 TB) | 2048 GB (2 TB) | 4095 GB (4 TB) |
-| Maksymalna liczba operacji wejścia/wyjścia na sekundę na dysk | 120 | 240 | 500 | 2,300 | 5000 | 7500 | 7,500 |
+| Rozmiar dysku (zaokrąglony w górę) | 32 GB | 64 GB | 128 GB | 512 GB | 1024 GB (1 TB) | 2048 GB (2 TB) | 4095 GB (4 TB) |
+| Maksymalna liczba operacji wejścia/wyjścia na sekundę na dysk | 120 | 240 | 500 | 2300 | 5000 | 7500 | 7500 |
 Przepływność na dysk | 25 MB/s | 50 MB/s | 100 MB/s | 150 MB/s | 200 MB/s | 250 MB/s | 250 MB/s |
 
 W powyższej tabeli podano maksymalną liczbę operacji wejścia/wyjścia na sekundę na dysk, ale wyższą wydajność można osiągnąć przez stosowanie wielu dysków z danymi. Na przykład maszyna wirtualna Standard_GS5 może osiągnąć maksymalnie 80 000 operacji we/wy na sekundę Aby uzyskać szczegółowe informacje na temat maksymalnej liczby operacji we/wy na sekundę na maszynę wirtualną, zobacz [Rozmiary maszyn wirtualnych z systemem Windows](../virtual-machines/windows/sizes.md).
@@ -312,7 +304,7 @@ Remove-AzResourceGroup -Name "myResourceGroup" -Force -AsJob
 ```
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 W tym samouczku omówiono tworzenie dysków i używanie ich z zestawami skalowania za pośrednictwem programu Azure PowerShell:
 
 > [!div class="checklist"]

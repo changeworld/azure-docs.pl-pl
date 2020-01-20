@@ -12,15 +12,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 10/01/2019
+ms.date: 01/17/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cef5058936a45badd700a573611c82398ca4d546
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 01ce1599f86082aef3ff53d298cc53896074af66
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74805709"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277596"
 ---
 # <a name="azure-proximity-placement-groups-for-optimal-network-latency-with-sap-applications"></a>Grupy umieszczania bliskości platformy Azure w celu uzyskania optymalnego opóźnienia sieci przy użyciu aplikacji SAP
 Aplikacje SAP oparte na architekturze SAP NetWeaver lub SAP S/4HANA są wrażliwe na opóźnienie sieci między warstwą aplikacji SAP a warstwą bazy danych SAP. Ta czułość jest wynikiem większości logiki biznesowej działającej w warstwie aplikacji. Ze względu na to, że warstwa aplikacji SAP uruchamia logikę biznesową, wystawia zapytania do warstwy bazy danych z dużą częstotliwością, a liczba tysięcy lub dziesiątki tysięcy na sekundę. W większości przypadków charakter tych zapytań jest prosty. Często można je uruchamiać w warstwie bazy danych w 500 mikrosekundach lub mniej.
@@ -156,7 +156,7 @@ Wynikiem tego wdrożenia jest:
 > Ze względu na to, że po wdrożeniu jednej maszyny wirtualnej DBMS w jednej strefie i drugiej maszynie wirtualnej DBMS do innej strefy w celu utworzenia konfiguracji wysokiej dostępności potrzebna jest inna grupa umieszczania bliskości dla każdej z tych stref. Ta sama wartość dotyczy wszystkich używanych zestawów dostępności.
 
 ## <a name="move-an-existing-system-into-proximity-placement-groups"></a>Przenieś istniejący system do grup umieszczania w sąsiedztwie
-Jeśli masz już wdrożone systemy SAP, możesz chcieć zoptymalizować opóźnienie sieci niektórych krytycznych systemów i zlokalizować warstwę aplikacji i warstwę DBMS w tym samym centrum danych. W publicznej wersji zapoznawczej grup umieszczania sąsiedztwa należy usunąć maszyny wirtualne i utworzyć nowe, aby przenieść system do grup umieszczania w sąsiedztwie. Obecnie nie można zamknąć maszyn wirtualnych i przypisać ich do grup umieszczania w sąsiedztwie.
+Jeśli masz już wdrożone systemy SAP, możesz chcieć zoptymalizować opóźnienie sieci niektórych krytycznych systemów i zlokalizować warstwę aplikacji i warstwę DBMS w tym samym centrum danych. Aby przenieść maszyny wirtualne kompletnego zestawu dostępności platformy Azure do istniejącej grupy umieszczania bliskości, która ma już zakres, należy zamknąć wszystkie maszyny wirtualne zestawu dostępności i przypisać zestaw dostępności do istniejącej grupy położenia bliskości za pośrednictwem Azure Portal, Program PowerShell lub interfejs wiersza polecenia. Jeśli chcesz przenieść maszynę wirtualną, która nie jest częścią zestawu dostępności do istniejącej grupy położenia bliskości, wystarczy zamknąć maszynę wirtualną i przypisać ją do istniejącej grupy umieszczania sąsiedztwa. 
 
 
 ## <a name="next-steps"></a>Następne kroki

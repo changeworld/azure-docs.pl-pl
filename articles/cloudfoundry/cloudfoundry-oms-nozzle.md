@@ -3,21 +3,20 @@ title: Wdrażanie usługi Azure Log Analytics dysz na potrzeby monitorowania Clo
 description: Wskazówki krok po kroku dotyczące wdrażania Cloud Foundry Loggregator dysz dla platformy Azure Log Analytics. Użyj dyszy do monitorowania metryk kondycji systemu Cloud Foundry i wydajności.
 services: virtual-machines-linux
 author: ningk
-manager: jeconnoc
 tags: Cloud-Foundry
 ms.assetid: 00c76c49-3738-494b-b70d-344d8efc0853
 ms.service: azure-monitor
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/22/2017
 ms.author: ningk
-ms.openlocfilehash: d71f1d6af0944a676e35dfe6347fafb8706f21b8
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: bf6691310ec964a1d6293f3a60c151e3d6f8e641
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74286639"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277361"
 ---
 # <a name="deploy-azure-log-analytics-nozzle-for-cloud-foundry-system-monitoring"></a>Wdrażanie usługi Azure Log Analytics dysz dla monitorowania systemu Cloud Foundry
 

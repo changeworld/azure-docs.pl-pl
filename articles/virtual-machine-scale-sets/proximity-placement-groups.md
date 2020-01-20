@@ -1,23 +1,19 @@
 ---
-title: Podgląd grup umieszczania w sąsiedztwie dla zestawów skalowania maszyn wirtualnych | Microsoft Docs
+title: Podgląd grup umieszczania w sąsiedztwie dla zestawów skalowania maszyn wirtualnych
 description: Dowiedz się więcej na temat tworzenia i używania grup umieszczania sąsiedztwa dla zestawów skalowania maszyn wirtualnych z systemem Windows na platformie Azure.
-services: virtual-machine-scale-sets
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
 ms.service: virtual-machine-scale-sets
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 07/01/2019
 ms.author: cynthn
-ms.openlocfilehash: 6a4f145c6431e98bbe9575f128ace30a23a1b972
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 4fa2949e2a7e1b99ac26caa35f967e9dc9cf359a
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67850355"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76273619"
 ---
 # <a name="preview-creating-and-using-proximity-placement-groups-using-powershell"></a>Wersja zapoznawcza: Tworzenie i używanie grup umieszczania zbliżeniowe przy użyciu programu PowerShell
 
@@ -58,7 +54,7 @@ Get-AzProximityPlacementGroup
 
 ## <a name="create-a-scale-set"></a>Tworzenie zestawu skalowania
 
-Utwórz skalę w grupie umieszczania sąsiedztwa przy `-ProximityPlacementGroup $ppg.Id` użyciu polecenia, aby odwołać się do identyfikatora grupy umieszczania bliskości podczas tworzenia zestawu skalowania przy użyciu polecenia [New-AzVMSS](https://docs.microsoft.com/powershell/module/az.compute/new-azvmss) .
+Utwórz skalę w grupie położenia zbliżeniowe przy użyciu `-ProximityPlacementGroup $ppg.Id`, aby odwołać się do identyfikatora grupy umieszczania bliskości w przypadku tworzenia zestawu skalowania przy użyciu polecenia [New-AzVMSS](https://docs.microsoft.com/powershell/module/az.compute/new-azvmss) .
 
 ```azurepowershell-interactive
 $scalesetName = "myVM"

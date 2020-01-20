@@ -1,31 +1,24 @@
 ---
-title: Microsoft Azure StorSimple wymagania systemowe macierzy wirtualnej | Microsoft Docs
+title: Microsoft Azure StorSimple wymagania systemowe macierzy wirtualnej
 description: Dowiedz się więcej o wymaganiach dotyczących oprogramowania i sieci dla macierzy wirtualnej StorSimple
-services: storsimple
-documentationcenter: NA
 author: alkohli
-manager: jeconnoc
-editor: ''
 ms.assetid: ea1d3bca-e71b-453d-aa82-440d2638f5e3
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
+ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 65d2a21a9f40470cee1dd9d713f9f9cb5431a245
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 38f9c432191ac613c1c0f8c02458e8bc4bf8232a
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516699"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76273771"
 ---
 # <a name="storsimple-virtual-array-system-requirements"></a>Wymagania systemowe macierzy wirtualnej StorSimple
 
 [!INCLUDE [storsimple-virtual-array-eol-banner](../../includes/storsimple-virtual-array-eol-banner.md)]
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 W tym artykule opisano ważne wymagania systemowe dla Microsoft Azure StorSimple macierzy wirtualnej oraz dla klientów magazynu uzyskujących dostęp do macierzy. Zalecamy dokładne zapoznanie się z informacjami przed wdrożeniem systemu StorSimple, a następnie odwoływanie się do niego w razie potrzeby podczas wdrażania i późniejszej operacji.
 
@@ -58,7 +51,7 @@ Wymagania dotyczące oprogramowania obejmują informacje dotyczące obsługiwany
 | Minimalna ilość pamięci (RAM) |8 GB <br> Dla serwera plików 8 GB dla mniej niż 2 000 000 plików i 16 GB dla 2-4 milionów plików|
 | Miejsce na dysku<sup>1</sup> |Dysk systemu operacyjnego — 80 GB <br></br>Dysk danych — 500 GB do 8 TB |
 | Minimalna liczba interfejsów sieciowych |1 |
-| Przepustowość internetowa<sup>2</sup> |Minimalna wymagana przepustowość: 5 MB/s <br> Zalecana przepustowość: 100 Mb/s <br> Szybkość transferu danych jest skalowana przy użyciu przepustowości Internetu. Na przykład 100 GB danych trwa 2 dni, aby przetransferować o 5 MB/s, co może prowadzić do błędów kopii zapasowych, ponieważ codzienne kopie zapasowe nie zostaną wykonane w ciągu dnia. Przepustowość 100 MB/s, 100 GB danych można przenieść w ciągu 2,5 godzin.   |
+| Przepustowość internetowa<sup>2</sup> |Wymagana minimalna przepustowość: 5 MB/s <br> Zalecana przepustowość: 100 MB/s <br> Szybkość transferu danych jest skalowana przy użyciu przepustowości Internetu. Na przykład 100 GB danych trwa 2 dni, aby przetransferować o 5 MB/s, co może prowadzić do błędów kopii zapasowych, ponieważ codzienne kopie zapasowe nie zostaną wykonane w ciągu dnia. Przepustowość 100 MB/s, 100 GB danych można przenieść w ciągu 2,5 godzin.   |
 
 <sup>1</sup> — alokowane elastycznie
 
@@ -94,17 +87,17 @@ Poniższe wymagania dotyczące oprogramowania dotyczą klientów SMB, którzy uz
 Obsługiwany jest tylko magazyn blokowych obiektów blob platformy Azure. Stronicowe obiekty blob nie są obsługiwane. Więcej informacji na [temat blokowych obiektów blob i stronicowych obiektów BLOB](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs).
 
 ## <a name="networking-requirements"></a>Wymagania dotyczące sieci
-Poniższa tabela zawiera listę portów, które należy otworzyć w zaporze, aby umożliwić obsługę ruchu iSCSI, SMB, chmury lub zarządzania. W tej tabeli *w* lub przychodzący odnosi się do kierunku, w którym przychodzące żądania klienta uzyskują dostęp do urządzenia. *Out* lub wychodzący odnosi się do kierunku, w którym Urządzenie StorSimple wysyła dane zewnętrznie, poza wdrożeniem: na przykład, ruch wychodzący do Internetu.
+Poniższa tabela zawiera listę portów, które należy otworzyć w zaporze, aby umożliwić obsługę ruchu iSCSI, SMB, chmury lub zarządzania. W tej tabeli *w* lub *przychodzący* odnosi się do kierunku, w którym przychodzące żądania klienta uzyskują dostęp do urządzenia. *Out* lub *wychodzący* odnosi się do kierunku, w którym Urządzenie StorSimple wysyła dane zewnętrznie, poza wdrożeniem: na przykład, ruch wychodzący do Internetu.
 
 | **Port nr<sup>1</sup>** | **Do lub do zewnątrz** | **Zakres portów** | **Wymagane** | **Uwagi** |
 | --- | --- | --- | --- | --- |
-| TCP 80 (HTTP) |Wyjście |WAN |Nie |Port wychodzący jest używany na potrzeby dostępu do Internetu w celu pobierania aktualizacji. <br></br>Wychodzący serwer proxy sieci Web jest konfigurowany przez użytkownika. |
-| TCP 443 (HTTPS) |Wyjście |WAN |Yes |Port wychodzący służy do uzyskiwania dostępu do danych w chmurze. <br></br>Wychodzący serwer proxy sieci Web jest konfigurowany przez użytkownika. |
-| UDP 53 (DNS) |Wyjście |WAN |W niektórych przypadkach: Zobacz uwagi. |Ten port jest wymagany tylko wtedy, gdy jest używany internetowy serwer DNS. <br></br> Należy pamiętać, że w przypadku wdrażania serwera plików zalecamy użycie lokalnego serwera DNS. |
-| UDP 123 (NTP) |Wyjście |WAN |W niektórych przypadkach: Zobacz uwagi. |Ten port jest wymagany tylko wtedy, gdy jest używany internetowy serwer NTP.<br></br> Należy pamiętać, że w przypadku wdrażania serwera plików zalecamy synchronizowanie czasu z Active Directory kontrolerami domeny. |
-| TCP 80 (HTTP) |W |LAN |Tak |Jest to port wejściowy dla lokalnego interfejsu użytkownika na urządzeniu StorSimple na potrzeby lokalnego zarządzania. <br></br> Należy pamiętać, że dostęp do lokalnego interfejsu użytkownika za pośrednictwem protokołu HTTP zostanie automatycznie przekierowany do protokołu HTTPS. |
-| TCP 443 (HTTPS) |W |LAN |Tak |Jest to port wejściowy dla lokalnego interfejsu użytkownika na urządzeniu StorSimple na potrzeby lokalnego zarządzania. |
-| TCP 3260 (iSCSI) |W |LAN |Nie |Ten port służy do uzyskiwania dostępu do danych za pośrednictwem protokołu iSCSI. |
+| TCP 80 (HTTP) |Out |WAN |Nie |Port wychodzący jest używany na potrzeby dostępu do Internetu w celu pobierania aktualizacji. <br></br>Wychodzący serwer proxy sieci Web jest konfigurowany przez użytkownika. |
+| TCP 443 (HTTPS) |Out |WAN |Tak |Port wychodzący służy do uzyskiwania dostępu do danych w chmurze. <br></br>Wychodzący serwer proxy sieci Web jest konfigurowany przez użytkownika. |
+| UDP 53 (DNS) |Out |WAN |W niektórych przypadkach: Zobacz uwagi. |Ten port jest wymagany tylko wtedy, gdy jest używany internetowy serwer DNS. <br></br> Należy pamiętać, że w przypadku wdrażania serwera plików zalecamy użycie lokalnego serwera DNS. |
+| UDP 123 (NTP) |Out |WAN |W niektórych przypadkach: Zobacz uwagi. |Ten port jest wymagany tylko wtedy, gdy jest używany internetowy serwer NTP.<br></br> Należy pamiętać, że w przypadku wdrażania serwera plików zalecamy synchronizowanie czasu z Active Directory kontrolerami domeny. |
+| TCP 80 (HTTP) |W |Sieć LAN |Tak |Jest to port wejściowy dla lokalnego interfejsu użytkownika na urządzeniu StorSimple na potrzeby lokalnego zarządzania. <br></br> Należy pamiętać, że dostęp do lokalnego interfejsu użytkownika za pośrednictwem protokołu HTTP zostanie automatycznie przekierowany do protokołu HTTPS. |
+| TCP 443 (HTTPS) |W |Sieć LAN |Tak |Jest to port wejściowy dla lokalnego interfejsu użytkownika na urządzeniu StorSimple na potrzeby lokalnego zarządzania. |
+| TCP 3260 (iSCSI) |W |Sieć LAN |Nie |Ten port służy do uzyskiwania dostępu do danych za pośrednictwem protokołu iSCSI. |
 
 <sup>1</sup> w publicznym Internecie nie trzeba otwierać żadnych portów przychodzących.
 
@@ -127,13 +120,13 @@ Zalecamy ustawienie reguł zapory dla ruchu wychodzącego na podstawie stałych 
 
 | Wzorzec adresu URL | Składnik/funkcjonalność |
 | --- | --- |
-| `https://*.storsimple.windowsazure.com/*`<br>`https://*.accesscontrol.windows.net/*`<br>`https://*.servicebus.windows.net/*` <br>`https://login.windows.net`|Usługa menedżera urządzeń StorSimple<br>Usługa kontroli dostępu<br>Magistrala usług Azure<br>Usługa uwierzytelniania|
+| `https://*.storsimple.windowsazure.com/*`<br>`https://*.accesscontrol.windows.net/*`<br>`https://*.servicebus.windows.net/*` <br>`https://login.windows.net`|Usługa Menedżer urządzeń StorSimple<br>Usługa kontroli dostępu<br>Azure Service Bus<br>Usługa uwierzytelniania|
 | `http://*.backup.windowsazure.com` |Rejestracja urządzenia |
 | `https://crl.microsoft.com/pki/*`<br>`https://www.microsoft.com/pki/*` |Odwoływanie certyfikatów |
 | `https://*.core.windows.net/*`<br>`https://*.data.microsoft.com`<br>`http://*.msftncsi.com` |Konta usługi Azure Storage i monitorowanie |
 | `https://*.windowsupdate.microsoft.com`<br>`https://*.windowsupdate.microsoft.com`<br>`https://*.update.microsoft.com`<br> `https://*.update.microsoft.com`<br>`http://*.windowsupdate.com`<br>`https://download.microsoft.com`<br>`http://wustat.windows.com`<br>`https://ntservicepack.microsoft.com` |Serwery Microsoft Update<br> |
 | `http://*.deploy.akamaitechnologies.com` |Akamai CDN |
-| `https://*.partners.extranet.microsoft.com/*` |Pakiet dla pomocy technicznej |
+| `https://*.partners.extranet.microsoft.com/*` |Pakiet pomocy technicznej |
 | `https://*.data.microsoft.com` |Usługa telemetrii w systemie Windows, zobacz [Aktualizacja dotycząca środowiska klienta i telemetrii diagnostyki](https://support.microsoft.com/en-us/kb/3068708) |
 
 ## <a name="next-steps"></a>Następne kroki

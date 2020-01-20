@@ -1,60 +1,58 @@
 ---
-title: (PRZESTARZAŁE) Monitorowanie klastra Kubernetes na platformie Azure za pomocą usługi Datadog
-description: Monitorowanie klastra Kubernetes w usłudze Azure Container Service przy użyciu pomocą usługi Datadog
-services: container-service
+title: PRZESTARZAŁE Monitorowanie klastra usługi Azure Kubernetes za pomocą usługi Datadog
+description: Monitorowanie klastra Kubernetes w Azure Container Service przy użyciu usługi Datadog
 author: bburns
-manager: jeconnoc
 ms.service: container-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/09/2016
 ms.author: bburns
 ms.custom: mvc
-ms.openlocfilehash: 6a682c199b40035bfd44fc5611a7d44b49f7b3ab
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c8ed146a224ec4225a7a0e85c76227fb1dc71b0b
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60712342"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76271050"
 ---
-# <a name="deprecated-monitor-an-azure-container-service-cluster-with-datadog"></a>(PRZESTARZAŁE) Monitorowanie klastra usługi Azure Container Service za pomocą usługi DataDog
+# <a name="deprecated-monitor-an-azure-container-service-cluster-with-datadog"></a>PRZESTARZAŁE Monitorowanie klastra Azure Container Service przy użyciu usługi Datadog
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-W tym przewodniku przyjęto założenie, iż [utworzone za pomocą usługi Azure Container Service klastra Kubernetes](container-service-kubernetes-walkthrough.md).
+W tym instruktażu przyjęto założenie, że [utworzono klaster Kubernetes przy użyciu Azure Container Service](container-service-kubernetes-walkthrough.md).
 
-Zakłada również, że masz `az` wiersza polecenia platformy Azure i `kubectl` narzędzia są zainstalowane.
+Przyjęto również założenie, że masz zainstalowaną `az` interfejs wiersza polecenia platformy Azure i narzędzia `kubectl`.
 
-Można sprawdzić, czy `az` zainstalowane, uruchamiając narzędzie:
+Możesz sprawdzić, czy masz narzędzie `az` zainstalowane, uruchamiając:
 
 ```console
 $ az --version
 ```
 
-Jeśli nie masz `az` narzędzie jest zainstalowane, istnieją instrukcje [tutaj](https://github.com/azure/azure-cli#installation).
+Jeśli nie masz zainstalowanego narzędzia `az`, w [tym miejscu](https://github.com/azure/azure-cli#installation)znajdują się instrukcje.
 
-Można sprawdzić, czy `kubectl` zainstalowane, uruchamiając narzędzie:
+Możesz sprawdzić, czy masz narzędzie `kubectl` zainstalowane, uruchamiając:
 
 ```console
 $ kubectl version
 ```
 
-Jeśli nie masz `kubectl` zainstalowany, możesz uruchomić:
+Jeśli nie masz zainstalowanego `kubectl`, możesz uruchomić następujące polecenie:
 
 ```console
 $ az acs kubernetes install-cli
 ```
 
 ## <a name="datadog"></a>DataDog
-Pomocą usługi Datadog jest usługą monitorowania, która gromadzi dane monitorowania z kontenerów w klastrze usługi Azure Container Service. Pomocą usługi Datadog ma na pulpicie nawigacyjnym integracji platformy Docker, którym można zobaczyć określonych metryk w Twoich kontenerów. Metryki zebrane z kontenerów są uporządkowane według procesora CPU, pamięci, sieci i we/wy. Pomocą usługi Datadog dzieli metryki na kontenerach i obrazy.
+Usługi Datadog to usługa monitorowania, która zbiera dane monitorowania z kontenerów w klastrze Azure Container Service. Usługi Datadog ma pulpit nawigacyjny integracji platformy Docker, w którym można zobaczyć określone metryki w kontenerach. Metryki zbierane z kontenerów są zorganizowane według procesora CPU, pamięci, sieci i operacji we/wy. Usługi Datadog dzieli metryki na kontenery i obrazy.
 
-Najpierw musisz [Tworzenie konta usługi](https://www.datadoghq.com/lpg/)
+Najpierw musisz [utworzyć konto](https://www.datadoghq.com/lpg/)
 
-## <a name="installing-the-datadog-agent-with-a-daemonset"></a>Instalowanie agenta pomocą usługi Datadog z DaemonSet
-DaemonSets są używane przez rozwiązanie Kubernetes do uruchomienia pojedynczego wystąpienia kontenera na każdym hoście w klastrze.
-Są idealne do uruchamiania agentów monitorowania.
+## <a name="installing-the-datadog-agent-with-a-daemonset"></a>Instalowanie agenta usługi Datadog z elementu daemonset
+DaemonSets są używane przez Kubernetes do uruchamiania pojedynczego wystąpienia kontenera na każdym hoście w klastrze.
+Są one idealne do uruchamiania agentów monitorowania.
 
-Po zalogowaniu się w pomocą usługi Datadog, możesz wykonać [instrukcje pomocą usługi Datadog](https://app.datadoghq.com/account/settings#agent/kubernetes) instalacji pomocą usługi Datadog agentów w klastrze za pomocą DaemonSet.
+Po zalogowaniu się do usługi usługi Datadog można wykonać [instrukcje usługi Datadog](https://app.datadoghq.com/account/settings#agent/kubernetes) w celu zainstalowania agentów usługi Datadog w klastrze za pomocą elementu daemonset.
 
 ## <a name="conclusion"></a>Podsumowanie
-To wszystko! Po skonfigurowaniu i uruchomieniu agentów dane w konsoli powinny być widoczne w ciągu kilku minut. Możesz odwiedzić stronę zintegrowane [pulpit nawigacyjny platformy kubernetes](https://app.datadoghq.com/screen/integration/kubernetes) Aby wyświetlić podsumowanie Twojego klastra.
+Gotowe. Gdy agenci zostaną zainstalowani, zobacz dane w konsoli w ciągu kilku minut. Aby zobaczyć podsumowanie klastra, można odwiedzić [pulpit nawigacyjny](https://app.datadoghq.com/screen/integration/kubernetes) zintegrowanej Kubernetes.

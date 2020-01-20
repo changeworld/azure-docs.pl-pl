@@ -1,20 +1,18 @@
 ---
 title: (PRZESTARZAŁE) Wprowadzenie do usługi Azure Container Service dla rozwiązania Kubernetes
 description: Usługa Azure Container Service dla rozwiązania Kubernetes ułatwia wdrażanie aplikacji opartych na kontenerach i zarządzanie nimi na platformie Azure.
-services: container-service
 author: gabrtv
-manager: jeconnoc
 ms.service: container-service
 ms.topic: overview
 ms.date: 07/21/2017
 ms.author: gamonroy
 ms.custom: mvc
-ms.openlocfilehash: e00ac57cc36b3331cfb847ecedc6c75132cdeb6b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c0ef7255a087dd5dc26532316deab337f9eff715
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60712565"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76271583"
 ---
 # <a name="deprecated-introduction-to-azure-container-service-for-kubernetes"></a>(PRZESTARZAŁE) Wprowadzenie do usługi Azure Container Service dla rozwiązania Kubernetes
 
@@ -48,7 +46,7 @@ Diagram architektury rozwiązania Kubernetes wdrażanej za pomocą usługi Azure
 
 ![Usługa Azure Container Service skoordynowana do użycia narzędzia Kubernetes.](media/acs-intro/kubernetes.png)
 
-## <a name="videos"></a>Filmy wideo
+## <a name="videos"></a>Filmy
 
 Obsługa klastra Kubernetes w usłudze Azure Container Service (Azure Friday, styczeń 2017 r.):
 
@@ -62,6 +60,6 @@ Narzędzia do tworzenia i wdrażania aplikacji w systemie Kubernetes (Azure Open
 >
 >
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Zapoznaj się z [przewodnikiem Szybki start dotyczącym rozwiązania Kubernetes](container-service-kubernetes-walkthrough.md), aby rozpocząć eksplorowanie usługi Azure Container Service już dziś.

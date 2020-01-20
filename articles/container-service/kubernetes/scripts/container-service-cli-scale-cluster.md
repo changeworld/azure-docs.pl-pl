@@ -1,27 +1,21 @@
 ---
-title: Przykład skryptu interfejsu wiersza polecenia platformy Azure — skalowanie klastra usługi ACS | Microsoft Docs
+title: Przykład skryptu interfejsu wiersza polecenia platformy Azure — skalowanie klastra usługi ACS
 description: Przykład skryptu interfejsu wiersza polecenia platformy Azure — skalowanie klastra usługi ACS
-services: container-service
-documentationcenter: ''
 author: iainfoulds
-manager: jeconnoc
-editor: ''
 tags: acs, azure-container-service
 keywords: Docker, kontenery, mikrousługi, Kubernetes, DC/OS, Azure
 ms.assetid: ''
 ms.service: container-service
 ms.devlang: azurecli
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 05/30/2017
 ms.author: iainfou
-ms.openlocfilehash: 199a2f09df57878d6523cfed6873001f190e14f5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7e1136c179c5729f5ed0de189a90bbbb31412ab7
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60895250"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76270652"
 ---
 # <a name="deprecated-scale-an-azure-container-service-cluster"></a>(PRZESTARZAŁE) Skalowanie klastra usługi Azure Container Service
 
@@ -55,7 +49,7 @@ Ten skrypt używa następujących poleceń w celu utworzenia wdrożenia. Każda 
 |---|---|
 | [az acs scale](/cli/azure/acs#az-acs-scale) | Skaluje klaster usługi ACS. |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia platformy Azure, zobacz [dokumentację interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure).
 

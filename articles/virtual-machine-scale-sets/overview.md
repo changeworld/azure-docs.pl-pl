@@ -1,66 +1,58 @@
 ---
-title: Omówienie zestawów skalowania maszyn wirtualnych platformy Azure | Microsoft Docs
-description: Dowiedz się więcej o zestawach skalowania maszyn wirtualnych platformy Azure oraz o automatycznym skalowaniu aplikacji
-services: virtual-machine-scale-sets
-documentationcenter: ''
+title: Omówienie zestawów skalowania maszyn wirtualnych platformy Azure
+description: Dowiedz się więcej o zestawach skalowania maszyn wirtualnych platformy Azure i o sposobie automatycznego skalowania swoich aplikacji
 author: mayanknayar
-manager: drewm
-editor: ''
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: overview
 ms.custom: mvc
 ms.date: 09/26/2019
 ms.author: manayar
-ms.openlocfilehash: 73580814dcfe8f967684aca4ce433a40e7bbedc0
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: e6201f9ac2e9b813de5a4622fc7996eb1202a164
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71679386"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76273704"
 ---
 # <a name="what-are-virtual-machine-scale-sets"></a>Co to są zestawy skalowania maszyn wirtualnych?
-Zestawy skalowania maszyn wirtualnych platformy Azure umożliwiają tworzenie i Zarządzanie grupą takich samych maszyn wirtualnych o zrównoważonym obciążeniu. Liczba wystąpień maszyn wirtualnych może być automatycznie zwiększana lub zmniejszana w odpowiedzi na zapotrzebowanie lub zdefiniowany harmonogram. Zestawy skalowania zapewniają wysoką dostępność aplikacji i umożliwiają centralne zarządzanie, Konfigurowanie i aktualizowanie dużej liczby maszyn wirtualnych. Za pomocą zestawów skalowania maszyn wirtualnych można tworzyć usługi na dużą skalę dla obszarów takich jak obliczenia, dane Big Data i obciążenia kontenerów.
+Zestawy skalowania maszyn wirtualnych platformy Azure pozwalają utworzyć grupę identycznych, mających zrównoważone obciążenie maszyn wirtualnych i zarządzać nimi. Liczba wystąpień maszyn wirtualnych może automatycznie zwiększać lub zmniejszać się w reakcji na zapotrzebowanie lub zdefiniowany harmonogram. Zestawy skalowania zapewniają wysoką dostępność Twoim aplikacjom i pozwalają na centralnie zarządzanie, konfigurowanie i aktualizowanie dużej liczby maszyn wirtualnych. Za pomocą zestawów skalowania maszyn wirtualnych możesz tworzyć usługi na dużą skalę dla takich obszarów jak obliczenia, dane big data i obciążenia kontenera.
 
 
 ## <a name="why-use-virtual-machine-scale-sets"></a>Dlaczego warto używać zestawów skalowania maszyn wirtualnych?
-Aby zapewnić nadmiarowość i lepszą wydajność, aplikacje są zwykle rozproszone w wielu wystąpieniach. Klienci mogą uzyskać dostęp do aplikacji za pomocą modułu równoważenia obciążenia, który dystrybuuje żądania do jednego z wystąpień aplikacji. Jeśli musisz przeprowadzić konserwację lub zaktualizować wystąpienie aplikacji, klienci muszą zostać przedystrybuowani do innego dostępnego wystąpienia aplikacji. Aby zapewnić dodatkowe zapotrzebowanie na klienta, może być konieczne zwiększenie liczby wystąpień aplikacji, na których działa aplikacja.
+Aby zapewnić nadmiarowość i poprawić wydajność, aplikacje są zazwyczaj dystrybuowane w wielu wystąpieniach. Klienci mogą uzyskać dostęp do Twojej aplikacji za pośrednictwem modułu równoważenia obciążenia, który rozdziela żądania do jednego z wystąpień aplikacji. Jeśli musisz przeprowadzić konserwację lub zaktualizować wystąpienie aplikacji, Twoi klienci muszą zostać przekierowani do innego dostępnego wystąpienia aplikacji. Aby nadążyć za dodatkowym zapotrzebowaniem klienta, może być konieczne zwiększenie liczby wystąpień aplikacji, gdzie jest uruchamiana Twoja aplikacja.
 
-Zestawy skalowania maszyn wirtualnych platformy Azure zapewniają funkcje zarządzania dla aplikacji, które działają na wielu maszynach wirtualnych, [Automatyczne skalowanie zasobów](virtual-machine-scale-sets-autoscale-overview.md)i równoważenie obciążenia ruchu sieciowego. Zestawy skalowania zapewniają następujące kluczowe korzyści:
+Zestawy skalowania maszyn wirtualnych platformy Azure zapewniają możliwości zarządzania aplikacjom działającym na wielu maszynach wirtualnych, [automatyczne skalowanie zasobów](virtual-machine-scale-sets-autoscale-overview.md) i równoważenie obciążenia ruchem. Zestawy skalowania zapewniają następujące kluczowe korzyści:
 
 - **Łatwe tworzenie wielu maszyn wirtualnych i zarządzanie nimi**
-    - Jeśli masz wiele maszyn wirtualnych, na których działa aplikacja, ważne jest, aby zachować spójną konfigurację w danym środowisku. Aby zapewnić niezawodne działanie aplikacji, rozmiar maszyny wirtualnej, konfigurację dysku i instalacje aplikacji powinny być zgodne ze wszystkimi maszynami wirtualnymi.
-    - W przypadku zestawów skalowania wszystkie wystąpienia maszyn wirtualnych są tworzone na podstawie tego samego podstawowego obrazu systemu operacyjnego i konfiguracji. Takie podejście umożliwia łatwe zarządzanie setkami maszyn wirtualnych bez dodatkowych zadań konfiguracyjnych ani zarządzania siecią.
-    - Zestawy skalowania obsługują korzystanie z [modułu równoważenia obciążenia platformy Azure](../load-balancer/load-balancer-overview.md) na potrzeby dystrybucji ruchu w warstwie 4 i na [platformie Azure Application Gateway](../application-gateway/application-gateway-introduction.md) w celu uzyskania bardziej zaawansowanej dystrybucji ruchu w warstwie 7 i zakończenia protokołu SSL.
+    - Jeśli masz wiele maszyn wirtualnych, na których działa Twoja aplikacja, ważne jest zachowanie spójnej konfiguracji w całym środowisku. Zapewniana wydajność aplikacji, rozmiar maszyny wirtualnej, konfiguracja dysku i instalacje aplikacji powinny być zgodne na wszystkich maszynach wirtualnych.
+    - Za pomocą zestawów skalowania wszystkie wystąpienia maszyn wirtualnych są tworzone na podstawie tego samego podstawowego obrazu systemu operacyjnego i jego konfiguracji. Takie podejście umożliwia łatwe zarządzanie setkami maszyn wirtualnych bez dodatkowych zadań konfiguracji lub zarządzania siecią.
+    - Zestawy skalowania obsługują korzystanie z [modułu równoważenia obciążenia platformy Azure](../load-balancer/load-balancer-overview.md) dla podstawowej dystrybucji ruchu warstwy 4 oraz z [usługi Azure Application Gateway](../application-gateway/application-gateway-introduction.md) dla bardziej zaawansowanej dystrybucji ruchu warstwy 7 i kończenia żądań SSL.
 
 - **Zapewnia wysoką dostępność i odporność aplikacji**
-    - Zestawy skalowania są używane do uruchamiania wielu wystąpień aplikacji. Jeśli jedno z tych wystąpień maszyn wirtualnych ma problem, klienci nadal uzyskują dostęp do aplikacji za pomocą jednego z pozostałych wystąpień maszyn wirtualnych z minimalnym zakłóceniem.
-    - Aby uzyskać dodatkową dostępność, można użyć [strefy dostępności](../availability-zones/az-overview.md) do automatycznego dystrybuowania wystąpień maszyn wirtualnych w zestawie skalowania w jednym centrum danych lub w wielu centrach danych.
+    - Zestawy skalowania służą do uruchamiania wielu wystąpień aplikacji. Jeśli jedno z tych wystąpień maszyny wirtualnej ma problem, klienci nadal mają dostęp do aplikacji za pośrednictwem jednego z innych wystąpień maszyn wirtualnych z minimalną przerwą.
+    - Aby uzyskać dodatkową dostępność, możesz użyć [stref dostępności](../availability-zones/az-overview.md) w celu automatycznej dystrybucji wystąpień maszyn wirtualnych w zestawie skalowania w jednym centrum danych lub w wielu centrach danych.
 
-- **Zezwala aplikacji na automatyczne skalowanie jako zmiany zapotrzebowania na zasoby**
-    - Żądanie klienta dotyczące aplikacji może się zmienić w ciągu dnia lub tygodnia. Aby dopasować zapotrzebowanie klientów, zestawy skalowania mogą automatycznie zwiększać liczbę wystąpień maszyn wirtualnych w miarę wzrostu zapotrzebowania aplikacji, a następnie zmniejszyć liczbę wystąpień maszyn wirtualnych w miarę zmniejszania zapotrzebowania.
-    - Funkcja automatycznego skalowania minimalizuje także liczbę niepotrzebnych wystąpień maszyn wirtualnych, na których jest uruchamiana aplikacja, gdy zapotrzebowanie jest niskie, a klienci nadal otrzymują akceptowalny poziom wydajności w miarę wzrostu zapotrzebowania i automatycznie dodawane są dodatkowe wystąpienia maszyn wirtualnych. Zapewnia to zmniejszenie kosztów i wydajne tworzenie zasobów platformy Azure zgodnie z potrzebami.
+- **Pozwala aplikacji na automatyczne skalowanie odpowiednio do zmian zapotrzebowania na zasoby**
+    - Zapotrzebowanie klienta Twojej aplikacji może ulec zmianie w ciągu dnia lub tygodnia. Aby dostosować się do zapotrzebowania klienta, zestawy skalowania mogą automatycznie zwiększać liczbę wystąpień maszyn wirtualnych wraz ze wzrostem zapotrzebowania na aplikację, a następnie zmniejszać liczbę wystąpień maszyn wirtualnych, gdy zmniejsza się zapotrzebowanie.
+    - Funkcja automatycznego skalowania minimalizuje również liczbę niepotrzebnych wystąpień maszyn wirtualnych, na których jest uruchomiona Twoja aplikacja, gdy zapotrzebowanie jest niskie, przy czym klienci nadal mają zapewniony akceptowalny poziom wydajności w miarę wzrostu zapotrzebowania, a dodatkowe wystąpienia maszyn wirtualnych są automatycznie dodawane. Ta możliwość ułatwia obniżenie kosztów i efektywnie tworzy zasoby platformy Azure zgodnie z potrzebami.
 
 - **Działa na dużą skalę**
-    - Zestawy skalowania obsługują do 1 000 wystąpień maszyn wirtualnych. W przypadku utworzenia i przekazania własnych niestandardowych obrazów maszyn wirtualnych limit wynosi 600 wystąpień maszyn wirtualnych.
-    - Aby uzyskać najlepszą wydajność w przypadku obciążeń produkcyjnych, użyj [usługi Azure Managed disks](../virtual-machines/windows/managed-disks-overview.md).
+    - Zestaw skalowania obsługuje maksymalnie 1000 wystąpień maszyn wirtualnych. W przypadku utworzenia i przekazania własnych niestandardowych obrazów maszyn wirtualnych limit wynosi 600 wystąpień maszyn wirtualnych.
+    - Aby uzyskać najlepszą wydajność dla obciążeń produkcyjnych, użyj funkcji [Dyski zarządzane platformy Azure](../virtual-machines/windows/managed-disks-overview.md).
 
 
 ## <a name="differences-between-virtual-machines-and-scale-sets"></a>Różnice między maszynami wirtualnymi i zestawami skalowania
-Zestawy skalowania są tworzone z maszyn wirtualnych. Dzięki zestawom skalowania warstwy zarządzania i automatyzacji są udostępniane do uruchamiania i skalowania aplikacji. Zamiast tego można ręcznie tworzyć poszczególne maszyny wirtualne i zarządzać nimi lub integrować istniejące narzędzia w celu utworzenia podobnego poziomu automatyzacji. W poniższej tabeli przedstawiono zalety zestawów skalowania w porównaniu do ręcznego zarządzania wieloma wystąpieniami maszyn wirtualnych.
+Zestawy skalowania są tworzone z maszyn wirtualnych. Zestawy skalowania udostępniają warstwy zarządzania i automatyzacji do uruchamiania i skalowania Twoich aplikacji. Zamiast tego możesz ręcznie tworzyć poszczególne maszyny wirtualne i zarządzać nimi lub integrować istniejące narzędzia do tworzenia podobnego poziomu automatyzacji. W poniższej tabeli przedstawiono zarys korzyści z zestawów skalowania w porównaniu do ręcznego zarządzania wieloma wystąpieniami maszyn wirtualnych.
 
-| Scenariusz                           | Ręczna Grupa maszyn wirtualnych                                                                    | Zestaw skalowania maszyn wirtualnych |
+| Scenariusz                           | Ręczne grupowanie maszyn wirtualnych                                                                    | Zestaw skalowania maszyn wirtualnych |
 |------------------------------------|----------------------------------------------------------------------------------------|---------------------------|
-| Dodawanie kolejnych wystąpień maszyn wirtualnych        | Proces ręczny do tworzenia, konfigurowania i zapewniania zgodności                             | Automatyczne tworzenie z poziomu konfiguracji centralnej |
-| Równoważenie i dystrybucja ruchu | Proces ręczny tworzenia i konfigurowania modułu równoważenia obciążenia platformy Azure lub Application Gateway      | Możliwość automatycznego tworzenia i integrowania z usługą równoważenia obciążenia platformy Azure lub Application Gateway |
-| Wysoka dostępność i nadmiarowość   | Ręczne tworzenie zestawu dostępności lub dystrybuowanie i śledzenie maszyn wirtualnych między Strefy dostępności | Automatyczne dystrybuowanie wystąpień maszyn wirtualnych w różnych Strefy dostępności lub zestawach dostępności |
-| Skalowanie maszyn wirtualnych                     | Ręczne monitorowanie i Azure Automation                                                 | Automatyczne skalowanie na podstawie metryk hosta, metryki gościa, Application Insights lub harmonogramu |
+| Dodawanie kolejnych wystąpień maszyn wirtualnych        | Ręczny proces tworzenia, konfigurowania i zapewniania zgodności                             | Automatyczne tworzenie na podstawie centralnej konfiguracji |
+| Równoważenie i dystrybucja ruchu | Ręczny proces tworzenia i konfigurowania modułu równoważenia obciążenia platformy Azure lub usługi Application Gateway      | Umożliwia automatyczne tworzenie i integrowanie z modułem równoważenia obciążenia platformy Azure lub usługą Application Gateway |
+| Wysoka dostępność i nadmiarowość   | Ręczne tworzenie zestawu dostępności lub dystrybuowanie i śledzenie maszyn wirtualnych w różnych strefach dostępności | Automatyczna dystrybucja wystąpień maszyn wirtualnych w strefach dostępności lub zestawach dostępności |
+| Skalowanie maszyn wirtualnych                     | Ręczne monitorowanie i usługa Azure Automation                                                 | Automatyczne skalowanie na podstawie metryk hosta, metryk gościa, usługi Application Insights lub harmonogramu |
 
-Nie ma dodatkowych kosztów dla zestawów skalowania. Płacisz tylko za podstawowe zasoby obliczeniowe, takie jak wystąpienia maszyn wirtualnych, moduł równoważenia obciążenia lub magazyn dysk zarządzany. Funkcje zarządzania i automatyzacji, takie jak automatyczne skalowanie i nadmiarowość, nie wiążą się z dodatkowymi opłatami za korzystanie z maszyn wirtualnych.
+Używanie zestawów skalowania nie pociąga za sobą dodatkowych kosztów. Płacisz tylko za podstawowe zasoby obliczeniowe, takie jak wystąpienia maszyn wirtualnych, moduł równoważenia obciążenia lub miejsce na dysku zarządzanym. Funkcje zarządzania i automatyzacji, takie jak skalowanie automatyczne i nadmiarowość, nie pociągają za sobą dodatkowych opłat za korzystanie z maszyn wirtualnych.
 
 ## <a name="how-to-monitor-your-scale-sets"></a>Jak monitorować zestawy skalowania
 
@@ -69,7 +61,7 @@ Użyj [Azure monitor dla maszyn wirtualnych](../azure-monitor/insights/vminsight
 Włącz monitorowanie [aplikacji zestawu skalowania maszyn wirtualnych](../azure-monitor/app/azure-vm-vmss-apps.md) za pomocą Application Insights, aby zbierać szczegółowe informacje o aplikacji, w tym o widokach stron, żądaniach aplikacji i wyjątkach. Sprawdź dostępność aplikacji, konfigurując [Test dostępności](../azure-monitor/app/monitor-web-app-availability.md) w celu zasymulowania ruchu użytkownika.
 
 ## <a name="next-steps"></a>Następne kroki
-Aby rozpocząć, Utwórz pierwszy zestaw skalowania maszyn wirtualnych w Azure Portal.
+Aby rozpocząć, utwórz swój pierwszy zestaw skalowania maszyn wirtualnych w witrynie Azure Portal.
 
 > [!div class="nextstepaction"]
-> [Tworzenie zestawu skalowania w Azure Portal](quick-create-portal.md)
+> [Tworzenie zestawu skalowania w witrynie Azure Portal](quick-create-portal.md)

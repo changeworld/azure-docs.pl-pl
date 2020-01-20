@@ -4,7 +4,6 @@ description: Przykładowy skrypt programu Azure PowerShell — zarządzanie ruch
 services: application-gateway
 documentationcenter: networking
 author: vhorne
-manager: jpconnock
 editor: tysonn
 tags: azure-resource-manager
 ms.service: application-gateway
@@ -14,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 01/29/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: b9b34f124d1260fe17d1f43c6e97f20fd116c5f8
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 89915cdd4ae88f1092c45e1d428679a99f1ac906
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65202836"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76273397"
 ---
 # <a name="manage-web-traffic-with-azure-powershell"></a>Zarządzanie ruchem internetowym przy użyciu programu Azure PowerShell
 
@@ -63,11 +62,11 @@ Ten skrypt używa następujących poleceń w celu utworzenia wdrożenia. Każda 
 | [Set-AzVmssStorageProfile](/powershell/module/az.compute/set-azvmssstorageprofile) | Tworzy profil magazynu dla zestawu skalowania. |
 | [Set-AzVmssOsProfile](/powershell/module/az.compute/set-azvmssosprofile) | Definiuje system operacyjny dla zestawu skalowania. |
 | [Add-AzVmssNetworkInterfaceConfiguration](/powershell/module/az.compute/add-azvmssnetworkinterfaceconfiguration) | Definiuje interfejs sieciowy dla zestawu skalowania. |
-| [New-AzVmss](/powershell/module/az.compute/new-azvm) | Tworzy zestaw skalowania maszyn wirtualnych. |
+| [New-AzVmss](/powershell/module/az.compute/new-azvm) | Tworzenie zestawu skalowania maszyn wirtualnych. |
 | [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress) | Pobiera publiczny adres IP bramy aplikacji. |
 |[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Usuwa grupę zasobów i wszystkie zasoby w niej zawarte. | 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji na temat modułu Azure PowerShell, zobacz [dokumentację programu Azure PowerShell](/powershell/azure/overview).
 

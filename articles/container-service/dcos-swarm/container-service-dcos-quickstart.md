@@ -1,20 +1,18 @@
 ---
 title: (PRZESTARZAŁE) Szybki start — wdrażanie klastra DC/OS w usłudze Azure Container Service
 description: Szybki start — wdrażanie klastra DC/OS w usłudze Azure Container Service
-services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
 ms.topic: quickstart
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: efaf82c3f378f572c289b587dbe5df1923a58c62
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9efedd5b619a2a3bd592019fea3ca48b7244ca10
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61457060"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278501"
 ---
 # <a name="deprecated-deploy-a-dcos-cluster"></a>(PRZESTARZAŁE) Wdrażanie klastra DC/OS
 
@@ -165,7 +163,7 @@ Gdy klaster nie będzie już potrzebny, można użyć polecenia [az group delete
 az group delete --name myResourceGroup --no-wait
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Podczas pracy z tym przewodnikiem Szybki start wdrożono klaster DC/OS i uruchomiono w nim prosty kontener platformy Docker. Aby dowiedzieć się więcej na temat usługi Azure Container Service, przejdź do samouczków dotyczących usługi Azure Container Service.
 

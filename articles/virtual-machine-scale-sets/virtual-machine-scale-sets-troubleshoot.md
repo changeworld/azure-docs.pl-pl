@@ -1,86 +1,80 @@
 ---
-title: Rozwiązywanie problemów z skalowania automatycznego za pomocą programu Virtual Machine Scale Sets | Dokumentacja firmy Microsoft
-description: Rozwiązywanie problemów z skalowania automatycznego za pomocą zestawów skalowania maszyn wirtualnych. Dowiedz się, typowe problemy występujące oraz sposobów ich rozwiązywania.
-services: virtual-machine-scale-sets
-documentationcenter: ''
+title: Rozwiązywanie problemów z automatycznym skalowaniem za pomocą Virtual Machine Scale Sets
+description: Rozwiązywanie problemów z automatycznym skalowaniem za pomocą Virtual Machine Scale Sets. Poznaj typowe problemy napotkane i sposoby ich rozwiązywania.
 author: mayanknayar
-manager: jeconnoc
-editor: ''
 tags: azure-resource-manager
 ms.assetid: c7d87b72-ee24-4e52-9377-a42f337f76fa
 ms.service: virtual-machine-scale-sets
-ms.workload: na
 ms.tgt_pltfrm: windows
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/16/2017
 ms.author: manayar
-ms.openlocfilehash: 3308b22606e87853aad7e3d3a3995aab8d1b5401
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 923967a902f611ce845fbdc096fd2c02e681bb6e
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60803542"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76272430"
 ---
-# <a name="troubleshooting-autoscale-with-virtual-machine-scale-sets"></a>Rozwiązywanie problemów z skalowania automatycznego za pomocą zestawów skalowania maszyn wirtualnych
-**Problem** — utworzono infrastrukturę skalowania automatycznego w usłudze Azure Resource Manager przy użyciu zestawów skalowania maszyn wirtualnych — na przykład, wdrażając szablonu podobny do tego: https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale — masz zdefiniowanych reguł skalowania i jej współdziałanie, z wyjątkiem nie niezależnie od tego, ile obciążenia, umieścić na maszynach wirtualnych, nie automatycznego skalowania.
+# <a name="troubleshooting-autoscale-with-virtual-machine-scale-sets"></a>Rozwiązywanie problemów z automatycznym skalowaniem za pomocą Virtual Machine Scale Sets
+**Problem** — utworzono infrastrukturę skalowania automatycznego w Azure Resource Manager przy użyciu zestawów skalowania maszyn wirtualnych — na przykład przez wdrożenie szablonu podobnej do tego: https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale — masz zdefiniowane reguły skalowania i działają bardzo dobrze, bez względu na to, ile obciążeń zostało umieszczonych na maszynach wirtualnych, nie jest to automatyczne skalowanie.
 
 ## <a name="troubleshooting-steps"></a>Kroki rozwiązywania problemów
-Kilka rzeczy, które należy rozważyć, obejmują:
+Oto kilka rzeczy, które należy wziąć pod uwagę:
 
-* Jak wiele procesorów wirtualnych Vcpu każda maszyna wirtualna ma i są ładowane każdy procesor wirtualny?
-  Poprzedni przykładowy szablon szybkiego startu platformy Azure ma do_work.php skrypt, który ładuje pojedynczego vCPU. Jeśli używasz maszyny Wirtualnej z systemem większy niż rozmiar maszyny Wirtualnej pojedynczego vCPU, takich jak Standard_A1 lub D1, będziesz potrzebować wielokrotne uruchomienie tego obciążenia. Sprawdź liczbę procesorów wirtualnych dla maszyn wirtualnych, przeglądając [rozmiary dla Windows maszyn wirtualnych na platformie Azure](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* Ile maszyn wirtualnych w zestawie skalowania maszyn wirtualnych, to macie pracy na każdym z nich?
+* Ile procesorów wirtualnych vCPU każdej maszyny wirtualnej, i czy ładujesz każdy vCPU?
+  Poprzedni przykładowy szablon szybkiego startu platformy Azure zawiera skrypt do_work. php, który ładuje pojedyncze vCPU. Jeśli używasz maszyny wirtualnej o rozmiarze większym niż vCPU maszyn wirtualnych, takiej jak Standard_A1 lub D1, musisz uruchomić to obciążenie wiele razy. Sprawdź, ile procesorów wirtualnych vCPU dla maszyn wirtualnych, przeglądając [rozmiary maszyn wirtualnych z systemem Windows na platformie Azure](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* Ile maszyn wirtualnych w zestawie skalowania maszyn wirtualnych jest wykonywanych na każdym z nich?
   
-    Zdarzenie skalowalnego w poziomie tylko ma miejsce, gdy średnie użycie procesora CPU w **wszystkich** maszyn wirtualnych w zestawie skalowania przekracza wartość progowa, wraz z upływem czasu wewnętrznego zdefiniowane w reguł skalowania automatycznego.
-* Ominęły Cię wszystkie zdarzenia skalowania?
+    Zdarzenie skalowania w poziomie odbywa się tylko wtedy, gdy średni czas CPU we **wszystkich** maszynach wirtualnych w zestawie skalowania przekracza wartość progową, w odniesieniu do czasu wewnętrznego zdefiniowanego w regułach skalowania automatycznego.
+* Czy pominięto jakieś zdarzenia skalowania?
   
-    Sprawdź, czy dzienniki inspekcji w witrynie Azure portal dla zdarzeń dotyczących skalowania. Być może wystąpił skalowania się i skalowania w dół, które nie zostały dotrzymane. Można filtrować według "Skalowanie".
+    Sprawdź dzienniki inspekcji w Azure Portal dla zdarzeń skalowania. Może to być skalowanie w górę i w dół, które nie zostało pominięte. Można filtrować według "skali".
   
     ![Dzienniki inspekcji][audit]
-* Wartości progowe skalowania na zewnątrz i skalowalnego w poziomie są różni się wystarczająco?
+* Czy progi skalowania i skalowania w poziomie są wystarczająco różne?
   
-    Załóżmy, że możesz ustawić regułę skalowania w poziomie, gdy średnie użycie procesora CPU jest większy, niż 50% przez ponad pięć minut oraz skalowanie do wewnątrz, gdy średnie użycie procesora CPU jest mniejsza niż 50%. To ustawienie spowodowałoby "niestabilny" problem, gdy użycie procesora CPU jest bliski próg, przy użyciu akcji skalowania stale zwiększania i zmniejszania rozmiaru zestawu. Ze względu na to ustawienie, usługi skalowania automatycznego próbuje zapobiec "niestabilny", który objawiać nie na skalowaniu. W związku z tym upewnij się, że wartości progowe skalowalnego w poziomie i skalowanie w wystarczająco różnią się umożliwienie trochę miejsca między skalowanie.
-* Czy napisałeś, aby utworzyć własny szablon JSON?
+    Załóżmy, że ustawisz skalowanie w poziomie, gdy średni procesor CPU jest większy niż 50% przez pięć minut i do skalowania, gdy średni procesor CPU jest mniejszy niż 50%. To ustawienie może spowodować wystąpienie problemu "niestabilny", gdy użycie procesora zostanie zbliżone do progu, a akcje skalowania ciągle rosną i zmniejszają rozmiar zestawu. Z powodu tego ustawienia Usługa automatycznego skalowania podejmuje próbę uniemożliwienia "niestabilny", który może nie skalować. W związku z tym upewnij się, że skalowanie w poziomie i progi skalowania są wystarczająco różne, aby umożliwić pewne miejsce między skalowaniem.
+* Czy piszesz własny szablon JSON?
   
-    To proste związanych z błędami, więc zacznij od szablonu, takie jak jest ten, nad którym sprawdzone do pracy i małej zmiany przyrostowe. 
-* Można można ręcznie skalować wewnątrz lub na zewnątrz?
+    Jest to łatwe w obsłudze błędów, więc Zacznij od szablonu, takiego jak ten, który jest sprawdzony do pracy, i wprowadź małe zmiany przyrostowe. 
+* Czy możesz ręcznie skalować w poziomie lub na zewnątrz?
   
-    Spróbuj ponowne wdrożenie, które zasobu zestawu skalowania maszyn wirtualnych z różnych "pojemność" ustawienie, aby ręcznie zmienić liczbę maszyn wirtualnych. Przykładowy szablon jest już dostępny: https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-scale-existing — może być konieczne edytowanie szablonu, aby upewnić się, ponieważ zestaw skalowania używa ma taki sam rozmiar maszyny. Jeśli liczba maszyn wirtualnych można pomyślnie zmienić ręcznie, następnie wiesz, że problem jest izolowane do automatycznego skalowania.
-* Sprawdź swoje Microsoft.Compute/virtualMachineScaleSet i zasobów Microsoft.Insights [Eksploratora zasobów Azure](https://resources.azure.com/)
+    Spróbuj ponownie wdrożyć zasób zestawu skalowania maszyn wirtualnych przy użyciu innego ustawienia "pojemność", aby ręcznie zmienić liczbę maszyn wirtualnych. Przykładowy szablon jest tutaj: https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-scale-existing — może być konieczne edytowanie szablonu, aby upewnić się, że ma ten sam rozmiar maszyny, jak używany przez zestaw skalowania. Jeśli można pomyślnie zmienić liczbę maszyn wirtualnych ręcznie, wiadomo, że problem jest izolowany do automatycznego skalowania.
+* Sprawdź zasoby Microsoft. COMPUTE/element virtualmachinescaleset i Microsoft. Insights w [Azure Resource Explorer](https://resources.azure.com/)
   
-    Usługi Azure Resource Explorer jest niezbędne narzędzia rozwiązywania problemów, pokazujący stan zasobów usługi Azure Resource Manager. Kliknij subskrypcję i spójrz na grupę zasobów, rozwiązywania problemów. W ramach dostawcy zasobów obliczeniowych Przyjrzyj się zestawu skalowania maszyn wirtualnych, które zostały utworzone i sprawdź widok wystąpienia, w którym prezentowany jest stan wdrożenia. Należy także sprawdzić widok wystąpienia maszyn wirtualnych w zestawie skalowania maszyn wirtualnych. Następnie przejdź do dostawcy zasobów Microsoft.Insights i sprawdź, czy reguły skalowania automatycznego w porządku.
-* Rozszerzenie diagnostyki pracy i wysyłających danych dotyczących wydajności?
+    Azure Resource Explorer to narzędzie do rozwiązywania problemów, które pokazuje stan zasobów Azure Resource Manager. Kliknij swoją subskrypcję i przejrzyj grupę zasobów, którą chcesz rozwiązać. W obszarze dostawca zasobów obliczeniowych zapoznaj się z utworzonym zestawem skalowania maszyn wirtualnych i sprawdź Widok wystąpienia, który pokazuje stan wdrożenia. Sprawdź również widok wystąpienia maszyn wirtualnych w zestawie skalowania maszyn wirtualnych. Następnie przejdź do dostawcy zasobów Microsoft. Insights i sprawdź, czy reguły skalowania automatycznego wyglądają w prawo.
+* Czy rozszerzenie diagnostyczne działa i emituje dane wydajności?
   
-    **Aktualizacja:** Skalowanie automatyczne platformy Azure zostało ulepszone, aby użyć potoku metryk opartych na hoście nie wymaga już rozszerzenie diagnostyki, do zainstalowania. Kilku następnych akapitach nie mają już zastosowania, jeśli tworzysz aplikację skalowania automatycznego za pomocą nowego potoku. Przykładem szablonów platformy Azure, które zostały przekonwertowane na korzystanie z potoku hosta jest dostępny tutaj: https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale. 
+    **Aktualizacja:** Skalowanie automatyczne platformy Azure zostało udoskonalone tak, aby korzystało z potoku metryk opartych na hoście, który nie wymaga już zainstalowania rozszerzenia diagnostyki. W następnych akapitach nie ma już zastosowania w przypadku tworzenia aplikacji skalowania automatycznego przy użyciu nowego potoku. Przykład szablonów platformy Azure, które zostały przekonwertowane do korzystania z potoku hosta, jest dostępny tutaj: https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale. 
   
-    Za pomocą opartego na hoście metryki automatycznego skalowania jest lepszym rozwiązaniem dla następujących przyczyn:
+    Korzystanie z metryk opartych na hoście na potrzeby automatycznego skalowania jest lepsze z następujących powodów:
   
-  * Mniej ruchomych części jako rozszerzenia diagnostyki, nie trzeba instalować.
-  * Szablony prostsze. Wystarczy dodać reguły automatycznego skalowania usługi insights do istniejącego szablonu zestawu skalowania.
-  * Bardziej niezawodne, raportowanie i szybsze uruchamianie nowych maszyn wirtualnych.
+  * Mniejsza część ruchoma, ponieważ nie trzeba instalować rozszerzeń diagnostyki.
+  * Prostsze szablony. Po prostu Dodaj reguły automatycznego skalowania usługi Insights do istniejącego szablonu zestawu skalowania.
+  * Bardziej niezawodne raportowanie i szybsze uruchamianie nowych maszyn wirtualnych.
     
-    Tylko przyczyn, dla których warto korzystać rozszerzenie diagnostyki jest, jeśli potrzebujesz pamięci diagnostyki raportowanie/skalowanie. Oparta na hoście metryki nie zgłaszać pamięci.
+    Jedyną przyczyną, którą można chcieć zachować przy użyciu rozszerzenia diagnostycznego, jest to, że wymagane jest raportowanie/skalowanie diagnostyki pamięci. Metryki oparte na hoście nie zgłaszają pamięci.
     
-    Mając to na uwadze tylko wykonaj pozostałej części tego artykułu, jeśli używasz rozszerzenia diagnostyki dla usługi skalowania automatycznego.
+    Z tego względu, jeśli używasz rozszerzeń diagnostycznych do skalowania automatycznego, postępuj zgodnie z resztą tego artykułu.
     
-    Automatyczne skalowanie w usłudze Azure Resource Manager można pracować (ale nie musi już) za pomocą maszyny Wirtualnej o nazwie rozszerzenia rozszerzenie diagnostyki. Emituje dane wydajności z kontem magazynu, które należy zdefiniować w szablonie. Te dane są następnie agregowane przez usługę Azure Monitor.
+    Skalowanie automatyczne w Azure Resource Manager może działać (ale nie musi już) za pomocą rozszerzenia maszyny wirtualnej o nazwie rozszerzenie diagnostyki. Emituje dane wydajności do konta magazynu zdefiniowanego w szablonie. Te dane są następnie agregowane przez usługę Azure Monitor.
     
-    Jeśli usługa szczegółowych informacji nie można odczytać danych z maszyn wirtualnych, powinien wysyłać wiadomości e-mail. Na przykład otrzymasz wiadomość e-mail, jeśli maszyny wirtualne znajdują się w dół. Należy koniecznie sprawdzić wiadomość e-mail na adres e-mail, które określono podczas tworzenia konta platformy Azure.
+    Jeśli usługa Insights nie może odczytać danych z maszyn wirtualnych, należy wysłać do Ciebie wiadomość e-mail. Na przykład otrzymujesz wiadomość e-mail, jeśli maszyny wirtualne nie działają. Pamiętaj o sprawdzeniu poczty e-mail pod adresem e-mail określonym podczas tworzenia konta platformy Azure.
     
-    Można również sprawdzić je samodzielnie. Przyjrzyj się z kontem usługi Azure storage za pomocą Eksploratora chmury. Na przykład za pomocą [programu Visual Studio Cloud Explorer](https://visualstudiogallery.msdn.microsoft.com/aaef6e67-4d99-40bc-aacf-662237db85a2), zaloguj się i wybierz subskrypcję platformy Azure jest używany. Następnie Przyjrzyj się nazwa konta magazynu diagnostyki wspomniane w definicji rozszerzenia diagnostyki w szablonie wdrożenia.
+    Możesz również sprawdzić dane. Zapoznaj się z kontem usługi Azure Storage za pomocą Eksploratora chmury. Na przykład za pomocą programu [Visual Studio Cloud Explorer](https://visualstudiogallery.msdn.microsoft.com/aaef6e67-4d99-40bc-aacf-662237db85a2)Zaloguj się i wybierz subskrypcję platformy Azure, której używasz. Następnie Sprawdź nazwę konta magazynu diagnostyki, do którego istnieje odwołanie w definicji rozszerzenia diagnostyki w szablonie wdrożenia.
     
     ![Cloud Explorer][explorer]
     
-    Zostanie wyświetlona wiele tabel, w którym są przechowywane dane z każdej maszyny Wirtualnej. Korzystając z systemów Linux i metryki procesora CPU, na przykład wyglądać podczas ostatnich wierszy. Program cloud explorer programu Visual Studio obsługuje język zapytań, aby można było uruchomić zapytanie. Na przykład, można uruchomić zapytania dla "sygnatura czasowa gt daty i godziny" 2016-02-02T21:20:00Z "" Aby upewnić się, pobrać najnowszych zdarzeń. Strefa czasowa odnosi się do czasu UTC. Czy dane, które zobaczysz w odpowiadają reguł skalowania można skonfigurować? W poniższym przykładzie Procesora dla maszyny 20 pracę, zwiększając do 100% w ciągu ostatnich pięciu minut.
+    Zobaczysz wiele tabel, w których są przechowywane dane z każdej maszyny wirtualnej. Na przykład przy użyciu systemu Linux i metryki procesora CPU należy zapoznać się z najnowszymi wierszami. Program Visual Studio Cloud Explorer obsługuje język zapytań, aby można było uruchomić zapytanie. Na przykład można uruchomić zapytanie dla "timestamp gt DateTime" 2016-02-02T21:20:00Z "", aby upewnić się, że otrzymujesz najnowsze zdarzenia. Strefa czasowa odnosi się do czasu UTC. Czy dane widoczne w tym miejscu odpowiadają skonfigurowanym regułom skalowania? W poniższym przykładzie procesor CPU dla maszyny 20 został zwiększony do 100% w ciągu ostatnich pięciu minut.
     
     ![Tabele magazynu][tables]
     
-    Jeśli dane nie są dostępne, oznacza to, czy problem jest za pomocą diagnostycznego rozszerzenia, które są uruchomione na maszynach wirtualnych. Jeśli dane są dostępne, sugeruje to, że istnieje problemami przy użyciu reguł skalowania lub za pomocą usługi Insights. Sprawdź [stanu platformy Azure](https://azure.microsoft.com/status/).
+    Jeśli dane nie znajdują się tam, oznacza to, że problem dotyczy rozszerzenia diagnostycznego działającego na maszynach wirtualnych. Jeśli tam znajdują się dane, oznacza to, że występuje problem z regułami skalowania lub usługą Insights. Sprawdź [Stan platformy Azure](https://azure.microsoft.com/status/).
     
-    Gdy byłeś tych kroków, jeśli nadal występują problemy z funkcją automatycznego skalowania, można skorzystać z następujących zasobów: 
-    * Czytanie forum na [MSDN](https://social.msdn.microsoft.com/forums/azure/home?forum=WAVirtualMachinesforWindows), lub [przepełnienie stosu](https://stackoverflow.com/questions/tagged/azure) 
-    * Zaloguj się pomocy technicznej. Przygotuj się na udostępnianie szablonu i widok danych dotyczących wydajności.
+    Jeśli po wykonaniu tych kroków nadal występują problemy ze skalowaniem automatycznego, możesz wypróbować następujące zasoby: 
+    * Przeczytaj fora w [witrynie MSDN](https://social.msdn.microsoft.com/forums/azure/home?forum=WAVirtualMachinesforWindows)lub [przepełnienie stosu](https://stackoverflow.com/questions/tagged/azure) 
+    * Rejestrowanie zgłoszenia do pomocy technicznej. Przygotuj się, aby udostępnić szablon i widok danych dotyczących wydajności.
 
 [audit]: ./media/virtual-machine-scale-sets-troubleshoot/image3.png
 [explorer]: ./media/virtual-machine-scale-sets-troubleshoot/image1.png

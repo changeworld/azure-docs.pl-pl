@@ -1,31 +1,23 @@
 ---
-title: Dostępność regionu StorSimple | Microsoft Docs
+title: Dostępność regionu StorSimple
 description: Wyjaśnia regiony platformy Azure, w których są dostępne różne modele urządzeń StorSimple.
-services: storsimple
-documentationcenter: ''
 author: alkohli
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storsimple
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.topic: conceptual
 ms.date: 11/16/2017
 ms.author: alkohli
-ms.openlocfilehash: 5b41f738c2419f806aef60374a545ff004a6f19e
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: a2f04d6faa7770eef7768437ae0e624b76713f98
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68965138"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76275106"
 ---
 # <a name="available-regions-for-your-storsimple"></a>Dostępne regiony dla StorSimple
 
 [!INCLUDE [storsimple-8000-eol-banner](../../includes/storsimple-8000-eol-banner.md)]
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 Centra danych platformy Azure działają w wielu lokalizacje geograficzneach na całym świecie, aby zaspokoić wymagania dotyczące wydajności, wymagań i preferencji związanych z danymi w przypadku klientów. Lokalizacja geograficzna platformy Azure to zdefiniowany obszar świata, który zawiera co najmniej jeden region świadczenia usługi Azure. Region świadczenia usługi Azure jest obszarem geograficznym zawierającym co najmniej jedno centrum danych.
 
@@ -71,7 +63,7 @@ W przypadku korzystania z urządzenia fizycznego z systemem StorSimple 8100 lub 
 
 | #  | Kraj/region        | #  | Kraj/region     | #  | Kraj/region      | #  | Kraj/region             |
 |----|-----------------------|----|--------------------|----|---------------------|----|----------------------------|
-| 1  | Australia             | 16 | SRA Hongkong      | 31 | Nowa Zelandia         | 46 | RPA               |
+| 1  | Australia             | 16 | SRA Hongkong      | 31 | Nowa Zelandia         | 46 | Republika Południowej Afryki               |
 | 2  | Austria               | 17 | Węgry            | 32 | Nigeria             | 47 | Korea Południowa                |
 | 3  | Bahrajn               | 18 | Islandia            | 33 | Norwegia              | 48 | Hiszpania                      |
 | 4  | Belgia               | 19 | Indie              | 34 | Peru                | 49 | Sri Lanka                  |
@@ -79,12 +71,12 @@ W przypadku korzystania z urządzenia fizycznego z systemem StorSimple 8100 lub 
 | 6  | Kanada                | 21 | Irlandia            | 36 | Polska              | 51 | Szwajcaria                |
 | 7  | Chile                 | 22 | Izrael             | 37 | Portugalia            | 52 | Tajwan                     |
 | 8  | Kolumbia              | 23 | Włochy              | 38 | Portoryko         | 53 | Tajlandia                   |
-| 9  | Czechy        | 24 | Japonia              | 39 | Katar               | 54 | Turcja                     |
-| 10 | Dania               | 25 | Kenya              | 40 | Rumunia             | 55 | Ukraina                    |
+| 9  | Republika Czeska        | 24 | Japonia              | 39 | Katar               | 54 | Turcja                     |
+| 10 | Dania               | 25 | Kenia              | 40 | Rumunia             | 55 | Ukraina                    |
 | 11 | Egipt                 | 26 | Kuwejt             | 41 | Rosja              | 56 | Zjednoczone Emiraty Arabskie       |
 | 12 | Finlandia               | 27 | SRA Makau          | 42 | Arabia Saudyjska        | 57 | Zjednoczone Królestwo             |
 | 13 | Francja                | 28 | Malezja           | 43 | Singapur           | 58 | Stany Zjednoczone              |
-| 14 | Niemcy               | 29 | Meksyk             | 44 | Słowacja            | 59 | Vietnam                    |
+| 14 | Niemcy               | 29 | Meksyk             | 44 | Słowacja            | 59 | Wietnam                    |
 | 15 | Grecja                | 30 | Holandia        | 45 | Słowenia            | 60 | Chorwacja                    |
 
 Ta lista zmienia się w miarę dodawania większej liczby krajów/regionów. Aby uzyskać najbardziej aktualną listę lokalizacje geograficzne, przejdź do załącznika warunki tablicy magazynowej w temacie [warunki produktu](https://www.microsoft.com/en-us/licensing/product-licensing/products).
@@ -98,7 +90,7 @@ Firma Microsoft może dostarczać sprzęt fizyczny i dostarczać zamienniki sprz
 
 W przypadku korzystania z urządzenia w chmurze StorSimple 8010 lub 8020 urządzenie jest obsługiwane i dostępne we wszystkich regionach, w których jest obsługiwana źródłowa maszyna wirtualna. 8010 używa maszyny wirtualnej _Standard_A3_ , która jest obsługiwana we wszystkich regionach świadczenia usługi Azure.
 
-8020 używa usługi Premium Storage i maszyny wirtualnej _Standard_DS3_ do utworzenia urządzenia w chmurze. 8020 jest obsługiwana w regionach platformy Azure, które obsługują maszyny wirtualne platformy Azure Premium Storage i _Standard_DS3_ . Przy użyciu [tej listy](https://azure.microsoft.com/regions/services/) sprawdź, czy w Twoim regionie jest dostępna zarówno opcja **Maszyny wirtualne > Seria DS**, jak i opcja **Magazyn > Magazyn na dysku**.
+8020 używa usługi Premium Storage i _Standard_DS3_ VM do tworzenia urządzenia w chmurze. 8020 jest obsługiwana w regionach platformy Azure, które obsługują Premium Storage i _Standard_DS3_ maszyn wirtualnych platformy Azure. Przy użyciu [tej listy](https://azure.microsoft.com/regions/services/) sprawdź, czy w Twoim regionie jest dostępna zarówno opcja **Maszyny wirtualne > Seria DS**, jak i opcja **Magazyn > Magazyn na dysku**.
 
 ### <a name="storsimple-virtual-array-model-1200"></a>StorSimple Virtual Array (model 1200)
 

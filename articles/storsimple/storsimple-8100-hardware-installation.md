@@ -1,31 +1,24 @@
 ---
-title: Zainstaluj urządzenie Microsoft Azure StorSimple 8100 | Microsoft Docs
+title: Zainstaluj urządzenie Microsoft Azure StorSimple 8100
 description: W tym artykule opisano sposób rozpakowywania, montowania w stojaku i kabla urządzenia z StorSimple 8100 przed wdrożeniem i skonfigurowaniem oprogramowania.
-services: storsimple
-documentationcenter: NA
 author: alkohli
-manager: jeconnoc
-editor: ''
 ms.assetid: 6098a01e-c031-488a-a8d7-0b607ce665e1
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
+ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 0b2301c1c9b846e2ea005f049c5aadb3d4634a81
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 113b72ddf7e5d508c8a0b577d4004d4fbd83e8e5
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68963580"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277082"
 ---
 # <a name="unpack-rack-mount-and-cable-your-storsimple-8100-device"></a>Rozpakowywanie, montowanie w stojaku i Podłączanie kabli do urządzenia z systemem StorSimple 8100
 
 [!INCLUDE [storsimple-8000-eol-banner](../../includes/storsimple-8000-eol-banner.md)]
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 Microsoft Azure StorSimple 8100 to jedno obudowa, czyli urządzenie zainstalowane w stojaku. W tym samouczku wyjaśniono, jak rozpakować sprzęt urządzenia z systemem StorSimple 8100 i podłączyć go do niego przed skonfigurowaniem i wdrożeniem urządzenia StorSimple.
 
 ## <a name="unpack-your-storsimple-8100-device"></a>Rozpakowywanie urządzenia z urządzeniem z StorSimple 8100
@@ -34,7 +27,7 @@ Poniższe kroki zawierają szczegółowe instrukcje dotyczące rozpakowywania ur
 ### <a name="prepare-to-unpack-your-device"></a>Przygotowanie do rozpakowania urządzenia
 Przed rozpakowaniem urządzenia zapoznaj się z poniższymi informacjami.
 
-![Ostrzeżenie ikony](./media/storsimple-safety/IC740879.png)![](./media/storsimple-8100-hardware-installation/HCS_HeavyWeight_Icon.png) dużej grubości ikony ostrzeżenia **!**
+Ikona ostrzeżenia ![](./media/storsimple-safety/IC740879.png)![ikonie dużej wagi](./media/storsimple-8100-hardware-installation/HCS_HeavyWeight_Icon.png) **Ostrzeżenie!**
 
 1. Upewnij się, że masz dwie osoby, aby zarządzać wagą obudowy, jeśli jest ona obsługiwana ręcznie. W pełni skonfigurowana obudowa może ważyć do 32 kg (70 funtów).
 2. Umieść pudełko na płaskiej, poziomej powierzchni.
@@ -90,7 +83,7 @@ Urządzenie musi być zainstalowane w standardowym stojaku 19-calowym, które ma
 2. Upewnij się, że lokacja, w której zamierzasz skonfigurować, ma moc standardową AC od niezależnego źródła lub z jednostki dystrybucji zasilania w stojaku (PDU) z zasilaczem UPS.
 3. Upewnij się, że jedno gniazdo 2U jest dostępne w stojaku, w którym zamierzasz zainstalować urządzenie.
 
-![Ostrzeżenie ikony](./media/storsimple-safety/IC740879.png)![](./media/storsimple-8100-hardware-installation/HCS_HeavyWeight_Icon.png) dużej grubości ikony ostrzeżenia **!**
+Ikona ostrzeżenia ![](./media/storsimple-safety/IC740879.png)![ikonie dużej wagi](./media/storsimple-8100-hardware-installation/HCS_HeavyWeight_Icon.png) **Ostrzeżenie!**
 
 Upewnij się, że masz dwie osoby, które mają być dostępne do zarządzania wagą, jeśli ręcznie obsługujesz konfigurację urządzenia. W pełni skonfigurowana obudowa może ważyć do 32 kg (70 funtów).
 
@@ -209,7 +202,7 @@ Aby można było obsługiwać ten nadmiarowy kontroler przełączania do trybu f
    | C    | PCM 0 |
    | D    | Kontroler 1 |
    | E    | PCM 1 |
-   | F, G | Hosty |
+   | F, G | Hosts |
    | 0-5  | Interfejsy sieciowe |
 
 
@@ -224,7 +217,7 @@ Pamiętaj o wysokiej dostępności i wydajności:
 * Jeśli to możliwe, należy skonfigurować parę interfejsów sieciowych na potrzeby dostępu do chmury (1 GbE) i inną parę dla iSCSI (zalecane 10 GbE) na każdym kontrolerze.
 * Jeśli to możliwe, podłącz interfejsy sieciowe z każdego kontrolera do dwóch różnych przełączników, aby zapewnić dostępność przed awarią przełącznika. Na rysunku przedstawiono interfejsy sieciowe 2 10 GbE, dane 2 i dane 3 z każdego kontrolera podłączonego do dwóch różnych przełączników.
 
-Aby uzyskać więcej informacji, zapoznaj się z interfejsami sieciowymi w [wymaganiach dotyczących wysokiej dostępności dla urządzenia StorSimple](storsimple-8000-system-requirements.md#high-availability-requirements-for-storsimple).
+Aby uzyskać więcej informacji, zapoznaj się z **interfejsami sieciowymi** w [wymaganiach dotyczących wysokiej dostępności dla urządzenia StorSimple](storsimple-8000-system-requirements.md#high-availability-requirements-for-storsimple).
 
 > [!NOTE]
 > Jeśli używasz urządzeń nadawczych SFP + z interfejsami sieciowymi 10 GbE, Użyj dostarczonych kart QSFP-SFP +. Aby uzyskać więcej informacji, przejdź do [obsługiwanego sprzętu dla interfejsów sieciowych 10 GbE na urządzeniu StorSimple](storsimple-supported-hardware-for-10-gbe-network-interfaces.md).
@@ -239,11 +232,11 @@ Aby nawiązać połączenie z portem szeregowym, wykonaj następujące czynnośc
 2. Zidentyfikuj aktywny kontroler na urządzeniu. Migające niebieskie diody LED wskazują, że kontroler jest aktywny.
 3. Użyj dostarczonych kabli szeregowych (jeśli to konieczne, konwertera USB-Serial dla laptopa) i Podłącz konsolę lub komputer (z emulacją terminalu do urządzenia) do portu szeregowego aktywnego kontrolera.
 4. Zainstaluj sterowniki serial-USB (dostarczane z urządzeniem) na komputerze.
-5. Skonfiguruj połączenie szeregowe w następujący sposób: 115 200 bodów, 8 bitów danych, 1 bit stop, bez parzystości i sterowanie przepływem ustawione na none.
+5. Skonfiguruj połączenie szeregowe w następujący sposób: 115 200 bodów, 8 bitów danych, 1 bit stop, bez parzystości i sterowanie przepływem ustawione na wartość Brak.
 6. Sprawdź, czy połączenie działa, naciskając klawisz ENTER w konsoli programu. Powinien pojawić się menu konsoli szeregowej.
 
 > [!NOTE]
-> **Zarządzanie światłami**: Gdy urządzenie jest zainstalowane w zdalnym centrum danych lub w pokoju komputerowym z ograniczonym dostępem, należy się upewnić, że połączenia szeregowe z obydwoma kontrolerami są zawsze połączone z przełącznikiem konsoli szeregowej lub podobnym sprzętem. Umożliwia to poza pasmem zdalne sterowanie i obsługę operacji, jeśli występują zakłócenia sieci lub nieoczekiwane awarie.
+> **Zarządzanie światłami**: w przypadku zainstalowania urządzenia w zdalnym centrum danych lub w pokoju komputerowym z ograniczonym dostępem upewnij się, że połączenia szeregowe z obydwoma kontrolerami są zawsze połączone z przełącznikiem konsoli szeregowej lub podobnym sprzętem. Umożliwia to poza pasmem zdalne sterowanie i obsługę operacji, jeśli występują zakłócenia sieci lub nieoczekiwane awarie.
 > 
 > 
 

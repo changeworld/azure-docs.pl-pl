@@ -1,17 +1,17 @@
 ---
 title: Azure sprężynowe w chmurze — odzyskiwanie po awarii | Microsoft Docs
 description: Dowiedz się, jak chronić aplikację w chmurze ze sprężyną przed awarią regionalną
-author: jpconnock
+author: bmitchell287
 ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 10/24/2019
-ms.author: jeconnoc
-ms.openlocfilehash: 54289e808461e6374dee57763ef7ba0d0429c54c
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.author: brendm
+ms.openlocfilehash: 4961e5a63e5bc1933cf19b1f291b521d89cbda0e
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607846"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76279150"
 ---
 # <a name="azure-spring-cloud-disaster-recovery"></a>Odzyskiwanie po awarii w chmurze z platformy Azure
 
@@ -19,7 +19,7 @@ W tym artykule opisano niektóre strategie, których można użyć do ochrony Tw
 
 ## <a name="plan-your-application-deployment"></a>Planowanie wdrożenia aplikacji
 
-Aplikacje chmurowe platformy Azure są uruchamiane w określonym regionie.  Platforma Azure działa w wielu lokalizacje geograficzne na całym świecie. Lokalizacja geograficzna platformy Azure to zdefiniowany obszar świata, który zawiera co najmniej jeden region świadczenia usługi Azure. Region świadczenia usługi Azure jest obszarem geograficznym zawierającym co najmniej jedno centrum danych.  Każdy region platformy Azure jest sparowany z innym regionem w tej samej lokalizacji geograficznej, tworząc parę regionalną. Platforma Azure serializacji aktualizacje platformy (planowana konserwacja) między parami regionalnymi, co zapewnia, że tylko jeden region w każdej parze jest aktualizowany jednocześnie. W przypadku awarii mającej wpływ na wiele regionów, co najmniej jeden region w każdej parze będzie miał priorytet na potrzeby odzyskiwania.
+Aplikacje chmurowe platformy Azure są uruchamiane w określonym regionie.  Platforma Azure działa w wielu lokalizacjach geograficznych na całym świecie. Lokalizacja geograficzna platformy Azure to zdefiniowany obszar świata, który zawiera co najmniej jeden region świadczenia usługi Azure. Region świadczenia usługi Azure jest obszarem geograficznym zawierającym co najmniej jedno centrum danych.  Każdy region platformy Azure jest sparowany z innym regionem w tej samej lokalizacji geograficznej, tworząc parę regionalną. Platforma Azure serializacji aktualizacje platformy (planowana konserwacja) między parami regionalnymi, co zapewnia, że tylko jeden region w każdej parze jest aktualizowany jednocześnie. W przypadku awarii mającej wpływ na wiele regionów, co najmniej jeden region w każdej parze będzie miał priorytet na potrzeby odzyskiwania.
 
 Zapewnienie wysokiej dostępności i ochrony przed awariami wymaga wdrożenia aplikacji w chmurze ze sprężyną w wielu regionach.  Platforma Azure udostępnia listę [par regionów](../best-practices-availability-paired-regions.md) , aby można było zaplanować wdrożenia w chmurze ze sprężyną regionalną.  Zaleca się, aby wziąć pod uwagę trzy kluczowe czynniki podczas projektowania architektury mikrousług: dostępność regionów, sparowane regiony platformy Azure i dostępność usług.
 

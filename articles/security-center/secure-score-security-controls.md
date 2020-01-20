@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/04/2019
 ms.author: memildin
-ms.openlocfilehash: 8f0b7b1225d78c7626c5be3e68c3dcd2dd557aa3
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 0287a8011eb10120e273fb063c98ccd3c1a85782
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76158158"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278024"
 ---
 # <a name="the-enhanced-secure-score-preview"></a>Ulepszony bezpieczny wynik (wersja zapoznawcza) 
 
-W tym artykule wprowadzono ulepszony bezpieczny wynik (obecnie w wersji zapoznawczej), towarzyszące mechanizmy kontroli zabezpieczeń oraz korzyści, jakie zapewnia.
+W tym artykule wprowadzono ulepszony bezpieczny wynik (obecnie w wersji zapoznawczej), towarzyszące mechanizmy kontroli zabezpieczeń oraz korzyści, jakie zapewnia. Wyjaśniono również, w jaki sposób obliczany jest wynik.
 
 ## <a name="introduction-to-secure-score"></a>Wprowadzenie do zabezpieczenia oceny
 
@@ -32,11 +32,11 @@ Security Center stale ocenia zasoby, subskrypcje i organizację pod kątem probl
 
 *Ulepszony* bezpieczny wynik (obecnie w wersji zapoznawczej) umożliwia **skoncentrowanie** się na koncentracji i nawiąże trzy korzyści:
 
-- Kontrola zabezpieczeń — zalecenia dotyczące zabezpieczeń są teraz pogrupowane w zestawy logiczne, które lepiej odzwierciedlają podatne na ataki. Aby uzyskać więcej informacji, zobacz [jak poniżej jest obliczany bezpieczny wynik](secure-score-security-controls.md#how-the-secure-score-is-calculated) .
+- **Kontrola zabezpieczeń** — zalecenia dotyczące zabezpieczeń są teraz pogrupowane w zestawy logiczne, które lepiej odzwierciedlają podatne na ataki. Aby uzyskać więcej informacji, zobacz [jak poniżej jest obliczany bezpieczny wynik](secure-score-security-controls.md#how-the-secure-score-is-calculated) .
 
-- Ogólny wynik lepiej odzwierciedla ogólne stan na poziomie rekomendacji. Dzięki temu ulepszeniu Ocena poprawi się tylko wtedy, gdy koryguje *wszystkie* zalecenia dotyczące pojedynczego zasobu w formancie. Oznacza to, że wynik jest ulepszany tylko wtedy, gdy zwiększa się bezpieczeństwo zasobu. 
+- **Ogólny wynik lepiej odzwierciedla ogólne stan** na poziomie rekomendacji. Dzięki temu ulepszeniu Ocena poprawi się tylko wtedy, gdy koryguje *wszystkie* zalecenia dotyczące pojedynczego zasobu w formancie. Oznacza to, że wynik jest ulepszany tylko wtedy, gdy zwiększa się bezpieczeństwo zasobu. 
 
-- Informacje o stanie zabezpieczeń poszczególnych stron ataku są bardziej widoczne — pokazując wynik na kontrolę zabezpieczeń, Strona zabezpieczonych punktacji stanie się miejscem, w którym można uzyskać szczegółowy widok, w jaki sposób organizacja chroni poszczególne osoby atakujące.
+- Informacje o **stanie zabezpieczeń poszczególnych stron ataku są bardziej widoczne** — pokazując wynik na kontrolę zabezpieczeń, Strona zabezpieczonych punktacji stanie się miejscem, w którym można uzyskać szczegółowy widok, w jaki sposób organizacja chroni poszczególne osoby atakujące.
 
 Ulepszony bezpieczny wynik jest pokazywany jako wartość procentowa, jak pokazano na poniższym zrzucie ekranu:
 
@@ -45,37 +45,37 @@ Ulepszony bezpieczny wynik jest pokazywany jako wartość procentowa, jak pokaza
 
 ## <a name="locating-your-secure-score"></a>Lokalizowanie bezpiecznego wyniku
 
-Security Center wyświetla wynik w widocznym miejscu: jest to pierwsza czynność wyświetlana na stronie Przegląd. Jeśli klikniesz pozycję przez użytkownika na stronie dedykowany zabezpieczony wskaźnik, zobaczysz wynik podzielony przez subskrypcję. Click a single subscription to see the detailed list of prioritized recommendations and the potential impact that remediating them will have on the subscription’s score.
+Security Center wyświetla wynik w widocznym miejscu: jest to pierwsza czynność wyświetlana na stronie Przegląd. Jeśli klikniesz pozycję przez użytkownika na stronie dedykowany zabezpieczony wskaźnik, zobaczysz wynik podzielony przez subskrypcję. Kliknij jedną subskrypcję, aby wyświetlić szczegółową listę zaleceń z priorytetami i potencjalny wpływ, który korygowaniem ich na ocenę subskrypcji.
 
-## <a name="how-the-secure-score-is-calculated"></a>How the Secure Score is calculated 
+## <a name="how-the-secure-score-is-calculated"></a>Sposób obliczania bezpiecznego wyniku 
 
-Before this preview, Security Center considered each recommendation individually and assigned a value to it based on its severity. Security teams working to improve their security posture had to prioritize responses to Security Center recommendations based on the full list of findings. Every time you remediated a recommendation for a single resource, your Secure Score improved.
+Przed tą wersją zapoznawczą Security Center traktować każde zalecenie indywidualnie i przypisała do niego wartość na podstawie jej ważności. Zespoły zabezpieczeń pracują nad ulepszaniem stan zabezpieczeń musiały określić priorytety odpowiedzi na Security Center rekomendacje w oparciu o pełną listę wyników. Za każdym razem, gdy korygujesz zalecenie dotyczące pojedynczego zasobu, Ulepszono bezpieczny wynik.
 
-As part of the enhancements to the Secure Score, recommendations are now grouped into **Security Controls**. A control is a set of security recommendations and the instructions that help you implement those recommendations. Controls are logical groupings of related recommendations. Points are no longer awarded at the recommendation level. Instead, your score will only improve when you remediate *all* of the recommendations for a single resource within a control.
+W ramach ulepszeń w zakresie bezpieczeństwa zalecenia są teraz pogrupowane w **mechanizmy kontroli zabezpieczeń**. Kontrolka to zestaw zaleceń dotyczących zabezpieczeń i instrukcje, które ułatwiają zaimplementowanie tych zaleceń. Formanty są logicznymi grupami powiązanych zaleceń. Punkty nie są już udzielane na poziomie rekomendacji. W zamian wynik będzie ulepszany tylko wtedy, gdy koryguje *wszystkie* zalecenia dotyczące pojedynczego zasobu w formancie.
 
-The contribution of each Security Control towards the overall Secure Score is shown clearly on the recommendations page.
+Udział każdej kontroli zabezpieczeń w odniesieniu do ogólnej bezpiecznego wyniku jest widoczny na stronie zalecenia.
 
-[![The enhanced Secure Score (preview) introduces Security Controls](media/secure-score-security-controls/security-controls.png)](media/secure-score-security-controls/security-controls.png#lightbox)
+[![zwiększony bezpieczny wynik (wersja zapoznawcza) zawiera wprowadzenie do kontroli zabezpieczeń](media/secure-score-security-controls/security-controls.png)](media/secure-score-security-controls/security-controls.png#lightbox)
 
-To get all the possible points for a Security Control, all your resources must comply with all of the security recommendations within the Security Control. For example, Security Center has multiple recommendations regarding how to secure your management ports. In the past, you could remediate some of those related and interdependent recommendations while leaving others unsolved, and your Secure Score would improve. When looked at objectively, it's easy to argue that your security hadn't improved until you had resolved them all. Now, you must remediate them all to make a difference to your Secure Score.
+Aby uzyskać wszystkie możliwe punkty kontroli zabezpieczeń, wszystkie zasoby muszą być zgodne ze wszystkimi zaleceniami dotyczącymi zabezpieczeń w ramach kontroli zabezpieczeń. Na przykład Security Center ma wiele zaleceń dotyczących zabezpieczania portów zarządzania. W przeszłości można było skorygować niektóre z tych powiązanych i zależnych zaleceń, pozostawiając inne nierozwiązane i bezpieczny wynik. Po zapoznaniu się z obiektywem, można łatwo zatwierdzić, że nie zabezpieczeń zostały ulepszone do momentu ich rozwiązania. Teraz należy skorygować wszystkie te elementy, aby wprowadzić różnicę dla bezpiecznego wyniku.
 
-For example, the Security Control called "Apply system updates" has a maximum score of six points, which you can see in the tooltip on the potential increase value of the control:
+Na przykład kontrola zabezpieczeń o nazwie "Zastosuj aktualizacje systemu" ma maksymalny wynik sześciu punktów, który można zobaczyć w etykietce narzędzia dla potencjalnej podwyżki wartości formantu:
 
-[![The Security Control "Apply system updates"](media/secure-score-security-controls/apply-system-updates-control.png)](media/secure-score-security-controls/apply-system-updates-control.png#lightbox)
+[![kontroli zabezpieczeń "Zastosuj aktualizacje systemu"](media/secure-score-security-controls/apply-system-updates-control.png)](media/secure-score-security-controls/apply-system-updates-control.png#lightbox)
 
-The value for the Security Control "Apply system updates" in the screenshot above shows "2% (1 Point)". That means that if you remediate all the recommendations in this control, your score will increase by 2% (which in this case is one point). For simplicity, values in the recommendations list's "Potential increase" column are rounded to whole numbers. The tooltips show the precise values:
+Możliwość kontroli zabezpieczeń "Zastosuj aktualizacje systemu" na powyższym zrzucie ekranu pokazuje "2% (1 punkt)". Oznacza to, że w przypadku skorygowania wszystkich zaleceń w tym formancie wynik zostanie zwiększony o 2% (w tym przypadku jeden punkt). Dla uproszczenia wartości kolumny "potencjalne zwiększenie" listy rekomendacji są zaokrąglane do liczb całkowitych. Etykietki narzędzi pokazują dokładne wartości:
 
-* **Potential increase** - The remaining points available to you within the control. To get these points  added to your Secure Score, remediate all of the control's recommendations. In the example above, the one point shown for the control is actually 0.96 points.
-* **Current score** - The current score for this control. Each control contributes towards the total score. In this example, the control is contributing 5.04 points to the total. 
-* **Max score** - The sum of the previous two values.
+* **Potencjalny wzrost** — pozostałe punkty dostępne dla Ciebie w obrębie formantu. Aby dodać te punkty do bezpiecznego wyniku, skoryguj wszystkie zalecenia dotyczące kontroli. W powyższym przykładzie, jeden punkt pokazywany dla kontrolki jest faktycznie 0,96 punktów.
+* **Bieżący wynik** — bieżący wynik dla tego formantu. Każda kontrolka przyczynia się do osiągnięcia łącznego wyniku. W tym przykładzie Kontrola ma wpływ na 5,04 punktów na sumę. 
+* **Wartość maksymalna** — suma poprzednich dwóch wartości.
 
-### <a name="calculations---understanding-your-score"></a>Calculations - understanding your score
+### <a name="calculations---understanding-your-score"></a>Obliczenia — zrozumienie oceny
 
-|Metryka|Formula and example|
+|Metryka|Formuła i przykład|
 |-|-|
-|**Security Control's current score**|<br>![Equation for calculating a Security Control's current score](media/secure-score-security-controls/security-control-scoring-equation.png)<br><br>Each individual Security Control contributes towards the Security Score. Each resource affected by a recommendation within the control, contributes towards the control's current score. The current score for each control is a measure of the status of the resources *within* the control.<br>![Tooltips showing the values used when calculating the Security Control's current score](media/secure-score-security-controls/security-control-scoring-tooltips.png)<br>In this example, the max score of 6 would be divided by 78 because that's the sum of the healthy and unhealthy resources.<br>6 / 78 = 0.0769<br>Multiplying that by the number of healthy resources (74) results in the current score:<br>0.0769 * 74 = **5.69**<br><br>|
-|**Wskaźnik bezpieczeństwa**<br>Subskrypcja pojedyncza|<br>![Equation for calculating the current Secure Score](media/secure-score-security-controls/secure-score-equation.png)<br><br>![Single subscription secure score with all controls enabled](media/secure-score-security-controls/secure-score-example-single-sub.png)<br>In this example, there is a single subscription with all Security Controls available (a potential maximum score of 60 points). The score shows 28 points out of a possible 60 and the remaining 32 points are reflected in the "Potential score increase" figures of the Security Controls.<br>![List of controls and the potential score increase](media/secure-score-security-controls/secure-score-example-single-sub-recs.png)|
-|**Wskaźnik bezpieczeństwa**<br>Multiple subscriptions|<br>The current score for all resources across all subscriptions are added and the calculation is then the same as for a single subscription<br><br>Podczas przeglądania wielu subskrypcji, funkcja Secure Score szacuje wszystkie zasoby we wszystkich włączonych zasadach i grupuje ich łączny wpływ na maksymalny wynik kontroli zabezpieczeń.<br>![zabezpieczonych wyników dla wielu subskrypcji z włączonymi wszystkimi kontrolkami](media/secure-score-security-controls/secure-score-example-multiple-subs.png)<br>Połączony wynik **nie** jest średni; jest to raczej oceniane stan stanu wszystkich zasobów we wszystkich subskrypcjach.<br>Tutaj, jeśli przejdziesz do strony rekomendacje i dodasz dostępne punkty, zobaczysz, że jest to różnica między bieżącym wynikiem (24) i maksymalnym dostępnym wynikiem (60).|
+|**Bieżący wynik kontroli zabezpieczeń**|<br>![równanie obliczania bieżącego wyniku kontroli zabezpieczeń](media/secure-score-security-controls/security-control-scoring-equation.png)<br><br>Każda indywidualna kontrola zabezpieczeń przyczynia się do osiągnięcia oceny zabezpieczeń. Każdy zasób, na który ma wpływ zalecenie w ramach kontroli, przyczynia się do bieżącego wyniku kontrolki. Bieżący wynik dla każdej kontrolki jest miarą stanu zasobów *w* kontrolce.<br>Etykietki narzędzi ![pokazujące wartości używane podczas obliczania bieżącego wyniku kontroli zabezpieczeń](media/secure-score-security-controls/security-control-scoring-tooltips.png)<br>W tym przykładzie maksymalny wynik 6 zostałby podzielony przez 78, ponieważ to jest suma zasobów w dobrej kondycji i w nieprawidłowych Stanach.<br>6/78 = 0,0769<br>Pomnożenie tego przez liczbę zdrowych zasobów (74) skutkuje bieżącą oceną:<br>0,0769 * 74 = **5,69**<br><br>|
+|**Wskaźnik bezpieczeństwa**<br>Subskrypcja pojedyncza|<br>![Równanie do obliczania bieżącego wyniku bezpiecznego](media/secure-score-security-controls/secure-score-equation.png)<br><br>![Jeden bezpieczny wynik subskrypcji z włączonymi wszystkimi kontrolkami](media/secure-score-security-controls/secure-score-example-single-sub.png)<br>W tym przykładzie istnieje jedna subskrypcja z wszystkimi dostępnymi wszystkimi kontrolami zabezpieczeń (potencjalną maksymalną wartością wyniku 60 punktów). Wynik pokazuje 28 punktów z możliwego 60, a pozostałe 32 punkty są odzwierciedlone w postaci "potencjalne zwiększenie wyniku" w zakresie kontroli zabezpieczeń.<br>![Lista kontrolek i zwiększenie potencjalnego wyniku](media/secure-score-security-controls/secure-score-example-single-sub-recs.png)|
+|**Wskaźnik bezpieczeństwa**<br>Wiele subskrypcji|<br>Bieżący wynik dla wszystkich zasobów we wszystkich subskrypcjach zostanie dodany, a obliczenia są takie same jak w przypadku pojedynczej subskrypcji<br><br>Podczas przeglądania wielu subskrypcji, funkcja Secure Score szacuje wszystkie zasoby we wszystkich włączonych zasadach i grupuje ich łączny wpływ na maksymalny wynik kontroli zabezpieczeń.<br>![zabezpieczonych wyników dla wielu subskrypcji z włączonymi wszystkimi kontrolkami](media/secure-score-security-controls/secure-score-example-multiple-subs.png)<br>Połączony wynik **nie** jest średni; jest to raczej oceniane stan stanu wszystkich zasobów we wszystkich subskrypcjach.<br>Tutaj, jeśli przejdziesz do strony rekomendacje i dodasz dostępne punkty, zobaczysz, że jest to różnica między bieżącym wynikiem (24) i maksymalnym dostępnym wynikiem (60).|
 ||||
 
 ## <a name="improving-your-secure-score"></a>Ulepszanie bezpiecznego wyniku

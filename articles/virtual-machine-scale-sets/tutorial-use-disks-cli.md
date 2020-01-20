@@ -1,29 +1,21 @@
 ---
-title: Samouczek — tworzenie dysków dla zestawów skalowania za pomocą interfejsu wiersza polecenia platformy Azure i korzystanie z nich | Microsoft Docs
+title: Samouczek — Tworzenie i używanie dysków dla zestawów skalowania za pomocą interfejsu wiersza polecenia platformy Azure
 description: Dowiedz się, jak za pomocą interfejsu wiersza polecenia platformy Azure utworzyć dyski funkcji Dyski zarządzane i używać ich razem z zestawem skalowania maszyn wirtualnych, na przykład dodawać, przygotowywać, wyświetlać i odłączać dyski.
-services: virtual-machine-scale-sets
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
-editor: ''
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 58090e860b79d59021d467fcf73596271c91c7f6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 01dbbcddf7df8e261e865fbb61c1fcfd5abbd5fc
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60329460"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278247"
 ---
-# <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-the-azure-cli"></a>Samouczek: Tworzenie dysków i używanie ich z zestawem skalowania maszyn wirtualnych za pośrednictwem interfejsu wiersza polecenia platformy Azure
+# <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-the-azure-cli"></a>Samouczek: tworzenie dysków i używanie ich z zestawem skalowania maszyn wirtualnych za pośrednictwem interfejsu wiersza polecenia platformy Azure
 Zestawy skalowania maszyn wirtualnych przechowują aplikacje, dane oraz systemy operacyjne wystąpień maszyn wirtualnych na dyskach. Ważne jest, aby podczas tworzenia zestawu skalowania i zarządzania nim wybrać taki rozmiar dysku i konfigurację, które odpowiadają oczekiwanemu obciążeniu. W tym samouczku omówiono tworzenie dysków maszyn wirtualnych i zarządzanie nimi. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
@@ -48,7 +40,7 @@ Podczas tworzenia lub skalowania zestawu skalowania do każdego wystąpienia mas
 **Dysk tymczasowy** — dyski tymczasowe używają dysku SSD, który znajduje się na tym samym hoście platformy Azure co wystąpienie maszyny wirtualnej. Dyski te są wysoce wydajne i można przy ich użyciu wykonywać operacje takie jak przetwarzanie danych tymczasowych. Jednak jeśli wystąpienie maszyny wirtualnej zostanie przeniesione na nowy host, wszystkie dane przechowywane na dysku tymczasowym zostaną usunięte. Rozmiar dysku tymczasowego zależy od rozmiaru wystąpienia maszyny wirtualnej. Dyski tymczasowe mają etykietę */dev/sdb* oraz punkt instalacji */mnt*.
 
 ### <a name="temporary-disk-sizes"></a>Rozmiary dysków tymczasowych
-| Type | Typowe rozmiary | Maksymalny rozmiar dysku tymczasowego (GiB) |
+| Typ | Typowe rozmiary | Maksymalny rozmiar dysku tymczasowego (GiB) |
 |----|----|----|
 | [Zastosowania ogólne](../virtual-machines/linux/sizes-general.md) | Seria A, B i D | 1600 |
 | [Optymalizacja pod kątem obliczeń](../virtual-machines/linux/sizes-compute.md) | Seria F | 576 |
@@ -62,7 +54,7 @@ Podczas tworzenia lub skalowania zestawu skalowania do każdego wystąpienia mas
 W przypadku konieczności instalowania aplikacji i przechowywania danych można dodać kolejne dyski z danymi. Dyski z danymi powinny być używane w sytuacji, gdy potrzebny jest trwały i dynamiczny magazyn danych. Każdy dysk z danymi ma maksymalną pojemność wynoszącą 4 TB. Liczba dysków z danymi, które można dołączyć, zależy od rozmiaru wystąpienia maszyny wirtualnej. Na każdy procesor wirtualny maszyny wirtualnej można dołączyć dwa dyski z danymi.
 
 ### <a name="max-data-disks-per-vm"></a>Maksymalna liczba dysków z danymi na maszynę wirtualną
-| Type | Typowe rozmiary | Maksymalna liczba dysków z danymi na maszynę wirtualną |
+| Typ | Typowe rozmiary | Maksymalna liczba dysków z danymi na maszynę wirtualną |
 |----|----|----|
 | [Zastosowania ogólne](../virtual-machines/linux/sizes-general.md) | Seria A, B i D | 64 |
 | [Optymalizacja pod kątem obliczeń](../virtual-machines/linux/sizes-compute.md) | Seria F | 64 |
@@ -84,7 +76,7 @@ Dyski w warstwie Premium są wspierane przez oparty na technologii SSD dysk o wy
 ### <a name="premium-disk-performance"></a>Wydajność dysku w warstwie Premium
 |Typ dysku magazynu Premium Storage | P4 | P6 | P10 | P20 | P30 | P40 | P50 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| Rozmiar dysku (zaokrąglony w górę) | 32 GB | 64 GB | 128 GB | 512 GB | 1024 GB (1 TB) | 2048 GB (2 TB) | 4095 GB (4 TB) |
+| Rozmiar dysku (zaokrąglony w górę) | 32 GB | 64 GB | 128 GB | 512 GB | 1024 GB (1 TB) | 2048 GB (2 TB) | 4095 GB (4 TB) |
 | Maksymalna liczba operacji wejścia/wyjścia na sekundę na dysk | 120 | 240 | 500 | 2300 | 5000 | 7500 | 7500 |
 Przepływność na dysk | 25 MB/s | 50 MB/s | 100 MB/s | 150 MB/s | 200 MB/s | 250 MB/s | 250 MB/s |
 
@@ -297,7 +289,7 @@ az group delete --name myResourceGroup --no-wait --yes
 ```
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 W tym samouczku omówiono tworzenie dysków i używanie ich z zestawami skalowania za pośrednictwem interfejsu wiersza polecenia platformy Azure:
 
 > [!div class="checklist"]

@@ -1,22 +1,20 @@
 ---
-title: (PRZESTARZAŁE) Przewodnik Szybki Start — klaster Azure Docker CE dla systemu Linux
+title: PRZESTARZAŁE Szybki Start — klaster Azure Docker CE dla systemu Linux
 description: Szybka nauka tworzenia klastra Docker CE dla kontenerów systemu Linux w usłudze Azure Container Service za pomocą interfejsu wiersza polecenia platformy Azure.
-services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: iainfou
 ms.custom: ''
-ms.openlocfilehash: a7a7455ce9167a9c480d317d50fdce49e2ef06a9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5f492dd2bd270d3f067c05c1dc2235d54e481847
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60721801"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76274872"
 ---
-# <a name="deprecated-deploy-docker-ce-cluster"></a>(PRZESTARZAŁE) Wdrażanie klastra Docker CE
+# <a name="deprecated-deploy-docker-ce-cluster"></a>PRZESTARZAŁE Wdróż klaster platformy Docker CE
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
@@ -32,7 +30,7 @@ Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z
 
 Utwórz grupę zasobów za pomocą polecenia [az group create](/cli/azure/group#az-group-create). Grupa zasobów platformy Azure to logiczna grupa przeznaczona do wdrażania zasobów platformy Azure i zarządzania nimi.
 
-Poniższy przykład tworzy grupę zasobów o nazwie *myResourceGroup* w *westus2* lokalizacji.
+Poniższy przykład tworzy grupę zasobów o nazwie Moja *zasobów* w lokalizacji *westus2* .
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location westus2
@@ -55,7 +53,7 @@ Dane wyjściowe:
 
 ## <a name="create-docker-swarm-cluster"></a>Tworzenie klastra Docker Swarm
 
-Utwórz klaster Docker CE w usłudze Azure Container Service za pomocą polecenia [az acs create](/cli/azure/acs#az-acs-create). Aby uzyskać informacje na region availaiblity Docker CE, zobacz [regionów usługi ACS dla Docker CE](https://github.com/Azure/ACS/blob/master/announcements/2017-08-04_additional_regions.md)
+Utwórz klaster Docker CE w usłudze Azure Container Service za pomocą polecenia [az acs create](/cli/azure/acs#az-acs-create). Aby uzyskać informacje na temat regionu availaiblity platformy Docker CE, zobacz [regiony usług ACS dla platformy Docker ce](https://github.com/Azure/ACS/blob/master/announcements/2017-08-04_additional_regions.md) .
 
 W poniższym przykładzie tworzony jest klaster o nazwie *mySwarmCluster* z jednym węzłem głównym systemu Linux i trzema węzłami agenta systemu Linux.
 
@@ -65,7 +63,7 @@ az acs create --name mySwarmCluster --orchestrator-type dockerce --resource-grou
 
 W niektórych przypadkach, np. ograniczonej wersji próbnej, subskrypcja platformy Azure ma ograniczony dostęp do zasobów platformy Azure. Jeśli wdrożenie nie powiedzie się z powodu ograniczonej liczby dostępnych rdzeni, zmniejsz domyślną liczbę agentów, dodając `--agent-count 1` do polecenia [az acs create](/cli/azure/acs#az-acs-create). 
 
-Po kilku minutach polecenie zostanie wykonane i zwróci informacje o klastrze w formacie JSON.
+Po kilku minutach polecenie zostanie zakończone i zwróci informacje o klastrze sformatowanym przy użyciu formatu JSON.
 
 ## <a name="connect-to-the-cluster"></a>Łączenie z klastrem
 
@@ -106,7 +104,6 @@ Utwórz plik o nazwie `azure-vote.yaml` i skopiuj do niego poniższą zawartoś�
 
 ```yaml
 version: '3'
-services:
   azure-vote-back:
     image: redis
     ports:
@@ -161,17 +158,17 @@ Gdy klaster nie będzie już potrzebny, możesz usunąć grupę zasobów, usług
 az group delete --name myResourceGroup --yes --no-wait
 ```
 
-## <a name="get-the-code"></a>Uzyskiwanie kodu
+## <a name="get-the-code"></a>Uzyskaj kod
 
 W tym przewodniku Szybki start wcześniej utworzone obrazy kontenera zostały użyte w celu utworzenia usługi Docker. Powiązany kod aplikacji, plik Dockerfile i plik Compose są dostępne w serwisie GitHub.
 
 [https://github.com/Azure-Samples/azure-voting-app-redis](https://github.com/Azure-Samples/azure-voting-app-redis.git)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym przewodniku Szybki start wdrożono klaster Docker Swarm oraz wdrożono w nim aplikację obsługującą wiele kontenerów.
 
-Aby dowiedzieć się więcej na temat integracji klastra Docker swarm przy użyciu infrastruktury DevOps platformy Azure, nadal CI/CD przy użyciu rozwiązań Docker Swarm i DevOps platformy Azure.
+Aby dowiedzieć się więcej na temat integrowania narzędzia Docker Swarm z usługą Azure DevOps, przejdź do obszaru ciągłej integracji/ciągłego wdrażania za pomocą platformy Docker Swarm i Azure DevOps
 
 > [!div class="nextstepaction"]
-> [Ciągła Integracja/ciągłe dostarczanie z usługami Docker Swarm i DevOps platformy Azure](./container-service-docker-swarm-setup-ci-cd.md)
+> [Ciągłej integracji/ciągłego wdrażania przy użyciu rozwiązań Docker Swarm i Azure DevOps](./container-service-docker-swarm-setup-ci-cd.md)

@@ -8,12 +8,12 @@ services: time-series-insights
 ms.service: time-series-insights
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: e17d38f6bcb1d843b49e89a473551f8ef4aa16aa
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: ce566080c6ddbc4784365ceda6011c3f6612732a
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770326"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76276867"
 ---
 # <a name="connect-time-series-insights-to-power-bi"></a>Połącz Time Series Insights z Power BI  
 
@@ -23,7 +23,7 @@ Azure Time Series Insights teraz bezproblemowo integrują się z [Power BI](http
 
 ## <a name="video"></a>Wideo
 
-Dowiedz się więcej na temat integrowania Azure Time Series Insights z Power BI.
+### <a name="learn-more-about-integrating-azure-time-series-insights-with-power-bibr"></a>Dowiedz się więcej na temat integrowania Azure Time Series Insights z Power BI.</br>
 
 > [!VIDEO https://channel9.msdn.com/Shows/Internet-of-Things-Show/Power-BI-integration-with-TSI/player]
 

@@ -1,20 +1,19 @@
 ---
 title: Szyfrowanie dysków dla zestawów skalowania platformy Azure za pomocą interfejsu wiersza polecenia platformy Azure
 description: Dowiedz się, jak używać Azure PowerShell do szyfrowania wystąpień maszyn wirtualnych i dołączonych dysków w zestawie skalowania maszyn wirtualnych z systemem Windows
-services: virtual-machine-scale-sets
 author: msmbaldwin
 manager: rkarlin
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/15/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 2577eef95cad3405eb42af22e4c57511a660c1a6
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 557d5c023acbc7987d58c9e78bfe11e25f314879
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72530812"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76279080"
 ---
 # <a name="encrypt-os-and-attached-data-disks-in-a-virtual-machine-scale-set-with-the-azure-cli"></a>Szyfrowanie systemu operacyjnego i dołączonych dysków danych w zestawie skalowania maszyn wirtualnych za pomocą interfejsu wiersza polecenia platformy Azure
 
@@ -125,7 +124,7 @@ az vmss encryption enable \
 
 > [!NOTE]
 >  Składnia wartości parametru dysk-szyfrowanie-kluczy jest pełnym ciągiem identyfikatora:</br>
-/subscriptions/[Identyfikator subskrypcji — identyfikator GUID]/resourceGroups/[Resource-Group-Name]/providers/Microsoft.KeyVault/vaults/[nazwa magazynu kluczy]</br></br>
+/subscriptions/[subscription-id-guid]/resourceGroups/[resource-group-name]/providers/Microsoft.KeyVault/vaults/[keyvault-name]</br></br>
 > Składnia wartości parametru klucz-szyfrowanie-klucz jest pełnym identyfikatorem URI KEK w programie:</br>
 https://[nazwa magazynu kluczy]. magazyn. Azure. NET/Keys/[kekname]/[KEK-Unique-ID]
 
@@ -176,4 +175,4 @@ az vmss encryption disable --resource-group myResourceGroup --name myScaleSet
 
 - W tym artykule użyto interfejsu wiersza polecenia platformy Azure w celu zaszyfrowania zestawu skalowania maszyn wirtualnych. Możesz również użyć szablonów [Azure PowerShell](disk-encryption-powershell.md) lub [Azure Resource Manager](disk-encryption-azure-resource-manager.md).
 - Jeśli chcesz, aby Azure Disk Encryption zastosowały się po zainicjowaniu innego rozszerzenia, możesz użyć [sekwencjonowania rozszerzeń](virtual-machine-scale-sets-extension-sequencing.md). 
-- Przykład kompleksowego pliku wsadowego dla szyfrowania dysku danych zestawu skalowania systemu Linux można znaleźć [tutaj](https://gist.githubusercontent.com/ejarvi/7766dad1475d5f7078544ffbb449f29b/raw/03e5d990b798f62cf188706221ba6c0c7c2efb3f/enable-linux-vmss.bat). Ten przykład tworzy grupę zasobów, zestaw skalowania systemu Linux, instaluje dysk danych 5 GB i szyfruje zestaw skalowania maszyn wirtualnych.
+- Przykład kompleksowego pliku wsadowego dla szyfrowania dysku danych zestawu skalowania systemu Linux można znaleźć [tutaj](https://gist.githubusercontent.com/ejarvi/7766dad1475d5f7078544ffbb449f29b/raw/03e5d990b798f62cf188706221ba6c0c7c2efb3f/enable-linux-vmss.bat). W tym przykładzie tworzy grupę zasobów, zestaw skalowania systemu Linux, instaluje dysk 5 GB danych oraz szyfruje zestawu skalowania maszyn wirtualnych.

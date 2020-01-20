@@ -1,29 +1,21 @@
 ---
-title: Używanie rozszerzenia kondycji aplikacji z zestawami skalowania maszyn wirtualnych platformy Azure | Microsoft Docs
+title: Używanie rozszerzenia kondycji aplikacji z zestawami skalowania maszyn wirtualnych platformy Azure
 description: Dowiedz się, jak używać rozszerzenia kondycja aplikacji do monitorowania kondycji aplikacji wdrożonych w zestawach skalowania maszyn wirtualnych.
-services: virtual-machine-scale-sets
-documentationcenter: ''
 author: mayanknayar
-manager: drewm
-editor: ''
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: manayar
-ms.openlocfilehash: e074d76f9ed095725d99bddc9eb21925f4b3697c
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: 37d93b04e6755512eac6c2a168bd2a04f8ac298f
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114487"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76275872"
 ---
 # <a name="using-application-health-extension-with-virtual-machine-scale-sets"></a>Używanie rozszerzenia kondycji aplikacji z zestawami skalowania maszyn wirtualnych
-Monitorowanie kondycji aplikacji jest ważnym sygnałem do zarządzania wdrożeniem i uaktualniania go. Zestawy skalowania maszyn wirtualnych platformy Azure zapewniają [](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model) obsługę uaktualnień stopniowych, takich jak [automatyczne uaktualnienia obrazu systemu operacyjnego](virtual-machine-scale-sets-automatic-upgrade.md), które polegają na monitorowaniu kondycji poszczególnych wystąpień w celu uaktualnienia wdrożenia.
+Monitorowanie kondycji aplikacji jest ważnym sygnałem do zarządzania wdrożeniem i uaktualniania go. Zestawy skalowania maszyn wirtualnych platformy Azure zapewniają obsługę [uaktualnień stopniowych](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model) , takich jak [automatyczne uaktualnienia obrazu systemu operacyjnego](virtual-machine-scale-sets-automatic-upgrade.md), które polegają na monitorowaniu kondycji poszczególnych wystąpień w celu uaktualnienia wdrożenia.
 
 W tym artykule opisano, jak można użyć rozszerzenia kondycja aplikacji do monitorowania kondycji aplikacji wdrożonych w ramach zestawów skalowania maszyn wirtualnych.
 
@@ -63,20 +55,20 @@ Poniższy kod JSON przedstawia schemat rozszerzenia kondycji aplikacji. Rozszerz
 
 ### <a name="property-values"></a>Wartości właściwości
 
-| Name (Nazwa) | Wartość / przykład | Typ danych
+| Nazwa | Wartość / przykład | Typ danych
 | ---- | ---- | ---- 
 | apiVersion | `2018-10-01` | date |
 | publisher | `Microsoft.ManagedServices` | string |
-| type | `ApplicationHealthLinux`(Linux), `ApplicationHealthWindows` (system Windows) | string |
+| type | `ApplicationHealthLinux` (Linux), `ApplicationHealthWindows` (system Windows) | string |
 | typeHandlerVersion | `1.0` | int |
 
 ### <a name="settings"></a>Ustawienia
 
-| Name | Wartość / przykład | Typ danych
+| Nazwa | Wartość / przykład | Typ danych
 | ---- | ---- | ----
 | protocol | `http` lub `tcp` | string |
-| port | Opcjonalne, gdy protokół `http`jest, obowiązkowy, gdy protokół jest`tcp` | int |
-| requestPath | Obowiązkowe, gdy protokół `http`jest, niedozwolony, gdy protokół jest`tcp` | string |
+| port | Opcjonalne, gdy protokół jest `http`, obowiązkowy, gdy protokół jest `tcp` | int |
+| requestPath | Obowiązkowy, gdy protokół jest `http`, nie jest dozwolony w przypadku `tcp` protokołu | string |
 
 ## <a name="deploy-the-application-health-extension"></a>Wdróż rozszerzenie kondycji aplikacji
 Istnieje wiele sposobów wdrażania rozszerzenia kondycji aplikacji w zestawach skalowania, jak opisano w poniższych przykładach.
@@ -105,13 +97,13 @@ PUT on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/
   }
 }
 ```
-Służy `PATCH` do edytowania już wdrożonego rozszerzenia.
+Użyj `PATCH`, aby edytować już wdrożone rozszerzenie.
 
-### <a name="azure-powershell"></a>Azure PowerShell
+### <a name="azure-powershell"></a>Program Azure PowerShell
 
 Użyj polecenia cmdlet [Add-AzVmssExtension](/powershell/module/az.compute/add-azvmssextension) , aby dodać rozszerzenie kondycja aplikacji do definicji modelu zestawu skalowania.
 
-Poniższy przykład dodaje rozszerzenie kondycji aplikacji do `extensionProfile` modelu zestawu skalowania na podstawie zestawu skalowania systemu Windows. W przykładzie zastosowano nowy AZ PowerShell module.
+Poniższy przykład dodaje rozszerzenie kondycja aplikacji do `extensionProfile` w modelu zestawu skalowania zestawu skalowania na podstawie systemu Windows. W przykładzie zastosowano nowy AZ PowerShell module.
 
 ```azurepowershell-interactive
 # Define the scale set variables
@@ -145,7 +137,7 @@ Update-AzVmss -ResourceGroupName $vmScaleSetResourceGroup `
 ```
 
 
-### <a name="azure-cli-20"></a>Interfejs wiersza polecenia platformy Azure 2.0
+### <a name="azure-cli-20"></a>Interfejs wiersza polecenia platformy Azure w wersji 2.0
 
 Użyj [AZ VMSS Extension Set](/cli/azure/vmss/extension#az-vmss-extension-set) , aby dodać rozszerzenie kondycji aplikacji do definicji modelu zestawu skalowania.
 

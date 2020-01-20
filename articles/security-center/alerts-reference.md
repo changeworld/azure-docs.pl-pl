@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2020
 ms.author: memildin
-ms.openlocfilehash: d936f9f30f79b3be6035d668211a15533cb3fa85
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: cfb77548217cf173438ab0407320cbdff8db092e
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76157223"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277010"
 ---
 # <a name="security-alerts---a-reference-guide"></a>Alerty zabezpieczeń — Podręcznik referencyjny
 
@@ -128,7 +128,7 @@ Typy alertów uwzględnionych w tej tabeli:
 |**Wykryto iniekcję kodu**|Iniekcja kodu to wstawianie modułów wykonywalnych do uruchomionych procesów lub wątków. Ta technika jest używana przez złośliwe oprogramowanie do uzyskiwania dostępu do danych, a jednocześnie ukrywana, aby zapobiec ich znalezieniu i usunięciu.<br>Ten alert wskazuje, że wprowadzony moduł znajduje się w zrzucie awaryjnym. Aby rozróżnić nieszkodliwe i nieszkodliwe moduły, Security Center sprawdza, czy wprowadzony moduł jest zgodny z profilem podejrzanego zachowania.|-|
 |**Wykryto podejrzany segment kodu**|Wskazuje, że segment kodu został przydzielony przy użyciu metod niestandardowych, takich jak iniekcja odbicia i puste przetwarzanie. Alert zawiera dodatkowe cechy segmentu kodu, który został przetworzony w celu zapewnienia kontekstu dla możliwości i zachowań zgłoszonego segmentu kodu.|-|
 |**Wykryto kod powłoki odnalezione**|Kod powłoki to ładunek uruchamiany po wykorzystaniu przez złośliwe oprogramowanie luki w zabezpieczeniach oprogramowania.<br>Ten alert oznacza, że analiza zrzutu awaryjnego wykryła kod wykonywalny, który wykazuje zachowanie zwykle wykonywane przez złośliwe ładunki. Chociaż niezłośliwe oprogramowanie może również wykonywać takie zachowanie, nie jest to typowe w normalnych praktykach programistycznych.|-|
-|**Wykryto bezplikową technikę ataków**|Określona pamięć procesu zawiera zestaw narzędzi ataku bezplikowego: Meterpreter. Zestaw narzędzi ataku bez plików zazwyczaj nie ma obecności w systemie plików, dzięki czemu wykrywanie przez tradycyjne oprogramowanie antywirusowe jest trudne.|DefenseEvasion/wykonywanie|
+|**Wykryto bezplikową technikę ataków**|Określona pamięć procesu zawiera zestaw narzędzi ataku bezplikowego: [nazwa zestawu narzędzi]. Zestaw narzędzi ataku bez plików zazwyczaj nie ma obecności w systemie plików, dzięki czemu wykrywanie przez tradycyjne oprogramowanie antywirusowe jest trudne.|DefenseEvasion/wykonywanie|
 ||<a name="alerts-linux"></a><h3>Maszyny z systemem Linux</h3> [Dalsze szczegóły i uwagi](security-center-alerts-iaas.md#linux-)||
 |**Proces uzyskiwania dostępu do pliku kluczy autoryzowanych SSH w nietypowy sposób**|Dostęp do pliku kluczy autoryzowanych przez protokół SSH został uzyskany w metodzie podobnej do znanych kampanii złośliwego oprogramowania. Ten dostęp może wskazywać, że osoba atakująca próbuje uzyskać trwały dostęp do komputera.|-|
 |**Wykryto próbę trwałości**|Analiza danych hosta wykryła, że zainstalowano skrypt uruchamiania dla trybu pojedynczego użytkownika.<br>Ze względu na to, że każdy legalny proces będzie wymagany do uruchomienia w tym trybie, może to wskazywać, że osoba atakująca dodała złośliwy proces do każdego poziomu uruchomienia w celu zagwarantowania trwałości. |Trwałość|

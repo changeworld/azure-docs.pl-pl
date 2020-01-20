@@ -1,26 +1,19 @@
 ---
-title: Odwoływanie się do niestandardowego obrazu w szablonie zestawu skalowania platformy Azure | Microsoft Docs
+title: Odwoływanie się do niestandardowego obrazu w szablonie zestawu skalowania platformy Azure
 description: Dowiedz się, jak dodać obraz niestandardowy do istniejącego szablonu zestawu skalowania maszyn wirtualnych platformy Azure
-services: virtual-machine-scale-sets
-documentationcenter: ''
 author: mayanknayar
-manager: drewm
-editor: ''
 tags: azure-resource-manager
 ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: manayar
-ms.openlocfilehash: 2ed75a72360253996471034b001e12e8190cf733
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: fd1a567af1c35cf6b659995e998b11a61a526508
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68935278"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76275595"
 ---
 # <a name="add-a-custom-image-to-an-azure-scale-set-template"></a>Dodawanie niestandardowego obrazu do szablonu zestawu skalowania platformy Azure
 
@@ -33,7 +26,7 @@ W [poprzednim artykule](virtual-machine-scale-sets-mvss-start.md) został utworz
 
 Jeśli masz już niestandardowy obraz dysku zarządzanego (zasób typu `Microsoft.Compute/images`), możesz pominąć tę sekcję.
 
-Najpierw Dodaj `sourceImageVhdUri` parametr, który jest identyfikatorem URI do uogólnionego obiektu BLOB w usłudze Azure Storage, który zawiera obraz niestandardowy do wdrożenia.
+Najpierw Dodaj parametr `sourceImageVhdUri`, który jest identyfikatorem URI do uogólnionego obiektu BLOB w usłudze Azure Storage, który zawiera obraz niestandardowy do wdrożenia.
 
 
 ```diff
@@ -51,7 +44,7 @@ Najpierw Dodaj `sourceImageVhdUri` parametr, który jest identyfikatorem URI do 
    "variables": {},
 ```
 
-Następnie Dodaj zasób typu `Microsoft.Compute/images`, który jest obrazem dysku zarządzanego na podstawie uogólnionego obiektu BLOB znajdującego się w identyfikatorze URI. `sourceImageVhdUri` Ten obraz musi znajdować się w tym samym regionie co zestaw skalowania, który go używa. We właściwościach obrazu określ typ systemu operacyjnego, lokalizację obiektu BLOB (z `sourceImageVhdUri` parametru) i typ konta magazynu:
+Następnie Dodaj zasób typu `Microsoft.Compute/images`, który jest obrazem dysku zarządzanego na podstawie uogólnionego obiektu BLOB znajdującego się w `sourceImageVhdUri`URI. Ten obraz musi znajdować się w tym samym regionie co zestaw skalowania, który go używa. We właściwościach obrazu określ typ systemu operacyjnego, lokalizację obiektu BLOB (z parametru `sourceImageVhdUri`) i typ konta magazynu:
 
 ```diff
    "resources": [
@@ -78,7 +71,7 @@ Następnie Dodaj zasób typu `Microsoft.Compute/images`, który jest obrazem dys
 
 ```
 
-W zasobów zestawu skalowania Dodaj `dependsOn` klauzulę odwołującą się do obrazu niestandardowego, aby upewnić się, że obraz został utworzony przed próbą wdrożenia zestawu skalowania z tego obrazu:
+W zasobów zestawu skalowania Dodaj klauzulę `dependsOn` odwołującą się do obrazu niestandardowego, aby upewnić się, że obraz został utworzony przed próbą wdrożenia zestawu skalowania z tego obrazu:
 
 ```diff
        "location": "[resourceGroup().location]",
@@ -95,7 +88,7 @@ W zasobów zestawu skalowania Dodaj `dependsOn` klauzulę odwołującą się do 
 
 ### <a name="changing-scale-set-properties-to-use-the-managed-disk-image"></a>Zmienianie właściwości zestawu skalowania w celu korzystania z obrazu dysku zarządzanego
 
-W zestawie `storageProfile`skalowania zamiast określania wydawcy, oferty, jednostki SKU i wersji obrazu `id` platformy `Microsoft.Compute/images` należy określić zasób: `imageReference`
+Na `imageReference` zestawu skalowania `storageProfile`, zamiast określania wydawcy, oferty, jednostki SKU i wersji obrazu platformy, określ `id` zasobu `Microsoft.Compute/images`:
 
 ```json
          "virtualMachineProfile": {
@@ -107,7 +100,7 @@ W zestawie `storageProfile`skalowania zamiast określania wydawcy, oferty, jedno
            "osProfile": {
 ```
 
-W tym przykładzie Użyj `resourceId` funkcji, aby pobrać identyfikator zasobu obrazu utworzonego w tym samym szablonie. Jeśli wcześniej utworzono obraz dysku zarządzanego, należy podać identyfikator tego obrazu. Ten identyfikator musi mieć postać: `/subscriptions/<subscription-id>resourceGroups/<resource-group-name>/providers/Microsoft.Compute/images/<image-name>`.
+W tym przykładzie Użyj funkcji `resourceId`, aby uzyskać identyfikator zasobu obrazu utworzonego w tym samym szablonie. Jeśli wcześniej utworzono obraz dysku zarządzanego, należy podać identyfikator tego obrazu. Ten identyfikator musi mieć postać: `/subscriptions/<subscription-id>resourceGroups/<resource-group-name>/providers/Microsoft.Compute/images/<image-name>`.
 
 
 ## <a name="next-steps"></a>Następne kroki

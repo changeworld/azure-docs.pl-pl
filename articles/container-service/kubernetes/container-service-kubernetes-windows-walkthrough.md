@@ -1,22 +1,20 @@
 ---
-title: (PRZESTARZAŁE) Przewodnik Szybki Start — klaster Azure Kubernetes dla Windows
+title: PRZESTARZAŁE Szybki Start — klaster Azure Kubernetes dla systemu Windows
 description: Szybka nauka tworzenia klastra Kubernetes dla kontenerów systemu Windows w usłudze Azure Container Service za pomocą interfejsu wiersza polecenia platformy Azure.
-services: container-service
 author: dlepow
-manager: jeconnoc
 ms.service: container-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/18/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017, mvc, devcenter
-ms.openlocfilehash: d7ce702bb726fb89780d251f31023c9490112c36
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2e36de9f2a6af3643b6f609339d413968f6a8d6e
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66148818"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277644"
 ---
-# <a name="deprecated-deploy-kubernetes-cluster-for-windows-containers"></a>(PRZESTARZAŁE) Wdrażanie klastra Kubernetes dla kontenerów Windows
+# <a name="deprecated-deploy-kubernetes-cluster-for-windows-containers"></a>PRZESTARZAŁE Wdrażanie klastra Kubernetes dla kontenerów systemu Windows
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
@@ -162,7 +160,7 @@ Aby udostępnić zasobnik światu z publicznym adresem IP, wpisz następujące p
 kubectl expose pods iis --port=80 --type=LoadBalancer
 ```
 
-Za pomocą tego polecenia usługi Kubernetes tworzy usługi i reguły usługi Azure load balancer z publicznym adresem IP dla usługi. 
+Za pomocą tego polecenia Kubernetes tworzy usługę i regułę modułu równoważenia obciążenia platformy Azure z publicznym adresem IP dla usługi. 
 
 Uruchom poniższe polecenie, aby wyświetlić stan usługi.
 
@@ -191,7 +189,7 @@ az group delete --name myResourceGroup
 ```
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym przewodniku Szybki start wdrożono klaster Kubernetes, nawiązano połączenie z narzędziem `kubectl` i wdrożono zasobnik za pomocą kontenera usług IIS. Aby dowiedzieć się więcej na temat usługi Azure Container Service, przejdź do samouczka dotyczącego rozwiązania Kubernetes.
 

@@ -4,24 +4,22 @@ description: Opisuje, jak Cloud Foundry mogą korzystać z usług platformy Azur
 services: virtual-machines-linux
 documentationcenter: ''
 author: ningk
-manager: jeconnoc
-editor: ''
 tags: Cloud-Foundry
 ms.assetid: 00c76c49-3738-494b-b70d-344d8efc0853
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/11/2018
 ms.author: ningk
-ms.openlocfilehash: e341cc5beeb8e8362a848bb1e208ddf1dc773978
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 04ef72f7ec70b370305395ae8de8180f4594b43b
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71976795"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277345"
 ---
-# <a name="integrate-cloud-foundry-with-azure"></a>Integracja Cloud Foundry z platformą Azure
+# <a name="integrate-cloud-foundry-with-azure"></a>Integracja usługi Cloud Foundry z platformą Azure
 
 [Cloud Foundry](https://docs.cloudfoundry.org/) jest platformą PaaS działającą na platformie Cloud Providers IaaS. Oferuje spójne środowisko wdrażania aplikacji między dostawcami chmury. Można ją również zintegrować z różnymi usługami platformy Azure, korzystając z wysokiej jakości korporacyjnej, skalowalności i oszczędności kosztów.
 Istnieją [6 podsystemów Cloud Foundry](https://docs.cloudfoundry.org/concepts/architecture/), które mogą być elastycznie skalowane w trybie online, w tym: Routing, uwierzytelnianie, zarządzanie cyklem życia aplikacji, zarządzanie usługami, obsługa komunikatów i monitorowanie. Dla każdego podsystemu można skonfigurować Cloud Foundry do korzystania z usługi platformy Azure z korespondentem. 

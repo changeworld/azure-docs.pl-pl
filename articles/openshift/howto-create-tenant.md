@@ -1,49 +1,48 @@
 ---
-title: Tworzenie dzierżawy usługi Azure AD dla usługi Azure Red Hat OpenShift | Dokumentacja firmy Microsoft
-description: Oto jak utworzyć dzierżawę usługi Azure Active Directory (Azure AD) do hostowania klastra usługi Microsoft Azure Red Hat OpenShift.
+title: Tworzenie dzierżawy usługi Azure AD na platformie Azure Red Hat OpenShift
+description: Poniżej przedstawiono sposób tworzenia dzierżawy usługi Azure Active Directory (Azure AD), która będzie hostować klaster Microsoft Azure Red Hat OpenShift.
 author: jimzim
 ms.author: jzim
 ms.service: container-service
-manager: jeconnoc
 ms.topic: conceptual
 ms.date: 05/13/2019
-ms.openlocfilehash: 560cdcf8a99a486c7f5177b675cff327c6fb6a41
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ad03538cafcce9c1d660d0f2ac5eb3c6ae5f4f38
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66306460"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76270450"
 ---
-# <a name="create-an-azure-ad-tenant-for-azure-red-hat-openshift"></a>Tworzenie dzierżawy usługi Azure AD dla usługi Azure Red Hat OpenShift
+# <a name="create-an-azure-ad-tenant-for-azure-red-hat-openshift"></a>Tworzenie dzierżawy usługi Azure AD na platformie Azure Red Hat OpenShift
 
-Wymaga programu Microsoft Azure Red Hat OpenShift [usługi Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) dzierżawy, w której chcesz utworzyć klaster. A *dzierżawy* to dedykowane wystąpienie usługi Azure AD dla deweloperów aplikacji lub organizacja otrzymuje podczas tworzenia relacji z firmą Microsoft przez zarejestrowanie się do platformy Azure, Microsoft Intune i Microsoft 365. Każda dzierżawa usługi Azure AD jest odrębna i oddzielonym od innych usługi Azure AD dzierżawy i ma swoją własną robocze i school tożsamości i rejestracje aplikacji.
+Microsoft Azure Red Hat OpenShift wymaga dzierżawy [Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) , w której ma zostać utworzony klaster. *Dzierżawca* to dedykowane wystąpienie usługi Azure AD, które otrzymuje organizacja lub Deweloper aplikacji podczas tworzenia relacji z firmą Microsoft, rejestrując się na platformie Azure, Microsoft Intune lub Microsoft 365. Każda dzierżawa usługi Azure AD jest odrębna i oddzielona od innych dzierżaw usługi Azure AD i ma własne tożsamości służbowe i rejestracje aplikacji.
 
-Jeśli nie masz już dzierżawę usługi Azure AD, wykonaj te instrukcje, aby go utworzyć.
+Jeśli nie masz jeszcze dzierżawy usługi Azure AD, postępuj zgodnie z poniższymi instrukcjami, aby je utworzyć.
 
 ## <a name="create-a-new-azure-ad-tenant"></a>Tworzenie nowej dzierżawy usługi Azure AD
 
-Aby utworzyć dzierżawę:
+Aby utworzyć dzierżawcę:
 
-1. Zaloguj się do [witryny Azure portal](https://portal.azure.com/) przy użyciu konta chcesz skojarzyć z klastrem usługi Azure Red Hat OpenShift.
-2. Otwórz [bloku Azure Active Directory](https://portal.azure.com/#create/Microsoft.AzureActiveDirectory) do utworzenia nowej dzierżawy (znany także jako nową *usługi Azure Active Directory*).
-3. Podaj **nazwa organizacji**.
-4. Podaj **początkowa nazwa domeny**. Będzie to miało *onmicrosoft.com* dołączone do niego. Można użyć ponownie wartość *nazwa organizacji* tutaj.
+1. Zaloguj się do [Azure Portal](https://portal.azure.com/) przy użyciu konta, które chcesz skojarzyć z klastrem usługi Azure Red Hat OpenShift.
+2. Otwórz [blok Azure Active Directory](https://portal.azure.com/#create/Microsoft.AzureActiveDirectory) , aby utworzyć nową dzierżawę (znaną również jako nowa *Azure Active Directory*).
+3. Podaj **nazwę organizacji**.
+4. Podaj **początkową nazwę domeny**. Zostanie do niego dołączony *onmicrosoft.com* . W tym miejscu możesz użyć tutaj wartości *Nazwa organizacji* .
 5. Wybierz kraj lub region, w którym zostanie utworzona dzierżawa.
-6. Kliknij pozycję **Utwórz**.
-7. Po utworzeniu dzierżawy usługi Azure AD wybierz **kliknij tutaj, aby zarządzać nowym katalogiem** łącza. Nazwa nowej dzierżawy powinna być wyświetlana w prawym górnym rogu witryny Azure portal:  
+6. Kliknij przycisk **Utwórz**.
+7. Po utworzeniu dzierżawy usługi Azure AD wybierz **pozycję kliknij tutaj, aby zarządzać nowym katalogiem** . Nową nazwę dzierżawy należy wyświetlić w prawym górnym rogu Azure Portal:  
 
-    ![Zrzut ekranu przedstawiający portal przedstawiający nazwę dzierżawy w prawym górnym rogu][tenantcallout]  
+    ![Zrzut ekranu przedstawiający Portal pokazujący nazwę dzierżawy w prawym górnym rogu][tenantcallout]  
 
-8. Zanotuj *identyfikator dzierżawy* Aby później można określić miejsce utworzyć klaster usługi Azure Red Hat OpenShift. W portalu powinien zostać wyświetlony blok Przegląd usługi Azure Active Directory dla nowej dzierżawy. Wybierz **właściwości** i skopiuj wartość dla Twojego **identyfikator katalogu**. Firma Microsoft będzie odnosił się do tej wartości jako `TENANT` w [Tworzenie klastra usługi Azure Red Hat OpenShift](tutorial-create-cluster.md) samouczka.
+8. Zanotuj *Identyfikator dzierżawy* , aby później można było określić miejsce utworzenia klastra usługi Azure Red Hat OpenShift. W portalu powinien zostać wyświetlony blok przegląd Azure Active Directory dla nowej dzierżawy. Wybierz pozycję **Właściwości** i skopiuj wartość **identyfikatora katalogu**. Ta wartość zostanie odwołująca się do `TENANT` w samouczku [Tworzenie klastra usługi Azure Red Hat OpenShift](tutorial-create-cluster.md) .
 
 [tenantcallout]: ./media/howto-create-tenant/tenant-callout.png
 
 ## <a name="resources"></a>Zasoby
 
-Zapoznaj się z [dokumentacji usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/) uzyskać więcej informacji dotyczących [dzierżaw usługi Azure AD](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant).
+Zapoznaj się z [dokumentacją Azure Active Directory](https://docs.microsoft.com/azure/active-directory/) , aby uzyskać więcej informacji o [dzierżawach usługi Azure AD](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się, jak utworzyć jednostkę usługi, wygenerować klienta wpisu tajnego i uwierzytelnianie adresów URL wywołania zwrotnego i utworzenie nowego użytkownika usługi Active Directory do testowania aplikacji w klastrze Azure Red Hat OpenShift.
+Dowiedz się, jak utworzyć jednostkę usługi, wygenerować klucz tajny klienta i adres URL wywołania zwrotnego uwierzytelniania oraz utworzyć nowego użytkownika Active Directory na potrzeby testowania aplikacji w klastrze Red Hat OpenShift platformy Azure.
 
-[Utwórz obiekt aplikacji usługi Azure AD i użytkownika](howto-aad-app-configuration.md)
+[Tworzenie obiektu i użytkownika aplikacji usługi Azure AD](howto-aad-app-configuration.md)

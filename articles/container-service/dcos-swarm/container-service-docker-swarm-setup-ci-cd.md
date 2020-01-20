@@ -1,20 +1,18 @@
 ---
 title: PRZESTARZAŁE Ciągłej integracji/ciągłego wdrażania za pomocą Azure Container Service i Swarm
 description: Używanie Azure Container Service z rozwiązaniami Docker Swarm, Azure Container Registry i Azure DevOps do ciągłego dostarczania aplikacji platformy .NET Core z obsługą kontenera
-services: container-service
 author: jcorioland
-manager: jeconnoc
 ms.service: container-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/08/2016
 ms.author: jucoriol
 ms.custom: mvc
-ms.openlocfilehash: 8990f1f8e4cda5a6cc8b8d3197b843662b1397a5
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 860c277e88918dc37eceb496d852691ced2af114
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68598536"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277902"
 ---
 # <a name="deprecated-full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-docker-swarm-using-azure-devops-services"></a>PRZESTARZAŁE Pełny potok ciągłej integracji/ciągłego wdrażania, który umożliwia wdrażanie aplikacji wielokontenerowych na Azure Container Service przy użyciu rozwiązania Docker Swarm z Azure DevOps Services
 
@@ -22,7 +20,6 @@ ms.locfileid: "68598536"
 
 Jednym z największych wyzwań podczas tworzenia nowoczesnych aplikacji dla chmury jest możliwość ciągłego dostarczania tych aplikacji. W tym artykule dowiesz się, jak zaimplementować potok ciągłej integracji i ciągłego wdrażania (CI/CD) przy użyciu Azure Container Service z funkcją Docker Swarm, Azure Container Registry i zarządzaniem Azure Pipelines.
 
-Ten artykuł jest oparty na prostej aplikacji, dostępnej w serwisie [GitHub](https://github.com/jcorioland/MyShop/tree/acs-docs), opracowanej z ASP.NET Core. Aplikacja składa się z czterech różnych usług: trzy internetowe interfejsy API i jeden fronton sieci Web:
 
 ![Przykładowa aplikacja dla sklepu](./media/container-service-docker-swarm-setup-ci-cd/myshop-application.png)
 
@@ -55,7 +52,7 @@ Przed rozpoczęciem tego samouczka należy wykonać następujące zadania:
 
 Potrzebna jest również maszyna z systemem Ubuntu (14,04 lub 16,04) z zainstalowanym platformą Docker. Ta maszyna jest używana przez Azure DevOps Services w trakcie procesów Azure Pipelines. Jednym ze sposobów tworzenia tego komputera jest użycie obrazu dostępnego w [portalu Azure Marketplace](https://azure.microsoft.com/marketplace/partners/canonicalandmsopentech/dockeronubuntuserver1404lts/). 
 
-## <a name="step-1-configure-your-azure-devops-services-organization"></a>Krok 1: Konfigurowanie organizacji Azure DevOps Services 
+## <a name="step-1-configure-your-azure-devops-services-organization"></a>Krok 1. Konfigurowanie organizacji Azure DevOps Services 
 
 W tej sekcji skonfigurujesz organizację Azure DevOps Services.
 
@@ -83,7 +80,7 @@ Skonfiguruj połączenie między projektem Azure DevOps Services i kontem usług
 
     ![Azure DevOps Services — połączenie zewnętrzne](./media/container-service-docker-swarm-setup-ci-cd/vsts-services-menu.png)
 
-1. Po lewej stronie kliknij pozycję **nowy punkt końcowy** > usługi**GitHub**.
+1. Po lewej stronie kliknij pozycję **nowy punkt końcowy usługi** > **GitHub**.
 
     ![Azure DevOps Services — GitHub](./media/container-service-docker-swarm-setup-ci-cd/vsts-github.png)
 
@@ -107,7 +104,7 @@ Ostatnie kroki przed przystąpieniem do potoku ciągłej integracji/ciągłego k
 
 Cała konfiguracja jest teraz gotowa. W następnych krokach utworzysz potok ciągłej integracji/ciągłego wdrażania, który kompiluje i wdraża aplikację w klastrze Docker Swarm. 
 
-## <a name="step-2-create-the-build-pipeline"></a>Krok 2: Tworzenie potoku kompilacji
+## <a name="step-2-create-the-build-pipeline"></a>Krok 2. Tworzenie potoku kompilacji
 
 W tym kroku skonfigurujesz potok kompilacji dla projektu Azure DevOps Services i zdefiniujesz przepływ pracy kompilacji dla obrazów kontenerów
 
@@ -142,11 +139,11 @@ W następnych krokach zdefiniujemy przepływ pracy kompilacji. Istnieje pięć o
 
 Należy dodać dwa kroki platformy Docker dla każdego obrazu, jeden do skompilowania obrazu, a drugi do wypchnięcia obrazu w usłudze Azure Container Registry. 
 
-1. Aby dodać krok w przepływie pracy kompilacji, kliknij pozycję **+ Dodaj krok kompilacji** iwybierz pozycję Docker.
+1. Aby dodać krok w przepływie pracy kompilacji, kliknij pozycję **+ Dodaj krok kompilacji** i wybierz pozycję **Docker**.
 
     ![Azure DevOps Services — Dodawanie kroków kompilacji](./media/container-service-docker-swarm-setup-ci-cd/vsts-build-add-task.png)
 
-1. Dla każdego obrazu skonfiguruj jeden krok, który używa `docker build` polecenia.
+1. Dla każdego obrazu skonfiguruj jeden krok, który używa polecenia `docker build`.
 
     ![Azure DevOps Services — kompilacja platformy Docker](./media/container-service-docker-swarm-setup-ci-cd/vsts-docker-build.png)
 
@@ -154,7 +151,7 @@ Należy dodać dwa kroki platformy Docker dla każdego obrazu, jeden do skompilo
     
     Jak pokazano na powyższym ekranie, należy uruchomić nazwę obrazu z identyfikatorem URI usługi Azure Container Registry. (Można również użyć zmiennej kompilacji do Sparametryzuj znacznika obrazu, takiego jak identyfikator kompilacji w tym przykładzie).
 
-1. Dla każdego obrazu Skonfiguruj drugi krok, który używa `docker push` polecenia.
+1. Dla każdego obrazu Skonfiguruj drugi krok, który używa polecenia `docker push`.
 
     ![Azure DevOps Services — wypychanie Docker](./media/container-service-docker-swarm-setup-ci-cd/vsts-docker-push.png)
 
@@ -172,7 +169,7 @@ Należy dodać dwa kroki platformy Docker dla każdego obrazu, jeden do skompilo
 
 1. Kliknij przycisk **Zapisz** i nadaj nazwę potoku kompilacji.
 
-## <a name="step-3-create-the-release-pipeline"></a>Krok 3: Twórz potoki wydania
+## <a name="step-3-create-the-release-pipeline"></a>Krok 3. Tworzenie potoku wydania
 
 Azure DevOps Services umożliwia [Zarządzanie wersjami w różnych środowiskach](https://www.visualstudio.com/team-services/release-management/). Możesz włączyć ciągłe wdrażanie, aby upewnić się, że aplikacja jest wdrożona w różnych środowiskach (takich jak programowanie, testowanie, przedprodukcyjne i produkcyjne) w sposób płynny. Można utworzyć nowe środowisko, które reprezentuje klaster Azure Container Service Docker Swarm.
 
@@ -180,9 +177,9 @@ Azure DevOps Services umożliwia [Zarządzanie wersjami w różnych środowiskac
 
 ### <a name="initial-release-setup"></a>Początkowa konfiguracja wydania
 
-1. Aby utworzyć potok wersji, kliknij pozycje **wersje** >  **+ wydanie** .
+1. Aby utworzyć potok wersji, kliknij przycisk **wersje** >  **+ wersja**
 
-1. Aby skonfigurować źródło artefaktów, kliknij > pozycję artefakty**Połącz Źródło artefaktu**. W tym miejscu Połącz ten nowy potok wydania z kompilacją zdefiniowaną w poprzednim kroku. W ten sposób plik Docker-Compose. yml jest dostępny w procesie zwalniania.
+1. Aby skonfigurować źródło artefaktów, kliknij pozycję **artefakty** , > **połączyć źródło artefaktu**. W tym miejscu Połącz ten nowy potok wydania z kompilacją zdefiniowaną w poprzednim kroku. W ten sposób plik Docker-Compose. yml jest dostępny w procesie zwalniania.
 
     ![Artefakty wersji Azure DevOps Services](./media/container-service-docker-swarm-setup-ci-cd/vsts-release-artefacts.png) 
 
@@ -198,7 +195,7 @@ Przepływ pracy wydania składa się z dwóch zadań, które zostały dodane.
 
     ![Azure DevOps Services — punkt połączenia usługi](./media/container-service-docker-swarm-setup-ci-cd/vsts-release-scp.png)
 
-1. Skonfiguruj drugie zadanie w celu wykonania polecenia bash w celu uruchomienia `docker` polecenia `docker-compose` i poleceń w węźle głównym. Aby uzyskać szczegółowe informacje, zobacz następujący ekran.
+1. Skonfiguruj drugie zadanie w celu wykonania polecenia bash w celu uruchomienia poleceń `docker` i `docker-compose` w węźle głównym. Aby uzyskać szczegółowe informacje, zobacz następujący ekran.
 
     ![Azure DevOps Services — Release bash](./media/container-service-docker-swarm-setup-ci-cd/vsts-release-bash.png)
 
@@ -207,10 +204,10 @@ Przepływ pracy wydania składa się z dwóch zadań, które zostały dodane.
    - Zaloguj się do usługi Azure Container Registry (używa trzech variab'les kompilacji, które są zdefiniowane na karcie **zmienne** )
    - Zdefiniuj zmienną **DOCKER_HOST** do pracy z punktem końcowym Swarm (: 2375)
    - Przejdź do folderu *Wdróż* , który został utworzony przez poprzednie zadanie bezpiecznego kopiowania i który zawiera plik Docker-Compose. yml 
-   - Wykonaj `docker-compose` polecenia ściągające nowe obrazy, Zatrzymaj usługi, Usuń usługi i Utwórz kontenery.
+   - Wykonaj `docker-compose` polecenia, które pobierają nowe obrazy, Zatrzymaj usługi, Usuń usługi i Utwórz kontenery.
 
      >[!IMPORTANT]
-     > Jak pokazano na powyższym ekranie, nie zaznaczaj pola wyboru **Niepowodzenie w przypadku stderr** . Jest to ważne ustawienie, ponieważ `docker-compose` program drukuje kilka komunikatów diagnostycznych, takich jak kontenery są zatrzymywane lub usuwane, przy użyciu standardowego błędu wyjściowego. Jeśli pole wyboru jest zaznaczone, Azure DevOps Services raporty, że wystąpiły błędy w trakcie wydania, nawet jeśli wszystko przebiega prawidłowo.
+     > Jak pokazano na powyższym ekranie, nie zaznaczaj pola wyboru **Niepowodzenie w przypadku stderr** . Jest to ważne ustawienie, ponieważ `docker-compose` drukuje kilka komunikatów diagnostycznych, takich jak kontenery są zatrzymywane lub usuwane przy użyciu standardowego błędu wyjściowego. Jeśli pole wyboru jest zaznaczone, Azure DevOps Services raporty, że wystąpiły błędy w trakcie wydania, nawet jeśli wszystko przebiega prawidłowo.
      >
 1. Zapisz ten nowy potok wydania.
 

@@ -73,7 +73,7 @@ W poniższej tabeli opisano właściwości JSON używane w definicji JSON:
 
 ## <a name="supported-libraries-for-databricks-activities"></a>Biblioteki obsługiwane dla działań datakostek
 
-W powyższej definicji działań datacegły należy określić następujące typy biblioteki: *jar*, *jaja*, *Maven*, *PyPi*, *Cran*.
+W powyższej definicji działań datacegły należy określić następujące typy biblioteki: *jar*, *egg*, *Maven*, *PyPi*, *Cran*.
 
 ```json
 {

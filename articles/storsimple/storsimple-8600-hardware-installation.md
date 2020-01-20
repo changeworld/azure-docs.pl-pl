@@ -1,25 +1,18 @@
 ---
-title: Zainstaluj urządzenie Microsoft Azure StorSimple 8600 | Microsoft Docs
+title: Zainstaluj urządzenie Microsoft Azure StorSimple 8600
 description: W tym artykule opisano sposób rozpakowywania, montowania w stojaku i kabla urządzenia z StorSimple 8600 przed wdrożeniem i skonfigurowaniem oprogramowania.
-services: storsimple
-documentationcenter: NA
 author: alkohli
-manager: jeconnoc
-editor: ''
 ms.assetid: 3d82ba5f-3e34-40dc-9c33-50f952bc6be8
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
+ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 571c8b729408d7b9e805b875baccfd9ac8d6b9be
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 8d118e71b29b54b034788c37916091ad8f8b996f
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68965267"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277129"
 ---
 # <a name="unpack-rack-mount-and-cable-your-storsimple-8600-device"></a>Rozpakowywanie, montowanie w stojaku i Podłączanie kabli do urządzenia z systemem StorSimple 8600
 
@@ -34,7 +27,7 @@ Poniższe kroki zawierają szczegółowe instrukcje dotyczące rozpakowywania ur
 ### <a name="prepare-to-unpack-your-device"></a>Przygotowanie do rozpakowania urządzenia
 Przed rozpakowaniem urządzenia zapoznaj się z poniższymi informacjami.
 
-![Ostrzeżenie ikony](./media/storsimple-safety/IC740879.png)![](./media/storsimple-8600-hardware-installation/HCS_HeavyWeight_Icon.png) dużej grubości ikony ostrzeżenia **!**
+Ikona ostrzeżenia ![](./media/storsimple-safety/IC740879.png)![ikonie dużej wagi](./media/storsimple-8600-hardware-installation/HCS_HeavyWeight_Icon.png) **Ostrzeżenie!**
 
 1. Upewnij się, że masz dwie osoby, aby zarządzać wagą urządzenia, jeśli jest ono obsługiwane ręcznie. W pełni skonfigurowana obudowa może ważyć do 32 kg (70 funtów).
 2. Umieść pudełko na płaskiej, poziomej powierzchni.
@@ -92,7 +85,7 @@ Obudowy muszą być zainstalowane w standardowym stojaku 19-calowym, które ma z
 2. Upewnij się, że lokacja, w której zamierzasz skonfigurować, ma moc standardową AC od niezależnego źródła lub z jednostki dystrybucji zasilania w stojaku (PDU) z zasilaczem UPS.
 3. Upewnij się, że jedno gniazdo 4U (2 X 2U) jest dostępne w stojaku, w którym zamierzasz zainstalować obudowy.
 
-![Ostrzeżenie ikony](./media/storsimple-safety/IC740879.png)![](./media/storsimple-8600-hardware-installation/HCS_HeavyWeight_Icon.png) dużej grubości ikony ostrzeżenia **!**
+Ikona ostrzeżenia ![](./media/storsimple-safety/IC740879.png)![ikonie dużej wagi](./media/storsimple-8600-hardware-installation/HCS_HeavyWeight_Icon.png) **Ostrzeżenie!**
 
  Upewnij się, że masz dwie osoby, które mają być dostępne do zarządzania wagą, jeśli ręcznie obsługujesz konfigurację urządzenia. W pełni skonfigurowana obudowa może ważyć do 32 kg (70 funtów).
 
@@ -223,7 +216,7 @@ Aby można było obsługiwać ten nadmiarowy kontroler przełączania do trybu f
 | C |PCM 0 |
 | D |Kontroler 1 |
 | E |PCM 1 |
-| P |Kontroler EBOD 0 |
+| F |Kontroler EBOD 0 |
 | G |Kontroler EBOD 1 |
 | H, I |Hosty (na przykład serwery plików) |
 | 0-5 |Interfejsy sieciowe |
@@ -238,7 +231,7 @@ W przypadku okablowania urządzenia wymagana jest minimalna konfiguracja:
 Pamiętaj o wysokiej dostępności i wydajności:
 
 * Jeśli to możliwe, należy skonfigurować parę interfejsów sieciowych na potrzeby dostępu do chmury (1 GbE) i inną parę dla iSCSI (zalecane 10 GbE) na każdym kontrolerze.
-* Jeśli to możliwe, podłącz interfejsy sieciowe z każdego kontrolera do dwóch różnych przełączników, aby zapewnić dostępność przed awarią przełącznika. Na rysunku przedstawiono interfejsy sieciowe 2 10 GbE, dane 2 i dane 3 z każdego kontrolera podłączonego do dwóch różnych przełączników. Aby uzyskać więcej informacji, zapoznaj się z interfejsami sieciowymi w [wymaganiach dotyczących wysokiej dostępności dla urządzenia StorSimple](storsimple-8000-system-requirements.md#high-availability-requirements-for-storsimple).
+* Jeśli to możliwe, podłącz interfejsy sieciowe z każdego kontrolera do dwóch różnych przełączników, aby zapewnić dostępność przed awarią przełącznika. Na rysunku przedstawiono interfejsy sieciowe 2 10 GbE, dane 2 i dane 3 z każdego kontrolera podłączonego do dwóch różnych przełączników. Aby uzyskać więcej informacji, zapoznaj się z **interfejsami sieciowymi** w [wymaganiach dotyczących wysokiej dostępności dla urządzenia StorSimple](storsimple-8000-system-requirements.md#high-availability-requirements-for-storsimple).
 
 > [!NOTE]
 > W przypadku używania SFP + nadajników z interfejsami sieciowymi 10 GbE Użyj dostarczonych kart QSFP-SFP +. Aby uzyskać więcej informacji, przejdź do [obsługiwanego sprzętu dla interfejsów sieciowych 10 GbE na urządzeniu StorSimple](storsimple-supported-hardware-for-10-gbe-network-interfaces.md).

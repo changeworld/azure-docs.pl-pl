@@ -12,21 +12,21 @@ ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: tutorial
-ms.date: 08/24/2018
+ms.date: 01/17/2020
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: cd0366a0029ccc4816308e280ac93b7c724bb82a
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 300b497765dd1081fbad36292c01c56da5bb5e38
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034626"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277262"
 ---
 # <a name="tutorial-create-and-deploy-highly-available-virtual-machines-with-the-azure-cli"></a>Samouczek: tworzenie i wdrażanie maszyn wirtualnych o wysokiej dostępności za pomocą interfejsu wiersza polecenia platformy Azure
 
 W tym samouczku dowiesz się, jak zwiększyć dostępność i niezawodność rozwiązań korzystających z maszyn wirtualnych na platformie Azure przy użyciu funkcji zestawów dostępności. Zestawy dostępności zapewniają rozproszenie maszyn wirtualnych wdrożonych na platformie Azure pomiędzy wieloma izolowanymi klastrami sprzętowymi. Dzięki temu ewentualne awarie sprzętowe lub błędy oprogramowania na platformie Azure będą miały wpływ tylko na część maszyn wirtualnych, a całe rozwiązanie nadal będzie dostępne i funkcjonalne.
 
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Tworzenie zestawu dostępności
@@ -37,22 +37,12 @@ W tym samouczku jest używany interfejs wiersza polecenia w [Azure Cloud Shell](
 
 Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten samouczek będzie wymagał interfejsu wiersza polecenia platformy Azure w wersji 2.0.30 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure]( /cli/azure/install-azure-cli).
 
-## <a name="high-availability-in-azure-overview"></a>Wysoka dostępność na platformie Azure — omówienie
-Wysoką dostępność na platformie Azure można utworzyć na wiele różnych sposobów. Dostępne są dwie opcje, które są zestawami dostępności i strefami dostępności. Korzystając z zestawów dostępności, maszyny wirtualne będą chronione przed awariami, które mogą wystąpić w centrum danych. Obejmuje to awarie sprzętu i błędy oprogramowania platformy Azure. Za pomocą stref dostępności maszyny wirtualne będą umieszczane w fizycznej osobnej infrastrukturze bez udostępnionych zasobów i w związku z tym będą chronione przed całymi awariami centrów danych.
-
-Użyj zestawów dostępności lub Strefy dostępności, jeśli chcesz wdrożyć niezawodne rozwiązania oparte na maszynie wirtualnej na platformie Azure.
-
-### <a name="availability-set-overview"></a>Zestaw dostępności — omówienie
+## <a name="overview"></a>Przegląd
 
 Zestaw dostępności to dostępna na platformie Azure funkcja grupowania logicznego, zapewniająca izolację zawartych w tej grupie maszyn wirtualnych wdrożonych w centrum danych platformy Azure. Maszyny wirtualne platformy Azure umieszczone w zestawie dostępności korzystają z wielu serwerów fizycznych, regałów obliczeniowych, jednostek magazynowych i przełączników sieciowych. Ewentualne awarie sprzętowe lub błędy oprogramowania na platformie Azure będą miały wpływ tylko na część maszyn wirtualnych, a cała aplikacja nadal będzie działała i pozostanie dostępna dla klientów. Zestawy dostępności stanowią niezbędną funkcję podczas tworzenia niezawodnych rozwiązań w chmurze.
 
 Rozważmy typowe rozwiązanie z użyciem maszyn wirtualnych, obejmujące cztery serwery internetowe frontonu oraz dwie maszyny wirtualne zaplecza, na których jest hostowana baza danych. Przed wdrożeniem maszyn wirtualnych na platformie Azure należałoby w takim przypadku zdefiniować dwa zestawy dostępności: jeden dla warstwy „Internet”, a drugi dla warstwy „baza danych”. Podczas tworzenia nowej maszyny wirtualnej można określić zestaw dostępności jako parametr polecenia az vm create, a platforma Azure automatycznie zapewni izolację maszyn wirtualnych tworzonych w ramach tego zestawu dostępności na wielu fizycznych zasobach sprzętowych. W przypadku problemu ze sprzętem fizycznym, na którym jest uruchomiona jedna z maszyn wirtualnych serwera internetowego lub serwera bazy danych, masz pewność, że pozostałe wystąpienia maszyn wirtualnych serwera internetowego i bazy danych będą nadal działać, ponieważ korzystają z innego sprzętu.
 
-### <a name="availability-zone-overview"></a>Przegląd strefy dostępności
-
-Strefy dostępności to oferta wysokiej dostępności, która chroni Twoje aplikacje i dane przed awariami centrów danych. Strefy dostępności to unikatowe fizyczne lokalizacje w regionie świadczenia usługi Azure. Każda strefa składa się z co najmniej jednego centrum danych wyposażonego w niezależne zasilanie, chłodzenie i sieć. W celu zapewnienia odporności dostępne są co najmniej trzy oddzielne strefy we wszystkich włączonych regionach. Fizyczna separacja stref dostępności w ramach regionu chroni aplikacje i dane przed awariami centrum danych. Usługi strefowo nadmiarowe replikujeją aplikacje i dane między Strefy dostępności, aby chronić je przed awariami jednego punktu. Dzięki Strefy dostępności platforma Azure oferuje niestandardową umowę SLA na 99,99% czasu maszyn wirtualnych.
-
-Podobnie jak w przypadku zestawów dostępności, rozważmy typowe rozwiązanie oparte na maszynach wirtualnych, które może zawierać cztery serwery frontonu sieci Web i używać dwóch maszyn wirtualnych zaplecza, które obsługują bazę danych. Podobnie jak w przypadku zestawów dostępności, należy wdrożyć maszyny wirtualne w dwóch oddzielnych strefach dostępności: jedną strefę dostępności dla warstwy "Web" i jedną strefę dostępności dla warstwy "baza danych". Gdy tworzysz nową maszynę wirtualną i określisz strefę dostępności jako parametr polecenia AZ VM Create, platforma Azure automatycznie zagwarantuje, że utworzone maszyny wirtualne są izolowane w zupełnie różnych strefach dostępności. Jeśli na całym centrum danych jest uruchomiona jedna z maszyn wirtualnych na serwerze sieci Web lub serwerze, na którym występuje problem, wiadomo, że inne wystąpienia serwera sieci Web i maszyn wirtualnych bazy danych działają nadal, ponieważ są one uruchomione w całkowicie oddzielnych centrach
 
 ## <a name="create-an-availability-set"></a>Tworzenie zestawu dostępności
 

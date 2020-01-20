@@ -7,14 +7,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: article
-ms.date: 11/21/2019
+ms.date: 01/17/2020
 ms.custom: seodec18
-ms.openlocfilehash: 41baacd4485e6702ec29057f5d539724b74e353b
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: bd6095daca51ddca0cfb4b34ca86e763df9a3d02
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383242"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76276812"
 ---
 # <a name="user-defined-functions-client-library-reference"></a>Dokumentacja biblioteki klienta funkcji zdefiniowanych przez użytkownika
 
@@ -32,7 +32,7 @@ Po otrzymaniu identyfikatora przestrzeni funkcja ta pobiera miejsce z grafu.
 
 | Parametr  | Typ                | Opis  |
 | ---------- | ------------------- | ------------ |
-| *#*  | `guid` | Identyfikator przestrzeni |
+| *id*  | `guid` | Identyfikator przestrzeni |
 
 ### <a name="getsensormetadataid--sensor"></a>getSensorMetadata (ID) ⇒ `sensor`
 
@@ -42,7 +42,7 @@ Podanym identyfikatorem czujnika, ta funkcja pobiera czujnik z grafu.
 
 | Parametr  | Typ                | Opis  |
 | ---------- | ------------------- | ------------ |
-| *#*  | `guid` | Identyfikator czujnika |
+| *id*  | `guid` | Identyfikator czujnika |
 
 ### <a name="getdevicemetadataid--device"></a>getDeviceMetadata (ID) ⇒ `device`
 
@@ -52,7 +52,7 @@ Po otrzymaniu identyfikatora urządzenia ta funkcja pobiera urządzenie z grafu.
 
 | Parametr  | Typ                | Opis  |
 | ------ | ------------------- | ------------ |
-| *#* | `guid` | Identyfikator urządzenia |
+| *id* | `guid` | Identyfikator urządzenia |
 
 ### <a name="getsensorvaluesensorid-datatype--value"></a>getSensorValue (sensorId, dataType) ⇒ `value`
 
@@ -74,7 +74,7 @@ Uwzględniając identyfikator przestrzeni i nazwę wartości, ta funkcja pobiera
 | Parametr  | Typ                | Opis  |
 | ------ | ------------------- | ------------ |
 | *spaceId*  | `guid` | Identyfikator przestrzeni |
-| *Pełna* | `string` | Nazwa właściwości obszaru |
+| *valueName* | `string` | Nazwa właściwości obszaru |
 
 ### <a name="getsensorhistoryvaluessensorid-datatype--value"></a>getSensorHistoryValues (sensorId, dataType) ⇒ `value[]`
 
@@ -96,7 +96,7 @@ Uwzględniając identyfikator przestrzeni i nazwę wartości, ta funkcja pobiera
 | Parametr  | Typ                | Opis  |
 | ------ | ------------------- | ------------ |
 | *spaceId* | `guid` | Identyfikator przestrzeni |
-| *Pełna* | `string` | Nazwa właściwości obszaru |
+| *valueName* | `string` | Nazwa właściwości obszaru |
 
 ### <a name="getspacechildspacesspaceid--space"></a>getSpaceChildSpaces (spaceId) ⇒ `space[]`
 
@@ -187,7 +187,7 @@ Po otrzymaniu identyfikatora przestrzeni funkcja ta pobiera właściwość i jej
 | Parametr  | Typ                | Opis  |
 | ------ | ------------------- | ------------ |
 | *spaceId* | `guid` | Identyfikator przestrzeni |
-| *Funkcja* | `string` | Nazwa właściwości obszaru |
+| *propertyName* | `string` | Nazwa właściwości obszaru |
 
 ### <a name="getsensorextendedpropertysensorid-propertyname--extendedproperty"></a>getSensorExtendedProperty (sensorId, propertyName) ⇒ `extendedProperty`
 
@@ -198,7 +198,7 @@ Podanym identyfikatorem czujnika, ta funkcja pobiera właściwość i jej warto�
 | Parametr  | Typ                | Opis  |
 | ------ | ------------------- | ------------ |
 | *sensorId* | `guid` | Identyfikator czujnika |
-| *Funkcja* | `string` | Nazwa właściwości czujnika |
+| *propertyName* | `string` | Nazwa właściwości czujnika |
 
 ### <a name="getdeviceextendedpropertydeviceid-propertyname--extendedproperty"></a>getDeviceExtendedProperty (deviceId, propertyName) ⇒ `extendedProperty`
 
@@ -209,7 +209,7 @@ Po otrzymaniu identyfikatora urządzenia ta funkcja pobiera właściwość i jej
 | Parametr  | Typ                | Opis  |
 | ------ | ------------------- | ------------ |
 | *Identyfikator* | `guid` | Identyfikator urządzenia |
-| *Funkcja* | `string` | Nazwa właściwości urządzenia |
+| *propertyName* | `string` | Nazwa właściwości urządzenia |
 
 ### <a name="setsensorvaluesensorid-datatype-value"></a>setSensorValue (sensorId, typ danych, wartość)
 
@@ -243,7 +243,7 @@ Ta funkcja rejestruje następujący komunikat w ramach funkcji zdefiniowanej prz
 
 | Parametr  | Typ                | Opis  |
 | ------ | ------------------- | ------------ |
-| *Komunikat* | `string` | Komunikat do zarejestrowania |
+| *komunikat* | `string` | Komunikat do zarejestrowania |
 
 ### <a name="sendnotificationtopologyobjectid-topologyobjecttype-payload"></a>sendNotification (topologyObjectId, topologyObjectType, ładunek)
 
@@ -294,7 +294,7 @@ Ta funkcja zwraca właściwość rozszerzoną i jej wartość dla bieżącego ob
 
 | Parametr  | Typ                | Opis  |
 | ------ | ------------------- | ------------ |
-| *Funkcja* | `string` | Nazwa właściwości rozszerzonej |
+| *propertyName* | `string` | Nazwa właściwości rozszerzonej |
 
 #### <a name="valuevaluename--value"></a>Wartość (Value) ⇒ `value`
 
@@ -302,7 +302,7 @@ Ta funkcja zwraca wartość bieżącego obszaru.
 
 | Parametr  | Typ                | Opis  |
 | ------ | ------------------- | ------------ |
-| *Pełna* | `string` | Nazwa wartości |
+| *valueName* | `string` | Nazwa wartości |
 
 #### <a name="historyvaluename--value"></a>History (Value) ⇒ `value[]`
 
@@ -310,7 +310,7 @@ Ta funkcja zwraca wartości historyczne bieżącego obszaru.
 
 | Parametr  | Typ                | Opis  |
 | ------ | ------------------- | ------------ |
-| *Pełna* | `string` | Nazwa wartości |
+| *valueName* | `string` | Nazwa wartości |
 
 #### <a name="notifypayload"></a>Powiadom (ładunek)
 
@@ -354,7 +354,7 @@ Ta funkcja zwraca właściwość rozszerzoną i jej wartość dla bieżącego ur
 
 | Parametr  | Typ                | Opis  |
 | ------ | ------------------- | ------------ |
-| *Funkcja* | `string` | Nazwa właściwości rozszerzonej |
+| *propertyName* | `string` | Nazwa właściwości rozszerzonej |
 
 #### <a name="notifypayload"></a>Powiadom (ładunek)
 
@@ -402,9 +402,9 @@ Ta funkcja zwraca właściwość rozszerzoną i jej wartość dla bieżącego cz
 
 | Parametr  | Typ                | Opis  |
 | ------ | ------------------- | ------------ |
-| *Funkcja* | `string` | Nazwa właściwości rozszerzonej |
+| *propertyName* | `string` | Nazwa właściwości rozszerzonej |
 
-#### <a name="value--value"></a>Wartość () ⇒ `value`
+#### <a name="value--value"></a>Value() ⇒ `value`
 
 Ta funkcja zwraca wartość bieżącego czujnika.
 

@@ -1,25 +1,19 @@
 ---
-title: Powiadomienia o konserwacji dla zestawów skalowania maszyn wirtualnych na platformie Azure | Microsoft Docs
+title: Powiadomienia o konserwacji dla zestawów skalowania maszyn wirtualnych na platformie Azure
 description: Wyświetl powiadomienia dotyczące konserwacji i uruchom samoobsługową konserwację zestawów skalowania maszyn wirtualnych na platformie Azure.
-services: virtual-machine-scale-sets
-documentationcenter: ''
 author: shants123
-editor: ''
 tags: azure-service-management,azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: shants
-ms.openlocfilehash: 07580c8b8ea00039b48bd1f8765735ec5a5082ee
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 8d8c32c2a2f3e31c1b7f4645fe61abf2d5d0e014
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75746648"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76275775"
 ---
 # <a name="planned-maintenance-notifications-for-virtual-machine-scale-sets"></a>Powiadomienia o planowanej konserwacji dla zestawów skalowania maszyn wirtualnych
 
@@ -77,7 +71,7 @@ Najlepiej używać samoobsługowej konserwacji w następujących przypadkach:
 
 Po zaplanowaniu planowanej fazy konserwacji można wyświetlić listę zestawów skalowania maszyn wirtualnych, na które ma wpływ nadchodząca fala konserwacji, przy użyciu Azure Portal. 
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się do [Portalu Azure](https://portal.azure.com).
 2. W menu po lewej stronie wybierz pozycję **wszystkie usługi**, a następnie wybierz pozycję **zestawy skalowania maszyn wirtualnych**.
 3. W obszarze **zestawy skalowania maszyn wirtualnych**wybierz pozycję **Edytuj kolumny** , aby otworzyć listę dostępnych kolumn.
 4. W sekcji **Dostępne kolumny** wybierz opcję **konserwacja**samoobsługowa, a następnie przenieś ją na listę **wybrane kolumny** . Wybierz przycisk **Zastosuj**.  
@@ -96,7 +90,7 @@ Na liście zestawów skalowania maszyn wirtualnych jest teraz wyświetlana kolum
 
 Platforma Azure komunikuje harmonogram planowanej konserwacji, wysyłając wiadomość e-mail do właściciela subskrypcji i grupy współwłaścicieli. Aby dodać adresatów i kanały do tej komunikacji, można utworzyć alerty dziennika aktywności. Aby uzyskać więcej informacji, zobacz [monitorowanie aktywności subskrypcji przy użyciu dziennika aktywności platformy Azure](../azure-monitor/platform/platform-logs-overview.md).
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się do [Portalu Azure](https://portal.azure.com).
 2. W menu po lewej stronie wybierz pozycję **Monitoruj**. 
 3. W okienku **monitorowanie — alerty (klasyczne)** wybierz pozycję **+ Dodaj alert dziennika aktywności**.
 4. Na stronie **Dodawanie alertu dziennika aktywności** wybierz lub wprowadź żądane informacje. W obszarze **kryteria**upewnij się, że ustawisz następujące wartości:

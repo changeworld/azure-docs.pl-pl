@@ -1,42 +1,36 @@
 ---
-title: Omówienie automatycznego skalowania za pomocą zestawów skalowania maszyn wirtualnych platformy Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się więcej o różnych sposobach może automatycznie skalować Azure zestawu skalowania maszyn wirtualnych na podstawie wydajności lub zgodnie z ustalonym harmonogramem
-services: virtual-machine-scale-sets
-documentationcenter: ''
+title: Omówienie automatycznego skalowania przy użyciu zestawów skalowania maszyn wirtualnych platformy Azure
+description: Poznaj różne sposoby automatycznego skalowania zestawu skalowania maszyn wirtualnych platformy Azure na podstawie wydajności lub ustalonego harmonogramu
 author: cynthn
-manager: jeconnoc
-editor: ''
 tags: azure-resource-manager
 ms.assetid: d29a3385-179e-4331-a315-daa7ea5701df
 ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 610f3073594f73f04a68865593be6bfb4188d4f1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: eb96be187502afcccfd3fb2c88f709facfbc3b59
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60883674"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278140"
 ---
-# <a name="overview-of-autoscale-with-azure-virtual-machine-scale-sets"></a>Ustawia Omówienie automatycznego skalowania przy użyciu skali maszyny wirtualnej platformy Azure
-Zestaw skalowania maszyn wirtualnych platformy Azure może automatycznie zwiększyć lub zmniejszyć liczbę wystąpień maszyn wirtualnych, na których działa Twoja aplikacja. To zachowanie automatycznych i elastycznych zmniejsza koszty zarządzania do monitorowania i optymalizowania wydajności aplikacji. Możesz utworzyć zasady, które określają akceptowalny poziom wydajności dla pozytywnych komfort. Po spełnieniu tych zdefiniowanych progów, reguły skalowania automatycznego podjąć działania w celu dostosowania pojemność zestawu skalowania. Można także zaplanować zdarzeń, aby automatycznie zwiększać lub zmniejszyć pojemność zestawu skalowania o stałej razy. Ten artykuł zawiera omówienie metryk wydajności, które są dostępne i jakie akcje skalowania automatycznego można wykonywać.
+# <a name="overview-of-autoscale-with-azure-virtual-machine-scale-sets"></a>Omówienie automatycznego skalowania przy użyciu zestawów skalowania maszyn wirtualnych platformy Azure
+Zestaw skalowania maszyn wirtualnych platformy Azure może automatycznie zwiększać lub zmniejszać liczbę wystąpień maszyn wirtualnych, na których działa aplikacja. To automatyczne i elastyczne zachowanie zmniejsza obciążenie związane z zarządzaniem w celu monitorowania i optymalizowania wydajności aplikacji. Tworzysz reguły, które definiują akceptowalną wydajność dla pozytywnego środowiska klienta. Po spełnieniu tych zdefiniowanych progów reguły automatycznego skalowania podejmują działania w celu dostosowania pojemności zestawu skalowania. Możesz również zaplanować zdarzenia, aby automatycznie zwiększać lub zmniejszać pojemność zestawu skalowania w ustalonych odstępach czasu. Ten artykuł zawiera omówienie dostępnych metryk wydajności i działań, które mogą być wykonywane automatycznie.
 
 
-## <a name="benefits-of-autoscale"></a>Korzyści, automatycznego skalowania
+## <a name="benefits-of-autoscale"></a>Zalety automatycznego skalowania
 Wraz ze wzrostem zapotrzebowania aplikacji zwiększa się obciążenie wystąpień maszyn wirtualnych w zestawie skalowania. Jeśli wzrost obciążenia ma cechy stałego trendu, można skonfigurować reguły skalowania automatycznego umożliwiające zwiększenie liczby wystąpień maszyn wirtualnych w zestawie skalowania.
 
-Gdy aplikacje zostaną wdrożone, zestaw skalowania rozpoczyna kierowanie ruchu do nowo utworzonych wystąpień maszyn wirtualnych za pośrednictwem modułu równoważenia obciążenia. Możesz kontrolować jakie metryki mają być monitorowane, na przykład procesora CPU lub pamięci, jak długo obciążenie aplikacji musi przekraczać wartość progową i ustaw liczbę wystąpień maszyn wirtualnych, aby dodać do skalowania.
+Gdy aplikacje zostaną wdrożone, zestaw skalowania rozpoczyna kierowanie ruchu do nowo utworzonych wystąpień maszyn wirtualnych za pośrednictwem modułu równoważenia obciążenia. Użytkownik kontroluje, jakie metryki mają być monitorowane, takie jak procesor CPU lub pamięć, jak długo obciążenie aplikacji musi spełniać daną wartość progową oraz liczbę wystąpień maszyn wirtualnych do dodania do zestawu skalowania.
 
 Wieczorami lub w weekendy zapotrzebowanie aplikacji może być mniejsze. Jeśli spadek obciążenia ma cechy stałego trendu w danym okresie, można skonfigurować reguły skalowania automatycznego umożliwiające zmniejszenie liczby wystąpień maszyn wirtualnych w zestawie skalowania. Akcja skalowania w pionie ogranicza koszt używania zestawu skalowania, ponieważ jest uruchomionych tylko tyle wystąpień, ile jest wymaganych do zaspokojenia bieżącego zapotrzebowania.
 
 
-## <a name="use-host-based-metrics"></a>Przy użyciu metryk opartych na hoście
-Reguły automatycznego skalowania można utworzyć tej metryki hosta wbudowana dostępna z wystąpień maszyn wirtualnych. Metryki hosta zapewniają wgląd w wydajność wystąpień maszyn wirtualnych w zestawie bez konieczności instalowania lub konfigurowania dodatkowych agentów i zbierania danych skalowania. Reguły skalowania automatycznego, które używają tych metryk można skalować w poziomie lub w liczbie wystąpień maszyn wirtualnych w odpowiedzi na obciążenie procesora CPU, zapotrzebowanie na pamięć lub dostępu do dysku.
+## <a name="use-host-based-metrics"></a>Korzystanie z metryk opartych na hoście
+Można tworzyć reguły automatycznego skalowania, które są wbudowane metryki hosta dostępne z wystąpień maszyn wirtualnych. Metryki hosta zapewniają wgląd w wydajność wystąpień maszyn wirtualnych w zestawie skalowania bez konieczności instalowania lub konfigurowania dodatkowych agentów i kolekcji danych. Reguły automatycznego skalowania, które używają tych metryk, mogą skalować w poziomie lub w liczbie wystąpień maszyn wirtualnych w odpowiedzi na użycie procesora CPU, zapotrzebowanie na pamięć lub dostęp do dysku.
 
 Reguły automatycznego skalowania, które korzystają z metryk opartych na hoście, można utworzyć za pomocą jednego z następujących narzędzi:
 
@@ -45,37 +39,37 @@ Reguły automatycznego skalowania, które korzystają z metryk opartych na hośc
 - [Interfejs wiersza polecenia platformy Azure](tutorial-autoscale-cli.md)
 - [Szablon platformy Azure](tutorial-autoscale-template.md)
 
-Aby utworzyć reguły automatycznego skalowania, które używają bardziej szczegółowe metryki wydajności, możesz [zainstalować i skonfigurować rozszerzenie diagnostyki platformy Azure](#in-guest-vm-metrics-with-the-azure-diagnostics-extension) na wystąpieniach maszyn wirtualnych lub [konfigurowania używania aplikacji usługi App Insights](#application-level-metrics-with-app-insights).
+Aby utworzyć reguły automatycznego skalowania, które używają bardziej szczegółowych metryk wydajności, można [zainstalować i skonfigurować rozszerzenie usługi Azure Diagnostics](#in-guest-vm-metrics-with-the-azure-diagnostics-extension) na WYSTĄPIENIACH maszyn wirtualnych lub [skonfigurować aplikację przy użyciu usługi App Insights](#application-level-metrics-with-app-insights).
 
-Reguły skalowania automatycznego, korzystających z metryk opartych na hoście metryki maszyny Wirtualnej gościa z rozszerzenie diagnostyki platformy Azure i usługi App Insights można użyć następujących ustawień konfiguracji.
+Reguły automatycznego skalowania, które używają metryk opartych na hoście, metryk maszyny wirtualnej gościa przy użyciu rozszerzenia diagnostyki platformy Azure, a usługa App Insights może korzystać z następujących ustawień konfiguracji.
 
-### <a name="metric-sources"></a>Metryki źródeł
-Reguły automatycznego skalowania, można użyć metryki z jednego z następujących źródeł:
+### <a name="metric-sources"></a>Źródła metryk
+Reguły skalowania automatycznego mogą używać metryk z jednego z następujących źródeł:
 
 | Źródło metryki        | Przypadek użycia                                                                                                                     |
 |----------------------|------------------------------------------------------------------------------------------------------------------------------|
-| Bieżący zestaw skalowania    | Aby uzyskać metryki oparte na hoście, które nie wymagają dodatkowych agentów, które mają być zainstalowane lub skonfigurowane.                                  |
-| Konto magazynu      | Rozszerzenie diagnostyki platformy Azure zapisuje metryki wydajności do usługi Azure storage, która jest następnie używane do wyzwalania reguły automatycznego skalowania. |
-| Kolejki usługi Service Bus    | Aplikacja lub inne składniki mogą przesyłać komunikaty w kolejce usługi Azure Service Bus z regułami wyzwalacza.                   |
-| Application Insights | Pakiet instrumentacji, zainstalowane w Twojej aplikacji, strumienie metryk bezpośrednio z aplikacji.                         |
+| Bieżący zestaw skalowania    | W przypadku metryk opartych na hoście, które nie wymagają zainstalowania lub skonfigurowania dodatkowych agentów.                                  |
+| Konto magazynu      | Rozszerzenie diagnostyki platformy Azure zapisuje metryki wydajności do usługi Azure Storage, która jest następnie używana do wyzwalania reguł skalowania automatycznego. |
+| Kolejka usługi Service Bus    | Aplikacja lub inne składniki mogą przesyłać komunikaty w kolejce Azure Service Bus, aby wyzwolić reguły.                   |
+| Application Insights | Pakiet Instrumentacji zainstalowany w aplikacji, który przesyła strumieniowo metryki bezpośrednio z aplikacji.                         |
 
 
-### <a name="autoscale-rule-criteria"></a>Kryteria reguły skalowania automatycznego
-Następujące metryki oparte na hoście są dostępne do użycia podczas tworzenia reguł automatycznego skalowania. Jeśli używasz rozszerzenie diagnostyki platformy Azure lub usługi App Insights, należy zdefiniować jaką metrykę do monitorowania i za pomocą reguł automatycznego skalowania.
+### <a name="autoscale-rule-criteria"></a>Kryteria reguły automatycznego skalowania
+Następujące metryki oparte na hoście są dostępne do użycia podczas tworzenia reguł skalowania automatycznego. Jeśli używasz rozszerzenia diagnostyki platformy Azure lub usługi App Insights, możesz zdefiniować metryki do monitorowania i używania z regułami skalowania automatycznego.
 
 | Nazwa metryki               |
 |---------------------------|
 | Procentowe użycie procesora CPU            |
 | Sieć — wejście                |
 | Sieć — wyjście               |
-| Bajty odczytane z dysku           |
-| Bajty zapisane na dysku          |
-| Dysku, operacje odczytu/s  |
-| Operacje zapisu dysku/s |
-| Pozostałe środki na korzystanie z procesora CPU     |
-| Środki na procesory CPU wykorzystany      |
+| Bajty odczytu dysku           |
+| Bajty zapisu dysku          |
+| Operacje odczytu z dysku/s  |
+| Operacje zapisu na dysku/s |
+| Pozostałe kredyty procesora CPU     |
+| Wykorzystane środki CPU      |
 
-Podczas tworzenia reguł skalowania automatycznego w celu monitorowania danej metryki reguły Przyjrzyj się jedną z następujących czynności agregacji metryk:
+Podczas tworzenia reguł skalowania automatycznego w celu monitorowania danej metryki reguły przenoszą jedną z następujących akcji agregacji metryk:
 
 | Typ agregacji |
 |------------------|
@@ -84,66 +78,66 @@ Podczas tworzenia reguł skalowania automatycznego w celu monitorowania danej me
 | Maksimum          |
 | Łącznie            |
 | Ostatnia             |
-| Licznik            |
+| Liczba            |
 
-Reguły skalowania automatycznego następnie są wyzwalane, gdy metryki są porównywane z określoną wartość progową przy użyciu jednego z następujących operatorów:
+Reguły skalowania automatycznego są następnie wyzwalane, gdy metryki są porównywane ze zdefiniowanym progiem z jednym z następujących operatorów:
 
 | Operator                 |
 |--------------------------|
-| Większe niż             |
+| Więcej niż             |
 | Większe niż lub równe |
-| Mniejsze niż                |
+| Mniej niż                |
 | Mniejsze niż lub równe    |
-| Równa się                 |
-| Nie równa się             |
+| Jest równe                 |
+| Jest nierówne             |
 
 
-### <a name="actions-when-rules-trigger"></a>Akcje w przypadku wyzwolenia reguły
-Gdy wyzwolenie reguły skalowania automatycznego, zestaw skalowania może automatycznie skalować w jednym z następujących sposobów:
+### <a name="actions-when-rules-trigger"></a>Akcje, gdy wyzwalacz reguł
+Podczas wyzwalania reguły automatycznego skalowania zestaw skalowania może być automatycznie skalowany w jeden z następujących sposobów:
 
 | Operacja skalowania     | Przypadek użycia                                                                                                                               |
 |---------------------|----------------------------------------------------------------------------------------------------------------------------------------|
-| Zwiększ liczbę o   | Stałej liczby wystąpień maszyn wirtualnych do utworzenia. To przydatne w zestawach skalowania z mniejszej liczby maszyn wirtualnych.                                           |
-| Zwiększ wartość procentową o | Na podstawie wzrostu liczby wystąpień maszyn wirtualnych. Dobre dla większych Ustawia, gdzie stały wzrost może nie znacznie poprawić wydajność. |
-| Zwiększ liczbę do   | Utworzyć wiele wystąpień maszyn wirtualnych są wymagane do uzyskania żądanej maksymalnej wysokości.                                                            |
-| Zmniejsz liczbę o   | Stałej liczby wystąpień maszyn wirtualnych do usunięcia. To przydatne w zestawach skalowania z mniejszej liczby maszyn wirtualnych.                                           |
-| Zmniejsz wartość procentową o | Na podstawie spadku wystąpień maszyn wirtualnych. Dobre dla większych Ustawia, gdzie stały wzrost nie mogą znacznie obniżyć koszty i użycia zasobów. |
-| Zmniejsz liczbę do   | Usunąć, ponieważ wiele wystąpień maszyn wirtualnych są wymagane do uzyskania wymaganej ilości minimalnej.                                                            |
+| Zwiększ licznik o   | Stała liczba wystąpień maszyn wirtualnych do utworzenia. Przydatne w zestawach skalowania z mniejszą liczbą maszyn wirtualnych.                                           |
+| Zwiększ wartość procentową o | Procentowy wzrost wystąpień maszyn wirtualnych. Dobre dla większych zestawów skalowania, w przypadku których stały wzrost może nie znacznie poprawić wydajności. |
+| Zwiększ liczbę do   | Utwórz tyle wystąpień maszyn wirtualnych, aby osiągnąć żądaną maksymalną kwotę.                                                            |
+| Zmniejsz licznik o   | Stała liczba wystąpień maszyn wirtualnych do usunięcia. Przydatne w zestawach skalowania z mniejszą liczbą maszyn wirtualnych.                                           |
+| Zmniejsz procent według | Zmniejszenie liczby wystąpień maszyn wirtualnych na podstawie procentu. Dobre dla większych zestawów skalowania, w których stały wzrost nie może znacznie zmniejszyć zużycia zasobów i kosztów. |
+| Zmniejsz liczbę do   | Usuń tyle wystąpień maszyn wirtualnych, które są wymagane do osiągnięcia żądanej minimalnej ilości.                                                            |
 
 
-## <a name="in-guest-vm-metrics-with-the-azure-diagnostics-extension"></a>Metryki maszyny Wirtualnej gościa za pomocą rozszerzenie diagnostyki platformy Azure
-Rozszerzenie diagnostyki platformy Azure jest agenta, który działa wewnątrz wystąpienia maszyny Wirtualnej. Agent monitoruje i zapisuje metryki wydajności do usługi Azure storage. Te metryki wydajności zawierają bardziej szczegółowe informacje o stanie maszyny wirtualnej, takie jak *AverageReadTime* dysków lub *PercentIdleTime* procesora CPU. Można utworzyć reguły skalowania automatycznego na podstawie bardziej szczegółowe rozpoznawania wydajności maszyny Wirtualnej, nie tylko wartości procentowej użycia procesora CPU użycia lub pamięci.
+## <a name="in-guest-vm-metrics-with-the-azure-diagnostics-extension"></a>Metryki maszyn wirtualnych gościa z rozszerzeniem usługi Azure Diagnostics
+Rozszerzenie diagnostyki Azure to Agent, który działa w wystąpieniu maszyny wirtualnej. Agent monitoruje i zapisuje metryki wydajności do usługi Azure Storage. Te metryki wydajności zawierają bardziej szczegółowe informacje o stanie maszyny wirtualnej, takie jak *AverageReadTime* dla dysków lub *PercentIdleTime* dla procesora CPU. Można tworzyć reguły automatycznego skalowania na podstawie bardziej szczegółowej świadomości wydajności maszyny wirtualnej, a nie tylko procent użycia procesora CPU lub zużycia pamięci.
 
-Do użycia rozszerzenie diagnostyki platformy Azure, należy utworzyć konta usługi Azure storage dla wystąpień maszyn wirtualnych, zainstaluj agenta funkcji Diagnostyka Azure, a następnie skonfigurować maszyny wirtualne do strumienia specyficzne liczniki wydajności do konta magazynu.
+Aby użyć rozszerzenia diagnostyki Azure, należy utworzyć konta usługi Azure Storage dla wystąpień maszyn wirtualnych, zainstalować agenta usługi Azure Diagnostics, a następnie skonfigurować maszyny wirtualne do przesyłania strumieniowego określonych liczników wydajności do konta magazynu.
 
 Aby uzyskać więcej informacji, zobacz artykuły o tym, jak włączyć rozszerzenie diagnostyki platformy Azure na [maszynie wirtualnej z systemem Linux](../virtual-machines/extensions/diagnostics-linux.md) lub [maszynie wirtualnej z systemem Windows](../virtual-machines/extensions/diagnostics-windows.md).
 
 
-## <a name="application-level-metrics-with-app-insights"></a>Metryki poziomu aplikacji za pomocą usługi App Insights
-Aby uzyskać więcej wgląd w wydajność aplikacji, można użyć usługi Application Insights. Zainstalowanie mały pakiet Instrumentacji w swojej aplikacji, która monitoruje aplikację i wysyła dane telemetryczne do platformy Azure. Można monitorować metryki, takie jak czas odpowiedzi aplikacji, wydajność ładowania strony, a liczba sesji. Te metryki aplikacji może służyć do tworzenia reguł skalowania automatycznego na poziomie szczegółowym i osadzone, jak wyzwolić reguły oparte na uzyskiwanie przydatnych wyników analiz, które mogą mieć wpływ na wrażenia użytkowników.
+## <a name="application-level-metrics-with-app-insights"></a>Metryki na poziomie aplikacji z usługą App Insights
+Aby zwiększyć widoczność wydajności aplikacji, można użyć Application Insights. Zainstalujesz mały pakiet Instrumentacji w aplikacji, który monitoruje aplikację i wysyła dane telemetryczne do platformy Azure. Można monitorować metryki, takie jak czasy odpowiedzi aplikacji, wydajność ładowania strony i liczby sesji. Te metryki aplikacji mogą służyć do tworzenia reguł skalowania automatycznego na poziomie szczegółowym i osadzonym w miarę wyzwalania reguł na podstawie szczegółowych informacji, które mogą mieć wpływ na środowisko klienta.
 
 Aby uzyskać więcej informacji o usłudze Application Insights, zobacz [Co to jest usługa Application Insights](../azure-monitor/app/app-insights-overview.md).
 
 
-## <a name="scheduled-autoscale"></a>Automatyczne skalowanie według harmonogramu
-Można również tworzyć reguły automatycznego skalowania, na podstawie zgodnie z harmonogramami. Te reguły na podstawie harmonogramu pozwala automatycznie skalować liczbę wystąpień maszyn wirtualnych w stałej razy. Za pomocą reguł na podstawie wydajności może być negatywny wpływ na wydajność aplikacji przed wyzwalania reguły automatycznego skalowania i udostępnieniu nowych wystąpień maszyn wirtualnych. Jeśli przewidujesz takie żądanie, kolejnych wystąpień maszyn wirtualnych są aprowizowane i gotowy na dodatkowe użycie i aplikacji popyt.
+## <a name="scheduled-autoscale"></a>Zaplanowane Skalowanie automatyczne
+Można również tworzyć reguły automatycznego skalowania na podstawie harmonogramów. Te reguły oparte na harmonogramie umożliwiają automatyczne skalowanie liczby wystąpień maszyn wirtualnych o stałym czasie. W przypadku reguł opartych na wydajności może wystąpić wpływ na wydajność aplikacji, zanim wyzwalacz reguł skalowania automatycznego i nowe wystąpienia maszyn wirtualnych zostaną udostępnione. Jeśli możesz zawidzieć takie zapotrzebowanie, dodatkowe wystąpienia maszyn wirtualnych są obsługiwane i gotowe do użycia w dodatkowych klientach i zapotrzebowaniu na aplikacje.
 
-Poniższe przykłady są scenariusze, które można przeznaczyć na korzystanie z automatycznego na podstawie harmonogramu:
+Poniżej przedstawiono scenariusze, które mogą korzystać z reguł automatycznego skalowania opartych na harmonogramie:
 
-- Automatycznie skalować liczbę wystąpień maszyn wirtualnych, na początku dnia roboczego, gdy zwiększa zapotrzebowanie klientów. Na koniec dnia roboczego automatyczne skalowanie liczby wystąpień maszyn wirtualnych, aby zminimalizować koszty zasobów przez noc, gdy użycie aplikacji jest za mało.
-- Jeśli dział używa aplikacji intensywnie w niektórych części miesiąca lub obrachunkowy cykl, automatyczne skalowanie liczby wystąpień maszyn wirtualnych, aby uwzględnić jego potrzebom związanym z dodatkowych.
-- Jeśli marketingowe zdarzeń, podwyższanie poziomu lub sprzedaży dniem wolnym od pracy, możesz automatycznie skalować liczbę wystąpień maszyn wirtualnych, które wcześniej przewidywany popyt. 
+- Automatyczne skalowanie liczby wystąpień maszyn wirtualnych na początku dnia roboczego w przypadku wzrostu popytu na żądanie klienta. Na koniec dnia roboczego program automatycznie skaluje liczbę wystąpień maszyn wirtualnych w celu zminimalizowania kosztów zasobów, gdy użycie aplikacji jest niskie.
+- Jeśli dział wielokrotnie zużywa aplikację w określonych częściach miesiąca lub cyklu Obrachunkowego, automatycznie skaluje liczbę wystąpień maszyn wirtualnych, aby sprostać ich dodatkowym potrzebom.
+- W przypadku wystąpienia wydarzeń marketingowych, promocji lub sprzedaży w dniach wolnych można automatycznie skalować liczbę wystąpień maszyn wirtualnych przed przewidywanym zapotrzebowaniem klienta. 
 
 
-## <a name="next-steps"></a>Kolejne kroki
-Można utworzyć reguły automatycznego skalowania, korzystających z metryk opartych na hoście przy użyciu jednego z następujących narzędzi:
+## <a name="next-steps"></a>Następne kroki
+Można tworzyć reguły automatycznego skalowania, które korzystają z metryk opartych na hoście, przy użyciu jednego z następujących narzędzi:
 
 - [Azure PowerShell](tutorial-autoscale-powershell.md)
 - [Interfejs wiersza polecenia platformy Azure](tutorial-autoscale-cli.md)
 - [Szablon platformy Azure](tutorial-autoscale-template.md)
 
-W tym omówieniu szczegółowe na temat reguł automatycznego skalowania umożliwia skalowanie w poziomie i zwiększyć lub zmniejszyć *numer* wystąpień maszyn wirtualnych w zestawie skalowania jest ustawiony. Możesz również skalować w pionie do zwiększania lub zmniejszania wystąpienia maszyny Wirtualnej *rozmiar*. Aby uzyskać więcej informacji, zobacz [pionowe skalowania automatycznego za pomocą zestawów skalowania maszyn wirtualnych](virtual-machine-scale-sets-vertical-scale-reprovision.md).
+W tym omówieniu szczegółowo opisano sposób używania reguł skalowania automatycznego w celu skalowania w poziomie i zwiększania lub zmniejszania *liczby* wystąpień maszyn wirtualnych w zestawie skalowania. Możesz również skalować w pionie, aby zwiększyć lub zmniejszyć *rozmiar*wystąpienia maszyny wirtualnej. Aby uzyskać więcej informacji, zobacz [pionowy Skalowanie automatyczne przy użyciu zestawów skalowania maszyn wirtualnych](virtual-machine-scale-sets-vertical-scale-reprovision.md).
 
-Aby uzyskać informacje na temat zarządzania wystąpień maszyn wirtualnych, zobacz [zestawów skalowania maszyn wirtualnych zarządzania za pomocą programu Azure PowerShell](virtual-machine-scale-sets-windows-manage.md).
+Aby uzyskać informacje na temat zarządzania wystąpieniami maszyn wirtualnych, zobacz [Zarządzanie zestawami skalowania maszyn wirtualnych za pomocą Azure PowerShell](virtual-machine-scale-sets-windows-manage.md).
 
-Aby dowiedzieć się, jak generować alerty, gdy wyzwalacz reguł z automatycznego, zobacz [użyć akcji skalowania automatycznego, aby wysyłać wiadomości e-mail i elementy webhook powiadomienia o alertach w usłudze Azure Monitor](../azure-monitor/platform/autoscale-webhook-email.md). Możesz również [korzystaj z dzienników inspekcji do wysyłania wiadomości e-mail i elementy webhook powiadomień o alertach w usłudze Azure Monitor](../monitoring-and-diagnostics/insights-auditlog-to-webhook-email.md).
+Aby dowiedzieć się, jak generować alerty podczas wyzwalacza reguł skalowania automatycznego, zobacz [Używanie akcji automatycznego skalowania do wysyłania powiadomień o alertach poczty e-mail i elementów webhook w Azure monitor](../azure-monitor/platform/autoscale-webhook-email.md). [Dzienników inspekcji można także używać do wysyłania powiadomień o alertach poczty e-mail i elementów webhook w programie Azure monitor](../monitoring-and-diagnostics/insights-auditlog-to-webhook-email.md).
