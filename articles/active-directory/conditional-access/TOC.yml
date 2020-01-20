@@ -19,6 +19,8 @@
       href: concept-conditional-access-policy-common.md
     - name: Składniki zasad dostępu warunkowego
       href: concept-conditional-access-policies.md
+    - name: Aplikacje w chmurze i akcje
+      href: concept-conditional-access-cloud-apps.md
     - name: Warunki
       href: conditions.md
     - name: Warunki lokalizacji
@@ -40,7 +42,7 @@
   items:
     - name: Planowanie wdrażania dostępu warunkowego
       href: plan-conditional-access.md
-    - name: Najlepsze praktyki
+    - name: Najlepsze rozwiązania
       href: best-practices.md
     - name: Typowe zasady dostępu warunkowego
       items:

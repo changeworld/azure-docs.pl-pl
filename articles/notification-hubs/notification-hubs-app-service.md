@@ -1,5 +1,5 @@
 ---
-title: Integracja z usługą App Service Mobile Apps
+title: Notification Hubs integrację z usługą App Service Mobile Apps
 description: Dowiedz się, jak usługa Azure Notification Hubs współpracuje z Azure App Service Mobile Apps.
 author: sethmanheim
 manager: femila
@@ -17,12 +17,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 09ecc258001dd735b920c3a7cb51d8ce7443ceb4
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: e6c4fb767e6237f390cdb467b35c323f637bebf2
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686541"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264156"
 ---
 # <a name="integration-with-app-service-mobile-apps"></a>Integracja z usługą App Service Mobile Apps
 

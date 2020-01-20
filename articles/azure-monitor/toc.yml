@@ -6,6 +6,8 @@
       href: overview.md
     - name: Zmiany terminologii
       href: terminology.md
+    - name: Często zadawane pytania
+      href: faq.md
 - name: Przewodniki Szybki start
   items:
     - name: Monitorowanie zasobu platformy Azure
@@ -113,14 +115,6 @@
       href: visualizations.md
     - name: Integracje partnerów
       href: platform/partners.md
-    - name: Często zadawane pytania
-      items:
-        - name: Log Analytics
-          displayName: FAQ
-          href: platform/log-faq.md
-        - name: Application Insights
-          displayName: FAQ
-          href: app/troubleshoot-faq.md
 - name: Przewodniki z instrukcjami
   items:
     - name: Zarządzanie usługą Azure Monitor
@@ -162,6 +156,8 @@
       items:
         - name: Omówienie usługi Application Insights
           href: app/app-insights-overview.md
+        - name: Często zadawane pytania
+          href: app/troubleshoot-faq.md
         - name: Monitorowanie oparte na kodzie
           items:
             - name: ASP.NET Core
@@ -170,7 +166,7 @@
             - name: ASP.NET
               displayname: 'ASP.NET, c#, csharp, .NET, NET, dotnet'
               href: app/asp-net.md
-            - name: Aplikacje bez HTTP/aplikacje w tle
+            - name: Aplikacje niekorzystające z protokołu HTTP/aplikacje w tle
               displayname: 'console, .NET, .NET Core, dotnet console, dotnet, c#, csharp, NET, worker, background, generic host'
               href: app/worker-service.md
             - name: Konsola .NET
@@ -535,6 +531,8 @@
           items:
             - name: Omówienie agentów
               href: platform/agents-overview.md
+            - name: Często zadawane pytania
+              href: 'faq.md#agents'
             - name: Rozszerzenie Diagnostyki Azure
               items:
                 - name: Omówienie
@@ -633,7 +631,7 @@
             - name: Ogólna dostępność — często zadawane pytania
               href: insights/vminsights-ga-release-faq.md
             - name: Często zadawane pytania
-              href: insights/vminsights-faq.md
+              href: 'faq.md#azure-monitor-for-vms-preview'
             - name: Włączanie monitorowania
               items:
                 - name: Omówienie włączania monitorowania
@@ -679,7 +677,7 @@
             - name: Omówienie
               href: insights/container-insights-overview.md
             - name: Często zadawane pytania
-              href: insights/container-insights-faq.md
+              href: 'faq.md#azure-monitor-for-containers'
             - name: Włączanie monitorowania
               items:
                 - name: Omówienie włączania monitorowania

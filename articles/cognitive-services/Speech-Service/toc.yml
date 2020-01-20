@@ -232,48 +232,68 @@
       items:
         - name: Często zadawane pytania dotyczące tłumaczenia mowy
           href: 'https://www.microsoft.com/translator/faq.aspx'
-- name: Transkrypcja konwersacji
+- name: Scenariusze konwersacji
   expanded: false
   items:
-    - name: Omówienie
+    - name: Transkrypcja konwersacji
       items:
-        - name: Co to jest transkrypcja konwersacji?
-          href: conversation-transcription.md
-    - name: Przewodniki z instrukcjami
-      items:
-        - name: Transkrypcja konwersacji w czasie rzeczywistym
-          href: how-to-use-conversation-transcription.md
-        - name: Asynchroniczna transkrypcja konwersacji
-          href: how-to-async-conversation-transcription.md
-    - name: Dokumentacja
-      items:
-        - name: Zestaw SDK rozpoznawania mowy
+        - name: Omówienie
           items:
-            - name: C++
-              href: 'https://aka.ms/csspeech/cppref'
-              displayName: 'C++ SDK,C++ dev kit,reference,reference docs,ref documentation'
-            - name: 'C#'
-              href: 'https://aka.ms/csspeech/csharpref'
-              displayName: 'CSharp SDK,.NET SDK,C# SDK,C# dev kit,reference,reference docs,ref documentation'
-            - name: Java
-              href: 'https://aka.ms/csspeech/javaref'
-              displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
-            - name: JavaScript
-              href: 'https://aka.ms/csspeech/javascriptref'
-              displayName: 'JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
-            - name: Obiektowy C
-              href: 'https://aka.ms/csspeech/objectivecref'
-              displayName: 'Objective-C SDK,Objective-C dev kit,reference,reference docs,ref documentation'
-            - name: Python
-              href: 'https://aka.ms/csspeech/pythonref'
-              displayName: 'Python SDK,Python dev kit,reference,reference docs,ref documentation'
-            - name: Informacje o wersji
-              href: releasenotes.md
-              displayName: 'release notes,updates,what''s new,what is new,changes'
-        - name: Interfejsy API REST
+            - name: Co to jest transkrypcja konwersacji?
+              href: conversation-transcription.md
+        - name: Przewodniki z instrukcjami
           items:
-            - name: Interfejsy API REST transkrypcji konwersacji
-              href: 'https://signature.centralus.cts.speech.microsoft.com/UI/index.html'
+            - name: Transkrypcja konwersacji w czasie rzeczywistym
+              href: how-to-use-conversation-transcription.md
+            - name: Asynchroniczna transkrypcja konwersacji
+              href: how-to-async-conversation-transcription.md
+        - name: Dokumentacja
+          items:
+            - name: Zestaw SDK rozpoznawania mowy
+              items:
+                - name: C++
+                  href: 'https://aka.ms/csspeech/cppref'
+                  displayName: 'C++ SDK,C++ dev kit,reference,reference docs,ref documentation'
+                - name: 'C#'
+                  href: 'https://aka.ms/csspeech/csharpref'
+                  displayName: 'CSharp SDK,.NET SDK,C# SDK,C# dev kit,reference,reference docs,ref documentation'
+                - name: Java
+                  href: 'https://aka.ms/csspeech/javaref'
+                  displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
+                - name: JavaScript
+                  href: 'https://aka.ms/csspeech/javascriptref'
+                  displayName: 'JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
+                - name: Obiektowy C
+                  href: 'https://aka.ms/csspeech/objectivecref'
+                  displayName: 'Objective-C SDK,Objective-C dev kit,reference,reference docs,ref documentation'
+                - name: Python
+                  href: 'https://aka.ms/csspeech/pythonref'
+                  displayName: 'Python SDK,Python dev kit,reference,reference docs,ref documentation'
+                - name: Informacje o wersji
+                  href: releasenotes.md
+                  displayName: 'release notes,updates,what''s new,what is new,changes'
+            - name: Interfejsy API REST
+              items:
+                - name: Interfejsy API REST transkrypcji konwersacji
+                  href: 'https://signature.centralus.cts.speech.microsoft.com/UI/index.html'
+    - name: Konwersacja między wieloma urządzeniami
+      items:
+        - name: Omówienie
+          items:
+            - name: Co to jest konwersacja między wieloma urządzeniami?
+              href: multi-device-conversation.md
+        - name: Przewodniki Szybki start
+          items:
+            - name: Rozpoczynanie konwersacji i dołączanie do niej
+              href: quickstarts/multi-device-conversation.md
+        - name: Dokumentacja
+          items:
+            - name: Zestaw SDK rozpoznawania mowy
+              items:
+                - name: C++
+                  href: 'https://aka.ms/csspeech/cppref'
+                - name: 'C#'
+                  href: 'https://aka.ms/csspeech/csharpref'
 - name: Asystenci głosowi
   expanded: false
   items:

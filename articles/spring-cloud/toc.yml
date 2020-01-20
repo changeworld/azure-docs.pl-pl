@@ -54,7 +54,7 @@
       href: spring-cloud-service-registration.md
     - name: Analizowanie dzienników i metryk aplikacji
       href: diagnostic-services.md
-    - name: Przesyłanie strumieniowe dzienników usługi Azure Spring Cloud w celu zapewnienia natychmiastowej dostępności
+    - name: Przesyłanie strumieniowe dzienników aplikacji Azure Spring Cloud w czasie rzeczywistym
       href: spring-cloud-howto-log-streaming.md
     - name: Automatyzacja potoku ciągłej integracji/ciągłego wdrażania w usłudze Azure Spring Cloud
       href: spring-cloud-howto-cicd.md

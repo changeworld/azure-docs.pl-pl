@@ -45,7 +45,7 @@
       href: connect-to-azure.md
     - name: Zarządzanie kontem połączonym z platformą Azure
       href: manage-account-connected-to-azure.md
-    - name: Przekazywanie i indeksowanie wideo za pomocą interfejsu API
+    - name: Przekazywanie i indeksowanie wideo
       href: upload-index-videos.md
     - name: Badanie danych wyjściowych usługi Video Indexer
       href: video-indexer-output-json-v2.md

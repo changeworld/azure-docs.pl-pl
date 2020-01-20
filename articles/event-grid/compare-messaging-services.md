@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 10/22/2019
 ms.author: spelluru
 ms.custom: seodec18
-ms.openlocfilehash: 77497d709d7106bf7c13d1fafcc4e64ee0ed1d39
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 6122f17637e76f42cc4fbcc87ac9f48da3cdca36
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790314"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122206"
 ---
 # <a name="choose-between-azure-messaging-services---event-grid-event-hubs-and-service-bus"></a>Wybór usługi do obsługi wiadomości na platformie Azure — Event Grid, Event Hubs i Service Bus
 
@@ -90,7 +90,7 @@ Ma ona następujące cechy:
 
 ## <a name="use-the-services-together"></a>Jednoczesne używanie usług
 
-W niektórych przypadkach usług można używać obok siebie w celu spełniania unikatowych ról. Na przykład witryna handlu elektronicznego może przetwarzać zamówienia za pomocą usługi Service Bus, przechwytywać dane telemetryczne za pomocą usługi Event Hubs i odpowiadać na zdarzenia takie jak wysłanie produktu za pomocą usługi Event Grid.
+W niektórych przypadkach usług można używać obok siebie w celu spełniania unikatowych ról. Na przykład witryna handlu elektronicznego może używać Service Bus, aby przetwarzać zamówienie, Event Hubs do przechwytywania danych telemetrycznych lokacji i Event Grid reagować na zdarzenia, takie jak element został wysłany.
 
 W innych przypadkach można je połączyć ze sobą w celu utworzenia potoku zdarzeń i danych. Usługa Event Grid służy wtedy do reagowania na zdarzenia w innych usługach. Aby zapoznać się z przykładem migrowania danych do magazynu danych za pomocą usług Event Grid i Event Hubs, zobacz [Przesyłanie strumieniowe danych big data do magazynu danych](event-grid-event-hubs-integration.md). Na poniższej ilustracji przedstawiono przepływ pracy przesyłania strumieniowego danych.
 

@@ -1,9 +1,9 @@
-- name: Dokumentacja interfejsu API rozpoznawania twarzy
+- name: Dokumentacja rozpoznawania twarzy
   href: index.yml
 - name: Omówienie
   expanded: true
   items:
-    - name: Co to jest interfejs API rozpoznawania twarzy?
+    - name: Co to jest usługa rozpoznawania twarzy?
       href: Overview.md
 - name: Przewodniki Szybki start
   items:
@@ -77,7 +77,7 @@
           href: face-resource-container-config.md
         - name: Korzystanie z wystąpień kontenerów
           href: Face-API-How-to-Topics/deploy-face-container-on-container-instances.md
-    - name: Korzystanie z usługi połączonej interfejsu API rozpoznawania twarzy
+    - name: Korzystanie z usługi połączonej rozpoznawania twarzy
       href: vs-face-connected-service.md
 - name: Dokumentacja
   items:
@@ -101,7 +101,7 @@
   items:
     - name: Samples
       items:
-        - name: Przykłady interfejsu API rozpoznawania twarzy
+        - name: Przykłady twarzy
           href: 'https://docs.microsoft.com/samples/browse/?products=azure&term=face'
     - name: Ceny i limity
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/face-api'

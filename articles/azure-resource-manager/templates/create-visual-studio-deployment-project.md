@@ -3,12 +3,12 @@ title: Utwórz & Wdróż projekty grupy zasobów programu Visual Studio
 description: Tworzenie projektu grupy zasobów platformy Azure przy użyciu programu Visual Studio i wdrażanie zasobów na platformie Azure.
 ms.topic: conceptual
 ms.date: 10/16/2019
-ms.openlocfilehash: ee76c2ae94373b63be6a1efd9ae13d4629dd98c8
-ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
+ms.openlocfilehash: 5127732ac0c33d4b27f70bd616fb23aaec5c871f
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75680634"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76152735"
 ---
 # <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>Tworzenie i wdrażanie grup zasobów platformy Azure za pomocą programu Visual Studio
 
@@ -51,7 +51,7 @@ W tej sekcji utworzysz projekt grupy zasobów platformy Azure z szablonem **apli
 
 ## <a name="customize-resource-manager-template"></a>Dostosowywanie szablonu Menedżer zasobów
 
-Projekt wdrożenia można dostosować, modyfikując szablon Menedżer zasobów, który opisuje zasoby, które mają zostać wdrożone. Aby uzyskać informacje na temat elementów szablonu usługi Resource Manager, zobacz [Authoring Azure Resource Manager templates](template-syntax.md) (Tworzenie szablonów usługi Azure Resource Manager).
+Projekt wdrożenia można dostosować, modyfikując szablon Menedżer zasobów, który opisuje zasoby, które mają zostać wdrożone. Aby uzyskać informacje na temat elementów szablonu usługi Resource Manager, zobacz [Authoring Azure Resource Manager templates (Tworzenie szablonów usługi Azure Resource Manager)](template-syntax.md).
 
 1. Aby móc korzystać z szablonu, Otwórz plik **Web. JSON**.
 
@@ -350,9 +350,9 @@ Możesz korzystać nie tylko z zasobów dostępnych z poziomu interfejsu program
           }
         }
       },
+      "type": "Microsoft.Portal/dashboards",
       "apiVersion": "2015-08-01-preview",
       "name": "[concat('ARM-',resourceGroup().name)]",
-      "type": "Microsoft.Portal/dashboards",
       "location": "[resourceGroup().location]",
       "tags": {
         "hidden-title": "[concat('OPS-',resourceGroup().name)]"
