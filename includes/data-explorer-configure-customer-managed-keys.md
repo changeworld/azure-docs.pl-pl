@@ -4,17 +4,19 @@ ms.service: data-explorer
 ms.topic: include
 ms.date: 01/07/2020
 ms.author: orspodek
-ms.openlocfilehash: 5443ee6912c30b89cee6fdb43f84f3bc1fbcfe68
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 0d78e48fead7b1f53e67860e6be8fe6d77469e87
+ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76021194"
+ms.lasthandoff: 01/20/2020
+ms.locfileid: "76280609"
 ---
 Usługa Azure Eksplorator danych szyfruje wszystkie dane na koncie magazynu w stanie spoczynku. Domyślnie dane są szyfrowane przy użyciu kluczy zarządzanych przez firmę Microsoft. Aby uzyskać dodatkową kontrolę nad kluczami szyfrowania, można podać klucze zarządzane przez klienta do szyfrowania danych. Klucze zarządzane przez klienta muszą być przechowywane w [Azure Key Vault](/azure/key-vault/key-vault-overview). Możesz utworzyć własne klucze i zapisać je w magazynie kluczy lub użyć interfejsu API Azure Key Vault, aby generować klucze. Klaster usługi Azure Eksplorator danych i Magazyn kluczy muszą znajdować się w tym samym regionie, ale mogą znajdować się w różnych subskrypcjach. Szczegółowe wyjaśnienie kluczy zarządzanych przez klienta można znaleźć w temacie [klucze zarządzane przez klienta z Azure Key Vault](/azure/storage/common/storage-service-encryption). W tym artykule opisano sposób konfigurowania kluczy zarządzanych przez klienta.
 
-> [!Note]
-> Aby skonfigurować klucze zarządzane przez klienta za pomocą usługi Azure Eksplorator danych, należy [ustawić dwie właściwości magazynu kluczy](/azure/key-vault/key-vault-ovw-soft-delete): **usuwanie nietrwałe** i **nie przeczyszczanie**. Te właściwości nie są domyślnie włączone. Aby włączyć te właściwości, użyj [programu PowerShell](/azure/key-vault/key-vault-soft-delete-powershell) lub [interfejsu wiersza polecenia platformy Azure](/azure/key-vault/key-vault-soft-delete-cli). Obsługiwane są tylko klucze RSA i rozmiar klucza 2048.
+Aby skonfigurować klucze zarządzane przez klienta za pomocą usługi Azure Eksplorator danych, należy [ustawić dwie właściwości magazynu kluczy](/azure/key-vault/key-vault-ovw-soft-delete): **usuwanie nietrwałe** i **nie przeczyszczanie**. Te właściwości nie są domyślnie włączone. Aby włączyć te właściwości, użyj [programu PowerShell](/azure/key-vault/key-vault-soft-delete-powershell) lub [interfejsu wiersza polecenia platformy Azure](/azure/key-vault/key-vault-soft-delete-cli). Obsługiwane są tylko klucze RSA i rozmiar klucza 2048.
+
+> [!NOTE]
+> Szyfrowanie danych przy użyciu kluczy zarządzanych przez klienta nie jest obsługiwane w [klastrach lidera i kolejnych](/azure/data-explorer/follower). 
 
 ## <a name="assign-an-identity-to-the-cluster"></a>Przypisywanie tożsamości do klastra
 

@@ -1,5 +1,5 @@
 ---
-title: Znajdź swój punkt końcowy zasobów analiza tekstu i klucz
+title: Znajdź swój punkt końcowy zasobów analiza tekstu i bibliotekę kliencką Key-v3
 titleSuffix: Azure Cognitive Services
 description: Dowiedz się, jak utworzyć zasób analiza tekstu Cognitive Services.
 services: cognitive-services
@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 01/14/2019
 ms.author: aahi
-ms.openlocfilehash: b56bb8dfdce58de60f82693b511f7923b80fc37a
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: d432e2c9ccf0563e18d7f3958a030dd7ce32f4d0
+ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76159337"
+ms.lasthandoff: 01/20/2020
+ms.locfileid: "76281181"
 ---
 > [!IMPORTANT]
 > Przejdź do utworzonego zasobu, aby znaleźć klucz i punkt końcowy. Zostaną one umieszczone na stronie **szybkiego startu** zasobu w obszarze **Zarządzanie zasobami**.

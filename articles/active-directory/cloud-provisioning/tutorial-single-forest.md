@@ -11,12 +11,12 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 691c8e8d2f2c6c8e9472ba7a4ae83d8b76f2850c
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 7f7c348e29fa2234627a53095a99e913a6389a27
+ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74868732"
+ms.lasthandoff: 01/20/2020
+ms.locfileid: "76280972"
 ---
 # <a name="tutorial-integrate-a-single-forest-with-a-single-azure-ad-tenant"></a>Samouczek: Integrowanie pojedynczego lasu z jedną dzierżawą usługi Azure AD
 
@@ -34,7 +34,7 @@ Możesz użyć środowiska utworzonego w tym samouczku do testowania lub w celu 
 
 ### <a name="in-your-on-premises-environment"></a>W środowisku lokalnym
 
-1. Tożsamość serwera hosta przyłączonego do domeny z systemem Windows Server 2012 R2 lub nowszym z co najmniej 4 GB pamięci RAM i .NET 4.7.1 + środowisko uruchomieniowe 
+1. Identyfikowanie serwera hosta przyłączonego do domeny z systemem Windows Server 2012 R2 lub nowszym z co najmniej 4 GB pamięci RAM i .NET 4.7.1 + środowisko uruchomieniowe 
 
 2. Jeśli między serwerami i usługą Azure AD istnieje Zapora, skonfiguruj następujące elementy:
    - Upewnij się, że agenci mogą wykonywać żądania *wychodzące* do usługi Azure AD za pośrednictwem następujących portów:
@@ -55,7 +55,7 @@ Możesz użyć środowiska utworzonego w tym samouczku do testowania lub w celu 
 2. Zaloguj się do Azure Portal przy użyciu poświadczeń administratora globalnego tylko w chmurze.
 3. Po lewej stronie wybierz pozycję **Azure Active Directory**, kliknij pozycję **Azure AD Connect**, a następnie w centrum wybierz pozycję **Zarządzaj Provisioning (wersja zapoznawcza)** .
 
-   ![Azure Portal](media/how-to-install/install6.png)
+   ![Portal Azure](media/how-to-install/install6.png)
 
 4. Kliknij pozycję **Pobierz agenta**.
 5. Uruchom Azure AD Connect agenta aprowizacji.

@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: 1c721685e12c417116888ccc3cf8d25123761933
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: fa8bc56376704b96f5ddee09db7b09e28f10a936
+ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978626"
+ms.lasthandoff: 01/20/2020
+ms.locfileid: "76281244"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mysql-preview-using-portal"></a>Tworzenie prywatnego linku do Azure Database for MySQL (wersja zapoznawcza) i zarządzanie nim przy użyciu portalu
 
@@ -23,7 +23,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 > Ta funkcja jest dostępna we wszystkich regionach świadczenia usługi Azure, w których Azure Database for MySQL obsługuje warstwy cenowe Ogólnego przeznaczenia i zoptymalizowane pod kątem pamięci.
 
 ## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
-Zaloguj się do [portalu Azure](https://portal.azure.com).
+Zaloguj się do [Portalu Azure](https://portal.azure.com).
 
 ## <a name="create-an-azure-vm"></a>Tworzenie maszyny wirtualnej platformy Azure
 
@@ -165,7 +165,7 @@ W tej sekcji utworzysz serwer MySQL i dodasz do niego prywatny punkt końcowy.
     | Podsieć | Wybierz pozycję Moja *podsieć*. |
     |**PRYWATNA INTEGRACJA Z USŁUGĄ DNS**||
     |Integracja z prywatną strefą DNS |Wybierz pozycję **Tak**. |
-    |Strefa Prywatna strefa DNS |SELECT *(New) privatelink. Database. Azure. com* |
+    |Strefa Prywatna strefa DNS |SELECT *(New) privatelink. MySQL. Database. Azure. com* |
     |||
 
 1. Wybierz pozycję **Przegląd + utwórz**. Nastąpi przejście do strony **Recenzja i tworzenie** , w której platforma Azure weryfikuje konfigurację. 
@@ -203,14 +203,14 @@ Po utworzeniu **myVm**Połącz się z nim za pośrednictwem Internetu w następu
 
 1. W Pulpit zdalny *myVM*Otwórz program PowerShell.
 
-2. Wprowadź `nslookup  myServer.mysql.privatelink.database.azure.com`. 
+2. Wprowadź `nslookup  myServer.privatelink.mysql.database.azure.com`. 
 
     Zostanie wyświetlony komunikat podobny do tego:
     ```azurepowershell
     Server:  UnKnown
     Address:  168.63.129.16
     Non-authoritative answer:
-    Name:    myServer.mysql.privatelink.database.azure.com
+    Name:    myServer.privatelink.mysql.database.azure.com
     Address:  10.1.3.4
 
 3. Test the private link connection for the MySQL server using any available client. In the example below I have used [MySQL Workbench](https://dev.mysql.com/doc/workbench/en/wb-installing-windows.html) to do the operation.
@@ -220,7 +220,7 @@ Po utworzeniu **myVm**Połącz się z nim za pośrednictwem Internetu w następu
     | Setting | Value |
     | ------- | ----- |
     | Server type| Select **MySQL**.|
-    | Server name| Select *myServer.mysql.privatelink.database.azure.com* |
+    | Server name| Select *myServer.privatelink.mysql.database.azure.com* |
     | User name | Enter username as username@servername which is provided during the MySQL server creation. |
     |Password |Enter a password provided during the MySQL server creation. |
     |SSL|Select **Required**.|

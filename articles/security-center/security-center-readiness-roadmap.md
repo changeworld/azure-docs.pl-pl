@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/03/2018
 ms.author: yurid
-ms.openlocfilehash: ea029e62ac1273d9796e52edc3f7a46868964d2a
-ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
+ms.openlocfilehash: 4603240a76ec72223b88853c63ed11152707201c
+ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73520756"
+ms.lasthandoff: 01/20/2020
+ms.locfileid: "76281295"
 ---
 # <a name="azure-security-center-readiness-roadmap"></a>Mapa gotowości usługi Azure Security Center
 Ten dokument zapewnia mapę gotowości, która będzie pomocna w rozpoczynaniu pracy z usługą Azure Security Center.
@@ -32,7 +32,7 @@ Artykuły
 * [Wprowadzenie do usługi Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)
 * [Przewodnik Szybki start dotyczący usługi Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-get-started)
 
-Filmy wideo
+Filmy
 * [Wideo z szybkim wprowadzeniem](https://azure.microsoft.com/resources/videos/introduction-to-azure-security-center/)
 * [Omówienie możliwości związanych z zapobieganiem, wykrywaniem i reagowaniem usługi Security Center](https://azure.microsoft.com/resources/videos/azurecon-2015-new-azure-security-center-helps-you-prevent-detect-and-respond-to-threats/)
 
@@ -79,13 +79,13 @@ Aby zmniejszyć koszty i straty, ważne jest dysponowanie planem reagowania na t
 
 Użyj następujących zasobów, aby zrozumieć sposób dołączenia usługi Security Center do procesu reagowania na zdarzenia.
 
-Filmy wideo  
+Filmy  
 * [Usługa Azure Security Center na potrzeby reagowania na zdarzenia](https://channel9.msdn.com/Blogs/Azure-Security-Videos/Azure-Security-Center-in-Incident-Response)
 * [Szybkie reagowanie na zagrożenia przy użyciu zabezpieczeń, obsługi i badań nowej generacji](https://youtu.be/e8iFCz5RM4g)
 
 Artykuły    
 * [Używanie usługi Azure Security Center do reagowania na zdarzenia](https://docs.microsoft.com/azure/security-center/security-center-incident-response)
-* [Automatyzowanie reakcji przy użyciu podręcznika dotyczącego zabezpieczeń](https://docs.microsoft.com/azure/security-center/security-center-playbooks)
+* [Automatyzowanie odpowiedzi z automatyzacją przepływu pracy](workflow-automation.md)
 
 ## <a name="advanced-cloud-defense"></a>Zaawansowana ochrona w chmurze
 
@@ -93,7 +93,7 @@ Maszyny wirtualne platformy Azure mogą wykorzystywać zaawansowane możliwości
 
 Użyj następujących zasobów, aby dowiedzieć się, jak korzystać z tych możliwości w usłudze Security Center.
 
-Filmy wideo  
+Filmy  
 * [Azure Security Center — dostęp just in Time do maszyny wirtualnej](https://youtu.be/UOQb2FcdQnU)
 * [Azure Security Center — funkcje adaptacyjnego sterowania aplikacjami](https://youtu.be/wWWekI1Y9ck)
 
@@ -107,7 +107,7 @@ Artykuły
 * [Podręcznik dotyczący zaleceń zapory aplikacji internetowej (WAF) w usłudze Security Center](https://gallery.technet.microsoft.com/ASC-Playbook-Protect-38bd47ff)
 * [Podręcznik dotyczący usługi Azure Security Center: alerty zabezpieczeń](https://gallery.technet.microsoft.com/Azure-Security-Center-f621a046)
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 * [Strona dokumentacji usługi Security Center](https://docs.microsoft.com/azure/security-center/)
 * [Strona dokumentacji interfejsu API REST usługi Security Center](https://msdn.microsoft.com/library/mt704034.aspx)
 * [Często zadawane pytania dotyczące usługi Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-faq)

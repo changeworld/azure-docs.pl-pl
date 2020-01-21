@@ -3,12 +3,12 @@ title: Odnajdywanie aplikacji, ról i funkcji na serwerach lokalnych przy użyci
 description: Informacje na temat odnajdywania aplikacji, ról i funkcji na serwerach lokalnych przy użyciu narzędzia do oceny Azure Migrate Server.
 ms.topic: article
 ms.date: 11/20/2019
-ms.openlocfilehash: adc22925d1152639babe2377a1eae440e0ce418e
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 454d70a53c3ea00a4dc592703c0bc04d5517b97f
+ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029077"
+ms.lasthandoff: 01/20/2020
+ms.locfileid: "76280768"
 ---
 # <a name="discover-machine-apps-roles-and-features"></a>Odkryj aplikacje maszynowe, role i funkcje
 
@@ -17,18 +17,18 @@ W tym artykule opisano sposób odnajdywania aplikacji, ról i funkcji na serwera
 Odnajdywanie spisu aplikacji, a role/funkcje działające na maszynach lokalnych, ułatwia identyfikowanie i planowanie ścieżki migracji do platformy Azure, która jest dostosowana do obciążeń.
 
 > [!NOTE]
-> Funkcja odnajdywania aplikacji jest obecnie obsługiwana tylko w przypadku maszyn wirtualnych VMware i jest ograniczona tylko do odnajdowania. Nie oferujemy jeszcze oceny opartej na aplikacji.  Teraz Ocena serwera umożliwia obecnie ocenianie lokalnych maszyn wirtualnych programu VMware, maszyn wirtualnych funkcji Hyper-V i serwerów fizycznych na poziomie komputera w celu przeprowadzenia migracji w celu przesunięcia i przejścia.
+> Funkcja odnajdywania aplikacji jest obecnie obsługiwana tylko w przypadku maszyn wirtualnych VMware i jest ograniczona tylko do odnajdowania. Nie oferujemy jeszcze oceny opartej na aplikacji. Ocena oparta na maszynach dla lokalnych maszyn wirtualnych programu VMware, maszyn wirtualnych funkcji Hyper-V i serwerów fizycznych.
 
 Odnajdywanie aplikacji przy użyciu Azure Migrate: Ocena serwera jest bez wykorzystania agentów. Niczego nie trzeba instalować na maszynach i maszynach wirtualnych. Funkcja oceny serwera używa urządzenia Azure Migrate do przeprowadzenia odnajdywania wraz z poświadczeniami gościa maszyny. Urządzenie zdalnie uzyskuje dostęp do maszyn VMware przy użyciu interfejsów API VMware.
 
 
 ## <a name="before-you-start"></a>Przed rozpoczęciem
 
-1. Zapoznaj się z tematem [ograniczenia dotyczące obsługi](migrate-support-matrix-vmware.md#application-discovery) odnajdywania na poziomie aplikacji.
-2. Upewnij się, że [utworzono](how-to-add-tool-first-time.md) projekt Azure Migrate.
-3. Jeśli projekt został już utworzony, upewnij się, że [dodano](how-to-assess.md) Azure Migrate: Narzędzie do oceny serwera.
+1. Upewnij się, że [utworzono](how-to-add-tool-first-time.md) projekt Azure Migrate.
+2. Upewnij się, że [dodano](how-to-assess.md) Azure Migrate: Narzędzie do oceny serwera do projektu.
 4. Sprawdź [wymagania programu VMware](migrate-support-matrix-vmware.md#vmware-requirements) dotyczące odnajdywania i oceniania maszyn wirtualnych VMware przy użyciu urządzenia Azure Migrate.
-4. Sprawdź [wymagania](migrate-appliance.md) dotyczące wdrażania urządzenia Azure Migrate.
+5. Sprawdź [wymagania](migrate-appliance.md) dotyczące wdrażania urządzenia Azure Migrate.
+6. [Sprawdź pomoc techniczną i wymagania](/migrate-support-matrix-vmware.md#application-discovery) dotyczące odnajdywania aplikacji.
 
 ## <a name="prepare-for-app-discovery"></a>Przygotowanie do odnajdywania aplikacji
 

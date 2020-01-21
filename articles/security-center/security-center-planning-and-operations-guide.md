@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 358895f84b43437a174214eaf75e77574b3f02e8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 239438133dc16630852626c49e8ffda08590976b
+ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75462460"
+ms.lasthandoff: 01/20/2020
+ms.locfileid: "76281006"
 ---
 # <a name="azure-security-center-planning-and-operations-guide"></a>Przewodnik planowania i obsługi usługi Azure Security Center
 Ten przewodnik jest przeznaczony dla specjalistów IT, architektów IT, analityków zabezpieczeń informacji i administratorów chmury do korzystania z Azure Security Center.
@@ -146,7 +146,7 @@ Jeśli w dowolnym momencie chcesz wyłączyć funkcję zbierania danych, możesz
 > Lista obsługiwanych maszyn wirtualnych znajduje się w artykule [Azure Security Center frequently asked questions (FAQ)](security-center-faq.md) (Azure Security Center — często zadawane pytania [FAQ]).
 >
 
-### <a name="workspace"></a>Obszar roboczy
+### <a name="workspace"></a>Workspace
 
 Obszar roboczy to zasób platformy Azure, który służy jako kontener dla danych. Ty i inni członkowie organizacji możecie używać wielu obszarów roboczych, aby zarządzać różnymi zestawami danych zebranymi z całej infrastruktury IT lub jej części.
 
@@ -239,7 +239,7 @@ Ta strona pokazuje szczegóły dotyczące godziny, o której nastąpił atak, na
 
 Na tej stronie możesz również uruchomić [dochodzenie](https://docs.microsoft.com/azure/security-center/security-center-investigation), aby lepiej zrozumieć oś czasu ataku, sposób przeprowadzenia ataku, które systemy zostały potencjalnie naruszone, które poświadczenia zostały użyte i zobaczyć graficzną reprezentację całego łańcucha ataku.
 
-Po zidentyfikowaniu systemu z naruszonymi zabezpieczeniami możesz uruchomić elementy [playbook](https://docs.microsoft.com/azure/security-center/security-center-playbooks) zabezpieczeń, które zostały utworzone wcześniej. Element playbook zabezpieczeń to kolekcja procedur, które mogą być wykonywane w usłudze Security Center po wyzwoleniu określonego elementu playbook z poziomu wybranego alertu.
+Po zidentyfikowaniu zagrożonego systemu można uruchomić [automatyzację przepływu pracy](workflow-automation.md) , która została wcześniej utworzona. Są to zbiór procedur, które mogą być wykonywane z Security Center po wyzwoleniu alertu.
 
 W obszarze [jak korzystać z Azure Security Center & Microsoft Operations Management Suite dla wideo z odpowiedzią na zdarzenia](https://channel9.msdn.com/Blogs/Taste-of-Premier/ToP1703) można zobaczyć niektóre demonstracje, które mogą pomóc zrozumieć, jak Security Center może być używany w każdym z tych etapów.
 

@@ -3,12 +3,12 @@ title: Macierz obsługi dla agenta MARS
 description: Ten artykuł zawiera podsumowanie Azure Backup pomocy technicznej podczas tworzenia kopii zapasowej maszyn, na których jest uruchomiony agent Microsoft Azure Recovery Services (MARS).
 ms.date: 08/30/2019
 ms.topic: conceptual
-ms.openlocfilehash: 26f3dde0bb20443753e2b443ffc00ee23c9124c4
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 27ad81c42a079485d8eab95bb1250cba41e8fb5b
+ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893981"
+ms.lasthandoff: 01/20/2020
+ms.locfileid: "76281278"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Macierz obsługi kopii zapasowej za pomocą agenta Microsoft Azure Recovery Services (MARS)
 
@@ -104,6 +104,8 @@ Aby uzyskać więcej informacji, zobacz [obsługiwane systemy operacyjne serwera
 
 ## <a name="backup-limits"></a>Limity kopii zapasowych
 
+### <a name="size-limits"></a>Limity rozmiaru
+
 Azure Backup ogranicza rozmiar źródła danych pliku lub folderu, dla którego można utworzyć kopię zapasową. Elementy, których kopię zapasową utworzono z pojedynczego woluminu, nie mogą przekroczyć rozmiarów podsumowanych w tej tabeli:
 
 **System operacyjny** | **Limit rozmiaru**
@@ -114,6 +116,10 @@ Windows Server 2008 SP2| 1 700 GB
 Windows 8 lub nowszy| 54 400 GB
 Windows 7| 1 700 GB
 
+### <a name="other-limitations"></a>Inne ograniczenia
+
+- Usługa MARS nie obsługuje ochrony wielu maszyn o tej samej nazwie w pojedynczym magazynie.
+
 ## <a name="supported-file-types-for-backup"></a>Obsługiwane typy plików dla kopii zapasowej
 
 **Typ** | **Pomoc techniczna**
@@ -122,12 +128,12 @@ Szyfrowane| Obsługiwane.
 Skompresowane | Obsługiwane.
 Rozrzedzone | Obsługiwane.
 Skompresowane i rozrzedzone |Obsługiwane.
-Twarde linki| Nieobsługiwane. Pominięto.
-Punkt ponownej analizy| Nieobsługiwane. Pominięto.
-Zaszyfrowane i rozrzedzone |Nieobsługiwane. Pominięto.
-Skompresowany strumień| Nieobsługiwane. Pominięto.
-Rozrzedzony strumień| Nieobsługiwane. Pominięto.
-OneDrive (synchronizowane pliki to strumienie rozrzedzone)| Nieobsługiwane.
+Twarde linki| Bez pomocy technicznej. Pominięto.
+Punkt ponownej analizy| Bez pomocy technicznej. Pominięto.
+Zaszyfrowane i rozrzedzone |Bez pomocy technicznej. Pominięto.
+Skompresowany strumień| Bez pomocy technicznej. Pominięto.
+Rozrzedzony strumień| Bez pomocy technicznej. Pominięto.
+OneDrive (synchronizowane pliki to strumienie rozrzedzone)| Bez pomocy technicznej.
 
 ## <a name="supported-drives-or-volumes-for-backup"></a>Obsługiwane dyski lub woluminy na potrzeby tworzenia kopii zapasowych
 

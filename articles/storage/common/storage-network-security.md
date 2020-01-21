@@ -9,12 +9,12 @@ ms.date: 03/21/2019
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 5e4a8afdb9bea4f528e57c914149f611b0578c63
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 28e3f276da231ef0186dba8ecd9c064cdd10a5a8
+ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75973475"
+ms.lasthandoff: 01/20/2020
+ms.locfileid: "76281227"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurowanie zapór usługi Azure Storage i sieci wirtualnych
 
@@ -381,7 +381,7 @@ Po włączeniu ustawienia **Zezwalaj na zaufane usługi firmy Microsoft..** . dl
 | Azure HDInsight          | Microsoft.HDInsight        | Zainicjuj wstępną zawartość domyślnego systemu plików dla nowego klastra usługi HDInsight. [Dowiedz się więcej](/azure/hdinsight/hdinsight-hadoop-use-blob-storage). |
 | Eksportowanie importu platformy Azure      | Microsoft.ImportExport     | Umożliwia importowanie danych na platformę Azure i eksportowanie danych z platformy Azure za pomocą usługi Import/Export. [Dowiedz się więcej](/azure/storage/common/storage-import-export-service).  |
 | Azure Monitor            | Microsoft.Insights         | Umożliwia zapisywanie danych do konta magazynu zabezpieczone monitorowania [więcej](/azure/monitoring-and-diagnostics/monitoring-roles-permissions-security). |
-| Sieci systemu Azure         | Microsoft.Network          | Store i analizowanie dzienników ruchu sieciowego. [Dowiedz się więcej](/azure/network-watcher/network-watcher-packet-capture-overview). |
+| Sieci systemu Azure         | Microsoft.Network          | Store i analizowanie dzienników ruchu sieciowego. [Dowiedz się więcej](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview). |
 | Azure Site Recovery      | Microsoft.SiteRecovery     | Włącz replikację na potrzeby odzyskiwania po awarii maszyn wirtualnych platformy Azure IaaS w przypadku korzystania z pamięci podręcznej z włączoną zaporą, źródła lub docelowego konta magazynu.  [Dowiedz się więcej](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication). |
 
 Ustawienie **Zezwalaj na zaufane usługi firmy Microsoft...** umożliwia również określonym wystąpieniu poniższych usług uzyskanie dostępu do konta magazynu, jeśli jawnie [przypiszesz rolę RBAC](storage-auth-aad.md#assign-rbac-roles-for-access-rights) do [zarządzanej tożsamości przypisanej do systemu](../../active-directory/managed-identities-azure-resources/overview.md) dla tego wystąpienia zasobu. W takim przypadku zakres dostępu dla wystąpienia odpowiada roli RBAC przypisanej do zarządzanej tożsamości.

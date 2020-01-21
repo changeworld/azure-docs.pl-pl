@@ -9,12 +9,12 @@ ms.author: mbullwin
 ms.date: 01/17/2020
 ms.reviewer: vitalyg
 ms.custom: fasttrack-edit
-ms.openlocfilehash: cb73acc227d110cbfe5f5bbd37c69e08e7628eee
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: e30c4812ad11d7b39197062da30c90b2d8b1649b
+ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76275189"
+ms.lasthandoff: 01/20/2020
+ms.locfileid: "76281074"
 ---
 # <a name="sampling-in-application-insights"></a>Próbkowanie w usłudze Application Insights
 
@@ -484,18 +484,18 @@ Dokładność przybliżania zależy od skonfigurowanej wartości procentowej pr�
   
   Poniżej przedstawiono domyślny wygenerowany plik `ApplicationInsights.config`. W ASP.NET Core to samo zachowanie domyślne jest włączone w kodzie. Użyj [przykładów z wcześniejszej części tej strony](#configuring-adaptive-sampling-for-aspnet-core-applications) , aby zmienić to zachowanie domyślne.
 
-```xml
-<TelemetryProcessors>
-    <Add Type="Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.AdaptiveSamplingTelemetryProcessor, Microsoft.AI.ServerTelemetryChannel">
-        <MaxTelemetryItemsPerSecond>5</MaxTelemetryItemsPerSecond>
-        <ExcludedTypes>Event</ExcludedTypes>
-    </Add>
-    <Add Type="Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.AdaptiveSamplingTelemetryProcessor, Microsoft.AI.ServerTelemetryChannel">
-        <MaxTelemetryItemsPerSecond>5</MaxTelemetryItemsPerSecond>
-        <IncludedTypes>Event</IncludedTypes>
-    </Add>
-</TelemetryProcessors>
-```
+    ```xml
+    <TelemetryProcessors>
+        <Add Type="Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.AdaptiveSamplingTelemetryProcessor, Microsoft.AI.ServerTelemetryChannel">
+            <MaxTelemetryItemsPerSecond>5</MaxTelemetryItemsPerSecond>
+            <ExcludedTypes>Event</ExcludedTypes>
+        </Add>
+        <Add Type="Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.AdaptiveSamplingTelemetryProcessor, Microsoft.AI.ServerTelemetryChannel">
+            <MaxTelemetryItemsPerSecond>5</MaxTelemetryItemsPerSecond>
+            <IncludedTypes>Event</IncludedTypes>
+        </Add>
+    </TelemetryProcessors>
+    ```
 
 *Czy dane telemetryczne mogą być próbkowane więcej niż raz?*
 
@@ -533,18 +533,18 @@ Dokładność przybliżania zależy od skonfigurowanej wartości procentowej pr�
 
 * Najlepszym sposobem osiągnięcia tego celu jest napisanie niestandardowych [TelemetryInitializer](../../azure-monitor/app/api-filtering-sampling.md#addmodify-properties-itelemetryinitializer), które ustawia `SamplingPercentage` na 100 w elemencie telemetrii, który ma zostać zachowany, jak pokazano poniżej. Ponieważ inicjatory są gwarantowane do uruchomienia przed procesorami danych telemetrycznych (w tym próbkowanie), zapewnia to, że wszystkie techniki próbkowania zignorują ten element z wszelkich zagadnień związanych z próbkami.
 
-```csharp
-public class MyTelemetryInitializer : ITelemetryInitializer
-{
-    public void Initialize(ITelemetry telemetry)
+    ```csharp
+    public class MyTelemetryInitializer : ITelemetryInitializer
     {
-        if(somecondition)
+        public void Initialize(ITelemetry telemetry)
         {
-            ((ISupportSampling)telemetry).SamplingPercentage = 100;
+            if(somecondition)
+            {
+                ((ISupportSampling)telemetry).SamplingPercentage = 100;
+            }
         }
     }
-}
-```
+    ```
 
 ## <a name="older-sdk-versions"></a>Starsze wersje zestawu SDK
 
