@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: 7590cab00670c92e8a5b90006778542ec44bf83f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 1cbbc3f0c78954b92c1265795ba365be9dc0e38c
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73490174"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76315086"
 ---
 # <a name="two-class-boosted-decision-tree-module"></a>Moduł drzewa decyzyjnej z dwoma klasami
 
-W tym artykule opisano moduł w programie Azure Machine Learning Designer (wersja zapoznawcza).
+W tym artykule opisano moduł w programie Azure Machine Learning Designer.
 
 Ten moduł służy do tworzenia modelu uczenia maszynowego, który jest oparty na algorytmie drzew z podwyższaną decyzją. 
 
@@ -63,15 +63,14 @@ Możesz przeszkolić model tego typu przy użyciu [modelu uczenia](././train-mod
 9. Uczenie modelu.
   
     + Jeśli ustawisz **tryb tworzenia Trainer** na **pojedynczy parametr**, Połącz znacznikowy zestaw danych i moduł [uczenie modelu](./train-model.md) .  
-  
    
 ## <a name="results"></a>Wyniki
 
-Po zakończeniu szkolenia modelu kliknij prawym przyciskiem myszy dane wyjściowe [modelu uczenia](./train-model.md) , aby wyświetlić wyniki:
+Po zakończeniu szkolenia:
 
-+ Aby zobaczyć drzewo, które zostało utworzone w każdej iteracji, wybierz opcję **Wizualizuj**. 
-+ Aby przejść do szczegółów podziałów i wyświetlić reguły dla każdego węzła, kliknij każde drzewo.
++ Aby zapisać migawkę przeszkolonego modelu, wybierz kartę dane **wyjściowe** w prawym panelu modułu **uczenie modelu** . Wybierz ikonę **zarejestruj zestaw danych** , aby zapisać model jako moduł wielokrotnego użytku.
 
++ Aby użyć modelu do oceniania, Dodaj moduł **model oceny** do potoku.
 
 ## <a name="next-steps"></a>Następne kroki
 

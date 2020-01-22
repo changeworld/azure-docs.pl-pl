@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: conceptual
 ms.reviewer: cbrooks
-ms.openlocfilehash: 98c59555f2b9b93ee3f78da91f85a7728679235d
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 94e28c59c3281dc6c1d65ce782568233d0e23f03
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74269380"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76313845"
 ---
 # <a name="perform-azure-queue-storage-operations-with-azure-powershell"></a>Wykonywanie operacji usługi Azure Queue Storage przy użyciu programu Azure PowerShell
 
@@ -25,7 +25,7 @@ Azure queue storage to usługa służąca do przechowywania dużej liczby komuni
 > * Pobieranie kolejki
 > * Dodawanie komunikatu
 > * Odczytaj wiadomość
-> * Usuń komunikat
+> * Usuwanie wiadomości
 > * Usuwanie kolejki
 
 Ta procedura wymaga, aby moduł Azure PowerShell AZ w wersji 0,7 lub nowszej. Uruchom polecenie `Get-Module -ListAvailable Az`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-Az-ps).
@@ -34,7 +34,7 @@ Brak poleceń cmdlet programu PowerShell dla płaszczyzny danych dla kolejek. Ab
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
+## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
 
 Zaloguj się do subskrypcji platformy Azure za pomocą polecenia `Connect-AzAccount` i postępuj zgodnie z instrukcjami wyświetlanymi na ekranie.
 
@@ -47,7 +47,7 @@ Connect-AzAccount
 Jeśli nie wiesz, której lokalizacji użyć, możesz wyświetlić listę dostępnych lokalizacji. Po wyświetleniu listy znajdź lokalizację, której chcesz użyć. W tym ćwiczeniu zostanie użyta **Wschodnia**. Zapisz ją w **lokalizacji** zmiennej do użycia w przyszłości.
 
 ```powershell
-Get-AzLocation | select Location
+Get-AzLocation | Select-Object Location
 $location = "eastus"
 ```
 
@@ -98,7 +98,7 @@ $queue = Get-AzStorageQueue –Name $queueName –Context $ctx
 $queue
 
 # Retrieve all queues and show their names
-Get-AzStorageQueue -Context $ctx | select Name
+Get-AzStorageQueue -Context $ctx | Select-Object Name
 ```
 
 ## <a name="add-a-message-to-a-queue"></a>Dodawanie komunikatu do kolejki
@@ -109,17 +109,16 @@ Poniższy przykład pokazuje, jak dodać komunikat do kolejki.
 
 ```powershell
 # Create a new message using a constructor of the CloudQueueMessage class
-$queueMessage = New-Object -TypeName "Microsoft.Azure.Storage.Queue.CloudQueueMessage,$($queue.CloudQueue.GetType().Assembly.FullName)" `
-  -ArgumentList "This is message 1"
+$queueMessage = [Microsoft.Azure.Storage.Queue.CloudQueueMessage]::new("This is message 1")
+
 # Add a new message to the queue
 $queue.CloudQueue.AddMessageAsync($QueueMessage)
 
 # Add two more messages to the queue
-$queueMessage = New-Object -TypeName "Microsoft.Azure.Storage.Queue.CloudQueueMessage,$($queue.CloudQueue.GetType().Assembly.FullName)" `
-  -ArgumentList "This is message 2"
+$queueMessage = [Microsoft.Azure.Storage.Queue.CloudQueueMessage]::new("This is message 2")
 $queue.CloudQueue.AddMessageAsync($QueueMessage)
-$queueMessage = New-Object -TypeName "Microsoft.Azure.Storage.Queue.CloudQueueMessage,$($queue.CloudQueue.GetType().Assembly.FullName)" `
-  -ArgumentList "This is message 3"
+
+$queueMessage = [Microsoft.Azure.Storage.Queue.CloudQueueMessage]::new("This is message 3")
 $queue.CloudQueue.AddMessageAsync($QueueMessage)
 ```
 
@@ -189,7 +188,7 @@ W tym artykule poznasz informacje o zarządzaniu podstawowym magazynem kolejek p
 > * Pobieranie kolejki
 > * Dodawanie komunikatu
 > * Przeczytaj następną wiadomość
-> * Usuń komunikat
+> * Usuwanie wiadomości
 > * Usuwanie kolejki
 
 ### <a name="microsoft-azure-powershell-storage-cmdlets"></a>Polecenia cmdlet Microsoft Azure PowerShell Storage

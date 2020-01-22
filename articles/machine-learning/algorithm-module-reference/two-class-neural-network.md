@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: d8e27d13de6b1ac6940972022f66811eb75c8986
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 9c17cd36d91d113ad59db7b7155c092e4aa7fad1
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73485881"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76315069"
 ---
 # <a name="two-class-neural-network-module"></a>Dwuklasowy moduł sieci neuronowych
 
-W tym artykule opisano moduł w programie Azure Machine Learning Designer (wersja zapoznawcza).
+W tym artykule opisano moduł w programie Azure Machine Learning Designer.
 
 Ten moduł służy do tworzenia modelu sieci neuronowych, który może służyć do przewidywania elementu docelowego, który ma tylko dwie wartości.
 
@@ -82,9 +82,9 @@ Aby obliczyć dane wyjściowe sieci dla konkretnych danych wejściowych, wartoś
 
 Po zakończeniu szkolenia:
 
-+ Aby wyświetlić podsumowanie parametrów modelu wraz z wagami funkcji pochodzącymi z uczenia i innymi parametrami sieci neuronowych, kliknij prawym przyciskiem myszy dane wyjściowe [modelu uczenia](./train-model.md)i wybierz polecenie **Wizualizuj**.  
++ Aby zapisać migawkę przeszkolonego modelu, wybierz kartę dane **wyjściowe** w prawym panelu modułu **uczenie modelu** . Wybierz ikonę **zarejestruj zestaw danych** , aby zapisać model jako moduł wielokrotnego użytku.
 
-+ Aby zapisać migawkę przeszkolonego modelu, kliknij prawym przyciskiem myszy **wyszkolony model** wyjściowy i wybierz pozycję **Zapisz jako model przeszkolony**. Ten model nie jest aktualizowany po kolejnych uruchomieniach tego samego potoku.
++ Aby użyć modelu do oceniania, Dodaj moduł **model oceny** do potoku.
 
 
 ## <a name="next-steps"></a>Następne kroki

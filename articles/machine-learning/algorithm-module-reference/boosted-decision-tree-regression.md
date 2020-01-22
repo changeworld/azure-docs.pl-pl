@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: b04a44a82f793f39b24ffd94083ca8fd5e66cfb8
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 4271a180a0f00ae921de9b8deb9a3e5123f9b519
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493889"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314491"
 ---
 # <a name="boosted-decision-tree-regression-module"></a>Moduł regresji drzewa decyzyjnego
 
-W tym artykule opisano moduł w programie Azure Machine Learning Designer (wersja zapoznawcza).
+W tym artykule opisano moduł w programie Azure Machine Learning Designer.
 
 Ten moduł służy do tworzenia kompletu drzew regresji przy użyciu zwiększania. *Zwiększenie wydajności* oznacza, że każde drzewo jest zależne od wcześniejszych drzew. Algorytm uczy się, instalując resztę drzew, które je poprzedza. W tym celu zwiększenie dokładności w drzewie decyzyjnym pozwala zwiększyć dokładność z mniejszym ryzykiem.  
   
@@ -29,8 +29,6 @@ Ta metoda regresji jest metodą uczenia nadzorowanego i dlatego wymaga *oznaczon
 
 Po zdefiniowaniu modelu nauczenie go przy użyciu [modelu uczenia](./train-model.md).
 
-> [!TIP]
-> Chcesz dowiedzieć się więcej na temat utworzonych drzew? Po przeszkoleniu modelu kliknij prawym przyciskiem myszy dane wyjściowe modułu [uczenie modelu](./train-model.md) i wybierz polecenie **Wizualizacja** , aby zobaczyć drzewo, które zostało utworzone w każdej iteracji. Możesz przejść do szczegółów podziałów dla każdego drzewa i wyświetlić reguły dla każdego węzła.  
   
 ## <a name="more-about-boosted-regression-trees"></a>Więcej informacji o wzmocnionych drzewach regresji  
 
@@ -91,13 +89,9 @@ Metodę zwiększania gradientu można również użyć w przypadku problemów z 
 
 Po zakończeniu szkolenia:
 
-+ Aby zobaczyć drzewo, które zostało utworzone w każdej iteracji, kliknij prawym przyciskiem myszy dane wyjściowe modułu [uczenie modelu](train-model.md) i wybierz polecenie **Wizualizuj**.
-  
-     Kliknij każde drzewo, aby przejść do szczegółów i wyświetlić reguły dla każdego węzła.  
-
 + Aby użyć modelu do oceniania, połącz go z [modelem oceny](./score-model.md), aby przewidzieć wartości dla nowych przykładów wejściowych.
 
-+ Aby zapisać migawkę przeszkolonego modelu, kliknij prawym przyciskiem myszy **przeszkolony model** danych wyjściowych modułu szkoleniowego i wybierz polecenie **Zapisz jako**. Kopia przeszkolonego modelu, który jest zapisywany, nie jest aktualizowana w kolejnych uruchomieniach potoku.
++ Aby zapisać migawkę przeszkolonego modelu, wybierz kartę Output (dane **wyjściowe** ) w prawym panelu **przeszkolonego modelu** i kliknij ikonę **zarejestruj zestaw danych** . Kopia przeszkolonego modelu zostanie zapisana jako moduł w drzewie modułów i nie będzie aktualizowana po kolejnych uruchomieniach potoku.
 
 ## <a name="next-steps"></a>Następne kroki
 

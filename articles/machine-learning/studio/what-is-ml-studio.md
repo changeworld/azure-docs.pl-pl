@@ -11,12 +11,12 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: overview
 ms.date: 10/17/2019
-ms.openlocfilehash: c0dcd8f8f5ecd2d333e610c96ea89a44f8f4c547
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: f3be29dc222e0e9b98ed51d8f921fb9926b018ca
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75528355"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314078"
 ---
 # <a name="what-is-machine-learning-studio-classic"></a>Co to jest Machine Learning Studio (klasyczny)?
 
@@ -38,14 +38,14 @@ Nie jest wymagane programowanie, wizualne łączenie zestawów danych i modułó
 <a name="compare"></a>
 ## <a name="how-does-machine-learning-studio-classic-differ-from-azure-machine-learning"></a>Jak Machine Learning Studio (klasyczny) różni się od Azure Machine Learning?
 
-[Azure Machine Learning](../overview-what-is-azure-ml.md) udostępnia zestawy SDK **i** projektanta Azure Machine Learning (wersja zapoznawcza), aby szybko przygotowywać dane, uczeniować i wdrażać modele uczenia maszynowego. Projektant oferuje podobne środowisko przeciągania i upuszczania do programu Studio (klasyczne). Jednak, w przeciwieństwie do własnościowej platformy obliczeniowej programu Studio (klasycznej), projektant używa własnych zasobów obliczeniowych i jest w pełni zintegrowany z Azure Machine Learning.
+[Azure Machine Learning](../overview-what-is-azure-ml.md) udostępnia zestawy SDK **i** projektanta Azure Machine Learning, aby szybko przygotowywać dane, uczeniować i wdrażać modele uczenia maszynowego. Projektant oferuje podobne środowisko przeciągania i upuszczania do programu Studio (klasyczne). Jednak, w przeciwieństwie do własnościowej platformy obliczeniowej programu Studio (klasycznej), projektant używa własnych zasobów obliczeniowych i jest w pełni zintegrowany z Azure Machine Learning.
 
 Oto krótkie porównanie:
 
 || Usługa Machine Learning Studio (klasyczna) | Azure Machine Learning |
 |---| --- | --- |
-| Przeciąganie i upuszczanie interfejsu | Tak | Tak — [Azure Machine Learning Designer (wersja zapoznawcza)](../concept-designer.md) |
-| Eksperyment | Skalowalne (limit danych szkolenia 10 GB) | Skalowanie za pomocą elementu docelowego obliczeń |
+| Przeciąganie i upuszczanie interfejsu | Tak | Tak — [projektant Azure Machine Learning](../concept-designer.md) |
+| Experiment | Skalowalne (limit danych szkolenia 10 GB) | Skalowanie za pomocą elementu docelowego obliczeń |
 | Moduły dla interfejsu metodą "przeciągnij i upuść" | Ilość | Początkowy zestaw popularnych [modułów](../algorithm-module-reference/module-reference.md)|
 |Szkoleniowe cele obliczeniowe| Własnościowy obiekt docelowy obliczeń, tylko obsługa procesora CPU| Azure Machine Learning obsługuje maszyny wirtualne z maszynami wirtualnymi obliczeniowymi (procesor GPU lub procesor CPU) i notesy.<br/>([Inne obliczenia obsługiwane w zestawie SDK](../concept-compute-target.md#train))|
 |Inferencing cele obliczeń| Własny format usługi sieci Web, niedostosowywalny |  Azure Kubernetes Service i AML COMPUTE <br/>([Inne obliczenia obsługiwane w zestawie SDK](../how-to-deploy-and-where.md)) |

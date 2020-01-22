@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 0936de818303117797e1704f3cecb7f877a3935e
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 723821a78ecae308443c93567402e3b232c036f0
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74206556"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314712"
 ---
 # <a name="use-cloudsimple-private-cloud-site-to-host-a-virtual-desktop-infrastructure-using-vmware-horizon"></a>Używanie lokacji chmury prywatnej CloudSimple do hostowania infrastruktury pulpitów wirtualnych przy użyciu usługi VMware Horizon
 
@@ -47,7 +47,7 @@ W poniższych sekcjach opisano sposób wdrażania rozwiązania VDI przy użyciu 
 ### <a name="estimate-the-size-of-your-desktop-environment"></a>Oszacowanie rozmiaru środowiska pulpitu
 
 * Sprawdź, czy zidentyfikowana konfiguracja mieści się w ramach limitów operacyjnych programu VMware.
-* Należy oszacować zasoby, które są konieczne w witrynie odzyskiwania po awarii, aby chronić środowisko lokalne.
+* Oszacuj zasoby, które są zbędne dla wszystkich pulpitów i składników zarządzania horyzontem.
 
 ### <a name="create-a-private-cloud-for-your-environment"></a>Tworzenie chmury prywatnej dla środowiska
 

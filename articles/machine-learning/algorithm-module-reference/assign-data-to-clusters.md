@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 11/19/2019
-ms.openlocfilehash: dd8b23f92f5b24101a7d42ca65f5835a8d4e9ff2
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 1dd88eaa9c92a4f8ff5d491da950f7bb1cc48c20
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74214554"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314508"
 ---
 # <a name="module-assign-data-to-clusters"></a>Moduł: przypisywanie danych do klastrów
 
-W tym artykule opisano sposób korzystania z modułu *przypisywanie danych do klastrów* w programie Azure Machine Learning Designer (wersja zapoznawcza). Moduł generuje przewidywania za pośrednictwem modelu klastrowania, który został przeszkolony przy użyciu *tego algorytmu.*
+W tym artykule opisano sposób korzystania z modułu *przypisywanie danych do klastrów* w programie Azure Machine Learning Designer. Moduł generuje przewidywania za pośrednictwem modelu klastrowania, który został przeszkolony przy użyciu *tego algorytmu.*
 
 Moduł przypisz dane do klastrów zwraca zestaw danych, który zawiera prawdopodobne przypisania dla każdego nowego punktu danych. 
 
@@ -47,5 +47,5 @@ Moduł przypisz dane do klastrów zwraca zestaw danych, który zawiera prawdopod
   
 ### <a name="results"></a>Wyniki
 
-+  Aby wyświetlić wartości w zestawie danych, kliknij prawym przyciskiem myszy moduł, wybierz pozycję **zestawy danych wynikowych**, a następnie wybierz polecenie **Wizualizuj**.
++  Aby wyświetlić wartości w zestawie danych, kliknij prawym przyciskiem myszy moduł, a następnie wybierz polecenie **Wizualizuj**. Lub wybierz moduł i przejdź do karty dane **wyjściowe** w prawym panelu, kliknij ikonę histogramu w danych **wyjściowych portu** , aby wizualizować wynik.
 

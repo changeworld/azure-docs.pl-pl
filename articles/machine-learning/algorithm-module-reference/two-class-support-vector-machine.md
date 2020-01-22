@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: 0ab4a0ebf2844d064e40c8417ab22162d2d0ded6
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: ca47bed45f8d726010dde40a936da6f93eb0b140
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73485863"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76315018"
 ---
 # <a name="two-class-support-vector-machine-module"></a>Moduł maszyny wektorowej obsługujący dwie klasy
 
-W tym artykule opisano moduł w programie Azure Machine Learning Designer (wersja zapoznawcza).
+W tym artykule opisano moduł w programie Azure Machine Learning Designer.
 
 Ten moduł służy do tworzenia modelu opartego na algorytmie maszyny wektorowej obsługi. 
 
@@ -66,16 +66,15 @@ W przypadku tego typu modelu zaleca się normalizowanie zestawu danych przed uż
   
     -   W przypadku ustawienia opcji **Utwórz tryb Trainer** na **pojedynczy parametr**Użyj modułu [uczenie modelu](train-model.md) .
   
-
 10. Uruchamianie potoku.
 
 ## <a name="results"></a>Wyniki
 
 Po zakończeniu szkolenia:
 
-+ Aby wyświetlić podsumowanie parametrów modelu wraz z wagami funkcji zdobywanymi od szkoleń, kliknij prawym przyciskiem myszy dane wyjściowe [modelu uczenia](./train-model.md)i wybierz polecenie **Wizualizuj**.
++ Aby zapisać migawkę przeszkolonego modelu, wybierz kartę dane **wyjściowe** w prawym panelu modułu **uczenie modelu** . Wybierz ikonę **zarejestruj zestaw danych** , aby zapisać model jako moduł wielokrotnego użytku.
 
-+ Aby wykorzystać przeszkolone modele do prognozowania, Połącz model przeszkolony z modułem [modelu oceny](score-model.md) .
++ Aby użyć modelu do oceniania, Dodaj moduł **model oceny** do potoku.
 
 
 ## <a name="next-steps"></a>Następne kroki

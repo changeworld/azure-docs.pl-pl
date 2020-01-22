@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: 55981279cb1902424d1a0f77af097dc379d7222f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e5e1390cb45fc6f659883ddfc8624719e45f99ce
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493961"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314593"
 ---
 # <a name="add-columns-module"></a>Dodawanie modułu kolumn
 
-W tym artykule opisano moduł w programie Azure Machine Learning Designer (wersja zapoznawcza).
+W tym artykule opisano moduł w programie Azure Machine Learning Designer.
 
 Ten moduł służy do łączenia dwóch zestawów danych. Wszystkie kolumny z dwóch zestawów danych, które można określić jako dane wejściowe, są łączone w celu utworzenia jednego elementu DataSet. Jeśli musisz połączyć więcej niż dwa zestawy danych, użyj kilku wystąpień **Dodaj kolumny**.
 
@@ -38,11 +38,11 @@ Ten moduł służy do łączenia dwóch zestawów danych. Wszystkie kolumny z dw
 ### <a name="results"></a>Wyniki
 Po uruchomieniu potoku:
 
-- Aby wyświetlić pierwsze wiersze nowego zestawu danych, kliknij prawym przyciskiem myszy dane wyjściowe polecenia **Dodaj kolumny** i wybierz polecenie Wizualizuj.
+- Aby wyświetlić pierwsze wiersze nowego zestawu danych, kliknij prawym przyciskiem myszy moduł **Dodaj kolumny** i wybierz polecenie Wizualizuj. Lub wybierz moduł i przejdź do karty dane **wyjściowe** w prawym panelu, kliknij ikonę histogramu w danych **wyjściowych portu** , aby wizualizować wynik.
 
 Liczba kolumn w nowym zestawie danych jest równa sumie kolumn obu wejściowych zestawów danych.
 
-Jeśli istnieją dwie kolumny o tej samej nazwie w wejściowych zestawach danych, do nazwy kolumny zostanie dodany sufiks liczbowy. Na przykład jeśli istnieją dwa wystąpienia kolumny o nazwie TargetOutcome, po lewej stronie zostanie zmieniona nazwa TargetOutcome_1, a prawa kolumna zostanie zmieniona na TargetOutcome_2.
+Jeśli istnieją dwie kolumny o tej samej nazwie w wejściowych zestawach danych, do nazwy kolumny zostanie dodany sufiks liczbowy. Na przykład jeśli istnieją dwa wystąpienia kolumny o nazwie TargetOutcome, po lewej kolumnie zostanie zmieniona nazwa TargetOutcome_1 a prawa kolumna zostanie zmieniona TargetOutcome_2.
 
 ## <a name="next-steps"></a>Następne kroki
 

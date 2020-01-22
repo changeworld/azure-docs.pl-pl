@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: 7c4d62c19984e1316a01213f579c059b97f709c3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 509b82596ce4819152fcd8d0bc202df186a20095
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497933"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314848"
 ---
 # <a name="enter-data-manually-module"></a>Wprowadź ręcznie moduł danych
 
-W tym artykule opisano moduł w programie Azure Machine Learning Designer (wersja zapoznawcza).
+W tym artykule opisano moduł w programie Azure Machine Learning Designer.
 
 Ten moduł służy do tworzenia małego zestawu danych przez wpisanie wartości. Zestaw danych może mieć wiele kolumn.
   
@@ -97,9 +97,9 @@ Ten moduł może być przydatny w następujących scenariuszach:
   
      W przypadku tworzenia wierszy z brakującymi wartościami można zawsze odfiltrować je w późniejszym czasie.  
   
-5.  Kliknij prawym przyciskiem myszy moduł i wybierz pozycję **Uruchom wybrane** , aby przeanalizować dane i załadować je do obszaru roboczego jako zestaw danych.  
+5.  Połącz port wyjściowy z innymi modułami i uruchom potok.  
   
-     Aby wyświetlić zestaw danych, kliknij port wyjściowy i wybierz polecenie **Wizualizuj**.  
+     Aby wyświetlić zestaw danych, kliknij prawym przyciskiem myszy moduł i wybierz polecenie **Wizualizuj**.  
 ## <a name="next-steps"></a>Następne kroki
 
 Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) do Azure Machine Learning. 

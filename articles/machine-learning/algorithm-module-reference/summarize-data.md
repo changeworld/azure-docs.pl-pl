@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
-ms.openlocfilehash: 80e2acf08960796ccb2f3ad87c16674e477c9c00
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a037c959b44a6216724c285f932250b1b05cb509
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428451"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76313750"
 ---
 # <a name="summarize-data"></a>Podsumowywanie danych
 
-W tym artykule opisano moduł programu Azure Machine Learning Designer (wersja zapoznawcza).
+W tym artykule opisano moduł programu Azure Machine Learning Designer.
 
 Moduł podsumowujące dane służy do tworzenia zestawu standardowych miar statystycznych, które opisują poszczególne kolumny w tabeli wejściowej.
 
@@ -40,7 +40,7 @@ Moduł oblicza ważne wyniki dla każdej kolumny i zwraca wiersz statystyk podsu
 
 1. Nie są wymagane żadne dodatkowe parametry. Domyślnie moduł analizuje wszystkie kolumny, które są dostarczane jako dane wejściowe, i w zależności od typu wartości w kolumnach, wyprowadza odpowiedni zestaw statystyk zgodnie z opisem w sekcji [wyniki](#results) .
 
-1. Uruchom potok lub kliknij prawym przyciskiem myszy moduł, a następnie wybierz pozycję **Uruchom wybrane**.
+1. Uruchamianie potoku.
 
 ## <a name="results"></a>Wyniki
 

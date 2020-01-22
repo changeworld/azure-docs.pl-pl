@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 11/19/2019
+ms.date: 01/22/2020
 ms.author: victorh
-ms.openlocfilehash: 1267b3295762f6eb6af92b1cec909bae768886c1
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 89c6700d5df3bcef1332121c3cf7d8f720fe054c
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75974505"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76315035"
 ---
 # <a name="azure-firewall-logs-and-metrics"></a>Dzienniki i metryki usługi Azure Firewall
 
@@ -103,17 +103,19 @@ Następujące metryki są dostępne dla zapory platformy Azure:
 
     Jednostka: bajty
 
-- **Stan kondycji zapory** — wskazuje na kondycję zapory.
+- **Stan kondycji zapory** — wskazuje na kondycję zapory na podstawie dostępności portu.
 
     Jednostka: procent
 
    Ta Metryka ma dwa wymiary:
-  - **Stan**: możliwe wartości są *zdrowe*, *w*złej *kondycji*.
-  - **Przyczyna**: wskazuje przyczynę odpowiedniego stanu zapory. Na przykład może wskazywać porty z podłączaniem *adresów sieciowych* , jeśli stan zapory jest negatywny lub w złej kondycji.
+  - Stan: możliwe wartości są *zdrowe*, *w*złej *kondycji*.
+  - Przyczyna: wskazuje przyczynę odpowiedniego stanu zapory. 
 
+     W przypadku używania portów podłączania adresów sieciowych > 95%, są one uznawane za wyczerpane, a kondycja wynosi 50% ze stanem o**obniżonym obniżyć** i Przyczyna =**port**. Zapora ciągle przetwarza ruch, a istniejące połączenia nie mają na nie oddziaływać. Jednak nowe połączenia mogą nie być ustanawiane sporadycznie.
 
+     Jeśli porty źródłowego translatora adresów sieciowych są używane < 95%, Zapora jest uznawana za w dobrej kondycji, a kondycja jest wyświetlana jako 100%.
 
-
+     Jeśli nie zgłoszono użycia portów ze współdziałaniem, kondycja jest wyświetlana jako 0%. 
 
 - **Wykorzystanie portów** przez przystawkę adresów sieciowych — wartość procentowa portów, które zostały wykorzystane przez zaporę.
 

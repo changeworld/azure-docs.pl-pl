@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: 19385870d184654d902cd40b45d4be3646c87b46
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a48ce60dca9f4221e364d53567f5b53719deb18c
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493903"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314525"
 ---
-# <a name="apply-transformation-module"></a>Zastosuj moduł transformacji
+# <a name="apply-transformation-module"></a>Zastosuj przekształcenie modułu
 
-W tym artykule opisano moduł w programie Azure Machine Learning Designer (wersja zapoznawcza).
+W tym artykule opisano moduł w programie Azure Machine Learning Designer.
 
 Ten moduł służy do modyfikowania wejściowego zestawu danych na podstawie wcześniej obliczonego przekształcenia.  
   

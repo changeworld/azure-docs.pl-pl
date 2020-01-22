@@ -4,15 +4,15 @@ description: W tym przewodniku szybki start pokazano, jak rozpocząć pracę prz
 ms.service: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-ms.date: 09/16/2019
+ms.date: 01/18/2020
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: d95a3334fe5a7767446c92f8f8668e4da09fca42
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: e3e878b4f548da64ab04eb079d51b0846cf35c57
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76169854"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76313879"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-in-visual-studio-code-preview"></a>Szybki Start: Tworzenie zadania Azure Stream Analytics w Visual Studio Code (wersja zapoznawcza)
 

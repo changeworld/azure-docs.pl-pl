@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: 379cddd9654cc897b49fd085d8df55fcd77a7ce8
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b4180fced60c4a9f2402253c7c3b3d3ff97fe1e1
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73490351"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314610"
 ---
 # <a name="two-class-averaged-perceptron-module"></a>Moduł Perceptron o średniej klasie
 
-W tym artykule opisano moduł w programie Azure Machine Learning Designer (wersja zapoznawcza).
+W tym artykule opisano moduł w programie Azure Machine Learning Designer.
 
 Ten moduł służy do tworzenia modelu uczenia maszynowego na podstawie średniego algorytmu Perceptron.  
   
@@ -52,11 +52,7 @@ Prostsze modele Perceptron są odpowiednie do uczenia się liniowo oddzielnych w
   
     -   W przypadku ustawienia opcji **Utwórz tryb Trainer** na **pojedynczy parametr**Użyj modułu [uczenie modelu](train-model.md) .
 
-## <a name="results"></a>Wyniki
 
-Po zakończeniu szkolenia:
-
-+ Aby wyświetlić podsumowanie parametrów modelu wraz z wagami funkcji zdobywanymi od szkoleń, kliknij prawym przyciskiem myszy dane wyjściowe [modelu uczenia](./train-model.md).
 
 
 ## <a name="next-steps"></a>Następne kroki

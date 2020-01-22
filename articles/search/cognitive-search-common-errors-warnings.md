@@ -8,12 +8,12 @@ ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 74d209adf745d1a3c319ef6567b2a7818a5fd514
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 9cf3bcc514118c7f8052981c39023d6cac361d22
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76152260"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314729"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>Rozwiązywanie problemów z typowymi błędami indeksatora i ostrzeżeniami w usłudze Azure Wyszukiwanie poznawcze
 
@@ -167,6 +167,11 @@ Dokument został odczytany i przetworzony, ale z powodu niezgodności konfigurac
 We wszystkich tych przypadkach należy zapoznać się z [obsługiwanymi typami danych](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) i [mapą typów danych dla indeksatorów](https://docs.microsoft.com/rest/api/searchservice/data-type-map-for-indexers-in-azure-search) , aby upewnić się, że schemat indeksu jest prawidłowo skonstruowany i skonfigurowano odpowiednie [mapowania pól indeksatora](search-indexer-field-mappings.md). Komunikat o błędzie będzie zawierać szczegóły, które mogą pomóc w śledzeniu źródła niezgodności.
 
 <a name="could-not-process-document-within-indexer-max-run-time"/>
+
+## <a name="error-integrated-change-tracking-policy-cannot-be-used-because-table-has-a-composite-primary-key"></a>Błąd: nie można użyć zintegrowanych zasad śledzenia zmian, ponieważ tabela zawiera złożony klucz podstawowy
+
+Dotyczy to tabel SQL i zwykle ma miejsce, gdy klucz jest zdefiniowany jako klucz złożony lub, gdy tabela ma zdefiniowany unikatowy indeks klastrowany (jak w indeksie SQL, a nie indeks Azure Search). Głównym powodem jest to, że atrybut klucza jest modyfikowany jako złożony klucz podstawowy w przypadku [unikatowego indeksu klastrowanego](https://docs.microsoft.com/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described?view=sql-server-ver15). W takim przypadku upewnij się, że tabela SQL nie ma unikatowego indeksu klastrowanego lub że pole klucza zostało zamapowane na pole, które nie ma zduplikowanych wartości.
+
 
 ## <a name="error-could-not-process-document-within-indexer-max-run-time"></a>Błąd: nie można przetworzyć dokumentu w maksymalnym czasie wykonywania indeksatora
 

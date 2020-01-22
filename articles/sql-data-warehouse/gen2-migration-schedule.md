@@ -9,14 +9,14 @@ manager: craigg
 ms.assetid: 04b05dea-c066-44a0-9751-0774eb84c689
 ms.service: sql-data-warehouse
 ms.topic: article
-ms.date: 07/22/2019
+ms.date: 01/21/2020
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 888f50d645c9b3babf95335e434db65423108ccb
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 3f793fd68c83f90b87182647eef47a07eb452f45
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73693041"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314780"
 ---
 # <a name="upgrade-your-data-warehouse-to-gen2"></a>Uaktualnij magazyn danych do Gen2
 
@@ -33,41 +33,12 @@ Poniższa tabela podsumowuje według regionu, gdy dolna warstwa obliczeniowa Gen
 
 | **Region** | **Dolna Gen2 dostępna** | **Rozpoczęcie uaktualniania automatycznego** |
 |:--- |:--- |:--- |
-| Australia Wschodnia |Dostępne |Zakończ |
-| Australia Południowo-Wschodnia |Dostępne |Zakończ |
-| Brazylia Południowa |Dostępne |Zakończ |
-| Kanada Środkowa |Dostępne |Zakończ |
 | Kanada Wschodnia |1 czerwca 2020 |1 lipca 2020 |
-| Środkowe stany USA |Dostępne |Zakończ |
 | Chiny Wschodnie |\* |\* |
-| Chiny Wschodnie 2 |Dostępne |Zakończ |
 | Chiny Północne |\* |\* |
-| Chiny Północne 2 |Dostępne |Zakończ |
-| Azja Wschodnia |Dostępne |Zakończ |
-| Wschodnie stany USA |Dostępne |Zakończ |
-| Wschodnie stany USA 2 |Dostępne |Zakończ |
-| Francja Środkowa |Dostępne |W toku |
 | Niemcy Środkowe |\* |\* |
-| Niemcy Środkowo-Zachodnie |1 września 2019|1 października 2019 |
-| Indie Środkowe |Dostępne |Zakończ |
-| Indie Południowe |Dostępne |Zakończ |
-| Indie Zachodnie |1 lipca 2019 |W toku |
-| Japonia Wschodnia |Dostępne |Zakończ |
-| Japonia Zachodnia |Dostępne |Zakończ |
-| Korea Środkowa |Dostępne |Zakończ |
-| Korea Południowa |Dostępne |Zakończ |
-| Środkowo-północne stany USA |Dostępne |Zakończ |
-| Europa Północna |Dostępne |Zakończ |
-| Północna Republika Południowej Afryki |12 lipca 2019 |Zakończ |
-| Środkowo-południowe stany USA |Dostępne |Zakończ |
-| Azja Południowo-Wschodnia |Dostępne |Zakończ |
-| Północne Zjednoczone Emiraty Arabskie |20 lipca 2019 |Zakończ |
-| Południowe Zjednoczone Królestwo |Dostępne |W toku |
-| Zachodnie Zjednoczone Królestwo |Dostępne |W toku |
-| Środkowo-zachodnie stany USA |1 listopada 2019 |1 grudnia 2019|
-| Europa Zachodnia |Dostępne |Zakończ |
-| Zachodnie stany USA |Dostępne |Zakończ |
-| Zachodnie stany USA 2 |Dostępne |Zakończ |
+| Niemcy Środkowo-Zachodnie |Dostępna |1 maja 2020 |
+| Indie Zachodnie |Dostępna |1 maja 2020  |
 
 ## <a name="automatic-upgrade-process"></a>Proces automatycznego uaktualniania
 
@@ -135,7 +106,7 @@ Aby uzyskać więcej informacji, zobacz [uaktualnianie do Gen2](upgrade-to-lates
 - Odp.: Jeśli używasz wartości DW600 lub DW1200 na Gen1, zaleca się użycie odpowiednio DW500c lub DW1000c, ponieważ Gen2 oferuje więcej pamięci, zasobów i wyższą wydajność niż Gen1.
 
 **P: Czy można wyłączyć geograficzną kopię zapasową?**
-- Odp.: nie. Geograficzna kopia zapasowa to funkcja korporacyjna, która pozwala zachować dostępność magazynu danych w przypadku, gdy region staną się niedostępne. Otwórz [żądanie pomocy technicznej](sql-data-warehouse-get-started-create-support-ticket.md) , jeśli chcesz uzyskać więcej problemów.
+- Odpowiedź: nie. Geograficzna kopia zapasowa to funkcja korporacyjna, która pozwala zachować dostępność magazynu danych w przypadku, gdy region staną się niedostępne. Otwórz [żądanie pomocy technicznej](sql-data-warehouse-get-started-create-support-ticket.md) , jeśli chcesz uzyskać więcej problemów.
 
 **P: czy istnieje różnica w składni T-SQL między Gen1 i Gen2?**
 
@@ -147,7 +118,7 @@ Aby uzyskać więcej informacji, zobacz [uaktualnianie do Gen2](upgrade-to-lates
 
 **P: czy będzie można utworzyć nowe wystąpienie Gen1 po uaktualnieniu mojego regionu?**
 
-- Odp.: nie. Po uaktualnieniu regionu tworzenie nowych wystąpień Gen1 zostanie wyłączone.
+- Odpowiedź: nie. Po uaktualnieniu regionu tworzenie nowych wystąpień Gen1 zostanie wyłączone.
 
 ## <a name="next-steps"></a>Następne kroki
 

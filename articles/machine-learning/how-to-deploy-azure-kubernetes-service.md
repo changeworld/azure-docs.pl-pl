@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 01/16/2020
-ms.openlocfilehash: 78903d8f988efc1b0986f7e48050e63831b68319
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 32a1ac971edb55c6e162f02b60042056cd0fee0f
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76156832"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76315052"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Wdrażanie modelu w klastrze usługi Azure Kubernetes Service
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -115,7 +115,7 @@ Aby uzyskać więcej informacji, zobacz [AZ ml computetarget Create AKS](https:/
 
 **Szacowany czas:** Około 5 minut.
 
-Jeśli klaster AKS jest już w ramach subskrypcji platformy Azure i jest w wersji 1,16 lub niższej, można go użyć do wdrożenia obrazu.
+Jeśli klaster AKS jest już w ramach subskrypcji platformy Azure i jest w wersji 1,17 lub niższej, można go użyć do wdrożenia obrazu.
 
 > [!TIP]
 > Istniejący klaster AKS może znajdować się w regionie świadczenia usługi Azure innym niż obszar roboczy Azure Machine Learning.
@@ -251,9 +251,9 @@ endpoint_name = "mynewendpoint",
 version_name= "versiona",
 # create the deployment config and define the scoring traffic percentile for the first deployment
 endpoint_deployment_config = AksEndpoint.deploy_configuration(cpu_cores = 0.1, memory_gb = 0.2,
-                                                              enable_app_insights = true,
+                                                              enable_app_insights = True,
                                                               tags = {'sckitlearn':'demo'},
-                                                              decription = testing versions,
+                                                              description = "testing versions",
                                                               version_name = version_name,
                                                               traffic_percentile = 20)
  # deploy the model and endpoint

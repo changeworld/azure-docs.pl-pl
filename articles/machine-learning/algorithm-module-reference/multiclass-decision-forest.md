@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: 85459fe586ccbb5adb1e86b153ec63252c0cce2d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: f100271162d20f5d13033efcd04bfa20081b6073
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466023"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314661"
 ---
 # <a name="multiclass-decision-forest-module"></a>Wieloklasowy moduł lasu decyzyjnego
 
-W tym artykule opisano moduł w programie Azure Machine Learning Designer (wersja zapoznawcza).
+W tym artykule opisano moduł w programie Azure Machine Learning Designer.
 
 Ten moduł służy do tworzenia modelu uczenia maszynowego na podstawie algorytmu *lasu decyzyjnego* . Las decyzyjny jest modelem modelu, który szybko kompiluje szereg drzew decyzyjnych, a jednocześnie uczenie się na podstawie oznakowanych danych.
 
@@ -76,12 +76,6 @@ Klasyfikator lasu decyzyjnego w Azure Machine Learning składa się z części d
 
 11. Uruchamianie potoku.
 
-## <a name="results"></a>Wyniki
-
-Po zakończeniu szkolenia:
-
-+ Aby zobaczyć drzewo, które zostało utworzone w każdej iteracji, kliknij prawym przyciskiem myszy dane wyjściowe modułu [uczenie modelu](./train-model.md) i wybierz polecenie **Wizualizuj**.
-+ Aby wyświetlić reguły dla każdego węzła, kliknij każde drzewo, aby przejść do szczegółów podziałów.
 
 
 ## <a name="next-steps"></a>Następne kroki

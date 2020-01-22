@@ -9,12 +9,12 @@ ms.date: 12/20/2019
 ms.author: normesta
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 7a0cf3c41929eb6a020a9d4761b08a2a4f2f6caa
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 69983502fb7d099f474fb1c4c084f5d381a173e9
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75460389"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314763"
 ---
 # <a name="end-to-end-troubleshooting-using-azure-storage-metrics-and-logging-azcopy-and-message-analyzer"></a>Kompleksowe Rozwiązywanie problemów przy użyciu metryk usługi Azure Storage i rejestrowania, AzCopy i analizatora komunikatów
 
@@ -143,10 +143,10 @@ Aby uzyskać więcej informacji na temat dodawania i dostosowywania wykresów me
 
 Usługa Azure Storage zapisuje dane dziennika serwera w obiektach Blob, natomiast metryki są zapisywane w tabelach. Obiekty blob dzienników są dostępne w dobrze znanym kontenerze `$logs` dla konta magazynu. Obiekty blob dziennika są nazywane hierarchicznie według roku, miesiąca, dnia i godziny, dzięki czemu można łatwo zlokalizować zakres czasu, który chcesz zbadać. Na przykład na koncie `storagesample` kontener dla obiektów BLOB dziennika dla 01/02/2015, od 8-9 am, jest `https://storagesample.blob.core.windows.net/$logs/blob/2015/01/08/0800`. Poszczególne obiekty blob w tym kontenerze są nazywane sekwencyjnie, zaczynając od `000000.log`.
 
-Możesz użyć narzędzia wiersza polecenia AzCopy, aby pobrać te pliki dzienników po stronie serwera do wybranej lokalizacji na komputerze lokalnym. Na przykład można użyć poniższego polecenia, aby pobrać pliki dziennika dla operacji obiektów blob, które miały miejsce 2 stycznia 2015 do folderu `C:\Temp\Logs\Server`; Zastąp `<storageaccountname>` nazwą konta magazynu, a `<storageaccountkey>` z kluczem dostępu do konta:
+Możesz użyć narzędzia wiersza polecenia AzCopy, aby pobrać te pliki dzienników po stronie serwera do wybranej lokalizacji na komputerze lokalnym. Na przykład można użyć poniższego polecenia, aby pobrać pliki dziennika dla operacji obiektów blob, które miały miejsce 2 stycznia 2015 do folderu `C:\Temp\Logs\Server`; Zastąp `<storageaccountname>` nazwą konta magazynu:
 
 ```azcopy
-AzCopy.exe /Source:http://<storageaccountname>.blob.core.windows.net/$logs /Dest:C:\Temp\Logs\Server /Pattern:"blob/2015/01/02" /SourceKey:<storageaccountkey> /S /V
+azcopy copy 'http://<storageaccountname>.blob.core.windows.net/$logs/blob/2015/01/02' 'C:\Temp\Logs\Server'  --recursive
 ```
 
 AzCopy jest dostępna do pobrania na stronie [pliki do pobrania na platformie Azure](https://azure.microsoft.com/downloads/) . Aby uzyskać szczegółowe informacje na temat korzystania z AzCopy, zobacz [transfer danych za pomocą narzędzia wiersza polecenia AzCopy](storage-use-azcopy.md).
