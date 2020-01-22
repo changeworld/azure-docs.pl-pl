@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: diberry
-ms.openlocfilehash: eb3e473535c394818772ac949808023254087555
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 21afb12bf2464218119ebf52ebd980745e3d731d
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75448049"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311720"
 ---
 # <a name="how-to-add-patterns-to-improve-prediction-accuracy"></a>Jak dodać wzorce, aby poprawić dokładność przewidywania
 Gdy aplikacja LUIS otrzymuje punkt końcowy wyrażenia długości, użyj [wzorca](luis-concept-patterns.md) , aby poprawić dokładność przewidywania dla wyrażenia długości, które ujawnia wzorzec w kolejności słów i wyborze wyrazu. Wzorce używają określonej [składni](luis-concept-patterns.md#pattern-syntax) , aby wskazać lokalizację: [jednostki](luis-concept-entity-types.md), [role](luis-concept-roles.md)jednostek i tekst opcjonalny.
@@ -42,7 +42,7 @@ Jeśli chcesz dodać wzorzec dla jednostki, _najprostszym_ sposobem jest utworze
     > [!div class="mx-imgBorder"]
     > ![zrzut ekranu przedstawiający przykładowy przykład wypowiedź jako wzorzec szablonu na stronie Szczegóły intencji.](./media/luis-how-to-model-intent-pattern/confirm-patterns-from-example-utterance-intent-detail-page.png)
 
-1. Jeśli musisz edytować szablon, na przykład wybierając opcję tekst jako opcjonalny, z nawiasami `[]` (kwadratowymi), musisz wprowadzić tę edycję na stronie **wzorce** .
+1. Jeśli musisz edytować szablon, na przykład wybierając opcję tekst jako opcjonalny, przy użyciu nawiasów `[]` (kwadratowych), musisz wprowadzić tę edycję ze strony **wzorców** .
 
 1. Na pasku nawigacyjnym wybierz pozycję **szkolenie** , aby nauczyć aplikację z nowym wzorcem.
 

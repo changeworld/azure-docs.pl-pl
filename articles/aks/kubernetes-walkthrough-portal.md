@@ -5,15 +5,15 @@ services: container-service
 author: mlearned
 ms.service: container-service
 ms.topic: quickstart
-ms.date: 5/31/2019
+ms.date: 01/21/2020
 ms.author: mlearned
 ms.custom: mvc, seo-javascript-october2019
-ms.openlocfilehash: 89bb7014ddb04b63a83dc8c5b520bcf500bdc707
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b0269a6c710fe16271e333a1e9414208b278a93d
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73472729"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310207"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-portal"></a>Szybki Start: Wdrażanie klastra usługi Azure Kubernetes Service (AKS) przy użyciu Azure Portal
 
@@ -33,7 +33,7 @@ Zaloguj się do witryny Azure Portal pod adresem https://portal.azure.com.
 
 Aby utworzyć klaster usługi AKS, wykonaj następujące czynności:
 
-1. W menu Azure Portal lub na stronie **głównej** wybierz pozycję **Utwórz zasób**.
+1. W menu witryny Azure Portal lub na **stronie głównej** wybierz pozycję **Utwórz zasób**.
 
 2. Wybierz **kontenery** >  **usługę Kubernetes**.
 
@@ -95,7 +95,7 @@ Plik manifestu platformy Kubernetes definiuje żądany stan klastra, w tym infor
 > [!TIP]
 > W tym przewodniku Szybki start ręcznie utworzysz i wdrożysz manifesty aplikacji w klastrze AKS. W bardziej rzeczywistych scenariuszach możesz użyć [Azure dev Spaces][azure-dev-spaces] , aby szybko iterować i debugować kod bezpośrednio w klastrze AKS. Obszarów Dev Spaces można używać na różnych platformach systemów operacyjnych i w środowiskach deweloperskich, aby pracować razem z innymi członkami zespołu.
 
-W usłudze Cloud Shell Użyj `nano` lub `vi`, aby utworzyć plik o nazwie `azure-vote.yaml` i skopiuj go do następującej definicji YAML:
+W usłudze Cloud Shell Użyj polecenia `nano azure-vote.yaml` lub `vi azure-vote.yaml`, aby utworzyć plik o nazwie `azure-vote.yaml`. Następnie skopiuj w następującej definicji YAML:
 
 ```yaml
 apiVersion: apps/v1

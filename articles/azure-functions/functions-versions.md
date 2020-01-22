@@ -3,12 +3,12 @@ title: Przegląd wersji środowiska uruchomieniowego Azure Functions
 description: Azure Functions obsługuje wiele wersji środowiska uruchomieniowego. Poznaj różnice między nimi i wybierz odpowiedni dla siebie.
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.openlocfilehash: 88c151149d1d960746ff449819d31e8b32d98120
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 0138af15c89a4792b9ccb73a8b761577fad36c5e
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75921866"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76290380"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Przegląd wersji środowiska uruchomieniowego Azure Functions
 
@@ -143,7 +143,7 @@ W programie Visual Studio podczas tworzenia projektu wybierana jest wersja środ
 ```
 
 > [!NOTE]
-> Azure Functions 3. x i .NET wymaga, aby rozszerzenie `Microsoft.Sdk.NET.Functions` było przynajmniej `3.0.0`.
+> Azure Functions 3. x i .NET wymaga, aby rozszerzenie `Microsoft.NET.Sdk.Functions` było przynajmniej `3.0.0`.
 
 ###### <a name="updating-2x-apps-to-3x-in-visual-studio"></a>Aktualizowanie aplikacji 2. x na 3. x w programie Visual Studio
 

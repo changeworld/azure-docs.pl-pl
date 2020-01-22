@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 10/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cb2da2214cd5fab378368a363e6f18e02626b9d8
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: dfa07b3df7071ed99a02b854ff41ad6a5137c8dc
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72373098"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76292845"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-figma"></a>Samouczek: Azure Active Directory integracji logowania jednokrotnego (SSO) z usługą Figma
 
@@ -92,7 +92,7 @@ Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure 
     W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://www.figma.com/saml/<TENANT ID>/start`
 
     > [!NOTE]
-    > Te wartości nie są prawdziwe. Należy je zastąpić rzeczywistymi wartościami identyfikatora, adresu URL odpowiedzi i adresu URL logowania. Uzyskasz `TENANT ID` od kroku 11 Figma artykułu [konfigurowanie Azure Active Directory procesu rejestracji jednokrotnej protokołu SAML](https://help.figma.com/article/243-configure-azure-active-directory-saml-sso).
+    > Te wartości nie są prawdziwe. Należy je zastąpić rzeczywistymi wartościami identyfikatora, adresu URL odpowiedzi i adresu URL logowania. Otrzymasz `TENANT ID` od kroku 11 Figma artykułu [konfigurowanie Azure Active Directory procesu rejestracji jednokrotnej protokołu SAML](https://help.figma.com/hc/en-us/articles/360040532413-Configure-and-Provision-SAML-SSO-with-Azure-Active-Directory).
 
 1. Aplikacja Figma oczekuje asercji SAML w określonym formacie, który wymaga dodania mapowań atrybutów niestandardowych do konfiguracji atrybutów tokenów języka SAML. Poniższy zrzut ekranu przedstawia listę atrybutów domyślnych.
 
@@ -146,7 +146,7 @@ W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotn
 
 ## <a name="configure-figma-sso"></a>Konfigurowanie logowania jednokrotnego Figma
 
-Aby skonfigurować Logowanie jednokrotne na stronie Figma, należy postępować zgodnie z artykułem Figma [Konfigurowanie procesu rejestracji jednokrotnej protokołu SAML Azure Active Directory](https://help.figma.com/article/243-configure-azure-active-directory-saml-sso).
+Aby skonfigurować Logowanie jednokrotne na stronie Figma, należy postępować zgodnie z artykułem Figma [Konfigurowanie procesu rejestracji jednokrotnej protokołu SAML Azure Active Directory](https://help.figma.com/hc/en-us/articles/360040532413-Configure-and-Provision-SAML-SSO-with-Azure-Active-Directory).
 
 ### <a name="create-figma-test-user"></a>Tworzenie użytkownika testowego aplikacji Figma
 

@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: 43565a72ce795c4ee0142ec48c13842a8c43e604
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e4e09ca77de00b7f189db2cbbcaca2e090dd7e72
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428522"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311635"
 ---
 # <a name="filter-based-feature-selection"></a>Wybór funkcji oparty na filtrze
 
-W tym artykule opisano, jak używać modułu wyboru funkcji opartego na filtrze w programie Azure Machine Learning Designer (wersja zapoznawcza). Ten moduł pomaga identyfikować kolumny w wejściowym zestawie danych, które mają największą siłę predykcyjną. 
+W tym artykule opisano, jak używać modułu wyboru funkcji opartego na filtrze w programie Azure Machine Learning Designer. Ten moduł pomaga identyfikować kolumny w wejściowym zestawie danych, które mają największą siłę predykcyjną. 
 
 Ogólnie rzecz biorąc, *wybór funkcji* odnosi się do procesu zastosowania testów statystycznych do danych wejściowych, z uwzględnieniem określonych danych wyjściowych. Celem jest określenie, które kolumny są bardziej predykcyjne w danych wyjściowych. Moduł wyboru funkcji oparty na filtrze zawiera wiele algorytmów wyboru funkcji do wyboru. Moduł zawiera metody korelacji, takie jak korelacja Pearsona i wartości chi-kwadrat. 
 
@@ -97,9 +97,9 @@ Wybierasz standardową metrykę statystyczną. Moduł oblicza korelację między
 
 Po zakończeniu przetwarzania:
 
-+ Aby wyświetlić pełną listę przeanalizowanych kolumn funkcji i ich ocen, kliknij prawym przyciskiem myszy moduł. Wybierz pozycję **funkcje**, a następnie wybierz pozycję **Wizualizuj**.  
++ Aby wyświetlić pełną listę przeanalizowanych kolumn funkcji i ich ocen, kliknij prawym przyciskiem myszy moduł i wybierz polecenie **Wizualizuj**.  
 
-+ Aby wyświetlić zestaw danych, który jest generowany na podstawie kryteriów wyboru funkcji, kliknij prawym przyciskiem myszy moduł. Wybierz pozycję **zestaw danych**, a następnie wybierz opcję **Wizualizuj**. 
++ Aby wyświetlić zestaw danych na podstawie kryteriów wyboru funkcji, kliknij prawym przyciskiem myszy moduł i wybierz polecenie **Wizualizuj**. 
 
 Jeśli zestaw danych zawiera mniejszą liczbę kolumn niż oczekiwano, sprawdź ustawienia modułu. Sprawdź również typy danych kolumn dostarczonych jako dane wejściowe. Jeśli na przykład ustawisz **liczbę żądanych funkcji** na 1, wyjściowy zestaw danych zawiera tylko dwie kolumny: kolumnę Label oraz kolumnę o największej rangi.
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 05/02/2018
 ms.author: robreed
-ms.openlocfilehash: 8f243527461a95d963854d8d018602dd81115482
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.openlocfilehash: b6b9d0f146fd98fd90aa8858e522449be571842c
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75497282"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293168"
 ---
 # <a name="introduction-to-the-azure-desired-state-configuration-extension-handler"></a>Wprowadzenie do programu obsługi rozszerzenia konfiguracji żądanego stanu platformy Azure
 
@@ -59,7 +59,7 @@ Gdy rozszerzenie jest wywoływane po raz pierwszy, instaluje wersję programu WM
 - Jeśli zostanie określona właściwość **wmfVersion** , jest zainstalowana ta wersja programu WMF, chyba że ta wersja jest niezgodna z systemem operacyjnym maszyny wirtualnej.
 - Jeśli właściwość **wmfVersion** nie zostanie określona, zostanie zainstalowana najnowsza odpowiednia wersja programu WMF.
 
-Instalowanie pakietu WMF wymaga ponownego uruchomienia. Po ponownym uruchomieniu rozszerzenie pobiera plik zip, który jest określony we właściwości **modulesUrl** , jeśli został podany. Jeśli ta lokalizacja znajduje się w usłudze Azure Blob Storage, możesz określić token SAS we właściwości **sasToken** , aby uzyskać dostęp do pliku. Po pobraniu i rozpakowaniu pliku zip funkcja konfiguracji zdefiniowana w **configurationFunction** uruchamia się w celu wygenerowania plik MOF. Rozszerzenie zostanie uruchomione `Start-DscConfiguration -Force` przy użyciu wygenerowanego pliku MOF. Rozszerzenie przechwytuje dane wyjściowe i zapisuje je w kanale stanu platformy Azure.
+Instalowanie pakietu WMF wymaga ponownego uruchomienia. Po ponownym uruchomieniu rozszerzenie pobiera plik zip, który jest określony we właściwości **modulesUrl** , jeśli został podany. Jeśli ta lokalizacja znajduje się w usłudze Azure Blob Storage, możesz określić token SAS we właściwości **sasToken** , aby uzyskać dostęp do pliku. Po pobraniu i rozpakowaniu pliku zip funkcja konfiguracji zdefiniowana w **configurationFunction** uruchamia się w celu wygenerowania plik mof ([Managed Object Format](https://docs.microsoft.com/windows/win32/wmisdk/managed-object-format--mof-)). Rozszerzenie zostanie uruchomione `Start-DscConfiguration -Force` przy użyciu wygenerowanego pliku MOF. Rozszerzenie przechwytuje dane wyjściowe i zapisuje je w kanale stanu platformy Azure.
 
 ### <a name="default-configuration-script"></a>Domyślny skrypt konfiguracji
 

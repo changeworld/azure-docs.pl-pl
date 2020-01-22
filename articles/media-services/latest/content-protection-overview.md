@@ -1,5 +1,5 @@
 ---
-title: Ochrona zawartości przy użyciu szyfrowania dynamicznego Media Services
+title: Ochrona zawartości przy użyciu szyfrowania dynamicznego Media Services v3
 titleSuffix: Azure Media Services
 description: Informacje o ochronie zawartości przy użyciu szyfrowania dynamicznego, protokołów przesyłania strumieniowego i typów szyfrowania w Azure Media Services.
 services: media-services
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/29/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 1ae8645f3e782305ed5e1b7847b019a978e48dde
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 18e80383bfcbebc6a442663c141100faa56fd061
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977781"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76313811"
 ---
 # <a name="protect-your-content-with-media-services-dynamic-encryption"></a>Ochrona zawartości przy użyciu szyfrowania dynamicznego Media Services
 
@@ -236,7 +236,7 @@ Użyj następujących szablonów, jeśli chcesz określić inną licencję/usłu
 * `StreamingPolicyWidevineConfiguration.CustomLicenseAcquisitionUrlTemplate`: taki sam jak poprzedni szablon, tylko dla Widevine. 
 * `StreamingPolicyFairPlayConfiguration.CustomLicenseAcquisitionUrlTemplate`: taki sam jak poprzedni szablon, tylko dla FairPlay.  
 
-Na przykład:
+Przykład:
 
 ```csharp
 streamingPolicy.EnvelopEncryption.customKeyAcquisitionUrlTemplate = "https://mykeyserver.hostname.com/envelopekey/{AlternativeMediaId}/{ContentKeyId}";

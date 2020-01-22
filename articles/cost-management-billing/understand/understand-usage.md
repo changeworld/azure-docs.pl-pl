@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/24/2019
 ms.author: banders
-ms.openlocfilehash: 93fad58e971d761f626b79dc68f9576ccc2e1892
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: a68393b2852f8ddc758e2a47b9e1b5d94befb7b4
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75994001"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76290142"
 ---
 # <a name="understand-the-terms-in-your-azure-usage-and-charges-file"></a>Interpretacja terminów w pliku Użycie i opłaty platformy Azure
 
@@ -90,11 +90,11 @@ PublisherType | Wszystko | Typ wydawcy (wartości: **Azure**, **AWS**, **Marketp
 Ilość | Wszystko | Liczba jednostek zakupionych lub użytych.
 ReservationId | EA, umowa klienta firmy Microsoft | Unikatowy identyfikator zakupionego wystąpienia rezerwacji.
 ReservationName | EA, umowa klienta firmy Microsoft | Nazwa zakupionego wystąpienia rezerwacji.
-ResourceGroup | Wszystko | Nazwa [grupy zasobów](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview), w której znajduje się zasób.
+ResourceGroup | Wszystko | Nazwa [grupy zasobów](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview), w której znajduje się zasób. Nie wszystkie opłaty są pobierane z zasobów wdrożonych w grupach zasobów. Opłaty, które nie mają grupy zasobów, będą wyświetlane jako wartości null/puste, **inne**lub **nie mają zastosowania**.
 ResourceId<sup>1</sup> | Wszystko | Unikatowy identyfikator zasobu usługi [Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/resources).
 ResourceLocation | Wszystko | Lokalizacja centrum danych, w którym jest uruchamiany zasób. Zobacz Location.
-ResourceName | EA, płatność zgodnie z rzeczywistym użyciem | Nazwa zasobu.
-ResourceType | Umowa klienta firmy Microsoft | Typ wystąpienia zasobu.
+ResourceName | EA, płatność zgodnie z rzeczywistym użyciem | Nazwa zasobu. Nie wszystkie opłaty pochodzą ze wdrożonych zasobów. Opłaty, które nie mają typu zasobu, będą wyświetlane jako wartości null/puste, **inne**lub **nie mają zastosowania**.
+ResourceType | Umowa klienta firmy Microsoft | Typ wystąpienia zasobu. Nie wszystkie opłaty pochodzą ze wdrożonych zasobów. Opłaty, które nie mają typu zasobu, będą wyświetlane jako wartości null/puste, **inne**lub **nie mają zastosowania**.
 ServiceFamily | Umowa klienta firmy Microsoft | Rodzina usług, do której należy usługa.
 ServiceInfo1 | Wszystko | Metadane dotyczące konkretnej usługi.
 ServiceInfo2 | Wszystko | Starsze pole z opcjonalnymi metadanymi specyficznymi dla usługi.

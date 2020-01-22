@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: 554101ac70f01f1dd92337a8cf424f8b26ca0fc9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0b321f3548910a2bc79e4473609de30eda8c8622
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75456337"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314355"
 ---
 # <a name="score-svd-recommender"></a>Wynik modułu poleceń SVD
 
-W tym artykule opisano sposób korzystania z modułu polecania "Score SVD" w programie Azure Machine Learning Designer (wersja zapoznawcza). Ten moduł służy do tworzenia prognoz przy użyciu przeszkolonego modelu rekomendacji opartego na algorytmie z rozkładem pojedynczego wartości (SVD).
+W tym artykule opisano sposób korzystania z modułu polecania "Ocena SVD" w programie Azure Machine Learning Designer. Ten moduł służy do tworzenia prognoz przy użyciu przeszkolonego modelu rekomendacji opartego na algorytmie z rozkładem pojedynczego wartości (SVD).
 
 Zalecenie SVD może generować dwa różne rodzaje prognoz:
 

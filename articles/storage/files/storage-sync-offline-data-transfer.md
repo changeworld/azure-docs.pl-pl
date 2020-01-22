@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: b00948f8d0e1eb8538354a6c16febf81bd4d1f16
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b1c167c71907e5f8af1006dfabd8f81ce4425d09
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457371"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76291162"
 ---
 # <a name="migrate-bulk-data-to-azure-file-sync"></a>Migrowanie danych zbiorczych do Azure File Sync
 Dane zbiorcze można migrować do Azure File Sync na dwa sposoby:
@@ -79,7 +79,7 @@ Ponieważ serwer kończy swoją początkową synchronizację przestrzeni nazw, u
 Teraz możesz wyczyścić udział przemieszczania w celu oszczędności kosztów:
 
 1. W bloku **właściwości punktu końcowego serwera** , gdy stan jest **zakończony**, wybierz pozycję **Wyłącz transfer danych w trybie offline**.
-2. Rozważ usunięcie udziału przemieszczania w celu zaoszczędzenia kosztów. Udział przemieszczania prawdopodobnie nie zawiera list ACL plików i folderów, więc nie jest to bardzo przydatne. W celu utworzenia punktu w czasie wykonywania kopii zapasowych należy utworzyć rzeczywistą [migawkę synchronizowanego udziału plików platformy Azure](storage-snapshots-files.md). Można [skonfigurować Azure Backup, aby wykonać migawki]( ../../backup/backup-azure-files.md) zgodnie z harmonogramem.
+2. Rozważ usunięcie udziału przemieszczania w celu zaoszczędzenia kosztów. Udział przemieszczania prawdopodobnie nie zawiera list ACL plików i folderów, więc nie jest to bardzo przydatne. W celu utworzenia punktu w czasie wykonywania kopii zapasowych należy utworzyć rzeczywistą [migawkę synchronizowanego udziału plików platformy Azure](storage-snapshots-files.md). Można [skonfigurować Azure Backup, aby wykonać migawki]( ../../backup/backup-afs.md) zgodnie z harmonogramem.
 
 Wyłącz tryb transferu danych w trybie offline tylko wtedy, gdy stan jest **zakończony** lub gdy chcesz anulować z powodu niepoprawnej konfiguracji. Jeśli wyłączysz tryb podczas wdrażania, pliki rozpoczną przekazywanie z serwera, nawet jeśli udział przemieszczania jest nadal dostępny.
 

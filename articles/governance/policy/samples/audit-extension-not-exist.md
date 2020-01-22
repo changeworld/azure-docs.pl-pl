@@ -3,12 +3,12 @@ title: Przykład — sprawdzanie, czy rozszerzenie nie istnieje
 description: Ta przykładowa definicja zasad przeprowadza inspekcję, jeśli rozszerzenie zdefiniowane w parametrze nie jest wdrożone na maszynie wirtualnej.
 ms.date: 01/23/2019
 ms.topic: sample
-ms.openlocfilehash: 0b81a5f7b59d236cd8edb30cf0cb4f59ed9a7eab
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: cbabe0ec0149a3e9d3996ee38ebf083d98acc091
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74463399"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293780"
 ---
 # <a name="sample---audit-if-extension-does-not-exist"></a>Przykład — sprawdzanie, czy rozszerzenie nie istnieje
 
@@ -50,7 +50,7 @@ Remove-AzResourceGroup -Name myResourceGroup
 [!INCLUDE [sample-cli-install](../../../../includes/sample-cli-install.md)]
 
 ```azurecli-interactive
-az policy definition create --name 'audit-vm-extension' --display-name 'Audit if extension does not exist' --description 'This policy audits if a required extension doesn't exist.' --rules 'https://raw.githubusercontent.com/Azure/azure-policy/master/samples/Compute/audit-vm-extension/azurepolicy.rules.json' --params 'https://raw.githubusercontent.com/Azure/azure-policy/master/samples/Compute/audit-vm-extension/azurepolicy.parameters.json' --mode All
+az policy definition create --name 'audit-vm-extension' --display-name 'Audit if extension does not exist' --description 'This policy audits if a required extension does not exist.' --rules 'https://raw.githubusercontent.com/Azure/azure-policy/master/samples/Compute/audit-vm-extension/azurepolicy.rules.json' --params 'https://raw.githubusercontent.com/Azure/azure-policy/master/samples/Compute/audit-vm-extension/azurepolicy.parameters.json' --mode All
 
 az policy assignment create --name <assignmentname> --scope <scope> --policy "audit-vm-extension"
 ```
@@ -65,4 +65,4 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Przejrzyj więcej przykładów w temacie [Przykłady dla usługi Azure Policy](index.md)
+- Zobacz więcej przykładów w witrynie [Przykłady dla usługi Azure Policy](index.md)

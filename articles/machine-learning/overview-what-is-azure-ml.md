@@ -8,12 +8,12 @@ ms.topic: overview
 author: j-martens
 ms.author: jmartens
 ms.date: 11/04/2019
-ms.openlocfilehash: b8dbbb2810277bef20cb3b9b47a63deeea3e0ff9
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 4c6a9a2b5991c9f99bf728ecfed144cc77e4c49a
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76155455"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314338"
 ---
 # <a name="what-is-azure-machine-learning"></a>Co to jest usługa Azure Machine Learning?
 
@@ -66,7 +66,7 @@ Możesz również [zautomatyzować szkolenia i dostrajanie modeli](tutorial-auto
 
 W przypadku szkolenia i wdrożenia z niską ilością kodu, wypróbuj następujące rozwiązania:
 
-+ **Projektant Azure Machine Learning (wersja zapoznawcza)**
++ **Projektant Azure Machine Learning**
 
   Za pomocą projektanta można przygotowywać dane, uczenie, testować, wdrażać i śledzić modele uczenia maszynowego bez konieczności pisania kodu. Nie ma potrzeby programowania, można wizualnie połączyć zestawy danych i moduły, aby utworzyć model. Wypróbuj [samouczek projektanta](tutorial-designer-automobile-price-train-score.md).
 

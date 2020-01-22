@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: d0dfbec3abd379c7bf8add6445296dff74d92a76
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c8d58180b11c12afb256dc888406c7c0d58fb119
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428472"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314321"
 ---
 # <a name="select-columns-transform"></a>Wybieranie przekształcenia kolumn
 
-W tym artykule opisano sposób korzystania z modułu SELECT Columns Transform w programie Azure Machine Learning Designer (wersja zapoznawcza). Celem modułu SELECT Columns Transform jest upewnienie się, że przewidywalna spójny zestaw kolumn jest używany w operacjach uczenia maszynowego.
+W tym artykule opisano sposób korzystania z modułu SELECT Columns Transform w programie Azure Machine Learning Designer. Celem modułu SELECT Columns Transform jest upewnienie się, że przewidywalna spójny zestaw kolumn jest używany w operacjach uczenia maszynowego.
 
 Ten moduł jest pomocny w przypadku zadań, takich jak ocenianie, które wymagają określonych kolumn. Zmiany w dostępnych kolumnach mogą spowodować przerwanie potoku lub zmianę wyników.
 

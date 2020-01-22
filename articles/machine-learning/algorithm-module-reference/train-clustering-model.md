@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 11/19/2019
-ms.openlocfilehash: 57cf5bab2afe58ed802ef5ec03c316f1ebec6673
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 1f1a508e6188b68f932993eb60e13228b56f8e7e
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232589"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76313950"
 ---
 # <a name="train-clustering-model"></a>Trenowanie modelu klastrowania
 
-W tym artykule opisano moduł w programie Azure Machine Learning Designer (wersja zapoznawcza).
+W tym artykule opisano moduł w programie Azure Machine Learning Designer.
 
 Ten moduł służy do uczenia modelu klastrowania.
 
@@ -49,10 +49,7 @@ Moduł przyjmuje niepociąg Model klastrowania, który został już skonfigurowa
 
 Po zakończeniu szkolenia:
 
-
-+  Aby wyświetlić wartości w zestawie danych, kliknij prawym przyciskiem myszy moduł, wybierz pozycję **zestawy danych wynikowych**, a następnie kliknij polecenie **Wizualizuj**.
-
-+ Aby zapisać przeszkolony model do późniejszego ponownego użycia, kliknij prawym przyciskiem myszy moduł, wybierz pozycję **przeszkolony model**i kliknij pozycję **Zapisz jako przeszkolony model**.
++ Aby zapisać migawkę przeszkolonego modelu, wybierz kartę dane **wyjściowe** w prawym panelu modułu **uczenie modelu** . Wybierz ikonę **zarejestruj zestaw danych** , aby zapisać model jako moduł wielokrotnego użytku.
 
 + Aby wygenerować wyniki z modelu, użyj [przypisywania danych do klastrów](assign-data-to-clusters.md).
 

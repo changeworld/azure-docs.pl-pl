@@ -9,17 +9,17 @@ ms.topic: conceptual
 author: likebupt
 ms.author: keli19
 ms.date: 12/12/2019
-ms.openlocfilehash: e0e4ea4689baeb8e85a765a33c3f8124d6bc4362
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 991f7ebf51be5f805a8b12fa0af0fefeff0ef582
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75764290"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76309561"
 ---
 # <a name="debug-and-troubleshoot-machine-learning-pipelines"></a>Debugowanie i rozwiązywanie problemów z potokami uczenia maszynowego
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-W tym artykule dowiesz się, jak debugować i rozwiązywać problemy z [potokami uczenia maszynowego](concept-ml-pipelines.md) w [zestawach SDK Azure Machine Learning](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) i [Azure Machine Learning Designer (wersja zapoznawcza)](https://docs.microsoft.com/azure/machine-learning/concept-designer).
+W tym artykule dowiesz się, jak debugować i rozwiązywać problemy z [potokami uczenia maszynowego](concept-ml-pipelines.md) w [zestawach SDK Azure Machine Learning](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) i [Azure Machine Learning Designer](https://docs.microsoft.com/azure/machine-learning/concept-designer).
 
 
 ## <a name="debug-and-troubleshoot-in-the-azure-machine-learning-sdk"></a>Debugowanie i rozwiązywanie problemów w zestawie Azure Machine Learning SDK
@@ -79,7 +79,7 @@ Poniższa tabela zawiera typowe problemy podczas tworzenia potoku z potencjalnym
 | Potok nie wykorzystał się z kroków | Ponowne użycie kroku jest włączone domyślnie, ale upewnij się, że nie zostało wyłączone w kroku potoku. Jeśli ponowne użycie jest wyłączone, parametr `allow_reuse` w kroku zostanie ustawiony na `False`. |
 | Potok jest niepotrzebny. | Aby zapewnić, że kroki mają zostać uruchomione ponownie tylko wtedy, gdy ich dane podstawowe lub skrypty zmienią się, należy rozdzielić katalogi dla każdego kroku. Jeśli używasz tego samego katalogu źródłowego dla wielu kroków, może wystąpić niepotrzebne wykonanie ponownie. Użyj parametru `source_directory` w obiekcie kroku potoku, aby wskazać odizolowany katalog dla tego kroku i upewnić się, że nie używasz tej samej ścieżki `source_directory` dla wielu kroków. |
 
-## <a name="debug-and-troubleshoot-in-azure-machine-learning-designer-preview"></a>Debugowanie i rozwiązywanie problemów w programie Azure Machine Learning Designer (wersja zapoznawcza)
+## <a name="debug-and-troubleshoot-in-azure-machine-learning-designer"></a>Debugowanie i rozwiązywanie problemów w programie Azure Machine Learning Designer
 
 Ta sekcja zawiera omówienie sposobu rozwiązywania problemów z potokami w projektancie.
 W przypadku potoków utworzonych w projektancie można znaleźć **pliki dziennika** na stronie Tworzenie lub na stronie szczegółów uruchomienia potoku.

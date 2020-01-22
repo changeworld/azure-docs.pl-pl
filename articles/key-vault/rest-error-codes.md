@@ -9,12 +9,12 @@ ms.author: mbaldwin
 ms.service: key-vault
 ms.topic: reference
 ms.date: 12/16/2019
-ms.openlocfilehash: 9ea77a6822a851951ea7363b9cf496fa0df534ed
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 8c9390ea498647d34e8643ed4be596372ffb8696
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75982093"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293389"
 ---
 # <a name="azure-key-vault-rest-api-error-codes"></a>Kody błędów interfejsu API REST Azure Key Vault
  
@@ -54,7 +54,7 @@ Nagłówek "Autoryzacja" jest tokenem dostępu, który jest wymagany w przypadku
 
 ### <a name="the-token-lacks-the-correct-resource-associated-with-it"></a>Z tokenem nie jest skojarzony prawidłowy zasób. 
 
-Podczas żądania tokenu dostępu z punktu końcowego usługi Azure OAUTH parametr o nazwie "Resource" jest obowiązkowy. Wartość jest ważna dla dostawcy tokenów, ponieważ zakresy tokenów dla zamierzonego użycia. Zasób **wszystkie* tokeny mające dostęp do Key Vault jest <https:\//vault.keyvault.net> (bez końcowego ukośnika).
+Podczas żądania tokenu dostępu z punktu końcowego usługi Azure OAUTH parametr o nazwie "Resource" jest obowiązkowy. Wartość jest ważna dla dostawcy tokenów, ponieważ zakresy tokenów dla zamierzonego użycia. Zasób dla **wszystkich** tokenów mających dostęp do Key Vault to *https:\//Vault.keyvault.NET* (bez końcowego ukośnika).
 
 ### <a name="the-token-is-expired"></a>Token wygasł
 

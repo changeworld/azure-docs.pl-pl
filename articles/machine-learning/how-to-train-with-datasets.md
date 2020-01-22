@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 09/25/2019
-ms.openlocfilehash: b6ea5c9ef5e128116ef389675a09e6ab4b230b75
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 24a19487567f2753457d5886cbb9fa4bf438bad4
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75982453"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311346"
 ---
 # <a name="train-with-datasets-in-azure-machine-learning"></a>Uczenie się z zestawami danych w Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -83,7 +83,7 @@ Ten kod tworzy generyczny obiekt szacowania `est`, który określa
 
 * Katalog skryptów dla skryptów. Wszystkie pliki w tym katalogu są przekazywane do węzłów klastra w celu wykonania.
 * Skrypt szkoleniowy *train_titanic. PR*.
-* Wejściowy zestaw danych do szkoleń, `titanic`.
+* Wejściowy zestaw danych do szkoleń, `titanic`. `as_named_input()` jest wymagana, aby wejściowy zestaw danych mógł zostać odwoływany przez przypisaną nazwę w skrypcie szkoleniowym. 
 * Element docelowy obliczeń dla eksperymentu.
 * Definicja środowiska dla eksperymentu.
 
@@ -126,7 +126,7 @@ mnist_ds = Dataset.File.from_files(path = web_paths)
 
 ### <a name="configure-the-estimator"></a>Konfigurowanie szacowania
 
-Zamiast przekazywania zestawu danych za pomocą `inputs` parametru w szacowania, można również przekazać zestaw danych za pośrednictwem `script_params` i uzyskać ścieżkę danych (punkt instalacji) w skrypcie szkoleniowym za pośrednictwem argumentów. Dzięki temu możesz uzyskiwać dostęp do danych i korzystać z istniejącego skryptu szkoleniowego.
+Oprócz przekazywania zestawu danych za pomocą `inputs` parametru w szacowania, można również przekazać zestaw danych za pośrednictwem `script_params` i uzyskać ścieżkę danych (punkt instalacji) w skrypcie szkoleniowym za pośrednictwem argumentów. W ten sposób można zachować skrypt szkoleniowy niezależnie od platformy Azure-SDK. Innymi słowy, będzie można użyć tego samego skryptu szkoleniowego na potrzeby debugowania lokalnego i zdalnego szkolenia na dowolnej platformie w chmurze.
 
 Obiekt [skryptu sklearn](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py) szacowania jest używany do przesyłania przebiegów dla eksperymentów scikit-uczyć się. Dowiedz się więcej o szkoleniu z [skryptu sklearn szacowania](how-to-train-scikit-learn.md).
 

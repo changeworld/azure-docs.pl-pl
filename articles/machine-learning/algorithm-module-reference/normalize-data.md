@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: bdf2fa700b96c6110143a4557985ac1a30ed9096
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8e4bc440d59f41988a52b8b7b808b74f95acdf46
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466060"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314270"
 ---
 # <a name="normalize-data-module"></a>Normalizowanie modułu danych
 
-W tym artykule opisano moduł w programie Azure Machine Learning Designer (wersja zapoznawcza).
+W tym artykule opisano moduł w programie Azure Machine Learning Designer.
 
 Użyj tego modułu do przekształcenia zestawu danych za pomocą *normalizacji*.
 
@@ -98,11 +98,11 @@ Przy użyciu tego modułu można zastosować tylko jedną metodę normalizacji. 
 
 Moduł **normalizowanie danych** generuje dwa dane wyjściowe:
 
-- Aby wyświetlić przekształcone wartości, kliknij prawym przyciskiem myszy moduł, wybierz pozycję **przekształcony zestaw danych**, a następnie kliknij polecenie **Wizualizuj**.
+- Aby wyświetlić przekształcone wartości, kliknij prawym przyciskiem myszy moduł i wybierz polecenie **Wizualizuj**.
 
     Domyślnie wartości są przekształcane na miejsce. Jeśli chcesz porównać przekształcone wartości z oryginalnymi wartościami, użyj modułu [dodawania kolumn](./add-columns.md) do łączenia zestawów danych i wyświetlania kolumn obok siebie.
 
-- Aby zapisać transformację, aby można było zastosować tę samą metodę normalizacji do innego podobnego zestawu danych, kliknij prawym przyciskiem myszy moduł, wybierz pozycję **Funkcja transformacji**i kliknij polecenie **Zapisz jako Przekształć**.
+- Aby zapisać transformację w taki sposób, aby można było zastosować tę samą metodę normalizacji do innego zestawu danych, wybierz moduł, a następnie wybierz pozycję **zarejestruj zestaw danych** na karcie dane **wyjściowe** w prawym panelu.
 
     Następnie można załadować zapisane przekształcenia z grupy **transformacje** w lewym okienku nawigacji i zastosować je do zestawu danych z tym samym schematem za pomocą [transformacji./Apply](apply-transformation.md).  
 

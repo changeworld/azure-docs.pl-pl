@@ -1,5 +1,5 @@
 ---
-title: Korzystanie z funkcji ułatwień dostępu w projektancie (wersja zapoznawcza)
+title: Korzystanie z funkcji ułatwień dostępu w projektancie
 titleSuffix: Azure Machine Learning
 description: Dowiedz się więcej na temat skrótów klawiaturowych i funkcji ułatwień dostępu czytnika ekranu dostępnych w projektancie.
 services: machine-learning
@@ -9,14 +9,14 @@ ms.topic: reference
 ms.author: peterlu
 author: peterclu
 ms.date: 01/09/2020
-ms.openlocfilehash: 9c899ae16d16fc76f0ea8d24169451556cf24025
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 7d5c8047fea8e9081de08b582c537711714ea463
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76158015"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314236"
 ---
-# <a name="use-a-keyboard-to-use-azure-machine-learning-designer-preview"></a>Korzystanie z klawiatury do korzystania z programu Azure Machine Learning Designer (wersja zapoznawcza)
+# <a name="use-a-keyboard-to-use-azure-machine-learning-designer"></a>Używanie narzędzia Azure Machine Learning Designer przy użyciu klawiatury
 
 Dowiedz się, jak używać programu Azure Machine Learning Designer przy użyciu klawiatury i czytnika ekranu. Aby zapoznać się z listą skrótów klawiaturowych, które działają wszędzie na Azure Portal, zobacz [skróty klawiaturowe w Azure Portal](../azure-portal/azure-portal-keyboard-shortcuts.md)
 

@@ -1,6 +1,6 @@
 ---
 title: Integracja z platformą Apache Spark — usługi Azure Event Hubs | Dokumentacja firmy Microsoft
-description: Integracja z platformą Apache Spark umożliwiające przesyłanie strumieniowe ze strukturą z usługi Event Hubs
+description: W tym artykule przedstawiono sposób integrowania programu z usługą Apache Spark w celu umożliwienia przesyłania strumieniowego ze strukturą Event Hubs.
 services: event-hubs
 documentationcenter: na
 author: ShubhaVijayasarathy
@@ -14,12 +14,12 @@ ms.workload: na
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 605669a740663040ab7a167bf266fe1940123afc
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4c4fd74e9123e1310be297a15090433d365d24cf
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60343396"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311686"
 ---
 # <a name="integrating-apache-spark-with-azure-event-hubs"></a>Integrowanie platformy Apache Spark z usługą Azure Event Hubs
 
@@ -86,7 +86,7 @@ df.write
   .save() 
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Teraz już wiesz, jak skonfigurować skalowalne, odporne na uszkodzenia strumienia za pomocą łącznika usługi Event Hubs dla platformy Apache Spark. Dowiedz się więcej o korzystaniu z usługi Event Hubs z przesyłanie strumieniowe ze strukturą i Spark Streaming postępując zgodnie z poniższych linków:
 

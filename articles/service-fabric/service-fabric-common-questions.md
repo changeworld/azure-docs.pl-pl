@@ -4,12 +4,12 @@ description: Często zadawane pytania dotyczące Service Fabric, w tym możliwo�
 ms.topic: troubleshooting
 ms.date: 08/18/2017
 ms.author: pepogors
-ms.openlocfilehash: 7638a360821e73b7485014c8e6f006e91bbea551
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 17c1d05e119df8207c0599283f1d04b869e8297b
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75614642"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293525"
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>Często zadawane pytania dotyczące usługi Service Fabric
 
@@ -183,4 +183,4 @@ Aby uzyskać szczegółowe informacje na temat ogłaszania, postępuj zgodnie z 
 
 ## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się więcej o [podstawowych pojęciach dotyczących Service Fabric](service-fabric-technical-overview.md) i pojęciach dotyczących [najlepszych](service-fabric-best-practices-overview.md) rozwiązań dotyczących sieci szkieletowej (Service-fabric-Technical-Overview.MD) i [najlepszych](service-fabric-best-practices-overview.md) rozwiązań
+Dowiedz się więcej o [podstawowych pojęciach](service-fabric-technical-overview.md) i [najlepszych rozwiązaniach](service-fabric-best-practices-overview.md) Service Fabric

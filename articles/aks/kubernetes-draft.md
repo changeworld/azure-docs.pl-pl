@@ -7,18 +7,18 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/20/2019
 ms.author: zarhoads
-ms.openlocfilehash: a9b942c4726c770f1ea0d35c924395cdff40e1c7
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: 07e267af307fedd9b896e08919b7026a3a1c2bac
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75732022"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76292966"
 ---
 # <a name="quickstart-develop-on-azure-kubernetes-service-aks-with-draft"></a>Szybki Start: Programowanie w usłudze Azure Kubernetes Service (AKS) przy użyciu wersji roboczej
 
 Wersja robocza to narzędzie typu "open source", które ułatwia pakowanie i uruchamianie kontenerów aplikacji w klastrze Kubernetes. Za pomocą wersji roboczej można szybko ponownie wdrożyć aplikację w celu Kubernetes, gdy nastąpi zmiana kodu, bez konieczności zatwierdzania zmian w systemie kontroli wersji. Aby uzyskać więcej informacji na temat wersji roboczej, zobacz [dokumentację roboczą w witrynie GitHub][draft-documentation].
 
-W tym artykule pokazano, jak używać pakietu Draft i uruchamiać aplikację na AKS.
+W tym artykule pokazano, jak używać wersji roboczej do tworzenia pakietów i uruchamiania aplikacji w systemie AKS.
 
 
 ## <a name="prerequisites"></a>Wymagania wstępne

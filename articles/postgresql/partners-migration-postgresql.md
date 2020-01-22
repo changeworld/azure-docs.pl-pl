@@ -1,33 +1,33 @@
 ---
-title: Usługa Azure Database for postgresql — partnerzy migracji
-description: Wyświetla listę partnerów migracji innych firm z rozwiązaniami, które obsługują usługi Azure Database for PostgreSQL.
+title: Azure Database for PostgreSQL partnerów migracji
+description: Listy partnerów migracji innych firm z rozwiązaniami, które obsługują Azure Database for PostgreSQL.
 author: HJToland3
 ms.author: jtoland
 manager: craigg
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/07/2018
-ms.openlocfilehash: 75ff34910383b30c9fd967ff568d087c2492856f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f9b3cde8ff0f3a1b97d53a1de72cb6c5c48a800c
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66143224"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76289785"
 ---
-# <a name="azure-database-for-postgresql-migration-partners"></a>Usługa Azure Database for postgresql — partnerzy migracji
-Aby szeroko pomocy technicznej usługi Azure Database dla rozwiązania PostgreSQL, możesz wybrać z wielu różnych partnerów wiodące w branży i narzędzi. W tym artykule przedstawiono partnerów firmy Microsoft przy użyciu rozwiązania migracji, które obsługują usługi Azure Database for PostgreSQL.
+# <a name="azure-database-for-postgresql-migration-partners"></a>Azure Database for PostgreSQL partnerów migracji
+Aby szeroko wspierać rozwiązanie Azure Database for PostgreSQL, możesz wybierać spośród wielu wiodących w branży partnerów i narzędzi. W tym artykule przedstawiono partnerów firmy Microsoft z rozwiązaniami do migracji, które obsługują Azure Database for PostgreSQL.
 
 ## <a name="migration-partners"></a>Partnerzy migracji
-| Partner | Opis | Linki | Filmy wideo |
+| Partner | Opis | Linki | Filmy |
 | --- | --- | --- | --- |
-| ![Technologie SNP][1] |**Technologie SNP**<br>Technologie SNP jest oparte tylko na chmurze usługodawcy, tworzyć bezpieczne i niezawodne rozwiązania dla firm w przyszłości. Firma uważa się podczas generowania rzeczywistej wartości dla swojej firmy. Od myślenia na wykonanie technologii SNP udostępnia typowe zastosowania z klientami, aby włączyć swoich inwestycji w korzyści.|[Witryny sieci Web][snp_website]<br>[Twitter][snp_twitter]<br>[Skontaktuj się z][snp_contact] | |
-| ![DB Best Technologies, LLC][2] |**DB Best Technologies, LLC**<br>Najlepsze DB pomaga klientom w pełni wykorzystać usługę zarządzanej bazy danych platformy Azure. Firma oferuje kilka sposobów na rozpoczęcie pracy, w tym [stanu przyszłość kwestie projektowania architektonicznego](https://na01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.dbbest.com%2Fservices%2Ffuture-state-architectural-design%2F&data=02%7C01%7Cjtoland%40microsoft.com%7C7311aa2024894a80eff208d5cfd45696%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C636643433261194557&sdata=SCr3kseFvcU7mI1%2FZt7K2elXAqLY%2FyL6AO944QiWoLg%3D&reserved=0), [optymalizacji zarządzania danych dla platformy danych firmy Microsoft](https://www.dbbest.com/services/data-management-optimization-for-microsoft-data-platform/), [Microsoft Azure Planowanie usług wdrażania](https://www.dbbest.com/services/microsoft-azure-deployment-planning-services), i [szkolenia gotowości platformy danych Azure](https://www.dbbest.com/services/azure-data-platform-readiness-training).|[Witryny sieci Web][dbbest_website]<br>[Twitter][dbbest_twitter]<br>[YouTube][dbbest_youtube]<br>[Skontaktuj się z][dbbest_contact] | |
-| ![Działa pragmatyczne][3] |**Działa pragmatyczne**<br>Pragmatyczne działa to firma szkolenia i konsultacji z głębokiego pogłębiające wiedzę z zakresu zarządzania danymi i wydajności, analizy biznesowej, danych Big Data, usługa Power BI i platformy Azure. Skupiają się na optymalizacji danych i poprawy efektywności zarządzania programu SQL Server i w chmurze.|[Witryny sieci Web][pragmatic-works_website]<br>[Twitter][pragmatic-works_twitter]<br>[YouTube][pragmatic-works_youtube]<br>[Skontaktuj się z][pragmatic-works_contact] | |
-| ![Infosys][4] |**Infosys**<br>Infosys jest globalny lider w zakresie w najnowszą wersję usług cyfrowych i doradztwa. Za pomocą ponad trzy dekady środowiska zarządzania systemami przedsiębiorstw globalnego Infosys profesjonalnego hodowlę wołów klientów za pośrednictwem ich cyfrową podróż, umożliwiając organizacjom za pomocą programu core bazujących na sztucznej Inteligencji. Robi pomaga określić priorytety wykonanie zmiany. Infosys także firmach z agile cyfrowy w dużej skali, do dostarczania niezrównaną poziomów wydajności i wzbudzanie zachwytu klienta.|[Witryny sieci Web][infosys_website]<br>[Twitter][infosys_twitter]<br>[YouTube][infosys_youtube]<br>[Skontaktuj się z][infosys_contact] | |
-| ![credativ][5] |**credativ**<br>credativ jest niezależne konsultacji i usług firmy. Od 1999 r. zostały oferowane wszechstronne usługi i pomoc techniczna dla wdrożenia i działania oprogramowania typu Open Source w aplikacjach biznesowych. Ich szerokiego zakresu usług zawiera strategiczne, konsultingowe, dźwięku doradztwa technicznego, kwalifikowana szkolenia i spersonalizowanej obsługi się do 24 godzin dziennie w przypadku wszystko, czego potrzebuje dział IT.|[Marketplace][credativ_marketplace]<br>[Witryny sieci Web][credativ_website]<br>[Twitter][credative_twitter]<br>[YouTube][credativ_youtube]<br>[Skontaktuj się z][credativ_contact] | |
-| ![Pactera][6] |**Pactera**<br>Pactera jest globalna firma oferty usług doradczych, cyfrowy, technologii i operacje przedsiębiorstwom wiodących na świecie. Z ich katalogów głównych w inżynierii do najnowszej wersji transformację cyfrową zapewniają klientom przewagę nad konkurencją. Narzędzia i sprawdzonej metodologii upewnij się, że Twoje dane są bezpieczne, autentyczne i dokładne.|[Witryny sieci Web][pactera_website]<br>[Twitter][pactera_twitter]<br>[Skontaktuj się z][pactera_contact] | |
+| ![Technologie SNP][1] |**Technologie SNP**<br>Technologie SNP to dostawca usług tylko w chmurze, który umożliwia tworzenie bezpiecznych i niezawodnych rozwiązań dla firm w przyszłości. Firma jest uważana za generowanie rzeczywistej wartości dla Twojej firmy. Z myślą o wykonywaniu technologie SNP współdzielą się ze swoimi klientami, aby przekształcić ich inwestycje w zalety.|[Witryny sieci Web][snp_website]<br>[Twitter][snp_twitter]<br>[Skontaktuj się z][snp_contact] | |
+| ![Najlepsze technologie dotyczące baz danych, LLC][2] |**Najlepsze technologie dotyczące baz danych, LLC**<br>Usługa DB najlepiej pomaga klientom w największej liczbie zarządzanych usług Azure Database. Firma oferuje kilka sposobów na rozpoczęcie pracy, w tym [Projektowanie architektury w przyszłości](https://na01.safelinks.protection.outlook.com/?url=https%3A%2F%2F www.dbbest.com%2Fservices%2Ffuture-state-architectural-design%2F&data=02%7C01%7Cjtoland%40microsoft.com%7C7311aa2024894a80eff208d5cfd45696%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C636643433261194557&sdata=SCr3kseFvcU7mI1%2FZt7K2elXAqLY%2FyL6AO944QiWoLg%3D&reserved=0), [Zarządzanie danymi optymalizację dla platformy danych firmy Microsoft](https://www.dbbest.com/services/data-management-optimization-for-microsoft-data-platform/), [Microsoft Azure usług planowania wdrożenia](https://www.dbbest.com/services/microsoft-azure-deployment-planning-services)i szkolenia z [zakresu gotowości platformy danych platformy Azure](https://www.dbbest.com/services/azure-data-platform-readiness-training).|[Witryny sieci Web][dbbest_website]<br>[Twitter][dbbest_twitter]<br>[YouTube][dbbest_youtube]<br>[Skontaktuj się z][dbbest_contact] | |
+| ![Pragmatic Works][3] |**Pragmatic Works**<br>Usługa Pragmatic Works to firma szkoleniowa i konsultingowa z dogłębną wiedzą na temat zarządzania danymi i ich wydajności, analizy biznesowej, danych Big Data, Power BI i platformy Azure. Skupiają się one na optymalizacji danych i ulepszaniu wydajności SQL Server i zarządzania chmurą.|[Witryny sieci Web][pragmatic-works_website]<br>[Twitter][pragmatic-works_twitter]<br>[YouTube][pragmatic-works_youtube]<br>[Skontaktuj się z][pragmatic-works_contact] | |
+| ![Infosys][4] |**Infosys**<br>Infosys jest globalnym liderem w najnowszych usługach cyfrowych i konsultacji. Za pomocą ponad trzy dekady środowiska zarządzania systemami przedsiębiorstw globalnych, Infosys ekspertuje klientów za pośrednictwem swojej cyfrowej podróży przez włączenie organizacji z rdzeniem zasilanym przez firmę AI. Pozwoli to na określanie priorytetów wykonywania zmiany. Infosys oferuje również firmy z elastyczną szybkością elastyczną na dużą skalę, aby zapewnić niespotykane poziomy wydajności i klienta.|[Witryny sieci Web][infosys_website]<br>[Twitter][infosys_twitter]<br>[YouTube][infosys_youtube]<br>[Skontaktuj się z][infosys_contact] | |
+| ![credativ][5] |**credativ**<br>credativ to niezależna firma konsultingowa i usług. Od 1999 są oferowane kompleksowe usługi i pomoc techniczna w zakresie implementacji i działania oprogramowania typu open source w aplikacjach firmowych. Ich kompleksowy zakres usług obejmuje doradztwo strategiczne, solidne porady techniczne, kwalifikacje specjalistyczne i spersonalizowaną pomoc techniczną do 24 godzin dziennie w przypadku wszystkich Twoich potrzeb.|[Marketplace][credativ_marketplace]<br>[Witryny sieci Web][credativ_website]<br>[Twitter][credative_twitter]<br>[YouTube][credativ_youtube]<br>[Skontaktuj się z][credativ_contact] | |
+| ![Pactera][6] |**Pactera**<br>Pactera to globalna firma oferująca konsultacje, cyfrowe, technologie i usługi operacyjne w wiodących na świecie przedsiębiorstwach. Od ich korzeni w inżynierów do najnowszej transformacji cyfrowej zapewniają klientom konkurencyjną granicę. Sprawdzone metody i narzędzia zapewniają, że dane są bezpieczne, autentyczne i dokładne.|[Witryny sieci Web][pactera_website]<br>[Twitter][pactera_twitter]<br>[Skontaktuj się z][pactera_contact] | |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Aby dowiedzieć się więcej o niektórych z innymi partnerami firmy Microsoft, zobacz [witryny partnera firmy Microsoft](https://partner.microsoft.com/en-US/).
 
 <!--Image references-->
@@ -44,7 +44,7 @@ Aby dowiedzieć się więcej o niektórych z innymi partnerami firmy Microsoft, 
 [pragmatic-works_website]:https://pragmaticworks.com//
 [infosys_website]:https://www.infosys.com/
 [credativ_website]:https://www.credativ.com/postgresql-competence-center/microsoft-azure
-[pactera_website]:https://en.pactera.com/service/azure-data-platform-services/
+[pactera_website]:https://en.pactera.com/
 
 <!--Get Started Links-->
 <!--Datasheet Links-->

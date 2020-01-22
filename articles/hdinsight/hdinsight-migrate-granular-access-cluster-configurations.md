@@ -7,29 +7,29 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/22/2019
-ms.openlocfilehash: ea8e1565a5ebe4e5cb40049fbfcb329feb83bdda
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: f1fdb9dffbe06430ea7e3eb9339e23f5239e4e36
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498203"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310836"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>Migrowanie do szczegółowego dostępu opartego na rolach w przypadku konfiguracji klastrów
 
 Wprowadzamy pewne ważne zmiany, aby obsługiwać bardziej szczegółowy dostęp oparty na rolach w celu uzyskania poufnych informacji. W ramach tych zmian niektóre działania mogą być wymagane **do 3 września 2019,** Jeśli używasz jednego z tych [jednostek/scenariuszy, których to dotyczy](#am-i-affected-by-these-changes).
 
-## <a name="what-is-changing"></a>Co się zmieni?
+## <a name="what-is-changing"></a>Co ulega zmianie?
 
 Wcześniej wpisy tajne mogą być uzyskiwane za pośrednictwem interfejsu API usługi HDInsight przez użytkowników klastrów, którzy posiadają [role](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)dla właściciela, współautora lub czytnika, ponieważ były dostępne dla wszystkich osób z uprawnieniami `*/read`. Wpisy tajne są definiowane jako wartości, które mogą być używane do uzyskania bardziej podwyższonego poziomu dostępu, niż powinna zezwalać rola użytkownika. Obejmują one wartości, takie jak poświadczenia HTTP bramy klastra, klucze konta magazynu i poświadczenia bazy danych.
 
 Od 3 września 2019 dostęp do tych kluczy tajnych będzie wymagał uprawnień `Microsoft.HDInsight/clusters/configurations/action`, co oznacza, że użytkownicy z rolą czytelnik nie będą mieli już dostępu do nich. Role, które mają to uprawnienie, to współautor, właściciel i Nowa rola operatora klastra usługi HDInsight (więcej informacji znajduje się poniżej).
 
-Wprowadzamy również nową rolę [operatora klastra usługi HDInsight](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#hdinsight-cluster-operator) , która będzie mogła pobierać wpisy tajne bez przyznawania uprawnień administracyjnych współautora lub właściciela. Aby podsumować:
+Wprowadzamy również nową rolę [operatora klastra usługi HDInsight](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#hdinsight-cluster-operator) , która będzie mogła pobierać wpisy tajne bez przyznawania uprawnień administracyjnych współautora lub właściciela. Podsumowując:
 
 | Rola                                  | Poprzedniej                                                                                       | Przechodzenie do przodu       |
 |---------------------------------------|--------------------------------------------------------------------------------------------------|-----------|
 | Czytelnik                                | — Dostęp do odczytu, w tym wpisy tajne                                                                   | — Dostęp do odczytu, **z wyłączeniem** wpisów tajnych |           |   |   |
-| Operator klastra usługi HDInsight<br>(Nowa rola) | Nie dotyczy                                                                                              | — Dostęp do odczytu/zapisu, w tym wpisy tajne         |   |   |
+| Operator klastra usługi HDInsight<br>(Nowa rola) | ND                                                                                              | — Dostęp do odczytu/zapisu, w tym wpisy tajne         |   |   |
 | Współautor                           | — Dostęp do odczytu/zapisu, w tym wpisy tajne<br>— Tworzenie wszystkich typów zasobów platformy Azure i zarządzanie nimi.     | Bez zmian |
 | Właściciel                                 | — Dostęp do odczytu/zapisu, w tym wpisy tajne<br>-Pełny dostęp do wszystkich zasobów<br>-Deleguj dostęp do innych osób | Bez zmian |
 
@@ -53,7 +53,7 @@ Dotyczy to następujących jednostek i scenariuszy:
 - [AZ. HDInsight PowerShell](#azhdinsight-powershell) poniżej wersji 2.0.0.
 Procedurę migracji dla danego scenariusza można znaleźć w poniższych sekcjach (lub za pomocą powyższych linków).
 
-### <a name="api"></a>Interfejs API
+### <a name="api"></a>API
 
 Następujące interfejsy API zostaną zmienione lub przestarzałe:
 
@@ -71,9 +71,9 @@ Dodano następujące zastępcze interfejsy API:</span>
 
 - [**Opublikuj/Configurations**](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#list-configurations)
     - Użyj tego interfejsu API, aby uzyskać wszystkie konfiguracje, w tym wpisy tajne.
-- [**Opublikuj/getGatewaySettings**](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#get-gateway-settings)
+- [**POST /getGatewaySettings**](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#get-gateway-settings)
     - Użyj tego interfejsu API, aby uzyskać ustawienia bramy.
-- [**Opublikuj/updateGatewaySettings**](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#update-gateway-settings)
+- [**POST /updateGatewaySettings**](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#update-gateway-settings)
     - Użyj tego interfejsu API, aby zaktualizować ustawienia bramy (nazwa użytkownika i/lub hasło).
 
 ### <a name="azure-hdinsight-tools-for-visual-studio-code"></a>Narzędzia usługi Azure HDInsight dla Visual Studio Code
@@ -132,9 +132,7 @@ Aktualizacja do [wersji 1.0.0](https://pypi.org/project/azure-mgmt-hdinsight/1.0
 Aktualizacja do [wersji 1.0.0](https://search.maven.org/artifact/com.microsoft.azure.hdinsight.v2018_06_01_preview/azure-mgmt-hdinsight/1.0.0/jar) lub nowszej zestawu HDInsight SDK dla języka Java. Jeśli używasz metody, której dotyczą te zmiany, mogą być wymagane minimalne modyfikacje kodu:
 
 - [`ConfigurationsInner.get`](https://docs.microsoft.com/java/api/com.microsoft.azure.management.hdinsight.v2018__06__01__preview.implementation._configurations_inner.get) **nie będzie już zwracać poufnych parametrów** , takich jak klucze magazynu (lokacja podstawowa) lub poświadczenia http (brama).
-    - Aby pobrać wszystkie konfiguracje, w tym poufne parametry, użyj [`ConfigurationsInner.list`](https://docs.microsoft.com/java/api/com.microsoft.azure.management.hdinsight.v2018_06_01_preview.implementation.configurationsinner.list?view=azure-java-stable) przechodzenie do przodu.  Należy pamiętać, że użytkownicy z rolą "czytelnik" nie będą mogli korzystać z tej metody. Pozwala to na szczegółową kontrolę nad tym, którzy użytkownicy mogą uzyskać dostęp do poufnych informacji dotyczących klastra. 
-    - Aby pobrać tylko poświadczenia bramy HTTP, użyj [`ClustersInner.getGatewaySettings`](https://docs.microsoft.com/java/api/com.microsoft.azure.management.hdinsight.v2018_06_01_preview.implementation.clustersinner.getgatewaysettings?view=azure-java-stable).
-- [`ConfigurationsInner.update`](https://docs.microsoft.com/java/api/com.microsoft.azure.management.hdinsight.v2018__06__01__preview.implementation._configurations_inner.update) jest teraz przestarzały i został zastąpiony przez [`ClustersInner.updateGatewaySettings`](https://docs.microsoft.com/java/api/com.microsoft.azure.management.hdinsight.v2018_06_01_preview.implementation.clustersinner.updategatewaysettings?view=azure-java-stable).
+- [`ConfigurationsInner.update`](https://docs.microsoft.com/java/api/com.microsoft.azure.management.hdinsight.v2018__06__01__preview.implementation._configurations_inner.update) jest obecnie przestarzałe.
 
 ### <a name="sdk-for-go"></a>Zestaw SDK dla języka go
 

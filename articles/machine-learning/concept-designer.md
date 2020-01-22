@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.author: peterlu
 author: peterclu
 ms.date: 11/12/2019
-ms.openlocfilehash: d3a12dec64d481c5c877039fecc71b46f224e91d
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 8208bbf4d196091a6fe4cd962ddc7373d303e125
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75541831"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76312434"
 ---
-# <a name="what-is-azure-machine-learning-designer-preview"></a>Co to jest Azure Machine Learning Designer (wersja zapoznawcza)? 
+# <a name="what-is-azure-machine-learning-designer"></a>Co to jest Azure Machine Learning Designer? 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
 Projektant Azure Machine Learning umożliwia wizualne łączenie [zestawów danych](#datasets) i [modułów](#module) na interaktywnej kanwie w celu tworzenia modeli uczenia maszynowego. Aby dowiedzieć się, jak rozpocząć pracę z projektantem, zobacz [Samouczek: przewidywanie ceny za samochód dla urządzeń przenośnych za pomocą projektanta](tutorial-designer-automobile-price-train-score.md)
@@ -116,13 +116,13 @@ Projektant tworzy ten sam obiekt [PublishedPipeline](https://docs.microsoft.com/
 
 ## <a name="moving-from-the-visual-interface-to-the-designer"></a>Przechodzenie z interfejsu wizualizacji do projektanta
 
-Interfejs wizualny (wersja zapoznawcza) został zaktualizowany i jest teraz Azure Machine Learning projektanta (wersja zapoznawcza). Projektant został przeprojektowany tak, aby korzystał z zaplecza opartego na potoku, który jest w pełni zintegrowany z innymi funkcjami Azure Machine Learning. 
+Interfejs wizualny (wersja zapoznawcza) został zaktualizowany i teraz Azure Machine Learning projektanta. Projektant został przeprojektowany tak, aby korzystał z zaplecza opartego na potoku, który jest w pełni zintegrowany z innymi funkcjami Azure Machine Learning. 
 
 W wyniku tych aktualizacji niektóre koncepcje i terminy dla interfejsu wizualizacji zostały zmienione lub zmieniono ich nazwy. Zapoznaj się z poniższą tabelą, aby poznać najważniejsze zmiany pojęciowe. 
 
 | Koncepcja projektanta | Wcześniej w interfejsie wizualizacji |
 | ---- |:----:|
-| Wersja robocza potoku | Eksperyment |
+| Wersja robocza potoku | Experiment |
 | Punkt końcowy w czasie rzeczywistym | Usługa sieci Web |
 
 ### <a name="migrating-to-the-designer"></a>Migrowanie do projektanta

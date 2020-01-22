@@ -14,12 +14,12 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2c818b7d7508555e1233d4ef954502728f65abfb
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 9e224218217b18ffc5c35ec45011097d93e5d797
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74917203"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76291588"
 ---
 # <a name="authentication-flows"></a>Przepływy uwierzytelniania
 
@@ -32,21 +32,21 @@ W tym artykule opisano różne przepływy uwierzytelniania udostępniane przez b
 | [Kod autoryzacji](#authorization-code) | Używany w aplikacjach zainstalowanych na urządzeniu w celu uzyskania dostępu do chronionych zasobów, takich jak interfejsy API sieci Web. Pozwala to na dodawanie funkcji logowania i dostępu do interfejsu API do aplikacji mobilnych i klasycznych. | [Aplikacje klasyczne](scenario-desktop-overview.md), [aplikacje mobilne](scenario-mobile-overview.md), [aplikacje sieci Web](scenario-web-app-call-api-overview.md) | 
 | [W imieniu](#on-behalf-of) | Aplikacja wywołuje usługę lub internetowy interfejs API, który z kolei musi wywołać inną usługę lub internetowy interfejs API. Pomysłem jest propagowanie tożsamości i uprawnień delegowanych użytkowników za pomocą łańcucha żądań. | [Interfejsy API sieci Web](scenario-web-api-call-api-overview.md) |
 | [Poświadczenia klienta](#client-credentials) | Umożliwia dostęp do zasobów hostowanych przez sieć Web przy użyciu tożsamości aplikacji. Często używane do interakcji między serwerami, które muszą działać w tle bez natychmiastowej interakcji z użytkownikiem. | [Aplikacje demona](scenario-daemon-overview.md) |
-| [Kod urządzenia](#device-code) | Umożliwia użytkownikom logowanie się na urządzeniach z ograniczeniami, takich jak inteligentna telewizja, urządzenie IoT lub drukarka. | [Aplikacje klasyczne i mobilne](scenario-desktop-acquire-token.md#command-line-tool-without-web-browser) |
+| [Kod urządzenia](#device-code) | Umożliwia użytkownikom logowanie się na urządzeniach z ograniczeniami, takich jak inteligentna telewizja, urządzenie IoT lub drukarka. | [Aplikacje klasyczne i mobilne](scenario-desktop-acquire-token.md#command-line-tool-without-a-web-browser) |
 | [Zintegrowane uwierzytelnianie systemu Windows](scenario-desktop-acquire-token.md#integrated-windows-authentication) | Zezwala aplikacjom w domenie lub Azure Active Directory (Azure AD) przyłączonym do uzyskiwania tokenu w trybie dyskretnym (bez interakcji z użytkownikiem).| [Aplikacje klasyczne i mobilne](scenario-desktop-acquire-token.md#integrated-windows-authentication) |
-| [Nazwa użytkownika/hasło](scenario-desktop-acquire-token.md#username--password) | Zezwala aplikacji na logowanie użytkownika przez bezpośrednią obsługę hasła. Ten przepływ nie jest zalecany. | [Aplikacje klasyczne i mobilne](scenario-desktop-acquire-token.md#username--password) |
+| [Nazwa użytkownika/hasło](scenario-desktop-acquire-token.md#username-and-password) | Zezwala aplikacji na logowanie użytkownika przez bezpośrednią obsługę hasła. Ten przepływ nie jest zalecany. | [Aplikacje klasyczne i mobilne](scenario-desktop-acquire-token.md#username-and-password) |
 
 ## <a name="how-each-flow-emits-tokens-and-codes"></a>Jak każdy przepływ emituje tokeny i kody
  
 W zależności od sposobu skompilowania klienta można użyć jednego (lub kilku) przepływów uwierzytelniania obsługiwanych przez platformę tożsamości firmy Microsoft.  Te przepływy mogą generować różne tokeny (id_tokens, tokeny odświeżenia, tokeny dostępu), a także kody autoryzacji i wymagać innych tokenów, aby działały. Ten wykres zawiera przegląd:
  
-|Przepływ | Wymaga | id_token | Token dostępu | Odśwież token | kod autoryzacji | 
+|Przepływ | Wymaga | id_token | token dostępu | Odśwież token | kod autoryzacji | 
 |-----|----------|----------|--------------|---------------|--------------------|
 |[Przepływ kodu autoryzacji](v2-oauth2-auth-code-flow.md) | | x | x | x | x|  
 |[Niejawny przepływ](v2-oauth2-implicit-grant-flow.md) | | x        | x    |      |                    |
 |[Hybrydowy przepływ OIDC](v2-protocols-oidc.md#get-access-tokens)| | x  | |          |            x   |
 |[Odświeżanie umorzenia tokenu](v2-oauth2-auth-code-flow.md#refresh-the-access-token) | Odśwież token | x | x | x| |
-|[Przepływ „w imieniu”](v2-oauth2-on-behalf-of-flow.md) | Token dostępu| x| x| x| |
+|[Przepływ „w imieniu”](v2-oauth2-on-behalf-of-flow.md) | token dostępu| x| x| x| |
 |[Przepływ kodu urządzenia](v2-oauth2-device-code.md) | | x| x| x| |
 |[Poświadczenia klienta](v2-oauth2-client-creds-grant-flow.md) | | | x (tylko aplikacja)| | |
  

@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 01/09/2020
-ms.openlocfilehash: 277b22498066542deaa080845cb816df493d7e13
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: bc083a95ebf6c7ecfabfef87e606f99053ba58bb
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122359"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76312417"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Zabezpieczenia przedsiębiorstwa dla Azure Machine Learning
 
@@ -176,12 +176,12 @@ Wystąpienie kontenera platformy Azure nie obsługuje szyfrowania dysków. Jeśl
 
 #### <a name="azure-kubernetes-service"></a>Azure Kubernetes Service
 
-Wdrożony zasób usługi Azure Kubernetes można zaszyfrować w dowolnym momencie przy użyciu kluczy zarządzanych przez klienta. Aby uzyskać więcej informacji, zobacz [https://aka.ms/aks/byok](https://aka.ms/aks/byok). 
+Wdrożony zasób usługi Azure Kubernetes można zaszyfrować w dowolnym momencie przy użyciu kluczy zarządzanych przez klienta. Aby uzyskać więcej informacji, zobacz temat [przenoszenie własnych kluczy za pomocą usługi Azure Kubernetes Service](../aks/azure-disk-customer-managed-keys.md). 
 
 Ten proces umożliwia zaszyfrowanie zarówno danych, jak i dysku systemu operacyjnego wdrożonych maszyn wirtualnych w klastrze Kubernetes.
 
 > [!IMPORTANT]
-> Ten proces działa tylko z AKS K8s w wersji 1,16 lub nowszej. Azure Machine Learning dodano obsługę AKS 1,16 w dniu 13 stycznia 2020.
+> Ten proces działa tylko z AKS K8s w wersji 1,17 lub nowszej. Azure Machine Learning dodano obsługę AKS 1,17 w dniu 13 stycznia 2020.
 
 #### <a name="machine-learning-compute"></a>środowisko obliczeniowe usługi Machine Learning
 

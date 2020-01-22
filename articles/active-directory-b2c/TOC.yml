@@ -76,7 +76,7 @@
   items:
     - name: Integracja aplikacji
       items:
-        - name: Rejestrowanie aplikacji OIDC
+        - name: Rejestrowanie aplikacji
           href: tutorial-register-applications.md
         - name: Rejestrowanie dostawcy usługi SAML
           href: connect-with-saml-service-providers.md
@@ -282,6 +282,11 @@
                   items:
                     - name: Identyfikatory ciągów lokalizacji
                       href: localization-string-ids.md
+                - name: DisplayControls
+                  href: display-controls.md
+                  items:
+                    - name: Weryfikacja
+                      href: display-control-verification.md
             - name: ClaimsProviders
               href: claimsproviders.md
               items:
@@ -318,13 +323,8 @@
                       href: self-asserted-technical-profile.md
                     - name: Sesja logowania jednokrotnego
                       href: active-directory-b2c-reference-sso-custom.md
-                    - name: Sprawdzanie poprawności
+                    - name: Walidacja
                       href: validation-technical-profile.md
-            - name: DisplayControls
-              href: display-controls.md
-              items:
-                - name: Weryfikacja
-                  href: display-control-verification.md
             - name: UserJourneys
               href: userjourneys.md
             - name: RelyingParty

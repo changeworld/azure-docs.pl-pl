@@ -10,16 +10,16 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: multiple
-ms.openlocfilehash: 58755a0ac49b9549813ddb507dfbd986d83dfce5
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: ccdeefabeedfca4959239696361ccce0bc6c1c78
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68305848"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76289802"
 ---
 # <a name="mainframe-rehosting-on-azure-virtual-machines"></a>Rehostowanie komputera mainframe na maszynach wirtualnych platformy Azure
 
-Migrowanie obciążeń ze środowisk mainframe do chmury umożliwia modernizację infrastruktury i często pozwala zaoszczędzić na kosztach. Wiele obciążeń można przenieść na platformę Azure z uwzględnieniem tylko drobnych zmian kodu, takich jak aktualizowanie nazw baz danych.
+Migrowanie obciążeń ze środowisk mainframe do chmury umożliwia modernizację infrastruktury i często pozwala zaoszczędzić na kosztach. Wiele obciążeń można przenieść na platformę Azure z uwzględnieniem tylko drobnych zmian kodu, takich jak aktualizacja nazw baz danych.
 
 Ogólnie mówiąc, termin *mainframe* oznacza duży system komputerowy. W odróżnieniu od tego większość większość jest obecnie używana w systemie IBM System Z lub systemami zgodnymi z technologią IBM, które działają w systemu MVS, DOS, VSE, OS/390 lub Z/OS.
 
@@ -39,7 +39,7 @@ Ponownie hostować, odbudować, zastąpić lub wycofać? IaaS lub PaaS? Aby okre
 
 Serwer z mikrofokusem jest jednym z największych dostępnych platform do udostępniania komputerów mainframe. Możesz użyć jej do uruchomienia obciążeń z/OS na tańszej platformie x86 na platformie Azure.
 
-Aby rozpocząć pracę:
+Aby rozpocząć:
 
 - [Instalowanie programu Enterprise Server i Enterprise Developer na platformie Azure](./microfocus/set-up-micro-focus-azure.md)
 - [Konfigurowanie programu CICS BankDemo for Enterprise Developer na platformie Azure](./microfocus/demo.md)
@@ -50,7 +50,7 @@ Aby rozpocząć pracę:
 
 TmaxSoft OpenFrame to popularne rozwiązanie do ponownego hostowania komputerów mainframe używane w scenariuszach podnoszenia i przesunięcia. Środowisko OpenFrame na platformie Azure jest odpowiednie do tworzenia, demonstracji, testowania lub obciążeń produkcyjnych.
 
-Aby rozpocząć pracę:
+Aby rozpocząć:
 
 - [Wprowadzenie do TmaxSoft OpenFrame](./tmaxsoft/get-started.md)
 - [Pobierz książkę elektroniczną](https://azure.microsoft.com/resources/install-tmaxsoft-openframe-on-azure/)
@@ -61,7 +61,7 @@ Aby rozpocząć pracę:
 
 Środowisko emulacji na platformie Azure może hostować różne rodzaje wystąpień Z za pomocą dystrybucji kontrolowanych przez deweloperów aplikacji (ADCDs). Możesz uruchomić zD & T Personal Edition, zD & T Parallel Sysplex i zD & T Enterprise Edition na platformie Azure i Azure Stack.
 
-Aby rozpocząć pracę:
+Aby rozpocząć:
 
 - [Konfigurowanie usług IBM zD & T 12,0 na platformie Azure](./ibm/install-ibm-z-environment.md)
 - [Konfigurowanie ADCD na zD & T](./ibm/demo.md)
@@ -76,7 +76,7 @@ Aby rozpocząć, zobacz temat [IBM DB2 pureScale na platformie Azure](/azure/vir
 
 Podczas migrowania obciążeń programu mainframe do infrastruktury platformy Azure jako usługi (IaaS) można wybrać spośród kilku typów skalowalnych zasobów obliczeniowych na żądanie, w tym maszyn wirtualnych platformy Azure. Platforma Azure oferuje wiele maszyn wirtualnych z [systemami](/azure/virtual-machines/windows/overview) [Linux](/azure/virtual-machines/linux/overview) i Windows.
 
-### <a name="compute"></a>Wystąpienia obliczeniowe
+### <a name="compute"></a>Compute
 
 Usługa Azure COMPUTE pobór porównuje favorably z pojemnością komputera mainframe. Jeśli zastanawiasz się nad przeniesieniem obciążenia komputera mainframe na platformę Azure, porównaj metrykę komputera mainframe z 1 000 000 instrukcjami na sekundę (MIPS) do wirtualnych procesorów CPU. 
 
@@ -90,9 +90,9 @@ Dzięki platformie Azure IaaS, takiej jak maszyna wirtualna, konkretne funkcje s
 
 ### <a name="scalability"></a>Skalowalność
 
-Komputery mainframe zazwyczaj skalują w górę, a środowiska chmury skalują w poziomie. Platforma Azure oferuje wiele rozmiarów systemów [Linux](/azure/virtual-machines/linux/sizes) i [Windows](/azure/virtual-machines/windows/sizes) spełniających Twoje potrzeby. Chmura również skaluje się w górę lub w dół, aby dopasować dokładne specyfikacje użytkownika. Skalowanie mocy obliczeniowej, magazynu [](/azure/architecture/best-practices/auto-scaling) i usług na żądanie w ramach modelu rozliczania opartego na użyciu.
+Komputery mainframe zazwyczaj skalują w górę, a środowiska chmury skalują w poziomie. Platforma Azure oferuje wiele rozmiarów systemów [Linux](/azure/virtual-machines/linux/sizes) i [Windows](/azure/virtual-machines/windows/sizes) spełniających Twoje potrzeby. Chmura również skaluje się w górę lub w dół, aby dopasować dokładne specyfikacje użytkownika. [Skalowanie](/azure/architecture/best-practices/auto-scaling) mocy obliczeniowej, magazynu i usług na żądanie w ramach modelu rozliczania opartego na użyciu.
 
-### <a name="storage"></a>Magazyn
+### <a name="storage"></a>Usługa Storage
 
 W chmurze masz szereg elastycznych, skalowalnych opcji magazynu i płacisz tylko za to, czego potrzebujesz. Usługa [Azure Storage](/azure/storage/common/storage-introduction) oferuje wysoce skalowalny magazyn obiektów dla obiektów danych, usługę systemu plików dla chmury, niezawodny magazyn komunikatów i Magazyn NoSQL. W przypadku maszyn wirtualnych dyski zarządzane i niezarządzane zapewniają trwały, bezpieczny magazyn dyskowy.
 
@@ -110,9 +110,9 @@ Azure Government uzyskała tymczasowy organ do obsługi (P-ATO) w celu uzyskania
 
 Aby rozpocząć, Pobierz [Microsoft Azure Government chmurę dla aplikacji dla komputerów mainframe](https://azure.microsoft.com/resources/microsoft-azure-government-cloud-for-mainframe-applications/en-us/).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Podawaj naszych [partnerów](partner-workloads.md) , aby ułatwić migrację lub ponowne hostowanie aplikacji typu mainframe. Aby uzyskać szczegółowe wskazówki dotyczące wybierania rozwiązania partnerskiego, zobacz witrynę sieci Web dotyczącą [modernizacji platformy](https://www.platformmodernization.org/pages/mainframe.aspx) .
+Podawaj naszych [partnerów](partner-workloads.md) , aby ułatwić migrację lub ponowne hostowanie aplikacji typu mainframe. 
 
 Zobacz też:
 

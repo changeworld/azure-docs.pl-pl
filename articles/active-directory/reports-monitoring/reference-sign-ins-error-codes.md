@@ -17,12 +17,12 @@ ms.date: 08/08/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fa19425de41b182db8c0a8c3b1a7940dbdf5701f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f7a025835275169b260dfd1f91b65341b5ba02ff
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75429485"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76294103"
 ---
 # <a name="sign-in-activity-report-error-codes"></a>Kody błędów raportów działań związanych z logowaniem 
 
@@ -96,6 +96,7 @@ Możesz również programowo uzyskać dostęp do danych logowania przy użyciu [
 |50072|Użytkownik musi zarejestrować się na potrzeby uwierzytelniania dwuskładnikowego (Interactive).|
 |50074|Użytkownik nie przeszedł żądania uwierzytelniania MFA.|
 |50076|Użytkownik nie przeszedł testu MFA (nieinterakcyjny).|
+|50078|Podane uwierzytelnianie wieloskładnikowe wygasło, należy odświeżyć uwierzytelnianie wieloskładnikowe w celu uzyskania dostępu.|
 |50079|Użytkownik musi zarejestrować się na potrzeby uwierzytelniania dwuskładnikowego (logowania nieinterakcyjnego).|
 |50085|Token odświeżania wymaga danych logowania dostawy tożsamości z serwisów społecznościowych. Użytkownik spróbuje ponownie zalogować się przy użyciu nazwy użytkownika i hasła.|
 |50089|Token przepływu wygasł — uwierzytelnianie nie powiodło się. Użytkownik spróbuje ponownie zalogować się przy użyciu nazwy użytkownika i hasła|
@@ -184,7 +185,8 @@ Możesz również programowo uzyskać dostęp do danych logowania przy użyciu [
 |90014| Brak wymaganego pola dla komunikatu protokołu, skontaktuj się z właścicielem aplikacji. Jeśli jesteś właścicielem aplikacji, upewnij się, że masz wszystkie wymagane parametry dla żądania logowania. |
 |90051| Nieprawidłowy token delegowania. Określono nieprawidłowy identyfikator chmury krajowej ({cloudId}).|
 |90072| Konto musi najpierw zostać dodane jako użytkownik zewnętrzny w dzierżawie. Wyloguj się i zaloguj ponownie przy użyciu innego konta usługi Azure AD.|
-|90094| Przydzielenie wymaga uprawnień administratora. Poproszenie administratora dzierżawy o zgodę na tę aplikację.|
+|90094| Aplikacja zażądała uprawnień, do których użytkownik zalogowany nie może wyrazić zgody, a użytkownik został zablokowany. |
+|90095| Aplikacja zażądała uprawnień, do których użytkownik zalogowany nie może wyrazić zgody, a użytkownik wykazał formularz [żądania zgody administratora](../manage-apps/configure-admin-consent-workflow.md) . |
 |500011| Nie znaleziono podmiotu zabezpieczeń o nazwie <site address> w dzierżawie o nazwie <tenant ID>. Taka sytuacja może wystąpić, jeśli aplikacja nie została zainstalowana przez administratora dzierżawy lub nie została wysłana przez żadnego użytkownika w dzierżawie. Żądanie uwierzytelniania mogło zostać wysłane do nieprawidłowej dzierżawy.|
 |500021| Dzierżawca jest ograniczony przez firmowy serwer proxy. Odmawianie dostępu do zasobów.|
 |500121| Uwierzytelnianie w trakcie silnego żądania uwierzytelniania nie powiodło się.|
@@ -193,6 +195,8 @@ Możesz również programowo uzyskać dostęp do danych logowania przy użyciu [
 |530032|Zablokowane przez zasady zabezpieczeń.| 
 |700016|Nie znaleziono aplikacji o identyfikatorze "{appIdentifier}" w katalogu "{dzierżawcname}". Taka sytuacja może wystąpić, jeśli aplikacja nie została zainstalowana przez administratora dzierżawy lub nie została wysłana przez żadnego użytkownika w dzierżawie. Być może wysłano żądanie uwierzytelnienia do niewłaściwej dzierżawy.|
 |900432|Klient poufny nie jest obsługiwany w żądaniu między chmurą.|
+|5000811|Nie można zweryfikować podpisu tokenu SAML. Identyfikator klucza podpisywania nie jest zgodny z żadnym prawidłowymi zarejestrowanymi kluczami.|
+|7000215|Podano nieprawidłowy klucz tajny klienta.|
 |7000218|Treść żądania musi zawierać następujący parametr: "client_assertion" lub "client_secret".|
 
 

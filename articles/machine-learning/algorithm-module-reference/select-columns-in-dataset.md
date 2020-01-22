@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: 3511c448298aa96c95dc970d1d192869c127eb0d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 6e78cbdd9cd921db2340a92c46a9337ac0fc98eb
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497668"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311856"
 ---
 # <a name="select-columns-in-dataset-module"></a>Wybierz kolumny w module DataSet
 
-W tym artykule opisano moduł w programie Azure Machine Learning Designer (wersja zapoznawcza).
+W tym artykule opisano moduł w programie Azure Machine Learning Designer.
 
 Użyj tego modułu, aby wybrać podzbiór kolumn do użycia w operacjach podrzędnych. Moduł nie usuwa fizycznie kolumn ze źródłowego zestawu danych; Zamiast tego tworzy podzestaw kolumn, podobnie jak w przypadku *widoku* bazy danych lub *projekcji*.
 

@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 11/19/2019
-ms.openlocfilehash: 135b425ca87a309bc171e252d8ff04b2027a3c50
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 7451758e758d597bfe63d92fe4789c8fa81b3dff
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74213912"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311482"
 ---
 # <a name="module-k-means-clustering"></a>Moduł: K-oznacza klastrowanie
 
-W tym artykule opisano, jak używać modułu *k-oznaczania klastrowania* w programie Azure Machine Learning Designer (wersja zapoznawcza) w celu utworzenia pośredniego modelu klastrowania. 
+W tym artykule opisano, jak używać modułu *k-oznaczania klastrowania* w programie Azure Machine Learning Designer do tworzenia nauczenia modelu k-to-klastrów. 
  
 K-oznacza to jeden z najprostszych i najlepszych znanych *nienadzorowanych* algorytmów uczenia. Można użyć algorytmu dla różnych zadań uczenia maszynowego, takich jak: 
 
@@ -115,9 +115,9 @@ Po zakończeniu konfigurowania i uczenia modelu masz model, którego można uży
 
 Jeśli użyto modułu [klastra uczenia](train-clustering-model.md) :
 
-1. Kliknij prawym przyciskiem myszy moduł **uczenie klastra** .
+1. Wybierz moduł **uczenie modelu klastra** i Otwórz prawy panel.
 
-2. Wybierz pozycję **szkolony model**, a następnie wybierz pozycję **Zapisz jako model przeszkolony**.
+2. Wybierz kartę dane **wyjściowe** . Wybierz ikonę **zarejestruj zestaw danych** , aby zapisać kopię nauczonego modelu.
 
 Zapisany model reprezentuje dane szkoleniowe w momencie zapisania modelu. Jeśli później zaktualizujesz dane szkoleniowe używane w potoku, nie zaktualizujesz zapisanego modelu. 
 
@@ -127,7 +127,7 @@ Jeśli użyto modułu [klastra uczenia](train-clustering-model.md) :
 
 1. Kliknij prawym przyciskiem myszy moduł **uczenie klastra** .
 
-2. Wybierz pozycję **zestaw danych wyników**, a następnie wybierz opcję **Wizualizuj**.
+2. Wybierz opcję **Wizualizuj**.
 
 ### <a name="tips-for-generating-the-best-clustering-model"></a>Wskazówki dotyczące generowania najlepszego modelu klastra  
 

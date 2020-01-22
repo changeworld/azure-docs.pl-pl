@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/28/2019
 ms.author: radeltch
-ms.openlocfilehash: ae2fb4c13633fa2ac22510a98e193bd9f01efb12
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: 15abee96f81bca68575d61be1276d4394e9a6f55
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73045384"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293814"
 ---
 # <a name="public-endpoint-connectivity-for-virtual-machines-using-azure-standard-load-balancer-in-sap-high-availability-scenarios"></a>Publiczna łączność z punktem końcowym dla Virtual Machines przy użyciu usługi Azure usługa Load Balancer w warstwie Standardowa w scenariuszach wysokiej dostępności SAP
 
@@ -35,7 +35,7 @@ W przypadku implementowania wysokiej dostępności dla rozwiązań SAP za pośre
 
 Moduł równoważenia obciążenia w warstwie Standardowa platformy Azure oferuje pewne korzyści w stosunku do podstawowego modułu równoważenia obciążenia. Na przykład działa w strefach dostępności platformy Azure, oferuje lepsze możliwości monitorowania i rejestrowania w celu łatwiejszego rozwiązywania problemów i skrócenia opóźnień. Funkcja "porty HA" obejmuje wszystkie porty, czyli nie jest już konieczne wyświetlanie listy wszystkich poszczególnych portów.  
 
-Istnieją pewne istotne różnice między podstawową i standardową jednostką SKU modułu równoważenia obciążenia platformy Azure. Jednym z nich jest obsługa ruchu wychodzącego do publicznego punktu końcowego. Aby zapoznać się z pełnym porównaniem modułu równoważenia obciążenia z podstawową jednostką SKU, zobacz [Load Balancer porównanie jednostek SKU](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview#skus).  
+Istnieją pewne istotne różnice między podstawową i standardową jednostką SKU modułu równoważenia obciążenia platformy Azure. Jednym z nich jest obsługa ruchu wychodzącego do publicznego punktu końcowego. Aby zapoznać się z pełnym porównaniem modułu równoważenia obciążenia z podstawową jednostką SKU, zobacz [Load Balancer porównanie jednostek SKU](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview).  
  
 Gdy maszyny wirtualne bez publicznych adresów IP są umieszczane w puli zaplecza wewnętrznego (bez publicznego adresu IP) standardowego modułu równoważenia obciążenia platformy Azure, nie istnieje łączność wychodząca z publicznymi punktami końcowymi, chyba że dodatkowa konfiguracja zostanie ukończona.  
 
@@ -71,7 +71,7 @@ Przeczytaj najpierw następujące dokumenty:
 
 ## <a name="additional-external-azure-standard-load-balancer-for-outbound-connections-to-internet"></a>Dodatkowe zewnętrzne usługa Load Balancer w warstwie Standardowa platformy Azure dla połączeń wychodzących z Internetem
 
-Jedną z opcji zapewnienia łączności wychodzącej z publicznymi punktami końcowymi, bez zezwalania na połączenia przychodzące z maszyną wirtualną z publicznego punktu końcowego, jest utworzenie drugiego modułu równoważenia obciążenia z publicznym adresem IP, dodanie maszyn wirtualnych do puli zaplecza drugiego modułu równoważenia obciążenia i zdefiniowanie tylko [reguły ruchu wychodzącego](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-rules-overview).  
+Jedną z opcji zapewnienia łączności wychodzącej z publicznymi punktami końcowymi, bez zezwalania na połączenia przychodzące z maszyną wirtualną z publicznego punktu końcowego, jest utworzenie drugiego modułu równoważenia obciążenia z publicznym adresem IP, dodanie maszyn wirtualnych do puli zaplecza drugiego modułu równoważenia obciążenia i zdefiniowanie tylko [reguł ruchu wychodzącego](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-rules-overview).  
 Używaj [sieciowych grup zabezpieczeń](https://docs.microsoft.com/azure/virtual-network/security-overview) do kontrolowania publicznych punktów końcowych, które są dostępne dla wywołań wychodzących z maszyny wirtualnej.  
 Aby uzyskać więcej informacji, zobacz scenariusz 2 w dokumencie [połączenia wychodzące](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#scenarios).  
 Konfiguracja będzie wyglądać następująco:  
@@ -89,7 +89,7 @@ Konfiguracja będzie wyglądać następująco:
 
 ### <a name="deployment-steps"></a>Kroki wdrażania
 
-1. Utwórz Load Balancer  
+1. Tworzenie modułu równoważenia obciążenia  
    1. W [Azure Portal](https://portal.azure.com) kliknij pozycję wszystkie zasoby, Dodaj, a następnie wyszukaj **Load Balancer**  
    1. Kliknij przycisk **Utwórz** 
    1. Nazwa Load Balancer **MyPublicILB**  

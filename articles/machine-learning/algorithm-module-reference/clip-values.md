@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
-ms.openlocfilehash: 68f73afbf81914938f78baad2cacda7327e7789a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ca35af997834a897572555e752597026b5159712
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428583"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314457"
 ---
 # <a name="clip-values"></a>Obcinanie wartości
 
-W tym artykule opisano moduł programu Azure Machine Learning Designer (wersja zapoznawcza).
+W tym artykule opisano moduł programu Azure Machine Learning Designer.
 
 Użyj modułu wartości klipów, aby identyfikować i opcjonalnie zamieniać wartości danych powyżej lub poniżej określonego progu ze średnią, stałą lub inną wartością zastępczą.  
 
@@ -86,7 +86,7 @@ Jeśli musisz zastosować metody przycinające lub inne kryteria do niektórych 
   
 1.  Uruchamianie potoku.  
   
-    Kliknij prawym przyciskiem myszy wyjście modułu **wartości klipu** i wybierz polecenie **Wizualizacja** , aby przejrzeć wartości i upewnić się, że operacja przycinania spełniała Twoje oczekiwania.  
+    Kliknij prawym przyciskiem myszy moduł **wartości klipów** i wybierz polecenie **Wizualizacja** lub wybierz moduł i przejdź do karty dane **wyjściowe** w prawym panelu, kliknij ikonę histogramu w danych **wyjściowych portu**, aby przejrzeć wartości i upewnić się, że operacja przycinania spełniała Twoje oczekiwania.  
  
 ### <a name="examples-for-clipping-using-percentiles"></a>Przykłady dla wycinków przy użyciu percentylów
 

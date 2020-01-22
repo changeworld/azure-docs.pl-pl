@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: hamusa
-ms.openlocfilehash: 4bc2e67d276deeea01989ed76be7352ce27abd71
-ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
+ms.openlocfilehash: ff267aabe2f9e4cec38c307fe4382a84ba6d62df
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/20/2020
-ms.locfileid: "76280819"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76288963"
 ---
 # <a name="set-up-agentless-dependency-visualization-for-assessment"></a>Konfigurowanie wizualizacji zależności bez agenta na potrzeby oceny
 
@@ -87,10 +87,10 @@ Wybierz maszyny, na których chcesz włączyć odnajdowanie zależności.
 
 1. W **Azure Migrate: Ocena serwera**, kliknij przycisk **odnalezione serwery**.
 2. Kliknij ikonę **analiza zależności** .
-3. Kliknij pozycję **Rozpocznij odnajdywanie zależności**.
-3. Na stronie **wykrywanie zależności uruchamiania** wybierz urządzenie, które odnajduje odpowiednie maszyny.
+3. Kliknij pozycję **Dodaj serwery**.
+3. Na stronie **Dodawanie serwerów** wybierz urządzenie, które odnajduje odpowiednie maszyny.
 4. Z listy maszyna wybierz maszyny.
-5. Kliknij pozycję **Rozpocznij odnajdywanie zależności**.
+5. Kliknij pozycję **Dodaj serwery**.
 
     ![Uruchom odnajdywanie zależności](./media/how-to-create-group-machine-dependencies-agentless/start-dependency-discovery.png)
 
@@ -123,10 +123,10 @@ Wybierz maszyny, na których chcesz zatrzymać odnajdywanie zależności.
 
 1. W **Azure Migrate: Ocena serwera**, kliknij przycisk **odnalezione serwery**.
 2. Kliknij ikonę **analiza zależności** .
-3. Kliknij przycisk **Zatrzymaj odnajdywanie zależności**.
-3. Na stronie **Zatrzymaj odnajdywanie zależności** wybierz **urządzenie** , które odnajduje maszyny wirtualne, na których chcesz zatrzymać odnajdywanie zależności.
+3. Kliknij przycisk **Usuń serwery**.
+3. Na stronie **usuwanie serwerów** wybierz **urządzenie** , które odnajduje maszyny wirtualne, na których chcesz zatrzymać odnajdywanie zależności.
 4. Z listy maszyna wybierz maszyny.
-5. Kliknij przycisk **Zatrzymaj odnajdywanie zależności**
+5. Kliknij przycisk **Usuń serwery**.
 
 
 ## <a name="next-steps"></a>Następne kroki

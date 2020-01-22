@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.service: cost-management-billing
 manager: micflan
 ms.custom: seodec18
-ms.openlocfilehash: 0221930f0b9fff0c9d4e398559f8d12999a66e91
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: f053b30d344e5372617a5bf98c087056c4fe2911
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75987565"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76294154"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Szybki Start: Eksplorowanie i analizowanie kosztów za pomocą analizy kosztów
 
@@ -138,24 +138,29 @@ Możesz wyświetlić pełny zestaw danych dla dowolnego widoku. Wybrane opcje lu
 
 W poniższej tabeli wymieniono niektóre z najpopularniejszych opcji grupowania i filtrowania oraz kiedy należy ich używać.
 
-| Właściwość | Kiedy stosować |
-| --- | --- |
-| **Okres rozliczeniowy** | Rozbicie kosztów według miesiąca faktury. Ta opcja jest ważna w przypadku subskrypcji z opcją płatność zgodnie z rzeczywistym użyciem i tworzenia/testowania, które nie są powiązane z miesiącami kalendarzowymi. Konta EA/MCA mogą używać miesięcy kalendarzowych w selektorze dat lub w celu osiągnięcia tego samego celu. |
-| **Typ opłaty** | Przerwij użycie, zakup, zwrot i niewykorzystane koszty rezerwacji. Zakup rezerwacji i zwroty są dostępne tylko w przypadku korzystania z kosztów akcji, a nie przy korzystaniu z amortyzowanych kosztów. Niewykorzystane koszty rezerwacji są dostępne tylko w przypadku ponoszenia kosztów z amortyzacją. |
-| **Chmura** | Podziel koszty na AWS i platformę Azure. Koszty AWS są dostępne tylko z grup zarządzania, zewnętrznych kont rozliczeń i subskrypcji zewnętrznych. |
-| Sekcja **działu** / **faktury** | Rozbicie kosztów według działu EA lub faktury MCA. Ta opcja jest dostępna tylko w przypadku kont rozliczania EA/MCA i profilów rozliczania MCA. |
-| **Konto rejestracji** | Podziel koszty na właściciela konta EA. Ta opcja jest dostępna tylko w przypadku kont i działów rozliczeniowych EA. |
-| **Częstotliwość** | Podział kosztów opartych na użyciu, jednorazowych i cyklicznych. |
-| **Wyższy** | Rozbicie kosztów według licznika użycia platformy Azure. Ta opcja jest dostępna tylko w przypadku użycia platformy Azure. Wszystkie zakupy i użycie w witrynie Marketplace będą wyświetlane jako **nieokreślone** lub **nieprzypisane**. |
-| **Typ wydawcy** | Podziel się kosztami AWS, Azure i Marketplace. |
-| **Przyszł** | Rozbicie kosztów według rezerwacji. Żadne użycie, które nie zawiera zastrzeżenia, będzie wyświetlane jako **nieokreślony**. |
-| **Zasób** | Podziel koszty według zasobu. Wszystkie zakupy będą wyświetlane jako **nieokreślone**, ponieważ są stosowane na koncie rozliczania EA/PAYG lub na poziomie profilu rozliczania MCA.  |
-| **Grupa zasobów** | Podziel koszty według grupy zasobów. Ta opcja jest dostępna tylko dla nieklasycznych zastosowań. Klasyczne użycie zasobów będzie widoczne jako **inne**, a zakupy będą widoczne jako **nieokreślone**. |
-| **Typ zasobu** | Podziel koszty według typu zasobu. Ta opcja jest dostępna tylko dla nieklasycznych zastosowań. Klasyczne użycie zasobów będzie widoczne jako **inne**, a zakupy będą widoczne jako **nieokreślone**. |
-| **Nazwa usługi** lub **Kategoria licznika** | Podziel koszt według usługi platformy Azure. Ta opcja jest dostępna tylko w przypadku użycia platformy Azure. Wszystkie zakupy i użycie w witrynie Marketplace będą wyświetlane jako **nieokreślone** lub **nieprzypisane**. |
-| Podkategoria **warstwy usług** lub **miernika** | Obniżenie kosztów według podklasyfikacji licznika użycia platformy Azure. Ta opcja jest dostępna tylko w przypadku użycia platformy Azure. Wszystkie zakupy i użycie w witrynie Marketplace będą wyświetlane jako **nieokreślone** lub **nieprzypisane**. |
-| **Subskrypcja** | Podziel koszty według subskrypcji. Wszystkie zakupy są wyświetlane jako **nieokreślone**. |
-| **Tag** | Podziel koszty na wartości tagów dla określonego klucza tagu. |
+| Właściwość | Kiedy stosować | Uwagi |
+| --- | --- | --- |
+| **Strefy dostępności** | Podziel koszty AWS według strefy dostępności. | Dotyczy tylko zakresów AWS i grup zarządzania. Dane platformy Azure nie obejmują strefy dostępności i będą widoczne jako **nie dotyczy**. |
+| **Okres rozliczeniowy** | Podziel koszty PAYG na miesiąc, w którym zostały wystawione faktury. | Użyj **okresu rozliczeniowego** , aby uzyskać dokładną reprezentację opłat za zafakturowane płatności. Uwzględnij 2 dodatkowe dni przed okresem rozliczeniowym i po nim w przypadku filtrowania do niestandardowego zakresu dat. Ograniczenie do dokładnych dat okresu rozliczeniowego nie będzie zgodne z fakturą. Spowoduje wyświetlenie kosztów ze wszystkich faktur w okresie rozliczeniowym. Użyj **identyfikatora faktury** , aby odfiltrować do określonej faktury. Dotyczy tylko subskrypcji PAYG, ponieważ umowy EA i MCA są rozliczane według miesięcy kalendarzowych. Konta EA/MCA mogą używać miesięcy kalendarzowych w selektorze dat lub w celu osiągnięcia tego samego celu. |
+| **Typ opłaty** | Przerwij użycie, zakup, zwrot i niewykorzystane koszty rezerwacji. | Zakup rezerwacji i zwroty są dostępne tylko w przypadku korzystania z rzeczywistych kosztów, a nie w przypadku korzystania z amortyzowanych kosztów. Niewykorzystane koszty rezerwacji są dostępne tylko w przypadku ponoszenia kosztów z amortyzacją. |
+| **Department** | Rozbicie kosztów według działu EA. | Dostępne tylko dla grup EA i grupy zarządzania. Subskrypcje PAYG nie mają działu i będą wyświetlane jako **niemające zastosowania** lub **nieprzypisane**. |
+| **Konto rejestracji** | Podziel koszty na właściciela konta EA. | Dostępne tylko dla kont, działów i grup zarządzania umowy EA. Subskrypcje PAYG nie mają kont rejestracji EA i będą wyświetlane jako **niedotyczyjące** lub **nieprzypisane**. |
+| **Częstotliwość** | Podział kosztów opartych na użyciu, jednorazowych i cyklicznych. | |
+| **Identyfikator faktury** | Rozbicie kosztów według faktury. | Nieobciążane opłaty nie mają jeszcze identyfikatora faktury, a koszty umowy EA nie zawierają informacji o fakturze i są wyświetlane jako **nie dotyczy**.  |
+| **Wyższy** | Rozbicie kosztów według licznika użycia. | W przypadku zakupów i użycia witryny Marketplace będzie wyświetlana wartość **nie dotyczy**. Zapoznaj się z **typem opłaty** , aby zidentyfikować zakupy i **Typ wydawcy** w celu identyfikowania opłat z witryny Marketplace. |
+| **Operacja** | Podziel koszty AWS według operacji. | Dotyczy tylko zakresów AWS i grup zarządzania. Dane platformy Azure nie obejmują operacji i będą wyświetlane jako **nie dotyczy** — zamiast tego użyj **miernika** . |
+| **Model cen** | Podziel koszty na żądanie, rezerwacja lub użycie na miejscu. | Zakupy są wyświetlane jako **OnDemand**. Jeśli zobaczysz, że **nie ma zastosowania**, Grupuj według **rezerwacji** , aby określić, czy użycie jest rezerwacja lub użycie na żądanie i **Typ opłaty** , aby zidentyfikować zakupy.
+| **Dostawca** | Podziel koszty na AWS i platformę Azure. | Dostępne tylko dla grup zarządzania. |
+| **Typ wydawcy** | Podziel się kosztami AWS, Azure i Marketplace. |  |
+| **Przyszł** | Rozbicie kosztów według rezerwacji. | Wszelkie użycie lub zakupy, które nie są skojarzone z rezerwacją, nie będą wyświetlane jako **nie dotyczy**. Grupuj według **typu wydawcy** , aby identyfikować inne zakupy na platformie Azure, AWS lub w portalu Marketplace. |
+| **Zasób** | Podziel koszty według zasobu. | Zakupy są wyświetlane jako **nie dotyczy**, ponieważ są stosowane na koncie rozliczania EA/PAYG lub na poziomie profilu rozliczania MCA i nieskojarzonym z określonym zasobem. Grupuj według **typu wydawcy** , aby identyfikować inne zakupy na platformie Azure, AWS lub w portalu Marketplace. |
+| **Grupa zasobów** | Podziel koszty według grupy zasobów. | Zakupy, zasoby dzierżawy nieskojarzone z subskrypcjami, zasoby subskrypcji nie zostały wdrożone w grupie zasobów, a zasoby klasyczne nie mają grupy zasobów i będą widoczne jako **inne**, **klasyczne usługi**, **$system**lub **nie ma zastosowania**. |
+| **Typ zasobu** | Podziel koszty według typu zasobu. | Zakupy i usługi klasyczne nie mają Azure Resource Managergo typu zasobu i będą widoczne jako **inne**, **klasyczne usługi**lub **nie mają zastosowania**. |
+| **Lokalizacja zasobu** | Podziel koszty według lokalizacji lub regionu. | Zakupy i użycie w witrynie Marketplace mogą być wyświetlane jako **nieprzypisane**, **nieznane**, **niezamapowane**lub **nie ma zastosowania**. |
+| **Nazwa usługi** lub **Kategoria licznika** | Podziel koszt według usługi platformy Azure. | Zakupy i użycie w witrynie Marketplace będą widoczne jako **niedotyczyjące** lub **nieprzypisane**. |
+| Podkategoria **warstwy usług** lub **miernika** | Obniżenie kosztów według podklasyfikacji licznika użycia platformy Azure. | Zakupy i użycie w witrynie Marketplace będą widoczne jako **niedotyczyjące** lub **nieprzypisane**. |
+| **Subskrypcja** | Rozbicie kosztów według subskrypcji platformy Azure i AWS połączonego konta. | Zakupy i zasoby dzierżawy mogą być wyświetlane jako **nie dotyczy**. |
+| **Tag** | Podziel koszty na wartości tagów dla określonego klucza tagu. | Tagi nie są dostępne do zakupów, zasoby dzierżawy nie są skojarzone z subskrypcjami, zasoby subskrypcji nie zostały wdrożone w grupie zasobów lub w klasycznych zasobach. Uwaga Niektóre usługi nie obejmują tagów w danych użycia. Dowiedz się więcej o [obsłudze tagów dla każdego typu zasobu](https://docs.microsoft.com/azure/azure-resource-manager/management/tag-support). |
 
 Aby uzyskać więcej informacji na temat terminów, zobacz [Opis terminów używanych w pliku użycia i opłat na platformie Azure](../understand/understand-usage.md).
 

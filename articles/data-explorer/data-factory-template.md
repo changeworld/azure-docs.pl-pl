@@ -8,18 +8,18 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/08/2019
-ms.openlocfilehash: ca50a1ecd4d2a21593ddd11f83337ae7476cf916
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 884f4e956b37c2def6c25d0acdf20f15eddf7767
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300441"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293559"
 ---
 # <a name="copy-in-bulk-from-a-database-to-azure-data-explorer-by-using-the-azure-data-factory-template"></a>Kopiuj zbiorczo z bazy danych na platformę Azure Eksplorator danych przy użyciu szablonu Azure Data Factory 
 
 Azure Eksplorator danych to szybka i w pełni zarządzana usługa analizy danych. Oferuje ona analizę w czasie rzeczywistym w przypadku dużych ilości danych przesyłanych strumieniowo z wielu źródeł, takich jak aplikacje, witryny sieci Web i urządzenia IoT. 
 
-Azure Data Factory to w pełni zarządzana, oparta na chmurze usługa integracji danych. Służy do wypełniania bazy danych usługi Azure Eksplorator danych bazą danych z istniejącego systemu. Może pomóc zaoszczędzić czas podczas kompilowania rozwiązań analitycznych. 
+Aby skopiować dane z bazy danych programu Oracle Server, Netezza, Teradata lub SQL Server do usługi Azure Eksplorator danych, należy załadować ogromne ilości danych z wielu tabel. Zwykle dane należy podzielić na partycje w każdej tabeli, aby można było załadować wiersze z wieloma wątkami równolegle z pojedynczej tabeli. W tym artykule opisano szablon, który ma być używany w tych scenariuszach.
 
 [Szablony Azure Data Factory](/azure/data-factory/solution-templates-introduction) są wstępnie zdefiniowane Data Factory potoków. Te szablony mogą pomóc szybko rozpocząć pracę z Data Factory i skrócić czas opracowywania projektów integracji danych. 
 
@@ -77,9 +77,9 @@ Jeśli ControlTableDataset jest w innym formacie, Utwórz porównywalny ControlT
 
     b. Z listy rozwijanej **SourceDataset** wybierz połączoną usługę do źródłowej bazy danych. 
 
-    c. Z listy rozwijanej **AzureDataExplorerTable** wybierz tabelę Eksplorator danych platformy Azure. Jeśli zestaw danych nie istnieje, [Utwórz połączoną usługę Azure Eksplorator danych](data-factory-load-data.md#create-the-azure-data-explorer-linked-service) , aby dodać zestaw danych.
+    d. Z listy rozwijanej **AzureDataExplorerTable** wybierz tabelę Eksplorator danych platformy Azure. Jeśli zestaw danych nie istnieje, [Utwórz połączoną usługę Azure Eksplorator danych](data-factory-load-data.md#create-the-azure-data-explorer-linked-service) , aby dodać zestaw danych.
 
-    d. Wybierz pozycję **Użyj tego szablonu**.
+    d. Wybierz przycisk **Użyj tego szablonu**.
 
     ![Okienko "kopiowanie masowe z bazy danych do platformy Azure Eksplorator danych"](media/data-factory-template/configure-bulk-copy-adx-template.png)
 

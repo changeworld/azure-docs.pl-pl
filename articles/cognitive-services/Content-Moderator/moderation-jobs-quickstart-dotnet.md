@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: pafarley
-ms.openlocfilehash: bdc9e8cbea77b504cfdc2c3b1c83c74ea4ab8ed1
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: fe1b5b4171dc5e61c1c82abfd723d0b77a05a5b9
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72935973"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76294341"
 ---
 # <a name="define-and-use-moderation-jobs-net"></a>Definiowanie i używanie zadań moderowania (.NET)
 
@@ -75,7 +75,7 @@ using System.IO;
 using System.Threading;
 ```
 
-### <a name="create-the-content-moderator-client"></a>Tworzenie klienta usług Content Moderator
+### <a name="create-the-content-moderator-client"></a>Tworzenie klienta usługi Content Moderator
 
 Dodaj następujący kod, aby utworzyć klienta usługi Content Moderator dla Twojej subskrypcji.
 
@@ -124,7 +124,7 @@ public static class Clients
 Dodaj następujące stałe i pola statyczne do klasy **Program** w pliku Program.cs.
 
 > [!NOTE]
-> Nadaj stałej TeamName nazwę użytą podczas tworzenia subskrypcji usługi Content Moderator. Pobierz stałą TeamName z [witryny sieci Web usługi Content Moderator](https://westus.contentmoderator.cognitive.microsoft.com/).
+> Nadaj stałej TeamName nazwę użytą podczas tworzenia subskrypcji usługi Content Moderator. Pobrano TeamName z witryny sieci Web Content Moderator.
 > Po zalogowaniu wybierz opcję **Poświadczenia** z menu (koła zębatego) **Ustawienia**.
 >
 > Nazwa zespołu to wartość pola **Id** w sekcji **Interfejs API**.
@@ -316,4 +316,4 @@ Zobaczysz odpowiedź podobną do następującej:
 
 ## <a name="next-steps"></a>Następne kroki
 
-Pobierz zestaw [SDK Content Moderator dla platformy.NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) i [rozwiązanie programu Visual Studio](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) dla tego i innych przewodników Szybki start usługi Content Moderator dla platformy .NET i rozpocznij pracę nad integracją.
+Pobierz [zestaw SDK Content Moderator dla platformy .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) i [rozwiązanie Visual Studio](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) dla tego i innych przewodników Szybki start dotyczących usług Content Moderator dla platformy .NET i rozpocznij pracę nad integracją.

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/09/2018
 ms.author: mavane
 ms.custom: seodec18
-ms.openlocfilehash: 0c69c90410aab7fa37ab87e82314c53e4459ca25
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 0e4dd67e1686d3b63376138d1be2d1f7df4bb41a
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76155659"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76290652"
 ---
 # <a name="develop-azure-resource-manager-templates-for-cloud-consistency"></a>Tworzenie szablonów usługi Azure Resource Manager w celu zachowania spójności w chmurze
 
@@ -55,7 +55,7 @@ Możliwości usługi Azure Resource Manager będzie zawsze wprowadzane do global
 
 1. Gdy masz lokalnego klona repozytorium, podłącz do docelowej usługi Azure Resource Manager przy użyciu programu PowerShell.
 
-1. Zaimportuj moduł PSM1 i wykonaj polecenie cmdlet Test-AzureRmureRmTemplateFunctions:
+1. Zaimportuj moduł psm1 i wykonaj następujące polecenie cmdlet Test-AzureRmTemplateFunctions:
 
    ```powershell
    # Import the module

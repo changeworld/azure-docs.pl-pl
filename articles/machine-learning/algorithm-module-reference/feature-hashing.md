@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 09/01/2019
-ms.openlocfilehash: 48960eae4941bb744a937639e1308e1b5f6aaf9f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 60a9c6b237423337abb520b335c98d3c8c7549be
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497836"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76312207"
 ---
 # <a name="feature-hashing-module-reference"></a>Odwołanie do modułu wyznaczania wartości skrótu funkcji
 
-W tym artykule opisano moduł dostępny w programie Azure Machine Learning Designer (wersja zapoznawcza).
+W tym artykule opisano moduł dostępny w programie Azure Machine Learning Designer.
 
 Użyj modułu wyznaczania wartości skrótu funkcji, aby przekształcić strumień tekstu w języku angielskim do zestawu funkcji całkowitych. Następnie można przekazać tę funkcję skrótu do algorytmu uczenia maszynowego, aby szkolić model analizy tekstu.
 
@@ -50,16 +50,16 @@ Można kontrolować rozmiar n-gramów przy użyciu właściwości **n-Grams** . 
 
 |Termin (unigrams)|Częstotliwość|
 |------------|---------------|
-|typu|3|
+|książka|3|
 |I|3|
-|stad|1|
+|książki|1|
 |błędu|1|
 
 Po skompilowaniu słownika moduł tworzenia skrótów funkcji konwertuje warunki słownika na wartości skrótu. Następnie oblicza, czy funkcja została użyta w każdym przypadku. Dla każdego wiersza danych tekstowych moduł wyprowadza zestaw kolumn, jedną kolumnę dla każdej funkcji skrótu.
 
 Na przykład po utworzeniu skrótu kolumny funkcji mogą wyglądać następująco:
 
-|Klasyfikacji|Funkcja mieszania 1|Funkcja mieszania 2|Funkcja mieszania 3|
+|Ocena|Funkcja mieszania 1|Funkcja mieszania 2|Funkcja mieszania 3|
 |-----|-----|-----|-----|
 |4|1|1|0|
 |5|0|0|0|
@@ -111,7 +111,7 @@ Po zakończeniu przetwarzania moduł wyprowadza przekształcony zestaw danych, w
 
 Po utworzeniu przekształconego zestawu danych można go użyć jako danych wejściowych modułu uczenie modelu.
  
-### <a name="best-practices"></a>Najlepsze praktyki
+### <a name="best-practices"></a>Najlepsze rozwiązania
 
 Poniższe najlepsze rozwiązania mogą pomóc w optymalnym wykorzystaniu modułu tworzenia skrótów funkcji:
 

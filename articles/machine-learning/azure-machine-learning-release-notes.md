@@ -8,20 +8,35 @@ ms.subservice: core
 ms.topic: reference
 ms.author: jmartens
 author: j-martens
-ms.date: 11/04/2019
+ms.date: 01/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0e613dd1c47a9942d95bd668f1e9f85e42649b5c
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 1cd9ca07aab1953d114caf748ca99170fae6b876
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122376"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293202"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Informacje o wersji Azure Machine Learning
 
 W tym artykule dowiesz się więcej na temat wydań Azure Machine Learning.  Aby uzyskać pełną zawartość referencyjną SDK, odwiedź stronę referencyjną [**głównego zestawu sdk Azure Machine Learning dla języka Python**](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) .
 
 Zobacz [listę znanych problemów](resource-known-issues.md) informacje na temat znanych błędów i rozwiązania problemu.
+
+## <a name="2020-01-21"></a>2020-01-21
+
+### <a name="azure-machine-learning-designer-generally-available-ga"></a>Projektant Azure Machine Learning jest ogólnie dostępny (GA)
+
+Projektant jest teraz ogólnie dostępny.
+
++ **Nowe funkcje**
+    + Dodano opcję modułu `Regenerate Output`, aby wymusić ignorowanie buforowanych wyników przez projektanta.
+    + Dodano nowe widoki do szczegółów uruchomienia potoku:
+        + Widok listy potoków.
+        + Widok dziennika w przeglądarce.
+    + Dodano etykiety do portów wejściowych i wyjściowych modułu.
+    + Dodano opcję potoku `Set as Default` na [karcie punkty końcowe](how-to-run-batch-predictions-designer.md#versioning-endpoints).
+    + Dodano skróty klawiaturowe i [funkcje ułatwień dostępu](designer-accessibility.md)czytnika ekranu.
 
 ## <a name="2020-01-06"></a>2020-01-06
 

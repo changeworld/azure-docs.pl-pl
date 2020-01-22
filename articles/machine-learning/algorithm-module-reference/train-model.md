@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: 28cc2e1f8782f1ffd37e3a20fcc68264b481e42e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b62e03184453c4daea8615ee2bea39c936de5c73
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73490376"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76313981"
 ---
-# <a name="train-model-module"></a>Moduł uczenia modelu
+# <a name="train-model-module"></a>Train Model modułu
 
-W tym artykule opisano moduł w programie Azure Machine Learning Designer (wersja zapoznawcza).
+W tym artykule opisano moduł w programie Azure Machine Learning Designer.
 
 Ten moduł służy do uczenia modelu klasyfikacji lub regresji. Szkolenia odbywają się po zdefiniowaniu modelu i ustawieniu jego parametrów i wymaganiu oznakowanych danych. Możesz również użyć **modelu uczenia** , aby ponownie szkolić istniejący model przy użyciu nowych danych. 
 
@@ -68,10 +68,9 @@ W Azure Machine Learning tworzenie i Używanie modelu uczenia maszynowego jest z
 
 Po przeszkoleniu modelu:
 
-+ Aby wyświetlić parametry modelu i wagi funkcji, kliknij prawym przyciskiem myszy dane wyjściowe i wybierz polecenie **Wizualizuj**.
-+ Aby użyć modelu w innych potokach, kliknij model prawym przyciskiem myszy, a następnie wybierz pozycję **Zapisz model**. Wpisz nazwę modelu. 
 
-    Spowoduje to zapisanie modelu jako migawki, która nie jest aktualizowana przez powtarzające się uruchomienia potoku.
++ Aby użyć modelu w innych potokach, wybierz moduł i wybierz ikonę **zarejestruj zestaw danych** na karcie dane **wyjściowe** w prawym panelu. Dostęp do zapisanych modeli można uzyskać w palecie modułów w obszarze **zestawy danych**.
+
 + Aby użyć modelu w celu przewidywania nowych wartości, połącz go z modułem [modelu oceny](./score-model.md) wraz z nowymi danymi wejściowymi.
 
 

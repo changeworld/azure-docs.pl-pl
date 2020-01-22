@@ -9,14 +9,14 @@ ms.topic: how-to
 author: peterclu
 ms.author: peterlu
 ms.date: 01/16/2020
-ms.openlocfilehash: 421f1f733e64daaa4d87ce3c5af5126a48a8ffa5
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: 5df00d68b7114cc489b0708f5c2e401c87d0be15
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76170890"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314032"
 ---
-# <a name="import-your-data-into-azure-machine-learning-designer-preview"></a>Importowanie danych do programu Azure Machine Learning Designer (wersja zapoznawcza)
+# <a name="import-your-data-into-azure-machine-learning-designer"></a>Importowanie danych do programu Azure Machine Learning Designer
 
 W tym artykule dowiesz się, jak zaimportować własne dane do projektanta w celu utworzenia niestandardowych rozwiązań. Istnieją dwa sposoby importowania danych do projektanta: 
 

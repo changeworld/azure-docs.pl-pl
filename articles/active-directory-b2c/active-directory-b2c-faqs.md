@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 577dc6d4344cd6d7a38c4d538218c9dd89e883aa
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 803c82c9926c3b75545b42a9a382fd5c327b7151
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73643639"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76289088"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: często zadawane pytania
 
@@ -27,7 +27,7 @@ Istnieją dwie typowe przyczyny, dla których rozszerzenie usługi Azure AD nie 
 
 ### <a name="can-i-use-azure-ad-b2c-features-in-my-existing-employee-based-azure-ad-tenant"></a>Czy mogę używać funkcji Azure AD B2C w mojej istniejącej dzierżawie usługi Azure AD opartej na pracowniku?
 
-Usługa Azure AD i Azure AD B2C są oddzielnymi ofertami produktu i nie mogą współistnieć w tej samej dzierżawie. Dzierżawa usługi Azure AD reprezentuje organizację. Dzierżawca Azure AD B2C reprezentuje kolekcję tożsamości, które mają być używane z aplikacjami jednostek uzależnionych. Przy użyciu zasad niestandardowych Azure AD B2C można sfederować do usługi Azure AD, umożliwiając uwierzytelnianie pracowników w organizacji.
+Usługa Azure AD i Azure AD B2C są oddzielnymi ofertami produktu i nie mogą współistnieć w tej samej dzierżawie. Dzierżawa usługi Azure AD reprezentuje organizację. Dzierżawca Azure AD B2C reprezentuje kolekcję tożsamości, które mają być używane z aplikacjami jednostek uzależnionych. Dodając **nowego dostawcę połączenia usługi OpenID Connect** w obszarze **Azure AD B2C > dostawców tożsamości** lub zasad niestandardowych, Azure AD B2C można SFEDEROWAĆ z usługą Azure AD, umożliwiając uwierzytelnianie pracowników w organizacji.
 
 ### <a name="can-i-use-azure-ad-b2c-to-provide-social-login-facebook-and-google-into-office-365"></a>Czy mogę użyć usługi Azure AD B2C, aby zapewnić logowanie społeczne (Facebook i Google +) do pakietu Office 365?
 
@@ -77,8 +77,8 @@ Za pomocą [funkcji znakowania firmowego](../active-directory/fundamentals/custo
 Podpis e-mail zawiera nazwę dzierżawy Azure AD B2C podaną podczas pierwszego utworzenia dzierżawy Azure AD B2C. Nazwę można zmienić, korzystając z następujących instrukcji:
 
 1. Zaloguj się do [Azure Portal](https://portal.azure.com/) jako Administrator globalny.
-1. Otwórz blok **Azure Active Directory** .
-1. Kliknij kartę **Właściwości** .
+1. Otwórz blok **Azure Active Directory**.
+1. Kliknij przycisk **właściwości** kartę.
 1. Zmień wartość pola **Nazwa** .
 1. Kliknij przycisk **Zapisz** w górnej części strony.
 
@@ -150,7 +150,7 @@ Możesz użyć bieżącego środowiska **aplikacji** lub naszego nowego systemu 
 1. W obszarze **Zarządzaj**wybierz pozycję **Ustawienia użytkownika**.
 1. Jeśli jest obecny, w obszarze **połączenia konta serwisu LinkedIn**wybierz pozycję **nie**, a następnie wybierz pozycję **Zapisz**.
 1. W obszarze **Zarządzaj**wybierz pozycję **Właściwości** .
-1. W obszarze **Zarządzanie dostępem do zasobów platformy Azure**wybierz pozycję **tak**, a następnie wybierz pozycję **Zapisz**.
+1. W obszarze **Zarządzanie dostępem do zasobów platformy Azure** wybierz pozycję **Tak**, a następnie wybierz przycisk **Zapisz**.
 1. Wyloguj się z Azure Portal a następnie zaloguj się ponownie, aby odświeżyć dostęp.
 1. Wybierz pozycję **Azure Active Directory** w menu po lewej stronie.
 1. Na stronie **Przegląd** wybierz pozycję **Usuń katalog**. Postępuj zgodnie z instrukcjami wyświetlanymi na ekranie, aby ukończyć proces.
@@ -170,7 +170,7 @@ Możesz użyć bieżącego środowiska **aplikacji** lub naszego nowego systemu 
 1. W obszarze **Zarządzaj**wybierz pozycję **Ustawienia użytkownika**.
 1. Jeśli jest obecny, w obszarze **połączenia konta serwisu LinkedIn**wybierz pozycję **nie**, a następnie wybierz pozycję **Zapisz**.
 1. W obszarze **Zarządzaj**wybierz pozycję **Właściwości** .
-1. W obszarze **Zarządzanie dostępem do zasobów platformy Azure**wybierz pozycję **tak**, a następnie wybierz pozycję **Zapisz**.
+1. W obszarze **Zarządzanie dostępem do zasobów platformy Azure** wybierz pozycję **Tak**, a następnie wybierz przycisk **Zapisz**.
 1. Wyloguj się z Azure Portal a następnie zaloguj się ponownie, aby odświeżyć dostęp.
 1. Wybierz pozycję **Azure Active Directory** w menu po lewej stronie.
 1. Na stronie **Przegląd** wybierz pozycję **Usuń katalog**. Postępuj zgodnie z instrukcjami wyświetlanymi na ekranie, aby ukończyć proces.

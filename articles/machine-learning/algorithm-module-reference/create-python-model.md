@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 11/19/2019
-ms.openlocfilehash: 0c1a4f33da7e1f39951d641ed1d563c46fb664ca
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: c07ae779334c97b28803d77d2ce4a1b5b7962b48
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232647"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314423"
 ---
 # <a name="create-python-model"></a>Tworzenie modelu języka Python
 
-W tym artykule opisano moduł w programie Azure Machine Learning Designer (wersja zapoznawcza).
+W tym artykule opisano moduł w programie Azure Machine Learning Designer.
 
 Dowiedz się, jak za pomocą modułu **tworzenia modelu języka Python** utworzyć niepociąg model ze skryptu języka Python. Model można utworzyć na podstawie dowolnych informacji, które są zawarte w pakiecie Python w środowisku programu Azure Machine Learning Designer. 
 

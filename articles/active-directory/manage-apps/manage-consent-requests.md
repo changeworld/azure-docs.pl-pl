@@ -12,12 +12,12 @@ ms.date: 12/27/2019
 ms.author: mimart
 ms.reviewer: phsignor
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c6a77fa8c6c48c9c3d4f2eba3ba56ac9114707a
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 528aff73b931776ef9a6542437db271bb214c7fb
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122992"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76290703"
 ---
 # <a name="managing-consent-to-applications-and-evaluating-consent-requests"></a>Zarządzanie zgodą na aplikacje i ocenianie żądań zgody
 
@@ -42,7 +42,7 @@ Po wyłączeniu lub ograniczeniu zgody użytkownika końcowego należy pamięta�
 
 3. Jeśli Twoja organizacja ma odpowiednią licencję:
 
-    * Skorzystaj [z dodatkowych funkcji inspekcji aplikacji OAuth w Microsoft Cloud App Security](https://docs.microsoft.com/azure/cloud-app-security/investigate-risky-oauth).
+    * Skorzystaj [z dodatkowych funkcji inspekcji aplikacji OAuth w Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/investigate-risky-oauth).
     * Użyj [skoroszytów Azure monitor do monitorowania uprawnień i](../reports-monitoring/howto-use-azure-monitor-workbooks.md) działań związanych z zgodą. Skoroszyt *Informacje o zgodzie* zawiera widok aplikacji według liczby nieudanych żądań zgody. Może to być przydatne w przypadku określania priorytetów aplikacji dla administratorów do przeglądania i decydowania, czy należy przyznać im zgodę administratora.
 
 ### <a name="additional-considerations-for-reducing-friction"></a>Dodatkowe zagadnienia dotyczące zmniejszenia liczby problemów

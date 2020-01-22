@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 09/01/2019
-ms.openlocfilehash: 71c1afd294b880f68849b283ea1a4b058d744801
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 4f64ac9b276c71a037f96766b38a2574b89441c8
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497840"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76312230"
 ---
 # <a name="extract-n-gram-features-from-text-module-reference"></a>Wyodrębnij funkcje N-gramowe z odwołania do modułu tekstowego
 
-W tym artykule opisano moduł w programie Azure Machine Learning Designer (wersja zapoznawcza). Użycie funkcji Wyodrębnij N-gramy z modułu tekstowego do *cechowanie* danych tekstowych bez struktury. 
+W tym artykule opisano moduł w programie Azure Machine Learning Designer. Użycie funkcji Wyodrębnij N-gramy z modułu tekstowego do *cechowanie* danych tekstowych bez struktury. 
 
 ## <a name="configuration-of-the-extract-n-gram-features-from-text-module"></a>Konfiguracja funkcji wyodrębniania N-gramów z modułu tekstowego
 
@@ -125,7 +125,7 @@ Słownictwo zawiera słownik n-gram z wynikami częstotliwości, które są gene
 + **DF**: termin częstotliwości dla n-gramu w pierwotnej korpus.
 + **IDF**: wynik odwrotnej częstotliwości dokumentu dla n-gramów w oryginalnym korpus.
 
-Możesz ręcznie zaktualizować ten zestaw danych, ale możesz wprowadzić błędy. Na przykład:
+Możesz ręcznie zaktualizować ten zestaw danych, ale możesz wprowadzić błędy. Przykład:
 
 * Błąd jest zgłaszany, jeśli moduł znajdzie zduplikowane wiersze z tym samym kluczem w słowniku wejściowym. Upewnij się, że żadne dwa wiersze w słowniku nie mają tego samego wyrazu.
 * Schemat wejściowy zestawów danych słownictwa musi dokładnie pasować, włącznie z nazwami kolumn i typami kolumn. 

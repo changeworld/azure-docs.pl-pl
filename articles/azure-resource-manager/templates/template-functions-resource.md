@@ -2,13 +2,13 @@
 title: Funkcje szablonu — zasoby
 description: Opisuje funkcje, aby użyć w szablonie usługi Azure Resource Manager można pobrać wartości dotyczące zasobów.
 ms.topic: conceptual
-ms.date: 01/06/2020
-ms.openlocfilehash: 85e421d4d4e53d275613ff8848abd405fdf175c2
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 01/20/2020
+ms.openlocfilehash: 56ace8c75ea27eb4d730b1630115b6fcbdc3f575
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979440"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310544"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Funkcje zasobów dla szablonów usługi Azure Resource Manager
 
@@ -533,6 +533,16 @@ W przypadku konstruowania w pełni kwalifikowanego odwołania do zasobu kolejno�
 Przykład:
 
 `Microsoft.Compute/virtualMachines/myVM/extensions/myExt` jest prawidłowy `Microsoft.Compute/virtualMachines/extensions/myVM/myExt` jest niepoprawny
+
+### <a name="get-managed-identity"></a>Pobierz tożsamość zarządzaną
+
+[Zarządzane tożsamości dla zasobów platformy Azure](../../active-directory/managed-identities-azure-resources/overview.md) to [typy zasobów rozszerzeń](extension-resource-types.md) , które są tworzone niejawnie dla niektórych zasobów. Ponieważ zarządzana tożsamość nie jest jawnie zdefiniowana w szablonie, należy odwołać się do zasobu, do którego jest stosowana tożsamość. Użyj `Full`, aby pobrać wszystkie właściwości, w tym niejawnie utworzoną tożsamość.
+
+Na przykład aby uzyskać identyfikator dzierżawy dla tożsamości zarządzanej, która została zastosowana do zestawu skalowania maszyn wirtualnych, użyj:
+
+```json
+"tenantId": "[reference(concat('Microsoft.Compute/virtualMachineScaleSets/',  variables('vmNodeType0Name')), variables('vmssApiVersion'), 'Full').Identity.tenantId]"
+```
 
 ### <a name="reference-example"></a>Przykład odwołania
 

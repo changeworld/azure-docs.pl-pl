@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 12/27/2019
+ms.date: 01/16/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8a8f3895f41ac987b934b86f8d646b281c37c93
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 79f5284f95f6157c70461179177179a9fbee4fe0
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75561992"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293695"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-servicenow"></a>Samouczek: Azure Active Directory integracji logowania jednokrotnego (SSO) z usługą usługi ServiceNow
 
@@ -46,9 +46,15 @@ Aby rozpocząć, potrzebne są następujące elementy:
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
-W tym samouczku skonfigurujesz i testujesz Logowanie jednokrotne usługi Azure AD w środowisku testowym. Usługa usługi ServiceNow obsługuje usługę **SP** zainicjowaną przez usługę SSO oraz [Automatyczne Inicjowanie obsługi użytkowników](servicenow-provisioning-tutorial.md).
+W tym samouczku skonfigurujesz i testujesz Logowanie jednokrotne usługi Azure AD w środowisku testowym. 
 
-Aby włączyć logowanie jednokrotne, można skonfigurować aplikację klasyczną usługi ServiceNow (Mobile) w usłudze Azure AD. Obsługuje zarówno użytkowników systemu Android, jak i iOS. W tym samouczku skonfigurujesz i testujesz Logowanie jednokrotne usługi Azure AD w środowisku testowym.
+* Usługa usługi ServiceNow obsługuje usługę **SP** zainicjowaną przez usługę SSO.
+
+* Usługi ServiceNow obsługuje [Automatyczne Inicjowanie obsługi użytkowników](servicenow-provisioning-tutorial.md).
+
+* Po skonfigurowaniu usługi ServiceNow można wymusić kontrolki sesji, które chronią eksfiltracji i niefiltrowanie danych poufnych organizacji w czasie rzeczywistym. Kontrolki sesji wykraczają poza dostęp warunkowy. [Dowiedz się, jak wymuszać kontrolę sesji za pomocą Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+
+* Aby włączyć logowanie jednokrotne, można skonfigurować aplikację klasyczną usługi ServiceNow (Mobile) w usłudze Azure AD. Obsługuje zarówno użytkowników systemu Android, jak i iOS. W tym samouczku skonfigurujesz i testujesz Logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
 ## <a name="add-servicenow-from-the-gallery"></a>Dodaj usługi ServiceNow z galerii
 
@@ -460,3 +466,7 @@ Po wybraniu kafelka usługi ServiceNow w panelu dostępu należy automatycznie z
 - [Konfigurowanie aprowizacji użytkowników](servicenow-provisioning-tutorial.md)
 
 - [Wypróbuj usługi ServiceNow z usługą Azure AD](https://aad.portal.azure.com)
+
+- [Co to jest kontrola sesji w Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/protect-servicenow)
+
+- [Jak chronić usługi ServiceNow z zaawansowaną widocznością i kontrolkami](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

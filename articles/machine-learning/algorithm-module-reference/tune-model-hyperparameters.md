@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/16/2019
-ms.openlocfilehash: 3db20110571203588ac15f4f64a2ae0a6ab6ef27
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4dd2cd89e8edb4e636bf46d2a8125a0f1d00f2f3
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428403"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76312247"
 ---
 # <a name="tune-model-hyperparameters"></a>Dostrajanie hiperparametrów modelu
 
-W tym artykule opisano, jak używać modułu dostrajania parametrów modelu w programie Azure Machine Learning Designer (wersja zapoznawcza). Celem jest określenie optymalnych parametrów dla modelu uczenia maszynowego. Moduł kompiluje i testuje wiele modeli przy użyciu różnych kombinacji ustawień. Porównuje metryki dla wszystkich modeli w celu uzyskania kombinacji ustawień. 
+W tym artykule opisano, jak używać modułu dostrajania parametrów modelu w programie Azure Machine Learning Designer. Celem jest określenie optymalnych parametrów dla modelu uczenia maszynowego. Moduł kompiluje i testuje wiele modeli przy użyciu różnych kombinacji ustawień. Porównuje metryki dla wszystkich modeli w celu uzyskania kombinacji ustawień. 
 
 *Parametr* terms i *parametr preparameter* mogą być mylące. *Parametry* modelu są ustawiane w okienku właściwości. Zasadniczo ten moduł wykonuje *odczyszczenie parametrów* względem określonych ustawień parametrów. Poznasz optymalny zestaw _parametrów_, które mogą być różne dla każdego określonego drzewa decyzyjnego, zestawu danych lub metody regresji. Proces znajdowania optymalnej konfiguracji jest czasami nazywany *dostrajaniem*. 
 
@@ -81,11 +81,11 @@ W tej sekcji opisano, jak wykonać podstawowe odwzorowanie parametrów, które p
 
 Po zakończeniu szkolenia:
 
-+ Aby wyświetlić zestaw metryk dokładności dla najlepszego modelu, kliknij prawym przyciskiem myszy moduł, wybierz pozycję **wyniki odchylenia**, a następnie wybierz polecenie **Wizualizuj**.
++ Aby wyświetlić zestaw metryk dokładności dla najlepszego modelu, kliknij prawym przyciskiem myszy moduł, a następnie wybierz polecenie **Wizualizuj**.
 
     Dane wyjściowe obejmują wszystkie metryki dokładności, które są stosowane do typu modelu, ale Metryka wybrana do klasyfikacji określa model, który jest uznawany za "Najlepsza".
 
-+ Aby użyć modelu do oceniania w innych potokach bez konieczności powtarzania procesu dostrajania, kliknij prawym przyciskiem myszy dane wyjściowe modelu i wybierz polecenie **Zapisz jako przeszkolony model**. 
++ Aby zapisać migawkę przeszkolonego modelu, wybierz kartę dane **wyjściowe** w prawym panelu modułu **uczenie modelu** . Wybierz ikonę **zarejestruj zestaw danych** , aby zapisać model jako moduł wielokrotnego użytku.
 
 
 ## <a name="technical-notes"></a>Uwagi techniczne

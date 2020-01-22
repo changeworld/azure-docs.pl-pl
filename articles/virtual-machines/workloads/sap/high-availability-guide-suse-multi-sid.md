@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 01/16/2020
 ms.author: radeltch
-ms.openlocfilehash: 94cf30d2d3650212707cf92db83236882fe5e49f
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: 7471fc6d7f10c849ba79fedf88961d6c3c99913f
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76169349"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314202"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-for-sap-applications-multi-sid-guide"></a>Wysoka dostępność dla oprogramowania SAP NetWeaver na maszynach wirtualnych platformy Azure w systemie SUSE Linux Enterprise Server for SAP — Przewodnik dotyczący wiele identyfikatorów SID
 
@@ -129,8 +129,8 @@ Na poniższej liście przedstawiono konfigurację modułu równoważenia obcią�
 
 * Konfiguracja frontonu
   * Adres IP dla NW1 10.3.1.15
-  * Adres IP dla NW1 10.3.1.17
-  * Adres IP dla NW1 10.3.1.19
+  * Adres IP dla NW2 10.3.1.17
+  * Adres IP dla NW3 10.3.1.19
 * Konfiguracja zaplecza
   * Połączono z podstawowymi interfejsami sieciowymi wszystkich maszyn wirtualnych, które powinny być częścią klastra programu (A) SCS/wykres WYWOŁUJĄCYCH
 * Port sondy

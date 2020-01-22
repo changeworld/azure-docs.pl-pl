@@ -14,12 +14,12 @@ ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms:custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a0aa868d5ed57e27a89f2791f617dcdda74e766b
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: f7e910faaf9875b6791135c8721090fa801a7e08
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76167446"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76294188"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Tokeny identyfikatora platformy tożsamości firmy Microsoft
 
@@ -85,6 +85,12 @@ Ta lista zawiera oświadczenia, które w większości id_tokens są domyślnie (
 |`unique_name` | Ciąg | Udostępnia zrozumiałą wartość identyfikującą podmiot tokenu. Ta wartość jest unikatowa w danym punkcie w czasie, ale jako że można ponownie użyć wiadomości e-mail i innych identyfikatorów, ta wartość może być ponownie wyświetlana na innych kontach i dlatego powinna być używana tylko do wyświetlania. Wystawiane tylko w `id_tokens`v 1.0. |
 |`uti` | Ciąg nieprzezroczysty | Wyjątek wewnętrzny używany przez platformę Azure do weryfikacji tokenów. Powinien być ignorowany. |
 |`ver` | Ciąg, 1,0 lub 2,0 | Wskazuje wersję id_token. |
+
+
+> [!NOTE]
+> Id_token V1 i v2 mają różnice w ilości informacji, które będą się znajdować na podstawie powyższych przykładów. Wersja zasadniczo określa punkt końcowy platformy usługi Azure AD, z którego został wystawiony. [Implementacja protokołu OAuth usługi Azure AD](https://docs.microsoft.com/azure/active-directory/develop/about-microsoft-identity-platform) została rozwijająca się w latach. Obecnie mamy dwa różne punkty końcowe uwierzytelniania oAuth dla aplikacji AzureAD. Można użyć dowolnego z nowych punktów końcowych, które są klasyfikowane jako wersja 2 lub stary, który ma wartość v1. Punkty końcowe uwierzytelniania OAuth dla obu nich są różne. Punkt końcowy V2 to nowszy, w którym próbujemy migrować wszystkie funkcje punktu końcowego w wersji 1 i zalecać nowym deweloperom korzystanie z punktu końcowego v2. 
+> - V1: Azure Active Directory punkty końcowe: `https://login.microsoftonline.com/common/oauth2/authorize`
+> - V2: punkty końcowe platformy tożsamości firmy Microsoft: `https://login.microsoftonline.com/common/oauth2/v2.0/authorize`
 
 ## <a name="validating-an-id_token"></a>Sprawdzanie poprawności id_token
 

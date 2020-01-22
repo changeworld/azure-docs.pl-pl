@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: hamusa
-ms.openlocfilehash: 58e6e7b3cdf749909165d7ff071a2f3885d7e8b9
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 7f161afe13bad8c548806d4b4ceb9372dc511cc3
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028731"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76289445"
 ---
 # <a name="assess-vmware-vms-by-using-azure-migrate-server-assessment"></a>Ocenianie maszyn wirtualnych VMware za pomocą oceny serwera Azure Migrate
 
@@ -176,7 +176,7 @@ Urządzenie musi połączyć się z vCenter Server, aby odnaleźć dane dotyczą
 1. Wybierz pozycję **Weryfikuj połączenie** , aby upewnić się, że urządzenie może połączyć się z vCenter Server.
 
 ### <a name="specify-vm-credentials"></a>Określ poświadczenia maszyny wirtualnej
-W przypadku odnajdywania aplikacji, ról i funkcji oraz wizualizacji zależności maszyn wirtualnych można podać poświadczenia maszyny wirtualnej, które mają dostęp do maszyn wirtualnych VMware. Można dodać jedno poświadczenie dla maszyn wirtualnych z systemem Windows i jedno poświadczenie dla maszyn wirtualnych z systemem Linux. [Dowiedz się więcej](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#assessment-vcenter-server-permissions) na temat niezbędnych uprawnień dostępu.
+W przypadku odnajdywania aplikacji, ról i funkcji oraz wizualizacji zależności maszyn wirtualnych można podać poświadczenia maszyny wirtualnej, które mają dostęp do maszyn wirtualnych VMware. Można dodać jedno poświadczenie dla maszyn wirtualnych z systemem Windows i jedno poświadczenie dla maszyn wirtualnych z systemem Linux. [Dowiedz się więcej](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware) na temat niezbędnych uprawnień dostępu.
 
 > [!NOTE]
 > Dane wejściowe są opcjonalne, ale są potrzebne, jeśli chcesz włączyć funkcję odnajdywania aplikacji i wizualizacji zależności bez wykorzystania agentów.
@@ -210,7 +210,7 @@ Ta procedura jest wymagana w przypadku migracji serwera bez agenta.
 1.  Wybierz wystąpienie vCenter Server z menu rozwijanego.
 1.  Wybierz pozycję **Utwórz rolę**.
 1.  Wprowadź nazwę nowej roli (na przykład <em>Azure_Migrate</em>).
-1.  Przypisz [uprawnienia](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#agentless-migration-vcenter-server-permissions) do nowo zdefiniowanej roli.
+1.  Przypisz [uprawnienia](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware) do nowo zdefiniowanej roli.
 1.  Kliknij przycisk **OK**.
 
 #### <a name="3-assign-permissions-on-vcenter-objects"></a>3. Przypisz uprawnienia do obiektów vCenter
@@ -219,7 +219,7 @@ Istnieją dwie podejścia do przypisywania uprawnień do obiektów spisu w progr
 
 W celu oceny serwera należy zastosować rolę **tylko do odczytu** dla konta użytkownika vCenter dla wszystkich obiektów nadrzędnych, w których są hostowane maszyny wirtualne, które mają zostać odnalezione. Wszystkie obiekty nadrzędne zostaną uwzględnione: host, folder hostów, klaster i folder klastrów w hierarchii do centrum danych. Te uprawnienia zostaną przekazane do obiektów podrzędnych w hierarchii.
 
-Podobnie w przypadku migracji serwera należy zastosować rolę zdefiniowaną przez użytkownika z [uprawnieniami](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#agentless-migration-vcenter-server-permissions) konta użytkownika vCenter dla wszystkich obiektów nadrzędnych, w których są hostowane maszyny wirtualne do migracji. Ta rola może być nazywana <em>_Migrate platformy Azure</em>.
+Podobnie w przypadku migracji serwera należy zastosować rolę zdefiniowaną przez użytkownika z [uprawnieniami](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware) konta użytkownika vCenter dla wszystkich obiektów nadrzędnych, w których są hostowane maszyny wirtualne do migracji. Ta rola może być nazywana <em>_Migrate platformy Azure</em>.
 
 ![Przypisywanie uprawnień](./media/tutorial-assess-vmware/assign-perms.png)
 

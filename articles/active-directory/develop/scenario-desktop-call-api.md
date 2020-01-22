@@ -15,18 +15,18 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 75bb919b73791b78084e82351d7d6b7d93edc322
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 36aa220b49b8b71c79e4fe6f63afedee6db76a68
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75423865"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293338"
 ---
-# <a name="desktop-app-that-calls-web-apis---call-a-web-api"></a>Aplikacja klasyczna, która wywołuje interfejsy API sieci Web — wywołuje internetowy interfejs API
+# <a name="desktop-app-that-calls-web-apis-call-a-web-api"></a>Aplikacja klasyczna, która wywołuje interfejsy API sieci Web: wywoływanie interfejsu API sieci Web
 
 Teraz, gdy masz token, możesz wywołać chroniony internetowy interfejs API.
 
-## <a name="calling-a-web-api"></a>Wywoływanie internetowego interfejsu API
+## <a name="call-a-web-api"></a>Wywoływanie interfejsu API sieci Web
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
@@ -66,9 +66,9 @@ JSONObject responseObject = HttpClientHelper.processResponse(responseCode, respo
 
 # <a name="macostabmacos"></a>[MacOS](#tab/macOS)
 
-## <a name="calling-a-web-api-in-msal-for-ios-and-macos"></a>Wywoływanie interfejsu API sieci Web w programie MSAL dla systemów iOS i macOS
+## <a name="call-a-web-api-in-msal-for-ios-and-macos"></a>Wywoływanie interfejsu API sieci Web w programie MSAL dla systemów iOS i macOS
 
-Metody uzyskiwania tokenów zwracają `MSALResult` obiektu. `MSALResult` uwidacznia Właściwość `accessToken`, która może służyć do wywoływania internetowego interfejsu API. Token dostępu należy dodać do nagłówka autoryzacji HTTP przed wywołaniem dostępu do chronionego internetowego interfejsu API.
+Metody uzyskiwania tokenów zwracają `MSALResult` obiektu. `MSALResult` uwidacznia Właściwość `accessToken`, która może służyć do wywoływania internetowego interfejsu API. Dodaj token dostępu do nagłówka autoryzacji HTTP przed wywołaniem dostępu do chronionego internetowego interfejsu API.
 
 Cel-C:
 
@@ -96,9 +96,9 @@ let task = URLSession.shared.dataTask(with: urlRequest as URLRequest) { (data: D
 task.resume()
 ```
 
-## <a name="calling-several-apis---incremental-consent-and-conditional-access"></a>Wywoływanie kilku interfejsów API — wyrażanie zgody i dostępu warunkowego
+## <a name="call-several-apis-incremental-consent-and-conditional-access"></a>Wywoływanie kilku interfejsów API: przyrostowej zgody i dostępu warunkowego
 
-Jeśli konieczne jest wywołanie kilku interfejsów API dla tego samego użytkownika, po uzyskaniu tokenu dla pierwszego interfejsu API można tylko wywołać `AcquireTokenSilent`i uzyskać token dla innych interfejsów API w większości czasu.
+Aby wywołać kilka interfejsów API dla tego samego użytkownika, po uzyskaniu tokenu dla pierwszego interfejsu API Wywołaj `AcquireTokenSilent`. Otrzymasz token dla innych interfejsów API w sposób cichy przez większość czasu.
 
 ```csharp
 var result = await app.AcquireTokenXX("scopeApi1")
@@ -108,9 +108,9 @@ result = await app.AcquireTokenSilent("scopeApi2")
                   .ExecuteAsync();
 ```
 
-Sytuacje, w których wymagane jest interakcja, to:
+Interakcja jest wymagana w przypadku:
 
-- Użytkownik wyraził zgodę na pierwszy interfejs API, ale teraz musi powyrazić zgody na więcej zakresów (powiększanie zgody)
+- Użytkownik wyraził zgodę na pierwszy interfejs API, ale teraz musi powyrazić zgody na więcej zakresów. Ten rodzaj zgody jest znany jako poprzednia zgoda.
 - Pierwszy interfejs API nie wymagał uwierzytelniania wieloskładnikowego, ale Następna z nich robi.
 
 ```csharp

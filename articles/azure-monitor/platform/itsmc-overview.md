@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: JYOTHIRMAISURI
 ms.author: v-jysur
 ms.date: 05/24/2018
-ms.openlocfilehash: efb4e4f68935898c083c1dbca6a6c64512544095
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 83d5b7ffb49a08d02d5dd34ad561ce725ead7e0e
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76263476"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76289139"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Łączenie platformy Azure z narzędziami narzędzia ITSM przy użyciu łącznik zarządzania usługami IT
 
@@ -58,7 +58,7 @@ Aby można było utworzyć połączenie, należy dodać rozwiązanie łącznik I
 3. W sekcji **obszar roboczy pakietu OMS** wybierz obszar roboczy usługi Azure log Analytics, w którym chcesz zainstalować rozwiązanie.
    >[!NOTE]
    > * W ramach trwającego przejścia z Microsoft Operations Management Suite (OMS) do Azure Monitor, obszary robocze OMS są teraz określane jako Log Analytics obszary robocze.
-   > * Łącznik ITSM można zainstalować tylko w Log Analytics obszarach roboczych w następujących regionach: Wschodnie stany USA, Europa Zachodnia, Azja Południowo-Wschodnia, Australia Południowo-Wschodnia, zachodnio-środkowe stany USA, Japonia Wschodnia, Południowe Zjednoczone Królestwo, Indie Środkowe, Kanada środkowa, zachodnie stany USA 2, Południowo-środkowe stany USA.
+   > * Łącznik ITSM można zainstalować tylko w obszarze roboczym Log Analytics w następujących regionach: Wschodnie stany USA, zachodnie stany USA, Południowo-środkowe stany USA, Europa Zachodnia, Kanada środkowa, Południowo-Wschodnia, Południowo-Wschodnia, wschodnie Zjednoczone Królestwo, Indie Środkowe, Japonia Południowo-Wschodnia.
 
 4. W sekcji **Ustawienia obszaru roboczego pakietu OMS** wybierz pozycję zasoby, w której chcesz utworzyć zasób rozwiązania.
 

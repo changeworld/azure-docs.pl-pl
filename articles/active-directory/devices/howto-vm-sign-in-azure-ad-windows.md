@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0b70a475d841c3649ba9e2bcc63187fc4484a23d
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 42d1fde92e9315e8df3f65b2ab91ced74b377c0a
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76119979"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293457"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Logowanie do maszyny wirtualnej z systemem Windows na platformie Azure przy użyciu uwierzytelniania Azure Active Directory (wersja zapoznawcza)
 
@@ -63,10 +63,10 @@ Poniższe regiony platformy Azure są obecnie obsługiwane w ramach wersji zapoz
 
 Aby włączyć uwierzytelnianie usługi Azure AD dla maszyn wirtualnych z systemem Windows na platformie Azure, musisz upewnić się, że konfiguracja sieci maszyn wirtualnych zezwala na dostęp wychodzący do następujących punktów końcowych przez port TCP 443:
 
-- https://enterpriseregistration.windows.net
-- https://login.microsoftonline.com
-- https://device.login.microsoftonline.com
-- https://pas.windows.net
+- https:\//enterpriseregistration.windows.net
+- https:\//login.microsoftonline.com
+- https:\//device.login.microsoftonline.com
+- https:\//pas.windows.net
 
 ## <a name="enabling-azure-ad-login-in-for-windows-vm-in-azure"></a>Włączanie logowania za pomocą usługi Azure AD w programie dla maszyn wirtualnych z systemem Windows na platformie Azure
 
@@ -239,24 +239,24 @@ Aby maszyna wirtualna mogła ukończyć proces przyłączania do usługi Azure A
 
    | Polecenie do uruchomienia | Oczekiwane dane wyjściowe |
    | --- | --- |
-   | zwinięcie-H Metadata: true "http://169.254.169.254/metadata/instance?api-version=2017-08-01 " | Popraw informacje o maszynie wirtualnej platformy Azure |
-   | zwinięcie-H Metadata: true "http://169.254.169.254/metadata/identity/info?api-version=2018-02-01 " | Prawidłowy identyfikator dzierżawy skojarzony z subskrypcją platformy Azure |
-   | zwinięcie-H Metadata: true "http://169.254.169.254/metadata/identity/oauth2/token?resource=urn:ms-drs:enterpriseregistration.windows.net&api-version=2018-02-01 " | Prawidłowy token dostępu wystawiony przez Azure Active Directory dla zarządzanej tożsamości przypisanej do tej maszyny wirtualnej |
+   | zwinięcie-H Metadata: true "http://169.254.169.254/metadata/instance?api-version=2017-08-01" | Popraw informacje o maszynie wirtualnej platformy Azure |
+   | zwinięcie-H Metadata: true "http://169.254.169.254/metadata/identity/info?api-version=2018-02-01" | Prawidłowy identyfikator dzierżawy skojarzony z subskrypcją platformy Azure |
+   | zwinięcie-H Metadata: true "http://169.254.169.254/metadata/identity/oauth2/token?resource=urn:ms-drs:enterpriseregistration.windows.net&api-version=2018-02-01" | Prawidłowy token dostępu wystawiony przez Azure Active Directory dla zarządzanej tożsamości przypisanej do tej maszyny wirtualnej |
 
    > [!NOTE]
    > Token dostępu można zdekodować przy użyciu narzędzia, takiego jak [http://calebb.net/](http://calebb.net/). Sprawdź, czy identyfikator "AppID" w tokenie dostępu jest zgodny z zarządzaną tożsamością przypisaną do maszyny wirtualnej.
 
 1. Upewnij się, że wymagane punkty końcowe są dostępne z maszyny wirtualnej przy użyciu wiersza polecenia:
    
-   - zwinięcie https://login.microsoftonline.com/ -D —
-   - zwinięcie https://login.microsoftonline.com/`<TenantID>` /-D —
+   - zwinięcie https:\//login.microsoftonline.com/-D —
+   - zwinięcie https:\//login.microsoftonline.com/`<TenantID>`/-D —
 
    > [!NOTE]
    > Zastąp `<TenantID>` IDENTYFIKATORem dzierżawy usługi Azure AD skojarzonym z subskrypcją platformy Azure.
 
-   - zwinięcie https://enterpriseregistration.windows.net/ -D-
-   - zwinięcie https://device.login.microsoftonline.com/ -D-
-   - zwinięcie https://pas.windows.net/ -D-
+   - zwinięcie https:\//enterpriseregistration.windows.net/-D-
+   - zwinięcie https:\//device.login.microsoftonline.com/-D-
+   - zwinięcie https:\//pas.windows.net/-D-
 
 1. Stan urządzenia można wyświetlić, uruchamiając `dsregcmd /status`. Celem jest stan urządzenia, który ma być wyświetlany jako `AzureAdJoined : YES`.
 
@@ -283,15 +283,15 @@ Ten kod zakończenia tłumaczy na DSREG_AUTOJOIN_DISC_FAILED, ponieważ rozszerz
 
 1. Sprawdź, czy wymagane punkty końcowe są dostępne z maszyny wirtualnej przy użyciu wiersza polecenia:
 
-   - zwinięcie https://login.microsoftonline.com/ -D —
-   - zwinięcie https://login.microsoftonline.com/`<TenantID>` /-D —
+   - zwinięcie https:\//login.microsoftonline.com/-D —
+   - zwinięcie https:\//login.microsoftonline.com/`<TenantID>`/-D —
    
    > [!NOTE]
    > Zastąp `<TenantID>` IDENTYFIKATORem dzierżawy usługi Azure AD skojarzonym z subskrypcją platformy Azure. Jeśli musisz znaleźć identyfikator dzierżawy, możesz umieścić wskaźnik myszy nad nazwą konta, aby uzyskać identyfikator katalogu/dzierżawy, lub wybrać Azure Active Directory właściwości > > identyfikator katalogu w Azure Portal.
 
-   - zwinięcie https://enterpriseregistration.windows.net/ -D-
-   - zwinięcie https://device.login.microsoftonline.com/ -D-
-   - zwinięcie https://pas.windows.net/ -D-
+   - zwinięcie https:\//enterpriseregistration.windows.net/-D-
+   - zwinięcie https:\//device.login.microsoftonline.com/-D-
+   - zwinięcie https:\//pas.windows.net/-D-
 
 1. Jeśli którekolwiek z poleceń zakończy się niepowodzeniem z "nie można rozpoznać `<URL>`hosta", spróbuj uruchomić to polecenie, aby określić serwer DNS, który jest używany przez maszynę wirtualną.
    

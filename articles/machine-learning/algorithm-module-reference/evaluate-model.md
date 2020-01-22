@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 11/19/2019
-ms.openlocfilehash: 192aae4da4d9b07804f473ec6e98615f46e2ee86
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: b6a019fbea2ebfed67db4f7c2a9b0f8085438aa8
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74214582"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311652"
 ---
 # <a name="evaluate-model-module"></a>Oceń moduł modelu
 
-W tym artykule opisano moduł w programie Azure Machine Learning Designer (wersja zapoznawcza).
+W tym artykule opisano moduł w programie Azure Machine Learning Designer.
 
 Ten moduł służy do mierzenia dokładności nauczonego modelu. Dostarczasz zestaw danych zawierający wyniki wygenerowane na podstawie modelu, a moduł **oceny modelu** obliczy zestaw metryk oceny standardowej w branży.
   
@@ -61,14 +61,11 @@ Ta funkcja jest przydatna, ponieważ można łatwo porównać wyniki z dwóch r�
 
 1. Podłącz **wynikowy zestaw danych** wyjściowych z [modelu wynikowego](score-model.md) do danych wejściowych **oceny modelu**. 
 2. Połącz dane wyjściowe modułu modelu wynikowego dla drugiego modelu z prawej strony **oceny modelu**.
-3. Kliknij prawym przyciskiem myszy pozycję **Oceń model**i wybierz pozycję **Uruchom wybrane** , aby wygenerować wyniki oceny.
+3. Uruchamianie potoku.
 
 ## <a name="results"></a>Wyniki
 
-Po uruchomieniu **oceny modelu**kliknij prawym przyciskiem myszy moduł i wybierz pozycję **wyniki oceny** , aby wyświetlić wyniki. Możesz:
-
-+ Zapisz wyniki jako zestaw danych, aby ułatwić analizę przy użyciu innych narzędzi
-+ Generowanie wizualizacji w projektancie
+Po uruchomieniu **oceny modelu**kliknij prawym przyciskiem myszy moduł i wybierz polecenie **Wizualizuj wyniki oceny** , aby wyświetlić wyniki.
 
 W przypadku łączenia zestawów danych z obydwoma danymi wejściowymi **modelu szacowania**wyniki będą zawierać metryki dla zestawu danych lub obu modeli.
 Model lub dane dołączone do lewego portu są przedstawiane jako pierwsze w raporcie, a następnie metryki dla zestawu danych lub modelu dołączonego do właściwego portu.  

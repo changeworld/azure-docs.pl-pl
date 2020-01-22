@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.author: snehaa
-ms.openlocfilehash: 8bfa9237d365636c0bdaa3af06c5af23b683231d
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: d06e75ec900faa17ed4441c20a52d8da60ee4d97
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75563545"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76289462"
 ---
 # <a name="azure-migrate-common-questions"></a>Azure Migrate: typowe pytania
 
@@ -53,7 +53,7 @@ Ocena serwera to narzędzie do planowania migracji. Planista wdrażania Site Rec
 
 ## <a name="which-geographies-are-supported"></a>Które lokalizacje geograficzne są obsługiwane?
 
-Przejrzyj Azure Migrate obsługiwane lokalizacje geograficzne dla [maszyn wirtualnych VMware](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#azure-migrate-projects) i [maszyn wirtualnych funkcji Hyper-V](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-hyper-v#azure-migrate-projects).
+Przejrzyj Azure Migrate obsługiwane lokalizacje geograficzne dla [maszyn wirtualnych VMware](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware) i [maszyn wirtualnych funkcji Hyper-V](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-hyper-v).
 
 ## <a name="how-do-i-get-started"></a>Jak rozpocząć pracę?
 

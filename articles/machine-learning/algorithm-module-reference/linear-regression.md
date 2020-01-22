@@ -9,15 +9,15 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: 688bf923c07d9417b002b7cab6e3c0a0c8d20dae
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 00a92d60e494920f516d1a52593a54463c050615
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497752"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311448"
 ---
 # <a name="linear-regression-module"></a>Moduł regresji liniowej
-W tym artykule opisano moduł w programie Azure Machine Learning Designer (wersja zapoznawcza).
+W tym artykule opisano moduł w programie Azure Machine Learning Designer.
 
 Użyj tego modułu, aby utworzyć model regresji liniowej do użycia w potoku.  Regresja liniowa próbuje nawiązać liniową relację między jedną lub wieloma niezależnymi zmiennymi oraz wynikiem liczbowym lub zmienną zależną. 
 
@@ -90,7 +90,6 @@ Ten moduł obsługuje dwie metody dostosowania modelu regresji z różnymi opcja
 
 Po zakończeniu szkolenia:
 
-+ Aby wyświetlić parametry modelu, kliknij prawym przyciskiem myszy dane wyjściowe Trainer i wybierz polecenie **Wizualizuj**.
 
 + Aby dokonać prognoz, Połącz model przeszkolony z modułem [modelu oceny](./score-model.md) wraz z zestawem danych nowych wartości. 
 

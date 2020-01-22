@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/16/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 56a3d4f172cde70bdd1a875c76213c43184cbbc3
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: fd91701a20b8a760eadcafe6f93f9ba5857a1c9f
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76167943"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310190"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Skalowanie w poziomie usług Azure Analysis Services
 
@@ -50,7 +50,7 @@ Podczas kolejnej operacji skalowania w poziomie, na przykład zwiększając licz
 
 ### <a name="synchronization-mode"></a>Tryb synchronizacji
 
-Domyślnie repliki zapytań są podwodne w całości, a nie przyrostowo. Uzupełnianie odbywa się na etapach. Są one odłączone i dołączane dwa jednocześnie (przy założeniu, że istnieją co najmniej trzy repliki), aby upewnić się, że co najmniej jedna replika jest w trybie online w przypadku zapytań w danym momencie. W niektórych przypadkach klienci mogą wymagać ponownego nawiązania połączenia z jedną z replik w trybie online w trakcie tego procesu. Za pomocą ustawienia **ReplicaSyncMode** można teraz określić, że synchronizacja repliki zapytań odbywa się równolegle. Synchronizacja równoległa zapewnia następujące korzyści: 
+Domyślnie repliki zapytań są podwodne w całości, a nie przyrostowo. Uzupełnianie odbywa się na etapach. Są one odłączone i dołączane dwa jednocześnie (przy założeniu, że istnieją co najmniej trzy repliki), aby upewnić się, że co najmniej jedna replika jest w trybie online w przypadku zapytań w danym momencie. W niektórych przypadkach klienci mogą wymagać ponownego nawiązania połączenia z jedną z replik w trybie online w trakcie tego procesu. Za pomocą ustawienia **ReplicaSyncMode** (w wersji zapoznawczej) można teraz określić, że synchronizacja repliki zapytań odbywa się równolegle. Synchronizacja równoległa zapewnia następujące korzyści: 
 
 - Znaczna redukcja czasu synchronizacji. 
 - Dane między replikami mogą być spójne podczas procesu synchronizacji. 

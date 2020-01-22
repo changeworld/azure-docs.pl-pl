@@ -7,22 +7,25 @@ author: preetikr
 ms.author: preetikr
 ms.reviewer: klam, estfan, logicappspm
 ms.topic: article
-ms.date: 01/30/2019
+ms.date: 12/12/2019
 tags: connectors
-ms.openlocfilehash: 7e9cc2d8d38af7e5e6cf26ccc3659ee58ef17e59
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: f9aa88934d67d98fce43763c6c8fac7c384d765d
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789056"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76313794"
 ---
 # <a name="improve-threat-protection-by-integrating-security-operations-with-microsoft-graph-security--azure-logic-apps"></a>Poprawa ochrony przed zagrożeniami przez integrację operacji zabezpieczeń z Microsoft Graph & zabezpieczeń Azure Logic Apps
 
-Za pomocą [Azure Logic Apps](../logic-apps/logic-apps-overview.md) i łącznika [zabezpieczeń Microsoft Graph](https://docs.microsoft.com/graph/security-concept-overview) można ulepszyć, w jaki sposób aplikacja wykrywa, chroni i reaguje na zagrożenia przez Tworzenie zautomatyzowanych przepływów pracy na potrzeby integracji produktów, usług i partnerów zabezpieczeń firmy Microsoft. Można na przykład utworzyć [Azure Security Center elementy PlayBook](../security-center/security-center-playbooks.md) , które monitorują Microsoft Graph jednostki zabezpieczeń i zarządzają nimi, na przykład alerty. Poniżej przedstawiono niektóre scenariusze obsługiwane przez łącznik zabezpieczeń Microsoft Graph:
+Za pomocą [Azure Logic Apps](../logic-apps/logic-apps-overview.md) i łącznika [zabezpieczeń Microsoft Graph](https://docs.microsoft.com/graph/security-concept-overview) można ulepszyć, w jaki sposób aplikacja wykrywa, chroni i reaguje na zagrożenia przez Tworzenie zautomatyzowanych przepływów pracy na potrzeby integracji produktów, usług i partnerów zabezpieczeń firmy Microsoft. Można na przykład utworzyć [Azure Security Center elementy PlayBook](../security-center/security-center-playbooks.md) , które monitorują Microsoft Graph jednostki zabezpieczeń i zarządzają nimi, na przykład alerty. Poniżej przedstawiono niektóre scenariusze, które są obsługiwane przez łącznik zabezpieczeń Microsoft Graph:
 
 * Otrzymuj alerty na podstawie zapytań lub identyfikatora alertu. Możesz na przykład uzyskać listę zawierającą alerty o wysokiej ważności.
+
 * Aktualizowanie alertów. Można na przykład zaktualizować przypisania alertów, dodać komentarze do alertów lub alerty tagów.
+
 * Monitoruj, kiedy alerty są tworzone lub zmieniane, tworząc [subskrypcje alertów (webhook)](https://docs.microsoft.com/graph/api/resources/webhooks).
+
 * Zarządzaj subskrypcjami alertów. Możesz na przykład uzyskać aktywne subskrypcje, zwiększyć czas wygaśnięcia subskrypcji lub usunąć subskrypcje.
 
 Przepływ pracy aplikacji logiki może korzystać z akcji, które pobierają odpowiedzi z łącznika zabezpieczeń Microsoft Graph i udostępniają te dane wyjściowe innym akcjom w przepływie pracy. Możesz również mieć inne akcje w przepływie pracy, używając danych wyjściowych akcji łącznika zabezpieczeń Microsoft Graph. Jeśli na przykład alerty o wysokiej ważności są uzyskiwane za pośrednictwem łącznika zabezpieczeń Microsoft Graph, można wysłać te alerty w wiadomości e-mail przy użyciu łącznika programu Outlook. 
@@ -33,23 +36,23 @@ Aby dowiedzieć się więcej o zabezpieczeniach Microsoft Graph, zobacz [Omówie
 
 * Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, [zarejestruj się w celu założenia bezpłatnego konta platformy Azure](https://azure.microsoft.com/free/). 
 
-* Aby korzystać z łącznika zabezpieczeń Microsoft Graph, musisz mieć *jawnie daną* zgodę administratora dzierżawy Azure Active Directory (AD), która jest częścią [Microsoft Graph wymagania dotyczące uwierzytelniania zabezpieczeń](https://aka.ms/graphsecurityauth). Ta zgoda wymaga identyfikatora aplikacji i nazwy łącznika zabezpieczeń Microsoft Graph, który można również znaleźć w [Azure Portal](https://portal.azure.com):
+* Aby korzystać z łącznika usługi Microsoft Graph Security, konieczne jest posiadanie *jawnie udzielonej* zgody administratora dzierżawy usługi Azure Active Directory (AD), co jest częścią [wymagań uwierzytelniania w usłudze Microsoft Graph Security](https://aka.ms/graphsecurityauth). Ta zgoda wymaga identyfikatora aplikacji i nazwy łącznika zabezpieczeń Microsoft Graph, który można również znaleźć w [Azure Portal](https://portal.azure.com):
 
-   | Właściwość | Wartość |
-   |----------|-------|
-   | **Nazwa aplikacji** | `MicrosoftGraphSecurityConnector` |
-   | **Identyfikator aplikacji** | `c4829704-0edc-4c3d-a347-7c4a67586f3c` |
-   |||
+  | Właściwość | Wartość |
+  |----------|-------|
+  | **Nazwa aplikacji** | `MicrosoftGraphSecurityConnector` |
+  | **Identyfikator aplikacji** | `c4829704-0edc-4c3d-a347-7c4a67586f3c` |
+  |||
 
-   Aby przyznać zgodę na łącznik, Administrator dzierżawy usługi Azure AD może wykonać następujące czynności:
+  Aby przyznać zgodę na łącznik, Administrator dzierżawy usługi Azure AD może wykonać następujące czynności:
 
-   * [Udziel zgody administratora dzierżawy na aplikacje usługi Azure AD](../active-directory/develop/v2-permissions-and-consent.md).
+  * [Udzielić zgody administratora dzierżawy dla aplikacji usługi Azure AD](../active-directory/develop/v2-permissions-and-consent.md).
 
-   * Podczas pierwszego uruchomienia aplikacji logiki aplikacja może zażądać zgody od administratora dzierżawy usługi Azure AD za pośrednictwem narzędzia do [wyrażania zgody na korzystanie z aplikacji](../active-directory/develop/application-consent-experience.md).
+  * Przy pierwszym uruchomieniu aplikacji logiki aplikacja może zażądać zgody od administratora dzierżawy usługi Azure AD za pomocą [funkcji zgody dla aplikacji](../active-directory/develop/application-consent-experience.md).
    
 * Podstawowa wiedza [na temat tworzenia aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-* Aplikacja logiki, do której chcesz uzyskać dostęp do Microsoft Graph jednostek zabezpieczeń, takich jak alerty. Obecnie ten łącznik nie ma wyzwalaczy. Aby użyć akcji zabezpieczeń Microsoft Graph, uruchom aplikację logiki z wyzwalaczem, na przykład wyzwalaczem **cyklu** .
+* Aplikacja logiki, do której chcesz uzyskać dostęp do Microsoft Graph jednostek zabezpieczeń, takich jak alerty. Aby można było użyć wyzwalacza zabezpieczeń Microsoft Graph, potrzebna jest pusta aplikacja logiki. Aby można było użyć akcji zabezpieczeń Microsoft Graph, potrzebna jest aplikacja logiki, która rozpoczyna się od odpowiedniego wyzwalacza dla danego scenariusza.
 
 ## <a name="connect-to-microsoft-graph-security"></a>Łączenie z zabezpieczeniami Microsoft Graph 
 
@@ -57,7 +60,7 @@ Aby dowiedzieć się więcej o zabezpieczeniach Microsoft Graph, zobacz [Omówie
 
 1. Zaloguj się do [Azure Portal](https://portal.azure.com/)i Otwórz aplikację logiki w Projektancie aplikacji logiki, jeśli nie jest jeszcze otwarta.
 
-1. W przypadku pustych aplikacji logiki Dodaj wyzwalacz i wszelkie inne żądane akcje przed dodaniem akcji zabezpieczeń Microsoft Graph.
+1. W przypadku pustych aplikacji logiki Dodaj wyzwalacz i wszelkie inne akcje, które chcesz wykonać przed dodaniem akcji zabezpieczeń Microsoft Graph.
 
    — lub —
 
@@ -65,14 +68,40 @@ Aby dowiedzieć się więcej o zabezpieczeniach Microsoft Graph, zobacz [Omówie
 
    — lub —
 
-   Aby dodać akcję między krokami, przesuń wskaźnik myszy nad strzałkę między krokami. 
-   Wybierz wyświetlony znak plus (+), a następnie wybierz pozycję **Dodaj akcję**.
+   Aby dodać akcję między krokami, przesuń wskaźnik myszy nad strzałkę między krokami. Wybierz wyświetlony znak plus (+), a następnie wybierz pozycję **Dodaj akcję**.
 
 1. W polu wyszukiwania wprowadź "zabezpieczenia programu Microsoft Graph" jako filtr. Z listy Akcje wybierz żądaną akcję.
 
 1. Zaloguj się przy użyciu poświadczeń zabezpieczeń Microsoft Graph.
 
 1. Podaj niezbędne szczegóły wybranej akcji i Kontynuuj tworzenie przepływu pracy aplikacji logiki.
+
+## <a name="add-triggers"></a>Dodaj wyzwalacze
+
+W Azure Logic Apps każda aplikacja logiki musi rozpoczynać się od [wyzwalacza](../logic-apps/logic-apps-overview.md#logic-app-concepts), który jest uruchamiany w przypadku wystąpienia konkretnego zdarzenia lub spełnienia określonego warunku. Za każdym razem, gdy wyzwala wyzwalacz, aparat Logic Apps tworzy wystąpienie aplikacji logiki i uruchamia przepływ pracy aplikacji.
+
+> [!NOTE] 
+> Gdy wyzwalany jest wyzwalacz, wyzwalacz przetwarza wszystkie nowe alerty. Jeśli nie otrzymasz żadnych alertów, uruchomienie wyzwalacza zostanie pominięte. Sonda następnego wyzwalacza odbywa się na podstawie interwału cyklu określonego we właściwościach wyzwalacza.
+
+Ten przykład pokazuje, jak uruchomić przepływ pracy aplikacji logiki, gdy do aplikacji wysyłane są nowe alerty.
+
+1.  W Azure Portal lub programie Visual Studio Utwórz pustą aplikację logiki, która spowoduje otwarcie projektanta aplikacji logiki. Ten przykład używa Azure Portal.
+
+1.  W projektancie w polu wyszukiwania wprowadź "zabezpieczenia programu Microsoft Graph" jako filtr. Z listy Wyzwalacze wybierz ten wyzwalacz: **wszystkie nowe alerty**
+
+1.  W wyzwalaczu podaj informacje o alertach, które chcesz monitorować. Aby uzyskać więcej właściwości, Otwórz listę **Dodaj nowy parametr** i wybierz parametr, aby dodać tę właściwość do wyzwalacza.
+
+   | Właściwość | Właściwość (JSON) | Wymagane | Typ | Opis |
+   |----------|-----------------|----------|------|-------------|
+   | **Interwał** | `interval` | Tak | Liczba całkowita | Dodatnia liczba całkowita, która opisuje, jak często przebiega przepływ pracy na podstawie częstotliwości. Poniżej znajdują się minimalne i maksymalne interwały: <p><p>-Miesiąc: 1-16 miesięcy <br>-Dzień: 1-500 dni <br>-Godz.: 1 – 12 godzin <br>-Minutę: 1 – 72000 minut <br>-Sekunda: 1 – 9999999 s <p>Jeśli na przykład interwał wynosi 6, a częstotliwość to "miesiąc", cykl jest co 6 miesięcy. |
+   | **Częstotliwość** | `frequency` | Tak | Ciąg | Jednostka czasu dla cyklu: **sekunda**, **minuta**, **godzina**, **dzień**, **tydzień**lub **miesiąc** |
+   | **Strefa czasowa** | `timeZone` | Nie | Ciąg | Ma zastosowanie tylko w przypadku określenia czasu rozpoczęcia, ponieważ ten wyzwalacz nie akceptuje [przesunięcia czasu UTC](https://en.wikipedia.org/wiki/UTC_offset). Wybierz strefę czasową, która ma zostać zastosowana. |
+   | **Godzina rozpoczęcia** | `startTime` | Nie | Ciąg | Podaj datę i godzinę rozpoczęcia w tym formacie: <p><p>RRRR-MM-DDTgg: mm: SS w przypadku wybrania strefy czasowej <p>— lub — <p>RRRR-MM-DDTgg: mm: SSS, jeśli nie wybierzesz strefy czasowej <p>Na przykład jeśli chcesz, aby 18 września 2017 o 2:00 PM, określ wartość "2017-09-18T14:00:00" i wybierz strefę czasową, na przykład Pacyfik (czas standardowy). Lub określ wartość "2017-09-18T14:00:00Z" bez strefy czasowej. <p>**Uwaga:** Ta godzina rozpoczęcia ma maksymalnie 49 lat w przyszłości i musi być zgodna ze [specyfikacją ISO 8601 Data Time](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) w [formacie czasu UTC](https://en.wikipedia.org/wiki/Coordinated_Universal_Time), ale bez [przesunięcia czasu UTC](https://en.wikipedia.org/wiki/UTC_offset). Jeśli nie wybierzesz strefy czasowej, musisz dodać literę "Z" na końcu bez spacji. Ten "Z" odnosi się do odpowiadającego [czasu morskich](https://en.wikipedia.org/wiki/Nautical_time). <p>W przypadku prostych harmonogramów czas rozpoczęcia jest pierwszym wystąpieniem, a w przypadku harmonogramów złożonych wyzwalacz nie jest uruchamiany dłużej niż godzina rozpoczęcia. [*Jakie są sposoby używania daty i godziny rozpoczęcia?* ](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#start-time) |
+   ||||||
+
+1.  Gdy skończysz, na pasku narzędzi projektanta wybierz pozycję **Zapisz**.
+
+1.  Teraz Kontynuuj dodawanie co najmniej jednej akcji do aplikacji logiki w celu wykonywania zadań, które chcesz wykonać z wynikami wyzwalacza.
 
 ## <a name="add-actions"></a>Dodaj akcje
 
@@ -95,8 +124,7 @@ Aby uzyskać więcej informacji na temat zapytań, których można użyć z tym 
 
 ### <a name="manage-alert-subscriptions"></a>Zarządzanie subskrypcjami alertów
 
-Microsoft Graph obsługuje [*subskrypcje*](https://docs.microsoft.com/graph/api/resources/subscription)lub elementy [*webhook*](https://docs.microsoft.com/graph/api/resources/webhooks). Aby uzyskać, zaktualizować lub usunąć subskrypcje, podaj [parametry zapytania OData obsługiwane przez Microsoft Graph](https://docs.microsoft.com/graph/query-parameters) do konstrukcji Microsoft Graph Entity i Dołącz `security/alerts`, a następnie zapytanie OData. 
-*Nie dołączaj* podstawowego adresu URL, na przykład `https://graph.microsoft.com/v1.0`. Zamiast tego należy użyć formatu w tym przykładzie:
+Microsoft Graph obsługuje [*subskrypcje*](https://docs.microsoft.com/graph/api/resources/subscription)lub elementy [*webhook*](https://docs.microsoft.com/graph/api/resources/webhooks). Aby uzyskać, zaktualizować lub usunąć subskrypcje, podaj [parametry zapytania OData obsługiwane przez Microsoft Graph](https://docs.microsoft.com/graph/query-parameters) do konstrukcji Microsoft Graph Entity i Dołącz `security/alerts`, a następnie zapytanie OData. *Nie dołączaj* podstawowego adresu URL, na przykład `https://graph.microsoft.com/v1.0`. Zamiast tego należy użyć formatu w tym przykładzie:
 
 `security/alerts?$filter=status eq 'New'`
 
@@ -111,11 +139,6 @@ Microsoft Graph obsługuje [*subskrypcje*](https://docs.microsoft.com/graph/api/
 ## <a name="connector-reference"></a>Dokumentacja łączników
 
 Aby uzyskać szczegółowe informacje techniczne na temat wyzwalaczy, akcji i limitów, które są opisane w opisie OpenAPI łącznika (dawniej Swagger), przejrzyj [stronę odwołania](https://aka.ms/graphsecurityconnectorreference)łącznika.
-
-## <a name="get-support"></a>Uzyskaj pomoc techniczną
-
-Jeśli masz pytania, odwiedź [forum usługi Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-Aby przesłać pomysły dotyczące funkcji lub zagłosować na nie, odwiedź [witrynę opinii użytkowników usługi Logic Apps](https://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Następne kroki
 

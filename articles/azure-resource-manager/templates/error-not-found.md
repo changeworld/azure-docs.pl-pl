@@ -2,13 +2,13 @@
 title: Błędy nieznalezienia zasobu
 description: Opisuje sposób rozwiązywania błędów, gdy nie można znaleźć zasobu podczas wdrażania przy użyciu szablonu Azure Resource Manager.
 ms.topic: troubleshooting
-ms.date: 06/06/2018
-ms.openlocfilehash: 81a2541be4f0a99aa28186eb6b7289bdb595e678
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.date: 01/21/2020
+ms.openlocfilehash: c3e19af24fa7fb850eadf3deb346180476943241
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76152429"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310666"
 ---
 # <a name="resolve-not-found-errors-for-azure-resources"></a>Nie znaleziono błędów dla zasobów platformy Azure
 
@@ -87,4 +87,16 @@ Wyszukaj wyrażenie zawierające funkcję [Reference](template-functions-resourc
 
 ```json
 "[reference(resourceId('exampleResourceGroup', 'Microsoft.Storage/storageAccounts', 'myStorage'), '2017-06-01')]"
+```
+
+## <a name="solution-4---get-managed-identity-from-resource"></a>Rozwiązanie 4 — uzyskiwanie zarządzanej tożsamości z zasobu
+
+W przypadku wdrażania zasobu, który niejawnie tworzy [tożsamość zarządzaną](../../active-directory/managed-identities-azure-resources/overview.md), przed pobraniem wartości w zarządzanej tożsamości należy poczekać, aż ten zasób zostanie wdrożony. Jeśli nazwa tożsamości zarządzanej zostanie przekazana do funkcji [referencyjnej](template-functions-resource.md#reference) , Menedżer zasobów próbuje rozpoznać odwołanie przed wdrożeniem zasobu i tożsamości. Zamiast tego należy przekazać nazwę zasobu, do którego jest stosowana tożsamość. Takie podejście gwarantuje, że zasób i zarządzana tożsamość zostaną wdrożone przed Menedżer zasobów rozpozna funkcję Reference.
+
+W funkcji Reference Użyj `Full`, aby uzyskać wszystkie właściwości, w tym zarządzaną tożsamość.
+
+Na przykład aby uzyskać identyfikator dzierżawy dla tożsamości zarządzanej, która została zastosowana do zestawu skalowania maszyn wirtualnych, użyj:
+
+```json
+"tenantId": "[reference(concat('Microsoft.Compute/virtualMachineScaleSets/',  variables('vmNodeType0Name')), variables('vmssApiVersion'), 'Full').Identity.tenantId]"
 ```

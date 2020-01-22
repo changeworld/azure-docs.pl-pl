@@ -6,12 +6,12 @@ ms.topic: quickstart
 description: Ten przewodnik Szybki Start przedstawia sposób tworzenia zespołu Kubernetes z użyciem kontenerów i mikrousług za pomocą Azure Dev Spaces
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, Service siatk, Service siatk Routing, polecenia kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 86d8d559a2d6408eb6846705887a82b440d50d7b
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: b84bb67556eda3a453ede5a6fb745d8ae472fb6c
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770836"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76290414"
 ---
 # <a name="quickstart-team-development-on-kubernetes---azure-dev-spaces"></a>Szybki Start: Programowanie zespołowe w usłudze Kubernetes — Azure Dev Spaces
 
@@ -137,7 +137,7 @@ azds space select -n dev/azureuser1 -y
 azds space select -n dev/azureuser2 -y
 ```
 
-Powyższe polecenia powodują utworzenie dwóch miejsc potomnych w obszarze *dev* o nazwie *azureuser1* i *azureuser2*. Te dwie przestrzenie podrzędne reprezentują różne miejsca deweloperskie dla *azureuser1* i *azureuser2* dla deweloperów, które mają być używane do wprowadzania zmian w aplikacji przykładowej.
+Powyższe polecenia powodują utworzenie dwóch miejsc potomnych w obszarze *dev* o nazwie *azureuser1* i *azureuser2*. Te dwie przestrzenie podrzędne reprezentują różne miejsca do użytku dla deweloperów *azureuser1* i *azureuser2* do wprowadzania zmian w aplikacji przykładowej.
 
 Użyj polecenia `azds space list`, aby wyświetlić listę wszystkich miejsc dev i potwierdzić, że jest wybrana opcja *dev/azureuser2* .
 

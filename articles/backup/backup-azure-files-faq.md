@@ -3,16 +3,16 @@ title: Tworzenie kopii zapasowej plików w usłudze Azure Files — często zada
 description: W tym artykule znajdują się odpowiedzi na często zadawane pytania dotyczące ochrony udziałów plików platformy Azure za pomocą usługi Azure Backup.
 ms.date: 07/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: bc4d7f9ad6512831687b974ae68870314775457d
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 053fe38b07fff5d289c72024ef185fbf5d647f70
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892576"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76294001"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Pytania dotyczące tworzenia kopii zapasowej plików w usłudze Azure Files
 
-Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące tworzenia kopii zapasowej plików usługi Azure Files. W niektórych odpowiedziach znajdują się linki do artykułów zawierających szczegółowe informacje. Pytania dotyczące usługi Azure Backup można również zadawać na [forum dyskusyjnym](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
+Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące tworzenia kopii zapasowej plików usługi Azure Files. W niektórych odpowiedziach znajdują się linki do artykułów zawierających szczegółowe informacje. Pytania dotyczące usługi Azure Backup można zadawać także na [forum dyskusyjnym](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
 
 Aby szybko przeskanować sekcje znajdujące się w tym artykule, użyj linków z prawej strony w obszarze **W tym artykule**.
 
@@ -36,7 +36,7 @@ Wybranie konta usługi Storage w celu odnalezienia udziałów plików podczas pr
 
 ### <a name="can-i-change-the-vault-to-which-i-back-up-my-file-shares"></a>Czy mogę zmienić magazyn, do którego należy utworzyć kopię zapasową moich udziałów plików?
 
-Tak. Musisz jednak [zatrzymać ochronę](backup-azure-files.md#stop-protecting-an-azure-file-share) na poziomie połączonego magazynu, [wyrejestrować](troubleshoot-azure-files.md#configuring-backup) to konto usługi Storage, a następnie włączyć ochronę z poziomu innego magazynu.
+Tak. Należy jednak [zatrzymać ochronę udziału plików](manage-afs-backup.md#stop-protection-on-a-file-share) z połączonego magazynu, [wyrejestrować](troubleshoot-azure-files.md#configuring-backup) to konto magazynu, a następnie chronić je w innym magazynie.
 
 ### <a name="in-which-geos-can-i-back-up-azure-file-shares"></a>W jakich Georegiony można tworzyć kopie zapasowe udziałów plików platformy Azure?
 
@@ -93,7 +93,7 @@ W wersji zapoznawczej można chronić w jednym magazynie udziały plików platfo
 
 Nie. Wszystkie udziały plików na koncie usługi Storage mogą być chronione tylko przez ten sam magazyn.
 
-## <a name="backup"></a>Backup
+## <a name="backup"></a>Tworzenie kopii zapasowych
 
 ### <a name="how-many-scheduled-backups-can-i-configure-per-file-share"></a>Ile zaplanowanych kopii zapasowych można skonfigurować dla każdego udziału plików?
 

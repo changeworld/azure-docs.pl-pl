@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: 807bb4b4dd07298635ff0cd3e18f095ccf862e91
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 9ebc418327d8c73198d43d3c40e14d48c73ad209
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75989802"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76290244"
 ---
 # <a name="how-the-azure-reservation-discount-is-applied-to-virtual-machines"></a>Jak rabat na rezerwację platformy Azure jest stosowany do maszyn wirtualnych
 
@@ -47,7 +47,7 @@ Po wyłączeniu zasobu rabat za rezerwację automatycznie stosuje się do innego
 
 ![Zrzut ekranu przedstawiający jedną zastosowaną rezerwację i dwa zgodne wystąpienia maszyn wirtualnych](./media/understand-vm-reservation-charges/billing-reserved-vm-instance-application.png)
 
-1. Każde użycie przekraczające limit rezerwacji jest obciążane opłatami według zwykłych stawek płatności zgodnie z rzeczywistym użyciem. Za użycie poniżej limitu rezerwacji opłaty nie są naliczane — zostało ono opłacone w ramach zakupu rezerwacji.
+1. Każde użycie przekraczające limit rezerwacji jest obciążane opłatami według zwykłych stawek płatności zgodnie z rzeczywistym użyciem. Nie jest naliczana opłata za żadne użycie poniżej wiersza rezerwacji, ponieważ została już zapłacona jako część zakupu rezerwacji.
 2. W godzinie 1 wystąpienie 1 działa przez 0,75 godz., a wystąpienie 2 działa przez 0,5 godz. Łączne użycie w godzinie 1 to 1,25 godz. Za pozostałe 0,25 godz. opłaty są naliczane według stawek płatności zgodnie z rzeczywistym użyciem.
 3. W godzinie 2 i godzinie 3 oba wystąpienia były uruchomione przez 1 godzinę. Jedno wystąpienie jest objęte rezerwacją, a drugie jest obciążane opłatami według stawek płatności zgodnie z rzeczywistym użyciem.
 4. W godzinie 4 wystąpienie 1 działa przez 0,5 godz., a wystąpienie 2 działa przez 1 godz. Wystąpienie 1 jest w pełni objęte rezerwacją. W wystąpieniu 2 rezerwacją jest objęte 0,5 godz. Za pozostałe 0,5 godz. opłaty są naliczane według stawek płatności zgodnie z rzeczywistym użyciem.

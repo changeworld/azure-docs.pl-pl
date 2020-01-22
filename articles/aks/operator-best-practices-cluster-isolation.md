@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: mlearned
-ms.openlocfilehash: e9f7a10f19ed23e4f3b4fefa38fbb2d1912f2ac0
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 88b2da863b30157de7bb749ae0ca4d040484af52
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71348788"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293644"
 ---
 # <a name="best-practices-for-cluster-isolation-in-azure-kubernetes-service-aks"></a>Najlepsze rozwiązania związane z izolacją klastra w usłudze Azure Kubernetes Service (AKS)
 
@@ -48,7 +48,7 @@ Logiczne rozdzielenie klastrów zwykle zapewnia wyższą gęstość pod względe
 
 ## <a name="physically-isolate-clusters"></a>Izolowanie klastrów
 
-**Wskazówki dotyczące najlepszych** rozwiązań — minimalizuje wykorzystanie fizycznej izolacji dla każdego oddzielnego wdrożenia zespołu lub aplikacji. Zamiast tego należy użyć izolacji logicznej, zgodnie z opisem w poprzedniej sekcji.
+**Wskazówki dotyczące najlepszych** rozwiązań — minimalizuje wykorzystanie fizycznej izolacji dla każdego oddzielnego wdrożenia zespołu lub aplikacji. Zamiast tego należy użyć izolacji *logicznej* , zgodnie z opisem w poprzedniej sekcji.
 
 Typowym podejściem do izolacji klastra jest używanie fizycznie oddzielnych klastrów AKS. W tym modelu izolacji zespoły lub obciążenia są przypisani do własnego klastra AKS. Takie podejście często wygląda jak Najprostszym sposobem izolowania obciążeń lub zespołów, ale powoduje dodanie dodatkowych kosztów związanych z zarządzaniem i finansami. Teraz musisz obsługiwać te wiele klastrów i mieć indywidualny dostęp i uprawnienia do przypisywania. Opłaty są naliczane również za wszystkie poszczególne węzły.
 

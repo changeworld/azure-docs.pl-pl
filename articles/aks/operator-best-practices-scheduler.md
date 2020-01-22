@@ -1,47 +1,47 @@
 ---
-title: Operator najlepsze rozwiązania — funkcje podstawowe usługi scheduler w usłudze Azure Kubernetes usługi (AKS)
-description: Dowiedz się, operator klastra najlepsze rozwiązania dotyczące używania harmonogramu podstawowe funkcje, takie jak limity przydziałów zasobów i zasobnika budżetów przerw w działaniu w usłudze Azure Kubernetes Service (AKS)
+title: Najlepsze praktyki dla operatorów — podstawowe funkcje harmonogramu w usłudze Azure Kubernetes Services (AKS)
+description: Zapoznaj się z najlepszymi rozwiązaniami operatora klastra dotyczącymi korzystania z podstawowych funkcji usługi Scheduler, takich jak przydziały zasobów i budżety na przerwy w usłudze Azure Kubernetes Service (AKS)
 services: container-service
 author: mlearned
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: mlearned
-ms.openlocfilehash: 3ce59784b2c7c1d145d99786b10927c230146c8b
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 3661f435b5c2dd88aa8e17ca396f9af43aea5224
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67614616"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293610"
 ---
-# <a name="best-practices-for-basic-scheduler-features-in-azure-kubernetes-service-aks"></a>Najlepsze rozwiązania dotyczące harmonogramu podstawowe funkcje w usłudze Azure Kubernetes Service (AKS)
+# <a name="best-practices-for-basic-scheduler-features-in-azure-kubernetes-service-aks"></a>Najlepsze rozwiązania dotyczące podstawowych funkcji harmonogramu w usłudze Azure Kubernetes Service (AKS)
 
-W przypadku zarządzania klastrów w usłudze Azure Kubernetes Service (AKS), często jest konieczne do izolowania obciążeń i zespołów. Harmonogram Kubernetes zapewnia funkcje, które pozwalają na kontrolowanie dystrybucji zasoby obliczeniowe lub ograniczyć wpływ zdarzeń związanych z konserwacją.
+Podczas zarządzania klastrami w usłudze Azure Kubernetes Service (AKS) często trzeba izolować zespoły i obciążenia. Usługa Kubernetes Scheduler udostępnia funkcje, które umożliwiają kontrolę dystrybucji zasobów obliczeniowych lub ograniczają wpływ zdarzeń konserwacyjnych.
 
-Najlepsze rozwiązania dotyczące tej koncentruje się na Kubernetes podstawowe funkcje planowania dla operatorów klastra. W tym artykule omówiono sposób wykonywania następujących zadań:
+Te najlepsze rozwiązania koncentrują się na podstawowych funkcjach planowania Kubernetes dla operatorów klastra. W tym artykule omówiono sposób wykonywania następujących zadań:
 
 > [!div class="checklist"]
-> * Limity przydziałów zasobów użycia w celu zapewnienia stałej ilości zasobów, aby zespoły lub obciążeń
-> * Ogranicza wpływ zaplanowanej konserwacji za pomocą budżetów przerw w działaniu zasobników
-> * Wyszukaj brakujące żądania zasobu pod oraz liczby wywołań przy użyciu `kube-advisor` narzędzia
+> * Użyj przydziałów zasobów, aby zapewnić stałą ilość zasobów dla zespołów lub obciążeń
+> * Ogranicz wpływ zaplanowanej konserwacji przy użyciu budżetów przerwań
+> * Wyszukaj brakujące żądania zasobów i limity przy użyciu narzędzia `kube-advisor`
 
-## <a name="enforce-resource-quotas"></a>Wymuszanie limitów przydziałów zasobów
+## <a name="enforce-resource-quotas"></a>Wymuszaj przydziały zasobów
 
-**Najważniejsze wskazówki** — planowanie i zastosować limity przydziałów zasobów na poziomie przestrzeni nazw. Jeśli nie Definiuj zasobników, zasobów i limity, odrzucić wdrożenie. Monitorowanie użycia zasobów i Dostosowywanie przydziałów, zgodnie z potrzebami.
+**Wskazówki dotyczące najlepszych** rozwiązań — planowanie i stosowanie przydziałów zasobów na poziomie przestrzeni nazw. Jeśli nie definiują żądań zasobów i limitów, Odrzuć wdrożenie. Monitorowanie użycia zasobów i dostosowywanie przydziałów w razie konieczności.
 
-Żądania zasobów i limity są umieszczane w specyfikacji zasobników. Limity te są używane przez harmonogram Kubernetes w czasie wdrażania można znaleźć dostępnego węzła w klastrze. Te ograniczenia i żądań działania na poziomie poszczególnych zasobników. Aby uzyskać więcej informacji na temat sposobu definiowania tych wartości, zobacz [Definiowanie zasobów zasobników i limity][resource-limits]
+Żądania zasobów i limity są umieszczane w specyfikacji pod. Te limity są używane przez harmonogram Kubernetes podczas wdrażania, aby znaleźć dostępny węzeł w klastrze. Te limity i żądania działają na poziomie poszczególnych poziomów. Aby uzyskać więcej informacji na temat sposobu definiowania tych wartości, zobacz [Definiowanie żądań zasobów i limitów][resource-limits] .
 
-Aby zapewnić możliwość rezerwowania i ograniczania zasobów dla rozwoju zespołu lub projektu, należy użyć *limity przydziałów zasobów*. Te przydziały są zdefiniowane w przestrzeni nazw i może służyć do ustawiania przydziałów zgodnie z następującymi zasadami:
+Aby zapewnić sposób rezerwowania i ograniczania zasobów w zespole lub projekcie deweloperskim, należy użyć *przydziałów zasobów*. Te przydziały są zdefiniowane w przestrzeni nazw i mogą być używane do ustawiania przydziałów w następujący sposób:
 
-* **Zasoby obliczeniowe**, takich jak procesor CPU i pamięci lub procesorów GPU.
-* **Zasoby magazynu**, zawiera łączną liczbę woluminów lub ilość miejsca na dysku dla klasy magazynowania.
-* **Liczba obiektów**, takie jak maksymalna liczba wpisów tajnych, można utworzyć usługi lub zadania.
+* **Zasoby obliczeniowe**, takie jak procesor CPU i pamięć, lub procesory GPU.
+* **Zasoby magazynu**obejmują łączną liczbę woluminów lub ilość miejsca na dysku dla danej klasy magazynu.
+* **Liczba obiektów**, takich jak Maksymalna liczba wpisów tajnych, usług lub zadań, może zostać utworzona.
 
-Rozwiązanie Kubernetes nie overcommit zasobów. Po pomyślnej łączna liczba żądań zasobów lub limitów przydziału przypisanych nie dalszych wdrożeń to się powiedzie.
+Kubernetes nie zatwierdzi zasobów. Gdy skumulowana łączna liczba żądań lub limitów zasobów przekroczy przypisany przydział, dalsze wdrożenia nie powiedzie się.
 
-Podczas definiowania limity przydziałów zasobów zasobników wszystkie utworzone w przestrzeni nazw należy podać limity lub żądań w ich specyfikacje zasobników. Jeśli nie zapewniają one te wartości, można odrzucić wdrożenie. Zamiast tego można [skonfigurować domyślne i limity dla przestrzeni nazw][configure-default-quotas].
+Podczas definiowania przydziałów zasobów wszystkie zasobniki utworzone w przestrzeni nazw muszą podawać limity lub żądania w ich specyfikacjach. Jeśli te wartości nie zostaną podane, można odrzucić wdrożenie. Zamiast tego można [skonfigurować domyślne żądania i limity dla przestrzeni nazw][configure-default-quotas].
 
-Następujące manifest YAML przykład o nazwie *dev aplikacji zespołu quotas.yaml* ustawia stały limit daje w sumie *10* procesorów CPU, *20Gi* pamięci i *10*zasobników:
+Poniższy przykład manifestu YAML o nazwie *dev-App-Team-Limited. YAML* ustawia stały limit *10* procesorów CPU, *20Gi* pamięci i *10* zasobników:
 
 ```yaml
 apiVersion: v1
@@ -55,32 +55,32 @@ spec:
     pods: "10"
 ```
 
-Ten limit przydziału zasobów mogą być stosowane przez określenie obszaru nazw, takich jak *dev-apps*:
+Ten przydział zasobów można zastosować, określając przestrzeń nazw, na przykład *dev-Apps*:
 
 ```console
 kubectl apply -f dev-app-team-quotas.yaml --namespace dev-apps
 ```
 
-Praca z deweloperów aplikacji i właścicieli do zrozumienia potrzeb i zastosować limity przydziałów odpowiednich zasobów.
+Pracuj z programistami i właścicielami aplikacji, aby zrozumieć ich potrzeby i zastosować odpowiednie przydziały zasobów.
 
-Aby uzyskać więcej informacji na temat obiektów dostępnych zasobów, zakresy i priorytetów, zobacz [limity przydziałów zasobów w usłudze Kubernetes][k8s-resource-quotas].
+Aby uzyskać więcej informacji na temat dostępnych obiektów zasobów, zakresów i priorytetów, zobacz [przydziały zasobów w Kubernetes][k8s-resource-quotas].
 
-## <a name="plan-for-availability-using-pod-disruption-budgets"></a>Planowanie dostępności przy użyciu budżetów przerw w działaniu zasobników
+## <a name="plan-for-availability-using-pod-disruption-budgets"></a>Planowanie dostępności przy użyciu budżetów przerwań
 
-**Najważniejsze wskazówki** — w celu zapewnienia dostępności aplikacji, zdefiniuj budżetów przerw w działaniu zasobnika (PDB), aby upewnić się, że minimalna liczba zasobników są dostępne w klastrze.
+**Wskazówki dotyczące najlepszych** rozwiązań — aby zachować dostępność aplikacji, należy zdefiniować budżety przerw w działaniu (plików PDB), aby upewnić się, że w klastrze są dostępne minimalne liczby zasobników.
 
-Istnieją dwa szkodliwe zdarzenia, które powodują zasobników do usunięcia:
+Istnieją dwa zdarzenia zakłócające, które powodują usunięcie z nich:
 
-* *Niedobrowolnego przerw w działaniu* zdarzeń poza kontrolą typowe operatora klastra lub właściciela aplikacji.
-  * Te przerw w działaniu niedobrowolnego obejmują awarii sprzętu komputera fizycznego, jądra lub usuwania węzłów maszyny Wirtualnej
-* *Dobrowolna przerw w działaniu* są zdarzenia, żądaniem operator klastra lub właściciela aplikacji.
-  * Te przerw w działaniu dobrowolne to Uaktualnianie klastra, szablon wdrażania aktualizacji lub przypadkowego usunięcia zasobnik.
+* *Niedobrowolne zakłócenia* to zdarzenia wykraczające poza typową kontrolę nad operatorem klastra lub właścicielem aplikacji.
+  * Niedobrowolne zakłócenia obejmują awarie sprzętowe na komputerze fizycznym, awaryjnego jądra lub usuwanie maszyny wirtualnej węzła
+* *Dobrowolne zakłócenia* to zdarzenia żądane przez operatora klastra lub właściciela aplikacji.
+  * Te dobrowolne zakłócenia obejmują uaktualnienia klastra, zaktualizowany szablon wdrożenia lub przypadkowe usunięcie pod.
 
-Niedobrowolnego przerw w działaniu można zminimalizować przy użyciu wielu replik zasobników we wdrożeniu. Uruchamianie wielu węzłów w klastrze AKS pomaga również te niedobrowolnego przerw w działaniu. Dobrowolna przerw w działaniu, usługa Kubernetes zapewnia *zasobnika budżetów przerw w działaniu* , umożliwić operator klastra, zdefiniować liczba minimalne dostępne lub maksymalnej zasobów niedostępny. Te budżetów przerw w działaniu zasobnika umożliwiają planowanie sposobu wdrożenia lub zestawów replik reagowanie po wystąpieniu zdarzenia dobrowolne przerw w działaniu.
+Niedobrowolne zakłócenia można wyeliminować przy użyciu wielu replik Twojego zasobnika w ramach wdrożenia. Uruchomienie wielu węzłów w klastrze AKS również pomaga w niedobrowolnym zakłóceniom. W przypadku dobrowolnego zakłócenia Kubernetes zapewnia w *budżecie przerwy w zakłóceniach* , które umożliwiają operatorowi klastra Definiowanie minimalnej dostępnej lub maksymalnej liczby niedostępnych zasobów. Te budżety na przerwy w działaniu umożliwiają zaplanowanie sposobu, w jaki wdrożenia lub zestawy replik reagują, gdy wystąpi zdarzenie dobrowolnego zakłócenia.
 
-Jeśli klaster jest uaktualniany lub zaktualizowany szablon wdrożenia, harmonogram Kubernetes sprawia, że się, że dodatkowe zasobników są planowane w innych węzłach, zanim będzie można kontynuować zdarzenia dobrowolne przerw w działaniu. Harmonogram czeka przed węzłem jest uruchamiany ponownie, dopóki pomyślnie zaplanowano zdefiniowanej liczby zasobników w innych węzłach w klastrze.
+Jeśli klaster ma zostać uaktualniony lub Zaktualizowano szablon wdrożenia, usługa Kubernetes Scheduler upewni się, że dodatkowe zasobniki są zaplanowane w innych węzłach, zanim będzie można kontynuować zdarzenia dobrowolnego zakłócenia. Harmonogram czeka przed ponownym uruchomieniem węzła do momentu pomyślnego zaplanowania zdefiniowanej liczby numerów w innych węzłach w klastrze.
 
-Przyjrzyjmy się przykładem zestawu z pięciu zasobników, systemem NGINX replik. Zasobników w replice ustawione jako przypisana etykieta `app: nginx-frontend`. Podczas zdarzenia dobrowolne przerw w działaniu, np. w przypadku uaktualniania klastra ma upewnij się, że co najmniej trzech zasobników w dalszym ciągu uruchamiać. Poniższego kodu YAML manifestu dla *PodDisruptionBudget* obiektu określa następujące wymagania:
+Przyjrzyjmy się przykładowi do zestawu replik z pięcioma zasobnikami z systemem NGINX. W zestawie replik są przypisywane etykiety `app: nginx-frontend`. Podczas zdarzenia dobrowolnego zakłócenia, takiego jak uaktualnienie klastra, należy upewnić się, że co najmniej trzy zasobniki będą nadal działać. Następujący manifest YAML dla obiektu *PodDisruptionBudget* definiuje następujące wymagania:
 
 ```yaml
 apiVersion: policy/v1beta1
@@ -94,9 +94,9 @@ spec:
       app: nginx-frontend
 ```
 
-Można również zdefiniować wartości procentowej, takich jak *60%* , co pozwala na automatyczne kompensuje repliki zestawu skalowania liczby zasobników.
+Możesz również określić wartość procentową, taką jak *60%* , która umożliwia automatyczne skompensowanie dla zestawu replik skalowanie w górę liczby numerów.
 
-Maksymalna liczba wystąpień niedostępny można zdefiniować zestawu replik. Ponownie można także definiować procent maksymalnej zasobników niedostępny. Manifest YAML budżetu przerw w działaniu w usłudze następujące zasobnika definiuje, nie więcej niż dwa zasobników w replice zestawu jest niedostępny:
+Można zdefiniować maksymalną liczbę niedostępnych wystąpień w zestawie replik. Ponownie można także zdefiniować wartość procentową dla maksymalnej niedostępnego zasobnika. W poniższym manifeście budżetu YAML zakłóceń nie można uzyskać dostępu do więcej niż dwóch zasobników w zestawie replik:
 
 ```yaml
 apiVersion: policy/v1beta1
@@ -110,32 +110,32 @@ spec:
       app: nginx-frontend
 ```
 
-Po zdefiniowaniu budżetu przerw w działaniu pod utworzysz ją w klastrze AKS podobnie jak w przypadku innych obiektów w usłudze Kubernetes:
+Po zdefiniowaniu budżetu dla przerwy w działaniu można utworzyć go w klastrze AKS, tak jak w przypadku dowolnego innego obiektu Kubernetes:
 
 ```console
 kubectl apply -f nginx-pdb.yaml
 ```
 
-Praca z deweloperów aplikacji i właścicieli do zrozumienia ich potrzeb i zastosować odpowiednie zasobnika budżetów przerw w działaniu.
+Skontaktuj się z programistami i właścicielami aplikacji, aby zrozumieć ich potrzeby i zastosować odpowiednie budżety na przerwy.
 
-Aby uzyskać więcej informacji o używaniu budżetów przerw w działaniu zasobników, zobacz [Określ budżet przerw w działaniu aplikacji][k8s-pdbs].
+Aby uzyskać więcej informacji o korzystaniu z budżetów, zobacz temat [Określanie budżetu zakłóceń dla aplikacji][k8s-pdbs].
 
-## <a name="regularly-check-for-cluster-issues-with-kube-advisor"></a>Regularne sprawdzanie problemów z klastrem przy użyciu klastra kubernetes w usłudze advisor
+## <a name="regularly-check-for-cluster-issues-with-kube-advisor"></a>Regularnie sprawdzaj problemy z klastrem przy użyciu usługi polecenia-Advisor
 
-**Najważniejsze wskazówki** -regularnie uruchomić najnowszą wersję `kube-advisor` narzędzia typu open source do wykrywania problemów w klastrze. Jeśli zastosujesz limity przydziałów zasobów w istniejącym klastrze usługi AKS, uruchom `kube-advisor` najpierw po to, aby znaleźć zasobników, które nie mają żądania zasobów i ograniczeń.
+**Wskazówki dotyczące najlepszych** rozwiązań — regularnie uruchamiaj najnowszą wersję narzędzia `kube-advisor` Open Source, aby wykrywać problemy w klastrze. W przypadku zastosowania przydziałów zasobów w istniejącym klastrze AKS należy najpierw uruchomić `kube-advisor`, aby znaleźć te, które nie mają zdefiniowanych żądań zasobów i limitów.
 
-[Klastra kubernetes w usłudze advisor][kube-advisor] narzędzie jest skojarzone projekt typu open source AKS, które skanuje klastra Kubernetes i raporty dotyczące problemów, które znajdzie. Jest jeden wyboru przydatne do identyfikowania zasobników, które nie mają i limity zasobów w miejscu.
+Narzędzie [polecenia-Advisor][kube-advisor] to SKOJARZONY projekt AKS typu open source, który skanuje klaster Kubernetes i raportuje o znalezionych problemach. Jednym z przydatnych kontroli jest zidentyfikowanie, które nie mają żądań zasobów i limitów.
 
-Narzędzia klastra kubernetes w usłudze advisor mogą być przedstawione na żądanie zasobów i limity Brak w aplikacji PodSpecs dla Windows, a także aplikacje dla systemu Linux, ale samo narzędzie klastra kubernetes w usłudze klasyfikatora musi być zaplanowane na zasobnik systemu Linux. Można zaplanować zasobnika do uruchamiania na pulę węzłów przy użyciu określonego systemu operacyjnego [selektor węzła][k8s-node-selector] w zasobniku konfiguracji.
+Narzędzie polecenia-Advisor może raportować żądania zasobów i limitów braku w PodSpecs dla aplikacji systemu Windows, a także aplikacji z systemem Linux, ale narzędzie Advisor polecenia musi zostać zaplanowane w systemie Linux pod. Można zaplanować uruchomienie w puli węzłów z określonym systemem operacyjnym przy użyciu [selektora węzłów][k8s-node-selector] w konfiguracji pod.
 
-W klastrze AKS, który hostuje wiele zespołów deweloperów i aplikacji może być trudne do śledzenia zasobników, bez tych zasobów żądania i ogranicza zestaw. Najlepszym rozwiązaniem jest regularne uruchamianie `kube-advisor` w klastrach usługi AKS, zwłaszcza, jeśli limity przydziałów zasobów nie przypisuj do przestrzeni nazw.
+W klastrze AKS, który obsługuje wiele zespołów programistycznych i aplikacji, może być trudno śledzić zestaw na platformie i nie tylko te żądania zasobów i limity. Najlepszym rozwiązaniem jest regularne uruchamianie `kube-advisor` w klastrach AKS, zwłaszcza jeśli przydziały zasobów nie są przypisywane do przestrzeni nazw.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Ten artykuł koncentruje się na podstawowych funkcji usługi scheduler Kubernetes. Aby uzyskać więcej informacji na temat operacji klastra w usłudze AKS zobacz poniższe najlepsze rozwiązania:
+Ten artykuł koncentruje się na podstawowych funkcjach usługi Kubernetes Scheduler. Aby uzyskać więcej informacji na temat operacji klastra w programie AKS, zobacz następujące najlepsze rozwiązania:
 
-* [Izolację wielodostępu i klastra][aks-best-practices-cluster-isolation]
-* [Zaawansowane funkcje usługi scheduler rozwiązania Kubernetes][aks-best-practices-advanced-scheduler]
+* [Obsługa wielu dzierżawców i izolowania klastrów][aks-best-practices-cluster-isolation]
+* [Zaawansowane funkcje usługi Scheduler Kubernetes][aks-best-practices-advanced-scheduler]
 * [Uwierzytelnianie i autoryzacja][aks-best-practices-identity]
 
 <!-- EXTERNAL LINKS -->

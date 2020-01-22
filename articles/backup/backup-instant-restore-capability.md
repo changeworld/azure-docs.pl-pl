@@ -4,12 +4,12 @@ description: Funkcja błyskawicznego przywracania platformy Azure i często zada
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: 19ecd6843422f1843631278626ef8971b0791b1f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 21e5ae82fc8274874e97d5e91a140b811b36c05e
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75391302"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293831"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Uzyskiwanie ulepszonej wydajności tworzenia kopii zapasowych i przywracania dzięki funkcji Azure Backup natychmiastowego przywracania
 
@@ -111,3 +111,15 @@ Nowy model nie zezwala na usuwanie punktu przywracania (SVR), chyba że migawka 
 ### <a name="why-is-my-snapshot-existing-even-after-the-set-retention-period-in-backup-policy"></a>Dlaczego moja migawka jest istniejąca, nawet po upływie ustawionego okresu przechowywania w zasadach tworzenia kopii zapasowych?
 
 Jeśli punkt odzyskiwania zawiera migawkę i jest to najnowsza dostępna jednostka UZALEŻNIONa, jest zachowywany do momentu utworzenia kolejnej kopii zapasowej. Jest to zgodne z zaprojektowanymi zasadami "wyrzucania elementów bezużytecznych" (GC), ponieważ w przypadku wystąpienia problemu z maszyną wirtualną wszystkie kopie zapasowe mogą być zawsze obecne w przypadku wystąpienia błędu. W normalnych scenariuszach RPS pliku są czyszczone w ciągu maksymalnie 24 godzin po ich wygaśnięciu.
+
+>[!NOTE]
+> Azure Backup teraz obsługuje selektywne tworzenie kopii zapasowych i przywracanie dysków przy użyciu rozwiązania do tworzenia kopii zapasowych maszyny wirtualnej platformy Azure.
+>
+>Obecnie Azure Backup obsługuje tworzenie kopii zapasowych wszystkich dysków (systemu operacyjnego i danych) w maszynie wirtualnej przy użyciu rozwiązania do tworzenia kopii zapasowej maszyny wirtualnej. Funkcja wykluczania dysku umożliwia utworzenie kopii zapasowej jednego lub kilku z wielu dysków z danymi na maszynie wirtualnej. Zapewnia to wydajne i ekonomiczne rozwiązanie dla potrzeb tworzenia kopii zapasowych i przywracania. Każdy punkt odzyskiwania zawiera dane dotyczące dysków uwzględnionych w operacji tworzenia kopii zapasowej, co dodatkowo umożliwia przywrócenie podzestawu dysków z danego punktu odzyskiwania podczas operacji przywracania. Dotyczy to przywracania zarówno z migawki, jak i magazynu.
+>
+> To rozwiązanie jest szczególnie przydatne w następujących scenariuszach:
+>  
+>1. Istnieje krytyczne dane, których kopie zapasowe mają być tworzone tylko w jednym dysku, i nie chcesz tworzyć kopii zapasowych reszty dysków podłączonych do maszyny wirtualnej. Pozwala to zminimalizować koszty magazynu kopii zapasowych.  
+>2. Istnieją inne rozwiązania do tworzenia kopii zapasowych danych maszyny wirtualnej. Na przykład wykonujesz kopię zapasową baz danych lub danych przy użyciu innego rozwiązania do tworzenia kopii zapasowych, a chcesz użyć kopii zapasowej na poziomie maszyny wirtualnej platformy Azure na potrzeby pozostałej części dysków i danych, aby utworzyć wydajny i niezawodny system z wykorzystaniem najlepszych dostępnych funkcji.
+>
+>Aby utworzyć konto w wersji zapoznawczej, Zapisz się do nas na AskAzureBackupTeam@microsoft.com

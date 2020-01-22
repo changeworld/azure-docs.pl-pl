@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: 1cf9ce6d57c1e106472caeef6c1f2a4b008a09bd
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 15a118dc72ae9ffc4b6c99b0e0b527a252d3ded8
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76277871"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293593"
 ---
 # <a name="release-notes"></a>Informacje o wersji
 
@@ -26,7 +26,7 @@ ms.locfileid: "76277871"
 
 - Konwersacja z wieloma urządzeniami: łączenie wielu urządzeń z tą samą obsługą mowy lub konwersacją tekstową oraz opcjonalne tłumaczenie komunikatów wysyłanych między nimi. Więcej informacji znajduje się w [tym artykule](multi-device-conversation.md). 
 - Dodano obsługę rozpoznawania słów kluczowych dla pakietu Android. AAR i dodano obsługę wersji x86 i x64. 
-- Obiektyw-C: `SendMessage` i `SetMessageProperty` metody dodane do obiektu `Connection`. [Tutaj](https://docs.microsoft.com/objectivec/cognitive-services/speech/)znajdziesz dokumentację.
+- Obiektyw-C: `SendMessage` i `SetMessageProperty` metody dodane do obiektu `Connection`. [Tutaj](https://docs.microsoft.com/objectivec/cognitive-services/speech/spxconnection)znajdziesz dokumentację.
 - Interfejs C++ API usługi TTS obsługuje teraz `std::wstring` jako dane wejściowe tekstu syntezy, eliminując konieczność konwersji wstring na ciąg przed przekazaniem go do zestawu SDK. Szczegóły można znaleźć [tutaj](https://docs.microsoft.com/cpp/cognitive-services/speech/speechsynthesizer#speaktextasync). 
 - C#: [Identyfikator języka](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-automatic-language-detection?pivots=programming-language-csharp) i [Konfiguracja języka źródłowego](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-specify-source-language?pivots=programming-language-csharp) są teraz dostępne.
 - JavaScript: dodano funkcję do `Connection` obiektu, aby przekazywać niestandardowe wiadomości z usługi mowy jako `receivedServiceMessage`wywołania zwrotnego.

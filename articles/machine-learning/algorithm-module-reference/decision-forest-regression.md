@@ -9,22 +9,22 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: d930a6d856c6608e7792ce8ef3204b39aba0028a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 828301724dae58437f7818668cd0be879ae2ac70
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497970"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314185"
 ---
 # <a name="decision-forest-regression-module"></a>Moduł regresji lasu decyzyjnego
 
-W tym artykule opisano moduł w programie Azure Machine Learning Designer (wersja zapoznawcza).
+W tym artykule opisano moduł w programie Azure Machine Learning Designer.
 
 Użyj tego modułu, aby utworzyć model regresji na podstawie kompletu drzew decyzyjnych.
 
 Po skonfigurowaniu modelu należy przeprowadzić uczenie modelu przy użyciu zestawu danych z etykietami i modułu [uczenie modelu](./train-model.md) . Model przeszkolony może być następnie używany do prognozowania. 
 
-## <a name="how-it-works"></a>Jak to działa
+## <a name="how-it-works"></a>Zasady działania
 
 Drzewa decyzyjne są modelami nieparametrycznymi, które wykonują sekwencję prostych testów dla każdego wystąpienia, przechodząc do struktury danych drzewa binarnego do momentu osiągnięcia węzła liścia (decyzja).
 
@@ -38,7 +38,7 @@ Drzewa decyzyjne mają następujące zalety:
 
 Ten model regresji składa się z kompletów drzew decyzyjnych. Każde drzewo w lesie z decyzją regresji wyprowadza rozkład gaussowskie jako prognozowanie. Agregacja jest wykonywana w ramach zestawu drzew, aby znaleźć rozkład gaussowskie najbliżej połączonej dystrybucji dla wszystkich drzew w modelu.
 
-Aby uzyskać więcej informacji na temat teoretycznej struktury tego algorytmu i jego implementacji, zobacz ten artykuł: [lasy decyzyjne: ujednolicona struktura klasyfikacji, regresji, oszacowania gęstości, uczenie kolektora i uczenie Międzynadzorowane ](https://www.microsoft.com/en-us/research/publication/decision-forests-a-unified-framework-for-classification-regression-density-estimation-manifold-learning-and-semi-supervised-learning/?from=http%3A%2F%2Fresearch.microsoft.com%2Fapps%2Fpubs%2Fdefault.aspx%3Fid%3D158806#)
+Aby uzyskać więcej informacji na temat teoretycznej struktury tego algorytmu i jego implementacji, zobacz ten artykuł: [lasy decyzyjne: ujednolicona struktura klasyfikacji, regresji, oszacowania gęstości, uczenie kolektora i uczenie Międzynadzorowane](https://www.microsoft.com/en-us/research/publication/decision-forests-a-unified-framework-for-classification-regression-density-estimation-manifold-learning-and-semi-supervised-learning/?from=http%3A%2F%2Fresearch.microsoft.com%2Fapps%2Fpubs%2Fdefault.aspx%3Fid%3D158806#)
 
 ## <a name="how-to-configure-decision-forest-regression-model"></a>Konfigurowanie modelu regresji lasu decyzyjnego
 
@@ -88,11 +88,7 @@ Aby uzyskać więcej informacji na temat teoretycznej struktury tego algorytmu i
 
 Po zakończeniu szkolenia:
 
-+ Aby zobaczyć drzewo, które zostało utworzone w każdej iteracji, kliknij prawym przyciskiem myszy dane wyjściowe modułu szkoleń i wybierz polecenie **Wizualizuj**.
-
-+ Aby wyświetlić reguły dla każdego węzła, kliknij każde drzewo i przejdź do szczegółów.
-
-+ Aby zapisać migawkę przeszkolonego modelu, kliknij prawym przyciskiem myszy dane wyjściowe modułu szkoleń i wybierz polecenie **Zapisz jako przeszkolony model**. Ta kopia modelu nie jest aktualizowana po kolejnych uruchomieniach potoku. 
++ Aby zapisać migawkę przeszkolonego modelu, wybierz moduł szkoleń, a następnie przejdź do karty Output (dane **wyjściowe** ) na prawym panelu. Kliknij ikonę **zarejestruj model**.  Zapisany model można znaleźć jako moduł w drzewie modułów. 
 
 ## <a name="next-steps"></a>Następne kroki
 

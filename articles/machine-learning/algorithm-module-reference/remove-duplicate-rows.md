@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: a0faba895c5717d061bacee2ce724c20464f8150
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 91434a5392f37a297e474fedf00fac6b1e4d8362
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497702"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314168"
 ---
 # <a name="remove-duplicate-rows-module"></a>Usuń moduł zduplikowanych wierszy
 
-W tym artykule opisano moduł w programie Azure Machine Learning Designer (wersja zapoznawcza).
+W tym artykule opisano moduł w programie Azure Machine Learning Designer.
 
 Ten moduł służy do usuwania potencjalnych duplikatów z zestawu danych.
 
@@ -26,15 +26,15 @@ Załóżmy na przykład, że dane wyglądają jak poniżej, i reprezentują wiel
 
 | PatientID | Inicjały| Płeć|Wiek|Przyjęte|
 |----|----|----|----|----|
-|1|F.M.| M| 53| Stycznia|
-|2| F.A.M.| M| 53| Stycznia|
-|3| F.A.M.| M| 24| Stycznia|
-|3| F.M.| M| 24| Lutego|
-|4| F.M.| M| 23| Lutego|
-| | F.M.| M| 23| |
-|5| F.A.M.| M| 53| |
-|6| F.A.M.| M| NaN| |
-|7| F.A.M.| M| NaN| |
+|1|F.M.| milionów| 53| Sty|
+|2| F.A.M.| milionów| 53| Sty|
+|3| F.A.M.| milionów| 24| Sty|
+|3| F.M.| milionów| 24| Lut|
+|4| F.M.| milionów| 23| Lut|
+| | F.M.| milionów| 23| |
+|5| F.A.M.| milionów| 53| |
+|6| F.A.M.| milionów| NaN| |
+|7| F.A.M.| milionów| NaN| |
 
 Jasno ten przykład zawiera wiele kolumn, które mogą duplikować dane. Bez względu na to, czy są one w rzeczywistości duplikatami, zależy od wiedzy o danych. 
 
@@ -71,7 +71,7 @@ Po uruchomieniu modułu tworzy zestaw danych kandydujących i zwraca zbiór wier
 
 5. Uruchamianie potoku.
 
-6. Aby przejrzeć wyniki, kliknij prawym przyciskiem myszy moduł, wybierz pozycję **zestaw danych wyników**, a następnie kliknij polecenie **Wizualizuj**. 
+6. Aby przejrzeć wyniki, kliknij prawym przyciskiem myszy moduł i wybierz polecenie **Wizualizuj**. 
 
 > [!TIP]
 > Jeśli wyniki są trudne do zrozumienia lub jeśli chcesz wykluczyć pewne kolumny, możesz usunąć kolumny za pomocą modułu [SELECT Columns in DataSet (Wybieranie kolumn w zestawie danych](./select-columns-in-dataset.md) ).

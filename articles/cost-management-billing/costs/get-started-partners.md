@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 manager: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: b3e2b6fbfb11c0ee89e56cd29fa3bf606c336235
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 10889f6d872510fb53e76ab3722343aa2ee6a5e8
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76278556"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293916"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>Wprowadzenie do Azure Cost Management dla partnerów
 
@@ -120,7 +120,7 @@ Bez względu na to, że partnerzy mogą również wyświetlać koszty, jeśli ma
 
 Partnerzy używają następujących informacji, aby włączyć zasady, aby wyświetlić opłaty za użycie platformy Azure dla swoich klientów.
 
-W Azure Portal Zaloguj się do dzierżawy partnerskiej i wybierz pozycję **Cost Management + rozliczanie**. Wybierz konto rozliczeniowe, a następnie wybierz pozycję **Customers**. Lista klientów jest skojarzona z kontem rozliczeń.
+W Azure Portal Zaloguj się do dzierżawy partnerskiej i wybierz pozycję **Cost Management + rozliczanie**. Wybierz odpowiednie konto rozliczeń umowy partnerskiej firmy Microsoft, a następnie wybierz pozycję **klienci**. Lista klientów jest skojarzona z kontem rozliczeń.
 
 Na liście klientów wybierz klienta, który ma być uprawniony do wyświetlania kosztów.
 
@@ -137,7 +137,7 @@ Gdy dla zasad kosztów ustawiono wartość **tak**, użytkownicy subskrypcji pow
 
 Po włączeniu zasad widoczności kosztów wszystkie usługi zawierające subskrypcję pokazują koszty według stawek płatność zgodnie z rzeczywistym użyciem. Użycie zastrzeżenia ma wartość zero opłaty za rzeczywiste i amortyzowany koszt. Zakupy i uprawnienia nie są skojarzone z określoną subskrypcją. W związku z tym zakupy nie są wyświetlane w zakresie subskrypcji.
 
-Aby wyświetlić koszty dla dzierżawy klienta, Otwórz Cost Management + rozliczenia, a następnie wybierz pozycję konta rozliczeń. Na liście kont rozliczeń wybierz konto rozliczeniowe.
+Aby wyświetlić koszty dla dzierżawy klienta, Otwórz **Cost Management + rozliczenia** i wybierz odpowiednie konto rozliczeń umowy partnerskiej firmy Microsoft.
 
 ![Wybierz konto rozliczeniowe](./media/get-started-partners/select-billing-account.png)
 
@@ -263,7 +263,7 @@ Użytkownicy z dostępem RBAC do subskrypcji mogą również eksportować dane k
 
 ### <a name="create-an-export-in-a-partner-tenant-or-customer-tenant"></a>Tworzenie eksportu w dzierżawie partnerskiej lub dzierżawie klienta
 
-W Azure Portal Zaloguj się do dzierżawcy partnera lub dzierżawy klienta i wybierz pozycję **Cost Management + rozliczanie**. Wybierz odpowiedni zakres, na przykład konto rozliczeniowe, a następnie wybierz pozycję **Analiza kosztów**. Po załadowaniu strony wybierz pozycję **Eksportuj**. Wybierz pozycję **Wyświetl wszystkie eksporty** w obszarze Zaplanuj eksport.
+W Azure Portal Zaloguj się do dzierżawcy partnera lub dzierżawy klienta i wybierz pozycję **Cost Management + rozliczanie**. Wybierz odpowiedni zakres, na przykład konto rozliczeń umowy partnerskiej firmy Microsoft, a następnie wybierz pozycję **Analiza kosztów**. Po załadowaniu strony wybierz pozycję **Eksportuj**. Wybierz pozycję **Wyświetl wszystkie eksporty** w obszarze Zaplanuj eksport.
 
 ![Wybierz opcję Eksportuj i Wyświetl wszystkie eksporty](./media/get-started-partners/export01.png)
 

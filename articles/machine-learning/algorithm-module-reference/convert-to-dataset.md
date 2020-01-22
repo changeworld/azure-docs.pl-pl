@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: a004fdf0ed01c97fe5c21cc9011c46f5e4c51648
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 00414bea82a7a78dd88ff4b1a592a6e35b5241c7
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428571"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314406"
 ---
 # <a name="convert-to-dataset"></a>Konwertowanie na zestaw danych
 
-W tym artykule opisano, jak używać modułu Konwertuj do zestawu danych w programie Azure Machine Learning Designer (wersja zapoznawcza) w celu przekonwertowania wszelkich danych dla potoku do wewnętrznego formatu projektanta.
+W tym artykule opisano, jak używać modułu Konwertuj do zestawu danych w programie Azure Machine Learning Designer do konwertowania wszelkich danych dla potoku w wewnętrznym formacie projektanta.
   
 Konwersja nie jest wymagana w większości przypadków. Azure Machine Learning niejawnie konwertuje dane do formatu natywnego zestawu danych w przypadku wykonywania dowolnej operacji na danych. 
 
@@ -51,11 +51,11 @@ Zalecamy użycie modułu [Edytowanie metadanych](edit-metadata.md) w celu przygo
     Należy pamiętać, że operacja **ReplaceValues** ma zastosowanie tylko do dokładnych dopasowań. Na przykład nie wpłynie to na te ciągi: `obs.`, `obsolete`.  
  
   
-5.  Uruchom potok lub kliknij prawym przyciskiem myszy moduł Konwertuj na zestaw danych i wybierz pozycję **Uruchom wybrane**.  
+5.  Uruchamianie potoku.  
 
 ## <a name="results"></a>Wyniki
 
-+  Aby zapisać wynikowy zestaw danych z nową nazwą, kliknij prawym przyciskiem myszy dane wyjściowe konwersji do zestawu danych i wybierz polecenie **Zapisz jako zestaw danych**.  
++  Aby zapisać wynikowy zestaw danych przy użyciu nowej nazwy, wybierz opcję **zarejestruj zestaw danych** na karcie dane **wyjściowe** w prawym panelu modułu.  
   
 ## <a name="technical-notes"></a>Uwagi techniczne  
 

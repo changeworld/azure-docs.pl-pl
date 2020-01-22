@@ -12,15 +12,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 11/08/2019
+ms.date: 01/21/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b3a424c142fbfcbfe5e4c1802f3ba61da655f77f
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 56b78f4296709206cefb762c87d4d1471bff2df7
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75896032"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76291519"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>Obciążenia SAP na platformie Azure: Lista kontrolna planowania i wdrażania
 
@@ -53,7 +53,7 @@ W tej fazie planujesz migrację obciążenia SAP na platformę Azure. Co najmnie
         - Obsługiwane przez SAP HANA maszyny wirtualne platformy Azure i [duże wystąpienia Hana](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) są wymienione w [witrynie sieci Web SAP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure).
         - [Macierz dostępności produktu SAP](https://support.sap.com/en/).
         - Uwagi dotyczące oprogramowania SAP dla innych produktów specyficznych dla oprogramowania SAP.     
-    - Zalecamy stosowanie rygorystycznych trzech warstw dla systemów produkcyjnych SAP. Nie zalecamy łączenia serwerów ASCS i aplikacji na jednej maszynie wirtualnej. Korzystanie z konfiguracji klastra z obsługą identyfikatorów SID dla usług SAP Central jest obsługiwane w systemach operacyjnych gościa systemu Windows na platformie Azure. Ta konfiguracja nie jest obsługiwana w przypadku usług SAP Central w systemach operacyjnych Linux na platformie Azure. Dokumentację scenariusza systemu operacyjnego gościa w systemie Windows można znaleźć w następujących artykułach:
+    - Zalecamy stosowanie rygorystycznych trzech warstw dla systemów produkcyjnych SAP. Nie zaleca się łączenia serwerów ASCS i/lub DBMS i/lub aplikacji na jednej maszynie wirtualnej. Korzystanie z konfiguracji klastra z obsługą identyfikatorów SID dla usług SAP Central jest obsługiwane w systemach operacyjnych gościa systemu Windows na platformie Azure. Ta konfiguracja nie jest obsługiwana w przypadku usług SAP Central w systemach operacyjnych Linux na platformie Azure. Dokumentację scenariusza systemu operacyjnego gościa w systemie Windows można znaleźć w następujących artykułach:
         - [Rozwiązanie SAP ASCS/SCS o wysokiej dostępności z użyciem usługi Windows Server Failover Clustering i dysku udostępnionego na platformie Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-ascs-ha-multi-sid-wsfc-shared-disk)
         - [Rozwiązanie SAP ASCS/SCS o wysokiej dostępności z użyciem klastra trybu failover systemu Windows Server i udziału plików na platformie Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-ascs-ha-multi-sid-wsfc-file-share)
     - Architektura wysokiej dostępności i odzyskiwania po awarii.
@@ -135,7 +135,7 @@ Zalecamy skonfigurowanie i zweryfikowanie pełnego projektu rozwiązania HADR Cl
         - Jeśli nie potrzebujesz wysokiej dostępności dla usług SAP Central i systemu DBMS, możesz wdrożyć te maszyny wirtualne w tym samym zestawie dostępności co warstwa aplikacji SAP.
         - W przypadku ochrony usług SAP Central i warstwy DBMS w celu zapewnienia wysokiej dostępności przy użyciu replikacji pasywnej należy umieścić dwa węzły dla usług SAP Central w jednym osobnym zestawie dostępności i dwóch węzłach systemu DBMS w innym zestawie dostępności.
         - W przypadku wdrażania w Strefy dostępności platformy Azure nie można używać zestawów dostępności. Należy jednak upewnić się, że węzły Active i pasywny Central Services są wdrażane w dwóch różnych Strefy dostępnościach. Użyj Strefy dostępności, które mają najmniejsze opóźnienia między nimi.
-          Należy pamiętać, że należy użyć [usługi Azure usługa Load Balancer w warstwie Standardowa](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones) do użycia w przypadku tworzenia klastrów trybu failover systemu Windows lub Pacemaker dla warstwy DBMS i SAP Central Services w strefy dostępności. Nie można użyć [podstawowego Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview#skus) dla wdrożeń strefowych.
+          Należy pamiętać, że należy użyć [usługi Azure usługa Load Balancer w warstwie Standardowa](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones) do użycia w przypadku tworzenia klastrów trybu failover systemu Windows lub Pacemaker dla warstwy DBMS i SAP Central Services w strefy dostępności. Nie można użyć [podstawowego Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) dla wdrożeń strefowych.
    5. Ustawienia limitu czasu.
         - Sprawdź ślady programu SAP NetWeaver dla deweloperów wystąpień SAP, aby upewnić się, że nie ma przerw między serwerem z kolejki i procesami roboczymi SAP. Te przerwy połączeń można uniknąć, ustawiając te dwa parametry rejestru:
             - HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\KeepAliveTime = 120000. Aby uzyskać więcej informacji, zobacz [KeepAliveTime](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-2000-server/cc957549(v=technet.10)).

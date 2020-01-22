@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: b63209c9174867e69356bb6800d70502f2afdaa4
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 009aff2703829e6d30f93b3c8e3696724594f29b
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71088825"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76290771"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-python"></a>Uwierzytelnianie między usługami Azure Data Lake Storage Gen1 przy użyciu języka Python
 > [!div class="op_single_selector"]
@@ -43,8 +43,8 @@ Ten artykuł zawiera informacje na temat sposobu używania zestawu SDK języka P
 Aby można było korzystać z Data Lake Storage Gen1 przy użyciu języka Python, należy zainstalować trzy moduły.
 
 * Moduł `azure-mgmt-resource`, który obejmuje moduły platformy Azure dla usługi Active Directory itp.
-* `azure-mgmt-datalake-store` Moduł, który obejmuje operacje zarządzania kontem Data Lake Storage Gen1. Aby uzyskać więcej informacji na temat tego modułu, zobacz [Azure Data Lake Storage Gen1 informacje dotyczące modułu zarządzania](/python/api/azure-mgmt-datalake-store/).
-* `azure-datalake-store` Moduł, który obejmuje operacje systemu plików Data Lake Storage Gen1. Aby uzyskać więcej informacji na temat tego modułu, zobacz artykuł dotyczący [modułu systemu plików Azure-datalake-Store](https://azure-datalake-store.readthedocs.io/en/latest/).
+* Moduł `azure-mgmt-datalake-store`, który obejmuje operacje zarządzania kontami Data Lake Storage Gen1. Aby uzyskać więcej informacji na temat tego modułu, zobacz [Azure Data Lake Storage Gen1 informacje dotyczące modułu zarządzania](/python/api/azure-mgmt-datalake-store/).
+* Moduł `azure-datalake-store`, który obejmuje operacje Data Lake Storage Gen1 systemu plików. Aby uzyskać więcej informacji na temat tego modułu, zobacz artykuł dotyczący [modułu systemu plików Azure-datalake-Store](https://docs.microsoft.com/python/api/azure-datalake-store/azure.datalake.store.core/).
 
 Użyj następujących poleceń, aby zainstalować moduły.
 
@@ -99,7 +99,7 @@ Ten fragment kodu służy do uwierzytelniania za pomocą usługi Azure AD na pot
 
 ## <a name="service-to-service-authentication-with-client-secret-for-filesystem-operations"></a>Uwierzytelnianie między usługami z wpisem tajnym klienta dla operacji systemu plików
 
-Poniższy fragment kodu służy do uwierzytelniania za pomocą usługi Azure AD dla operacji na systemie plików na Data Lake Storage Gen1 takich jak tworzenie folderów, przekazywanie plików itp. Poniższego fragmentu kodu można użyć do uwierzytelniania aplikacji w sposób nieinterakcyjny za pomocą klucza tajnego klienta aplikacji / nazwy głównej usługi. Użyj tej metody wraz z istniejącą aplikacją internetową usługi Azure AD.
+Poniższy fragment kodu służy do uwierzytelniania za pomocą usługi Azure AD dla operacji na systemie plików na Data Lake Storage Gen1 takich jak tworzenie folderów, przekazywanie plików itp. Poniższego fragmentu kodu można użyć do uwierzytelniania aplikacji w sposób nieinteraktywny przy użyciu klucza tajnego klienta dla aplikacji/nazwy głównej usługi. Użyj tej metody wraz z istniejącą aplikacją internetową usługi Azure AD.
 
     tenant = '<TENANT>'
     RESOURCE = 'https://datalake.azure.net/'

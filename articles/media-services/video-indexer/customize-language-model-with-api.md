@@ -1,75 +1,45 @@
 ---
-title: Dostosuj model języka — platformy Azure przy użyciu interfejsów API indeksatora wideo
+title: Używanie interfejsów API Video Indexer do dostosowywania modelu języka — Azure
 titlesuffix: Azure Media Services
-description: W tym artykule pokazano, jak dostosować model języka, korzystając z interfejsów API indeksatora wideo.
+description: W tym artykule pokazano, jak dostosować model języka za pomocą interfejsów API Video Indexer.
 services: media-services
 author: anikaz
 manager: johndeu
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 05/15/2019
+ms.date: 01/14/2020
 ms.author: anzaman
-ms.openlocfilehash: 4ef5354a94ae707df8dd1f2767efe04dfbacd7ad
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b7517c8a8745569635a9570c02c851854eebeb96
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65799591"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76289496"
 ---
-# <a name="customize-a-language-model-with-the-video-indexer-apis"></a>Dostosuj model języka, korzystając z interfejsów API indeksatora wideo
+# <a name="customize-a-language-model-with-the-video-indexer-apis"></a>Dostosowywanie modelu języka za pomocą interfejsów API Video Indexer
 
-Usługa Video Indexer umożliwia tworzenie niestandardowych modeli językowych, aby dostosować rozpoznawania mowy, przekazując adaptacji tekstu, a mianowicie tekstu z domeny słownictwo, którego chcesz aparatu, aby dostosować je do. Po użytkownik nauczenia modelu, nowych słów, które pojawiają się w tekście adaptacji zostanie rozpoznana. 
+Video Indexer umożliwia tworzenie niestandardowych modeli języka w celu dostosowania rozpoznawania mowy przez przekazywanie tekstu adaptacji, czyli tekstu z domeny, do którego słownika ma być dołączany aparat. Po przeprowadzeniu szkolenia modelu zostaną rozpoznane nowe wyrazy pojawiające się w tekście adaptacyjnym. 
 
-Aby uzyskać szczegółowe omówienie i najlepsze rozwiązania dotyczące niestandardowych modeli językowych, zobacz [dostosować model języka, za pomocą indeksatora wideo](customize-language-model-overview.md).
+Aby zapoznać się z szczegółowym omówieniem i najlepszymi rozwiązaniami dotyczącymi niestandardowych modeli języków, zobacz [Dostosowywanie modelu języka za pomocą Video Indexer](customize-language-model-overview.md).
 
-Interfejsy API indeksatora wideo służy do tworzenia i edytowania niestandardowych modeli językowych ze swojego konta, zgodnie z opisem w tym temacie. Możesz również użyć witryny sieci Web, zgodnie z opisem w [Dostosowywanie języka modelu przy użyciu witryny internetowej Video Indexer](customize-language-model-with-api.md).
+Za pomocą interfejsów API Video Indexer można tworzyć i edytować niestandardowe modele języka na koncie, zgodnie z opisem w tym temacie. Możesz również użyć witryny sieci Web, zgodnie z opisem w temacie [Dostosowywanie modelu języka za pomocą witryny sieci web video Indexer](customize-language-model-with-api.md).
 
 ## <a name="create-a-language-model"></a>Tworzenie modelu języka
 
-Następujące polecenie tworzy nowy niestandardowy model języka na określonym koncie. Możesz przekazać pliki model języka, w tym wywołaniu. Alternatywnie można utworzyć model języka w tym miejscu i przekazać pliki dla modelu później, aktualizując model języka.
+Interfejs API [tworzenia modelu języka](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Create-Language-Model?) tworzy nowy niestandardowy model języka na określonym koncie. Można przekazać pliki dla modelu języka w tym wywołaniu. Alternatywnie możesz utworzyć model języka tutaj i przekazać pliki dla modelu później, aktualizując model języka.
 
 > [!NOTE]
-> Nadal należy nauczenia modelu, z jego plików włączone dla modelu dowiedzieć się więcej zawartości jego plików. Kierunki na szkolenie języka znajdują się w następnej sekcji.
+> Należy nadal przeszkolić model z włączonymi plikami dla modelu, aby poznać jego zawartość. Wskazówki dotyczące szkolenia języka znajdują się w następnej sekcji.
 
-### <a name="request-url"></a>Adres URL żądania
+Aby przekazać pliki, które mają zostać dodane do modelu języka, należy przekazać pliki w treści przy użyciu formularza-dane oprócz podania wartości wymaganych parametrów. Istnieją dwa sposoby, w tym celu: 
 
-Jest to żądanie POST.
-
-```
-https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/PersonModels?name={name}&accessToken={accessToken}
-```
-
-Poniżej znajduje się na żądanie w Curl.
-
-```curl
-curl -v -X POST "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language?accessToken={accessToken}&modelName={modelName}&language={language}"
-
---data-ascii "{body}" 
-```
-
-[Zobacz wymagane parametry i przetestowania przy użyciu portalu dla deweloperów indeksatora wideo](https://api-portal.videoindexer.ai/docs/services/operations/operations/Create-Person-Model?).
-
-### <a name="request-parameters"></a>Parametry żądania
-
-|**Nazwa**|**Typ**|**Wymagane**|**Opis**|
-|---|---|---|---|
-|location|string|Tak|Region platformy Azure, do którego powinny być kierowane wywołania. Aby uzyskać więcej informacji, zobacz [regiony platformy Azure i Video Indexer](regions.md).|
-|accountId|string|Tak|Unikatowy identyfikator globalny dla konta|
-|accessToken|string|Tak|Token dostępu (musi być z zakresu [Token dostępu konta](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) do uwierzytelniania połączenia. Tokeny dostępu wygasa w ciągu 1 godziny.|
-|modelName|string|Tak|Nazwa modelu językowego|
-|language|string|Yes|Język modelu językowego. <br/>**Języka** parametru musi być podany język w formacie BCP 47 "region tagu języka" (np.: "en US"). Obsługiwane języki są angielski (en US), niemiecki (de-DE), hiszpański (es-SP), arabski (ar — na przykład), francuski (fr-FR), Hindi (cześć HI), włoski (it-IT), japoński (ja-JP), portugalski (pt-BR), rosyjski (ru-RU) i chiński (zh-CN).  |
-
-### <a name="request-body"></a>Treść żądania
-
-Aby przekazać pliki, które mają zostać dodane do modelu języka, możesz przekazać pliki w treści przy użyciu danych formularza, oprócz wartości dla wymaganych parametrów powyżej. Istnieją dwa sposoby, w tym celu: 
-
-1. Klucz będzie nazwa pliku, a wartość będzie pliku txt
-2. Klucz będzie nazwa pliku, a wartość będzie adres URL do pliku txt
+1. Klucz będzie nazwą pliku, a wartością będzie plik txt
+2. Kluczem będzie nazwa pliku, a wartość będzie adresem URL do pliku txt
 
 ### <a name="response"></a>Odpowiedź
 
-Odpowiedź zawiera metadane dotyczące nowo utworzony model języka, wraz z metadanymi na każdy plik modelu ma następujące format przykładowe dane wyjściowe JSON.
+Odpowiedź zawiera metadane dotyczące nowo utworzonego modelu języka wraz z metadanymi w każdym pliku modelu, zgodnie z formatem przykładowych danych wyjściowych JSON.
 
 ```json
 {
@@ -100,43 +70,14 @@ Odpowiedź zawiera metadane dotyczące nowo utworzony model języka, wraz z meta
 
 ## <a name="train-a-language-model"></a>Uczenie modelu języka
 
-Następujące polecenie przygotowuje niestandardowy model języka na określonym koncie z zawartością w plikach, które zostały przekazane do i włączone w modelu językowego. 
+Interfejs API [uczenia modelu języka](https://api-portal.videoindexer.ai/docs/services/operations/operations/Train-Language-Model?&pattern=train) pociąga za siebie niestandardowy model języka na określonym koncie z zawartością plików, które zostały przekazane do i włączone w modelu języka. 
 
 > [!NOTE]
-> Najpierw należy utworzyć model języka i przekaż jej pliki. Możesz przekazać pliki, podczas tworzenia modelu językowego lub aktualizując model języka. 
-
-### <a name="request-url"></a>Adres URL żądania
-
-Jest to żądanie PUT.
-
-```
-https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language/{modelId}/Train?accessToken={accessToken}
-```
-
-Poniżej znajduje się na żądanie w Curl.
-
-```curl
-curl -v -X PUT "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language/{modelId}/Train?accessToken={accessToken}"
-```
- 
-[Zobacz wymagane parametry i przetestowania przy użyciu portalu dla deweloperów indeksatora wideo](https://api-portal.videoindexer.ai/docs/services/operations/operations/Train-Language-Model?&pattern=train).
-
-### <a name="request-parameters"></a>Parametry żądania
-
-|**Nazwa**|**Typ**|**Wymagane**|**Opis**|
-|---|---|---|---|
-|location|string|Tak|Region platformy Azure, do którego powinny być kierowane wywołania. Aby uzyskać więcej informacji, zobacz [regiony platformy Azure i Video Indexer](regions.md).|
-|accountID|string|Tak|Unikatowy identyfikator globalny dla konta|
-|modelId|string|Tak|Identyfikator modelu języka (generowany podczas tworzenia modelu językowego)|
-|accessToken|string|Tak|Token dostępu (musi być z zakresu [Token dostępu konta](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) do uwierzytelniania połączenia. Tokeny dostępu wygasa w ciągu 1 godziny.|
-
-### <a name="request-body"></a>Treść żądania
-
-Nie ma już treść żądania wymagane dla tego wywołania.
+> Najpierw należy utworzyć model języka i przekazać jego pliki. Pliki można przekazać podczas tworzenia modelu języka lub przez aktualizację modelu języka. 
 
 ### <a name="response"></a>Odpowiedź
 
-Odpowiedź zawiera metadane na nowo uczonego modelu językowego wraz z metadanymi na każdy plik modelu ma następujące format przykładowe dane wyjściowe JSON.
+Odpowiedź zawiera metadane dotyczące nowo przeszkolonego modelu języka wraz z metadanymi w każdym pliku modelu, zgodnie z formatem przykładowych danych wyjściowych JSON.
 
 ```json
 {
@@ -164,91 +105,33 @@ Odpowiedź zawiera metadane na nowo uczonego modelu językowego wraz z metadanym
 }
 ```
 
-Następnie należy użyć **identyfikator** wartość model językowy dla **linguisticModelId** parametru podczas [przekazywania filmu wideo do indeksu](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) i  **languageModelId** parametru podczas [indeksowanie wideo](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?).
+W przypadku [przekazywania wideo do indeksu](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) i dla parametru **languageModelId** podczas ponownego [indeksowania filmu wideo](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?)należy używać zwracanej wartości **identyfikatora** modelu języka dla parametru **linguisticModelId** .
 
-## <a name="delete-a-language-model"></a>Usuń model języka
-
-Następujące polecenie usuwa niestandardowy model języka, z określonego konta. Wszelkie film wideo, który używał usunięto model języka spowoduje zachowanie tego samego indeksu, do momentu ponownego indeksowania wideo. Jeśli ponownie poindeksuj wideo, można przypisać nowego modelu języka filmu wideo. W przeciwnym razie usługa Video Indexer użyje jej domyślny model ponownego indeksowania filmu wideo.
-
-### <a name="request-url"></a>Adres URL żądania
-
-Jest to żądanie usunięcia.
-
-```
-https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language/{modelId}?accessToken={accessToken}
-```
-
-Poniżej znajduje się na żądanie w Curl.
-
-```curl
-curl -v -X DELETE "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language/{modelId}?accessToken={accessToken}"
-```
  
-[Zobacz wymagane parametry i przetestowania przy użyciu portalu dla deweloperów indeksatora wideo](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Language-Model?&pattern=delete).
+## <a name="delete-a-language-model"></a>Usuwanie modelu języka
 
-### <a name="request-parameters"></a>Parametry żądania 
-
-|**Nazwa**|**Typ**|**Wymagane**|**Opis**|
-|---|---|---|---|
-|location|string|Tak|Region platformy Azure, do którego powinny być kierowane wywołania. Aby uzyskać więcej informacji, zobacz [regiony platformy Azure i Video Indexer](regions.md).|
-|accountID|string|Tak|Unikatowy identyfikator globalny dla konta|
-|modelId|string|Tak|Identyfikator modelu języka (generowany podczas tworzenia modelu językowego)|
-|accessToken|string|Yes|Token dostępu (musi być z zakresu [Token dostępu konta](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) do uwierzytelniania połączenia. Tokeny dostępu wygasa w ciągu 1 godziny.|
-
-### <a name="request-body"></a>Treść żądania
-
-Nie ma już treść żądania wymagane dla tego wywołania.
+Interfejs API [usuwania modelu języka](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Language-Model?&pattern=delete) usuwa niestandardowy model języka z określonego konta. Wszystkie filmy wideo, które były używane w modelu języka, będą zachować ten sam indeks do momentu ponownego indeksowania wideo. Jeśli ponownie indeksujesz wideo, możesz przypisać nowy model języka do wideo. W przeciwnym razie Video Indexer będzie używać domyślnego modelu do ponownego indeksowania wideo.
 
 ### <a name="response"></a>Odpowiedź
 
-Brak zawartości zwracane, gdy model języka został pomyślnie usunięty.
+Nie ma żadnej zwróconej zawartości, gdy model języka zostanie usunięty pomyślnie.
 
 ## <a name="update-a-language-model"></a>Aktualizowanie modelu języka
 
-Następujące polecenie aktualizuje modelu niestandardowego osoby języka na określonym koncie.
+Interfejs API [aktualizacji modelu języka](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Language-Model?&pattern=update) aktualizuje niestandardowy model osoby językowej na określonym koncie.
 
 > [!NOTE]
-> Można już utworzyć modelu językowego. Aby włączyć lub wyłączyć wszystkie pliki w ramach modelu, zaktualizuj nazwę modelu językowego i przekazać pliki, które mają zostać dodane do modelu językowego, można użyć tego wywołania.
+> Musisz już utworzyć model języka. To wywołanie służy do włączania lub wyłączania wszystkich plików w ramach modelu, aktualizowania nazwy modelu języka i przekazywania plików do dodania do modelu języka.
 
-### <a name="request-url"></a>Adres URL żądania
+Aby przekazać pliki, które mają zostać dodane do modelu języka, należy przekazać pliki w treści przy użyciu formularza-dane oprócz podania wartości wymaganych parametrów. Istnieją dwa sposoby, w tym celu: 
 
-Jest to żądanie PUT.
+1. Klucz będzie nazwą pliku, a wartością będzie plik txt
+2. Kluczem będzie nazwa pliku, a wartość będzie adresem URL do pliku txt
 
-```
-https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language/{modelId}?accessToken={accessToken}[&modelName][&enable]
-```
-
-Poniżej znajduje się na żądanie w Curl.
-
-```curl
-curl -v -X PUT "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language/{modelId}?accessToken={accessToken}?modelName={string}&enable={string}"
-
---data-ascii "{body}" 
-```
- 
-[Zobacz wymagane parametry i przetestowania przy użyciu portalu dla deweloperów indeksatora wideo](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Language-Model?&pattern=update).
-
-### <a name="request-parameters"></a>Parametry żądania 
-
-|**Nazwa**|**Typ**|**Wymagane**|**Opis**|
-|---|---|---|---|
-|location|string|Yes|Region platformy Azure, do którego powinny być kierowane wywołania. Aby uzyskać więcej informacji, zobacz [regiony platformy Azure i Video Indexer](regions.md).|
-|accountID|string|Tak|Unikatowy identyfikator globalny dla konta|
-|modelId|string|Tak|Identyfikator modelu języka (generowany podczas tworzenia modelu językowego)|
-|accessToken|string|Yes|Token dostępu (musi być z zakresu [Token dostępu konta](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) do uwierzytelniania połączenia. Tokeny dostępu wygasa w ciągu 1 godziny.|
-|modelName|string|Nie|Nowa nazwa, które można przekazać do modelu|
-|Włącz|wartość logiczna|Nie|Wybierz, czy wszystkie pliki w tym modelu są włączone (PRAWDA) lub wyłączony (false)|
-
-### <a name="request-body"></a>Treść żądania
-
-Aby przekazać pliki, które mają zostać dodane do modelu języka, możesz przekazać pliki w treści przy użyciu danych formularza, oprócz wartości dla wymaganych parametrów powyżej. Istnieją dwa sposoby, w tym celu: 
-
-1. Klucz będzie nazwa pliku, a wartość będzie pliku txt
-2. Klucz będzie nazwa pliku, a wartość będzie adres URL do pliku txt
 
 ### <a name="response"></a>Odpowiedź
 
-Odpowiedź zawiera metadane na nowo uczonego modelu językowego wraz z metadanymi na każdy plik modelu ma następujące format przykładowe dane wyjściowe JSON.
+Odpowiedź zawiera metadane dotyczące nowo przeszkolonego modelu języka wraz z metadanymi w każdym pliku modelu, zgodnie z formatem przykładowych danych wyjściowych JSON.
 
 ```json
 {
@@ -275,47 +158,16 @@ Odpowiedź zawiera metadane na nowo uczonego modelu językowego wraz z metadanym
     ]
 }
 ```
-Możesz użyć **identyfikator** pliki zwrócony w tym miejscu można pobrać zawartość pliku.
 
-## <a name="update-a-file-from-a-language-model"></a>Zaktualizuj plik z modelu języka
+Użyj **identyfikatora** plików zwracanych w odpowiedzi na pobranie zawartości pliku.
 
-Następujące polecenie pozwala zaktualizować nazwę i **Włącz** stanu pliku w niestandardowy model języka na określonym koncie.
+## <a name="update-a-file-from-a-language-model"></a>Aktualizowanie pliku z modelu języka
 
-### <a name="request-url"></a>Adres URL żądania
-
-Jest to żądanie PUT.
-
-```
-https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language/{modelId}/Files/{fileId}?accessToken={accessToken}[&fileName][&enable]
-```
-
-Poniżej znajduje się na żądanie w Curl.
-
-```curl
-curl -v -X PUT "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language/{modelId}/Files/{fileId}?accessToken={accessToken}?fileName={string}&enable={string}"
-```
- 
-[Zobacz wymagane parametry i przetestowania przy użyciu portalu dla deweloperów indeksatora wideo](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Language-Model-file?&pattern=update).
-
-### <a name="request-parameters"></a>Parametry żądania 
-
-|**Nazwa**|**Typ**|**Wymagane**|**Opis**|
-|---|---|---|---|
-|location|string|Yes|Region platformy Azure, do którego powinny być kierowane wywołania. Aby uzyskać więcej informacji, zobacz [regiony platformy Azure i Video Indexer](regions.md).|
-|accountId|string|Tak|Unikatowy identyfikator globalny dla konta|
-|modelId|string|Tak|Identyfikator modelu języka, który znajduje się plik (generowany podczas tworzenia modelu językowego)|
-|fileId|string|Yes|Identyfikator pliku, która jest aktualizowana (generowane, gdy plik jest przekazany podczas tworzenia lub aktualizowania modelu języka)|
-|accessToken|string|Tak|Token dostępu (musi być z zakresu [Token dostępu konta](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) do uwierzytelniania połączenia. Tokeny dostępu wygasa w ciągu 1 godziny.|
-|fileName|string|Nie|Nazwę można zaktualizować nazwy pliku|
-|Włącz|wartość logiczna|Nie|Zaktualizować, czy ten plik jest włączony (PRAWDA) lub wyłączony (FAŁSZ) w modelu językowego|
-
-### <a name="request-body"></a>Treść żądania
-
-Nie ma już treść żądania wymagane dla tego wywołania.
+[Aktualizacja pliku](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Language-Model-file?&pattern=update) umożliwia zaktualizowanie nazwy i **włączenie** stanu pliku w niestandardowym modelu języka na określonym koncie.
 
 ### <a name="response"></a>Odpowiedź
 
-Odpowiedź zawiera metadane pliku który zaktualizowano następujące format przykładowe dane wyjściowe JSON poniżej.
+Odpowiedź zawiera metadane pliku, który został zaktualizowany zgodnie z formatem przykładowych danych wyjściowych JSON poniżej.
 
 ```json
 {
@@ -326,43 +178,15 @@ Odpowiedź zawiera metadane pliku który zaktualizowano następujące format prz
   "creationTime": "2018-04-27T20:10:10.5233333"
 }
 ```
-Możesz użyć **identyfikator** pliku zwracane w tym miejscu można pobrać zawartość pliku.
+Użyj **identyfikatora** pliku zwróconego w odpowiedzi na pobranie zawartości pliku.
 
-## <a name="get-a-specific-language-model"></a>Pobieranie określonego modelu języka
+## <a name="get-a-specific-language-model"></a>Uzyskiwanie określonego modelu języka
 
-Poniższe polecenie zwraca informacje na określony model języka na określonym koncie, takie jak język i pliki, które znajdują się w modelu językowego. 
-
-### <a name="request-url"></a>Adres URL żądania
-
-Jest to żądanie GET.
-```
-https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language/{modelId}?accessToken={accessToken}
-```
-
-Poniżej znajduje się na żądanie w Curl.
-
-```curl
-curl -v -X GET "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language/{modelId}?accessToken={accessToken}"
-```
- 
-[Zobacz wymagane parametry i przetestowania przy użyciu portalu dla deweloperów indeksatora wideo](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Language-Model?&pattern=get).
-
-### <a name="request-parameters-and-request-body"></a>Parametry żądania i treść żądania
-
-|**Nazwa**|**Typ**|**Wymagane**|**Opis**|
-|---|---|---|---|
-|location|string|Tak|Region platformy Azure, do którego powinny być kierowane wywołania. Aby uzyskać więcej informacji, zobacz [regiony platformy Azure i Video Indexer](regions.md).|
-|accountID|string|Yes|Unikatowy identyfikator globalny dla konta|
-|modelId|string|Tak|Identyfikator modelu języka (generowany podczas tworzenia modelu językowego)|
-|accessToken|string|Tak|Token dostępu (musi być z zakresu [Token dostępu konta](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) do uwierzytelniania połączenia. Tokeny dostępu wygasa w ciągu 1 godziny.|
-
-### <a name="request-body"></a>Treść żądania
-
-Nie ma już treść żądania wymagane dla tego wywołania.
+Interfejs [Get](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Language-Model?&pattern=get) API zwraca informacje dotyczące określonego modelu języka w określonym koncie, takim jak język i pliki, które znajdują się w modelu języka. 
 
 ### <a name="response"></a>Odpowiedź
 
-Odpowiedź zawiera metadane dotyczące określony model języka, wraz z metadanymi na każdy plik modelu ma następujące format przykładowe dane wyjściowe JSON poniżej.
+Odpowiedź zawiera metadane w określonym modelu języka wraz z metadanymi w każdym pliku modelu, zgodnie z formatem przykładowych danych wyjściowych JSON poniżej.
 
 ```json
 {
@@ -390,43 +214,15 @@ Odpowiedź zawiera metadane dotyczące określony model języka, wraz z metadany
 }
 ```
 
-Możesz użyć **identyfikator** pliku zwracane w tym miejscu można pobrać zawartość pliku.
+Użyj **identyfikatora** pliku zwróconego w odpowiedzi na pobranie zawartości pliku.
 
-## <a name="get-all-the-language-models"></a>Pobieranie wszystkich modeli językowych
+## <a name="get-all-the-language-models"></a>Pobierz wszystkie modele języka
 
-Poniższe polecenie zwraca wszystkie niestandardowych modeli językowych w ramach określonego konta, na liście.
-
-### <a name="request-url"></a>Adres URL żądania
-
-Jest to, Uzyskaj żądania.
-
-```
-https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language?accessToken={accessToken}
-```
-
-Poniżej znajduje się na żądanie w Curl.
-
-```curl
-curl -v -X GET "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language?accessToken={accessToken}"
-```
- 
-[Zobacz wymagane parametry i przetestowania przy użyciu portalu dla deweloperów indeksatora wideo](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Language-Models?&pattern=get).
-
-### <a name="request-parameters"></a>Parametry żądania
-
-|**Nazwa**|**Typ**|**Wymagane**|**Opis**|
-|---|---|---|---|
-|location|string|Tak|Region platformy Azure, do którego powinny być kierowane wywołania. Aby uzyskać więcej informacji, zobacz [regiony platformy Azure i Video Indexer](regions.md).|
-|accountID|string|Tak|Unikatowy identyfikator globalny dla konta|
-|accessToken|string|Tak|Token dostępu (musi być z zakresu [Token dostępu konta](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) do uwierzytelniania połączenia. Tokeny dostępu wygasa w ciągu 1 godziny.|
-
-### <a name="request-body"></a>Treść żądania
-
-Nie ma już treść żądania wymagane dla tego wywołania.
+Interfejs [Get All](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Language-Models?&pattern=get) zwraca wszystkie niestandardowe modele języka na określonym koncie na liście.
 
 ### <a name="response"></a>Odpowiedź
 
-Odpowiedź zawiera listę wszystkich modeli języków na Twoim koncie, a każdy z ich metadane i pliki po format przykładowe dane wyjściowe JSON poniżej.
+Odpowiedź zawiera listę wszystkich modeli języka w Twoim koncie oraz wszystkich metadanych i plików, zgodnie z formatem przykładowych danych wyjściowych JSON poniżej.
 
 ```json
 [
@@ -466,77 +262,19 @@ Odpowiedź zawiera listę wszystkich modeli języków na Twoim koncie, a każdy 
 
 ## <a name="delete-a-file-from-a-language-model"></a>Usuwanie pliku z modelu języka
 
-Następujące polecenie usuwa określony plik z określonego modelu języka na określonym koncie. 
-
-### <a name="request-url"></a>Adres URL żądania
-
-Jest to żądanie usunięcia.
-```
-https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language/{modelId}/Files/{fileId}?accessToken={accessToken}
-```
-
-Poniżej znajduje się na żądanie w Curl.
-
-```curl
-curl -v -X DELETE "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language/{modelId}/Files/{fileId}?accessToken={accessToken}"
-```
- 
-[Zobacz wymagane parametry i przetestowania przy użyciu portalu dla deweloperów indeksatora wideo](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Language-Model-File?&pattern=delete).
-
-### <a name="request-parameters"></a>Parametry żądania 
-
-|**Nazwa**|**Typ**|**Wymagane**|**Opis**|
-|---|---|---|---|
-|location|string|Yes|Region platformy Azure, do którego powinny być kierowane wywołania. Aby uzyskać więcej informacji, zobacz [regiony platformy Azure i Video Indexer](regions.md).|
-|accountID|string|Tak|Unikatowy identyfikator globalny dla konta|
-|modelId|string|Tak|Identyfikator modelu języka, który znajduje się plik (generowany podczas tworzenia modelu językowego)|
-|fileId|string|Yes|Identyfikator pliku, która jest aktualizowana (generowane, gdy plik jest przekazany podczas tworzenia lub aktualizowania modelu języka)|
-|accessToken|string|Tak|Token dostępu (musi być z zakresu [Token dostępu konta](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) do uwierzytelniania połączenia. Tokeny dostępu wygasa w ciągu 1 godziny.|
-
-### <a name="request-body"></a>Treść żądania
-
-Nie ma już treść żądania wymagane dla tego wywołania.
+Interfejs API [usuwania](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Language-Model-File?&pattern=delete) usuwa określony plik z określonego modelu języka w określonym koncie. 
 
 ### <a name="response"></a>Odpowiedź
 
-Brak zawartości zwracany, jeśli plik został pomyślnie usunięty z modelu językowego.
+Nie ma żadnej zwróconej zawartości, gdy plik zostanie pomyślnie usunięty z modelu języka.
 
-## <a name="get-metadata-on-a-file-from-a-language-model"></a>Pobierz metadane pliku z modelu języka
+## <a name="get-metadata-on-a-file-from-a-language-model"></a>Pobieranie metadanych z pliku z modelu języka
 
-Zawartość i metadane nastąpi powrót na określony plik z wybranego języka modelu w koncie.
-
-### <a name="request-url"></a>Adres URL żądania
-
-Jest to żądanie GET.
-
-```
-https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/PersonModels?accessToken={accessToken}
-```
-
-Poniżej znajduje się na żądanie w Curl.
-```curl
-curl -v -X GET "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language/{modelId}/Files/{fileId}?accessToken={accessToken}"
-```
- 
-[Zobacz wymagane parametry i przetestowania przy użyciu portalu dla deweloperów indeksatora wideo](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Language-Model-File-Data?&pattern=get%20language%20model).
-
-### <a name="request-parameters"></a>Parametry żądania 
-
-|**Nazwa**|**Typ**|**Wymagane**|**Opis**|
-|---|---|---|---|
-|location|string|Tak|Region platformy Azure, do którego powinny być kierowane wywołania. Aby uzyskać więcej informacji, zobacz [regiony platformy Azure i Video Indexer](regions.md).|
-|accountID|string|Tak|Unikatowy identyfikator globalny dla konta|
-|modelId|string|Yes|Identyfikator modelu języka, który znajduje się plik (generowany podczas tworzenia modelu językowego)|
-|fileId|string|Tak|Identyfikator pliku, która jest aktualizowana (generowane, gdy plik jest przekazany podczas tworzenia lub aktualizowania modelu języka)|
-|accessToken|string|Tak|Token dostępu (musi być z zakresu [Token dostępu konta](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) do uwierzytelniania połączenia. Tokeny dostępu wygasa w ciągu 1 godziny.|
-
-### <a name="request-body"></a>Treść żądania
-
-Nie ma już treść żądania wymagane dla tego wywołania.
+[Pobieranie metadanych](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Language-Model-File-Data?&pattern=get%20language%20model) interfejsu API plików zwraca zawartość i metadane w określonym pliku z wybranego modelu języka na Twoim koncie.
 
 ### <a name="response"></a>Odpowiedź
 
-Odpowiedź zawiera zawartość i metadane pliku w formacie JSON, podobny do następującego:
+Odpowiedź zawiera zawartość i metadane pliku w formacie JSON, podobnie jak w przypadku:
 
 ```json
 {
@@ -550,43 +288,16 @@ Odpowiedź zawiera zawartość i metadane pliku w formacie JSON, podobny do nast
 ```
 
 > [!NOTE]
-> Zawartość tego pliku przykładowy są słowa "hello" i world"w dwóch osobnych wierszach.
+> Zawartość tego przykładowego pliku są słowami "Hello" i "World" w dwóch oddzielnych wierszach.
 
-## <a name="download-a-file-from-a-language-model"></a>Pobierz plik z modelu języka
+## <a name="download-a-file-from-a-language-model"></a>Pobieranie pliku z modelu języka
 
-Następujące polecenie spowoduje pobranie pliku tekstowego zawierającego zawartość określonego pliku od określonego modelu języka na określonym koncie. Ten plik powinien być zgodny zawartość pliku tekstowego, który pierwotnie został przekazany.
-
-### <a name="request-url"></a>Adres URL żądania
-```
-https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language/{modelId}/Files/{fileId}/download?accessToken={accessToken}
-```
-
-Poniżej znajduje się na żądanie w Curl.
-
-```curl
-curl -v -X GET "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language/{modelId}/Files/{fileId}/download?accessToken={accessToken}"
-```
- 
-[Zobacz wymagane parametry i przetestowania przy użyciu portalu dla deweloperów indeksatora wideo](https://api-portal.videoindexer.ai/docs/services/operations/operations/Download-Language-Model-File-Content?).
-
-### <a name="request-parameters"></a>Parametry żądania 
-
-|**Nazwa**|**Typ**|**Wymagane**|**Opis**|
-|---|---|---|---|
-|location|string|Tak|Region platformy Azure, do którego powinny być kierowane wywołania. Aby uzyskać więcej informacji, zobacz [regiony platformy Azure i Video Indexer](regions.md).|
-|accountID|string|Tak|Unikatowy identyfikator globalny dla konta|
-|modelId|string|Yes|Identyfikator modelu języka, który znajduje się plik (generowany podczas tworzenia modelu językowego)|
-|fileId|string|Tak|Identyfikator pliku, która jest aktualizowana (generowane, gdy plik jest przekazany podczas tworzenia lub aktualizowania modelu języka)|
-|accessToken|string|Yes|Token dostępu (musi być z zakresu [Token dostępu konta](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) do uwierzytelniania połączenia. Tokeny dostępu wygasa w ciągu 1 godziny.|
-
-### <a name="request-body"></a>Treść żądania 
-
-Nie ma już treść żądania wymagane dla tego wywołania.
+Plik interfejsu API [pobierania plików](https://api-portal.videoindexer.ai/docs/services/operations/operations/Download-Language-Model-File-Content?) pobiera plik tekstowy zawierający zawartość określonego pliku z określonego modelu języka w określonym koncie. Ten plik tekstowy powinien być zgodny z zawartością pliku tekstowego, który został pierwotnie przekazany.
 
 ### <a name="response"></a>Odpowiedź
 
-Odpowiedź będzie miała pobierania pliku tekstowego przy użyciu zawartości pliku w formacie JSON. 
+Odpowiedź będzie pobierać plik tekstowy z zawartością pliku w formacie JSON. 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-[Dostosuj model języka, witryny sieci Web](customize-language-model-with-website.md)
+[Dostosowywanie modelu języka za pomocą witryny sieci Web](customize-language-model-with-website.md)

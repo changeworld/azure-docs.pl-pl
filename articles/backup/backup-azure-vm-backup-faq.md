@@ -4,12 +4,12 @@ description: W tym artykule znajdują się odpowiedzi na często zadawane pytani
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: b8e259c6212e9a1e81b6b0c8825287f3025f9068
-ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
+ms.openlocfilehash: d70f4832daba59739d6798517902e921927194d6
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75680532"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293984"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Często zadawane pytania — tworzenie kopii zapasowych maszyn wirtualnych platformy Azure
 
@@ -92,6 +92,19 @@ Zaplanowana kopia zapasowa zostanie wyzwolona w ciągu 2 godzin od zaplanowanego
 ### <a name="what-is-the-minimum-allowed-retention-range-for-daily-backup-point"></a>Jaki jest minimalny dozwolony zakres przechowywania dla codziennego punktu kopii zapasowej?
 
 Zasady tworzenia kopii zapasowych maszyn wirtualnych platformy Azure obsługują minimalny zakres przechowywania wynoszący siedem dni do 9999 dni. Wszelkie modyfikacje istniejących zasad tworzenia kopii zapasowych maszyn wirtualnych przy użyciu mniej niż siedmiu dni będą wymagały aktualizacji w celu spełnienia minimalnego zakresu przechowywania wynoszącego siedem dni.
+
+### <a name="can-i-backup-or-restore-selective-disks-attached-to-a-vm"></a>Czy można tworzyć kopie zapasowe lub przywracać dyski selektywne dołączone do maszyny wirtualnej?
+
+Azure Backup teraz obsługuje selektywne tworzenie kopii zapasowych i przywracanie dysków przy użyciu rozwiązania do tworzenia kopii zapasowych maszyny wirtualnej platformy Azure.
+
+Obecnie Azure Backup obsługuje tworzenie kopii zapasowych wszystkich dysków (systemu operacyjnego i danych) w maszynie wirtualnej przy użyciu rozwiązania do tworzenia kopii zapasowej maszyny wirtualnej. Funkcja wykluczania dysku umożliwia utworzenie kopii zapasowej jednego lub kilku z wielu dysków z danymi na maszynie wirtualnej. Zapewnia to wydajne i ekonomiczne rozwiązanie dla potrzeb tworzenia kopii zapasowych i przywracania. Każdy punkt odzyskiwania zawiera dane dotyczące dysków uwzględnionych w operacji tworzenia kopii zapasowej, co dodatkowo umożliwia przywrócenie podzestawu dysków z danego punktu odzyskiwania podczas operacji przywracania. Dotyczy to przywracania zarówno z migawki, jak i magazynu.
+
+To rozwiązanie jest szczególnie przydatne w następujących scenariuszach:
+  
+1. Istnieje krytyczne dane, których kopie zapasowe mają być tworzone tylko w jednym dysku, i nie chcesz tworzyć kopii zapasowych reszty dysków podłączonych do maszyny wirtualnej. Pozwala to zminimalizować koszty magazynu kopii zapasowych.  
+2. Istnieją inne rozwiązania do tworzenia kopii zapasowych danych maszyny wirtualnej. Na przykład wykonujesz kopię zapasową baz danych lub danych przy użyciu innego rozwiązania do tworzenia kopii zapasowych, a chcesz użyć kopii zapasowej na poziomie maszyny wirtualnej platformy Azure na potrzeby pozostałej części dysków i danych, aby utworzyć wydajny i niezawodny system z wykorzystaniem najlepszych dostępnych funkcji.
+
+Aby utworzyć konto w wersji zapoznawczej, Zapisz się do nas na AskAzureBackupTeam@microsoft.com
 
 ## <a name="restore"></a>Przywracanie
 

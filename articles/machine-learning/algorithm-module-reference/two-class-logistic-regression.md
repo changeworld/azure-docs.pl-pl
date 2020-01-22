@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: f64352906da5d6e3a314b3af68e37f4dc5bb80bd
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: ee52f3a0bec058f1b94820123ac5514e4e855c05
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73485938"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311397"
 ---
 # <a name="two-class-logistic-regression-module"></a>Moduł regresji logistycznej dla dwóch klas
 
-W tym artykule opisano moduł w programie Azure Machine Learning Designer (wersja zapoznawcza).
+W tym artykule opisano moduł w programie Azure Machine Learning Designer.
 
 Użyj tego modułu, aby utworzyć model regresji logistycznej, który może służyć do przewidywania dwóch (i tylko dwóch) wyników. 
 
@@ -45,7 +45,6 @@ Na przykład kolumna etykieta może być [głosowana] z możliwymi wartościami 
 3.  Aby uzyskać **tolerancję optymalizacji**, określ wartość progową, która ma być używana podczas optymalizowania modelu. Jeśli poprawa między iteracjami spadnie poniżej określonego progu, algorytm jest uznawany za zbieżny w rozwiązaniu, a szkolenie zostanie zatrzymane.  
   
 4.  W przypadku **wag uregulowania** i **wagi L2**wpisz wartość, która ma być używana dla parametrów uregulowania L1 i L2. Dla obu tych zaleca się wartość różną od zera.  
-  
      *Uregulowanie* to metoda zapobiegania zastępowaniu poprzez nakładanie się modeli o wartości skrajnego współczynnika. Uregulowanie działa przez dodanie kary, która jest skojarzona z wartościami współczynnika, do błędu hipotezy. W ten sposób dokładny model z wartościami współczynnika skrajnie byłby bardziej karany, ale mniej dokładny model z bardziej bardziej nieprawidłowymi wartościami będzie mniejszy.  
   
      Uregulowanie L1 i L2 mają różne efekty i używa.  
@@ -79,8 +78,7 @@ Na przykład kolumna etykieta może być [głosowana] z możliwymi wartościami 
 ## <a name="results"></a>Wyniki
 
 Po zakończeniu szkolenia:
-
-+ Aby wyświetlić podsumowanie parametrów modelu wraz z wagami funkcji zdobywanymi od szkoleń, kliknij prawym przyciskiem myszy dane wyjściowe [modelu uczenia](./train-model.md) i wybierz polecenie **Wizualizuj**.   
+ 
   
 + Aby dokonać prognoz dotyczących nowych danych, użyj przeszkolonego modelu i nowych danych jako danych wejściowych w module [model oceny](./score-model.md) . 
 

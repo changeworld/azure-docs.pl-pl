@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: 0f6ba3c608c90d8634309a1843dc803b98be3d6d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b707971f0b150bce63b4dd0ffa4e55dc3b3d6bac
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73492636"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76313964"
 ---
 # <a name="split-data-module"></a>Moduł Split Data
 
-W tym artykule opisano moduł w programie Azure Machine Learning Designer (wersja zapoznawcza).
+W tym artykule opisano moduł w programie Azure Machine Learning Designer.
 
 Użyj tego modułu, aby podzielić zestaw danych na dwa różne zestawy.
 

@@ -8,12 +8,12 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 6022bf975352f9f70c4ba8aa716a695ead590a32
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a9817205a419e2b61af66dba16d09620e2c1dec9
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432385"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310870"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>Rozwiązywanie problemów z włączaniem lub wyświetlaniem Application Insights Profiler
 
@@ -47,6 +47,7 @@ Profiler zapisuje komunikaty śledzenia i zdarzenia niestandardowe do zasobu App
 * Jeśli aplikacja sieci Web jest aplikacją ASP.NET Core, musi być uruchomiona co najmniej ASP.NET Core 2,0.
 * Jeśli dane, które próbujesz wyświetlić, są starsze niż kilka tygodni, spróbuj ograniczyć filtr czasu i spróbuj ponownie. Ślady są usuwane po upływie siedmiu dni.
 * Upewnij się, że serwery proxy lub zapora nie zablokowali dostępu do https://gateway.azureserviceprofiler.net.
+* Profiler nie jest obsługiwany w planach usługi App Service w warstwie Bezpłatna lub współdzielona. Jeśli używasz jednego z tych planów, spróbuj przeprowadzić skalowanie do jednego z podstawowych planów i profilera powinien zacząć pracę.
 
 ### <a id="double-counting"></a>Podwójne zliczanie w wątkach równoległych
 

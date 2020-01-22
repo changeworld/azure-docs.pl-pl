@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: b7c898c232dc39398b13f16beea814aa4e554845
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 680cf04e79a9cb6d5748723dad3cb37cf3c76468
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428564"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314219"
 ---
 # <a name="cross-validate-model"></a>Krzyżowa weryfikacja modelu
 
-W tym artykule opisano sposób korzystania z modułu weryfikacji krzyżowej w programie Azure Machine Learning Designer (wersja zapoznawcza). *Wzajemne sprawdzanie poprawności* jest techniką często używaną w uczeniu maszynowym do oceny zmienności zestawu danych i niezawodności dowolnego modelu przeszkolonego za pomocą tych danych.  
+W tym artykule opisano sposób korzystania z modułu weryfikacji krzyżowej w programie Azure Machine Learning Designer. *Wzajemne sprawdzanie poprawności* jest techniką często używaną w uczeniu maszynowym do oceny zmienności zestawu danych i niezawodności dowolnego modelu przeszkolonego za pomocą tych danych.  
 
 Moduł sprawdzania poprawności krzyżowej przyjmuje jako wejściowy zestaw danych, wraz z niesprawdzonym modelem klasyfikacji lub regresji. Dzieli zestaw danych na pewną liczbę podzestawów (*zgięcia*), kompiluje model dla każdego zgięcia, a następnie zwraca zestaw statystyk dokładności dla każdego złożenia. Porównując statystyki dokładności dla wszystkich zagięć, można interpretować jakość zestawu danych. Następnie można zrozumieć, czy model jest podatny na różnice w danych.  
 
@@ -76,7 +76,7 @@ W tym scenariuszu nauczysz się i testujesz model przy użyciu modelu krzyżoweg
 
 7. Opis raportów można znaleźć w sekcji [Results (wyniki](#results) ).
 
-    Aby pobrać kopię modelu do ponownego użycia później, kliknij prawym przyciskiem myszy dane wyjściowe modułu zawierającego algorytm (na przykład, **maszyna Bayesa punktu w punkcie**). Następnie wybierz pozycję **Zapisz jako model przeszkolony**.
+    Aby później uzyskać kopię modelu do ponownego użycia, przejdź do karty dane **wyjściowe** w prawym panelu modułu zawierającego algorytm (na przykład, **maszyna Bayesa punkt**). Następnie wybierz ikonę **zarejestruj zestaw danych** , aby zapisać kopię przeszkolonego modelu w drzewie modułów.
 
 ## <a name="results"></a>Wyniki
 
@@ -86,7 +86,7 @@ Po ukończeniu wszystkich iteracji model krzyżowego sprawdzania poprawności tw
 
 Pierwsze dane wyjściowe modułu zawierają dane źródłowe dla każdego wiersza, a także niektóre wartości przewidywane i powiązane prawdopodobieństwa. 
 
-Aby wyświetlić te wyniki, w potoku kliknij prawym przyciskiem myszy moduł modelu krzyżowego sprawdzania poprawności. Wybierz pozycję **wyniki oceny**, a następnie wybierz opcję **Wizualizuj**.
+Aby wyświetlić wyniki, w potoku kliknij prawym przyciskiem myszy moduł modelu krzyżowego sprawdzania poprawności. Wybierz pozycję **Wizualizuj wyniki z wynikami**.
 
 | Nazwa nowej kolumny      | Opis                              |
 | -------------------- | ---------------------------------------- |
@@ -100,7 +100,7 @@ Drugi raport jest pogrupowany według zgięcia. Należy pamiętać, że podczas 
 
 W tym raporcie zgięcia są wyświetlane według wartości indeksu w kolejności rosnącej.  Aby zamówić w dowolnej innej kolumnie, można zapisać wyniki jako zestaw danych.
 
-Aby wyświetlić te wyniki, w potoku kliknij prawym przyciskiem myszy moduł modelu krzyżowego sprawdzania poprawności. Wybierz pozycję **wyniki oceny według zgięcia**, a następnie wybierz opcję **Wizualizuj**.
+Aby wyświetlić wyniki, w potoku kliknij prawym przyciskiem myszy moduł modelu krzyżowego sprawdzania poprawności. Wybierz opcję **Wizualizuj wyniki oceny według**złożenia.
 
 
 |Nazwa kolumny| Opis|

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2019
 ms.author: spelluru
-ms.openlocfilehash: d7a0c757f7314e45d5b4d13273df984739912b27
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 43223f7cb9ed254340c99d235d494d1e93583c7f
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75942414"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293542"
 ---
 # <a name="capture-event-hubs-data-in-azure-storage-and-read-it-using-python"></a>Przechwytywanie danych Event Hubs w usłudze Azure Storage i odczytywanie ich przy użyciu języka Python 
 Można użyć konfigurowania centrum zdarzeń, aby dane wysyłane do centrum zdarzeń były przechwytywane w usłudze Azure Storage lub Azure Data Lake Storage. W tym artykule pokazano, jak za pomocą napisać kod języka Python wysyłać zdarzenia do centrum zdarzeń i odczytywać przechwycone dane z usługi Azure Blob Storage. Aby uzyskać więcej informacji na temat tej funkcji, zobacz [Omówienie funkcji przechwytywania Event Hubs](event-hubs-capture-overview.md).
@@ -42,9 +42,9 @@ W ramach tego przewodnika Szybki start wykonasz następujące czynności:
 - Subskrypcja platformy Azure. Jeśli nie masz subskrypcji, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 - [Utwórz przestrzeń nazw Event Hubs i centrum zdarzeń w przestrzeni nazw](event-hubs-create.md). Zanotuj nazwę obszaru nazw Event Hubs, nazwę centrum zdarzeń i podstawowy klucz dostępu dla przestrzeni nazw. Uzyskaj klucz dostępu, wykonując instrukcje podane w artykule: [pobieranie parametrów połączenia](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). Domyślna nazwa klucza to: **RootManageSharedAccessKey**. Nie potrzebujesz parametrów połączenia dla tego samouczka. Wystarczy tylko klucz podstawowy. 
 - Wykonaj następujące kroki, aby utworzyć **konto usługi Azure Storage** i **kontener obiektów BLOB**:
-    1. [Utwórz konto usługi Azure Storage](/storage/common/storage-quickstart-create-account.md?tabs=azure-portal).
-    2. [Utwórz kontener obiektów BLOB w magazynie](/storage/blobs/storage-quickstart-blobs-portal.md#create-a-container). 
-    3. [Pobierz parametry połączenia z kontem magazynu](/storage/common/storage-configure-connection-string?#view-and-copy-a-connection-string)
+    1. [Utwórz konto usługi Azure Storage](../storage/common/storage-quickstart-create-account.md?tabs=azure-portal).
+    2. [Utwórz kontener obiektów BLOB w magazynie](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container). 
+    3. [Pobierz parametry połączenia z kontem magazynu](../storage/common/storage-configure-connection-string.md#view-and-copy-a-connection-string).
 
         Zanotuj **Parametry połączenia** i **nazwę kontenera**. Będziesz ich używać później w kodzie. 
 - Włącz funkcję **przechwytywania** dla centrum zdarzeń, wykonując następujące instrukcje: [Włączanie przechwytywania Event Hubs przy użyciu Azure Portal](event-hubs-capture-enable-through-portal.md). Wybierz konto magazynu i kontener obiektów blob, który został utworzony w poprzednim kroku. Funkcję można również włączyć podczas tworzenia centrum zdarzeń. 

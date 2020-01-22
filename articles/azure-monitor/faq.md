@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/30/2019
-ms.openlocfilehash: 1002a19506ad0a59cb24ae4edb1f7c9726d68cb2
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: 38966d537398d2770fba185a59b51956cf2223c3
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76170864"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76290346"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor często zadawane pytania
 
@@ -94,7 +94,7 @@ Wszystkie dane są pobierane z obszaru roboczego Log Analytics przy użyciu zapy
 Wszystkie dane dzienników zbierane przez Azure Monitor są przechowywane w Log Analytics obszarze roboczym. Obszar roboczy jest zasadniczo kontenerem, w którym dane dzienników są zbierane z różnych źródeł. Może istnieć pojedynczy obszar roboczy Log Analytics dla wszystkich danych monitorowania lub może mieć wymagania dotyczące wielu obszarów roboczych. Zobacz [projektowanie wdrożenia dzienników Azure monitor](platform/design-logs-deployment.md).
 
 ### <a name="can-you-move-an-existing-log-analytics-workspace-to-another-azure-subscription"></a>Czy można przenieść istniejący obszar roboczy Log Analytics do innej subskrypcji platformy Azure?
-Obszar roboczy można przenieść między grupami zasobów lub subskrypcjami, ale nie do innego regionu. Zobacz [przenoszenie obszaru roboczego log Analytics do innej subskrypcji lub grupy zasobów](/platform/move-workspace.md).
+Obszar roboczy można przenieść między grupami zasobów lub subskrypcjami, ale nie do innego regionu. Zobacz [przenoszenie obszaru roboczego log Analytics do innej subskrypcji lub grupy zasobów](platform/move-workspace.md).
 
 
 ## <a name="alerts"></a>Alerty
@@ -345,7 +345,7 @@ Użyj pojedynczego zasobu dla wszystkich składników lub ról w jednym systemie
 ### <a name="what-are-the-user-and-session-counts"></a>Jakie są liczby użytkowników i sesji?
 
 * Zestaw SDK języka JavaScript ustawia plik cookie użytkownika na kliencie sieci Web, aby zidentyfikować zwracających użytkowników i plik cookie sesji w celu pogrupowania działań.
-* Jeśli nie istnieje skrypt po stronie klienta, można [ustawić pliki cookie na serwerze](https://apmtips.com/blog/2016/07/09/tracking-users-in-api-app/).
+* Jeśli nie istnieje skrypt po stronie klienta, można [ustawić pliki cookie na serwerze](https://apmtips.com/blog/2016/07/09/tracking-users-in-api-apps/).
 * Jeśli jeden z rzeczywistych użytkowników korzysta z witryny w różnych przeglądarkach lub korzysta z funkcji przeglądania w trybie prywatnym/incognito lub różnych maszyn, zostaną one zliczone więcej niż jeden raz.
 * Aby zidentyfikować zalogowanego użytkownika na maszynach i w przeglądarkach, należy dodać wywołanie do [setAuthenticatedUserContext ()](app/api-custom-events-metrics.md#authenticated-users).
 
@@ -455,7 +455,7 @@ Twoja Brama powinna kierować ruch do adresu podstawowego tego punktu końcowego
 #### <a name="proxy-passthrough"></a>Przekazywanie serwera proxy
 
 Przekazywanie serwerów proxy można osiągnąć przez skonfigurowanie serwera proxy poziomu komputera lub aplikacji.
-Aby uzyskać więcej informacji, zobacz artykuł dotnet w witrynie [defaultProxy](https://docs.microsoft.com/dotnet/framework/configure-app/file-schema/network/defaultproxy-element-network-settings).
+Aby uzyskać więcej informacji, zobacz artykuł dotnet w witrynie [defaultProxy](https://docs.microsoft.com/dotnet/framework/configure-apps/file-schema/network/defaultproxy-element-network-settings).
  
  Przykład Web. config:
  ```xml

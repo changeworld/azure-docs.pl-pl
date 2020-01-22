@@ -8,12 +8,12 @@ ms.assetid: 444f0959-aa7f-472c-a6c7-9eecea3a34b9
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: emalani
-ms.openlocfilehash: d59cca4b5c956134516aa2c8066894aa14e5d33d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ec7091a32a1be8d875e16d8e0a9b20b5e80de387
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453105"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76291961"
 ---
 # <a name="build-mobile-back-end-components-with-compute-services"></a>Tworzenie składników zaplecza mobilnego za pomocą usług obliczeniowych
 Każda aplikacja mobilna wymaga zaplecza, który jest odpowiedzialny za magazyn danych, logikę biznesową i bezpieczeństwo. Zarządzanie infrastrukturą w celu hostowania i wykonywania kodu zaplecza wymaga zmiany rozmiaru, aprowizacji i skalowania wielu serwerów. Konieczne jest również zarządzanie aktualizacjami systemu operacyjnego oraz używanymi sprzętami i zastosowaniem poprawek zabezpieczeń. Następnie należy monitorować wszystkie te składniki infrastruktury pod kątem wydajności, dostępności i odporności na uszkodzenia. 
@@ -36,7 +36,7 @@ Poniższe usługi umożliwiają włączenie funkcji obliczeniowych bezserwerowyc
 - Sterowane zdarzeniami i skalowalne, w których można użyć wyzwalaczy i powiązań, aby zdefiniować, kiedy wywoływana jest funkcja i do jakie dane są połączone.
 - Korzystaj z własnych zależności, ponieważ usługa Functions obsługuje narzędzia NuGet i NPM, dzięki czemu możesz korzystać z ulubionych bibliotek.
 - Zintegrowane zabezpieczenia umożliwiające ochronę funkcji wyzwalanych przez protokół HTTP z dostawcami OAuth, takimi jak Azure Active Directory, Facebook, Google, Twitter i konto Microsoft.
-- Uproszczona integracja z różnymi ofertami [usług platformy Azure](/azure/azure-functions/functions-overview#integrations) i oprogramowania jako usługi (SaaS).
+- Uproszczona integracja z różnymi ofertami [usług platformy Azure](/azure/azure-functions/functions-overview) i oprogramowania jako usługi (SaaS).
 - Elastyczne programowanie, dzięki czemu możesz nakodować funkcje bezpośrednio w Azure Portal lub skonfigurować ciągłą integrację i wdrożyć kod za pomocą usługi GitHub, Azure DevOps Services i innych obsługiwanych narzędzi programistycznych.
 - Środowisko uruchomieniowe usługi Functions to otwarte źródło i dostępne w serwisie [GitHub](https://github.com/azure/azure-webjobs-sdk-script).
 - Udoskonalone środowisko programistyczne, w którym można kod, testować i debugować lokalnie przy użyciu preferowanego edytora lub łatwego w użyciu interfejsu internetowego z monitorowaniem za pomocą zintegrowanych narzędzi i wbudowanych funkcji DevOps.

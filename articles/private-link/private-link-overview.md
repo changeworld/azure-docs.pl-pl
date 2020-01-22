@@ -7,12 +7,13 @@ ms.service: private-link
 ms.topic: overview
 ms.date: 01/09/2020
 ms.author: allensu
-ms.openlocfilehash: 299cd81c05af385c435eaf3788e3d7e39c486623
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.custom: fasttrack-edit
+ms.openlocfilehash: f0c2f4c48875ca2e13a026c2c8ded8f217a97a08
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867556"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293763"
 ---
 # <a name="what-is-azure-private-link-preview"></a>Co to jest łącze prywatne platformy Azure? (Wersja zapoznawcza)
 Link prywatny platformy Azure umożliwia dostęp do usług Azure PaaS Services (na przykład Azure Storage, Azure Cosmos DB i SQL Database) oraz hostowanych usług klienta i partnerskich platformy Azure za pośrednictwem [prywatnego punktu końcowego](private-endpoint-overview.md) w sieci wirtualnej. Ruch między siecią wirtualną a usługą odbywa się za pośrednictwem sieci szkieletowej firmy Microsoft, eliminując ekspozycję z publicznego Internetu. Możesz również utworzyć własną [prywatną usługę linku](private-link-service-overview.md) w sieci wirtualnej (VNET) i dostarczyć ją prywatnie do klientów. Środowisko instalacji i użycia korzystające z prywatnego linku platformy Azure jest spójne w przypadku usługi Azure PaaS, należącej do klienta i udostępnionych usług partnerskich.
@@ -49,6 +50,7 @@ Połączenie prywatne platformy Azure zapewnia następujące korzyści:
 |  |  Azure Database for PostgreSQL — pojedynczy serwer         | Wszystkie regiony publiczne      |   Wersja zapoznawcza      |
 |  |  Azure Database for MySQL         | Wszystkie regiony publiczne      |   Wersja zapoznawcza      |
 |  |  Azure Database for MariaDB         | Wszystkie regiony publiczne      |   Wersja zapoznawcza      |
+|  |  Azure Cognitive Search | Zachodnie stany USA 2, zachodnie stany USA, Wschodnie stany USA, Południowo-środkowe stany USA, Australia Wschodnia, Australia Południowo-Wschodnia | Wersja zapoznawcza <br/> [Dowiedz się więcej](/azure/search/service-create-private-endpoint) |
 
 Aby zapoznać się z najbardziej aktualnymi powiadomieniami, zapoznaj się ze [stroną usługi Azure Virtual Network Updates](https://azure.microsoft.com/updates/?product=virtual-network).
 

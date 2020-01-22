@@ -3,12 +3,12 @@ title: Tworzenie kopii zapasowych maszyn wirtualnych platformy Azure w magazynie
 description: Zawiera opis sposobu tworzenia kopii zapasowych maszyn wirtualnych platformy Azure w magazynie Recovery Services przy użyciu Azure Backup
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: f2954ad2693d7b4f56e3f1b33e804a6936cf8a65
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 95c185c09558f3d1a525c9bcf15f3957118c4311
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450145"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76294035"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Tworzenie kopii zapasowych maszyn wirtualnych platformy Azure w magazynie Recovery Services
 
@@ -42,7 +42,7 @@ Ponadto istnieje kilka rzeczy, które mogą być konieczne w pewnych okolicznoś
 
  Magazyn przechowuje kopie zapasowe i punkty odzyskiwania utworzone wraz z upływem czasu, a następnie przechowuje zasady tworzenia kopii w programie skojarzonych z maszynami z kopii zapasowej. Utwórz magazyn w następujący sposób:
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
+1. Zaloguj się do [Portalu Azure](https://portal.azure.com/).
 2. W polu wyszukiwania wpisz **Recovery Services**. W obszarze **usługi**kliknij pozycję **magazyny Recovery Services**.
 
      ![Wyszukaj Recovery Services magazyny](./media/backup-azure-arm-vms-prepare/browse-to-rs-vaults-updated.png) <br/>
@@ -295,6 +295,18 @@ Zaporę platformy Azure można skonfigurować tak, aby zezwalała na dostęp wyc
 
 * [Dowiedz się więcej o](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal) wdrażaniu zapory platformy Azure.
 * [Przeczytaj informacje](https://docs.microsoft.com/azure/firewall/fqdn-tags) Tagi FQDN.
+
+>[!NOTE]
+> Azure Backup teraz obsługuje selektywne tworzenie kopii zapasowych i przywracanie dysków przy użyciu rozwiązania do tworzenia kopii zapasowych maszyny wirtualnej platformy Azure.
+>
+>Obecnie Azure Backup obsługuje tworzenie kopii zapasowych wszystkich dysków (systemu operacyjnego i danych) w maszynie wirtualnej przy użyciu rozwiązania do tworzenia kopii zapasowej maszyny wirtualnej. Funkcja wykluczania dysku umożliwia utworzenie kopii zapasowej jednego lub kilku z wielu dysków z danymi na maszynie wirtualnej. Zapewnia to wydajne i ekonomiczne rozwiązanie dla potrzeb tworzenia kopii zapasowych i przywracania. Każdy punkt odzyskiwania zawiera dane dotyczące dysków uwzględnionych w operacji tworzenia kopii zapasowej, co dodatkowo umożliwia przywrócenie podzestawu dysków z danego punktu odzyskiwania podczas operacji przywracania. Dotyczy to przywracania zarówno z migawki, jak i magazynu.
+>
+> To rozwiązanie jest szczególnie przydatne w następujących scenariuszach:
+>  
+>1. Istnieje krytyczne dane, których kopie zapasowe mają być tworzone tylko w jednym dysku, i nie chcesz tworzyć kopii zapasowych reszty dysków podłączonych do maszyny wirtualnej. Pozwala to zminimalizować koszty magazynu kopii zapasowych.  
+>2. Istnieją inne rozwiązania do tworzenia kopii zapasowych danych maszyny wirtualnej. Na przykład wykonujesz kopię zapasową baz danych lub danych przy użyciu innego rozwiązania do tworzenia kopii zapasowych, a chcesz użyć kopii zapasowej na poziomie maszyny wirtualnej platformy Azure na potrzeby pozostałej części dysków i danych, aby utworzyć wydajny i niezawodny system z wykorzystaniem najlepszych dostępnych funkcji.
+>
+>Aby utworzyć konto w wersji zapoznawczej, Zapisz się do nas na AskAzureBackupTeam@microsoft.com
 
 ## <a name="next-steps"></a>Następne kroki
 

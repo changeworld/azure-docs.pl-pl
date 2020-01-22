@@ -10,20 +10,20 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
 ms.date: 11/04/2019
-ms.openlocfilehash: 06a88ba1e477054aa6080baa9c9644d4da396442
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 73861456edbb7493038fbf2adbf12300d170cab2
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771431"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311050"
 ---
 # <a name="build-a-classifier-to-predict-company-category-using-azure-machine-learning-designer"></a>Kompiluj klasyfikator, aby przewidzieć kategorię firmy przy użyciu programu Azure Machine Learning Designer.
 
-**Projektant (wersja zapoznawcza) — przykład 7**
+**Przykład projektanta 7**
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-Ten przykład ilustruje sposób użycia modułów analizy tekstu do kompilowania potoku klasyfikacji tekstu w programie Azure Machine Learning Designer (wersja zapoznawcza).
+Ten przykład ilustruje sposób użycia modułów analizy tekstu do kompilowania potoku klasyfikacji tekstu w programie Azure Machine Learning Designer.
 
 Celem klasyfikacji tekstu jest przypisanie pewnego fragmentu tekstu do co najmniej jednej wstępnie zdefiniowanej klasy lub kategorii. Fragment tekstu może być dokumentem, artykułem z wiadomościami, wyszukiwaniem, pocztą e-mail, Tweetem, biletami pomocy technicznej, opiniami dotyczącymi klientów, przeglądem produktów użytkowników itp. Aplikacje klasyfikacji tekstu obejmują kategoryzację artykułów gazetowych i treści wiadomości w postaci tematów, Organizowanie stron sieci Web w kategorie hierarchiczne, filtrowanie wiadomości e-mail z spamem, analiza tonacji, przewidywanie zamiaru użytkownika z zapytań wyszukiwania, routingu Pomoc techniczna biletów oraz analizowanie opinii klientów. 
 

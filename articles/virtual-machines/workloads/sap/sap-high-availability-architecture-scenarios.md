@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 01/21/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1a52977a46c1222a1626fa5a4dcb4de7dd84f8dd
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: c04726bf3b4166255ada7c9f1252be0471dcc761
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75638208"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76291485"
 ---
 # <a name="high-availability-architecture-and-scenarios-for-sap-netweaver"></a>Architektura i scenariusze wysokiej dostępności dla oprogramowania SAP NetWeaver
 
@@ -294,7 +294,7 @@ System Azure jest w trakcie wdrażania koncepcji [strefy dostępności platformy
 Korzystając z Strefy dostępności, należy wziąć pod uwagę pewne zagadnienia. Lista zagadnień, takich jak:
 
 - Zestawów dostępności platformy Azure nie można wdrażać w ramach strefy dostępności. Musisz wybrać strefę dostępności lub zestaw dostępności jako ramkę wdrożenia dla maszyny wirtualnej.
-- Nie można użyć [podstawowego Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview#skus) do tworzenia rozwiązań klastra trybu failover opartych na usługach klastra trybu failover systemu Windows lub w systemie Linux Pacemaker. Zamiast tego należy użyć [jednostki SKU usługi Azure usługa Load Balancer w warstwie Standardowa](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones)
+- Nie można użyć [podstawowego Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) do tworzenia rozwiązań klastra trybu failover opartych na usługach klastra trybu failover systemu Windows lub w systemie Linux Pacemaker. Zamiast tego należy użyć [jednostki SKU usługi Azure usługa Load Balancer w warstwie Standardowa](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones)
 - Strefy dostępności platformy Azure nie udziela żadnych gwarancji dotyczących pewnej odległości między różnymi strefami w jednym regionie
 - Opóźnienie sieci między różnymi Strefy dostępności platformy Azure w różnych regionach świadczenia usługi Azure może różnić się od regionu platformy Azure do regionu. Istnieją sytuacje, w których klient może w sposób racjonalnie uruchamiać warstwę aplikacji SAP wdrożoną w różnych strefach, ponieważ opóźnienie sieci z jednej strefy do aktywnej maszyny wirtualnej z systemem DBMS jest nadal akceptowalne na podstawie wpływu na proces biznesowy. Istnieją scenariusze klientów, w których opóźnienie między aktywną maszyną wirtualną DBMS w jednej strefie a wystąpieniem aplikacji SAP na maszynie wirtualnej w innej strefie może być zbyt inwazyjne i nieakceptowalne dla procesów firmy SAP Business. W związku z tym architektury wdrożenia muszą być różne w zależności od aktywnej/aktywnej architektury dla aplikacji lub architektury aktywny/pasywny, jeśli opóźnienie jest zbyt wysokie.
 - Korzystanie z [usługi Azure Managed disks](https://azure.microsoft.com/services/managed-disks/) jest wymagane do wdrożenia w strefy dostępności platformy Azure 

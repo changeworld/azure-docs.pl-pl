@@ -1,7 +1,7 @@
 ---
-title: Ponowne uczenie modeli przy użyciu programu Azure Machine Learning Designer (wersja zapoznawcza)
+title: Ponowne uczenie modeli przy użyciu narzędzia Azure Machine Learning Designer
 titleSuffix: Azure Machine Learning
-description: Dowiedz się, jak ponownie szkolić modele z opublikowanymi potokami w programie Azure Machine Learning Designer (wersja zapoznawcza).
+description: Dowiedz się, jak ponownie szkolić modele z opublikowanymi potokami w programie Azure Machine Learning Designer.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.author: peterlu
 author: peterclu
 ms.date: 12/15/2019
-ms.openlocfilehash: 734acd712eb954e66a9c0b037d10b7b1fd626c6a
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: d1382da739fd8ca56d4cc53c2c302331bdfbf1c3
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75732165"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311873"
 ---
-# <a name="retrain-models-with-azure-machine-learning-designer-preview"></a>Ponowne uczenie modeli za pomocą programu Azure Machine Learning Designer (wersja zapoznawcza)
+# <a name="retrain-models-with-azure-machine-learning-designer"></a>Ponowne uczenie modeli za pomocą narzędzia Azure Machine Learning Designer
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 W tym instruktażu dowiesz się, jak za pomocą narzędzia Azure Machine Learning Designer ponownie przeprowadzić uczenie modelu uczenia maszynowego. Dowiedz się, jak używać opublikowanych potoków do automatyzowania przepływów pracy uczenia maszynowego na potrzeby ponownego szkolenia.

@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: ebe9a0368f2111fa6787b7fa4f4432d7ad4106c3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 3df66c80ab96bbcb9a58f91989cfd63b1e13a67f
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73485953"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76312400"
 ---
 # <a name="two-class-decision-forest-module"></a>Moduł dwuklasowego lasu decyzyjnego
 
-W tym artykule opisano moduł w programie Azure Machine Learning Designer (wersja zapoznawcza).
+W tym artykule opisano moduł w programie Azure Machine Learning Designer.
 
 Ten moduł służy do tworzenia modelu uczenia maszynowego na podstawie algorytmu lasów decyzyjnych.  
 
@@ -87,17 +87,12 @@ Aby uzyskać więcej informacji, zobacz [lasy decyzyjne](https://go.microsoft.co
 9. Dołącz zestaw danych z etykietą i jeden z [modułów szkoleniowych](module-reference.md):  
   
     -   W przypadku ustawienia opcji **Utwórz tryb Trainer** na **pojedynczy parametr**Użyj modułu [uczenie modelu](./train-model.md) .  
-  
     
 ## <a name="results"></a>Wyniki
 
 Po zakończeniu szkolenia:
 
-+ Aby zobaczyć drzewo, które zostało utworzone w każdej iteracji, kliknij prawym przyciskiem myszy dane wyjściowe modułu [uczenie modelu](./train-model.md) i wybierz polecenie **Wizualizuj**.
-  
-    Kliknij każde drzewo, aby przejść do szczegółów i wyświetlić reguły dla każdego węzła.
-
-+ Aby zapisać migawkę modelu, kliknij prawym przyciskiem myszy **wyszkolony model** wyjściowy, a następnie wybierz pozycję **Zapisz model**. Zapisany model nie jest aktualizowany po kolejnych uruchomieniach potoku.
++ Aby zapisać migawkę przeszkolonego modelu, wybierz kartę dane **wyjściowe** w prawym panelu modułu **uczenie modelu** . Wybierz ikonę **zarejestruj zestaw danych** , aby zapisać model jako moduł wielokrotnego użytku.
 
 + Aby użyć modelu do oceniania, Dodaj moduł **model oceny** do potoku.
 

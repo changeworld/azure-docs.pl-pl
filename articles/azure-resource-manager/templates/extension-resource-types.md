@@ -2,13 +2,13 @@
 title: Typy zasobów rozszerzenia
 description: Wyświetla listę typów zasobów platformy Azure służących do rozszerania możliwości innych typów zasobów.
 ms.topic: conceptual
-ms.date: 10/24/2019
-ms.openlocfilehash: af60bd648e41532cca364272fb0ded01c0c18239
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/20/2020
+ms.openlocfilehash: 47a98bca4912a1c59c8b2d9bad458769c6bf4ebf
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75484677"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293270"
 ---
 # <a name="resource-types-that-extend-capabilities-of-other-resources"></a>Typy zasobów, które zwiększają możliwości innych zasobów
 
@@ -23,12 +23,14 @@ Zasób rozszerzenia jest zasobem, który dodaje do możliwości innego zasobu. N
 - Microsoft. AlertsManagement/alertsSummary
 - Microsoft. Authorization/checkAccess
 - Microsoft. Authorization/denyAssignments
+- Microsoft. Authorization/findOrphanRoleAssignments
 - Microsoft. Authorization/Locks
 - Microsoft. Autoryzacja/uprawnienia
 - Microsoft. Authorization/policyAssignments
 - Microsoft. Authorization/policyDefinitions
 - Microsoft. Authorization/policySetDefinitions
 - Microsoft. Authorization/roleAssignments
+- Microsoft. Authorization/roleAssignmentsUsageMetrics
 - Microsoft. Authorization/roleDefinitions
 - Microsoft. rozliczenia/billingPeriods
 - Microsoft. rozliczenia/billingPermissions
@@ -82,6 +84,7 @@ Zasób rozszerzenia jest zasobem, który dodaje do możliwości innego zasobu. N
 - Microsoft. Insights/automatedExportSettings
 - Microsoft. Insights/Baseline
 - Microsoft. Insights/calculatebaseline
+- Microsoft. Insights/dataCollectionRuleAssociations
 - Microsoft. Insights/diagnosticSettings
 - Microsoft. Insights/diagnosticSettingsCategories
 - Microsoft. Insights/eventtypes
@@ -94,6 +97,8 @@ Zasób rozszerzenia jest zasobem, który dodaje do możliwości innego zasobu. N
 - Microsoft. Insights/metricbaselines
 - Microsoft. Insights/metryki
 - Microsoft. Insights/webskoroszyty
+- Microsoft. Insights/topologia
+- Microsoft. Insights/Transactions
 - Microsoft. Insights/vmInsightsOnboardingStatuses
 - Microsoft. KubernetesConfiguration/sourceControlConfigurations
 - Microsoft. Maintenance/applyUpdates
@@ -109,6 +114,7 @@ Zasób rozszerzenia jest zasobem, który dodaje do możliwości innego zasobu. N
 - Microsoft. PolicyInsights/policyTrackedResources
 - Microsoft.PolicyInsights/remediations
 - Microsoft. RecoveryServices/backupProtectedItems
+- Microsoft. RecoveryServices/replicationEligibilityResults  
 - Microsoft. ResourceHealth/availabilityStatuses
 - Microsoft. ResourceHealth/childAvailabilityStatuses
 - Microsoft. ResourceHealth/childResources

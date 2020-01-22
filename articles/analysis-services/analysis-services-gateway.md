@@ -4,15 +4,15 @@ description: Brama lokalna jest wymagana, jeśli serwer Analysis Services na pla
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/17/2020
+ms.date: 01/21/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: f1fc00ced0d933884ca0fe6dce91fed4602eb825
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 648646b6f973762245c344cd2629a874a219b170
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76263442"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310156"
 ---
 # <a name="connecting-to-on-premises-data-sources-with-on-premises-data-gateway"></a>Łączenie z lokalnymi źródłami danych za pomocą lokalnej bramy danych
 
@@ -24,7 +24,7 @@ Aby uzyskać Azure Analysis Services, należy pobrać Instalatora z bramą po ra
 
 - **Pobierz i uruchom Instalatora** — ten krok powoduje zainstalowanie usługi bramy na komputerze w organizacji. Logujesz się również na platformie Azure przy użyciu konta w usłudze Azure AD swojej [dzierżawy](/previous-versions/azure/azure-services/jj573650(v=azure.100)#what-is-an-azure-ad-tenant) . Konta B2B (gość) platformy Azure nie są obsługiwane.
 
-- **Rejestrowanie bramy** — w tym kroku należy określić nazwę i klucz odzyskiwania dla bramy i wybrać region, zarejestrować bramę w usłudze bramy w chmurze. Zasób bramy można zarejestrować w dowolnym regionie, ale zalecamy, aby znajdował się w tym samym regionie co serwery Analysis Services. 
+- **Rejestrowanie bramy** — w tym kroku należy określić nazwę i klucz odzyskiwania dla bramy i wybrać region, zarejestrować bramę w usłudze bramy w chmurze. Zasób bramy może być zarejestrowany w dowolnym regionie, ale zaleca się, aby znajdował się w tym samym regionie co serwery Analysis Services. 
 
 - **Tworzenie zasobu bramy na platformie Azure** — w tym kroku utworzysz zasób bramy na platformie Azure.
 
@@ -54,7 +54,7 @@ W przypadku instalowania środowiska Azure Analysis Services należy wykonać kr
 
 Brama tworzy wychodzące połączenie do magistrali usług platformy Azure. Komunikuje się ona na portach wychodzących: TCP 443 (domyślnie), 5671, 5672, 9350 do 9354.  Brama nie wymaga portów przychodzących.
 
-Może być konieczne dołączenie adresów IP do obszaru danych w zaporze. Możesz pobrać [listę adresów IP centrów danych platformy Microsoft Azure](https://www.microsoft.com/download/details.aspx?id=41653). Ta lista jest aktualizowana co tydzień. Na liście adresów IP centrów danych platformy Azure adresy są wymienione w notacji CIDR. Aby dowiedzieć się więcej, zobacz [Routing bezklasowy między domenami](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing).
+Może być konieczne dołączenie adresów IP do obszaru danych w zaporze. Możesz pobrać [listę adresów IP centrów danych platformy Microsoft Azure](https://www.microsoft.com/download/details.aspx?id=56519). Ta lista jest aktualizowana co tydzień. Na liście adresów IP centrów danych platformy Azure adresy są wymienione w notacji CIDR. Aby dowiedzieć się więcej, zobacz [Routing bezklasowy między domenami](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing).
 
 Poniżej znajdują się w pełni kwalifikowane nazwy domen używane przez bramę.
 

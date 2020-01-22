@@ -10,20 +10,20 @@ author: likebupt
 ms.author: keli19
 ms.reviewer: peterlu
 ms.date: 12/25/2019
-ms.openlocfilehash: f8cf20743ee5420312ed751a26796a0859956ae7
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: b2511feefbe419223f355509ecb435518ce8382e
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771448"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311055"
 ---
 # <a name="train--compare-multiple-regression-models-to-predict-car-prices-with-azure-machine-learning-designer"></a>Uczenie & porównanie wielu modeli regresji w celu przewidywania cen samochodów przy użyciu projektanta Azure Machine Learning
 
-**Projektant (wersja zapoznawcza) — przykład 2**
+**Przykład projektanta 2**
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-Dowiedz się, jak utworzyć potok uczenia maszynowego bez pisania pojedynczego wiersza kodu przy użyciu narzędzia Projektant (wersja zapoznawcza). Ten przykład pociąga za siebie i porównuje wiele modeli regresji, aby przewidzieć cenę samochodu w oparciu o jego funkcje techniczne. Udostępnimy uzasadnienie dotyczące opcji wybranych w tym potoku, aby móc rozwiązywać własne problemy z uczeniem maszynowym.
+Dowiedz się, jak utworzyć potok uczenia maszynowego bez pisania pojedynczego wiersza kodu przy użyciu narzędzia Projektant. Ten przykład pociąga za siebie i porównuje wiele modeli regresji, aby przewidzieć cenę samochodu w oparciu o jego funkcje techniczne. Udostępnimy uzasadnienie dotyczące opcji wybranych w tym potoku, aby móc rozwiązywać własne problemy z uczeniem maszynowym.
 
 Jeśli dopiero zaczynasz korzystać z uczenia maszynowego, zapoznaj się z [podstawową wersją](how-to-designer-sample-regression-automobile-price-basic.md) tego potoku.
 

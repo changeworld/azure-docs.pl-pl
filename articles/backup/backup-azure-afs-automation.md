@@ -3,12 +3,12 @@ title: Tworzenie kopii zapasowych i przywracanie Azure Files przy użyciu progra
 description: W tym artykule dowiesz się, jak utworzyć kopię zapasową i przywrócić Azure Files przy użyciu usługi Azure Backup i programu PowerShell.
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: 78000bc669eb7a61f8698ad8c39ef49f65b245a2
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: f9665bbc3562faab760562e1e6729d8be0796acd
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74224161"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76294052"
 ---
 # <a name="back-up-and-restore-azure-files-with-powershell"></a>Tworzenie kopii zapasowych i przywracanie Azure Files przy użyciu programu PowerShell
 
@@ -28,7 +28,7 @@ W tym artykule wyjaśniono, jak:
 ## <a name="before-you-start"></a>Przed rozpoczęciem
 
 * [Dowiedz się więcej](backup-azure-recovery-services-vault-overview.md) o magazynach Recovery Services.
-* Przeczytaj o możliwościach [tworzenia kopii zapasowych udziałów plików platformy Azure](backup-azure-files.md).
+* Przeczytaj o możliwościach [tworzenia kopii zapasowych udziałów plików platformy Azure](backup-afs.md).
 * Zapoznaj się z hierarchią obiektów programu PowerShell dla Recovery Services.
 
 ## <a name="recovery-services-object-hierarchy"></a>Hierarchia obiektów Recovery Services
@@ -419,4 +419,4 @@ $job.ErrorDetails
 
 ## <a name="next-steps"></a>Następne kroki
 
-[Dowiedz się więcej na temat](backup-azure-files.md) tworzenia kopii zapasowych Azure Files w Azure Portal.
+[Dowiedz się więcej na temat](backup-afs.md) tworzenia kopii zapasowych Azure Files w Azure Portal.

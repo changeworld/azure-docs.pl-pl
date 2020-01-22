@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: dc78322b09548e4e9c2f666e0c8315ce688d6541
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 075216cf7d67aa4d5a04f34a7ae3444a078b4c62
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428419"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76313913"
 ---
 # <a name="train-svd-recommender"></a>Trenowanie modułu poleceń SVD
 
-W tym artykule opisano, jak używać modułu polecania SVD w programie Azure Machine Learning Designer (wersja zapoznawcza). Ten moduł służy do uczenia modelu rekomendacji na podstawie algorytmu pojedynczego rozkładu wartości (SVD).  
+W tym artykule opisano sposób korzystania z modułu polecania SVD w programie Azure Machine Learning Designer. Ten moduł służy do uczenia modelu rekomendacji na podstawie algorytmu pojedynczego rozkładu wartości (SVD).  
 
 Moduł polecający SVD pociąg odczytuje zestaw danych potrójnych ocen elementów użytkownika. Zwraca zalecany polecający SVD. Można następnie użyć przeszkolonego modelu do przewidywania klasyfikacji lub wygenerowania zaleceń przy użyciu modułu [zalecanego do oceny SVD](score-svd-recommender.md) .  
 

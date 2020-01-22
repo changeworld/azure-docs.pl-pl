@@ -7,13 +7,13 @@ ms.author: orspodek
 ms.reviewer: tomersh26
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 11/14/2019
-ms.openlocfilehash: 51683e529f832e06efbe8eb71466f3b27d95fcb1
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.date: 01/20/2020
+ms.openlocfilehash: bb08cf4db45a378b35a8245eadd56a2ab3e48bab
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74819141"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293627"
 ---
 # <a name="integrate-azure-data-explorer-with-azure-data-factory"></a>Integracja Eksplorator danych platformy Azure z usługą Azure Data Factory
 
@@ -44,6 +44,14 @@ Aby zapoznać się ze szczegółowym opisem działania poleceń, zobacz [używan
 ### <a name="copy-in-bulk-from-a-database-template"></a>Kopiuj zbiorczo z szablonu bazy danych
 
 [Kopiowanie masowe z bazy danych na platformę Azure Eksplorator danych przy użyciu szablonu Azure Data Factory](data-factory-template.md) jest wstępnie zdefiniowanym potokiem Azure Data Factory. Szablon służy do tworzenia wielu potoków na bazę danych lub na tabelę w celu przyspieszenia kopiowania danych. 
+
+### <a name="mapping-data-flows"></a>Przepływy danych mapowania 
+
+[Azure Data Factory mapowanie przepływów danych](/azure/data-factory/concepts-data-flow-overview) to wizualnie zaprojektowane przekształcenia danych, które umożliwiają inżynierom danych Tworzenie logiki transformacji danych graficznych bez pisania kodu. Aby utworzyć przepływ danych i pozyskanie danych do usługi Azure Eksplorator danych, użyj następującej metody:
+
+1. Utwórz [przepływ danych mapowania](/azure/data-factory/data-flow-create).
+1. [Wyeksportuj dane do obiektu blob platformy Azure](/azure/data-factory/data-flow-sink). 
+1. Zdefiniuj [działanie kopiowania](/azure/data-explorer/data-factory-load-data) [Event Grid](/azure/data-explorer/ingest-data-event-grid) lub ADF w celu pozyskiwania danych w usłudze Azure Eksplorator danych.
 
 ## <a name="select-between-copy-and-azure-data-explorer-command-activities-when-copy-data"></a>Wybierz działania kopiowania i Eksplorator danych platformy Azure przy kopiowaniu danych 
 

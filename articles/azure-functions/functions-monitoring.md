@@ -4,12 +4,12 @@ description: Dowiedz się, jak używać usługi Azure Application Insights z us�
 ms.assetid: 501722c3-f2f7-4224-a220-6d59da08a320
 ms.topic: conceptual
 ms.date: 04/04/2019
-ms.openlocfilehash: 4a182ddffd4c1ee4d2e71e7d9e6385df23e4260e
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: dda62e3041d04d5becc9179fff1c56d0c587ba1e
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978087"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76292930"
 ---
 # <a name="monitor-azure-functions"></a>Monitorowanie usługi Azure Functions
 
@@ -74,7 +74,7 @@ Można zobaczyć, że obie strony mają **uruchomioną Application Insights** li
 
 ![Uruchom w usłudze Application Insights](media/functions-monitoring/run-in-ai.png)
 
-Zostanie wyświetlone następujące zapytanie. Można zobaczyć, że lista wywołań jest ograniczona do 30 ostatnich dni. Lista pokazuje nie więcej niż 20 wierszy (`where timestamp > ago(30d) | take 20`). Lista szczegóły wywołania jest w ciągu ostatnich 30 dni bez limitu.
+Zostanie wyświetlone następujące zapytanie. Można zobaczyć, że wyniki zapytania są ograniczone do 30 ostatnich dni (`where timestamp > ago(30d)`). Ponadto wyniki nie pokazują więcej niż 20 wierszy (`take 20`). W przeciwieństwie do listy szczegóły wywołania funkcji jest używany w ciągu ostatnich 30 dni bez limitu.
 
 ![Lista wywołań analizy Application Insights](media/functions-monitoring/ai-analytics-invocation-list.png)
 
@@ -98,7 +98,7 @@ Następujące obszary Application Insights mogą być pomocne podczas oceny zach
 | **[Skuteczności](../azure-monitor/app/performance-counters.md)** | Analizuj problemy z wydajnością. |
 | **Serwery** | Wyświetlanie wykorzystania zasobów i przepływności na serwer. Te dane mogą być przydatne w scenariuszach debugowania, w których funkcje boggingją bazowe zasoby. Serwery są określane jako **wystąpienia roli w chmurze**. |
 | **[Pomiar](../azure-monitor/app/metrics-explorer.md)** | Tworzenie wykresów i alertów opartych na metrykach. Metryki obejmują liczbę wywołań funkcji, czas wykonywania i współczynnik sukcesu. |
-| **[Transmisja strumieniowa metryk na żywo](../azure-monitor/app/live-stream.md)** | Wyświetlanie danych metryk w miarę ich tworzenia w czasie rzeczywistym. |
+| **[Transmisja strumieniowa metryk na żywo](../azure-monitor/app/live-stream.md)** | Wyświetlanie danych metryk w miarę ich tworzenia niemal w czasie rzeczywistym. |
 
 ## <a name="query-telemetry-data"></a>Zapytanie danych telemetrycznych
 
@@ -155,7 +155,7 @@ W przypadku pisania dzienników w kodzie funkcji kategoria jest `Function` w wer
 
 Rejestrator Azure Functions obejmuje również *poziom dziennika* z każdym dziennikiem. [LogLevel](/dotnet/api/microsoft.extensions.logging.loglevel) jest wyliczeniem, a kod liczby całkowitej wskazuje na ważność względną:
 
-|PoziomRejestrowania    |Kod|
+|PoziomRejestrowania    |Code|
 |------------|---|
 |Ślad       | 0 |
 |Debugowanie       | 1 |
@@ -337,7 +337,7 @@ Dzienniki można napisać w kodzie funkcji, który jest wyświetlany jako ślady
 
 Użyj parametru [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger) w funkcjach zamiast parametru `TraceWriter`. Dzienniki utworzone za pomocą `TraceWriter` przejdź do Application Insights, ale `ILogger` pozwala na [Rejestrowanie strukturalne](https://softwareengineering.stackexchange.com/questions/312197/benefits-of-structured-logging-vs-basic-logging).
 
-Przy użyciu obiektu `ILogger` należy wywołać [metody rozszerzające `Log<level>` na ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.loggerextensions#methods) w celu utworzenia dzienników. Poniższy kod zapisuje `Information` dzienników z kategorią "Function".
+Przy użyciu obiektu `ILogger` należy wywołać [metody rozszerzające `Log<level>` na ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.loggerextensions#methods) w celu utworzenia dzienników. Poniższy kod zapisuje `Information` dzienników z kategorią "Function. < YOUR_FUNCTION_NAME >. Użytkownik ".
 
 ```cs
 public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, ILogger logger)
@@ -561,7 +561,7 @@ namespace functionapp0915
 
 Nie wywołuj `TrackRequest` ani `StartOperation<RequestTelemetry>`, ponieważ zobaczysz zduplikowane żądania wywołania funkcji.  Środowisko uruchomieniowe funkcji automatycznie śledzi żądania.
 
-Nie ustawiaj `telemetryClient.Context.Operation.Id`. To ustawienie globalne powoduje nieprawidłowe korelację, gdy wiele funkcji jest uruchomionych jednocześnie. Zamiast tego należy utworzyć nowe wystąpienie telemetrii (`DependencyTelemetry`, `EventTelemetry`) i zmodyfikować jego właściwość `Context`. Następnie Przekaż wystąpienie telemetrii do odpowiedniej metody `Track` na `TelemetryClient` (`TrackDependency()`, `TrackEvent()`). Ta metoda zapewnia, że Telemetria ma poprawne szczegóły korelacji dla bieżącego wywołania funkcji.
+Nie ustawiaj `telemetryClient.Context.Operation.Id`. To ustawienie globalne powoduje nieprawidłowe korelację, gdy wiele funkcji jest uruchomionych jednocześnie. Zamiast tego należy utworzyć nowe wystąpienie telemetrii (`DependencyTelemetry`, `EventTelemetry`) i zmodyfikować jego właściwość `Context`. Następnie Przekaż wystąpienie telemetrii do odpowiedniej metody `Track` na `TelemetryClient` (`TrackDependency()`, `TrackEvent()`, `TrackMetric()`). Ta metoda zapewnia, że Telemetria ma poprawne szczegóły korelacji dla bieżącego wywołania funkcji.
 
 ## <a name="log-custom-telemetry-in-javascript-functions"></a>Rejestruj niestandardową telemetrię w funkcjach JavaScript
 
@@ -590,7 +590,7 @@ Parametr `tagOverrides` ustawia `operation_Id` na identyfikator wywołania funkc
 
 ## <a name="dependencies"></a>Zależności
 
-Funkcja v2 automatycznie zbiera zależności dla żądań HTTP, ServiceBus i SQL.
+Funkcja v2 automatycznie zbiera zależności dla żądań HTTP, ServiceBus, EventHub i SQL.
 
 Można napisać niestandardowy kod, aby wyświetlić zależności. Przykłady można znaleźć w sekcji przykład kodu w [ C# niestandardowej telemetrii](#log-custom-telemetry-in-c-functions). Przykładowy kod powoduje, że *Mapa aplikacji* w Application Insights wygląda jak na poniższej ilustracji:
 
@@ -602,13 +602,13 @@ Aby zgłosić problem związany z integracją Application Insights w usłudze Fu
 
 ## <a name="streaming-logs"></a>Dzienniki przesyłania strumieniowego
 
-Podczas tworzenia aplikacji często warto zobaczyć, co jest zapisywane w dziennikach w czasie niemal rzeczywistym podczas uruchamiania na platformie Azure.
+Podczas tworzenia aplikacji często warto zobaczyć, co jest zapisywane w dziennikach niemal w czasie rzeczywistym podczas uruchamiania na platformie Azure.
 
 Istnieją dwa sposoby wyświetlania strumienia plików dziennika generowanych przez wykonania funkcji.
 
 * **Wbudowane przesyłanie strumieniowe dzienników**: platforma App Service umożliwia wyświetlenie strumienia plików dziennika aplikacji. Jest to równoznaczne z danymi wyjściowymi wyświetlanymi podczas debugowania funkcji podczas [lokalnego tworzenia](functions-develop-local.md) i korzystania z karty **test** w portalu. Wyświetlane są wszystkie informacje oparte na dzienniku. Aby uzyskać więcej informacji, zobacz [dzienniki przesyłania strumieniowego](../app-service/troubleshoot-diagnostic-logs.md#stream-logs). Ta metoda przesyłania strumieniowego obsługuje tylko jedno wystąpienie i nie może być używana z aplikacją działającą w systemie Linux w planie zużycia.
 
-* **Live Metrics Stream**: gdy aplikacja funkcji jest [połączona z Application Insights](#enable-application-insights-integration), można wyświetlać dane dziennika i inne metryki w czasie niemal rzeczywistym w Azure Portal przy użyciu [Live Metrics Stream](../azure-monitor/app/live-stream.md). Użyj tej metody, gdy funkcje monitorowania działają w wielu wystąpieniach lub w systemie Linux w planie zużycia. Ta metoda używa [danych próbkowanych](#configure-sampling).
+* **Live Metrics Stream**: gdy aplikacja funkcji jest [połączona z Application Insights](#enable-application-insights-integration), można wyświetlać dane dziennika i inne metryki niemal w czasie rzeczywistym w Azure Portal przy użyciu [Live Metrics Stream](../azure-monitor/app/live-stream.md). Użyj tej metody, gdy funkcje monitorowania działają w wielu wystąpieniach lub w systemie Linux w planie zużycia. Ta metoda używa [danych próbkowanych](#configure-sampling).
 
 Strumienie dzienników można wyświetlać zarówno w portalu, jak i w większości lokalnych środowisk programistycznych. 
 

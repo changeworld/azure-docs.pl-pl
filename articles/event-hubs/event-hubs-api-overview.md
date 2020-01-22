@@ -1,6 +1,6 @@
 ---
-title: Omówienie usługi Azure Event Hubs API | Dokumentacja firmy Microsoft
-description: Omówienie interfejsów API usługi dostępne Azure Event Hubs
+title: Omówienie usługi Azure Event Hubs API | Microsoft Docs
+description: Ten artykuł zawiera omówienie dostępnych interfejsów API (środowisko uruchomieniowe i zarządzanie) do korzystania z usługi Azure Event Hubs.
 services: event-hubs
 documentationcenter: na
 author: ShubhaVijayasarathy
@@ -14,24 +14,24 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/02/2018
 ms.author: shvija
-ms.openlocfilehash: 80566b0246179064d2a479b8c9bf3c79a2a93aac
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c852bdeb30efe6acf626ae67028ec1ccb9e0b6db
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60822618"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310972"
 ---
-# <a name="available-event-hubs-apis"></a>Zdarzenie dostępne koncentratory API
+# <a name="available-event-hubs-apis"></a>Dostępne Event Hubs interfejsy API
 
-W tym artykule opisano zestaw dostępnych klientów interfejsów API służących do zarządzania zasobami usługi Event Hubs.
+W tym artykule opisano zestaw dostępnych klientów interfejsu API, których można używać do zarządzania zasobami Event Hubs.
 
-## <a name="runtime-apis"></a>Interfejsów API środowiska wykonawczego
+## <a name="runtime-apis"></a>Interfejsy API środowiska uruchomieniowego
 
-W poniższej sekcji opisano wszystkich aktualnie dostępnych klientów środowiska uruchomieniowego usługi Azure Event Hubs. Chociaż niektóre z tych bibliotek także zawiera funkcje zarządzania ograniczone, dostępne są także [określone biblioteki](#management-apis) przeznaczone do obsługi operacji zarządzania. Podstawowe tych bibliotek koncentruje się na wysyłanie oraz odbieranie komunikatów z Centrum zdarzeń.
+W poniższej sekcji opisano wszystkie aktualnie dostępne klienci środowiska uruchomieniowego usługi Azure Event Hubs. Niektóre z tych bibliotek zawierają również ograniczoną funkcjonalność zarządzania, ale istnieją również pewne [biblioteki](#management-apis) przeznaczone do operacji zarządzania. Podstawowym fokusem tych bibliotek jest wysyłanie i odbieranie komunikatów z centrum zdarzeń.
 
-Aby uzyskać więcej informacji o bieżącym statusie każdej biblioteki środowiska uruchomieniowego, zobacz [dodatkowe informacje](#additional-information).
+Aby uzyskać więcej informacji o bieżącym stanie każdej biblioteki środowiska uruchomieniowego, zobacz [dodatkowe informacje](#additional-information).
 
-| Języka/platformy | Pakiet klienta | EventProcessorHost pakietu | Repozytorium |
+| Język/platforma | Pakiet klienta | Pakiet klasy eventprocessorhost | Repozytorium |
 | --- | --- | --- | --- |
 | .NET Standard | [NuGet](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/) | [NuGet](https://www.nuget.org/packages/Microsoft.Azure.EventHubs.Processor/) | [GitHub](https://github.com/azure/azure-event-hubs-dotnet) |
 | .NET Framework | [NuGet](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) | [NuGet](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost/) | ND |
@@ -43,23 +43,23 @@ Aby uzyskać więcej informacji o bieżącym statusie każdej biblioteki środow
 
 #### <a name="net"></a>.NET
 
-Ekosystem platformy .NET ma wielu modułów wykonawczych, istnieje więc wiele bibliotek platformy .NET dla usługi Event Hubs. Biblioteki .NET Standard mogą być uruchamiane przy użyciu platformy .NET Core lub .NET Framework, natomiast biblioteka .NET Framework można uruchomić tylko w środowisku .NET Framework. Aby uzyskać więcej informacji na temat wersji programu .NET Framework, zobacz [framework w wersji](https://docs.microsoft.com/dotnet/articles/standard/frameworks).
+Ekosystem .NET ma wiele środowisk uruchomieniowych, więc istnieje wiele bibliotek .NET do Event Hubs. Bibliotekę .NET Standard można uruchomić przy użyciu platformy .NET Core lub .NET Framework, podczas gdy biblioteka .NET Framework może być uruchamiana tylko w środowisku .NET Framework. Aby uzyskać więcej informacji na temat wersji .NET Framework, zobacz [wersje architektury](https://docs.microsoft.com/dotnet/articles/standard/frameworks).
 
 #### <a name="node"></a>Węzeł
 
-[Biblioteka języka Node.js](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-hubs) jest obecnie dostępna w wersji zapoznawczej i jest obsługiwane jako projekt po stronie przez pracowników firmy Microsoft i współautorów zewnętrznych. Wszystkie współtworzone elementy, łącznie z kodem źródłowym Zapraszamy i zostanie przejrzana.
+[Biblioteka Node. js](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-hubs) jest obecnie w wersji zapoznawczej i jest utrzymywana jako projekt po stronie firmy Microsoft i zewnętrznych współautorów. Wszystkie wkłady, w tym kod źródłowy, są powitane i zostaną zrecenzowane.
 
 ## <a name="management-apis"></a>Interfejsy API zarządzania
 
-Poniższa tabela zawiera listę wszystkich aktualnie dostępnych bibliotek specyficznych dla zarządzania. Żadna z tych bibliotek zawierają operacji środowiska uruchomieniowego i są wyłącznie w celu zarządzania jednostkami usługi Event Hubs.
+W poniższej tabeli wymieniono wszystkie aktualnie dostępne biblioteki specyficzne dla zarządzania. Żadna z tych bibliotek nie zawiera operacji środowiska uruchomieniowego i służy wyłącznie do zarządzania jednostkami Event Hubs.
 
-| Języka/platformy | Pakiet zarządzania | Repozytorium |
+| Język/platforma | Pakiet zarządzania | Repozytorium |
 | --- | --- | --- |
 | .NET Standard | [NuGet](https://www.nuget.org/packages/Microsoft.Azure.Management.EventHub) | [GitHub](https://github.com/Azure/azure-sdk-for-net/tree/AutoRest/src/ResourceManagement/EventHub) |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Następujące linki pozwalają dowiedzieć się więcej na temat usługi Event Hubs:
 
-* [Omówienie usługi Event Hubs](event-hubs-what-is-event-hubs.md)
+* [Przegląd usługi Event Hubs](event-hubs-what-is-event-hubs.md)
 * [Tworzenie centrum zdarzeń](event-hubs-create.md)
 * [Event Hubs — często zadawane pytania](event-hubs-faq.md)

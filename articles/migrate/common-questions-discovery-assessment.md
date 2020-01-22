@@ -3,12 +3,12 @@ title: Często zadawane pytania — odnajdywanie, Ocena i analiza zależności w
 description: Uzyskaj odpowiedzi na często zadawane pytania dotyczące odnajdywania, oceny i analizy zależności w programie Azure Migrate.
 ms.topic: conceptual
 ms.date: 12/29/2019
-ms.openlocfilehash: 0b7bb425bff1d26c2a0d6feeaf70be826eab2b9a
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 5afda40f4953b8eb51a757034661eb5a3349cd10
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75564051"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76292369"
 ---
 # <a name="common-questions-about-discovery-assessment-and-dependency-analysis"></a>Często zadawane pytania dotyczące odnajdywania, oceny i analizy zależności
 
@@ -20,7 +20,7 @@ W tym artykule znajdują się odpowiedzi na często zadawane pytania dotyczące 
 
 ## <a name="how-many-vms-can-i-discover-with-an-appliance"></a>Ile maszyn wirtualnych można odnajdywać za pomocą urządzenia?
 
-Możesz odkryć do 10 000 maszyn wirtualnych VMware oraz do 5 000 maszyn wirtualnych funkcji Hyper-V z jednym urządzeniem. Jeśli masz więcej maszyn w środowisku lokalnym, zapoznaj się z tematem skalowanie [funkcji Hyper-V](scale-hyper-v-assessment.md) i oceny oprogramowania [VMware](scale-vmware-assessment.md) .
+Możesz odkryć do 10 000 maszyn wirtualnych VMware, do 5 000 maszyn wirtualnych funkcji Hyper-V, a nawet do 250 serwerów za pomocą jednego urządzenia. Jeśli masz więcej maszyn w środowisku lokalnym, zapoznaj się z tematem skalowanie [funkcji Hyper-V](scale-hyper-v-assessment.md), programu [VMware](scale-vmware-assessment.md) i oceny [fizycznej](scale-physical-assessment.md) .
 
 
 
