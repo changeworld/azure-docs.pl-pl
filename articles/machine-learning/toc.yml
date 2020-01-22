@@ -93,6 +93,8 @@
       href: concept-designer.md
     - name: Ściągawka dotycząca algorytmów
       href: /azure/machine-learning/algorithm-cheat-sheet
+    - name: Jak wybrać algorytmy
+      href: /azure/machine-learning/how-to-select-algorithms
     - name: Zautomatyzowane uczenie maszynowe
       displayName: 'automl, auto ml'
       href: concept-automated-ml.md

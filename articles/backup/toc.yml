@@ -148,10 +148,28 @@
           href: backup-mabs-sharepoint-azure-stack.md
         - name: Ochrona bazy danych programu SQL Server
           href: backup-mabs-sql-azure-stack.md
-    - name: Udziały plików platformy Azure
+    - name: Kopia zapasowa udziału plików platformy Azure
       items:
-        - name: Tworzenie kopii zapasowej udziałów plików platformy Azure
-          href: backup-azure-files.md
+        - name: Z witryny Azure Portal
+          items:
+            - name: Tworzenie kopii zapasowej udziałów plików platformy Azure
+              href: backup-afs.md
+            - name: Przywracanie udziałów plików platformy Azure
+              href: restore-afs.md
+            - name: Zarządzanie kopiami zapasowymi udziałów plików platformy Azure
+              href: manage-afs-backup.md
+        - name: Z interfejsem wiersza polecenia platformy Azure
+          items:
+            - name: Tworzenie kopii zapasowej udziałów plików platformy Azure za pomocą interfejsu wiersza polecenia
+              href: backup-afs-cli.md
+            - name: Przywracanie udziałów plików platformy Azure za pomocą interfejsu wiersza polecenia
+              href: restore-afs-cli.md
+            - name: Zarządzanie kopiami zapasowymi udziałów plików platformy Azure za pomocą interfejsu wiersza polecenia
+              href: manage-afs-backup-cli.md
+        - name: Z programem PowerShell
+          items:
+            - name: Tworzenie kopii zapasowej udziałów plików platformy Azure za pomocą programu PowerShell
+              href: backup-azure-afs-automation.md
     - name: Tworzenie kopii zapasowych maszyn wirtualnych platformy Azure
       items:
         - name: Informacje o kopii zapasowej maszyny wirtualnej platformy Azure
@@ -222,8 +240,6 @@
           href: backup-dpm-automation.md
         - name: System Windows Server w witrynie Azure Portal
           href: backup-client-automation.md
-        - name: Udziały plików platformy Azure w witrynie Azure Portal
-          href: backup-azure-afs-automation.md
         - name: Kopie zapasowe baz danych SQL na maszynach wirtualnych platformy Azure
           href: backup-azure-sql-automation.md
     - name: Używanie interfejsu API REST usługi Azure Backup
