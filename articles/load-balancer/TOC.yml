@@ -63,7 +63,7 @@
     - name: Porty wysokiej dostępności
       href: load-balancer-ha-ports-overview.md
     - name: Pomoc techniczna dotycząca protokołu IPv6
-      href: load-balancer-ipv6-overview.md
+      href: 'https://docs.microsoft.com/azure/virtual-network/ipv6-overview'
     - name: Wiele frontonów
       href: load-balancer-multivip-overview.md
     - name: Połączenia wychodzące
@@ -107,11 +107,11 @@
     - name: Tworzenie publicznego modułu równoważenia obciążenia przy użyciu protokołu IPv6
       items:
         - name: Interfejs wiersza polecenia platformy Azure
-          href: load-balancer-ipv6-internet-cli.md
+          href: 'https://docs.microsoft.com/azure/virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-cli'
         - name: Azure PowerShell
-          href: load-balancer-ipv6-internet-ps.md
+          href: 'https://docs.microsoft.com/azure/virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell'
         - name: Szablon
-          href: load-balancer-ipv6-internet-template.md
+          href: 'https://docs.microsoft.com/azure/virtual-network/ipv6-configure-standard-load-balancer-template-json'
     - name: Konfigurowanie wewnętrznego modułu równoważenia obciążenia
       items:
         - name: Interfejs wiersza polecenia platformy Azure

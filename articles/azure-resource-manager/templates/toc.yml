@@ -88,6 +88,8 @@
       href: templates-cloud-consistency.md
     - name: Tryby wdrażania
       href: deployment-modes.md
+    - name: Usuwanie w trybie pełnym
+      href: complete-mode-deletion.md
     - name: Deployment Manager
       items:
         - name: Omówienie
@@ -237,12 +239,6 @@
           href: template-functions-resource.md
         - name: Funkcje ciągów
           href: template-functions-string.md
-    - name: Możliwości dotyczące zasobów
-      items:
-        - name: Usuwanie w trybie pełnym
-          href: complete-mode-deletion.md
-        - name: Typy zasobów rozszerzenia
-          href: extension-resource-types.md
     - name: REST
       href: /rest/api/resources/
     - name: Azure PowerShell
