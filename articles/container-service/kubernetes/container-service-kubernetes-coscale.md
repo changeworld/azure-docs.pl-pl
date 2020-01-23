@@ -1,85 +1,83 @@
 ---
-title: (PRZESTARZAŁE) Monitorowanie klastra usługi Azure Kubernetes za pomocą usługi CoScale
-description: Monitorowanie klastra Kubernetes w usłudze Azure Container Service przy użyciu pomocą usługi CoScale
-services: container-service
+title: PRZESTARZAŁE Monitorowanie klastra usługi Azure Kubernetes przy użyciu funkcji skalowania
+description: Monitorowanie klastra Kubernetes w Azure Container Service przy użyciu funkcji skalowania w poziomie
 author: fryckbos
-manager: jeconnoc
 ms.service: container-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/22/2017
 ms.author: saudas
 ms.custom: mvc
-ms.openlocfilehash: 895346447e33926dcaa5ca09302f35c9d6636ed9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f1d0ca1ffc2e7a3d645ac5acbaafdf45f85550be
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60713081"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76271096"
 ---
-# <a name="deprecated-monitor-an-azure-container-service-kubernetes-cluster-with-coscale"></a>(PRZESTARZAŁE) Monitorowanie klastra usługi Azure Container Service Kubernetes za pomocą usługi CoScale
+# <a name="deprecated-monitor-an-azure-container-service-kubernetes-cluster-with-coscale"></a>PRZESTARZAŁE Monitorowanie klastra Azure Container Service Kubernetes przy użyciu funkcji skalowania w poziomie
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
-W tym artykule pokazujemy, jak wdrożyć [pomocą usługi CoScale](https://web.archive.org/web/20180317071550/https://www.coscale.com/) agenta, aby monitorować wszystkie węzły, jak i kontenery w klastrze Kubernetes w usłudze Azure Container Service. Wymagane jest konto, za pomocą usługi CoScale dla tej konfiguracji. 
+W tym artykule pokazano, jak wdrożyć agenta [skalowania](https://web.archive.org/web/20180317071550/https://www.coscale.com/) w celu monitorowania wszystkich węzłów i kontenerów w klastrze Kubernetes w Azure Container Service. Do tej konfiguracji jest potrzebne konto ze skalowaniem. 
 
 
-## <a name="about-coscale"></a>Temat pomocą usługi CoScale 
+## <a name="about-coscale"></a>Skalowanie — informacje 
 
-Pomocą usługi coScale to platforma monitorowania, która zbiera metryki i zdarzenia z wszystkich kontenerów na wielu platformach aranżacji. Pomocą usługi coScale oferuje kompleksowym monitorowaniu środowiskami usługi Kubernetes. Zapewnia wszystkie warstwy stosu wizualizacji i analizy: OS, Kubernetes, Docker i aplikacji uruchamianych wewnątrz kontenerów. Pomocą usługi coScale oferuje kilka wbudowanych pulpitów nawigacyjnych monitorowania i ma wbudowaną funkcję wykrywania anomalii umożliwia operatorów i deweloperom szybko znaleźć problemy dotyczące infrastruktury i aplikacji.
+Skalowanie jest platformą monitorowania, która zbiera metryki i zdarzenia ze wszystkich kontenerów na kilku platformach aranżacji. Funkcja skalowania oferuje pełne monitorowanie w środowiskach Kubernetes. Udostępnia wizualizacje i analizy dla wszystkich warstw na stosie: system operacyjny, Kubernetes, Docker i aplikacje działające w kontenerach. Funkcja skalowania oferuje kilka wbudowanych pulpitów nawigacyjnych monitorowania i ma wbudowaną funkcję wykrywania anomalii, która umożliwia operatorom i deweloperom szybkie znajdowanie problemów z infrastrukturą i aplikacjami.
 
-![CoScale UI](./media/container-service-kubernetes-coscale/coscale.png)
+![Interfejs użytkownika do skalowania](./media/container-service-kubernetes-coscale/coscale.png)
 
-Jak pokazano w tym artykule, można zainstalować agentów w klastrze Kubernetes, aby uruchomić pomocą usługi CoScale jako rozwiązanie SaaS. Jeśli chcesz zachować dane na miejscu, pomocą usługi CoScale jest również dostępna do instalacji lokalnych.
+Jak pokazano w tym artykule, można zainstalować agentów w klastrze Kubernetes, aby uruchamiać skalowanie jako rozwiązanie SaaS. Jeśli chcesz zachować dostęp do danych w lokacji, funkcja skalowania jest również dostępna dla instalacji lokalnej.
 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Najpierw musisz [Utwórz konto pomocą usługi CoScale](https://web.archive.org/web/20170507123133/https://www.coscale.com/free-trial).
+Najpierw musisz [utworzyć konto do skalowania](https://web.archive.org/web/20170507123133/https://www.coscale.com/free-trial).
 
-W tym przewodniku przyjęto założenie, iż [utworzone za pomocą usługi Azure Container Service klastra Kubernetes](container-service-kubernetes-walkthrough.md).
+W tym instruktażu przyjęto założenie, że [utworzono klaster Kubernetes przy użyciu Azure Container Service](container-service-kubernetes-walkthrough.md).
 
-Zakłada również, że masz `az` wiersza polecenia platformy Azure i `kubectl` narzędzia są zainstalowane.
+Przyjęto również założenie, że masz zainstalowaną `az` interfejs wiersza polecenia platformy Azure i narzędzia `kubectl`.
 
-Można sprawdzić, czy `az` zainstalowane, uruchamiając narzędzie:
+Możesz sprawdzić, czy masz narzędzie `az` zainstalowane, uruchamiając:
 
 ```azurecli
 az --version
 ```
 
-Jeśli nie masz `az` narzędzie jest zainstalowane, istnieją instrukcje [tutaj](/cli/azure/install-azure-cli).
+Jeśli nie masz zainstalowanego narzędzia `az`, w [tym miejscu](/cli/azure/install-azure-cli)znajdują się instrukcje.
 
-Można sprawdzić, czy `kubectl` zainstalowane, uruchamiając narzędzie:
+Możesz sprawdzić, czy masz narzędzie `kubectl` zainstalowane, uruchamiając:
 
 ```bash
 kubectl version
 ```
 
-Jeśli nie masz `kubectl` zainstalowany, możesz uruchomić:
+Jeśli nie masz zainstalowanego `kubectl`, możesz uruchomić następujące polecenie:
 
 ```azurecli
 az acs kubernetes install-cli
 ```
 
-## <a name="installing-the-coscale-agent-with-a-daemonset"></a>Instalowanie agenta pomocą usługi CoScale z DaemonSet
-[DaemonSets](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) są używane przez rozwiązania Kubernetes, aby uruchomić pojedyncze wystąpienie kontenera na każdym hoście w klastrze.
-Są idealne do uruchamiania agentów monitorowania, takich jak agent pomocą usługi CoScale.
+## <a name="installing-the-coscale-agent-with-a-daemonset"></a>Instalowanie agenta współskali z elementu daemonset
+[DaemonSets](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) są używane przez Kubernetes do uruchamiania pojedynczego wystąpienia kontenera na każdym hoście w klastrze.
+Są one idealne do uruchamiania agentów monitorowania, takich jak Agent skalowania.
 
-Po zalogowaniu się w pomocą usługi CoScale, przejdź do [agent strona](https://app.coscale.com/) instalacji pomocą usługi CoScale agentów w klastrze za pomocą DaemonSet. Interfejs użytkownika pomocą usługi CoScale zawiera kroki konfiguracji z przewodnikiem, aby utworzyć agenta i rozpocząć monitorowanie pełną klastra Kubernetes.
+Po zalogowaniu się do obszaru skalowania przejdź do [strony agenta](https://app.coscale.com/) , aby zainstalować agentów współskalowania w klastrze przy użyciu elementu daemonset. Interfejs użytkownika z przedziałem międzyskalowania zawiera kroki konfiguracji z przewodnikiem umożliwiające utworzenie agenta i rozpoczęcie monitorowania całego klastra Kubernetes.
 
-![Konfiguracja agenta pomocą usługi coScale](./media/container-service-kubernetes-coscale/installation.png)
+![Konfiguracja agenta skalowania](./media/container-service-kubernetes-coscale/installation.png)
 
-Aby uruchomić agenta w klastrze, uruchom polecenie dostarczony:
+Aby uruchomić agenta w klastrze, uruchom dostarczone polecenie:
 
-![Uruchom agenta pomocą usługi CoScale](./media/container-service-kubernetes-coscale/agent_script.png)
+![Uruchom agenta skalowania](./media/container-service-kubernetes-coscale/agent_script.png)
 
-To wszystko! Po skonfigurowaniu i uruchomieniu agentów dane w konsoli powinny być widoczne w ciągu kilku minut. Odwiedź stronę [agent strona](https://app.coscale.com/) znajduje się pozycja klastra podsumowanie wykonać dodatkowe czynności konfiguracyjne i wyświetlić pulpity nawigacyjne, takie jak **klaster Kubernetes — omówienie**.
+Gotowe. Gdy agenci działają i działają, dane w konsoli powinny być widoczne w ciągu kilku minut. Odwiedź [stronę agenta](https://app.coscale.com/) , aby zobaczyć podsumowanie klastra, wykonać dodatkowe czynności konfiguracyjne i zapoznać się z pulpitami nawigacyjnymi, takimi jak **klaster Kubernetes**.
 
 ![Omówienie klastra Kubernetes](./media/container-service-kubernetes-coscale/dashboard_clusteroverview.png)
 
-Agent pomocą usługi CoScale jest automatycznie wdrażane na nowych komputerach w klastrze. Agent jest aktualizowana automatycznie, gdy wydaniu nowej wersji.
+Agent skalowania w poziomie jest automatycznie wdrażany na nowych maszynach w klastrze. Agent jest automatycznie aktualizowany po wydaniu nowej wersji.
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Zobacz [pomocą usługi CoScale dokumentacji](https://web.archive.org/web/20180415164304/http://docs.coscale.com:80/) i [blogu](https://web.archive.org/web/20170501021344/http://www.coscale.com:80/blog) Aby uzyskać więcej informacji na temat pomocą usługi CoScale rozwiązania do monitorowania. 
+Aby uzyskać więcej informacji na temat rozwiązań do monitorowania w ramach skalowania, zobacz [dokumentację dotyczącą rozbudowy](https://web.archive.org/web/20180415164304/http://docs.coscale.com:80/) i [blog](https://web.archive.org/web/20170501021344/http://www.coscale.com:80/blog) . 
 
