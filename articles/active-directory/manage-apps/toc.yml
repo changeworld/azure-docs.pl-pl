@@ -139,6 +139,8 @@
               href: configure-linked-sign-on.md
         - name: Przypisywanie użytkowników i zarządzanie dostępem do aplikacji
           items:
+            - name: Konfigurowanie zgody użytkownika
+              href: configure-user-consent.md
             - name: Ocenianie żądań zgody i zarządzanie nimi
               href: manage-consent-requests.md
             - name: Udzielanie zgody administratora całej dzierżawy
